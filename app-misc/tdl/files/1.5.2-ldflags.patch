@@ -1,0 +1,13 @@
+diff --git a/Makefile.in b/Makefile.in
+index 46b05ca..eb9b656 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -52,7 +52,7 @@ OBJ = main.o io.o add.o done.o remove.o move.o list.o \
+ all : tdl
+ 
+ tdl : $(OBJ)
+-	$(CC) $(CFLAGS) -o tdl $(OBJ) $(LIB_READLINE)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o tdl $(OBJ) $(LIB_READLINE)
+ 
+ %.o : %.c
+ 	$(CC) $(CFLAGS) -c $<

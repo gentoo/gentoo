@@ -1,0 +1,10 @@
+Option gets used for C as well leading to gcc warnings and a hard
+error with clang. Option isn't actually needed, so just remove it.
+
+https://bugs.gentoo.org/830571
+--- a/premake4.lua
++++ b/premake4.lua
+@@ -47,3 +47,2 @@
+ 	  defines { "PHYSFS_SUPPORTS_ZIP" }
+-	  buildoptions { "-std=gnu++0x" }
+ 	

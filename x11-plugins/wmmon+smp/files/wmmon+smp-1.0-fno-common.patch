@@ -1,0 +1,24 @@
+diff -Naur wmmon.app.orig/wmgeneral/wmgeneral.h wmmon.app/wmgeneral/wmgeneral.h
+--- wmmon.app.orig/wmgeneral/wmgeneral.h	1999-06-07 03:09:36.000000000 +0200
++++ wmmon.app/wmgeneral/wmgeneral.h	2020-03-08 12:20:10.345121264 +0100
+@@ -36,7 +36,7 @@
+  /* Global variable */
+ /*******************/
+ 
+-Display		*display;
++extern Display		*display;
+ 
+   /***********************/
+  /* Function Prototypes */
+diff -Naur wmmon.app.orig/wmmon/wmmon.c wmmon.app/wmmon/wmmon.c
+--- wmmon.app.orig/wmmon/wmmon.c	1999-06-07 05:49:45.000000000 +0200
++++ wmmon.app/wmmon/wmmon.c	2020-03-08 12:20:18.657124944 +0100
+@@ -19,6 +19,8 @@
+ int	wmmon_mask_width = 64;
+ int	wmmon_mask_height = 64;
+ 
++Display		*display;
++
+ void usage(void);
+ void drawstat(int *, int, int, int, int);
+ void wmmon_routine(int, char **);

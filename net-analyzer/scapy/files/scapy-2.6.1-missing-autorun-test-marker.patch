@@ -1,0 +1,10 @@
+--- a/test/regression.uts
++++ b/test/regression.uts
+@@ -1139,6 +1139,7 @@ ret = autorun_get_text_interactive_session("scapy_undefined")
+ assert "NameError" in ret[0]
+ 
+ = Test autorun with logging
++~ autorun
+ 
+ cmds = """log_runtime.info(hex_bytes("446166742050756e6b"))\n"""
+ ret = autorun_get_text_interactive_session(cmds)

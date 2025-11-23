@@ -1,0 +1,12 @@
+diff '--color=auto' -r -U3 fricas-1.3.11.orig/src/doc/Makefile.in fricas-1.3.11/src/doc/Makefile.in
+--- fricas-1.3.11.orig/src/doc/Makefile.in	2024-06-30 04:17:46.000000000 +0700
++++ fricas-1.3.11/src/doc/Makefile.in	2024-06-30 22:46:39.519468947 +0700
+@@ -666,7 +666,7 @@
+ tmp/vp-knot3.input: knot3.input ${INPUT_EXTRA_INPUT}
+ 	cp $< $@
+ 
+-${HTEX_VIEWPORTS_STAMP}: tmp/stamp-%: tmp/vp-%.input
++${HTEX_VIEWPORTS_STAMP}: tmp/stamp-%: tmp/vp-%.input ${INPUT_EXTRA_INPUT}
+ 	unset DAASE; FRICAS=${FRICAS}; export FRICAS; \
+ 		echo ")read $<" | FRICAS_INITFILE='' ${XVFB} \
+ 		  ${FRICAS}/bin/fricas -noht -noclef > /dev/null

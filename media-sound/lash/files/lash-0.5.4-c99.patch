@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/925439
+--- a/clients/synth/lash.c
++++ b/clients/synth/lash.c
+@@ -22,6 +22,7 @@
+ 
+ #include "config.h"
+ 
++#include <stdio.h>
+ #include <string.h>
+ #include <unistd.h>
+ 

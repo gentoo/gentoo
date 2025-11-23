@@ -1,0 +1,22 @@
+https://github.com/dajobe/rasqal/pull/11
+
+From 2e82a970a8856081a53fc075e6d1534251206810 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Timm=20B=C3=A4der?= <tbaeder@redhat.com>
+Date: Tue, 24 Jan 2023 09:14:02 +0100
+Subject: [PATCH] Define printf() before using it in a configure check
+
+Both clang and GCC will default to treating undefined functions as
+errors in the near future.
+--- a/configure.ac
++++ b/configure.ac
+@@ -313,7 +313,8 @@ AC_C_CONST
+ AC_C_BIGENDIAN
+ 
+ AC_MSG_CHECKING(whether __FUNCTION__ is available)
+-AC_COMPILE_IFELSE([AC_LANG_SOURCE([int main() { printf(__FUNCTION__); }])],
++AC_COMPILE_IFELSE([AC_LANG_SOURCE([#include <stdio.h>
++                   int main() { printf(__FUNCTION__); }])],
+     [AC_DEFINE([HAVE___FUNCTION__], [1], [Is __FUNCTION__ available])
+      AC_MSG_RESULT(yes)],
+     [AC_MSG_RESULT(no)])
+

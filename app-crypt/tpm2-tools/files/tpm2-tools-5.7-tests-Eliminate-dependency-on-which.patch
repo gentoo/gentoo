@@ -1,0 +1,42 @@
+From e9af1553f26ebad6e8db14b599dc74bab5663806 Mon Sep 17 00:00:00 2001
+From: Christopher Byrne <salah.coronya@gmail.com>
+Date: Tue, 16 Apr 2024 09:32:30 -0500
+Subject: [PATCH] tests: Eliminate dependency on 'which'
+
+See https://lwn.net/Articles/874049/
+
+Signed-off-by: Christopher Byrne <salah.coronya@gmail.com>
+---
+ test/integration/tests/pcrevent.sh | 2 +-
+ test/integration/tests/symlink.sh  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/test/integration/tests/pcrevent.sh b/test/integration/tests/pcrevent.sh
+index 5484cfbe..d7166789 100644
+--- a/test/integration/tests/pcrevent.sh
++++ b/test/integration/tests/pcrevent.sh
+@@ -44,7 +44,7 @@ yaml_verify $hash_out_file
+ while IFS='' read -r l || [[ -n "$l" ]]; do
+ 
+   alg=`echo -n $l | cut -d\: -f 1-1`
+-  if ! which "$alg"sum >/dev/null 2>&1; then
++  if ! command -v "$alg"sum >/dev/null 2>&1; then
+       echo "Ignore checking $alg algorithm due to unavailable \"${alg}sum\" program"
+       continue
+   fi
+diff --git a/test/integration/tests/symlink.sh b/test/integration/tests/symlink.sh
+index 606e1a1a..f65a7567 100644
+--- a/test/integration/tests/symlink.sh
++++ b/test/integration/tests/symlink.sh
+@@ -17,7 +17,7 @@ start_up
+ # Positive tests:
+ #
+ fail=0
+-TPM2_TOOL="$(which tpm2)"
++TPM2_TOOL="$(command -v tpm2)"
+ 
+ if [ -z "$TPM2_TOOL" ]; then
+     echo "unable to locate tpm2 tool"
+-- 
+2.45.2
+

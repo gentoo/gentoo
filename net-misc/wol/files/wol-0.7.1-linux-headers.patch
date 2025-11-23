@@ -1,0 +1,11 @@
+--- a/src/magic.c
++++ b/src/magic.c
+@@ -142,7 +142,7 @@ magic_assemble (struct magic *magic_buf, const char *mac_str,
+ 				}
+ 
+ 			for (j = 0; j < MAC_LEN; ++j)
+-				m[j] = ea.ETHER_ADDR_OCTET[j];
++				m[j] = ea.ether_addr_octet[j];
+ 		}
+ 
+ 	/* accommodate the packet chunk's size to the packet type */

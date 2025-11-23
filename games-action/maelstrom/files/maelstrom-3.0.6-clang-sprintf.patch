@@ -1,0 +1,112 @@
+Fix build errors with clang caused by strict denial of Cisms in C++ code
+Folded sed to install the high scores file in ${GAMES_STATEDIR}
+sed -i -e "s:path.Path(MAELSTROM_SCORES):\"/var/games/\"MAELSTROM_SCORES:" scores.cpp
+and mangled it to work with C++
+https://bugs.gentoo.org/730822
+--- a/load.h
++++ b/load.h
+@@ -106,7 +106,7 @@
+ 		if ( strcmp(directory, DIR_SEP) == 0 ) {
+ 			sprintf(path, DIR_SEP"%s", filename);
+ 		} else {
+-			sprintf(path, "%s"DIR_SEP"%s", directory, filename);
++			sprintf(path, "%s%s%s", directory, DIR_SEP, filename);
+ 		}
+ 		return(path);
+ 	}
+--- a/screenlib/SDL_FrameBuf.cpp
++++ b/screenlib/SDL_FrameBuf.cpp
+@@ -519,7 +519,7 @@
+ 	}
+ #else
+ 	/* Swap two buffers using a temporary variable */
+-	register Uint8 tmp;
++	Uint8 tmp;
+ 
+ 	while ( len-- ) {
+ 		tmp = *dst;
+--- a/controls.cpp
++++ b/controls.cpp
+@@ -83,7 +83,7 @@
+ 	if ( fname ) {
+ 		*fname = datafile;
+ 	}
+-	snprintf(datafile, sizeof(datafile), "%s"DIR_SEP"%s", home, MAELSTROM_DATA);
++	snprintf(datafile, sizeof(datafile), "%s%s%s", home, DIR_SEP, MAELSTROM_DATA);
+ 	if ( (data=fopen(datafile, mode)) == NULL )
+ 		return(NULL);
+ 	return(data);
+--- a/fastrand.cpp
++++ b/fastrand.cpp
+@@ -30,10 +30,10 @@
+ Uint16 FastRandom(Uint16 range)
+ {
+ 	Uint16 result;
+-	register Uint32 calc;
+-	register Uint32 regD0;
+-	register Uint32 regD1;
+-	register Uint32 regD2;
++	Uint32 calc;
++	Uint32 regD0;
++	Uint32 regD1;
++	Uint32 regD2;
+ 
+ #ifdef SERIOUS_DEBUG
+   fprintf(stderr, "FastRandom(%hd)  Seed in: %lu ", range, randomSeed);
+--- a/load.cpp
++++ b/load.cpp
+@@ -81,7 +81,7 @@
+ 	SDL_Surface *bmp, *title;
+ 	
+ 	/* Open the title file -- we know its colormap is our global one */
+-	snprintf(file, sizeof(file), "Images"DIR_SEP"Maelstrom_Titles#%d.bmp", title_id);
++	snprintf(file, sizeof(file), "Images%sMaelstrom_Titles#%d.bmp", DIR_SEP, title_id);
+ 	bmp = SDL_LoadBMP(path.Path(file));
+ 	if ( bmp == NULL ) {
+ 		return(NULL);
+@@ -103,7 +103,7 @@
+ 	Uint16 w, h;
+ 	
+ 	/* Open the cicn sprite file.. */
+-	snprintf(file, sizeof(file), "Images"DIR_SEP"Maelstrom_Icon#%hd.cicn", cicn_id);
++	snprintf(file, sizeof(file), "Images%sMaelstrom_Icon#%hd.cicn", DIR_SEP, cicn_id);
+ 	if ( (cicn_src=SDL_RWFromFile(path.Path(file), "r")) == NULL ) {
+ 		error("GetCIcon(%hd): Can't open CICN %s: ",
+ 					cicn_id, path.Path(file));
+--- a/scores.cpp
++++ b/scores.cpp
+@@ -10,6 +10,7 @@
+ #include <stdio.h>
+ 
+ #include "SDL_endian.h"
++#include <string>
+ 
+ #include "Maelstrom_Globals.h"
+ #include "load.h"
+@@ -44,7 +45,7 @@
+ 	}
+ 	memset(&hScores, 0, sizeof(hScores));
+ 
+-	scores_src = SDL_RWFromFile(path.Path(MAELSTROM_SCORES), "rb");
++	scores_src = SDL_RWFromFile((std::string("/var/games/") + MAELSTROM_SCORES).c_str(), "rb");
+ 	if ( scores_src != NULL ) {
+ 		for ( i=0; i<NUM_SCORES; ++i ) {
+ 			SDL_RWread(scores_src, hScores[i].name,
+@@ -72,7 +73,7 @@
+ #ifdef unix
+ 	omask=umask(SCORES_PERMMASK);
+ #endif
+-	scores_src = SDL_RWFromFile(path.Path(MAELSTROM_SCORES), "wb");
++	scores_src = SDL_RWFromFile((std::string("/var/games/") + MAELSTROM_SCORES).c_str(), "wb");
+ 	if ( scores_src != NULL ) {
+ 		for ( i=0; i<NUM_SCORES; ++i ) {
+ 			SDL_RWwrite(scores_src, hScores[i].name,
+@@ -83,7 +84,7 @@
+ 		SDL_RWclose(scores_src);
+ 	} else {
+ 		error("Warning: Couldn't save scores to %s\n",
+-						path.Path(MAELSTROM_SCORES));
++						(std::string("/var/games/") + MAELSTROM_SCORES).c_str());
+ 	}
+ #ifdef unix
+ 	umask(omask);

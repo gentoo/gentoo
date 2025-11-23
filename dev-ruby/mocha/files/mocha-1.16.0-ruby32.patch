@@ -1,0 +1,53 @@
+https://github.com/freerange/mocha/commit/ae9fed4a9f2ef6267302494ae0edf515d4a8a921
+https://github.com/freerange/mocha/commit/26b106a540ad57cd73401461451aa2711c541e9d
+
+From ae9fed4a9f2ef6267302494ae0edf515d4a8a921 Mon Sep 17 00:00:00 2001
+From: James Mead <james@floehopper.org>
+Date: Thu, 24 Nov 2022 13:26:15 +0000
+Subject: [PATCH] DRY up regexp_matches test
+
+--- a/test/unit/parameter_matchers/regexp_matches_test.rb
++++ b/test/unit/parameter_matchers/regexp_matches_test.rb
+@@ -32,14 +32,18 @@ def test_should_not_match_on_empty_arguments
+   end
+ 
+   def test_should_not_raise_error_on_argument_that_does_not_respond_to_equals_tilde
+-    object_not_responding_to_equals_tilde = Class.new { undef =~ }.new
+     matcher = regexp_matches(/oo/)
+     assert_nothing_raised { matcher.matches?([object_not_responding_to_equals_tilde]) }
+   end
+ 
+   def test_should_not_match_on_argument_that_does_not_respond_to_equals_tilde
+-    object_not_responding_to_equals_tilde = Class.new { undef =~ }.new
+     matcher = regexp_matches(/oo/)
+     assert !matcher.matches?([object_not_responding_to_equals_tilde])
+   end
++
++  private
++
++  def object_not_responding_to_equals_tilde
++    Class.new { undef =~ }.new
++  end
+ end
+
+From 26b106a540ad57cd73401461451aa2711c541e9d Mon Sep 17 00:00:00 2001
+From: James Mead <james@floehopper.org>
+Date: Fri, 25 Nov 2022 09:04:43 +0000
+Subject: [PATCH] Fix regexp_matches tests in Ruby v3.2
+
+Object#~= has been removed from Ruby v3.2 [1].
+
+Closes #590.
+
+[1]: https://bugs.ruby-lang.org/issues/15231
+--- a/test/unit/parameter_matchers/regexp_matches_test.rb
++++ b/test/unit/parameter_matchers/regexp_matches_test.rb
+@@ -44,6 +44,6 @@ def test_should_not_match_on_argument_that_does_not_respond_to_equals_tilde
+   private
+ 
+   def object_not_responding_to_equals_tilde
+-    Class.new { undef =~ }.new
++    Class.new { undef =~ if respond_to?(:=~) }.new
+   end
+ end
+

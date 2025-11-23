@@ -1,0 +1,11 @@
+https://github.com/i-rinat/apulse/pull/128
+https://bugs.gentoo.org/953973
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+ project(apulse)
+-cmake_minimum_required (VERSION 2.8)
++cmake_minimum_required (VERSION 2.8...4.0)
+ 
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99 -Wall -fPIC -fvisibility=hidden")

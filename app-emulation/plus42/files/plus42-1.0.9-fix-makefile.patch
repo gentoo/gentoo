@@ -1,0 +1,25 @@
+diff -Naur plus42-upstream-1.0.9.orig/gtk/Makefile plus42-upstream-1.0.9/gtk/Makefile
+--- plus42-upstream-1.0.9.orig/gtk/Makefile	2022-06-19 14:44:32.000000000 +0200
++++ plus42-upstream-1.0.9/gtk/Makefile	2022-07-04 19:37:35.533799322 +0200
+@@ -40,9 +40,10 @@
+ 	 -DDECIMAL_GLOBAL_EXCEPTION_FLAGS=1 \
+ 	 -DDECIMAL_GLOBAL_EXCEPTION_FLAGS_ACCESS_FUNCTIONS=1
+ 
+-CXXFLAGS = $(CFLAGS) \
++CXXFLAGS := $(CFLAGS) \
+ 	 -fno-rtti \
+-	 -D_WCHAR_T_DEFINED
++	 -D_WCHAR_T_DEFINED \
++	 ${CXXFLAGS}
+ 
+ LIBS = gcc111libbid.a $(shell $(PKG_CONFIG) --libs gtk+-3.0)
+ 
+@@ -121,7 +122,7 @@
+ 	./keymap2cc
+ 
+ gcc111libbid.a:
+-	sh ./build-intel-lib.sh
++	+sh ./build-intel-lib.sh
+ 	ln -s IntelRDFPMathLib20U1/TESTS/readtest.c
+ 
+ symlinks:

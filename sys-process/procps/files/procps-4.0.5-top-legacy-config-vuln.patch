@@ -1,0 +1,39 @@
+https://bugs.gentoo.org/958286
+https://gitlab.com/procps-ng/procps/-/commit/c7498168cfdcf566519d8c46bd26c1be42f2e3f3
+
+From c7498168cfdcf566519d8c46bd26c1be42f2e3f3 Mon Sep 17 00:00:00 2001
+From: Jim Warner <james.warner@comcast.net>
+Date: Mon, 26 May 2025 00:00:00 -0500
+Subject: [PATCH] top: fix vulnerability with legacy configuration files
+
+Reference(s):
+https://gitlab.com/procps-ng/procps/-/issues/384
+
+Signed-off-by: Jim Warner <james.warner@comcast.net>
+---
+ src/top/top.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/src/top/top.c b/src/top/top.c
+index c55b08f0..eef3b219 100644
+--- a/src/top/top.c
++++ b/src/top/top.c
+@@ -4015,10 +4015,12 @@ static int config_wins (FILE *fp, char *buf, int wix) {
+ 
+    if (1 != fscanf(fp, "%3s\tfieldscur=", w->rc.winname))
+       return 0;
+-   if (Rc.id < RCF_XFORMED_ID)
+-      fscanf(fp, "%s\n", buf );
+-   else {
+-      for (x = 0; ; x++)
++   if (Rc.id < RCF_XFORMED_ID) {
++      fscanf(fp, "%100s\n", buf );               // buf size = LRGBUFSIZ (512)
++      if (strlen(buf) >= sizeof(CVT_FORMER))     // but if we exceed max of 86
++         return 0;                               // that rc file was corrupted
++   } else {
++      for (x = 0; x < PFLAGSSIZ; x++)
+          if (1 != fscanf(fp, "%d", &w->rc.fieldscur[x]))
+             break;
+    }
+-- 
+GitLab

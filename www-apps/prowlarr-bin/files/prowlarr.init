@@ -1,0 +1,7 @@
+#!/sbin/openrc-run
+
+pidfile="/run/prowlarr.pid"
+command="/opt/prowlarr/Prowlarr"
+command_user="prowlarr:prowlarr"
+command_background=true
+

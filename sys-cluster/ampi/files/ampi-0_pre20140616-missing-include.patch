@@ -1,0 +1,10 @@
+--- a/ADtoolStubs/OO/support.c	2024-04-04 13:10:23.506762461 +0000
++++ b/ADtoolStubs/OO/support.c	2024-04-04 13:11:34.033298264 +0000
+@@ -8,6 +8,7 @@
+ */
+ #include <stdlib.h>
+ #include <assert.h>
++#include <stdio.h>
+ #include "ampi/adTool/support.h"
+ 
+ MPI_Comm ADTOOL_AMPI_COMM_WORLD_SHADOW;

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>zurabid2016@gmail.com</email>
+		<name>Zurab Kvachadze</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		The ngx-iconv NGINX module allows converting characters of different encoding by using
+		libiconv. It brings the 'set_iconv' command to NGINX.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/calio/iconv-nginx-module/issues</bugs-to>
+		<remote-id type="github">calio/iconv-nginx-module</remote-id>
+	</upstream>
+</pkgmetadata>

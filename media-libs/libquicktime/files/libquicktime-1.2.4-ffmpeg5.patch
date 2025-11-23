@@ -1,0 +1,342 @@
+--- a/plugins/ffmpeg/audio.c
++++ b/plugins/ffmpeg/audio.c
+@@ -423,8 +423,8 @@ static int a52_header_read(a52_header *
+ typedef struct
+   {
+   AVCodecContext * avctx;
+-  AVCodec * encoder;
+-  AVCodec * decoder;
++  AVCodec const * encoder;
++  AVCodec const * decoder;
+ 
+   int initialized;
+   
+@@ -512,7 +512,6 @@ static int decode_chunk_vbr(quicktime_t
+ 
+ #if DECODE_AUDIO4
+   AVFrame f;
+-  int got_frame;
+ #endif
+   
+   chunk_packets = lqt_audio_num_vbr_packets(file, track, track_map->cur_chunk, &num_samples);
+@@ -548,13 +547,14 @@ static int decode_chunk_vbr(quicktime_t
+     codec->pkt.size = packet_size + AV_INPUT_BUFFER_PADDING_SIZE;
+ 
+ #if DECODE_AUDIO4
+-    frame_bytes = avcodec_decode_audio4(codec->avctx, &f,
+-                                        &got_frame, &codec->pkt);
+-    if(frame_bytes < 0)
++    if(avcodec_send_packet(codec->avctx, &codec->pkt) < 0 &&
++       avcodec_receive_frame(codec->avctx, &f) < 0)
+       {
+       lqt_log(file, LQT_LOG_ERROR, LOG_DOMAIN, "avcodec_decode_audio4 error");
+       break;
+       }
++    frame_bytes = codec->pkt.size;
++
+     bytes_decoded = f.nb_samples * 2 * track_map->channels;
+     memcpy(&codec->sample_buffer[track_map->channels *
+                                  (codec->sample_buffer_end -
+@@ -615,7 +615,6 @@ static int decode_chunk(quicktime_t * fi
+ 
+ #if DECODE_AUDIO4
+   AVFrame f;
+-  int got_frame;
+ #endif
+   
+   /* Read chunk */
+@@ -764,14 +763,14 @@ static int decode_chunk(quicktime_t * fi
+     codec->pkt.size = codec->bytes_in_chunk_buffer + AV_INPUT_BUFFER_PADDING_SIZE;
+ 
+ #if DECODE_AUDIO4
+-    
+-    frame_bytes = avcodec_decode_audio4(codec->avctx, &f,
+-                                        &got_frame, &codec->pkt);
+-    if(frame_bytes < 0)
++    if(avcodec_send_packet(codec->avctx, &codec->pkt) < 0 ||
++       avcodec_receive_frame(codec->avctx, &f) < 0)
+       {
+       lqt_log(file, LQT_LOG_ERROR, LOG_DOMAIN, "avcodec_decode_audio4 error");
+       break;
+       }
++    frame_bytes = codec->pkt.size;
++
+     bytes_decoded = f.nb_samples * 2 * track_map->channels;
+     memcpy(&codec->sample_buffer[track_map->channels *
+                                  (codec->sample_buffer_end -
+@@ -1198,7 +1197,6 @@ static int lqt_ffmpeg_encode_audio(quick
+ #if ENCODE_AUDIO2
+   AVFrame f;
+   AVPacket pkt;
+-  int got_packet;
+ #endif
+   
+   if(!codec->initialized)
+@@ -1274,15 +1272,11 @@ static int lqt_ffmpeg_encode_audio(quick
+                              codec->avctx->frame_size * channels * 2, 
+                              1);
+ 
+-    if(avcodec_encode_audio2(codec->avctx, &pkt,
+-                             &f, &got_packet) < 0)
++    if(avcodec_send_frame(codec->avctx, &f) < 0 ||
++       avcodec_receive_packet(codec->avctx, &pkt) < 0)
+       return 0;
+ 
+-    if(got_packet && pkt.size)
+-      frame_bytes = pkt.size;
+-    else
+-      frame_bytes = 0;
+-
++    frame_bytes = pkt.size;
+ #else
+     frame_bytes = avcodec_encode_audio(codec->avctx, codec->chunk_buffer,
+                                        codec->chunk_buffer_alloc,
+@@ -1474,8 +1468,9 @@ static int read_packet_ac3(quicktime_t *
+   }
+ 
+ void quicktime_init_audio_codec_ffmpeg(quicktime_codec_t * codec_base,
+-                                       quicktime_audio_map_t *atrack, AVCodec *encoder,
+-                                       AVCodec *decoder)
++                                       quicktime_audio_map_t *atrack,
++                                       const AVCodec *encoder,
++                                       const AVCodec *decoder)
+   {
+   quicktime_ffmpeg_audio_codec_t *codec;
+   
+--- a/plugins/ffmpeg/ffmpeg.h
++++ b/plugins/ffmpeg/ffmpeg.h
+@@ -30,10 +30,12 @@
+ 
+ void quicktime_init_video_codec_ffmpeg(quicktime_codec_t * codec,
+                                        quicktime_video_map_t *vtrack,
+-                                       AVCodec *encoder, AVCodec *decoder);
++                                       const AVCodec *encoder,
++                                       const AVCodec *decoder);
+ void quicktime_init_audio_codec_ffmpeg(quicktime_codec_t * codec,
+                                        quicktime_audio_map_t *vtrack,
+-                                       AVCodec *encoder, AVCodec *decoder);
++                                       const AVCodec *encoder,
++                                       const AVCodec *decoder);
+ 
+ void lqt_ffmpeg_set_parameter(AVCodecContext * ctx,
+ #if LIBAVCODEC_VERSION_MAJOR >= 54
+--- a/plugins/ffmpeg/lqt_ffmpeg.c
++++ b/plugins/ffmpeg/lqt_ffmpeg.c
+@@ -315,8 +315,8 @@ struct CODECIDMAP
+   {
+   int id;
+   int index;
+-  AVCodec *encoder;
+-  AVCodec *decoder;
++  AVCodec const *encoder;
++  AVCodec const *decoder;
+   lqt_parameter_info_static_t * encode_parameters;
+   lqt_parameter_info_static_t * decode_parameters;
+   lqt_image_size_static_t     * image_sizes;
+@@ -947,7 +947,9 @@ static void ffmpeg_map_init(void)
+     return;
+     }
+     
++#if LIBAVCODEC_VERSION_MAJOR < 59
+   avcodec_register_all();
++#endif
+   //  avcodec_init();
+   ffmpeg_num_video_codecs = 0;
+   ffmpeg_num_audio_codecs = 0;
+--- a/plugins/ffmpeg/params.c
++++ b/plugins/ffmpeg/params.c
+@@ -124,12 +124,14 @@ typedef struct
+   }
+ 
+ 
++#if LIBAVCODEC_VERSION_MAJOR < 59
+ enum_t prediction_method[] =
+   {
+     { "Left",   FF_PRED_LEFT },
+     { "Plane",  FF_PRED_PLANE },
+     { "Median", FF_PRED_MEDIAN }
+   };
++#endif
+ 
+ enum_t compare_func[] =
+   {
+@@ -193,7 +195,9 @@ void lqt_ffmpeg_set_parameter(AVCodecCon
+   PARAM_INT("ff_max_qdiff",max_qdiff);
+   PARAM_INT("ff_max_b_frames",max_b_frames);
+   PARAM_FLOAT("ff_b_quant_factor",b_quant_factor);
++#if LIBAVCODEC_VERSION_MAJOR < 59
+   PARAM_INT("ff_b_frame_strategy",b_frame_strategy);
++#endif
+ 
+ #if LIBAVCODEC_VERSION_MAJOR >= 55
+   PARAM_DICT_INT("ff_luma_elim_threshold","luma_elim_threshold");
+@@ -216,7 +220,9 @@ void lqt_ffmpeg_set_parameter(AVCodecCon
+   PARAM_FLOAT("ff_spatial_cplx_masking",spatial_cplx_masking);
+   PARAM_FLOAT("ff_p_masking",p_masking);
+   PARAM_FLOAT("ff_dark_masking",dark_masking);
++#if LIBAVCODEC_VERSION_MAJOR < 59
+   PARAM_ENUM("ff_prediction_method",prediction_method,prediction_method);
++#endif
+   PARAM_ENUM("ff_me_cmp",me_cmp,compare_func);
+   PARAM_CMP_CHROMA("ff_me_cmp_chroma",me_cmp);
+   PARAM_ENUM("ff_me_sub_cmp",me_sub_cmp,compare_func);
+@@ -227,17 +233,23 @@ void lqt_ffmpeg_set_parameter(AVCodecCon
+   PARAM_CMP_CHROMA("ff_ildct_cmp_chroma",ildct_cmp);
+   PARAM_INT("ff_dia_size",dia_size);
+   PARAM_INT("ff_last_predictor_count",last_predictor_count);
++#if LIBAVCODEC_VERSION_MAJOR < 59
+   PARAM_INT("ff_pre_me",pre_me);
++#endif
+   PARAM_ENUM("ff_me_pre_cmp",me_pre_cmp,compare_func);
+   PARAM_CMP_CHROMA("ff_pre_me_cmp_chroma",me_pre_cmp);
+   PARAM_INT("ff_pre_dia_size",pre_dia_size);
+   PARAM_INT("ff_me_subpel_quality",me_subpel_quality);
+   PARAM_INT("ff_me_range",me_range);
+   PARAM_ENUM("ff_mb_decision",mb_decision,mb_decision);
++#if LIBAVCODEC_VERSION_MAJOR < 59
+   PARAM_INT("ff_scenechange_threshold",scenechange_threshold);
++#endif
+   PARAM_DICT_INT("ff_lmin", "lmin");
+   PARAM_DICT_INT("ff_lmax", "lmax");
++#if LIBAVCODEC_VERSION_MAJOR < 59
+   PARAM_INT("ff_noise_reduction",noise_reduction);
++#endif
+   PARAM_INT_SCALE("ff_rc_initial_buffer_occupancy",rc_initial_buffer_occupancy,1000);
+ 
+ #if LIBAVCODEC_VERSION_MAJOR >= 55
+@@ -253,9 +265,13 @@ void lqt_ffmpeg_set_parameter(AVCodecCon
+   PARAM_DICT_INT("ff_border_masking","border_mask");
+   PARAM_QP2LAMBDA("ff_mb_lmin", mb_lmin);
+   PARAM_QP2LAMBDA("ff_mb_lmax", mb_lmax);
++#if LIBAVCODEC_VERSION_MAJOR < 59
+   PARAM_INT("ff_me_penalty_compensation",me_penalty_compensation);
++#endif
+   PARAM_INT("ff_bidir_refine",bidir_refine);
++#if LIBAVCODEC_VERSION_MAJOR < 59
+   PARAM_INT("ff_brd_scale",brd_scale);
++#endif
+   PARAM_FLAG("ff_flag_qscale",AV_CODEC_FLAG_QSCALE);
+   PARAM_FLAG("ff_flag_4mv",AV_CODEC_FLAG_4MV);
+   PARAM_FLAG("ff_flag_qpel",AV_CODEC_FLAG_QPEL);
+--- a/plugins/ffmpeg/video.c
++++ b/plugins/ffmpeg/video.c
+@@ -61,8 +61,8 @@ enum AvidYuvRange
+ typedef struct
+   {
+   AVCodecContext * avctx;
+-  AVCodec * encoder;
+-  AVCodec * decoder;
++  AVCodec const * encoder;
++  AVCodec const * decoder;
+   int initialized;
+ 
+   int decoding_delay;
+@@ -878,10 +878,12 @@ static int lqt_ffmpeg_decode_video(quick
+         }
+ #endif
+       
+-      if(avcodec_decode_video2(codec->avctx,
+-                               codec->frame,
+-                               &got_pic,
+-                               &codec->pkt) < 0)
++      if(avcodec_send_packet(codec->avctx, &codec->pkt) == 0 &&
++         avcodec_receive_frame(codec->avctx, codec->frame) == 0)
++        {
++        got_pic = 1;
++        }
++      else
+         {
+         lqt_log(file, LQT_LOG_ERROR, LOG_DOMAIN, "Skipping corrupted frame");
+         continue;
+@@ -1062,10 +1064,8 @@ static void resync_ffmpeg(quicktime_t *f
+ #if LIBAVCODEC_BUILD >= ((52<<16)+(26<<8)+0)
+         codec->pkt.data = codec->buffer;
+         codec->pkt.size = buffer_size;
+-        avcodec_decode_video2(codec->avctx,
+-                              codec->frame,
+-                              &got_pic,
+-                              &codec->pkt);
++        got_pic = (avcodec_send_packet(codec->avctx, &codec->pkt) == 0 &&
++                   avcodec_receive_frame(codec->avctx, codec->frame) == 0);
+ #else
+         avcodec_decode_video(codec->avctx,
+                              codec->frame,
+@@ -1139,7 +1139,9 @@ static int init_imx_encoder(quicktime_t
+   codec->avctx->intra_dc_precision = 2;
+   codec->avctx->qmin = 1;
+   codec->avctx->qmax = 3;
++#if (LIBAVCODEC_VERSION_MAJOR < 59)
+   codec->avctx->rtp_payload_size = 1; // ??
++#endif
+   av_dict_set(&codec->options, "rc_buf_aggressivity", "0.25", 0);
+   codec->avctx->flags |= AV_CODEC_FLAG_INTERLACED_DCT|AV_CODEC_FLAG_LOW_DELAY;
+ 
+@@ -1290,7 +1292,6 @@ static int lqt_ffmpeg_encode_video(quick
+   int stats_len;
+ #if ENCODE_VIDEO2
+   AVPacket pkt;
+-  int got_packet;
+ #endif
+   int64_t pts;
+   int kf;
+@@ -1530,16 +1531,12 @@ static int lqt_ffmpeg_encode_video(quick
+ #if ENCODE_VIDEO2 // New
+   av_init_packet(&pkt);
+   pkt.data = codec->buffer;
+-  pkt.size = codec->buffer_alloc;
++  pkt.size = bytes_encoded = codec->buffer_alloc;
+ 
+-  if(avcodec_encode_video2(codec->avctx, &pkt, codec->frame, &got_packet) < 0)
++  if(avcodec_send_frame(codec->avctx, codec->frame) < 0 ||
++     avcodec_receive_packet(codec->avctx, &pkt) < 0)
+     return -1;
+ 
+-  if(got_packet)
+-    bytes_encoded = pkt.size;
+-  else
+-    bytes_encoded = 0;
+-  
+   pts = pkt.pts;
+   kf = !!(pkt.flags & AV_PKT_FLAG_KEY);
+     
+@@ -1621,7 +1618,6 @@ static int flush(quicktime_t *file, int
+   
+ #if ENCODE_VIDEO2
+   AVPacket pkt;
+-  int got_packet;
+ #endif
+   
+   /* Do nothing if we didn't encode anything yet */
+@@ -1631,18 +1627,13 @@ static int flush(quicktime_t *file, int
+ #if ENCODE_VIDEO2
+   av_init_packet(&pkt);
+   pkt.data = codec->buffer;
+-  pkt.size = codec->buffer_alloc;
++  pkt.size = bytes_encoded = codec->buffer_alloc;
+   
+-  if(avcodec_encode_video2(codec->avctx, &pkt, (AVFrame*)0, &got_packet) < 0)
++  if(avcodec_send_frame(codec->avctx, NULL) < 0 ||
++     avcodec_receive_packet(codec->avctx, &pkt) < 0)
+     return -1;
+ 
+-  if(got_packet)
+-    bytes_encoded = pkt.size;
+-  else
+-    return 0;
+-  
+   pts = pkt.pts;
+-
+   kf = !!(pkt.flags & AV_PKT_FLAG_KEY);
+   
+ #else
+@@ -1872,8 +1863,8 @@ static int init_compressed_dv(quicktime_
+ 
+ void quicktime_init_video_codec_ffmpeg(quicktime_codec_t * codec_base,
+                                        quicktime_video_map_t *vtrack,
+-                                       AVCodec *encoder,
+-                                       AVCodec *decoder)
++                                       const AVCodec *encoder,
++                                       const AVCodec *decoder)
+   {
+   quicktime_ffmpeg_video_codec_t *codec;
+   char *compressor;

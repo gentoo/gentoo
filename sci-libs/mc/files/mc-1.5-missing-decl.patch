@@ -1,0 +1,13 @@
+Fix missing function declaration, so package could build with modern compilers
+https://bugs.gentoo.org/886457
+--- a/src/aprx/estim.c
++++ b/src/aprx/estim.c
+@@ -41,6 +41,8 @@
+     Bvec *u, Bvec *ud, Bvec *r);
+ VEXTERNC void Aprx_estFaceBump(Aprx *thee, int color,
+     Bvec *u, Bvec *ud, Bvec *r);
++VPUBLIC int Aprx_markRefineDorfler (Aprx *thee, double percentToRefine,
++    int color);
+ 
+ /*
+  * ***************************************************************************

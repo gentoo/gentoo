@@ -1,0 +1,28 @@
+From 3193fe41561e6ddd99c1f5148089aa51c88236aa Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <mart@leio.tech>
+Date: Sun, 16 Jan 2022 01:00:43 +0200
+Subject: [PATCH 2/3] build: Always build and install user help
+
+We need a separate knob for gtk-doc that wouldn't affect user help
+being installed. Just remove the docs option check for user help to
+always installed it for us.
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 9529f5d1..00cfbeec 100644
+--- a/meson.build
++++ b/meson.build
+@@ -262,7 +262,7 @@ if get_option('docs')
+   subdir('docs' / 'reference')
+ endif
+ 
+-if get_option('docs') and get_option('charmap')
++if get_option('charmap')
+   subdir('help')
+ endif
+ 
+-- 
+2.32.0
+

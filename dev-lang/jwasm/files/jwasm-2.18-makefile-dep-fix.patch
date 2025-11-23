@@ -1,0 +1,11 @@
+--- a/GccUnix.mak
++++ b/GccUnix.mak
+@@ -30,7 +30,7 @@ include gccmod.inc
+ 
+ #.c.o:
+ #	$(CC) -c $(inc_dirs) $(c_flags) -o $(OUTD)/$*.o $<
+-$(OUTD)/%.o: src/%.c
++$(OUTD)/%.o: src/%.c | $(OUTD)
+ 	$(CC) -c $(inc_dirs) $(c_flags) -o $(OUTD)/$*.o $<
+ 
+ all:  $(OUTD) $(OUTD)/$(TARGET1)

@@ -1,0 +1,28 @@
+--- a/configure.in
++++ b/configure.in
+@@ -3,7 +3,9 @@
+ AC_CANONICAL_SYSTEM
+ 
+ AM_INIT_AUTOMAKE(vsound, 0.5)
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
++
++AC_CONFIG_MACRO_DIR([.])
+ 
+ AC_PROG_CC
+ AC_PROG_CPP
+@@ -45,12 +47,12 @@
+ fi
+ 
+ if test "$ac_cv_prog_gcc" = yes ; then
+-	CFLAGS="-g -O2 -Wall -Wstrict-prototypes -pipe"
++	CFLAGS+=" -Wall -Wstrict-prototypes"
+ fi
+ 
+ if test "$ac_arg_debug" = yes; then
+ 	echo "enabling debug"
+-	CFLAGS="$CFLAGS -DENABLE_DEBUG "
++	CPPFLAGS+=" -DENABLE_DEBUG"
+ fi
+ 
+ AC_OUTPUT(Makefile vsound)

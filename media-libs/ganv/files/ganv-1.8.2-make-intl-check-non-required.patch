@@ -1,0 +1,13 @@
+diff --git a/meson.build b/meson.build
+index 27cb852..eb3500c 100644
+--- a/meson.build
++++ b/meson.build
+@@ -45,7 +45,7 @@ endif
+ 
+ m_dep = cc.find_library('m', required: false)
+ 
+-intl_dep = cc.find_library('intl', required: get_option('nls'))
++intl_dep = cc.find_library('intl', required: get_option('nls'), required: false)
+ 
+ gtk2_dep = dependency('gtk+-2.0',
+                       version: '>= 2.10.0',

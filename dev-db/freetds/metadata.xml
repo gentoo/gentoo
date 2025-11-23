@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<upstream>
+		<bugs-to>https://github.com/FreeTDS/freetds/issues</bugs-to>
+		<changelog>https://github.com/FreeTDS/freetds/blob/master/NEWS.md</changelog>
+		<doc>https://www.freetds.org/docs.html</doc>
+		<remote-id type="cpe">cpe:/a:freetds:freetds</remote-id>
+		<remote-id type="github">FreeTDS/freetds</remote-id>
+	</upstream>
+</pkgmetadata>

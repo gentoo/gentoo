@@ -1,0 +1,22 @@
+From 22a72290ac41d27238a8861eea60b5cf3878b94b Mon Sep 17 00:00:00 2001
+From: Felix Janda <felix.janda@posteo.de>
+Date: Sat, 18 Jan 2025 15:50:32 -0500
+Subject: [PATCH] [sftp] add declaration of ftp_curl_handle_error
+
+fixes compilation error when sftp is enabled but ftp is disabled
+---
+ src/protocol/curl/sftp.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/protocol/curl/sftp.h b/src/protocol/curl/sftp.h
+index 2ec5a0542..5b42bccaa 100644
+--- a/src/protocol/curl/sftp.h
++++ b/src/protocol/curl/sftp.h
+@@ -12,6 +12,7 @@ extern struct module sftp_protocol_module;
+ 
+ #if defined(CONFIG_SFTP) && defined(CONFIG_LIBCURL)
+ extern protocol_handler_T sftp_protocol_handler;
++void ftp_curl_handle_error(struct connection *conn, CURLcode res);
+ #else
+ #define sftp_protocol_handler NULL
+ #endif

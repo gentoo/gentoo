@@ -1,0 +1,396 @@
+License: CYPRESS-WIRELESS-CONNECTIVITY-DEVICES-DRIVER-END-USER-LICENSE-AGREEMENT
+Comment: These firmware are acquired from "https://github.com/RPi-Distro/bluez-firmware"
+ distributing Raspberry Pi firmware.
+ These firmware licenses are 'CYPRESS WIRELESS CONNECTIVITY DEVICES DRIVER END
+ USER LICENSE AGREEMENT (SOURCE AND BINARY DISTRIBUTION)', users need to grant
+ to this. The content of the license is written at the end of this text. 
+ This is confirmed in SERGE Schneider <serge@raspberrypi.org> and Phil Elwell
+ <phil@raspberrypi.com>, which distributes this binary.
+ The mail content I confirmed to them is as follows.
+ .
+ ```
+ Delivered-To: iwamatsu@nigauri.org
+ Received: by 2002:ab0:4d56:0:0:0:0:0 with SMTP id k22csp3488749uag;
+         Mon, 6 Sep 2021 02:54:10 -0700 (PDT)
+ X-Google-Smtp-Source: ABdhPJyNCMBGiRaKdPfYPct3DTzORXcRdxZK/OTU3I2p8Fi9RquWS/3zOyKoSEMz/dtaQ36PYtHX
+ X-Received: by 2002:a5d:554e:: with SMTP id g14mr12446688wrw.48.1630922050432;
+         Mon, 06 Sep 2021 02:54:10 -0700 (PDT)
+ ARC-Seal: i=1; a=rsa-sha256; t=1630922050; cv=none;
+         d=google.com; s=arc-20160816;
+         b=iWgs8G8cIGWWJZJFO3BCt6dpqnfhByZN3CXKZtqhPIz0p/rQS6oBVqfH34Dzh6imBq
+          fPxBz+hFZi1gkUR2Li3atJUHwvcmoJJ/eQAugcSRJpdAIFiZBJETxcu8xhvIKp2m5a1b
+          HCp6zLDPvyVNj3tHrKqJNAUIwWzkOEjHyjEQ7FxD+GURQ8H/k4hn4Qdd2zwnFs4aRFei
+          7hxxj1P3FP6eeSoilwLnhuZ1vrOr0XchYDnwOcvHChXI57Cc9qUyeSs89N95Gvd5w8yK
+          5MLYD9psiaBBMQEVIHCxNmV84HXViEfCiWfuA65QejiGTPtImqFql9nOIt0rl1pJN0kP
+          U/hA==
+ ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+         h=content-language:in-reply-to:mime-version:user-agent:date
+          :message-id:from:cc:references:to:subject:dkim-signature;
+         bh=ss6hX6pQkcUx/5B35uWO6tbT2OQwddZPHLSfFvpUVPg=;
+         b=KRjAmzvPdhnIlEPk/oS64XaPQglfYPHcRhMDdVYu4wZ0pu5OyojjHzuNNEFd07UFV6
+          m/KdrhFw1AhxTIEXr7udKu75HQZQAqd2D/rbTro+gbi9IGk6oUtz+/V3EnXejuMxqn/0
+          hycxE7jOQgtv2tYhPfgeiA9EJmyXxxkPquQJPT5acO4ylTQDc8/rjwDIwbdhxZGovVTr
+          K2bAPpGOkh7YZK70k6a6UHI1zUz6/8+H6Tp+gMVwGtdUPLussh9V4fCYbS+q3rwnt7Uj
+          USe9Bo6iuwOxUn0PK60R60mWFn6m64j0SMCJ5u9ozlVqpMMyrOakH2VD3YP2CC7zf5Sg
+          8/tw==
+ ARC-Authentication-Results: i=1; mx.google.com;
+        dkim=pass header.i=@raspberrypi.com header.s=google header.b=KnjmSS3X;
+        spf=softfail (google.com: domain of transitioning phil@raspberrypi.com does not designate 82.195.75.114 as permitted sender) smtp.mailfrom=phil@raspberrypi.com;
+        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=raspberrypi.com
+ Return-Path: <phil@raspberrypi.com>
+ Received: from mailly.debian.org (mailly.debian.org. [82.195.75.114])
+         by mx.google.com with ESMTPS id o5si8081239wrc.148.2021.09.06.02.54.10
+         for <iwamatsu@nigauri.org>
+         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+         Mon, 06 Sep 2021 02:54:10 -0700 (PDT)
+ Received-SPF: softfail (google.com: domain of transitioning phil@raspberrypi.com does not designate 82.195.75.114 as permitted sender) client-ip=82.195.75.114;
+ Authentication-Results: mx.google.com;
+        dkim=pass header.i=@raspberrypi.com header.s=google header.b=KnjmSS3X;
+        spf=softfail (google.com: domain of transitioning phil@raspberrypi.com does not designate 82.195.75.114 as permitted sender) smtp.mailfrom=phil@raspberrypi.com;
+        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=raspberrypi.com
+ Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f]:35716) by mailly.debian.org with esmtps (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.92) (envelope-from <phil@raspberrypi.com>) id 1mNBKL-0000Y7-7v for iwamatsu@nigauri.org; Mon, 06 Sep 2021 09:54:10 +0000
+ Received: by mail-wm1-x32f.google.com with SMTP id z9-20020a7bc149000000b002e8861aff59so4554365wmi.0
+         for <iwamatsu@debian.org>; Mon, 06 Sep 2021 02:54:07 -0700 (PDT)
+ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+         d=raspberrypi.com; s=google;
+         h=subject:to:references:cc:from:message-id:date:user-agent
+          :mime-version:in-reply-to:content-language;
+         bh=ss6hX6pQkcUx/5B35uWO6tbT2OQwddZPHLSfFvpUVPg=;
+         b=KnjmSS3XYtpVGADVXvSZM/ucp4ehm/Tplw0frJer9k+yQnDSv8V056zwZl5JbVbkrP
+          3/KrrsXPW6JhXTcRS5nYBY7wI7iIhtVtlwLphk36bcgbKAH8RW3FIu743ic2GLyBKNB0
+          KGDC4KmZwk23ivuN0pxWdbodyE75JYlHep652v69eQ5f2csFRehklWCU+xaw5398nYnJ
+          5j1UQwUhnUtwyVenZ9aCwLJ+M+MWdjWm1nxMhBS6us6yqRmsmeBMsvMIqwYqXZHBJhJc
+          Cy2UgiecBCKDJvNb/qx8uSpSci0XXqViJhFI+Z7QBpni2eJQb8OD+GFVfIgBlbwVCN6g
+          XuUg==
+ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+         d=1e100.net; s=20161025;
+         h=x-gm-message-state:subject:to:references:cc:from:message-id:date
+          :user-agent:mime-version:in-reply-to:content-language;
+         bh=ss6hX6pQkcUx/5B35uWO6tbT2OQwddZPHLSfFvpUVPg=;
+         b=fVrznHKsDaDEBIQuEZFeCuVrdDOfJm+r7j7RLcTHDilAOk7lRwOL47NV12yD/uB4x4
+          T8o/7/fczrSbsnVdubbjCel9TfY/hhhCOD/aLe4x49h6b13VtTL1BakeEcfCik5FSajR
+          8gqKounqcBTpyYO69XBBduUKzPv6MOFKVctumdZGs/K/5cb9AHbcLjeqL4YC8h7+EI1M
+          bK5QWJgrMPiwb8ZnJqzKyv9slWt0BA07OIMfwAK1HjaKcs0HdRgWTPtUAiUrdC/EdMos
+          ff9dVdnrT8gdMS72bzy7j+RLkxYFb9Tf8Up2yZ57RSe+fxDS39N40WSLr2qLNNYFzToO
+          LvRg==
+ X-Gm-Message-State: AOAM532asO5grAP1vjNRuGXaF3FQt01gYoF79D35ffwIvuG1KRbiSzS/ Ce9nyOEHLFkqQB8ZmMmtBUFVMg==
+ X-Received: by 2002:a1c:c911:: with SMTP id f17mr10438484wmb.190.1630922047009;
+         Mon, 06 Sep 2021 02:54:07 -0700 (PDT)
+ Received: from ?IPv6:2a00:1098:3142:14:89df:1145:d597:19c5? ([2a00:1098:3142:14:89df:1145:d597:19c5])
+         by smtp.gmail.com with ESMTPSA id z2sm6565939wma.45.2021.09.06.02.54.06
+         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+         Mon, 06 Sep 2021 02:54:06 -0700 (PDT)
+ Subject: Re: Fwd: About bluez-firmware blob and license
+ To: Nobuhiro Iwamatsu <iwamatsu@debian.org>
+ References: <CABMQnVJuMxSKvGv+k-Q+_PkY4b3XutVd+Hvag32qiMZw-RacRQ@mail.gmail.com> <CAA=_ySHSwO+vdYAwX7MTCwjaCVTss+wWHX9ZiBrC9a0GBCa_+A@mail.gmail.com>
+ Cc: Serge Schneider <serge@raspberrypi.com>
+ From: Phil Elwell <phil@raspberrypi.com>
+ Message-ID: <c4442de9-6e0d-d371-2f4b-c6e400623a4f@raspberrypi.com>
+ Date: Mon, 6 Sep 2021 10:54:05 +0100
+ User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101 Thunderbird/78.13.0
+ MIME-Version: 1.0
+ In-Reply-To: <CAA=_ySHSwO+vdYAwX7MTCwjaCVTss+wWHX9ZiBrC9a0GBCa_+A@mail.gmail.com>
+ Content-Type: multipart/alternative; boundary="------------8D6FA6B88932B0E1E8707FB5"
+ Content-Language: en-GB
+ .
+ --------------8D6FA6B88932B0E1E8707FB5
+ Content-Type: text/plain; charset=utf-8; format=flowed
+ Content-Transfer-Encoding: 8bit
+ .
+ Hi Nobuhiro,
+ .
+ The firmwares are released to us - Raspberry Pi (Trading) Ltd. - by Cypress, on
+ the expectation that we will release them to our users, both directly in our own
+ images and indirectly via places such as the bluez-firmware repo. My answers to
+ Issue #1 on that repo are correct and authoritative - these firmwares are
+ designed to overlay the normal linux-firmware repo, and the licences found there
+ (including
+ https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/tree/LICENCE.cypress)
+ apply.
+ .
+ Phil
+ .
+ On 06/09/2021 10:34, Serge Schneider wrote:
+ >
+ >
+ > ---------- Forwarded message ---------
+ > From: *Nobuhiro Iwamatsu* <iwamatsu@debian.org <mailto:iwamatsu@debian.org>>
+ > Date: Mon, 6 Sept 2021 at 10:32
+ > Subject: About bluez-firmware blob and license
+ > To: Serge Schneider <serge@raspberrypi.org <mailto:serge@raspberrypi.org>>
+ >
+ >
+ > Dear Serge Schneider,
+ >
+ > My name is Nobuhiro Iwamatsu, I maintain bluetooth related packages on Debian.
+ > First, thank you for the maintenance of
+ > https://github.com/RPi-Distro/bluez-firmware/
+ > <https://github.com/RPi-Distro/bluez-firmware/>.
+ > I use this binary for my hobbies and work to run the Raspberry Pis :-).
+ >
+ > I have questions about the firmware for the Rasberry Pi managed in
+ > this repository.
+ > Originally, creating an issue on github might be the correct way to do
+ > it, but a similar
+ > issue[0] seems to have already been closed, so I send a email about
+ > it. Please point
+ > out if we need to discuss it on github.
+ >
+ > I would like to update the bluez-firmware you manage into Debian.
+ > However, the location and
+ > license of the firmware is unclear to me, so I would like to clarify these.
+ >
+ > 1. Where can I get this firmware?
+ >   Is there a limited way to get it? I couldn't find it from the
+ > Cypress site. It also says that
+ >   I can download it from the link on the forums[1], is this the
+ > official Cypress link?
+ >
+ > 2. Where can I get license information?
+ >   In past issues, you wrote about the reply from Cypress[2][3].
+ >   I'm not distrustful of this comment, but I would like to get more
+ > public information.
+ >
+ > Best regards,
+ >   Nobuhiro
+ >
+ > [0]: https://github.com/RPi-Distro/bluez-firmware/issues/1
+ > <https://github.com/RPi-Distro/bluez-firmware/issues/1>
+ > [1]: https://www.raspberrypi.org/forums/viewtopic.php?f=117&t=291609
+ > <https://www.raspberrypi.org/forums/viewtopic.php?f=117&t=291609>
+ > [2]:
+ > https://github.com/RPi-Distro/bluez-firmware/issues/1#issuecomment-381644063
+ > <https://github.com/RPi-Distro/bluez-firmware/issues/1#issuecomment-381644063>
+ > [3]:
+ > https://github.com/RPi-Distro/bluez-firmware/issues/1#issuecomment-385351754
+ > <https://github.com/RPi-Distro/bluez-firmware/issues/1#issuecomment-385351754>
+ > --
+ > Nobuhiro Iwamatsu
+ >    iwamatsu at {nigauri.org <http://nigauri.org> / debian.org <http://debian.org>}
+ >    GPG ID: 40AD1FA6
+ >
+ ```
+ .
+
+License: BCM_LEGAL
+ The BlueZ project has permission from Broadcom Corporation to
+ distribute this firmware in conjunction with the BlueZ tools,
+ available in Debian as bluez-utils, as long as the notice contained in
+ /usr/share/doc/bluez-firmware/BCM-LEGAL.txt accompanies the firmware.
+ .
+ This arrangement was made with BlueZ author Max Krasnyansky
+ <maxk@qualcomm.com>.
+ .
+ BCM firmware version 2.16
+ Copyright (c) 2000-2003 Broadcom Corporation
+ .
+ Contact info:
+         bluetooth_help@broadcom.com
+ .
+ Received: from enigma.qualcomm.com (enigma.qualcomm.com [129.46.64.203])
+          by mail1.qualcomm.com (8.12.1/8.12.1/1.0) with ESMTP id fB3MjfxX010506
+          for <maxk@mail1.qualcomm.com>; Mon, 3 Dec 2001 14:45:41 -0800 (PST)
+ Received: from moria.qualcomm.com (qualcomm.com [199.106.114.68])
+          by enigma.qualcomm.com (8.12.1/8.11.3/1.0) with ESMTP id fB3Mjcun020569
+           for <maxk@qualcomm.com>; Mon, 3 Dec 2001 14:45:38 -0800 (PST)
+ Received: from mms1.broadcom.com (mms1.broadcom.com [63.70.210.58]) by moria.qualcomm.com  with
+   SMTP id OAA19783 for <maxk@qualcomm.com>; Mon, 3 Dec 2001 14:44:26 -0800 (PST)
+ From: ochikubo@broadcom.com
+ Received: from 63.70.210.4 by mms1.broadcom.com with SMTP (Broadcom
+  MMS-1 SMTP Relay (MMS v4.7)); Mon, 03 Dec 2001 14:45:21 -0800
+ X-Server-Uuid: 1e1caf3a-b686-11d4-a6a3-00508bfc9ae5
+ Received: from ltelsaochikubo ([10.13.17.128]) by
+   mail-irva-1.broadcom.com (Post.Office MTA v3.5.3 release 223 ID#
+   0-71992U7200L1200S0V35) with SMTP id com; Mon, 3 Dec 2001 14:45:34
+   -0800
+ To: "'Maksim Krasnyanskiy'" <maxk@qualcomm.com>
+ cc: "'Tom Ramsthaler (E-mail)'" <tramsthaler@broadcom.com>,
+     "'Scott Bibaud (E-mail)'" <sbibaud@broadcom.com>,
+     "'Daniel Hess (E-mail)'" <dahess@broadcom.com>,
+     "'Nick Kawaguchi (E-mail)'" <nkawaguchi@broadcom.com>,
+     "Lynn Couillard (E-mail)" <lynnc@broadcom.com>,
+     "Robert Hulvey (E-mail)" <rwhulvey@broadcom.com>
+ Subject: RE: Release of firmware with BlueZ port
+ Date: Mon, 3 Dec 2001 14:38:08 -0800
+ Message-ID: <000901c17c4c$38078460$0100007f@ltelsaochikubo>
+ X-Priority: 3 (Normal)
+ X-MSMail-Priority: Normal
+ X-Mailer: Microsoft Outlook CWS, Build 9.0.2416 (9.0.2910.0)
+ Importance: Normal
+ X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2462.0000
+ In-Reply-To: <5.1.0.14.0.20011106144315.01cebb50@mail1>
+ X-WSS-ID: 1012DF0B501255-01-01
+ X-UIDL: S+:"!4]]!!!gj!!c@]"!
+ Status: RO
+ Mime-Version: 1.0
+ .
+ Max,
+ .
+ Good news. We have Broadcom Corporate and Legal approval for release of our
+ firmware as part of the BlueZ posting. Send us a copy of it to load up when
+ you have a chance (or let us know when its up and we will download it).
+ .
+ The BCM_LEGAL.txt file should contain the following information:
+ .
+ - - - - - -
+ .
+ BCM firmware version 2.9
+ Copyright (c) 2000-2001 Broadcom Corporation
+ .
+ Contact info:
+          bluetooth_help@broadcom.com
+ .
+ BlueFW will have:
+          BCM2033_md.hex  -       BCM mini driver
+          BCM2033_fw.bin  -       BCM firmware
+          BCM.LEGAL.txt   -       Legal info
+ .
+ - - - - - -
+ .
+ We are going to make another release of firmware in about 2 weeks and will
+ definitely keep you in the loop.
+ .
+ Regards,
+ .
+ Craig
+ .
+
+License: CYPRESS-WIRELESS-CONNECTIVITY-DEVICES-DRIVER-END-USER-LICENSE-AGREEMENT
+ ### CYPRESS WIRELESS CONNECTIVITY DEVICES
+ ### DRIVER END USER LICENSE AGREEMENT (SOURCE AND BINARY DISTRIBUTION)
+ .
+ PLEASE READ THIS END USER LICENSE AGREEMENT ("Agreement") CAREFULLY BEFORE
+ DOWNLOADING, INSTALLING, OR USING THIS SOFTWARE, ANY ACCOMPANYING
+ DOCUMENTATION, OR ANY UPDATES PROVIDED BY CYPRESS ("Software").  BY
+ DOWNLOADING, INSTALLING, OR USING THE SOFTWARE, YOU ARE AGREEING TO BE BOUND
+ BY THIS AGREEMENT.  IF YOU DO NOT AGREE TO ALL OF THE TERMS OF THIS
+ AGREEMENT, PROMPTLY RETURN AND DO NOT USE THE SOFTWARE.  IF YOU HAVE
+ PURCHASED THE SOFTWARE, YOUR RIGHT TO RETURN THE SOFTWARE EXPIRES 30 DAYS
+ AFTER YOUR PURCHASE AND APPLIES ONLY TO THE ORIGINAL PURCHASER.
+ .
+ Software Provided in Binary Code Form.  This paragraph applies to any Software
+ provided in binary code form.  Subject to the terms and conditions of this
+ Agreement, Cypress Semiconductor Corporation ("Cypress") grants you a
+ non-exclusive, non-transferable license under its copyright rights in the
+ Software to reproduce and distribute the Software in object code form only,
+ solely for use in connection with Cypress integrated circuit products
+ ("Purpose").
+ .
+ Software Provided in Source Code Form.  This paragraph applies to any Software
+ provided in source code form ("Cypress Source Code").  Subject to the terms and
+ conditions of this Agreement, Cypress grants you a non-exclusive,
+ non-transferable license under its copyright rights in the Cypress Source Code
+ to reproduce, modify, compile, and distribute the Cypress Source Code (whether
+ in source code form or as compiled into binary code form) solely for the
+ Purpose.  Cypress retains ownership of the Cypress Source Code and any compiled
+ version thereof.  Subject to Cypress' ownership of the underlying Cypress
+ Source Code, you retain ownership of any modifications you make to the
+ Cypress Source Code.  You agree not to remove any Cypress copyright or other
+ notices from the Cypress Source Code and any modifications thereof.  Any
+ reproduction, modification, translation, compilation, or representation of
+ the Cypress Source Code except as permitted in this paragraph is prohibited
+ without the express written permission of Cypress.
+ .
+ Free and Open Source Software.  Portions of the Software may be licensed under
+ free and/or open source licenses such as the GNU General Public License
+ ("FOSS").  FOSS is subject to the applicable license agreement and not this
+ Agreement.  If you are entitled to receive the source code from Cypress for any
+ FOSS included with the Software, either the source code will  be included with
+ the Software or you may obtain the source code at no charge from
+ <http://www.cypress.com/go/opensource>.  The applicable license terms will
+ accompany each source code package.  To review the license terms applicable to
+ any FOSS for which Cypress is not required to provide you with source code,
+ please see the Software's installation directory on your computer.
+ .
+ Proprietary Rights.  The Software, including all intellectual property rights
+ therein, is and will remain the sole and exclusive property of Cypress or its
+ suppliers.  Except as otherwise expressly provided in this Agreement, you may
+ not: (i) modify, adapt, or create derivative works based upon the Software;
+ (ii) copy the Software; (iii) except and only to the extent explicitly
+ permitted by applicable law despite this limitation, decompile, translate,
+ reverse engineer, disassemble or otherwise reduce the Software to
+ human-readable form; or (iv) use the Software other than for the Purpose.
+ .
+ No Support.  Cypress may, but is not required to, provide technical support for
+ the Software.
+ .
+ Term and Termination.  This Agreement is effective until terminated.  This
+ Agreement and Your license rights will terminate immediately without notice
+ from Cypress if you fail to comply with any provision of this Agreement.  Upon
+ termination, you must destroy all copies of Software in your possession or
+ control.  Termination of this Agreement will not affect any licenses validly
+ granted as of the termination date to any end users of the Software.  The
+ following paragraphs shall survive any termination of this Agreement: "Free and
+ Open Source Software," "Proprietary Rights," "Compliance With Law,"
+ "Disclaimer," "Limitation of Liability," and "General."
+ .
+ Compliance With Law.  Each party agrees to comply with all applicable laws,
+ rules and regulations in connection with its activities under this Agreement.
+ Without limiting the foregoing, the Software may be subject to export control
+ laws and regulations of the United States and other countries.  You agree to
+ comply strictly with all such laws and regulations and acknowledge that you
+ have the responsibility to obtain licenses to export, re-export, or import
+ the Software.
+ .
+ Disclaimer.  TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, CYPRESS MAKES
+ NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, WITH REGARD TO THE SOFTWARE,
+ INCLUDING, BUT NOT LIMITED TO, INFRINGEMENT AND THE IMPLIED WARRANTIES OF
+ MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. Cypress reserves the
+ right to make changes to the Software without notice. Cypress does not assume
+ any liability arising out of the application or use of Software or any
+ product or circuit described in the Software. Cypress does not authorize its
+ products for use as critical components in life-support systems where a
+ malfunction or failure may reasonably be expected to result in significant
+ injury to the user. The inclusion of Cypress' product in a life-support
+ system or application implies that the manufacturer of such system or
+ application assumes all risk of such use and in doing so indemnifies Cypress
+ against all charges.
+ .
+ Limitation of Liability.  IN NO EVENT WILL CYPRESS OR ITS SUPPLIERS,
+ RESELLERS, OR DISTRIBUTORS BE LIABLE FOR ANY LOST REVENUE, PROFIT, OR DATA,
+ OR FOR SPECIAL, INDIRECT, CONSEQUENTIAL, INCIDENTAL, OR PUNITIVE DAMAGES
+ HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF LIABILITY, ARISING OUT OF THE
+ USE OF OR INABILITY TO USE THE SOFTWARE EVEN IF CYPRESS OR ITS SUPPLIERS,
+ RESELLERS, OR DISTRIBUTORS HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH
+ DAMAGES.  IN NO EVENT SHALL CYPRESS' OR ITS SUPPLIERS' RESELLERS', OR
+ DISTRIBUTORS' TOTAL LIABILITY TO YOU, WHETHER IN CONTRACT, TORT (INCLUDING
+ NEGLIGENCE), OR OTHERWISE, EXCEED THE PRICE PAID BY YOU FOR THE SOFTWARE.
+ THE FOREGOING LIMITATIONS SHALL APPLY EVEN IF THE ABOVE-STATED WARRANTY FAILS
+ OF ITS ESSENTIAL PURPOSE.  BECAUSE SOME STATES OR JURISDICTIONS DO NOT ALLOW
+ LIMITATION OR EXCLUSION OF CONSEQUENTIAL OR INCIDENTAL DAMAGES, THE ABOVE
+ LIMITATION MAY NOT APPLY TO YOU.
+ .
+ Restricted Rights.  The Software under this Agreement is commercial computer
+ software as that term is described in 48 C.F.R. 252.227-7014(a)(1).  If
+ acquired by or on behalf of a civilian agency, the U.S. Government acquires
+ this commercial computer software and/or commercial computer software
+ documentation subject to the terms of this Agreement as specified in 48
+ C.F.R. 12.212 (Computer Software) and 12.211 (Technical Data) of the Federal
+ Acquisition Regulations ("FAR") and its successors.  If acquired by or on
+ behalf of any agency within the Department of Defense ("DOD"), the U.S.
+ Government acquires this commercial computer software and/or commercial
+ computer software documentation subject to the terms of this Agreement as
+ specified in 48 C.F.R. 227.7202-3 of the DOD FAR Supplement ("DFAR") and its
+ successors.
+ .
+ General.  This Agreement will bind and inure to the benefit of each party's
+ successors and assigns, provided that you may not assign or transfer this
+ Agreement, in whole or in part, without Cypress' written consent.  This
+ Agreement shall be governed by and construed in accordance with the laws of
+ the State of California, United States of America, as if performed wholly
+ within the state and without giving effect to the principles of conflict of
+ law.  The parties consent to personal and exclusive jurisdiction of and venue
+ in, the state and federal courts within Santa Clara County, California;
+ provided however, that nothing in this Agreement will limit Cypress' right to
+ bring legal action in any venue in order to protect or enforce its
+ intellectual property rights.  No failure of either party to exercise or
+ enforce any of its rights under this Agreement will act as a waiver of such
+ rights.  If any portion hereof is found to be void or unenforceable, the
+ remaining provisions of this Agreement shall remain in full force and
+ effect.  This Agreement is the complete and exclusive agreement between the
+ parties with respect to the subject matter hereof, superseding and replacing
+ any and all prior agreements, communications, and understandings (both
+ written and oral) regarding such subject matter.  Any notice to Cypress will
+ be deemed effective when actually received and must be sent to Cypress
+ Semiconductor Corporation, ATTN: Chief Legal Officer, 198 Champion Court, San
+ Jose, CA 95134 USA.

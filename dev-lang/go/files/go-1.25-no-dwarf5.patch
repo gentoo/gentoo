@@ -1,0 +1,15 @@
+diff --git a/go.env b/go.env
+index 6ff2b921d4..e8959a72c7 100644
+--- a/go.env
++++ b/go.env
+@@ -2,6 +2,10 @@
+ # Values set by 'go env -w' and written to the user's go/env file override these.
+ # The environment overrides everything else.
+ 
++#This can be removed when debugedit is fixed to support dwarf5
++# https://sourceware.org/bugzilla/show_bug.cgi?id=33204
++GOEXPERIMENT=nodwarf5
++
+ # Use the Go module mirror and checksum database by default.
+ # See https://proxy.golang.org for details.
+ GOPROXY=https://proxy.golang.org,direct

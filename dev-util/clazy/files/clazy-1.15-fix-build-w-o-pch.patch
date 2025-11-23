@@ -1,0 +1,25 @@
+From cb6d241665a0ba7009129fcbdf877ac2246c2de8 Mon Sep 17 00:00:00 2001
+From: Luc Schrijvers <begasus@gmail.com>
+Date: Mon, 16 Jun 2025 10:39:25 +0200
+Subject: [PATCH] Add missing header
+
+Fixes: error: 'Lexer' is not a member of 'clang'
+---
+ src/SuppressionManager.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/SuppressionManager.cpp b/src/SuppressionManager.cpp
+index 112025ec..b94f1aa8 100644
+--- a/src/SuppressionManager.cpp
++++ b/src/SuppressionManager.cpp
+@@ -11,6 +11,7 @@
+ #include <clang/Basic/SourceLocation.h>
+ #include <clang/Basic/SourceManager.h>
+ #include <clang/Basic/TokenKinds.h>
++#include <clang/Lex/Lexer.h>
+ #include <clang/Lex/Token.h>
+ #include <llvm/Support/MemoryBuffer.h>
+ #include <llvm/Support/raw_ostream.h>
+-- 
+GitLab
+

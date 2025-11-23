@@ -1,0 +1,39 @@
+From 2b522b0350ea8a1878ded84d90e080691bdb8f0e Mon Sep 17 00:00:00 2001
+From: Jan Beich <jbeich@FreeBSD.org>
+Date: Sat, 14 Dec 2024 11:24:52 +0100
+Subject: [PATCH] util: add missing header for libc++
+
+hyprcursor-util/src/main.cpp:260:19: error: implicit instantiation of undefined template 'std::basic_ofstream<char>'
+  260 |     std::ofstream manifest(out + "/manifest.hl", std::ios::trunc);
+      |                   ^
+/usr/include/c++/v1/__fwd/fstream.h:26:28: note: template is declared here
+   26 | class _LIBCPP_TEMPLATE_VIS basic_ofstream;
+      |                            ^
+hyprcursor-util/src/main.cpp:292:41: error: implicit instantiation of undefined template 'std::basic_ifstream<char>'
+  292 |         std::ifstream                   xconfig("/tmp/hyprcursor-util/" + xcursor.path().stem().string() + ".conf");
+      |                                         ^
+/usr/include/c++/v1/__fwd/fstream.h:24:28: note: template is declared here
+   24 | class _LIBCPP_TEMPLATE_VIS basic_ifstream;
+      |                            ^
+hyprcursor-util/src/main.cpp:370:23: error: implicit instantiation of undefined template 'std::basic_ofstream<char>'
+  370 |         std::ofstream meta(CURSORDIR + "/meta.hl", std::ios::trunc);
+      |                       ^
+/usr/include/c++/v1/__fwd/fstream.h:26:28: note: template is declared here
+   26 | class _LIBCPP_TEMPLATE_VIS basic_ofstream;
+      |                            ^
+---
+ hyprcursor-util/src/main.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/hyprcursor-util/src/main.cpp b/hyprcursor-util/src/main.cpp
+index b6235cb..97e6573 100644
+--- a/hyprcursor-util/src/main.cpp
++++ b/hyprcursor-util/src/main.cpp
+@@ -2,6 +2,7 @@
+ #include <zip.h>
+ #include <optional>
+ #include <filesystem>
++#include <fstream>
+ #include <array>
+ #include <format>
+ #include <algorithm>

@@ -1,0 +1,202 @@
+from https://gitlab.gnome.org/GNOME/easytag/-/merge_requests/16.patch
+compatibility added with taglib1
+
+diff '--color=auto' -uNr a/src/tags/gio_wrapper.cc b/src/tags/gio_wrapper.cc
+--- a/src/tags/gio_wrapper.cc
++++ b/src/tags/gio_wrapper.cc
+@@ -47,11 +47,15 @@
+ }
+ 
+ TagLib::ByteVector
++#if (TAGLIB_MAJOR_VERSION == 2)
++GIO_InputStream::readBlock (ulong len)
++#else
+ GIO_InputStream::readBlock (TagLib::ulong len)
++#endif
+ {
+     if (error)
+     {
+-        return TagLib::ByteVector::null;
++        return TagLib::ByteVector();
+     }
+ 
+     TagLib::ByteVector rv (len, 0);
+@@ -69,15 +73,25 @@
+ }
+ 
+ void
++#if (TAGLIB_MAJOR_VERSION == 2)
++GIO_InputStream::insert (TagLib::ByteVector const &data,
++                         TagLib::offset_t start,
++                         size_t replace)
++#else
+ GIO_InputStream::insert (TagLib::ByteVector const &data,
+                          TagLib::ulong start,
+                          TagLib::ulong replace)
++#endif
+ {
+     g_warning ("%s", "Trying to write to read-only file!");
+ }
+ 
+ void
++#if (TAGLIB_MAJOR_VERSION == 2)
++GIO_InputStream::removeBlock (TagLib::offset_t start, size_t len)
++#else
+ GIO_InputStream::removeBlock (TagLib::ulong start, TagLib::ulong len)
++#endif
+ {
+     g_warning ("%s", "Trying to write to read-only file!");
+ }
+@@ -200,11 +214,15 @@
+ }
+ 
+ TagLib::ByteVector
++#if (TAGLIB_MAJOR_VERSION == 2)
++GIO_IOStream::readBlock (ulong len)
++#else
+ GIO_IOStream::readBlock (TagLib::ulong len)
++#endif
+ {
+     if (error)
+     {
+-        return TagLib::ByteVector::null;
++        return TagLib::ByteVector();
+     }
+ 
+     gsize bytes = 0;
+@@ -238,9 +256,15 @@
+ }
+ 
+ void
++#if (TAGLIB_MAJOR_VERSION == 2)
++GIO_IOStream::insert (TagLib::ByteVector const &data,
++                      TagLib::offset_t start,
++                      size_t replace)
++#else
+ GIO_IOStream::insert (TagLib::ByteVector const &data,
+                       TagLib::ulong start,
+                       TagLib::ulong replace)
++#endif
+ {
+     if (error)
+     {
+@@ -351,9 +375,15 @@
+ }
+ 
+ void
++#if (TAGLIB_MAJOR_VERSION == 2)
++GIO_IOStream::removeBlock (TagLib::offset_t start, size_t len)
++{
++    if (start + len >= (ulong)length ())
++#else
+ GIO_IOStream::removeBlock (TagLib::ulong start, TagLib::ulong len)
+ {
+     if (start + len >= (TagLib::ulong)length ())
++#endif
+     {
+         truncate (start);
+         return;
+diff '--color=auto' -uNr a/src/tags/gio_wrapper.h b/src/tags/gio_wrapper.h
+--- a/src/tags/gio_wrapper.h
++++ b/src/tags/gio_wrapper.h
+@@ -33,10 +33,17 @@
+     GIO_InputStream (GFile *file_);
+     virtual ~GIO_InputStream ();
+     virtual TagLib::FileName name () const;
++#if (TAGLIB_MAJOR_VERSION == 2)
++    virtual TagLib::ByteVector readBlock (ulong length);
++    virtual void writeBlock (TagLib::ByteVector const &data);
++    virtual void insert (TagLib::ByteVector const &data, TagLib::offset_t start = 0, size_t replace = 0);
++    virtual void removeBlock (TagLib::offset_t start = 0, size_t length = 0);
++#else
+     virtual TagLib::ByteVector readBlock (TagLib::ulong length);
+     virtual void writeBlock (TagLib::ByteVector const &data);
+     virtual void insert (TagLib::ByteVector const &data, TagLib::ulong start = 0, TagLib::ulong replace = 0);
+     virtual void removeBlock (TagLib::ulong start = 0, TagLib::ulong length = 0);
++#endif
+     virtual bool readOnly () const;
+     virtual bool isOpen () const;
+     virtual void seek (long int offset, TagLib::IOStream::Position p = TagLib::IOStream::Beginning);
+@@ -61,10 +68,17 @@
+     GIO_IOStream (GFile *file_);
+     virtual ~GIO_IOStream ();
+     virtual TagLib::FileName name () const;
++#if (TAGLIB_MAJOR_VERSION == 2)
++    virtual TagLib::ByteVector readBlock (ulong length);
++    virtual void writeBlock (TagLib::ByteVector const &data);
++    virtual void insert (TagLib::ByteVector const &data, TagLib::offset_t start = 0, size_t replace = 0);
++    virtual void removeBlock (TagLib::offset_t start = 0, size_t len = 0);
++#else
+     virtual TagLib::ByteVector readBlock (TagLib::ulong length);
+     virtual void writeBlock (TagLib::ByteVector const &data);
+     virtual void insert (TagLib::ByteVector const &data, TagLib::ulong start = 0, TagLib::ulong replace = 0);
+     virtual void removeBlock (TagLib::ulong start = 0, TagLib::ulong len = 0);
++#endif
+     virtual bool readOnly () const;
+     virtual bool isOpen () const;
+     virtual void seek (long int offset, TagLib::IOStream::Position p = TagLib::IOStream::Beginning);
+diff '--color=auto' -uNr a/src/tags/mp4_header.cc b/src/tags/mp4_header.cc
+--- a/src/tags/mp4_header.cc
++++ b/src/tags/mp4_header.cc
+@@ -105,7 +105,7 @@
+     ETFileInfo->bitrate = properties->bitrate ();
+     ETFileInfo->samplerate = properties->sampleRate ();
+     ETFileInfo->mode = properties->channels ();
+-    ETFileInfo->duration = properties->length ();
++    ETFileInfo->duration = properties->lengthInSeconds ();
+ 
+     return TRUE;
+ }
+diff '--color=auto' -uNr a/src/tags/mp4_tag.cc b/src/tags/mp4_tag.cc
+--- a/src/tags/mp4_tag.cc
++++ b/src/tags/mp4_tag.cc
+@@ -222,7 +222,7 @@
+         FileTag->encoded_by = g_strdup (encodedbys.front ().toCString (true));
+     }
+ 
+-    const TagLib::MP4::ItemListMap &extra_items = tag->itemListMap ();
++    const TagLib::MP4::ItemMap &extra_items = tag->itemMap ();
+ 
+     /* Album Artist */
+ #if (TAGLIB_MAJOR_VERSION == 1) && (TAGLIB_MINOR_VERSION < 10)
+@@ -437,25 +437,12 @@
+         fields.insert ("ENCODEDBY", string);
+     }
+ 
+-    TagLib::MP4::ItemListMap &extra_items = tag->itemListMap ();
+-
+     /* Album artist. */
+     if (!et_str_empty (FileTag->album_artist))
+     {
+         TagLib::String string (FileTag->album_artist, TagLib::String::UTF8);
+-#if (TAGLIB_MAJOR_VERSION == 1) && (TAGLIB_MINOR_VERSION < 10)
+-        /* No "ALBUMARTIST" support in TagLib until 1.10; use atom directly. */
+-        extra_items.insert ("aART", TagLib::MP4::Item (string));
+-#else
+         fields.insert ("ALBUMARTIST", string);
+-#endif
+     }
+-#if (TAGLIB_MAJOR_VERSION == 1) && (TAGLIB_MINOR_VERSION < 10)
+-    else
+-    {
+-        extra_items.erase ("aART");
+-    }
+-#endif
+ 
+     /***********
+      * Picture *
+@@ -491,12 +478,12 @@
+         TagLib::MP4::CoverArt art (f, TagLib::ByteVector((char *)data,
+                                                          data_size));
+ 
+-        extra_items.insert ("covr",
++        tag->setItem("covr",
+                             TagLib::MP4::Item (TagLib::MP4::CoverArtList ().append (art)));
+     }
+     else
+     {
+-        extra_items.erase ("covr");
++        tag->removeItem("covr");
+     }
+ 
+     tag->setProperties (fields);

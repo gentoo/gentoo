@@ -1,0 +1,13 @@
+--- a/makefile
++++ b/makefile
+@@ -1,8 +1,7 @@
+ OBJ = hiscore rec scrctl tetanus crc allegdlg hgrcos
+ HEADS = tod.h allegdlg.h crc.h hgrcos.h hiscore.h
+-LIBS = -lalleg
+-CFLAGS = -Wall -march=i486 -mcpu=i686 -O3 -ffast-math
+-LDFLAGS = -mwindows
++LIBS = `allegro-config --libs`
++CFLAGS += `allegro-config --cflags`
+ CC = gcc
+ 
+ 

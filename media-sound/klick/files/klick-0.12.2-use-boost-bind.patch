@@ -1,0 +1,34 @@
+From c3be3e56aa1bdb6689a5b5642e0119c8602f2263 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dominic=20Sacr=C3=A9?= <dominic.sacre@gmx.de>
+Date: Mon, 14 Jan 2013 14:26:06 +0000
+Subject: [PATCH] use boost::bind instead of std::bind2nd
+
+git-svn-id: svn+ssh://kobol/srv/svn/klick/trunk@262 c380f6eb-e629-0410-afc2-bdd98b771d42
+---
+ src/tempomap.cc | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/tempomap.cc b/src/tempomap.cc
+index ea00ae2..23834f9 100644
+--- a/src/tempomap.cc
++++ b/src/tempomap.cc
+@@ -21,6 +21,7 @@
+ #include <boost/tokenizer.hpp>
+ #include <functional>
+ #include <algorithm>
++#include <boost/bind.hpp>
+ 
+ #include "util/string.hh"
+ #include "util/regex.hh"
+@@ -147,7 +148,7 @@ std::vector<float> TempoMap::parse_tempi(std::string const &s, float tempo1, int
+ void TempoMap::check_entry(Entry const & e)
+ {
+     if ((e.tempo <= 0 && e.tempi.empty()) ||
+-        std::find_if(e.tempi.begin(), e.tempi.end(), std::bind2nd(std::less_equal<float>(), 0.0f)) != e.tempi.end()) {
++        std::find_if(e.tempi.begin(), e.tempi.end(), boost::bind(std::less_equal<float>(), _1, 0.0f)) != e.tempi.end()) {
+         throw ParseError("tempo must be greater than zero");
+     }
+     if (e.bars <= 0 && e.bars != -1) {
+-- 
+2.45.2
+

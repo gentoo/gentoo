@@ -1,0 +1,8 @@
+diff --git a/src/preprocessors/perf_indicators.c b/src/preprocessors/perf_indicators.c
+index d859fe7..c183552 100755
+--- a/src/preprocessors/perf_indicators.c
++++ b/src/preprocessors/perf_indicators.c
+@@ -25,2 +25,3 @@
+ #include "perf_indicators.h"
++#include "cpuclock.h" /* get_ticks_per_usec */
+ 

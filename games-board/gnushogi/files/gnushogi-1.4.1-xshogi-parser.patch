@@ -1,0 +1,25 @@
+Fix compilation with modern C: add correct function declarations
+https://bugs.gentoo.org/883893
+https://bugs.gentoo.org/930372
+https://bugs.gentoo.org/932280
+--- a/xshogi/parser.y
++++ b/xshogi/parser.y
+@@ -70,7 +70,9 @@
+                   
+ enum { False, True };
+ 
+-static void yyerror();
++static void yyerror(char *);
++extern int yyparse (void);
++extern int yylex (void);
+            
+ static ShogiMove move_type;
+ static int  from_x, from_y, to_x, to_y;
+@@ -88,6 +90,7 @@
+ extern void SendToProgram(char *message, FILE *fp);
+ extern void MakeMove(ShogiMove *move_type, int from_x, int from_y, 
+                      int to_x, int to_y);
++extern void DisplayMessage(char *message, int toRemotePlayer);
+ 
+ %}
+ 

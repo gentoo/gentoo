@@ -1,0 +1,13 @@
+diff --git a/src/gromacs/mdtypes/energyhistory.h b/src/gromacs/mdtypes/energyhistory.h
+index 0c8fecfae70605d64613a2408755e715e5f9b6c5..f80d4c56b95caf6942b35222d8983c8ed8f10e1e 100644
+--- a/src/gromacs/mdtypes/energyhistory.h
++++ b/src/gromacs/mdtypes/energyhistory.h
+@@ -47,6 +47,8 @@
+ #ifndef GMX_MDLIB_ENERGYHISTORY_H
+ #define GMX_MDLIB_ENERGYHISTORY_H
+ 
++#include <cstdint>
++
+ #include <memory>
+ #include <vector>
+ 

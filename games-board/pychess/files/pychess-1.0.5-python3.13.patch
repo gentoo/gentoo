@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/952478
+https://github.com/pychess/pychess/issues/2233
+https://github.com/pychess/pychess/commit/8d8431c3e8023adbdffea9782b6f2370bb367673
+--- a/lib/pychess/ic/TimeSeal.py
++++ b/lib/pychess/ic/TimeSeal.py
+@@ -2,3 +2,2 @@
+ import sys
+-import telnetlib
+ import random
+@@ -25,3 +24,5 @@
+ FILLER = b"1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+-IAC_WONT_ECHO = b"".join([telnetlib.IAC, telnetlib.WONT, telnetlib.ECHO])
++# was: b"".join([telnetlib.IAC, telnetlib.WONT, telnetlib.ECHO])
++# but telnetlib was removed in Python 3.13
++IAC_WONT_ECHO = b"\xff\xfc\x01"
+ 

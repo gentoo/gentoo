@@ -1,0 +1,372 @@
+MIKROTIKLS MIKROTIK SOFTWARE END-USER LICENCE AGREEMENT
+
+Export Eligibility Requirements
+
+By downloading any files from mikrotik.com, you agree to the following:
+
+1. You, hereby undersigned, are aware and acknowledge that the products,
+   all hardware, software and/or technology (collectively -"Products")
+   purchased, obtained from “Mikrotīkls” Ltd. (In Latvian: SIA
+   “Mikrotīkls”) a company registered in Latvia (14.03.1996., reg. No.
+   40003286799) or its affiliates are subject to the sanctions imposed by
+   European Union (EU), United Nations (UN), by USA (e.g., The Office of
+   Foreign Assets Control of United States of America (OFAC)) or by another
+   international organization, to which the Republic of Latvia is a member
+   state, hereinafter – International Organization, and set by binding
+   national and international laws on export control and economic sanctions,
+   restrictions and/or set by the binding regulation on prevention of money
+   laundering and terrorism financing.
+2. You may not --directly or indirectly-- make available, provide, sell,
+   export, reexport, transfer, divert, or otherwise dispose of any Products to
+   any destination, entity, or person prohibited by the laws or regulations of
+   the European Union (EU), United Nations (UN) and USA. EU sanctions and
+   restrictions are based on Article 215 TFEU (Treaty on the Functioning of
+   the European Union) and decisions adopted in the framework of the Common
+   Foreign and Security Policy and these restrictions includes but are not
+   limited to such countries and subjects as Burundi, Central African
+   Republic, Democratic Republic of the Congo, Guinea, Iran (it is prohibited
+   to export equipment or software intended for use in the monitoring or
+   interception by the Iranian regime of the Internet and of telephone
+   communications in Iran), Libya, North Korea, Somalia, Sudan, Syria, Crimea
+   and Sevastopol (in response to the illegal annexation of Crimea and
+   Sevastopol), Russian Federation, non-government controlled areas of Ukraine
+   in the oblasts of Donetsk, Kherson, Luhansk and Zaporizhzhia (in response
+   of Russia’s escalating war of aggression against Ukraine to the illegal
+   annexation of these territories), Republic of Belarus, Venezuela and/or
+   organizations, entities, persons specified and listed in the directives,
+   Council decisions and regulation. Sanction regimes established by the
+   national, USA and/or other International Organizations may
+   expand/supplement states, persons and/or entities determined by the EU
+   binding regulation. More information could be obtained:
+   https://www.sanctionsmap.eu/#/main https://sanctionssearch.ofac.treas.gov/
+   https://scsanctions.un.org/consolidated/
+3. By accepting these Export eligibility requirements and acknowledge of
+   trade compliance You assure that You or Your affiliated parties will not
+   directly or indirectly export, re-export, transfer or release, make
+   available any Products and/or any support related to the Products thereof
+   to any destination, person, entity or end use prohibited or restricted
+   under above described laws and imposed sanctions, restrictive measures
+   without prior authorization of corresponding authorities required by
+   regulation.
+4. You acknowledge that other countries may have trade laws pertaining to
+   the export, import, use, or distribution of Products, and that compliance
+   with same is the responsibility of You. These Export eligibility
+   requirements and acknowledgment of trade compliance shall survive the
+   expiration or termination of any license agreements signed by You in
+   connection with Products.
+5. By accepting these Export eligibility requirements and acknowledge of
+   trade compliance hereby declare that You have been informed and warned
+   about Export eligibility requirements and acknowledge of trade compliance
+   and You are liable for following its rules in good faith.
+6. Moreover by downloading any files from mikrotik.com, you agree to the
+   following:You are not a citizen, national or resident of, and are not under
+   the control of, the government of any country to which the United States,
+   European Union, Latvia or United Nations has prohibited export of technical
+   information, such as : Cuba, Iran, Libya, North Korea, Sudan, Syria,
+   Russian Federation, or Republic of Belarus. You will not download or
+   otherwise export or re-export the software, directly or indirectly, to the
+   above-prohibited countries nor to citizens, national or residents of those
+   countries. You are not listed on the United States Department of Treasury
+   list, list of European Union, Latvia or United Nations of Specially
+   Designated Nationals, Specially Designated Terrorists, and Specially
+   Designated Narcotics Traffickers, nor are you listed on the United States
+   Department of Commerce Table of Denial Orders. You will not download or
+   otherwise export or re-export the software, directly or indirectly, to
+   persons on the above-mentioned lists. You will not use the software for,
+   and will not allow the software to be used for, any purposes prohibited by
+   law of European Union (EU), United Nations (UN), by USA (e.g., The Office
+   of Foreign Assets Control of United States of America (OFAC)) or by another
+   international organization, to which the Republic of Latvia is a member
+   state , including, without limitation, for the development, design,
+   manufacture or production of nuclear, chemical, or biological weapons of
+   mass destruction.
+
+MIKROTIKLS MIKROTIK SOFTWARE END-USER LICENCE AGREEMENT
+
+MIKROTIK ROUTEROS SOFTWARE ROUTER SYSTEM
+
+This End-User License Agreement ("License Agreement") is a binding agreement
+between you (either an individual or a single entity) and MikroTikls SIA
+("MikroTikls" or "MikroTik"), which is the manufacturer of the SOFTWARE
+PRODUCT ("SOFTWARE PRODUCT" or "SOFTWARE") identified above. HARDWARE refers
+as the computer, which the Software Product is installed on. Any software
+provided along with the SOFTWARE PRODUCT that is associated with a separate
+end-user License Agreement is licensed to you under the terms of that License
+Agreement. The term SOFTWARE or SOFTWARE PRODUCT does not include the software
+listed after point 12 of this document that is under the GNU General Public
+License or other free software licenses listed after point 12 of this document.
+
+By opening or installing SOFTWARE PRODUCT MikroTik RouterOS you indicate that
+you agree with terms of this agreement, if you do not agree with the terms of
+this agreement, do not open the diskette package and do not install or use the
+software, instead, return the unopened package of the SOFTWARE including
+manuals, documentation, or written materials that are associated with this
+program to the place where you obtained them for full refund and delete all
+electronic copies of the SOFTWARE and documentation.
+
+1. GRANT OF LICENSE
+
+If you purchased a base license of the SOFTWARE PRODUCT you are granted a
+non-exclusive license to use the SOFTWARE PRODUCT and accompanying
+Documentation according to the contents of this License herein:
+
+a. SOFTWARE Installation and Use.
+
+   You may only install and use one copy of the SOFTWARE on the Computer.
+
+b. Back-up Copy.
+
+   You may make a single back-up copy of the SOFTWARE PRODUCT. You may use the
+   back-up copy solely for archival purposes. Except as expressly provided in
+   this License Agreement, you may not otherwise make copies of the SOFTWARE
+   PRODUCT, including the printed materials accompanying the SOFTWARE.
+
+2. DESCRIPTION OF OTHER RIGHTS AND LIMITATIONS
+
+a. You may not:
+   * permit other individuals to use the SOFTWARE except under the terms
+     listed in Article 1 "Grant of License" above;
+   * modify, translate, reverse engineer, decompile, disassemble (except
+     to the extent applicable laws specifically prohibit such restriction), or
+     create derivative works based on the Software;
+   * copy the Software; or
+   * remove any proprietary notices or labels on the Software.
+
+b. SOFTWARE PRODUCT Transfer.
+
+   You may permanently transfer all of your rights under this License
+   Agreement only as part of a permanent sale or transfer of the HARDWARE,
+   provided you retain no copies, you transfer all of the SOFTWARE PRODUCT
+   (including all component parts, the media and printed materials, any
+   upgrades, this License Agreement and, if applicable, the Certificate(s) of
+   Authenticity), and the recipient agrees to the terms of this License
+   Agreement. If the SOFTWARE PRODUCT is an upgrade, any transfer must also
+   include all prior versions of the SOFTWARE PRODUCT.
+
+c. Termination.
+
+   Without prejudice to any other rights MikroTikls may terminate this License
+   Agreement if you fail to comply with the terms and conditions of this
+   License Agreement. In such event, you must destroy all copies of the
+   SOFTWARE PRODUCT and all of its component parts.
+
+d. Trademarks.
+
+   This License Agreement does not grant you any rights in connection with any
+   trademarks or service marks of MikroTikls or its suppliers.
+
+3. RECORDS; AUDIT
+
+Licensee shall maintain accurate records as necessary to verify compliance
+with this Agreement. Licensor may conduct one or more audits to verify such
+compliance. Audits will be conducted during normal business hours. All audits
+shall be conducted at Licensor’s expense unless the results establish that
+Licensee has underpaid Licensor by more than 5% of the amount actually due, in
+which case Licensee shall pay all amounts due and bear the expense of the
+audit.
+
+4. UPGRADE PACKAGE
+
+If the SOFTWARE PRODUCT is labeled as an upgrade package, you must be properly
+licensed to use a product identified by MikroTikls as being eligible for the
+upgrade package in order to use the SOFTWARE PRODUCT ("Eligible Product"). For
+the purpose of upgrade package products only, "HARDWARE" shall mean the
+computer system or computer system component with which you received the
+Eligible Product. A SOFTWARE PRODUCT labeled as an upgrade package replaces
+and/or supplements the Eligible Product. You may use the resulting upgraded
+product only in accordance with the terms of this License Agreement. If the
+SOFTWARE PRODUCT is an upgrade of a component of a package of SOFTWARE
+programs that you licensed as a single product, the SOFTWARE PRODUCT may be
+used and transferred only as part of that single product package and may not
+be separated for use on more than one computer.
+
+If you receive your first copy of the SOFTWARE electronically, and a second
+copy on media, the second copy may be used for archival purposes only. This
+license does not grant you any right to any enhancement, update or upgrade.
+Rights to the SOFTWARE PRODUCT will be indicated on your invoice.
+
+5. FEATURE PACKAGE
+
+If the SOFTWARE PRODUCT is labeled as a "feature package" that required
+additional purchase, you must be properly licensed to use a product identified
+by MikroTikls as being eligible for the "feature package" in order to use the
+SOFTWARE PRODUCT ("Eligible Product"). For the purpose of "feature package",
+products only, "HARDWARE" shall mean the computer system or computer system
+component with which you received the Eligible Product. A SOFTWARE PRODUCT
+labeled as "feature package" replaces and/or supplements the Eligible Product.
+You may use the resulting SOFTWARE PRODUCT only in accordance with the terms
+of this License Agreement. If the SOFTWARE PRODUCT is an "feature package" of
+a component of a package of SOFTWARE programs that you licensed as a single
+product, the SOFTWARE PRODUCT may be used and transferred only as part of that
+single product package and may not be separated for use on more than one
+computer.
+
+If you receive your first copy of the SOFTWARE electronically, and a second
+copy on media, the second copy may be used for archival purposes only. Rights
+to the SOFTWARE PRODUCT will be indicated on your invoice.
+
+6. TRIAL or DEMO VERSION
+
+If the SOFWARE PRODUCT is authorized by MikroTikls as the Trial or Demo
+version, the Rights to the SOFTWARE cannot be transferred as described in
+Article 2 (b) of this License Agreement.
+
+MikroTikls shall have no obligation to fix any defects, which arise from the
+use of Trial or Demo version program.
+
+7. COPYRIGHT
+
+All title and intellectual property rights in and to the SOFTWARE PRODUCT,
+accompanying printed materials, and any copies of the SOFTWARE PRODUCT, are
+owned by MikroTikls or its suppliers. You may not copy the printed materials
+accompanying the SOFTWARE PRODUCT. All rights not expressly granted under this
+License Agreement are reserved by MikroTikls SIA and its suppliers.
+
+The SOFTWARE PRODUCT is protected by US copyright laws and international
+copyright treaties, as well as other intellectual property laws and treaties.
+The SOFTWARE PRODUCT is licensed, not sold.
+
+8. DUAL-MEDIA SOFTWARE PRODUCT.
+
+You may receive the SOFTWARE PRODUCT in more than one medium. Regardless of
+the type or size of medium you receive, you may use only one medium that is
+appropriate for the Computer. You may not use or install the other medium on
+another computer. You may not loan, rent, lease, lend or otherwise transfer
+the other medium to another user, except as part of the permanent transfer (as
+provided above) of the SOFTWARE PRODUCT.
+
+9. LIMITED WARRANTY
+
+MikroTikls warrants that for a period of ninety (90) days from the days of
+acquisition, the Software, if operated as directed, will substantially achieve
+the functionality described in the Documentation. MikroTikls does not warrant,
+however, that your use of the SOFTWARE will be uninterrupted or that the
+operation of the SOFTWARE will be error-free or secure and hereby disclaims
+any and all liability on account thereof. In addition, the security mechanisms
+implemented by the SOFTWARE have inherent limitations, and you must determine
+that the SOFTWARE sufficiently meets your requirements.
+
+MikroTikls also warrants that the media containing the Software, if provided
+by MikroTikls, is free from defects in material and workmanship and will so
+remain for (90) days from the date you acquired the Software. MikroTikls’
+sole liability for any breach of this warranty shall be, in MikroTikls’ sole
+discretion:
+
+a. to replace your defective media; or
+b. to advise you how to achieve substantially the same functionality with
+   the SOFTWARE as described in the Documentation; or
+c. if the above remidies are impracticable, to refund the license fee you
+   paid for the Software. Repaired, corrected, or replaced SOFTWARE and
+   Documentation shall be covered by this limited warranty for the period
+   under the warranty that covered the original SOFTWARE or if longer, for
+   thirty (30) days after the date (a) of shipment to you of the repaired or
+   replaced Software, or (b) MikroTikls advised you how to operate the
+   SOFTWARE so as to achieve the functionality described in the Documentation.
+   Only if you inform MikroTikls of your problem with the SOFTWARE during the
+   applicable warranty period and provide evidence of the date you acquired
+   the SOFTWARE will MikroTikls be obligated to honor this warranty.
+   MikroTikls will use reasonable commercial efforts to repair, replace,
+   advise, or refund pursuant to foregoing warranty within 30 days of being so
+   notified.
+
+THIS IS A LIMITED WARRANTY AND IT IS THE ONLY WARRANTY MADE BY MIKROTIKLS.
+MIKROTIKLS MAKES NO OTHER EXPRESS WARRANTY AND NO WARRANTY OR CONDITION OF
+NONINFRIGEMENT OF THIRD PARTIES’ RIGHTS. THE DURATION OF IMPLIED WARRANTIES,
+INCLUDING WITHOUT LIMITATION, WARRANTIES OF MERCHANTABILITY AND OF FITNESS FOR
+A PARTICULAR PURPOSE, IS LIMITED TO THE ABOVE LIMITED WARRANTY PERIOD; SOME
+STATES DO NOT ALLOW LIMITATIONS ON HOW LONG AN IMPLIED WARRANTY LASTS, SO
+THESE LIMITATIONS MAY NOT APPLY TO YOU, NO MIKROTIKLS DEALER, AGENT, OR
+EMPLOYEE IS AUTHORIZED TO MAKE ANY MODIFICATIONS, EXTENSIONS, OR ADDITIONS TO
+THIS WARRANTY. If any modifications are made to the SOFTWARE by you during the
+warranty period; if the media is subjected to accident, abuse, or improper
+use; or if you violate the terms of this Agreement, then this warranty shall
+immediately be terminated. This warranty shall not apply if the SOFTWARE is
+used on or in conjunction with hardware or SOFTWARE other than the unmodified
+version of hardware and SOFTWARE with which the SOFTWARE was designed to be
+used as described in the Documentation.
+
+THIS WARRANTY GIVES YOU SPECIFIC LEGAL RIGHTS, AND YOU MAY HAVE OTHER LEGAL
+RIGHTS THAT VARY FROM STATE TO STATE OR BY JURISDICTION.
+
+10. LIMITATION OF LIABILITY
+
+UNDER NO CIRCUMSTANCES AND UNDER NO LEGAL THEORY, TORT, CONTRACT, OR
+OTHERWISE, SHALL MIKROTIKLS OR ITS SUPPLIERS OR RESELLERS BE LIABLE TO YOU OR
+ANY OTHER PERSON FOR ANY INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL
+DAMAGES OF ANY CHARACTER INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF
+GOODWILL, WORK STOPPAGE, COMPUTER FAILURE OR MALFUNCTION, OR ANY AND ALL OTHER
+COMMERCIAL DAMAGES OR LOSSES, OR FOR ANY DAMAGES IN EXCESS OF MIKROTIKLS’
+LIST PRICE FOR A LICENSE TO THE SOFTWARE AND DOCUMENTATION, EVEN IF MIKROTIKLS
+SHALL HAVE BEEN INFORMED OF THE POSSIBILITY OF SUCH DAMAGES, OR FOR ANY CLAIM
+BY ANY OTHER PARTY. THIS LIMITATION OF LIABILITY SHALL NOT APPLY TO LIABILITY
+FOR DEATH OR PERSONAL INJURY TO THE EXTENT APPLICABLE LAW PROHIBITS SUCH
+LIMITATION. FURTHERMORE, SOME STATES DO NOT ALLOW THE EXCLUSION ORLIMITATION
+OF INCIDENTAL OR CONSEQUENTAL DAMAGES, SO THIS LIMITATION AND EXCLUSION MAY
+NOT APPLY TO YOU.
+
+EXPORT REQUIREMENTS
+
+You may not export or re-export the Software or any copy or adaptation in
+violation of any applicable laws or regulations.
+
+12. MISCELLANEOUS
+
+This Agreement represents the complete agreement concerning this license
+between the parties and supersedes all prior agreements and representations
+between them. It may be amended only by writing executed by both parties. If
+any provision of this Agreement is held to be unenforceable for any reason,
+such provision shall be reformed only to the extent necessary to make it
+enforceable.
+
+For license obligations below that require Mikrotikls to provide source code
+or other license obligations, you should contact Mikrotikls by mail at the
+following address:
+MikroTikls SIA
+attn: license compliance
+Ūnijas iela 2
+LV-1039, Riga
+LATVIA
+
+For license obligations below that require responses by email, you should
+contact Mikrotikls SIA at: mt@mikrotik.com
+
+For license obligations below that require responses by telephone or fax, you
+should contact Mikrotikls SIA at: telephone +371 7317700, fax +371 7317701
+
+To get a CD with the corresponding source code for the GPL-covered programs in
+this distribution, wire transfer $45 to MikroTikls SIA, Ūnijas iela 2, Riga,
+LV-1039, Latvia. Please contact MikroTikls SIA for our current account
+information and wire transfer instructions. Offer valid for three years from
+the date of distribution of this software. This CD will only include the
+source code of the following programs and any non-proprietary programs
+distributed according to license requirements. This CD will not include
+MikroTikls proprietary SOFTWARE.
+
+The following list may or may not include all of the GNU/GPL software that is
+included in the distribution. This list is not part of the GNU/GPL license
+obligations. For GNU/GLP license obligations, you must follow the GNU/GPL
+license procedures.
+
+Package name License URL e2fsprogs GPL http://e2fsprogs.sourceforge.net/
+linux kernel GPL http://www.kernel.org/
+OpenSSL OpenSSL (BSD) http://www.openssl.org/
+ppp PPP (BSD) ftp://metalab.unc.edu/pub/Linux/system/network/serial/ppp
+racoon Raccon (BSD) http://www.kame.net/
+SGI STL STL http://www.sgi.com/tech/stl/
+OpenSSH OpenSSH http://www.openssh.org/
+SYSLINUX GPL http://syslinux.zytor.com/
+expat expat http://expat.sourceforge.net/
+libsvg LGPL http://cairographics.org/libsvg
+libsvg-cairo LGPL http://cairographics.org/libsvg-cairo
+cairo MPL http://cairographics.org/
+fontconfig Fontconfig http://www.fontconfig.org/wiki/
+freetype Freetype http://www.freetype.org/
+net-snmp Net-snmp http://net-snmp.sourceforge.net/
+libcroco LGPL http://www.freespiders.org/projects/libcroco/
+pango LGPL http://www.pango.org/
+librsvg LGPL http://librsvg.sourceforge.net/
+glib LGPL http://www.gtk.org/
+gtk+ LGPL http://www.gtk.org/
+ZeroTier ZeroTier BSL https://www.zerotier.com/
+
+This software is based in part on the work of the Independent JPEG Group jpeg

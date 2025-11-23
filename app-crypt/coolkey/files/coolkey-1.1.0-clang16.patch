@@ -1,0 +1,13 @@
+Declaration taken from nss sources' lib/softoken/pkcs11i.h.
+Only needed with --enable-pk11install.
+
+https://bugs.gentoo.org/871585
+--- a/src/install/pk11install.c
++++ b/src/install/pk11install.c
+@@ -23,4 +23,6 @@
+ #include "pkcs11n.h"
+ 
++char **NSC_ModuleDBFunc(unsigned long function, char *parameters, void *args);
++
+ /*
+  * windows specific globing search

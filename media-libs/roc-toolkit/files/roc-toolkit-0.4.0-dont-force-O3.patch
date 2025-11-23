@@ -1,0 +1,22 @@
+--- a/SConstruct
++++ b/SConstruct
+@@ -972,7 +972,6 @@ if meta.compiler in ['gcc', 'clang']:
+         for var in ['CXXFLAGS', 'CFLAGS']:
+             env.Append(**{var: [
+                 '-fvisibility=hidden',
+-                '-O3',
+             ]})
+ 
+     if meta.compiler == 'gcc' and meta.compiler_ver[:2] < (4, 6):
+@@ -990,10 +989,7 @@ if meta.compiler in ['cc']:
+                 '-g',
+             ]})
+     else:
+-        for var in ['CXXFLAGS', 'CFLAGS']:
+-            env.Append(**{var: [
+-                '-O3',
+-            ]})
++        pass
+ 
+     for var in ['CXXFLAGS', 'CFLAGS']:
+         conf.env.Append(**{var: [

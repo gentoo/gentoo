@@ -1,0 +1,22 @@
+https://github.com/rpm-software-management/drpm/pull/24
+From: Matt Jolly <kangie@gentoo.org>
+Date: Wed, 23 Apr 2025 17:43:31 +1000
+Subject: [PATCH] Update `cmake_minimum_required` to support modern CMake
+
+CMake 4 has dropped support for compat below 3.5.0.
+
+Since 3.5.0 was released in 2016, even LTS releases should include it
+in 2025.
+
+Use `<min>...<max>` to take into account the future removal of compat
+support for <3.10.0.
+
+Signed-off-by: Matt Jolly <kangie@gentoo.org>
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.5)
++cmake_minimum_required(VERSION 3.5.0...3.10.0)
+ 
+ project(drpm C)
+ 

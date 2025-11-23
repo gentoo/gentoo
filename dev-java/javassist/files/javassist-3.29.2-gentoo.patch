@@ -1,0 +1,46 @@
+adjust BASE_PATH, PATH and JAR_PATH for java-pkg-simple.eclass
+
+--- a/src/test/javassist/JvstTest4.java
++++ b/src/test/javassist/JvstTest4.java
+@@ -635,10 +635,10 @@ public class JvstTest4 extends JvstTestRoot {
+         assertEquals(packageName, obj.getClass().getPackage().getName());
+     }
+ 
+-    public static final String BASE_PATH = "../../";
++    public static final String BASE_PATH = "";
+     public static final String JAVASSIST_JAR = BASE_PATH + "javassist.jar";
+-    public static final String CLASSES_FOLDER = BASE_PATH + "build/classes";
+-    public static final String TEST_CLASSES_FOLDER = BASE_PATH + "build/test-classes";
++    public static final String CLASSES_FOLDER = BASE_PATH + "target/classes";
++    public static final String TEST_CLASSES_FOLDER = BASE_PATH + "target/test-classes";
+ 
+     public static class Inner1 {
+         public static int get() {
+--- a/src/test/javassist/JvstTestRoot.java
++++ b/src/test/javassist/JvstTestRoot.java
+@@ -5,10 +5,10 @@ import java.lang.reflect.Method;
+ 
+ public class JvstTestRoot extends TestCase {
+     // the directory where all compiled class files are found.
+-    public static final String PATH = "../../target/test-classes/";
++    public static final String PATH = "target/test-classes/";
+ 
+     // the directory where javassist.jar is found.
+-    public static final String JAR_PATH = "../../";
++    public static final String JAR_PATH = "";
+ 
+     ClassPool sloader, dloader;
+     Loader cloader;
+--- a/src/test/javassist/JvstTest2.java
++++ b/src/test/javassist/JvstTest2.java
+@@ -333,8 +333,8 @@ public class JvstTest2 extends JvstTestRoot {
+ 
+         url = cp.find("javassist.CtMethod").toString();
+         System.out.println("testURL: " + url);
+-        assertTrue(url.startsWith("file:"));
+-        assertTrue(url.endsWith("/javassist/CtMethod.class"));
++        assertTrue(url.startsWith("jar:file:"));
++        assertTrue(url.endsWith("javassist.jar!/javassist/CtMethod.class"));
+ 
+         assertNull(cp.find("javassist.TestURL"));
+ 

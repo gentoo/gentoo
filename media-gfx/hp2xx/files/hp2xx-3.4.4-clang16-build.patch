@@ -1,0 +1,13 @@
+Bug: https://bugs.gentoo.org/896218
+--- a/sources/getopt.c
++++ b/sources/getopt.c
+@@ -22,6 +22,9 @@
+    along with this program; if not, write to the Free Software
+    Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
++
++#include <string.h>
++
+ 
+ /**
+  ** Additions / fixes for hp2xx

@@ -1,0 +1,96 @@
+Upstream: https://gitlab.com/free-astro/siril/-/issues/1516
+Upstream: https://gitlab.com/free-astro/siril/-/issues/1202
+Bug: https://bugs.gentoo.org/957668
+--- a/src/core/processing.h
++++ b/src/core/processing.h
+@@ -136,6 +136,10 @@ struct generic_seq_args {
+ #endif
+ };
+ 
++#ifdef __cplusplus
++extern "C" {
++#endif
++
+ gpointer generic_sequence_worker(gpointer p);
+ gboolean end_generic_sequence(gpointer p);
+ 
+@@ -184,4 +188,8 @@ gpointer generic_sequence_metadata_worker(gpointer args);
+ 
+ void kill_child_process(gboolean on_exit);
+ 
++#ifdef __cplusplus
++}
++#endif
++
+ #endif
+--- a/src/filters/da3d/DA3D.cpp
++++ b/src/filters/da3d/DA3D.cpp
+@@ -15,10 +15,8 @@
+ #include "WeightMap.hpp"
+ #include "Utils.hpp"
+ #include "DftPatch.hpp"
+-extern "C" {
+ #include "core/processing.h"
+ #include "gui/progress_and_log.h"
+-}
+ 
+ #ifdef _OPENMP
+ #include <omp.h>
+--- a/src/filters/nlbayes/NlBayes.cpp
++++ b/src/filters/nlbayes/NlBayes.cpp
+@@ -27,11 +27,9 @@
+ #include "LibMatrix.h"
+ #include "LibImages.h"
+ #include "Utilities.h"
+-extern "C" {
+ #include "algos/anscombe.h"
+ #include "core/processing.h"
+ #include "gui/progress_and_log.h"
+-}
+ 
+ #ifdef _OPENMP
+ #include <omp.h>
+--- a/src/gui/progress_and_log.h
++++ b/src/gui/progress_and_log.h
+@@ -10,6 +10,10 @@
+ #define PROGRESS_DONE 1.0		// fill the progress bar
+ #define PROGRESS_TEXT_RESET ""		// reset the progress bar's text
+ 
++#ifdef __cplusplus
++extern "C" {
++#endif
++
+ void initialize_log_tags();
+ void gui_log_message(const char* msg, const char* color);
+ 
+@@ -17,4 +21,8 @@ void set_progress_bar_data(const char *text, double percent);
+ void set_cursor_waiting(gboolean waiting);
+ void set_cursor(const gchar* cursor_name);
+ 
++#ifdef __cplusplus
++}
++#endif
++
+ #endif
+--- a/src/opencv/opencv.h
++++ b/src/opencv/opencv.h
+@@ -5,14 +5,15 @@
+ #  include <config.h>
+ #endif
+ 
+-#ifdef __cplusplus
+-extern "C" {
+-#endif
+-
+ #include <stdint.h>
+ #include "registration/registration.h"
+ #include "registration/matching/misc.h"
+ #include "registration/matching/atpmatch.h"
++
++#ifdef __cplusplus
++extern "C" {
++#endif
++
+ #include "gui/progress_and_log.h"
+ 
+ WORD *fits_to_bgrbgr_ushort(fits *image);

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>gentoo@taujhe.de</email>
+		<name>Jan Henke</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		VC Intrinsics project contains a set of new intrinsics on
+		top of core LLVM IR instructions that represent SIMD semantics
+		of a program targeting GPU.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">intel/vc-intrinsics</remote-id>
+	</upstream>
+</pkgmetadata>

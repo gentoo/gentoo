@@ -1,0 +1,64 @@
+otherwise will report error:
+
+  type specifier missing, defaults to 'int'; ISO C99 and later do not support implicit int [-Werror,-Wimplicit-int]
+
+diff --git a/config/ctype.c b/config/ctype.c
+index ae6ed8b..3f05677 100644
+--- a/config/ctype.c
++++ b/config/ctype.c
+@@ -16,4 +16,4 @@ ulong ul;
+ #ifdef VK_NEED_UINT
+ uint ui;
+ #endif
+-main(){}
++int main(){}
+diff --git a/config/dl.c b/config/dl.c
+index e16ff86..6db52e0 100644
+--- a/config/dl.c
++++ b/config/dl.c
+@@ -2,7 +2,7 @@
+ /*  dl.c -- used by configure script to detect dynamic link loader            */
+ /*----------------------------------------------------------------------------*/
+ #include <dlfcn.h>
+-main()
++int main()
+ {
+ 	dlopen(0, 0);
+ }
+diff --git a/config/qc.c b/config/qc.c
+index d70d10b..01def92 100644
+--- a/config/qc.c
++++ b/config/qc.c
+@@ -2,7 +2,7 @@
+ #include <qstring.h>
+ #include <qcstring.h>
+ 
+-main()
++int main()
+ {
+ 	for( int i=128; i<256; i++ ) {
+ 		char buf[4];
+diff --git a/config/x.c b/config/x.c
+index c5bdd8b..d35eb0a 100644
+--- a/config/x.c
++++ b/config/x.c
+@@ -2,6 +2,6 @@
+ /*  x.c -- used by configure script to detect X lib                           */
+ /*----------------------------------------------------------------------------*/
+ #include <X11/Xlib.h>
+-main() {
++int main() {
+ 	XOpenDisplay(NULL);
+ }
+diff --git a/config/xft.c b/config/xft.c
+index ff4fc7d..148f444 100644
+--- a/config/xft.c
++++ b/config/xft.c
+@@ -1,6 +1,6 @@
+ #include <X11/Xft/Xft.h>
+ 
+-main()
++int main()
+ {
+ 	XftFontOpenName(0, 0, 0);
+ }

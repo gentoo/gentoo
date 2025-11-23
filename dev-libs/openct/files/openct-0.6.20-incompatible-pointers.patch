@@ -1,0 +1,26 @@
+Correct types so all pointer types are compatibile.
+https://bugs.gentoo.org/920193
+diff '--color=auto' -ru openct-0.6.20.old/src/ifd/process.c openct-0.6.20/src/ifd/process.c
+--- openct-0.6.20.old/src/ifd/process.c	2025-01-20 19:26:08.226266610 +0400
++++ openct-0.6.20/src/ifd/process.c	2025-01-20 19:28:06.168582649 +0400
+@@ -450,7 +450,7 @@
+ 			   ct_tlv_parser_t * args, ct_tlv_builder_t * resp)
+ {
+ 	unsigned char *data;
+-	unsigned int data_len;
++	size_t data_len;
+ 	unsigned int address;
+ 	int rc;
+ 
+diff '--color=auto' -ru openct-0.6.20.old/src/include/openct/socket.h openct-0.6.20/src/include/openct/socket.h
+--- openct-0.6.20.old/src/include/openct/socket.h	2025-01-20 19:34:34.479330790 +0400
++++ openct-0.6.20/src/include/openct/socket.h	2025-01-20 19:36:19.708720553 +0400
+@@ -37,7 +37,7 @@
+ 			listener : 1;
+ 
+ 	/* events to poll for */
+-	int		events;
++	short		events;
+ 
+ 	void *		user_data;
+ 	int		(*poll)(struct ct_socket *, struct pollfd *);

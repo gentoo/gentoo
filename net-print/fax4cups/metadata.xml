@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+    <email>printing@gentoo.org</email>
+    <name>Gentoo Printing Project</name>
+</maintainer>
+<use>
+    <flag name="hylafax">Install net-misc/hylafax backend</flag>
+    <flag name="efax">Install <pkg>net-misc/efax</pkg> backend</flag>
+    <flag name="mgetty-fax">Install <pkg>net-dialup/mgetty</pkg> backend</flag>
+</use>
+</pkgmetadata>

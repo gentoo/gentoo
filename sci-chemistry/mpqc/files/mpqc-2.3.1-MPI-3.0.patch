@@ -1,0 +1,37 @@
+https://bugs.gentoo.org/801682
+rename MPI 1.0 to 3.0+ functions:
+- MPI_Errhandler_set -> MPI_Comm_set_errhandler
+
+--- a/src/lib/util/group/memmtmpi.cc
++++ b/src/lib/util/group/memmtmpi.cc
+@@ -241,8 +241,8 @@
+   MPI_Comm_dup(comm, &comp_comm_);
+   MPI_Comm_dup(comm, &comm_comm_);
+ 
+-  MPI_Errhandler_set(comp_comm_, MPI_ERRORS_ARE_FATAL);
+-  MPI_Errhandler_set(comm_comm_, MPI_ERRORS_ARE_FATAL);
++  MPI_Comm_set_errhandler(comp_comm_, MPI_ERRORS_ARE_FATAL);
++  MPI_Comm_set_errhandler(comm_comm_, MPI_ERRORS_ARE_FATAL);
+ 
+   serial_ = 0;
+   req_tag_ = 15001;
+--- a/src/lib/util/group/messmpi.cc
++++ b/src/lib/util/group/messmpi.cc
+@@ -129,7 +129,7 @@
+   if (keyval->booleanvalue("errors_return")) {
+       if (me()==0)
+           ExEnv::outn() << indent << "MPIMessageGrp: errors_return is true" << endl;
+-      MPI_Errhandler_set(commgrp, MPI_ERRORS_RETURN);
++      MPI_Comm_set_errhandler(commgrp, MPI_ERRORS_RETURN);
+     }
+ 
+   if (debug_) {
+@@ -200,7 +200,7 @@
+   MPI_Comm_dup(comm, &commgrp);
+   global_commgrp = commgrp;
+ 
+-  MPI_Errhandler_set(commgrp, MPI_ERRORS_ARE_FATAL);
++  MPI_Comm_set_errhandler(commgrp, MPI_ERRORS_ARE_FATAL);
+ 
+    if (!nmpi_grps) {
+       threadgrp = ThreadGrp::get_default_threadgrp();

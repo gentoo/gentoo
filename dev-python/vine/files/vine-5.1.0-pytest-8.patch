@@ -1,0 +1,29 @@
+From cf9b3979173ff22a4a410c4da6cfdad878eced8c Mon Sep 17 00:00:00 2001
+From: Stanislav Levin <slev@altlinux.org>
+Date: Tue, 27 Feb 2024 23:53:38 +0300
+Subject: [PATCH] tests: Replace deprecated setup method (#105)
+
+Nose's `setup` method is deprecated since Pytest 7.2.
+
+See https://docs.pytest.org/en/stable/deprecations.html#support-for-tests-written-for-nose for details.
+
+Fixes: https://github.com/celery/vine/issues/104
+
+Signed-off-by: Stanislav Levin <slev@altlinux.org>
+---
+ t/unit/test_synchronization.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/t/unit/test_synchronization.py b/t/unit/test_synchronization.py
+index 87335b6..47b7a10 100644
+--- a/t/unit/test_synchronization.py
++++ b/t/unit/test_synchronization.py
+@@ -8,7 +8,7 @@
+ 
+ class test_barrier:
+ 
+-    def setup(self):
++    def setup_method(self):
+         self.m1, self.m2, self.m3 = Mock(), Mock(), Mock()
+         self.ps = [promise(self.m1), promise(self.m2), promise(self.m3)]
+ 

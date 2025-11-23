@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>arsen@gentoo.org</email>
+		<name>Arsen Arsenović</name>
+	</maintainer>
+	<use>
+		<flag name="grapheme-clustering">Enable grapheme clustering support</flag>
+		<flag name="utempter">Enable utmp support via <pkg>sys-libs/libutempter</pkg></flag>
+	</use>
+	<upstream>
+		<bugs-to>https://codeberg.org/dnkl/foot/issues</bugs-to>
+		<changelog>https://codeberg.org/dnkl/foot/src/branch/master/CHANGELOG.md</changelog>
+		<doc>https://codeberg.org/dnkl/foot/wiki</doc>
+		<remote-id type="codeberg">dnkl/foot</remote-id>
+	</upstream>
+</pkgmetadata>

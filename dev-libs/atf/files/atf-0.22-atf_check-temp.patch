@@ -1,0 +1,43 @@
+https://github.com/freebsd/atf/issues/76
+https://github.com/freebsd/atf/commit/b42c98612cb99fa3f52766a46203263dc1de7187
+
+From b42c98612cb99fa3f52766a46203263dc1de7187 Mon Sep 17 00:00:00 2001
+From: Enji Cooper <ngie@FreeBSD.org>
+Date: Sat, 7 Dec 2024 17:29:17 -0800
+Subject: [PATCH] atf_check: fix std::length_error thrown from temp_file
+
+The previous logic used 2 separate calls to `atf::fs::path::str()` when
+constructing a `std::vector<char>` to pass to `mkstemp(..)`. This in
+turn caused grief with how data copying is done in atf-c(3), etc, as the
+prior code computed the length of the path of an internal buffer in
+`atf_dynstr` structs.
+
+Moreover, the code was manually appending a nul char, which was
+unnecessary when making the valid assumption that `std::string` is a
+nul-terminated string.
+
+The new code convert the path to an `std::string` once, includes the
+existing nul char in the buffer, then passes it to mkstemp(3) instead.
+The code works properly now.
+
+Closes:	#76
+Signed-off-by: Enji Cooper <ngie@FreeBSD.org>
+---
+ atf-sh/atf-check.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/atf-sh/atf-check.cpp b/atf-sh/atf-check.cpp
+index 508a9c51..f6ebc7a6 100644
+--- a/atf-sh/atf-check.cpp
++++ b/atf-sh/atf-check.cpp
+@@ -118,8 +118,8 @@ class temp_file : public std::ostream {
+         const atf::fs::path file = atf::fs::path(
+             atf::env::get("TMPDIR", "/tmp")) / pattern;
+ 
+-        std::vector<char> buf(file.str().begin(), file.str().end());
+-        buf.push_back('\0');
++        std::string file_s = file.str();
++        std::vector<char> buf(file_s.begin(), file_s.end() + 1);
+ 
+         m_fd = ::mkstemp(buf.data());
+         if (m_fd == -1)

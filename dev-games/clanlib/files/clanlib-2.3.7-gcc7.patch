@@ -1,0 +1,20 @@
+diff -up ClanLib-2.3.7/configure.ac~ ClanLib-2.3.7/configure.ac
+--- ClanLib-2.3.7/configure.ac~	2012-04-11 08:55:49.000000000 +0200
++++ ClanLib-2.3.7/configure.ac	2017-02-21 11:57:23.482504683 +0100
+@@ -119,7 +119,6 @@ case $target in
+ 	*)
+ 		X11="yes"
+ 		WIN32="no"
+-		CXXFLAGS="$CXXFLAGS -std=c++0x"
+ 		;;
+ esac
+ 
+@@ -259,7 +258,7 @@ if test "$use_sse2" != "no"; then
+ fi
+ 
+ if test "$WIN32" = "no"; then
+-	extra_CFLAGS_clanCore="$extra_CFLAGS_clanCore -pthread -std=c++0x"
++	extra_CFLAGS_clanCore="$extra_CFLAGS_clanCore -pthread"
+ else
+ 	extra_CFLAGS_clanCore="$extra_CFLAGS_clanCore -mthreads -std=c++0x"
+ fi

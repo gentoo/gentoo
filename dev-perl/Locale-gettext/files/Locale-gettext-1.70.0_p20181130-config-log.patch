@@ -1,0 +1,12 @@
+Make it easier to debug configure test failures.
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -13,7 +13,7 @@ for (@ARGV) {
+ 
+ my @libs;
+ 
+-my $ac = Config::AutoConf->new;
++my $ac = Config::AutoConf->new(logfile => "config.log");
+ 
+ if (defined(my $ccflags = $args{CCFLAGS})) {
+     $ac->check_compiler_flags($ccflags);

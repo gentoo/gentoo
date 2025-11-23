@@ -1,0 +1,32 @@
+diff --git a/tc/tc_core.c b/tc/tc_core.c
+index 37547e9b..58234c9f 100644
+--- a/tc/tc_core.c
++++ b/tc/tc_core.c
+@@ -188,12 +188,12 @@ int tc_calc_size_table(struct tc_sizespec *s, __u16 **stab)
+ 	}
+ 
+ 	if (s->mtu == 0)
+-		s->mtu = 2047;
++		s->mtu = 2048;
+ 	if (s->tsize == 0)
+ 		s->tsize = 512;
+ 
+ 	s->cell_log = 0;
+-	while ((s->mtu >> s->cell_log) > s->tsize - 1)
++	while (((s->mtu - 1) >> s->cell_log) > s->tsize - 1)
+ 		s->cell_log++;
+ 
+ 	*stab = malloc(s->tsize * sizeof(__u16));
+diff --git a/tc/tc_stab.c b/tc/tc_stab.c
+index a7733726..f4ffd618 100644
+--- a/tc/tc_stab.c
++++ b/tc/tc_stab.c
+@@ -27,7 +27,7 @@ static void stab_help(void)
+ 	fprintf(stderr,
+ 		"Usage: ... stab [ mtu BYTES ] [ tsize SLOTS ] [ mpu BYTES ]\n"
+ 		"                [ overhead BYTES ] [ linklayer TYPE ] ...\n"
+-		"   mtu       : max packet size we create rate map for {2047}\n"
++		"   mtu       : max packet size we create size table for {2048}\n"
+ 		"   tsize     : how many slots should size table have {512}\n"
+ 		"   mpu       : minimum packet size used in rate computations\n"
+ 		"   overhead  : per-packet size overhead used in rate computations\n"

@@ -1,0 +1,15 @@
+--- a/skia-3338e90707323d2cd3a150276acb9f39933deee2/third_party/zlib/BUILD.gn	2022-07-10 00:39:12.507321714 +0300
++++ b/skia-3338e90707323d2cd3a150276acb9f39933deee2/third_party/zlib/BUILD.gn	2022-07-10 00:40:49.175261689 +0300
+@@ -197,12 +197,3 @@
+ config("zlib_config") {
+ }
+ 
+-third_party("compression_utils_portable") {
+-  visibility = [ "//third_party/externals/angle2:*" ]
+-  public_include_dirs = [ "../externals/zlib/google" ]
+-  sources = [
+-    "../externals/zlib/google/compression_utils_portable.cc",
+-    "../externals/zlib/google/compression_utils_portable.h",
+-  ]
+-  public_deps = [ ":zlib" ]  # either system or from source
+-}

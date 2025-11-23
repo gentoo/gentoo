@@ -1,0 +1,24 @@
+From 4f1e5cc70889058e809984a30917ef1d88bdd63d Mon Sep 17 00:00:00 2001
+From: Samy Al Bahra <sbahra@fileshield.io>
+Date: Fri, 10 Jan 2025 19:48:41 -0500
+Subject: [PATCH] regressions/ck_pr: fix type aliasing warning.
+
+Fixes #200
+---
+ regressions/ck_pr/validate/ck_pr_store.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/regressions/ck_pr/validate/ck_pr_store.c b/regressions/ck_pr/validate/ck_pr_store.c
+index e012b222..428655bc 100644
+--- a/regressions/ck_pr/validate/ck_pr_store.c
++++ b/regressions/ck_pr/validate/ck_pr_store.c
+@@ -67,7 +67,8 @@
+ 	{									\
+ 		uint##m##_t f = 0;						\
+ 		uint##w##_t j = (uint##w##_t)-1;				\
+-		ck_pr_store_##w((uint##w##_t *)(void *)&f, j);			\
++		void *f_p = &f;							\
++		ck_pr_store_##w((uint##w##_t *)f_p, j);				\
+ 		if (f != j) {							\
+ 			printf("FAIL [%#" PRIx##m " != %#" PRIx##w "]\n", f, j);\
+ 			exit(EXIT_FAILURE);					\

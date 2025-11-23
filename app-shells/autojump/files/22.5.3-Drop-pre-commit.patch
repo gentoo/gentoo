@@ -1,0 +1,29 @@
+From c625811d9a080a3b27c62cdbc05dbc0ff6b73855 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Fri, 28 Feb 2025 10:02:30 -0500
+Subject: [PATCH] Drop pre-commit
+
+---
+ tox.ini | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git ./tox.ini ./tox.ini
+index 8a21b97..0f08577 100644
+--- ./tox.ini
++++ ./tox.ini
+@@ -22,12 +22,5 @@ commands =
+         py.test -vv -rxs --tb native -s --strict {posargs:tests}
+     coverage report -m
+ 
+-
+-[testenv:pre-commit]
+-deps =
+-    pre-commit>=0.7.0
+-commands =
+-    pre-commit {posargs}
+-
+ [pytest]
+ norecursedirs = .git .tox docs
+-- 
+2.45.3
+

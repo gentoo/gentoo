@@ -1,0 +1,30 @@
+https://github.com/dovecot/core/pull/229
+
+From aaeabfec1abd0d4f2b68819a1afee51defd62e3c Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 28 Dec 2024 13:17:24 +0000
+Subject: [PATCH] lib: test-data-stack - Drop bogus assertion
+
+This assertion goes back to 992a1726a41b42fa47204565ff17f7c635fcb421 when
+test-data-stack.c was added.
+
+It starts to fail with (upcoming) GCC 15 which has improvements for
+optimising out redundant pointer-vs-pointer comparisons, specifically
+r15-580-gf3e5f4c58591f5 for gcc bug PR13962.
+
+Anyway, this is a problem for this assertion because t_malloc_no0
+is marked with `__attribute__((malloc))` which guarantees that the
+returned pointer doesn't alias, hence a == b must be false.
+
+Bug: https://bugs.gentoo.org/939857
+--- a/src/lib/test-data-stack.c
++++ b/src/lib/test-data-stack.c
+@@ -188,7 +188,6 @@ static void test_ds_buffers(void)
+ 		void *b = t_buffer_get(1000);
+ 		void *a = t_malloc_no0(1);
+ 		void *b2 = t_buffer_get(1001);
+-		test_assert(a == b); /* expected, not guaranteed */
+ 		test_assert(b2 != b);
+ 	} T_END;
+ 	test_end();
+

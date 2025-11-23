@@ -1,0 +1,36 @@
+From ac4bb22ebbfce712729aec277259c5ea9254189a Mon Sep 17 00:00:00 2001
+From: Albert Sjolund <alberts@axis.com>
+Date: Fri, 3 Jan 2025 09:16:55 +0100
+Subject: [PATCH] agent: stop leaking StunResolverData
+
+if agent is null StunResolverData would leak as free would
+not be reached.
+The disposal function doesn't perform any freeing logic of the
+underlying StunResolverData, so it is only here that they are freed.
+When TurnResolverData is freed, there is no if statement blocking it.
+---
+ agent/agent.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/agent/agent.c b/agent/agent.c
+index 8bab9f89..d98b5b2a 100644
+--- a/agent/agent.c
++++ b/agent/agent.c
+@@ -2720,11 +2720,11 @@ stun_server_resolved_cb (GObject *src, GAsyncResult *result,
+ 
+   agent = g_weak_ref_get (&data->agent_ref);
+   g_weak_ref_clear (&data->agent_ref);
+-  if (agent == NULL)
+-    return;
++
+   stream_id = data->stream_id;
+   g_slice_free (struct StunResolverData, data);
+-
++  if (agent == NULL)
++    return;
+   agent->stun_resolving_list = g_slist_remove_all (agent->stun_resolving_list,
+       data);
+ 
+-- 
+GitLab
+

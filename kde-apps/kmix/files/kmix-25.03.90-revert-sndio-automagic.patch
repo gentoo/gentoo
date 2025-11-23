@@ -1,0 +1,37 @@
+From 55b5b20e18f40cfaa7df21bbf7f4ec3cd4ea57ad Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 2 Apr 2025 20:36:25 +0200
+Subject: [PATCH] Disable sndio detection
+
+Until it is fixed upstream:
+https://invent.kde.org/multimedia/kmix/-/merge_requests/32
+https://invent.kde.org/multimedia/kmix/-/merge_requests/32#note_1182527
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e831f673..114bebae 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -91,6 +91,7 @@ find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
+ ########### sound backend support ##################################################################
+ ####################################################################################################
+ 
++if (0)
+ # sndio, only for that platform
+ check_include_file("sndio.h" HAVE_SYS_SNDIO_H)
+ if (HAVE_SYS_SNDIO_H)
+@@ -99,6 +100,7 @@ if (HAVE_SYS_SNDIO_H)
+   add_definitions(-DHAVE_SNDIO_MIXER)
+   set(SUPPORTED_BACKENDS ${SUPPORTED_BACKENDS} "Sndio")
+ endif ()
++endif ()
+ 
+ # Sun Audio, only for that platform
+ check_include_file("sys/audioio.h" HAVE_SYS_AUDIOIO_H)
+-- 
+2.49.0
+

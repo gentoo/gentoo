@@ -1,0 +1,77 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+DICTD_PID="/var/run/dictd.pid"
+
+prepconfig() {
+	local TMPCONF INDEXFILES CNT DNAME DICT SAVEDIR
+	if [ ! -e "${DICTDCONF}" ]; then
+		eerror "Config file ${DICTDCONF} not found."
+		return 1
+	fi
+
+	# if no dictionaries, skip startup.
+	# The new way of doing this is to scan /usr/share/dict and tweek the conf
+	einfo "Scanning for dictionaries..."
+	if [ ! -d "${DLIBDIR}" ]; then
+		eerror "${DLIBDIR} doesn't exist, no dictionaries found."
+		return 1
+	fi
+
+	SAVEDIR=${PWD}
+	cd "${DLIBDIR}"
+	INDEXFILES=$(ls *.index)
+	if [ -z "${INDEXFILES}" ]; then
+		eerror "No dictionaries found at ${DLIBDIR}."
+		eerror "Please, emerge at least one of app-dicts/dictd-* dictionaries."
+		return 1
+	fi
+
+	TMPCONF=$(mktemp -t dictd.conf.XXXXXXXXXX)
+	cat ${DICTDCONF} | sed -e '/^#LASTLINE/,$d' > ${TMPCONF}
+	echo "#LASTLINE" >> ${TMPCONF}
+
+	CNT=0
+	for i in ${INDEXFILES}; do
+		DNAME=$(echo $i | sed -e 's/[.]index$//')
+		#two possible names for a matching dictionary, check which is there.
+		if [ -f ${DNAME}.dict.dz ]; then
+			DICT=${DNAME}.dict.dz
+		elif [ -f ${DNAME}.dict ];then
+			DICT=${DNAME}.dict
+		else
+			ewarn "Index $i has no matching dictionaray..."
+		fi
+
+		#ok, go an index, and a dixtionary, append.
+		echo "database ${DNAME} { data \"${DLIBDIR}/${DICT}\"" >> ${TMPCONF}
+		echo "         index \"${DLIBDIR}/$i\" }" >> ${TMPCONF}
+
+		CNT=$(expr ${CNT} + 1)
+	done
+
+	cd "${SAVEDIR}"
+	mv "${TMPCONF}" "${DICTDCONF}"
+	chown 0:dictd "${DICTDCONF}"
+	chmod g+r "${DICTDCONF}"
+	einfo "Done, ${CNT} dictionaries found."
+}
+
+depend() {
+	need localmount
+}
+
+start() {
+	prepconfig || return 1
+	ebegin "Starting dictd"
+	start-stop-daemon --start --quiet --pidfile ${DICTD_PID} --exec \
+			/usr/sbin/dictd -- --pid-file ${DICTD_PID} ${DICTD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping dictd"
+	start-stop-daemon --stop --quiet --pidfile ${DICTD_PID} --exec /usr/sbin/dictd
+	eend $?
+}

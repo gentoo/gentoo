@@ -1,0 +1,36 @@
+diff --git a/ctimez.c b/ctimez.c
+index 21a529d..ecd5616 100644
+--- a/ctimez.c
++++ b/ctimez.c
+@@ -48,6 +48,7 @@ static char *rcsid="$Id: ctimez.c,v 1.7 1999/11/09 18:55:03 crosser Exp $";
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <stdio.h>
++#include <string.h>
+ #if TIME_WITH_SYS_TIME
+ # include <sys/time.h>
+ # include <time.h>
+diff --git a/eph_cmd.c b/eph_cmd.c
+index 7f90ad6..462eff0 100644
+--- a/eph_cmd.c
++++ b/eph_cmd.c
+@@ -89,6 +89,7 @@ static char *rcsid="$Id: eph_cmd.c,v 1.20 2001/08/28 06:28:01 crosser Exp $";
+ #include "config.h"
+ #endif
+ #include <stdio.h>
++#include <string.h>
+ #include "eph_io.h"
+ #include "eph_priv.h"
+ 
+diff --git a/fnames.c b/fnames.c
+index bf2db6d..8d19f4c 100644
+--- a/fnames.c
++++ b/fnames.c
+@@ -53,6 +53,7 @@ static char *rcsid="$Id: fnames.c,v 1.7 2001/01/11 06:49:57 crosser Exp $";
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <stdio.h>
++#include <string.h>
+ #if TIME_WITH_SYS_TIME
+ # include <sys/time.h>
+ # include <time.h>

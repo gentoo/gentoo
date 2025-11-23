@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription>
+		MiniSat is a minimalistic, open-source SAT solver, developed to help
+		researchers and developers alike to get started on SAT. It is released
+		under the MIT licence, and is currently used in a number of projects.
+		MiniSat is small and well-documented, and possibly also well-designed,
+		making it an ideal starting point for adapting SAT based techniques to
+		domain specific problems.
+		Winning all the industrial categories of the SAT 2005 competition, MiniSat
+		is a good starting point both for future research in SAT, and for
+		applications using SAT.
+		MiniSat supports incremental SAT and has mechanisms for adding non-clausal
+		constraints. By virtue of being easy to modify, it is a good choice for
+		integrating as a backend to another tool, such as a model checker or a more
+		generic constraint solver.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">niklasso/minisat</remote-id>
+		<remote-id type="github">stp/minisat</remote-id>
+	</upstream>
+</pkgmetadata>

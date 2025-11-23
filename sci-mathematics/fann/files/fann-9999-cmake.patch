@@ -1,0 +1,23 @@
+Bump minimum CMake version to fix build with CMake 4
+Unbundle gtest
+https://bugs.gentoo.org/863050
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -38,7 +38,7 @@
+ 	  ENDIF()
+ 	ENDIF()
+ ELSE()
+-cmake_minimum_required (VERSION 2.8)
++cmake_minimum_required (VERSION 3.5)
+ 
+ if (NOT DEFINED CMAKE_BUILD_TYPE)
+     set (CMAKE_BUILD_TYPE Release CACHE STRING "Build type")
+@@ -161,8 +161,6 @@
+ 
+ ################# compile tests ################
+ 
+-ADD_SUBDIRECTORY( lib/googletest )
+-
+ if(COMPILER_SUPPORTS_CXX11)
+   ADD_SUBDIRECTORY( tests )
+ endif()

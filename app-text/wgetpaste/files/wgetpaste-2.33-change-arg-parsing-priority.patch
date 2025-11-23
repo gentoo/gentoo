@@ -1,0 +1,95 @@
+From cfe7dcd8a0e40b8c18556aad0b657f431c90505a Mon Sep 17 00:00:00 2001
+From: Oskari Pirhonen <xxc3ncoredxx@gmail.com>
+Date: Sun, 13 Aug 2023 14:25:35 -0500
+Subject: [PATCH 1/3] Change arg parsing priority
+
+Read config files before parsing CLI args. Allows all options to be set
+via config and overridden on the CLI.
+---
+See also: https://github.com/zlin/wgetpaste/pull/46
+- Oskari
+
+ wgetpaste | 53 ++++++++++++++++++++++++++++-------------------------
+ 1 file changed, 28 insertions(+), 25 deletions(-)
+
+diff --git a/wgetpaste b/wgetpaste
+index fc0b559..5f4152d 100755
+--- a/wgetpaste
++++ b/wgetpaste
+@@ -720,7 +720,32 @@ geturl() {
+ 	fi | tail -n1
+ }
+ 
+-### read cli options
++# read the config files
++load_configs() {
++	if [[ ! $IGNORECONFIGS ]]; then
++		# compatibility code
++		local f deprecated=
++		for f in {/etc/,~/.}wgetpaste{.d/*.bash,}; do
++			if [[ -f $f ]]; then
++				if [[ -z $deprecated ]]; then
++					echo "The config files for wgetpaste have changed to *.conf.$N" >&2
++					deprecated=0
++				fi
++				echo "Please move ${f} to ${f%.bash}.conf" >&2
++				source "$f" || die "Failed to source $f"
++			fi
++		done
++		[[ -n $deprecated ]] && echo >&2
++		# new locations override old ones in case they collide
++		for f in {/etc/,~/.}wgetpaste{.d/*,}.conf; do
++			if [[ -f $f ]]; then
++				source "$f" || die "Failed to source $f"
++			fi
++		done
++	fi
++}
++
++### get runtime options
+ 
+ # separate groups of short options. replace --foo=bar with --foo bar
+ while [[ -n $1 ]]; do
+@@ -756,6 +781,8 @@ done
+ # set the separated options as input options.
+ set -- "${ARGS[@]}"
+ 
++load_configs
++
+ while [[ -n $1 ]]; do
+ 	((args=1))
+ 	case "$1" in
+@@ -859,30 +886,6 @@ if [[ $NOANSI ]]; then
+ fi
+ 
+ ### defaults
+-load_configs() {
+-	if [[ ! $IGNORECONFIGS ]]; then
+-		# compatibility code
+-		local f deprecated=
+-		for f in {/etc/,~/.}wgetpaste{.d/*.bash,}; do
+-			if [[ -f $f ]]; then
+-				if [[ -z $deprecated ]]; then
+-					echo "The config files for wgetpaste have changed to *.conf.$N" >&2
+-					deprecated=0
+-				fi
+-				echo "Please move ${f} to ${f%.bash}.conf" >&2
+-				source "$f" || die "Failed to source $f"
+-			fi
+-		done
+-		[[ -n $deprecated ]] && echo >&2
+-		# new locations override old ones in case they collide
+-		for f in {/etc/,~/.}wgetpaste{.d/*,}.conf; do
+-			if [[ -f $f ]]; then
+-				source "$f" || die "Failed to source $f"
+-			fi
+-		done
+-	fi
+-}
+-load_configs
+ [[ $SERVICESET ]] && verifyservice "$SERVICESET" && SERVICE=$(escape "$SERVICESET")
+ DEFAULT_NICK=${DEFAULT_NICK:-$(whoami)} || die "whoami failed"
+ DEFAULT_SERVICE=${DEFAULT_SERVICE:-bpaste}
+-- 
+2.41.0
+

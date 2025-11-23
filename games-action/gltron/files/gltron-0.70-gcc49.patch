@@ -1,0 +1,13 @@
+--- 1/lua/src/lib/liolib.c
++++ 1/lua/src/lib/liolib.c
+@@ -6,9 +6,9 @@
+ */
+ 
+ 
++#define __USE_MISC /* for mkstemp() */
+ #include <ctype.h>
+ #include <stdio.h>
+-#define __USE_MISC /* for mkstemp() */
+ #include <stdlib.h>
+ #include <string.h>
+ #include <time.h>

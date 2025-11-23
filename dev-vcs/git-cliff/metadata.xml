@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>xgqt@gentoo.org</email>
+		<name>Maciej Barć</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>zappel@simple-co.de</email>
+		<name>Armas Spann</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">orhun/git-cliff</remote-id>
+		<doc>https://git-cliff.org/docs/</doc>
+		<bugs-to>https://github.com/orhun/git-cliff/issues</bugs-to>
+	</upstream>
+	<longdescription>A highly customizable Changelog Generator that follows Conventional Commit specifications</longdescription>
+</pkgmetadata>

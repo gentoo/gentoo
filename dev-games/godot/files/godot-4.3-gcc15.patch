@@ -1,0 +1,20 @@
+IWYU failure with gcc15[1]. Fixed in both upstreams but bundled
+copies are outdated.
+
+Backport of [2], and partial backport of [3] which added the header.
+
+[1] https://bugs.gentoo.org/940190
+[2] https://github.com/KhronosGroup/glslang/commit/e40c14a3e007fac0e4f2e4164fdf14d1712355bd
+[3] https://github.com/thorvg/thorvg/commit/ed01ef717e983f7c53e1cdfb0a68b02ae4b19375
+--- a/thirdparty/glslang/SPIRV/SpvBuilder.h
++++ b/thirdparty/glslang/SPIRV/SpvBuilder.h
+@@ -58,2 +58,3 @@
+ #include <algorithm>
++#include <cstdint>
+ #include <map>
+--- a/thirdparty/thorvg/inc/thorvg.h
++++ b/thirdparty/thorvg/inc/thorvg.h
+@@ -3,2 +3,3 @@
+ 
++#include <cstdint>
+ #include <functional>

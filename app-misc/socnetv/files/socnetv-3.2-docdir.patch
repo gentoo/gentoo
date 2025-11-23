@@ -1,0 +1,14 @@
+Use the dedicated variable for doc
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 65c1fce..8e72300 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -335,7 +341,7 @@ elseif(LINUX)
+ 
+     # Install documentation
+     install(FILES CHANGELOG.md README.md TODO COPYING AUTHORS INSTALL
+-        DESTINATION "${CMAKE_INSTALL_DATADIR}/doc/socnetv"
++        DESTINATION "${CMAKE_INSTALL_DOCDIR}"
+     )
+ 
+ endif()

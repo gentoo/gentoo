@@ -1,0 +1,21 @@
+diff '--color=auto' -NuarwbB safecat-1.13.orig/Makefile safecat-1.13/Makefile
+--- safecat-1.13.orig/Makefile	2024-12-01 20:36:41.209238851 -0800
++++ safecat-1.13/Makefile	2024-12-02 19:32:20.069536183 -0800
+@@ -184,7 +184,7 @@
+ 	( cat warn-auto.sh; \
+ 	echo 'main="$$1"; shift'; \
+ 	echo 'rm -f "$$main"'; \
+-	echo 'ar cr "$$main" $${1+"$$@"}'; \
++	echo '$(shell head -n 1 conf-ar) cr "$$main" $${1+"$$@"}'; \
+ 	case "`cat systype`" in \
+ 	sunos-5.*) ;; \
+ 	unix_sv*) ;; \
+@@ -193,7 +193,7 @@
+ 	dgux-*) ;; \
+ 	hp-ux-*) ;; \
+ 	sco*) ;; \
+-	*) echo 'ranlib "$$main"' ;; \
++	*) echo '$(shell head -n 1 conf-ranlib) "$$main"' ;; \
+ 	esac \
+ 	) > makelib
+ 	chmod 755 makelib

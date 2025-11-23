@@ -1,0 +1,26 @@
+diff '--color=auto' -urNd a/configure.ac b/configure.ac
+--- a/configure.ac
++++ b/configure.ac
+@@ -192,18 +192,18 @@
+ 
+ if test x$with_socks = xyes; then
+    AC_DEFINE(SOCKS4, 1, [define if you are building with SOCKS support])
+-   AC_CHECK_LIB(socks, main, [SOCKSLIBS=-lsocks],
++   AC_CHECK_LIB(socks, Rconnect, [SOCKSLIBS=-lsocks],
+       [AC_MSG_ERROR([cannot find -lsocks library])])
+ fi
+ if test x$with_socks5 = xyes; then
+    AC_DEFINE(SOCKS5, 1, [define if you are building with SOCKSv5 support])
+-   AC_CHECK_LIB(socks5, main, [SOCKSLIBS=-lsocks5],
++   AC_CHECK_LIB(socks5, Rconnect, [SOCKSLIBS=-lsocks5],
+       [AC_MSG_ERROR([cannot find -lsocks5 library])])
+ fi
+ if test x$with_socksdante = xyes; then
+    AC_DEFINE(SOCKS_DANTE, 1, [define if you are building with SOCKS-Dante support])
+-   AC_CHECK_LIB(socks, main, [SOCKSLIBS=-lsocks],
+-      [AC_MSG_ERROR([cannot find -lsocks library])])
++   AC_CHECK_LIB(socksd, Rconnect, [SOCKSLIBS=-lsocksd],
++      [AC_MSG_ERROR([cannot find -lsocksd library])])
+ fi
+ 
+ AC_SUBST(SOCKSLIBS)

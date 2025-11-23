@@ -1,0 +1,89 @@
+From cd5e920572eabc54dc7350c41ca172b49e48ac1a Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Sun, 7 Jul 2024 21:38:29 -0400
+Subject: [PATCH] include lots of headers to pass the basic c99 sniff test
+
+Including configure checks, which currently emit broken results.
+
+And in one case, include config.h early enough to do something.
+---
+ common/scheduler/task.c             | 1 +
+ enforcer/src/daemon/time_leap_cmd.c | 2 +-
+ enforcer/src/utils/kaspcheck.c      | 1 +
+ enforcer/src/utils/kc_helper.c      | 1 +
+ m4/acx_broken_setres.m4             | 2 ++
+ 5 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/common/scheduler/task.c b/common/scheduler/task.c
+index 4dcf9e9..0dfa496 100644
+--- a/common/scheduler/task.c
++++ b/common/scheduler/task.c
+@@ -40,6 +40,7 @@
+ #include "duration.h"
+ #include "file.h"
+ #include "log.h"
++#include "utilities.h"
+ 
+ static const char* task_str = "task";
+ static pthread_mutex_t worklock = PTHREAD_MUTEX_INITIALIZER;
+diff --git a/enforcer/src/daemon/time_leap_cmd.c b/enforcer/src/daemon/time_leap_cmd.c
+index af41c8d..b17773c 100644
+--- a/enforcer/src/daemon/time_leap_cmd.c
++++ b/enforcer/src/daemon/time_leap_cmd.c
+@@ -26,8 +26,8 @@
+  *
+  */
+ 
+-#include <getopt.h>
+ #include "config.h"
++#include <getopt.h>
+ 
+ #include "file.h"
+ #include "duration.h"
+diff --git a/enforcer/src/utils/kaspcheck.c b/enforcer/src/utils/kaspcheck.c
+index 9bac3b7..fcdb36d 100644
+--- a/enforcer/src/utils/kaspcheck.c
++++ b/enforcer/src/utils/kaspcheck.c
+@@ -25,6 +25,7 @@
+ 
+ #define _GNU_SOURCE
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <getopt.h>
+ #include <string.h>
+ #include <syslog.h>
+diff --git a/enforcer/src/utils/kc_helper.c b/enforcer/src/utils/kc_helper.c
+index 72d181f..7f1278e 100644
+--- a/enforcer/src/utils/kc_helper.c
++++ b/enforcer/src/utils/kc_helper.c
+@@ -27,6 +27,7 @@
+ #include <syslog.h>
+ #include <stdarg.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <sys/stat.h>
+ #include <errno.h>
+diff --git a/m4/acx_broken_setres.m4 b/m4/acx_broken_setres.m4
+index 374cee0..c9eda46 100644
+--- a/m4/acx_broken_setres.m4
++++ b/m4/acx_broken_setres.m4
+@@ -4,6 +4,7 @@ AC_DEFUN([ACX_BROKEN_SETRES],[
+ 		AC_MSG_CHECKING(if setresuid seems to work)
+ 		AC_RUN_IFELSE(
+ 			[AC_LANG_SOURCE([[
++#include <unistd.h>
+ #include <stdlib.h>
+ #include <errno.h>
+ int main(){errno=0; setresuid(0,0,0); if (errno==ENOSYS) exit(1); else exit(0);}
+@@ -20,6 +21,7 @@ int main(){errno=0; setresuid(0,0,0); if (errno==ENOSYS) exit(1); else exit(0);}
+ 		AC_MSG_CHECKING(if setresgid seems to work)
+ 		AC_RUN_IFELSE(
+ 			[AC_LANG_SOURCE([[
++#include <unistd.h>
+ #include <stdlib.h>
+ #include <errno.h>
+ int main(){errno=0; setresgid(0,0,0); if (errno==ENOSYS) exit(1); else exit(0);}
+-- 
+2.44.2
+

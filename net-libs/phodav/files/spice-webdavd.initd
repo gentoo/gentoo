@@ -1,0 +1,16 @@
+#!/sbin/openrc-run
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="Spice guest utility for file sharing via WebDAV"
+
+command="/usr/sbin/spice-webdavd"
+command_args="--port 9843"
+
+pidfile="/run/${SVCNAME}.pid"
+command_background="yes"
+
+depend() {
+	need dbus 
+	use avahi
+}

@@ -1,0 +1,8 @@
+TODO: should be upstreamed
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -135,3 +135,3 @@
+   install(EXPORT ${TARGET_NAME}-export
+-    DESTINATION lib/cmake/${TARGET_NAME}
++    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${TARGET_NAME}
+     NAMESPACE ${TARGET_NAME}::

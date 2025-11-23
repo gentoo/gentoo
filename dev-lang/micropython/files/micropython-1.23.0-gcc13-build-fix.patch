@@ -1,0 +1,11 @@
+--- a/py/mkrules.mk	2024-06-09 04:22:17.760512031 +1000
++++ b/py/mkrules.mk	2024-06-09 21:02:24.926427912 +1000
+@@ -234,9 +234,6 @@
+ # we may want to compile using Thumb, but link with non-Thumb libc.
+ 	$(Q)$(CC) -o $@ $^ $(LIB) $(LDFLAGS)
+ ifndef DEBUG
+-ifdef STRIP
+-	$(Q)$(STRIP) $(STRIPFLAGS_EXTRA) $@
+-endif
+ endif
+ 	$(Q)$(SIZE) $$(find $(BUILD) -path "$(BUILD)/build/frozen*.o") $@

@@ -1,0 +1,40 @@
+Transformed multiple seds to this patch. `MOLMOLHOME` is the runtime variable
+that depends on knowledge of paths that I didn't think of how to correctly
+pass beyond editing it with sed. For everything else, it is here and changed
+to work correctly with build system.
+Rolled up sed transformations were to made build system non-parallel,
+fix environmental variables, remove sleep and add use right shell and
+build dependencies in startup script.
+--- a/makedef.lnx
++++ b/makedef.lnx
+@@ -11,12 +11,12 @@
+ 
+ XINCL   = -I/usr/X11R6/include
+ 
+-CC=gcc
++CC ?= gcc
+ MCPPFLAGS =
+-MCFLAGS =-pipe -O3 -ffast-math -march=i686 -mcpu=i686
++MCFLAGS := $(CFLAGS)
+ 
+ RANLIB   = /bin/true
+-WAIT     = sleep 2
++WAIT     = sleep 0
+ SHELL    = /bin/sh
+ CPP      = /lib/cpp
+ 
+--- a/molmol
++++ b/molmol
+@@ -1,9 +1,10 @@
+-#!/bin/ksh
++#!/bin/sh
+ #
+ # startup script for MOLMOL
+ #
+ 
+-MOLMOLHOME=/opt/group/MOLMOL
++MOLMOLHOME=/;
++MOLMOLDEV="Motif/OpenGL"
+ export MOLMOLHOME
+ export MOLMOLDEV
+ 

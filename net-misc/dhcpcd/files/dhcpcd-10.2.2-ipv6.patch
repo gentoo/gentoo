@@ -1,0 +1,312 @@
+https://bugs.gentoo.org/953895
+https://github.com/NetworkConfiguration/dhcpcd/issues/492
+
+From 664952372f0965da16ef24abe079bea1ad87a166 Mon Sep 17 00:00:00 2001
+From: Roy Marples <roy@marples.name>
+Date: Fri, 28 Mar 2025 19:44:48 +0000
+Subject: [PATCH] route: Don't spam route changes for lifetime
+
+Fixes #459
+---
+ src/route.c | 134 +++++++++++++++++++++++++++-------------------------
+ 1 file changed, 70 insertions(+), 64 deletions(-)
+
+diff --git a/src/route.c b/src/route.c
+index 865d50a5..0037dda4 100644
+--- a/src/route.c
++++ b/src/route.c
+@@ -33,6 +33,7 @@
+ #include <stddef.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <syslog.h>
+ #include <unistd.h>
+ 
+ #include "config.h"
+@@ -255,7 +256,7 @@ rt_is_default(const struct rt *rt)
+ }
+ 
+ static void
+-rt_desc(const char *cmd, const struct rt *rt)
++rt_desc(int loglevel, const char *cmd, const struct rt *rt)
+ {
+ 	char dest[INET_MAX_ADDRSTRLEN], gateway[INET_MAX_ADDRSTRLEN];
+ 	int prefix;
+@@ -273,25 +274,25 @@ rt_desc(const char *cmd, const struct rt *rt)
+ 
+ 	if (rt->rt_flags & RTF_HOST) {
+ 		if (gateway_unspec)
+-			loginfox("%s: %s host route to %s",
++			logmessage(loglevel, "%s: %s host route to %s",
+ 			    ifname, cmd, dest);
+ 		else
+-			loginfox("%s: %s host route to %s via %s",
++			logmessage(loglevel, "%s: %s host route to %s via %s",
+ 			    ifname, cmd, dest, gateway);
+ 	} else if (rt_is_default(rt)) {
+ 		if (gateway_unspec)
+-			loginfox("%s: %s default route",
++			logmessage(loglevel, "%s: %s default route",
+ 			    ifname, cmd);
+ 		else
+-			loginfox("%s: %s default route via %s",
++			logmessage(loglevel, "%s: %s default route via %s",
+ 			    ifname, cmd, gateway);
+ 	} else if (gateway_unspec)
+-		loginfox("%s: %s%s route to %s/%d",
++		logmessage(loglevel, "%s: %s%s route to %s/%d",
+ 		    ifname, cmd,
+ 		    rt->rt_flags & RTF_REJECT ? " reject" : "",
+ 		    dest, prefix);
+ 	else
+-		loginfox("%s: %s%s route to %s/%d via %s",
++		logmessage(loglevel, "%s: %s%s route to %s/%d via %s",
+ 		    ifname, cmd,
+ 		    rt->rt_flags & RTF_REJECT ? " reject" : "",
+ 		    dest, prefix, gateway);
+@@ -490,7 +491,7 @@ rt_recvrt(int cmd, const struct rt *rt, pid_t pid)
+ 
+ 			rb_tree_remove_node(&ctx->routes, f);
+ 			snprintf(buf, sizeof(buf), "pid %d deleted", pid);
+-			rt_desc(buf, f);
++			rt_desc(LOG_WARNING, buf, f);
+ 			rt_free(f);
+ 		}
+ 		break;
+@@ -503,8 +504,8 @@ rt_recvrt(int cmd, const struct rt *rt, pid_t pid)
+ }
+ 
+ /* Compare miscellaneous route details */
+-static bool
+-rt_cmp_misc(struct rt *nrt, struct rt *ort)
++static int
++rt_cmp_mtu(struct rt *nrt, struct rt *ort)
+ {
+ #if defined(__FreeBSD__) || defined(__DragonFly__)
+ 	/* FreeBSD puts the interface MTU into the route MTU
+@@ -514,13 +515,19 @@ rt_cmp_misc(struct rt *nrt, struct rt *ort)
+ 	nmtu = nrt->rt_mtu ? nrt->rt_mtu : (unsigned int)nrt->rt_ifp->mtu;
+ 	omtu = ort->rt_mtu ? ort->rt_mtu : (unsigned int)ort->rt_ifp->mtu;
+ 	if (omtu != nmtu)
+-		return false;
++		return 1;
+ #else
+ 	if (ort->rt_mtu != nrt->rt_mtu)
+-		return false;
++		return 1;
+ #endif
+ 
++	return 0;
++}
++
+ #ifdef HAVE_ROUTE_LIFETIME
++static int
++rt_cmp_lifetime(struct rt *nrt, struct rt *ort)
++{
+ 	/* There might be a minor difference between kernel route
+ 	 * lifetime and our lifetime due to processing times.
+ 	 * We allow a small deviation to avoid needless route changes.
+@@ -533,23 +540,25 @@ rt_cmp_misc(struct rt *nrt, struct rt *ort)
+ 	if (ts.tv_sec < 0)
+ 		ts.tv_sec = -ts.tv_sec;
+ 	if (ts.tv_sec > RTLIFETIME_DEV_MAX)
+-		return false;
++		return 1;
+ 	if (nrt->rt_lifetime > ort->rt_lifetime)
+ 		deviation = nrt->rt_lifetime - ort->rt_lifetime;
+ 	else
+ 		deviation = ort->rt_lifetime - nrt->rt_lifetime;
+ 	if (deviation > RTLIFETIME_DEV_MAX)
+-		return false;
+-#endif
++		return 1;
+ 
+-	return true;
++	return 0;
+ }
++#endif
+ 
+ static bool
+ rt_add(rb_tree_t *kroutes, struct rt *nrt, struct rt *ort)
+ {
+ 	struct dhcpcd_ctx *ctx;
+-	bool change, kroute, result;
++	struct rt *krt;
++	int loglevel = LOG_INFO;
++	bool change, result;
+ 
+ 	assert(nrt != NULL);
+ 	ctx = nrt->rt_ifp->ctx;
+@@ -569,46 +578,40 @@ rt_add(rb_tree_t *kroutes, struct rt *nrt, struct rt *ort)
+ 	    sa_is_unspecified(&nrt->rt_netmask))
+ 		return false;
+ 
+-	rt_desc(ort == NULL ? "adding" : "changing", nrt);
+-
+-	change = kroute = result = false;
+-	if (ort == NULL) {
+-		ort = rb_tree_find_node(kroutes, nrt);
+-		if (ort != NULL &&
+-		    ((ort->rt_flags & RTF_REJECT &&
+-		      nrt->rt_flags & RTF_REJECT) ||
+-		     (ort->rt_ifp == nrt->rt_ifp &&
++	krt = rb_tree_find_node(kroutes, nrt);
++	if (krt != NULL &&
++	    krt->rt_ifp == nrt->rt_ifp &&
++	    /* Only test flags dhcpcd controls */
++	    (krt->rt_flags & (RTF_HOST | RTF_REJECT)) == nrt->rt_flags &&
+ #ifdef HAVE_ROUTE_METRIC
+-		    ort->rt_metric == nrt->rt_metric &&
++	    krt->rt_metric == nrt->rt_metric &&
+ #endif
+-		    sa_cmp(&ort->rt_gateway, &nrt->rt_gateway) == 0)))
+-		{
+-			if (rt_cmp_misc(nrt, ort))
+-				return true;
+-			change = true;
+-			kroute = true;
+-		}
+-	} else if (ort->rt_dflags & RTDF_FAKE &&
+-	    !(nrt->rt_dflags & RTDF_FAKE) &&
+-	    ort->rt_ifp == nrt->rt_ifp &&
+-#ifdef HAVE_ROUTE_METRIC
+-	    ort->rt_metric == nrt->rt_metric &&
+-#endif
+-	    sa_cmp(&ort->rt_dest, &nrt->rt_dest) == 0 &&
+-	    rt_cmp_netmask(ort, nrt) == 0 &&
+-	    sa_cmp(&ort->rt_gateway, &nrt->rt_gateway) == 0)
++	    sa_cmp(&krt->rt_dest, &nrt->rt_dest) == 0 &&
++	    rt_cmp_netmask(krt, nrt) == 0 &&
++	    sa_cmp(&krt->rt_gateway, &nrt->rt_gateway) == 0 &&
++	    rt_cmp_mtu(krt, nrt) == 0)
+ 	{
+-		if (rt_cmp_misc(nrt, ort))
++#ifdef HAVE_ROUTE_LIFETIME
++		if (rt_cmp_lifetime(krt, nrt) == 0) {
++			rt_desc(LOG_DEBUG, "keeping", krt);
+ 			return true;
+-		change = true;
++		} else
++			loglevel = LOG_DEBUG;
++#else
++		rt_desc(LOG_DEBUG, "keeping", krt);
++		return true;
++#endif
+ 	}
+ 
++	rt_desc(loglevel, ort == NULL ? "adding" : "changing", nrt);
++
++	change = krt != NULL;
+ #ifdef RTF_CLONING
+ 	/* BSD can set routes to be cloning routes.
+ 	 * Cloned routes inherit the parent flags.
+ 	 * As such, we need to delete and re-add the route to flush children
+ 	 * to correct the flags. */
+-	if (change && ort != NULL && ort->rt_flags & RTF_CLONING)
++	if (change && krt != NULL && krt->rt_flags & RTF_CLONING)
+ 		change = false;
+ #endif
+ 
+@@ -625,8 +628,8 @@ rt_add(rb_tree_t *kroutes, struct rt *nrt, struct rt *ort)
+ 	/* With route metrics, we can safely add the new route before
+ 	 * deleting the old route. */
+ 	if (if_route(RTM_ADD, nrt) != -1) {
+-		if (ort != NULL) {
+-			if (if_route(RTM_DELETE, ort) == -1 && errno != ESRCH)
++		if (krt != NULL) {
++			if (if_route(RTM_DELETE, krt) == -1 && errno != ESRCH)
+ 				logerr("if_route (DEL)");
+ 		}
+ 		result = true;
+@@ -644,19 +647,17 @@ rt_add(rb_tree_t *kroutes, struct rt *nrt, struct rt *ort)
+ #ifdef ROUTE_PER_GATEWAY
+ 	errno = 0;
+ #endif
+-	if (ort != NULL) {
+-		if (if_route(RTM_DELETE, ort) == -1 && errno != ESRCH)
++	if (krt != NULL) {
++		if (if_route(RTM_DELETE, krt) == -1 && errno != ESRCH)
+ 			logerr("if_route (DEL)");
+-		else
+-			kroute = false;
+ 	}
+ #ifdef ROUTE_PER_GATEWAY
+ 	/* The OS allows many routes to the same dest with different gateways.
+ 	 * dhcpcd does not support this yet, so for the time being just keep on
+ 	 * deleting the route until there is an error. */
+-	if (ort != NULL && errno == 0) {
++	if (krt != NULL && errno == 0) {
+ 		for (;;) {
+-			if (if_route(RTM_DELETE, ort) == -1)
++			if (if_route(RTM_DELETE, krt) == -1)
+ 				break;
+ 		}
+ 	}
+@@ -675,9 +676,9 @@ rt_add(rb_tree_t *kroutes, struct rt *nrt, struct rt *ort)
+ 	logerr("if_route (ADD)");
+ 
+ out:
+-	if (kroute) {
+-		rb_tree_remove_node(kroutes, ort);
+-		rt_free(ort);
++	if (krt != NULL) {
++		rb_tree_remove_node(kroutes, krt);
++		rt_free(krt);
+ 	}
+ 	return result;
+ }
+@@ -687,22 +688,24 @@ rt_delete(struct rt *rt)
+ {
+ 	int retval;
+ 
+-	rt_desc("deleting", rt);
++	rt_desc(LOG_INFO, "deleting", rt);
+ 	retval = if_route(RTM_DELETE, rt) == -1 ? false : true;
+ 	if (!retval && errno != ENOENT && errno != ESRCH)
+ 		logerr(__func__);
+ 	return retval;
+ }
+ 
+-static bool
++static int
+ rt_cmp(const struct rt *r1, const struct rt *r2)
+ {
+ 
+-	return (r1->rt_ifp == r2->rt_ifp &&
++	if (r1->rt_ifp == r2->rt_ifp &&
+ #ifdef HAVE_ROUTE_METRIC
+ 	    r1->rt_metric == r2->rt_metric &&
+ #endif
+-	    sa_cmp(&r1->rt_gateway, &r2->rt_gateway) == 0);
++	    sa_cmp(&r1->rt_gateway, &r2->rt_gateway) == 0)
++		return 0;
++	return 1;
+ }
+ 
+ static bool
+@@ -718,10 +721,13 @@ rt_doroute(rb_tree_t *kroutes, struct rt *rt)
+ 		if (rt->rt_dflags & RTDF_FAKE)
+ 			return true;
+ 		if (or->rt_dflags & RTDF_FAKE ||
+-		    !rt_cmp(rt, or) ||
++		    rt_cmp(rt, or) != 0 ||
+ 		    (rt->rt_ifa.sa_family != AF_UNSPEC &&
+ 		    sa_cmp(&or->rt_ifa, &rt->rt_ifa) != 0) ||
+-		    !rt_cmp_misc(rt, or))
++#ifdef HAVE_ROUTE_LIFETIME
++		    rt_cmp_lifetime(rt, or) != 0 ||
++#endif
++		    rt_cmp_mtu(rt, or) != 0)
+ 		{
+ 			if (!rt_add(kroutes, rt, or))
+ 				return false;
+@@ -733,7 +739,7 @@ rt_doroute(rb_tree_t *kroutes, struct rt *rt)
+ 			or = rb_tree_find_node(kroutes, rt);
+ 			if (or == NULL)
+ 				return false;
+-			if (!rt_cmp(rt, or))
++			if (rt_cmp(rt, or) == 0)
+ 				return false;
+ 		} else {
+ 			if (!rt_add(kroutes, rt, NULL))
+

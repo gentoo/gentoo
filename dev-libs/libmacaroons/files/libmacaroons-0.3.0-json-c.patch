@@ -1,0 +1,38 @@
+
+Fix build with JSON support enabled
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -62,7 +62,7 @@ Please install libjson to continue.
+ ----------------------------------------])
+     fi
+ 
+-    AC_CHECK_HEADER([json/json.h],,[AC_MSG_ERROR([
++    AC_CHECK_HEADER([json-c/json.h],,[AC_MSG_ERROR([
+ ----------------------------------------
+ Macaroons rely upon the libjson library.
+ Please install libjson to continue.
+diff --git a/macaroons.c b/macaroons.c
+index ab296c8..654edfc 100644
+--- a/macaroons.c
++++ b/macaroons.c
+@@ -32,12 +32,17 @@
+ 
+ /* C */
+ #include <assert.h>
++#include <stdbool.h>
+ #include <stdio.h>
+ #include <string.h>
+ 
++#define TRUE true
++#define FALSE false
++
+ /* json */
+ #ifdef MACAROONS_JSON_SUPPORT
+-#include <json/json.h>
++#include <json-c/json.h>
++#include <json-c/json_object.h>
+ #endif
+ 
+ /* macaroons */
+-- 

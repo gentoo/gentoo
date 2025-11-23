@@ -1,0 +1,21 @@
+Index: doc/Makefile.am
+===================================================================
+--- a/doc/Makefile.am	(revision 247)
++++ b/doc/Makefile.am	(revision 248)
+@@ -1,5 +1,4 @@
+ PACKAGE = @PACKAGE_TARNAME@
+-docdir = $(datadir)/doc/$(PACKAGE)
+ doc_DATA = README-cache README-master README-cygwin master.sample
+ man_MANS = dnrd.8
+ EXTRA_DIST = $(man_MANS) $(doc_DATA)
+Index: Makefile.am
+===================================================================
+--- a/Makefile.am	(revision 247)
++++ b/Makefile.am	(revision 248)
+@@ -1,6 +1,5 @@
+ PACKAGE = @PACKAGE_TARNAME@
+ SUBDIRS = src doc
+-docdir = $(datadir)/doc/$(PACKAGE)
+ doc_DATA = AUTHORS COPYING ChangeLog README NEWS
+ 
+ EXTRA_DIST = README cygwin_post_install.sh

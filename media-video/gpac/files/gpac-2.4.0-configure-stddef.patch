@@ -1,0 +1,19 @@
+https://github.com/gpac/gpac/commit/a005fd6eb7a9ede4d3356630cae3d6516c91b73e
+--- a/configure
++++ b/configure
+@@ -1593,2 +1593,3 @@
+ #include <openssl/rand.h>
++#include <stddef.h>
+ int main( void ) {  SSL_CTX_set_options(NULL, SSL_OP_ALL); return 0; }'
+@@ -1619,2 +1620,3 @@
+ config_package png "libpng" "" "-lpng -lz" "png" '#include <png.h>
++#include <stddef.h>
+ int main( void ) {  png_struct *png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL); return 0; }'
+@@ -1635,2 +1637,3 @@
+ config_package xvid "xvid" "" "-lxvidcore $PTHREAD_LDFLAGS" "" '#include <xvid.h>
++#include <stddef.h>
+ int main( void ) { void *codec; xvid_decore(codec, XVID_DEC_DESTROY, NULL, NULL); return 0; }'
+@@ -1688,2 +1691,3 @@
+ config_package freenect "libfreenect" "" "-lfreenect" "freenect" '#include <libfreenect/libfreenect.h>
++#include <stddef.h>
+ int main( void ) { freenect_context *f_ctx; freenect_init(&f_ctx, NULL); return 0; }'

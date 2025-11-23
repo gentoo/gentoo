@@ -1,0 +1,13 @@
+--- a/adslstatus.c
++++ b/adslstatus.c
+@@ -40,8 +40,8 @@ version 0.13 moved logging to /var/log/kpnadsl4linux (by Sam Besselink <sambesse
+ #define FOURGB 4294967296.0
+ 
+ /* global variables */
+-time_t    tmNow;
+-uid_t     uid;
++extern time_t    tmNow;
++extern uid_t     uid;
+ char pppBuf[256];	/* textbuffer containing ppp0 info */
+ struct stat st;		/* contains filestatus of STATFILE */
+ double    received, sent ;

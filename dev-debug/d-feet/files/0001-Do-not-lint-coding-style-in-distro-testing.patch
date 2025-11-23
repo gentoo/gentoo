@@ -1,0 +1,30 @@
+From e1572f7c2e690411357457c76960e64ae9e8207a Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz@gentoo.org>
+Date: Fri, 20 Jun 2025 01:39:16 -0400
+Subject: [PATCH] Do not lint coding style in distro testing
+
+---
+ src/tests/meson.build | 10 ----------
+ 1 file changed, 10 deletions(-)
+
+diff --git a/src/tests/meson.build b/src/tests/meson.build
+index 19f819b..0879981 100644
+--- a/src/tests/meson.build
++++ b/src/tests/meson.build
+@@ -18,13 +18,3 @@ test(
+   workdir: meson.current_source_dir(),
+ )
+ 
+-test(
+-  'check-code-style',
+-  find_program('pycodestyle-3', 'pycodestyle', 'pep8'),
+-  args: [
+-    '--exclude=".svn,CVS,.bzr,.hg,.git,__pycache__,.\#*"',
+-    '--max-line-length=99',
+-    '--ignore=E123,E402,W504',
+-    src_dir,
+-  ],
+-)
+-- 
+2.49.0
+

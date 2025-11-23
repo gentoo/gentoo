@@ -1,0 +1,24 @@
+diff -ur a/src/callbacks.c b/src/callbacks.c
+--- a/src/callbacks.c	2019-07-10 08:35:12.000000000 +0300
++++ b/src/callbacks.c	2020-10-16 19:29:48.777271945 +0300
+@@ -46,7 +46,7 @@
+ static gboolean maximized = FALSE;
+ 
+ 
+-GtkWidget *dialog10 = NULL;
++static GtkWidget *dialog10 = NULL;
+ 
+ 
+ static int local_x = 0;
+diff -ur a/src/tracks.c b/src/tracks.c
+--- a/src/tracks.c	2019-07-10 08:35:12.000000000 +0300
++++ b/src/tracks.c	2020-10-16 19:30:12.205982533 +0300
+@@ -30,7 +30,7 @@
+ 
+ GSList *loaded_track = NULL;
+ GtkWidget *window12;
+-GtkWidget *dialog10;
++static GtkWidget *dialog10;
+ 
+ 
+ 

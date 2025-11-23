@@ -1,0 +1,113 @@
+https://github.com/koron/cmigemo/pull/29
+
+From 4c7476b614208836c3f4036fca87c8c718043c8b Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyich@gmail.com>
+Date: Wed, 22 Jun 2022 22:07:18 +0100
+Subject: [PATCH 1/3] compile/unix.mak: add .o file dependency on $(objdir)
+ directory
+
+Without this change parallel build fails occasionally when object
+files are built before directory is being created:
+
+    make[1]: Entering directory '/build/cmigemo'
+    gcc -O2 -Wall  -fPIC -o build/object/charset.o -c src/charset.c
+    Assembler messages:
+    Fatal error: can't create build/object/charset.o: No such file or directory
+    make[1]: *** [compile/unix.mak:33: build/object/charset.o] Error 1 shuffle=1655929862
+---
+ compile/unix.mak | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/compile/unix.mak b/compile/unix.mak
+index 8ef6413..8cf525a 100644
+--- a/compile/unix.mak
++++ b/compile/unix.mak
+@@ -14,7 +14,7 @@ CFLAGS	= -O2 -Wall $(DEFINES) $(CFLAGS_MIGEMO)
+ LDFLAGS = $(LDFLAGS_MIGEMO)
+ LIBS	= 
+ 
+-default: dirs $(outdir)cmigemo$(EXEEXT)
++default: $(outdir)cmigemo$(EXEEXT)
+ 
+ dirs:
+ 	@for i in $(objdir) $(outdir); do \
+@@ -26,10 +26,10 @@ dirs:
+ $(outdir)cmigemo$(EXEEXT): $(objdir)main.$(O) $(libmigemo_LIB)
+ 	$(CC) -o $@ $(objdir)main.$(O) -L. -L$(outdir) -lmigemo $(LDFLAGS)
+ 
+-$(objdir)main.o: $(srcdir)main.c
++$(objdir)main.o: $(srcdir)main.c dirs
+ 	$(CC) $(CFLAGS) -o $@ -c $<
+ 
+-$(objdir)%.o: $(srcdir)%.c
++$(objdir)%.o: $(srcdir)%.c dirs
+ 	$(CC) $(CFLAGS) -o $@ -c $<
+ 
+ ##############################################################################
+
+From 88a1ed71a637faa6ec4eeb7e2b2f0a9f597a4812 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyich@gmail.com>
+Date: Wed, 22 Jun 2022 22:10:42 +0100
+Subject: [PATCH 2/3] compile/unix.mak: add install dependency on $(dictdir)
+ directory
+
+Without this change parallel install fails occasionally when
+$(dictdir) is not yet present:
+
+    gcc -o build/cmigemo ./build/object/main.o -L. -L./build/ -lmigemo -Wl,-rpath,.,-rpath,/usr/local/lib,-rpath,/usr/lib
+    install -m 644 dict/migemo-dict ...-cmigemo-1.3e/share/migemo/cp932
+    install: cannot create regular file '...-cmigemo-1.3e/share/migemo/cp932': No such file or directory
+    make[1]: *** [compile/unix.mak:49: install-dict] Error 1 shuffle=1655931959
+---
+ compile/unix.mak | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/compile/unix.mak b/compile/unix.mak
+index 8cf525a..cb6bd8f 100644
+--- a/compile/unix.mak
++++ b/compile/unix.mak
+@@ -45,7 +45,7 @@ install-mkdir:
+ 	$(MKDIR) $(dictdir)/euc-jp
+ 	$(MKDIR) $(dictdir)/utf-8
+ 
+-install-dict:
++install-dict: install-mkdir
+ 	$(INSTALL_DATA) dict/migemo-dict $(dictdir)/cp932
+ 	$(INSTALL_DATA) dict/han2zen.dat $(dictdir)/cp932
+ 	$(INSTALL_DATA) dict/hira2kata.dat $(dictdir)/cp932
+
+From 3b39db8a748081e60bcceb7a8ae93616a5939f41 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyich@gmail.com>
+Date: Wed, 22 Jun 2022 22:16:12 +0100
+Subject: [PATCH 3/3] compile/unix.mak: add install-lib dependency on $(libdir)
+ directory
+
+Without this change parallel install fails occasionally when
+$(libdir) is not yet present:
+
+    rm -f libmigemo.so.1 libmigemo.so
+    ln -s libmigemo.so.1.1.0 libmigemo.so.1
+    ln -s libmigemo.so.1.1.0 libmigemo.so
+    install -m 755 libmigemo.so.1.1.0 ...-cmigemo-1.3e/lib
+    rm -f ...-cmigemo-1.3e/lib/libmigemo.so.1 ...-cmigemo-1.3e/lib/libmigemo.so
+    ln -s libmigemo.so.1.1.0 ...-cmigemo-1.3e/lib/libmigemo.so.1
+    ln: failed to create symbolic link '...-cmigemo-1.3e/lib/libmigemo.so.1': Not a directory
+    make[1]: *** [compile/Make_gcc.mak:38: install-lib] Error 1 shuffle=1655932664
+---
+ compile/unix.mak | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/compile/unix.mak b/compile/unix.mak
+index cb6bd8f..6651fcd 100644
+--- a/compile/unix.mak
++++ b/compile/unix.mak
+@@ -66,6 +66,9 @@ install-dict: install-mkdir
+ 	  $(INSTALL_DATA) dict/utf-8.d/zen2han.dat $(dictdir)/utf-8; \
+ 	fi
+ 
++# depends on $(libdir) to be already present
++install-lib: install-mkdir
++
+ install: $(outdir)cmigemo$(EXEEXT) $(libmigemo_DSO) install-mkdir install-dict install-lib
+ 	$(INSTALL_DATA) $(srcdir)migemo.h $(incdir)
+ 	$(INSTALL_DATA) doc/README_j.txt $(docdir)

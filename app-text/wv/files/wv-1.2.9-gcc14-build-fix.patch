@@ -1,0 +1,22 @@
+Bug: https://bugs.gentoo.org/921570
+Bug: https://bugs.gentoo.org/883207
+--- a/wvConfig.c
++++ b/wvConfig.c
+@@ -158,7 +158,7 @@ wvReleaseStateData (state_data * data)
+ 
+ 
+ static void
+-exstartElement (void *userData, const char *name, const char **atts)
++exstartElement (void *userData, const unsigned char *name, const unsigned char **atts)
+ {
+     unsigned int token_type;
+     expand_data *mydata = (expand_data *) userData;
+@@ -3371,7 +3371,7 @@ wvendElement (void *userData, const XML_Char *name)
+ }
+ 
+ static void
+-exendElement (void *userData, const char *name)
++exendElement (void *userData, const unsigned char *name)
+ {
+     /*
+        expand_data *mydata = (expand_data *)userData;

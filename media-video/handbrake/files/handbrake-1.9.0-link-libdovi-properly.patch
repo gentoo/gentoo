@@ -1,0 +1,28 @@
+https://bugs.gentoo.org/917591#c47
+
+diff -Nuar a/libhb/module.defs b/libhb/module.defs
+--- a/libhb/module.defs	2024-03-20 13:17:37.833999294 +0000
++++ b/libhb/module.defs	2024-03-20 13:17:18.693999469 +0000
+@@ -151,6 +151,7 @@
+ 
+ ifeq (1,$(FEATURE.libdovi))
+ LIBHB.dll.libs += $(CONTRIB.build/)lib/libdovi.a
++LIBHB.GCC.l += dovi
+ endif
+ 
+ ifneq ($(HAS.iconv),1)
+diff -Nuar a/test/module.defs b/test/module.defs
+--- a/test/module.defs	2024-03-20 13:19:11.869998433 +0000
++++ b/test/module.defs	2024-03-20 13:19:42.761998150 +0000
+@@ -34,6 +34,10 @@
+     TEST.pkgconfig_libs += glib-2.0
+ endif
+ 
++ifeq (1,$(FEATURE.libdovi))
++    TEST.pkgconfig_libs += dovi
++endif
++
+ TEST.GCC.pkgconfig = $(shell $(TEST.PKGCONFIG.exe) --libs $(TEST.pkgconfig_libs))
+ 
+ TEST.install.exe = $(DESTDIR)$(PREFIX/)bin/$(notdir $(TEST.exe))
+

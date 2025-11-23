@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/731046
+https://bugs.gentoo.org/955130
+https://sourceware.org/PR29377
+https://wiki.linuxfromscratch.org/blfs/ticket/16940
+--- a/include/xine.h
++++ b/include/xine.h
+@@ -118,7 +118,7 @@ xine_t *xine_new (void) XINE_PROTECTED;
+ /* allow the setting of some flags before xine_init
+  * FIXME-ABI: this is currently GLOBAL
+  */
+-void xine_set_flags (xine_t *, int) XINE_PROTECTED XINE_WEAK;
++void xine_set_flags (xine_t *, int) XINE_WEAK;
+ #define XINE_FLAG_NO_WRITE_CACHE		1
+ 
+ /*

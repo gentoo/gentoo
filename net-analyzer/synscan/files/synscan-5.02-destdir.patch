@@ -1,0 +1,15 @@
+--- a/Makefile.in	2011-02-21 23:05:20.000000000 +0200
++++ b/Makefile.in	2019-03-20 18:28:46.812472904 +0300
+@@ -65,10 +65,8 @@
+ 	${CC} ${LDFLAGS} ${CFLAGS} $< ${OBJS} ${LIBS} -o sslog
+ 
+ install:
+-	mkdir -p -m 755 ${bindir}
+-	strip synscan
+-	strip sslog
+-	@INSTALL_PROGRAM@ synscan sslog ${bindir}
++	mkdir -p -m 755 $(DESTDIR)${bindir}
++	@INSTALL_PROGRAM@ synscan sslog $(DESTDIR)${bindir}
+ 
+ clean:
+ 	rm -f ${PROJ} ${OBJS} core *.core

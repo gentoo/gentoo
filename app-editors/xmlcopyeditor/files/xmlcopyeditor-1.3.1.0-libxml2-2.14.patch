@@ -1,0 +1,70 @@
+https://bugs.gentoo.org/955797
+https://sourceforge.net/p/xml-copy-editor/code/ci/ad7c0fb931ed54dc8d8a3c2d42924daddc4ad17d/
+https://sourceforge.net/p/xml-copy-editor/code/ci/3c79ba3e37b53067c993de0c7d327b70ded6238a/
+
+From ad7c0fb931ed54dc8d8a3c2d42924daddc4ad17d Mon Sep 17 00:00:00 2001
+From: "Zane U. Ji" <zaneuji@gmail.com>
+Date: Thu, 15 May 2025 00:31:07 +0800
+Subject: [PATCH 1/1] Fix building with libxml2 2.14
+
+--- a/src/wraplibxml.cpp
++++ b/src/wraplibxml.cpp
+@@ -473,6 +473,7 @@ std::string WrapLibxml::dumpXPathObject ( xmlXPathObjectPtr obj )
+ 		sstream << obj->stringval;
+ 		break;
+ 
++#if LIBXML_VERSION < 21400
+ 	case XPATH_POINT:
+ 		xmlBufferPtr bufferPtr;
+ 		bufferPtr = xmlBufferCreate();
+@@ -486,6 +487,7 @@ std::string WrapLibxml::dumpXPathObject ( xmlXPathObjectPtr obj )
+ 
+ 	case XPATH_RANGE:
+ 	case XPATH_LOCATIONSET:
++#endif
+ 	case XPATH_XSLT_TREE:
+ 	default:
+ 		FILE *fp = tmpfile();
+@@ -706,7 +708,7 @@ int WrapLibxml::saveEncoding (
+ 
+ wxString WrapLibxml::getLastError()
+ {
+-	xmlErrorPtr err = xmlGetLastError();
++	const xmlError *err = xmlGetLastError();
+ 
+ 	if ( !err )
+ 		return nonParserError;
+@@ -722,7 +724,7 @@ wxString WrapLibxml::getLastError()
+ 
+ std::pair<int, int> WrapLibxml::getErrorPosition()
+ {
+-	xmlErrorPtr err = xmlGetLastError();
++	const xmlError *err = xmlGetLastError();
+ 	if ( !err )
+ 		return std::make_pair ( 1, 1 );
+ 
+-- 
+2.50.1
+
+From 3c79ba3e37b53067c993de0c7d327b70ded6238a Mon Sep 17 00:00:00 2001
+From: "Zane U. Ji" <zaneuji@gmail.com>
+Date: Thu, 15 May 2025 21:29:58 +0800
+Subject: [PATCH 1/1] Replace deprecated libxml2 initGenericErrorDefaultFunc
+
+--- a/src/wraplibxml.cpp
++++ b/src/wraplibxml.cpp
+@@ -54,7 +54,11 @@ public:
+ 		xmlLoadCatalog ( CONV ( catalogPath ) );
+ 		::catalog = xmlLoadACatalog ( CONV ( catalogPath ) );
+ 
++#if LIBXML_VERSION < 21400
+ 		initGenericErrorDefaultFunc ( NULL );
++#else
++		xmlSetGenericErrorFunc ( NULL, NULL );
++#endif
+ 	}
+ 
+ 	~Initializer ()
+-- 
+2.50.1
+

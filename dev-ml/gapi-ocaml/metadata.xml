@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>ml@gentoo.org</email>
+    <name>ML</name>
+  </maintainer>
+  <longdescription lang="en">gapi-ocaml is a simple, unofficial, OCaml client for Google Services.
+The library supports ClientLogin, OAuth 1.0a, and OAuth 2.0
+authentication. Supported RESTful APIs: Calendar APIs v3, Google+ API
+v1, Tasks API v1, APIs Discovery Service v1, URL Shortener API v1,
+OAuth2 API v2, Custom Search API v1, Google Analytics API v3, Page
+Speed Online API v1, Blogger API v2, Site Verification API v1, AdSense
+Management API v1.4, BigQuery API v2, Drive API v2, Drive API v3,
+Gmail API v1.</longdescription>
+  <upstream>
+    <bugs-to>https://github.com/astrada/gapi-ocaml/issues</bugs-to>
+    <remote-id type="github">astrada/gapi-ocaml</remote-id>
+    <maintainer>
+      <name>Alessandro Strada</name>
+      <email>alessandro.strada@gmail.com</email>
+    </maintainer>
+  </upstream>
+</pkgmetadata>

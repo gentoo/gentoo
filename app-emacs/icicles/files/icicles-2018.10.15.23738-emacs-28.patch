@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/836773
+
+--- icicles/icicles-fn.el
++++ icicles/icicles-fn.el
+@@ -4264,7 +4264,7 @@
+ 
+ 
+ (defalias 'icicle-scatter 'icicle-scatter-re)
+-(make-obsolete 'icicle-scatter 'icicle-scatter-re) ; 2018-01-14
++(make-obsolete 'icicle-scatter 'icicle-scatter-re "2018-01-14")
+ 
+ (defun icicle-scatter-re (string)
+   "Returns a regexp that matches a scattered version of STRING.

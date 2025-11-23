@@ -1,0 +1,39 @@
+style "default"
+
+{
+ font = "-*-lucida-medium-r-normal-*-*-100-*-*-*-*-*-*"
+}
+
+style "button" = "default"
+
+{ 
+ bg[PRELIGHT] = { 0.7, 0.7, 0.9 }
+}
+
+style "treeitem"
+{
+bg[ACTIVE] = { 0.7, 0.7, 0.9 }
+}
+
+style "scrollbar" = "button" 
+{
+ bg[ACTIVE] = {0.6, 0.6, 0.6 }
+}
+
+style "status" {
+ bg[PRELIGHT] = { 0.3, 1.0, 0.3 }
+}
+
+style "gtk-tooltips" {
+ bg[NORMAL] = "#ffff60"
+}
+
+class "GtkWidget" style "default" 
+class "GtkButton" style "button"
+class "GtkItem" style "button"
+class "GtkProgressBar" style "status"
+class "GtkScrollbar" style "scrollbar"
+class "GtkTreeItem" style "treeitem"
+widget "gtk-tooltips" style "gtk-tooltips"
+
+

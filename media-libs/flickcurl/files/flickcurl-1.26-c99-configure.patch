@@ -1,0 +1,23 @@
+https://bugs.gentoo.org/899812
+https://github.com/dajobe/flickcurl/pull/43
+
+From 940019e2635f1bc21b712fadbf4f73ca45a26379 Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Fri, 13 Jan 2023 09:33:08 +0100
+Subject: [PATCH] configure: Include <stdio.h> in vsnprintf check
+
+Avoid implicit declaration of vsnprintf for improved C99
+compatibility.  Otherwise the configure script will fail
+to detect vsnprintf support with future compilers which
+do not support implicit function declarations.
+--- a/configure.ac
++++ b/configure.ac
+@@ -133,6 +133,7 @@ AC_LINK_IFELSE([AC_LANG_PROGRAM([[#ifdef HAVE_GETOPT_H
+ if test $ac_cv_func_vsnprintf = yes; then
+   AC_MSG_CHECKING(vsnprintf has C99 compatible return value)
+   AC_RUN_IFELSE([AC_LANG_SOURCE([[#include <stdarg.h>
++#include <stdio.h>
+ int is_c99(char *s, ...) {
+   char buffer[32];
+   va_list args;
+

@@ -1,0 +1,34 @@
+[Unit]
+Description=DCC (Distributed Checksum Clearinghouses) interface daemon
+
+[Service]
+Type=forking
+PermissionsStartOnly=true
+RuntimeDirectory=dcc
+ConfigurationDirectory=dcc
+LogsDirectory=dcc
+StateDirectory=dcc
+ExecStart=/usr/sbin/dccifd
+
+#DCC writes pid file with "-" at the beginning which confuses systemd
+#PIDFile=/run/dcc/dccifd.pid
+
+# Hardening
+ProtectSystem=strict
+PrivateDevices=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+RestrictRealtime=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectHostname=true
+ProtectClock=true
+PrivateTmp=true
+SystemCallArchitectures=native
+MemoryDenyWriteExecute=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
+

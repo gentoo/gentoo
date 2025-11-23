@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Awesome
+Comment=Highly configurable framework window manager
+NoDisplay=true
+TryExec=/etc/X11/Sessions/awesome
+Exec=/etc/X11/Sessions/awesome

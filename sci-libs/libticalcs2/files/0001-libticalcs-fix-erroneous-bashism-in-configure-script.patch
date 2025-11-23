@@ -1,0 +1,39 @@
+From e27900a6b30f35b1a586b171603047fec3f39990 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Fri, 29 Mar 2024 01:48:47 -0400
+Subject: [PATCH] libticalcs: fix erroneous bashism in configure script
+
+configure scripts are POSIX /bin/sh scripts and cannot have
+bash-specific syntax. The `test xxx == yyy` construct with double equals
+is a bash-specific alias for single equals. It does exactly the same
+thing as single equals -- it provides no additional functionality, no
+behavior changes, it is *exactly* the same but with an additional
+alternate spelling. In exchange for doing nothing, it breaks muscle
+memory when writing POSIX sh scripts and tricks developers into writing
+the wrong thing.
+
+It should never be used under any circumstances. Ideally it would be
+removed altogether from GNU bash.
+
+Bug: https://bugs.gentoo.org/723452
+Signed-off-by: Eli Schwartz <eschwartz93@gmail.com>
+---
+ libticalcs/trunk/configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libticalcs/trunk/configure.ac b/libticalcs/trunk/configure.ac
+index 3ec257ed..42588f9f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -180,7 +180,7 @@ esac
+ AC_ARG_VAR([CXX_FOR_BUILD], [C++ compiler for programs to be run on the build system])
+ AC_ARG_VAR([CXXFLAGS_FOR_BUILD], [C++ compiler flags for CXX_FOR_BUILD])
+ AC_MSG_CHECKING([for the host compiler])
+-if test "x$build" == "x$host" ; then
++if test "x$build" = "x$host" ; then
+   # Not cross-compiling.
+   CXX_FOR_BUILD=$CXX
+   CXXFLAGS_FOR_BUILD=$CXXFLAGS
+-- 
+2.43.2
+

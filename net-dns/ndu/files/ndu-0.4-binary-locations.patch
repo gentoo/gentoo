@@ -1,0 +1,14 @@
+diff -Nuar --exclude '*~' ndu-0.4.orig/src/dnsedit ndu-0.4/src/dnsedit
+--- ndu-0.4.orig/src/dnsedit	2006-05-22 16:16:47.000000000 -0700
++++ ndu-0.4/src/dnsedit	2006-05-22 16:20:45.107741010 -0700
+@@ -19,8 +19,8 @@
+ 	if /usr/bin/diff $1 $tempfile >> /dev/null ; then
+ 	  echo No changed made
+ 	else
+-		/usr/sbin/dnstouch $1
+-		/usr/sbin/ndu
++		/usr/bin/dnstouch $1
++		/usr/bin/ndu
+ #		/usr/sbin/ndc reload
+ 		echo updated
+ 	fi

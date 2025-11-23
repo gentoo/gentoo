@@ -1,0 +1,81 @@
+--- a/make_linux.mak
++++ b/make_linux.mak
+@@ -98,7 +98,7 @@ ATK_OBJECTS = swt.o atk.o atk_structs.o atk_custom.o atk_stats.o
+ WEBKIT_OBJECTS = swt.o webkitgtk.o webkitgtk_structs.o webkitgtk_stats.o webkitgtk_custom.o
+ GLX_OBJECTS = swt.o glx.o glx_structs.o glx_stats.o
+ 
+-CFLAGS := $(CFLAGS) \
++CFLAGS += -fPIC \
+ 		-DSWT_VERSION=$(SWT_VERSION) \
+ 		$(NATIVE_STATS) \
+ 		$(SWT_DEBUG) \
+@@ -111,7 +111,7 @@ LFLAGS = -shared -fPIC ${SWT_LFLAGS}
+ 
+ # Treat all warnings as errors. If your new code produces a warning, please
+ # take time to properly understand and fix/silence it as necessary.
+-CFLAGS += -Werror
++# CFLAGS += -Werror
+ 
+ ifndef NO_STRIP
+ 	# -s = Remove all symbol table and relocation information from the executable.
+@@ -130,13 +130,13 @@ all: make_swt make_atk make_glx make_webkit
+ make_swt: $(SWT_LIB) $(SWTPI_LIB)
+ 
+ $(SWT_LIB): $(SWT_OBJECTS)
+-	$(CC) $(LFLAGS) -o $(SWT_LIB) $(SWT_OBJECTS)
++	$(CC) $(LDFLAGS) $(LFLAGS) -o $(SWT_LIB) $(SWT_OBJECTS)
+ 
+ callback.o: callback.c callback.h
+ 	$(CC) $(CFLAGS) $(GTKCFLAGS) -DUSE_ASSEMBLER -c callback.c
+ 
+ $(SWTPI_LIB): $(SWTPI_OBJECTS)
+-	$(CC) $(LFLAGS) -o $(SWTPI_LIB) $(SWTPI_OBJECTS) $(GTKLIBS)
++	$(CC) $(LDFLAGS) $(LFLAGS) -o $(SWTPI_LIB) $(SWTPI_OBJECTS) $(GTKLIBS)
+ 
+ swt.o: swt.c swt.h
+ 	$(CC) $(CFLAGS) -c swt.c
+@@ -169,7 +169,7 @@ gtk4_stats.o: gtk4_stats.c gtk4_structs.h gtk4.h gtk4_stats.h swt.h
+ make_cairo: $(CAIRO_LIB)
+ 
+ $(CAIRO_LIB): $(CAIRO_OBJECTS)
+-	$(CC) $(LFLAGS) -o $(CAIRO_LIB) $(CAIRO_OBJECTS) $(CAIROLIBS)
++	$(CC) $(LDFLAGS) $(LFLAGS) -o $(CAIRO_LIB) $(CAIRO_OBJECTS) $(CAIROLIBS)
+ 
+ cairo.o: cairo.c cairo.h swt.h
+ 	$(CC) $(CFLAGS) $(CAIROCFLAGS) -c cairo.c
+@@ -184,7 +184,7 @@ cairo_stats.o: cairo_stats.c cairo_structs.h cairo.h cairo_stats.h swt.h
+ make_awt:$(AWT_LIB)
+ 
+ $(AWT_LIB): $(AWT_OBJECTS)
+-	$(CC) $(AWT_LFLAGS) -o $(AWT_LIB) $(AWT_OBJECTS) $(AWT_LIBS)
++	$(CC) -fPIC $(LDFLAGS) $(AWT_LFLAGS) -o $(AWT_LIB) $(AWT_OBJECTS) $(AWT_LIBS)
+ 
+ #
+ # Atk lib
+@@ -192,7 +192,7 @@ $(AWT_LIB): $(AWT_OBJECTS)
+ make_atk: $(ATK_LIB)
+ 
+ $(ATK_LIB): $(ATK_OBJECTS)
+-	$(CC) $(LFLAGS) -o $(ATK_LIB) $(ATK_OBJECTS) $(ATKLIBS)
++	$(CC) $(LDFLAGS) $(LFLAGS) -o $(ATK_LIB) $(ATK_OBJECTS) $(ATKLIBS)
+ 
+ atk.o: atk.c atk.h
+ 	$(CC) $(CFLAGS) $(ATKCFLAGS) -c atk.c
+@@ -209,7 +209,7 @@ atk_stats.o: atk_stats.c atk_structs.h atk_stats.h atk.h
+ make_webkit: $(WEBKIT_LIB)
+ 
+ $(WEBKIT_LIB): $(WEBKIT_OBJECTS)
+-	$(CC) $(LFLAGS) -o $(WEBKIT_LIB) $(WEBKIT_OBJECTS) $(WEBKITLIBS)
++	$(CC) $(LDFLAGS) $(LFLAGS) -o $(WEBKIT_LIB) $(WEBKIT_OBJECTS) $(WEBKITLIBS)
+ 
+ webkitgtk.o: webkitgtk.c webkitgtk_custom.h
+ 	$(CC) $(CFLAGS) $(WEBKITCFLAGS) -c webkitgtk.c
+@@ -229,7 +229,7 @@ webkitgtk_custom.o: webkitgtk_custom.c
+ make_glx: $(GLX_LIB)
+ 
+ $(GLX_LIB): $(GLX_OBJECTS)
+-	$(CC) $(LFLAGS) -o $(GLX_LIB) $(GLX_OBJECTS) $(GLXLIBS)
++	$(CC) $(LDFLAGS) $(LFLAGS) -o $(GLX_LIB) $(GLX_OBJECTS) $(GLXLIBS)
+ 
+ glx.o: glx.c 
+ 	$(CC) $(CFLAGS) $(GLXCFLAGS) -c glx.c

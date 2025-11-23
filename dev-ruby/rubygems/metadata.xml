@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>ruby@gentoo.org</email>
+    <name>Gentoo Ruby Project</name>
+  </maintainer>
+  <use>
+    <flag name="server">Install support for the rubygems server</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">rubygems/rubygems</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,11 @@
+Bug: https://bugs.gentoo.org/895986
+--- a/galaxis.c
++++ b/galaxis.c
+@@ -6,6 +6,7 @@
+  * SPDX-License-Identifier: BSD-2-Clause
+  */
+ #define _POSIX_SOURCE
++#define _GNU_SOURCE
+ 
+ #include <stdio.h>
+ #include <termios.h>

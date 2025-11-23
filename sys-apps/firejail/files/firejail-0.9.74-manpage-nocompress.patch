@@ -1,0 +1,52 @@
+--- firejail-0.9.74.orig/Makefile	2025-03-19 05:33:03.000000000 -0600
++++ firejail-0.9.74/Makefile	2025-05-02 17:03:53.088996160 -0600
+@@ -41,6 +41,8 @@
+ MANPAGES5_IN := $(sort $(wildcard src/man/*.5.in))
+ MANPAGES1_GZ := $(MANPAGES1_IN:.in=.gz)
+ MANPAGES5_GZ := $(MANPAGES5_IN:.in=.gz)
++MANPAGES1 := $(MANPAGES1_IN:.in=)
++MANPAGES5 := $(MANPAGES5_IN:.in=)
+ 
+ SYSCALL_HEADERS := $(sort $(wildcard src/include/syscall*.h))
+ 
+@@ -272,9 +274,9 @@
+ ifneq ($(HAVE_MAN),no)
+ 	# man pages
+ 	$(INSTALL) -m 0755 -d $(DESTDIR)$(mandir)/man1
+-	$(INSTALL) -m 0644 -t $(DESTDIR)$(mandir)/man1 $(MANPAGES1_GZ)
++	$(INSTALL) -m 0644 -t $(DESTDIR)$(mandir)/man1 $(MANPAGES1)
+ 	$(INSTALL) -m 0755 -d $(DESTDIR)$(mandir)/man5
+-	$(INSTALL) -m 0644 -t $(DESTDIR)$(mandir)/man5 $(MANPAGES5_GZ)
++	$(INSTALL) -m 0644 -t $(DESTDIR)$(mandir)/man5 $(MANPAGES5)
+ endif
+ 	# bash completion
+ 	$(INSTALL) -m 0755 -d $(DESTDIR)$(datarootdir)/bash-completion/completions
+@@ -296,8 +298,8 @@
+ 	$(RM) $(DESTDIR)$(bindir)/jailcheck
+ 	$(RM) -r $(DESTDIR)$(libdir)/firejail
+ 	$(RM) -r $(DESTDIR)$(datarootdir)/doc/firejail
+-	$(RM) $(addprefix $(DESTDIR)$(mandir)/man1/,$(notdir $(MANPAGES1_GZ)))
+-	$(RM) $(addprefix $(DESTDIR)$(mandir)/man5/,$(notdir $(MANPAGES5_GZ)))
++	$(RM) $(addprefix $(DESTDIR)$(mandir)/man1/,$(notdir $(MANPAGES1)))
++	$(RM) $(addprefix $(DESTDIR)$(mandir)/man5/,$(notdir $(MANPAGES5)))
+ 	$(RM) $(DESTDIR)$(datarootdir)/bash-completion/completions/firejail
+ 	$(RM) $(DESTDIR)$(datarootdir)/bash-completion/completions/firemon
+ 	$(RM) $(DESTDIR)$(datarootdir)/bash-completion/completions/firecfg
+--- firejail-0.9.74.orig/src/man/Makefile	2024-07-06 05:15:02.000000000 -0600
++++ firejail-0.9.74/src/man/Makefile	2025-05-02 17:01:25.034878424 -0600
+@@ -9,7 +9,8 @@
+ MOD_DIR := $(ROOT)/src/man
+ MANPAGES_IN := $(sort $(wildcard $(MOD_DIR)/*.in))
+ MANPAGES_GZ := $(MANPAGES_IN:.in=.gz)
+-TARGET = $(MANPAGES_GZ)
++MANPAGES := $(MANPAGES_IN:.in=)
++TARGET = $(MANPAGES)
+ 
+ .PHONY: all
+ all: $(TARGET)
+@@ -27,4 +28,4 @@
+ 	@$(GZIP) -n9 $<
+ 
+ .PHONY: clean
+-clean:; $(RM) *.1 *.5 *.gz
++clean:; $(RM) *.1 *.5

@@ -1,0 +1,108 @@
+.TH MORIA 6 ""
+.SH NAME
+moria \- a dungeon game
+.SH SYNOPSIS
+.B
+moria 
+[
+.B \-o
+] [
+.B \-r
+] [
+.B \-s
+] [
+.B \-S
+] [
+.B \-n
+] [
+.B \-w
+] [ savefile ]
+.SH DESCRIPTION
+.I Moria\^
+plays a dungeon game with you.
+It lets you generate a character,
+lets you buy equipment,
+and lets you wander in a fathomless dungeon
+while finding treasure and being attacked by monsters
+and fellow adventurers.
+Typing
+.B ?
+gives you a list of commands.
+.PP
+The ultimate object of
+.I moria
+is to kill the Balrog,
+which dwells on the 50th level of the
+dungeon, 2,500 feet underground.
+Most players never even reach the Balrog,
+and those that do seldom live to tell about it.
+.PP
+For a more complete description of the game,
+read the document
+.I The Dungeons of Moria.
+.PP
+By default,
+.I moria
+will save and restore games from a file
+called moria.save in your home directory.  If the environment
+variable MORIA_SAV is defined, then
+.I moria
+will use that
+file name instead of the default.  If MORIA_SAV is not a complete
+path name, then the savefile will be created or restored from the
+current directory.  You can also explicitly specify a savefile
+on the command line.
+.PP
+If you use the \fB\-n\fP option,
+.I moria
+will create a new game,
+ignoring any savefile which may already exist.
+This works best when a savefile name is specified on the
+command line, as this will prevent
+.I moria
+from trying to overwrite the default savefile
+(if it exists) when you try to save your game.
+.PP
+You move in various directions
+by pressing the numeric keypad keys, VMS-style.
+If you specify
+\fB\-r\fP, you move the same way you do in \fIrogue\fP(6).
+You can also specify
+\fB\-o\fP to force the VMS-style command set.
+These options will override defaults stored in the savefile.  If these
+options are given multiple times, only the last one will take effect.
+.PP
+If you specify
+.BR \-s ,
+.I moria
+prints all of the scores in the score file and exits.
+On a multiuser system, if you specify
+.BR \-S ,
+.I moria
+prints prints only those scores belonging to you and then exits.
+.PP
+If you specify \fB\-w\fP,
+.I moria
+will start up in wizard mode.
+You can resurrect a dead character by using this option when starting
+the game.  Resurrected characters are teleported to the town level
+and given zero hitpoints.
+Wizard mode is intended for debugging the game, and for experimenting
+with new features.  Any other use is considered cheating.
+Games played with wizard mode are not scored.
+.SH AUTHORS
+The original version of Moria was written in VMS/Pascal by Robert
+Alan Koeneke, Jimmey Wayne Todd,
+Gary McAdoo, and others at the University of Oklahoma.
+This version was written by Jim Wilson at the University of California,
+Berkeley, and released with minor revisions by David Grabiner at Harvard
+University.
+.SH BUGS
+.PP
+A suspended game that gets a hangup signal will die without creating a
+save file.
+
+Rerolling with a % at the class prompt not implemented.
+
+For a more comprehensive list, see the ERRORS file in the source
+distribution.

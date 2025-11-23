@@ -1,0 +1,143 @@
+#!/bin/sh
+###############################################################################
+# Determines the Open Firmware path based on the linux device name
+#
+# Joseph Jezak <josejx@gentoo.org> Copyright (C) 2010
+# Rewrite of OFPath for newer kernels/scsi configurations
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+#
+###############################################################################
+
+### Set this to 1 to turn on debugging messages
+DEBUG=0
+
+### Find the device tree
+if [ ! -e /proc/device-tree ]; then
+	echo 1>&2 "ofpath: Cannot find the device tree!"
+	exit 1
+fi
+DEV_TREE="/proc/device-tree"
+
+### Check if sys is mounted
+if ! (grep -q '.* .* sysfs ' /proc/mounts 2> /dev/null) ; then
+	echo 1>&2 "ofpath: sysfs must be mounted for ofpath to support this system"
+        exit 1
+fi
+
+### Get the sysfs mount point
+SYS="$(m=`grep '.* .* sysfs ' /proc/mounts | head -n 1` ; echo `d=${m#* };echo ${d%% *}`)"
+if [ -z "$SYS" -o ! -d "$SYS" ] ; then
+	echo 1>&2 "ofpath: Unable to determine sysfs mountpoint"
+	exit 1
+fi
+
+
+### Get the device from the user
+### We dereference links to support devices like /dev/cdrom1
+DEVICE=$1
+if [ -z "$DEVICE" ]; then
+	echo 1>&2 "ofpath: No device specified!"
+	exit 1
+fi
+DEVICE=$(readlink -f "$DEVICE")
+DEVICE=$(basename $DEVICE)
+if [ -z "$DEVICE" ] || [ ! -e "/dev/$DEVICE" ]; then
+	echo 1>&2 "ofpath: Invalid device: /dev/$DEVICE"
+	exit 1
+fi
+[ "$DEBUG" = 1 ] && echo "Device is: $DEVICE"
+
+### Get the partition if we have it
+case ${DEVICE} in
+	sd*) PARTITION="${DEVICE#sd?}" ;;
+	### No partition for sr/sg devices
+	sr*|sg*) PARTITION="${DEVICE#sr?}" ;;
+	hd*) PARTITION="${DEVICE#hd?}" ;;
+	*) echo "Unknown device string."; exit 1;;
+esac
+if [ ! -z "$PARTITION" ] && [ "$DEBUG" = 1 ]; then
+	echo "Partition: $PARTITION"
+fi
+
+### Get the disk device name
+DISK_NAME="${DEVICE%%${PARTITION}}"
+[ "$DEBUG" = 1 ] && echo "Disk Name: $DISK_NAME"
+
+### Find the devspec for the controller
+DEVPATH=$(cd -P "$SYS/block/${DISK_NAME}/device" && pwd)
+if [ -z "$DEVPATH" ]; then
+	echo "Unable to determine device path!"
+	exit 1
+fi
+[ "$DEBUG" = 1 ] && echo "Devpath is: $DEVPATH"
+
+### Get the OF Path of the controller
+case ${DISK_NAME} in
+	sd*|sg*|sr*) CONTROLLER_PATH=$(cat ${DEVPATH}/../../../devspec) ;;
+	hd*) CONTROLLER_PATH=$(cat ${DEVPATH}/../../devspec) ;;
+	*) CONTROLLER_PATH="" ;;
+esac
+if [ -z "$CONTROLLER_PATH" ]; then
+	echo "Unable to determine controller path!"
+	exit 1
+fi
+[ "$DEBUG" = 1 ] && echo "Controller Path is: $CONTROLLER_PATH"
+
+### Generate the disk number and partition info
+case ${DISK_NAME} in
+	sd*|sg*|sr*)
+		DISK_NO="$(cd ${DEVPATH}/../; pwd)";
+		DISK_NO="${DISK_NO##*:}";
+		;;
+	hd*)
+		DISK_NO="$(cd ${DEVPATH}/../; pwd)";
+		DISK_NO="${DISK_NO##*ide}";
+		;;
+	*) echo "Unsupported disk type!"; exit 1 ;;
+esac
+DISK_NO="disk@${DISK_NO}:"
+[ "$DEBUG" = 1 ] && echo "Disk Number: ${DISK_NO}"
+
+### We need to get the controller port path (if it has one)
+if [ ! -d "$DEV_TREE/$CONTROLLER_PATH/disk" ] && [ ! -d "$DEV_TREE/$CONTROLLER_PATH/$DISK_NO" ]; then
+	### FIXME I don't know if every scsi device uses the host nomenclature
+	case ${DISK_NAME} in 
+		sd*|sg*|sr*)
+			PORT="$(cd ${DEVPATH}/../../; pwd)";
+			PORT="${PORT##*host}";
+			CTL_PORT="${CONTROLLER_PATH##*/}";
+			CTL_PORT="${CTL_PORT%%-root*}";
+			PORT="$CTL_PORT@$PORT"
+			[ "$DEBUG" = 1 ] && echo "Port: $PORT"
+			;;
+		*) echo "Unsupported disk type!"; exit 1 ;;
+	esac
+fi
+
+### Add the partition information if required
+if [ ! -z $PARTITION ]; then
+	DISK_NO="$DISK_NO$PARTITION"
+fi
+
+### Build the OF Path
+if [ -z "$PORT" ]; then
+	OFPATH="$CONTROLLER_PATH/$DISK_NO"
+else
+	OFPATH="$CONTROLLER_PATH/${PORT}/$DISK_NO"
+fi
+
+### Print out the ofpath
+echo $OFPATH

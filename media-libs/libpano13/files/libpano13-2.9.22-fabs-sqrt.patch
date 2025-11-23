@@ -1,0 +1,19 @@
+diff '--color=auto' -ru libpano13-2.9.22.orig/lmdif.c libpano13-2.9.22/lmdif.c
+--- libpano13-2.9.22.orig/lmdif.c	2025-05-25 09:57:52.790672552 +0200
++++ libpano13-2.9.22/lmdif.c	2025-05-25 09:58:26.444542495 +0200
+@@ -1222,7 +1222,6 @@
+ static double zero = 0.0;
+ static double p25 = 0.25;
+ static double p5 = 0.5;
+-double fabs(), sqrt();
+ 
+ /*
+ *     copy r and (q transpose)*b to preserve input and initialize s.
+@@ -1416,7 +1415,6 @@
+ static double rgiant = 1.304e19;
+ static double zero = 0.0;
+ static double one = 1.0;
+-double fabs(), sqrt();
+ 
+ s1 = zero;
+ s2 = zero;

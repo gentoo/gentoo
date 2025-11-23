@@ -1,0 +1,29 @@
+From 25decee2bd5a68d290dd3349aa9a72ce41b398b6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Fri, 15 Dec 2023 17:45:42 +0100
+Subject: [PATCH] Support SETUPPY_FORCE_PURE in tests
+
+Support testing without the C extension if SETUPPY_FORCE_PURE is set.
+This makes the test suite behavior consistent with setup.py behavior.
+---
+ tests/conftest.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 11d0379..2ba3209 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -1,3 +1,4 @@
++import os
+ import sys
+ 
+ import pytest
+@@ -19,7 +20,7 @@ class FakeModule:
+                 try:
+                     from lazy_object_proxy.cext import Proxy
+                 except ImportError:
+-                    if PYPY:
++                    if PYPY or os.environ.get('SETUPPY_FORCE_PURE'):
+                         pytest.skip(reason='C Extension not available.')
+                     else:
+                         raise

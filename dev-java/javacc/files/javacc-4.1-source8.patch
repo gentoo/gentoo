@@ -1,0 +1,134 @@
+--- a/build.xml
++++ b/build.xml
+@@ -112,6 +112,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
+     <junit printsummary="yes" haltonfailure="yes">
+       <classpath>
+        <pathelement path="classes" />
++       <pathelement path="lib/junit3.8.1/junit.jar" />
+       </classpath>
+       <batchtest fork="no" todir=".">
+         <fileset dir="classes">
+--- a/src/org/javacc/jjdoc/build.xml
++++ b/src/org/javacc/jjdoc/build.xml
+@@ -46,7 +46,8 @@ THE POSSIBILITY OF SUCH DAMAGE.
+     <javac srcdir="${javacc.root}/src"
+            destdir="${javacc.root}/classes"
+            debug="${build.compiler.debug}"
+-           source="1.4"
++           source="8"
++           target="8"
+            classpath="${javacc.root}/classes">
+     </javac>
+   </target>
+--- a/src/org/javacc/jjtree/build.xml
++++ b/src/org/javacc/jjtree/build.xml
+@@ -54,7 +54,8 @@ THE POSSIBILITY OF SUCH DAMAGE.
+     <javac srcdir="${javacc.root}/src"
+            destdir="${javacc.root}/classes"
+            debug="${build.compiler.debug}"
+-           source="1.4"
++           source="8"
++           target="8"
+            classpath="${javacc.root}/classes">
+     </javac>
+   </target>
+--- a/src/org/javacc/parser/build.xml
++++ b/src/org/javacc/parser/build.xml
+@@ -52,7 +52,8 @@ THE POSSIBILITY OF SUCH DAMAGE.
+     <javac srcdir="${javacc.root}/src"
+            destdir="${javacc.root}/classes"
+            debug="${build.compiler.debug}"
+-           source="1.4"
++           source="8"
++           target="8"
+            classpath="${javacc.root}/classes:${junit.jar}">
+     </javac>
+   </target>
+--- a/test/imports/build.xml
++++ b/test/imports/build.xml
+@@ -41,7 +41,8 @@ THE POSSIBILITY OF SUCH DAMAGE.
+ 
+     <javac srcdir="out-dir"
+            destdir="out-dir"
+-           source="1.4"
++           source="8"
++           target="8"
+ 	   debug="true"
+            classpath="../../bin/lib/javacc.jar">
+     </javac>
+--- a/test/javaFiles/build.xml
++++ b/test/javaFiles/build.xml
+@@ -52,7 +52,8 @@ THE POSSIBILITY OF SUCH DAMAGE.
+ 
+     <javac srcdir="out-dir"
+            destdir="out-dir/static"
+-           source="1.4"
++           source="8"
++           target="8"
+ 	   debug="true"
+            classpath="../../bin/lib/javacc.jar">
+     </javac>
+@@ -74,7 +75,8 @@ THE POSSIBILITY OF SUCH DAMAGE.
+ 
+     <javac srcdir="out-dir"
+            destdir="out-dir/non-static"
+-           source="1.4"
++           source="8"
++           target="8"
+ 	   debug="true"
+            classpath="../../bin/lib/javacc.jar">
+     </javac>
+@@ -99,7 +101,8 @@ THE POSSIBILITY OF SUCH DAMAGE.
+ 
+     <javac srcdir="out-dir"
+            destdir="out-dir/non-static"
+-           source="1.4"
++           source="8"
++           target="8"
+ 	   debug="true"
+            classpath="../../bin/lib/javacc.jar">
+     </javac>
+@@ -126,7 +129,8 @@ THE POSSIBILITY OF SUCH DAMAGE.
+ 
+     <javac srcdir="out-dir"
+            destdir="out-dir/non-static"
+-           source="1.4"
++           source="8"
++           target="8"
+ 	   debug="true"
+            classpath="../../bin/lib/javacc.jar">
+     </javac>
+@@ -152,7 +156,8 @@ THE POSSIBILITY OF SUCH DAMAGE.
+ 
+     <javac srcdir="out-dir"
+            destdir="out-dir/non-static"
+-           source="1.4"
++           source="8"
++           target="8"
+ 	   debug="true"
+            classpath="../../bin/lib/javacc.jar">
+     </javac>
+--- a/test/javacodeLA/build.xml
++++ b/test/javacodeLA/build.xml
+@@ -40,7 +40,8 @@ THE POSSIBILITY OF SUCH DAMAGE.
+ 
+     <javac srcdir="out-dir"
+            destdir="out-dir"
+-           source="1.4"
++           source="8"
++           target="8"
+ 	   debug="true"
+            classpath="../../bin/lib/javacc.jar">
+     </javac>
+--- a/test/lom/build.xml
++++ b/test/lom/build.xml
+@@ -40,7 +40,8 @@ THE POSSIBILITY OF SUCH DAMAGE.
+ 
+     <javac srcdir="out-dir"
+            destdir="out-dir"
+-           source="1.4"
++           source="8"
++           target="8"
+            debug="true"
+            classpath="../../bin/lib/javacc.jar">
+     </javac>

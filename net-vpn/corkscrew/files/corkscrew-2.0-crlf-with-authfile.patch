@@ -1,0 +1,12 @@
+diff -ur corkscrew-2.0/corkscrew.c corkscrew-2.0.new/corkscrew.c
+--- corkscrew-2.0/corkscrew.c	2001-08-23 14:27:32.000000000 -0400
++++ corkscrew-2.0.new/corkscrew.c	2018-04-03 11:06:53.268025605 -0400
+@@ -219,7 +219,7 @@
+ 	strncat(uri, destport, sizeof(uri) - strlen(uri) - 1);
+ 	strncat(uri, " HTTP/1.0", sizeof(uri) - strlen(uri) - 1);
+ 	if ((argc == 6) || (argc == 7)) {
+-		strncat(uri, "\nProxy-Authorization: Basic ", sizeof(uri) - strlen(uri) - 1);
++		strncat(uri, "\r\nProxy-Authorization: Basic ", sizeof(uri) - strlen(uri) - 1);
+ 		strncat(uri, base64_encode(up), sizeof(uri) - strlen(uri) - 1);
+ 	}
+ 	strncat(uri, linefeed, sizeof(uri) - strlen(uri) - 1);

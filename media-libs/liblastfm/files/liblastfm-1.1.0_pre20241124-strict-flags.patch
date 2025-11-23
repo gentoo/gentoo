@@ -1,0 +1,363 @@
+From f3e5d9a3cd2c885bfc35b6299dbc4e5d152b8754 Mon Sep 17 00:00:00 2001
+From: Tuomas Nurmi <tuomas@norsumanageri.org>
+Date: Mon, 8 Jul 2024 19:03:59 +0300
+Subject: [PATCH] Make work with stricter compilation flags
+
+QT_NO_CAST_[FROM/TO]_ASCII and signals -> Q_SIGNALS, slots -> Q_SLOTS
+Needed e.g. when included in default settings compilation of KDE Frameworks 5.85+
+software.
+---
+ demos/demo1.cpp                       | 2 +-
+ demos/demo2.cpp                       | 2 +-
+ demos/demo3.cpp                       | 2 +-
+ src/Album.h                           | 4 ++--
+ src/Artist.h                          | 4 ++--
+ src/Audioscrobbler.h                  | 6 +++---
+ src/InternetConnectionMonitor.h       | 4 ++--
+ src/Mbid.h                            | 2 +-
+ src/NetworkAccessManager.h            | 2 +-
+ src/NetworkConnectionMonitor.h        | 2 +-
+ src/RadioTuner.cpp                    | 2 +-
+ src/RadioTuner.h                      | 4 ++--
+ src/Track.cpp                         | 4 ++--
+ src/Track.h                           | 4 ++--
+ src/User.h                            | 2 +-
+ src/Xspf.h                            | 4 ++--
+ src/global.h.in                       | 2 +-
+ src/linux/LNetworkConnectionMonitor.h | 2 +-
+ src/mac/MNetworkConnectionMonitor.h   | 2 +-
+ tests/TestTrack.h                     | 2 +-
+ tests/TestUrlBuilder.h                | 2 +-
+ 21 files changed, 30 insertions(+), 30 deletions(-)
+
+diff --git a/demos/demo1.cpp b/demos/demo1.cpp
+index f3f4b44fb..c5fb52a7b 100644
+--- a/demos/demo1.cpp
++++ b/demos/demo1.cpp
+@@ -41,7 +41,7 @@ class ArtistList : public QListWidget
+         connect( reply, SIGNAL(finished()), SLOT(onGotSimilar()) );
+     }
+     
+-private slots:
++private Q_SLOTS:
+     void onGotSimilar()
+     {
+         QNetworkReply* r = static_cast<QNetworkReply*>(sender());
+diff --git a/demos/demo2.cpp b/demos/demo2.cpp
+index 27d1b116e..0800b7975 100644
+--- a/demos/demo2.cpp
++++ b/demos/demo2.cpp
+@@ -20,7 +20,7 @@ struct MyCoreApp : QCoreApplication
+     MyCoreApp( int& argc, char**& argv ) : QCoreApplication( argc, argv )
+     {}
+     
+-private slots:
++private Q_SLOTS:
+     void onWsError( lastfm::ws::Error e )
+     {
+         // QNetworkReply will invoke this slot on application level errors
+diff --git a/demos/demo3.cpp b/demos/demo3.cpp
+index 4d8546ae5..8eb8fe0ef 100644
+--- a/demos/demo3.cpp
++++ b/demos/demo3.cpp
+@@ -21,7 +21,7 @@ struct MyCoreApp : QCoreApplication
+     MyCoreApp( int& argc, char** argv ) : QCoreApplication( argc, argv )
+     {}
+ 
+-public slots:
++public Q_SLOTS:
+     void onStatus( int status )
+     {
+         qDebug() << lastfm::Audioscrobbler::Status(status);
+diff --git a/src/Album.h b/src/Album.h
+index 2770c21d7..0dd93539e 100644
+--- a/src/Album.h
++++ b/src/Album.h
+@@ -57,8 +57,8 @@ namespace lastfm
+         bool isNull() const;
+     
+         /** Album.getInfo WebService */
+-        QNetworkReply* getInfo( const QString& username = "" ) const;
+-        QNetworkReply* share( const QStringList& recipients, const QString& message = "", bool isPublic = true ) const;
++        QNetworkReply* getInfo( const QString& username = QStringLiteral("") ) const;
++        QNetworkReply* share( const QStringList& recipients, const QString& message = QStringLiteral(""), bool isPublic = true ) const;
+ 
+         /** use Tag::list to get the tag list out of the finished reply */
+         QNetworkReply* getTags() const;
+diff --git a/src/Artist.h b/src/Artist.h
+index 8e658a935..941e9c396 100644
+--- a/src/Artist.h
++++ b/src/Artist.h
+@@ -67,10 +67,10 @@ namespace lastfm
+ 
+         QDomElement toDomElement( QDomDocument& ) const;
+ 
+-        QNetworkReply* share( const QStringList& recipients, const QString& message = "", bool isPublic = true ) const;
++        QNetworkReply* share( const QStringList& recipients, const QString& message = QStringLiteral(""), bool isPublic = true ) const;
+ 
+         QNetworkReply* getEvents(int limit = 0) const;
+-        QNetworkReply* getInfo( const QString& username = "" ) const;
++        QNetworkReply* getInfo( const QString& username = QStringLiteral("") ) const;
+         static Artist getInfo( QNetworkReply* );
+ 
+         QNetworkReply* getSimilar( int limit = -1 ) const;
+diff --git a/src/Audioscrobbler.h b/src/Audioscrobbler.h
+index f74af3bec..394c5243d 100644
+--- a/src/Audioscrobbler.h
++++ b/src/Audioscrobbler.h
+@@ -43,14 +43,14 @@ namespace lastfm
+         Audioscrobbler( const QString& clientId );
+         ~Audioscrobbler();
+ 
+-    signals:
++    Q_SIGNALS:
+         void scrobblesCached( const QList<lastfm::Track>& tracks );
+         /* Note that this is emitted after we tried to submit the scrobbles
+         It could just be that they have an error code */
+         void scrobblesSubmitted( const QList<lastfm::Track>& tracks );
+         void nowPlayingError( int code, QString message );
+ 
+-    public slots:
++    public Q_SLOTS:
+         /** will ask Last.fm to update the now playing information for the 
+           * authenticated user */
+         void nowPlaying( const Track& );
+@@ -62,7 +62,7 @@ namespace lastfm
+         /** will submit the submission cache for this user */
+         void submit();
+ 
+-    private slots:
++    private Q_SLOTS:
+         void onNowPlayingReturn();
+         void onTrackScrobbleReturn();
+ 
+diff --git a/src/InternetConnectionMonitor.h b/src/InternetConnectionMonitor.h
+index 92525b2eb..3e6268317 100644
+--- a/src/InternetConnectionMonitor.h
++++ b/src/InternetConnectionMonitor.h
+@@ -45,7 +45,7 @@ class LASTFM_DLLEXPORT InternetConnectionMonitor : public QObject
+ 
+     NetworkConnectionMonitor* createNetworkConnectionMonitor();
+ 
+-signals:
++Q_SIGNALS:
+     /** yay! internet has returned */
+     void up( const QString& connectionName = "" );
+     
+@@ -56,7 +56,7 @@ class LASTFM_DLLEXPORT InternetConnectionMonitor : public QObject
+     /** emitted after the above */
+     void connectivityChanged( bool );
+ 
+-private slots:
++private Q_SLOTS:
+     void onFinished( QNetworkReply* reply );
+     void onNetworkUp();
+     void onNetworkDown();
+diff --git a/src/Mbid.h b/src/Mbid.h
+index a4f0edad3..1da1d3930 100644
+--- a/src/Mbid.h
++++ b/src/Mbid.h
+@@ -27,7 +27,7 @@ namespace lastfm
+     class LASTFM_DLLEXPORT Mbid
+     {
+     public:
+-        explicit Mbid( const QString& p = "" );
++        explicit Mbid( const QString& p = QStringLiteral("") );
+         Mbid( const Mbid& that );
+         ~Mbid();
+ 
+diff --git a/src/NetworkAccessManager.h b/src/NetworkAccessManager.h
+index 5a7187977..c2d33cdec 100644
+--- a/src/NetworkAccessManager.h
++++ b/src/NetworkAccessManager.h
+@@ -53,7 +53,7 @@ class LASTFM_DLLEXPORT NetworkAccessManager : public QNetworkAccessManager
+ protected:
+     virtual QNetworkReply* createRequest( Operation, const QNetworkRequest&, QIODevice* outgoingdata = 0 );
+ 
+-private slots:
++private Q_SLOTS:
+     void onConnectivityChanged( bool );
+ 
+ private:
+diff --git a/src/NetworkConnectionMonitor.h b/src/NetworkConnectionMonitor.h
+index 1319c4d0f..7b638f1f4 100644
+--- a/src/NetworkConnectionMonitor.h
++++ b/src/NetworkConnectionMonitor.h
+@@ -35,7 +35,7 @@ class LASTFM_DLLEXPORT NetworkConnectionMonitor : public QObject
+     ~NetworkConnectionMonitor();
+     bool isConnected() const;
+ 
+-signals:
++Q_SIGNALS:
+     void networkUp();
+     void networkDown();
+ 
+diff --git a/src/RadioTuner.cpp b/src/RadioTuner.cpp
+index 948ce660f..3deac1790 100644
+--- a/src/RadioTuner.cpp
++++ b/src/RadioTuner.cpp
+@@ -65,7 +65,7 @@ class lastfm::RadioTunerPrivate : public QObject
+           */
+         void fetchFiveMoreTracks();
+ 
+-    private slots:
++    private Q_SLOTS:
+         void onTwoSecondTimeout();
+ };
+ 
+diff --git a/src/RadioTuner.h b/src/RadioTuner.h
+index 0db08c739..b45c36a3f 100644
+--- a/src/RadioTuner.h
++++ b/src/RadioTuner.h
+@@ -48,13 +48,13 @@ namespace lastfm
+ 
+         void queueTrack( lastfm::Track& track );
+ 
+-    signals:
++    Q_SIGNALS:
+         void title( const QString& );
+         void supportsDisco( bool supportsDisco );
+         void trackAvailable();
+         void error( lastfm::ws::Error, const QString& message );
+ 
+-    private slots:
++    private Q_SLOTS:
+         void onTuneReturn();
+         void onGetPlaylistReturn();
+         // no-op
+diff --git a/src/Track.cpp b/src/Track.cpp
+index 203c30bf3..9fd9ac50f 100644
+--- a/src/Track.cpp
++++ b/src/Track.cpp
+@@ -112,12 +112,12 @@ class TrackObject : public QObject
+     void forceScrobbleStatusChanged();
+     void forceCorrected( QString correction );
+ 
+-private slots:
++private Q_SLOTS:
+     void onLoveFinished();
+     void onUnloveFinished();
+     void onGotInfo();
+ 
+-signals:
++Q_SIGNALS:
+     void loveToggled( bool love );
+     void scrobbleStatusChanged( short scrobbleStatus );
+     void corrected( QString correction );
+diff --git a/src/Track.h b/src/Track.h
+index fbde4a3f7..b35399ed3 100644
+--- a/src/Track.h
++++ b/src/Track.h
+@@ -193,7 +193,7 @@ class LASTFM_DLLEXPORT Track : public AbstractType
+ //////////// lastfm::Ws
+     
+     /** See last.fm/api Track section */
+-    QNetworkReply* share( const QStringList& recipients, const QString& message = "", bool isPublic = true ) const;
++    QNetworkReply* share( const QStringList& recipients, const QString& message = QStringLiteral(""), bool isPublic = true ) const;
+ 
+     QNetworkReply* getSimilar( int limit = -1 ) const;
+     /** The match percentage is returned from last.fm as a 4 significant
+@@ -211,7 +211,7 @@ class LASTFM_DLLEXPORT Track : public AbstractType
+     /** method should be a method name of reciever that takes a QByteArray
+     If that fails it will try invoking method with no arguments.
+     */
+-    void getInfo( QObject* receiver, const char * method, const QString& username = "" ) const;
++    void getInfo( QObject* receiver, const char * method, const QString& username = QStringLiteral("") ) const;
+     QNetworkReply* getBuyLinks( const QString& country ) const;
+ 
+     static QNetworkReply* playlinks( const QList<Track>& tracks );
+diff --git a/src/User.h b/src/User.h
+index f2666780b..662ce5110 100644
+--- a/src/User.h
++++ b/src/User.h
+@@ -121,7 +121,7 @@ namespace lastfm
+     
+         QNetworkReply* getLovedTracks( int limit = 50, int page = 1 ) const;
+         QNetworkReply* getPlaylists() const;
+-        QNetworkReply* getTopArtists( QString period = "overall", int limit = 50, int page = 1 ) const;
++        QNetworkReply* getTopArtists( QString period = QStringLiteral("overall"), int limit = 50, int page = 1 ) const;
+         QNetworkReply* getRecentTracks( int limit = 50, int page = 1 ) const;
+         QNetworkReply* getRecentArtists() const;
+         QNetworkReply* getRecentStations(  int limit = 10, int page = 1  ) const;
+diff --git a/src/Xspf.h b/src/Xspf.h
+index f392ae236..ee8276ba4 100644
+--- a/src/Xspf.h
++++ b/src/Xspf.h
+@@ -40,10 +40,10 @@ namespace lastfm
+ 
+         QList<Track> tracks() const;
+ 
+-    signals:
++    Q_SIGNALS:
+         Q_DECL_DEPRECATED void expired();
+ 
+-    private slots:
++    private Q_SLOTS:
+         Q_DECL_DEPRECATED void onExpired();
+ 
+     private:
+diff --git a/src/global.h.in b/src/global.h.in
+index fc479b221..d96659c0d 100644
+--- a/src/global.h.in
++++ b/src/global.h.in
+@@ -62,7 +62,7 @@ namespace lastfm
+         for (int i=0; i < meta.enumeratorCount(); ++i)
+         {
+             QMetaEnum m = meta.enumerator(i);
+-            if (m.name() == QLatin1String(enum_name))
++            if (QLatin1String(m.name()) == QLatin1String(enum_name))
+                 return QLatin1String(m.valueToKey(enum_value));
+         }
+         return QString("Unknown enum value for \"%1\": %2").arg( enum_name ).arg( enum_value );
+diff --git a/src/linux/LNetworkConnectionMonitor.h b/src/linux/LNetworkConnectionMonitor.h
+index b59fdc023..d65e825d7 100644
+--- a/src/linux/LNetworkConnectionMonitor.h
++++ b/src/linux/LNetworkConnectionMonitor.h
+@@ -49,7 +49,7 @@ class LNetworkConnectionMonitor : public NetworkConnectionMonitor
+ public:
+     LNetworkConnectionMonitor( QObject* parent = 0 );
+     ~LNetworkConnectionMonitor();
+-private slots:
++private Q_SLOTS:
+     void onStateChange( uint newState );
+ private:
+     QDBusInterface* m_nmInterface;
+diff --git a/src/mac/MNetworkConnectionMonitor.h b/src/mac/MNetworkConnectionMonitor.h
+index 3c03c47fa..8c051e3d7 100644
+--- a/src/mac/MNetworkConnectionMonitor.h
++++ b/src/mac/MNetworkConnectionMonitor.h
+@@ -39,7 +39,7 @@ class MNetworkConnectionMonitor : public NetworkConnectionMonitor
+ public:
+     MNetworkConnectionMonitor( QObject* parent = 0 );
+     ~MNetworkConnectionMonitor();
+-private slots:
++private Q_SLOTS:
+ 
+ private:
+ #ifdef Q_OS_MAC
+diff --git a/tests/TestTrack.h b/tests/TestTrack.h
+index 5dbd547ad..42f20ee8b 100644
+--- a/tests/TestTrack.h
++++ b/tests/TestTrack.h
+@@ -26,7 +26,7 @@ class TestTrack : public QObject
+         return t;
+     }
+     
+-private slots:
++private Q_SLOTS:
+     void testClone()
+     {
+         Track original = example();
+diff --git a/tests/TestUrlBuilder.h b/tests/TestUrlBuilder.h
+index 7001e92e2..ac07aebf1 100644
+--- a/tests/TestUrlBuilder.h
++++ b/tests/TestUrlBuilder.h
+@@ -37,7 +37,7 @@ class TestUrlBuilder : public QObject
+ {
+     Q_OBJECT
+ 
+-private slots:
++private Q_SLOTS:
+     void encode() /** @author <jono@last.fm> */
+     {
+         QFETCH( QString, input );

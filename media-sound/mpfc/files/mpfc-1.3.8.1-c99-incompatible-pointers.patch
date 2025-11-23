@@ -1,0 +1,50 @@
+Closes: https://bugs.gentoo.org/921021
+diff -ur  mpfc-1.3.8.1.orig/src/player.c mpfc-1.3.8.1/src/player.c
+--- a/src/player.c	2024-04-01 17:05:09.855312224 +0000
++++ b/src/player.c	2024-04-01 17:08:54.586992161 +0000
+@@ -2673,14 +2673,14 @@
+ 	{
+ 		player_pmng_view_t *v = &views[i];
+ 		int index = v->m_list->m_cursor;
+-		plugin_t *p;
++		general_plugin_t *p;
+ 
+ 		/* Get info */
+ 		if (!v->m_list->m_list_size)
+ 			continue;
+-		p = (plugin_t *)v->m_list->m_list[index].m_data;
+-		char *author = plugin_get_author(p);
+-		char *desc = plugin_get_desc(p);
++		p = v->m_list->m_list[index].m_data;
++		char *author = plugin_get_author(&p->m_plugin);
++		char *desc = plugin_get_desc(&p->m_plugin);
+ 
+ 		/* Set labels */
+ 		editbox_set_text(v->m_author, author == NULL ? "" : author);
+@@ -2688,7 +2688,7 @@
+ 
+ 		/* Synchronize effect checkbox */
+ 		if (i == PLAYER_PMNG_EFFECT)
+-			v->m_enabled_cb->m_checked = pmng_is_effect_enabled(player_pmng, p);
++			v->m_enabled_cb->m_checked = pmng_is_effect_enabled(player_pmng, &p->m_plugin);
+ 		else if (i == PLAYER_PMNG_GENERAL)
+ 		{
+ 			bool_t started = genp_is_started(p);
+@@ -3198,7 +3198,7 @@
+ 	player_pmng_view_t *v = NULL;
+ 	player_pmng_view_t *views; 
+ 	wnd_t *dlg;
+-	plugin_t *p;
++	general_plugin_t *p;
+ 	int index;
+ 
+ 	/* Determine our view */
+@@ -3212,7 +3212,7 @@
+ 	index = v->m_list->m_cursor;
+ 	if (!v->m_list->m_list_size)
+ 		return WND_MSG_RETCODE_OK;
+-	p = (plugin_t *)v->m_list->m_list[index].m_data;
++	p = v->m_list->m_list[index].m_data;
+ 
+ 	/* Change state */
+ 	if (!genp_is_started(p))

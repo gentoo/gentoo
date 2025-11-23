@@ -1,0 +1,20 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -308,7 +308,7 @@ if(${CMAKE_SYSTEM_NAME} STREQUAL "Darwin")
+     set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "Flacon")
+     install(TARGETS ${PROJECT_NAME} RUNTIME                 DESTINATION Flacon.app/Contents/MacOS)
+     install(FILES   ${QM_FILES}                             DESTINATION Flacon.app/Contents/translations)
+-    install(FILES   ${CMAKE_CURRENT_BINARY_DIR}/flacon.1.gz DESTINATION Flacon.app/Contents/Resources)
++    install(FILES   ${CMAKE_CURRENT_BINARY_DIR}/flacon.1 DESTINATION Flacon.app/Contents/Resources)
+     install(FILES   ${CMAKE_CURRENT_BINARY_DIR}/Info.plist  DESTINATION Flacon.app/Contents)
+     install(FILES   images/mainicon/Flacon.icns             DESTINATION Flacon.app/Contents/Resources)
+ 
+@@ -337,7 +337,7 @@ if(${CMAKE_SYSTEM_NAME} STREQUAL "Darwin")
+ else()
+     install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
+     install(FILES   ${QM_FILES}             DESTINATION ${TRANSLATIONS_DIR})
+-    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/flacon.1.gz DESTINATION share/man/man1)
++    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/flacon.1 DESTINATION share/man/man1)
+ 
+     install(FILES   ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.desktop        DESTINATION "share/applications")
+     install(FILES   ${CMAKE_CURRENT_BINARY_DIR}/com.github.Flacon.metainfo.xml DESTINATION "share/metainfo")

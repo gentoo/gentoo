@@ -1,0 +1,471 @@
+There was pathological amount of inlines, some of them caused warnings
+and linking failures. All of them are now removed. Modern compilers are
+smarter than that.
+https://bugs.gentoo.org/876337
+--- a/intl/gettextP.h
++++ b/intl/gettextP.h
+@@ -46,7 +46,7 @@
+ #else
+ static nls_uint32 SWAP PARAMS ((nls_uint32 i));
+ 
+-static inline nls_uint32
++static nls_uint32
+ SWAP (i)
+      nls_uint32 i;
+ {
+--- a/intl/hash-string.h
++++ b/intl/hash-string.h
+@@ -35,7 +35,7 @@
+    1986, 1987 Bell Telephone Laboratories, Inc.]  */
+ static unsigned long hash_string PARAMS ((const char *__str_param));
+ 
+-static inline unsigned long
++static unsigned long
+ hash_string (str_param)
+      const char *str_param;
+ {
+--- a/intl/l10nflist.c
++++ b/intl/l10nflist.c
+@@ -154,7 +154,7 @@
+ /* Return number of bits set in X.  */
+ static int pop PARAMS ((int x));
+ 
+-static inline int
++static int
+ pop (x)
+      int x;
+ {
+--- a/lgc-pg/misc.c
++++ b/lgc-pg/misc.c
+@@ -27,27 +27,27 @@
+ extern char *dest_path;
+ 
+ /* compares to strings and returns true if their first strlen(str1) chars are equal */
+-inline int equal_str( char *str1, char *str2 )
++int equal_str( char *str1, char *str2 )
+ {
+     if ( strlen( str1 ) != strlen( str2 ) ) return 0;
+     return ( !strncmp( str1, str2, strlen( str1 ) ) );
+ }
+ 
+ /* set delay to ms milliseconds */
+-inline void set_delay( Delay *delay, int ms )
++void set_delay( Delay *delay, int ms )
+ {
+     delay->limit = ms;
+     delay->cur = 0;
+ }
+ 
+ /* reset delay ( cur = 0 )*/
+-inline void reset_delay( Delay *delay )
++void reset_delay( Delay *delay )
+ {
+     delay->cur = 0;
+ }
+ 
+ /* check if times out and reset */
+-inline int timed_out( Delay *delay, int ms )
++int timed_out( Delay *delay, int ms )
+ {
+     delay->cur += ms;
+     if ( delay->cur >= delay->limit ) {
+@@ -60,7 +60,7 @@
+ }
+ 
+ 
+-inline void goto_tile( int *x, int *y, int d )
++void goto_tile( int *x, int *y, int d )
+ {
+     /*  0 -up, clockwise, 5 - left up */
+     switch ( d ) {
+--- a/lgc-pg/misc.h
++++ b/lgc-pg/misc.h
+@@ -52,13 +52,13 @@
+ } Delay;
+ 
+ /* set delay to ms milliseconds */
+-inline void set_delay( Delay *delay, int ms );
++void set_delay( Delay *delay, int ms );
+ 
+ /* reset delay ( cur = 0 )*/
+-inline void reset_delay( Delay *delay );
++void reset_delay( Delay *delay );
+ 
+ /* check if time's out ( add ms milliseconds )and reset */
+-inline int timed_out( Delay *delay, int ms );
++int timed_out( Delay *delay, int ms );
+ 
+ /* return distance betwteen to map positions */
+ int get_dist( int x1, int y1, int x2, int y2 );
+--- a/lged/lged.c
++++ b/lged/lged.c
+@@ -356,7 +356,7 @@
+     free((void *)path);
+     
+     if (within_source_tree)
+-      verbosef(2, "Source tree detected. Using inline paths.\n");
++      verbosef(2, "Source tree detected. Using paths.\n");
+   }
+   
+   /* get path for unitdb */
+@@ -387,7 +387,7 @@
+ }
+ 
+ /** returns 1 if criterion is to be omitted */
+-inline static int is_omitted(const char *criterion) {
++static int is_omitted(const char *criterion) {
+   return !criterion || strcmp(criterion, "-") == 0 || strcmp(criterion, "*") == 0;
+ }
+ 
+@@ -407,7 +407,7 @@
+  * of ary. If found, the index of the first element is returned,
+  * -1 otherwise. 'i' is the starting index, 'sz' the size of the array.
+  */
+-inline static int find_in_array(const char *needle, int i, const char **ary, int sz) {
++static int find_in_array(const char *needle, int i, const char **ary, int sz) {
+   for (; i < sz; i++)
+     if (strcasestr(ary[i], needle)) return i;
+   return -1;
+@@ -430,7 +430,7 @@
+  * returns 1 if 'bitmap' is true at position 'idx'. 'sz' is the size of
+  * the bitmap.
+  */
+-inline static int in_bitmap(int idx, const char *bitmap, int sz) {
++static int in_bitmap(int idx, const char *bitmap, int sz) {
+   return idx >= 0 && idx < sz && bitmap[idx];
+ }
+ 
+--- a/src/campaign.c
++++ b/src/campaign.c
+@@ -135,7 +135,7 @@
+ }
+ 
+ /** resolve key within entries and translate the result wrt domain */
+-inline static char *camp_resolve_ref_localized(PData *entries, const char *key, const char *scen_stat, const char *domain)
++static char *camp_resolve_ref_localized(PData *entries, const char *key, const char *scen_stat, const char *domain)
+ {
+     const char *res = camp_resolve_ref(entries, key, scen_stat);
+     return res ? strdup(trd(domain, res)) : 0;
+--- a/src/engine.c
++++ b/src/engine.c
+@@ -375,7 +375,7 @@
+ Returns true when the status screen dismission events took place.
+ ====================================================================
+ */
+-inline static int engine_status_screen_dismissed()
++static int engine_status_screen_dismissed()
+ {
+     int dummy;
+     return event_get_buttonup( &dummy, &dummy, &dummy )
+--- a/src/gui.c
++++ b/src/gui.c
+@@ -1691,7 +1691,7 @@
+ }
+ 
+ /** unite with existing repaint rectangle */
+-inline static void message_pane_unite_repaint_rect(MessagePane *pane, int x1, int y1, int x2, int y2)
++static void message_pane_unite_repaint_rect(MessagePane *pane, int x1, int y1, int x2, int y2)
+ {
+     if ((pane->refresh_x2 - pane->refresh_x1) <= 0
+         || (pane->refresh_y2 - pane->refresh_y1) <= 0) {
+--- a/src/lg-sdl.c
++++ b/src/lg-sdl.c
+@@ -35,7 +35,7 @@
+ /* sdl surface */
+ 
+ /* return full path of bitmap */
+-inline void get_full_bmp_path( char *full_path, const char *file_name )
++void get_full_bmp_path( char *full_path, const char *file_name )
+ {
+     sprintf(full_path,  "%s/gfx/%s", get_gamedir(), file_name );
+ }
+@@ -119,7 +119,7 @@
+ /*
+     lock surface
+ */
+-inline void lock_surf(SDL_Surface *sur)
++void lock_surf(SDL_Surface *sur)
+ {
+     if (SDL_MUSTLOCK(sur))
+         SDL_LockSurface(sur);
+@@ -128,7 +128,7 @@
+ /*
+     unlock surface
+ */
+-inline void unlock_surf(SDL_Surface *sur)
++void unlock_surf(SDL_Surface *sur)
+ {
+     if (SDL_MUSTLOCK(sur))
+         SDL_UnlockSurface(sur);
+@@ -477,7 +477,7 @@
+ /*
+     lock font surface
+ */
+-inline void lock_font(Font *fnt)
++void lock_font(Font *fnt)
+ {
+     if (SDL_MUSTLOCK(fnt->pic))
+         SDL_LockSurface(fnt->pic);
+@@ -486,7 +486,7 @@
+ /*
+     unlock font surface
+ */
+-inline void unlock_font(Font *fnt)
++void unlock_font(Font *fnt)
+ {
+     if (SDL_MUSTLOCK(fnt->pic))
+         SDL_UnlockSurface(fnt->pic);
+@@ -501,7 +501,7 @@
+     return rect;
+ }
+ 
+-inline int  char_width(Font *fnt, char c)
++int  char_width(Font *fnt, char c)
+ {
+     unsigned i = (unsigned char)c;
+     return fnt->char_offset[i + 1] - fnt->char_offset[i];
+@@ -844,7 +844,7 @@
+ /*
+     lock surface
+ */
+-inline void lock_screen()
++void lock_screen()
+ {
+     if (SDL_MUSTLOCK(sdl.screen))
+         SDL_LockSurface(sdl.screen);
+@@ -853,7 +853,7 @@
+ /*
+     unlock surface
+ */
+-inline void unlock_screen()
++void unlock_screen()
+ {
+     if (SDL_MUSTLOCK(sdl.screen))
+         SDL_UnlockSurface(sdl.screen);
+@@ -862,7 +862,7 @@
+ /*
+     flip hardware screens (double buffer)
+ */
+-inline void flip_screen()
++void flip_screen()
+ {
+     SDL_Flip(sdl.screen);
+ }
+--- a/src/lg-sdl.h
++++ b/src/lg-sdl.h
+@@ -43,8 +43,8 @@
+ SDL_Surface* create_surf(int w, int h, int f);
+ void free_surf( SDL_Surface **surf );
+ int  disp_format(SDL_Surface *sur);
+-inline void lock_surf(SDL_Surface *sur);
+-inline void unlock_surf(SDL_Surface *sur);
++void lock_surf(SDL_Surface *sur);
++void unlock_surf(SDL_Surface *sur);
+ void blit_surf(void);
+ void alpha_blit_surf(int alpha);
+ void fill_surf(int c);
+@@ -93,8 +93,8 @@
+ void free_font(Font **sfnt);
+ int  write_text(Font *sfnt, SDL_Surface *dest, int x, int y, const char *str, int alpha);
+ void write_line( SDL_Surface *surf, Font *font, const char *str, int x, int *y );
+-inline void lock_font(Font *sfnt);
+-inline void unlock_font(Font *sfnt);
++void lock_font(Font *sfnt);
++void unlock_font(Font *sfnt);
+ SDL_Rect last_write_rect(Font *fnt);
+ int  text_width(Font *fnt, const char *str);
+ int  char_width(Font *fnt, char c);
+@@ -132,9 +132,9 @@
+ void undim_screen(int steps, int delay, int trp);
+ int  wait_for_key();
+ void wait_for_click();
+-inline void lock_screen();
+-inline void unlock_screen();
+-inline void flip_screen();
++void lock_screen();
++void unlock_screen();
++void flip_screen();
+ 
+ /* cursor */
+ /* creates cursor */
+--- a/src/misc.c
++++ b/src/misc.c
+@@ -29,27 +29,27 @@
+ extern int map_w, map_h; /* FIX ME! */
+ 
+ /* compares to strings and returns true if their first strlen(str1) chars are equal */
+-inline int equal_str( const char *str1, const char *str2 )
++int equal_str( const char *str1, const char *str2 )
+ {
+     if ( strlen( str1 ) != strlen( str2 ) ) return 0;
+     return ( !strncmp( str1, str2, strlen( str1 ) ) );
+ }
+ 
+ /* set delay to ms milliseconds */
+-inline void set_delay( Delay *delay, int ms )
++void set_delay( Delay *delay, int ms )
+ {
+     delay->limit = ms;
+     delay->cur = 0;
+ }
+ 
+ /* reset delay ( cur = 0 )*/
+-inline void reset_delay( Delay *delay )
++void reset_delay( Delay *delay )
+ {
+     delay->cur = 0;
+ }
+ 
+ /* check if times out and reset */
+-inline int timed_out( Delay *delay, int ms )
++int timed_out( Delay *delay, int ms )
+ {
+     delay->cur += ms;
+     if ( delay->cur >= delay->limit ) {
+@@ -62,7 +62,7 @@
+ }
+ 
+ /* Convert grid coordinates into isometric (diagonal) coordinates. */
+-inline static void convert_coords_to_diag( int *x, int *y )
++static void convert_coords_to_diag( int *x, int *y )
+ {
+   *y += (*x + 1) / 2;
+ }
+@@ -126,13 +126,13 @@
+ }
+ 
+ /** return 1 if ch is a line breaking character */
+-inline static int text_is_linebreak(char ch)
++static int text_is_linebreak(char ch)
+ {
+     return ch == '#';
+ }
+ 
+ /** return 1 if text is breakable just before end */
+-inline static int text_is_breakable(const char *begin, const char *end)
++static int text_is_breakable(const char *begin, const char *end)
+ {
+     return begin != end
+             && (end[-1] == '\t' || end[-1] == '\n' || end[-1] == ' '
+--- a/src/misc.h
++++ b/src/misc.h
+@@ -101,13 +101,13 @@
+ } Delay;
+ 
+ /* set delay to ms milliseconds */
+-inline void set_delay( Delay *delay, int ms );
++void set_delay( Delay *delay, int ms );
+ 
+ /* reset delay ( cur = 0 )*/
+-inline void reset_delay( Delay *delay );
++void reset_delay( Delay *delay );
+ 
+ /* check if time's out ( add ms milliseconds )and reset */
+-inline int timed_out( Delay *delay, int ms );
++int timed_out( Delay *delay, int ms );
+ 
+ /* return distance betwteen to map positions */
+ int get_dist( int x1, int y1, int x2, int y2 );
+--- a/src/parser.c
++++ b/src/parser.c
+@@ -51,11 +51,11 @@
+     free(ctd->filename);
+ }
+ 
+-static inline void common_tree_data_ref(struct CommonTreeData *ctd) {
++static void common_tree_data_ref(struct CommonTreeData *ctd) {
+     ctd->ref++;
+ }
+ 
+-static inline int common_tree_data_deref(struct CommonTreeData *ctd) {
++static int common_tree_data_deref(struct CommonTreeData *ctd) {
+     int del = --ctd->ref == 0;
+     if (del) common_tree_data_delete(ctd);
+     return del;
+@@ -115,7 +115,7 @@
+ Returns whether this is a valid character for a string.
+ ====================================================================
+ */
+-inline static int parser_is_valid_string_char(char ch)
++static int parser_is_valid_string_char(char ch)
+ {
+     switch (ch) {
+     case '$': case '/': case '@': case '_': case '.': case ':': case '~':
+@@ -272,7 +272,7 @@
+ and return the new position.
+ ====================================================================
+ */
+-static inline const char* string_ignore_whitespace( const char *string )
++static const char* string_ignore_whitespace( const char *string )
+ {
+     while ( *string != 0 && (unsigned char)*string <= 32 ) string++;
+     return string;
+@@ -286,7 +286,7 @@
+ hours of precious sleep.
+ ====================================================================
+ */
+-static inline PData *parser_create_pdata( char *name, List *values, int lineno, struct CommonTreeData *ctd )
++static PData *parser_create_pdata( char *name, List *values, int lineno, struct CommonTreeData *ctd )
+ {
+     PData *pd = calloc(1, sizeof(PData));
+     pd->name = name;
+--- a/src/slot.c
++++ b/src/slot.c
+@@ -157,7 +157,7 @@
+     /* we always write the platform-specific endianness */
+     fwrite( &i, sizeof( int ), 1, file );
+ }
+-static inline int load_int( FILE *file )
++static int load_int( FILE *file )
+ {
+     return try_load_int( file, 0 );
+ }
+@@ -186,7 +186,7 @@
+ {
+     fwrite( &p, sizeof( void * ), 1, file );
+ }
+-static inline void *load_pointer( FILE *file )
++static void *load_pointer( FILE *file )
+ {
+     return try_load_pointer( file, 0 );
+ }
+--- a/util/hashtable_private.h
++++ b/util/hashtable_private.h
+@@ -30,13 +30,13 @@
+ 
+ /*****************************************************************************/
+ /* indexFor */
+-static inline unsigned int
++static unsigned int
+ indexFor(unsigned int tablelength, unsigned int hashvalue) {
+     return (hashvalue % tablelength);
+ };
+ 
+ /* Only works if tablelength == 2^N */
+-/*static inline unsigned int
++/*static unsigned int
+ indexFor(unsigned int tablelength, unsigned int hashvalue)
+ {
+     return (hashvalue & (tablelength - 1u));
+--- a/util/localize.c
++++ b/util/localize.c
+@@ -71,7 +71,7 @@
+ }
+ 
+ /** returns the domain-map */
+-static inline struct hashtable *domain_map_instance() {
++static struct hashtable *domain_map_instance() {
+   if (!domain_map) {
+     domain_map = create_hashtable(10, (unsigned int (*) (void*))hash_string,
+                               (int (*)(void *, void *))strcmp,
+--- a/util/localize.h
++++ b/util/localize.h
+@@ -37,7 +37,7 @@
+ /** shorthand for fetching translation of default domain */
+ #  define tr(s) gettext (s)
+ /** shorthand for fetching translation of specified domain */
+-inline static const char *trd(const char *dom, const char *s) { return *(s) ? dgettext ((dom), (s)) : ""; }
++static const char *trd(const char *dom, const char *s) { return *(s) ? dgettext ((dom), (s)) : ""; }
+ /** shorthand for marking for translation of default domain */
+ #  define TR_NOOP(s) (s)
+ 

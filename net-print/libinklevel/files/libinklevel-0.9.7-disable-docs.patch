@@ -1,0 +1,16 @@
+was sed in 0.9.3
+Disables manual installation of docs that conflicts with ebuild
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -2,11 +2,10 @@
+ 
+ AM_CFLAGS = -Wall $(LIBUSB1_CFLAGS) $(LIBXML2_CFLAGS)
+ ACLOCAL_AMFLAGS = -I m4
+ 
+ lib_LTLIBRARIES = libinklevel.la
+-dist_doc_DATA = NEWS README AUTHORS COPYING ChangeLog
+ LIBTOOL_DEPS = @LIBTOOL_DEPS@
+ 
+ libtool: $(LIBTOOL_DEPS)
+ 	$(SHELL) ./config.status --recheck
+ 

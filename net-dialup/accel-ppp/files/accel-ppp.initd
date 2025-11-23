@@ -1,0 +1,44 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+
+extra_started_commands="reload"
+
+depend() {
+	need net
+}
+
+start_pre() {
+	# Create directory for PID file
+	checkpath -d -q "$(dirname ${ACCEL_PPPD_PID})"
+	# Create default directory for radius attributes
+	checkpath -d -q "${RADATTR_DIR}"
+}
+
+start() {
+	ebegin "Starting accel-pppd"
+	start-stop-daemon --start --quiet --exec /usr/sbin/accel-pppd -- ${ACCEL_PPPD_OPTS} -p ${ACCEL_PPPD_PID}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping accel-pppd"
+	accel-cmd shutdown ${SHUTDOWN_MODE:-hard}
+	[ $? -ne 0 ] && kill -9 $(pidof accel-pppd)
+	PID="$(cat ${ACCEL_PPPD_PID})"
+	while [ -n "${PID}" -a -d "/proc/${PID}" ]; do
+		sleep 1
+	done
+	rm -f ${ACCEL_PPPD_PID}
+	eend 0
+}
+
+reload() {
+	if [ ! -f ${ACCEL_PPPD_PID} ]; then
+		eerror "accel-pppd isn't running"
+		return 1
+	fi
+	ebegin "Reloading configuration"
+	start-stop-daemon --signal USR1 --pidfile ${ACCEL_PPPD_PID}
+	eend $?
+}

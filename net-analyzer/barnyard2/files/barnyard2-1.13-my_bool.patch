@@ -1,0 +1,11 @@
+--- a/src/output-plugins/spo_database.h
++++ b/src/output-plugins/spo_database.h
+@@ -357,7 +357,7 @@
+     /* Herited from shared data globals */
+ 
+     unsigned long pThreadID; /* Used to store thread information and know if we "reconnected automaticaly" */
+-    my_bool mysql_reconnect; /* We will handle it via the api. */
++    u_int8_t mysql_reconnect; /* We will handle it via the api. */
+ #endif /* ENABLE_MYSQL */
+ 
+ #ifdef ENABLE_POSTGRESQL

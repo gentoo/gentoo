@@ -1,0 +1,29 @@
+use modern reboot
+diff --git a/elksemu/elks_sys.c b/elksemu/elks_sys.c
+index 5699edc..45c97f7 100644
+--- a/elksemu/elks_sys.c
++++ b/elksemu/elks_sys.c
+@@ -17,6 +17,8 @@
+ #include <signal.h>
+ #include <errno.h>
+ #include <sys/types.h>
++#include <linux/reboot.h>
++#include <sys/reboot.h>
+ #include <sys/resource.h>
+ #include <sys/wait.h>
+ #include <sys/ioctl.h>
+@@ -656,11 +658,11 @@ static int elks_reboot(int bx,int cx,int dx,int di,int si)
+    switch(dx)
+    {
+    /* graceful shutdown, C-A-D off, kill -? 1 */
+-   case 0:     return reboot(0xfee1dead, 672274793, 0);
++   case 0:     return reboot(LINUX_REBOOT_CMD_CAD_OFF);
+    /* Enable C-A-D */
+-   case 0xCAD: return reboot(0xfee1dead, 672274793, 0x89abcdef);
++   case 0xCAD: return reboot(LINUX_REBOOT_CMD_CAD_ON);
+    /* Time to die! */
+-   case 0xD1E: return reboot(0xfee1dead, 672274793, 0x1234567);
++   case 0xD1E: return reboot(LINUX_REBOOT_CMD_RESTART);
+    }
+    return -1;
+ }

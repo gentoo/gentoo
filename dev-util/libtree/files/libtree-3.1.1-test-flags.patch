@@ -1,0 +1,49 @@
+https://bugs.gentoo.org/905774
+https://github.com/haampie/libtree/issues/78
+https://github.com/haampie/libtree/pull/83
+
+From 061d3ec62707a526a83482e57d202a66f9d776cd Mon Sep 17 00:00:00 2001
+From: Ismael Luceno <ismael@iodev.co.uk>
+Date: Tue, 23 Aug 2022 19:34:39 +0200
+Subject: [PATCH] Test the -m32 and -m64 compiler flags before use
+
+Fixes: https://github.com/haampie/libtree/issues/78
+Signed-off-by: Ismael Luceno <ismael@iodev.co.uk>
+--- a/tests/05_32_bits/Makefile
++++ b/tests/05_32_bits/Makefile
+@@ -3,7 +3,7 @@
+ 
+ LD_LIBRARY_PATH=
+ 
+-.PHONY: clean
++.PHONY: clean check
+ 
+ all: check
+ 
+@@ -21,11 +21,21 @@ exe64: lib64/libx.so
+ exe32: lib32/libx.so
+ 	echo 'extern int a(); int _start(){return a();}' | $(CC) -m32 "-Wl,-rpath,$(CURDIR)/lib64" "-Wl,-rpath,$(CURDIR)/lib32" -o $@ -nostdlib -x c - -Llib32 -lx
+ 
+-check: exe32 exe64
+-	../../libtree exe32
+-	../../libtree exe64
+-
+ clean:
+ 	rm -rf lib32 lib64 exe*
+ 
+ CURDIR ?= $(.CURDIR)
++
++test-flag = 2>/dev/null ${CC} -E /dev/null
++test-end = && echo y || echo n
++support-m32 != ${test-flag} -m32 ${test-end}
++support-m64 != ${test-flag} -m64 ${test-end}
++
++check${support-m32:y=}:: exe32
++	../../libtree exe32
++
++check${support-m64:y=}:: exe64
++	../../libtree exe64
++
++check${support-m32:n=} check${support-m64:n=}::
++	@echo WARNING: test skipped at ${CURDIR}
+

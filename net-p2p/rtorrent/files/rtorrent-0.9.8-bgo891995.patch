@@ -1,0 +1,27 @@
+https://bugs.gentoo.org/891995
+https://github.com/rakshasa/rtorrent/issues/1205
+https://github.com/rakshasa/rtorrent/pull/1169
+
+From 812bba81bc049a5f786282b3654cab294b0ef236 Mon Sep 17 00:00:00 2001
+From: Aleksa Sarai <cyphar@cyphar.com>
+Date: Mon, 20 Jun 2022 19:09:57 +1000
+Subject: [PATCH] utils: lockfile: avoid stack overflow for lockfile buffer
+
+There appears to have been some change on openSUSE (likely some new
+hardening flags for builds, or some glibc hardening) such that incorrect
+buffer handling results in a segfault even if the buffer is never
+overflowed.
+
+Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
+--- a/src/utils/lockfile.cc
++++ b/src/utils/lockfile.cc
+@@ -98,7 +98,8 @@ Lockfile::try_lock() {
+   int pos = ::gethostname(buf, 255);
+ 
+   if (pos == 0) {
+-    ::snprintf(buf + std::strlen(buf), 255, ":+%i\n", ::getpid());
++    ssize_t len = std::strlen(buf);
++    ::snprintf(buf + len, 255 - len, ":+%i\n", ::getpid());
+     int __UNUSED result = ::write(fd, buf, std::strlen(buf));
+   }
+ 

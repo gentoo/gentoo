@@ -1,0 +1,28 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -453,7 +453,6 @@
+     if ("${BUILD_TYPE}" STREQUAL "release")
+         add_definitions(-DNDEBUG)
+         # optimization flags
+-        add_definitions(-O2)
+     elseif ("${BUILD_TYPE}" STREQUAL "release-internal" OR
+             "${BUILD_TYPE}" STREQUAL "releaseinternal")
+             add_definitions(-D_RELEASE_INTERNAL)
+@@ -472,17 +471,10 @@
+     add_definitions(-Wno-strict-aliasing)
+     add_definitions(-Wno-unknown-pragmas)
+     add_definitions(-Wno-comment)
+-    add_definitions(-msse)
+     if ("${BUILD_TYPE}" STREQUAL "release" OR
+         "${BUILD_TYPE}" STREQUAL "release-internal" OR
+         "${BUILD_TYPE}" STREQUAL "releaseinternal")
+-        add_definitions(-Werror=format-security) # treat format string security warnings as errors
+-        add_definitions(-Werror)                 # treat warning as errors
+         add_definitions(-fvisibility=hidden)     # to disable exporting internal symbols (by default gcc exports all symbols)
+-        add_definitions(-flto)                   # enables Link-Time Optimization (LTO)
+-        add_definitions(-fPIC)                   # generates position-independent code during the compilation phase
+-        add_definitions(-fPIE)                   # generates position-independent executables during the compilation phase
+-        add_definitions(-pie)                    # produces position-independent executables during the linking phase
+     elseif ("${BUILD_TYPE}" STREQUAL "debug")
+         add_definitions(-g)
+     endif ()

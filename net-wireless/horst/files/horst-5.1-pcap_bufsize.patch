@@ -1,0 +1,32 @@
+--- a/capture-pcap.c
++++ b/capture-pcap.c
+@@ -32,16 +32,16 @@
+ #define PCAP_TIMEOUT 200
+ 
+ static unsigned char* pcap_buffer;
+-static size_t pcap_bufsize;
++static size_t horst_pcap_bufsize;
+ static pcap_t *pcap_fp = NULL;
+ 
+ static void handler(u_char *user, const struct pcap_pkthdr *h, const u_char *bytes)
+ {
+ 	*((int *)user) = h->len;
+-	if (pcap_bufsize < h->len) {
++	if (horst_pcap_bufsize < h->len) {
+ 		printlog("ERROR: Buffer(%d) too small for %d bytes",
+-			 (int)pcap_bufsize, h->len);
+-		*((int *)user) = pcap_bufsize;
++			 (int)horst_pcap_bufsize, h->len);
++		*((int *)user) = horst_pcap_bufsize;
+ 	}
+ 	memmove(pcap_buffer, bytes, *((int *)user));
+ }
+@@ -98,7 +98,7 @@
+ {
+ 	int ret = 0;
+ 	pcap_buffer = buffer;
+-	pcap_bufsize = bufsize;
++	horst_pcap_bufsize = bufsize;
+ 	if (0 == pcap_dispatch(pcap_fp, 1, handler, (u_char *)&ret))
+ 		return -1;
+ 	return ret;

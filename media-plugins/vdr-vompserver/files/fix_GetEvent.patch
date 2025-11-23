@@ -1,0 +1,30 @@
+diff '--color=auto' -Naur a/picturereader.c b/picturereader.c
+--- a/picturereader.c	2019-10-29 14:58:23.000000000 +0100
++++ b/picturereader.c	2025-10-19 18:26:08.125609964 +0200
+@@ -238,7 +238,11 @@
+         Schedule = tSchedules->GetSchedule(channel);
+       }
+       const cEvent *event = NULL;
++#if APIVERSNUM >= 20502
++      if (Schedule) event=Schedule->GetEventById(req.primary_id);
++#else
+       if (Schedule) event=Schedule->GetEvent(req.primary_id);
++#endif
+       ScraperGetPosterThumb getter;
+       getter.event = event;
+       getter.recording = NULL;
+diff '--color=auto' -Naur a/vompclientrrproc.c b/vompclientrrproc.c
+--- a/vompclientrrproc.c	2019-10-29 14:58:23.000000000 +0100
++++ b/vompclientrrproc.c	2025-10-19 18:24:25.657348227 +0200
+@@ -2495,7 +2495,11 @@
+   {
+      const cSchedule *Schedule = tSchedules->GetSchedule(channel->GetChannelID());
+      if (Schedule) {
++#if APIVERSNUM >= 20502
++        event = Schedule->GetEventById(eventid);
++#else
+         event = Schedule->GetEvent(eventid);
++#endif
+     }
+   }
+     

@@ -1,0 +1,30 @@
+configure.ac is missing, so need to edit this manually
+
+https://bugs.gentoo.org/870646
+--- a/configure
++++ b/configure
+@@ -796,3 +796,3 @@
+ 
+-main(){return(0);}
++int main(void){return(0);}
+ EOF
+@@ -1100,3 +1100,3 @@
+ #include "confdefs.h"
+-main()
++int main(void)
+ 				{exit(sizeof(void*)==8 ? 0 : sizeof(void*));}
+@@ -1463,3 +1463,3 @@
+ #include <sys/types.h>
+-main()
++int main(void)
+ {
+@@ -3330,3 +3330,3 @@
+ #define min(a,b) ((a) < (b) ? (a) : (b))
+-main()
++int main(void)
+ {
+@@ -3596,3 +3596,3 @@
+ #include "include/dcc_paths.h"
+-main()
++int main(void)
+ {

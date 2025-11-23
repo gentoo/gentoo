@@ -1,0 +1,12 @@
+diff --git a/src/level/scoreboard.cpp b/src/level/scoreboard.cpp
+index 87c4451..abc44fe 100644
+--- a/src/level/scoreboard.cpp
++++ b/src/level/scoreboard.cpp
+@@ -31,6 +31,7 @@
+ #include "ui/displaytext.h"
+ 
+ #include <boost/lexical_cast.hpp>
++#include <algorithm>
+ 
+ void CScoreboard::CScoreboardRule::Read(CLevelParserLine* line)
+ {

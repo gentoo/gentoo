@@ -1,0 +1,13 @@
+diff --git a/salt/modules/gentoolkitmod.py b/salt/modules/gentoolkitmod.py
+index cc78c37114..f0949d19a8 100644
+--- a/salt/modules/gentoolkitmod.py
++++ b/salt/modules/gentoolkitmod.py
+@@ -49,7 +49,7 @@ def revdep_rebuild(lib=None):
+ 
+         salt '*' gentoolkit.revdep_rebuild
+     """
+-    cmd = "revdep-rebuild -i --quiet --no-progress"
++    cmd = "revdep-rebuild -i --quiet"
+     if lib is not None:
+         cmd += " --library={0}".format(lib)
+     return __salt__["cmd.retcode"](cmd, python_shell=False) == 0

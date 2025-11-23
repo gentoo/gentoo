@@ -1,0 +1,101 @@
+--- a/scripts/build-locales.sh
++++ b/scripts/build-locales.sh
+@@ -16,7 +16,7 @@ cd "$(dirname "$0")"/../locale
+ output_path="$1"
+ 
+ # Check all the required tools are present
+-if [ -z "$(which msgfmt)" ]; then
++if [ -z "$(command -v msgfmt)" ]; then
+     echo "Command for 'msgfmt' not found. Locales will not be compiled."
+     echo "Try installing a 'gettext' package for your distribution."
+     exit 1
+--- a/scripts/build-man-pages.sh
++++ b/scripts/build-man-pages.sh
+@@ -5,7 +5,7 @@
+ 
+ cd $(dirname "$0")/../man/
+ 
+-which=$(which scdoc)
++which=$(command -v scdoc)
+ if [ $? != 0 ]; then
+     echo "Please install 'scdoc', which was not found in your PATH."
+     exit 1
+--- a/scripts/build-styles.sh
++++ b/scripts/build-styles.sh
+@@ -10,8 +10,8 @@
+ cd $(dirname "$0")/../sources/qt-theme/
+ 
+ # Find an implementation of SASS to use.
+-sassc=$(which sassc 2>/dev/null)
+-sass=$(which sass 2>/dev/null)
++sassc=$(command -v sassc 2>/dev/null)
++sass=$(command -v sass 2>/dev/null)
+ 
+ if [ -z "$sass" ] && [ -z "$sassc" ]; then
+     echo "Please install a package that provides 'sassc' or 'sass' and try again."
+--- a/scripts/create-locales.sh
++++ b/scripts/create-locales.sh
+@@ -19,7 +19,7 @@ cd "$(dirname "$0")"/../locale
+ # Check all the required tools are present
+ missing_tool=false
+ function check_for_tool() {
+-    if [ -z "$(which $1)" ]; then
++    if [ -z "$(command -v $1)" ]; then
+         echo "Command for '$1' not found."
+         missing_tool=true
+     fi
+--- a/scripts/dev/optimise-svgs.sh
++++ b/scripts/dev/optimise-svgs.sh
+@@ -7,7 +7,7 @@
+ # as it will likely strip essential data.
+ #
+ 
+-if [ -z "$(which svgcleaner)" ]; then
++if [ -z "$(command -v svgcleaner)" ]; then
+     echo "'svgcleaner' not installed."
+     exit 1
+ fi
+--- a/scripts/validate-metainfo.sh
++++ b/scripts/validate-metainfo.sh
+@@ -3,7 +3,7 @@
+ # Validate AppStream metainfo
+ #
+ 
+-if [ -z "$(which appstreamcli)" ]; then
++if [ -z "$(command -v appstreamcli)" ]; then
+     echo "appstreamcli not found. Try installing 'appstream'."
+     exit 1
+ fi
+--- a/scripts/validate-scdoc.sh
++++ b/scripts/validate-scdoc.sh
+@@ -3,7 +3,7 @@
+ # Checks the scdocs can be compiled.
+ #
+ 
+-if [ -z "$(which scdoc)" ]; then
++if [ -z "$(command -v scdoc)" ]; then
+     echo "'scdoc' not installed."
+     exit 1
+ fi
+--- a/scripts/validate-scss.sh
++++ b/scripts/validate-scss.sh
+@@ -3,7 +3,7 @@
+ # Validates SCSS files can be compiled. Uses 'sassc'.
+ #
+ 
+-if [ -z "$(which sassc)" ]; then
++if [ -z "$(command -v sassc)" ]; then
+     echo "'sassc' not installed."
+     exit 1
+ fi
+--- a/tests/openrazer/run_daemon.sh
++++ b/tests/openrazer/run_daemon.sh
+@@ -26,7 +26,7 @@ if [ ! -f "$OPENRAZER_SRC/scripts/create_fake_device.py" ]; then
+     exit 1
+ fi
+ 
+-if [ -z "$(which openrazer-daemon)" ]; then
++if [ -z "$(command -v openrazer-daemon)" ]; then
+     echo "openrazer-daemon is not installed."
+     exit 1
+ fi

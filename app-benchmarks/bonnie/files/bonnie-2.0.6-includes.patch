@@ -1,0 +1,9 @@
+--- a/Bonnie.c
++++ b/Bonnie.c
+@@ -31,2 +31,6 @@
+ #include <sys/time.h>
++#include <time.h>
++#include <string.h>
++#include <stdlib.h>
++#include <sys/wait.h>
+ #if defined(SysV)

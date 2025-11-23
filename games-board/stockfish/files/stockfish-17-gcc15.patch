@@ -1,0 +1,40 @@
+https://bugs.gentoo.org/940504
+https://github.com/official-stockfish/Stockfish/issues/5714
+https://github.com/official-stockfish/Stockfish/commit/1776448917e49b922a762d2d08c00a3f3be10205
+
+From 1776448917e49b922a762d2d08c00a3f3be10205 Mon Sep 17 00:00:00 2001
+From: Disservin <disservin.social@gmail.com>
+Date: Fri, 13 Dec 2024 17:00:05 +0100
+Subject: [PATCH] Move Embedded Net Data out of Anon Namespace
+
+fixes https://github.com/official-stockfish/Stockfish/issues/5714
+
+closes https://github.com/official-stockfish/Stockfish/pull/5715
+
+No functional change
+---
+ src/nnue/network.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/nnue/network.cpp b/src/nnue/network.cpp
+index 0a4452f6604..01cf2516d4a 100644
+--- a/nnue/network.cpp
++++ b/nnue/network.cpp
+@@ -38,7 +38,6 @@
+ #include "nnue_common.h"
+ #include "nnue_misc.h"
+ 
+-namespace {
+ // Macro to embed the default efficiently updatable neural network (NNUE) file
+ // data in the engine binary (using incbin.h, by Dale Weiler).
+ // This macro invocation will declare the following three variables
+@@ -58,6 +57,8 @@ const unsigned char* const gEmbeddedNNUESmallEnd     = &gEmbeddedNNUESmallData[1
+ const unsigned int         gEmbeddedNNUESmallSize    = 1;
+ #endif
+ 
++namespace {
++
+ struct EmbeddedNNUE {
+     EmbeddedNNUE(const unsigned char* embeddedData,
+                  const unsigned char* embeddedEnd,
+

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription>
+    veriT is a SMT (Satisfiability Modulo Theories) solver. It is open-source,
+    proof-producing, and complete for quantifier-free formulas with
+    uninterpreted functions and linear arithmetic on real numbers and integers.
+    It also offers good support for quantifiers.
+    The input format is the SMT-LIB 2.0 language and DIMACS.
+  </longdescription>
+</pkgmetadata>

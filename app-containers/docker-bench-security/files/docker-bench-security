@@ -1,0 +1,7 @@
+#!/bin/sh
+if [ $(id -u) -ne 0 ]; then
+	printf "%s\n" "This script must be run as root."
+	exit 1
+fi
+cd "$(dirname $0)/../lib/docker-bench-security"
+./docker-bench-security.sh

@@ -1,0 +1,12 @@
+diff --git a/src/icons-hash.c b/src/icons-hash.c
+index f0f2b0947..699af33b5 100644
+--- a/src/icons-hash.c
++++ b/src/icons-hash.c
+@@ -23,6 +23,7 @@
+ 
+ #include <stdio.h>
+ #include <string.h>
++#include <strings.h>
+ #include <stdlib.h>
+ #include <limits.h>
+ #include "icons.h"

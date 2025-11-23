@@ -1,0 +1,10 @@
+[Unit]
+Description=Hard drive temperature monitor daemon
+Documentation=man:hddtemp(8)
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/hddtemp -d --listen=127.0.0.1 $HDDTEMP_DRIVES
+
+[Install]
+WantedBy=multi-user.target

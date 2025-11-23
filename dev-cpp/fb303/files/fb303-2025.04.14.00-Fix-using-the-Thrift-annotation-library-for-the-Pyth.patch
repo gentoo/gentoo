@@ -1,0 +1,28 @@
+From bedbdc263694291f04f8df51f1f44671920ead65 Mon Sep 17 00:00:00 2001
+From: sin-ack <sin-ack@protonmail.com>
+Date: Mon, 21 Apr 2025 17:12:13 +0200
+Subject: [PATCH] Fix using the Thrift annotation library for the Python
+ generator
+
+Same as commit 536ff1c00, but this time for the Python code generator.
+
+Ref: https://github.com/facebook/fb303/commit/536ff1c002cfc2e20a044b474bb73a21350c5d69
+---
+ build/fbcode_builder/CMake/FBThriftPyLibrary.cmake | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/build/fbcode_builder/CMake/FBThriftPyLibrary.cmake b/build/fbcode_builder/CMake/FBThriftPyLibrary.cmake
+index fa77cde71..1aed8fbf4 100644
+--- a/build/fbcode_builder/CMake/FBThriftPyLibrary.cmake
++++ b/build/fbcode_builder/CMake/FBThriftPyLibrary.cmake
+@@ -87,6 +87,7 @@ function(add_fbthrift_py_library LIB_NAME THRIFT_FILE)
+       --legacy-strict
+       --gen "py:${GEN_ARG_STR}"
+       "${thrift_include_options}"
++      -I "${FBTHRIFT_INCLUDE_DIR}"
+       -o "${output_dir}"
+       "${CMAKE_CURRENT_SOURCE_DIR}/${THRIFT_FILE}"
+     WORKING_DIRECTORY
+-- 
+2.49.0
+

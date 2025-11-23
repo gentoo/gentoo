@@ -1,0 +1,125 @@
+From 48316b8a20aac35f982991b617f84fb3c104e7b0 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sun, 10 Aug 2025 15:20:06 +0100
+Subject: [PATCH] meson: Allow BPF code to be built with GCC
+
+GCC can also target BPF, but it does not understand the "-target bpf"
+arguments passed to Clang.
+
+Detect it as either bpf-gcc, bpf-none-gcc, or bpf-unknown-none-gcc, the
+same as systemd does.
+
+Determine the include paths with the compiler used by the rest of the
+build rather than Clang, which might not be installed or might not give
+the right answer, especially when cross-compiling.
+
+Check whether Clang actually supports the BPF target so that
+auto-detection doesn't cause the build to fail when it doesn't.
+
+Signed-off-by: James Le Cuirot <chewi@gentoo.org>
+Signed-off-by: Sean Young <sean@mess.org>
+--- a/meson.build
++++ b/meson.build
+@@ -83,11 +83,34 @@ endif
+ v4l2_utils_incdir = include_directories(v4l2_utils_incdir_arr)
+ 
+ prog_bash = find_program('bash')
+-prog_clang = find_program('clang', required : get_option('bpf'))
+ prog_doxygen = find_program('doxygen', required : get_option('doxygen-doc'))
+ prog_grep = find_program('grep')
+ prog_perl = find_program('perl')
+ 
++if get_option('bpf').allowed()
++    bpf_args = []
++    prog_bpf = find_program('bpf-gcc',
++                            'bpf-none-gcc',
++                            'bpf-unknown-none-gcc',
++                            required : false)
++
++    if prog_bpf.found()
++        bpf_args += ['-fno-tree-switch-conversion']
++    else
++        prog_bpf = find_program('clang', required : get_option('bpf'))
++        if prog_bpf.found()
++            target_bpf = run_command(prog_bpf, '-target', 'bpf', '--print-supported-cpus', check : get_option('bpf').enabled())
++            if target_bpf.returncode() == 0
++                bpf_args += ['-target', 'bpf']
++            else
++                prog_bpf = disabler()
++            endif
++        endif
++    endif
++else
++    prog_bpf = disabler()
++endif
++
+ dep_alsa = dependency('alsa', required : false)
+ if dep_alsa.found()
+     conf.set('HAVE_ALSA', 1)
+--- /dev/null
++++ b/utils/keytable/bpf_protocols/cc_sys_includes.sh
+@@ -0,0 +1,10 @@
++#!/bin/sh
++# Get C compiler's default includes on this system, as the BPF toolchain
++# generally doesn't see the Linux headers. This fixes "missing" files on some
++# architectures/distros, such as asm/byteorder.h, asm/socket.h, asm/sockios.h,
++# sys/cdefs.h etc.
++#
++# Use '-idirafter': Don't interfere with include mechanics except where the
++# build would have failed anyways.
++"$@" -v -E - </dev/null 2>&1 \
++	| sed -n '/<...> search starts here:/,/End of search list./{ s| \(/.*\)|-idirafter \1|p }'
+--- a/utils/keytable/bpf_protocols/clang_sys_includes.sh
++++ /dev/null
+@@ -1,9 +0,0 @@
+-#!/bin/sh
+-# Get Clang's default includes on this system, as opposed to those seen by
+-# '-target bpf'. This fixes "missing" files on some architectures/distros,
+-# such as asm/byteorder.h, asm/socket.h, asm/sockios.h, sys/cdefs.h etc.
+-#
+-# Use '-idirafter': Don't interfere with include mechanics except where the
+-# build would have failed anyways.
+-$CLANG -v -E - </dev/null 2>&1 \
+-	| sed -n '/<...> search starts here:/,/End of search list./{ s| \(/.*\)|-idirafter \1|p }'
+--- a/utils/keytable/bpf_protocols/meson.build
++++ b/utils/keytable/bpf_protocols/meson.build
+@@ -10,9 +10,9 @@ bpf_protocols_files = [
+     'xbox-dvd',
+ ]
+ 
+-clang_sys_includes = run_command('clang_sys_includes.sh',
+-                                 check : true,
+-                                 env : ['CLANG=' + prog_clang.full_path()])
++bpf_args += run_command('cc_sys_includes.sh',
++                        cc.cmd_array(),
++                        check : true).stdout().split()
+ 
+ foreach file : bpf_protocols_files
+     output = file + '.o'
+@@ -21,9 +21,9 @@ foreach file : bpf_protocols_files
+                   output : output,
+                   input : input,
+                   command : [
+-                      prog_clang,
+-                      clang_sys_includes.stdout().split(),
+-                      '-D__linux__', '-fno-stack-protector', '-target', 'bpf',
++                      prog_bpf,
++                      bpf_args,
++                      '-D__linux__', '-fno-stack-protector',
+                       '-O2', '-c', '@INPUT@', '-o', '@OUTPUT@',
+                   ],
+                   install : true,
+--- a/utils/keytable/meson.build
++++ b/utils/keytable/meson.build
+@@ -22,7 +22,7 @@ ir_keytable_c_args = [
+     '-DIR_KEYTABLE_USER_DIR="@0@"'.format(ir_keytable_user_dir),
+ ]
+ 
+-ir_bpf_enabled = prog_clang.found() and dep_libbpf.found() and dep_libelf.found()
++ir_bpf_enabled = prog_bpf.found() and dep_libbpf.found() and dep_libelf.found()
+ 
+ if ir_bpf_enabled
+     ir_keytable_sources += files(
+-- 
+2.50.1
+

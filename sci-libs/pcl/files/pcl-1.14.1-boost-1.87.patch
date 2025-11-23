@@ -1,0 +1,171 @@
+From 6f64495840c4e5674d542ccf20df96ed12665687 Mon Sep 17 00:00:00 2001
+From: Markus Vieth <mvieth@techfak.uni-bielefeld.de>
+Date: Tue, 5 Nov 2024 20:07:13 +0100
+Subject: [PATCH 1/2] Prepare for Boost 1.87 Some stuff from Boost's asio
+ library has been removed after Boost 1.86. The documentation says that it has
+ been deprecated, but no compiler warnings are shown. This page explains what
+ is considered "old" and what should be used instead: 
+ https://www.boost.org/doc/libs/1_86_0/doc/html/boost_asio/net_ts.html -
+ io_service was simply an alias (typedef) for io_context - make_address
+ replaces from_string - resolver.resolve and connect work a bit different now,
+ see also
+ https://www.boost.org/doc/libs/1_86_0/doc/html/boost_asio/tutorial/tutdaytime1/src.html
+
+--- a/apps/src/openni_mobile_server.cpp
++++ b/apps/src/openni_mobile_server.cpp
+@@ -157,7 +157,7 @@ class PCLMobileServer {
+ 
+     viewer_.showCloud(getLatestPointCloud());
+ 
+-    boost::asio::io_service io_service;
++    boost::asio::io_context io_service;
+     tcp::endpoint endpoint(tcp::v4(), static_cast<unsigned short>(port_));
+     tcp::acceptor acceptor(io_service, endpoint);
+     tcp::socket socket(io_service);
+--- a/apps/src/openni_octree_compression.cpp
++++ b/apps/src/openni_octree_compression.cpp
+@@ -415,7 +415,7 @@ main(int argc, char** argv)
+     if (bEnDecode) {
+       // ENCODING
+       try {
+-        boost::asio::io_service io_service;
++        boost::asio::io_context io_service;
+         tcp::endpoint endpoint(tcp::v4(), 6666);
+         tcp::acceptor acceptor(io_service, endpoint);
+ 
+@@ -423,7 +423,7 @@ main(int argc, char** argv)
+ 
+         std::cout << "Waiting for connection.." << std::endl;
+ 
+-        acceptor.accept(*socketStream.rdbuf());
++        acceptor.accept(socketStream.rdbuf()->socket());
+ 
+         std::cout << "Connected!" << std::endl;
+ 
+--- a/apps/src/openni_organized_compression.cpp
++++ b/apps/src/openni_organized_compression.cpp
+@@ -438,7 +438,7 @@ main(int argc, char** argv)
+     if (bEnDecode) {
+       // ENCODING
+       try {
+-        boost::asio::io_service io_service;
++        boost::asio::io_context io_service;
+         tcp::endpoint endpoint(tcp::v4(), 6666);
+         tcp::acceptor acceptor(io_service, endpoint);
+ 
+@@ -446,7 +446,7 @@ main(int argc, char** argv)
+ 
+         std::cout << "Waiting for connection.." << std::endl;
+ 
+-        acceptor.accept(*socketStream.rdbuf());
++        acceptor.accept(socketStream.rdbuf()->socket());
+ 
+         std::cout << "Connected!" << std::endl;
+ 
+--- a/io/include/pcl/io/hdl_grabber.h
++++ b/io/include/pcl/io/hdl_grabber.h
+@@ -274,7 +274,7 @@ namespace pcl
+       boost::asio::ip::udp::endpoint udp_listener_endpoint_;
+       boost::asio::ip::address source_address_filter_;
+       std::uint16_t source_port_filter_;
+-      boost::asio::io_service hdl_read_socket_service_;
++      boost::asio::io_context hdl_read_socket_service_;
+       boost::asio::ip::udp::socket *hdl_read_socket_;
+       std::string pcap_file_name_;
+       std::thread *queue_consumer_thread_;
+--- a/io/include/pcl/io/robot_eye_grabber.h
++++ b/io/include/pcl/io/robot_eye_grabber.h
+@@ -131,7 +131,7 @@ namespace pcl
+ 
+       boost::asio::ip::address sensor_address_;
+       boost::asio::ip::udp::endpoint sender_endpoint_;
+-      boost::asio::io_service io_service_;
++      boost::asio::io_context io_service_;
+       std::shared_ptr<boost::asio::ip::udp::socket> socket_;
+       std::shared_ptr<std::thread> socket_thread_;
+       std::shared_ptr<std::thread> consumer_thread_;
+--- a/io/include/pcl/io/tim_grabber.h
++++ b/io/include/pcl/io/tim_grabber.h
+@@ -128,7 +128,7 @@ class PCL_EXPORTS TimGrabber : public Grabber
+     std::vector<float> distances_;
+ 
+     boost::asio::ip::tcp::endpoint tcp_endpoint_;
+-    boost::asio::io_service tim_io_service_;
++    boost::asio::io_context tim_io_service_;
+     boost::asio::ip::tcp::socket tim_socket_;
+     //// wait time for receiving data (on the order of milliseconds)
+     unsigned int wait_time_milliseconds_ = 0;
+--- a/io/src/hdl_grabber.cpp
++++ b/io/src/hdl_grabber.cpp
+@@ -287,7 +287,7 @@ pcl::HDLGrabber::loadHDL32Corrections ()
+ boost::asio::ip::address
+ pcl::HDLGrabber::getDefaultNetworkAddress ()
+ {
+-  return (boost::asio::ip::address::from_string ("192.168.3.255"));
++  return (boost::asio::ip::make_address ("192.168.3.255"));
+ }
+ 
+ /////////////////////////////////////////////////////////////////////////////
+--- a/io/src/robot_eye_grabber.cpp
++++ b/io/src/robot_eye_grabber.cpp
+@@ -269,7 +269,7 @@ void
+ pcl::RobotEyeGrabber::socketThreadLoop ()
+ {
+   asyncSocketReceive();
+-  io_service_.reset();
++  io_service_.restart();
+   io_service_.run();
+ }
+ 
+--- a/io/src/tim_grabber.cpp
++++ b/io/src/tim_grabber.cpp
+@@ -184,8 +184,8 @@ pcl::TimGrabber::start ()
+ 
+   try {
+     boost::asio::ip::tcp::resolver resolver (tim_io_service_);
+-    tcp_endpoint_ = *resolver.resolve (tcp_endpoint_);
+-    tim_socket_.connect (tcp_endpoint_);
++    boost::asio::ip::tcp::resolver::results_type endpoints = resolver.resolve (tcp_endpoint_);
++    boost::asio::connect(tim_socket_, endpoints);
+   }
+   catch (std::exception& e)
+   {
+--- a/io/src/vlp_grabber.cpp
++++ b/io/src/vlp_grabber.cpp
+@@ -92,7 +92,7 @@ pcl::VLPGrabber::loadVLP16Corrections ()
+ boost::asio::ip::address
+ pcl::VLPGrabber::getDefaultNetworkAddress ()
+ {
+-  return (boost::asio::ip::address::from_string ("255.255.255.255"));
++  return (boost::asio::ip::make_address ("255.255.255.255"));
+ }
+ 
+ /////////////////////////////////////////////////////////////////////////////
+
+From 25be27e20a017f0ea0a0884b9fe31a50b5cbb82d Mon Sep 17 00:00:00 2001
+From: Markus Vieth <mvieth@techfak.uni-bielefeld.de>
+Date: Thu, 7 Nov 2024 20:43:15 +0100
+Subject: [PATCH 2/2] =?UTF-8?q?Silence=20ABI=20warnings=20with=20GCC=2014?=
+ =?UTF-8?q?=20With=20the=20previous=20flag,=20GCC=2014=20displays=20many?=
+ =?UTF-8?q?=20warnings=20like=20"warning:=20the=20mangled=20name=20of=20..?=
+ =?UTF-8?q?.=20changed=20between=20=E2=80=98-fabi-version=3D17=E2=80=99=20?=
+ =?UTF-8?q?and=20=E2=80=98-fabi-version=3D19=E2=80=99=20[-Wabi]"=20I=20thi?=
+ =?UTF-8?q?nk=20these=20warnings=20are=20not=20useful=20for=20us.=20Since?=
+ =?UTF-8?q?=20PCL=201.15.0=20will=20not=20be=20ABI-compatible=20to=20PCL?=
+ =?UTF-8?q?=201.14.1=20anyway,=20these=20name=20changes=20do=20not=20matte?=
+ =?UTF-8?q?r=20AFAIK.?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -117,7 +117,7 @@ endif()
+ if(CMAKE_COMPILER_IS_GNUCXX)
+   if("${CMAKE_CXX_FLAGS}" STREQUAL "${CMAKE_CXX_FLAGS_DEFAULT}")
+     if (CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 7)
+-      string(APPEND CMAKE_CXX_FLAGS " -Wabi=11")
++      string(APPEND CMAKE_CXX_FLAGS " -Wabi=18")
+     else()
+       string(APPEND CMAKE_CXX_FLAGS " -Wabi")
+     endif()

@@ -1,0 +1,6 @@
+XIM=nabi
+XIM_PROGRAM="@EPREFIX@/usr/bin/nabi"
+GTK_IM_MODULE=xim
+QT_IM_MODULE=xim
+SHORT_DESC="nabi"
+ICON="@EPREFIX@/usr/share/nabi/nabi.png"

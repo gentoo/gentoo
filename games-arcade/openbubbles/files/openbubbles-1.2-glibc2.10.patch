@@ -1,0 +1,20 @@
+--- a/src/BFont.cpp
++++ b/src/BFont.cpp
+@@ -319,7 +319,7 @@
+     int i   = 0;
+ 
+     /* Calculate the space occupied by the text without spaces */
+-    while ((p=strchr(&text[pos+1],SPACE)) != NULL) {
++    while ((p=strchr((char *)&text[pos+1],SPACE)) != NULL) {
+             i++;
+             pos = p - text;
+     }
+@@ -359,7 +359,7 @@
+             xpos=0;
+             pos = -1;
+             while ( spaces > 0 ) {
+-                p = strstr(&text[pos+1]," ");
++                p = strstr((char *)&text[pos+1]," ");
+                 strtmp = NULL;
+                 strtmp = (char *) calloc ((p - &text[pos+1]) + 1,sizeof(char));
+                 if (strtmp != NULL) 

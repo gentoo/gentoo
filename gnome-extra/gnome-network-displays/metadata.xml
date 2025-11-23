@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>pacho@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="firewalld">Install firewalld zones</flag>
+	</use>
+	<upstream>
+		<remote-id type="gnome-gitlab">GNOME/gnome-network-displays</remote-id>
+	</upstream>
+</pkgmetadata>

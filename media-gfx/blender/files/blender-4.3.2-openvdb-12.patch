@@ -1,0 +1,76 @@
+https://projects.blender.org/blender/blender/pulls/131833
+From 91412f2a28db69ac2a73c1bc646e350063d8ddd5 Mon Sep 17 00:00:00 2001
+From: Brecht Van Lommel <brecht@blender.org>
+Date: Fri, 13 Dec 2024 04:29:29 +0100
+Subject: [PATCH] Cycles: Support building with OpenVDB 12
+
+---
+ intern/cycles/scene/image_vdb.cpp | 20 +++++++++++++++-----
+ intern/cycles/scene/image_vdb.h   |  8 +++++++-
+ 2 files changed, 22 insertions(+), 6 deletions(-)
+
+diff --git a/intern/cycles/scene/image_vdb.cpp b/intern/cycles/scene/image_vdb.cpp
+index d94a7973adc..42964fac81d 100644
+--- a/intern/cycles/scene/image_vdb.cpp
++++ b/intern/cycles/scene/image_vdb.cpp
+@@ -55,23 +55,33 @@ struct ToNanoOp {
+       try {
+ #    if NANOVDB_MAJOR_VERSION_NUMBER > 32 || \
+         (NANOVDB_MAJOR_VERSION_NUMBER == 32 && NANOVDB_MINOR_VERSION_NUMBER >= 6)
++#      if NANOVDB_MAJOR_VERSION_NUMBER > 32 || \
++          (NANOVDB_MAJOR_VERSION_NUMBER == 32 && NANOVDB_MINOR_VERSION_NUMBER >= 7)
++        /* OpenVDB 12. */
++        using nanovdb::tools::createNanoGrid;
++        using nanovdb::tools::StatsMode;
++#      else
+         /* OpenVDB 11. */
++        using nanovdb::createNanoGrid;
++        using nanovdb::StatsMode;
++#      endif
++
+         if constexpr (std::is_same_v<FloatGridType, openvdb::FloatGrid>) {
+           openvdb::FloatGrid floatgrid(*openvdb::gridConstPtrCast<GridType>(grid));
+           if (precision == 0) {
+-            nanogrid = nanovdb::createNanoGrid<openvdb::FloatGrid, nanovdb::FpN>(floatgrid);
++            nanogrid = createNanoGrid<openvdb::FloatGrid, nanovdb::FpN>(floatgrid);
+           }
+           else if (precision == 16) {
+-            nanogrid = nanovdb::createNanoGrid<openvdb::FloatGrid, nanovdb::Fp16>(floatgrid);
++            nanogrid = createNanoGrid<openvdb::FloatGrid, nanovdb::Fp16>(floatgrid);
+           }
+           else {
+-            nanogrid = nanovdb::createNanoGrid<openvdb::FloatGrid, float>(floatgrid);
++            nanogrid = createNanoGrid<openvdb::FloatGrid, float>(floatgrid);
+           }
+         }
+         else if constexpr (std::is_same_v<FloatGridType, openvdb::Vec3fGrid>) {
+           openvdb::Vec3fGrid floatgrid(*openvdb::gridConstPtrCast<GridType>(grid));
+-          nanogrid = nanovdb::createNanoGrid<openvdb::Vec3fGrid, nanovdb::Vec3f>(
+-              floatgrid, nanovdb::StatsMode::Disable);
++          nanogrid = createNanoGrid<openvdb::Vec3fGrid, nanovdb::Vec3f>(floatgrid,
++                                                                        StatsMode::Disable);
+         }
+ #    else
+         /* OpenVDB 10. */
+diff --git a/intern/cycles/scene/image_vdb.h b/intern/cycles/scene/image_vdb.h
+index 49853cf3753..e0af9b87db1 100644
+--- a/intern/cycles/scene/image_vdb.h
++++ b/intern/cycles/scene/image_vdb.h
+@@ -9,7 +9,13 @@
+ #  include <openvdb/openvdb.h>
+ #endif
+ #ifdef WITH_NANOVDB
+-#  include <nanovdb/util/GridHandle.h>
++#  include <nanovdb/NanoVDB.h>
++#  if NANOVDB_MAJOR_VERSION_NUMBER > 32 || \
++      (NANOVDB_MAJOR_VERSION_NUMBER == 32 && NANOVDB_MINOR_VERSION_NUMBER >= 7)
++#    include <nanovdb/GridHandle.h>
++#  else
++#    include <nanovdb/util/GridHandle.h>
++#  endif
+ #endif
+ 
+ #include "scene/image.h"
+-- 
+2.45.2
+

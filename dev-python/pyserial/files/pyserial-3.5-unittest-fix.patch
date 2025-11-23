@@ -1,0 +1,28 @@
+From 239f840076bf9da76906dc029f26a423fef4a698 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20Van=C4=9Bk?= <arkamar@atlas.cz>
+Date: Fri, 7 Jun 2024 16:45:15 +0200
+Subject: [PATCH] Replace deprecated unittest.findTestCases function
+
+The unittest.findTestCases function was deprecated in Python 3.11 and
+later removed in Python 3.13. The TestLoader methods should be used
+instead [1].
+
+[1] https://docs.python.org/3.13/whatsnew/3.13.html#unittest
+
+Upstream-Issue: https://github.com/pyserial/pyserial/issues/754
+Upstream-PR: https://github.com/pyserial/pyserial/issues/757
+
+diff --git a/test/run_all_tests.py b/test/run_all_tests.py
+index e0797e7e..f09fe9bb 100644
+--- a/test/run_all_tests.py
++++ b/test/run_all_tests.py
+@@ -37,7 +37,8 @@
+         print("skipping {}".format(modulename))
+     else:
+         module.PORT = PORT
+-        testsuite = unittest.findTestCases(module)
++        loader = unittest.TestLoader()
++        testsuite = loader.loadTestsFromModule(module)
+         print("found {} tests in {!r}".format(testsuite.countTestCases(), modulename))
+         mainsuite.addTest(testsuite)
+ 

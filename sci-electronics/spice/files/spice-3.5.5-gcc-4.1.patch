@@ -1,0 +1,69 @@
+diff -Nadurp spice3f5sfix.orig/src/lib/fte/graf.c spice3f5sfix/src/lib/fte/graf.c
+--- spice3f5sfix.orig/src/lib/fte/graf.c	1999-06-11 14:38:56.000000000 +0200
++++ spice3f5sfix/src/lib/fte/graf.c	2006-05-21 21:49:52.000000000 +0200
+@@ -52,6 +52,9 @@ double *readtics();
+ #define XFACTOR 2       /* How much to expand the X scale during iplot. */
+ #define YFACTOR 1.5     /* How much to expand the Y scale during iplot. */
+ 
++static drawlegend();
++static gr_resize_internal();
++
+ /*
+  *  Start of a new graph.
+  *  Fill in the data that gets displayed.
+diff -Nadurp spice3f5sfix.orig/src/lib/fte/grid.c spice3f5sfix/src/lib/fte/grid.c
+--- spice3f5sfix.orig/src/lib/fte/grid.c	1999-05-30 09:14:12.000000000 +0200
++++ spice3f5sfix/src/lib/fte/grid.c	2006-05-21 21:49:52.000000000 +0200
+@@ -34,6 +34,9 @@ typedef enum { x_axis, y_axis } Axis;
+     ie, can get rid of it */
+ static bool scaleunits = true;
+ 
++static drawlingrid();
++static drawloggrid();
++
+ void
+ gr_fixgrid(graph, xdelta, ydelta, xtype, ytype)
+     GRAPH *graph;
+diff -Nadurp spice3f5sfix.orig/src/lib/fte/x11.c spice3f5sfix/src/lib/fte/x11.c
+--- spice3f5sfix.orig/src/lib/fte/x11.c	1999-06-19 14:09:37.000000000 +0200
++++ spice3f5sfix/src/lib/fte/x11.c	2006-05-21 21:50:35.000000000 +0200
+@@ -81,6 +81,10 @@ static GRAPH *lasthardcopy; /* graph use
+ static int X11_Open = 0;
+ static int numdispplanes;
+ 
++static initlinestyles();
++static initcolors();
++static X_ScreentoData();
++
+ X11_Init()
+ {
+ 
+diff -Nadurp spice3f5sfix.orig/src/lib/hlp/readhelp.c spice3f5sfix/src/lib/hlp/readhelp.c
+--- spice3f5sfix.orig/src/lib/hlp/readhelp.c	1993-06-17 23:32:43.000000000 +0200
++++ spice3f5sfix/src/lib/hlp/readhelp.c	2006-05-21 21:49:52.000000000 +0200
+@@ -41,8 +41,8 @@ Author: 1986 Wayne A. Christopher, U. C.
+ 
+ static char *getsubject();
+ static toplink *getsubtoplink();
+-extern void sortlist(), tlfree();
+-extern int sortcmp();
++static void sortlist(), tlfree();
++static int sortcmp();
+ 
+ static topic *alltopics = NULL;
+ 
+diff -Nadurp spice3f5sfix.orig/src/lib/mfb/mfbcaps.c spice3f5sfix/src/lib/mfb/mfbcaps.c
+--- spice3f5sfix.orig/src/lib/mfb/mfbcaps.c	1993-06-17 23:34:25.000000000 +0200
++++ spice3f5sfix/src/lib/mfb/mfbcaps.c	2006-05-21 21:49:52.000000000 +0200
+@@ -43,9 +43,9 @@ static int hopcount;       /* detect inf
+ 
+ FILE   *POpen();
+ char   *strcpy();
+-char   *MFBSkip();
++static char   *MFBSkip();
+ char   *MFBGetStr();
+-char   *MFBCapDecod();
++static char   *MFBCapDecod();
+ int    MFBGetNum();
+ int    MFBGetFlag();
+ int    MFBGetEnt();

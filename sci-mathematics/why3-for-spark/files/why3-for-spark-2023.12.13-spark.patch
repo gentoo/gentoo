@@ -1,0 +1,11 @@
+--- a/src/gnat/gnat_util.ml	2025-02-10 23:34:07.591622078 +0100
++++ b/src/gnat/gnat_util.ml	2025-02-10 23:34:21.920445321 +0100
+@@ -41,7 +41,7 @@
+ let why3_prefix =
+   Filename.dirname (Filename.dirname Sys.executable_name)
+ let spark_prefix =
+-  Filename.dirname (Filename.dirname why3_prefix)
++  why3_prefix
+ 
+ let gnatprove_why3conf_file = "why3.conf"
+ 

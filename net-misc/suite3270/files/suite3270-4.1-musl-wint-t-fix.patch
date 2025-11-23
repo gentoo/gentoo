@@ -1,0 +1,12 @@
+# Fix unknown type name wint_t when building against musl
+# Closes: https://bugs.gentoo.org/713618
+--- a/c3270/screen.c
++++ b/c3270/screen.c
+@@ -63,6 +63,7 @@
+ #include "utils.h"
+ #include "xio.h"
+ #include "xscroll.h"
++#include "wctype.h"
+
+ #include "cscreen.h"
+

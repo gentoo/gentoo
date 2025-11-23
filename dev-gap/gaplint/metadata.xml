@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+  </maintainer>
+
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+
+  <stabilize-allarches />
+
+  <upstream>
+    <remote-id type="pypi">gaplint</remote-id>
+    <remote-id type="github">james-d-mitchell/gaplint</remote-id>
+  </upstream>
+</pkgmetadata>

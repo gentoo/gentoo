@@ -1,0 +1,7 @@
+# Copyright 1999-2010 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Config file for gpsd server
+GPSD_OPTIONS=""
+DEVICES=""
+GPSD_SOCKET="/var/run/gpsd.sock"

@@ -1,0 +1,34 @@
+#!/sbin/openrc-run
+
+# Copyright 1999-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="0x.Tools xcapture"
+
+SAMPLEINTERVAL="1"
+LOGDIRPATH="/var/log/xcapture"
+ADDITIONALOPTIONS="syscall,wchan,exe,cmdline"
+MINUTES="59520"
+
+config_file="/etc/default/xcapture"
+
+if [ -f "${config_file}" ] ; then
+    . "${config_file}"
+fi
+
+command="/usr/bin/xcapture"
+command_args="-d ${SAMPLEINTERVAL} -c ${ADDITIONALOPTIONS} -o ${LOGDIRPATH}"
+
+command_background="true"
+pidfile="/run/xcapture.pid"
+
+command_user="root"
+
+depend() {
+    config "${config_file}"
+    after bootmisc
+}
+
+start_pre() {
+	checkpath -q -d "${LOGDIRPATH}"
+}

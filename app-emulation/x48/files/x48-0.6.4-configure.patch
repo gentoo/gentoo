@@ -1,0 +1,11 @@
+--- a/configure.ac	2024-05-12 12:01:50.591368113 -0000
++++ b/configure.ac	2024-05-12 12:05:39.116023749 -0000
+@@ -10,6 +10,8 @@
+ AC_CONFIG_SRCDIR([config.h.in])
+ AC_CONFIG_HEADER([config.h])
+ 
++
++AC_USE_SYSTEM_EXTENSIONS
+ # Checks for programs.
+ AC_PROG_CC
+ AC_PROG_INSTALL

@@ -1,0 +1,18 @@
+Script that this patch modifies and usb_modeswitch_dispatcher Tcl script
+that is being called by it both need a writable temporary directory which
+is a problematic requirement for example if usb_modeswitch is triggered
+by a module loaded during system startup.
+Fortunately, /run is available very early at boot so let's redirect them
+there instead.
+
+--- a/usb_modeswitch.sh	2016-11-29 17:29:47.000000000 +0100
++++ b/usb_modeswitch.sh	2016-11-30 01:11:51.747993839 +0100
+@@ -17,6 +17,8 @@
+ 	return 0
+ }
+ 
++export TMPDIR=/run
++
+ if [ $(expr "$1" : "--.*") ]; then
+ 	p_id=$4
+ 	if [ -z $p_id ]; then

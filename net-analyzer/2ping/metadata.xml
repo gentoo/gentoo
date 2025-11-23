@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="server">Install the server init scripts.</flag>
+	</use>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">rfinnie/2ping</remote-id>
+	</upstream>
+</pkgmetadata>

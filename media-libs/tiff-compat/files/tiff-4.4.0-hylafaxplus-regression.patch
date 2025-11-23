@@ -1,0 +1,34 @@
+https://bugs.gentoo.org/883641
+https://gitlab.com/libtiff/libtiff/-/issues/489
+https://gitlab.com/libtiff/libtiff/-/commit/72de8fd00be8a583a6b16cc0b700105020d249ba
+
+From 72de8fd00be8a583a6b16cc0b700105020d249ba Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Tue, 29 Nov 2022 14:57:27 +0100
+Subject: [PATCH] TIFFWriteRawStrip(): restore capabilities to append data in
+ the current strip (fixes #489)
+
+This fixes a regression of libtiff 4.4.0
+--- a/libtiff/tif_write.c
++++ b/libtiff/tif_write.c
+@@ -341,10 +341,13 @@ TIFFWriteRawStrip(TIFF* tif, uint32_t strip, void* data, tmsize_t cc)
+ 			return ((tmsize_t) -1);
+ 	}
+ 
+-	tif->tif_curstrip = strip;
++    if (tif->tif_curstrip != strip)
++    {
++        tif->tif_curstrip = strip;
+ 
+-	/* this informs TIFFAppendToStrip() we have changed or reset strip */
+-	tif->tif_curoff = 0;
++        /* this informs TIFFAppendToStrip() we have changed or reset strip */
++        tif->tif_curoff = 0;
++    }
+ 
+         if (td->td_stripsperimage == 0) {
+                 TIFFErrorExtR(tif, module,"Zero strips per image");
+-- 
+GitLab
+
+

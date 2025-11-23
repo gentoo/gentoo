@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<use>
+		<flag name="tools">Install captree, which requires <pkg>dev-lang/go</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:libcap:libcap</remote-id>
+	</upstream>
+</pkgmetadata>

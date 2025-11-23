@@ -1,0 +1,11 @@
+--- a/desktop/Makefile.am	2018-01-15 12:01:12.624449958 +0100
++++ b/desktop/Makefile.am	2018-01-15 12:01:38.964448343 +0100
+@@ -1,8 +1,2 @@
+ desktopdir = $(datarootdir)/applications
+ dist_desktop_DATA = joe.desktop jmacs.desktop jstar.desktop jpico.desktop
+-
+-update-databases:
+-	-update-desktop-database $(desktopdir)
+-
+-install-data-hook: update-databases
+-uninstall-hook: update-databases

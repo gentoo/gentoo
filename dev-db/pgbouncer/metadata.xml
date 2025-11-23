@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>pgsql-bugs@gentoo.org</email>
+		<name>PostgreSQL</name>
+	</maintainer>
+	<use>
+		<flag name="c-ares">
+			Use c-ares as the DNS backend instead of evdns (libevent).
+		</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,13 @@
+diff --git a/common-build.xml b/common-build.xml
+index 3fa75d1..1e695cf 100644
+--- a/common-build.xml
++++ b/common-build.xml
+@@ -110,7 +110,7 @@
+   <available
+     property="javacc.present"
+     classname="org.javacc.parser.Main"
+-    classpath="${javacc.home}/bin/lib/javacc.jar"
++    classpath="${javacc.home}/javacc.jar"
+     />
+ 
+    <available

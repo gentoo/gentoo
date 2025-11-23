@@ -1,0 +1,101 @@
+From e42c088333a16b76a6bacd49e4bcdbdcb2f942ca Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 28 Sep 2025 21:12:53 +0200
+Subject: [PATCH] Use GNUInstallDirs
+
+Mostly slotting in easily.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ cmake/modules/instdirs.cmake | 40 +++---------------------------------
+ examples/CMakeLists.txt      |  4 ++--
+ 2 files changed, 5 insertions(+), 39 deletions(-)
+
+diff --git a/cmake/modules/instdirs.cmake b/cmake/modules/instdirs.cmake
+index 3eb0290..c130551 100644
+--- a/cmake/modules/instdirs.cmake
++++ b/cmake/modules/instdirs.cmake
+@@ -12,48 +12,14 @@
+ # CMAKE_INSTALL_OLDINCLUDEDIR not set because libLASi does not use those
+ # install locations).
+ 
++include(GNUInstallDirs)
++
+ set(
+ CMAKE_INSTALL_EXEC_PREFIX 
+ ${CMAKE_INSTALL_PREFIX}
+ CACHE PATH "install location for architecture-dependent files"
+ )
+ 
+-set(
+-CMAKE_INSTALL_BINDIR
+-${CMAKE_INSTALL_EXEC_PREFIX}/bin
+-CACHE PATH "install location for user executables"
+-)
+-
+-set(
+-CMAKE_INSTALL_DATADIR
+-${CMAKE_INSTALL_PREFIX}/share
+-CACHE PATH "install location for read-only architecture-independent data"
+-)
+-
+-set(
+-CMAKE_INSTALL_LIBDIR
+-${CMAKE_INSTALL_EXEC_PREFIX}/lib
+-CACHE PATH "install location for object code libraries"
+-)
+-
+-set(
+-CMAKE_INSTALL_INCLUDEDIR
+-${CMAKE_INSTALL_PREFIX}/include
+-CACHE PATH "install location for C header files"
+-)
+-
+-set(
+-CMAKE_INSTALL_INFODIR
+-${CMAKE_INSTALL_DATADIR}/info
+-CACHE PATH "install location for info documentation"
+-)
+-
+-set(
+-CMAKE_INSTALL_MANDIR
+-${CMAKE_INSTALL_DATADIR}/man
+-CACHE PATH "install location for man documentation"
+-)
+-
+ # These cached default PATHS are derived from those above and
+ # are the ones actually used by the libLASi build system.
+ set(prefix ${CMAKE_INSTALL_PREFIX}
+@@ -76,7 +42,7 @@ set(includedir ${CMAKE_INSTALL_INCLUDEDIR}
+ CACHE PATH "install location for headers"
+ )
+ 
+-set(docdir ${CMAKE_INSTALL_DATADIR}/doc/libLASi-${VERSION}
++set(docdir ${CMAKE_INSTALL_DOCDIR}
+ CACHE PATH "install location for documentation"
+ )
+ 
+diff --git a/examples/CMakeLists.txt b/examples/CMakeLists.txt
+index bc963b0..5707826 100644
+--- a/examples/CMakeLists.txt
++++ b/examples/CMakeLists.txt
+@@ -90,7 +90,7 @@ install(FILES
+   MissingGlyphExample.png
+   SimpleLASiExample.png
+   ComplexTextLayoutExample.png
+-  DESTINATION ${DATA_DIR}/examples
++  DESTINATION ${CMAKE_INSTALL_DOCDIR}/examples
+   )
+ 
+ # Sort out RPATH issues for build of installed examples.
+@@ -114,6 +114,6 @@ ${CMAKE_CURRENT_BINARY_DIR}/Makefile.examples
+ )
+ 
+ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/Makefile.examples
+-DESTINATION ${DATA_DIR}/examples
++DESTINATION ${CMAKE_INSTALL_DOCDIR}/examples
+ RENAME Makefile
+ )
+-- 
+2.51.0
+

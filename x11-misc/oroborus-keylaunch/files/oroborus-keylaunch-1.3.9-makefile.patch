@@ -1,0 +1,44 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -14,7 +14,7 @@
+ DOC_DIR		=	$(INSTDIR)/share/doc/$(PROG)
+ 
+ 
+-VERBOSE		=
++VERBOSE		=	1
+ ifeq ($(VERBOSE), 1)
+ 	Q	=
+ else
+@@ -22,7 +22,8 @@
+ endif
+ 
+ CC		=	@CC@
+-CFLAGS		=	@CFLAGS@ @X_CFLAGS@ -g -O2 -Wall
++CFLAGS		=	@CFLAGS@ @X_CFLAGS@
++CPPFLAGS	=	@CPPFLAGS@
+ LIBS		=	@LIBS@ @X_LIBS@
+ LDFLAGS		=	@LDFLAGS@
+ RCFILE		=	.$(PROG)rc
+@@ -55,11 +56,11 @@
+ 
+ $(PROG): $(OBJS)
+ 	@echo "[ linking $< ]"
+-	$Q$(CC) $< $(LDFLAGS) $(LIBS) -o $@
++	$Q$(CC) $(LDFLAGS) $(CFLAGS) $< -o $@ $(LIBS)
+ 
+ $(OBJS): %.o: %.c $(HEADERS)
+ 	@echo "[ compiling $< ]"
+-	$Q$(CC) $(CFLAGS) $(DEFINES) -c $< -o $@
++	$Q$(CC) $(CFLAGS) $(CPPFLAGS) $(DEFINES) -c $< -o $@
+ 
+ install-mans:
+ 	@echo "[ installing manpages. (section 1) ]"
+@@ -71,7 +72,7 @@
+ 	$Q$(INSTALL) $(INST_CREATEDIR) $(DOC_DIR)
+ 	$Q$(INSTALL) $(INST_DOC_OPTS) $(DOCS) $(DOC_DIR)
+ 
+-install: all install-mans install-docs
++install: all install-mans 
+ 	@echo "[ installing $(PROG) ]"
+ 	$Q$(INSTALL) $(INST_PROG_OPTS) $(PROG) $(BIN_DIR)/$(PROG)
+ 

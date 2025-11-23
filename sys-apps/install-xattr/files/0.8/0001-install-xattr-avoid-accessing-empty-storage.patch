@@ -1,0 +1,46 @@
+https://github.com/gentoo/elfix/pull/3
+
+From 2a0dffbf0080dc74f82910a74f051d835cfd653f Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 6 Jan 2023 03:06:50 +0000
+Subject: [PATCH 1/2] install-xattr: avoid accessing empty storage
+
+UBSAN reports:
+```
+install-xattr.c:124:16: runtime error: load of address 0x55555556d440 with insufficient space for an object of type 'char'
+0x55555556d440: note: pointer points here
+ 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  61 00 00 00
+              ^
+    #0 0x555555557a27 in copyxattr /home/sam/git/elfix//install-xattr.c:124
+    #1 0x555555556a4d in main /home/sam/git/elfix//install-xattr.c:410
+    #2 0x7ffff77c864f  (/usr/lib64/libc.so.6+0x2364f)
+    #3 0x7ffff77c8708 in __libc_start_main (/usr/lib64/libc.so.6+0x23708)
+    #4 0x555555557114 in _start (/home/sam/git/elfix//install-xattr+0x3114)
+```
+
+Triggered with:
+```
+mkdir /tmp/a
+touch /tmp/foo
+./install-xattr -c /tmp/foo /tmp/foo2 /tmp/a
+```
+
+I don't see this with Clang or < GCC 12, but I do with GCC 13 (13.0.0_pre20230101 p5);
+I suspect it's because of object-size improvements.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/install-xattr.c
++++ b/install-xattr.c
+@@ -119,6 +119,10 @@ copyxattr(const char *source, const char *target)
+ 	lxattr = xmalloc(lsize);
+ 	xlistxattr(source, lxattr, lsize);
+ 
++	/* There's no xattrs at all. */
++	if (lsize == 0)
++		return;
++
+ 	i = 0;
+ 	while (1) {
+ 		while (lxattr[i++] == 0)
+-- 
+2.39.0

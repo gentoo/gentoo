@@ -1,0 +1,12 @@
+diff -up megaglest-source-3.13.0/mk/cmake/Modules/ReqVersAndStaticConf.cmake.fix-lua-version-ordering megaglest-source-3.13.0/mk/cmake/Modules/ReqVersAndStaticConf.cmake
+--- megaglest-source-3.13.0/mk/cmake/Modules/ReqVersAndStaticConf.cmake.fix-lua-version-ordering	2022-10-17 09:17:11.429220699 -0400
++++ megaglest-source-3.13.0/mk/cmake/Modules/ReqVersAndStaticConf.cmake	2022-10-17 09:17:25.388312109 -0400
+@@ -57,7 +57,7 @@ IF(NOT DEFINED FORCE_LUA_VERSION)
+     SET(FORCE_LUA_VERSION "OFF" CACHE STRING "Try to force some specific lua version (for example older). On the list may be also not existing versions yet for future use." FORCE)
+ ENDIF()
+ SET_PROPERTY(CACHE FORCE_LUA_VERSION PROPERTY STRINGS OFF 5.5 5.4 5.3 5.2 5.1 5.0)
+-SET(ALL_LUA_VERSIONS_IN_ORDER 5.3 5.2 5.1 5.4 5.5 5.0)
++SET(ALL_LUA_VERSIONS_IN_ORDER 5.4 5.3 5.2 5.1 5.5 5.0)
+ 
+ IF(STATIC_JPEG)
+     SET(JPEG_NAMES jpeg.a libjpeg.a ${JPEG_NAMES})

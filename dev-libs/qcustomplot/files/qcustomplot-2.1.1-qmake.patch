@@ -1,0 +1,24 @@
+From 4c7cf0dfcccf2aa31d6117bb811b7baed84f8f4a Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 28 Jan 2025 00:18:46 +0100
+Subject: [PATCH] Fix source paths
+
+---
+ qcustomplot.pro | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/qcustomplot.pro b/qcustomplot.pro
+index a437355..779e8e6 100755
+--- a/qcustomplot.pro
++++ b/qcustomplot.pro
+@@ -31,5 +31,5 @@ CONFIG(debug, debug|release) {
+ QMAKE_TARGET_COMPANY = "www.qcustomplot.com"
+ QMAKE_TARGET_COPYRIGHT = "Copyright (C) by Emanuel Eichhammer"
+ 
+-SOURCES += ../../qcustomplot.cpp
+-HEADERS += ../../qcustomplot.h
++SOURCES += qcustomplot.cpp
++HEADERS += qcustomplot.h
+-- 
+2.48.1
+

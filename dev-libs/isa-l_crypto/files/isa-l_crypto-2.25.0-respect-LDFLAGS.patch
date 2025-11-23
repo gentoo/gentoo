@@ -1,0 +1,18 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -119,6 +119,7 @@ AS_IF([test "x$intel_cet_enabled" = "xyes"], [
+ ])
+ 
+ # check if LD -z options are supported
++orig_LDFLAGS="${LDFLAGS}"
+ LDFLAGS="\
+ -Wl,-z,noexecstack \
+ -Wl,-z,relro \
+@@ -283,6 +284,7 @@ else
+   AM_CONDITIONAL(WITH_SHANI, test "x" = "y")
+   AM_CONDITIONAL(DARWIN, test "x" = "y")
+ fi
++LDFLAGS="${orig_LDFLAGS}"
+ 
+ # Check for header files
+ AC_CHECK_HEADERS([limits.h stdint.h stdlib.h string.h])

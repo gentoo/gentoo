@@ -1,0 +1,2 @@
+QPSMTPD_CONFIG="/etc/qpsmtpd"
+CONFIG_PROTECT="/usr/share/qpsmtpd/plugins"

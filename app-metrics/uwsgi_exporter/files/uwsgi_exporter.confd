@@ -1,0 +1,16 @@
+# --web.listen-address=":9117"
+#                     Address on which to expose metrics and web interfaces.
+# --web.telemetry-path="/metrics"
+#                     Path under which to expose metrics.
+# --stats.uri=""      URI for accessing uwsgi stats.
+# --stats.timeout=5s  Timeout for trying to get stats from uwsgi.
+# --collect.cores     Collect cores information per uwsgi worker.
+# --log.level="info"  Only log messages with the given severity or above.
+#                     Valid levels: [debug, info, warn, error, fatal]
+# --log.format="logger:stderr"
+#                     Set the log target and format. Example:
+#                     "logger:syslog?appname=bob&local=7" or
+#                     "logger:stdout?json=true"
+# --version           Show application version.
+
+#command_args="--web.listen-address=:9117 --stats.uri=http://localhost:1717"

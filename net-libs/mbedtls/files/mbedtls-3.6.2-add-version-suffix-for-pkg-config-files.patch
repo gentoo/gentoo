@@ -1,0 +1,71 @@
+https://github.com/Mbed-TLS/mbedtls/pull/9876
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Sun, 1 Dec 2024 00:54:10 +0300
+Subject: Add version suffix for pkg-config files
+
+Convert main library targets to slottable versions. This allows to
+install major versions of MbedTLS simultaneously.
+
+Dependent packages should use
+`pkg-config --libs --cflags (mbedtls3|mbedx5093|mbedx5093)` in order to use
+requested libraries.
+--- a/pkgconfig/CMakeLists.txt
++++ b/pkgconfig/CMakeLists.txt
+@@ -8,18 +8,18 @@ if(NOT DISABLE_PACKAGE_CONFIG_AND_INSTALL)
+   set(PKGCONFIG_PROJECT_DESCRIPTION "Mbed TLS is a C library that implements cryptographic primitives, X.509 certificate manipulation and the SSL/TLS and DTLS protocols. Its small code footprint makes it suitable for embedded systems.")
+   set(PKGCONFIG_PROJECT_HOMEPAGE_URL "https://www.trustedfirmware.org/projects/mbed-tls/")
+ 
+-  configure_file(mbedcrypto.pc.in mbedcrypto.pc @ONLY)
++  configure_file(mbedcrypto.pc.in mbedcrypto${PROJECT_VERSION_MAJOR}.pc @ONLY)
+     install(FILES
+-    ${CMAKE_CURRENT_BINARY_DIR}/mbedcrypto.pc
++    ${CMAKE_CURRENT_BINARY_DIR}/mbedcrypto${PROJECT_VERSION_MAJOR}.pc
+     DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+ 
+-  configure_file(mbedtls.pc.in mbedtls.pc @ONLY)
++  configure_file(mbedtls.pc.in mbedtls${PROJECT_VERSION_MAJOR}.pc @ONLY)
+     install(FILES
+-    ${CMAKE_CURRENT_BINARY_DIR}/mbedtls.pc
++    ${CMAKE_CURRENT_BINARY_DIR}/mbedtls${PROJECT_VERSION_MAJOR}.pc
+     DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+ 
+-  configure_file(mbedx509.pc.in mbedx509.pc @ONLY)
++  configure_file(mbedx509.pc.in mbedx509${PROJECT_VERSION_MAJOR}.pc @ONLY)
+     install(FILES
+-    ${CMAKE_CURRENT_BINARY_DIR}/mbedx509.pc
++    ${CMAKE_CURRENT_BINARY_DIR}/mbedx509${PROJECT_VERSION_MAJOR}.pc
+     DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+ endif()
+--- a/pkgconfig/mbedcrypto.pc.in
++++ b/pkgconfig/mbedcrypto.pc.in
+@@ -7,4 +7,4 @@ Description: @PKGCONFIG_PROJECT_DESCRIPTION@
+ URL: @PKGCONFIG_PROJECT_HOMEPAGE_URL@
+ Version: @PROJECT_VERSION@
+ Cflags: -I"${includedir}"
+-Libs: -L"${libdir}" -lmbedcrypto
++Libs: -L"${libdir}" -lmbedcrypto@PROJECT_VERSION_MAJOR@
+--- a/pkgconfig/mbedtls.pc.in
++++ b/pkgconfig/mbedtls.pc.in
+@@ -6,6 +6,6 @@ Name: @PROJECT_NAME@
+ Description: @PKGCONFIG_PROJECT_DESCRIPTION@
+ URL: @PKGCONFIG_PROJECT_HOMEPAGE_URL@
+ Version: @PROJECT_VERSION@
+-Requires.private: mbedcrypto mbedx509
++Requires.private: mbedcrypto@PROJECT_VERSION_MAJOR@ mbedx509@PROJECT_VERSION_MAJOR@
+ Cflags: -I"${includedir}"
+-Libs: -L"${libdir}" -lmbedtls
++Libs: -L"${libdir}" -lmbedtls@PROJECT_VERSION_MAJOR@
+--- a/pkgconfig/mbedx509.pc.in
++++ b/pkgconfig/mbedx509.pc.in
+@@ -6,6 +6,6 @@ Name: @PROJECT_NAME@
+ Description: @PKGCONFIG_PROJECT_DESCRIPTION@
+ URL: @PKGCONFIG_PROJECT_HOMEPAGE_URL@
+ Version: @PROJECT_VERSION@
+-Requires.private: mbedcrypto
++Requires.private: mbedcrypto@PROJECT_VERSION_MAJOR@
+ Cflags: -I"${includedir}"
+-Libs: -L"${libdir}" -lmbedx509
++Libs: -L"${libdir}" -lmbedx509@PROJECT_VERSION_MAJOR@
+-- 
+2.45.2
+

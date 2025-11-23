@@ -1,0 +1,12 @@
+--- duhdraw-2.8.13/duhdraw.c
++++ duhdraw-2.8.13/duhdraw.c
+@@ -12,7 +12,9 @@
+ #include <stdio.h>
+ #include <dirent.h>
+ #include <sys/stat.h>
++#ifndef __APPLE__
+ #include <malloc.h>
++#endif
+ #include <time.h>
+ #include <curses.h>
+ #include <ctype.h>

@@ -1,0 +1,12 @@
+Kill unneeded call to AC_PROG_SYSCONFTOOL (bug #168206).
+
+--- a/configure.ac	2022-11-05 19:37:21.629552607 +0100
++++ b/configure.ac	2022-11-05 19:37:31.622405720 +0100
+@@ -14,7 +14,6 @@
+ AC_PROG_INSTALL
+ AC_PROG_LN_S
+ AC_PROG_MAKE_SET
+-AC_PROG_SYSCONFTOOL
+ LT_INIT
+ 
+ AC_PATH_PROGS(PERL, perl5 perl, perl)

@@ -1,0 +1,73 @@
+From d43b41431379f9c9bb05fab158c4d97e6d515f8f Mon Sep 17 00:00:00 2001
+From: Johannes Schauer Marin Rodrigues <josch@mister-muffin.de>
+Date: Tue, 20 Feb 2024 07:44:20 +0100
+Subject: [PATCH] Make tests work with black 24.2.0
+
+Closes: #55
+---
+ tests/test_plugin.py | 18 ++++++++++++++++--
+
+diff --git a/tests/test_plugin.py b/tests/test_plugin.py
+index 0a51767..2ae8088 100644
+--- a/tests/test_plugin.py
++++ b/tests/test_plugin.py
+@@ -281,7 +281,14 @@ def test_load_config_defaults(config):
+ 
+     assert config == {
+         "line_length": 88,
+-        "target_version": set(),
++        "target_version": set(
++            [
++                black.TargetVersion.PY38,
++                black.TargetVersion.PY39,
++                black.TargetVersion.PY310,
++                black.TargetVersion.PY311,
++            ]
++        ),
+         "pyi": False,
+         "fast": False,
+         "skip_magic_trailing_comma": False,
+@@ -297,7 +304,14 @@ def test_load_config_with_skip_options(config_with_skip_options):
+ 
+     assert config == {
+         "line_length": 88,
+-        "target_version": set(),
++        "target_version": set(
++            [
++                black.TargetVersion.PY38,
++                black.TargetVersion.PY39,
++                black.TargetVersion.PY310,
++                black.TargetVersion.PY311,
++            ]
++        ),
+         "pyi": False,
+         "fast": False,
+         "skip_magic_trailing_comma": True,
+From 9298585a9d14d25920c33b188d79e820dc98d4a9 Mon Sep 17 00:00:00 2001
+From: Anton Zhukharev <ancieg@altlinux.org>
+Date: Tue, 9 Apr 2024 16:06:55 +0300
+Subject: [PATCH] Make tests work with black 24.3.0
+
+Closes: #57
+
+Black changed raising exception from AssertionError to ASTSafetyError
+and we need to apply similar change.
+
+See: https://github.com/psf/black/commit/6af7d1109693c4ad3af08ecbc34649c232b47a6d
+---
+ pylsp_black/plugin.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pylsp_black/plugin.py b/pylsp_black/plugin.py
+index e4fb9ba..5523896 100644
+--- a/pylsp_black/plugin.py
++++ b/pylsp_black/plugin.py
+@@ -127,7 +127,7 @@ def format_text(*, text, config, lines):
+         IndentationError,
+         # raised when black produces invalid Python code or formats the file
+         # differently on the second pass
+-        AssertionError,
++        black.parsing.ASTSafetyError,
+     ) as e:
+         # errors will show on lsp stderr stream
+         logger.error("Error formatting with black: %s", e)

@@ -1,0 +1,11 @@
+--- a/incdefs.sh
++++ b/incdefs.sh
+@@ -27,7 +27,7 @@
+ 	printf " -D_GNU_SOURCE"
+ 
+ 	# Get list of directories searched for header files.
+-	dirs=$(${CC} -E -Wp,-v -xc /dev/null 2>&1 >/dev/null | grep ^" /")
++	dirs=$(echo "" | ${CPP} -Wp,-v - 2>&1 >/dev/null | grep ^" /")
+ 
+ 	# Look for clock_adjtime().
+ 	for d in $dirs; do

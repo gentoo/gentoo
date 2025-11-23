@@ -1,0 +1,21 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 05001ad..c640fd7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -21,7 +21,7 @@ if (NOT TARGET libzmq AND NOT TARGET libzmq-static)
+     message(FATAL_ERROR "ZeroMQ was not found, neither as a CMake package nor via pkg-config")
+   endif()
+ 
+-  if (ZeroMQ_FOUND AND NOT (TARGET libzmq OR TARGET libzmq-static))
++  if (ZeroMQ_FOUND AND NOT TARGET libzmq)
+     message(FATAL_ERROR "ZeroMQ version not supported!")
+   endif()
+ endif()
+@@ -52,7 +52,6 @@ foreach (target cppzmq cppzmq-static)
+ endforeach()
+ 
+ target_link_libraries(cppzmq INTERFACE libzmq)
+-target_link_libraries(cppzmq-static INTERFACE libzmq-static)
+ 
+ include(GNUInstallDirs)
+ include(CMakePackageConfigHelpers)

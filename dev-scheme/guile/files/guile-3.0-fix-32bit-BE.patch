@@ -1,0 +1,30 @@
+https://bugs.gentoo.org/940650#c4
+https://bugs.debian.org/977223
+https://sources.debian.org/patches/guile-3.0/3.0.8-2/0009-Fix-32-bit-big-endian-builds-via-Oresolve-primitives.patch/
+--- a/configure.ac
++++ b/configure.ac
+@@ -374,6 +374,8 @@ esac
+ AC_MSG_RESULT($SCM_PREBUILT_BINARIES)
+ AC_SUBST([SCM_PREBUILT_BINARIES])
+ 
++AM_CONDITIONAL([GUILE_32_BIT_BIG_ENDIAN], [test "$SCM_PREBUILT_BINARIES" = 32-bit-big-endian])
++
+ AC_HEADER_SYS_WAIT
+ AC_HEADER_DIRENT
+ 
+--- a/stage0/Makefile.am
++++ b/stage0/Makefile.am
+@@ -22,7 +22,12 @@
+ 
+ 
+ GUILE_WARNINGS = -W0
+-GUILE_OPTIMIZATIONS = -O1
++if GUILE_32_BIT_BIG_ENDIAN
++GUILE_OPTIMIZATIONS = -O1 -Oresolve-primitives -Ocps
++else
++GUILE_OPTIMIZATIONS = -O1
++endif
++
+ GUILE_BOOTSTRAP_STAGE = stage0
+ 
+ include $(top_srcdir)/am/bootstrap.am

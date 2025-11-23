@@ -1,0 +1,12 @@
+Link perl bindings against built libraries instead of system libraries (bug #456180).
+--- a/PerlMagick/Makefile.PL.in
++++ b/PerlMagick/Makefile.PL.in
+@@ -23,7 +23,7 @@ my $magick_LDFLAGS='@LDFLAGS@';
+ my $magick_BIN_DIR="$ENV{'DESTDIR'}@BIN_DIR@";
+ my $magick_API_LIBS='@MAGICK_API_LIBS@';
+ my $magick_PERLMAINCC='@PERLMAINCC@';
+-my $magick_LIB_DIR="$ENV{'DESTDIR'}@MAGICKLIBDIR@";
++my $magick_LIB_DIR="../magick/.libs";
+ 
+ # Compute test specification
+ my $delegate_tests='t/*.t';

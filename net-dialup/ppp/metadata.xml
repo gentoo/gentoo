@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<use>
+		<flag name="activefilter">Enables active filter support</flag>
+		<flag name="gtk">Installs GTK+ password prompting program that can be used
+		by passprompt.so PPP plugin for reading the password from a X11 input
+		terminal</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:samba:ppp</remote-id>
+		<remote-id type="github">ppp-project/ppp</remote-id>
+	</upstream>
+</pkgmetadata>

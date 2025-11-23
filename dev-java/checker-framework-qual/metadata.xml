@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">typetools/checker-framework</remote-id>
+	</upstream>
+	<longdescription>
+The Checker Framework enhances Java's type system to make it
+more powerful and useful. This lets software developers detect
+and prevent errors in their Java programs.
+
+A "checker" is a tool that warns you about certain errors or
+gives you a guarantee that those errors do not occur.
+	</longdescription>
+</pkgmetadata>

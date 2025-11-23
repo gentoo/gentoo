@@ -1,0 +1,15 @@
+--- a/server/dhcpd.c
++++ b/server/dhcpd.c
+@@ -892,6 +892,12 @@
+ 	if (lftest)
+ 		exit (0);
+ 
++#if defined (PARANOIA)
++	/* Set proper permissions... */
++	if (lchown (path_dhcpd_db, set_uid, set_gid))
++		log_fatal ("lchown(%s, %d, %d): %m", path_dhcpd_db, (int) set_uid, (int) set_gid);
++#endif /* PARANOIA */
++
+ 	/* Discover all the network interfaces and initialize them. */
+ #if defined(DHCPv6) && defined(DHCP4o6)
+ 	if (dhcpv4_over_dhcpv6) {

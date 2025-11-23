@@ -1,0 +1,11 @@
+Bug: https://bugs.gentoo.org/894716
+--- a/src/convert.c
++++ b/src/convert.c
+@@ -104,6 +104,7 @@
+ #ifdef HAVE_STRING_H
+ /* For strcasestr() */
+ #define __USE_GNU
++#define _GNU_SOURCE
+ #include <string.h>
+ #endif
+ 

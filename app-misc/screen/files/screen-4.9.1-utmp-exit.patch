@@ -1,0 +1,43 @@
+From 2f1b9dfe03133c9b77ea450aed088d65128dc547 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Amadeusz=20S=C5=82awi=C5=84ski?= <amade@asmblr.net>
+Date: Tue, 5 Apr 2016 12:47:08 +0200
+Subject: [PATCH] check if we have ut_exit in utmpx struct
+
+--- a/acconfig.h
++++ b/acconfig.h
+@@ -430,6 +430,11 @@
+  */
+ #undef BUGGYGETLOGIN
+ 
++/*
++ * Define if your utmpx has ut_exit struct
++ */
++#undef HAVE_UT_EXIT
++
+ /*
+  * If your system has the calls setreuid() and setregid(),
+  * define HAVE_SETREUID. Otherwise screen will use a forked process to
+--- a/configure.ac
++++ b/configure.ac
+@@ -438,6 +438,10 @@ AC_NOTE(- you have a broken implementation) AC_DEFINE(BROKEN_PIPE) fifobr=1,
+ AC_NOTE(- skipping check because we are cross compiling; assuming fifo implementation is ok))
+ rm -f /tmp/conftest*
+ fi
++AC_CHECKING(ut_exit)
++AC_TRY_COMPILE([
++#include <utmpx.h>
++],[struct utmpx u; u.ut_exit.e_exit;], AC_DEFINE(HAVE_UT_EXIT))
+ 
+ dnl
+ dnl    ****  SOCKET tests  ****
+--- a/utmp.c
++++ b/utmp.c
+@@ -607,7 +607,7 @@ makedead(u)
+ struct utmp *u;
+ {
+   u->ut_type = DEAD_PROCESS;
+-#if (!defined(linux) || defined(EMPTY)) && !defined(__CYGWIN__)
++#if defined(HAVE_UT_EXIT)
+   u->ut_exit.e_termination = 0;
+   u->ut_exit.e_exit = 0;
+ #endif

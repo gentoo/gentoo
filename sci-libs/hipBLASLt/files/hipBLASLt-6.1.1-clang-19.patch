@@ -1,0 +1,11 @@
+Clang 19 is so smart, it can analyze templates before instantiation
+--- a/tensilelite/Tensile/Source/lib/include/Tensile/MasterSolutionLibrary.hpp
++++ b/tensilelite/Tensile/Source/lib/include/Tensile/MasterSolutionLibrary.hpp
+@@ -36,6 +36,7 @@
+ 
+ namespace Tensile
+ {
++    enum class LazyLoadingInit;
+ 
+     /**
+  * \ingroup SolutionLibrary

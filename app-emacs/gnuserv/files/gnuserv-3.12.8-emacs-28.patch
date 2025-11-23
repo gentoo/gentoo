@@ -1,0 +1,36 @@
+https://bugs.gentoo.org/836892
+
+--- gnuserv-3.12.8/gnuserv.el
++++ gnuserv-3.12.8/gnuserv.el
+@@ -98,31 +98,6 @@
+   :group 'gnuserv)
+ 
+ 
+-;; Provide the old variables as aliases, to avoid breaking .emacs
+-;; files.  However, they are obsolete and should be converted to the
+-;; new forms.  This ugly crock must be before the variable
+-;; declaration, or the scheme fails.
+-
+-(define-obsolete-variable-alias 'server-frame 'gnuserv-frame)
+-(define-obsolete-variable-alias 'server-done-function
+-  'gnuserv-done-function)
+-(define-obsolete-variable-alias 'server-done-temp-file-function
+-  'gnuserv-done-temp-file-function)
+-(define-obsolete-variable-alias 'server-find-file-function
+-  'gnuserv-find-file-function)
+-(define-obsolete-variable-alias 'server-program
+-  'gnuserv-program)
+-(define-obsolete-variable-alias 'server-visit-hook
+-  'gnuserv-visit-hook)
+-(define-obsolete-variable-alias 'server-done-hook
+-  'gnuserv-done-hook)
+-(define-obsolete-variable-alias 'server-kill-quietly
+-  'gnuserv-kill-quietly)
+-(define-obsolete-variable-alias 'server-temp-file-regexp
+-  'gnuserv-temp-file-regexp)
+-(define-obsolete-variable-alias 'server-make-temp-file-backup
+-  'gnuserv-make-temp-file-backup)
+-
+ ;;;###autoload
+ (defcustom gnuserv-frame nil
+   "*The frame to be used to display all edited files.

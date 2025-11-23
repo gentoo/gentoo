@@ -1,0 +1,17 @@
+Index: deluge/ui/gtk3/preferences.py
+===================================================================
+--- a/deluge/ui/gtk3/preferences.py	(revision 930cf87103284941514283c2a5f6c55cdc56294d)
++++ b/deluge/ui/gtk3/preferences.py	(revision dbedf7f639931afb635c68ac42194b1816155b54)
+@@ -31,6 +31,10 @@
+ 
+ try:
+-    require_version('AppIndicator3', '0.1')
+-    from gi.repository import AppIndicator3  # noqa: F401
++    try:
++        require_version('AyatanaAppIndicator3', '0.1')
++        from gi.repository import AyatanaAppIndicator3  # noqa: F401
++    except (ValueError, ImportError):
++        require_version('AppIndicator3', '0.1')
++        from gi.repository import AppIndicator3  # noqa: F401
+ except (ImportError, ValueError):
+     appindicator = False

@@ -1,0 +1,524 @@
+Port to C99/C23. Correct usage of timeval in utmp, rename reserved keywords
+Also cast pointers to pointers to signed chars to unsigned chars
+It's that or redo multiple functions from unsigned chars to signed chars
+and unsigned chars with implicit cast worked so far.
+https://bugs.gentoo.org/919459
+https://bugs.gentoo.org/946205
+--- a/date/date.c
++++ b/date/date.c
+@@ -141,6 +141,7 @@
+ 	const char wtmpxfile[] = "/var/log/wtmp";
+ 	time_t newtime;
+ 	struct timeval	tv;
++	struct timeval before_tv, after_tv;
+ 
+ 	memset(&before, 0, sizeof before);
+ 	memset(&after, 0, sizeof after);
+@@ -150,14 +151,19 @@
+ 	strcpy(after.ut_line, "new time");
+ 	if ((newtime = timeop(op)) == (time_t)-1)
+ 		badconv();
+-	gettimeofday(&before.ut_tv, NULL);
++	gettimeofday(&before_tv, NULL);
++	before.ut_tv.tv_sec = before_tv.tv_sec;
++	before.ut_tv.tv_usec = before_tv.tv_usec;
+ 	tv.tv_sec = newtime;
+ 	tv.tv_usec = 0;
+ 	if (settimeofday(&tv, NULL) < 0) {
+ 		fprintf(stderr, "%s: no permission\n", progname);
+ 		exit(1);
+ 	}
+-	gettimeofday(&after.ut_tv, NULL);
++	gettimeofday(&after_tv, NULL);
++	after.ut_tv.tv_sec = after_tv.tv_sec;
++	after.ut_tv.tv_usec = after_tv.tv_usec;
++
+ #ifdef	__linux__
+ 	system("/sbin/hwclock -w >/dev/null 2>&1");
+ #endif	/* __linux__ */
+--- a/nawk/main.c
++++ b/nawk/main.c
+@@ -168,18 +168,18 @@
+ 	}
+ 	/* hold leading name=val arguments until just after BEGIN */
+ 	if (posix && argc > 1 && isclvar(argv[1])) {
+-		start_delayed = &argv[0];
++		start_delayed = (unsigned char **)&argv[0];
+ 		do {
+ 			argv[0] = argv[1];
+ 			argv++;
+ 		} while (--argc > 1 && isclvar(argv[1]));
+-		after_delayed = &argv[0];
++		after_delayed = (unsigned char **)&argv[0];
+ 	}
+ 	compile_time = 1;
+ 	argv[0] = cmdname;	/* put prog name at front of arglist */
+ 	dprintf( ("argc=%d, argv[0]=%s\n", argc, argv[0]) );
+-	arginit(argc, argv);
+-	envinit(envp);
++	arginit(argc, (unsigned char **)argv);
++	envinit((unsigned char **)envp);
+ 	yyparse();
+ 	if (fs)
+ 		*FS = tostring(qstring(fs, '\0'));
+--- a/nawk/run.c
++++ b/nawk/run.c
+@@ -61,9 +61,9 @@
+ Cell	*tmps;
+ 
+ static Cell	truecell	={ OBOOL, BTRUE, 0, 0, 1.0, NUM };
+-Cell	*true	= &truecell;
++Cell	*trueval	= &truecell;
+ static Cell	falsecell	={ OBOOL, BFALSE, 0, 0, 0.0, NUM };
+-Cell	*false	= &falsecell;
++Cell	*falseval	= &falsecell;
+ static Cell	breakcell	={ OJUMP, JBREAK, 0, 0, 0.0, NUM };
+ Cell	*jbreak	= &breakcell;
+ static Cell	contcell	={ OJUMP, JCONT, 0, 0, 0.0, NUM };
+@@ -108,7 +108,7 @@
+ 	register Node *a;
+ 
+ 	if (u == NULL)
+-		return(true);
++		return(trueval);
+ 	for (a = u; ; a = a->nnext) {
+ 		curnode = a;
+ 		if (isvalue(a)) {
+@@ -148,7 +148,7 @@
+ 	if (a[0]) {		/* BEGIN */
+ 		x = execute(a[0]);
+ 		if (isexit(x))
+-			return(true);
++			return(trueval);
+ 		if (isjump(x))
+ 			error(MM_ERROR,
+ 				":44:Illegal break, continue or next from BEGIN");
+@@ -174,7 +174,7 @@
+ 		if(x != 0) { tempfree(x, ""); }
+ 	}
+   ex1:
+-	return(true);
++	return(trueval);
+ }
+ 
+ struct Frame {
+@@ -461,7 +461,7 @@
+ 
+ 	x = execute(a[0]);	/* Cell* for symbol table */
+ 	if (!isarr(x))
+-		return true;
++		return trueval;
+ 	subseplen = strlen((char *)*SUBSEP);
+ 	growbuf(&buf, &bufsz, CHUNK, NULL, "delete");
+ 	buf[0] = 0;
+@@ -479,7 +479,7 @@
+ 	freeelem(x, buf);
+ 	tempfree(x, "");
+ 	free(buf);
+-	return true;
++	return trueval;
+ }
+ 
+ Cell *intest(Node **a, int n)
+@@ -511,9 +511,9 @@
+ 	tempfree(ap, "");
+ 	free(buf);
+ 	if (k == NULL)
+-		return(false);
++		return(falseval);
+ 	else
+-		return(true);
++		return(trueval);
+ }
+ 
+ 
+@@ -557,9 +557,9 @@
+ 		x->fval = start;
+ 		return x;
+ 	} else if ((n == MATCH && i == 1) || (n == NOTMATCH && i == 0))
+-		return(true);
++		return(trueval);
+ 	else
+-		return(false);
++		return(falseval);
+ }
+ 
+ 
+@@ -573,22 +573,22 @@
+ 	tempfree(x, "");
+ 	switch (n) {
+ 	case BOR:
+-		if (i) return(true);
++		if (i) return(trueval);
+ 		y = execute(a[1]);
+ 		i = istrue(y);
+ 		tempfree(y, "");
+-		if (i) return(true);
+-		else return(false);
++		if (i) return(trueval);
++		else return(falseval);
+ 	case AND:
+-		if ( !i ) return(false);
++		if ( !i ) return(falseval);
+ 		y = execute(a[1]);
+ 		i = istrue(y);
+ 		tempfree(y, "");
+-		if (i) return(true);
+-		else return(false);
++		if (i) return(trueval);
++		else return(falseval);
+ 	case NOT:
+-		if (i) return(false);
+-		else return(true);
++		if (i) return(falseval);
++		else return(trueval);
+ 	default:	/* can't happen */
+ 		error(MM_ERROR, ":55:Unknown boolean operator %d", n);
+ 	}
+@@ -613,18 +613,18 @@
+ 	tempfree(x, "");
+ 	tempfree(y, "");
+ 	switch (n) {
+-	case LT:	if (i<0) return(true);
+-			else return(false);
+-	case LE:	if (i<=0) return(true);
+-			else return(false);
+-	case NE:	if (i!=0) return(true);
+-			else return(false);
+-	case EQ:	if (i == 0) return(true);
+-			else return(false);
+-	case GE:	if (i>=0) return(true);
+-			else return(false);
+-	case GT:	if (i>0) return(true);
+-			else return(false);
++	case LT:	if (i<0) return(trueval);
++			else return(falseval);
++	case LE:	if (i<=0) return(trueval);
++			else return(falseval);
++	case NE:	if (i!=0) return(trueval);
++			else return(falseval);
++	case EQ:	if (i == 0) return(trueval);
++			else return(falseval);
++	case GE:	if (i>=0) return(trueval);
++			else return(falseval);
++	case GT:	if (i>0) return(trueval);
++			else return(falseval);
+ 	default:	/* can't happen */
+ 		error(MM_ERROR, ":56:Unknown relational operator %d", n);
+ 	}
+@@ -944,7 +944,7 @@
+ 		}
+ 		free(buf);
+ 	}
+-	return(true);
++	return(trueval);
+ }
+ 
+ Cell *arith(Node **a, int n)
+@@ -1155,7 +1155,7 @@
+ 		x = execute(a[2]);
+ 		return(x);
+ 	}
+-	return(false);
++	return(falseval);
+ }
+ 
+ Cell *split(Node **a, int nnn)
+@@ -1312,7 +1312,7 @@
+ 		tempfree(x, "");
+ 		x = execute(a[1]);
+ 		if (isbreak(x)) {
+-			x = true;
++			x = trueval;
+ 			in_loop--;
+ 			return(x);
+ 		}
+@@ -1334,7 +1334,7 @@
+ 		x = execute(a[0]);
+ 		if (isbreak(x)) {
+ 			in_loop--;
+-			return true;
++			return trueval;
+ 		}
+ 		if (isnext(x) || isexit(x) || isret(x)) {
+ 			in_loop--;
+@@ -1371,7 +1371,7 @@
+ 		x = execute(a[3]);
+ 		if (isbreak(x)) {		/* turn off break */
+ 			in_loop--;
+-			return true;
++			return trueval;
+ 		}
+ 		if (isnext(x) || isexit(x) || isret(x)) {
+ 			in_loop--;
+@@ -1405,7 +1405,7 @@
+ 			if (isbreak(x)) {
+ 				tempfree(vp, "");
+ 				in_loop--;
+-				return true;
++				return trueval;
+ 			}
+ 			if (isnext(x) || isexit(x) || isret(x)) {
+ 				tempfree(vp, "");
+@@ -1416,7 +1416,7 @@
+ 		}
+ 	}
+ 	in_loop--;
+-	return true;
++	return trueval;
+ }
+ 
+ static int closefile(const char *a);
+@@ -1552,7 +1552,7 @@
+ 	}
+ 	if (a[1] != 0)
+ 		fflush(fp);
+-	return(true);
++	return(trueval);
+ }
+ 
+ /*ARGSUSED*/
+@@ -1694,7 +1694,7 @@
+ 		tempfree(y, "");
+ 	}
+ 	y = execute(a[2]);	/* replacement string */
+-	result = false;
++	result = falseval;
+ 	if (pmatch(pfa, t)) {
+ 		growbuf(&buf, &bufsize, CHUNK, NULL, "sub");
+ 		pb = buf;
+@@ -1730,7 +1730,7 @@
+ 							"sub");
+ 			}
+ 		setsval(x, buf);
+-		result = true;;
++		result = trueval;;
+ 		free(buf);
+ 	}
+ 	tempfree(x, "");
+--- a/oawk/awk.def
++++ b/oawk/awk.def
+@@ -215,7 +215,7 @@
+ #define NPA2	4
+ 
+ extern obj	(*proctab[])(node **, int);
+-extern obj	true, false;
++extern obj	trueval, falseval;
+ extern int	pairstack[], paircnt;
+ 
+ #define cantexec(n)	(n->ntype == NVALUE)
+--- a/oawk/run.c
++++ b/oawk/run.c
+@@ -96,8 +96,8 @@
+ #define MAXTMP 20
+ cell tmps[MAXTMP];
+ static cell nullval ={EMPTY,EMPTY,0.0,NUM,0};
+-obj	true	={ OBOOL, BTRUE, 0 };
+-obj	false	={ OBOOL, BFALSE, 0 };
++obj	trueval	={ OBOOL, BTRUE, 0 };
++obj	falseval	={ OBOOL, BFALSE, 0 };
+ 
+ int chrlen(const char *s);
+ int chrdist(const char *s, const char *end);
+@@ -125,7 +125,7 @@
+ 	node *a;
+ 
+ 	if (u==(node *)NULL)
+-		return(true);
++		return(trueval);
+ 	for (a = u; ; a = a->nnext) {
+ 		if (cantexec(a))
+ 			return(nodetoobj(a));
+@@ -156,7 +156,7 @@
+ 	if (a[0] != NULL) {
+ 		x = execute(a[0]);
+ 		if (isexit(x))
+-			return(true);
++			return(trueval);
+ 		if (isjump(x))
+ 			error(FATAL, "unexpected break, continue or next");
+ 		tempfree(x);
+@@ -173,7 +173,7 @@
+ 			error(FATAL, "unexpected break, continue or next");
+ 		tempfree(x);
+ 	}
+-	return(true);
++	return(trueval);
+ }
+ 
+ /*ARGSUSED*/
+@@ -228,9 +228,9 @@
+ 	tempfree(x);
+ 	i = match((struct fa *)a[1], s);
+ 	if (n==MATCH && i==1 || n==NOTMATCH && i==0)
+-		return(true);
++		return(trueval);
+ 	else
+-		return(false);
++		return(falseval);
+ }
+ 
+ obj boolop(node **a,int n)
+@@ -245,22 +245,22 @@
+ 	default:
+ 		error(FATAL, "unknown boolean operator %d", n);
+ 	case BOR:
+-		if (i) return(true);
++		if (i) return(trueval);
+ 		y = execute(a[1]);
+ 		i = istrue(y);
+ 		tempfree(y);
+-		if (i) return(true);
+-		else return(false);
++		if (i) return(trueval);
++		else return(falseval);
+ 	case AND:
+-		if ( !i ) return(false);
++		if ( !i ) return(falseval);
+ 		y = execute(a[1]);
+ 		i = istrue(y);
+ 		tempfree(y);
+-		if (i) return(true);
+-		else return(false);
++		if (i) return(trueval);
++		else return(falseval);
+ 	case NOT:
+-		if (i) return(false);
+-		else return(true);
++		if (i) return(falseval);
++		else return(trueval);
+ 	}
+ }
+ 
+@@ -283,18 +283,18 @@
+ 	switch (n) {
+ 	default:
+ 		error(FATAL, "unknown relational operator %d", n);
+-	case LT:	if (i<0) return(true);
+-			else return(false);
+-	case LE:	if (i<=0) return(true);
+-			else return(false);
+-	case NE:	if (i!=0) return(true);
+-			else return(false);
+-	case EQ:	if (i==0) return(true);
+-			else return(false);
+-	case GE:	if (i>=0) return(true);
+-			else return(false);
+-	case GT:	if (i>0) return(true);
+-			else return(false);
++	case LT:	if (i<0) return(trueval);
++			else return(falseval);
++	case LE:	if (i<=0) return(trueval);
++			else return(falseval);
++	case NE:	if (i!=0) return(trueval);
++			else return(falseval);
++	case EQ:	if (i==0) return(trueval);
++			else return(falseval);
++	case GE:	if (i>=0) return(trueval);
++			else return(falseval);
++	case GT:	if (i>0) return(trueval);
++			else return(falseval);
+ 	}
+ }
+ 
+@@ -675,7 +675,7 @@
+ 	obj x;
+ 
+ 	if (a[0]==nullstat)
+-		x = true;
++		x = trueval;
+ 	else
+ 		x = execute(a[0]);
+ 	if (istrue(x)) {
+@@ -703,7 +703,7 @@
+ 		x = execute(a[2]);
+ 		return(x);
+ 	}
+-	return(false);
++	return(falseval);
+ }
+ 
+ obj aprintf(node **a,int n)
+@@ -714,7 +714,7 @@
+ 	if (a[1]==NULL) {
+ 		printf("%s", x.optr->sval);
+ 		tempfree(x);
+-		return(true);
++		return(trueval);
+ 	}
+ 	redirprint(x.optr->sval, (intptr_t)a[1], a[2]);
+ 	return(x);
+@@ -823,7 +823,7 @@
+ 		tempfree(x);
+ 		x = execute(a[1]);
+ 		if (isbreak(x)) {
+-			x = true;
++			x = trueval;
+ 			return(x);
+ 		}
+ 		if (isnext(x) || isexit(x))
+@@ -845,7 +845,7 @@
+ 		}
+ 		x = execute(a[3]);
+ 		if (isbreak(x)) {	/* turn off break */
+-			x = true;
++			x = trueval;
+ 			return(x);
+ 		}
+ 		if (isnext(x) || isexit(x))
+@@ -871,7 +871,7 @@
+ 			setsval(vp, cp->nval);
+ 			x = execute(a[2]);
+ 			if (isbreak(x)) {
+-				x = true;
++				x = trueval;
+ 				return(x);
+ 			}
+ 			if (isnext(x) || isexit(x))
+@@ -879,7 +879,7 @@
+ 			tempfree(x);
+ 		}
+ 	}
+-	return (true);
++	return (trueval);
+ }
+ 
+ obj jump(node **a,int n)
+@@ -971,14 +971,14 @@
+ 	}
+ 	if (a[1]==nullstat) {
+ 		printf("%s", s);
+-		return(true);
++		return(trueval);
+ 	}
+ 	redirprint(s, (intptr_t)a[1], a[2]);
+-	return(false);
++	return(falseval);
+ }
+ 
+ /*ARGSUSED*/
+-obj nullproc(node **a, int n) {return(true);}
++obj nullproc(node **a, int n) {return(trueval);}
+ 
+ obj nodetoobj(node *a)
+ {
+--- a/shl/shl.c
++++ b/shl/shl.c
+@@ -322,13 +322,16 @@
+ 	 */
+ 	struct passwd *pwd = getpwuid(myuid);
+ 	struct utmpx utx;
++	struct timeval tv;
+ 	char *id;
+ 
+ 	memset(&utx, 0, sizeof utx);
+ 	strncpy(utx.ut_line, l->l_line + 5, sizeof utx.ut_line);
+ 	strncpy(utx.ut_user, pwd->pw_name, sizeof utx.ut_user);
+ 	utx.ut_pid = l->l_pid;
+-	gettimeofday(&utx.ut_tv, NULL);
++	gettimeofday(&tv, NULL);
++	utx.ut_tv.tv_sec = tv.tv_sec;
++	utx.ut_tv.tv_usec = tv.tv_usec;
+ 	if ((id = strrchr(l->l_line, '/')) != NULL)
+ 		strncpy(utx.ut_id, id, sizeof utx.ut_id);
+ 	switch (action) {

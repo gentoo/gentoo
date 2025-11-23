@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/automatic"
+command_args="${OPTS} ${CONFIG}"
+description="RSS downloader"
+name="RSS downloader"
+user="${AUTOMATIC_USER:-automatic}"
+group="${AUTOMATIC_GROUP:-automatic}"
+pidfile="/run/${RC_SVCNAME}.pid"
+
+depend() {
+	need net
+}
+
+start_post() {
+	pgrep -n "${RC_SVCNAME%%.*}" > "${pidfile}"
+}

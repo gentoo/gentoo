@@ -1,0 +1,35 @@
+From 10d0e99164eb699d13df3c183a1600a6a955c6d3 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@aura-online.co.uk>
+Date: Sun, 9 Mar 2025 19:27:50 +0000
+Subject: [PATCH] Use built-in tomllib rather than toml (#71)
+
+The toml library has been unmaintained for years and is no longer packaged by some distributions.
+---
+ tests/test_setup.py | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test_setup.py b/tests/test_setup.py
+index eaae0166..7593b727 100644
+--- a/tests/test_setup.py
++++ b/tests/test_setup.py
+@@ -1,6 +1,6 @@
+ import pkgutil
+ 
+-import toml
++import tomllib
+ 
+ import scc
+ 
+@@ -19,7 +19,8 @@ class TestSetup:
+ 			pass
+ 
+ 		# Load the packages from pyproject.toml
+-		pyproject = toml.load("pyproject.toml")
++		with open("pyproject.toml", "rb") as file:
++			pyproject = tomllib.load(file)
+ 		packages = pyproject["tool"]["setuptools"]["packages"]
+ 
+ 		for importer, modname, ispkg in pkgutil.walk_packages(path=scc.__path__, prefix="scc.", onerror=lambda x: None):
+-- 
+2.48.1
+

@@ -1,0 +1,6 @@
+You have not specified which database you are going to use.
+You are on your own!  Go to
+
+		http://docs.moodle.org/en/Installing_Moodle
+
+and follow the instructions there.

@@ -1,0 +1,118 @@
+https://bugs.gentoo.org/964340
+https://gitlab.torproject.org/tpo/core/tor/-/issues/41164
+https://gitlab.torproject.org/tpo/core/tor/-/commit/ed28f2a1b3b1d40027a8b8d8b8a3a5d112ae3829
+https://gitlab.torproject.org/tpo/core/tor/-/commit/d2b5942e2820bd1d386e3c1e77a92363b05d28df
+
+From ed28f2a1b3b1d40027a8b8d8b8a3a5d112ae3829 Mon Sep 17 00:00:00 2001
+From: Jim Newsome <jnewsome@torproject.org>
+Date: Mon, 2 Jun 2025 17:09:20 -0500
+Subject: [PATCH] Add tor_pipe_cloexec
+
+---
+ src/lib/fdio/fdio.c | 28 ++++++++++++++++++++++++++++
+ src/lib/fdio/fdio.h |  1 +
+ 2 files changed, 29 insertions(+)
+
+diff --git a/src/lib/fdio/fdio.c b/src/lib/fdio/fdio.c
+index 7e27644067..f132e370d1 100644
+--- a/src/lib/fdio/fdio.c
++++ b/src/lib/fdio/fdio.c
+@@ -14,6 +14,9 @@
+ #ifdef HAVE_UNISTD_H
+ #include <unistd.h>
+ #endif
++#ifdef HAVE_FCNTL_H
++#include <fcntl.h>
++#endif
+ #ifdef _WIN32
+ #include <windows.h>
+ #endif
+@@ -118,3 +121,28 @@ write_all_to_fd_minimal(int fd, const char *buf, size_t count)
+   }
+   return 0;
+ }
++
++#if defined(HAVE_PIPE2) && defined(O_CLOEXEC)
++int
++tor_pipe_cloexec(int pipefd[2])
++{
++  return pipe2(pipefd, O_CLOEXEC);
++}
++#elif defined(HAVE_PIPE) && defined(FD_CLOEXEC)
++int
++tor_pipe_cloexec(int pipefd[2])
++{
++  if (pipe(pipefd)) {
++    return -1;
++  }
++  if (fcntl(pipefd[0], F_SETFD, FD_CLOEXEC)) {
++    return -1;
++  }
++  if (fcntl(pipefd[1], F_SETFD, FD_CLOEXEC)) {
++    return -1;
++  }
++  return 0;
++}
++#else
++/* Intentionally leave symbol undefined. */
++#endif
+diff --git a/src/lib/fdio/fdio.h b/src/lib/fdio/fdio.h
+index 7551dedb9e..4fd35fda43 100644
+--- a/src/lib/fdio/fdio.h
++++ b/src/lib/fdio/fdio.h
+@@ -22,5 +22,6 @@ int tor_fd_setpos(int fd, off_t pos);
+ int tor_fd_seekend(int fd);
+ int tor_ftruncate(int fd);
+ int write_all_to_fd_minimal(int fd, const char *buf, size_t count);
++int tor_pipe_cloexec(int pipefd[2]);
+ 
+ #endif /* !defined(TOR_FDIO_H) */
+-- 
+GitLab
+
+From d2b5942e2820bd1d386e3c1e77a92363b05d28df Mon Sep 17 00:00:00 2001
+From: Jim Newsome <jnewsome@torproject.org>
+Date: Mon, 2 Jun 2025 17:10:45 -0500
+Subject: [PATCH] start_daemon: open pipe with cloexec
+
+Fixes #41013
+Fixes #41088
+---
+ changes/bug41088             | 4 ++++
+ src/lib/process/daemon.c     | 3 ++-
+ 3 files changed, 7 insertions(+), 1 deletion(-)
+ create mode 100644 changes/bug41088
+
+diff --git a/changes/bug41088 b/changes/bug41088
+new file mode 100644
+index 0000000000..7f9c178f97
+--- /dev/null
++++ b/changes/bug41088
+@@ -0,0 +1,4 @@
++  o Minor bugfixes (bridges, pluggable transport):
++    - Fix a bug causing the initial tor process to hang intead of exiting with
++      RunAsDaemon, when pluggable transports are used.
++      Fixes bug 41088; bugfix on 0.4.9.1-alpha.
+diff --git a/src/lib/process/daemon.c b/src/lib/process/daemon.c
+index abd1d36576..1bfb162d85 100644
+--- a/src/lib/process/daemon.c
++++ b/src/lib/process/daemon.c
+@@ -13,6 +13,7 @@
+ 
+ #ifndef _WIN32
+ 
++#include "lib/fdio/fdio.h"
+ #include "lib/fs/files.h"
+ #include "lib/log/log.h"
+ #include "lib/thread/threads.h"
+@@ -63,7 +64,7 @@ start_daemon(void)
+     return 0;
+   start_daemon_called = 1;
+ 
+-  if (pipe(daemon_filedes)) {
++  if (tor_pipe_cloexec(daemon_filedes)) {
+     /* LCOV_EXCL_START */
+     log_err(LD_GENERAL,"pipe failed; exiting. Error was %s", strerror(errno));
+     exit(1); // exit ok: during daemonize, pipe failed.
+-- 
+GitLab

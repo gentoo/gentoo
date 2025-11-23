@@ -1,0 +1,12 @@
+Index: sndpeek-1.4/src/marsyas/LPC.cpp
+===================================================================
+--- sndpeek-1.4.orig/src/marsyas/LPC.cpp
++++ sndpeek-1.4/src/marsyas/LPC.cpp
+@@ -26,6 +26,7 @@ in Speech Recognition research.
+ */
+ 
+ 
++#include <cstdlib>
+ #include "LPC.h"
+ 
+ LPC::LPC( unsigned int inSize )

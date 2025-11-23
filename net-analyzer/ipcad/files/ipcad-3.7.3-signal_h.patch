@@ -1,0 +1,32 @@
+--- a/main.c
++++ b/main.c
+@@ -26,6 +26,8 @@
+  * $Id$
+  */
+ 
++#include <signal.h> /* signal */
++
+ #include "ipcad.h"
+ #include "cfgvar.h"
+ #include "servers.h"
+--- a/pps.c
++++ b/pps.c
+@@ -26,6 +26,7 @@
+  * $Id$
+  */
+ 
++#include <signal.h> /* sigprocmask */
+ 
+ #include "ipcad.h"
+ #include "opt.h"
+--- a/servers.c
++++ b/servers.c
+@@ -26,6 +26,8 @@
+  * $Id$
+  */
+ 
++#include <signal.h> /* pthread_kill and sigprocmask */
++
+ #include "ipcad.h"
+ #include "servers.h"
+ #include "opt.h"

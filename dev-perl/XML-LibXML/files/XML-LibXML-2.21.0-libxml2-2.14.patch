@@ -1,0 +1,40 @@
+https://github.com/shlomif/perl-XML-LibXML/pull/87
+
+From c9f9c2fe51173b0a00969f01b577399f1098aa47 Mon Sep 17 00:00:00 2001
+From: Nick Wellnhofer <wellnhofer@aevum.de>
+Date: Thu, 13 Feb 2025 19:50:35 +0100
+Subject: [PATCH] Fix test suite with libxml2 2.14.0
+
+--- a/t/16docnodes.t
++++ b/t/16docnodes.t
+@@ -60,7 +60,12 @@ for my $time (0 .. 2) {
+     $doc->setDocumentElement($node);
+ 
+     # TEST
+-    is( $node->serialize(), '<test contents="&#xE4;"/>', 'Node serialise works.' );
++    # libxml2 2.14 avoids unnecessary escaping of attribute values.
++    if (XML::LibXML::LIBXML_VERSION() >= 21400) {
++        is( $node->serialize(), "<test contents=\"\xE4\"/>", 'Node serialise works.' );
++    } else {
++        is( $node->serialize(), '<test contents="&#xE4;"/>', 'Node serialise works.' );
++    }
+ 
+     $doc->setEncoding('utf-8');
+     # Second output
+--- a/t/49_load_html.t
++++ b/t/49_load_html.t
+@@ -52,7 +52,13 @@ use XML::LibXML;
+ </div>
+ EOS
+ 
+-    {
++    SKIP: {
++        # libxml2 2.14 tokenizes HTML according to HTML5 where
++        # this isn't an error, see "13.2.5.73 Named character
++        # reference state".
++        skip("libxml2 version >= 21400", 1)
++            if XML::LibXML::LIBXML_VERSION >= 21400;
++
+         my $buf = '';
+         open my $fh, '>', \$buf;
+         # redirect STDERR there

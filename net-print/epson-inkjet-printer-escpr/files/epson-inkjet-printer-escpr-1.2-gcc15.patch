@@ -1,0 +1,23 @@
+--- a/src/Makefile.in	2025-03-11 13:27:10.299747040 -0400
++++ b/src/Makefile.in	2025-03-11 13:34:22.746707500 -0400
+@@ -319,7 +319,9 @@ AM_LDFLAGS = -lpthread -lm
+ cupsfilterdir = $(CUPS_FILTER_DIR)
+ ESCPR_LIB_DIR = ../escprlib
+ epson_escpr_wrapper2_CFLAGS = \
+-	-Wall\
++	-Wno-pointer-sign\
++	-Wno-unused-result\
++	-Wno-deprecated-declarations\
+ 	-DCUPS_FILTER_NAME=\"epson-escpr2\" \
+ 	-DCUPS_FILTER_PATH=\"$(CUPS_FILTER_DIR)\" \
+ 	-DGCOMSW_PRIVATE
+@@ -332,7 +334,8 @@ epson_escpr_wrapper2_SOURCES = \
+ epson_escpr2_CFLAGS = \
+ 	-I$(top_srcdir)/escprlib/include \
+ 	-DGCOMSW_PRIVATE \
+-	-DEPS_FILTER
++	-DEPS_FILTER\
++	-Wno-unused-result
+ 
+ epson_escpr2_SOURCES = \
+ 	filter.c \

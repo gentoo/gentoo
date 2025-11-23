@@ -1,0 +1,13 @@
+diff --git a/src/music.c b/src/music.c
+index 94c2786..1912d4d 100644
+--- a/src/music.c
++++ b/src/music.c
+@@ -125,7 +125,7 @@ void play_music (const char *music_name, long position)
+       stop_music ();
+       strcpy (filename, kqres (MUSIC_DIR, music_name));
+       if (strstr (filename, ".mod"))
+-         mod_song[current_music_player] = dumb_load_mod (filename);
++         mod_song[current_music_player] = dumb_load_mod (filename, 0);
+ 
+       else if (strstr (filename, ".xm"))
+          mod_song[current_music_player] = dumb_load_xm (filename);

@@ -1,0 +1,43 @@
+
+Patch from:
+https://github.com/libbpf/blazesym/commit/32f136b06b8b71110499073909dd238e577b23d0
+
+From: =?UTF-8?q?Holger=20Hoffst=C3=A4tte?= <holger@applied-asynchrony.com>
+Date: Tue, 25 Mar 2025 10:10:56 +0100
+Subject: [PATCH] capi: add capi feature to enable building with cargo-c
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Disable generating the header since it already exists,
+and more importantly because we cannot run the required custom
+cbindgen extension from cargo-c.
+
+Signed-off-by: Holger Hoffstätte <holger@applied-asynchrony.com>
+--- a/capi/Cargo.toml
++++ b/capi/Cargo.toml
+@@ -36,6 +36,8 @@ crate-type = ["cdylib", "staticlib", "lib"]
+ default = [
+   "dwarf",
+ ]
++# Required by cargo-c
++capi = []
+ # Check C code documentation snippets.
+ check-doc-snippets = []
+ # Enable this feature to enable blazesym's DWARF support.
+@@ -46,6 +48,15 @@ dwarf = ["blazesym/dwarf"]
+ # changed.
+ generate-c-header = ["dep:cbindgen", "dep:which"]
+ 
++# cargo-c configuration:
++# skip header generation
++[package.metadata.capi.header]
++generation = false
++subdirectory = false
++# use the existing header for installation
++[package.metadata.capi.install.include]
++asset = [{ from="include/blazesym.h" }]
++
+ [[bench]]
+ name = "capi"
+ path = "benches/capi.rs"

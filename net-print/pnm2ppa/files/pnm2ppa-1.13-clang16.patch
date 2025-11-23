@@ -1,0 +1,7 @@
+https://bugs.gentoo.org/874534
+--- a/ppa_protocol/parse_vlink.c
++++ b/ppa_protocol/parse_vlink.c
+@@ -1,2 +1,3 @@
+ #include <stdio.h>
++#include <string.h>
+ 

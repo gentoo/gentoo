@@ -1,0 +1,28 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+extra_started_commands="reload"
+
+description="A command-line based binary newsgrabber supporting .nzb files"
+pidfile=/run/nzbget/nzbget.pid
+command=/usr/bin/nzbget
+command_args="--configfile \"${NZBGET_CONFIGFILE}\" \
+  --daemon --option LockFile=${pidfile} \
+  ${NZBGET_OPTS}"
+start_stop_daemon_args="--user \"${NZBGET_USER}\" \
+  --group \"${NZBGET_GROUP}\""
+
+depend() {
+  need localmount net
+}
+
+start_pre() {
+  checkpath -d -m 0755 -o "${NZBGET_USER}":"${NZBGET_GROUP}" /run/nzbget
+}
+
+reload() {
+  ebegin "Reloading ${RC_SVCNAME}"
+  ${command} --configfile "${NZBGET_CONFIGFILE}" --reload >/dev/null
+  eend $?
+}

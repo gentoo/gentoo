@@ -1,0 +1,25 @@
+From 1fd611bcc060e779ac62f5f69d956c6dee2b3383 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 12 Jun 2019 16:43:54 +0200
+Subject: Fix pkgconfig libdir path
+
+---
+ src/libalkimia.pc.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/libalkimia.pc.in b/src/libalkimia.pc.in
+--- a/src/libalkimia.pc.in
++++ b/src/libalkimia.pc.in
+@@ -4,8 +4,8 @@
+ # General installation directories
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=@CMAKE_INSTALL_PREFIX@
+-libdir=@CMAKE_INSTALL_LIBDIR@
+-includedir=@INCLUDE_INSTALL_DIR@
++libdir=@CMAKE_INSTALL_FULL_LIBDIR@
++includedir=${prefix}/@INCLUDE_INSTALL_DIR@
+ 
+ # Human-readable name
+ Name: Alkimia
+-- 
+2.23.0

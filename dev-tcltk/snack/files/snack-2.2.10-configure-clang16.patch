@@ -1,0 +1,12 @@
+Issue in autoconf which is already fixed upstream but we can't autoreconf,
+it seems.
+--- a/unix/configure
++++ b/unix/configure
+@@ -2928,6 +2928,7 @@ cat confdefs.h >>conftest.$ac_ext
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+ #include <ctype.h>
++#include <stdlib.h>
+ #if ((' ' & 0x0FF) == 0x020)
+ # define ISLOWER(c) ('a' <= (c) && (c) <= 'z')
+ # define TOUPPER(c) (ISLOWER(c) ? 'A' + ((c) - 'a') : (c))

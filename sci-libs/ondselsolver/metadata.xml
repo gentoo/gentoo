@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>ydmorenoc@unal.edu.co</email>
+		<name>David Moreno</name>
+	</maintainer>
+	<maintainer type="person" proxied="proxy">
+		<email>nowa@gentoo.org</email>
+		<name>Nowa Ammerlaan</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">Ondsel-Development/OndselSolver</remote-id>
+	</upstream>
+</pkgmetadata>

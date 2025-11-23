@@ -1,0 +1,14 @@
+[Unit]
+Description=PostgreSQL Exporter
+Documentation="https://github.com/prometheus-community/postgres_exporter"
+
+[Service]
+User=postgres_exporter
+#Environment=DATA_SOURCE_URI=localhost:5432/postgres?sslmode=disable
+#Environment=DATA_SOURCE_USER=postgres
+#Environment=DATA_SOURCE_PASS=password
+#Environment=DATA_SOURCE_PASS_FILE=/path/to/passwordfile
+ExecStart=/usr/bin/postgres_exporter
+
+[Install]
+WantedBy=multi-user.target

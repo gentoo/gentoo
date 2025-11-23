@@ -1,0 +1,67 @@
+https://sourceforge.net/p/wmweatherplus/bugs/21/
+https://bugs.gentoo.org/870958
+
+Port the configure script to C99 by avoiding calls to the undeclared
+exit function.  Future compilers are likely to reject implicit
+function declarations by default; this C features was removed from the
+language in 1999.
+
+--- a/m4/snprintf.m4
++++ b/m4/snprintf.m4
+@@ -24,7 +24,7 @@ int snprintf(char *str, size_t size, const char *format, ...);
+ #endif
+ ]],
+ [[char foo[]="ABC"; snprintf(foo, 2, "%d", 12);
+-exit((foo[0]=='1' && foo[1]=='\0' && foo[2]=='C')?0:1);]])],
++return (foo[0]=='1' && foo[1]=='\0' && foo[2]=='C')?0:1;]])],
+ [x_cv_func_snprintf_size=yes],
+ [x_cv_func_snprintf_size=no],
+ [x_cv_func_snprintf_size=no])])
+@@ -52,7 +52,7 @@ AC_CACHE_CHECK([if snprintf return value is sane], x_cv_func_snprintf_retval,
+ int snprintf(char *str, size_t size, const char *format, ...);
+ #endif
+ ]],
+-[[char foo[10]; exit((snprintf(foo, 1, "%d", 9876)==4)?0:1);]])],
++[[char foo[10]; return (snprintf(foo, 1, "%d", 9876)==4)?0:1;]])],
+ [x_cv_func_snprintf_retval=yes],
+ [x_cv_func_snprintf_retval=no],
+ [x_cv_func_snprintf_retval=no])])
+@@ -79,7 +79,7 @@ AC_CACHE_CHECK([if snprintf(NULL, 0, ...) works], x_cv_func_snprintf_null_ok,
+ int snprintf(char *str, size_t size, const char *format, ...);
+ #endif
+ ]],
+-[int r=snprintf(NULL, 0, "%d", 100); exit((r==3 || r==-1)?0:1);])],
++[int r=snprintf(NULL, 0, "%d", 100); return (r==3 || r==-1)?0:1;])],
+ [x_cv_func_snprintf_null_ok=yes],
+ [x_cv_func_snprintf_null_ok=no],
+ [x_cv_func_snprintf_null_ok=no])])
+--- a/m4/vsnprintf.m4
++++ b/m4/vsnprintf.m4
+@@ -37,7 +37,7 @@ int doit(char *str, size_t size, const char *format, ...){
+ }
+ ]],
+ [[char foo[]="ABC"; doit(foo, 2, "%d", 12);
+-exit((foo[0]=='1' && foo[1]=='\0' && foo[2]=='C')?0:1);]])],
++return (foo[0]=='1' && foo[1]=='\0' && foo[2]=='C')?0:1;]])],
+ [x_cv_func_vsnprintf_size=yes],
+ [x_cv_func_vsnprintf_size=no],
+ [x_cv_func_vsnprintf_size=no])])
+@@ -74,7 +74,7 @@ int doit(char *str, size_t size, const char *format, ...){
+     return r;
+ }
+ ]],
+-[[char foo[10]; exit((doit(foo, 1, "%d", 9876)==4)?0:1);]])],
++[[char foo[10]; return (doit(foo, 1, "%d", 9876)==4)?0:1;]])],
+ [x_cv_func_vsnprintf_retval=yes],
+ [x_cv_func_vsnprintf_retval=no],
+ [x_cv_func_vsnprintf_retval=no])])
+@@ -110,7 +110,7 @@ int doit(char *str, size_t size, const char *format, ...){
+     return r;
+ }
+ ]],
+-[int r=doit(NULL, 0, "%d", 100); exit((r==3 || r==-1)?0:1);])],
++[int r=doit(NULL, 0, "%d", 100); return (r==3 || r==-1)?0:1;])],
+ [x_cv_func_vsnprintf_null_ok=yes],
+ [x_cv_func_vsnprintf_null_ok=no],
+ [x_cv_func_vsnprintf_null_ok=no])])
+

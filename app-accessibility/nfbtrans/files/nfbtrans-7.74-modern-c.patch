@@ -1,0 +1,98 @@
+https://bugs.gentoo.org/874390
+
+Fix -Wimplicit-function-declaration and -Wformat-security.
+--- a/NFBTRANS.C
++++ b/NFBTRANS.C
+@@ -8,10 +8,12 @@
+ #else
+ #define UNIX_PATH "/etc/nfbtrans/"
+ #endif             /* unix */
+-#include	<stdio.h>
++#include <ctype.h>
++#include <stdio.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <stdlib.h>
++#include <unistd.h>
+ #ifdef DOS
+ #include <io.h>
+ #include <string.h>
+@@ -132,6 +134,12 @@ char *output_extension[2] = {".brf", ".txt"};
+ int paramcount;
+ char **paramstr;
+ 
++void strnset(char *string, char c, short n);
++int strcmpi(char *s1, char *s2);
++void unbuf_stdin();
++void restore_stdin();
++void save_stdin();
++
+ typedef struct
+ {
+   char *name;
+@@ -5130,7 +5138,7 @@ void insert_hyphen_word(int date_only)
+     field[l - 1] = 0;   /* remove lf */
+     if (!lines)
+     {              /* first line */
+-      fprintf(tempfile, date_string);
++      fprintf(tempfile, "%s", date_string);
+       cptr = strchr(field, 'A');
+       if (cptr)
+         strcpy(field, cptr);    /* get rid of date */
+@@ -5341,7 +5349,7 @@ void test_hyphen_dictionary(int mode)
+     /* open for r+ */
+     open_hyp_dictionary(hyphen_dic_name, 3, 1);
+     rewind(hyp_dic_ptr);
+-    fprintf(hyp_dic_ptr, date_string);
++    fprintf(hyp_dic_ptr, "%s", date_string);
+     open_hyp_dictionary(hyphen_dic_name, 3, 2);
+   }                /* date found on first line */
+   else
+@@ -6511,7 +6519,7 @@ void translate_file()
+       {            /* no file args */
+         if (!indirect_ptr)
+         {
+-          fprintf(stderr, menu[10]);
++          fprintf(stderr, "%s", menu[10]);
+           get_input(temp, 80);
+           if (!temp[0])
+             exit_program(0);
+@@ -6709,9 +6717,9 @@ void translate_file()
+     if (!trans_mode1)
+     {              /* get secondary translation mode */
+       i = (trans_default / 10);
+-      fprintf(stderr, menu[0]);
++      fprintf(stderr, "%s", menu[0]);
+       for (j = 5; j < 8; j++)
+-        fprintf(stderr, menu[j]);
++        fprintf(stderr, "%s", menu[j]);
+       backspace_int(i);
+       do
+       {
+@@ -6744,7 +6752,7 @@ void translate_file()
+         }          /* construct output name */
+         else
+         {          /* prompt */
+-          fprintf(stderr, menu[11]);
++          fprintf(stderr, "%s", menu[11]);
+           get_input(outf_name, MAXPATHLEN - 1);
+         }          /* prompt */
+         if (!outf_name[0])
+@@ -7110,7 +7118,7 @@ void get_page_range()
+   if (pageend < pagestart)
+   {                /* pageend */
+     pageend = 9999;
+-    fprintf(stderr, menu[9]);
++    fprintf(stderr, "%s", menu[9]);
+     backspace_int(pageend);
+     get_input(temp, 5);
+     get_end_page(temp);
+@@ -7481,7 +7489,7 @@ int main(int argc, char *argv[])
+   {                /* choose mode */
+     j = (trans_default % 10);
+     for (i = 0; i < 4; i++)
+-      fprintf(stderr, menu[i]);
++      fprintf(stderr, "%s", menu[i]);
+     while (trans_mode < 1 || trans_mode > 3)
+     {
+       fprintf(stderr, "\n%s", menu[4]);

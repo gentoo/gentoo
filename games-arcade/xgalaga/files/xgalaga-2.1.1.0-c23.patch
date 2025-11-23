@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/943793
+--- a/libsprite/data.c
++++ b/libsprite/data.c
+@@ -79,9 +79,6 @@ W_Font  W_HighlightFont = (W_Font) & two, W_UnderlineFont = (W_Font) & three;
+ W_Color W_White = WHITE, W_Black = BLACK, W_Red = RED, W_Green = GREEN;
+ W_Color W_Yellow = YELLOW, W_Cyan = CYAN, W_Grey = LIGHT_GREY, W_DarkGrey = DARK_GREY;
+ int     W_Textwidth, W_Textheight, W_BigTextwidth, W_BigTextheight;
+-#ifndef strdup
+-char   *strdup();
+-#endif
+ int     W_in_message = 0;	/* jfy -- for Jerry's warp message hack */
+ 
+ #ifdef RJC
+--- a/xgal.sndsrv.linux.c
++++ b/xgal.sndsrv.linux.c
+@@ -49,7 +49,7 @@ int fragsize;
+ 
+ 
+ /* Terminate: Signal Handler */
+-void quit ()
++void quit (int n)
+ {
+   exit (0);
+ }

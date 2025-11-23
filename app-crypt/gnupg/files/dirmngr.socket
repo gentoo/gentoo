@@ -1,0 +1,11 @@
+[Unit]
+Description=GnuPG network certificate management daemon
+Documentation=man:dirmngr(8)
+
+[Socket]
+ListenStream=%t/gnupg/S.dirmngr
+SocketMode=0600
+DirectoryMode=0700
+
+[Install]
+WantedBy=sockets.target

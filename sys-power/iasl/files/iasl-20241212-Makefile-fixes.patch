@@ -1,0 +1,93 @@
+From 58e46dacfd83a7d33c8922fcb2ea110f37bee62f Mon Sep 17 00:00:00 2001
+From: "Evgeny Grin (Karlson2k)" <k2k@drgrin.dev>
+Date: Thu, 30 Jan 2025 11:25:24 +0100
+Subject: [PATCH 1/2] Makefile fixes for Gentoo
+
+Based on David Seifert patch seen as dadf5340788610052aeb2f4c5232fb744a8bd9f5
+in Gentoo repo git
+
+Signed-off-by: Evgeny Grin (Karlson2k) <k2k@drgrin.dev>
+---
+ generate/unix/Makefile.config   | 25 ++++++-------------------
+ generate/unix/acpiexec/Makefile |  4 ++--
+ 2 files changed, 8 insertions(+), 21 deletions(-)
+
+diff --git a/generate/unix/Makefile.config b/generate/unix/Makefile.config
+index ae80ccf2e..8e985c691 100644
+--- a/generate/unix/Makefile.config
++++ b/generate/unix/Makefile.config
+@@ -42,8 +42,8 @@ CC ?=    gcc
+ #
+ OBJDIR =     obj
+ BINDIR =     bin
+-COMPILEOBJ = $(CC) -c $(CFLAGS) $(OPT_CFLAGS) -o $@ $<
+-LINKPROG =   $(CC) $(OBJECTS) -o $(PROG) $(LDFLAGS) $(OPT_LDFLAGS)
++COMPILEOBJ = $(CC) -c $(CFLAGS) $(CPPFLAGS) $(OPT_CFLAGS) -o $@ $<
++LINKPROG =   $(CC) $(LDFLAGS) $(OPT_LDFLAGS) $(OBJECTS) -o $(PROG) $(LIBS)
+ PREFIX ?=    /usr
+ INSTALLDIR = $(PREFIX)/bin
+ UNAME_S := $(shell uname -s)
+@@ -75,19 +75,16 @@ ifeq ($(UNAME_S), Haiku)
+ ACPI_HOST =       _HAIKU
+ endif
+ 
++ifeq ($(UNAME_S), Linux)
++ACPI_HOST =       _LINUX
++endif
++
+ ifeq ($(ACPI_HOST), _APPLE)
+ INSTALL  =   cp
+ INSTALLFLAGS ?= -f
+ else
+ INSTALL =    install
+-
+-# Do not strip debug info when in debug mode
+-ifeq ($(DEBUG),TRUE)
+ INSTALLFLAGS ?= -m 555
+-else
+-INSTALLFLAGS ?= -m 555 -s
+-endif
+-
+ endif
+ 
+ INSTALLPROG = \
+@@ -174,16 +171,6 @@ CFLAGS +=-m32
+ LDFLAGS +=-m32
+ endif
+ 
+-#
+-# Optionally disable optimizations. Optimization causes problems on
+-# some compilers such as gcc 4.4
+-#
+-ifneq ($(NOOPT),TRUE)
+-OPT_CFLAGS += -O2
+-else
+-OPT_CFLAGS += -O0
+-endif
+-
+ #
+ # Optionally disable fortify source. This option can cause
+ # compile errors in toolchains where it is already defined.
+diff --git a/generate/unix/acpiexec/Makefile b/generate/unix/acpiexec/Makefile
+index 9e5852614..411178cf6 100644
+--- a/generate/unix/acpiexec/Makefile
++++ b/generate/unix/acpiexec/Makefile
+@@ -257,13 +257,13 @@ CFLAGS += \
+ endif
+ 
+ ifneq ($(ACPI_HOST),_QNX)
+-LDFLAGS += -lpthread
++LIBS += -lpthread
+ endif
+ 
+ ifneq ($(ACPI_HOST),_APPLE)
+ ifneq ($(ACPI_HOST),_QNX)
+ ifneq ($(ACPI_HOST),_HAIKU)
+-LDFLAGS += -lrt
++LIBS += -lrt
+ endif
+ endif
+ endif
+-- 
+2.45.2.windows.1
+

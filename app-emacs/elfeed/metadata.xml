@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>sam@gentoo.org</email>
+    <name>Sam James</name>
+  </maintainer>
+  <longdescription>
+    Elfeed is an extensible web feed reader for Emacs, supporting both Atom and
+    RSS. Elfeed was inspired by notmuch.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/skeeto/elfeed/issues/</bugs-to>
+    <remote-id type="github">skeeto/elfeed</remote-id>
+  </upstream>
+</pkgmetadata>

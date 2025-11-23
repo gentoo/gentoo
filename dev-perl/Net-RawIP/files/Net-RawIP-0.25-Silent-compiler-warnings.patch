@@ -1,0 +1,94 @@
+https://bugs.gentoo.org/871597
+https://rt.cpan.org/Public/Bug/Display.html?id=124134
+
+From ee4e010724ea0106f0ebdf572c6b55573122f12b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Fri, 19 Jan 2018 15:56:05 +0100
+Subject: [PATCH] Silent compiler warnings
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ RawIP.xs     | 12 +++---------
+ eth.c        |  5 ++++-
+ ifaddrlist.c |  3 +--
+ 3 files changed, 8 insertions(+), 12 deletions(-)
+
+diff --git a/RawIP.xs b/RawIP.xs
+index 234ea5d..143c65f 100644
+--- a/RawIP.xs
++++ b/RawIP.xs
+@@ -166,14 +166,6 @@ u_long host_to_ip (char *host_name);
+ void pkt_send(int fd, unsigned char *sock, u_char *pkt, int size);
+ int linkoffset(int);
+  
+-static int
+-not_here(s)
+-    char *s;
+-{
+-    croak("%s not implemented on this architecture", s);
+-    return -1;
+-}
+-
+ static double
+ constant(name, arg)
+     char *name;
+@@ -592,6 +584,8 @@ CODE:
+     memset(dev,0,16);
+     len = ip_rt_dev(addr,dev);
+     RETVAL = newSVpv(dev,len); 
++#else
++    PERL_UNUSED_ARG(addr);
+ #endif
+ #if !defined(_LINUX_) && !defined(_BPF_)
+     croak("rdev() is not implemented on this system");
+@@ -689,7 +683,7 @@ send_eth_packet(fd,eth_device,pkt,flag)
+     SV* pkt
+     int flag
+ CODE:
+-    send_eth_packet(fd, eth_device, (char*)SvPV(pkt,PL_na), SvCUR(pkt),flag);
++    send_eth_packet(fd, eth_device, (unsigned char*)SvPV(pkt,PL_na), SvCUR(pkt),flag);
+ 
+ AV * 
+ eth_parse(pkt)
+diff --git a/eth.c b/eth.c
+index 48aeed2..a36a9ab 100644
+--- a/eth.c
++++ b/eth.c
+@@ -235,7 +235,10 @@ int
+ tap(char *dev,unsigned int *my_eth_ip,unsigned char *my_eth_mac)
+ {
+  
+-    int fd,v,s;
++    int fd;
++#ifdef _BPF_
++    int v,s;
++#endif
+     struct ifreq ifr;
+     (void)strcpy(ifr.ifr_name, dev);
+ #ifndef _BPF_
+diff --git a/ifaddrlist.c b/ifaddrlist.c
+index 0729b2b..b60ef3c 100644
+--- a/ifaddrlist.c
++++ b/ifaddrlist.c
+@@ -41,7 +41,7 @@ ifaddrlist(register struct ifaddrlist **ipaddrp, register char *errbuf)
+ #ifdef HAVE_SOCKADDR_SA_LEN
+     register int n;
+ #endif
+-    register struct ifreq *ifrp, *ifend, *ifnext, *mp;
++    register struct ifreq *ifrp, *ifend, *ifnext;
+     register struct sockaddr_in *sin;
+     register struct ifaddrlist *al;
+     struct ifconf ifc;
+@@ -71,7 +71,6 @@ ifaddrlist(register struct ifaddrlist **ipaddrp, register char *errbuf)
+     ifend = (struct ifreq *)((char *)ibuf + ifc.ifc_len);
+ 
+     al = ifaddrlist;
+-    mp = NULL;
+     nipaddr = 0;
+     for (; ifrp < ifend; ifrp = ifnext)
+     {
+-- 
+2.13.6

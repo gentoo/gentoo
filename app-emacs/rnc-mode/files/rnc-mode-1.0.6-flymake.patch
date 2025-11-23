@@ -1,0 +1,44 @@
+Update function and variable names that are obsolete since Emacs 26.
+Don't try to configure flymake without a jing jar file.
+
+--- rnc-mode-1.0.6/rnc-mode.el
++++ rnc-mode-1.0.6/rnc-mode.el
+@@ -113,8 +113,8 @@
+ 
+ (defun rnc-flymake-init ()
+   "Flymake init function for running Jing on the schema."
+-  (let* ((temp-file (flymake-init-create-temp-buffer-copy
+-                     'flymake-create-temp-inplace))
++  (let* ((temp-file (flymake-proc-init-create-temp-buffer-copy
++                     'flymake-proc-create-temp-inplace))
+          (local-file (file-relative-name
+                       temp-file
+                       (file-name-directory buffer-file-name))))
+@@ -123,11 +123,11 @@
+ (defun rnc-configure-flymake ()
+   (if (and (stringp rnc-jing-jar-file)
+            (file-exists-p rnc-jing-jar-file))
+-      (add-to-list 'flymake-allowed-file-name-masks
++      (add-to-list 'flymake-proc-allowed-file-name-masks
+                    '(".+\\.rnc$"
+                      rnc-flymake-init
+-                     flymake-simple-cleanup
+-                     flymake-get-real-file-name))
++                     flymake-proc-simple-cleanup
++                     flymake-proc-get-real-file-name))
+     (message "RNC flymake not enabled because the Jing jar could not be found")))
+ 
+ ;;; Imenu support
+@@ -329,8 +329,9 @@
+     (modify-syntax-entry ?_ "w   " rnc-syntax-table)
+     (set-syntax-table rnc-syntax-table))
+ 
+-  (rnc-configure-flymake)
+-  (when rnc-enable-flymake
+-    (flymake-mode))
++  (when rnc-jing-jar-file
++    (rnc-configure-flymake)
++    (when rnc-enable-flymake
++      (flymake-mode)))
+   (when rnc-enable-imenu
+     (rnc-configure-imenu))

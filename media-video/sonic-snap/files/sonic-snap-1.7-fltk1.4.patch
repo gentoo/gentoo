@@ -1,0 +1,6 @@
+Deprecated compatibility symlinks are removed.
+--- a/sonic-snap-gui.cxx
++++ b/sonic-snap-gui.cxx
+@@ -22 +22 @@
+-#include <FL/fl_file_chooser.H>
++#include <FL/Fl_File_Chooser.H>

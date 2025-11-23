@@ -1,0 +1,29 @@
+From 49507f7708d72b25fd5e350f7f6b30aa80a50cb4 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Thu, 6 Jun 2024 15:40:10 +0200
+Subject: [PATCH] [PATCH] find libjpeg-turbo library
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+---
+ nglib/CMakeLists.txt | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/nglib/CMakeLists.txt b/nglib/CMakeLists.txt
+index b1036ea..78340b6 100644
+--- a/nglib/CMakeLists.txt
++++ b/nglib/CMakeLists.txt
+@@ -13,6 +13,11 @@ if(EMSCRIPTEN)
+   target_link_libraries(nglib PRIVATE ${ZLIB_LIBRARIES} $<BUILD_INTERFACE:$<TARGET_PROPERTY:occ_libs,INTERFACE_LINK_LIBRARIES>>)
+ else(EMSCRIPTEN)
+   target_link_libraries(nglib PUBLIC ngcore)
++  if(TARGET JPEG::JPEG)
++    get_target_property(JPEG_LIBRARIES JPEG::JPEG IMPORTED_LOCATION_RELEASE)
++  else()
++    set(JPEG_LIBRARIES ${JPEG_LIBRARY_RELEASE})
++  endif()
+   target_link_libraries( nglib PRIVATE ${CMAKE_THREAD_LIBS_INIT} ${JPEG_LIBRARIES} ${MKL_LIBRARIES} ${ZLIB_LIBRARIES} occ_libs netgen_cgns )
+ endif(EMSCRIPTEN)
+ 
+-- 
+2.45.2
+

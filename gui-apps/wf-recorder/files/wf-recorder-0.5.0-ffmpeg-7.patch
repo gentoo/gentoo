@@ -1,0 +1,26 @@
+https://github.com/ammen99/wf-recorder/pull/279
+https://bugs.gentoo.org/948264
+
+From 8d665957864899576035abaa968667d1f221b2de Mon Sep 17 00:00:00 2001
+From: Scott Moreau <oreaus@gmail.com>
+Date: Mon, 16 Sep 2024 13:55:35 -0600
+Subject: [PATCH] frame-writer: Track ffmpeg changes
+
+The frame_rate variable has been made private API.
+---
+ src/frame-writer.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/frame-writer.cpp b/src/frame-writer.cpp
+index 2a5ba17..b8abe51 100644
+--- a/src/frame-writer.cpp
++++ b/src/frame-writer.cpp
+@@ -371,7 +371,7 @@ void FrameWriter::init_video_filters(const AVCodec *codec)
+     this->videoCodecCtx->height = filter_output->h;
+     this->videoCodecCtx->pix_fmt = (AVPixelFormat)filter_output->format;
+     this->videoCodecCtx->time_base = filter_output->time_base;
+-    this->videoCodecCtx->framerate = filter_output->frame_rate; // can be 1/0 if unknown
++    this->videoCodecCtx->framerate = AVRational{1,0};
+     this->videoCodecCtx->sample_aspect_ratio = filter_output->sample_aspect_ratio;
+
+     this->hw_frame_context = av_buffersink_get_hw_frames_ctx(

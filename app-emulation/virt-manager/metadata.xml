@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<name>Filip Kobierski</name>
+		<email>fkobi@pm.me</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>virtualization@gentoo.org</email>
+		<name>Gentoo Virtualization Project</name>
+	</maintainer>
+	<use>
+		<flag name="sasl">Enable connecting to SASL-enabled (e.g. Kerberos-protected) instances</flag>
+	</use>
+	<longdescription>
+		Virtual Machine Manager provides a graphical tool for managing libvirt virtual machines.
+		On Gentoo it supports KVM, Xen, and LXC backends.
+		It provides a GUI for not only running VMs but also managing their settings and monitoring usage statistics.
+		The software does not limit you to using the graphical tools though: it allows for editing the XML config files directly.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/virt-manager/virt-manager/issues</bugs-to>
+		<changelog>https://github.com/virt-manager/virt-manager/blob/main/NEWS.md</changelog>
+		<doc>https://virt-manager.org/documentation.html</doc> <!-- not of much use -->
+		<remote-id type="github">virt-manager/virt-manager</remote-id>
+	</upstream>
+</pkgmetadata>

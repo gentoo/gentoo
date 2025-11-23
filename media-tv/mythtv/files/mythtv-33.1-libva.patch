@@ -1,0 +1,101 @@
+https://bugs.gentoo.org/904437
+https://github.com/MythTV/mythtv/pull/760
+--- a/libs/libmythtv/libmythtv.pro
++++ b/libs/libmythtv/libmythtv.pro
+@@ -538,7 +538,7 @@ using_frontend {
+         DEFINES += USING_VAAPI
+         HEADERS += decoders/mythvaapicontext.h
+         SOURCES += decoders/mythvaapicontext.cpp
+-        LIBS    += -lva -lva-x11 -lva-glx -lva-drm
++        LIBS    += -lva -lva-drm
+     }
+ 
+     using_nvdec {
+@@ -605,10 +605,9 @@ using_frontend {
+         SOURCES += opengl/mythopengltonemap.cpp
+         SOURCES += visualisations/videovisualcircles.cpp
+ 
+-
+         using_vaapi {
+-            HEADERS += opengl/mythvaapiinterop.h   opengl/mythvaapiglxinterop.h
+-            SOURCES += opengl/mythvaapiinterop.cpp opengl/mythvaapiglxinterop.cpp
++            HEADERS += opengl/mythvaapiinterop.h
++            SOURCES += opengl/mythvaapiinterop.cpp
+         }
+ 
+         using_vdpau:using_x11 {
+@@ -649,6 +648,12 @@ using_frontend {
+                 HEADERS += opengl/mythvaapidrminterop.h
+                 SOURCES += opengl/mythvaapidrminterop.cpp
+             }
++        } else {
++            using_vaapi {
++                HEADERS += opengl/mythvaapiglxinterop.h
++                SOURCES += opengl/mythvaapiglxinterop.cpp
++                LIBS    += -lva-x11 -lva-glx
++            }
+         }
+ 
+         !win32-msvc* {
+--- a/libs/libmythtv/opengl/mythvaapiinterop.cpp
++++ b/libs/libmythtv/opengl/mythvaapiinterop.cpp
+@@ -8,8 +8,12 @@
+ #include "mythvideocolourspace.h"
+ #include "fourcc.h"
+ #include "mythvaapiinterop.h"
++
++#ifdef USING_EGL
+ #include "mythvaapidrminterop.h"
++#else
+ #include "mythvaapiglxinterop.h"
++#endif
+ 
+ extern "C" {
+ #include "libavfilter/buffersrc.h"
+@@ -57,14 +61,14 @@ void MythVAAPIInterop::GetVAAPITypes(MythRenderOpenGL* Context, MythInteropGPU::
+     // zero copy
+     if (egl && MythVAAPIInteropDRM::IsSupported(Context))
+         vaapitypes.emplace_back(GL_VAAPIEGLDRM);
+-#endif
++#else
+     // 1x copy
+     if (!egl && !wayland && MythVAAPIInteropGLXPixmap::IsSupported(Context))
+         vaapitypes.emplace_back(GL_VAAPIGLXPIX);
+     // 2x copy
+     if (!egl && !opengles && !wayland)
+         vaapitypes.emplace_back(GL_VAAPIGLXCOPY);
+-
++#endif
+     if (!vaapitypes.empty())
+         Types[FMT_VAAPI] = vaapitypes;
+ }
+@@ -82,11 +86,12 @@ MythVAAPIInterop* MythVAAPIInterop::CreateVAAPI(MythPlayerUI *Player, MythRender
+ #ifdef USING_EGL
+             if ((type == GL_VAAPIEGLDRM) || (type == DRM_DRMPRIME))
+                 return new MythVAAPIInteropDRM(Player, Context, type);
+-#endif
++#else
+             if (type == GL_VAAPIGLXPIX)
+                 return new MythVAAPIInteropGLXPixmap(Player, Context);
+             if (type == GL_VAAPIGLXCOPY)
+                 return new MythVAAPIInteropGLXCopy(Player, Context);
++#endif
+         }
+     }
+     return nullptr;
+--- a/libs/libmythtv/opengl/mythvaapiinterop.h
++++ b/libs/libmythtv/opengl/mythvaapiinterop.h
+@@ -25,9 +25,12 @@ struct AVFilterContext;
+ #undef None            // X11/X.h defines this. Causes compile failure in Qt6.
+ #undef Cursor
+ #undef pointer
+-#include "va/va_glx.h"
++#ifdef USING_EGL
+ #include "va/va_drm.h"
+ #include "va/va_drmcommon.h"
++#else
++#include "va/va_glx.h"
++#endif
+ #undef Bool            // Interferes with cmake moc file compilation
+ 
+ #ifndef VA_FOURCC_I420

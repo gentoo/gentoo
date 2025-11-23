@@ -1,0 +1,21 @@
+diff '--color=auto' -ruN ctags-abc8fca7499f44c725122881cd380a88c37abe0e.orig/configure.ac ctags-abc8fca7499f44c725122881cd380a88c37abe0e/configure.ac
+--- ctags-abc8fca7499f44c725122881cd380a88c37abe0e.orig/configure.ac	2016-11-23 10:52:52.000000000 +0100
++++ ctags-abc8fca7499f44c725122881cd380a88c37abe0e/configure.ac	2024-11-05 00:53:01.050413525 +0100
+@@ -369,7 +369,8 @@
+ AC_EXEEXT
+ 
+ AC_MSG_CHECKING(if struct stat contains st_ino)
+-AC_TRY_COMPILE([#include <sys/stat.h>], [
++AC_TRY_COMPILE([#include <sys/stat.h>
++#include <stdlib.h>], [
+ 	struct stat st;
+ 	stat(".", &st);
+ 	if (st.st_ino > 0)
+@@ -449,6 +450,7 @@
+ 	AC_TRY_RUN([
+ #include <sys/types.h>
+ #include <regex.h>
++#include <stdlib.h>
+ main() {
+ 	regex_t patbuf;
+ 	exit (regcomp (&patbuf, "/hello/", 0) != 0);

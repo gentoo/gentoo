@@ -1,0 +1,15 @@
+With ncurses[tinfo] tgoto will be in libtinfo
+
+https://bugs.gentoo.org/539316
+
+--- a/guile-readline/configure.in
++++ b/guile-readline/configure.in
+@@ -33,7 +33,7 @@ if test "$MINGW32" = "yes" ; then
+ fi
+ AC_SUBST(EXTRA_DEFS)
+ 
+-for termlib in ncurses curses termcap terminfo termlib ; do
++for termlib in ncurses curses termcap terminfo termlib tinfo ; do
+    AC_CHECK_LIB(${termlib}, tgoto,
+                 [LIBS="-l${termlib} $LIBS"; break])
+ done

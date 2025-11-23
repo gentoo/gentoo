@@ -1,0 +1,47 @@
+--- a/src/linux.mak
++++ b/src/linux.mak
+@@ -18,8 +18,9 @@
+ #
+ # common compiler/linker flags
+ #
+-CFLAGS=-I./include -I./lib -std=c89 `sdl-config --cflags`
+-LDFLAGS=-lm `sdl-config --libs`
++CFLAGS+=-std=gnu99
++CPPFLAGS+=-Iinclude -Ilib -Iui -Igenerate `sdl-config --cflags`
++LDLIBS+=-lm `sdl-config --libs`
+ 
+ 
+ SRC=\
+@@ -30,7 +31,6 @@
+ OBJ=$(SRC:.c=.o)
+ EXE=./wrogue
+ 
+-CC=gcc
+ RM=rm -f
+ 
+ 
+@@ -39,9 +39,7 @@
+ # target: release 
+ #
+ .PHONY: release
+-release: CFLAGS += -pipe -O2 -fomit-frame-pointer -march=i686
+-release: LDFLAGS += -Wl,-O1
+-release: STRIP_BINARY = yes
++release: STRIP_BINARY = no
+ release: build
+ 
+ 
+@@ -89,12 +87,8 @@
+ 
+ 
+ 
+-%.o: %.c
+-	@echo Building $<
+-	@$(CC) $(CFLAGS) -o $@ -c $<
+-
+ $(EXE): $(OBJ)
+-	@$(CC) $(OBJ) $(LDFLAGS) -o $@
++	$(CC) $(LDFLAGS) $(OBJ) -o $@ $(LDLIBS)
+ 
+ 
+ 

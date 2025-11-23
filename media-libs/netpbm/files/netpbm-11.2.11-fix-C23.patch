@@ -1,0 +1,245 @@
+https://sourceforge.net/p/netpbm/code/4969/
+https://bugs.gentoo.org/943971
+
+Backport files/netpbm-11.8.2-fix-C23.patch to 11.2.11
+
+--- a/buildtools/libopt.c
++++ b/buildtools/libopt.c
+@@ -85,18 +85,11 @@
+ #  define SHLIBPREFIXLIST "lib"
+ #endif
+ 
++#include <stdbool.h>
+ #include <string.h>
+ #include <stdlib.h>
+ #include <stdio.h>
+ 
+-typedef unsigned char bool;
+-#ifndef TRUE
+-#define TRUE (1)
+-#endif
+-#ifndef FALSE
+-#define FALSE (0)
+-#endif
+-
+ #ifdef DLLVERSTR
+ static const char * dllverstr = DLLVERSTR;
+ #else
+@@ -105,9 +98,9 @@ static const char * dllverstr = "";
+ 
+ bool const explicit = 
+ #ifdef EXPLICIT
+-TRUE
++true
+ #else
+-FALSE
++false
+ #endif
+ ;
+ 
+@@ -131,17 +124,17 @@ parse_prefixlist(const char * const prefixlist,
+    there is guaranteed always to be one null string at the end of the
+    array.
+ 
+-   In case of error, return *errorP == TRUE and don't allocate any
+-   storage.  Otherwise, return *errorP = FALSE.
++   In case of error, return *errorP == true and don't allocate any
++   storage.  Otherwise, return *errorP = false.
+ -----------------------------------------------------------------------------*/
+     char * prlist;
+ 
+     prlist = strdup(prefixlist);
+     if (prlist == NULL)
+-        *errorP = TRUE;
++        *errorP = true;
+     else {
+-        if (strlen(prlist) <= 0) 
+-            *errorP = TRUE;
++        if (strlen(prlist) <= 0)
++            *errorP = true;
+         else {
+             /* NOTE: Mac OS X, at least, does not have strtok_r().
+                2001.09.24
+@@ -155,18 +148,18 @@ parse_prefixlist(const char * const prefixlist,
+             }
+             num_tokens = 0;
+             token = strtok(prlist, " ");
+-            *errorP = FALSE;  /* initial value */
++            *errorP = false;  /* initial value */
+             while (token != NULL && num_tokens < MAX_PREFIXES && !*errorP) {
+                 parsed_prefixes[num_tokens] = strdup (token);
+-                if (parsed_prefixes[num_tokens] == NULL) 
+-                    *errorP = TRUE;
++                if (parsed_prefixes[num_tokens] == NULL)
++                    *errorP = true;
+                 num_tokens++;
+                 token = strtok(NULL, " ");
+             }
+             for (i = num_tokens; i < MAX_PREFIXES + 1 && !*errorP;  i++) {
+                 parsed_prefixes[i] = strdup("");
+-                if (parsed_prefixes[i] == NULL) 
+-                    *errorP = TRUE;
++                if (parsed_prefixes[i] == NULL)
++                    *errorP = true;
+             }
+         }
+         if (*errorP) {
+@@ -194,7 +187,7 @@ parse_prefix(const char * const filename,
+    (The prefix always starts at the beginning of the filename).
+ 
+    Iff we don't find a valid library name prefix, return *prefix_good_p
+-   == FALSE.  
++   == false.
+ 
+    The list of valid prefixes is compiled in as the blank-delimited
+    string which is the value of the SHLIBPREFIXLIST macro.
+@@ -231,7 +224,7 @@ parse_prefix(const char * const filename,
+         i = 0;  /* start with the first entry in shlibprefixlist[] */
+         prefix_length = 0;  /* initial value */
+         prefix = shlibprefixlist[i];
+-        prefix_good = FALSE;  /* initial value */
++        prefix_good = false;  /* initial value */
+         while ( (*prefix != '\0' ) && !prefix_good ) {
+             /* stop condition: shlibprefixlist has MAX_PREFIXES+1 entries.
+              * we only ever put tokens in the 0..MAX_PREFIXES-1 positions.
+@@ -242,7 +235,7 @@ parse_prefix(const char * const filename,
+              */
+             prefix_length = strlen(prefix);
+             if (strncmp(filename, prefix, prefix_length) == 0) {
+-                prefix_good = TRUE;
++                prefix_good = true;
+                 /* at this point, prefix is pointing to the correct
+                  * entry, and prefix_length has the correct value.
+                  * When we bail out of the while loop because of the
+@@ -279,16 +272,16 @@ parse_filename(const char *  const filename,
+    
+    E.g. for "libxyz.so", return "xyz".
+ 
+-   return *valid_library_p == TRUE iff 'filename' validly names a library
++   return *valid_library_p == true iff 'filename' validly names a library
+    that can be expressed in a -l linker option.
+ 
+-   return *static_p == TRUE iff 'filename' indicates a static library.
+-   (but undefined if *valid_library_p != TRUE).
++   return *static_p == true iff 'filename' indicates a static library.
++   (but undefined if *valid_library_p != true).
+ 
+-   return *error_p == TRUE iff some error such as out of memory prevents
++   return *error_p == true iff some error such as out of memory prevents
+    parsing.
+ 
+-   Do not allocate any memory if *error_p == TRUE or *valid_library_p == FALSE.
++   Do not allocate any memory if *error_p == true or *valid_library_p == false.
+ -----------------------------------------------------------------------------*/
+     char *lastdot;  
+     /* Pointer to last period in 'filename'.  Null if none */
+@@ -305,21 +298,21 @@ parse_filename(const char *  const filename,
+         /* This filename doesn't have any suffix, so we don't understand
+            it as a library filename.
+         */
+-        *valid_library_p = FALSE;
+-        *error_p = FALSE;
++        *valid_library_p = false;
++        *error_p = false;
+     } else {
+         unsigned int prefix_length;
+         bool prefix_good;
+ 
+         if (strcmp(lastdot + 1, "a") == 0)
+-            *static_p = TRUE;
++            *static_p = true;
+         else
+-            *static_p = FALSE;
++            *static_p = false;
+ 
+         parse_prefix(filename, &prefix_good, &prefix_length, error_p);
+         if (!*error_p) {
+             if (!prefix_good) {
+-                *valid_library_p = FALSE;
++                *valid_library_p = false;
+             } else {
+                 /* Extract everything between <prefix> and "." as 
+                    the library name root. 
+@@ -328,7 +321,7 @@ parse_filename(const char *  const filename,
+ 
+                 libname = strdup(filename + prefix_length);
+                 if (libname == NULL)
+-                    *error_p = TRUE;
++                    *error_p = true;
+                 else {
+                     libname[lastdot - filename - prefix_length] = '\0';
+                     if (strlen(dllverstr) > 0) {
+@@ -341,10 +334,10 @@ parse_filename(const char *  const filename,
+                         }
+                     }
+                     if (strlen(libname) == 0) {
+-                        *valid_library_p = FALSE;
++                        *valid_library_p = false;
+                         strfree(libname);
+                     } else
+-                        *valid_library_p = TRUE;
++                        *valid_library_p = true;
+                 }
+                 *libname_p = libname;
+             }
+@@ -377,14 +370,14 @@ parse_filepath(const char *  const filepath,
+         */
+         *filename_p = strdup(filepath);
+         if (*filename_p == NULL)
+-            *error_p = TRUE;
++            *error_p = true;
+         else {
+             directory = strdup("");
+             if (directory == NULL) {
+-                *error_p = TRUE;
++                *error_p = true;
+                 strfree(*filename_p);
+             } else
+-                *error_p = FALSE;
++                *error_p = false;
+         }
+     } else {
+         /* Split the string at the slash we just found, into filename and 
+@@ -392,14 +385,14 @@ parse_filepath(const char *  const filepath,
+            */
+         *filename_p = strdup(lastslash+1);
+         if (*filename_p == NULL)
+-            *error_p = TRUE;
++            *error_p = true;
+         else {
+             directory = strdup(filepath);
+             if (directory == NULL) {
+-                *error_p = TRUE;
++                *error_p = true;
+                 strfree(*filename_p);
+             } else {
+-                *error_p = FALSE;
++                *error_p = false;
+                 directory[lastslash - filepath] = '\0';
+             }
+         }
+@@ -503,12 +496,12 @@ main(int argc, char **argv) {
+     char outputLine[1024];
+ 
+     strcpy(outputLine, "");  /* initial value */
+-    runtime = FALSE;  /* initial value */
+-    error = FALSE;  /* no error yet */
++    runtime = false;  /* initial value */
++    error = false;  /* no error yet */
+ 
+     for (arg = 1; arg < argc && !error; arg++) {
+         if (strcmp(argv[arg], "-runtime") == 0)
+-            runtime = TRUE;
++            runtime = true;
+         else if (strcmp(argv[arg], "-quiet") == 0) {
+             /* Doesn't do anything today */
+         } else {
+@@ -518,7 +511,7 @@ main(int argc, char **argv) {
+             if (!error) {
+                 if (strlen(outputLine) + strlen(options) + 1 + 1 > 
+                     sizeof(outputLine))
+-                    error = TRUE;
++                    error = true;
+                 else {
+                     strcat(outputLine, " ");
+                     strcat(outputLine, options);

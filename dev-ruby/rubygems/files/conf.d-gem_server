@@ -1,0 +1,5 @@
+# /etc/conf.d/gem_server
+
+# See `gem_server --help` for more
+
+GEM_SERVER_OPTS=""

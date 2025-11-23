@@ -1,0 +1,94 @@
+https://gitlab.com/accounts-sso/signond/-/merge_requests/36
+
+From 728bda378878e505ac6b7977306b6f3ffe9f53d6 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Tue, 5 Jul 2022 17:39:20 +0200
+Subject: [PATCH 05/11] Port away from QtContainer::toSet
+
+it's deprecated
+---
+ src/signond/signonsessioncore.cpp    | 12 ++++++++++--
+ tests/signond-tests/databasetest.cpp | 24 +++++++++++++++++-------
+ 2 files changed, 27 insertions(+), 9 deletions(-)
+
+diff --git a/src/signond/signonsessioncore.cpp b/src/signond/signonsessioncore.cpp
+index 93a7328..bebf934 100644
+--- a/src/signond/signonsessioncore.cpp
++++ b/src/signond/signonsessioncore.cpp
+@@ -217,8 +217,16 @@ SignonSessionCore::queryAvailableMechanisms(const QStringList &wantedMechanisms)
+     if (!wantedMechanisms.size())
+         return m_plugin->mechanisms();
+ 
+-    return m_plugin->mechanisms().toSet().
+-        intersect(wantedMechanisms.toSet()).toList();
++    const QStringList mechanisms = m_plugin->mechanisms();
++#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
++    QSet<QString> mechanismSet(mechanisms.begin(), mechanisms.end());
++    QSet<QString> wantedMechanismSet(wantedMechanisms.begin(), wantedMechanisms.end());
++#else
++    QSet<QString> mechanismSet = mechanisms.toSet();
++    QSet<QString> wantedMechanismSet = wantedMechanisms.toSet();
++#endif
++
++    return mechanismSet.intersect(wantedMechanismSet).values();
+ }
+ 
+ void SignonSessionCore::process(const PeerContext &peerContext,
+diff --git a/tests/signond-tests/databasetest.cpp b/tests/signond-tests/databasetest.cpp
+index b5ee761..b22ba54 100644
+--- a/tests/signond-tests/databasetest.cpp
++++ b/tests/signond-tests/databasetest.cpp
+@@ -32,6 +32,15 @@
+ const QString dbFile = QLatin1String("/tmp/signon_test.db");
+ const QString secretsDbFile = QLatin1String("/tmp/signon_test_secrets.db");
+ 
++static QSet<QString> toSet(const QStringList &list)
++{
++#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
++    return QSet<QString>(list.begin(), list.end());
++#else
++    return list.toSet();
++#endif
++}
++
+ void TestDatabase::initTestCase()
+ {
+     QFile::remove(dbFile);
+@@ -353,17 +362,18 @@ void TestDatabase::updateCredentialsTest()
+ 
+     /* The sorting of the method's mechanisms might vary, so we cannot just
+      * compare the whole method map as a whole. */
+-    QCOMPARE(retInfo.methods().keys().toSet(),
+-             updateInfo.methods().keys().toSet());
++    QCOMPARE(toSet(retInfo.methods().keys()),
++             toSet(updateInfo.methods().keys()));
++
+     QMapIterator<QString, QStringList> it(retInfo.methods());
+     while (it.hasNext()) {
+         it.next();
+-        QCOMPARE(it.value().toSet(), umethods.value(it.key()).toSet());
++        QCOMPARE(toSet(it.value()), toSet(umethods.value(it.key())));
+     }
+ 
+-    QCOMPARE(retInfo.realms().toSet(), updateInfo.realms().toSet());
+-    QCOMPARE(retInfo.accessControlList().toSet(),
+-             updateInfo.accessControlList().toSet());
++    QCOMPARE(toSet(retInfo.realms()), toSet(updateInfo.realms()));
++    QCOMPARE(toSet(retInfo.accessControlList()),
++             toSet(updateInfo.accessControlList()));
+ }
+ 
+ void TestDatabase::removeCredentialsTest()
+@@ -658,8 +668,8 @@ void TestDatabase::credentialsOwnerSecurityTokenTest()
+     QString token = m_db->credentialsOwnerSecurityToken(id);
+     QCOMPARE(token, QLatin1String("AID::12345678"));
+     QStringList tokens = m_db->ownerList(id);
+-    QCOMPARE(tokens.toSet(), testAcl.toSet());
+ 
++    QCOMPARE(toSet(tokens), toSet(testAcl));
+ }
+ 
+ QTEST_MAIN(TestDatabase)
+-- 
+2.43.0
+

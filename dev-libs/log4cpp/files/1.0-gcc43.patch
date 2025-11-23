@@ -1,0 +1,33 @@
+--- a/src/BasicLayout.cpp
++++ b/src/BasicLayout.cpp
+@@ -17,6 +17,8 @@
+ #include <sstream>
+ #endif
+ 
++#include <memory>
++
+ namespace log4cpp {
+ 
+     BasicLayout::BasicLayout() {
+--- a/src/PatternLayout.cpp
++++ b/src/PatternLayout.cpp
+@@ -373,7 +373,7 @@
+                         literal = "";
+                     }
+                     if ((minWidth != 0) || (maxWidth != 0)) {
+-                        component = new FormatModifierComponent(component, std::abs(minWidth), maxWidth, minWidth < 0);
++                        component = new FormatModifierComponent(component, std::abs((float)minWidth), maxWidth, minWidth < 0);
+                         minWidth = maxWidth = 0;
+                     }
+                     _components.push_back(component);
+--- a/tests/testDailyRollingFileAppender.cpp
++++ b/tests/testDailyRollingFileAppender.cpp
+@@ -40,7 +40,7 @@
+ #else 
+ #define PATHDELIMITER "\\"
+ #endif
+-const char* const nesteddirname = "nesteddir"PATHDELIMITER;
++const char* const nesteddirname = "nesteddir" PATHDELIMITER;
+ 
+ 
+ class DailyRollingTest {

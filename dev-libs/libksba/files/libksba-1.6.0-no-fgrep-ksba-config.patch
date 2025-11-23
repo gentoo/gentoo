@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/868384
+--- a/src/ksba-config.in
++++ b/src/ksba-config.in
+@@ -126,7 +126,7 @@ if test "$echo_cflags" = "yes"; then
+     fi
+     tmp=""
+     for i in $includes $cflags; do
+-       if echo "$tmp" | fgrep -v -- "$i" >/dev/null; then
++       if echo "$tmp" | grep -F -v -- "$i" >/dev/null; then
+            tmp="$tmp $i"
+        fi
+     done
+@@ -140,7 +140,7 @@ if test "$echo_libs" = "yes"; then
+     fi
+     tmp=""
+     for i in $libdirs $libs; do
+-       if echo "$tmp" | fgrep -v -- "$i" >/dev/null; then
++       if echo "$tmp" | grep -F -v -- "$i" >/dev/null; then
+            tmp="$tmp $i"
+        fi
+     done

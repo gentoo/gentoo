@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/871498
+--- a/stardork.c
++++ b/stardork.c
+@@ -376,3 +376,3 @@
+ 
+-void plot_wormhole(y, x) {
++void plot_wormhole(int y, int x) {
+     int r1, r2, i, j;
+@@ -564,3 +564,3 @@
+ 
+-void change_colors(color) {
++void change_colors(int color) {
+     if (has_colors() != FALSE) { 

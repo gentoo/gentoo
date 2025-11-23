@@ -1,0 +1,34 @@
+Add missing includes needed for compilation, including ones in sed
+command in previous ebuild.
+https://bugs.gentoo.org/945195
+Remove terrible hack in bget.h for ancient compilers. I wonder why they forgotten
+to put AC_C_PROTOTYPES in configure.ac... But that macro is dead and unsupported.
+--- a/bget.h
++++ b/bget.h
+@@ -4,13 +4,7 @@
+ 
+ */
+ 
+-#ifndef _
+-#ifdef PROTOTYPES
+ #define  _(x)  x		      /* If compiler knows prototypes */
+-#else
+-#define  _(x)  ()                     /* It it doesn't */
+-#endif /* PROTOTYPES */
+-#endif
+ 
+-typedef long bufsize;
++typedef size_t bufsize;
+ void	bpool	    _((void *buffer, bufsize len));
+
+sed -i -e "/#define IPUTIL_H/a#include <stdio.h>\n#include <stdint.h>" iputil.h || die
+--- a/iputil.h
++++ b/iputil.h
+@@ -1,5 +1,7 @@
+ #ifndef IPUTIL_H
+ #define IPUTIL_H
++#include <stdio.h>
++#include <stdint.h>
+ 
+ ssize_t inet_add_option(uint16_t eth_type, void *buf, size_t len,
+                 int proto, const void *optbuf, size_t optlen);

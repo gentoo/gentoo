@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<use>
+		<flag name="elogind">Enable support for rootless session via elogind</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">emersion/xdg-desktop-portal-wlr</remote-id>
+	</upstream>
+</pkgmetadata>

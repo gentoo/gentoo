@@ -1,0 +1,15 @@
+diff -ruN ddd-3.3.12/ddd/exit.C ddd-my/ddd/exit.C
+--- ddd-3.3.12/ddd/exit.C	2009-02-11 18:25:07.000000000 +0100
++++ ddd-my/ddd/exit.C	2020-09-27 03:23:14.713650981 +0200
+@@ -769,7 +769,11 @@
+ 
+ static XtAppContext xt_error_app_context = 0;
+ 
++#ifdef __clang__
++static void ddd_xt_error(String message = 0) _X_NORETURN
++#else
+ static void ddd_xt_error(String message = 0)
++#endif
+ {
+     ddd_has_crashed = true;
+ 

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>crossdev@gentoo.org</email>
+		<name>Gentoo Crossdev Team</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>toolchain@gentoo.org</email>
+		<name>Gentoo Toolchain Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>embedded@gentoo.org</email>
+		<name>Embedded Gentoo</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="gentoo">proj/crossdev</remote-id>
+		<remote-id type="github">gentoo/crossdev</remote-id>
+	</upstream>
+</pkgmetadata>

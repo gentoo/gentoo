@@ -1,0 +1,21 @@
+#!/sbin/openrc-run
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need modules
+	use alsa
+}
+
+start() {
+	ebegin "Loading mixer settings"
+	[ ! -e /etc/setmixer.conf ] && setmixer -V | sed -e 's:-::' > /etc/setmixer.conf 
+	setmixer $(cat /etc/setmixer.conf)
+	eend $?
+}
+
+stop() {
+	ebegin "Saving mixer settings"
+	setmixer -V | awk '{print $1" "$3}' > /etc/setmixer.conf
+	eend $?
+}

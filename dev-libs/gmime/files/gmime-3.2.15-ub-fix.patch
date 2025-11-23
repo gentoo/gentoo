@@ -1,0 +1,111 @@
+https://github.com/jstedfast/gmime/issues/172
+https://github.com/jstedfast/gmime/commit/df1151b32fbf45b10d27801c49f2db883be7d5b7
+
+From df1151b32fbf45b10d27801c49f2db883be7d5b7 Mon Sep 17 00:00:00 2001
+From: Jeffrey Stedfast <jestedfa@microsoft.com>
+Date: Fri, 4 Apr 2025 09:37:48 -0400
+Subject: [PATCH] Revert g_mime_parser_options_set_warning_callback() and added
+ _full() version
+
+Fixes issue #172
+---
+ examples/msgcheck.c          |  2 +-
+ gmime/gmime-parser-options.c | 33 +++++++++++++++++++++++----------
+ gmime/gmime-parser-options.h |  4 ++--
+ 3 files changed, 26 insertions(+), 13 deletions(-)
+
+diff --git a/examples/msgcheck.c b/examples/msgcheck.c
+index 46e018c4..8b91e662 100644
+--- a/examples/msgcheck.c
++++ b/examples/msgcheck.c
+@@ -110,7 +110,7 @@ check_msg_file (const gchar *filename)
+ 		parser = g_mime_parser_new ();
+ 		g_mime_parser_init_with_stream (parser, stream);
+ 		options = g_mime_parser_options_new ();
+-		g_mime_parser_options_set_warning_callback (options, parser_issue, NULL, NULL);
++		g_mime_parser_options_set_warning_callback (options, parser_issue, NULL);
+ 		message = g_mime_parser_construct_message (parser, options);
+ 		g_mime_parser_options_free (options);
+ 		g_object_unref (parser);
+diff --git a/gmime/gmime-parser-options.c b/gmime/gmime-parser-options.c
+index ae84d671..820c3299 100644
+--- a/gmime/gmime-parser-options.c
++++ b/gmime/gmime-parser-options.c
+@@ -70,9 +70,9 @@ g_mime_parser_options_shutdown (void)
+ 	if (default_options == NULL)
+ 		return;
+ 	
+-	if (default_options->notify) {
+-		default_options->notify(default_options->warning_user_data);
+-	}
++	if (default_options->notify)
++		default_options->notify (default_options->warning_user_data);
++	
+ 	g_strfreev (default_options->charsets);
+ 	g_slice_free (GMimeParserOptions, default_options);
+ 	default_options = NULL;
+@@ -193,9 +193,9 @@ g_mime_parser_options_free (GMimeParserOptions *options)
+ 	g_return_if_fail (options != NULL);
+ 	
+ 	if (options != default_options) {
+-		if (options->notify) {
+-			options->notify(options->warning_user_data);
+-		}
++		if (options->notify)
++			options->notify (options->warning_user_data);
++		
+ 		g_strfreev (options->charsets);
+ 		g_slice_free (GMimeParserOptions, options);
+ 	}
+@@ -450,18 +450,31 @@ g_mime_parser_options_get_warning_callback (GMimeParserOptions *options)
+  * @options: a #GMimeParserOptions
+  * @warning_cb: a #GMimeParserWarningFunc or %NULL to clear the callback
+  * @user_data: data passed to the warning callback function
++ *
++ * Registers the callback function being called if the parser detects any issues.
++ **/
++void
++g_mime_parser_options_set_warning_callback (GMimeParserOptions *options, GMimeParserWarningFunc warning_cb, gpointer user_data)
++{
++	g_mime_parser_options_set_warning_callback_full (options, warning_cb, user_data, NULL);
++}
++
++/**
++ * g_mime_parser_options_set_warning_callback_full:
++ * @options: a #GMimeParserOptions
++ * @warning_cb: a #GMimeParserWarningFunc or %NULL to clear the callback
++ * @user_data: data passed to the warning callback function
+  * @notify: callback function ran on destruction
+  *
+  * Registers the callback function being called if the parser detects any issues.
+  **/
+ void
+-g_mime_parser_options_set_warning_callback (GMimeParserOptions *options, GMimeParserWarningFunc warning_cb, gpointer user_data, GDestroyNotify notify)
++g_mime_parser_options_set_warning_callback_full (GMimeParserOptions *options, GMimeParserWarningFunc warning_cb, gpointer user_data, GDestroyNotify notify)
+ {
+ 	g_return_if_fail (options != NULL);
+ 
+-	if (options->notify) {
+-		options->notify(options->warning_user_data);
+-	}
++	if (options->notify)
++		options->notify (options->warning_user_data);
+ 	
+ 	options->warning_cb = warning_cb;
+ 	options->warning_user_data = user_data;
+diff --git a/gmime/gmime-parser-options.h b/gmime/gmime-parser-options.h
+index c37d9999..b26160cf 100644
+--- a/gmime/gmime-parser-options.h
++++ b/gmime/gmime-parser-options.h
+@@ -128,8 +128,8 @@ const char **g_mime_parser_options_get_fallback_charsets (GMimeParserOptions *op
+ void g_mime_parser_options_set_fallback_charsets (GMimeParserOptions *options, const char **charsets);
+ 
+ GMimeParserWarningFunc g_mime_parser_options_get_warning_callback (GMimeParserOptions *options);
+-void g_mime_parser_options_set_warning_callback (GMimeParserOptions *options, 
+-		GMimeParserWarningFunc warning_cb, gpointer user_data, GDestroyNotify notify);
++void g_mime_parser_options_set_warning_callback (GMimeParserOptions *options, GMimeParserWarningFunc warning_cb, gpointer user_data);
++void g_mime_parser_options_set_warning_callback_full (GMimeParserOptions *options, GMimeParserWarningFunc warning_cb, gpointer user_data, GDestroyNotify notify);
+ 
+ G_END_DECLS
+ 
+

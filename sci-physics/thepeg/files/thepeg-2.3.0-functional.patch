@@ -1,0 +1,10 @@
+--- a/Config/std.h	2024-10-20 14:58:16.121021570 +0200
++++ b/Config/std.h	2024-10-20 14:58:25.804498716 +0200
+@@ -37,6 +37,7 @@
+ #include <typeinfo>
+ #include <stdexcept>
+ #include <cmath>
++#include <functional>
+ 
+ namespace std {
+ 

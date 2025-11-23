@@ -1,0 +1,28 @@
+[Unit]
+Description=Alertmanager for prometheus
+Documentation=https://prometheus.io/docs/alerting/alertmanager/
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=alertmanager
+ExecStart=/usr/bin/alertmanager --cluster.listen-address= --config.file=/etc/alertmanager/config.yml --storage.path=/var/lib/alertmanager/
+ExecReload=/bin/kill -HUP $MAINPID
+
+NoNewPrivileges=true
+ProtectHome=true
+ProtectSystem=full
+ProtectHostname=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+LockPersonality=true
+PrivateTmp=true
+PrivateDevices=True
+RestrictRealtime=true
+CapabilityBoundingSet=
+SystemCallArchitectures=native
+MemoryDenyWriteExecute=true
+
+[Install]
+WantedBy=multi-user.target

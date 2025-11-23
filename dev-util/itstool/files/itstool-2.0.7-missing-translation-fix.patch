@@ -1,0 +1,28 @@
+Bug: https://github.com/mate-desktop/mate-utils/issues/210
+Bug: https://github.com/itstool/itstool/issues/36#
+
+From: https://github.com/itstool/itstool/pull/47/commits/e9b053be5c50c2bd69442a8484a4c9c371bc3a45
+From: Harald van Dijk <harald@gigawatt.nl>
+Date: Thu, 15 Jun 2023 23:18:11 +0100
+Subject: [PATCH] Fix handling of untranslated nodes
+
+If a translation is missing, get_translated returns the node it was
+called with. But ph_node when passed to get_translated is part of
+another document and cannot just be reparented, it needs to be cloned.
+The reparenting leaves things in an inconsistent state where references
+intended to refer to nodes in the original document no longer do so, and
+they may then be accessed from those references after the new document
+has already been freed.
+
+Fixes bug #36.
+--- a/itstool.in
++++ b/itstool.in
+@@ -1096,6 +1096,8 @@ class Document (object):
+                         child.replaceNode(newnode)
+                     else:
+                         repl = self.get_translated(ph_node, translations, strict=strict, lang=lang)
++                        if repl == ph_node:
++                            repl = repl.copyNode(1)
+                         child.replaceNode(repl)
+                 scan_node(child)
+         try:

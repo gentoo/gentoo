@@ -1,0 +1,25 @@
+SFML's render window only supports X11 under Linux, so SLADE crashes if GDK
+chooses the Wayland backend. This patch tells GDK to prefer the X11 backend.
+SLADE 3.3.0 will apparently not use the render window.
+
+diff --git a/src/Application/SLADEWxApp.cpp b/src/Application/SLADEWxApp.cpp
+index 3dadf241..de01e340 100644
+--- a/src/Application/SLADEWxApp.cpp
++++ b/src/Application/SLADEWxApp.cpp
+@@ -52,6 +52,16 @@
+ using namespace slade;
+
+
++#ifdef __WXGTK__
++#include <gdk/gdk.h>
++
++struct PreferX11 {
++	PreferX11() { gdk_set_allowed_backends("x11,*"); }
++};
++static PreferX11 preferx11;
++#endif
++
++
+ // -----------------------------------------------------------------------------
+ //
+ // Variables

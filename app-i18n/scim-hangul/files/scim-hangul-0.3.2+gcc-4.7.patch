@@ -1,0 +1,12 @@
+diff --git a/src/scim_hangul_imengine.cpp b/src/scim_hangul_imengine.cpp
+index 7d70654..d678902 100644
+--- a/src/scim_hangul_imengine.cpp
++++ b/src/scim_hangul_imengine.cpp
+@@ -30,6 +30,7 @@
+ #define Uses_SCIM_CONFIG_BASE
+ 
+ #include <cstring>
++#include <unistd.h>
+ #ifdef HAVE_CONFIG_H
+   #include <config.h>
+ #endif

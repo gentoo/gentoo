@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/937849
+--- a/src/FTVectoriser.cpp
++++ b/src/FTVectoriser.cpp
+@@ -166,7 +166,7 @@ void FTVectoriser::ProcessContours()
+     for(int i = 0; i < ftContourCount; ++i)
+     {
+         FT_Vector* pointList = &outline.points[startIndex];
+-        char* tagList = &outline.tags[startIndex];
++        char* tagList = reinterpret_cast<char*>(&outline.tags[startIndex]);
+ 
+         endIndex = outline.contours[i];
+         contourLength =  (endIndex - startIndex) + 1;

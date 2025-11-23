@@ -1,0 +1,11 @@
+--- a/src/plugins/libovh.h	2006-09-07 22:32:59.000000000 +0200
++++ b/src/plugins/libovh.h	2013-01-20 13:48:37.162920947 +0100
+@@ -21,7 +21,7 @@
+ 
+ #include <ret_codes.h>
+ 
+-#define DYNDNSHOST	"ovh.com"
++#define DYNDNSHOST	"www.ovh.com"
+ #define PORT		80
+ 
+ #define BUFSIZE		512

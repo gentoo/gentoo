@@ -1,0 +1,20 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -33,16 +33,14 @@ toppler_SOURCES =                  \
+   txtsys.cc        txtsys.h        \
+   qnxicon.c
+ 
+-docdir = $(datadir)/doc
+ pixmapsdir = $(datadir)/pixmaps
+ applicationsdir = $(datadir)/applications
+-pkgdocdir = $(docdir)/$(PACKAGE)
+ pkglocalstatedir = $(localstatedir)/$(PACKAGE)
+ 
+ dist_pixmaps_DATA = $(PACKAGE).xpm
+ applications_DATA = $(PACKAGE).desktop
+ dist_man_MANS = toppler.6
+-dist_pkgdoc_DATA = AUTHORS COPYING ChangeLog NEWS README
++dist_doc_DATA = AUTHORS COPYING ChangeLog NEWS README
+ dist_pkgdata_DATA = \
+   toppler.dat toppler.ogg
+ 

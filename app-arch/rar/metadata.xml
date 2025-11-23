@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<use>
+		<flag name="all-sfx">
+			Install all SFX (Self-Extracting) files rather than just the native
+			format (allows creation of Windows EXEs on Linux ELF systems)
+		</flag>
+	</use>
+</pkgmetadata>

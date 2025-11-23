@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'https://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sping@gentoo.org</email>
+		<name>Sebastian Pipping</name>
+	</maintainer>
+	<use>
+		<flag name="full-name-executable">Install executable /usr/bin/git-delete-merged-branches that is in conflict with <pkg>dev-vcs/git-extras</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">hartwork/git-delete-merged-branches</remote-id>
+		<remote-id type="pypi">git-delete-merged-branches</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+  </maintainer>
+  <maintainer type="person">
+    <email>frp.bissey@gmail.com</email>
+    <name>François Bissey</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    HAP is a package for some calculations in elementary algebraic
+    topology and the cohomology of groups. The initial focus of the
+    library was on computations related to the cohomology of finite and
+    infinite groups, with particular emphasis on integral
+    coefficients. The focus has since broadened to include Steenrod
+    algebras of finite groups, Bredon homology, cohomology of simplicial
+    groups, and general computations in algebraic topology relating to
+    finite CW-complexes, covering spaces, knots, knotted surfaces, and
+    topics such as persitent homology arising in topological data
+    analysis.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">gap-packages/hap</remote-id>
+  </upstream>
+</pkgmetadata>

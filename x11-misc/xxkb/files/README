@@ -1,0 +1,9 @@
+Additional information to the manpage for english speaking users
+(written by Patrick Kursawe <phosphan@gentoo.org>):
+
+The XFree86 documentation (for 4.3 and later) contains the file
+/usr/X11R6/lib/X11/doc/README.XKB-Config where you can find
+information on how to use mutiple keyboard layouts.
+
+Xxkb has no own configuration section where you can specify the keymaps -
+just configure them for X and let xxkb switch between them.

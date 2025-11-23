@@ -1,0 +1,42 @@
+From 3992485c67331097553ec8f54233c4c295943f70 Mon Sep 17 00:00:00 2001
+From: Henry Schreiner <henryschreineriii@gmail.com>
+Date: Mon, 30 Sep 2024 13:12:38 -0400
+Subject: [PATCH 1/4] fix(types): Update for newer setuptools
+
+Signed-off-by: Henry Schreiner <henryschreineriii@gmail.com>
+---
+ skbuild/setuptools_wrap.py            | 2 +-
+ tests/__init__.py                     | 6 +++++-
+ 3 files changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/skbuild/setuptools_wrap.py b/skbuild/setuptools_wrap.py
+index 8e59631b..f6c60cd5 100644
+--- a/skbuild/setuptools_wrap.py
++++ b/skbuild/setuptools_wrap.py
+@@ -250,7 +250,7 @@ def _parse_setuptools_arguments(
+ 
+     return (
+         display_only,
+-        dist.help_commands,  # type: ignore[attr-defined]
++        bool(dist.help_commands),
+         dist.commands,
+         dist.hide_listing,  # type: ignore[attr-defined]
+         dist.force_cmake,  # type: ignore[attr-defined]
+diff --git a/tests/__init__.py b/tests/__init__.py
+index 4f3c9543..e3942246 100644
+--- a/tests/__init__.py
++++ b/tests/__init__.py
+@@ -215,7 +215,11 @@ def execute_setup_py(project_dir, setup_args, disable_languages_test=False):
+     """
+ 
+     # See https://stackoverflow.com/questions/9160227/dir-util-copy-tree-fails-after-shutil-rmtree
+-    distutils.dir_util._path_created.clear()  # type: ignore[attr-defined]
++    to_clear = getattr(
++        distutils.dir_util, "SkipRepeatAbsolutePaths", getattr(distutils.dir_util, "_path_created", None)
++    )
++    assert to_clear, "Must have one of the two supported clearing mechanisms"
++    to_clear.clear()
+ 
+     # Clear _PYTHON_HOST_PLATFORM to ensure value sets in skbuild.setuptools_wrap.setup() does not
+     # influence other tests.
+

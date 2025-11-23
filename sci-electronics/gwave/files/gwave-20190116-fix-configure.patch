@@ -1,0 +1,14 @@
+diff --git a/configure.ac b/configure.ac
+index 7a4f1c4..ffcb326 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -86,8 +86,7 @@ AC_CHECK_LIB(termcap, tgoto, [
+         AC_CHECK_LIB(readline, readline, [
+                 READLINE_LIB="-lreadline -lncurses"
+                 AC_DEFINE(HAVE_READLINE,1,[Define this if you have the readline library])
+-                AC_CHECK_LIB(readline, add_history, AC_DEFINE(HAVE_HISTORY,1,[Define this if your readline also has add_history]),,"-l
+-ncurses")
++                AC_CHECK_LIB(readline, add_history, AC_DEFINE(HAVE_HISTORY,1,[Define this if your readline also has add_history]),,"-lncurses")
+         ], READLINE_LIB="", "-lncurses")
+ ], READLINE_LIB=""))
+ 

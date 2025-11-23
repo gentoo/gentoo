@@ -1,0 +1,15 @@
+Use portage machinery instead of package makefiles to install fonts
+This does fc-cache, unlike before
+https://bugs.gentoo.org/835793
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -22,9 +22,7 @@
+ 
+ install-exec-hook:
+ 	chown root:utmp $(DESTDIR)$(bindir)/jfbterm
+-	chmod ug+s $(DESTDIR)$(bindir)/jfbterm
+ 
+ install-data-local:
+ 	$(INSTALL_DATA) $(srcdir)/$(JFBTERM_CONFIG_FILE) $(DESTDIR)$(sysconfdir)/$(JFBTERM_CONFIG_FILE)
+-	$(INSTALL_DATA) $(srcdir)/fonts/*.pcf.gz $(DESTDIR)$(datadir)/fonts/jfbterm
+ 

@@ -1,0 +1,20 @@
+unreachable() is defined in C23 as function-like macro, undefine
+This definition conflicts with usage in smatch, as it has a valid
+meaning in processing syntactic tree, not a mark that part of the
+smatch state itself can't be reached.
+Other possible solution would be mass-rename of all usages to prevent
+conflict.
+https://bugs.gentoo.org/944322
+--- a/smatch.h
++++ b/smatch.h
+@@ -717,6 +717,10 @@ void __set_fake_cur_stree_fast(struct stree *stree);
+ void __pop_fake_cur_stree_fast(void);
+ void __merge_stree_into_cur(struct stree *stree);
+ 
++#if __STDC_VERSION__ > 201710L
++#undef unreachable //defined in C23
++#endif
++
+ int unreachable(void);
+ void __set_cur_stree_readonly(void);
+ void __set_cur_stree_writable(void);

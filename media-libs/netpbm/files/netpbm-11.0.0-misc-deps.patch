@@ -1,0 +1,69 @@
+do not autoprobe deps when we disabled them
+
+--- a/converter/other/Makefile
++++ b/converter/other/Makefile
+@@ -22,6 +22,7 @@
+ # Also note that in both cases, the shell command fails if $(PKG_CONFIG)
+ # doesn't even exist.
+ 
++ifneq ($(XML2_LIBS),NONE)
+ TEST_PKGCONFIG_LIBXML2 := \
+   if $(PKG_CONFIG) libxml-2.0 --exists; then echo exists; fi
+ 
+@@ -38,6 +39,7 @@
+     XML2_CFLAGS=$(shell xml2-config --cflags)
+   endif
+ endif
++endif
+ 
+ SUBDIRS = jbig pnmtopalm jpeg2000 cameratopam pamtosvg
+ ifneq ($(BUILD_FIASCO), N)
+@@ -50,6 +52,7 @@
+   endif
+ endif
+ 
++ifneq ($(PNGLIB),NONE)
+ TEST_PKGCONFIG_LIBPNG := \
+   if $(PKG_CONFIG) libpng$(PNGVER) --exists; then echo exists; fi
+ 
+@@ -75,6 +78,7 @@
+     endif
+   endif
+ endif
++endif
+ 
+ ifneq ($(JPEGLIB),NONE)
+   ifneq ($(JPEGHDR_DIR)x,x)
+--- a/other/pamx/Makefile
++++ b/other/pamx/Makefile
+@@ -9,6 +9,7 @@
+ 
+ EXTERN_INCLUDE =
+ 
++ifneq ($(X11LIB),NONE)
+ TEST_PKGCONFIG_X11 := \
+   if $(PKG_CONFIG) x11 --exists; then echo exists; fi
+ 
+@@ -36,6 +37,7 @@
+ 	  window.o \
+ 
+ endif
++endif
+ 
+ BINARIES = $(PORTBINARIES)
+ 
+@@ -49,12 +51,14 @@
+ 
+ include $(SRCDIR)/common.mk
+ 
++ifneq ($(X11LIB),NONE)
+ ifeq ($(shell $(TEST_PKGCONFIG_X11)),)
+   # Pkg-config has never heard of X11, or doesn't even exist
+   X11_LIBOPTS = $(shell $(LIBOPT) $(LIBOPTR) $(X11LIB))
+ else
+   X11_LIBOPTS = $(shell $(PKG_CONFIG) x11 --libs)
+ endif
++endif
+ 
+ pamx: image.o send.o window.o
+ pamx: ADDL_OBJECTS = image.o send.o window.o

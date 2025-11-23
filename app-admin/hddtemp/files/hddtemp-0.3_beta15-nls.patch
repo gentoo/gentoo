@@ -1,0 +1,14 @@
+--- hddtemp-0.3-beta15/src/hddtemp.c~	2006-04-19 02:37:35 +0000
++++ hddtemp-0.3-beta15/src/hddtemp.c	2007-03-26 08:14:17 +0000
+@@ -275,9 +275,11 @@
+   backtrace_sigill();
+   backtrace_sigbus();
+ 
++#if ENABLE_NLS
+   setlocale (LC_ALL, "");
+   bindtextdomain (PACKAGE, LOCALEDIR);
+   textdomain (PACKAGE);
++#endif
+   
+   show_db = debug = numeric = quiet = wakeup = af_hint = syslog_interval = 0;
+   unit = DEFAULT;

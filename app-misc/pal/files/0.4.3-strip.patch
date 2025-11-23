@@ -1,0 +1,17 @@
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -21,10 +21,10 @@
+ $(NAME): $(OBJ)
+ 	@echo " [gcc] $(NAME)"
+ 	@$(CC) $(CFLAGS) $(OBJ) $(LDFLAGS) -o $(NAME)
+-ifneq ($(DEBUG),1)
+-	@echo " [strip] $(NAME)"
+-	@strip $(NAME)
+-endif
++#ifneq ($(DEBUG),1)
++#	@echo " [strip] $(NAME)"
++#	@strip $(NAME)
++#endif
+ 
+ 
+ 

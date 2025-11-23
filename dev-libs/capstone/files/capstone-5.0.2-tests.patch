@@ -1,0 +1,17 @@
+From b77714b446e93a0ab997b125ef1fb3ad9bc4bb9b Mon Sep 17 00:00:00 2001
+From: Mario Haustein <mario.haustein@hrz.tu-chemnitz.de>
+Date: Wed, 14 Aug 2024 23:28:45 +0200
+Subject: [PATCH] Fix 'make check' for python tests
+Upstream: https://github.com/capstone-engine/capstone/pull/2439
+
+--- a/bindings/python/Makefile
++++ b/bindings/python/Makefile
+@@ -41,7 +41,7 @@ TESTS += test_lite.py test_iter.py test_customized_mnem.py test_alpha.py
+ check:
+ 	@for t in $(TESTS); do \
+ 		echo Check $$t ... ; \
+-		./$$t > /dev/null; \
++		./tests/$$t > /dev/null; \
+ 		if [ $$? -eq 0 ]; then echo OK; else echo FAILED; exit 1; fi \
+ 	done
+ 

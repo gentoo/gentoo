@@ -1,0 +1,393 @@
+https://github.com/rockowitz/ddcutil/issues/504
+https://bugs.gentoo.org/950320
+
+From a35d1dc432d4dd419e4874b37c62d23f3ae70469 Mon Sep 17 00:00:00 2001
+From: "Sanford Rockowitz (/shared/home/rock/dot_gitconfig)"
+ <rockowitz@minsoft.com>
+Date: Thu, 27 Feb 2025 09:28:14 -0500
+Subject: [PATCH] build with configure option --disable-x11
+
+eliminates watch-mode XEVENT
+
+addresses issue #504
+
+---
+ src/base/parms.h                 |  6 +++++-
+ src/cmdline/cmd_parser_goption.c | 12 ++++++++++++
+ src/dw/Makefile.am               | 10 ++++++++--
+ src/dw/dw_common.c               |  4 ++++
+ src/dw/dw_common.h               |  6 +++++-
+ src/dw/dw_main.c                 | 31 ++++++++++++++++++++++++++++++-
+ src/dw/dw_poll.c                 |  6 ++++++
+ src/dw/dw_services.c             |  4 ++++
+ 8 files changed, 74 insertions(+), 5 deletions(-)
+
+diff --git a/src/base/parms.h b/src/base/parms.h
+index 3a8fbdd5..fcfac321 100644
+--- a/src/base/parms.h
++++ b/src/base/parms.h
+@@ -3,7 +3,7 @@
+  *  System configuration and tuning
+  */
+ 
+-// Copyright (C) 2014-2024 Sanford Rockowitz <rockowitz@minsoft.com>
++// Copyright (C) 2014-2025 Sanford Rockowitz <rockowitz@minsoft.com>
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+ #ifndef PARMS_H_
+@@ -109,7 +109,11 @@
+ #define DEFAULT_DDCUTIL_SYSLOG_LEVEL DDCA_SYSLOG_WARNING
+ #define DEFAULT_LIBDDCUTIL_SYSLOG_LEVEL DDCA_SYSLOG_NOTICE
+ 
++#ifdef USE_X11
+ #define DEFAULT_WATCH_MODE Watch_Mode_Dynamic
++#else
++#define DEFAULT_WATCH_MODE Watch_Mode_Poll
++#endif
+ 
+ //
+ // Asynchronous Initialization
+diff --git a/src/cmdline/cmd_parser_goption.c b/src/cmdline/cmd_parser_goption.c
+index 27973d9b..b6ae37b7 100644
+--- a/src/cmdline/cmd_parser_goption.c
++++ b/src/cmdline/cmd_parser_goption.c
+@@ -508,8 +508,10 @@ static bool parse_watch_mode(
+ 
+       if (     is_abbrev(v2, "POLL", 3))
+          parsed_cmd->watch_mode = Watch_Mode_Poll;
++#ifdef USE_X11
+       else if (is_abbrev(v2, "XEVENT", 3))
+          parsed_cmd->watch_mode = Watch_Mode_Xevent;
++#endif
+    // else if (is_abbrev(v2, "UDEV", 3))
+    //    parsed_cmd->watch_mode = Watch_Mode_Udev;
+       else if (is_abbrev(v2, "DYNAMIC", 3))
+@@ -1026,9 +1028,15 @@ parse_command(
+    case Watch_Mode_Udev:     default_watch_mode_keyword = "UDEV";    break;
+    }
+    char watch_mode_expl[80];
++#ifdef USE_X11
+    g_snprintf(watch_mode_expl, 80, "DYNAMIC|XEVENT|POLL, default: %s", default_watch_mode_keyword);
++#else
++   g_snprintf(watch_mode_expl, 80, "DYNAMIC|POLL, default: %s", default_watch_mode_keyword);
++#endif
+    gboolean enable_watch_displays = true;
++#ifdef USE_X11
+    gint     xevent_watch_loop_millis_work = DEFAULT_XEVENT_WATCH_LOOP_MILLISEC;
++#endif
+    gint     poll_watch_loop_millis_work = DEFAULT_POLL_WATCH_LOOP_MILLISEC;
+ 
+    gboolean f1_flag         = false;
+@@ -1288,8 +1296,10 @@ parse_command(
+                       G_OPTION_ARG_NONE, &disable_api_flag, "Completely disable API", NULL },
+       {"watch-mode", '\0', G_OPTION_FLAG_HIDDEN,
+                            G_OPTION_ARG_STRING, &watch_mode_work, "How to watch for display changes",  watch_mode_expl},
++#ifdef USE_X11
+       {"xevent-watch-loop-millisec", '\0', G_OPTION_FLAG_HIDDEN,
+                            G_OPTION_ARG_INT, &xevent_watch_loop_millis_work, "Loop delay for mode XEVENT", "milliseconds"},
++#endif
+       {"poll-watch-loop-millisec", '\0', G_OPTION_FLAG_HIDDEN,
+                            G_OPTION_ARG_INT, &poll_watch_loop_millis_work, "Loop delay for mode POLL", "milliseconds"},
+ #ifdef ENABLE_USB
+@@ -2054,6 +2064,7 @@ parse_command(
+       }
+    }
+ 
++#ifdef USE_X11
+    if (xevent_watch_loop_millis_work <= 0) {
+       EMIT_PARSER_ERROR(errmsgs,
+             "--xevent-watch-loop-millisec not a positive number: %d", xevent_watch_loop_millis_work);
+@@ -2061,6 +2072,7 @@ parse_command(
+    }
+    else
+       parsed_cmd->xevent_watch_loop_millisec = (uint16_t) xevent_watch_loop_millis_work;
++#endif
+ 
+    if (poll_watch_loop_millis_work <= 0) {
+       EMIT_PARSER_ERROR(errmsgs,
+diff --git a/src/dw/Makefile.am b/src/dw/Makefile.am
+index 0327f1af..063beef4 100644
+--- a/src/dw/Makefile.am
++++ b/src/dw/Makefile.am
+@@ -27,8 +27,14 @@ libdw_la_SOURCES += \
+   dw_dref.c \
+   dw_udev.c \
+   dw_recheck.c \
+-  dw_services.c \
+-  dw_xevent.c
++  dw_services.c
++endif
++
++if ENABLE_UDEV_COND
++if USE_X11_COND
++libdw_la_SOURCES += \
++  dw_xevent.c 
++endif
+ endif
+ 
+ # Rename to "all=local" for development 
+diff --git a/src/dw/dw_common.c b/src/dw/dw_common.c
+index 62f87226..ddb456e3 100644
+--- a/src/dw/dw_common.c
++++ b/src/dw/dw_common.c
+@@ -59,7 +59,9 @@
+ 
+ #include "dw_status_events.h"
+ #include "dw_dref.h"
++#ifdef USE_X11
+ #include "dw_xevent.h"
++#endif
+ 
+ #include "dw_common.h"
+ 
+@@ -132,7 +134,9 @@ void dw_free_watch_displays_data(Watch_Displays_Data * wdd) {
+    if (wdd) {
+       assert( memcmp(wdd->marker, WATCH_DISPLAYS_DATA_MARKER, 4) == 0 );
+       wdd->marker[3] = 'x';
++#ifdef USE_X11
+       free(wdd->evdata);
++#endif
+       free(wdd);
+    }
+ }
+diff --git a/src/dw/dw_common.h b/src/dw/dw_common.h
+index bd310923..e12ca63e 100644
+--- a/src/dw/dw_common.h
++++ b/src/dw/dw_common.h
+@@ -14,7 +14,9 @@
+ 
+ #include "base/displays.h"
+ 
++#ifdef USE_X11
+ #include "dw_xevent.h"
++#endif
+ 
+ extern uint16_t   initial_stabilization_millisec;
+ extern uint16_t   stabilization_poll_millisec;
+@@ -40,9 +42,11 @@ typedef struct {
+    pid_t                    main_process_id;
+    pid_t                    main_thread_id;
+    DDCA_Display_Event_Class event_classes;
+-   DDC_Watch_Mode          watch_mode;
++   DDC_Watch_Mode           watch_mode;
+    int                      watch_loop_millisec;
++#ifdef USE_X11
+    XEvent_Data *            evdata;
++#endif
+   } Watch_Displays_Data;
+ 
+ void dw_free_watch_displays_data(Watch_Displays_Data * wdd);
+diff --git a/src/dw/dw_main.c b/src/dw/dw_main.c
+index 996d6f95..c5e098cb 100644
+--- a/src/dw/dw_main.c
++++ b/src/dw/dw_main.c
+@@ -46,7 +46,9 @@
+ #include "dw_udev.h"
+ #include "dw_recheck.h"
+ #include "dw_poll.h"
++#ifdef USE_X11
+ #include "dw_xevent.h"
++#endif
+ 
+ #include "dw_main.h"
+ 
+@@ -65,7 +67,12 @@ static DDCA_Display_Event_Class active_watch_displays_classes = DDCA_EVENT_CLASS
+ static Watch_Displays_Data * global_wdd;     // needed to pass to dw_stop_watch_displays()
+ 
+ 
++// ***
++// Iftesting out resolve_watch_mode() if X11 is not defined is a quick and dirty hack.
++// It relies on the fact that currently the only mode other than XEVENT is POLL
++// ***
+ 
++#ifdef USE_X11
+ /** Determines the actual watch mode to be used
+  *
+  *  @param  initial_mode  mode requested
+@@ -79,8 +86,10 @@ resolve_watch_mode(DDC_Watch_Mode initial_mode,  XEvent_Data ** xev_data_loc) {
+    DBGTRC_STARTING(debug, TRACE_GROUP, "initial_mode=%s xev_data_loc=%p", watch_mode_name(initial_mode), xev_data_loc);
+ 
+    DDC_Watch_Mode resolved_watch_mode = Watch_Mode_Poll;
++#ifdef USE_X11
+    XEvent_Data * xevdata = NULL;
+    *xev_data_loc = NULL;
++#endif
+ 
+ #ifndef ENABLE_UDEV
+    if (initial_mode == Watch_Mode_Udev)
+@@ -89,6 +98,7 @@ resolve_watch_mode(DDC_Watch_Mode initial_mode,  XEvent_Data ** xev_data_loc) {
+ 
+    if (initial_mode == Watch_Mode_Dynamic) {
+       resolved_watch_mode = Watch_Mode_Poll;    // always works, may be slow
++#ifdef USE_X11
+       char * xdg_session_type = getenv("XDG_SESSION_TYPE");
+       DBGTRC_NOPREFIX(debug, DDCA_TRC_NONE, "XDG_SESSION_TYPE=|%s|", xdg_session_type);
+       if (xdg_session_type &&         // can xdg_session_type ever not be set
+@@ -111,6 +121,7 @@ resolve_watch_mode(DDC_Watch_Mode initial_mode,  XEvent_Data ** xev_data_loc) {
+       // sysfs_fully_reliable = is_sysfs_reliable();
+       // if (!sysfs_fully_reliable)
+       //    dw_watch_mode = Watch_Mode_Poll;
++#endif
+    }
+    else {
+       resolved_watch_mode = initial_mode;
+@@ -124,6 +135,7 @@ resolve_watch_mode(DDC_Watch_Mode initial_mode,  XEvent_Data ** xev_data_loc) {
+    }
+ #endif
+ 
++#ifdef USE_X11
+    if (resolved_watch_mode == Watch_Mode_Xevent) {
+       xevdata  = dw_init_xevent_screen_change_notification();
+       // *xev_data_loc  = ddc_init_xevent_screen_change_notification();
+@@ -132,20 +144,23 @@ resolve_watch_mode(DDC_Watch_Mode initial_mode,  XEvent_Data ** xev_data_loc) {
+          MSG_W_SYSLOG(DDCA_SYSLOG_WARNING, "X11 RANDR api unavailable. Switching to Watch_Mode_Poll");
+       }
+    }
++#endif
+ 
+    // DBG( "xevdata=%p, watch_mode = %s", xevdata, dw_watch_mode_name(resolved_watch_mode));
+ 
++#ifdef USE_X11
+    *xev_data_loc = xevdata;
+    // ASSERT_IFF(resolved_watch_mode == Watch_Mode_Xevent, xevdata);
+    ASSERT_IFF(resolved_watch_mode == Watch_Mode_Xevent, *xev_data_loc);
+    if (*xev_data_loc && IS_DBGTRC(debug, DDCA_TRC_NONE)) {
+       dw_dbgrpt_xevent_data(*xev_data_loc,  0);
+    }
++#endif
+    DBGTRC_DONE(debug, TRACE_GROUP, "resolved_watch_mode: %s. *xev_data_loc: %p",
+          watch_mode_name(resolved_watch_mode),  *xev_data_loc);
+    return resolved_watch_mode;
+ }
+-
++#endif
+ 
+ /** Starts thread that watches for changes in display connection status.
+  *
+@@ -162,7 +177,9 @@ dw_start_watch_displays(DDCA_Display_Event_Class event_classes) {
+         watch_mode_name(watch_displays_mode), watch_thread, event_classes, SBOOL(all_video_adapters_implement_drm));
+    DBGTRC_NOPREFIX(debug, TRACE_GROUP, "thread_id = %d, traced_function_stack=%p", TID(), traced_function_stack);
+    Error_Info * err = NULL;
++#ifdef USE_X11
+    XEvent_Data * xev_data = NULL;
++#endif
+ 
+    if (!all_video_adapters_implement_drm) {
+       err = ERRINFO_NEW(DDCRC_INVALID_OPERATION, "Requires DRM video drivers");
+@@ -174,8 +191,12 @@ dw_start_watch_displays(DDCA_Display_Event_Class event_classes) {
+       goto bye;
+    }
+ 
++#ifdef USE_X11
+    DDC_Watch_Mode resolved_watch_mode = resolve_watch_mode(watch_displays_mode, &xev_data);
+    ASSERT_IFF(resolved_watch_mode == Watch_Mode_Xevent, xev_data);
++#else
++   DDC_Watch_Mode resolved_watch_mode = Watch_Mode_Poll;
++#endif
+ 
+    int calculated_watch_loop_millisec = dw_calc_watch_loop_millisec(resolved_watch_mode);
+    // DBGTRC_NOPREFIX(debug, DDCA_TRC_NONE, "calc_watch_loop_millisec() returned %d", calculated_watch_loop_millisec);
+@@ -216,8 +237,10 @@ dw_start_watch_displays(DDCA_Display_Event_Class event_classes) {
+       wdd->event_classes = event_classes;
+       wdd->watch_mode = resolved_watch_mode;
+       wdd->watch_loop_millisec = calculated_watch_loop_millisec;
++#ifdef USE_X11
+       if (xev_data)
+          wdd->evdata = xev_data;
++#endif
+       global_wdd = wdd;
+ 
+ #ifdef CALLBACK_DISPLAYS_THREAD
+@@ -278,6 +301,7 @@ dw_stop_watch_displays(bool wait, DDCA_Display_Event_Class* enabled_classes_loc)
+    if (watch_thread) {
+       DBGTRC_NOPREFIX(debug, DDCA_TRC_NONE, "resolved_watch_mode = %s",
+                                             watch_mode_name(global_wdd->watch_mode));
++#ifdef USE_X11
+       if (global_wdd->watch_mode == Watch_Mode_Xevent) {
+          if (terminate_using_x11_event) {   // for testing, does not currently work
+             dw_send_x11_termination_message(global_wdd->evdata);
+@@ -290,6 +314,9 @@ dw_stop_watch_displays(bool wait, DDCA_Display_Event_Class* enabled_classes_loc)
+       else {
+          terminate_watch_thread = true;  // signal watch thread to terminate
+       }
++#else
++      terminate_watch_thread = true;
++#endif
+ 
+       // DBGTRC_NOPREFIX(debug, TRACE_GROUP, "Waiting %d millisec for watch thread to terminate...", 4000);
+       // usleep(4000*1000);  // greater than the sleep in watch_displays_using_poll()
+@@ -433,7 +460,9 @@ void init_dw_main() {
+    RTTI_ADD_FUNC(dw_start_watch_displays);
+    RTTI_ADD_FUNC(dw_stop_watch_displays);
+    RTTI_ADD_FUNC(dw_get_active_watch_classes);
++#ifdef USE_X11
+    RTTI_ADD_FUNC(resolve_watch_mode);
++#endif
+    RTTI_ADD_FUNC(dw_redetect_displays);
+ }
+ 
+diff --git a/src/dw/dw_poll.c b/src/dw/dw_poll.c
+index 677a6ce6..e1244491 100644
+--- a/src/dw/dw_poll.c
++++ b/src/dw/dw_poll.c
+@@ -62,7 +62,9 @@
+ #include "dw_dref.h"
+ #include "dw_recheck.h"
+ #include "dw_status_events.h"
++#ifdef USE_X11
+ #include "dw_xevent.h"
++#endif
+ 
+ #include "dw_poll.h"
+ 
+@@ -206,8 +208,10 @@ gpointer dw_watch_display_connections(gpointer data) {
+    Watch_Displays_Data * wdd = data;
+    assert(wdd && memcmp(wdd->marker, WATCH_DISPLAYS_DATA_MARKER, 4) == 0);
+    assert(wdd->watch_mode == Watch_Mode_Xevent  || wdd->watch_mode == Watch_Mode_Poll);
++#ifdef USE_X11
+    if (wdd->watch_mode == Watch_Mode_Xevent)
+       assert(wdd->evdata);
++#endif
+    GPtrArray * displays_to_recheck = g_ptr_array_new();
+ 
+    DBGTRC_STARTING(debug, TRACE_GROUP,
+@@ -276,6 +280,7 @@ gpointer dw_watch_display_connections(gpointer data) {
+          continue;
+       dw_terminate_if_invalid_thread_or_process(cur_pid, cur_tid);
+ 
++#ifdef USE_X11
+       if (wdd->watch_mode == Watch_Mode_Xevent) {
+          if (terminate_using_x11_event) {
+             bool event_found = dw_next_X11_event_of_interest(wdd->evdata);
+@@ -295,6 +300,7 @@ gpointer dw_watch_display_connections(gpointer data) {
+                continue;
+          }
+       }
++#endif
+ 
+       DBGTRC_NOPREFIX(debug, DDCA_TRC_NONE, "locking process_event_mutex");
+       g_mutex_lock(&process_event_mutex);
+diff --git a/src/dw/dw_services.c b/src/dw/dw_services.c
+index 75601879..93085e00 100644
+--- a/src/dw/dw_services.c
++++ b/src/dw/dw_services.c
+@@ -15,7 +15,9 @@
+ #include "dw/dw_recheck.h"
+ #include "dw/dw_status_events.h"
+ #include "dw/dw_udev.h"
++#ifdef USE_X11
+ #include "dw/dw_xevent.h"
++#endif
+ 
+ #include "dw_services.h"
+ 
+@@ -31,7 +33,9 @@ void init_dw_services() {
+    init_dw_poll();
+    init_dw_recheck();
+    init_dw_udev();
++#ifdef USE_X11
+    init_dw_xevent();
++#endif
+ 
+    DBGMSF(debug, "Done");
+ }

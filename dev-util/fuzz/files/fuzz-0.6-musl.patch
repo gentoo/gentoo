@@ -1,0 +1,34 @@
+Fix missing include on musl, as strcmp is not transitively included
+Remove arg-less declaration for non-glibc case: we have POSIX here,
+getopt has same prototype in glibc and in musl
+https://bugs.gentoo.org/934059
+https://bugs.gentoo.org/944111
+--- a/getopt.c
++++ b/getopt.c
+@@ -43,6 +43,7 @@
+ #endif
+ 
+ #include <stdio.h>
++#include <string.h>
+ 
+ /* Comment out all this code if we are using the GNU C Library, and are not
+    actually compiling the library itself.  This code is part of the GNU C
+--- a/getopt.h
++++ b/getopt.h
+@@ -99,14 +99,12 @@
+ #define optional_argument	2
+ 
+ #if defined (__STDC__) && __STDC__
+-#ifdef __GNU_LIBRARY__
+ /* Many other libraries have conflicting prototypes for getopt, with
+    differences in the consts, in stdlib.h.  To avoid compilation
+    errors, only prototype getopt for the GNU C library.  */
++/* But in Gentoo we have glibc and musl, and they have same POSIX
++   definition */
+ extern int getopt (int argc, char *const *argv, const char *shortopts);
+-#else /* not __GNU_LIBRARY__ */
+-extern int getopt ();
+-#endif /* __GNU_LIBRARY__ */
+ extern int getopt_long (int argc, char *const *argv, const char *shortopts,
+ 		        const struct option *longopts, int *longind);
+ extern int getopt_long_only (int argc, char *const *argv,

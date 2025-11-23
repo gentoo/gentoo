@@ -1,0 +1,12 @@
+# /etc/conf.d/sccache-scheduler: config file for /etc/init.d/sccache-scheduler
+#
+
+# Full path to config file. /etc/sccache/scheduler.conf is default if not set.
+#SCCACHE_SCHEDULER_CONF="/etc/sccache/scheduler.conf"
+
+# logging is off by default, possible values are: error warn info debug trace
+#SCCACHE_SCHEDULER_LOGLEVEL=info
+
+# no limits set by default, see IONICE(1), NICE(1), START-STOP-DAEMON(8)
+#SSD_NICELEVEL=15
+#SSD_IONICELEVEL=3

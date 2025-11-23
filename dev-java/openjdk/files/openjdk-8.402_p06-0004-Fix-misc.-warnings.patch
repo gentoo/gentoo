@@ -1,0 +1,61 @@
+From 24f51a75b79aec29bd1631d320e051a646b9fae4 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 6 Mar 2024 12:23:41 +0000
+Subject: [PATCH 4/4] Fix misc. warnings
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Backport of https://github.com/openjdk/jdk11u/commit/49dec121161c162f4aa94caf8c09413253d89377.
+
+```
+jdk8u-jdk8u402-ga/jdk/src/share/native/com/sun/java/util/jar/pack/jni.cpp: In function ‘_jobject* Java_com_sun_java_util_jar_Unpack_getUnusedInput(JNIEnv*, jobject)’:
+jdk8u-jdk8u402-ga/jdk/src/share/native/com/sun/java/util/jar/pack/jni.cpp:295:12: error: cannot convert ‘bool’ to ‘jobject’ {aka ‘_jobject*’} in return
+  295 |     return false;
+      |            ^~~~~
+jdk8u-jdk8u402-ga/jdk/src/share/native/com/sun/java/util/jar/pack/jni.cpp: In function ‘jlong Java_com_sun_java_util_jar_pack_NativeUnpack_finish(JNIEnv*, jobject)’:
+jdk8u-jdk8u402-ga/jdk/src/share/native/com/sun/java/util/jar/pack/jni.cpp:315:3: warning: converting to non-pointer type ‘long int’ from NULL [-Wconversion-null]
+  315 |   CHECK_EXCEPTION_RETURN_VALUE(uPtr, NULL);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+jdk8u-jdk8u402-ga/jdk/src/share/native/com/sun/java/util/jar/pack/jni.cpp:315:3: warning: converting to non-pointer type ‘long int’ from NULL [-Wconversion-null]
+[...]
+```
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ jdk/src/share/native/com/sun/java/util/jar/pack/jni.cpp | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/jdk/src/share/native/com/sun/java/util/jar/pack/jni.cpp b/jdk/src/share/native/com/sun/java/util/jar/pack/jni.cpp
+index 5fbc726..4c002e7 100644
+--- a/jdk/src/share/native/com/sun/java/util/jar/pack/jni.cpp
++++ b/jdk/src/share/native/com/sun/java/util/jar/pack/jni.cpp
+@@ -292,7 +292,7 @@ Java_com_sun_java_util_jar_pack_NativeUnpack_getUnusedInput(JNIEnv *env, jobject
+ 
+   if (uPtr->aborting()) {
+     THROW_IOE(uPtr->get_abort_message());
+-    return false;
++    return null;
+   }
+ 
+   // We have fetched all the files.
+@@ -312,7 +312,7 @@ Java_com_sun_java_util_jar_pack_NativeUnpack_finish(JNIEnv *env, jobject pObj) {
+   // There's no need to create a new unpacker here if we don't already have one
+   // just to immediatly free it afterwards.
+   unpacker* uPtr = get_unpacker(env, pObj, /* noCreate= */ true);
+-  CHECK_EXCEPTION_RETURN_VALUE(uPtr, NULL);
++  CHECK_EXCEPTION_RETURN_VALUE(uPtr, 0);
+   size_t consumed = uPtr->input_consumed();
+   // free_unpacker() will set the unpacker field on 'pObj' to null
+   free_unpacker(env, pObj, uPtr);
+@@ -323,6 +323,7 @@ JNIEXPORT jboolean JNICALL
+ Java_com_sun_java_util_jar_pack_NativeUnpack_setOption(JNIEnv *env, jobject pObj,
+                                        jstring pProp, jstring pValue) {
+   unpacker*   uPtr  = get_unpacker(env, pObj);
++  CHECK_EXCEPTION_RETURN_VALUE(uPtr, false);
+   const char* prop  = env->GetStringUTFChars(pProp, JNI_FALSE);
+   CHECK_EXCEPTION_RETURN_VALUE(prop, false);
+   const char* value = env->GetStringUTFChars(pValue, JNI_FALSE);
+-- 
+2.44.0
+

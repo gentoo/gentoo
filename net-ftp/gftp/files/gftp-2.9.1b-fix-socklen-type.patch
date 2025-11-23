@@ -1,0 +1,11 @@
+--- a/lib/gftp.h	2024-04-26 09:08:32.404275437 +0000
++++ b/lib/gftp.h	2024-04-26 09:11:56.292057323 +0000
+@@ -361,7 +361,7 @@
+   int wakeup_main_thread[2]; /* FD that gets written to by the threads to wakeup the parent */
+ 
+   void *remote_addr;
+-  size_t remote_addr_len;
++  socklen_t remote_addr_len;
+   int ai_family;
+   int ai_socktype;
+   unsigned int use_udp : 1; /* does this use UDP protocol? */

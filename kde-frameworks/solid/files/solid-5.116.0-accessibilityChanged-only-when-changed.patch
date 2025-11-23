@@ -1,0 +1,43 @@
+From d8d9502e5fee9e35ee4b8dc7e5aeabee962fb0c2 Mon Sep 17 00:00:00 2001
+From: Kai Uwe Broulik <kai.uwe.broulik@basyskom.com>
+Date: Wed, 18 Sep 2024 12:37:37 +0200
+Subject: [PATCH] fstab: Emit accessibilityChanged only when actually changed
+
+Otherwise this will signal a change whenever mtab changes,
+leading to redundant updates and wakeups downstream.
+
+Signed-off-by: Kiriakos Antoniadis <kiriakos.antoniadis@advantest.com>
+(cherry picked from commit 493e5e3b919d7e421e5355c43fd5dbdfcdbabaa8)
+---
+ .../devices/backends/fstab/fstabstorageaccess.cpp    | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/src/solid/devices/backends/fstab/fstabstorageaccess.cpp b/src/solid/devices/backends/fstab/fstabstorageaccess.cpp
+index 6baaf1d7..5c46cc82 100644
+--- a/src/solid/devices/backends/fstab/fstabstorageaccess.cpp
++++ b/src/solid/devices/backends/fstab/fstabstorageaccess.cpp
+@@ -145,13 +145,17 @@ void FstabStorageAccess::onMtabChanged(const QString &device)
+     if (currentMountPoints.isEmpty()) {
+         // device umounted
+         m_filePath = FstabHandling::mountPoints(device).first();
+-        m_isAccessible = false;
+-        Q_EMIT accessibilityChanged(false, QString(FSTAB_UDI_PREFIX) + "/" + device);
++        if (m_isAccessible) {
++            m_isAccessible = false;
++            Q_EMIT accessibilityChanged(false, QString(FSTAB_UDI_PREFIX) + "/" + device);
++        }
+     } else {
+         // device added
+         m_filePath = currentMountPoints.first();
+-        m_isAccessible = true;
+-        Q_EMIT accessibilityChanged(true, QString(FSTAB_UDI_PREFIX) + "/" + device);
++        if (!m_isAccessible) {
++            m_isAccessible = true;
++            Q_EMIT accessibilityChanged(true, QString(FSTAB_UDI_PREFIX) + "/" + device);
++        }
+     }
+ }
+ 
+-- 
+GitLab
+

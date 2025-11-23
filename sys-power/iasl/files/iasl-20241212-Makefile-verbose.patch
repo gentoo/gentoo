@@ -1,0 +1,129 @@
+From 9b18ed925e1e33e5b45ae79b5f47deec78ea111d Mon Sep 17 00:00:00 2001
+From: "Evgeny Grin (Karlson2k)" <k2k@drgrin.dev>
+Date: Thu, 30 Jan 2025 11:25:24 +0100
+Subject: [PATCH 2/2] Verbose make output
+
+---
+ generate/unix/Makefile.rules |  4 ++--
+ generate/unix/iasl/Makefile  | 34 +++++++++++++++++-----------------
+ 2 files changed, 19 insertions(+), 19 deletions(-)
+
+diff --git a/generate/unix/Makefile.rules b/generate/unix/Makefile.rules
+index f2a16be4d..838252719 100644
+--- a/generate/unix/Makefile.rules
++++ b/generate/unix/Makefile.rules
+@@ -12,12 +12,12 @@ $(FINAL_PROG) : $(PROG)
+ 
+ $(PROG) : $(INTERMEDIATES) $(MISC) $(OBJECTS)
+ 	@echo "- Link" $(PROG)
+-	@$(LINKPROG)
++	$(LINKPROG)
+ 	$(RENAMEPROG)
+ 
+ $(OBJDIR)/%.o : %.c $(HEADERS) $(ACPICA_HEADERS)
+ 	@echo $(PROG)  $<
+-	@$(COMPILEOBJ)
++	$(COMPILEOBJ)
+ 
+ clean :
+ 	@rm -f $(PROG) $(PROG).exe $(OBJECTS) $(OBJDIR)/*.o $(INTERMEDIATES) $(MISC)
+diff --git a/generate/unix/iasl/Makefile b/generate/unix/iasl/Makefile
+index 8fde63d46..271c7a704 100644
+--- a/generate/unix/iasl/Makefile
++++ b/generate/unix/iasl/Makefile
+@@ -322,42 +322,42 @@ safe_yacc = \
+ #
+ $(OBJDIR)/aslcompiler.y :      $(ASL_PARSER)
+ 	@echo "- " $(MACROPROC) "          Preprocess main iASL parser"
+-	@$(MACROPROC) $(MFLAGS) $(ASL_COMPILER)/aslparser.y > $@
++	$(MACROPROC) $(MFLAGS) $(ASL_COMPILER)/aslparser.y > $@
+ 
+ #
+ # Parser and Lexer - intermediate C files
+ #
+ $(OBJDIR)/aslcompilerlex.c :   $(ASL_LEXER)
+ 	@echo "- " $(LEX) "        "$<
+-	@$(LEX) $(LFLAGS) -PAslCompiler -o$@ $(ASL_COMPILER)/aslcompiler.l
++	$(LEX) $(LFLAGS) -PAslCompiler -o$@ $(ASL_COMPILER)/aslcompiler.l
+ 
+ $(OBJDIR)/aslcompilerparse.c $(OBJDIR)/aslcompiler.y.h : $(OBJDIR)/aslcompiler.y
+ 	@echo "- " $(YACC) "       "$<
+-	@$(call safe_yacc,AslCompiler,$<,$@)
++	$(call safe_yacc,AslCompiler,$<,$@)
+ 
+ $(OBJDIR)/dtcompilerparserlex.c :      $(ASL_COMPILER)/dtcompilerparser.l $(OBJDIR)/dtcompilerparser.y.h
+ 	@echo "- " $(LEX) "        "$<
+-	@$(LEX) $(DLFLAGS) -PDtCompilerParser -o$@ $<
++	$(LEX) $(DLFLAGS) -PDtCompilerParser -o$@ $<
+ 
+ $(OBJDIR)/dtcompilerparserparse.c $(OBJDIR)/dtcompilerparser.y.h :       $(ASL_COMPILER)/dtcompilerparser.y
+ 	@echo "- " $(YACC) "       "$<
+-	@$(call safe_yacc,DtCompilerParser,$<,$@)
++	$(call safe_yacc,DtCompilerParser,$<,$@)
+ 
+ $(OBJDIR)/dtparserlex.c :      $(ASL_COMPILER)/dtparser.l $(OBJDIR)/dtparser.y.h
+ 	@echo "- " $(LEX) "        "$<
+-	@$(LEX) $(DLFLAGS) -PDtParser -o$@ $<
++	$(LEX) $(DLFLAGS) -PDtParser -o$@ $<
+ 
+ $(OBJDIR)/dtparserparse.c $(OBJDIR)/dtparser.y.h :       $(ASL_COMPILER)/dtparser.y
+ 	@echo "- " $(YACC) "       "$<
+-	@$(call safe_yacc,DtParser,$<,$@)
++	$(call safe_yacc,DtParser,$<,$@)
+ 
+ $(OBJDIR)/prparserlex.c :      $(ASL_COMPILER)/prparser.l $(OBJDIR)/prparser.y.h
+ 	@echo "- " $(LEX) "        "$<
+-	@$(LEX) $(LFLAGS) -PPrParser -o$@ $<
++	$(LEX) $(LFLAGS) -PPrParser -o$@ $<
+ 
+ $(OBJDIR)/prparserparse.c $(OBJDIR)/prparser.y.h :       $(ASL_COMPILER)/prparser.y
+ 	@echo "- " $(YACC) "       "$<
+-	@$(call safe_yacc,PrParser,$<,$@)
++	$(call safe_yacc,PrParser,$<,$@)
+ 
+ #
+ # Parsers and Lexers - final object files
+@@ -367,32 +367,32 @@ $(OBJDIR)/prparserparse.c $(OBJDIR)/prparser.y.h :       $(ASL_COMPILER)/prparse
+ #
+ $(OBJDIR)/aslcompilerlex.o :   $(OBJDIR)/aslcompilerlex.c
+ 	@echo "- " "Intermediate" $<
+-	@$(CC) -c $(CFLAGS) -Wall $(WERROR_FLAGS) -o$@ $<
++	$(CC) -c $(CFLAGS) -Wall $(WERROR_FLAGS) -o$@ $<
+ 
+ $(OBJDIR)/aslcompilerparse.o : $(OBJDIR)/aslcompilerparse.c
+ 	@echo "- " "Intermediate" $<
+-	@$(CC) -c $(CFLAGS) -Wall $(WERROR_FLAGS) -o$@ $<
++	$(CC) -c $(CFLAGS) -Wall $(WERROR_FLAGS) -o$@ $<
+ 
+ $(OBJDIR)/dtcompilerparserlex.o :      $(OBJDIR)/dtcompilerparserlex.c
+ 	@echo "- " "Intermediate" $<
+-	@$(CC) -c $(CFLAGS) -Wall $(WERROR_FLAGS) -o$@ $<
++	$(CC) -c $(CFLAGS) -Wall $(WERROR_FLAGS) -o$@ $<
+ 
+ $(OBJDIR)/dtcompilerparserparse.o :    $(OBJDIR)/dtcompilerparserparse.c
+ 	@echo "- " "Intermediate" $<
+-	@$(CC) -c $(CFLAGS) -Wall $(WERROR_FLAGS) -o$@ $<
++	$(CC) -c $(CFLAGS) -Wall $(WERROR_FLAGS) -o$@ $<
+ 
+ $(OBJDIR)/dtparserlex.o :      $(OBJDIR)/dtparserlex.c
+ 	@echo "- " "Intermediate" $<
+-	@$(CC) -c $(CFLAGS) -Wall $(WERROR_FLAGS) -o$@ $<
++	$(CC) -c $(CFLAGS) -Wall $(WERROR_FLAGS) -o$@ $<
+ 
+ $(OBJDIR)/dtparserparse.o :    $(OBJDIR)/dtparserparse.c
+ 	@echo "- " "Intermediate" $<
+-	@$(CC) -c $(CFLAGS) -Wall $(WERROR_FLAGS) -o$@ $<
++	$(CC) -c $(CFLAGS) -Wall $(WERROR_FLAGS) -o$@ $<
+ 
+ $(OBJDIR)/prparserlex.o :      $(OBJDIR)/prparserlex.c
+ 	@echo "- " "Intermediate" $<
+-	@$(CC) -c $(CFLAGS) -Wall $(WERROR_FLAGS) -o$@ $<
++	$(CC) -c $(CFLAGS) -Wall $(WERROR_FLAGS) -o$@ $<
+ 
+ $(OBJDIR)/prparserparse.o :    $(OBJDIR)/prparserparse.c
+ 	@echo "- " "Intermediate" $<
+-	@$(CC) -c $(CFLAGS) -Wall $(WERROR_FLAGS) -o$@ $<
++	$(CC) -c $(CFLAGS) -Wall $(WERROR_FLAGS) -o$@ $<
+-- 
+2.45.2.windows.1
+

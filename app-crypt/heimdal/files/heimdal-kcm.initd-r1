@@ -1,0 +1,21 @@
+#!/sbin/openrc-run
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	after heimdal-kdc
+}
+
+OPTIONS="${OPTIONS} --detach"
+
+start() {
+	ebegin "Starting Heimdal KCM..."
+	start-stop-daemon --start --pidfile /var/run/kcm.pid --exec /usr/sbin/kcm -- ${OPTIONS# }
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping Heimdal KCM..."
+	start-stop-daemon --stop --pidfile /var/run/kcm.pid --retry SIGKILL/5
+	eend $?
+}

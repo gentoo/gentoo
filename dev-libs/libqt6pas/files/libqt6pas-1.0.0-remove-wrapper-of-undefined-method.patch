@@ -1,0 +1,29 @@
+Author: Denis Pronin <dannftk@yandex.ru>
+
+Description: the patch is required to make the libqt6pas project compile since 
+QT6 does not have QString::isSimpleText() method any longer
+
+--- a/src/qstring_c.cpp
++++ b/src/qstring_c.cpp
+@@ -1073,11 +1073,6 @@
+ 	return (bool) ((QString *)handle)->isNull();
+ }
+ 
+-bool QString_isSimpleText(QStringH handle)
+-{
+-	return (bool) ((QString *)handle)->isSimpleText();
+-}
+-
+ bool QString_isRightToLeft(QStringH handle)
+ {
+ 	return (bool) ((QString *)handle)->isRightToLeft();
+--- a/src/qstring_c.h
++++ b/src/qstring_c.h
+@@ -166,7 +166,6 @@
+ C_EXPORT void QString_push_front(QStringH handle, PWideChar c);
+ C_EXPORT void QString_push_front2(QStringH handle, PWideString s);
+ C_EXPORT bool QString_isNull(QStringH handle);
+-C_EXPORT bool QString_isSimpleText(QStringH handle);
+ C_EXPORT bool QString_isRightToLeft(QStringH handle);
+ C_EXPORT void QString_chopped(QStringH handle, int len, PWideString retval);
+ C_EXPORT void QString_first(QStringH handle, int n, PWideString retval);

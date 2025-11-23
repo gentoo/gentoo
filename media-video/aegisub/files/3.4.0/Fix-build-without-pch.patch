@@ -1,0 +1,229 @@
+From c5e3d6e927e638796b7d0862f6a0c4e19e9fbe6b Mon Sep 17 00:00:00 2001
+From: Nick Sarnie <sarnex@gentoo.org>
+Date: Fri, 27 Dec 2024 20:26:36 +0900
+Subject: [PATCH] Fix build without PCH
+
+Signed-off-by: Nick Sarnie <sarnex@gentoo.org>
+---
+ libaegisub/ass/uuencode.cpp             | 2 +-
+ libaegisub/audio/provider_dummy.cpp     | 1 +
+ libaegisub/common/cajun/reader.cpp      | 1 +
+ libaegisub/common/calltip_provider.cpp  | 2 +-
+ libaegisub/common/mru.cpp               | 2 +-
+ libaegisub/common/option.cpp            | 1 +
+ libaegisub/common/thesaurus.cpp         | 1 +
+ libaegisub/include/libaegisub/lua/ffi.h | 1 +
+ libaegisub/lua/modules/unicode.cpp      | 2 +-
+ libaegisub/unix/path.cpp                | 2 ++
+ src/aegisublocale.cpp                   | 2 ++
+ src/audio_timing_dialogue.cpp           | 2 ++
+ src/base_grid.h                         | 2 ++
+ src/command/command.h                   | 1 +
+ src/frame_main.cpp                      | 2 +-
+ src/preferences.cpp                     | 1 +
+ 16 files changed, 20 insertions(+), 5 deletions(-)
+
+diff --git a/libaegisub/ass/uuencode.cpp b/libaegisub/ass/uuencode.cpp
+index 893268d07..ee5441144 100644
+--- a/libaegisub/ass/uuencode.cpp
++++ b/libaegisub/ass/uuencode.cpp
+@@ -17,7 +17,7 @@
+ #include <libaegisub/ass/uuencode.h>
+ 
+ #include <algorithm>
+-
++#include <cstring>
+ // Despite being called uuencoding by ass_specs.doc, the format is actually
+ // somewhat different from real uuencoding.  Each 3-byte chunk is split into 4
+ // 6-bit pieces, then 33 is added to each piece. Lines are wrapped after 80
+diff --git a/libaegisub/audio/provider_dummy.cpp b/libaegisub/audio/provider_dummy.cpp
+index 3e7f104ef..1de35b2b6 100644
+--- a/libaegisub/audio/provider_dummy.cpp
++++ b/libaegisub/audio/provider_dummy.cpp
+@@ -18,6 +18,7 @@
+ 
+ #include "libaegisub/fs.h"
+ 
++#include <cstring>
+ #include <random>
+ 
+ /*
+diff --git a/libaegisub/common/cajun/reader.cpp b/libaegisub/common/cajun/reader.cpp
+index 6f32d2ff4..0c69ef9c2 100644
+--- a/libaegisub/common/cajun/reader.cpp
++++ b/libaegisub/common/cajun/reader.cpp
+@@ -9,6 +9,7 @@ Author: Terry Caton
+ #include "libaegisub/cajun/reader.h"
+ 
+ #include <boost/interprocess/streams/bufferstream.hpp>
++#include <algorithm>
+ #include <cassert>
+ 
+ /*
+diff --git a/libaegisub/common/calltip_provider.cpp b/libaegisub/common/calltip_provider.cpp
+index de693e637..d24d6277a 100644
+--- a/libaegisub/common/calltip_provider.cpp
++++ b/libaegisub/common/calltip_provider.cpp
+@@ -19,7 +19,7 @@
+ #include "libaegisub/ass/dialogue_parser.h"
+ 
+ #include <algorithm>
+-
++#include <cstring>
+ namespace {
+ struct proto_lit {
+ 	const char *name;
+diff --git a/libaegisub/common/mru.cpp b/libaegisub/common/mru.cpp
+index 81db2715a..ef2a06944 100644
+--- a/libaegisub/common/mru.cpp
++++ b/libaegisub/common/mru.cpp
+@@ -21,7 +21,7 @@
+ #include "libaegisub/log.h"
+ #include "libaegisub/option.h"
+ #include "libaegisub/option_value.h"
+-
++#include <algorithm>
+ namespace {
+ std::string_view mru_names[] = {
+ 	"Audio",
+diff --git a/libaegisub/common/option.cpp b/libaegisub/common/option.cpp
+index 13e93a3a0..c90ae9c46 100644
+--- a/libaegisub/common/option.cpp
++++ b/libaegisub/common/option.cpp
+@@ -26,6 +26,7 @@
+ #include "libaegisub/option_value.h"
+ 
+ #include <boost/interprocess/streams/bufferstream.hpp>
++#include <algorithm>
+ #include <cassert>
+ #include <memory>
+ 
+diff --git a/libaegisub/common/thesaurus.cpp b/libaegisub/common/thesaurus.cpp
+index 23366e82c..6626316d9 100644
+--- a/libaegisub/common/thesaurus.cpp
++++ b/libaegisub/common/thesaurus.cpp
+@@ -20,6 +20,7 @@
+ #include "libaegisub/split.h"
+ 
+ #include <boost/interprocess/streams/bufferstream.hpp>
++#include <algorithm>
+ 
+ namespace agi {
+ 
+diff --git a/libaegisub/include/libaegisub/lua/ffi.h b/libaegisub/include/libaegisub/lua/ffi.h
+index 17cf0088d..29902f77a 100644
+--- a/libaegisub/include/libaegisub/lua/ffi.h
++++ b/libaegisub/include/libaegisub/lua/ffi.h
+@@ -17,6 +17,7 @@
+ #include <libaegisub/type_name.h>
+ 
+ #include <cstdlib>
++#include <cstring>
+ #include <lua.hpp>
+ 
+ namespace agi::lua {
+diff --git a/libaegisub/lua/modules/unicode.cpp b/libaegisub/lua/modules/unicode.cpp
+index 9ee64b114..7f700918b 100644
+--- a/libaegisub/lua/modules/unicode.cpp
++++ b/libaegisub/lua/modules/unicode.cpp
+@@ -17,7 +17,7 @@
+ #include <libaegisub/lua/ffi.h>
+ 
+ #include <unicode/unistr.h>
+-
++#include <cstring>
+ namespace {
+ char *wrap(void (*fn)(icu::UnicodeString&), const char *str, char **err) {
+ 	auto ustr = icu::UnicodeString::fromUTF8(str);
+diff --git a/libaegisub/unix/path.cpp b/libaegisub/unix/path.cpp
+index a171bc2a4..5a33bf68b 100644
+--- a/libaegisub/unix/path.cpp
++++ b/libaegisub/unix/path.cpp
+@@ -21,6 +21,8 @@
+ 
+ #include <pwd.h>
+ 
++#include "../acconf.h"
++
+ #ifndef __APPLE__
+ #include <fstream>
+ #include <stdlib.h>
+diff --git a/src/aegisublocale.cpp b/src/aegisublocale.cpp
+index cc5f4e10d..754d867d7 100644
+--- a/src/aegisublocale.cpp
++++ b/src/aegisublocale.cpp
+@@ -38,6 +38,8 @@
+ #include "options.h"
+ #include "utils.h"
+ 
++#include "../acconf.h"
++
+ #include <libaegisub/path.h>
+ 
+ #include <algorithm>
+diff --git a/src/audio_timing_dialogue.cpp b/src/audio_timing_dialogue.cpp
+index fd15582b1..9ca06eff5 100644
+--- a/src/audio_timing_dialogue.cpp
++++ b/src/audio_timing_dialogue.cpp
+@@ -39,6 +39,8 @@
+ #include "selection_controller.h"
+ #include "utils.h"
+ 
++#include <list>
++
+ #include <libaegisub/ass/time.h>
+ 
+ #include <boost/range/algorithm.hpp>
+diff --git a/src/base_grid.h b/src/base_grid.h
+index 2f28a21dc..017d8b35c 100644
+--- a/src/base_grid.h
++++ b/src/base_grid.h
+@@ -32,6 +32,8 @@
+ #include <memory>
+ #include <string>
+ #include <vector>
++#include <wx/brush.h>
++#include <wx/scrolbar.h>
+ #include <wx/window.h>
+ 
+ namespace agi {
+diff --git a/src/command/command.h b/src/command/command.h
+index c90b230a0..b9582630b 100644
+--- a/src/command/command.h
++++ b/src/command/command.h
+@@ -17,6 +17,7 @@
+ /// @ingroup command
+ 
+ #include <map>
++#include <memory>
+ #include <string>
+ #include <vector>
+ 
+diff --git a/src/frame_main.cpp b/src/frame_main.cpp
+index 24ef314d7..e81c07761 100644
+--- a/src/frame_main.cpp
++++ b/src/frame_main.cpp
+@@ -67,7 +67,7 @@
+ #include <wx/sizer.h>
+ #include <wx/statline.h>
+ #include <wx/sysopt.h>
+-
++#include <wx/toolbar.h>
+ enum {
+ 	ID_APP_TIMER_STATUSCLEAR = 12002
+ };
+diff --git a/src/preferences.cpp b/src/preferences.cpp
+index 1b0033b05..ccc52a905 100644
+--- a/src/preferences.cpp
++++ b/src/preferences.cpp
+@@ -47,6 +47,7 @@
+ 
+ #include <wx/checkbox.h>
+ #include <wx/combobox.h>
++#include <wx/dc.h>
+ #include <wx/event.h>
+ #include <wx/listctrl.h>
+ #include <wx/msgdlg.h>
+-- 
+2.45.2
+

@@ -1,0 +1,24 @@
+diff --git a/libr/arch/p/arm/v35/Makefile b/libr/arch/p/arm/v35/Makefile
+index a7a40ddb97..1ef40746ac 100644
+--- a/libr/arch/p/arm/v35/Makefile
++++ b/libr/arch/p/arm/v35/Makefile
+@@ -30,8 +30,7 @@ $(ALIBS): arch-arm64 arch-armv7
+ 
+ ## ARM64
+ arch-arm64:
+-	git clone -q https://github.com/radareorg/vector35-arch-arm64 arch-arm64
+-	cd arch-arm64 && git checkout -q radare2-wip > /dev/null && git reset --hard $(ARCH_ARM64_COMMIT)
++	cd arch-arm64
+ 
+ $(V35ARM64_HOME)/arm64dis.a arm64dis.a: $(ALIBS)
+ 	rm -f arm64dis.$(EXT_AR)
+@@ -40,8 +39,7 @@ $(V35ARM64_HOME)/arm64dis.a arm64dis.a: $(ALIBS)
+ 
+ ## ARMV7
+ arch-armv7:
+-	git clone -q https://github.com/radareorg/vector35-arch-armv7 arch-armv7
+-	cd arch-armv7 && git checkout -q radare2 > /dev/null && git reset --hard $(ARCH_ARMV7_COMMIT)
++	cd arch-armv7
+ 
+ $(V35ARMV7_HOME)/armv7dis.a armv7dis.a: $(ALIBS)
+ 	rm -f armv7dis.$(EXT_AR)

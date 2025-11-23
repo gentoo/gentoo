@@ -1,0 +1,116 @@
+This can be renamed on the next version after 21.08.0. User wanted to test
+some patches committed upstream so ended up needing to rebase this patch.
+
+From a9f54d7c37b2b738767d757517466768a9f5a8fe Mon Sep 17 00:00:00 2001
+From: Theo Anderson <telans@posteo.de>
+Date: Wed, 14 Apr 2021 10:16:11 +1200
+Subject: [PATCH] build: respect cflags
+
+[Rebased by: Stefan Radermacher <gentoo@zaister.de>]
+Signed-off-by: Theo Anderson <telans@posteo.de>
+--- a/cmake/modules/PopplerMacros.cmake
++++ b/cmake/modules/PopplerMacros.cmake
+@@ -87,20 +87,15 @@ set(_known_build_types RELWITHDEBINFO;RELEASE;DEBUG;DEBUGFULL;PROFILE)
+ # CMake toolchain file). To avoid surprising compilation errors, we emit an
+ # error in that case, so that the user can handle the  passed CMAKE_BUILD_TYPE
+ # in the compiler flags logic below.
+-if (NOT "${_CMAKE_BUILD_TYPE_UPPER}" IN_LIST _known_build_types)
+-  message(FATAL_ERROR "Unsupported CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}")
+-endif()
+ set(_save_cflags "${CMAKE_C_FLAGS}")
+ set(_save_cxxflags "${CMAKE_CXX_FLAGS}")
+ 
+ if(CMAKE_COMPILER_IS_GNUCXX)
+-  # set the default compile warnings
+   set(_warn "-Wall -Wextra -Wpedantic")
+   set(_warn "${_warn} -Wno-unused-parameter")
+   set(_warn "${_warn} -Wcast-align")
+   set(_warn "${_warn} -Wformat-security")
+   set(_warn "${_warn} -Wframe-larger-than=65536")
+-  set(_warn "${_warn} -Wlogical-op")
+   set(_warn "${_warn} -Wmissing-format-attribute")
+   set(_warn "${_warn} -Wnon-virtual-dtor")
+   set(_warn "${_warn} -Woverloaded-virtual")
+@@ -116,20 +111,6 @@ if(CMAKE_COMPILER_IS_GNUCXX)
+ 
+   set(DEFAULT_COMPILE_WARNINGS "${_warn}")
+   set(DEFAULT_COMPILE_WARNINGS_EXTRA "${_warn} ${_warnx}")
+-
+-  set(CMAKE_CXX_FLAGS                "-fno-exceptions -fno-check-new -fno-common -fno-operator-names -D_DEFAULT_SOURCE")
+-  set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O2 -g")
+-  set(CMAKE_CXX_FLAGS_RELEASE        "-O2 -DNDEBUG")
+-  set(CMAKE_CXX_FLAGS_DEBUG          "-g -O2 -fno-reorder-blocks -fno-schedule-insns -fno-inline")
+-  set(CMAKE_CXX_FLAGS_DEBUGFULL      "-g3 -fno-inline")
+-  set(CMAKE_CXX_FLAGS_PROFILE        "-g3 -fno-inline -ftest-coverage -fprofile-arcs")
+-  set(CMAKE_C_FLAGS                  "-std=c99 -D_DEFAULT_SOURCE")
+-  set(CMAKE_C_FLAGS_RELWITHDEBINFO   "-O2 -g")
+-  set(CMAKE_C_FLAGS_RELEASE          "-O2 -DNDEBUG")
+-  set(CMAKE_C_FLAGS_DEBUG            "-g -O2 -fno-reorder-blocks -fno-schedule-insns -fno-inline")
+-  set(CMAKE_C_FLAGS_DEBUGFULL        "-g3 -fno-inline")
+-  set(CMAKE_C_FLAGS_PROFILE          "-g3 -fno-inline -ftest-coverage -fprofile-arcs")
+-
+   poppler_check_link_flag("-Wl,--as-needed" GCC_HAS_AS_NEEDED)
+   if(GCC_HAS_AS_NEEDED)
+     set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--as-needed")
+@@ -139,56 +120,8 @@ if(CMAKE_COMPILER_IS_GNUCXX)
+   set(_compiler_flags_changed 1)
+ endif (CMAKE_COMPILER_IS_GNUCXX)
+ 
+-if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+-# set the default compile warnings
+-  set(_warn "-Wall -Wextra -Wpedantic")
+-  set(_warn "${_warn} -Wno-unused-parameter")
+-  set(_warn "${_warn} -Wcast-align")
+-  set(_warn "${_warn} -Wformat-security")
+-  set(_warn "${_warn} -Wframe-larger-than=65536")
+-  set(_warn "${_warn} -Wmissing-format-attribute")
+-  set(_warn "${_warn} -Wnon-virtual-dtor")
+-  set(_warn "${_warn} -Woverloaded-virtual")
+-  set(_warn "${_warn} -Wmissing-declarations")
+-  set(_warn "${_warn} -Wundef")
+-  set(_warn "${_warn} -Wzero-as-null-pointer-constant")
+-  set(_warn "${_warn} -Wshadow")
+-  set(_warn "${_warn} -Wweak-vtables")
+-
+-  # set extra warnings
+-  set(_warnx "${_warnx} -Wconversion")
+-
+-  set(DEFAULT_COMPILE_WARNINGS "${_warn}")
+-  set(DEFAULT_COMPILE_WARNINGS_EXTRA "${_warn} ${_warnx}")
+-
+-  set(CMAKE_CXX_FLAGS                "-fno-exceptions -fno-check-new -fno-common -D_DEFAULT_SOURCE")
+-  set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O2 -g")
+-  set(CMAKE_CXX_FLAGS_RELEASE        "-O2 -DNDEBUG")
+-  # clang does not support -fno-reorder-blocks -fno-schedule-insns, so do not use -O2
+-  set(CMAKE_CXX_FLAGS_DEBUG          "-g")
+-  set(CMAKE_CXX_FLAGS_DEBUGFULL      "-g3 -fno-inline")
+-  set(CMAKE_CXX_FLAGS_PROFILE        "-g3 -fno-inline -ftest-coverage -fprofile-arcs")
+-  set(CMAKE_C_FLAGS                  "-std=c99 -D_DEFAULT_SOURCE")
+-  set(CMAKE_C_FLAGS_RELWITHDEBINFO   "-O2 -g")
+-  set(CMAKE_C_FLAGS_RELEASE          "-O2 -DNDEBUG")
+-  # clang does not support -fno-reorder-blocks -fno-schedule-insns, so do not use -O2
+-  set(CMAKE_C_FLAGS_DEBUG            "-g")
+-  set(CMAKE_C_FLAGS_DEBUGFULL        "-g3 -fno-inline")
+-  set(CMAKE_C_FLAGS_PROFILE          "-g3 -fno-inline -ftest-coverage -fprofile-arcs")
+-  set(_compiler_flags_changed 1)
+-endif()
+-
+-if(CMAKE_C_COMPILER MATCHES "icc")
+-  set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O2 -g")
+-  set(CMAKE_CXX_FLAGS_RELEASE        "-O2 -DNDEBUG")
+-  set(CMAKE_CXX_FLAGS_DEBUG          "-O2 -g -0b0 -noalign")
+-  set(CMAKE_CXX_FLAGS_DEBUGFULL      "-g -Ob0 -noalign")
+-  set(CMAKE_C_FLAGS_RELWITHDEBINFO   "-O2 -g")
+-  set(CMAKE_C_FLAGS_RELEASE          "-O2 -DNDEBUG")
+-  set(CMAKE_C_FLAGS_DEBUG            "-O2 -g -Ob0 -noalign")
+-  set(CMAKE_C_FLAGS_DEBUGFULL        "-g -Ob0 -noalign")
+-  set(_compiler_flags_changed 1)
+-endif(CMAKE_C_COMPILER MATCHES "icc")
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wnon-virtual-dtor -Woverloaded-virtual")
++set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99")
+ 
+ if(_compiler_flags_changed)
+   # Ensure that the previous CMAKE_{C,CXX}_FLAGS are included in the current configuration flags.
+-- 
+2.33.0
+

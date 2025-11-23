@@ -1,0 +1,24 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -166,6 +166,8 @@ if test x"$libiscsi_cv_HAVE_SG_IO" = x"yes"; then
+     AC_DEFINE(HAVE_SG_IO,1,[Whether we have SG_IO support])
+ fi
+ 
++AC_ARG_WITH([rdma], AS_HELP_STRING([--with-rdma], [Build with rdma support]))
++
+ AC_CACHE_CHECK([for iSER support],libiscsi_cv_HAVE_LINUX_ISER,[
+ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
+ #include <infiniband/verbs.h>
+@@ -173,10 +175,10 @@ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
+ #include <rdma/rdma_verbs.h>]],
+ [[int ibv = IBV_WC_SEND;]])],
+ [libiscsi_cv_HAVE_LINUX_ISER=yes],[libiscsi_cv_HAVE_LINUX_ISER=no])])
+-if test x"$libiscsi_cv_HAVE_LINUX_ISER" = x"yes"; then
++if test x"$libiscsi_cv_HAVE_LINUX_ISER" = x"yes" && test "x$with_rdma" = "xyes"; then
+     AC_DEFINE(HAVE_LINUX_ISER,1,[Whether we have iSER support])
+ fi
+-AM_CONDITIONAL([HAVE_LINUX_ISER], [test $libiscsi_cv_HAVE_LINUX_ISER = yes])
++AM_CONDITIONAL([HAVE_LINUX_ISER], [test "x$with_rdma" = "xyes"])
+ 
+ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
+ #include <rdma/rdma_cma.h>]], [[return RDMA_OPTION_ID_ACK_TIMEOUT;]])],[AC_DEFINE([HAVE_RDMA_ACK_TIMEOUT],[1],[Define to 1 if you have RDMA ack timeout support])],[])

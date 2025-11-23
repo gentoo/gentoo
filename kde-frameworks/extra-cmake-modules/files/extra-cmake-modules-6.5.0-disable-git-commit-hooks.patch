@@ -1,0 +1,31 @@
+From ed944c8c85822c39dea66afdd1759dec093fd6b3 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 13 Aug 2024 22:15:40 +0200
+Subject: [PATCH] KDEGitCommitHooks.cmake: Add ECM_DISABLE_GIT to silence
+ useless Git search/hooks
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ kde-modules/KDEGitCommitHooks.cmake | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/kde-modules/KDEGitCommitHooks.cmake b/kde-modules/KDEGitCommitHooks.cmake
+index 6122cc7a..fef735a2 100644
+--- a/kde-modules/KDEGitCommitHooks.cmake
++++ b/kde-modules/KDEGitCommitHooks.cmake
+@@ -59,7 +59,12 @@ set(GIT_DIR "${CMAKE_SOURCE_DIR}/.git")
+ set(GIT_HOOKS_DIR "${GIT_DIR}/hooks")
+ set(JSON_SCHEMA_OUT "${GIT_HOOKS_DIR}/scripts/combined.schema.json")
+ 
++option (ECM_DISABLE_GIT "Disable Git commit hooks (for e.g. distro package build)" OFF)
++
+ function(KDE_CONFIGURE_GIT_PRE_COMMIT_HOOK)
++    if(ECM_DISABLE_GIT)
++        return()
++    endif()
+     set(_oneValueArgs "")
+     set(_multiValueArgs CHECKS CUSTOM_SCRIPTS)
+     cmake_parse_arguments(ARG "" "${_oneValueArgs}" "${_multiValueArgs}" ${ARGN})
+-- 
+2.45.2
+

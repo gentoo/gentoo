@@ -1,0 +1,61 @@
+https://github.com/urcu/userspace-rcu/commit/6fa8b4f80f1d2efbc90fc6d2a5fb0dc1d7fd2a19
+
+From 6fa8b4f80f1d2efbc90fc6d2a5fb0dc1d7fd2a19 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ond=C5=99ej=20Sur=C3=BD?= <ondrej@sury.org>
+Date: Fri, 17 Mar 2023 16:44:10 +0100
+Subject: [PATCH] Fix: use __noreturn__ for C11-compatibility
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The noreturn convenience macro provided by stdnoreturn.h might get
+included before urcu headers, use __noreturn__ for better compatibility
+with code using <stdnoreturn.h> header.
+
+Signed-off-by: Ondřej Surý <ondrej@sury.org>
+Signed-off-by: Mathieu Desnoyers <mathieu.desnoyers@efficios.com>
+--- a/include/urcu/uatomic/generic.h
++++ b/include/urcu/uatomic/generic.h
+@@ -38,7 +38,7 @@ extern "C" {
+ #endif
+ 
+ #if !defined __OPTIMIZE__  || defined UATOMIC_NO_LINK_ERROR
+-static inline __attribute__((always_inline, noreturn))
++static inline __attribute__((always_inline, __noreturn__))
+ void _uatomic_link_error(void)
+ {
+ #ifdef ILLEGAL_INSTR
+--- a/src/urcu-call-rcu-impl.h
++++ b/src/urcu-call-rcu-impl.h
+@@ -1064,7 +1064,7 @@ void urcu_register_rculfhash_atfork(struct urcu_atfork *atfork)
+  * This unregistration function is deprecated, meant only for internal
+  * use by rculfhash.
+  */
+-__attribute__((noreturn))
++__attribute__((__noreturn__))
+ void urcu_unregister_rculfhash_atfork(struct urcu_atfork *atfork __attribute__((unused)))
+ {
+ 	urcu_die(EPERM);
+--- a/tests/regression/rcutorture.h
++++ b/tests/regression/rcutorture.h
+@@ -572,7 +572,7 @@ int stresstest(int nreaders)
+  */
+ 
+ static
+-void usage(char *argv[]) __attribute__((noreturn));
++void usage(char *argv[]) __attribute__((__noreturn__));
+ 
+ static
+ void usage(char *argv[])
+--- a/tests/utils/tap.h
++++ b/tests/utils/tap.h
+@@ -41,7 +41,7 @@ __attribute__((format(TAP_PRINTF_FORMAT, 5, 6)))
+ unsigned int _gen_result(int, const char *, const char *, unsigned int, const char *, ...);
+ 
+ int plan_no_plan(void);
+-__attribute__((noreturn))
++__attribute__((__noreturn__))
+ int plan_skip_all(const char *);
+ int plan_tests(unsigned int);
+ 
+

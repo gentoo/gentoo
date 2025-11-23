@@ -1,0 +1,32 @@
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -21,10 +21,10 @@ scan:
+ templates: scan
+ 	gtkdoc-mktmpl --module=$(DOC_MODULE)
+ 
+-sgml:
++sgml: scan
+ 	gtkdoc-mkdb --module=$(DOC_MODULE) --source-dir=$(DOC_SOURCE_DIR)
+ 
+-html:
++html: sgml
+ 	if ! test -d html ; then mkdir html ; fi
+ 	-cd html && gtkdoc-mkhtml $(DOC_MODULE) ../$(DOC_MAIN_SGML_FILE)
+ 
+--- a/examples/Makefile.am
++++ b/examples/Makefile.am
+@@ -13,12 +13,10 @@
+ NETPBM_EXTRA = happrox
+ endif
+ 
+-bin_PROGRAMS = \
++check_PROGRAMS = \
+ 	transform \
+ 	delaunay \
+-	$(NETPBM_EXTRA)
+-
+-noinst_PROGRAMS = \
++	$(NETPBM_EXTRA) \
+ 	set \
+ 	volume \
+ 	cleanup \

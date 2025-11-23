@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -113,7 +113,7 @@
+ if (INSTALL_UDEV_RULES)
+     install (
+         FILES rtl-sdr.rules
+-        DESTINATION "/etc/udev/rules.d"
++        DESTINATION "/lib/udev/rules.d"
+         COMPONENT "udev"
+         )
+ else (INSTALL_UDEV_RULES)

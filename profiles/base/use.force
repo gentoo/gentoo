@@ -1,0 +1,11 @@
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Mike Gilbert <floppym@gentoo.org> (2019-07-20)
+# Disabling this requires a migration to be performed.
+split-usr
+
+# Force the GNU/Linux ELIBC and KERNEL
+# flags that apply to the majority of profiles.
+elibc_glibc
+kernel_linux

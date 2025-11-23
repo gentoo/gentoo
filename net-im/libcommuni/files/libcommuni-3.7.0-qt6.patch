@@ -1,0 +1,116 @@
+From 8f5e706960648ed9c87968bb1526905d39cb9c52 Mon Sep 17 00:00:00 2001
+From: Kaj-Michael Lang <milang@tal.org>
+Date: Fri, 28 Apr 2023 20:11:52 +0300
+Subject: [PATCH 1/5] src: Use core5compat if building on Qt 6
+
+---
+ src/module_build.pri | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/module_build.pri b/src/module_build.pri
+index 75205a24..6772d725 100644
+--- a/src/module_build.pri
++++ b/src/module_build.pri
+@@ -7,6 +7,9 @@ isEmpty(IRC_MODULE):error(IRC_MODULE must be set)
+ TEMPLATE = lib
+ TARGET = $$qtLibraryTarget($$IRC_MODULE)
+ QT = core network
++
++greaterThan(QT_MAJOR_VERSION,5): QT += core5compat
++
+ !verbose:CONFIG += silent
+ contains(QT_CONFIG, debug_and_release) {
+     win32|mac:!wince*:!win32-msvc:!macx-xcode:CONFIG += debug_and_release build_all
+
+From c57dc67df4fef310f55ecfa55d3e6c5d8eb34826 Mon Sep 17 00:00:00 2001
+From: Kaj-Michael Lang <milang@tal.org>
+Date: Fri, 28 Apr 2023 20:12:32 +0300
+Subject: [PATCH 2/5] tests: Use core5compat if building on Qt 6
+
+---
+ tests/tests.pri | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/tests/tests.pri b/tests/tests.pri
+index 04588b05..c3f74ad9 100644
+--- a/tests/tests.pri
++++ b/tests/tests.pri
+@@ -19,6 +19,8 @@ CONFIG(debug, debug|release) {
+     MOC_DIR = release
+ }
+ 
++greaterThan(QT_MAJOR_VERSION,5): QT += core5compat
++
+ IRC_BUILDDIR = $$OUT_PWD/../../..
+ 
+ IRC_MODULES = IrcCore IrcModel IrcUtil
+
+From b13cbca833e91a346e5e630a3a2995a49663c142 Mon Sep 17 00:00:00 2001
+From: Kaj-Michael Lang <milang@tal.org>
+Date: Fri, 28 Apr 2023 20:13:12 +0300
+Subject: [PATCH 3/5] tests: Use fromSecsSinceEpoch instead of fromTime_t that
+ has been deprecated in Qt 5, and removed in Qt 6.
+
+---
+ tests/auto/ircconnection/tst_ircconnection.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/auto/ircconnection/tst_ircconnection.cpp b/tests/auto/ircconnection/tst_ircconnection.cpp
+index 76e36a3d..7b7b78f5 100644
+--- a/tests/auto/ircconnection/tst_ircconnection.cpp
++++ b/tests/auto/ircconnection/tst_ircconnection.cpp
+@@ -1334,7 +1334,7 @@ void tst_IrcConnection::testMessageComposer()
+     QCOMPARE(filter.values.value("account").toString(), QString("qtaccountant"));
+     QEXPECT_FAIL("", "RPL_WHOISHOST :is connecting from *@88.95.51.136 88.95.51.136", Continue);
+     QCOMPARE(filter.values.value("address").toString(), QString("88.95.51.136"));
+-    QCOMPARE(filter.values.value("since").toDateTime(), QDateTime::fromTime_t(1440706032));
++    QCOMPARE(filter.values.value("since").toDateTime(), QDateTime::fromSecsSinceEpoch(1440706032));
+     QCOMPARE(filter.values.value("idle").toInt(), 15);
+     QCOMPARE(filter.values.value("secure").toBool(), true);
+     QCOMPARE(filter.values.value("channels").toStringList(), QStringList() << "+#jpnurmi");
+
+From aab157c89bdbf41e85f33823200c472c2b055a9f Mon Sep 17 00:00:00 2001
+From: Kaj-Michael Lang <milang@tal.org>
+Date: Fri, 28 Apr 2023 20:14:23 +0300
+Subject: [PATCH 4/5] examples: Use core5compat if building on Qt 6
+
+---
+ examples/bot/bot.pro | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/examples/bot/bot.pro b/examples/bot/bot.pro
+index 1f4f4346..f73c7c77 100644
+--- a/examples/bot/bot.pro
++++ b/examples/bot/bot.pro
+@@ -10,6 +10,8 @@ CONFIG += console
+ CONFIG -= app_bundle
+ QT = core network
+ 
++greaterThan(QT_MAJOR_VERSION,5): QT += core5compat
++
+ # Input
+ HEADERS += ircbot.h
+ SOURCES += ircbot.cpp main.cpp
+
+From 76fed16afa7c2e028b11820a857d6d9e8868208f Mon Sep 17 00:00:00 2001
+From: Kaj-Michael Lang <milang@tal.org>
+Date: Fri, 28 Apr 2023 20:14:47 +0300
+Subject: [PATCH 5/5] examples: setMargin() is deprected in Qt 5 and removed in
+ Qt 6, just remove it
+
+---
+ examples/client/ircclient.cpp | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/examples/client/ircclient.cpp b/examples/client/ircclient.cpp
+index 38c21a65..69e7600d 100644
+--- a/examples/client/ircclient.cpp
++++ b/examples/client/ircclient.cpp
+@@ -238,7 +238,6 @@ void IrcClient::createLayout()
+     QWidget* container = new QWidget(this);
+     QVBoxLayout* layout = new QVBoxLayout(container);
+     layout->setSpacing(0);
+-    layout->setMargin(0);
+     layout->addWidget(splitter);
+     layout->addWidget(lineEdit);
+ 

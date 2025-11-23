@@ -1,0 +1,11 @@
+#shellcheck shell=sh
+#shellcheck disable=SC2034
+
+#port number to listen on
+#PORT="2055"
+
+#maximum size of collected files
+#MAX_SIZE="1G"
+
+#enable sending of all received packets to specified address
+#REPEAT_TO="192.168.1.1/60062"

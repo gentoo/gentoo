@@ -1,0 +1,39 @@
+meson.build: allow to disable fsmonitor backend for macOS
+
+Gentoo Prefix toolchain and setup does not enable CoreServices Framework
+by default, so simply allow to disable the fsmonitor backend
+
+Signed-off-by: Fabian Groffen <grobian@gentoo.org>
+
+--- a/meson.build
++++ b/meson.build
+@@ -1117,11 +1117,13 @@
+ endif
+ 
+ fsmonitor_backend = ''
+-if host_machine.system() == 'windows'
+-  fsmonitor_backend = 'win32'
+-elif host_machine.system() == 'darwin'
+-  fsmonitor_backend = 'darwin'
+-  libgit_dependencies += dependency('CoreServices')
++if get_option('fsmonitor')
++  if host_machine.system() == 'windows'
++    fsmonitor_backend = 'win32'
++  elif host_machine.system() == 'darwin'
++    fsmonitor_backend = 'darwin'
++    libgit_dependencies += dependency('CoreServices')
++  endif
+ endif
+ if fsmonitor_backend != ''
+   libgit_c_args += '-DHAVE_FSMONITOR_DAEMON_BACKEND'
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -57,6 +57,8 @@
+ # Build tweaks.
+ option('macos_use_homebrew_gettext', type: 'boolean', value: true,
+   description: 'Use gettext from Homebrew instead of the slightly-broken system-provided one.')
++option('fsmonitor', type: 'boolean', value: true,
++  description: 'Build fsmonitor backend on supported platforms.')
+ 
+ # gitweb configuration.
+ option('gitweb_config', type: 'string', value: 'gitweb_config.perl')

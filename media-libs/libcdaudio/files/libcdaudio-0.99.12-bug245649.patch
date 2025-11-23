@@ -1,0 +1,13 @@
+--- a/src/cddb.c
++++ b/src/cddb.c
+@@ -1679,7 +1679,7 @@ cddb_read_disc_data(int cd_desc, struct disc_data *outdata)
+       free(file);
+ 	 
+       while(!feof(cddb_data)) {
+-	fgets(inbuffer, 512, cddb_data);			   
++	fgets(inbuffer, 256, cddb_data);			   
+ 	cddb_process_line(inbuffer, data);
+       }
+ 	 
+ 
+

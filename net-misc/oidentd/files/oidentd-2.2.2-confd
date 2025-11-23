@@ -1,0 +1,4 @@
+# oidentd start-up options
+USER="oidentd"
+GROUP="oidentd"
+OPTIONS=""

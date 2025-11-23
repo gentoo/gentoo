@@ -1,0 +1,10 @@
+cnf/ files did not play well with eautoreconf
+
+https://bugs.gentoo.org/874453
+--- a/configure
++++ b/configure
+@@ -698,3 +698,3 @@
+ 
+-main(){return(0);}
++int main(void){return(0);}
+ EOF

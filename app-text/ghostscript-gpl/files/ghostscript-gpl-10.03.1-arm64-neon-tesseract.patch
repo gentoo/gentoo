@@ -1,0 +1,35 @@
+https://bugs.gentoo.org/926891
+https://bugs.gentoo.org/924757
+https://src.fedoraproject.org/rpms/tesseract/raw/rawhide/f/tesseract_neon.patch
+(See https://github.com/tesseract-ocr/tesseract/pull/4154 too)
+--- a/tesseract/CMakeLists.txt
++++ b/tesseract/CMakeLists.txt
+@@ -249,7 +249,7 @@ elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "arm64|aarch64.*|AARCH64.*")
+   set(HAVE_AVX512F FALSE)
+   set(HAVE_FMA FALSE)
+   set(HAVE_SSE4_1 FALSE)
+-  set(HAVE_NEON TRUE)
++  check_cxx_compiler_flag("-mfpu=neon" HAVE_NEON)
+ 
+ elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "arm.*")
+ 
+--- a/tesseract/src/arch/simddetect.cpp
++++ b/tesseract/src/arch/simddetect.cpp
+@@ -254,7 +254,7 @@ SIMDDetect::SIMDDetect() {
+     // SSE detected.
+     SetDotProduct(DotProductSSE, &IntSimdMatrix::intSimdMatrixSSE);
+ #endif
+-#if defined(HAVE_NEON) || defined(__aarch64__)
++#if defined(HAVE_NEON)
+   } else if (neon_available_) {
+     // NEON detected.
+     SetDotProduct(DotProductNEON, &IntSimdMatrix::intSimdMatrixNEON);
+@@ -311,7 +311,7 @@ void SIMDDetect::Update() {
+   } else if (dotproduct == "accelerate") {
+     SetDotProduct(DotProductAccelerate, IntSimdMatrix::intSimdMatrix);
+ #endif
+-#if defined(HAVE_NEON) || defined(__aarch64__)
++#if defined(HAVE_NEON)
+   } else if (dotproduct == "neon" && neon_available_) {
+     // NEON selected by config variable.
+     SetDotProduct(DotProductNEON, &IntSimdMatrix::intSimdMatrixNEON);

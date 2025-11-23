@@ -1,0 +1,11 @@
+[Unit]
+Description=Periodic check for signs of a rootkit
+
+[Timer]
+# Run on Sunday at 3:20am, to avoid running afoul of DST changes
+OnCalendar=Sun *-*-* 03:20:00
+RandomizedDelaySec=120
+Persistent=true
+
+[Install]
+WantedBy=timers.target

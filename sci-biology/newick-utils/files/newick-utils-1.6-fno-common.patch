@@ -1,0 +1,41 @@
+--- a/src/address_parser.c
++++ b/src/address_parser.c
+@@ -83,6 +83,8 @@
+ #include "enode.h"
+ #include "address_parser_status.h"
+ 
++enum address_parser_status_type address_parser_status;
++
+ extern int adslex (void);
+ 
+ /* The root of the expression (when represented as a parse tree) */
+--- a/src/address_parser_status.h
++++ b/src/address_parser_status.h
+@@ -13,4 +13,4 @@
+  * returns either \c NULL or the top-level enode of the address, so we need to
+  * use an extern variable to convey its status. */
+ 
+-enum address_parser_status_type address_parser_status;
++extern enum address_parser_status_type address_parser_status;
+--- a/tests/test_newick_parser.c
++++ b/tests/test_newick_parser.c
+@@ -11,7 +11,7 @@
+ int nwslex (void);
+ struct rnode *root;
+ struct llist *nodes_in_order;
+-enum parser_status_type newick_parser_status;
++extern enum parser_status_type newick_parser_status;
+ void newick_scanner_set_string_input(char *);
+ 
+ /* NOTE: we can use to_newick() to check the parser's output because this
+--- a/tests/test_newick_scanner.c
++++ b/tests/test_newick_scanner.c
+@@ -20,7 +20,7 @@
+ int nwslex (void);
+ struct rnode *root;
+ struct llist *nodes_in_order;
+-enum parser_status_type newick_parser_status;
++extern enum parser_status_type newick_parser_status;
+ void newick_scanner_set_string_input(char *);
+ void newick_scanner_set_file_input(FILE *);
+ 

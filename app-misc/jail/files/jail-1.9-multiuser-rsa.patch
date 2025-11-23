@@ -1,0 +1,44 @@
+--- a/src/jail.c	2004-09-19 23:48:14.000000000 -0500
++++ b/src/jail.c	2004-09-20 00:07:48.000000000 -0500
+@@ -115,6 +115,20 @@
+ #include "helpers.h"
+ #include "types.h"
+ 
++
++
++void make_jail_dir( char*  dir )
++{
++    for( ; *dir != '\0'; ++dir )
++    {
++        if( *dir == '.' )
++        {
++            *dir = '\0';
++            break;
++	}
++    }
++}
++
+ //////////////////////////////////////////////////////////////////////////////
+ //
+ // main()
+@@ -211,6 +225,7 @@
+ 	fprintf(stderr,"jail: can't get passwd info for uid %d\n",uid);
+ 	exit(-1);
+     }
++    make_jail_dir(pwdent->dir);
+ 
+     //
+     // create the terminal devices here
+@@ -289,7 +304,6 @@
+     free(pwdent->dir);
+     pwdent->dir = tmp_str;
+ 
+-
+     #if DEBUG != 0
+      fprintf(stderr,"jail: doing chdir(%s)\n",pwdent->dir);
+     #endif 
+@@ -494,4 +508,3 @@
+     return(-4); 
+ }
+ 
+-    

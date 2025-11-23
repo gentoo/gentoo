@@ -1,0 +1,38 @@
+diff --git a/.gitignore b/.gitignore
+index efe9691..864767c 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -4,3 +4,5 @@ compile_commands.json
+ .vscode
+ .cache
+ .DS_Store
++
++./cmake/install-config.cmake
+diff --git a/cmake/install-config.cmake b/cmake/install-config.cmake
+deleted file mode 100644
+index e9af6c2..0000000
+--- a/cmake/install-config.cmake
++++ /dev/null
+@@ -1 +0,0 @@
+-include("${CMAKE_CURRENT_LIST_DIR}/${PROJECT_NAME}Targets.cmake")
+\ No newline at end of file
+diff --git a/cmake/install-config.cmake.in b/cmake/install-config.cmake.in
+new file mode 100644
+index 0000000..0865ae9
+--- /dev/null
++++ b/cmake/install-config.cmake.in
+@@ -0,0 +1 @@
++include("${CMAKE_CURRENT_LIST_DIR}/@PROJECT_NAME@Targets.cmake")
+diff --git a/cmake/install-rules.cmake b/cmake/install-rules.cmake
+index 261fa29..2e7a398 100644
+--- a/cmake/install-rules.cmake
++++ b/cmake/install-rules.cmake
+@@ -36,6 +36,8 @@ set(
+ )
+ mark_as_advanced(${PROJECT_NAME}_INSTALL_CMAKEDIR)
+ 
++configure_file(${CMAKE_CURRENT_LIST_DIR}/install-config.cmake.in ${CMAKE_CURRENT_LIST_DIR}/install-config.cmake @ONLY)
++
+ install(
+     FILES cmake/install-config.cmake
+     DESTINATION "${zb8_INSTALL_CMAKEDIR}"

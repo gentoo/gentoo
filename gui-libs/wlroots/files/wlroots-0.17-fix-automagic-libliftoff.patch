@@ -1,0 +1,43 @@
+https://gitlab.freedesktop.org/wlroots/wlroots/-/commit/385c9ade5f7a8ce9e5c13f762d56e6bd1c8d1b0a
+From: =?UTF-8?q?Leonardo=20Hern=C3=A1ndez=20Hern=C3=A1ndez?=
+ <leohdz172@proton.me>
+Date: Wed, 5 Jun 2024 22:33:05 -0600
+Subject: [PATCH] add an option to enable/disable libliftoff
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+instead of always using it if found
+
+Signed-off-by: Leonardo Hernández Hernández <leohdz172@proton.me>
+--- a/backend/drm/meson.build
++++ b/backend/drm/meson.build
+@@ -16,7 +16,7 @@ libliftoff = dependency(
+ 	'libliftoff',
+ 	version: '>=0.4.0',
+ 	fallback: 'libliftoff',
+-	required: false,
++	required: get_option('libliftoff'),
+ )
+
+ if not (hwdata.found() and libdisplay_info.found() and features['session'])
+--- a/meson.build
++++ b/meson.build
+@@ -98,6 +98,7 @@ features = {
+ internal_features = {
+ 	'xcb-errors': false,
+ 	'egl': false,
++	'libliftoff': false,
+ }
+ internal_config = configuration_data()
+
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -7,3 +7,4 @@ option('backends', type: 'array', choices: ['auto', 'drm', 'libinput', 'x11'], v
+ option('allocators', type: 'array', choices: ['auto', 'gbm'], value: ['auto'],
+ 	description: 'Select built-in allocators')
+ option('session', type: 'feature', value: 'auto', description: 'Enable session support')
++option('libliftoff', type: 'feature', value: 'auto', description: 'Enable support for libliftoff')
+--
+2.45.2
+

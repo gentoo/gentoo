@@ -1,0 +1,99 @@
+https://codeberg.org/shelter/reschroot/pulls/6
+
+From 6d7a762d6d630548ed558e0de8ddf04f3b0a69fc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Arsen=20Arsenovi=C4=87?= <arsen@aarsen.me>
+Date: Sat, 14 Jan 2023 22:53:20 +0100
+Subject: [PATCH] sbuild-util: use resize instead of reserve
+
+Using reserved but uninitialized space is invalid, and, additionally,
+reserve is not required to allocate memory or change the buffer size at
+all.
+--- a/sbuild/sbuild-util.cc
++++ b/sbuild/sbuild-util.cc
+@@ -624,17 +624,17 @@ void
+ sbuild::passwd::query_uid (uid_t uid)
+ {
+   buffer_type::size_type size = 1 << 7;
+-  buffer.reserve(size);
++  buffer.resize(size);
+   int error;
+ 
+   ::passwd *pwd_result;
+ 
+   while ((error = getpwuid_r(uid, this,
+-                             &buffer[0], buffer.capacity(),
++                             &buffer[0], buffer.size(),
+                              &pwd_result)) == ERANGE)
+     {
+       size <<= 1;
+-      buffer.reserve(size);
++      buffer.resize(size);
+     }
+ 
+   if (pwd_result)
+@@ -647,17 +647,17 @@ void
+ sbuild::passwd::query_name (const char *name)
+ {
+   buffer_type::size_type size = 1 << 8;
+-  buffer.reserve(size);
++  buffer.resize(size);
+   int error;
+ 
+   ::passwd *pwd_result;
+ 
+   while ((error = getpwnam_r(name, this,
+-                             &buffer[0], buffer.capacity(),
++                             &buffer[0], buffer.size(),
+                              &pwd_result)) == ERANGE)
+     {
+       size <<= 1;
+-      buffer.reserve(size);
++      buffer.resize(size);
+     }
+ 
+   if (pwd_result)
+@@ -733,17 +733,17 @@ void
+ sbuild::group::query_gid (gid_t gid)
+ {
+   buffer_type::size_type size = 1 << 7;
+-  buffer.reserve(size);
++  buffer.resize(size);
+   int error;
+ 
+   ::group *grp_result;
+ 
+   while ((error = getgrgid_r(gid, this,
+-                             &buffer[0], buffer.capacity(),
++                             &buffer[0], buffer.size(),
+                              &grp_result)) == ERANGE)
+     {
+       size <<= 1;
+-      buffer.reserve(size);
++      buffer.resize(size);
+     }
+ 
+   if (grp_result)
+@@ -756,17 +756,17 @@ void
+ sbuild::group::query_name (const char *name)
+ {
+   buffer_type::size_type size = 1 << 8;
+-  buffer.reserve(size);
++  buffer.resize(size);
+   int error;
+ 
+   ::group *grp_result;
+ 
+   while ((error = getgrnam_r(name, this,
+-                             &buffer[0], buffer.capacity(),
++                             &buffer[0], buffer.size(),
+                              &grp_result)) == ERANGE)
+     {
+       size <<= 1;
+-      buffer.reserve(size);
++      buffer.resize(size);
+     }
+ 
+   if (grp_result)
+-- 
+2.30.2
+

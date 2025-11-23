@@ -1,0 +1,39 @@
+From f60f2b769b1d43d253d470c99f8555e90cb45fd9 Mon Sep 17 00:00:00 2001
+From: Campbell Barton <campbell@blender.org>
+Date: Mon, 21 Oct 2024 20:45:35 +1100
+Subject: [PATCH] Unbreak building with Python 3.12
+
+Support for 3.13 [0] broke 3.12.
+
+[0]: d9f38fca5ffe29136cd6f390e318ad8455864582
+---
+ source/blender/python/generic/py_capi_utils.cc | 2 +-
+ source/blender/python/generic/py_capi_utils.hh | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/source/blender/python/generic/py_capi_utils.cc b/source/blender/python/generic/py_capi_utils.cc
+index 74c829d717e..d6c58a5c6eb 100644
+--- a/source/blender/python/generic/py_capi_utils.cc
++++ b/source/blender/python/generic/py_capi_utils.cc
+@@ -39,7 +39,7 @@
+ #  include "BLI_math_base.h" /* isfinite() */
+ #endif
+ 
+-#if PY_VERSION_HEX <= 0x030c0000 /* <=3.12 */
++#if PY_VERSION_HEX < 0x030d0000 /* <3.13 */
+ #  define PyLong_AsInt _PyLong_AsInt
+ #  define PyUnicode_CompareWithASCIIString _PyUnicode_EqualToASCIIString
+ #endif
+diff --git a/source/blender/python/generic/py_capi_utils.hh b/source/blender/python/generic/py_capi_utils.hh
+index 81740e0d0ad..29222d35c2c 100644
+--- a/source/blender/python/generic/py_capi_utils.hh
++++ b/source/blender/python/generic/py_capi_utils.hh
+@@ -339,7 +339,7 @@ uint64_t PyC_Long_AsU64(PyObject *value);
+ /* inline so type signatures match as expected */
+ Py_LOCAL_INLINE(int32_t) PyC_Long_AsI32(PyObject *value)
+ {
+-#if PY_VERSION_HEX <= 0x030c0000 /* <=3.12 */
++#if PY_VERSION_HEX < 0x030d0000 /* <3.13 */
+   return (int32_t)_PyLong_AsInt(value);
+ #else
+   return (int32_t)PyLong_AsInt(value);

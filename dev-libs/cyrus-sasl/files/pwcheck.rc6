@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need localmount
+	use logger
+}
+
+start() {
+	ebegin "Starting sasl pwcheck daemon"
+	start-stop-daemon --start --quiet --exec /usr/sbin/pwcheck
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping sasl pwcheck daemon"
+	start-stop-daemon --stop --quiet --exec /usr/sbin/pwcheck
+	eend $?
+}

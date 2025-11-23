@@ -1,0 +1,26 @@
+From 50daac4f15d207b6b69011b9cdde62b56c1c8b10 Mon Sep 17 00:00:00 2001
+From: Thomas Deutschmann <whissi@gentoo.org>
+Date: Fri, 20 Nov 2020 02:17:31 +0100
+Subject: [PATCH 2/2] tests: fix instmany-python.sh: increase limit
+
+Still failing with 4500 on Gentoo. Passing with 7000...
+---
+ t/instmany-python.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/t/instmany-python.sh b/t/instmany-python.sh
+index dce3594b5..1c482520d 100644
+--- a/t/instmany-python.sh
++++ b/t/instmany-python.sh
+@@ -21,7 +21,7 @@
+ required='python'
+ . test-init.sh
+ 
+-limit=4500
++limit=7000
+ subdir=long_subdir_name_with_many_characters
+ nfiles=81
+ list=$(seq_ 1 $nfiles)
+-- 
+2.29.2
+

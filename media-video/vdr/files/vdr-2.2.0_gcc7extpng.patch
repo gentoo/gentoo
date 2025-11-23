@@ -1,0 +1,16 @@
+fix compile issius gcc7: ISO C++ forbids comparison between pointer and integer
+https://www.linuxtv.org/pipermail/vdr/2017-March/029230.html
+
+Signed-of by: Joerg Bornkessel <hd_brummy@gentoo.org> (29 Aug 2018)
+diff -Naur vdr-2.2.0.orig/osdbase.c vdr-2.2.0/osdbase.c
+--- vdr-2.2.0.orig/osdbase.c	2018-08-29 11:59:49.522326559 +0200
++++ vdr-2.2.0/osdbase.c	2018-08-29 11:59:13.861326559 +0200
+@@ -525,7 +525,7 @@
+ #ifdef USE_MENUSELECTION
+       i = 0;
+       item_nr = 0;
+-      if (s && (s = skipspace(s)) != '\0' && '0' <= s[i] && s[i] <= '9') {
++      if (s && (s = skipspace(s)) != NULL && '0' <= s[i] && s[i] <= '9') {
+          do {
+             item_nr = item_nr * 10 + (s[i] - '0');
+             }

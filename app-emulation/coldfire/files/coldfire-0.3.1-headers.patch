@@ -1,0 +1,16 @@
+make sure we have access to HAVE_* defines to include header files:
+
+run.c: In function ‘sigint’:
+run.c:51:2: warning: implicit declaration of function ‘readline’
+run.c:51:8: warning: cast to pointer from integer of different size
+
+--- a/run.c
++++ b/run.c
+@@ -7,6 +7,7 @@
+ /**********************************/
+ 
+ 
++#include "config.h"
+ 
+ #include <stdio.h>
+ #include <stdlib.h>

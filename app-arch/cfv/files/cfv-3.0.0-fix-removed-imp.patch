@@ -1,0 +1,39 @@
+commit ecf720058f63930d53075584a59cf42e035347eb
+Author: Louis Sautier <sautier.louis@gmail.com>
+Date:   Sun May 12 15:44:26 2024 +0200
+
+    Fix tests for Python 3.12: remove "imp", fixes #21, #44
+    
+    The "imp" module was removed in Python 3.12.
+    The replacement functions were added in Python 3.5, see
+    https://docs.python.org/3/library/importlib.html#importlib.util.spec_from_file_location
+    https://docs.python.org/3/library/importlib.html#importlib.util.module_from_spec
+
+--- a/test/cfvtest.py
++++ b/test/cfvtest.py
+@@ -23,8 +23,8 @@ from builtins import map
+ from builtins import object
+ 
+ import fnmatch
+-import imp
+ import importlib
++import importlib.util
+ import os
+ import shlex
+ import sys
+@@ -201,8 +201,14 @@ def setcfv(fn=None, internal=None):
+     cfv_compiled = compile(_cfv_code, cfvfn, 'exec')
+ 
+     with open(cfvfn, 'rt') as f:
++        # For spec_from_file_location to accept a file without the .py suffix ("cfv")
++        importlib.machinery.SOURCE_SUFFIXES.append('')
++        spec = importlib.util.spec_from_file_location('cfvwrapper', cfvfn)
++        module = importlib.util.module_from_spec(spec)
+         # This is so that the sys.path modification of the wrapper (if it has one) will be executed..
+-        imp.load_source('cfvwrapper', cfvfn, f)
++        spec.loader.exec_module(module)
++        # Restore SOURCE_SUFFIXES to its default value
++        importlib.machinery.SOURCE_SUFFIXES.pop()
+ 
+     get_version_flags()
+ 

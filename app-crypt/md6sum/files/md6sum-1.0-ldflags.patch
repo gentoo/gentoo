@@ -1,0 +1,11 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -18,7 +18,7 @@
+ all: md6sum
+ 
+ md6sum: $(OBJS)
+-	$(CC) $(OBJS) $(CXXFLAGS) -o $@
++	$(CC) $(OBJS) $(CXXFLAGS) $(LDFLAGS) -o $@
+ 
+ md6_compress.o: md6_compress.c inttypes.h  md6.h  md6_nist.h  stdint.h
+ 	$(CC) $(CXXFLAGS) -c $< -o $@

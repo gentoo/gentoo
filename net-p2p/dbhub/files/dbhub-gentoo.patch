@@ -1,0 +1,25 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -115,7 +115,7 @@
+ 		AC_MSG_CHECKING([Perl LD Objs])
+ 		AC_MSG_RESULT([$perl_ldd])
+ 		CPPFLAGS="$CPPFLAGS $perl_ccflags"
+-		LDFLAGS="$LDFLAGS $perl_ld"
++		LIBS="$LIBS $perl_ld"
+ 		MISSING_PERL_HEADERS=""
+ 		AC_CHECK_HEADERS([EXTERN.h perl.h],,HAVE_PERL="false"; MISSING_PERL_HEADERS="$ac_header $MISSING_PERL_HEADERS",[[#if HAVE_EXTERN_H
+ 		#include <EXTERN.h>
+@@ -141,13 +141,6 @@
+ 
+ AM_CONDITIONAL([BNLS],[test "$want_nls" = "yes"])
+ 
+-dnl Check if config directory exists.
+-if test ! -d $HOME/.dbhub; then
+-   echo "creating config directory: $HOME/.dbhub"
+-   mkdir $HOME/.dbhub
+-   chmod 700 $HOME/.dbhub;
+-fi
+-
+ AC_OUTPUT(Makefile src/Makefile)
+ 
+ echo -e  "\n\e@<:@1m-------------------------------------------------\e@<:@0m"

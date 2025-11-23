@@ -1,0 +1,4 @@
+# OpenVAS Scanner command args
+
+# e.g --foreground
+OSPD_OPENVAS_OPTIONS=""

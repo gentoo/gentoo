@@ -1,0 +1,54 @@
+From fd2ab505cbc24ad583fc2998268b7675caa7697a Mon Sep 17 00:00:00 2001
+From: Ted Rodgers <ted.d.rodgers@gmail.com>
+Date: Sun, 3 Nov 2024 23:35:32 -0500
+Subject: [PATCH] added cstdint include for
+ deps/srccache/JuliaLang-llvm-project-8a2ae8c/llvm/include/llvm/ADT/SmallVector.h
+ +
+ deps/srccache/JuliaLang-llvm-project-8a2ae8c/llvm/lib/Target/X86/MCTargetDesc/X86MCTargetDesc.h
+ +
+ deps/srccache/JuliaLang-llvm-project-8a2ae8c/llvm/lib/Target/AMDGPU/MCTargetDesc/AMDGPUMCTargetDesc.h
+
+---
+ .../llvm/include/llvm/ADT/SmallVector.h                          | 1 +
+ .../llvm/lib/Target/AMDGPU/MCTargetDesc/AMDGPUMCTargetDesc.h     | 1 +
+ .../llvm/lib/Target/X86/MCTargetDesc/X86MCTargetDesc.h           | 1 +
+ 3 files changed, 3 insertions(+)
+
+diff --git a/deps/srccache/JuliaLang-llvm-project-8a2ae8c/llvm/include/llvm/ADT/SmallVector.h b/deps/srccache/JuliaLang-llvm-project-8a2ae8c/llvm/include/llvm/ADT/SmallVector.h
+index b8a11030f..8bce0ea95 100644
+--- a/deps/srccache/JuliaLang-llvm-project-8a2ae8c/llvm/include/llvm/ADT/SmallVector.h
++++ b/deps/srccache/JuliaLang-llvm-project-8a2ae8c/llvm/include/llvm/ADT/SmallVector.h
+@@ -21,6 +21,7 @@
+ #include <algorithm>
+ #include <cassert>
+ #include <cstddef>
++#include <cstdint>
+ #include <cstdlib>
+ #include <cstring>
+ #include <functional>
+diff --git a/deps/srccache/JuliaLang-llvm-project-8a2ae8c/llvm/lib/Target/AMDGPU/MCTargetDesc/AMDGPUMCTargetDesc.h b/deps/srccache/JuliaLang-llvm-project-8a2ae8c/llvm/lib/Target/AMDGPU/MCTargetDesc/AMDGPUMCTargetDesc.h
+index 71b44a509..c87ff085e 100644
+--- a/deps/srccache/JuliaLang-llvm-project-8a2ae8c/llvm/lib/Target/AMDGPU/MCTargetDesc/AMDGPUMCTargetDesc.h
++++ b/deps/srccache/JuliaLang-llvm-project-8a2ae8c/llvm/lib/Target/AMDGPU/MCTargetDesc/AMDGPUMCTargetDesc.h
+@@ -15,6 +15,7 @@
+ #ifndef LLVM_LIB_TARGET_AMDGPU_MCTARGETDESC_AMDGPUMCTARGETDESC_H
+ #define LLVM_LIB_TARGET_AMDGPU_MCTARGETDESC_AMDGPUMCTARGETDESC_H
+ 
++#include <cstdint>
+ #include <memory>
+ 
+ namespace llvm {
+diff --git a/deps/srccache/JuliaLang-llvm-project-8a2ae8c/llvm/lib/Target/X86/MCTargetDesc/X86MCTargetDesc.h b/deps/srccache/JuliaLang-llvm-project-8a2ae8c/llvm/lib/Target/X86/MCTargetDesc/X86MCTargetDesc.h
+index 35604cd3e..93cb72ad7 100644
+--- a/deps/srccache/JuliaLang-llvm-project-8a2ae8c/llvm/lib/Target/X86/MCTargetDesc/X86MCTargetDesc.h
++++ b/deps/srccache/JuliaLang-llvm-project-8a2ae8c/llvm/lib/Target/X86/MCTargetDesc/X86MCTargetDesc.h
+@@ -13,6 +13,7 @@
+ #ifndef LLVM_LIB_TARGET_X86_MCTARGETDESC_X86MCTARGETDESC_H
+ #define LLVM_LIB_TARGET_X86_MCTARGETDESC_X86MCTARGETDESC_H
+ 
++#include <cstdint>
+ #include <memory>
+ #include <string>
+ 
+-- 
+2.47.0

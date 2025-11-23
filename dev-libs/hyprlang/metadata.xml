@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>julien@jroy.ca</email>
+		<name>Julien Roy</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>johnmh@johnmh.me</email>
+		<name>John M. Harris, Jr.</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+The hypr configuration language is an extremely efficient, yet easy to work with, configuration language for linux applications.
+
+It's user-friendly, easy to grasp, and easy to implement.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/hyprwm/hyprlang/issues</bugs-to>
+		<changelog>https://github.com/hyprwm/hyprlang/releases</changelog>
+		<remote-id type="github">hyprwm/hyprlang</remote-id>
+	</upstream>
+</pkgmetadata>

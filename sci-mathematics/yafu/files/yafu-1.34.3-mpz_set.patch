@@ -1,0 +1,14 @@
+Correct way to assign value to mpz_t is to use openmp's funcion-like macro,
+because it's horrible one-element array.
+https://bugs.gentoo.org/920324
+--- a/top/eratosthenes/soe_util.c
++++ b/top/eratosthenes/soe_util.c
+@@ -131,7 +131,7 @@
+ 			sdata->pbound = sieve_p[num_sp - 1];
+ 			sdata->pboundi = num_sp;
+ 		}
+-		sdata->offset = offset;
++		mpz_set(*(sdata->offset), offset);
+ 		mpz_clear(tmpz);
+ 		sdata->sieve_range = 1;
+ 	}

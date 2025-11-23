@@ -1,0 +1,11 @@
+--- a/configure.in
++++ b/configure.in
+@@ -39,7 +39,7 @@ AC_CHECK_PROG(USEOCAMLFIND,ocamlfind,yes,no)
+ 
+ if test "$USEOCAMLFIND" = yes; then
+    OCAMLFINDLIB=$(ocamlfind printconf stdlib)
+-   OCAMLFIND=$(which ocamlfind)
++   OCAMLFIND=$(command -v ocamlfind)
+    if test "$OCAMLFINDLIB" != "$OCAMLLIB"; then
+     USEOCAMLFIND=no;
+     echo "but your ocamlfind is not compatible with your ocamlc:"

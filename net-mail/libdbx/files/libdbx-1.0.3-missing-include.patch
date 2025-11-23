@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/861593
+https://bugs.gentoo.org/871417
+--- a/readdbx.c
++++ b/readdbx.c
+@@ -24,2 +24,3 @@
+ #include "common.h"
++#include "timeconv.h"
+ 
+--- a/readoe.c
++++ b/readoe.c
+@@ -26,2 +26,3 @@
+ #include "common.h"
++#include "timeconv.h"
+ 

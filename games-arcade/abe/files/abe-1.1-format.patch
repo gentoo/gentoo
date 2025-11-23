@@ -1,0 +1,13 @@
+Fix an incorrect printf format specifier. Sent upstream 15 Mar 2011:
+https://sourceforge.net/p/abe/patches/2/
+--- a/src/MapIO.c
++++ b/src/MapIO.c
+@@ -93,7 +93,7 @@
+   // compression step 1: read compressed data from disk
+   // FIXME: what would be nicer is to only allocate as much mem as used on disk.
+   size = LEVEL_COUNT * map.w * map.h;
+-  printf("size %u\n", size);
++  printf("size %zu\n", size);
+   fflush(stdout);
+   if(!(read_buff = (Uint16 *) malloc(sizeof(Uint16) * size))) {
+     fprintf(stderr, "Out of memory on map read.");

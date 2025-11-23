@@ -1,0 +1,70 @@
+commit c30d53648a713a3f7f7711f081732aa814c6e74d
+Author: Sergei Trofimovich <siarheit@google.com>
+Date:   Sat May 30 23:20:42 2015 +0100
+
+    mtpfs.c: remove all unlocking calls from mtpfs_getattr_real
+    
+    Lock is already acquired/freed in the caller function 'mtpfs_getattr'.
+    Noticed when trying to use mtpfs today :)
+    
+    Should also fix the same issue https://github.com/cjd/mtpfs/issues/1
+    as I get the same backtrace.
+    
+    Signed-off-by: Sergei Trofimovich <siarheit@google.com>
+
+diff --git a/mtpfs.c b/mtpfs.c
+index e5e1b03..553d282 100644
+--- a/mtpfs.c
++++ b/mtpfs.c
+@@ -776,5 +776,5 @@ mtpfs_getattr_real (const gchar * path, struct stat *stbuf)
+ {
+     int ret = 0;
+-    if (path==NULL) return_unlock(-ENOENT);
++    if (path==NULL) return -ENOENT;
+     memset (stbuf, 0, sizeof (struct stat));
+ 
+@@ -787,5 +787,5 @@ mtpfs_getattr_real (const gchar * path, struct stat *stbuf)
+         stbuf->st_mode = S_IFDIR | 0777;
+         stbuf->st_nlink = 2;
+-        return_unlock(0);
++        return 0;
+     }
+ 
+@@ -799,5 +799,5 @@ mtpfs_getattr_real (const gchar * path, struct stat *stbuf)
+             stbuf->st_blocks = 2;
+             stbuf->st_mtime = time(NULL);
+-            return_unlock(0);
++            return 0;
+         }
+     }
+@@ -808,5 +808,5 @@ mtpfs_getattr_real (const gchar * path, struct stat *stbuf)
+         stbuf->st_mode = S_IFDIR | 0777;
+         stbuf->st_nlink = 2;
+-        return_unlock(0);
++        return 0;
+     }
+ 
+@@ -843,9 +843,9 @@ mtpfs_getattr_real (const gchar * path, struct stat *stbuf)
+                 stbuf->st_blocks = 2;
+                 stbuf->st_mtime = time(NULL);
+-                return_unlock(0);
++                return 0;
+             }
+             playlist = playlist->next;   
+         }
+-        return_unlock(-ENOENT);
++        return -ENOENT;
+     }
+ 
+@@ -864,9 +864,9 @@ mtpfs_getattr_real (const gchar * path, struct stat *stbuf)
+ 				stbuf->st_mode = S_IFREG | 0777;
+                 stbuf->st_mtime = file->modificationdate;
+-				return_unlock(0);
++				return 0;
+ 			}
+ 		}
+ 
+-		return_unlock(-ENOENT);
++		return -ENOENT;
+     }
+ 

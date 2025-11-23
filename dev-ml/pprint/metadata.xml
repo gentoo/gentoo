@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>ml@gentoo.org</email>
+    <name>ML</name>
+  </maintainer>
+  <longdescription>
+    This library offers a set of combinators for building so-called documents
+    as well as an efficient engine for converting documents to a textual,
+    fixed-width format. The engine takes care of indentation and line breaks,
+    while respecting the constraints imposed by the structure of the document
+    and by the text width.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">fpottier/pprint</remote-id>
+  </upstream>
+</pkgmetadata>

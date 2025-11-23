@@ -1,0 +1,39 @@
+From 980dd32e52da10901094a7f8a5dbe5287a62a602 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Thu, 5 Sep 2024 15:53:36 +0200
+Subject: [PATCH] dnn: explicitly include abseil-cpp
+
+Linking against abseil-cpp depended on protobuf exporting all abseil-cpp
+libraries via protobuf::libprotobuf public libraries.
+
+Explcitly finding abseil ourselves removes the need for that.
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/cmake/OpenCVFindProtobuf.cmake b/cmake/OpenCVFindProtobuf.cmake
+index 9228b04..7d9f315 100644
+--- a/cmake/OpenCVFindProtobuf.cmake
++++ b/cmake/OpenCVFindProtobuf.cmake
+@@ -32,6 +32,7 @@ else()
+   # we still need this for command PROTOBUF_GENERATE_CPP.
+   set(protobuf_MODULE_COMPATIBLE ON)
+ 
++  find_package(absl CONFIG REQUIRED)
+   unset(Protobuf_VERSION CACHE)
+   find_package(Protobuf QUIET CONFIG)
+   if(NOT Protobuf_FOUND)
+diff --git a/modules/dnn/CMakeLists.txt b/modules/dnn/CMakeLists.txt
+index 562b144..052c4f8 100644
+--- a/modules/dnn/CMakeLists.txt
++++ b/modules/dnn/CMakeLists.txt
+@@ -144,6 +144,7 @@ list(APPEND libs ${Protobuf_LIBRARIES})
+ if(NOT BUILD_PROTOBUF)
+   list(APPEND include_dirs ${Protobuf_INCLUDE_DIRS})
+ endif()
++list(APPEND libs absl::check)
+ 
+ set(sources_options "")
+ 
+-- 
+2.46.0
+

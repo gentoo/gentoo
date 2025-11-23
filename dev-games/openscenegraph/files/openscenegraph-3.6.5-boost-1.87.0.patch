@@ -1,0 +1,301 @@
+diff '--color=auto' -urNp openscenegraph-3.6.5-orig/src/osgPlugins/RestHttpDevice/connection.cpp openscenegraph-3.6.5-dwok/src/osgPlugins/RestHttpDevice/connection.cpp
+--- openscenegraph-3.6.5-orig/src/osgPlugins/RestHttpDevice/connection.cpp	2024-12-27 12:34:55.469783593 +0100
++++ openscenegraph-3.6.5-dwok/src/osgPlugins/RestHttpDevice/connection.cpp	2024-12-27 12:45:50.072697619 +0100
+@@ -10,16 +10,17 @@
+ 
+ #include "connection.hpp"
+ #include <vector>
+-#include <boost/bind.hpp>
++#include <boost/bind/bind.hpp>
++using namespace boost::placeholders;
+ #include "request_handler.hpp"
+ #include <osg/Notify>
+ 
+ namespace http {
+ namespace server {
+ 
+-connection::connection(asio::io_service& io_service,
++connection::connection(boost::asio::io_context& io_context,
+     request_handler& handler)
+-  : socket_(io_service),
++  : socket_(io_context),
+     request_handler_(handler)
+ {
+     OSG_DEBUG << "RestHttpDevice :: connection::connection" << std::endl;
+@@ -29,7 +30,7 @@ connection::~connection()
+ {
+     OSG_DEBUG << "RestHttpDevice :: connection::~connection" << std::endl;
+ }
+-asio::ip::tcp::socket& connection::socket()
++boost::asio::ip::tcp::socket& connection::socket()
+ {
+   return socket_;
+ }
+@@ -38,10 +39,8 @@ void connection::start()
+ {
+   OSG_DEBUG << "RestHttpDevice :: connection::start" << std::endl;
+ 
+-  socket_.async_read_some(asio::buffer(buffer_),
+-      boost::bind(&connection::handle_read, shared_from_this(),
+-        asio::placeholders::error,
+-        asio::placeholders::bytes_transferred));
++  socket_.async_read_some(boost::asio::buffer(buffer_),
++      boost::bind(&connection::handle_read, shared_from_this(), _1, _2));
+ }
+ 
+ void connection::handle_read(const boost::system::error_code& e,
+@@ -56,23 +55,19 @@ void connection::handle_read(const boost
+     if (result)
+     {
+       request_handler_.handle_request(request_, reply_);
+-      asio::async_write(socket_, reply_.to_buffers(),
+-          boost::bind(&connection::handle_write, shared_from_this(),
+-            asio::placeholders::error));
++      boost::asio::async_write(socket_, reply_.to_buffers(),
++          boost::bind(&connection::handle_write, shared_from_this(), _1));
+     }
+     else if (!result)
+     {
+       reply_ = reply::stock_reply(reply::bad_request);
+-      asio::async_write(socket_, reply_.to_buffers(),
+-          boost::bind(&connection::handle_write, shared_from_this(),
+-            asio::placeholders::error));
++      boost::asio::async_write(socket_, reply_.to_buffers(),
++          boost::bind(&connection::handle_write, shared_from_this(), _1));
+     }
+     else
+     {
+-      socket_.async_read_some(asio::buffer(buffer_),
+-          boost::bind(&connection::handle_read, shared_from_this(),
+-            asio::placeholders::error,
+-            asio::placeholders::bytes_transferred));
++      socket_.async_read_some(boost::asio::buffer(buffer_),
++          boost::bind(&connection::handle_read, shared_from_this(), _1, _2));
+     }
+   }
+ 
+@@ -88,7 +83,7 @@ void connection::handle_write(const boos
+   {
+     // Initiate graceful connection closure.
+     boost::system::error_code ignored_ec;
+-    socket_.shutdown(asio::ip::tcp::socket::shutdown_both, ignored_ec);
++    socket_.shutdown(boost::asio::ip::tcp::socket::shutdown_both, ignored_ec);
+   }
+ 
+   // No new asynchronous operations are started. This means that all shared_ptr
+diff '--color=auto' -urNp openscenegraph-3.6.5-orig/src/osgPlugins/RestHttpDevice/connection.hpp openscenegraph-3.6.5-dwok/src/osgPlugins/RestHttpDevice/connection.hpp
+--- openscenegraph-3.6.5-orig/src/osgPlugins/RestHttpDevice/connection.hpp	2024-12-27 12:34:55.469783593 +0100
++++ openscenegraph-3.6.5-dwok/src/osgPlugins/RestHttpDevice/connection.hpp	2024-12-27 12:40:08.523007514 +0100
+@@ -33,7 +33,7 @@ class connection
+ {
+ public:
+   /// Construct a connection with the given io_service.
+-  explicit connection(asio::io_service& io_service,
++  explicit connection(boost::asio::io_context& io_context,
+       request_handler& handler);
+ 
+   /// Get the socket associated with the connection.
+diff '--color=auto' -urNp openscenegraph-3.6.5-orig/src/osgPlugins/RestHttpDevice/io_service_pool.cpp openscenegraph-3.6.5-dwok/src/osgPlugins/RestHttpDevice/io_service_pool.cpp
+--- openscenegraph-3.6.5-orig/src/osgPlugins/RestHttpDevice/io_service_pool.cpp	2024-12-27 12:34:55.469783593 +0100
++++ openscenegraph-3.6.5-dwok/src/osgPlugins/RestHttpDevice/io_service_pool.cpp	2024-12-27 12:48:08.654997383 +0100
+@@ -8,16 +8,18 @@
+ // file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+ //
+ 
+-#include "server.hpp"
++#include "io_service_pool.hpp"
+ #include <stdexcept>
+-#include <boost/bind.hpp>
++#include <boost/bind/bind.hpp>
++using namespace boost::placeholders;
++#include <boost/shared_ptr.hpp>
+ #include <boost/thread.hpp>
+ 
+ namespace http {
+ namespace server {
+ 
+ io_service_pool::io_service_pool(std::size_t pool_size)
+-  : next_io_service_(0)
++  : next_io_context_(0)
+ {
+   if (pool_size == 0)
+     throw std::runtime_error("io_service_pool size is 0");
+@@ -26,9 +28,9 @@ io_service_pool::io_service_pool(std::si
+   // exit until they are explicitly stopped.
+   for (std::size_t i = 0; i < pool_size; ++i)
+   {
+-    io_service_ptr io_service(new asio::io_service);
+-    work_ptr work(new asio::io_service::work(*io_service));
+-    io_services_.push_back(io_service);
++    io_context_ptr io_context(new boost::asio::io_context);
++    work_ptr work(new boost::asio::executor_work_guard<boost::asio::io_context::executor_type>(boost::asio::make_work_guard(*io_context)));
++    io_contexts_.push_back(io_context);
+     work_.push_back(work);
+   }
+ }
+@@ -36,31 +38,34 @@ io_service_pool::io_service_pool(std::si
+ void io_service_pool::run()
+ {
+   // Create a pool of threads to run all of the io_services.
+-  std::vector<thread> threads;
+-  for (std::size_t i = 0; i < io_services_.size(); ++i)
+-    threads.emplace_back(thread(boost::bind(&asio::io_service::run,
+-                                            io_services_[i])));
++  std::vector<boost::shared_ptr<boost::thread>> threads;
++  for (std::size_t i = 0; i < io_contexts_.size(); ++i)
++  {
++    boost::shared_ptr<boost::thread> thread(new boost::thread(
++      boost::bind(&boost::asio::io_context::run, io_contexts_[i])));
++    threads.push_back(thread);
++  }
+ 
+   // Wait for all threads in the pool to exit.
+   for (std::size_t i = 0; i < threads.size(); ++i)
+-    threads[i].join();
++    threads[i]->join();
+ }
+ 
+ void io_service_pool::stop()
+ {
+   // Explicitly stop all io_services.
+-  for (std::size_t i = 0; i < io_services_.size(); ++i)
+-    io_services_[i]->stop();
++  for (std::size_t i = 0; i < io_contexts_.size(); ++i)
++    io_contexts_[i]->stop();
+ }
+ 
+-asio::io_service& io_service_pool::get_io_service()
++boost::asio::io_context& io_service_pool::get_io_context()
+ {
+   // Use a round-robin scheme to choose the next io_service to use.
+-  asio::io_service& io_service = *io_services_[next_io_service_];
+-  ++next_io_service_;
+-  if (next_io_service_ == io_services_.size())
+-    next_io_service_ = 0;
+-  return io_service;
++  boost::asio::io_context& io_context = *io_contexts_[next_io_context_];
++  ++next_io_context_;
++  if (next_io_context_ == io_contexts_.size())
++    next_io_context_ = 0;
++  return io_context;
+ }
+ 
+ } // namespace server
+diff '--color=auto' -urNp openscenegraph-3.6.5-orig/src/osgPlugins/RestHttpDevice/io_service_pool.hpp openscenegraph-3.6.5-dwok/src/osgPlugins/RestHttpDevice/io_service_pool.hpp
+--- openscenegraph-3.6.5-orig/src/osgPlugins/RestHttpDevice/io_service_pool.hpp	2024-12-27 12:34:55.469783593 +0100
++++ openscenegraph-3.6.5-dwok/src/osgPlugins/RestHttpDevice/io_service_pool.hpp	2024-12-27 12:40:08.523007514 +0100
+@@ -16,8 +16,6 @@
+ #include <boost/noncopyable.hpp>
+ #include <boost/shared_ptr.hpp>
+ 
+-using namespace boost;
+-
+ namespace http {
+ namespace server {
+ 
+@@ -36,20 +34,20 @@ public:
+   void stop();
+ 
+   /// Get an io_service to use.
+-  asio::io_service& get_io_service();
++  boost::asio::io_context& get_io_context();
+ 
+ private:
+-  typedef boost::shared_ptr<asio::io_service> io_service_ptr;
+-  typedef boost::shared_ptr<asio::io_service::work> work_ptr;
++  typedef boost::shared_ptr<boost::asio::io_context> io_context_ptr;
++  typedef boost::shared_ptr<boost::asio::executor_work_guard<boost::asio::io_context::executor_type>> work_ptr;
+ 
+   /// The pool of io_services.
+-  std::vector<io_service_ptr> io_services_;
++  std::vector<io_context_ptr> io_contexts_;
+ 
+   /// The work that keeps the io_services running.
+   std::vector<work_ptr> work_;
+ 
+   /// The next io_service to use for a connection.
+-  std::size_t next_io_service_;
++  std::size_t next_io_context_;
+ };
+ 
+ } // namespace server
+diff '--color=auto' -urNp openscenegraph-3.6.5-orig/src/osgPlugins/RestHttpDevice/ReaderWriterRestHttpDevice.cpp openscenegraph-3.6.5-dwok/src/osgPlugins/RestHttpDevice/ReaderWriterRestHttpDevice.cpp
+--- openscenegraph-3.6.5-orig/src/osgPlugins/RestHttpDevice/ReaderWriterRestHttpDevice.cpp	2024-12-27 12:34:55.469783593 +0100
++++ openscenegraph-3.6.5-dwok/src/osgPlugins/RestHttpDevice/ReaderWriterRestHttpDevice.cpp	2024-12-27 12:49:01.143868489 +0100
+@@ -35,6 +35,8 @@
+ #include <osgDB/FileNameUtils>
+ #include <osgDB/FileUtils>
+ #include "RestHttpDevice.hpp"
++#include <boost/bind/bind.hpp>
++using namespace boost::placeholders;
+ 
+ 
+ 
+diff '--color=auto' -urNp openscenegraph-3.6.5-orig/src/osgPlugins/RestHttpDevice/RestHttpDevice.cpp openscenegraph-3.6.5-dwok/src/osgPlugins/RestHttpDevice/RestHttpDevice.cpp
+--- openscenegraph-3.6.5-orig/src/osgPlugins/RestHttpDevice/RestHttpDevice.cpp	2024-12-27 12:34:55.469783593 +0100
++++ openscenegraph-3.6.5-dwok/src/osgPlugins/RestHttpDevice/RestHttpDevice.cpp	2024-12-27 12:48:44.131586152 +0100
+@@ -16,6 +16,8 @@
+ #include <osg/ValueObject>
+ #include <osgDB/FileUtils>
+ #include "request_handler.hpp"
++#include <boost/bind/bind.hpp>
++using namespace boost::placeholders;
+ 
+ namespace RestHttp {
+ 
+diff '--color=auto' -urNp openscenegraph-3.6.5-orig/src/osgPlugins/RestHttpDevice/server.cpp openscenegraph-3.6.5-dwok/src/osgPlugins/RestHttpDevice/server.cpp
+--- openscenegraph-3.6.5-orig/src/osgPlugins/RestHttpDevice/server.cpp	2024-12-27 12:34:55.469783593 +0100
++++ openscenegraph-3.6.5-dwok/src/osgPlugins/RestHttpDevice/server.cpp	2024-12-27 12:47:11.326045994 +0100
+@@ -9,7 +9,8 @@
+ //
+ 
+ #include "server.hpp"
+-#include <boost/bind.hpp>
++#include <boost/bind/bind.hpp>
++using namespace boost::placeholders;
+ 
+ namespace http {
+ namespace server {
+@@ -17,22 +18,21 @@ namespace server {
+ server::server(const std::string& address, const std::string& port,
+     const std::string& doc_root, std::size_t io_service_pool_size)
+   : io_service_pool_(io_service_pool_size),
+-    acceptor_(io_service_pool_.get_io_service()),
++    acceptor_(io_service_pool_.get_io_context()),
+     new_connection_(new connection(
+-          io_service_pool_.get_io_service(), request_handler_)),
++          io_service_pool_.get_io_context(), request_handler_)),
+     request_handler_(doc_root)
+ {
+   // Open the acceptor with the option to reuse the address (i.e. SO_REUSEADDR).
+-  asio::ip::tcp::resolver resolver(io_service_pool_.get_io_service());
+-  asio::ip::tcp::resolver::query query(address, port);
+-  asio::ip::tcp::endpoint endpoint = *resolver.resolve(query);
++  boost::asio::ip::tcp::resolver resolver(io_service_pool_.get_io_context());
++  boost::asio::ip::tcp::resolver::results_type endpoints = resolver.resolve(address, port);
++  boost::asio::ip::tcp::endpoint endpoint = *endpoints.begin();
+   acceptor_.open(endpoint.protocol());
+-  acceptor_.set_option(asio::ip::tcp::acceptor::reuse_address(true));
++  acceptor_.set_option(boost::asio::ip::tcp::acceptor::reuse_address(true));
+   acceptor_.bind(endpoint);
+   acceptor_.listen();
+   acceptor_.async_accept(new_connection_->socket(),
+-      boost::bind(&server::handle_accept, this,
+-        asio::placeholders::error));
++      boost::bind(&server::handle_accept, this, _1));
+ }
+ 
+ void server::run()
+@@ -54,10 +54,9 @@ void server::handle_accept(const boost::
+     OSG_DEBUG << "RestHttpDevice :: server::handle_accept" << std::endl;
+     new_connection_->start();
+     new_connection_.reset(new connection(
+-          io_service_pool_.get_io_service(), request_handler_));
++          io_service_pool_.get_io_context(), request_handler_));
+     acceptor_.async_accept(new_connection_->socket(),
+-        boost::bind(&server::handle_accept, this,
+-          asio::placeholders::error));
++        boost::bind(&server::handle_accept, this, _1));
+   }
+   else
+   {

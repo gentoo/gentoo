@@ -1,0 +1,27 @@
+diff --git a/src/calibre/utils/img.py b/src/calibre/utils/img.py
+index b61627b63e..ff51c76e75 100644
+--- a/src/calibre/utils/img.py
++++ b/src/calibre/utils/img.py
+@@ -129,8 +129,6 @@ def image_from_data(data):
+     i = QImage()
+     if not i.loadFromData(data):
+         q = what(None, data)
+-        if q == 'jxr':
+-            return load_jxr_data(data)
+         raise NotImage(f'Not a valid image (detected type: {q})')
+     return i
+ 
+@@ -693,13 +691,6 @@ def test():  # {{{
+     despeckle_image(img)
+     remove_borders_from_image(img)
+     image_to_data(img, fmt='GIF')
+-    p = subprocess.Popen([get_exe_path('JxrDecApp'), '-h'],
+-                           creationflags=subprocess.DETACHED_PROCESS if iswindows else 0,
+-                           stdout=subprocess.PIPE)
+-    raw, _ = p.communicate()
+-    p.wait()
+-    if b'JPEG XR Decoder Utility' not in raw:
+-        raise SystemExit('Failed to run JxrDecApp')
+ # }}}
+ 
+ 

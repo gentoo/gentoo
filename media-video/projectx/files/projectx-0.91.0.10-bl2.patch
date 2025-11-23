@@ -1,0 +1,15 @@
+--- Project-X/src/net/sourceforge/dvb/projectx/gui/Html.java	2006-11-25 22:28:52.000000000 +0100
++++ Project-X/src/net/sourceforge/dvb/projectx/gui/Html.java	2007-06-10 13:37:59.000000000 +0200
+@@ -159,9 +159,10 @@
+ 		{
+ 			try 
+ 			{
+-				BrowserLauncher.openURL(u.toString());
++				BrowserLauncher launcher = new BrowserLauncher();
++				launcher.openURLinBrowser(u.toString());
+ 			} 
+-			catch (IOException e) 
++			catch (Exception e) 
+ 			{
+ 				Common.setMessage(Resource.getString("msg.browser.launcher.error") + " " + e);
+ 			}

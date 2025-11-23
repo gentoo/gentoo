@@ -1,0 +1,30 @@
+# @GENTOO_PORTAGE_EPREFIX@/etc/mysql/mysql.d/50-distro-server.cnf: The global mysql configuration file.
+
+# add a section [mysqld-8.0] for specific configurations
+[mysqld]
+# Using "mysql_native_password" for compatibility with Perl, PHP, Ruby...
+loose-default-authentication-plugin		= mysql_native_password
+character-set-server				= utf8mb4
+user						= mysql
+port						= 3306
+socket						= @GENTOO_PORTAGE_EPREFIX@/var/run/mysqld/mysqld.sock
+pid-file					= @GENTOO_PORTAGE_EPREFIX@/var/run/mysqld/mysql.pid
+log-error					= @GENTOO_PORTAGE_EPREFIX@/var/log/mysql/mysqld.err
+basedir						= @GENTOO_PORTAGE_EPREFIX@/usr
+datadir						= @DATADIR@
+skip-external-locking
+lc_messages_dir					= @GENTOO_PORTAGE_EPREFIX@/usr/share/mysql
+#Set this to your desired error message language
+lc_messages					= en_US
+
+# security:
+# using "localhost" in connects uses sockets by default
+# skip-networking
+bind-address					= 127.0.0.1
+
+log-bin
+server-id					= 1
+
+# point the following paths to different dedicated disks
+#tmpdir						= @GENTOO_PORTAGE_EPREFIX@/tmp/
+#log-update					= @GENTOO_PORTAGE_EPREFIX@/path-to-dedicated-directory/hostname

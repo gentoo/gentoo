@@ -1,0 +1,12 @@
+Index: b/wxVillaLib/PropDlg.cpp
+===================================================================
+--- a/wxVillaLib/PropDlg.cpp	2021-11-07 10:42:36.000000000 +0200
++++ b/wxVillaLib/PropDlg.cpp	2022-08-01 09:06:10.548828062 +0200
+@@ -12,7 +12,6 @@
+ #include "utils.h"
+ #include <wx/fontdlg.h>
+ #include <wx/colordlg.h>
+-#include <wx/generic/colrdlgg.h>
+ #include <wx/filedlg.h>
+ #include <wx/dirdlg.h>
+ #include <wx/grid.h>

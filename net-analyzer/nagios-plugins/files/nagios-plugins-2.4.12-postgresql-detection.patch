@@ -1,0 +1,143 @@
+From be90a1d9ae5b5e10015619271337e3a2c731b3bb Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sat, 7 Sep 2024 19:51:27 -0400
+Subject: [PATCH] configure.ac: rewrite PostgreSQL detection using pg_config
+
+PostgreSQL installs a pg_config program that spits out its "include"
+and "library" paths when called with --includedir and --libdir,
+respectively. Using this we can simplify the detection of PostgreSQL,
+since in theory the problem is reduced to that of finding pg_config.
+
+This commit replaces the existing PostgreSQL detection with a more
+straightforward search for pg_config. The change is backwards-
+compatible, in the sense that --with-pgsql=foo will still find the
+postgres installation in "foo," except now it will do so through
+foo/bin/pg_config rather than foo/include and foo/lib.
+
+This solves a rare problem: on systems where only one version of
+postgres is allowed, or on systems where multiple versions exist but a
+"default" version can be chosen, the most likely path for postgres is
+--with-pgsql=/usr. With the current implementation, this leads to
+"-I/usr/include" being added to CPPFLAGS, which is fine, and
+"-L/usr/lib" being added to LDFLAGS, which is not. On some of those
+same systems, /usr/lib is for 32-bit libraries while /usr/lib64 is the
+"normal" (64-bit) library path. So as a result of detecting postgres
+under /usr, the linker is pointed to the wrong set of libraries. This
+is known to crash lld (the LLVM linker).
+---
+ configure.ac | 100 ++++++++++++++++++++++++++-------------------------
+ 1 file changed, 52 insertions(+), 48 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index b67a7805..c69246c0 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -209,56 +209,60 @@ if test "$enable_extra_opts" = "yes" ; then
+ 	fi
+ fi
+ 
+-dnl Check for PostgreSQL libraries
+-_SAVEDLIBS="$LIBS"
+-_SAVEDCPPFLAGS="$CPPFLAGS"
++dnl Check for PostgreSQL libraries. Postgres ships a pg_config program
++dnl that gives us the -I and -L flags we need, so the problem is reduced
++dnl to finding pg_config. When the user passes --with-pgsql=foo, we expect
++dnl that "foo" is something like /usr/lib64/postgresql-16, i.e. that we
++dnl can locate "bin/pg_config" there. This supports choosing one particular
++dnl version of postgres when multiple versions are installed. If the "foo"
++dnl argument is omitted, we instead use whatever pg_config (if any) is present
++dnl on the PATH. It is an error to request postgres support when no usable
++dnl pg_config is provided and one cannot be found.
+ AC_ARG_WITH(pgsql,
+ 	ACX_HELP_STRING([--with-pgsql=DIR],
+-		[sets path to pgsql installation]),
+-	PGSQL=$withval,)
+-AC_CHECK_LIB(crypt,main)
+-if test "$ac_cv_lib_crypt_main" = "yes" -a "x$PGSQL" != "xno"; then
+-  if test -n "$PGSQL"; then
+-    LDFLAGS="$LDFLAGS -L$PGSQL/lib"
+-    CPPFLAGS="$CPPFLAGS -I$PGSQL/include"
+-  fi
+-  AC_CHECK_LIB(pq,PQsetdbLogin,,,-lcrypt)
+-  if test "$ac_cv_lib_pq_PQsetdbLogin" = "yes"; then
+-    AC_CHECK_HEADERS(pgsql/libpq-fe.h)
+-    AC_CHECK_HEADERS(postgresql/libpq-fe.h)
+-    AC_CHECK_HEADERS(libpq-fe.h)
+-    if [[ -n "$PGSQL" -a "$ac_cv_header_libpq_fe_h" = "yes" ]]; then
+-      PGLIBS="-L$PGSQL/lib -lpq -lcrypt"
+-      PGINCLUDE="-I$PGSQL/include"
+-    elif test  "$ac_cv_header_pgsql_libpq_fe_h" = "yes"; then
+-      PGLIBS="-lpq -lcrypt"
+-      PGINCLUDE="-I/usr/include/pgsql"
+-    elif test  "$ac_cv_header_postgresql_libpq_fe_h" = "yes"; then
+-      PGLIBS="-L$PGSQL/lib -lpq -lcrypt"
+-      PGINCLUDE="-I/usr/include/postgresql"
+-    elif test  "$ac_cv_header_libpq_fe_h" = "yes"; then
+-      PGLIBS="-L$PGSQL/lib -lpq -lcrypt"
+-      PGINCLUDE="-I$PGSQL/include"
+-    fi
+-    if test -z "$PGINCLUDE"; then
+-      AC_MSG_WARN([Skipping PostgreSQL plugin (check_pgsql)])
+-      AC_MSG_WARN([install PostgreSQL headers to compile this plugin (see REQUIREMENTS).])
+-    else
+-      AC_SUBST(PGLIBS)
+-      AC_SUBST(PGINCLUDE)
+-      EXTRAS="$EXTRAS check_pgsql\$(EXEEXT)"
+-    fi
+-  else
+-    AC_MSG_WARN([Skipping PostgreSQL plugin (check_pgsql)])
+-    AC_MSG_WARN([LIBS="$LIBS" CPPFLAGS="$CPPFLAGS"])
+-    AC_MSG_WARN([install PostgreSQL libs to compile this plugin (see REQUIREMENTS).])
+-  fi
+-else
+-  AC_MSG_WARN([Skipping PostgreSQL plugin (check_pgsql)])
+-  AC_MSG_WARN([install lib crypt and PostgreSQL libs to compile this plugin (see REQUIREMENTS).])
+-fi
+-LIBS="$_SAVEDLIBS"
+-CPPFLAGS="$_SAVEDCPPFLAGS"
++		[path to pgsql installation, i.e. path to bin/pg_config]),
++	PGSQL=$withval,PGSQL=no)
++
++dnl --with-pgsql sans argument gives "yes"
++dnl --without-pgsql gives "no" (this is also the default, see above)
++dnl --with-pgsql=foo gives "foo"
++AS_IF([test "x${PGSQL}" = xno],[
++  AC_MSG_WARN([Skipping PostgreSQL plugin])
++],[
++  _PG_CONFIG=""
++
++  AS_IF([test "x${PGSQL}" = xyes],[
++    AC_PATH_PROG(_PG_CONFIG, pg_config)
++    AS_IF([test -z "${_PG_CONFIG}"],[
++      AC_MSG_ERROR([postgres support requested but pg_config not found])
++    ])
++  ],[
++    AC_MSG_CHECKING([for usable ${PGSQL}/bin/pg_config])
++    AS_IF([test -f "${PGSQL}/bin/pg_config" -a -x "${PGSQL}/bin/pg_config"],[
++      AC_MSG_RESULT([yes])
++      _PG_CONFIG="${PGSQL}/bin/pg_config"
++    ],[
++      AC_MSG_RESULT([no])
++      AC_MSG_ERROR([${PGSQL}/bin/pg_config not found or not executable])
++    ])
++  ])
++
++  dnl Sanity check: look for a header using the -I flags
++  dnl that we get from pg_config.
++  _SAVED_CPPFLAGS="${CPPFLAGS}"
++  PGINCLUDE="-I$(${_PG_CONFIG} --includedir)"
++  CPPFLAGS="${CPPFLAGS} ${PGINCLUDE}"
++  AC_CHECK_HEADER(libpq-fe.h,[
++    PGLIBS="-L$(${_PG_CONFIG} --libdir) -lpq"
++    AC_SUBST(PGLIBS)
++    AC_SUBST(PGINCLUDE)
++    EXTRAS="$EXTRAS check_pgsql\$(EXEEXT)"
++  ],[
++    AC_MSG_ERROR([libpq-fe.h not found])
++  ])
++  CPPFLAGS="${_SAVED_CPPFLAGS}"
++])
++
+ 
+ AC_ARG_WITH([dbi], [AS_HELP_STRING([--without-dbi], [Skips the dbi plugin])])
+ dnl Check for DBI libraries

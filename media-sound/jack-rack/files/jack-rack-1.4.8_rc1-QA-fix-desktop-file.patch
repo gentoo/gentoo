@@ -1,0 +1,12 @@
+--- a/jack-rack.desktop
++++ b/jack-rack.desktop
+@@ -3,7 +3,7 @@
+ Comment=Stereo LADSPA effects rack
+ Comment[ru]=Стойка эффектов LADSPA
+ Exec=jack-rack
+-Icon=jack-rack-icon.png
++Icon=jack-rack-icon
+ Terminal=false
+ Type=Application
+-Categories=GNOME;Application;AudioVideo;
++Categories=GNOME;GTK;AudioVideo;

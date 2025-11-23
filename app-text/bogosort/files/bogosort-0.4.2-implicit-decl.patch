@@ -1,0 +1,38 @@
+diff --git a/xmalloc.c b/xmalloc.c
+index a2c7689..dd00346 100644
+--- a/xmalloc.c
++++ b/xmalloc.c
+@@ -29,6 +29,7 @@
+ 
+ #if STDC_HEADERS
+ # include <stdlib.h>
++# include <string.h>
+ #else
+ VOID *calloc ();
+ VOID *malloc ();
+diff --git a/system.h b/system.h
+index 993dd36..b9fee80 100644
+--- a/system.h
++++ b/system.h
+@@ -159,20 +159,7 @@ struct utimbuf
+ 
+ /* Don't use bcopy!  Use memmove if source and destination may overlap,
+    memcpy otherwise.  */
+-
+-#ifdef HAVE_STRING_H
+-# if !STDC_HEADERS && HAVE_MEMORY_H
+-#  include <memory.h>
+-# endif
+-# include <string.h>
+-#else
+-# ifndef HAVE_STRCHR
+-#  define strchr index
+-#  define strrchr rindex
+-# endif /* HAVE_STRCHR */
+-char *strchr(), *strrchr();
+-char *memchr ();
+-#endif
++#include <string.h>
+ 
+ #include <errno.h>
+ #ifndef errno

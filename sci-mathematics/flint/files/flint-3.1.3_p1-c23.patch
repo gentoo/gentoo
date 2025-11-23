@@ -1,0 +1,31 @@
+From ee516836e58327310ca58f10f71ae8873b0320e0 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Mon, 25 Nov 2024 22:22:02 -0500
+Subject: [PATCH] src/flint.h.in: fix "noreturn" attribute in C23 mode
+
+C23 uses [[noreturn]] for this, just like C++.
+
+Signed-off-by: Michael Orlitzky <michael@orlitzky.com>
+---
+ src/flint.h.in | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/src/flint.h.in b/src/flint.h.in
+index a574fc8a26..5b95ea5fe3 100644
+--- a/src/flint.h.in
++++ b/src/flint.h.in
+@@ -156,12 +156,10 @@ typedef const ulong * nn_srcptr;
+ # define FLINT_DEPRECATED
+ #endif
+ 
+-#if defined(__cplusplus)
++#if defined(__cplusplus) || ( __STDC_VERSION__ >= 202300L )
+ # define FLINT_NORETURN [[noreturn]]
+-#elif __STDC_VERSION__ < 202300L
+-# define FLINT_NORETURN _Noreturn
+ #else
+-# define FLINT_NORETURN noreturn
++# define FLINT_NORETURN _Noreturn
+ #endif
+ 
+ #if FLINT_USES_TLS

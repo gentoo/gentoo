@@ -1,0 +1,30 @@
+https://github.com/dell/libsmbios/pull/149
+
+From 2c29293ed6a713254192c6f6c762a0ed82391ed5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mark=C3=A9ta?= <meggy.calabkova@gmail.com>
+Date: Thu, 30 Jan 2025 12:19:49 +0100
+Subject: [PATCH] drop unittest.makeSuite (dropped in python 3.13)
+
+---
+ src/pyunit/TestLib.py | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/src/pyunit/TestLib.py b/src/pyunit/TestLib.py
+index 561453b2..e420990a 100755
+--- a/src/pyunit/TestLib.py
++++ b/src/pyunit/TestLib.py
+@@ -21,12 +21,10 @@ def parseOptions(*args):
+     pass
+ 
+ def runTests( testCase ):
+-    testToRun = 'test'
+-
+     myTestSuite = unittest.TestSuite()
+     for i in testCase:
+         try:
+-            temp = unittest.makeSuite( i, testToRun )
++            temp = unittest.defaultTestLoader.loadTestsFromTestCase( i )
+             myTestSuite.addTest(temp)
+         except ValueError:
+             pass
+

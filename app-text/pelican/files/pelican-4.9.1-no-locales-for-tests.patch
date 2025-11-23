@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/863962
+https://git.alpinelinux.org/aports/tree/testing/py3-pelican/no-locales-for-tests.patch
+
+--- a/pelican/tests/support.py
++++ b/pelican/tests/support.py
+@@ -150,15 +150,7 @@
+ 
+ 
+ def locale_available(locale_):
+-    old_locale = locale.setlocale(locale.LC_TIME)
+-
+-    try:
+-        locale.setlocale(locale.LC_TIME, str(locale_))
+-    except locale.Error:
+-        return False
+-    else:
+-        locale.setlocale(locale.LC_TIME, old_locale)
+-        return True
++    return False
+ 
+ 
+ def can_symlink():

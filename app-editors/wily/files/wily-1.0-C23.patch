@@ -1,0 +1,101 @@
+DO NOT EAT ERRORS AND CONTINUE
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -4,12 +4,16 @@
+ srcdir=@srcdir@
+ VPATH=@srcdir@
+ 
+-subdirs=libmsg wily
++SUBDIRS=libmsg wily
++.PHONY: $(TOPTARGETS) $(SUBDIRS)
++
++wily: libmsg
+ 
+-all install clean nuke distclean::
+-	for i in $(subdirs); do \
+-		(cd $$i; $(MAKE) $(MFLAGS) $@); \
+-	done
++TOPTARGETS=all install clean nuke distclean
++
++$(TOPTARGETS):: $(SUBDIRS)
++$(SUBDIRS):
++	$(MAKE) -C $@ $(MAKECMDGOALS)
+ 
+ nuke distclean::
+ 	rm -f wily.* config.cache config.h config.log config.status Makefile
+bug https://bugs.gentoo.org/729238
+Do not call ar directly
+--- a/configure.in
++++ b/configure.in
+@@ -95,6 +95,7 @@
+ AC_PROG_MAKE_SET
+ AM_PROG_CC_STDC
+ AC_PROG_RANLIB
++AC_PROG_AR
+ 
+ dnl Checks for libraries.
+ AC_PATH_XTRA
+--- a/libmsg/Makefile.in
++++ b/libmsg/Makefile.in
+@@ -7,7 +7,7 @@
+ 
+ CC=@CC@
+ CFLAGS=@CFLAGS@ -I.. -I$(INCLUDES) @NINE_CFLAGS@
+-AR=ar
++AR=@AR@
+ RANLIB=@RANLIB@
+ INCLUDES=$(top_srcdir)/include
+ 
+C23 porting for GCC-15
+--- a/include/msg.h
++++ b/include/msg.h
+@@ -3,7 +3,11 @@
+ 
+ typedef struct Msg Msg;
+ typedef int Id;		/* Window identifier */
++#if __STDC_VERSION__ <= 201710L
+ typedef enum Bool {false, true} Bool;
++#else
++typedef bool Bool;
++#endif
+ typedef struct Range Range;
+ 
+ /* name of environment variable */
+--- a/wily/wily.h
++++ b/wily/wily.h
+@@ -9,6 +9,7 @@
+ #include <libc.h>
+ #include <libg.h>
+ #include <frame.h>
++#include <stdarg.h>
+ #include "config.h"
+ #include <msg.h>
+ 
+--- a/wily/include.c
++++ b/wily/include.c
+@@ -27,11 +27,11 @@
+ 	expanded = text_expand(t, r, notinclude);
+ 	len = RLEN(expanded);
+ 	if( len > (MAXPATH*UTFmax) || len < 2)
+-		return false;
++		return NULL;
+ 	len = text_copyutf(t, expanded, buf);
+ 	
+ 	if (!is_includebrackets(buf[0], buf[len-1]))
+-		return false;
++		return NULL;
+ 	
+ 	buf[len-1] = 0;
+ 	s = pathfind(getenv("INCLUDES"),  buf+1);
+--- a/wily/wily.c
++++ b/wily/wily.c
+@@ -4,6 +4,8 @@
+ 
+ #include "wily.h"
+ #include "tile.h"
++
++extern void initfont(char *fixed); /* from font.c */
+  
+ static int	ncolumns = 2;
+ int	tagheight;
+ 

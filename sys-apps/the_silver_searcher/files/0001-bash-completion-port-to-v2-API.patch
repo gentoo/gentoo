@@ -1,0 +1,58 @@
+From eca81ee573f30f8eb790d33db1c86d2970f7fc4a Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Sun, 16 Jun 2024 15:35:30 -0400
+Subject: [PATCH] bash-completion: port to v2 API
+
+Fixes: #1537
+Signed-off-by: Eli Schwartz <eschwartz93@gmail.com>
+---
+ ag.bashcomp.sh | 16 +++++++---------
+ 1 file changed, 7 insertions(+), 9 deletions(-)
+
+diff --git a/ag.bashcomp.sh b/ag.bashcomp.sh
+index 5637ce4..e03f580 100644
+--- a/ag.bashcomp.sh
++++ b/ag.bashcomp.sh
+@@ -1,11 +1,9 @@
+ _ag() {
+-  local lngopt shtopt split=false
+-  local cur prev
++  local cur prev words cword split
++  local lngopt shtopt
+ 
+   COMPREPLY=()
+-  cur=$(_get_cword "=")
+-  prev="${COMP_WORDS[COMP_CWORD-1]}"
+-
++  _init_completion -s || return 0
+   _expand || return 0
+ 
+   lngopt='
+@@ -96,12 +94,10 @@ _ag() {
+   types=$(ag --list-file-types |grep -- '--')
+ 
+   # these options require an argument
+-  if [[ "${prev}" == -[ABCGgm] ]] ; then
++  if [[ "${prev}" = -[ABCGgm] ]] ; then
+     return 0
+   fi
+ 
+-  _split_longopt && split=true
+-
+   case "${prev}" in
+     --ignore-dir) # directory completion
+               _filedir -d
+@@ -117,7 +113,9 @@ _ag() {
+               return 0;;
+   esac
+ 
+-  $split && return 0
++  if [[ ${split} = true ]]; then
++      return 0
++  fi
+ 
+   case "${cur}" in
+     -*)
+-- 
+2.44.2
+

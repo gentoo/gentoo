@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>o.freyermuth@googlemail.com</email>
+    <name>Oliver Freyermuth</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>amadio@gentoo.org</email>
+    <name>Guilherme Amadio</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <bugs-to>https://github.com/Thalhammer/jwt-cpp/issues</bugs-to>
+    <remote-id type="github">Thalhammer/jwt-cpp</remote-id>
+  </upstream>
+  <use>
+    <flag name="picojson">Enable use of <pkg>dev-cpp/picojson</pkg></flag>
+  </use>
+</pkgmetadata>

@@ -1,0 +1,31 @@
+--- orpheus-1.5/kkstrtext-0.1/kkstrtext.cc	2004-01-15 21:25:31.000000000 +0100
++++ orpheus-1.5-new/kkstrtext-0.1/kkstrtext.cc	2006-08-28 11:48:36.926598598 +0200
+@@ -431,7 +431,7 @@
+ }
+ 
+ int intcompare(void *s1, void *s2) {
+-    return (int) s1 != (int) s2;
++    return (long) s1 != (long) s2;
+ }
+ 
+ string i2str(int i) {
+@@ -885,7 +885,7 @@
+ #ifdef HAVE_ICONV
+     iconv_t cd = iconv_open(tocs.c_str(), fromcs.c_str());
+ 
+-    if(((int) cd) != -1) {
++    if(((long) cd) != -1) {
+ 	string r, text(atext);
+ 	size_t inleft, outleft, soutleft;
+ 	char *inbuf, *outbuf, *sinbuf, *soutbuf;
+--- orpheus-1.5/kkconsui-0.1/src/texteditor.cc	2003-09-09 23:51:33.000000000 +0200
++++ orpheus-1.5-new/kkconsui-0.1/src/texteditor.cc	2006-08-28 11:56:10.082753610 +0200
+@@ -1940,7 +1940,7 @@
+ }
+ 
+ int texteditor::findint(void *p1, void *p2) {
+-    return *(int *) p1 != (int) p2;
++    return *(long *) p1 != (long) p2;
+ }
+ 
+ int texteditor::findhighline(void *p1, void *p2) {

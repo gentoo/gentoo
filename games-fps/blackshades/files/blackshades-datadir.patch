@@ -1,0 +1,18 @@
+--- a/Source/Main.cpp
++++ b/Source/Main.cpp
+@@ -1,6 +1,7 @@
+ /********************> Headers <*****/
+ 
+ #include "Game.h"
++#include <unistd.h>
+ 
+ 
+ 
+@@ -17,6 +18,7 @@
+ int 	main( int argc, char *argv[] )
+ 
+ 	{
++	chdir("@DATADIR@");
+ 
+ 	
+ #ifdef OS9 

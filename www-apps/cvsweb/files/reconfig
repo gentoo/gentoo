@@ -1,0 +1,15 @@
+#!/bin/bash
+
+die() {
+	echo "#####"
+	echo $1
+	echo "#####"
+	exit 1
+}
+
+if [ $1 = "install" ]; then
+	sed "s|/usr/local/etc/cvsweb/cvsweb.conf|${VHOST_ROOT}/cvsweb.conf|g
+	s|/usr/local/etc/cvsweb|${VHOST_ROOT}|g
+	s|/css/cvsweb.css|/cvsweb.css|g
+	s|/usr/local/etc/apache/mime.types|/etc/mime.types|g" -i ${VHOST_ROOT}/cgi-bin/cvsweb.cgi ${VHOST_ROOT}/cvsweb.conf || die "sed failed"
+fi

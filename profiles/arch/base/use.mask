@@ -1,0 +1,305 @@
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Alfred Wingate <parona@protonmail.com> (2025-09-20)
+# Experimental and only available on a subset of architectures
+generic-uki
+
+# Sam James <sam@gentoo.org> (2025-09-19)
+# libquadmath from GCC is only available on some arches
+# https://gcc.gnu.org/PR96016
+perl_features_quadmath
+
+# Michał Górny <mgorny@gentoo.org> (2025-09-02)
+# dev-python/pypi-attestations is not keyworded everywhere.
+verify-provenance
+
+# Paul Zander <negril.nx+gentoo@gmail.com> (2025-05-01)
+# media-libs/libspng only keyworded on amd64, arm64
+spng
+
+# Paul Zander <negril.nx+gentoo@gmail.com> (2025-05-01)
+# only keyworded on amd64, arm
+openni
+openni2
+
+# Thomas Bettler <thomas.bettler@gmail.com> (2024-11-04)
+# media-libs/tiff only keyworded on amd64
+lerc
+
+# Paul Zander <negril.nx+gentoo@gmail.com> (2024-04-14)
+# media-libs/quirc only keyworded on amd64, x86
+quirc
+
+# Paul Zander <negril.nx+gentoo@gmail.com> (2024-03-28)
+# dev-libs/optix only works on amd64 and arm64
+optix
+
+# Paul Zander <negril.nx+gentoo@gmail.org> (2024-02-14)
+# media-libs/jasper is only supported on specific architectures
+jasper
+
+# Paul Zander <negril.nx+gentoo@gmail.org> (2024-02-14)
+# sci-libs/atlas is only supported on specific architectures
+atlas
+
+# Nowa Ammerlaan <nowa@gentoo.org> (2023-07-11)
+# Mask secureboot flag on arches where sbsigntools is not keyworded
+secureboot
+
+# matoro <matoro_gentoo@matoro.tk> (2022-09-29)
+# Pulls in dev-util/google-perftools, which is arch-specific
+# Unmask on supported arches.
+tcmalloc
+
+# Michał Górny <mgorny@gentoo.org> (2021-01-07)
+# Prebuilt kernels are not supported on all architectures.
+dist-kernel
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-06-06)
+# sci-libs/mkl is only supported on specific architectures
+mkl
+
+# Thomas Deutschmann <whissi@gentoo.org> (2019-11-11)
+# James Le Cuirot <chewi@gentoo.org> (2017-06-29)
+# Forced and masked by default. Unmask where necessary.
+big-endian
+
+# Sven Wegener <swegener@gentoo.org> (2017-05-31)
+# libvirt is only supported on specific architectures
+libvirt
+
+# Michael Orlitzky <mjo@gentoo.org> (2017-01-07)
+# dev-db/oracle-instantclient* only supports amd64 and x86.
+oci8
+
+# cuda/NVENC only works on amd64/arm64
+cuda
+nvenc
+
+# Paul Zander <negril.nx+gentoo@gmail.com> (2023-12-10)
+# cuDNN only works on amd64
+cudnn
+
+# ROCm/HIP only works on amd64
+hip
+hiprt
+
+# masking here, and unmasking in arch/x86/use.mask
+vidix
+
+# vdpau is currently only available with binary nvidia-drivers, thus amd64/x86*
+vdpau
+
+# Infiniband stuff should generaly work on all arches but keyworded only on amd64/x86
+infiniband
+
+# These need libieee1284 which is amd64/x86 only.
+sane_backends_canon_pp
+sane_backends_hpsj5s
+sane_backends_mustek_pp
+sane_backends_qcam
+
+# amd64/x86 arch specific USE flags
+lilo
+svga
+cpu_flags_x86_3dnow
+cpu_flags_x86_3dnowext
+cpu_flags_x86_aes
+cpu_flags_x86_amx_bf16
+cpu_flags_x86_amx_int8
+cpu_flags_x86_amx_tile
+cpu_flags_x86_avx
+cpu_flags_x86_avx2
+cpu_flags_x86_avx512_4fmaps
+cpu_flags_x86_avx512_4vnniw
+cpu_flags_x86_avx512_bf16
+cpu_flags_x86_avx512_bitalg
+cpu_flags_x86_avx512_fp16
+cpu_flags_x86_avx512_vbmi2
+cpu_flags_x86_avx512_vnni
+cpu_flags_x86_avx512_vp2intersect
+cpu_flags_x86_avx512_vpopcntdq
+cpu_flags_x86_avx512bw
+cpu_flags_x86_avx512cd
+cpu_flags_x86_avx512dq
+cpu_flags_x86_avx512er
+cpu_flags_x86_avx512f
+cpu_flags_x86_avx512ifma
+cpu_flags_x86_avx512pf
+cpu_flags_x86_avx512vbmi
+cpu_flags_x86_avx512vl
+cpu_flags_x86_avx_vnni
+cpu_flags_x86_bmi1
+cpu_flags_x86_bmi2
+cpu_flags_x86_f16c
+cpu_flags_x86_fma3
+cpu_flags_x86_fma4
+cpu_flags_x86_mmx
+cpu_flags_x86_mmxext
+cpu_flags_x86_padlock
+cpu_flags_x86_pclmul
+cpu_flags_x86_popcnt
+cpu_flags_x86_rdrand
+cpu_flags_x86_sha
+cpu_flags_x86_sse
+cpu_flags_x86_sse2
+cpu_flags_x86_sse3
+cpu_flags_x86_sse4_1
+cpu_flags_x86_sse4_2
+cpu_flags_x86_sse4a
+cpu_flags_x86_ssse3
+cpu_flags_x86_vpclmulqdq
+cpu_flags_x86_xop
+
+# ppc arch specific USE flags
+cpu_flags_ppc_altivec
+cpu_flags_ppc_vsx
+cpu_flags_ppc_vsx2
+cpu_flags_ppc_vsx3
+cpu_flags_ppc_vsx4
+
+# mips arch specific USE flags
+loongson2f
+
+# ppc64 arch specific USE flags
+ibm
+ps3
+
+# sparc arch specific USE flags
+vis
+
+# arm arch specific USE flags
+cpu_flags_arm_v4
+cpu_flags_arm_v5
+cpu_flags_arm_v6
+cpu_flags_arm_v7
+cpu_flags_arm_v8
+
+cpu_flags_arm_aes
+cpu_flags_arm_asimd
+cpu_flags_arm_asimddp
+cpu_flags_arm_asimdfhm
+cpu_flags_arm_asimdhp
+cpu_flags_arm_crc32
+cpu_flags_arm_edsp
+cpu_flags_arm_i8mm
+cpu_flags_arm_iwmmxt
+cpu_flags_arm_iwmmxt2
+cpu_flags_arm_neon
+cpu_flags_arm_neon-fp16
+cpu_flags_arm_sha1
+cpu_flags_arm_sha2
+cpu_flags_arm_sm4
+cpu_flags_arm_sve
+cpu_flags_arm_sve2
+cpu_flags_arm_thumb
+cpu_flags_arm_thumb2
+cpu_flags_arm_vfp
+cpu_flags_arm_vfp-d32
+cpu_flags_arm_vfpv3
+cpu_flags_arm_vfpv4
+
+# nVidia XvMC requires nvidia-drivers/nvidia-legacy-drivers
+nvidia
+
+# dev-db/oracle-instantclient-basic is only available on x86
+oci8-instant-client
+oracle
+
+input_devices_synaptics
+input_devices_vmmouse
+video_cards_asahi
+video_cards_ast
+video_cards_d3d12
+video_cards_exynos
+video_cards_freedreno
+video_cards_geode
+video_cards_i915
+video_cards_i965
+video_cards_imagination
+video_cards_intel
+video_cards_lima
+video_cards_nvidia
+video_cards_nvk
+video_cards_omap
+video_cards_panfrost
+video_cards_qxl
+video_cards_siliconmotion
+video_cards_tegra
+video_cards_v3d
+video_cards_vc4
+video_cards_vesa
+video_cards_via
+video_cards_virtualbox
+video_cards_vivante
+video_cards_vmware
+
+# Robert Buchholz <rbu@gentoo.org> (2007-06-03)
+# Only works on x86 or amd64
+lcd_devices_luise
+
+# Samuli Suominen <ssuominen@gentoo.org> (2011-10-03)
+# RealMagic Hollywood+/Creative DXR3 support
+# Still using obsolete V4L1 wrt bug 350211
+# If fixed, should be unmasked in amd64/x86/ppc32 use.mask
+dxr3
+
+# Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-21)
+# IPMI is only implemented for x86, amd64 and ia64
+ipmi
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-09)
+# dev-lang/orc is useful only for some specific arches (amd64/x86/arm/...)
+orc
+
+# Mike Gilbert <floppym@gentoo.org> (2013-01-02)
+# PyPy is unkeyworded on most arches. If you are running amd64 or x86,
+# please switch to one of the testing 13.0 profiles to get it.
+python_targets_pypy3_11
+python_single_target_pypy3_11
+
+# Michał Górny <mgorny@gentoo.org> (2013-01-26)
+# Mask the multilib flags globally. Unmasked in specific arches.
+abi_x86_32
+abi_x86_64
+abi_x86_x32
+# Matt Turner <mattst88@gentoo.org> (2013-07-29)
+abi_mips_o32
+abi_mips_n32
+abi_mips_n64
+abi_s390_32
+abi_s390_64
+
+# Andrey Grozin <grozin@gentoo.org> (2014-06-25)
+# These lisps are available only on some arches
+clisp
+clozurecl
+clozurecl64
+cmucl
+ecl
+gcl
+sbcl
+
+# Mike Gilbert <floppym@gentoo.org> (2014-10-19)
+# Requires the following packages to be keyworded/stable:
+# sys-libs/libapparmor
+# sys-apps/apparmor
+# sys-apps/apparmor-utils
+apparmor
+
+# Mask flags that correspond to all possible ARCH values.
+alpha
+amd64
+arm
+arm64
+hppa
+loong
+m68k
+mips
+ppc
+ppc64
+riscv
+s390
+sparc
+x86

@@ -1,0 +1,10 @@
+0. Please NOTE: It is impossible to downgrade bugzilla. Prior to upgrading 
+   you should always make a backup of your database, data files and lib files and 
+   read https://www.bugzilla.org/releases/${PV}/release-notes.html
+
+1. If you have bugzilla emerged with the vhosts flag on, please refer to 
+   https://wiki.gentoo.org/wiki/Webapp-config#Upgrading_an_installed_webapp
+   or https://wiki.gentoo.org/wiki/Bugzilla#Upgrading to upgrade your bugzilla
+   instance.
+
+2. After upgrading you have to run checksetup.pl to complete the upgrade.

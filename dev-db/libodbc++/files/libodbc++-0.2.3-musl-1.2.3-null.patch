@@ -1,0 +1,16 @@
+https://cgit.freebsd.org/ports/tree/databases/libodbc++/files/patch-src-datetime.cpp
+https://bugs.gentoo.org/855887
+
+(Given the source, possibly fixes libcxx too?)
+--- a/src/datetime.cpp
++++ b/src/datetime.cpp
+@@ -272,7 +272,7 @@
+ # endif
+ #endif
+       ,ODBCXX_STRING_CONST("%09d"),nanos_);
+-      buf[9] = NULL;// Terminate string
++      buf[9] = '\0';// Terminate string
+     ret+=ODBCXX_STRING(buf);
+   }
+   return ret;
+

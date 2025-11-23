@@ -1,0 +1,20 @@
+# Redis user.
+REDIS_USER="redis"
+
+# Redis group.
+REDIS_GROUP="redis"
+
+# Redis configuration file.
+REDIS_CONF="/etc/redis/redis.conf"
+
+# Redis dump directory.
+REDIS_DIR="/var/lib/redis"
+
+# Redis options.
+# (Redis expects the first argument to be the configuration file.)
+REDIS_OPTS="${REDIS_CONF}"
+
+# Specify the network service that corresponds to the "bind" setting
+# in your redis.conf. For example, if you bind to 127.0.0.1, this should
+# be set to "net.lo" which provides the loopback interface.
+rc_need="net.lo"

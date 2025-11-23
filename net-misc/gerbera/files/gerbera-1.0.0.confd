@@ -1,0 +1,20 @@
+# /etc/conf.d/gerbera: config file for /etc/init.d/gerbera
+
+# See the gerbera(1) manpage for more info.
+
+# Gerbera Web UI port.
+# NOTE: The minimum value allowed is 49152
+GERBERA_PORT=49152
+
+# Path to Gerbera config file.
+GERBERA_CONFIG="/etc/gerbera/config.xml"
+
+# Path to Gerbera log file.
+GERBERA_LOGFILE="/var/log/gerbera.log"
+
+# Other options you want to pass to Gerbera.
+# Add "--interface eth0" to bind to a named interface.
+GERBERA_OPTIONS=""
+
+# Uncomment if you are running Gerbera against a local MySQL
+# rc_need="mysql"

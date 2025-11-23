@@ -1,0 +1,60 @@
+diff -ru a/src/ifmonitor.c b/src/ifmonitor.c
+--- a/src/ifmonitor.c	2024-04-25 13:35:56.625794510 +0000
++++ b/src/ifmonitor.c	2024-04-25 14:13:08.734022552 +0000
+@@ -27,7 +27,7 @@
+ #include <linux/types.h>
+ #include <linux/netlink.h>
+ #include <linux/rtnetlink.h>
+-#include <linux/if.h>
++#include <net/if.h>
+ #include <string.h>
+ #include <unistd.h>
+ #include <errno.h>
+diff -ru a/src/interface.c b/src/interface.c
+--- a/src/interface.c	2024-04-25 13:35:56.625794510 +0000
++++ b/src/interface.c	2024-04-25 14:12:49.510133122 +0000
+@@ -27,7 +27,7 @@
+ #include <linux/if_ether.h>
+ #include <sys/socket.h>
+ #include <sys/ioctl.h>
+-#include <linux/if.h>
++#include <net/if.h>
+ #include <syslog.h>
+ #include <string.h>
+ #include <errno.h>
+diff -ru a/src/wireless.15.h b/src/wireless.15.h
+--- a/src/wireless.15.h	2024-04-25 13:35:56.625794510 +0000
++++ b/src/wireless.15.h	2024-04-25 14:12:56.254094333 +0000
+@@ -71,7 +71,7 @@
+ 
+ #include <linux/types.h>		/* for "caddr_t" et al		*/
+ #include <linux/socket.h>		/* for "struct sockaddr" et al	*/
+-#include <linux/if.h>			/* for IFNAMSIZ and co... */
++#include <net/if.h>			/* for IFNAMSIZ and co... */
+ 
+ /***************************** VERSION *****************************/
+ /*
+diff -ru a/src/wireless.16.h b/src/wireless.16.h
+--- a/src/wireless.16.h	2024-04-25 13:35:56.625794510 +0000
++++ b/src/wireless.16.h	2024-04-25 14:12:42.710172234 +0000
+@@ -73,7 +73,7 @@
+  * at some point. Jean II */
+ #include <linux/types.h>		/* for "caddr_t" et al		*/
+ #include <linux/socket.h>		/* for "struct sockaddr" et al	*/
+-#include <linux/if.h>			/* for IFNAMSIZ and co... */
++#include <net/if.h>			/* for IFNAMSIZ and co... */
+ 
+ /***************************** VERSION *****************************/
+ /*
+diff -ru a/src/wireless.h b/src/wireless.h
+--- a/src/wireless.h	2024-04-25 13:35:56.625794510 +0000
++++ b/src/wireless.h	2024-04-25 14:13:02.574057982 +0000
+@@ -23,7 +23,7 @@
+ 
+ #include <sys/types.h>
+ #include <sys/socket.h>
+-#include <linux/if.h>
++#include <net/if.h>
+ #include <net/if_arp.h>
+ 
+ #include "wireless.16.h"

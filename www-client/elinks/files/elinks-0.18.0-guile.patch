@@ -1,0 +1,37 @@
+https://bugs.gentoo.org/966060
+https://github.com/rkd77/elinks/issues/373
+https://github.com/rkd77/elinks/commit/ed65b37141fffa0f14886583e0caeca2d52bf52b
+
+From ed65b37141fffa0f14886583e0caeca2d52bf52b Mon Sep 17 00:00:00 2001
+From: Witold Filipczyk <witekfl@poczta.onet.pl>
+Date: Tue, 1 Apr 2025 10:22:09 +0200
+Subject: [PATCH] [scripting] init guile before displaying version. Refs #373
+
+---
+ src/scripting/guile/guile.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/scripting/guile/guile.c b/src/scripting/guile/guile.c
+index 01226169b..93e30f09c 100644
+--- a/src/scripting/guile/guile.c
++++ b/src/scripting/guile/guile.c
+@@ -4,6 +4,9 @@
+ #include "config.h"
+ #endif
+ 
++#include <libguile.h>
++#include <stdio.h>
++
+ #include "elinks.h"
+ 
+ #include "intl/libintl.h"
+@@ -15,6 +18,8 @@ static const char *
+ get_name_guile(struct module *xxx)
+ {
+ 	static char elguileversion[32];
++
++	scm_init_guile();
+ 	snprintf(elguileversion, 31, "Guile %s", scm_to_locale_string(scm_version()));
+ 
+ 	return elguileversion;
+

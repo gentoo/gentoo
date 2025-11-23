@@ -1,0 +1,10 @@
+--- a/flac-image.c
++++ b/flac-image.c
+@@ -15,6 +15,7 @@
+  */
+ 
+ #include <stdio.h>
++#include <string.h>
+ #include <unistd.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>

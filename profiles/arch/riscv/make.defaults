@@ -1,0 +1,58 @@
+# Copyright 2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Main RISC-V profile directory. Common settings for all riscv profiles.
+
+# This is not a complete profile. Use the subdirectories!
+
+ARCH="riscv"
+ACCEPT_KEYWORDS="riscv ~riscv"
+
+CFLAGS="-O2 -pipe"
+CXXFLAGS="${CFLAGS}"
+FFLAGS="${CFLAGS}"
+FCFLAGS="${CFLAGS}"
+
+SYMLINK_LIB="no"
+
+# Note about LIBDIR_*: 
+# 1) To keep in step with other arches and distributions we use "lib" for 32bit
+#    and "lib64" for 64bit for the *default* ABI.
+#    NOT the two level dirs from the specification, and NOT lib32 as specified
+#    as 32bit fallback.
+# 2) The LIBDIRs provided *here* are the ones for secondary ABI in the multilib
+#    case.
+#    The LIBDIR for the *primary* ABI MUST be overridden in an inheriting profile.
+
+# Flags for lp64d
+LIBDIR_lp64d="lib64/lp64d"
+CFLAGS_lp64d="-mabi=lp64d"
+LDFLAGS_lp64d="-m elf64lriscv"
+CHOST_lp64d="riscv64-unknown-linux-gnu"
+
+# Flags for lp64
+LIBDIR_lp64="lib64/lp64"
+CFLAGS_lp64="-mabi=lp64"
+LDFLAGS_lp64="-m elf64lriscv_lp64"
+CHOST_lp64="riscv64-unknown-linux-gnu"
+
+# Flags for ilp32d
+LIBDIR_ilp32d="lib32/ilp32d"
+CFLAGS_ilp32d="-mabi=ilp32d -march=rv32imafdc"
+LDFLAGS_ilp32d="-m elf32lriscv"
+CHOST_ilp32d="riscv32-unknown-linux-gnu"
+
+# Flags for ilp32
+LIBDIR_ilp32="lib32/ilp32"
+CFLAGS_ilp32="-mabi=ilp32 -march=rv32imac"
+LDFLAGS_ilp32="-m elf32lriscv_ilp32"
+CHOST_ilp32="riscv32-unknown-linux-gnu"
+
+# Since many people will want to test this in qemu...
+FEATURES="-pid-sandbox -network-sandbox -ipc-sandbox"
+
+# The following stuff MUST be defined in subdirs:
+# ABI
+# DEFAULT_ABI
+# MULTILIB_ABIS
+# LIBDIR_* for DEFAULT_ABI

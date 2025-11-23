@@ -1,0 +1,13 @@
+unsigned shorts are enough for libdockapp. Ought to be enough for size of widget
+diff -ru wmDownload.orig/wmDownload.c wmDownload/wmDownload.c
+--- wmDownload.orig/wmDownload.c	2024-04-02 06:30:58.407108657 +0000
++++ wmDownload/wmDownload.c	2024-04-02 06:32:26.445684633 +0000
+@@ -266,7 +266,7 @@
+ 
+ int main (int argc, char **argv)
+ {
+-	unsigned int height, width;
++	unsigned short height, width;
+ 	
+ 	DACallbacks callbacks = { NULL, buttonPressCallback, NULL, NULL, NULL, NULL, NULL }; 
+ 

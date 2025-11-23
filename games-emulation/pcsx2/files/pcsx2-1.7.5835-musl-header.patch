@@ -1,0 +1,9 @@
+https://bugs.gentoo.org/935352
+--- a/pcsx2/SPU2/defs.h
++++ b/pcsx2/SPU2/defs.h
+@@ -8,4 +8,5 @@
+ #include <algorithm>
+ #include <array>
++#include <cstdio>
+ 
+ // --------------------------------------------------------------------------------------

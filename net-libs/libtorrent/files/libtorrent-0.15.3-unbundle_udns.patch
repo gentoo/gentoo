@@ -1,0 +1,54 @@
+diff --git a/src/net/udns_library.cc b/src/net/udns_library.cc
+index 788e7eee..73b7e210 100644
+--- a/src/net/udns_library.cc
++++ b/src/net/udns_library.cc
+@@ -12,23 +12,6 @@
+ 
+ extern "C" {
+ 
+-#include "net/udns/udns.h"
+-
+-#include "net/udns/udns_XtoX.c"
+-#include "net/udns/udns_bl.c"
+-#include "net/udns/udns_codes.c"
+-#include "net/udns/udns_dn.c"
+-#include "net/udns/udns_dntosp.c"
+-#include "net/udns/udns_init.c"
+-#include "net/udns/udns_jran.c"
+-#include "net/udns/udns_misc.c"
+-#include "net/udns/udns_parse.c"
+-#include "net/udns/udns_resolver.c"
+-#include "net/udns/udns_rr_a.c"
+-#include "net/udns/udns_rr_mx.c"
+-#include "net/udns/udns_rr_naptr.c"
+-#include "net/udns/udns_rr_ptr.c"
+-#include "net/udns/udns_rr_srv.c"
+-#include "net/udns/udns_rr_txt.c"
++#include <udns.h>
+ 
+ }
+diff --git a/src/net/udns_library.h b/src/net/udns_library.h
+index b09b398a..bdb1bcdf 100644
+--- a/src/net/udns_library.h
++++ b/src/net/udns_library.h
+@@ -1,6 +1,6 @@
+ #ifndef TORRENT_NET_UDNS_LIBRARY_H
+ #define TORRENT_NET_UDNS_LIBRARY_H
+ 
+-#include "net/udns/udns.h"
++#include <udns.h>
+ 
+ #endif
+diff --git a/src/net/udns_resolver.cc b/src/net/udns_resolver.cc
+index e35e5fc1..f697112d 100644
+--- a/src/net/udns_resolver.cc
++++ b/src/net/udns_resolver.cc
+@@ -8,7 +8,7 @@
+ 
+ #include "globals.h"
+ #include "manager.h"
+-#include "net/udns/udns.h"
++#include <udns.h>
+ #include "torrent/common.h"
+ #include "torrent/poll.h"
+ #include "torrent/net/socket_address.h"

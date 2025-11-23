@@ -1,0 +1,21 @@
+https://github.com/gentoo/gentoo/pull/40367
+--- a/src/engine/display/font.hpp~	2011-12-24 15:46:47.000000000 -0600
++++ b/src/engine/display/font.hpp	2025-02-03 14:08:33.568660344 -0600
+@@ -18,6 +18,7 @@
+ #define HEADER_PINGUS_ENGINE_DISPLAY_FONT_HPP
+ 
+ #include <memory>
++#include <cstdint>
+ 
+ #include "math/rect.hpp"
+ 
+--- a/src/pingus/collision_map.hpp~	2011-12-24 15:46:47.000000000 -0600
++++ b/src/pingus/collision_map.hpp	2025-02-03 14:18:53.845089769 -0600
+@@ -18,6 +18,7 @@
+ #define HEADER_PINGUS_PINGUS_COLLISION_MAP_HPP
+ 
+ #include <memory>
++#include <cstdint>
+ 
+ #include "engine/display/sprite.hpp"
+ #include "pingus/groundtype.hpp"

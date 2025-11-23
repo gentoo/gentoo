@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Pencil
+Comment=An open-source GUI prototyping tool that is available for ALL platforms.
+Exec="/usr/bin/evoluspencil"
+Terminal=false
+Type=Application
+Icon=pencil
+Categories=Graphics

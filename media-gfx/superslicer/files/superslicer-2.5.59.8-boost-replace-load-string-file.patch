@@ -1,0 +1,43 @@
+diff --git a/src/slic3r/GUI/ScriptExecutor.cpp b/src/slic3r/GUI/ScriptExecutor.cpp
+index f32e44204..272af5ec3 100644
+--- a/src/slic3r/GUI/ScriptExecutor.cpp
++++ b/src/slic3r/GUI/ScriptExecutor.cpp
+@@ -5,8 +5,11 @@
+ #include "libslic3r/PresetBundle.hpp"
+ #include "libslic3r/Print.hpp"
+ 
++#include <fstream>
+ #include <string>
+ 
++#include <boost/filesystem.hpp>
++
+ #include <angelscript/source/as_config.h>
+ #include <angelscript/add_on/autowrapper/aswrappedcall.h>
+ #include <angelscript/add_on/scriptarray/scriptarray.h>
+@@ -616,6 +619,17 @@ bool as_is_enabled(std::string &key)
+     return f->is_enabled();
+ }
+ 
++inline
++void load_string_file(const boost::filesystem::path& p, std::string& str)
++{
++       std::ifstream file;
++       file.exceptions(std::ifstream::failbit | std::ifstream::badbit);
++       file.open(p, std::ios_base::binary);
++       std::size_t sz = static_cast<std::size_t>(boost::filesystem::file_size(p));
++       str.resize(sz, '\0');
++       file.read(&str[0], sz);
++}
++
+ //function to reset a field
+ void as_back_initial_value(std::string& key) {
+     current_script->add_to_reset(key);
+@@ -745,7 +759,7 @@ void ScriptContainer::init(const std::string& tab_key, Tab* tab)
+         //res = builder.AddSectionFromFile(ui_script_file.string().c_str()); //seems to be problematic on cyrillic locale
+         {
+             std::string all_file;
+-            boost::filesystem::load_string_file(ui_script_file, all_file);
++            load_string_file(ui_script_file, all_file);
+             res = builder.AddSectionFromMemory(ui_script_file.string().c_str(), all_file.c_str(), (unsigned int)(all_file.length()), 0);
+         }
+         if (res < 0) throw CompileErrorException("Error, can't build the script for tab " + tab_key);

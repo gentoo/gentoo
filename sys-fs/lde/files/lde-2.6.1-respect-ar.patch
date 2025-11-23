@@ -1,0 +1,11 @@
+--- a/macros/configure.in
++++ b/macros/configure.in
+@@ -30,7 +30,7 @@ AC_PROG_CC
+ AC_PROG_INSTALL
+ AC_PROG_MAKE_SET
+ AC_PATH_PROG(RM, rm, rm)
+-AC_PATH_PROG(AR, ar, ar)
++AM_PROG_AR
+ 
+ AC_CHECK_PROG(system,uname,`uname`,unknown)
+ 

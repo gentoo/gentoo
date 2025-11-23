@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+  </maintainer>
+  <maintainer type="person">
+    <email>frp.bissey@gmail.com</email>
+    <name>François Bissey</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    Groups, Algorithms, Programming is a system for computational
+    discrete algebra, with particular emphasis on Computational Group
+    Theory. GAP provides a programming language, a library of thousands
+    of functions implementing algebraic algorithms written in the GAP
+    language as well as large data libraries of algebraic objects. GAP
+    is used in research and teaching for studying groups and their
+    representations, rings, vector spaces, algebras, combinatorial
+    structures, and more.
+  </longdescription>
+  <use>
+    <flag name="memcheck">Enable memory checking</flag>
+    <flag name="minimal">
+      Install only the GAP packages that are strictly required for GAP
+      to run. GAP will complain about the others unless you either start
+      it with the "-A" flag or set "AutoloadPackages" in your gap.ini.
+    </flag>
+  </use>
+  <upstream>
+    <remote-id type="github">gap-system/gap</remote-id>
+  </upstream>
+</pkgmetadata>

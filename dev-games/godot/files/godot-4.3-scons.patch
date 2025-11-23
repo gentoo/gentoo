@@ -1,0 +1,15 @@
+--- a/SConstruct
++++ b/SConstruct
+@@ -297,2 +297,3 @@
+ opts.Add("CC", "C compiler binary")
++opts.Add("AR", "Archiver")
+ opts.Add("LINK", "Linker binary")
+@@ -731,8 +732,2 @@
+             env.Append(CCFLAGS=[f"-ffile-prefix-map={project_path}=."])
+-    else:
+-        if methods.using_clang(env) and not methods.is_vanilla_clang(env):
+-            # Apple Clang, its linker doesn't like -s.
+-            env.Append(LINKFLAGS=["-Wl,-S", "-Wl,-x", "-Wl,-dead_strip"])
+-        else:
+-            env.Append(LINKFLAGS=["-s"])
+ 

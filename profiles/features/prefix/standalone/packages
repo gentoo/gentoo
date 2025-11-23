@@ -1,0 +1,14 @@
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# RAP does not need busybox for emergency recovery, the host have all those tools.
+-*sys-apps/busybox
+
+# Most of the iproute2 suit require root privilege to function.
+-*sys-apps/iproute2
+
+# Man pages are not essential.
+-*sys-apps/man-pages
+
+# A service manager is not essential.
+-*virtual/service-manager

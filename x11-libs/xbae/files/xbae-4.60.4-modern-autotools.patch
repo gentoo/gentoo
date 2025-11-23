@@ -1,0 +1,28 @@
+From 165c0f9ae086373c5d1659eac1ae14baa2975145 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Sun, 1 Sep 2024 22:09:04 -0400
+Subject: [PATCH] port to modern autotools
+
+When listing files to be installed, you cannot double-list them. Modern
+autotools tries to install all of them in one `install` command, which
+is incompatible with installing the same file twice.
+---
+ doc/images/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/doc/images/Makefile.am b/doc/images/Makefile.am
+index e6d91dd..79a8eb0 100644
+--- a/doc/images/Makefile.am
++++ b/doc/images/Makefile.am
+@@ -34,7 +34,7 @@ image_DATA=	\
+ 	bg.png updated.png coverplus.png add.jpg \
+ 	caption.png choice.png colors.jpg draw.png fifteen.jpg \
+ 	input.png list.jpg matrix.jpg multifixed.jpg select-push.jpg \
+-	mailbox.png bg.png pricing.jpg LDO.jpg risk.jpg \
++	mailbox.png pricing.jpg LDO.jpg risk.jpg \
+ 	organize.jpg xbasket.png xbum1-2.png xbill2-2.png capfloor1.png \
+ 	capfloor3.png taam.png \
+ 	grohtml-XbaeCaption1.png \
+-- 
+2.44.2
+

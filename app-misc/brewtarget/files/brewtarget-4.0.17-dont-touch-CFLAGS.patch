@@ -1,0 +1,13 @@
+diff --git a/meson.build b/meson.build
+index 4952a515..d22a6cac 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1568,7 +1568,7 @@ endif
+ #=======================================================================================================================
+ #========================================= Compiler-specific settings & flags ==========================================
+ #=======================================================================================================================
+-if compiler.get_id() == 'gcc'
++if false
+    #
+    # -g3   should give even more debugging information than -g (which is equivalent to -g2)
+    #

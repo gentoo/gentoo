@@ -1,0 +1,28 @@
+Author: Ole Streicher <debian@liska.ath.cx>
+Description: Set the default plugin path to the one where recipes are
+ installed in Debian.
+--- a/etc/esorex.rc.in
++++ b/etc/esorex.rc.in
+@@ -130,7 +130,7 @@
+ # as well. Multiple directory heads may be specified, by separating the
+ # starting paths with colons (:). This option may also be set using the
+ # environment variable ESOREX_PLUGIN_DIR.
+-esorex.caller.recipe-dir=@recipedir@/esopipes-plugins
++esorex.caller.recipe-dir=@recipedir@
+ 
+ # --suppress-link
+ # When TRUE, no symbolic link is created to the output product. However, if
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -35,7 +35,10 @@
+     AC_SUBST(configdir)
+ 
+     if test -z "$recipedir"; then
+-	    recipedir="`eval echo $libdir`"
++       	    recipedir="`eval echo $libdir`/cpl/plugins"
++       	    if test $libdir != "/usr/lib"; then
++                recipedir="$recipedir:/usr/lib/cpl/plugins"
++            fi
+ 	fi
+ 	AC_SUBST(recipedir)
+ 

@@ -1,0 +1,13 @@
+http://bugs.gentoo.org/show_bug.cgi?id=336607
+
+--- eugene-3.6/src/Sensor.cc
++++ eugene-3.6/src/Sensor.cc
+@@ -224,7 +224,7 @@
+ //--------------------------
+ void Signals :: PrintS ()
+ {
+-  char t[7];
++  char t[10];
+   char s = '+';
+ 
+   switch (type) {

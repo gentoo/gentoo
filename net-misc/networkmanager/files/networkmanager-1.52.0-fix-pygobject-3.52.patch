@@ -1,0 +1,87 @@
+https://bugs.gentoo.org/957733
+https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/merge_requests/2164
+
+From 12eff9a7fdfeabab12ce56e5f7d515a13a3d704c Mon Sep 17 00:00:00 2001
+From: Jan Tojnar <jtojnar@gmail.com>
+Date: Sun, 23 Mar 2025 16:35:44 +0100
+Subject: [PATCH] meson: Fix docs generation with PyGObject 3.52
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+PyGObject 3.52 switched from gobject-introspection’s libgirepository 1.0
+to glib’s libgirepository 2.0. As a result, the Python script would
+no longer be able to find the `GIRepository` 2.0 typelib:
+
+    (process:1944): GLib-GIRepository-DEBUG: 15:25:14.521: Ignoring GIRepository-2.0.typelib because this libgirepository corresponds to GIRepository-3.0.typelib
+
+We could update the script to support both versions of the typelib
+but it is not really necessary. It was only used to add extra directories
+from `$LD_LIBRARY_PATH` and the CLI argument to repository’s library path
+but libgirepository already supports using `LD_LIBRARY_PATH` directly:
+https://docs.gtk.org/girepository/method.Repository.prepend_library_path.html
+--- a/src/libnm-client-impl/meson.build
++++ b/src/libnm-client-impl/meson.build
+@@ -209,7 +209,6 @@ if enable_introspection
+         'LD_LIBRARY_PATH=' + ld_library_path,
+         python_path,
+         gen_gir_cmd,
+-        '--lib-path', meson.current_build_dir(),
+         '--gir', libnm_gir[0],
+         '--output', '@OUTPUT@',
+         '--target', name
+--- a/tools/generate-docs-nm-settings-docs-gir.py
++++ b/tools/generate-docs-nm-settings-docs-gir.py
+@@ -6,26 +6,9 @@
+ from __future__ import print_function, unicode_literals
+ import xml.etree.ElementTree as ET
+ import argparse
+-import os
+ import gi
+ import re
+ 
+-gi.require_version("GIRepository", "2.0")
+-from gi.repository import GIRepository
+-
+-try:
+-    libs = os.environ["LD_LIBRARY_PATH"].split(":")
+-    libs.reverse()
+-    for lib in libs:
+-        GIRepository.Repository.prepend_library_path(lib)
+-except AttributeError:
+-    # An old GI version, that has no prepend_library_path
+-    # It's alright, it probably interprets LD_LIBRARY_PATH
+-    # correctly.
+-    pass
+-except KeyError:
+-    pass
+-
+ gi.require_version("NM", "1.0")
+ from gi.repository import NM, GObject
+ 
+@@ -354,13 +337,6 @@ def main(gir_path_str, output_path_str, output_target):
+ 
+ if __name__ == "__main__":
+     parser = argparse.ArgumentParser()
+-    parser.add_argument(
+-        "-l",
+-        "--lib-path",
+-        metavar="PATH",
+-        action="append",
+-        help="path to scan for shared libraries",
+-    )
+     parser.add_argument(
+         "-g",
+         "--gir",
+@@ -384,8 +360,4 @@ if __name__ == "__main__":
+ 
+     args = parser.parse_args()
+ 
+-    if args.lib_path:
+-        for lib in args.lib_path:
+-            GIRepository.Repository.prepend_library_path(lib)
+-
+     main(args.gir, args.output, args.target)
+-- 
+GitLab
+

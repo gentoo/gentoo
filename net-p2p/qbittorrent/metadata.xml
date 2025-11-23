@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>eschwartz@gentoo.org</email>
+		<name>Eli Schwartz</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>fkobi@pm.me</email>
+		<name>Filip Kobierski</name>
+	</maintainer>
+	<use>
+		<flag name="dbus">Enable support for notifications and power-management features via D-Bus</flag>
+		<flag name="webui">Install qBittorrent Web UI (qbittorrent-nox)</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://github.com/qbittorrent/qBittorrent/issues</bugs-to>
+		<changelog>https://www.qbittorrent.org/news</changelog>
+		<doc>https://github.com/qbittorrent/qBittorrent/wiki</doc>
+		<remote-id type="github">qbittorrent/qBittorrent</remote-id>
+		<!-- Sourceforge hosts the distfiles.
+		Ignore the "redirection" and "missing remote-id" warnings -->
+	</upstream>
+</pkgmetadata>

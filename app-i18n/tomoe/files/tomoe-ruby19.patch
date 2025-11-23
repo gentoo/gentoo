@@ -1,0 +1,84 @@
+--- a/bindings/ruby/tomoe-rb-char.c
++++ b/bindings/ruby/tomoe-rb-char.c
+@@ -2,6 +2,10 @@
+ 
+ #define _SELF(obj) RVAL2TCHR(obj)
+ 
++#ifndef RSTRING_LEN
++# define RSTRING_LEN(s) (RSTRING(s)->len)
++#endif
++
+ static VALUE
+ tc_initialize(int argc, VALUE *argv, VALUE self)
+ {
+@@ -13,7 +17,7 @@
+     if (NIL_P(xml)) {
+         chr = tomoe_char_new();
+     } else {
+-        chr = tomoe_char_new_from_xml_data(RVAL2CSTR(xml), RSTRING(xml)->len);
++        chr = tomoe_char_new_from_xml_data(RVAL2CSTR(xml), RSTRING_LEN(xml));
+     }
+ 
+     G_INITIALIZE(self, chr);
+--- a/macros/ruby.m4
++++ b/macros/ruby.m4
+@@ -28,13 +28,18 @@
+ 
+   changequote(<<, >>)
+   for var_name in archdir sitearchdir CFLAGS LIBRUBYARG libdir \
+-                  sitelibdir sitearchdir; do
+-    rbconfig_tmp=`$rbconfig "print Config::CONFIG['$var_name']"`
++                  sitelibdir rubyhdrdir rubyarchhdrdir; do
++    rbconfig_tmp=`$rbconfig "print RbConfig::CONFIG['$var_name']"`
+     eval "rbconfig_$var_name=\"$rbconfig_tmp\""
+   done
+   changequote([, ])
+ 
+-  RUBY_CFLAGS="$RUBY_CFLAGS -I$rbconfig_archdir "
++  if test "x$rbconfig_rubyhdrdir" = "x"; then
++    RUBY_CFLAGS="$RUBY_CFLAGS -I$rbconfig_archdir "
++  else
++    RUBY_CFLAGS="$RUBY_CFLAGS -I$rbconfig_rubyhdrdir "
++    RUBY_CFLAGS="$RUBY_CFLAGS -I$rbconfig_rubyarchhdrdir "
++  fi
+   RUBY_CFLAGS="$RUBY_CFLAGS -I$rbconfig_sitearchdir "
+   RUBY_CFLAGS="$RUBY_CFLAGS $rbconfig_CFLAGS "
+   RUBY_LIBS="$rbconfig_LIBRUBYARG"
+--- a/module/dict/tomoe-dict-ruby.c
++++ b/module/dict/tomoe-dict-ruby.c
+@@ -52,6 +52,13 @@
+ #define TOMOE_IS_DICT_RUBY_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), TOMOE_TYPE_DICT_RUBY))
+ #define TOMOE_DICT_RUBY_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), TOMOE_TYPE_DICT_RUBY, TomoeDictRubyClass))
+ 
++#ifndef RARRAY_LEN
++# define RARRAY_LEN(a) (RARRAY(a)->len)
++#endif
++#ifndef RARRAY_PTR
++# define RARRAY_PTR(a) (RARRAY(a)->ptr)
++#endif
++
+ enum {
+     PROP_0,
+     PROP_FILENAME,
+@@ -209,7 +216,7 @@
+         ruby_script (PACKAGE);
+         ruby_set_argv (1, argv);
+ 
+-        if (RARRAY(rb_load_path)->len == 0) {
++        if (RARRAY_LEN(rb_load_path) == 0) {
+             ruby_init_loadpath ();
+         }
+     }
+@@ -405,10 +412,10 @@
+ 
+     rb_results = rb_funcall (dict->rb_dict, rb_intern ("search"),
+                              1, GOBJ2RVAL (query));
+-    len = RARRAY (rb_results)->len;
++    len = RARRAY_LEN(rb_results);
+     for (i = len; i; i--) {
+         results = g_list_prepend (results,
+-                                  RVAL2TCND (RARRAY (rb_results)->ptr[i]));
++                                  RVAL2TCND (RARRAY_PTR(rb_results)[i]));
+     }
+     return results;
+ }

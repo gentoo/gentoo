@@ -1,0 +1,17 @@
+Fixes a simple typo in a template allowing tests to pass
+
+Fix by David Denoncin
+
+https://bugzilla.mozilla.org/show_bug.cgi?id=1644655
+
+--- a/template/en/default/pages/release-notes.html.tmpl 2020-06-09 21:34:41.845822737 -0000
++++ b/template/en/default/pages/release-notes.html.tmpl	2020-06-09 21:05:23.515833860 -0000
+@@ -45,7 +45,7 @@
+ 
+ <h3>5.0.6</h3>
+ <p>This release contains a schema change to the flagtypes table, allowing for many more flagtypes.</p>.
+-<p>The flagtypes table should have been using a mediumint for several releases, but due to a bug in the schema migration code this never happened.</p>
++<p>The flagtypes table should have been using a mediumint for several releases, but due to [% terms.abug %] in the schema migration code this never happened.</p>
+ 
+ <h3>5.0.5</h3>
+ 

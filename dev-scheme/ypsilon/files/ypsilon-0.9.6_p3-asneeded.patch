@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -126,7 +126,7 @@
+ 	@mkdir -p -m755 $(HOME)/.ypsilon
+ 
+ $(PROG): $(OBJS)
+-	$(CXX) $(LDFLAGS) $(LDLIBS) -o $@ $^
++	$(CXX) $(LDFLAGS) -o $@ $^ $(LDLIBS)
+ 
+ vm1.s: vm1.cpp
+ 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) \

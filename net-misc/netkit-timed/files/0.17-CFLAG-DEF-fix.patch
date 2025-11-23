@@ -1,0 +1,55 @@
+diff -ru netkit-timed-0.17/configure netkit-timed-0.17.fixed/configure
+--- netkit-timed-0.17/configure	2000-07-23 15:12:26.000000000 +0930
++++ netkit-timed-0.17.fixed/configure	2004-08-07 09:22:47.860505136 +0930
+@@ -115,39 +115,6 @@
+      echo 'no'
+ fi
+ 
+-if [ x$DEBUG = x ]; then
+-    echo -n "Checking if $CC accepts -O2... "
+-    if (
+-         $CC -O2 __conftest.c -o __conftest
+-       ) >/dev/null 2>&1; then
+-         echo 'yes'
+-         CFLAGS="$CFLAGS -O2"
+-    else
+-         echo 'no'
+-         echo -n "Checking if $CC accepts -O... "
+-         if (
+-              $CC -O __conftest.c -o __conftest
+-            ) >/dev/null 2>&1; then
+-              echo 'yes'
+-              CFLAGS="$CFLAGS -O"
+-         else
+-              echo 'no'
+-         fi
+-    fi
+-
+-else
+-    echo -n "Checking if $CC accepts -g... "
+-    if (
+-         $CC -g __conftest.c -o __conftest
+-       ) >/dev/null 2>&1; then
+-         echo 'yes'
+-         CFLAGS="$CFLAGS -g"
+-    else
+-         echo 'no'
+-    fi
+-
+-fi
+-
+ LDFLAGS=
+ LIBS=
+ 
+diff -ru netkit-timed-0.17/timed/timed/timed.c netkit-timed-0.17.fixed/timed/timed/timed.c
+--- netkit-timed-0.17/timed/timed/timed.c	1999-12-13 03:35:07.000000000 +0930
++++ netkit-timed-0.17.fixed/timed/timed/timed.c	2004-08-07 09:26:32.299385240 +0930
+@@ -898,7 +898,7 @@
+ void
+ get_goodgroup(int force)
+ {
+-# define NG_DELAY (30*60*CLK_TCK)	/* 30 minutes */
++# define NG_DELAY (30*60*CLOCKS_PER_SEC)	/* 30 minutes */
+ 	static unsigned long last_update = -NG_DELAY;
+ 	unsigned long new_update;
+ /*	struct hosttbl *htp; */

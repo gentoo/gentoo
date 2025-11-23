@@ -1,0 +1,12 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,6 @@
+-all: install
++LDLIBS += -lm 
+ 
+-install:  galleta.c
+-	gcc -o galleta galleta.c -lm -lc;cp galleta ../bin
++all: galleta
+ 
+ installwin:  galleta.c
+ 	gcc -DCYGWIN -o galleta.exe galleta.c -lm -lc;cp galleta.exe ../bin

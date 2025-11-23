@@ -1,0 +1,31 @@
+--- a/makefile.lin	2011-06-14 08:03:28.928366818 +0200
++++ b/makefile.lin	2011-06-14 08:07:43.199113541 +0200
+@@ -4,18 +4,13 @@
+ NAME   = noiz2sa
+ O      = o
+ RM     = rm -f
+-CC     = gcc
+-CXX    = g++
+ 
+ PROG        = $(NAME)
+ 
+ DEFAULT_CFLAGS = `sdl-config --cflags`
+-LDFLAGS        = `sdl-config --libs` -L. -lglut -lbulletml -lSDL_mixer -mwindows -lstdc++
++LDLIBS         = `sdl-config --libs` -lGL -lbulletml -lSDL_mixer -lstdc++ -lm
+ 
+-MORE_CFLAGS = -O3
+-
+-CFLAGS  = $(DEFAULT_CFLAGS) $(MORE_CFLAGS)
+-CPPFLAGS  = $(DEFAULT_CFLAGS) $(MORE_CFLAGS) -I./bulletml/
++CPPFLAGS  = $(DEFAULT_CFLAGS) -I./bulletml/
+ 
+ OBJS =	$(NAME).$(O) ship.$(O) shot.$(O) frag.$(O) bonus.$(O) \
+ 	foe.$(O) foecommand.$(O) barragemanager.$(O) attractmanager.$(O) \
+@@ -23,7 +19,6 @@
+ 	screen.$(O) clrtbl.$(O) vector.$(O) degutil.$(O) rand.$(O) soundmanager.$(O)
+ 
+ $(PROG): $(OBJS)
+-	$(CC) $(CFLAGS) -o $(PROG) $(OBJS) $(LDFLAGS)
+ 
+ clean:
+ 	$(RM) $(PROG) *.$(O)

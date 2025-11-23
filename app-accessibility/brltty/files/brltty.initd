@@ -1,0 +1,11 @@
+#!/sbin/openrc-run
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command=/bin/brltty
+pidfile=/var/run/brltty.pid
+command_args="-P ${pidfile} -q"
+
+depend() {
+	after dbus localmount
+}

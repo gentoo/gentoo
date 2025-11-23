@@ -1,0 +1,22 @@
+# Options to pass to the lircd process
+
+# for devices with lirc-kernel-module
+#LIRCD_OPTS="-d /dev/lirc0"
+#LIRCD_OPTS="-d /dev/lirc"
+
+# for devices using the input-layer
+#LIRCD_OPTS="-H devinput -d /dev/input/by-path/pci-0000:00:0a.0--event-ir"
+# This should work, Bug #235107
+#LIRCD_OPTS="-H devinput -d name=*DVB*"
+
+# set default protocol to 'lirc' for in-kernel IR decoding
+# for the following entries in /sys/class/rc/
+# (space-separated list if there is more than one)
+LIRCD_SET_SYSCLASSRCS="rc0"
+
+# If running mulitple instances of lircd, the following
+# can be used to override the default socket path and
+# socket symlink
+#LIRCD_SOCKET="/var/run/lirc/lircd"
+#LIRCD_SYMLINKFILE="/dev/lircd"
+

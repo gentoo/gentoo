@@ -1,0 +1,41 @@
+--- a/date/date.c
++++ b/date/date.c
+@@ -134,26 +134,13 @@ badtime:
+ 	return (time_t)-1;
+ }
+ 
+-#if defined (__FreeBSD__) || defined (__NetBSD__) || defined (__OpenBSD__) || \
+-	defined (__DragonFly__) || defined (__APPLE__)
+-static int
+-stime(time_t *t)
+-{
+-	struct timeval	tv;
+-
+-	tv.tv_sec = *t;
+-	tv.tv_usec = 0;
+-
+-	return settimeofday(&tv, NULL);
+-}
+-#endif	/* __FreeBSD__, __NetBSD__, __OpenBSD__, __DragonFly__, __APPLE__ */
+-
+ static void
+ settime(char *op)
+ {
+ 	struct utmpx before, after;
+ 	const char wtmpxfile[] = "/var/log/wtmp";
+ 	time_t newtime;
++	struct timeval	tv;
+ 
+ 	memset(&before, 0, sizeof before);
+ 	memset(&after, 0, sizeof after);
+@@ -164,7 +151,9 @@ settime(char *op)
+ 	if ((newtime = timeop(op)) == (time_t)-1)
+ 		badconv();
+ 	gettimeofday(&before.ut_tv, NULL);
+-	if (stime(&newtime) < 0) {
++	tv.tv_sec = newtime;
++	tv.tv_usec = 0;
++	if (settimeofday(&tv, NULL) < 0) {
+ 		fprintf(stderr, "%s: no permission\n", progname);
+ 		exit(1);
+ 	}

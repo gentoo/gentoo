@@ -1,0 +1,43 @@
+diff '--color=auto' -ruN flightgear-2024.1.1/CMakeLists.txt my/CMakeLists.txt
+--- flightgear-2024.1.1/CMakeLists.txt	2025-02-27 15:49:31.000000000 +0100
++++ my/CMakeLists.txt	2025-05-22 04:59:08.937714480 +0200
+@@ -368,7 +368,7 @@
+             set(minQtVersion 5.12.1)
+         endif()
+ 
+-        find_package(Qt${QT_VERSION_MAJOR} ${minQtVersion} REQUIRED COMPONENTS Widgets Gui Network Qml Quick Svg)
++        find_package(Qt${QT_VERSION_MAJOR} ${minQtVersion} REQUIRED COMPONENTS Widgets Gui Network Qml Quick)
+         if (NOT Qt${QT_VERSION_MAJOR}Widgets_FOUND)
+             message(FATAL_ERROR "Qt support enabled, Qt was found but some required packages are missing, stopping.")
+         endif()
+diff '--color=auto' -ruN flightgear-2024.1.1/CMakeModules/Installation.cmake my/CMakeModules/Installation.cmake
+--- flightgear-2024.1.1/CMakeModules/Installation.cmake	2025-02-27 15:49:31.000000000 +0100
++++ my/CMakeModules/Installation.cmake	2025-05-22 05:25:32.200462286 +0200
+@@ -149,7 +149,7 @@
+ ########################################################################################
+ # AppDir creation for Linux AppImage
+ 
+-if (LINUX)
++if (LINUX AND APPIMAGE)
+     
+     install(DIRECTORY ${OSG_PLUGINS_DIR} 
+         DESTINATION appdir/usr/lib 
+diff '--color=auto' -ruN flightgear-2024.1.1/src/GUI/CMakeLists.txt my/src/GUI/CMakeLists.txt
+--- flightgear-2024.1.1/src/GUI/CMakeLists.txt	2025-02-27 15:49:31.000000000 +0100
++++ my/src/GUI/CMakeLists.txt	2025-05-22 05:52:05.224936638 +0200
+@@ -182,7 +182,6 @@
+         Qt${QT_VERSION_MAJOR}::Network 
+         Qt${QT_VERSION_MAJOR}::Qml 
+         Qt${QT_VERSION_MAJOR}::Quick 
+-        Qt${QT_VERSION_MAJOR}::Svg 
+         SimGearCore)
+ 
+     add_library(fgqmlui 
+@@ -250,7 +249,6 @@
+         Qt${QT_VERSION_MAJOR}::Network 
+         Qt${QT_VERSION_MAJOR}::Qml 
+         Qt${QT_VERSION_MAJOR}::Quick 
+-        Qt${QT_VERSION_MAJOR}::Svg 
+         SimGearCore)
+ 
+     target_include_directories(fgqmlui PRIVATE ${PROJECT_BINARY_DIR}/src/GUI ${OPENSCENEGRAPH_INCLUDE_DIRS} ${CMAKE_CURRENT_SOURCE_DIR})

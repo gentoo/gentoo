@@ -1,0 +1,14 @@
+Fix from upstream to work with newer freegluts.
+
+http://bugs.gentoo.org/97954
+
+--- a/src/Attack.cxx
++++ b/src/Attack.cxx
+@@ -83,6 +83,7 @@
+   int height = -1, width = -1;
+   
+   player_name[0] = '\0';
++  glutInit(&argc, argv);
+   parseCommandLine(argc, argv, mode, port, host_name, player_name, height, width);
+   run_crack_attack(mode, port, host_name, player_name, height, width);
+ 

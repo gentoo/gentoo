@@ -1,0 +1,9 @@
+# Copyright 2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# we use glibc here, so we still need these in stage1
+# later stages should pull them in as BDEPEND anyway
+sys-devel/gcc
+sys-devel/gcc-config
+sys-devel/binutils
+sys-devel/binutils-config

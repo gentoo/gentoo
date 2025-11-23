@@ -1,0 +1,22 @@
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -84,7 +84,7 @@
+ 
+ # link shared or static lib to executables
+ ifeq "@use_sharedlib@" "true"
+-  LIB_SERDISP=-L$(LIB_DIR) -l$(LIB_NAME)
++  LIB_SERDISP=-L$(LIB_DIR) -l$(LIB_NAME) $(LDFLAGS)
+ else
+   LIB_SERDISP=$(LIB_DIR)/$(LIB_STATIC)
+   # static execs also need to link to libraries in LDFLAGS
+--- a/tools/Makefile.in
++++ b/tools/Makefile.in
+@@ -58,7 +58,7 @@
+ 
+ # link shared or static lib to executables
+ ifeq "@use_sharedlib@" "true"
+-  LIB_SERDISP=-L$(LIB_DIR) -l$(LIB_NAME)
++  LIB_SERDISP=-L$(LIB_DIR) -l$(LIB_NAME) $(LDFLAGS)
+ else
+   LIB_SERDISP=$(LIB_DIR)/$(LIB_STATIC)
+   # static execs also need to link to libraries in LDFLAGS

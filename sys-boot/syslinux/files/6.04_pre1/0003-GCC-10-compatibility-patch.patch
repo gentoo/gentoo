@@ -1,0 +1,99 @@
+From b92e6e8f624c96acf2ce80192a893ee25de527a1 Mon Sep 17 00:00:00 2001
+From: Lukas Schwaighofer <lukas@schwaighofer.name>
+Date: Sun, 16 Aug 2020 15:23:21 +0200
+Subject: [PATCH 3/5] GCC-10 compatibility patch
+
+* Add `-fcommon` to most gcc invocations to allow duplicate definitions
+* __builtin_strlen is not really a "builtin" an implementation still
+  needs to be provided (source:
+  https://bugzilla.suse.com/show_bug.cgi?id=1166605#c5). Work around the
+  issue by supplying an inline function. The strlen function added to
+  dos/string.h was copied from com32/lib/strlen.c.
+---
+ dos/string.h   | 11 ++++++++++-
+ mk/efi.mk      |  1 +
+ mk/elf.mk      |  1 +
+ mk/embedded.mk |  2 +-
+ mk/lib.mk      |  2 +-
+ 5 files changed, 14 insertions(+), 3 deletions(-)
+
+diff --git a/dos/string.h b/dos/string.h
+index f648de2d..c4649f5f 100644
+--- a/dos/string.h
++++ b/dos/string.h
+@@ -5,12 +5,21 @@
+ #ifndef _STRING_H
+ #define _STRING_H
+ 
++#include <stddef.h>
++
+ /* Standard routines */
+ #define memcpy(a,b,c)	__builtin_memcpy(a,b,c)
+ #define memmove(a,b,c)	__builtin_memmove(a,b,c)
+ #define memset(a,b,c)	__builtin_memset(a,b,c)
+ #define strcpy(a,b)	__builtin_strcpy(a,b)
+-#define strlen(a)	__builtin_strlen(a)
++
++static inline size_t strlen(const char *s)
++{
++    const char *ss = s;
++    while (*ss)
++	ss++;
++    return ss - s;
++}
+ 
+ /* This only returns true or false */
+ static inline int memcmp(const void *__m1, const void *__m2, unsigned int __n)
+diff --git a/mk/efi.mk b/mk/efi.mk
+index f097ad22..407bc077 100644
+--- a/mk/efi.mk
++++ b/mk/efi.mk
+@@ -25,6 +25,7 @@ FORMAT=efi-app-$(EFI_SUBARCH)
+ 
+ CFLAGS = -I$(EFIINC) -I$(EFIINC)/$(EFI_SUBARCH) \
+ 		-DEFI_FUNCTION_WRAPPER -fPIC -fshort-wchar -ffreestanding \
++		-fcommon \
+ 		-Wall -I$(com32)/include -I$(com32)/include/sys \
+ 		-I$(core)/include -I$(core)/ $(ARCHOPT) \
+ 		-I$(com32)/lib/ -I$(com32)/libutil/include -std=gnu99 \
+diff --git a/mk/elf.mk b/mk/elf.mk
+index b46dbd06..dc265ce9 100644
+--- a/mk/elf.mk
++++ b/mk/elf.mk
+@@ -55,6 +55,7 @@ GPLINCLUDE =
+ endif
+ 
+ CFLAGS     = $(GCCOPT) $(GCCWARN) -W -Wall \
++	     -fcommon \
+ 	     -fomit-frame-pointer -D__COM32__ -D__FIRMWARE_$(FIRMWARE)__ -DDYNAMIC_MODULE \
+ 	     -nostdinc -iwithprefix include \
+ 	     -I$(com32)/libutil/include -I$(com32)/include \
+diff --git a/mk/embedded.mk b/mk/embedded.mk
+index 488dc0fc..fae13e20 100644
+--- a/mk/embedded.mk
++++ b/mk/embedded.mk
+@@ -57,7 +57,7 @@ LIBGCC    := $(shell $(CC) $(GCCOPT) --print-libgcc)
+ LD        += -m elf_$(ARCH)
+ 
+ # Note: use += for CFLAGS and SFLAGS in case something is set in MCONFIG.local
+-CFLAGS    += $(GCCOPT) -g $(GCCWARN) -Wno-sign-compare $(OPTFLAGS) $(INCLUDES)
++CFLAGS    += $(GCCOPT) -g $(GCCWARN) -Wno-sign-compare -fcommon $(OPTFLAGS) $(INCLUDES)
+ SFLAGS    += $(CFLAGS) -D__ASSEMBLY__
+ 
+ .SUFFIXES: .c .o .S .s .i .elf .com .bin .asm .lst .c32 .lss
+diff --git a/mk/lib.mk b/mk/lib.mk
+index f8591e56..6dd54295 100644
+--- a/mk/lib.mk
++++ b/mk/lib.mk
+@@ -49,7 +49,7 @@ OPTFLAGS  = -Os -march=$(MARCH) -falign-functions=0 -falign-jumps=0 \
+ 	    -falign-labels=0 -ffast-math -fomit-frame-pointer
+ WARNFLAGS = $(GCCWARN) -Wpointer-arith -Wwrite-strings -Wstrict-prototypes -Winline
+ 
+-CFLAGS  = $(OPTFLAGS) $(REQFLAGS) $(WARNFLAGS) $(LIBFLAGS)
++CFLAGS  = $(OPTFLAGS) $(REQFLAGS) -fcommon $(WARNFLAGS) $(LIBFLAGS)
+ 
+ ifeq ($(FWCLASS),EFI)
+ CFLAGS += -mno-red-zone
+-- 
+2.35.1
+

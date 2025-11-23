@@ -1,0 +1,32 @@
+https://bugs.gentoo.org/893776
+https://bugs.busybox.net/show_bug.cgi?id=15326
+http://lists.busybox.net/pipermail/busybox/2023-February/090173.html
+
+From 2d4a3d9e6c1493a9520b907e07a41aca90cdfd94 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Arsen=20Arsenovi=C4=87?= <arsen@gentoo.org>
+Date: Tue, 21 Feb 2023 20:20:31 +0100
+Subject: fixdep: avoid underflow when end of entry doesn't coincide with EOF
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Bug: https://bugs.gentoo.org/893776
+Closes: https://bugs.busybox.net/show_bug.cgi?id=15326
+Signed-off-by: Arsen Arsenović <arsen@gentoo.org>
+Signed-off-by: Denys Vlasenko <vda.linux@googlemail.com>
+--- a/scripts/basic/fixdep.c
++++ b/scripts/basic/fixdep.c
+@@ -338,6 +338,11 @@ void parse_dep_file(void *map, size_t len)
+ 			do p--; while (!isalnum((unsigned char)*p));
+ 			p++;
+ 		}
++		if (p < m) {
++			/* we've consumed the last filename of this list
++			   already.  */
++			break;
++		}
+ 		memcpy(s, m, p-m); s[p-m] = 0;
+ 		if (strrcmp(s, "include/autoconf.h") &&
+ 		    strrcmp(s, "arch/um/include/uml-config.h") &&
+-- 
+cgit v1.2.3

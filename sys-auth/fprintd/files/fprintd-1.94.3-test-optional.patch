@@ -1,0 +1,81 @@
+https://gitlab.freedesktop.org/libfprint/fprintd/-/merge_requests/199
+
+From 494df63b916bbf3ebf5e0bfc843a1b5298de63b6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Zolt=C3=A1n=20B=C3=B6sz=C3=B6rm=C3=A9nyi?=
+ <zboszor@gmail.com>
+Date: Thu, 30 Mar 2023 15:06:14 +0200
+Subject: [PATCH] Make building tests optional
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: ZoltÃ¡n BÃ¶szÃ¶rmÃ©nyi <zboszor@gmail.com>
+---
+ meson.build       | 10 +++++++++-
+ meson_options.txt |  4 ++++
+ 2 files changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 859bcf2..2abdd1f 100644
+--- a/meson.build
++++ b/meson.build
+@@ -137,13 +137,16 @@ endif
+ polkit_policy_directory = polkit_gobject_dep.get_pkgconfig_variable('policydir')
+ 
+ # Tests dependencies
++if get_option('tests')
+ pam_wrapper_dep = dependency('pam_wrapper', required: false)
+ if get_option('pam') and not pam_wrapper_dep.found()
+     warning('Dependency "pam_wrapper" required by test suite not found')
+ endif
++endif
+ 
+ xmllint = find_program('xmllint', required: false)
+ python3 = find_program('python3') # No meson without it!
++if get_option('tests')
+ python3_test_modules = {
+     'cairo': true,
+     'dbus': true,
+@@ -159,6 +162,7 @@ foreach module, required : python3_test_modules
+         warning('Python3 module \'' + module + '\' required by test suite not found')
+     endif
+ endforeach
++endif
+ 
+ cdata = configuration_data()
+ cdata.set_quoted('GETTEXT_PACKAGE', meson.project_name())
+@@ -182,7 +186,9 @@ endif
+ if get_option('gtk_doc')
+     subdir('doc')
+ endif
+-subdir('tests')
++if get_option('tests')
++    subdir('tests')
++endif
+ subdir('po')
+ 
+ output = []
+@@ -205,6 +211,8 @@ output += '  Manuals: ' + get_option('man').to_string()
+ output += '  GTK Doc: ' + get_option('gtk_doc').to_string()
+ output += '  XML Linter ' + xmllint.found().to_string()
+ output += '\nTest setup:\n'
++if get_option('tests')
+ output += '  With address sanitizer: ' + address_sanitizer.to_string()
++endif
+ 
+ message('\n'+'\n'.join(output)+'\n')
+diff --git a/meson_options.txt b/meson_options.txt
+index 286889e..73b28f2 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -28,3 +28,7 @@ option('gtk_doc',
+     type: 'boolean',
+     value: false,
+     description: 'Use gtk-doc to build documentation')
++option('tests',
++    type: 'boolean',
++    value: true,
++    description: 'Run tests')
+-- 
+GitLab
+

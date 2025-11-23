@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>sin-ack@protonmail.com</email>
+		<name>sin-ack</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">wmww/gtk4-layer-shell</remote-id>
+	</upstream>
+	<longdescription lang="en">A library to create panels and other desktop components for Wayland using the Layer Shell protocol and GTK4</longdescription>
+	<use>
+		<flag name="examples">Build the example C apps</flag>
+		<flag name="smoke-tests">Test that all examples can run</flag>
+		<flag name="introspection">Build GObject Introspection data</flag>
+		<flag name="vala">Build VAPI data and Vala example. The VAPI file allows this library to be used
+			in Vala. Requires introspection.</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/723162
+
+--- ecl-21.2.1/src/c/Makefile.in
++++ ecl-21.2.1/src/c/Makefile.in
+@@ -104,7 +104,7 @@
+ 
+ $(DPP): $(srcdir)/dpp.c $(srcdir)/symbols_list.h
+ 	if test -f ../CROSS-DPP; then touch dpp; else \
+-	$(TRUE_CC) -I$(srcdir) -I@true_builddir@ -I./ $(srcdir)/dpp.c @CPPFLAGS@ @CFLAGS@ @ECL_CFLAGS@ -o $@ ; \
++	$(TRUE_CC) -I$(srcdir) -I@true_builddir@ -I./ $(srcdir)/dpp.c @CPPFLAGS@ @CFLAGS@ @ECL_CFLAGS@ @LDFLAGS@ -o $@ ; \
+ 	fi
+ 
+ $(OBJS): $(DPP)

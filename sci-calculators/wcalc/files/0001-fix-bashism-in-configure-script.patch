@@ -1,0 +1,28 @@
+From b533584038a4ab8709fb8c88d7c4441f22b5de78 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Wed, 13 Mar 2024 18:15:00 -0400
+Subject: [PATCH] fix bashism in configure script
+
+double equals is horrid and banned. Do not ever use it, but definitely
+don't use it in POSIX sh, where it doesn't exist *even* as an alias for
+single equals.
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 1db142d..af541af 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -48,7 +48,7 @@ AC_PROG_RANLIB
+ AC_PROG_YACC
+ AM_PROG_AR
+ AM_PROG_LEX
+-AS_IF([test "x$LEX" == x],
++AS_IF([test "x$LEX" = x],
+ 	  [AC_MSG_ERROR([A Lex/Flex program is required in order to compile wcalc.])],
+ 	  [AS_IF([test "x$LEX" != xflex],
+ 			 [LEX="$SHELL $missing_dir/missing flex"
+-- 
+2.43.2
+

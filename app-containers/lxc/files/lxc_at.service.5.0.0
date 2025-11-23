@@ -1,0 +1,19 @@
+[Unit]
+Description=LXC Container: %i
+# This pulls in apparmor, dev-setup, lxc-net
+After=lxc.service
+Wants=lxc.service
+Documentation=man:lxc-start man:lxc
+
+[Service]
+Type=simple
+KillMode=mixed
+TimeoutStopSec=120s
+ExecStart=/usr/bin/lxc-start -F -n %i
+ExecStop=/usr/bin/lxc-stop -n %i
+# Environment=BOOTUP=serial
+# Environment=CONSOLETYPE=serial
+Delegate=yes
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sbraz@gentoo.org</email>
+		<name>Louis Sautier</name>
+	</maintainer>
+	<use>
+		<flag name="zlib">Enable mod_deflate-like gzip support for znc's web interface using <pkg>virtual/zlib</pkg>.</flag>
+		<flag name="argon2">Store password hashes using Argon2id instead of SHA-256</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">znc/znc</remote-id>
+		<bugs-to>https://github.com/znc/znc/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

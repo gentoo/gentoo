@@ -1,0 +1,15 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 489916a..e6ca7d3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -231,8 +231,8 @@ endif()
+ # -------
+ install(TARGETS ${INSTALL_TARGET_LIST}
+         RUNTIME DESTINATION bin
+-        LIBRARY DESTINATION lib
+-        ARCHIVE DESTINATION lib)
++        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ install(DIRECTORY src/zmqpp DESTINATION include/
+         FILES_MATCHING PATTERN "*.hpp")

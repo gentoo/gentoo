@@ -1,0 +1,26 @@
+From c43e5b13d0bd8f3f5fa1d44d92824ea2ca60c315 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sun, 26 Oct 2025 22:28:19 +0000
+Subject: [PATCH] Fix -Warray-bounds warnings raised by GCC 16
+
+Signed-off-by: James Le Cuirot <chewi@gentoo.org>
+---
+ src/ctlr_mgr.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/ctlr_mgr.cpp b/src/ctlr_mgr.cpp
+index 2f6fbc4..9a2c20e 100644
+--- a/src/ctlr_mgr.cpp
++++ b/src/ctlr_mgr.cpp
+@@ -164,7 +164,7 @@ void ctlr_mgr::add_ctlr(const std::string& devpath, const std::string& devname)
+ 
+     if (!unpaired_controllers.count(devpath)) {
+         std::cout << "Creating new phys_ctlr for " << devname << std::endl;
+-        phys.reset(new phys_ctlr(devpath, devname));
++        phys = std::make_shared<phys_ctlr>(devpath, devname);
+         unpaired_controllers[devpath] = phys;
+         phys->blink_player_leds();
+         subscribers[devpath] = std::make_shared<epoll_subscriber>(std::vector({phys->get_fd()}),
+-- 
+2.51.0
+

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>llvm@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="multilib-symlinks">
+			Install symlinks for all ABI CHOSTs. Note that this can
+			result in gcc being overrode for native builds, as well
+			as conflict with crossdev if used for the same targets.
+		</flag>
+		<flag name="native-symlinks">
+			Install generic 'ld' symlink, as well as ${CTARGET}-ld.
+			These symlinks are installed into slotted LLVM bindir,
+			so they should not take precedence over symlinks installed
+			into /usr/bin by <pkg>sys-devel/binutils-config</pkg>
+			but they can be helpful for binutils-free setups.
+		</flag>
+	</use>
+</pkgmetadata>

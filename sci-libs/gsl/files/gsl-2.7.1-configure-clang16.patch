@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/898410
+https://savannah.gnu.org/bugs/?63679
+
+Avoid calling the undeclared exit function and future failures
+with compilers which do not support implicit function declarations.
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -449,7 +449,7 @@ int main (void)
+    inf = exp(1.0e10);
+    nan = inf / inf ;
+    status = (nan == nan);
+-   exit (status);
++   return status;
+ }]])],[ac_cv_c_ieee_comparisons="yes"],[ac_cv_c_ieee_comparisons="no"],[ac_cv_c_ieee_comparisons="yes"])
+ ])
+ 
+@@ -469,7 +469,7 @@ int main (void)
+    for (i = 0; i < 5; i++) { z = z / 10.0 ; };        
+    for (i = 0; i < 5; i++) { z = z * 10.0 ; };
+    status = (z == 0.0);
+-   exit (status);
++   return status;
+ }]])],[ac_cv_c_ieee_denormals="yes"],[ac_cv_c_ieee_denormals="no"],[ac_cv_c_ieee_denormals="yes"])
+ ])
+ 

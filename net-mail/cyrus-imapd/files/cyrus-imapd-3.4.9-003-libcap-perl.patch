@@ -1,0 +1,18 @@
+https://bugs.gentoo.org/678754
+
+From: Bill Prendergast <dek.devel@baisenvar.info>
+
+Perl modules underlinked with libcap
+ upstream fixed cyradm but not managesieve
+
+--- a/perl/sieve/managesieve/Makefile.PL.in
++++ b/perl/sieve/managesieve/Makefile.PL.in
+@@ -69,7 +69,7 @@ WriteMakefile(
+     'ABSTRACT'  => 'Cyrus Sieve management interface',
+     'VERSION_FROM' => "@top_srcdir@/perl/sieve/managesieve/managesieve.pm", # finds $VERSION
+     'MYEXTLIB'  => '../lib/.libs/libisieve.a @top_builddir@/perl/.libs/libcyrus.a @top_builddir@/perl/.libs/libcyrus_min.a',
+-    'LIBS'	=> ["$LIB_SASL @SSL_LIBS@ @LIB_UUID@ @LIB_REGEX@ @ZLIB@ @SQLITE_LIBADD@ @MYSQL_LIBADD@ @PGSQL_LIBADD@"],
++    'LIBS'	=> ["$LIB_SASL @SSL_LIBS@ @LIB_UUID@ @LIB_REGEX@ @ZLIB@ @SQLITE_LIBADD@ @MYSQL_LIBADD@ @PGSQL_LIBADD@ @LIBCAP_LIBS@"],
+     'CCFLAGS'	=> '@GCOV_CFLAGS@',
+     'DEFINE'	=> '-DPERL_POLLUTE',     # e.g., '-DHAVE_SOMETHING' 
+     'INC'	=> "-I@top_srcdir@/lib -I@top_srcdir@/perl/sieve -I@top_srcdir@/perl/sieve/lib @SASLFLAGS@ @SSL_CPPFLAGS@",

@@ -1,0 +1,79 @@
+Ports program to C23 and allows it to compile with GCC-15.
+Fix function declarations with no arguments, delete dubious extern of
+library function
+Fix comparators for quicksort/binary search
+https://bugs.gentoo.org/944011
+--- a/lib/connect.c
++++ b/lib/connect.c
+@@ -45,9 +45,11 @@
+  * rensetu table
+  */
+ static int
+-cmp_pair(rensetu_pair_t * pair1, rensetu_pair_t * pair2)
++cmp_pair(const void * pair1_void, const void * pair2_void)
+ {
+     int ret;
++    rensetu_pair_t *pair1 = (rensetu_pair_t *)pair1_void;
++    rensetu_pair_t *pair2 = (rensetu_pair_t *)pair2_void;
+ 
+     /*
+      * 見出し語 surface form 
+@@ -166,9 +168,11 @@
+ }
+ 
+ static int
+-find_table(lexicon_t * mrph, rensetu_pair_t * pair)
++find_table(const void * mrph_void, const void * pair_void)
+ {
+     int ret;
++    lexicon_t * mrph = (lexicon_t*)mrph_void;
++    rensetu_pair_t * pair = (rensetu_pair_t*)pair_void;
+ 
+     /*
+      * 品詞分類 POS 
+@@ -202,12 +206,11 @@
+     rensetu_pair_t *ret;
+ 
+     if (rensetu_tbl[0].hinsi == 0)
+-	qsort(rensetu_tbl, tbl_num, sizeof(rensetu_pair_t),
+-	      (int (*)()) cmp_pair);
++	qsort(rensetu_tbl, tbl_num, sizeof(rensetu_pair_t), cmp_pair);
+ 
+     ret = (rensetu_pair_t *)
+ 	bsearch(mrph, rensetu_tbl, tbl_num_goi,
+-		sizeof(rensetu_pair_t), (int (*)()) find_table);
++		sizeof(rensetu_pair_t), find_table);
+     if (ret) {
+ 	mrph->con_tbl = ret->index;
+ 	return 1;
+@@ -215,7 +218,7 @@
+ 
+     ret = (rensetu_pair_t *)
+ 	bsearch(mrph, rensetu_tbl + tbl_num_goi, tbl_num - tbl_num_goi,
+-		sizeof(rensetu_pair_t), (int (*)()) find_table);
++		sizeof(rensetu_pair_t), find_table);
+     if (ret) {
+ 	mrph->con_tbl = ret->index;
+ 	return 1; /* if no error, return 1 */
+--- a/lib/iotool.c
++++ b/lib/iotool.c
+@@ -362,7 +362,7 @@
+ cha_fopen_rcfile(void)
+ {
+     FILE *fp;
+-    char *home_dir, *rc_env, *getenv();
++    char *home_dir, *rc_env;
+ 
+     /*
+      * -R option (standard alone) 
+--- a/lib/print.c
++++ b/lib/print.c
+@@ -47,7 +47,7 @@
+ static int path_buffer[CHA_INPUT_SIZE];
+ static int pos_end = 0;
+ 
+-static void (*cha_putc) (), (*cha_puts) (), (*cha_printf) (), (*cha_write) ();
++static void (*cha_putc) (int, char*), (*cha_puts) (char*, char*), (*cha_printf) (char*, char*, ...), (*cha_write) (void*, size_t, size_t, char*);
+ 
+ void
+ cha_print_reset(void)

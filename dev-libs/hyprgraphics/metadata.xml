@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>julien@jroy.ca</email>
+		<name>Julien Roy</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+Hyprgraphics is a small C++ library with graphics / resource related utilities used across the hypr* ecosystem.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/hyprwm/hyprgraphics/issues</bugs-to>
+		<changelog>https://github.com/hyprwm/hyprgraphics/releases</changelog>
+		<remote-id type="github">hyprwm/hyprgraphics</remote-id>
+	</upstream>
+</pkgmetadata>

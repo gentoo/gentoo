@@ -1,0 +1,16 @@
+--- dante-1.4.3.orig/osdep.m4	2017-01-18 06:11:20.000000000 -0800
++++ dante-1.4.3/osdep.m4	2024-11-17 16:05:24.798720697 -0800
+@@ -957,11 +957,11 @@
+ if test -s $ERRVALFILE; then
+     UNIQUEVALS=`sort $ERRVALFILE | uniq | wc -l | awk '{ print $1 }'`
+     if test $UNIQUEVALS -le 1; then
+-        AC_MSG_FAILURE([error: getaddrinfo() error value count too low])
++        AC_MSG_FAILURE([error: getaddrinfo() error value count too low; got $UNIQUEVALS from $ERRVALFILE])
+     fi
+     UNIQUESYMBOLS=`cat $ERRVALFILE | wc -l | awk '{ print $1 }'`
+     if test $UNIQUESYMBOLS -le 1; then
+-        AC_MSG_FAILURE([error: getaddrinfo() error symbol count too low])
++        AC_MSG_FAILURE([error: getaddrinfo() error symbol count too low; got $UNIQUESYMBOLS from $ERRVALFILE])
+     fi
+ 
+     if test $ERRNOCNT -ne $UNIQUESYMBOLS; then

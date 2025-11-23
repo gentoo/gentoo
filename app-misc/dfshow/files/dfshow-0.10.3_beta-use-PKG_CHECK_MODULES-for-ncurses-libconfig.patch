@@ -1,0 +1,82 @@
+From a8185ad9270db54b9e0c66002e7ceebdc264af19 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 30 Apr 2021 04:49:26 +0100
+Subject: [PATCH] Use PKG_CHECK_MODULES for ncurses, libconfig
+
+It's not always clear how to link against ncurses
+and the choices before us are:
+1) use a convoluted chain of autoconf checks
+2) use pkg-config (this commit)
+3) guess and hardcode the most popular values
+
+This is an iteration of a previous change [0] by a
+Gentoo contributor which landed upstream.
+
+The previous change ended up doing 3) which is fine
+but doesn't always work in strange situations. Gentoo
+_usually_ builds 'split tinfo' on Linux but this isn't
+guaranteed.
+
+This change now uses PKG_CHECK_MODULES which uses
+pkg-config behind the scenes to query ncurses
+for the correct way to build & link against it.
+
+(We do the same thing for libconfig too.)
+
+[0] https://github.com/roberthawdon/dfshow/pull/115
+---
+ Makefile.am  | 13 ++++---------
+ configure.ac |  5 +++--
+ 2 files changed, 7 insertions(+), 11 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 048ded5..6dcaa1f 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -7,21 +7,16 @@
+ 
+ AM_CPPFLAGS = -DLOCALEDIR=\"$(localedir)\"
+ AM_CFLAGS = -DSYSCONFIG=\"$(dfshowconfdir)\" -DDATADIR=\"$(dfshowdatadir)\" -D_XOPEN_SOURCE_EXTENDED -fno-common
++AM_CFLAGS += $(ncurses_CFLAGS) $(libconfig_CFLAGS)
+ 
+-LDADD = -lm -lconfig $(LIBINTL)
+-
+-if DARWIN
+-LDADD += -lncurses
+-else
+-LDADD += -lncursesw
+-endif
++LDADD = -lm $(ncurses_LIBS) $(libconfig_LIBS)
+ 
+ if LINUX
+-LDADD += -lacl -ltinfo
++LDADD += -lacl
+ endif
+ 
+ if HURD
+-LDADD += -lacl -ltinfo
++LDADD += -lacl
+ endif
+ 
+ if SELINUX
+diff --git a/configure.ac b/configure.ac
+index f185b69..8acf1ab 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -34,10 +34,11 @@
+ 
+ AC_CHECK_MEMBERS([struct stat.st_author])
+ AC_CHECK_HEADERS([stdio.h limits.h signal.h ctype.h wctype.h getopt.h sys/types.h sys/stat.h dirent.h fcntl.h pwd.h string.h stdlib.h unistd.h time.h sys/statvfs.h libgen.h errno.h wchar.h hurd.h math.h sys/sysmacros.h regex.h utime.h sys/xattr.h acl/libacl.h stdint.h])
+-AC_CHECK_HEADERS(ncurses.h, , AC_MSG_ERROR(ncurses header (ncurses.h) not found. You may need to install an ncurses development package.))
+-AC_CHECK_HEADERS(libconfig.h, , AC_MSG_ERROR(libconfig header (libconfig.h) not found. You may need to install a libconfig development package.))
+ AC_CHECK_HEADERS(sys/acl.h, , AC_MSG_ERROR(libacl header (sys/acl.h) not found. You may need to install a libacl development package.))
+ 
++PKG_CHECK_MODULES([ncurses], [ncursesw ncurses])
++PKG_CHECK_MODULES([libconfig], [libconfig])
++
+ AC_CHECK_PROG(VIM_CHECK,vim,yes)
+ AS_IF([test "x$VIM_CHECK" = "xyes"], [
+   AC_DEFINE(HAVE_VIM, 1, [True for systems with Vim])
+-- 
+2.31.1
+

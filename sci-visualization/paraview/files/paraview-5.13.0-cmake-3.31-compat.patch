@@ -1,0 +1,15 @@
+From https://gitlab.kitware.com/paraview/paraview/-/commit/f1543ffcb1db1832d00c0fe8d183c1b63af96827?merge_request_iid=7135
+
+diff --git a/CMake/ParaViewCompilerExtraFlags.cmake b/CMake/ParaViewCompilerExtraFlags.cmake
+index 4feb06da0c481c382605effeee20cc4a00f59cfe..4c1b87876f0b444e751dd3a6ee66d485ae09c32b 100644
+--- a/CMake/ParaViewCompilerExtraFlags.cmake
++++ b/CMake/ParaViewCompilerExtraFlags.cmake
+@@ -37,7 +37,7 @@ if(CMAKE_COMPILER_IS_GNUCXX)
+       set_target_properties(paraviewbuild
+         PROPERTIES
+         INTERFACE_LINK_OPTIONS
+-        "LINKER:SHELL:${PARAVIEW_EXTRA_SHARED_LINKER_FLAGS} -lc ${CMAKE_SHARED_LINKER_FLAGS}")
++        "LINKER:SHELL:${PARAVIEW_EXTRA_SHARED_LINKER_FLAGS} -lc")
+     endif()
+   endif()
+ 

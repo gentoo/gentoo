@@ -1,0 +1,424 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -13,6 +13,7 @@
+ 
+ include(CMakeDependentOption)
+ include(CheckFunctionExists)
++include(GNUInstallDirs)
+ 
+ # The current version number
+ set(PASTIX_VERSION_MAJOR 6)
+@@ -516,7 +517,7 @@
+ configure_file (
+   "${CMAKE_CURRENT_SOURCE_DIR}/include/pastix/config.h.in"
+   "${PROJECT_INCLUDE_DIR}/pastix/config.h")
+-install(FILES "${PROJECT_INCLUDE_DIR}/pastix/config.h" DESTINATION include/pastix)
++install(FILES "${PROJECT_INCLUDE_DIR}/pastix/config.h" DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/pastix)
+ 
+ include_directories("${CMAKE_CURRENT_SOURCE_DIR}")
+ include_directories("${CMAKE_CURRENT_BINARY_DIR}")
+@@ -844,9 +845,9 @@
+ # endforeach()
+ 
+ install(TARGETS pastix
+-  RUNTIME DESTINATION bin
+-  ARCHIVE DESTINATION lib
+-  LIBRARY DESTINATION lib)
++  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ # Install header files
+ set(PASTIX_HDRS
+@@ -861,8 +862,8 @@
+ )
+ install(FILES
+   include/pastix.h
+-  DESTINATION include )
+-install(FILES ${PASTIX_HDRS} DESTINATION include/pastix )
++  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} )
++install(FILES ${PASTIX_HDRS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/pastix )
+ 
+ ## Executable and tests
+ enable_testing()
+@@ -934,8 +935,6 @@
+   "${CMAKE_CURRENT_SOURCE_DIR}/pastixf.pc.in"
+   PROJECTNAME PASTIX )
+ 
+-generate_env_file( PROJECTNAME PASTIX )
+-
+ #############################################################
+ #
+ #      Build documentation
+--- a/cmake_modules/morse_cmake/modules/GenPkgConfig.cmake
++++ b/cmake_modules/morse_cmake/modules/GenPkgConfig.cmake
+@@ -196,7 +196,7 @@
+     # ------------
+     install(FILES
+       "${CMAKE_BINARY_DIR}/lib/pkgconfig/${fname}.pc"
+-      DESTINATION lib/pkgconfig )
++      DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig" )
+ 
+   endforeach()
+ 
+@@ -232,7 +232,7 @@
+   # installation
+   # ------------
+   install(FILES "${CMAKE_CURRENT_BINARY_DIR}/bin/${LONAME}_env.sh"
+-    DESTINATION bin)
++    DESTINATION ${CMAKE_INSTALL_BINDIR})
+ 
+ endmacro(generate_env_file)
+ 
+--- a/example/CMakeLists.txt
++++ b/example/CMakeLists.txt
+@@ -36,6 +36,7 @@
+   simple.c
+   step-by-step.c
+   )
++set (example_install_dir "${CMAKE_INSTALL_DOCDIR}/examples/c")
+ 
+ foreach (_file ${EXAMPLES})
+   get_filename_component(_name_we ${_file} NAME_WE)
+@@ -43,8 +44,8 @@
+   target_link_libraries(${_name_we} pastix)
+   target_link_libraries(${_name_we} ${BLAS_LIBRARIES})
+ 
+-  install(TARGETS ${_name_we} RUNTIME DESTINATION examples )
+-  install(FILES   ${_file}            DESTINATION examples )
++  install(TARGETS ${_name_we} RUNTIME DESTINATION ${example_install_dir} )
++  install(FILES   ${_file}            DESTINATION ${example_install_dir} )
+ endforeach()
+ 
+ ### Install a makefile for user compilation test
+@@ -58,6 +59,6 @@
+   "${CMAKE_CURRENT_SOURCE_DIR}/Makefile.in"
+   "${CMAKE_CURRENT_BINARY_DIR}/make/Makefile" @ONLY)
+ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/make/Makefile"
+-  DESTINATION examples)
++  DESTINATION ${example_install_dir})
+ 
+ include(CTestLists.txt)
+--- a/example/old/CMakeLists.txt
++++ b/example/old/CMakeLists.txt
+@@ -13,14 +13,15 @@
+   simple.c
+   step-by-step.c
+   )
++set (example_install_dir "${CMAKE_INSTALL_DOCDIR}/examples/c/old")
+ 
+ foreach (_file ${EXAMPLES})
+   get_filename_component(_name_we ${_file} NAME_WE)
+   add_executable("old_${_name_we}" ${_file})
+   target_link_libraries("old_${_name_we}" pastix)
+ 
+-  install(TARGETS old_${_name_we} RUNTIME DESTINATION examples/old )
+-  install(FILES   ${_file}                DESTINATION examples/old )
++  install(TARGETS old_${_name_we} RUNTIME DESTINATION ${example_install_dir} )
++  install(FILES   ${_file}                DESTINATION ${example_install_dir} )
+ endforeach()
+ 
+ ### Install a makefile for user compilation test
+@@ -33,5 +34,5 @@
+   "${CMAKE_CURRENT_SOURCE_DIR}/Makefile.in"
+   "${CMAKE_CURRENT_BINARY_DIR}/make/Makefile" @ONLY)
+ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/make/Makefile"
+-  DESTINATION examples/old )
++  DESTINATION ${example_install_dir} )
+ 
+--- a/kernels/CMakeLists.txt
++++ b/kernels/CMakeLists.txt
+@@ -149,8 +149,8 @@
+ 
+ ### Install library
+ install(TARGETS pastix_kernels
+-  ARCHIVE DESTINATION lib
+-  LIBRARY DESTINATION lib)
++	ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ ### Add generated files to the global property
+ add_documented_files(
+--- a/kernels/gpus/CMakeLists.txt
++++ b/kernels/gpus/CMakeLists.txt
+@@ -66,8 +66,8 @@
+ #     ${cuda_generated_files})
+ #   cuda_add_cublas_to_target( pastix_cucores_sm${_smtarget} )
+ #   install(TARGETS pastix_cucores_sm${_smtarget}
+-#     LIBRARY DESTINATION lib
+-#     ARCHIVE DESTINATION lib )
++#     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++#     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR} )
+ #   # if( NOT CMAKE_BUILD_SHARED_LIBS )
+ #   #   target_link_libraries( pastix_cucores pastix_cucores_sm${_smtarget} )
+ #   # endif()
+@@ -79,7 +79,7 @@
+ cuda_add_cublas_to_target( pastix_kernels_cuda )
+ 
+ install(TARGETS pastix_kernels_cuda
+-  LIBRARY DESTINATION lib
+-  ARCHIVE DESTINATION lib )
++  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR} )
+ 
+ cuda_build_clean_target()
+--- a/sopalin/parsec/CMakeLists.txt
++++ b/sopalin/parsec/CMakeLists.txt
+@@ -114,8 +114,8 @@
+ endif (MPI_C_FOUND)
+ 
+ install(TARGETS pastix_parsec
+-  ARCHIVE DESTINATION lib
+-  LIBRARY DESTINATION lib)
++  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ ### Add non-generated documented files to the global property
+ add_documented_files(
+--- a/sopalin/starpu/CMakeLists.txt
++++ b/sopalin/starpu/CMakeLists.txt
+@@ -96,8 +96,8 @@
+ endif (MPI_C_FOUND)
+ 
+ install(TARGETS pastix_starpu
+-  ARCHIVE DESTINATION lib
+-  LIBRARY DESTINATION lib)
++  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ ### Add non-generated documented files to the global property
+ add_documented_files(
+--- a/spm/CMakeLists.txt
++++ b/spm/CMakeLists.txt
+@@ -139,7 +139,7 @@
+ configure_file (
+   "${CMAKE_CURRENT_SOURCE_DIR}/include/spm_config.h.in"
+   "${CMAKE_CURRENT_BINARY_DIR}/include/spm_config.h")
+-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/include/spm_config.h" DESTINATION include)
++install(FILES "${CMAKE_CURRENT_BINARY_DIR}/include/spm_config.h" DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+ 
+ include_directories(include)
+ include_directories("${CMAKE_CURRENT_BINARY_DIR}/include")
+@@ -231,14 +231,14 @@
+ endif (MPI_C_FOUND)
+ 
+ install(TARGETS spm
+-  ARCHIVE DESTINATION lib
+-  LIBRARY DESTINATION lib)
++  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ install(FILES
+   include/spm.h
+   include/spm_const.h
+   include/spm_datatypes.h
+-  DESTINATION include )
++  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} )
+ 
+ ### Build pkg-config and environment file
+ include(GenPkgConfig)
+@@ -251,8 +251,6 @@
+   "${CMAKE_CURRENT_SOURCE_DIR}/tools/spmf.pc.in"
+   PROJECTNAME SPM )
+ 
+-generate_env_file( PROJECTNAME SPM )
+-
+ ### Add documented files to the global property
+ add_documented_files(
+   DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+--- a/spm/cmake_modules/morse_cmake/modules/GenPkgConfig.cmake
++++ b/spm/cmake_modules/morse_cmake/modules/GenPkgConfig.cmake
+@@ -196,7 +196,7 @@
+     # ------------
+     install(FILES
+       "${CMAKE_BINARY_DIR}/lib/pkgconfig/${fname}.pc"
+-      DESTINATION lib/pkgconfig )
++      DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig" )
+ 
+   endforeach()
+ 
+@@ -232,7 +232,7 @@
+   # installation
+   # ------------
+   install(FILES "${CMAKE_CURRENT_BINARY_DIR}/bin/${LONAME}_env.sh"
+-    DESTINATION bin)
++    DESTINATION ${CMAKE_INSTALL_BINDIR})
+ 
+ endmacro(generate_env_file)
+ 
+--- a/spm/wrappers/fortran90/CMakeLists.txt
++++ b/spm/wrappers/fortran90/CMakeLists.txt
+@@ -12,7 +12,7 @@
+ 
+ # Coherce CMake to install the generated .mod files
+ set(CMAKE_Fortran_MODULE_DIRECTORY ${CMAKE_BINARY_DIR}/mod_files)
+-install(DIRECTORY ${CMAKE_Fortran_MODULE_DIRECTORY}/ DESTINATION include)
++install(DIRECTORY ${CMAKE_Fortran_MODULE_DIRECTORY}/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+ 
+ add_library( spmf
+   src/spm_enums.F90
+@@ -30,9 +30,9 @@
+ 
+ target_link_libraries( spmf spm )
+ install(TARGETS spmf
+-  RUNTIME DESTINATION bin
+-  ARCHIVE DESTINATION lib
+-  LIBRARY DESTINATION lib )
++  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} )
+ 
+ #
+ # Add examples
+@@ -41,14 +41,15 @@
+   spm_driver.f90
+   spm_user.f90
+   )
++set ( example_install_dir "${CMAKE_INSTALL_DOCDIR}/examples/fortran" )
+ 
+ foreach (_file ${EXAMPLES})
+   get_filename_component(_name_we ${_file} NAME_WE)
+   add_executable(${_name_we} examples/${_file})
+   target_link_libraries(${_name_we} spmf)
+ 
+-  install(TARGETS ${_name_we}       RUNTIME DESTINATION examples )
+-  install(FILES   examples/${_file}         DESTINATION examples )
++  install(TARGETS ${_name_we}       RUNTIME DESTINATION ${example_install_dir} )
++  install(FILES   examples/${_file}         DESTINATION ${example_install_dir} )
+ 
+   add_test(fortran_${_name_we} ./${_name_we})
+ 
+--- a/spm/wrappers/python/CMakeLists.txt
++++ b/spm/wrappers/python/CMakeLists.txt
+@@ -9,6 +9,8 @@
+ #
+ ###
+ 
++find_package(Python COMPONENTS Interpreter REQUIRED)
++
+ # Configure enum.py
+ if (SPM_INT64)
+   set(SPM_PYTHON_INTEGER c_int64)
+@@ -26,23 +28,20 @@
+   ${CMAKE_CURRENT_SOURCE_DIR}/spm/__spm__.py
+   ${CMAKE_CURRENT_SOURCE_DIR}/spm/spm.py
+   ${CMAKE_CURRENT_SOURCE_DIR}/spm/enum.py
+-  DESTINATION lib/python/spm )
++  DESTINATION "${Python_SITELIB}/spm" )
+ 
+ # Install python examples
+ install(FILES
+   ${CMAKE_CURRENT_SOURCE_DIR}/spm_driver.py
+   ${CMAKE_CURRENT_SOURCE_DIR}/spm_scipy.py
+-  DESTINATION examples
++  DESTINATION "${CMAKE_INSTALL_DOCDIR}/examples/python"
+   )
+ 
+ ## CTest execution
+-find_package(PythonInterp QUIET)
+-if (PYTHONINTERP_FOUND)
+   set( PYTHON_TESTS
+     spm_driver spm_scipy )
+ 
+   foreach(example ${PYTHON_TESTS} )
+     add_test(python_${example} ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/${example}.py)
+   endforeach()
+-endif()
+ 
+--- a/wrappers/fortran90/CMakeLists.txt
++++ b/wrappers/fortran90/CMakeLists.txt
+@@ -12,7 +12,7 @@
+ 
+ # Coherce CMake to install the generated .mod files
+ set(CMAKE_Fortran_MODULE_DIRECTORY ${CMAKE_BINARY_DIR}/mod_files)
+-install(DIRECTORY ${CMAKE_Fortran_MODULE_DIRECTORY}/ DESTINATION include)
++install(DIRECTORY ${CMAKE_Fortran_MODULE_DIRECTORY}/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+ 
+ add_library( pastixf
+   src/pastix_enums.F90
+@@ -30,9 +30,9 @@
+ 
+ target_link_libraries( pastixf pastix )
+ install(TARGETS pastixf
+-  RUNTIME DESTINATION bin
+-  ARCHIVE DESTINATION lib
+-  LIBRARY DESTINATION lib )
++  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} )
+ 
+ #
+ # Add examples
+@@ -43,14 +43,15 @@
+   fstep-by-step.f90
+   fmultidof.f90
+   )
++set ( example_install_dir "${CMAKE_INSTALL_DOCDIR}/examples/fortran" )
+ 
+ foreach (_file ${EXAMPLES})
+   get_filename_component(_name_we ${_file} NAME_WE)
+   add_executable(${_name_we} examples/${_file})
+   target_link_libraries(${_name_we} pastixf spmf)
+ 
+-  install(TARGETS ${_name_we}       RUNTIME DESTINATION examples )
+-  install(FILES   examples/${_file}         DESTINATION examples )
++  install(TARGETS ${_name_we}       RUNTIME DESTINATION ${example_install_dir} )
++  install(FILES   examples/${_file}         DESTINATION ${example_install_dir} )
+ 
+   add_test(fortran_${_name_we} ./${_name_we})
+ 
+@@ -65,10 +66,10 @@
+ add_executable(${_name_we} examples/${_file})
+ target_link_libraries(${_name_we} pastixf spmf)
+ 
+-install(TARGETS ${_name_we}       RUNTIME DESTINATION examples )
+-install(FILES   examples/${_file}         DESTINATION examples )
+-install(FILES   examples/test_seq.in      DESTINATION examples )
+-install(FILES   examples/test_mt.in       DESTINATION examples )
++install(TARGETS ${_name_we}       RUNTIME DESTINATION ${example_install_dir} )
++install(FILES   examples/${_file}         DESTINATION ${example_install_dir} )
++install(FILES   examples/test_seq.in      DESTINATION ${example_install_dir} )
++install(FILES   examples/test_mt.in       DESTINATION ${example_install_dir} )
+ 
+ # Add OpenMP if available
+ find_package(OpenMP)
+--- a/wrappers/python/CMakeLists.txt
++++ b/wrappers/python/CMakeLists.txt
+@@ -9,6 +9,8 @@
+ #
+ ###
+ 
++find_package(Python COMPONENTS Interpreter REQUIRED)
++
+ # Configure enum.py
+ if (PASTIX_INT64)
+   set(PASTIX_PYTHON_INTEGER c_int64)
+@@ -27,7 +29,7 @@
+   ${CMAKE_CURRENT_SOURCE_DIR}/examples/pypastix/pastix.py
+   ${CMAKE_CURRENT_SOURCE_DIR}/examples/pypastix/enum.py
+   ${CMAKE_CURRENT_SOURCE_DIR}/examples/pypastix/solver.py
+-  DESTINATION lib/python/pypastix )
++  DESTINATION "${Python_SITELIB}/pypastix" )
+ 
+ # Install python examples
+ install(FILES
+@@ -35,12 +37,10 @@
+   ${CMAKE_CURRENT_SOURCE_DIR}/examples/simple_obj.py
+   ${CMAKE_CURRENT_SOURCE_DIR}/examples/schur.py
+   ${CMAKE_CURRENT_SOURCE_DIR}/examples/schur_obj.py
+-  DESTINATION examples
++  DESTINATION "${CMAKE_INSTALL_DOCDIR}/examples/python"
+   )
+ 
+ ## CTest execution
+-find_package(PythonInterp QUIET)
+-if (PYTHONINTERP_FOUND)
+   set( PYTHON_TESTS
+     simple step-by-step schur simple_obj schur_obj )
+ 
+@@ -57,5 +57,4 @@
+     set_tests_properties( python_${example} PROPERTIES
+       ENVIRONMENT "${TEST_ENV_LIST}" )
+   endforeach()
+-endif()
+ 

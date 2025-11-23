@@ -1,0 +1,20 @@
+test-suite: set ROOT_INCLUDE_PATH if builddir is passed
+
+Bug: https://github.com/vmc-project/geant4_vmc/pull/60
+
+--- a/examples/test_suite.sh
++++ b/examples/test_suite.sh
+@@ -193,8 +193,12 @@ fi
+ 
+ # Set path to shared libraries if --builddir is provided via the option
+ if [ "x${BUILDDIR}" != "x" ]; then
+-  LIBS_FROM_BUILDDIR=$(find ${BUILDDIR} -iname "*.so" -exec dirname {} \; | tr '\r\n' ':')
++  LIBS_FROM_BUILDDIR=$(find ${BUILDDIR} -iname "*.so" -exec dirname {} \; | uniq | tr '\r\n' ':')
+   export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${LIBS_FROM_BUILDDIR}
++  # In that case, also use headers from matching source dirs.
++  SOURCEDIR=$(readlink -f ../source/)
++  HEADERS_FROM_SOURCEDIR=$(find ${SOURCEDIR} -iname "*.h" -exec dirname {} \; | uniq | tr '\r\n' ':')
++  export ROOT_INCLUDE_PATH=${ROOT_INCLUDE_PATH}:${HEADERS_FROM_SOURCEDIR}
+ fi
+ 
+ # Create tmp dir from scratch

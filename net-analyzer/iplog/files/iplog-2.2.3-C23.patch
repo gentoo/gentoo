@@ -1,0 +1,42 @@
+https://bugs.gentoo.org/945194 - guard bool for modern compilers
+https://bugs.gentoo.org/712644 - type aliaces for musl
+--- a/src/iplog.h
++++ b/src/iplog.h
+@@ -21,6 +21,8 @@
+ #ifndef __IPLOG_H
+ #define __IPLOG_H
+ 
++#include <sys/types.h> /* for u_* types */
++
+ #ifndef HAVE_IPADDR_T
+ 	typedef u_int32_t ipaddr_t;
+ #endif
+@@ -82,7 +82,9 @@
+ #	define min(x,y) ((x) < (y) ? (x) : (y))
+ #endif
+ 
++#if __STDC_VERSION__ <= 201710L
+ typedef enum { false, true } bool;
++#endif
+ 
+ #ifdef HAVE_PATHS_H
+ #	include <paths.h>
+Explicitly cast sockaddr_in to sockaddr, always correct thing to do in this situation.
+--- a/src/iplog_tcp.c	2025-02-16 22:16:15.486203469 +0400
++++ b/src/iplog_tcp.c	2025-02-16 22:16:58.045309444 +0400
+@@ -142,14 +142,11 @@
+ 		fn_sin.sin_port = tcp->th_sport;
+ 		fn_sin.sin_addr.s_addr = ip->ip_src.s_addr;
+ 
+ 		ret = sendto(raw_sock, (char *) xip,
+ 				sizeof(struct ip) + sizeof(struct tcphdr), 0,
+-#if !defined(__GLIBC__) || (__GLIBC__ < 2)
+-				(struct sockaddr *)
+-#endif
+-				&fn_sin,
++				(struct sockaddr *)&fn_sin,
+ 				sizeof(struct sockaddr_in));
+ 
+ 		if (ret == -1)
+ 			IDEBUG(("[%s:%d] sendto: %s", __FILE__, __LINE__, strerror(errno)));
+ 

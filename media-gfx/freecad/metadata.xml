@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>negril.nx+gentoo@gmail.com</email>
+		<name>Paul Zander</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Gentoo Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="addonmgr">
+			Build the addon manager module for automatic handling of 3rd 
+			party addons
+		</flag>
+		<flag name="assembly">
+			Build the assembly module to create 3D models composed of several
+			distinguishable parts as a conformed machine.
+		</flag>
+		<flag name="bim">
+			Build the BIM module and workbench
+		</flag>
+		<flag name="cam">
+			Build the CAM module and workbench
+		</flag>
+		<flag name="cloud">
+			Build the Cloud workbench, to access cloud providers (mostly
+			Amazon S3).
+		</flag>
+		<flag name="designer">
+			Build and install the Qt designer plugin, so the FreeCAD widgets
+			can be used from within designer.
+		</flag>
+		<flag name="fem">
+			Build the FEM module and workbench which provides Finite Element 
+			Analysis (FEA) workflows
+		</flag>
+		<flag name="gui">
+			Build FreeCAD with a Qt based GUI. If built without setting this
+			USE flag, FreeCAD can be used in a headless mode, for server-side
+			instances.
+			The Python modules are available, without their GUI parts though,
+			if this is unset.
+		</flag>
+		<flag name="idf">
+			Build the IDF module to provide file exchange capabilities with
+			IDF files
+		</flag>
+		<flag name="inspection">
+			Build the inspection workbench which gives you specific tools
+			for examination of shapes (experimental)
+		</flag>
+		<flag name="mesh">
+			Build the mesh module and workbench
+		</flag>
+		<flag name="netgen">
+			Build support for the netgen mesher through <pkg>media-gfx/netgen</pkg>.
+		</flag>
+		<flag name="openscad">
+			Build the OpenSCAD module for interoperability with OpenSCAD 
+			and repairing Constructive Solid Geometry (CSG) history
+		</flag>
+		<flag name="pcl">
+			Use external <pkg>sci-libs/pcl</pkg> for point clouds support.
+		</flag>
+		<flag name="points">
+			Build the points module and workbench for working with point clouds
+		</flag>
+		<flag name="reverse">
+			Build the reverse engineering module and workbench
+		</flag>
+		<flag name="robot">
+			Build the robot module and workbench for studying robot movements
+		</flag>
+		<flag name="smesh">
+			Build Salome SMESH
+		</flag>
+		<flag name="spacenav">
+			Add support for space navigator devices through
+			<pkg>dev-libs/libspnav</pkg>
+		</flag>
+		<flag name="surface">
+			Build the surface module and workbench
+		</flag>
+		<flag name="techdraw">
+			Build the techdraw module and workbench, a more advanced and 
+			feature-rich successor of the drawing workbench
+		</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://github.com/FreeCAD/FreeCAD/issues</bugs-to>
+		<remote-id type="github">FreeCAD/FreeCAD</remote-id>
+		<doc lang="en">https://wiki.freecad.org/Main_Page</doc>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,59 @@
+--- a/src/sniffd/autoconfig.c
++++ b/src/sniffd/autoconfig.c
+@@ -360,7 +360,7 @@
+ int check_drv_compat(char * drvname, int * id)
+ {
+   int i;
+-  for (i=0; (int) compat_drivers[i] != -1; i++){
++  for (i=0; (long) compat_drivers[i] != -1; i++){
+     if (!strncmp(compat_drivers[i], drvname, DRVNAMSIZ +1)){
+       *id = i;
+       return (1); // just true...
+@@ -525,6 +525,7 @@
+   }
+   /* Close the socket. */
+   close(skfd);
++  return 0;
+ }
+ 
+ /**
+@@ -772,7 +773,7 @@
+       fclose(fh);
+       break;
+     case DRV_PRISM2:
+-      
++      break;
+ 	
+     }
+     /* update flag take off PROMISC */
+--- a/src/sniffd/gui_channel_scan.c
++++ b/src/sniffd/gui_channel_scan.c
+@@ -384,7 +384,7 @@
+ 	    if (!beep()) flash();
+ 	    wattrset(statuswin, STDATTR);
+ 	    snprintf(message,100,"Detected new network '%s' (%s) on Channel %02d",
+-		     ((strlen(ap->ssid)==1)&&(!strncmp(" ",ap->ssid,1))) ? "<cloaked>" : ap->ssid,
++		     ((strlen(ap->ssid)==1)&&(!strncmp(" ",(char *)ap->ssid,1))) ? "<cloaked>" : (char *)ap->ssid,
+ 		     hexdump((__u8*)&ap->bssid,6), ap->channel);
+ 	    print_status_msg(statuswin, location, message);
+ 	    ap->status = AP_STATUS_ACTIVE;
+--- a/src/sniffd/server.c
++++ b/src/sniffd/server.c
+@@ -57,7 +57,7 @@
+ 
+ int process_command(int, char *);
+ int issue_get_cmd(int, char *);
+-int send_bss_info(int);
++ssize_t send_bss_info(int);
+ int send_ids_info(int);
+ 
+ /*=============================================================*/
+@@ -143,7 +143,7 @@
+       if (DEBUG) fprintf(stderr,"Error transmitting data\n");
+     }
+   } while (write_len == 0);
+-  if (DEBUG) fprintf(stderr,"Data: %d bytes sent\n",length);
++  if (DEBUG) fprintf(stderr,"Data: %ld bytes sent\n",length);
+ }
+ 
+ /**

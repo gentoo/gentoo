@@ -1,0 +1,14 @@
+Typhoeus support only works then the faraday-typhoeus package is installed.
+https://github.com/typhoeus/typhoeus/issues/709
+
+--- a/lib/puppet_forge/connection.rb	2023-09-09 09:02:03.981164238 +0200
++++ b/lib/puppet_forge/connection.rb	2023-09-09 09:03:56.506144279 +0200
+@@ -82,7 +82,7 @@
+ 
+       begin
+         # Use Typhoeus if available.
+-        Gem::Specification.find_by_name('typhoeus', '~> 1.4')
++        Gem::Specification.find_by_name('typhoeus', '~> 1.4') && Gem::Specification.find_by_name('faraday-typhoeus')
+         require 'typhoeus/adapters/faraday'
+         adapter = :typhoeus
+       rescue Gem::LoadError

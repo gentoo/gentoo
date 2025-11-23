@@ -1,0 +1,11 @@
+--- a/paket.dependencies
++++ b/paket.dependencies
+@@ -2,7 +2,7 @@ version 7.2.1
+ 
+ framework: netstandard2.0, netstandard2.1,  net6.0, net7.0, net8.0
+ 
+-source https://api.nuget.org/v3/index.json
++source: @NUGET_PACKAGES@
+ # this is the FCS nightly feed, re-enable at your own risk!
+ # source: https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet8/nuget/v3/index.json
+ #source: ./libs

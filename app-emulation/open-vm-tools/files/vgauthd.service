@@ -1,0 +1,14 @@
+[Unit]
+Description=VGAuth Service for open-vm-tools
+Documentation=https://github.com/vmware/open-vm-tools
+ConditionVirtualization=vmware
+PartOf=vmtoolsd.service
+
+[Service]
+# For dev-libs/xerces-c[iconv,-icu]
+EnvironmentFile=-/etc/env.d/50xerces-c
+ExecStart=/usr/bin/VGAuthService -s
+TimeoutStopSec=5
+
+[Install]
+RequiredBy=vmtoolsd.service

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>prometheanfire@gentoo.org</email>
+  </maintainer>
+  <use>
+    <flag name="natspec">Use <pkg>dev-libs/libnatspec</pkg> to correctly decode non-ascii file names archived in Windows.</flag>
+    <flag name="rar">Enable support for non-free rar decoder</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">p7zip-project/p7zip</remote-id>
+  </upstream>
+</pkgmetadata>

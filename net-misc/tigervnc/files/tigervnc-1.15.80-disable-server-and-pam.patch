@@ -1,0 +1,70 @@
+Add BUILD_SERVER similar to BUILD_VIEWER
+
+Add a BUILD_SERVER option similar to BUILD_VIEWER.  When BUILD_SERVER is
+not active, we do not require pam, so also disable everything that needs
+pam.  This allows building the viewer on a machine where pam is not
+installed.
+
+See https://bugs.gentoo.org/852830
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -278,6 +278,7 @@ if(BUILD_JAVA)
+   add_subdirectory(java)
+ endif()
+ 
++trioption(BUILD_SERVER "Build TigerVNC server")
+ trioption(BUILD_VIEWER "Build TigerVNC viewer")
+ if(BUILD_VIEWER)
+   # Check for FLTK
+@@ -359,7 +360,7 @@ if (ENABLE_NETTLE)
+ endif()
+ 
+ # Check for PAM library
+-if(UNIX AND NOT APPLE)
++if(BUILD_SERVER AND UNIX AND NOT APPLE)
+   check_include_files(security/pam_appl.h HAVE_PAM_H)
+   set(CMAKE_REQUIRED_LIBRARIES -lpam)
+   check_function_exists(pam_start HAVE_PAM_START)
+--- a/common/rfb/CMakeLists.txt
++++ b/common/rfb/CMakeLists.txt
+@@ -75,7 +75,7 @@ if(WIN32)
+   target_sources(rfb PRIVATE WinPasswdValidator.cxx)
+ endif(WIN32)
+ 
+-if(UNIX AND NOT APPLE)
++if(BUILD_SERVER AND UNIX AND NOT APPLE)
+   target_sources(rfb PRIVATE UnixPasswordValidator.cxx)
+   target_link_libraries(rfb ${PAM_LIBS})
+ endif()
+--- a/tests/perf/CMakeLists.txt
++++ b/tests/perf/CMakeLists.txt
+@@ -8,8 +8,10 @@ target_link_libraries(convperf test_util rfb)
+ add_executable(decperf decperf.cxx)
+ target_link_libraries(decperf test_util rdr rfb)
+ 
+-add_executable(encperf encperf.cxx)
+-target_link_libraries(encperf test_util core rdr rfb)
++if(BUILD_SERVER)
++  add_executable(encperf encperf.cxx)
++  target_link_libraries(encperf test_util core rdr rfb)
++endif()
+ 
+ if (BUILD_VIEWER)
+   add_executable(fbperf
+--- a/unix/CMakeLists.txt
++++ b/unix/CMakeLists.txt
+@@ -4,7 +4,9 @@ endif()
+ 
+ add_subdirectory(tx)
+ add_subdirectory(common)
+-add_subdirectory(vncconfig)
+-add_subdirectory(vncpasswd)
+-add_subdirectory(vncserver)
+-add_subdirectory(x0vncserver)
++if(BUILD_SERVER)
++  add_subdirectory(vncconfig)
++  add_subdirectory(vncpasswd)
++  add_subdirectory(vncserver)
++  add_subdirectory(x0vncserver)
++endif()

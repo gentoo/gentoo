@@ -1,0 +1,164 @@
+From 22f3771073c95e789ab37189b4cb324e0a849784 Mon Sep 17 00:00:00 2001
+From: Andreas Lochmann <and.lochmann@googlemail.com>
+Date: Wed, 22 Mar 2023 00:50:37 +0100
+Subject: [PATCH] Remove remnants of gettext, including intl directory (no
+ libintl needed anymore).
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -3,7 +3,7 @@
+ #   tools -> lib-src/lua
+ #   src   -> tools, lib-src
+ #
+-SUBDIRS = m4 lib-src tools intl src data doc etc
++SUBDIRS = m4 lib-src tools src data doc etc
+ EXTRA_DIST = enigma CHANGES ACKNOWLEDGEMENTS
+ 
+ docdir = @datadir@/doc/enigma
+--- a/configure.ac
++++ b/configure.ac
+@@ -98,12 +98,6 @@ dnl Check for libraries
+ dnl ======================================================================
+ AC_SEARCH_LIBS([dlopen], [dl])
+ 
+-dnl When using the included gettext package from the /intl subdir
+-dnl /intl needs to be added to the list of include folders
+-if test "$BUILD_INCLUDED_LIBINTL" = yes; then
+-   CXXFLAGS="$CXXFLAGS -I\$(top_srcdir)/intl"
+-fi
+-
+ dnl This is to check for winmm which must be included to satisfy enet
+ dnl when compiling under mingw32
+ if test "$MINGW32" = yes; then
+@@ -368,7 +362,7 @@ dnl Configure libraries
+ dnl ----------------------------------------------------------
+ AC_CONFIG_SUBDIRS(lib-src/zipios++)
+ 
+-AC_CONFIG_FILES([Makefile m4/Makefile  intl/Makefile
++AC_CONFIG_FILES([Makefile m4/Makefile
+            data/Makefile
+            data/gfx/Makefile
+            data/gfx/flags25x15/Makefile
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -27,8 +27,7 @@ if MINGW32
+ CXXFLAGS += -static-libgcc -static-libstdc++ -DWIN32
+ endif
+ 
+-CXXFLAGS += -I$(top_srcdir)/lib-src \
+-	-I$(top_builddir)/intl @SDL_CFLAGS@
++CXXFLAGS += -I$(top_srcdir)/lib-src @SDL_CFLAGS@
+ 
+ 
+ enigma_SOURCES = 		\
+@@ -471,7 +470,6 @@ else # not MACOSX
+ endif
+ 
+ enigma_LDADD = \
+-	@LIBINTL@ \
+ 	$(top_builddir)/lib-src/enigma-core/libecl.a \
+ 	$(top_builddir)/lib-src/lua/liblua.a
+ 
+--- a/src/gui/OptionsMenu.cc
++++ b/src/gui/OptionsMenu.cc
+@@ -992,7 +992,6 @@ class VideoCheckTickDown : public Label {
+             std::string tfLocalization = XMLtoLocal(Utf8ToXML(localizationPathTF->getText().c_str()).x_str()).c_str();
+             if (app.l10nPath != tfLocalization) {
+                 app.l10nPath = tfLocalization;
+-                bindtextdomain (PACKAGE_NAME, app.l10nPath.c_str());
+                 app.prefs->setProperty("LocalizationPath", app.l10nPath);
+             }
+         }
+--- a/src/main.cc
++++ b/src/main.cc
+@@ -52,7 +52,6 @@
+ 
+ #include "tinygettext/include/tinygettext/log.hpp"
+ 
+-#include <locale.h>
+ #include <cstdio>
+ #include <cstdlib>
+ #include <ctime>
+@@ -894,13 +893,6 @@ void Application::init_i18n()
+ 
+     nls::SetMessageLocale (app.language);
+ 
+-    // TODO: Make sure that bindtextdomain accepts UTF-8, then replace
+-    // by XMLtoUtf8(LocalToXML(app.l10nPath.c_str()).x_str()).c_str().
+-    bindtextdomain (PACKAGE_NAME, app.l10nPath.c_str());
+-
+-    // SDL_ttf does not handle arbitrary encodings, so use UTF-8
+-    bind_textdomain_codeset (PACKAGE_NAME, "utf-8");
+-    textdomain (PACKAGE_NAME);
+ #endif
+ 
+ }
+--- a/src/nls.cc
++++ b/src/nls.cc
+@@ -5,7 +5,6 @@
+ #include "enigma.hh"
+ #include "options.hh"
+ 
+-#include <locale.h>
+ #include <fstream>
+ #include <string>
+ #include <cstdlib>
+@@ -17,47 +16,10 @@ using namespace nls;
+ 
+ unique_ptr<tinygettext::DictionaryManager> nls::theDictionaryManager = nullptr;
+ 
+-#if !defined (HAVE_SETENV) && defined (HAVE_PUTENV)
+-static char lang_env[256];
+-#endif
+-
+-static char localeutf[256];
+-
+-static void my_setenv (const char* var, const char* val)
+-{
+-#if defined (HAVE_SETENV)
+-    setenv(var, val, 1);
+-#elif defined (HAVE_PUTENV)
+-    snprintf (lang_env, sizeof(lang_env), "%s=%s", var, val);
+-    putenv(lang_env);
+-#endif
+-}
+-
+ void nls::SetMessageLocale(const std::string &language)
+ {
+-    if (language != "") {
++    if (language != "")
+         theDictionaryManager->set_language(tinygettext::Language::from_name(language));
+-#if defined (WIN32) || defined (MACOSX)
+-        my_setenv ("LANG", language.c_str());
+-#else // not WIN32 or MACOSX
+-        if (setlocale (LC_MESSAGES, language.c_str()) != NULL) {
+-            my_setenv ("LANG", language.c_str());
+-        } else {
+-            // Second attempt: lang + .UTF-8
+-            snprintf(localeutf, sizeof(localeutf), "%s.UTF-8", language.c_str());
+-            if (setlocale (LC_MESSAGES, localeutf) != NULL) {
+-                my_setenv ("LANG", localeutf);
+-            }
+-        }
+-#endif
+-    }
+-
+-#if defined(ENABLE_NLS) && defined(HAVE_LC_MESSAGES)
+-    // Hack to fool libintl into changing the message locale more than
+-    // once
+-    setlocale (LC_MESSAGES, "C");
+-    setlocale (LC_MESSAGES, ""); //language.c_str());
+-#endif
+ }
+ 
+ void nls::CycleLocale(bool direction)
+--- a/src/nls.hh
++++ b/src/nls.hh
+@@ -3,7 +3,6 @@
+ #include "config.h"
+ 
+ #if defined(ENABLE_NLS)
+-#  include <libintl.h>
+ #  define _(String) nls::translate(String).c_str()
+ //#  define _(String) gettext(String)
+ #  define gettext_noop(String) (String)

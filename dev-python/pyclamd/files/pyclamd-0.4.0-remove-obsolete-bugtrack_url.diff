@@ -1,0 +1,11 @@
+diff -Naurp a/setup.py b/setup.py
+--- a/setup.py	2017-08-28 00:05:52.000000000 +0200
++++ b/setup.py	2023-02-18 16:57:08.911936472 +0100
+@@ -27,7 +27,6 @@ setup (name = 'pyClamd',
+        author_email = 'norman@xael.org',
+        keywords='python, clamav, antivirus, scanner, virus, libclamav',
+        url = 'http://xael.org/pages/pyclamd-en.html',
+-       bugtrack_url = 'https://bitbucket.org/xael/pyclamd',
+        include_dirs = ['/usr/local/include'],
+        description = 'pyClamd is a python interface to Clamd (Clamav daemon).',
+        long_description = 'pyClamd is a python interface to Clamd (Clamav daemon). By using pyClamd, you can add virus detection capabilities to your python software in an efficient and easy way. Instead of pyClamav which uses libclamav, pyClamd may be used by a closed source product.',

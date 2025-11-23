@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+  </maintainer>
+
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+
+  <stabilize-allarches/>
+
+  <use>
+    <flag name="completion">
+      Install GAP backend for <pkg>app-emacs/company-mode</pkg> to
+      "complete anything."
+    </flag>
+
+    <flag name="lint">
+      Support automatically linting GAP code via
+      <pkg>app-emacs/flycheck</pkg> and <pkg>dev-gap/gaplint</pkg>.
+    </flag>
+  </use>
+
+  <upstream>
+    <remote-id type="gitlab">gvol/gap-mode</remote-id>
+  </upstream>
+
+</pkgmetadata>

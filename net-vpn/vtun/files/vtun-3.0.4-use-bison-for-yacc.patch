@@ -1,0 +1,41 @@
+https://bugs.gentoo.org/907988
+--- a/configure.in	2016-10-01 23:46:01.000000000 +0200
++++ b/configure.in	2023-06-10 22:44:20.873592074 +0200
+@@ -82,11 +82,14 @@
+ AC_CANONICAL_SYSTEM
+ 
+ dnl Check for programs.
+-AC_PROG_YACC
+ AC_PROG_LEX
+ AC_PROG_CC
+ AC_PROG_INSTALL
+ 
++AC_ARG_VAR([BISON], [bison command for yacc parsing])
++AC_CHECK_PROG([BISON], [bison -y], [bison -y], [no])
++AS_IF([test "x$BISON" = "xno"], [AC_MSG_ERROR([bison not found])])
++
+ dnl Checks for typedefs, structures, and compiler characteristics.
+ AC_C_CONST
+ AC_C_INLINE
+--- a/Makefile.in	2016-10-01 23:46:00.000000000 +0200
++++ b/Makefile.in	2023-06-10 23:00:25.278904190 +0200
+@@ -21,8 +21,8 @@
+ CFLAGS = @CFLAGS@ @CPPFLAGS@
+ LDFLAGS = @LDFLAGS@ @LIBS@
+ 
+-YACC = @YACC@
+-YACCFLAGS = -d
++BISON = @BISON@
++BISONFLAGS = -d
+ 
+ LEX = @LEX@
+ LEXFLAGS = -t 
+@@ -62,7 +62,7 @@
+ 	$(CC) $(CFLAGS) -o vtund $(OBJS) $(LFD_OBJS) $(LDFLAGS)
+ 
+ cfg_file.tab.h:
+-	$(YACC) $(YACCFLAGS) -b cfg_file cfg_file.y
++	$(BISON) $(BISONFLAGS) -b cfg_file cfg_file.y
+ 
+ cfg_file.tab.c: cfg_file.y cfg_kwords.h config.h cfg_file.tab.h
+ 

@@ -1,0 +1,25 @@
+[Unit]
+Description=onionrouter
+After=network.target tor.service
+Before=postfix.service
+
+[Service]
+ExecStart=/usr/bin/onionrouter
+Restart=on-failure
+RestartSec=10s
+DynamicUser=true
+PrivateDevices=true
+PrivateUsers=true
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectHostname=true
+RestrictRealtime=true
+MemoryDenyWriteExecute=true
+
+[Install]
+WantedBy=default.target
+

@@ -1,0 +1,24 @@
+From 2b84ba489fb28f474195d215be7cc6bed43c32bc Mon Sep 17 00:00:00 2001
+From: Olle Jonsson <olle.jonsson@gmail.com>
+Date: Thu, 2 Apr 2020 21:02:51 +0200
+Subject: [PATCH] Avoid warning `*' interpreted as argument prefix
+
+---
+ lib/patron/request.rb | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/patron/request.rb b/lib/patron/request.rb
+index 9050ef2..3ac998a 100644
+--- a/lib/patron/request.rb
++++ b/lib/patron/request.rb
+@@ -34,8 +34,8 @@ def initialize
+       :low_speed_time, :low_speed_limit, :progress_callback
+     ]
+ 
+-    attr_reader *READER_VARS
+-    attr_writer *WRITER_VARS
++    attr_reader(*READER_VARS)
++    attr_writer(*WRITER_VARS)
+ 
+     # Set the type of authentication to use for this request.
+     #

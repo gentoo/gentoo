@@ -1,0 +1,32 @@
+From 81a5af864e39e8f553e79ba83871390f42c65186 Mon Sep 17 00:00:00 2001
+From: dflogeras <dflogeras2@gmail.com>
+Date: Fri, 8 Mar 2024 11:12:00 -0400
+Subject: [PATCH] Don't call XCloseDisplay on null object.  Hopefully fixes
+ Issue #335. (#337)
+
+Co-authored-by: Dave Flogeras <dflogeras@gmail.com>
+---
+ src/annotations/items/text/CapsLockStatusChecker.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/annotations/items/text/CapsLockStatusChecker.cpp b/src/annotations/items/text/CapsLockStatusChecker.cpp
+index 8bf98438..809e448a 100644
+--- a/src/annotations/items/text/CapsLockStatusChecker.cpp
++++ b/src/annotations/items/text/CapsLockStatusChecker.cpp
+@@ -46,8 +46,8 @@ bool CapsLockStatusChecker::isCapsLockEnabled()
+ 			unsigned n;
+ 			XkbGetIndicatorState(display, XkbUseCoreKbd, &n);
+ 			capsState = (n & 0x01) == 1;
++			XCloseDisplay(display);
+ 		}
+-		XCloseDisplay(display);
+ 		return capsState;
+ 	}
+ #else
+@@ -55,4 +55,4 @@ bool CapsLockStatusChecker::isCapsLockEnabled()
+ #endif
+ }
+ 
+-} // namespace kImageAnnotator
+\ No newline at end of file
++} // namespace kImageAnnotator

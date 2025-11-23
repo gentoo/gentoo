@@ -1,0 +1,32 @@
+diff -ruN Wx-Scintilla-0.39.orig/wx-scintilla/src/scintilla/src/Editor.cxx Wx-Scintilla-0.39/wx-scintilla/src/scintilla/src/Editor.cxx
+--- Wx-Scintilla-0.39.orig/wx-scintilla/src/scintilla/src/Editor.cxx	2012-09-04 12:20:46.000000000 +0200
++++ Wx-Scintilla-0.39/wx-scintilla/src/scintilla/src/Editor.cxx	2017-04-25 01:20:51.586427196 +0200
+@@ -11,6 +11,7 @@
+ #include <ctype.h>
+ #include <assert.h>
+ 
++#include <cmath>
+ #include <string>
+ #include <vector>
+ #include <map>
+@@ -989,7 +990,7 @@
+ 		// Try to optimise small scrolls
+ #ifndef UNDER_CE
+ 		int linesToMove = topLine - topLineNew;
+-		bool performBlit = (abs(linesToMove) <= 10) && (paintState == notPainting);
++		bool performBlit = (std::abs(linesToMove) <= 10) && (paintState == notPainting);
+ 		willRedrawAll = !performBlit;
+ #endif
+ 		SetTopLine(topLineNew);
+@@ -5868,9 +5869,9 @@
+ }
+ 
+ static bool Close(Point pt1, Point pt2) {
+-	if (abs(pt1.x - pt2.x) > 3)
++	if (std::abs(pt1.x - pt2.x) > 3)
+ 		return false;
+-	if (abs(pt1.y - pt2.y) > 3)
++	if (std::abs(pt1.y - pt2.y) > 3)
+ 		return false;
+ 	return true;
+ }

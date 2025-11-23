@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <upstream>
+    <bugs-to>https://github.com/vinceliuice/Fluent-icon-theme/issues</bugs-to>
+    <remote-id type="github">vinceliuice/Fluent-icon-theme</remote-id>
+  </upstream>
+  <use>
+    <flag name="hardlink">
+      Hardlink duplicate icons to greatly reduce installation size
+    </flag>
+    <flag name="round">
+      Install the round version of symbolic icons
+    </flag>
+  </use>
+</pkgmetadata>

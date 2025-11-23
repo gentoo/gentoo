@@ -1,0 +1,8 @@
+https://bugs.gentoo.org/874903
+--- a/wavegain.c
++++ b/wavegain.c
+@@ -51,2 +51,4 @@
+ #include <windows.h>
++#else
++#include <unistd.h>
+ #endif

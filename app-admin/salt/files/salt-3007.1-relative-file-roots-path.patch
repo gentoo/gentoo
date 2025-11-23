@@ -1,0 +1,74 @@
+From e9f4395729679d8e3831dc9041a33e0d22bb7a35 Mon Sep 17 00:00:00 2001
+From: hurzhurz <hurz@gmx.org>
+Date: Thu, 4 Jul 2024 21:47:20 +0000
+Subject: [PATCH] Fix relative file_roots paths
+
+---
+ changelog/66588.fixed.md                           |  1 +
+ salt/utils/verify.py                               |  2 +-
+ tests/pytests/unit/fileserver/test_roots.py        | 10 ++++++++++
+ tests/pytests/unit/utils/verify/test_clean_path.py |  8 ++++++++
+ 4 files changed, 20 insertions(+), 1 deletion(-)
+ create mode 100644 changelog/66588.fixed.md
+
+diff --git a/changelog/66588.fixed.md b/changelog/66588.fixed.md
+new file mode 100644
+index 000000000000..6bc72eff59bb
+--- /dev/null
++++ b/changelog/66588.fixed.md
+@@ -0,0 +1 @@
++Fix relative file_roots paths
+diff --git a/salt/utils/verify.py b/salt/utils/verify.py
+index b3fe6c02c60c..247f947b7b69 100644
+--- a/salt/utils/verify.py
++++ b/salt/utils/verify.py
+@@ -521,7 +521,7 @@ def clean_path(root, path, subdir=False, realpath=True):
+     Pass realpath=False if filesystem links should not be resolved.
+     """
+     if not os.path.isabs(root):
+-        return ""
++        root = os.path.join(os.getcwd(), root)
+     root = os.path.normpath(root)
+     if not os.path.isabs(path):
+         path = os.path.join(root, path)
+diff --git a/tests/pytests/unit/fileserver/test_roots.py b/tests/pytests/unit/fileserver/test_roots.py
+index a197b937eec5..124c491ce15b 100644
+--- a/tests/pytests/unit/fileserver/test_roots.py
++++ b/tests/pytests/unit/fileserver/test_roots.py
+@@ -341,3 +341,13 @@ def test_serve_file_symlink_destination_not_in_root(tmp_state_tree):
+     fnd = {"path": str(symlink / "testfile"), "rel": "bar/testfile"}
+     ret = roots.serve_file(load, fnd)
+     assert ret == {"data": b"testfile", "dest": "bar/testfile"}
++
++
++def test_relative_file_roots(tmp_state_tree):
++    parent = pathlib.Path(tmp_state_tree).parent
++    reldir = os.path.basename(tmp_state_tree)
++    opts = {"file_roots": copy.copy(roots.__opts__["file_roots"])}
++    opts["file_roots"]["base"] = [reldir]
++    with patch.dict(roots.__opts__, opts), pytest.helpers.change_cwd(str(parent)):
++        ret = roots.find_file("testfile")
++        assert "testfile" == ret["rel"]
+diff --git a/tests/pytests/unit/utils/verify/test_clean_path.py b/tests/pytests/unit/utils/verify/test_clean_path.py
+index 062821eb7967..9899cbde076b 100644
+--- a/tests/pytests/unit/utils/verify/test_clean_path.py
++++ b/tests/pytests/unit/utils/verify/test_clean_path.py
+@@ -3,6 +3,7 @@
+ """
+ 
+ import salt.utils.verify
++from tests.support.mock import patch
+ 
+ 
+ def test_clean_path_valid(tmp_path):
+@@ -15,3 +16,10 @@ def test_clean_path_invalid(tmp_path):
+     path_a = str(tmp_path / "foo")
+     path_b = str(tmp_path / "baz" / "bar")
+     assert salt.utils.verify.clean_path(path_a, path_b) == ""
++
++
++def test_clean_path_relative_root(tmp_path):
++    with patch("os.getcwd", return_value=str(tmp_path)):
++        path_a = "foo"
++        path_b = str(tmp_path / "foo" / "bar")
++        assert salt.utils.verify.clean_path(path_a, path_b) == path_b

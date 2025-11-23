@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    CIDER extends Emacs with support for interactive programming in Clojure.
+    The features are centered around cider-mode, an Emacs minor-mode that
+    complements clojure-mode. While clojure-mode supports editing Clojure
+    source files, cider-mode adds support for interacting with a running
+    Clojure process for compilation, code completion, debugging, definition and
+    documentation lookup, running tests and so on.
+  </longdescription>
+  <upstream>
+    <doc>https://docs.cider.mx/</doc>
+    <bugs-to>https://github.com/clojure-emacs/cider/issues/</bugs-to>
+    <remote-id type="github">clojure-emacs/cider</remote-id>
+  </upstream>
+</pkgmetadata>

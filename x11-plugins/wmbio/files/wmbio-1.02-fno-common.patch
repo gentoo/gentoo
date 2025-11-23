@@ -1,0 +1,26 @@
+diff -Naur src.orig/wmbio.c src/wmbio.c
+--- src.orig/wmbio.c	2004-01-21 13:58:12.000000000 +0100
++++ src/wmbio.c	2020-03-08 12:13:32.177944932 +0100
+@@ -78,6 +78,8 @@
+ struct tm *local;  // for the local time
+ time_t tempo;
+ 
++Display		*display;
++Window          Root, iconwin, win;
+ 
+ /* MAIN */
+ int	 main (int argc, char *argv[]);
+diff -Naur src.orig/wmgeneral.h src/wmgeneral.h
+--- src.orig/wmgeneral.h	2002-04-27 16:02:09.000000000 +0200
++++ src/wmgeneral.h	2020-03-08 12:13:24.853941688 +0100
+@@ -24,8 +24,8 @@
+ } XpmIcon;
+ 
+ 
+-Display		*display;
+-Window          Root, iconwin, win;
++extern Display		*display;
++extern Window          Root, iconwin, win;
+ 
+ 
+ void AddMouseRegion(int index, int left, int top, int right, int bottom);

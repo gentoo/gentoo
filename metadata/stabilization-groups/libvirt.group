@@ -1,0 +1,4 @@
+app-emulation/libvirt
+app-emulation/libvirt-glib
+dev-perl/Sys-Virt
+dev-python/libvirt-python

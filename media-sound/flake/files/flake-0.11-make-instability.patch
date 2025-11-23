@@ -1,0 +1,57 @@
+https://bugs.gentoo.org/917760
+We can't build program without library, utils dependency is just in case
+diff -ru a/Makefile b/Makefile
+--- a/Makefile	2025-01-09 11:48:10.117085442 +0400
++++ b/Makefile	2025-01-09 11:48:27.041979565 +0400
+@@ -19,10 +19,10 @@
+ lib:
+ 	$(MAKE) -C libflake all
+ 
+-progs:
++progs: lib
+ 	$(MAKE) -C flake all
+ 
+-utils:
++utils: progs lib
+ 	$(MAKE) -C util all
+ 
+ .PHONY: install
+https://bugs.gentoo.org/912148
+https://bugs.gentoo.org/880819
+False dependency, if we put flake in build graph, make uses default build
+rules, doesn't include library and failure to link occurs.
+diff -ru a/flake/Makefile b/flake/Makefile
+--- a/flake/Makefile	2025-01-09 11:57:17.279914146 +0400
++++ b/flake/Makefile	2025-01-09 11:59:25.559155784 +0400
+@@ -21,6 +21,6 @@
+ 
+-all: $(PROGS_G) $(PROGS)
++all: $(PROGS_G)
+ 
+ flake_g$(EXESUF): flake.o wav.o $(DEP_LIBS)
+ 	$(CC) $(FLAKE_LIBDIRS) $(LDFLAGS) -o $@ flake.o wav.o $(FLAKE_LIBS) $(EXTRALIBS)
+ 	cp -p flake_g$(EXESUF) flake$(EXESUF)
+Clean up implicit declaration in configure and prepare for C23
+diff -ru a/configure b/configure
+@@ -666,6 +667,7 @@
+ # test for strnlen in string.h
+ check_exec <<EOF && have_strnlen=yes || have_strnlen=no
+ #define _ISOC9X_SOURCE  1
++#define _GNU_SOURCE  1
++#include <strings.h>
+ #include <string.h>
+ int main( void ) { return (strnlen("help", 6) == 4)?0:1; }
+ EOF
+diff -ru a/common.h b/common.h
+--- a/common.h	2025-01-09 16:06:00.978525674 +0400
++++ b//common.h	2025-01-09 16:07:06.592168373 +0400
+@@ -87,7 +87,8 @@
+     return i;
+ }
+ #elif !defined(__USE_GNU)
+-extern size_t strnlen(const char *s, size_t maxlen);
++#include <strings.h>
++//extern size_t strnlen(const char *s, size_t maxlen);
+ #endif
+ 
+ #endif /* COMMON_H */

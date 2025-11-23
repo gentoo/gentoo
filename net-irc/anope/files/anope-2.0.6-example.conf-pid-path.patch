@@ -1,0 +1,18 @@
+--- a/data/example.conf	2017-03-30 17:00:24.000000000 -0400
++++ a/data/example.conf	2019-02-06 15:16:20.088469043 -0500
+@@ -231,13 +231,13 @@
+ 	 * The filename containing the Services process ID. The path is relative to the
+ 	 * services root directory.
+ 	 */
+-	pid = "data/services.pid"
++	pid = "/run/anope/services.pid"
+ 
+ 	/*
+ 	 * The filename containing the Message of the Day. The path is relative to the
+ 	 * services root directory.
+ 	 */
+-	motd = "conf/services.motd"
++	motd = "/etc/anope/services.motd"
+ }
+ 
+ /*

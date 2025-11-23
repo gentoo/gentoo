@@ -1,0 +1,237 @@
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (2025-09-12)
+# These BLAS/LAPACK providers are keyworded here.
+sci-libs/flexiblas -blis
+
+# Sam James <sam@gentoo.org> (2025-08-29)
+# net-misc/passt not yet keyworded here
+app-emulation/qemu passt
+
+# Sam James <sam@gentoo.org> (2025-06-05)
+# dev-util/spirv-llvm-translator not keyworded here
+dev-libs/pocl spirv
+
+# Sam James <sam@gentoo.org> (2025-05-16)
+# gpio: dev-libs/libgpiod not keyworded here
+sys-power/nut gpio
+
+# Paul Zander <negril.nx+gentoo@gmail.com> (2025-05-06)
+# Broken bundled Eigen, fails to compile. See bug #865191.
+sci-geosciences/grass pdal
+sci-libs/vtk pdal
+media-gfx/openvdb pdal
+
+# Alfredo Tupone <tupone@gentoo.org> (2025-05-03)
+# dependencies not yet keyworded
+sci-ml/caffe2 distributed gloo fbgemm nnpack onednn qnnpack rocm xnnpack
+
+# NRK <nrk@disroot.org> (2025-04-07)
+# media-libs/libyuv is not keyworded
+media-libs/imlib2 y4m
+
+# Cristian Othón Martínez Vera (2025-04-09)
+# dev-db/tinycdb is not keyworded here
+mail-mta/sendmail tinycdb
+
+# NRK <nrk@disroot.org> (2025-03-17)
+# media-libs/libyuv is not keyworded
+media-libs/libavif libyuv
+
+# Alfred Wingate <parona@protonmail.com> (2025-02-22)
+# media-libs/zint is not keyworded here
+media-libs/zxing-cpp experimental
+
+# Sv. Lockal <lockalsash@gmail.com> (2025-01-11)
+# dev-cpp/prometheus-cpp is not keyworded
+dev-cpp/opentelemetry-cpp prometheus
+
+# Zurab Kvachadze <zurabid2016@gmail.com> (2025-02-18)
+# www-servers/uwsgi, required for tests, is not keyworded on ppc64.
+www-servers/nginx test
+
+# Michał Górny <mgorny@gentoo.org> (2024-12-24)
+# OpenMP offloading is supported on 64-bit architectures only.
+llvm-runtimes/clang-runtime -offload
+
+# Sam James <sam@gentoo.org> (2024-12-17)
+# dev-lang/ada-bootstrap exists here
+>=sys-devel/gcc-11 -ada
+
+# David Roman <davidroman96@gmail.com> (2024-10-04)
+# dev-libs/libunibreak is not keyworded
+media-libs/libass libunibreak
+
+# Sam James <sam@gentoo.org> (2024-05-19)
+# media-libs/jasper not yet keyworded here: https://bugs.gentoo.org/921559
+media-gfx/graphicsmagick jpeg2k
+
+# Sam James <sam@gentoo.org> (2024-03-23)
+# dev-qt/qtwebengine not available here
+dev-python/qtpy webengine test
+
+# Michal Privoznik <michal.privoznik@gmail.com> (2024-01-21)
+# virtiofsd is available here
+app-emulation/libvirt -virtiofsd
+
+# Alexey Sokolov <alexey+gentoo@asokolov.org> (2023-08-14)
+# OpenMW is only playtested with LuaJIT, and in fact unit tests fail with Lua-5.
+# Therefore apply mask/force to override the profile's defaults, and invert on
+# arches where luajit is not keyworded.
+# Done this way also avoids conflicts for users using another default.
+games-engines/openmw -lua_single_target_lua5-1 lua_single_target_luajit
+games-engines/openmw -lua_single_target_lua5-3 -lua_single_target_lua5-4
+
+# Sam James <sam@gentoo.org> (2023-04-14)
+# Needs dev-python/sympy which is not yet keyworded, see bug #892183
+dev-python/nbval test
+
+# Michał Górny <mgorny@gentoo.org> (2023-01-24)
+# libomptarget is only supported on 64-bit architectures.
+>=llvm-runtimes/openmp-16.0.0_pre20230124 -offload
+
+# Niccolò Belli <niccolo.belli@linuxsystems.it> (2022-11-29)
+# media-libs/webrtc-audio-processing only has amd64, x86 and ppc64 keywords
+media-video/pipewire -echo-cancel
+
+# Sam James <sam@gentoo.org> (2022-10-13)
+# Causes segfaults, bug #871921
+sci-libs/symengine tcmalloc
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2022-09-29)
+# USE=fix requires ring crate, which is not portable
+# https://github.com/rustsec/rustsec/issues/707
+dev-util/cargo-audit fix
+
+# Michał Górny <mgorny@gentoo.org> (2021-12-31)
+# Don't apply stable masks to python-exec since we're forcing every
+# impl there anyway. Please keep this in sync with use.stable.mask.
+dev-lang/python-exec -python_targets_pypy3_11
+
+# Marek Szuba <marecki@gentoo.org> (2021-07-18)
+# media-plugins/zam-plugins not keyworded here
+media-sound/easyeffects zamaudio
+
+# Ionen Wolkens <ionen@gentoo.org> (2021-07-01)
+# Feature currently relies on amd64 prebuilt binaries.
+media-video/obs-studio browser
+
+# Matt Turner <mattst88@gentoo.org> (2021-06-10)
+# dev-python/django is not keyworded here
+dev-python/diskcache test
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-02-25)
+# depends on ring crate, which is not so portable
+# https://github.com/briansmith/ring/issues/389
+dev-util/sccache dist-server
+
+# Sam James <sam@gentoo.org> (2021-02-14)
+# Brings in a large number of unkeyworded
+# (broad) deps. Not keywording yet.
+# bug #769956
+dev-util/diffoscope R pascal
+
+# Sam James <sam@gentoo.org> (2021-02-14)
+# Haskell isn't keyworded on ppc64
+# bug #769956, bug #583400
+dev-util/diffoscope haskell
+
+# Michał Górny <mgorny@gentoo.org> (2020-12-21)
+# Sanitizers supported on this architecture.
+llvm-runtimes/compiler-rt-sanitizers -asan -lsan -msan -tsan
+llvm-runtimes/compiler-rt-sanitizers -ubsan -scudo
+llvm-runtimes/compiler-rt-sanitizers -profile
+>=llvm-runtimes/compiler-rt-sanitizers-19 -orc
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-25)
+# fwupd keyworded now on ppc64
+kde-plasma/discover -firmware
+
+# Sam James <sam@gentoo.org> (2020-10-24)
+# asm redc is only available on amd64,
+# ppc64. bug #750974.
+sci-mathematics/gmp-ecm -custom-tune
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-05)
+# dropbox requires binaries unavaliable for ppc64
+kde-apps/kdenetwork-meta dropbox
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-08-20)
+# zfs is keyworded on ppc64
+sys-boot/grub -libzfs
+
+# James Le Cuirot <chewi@gentoo.org> (2020-08-19)
+# Cinnamon is not keyworded on this architecture.
+x11-themes/arc-theme cinnamon
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-06-07)
+# works on ppc64
+app-emulation/qemu -spice -usbredir
+
+# Jimi Huotari <chiitoo@gentoo.org> (2020-05-17)
+# Mask until 'app-arch/lxqt-archiver' is keyworded.
+lxqt-base/lxqt-meta archiver
+
+# Matthew Thode <prometheanfire@gentoo.org> (2020-02-17)
+# Mask until net-analyzer/icinga2 is keyworded
+net-analyzer/pnp4nagios icinga
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-25)
+# bolt not keyworded on ~ppc64
+kde-plasma/plasma-meta thunderbolt
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-12-28)
+# not keyworded or irrelevant on ~ppc64, bug 679888
+app-emulation/libvirt xen
+
+# Robin H. Johnson <robbat2@gentoo.org> (2019-12-06)
+# PPS should work on all arches, but only keyworded on some arches
+>=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
+
+# Eugene Bright <eugene@bright.gdn> (2019-09-09)
+# Missing keyword on dev-embedded/libjaylink
+sys-apps/flashrom jlink-spi
+
+# Matthew Thode <prometheanfire@gentoo.org> (2019-08-22)
+# context works with newer versions of boost
+# https://github.com/boostorg/context/commit/d4608a4e8ba2e8a0bdd45613243e6c53a23d23dc
+>=dev-libs/boost-1.71.0 -context
+
+# Jimi Huotari <chiitoo@gentoo.org> (2019-07-28)
+# Mask unkeyworded, untested dependencies.
+# bug #689606
+lxqt-base/lxqt-meta admin powermanagement processviewer screenshot sudo
+lxqt-base/lxqt-panel cpuload networkmonitor pulseaudio sysstat
+
+# Thomas Deutschmann <whissi@gentoo.org> (2018-12-10)
+# dev-lang/luajit lacks ppc64 keyword. luajit upstream does not support ppc64
+net-analyzer/snort open-appid
+
+# Jeroen Roovers <jer@gentoo.org> (2017-01-16)
+# Incomplete support, bug #605878.
+net-vpn/tor seccomp
+
+# Jeroen Roovers <jer@gentoo.org> (2015-12-26)
+# Mask until >sys-cluster/ceph-0.94 goes stable
+net-analyzer/rrdtool rados
+
+# Michael Sterrett <mr_bones_@gentoo.org> (2013-11-12)
+# Mask openmedia use flag because the content generation tools
+# are missing keywords.
+games-simulation/openttd openmedia
+
+# Kacper Kowalik <xarthisius@gentoo.org> (2011-09-02)
+# Mask www-client/seamonkey[ipc] on ppc64 wrt #381191
+www-client/seamonkey ipc
+
+# Kacper Kowalik <xarthisius@gentoo.org> (2010-05-30)
+# quesoglc is not keyworded
+x11-misc/rss-glx quesoglc
+
+# Joseph Jezak <josejx@gentoo.org> (2010-02-12)
+# Mask unstable pidgin deps until we can mark them stable (farsight2)
+net-im/pidgin gstreamer
+
+# mask custom-cpuopts and cpudetection on ppc64 for mplayer - bug #234629
+media-video/mplayer cpudetection

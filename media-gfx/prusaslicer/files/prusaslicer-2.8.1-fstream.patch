@@ -1,0 +1,42 @@
+--- a/src/slic3r/GUI/Gizmos/GLGizmoSVG.cpp
++++ b/src/slic3r/GUI/Gizmos/GLGizmoSVG.cpp
+@@ -1595,7 +1595,7 @@ void GLGizmoSVG::draw_filename(){
+             if (dlg.ShowModal() == wxID_OK ){
+                 last_used_directory = dlg.GetDirectory();
+                 std::string out_path_str(into_u8(dlg.GetPath()));
+-                boost::nowide::ofstream stream(out_path_str);
++                std::ofstream stream(out_path_str);
+                 if (stream.is_open()){
+                     stream << *svg.file_data;
+ 
+--- a/src/slic3r/GUI/PresetArchiveDatabase.cpp
++++ b/src/slic3r/GUI/PresetArchiveDatabase.cpp
+@@ -515,7 +515,7 @@ void PresetArchiveDatabase::load_app_manifest_json()
+ 	if (!fs::exists(path, ec) || ec) {
+ 		copy_initial_manifest();
+ 	}
+-	boost::nowide::ifstream file(path.string());
++	std::ifstream file(path.string());
+ 	std::string data;
+ 	if (file.is_open()) {
+ 		std::string line;
+@@ -682,7 +682,7 @@ void PresetArchiveDatabase::save_app_manifest_json() const
+ 	data += "]";
+ 
+ 	std::string path = get_stored_manifest_path().string();
+-	boost::nowide::ofstream file(path);
++	std::ofstream file(path);
+ 	if (file.is_open()) {
+ 		file << data;
+ 		file.close();
+--- a/src/slic3r/Utils/Http.cpp
++++ b/src/slic3r/Utils/Http.cpp
+@@ -302,7 +302,7 @@ void Http::priv::form_add_file(const char *name, const fs::path &path, const cha
+ //FIXME may throw! Is the caller aware of it?
+ void Http::priv::set_post_body(const fs::path &path)
+ {
+-	boost::nowide::ifstream file(path.string());
++	std::ifstream file(path.string());
+ 	std::string file_content { std::istreambuf_iterator<char>(file), std::istreambuf_iterator<char>() };
+ 	postfields = std::move(file_content);
+ }

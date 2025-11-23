@@ -1,0 +1,128 @@
+Just use system definitions and don't shortcut externs,
+wherever possible.
+There's a default way to use va_args, don't reinvent wheel
+https://bugs.gentoo.org/715926
+https://bugs.gentoo.org/921186
+https://bugs.gentoo.org/945184
+--- a/configure.in
++++ b/configure.in
+@@ -5,6 +5,7 @@
+ 
+ dnl Find operating system, vendor, architecture
+ AC_CANONICAL_SYSTEM
++AC_USE_SYSTEM_EXTENSIONS
+ 
+ AM_INIT_AUTOMAKE(mwavem,2.0)
+ 
+--- a/src/meio/meiovect.c
++++ b/src/meio/meiovect.c
+@@ -65,14 +65,14 @@
+ /*   external function declarations					  */
+ /*------------------------------------------------------------------------*/
+ 
+-extern ULONG APIENTRY dspMeioOpeni();
+-extern ULONG dspMeioClosei();
+-extern ULONG APIENTRY dspMeioQueryi();
+-extern ULONG APIENTRY dspMeioConnecti();
+-extern ULONG APIENTRY dspMeioDisconnecti();
+-extern ULONG APIENTRY dspMeioUpdateConnectioni();
+-extern ULONG APIENTRY dspMeioQueryConnectioni();
+-extern ULONG APIENTRY dspMeioResynci();
++extern ULONG APIENTRY dspMeioOpeni(HDSP hDsp, HMEIO FAR *phMeio, ULONG Options);
++extern ULONG dspMeioClosei(HMEIO hMeio, ULONG Options);
++extern ULONG APIENTRY dspMeioQueryi(HMEIO MMeio, MEIO_QUERYTYPE Request, ULONG FAR *fpBufferSize, VOID FAR *fpBuffer);
++extern ULONG APIENTRY dspMeioConnecti(HMEIO hMeio, HCONNECTION FAR *fpConnection, ULONG OwnerPort, ULONG UserPort, ULONG SharingOptions, ULONG ulState, ULONG Reserved);
++extern ULONG APIENTRY dspMeioDisconnecti(HCONNECTION hConnection, ULONG ulReserved);
++extern ULONG APIENTRY dspMeioUpdateConnectioni(HCONNECTION hConnection, MEIO_CONNECTATTRIBUTE Attribute, LONG lValue);
++extern ULONG APIENTRY dspMeioQueryConnectioni(HCONNECTION hConnection, MEIO_CONNECTATTRIBUTE Attribute, LONG FAR *fpValue);
++extern ULONG APIENTRY dspMeioResynci(MEIO_OBJ_TYPE ObjectType, ULONG Object, ULONG ulOptions);
+ 
+ /*------------------------------------------------------------------------*/
+ /* MeioAPIDispatch()                                                      */
+--- a/src/mwmlw32/mwmload.c
++++ b/src/mwmlw32/mwmload.c
+@@ -53,6 +53,7 @@
+ #include <sys/timeb.h>
+ #include <time.h>
+ #include <mwqservr.h>
++#include <stdarg.h>
+ #include "mww32.h"
+ /*#include <pbmplus.h>*/
+ #include <mwave.h>
+@@ -74,6 +75,8 @@
+ #define MODNAME "MWMODEM"
+ void mwavem_dprintf(char *szFormat, ...)
+ {
++  va_list args;
++  va_start(args, szFormat);
+   /*if (usDebugWindow)
+   {*/
+     struct timeb timebuffer;
+@@ -91,11 +94,12 @@
+       else
+         strcpy(ach, MODNAME ": ");
+ 
+-    vsprintf(ach+strlen(ach),szFormat,(char *)(&szFormat+1));
++    vsprintf(ach+strlen(ach),szFormat, args);
+     strcat(ach, "\r\n");
+ 
+     OutputDebugString(ach);
+  /* } */
++  va_end(args);
+ }
+ 
+ 
+--- a/src/mwmlw32/mwmrsp.c
++++ b/src/mwmlw32/mwmrsp.c
+@@ -44,9 +44,9 @@
+  *            First release to the public
+  *
+  */
++#include <unistd.h>
+ #include <mwmspcfc.h>
+ static char szThisFile[] = "MWMRSP.C";
+-extern void swab();
+ 
+ ULONG mwmrspEchoFAXResponse(PMWM_DSPINFO pmwmDspInfo,USHORT usControlStat)
+ {
+--- a/src/mwmpw32/mwmclss2.c
++++ b/src/mwmpw32/mwmclss2.c
+@@ -1227,8 +1227,6 @@
+ 
+ 
+ 
+-extern void swab() __THROW;
+-
+ USHORT  mwmClss2FLIDCommand(STATEINFO *psi)
+ {
+   USHORT usParserStatus = 0;
+--- a/src/mwmpw32/mwmparse.c
++++ b/src/mwmpw32/mwmparse.c
+@@ -54,6 +54,7 @@
+ #include <stddef.h>
+ #include <sys/timeb.h>
+ #include <time.h>
++#include <unistd.h>
+ 
+ #include <port_types.h>
+ #include <port_functions.h>
+@@ -324,8 +325,6 @@
+   return 0;
+ }
+ 
+-extern void swab() __THROW;
+-
+ USHORT mwmParseEchoString(STATEINFO *psi,PSZ achString)
+ {
+   USHORT usParserStatus = 0;
+--- a/src/mwmutil/mwmutil.c
++++ b/src/mwmutil/mwmutil.c
+@@ -189,8 +189,6 @@
+ 
+ } /*readFile*/
+ 
+-extern char *strcasestr () __THROW __attribute_pure__;
+-
+ /* Give a file buffer, find a return ptr to section name (or NULL if not found) */
+ char * getSection(LPCTSTR lpSectionName,char *file) {    // Section name, bracket delimited
+   char *line;

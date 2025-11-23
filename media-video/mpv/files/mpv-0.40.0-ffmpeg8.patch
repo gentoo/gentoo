@@ -1,0 +1,18 @@
+https://bugs.gentoo.org/961695
+https://github.com/mpv-player/mpv/commit/26b29fba02a
+--- a/demux/demux_mkv.c
++++ b/demux/demux_mkv.c
+@@ -2202,3 +2202,3 @@
+             if (component_tag >= 0x30 && component_tag <= 0x37)
+-                lav->profile = FF_PROFILE_ARIB_PROFILE_A;
++                lav->profile = AV_PROFILE_ARIB_PROFILE_A;
+             break;
+@@ -2208,6 +2208,6 @@
+             if (component_tag == 0x87)
+-                lav->profile = FF_PROFILE_ARIB_PROFILE_C;
++                lav->profile = AV_PROFILE_ARIB_PROFILE_C;
+             break;
+         }
+-        if (lav->profile == FF_PROFILE_UNKNOWN)
++        if (lav->profile == AV_PROFILE_UNKNOWN)
+             MP_WARN(demuxer, "ARIB caption profile %02x / %04x not supported.\n",

@@ -1,0 +1,42 @@
+Remove HIP/ROCM includes ("-isystem /usr/include"), as they break inclusion of <math.h>.
+Add inclusion of Clang resource dir (e.g. /usr/lib/clang/20), as it is used in hip runtime like that.
+--- a/src/comgr-compiler.cpp
++++ b/src/comgr-compiler.cpp
+@@ -1015,9 +1015,8 @@ AMDGPUCompiler::addTargetIdentifierFlags(llvm::StringRef IdentStr,
+ }
+ 
+ amd_comgr_status_t AMDGPUCompiler::addCompilationFlags() {
+-  HIPIncludePath = (Twine(env::getHIPPath()) + "/include").str();
+-  // HIP headers depend on hsa.h which is in ROCM_DIR/include.
+-  ROCMIncludePath = (Twine(env::getROCMPath()) + "/include").str();
++  // Allow to include <include/cuda_wrappers/algorithm> (used in some hip files)
++  ClangIncludePath = @CLANG_RESOURCE_DIR@;
+ 
+   // Default to O3 for all contexts
+   Args.push_back("-O3");
+@@ -1043,9 +1042,7 @@ amd_comgr_status_t AMDGPUCompiler::addCompilationFlags() {
+     Args.push_back("-nogpuinc");
+     Args.push_back("--offload-device-only");
+     Args.push_back("-isystem");
+-    Args.push_back(ROCMIncludePath.c_str());
+-    Args.push_back("-isystem");
+-    Args.push_back(HIPIncludePath.c_str());
++    Args.push_back(ClangIncludePath.c_str());
+     // Pass a cuid that depends on the input files
+     // Otherwise, a random (which depends on the /tmp/comgr-xxxxx path) cuid is
+     // generated which causes a cache miss on every run.
+--- a/src/comgr-compiler.h
++++ b/src/comgr-compiler.h
+@@ -52,12 +52,7 @@ class AMDGPUCompiler {
+   DataAction *ActionInfo;
+   DataSet *InSet;
+   amd_comgr_data_set_t OutSetT;
+-  /// ROCM include Path
+-  std::string ROCMIncludePath;
+-  /// HIP and Clang Include Paths
+-  std::string HIPIncludePath;
+   std::string ClangIncludePath;
+-  std::string ClangIncludePath2;
+   /// Precompiled header file paths.
+   llvm::SmallVector<llvm::SmallString<128>, 2> PrecompiledHeaders;
+   /// Arguments common to all driver invocations in the current action.

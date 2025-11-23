@@ -1,0 +1,51 @@
+https://github.com/Cisco-Talos/clamav/commit/f4280e9a690f2a5b657118e515b089f494a1e464
+From: Matt Jolly <Matt.Jolly@footclan.ninja>
+Date: Wed, 30 Nov 2022 16:14:39 +1100
+Subject: [PATCH] CMake: Enable selection of a specific python impl
+
+On distros with multiple python impls it can be useful to select
+a specific version rather than whatever CMake thinks is appopriate.
+
+This patch enables users to instruct CMake to look for a specific
+version of python by passing `-DPYTHON_FIND_VER`.
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -223,20 +223,26 @@ if(ENABLE_TESTS)
+     find_package(Libcheck REQUIRED)
+ 
+     # Used to generate the test files and for the application feature test framework
+-    find_package(Python3 REQUIRED)
++    # In distros that support multiple implementations of python it is helpful to specify the impl to use
++    if(DEFINED PYTHON_FIND_VERSION)
++        find_package(Python3 EXACT ${PYTHON_FIND_VERSION} REQUIRED)
++    else()
++        find_package(Python3 REQUIRED)
++        # Not requesting a specific python impl; try using pytest from the PATH
++        execute_process(
++            COMMAND pytest --version
++            RESULT_VARIABLE PYTEST_EXIT_CODE
++            ERROR_QUIET OUTPUT_QUIET
++        )
+ 
+-    # First try using pytest from the PATH
+-    execute_process(
+-        COMMAND pytest --version
+-        RESULT_VARIABLE PYTEST_EXIT_CODE
+-        ERROR_QUIET OUTPUT_QUIET
+-    )
++        if(${PYTEST_EXIT_CODE} EQUAL 0)
++            # pytest found in the path.
++            set(PythonTest_COMMAND "pytest;-v")
++        endif()
++    endif()
+ 
+-    if(${PYTEST_EXIT_CODE} EQUAL 0)
+-        # pytest found in the path.
+-        set(PythonTest_COMMAND "pytest;-v")
+-    else()
+-        # Not in the path, try using: python3 -m pytest
++    if("${PythonTest_COMMAND}" STREQUAL "")
++        # Not in the path or specified a python impl; try using: python3 -m pytest
+         execute_process(
+             COMMAND ${Python3_EXECUTABLE} -m pytest --version
+             RESULT_VARIABLE PYTEST_MODULE_EXIT_CODE

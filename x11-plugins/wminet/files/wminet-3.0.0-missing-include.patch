@@ -1,0 +1,11 @@
+for toupper(), implicit function declaration
+--- a/src/wminet.c
++++ b/src/wminet.c
+@@ -20,6 +20,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <ctype.h>
+ #include <unistd.h>
+ #include <string.h>
+ #include <signal.h>

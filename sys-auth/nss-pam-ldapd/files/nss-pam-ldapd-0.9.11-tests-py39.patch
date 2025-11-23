@@ -1,0 +1,26 @@
+diff --git a/tests/test_doctest.sh b/tests/test_doctest.sh
+index 5b3a13d..82749a2 100755
+--- a/tests/test_doctest.sh
++++ b/tests/test_doctest.sh
+@@ -53,7 +53,7 @@ do
+   if ${python} -c 'import ldap'
+   then
+     echo "Running pynslcd doctests with $python..."
+-    PYTHONPATH="${top_builddir}/pynslcd" ${python} -m doctest -v "${top_srcdir}/pynslcd"/*.py
++    PYTHONPATH="${top_builddir}/pynslcd:${top_builddir}" ${python} -m doctest -v "${top_srcdir}/pynslcd"/*.py
+   fi
+   echo "Running pynslcd doctests with $python..."
+   PYTHONPATH="${top_builddir}/utils" ${python} -m doctest -v "${top_srcdir}/utils"/*.py
+diff --git a/tests/test_pynslcd_cache.py b/tests/test_pynslcd_cache.py
+index 8d3d02a..e7b19c0 100755
+--- a/tests/test_pynslcd_cache.py
++++ b/tests/test_pynslcd_cache.py
+@@ -27,6 +27,8 @@ import unittest
+ # fix the Python path
+ sys.path.insert(1, os.path.abspath(os.path.join(sys.path[0], '..', 'pynslcd')))
+ sys.path.insert(2, os.path.abspath(os.path.join('..', 'pynslcd')))
++sys.path.insert(3, os.path.abspath(os.path.join('..')))
++print(sys.path)
+ 
+ 
+ # TODO: think about case-sensitivity of cache searches (have tests for that)

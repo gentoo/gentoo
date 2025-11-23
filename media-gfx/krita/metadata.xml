@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=krita</bugs-to>
+		<remote-id type="kde-invent">graphics/krita</remote-id> 
+	</upstream>
+	<use>
+		<flag name="color-management">Enable color management via <pkg>media-libs/opencolorio</pkg></flag>
+		<flag name="media">Enable sound support for animations via <pkg>media-libs/mlt</pkg></flag>
+		<flag name="mypaint-brush-engine">Enable MyPaint brush engine support <pkg>media-libs/libmypaint</pkg></flag>
+		<flag name="xsimd">Enable usage of SIMD instructions via <pkg>dev-cpp/xsimd</pkg></flag>
+	</use>
+</pkgmetadata>

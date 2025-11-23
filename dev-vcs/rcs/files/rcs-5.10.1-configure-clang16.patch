@@ -1,0 +1,24 @@
+https://savannah.gnu.org/bugs/index.php?64036
+https://bugs.gentoo.org/898786
+
+Include <stdio.h> for the rename and perror functions.  This avoids an
+implicit function declaration and build failures with future compilers.
+--- a/configure.ac
++++ b/configure.ac
+@@ -384,6 +384,7 @@ m4_pushdef([GOOD],[test ! -f conftest-A && test -f conftest-B])dnl
+ m4_pushdef([HMMM],[./conftest$EXEEXT && GOOD])dnl
+   ZONK
+ AC_RUN_IFELSE([AC_LANG_PROGRAM([[
++#include <stdio.h>
+ #include <unistd.h>
+ ]],[
+   return 0 > rename ("conftest-A", "conftest-B");
+@@ -480,6 +481,7 @@ AC_DEFINE_UNQUOTED([MMAP_SIGNAL],[${rcs_cv_mmap_signal-0}],
+ 
+ AC_CACHE_CHECK([if `wait' can handle ignored SIGCHLD],[rcs_cv_tolerant_wait],[
+ AC_RUN_IFELSE([AC_LANG_PROGRAM([[
++#include <stdio.h>
+ #include <sys/types.h>
+ #include <errno.h>
+ #include <signal.h>
+

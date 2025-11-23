@@ -1,0 +1,90 @@
+From 08c1f219ae209b2475e5a1b025caceb10cb4a41b Mon Sep 17 00:00:00 2001
+From: Kim Vandry <vandry@TZoNE.ORG>
+Date: Sun, 28 May 2017 19:11:30 +0100
+Subject: Update tests to work with @INC that does not contain '.'
+
+Perl 5.25.11 removes '.' from the default @INC, and this breaks
+`require "test_data/gen_test_data.pl"` due to not being able to assume
+./test_data/gen_test_data.pl is in the @INC load path, and due to
+`require` treating paths without leading "/" or "./" as search paths.
+
+This change implements the first solution suggested by the reporter of
+the bug: Re-organise test dependencies into a dedicated directory such
+as `t/lib` and load that path into @INC with `use lib 't/lib'`.
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=121458
+Bug: https://bugs.gentoo.org/617048
+---
+ MANIFEST                              | 2 +-
+ t/frconvert.t                         | 3 ++-
+ t/jaconvert.t                         | 3 ++-
+ {test_data => t/lib}/gen_test_data.pl | 0
+ t/raw.t                               | 3 ++-
+ 5 files changed, 7 insertions(+), 4 deletions(-)
+ rename {test_data => t/lib}/gen_test_data.pl (100%)
+
+diff --git a/MANIFEST b/MANIFEST
+index 9604b91..e9f6e08 100644
+--- a/MANIFEST
++++ b/MANIFEST
+@@ -8,7 +8,7 @@ t/jaconvert.t
+ t/raw.t
+ t/use.t
+ test_data/foo.po
+-test_data/gen_test_data.pl
++t/lib/gen_test_data.pl
+ test_data/jaeuc.po
+ MANIFEST
+ META.yml                                 Module YAML meta-data (added by MakeMaker)
+diff --git a/t/frconvert.t b/t/frconvert.t
+index 2bca28b..9a4f4f5 100644
+--- a/t/frconvert.t
++++ b/t/frconvert.t
+@@ -1,8 +1,9 @@
+ #!/usr/bin/env perl -w
+ use strict;
+ use Test;
++use lib 't/lib';
+ BEGIN { plan tests => 1 }
+-require "test_data/gen_test_data.pl";
++require "gen_test_data.pl";
+ 
+ gen("foo");
+ use Locale::gettext;
+diff --git a/t/jaconvert.t b/t/jaconvert.t
+index 5794dc4..b95c883 100644
+--- a/t/jaconvert.t
++++ b/t/jaconvert.t
+@@ -1,8 +1,9 @@
+ #!/usr/bin/env perl -w
+ use strict;
+ use Test;
++use lib 't/lib';
+ BEGIN { plan tests => 1 }
+-require "test_data/gen_test_data.pl";
++require "gen_test_data.pl";
+ 
+ gen("jaeuc");
+ use Locale::gettext;
+diff --git a/test_data/gen_test_data.pl b/t/lib/gen_test_data.pl
+similarity index 100%
+rename from test_data/gen_test_data.pl
+rename to t/lib/gen_test_data.pl
+diff --git a/t/raw.t b/t/raw.t
+index 1e1cf14..7439397 100644
+--- a/t/raw.t
++++ b/t/raw.t
+@@ -1,8 +1,9 @@
+ #!/usr/bin/env perl -w
+ use strict;
+ use Test;
++use lib 't/lib';
+ BEGIN { plan tests => 1 }
+-require "test_data/gen_test_data.pl";
++require "gen_test_data.pl";
+ 
+ gen("foo");
+ use Locale::gettext;
+-- 
+2.14.3
+

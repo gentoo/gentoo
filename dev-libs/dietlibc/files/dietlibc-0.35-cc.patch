@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/722970
+
+--- a/threadsafe.sh
++++ b/threadsafe.sh
+@@ -1,5 +1,5 @@
+ #!/bin/sh
+-(gcc -E - << EOF | grep WANT_THREAD_SAFE > /dev/null) || echo libpthread/pthread_*.c
++(${CC} -E - << EOF | grep WANT_THREAD_SAFE > /dev/null) || echo libpthread/pthread_*.c
+ #include "dietfeatures.h"
+ WANT_THREAD_SAFE
+ EOF

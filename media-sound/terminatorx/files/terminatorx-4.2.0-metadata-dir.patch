@@ -1,0 +1,13 @@
+diff --git a/Makefile.in b/Makefile.in
+index 7c7e2ba..98f4fc8 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -367,7 +367,7 @@ EXTRA_DIST = COPYING-DOCS\
+ # Destkop Entry
+ desktopdir = $(datadir)/applications
+ desktop_DATA = terminatorX.desktop
+-appdatadir = $(datarootdir)/appdata
++appdatadir = $(datarootdir)/metadata
+ appdata_DATA = terminatorX.appdata.xml
+ mimedir = $(datadir)/mime-info
+ mime_DATA = terminatorX.mime terminatorX.keys

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		A Story About My Uncle is a first person platforming adventure game
+		about a boy who searches for his lost uncle, and ends up in a world he
+		couldn’t imagine existed. Take help of your uncle’s mysterious
+		inventions that let you jump incredibly high and far through beautiful
+		scenery, uncover clues to your uncle’s whereabouts, and meet fantastical
+		creatures that will help you on your journey.
+
+		The movement in A Story About My Uncle is a crucial part of its core
+		gameplay – focusing on swinging through the world with a grappling hook
+		that gives the player a wonderful sense of speed and freedom. Soar
+		through a game world with a unique art style and a mysterious story that
+		unravels before you.
+	</longdescription>
+</pkgmetadata>

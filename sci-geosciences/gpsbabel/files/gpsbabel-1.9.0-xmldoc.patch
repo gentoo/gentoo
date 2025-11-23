@@ -1,0 +1,11 @@
+--- a/tools/make_gpsbabel_html.sh
++++ b/tools/make_gpsbabel_html.sh
+@@ -10,6 +10,7 @@ xsltproc \
+   --stringparam html.cleanup "1" \
+   --stringparam make.clean.html "1" \
+   --stringparam html.valid.html "1" \
+-  --stringparam html.stylesheet "https://www.gpsbabel.org/style3.css" \
++  --stringparam html.stylesheet "gpsbabel.org-style3.css" \
++  --nonet \
+   http://docbook.sourceforge.net/release/xsl-ns/current/xhtml/docbook.xsl \
+   xmldoc/readme.xml

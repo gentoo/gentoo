@@ -1,0 +1,44 @@
+From bc4e3f63d7c9d5790b1849d807d30bd9f2133040 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sun, 18 Feb 2024 10:25:25 +0000
+Subject: [PATCH] Broaden the accepted versions of nvenc
+
+--- a/src/nvenc/nvenc_base.cpp
++++ b/src/nvenc/nvenc_base.cpp
+@@ -17,7 +17,7 @@
+ // - NV_ENC_*_VER definitions where the value inside NVENCAPI_STRUCT_VERSION() was increased
+ // - Incompatible struct changes in nvEncodeAPI.h (fields removed, semantics changed, etc.)
+ // - Test both old and new drivers with all supported codecs
+-#if NVENCAPI_VERSION != MAKE_NVENC_VER(12U, 0U)
++#if NVENCAPI_MAJOR_VERSION < 12 || NVENCAPI_MAJOR_VERSION > 13
+   #error Check and update NVENC code for backwards compatibility!
+ #endif
+ 
+@@ -322,7 +322,11 @@ namespace nvenc {
+           auto &format_config = enc_config.encodeCodecConfig.hevcConfig;
+           set_h264_hevc_common_format_config(format_config);
+           if (buffer_is_10bit()) {
++#if NVENCAPI_MAJOR_VERSION > 12 || (NVENCAPI_MAJOR_VERSION == 12 && NVENCAPI_MINOR_VERSION >= 2)
++            format_config.inputBitDepth = format_config.outputBitDepth = NV_ENC_BIT_DEPTH_10;
++#else
+             format_config.pixelBitDepthMinus8 = 2;
++#endif
+           }
+           set_ref_frames(format_config.maxNumRefFramesInDPB, format_config.numRefL0, 5);
+           set_minqp_if_enabled(config.min_qp_hevc);
+@@ -355,8 +359,12 @@ namespace nvenc {
+           }
+           format_config.enableBitstreamPadding = config.insert_filler_data;
+           if (buffer_is_10bit()) {
++#if NVENCAPI_MAJOR_VERSION > 12 || (NVENCAPI_MAJOR_VERSION == 12 && NVENCAPI_MINOR_VERSION >= 2)
++            format_config.inputBitDepth = format_config.outputBitDepth = NV_ENC_BIT_DEPTH_10;
++#else
+             format_config.inputPixelBitDepthMinus8 = 2;
+             format_config.pixelBitDepthMinus8 = 2;
++#endif
+           }
+           format_config.colorPrimaries = colorspace.primaries;
+           format_config.transferCharacteristics = colorspace.tranfer_function;
+-- 
+2.49.0
+

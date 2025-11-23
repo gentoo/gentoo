@@ -1,0 +1,15 @@
+--- a/CMake/GenerateDCMTKConfigure.cmake
++++ b/CMake/GenerateDCMTKConfigure.cmake
+@@ -193,12 +193,6 @@ else()
+   set(PATH_SEPARATOR "/")
+   set(ENVIRONMENT_PATH_SEPARATOR ":")
+ 
+-  # Modify the installation paths for configuration files, data files and documents
+-  # by adding a subdirectory with the DCMTK name and version number
+-  set(CMAKE_INSTALL_SYSCONFDIR "${CMAKE_INSTALL_SYSCONFDIR}/dcmtk-${DCMTK_COMPLETE_PACKAGE_VERSION}")
+-  set(CMAKE_INSTALL_DATADIR "${CMAKE_INSTALL_DATADIR}/dcmtk-${DCMTK_COMPLETE_PACKAGE_VERSION}")
+-  set(CMAKE_INSTALL_DOCDIR "${CMAKE_INSTALL_DOCDIR}-${DCMTK_COMPLETE_PACKAGE_VERSION}")
+-
+   # These variables are defined as macros in osconfig.h and must end with a path separator
+   if(CMAKE_VERSION VERSION_LESS 3.20.0)
+     # CMake versions prior to 3.20 expect the third parameter to be passed in ${dir}

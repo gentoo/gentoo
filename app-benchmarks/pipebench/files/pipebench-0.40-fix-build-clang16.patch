@@ -1,0 +1,12 @@
+Bug: https://bugs.gentoo.org/894336
+--- a/pipebench.c
++++ b/pipebench.c
+@@ -28,6 +28,8 @@
+  */
+ #include <stdio.h>
+ #include <unistd.h>
++#include <stdlib.h>
++#include <string.h>
+ #include <time.h>
+ #include <signal.h>
+ #include <sys/time.h>

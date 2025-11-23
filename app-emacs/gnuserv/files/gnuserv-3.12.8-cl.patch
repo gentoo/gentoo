@@ -1,0 +1,189 @@
+Most Common Lisp macros want a cl- prefix in Emacs 27 and later
+
+--- gnuserv-3.12.8/gnuserv-compat.el
++++ gnuserv-3.12.8/gnuserv-compat.el
+@@ -49,7 +49,7 @@
+ ;; 20.3.  Also, XEmacs preloads the common lisp stuff, and we might as
+ ;; well use it here.
+ 
+-(require 'cl)
++(require 'cl-macs)
+ 
+ (eval-and-compile
+   (unless (fboundp 'define-obsolete-variable-alias)
+@@ -66,7 +66,7 @@
+   (unless (fboundp 'add-minor-mode)
+     (defun add-minor-mode (toggle name)
+       "Register a new minor mode."
+-      (pushnew (list toggle name)
++      (cl-pushnew (list toggle name)
+ 	       minor-mode-alist
+ 	       :test 'equal)))
+   
+--- gnuserv-3.12.8/gnuserv.el
++++ gnuserv-3.12.8/gnuserv.el
+@@ -83,6 +83,8 @@
+ 
+ ;;; Code:
+ 
++(require 'cl-macs)
++
+ (defgroup gnuserv nil
+   "The gnuserv suite of programs to talk to Emacs from outside."
+   :group 'environment
+@@ -203,7 +205,7 @@
+ 
+ ;;; Internal variables:
+ 
+-(defstruct gnuclient
++(cl-defstruct gnuclient
+   "An object that encompasses several buffers in one.
+ Normally, a client connecting to Emacs will be assigned an id, and
+ will request editing of several files.
+@@ -289,7 +291,7 @@
+ (defun gnuserv-sentinel (proc msg)
+   (let ((msgstring (concat "Gnuserv process %s; restart with `%s'"))
+ 	(keystring (substitute-command-keys "\\[gnuserv-start]")))
+-  (case (process-status proc)
++  (cl-case (process-status proc)
+     (exit
+      (message msgstring "exited" keystring)
+      (gnuserv-prepare-shutdown))
+@@ -403,7 +405,7 @@
+ If a flag is `view', view the files read-only."
+   (let (quick view)
+     (mapc (lambda (flag)
+-	    (case flag
++	    (cl-case flag
+ 	      (quick (setq quick t))
+ 	      (view  (setq view t))
+ 	      (t     (error "Invalid flag %s" flag))))
+@@ -419,7 +421,7 @@
+ 	   (device (cond ((frame-live-p dest-frame)
+ 			  (frame-device dest-frame))
+ 			 ((null dest-frame)
+-			  (case (car type)
++			  (cl-case (car type)
+ 			    (tty (apply 'make-tty-device (cdr type)))
+ 			    (gtk (make-gtk-device))
+ 			    (x   (make-x-device-with-gtk-fallback (cadr type)))
+@@ -456,7 +458,7 @@
+ 	  (goto-line line)
+ 	  ;; Don't memorize the quick and view buffers.
+ 	  (unless (or quick view)
+-	    (pushnew (current-buffer) (gnuclient-buffers client))
++	    (cl-pushnew (current-buffer) (gnuclient-buffers client))
+ 	    (setq gnuserv-minor-mode t)
+ 	    ;; Add the "Done" button to the menubar, only in this buffer.
+ 	    (if (and (featurep 'menubar) current-menubar)
+@@ -510,9 +512,9 @@
+ ;; Like `gnuserv-buffer-clients', but returns a boolean; doesn't
+ ;; collect a list.
+ (defun gnuserv-buffer-p (buffer)
+-  (member* buffer gnuserv-clients
+-	   :test 'memq
+-	   :key 'gnuclient-buffers))
++  (cl-member buffer gnuserv-clients
++	     :test 'memq
++	     :key 'gnuclient-buffers))
+ 
+ ;; This function makes sure that a killed buffer is deleted off the
+ ;; list for the particular client.
+@@ -525,7 +527,7 @@
+ editing has ended."
+   (let* ((buf (current-buffer)))
+     (dolist (client (gnuserv-buffer-clients buf))
+-      (callf2 delq buf (gnuclient-buffers client))
++      (cl-callf2 delq buf (gnuclient-buffers client))
+       ;; If no more buffers, kill the client.
+       (when (null (gnuclient-buffers client))
+ 	(gnuserv-kill-client client)))))
+@@ -546,7 +548,7 @@
+ 
+ (defun gnuserv-kill-emacs-query-function ()
+   (or gnuserv-kill-quietly
+-      (not (some 'gnuclient-buffers gnuserv-clients))
++      (not (cl-some 'gnuclient-buffers gnuserv-clients))
+       (yes-or-no-p "Gnuserv buffers still have clients; exit anyway? ")))
+ 
+ (add-hook 'kill-emacs-query-functions
+@@ -562,7 +564,7 @@
+ 	;; killing the device, because it would cause a device-dead
+ 	;; error when `delete-device' tries to do the job later.
+ 	(gnuserv-kill-client client t))))
+-  (callf2 delq device gnuserv-devices))
++  (cl-callf2 delq device gnuserv-devices))
+ 
+ (add-hook 'delete-device-hook 'gnuserv-check-device)
+ 
+@@ -582,7 +584,7 @@
+ the function will not remove the frames associated with the client."
+   ;; Order is important: first delete client from gnuserv-clients, to
+   ;; prevent gnuserv-buffer-done-1 calling us recursively.
+-  (callf2 delq client gnuserv-clients)
++  (cl-callf2 delq client gnuserv-clients)
+   ;; Process the buffers.
+   (mapc 'gnuserv-buffer-done-1 (gnuclient-buffers client))
+   (unless leave-frame
+@@ -593,15 +595,15 @@
+       ;; note: last frame on a device will not be deleted here.
+     (when (and (gnuclient-frame client)
+ 	       (frame-live-p (gnuclient-frame client))
+-	       (second (device-frame-list device)))
++	       (cl-second (device-frame-list device)))
+       (delete-frame (gnuclient-frame client)))
+     ;; If the device is live, created by a client, and no longer used
+     ;; by any client, delete it.
+     (when (and (device-live-p device)
+ 	       (memq device gnuserv-devices)
+-	       (second (device-list))
+-	       (not (member* device gnuserv-clients
+-			     :key 'gnuclient-device)))
++	       (cl-second (device-list))
++	       (not (cl-member device gnuserv-clients
++			       :key 'gnuclient-device)))
+       ;; `gnuserv-check-device' will remove it from `gnuserv-devices'.
+       (delete-device device))))
+   ;; Notify the client.
+@@ -610,7 +612,7 @@
+ ;; Do away with the buffer.
+ (defun gnuserv-buffer-done-1 (buffer)
+   (dolist (client (gnuserv-buffer-clients buffer))
+-    (callf2 delq buffer (gnuclient-buffers client))
++    (cl-callf2 delq buffer (gnuclient-buffers client))
+     (when (null (gnuclient-buffers client))
+       (gnuserv-kill-client client)))
+   ;; Get rid of the buffer.
+@@ -639,19 +641,19 @@
+      ;; If we have a client belonging to this frame, return
+      ;; the first buffer from it.
+      ((setq client
+-	    (car (member* frame gnuserv-clients :key 'gnuclient-frame)))
++	    (car (cl-member frame gnuserv-clients :key 'gnuclient-frame)))
+       (car (gnuclient-buffers client)))
+      ;; Else, look for a device.
+      ((and
+        (memq (selected-device) gnuserv-devices)
+        (setq client
+-	     (car (member* device gnuserv-clients :key 'gnuclient-device))))
++	     (car (cl-member device gnuserv-clients :key 'gnuclient-device))))
+       (car (gnuclient-buffers client)))
+      ;; Else, try to find any client with at least one buffer, and
+      ;; return its first buffer.
+      ((setq client
+-	    (car (member-if-not #'null gnuserv-clients
+-				:key 'gnuclient-buffers)))
++	    (car (cl-member-if-not #'null gnuserv-clients
++				   :key 'gnuclient-buffers)))
+       (car (gnuclient-buffers client)))
+      ;; Oh, give up.
+      (t nil))))
+@@ -759,7 +761,7 @@
+   (when (null count)
+     (setq count 1))
+   (cond ((numberp count)
+-	 (while (natnump (decf count))
++	 (while (natnump (cl-decf count))
+ 	   (let ((frame (selected-frame)))
+ 	     (gnuserv-buffer-done (current-buffer))
+ 	     (when (eq frame (selected-frame))

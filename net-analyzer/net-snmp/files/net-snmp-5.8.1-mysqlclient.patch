@@ -1,0 +1,30 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -25,6 +25,8 @@
+ 
+ AC_MSG_CACHE_INIT()
+ 
++PKG_PROG_PKG_CONFIG
++
+ #
+ # save the configure arguments
+ #
+--- a/configure.d/config_os_libs2
++++ b/configure.d/config_os_libs2
+@@ -516,6 +516,8 @@
+ #   mysql
+ ##
+ if test "x$with_mysql" = "xyes" ; then
++  PKG_CHECK_MODULES([MYSQL],[mysqlclient],[MYSQL_INCLUDES="$MYSQL_CFLAGS"],)
++  if test -x "$MYSQL_LIBS"; then
+   AC_PATH_PROGS(MYSQLCONFIG,mysql_config)
+   test -x "$MYSQLCONFIG" \
+ 	|| AC_MSG_ERROR([Could not find mysql_config and was specifically asked to use MySQL support])
+@@ -523,6 +525,7 @@
+   MYSQL_INCLUDES=`$MYSQLCONFIG --include`
+   _libs="${LIBS}"
+   _cppflags="${CPPFLAGS}"
++  fi
+   LIBS="${LIBS} ${MYSQL_LIBS}"
+   CPPFLAGS="${CPPFLAGS} ${MYSQL_INCLUDES}"
+   AC_CHECK_HEADER(mysql.h,,

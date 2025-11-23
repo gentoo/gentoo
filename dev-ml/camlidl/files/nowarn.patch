@@ -1,0 +1,11 @@
+--- a/compiler/Makefile
++++ b/compiler/Makefile
+@@ -29,7 +29,7 @@ PROG=camlidl$(EXE)
+ all: $(PROG)
+ 
+ $(PROG): $(OBJS)
+-	$(OCAMLC) -o $(PROG) $(OBJS)
++	$(OCAMLC) -w -a -o $(PROG) $(OBJS)
+ 
+ clean::
+ 	rm -f $(PROG)

@@ -1,0 +1,11 @@
+--- a/src/misc_utils.c
++++ b/src/misc_utils.c
+@@ -792,7 +792,7 @@ int create_filenames_from_format(_main_data *main_data)
+ 		config.mp3_path[i] = 0;
+ 	if (config.cddb_config.make_directories && config.cddb_config.dir_format_string[0])
+ 	{
+-		rc2 = parse_rx_format_string( &df,
++		rc2 = parse_rx_format_string( (char **)&df,
+ 				config.cddb_config.dir_format_string, -1, 
+ 				main_data->disc_artist, main_data->disc_title, main_data->disc_year, "" );
+ 		if ( rc2 < 0 ) {

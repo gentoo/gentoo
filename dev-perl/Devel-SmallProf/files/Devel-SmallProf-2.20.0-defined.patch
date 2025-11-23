@@ -1,0 +1,25 @@
+From 3c81ee06e91d2a4efc52b7b4a9eff7411039c283 Mon Sep 17 00:00:00 2001
+From: Brian Fraser <fraserbn@gmail.com>
+Date: Wed, 20 Aug 2014 00:33:46 +0200
+Subject: [PATCH] Don't use defined(@array)
+
+---
+ lib/Devel/SmallProf.pm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/Devel/SmallProf.pm b/lib/Devel/SmallProf.pm
+index cee1211..2b5d091 100644
+--- a/lib/Devel/SmallProf.pm
++++ b/lib/Devel/SmallProf.pm
+@@ -32,7 +32,7 @@ sub DB {
+   # evals which do not define subroutines will disappear.
+   no strict 'refs';
+   $listings{$filename} = \@{"main::_<$filename"}
+-    if defined(@{"main::_<$filename"});
++    if @{"main::_<$filename"};
+   use strict 'refs';
+ 
+   my($delta);
+-- 
+1.7.12.4 (Apple Git-37)
+

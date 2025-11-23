@@ -1,0 +1,11 @@
+[Unit]
+Description=at (job queue) daemon
+After=networking.target
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/atd
+PIDFile=/run/atd.pid
+
+[Install]
+WantedBy=multi-user.target

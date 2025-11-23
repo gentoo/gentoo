@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+# Copyright 2024 Gentoo Authors
+# This script is installed by sys-kernel/linux-firmware, it is executed by
+# the traditional installkernel, NOT by systemd's kernel-install. I.e. this
+# plugin is run when the systemd USE flag is disabled or
+# SYSTEMD_KERNEL_INSTALL=0 is set in the environment.
+
+# familiar helpers, we intentionally don't use Gentoo functions.sh
+die() {
+	echo -e " ${NOCOLOR-\e[1;31m*\e[0m }${*}" >&2
+	exit 1
+}
+
+einfo() {
+	echo -e " ${NOCOLOR-\e[1;32m*\e[0m }${*}" >&2
+}
+
+main() {
+	# re-define for subst to work
+	[[ -n ${NOCOLOR+yes} ]] && NOCOLOR=
+
+	if [[ ${INSTALLKERNEL_INITRD_GENERATOR} == dracut ]]; then
+		# Dracut bundles microcode in its initramfs images
+		echo "initrd_generator=${INSTALLKERNEL_INITRD_GENERATOR} bundles CPU microcode, nothing to do here."
+		exit 0
+	fi
+
+	# do nothing if somehow make-amd-ucode-img is not installed
+	[[ -x $(command -v make-amd-ucode-img) ]] || die "make-amd-ucode-img command not available"
+
+	[[ ${EUID} -eq 0 ]] || die "Please run this script as root"
+
+	if [[ -d /lib/firmware/amd-ucode ]]; then
+		einfo "Generating AMD CPU Microcode early initramfs image..."
+		make-amd-ucode-img /boot/amd-uc.img /lib/firmware/amd-ucode ||
+			die "make-amd-ucode-img failed"
+	else
+		einfo "No AMD CPU Microcode installed, nothing to do here."
+	fi
+}
+
+main

@@ -1,0 +1,103 @@
+'\" t
+.\"     Title: awesomerc
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.26
+.\"      Date: 2019-01-28
+.\"    Manual: \ \&
+.\"    Source: \ \&
+.\"  Language: English
+.\"
+.TH "AWESOMERC" "5" "2019-01-28" "\ \&" "\ \&"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+awesomerc \- Configuration file for the awesome window manager
+.SH "SYNOPSIS"
+.sp
+\fBawesome\fP looks for a configuration file in this order:
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+$XDG_CONFIG_HOME/awesome/rc.lua
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+$HOME/.config/awesome/rc.lua
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+$XDG_CONFIG_DIRS/awesome/rc.lua
+.RE
+.SH "DESCRIPTION"
+.sp
+The \fBrc.lua\fP file contains configuration information for \fBawesome\fP. It can
+be used to configure the behavior and look of awesome in a variety of ways.
+It can be assimilated as a Lua program/script run at startup by \fBawesome\fP.
+Therefore, it should use the awesome Lua API described in the API section.
+This file is read at startup.
+.SH "AWESOME LUA API"
+.sp
+Documentation for the Lua API can be found in the luadoc directory.
+.SH "COLORS FORMAT"
+.sp
+The color format in \fBawesome\fP is either a standard X color name
+(blue, darkblue, lightred, etc) or a hexadecimal formatted color (#rrggbb
+or #rrggbbaa).
+By using the hexadecimal format, you can also specify an alpha channel:
+that means that #00ff00 will draw pure green, but #00ff00aa will set the
+alpha channel to \(oqaa\(cq and will blend the green with the color under it.
+.SH "TEXT FORMAT"
+.sp
+You can use Pango markup in a text string.
+This allows formatting the text rendered inside widgets.
+Pango markup documentation can be found in the Pango documentation at
+.URL "http://library.gnome.org/devel/pango/stable/PangoMarkupFormat.html" "" "."
+.sp
+A Pango markup example: <span weight="bold" foreground="#336699">.\|.\|.</span>.
+.SH "SEE ALSO"
+.sp
+awesome(1) awesome\-client(1)
+.SH "AUTHORS"
+.sp
+Written by Julien Danjou \c
+.MTO "julien\(atdanjou.info" "" "."
+.SH "WWW"
+.sp
+.URL "https://awesomewm.org" "" ""

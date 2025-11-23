@@ -1,0 +1,55 @@
+From fd16e64fc8ca5e7f847001050abeef6d6822c061 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 29 Jan 2025 19:25:48 +0100
+Subject: [PATCH] Fix Qt6 build for non-Mac
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ src/xyscanWindow.cpp |  2 --
+ xyscan.pro           | 10 ++--------
+ 2 files changed, 2 insertions(+), 10 deletions(-)
+
+diff --git a/src/xyscanWindow.cpp b/src/xyscanWindow.cpp
+index 03e0267..41d554d 100644
+--- a/src/xyscanWindow.cpp
++++ b/src/xyscanWindow.cpp
+@@ -51,8 +51,6 @@
+ 
+ #if defined(USE_QTPDF)
+ #include <QPdfDocument>
+-#elif defined(USE_POPPLER) && !defined(Q_OS_MAC)
+-#include <poppler-qt5.h>
+ #elif defined(USE_POPPLER)
+ #include <poppler-qt6.h>
+ #endif
+diff --git a/xyscan.pro b/xyscan.pro
+index b792ac7..765fe1e 100644
+--- a/xyscan.pro
++++ b/xyscan.pro
+@@ -24,7 +24,7 @@
+ VERSION = 4.6.6
+ TEMPLATE = app
+ CONFIG  += qt warn_on release c++14 lrelease
+-CONFIG  += sdk_no_version_check
++CONFIG  += sdk_no_version_check link_pkgconfig
+ QT += network xml widgets printsupport multimedia charts
+ QMAKE_APPLE_DEVICE_ARCHS = x86_64 arm64
+ 
+@@ -55,13 +55,7 @@ macx {
+ #
+ unix {
+     !macx {
+-        INCLUDEPATH += /usr/include/poppler/qt5/
+-        INCLUDEPATH += /usr/include/poppler
+-        INCLUDEPATH += /usr/local/include/poppler/qt5/
+-        INCLUDEPATH += /usr/local/include/poppler
+-        INCLUDEPATH += /opt/local/include/poppler/qt5/
+-        INCLUDEPATH += /opt/local/include/poppler
+-        LIBS += -L/usr/local/lib/ -L/usr/lib/ -lpoppler -lpoppler-qt5
++        PKGCONFIG+=poppler-qt6
+     }
+ }
+ 
+-- 
+2.48.1
+

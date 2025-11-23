@@ -1,0 +1,38 @@
+https://bugs.gentoo.org/760633
+
+From 41077f8901b642d36b63f94b0fc62377a07fc0b2 Mon Sep 17 00:00:00 2001
+From: Adrian Ratiu <adrian.ratiu@collabora.com>
+Date: Tue, 4 Jan 2022 03:51:10 +0200
+Subject: [PATCH] Makefile: only run rpmspec if it exists
+
+keyutils is built on many distros which do not use rpm like
+Gentoo, ChromeOS or Arch. Older versions of bash silently
+ignored the fact that rpmspec was missing, but newer bash
+like v5.1 issue a new error:
+
+/bin/sh: line 1: rpmspec: command not found
+
+This happens every time the Makefile is parsed, including
+for a simple "make" invocation or "make install" even if
+a rpm package is not desired.
+
+Arch Linux simply ignores this new error but Gentoo and
+ChromeOS fail because portage actively monitors the build
+log for errors like this. See bug report [1].
+
+Fix this by calling rpmspec only if it exists.
+
+[1] https://bugs.gentoo.org/760633
+
+Signed-off-by: Adrian Ratiu <adrian.ratiu@collabora.com>
+--- a/Makefile
++++ b/Makefile
+@@ -285,7 +285,7 @@ SRCBALL	:= rpmbuild/SOURCES/$(TARBALL)
+ ZSRCBALL := rpmbuild/SOURCES/$(ZTARBALL)
+ 
+ BUILDID	:= .local
+-rpmver0	:= $(shell rpmspec -q ./keyutils.spec --define "buildid $(BUILDID)")
++rpmver0	:= $(shell if which rpmspec >/dev/null 2>&1; then rpmspec -q ./keyutils.spec --define "buildid $(BUILDID)"; fi)
+ rpmver1	:= $(word 1,$(rpmver0))
+ rpmver2	:= $(subst ., ,$(rpmver1))
+ rpmver3	:= $(lastword $(rpmver2))

@@ -1,0 +1,15 @@
+ SafeVector.h |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/SafeVector.h b/SafeVector.h
+index abf4b64..9c3292e 100644
+--- a/SafeVector.h
++++ b/SafeVector.h
+@@ -8,6 +8,7 @@
+ #ifndef SAFEVECTOR_H
+ #define SAFEVECTOR_H
+ 
++#include <cstddef>
+ #include <cassert>
+ #include <vector>
+ 

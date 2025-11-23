@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/269242
+
+--- scponly-4.8.orig/helper.c
++++ scponly-4.8/helper.c
+@@ -259,11 +259,11 @@
+ 							PROG_RSYNC, logstamp());
+ 						return 1;
+ 				}
+ #endif /* RSYNC_COMPAT */
+ 
+-#elif /* HAVE_GETOPT */
++#else /* HAVE_GETOPT */
+ 				/*
+ 				 * make sure that processing doesn't continue if we can't validate a rsync check
+ 				 * and if the getopt flag is set.
+ 				 */
+ 				syslog(LOG_ERR, "a getopt() argument check could not be performed for %s, recompile scponly without support for %s or rebuild scponly with getopt", av[0], av[0]);

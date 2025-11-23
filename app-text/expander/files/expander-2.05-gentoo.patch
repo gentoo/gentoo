@@ -1,0 +1,58 @@
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -3,15 +3,14 @@
+ bindir = $(BINDIR)/
+ 
+ copy     = ln -fs
+-CFLAGS  += -v -g # -DNEED_GETOPT_PROTO_TYPE
+-compiler = cc $(CFLAGS)
++compiler = $(CC) $(CFLAGS)
+ 
+ executables = expander boxcomment align_columns align_comments where_is
+ 
+ #--------------
+ # Build Targets
+ #--------------
+-all: verify $(executables)
++all: $(executables)
+ 
+ verify:
+ 	@if [ "$(bindir)" = "/" ]; then \
+@@ -24,32 +23,31 @@
+ # Abbreviation expansion filter program (with NEdit, language sensitive)
+ #-----------------------------------------------------------------------
+ expander: expander.c             
+-	$(compiler) -o $(bindir)$@ $?  
++	$(compiler) $(LDFLAGS) -o $@ $?
+ 
+ #--------------------------------------------------------------------------
+ # Surround given text with open ended box. (with NEdit, language sensitive)
+ #--------------------------------------------------------------------------
+ boxcomment: boxcomment.c
+-	$(compiler) -o $(bindir)$@ $?
+-	@if [ ! -f $(bindir)un$@ ]; then $(copy) $(bindir)$@ $(bindir)un$@; fi
++	$(compiler) $(LDFLAGS) -o $@ $?
+ 
+ #-------------------------------------------------------------------------------
+ # Align ragged looking 'C' style comments (good substitute for align_equals too)
+ #-------------------------------------------------------------------------------
+ align_comments: align_comments.c
+-	$(compiler) -o $(bindir)$@ $?
++	$(compiler) $(LDFLAGS) -o $@ $?
+ 
+ #----------------------------
+ # Align given text in columns
+ #----------------------------
+ align_columns: align_columns.c
+-	$(compiler) -o $(bindir)$@ $?
++	$(compiler) $(LDFLAGS) -o $@ $?
+ 
+ #----------------------------------------------
+ # File locator (substitute for which, where...)
+ #----------------------------------------------
+ where_is: where_is.c
+-	$(compiler) -o $(bindir)$@ $?
++	$(compiler) $(LDFLAGS) -o $@ $?
+ 
+ #------------------------------------------------
+ # Here is how to uninstall the executables built.

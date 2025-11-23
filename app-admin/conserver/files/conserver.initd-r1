@@ -1,0 +1,14 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need clock localmount
+	use net
+}
+
+command="/usr/sbin/conserver"
+command_args="-d -L ${CONSERVER_LOG:-/var/log/${RC_SVCNAME}.log} ${CONSERVER_OPTS}"
+command_background="true"
+pidfile="/run/${RC_SVCNAME}.pid"
+required_files="/etc/conserver/${RC_SVCNAME}.cf /etc/conserver/${RC_SVCNAME}.passwd"

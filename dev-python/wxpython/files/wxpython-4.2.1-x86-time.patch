@@ -1,0 +1,34 @@
+https://bugs.gentoo.org/922328
+https://github.com/wxWidgets/Phoenix/issues/1910
+https://github.com/wxWidgets/Phoenix/issues/2197 (specifically https://github.com/wxWidgets/Phoenix/issues/2197#issuecomment-1169378156)
+https://github.com/StefanBruens/Phoenix/commit/8b743981d557d0465ba53e938784be94f4679145 but w/ s/SIP_SSIZE_T/long
+i.e. a revert of https://github.com/wxWidgets/Phoenix/commit/c78823549bac1b28d99a1ad6dc1008485a2afb33.
+
+From 8b743981d557d0465ba53e938784be94f4679145 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Tue, 28 Jun 2022 18:32:32 +0200
+Subject: [PATCH] Fix time_t ETG typedef, extend DateTime.FromTimeT tests
+
+Before c78823549bac ("Ensure time_t is treated as a 64-bit value by SIP")
+the typedef used "long" instead of wxInt64, which caused issues on Win64,
+as long is 32bit there (LLP64). On the other hand, wxInt64 is wrong on
+32 bit Linux (e.g. armv7, i586), and thus the code crashes.
+
+As SIP_SSIZE_T is 64 bit for both LLP64 (Windows) and LP64 (Linux), but
+32 bit on 32bit archs, it matches time_t better (though, according to the
+C standard, it could even be a double).
+
+Fixes #2197.
+ etg/defs.py                  | 2 +-
+
+--- a/etg/defs.py
++++ b/etg/defs.py
+@@ -73,7 +73,7 @@ def run():
+     td = module.find('wxUIntPtr')
+     module.insertItemAfter(td, etgtools.TypedefDef(type='wchar_t', name='wxUChar'))
+     module.insertItemAfter(td, etgtools.TypedefDef(type='wchar_t', name='wxChar'))
+-    module.insertItemAfter(td, etgtools.TypedefDef(type='wxInt64', name='time_t'))
++    module.insertItemAfter(td, etgtools.TypedefDef(type='long', name='time_t'))
+     module.insertItemAfter(td, etgtools.TypedefDef(type='long long', name='wxFileOffset'))
+     module.insertItemAfter(td, etgtools.TypedefDef(type='SIP_SSIZE_T', name='ssize_t'))
+     module.insertItemAfter(td, etgtools.TypedefDef(type='unsigned char', name='byte', pyInt=True))

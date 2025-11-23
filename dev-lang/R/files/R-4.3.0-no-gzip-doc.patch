@@ -1,0 +1,10 @@
+--- a/doc/manual/Makefile.in
++++ b/doc/manual/Makefile.in
+@@ -345,7 +345,6 @@
+ 	@$(ECHO) "installing R info pages ..."
+ 	@for f in $(OBJECTS_INFO:.info=.info*); do \
+ 	  $(INSTALL_DATA) $${f} "$(DESTDIR)$(infodir)"; \
+-	  $(R_GZIPCMD) -f "$(DESTDIR)$(infodir)/$${f}"; \
+ 	done
+ 	@$(ECHO) "updating '$(infodir)/dir' ..."
+ 	@for f in $(OBJECTS_INFO); do \

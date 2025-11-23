@@ -1,0 +1,100 @@
+From 3e5f517a4904ddca2e9b7ba04ae8323df939ce43 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Thu, 28 Aug 2025 12:12:42 +0200
+Subject: [PATCH] ffmpeg-8, use AV_PROFILE_* defines
+
+Changed in https://git.ffmpeg.org/gitweb/ffmpeg.git/commit/8238bc0b5e3dba271217b1223a901b3f9713dc6e
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/gview_encoder/audio_codecs.c b/gview_encoder/audio_codecs.c
+index 5c9f764..16e054b 100644
+--- a/gview_encoder/audio_codecs.c
++++ b/gview_encoder/audio_codecs.c
+@@ -39,7 +39,11 @@ extern int enc_verbosity;
+ 
+ /* AAC object types index: MAIN = 1; LOW = 2; SSR = 3; LTP = 4*/
+ static int AAC_OBJ_TYPE[5] =
++#if LIBAVCODEC_VER_AT_LEAST(60,26)
++	{ AV_PROFILE_UNKNOWN, AV_PROFILE_AAC_MAIN, AV_PROFILE_AAC_LOW, AV_PROFILE_AAC_SSR, AV_PROFILE_AAC_LTP };
++#else
+ 	{ FF_PROFILE_UNKNOWN, FF_PROFILE_AAC_MAIN, FF_PROFILE_AAC_LOW, FF_PROFILE_AAC_SSR, FF_PROFILE_AAC_LTP };
++#endif
+ /*-1 = reserved; 0 = freq. is writen explictly (increases header by 24 bits)*/
+ static int AAC_SAMP_FREQ[16] =
+ 	{ 96000, 88200, 64000, 48000, 44100, 32000, 24000, 22050, 16000, 12000, 11025, 8000, 7350, -1, -1, 0};
+@@ -66,7 +70,11 @@ static audio_codec_t listSupCodecs[] = //list of software supported formats
+ 		.codec_id     = AV_CODEC_ID_PCM_F32LE,
+ 		.codec_name   = "pcm_f32le",
+ 		.sample_format = AV_SAMPLE_FMT_FLT,
++#if LIBAVCODEC_VER_AT_LEAST(60,26)
++		.profile      = AV_PROFILE_UNKNOWN,
++#else
+ 		.profile      = FF_PROFILE_UNKNOWN,
++#endif
+ 		.mkv_codpriv  = NULL,
+ 		.codpriv_size = 0,
+ 		.flags        = 0,
+@@ -83,7 +91,11 @@ static audio_codec_t listSupCodecs[] = //list of software supported formats
+ 		.codec_id     = AV_CODEC_ID_MP2,
+ 		.codec_name   = "mp2",
+ 		.sample_format = AV_SAMPLE_FMT_S16,
++#if LIBAVCODEC_VER_AT_LEAST(60,26)
++		.profile      = AV_PROFILE_UNKNOWN,
++#else
+ 		.profile      = FF_PROFILE_UNKNOWN,
++#endif
+ 		.mkv_codpriv  = NULL,
+ 		.codpriv_size = 0,
+ 		.flags        = 0,
+@@ -104,7 +116,11 @@ static audio_codec_t listSupCodecs[] = //list of software supported formats
+ #else
+ 		.sample_format = AV_SAMPLE_FMT_S16,
+ #endif
++#if LIBAVCODEC_VER_AT_LEAST(60,26)
++		.profile      = AV_PROFILE_UNKNOWN,
++#else
+ 		.profile      = FF_PROFILE_UNKNOWN,
++#endif
+ 		.mkv_codpriv  = NULL,
+ 		.codpriv_size = 0,
+ 		.flags        = 0,
+@@ -125,7 +141,11 @@ static audio_codec_t listSupCodecs[] = //list of software supported formats
+ #else
+ 		.sample_format = AV_SAMPLE_FMT_FLT,
+ #endif
++#if LIBAVCODEC_VER_AT_LEAST(60,26)
++		.profile      = AV_PROFILE_UNKNOWN,
++#else
+ 		.profile      = FF_PROFILE_UNKNOWN,
++#endif
+ 		.mkv_codpriv  = NULL,
+ 		.codpriv_size = 0,
+ 		.flags        = 0,
+@@ -146,7 +166,11 @@ static audio_codec_t listSupCodecs[] = //list of software supported formats
+ #else
+ 		.sample_format = AV_SAMPLE_FMT_S16,
+ #endif
++#if LIBAVCODEC_VER_AT_LEAST(60,26)
++		.profile      = AV_PROFILE_AAC_LOW,
++#else
+ 		.profile      = FF_PROFILE_AAC_LOW,
++#endif
+ 		.mkv_codpriv  = AAC_ESDS,
+ 		.codpriv_size = 2,
+ 		.flags        = 0,
+@@ -167,7 +191,11 @@ static audio_codec_t listSupCodecs[] = //list of software supported formats
+ #else
+ 		.sample_format = AV_SAMPLE_FMT_S16,
+ #endif
++#if LIBAVCODEC_VER_AT_LEAST(60,26)
++		.profile      = AV_PROFILE_UNKNOWN,
++#else
+ 		.profile      = FF_PROFILE_UNKNOWN,
++#endif
+ 		.mkv_codpriv  =  NULL,
+ 		.codpriv_size =  0,
+ 		.flags        = 0,
+-- 
+2.51.0
+

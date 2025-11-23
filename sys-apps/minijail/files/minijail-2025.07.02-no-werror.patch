@@ -1,0 +1,13 @@
+diff --git a/common.mk b/common.mk
+index 3b52a6d..1f27264 100644
+--- a/common.mk
++++ b/common.mk
+@@ -325,7 +325,7 @@ COMMON_CFLAGS-clang := -fvisibility=hidden -ggdb -Wimplicit-fallthrough \
+ COMMON_CFLAGS := -Wall -Wunused -Wno-unused-parameter -Wunreachable-code \
+   -Wbool-operation -Wstring-compare $(call check_cc,-Wxor-used-as-pow) \
+   -Wint-in-bool-context -Wfree-nonheap-object \
+-  -Werror -Wformat=2 -fno-strict-aliasing  \
++  -Wformat=2 -fno-strict-aliasing  \
+   $(SSP_CFLAGS) -O1
+ CXXFLAGS += $(COMMON_CFLAGS) $(COMMON_CFLAGS-$(CXXDRIVER)) -std=gnu++20 \
+   -fvisibility-inlines-hidden

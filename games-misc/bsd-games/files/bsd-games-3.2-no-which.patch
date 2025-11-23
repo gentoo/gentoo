@@ -1,0 +1,30 @@
+https://github.com/msharov/bsd-games/pull/12
+--- a/configure
++++ b/configure
+@@ -145,7 +145,7 @@ s/@builddir@/\$\{TMPDIR\}\/make/g"
+ 
+ #### Find headers, libs, programs, and subs ##########################
+ 
+-# Programs found using which
++# Programs found using command -v
+ for i in $progs; do
+     pname=$(expr $i : '\([^=]*\)')
+     pcall=$(expr $i : '[^=]*=\([^=]*\)')
+@@ -153,7 +153,7 @@ for i in $progs; do
+     # First check if an environment variable is set
+     [ -n "$ppath" ] && sub "s/@$pname@/$ppath/g"
+     # Check if the program exists
+-    ppath=$(which $pcall 2>/dev/null)
++    ppath=$(command -v $pcall 2>/dev/null)
+     [ -n "$ppath" ] && [ -x "$ppath" ] && sub "s/@$pname@/$pcall/g"
+ done
+ # If nothing found in first loop, set the first pair anyway
+@@ -164,7 +164,7 @@ for i in $progs; do
+ done
+ 
+ # Packages found using pkg-config
+-pkgconfig=$(which pkg-config 2>/dev/null)
++pkgconfig=$(command -v pkg-config 2>/dev/null)
+ if [ -n "$pkgconfig" ] && [ -x "$pkgconfig" ]; then
+     faildeps=""
+     for i in $pkgs; do

@@ -1,0 +1,3 @@
+Please make sure you have either a SSH key management installed and activated or
+installed a SSH askpass app like net-misc/x11-ssh-askpass.
+Otherwise git-cola may hang when pushing/pulling from remote git repositories via SSH.

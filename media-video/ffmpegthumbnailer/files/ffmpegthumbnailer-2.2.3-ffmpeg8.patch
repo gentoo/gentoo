@@ -1,0 +1,47 @@
+https://bugs.gentoo.org/961947
+https://github.com/dirkvdb/ffmpegthumbnailer/pull/240
+--- a/libffmpegthumbnailer/moviedecoder.cpp
++++ b/libffmpegthumbnailer/moviedecoder.cpp
+@@ -408,3 +408,3 @@
+     AVFilterContext* yadifFilter = nullptr;
+-    if (m_pFrame->interlaced_frame != 0)
++    if (m_pFrame->flags & AV_FRAME_FLAG_INTERLACED)
+     {
+@@ -520,3 +520,3 @@
+         ++keyFrameAttempts;
+-    } while ((!gotFrame || !m_pFrame->key_frame) && keyFrameAttempts < 200);
++    } while ((!gotFrame || !(m_pFrame->flags & AV_FRAME_FLAG_KEY)) && keyFrameAttempts < 200); 
+ 
+@@ -657,16 +657,23 @@
+ {
+-    auto matrix = reinterpret_cast<int32_t*>(av_stream_get_side_data(m_pVideoStream, AV_PKT_DATA_DISPLAYMATRIX, nullptr));
+-    if (matrix)
+-    {
++    if (!m_pVideoStream || !m_pVideoStream->codecpar) {
++        return -1;
++    }
++
++    // For FFmpeg 5.0+
++    const AVPacketSideData* side_data = av_packet_side_data_get(
++        m_pVideoStream->codecpar->coded_side_data,
++        m_pVideoStream->codecpar->nb_coded_side_data,
++        AV_PKT_DATA_DISPLAYMATRIX
++    );
++
++    if (side_data && side_data->size >= sizeof(int32_t) * 9) {
++        const int32_t* matrix = reinterpret_cast<const int32_t*>(side_data->data);
+         auto angle = lround(av_display_rotation_get(matrix));
+-        if (angle < -135)
+-        {
++        if (angle < -135) {
+             return 3;
+         }
+-        else if (angle > 45 && angle < 135)
+-        {
++        else if (angle > 45 && angle < 135) {
+             return 2;
+         }
+-        else if (angle < -45 && angle > -135)
+-        {
++        else if (angle < -45 && angle > -135) {
+             return 1;

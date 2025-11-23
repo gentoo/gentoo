@@ -1,0 +1,16 @@
+From ba4d9709c6e442ee57329fd592d48fc98ea0b937 Mon Sep 17 00:00:00 2001
+From: Robin Gareus <robin@gareus.org>
+Date: Wed, 6 Nov 2024 04:07:25 +0100
+Subject: [PATCH] Properly check for syscall (#9845)
+
+--- a/libs/ardour/wscript
++++ b/libs/ardour/wscript
+@@ -355,7 +355,7 @@ def configure(conf):
+             features  = 'c',
+             mandatory = False,
+             execute   = False,
+-            fragment = "#include <sys/syscall.h>\nint main () { syscall(SYS_ioprio_set, 1, 0, 8192); return 0; }")
++            fragment = "#include <unistd.h>\n#include <sys/syscall.h>\nint main () { syscall(SYS_ioprio_set, 1, 0, 8192); return 0; }")
+ 
+     if have_sys_ioprio:
+             conf.define('HAVE_IOPRIO', 1)

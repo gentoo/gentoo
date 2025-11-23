@@ -1,0 +1,41 @@
+Please read the INSTALL file in /usr/share/doc/${PF}/
+for remaining instructions on setting up dbmail users and 
+for finishing configuration to connect to your MTA and 
+to connect to your db.
+
+DBMail requires either SQLite, PostgreSQL or MySQL.
+Database schemes can be found in /usr/share/doc/${PF}/
+You will also want to follow the installation instructions
+on setting up the maintenance program to delete old messages.
+Don't forget to edit /etc/dbmail/dbmail.conf as well.
+
+For regular maintenance, add this to crontab:
+0 3 * * * /usr/bin/dbmail-util -cpdy >/dev/null 2>&1
+
+Please make sure to run etc-update.
+If you get an error message about plugins not found
+please add the library_directory configuration switch to
+dbmail.conf and set it to the correct path
+(usually /usr/lib/dbmail or /usr/lib64/dbmail on amd64)
+A sample can be found in dbmail.conf.dist after etc-update.
+
+We are now using the init script from upstream.
+Please edit /etc/conf.d/dbmail to set which services to start
+and delete /etc/init.d/dbmail-* when you are done. (don't
+forget to rc-update del dbmail-* first)
+
+Changed pid directory to /run/dbmail (see
+http://www.dbmail.org/mantis/view.php?id=949 for details)
+
+The database config has changed to support libzdb db URI
+Please check the documentation (or Bug #479664)
+
+The database schema has changed since 3.0.x make sure
+to run the migration script
+
+Please be aware, that the single init-script for all services
+has been replaced with seperate init scripts for the individual services.
+Make sure to add dbmail-(imapd|lmtpd|pop3d|timsieved) using rc-update
+and remove dbmail if you want to take advantage of this change.
+
+

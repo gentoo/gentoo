@@ -1,0 +1,29 @@
+--- a/build.xml
++++ b/build.xml
+#<!-- we provide tomcat native as another package and we don't need commons-daemon
+@@ -1469,7 +1469,6 @@
+   <target name="deploy" depends="package,build-docs,build-tomcat-jdbc,compile-webapp-examples"
+           description="Default. Builds a working Tomcat instance">
+ 
+-    <copy tofile="${tomcat.build}/bin/commons-daemon.jar" file="${commons-daemon.jar}" />
+ 
+     <!-- Copy scripts -->
+     <copy todir="${tomcat.build}/bin">
+#<!-- we provide jdt jar externally
+@@ -1530,7 +1529,6 @@
+         <exclude name="${jdt.jar.filename}"/>
+       </fileset>
+     </delete>
+-    <copy file="${jdt.jar}" todir="${tomcat.build}/lib"/>
+ 
+     <!-- Delete all other versions of Tomcat Migration Tool for Jakarta EE and copy the current one -->
+     <local name="migration.jar.filename" />
+#<!-- we provide migration tool externally
+@@ -1541,7 +1539,6 @@
+         <exclude name="${migration-lib.jar.filename}"/>
+       </fileset>
+     </delete>
+-    <copy file="${migration-lib.jar}" todir="${tomcat.build}/lib"/>
+ 
+     <!-- Delete all other versions of OpenSSL support for Tomcat and copy the current one -->
+     <!-- After module release

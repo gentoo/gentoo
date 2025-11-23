@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>scheme@gentoo.org</email>
+    <name>Gentoo Scheme Project</name>
+  </maintainer>
+  <longdescription>
+    GNU Guile-Ncurses is a library for the Guile Scheme interpreter that
+    provides functions for creating text user interfaces. The text user
+    interface functionality is built on the ncurses libraries: curses, form,
+    panel, and menu.
+  </longdescription>
+  <upstream>
+    <remote-id type="savannah">guile-ncurses</remote-id>
+  </upstream>
+</pkgmetadata>

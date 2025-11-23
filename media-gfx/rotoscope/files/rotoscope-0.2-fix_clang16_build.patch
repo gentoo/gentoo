@@ -1,0 +1,38 @@
+Clang16 does not allow implicit function declarations by default.
+
+See also: https://wiki.gentoo.org/wiki/Modern_C_porting
+Bug: https://bugs.gentoo.org/875764
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+
+--- a/src/main.c
++++ b/src/main.c
+@@ -49,6 +49,9 @@ GList* edge_list = NULL;
+ MouseState mouse_state = IDLE;
+ Vertex last_click;
+ 
++/* Function prototypes */
++void redraw_render_area( GtkWidget* widget, GdkEventExpose* event, gpointer user_data );
++
+ /* Functionality and callback functions */
+ void clear_edge_list()
+ {
+@@ -165,7 +168,7 @@ void draw_pixbuf_to_drawing_area( GdkPixbuf* src, GtkWidget* dest )
+ 			 GDK_RGB_DITHER_NONE, 0, 0 );
+ }
+ 
+-gboolean redraw_render_area( GtkWidget* widget, GdkEventExpose* event, gpointer user_data )
++void redraw_render_area( GtkWidget* widget, GdkEventExpose* event, gpointer user_data )
+ {
+ 	GtkWidget* render_drawing_area = glade_xml_get_widget( xml, "render_drawing_area" );
+ 	draw_pixbuf_to_drawing_area( render_result, render_drawing_area );
+--- a/src/graph.c
++++ b/src/graph.c
+@@ -64,6 +64,7 @@ gboolean save_graph_to_file( GList* edges, char* filename )
+ 	}
+ 
+ 	fclose( f );
++	return FALSE;
+ }
+ 
+ GList* load_graph_from_file( char* filename )

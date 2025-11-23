@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>media-video@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">guvcview</remote-id>
+	</upstream>
+	<use>
+		<flag name="qt6">Build with Qt6 interface instead of Gtk+</flag>
+		<flag name="sfml">Build with SFML X11-engine instead of sdl</flag>
+	</use>
+</pkgmetadata>

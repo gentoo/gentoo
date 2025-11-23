@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>lordvan@gentoo.org</email>
+    <name>Thomas Raschbacher</name>
+  </maintainer>
+  <use>
+    <flag name="rocks">Enables rocksdb storage backend</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">stalwartlabs/mail-server</remote-id>
+  </upstream>
+</pkgmetadata>

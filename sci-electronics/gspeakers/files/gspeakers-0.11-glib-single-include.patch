@@ -1,0 +1,117 @@
+Index: gspeakers-0.11/src/box.cc
+===================================================================
+--- gspeakers-0.11.orig/src/box.cc
++++ gspeakers-0.11/src/box.cc
+@@ -17,7 +17,7 @@
+   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ */
+ 
+-#include <glib/gstrfuncs.h>
++#include <glib.h>
+ #include <sstream>
+ #include "box.h"
+ #include "common.h"
+Index: gspeakers-0.11/src/boxlist.cc
+===================================================================
+--- gspeakers-0.11.orig/src/boxlist.cc
++++ gspeakers-0.11/src/boxlist.cc
+@@ -17,7 +17,7 @@
+   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ */
+ 
+-#include <glib/gstrfuncs.h>
++#include <glib.h>
+ #include "boxlist.h"
+ #include "common.h"
+ 
+Index: gspeakers-0.11/src/cellitemcrossover.h
+===================================================================
+--- gspeakers-0.11.orig/src/cellitemcrossover.h
++++ gspeakers-0.11/src/cellitemcrossover.h
+@@ -22,7 +22,7 @@
+ #define __GSPEAKERS_CELLITEM_CROSSOVER
+ 
+ #include <glibmm/ustring.h>
+-#include <glib/gstring.h>
++#include <glib.h>
+ #include <vector>
+ #include "part.h"
+ 
+Index: gspeakers-0.11/src/crossover.cc
+===================================================================
+--- gspeakers-0.11.orig/src/crossover.cc
++++ gspeakers-0.11/src/crossover.cc
+@@ -15,7 +15,7 @@
+   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ */
+ 
+-#include <glib/gstrfuncs.h>
++#include <glib.h>
+ #include <sstream>
+ #include "crossover.h"
+ 
+Index: gspeakers-0.11/src/crossoverlist.cc
+===================================================================
+--- gspeakers-0.11.orig/src/crossoverlist.cc
++++ gspeakers-0.11/src/crossoverlist.cc
+@@ -15,7 +15,7 @@
+   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ */
+ 
+-#include <glib/gstrfuncs.h>
++#include <glib.h>
+ #include "crossoverlist.h"
+ 
+ CrossoverList::CrossoverList()
+Index: gspeakers-0.11/src/net.cc
+===================================================================
+--- gspeakers-0.11.orig/src/net.cc
++++ gspeakers-0.11/src/net.cc
+@@ -17,7 +17,7 @@
+   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ */
+ 
+-#include <glib/gstrfuncs.h>
++#include <glib.h>
+ #include <sstream>
+ #include <fstream>
+ #include "net.h"
+Index: gspeakers-0.11/src/part.cc
+===================================================================
+--- gspeakers-0.11.orig/src/part.cc
++++ gspeakers-0.11/src/part.cc
+@@ -21,7 +21,7 @@
+ #include <iostream>
+ #include <sstream>
+ #include <stdlib.h>
+-#include <glib/gstrfuncs.h>
++#include <glib.h>
+ 
+ using namespace sigc;
+ using namespace std;
+Index: gspeakers-0.11/src/speaker.cc
+===================================================================
+--- gspeakers-0.11.orig/src/speaker.cc
++++ gspeakers-0.11/src/speaker.cc
+@@ -15,7 +15,7 @@
+   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ */
+ 
+-#include <glib/gstrfuncs.h>
++#include <glib.h>
+ #include <sstream>
+ #include "speaker.h"
+ #include "common.h"
+Index: gspeakers-0.11/src/speakerlist.cc
+===================================================================
+--- gspeakers-0.11.orig/src/speakerlist.cc
++++ gspeakers-0.11/src/speakerlist.cc
+@@ -15,7 +15,7 @@
+   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ */
+ 
+-#include <glib/gstrfuncs.h>
++#include <glib.h>
+ #include "speakerlist.h"
+ #include "common.h"
+ 

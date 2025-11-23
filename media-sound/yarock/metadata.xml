@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>asturm@gentoo.org</email>
+		<name>Andreas Sturmlechner</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/sebaro/Yarock/issues</bugs-to>
+		<remote-id type="github">sebaro/Yarock</remote-id>
+	</upstream>
+	<use>
+		<flag name="mpv">Enable <pkg>media-video/mpv</pkg> backend</flag>
+		<flag name="qtmedia">Enable playback via <pkg>dev-qt/qtmultimedia</pkg></flag>
+		<flag name="vlc">Enable <pkg>media-video/vlc</pkg> backend</flag>
+	</use>
+</pkgmetadata>

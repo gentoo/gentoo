@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription>
+    Metamath is a tiny language that can express theorems in abstract
+    mathematics, accompanied by proofs that can be verified by a computer
+    program.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/metamath/metamath-exe/issues</bugs-to>
+    <remote-id type="github">metamath/metamath-exe</remote-id>
+  </upstream>
+</pkgmetadata>

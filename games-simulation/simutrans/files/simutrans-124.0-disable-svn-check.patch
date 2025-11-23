@@ -1,0 +1,33 @@
+From 1064daf38a99d67a78b1117a289fc72349f1fad9 Mon Sep 17 00:00:00 2001
+From: tastytea <gentoo@tastytea.de>
+Date: Thu, 9 May 2024 12:59:04 +0200
+Subject: [PATCH] disable svn check
+
+---
+ configure.ac | 10 +++-------
+ 1 file changed, 3 insertions(+), 7 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index c611af3..b8e3efa 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -145,13 +145,9 @@ else
+ fi
+ 
+ 
+-# are we in a svn?
+-if svn info
+-then
+-	AC_SUBST(svn, 1)
+-else
+-	AC_SUBST(svn, 0)
+-fi
++# we are not in an svn
++AC_SUBST(svn, 0)
++
+ 
+ 
+ #switch off assembler on 64 bit (MISSING: Check for GNU Assembler and i86)
+-- 
+2.43.2
+

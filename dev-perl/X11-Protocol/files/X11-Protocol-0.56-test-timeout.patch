@@ -1,0 +1,38 @@
+From 00202116b49691de109c397f298c55960d2b9896 Mon Sep 17 00:00:00 2001
+From: Slaven Rezic <slaven@rezic.de>
+Date: Sat, 25 Nov 2017 09:57:00 +0100
+Subject: timeout tests on inactivity
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=123736
+---
+ test.pl | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/test.pl b/test.pl
+index 8436a47..209a6a6 100644
+--- a/test.pl
++++ b/test.pl
+@@ -91,9 +91,19 @@ $gc = getGC($win, $font);
+ 
+ $x->MapWindow($win);
+ 
++$SIG{ALRM} = sub { die "Timeout" };
++alarm(5);
+ while (1)
+   {
+-    $x->handle_input until %e = $x->dequeue_event;
++    eval { $x->handle_input until %e = $x->dequeue_event; };
++    if ($@)
++    {
++        if ($@ =~ /Timeout/) {
++            print "ok 3\n";
++            last;
++        }
++        die $@;
++    }
+     if ($e{name} eq "Expose")
+       {
+ 	next unless $e{count} == 0;
+-- 
+2.16.2
+

@@ -1,0 +1,63 @@
+https://bugs.gentoo.org/963094
+--- a/rdup-simple
++++ b/rdup-simple
+@@ -179,7 +179,7 @@ fi
+ [ $# -lt 2 ] && usage && exit
+ 
+ if $mcrypt; then
+-    if ! which mcrypt 2>/dev/null 1>&2; then
++    if ! command -v mcrypt > /dev/null; then
+ 	echo2 "Mcrypt not found, can not continue"
+ 	exit 1
+     fi
+--- a/testsuite/rdup/rdup.rdup-up.data
++++ b/testsuite/rdup/rdup.rdup-up.data
+@@ -1204,7 +1204,7 @@ function clone() {
+ 
+ # try to find the specific cmd
+ function find_cmd {
+-        which "${i}" >/dev/null
++        command -v "${i}" >/dev/null
+         if [ $? -ne 0 ]; then                
+                 err "[fatal] CmdDepend \"$i\" could not be satisfied: not found. Abort."
+                 cleanup; exit 1  
+@@ -1330,7 +1330,7 @@ if [ $goal = "create" ]; then
+ # get all files with the same basename except those that ends in .tpkg
+ 
+         # check for shar
+-        which tar >/dev/null
++        command -v tar >/dev/null
+         if [ $? -ne 0 ]; then
+                 err "[fatal] Tar command not found. Abort."
+                 cd $TPKG_CURRENT; exit 1
+@@ -1524,7 +1524,7 @@ if [ ! -f $dsc_file ]; then
+         cleanup; exit 1
+ fi
+ 
+-SHELL=`which bash`
++SHELL=`command -v bash`
+ if [ -z ${SHELL} ]; then
+        SHELL=/usr/local/bin/bash
+        if [ ! -x $SHELL ]; then
+--- a/testsuite/rdup/rdup.simple.helper
++++ b/testsuite/rdup/rdup.simple.helper
+@@ -5,7 +5,7 @@
+ # these
+ PATH=$PWD:$PATH
+ 
+-if ! which gpg 2>/dev/null 1>&2; then
++if ! command -v gpg 2>/dev/null 1>&2; then
+     exit 0
+ fi
+ 
+--- a/testsuite/rdup/rdup.simple3.helper
++++ b/testsuite/rdup/rdup.simple3.helper
+@@ -2,7 +2,7 @@
+ 
+ PATH=$PWD:$PATH
+ 
+-if ! which gpg 2>/dev/null 1>&2; then
++if ! command -v gpg 2>/dev/null 1>&2; then
+     exit 0
+ fi
+ 

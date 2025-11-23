@@ -1,0 +1,29 @@
+# -*- apache -*-
+
+<IfDefine MUNIN_HTML_CGI>
+RewriteEngine on
+
+RewriteRule ^/favicon.ico /static/favicon.ico [L]
+
+RewriteCond %{REQUEST_URI} (/|\.html)$
+RewriteCond %{REQUEST_URI} !/static
+RewriteRule ^/(.*) /munin-cgi/munin-cgi-html/$1 [PT,L]
+RewriteRule ^/munin-cgi/munin-cgi-graph/(.*) /$1
+RewriteCond %{REQUEST_URI} !^/static
+RewriteRule ^/(.*.png) /munin-cgi/munin-cgi-graph/$1? [L,PT]
+
+ScriptAlias /munin-cgi/munin-cgi-graph /usr/libexec/munin/cgi/munin-cgi-graph
+ScriptAlias /munin-cgi/munin-cgi-html /usr/libexec/munin/cgi/munin-cgi-html
+</IfDefine>
+
+<Directory /usr/libexec/munin/cgi/>
+	Options +ExecCGI
+	Require all granted
+
+	<IfModule mod_fcgid.c>
+		SetHandler fcgid-script
+	</IfModule>
+	<IfModule !mod_fcgid.c>
+		SetHandler cgi-script
+	</IfModule>
+</Directory>

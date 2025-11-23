@@ -1,0 +1,36 @@
+Missing system inlude in self-defined autoconf tests
+https://bugs.gentoo.org/908483
+--- a/m4macros/eso.m4
++++ b/m4macros/eso.m4
+@@ -252,6 +252,7 @@
+                        AC_RUN_IFELSE([
+ #include <stdio.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ int
+ doit(char * s, ...)
+@@ -701,6 +702,7 @@
+                    [
+                        AC_RUN_IFELSE([
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ void f(int i, ...)
+ {
+@@ -733,6 +735,7 @@
+                    [
+                        AC_RUN_IFELSE([
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ void f(int i, ...)
+ {
+@@ -784,6 +787,7 @@
+                    [
+                        AC_RUN_IFELSE([
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ void f(int i, ...)
+ {

@@ -1,0 +1,31 @@
+--- a/setup.py
++++ b/setup.py
+@@ -101,8 +101,8 @@
+         self.mkpath('build')
+ 
+         for (sourcefile, gzfile) in [
+-                ('data/arandr.1.txt', os.path.join('build', 'arandr.1.gz')),
+-                ('data/unxrandr.1.txt', os.path.join('build', 'unxrandr.1.gz')),
++                ('data/arandr.1.txt', os.path.join('build', 'arandr.1')),
++                ('data/unxrandr.1.txt', os.path.join('build', 'unxrandr.1')),
+                 ]:
+ 
+             if newer(sourcefile, gzfile):
+@@ -111,7 +111,7 @@
+                 info('compressing man page to %s', gzfile)
+ 
+                 if not self.dry_run:
+-                    compressed = gzip.open(gzfile, 'w', 9)
++                    compressed = open(gzfile, 'wb')
+                     compressed.write(manpage)
+                     compressed.close()
+ 
+@@ -259,7 +259,7 @@
+             },
+         data_files = [
+             ('share/applications', ['data/arandr.desktop']), # FIXME: use desktop-file-install?
+-            ('share/man/man1', ['build/arandr.1.gz', 'build/unxrandr.1.gz']),
++            ('share/man/man1', ['build/arandr.1', 'build/unxrandr.1']),
+             ],
+         scripts = ['arandr', 'unxrandr'],
+ )

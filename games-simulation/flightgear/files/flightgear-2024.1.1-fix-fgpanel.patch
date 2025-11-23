@@ -1,0 +1,718 @@
+diff '--color=auto' -ruN flightgear-2024.1.1/utils/fgpanel/ApplicationProperties.cxx my/utils/fgpanel/ApplicationProperties.cxx
+--- flightgear-2024.1.1/utils/fgpanel/ApplicationProperties.cxx	2025-02-27 15:49:32.000000000 +0100
++++ my/utils/fgpanel/ApplicationProperties.cxx	2025-05-22 06:30:47.453461696 +0200
+@@ -71,5 +71,5 @@
+   return path;
+ }
+ 
+-string ApplicationProperties::root = ".";
++std::string ApplicationProperties::root = ".";
+ SGPropertyNode_ptr ApplicationProperties::Properties = new SGPropertyNode;
+diff '--color=auto' -ruN flightgear-2024.1.1/utils/fgpanel/FGCroppedTexture.cxx my/utils/fgpanel/FGCroppedTexture.cxx
+--- flightgear-2024.1.1/utils/fgpanel/FGCroppedTexture.cxx	2025-02-27 15:49:32.000000000 +0100
++++ my/utils/fgpanel/FGCroppedTexture.cxx	2025-05-22 06:46:12.372528774 +0200
+@@ -23,11 +23,11 @@
+ #include "FGCroppedTexture.hxx"
+ 
+ GLuint FGCroppedTexture::s_current_bound_texture = 0;
+-map <string, GLuint> FGCroppedTexture::s_cache;
+-map <string, FGTextureLoaderInterface*> FGCroppedTexture::s_TextureLoader;
++std::map <std::string, GLuint> FGCroppedTexture::s_cache;
++std::map <std::string, FGTextureLoaderInterface*> FGCroppedTexture::s_TextureLoader;
+ FGDummyTextureLoader FGCroppedTexture::s_DummyTextureLoader;
+ 
+-FGCroppedTexture::FGCroppedTexture (const string &path,
++FGCroppedTexture::FGCroppedTexture (const std::string &path,
+                                     const float minX, const float minY,
+                                     const float maxX, const float maxY) :
+   m_path (path),
+@@ -40,11 +40,11 @@
+ }
+ 
+ void
+-FGCroppedTexture::setPath (const string &path) {
++FGCroppedTexture::setPath (const std::string &path) {
+   m_path = path;
+ }
+ 
+-const string &
++const std::string &
+ FGCroppedTexture::getPath () const {
+   return m_path;
+ }
+@@ -55,7 +55,7 @@
+ }
+ 
+ void
+-FGCroppedTexture::registerTextureLoader (const string &extension,
++FGCroppedTexture::registerTextureLoader (const std::string &extension,
+                                          FGTextureLoaderInterface * const loader) {
+   if (s_TextureLoader.count (extension) == 0) {
+     s_TextureLoader[extension] = loader;
+@@ -100,7 +100,7 @@
+               "Using texture " << m_path << " from cache (#" << m_texture << ")");
+     } else {
+       const SGPath path (ApplicationProperties::GetRootPath (m_path.c_str ()));
+-      const string extension (path.extension ());
++      const std::string extension (path.extension ());
+       FGTextureLoaderInterface *loader (&s_DummyTextureLoader);
+       if (s_TextureLoader.count (extension) == 0) {
+         SG_LOG (SG_COCKPIT,
+diff '--color=auto' -ruN flightgear-2024.1.1/utils/fgpanel/FGCroppedTexture.hxx my/utils/fgpanel/FGCroppedTexture.hxx
+--- flightgear-2024.1.1/utils/fgpanel/FGCroppedTexture.hxx	2025-02-27 15:49:32.000000000 +0100
++++ my/utils/fgpanel/FGCroppedTexture.hxx	2025-05-22 06:55:00.337444768 +0200
+@@ -30,19 +30,19 @@
+  */
+ class FGCroppedTexture : public SGReferenced {
+ public:
+-  FGCroppedTexture (const string &path,
++  FGCroppedTexture (const std::string &path,
+                     const float minX = 0.0, const float minY = 0.0,
+                     const float maxX = 1.0, const float maxY = 1.0);
+ 
+   virtual ~FGCroppedTexture ();
+ 
+-  virtual void setPath (const string &path);
++  virtual void setPath (const std::string &path);
+ 
+-  virtual const string &getPath () const;
++  virtual const std::string &getPath () const;
+ 
+   virtual void setCrop (const float minX, const float minY, const float maxX, const float maxY);
+ 
+-  static void registerTextureLoader (const string &extension,
++  static void registerTextureLoader (const std::string &extension,
+                                      FGTextureLoaderInterface * const loader);
+ 
+   virtual float getMinX () const;
+@@ -54,13 +54,13 @@
+   virtual void bind (const GLint Textured_Layer_Sampler_Loc);
+ 
+ private:
+-  string m_path;
++  std::string m_path;
+   float m_minX, m_minY, m_maxX, m_maxY;
+ 
+   GLuint m_texture;
+   static GLuint s_current_bound_texture;
+-  static map <string, GLuint> s_cache;
+-  static map <string, FGTextureLoaderInterface*> s_TextureLoader;
++  static std::map <std::string, GLuint> s_cache;
++  static std::map <std::string, FGTextureLoaderInterface*> s_TextureLoader;
+   static FGDummyTextureLoader s_DummyTextureLoader;
+ };
+ 
+diff '--color=auto' -ruN flightgear-2024.1.1/utils/fgpanel/FGDummyTextureLoader.cxx my/utils/fgpanel/FGDummyTextureLoader.cxx
+--- flightgear-2024.1.1/utils/fgpanel/FGDummyTextureLoader.cxx	2025-02-27 15:49:32.000000000 +0100
++++ my/utils/fgpanel/FGDummyTextureLoader.cxx	2025-05-22 06:31:21.970651761 +0200
+@@ -19,7 +19,7 @@
+ #include "FGDummyTextureLoader.hxx"
+ 
+ GLuint
+-FGDummyTextureLoader::loadTexture (const string& filename) {
++FGDummyTextureLoader::loadTexture (const std::string& filename) {
+   GLuint texture;
+   glGenTextures (1, &texture);
+   glBindTexture (GL_TEXTURE_2D, texture);
+diff '--color=auto' -ruN flightgear-2024.1.1/utils/fgpanel/FGDummyTextureLoader.hxx my/utils/fgpanel/FGDummyTextureLoader.hxx
+--- flightgear-2024.1.1/utils/fgpanel/FGDummyTextureLoader.hxx	2025-02-27 15:49:32.000000000 +0100
++++ my/utils/fgpanel/FGDummyTextureLoader.hxx	2025-05-22 06:32:30.237016268 +0200
+@@ -18,8 +18,6 @@
+ 
+ #pragma once
+ 
+-#include <string.h>
+-
+ #include "FGTextureLoaderInterface.hxx"
+ 
+ 
+diff '--color=auto' -ruN flightgear-2024.1.1/utils/fgpanel/FGFontCache.cxx my/utils/fgpanel/FGFontCache.cxx
+--- flightgear-2024.1.1/utils/fgpanel/FGFontCache.cxx	2025-02-27 15:49:32.000000000 +0100
++++ my/utils/fgpanel/FGFontCache.cxx	2025-05-22 06:59:46.822658662 +0200
+@@ -57,7 +57,7 @@
+ }
+ 
+ bool
+-FGFontCache::Set_Font (const string& Font_Name,
++FGFontCache::Set_Font (const std::string& Font_Name,
+                        const float Size,
+                        GLuint &Glyph_Texture) {
+   if (m_Face_Map.find (Font_Name) != m_Face_Map.end ()) {
+@@ -68,7 +68,7 @@
+       SG_LOG (SG_COCKPIT, SG_ALERT, "Could not open font : " + Font_Name);
+       return false;
+     }
+-    m_Face_Map.insert (pair <string, FT_Face *> (Font_Name, Face_Ptr));
++    m_Face_Map.insert (std::pair <std::string, FT_Face *> (Font_Name, Face_Ptr));
+     m_Current_Face_Ptr = Face_Ptr;
+   }
+   if (m_Current_Face_Ptr != NULL) {
+@@ -76,7 +76,7 @@
+   } else {
+     return false;
+   }
+-  const string Key_Str (Font_Name + "_" + Get_Size (Size));
++  const std::string Key_Str (Font_Name + "_" + Get_Size (Size));
+   if (m_Pos_Map.find (Key_Str) != m_Pos_Map.end ()) {
+     m_Current_Pos = m_Pos_Map[Key_Str];
+   } else {
+@@ -117,7 +117,7 @@
+                   GL_ALPHA,
+                   GL_UNSIGNED_BYTE,
+                   m_Texture);
+-    m_Pos_Map.insert (pair <string, unsigned int> (Key_Str, m_Current_Pos));
++    m_Pos_Map.insert (std::pair <std::string, unsigned int> (Key_Str, m_Current_Pos));
+   }
+   Glyph_Texture = m_Glyph_Texture;
+   return true;
+@@ -175,12 +175,12 @@
+   Y = double (Line) / double (Texture_Size);
+ }
+ 
+-string
++std::string
+ FGFontCache::Get_Size (const float Size) {
+   const int Half_Size (int (round (2.0 * Size)));
+   const int Int_Part (Half_Size / 2);
+   const int Dec_Part ((Half_Size % 2) ? 5 : 0);
+-  stringstream Result_SS;
++  std::stringstream Result_SS;
+   Result_SS << Int_Part << "." << Dec_Part;
+   return Result_SS.str ();
+ }
+diff '--color=auto' -ruN flightgear-2024.1.1/utils/fgpanel/FGGroupLayer.hxx my/utils/fgpanel/FGGroupLayer.hxx
+--- flightgear-2024.1.1/utils/fgpanel/FGGroupLayer.hxx	2025-02-27 15:49:32.000000000 +0100
++++ my/utils/fgpanel/FGGroupLayer.hxx	2025-05-22 06:58:50.708076810 +0200
+@@ -37,7 +37,7 @@
+   // transfer pointer ownership
+   virtual void addLayer (FGInstrumentLayer * const layer);
+ protected:
+-  vector <FGInstrumentLayer *> m_layers;
++  std::vector <FGInstrumentLayer *> m_layers;
+ };
+ 
+ #endif
+diff '--color=auto' -ruN flightgear-2024.1.1/utils/fgpanel/FGPanel.cxx my/utils/fgpanel/FGPanel.cxx
+--- flightgear-2024.1.1/utils/fgpanel/FGPanel.cxx	2025-02-27 15:49:32.000000000 +0100
++++ my/utils/fgpanel/FGPanel.cxx	2025-05-22 07:14:43.910871435 +0200
+@@ -127,7 +127,7 @@
+   Textured_Layer_Program_Object = GL_utils::instance ().load_program (V_Textured_Layer_Shader_Str,
+                                                                       F_Textured_Layer_Shader_Str);
+   if (Textured_Layer_Program_Object == 0) {
+-    terminate ();
++    std::terminate ();
+   }
+ 
+   // Get the attribute locations
+@@ -148,7 +148,7 @@
+ 
+   // Text Layer Shaders
+   if (!FGTextLayer::Init ()) {
+-    terminate ();
++    std::terminate ();
+   }
+ 
+   glClearColor (0.0f, 0.0f, 0.0f, 1.0f);
+diff '--color=auto' -ruN flightgear-2024.1.1/utils/fgpanel/FGPanelProtocol.cxx my/utils/fgpanel/FGPanelProtocol.cxx
+--- flightgear-2024.1.1/utils/fgpanel/FGPanelProtocol.cxx	2025-02-27 15:49:32.000000000 +0100
++++ my/utils/fgpanel/FGPanelProtocol.cxx	2025-05-22 07:14:15.894624768 +0200
+@@ -88,8 +88,8 @@
+   io (NULL) {
+   const SGPropertyNode_ptr outputNode (root->getNode ("protocol/generic/output"));
+   if (outputNode) {
+-    const vector<SGPropertyNode_ptr> chunks (outputNode->getChildren ("chunk"));
+-    for (vector<SGPropertyNode_ptr>::size_type i = 0; i < chunks.size (); i++) {
++    const std::vector<SGPropertyNode_ptr> chunks (outputNode->getChildren ("chunk"));
++    for (size_t i = 0; i < chunks.size (); i++) {
+       const SGPropertyNode_ptr chunk (chunks[i]);
+ 
+       const SGPropertyNode_ptr nodeNode (chunk->getNode ("node", false));
+@@ -98,7 +98,7 @@
+       }
+       const SGPropertyNode_ptr node (ApplicationProperties::Properties->getNode (nodeNode->getStringValue (), true));
+ 
+-      string type;
++      std::string type;
+       const SGPropertyNode_ptr typeNode (chunk->getNode ("type", false));
+       if (typeNode != NULL) {
+         type = typeNode->getStringValue ();
+@@ -144,8 +144,8 @@
+     // process most recent line of data
+     Page ^= 1;
+     buf[Page][sizeof (buf[Page]) - 1] = 0;
+-    const vector<string> tokens (simgear::strutils::split (buf[Page], ","));
+-    for (vector<string>::size_type i = 0; i < tokens.size (); i++) {
++    const std::vector<std::string> tokens (simgear::strutils::split (buf[Page], ","));
++    for (size_t i = 0; i < tokens.size (); i++) {
+       if (i < propertySetterVector.size ()) {
+         propertySetterVector[i]->setValue (tokens[i].c_str ());
+       }
+@@ -159,9 +159,9 @@
+   if (listenNode == NULL) {
+     return;
+   }
+-  const string hostname (listenNode->getNode ("host", true)->getStringValue ());
+-  const string port (listenNode->getNode ("port", true)->getStringValue ());
+-  const string style (listenNode->getNode ("style", true)->getStringValue ());
++  const std::string hostname (listenNode->getNode ("host", true)->getStringValue ());
++  const std::string port (listenNode->getNode ("port", true)->getStringValue ());
++  const std::string style (listenNode->getNode ("style", true)->getStringValue ());
+ 
+   if (io != NULL) {
+     delete io;
+@@ -169,7 +169,7 @@
+   io = new SGSocket (hostname, port, style);
+ 
+   if (!io->open (SG_IO_IN)) {
+-    cerr << "can't open socket " << style << ":" << hostname << ":" << port << endl;
++    std::cerr << "can't open socket " << style << ":" << hostname << ":" << port << std::endl;
+   }
+ }
+ 
+diff '--color=auto' -ruN flightgear-2024.1.1/utils/fgpanel/FGPNGTextureLoader.cxx my/utils/fgpanel/FGPNGTextureLoader.cxx
+--- flightgear-2024.1.1/utils/fgpanel/FGPNGTextureLoader.cxx	2025-02-27 15:49:32.000000000 +0100
++++ my/utils/fgpanel/FGPNGTextureLoader.cxx	2025-05-22 07:10:38.485216103 +0200
+@@ -42,7 +42,7 @@
+ using namespace std;
+ 
+ GLuint
+-FGPNGTextureLoader::loadTexture (const string &filename) {
++FGPNGTextureLoader::loadTexture (const std::string &filename) {
+   //header for testing if it is a png
+   png_byte header[8];
+ 
+diff '--color=auto' -ruN flightgear-2024.1.1/utils/fgpanel/FGPNGTextureLoader.hxx my/utils/fgpanel/FGPNGTextureLoader.hxx
+--- flightgear-2024.1.1/utils/fgpanel/FGPNGTextureLoader.hxx	2025-02-27 15:49:32.000000000 +0100
++++ my/utils/fgpanel/FGPNGTextureLoader.hxx	2025-05-22 07:10:11.651891427 +0200
+@@ -20,7 +20,7 @@
+ 
+ class FGPNGTextureLoader : public FGTextureLoaderInterface {
+ public:
+-  virtual GLuint loadTexture (const string &filename);
++  virtual GLuint loadTexture (const std::string &filename);
+ 
+   const static GLuint NOTEXTURE = 0;
+ };
+diff '--color=auto' -ruN flightgear-2024.1.1/utils/fgpanel/FGRGBTextureLoader.cxx my/utils/fgpanel/FGRGBTextureLoader.cxx
+--- flightgear-2024.1.1/utils/fgpanel/FGRGBTextureLoader.cxx	2025-02-27 15:49:32.000000000 +0100
++++ my/utils/fgpanel/FGRGBTextureLoader.cxx	2025-05-22 07:13:33.966248033 +0200
+@@ -52,7 +52,7 @@
+     unsigned long wasteBytes;
+     char name[80];
+     unsigned long colorMap;
+-    istream *file;
++    std::istream *file;
+     unsigned char *tmp, *tmpR, *tmpG, *tmpB, *tmpA;
+     unsigned long rleEnd;
+     GLuint *rowStart;
+@@ -156,7 +156,7 @@
+ }
+ 
+ static rawImageRec *
+-RawImageOpen (istream& fin) {
++RawImageOpen (std::istream& fin) {
+     union {
+       int testWord;
+       char testByte[4];
+@@ -242,7 +242,7 @@
+       }
+       int x (ybyz * sizeof (GLuint));
+       raw->rleEnd = 512 + (2 * x);
+-      fin.seekg (512, ios::beg);
++      fin.seekg (512, std::ios::beg);
+       fin.read ((char*) raw->rowStart, x);
+       fin.read ((char*) raw->rowSize, x);
+       if (raw->swapFlag) {
+@@ -260,7 +260,7 @@
+     unsigned short *tempShort;
+ 
+     if ((raw->type & 0xFF00) == 0x0100) {
+-      raw->file->seekg (long (raw->rowStart[y + z * raw->sizeY]), ios::beg);
++      raw->file->seekg (long (raw->rowStart[y + z * raw->sizeY]), std::ios::beg);
+       raw->file->read ((char*) raw->tmp, (unsigned int) (raw->rowSize[y + z * raw->sizeY]));
+ 
+       unsigned char *iPtr = raw->tmp;
+@@ -333,7 +333,7 @@
+         }
+       }
+     } else {
+-      raw->file->seekg (512 + (y * raw->sizeX * raw->bpc) + (z * raw->sizeX * raw->sizeY * raw->bpc), ios::beg);
++      raw->file->seekg (512 + (y * raw->sizeX * raw->bpc) + (z * raw->sizeX * raw->sizeY * raw->bpc), std::ios::beg);
+       raw->file->read ((char*) buf, raw->sizeX * raw->bpc);
+       if (raw->swapFlag && raw->bpc != 1) {
+         ConvertShort (reinterpret_cast<unsigned short*> (buf), raw->sizeX);
+@@ -427,7 +427,7 @@
+ //            supportsExtension("bw","bw image format");
+ 
+ GLuint
+-readRGBStream (istream &fin) {
++readRGBStream (std::istream &fin) {
+   rawImageRec * const raw (RawImageOpen (fin));
+ 
+   if (raw == NULL) {
+@@ -468,9 +468,9 @@
+ }
+ 
+ GLuint
+-FGRGBTextureLoader::loadTexture (const string &filename) {
++FGRGBTextureLoader::loadTexture (const std::string &filename) {
+   GLuint texture = NOTEXTURE;
+-  ifstream istream (filename.c_str (), ios::in | ios::binary);
++  std::ifstream istream (filename.c_str (), std::ios::in | std::ios::binary);
+   texture = readRGBStream (istream);
+   istream.close ();
+   return texture;
+diff '--color=auto' -ruN flightgear-2024.1.1/utils/fgpanel/FGRGBTextureLoader.hxx my/utils/fgpanel/FGRGBTextureLoader.hxx
+--- flightgear-2024.1.1/utils/fgpanel/FGRGBTextureLoader.hxx	2025-02-27 15:49:32.000000000 +0100
++++ my/utils/fgpanel/FGRGBTextureLoader.hxx	2025-05-22 07:05:22.209920047 +0200
+@@ -20,7 +20,7 @@
+ 
+ class FGRGBTextureLoader : public FGTextureLoaderInterface {
+ public:
+-  virtual GLuint loadTexture (const string &filename);
++  virtual GLuint loadTexture (const std::string &filename);
+ 
+   const static GLuint NOTEXTURE = 0;
+ };
+diff '--color=auto' -ruN flightgear-2024.1.1/utils/fgpanel/FGTextLayer.cxx my/utils/fgpanel/FGTextLayer.cxx
+--- flightgear-2024.1.1/utils/fgpanel/FGTextLayer.cxx	2025-02-27 15:49:32.000000000 +0100
++++ my/utils/fgpanel/FGTextLayer.cxx	2025-06-01 02:32:56.203092040 +0200
+@@ -156,7 +156,7 @@
+     int Left, Bottom, W, H;
+     double X1, Y1, X2, Y2;
+ 
+-    for (string::iterator It = m_value.begin (); It != m_value.end (); ++It) {
++    for (std::string::iterator It = m_value.begin (); It != m_value.end (); ++It) {
+       if (The_Font_Cache.Get_Char (*It,
+                                    X, Y,
+                                    Left, Bottom,
+@@ -221,7 +221,7 @@
+ }
+ 
+ void
+-FGTextLayer::setFontName (const string &name) {
++FGTextLayer::setFontName (const std::string &name) {
+   if (The_Font_Path.isNull ()) {
+     char *Env_Path = ::getenv ("FG_FONTS");
+     if (Env_Path != NULL) {
+@@ -247,8 +247,8 @@
+ // Implementation of FGTextLayer::Chunk.
+ ////////////////////////////////////////////////////////////////////////
+ 
+-FGTextLayer::Chunk::Chunk (const string &text,
+-                           const string &fmt) :
++FGTextLayer::Chunk::Chunk (const std::string &text,
++                           const std::string &fmt) :
+   m_type (FGTextLayer::TEXT),
+   m_text (text),
+   m_fmt (fmt),
+@@ -262,7 +262,7 @@
+ 
+ FGTextLayer::Chunk::Chunk (const ChunkType type,
+                            const SGPropertyNode *node,
+-                           const string &fmt,
++                           const std::string &fmt,
+                            const float mult,
+                            const float offs,
+                            const bool truncation) :
+@@ -290,7 +290,7 @@
+       sprintf (m_buf, m_fmt.c_str (), m_text.c_str ());
+       break;
+     case TEXT_VALUE:
+-      sprintf (m_buf, m_fmt.c_str (), m_node->getStringValue ());
++      sprintf (m_buf, m_fmt.c_str (), m_node->getStringValue ().c_str());
+       break;
+     case DOUBLE_VALUE:
+       double d (m_offs + m_node->getFloatValue() * m_mult);
+diff '--color=auto' -ruN flightgear-2024.1.1/utils/fgpanel/GL_utils.cxx my/utils/fgpanel/GL_utils.cxx
+--- flightgear-2024.1.1/utils/fgpanel/GL_utils.cxx	2025-02-27 15:49:32.000000000 +0100
++++ my/utils/fgpanel/GL_utils.cxx	2025-05-22 07:18:54.467677071 +0200
+@@ -57,7 +57,7 @@
+   GLuint shader (glCreateShader (type));
+ 
+   if (shader == 0) {
+-    cerr << "Error creating shader" << endl;
++    std::cerr << "Error creating shader" << std::endl;
+     return 0;
+   }
+ 
+@@ -79,7 +79,7 @@
+       char* info_log ((char *) malloc (sizeof (char) * info_len));
+ 
+       glGetShaderInfoLog (shader, info_len, NULL, info_log);
+-      cerr << "Error compiling shader:" << endl << info_log << endl;
++      std::cerr << "Error compiling shader:" << std::endl << info_log << std::endl;
+ 
+       free (info_log);
+     }
+@@ -106,13 +106,13 @@
+   // Load the vertex/fragment shaders
+   GLuint vertex_shader (load_shader (GL_VERTEX_SHADER, vert_shader_src));
+   if (vertex_shader == 0) {
+-    cerr << "Error loading vertex shader" << endl;
++    std::cerr << "Error loading vertex shader" << std::endl;
+     return 0;
+   }
+ 
+   GLuint fragment_shader (load_shader (GL_FRAGMENT_SHADER, frag_shader_src));
+   if (fragment_shader == 0) {
+-    cerr << "Error loading fragment shader" << endl;
++    std::cerr << "Error loading fragment shader" << std::endl;
+     glDeleteShader (vertex_shader);
+     return 0;
+   }
+@@ -121,7 +121,7 @@
+   GLuint program_object (glCreateProgram ());
+ 
+   if (program_object == 0) {
+-    cerr << "Error creating program" << endl;
++    std::cerr << "Error creating program" << std::endl;
+     return 0;
+   }
+ 
+@@ -143,7 +143,7 @@
+       char* info_log ((char *) malloc (sizeof (char) * info_len));
+ 
+       glGetProgramInfoLog (program_object, info_len, NULL, info_log);
+-      cerr << "Error linking program:" << endl << info_log << endl;
++      std::cerr << "Error linking program:" << std::endl << info_log << std::endl;
+ 
+       free (info_log);
+     }
+@@ -364,11 +364,11 @@
+ GL_utils::Debug (const GL_utils::GLenum_Mode mode) const {
+   if (mode < GL_UTILS_LAST) {
+     for (int l = 0; l < 4; ++l) {
+-      cout << "        ";
++      std::cout << "        ";
+       for (int c = 0; c < 4; ++c) {
+-        cout << m_Matrix[mode].top ().m[c][l] << "   ";
++        std::cout << m_Matrix[mode].top ().m[c][l] << "   ";
+       }
+-      cout << endl;
++      std::cout << std::endl;
+     }
+   }
+ }
+diff '--color=auto' -ruN flightgear-2024.1.1/utils/fgpanel/main.cxx my/utils/fgpanel/main.cxx
+--- flightgear-2024.1.1/utils/fgpanel/main.cxx	2025-02-27 15:49:32.000000000 +0100
++++ my/utils/fgpanel/main.cxx	2025-05-22 06:55:23.033614787 +0200
+@@ -25,6 +25,6 @@
+     return 0;
+   }
+   catch (...) {
+-    cerr << "Sorry, your program terminated." << endl;
++    std::cerr << "Sorry, your program terminated." << std::endl;
+   }
+ }
+diff '--color=auto' -ruN flightgear-2024.1.1/utils/fgpanel/panel_io.cxx my/utils/fgpanel/panel_io.cxx
+--- flightgear-2024.1.1/utils/fgpanel/panel_io.cxx	2025-02-27 15:49:32.000000000 +0100
++++ my/utils/fgpanel/panel_io.cxx	2025-05-22 07:43:05.623983755 +0200
+@@ -26,8 +26,6 @@
+ #include <windows.h>
+ #endif
+ 
+-#include <string.h>             // for strcmp()
+-
+ #include <simgear/compiler.h>
+ #include <simgear/structure/exception.hxx>
+ #include <simgear/debug/logstream.hxx>
+@@ -101,7 +99,7 @@
+  */
+ static FGCroppedTexture_ptr
+ readTexture (const SGPropertyNode *node) {
+-  SG_LOG(SG_COCKPIT, SG_DEBUG, "Read texture " << node->getName ());
++  SG_LOG(SG_COCKPIT, SG_DEBUG, "Read texture " << node->getNameString ());
+ 
+   return new FGCroppedTexture (node->getStringValue ("path"),
+                                node->getFloatValue ("x1"),
+@@ -158,9 +156,9 @@
+ readTransformation (const SGPropertyNode *node, const float w_scale, const float h_scale) {
+   FGPanelTransformation *t (new FGPanelTransformation);
+ 
+-  const string name (node->getName ());
+-  string type (node->getStringValue ("type"));
+-  const string propName (node->getStringValue ("property", ""));
++  const std::string name (node->getNameString ());
++  std::string type (node->getStringValue ("type"));
++  const std::string propName (node->getStringValue ("property", ""));
+   const SGPropertyNode *target (0);
+ 
+   if (type.empty ()) {
+@@ -191,14 +189,14 @@
+     t->table = new SGInterpTable();
+     for (int i = 0; i < trans_table->nChildren(); i++) {
+       const SGPropertyNode * node = trans_table->getChild(i);
+-      if (!strcmp(node->getName(), "entry")) {
++      if (node->getNameString () == "entry") {
+         double ind = node->getDoubleValue("ind", 0.0);
+         double dep = node->getDoubleValue("dep", 0.0);
+         SG_LOG(SG_COCKPIT, SG_INFO, "Adding interpolation entry "
+                << ind << "==>" << dep);
+         t->table->addEntry(ind, dep);
+       } else {
+-        SG_LOG(SG_COCKPIT, SG_INFO, "Skipping " << node->getName()
++        SG_LOG(SG_COCKPIT, SG_INFO, "Skipping " << node->getNameString ()
+                << " in interpolation");
+       }
+     }
+@@ -262,9 +260,9 @@
+ FGTextLayer::Chunk *
+ readTextChunk (const SGPropertyNode *node) {
+   FGTextLayer::Chunk *chunk;
+-  const string name (node->getStringValue ("name"));
+-  string type (node->getStringValue ("type"));
+-  const string format (node->getStringValue ("format"));
++  const std::string name (node->getStringValue ("name"));
++  std::string type (node->getStringValue ("type"));
++  const std::string format (node->getStringValue ("format"));
+ 
+   // Default to literal text.
+   if (type.empty ()) {
+@@ -275,7 +273,7 @@
+ 
+   // A literal text string.
+   if (type == "literal") {
+-    const string text (node->getStringValue ("text"));
++    const std::string text (node->getStringValue ("text"));
+     chunk = new FGTextLayer::Chunk (text, format);
+   } else if (type == "text-value") {
+     // The value of a string property.
+@@ -284,7 +282,7 @@
+     chunk = new FGTextLayer::Chunk (FGTextLayer::TEXT_VALUE, target, format);
+   } else if (type == "number-value") {
+     // The value of a float property.
+-    const string propName (node->getStringValue ("property"));
++    const std::string propName (node->getStringValue ("property"));
+     const float scale (node->getFloatValue ("scale", 1.0));
+     const float offset (node->getFloatValue ("offset", 0.0));
+     const bool truncation (node->getBoolValue ("truncate", false));
+@@ -326,8 +324,8 @@
+ static FGInstrumentLayer *
+ readLayer (const SGPropertyNode *node, const float w_scale, const float h_scale) {
+   FGInstrumentLayer *layer (NULL);
+-  const string name (node->getStringValue ("name"));
+-  string type (node->getStringValue ("type"));
++  const std::string name (node->getStringValue ("name"));
++  std::string type (node->getStringValue ("type"));
+   int w (node->getIntValue ("w", -1));
+   int h (node->getIntValue ("h", -1));
+   const bool emissive (node->getBoolValue ("emissive", false));
+@@ -357,7 +355,7 @@
+     layer = new FGGroupLayer ();
+     for (int i = 0; i < node->nChildren(); i++) {
+       const SGPropertyNode *child = node->getChild (i);
+-      if (!strcmp (child->getName (), "layer")) {
++      if (child->getNameString () == "layer") {
+         ((FGGroupLayer *) layer)->addLayer (readLayer (child, w_scale, h_scale));
+       }
+     }
+@@ -376,7 +374,7 @@
+     tlayer->setPointSize (pointSize);
+ 
+     // Set the font.
+-    const string fontName (node->getStringValue ("font", "7-Segment"));
++    const std::string fontName (node->getStringValue ("font", "7-Segment"));
+     tlayer->setFontName (fontName);
+ 
+     const SGPropertyNode *chunk_group (node->getNode ("chunks"));
+@@ -384,13 +382,13 @@
+       const int nChunks (chunk_group->nChildren ());
+       for (int i = 0; i < nChunks; i++) {
+         const SGPropertyNode *node (chunk_group->getChild (i));
+-        if (!strcmp(node->getName (), "chunk")) {
++        if (node->getNameString () == "chunk") {
+           FGTextLayer::Chunk * const chunk (readTextChunk (node));
+           if (chunk != 0) {
+             tlayer->addChunk (chunk);
+           }
+         } else {
+-          SG_LOG(SG_COCKPIT, SG_INFO, "Skipping " << node->getName()
++          SG_LOG(SG_COCKPIT, SG_INFO, "Skipping " << node->getNameString ()
+                  << " in chunks");
+         }
+       }
+@@ -401,7 +399,7 @@
+     layer = new FGSwitchLayer ();
+     for (int i = 0; i < node->nChildren (); i++) {
+       const SGPropertyNode *child (node->getChild (i));
+-      if (!strcmp (child->getName (), "layer")) {
++      if (child->getNameString () == "layer") {
+         ((FGGroupLayer *) layer)->addLayer (readLayer (child, w_scale, h_scale));
+       }
+     }
+@@ -420,13 +418,13 @@
+     const int nTransformations (trans_group->nChildren ());
+     for (int i = 0; i < nTransformations; i++) {
+       const SGPropertyNode *node (trans_group->getChild (i));
+-      if (!strcmp(node->getName (), "transformation")) {
++      if (node->getNameString () == "transformation") {
+         FGPanelTransformation * const t (readTransformation (node, w_scale, h_scale));
+         if (t != 0) {
+           layer->addTransformation (t);
+         }
+       } else {
+-        SG_LOG(SG_COCKPIT, SG_INFO, "Skipping " << node->getName()
++        SG_LOG(SG_COCKPIT, SG_INFO, "Skipping " << node->getNameString ()
+                << " in transformations");
+       }
+     }
+@@ -450,7 +448,7 @@
+  */
+ static FGPanelInstrument *
+ readInstrument (const SGPropertyNode *node) {
+-  const string name (node->getStringValue ("name"));
++  const std::string name (node->getStringValue ("name"));
+   const int x (node->getIntValue ("x", -1));
+   const int y (node->getIntValue ("y", -1));
+   const int real_w (node->getIntValue ("w", -1));
+@@ -488,13 +486,13 @@
+     const int nLayers (layer_group->nChildren ());
+     for (int i = 0; i < nLayers; i++) {
+       const SGPropertyNode *node (layer_group->getChild (i));
+-      if (!strcmp (node->getName (), "layer")) {
++      if (node->getNameString () == "layer") {
+         FGInstrumentLayer * const layer (readLayer (node, w_scale, h_scale));
+         if (layer != 0) {
+           instrument->addLayer (layer);
+         }
+       } else {
+-        SG_LOG(SG_COCKPIT, SG_INFO, "Skipping " << node->getName ()
++        SG_LOG(SG_COCKPIT, SG_INFO, "Skipping " << node->getNameString ()
+                << " in layers");
+       }
+     }
+@@ -521,7 +519,7 @@
+ 
+   // Assign the background texture, if any, or a bogus chequerboard.
+   //
+-  const string bgTexture (root->getStringValue ("background"));
++  const std::string bgTexture (root->getStringValue ("background"));
+   if (!bgTexture.empty ()) {
+     panel->setBackground (new FGCroppedTexture (bgTexture));
+   }
+@@ -534,7 +532,7 @@
+   //
+   for (int i = 0; i < 8; i++) {
+     SGPropertyNode * const mbgNode (root->getChild ("multibackground", i));
+-    string mbgTexture;
++    std::string mbgTexture;
+     if (mbgNode != NULL) {
+       mbgTexture = mbgNode->getStringValue ();
+     }
+@@ -557,13 +555,13 @@
+     const int nInstruments (instrument_group->nChildren ());
+     for (int i = 0; i < nInstruments; i++) {
+       const SGPropertyNode *node = instrument_group->getChild (i);
+-      if (!strcmp (node->getName (), "instrument")) {
++      if (node->getNameString () == "instrument") {
+         FGPanelInstrument * const instrument (readInstrument (node));
+         if (instrument != 0) {
+           panel->addInstrument (instrument);
+         }
+       } else {
+-        SG_LOG(SG_COCKPIT, SG_INFO, "Skipping " << node->getName()
++        SG_LOG(SG_COCKPIT, SG_INFO, "Skipping " << node->getNameString ()
+                << " in instruments section");
+       }
+     }

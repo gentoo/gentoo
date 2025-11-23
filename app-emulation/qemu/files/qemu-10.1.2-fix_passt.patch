@@ -1,0 +1,18 @@
+see https://bugs.gentoo.org/964165, patch sent to qemu-devel ml
+passt needs gio but not gdbus-codegen. Make gdbus-codegen optional,
+dbus_display which requires it will still fail as expected.
+--- a/meson.build
++++ b/meson.build
+@@ -1126,8 +1126,7 @@ if not get_option('gio').auto() or have_system
+     gio = not_found
+   endif
+   if gio.found()
+-    gdbus_codegen = find_program('gdbus-codegen',
+-                                 required: get_option('gio'))
++    gdbus_codegen = find_program('gdbus-codegen', required: false)
+     gio_unix = dependency('gio-unix-2.0', required: get_option('gio'),
+                           method: 'pkg-config')
+     gio = declare_dependency(dependencies: [gio, gio_unix],
+-- 
+2.51.0
+

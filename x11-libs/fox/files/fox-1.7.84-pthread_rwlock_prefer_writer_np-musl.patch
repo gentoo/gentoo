@@ -1,0 +1,20 @@
+https://bugs.gentoo.org/898866
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Sat, 17 Jun 2023 15:32:10 +0000
+Subject: [PATCH 1/1] Fix building against musl C library
+
+PTHREAD_RWLOCK_PREFER_WRITER_NP isn't available in musl libc/non-glibc
+systems. Additional check of __GLIBC__ being defined is needed.
+
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+--- a/lib/FXReadWriteLock.cpp
++++ b/lib/FXReadWriteLock.cpp
+@@ -62,7 +62,7 @@ FXReadWriteLock::FXReadWriteLock(){
+   InitializeCriticalSection(((RWLOCK*)data)->mutex);
+   InitializeCriticalSection(((RWLOCK*)data)->access);
+   ((RWLOCK*)data)->readers=0;
+-#elif (_XOPEN_SOURCE >= 500) || (_POSIX_C_SOURCE >= 200809L)
++#elif (_XOPEN_SOURCE >= 500) || (_POSIX_C_SOURCE >= 200809L) && defined(__GLIBC__)
+   // If this fails on your machine, determine what value
+   // of sizeof(pthread_rwlock_t) is supposed to be on your
+   // machine and mail it to: jeroen@fox-toolkit.net!!

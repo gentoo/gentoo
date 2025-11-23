@@ -1,0 +1,12 @@
+--- a/lice.el
++++ b/lice.el
+@@ -57,8 +57,7 @@
+ 
+ (defconst lice:system-template-directory
+   (expand-file-name "template"
+-                    (or (and load-file-name (file-name-directory load-file-name))
+-                        default-directory)))
++                    "@SITEETC@"))
+ 
+ (defvar lice:custom-template-directory
+   (expand-file-name "lice" user-emacs-directory))

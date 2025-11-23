@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		Speedtest CLI brings the trusted technology and global server network
+		behind Speedtest to the command line. Built for software developers,
+		system administrators and computer enthusiasts alike,
+		Speedtest CLI is the first official Linux-native Speedtest application
+		backed by Ookla.
+	</longdescription>
+</pkgmetadata>

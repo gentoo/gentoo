@@ -1,0 +1,31 @@
+* xscreensaver-settings.desktop: error: value item "Screensaver" in key
+* "Categories" in group "Desktop Entry" is a reserved category, so a
+* "OnlyShowIn" key must be included
+* xscreensaver.desktop: error: value item "Screensaver" in key "Categories"
+* in group "Desktop Entry" is a reserved category, so a "OnlyShowIn" key
+* must be included
+
+We just remove the category Screensaver then. 
+
+Bug: https://bugs.gentoo.org/894700
+
+# Pascal Jäger <pascal.jaeger@leimstift.de>
+
+--- a/driver/xscreensaver-settings.desktop.in
++++ b/driver/xscreensaver-settings.desktop.in
+@@ -5,5 +5,5 @@ Icon=xscreensaver
+ _Name=XScreenSaver Settings
+ _Comment=Change screensaver properties
+ Type=Application
+-Categories=Settings;DesktopSettings;Screensaver;Security;GNOME;GTK;KDE;Motif;Qt;X-GNOME-Settings-Panel;X-GNOME-SystemSettings;X-Unity-Settings-Panel;X-XFCE-SettingsDialog;X-XFCE-SystemSettings
++Categories=Settings;DesktopSettings;Security;GNOME;GTK;KDE;Motif;Qt;X-GNOME-Settings-Panel;X-GNOME-SystemSettings;X-Unity-Settings-Panel;X-XFCE-SettingsDialog;X-XFCE-SystemSettings
+ Terminal=false
+--- a/driver/xscreensaver.desktop.in
++++ b/driver/xscreensaver.desktop.in
+@@ -5,5 +5,5 @@ Icon=xscreensaver
+ _Name=XScreenSaver
+ _Comment=XScreenSaver daemon: screen saver and locker
+ Type=Application
+-Categories=Screensaver;Security;GNOME;GTK;KDE;Motif;Qt
++Categories=Security;GNOME;GTK;KDE;Motif;Qt
+ Terminal=false

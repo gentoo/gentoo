@@ -1,0 +1,33 @@
+--- a/src/document/io/MusicXMLLoader.h
++++ b/src/document/io/MusicXMLLoader.h
+@@ -18,8 +18,7 @@
+ #ifndef RG_MUSICXMLLOADER_H
+ #define RG_MUSICXMLLOADER_H
+ 
+-
+-class QString;
++#include <QString>
+ 
+ 
+ namespace Rosegarden
+--- a/src/gui/studio/AudioPluginLV2GUIWindow.h
++++ b/src/gui/studio/AudioPluginLV2GUIWindow.h
+@@ -32,6 +32,8 @@
+ #include <string>
+ #include <vector>
+ 
++#include <QWidget>
++
+ 
+ namespace Rosegarden
+ {
+--- a/src/sound/LV2PluginDatabase.h
++++ b/src/sound/LV2PluginDatabase.h
+@@ -19,6 +19,7 @@
+ #include <QString>
+ 
+ #include <map>
++#include <vector>
+ 
+ 
+ namespace Rosegarden

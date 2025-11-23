@@ -1,0 +1,45 @@
+y.tab.h is side-product of different rule. Explicitly add it to rulesets so
+shuffle and friends won't break graph ordering.
+config.h  and awk.h are just a missing dependency.
+https://bugs.gentoo.org/880189
+https://bugs.gentoo.org/896314
+--- a/nawk/Makefile.mk
++++ b/nawk/Makefile.mk
+@@ -17,6 +17,8 @@
+ 	(echo '1i'; echo '#include <inttypes.h>'; echo '.'; echo 'w';) | \
+ 		ed -s y.tab.h
+ 
++y.tab.h: awk.g.c
++
+ awk.g.2001.c: awk.g.2001.y awk.g.c
+ 	$(YACC) awk.g.2001.y
+ 	mv -f y.tab.c awk.g.2001.c
+--- a/grep/Makefile.mk
++++ b/grep/Makefile.mk
+@@ -104,5 +104,5 @@
+ svid3.o: grep.h config.h
+ sus.o: grep.h config.h alloc.h
+ su3.o: grep.h config.h alloc.h
+-ac.o: alloc.h grep.h
++ac.o: alloc.h grep.h config.h
+ rcomp.o: grep.h config.h alloc.h
+--- a/oawk/Makefile.mk
++++ b/oawk/Makefile.mk
+@@ -43,7 +43,7 @@
+ lib.o: lib.c
+ 	$(CC) $(CFLAGSS) $(CPPFLAGS) $(XO5FL) $(LARGEF) $(IUXRE) $(ICOMMON) $(IWCHAR) -c lib.c
+ 
+-main.o: main.c
++main.o: main.c awk.h
+ 	$(CC) $(CFLAGSS) $(CPPFLAGS) $(XO5FL) $(LARGEF) $(IUXRE) $(ICOMMON) $(IWCHAR) -c main.c
+ 
+ parse.o: parse.c
+@@ -55,7 +55,7 @@
+ run.o: run.c
+ 	$(CC) $(CFLAGSS) $(CPPFLAGS) $(XO5FL) $(LARGEF) $(IUXRE) $(ICOMMON) $(IWCHAR) -c run.c
+ 
+-tran.o: tran.c
++tran.o: tran.c awk.h
+ 	$(CC) $(CFLAGSS) $(CPPFLAGS) $(XO5FL) $(LARGEF) $(IUXRE) $(ICOMMON) $(IWCHAR) -c tran.c
+ 
+ token.o: token.c

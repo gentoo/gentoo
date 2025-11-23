@@ -1,0 +1,81 @@
+diff -Naur scm.old//build.scm scm//build.scm
+--- scm.old//build.scm	2009-08-03 15:35:57.000000000 -0300
++++ scm//build.scm	2010-04-16 15:52:25.000000000 -0300
+@@ -540,7 +540,7 @@
+      (graphics *unknown* "-I/usr/X11/include -DX11" "-lX11"
+ 	       "/usr/X11/lib/libX11.sa" () ())
+      (editline *unknown* "" "-lreadline" "/usr/lib/libreadline.a" () ())
+-     (termcap *unknown* "" "-ltermcap" "/usr/lib/libtermcap.a" () ())
++     (termcap *unknown* "" "-lncurses" "/usr/lib/libncurses.a" () ())
+      (debug *unknown* "-g" "-g" #f () ())
+      (socket *unknown* "" "" #f () ())
+      (lib *unknown* "" "" #f () ("scmmain.c"))
+diff -Naur scm.old//Makefile scm//Makefile
+--- scm.old//Makefile	2009-08-03 15:38:21.000000000 -0300
++++ scm//Makefile	2010-04-16 15:51:11.000000000 -0300
+@@ -178,18 +178,9 @@
+ 	$(BUILD) -f udscm4.opt -o udscm4 -s $(IMPLPATH)
+ 	-rm $(ofiles) scmmain.o
+ dscm4:	udscm4 $(ifiles) require.scm
+-	if [ -f /proc/sys/kernel/randomize_va_space -a\
+-	     "`cat /proc/sys/kernel/randomize_va_space`" != "0" ]; then {\
+-	   cat /proc/sys/kernel/randomize_va_space > randomize_va_space.tmp;\
+-	   echo 0 > /proc/sys/kernel/randomize_va_space;\
+-	} fi
+ 	-rm -f slibcat implcat scm~
+ 	-mv scm scm~
+ 	echo "(quit)" | $(SETARCH) ./udscm4 -no-init-file -o scm
+-	if [ -f randomize_va_space.tmp ]; then {\
+-	   cat randomize_va_space.tmp > /proc/sys/kernel/randomize_va_space;\
+-	   rm randomize_va_space.tmp;\
+-	} fi
+ 
+ # dumpable R5RS interpreter
+ udscm5.opt:
+@@ -199,20 +190,10 @@
+ udscm5:	$(cfiles) $(ufiles) $(hfiles) build.scm build udscm5.opt
+ 	$(BUILD) -f udscm5.opt -o udscm5 -s $(IMPLPATH)
+ 	-rm $(ofiles) scmmain.o
+-	strip udscm5
+ dscm5:	udscm5 $(ifiles) require.scm
+-	if [ -f /proc/sys/kernel/randomize_va_space -a\
+-	     "`cat /proc/sys/kernel/randomize_va_space`" != "0" ]; then {\
+-	   cat /proc/sys/kernel/randomize_va_space > randomize_va_space.tmp;\
+-	   echo 0 > /proc/sys/kernel/randomize_va_space;\
+-	} fi
+ 	-rm -f slibcat implcat scm~
+ 	-mv scm scm~
+ 	echo "(quit)" | $(SETARCH) ./udscm5 -no-init-file -r5 -o scm
+-	if [ -f randomize_va_space.tmp ]; then {\
+-	   cat randomize_va_space.tmp > /proc/sys/kernel/randomize_va_space;\
+-	   rm randomize_va_space.tmp;\
+-	} fi
+ 	$(MAKE) check
+ 	$(MAKE) checkmacro
+ 
+@@ -394,7 +375,7 @@
+ PREVDOCS = prevdocs/
+ html:	$(htmldir)scm_toc.html $(htmldir)Xlibscm_toc.html $(htmldir)hobbit_toc.html
+ 
+-TEXI2HTML = /usr/local/bin/texi2html -split -verbose
++TEXI2HTML = /usr/bin/texi2html -split -verbose
+ 
+ $(htmldir)scm_toc.html:	Makefile $(texifiles)
+ 	${TEXI2HTML} scm.texi
+@@ -431,7 +412,7 @@
+ 
+ rpm_prefix=$(HOME)/rpmbuild/
+ 
+-prefix = /usr/local/
++prefix = /usr/
+ exec_prefix = $(prefix)
+ # directory where `make install' will put executable.
+ bindir = $(exec_prefix)bin/
+@@ -498,7 +479,6 @@
+ 	mkdir -p $(DESTDIR)$(bindir)
+ 	mkdir -p $(DESTDIR)$(man1dir)
+ 	-cp scm scmlit $(DESTDIR)$(bindir)
+-	-strip $(DESTDIR)$(bindir)scmlit
+ 	-cp scm.1 $(DESTDIR)$(man1dir)
+ 	mkdir -p $(DESTDIR)$(libscmdir)
+ 	test -f $(DESTDIR)$(libscmdir)require.scm || \

@@ -1,0 +1,48 @@
+Adapted from https://gitlab.archlinux.org/archlinux/packaging/packages/vcdimager/-/commit/88dc511b7f3dea8fb45e0c2bfa1345a75a088848
+https://bugs.gentoo.org/955707
+--- a/frontends/xml/vcd_xml_common.c
++++ b/frontends/xml/vcd_xml_common.c
+@@ -242,17 +242,43 @@ _convert (const char in[], const char encoding[], bool from)
+ 
+   temp = size - 1;
+   if (from) {
++#if defined(LIBXML_VERSION) && LIBXML_VERSION >= 21400
++    if (!(handler->flags & 2) && NULL != handler->output.func)
++      ret = handler->output.func (handler->outputCtxt, out, &out_size, (const unsigned char *) in, &temp, 1);
++    if ((handler->flags & 2) && NULL != handler->output.legacyFunc)
++      ret = handler->output.legacyFunc (out, &out_size, (const unsigned char *) in, &temp);
++    else {
++      xmlCharEncCloseFunc(handler);
++      return strdup(in);
++    }
++#else
+     if (NULL != handler->output)
+       ret = handler->output (out, &out_size, (const unsigned char *) in, &temp);
+     else
+       return strdup(in);
++#endif
+   } else {
++#if defined(LIBXML_VERSION) && LIBXML_VERSION >= 21400
++    if (!(handler->flags & 2) && NULL != handler->input.func)
++      ret = handler->input.func (handler->inputCtxt, out, &out_size, (const unsigned char *) in, &temp, 1);
++    if ((handler->flags & 2) && NULL != handler->input.legacyFunc)
++      ret = handler->input.legacyFunc (out, &out_size, (const unsigned char *) in, &temp);
++    else {
++      xmlCharEncCloseFunc(handler);
++      return strdup(in);
++    }
++#else
+     if (NULL != handler->input)
+       ret = handler->input (out, &out_size, (const unsigned char *) in, &temp);
+     else
++#endif
+       return strdup(in);
+   }
+ 
++#if defined(LIBXML_VERSION) && LIBXML_VERSION >= 21400
++  xmlCharEncCloseFunc(handler);
++#endif
++
+   if (ret < 0 || (temp - size + 1))
+     {
+       free (out);

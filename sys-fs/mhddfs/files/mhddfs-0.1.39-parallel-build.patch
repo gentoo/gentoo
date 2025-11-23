@@ -1,0 +1,17 @@
+Sometimes obj directory was not created during
+parallel builds
+
+Related bugreports:
+https://bugs.gentoo.org/880051
+https://bugs.gentoo.org/911984
+
+--- a/Makefile	2023-08-10 11:43:39.826589819 +0300
++++ b/Makefile	2023-08-10 11:43:50.121722774 +0300
+@@ -90,6 +90,7 @@
+ 	touch $@
+ 
+ obj/%.o: src/%.c
++	mkdir -p obj
+ 	$(CC) $(CFLAGS) -c $< -o $@
+ 
+ clean:

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>apn-pucky@gentoo.org</email>
+		<name>Alexander Puck Neuwirth</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sci-physics@gentoo.org</email>
+		<name>Gentoo Physics Project</name>
+	</maintainer>
+
+	<longdescription lang="en">
+	Rivet is a system for preservation of particle-collider analysis logic, analysis reinterpretation via MC simulations, and the validation and improvement of Monte Carlo event generator codes. 
+	It covers all aspects of collider physics, from unfolded precision measurements to reconstruction-level searches, and physics from the Standard Model to BSM theories, and from perturbative jet, boson and top-quarks to hadron decays, inclusive QCD, and Heavy Ion physics.
+	</longdescription>
+	<use>
+		<flag name="zlib">Build with <pkg>virtual/zlib</pkg></flag>
+		<flag name="hepmc3">Build with <pkg>sci-physics/hepmc</pkg> version 3</flag>
+		<flag name="hepmc2">Build with <pkg>sci-physics/hepmc</pkg> version 2</flag>
+		<flag name="highfive">Build with <pkg>sci-libs/highfive</pkg> and <pkg>sci-libs/hdf5</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="gitlab">hepcedar/rivet</remote-id>
+	</upstream>
+</pkgmetadata>

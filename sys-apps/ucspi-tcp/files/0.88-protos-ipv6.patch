@@ -1,0 +1,89 @@
+rely on standard POSIX headers to fix globs of warnings
+
+requires 0.88-protos.patch first
+
+--- a/FILES
++++ b/FILES
+@@ -222,7 +222,6 @@ dns_nd6.c
+ dns_sortip6.c
+ fmt_xlong.c
+ ip6_fmt.c
+-ip6_scan.c
+ scan_0x.c
+ socket_accept6.c
+ socket_bind6.c
+--- a/TARGETS
++++ b/TARGETS
+@@ -177,7 +177,6 @@ dns_nd6.o
+ dns_sortip6.o
+ fmt_xlong.o
+ ip6_fmt.o
+-ip6_scan.o
+ scan_0x.o
+ socket_accept6.o
+ socket_bind6.o
+--- a/ip6.h
++++ b/ip6.h
+@@ -4,10 +4,10 @@
+ #include "byte.h"
+ 
+ extern unsigned int scan_ip6(const char *src,char *ip);
+-extern unsigned int fmt_ip6(char *dest,const char *ip);
++extern unsigned int ip6_fmt(char *dest,char ip[16]);
+ 
+ extern unsigned int scan_ip6_flat(const char *src,char *);
+-extern unsigned int fmt_ip6_flat(char *dest,const char *);
++extern unsigned int ip6_fmt_flat(char *dest,char[16]);
+ 
+ /*
+  ip6 address syntax: (h = hex digit), no leading '0' required
+--- a/remoteinfo6.c
++++ b/remoteinfo6.c
+@@ -1,3 +1,4 @@
++#include <unistd.h>
+ #include "fmt.h"
+ #include "buffer.h"
+ #include "socket.h"
+@@ -5,11 +6,12 @@
+ #include "iopause.h"
+ #include "timeoutconn.h"
+ #include "remoteinfo.h"
++#include "readwrite.h"
+ 
+ static struct taia now;
+ static struct taia deadline;
+ 
+-static int mywrite(int fd,char *buf,int len)
++static ssize_t mywrite(int fd,char *buf,int len)
+ {
+   iopause_fd x;
+ 
+@@ -27,7 +29,7 @@ static int mywrite(int fd,char *buf,int len)
+   return write(fd,buf,len);
+ }
+ 
+-static int myread(int fd,char *buf,int len)
++static ssize_t myread(int fd,char *buf,int len)
+ {
+   iopause_fd x;
+ 
+--- a/socket_tcp6.c
++++ b/socket_tcp6.c
+@@ -3,6 +3,7 @@
+ #include <sys/socket.h>
+ #include <netinet/in.h>
+ #include <errno.h>
++#include <unistd.h>
+ #include "ndelay.h"
+ #include "socket.h"
+ #include "haveip6.h"
+--- a/dns.h
++++ b/dns.h
+@@ -87,6 +87,7 @@ extern int dns_ip4_qualify(stralloc *,stralloc *,const stralloc *);
+ extern int dns_ip6_qualify_rules(stralloc *,stralloc *,const stralloc *,const stralloc *);
+ extern int dns_ip6_qualify(stralloc *,stralloc *,const stralloc *);
+ 
++extern int dns_name6(stralloc *,char [16]);
+ extern int dns_name6_domain(char *,char *);
+ #define DNS_NAME6_DOMAIN (4*16+11)
+ 

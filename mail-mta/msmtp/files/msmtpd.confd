@@ -1,0 +1,16 @@
+# The user msmtpd should be run as. Default is "msmtpd".
+#MSMTPD_USER="joe"
+
+
+# Uncomment one of the following arguments for msmtpd or write your own
+# argument list.
+
+# Start single SMTP session on stdin/stdout
+#MSMTPD_ARGS="--inetd"
+
+# Listen on a specific IP and a specific port.
+# Default IP is 127.0.0.1 and default port is 25.
+#MSMTPD_ARGS="--interface=192.168.100.1 --port=25000"
+
+# Pipe mails to a specific command instead of msmtp. Please read msmtpd man page.
+#MSMTPD_ARGS="--command='/usr/bin/msmtp -f %F'"

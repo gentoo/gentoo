@@ -1,0 +1,23 @@
+#!/bin/sh
+
+HOMEDIR="${HOME}/.nightsky"
+GAMEDIR="@GAMES_PREFIX_OPT@/nightsky"
+
+# create root config dir
+[ -e "${HOMEDIR}" ] || mkdir "${HOMEDIR}"
+
+# symlink game data
+for i in `cd "${GAMEDIR}" || exit 1 ; ls -d *` ; do
+	[ -e "${HOMEDIR}/${i}" ] || ln -sf "${GAMEDIR}/${i}" "${HOMEDIR}/${i}"
+done
+# create empty Settings dir
+[ -e "${HOMEDIR}/Settings" ] || mkdir "${HOMEDIR}/Settings"
+
+cd "${HOMEDIR}"
+
+# start architecture dependent binary
+if [ -e "${HOMEDIR}/NightSkyHD_64" ] ; then
+	exec ./NightSkyHD_64 "$@"
+else
+	exec ./NightSky "$@"
+fi

@@ -1,0 +1,31 @@
+From: hololeap <hololeap@protonmail.com>
+Signed-off-by: hololeap <hololeap@protonmail.com>
+
+Add 'examples' USE flag and rename the example executable from 'greet' to
+'servant-server-example'.
+
+diff -urN servant-server-0.18.3/servant-server.cabal servant-server-0.18.3-r1/servant-server.cabal
+--- servant-server-0.18.3/servant-server.cabal	2022-02-11 02:33:28.463223367 -0700
++++ servant-server-0.18.3-r1/servant-server.cabal	2022-02-11 02:35:38.242984376 -0700
+@@ -33,6 +33,10 @@
+   type: git
+   location: http://github.com/haskell-servant/servant.git
+ 
++flag examples
++  description: Build the servant-server-example executable
++  default: False
++
+ library
+   exposed-modules:
+     Servant
+@@ -99,7 +103,9 @@
+ 
+   ghc-options: -Wall -Wno-redundant-constraints
+ 
+-executable greet
++executable servant-server-example
++  if !flag(examples)
++    buildable: False
+   main-is: greet.hs
+   hs-source-dirs: example
+   ghc-options: -Wall

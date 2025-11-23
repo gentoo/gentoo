@@ -1,0 +1,28 @@
+--- a/Makefile
++++ b/Makefile
+@@ -5,9 +5,10 @@
+ 
+ PACKAGE = genromfs
+ VERSION = 0.5.7
+-CC = gcc
+-CFLAGS = -O2 -Wall -DVERSION=\"$(VERSION)\"#-g#
+-LDFLAGS = -s#-g
++CC ?= gcc
++CFLAGS ?= -O2
++CFLAGS += -Wall -DVERSION=\"$(VERSION)\"#-g#
++LDFLAGS ?= -s#-g
+ 
+ DISTDIR = $(PACKAGE)-$(VERSION)
+ 
+@@ -17,9 +18,9 @@
+  checkdist \
+  .gitignore selftest
+ 
+-prefix = /usr
++prefix = $(DESTDIR)/usr
+ bindir = $(prefix)/bin
+-mandir = $(prefix)/man
++mandir = $(prefix)/share/man
+ 
+ genromfs: genromfs.o
+ 	$(CC) $(LDFLAGS) genromfs.o -o genromfs

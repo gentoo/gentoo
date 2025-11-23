@@ -1,0 +1,11 @@
+--- a/lib/roken/ndbm_wrap.c	2016-12-20 17:23:06.000000000 +0300
++++ b/lib/roken/ndbm_wrap.c	2019-05-17 10:00:00.107905769 +0300
+@@ -175,7 +175,7 @@
+ 	return NULL;
+     }
+ 
+-#if (DB_VERSION_MAJOR > 3) && (DB_VERSION_MINOR > 0)
++#if DB_VERSION_MAJOR > 4 || (DB_VERSION_MAJOR > 3 && DB_VERSION_MINOR > 0)
+     if(db->open(db, NULL, fn, NULL, DB_BTREE, myflags, mode) != 0) {
+ #else
+     if(db->open(db, fn, NULL, DB_BTREE, myflags, mode) != 0) {

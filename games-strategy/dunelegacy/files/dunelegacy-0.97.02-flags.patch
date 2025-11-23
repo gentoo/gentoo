@@ -1,0 +1,14 @@
+diff -Naur a/configure.ac b/configure.ac
+--- a/configure.ac	2022-12-29 05:22:09.000000000 +0000
++++ b/configure.ac	2024-07-28 21:30:14.793202700 +0100
+@@ -19,8 +19,8 @@
+ AC_SUBST(dunelegacydatadir)
+ 
+ dnl Some flags for gcc
+-CXXFLAGS="-std=c++14 -pthread -fPIC -O3 -pipe -pedantic -Wall -Wextra -Wno-unused-parameter -Wno-shift-negative-value -Wno-unknown-pragmas -D__STDC_FORMAT_MACROS -DNDEBUG"
+-CFLAGS="-std=c99 -pthread -fPIC -O3 -pipe -pedantic -Wall -Wextra -Wno-unused-parameter -Wno-shift-negative-value -Wno-unknown-pragmas -D__STDC_FORMAT_MACROS -DNDEBUG"
++CXXFLAGS="$CXXFLAGS -std=c++14 -pthread -fPIC -pedantic -Wall -Wextra -Wno-unused-parameter -Wno-shift-negative-value -Wno-unknown-pragmas -D__STDC_FORMAT_MACROS -DNDEBUG"
++CFLAGS="$CFLAGS -std=c99 -pthread -fPIC -pedantic -Wall -Wextra -Wno-unused-parameter -Wno-shift-negative-value -Wno-unknown-pragmas -D__STDC_FORMAT_MACROS -DNDEBUG"
+ dnl Additional flags: -Wconversion -Wno-sign-conversion -Wlogical-op
+ 
+ dnl Some flags for clang

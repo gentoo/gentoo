@@ -1,0 +1,108 @@
+* link against dev-libs/libmix
+* parallel $(MAKE)
+* usr/local/ -> usr/
+* LDFLAGS
+* verbose CC
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -7,14 +7,14 @@
+ #    #  ####  #    #   #
+ 
+ # Change me if you want...
+-INSTALL_PATH=/usr/local/bin
+-MAN_PATH=/usr/local/man
++INSTALL_PATH=/usr/bin
++MAN_PATH=/usr/man
+ 
+ # If you change this, change src/lang.h as well
+-DATA_PATH=/usr/local/share/nsat
++DATA_PATH=/usr/share/nsat
+ 
+ all:
+-	@cd src;make all
++	@cd src; $(MAKE) all
+ 	@echo ""
+ 	@echo " Compiling is done!"
+ 	@echo " You can now 'make install' to put the files in place."
+@@ -58,5 +58,5 @@
+ doc/nsat.8:
+ 	@echo "Hmm, can't find manpage -- skipping :/"
+ 
+-nsat:
+-	@make all
++nsat: src
++	$(MAKE) all
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -21,22 +21,22 @@
+   
+ MIXOBJ = libmix++/net/net.o libmix++/misc/misc.o libmix++/misc/exclude.o
+ 
+-all:	../smb-ns $(OBJ) modobj mixobj ../nsat
++all:	../smb-ns $(OBJ) modobj ../nsat
+ 
+ ../smb-ns:
+-	@cd smb ; make smb
++	@cd smb ; $(MAKE) smb
+ 
+-mixobj:	libmix++/Makefile
+-	@cd libmix++ ; make
++#mixobj:	libmix++/Makefile
++#	@cd libmix++ ; $(MAKE)
+ 
+-libmix++/Makefile:
+-	@cd .. ; ./configure
++#libmix++/Makefile:
++#	@cd .. ; ./configure
+ 
+ modobj:
+-	@cd mod ; make modobj
++	@cd mod ; $(MAKE) modobj
+ 
+-../nsat:
+-	${GPP} ${CFLAGS} ${OBJ} ${MODOBJ} ${MIXOBJ} -o ../nsat ${CLIB}
++../nsat: modobj
++	${GPP} ${CFLAGS} ${LDFLAGS} ${OBJ} ${MODOBJ} ${MIXOBJ} -o ../nsat ${CLIB}
+ 
+ pidalloc.o:
+ 	${GPP} ${CFLAGS} -c pidalloc.cpp
+@@ -63,11 +63,11 @@
+ 	${GPP} ${CFLAGS} -c Logging.cpp
+ 
+ clean:
+-	cd mod && make clean
++	cd mod && $(MAKE) clean
+ 	rm -f core *.o ../*.log *.log *~ ../nsat ../.nsrc ../.nspid
+ 
+ distclean: clean
+-	@cd mod ; make clean
+-	@cd smb ; make clean
+-	@cd libmix++ ; make clean
++	@cd mod ; $(MAKE) clean
++	@cd smb ; $(MAKE) clean
++	@cd libmix++ ; $(MAKE) clean
+ 	rm -f mod/Makefile Makefile
+--- a/src/smb/Makefile.in
++++ b/src/smb/Makefile.in
+@@ -11,7 +11,6 @@
+ LIBDIR = $(BASEDIR)/lib
+ VARDIR = $(BASEDIR)/var
+ INSTALLPERMS = 0755
+-FLAGS1 = -O3
+ LIBS1 = 
+ SHELL = /bin/sh
+ srcdir = ./
+@@ -53,10 +52,10 @@
+ .SUFFIXES: .c .o .h
+ 
+ .c.o: $(INCLUDES)
+-	@$(CC) $(CFLAGS) -c $(srcdir)$*.c -o $(srcdir)$*.o
++	$(CC) $(CFLAGS) $(LDFLAGS) -c $(srcdir)$*.c -o $(srcdir)$*.o
+ 
+ smb: msg $(CLIENT_OBJ) $(ARCFOUR_OBJ)
+-	@$(CC) $(CFLAGS) -o $(BINARY) $(CLIENT_OBJ) $(ARCFOUR_OBJ) $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $(BINARY) $(CLIENT_OBJ) $(ARCFOUR_OBJ) $(LIBS)
+ 	@echo done
+ 
+ msg:

@@ -1,0 +1,32 @@
+From 3cd2cc671b2bebc447451e1be09824ca332c1be8 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gmx.de>
+Date: Mon, 23 Jan 2023 09:56:08 +0100
+Subject: [PATCH] Rename appdata to metainfo
+
+See https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html
+chapter 2.1.2 "Filesystem locations"
+
+Signed-off-by: Lars Wendler <polynomial-c@gmx.de>
+---
+ share/CMakeLists.txt                                    | 4 ++--
+ share/{hedgewars.appdata.xml => hedgewars.metainfo.xml} | 0
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+ rename share/{hedgewars.appdata.xml => hedgewars.metainfo.xml} (100%)
+
+diff --git a/share/CMakeLists.txt b/share/CMakeLists.txt
+index 849624df1a..5af0c6c2f0 100644
+--- a/share/CMakeLists.txt
++++ b/share/CMakeLists.txt
+@@ -19,6 +19,6 @@ if(APPLE)
+     install(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/dsa_pub.pem"
+             DESTINATION ../Resources/)
+ elseif(UNIX)
+-    install(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/hedgewars.appdata.xml"
+-            DESTINATION ${CMAKE_INSTALL_PREFIX}/share/appdata/)
++    install(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/hedgewars.metainfo.xml"
++            DESTINATION ${CMAKE_INSTALL_PREFIX}/share/metainfo/)
+ endif()
+diff --git a/share/hedgewars.appdata.xml b/share/hedgewars.metainfo.xml
+similarity index 100%
+rename from share/hedgewars.appdata.xml
+rename to share/hedgewars.metainfo.xml

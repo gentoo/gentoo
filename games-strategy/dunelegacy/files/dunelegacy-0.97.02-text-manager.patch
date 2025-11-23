@@ -1,0 +1,15 @@
+# https://aur.archlinux.org/packages/dunelegacy
+# https://aur.archlinux.org/cgit/aur.git/tree/text_manager.patch?h=dunelegacy
+
+    Fix missing <array> inclusion
+
+--- a/include/FileClasses/TextManager.h
++++ b/include/FileClasses/TextManager.h
+@@ -21,6 +21,7 @@
+ #include "IndexedTextFile.h"
+ #include "MentatTextFile.h"
+ 
++#include <array>
+ #include <string>
+ #include <vector>
+ #include <map>

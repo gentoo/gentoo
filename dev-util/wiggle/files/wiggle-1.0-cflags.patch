@@ -1,0 +1,22 @@
+Respect user CFLAGS and use pkg-config to get ncurses libs.
+
+--- a/Makefile
++++ b/Makefile
+@@ -3,7 +3,7 @@
+ #OptDbg=-O3
+ #OptDbg=-O3 -march=pentium2
+ OptDbg=-ggdb
+-CFLAGS=$(OptDbg) -I. -Wall -Werror -Wstrict-prototypes -Wextra -Wno-unused-parameter
++CFLAGS += -I. -Wall -Wstrict-prototypes -Wextra -Wno-unused-parameter
+ 
+ # STRIP = -s
+ INSTALL = /usr/bin/install
+@@ -12,7 +12,7 @@
+ MANDIR  = /usr/share/man
+ MAN1DIR = $(MANDIR)/man1
+ MAN5DIR = $(MANDIR)/man5
+-LDLIBS = -lncurses
++LDLIBS = $(shell ${PKG_CONFIG} --libs ncurses)
+ 
+ all: wiggle wiggle.man test
+ 

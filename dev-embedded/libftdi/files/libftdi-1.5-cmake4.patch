@@ -1,0 +1,87 @@
+From 503c8789db7cb99e4e53cae3c220f80aef07c785 Mon Sep 17 00:00:00 2001
+From: Yegor Yefremov <yegorslists@googlemail.com>
+Date: Wed, 2 Apr 2025 10:12:34 +0200
+Subject: [PATCH] CMakeLists.txt: bump CMake version to 3.15
+
+Older CMake versions are treated as deprecated.
+
+merged with cherry-picks of preceding changes:
+  3861e7dc9e83f2f6ff4e1579cf3bbf63a6827105
+  de9f01ece34d2fe6e842e0250a38f4b16eda2429
+  3f314ed78111473b7cbf1b9d1854c9f6322eea7a
+
+diff -u a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,3 +1,5 @@
++cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
++
+ # Project
+ project(libftdi1 C)
+ set(MAJOR_VERSION 1)
+@@ -12,7 +14,6 @@
+    set(CMAKE_BUILD_TYPE     RelWithDebInfo)
+ endif("${CMAKE_BUILD_TYPE}" STREQUAL "")
+ set(CMAKE_COLOR_MAKEFILE ON)
+-cmake_minimum_required(VERSION 2.6 FATAL_ERROR)
+ 
+ add_definitions(-Wall)
+ 
+@@ -211,30 +212,25 @@
+ 
+ set ( LIBFTDI_USE_FILE ${CMAKE_INSTALL_PREFIX}/${LIBFTDI_CMAKE_CONFIG_DIR}/UseLibFTDI1.cmake )
+ 
+-if(CMAKE_VERSION VERSION_LESS 2.8.8) 
+-  configure_file ( cmake/LibFTDI1Config.cmake.in ${CMAKE_CURRENT_BINARY_DIR}/LibFTDI1Config.cmake @ONLY )
+-  configure_file ( cmake/LibFTDI1ConfigVersion.cmake.in ${CMAKE_CURRENT_BINARY_DIR}/LibFTDI1ConfigVersion.cmake @ONLY )
+-else ()
+-  include(CMakePackageConfigHelpers)
+-
+-  configure_package_config_file (
+-    cmake/LibFTDI1Config.cmake.in
+-    ${CMAKE_CURRENT_BINARY_DIR}/LibFTDI1Config.cmake
+-    INSTALL_DESTINATION ${LIBFTDI_CMAKE_CONFIG_DIR}
+-    PATH_VARS
+-      LIBFTDI_USE_FILE
+-      LIBFTDI_ROOT_DIR
+-      LIBFTDI_INCLUDE_DIR
+-      LIBFTDI_INCLUDE_DIRS
+-      LIBFTDI_LIBRARY_DIRS
+-    NO_CHECK_REQUIRED_COMPONENTS_MACRO
+-  )
+-  write_basic_package_version_file (
+-    LibFTDI1ConfigVersion.cmake 
+-    VERSION ${LIBFTDI_VERSION_STRING} 
+-    COMPATIBILITY AnyNewerVersion
+-  )
+-endif ()
++include(CMakePackageConfigHelpers)
++
++configure_package_config_file (
++  cmake/LibFTDI1Config.cmake.in
++  ${CMAKE_CURRENT_BINARY_DIR}/LibFTDI1Config.cmake
++  INSTALL_DESTINATION ${LIBFTDI_CMAKE_CONFIG_DIR}
++  PATH_VARS
++    LIBFTDI_USE_FILE
++    LIBFTDI_ROOT_DIR
++    LIBFTDI_INCLUDE_DIR
++    LIBFTDI_INCLUDE_DIRS
++    LIBFTDI_LIBRARY_DIRS
++  NO_CHECK_REQUIRED_COMPONENTS_MACRO
++)
++write_basic_package_version_file (
++  LibFTDI1ConfigVersion.cmake
++  VERSION ${LIBFTDI_VERSION_STRING}
++  COMPATIBILITY AnyNewerVersion
++)
+ 
+ 
+ install ( FILES 
+--- a/examples/cmake_example/CMakeLists.txt
++++ b/examples/cmake_example/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required ( VERSION 2.8 )
++cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
+ 
+ project ( example C )
+ 

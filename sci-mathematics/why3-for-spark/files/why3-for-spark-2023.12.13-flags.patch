@@ -1,0 +1,28 @@
+--- a/Makefile.in	2020-06-12 21:03:33.375534124 +0200
++++ b/Makefile.in	2020-06-12 21:03:48.623283408 +0200
+@@ -129,7 +129,7 @@
+ 
+ WARNINGS = A-4-9-41-42-44-45-52@5@8@14@48@50
+ 
+-FLAGS = -w $(WARNINGS) -safe-string -keep-locs -bin-annot -dtypes -g -thread $(INCLUDES)
++FLAGS = -w $(WARNINGS) -safe-string -keep-locs -bin-annot -dtypes -g -thread $(INCLUDES) -cclib "$(LDFLAGS)" -ccopt "$(CFLAGS)"
+ OFLAGS = $(FLAGS)
+ BFLAGS = $(FLAGS)
+ 
+@@ -807,13 +807,13 @@
+ all: $(TOOLS)
+ 
+ lib/why3server$(EXE): $(SERVER_O)
+-	$(CC) -Wall -o $@ $^
++	$(CC) -Wall $(CFLAGS) -o $@ $^ $(LDFLAGS)
+ 
+ lib/why3cpulimit$(EXE): $(CPULIM_O)
+-	$(CC) -Wall -o $@ $^
++	$(CC) -Wall $(CFLAGS) -o $@ $^ $(LDFLAGS)
+ 
+ %.o: %.c
+-	$(CC) -Wall -O -g -o $@ -c $<
++	$(CC) -Wall $(CFLAGS) -O -g -o $@ -c $<
+ 
+ uninstall-bin::
+ 	rm -f $(LIBDIR)/why3/why3server$(EXE) $(LIBDIR)/why3/why3cpulimit$(EXE)

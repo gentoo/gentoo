@@ -1,0 +1,23 @@
+From 6ff7b3ee8c38830a72b5fc087d6f4f12cf421920 Mon Sep 17 00:00:00 2001
+From: Gary Gatling <gsgatlin@ncsu.edu>
+Date: Thu, 2 Mar 2017 14:50:47 -0500
+Subject: [PATCH] primus needs this variable workaround for libglvnd enabled
+ mesa
+
+---
+ primusrun | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/primusrun b/primusrun
+index 81e2dc0..33f0eef 100755
+--- a/primusrun
++++ b/primusrun
+@@ -1,5 +1,8 @@
+ #!/bin/bash
+ 
++# primus needs this variable workaround for libglvnd enabled mesa
++export __GLVND_DISALLOW_PATCHING=1
++
+ # Readback-display synchronization method
+ # 0: no sync, 1: D lags behind one frame, 2: fully synced
+ # export PRIMUS_SYNC=${PRIMUS_SYNC:-0}

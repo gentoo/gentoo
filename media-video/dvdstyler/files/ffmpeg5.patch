@@ -1,0 +1,89 @@
+Index: DVDStyler-3.2.1/src/mediaenc_ffmpeg.cpp
+===================================================================
+--- DVDStyler-3.2.1.orig/src/mediaenc_ffmpeg.cpp
++++ DVDStyler-3.2.1/src/mediaenc_ffmpeg.cpp
+@@ -26,10 +26,12 @@
+ extern "C" {
+ #define __STDC_CONSTANT_MACROS
+ #define __STDC_LIMIT_MACROS
++#include <libavcodec/avcodec.h>
+ #include <libavformat/avformat.h>
+ #include <libswscale/swscale.h>
+ #include <libavutil/mathematics.h>
+ #include <libavutil/avstring.h>
++#include <libavutil/channel_layout.h>
+ }
+ 
+ #define AUDIO_BUF_SIZE 524288
+@@ -74,6 +76,9 @@ void print_error(const char *filename, i
+ bool wxFfmpegMediaEncoder::BeginEncode(const wxString& fileName, VideoFormat videoFormat, AudioFormat audioFormat,
+ 		AspectRatio aspectRatio, int videoBitrate, bool cbr) {
+ 	EndEncode();
++#if LIBAVCODEC_VERSION_MAJOR >= 59
++	const
++#endif
+ 	AVOutputFormat* outputFormat = NULL;
+ 	if (videoFormat == vfNONE || audioFormat == afNONE)
+ 		outputFormat = av_guess_format(NULL, (const char*) fileName.ToUTF8(), NULL);
+@@ -83,13 +88,16 @@ bool wxFfmpegMediaEncoder::BeginEncode(c
+ 		wxLogError(wxT("Cannot open output format"));
+ 		return false;
+ 	}
+-	outputFormat->video_codec = videoFormat == vfNONE ? AV_CODEC_ID_NONE : AV_CODEC_ID_MPEG2VIDEO;
++	enum AVCodecID video_codec, audio_codec;
++
++	video_codec = videoFormat == vfNONE ? AV_CODEC_ID_NONE : AV_CODEC_ID_MPEG2VIDEO;
++
+ 	if (audioFormat == afNONE)
+-		outputFormat->audio_codec = AV_CODEC_ID_NONE;
++		audio_codec = AV_CODEC_ID_NONE;
+ 	else if (audioFormat == afAC3)
+-		outputFormat->audio_codec = AV_CODEC_ID_AC3;
++		audio_codec = AV_CODEC_ID_AC3;
+ 	else
+-		outputFormat->audio_codec = AV_CODEC_ID_MP2;
++		audio_codec = AV_CODEC_ID_MP2;
+ 	
+ 	m_outputCtx = NULL;
+ 	avformat_alloc_output_context2(&m_outputCtx, outputFormat, NULL, (const char*) fileName.ToUTF8());
+@@ -101,9 +109,9 @@ bool wxFfmpegMediaEncoder::BeginEncode(c
+ 	m_outputCtx->packet_size = 2048;
+ 
+ 	// add video and audio streams
+-	if (!addVideoStream(outputFormat->video_codec, videoFormat, aspectRatio, videoBitrate, cbr))
++	if (!addVideoStream(video_codec, videoFormat, aspectRatio, videoBitrate, cbr))
+ 		return false;
+-	if (!addAudioStream(outputFormat->audio_codec))
++	if (!addAudioStream(audio_codec))
+ 		return false;
+ 
+ 	// open the output file
+@@ -170,6 +178,9 @@ bool wxFfmpegMediaEncoder::addVideoStrea
+ 	m_videoStm->id = 0;
+ 
+ 	// find the video encoder and open it
++#if LIBAVCODEC_VERSION_MAJOR >= 59
++	const
++#endif
+ 	AVCodec* encoder = avcodec_find_encoder((AVCodecID) codecId);
+ 	if (!encoder) {
+ 		wxLogError(wxT("Video codec not found"));
+@@ -235,7 +246,7 @@ bool wxFfmpegMediaEncoder::addVideoStrea
+ 	return true;
+ }
+ 
+-bool hasSampleFmt(AVCodec* codec, AVSampleFormat sample_fmt) {
++bool hasSampleFmt(const AVCodec* codec, AVSampleFormat sample_fmt) {
+ 	if (codec != NULL && codec->sample_fmts != NULL) {
+ 		int fIdx = 0;
+ 		while (codec->sample_fmts[fIdx] >= 0) {
+@@ -260,6 +271,9 @@ bool wxFfmpegMediaEncoder::addAudioStrea
+ 	m_audioStm->id = 1;
+ 
+ 	// find the audio encoder and open it
++#if LIBAVCODEC_VERSION_MAJOR >= 59
++	const
++#endif
+ 	AVCodec* encoder = NULL;
+ 	AVSampleFormat sampleFmt = AV_SAMPLE_FMT_S16;
+ 	if ((AVCodecID) codecId == AV_CODEC_ID_AC3) {

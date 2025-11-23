@@ -1,0 +1,55 @@
+From 8972fc0ebb7f26e8f1f985d3ada52f9cd4510207 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Mon, 16 Dec 2024 15:48:52 +0100
+Subject: [PATCH] Update asio for boost 1.87
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/src/cpp/flann/mpi/client.h b/src/cpp/flann/mpi/client.h
+index 19a410c..8b7fbed 100644
+--- a/src/cpp/flann/mpi/client.h
++++ b/src/cpp/flann/mpi/client.h
+@@ -45,9 +45,8 @@ class Client
+ public:
+ 	Client(const std::string& host, const std::string& service)
+ 	{
+-	    tcp::resolver resolver(io_service_);
+-	    tcp::resolver::query query(tcp::v4(), host, service);
+-	    iterator_ = resolver.resolve(query);
++	    boost::asio::ip::basic_resolver<tcp> resolver(io_service_);
++	    iterator_ = resolver.resolve(tcp::v4(), host, service).begin();
+ 	}
+ 
+ 
+@@ -78,8 +77,8 @@ public:
+ 
+ 
+ private:
+-	boost::asio::io_service io_service_;
+-	tcp::resolver::iterator iterator_;
++	boost::asio::io_context io_service_;
++	boost::asio::ip::basic_resolver_iterator<tcp> iterator_;
+ };
+ 
+ 
+diff --git a/src/cpp/flann/mpi/server.h b/src/cpp/flann/mpi/server.h
+index 2caab43..9d10280 100644
+--- a/src/cpp/flann/mpi/server.h
++++ b/src/cpp/flann/mpi/server.h
+@@ -119,11 +119,11 @@ public:
+ 	void run()
+ 	{
+ 		boost::mpi::communicator world;
+-		boost::shared_ptr<boost::asio::io_service> io_service;
++		boost::shared_ptr<boost::asio::io_context> io_service;
+ 		boost::shared_ptr<tcp::acceptor> acceptor;
+ 
+ 		if (world.rank()==0) {
+-			io_service.reset(new boost::asio::io_service());
++			io_service.reset(new boost::asio::io_context());
+ 			acceptor.reset(new tcp::acceptor(*io_service, tcp::endpoint(tcp::v4(), port_)));
+ 			std::cout << "Start listening for queries...\n";
+ 		}
+-- 
+2.47.1
+

@@ -1,0 +1,12 @@
+don't do availability stuff on non-Darwin
+
+--- a/include/xar.h.in
++++ b/include/xar.h.in
+@@ -52,6 +52,7 @@
+ #import <os/availability.h>
+ #else
+ #define API_DEPRECATED(...)
++#define API_AVAILABLE(...)
+ #endif
+ 
+ #pragma pack(4)

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>dotnet@gentoo.org</email>
+		<name>Gentoo Dotnet Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<upstream>
+		<changelog>https://www.openra.net/news/</changelog>
+		<doc lang="en">https://github.com/OpenRA/OpenRA/wiki</doc>
+		<bugs-to>https://github.com/OpenRA/OpenRA/issues</bugs-to>
+		<remote-id type="github">OpenRA/OpenRA</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,19 @@
+--- a/src/xercesc/util/MsgLoaders/ICU/ICUMsgLoader.cpp	2023-12-06 17:57:34.000000000 +0100
++++ b/src/xercesc/util/MsgLoaders/ICU/ICUMsgLoader.cpp	2024-10-18 17:23:09.000000000 +0100
+@@ -48,14 +48,14 @@
+  *  Resource Data Reference.
+  *
+  *  The data is packaged as a dll (or .so or whatever, depending on the platform) that exports a data symbol.
+  *  The application (this *.cpp) references that symbol here, and will pass the data address to ICU, which
+  *  will then  be able to fetch resources from the data.
+  */
+-#define ENTRY_POINT xercesc_messages_3_2_dat
+-#define BUNDLE_NAME "xercesc_messages_3_2"
++#define ENTRY_POINT xercesc_messages_3_3_dat
++#define BUNDLE_NAME "xercesc_messages_3_3"
+ 
+ extern "C" void U_IMPORT *ENTRY_POINT;
+ 
+ /*
+  *  Tell ICU where our resource data is located in memory. The data lives in the xercesc_nessages dll, and we just
+  *  pass the address of an exported symbol from that library to ICU.

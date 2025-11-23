@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+	<longdescription>
+		The Apache FontBox library is an open source Java tool to obtain low level 
+		information from font files. FontBox is a subproject of Apache PDFBox.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">apache/pdfbox</remote-id>
+		<bugs-to>https://issues.apache.org/jira/browse/PDFBOX</bugs-to>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  The ARnoldi PACKage is a library of routines capable of solving large scale symmetric,
+  nonsymmetric, and generalized eigenproblems. The software is designed to compute a few
+  eigenvalues with user specified features such as those of largest real
+  part or largest magnitude. Storage requirements are on the order of
+  n*k locations. No auxiliary storage is required. A set of Schur basis
+  vectors for the desired k-dimensional eigen-space is computed which is
+  numerically orthogonal to working precision. Numerically accurate
+  eigenvectors are available on request.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">opencollab/arpack-ng</remote-id>
+  </upstream>
+</pkgmetadata>

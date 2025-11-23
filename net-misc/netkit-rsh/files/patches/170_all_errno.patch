@@ -1,0 +1,51 @@
+--- a/rcp/rcp.c
++++ b/rcp/rcp.c
+@@ -613,6 +613,7 @@
+ 	struct stat stb;
+ 	struct timeval tv[2];
+ 	enum { YES, NO, DISPLAYED } wrerr;
++	int werrno = 0;
+ 	BUF *bp;
+ 	off_t i, j, size;
+ 	char ch, *targ;
+@@ -766,6 +767,7 @@
+ 		cp = bp->buf;
+ 		count = 0;
+ 		wrerr = NO;
++		werrno = 0;
+ 		for (i = 0; i < size; i += BUFSIZ) {
+ 			amt = BUFSIZ;
+ 			if (i + amt > size)
+@@ -784,16 +786,20 @@
+ 			} while (amt > 0);
+ 			if (count == bp->cnt) {
+ 				if (wrerr == NO &&
+-				    write(ofd, bp->buf, count) != count)
++				    write(ofd, bp->buf, count) != count) {
+ 					wrerr = YES;
++					werrno = errno;
++				}
+ 				count = 0;
+ 				cp = bp->buf;
+ 			}
+ 		}
+ 		if (count != 0 && wrerr == NO &&
+-		    write(ofd, bp->buf, count) != count)
++		    write(ofd, bp->buf, count) != count) {
+ 			wrerr = YES;
+-		if (ftruncate(ofd, size)) {
++			werrno = errno;
++		}
++		if (wrerr == NO && ftruncate(ofd, size)) {
+ 			error("rcp: can't truncate %s: %s\n", np,
+ 			    strerror(errno));
+ 			wrerr = DISPLAYED;
+@@ -810,7 +816,7 @@
+ 		}
+ 		switch(wrerr) {
+ 		case YES:
+-			error("rcp: %s: %s\n", np, strerror(errno));
++			error("rcp: %s: %s\n", np, strerror(werrno));
+ 			break;
+ 		case NO:
+ 			(void)write(rem, "", 1);

@@ -1,0 +1,20 @@
+Fix build with boost-1.89.0
+From: https://codeberg.org/shelter/reschroot/issues/33
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 35da3380..fa4b55db 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -59,7 +59,11 @@ find_package(Threads REQUIRED)
+ 
+ include(FindBoost)
+ find_package(Boost REQUIRED
+-             COMPONENTS filesystem system iostreams program_options regex)
++             COMPONENTS filesystem iostreams program_options regex)
++if(Boost_MAJOR_VERSION EQUAL 1 AND Boost_MINOR_VERSION LESS 69)
++  list(APPEND BOOST_REQUIRED_COMPONENTS system)
++  find_package(Boost REQUIRED COMPONENTS ${BOOST_REQUIRED_COMPONENTS})
++endif()
+ 
+ # HEADER CHECKS
+ include(CheckIncludeFileCXX)

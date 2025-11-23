@@ -1,0 +1,22 @@
+--- a/src/flow-fanout.c
++++ b/src/flow-fanout.c
+@@ -57,7 +57,7 @@
+ #endif
+ 
+ 
+-#define FANOUT_PIDFILE    "/var/run/flow-fanout.pid"
++#define FANOUT_PIDFILE    "/run/flow-fanout.pid"
+ 
+ #define SELECT_TIMEOUT 5   /* 5 seconds */
+ 
+--- a/src/flow-capture.c
++++ b/src/flow-capture.c
+@@ -61,7 +61,7 @@
+ 
+ void fterr_exit_handler(int code);
+ 
+-#define CAPTURE_PIDFILE    "/var/run/flow-capture.pid"
++#define CAPTURE_PIDFILE    "/run/flow-capture.pid"
+ 
+ #define SELECT_TIMEOUT 1   /* 1 second */
+ 

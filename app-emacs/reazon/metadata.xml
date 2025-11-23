@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    Reazon is an Emacs implementation of miniKanren, a small domain-specific
+    logic programming language. Whereas languages like Elisp deal with
+    functions that take inputs and yield outputs, miniKanren deals with sets of
+    values that satisfy relations. Every function is a relation, but not vice
+    versa, since a relation might include the output of a function but not its
+    inputs. In such a case, miniKanren would attempt to find inputs yielding
+    the output, effectively running the function backwards.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/nickdrozd/reazon/issues/</bugs-to>
+    <remote-id type="github">nickdrozd/reazon</remote-id>
+  </upstream>
+</pkgmetadata>

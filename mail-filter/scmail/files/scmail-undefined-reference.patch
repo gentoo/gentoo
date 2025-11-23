@@ -1,0 +1,51 @@
+--- a/scmail/config.scm
++++ b/scmail/config.scm
+@@ -30,6 +30,8 @@
+ 	  ))
+ (select-module scmail.config)
+ 
++(autoload scmail.util scmail-eformat)
++
+ (define scmail-config-directory (make-parameter (expand-path "~/.scmail")))
+ 
+ (define (scmail-config-set-directory! directory)
+--- a/scmail/mailbox.scm
++++ b/scmail/mailbox.scm
+@@ -19,6 +19,7 @@
+   (use srfi-1)
+   (use file.util)
+   (use gauche.parameter)
++  (use scmail.util)
+   (export <mailbox>
+           make-scmail-mailbox
+           scmail-mailbox-mail-list
+--- a/scmail/util.scm
++++ b/scmail/util.scm
+@@ -19,7 +19,6 @@
+   (use file.util)
+   (use srfi-13)
+   (use gauche.parameter)
+-  (use scmail.config)
+   (use scmail.progress)
+   (use gauche.version)
+   (export filter safe-rxmatch 
+@@ -31,6 +30,8 @@
+ 
+ (select-module scmail.util)
+ 
++(autoload scmail.config scmail-config-verbose-mode?)
++
+ ;;
+ ;; FIXME: Reinvent it because filter in srfi-1 module is too
+ ;; slow in old Gauche implementations.
+--- a/scmail.scm
++++ b/scmail.scm
+@@ -264,7 +264,7 @@
+               (unless (eq? status :last)
+                       (scmail-filter-iter mail (cdr filter-rules))))))
+   (unless (is-a? mail <mail>)
+-          (scmail-eprintf "<mail> required but got ~a" (class-of mail)))
++          (scmail-eformat "<mail> required but got ~a" (class-of mail)))
+   (scmail-filter-iter mail (filter-rules)))
+ 
+ 

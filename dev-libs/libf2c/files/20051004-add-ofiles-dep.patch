@@ -1,0 +1,13 @@
+--- a/makefile.u
++++ b/makefile.u
+@@ -69,7 +69,9 @@
+ OFILES = $(MISC) $(POW) $(CX) $(DCX) $(REAL) $(DBL) $(INT) \
+ 	$(HALF) $(CMP) $(EFL) $(CHAR) $(I77) $(TIME)
+ 
+-all: f2c.h signal1.h sysdep1.h libf2c.a
++all: libf2c.a
++
++$(OFILES): f2c.h signal1.h sysdep1.h
+ 
+ libf2c.a: $(OFILES)
+ 	ar r libf2c.a $?

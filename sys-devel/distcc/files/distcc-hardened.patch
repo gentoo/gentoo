@@ -1,0 +1,24 @@
+From: Gordon Malm <gengor@gentoo.org>
+
+Make distcc client pass -D__KERNEL__ macro.  Hardened GCC uses this
+macro to determine if code intended to be run in-kernel is being compiled.
+If the code is kernel code, certain compile flags are not applied.
+
+When using distcc to build kernel code (modules, etc.) without this patch,
+the distccd host doesn't get passed -D__KERNEL__.  Consequently, gcc on
+the distccd host applies all kinds of flags that it shouldn't.
+
+--- distcc-2.18.3/src/strip.c
++++ distcc-2.18.3-hardened/src/strip.c
+@@ -73,7 +73,10 @@ int dcc_strip_local_args(char **from, ch
+     /* skip through argv, copying all arguments but skipping ones that
+      * ought to be omitted */
+     for (from_i = to_i = 0; from[from_i]; from_i++) {
+-        if (str_equal("-D", from[from_i])
++        if (str_equal("-D__KERNEL__", from[from_i])) {
++            to[to_i++] = from[from_i];
++        }
++        else if (str_equal("-D", from[from_i])
+             || str_equal("-I", from[from_i])
+             || str_equal("-U", from[from_i])
+             || str_equal("-L", from[from_i])

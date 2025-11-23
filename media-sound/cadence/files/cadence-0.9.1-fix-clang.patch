@@ -1,0 +1,17 @@
+diff --git a/c++/jackbridge/JackBridgeDefines.hpp b/c++/jackbridge/JackBridgeDefines.hpp
+index a59f58a..8655291 100644
+--- a/c++/jackbridge/JackBridgeDefines.hpp
++++ b/c++/jackbridge/JackBridgeDefines.hpp
+@@ -50,12 +50,6 @@
+ # endif
+ #endif
+ 
+-#ifndef JACKBRIDGE_PROPER_CPP11_SUPPORT
+-# define override
+-# define noexcept
+-# define nullptr (0)
+-#endif
+-
+ // Common includes
+ #ifdef JACKBRIDGE_OS_WIN
+ # include <winsock2.h>

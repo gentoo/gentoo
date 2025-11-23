@@ -1,0 +1,19 @@
+https://github.com/USBGuard/usbguard/pull/582
+
+From a0083fd0eea3a513613a37262d40dfbe96e02e46 Mon Sep 17 00:00:00 2001
+From: Yaakov Selkowitz <yselkowi@redhat.com>
+Date: Tue, 24 Jan 2023 14:54:28 -0500
+Subject: [PATCH] Fix compile with GCC 13
+
+Signed-off-by: Yaakov Selkowitz <yselkowi@redhat.com>
+--- a/src/Library/Base64.hpp
++++ b/src/Library/Base64.hpp
+@@ -24,6 +24,7 @@
+ 
+ #include <string>
+ #include <cstddef>
++#include <cstdint>
+ 
+ namespace usbguard
+ {
+

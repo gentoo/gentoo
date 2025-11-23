@@ -1,0 +1,773 @@
+Fixes following error:
+
+1. error: type specifier missing, defaults to 'int'; ISO C99 and later do not support implicit int [-Wimplicit-int]
+2. error: call to undeclared library function '...' with type '...'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+3. error: call to undeclared function '...'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+4. error: incompatible function pointer types initializing 'void (*)()' with an expression of type 'int (FILE *)' (aka 'int (struct _IO_FILE *)') [-Wincompatible-function-pointer-types]
+5. error: incompatible pointer to integer conversion assigning to 'int' from 'char *' [-Wint-conversion]
+6. error: undefined reference to `GC_version'
+7. warning: unused variable '*** [-Wunused-variable]
+8. warning: ignoring return value of function declared with 'warn_unused_result' attribute [-Wunused-result]
+9. warning: variable '*' set but not used [-Wunused-but-set-variable]
+
+diff --git a/configure b/configure
+index 14ff1d2..5fc2f74 100755
+--- a/configure
++++ b/configure
+@@ -4,7 +4,7 @@
+ #
+ 
+ #
+-if ./which uname > /dev/null ; then
++if ./which uname ; then
+   sysname=`uname -s`
+   sysversion=`uname -r`
+   platform=`uname -m`
+@@ -256,12 +256,20 @@ do_sigtest() {
+  echo "#include <signal.h>" > _zmachdep.c
+ 
+  if [ "$2" = void ]; then
+-  echo "$1 _handler($2) {}" >> _zmachdep.c
++  if [ "$1" = int ] ; then
++   echo "$1 _handler($2) {return 0;}" >> _zmachdep.c
++  else
++   echo "$1 _handler($2) {}" >> _zmachdep.c
++  fi
+  else
+-  echo "$1 _handler($2 x) {}" >> _zmachdep.c
++  if [ "$1" = int ] ; then
++   echo "$1 _handler($2 x) {return 0;}" >> _zmachdep.c
++  else
++   echo "$1 _handler($2 x) {}" >> _zmachdep.c
++  fi
+  fi
+ 
+- echo "int main(void) { $1 (*hdl)($2); hdl = signal(SIGINT,_handler); return 0; }" >> _zmachdep.c
++ echo "int main(void) { $1 (*hdl)($2); hdl = signal(SIGINT,_handler); (void)hdl; return 0; }" >> _zmachdep.c
+  $cc $cflags -o _zmachdep _zmachdep.c > _zwarning 2>&1 
+  stat=$?
+  warning=`cat _zwarning`
+@@ -283,7 +291,7 @@ return 0;
+ }
+ EOF
+ 
+- if $cc $cflags -o _zmachdep _zmachdep.c > /dev/null 2>&1; then
++ if $cc $cflags -o _zmachdep _zmachdep.c 2>&1; then
+   echo "You don't need \"-lintl\""
+  else
+   echo "You need \"-lintl\""
+@@ -1346,7 +1354,10 @@ fi
+ termlib=''
+ 
+ cat > _zmachdep.c << EOF
+-main()
++#include <stdlib.h>
++#include <curses.h>
++#include <term.h>
++int main()
+ {
+   char bp[100];
+   tgetent(bp,getenv("TERM"));
+@@ -1362,7 +1373,7 @@ if [ -z "$dtermlib" ]; then
+     # check if the lib works...
+     Echo "Terminal library -l$lib found at $tlibdir, "
+ 
+-    if $cc $cflags -o _zmachdep _zmachdep.c -l$lib > /dev/null 2>&1; then
++    if $cc $cflags -o _zmachdep _zmachdep.c -l$lib 2>&1; then
+      echo "and it seems to work."
+      termlib=-l$lib
+     else
+@@ -1500,15 +1511,16 @@ done
+ 
+ if [ -n "$gclib" -a -n "$gcinclude" ]; then
+  cat > _zmachdep.c << EOF
++#include <stdio.h>
+ #include <gc.h>
+-main()
++int main()
+ {
+-  extern unsigned GC_version;
++  unsigned GC_version = GC_get_version();
+   printf("%d%02d%03d\n",(GC_version>>16)&0xff,(GC_version>>8)&0xff,GC_version&0xff);
+ }
+ EOF
+ 
+- if $cc $cflags $gc_cflags -I$gcinclude -o _zmachdep _zmachdep.c $gclib > /dev/null 2>&1; then
++ if $cc $cflags $gc_cflags -I$gcinclude -o _zmachdep _zmachdep.c $gclib 2>&1; then
+   echo "and it seems to work."
+   gcversion=`./_zmachdep`
+  fi
+@@ -1644,24 +1656,26 @@ def_param use_help_cgi $have_perl
+ 
+ ####### long long
+ cat > _zmachdep.c <<EOF
+-main()
++int main()
+ {
+   int i = sizeof(unsigned long long);
++  (void)i;
+ }
+ EOF
+-if $cc $cflags -o _zmachdep _zmachdep.c > /dev/null 2>&1
++if $cc $cflags -o _zmachdep _zmachdep.c 2>&1
+ then
+     echo "You have long long"
+     def_have_long_long="typedef long long clen_t;"
+     cat > _zmachdep.c <<EOF
+ #include <stdlib.h>
+-main()
++int main()
+ {
+     const char *s = "1";
+     long long ll = strtoll(s, NULL, 10);
++    (void)ll;
+ }
+ EOF
+-    if $cc $cflags -o _zmachdep _zmachdep.c > /dev/null 2>&1
++    if $cc $cflags -o _zmachdep _zmachdep.c 2>&1
+     then
+ 	echo "You have strtoll()"
+ 	def_have_strtoll="#define HAVE_STRTOLL"
+@@ -1673,13 +1687,14 @@ EOF
+ #include <sys/types.h>
+ #include <stdlib.h>
+ #include <limits.h>
+-main()
++int main()
+ {
+     const char *s = "1";
+     quad_t q = strtoq(s, NULL, 10);
++    (void)q;
+ }
+ EOF
+-    if $cc $cflags -o _zmachdep _zmachdep.c > /dev/null 2>&1
++    if $cc $cflags -o _zmachdep _zmachdep.c 2>&1
+     then
+ 	echo "You have strtoq()"
+ 	def_have_strtoq="#define HAVE_STRTOQ"
+@@ -1695,15 +1710,16 @@ fi
+ ####### strcasecmp
+ 
+ cat > _zmachdep.c << EOF
+-#include <string.h>
+-main()
++#include <strings.h>
++int main()
+ {
+   int i;
+   i = strcasecmp("abc","def");
++  (void)i;
+ }
+ EOF
+ 
+-if $cc $cflags -o _zmachdep _zmachdep.c > /dev/null 2>&1; then
++if $cc $cflags -o _zmachdep _zmachdep.c 2>&1; then
+  echo "You have strcasecmp()."
+  def_have_strcasecmp="#define HAVE_STRCASECMP"
+ else
+@@ -1714,13 +1730,14 @@ fi
+ ####### strcasestr
+ cat > _zmachdep.c << EOF
+ #include <string.h>
+-main()
++int main()
+ {
+-  int i;
+-  i = strcasestr("abc","def");
++  char *p;
++  p = strcasestr("abc","def");
++  (void)p;
+ }
+ EOF
+-if $cc $cflags -D_GNU_SOURCE -o _zmachdep _zmachdep.c > /dev/null 2>&1
++if $cc $cflags -D_GNU_SOURCE -o _zmachdep _zmachdep.c 2>&1
+ then
+   echo "You have strcasestr()."
+   def_have_strcasestr="#define HAVE_STRCASESTR"
+@@ -1733,14 +1750,15 @@ fi
+ 
+ cat > _zmachdep.c << EOF
+ #include <string.h>
+-main()
++int main()
+ {
+   char *p, *q = "abc";
+   p = strchr(q,'c');
++  (void)p;
+ }
+ EOF
+ 
+-if $cc $cflags -o _zmachdep _zmachdep.c > /dev/null 2>&1; then
++if $cc $cflags -o _zmachdep _zmachdep.c 2>&1; then
+  echo "You have strchr()."
+  def_have_strchr="#define HAVE_STRCHR"
+ else
+@@ -1751,14 +1769,16 @@ fi
+ ####### strerror
+ 
+ cat > _zmachdep.c << EOF
+-main()
++#include <string.h>
++int main()
+ {
+-  int i;
+-  i = strerror(0);
++  char *p;
++  p = strerror(0);
++  (void)p;
+ }
+ EOF
+ 
+-if $cc $cflags -o _zmachdep _zmachdep.c > /dev/null 2>&1; then
++if $cc $cflags -o _zmachdep _zmachdep.c 2>&1; then
+  echo "You have strerror()."
+  def_have_strerror="#define HAVE_STRERROR"
+ else
+@@ -1769,13 +1789,13 @@ fi
+ ####### sys_errlist
+ 
+ cat > _zmachdep.c << EOF
+-main()
++int main()
+ {
+   extern char sys_errlist[];
+ }
+ EOF
+ 
+-if $cc $cflags -o _zmachdep _zmachdep.c > /dev/null 2>&1; then
++if $cc $cflags -o _zmachdep _zmachdep.c 2>&1; then
+  echo "You have sys_errlist[]."
+  def_have_syserrlist="#define HAVE_SYS_ERRLIST"
+ else
+@@ -1786,7 +1806,8 @@ fi
+ ####### bcopy
+ 
+ cat > _zmachdep.c << EOF
+-main()
++#include <string.h>
++int main()
+ {
+   char x[1],y[1];
+   bzero(x,1);
+@@ -1794,7 +1815,7 @@ main()
+ }
+ EOF
+ 
+-if $cc $cflags -o _zmachdep _zmachdep.c > /dev/null 2>&1; then
++if $cc $cflags -o _zmachdep _zmachdep.c 2>&1; then
+  echo "You have bcopy()."
+  def_have_bcopy="#define HAVE_BCOPY"
+ else
+@@ -1805,10 +1826,12 @@ fi
+ ####### waitpid
+ 
+ cat > _zmachdep.c << EOF
++#include <unistd.h>
++#include <stdlib.h>
+ #include <sys/types.h>
+ #include <sys/wait.h>
+ 
+-main()
++int main()
+ {
+     pid_t pid;
+     int status;
+@@ -1820,7 +1843,7 @@ main()
+ }
+ EOF
+ 
+-if $cc $cflags -o _zmachdep _zmachdep.c > /dev/null 2>&1; then
++if $cc $cflags -o _zmachdep _zmachdep.c 2>&1; then
+  echo "You have waitpid()."
+  def_have_waitpid="#define HAVE_WAITPID"
+ else
+@@ -1831,6 +1854,8 @@ fi
+ ####### wait3
+ 
+ cat > _zmachdep.c << EOF
++#include <unistd.h>
++#include <stdlib.h>
+ #include <sys/types.h>
+ #include <time.h>
+ #include <sys/time.h>
+@@ -1840,7 +1865,7 @@ cat > _zmachdep.c << EOF
+ #define NULL 0
+ #endif
+ 
+-main()
++int main()
+ {
+     int pid;
+     int status;
+@@ -1852,12 +1877,12 @@ main()
+ }
+ EOF
+ 
+-if $cc $cflags -o _zmachdep _zmachdep.c > /dev/null 2>&1; then
++if $cc $cflags -o _zmachdep _zmachdep.c 2>&1; then
+  echo "You have wait3()."
+  def_have_wait3="#define HAVE_WAIT3"
+ else
+  echo "You don't have wait3()."
+- def_have_wait3="#undef HAVE_WAITPID"
++ def_have_wait3="#undef HAVE_WAIT3"
+ fi
+ 
+ ####### strftime
+@@ -1865,17 +1890,18 @@ fi
+ cat > _zmachdep.c << EOF
+ #include <time.h>
+ 
+-main()
++int main()
+ {
+     time_t ct;
+     struct tm *tm;
+     char t[80];
+     time(&ct);
+     strftime(t, 80, "%a, %d %b %Y %H:%M:%S GMT",gmtime(&ct));
++    (void)tm;
+ }
+ EOF
+ 
+-if $cc $cflags -o _zmachdep _zmachdep.c > /dev/null 2>&1; then
++if $cc $cflags -o _zmachdep _zmachdep.c 2>&1; then
+  echo "You have strftime()."
+  def_have_strftime="#define HAVE_STRFTIME"
+ else
+@@ -1888,18 +1914,19 @@ fi
+ cat > _zmachdep.c << EOF
+ #include <sys/param.h>
+ #include <unistd.h>
+-main()
++int main()
+ {
+ #ifdef MAXPATHLEN
+   char path[MAXPATHLEN];
+-  getcwd(path,MAXPATHLEN);
++  char *p = getcwd(path,MAXPATHLEN);
++  (void)p;
+ #else
+   gwtcwd(NULL, 0);
+ #endif
+ }
+ EOF
+ 
+-if $cc $cflags -o _zmachdep _zmachdep.c > /dev/null 2>&1; then
++if $cc $cflags -o _zmachdep _zmachdep.c 2>&1; then
+  echo "You have getcwd()."
+  def_have_getcwd="#define HAVE_GETCWD"
+ else
+@@ -1910,14 +1937,16 @@ fi
+ ####### getwd
+ 
+ cat > _zmachdep.c << EOF
+-main()
++#include <unistd.h>
++int main()
+ {
+   char path[64];
+-  getwd(path);
++  char *p = getwd(path);
++  (void)p;
+ }
+ EOF
+ 
+-if $cc $cflags -o _zmachdep _zmachdep.c > /dev/null 2>&1; then
++if $cc $cflags -o _zmachdep _zmachdep.c 2>&1; then
+  echo "You have getwd()."
+  def_have_getwd="#define HAVE_GETWD"
+ else
+@@ -1927,13 +1956,15 @@ fi
+ 
+ ####### symlink
+ cat > _zmachdep.c << EOF
+-main()
++#include <unistd.h>
++int main()
+ {
+   char path[64],lpath[64];
+-  symlink(path,lpath);
++  int i = symlink(path,lpath);
++  (void)i;
+ }
+ EOF
+-if $cc $cflags -o _zmachdep _zmachdep.c > /dev/null 2>&1
++if $cc $cflags -o _zmachdep _zmachdep.c 2>&1
+ then
+   echo "You have symlink()."
+   def_have_symlink="#define HAVE_SYMLINK"
+@@ -1945,14 +1976,16 @@ fi
+ ####### readlink
+ 
+ cat > _zmachdep.c << EOF
+-main()
++#include <unistd.h>
++int main()
+ {
+   char path[64],lpath[64];
+-  readlink(path,lpath,64);
++  ssize_t l = readlink(path,lpath,64);
++  (void)l;
+ }
+ EOF
+ 
+-if $cc $cflags -o _zmachdep _zmachdep.c > /dev/null 2>&1; then
++if $cc $cflags -o _zmachdep _zmachdep.c 2>&1; then
+  echo "You have readlink()."
+  def_have_readlink="#define HAVE_READLINK"
+ else
+@@ -1964,14 +1997,14 @@ fi
+ cat > _zmachdep.c << EOF
+ #include <sys/types.h>
+ #include <sys/stat.h>
+-main()
++int main()
+ {
+   struct stat st;
+   char path[64];
+   lstat(path,&st);
+ }
+ EOF
+-if $cc $cflags -o _zmachdep _zmachdep.c > /dev/null 2>&1
++if $cc $cflags -o _zmachdep _zmachdep.c 2>&1
+ then
+   echo "You have lstat()."
+   def_have_lstat="#define HAVE_LSTAT"
+@@ -1984,13 +2017,13 @@ fi
+ 
+ cat > _zmachdep.c << EOF
+ #include <stdlib.h>
+-main()
++int main()
+ {
+   setenv("HOGE","hoge",1);
+ }
+ EOF
+ 
+-if $cc $cflags -o _zmachdep _zmachdep.c > /dev/null 2>&1; then
++if $cc $cflags -o _zmachdep _zmachdep.c 2>&1; then
+  echo "You have setenv()."
+  def_have_setenv="#define HAVE_SETENV"
+ else
+@@ -2002,13 +2035,13 @@ fi
+ 
+ cat > _zmachdep.c << EOF
+ #include <stdlib.h>
+-main()
++int main()
+ {
+   putenv("HOGE=hoge");
+ }
+ EOF
+ 
+-if $cc $cflags -o _zmachdep _zmachdep.c > /dev/null 2>&1; then
++if $cc $cflags -o _zmachdep _zmachdep.c 2>&1; then
+  echo "You have putenv()."
+  def_have_putenv="#define HAVE_PUTENV"
+ else
+@@ -2019,8 +2052,9 @@ fi
+ ####### sigsetjmp
+ 
+ cat > _zmachdep.c << EOF
++#include <stdlib.h>
+ #include <setjmp.h>
+-main()
++int main()
+ {
+   jmp_buf env;
+   if (sigsetjmp(env,1) != 0) {
+@@ -2030,7 +2064,7 @@ main()
+ }
+ EOF
+ 
+-if $cc $cflags -o _zmachdep _zmachdep.c > /dev/null 2>&1; then
++if $cc $cflags -o _zmachdep _zmachdep.c 2>&1; then
+  echo "You have sigsetjmp()."
+  def_setjmp="#define SETJMP(env) sigsetjmp(env,1)"
+  def_longjmp="#define LONGJMP(env,val) siglongjmp(env,val)"
+@@ -2046,13 +2080,13 @@ fi
+ 
+ cat > _zmachdep.c << EOF
+ #include <stdlib.h>
+-main()
++int main()
+ {
+   srand48(0);
+ }
+ EOF
+ 
+-if $cc $cflags -o _zmachdep _zmachdep.c > /dev/null 2>&1; then
++if $cc $cflags -o _zmachdep _zmachdep.c 2>&1; then
+  echo "You have srand48()."
+  def_have_srand48="#define HAVE_SRAND48"
+ else
+@@ -2064,13 +2098,13 @@ fi
+ 
+ cat > _zmachdep.c << EOF
+ #include <stdlib.h>
+-main()
++int main()
+ {
+   srandom(0);
+ }
+ EOF
+ 
+-if $cc $cflags -o _zmachdep _zmachdep.c > /dev/null 2>&1; then
++if $cc $cflags -o _zmachdep _zmachdep.c 2>&1; then
+  echo "You have srandom()."
+  def_have_srandom="#define HAVE_SRANDOM"
+ else
+@@ -2082,13 +2116,13 @@ fi
+ 
+  cat > _zmachdep.c << EOF
+ #include <unistd.h>
+-main()
++int main()
+ {
+   getpassphrase("");
+ }
+ EOF
+ 
+-if $cc $cflags -o _zmachdep _zmachdep.c > /dev/null 2>&1; then
++if $cc $cflags -o _zmachdep _zmachdep.c 2>&1; then
+  echo "You have getpassphrase()."
+  def_have_getpassphrase="#define HAVE_GETPASSPHRASE"
+ else
+@@ -2101,13 +2135,14 @@ fi
+ cat > _zmachdep.c <<EOF
+ #include <stdio.h>
+ #include <unistd.h>
+-main()
++int main()
+ {
+- int (*c)() = chdir;
++ int (*c)(const char *) = chdir;
++ (void)c;
+ }
+ EOF
+ 
+-if $cc $cflags -o _zmachdep _zmachdep.c > /dev/null 2>&1; then
++if $cc $cflags -o _zmachdep _zmachdep.c 2>&1; then
+  echo "You have chdir()."
+  def_have_chdir="#define HAVE_CHDIR"
+ else
+@@ -2120,13 +2155,14 @@ fi
+ cat > _zmachdep.c << EOF
+ #include <stdio.h>
+ #include <stdlib.h>
+-main()
++int main()
+ {
+-  void (*c)() = fclose;
++  int (*c)(FILE *) = fclose;
++  (void)c;
+ }
+ EOF
+ 
+-if $cc $cflags -o _zmachdep _zmachdep.c > /dev/null 2>&1; then
++if $cc $cflags -o _zmachdep _zmachdep.c 2>&1; then
+  echo "fclose() is declared."
+  dcl_fclose=''
+ else
+@@ -2139,13 +2175,14 @@ fi
+ cat > _zmachdep.c << EOF
+ #include <stdio.h>
+ #include <stdlib.h>
+-main()
++int main()
+ {
+-  void (*c)() = pclose;
++  int (*c)(FILE *) = pclose;
++  (void)c;
+ }
+ EOF
+ 
+-if $cc $cflags -o _zmachdep _zmachdep.c > /dev/null 2>&1; then
++if $cc $cflags -o _zmachdep _zmachdep.c 2>&1; then
+  echo "pclose() is declared."
+  dcl_pclose=''
+ else
+@@ -2248,13 +2285,13 @@ fi
+ 
+ cat > _zmachdep.c << EOF
+ #include <float.h>
+-main()
++int main()
+ {
+   ;
+ }
+ EOF
+ 
+-if $cc $cflags -c _zmachdep.c > /dev/null 2>&1; then
++if $cc $cflags -c _zmachdep.c 2>&1; then
+  echo "You have float.h."
+  def_have_float_h='#define HAVE_FLOAT_H'
+ else
+@@ -2265,13 +2302,13 @@ fi
+ 
+ cat > _zmachdep.c <<EOF
+ #include <sys/select.h>
+-main()
++int main()
+ { 
+   ;
+ }
+ EOF
+ 
+-if $cc $cflags -c _zmachdep.c > /dev/null 2>&1; then
++if $cc $cflags -c _zmachdep.c 2>&1; then
+  echo "You have sys/select.h."
+  def_sys_select_h='#define HAVE_SYS_SELECT_H'
+ else
+@@ -2289,7 +2326,7 @@ int main(){
+ }
+ EOF
+ 
+-if $cc $cflags -o _zmachdep _zmachdep.c > /dev/null 2>&1; then
++if $cc $cflags -o _zmachdep _zmachdep.c 2>&1; then
+  echo "You have setpgrp()."
+  def_have_setpgrp='#define HAVE_SETPGRP'
+ else
+@@ -2302,7 +2339,7 @@ int main(){
+ }
+ EOF
+ 
+- if $cc $cflags -o _zmachdep _zmachdep.c $extlib > /dev/null 2>&1; then
++ if $cc $cflags -o _zmachdep _zmachdep.c $extlib 2>&1; then
+   echo "You have setpgrp( pid, pgrp )."
+   def_have_setpgrp='#define HAVE_SETPGRP'
+   def_setpgrp='#define SETPGRP() setpgrp( 0, 0 )'
+@@ -2318,7 +2355,7 @@ cat > _zmachdep.c <<EOF
+ #include <stdarg.h>
+ #include <stdio.h>
+ 
+-main()
++int main()
+ {
+  va_list a, b;
+ 
+@@ -2327,7 +2364,7 @@ main()
+ }
+ EOF
+ 
+-if $cc $cflags -o _zmachdep _zmachdep.c > /dev/null 2>&1; then
++if $cc $cflags -o _zmachdep _zmachdep.c 2>&1; then
+  echo "You have va_copy()."
+  def_have_va_copy='#define HAVE_VA_COPY'
+  def_va_copy=
+@@ -2339,7 +2376,7 @@ cat > _zmachdep.c <<EOF
+ #include <stdarg.h>
+ #include <stdio.h>
+ 
+-main()
++int main()
+ {
+  va_list a, b;
+ 
+@@ -2348,7 +2385,7 @@ main()
+ }
+ EOF
+ 
+- if $cc $cflags -o _zmachdep _zmachdep.c > /dev/null 2>&1; then
++ if $cc $cflags -o _zmachdep _zmachdep.c 2>&1; then
+   echo "You have __va_copy()."
+   def_va_copy='#define va_copy(dest, src) __va_copy(dest, src)'
+  else
+@@ -2357,7 +2394,7 @@ cat > _zmachdep.c <<EOF
+ #include <stdarg.h>
+ #include <stdio.h>
+ 
+-main()
++int main()
+ {
+  va_list a, b;
+ 
+@@ -2366,7 +2403,7 @@ main()
+ }
+ EOF
+ 
+-  if $cc $cflags -o _zmachdep _zmachdep.c > /dev/null 2>&1; then
++  if $cc $cflags -o _zmachdep _zmachdep.c 2>&1; then
+    echo "Your va_list is not an array."
+    def_va_copy='#define va_copy(dest, src) ((dest) = (src))'
+   else
+@@ -2379,9 +2416,10 @@ fi
+ ###### IPv6 support check
+ 
+ cat > _zmachdep.c <<EOF
++#include <stdlib.h>
+ #include <sys/types.h>
+ #include <sys/socket.h>
+-main()
++int main()
+ {
+  if (socket(AF_INET6, SOCK_STREAM, 0) < 0)
+    exit(1);
+@@ -2394,7 +2432,7 @@ def_ipv6="#undef INET6"
+ v6_ss_family=""
+ v6lib=''
+ 
+-if $cc $cflags -o _zmachdep _zmachdep.c $extlib > /dev/null 2>&1; then
++if $cc $cflags -o _zmachdep _zmachdep.c $extlib 2>&1; then
+  if ./_zmachdep; then
+   def_ipv6="#define INET6"
+  else
+@@ -2421,7 +2459,7 @@ int main() {
+ }
+ EOF
+ 
+-    if $cc $cflags -o _zmachdep _zmachdep.c $extlib > /dev/null 2>&1; then
++    if $cc $cflags -o _zmachdep _zmachdep.c $extlib 2>&1; then
+      echo "You have getaddrinfo() in libc."
+     else
+      for tlibdir in /usr/local/v6/lib /usr/local/lib /usr/lib; do
+@@ -2432,7 +2470,7 @@ EOF
+ 
+        v6lib="$v6lib -linet6"
+ 
+-       if $cc $cflags -o _zmachdep _zmachdep.c $extlib $v6lib > /dev/null 2>&1; then
++       if $cc $cflags -o _zmachdep _zmachdep.c $extlib $v6lib 2>&1; then
+ 	echo "You have getaddrinfo() in libinet6."
+        fi
+ 
+@@ -2461,10 +2499,11 @@ if [ "$def_ipv6" = "#define INET6" ]; then
+ int main() {
+     struct sockaddr_storage ss;
+     int i = ss.ss_family;
++    (void)i;
+ }
+ EOF
+ 
+- if $cc $cflags -o _zmachdep _zmachdep.c $extlib > /dev/null 2>&1; then
++ if $cc $cflags -o _zmachdep _zmachdep.c $extlib 2>&1; then
+   echo "You have ss_family."
+  else
+   cat > _zmachdep.c <<EOF
+@@ -2475,7 +2514,7 @@ int main() {
+ }
+ EOF
+ 
+-  if $cc $cflags -o _zmachdep _zmachdep.c $extlib > /dev/null 2>&1; then
++  if $cc $cflags -o _zmachdep _zmachdep.c $extlib 2>&1; then
+    echo "You have __ss_family."
+    def_ipv6_ss_family="#define ss_family __ss_family"
+   else
+@@ -2996,7 +3035,7 @@ cat > extrvers.c << EOF
+ #include <stdio.h>
+ #include <string.h>
+ #include "version.c"
+-main()
++int main()
+ {
+   char *p = strchr(w3m_version,'/');
+   if (p == NULL)
+@@ -3006,7 +3045,7 @@ main()
+ }
+ EOF
+ 
+-$cc $cflags $mb_cflag -o extrvers$extension extrvers.c  > /dev/null 2>&1
++$cc $cflags $mb_cflag -o extrvers$extension extrvers.c 2>&1
+ w3mversion=`./extrvers`
+ echo "Current w3m version is $w3mversion."
+ rm -f extrvers.c extrvers$extension

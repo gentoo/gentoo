@@ -1,0 +1,291 @@
+https://github.com/vapier/ncompress/commit/af7d29d87ddf8b2002dad41152efa94e9c825b35
+https://github.com/vapier/ncompress/commit/aa359df10ec29a56c12f6e5c2bcec8d8ecfa2740
+https://github.com/vapier/ncompress/pull/40
+
+From af7d29d87ddf8b2002dad41152efa94e9c825b35 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gmail.com>
+Date: Mon, 8 Feb 2021 00:28:08 -0500
+Subject: [PATCH] require standard C function prototype support
+
+We can drop the main prototype entirely as we don't need it.
+---
+ compress.c | 58 +++++++++++++++++++-----------------------------------
+ 2 files changed, 21 insertions(+), 38 deletions(-)
+
+diff --git a/compress.c b/compress.c
+index 12c89b8..ff3b51b 100644
+--- a/compress.c
++++ b/compress.c
+@@ -49,12 +49,6 @@
+ 	};
+ #endif
+ 
+-#ifdef	__STDC__
+-#	define	ARGS(a)				a
+-#else
+-#	define	ARGS(a)				()
+-#endif
+-
+ #ifndef SIG_TYPE
+ #	define	SIG_TYPE	void (*)()
+ #endif
+@@ -365,17 +359,16 @@ unsigned short	codetab[HSIZE];
+ 	} ;
+ #endif
+ 
+-int  	main			ARGS((int,char **));
+-void  	Usage			ARGS((int));
+-void  	comprexx		ARGS((const char *));
+-void  	compdir			ARGS((char *));
+-void  	compress		ARGS((int,int));
+-void  	decompress		ARGS((int,int));
+-void  	read_error		ARGS((void));
+-void  	write_error		ARGS((void));
+-void 	abort_compress	ARGS((void));
+-void  	prratio			ARGS((FILE *,long,long));
+-void  	about			ARGS((void));
++void  	Usage			(int);
++void  	comprexx		(const char *);
++void  	compdir			(char *);
++void  	compress		(int, int);
++void  	decompress		(int, int);
++void  	read_error		(void);
++void  	write_error		(void);
++void 	abort_compress	(void);
++void  	prratio			(FILE *, long, long);
++void  	about			(void);
+ 
+ /*****************************************************************
+  * TAG( main )
+@@ -418,9 +411,7 @@ void  	about			ARGS((void));
+  *   procedure needs no input table, but tracks the way the table was built.
+  */ 
+ int
+-main(argc, argv)
+-	int 	 argc;
+-	char	*argv[];
++main(int argc, char *argv[])
+ 	{
+ 		char **filelist;
+ 		char **fileptr;
+@@ -632,8 +623,7 @@ Usage: %s [-dfhvcVr] [-b maxbits] [--] [path ...]\n\
+ 	}
+ 
+ void
+-comprexx(fileptr)
+-	const char	*fileptr;
++comprexx(const char	*fileptr)
+ 	{
+ 		int				 fdin = -1;
+ 		int				 fdout = -1;
+@@ -982,8 +972,7 @@ comprexx(fileptr)
+ 
+ #ifdef	RECURSIVE
+ void
+-compdir(dir)
+-	char	*dir;
++compdir(char *dir)
+ 	{
+ 		struct dirent *dp;
+ 		DIR *dirp;
+@@ -1059,9 +1048,7 @@ compdir(dir)
+  * questions about this implementation to ames!jaw.
+  */
+ void
+-compress(fdin, fdout)
+-	int		fdin;
+-	int		fdout;
++compress(int fdin, int fdout)
+ 	{
+ 		long hp;
+ 		int rpos;
+@@ -1294,9 +1281,7 @@ endlop:			if (fcode.e.ent >= FIRST && rpos < rsize)
+  */
+ 
+ void
+-decompress(fdin, fdout)
+-	int		fdin;
+-	int		fdout;
++decompress(int fdin, int fdout)
+ 	{
+ 		char_type *stackp;
+ 		code_int code;
+@@ -1519,7 +1504,7 @@ resetbuf:	;
+ 	}
+ 
+ void
+-read_error()
++read_error(void)
+ 	{
+ 		fprintf(stderr, "\nread error on");
+ 	    perror((ifname[0] != '\0') ? ifname : "stdin");
+@@ -1527,7 +1512,7 @@ read_error()
+ 	}
+ 
+ void
+-write_error()
++write_error(void)
+ 	{
+ 		fprintf(stderr, "\nwrite error on");
+ 	    perror(ofname ? ofname : "stdout");
+@@ -1535,7 +1520,7 @@ write_error()
+ 	}
+ 
+ void
+-abort_compress()
++abort_compress(void)
+ 	{
+ 		if (remove_ofname)
+ 	    	unlink(ofname);
+@@ -1544,10 +1529,7 @@ abort_compress()
+ 	}
+ 
+ void
+-prratio(stream, num, den)
+-	FILE		*stream;
+-	long int	 num;
+-	long int	 den;
++prratio(FILE *stream, long int num, long int den)
+ 	{
+ 		int q;			/* Doesn't need to be long */
+ 
+@@ -1571,7 +1553,7 @@ prratio(stream, num, den)
+ 	}
+ 
+ void
+-about()
++about(void)
+ 	{
+ 		printf("Compress version: %s\n", version_id);
+ 		printf("Compile options:\n        ");
+
+
+From aa359df10ec29a56c12f6e5c2bcec8d8ecfa2740 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gmail.com>
+Date: Mon, 8 Feb 2021 00:30:41 -0500
+Subject: [PATCH] mark all local functions as static
+
+This saves a small amount of space as the compiler can do better.
+---
+ compress.c | 20 ++++++++++----------
+ 2 files changed, 11 insertions(+), 10 deletions(-)
+
+diff --git a/compress.c b/compress.c
+index ff3b51b..86a8cda 100644
+--- a/compress.c
++++ b/compress.c
+@@ -359,16 +359,16 @@ unsigned short	codetab[HSIZE];
+ 	} ;
+ #endif
+ 
+-void  	Usage			(int);
+-void  	comprexx		(const char *);
+-void  	compdir			(char *);
+-void  	compress		(int, int);
+-void  	decompress		(int, int);
+-void  	read_error		(void);
+-void  	write_error		(void);
+-void 	abort_compress	(void);
+-void  	prratio			(FILE *, long, long);
+-void  	about			(void);
++static void Usage(int);
++static void comprexx(const char *);
++static void compdir(char *);
++static void compress(int, int);
++static void decompress(int, int);
++static void read_error(void);
++static void write_error(void);
++static void abort_compress(void);
++static void prratio(FILE *, long, long);
++static void about(void);
+ 
+ /*****************************************************************
+  * TAG( main )
+
+From 90810a7f11bf157b479c23c0fe6cee0bebec15c6 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyich@gmail.com>
+Date: Sat, 16 Nov 2024 18:49:48 +0000
+Subject: [PATCH] compress.c: fix -std=c23 build failure (signal handler
+ protos)
+
+gcc-15 switched to -std=c23 by default:
+
+    https://gcc.gnu.org/git/?p=gcc.git;a=commitdiff;h=55e3bd376b2214e200fa76d12b67ff259b06c212
+
+As a result `ncompress` fails the build as:
+
+    compress.c: In function 'main':
+    compress.c:382:40: error:
+      passing argument 2 of 'signal' from incompatible pointer type [-Wincompatible-pointer-types]
+      382 |                         signal(SIGINT, (SIG_TYPE)abort_compress);
+          |                                        ^~~~~~~~~~~~~~~~~~~~~~~~
+          |                                        |
+          |                                        void (*)(void)
+    In file included from compress.c:30:
+    ...-glibc-2.40-36-dev/include/signal.h:88:57: note:
+      expected '__sighandler_t' {aka 'void (*)(int)'} but argument is of type 'void (*)(void)'
+       88 | extern __sighandler_t signal (int __sig, __sighandler_t __handler)
+          |                                          ~~~~~~~~~~~~~~~^~~~~~~~~
+
+The change removes type casts around function prototypes and define
+signal handler as `void(*)(int)`.
+---
+ compress.c | 19 ++++++++++++-------
+ 1 file changed, 12 insertions(+), 7 deletions(-)
+
+diff --git a/compress.c b/compress.c
+index da91603..ea8081e 100644
+--- a/compress.c
++++ b/compress.c
+@@ -49,10 +49,6 @@
+ 	};
+ #endif
+ 
+-#ifndef SIG_TYPE
+-#	define	SIG_TYPE	void (*)()
+-#endif
+-
+ #if defined(AMIGA) || defined(DOS) || defined(MINGW) || defined(WINDOWS)
+ #	define	chmod(pathname, mode) 0
+ #	define	chown(pathname, owner, group) 0
+@@ -327,6 +323,7 @@ static void decompress(int, int);
+ static void read_error(void);
+ static void write_error(void);
+ static void abort_compress(void);
++static void abort_compress_handler(int);
+ static void prratio(FILE *, long, long);
+ static void about(void);
+ 
+@@ -379,14 +376,14 @@ main(int argc, char *argv[])
+ 
+ #ifdef SIGINT
+ 		if ((fgnd_flag = (signal(SIGINT, SIG_IGN)) != SIG_IGN))
+-			signal(SIGINT, (SIG_TYPE)abort_compress);
++			signal(SIGINT, abort_compress_handler);
+ #endif
+ 
+ #ifdef SIGTERM
+-		signal(SIGTERM, (SIG_TYPE)abort_compress);
++		signal(SIGTERM, abort_compress_handler);
+ #endif
+ #ifdef SIGHUP
+-		signal(SIGHUP, (SIG_TYPE)abort_compress);
++		signal(SIGHUP, abort_compress_handler);
+ #endif
+ 
+ #ifdef COMPATIBLE
+@@ -1489,6 +1486,14 @@ abort_compress(void)
+ 		exit(1);
+ 	}
+ 
++
++void
++abort_compress_handler(int signo)
++	{
++		(void)signo;
++		abort_compress();
++	}
++
+ void
+ prratio(FILE *stream, long int num, long int den)
+ 	{

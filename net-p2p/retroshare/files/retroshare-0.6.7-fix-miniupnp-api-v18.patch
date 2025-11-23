@@ -1,0 +1,32 @@
+From f1b89c4f87d77714571b4135c301bf0429096a20 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C8=98tefan=20Talpalaru?= <stefantalpalaru@yahoo.com>
+Date: Wed, 12 Jun 2024 01:00:41 +0200
+Subject: [PATCH] Support the miniupnpc-2.2.8 API change
+# NOTE: Taken from the official libretroshare repo
+# https://github.com/RetroShare/libretroshare/commit/c54e0266e4483797c1d6bacee6f563979d683464
+index 7178a8e39..5e5358fb9 100644
+--- a/libretroshare/src/rs_upnp/upnphandler_miniupnp.cc
++++ b/libretroshare/src/rs_upnp/upnphandler_miniupnp.cc
+@@ -41,6 +41,9 @@ class uPnPConfigData
+ 		struct UPNPUrls urls;
+ 		struct IGDdatas data;
+ 		char lanaddr[16];	/* my ip address on the LAN */
++#if MINIUPNPC_API_VERSION >= 18
++		char wanaddr[16];	/* my ip address on the WAN */
++#endif
+ };
+ 
+ #include <iostream>
+@@ -139,6 +142,10 @@ bool upnphandler::initUPnPState()
+ 		putchar('\n');
+ 		if(UPNP_GetValidIGD(upcd->devlist, &(upcd->urls),
+ 				&(upcd->data), upcd->lanaddr,
+-				sizeof(upcd->lanaddr)))
++				sizeof(upcd->lanaddr)
++#if MINIUPNPC_API_VERSION >= 18
++				, upcd->wanaddr, sizeof(upcd->wanaddr)
++#endif
++				))
+ 		{
+ 			printf("Found valid IGD : %s\n",
+ 					upcd->urls.controlURL);

@@ -1,0 +1,20 @@
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+ARCH="s390"
+ACCEPT_KEYWORDS="s390 ~s390"
+
+CFLAGS="-O2 -pipe"
+CXXFLAGS="${CFLAGS}"
+FFLAGS="${CFLAGS}"
+FCFLAGS="${CFLAGS}"
+
+LIBDIR_s390x="lib64"
+LIBDIR_s390="lib"
+
+INPUT_DEVICES="void"
+VIDEO_CARDS="dummy"
+
+# While multilib is available, we don't default it to on.
+BOOTSTRAP_USE="${BOOTSTRAP_USE} -multilib"
+USE="-multilib"

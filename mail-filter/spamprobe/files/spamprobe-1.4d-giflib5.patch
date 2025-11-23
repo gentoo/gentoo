@@ -1,0 +1,27 @@
+diff -Nur spamprobe~/src/parser/GifParser.cc spamprobe/src/parser/GifParser.cc
+--- spamprobe~/src/parser/GifParser.cc
++++ spamprobe/src/parser/GifParser.cc
+@@ -81,7 +81,11 @@
+ GifParser::~GifParser()
+ {
+   if (m_gif) {
++#if defined(GIFLIB_MAJOR) && GIFLIB_MAJOR >= 5
++    DGifCloseFile(m_gif, NULL);
++#else
+     DGifCloseFile(m_gif);
++#endif
+   }
+ }
+ 
+@@ -99,7 +103,11 @@
+ void GifParser::openImage()
+ {
+   m_nextByteIndex = 0;
++#if defined(GIFLIB_MAJOR) && GIFLIB_MAJOR >= 5
++  m_gif = DGifOpen(this, readFromBuffer, NULL);
++#else
+   m_gif = DGifOpen(this, readFromBuffer);
++#endif
+   if (!m_gif) {
+     throw runtime_error("open gif failed");
+   }

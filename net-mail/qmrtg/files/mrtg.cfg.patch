@@ -1,0 +1,83 @@
+--- a/examples/mrtg.cfg
++++ b/examples/mrtg.cfg
+@@ -52,7 +52,7 @@
+ Directory[qmail.deliveries]: qmail.deliveries
+ MaxBytes[qmail.deliveries]: 10000
+ AbsMax[qmail.deliveries]: 20000
+-Target[qmail.deliveries]: `/usr/local/bin/qmrtg.sh deliveries`
++Target[qmail.deliveries]: `/usr/bin/qmrtg.sh deliveries`
+ PageTop[qmail.deliveries]: <H1>Deliveries</H1>
+ ShortLegend[qmail.deliveries]: delivs
+ YLegend[qmail.deliveries]: deliveries
+@@ -71,7 +71,7 @@
+ Directory[qmail.queue-size]: qmail.queue-size
+ MaxBytes[qmail.queue-size]: 10000
+ AbsMax[qmail.queue-size]: 100000
+-Target[qmail.queue-size]: `/usr/local/bin/qmrtg-queue /var/qmail/queue`
++Target[qmail.queue-size]: `/usr/bin/qmrtg-queue /var/qmail/queue`
+ PageTop[qmail.queue-size]: <H1>Queue size</H1>
+ ShortLegend[qmail.queue-size]: msgs
+ YLegend[qmail.queue-size]: messages
+@@ -90,7 +90,7 @@
+ Directory[qmail.deliverrors]: qmail.deliverrors
+ MaxBytes[qmail.deliverrors]: 10000
+ AbsMax[qmail.deliverrors]: 100000
+-Target[qmail.deliverrors]: `/usr/local/bin/qmrtg.sh errors`
++Target[qmail.deliverrors]: `/usr/bin/qmrtg.sh errors`
+ PageTop[qmail.deliverrors]: <H1>Delivery errors</H1> 
+ ShortLegend[qmail.deliverrors]: errs
+ YLegend[qmail.deliverrors]: errors
+@@ -109,7 +109,7 @@
+ Directory[qmail.bytes]: qmail.bytes
+ MaxBytes[qmail.bytes]: 200000
+ AbsMax[qmail.bytes]: 10000000
+-Target[qmail.bytes]: `/usr/local/bin/qmrtg.sh throughput`
++Target[qmail.bytes]: `/usr/bin/qmrtg.sh throughput`
+ PageTop[qmail.bytes]: <H1>Throughput</H1>
+ ShortLegend[qmail.bytes]: B
+ YLegend[qmail.bytes]: bytes
+@@ -127,7 +127,7 @@
+ Options[qmail.smtp-concurrency]: growright,unknaszero,nopercent,gauge
+ Directory[qmail.smtp-concurrency]: qmail.smtp-concurrency
+ MaxBytes[qmail.smtp-concurrency]: 100
+-Target[qmail.smtp-concurrency]: `/usr/local/bin/qmrtg.sh smtp-concurrency`
++Target[qmail.smtp-concurrency]: `/usr/bin/qmrtg.sh smtp-concurrency`
+ PageTop[qmail.smtp-concurrency]: <H1>SMTP Concurrency</H1>
+ ShortLegend[qmail.smtp-concurrency]: conns
+ YLegend[qmail.smtp-concurrency]: connections
+@@ -146,7 +146,7 @@
+ Directory[qmail.smtphits]: qmail.smtphits
+ MaxBytes[qmail.smtphits]: 1000
+ AbsMax[qmail.smtphits]: 10000
+-Target[qmail.smtphits]: `/usr/local/bin/qmrtg.sh smtpconns`
++Target[qmail.smtphits]: `/usr/bin/qmrtg.sh smtpconns`
+ PageTop[qmail.smtphits]: <H1>SMTP Totals</H1>
+ ShortLegend[qmail.smtphits]: conns
+ YLegend[qmail.smtphits]: connections
+@@ -165,7 +165,7 @@
+ Directory[qmail.pop-concurrency]: qmail.pop-concurrency
+ MaxBytes[qmail.pop-concurrency]: 100
+ AbsMax[qmail.pop-concurrency]: 500 
+-Target[qmail.pop-concurrency]: `/usr/local/bin/qmrtg.sh pop-concurrency`
++Target[qmail.pop-concurrency]: `/usr/bin/qmrtg.sh pop-concurrency`
+ PageTop[qmail.pop-concurrency]: <H1>POP3 Concurrency</H1>
+ ShortLegend[qmail.pop-concurrency]: concur
+ YLegend[qmail.pop-concurrency]: concurrency
+@@ -184,7 +184,7 @@
+ Directory[qmail.pophits]: qmail.pophits
+ MaxBytes[qmail.pophits]: 1000
+ AbsMax[qmail.pophits]: 10000
+-Target[qmail.pophits]: `/usr/local/bin/qmrtg.sh popconns`
++Target[qmail.pophits]: `/usr/bin/qmrtg.sh popconns`
+ PageTop[qmail.pophits]: <H1>POP3 Totals</H1>
+ ShortLegend[qmail.pophits]: conns
+ YLegend[qmail.pophits]: connections
+@@ -203,7 +203,7 @@
+ Directory[qmail.dnsbl]: qmail.dnsbl
+ MaxBytes[qmail.dnsbl]: 1000
+ AbsMax[qmail.dnsbl]: 10000
+-Target[qmail.dnsbl]: `/usr/local/bin/qmrtg.sh dnsbl`
++Target[qmail.dnsbl]: `/usr/bin/qmrtg.sh dnsbl`
+ PageTop[qmail.dnsbl]: <H1>POP3 Totals</H1>
+ ShortLegend[qmail.dnsbl]: conns
+ YLegend[qmail.dnsbl]: connections

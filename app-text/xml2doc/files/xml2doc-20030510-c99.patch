@@ -1,0 +1,51 @@
+https://bugs.gentoo.org/923170
+--- a/src/defs.c
++++ b/src/defs.c
+@@ -1,5 +1,7 @@
+ #include "defs.h"
+ 
++#include <stdlib.h>
++
+ int defs_init()
+ {
+ 	DocS.page=0;
+--- a/src/defs.h
++++ b/src/defs.h
+@@ -1,6 +1,7 @@
+ #ifndef _INCLUDE_DEFS_H_
+ #define _INCLUDE_DEFS_H_
+ 
++#include <stdlib.h>
+ #include <stdio.h>
+ #include <string.h>
+ #include <unistd.h>
+--- a/src/main.c
++++ b/src/main.c
+@@ -1,5 +1,7 @@
+ #include "main.h"
+ 
++#include <stdlib.h>
++
+ /*
+  *
+  * PDF_set_value(p,"nameofvalue",(float)value); // get/set
+--- a/src/parse.c
++++ b/src/parse.c
+@@ -1,5 +1,7 @@
+ #include "defs.h"
+ 
++#include <stdlib.h>
++
+ int parse(const char *file)
+ {
+ 	Doc[n].doc=xmlParseFile(file);
+--- a/src/defs.c
++++ b/src/defs.c
+@@ -12,6 +12,7 @@ int defs_init()
+ 	DocS.add.colors=(struct_colors *)malloc(1);
+ 	DocS.add.pages =(struct_pages  *)malloc(1);
+ 	DocS.add.sizes =(struct_sizes  *)malloc(1);
++	return 0;
+ }
+ 
+ int defs_default() // Set default values

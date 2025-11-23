@@ -1,0 +1,15 @@
+MiscGui.cpp:1434:18: error: 'fl_display' was not declared ...
+
+Other files are using x.H, but that header is deprecated and
+the correct one is platform.H. fl_display is X-specific, so
+this likely cannot work without fltk[X] at the moment.
+--- a/UI/MiscGui.cpp
++++ b/UI/MiscGui.cpp
+@@ -28,6 +28,7 @@
+ 
+ #include <FL/Fl.H>
+ #include <FL/fl_draw.H>
++#include <FL/platform.H>
+ 
+ #include <cairo.h>
+ #include <cairo-xlib.h>

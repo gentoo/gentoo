@@ -1,0 +1,39 @@
+Libc++ lands on generic mathod and fails with `std::uniform_int_distribution<char>` (bad integer type)
+--- a/clients/include/hipblaslt_random.hpp
++++ b/clients/include/hipblaslt_random.hpp
+@@ -88,18 +88,34 @@ class hipblaslt_nan_rng
+ 
+ public:
+     // Random integer
+-    template <typename T, std::enable_if_t<std::is_integral<T>{}, int> = 0>
++    template <typename T, std::enable_if_t<
++        std::is_integral<T>::value &&
++        !std::is_same<T, signed char>::value &&
++        !std::is_same<T, unsigned char>::value,
++    int> = 0>
+     explicit operator T()
+     {
+         return std::uniform_int_distribution<T>{}(t_hipblaslt_rng);
+     }
+ 
++    // Random unsigned char
++    explicit operator unsigned char()
++    {
++        return static_cast<char>(std::uniform_int_distribution<unsigned>{}(t_hipblaslt_rng));
++    }
++
+     // Random signed char
+     explicit operator signed char()
+     {
+         return static_cast<signed char>(std::uniform_int_distribution<int>{}(t_hipblaslt_rng));
+     }
+ 
++    // Random char
++    explicit operator char()
++    {
++        return static_cast<char>(std::uniform_int_distribution<int>{}(t_hipblaslt_rng));
++    }
++
+     // Random NaN double
+     explicit operator double()
+     {

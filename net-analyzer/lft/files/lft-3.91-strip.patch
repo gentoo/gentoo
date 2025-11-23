@@ -1,0 +1,11 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -51,8 +51,6 @@
+ 
+ install: lft lft.8 whob whob.8
+ 	@echo "LFT and WhoB"
+-	@echo "  \_Stripping binaries"
+-	@$(STRIP) lft whob
+ 	@echo "  \_Copying files to their intended destinations"
+ 	@test -d $(DESTDIR)$(bindir)/. || $(MKDIR) $(DESTDIR)$(bindir)
+ 	$(INSTALL) lft $(DESTDIR)$(bindir)/lft

@@ -1,0 +1,14 @@
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# define the device file, adapt this
+#DEV_FILE=/dev/lp0
+DEV_FILE=/dev/usb/lp0
+
+# Special options, adapt this
+# add name of printer
+NAME=
+
+# use the first line for USB printers, the second for parallel port printers
+SPEC="-name $NAME -usbbase /dev/usb/lp"
+#SPEC="-name $NAME"

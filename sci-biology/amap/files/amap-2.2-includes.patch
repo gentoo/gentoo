@@ -1,0 +1,44 @@
+Fixes build with gcc 4.3 and 4.6
+
+http://bugs.gentoo.org/217921
+http://bugs.gentoo.org/360517
+
+--- amap-align/align/Amap.cc
++++ amap-align/align/Amap.cc
+@@ -12,6 +12,8 @@
+ #include "ProbabilisticModel.h"
+ #include "EvolutionaryTree.h"
+ #include "SparseMatrix.h"
++#include <limits>
++#include <climits>
+ #include <string>
+ #include <sstream>
+ #include <iomanip>
+@@ -23,6 +25,7 @@
+ #include <cstdlib>
+ #include <cerrno>
+ #include <iomanip>
++#include <cstring>
+ 
+ string parametersInputFilename = "";
+ string parametersOutputFilename = "no training";
+--- amap-align/align/MultiSequenceDag.h
++++ amap-align/align/MultiSequenceDag.h
+@@ -13,6 +13,7 @@
+ #include <map>
+ #include <queue>
+ #include <iostream>
++#include <limits>
+ #include "MultiSequence.h"
+ #include "SparseMatrix.h"
+ 
+--- amap-align/align/SafeVector.h.org	2011-03-26 11:50:11.935069583 +0100
++++ amap-align/align/SafeVector.h	2011-03-26 11:50:21.112553151 +0100
+@@ -9,6 +9,7 @@
+ #define SAFEVECTOR_H
+ 
+ #include <cassert>
++#include <cstddef>
+ #include <vector>
+ 
+ /////////////////////////////////////////////////////////////////

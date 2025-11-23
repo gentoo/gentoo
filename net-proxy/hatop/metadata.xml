@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>idl0r@gentoo.org</email>
+		<name>Christian Ruppert</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/jhunt/hatop/issues</bugs-to>
+		<changelog>https://github.com/jhunt/hatop/releases</changelog>
+		<remote-id type="github">jhunt/hatop</remote-id>
+	</upstream>
+	<stabilize-allarches/>
+</pkgmetadata>

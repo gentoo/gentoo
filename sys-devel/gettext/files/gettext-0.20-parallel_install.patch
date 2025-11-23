@@ -1,0 +1,37 @@
+From 829660df1583c6c3ee1d90291dd910f08e3b777e Mon Sep 17 00:00:00 2001
+From: Arfrever Frehtes Taifersar Arahesis <Arfrever@Apache.Org>
+Date: Fri, 10 May 2019 20:08:25 +0200
+Subject: [PATCH] Fix parallel install issue
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ gettext-tools/src/Makefile.am | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/gettext-tools/src/Makefile.am b/gettext-tools/src/Makefile.am
+index 09a3c153d..1ee49cdca 100644
+--- a/gettext-tools/src/Makefile.am
++++ b/gettext-tools/src/Makefile.am
+@@ -252,9 +252,16 @@ cldr_plurals_LDADD = libgettextsrc.la $(LDADD)
+ 
+ # How to get the include files of libtextstyle.
+ textstyle.h textstyle/stdbool.h textstyle/version.h textstyle/woe32dll.h:
+-	here=`pwd`; \
+-	cd ../../libtextstyle/lib && \
+-	  $(MAKE) install-nobase_includeHEADERS install-nobase_nodist_includeHEADERS includedir="$$here"
++	cd "$(abs_top_builddir)/../libtextstyle/lib" && $(MAKE) $@
++	if test -f "$(abs_top_builddir)/../libtextstyle/lib/$@"; then \
++		file="$(abs_top_builddir)/../libtextstyle/lib/$@"; \
++	else \
++		file="$(abs_top_srcdir)/../libtextstyle/lib/$@"; \
++	fi; \
++	target_dir="$(abs_builddir)/$@"; \
++	target_dir="$${target_dir%/*}"; \
++	$(MKDIR_P) "$${target_dir}"; \
++	$(INSTALL_HEADER) "$$file" $@
+ BUILT_SOURCES    += textstyle.h textstyle/stdbool.h textstyle/version.h textstyle/woe32dll.h
+ MOSTLYCLEANFILES += textstyle.h textstyle/stdbool.h textstyle/version.h textstyle/woe32dll.h
+ 
+-- 
+2.21.0
+

@@ -1,0 +1,14 @@
+# will be pulled by stage1
+llvm-runtimes/compiler-rt
+llvm-runtimes/libcxxabi
+llvm-runtimes/libcxx
+llvm-core/llvm
+llvm-core/lld
+llvm-core/clang
+llvm-runtimes/libunwind
+
+# remove gcc & friends
+-sys-devel/gcc
+-sys-devel/gcc-config
+-sys-devel/binutils
+-sys-devel/binutils-config

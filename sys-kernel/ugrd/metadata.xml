@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>dev@pyl.onl</email>
+		<name>Zen</name>
+	</maintainer>
+	<maintainer type="person" proxied="proxy">
+		<email>nowa@gentoo.org</email>
+		<name>Nowa Ammerlaan</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/desultory/ugrd/issues</bugs-to>
+		<changelog>https://github.com/desultory/ugrd/releases</changelog>
+		<remote-id type="github">desultory/ugrd</remote-id>
+	</upstream>
+</pkgmetadata>

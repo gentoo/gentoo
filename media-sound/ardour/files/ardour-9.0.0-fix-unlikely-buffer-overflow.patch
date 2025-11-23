@@ -1,0 +1,19 @@
+From 02fde5f1aa3997d880f185c2083707e8715cfa59 Mon Sep 17 00:00:00 2001
+From: Robin Gareus <robin@gareus.org>
+Date: Wed, 6 Nov 2024 04:07:01 +0100
+Subject: [PATCH] Fix unlikely buffer overflow #9845
+
+> warning: 'sscanf' may overflow; destination buffer in argument 6
+> has size 32, but the corresponding specifier may require size 33
+> [-Wfortify-source]
+--- a/gtk2_ardour/transcode_ffmpeg.cc
++++ b/gtk2_ardour/transcode_ffmpeg.cc
+@@ -192,7 +192,7 @@ TranscodeFfmpeg::probe ()
+ 						PARSE_FRACTIONAL_FPS (timebase)
+ 					} else if (key == X_("timecode") && m_duration == 0 && m_fps > 0) {
+ 						int  h, m, s;
+-						char f[32];
++						char f[33];
+ 						if (sscanf (i->at (16).c_str (), "%d:%d:%d:%32s", &h, &m, &s, f) == 4) {
+ 							m_duration = (ARDOUR::samplecnt_t)floor (m_fps * (h * 3600.0 + m * 60.0 + s * 1.0 + atoi (f) / pow ((double)10, (int)strlen (f))));
+ 						}

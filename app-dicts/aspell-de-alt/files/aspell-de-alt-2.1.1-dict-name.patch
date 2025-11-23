@@ -1,0 +1,59 @@
+Aspell dictionaries should be named LANGUAGE[_REGION][-VARIETY][-SIZE],
+therefore this patch adds de-1901 and de_DE-1901 as such alias names.
+See also: http://www.iana.org/assignments/language-subtag-registry
+
+--- a/Makefile.pre
++++ b/Makefile.pre
+@@ -7,7 +7,8 @@
+ data_files = de-alt.dat de-alt_phonet.dat de-alt_affix.dat
+ doc_files = README COPYING Copyright
+ extra_files = configure info Makefile.pre
+-multi_files = de-alt.multi deutsch-alt.alias german-old.alias
++multi_files = de-alt.multi deutsch-alt.alias german-old.alias \
++	de-1901.alias de_DE-1901.alias
+ rws_files = de-alt.rws
+ 
+ distdir=aspell6-${lang}-${version}
+--- a/README
++++ b/README
+@@ -1,4 +1,4 @@
+-GNU Aspell 0.60 German - Old Spelling (Deutsch - Alter Spelling) Dictionary Package
++GNU Aspell 0.60 German - Old Spelling (Deutsch - alte Rechtschreibung) Dictionary Package
+ Version 2.1-1
+ 2004-11-03
+ Original Word List By:
+@@ -46,7 +46,7 @@
+ with "--lang=de-alt".  You may also chose the dictionary directly
+ with the "-d" or "--master" option of Aspell.  You can chose from any of
+ the following dictionaries:
+-  de-alt (deutsch-alt german-old)
++  de-alt (deutsch-alt german-old de-1901 de_DE-1901)
+ Whereas the names in parentheses are alternate names for the
+ dictionary preceding the parentheses.
+ 
+--- a/de-1901.alias
++++ b/de-1901.alias
+@@ -0,0 +1 @@
++add de-alt.multi
+--- a/de_DE-1901.alias
++++ b/de_DE-1901.alias
+@@ -0,0 +1 @@
++add de-alt.multi
+--- a/info
++++ b/info
+@@ -1,5 +1,5 @@
+ name_english German - Old Spelling
+-name_ascii Deutsch - Alter Spelling
++name_ascii Deutsch - alte Rechtschreibung
+ lang de-alt
+ data-file de-alt_phonet.dat
+ data-file de-alt_affix.dat
+@@ -13,7 +13,7 @@
+ version 2.1-1
+ accurate true
+ complete true
+-alias de-alt german-old deutsch-alt
++alias de-alt german-old deutsch-alt de-1901 de_DE-1901
+ dict:
+   name de-alt
+   add de-alt

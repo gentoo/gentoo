@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/934016
+https://github.com/transmission/transmission/pull/6907
+
+From 3523b928c8c968d0b7bca2c6c3a84a939e908f8c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?C=C5=93ur?= <coeur@gmx.fr>
+Date: Mon, 10 Jun 2024 22:16:06 +0800
+Subject: [PATCH] bump miniupnpc to 2.2.8
+
+diff --git a/libtransmission/port-forwarding-upnp.cc b/libtransmission/port-forwarding-upnp.cc
+index 6d7bbc7f7c2..d805bc18218 100644
+--- a/libtransmission/port-forwarding-upnp.cc
++++ b/libtransmission/port-forwarding-upnp.cc
+@@ -261,7 +261,11 @@ tr_port_forwarding_state tr_upnpPulse(
+ 
+         FreeUPNPUrls(&handle->urls);
+         auto lanaddr = std::array<char, TR_ADDRSTRLEN>{};
++#if (MINIUPNPC_API_VERSION >= 18)
++        if (UPNP_GetValidIGD(devlist, &handle->urls, &handle->data, std::data(lanaddr), std::size(lanaddr) - 1, NULL, 0) ==
++#else
+         if (UPNP_GetValidIGD(devlist, &handle->urls, &handle->data, std::data(lanaddr), std::size(lanaddr) - 1) ==
++#endif
+             UPNP_IGD_VALID_CONNECTED)
+         {
+             tr_logAddInfo(fmt::format(_("Found Internet Gateway Device '{url}'"), fmt::arg("url", handle->urls.controlURL)));

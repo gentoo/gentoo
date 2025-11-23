@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>codec@gentoo.org</email>
+		<name>Gentoo Codec Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>chromium@gentoo.org</email>
+		<name>Chromium in Gentoo Project</name>
+	</maintainer>
+	<use>
+		<flag name="highbitdepth">Enable 10 and 12 bit support for VP9.</flag>
+		<flag name="postproc">Enable additional post processing filters</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:john_koleszar:libvpx</remote-id>
+		<remote-id type="github">webmproject/libvpx</remote-id>
+	</upstream>
+</pkgmetadata>

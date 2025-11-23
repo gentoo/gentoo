@@ -1,0 +1,47 @@
+From d6b009be2aa62c679ea994125c02310d4b8d401b Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Mon, 26 Aug 2024 14:23:49 +0200
+Subject: [PATCH 1/2] cmake: cleanup old policies
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -6,18 +6,9 @@ if(NOT CMAKE_BUILD_TYPE)
+         FORCE)
+ endif()
+ message(STATUS "cmake version ${CMAKE_VERSION}")
+-if(POLICY CMP0025)
+-    cmake_policy(SET CMP0025 OLD) # report Apple's Clang as just Clang
+-endif()
+-if(POLICY CMP0042)
+-    cmake_policy(SET CMP0042 NEW) # MACOSX_RPATH
+-endif()
+-if(POLICY CMP0054)
+-    cmake_policy(SET CMP0054 OLD) # Only interpret if() arguments as variables or keywords when unquoted
+-endif()
+ 
++cmake_minimum_required (VERSION 3.28) # OBJECT libraries require 2.8.8
+ project (x265)
+-cmake_minimum_required (VERSION 2.8.8) # OBJECT libraries require 2.8.8
+ include(CheckIncludeFiles)
+ include(CheckFunctionExists)
+ include(CheckSymbolExists)
+
+From 701cc9679e9453cc94afac7904657262109e56b5 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Mon, 26 Aug 2024 14:23:59 +0200
+Subject: [PATCH 2/2] cmake: fix nasm warning
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+--- a/cmake/FindNasm.cmake
++++ b/cmake/FindNasm.cmake
+@@ -20,6 +20,6 @@ if(NASM_EXECUTABLE)
+ endif()
+ 
+ # Provide standardized success/failure messages
+-find_package_handle_standard_args(nasm
++find_package_handle_standard_args(Nasm
+     REQUIRED_VARS NASM_EXECUTABLE
+     VERSION_VAR NASM_VERSION_STRING)

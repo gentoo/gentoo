@@ -1,0 +1,34 @@
+From 9465f10110e02686b3f8a860520a7e8f3c6a7936 Mon Sep 17 00:00:00 2001
+From: Fabrice Bellet <fabrice@bellet.info>
+Date: Sun, 22 Sep 2013 11:56:12 +0200
+Subject: [PATCH 0/1] check to be sure that %n is not being set as format type
+ (CVE-2012-2090)
+
+---
+ simgear/scene/model/SGText.cxx | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/simgear/scene/model/SGText.cxx b/simgear/scene/model/SGText.cxx
+index 08e84439..bc673511 100644
+--- a/simgear/scene/model/SGText.cxx
++++ b/simgear/scene/model/SGText.cxx
+@@ -73,6 +73,16 @@ void SGText::UpdateCallback::operator()(osg::Node * node, osg::NodeVisitor *nv )
+   // FIXME:
+   // hopefully the users never specifies bad formats here
+   // this should better be something more robust
++  // It is never safe for format.c_str to be %n.
++  string unsafe ("%n");
++  size_t found;
++
++  found=format.find(unsafe);
++  if (found!=string::npos) {
++     SG_LOG(SG_GENERAL, SG_ALERT, "format type contained %n, but this is unsafe, reverting to %s");
++     format = "%s";
++  }
++
+   char buf[256];
+   if( numeric ) {
+     double d = property->getDoubleValue() * scale + offset;
+-- 
+2.48.1
+

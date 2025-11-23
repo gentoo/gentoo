@@ -1,0 +1,33 @@
+https://bugs.gentoo.org/931782
+https://git.musl-libc.org/cgit/musl/commit/?id=9929a571b5b662c2ce106f1c08a9faf02af58d8a
+
+From 9929a571b5b662c2ce106f1c08a9faf02af58d8a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Alex=20R=C3=B8nne=20Petersen?= <alex@alexrp.com>
+Date: Thu, 10 Oct 2024 22:50:46 +0200
+Subject: arm: fix _init/_fini alignment in crti.o
+
+This is just cbf59dd6 applied to arm.
+---
+ crt/arm/crti.s | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/crt/arm/crti.s b/crt/arm/crti.s
+index 18dc1e41..cccda3ea 100644
+--- a/crt/arm/crti.s
++++ b/crt/arm/crti.s
+@@ -3,11 +3,13 @@
+ .section .init
+ .global _init
+ .type _init,%function
++.align 2
+ _init:
+ 	push {r0,lr}
+ 
+ .section .fini
+ .global _fini
+ .type _fini,%function
++.align 2
+ _fini:
+ 	push {r0,lr}
+-- 
+cgit v1.2.1

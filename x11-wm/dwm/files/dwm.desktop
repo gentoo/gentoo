@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=dwm
+Comment=dynamic window manager
+Exec=/etc/X11/Sessions/dwm
+TryExec=dwm
+Icon=
+Type=Application

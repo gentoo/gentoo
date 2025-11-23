@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    ATS is a statically typed programming language that unifies implementation
+    with formal specification. It is equipped with a highly expressive type
+    system rooted in the framework Applied Type System, which gives the
+    language its name. In particular, both dependent types and linear types are
+    available in ATS. ATS2 extends ATS with an advanced template system,
+    allowing functional programming to be employed in a setting where only bare
+    minimal run-time support is available. In addition, the template system
+    makes ATS2 highly suitable for supporting numerical computation.
+  </longdescription>
+  <upstream>
+    <remote-id type="sourceforge">ats2-lang</remote-id>
+  </upstream>
+</pkgmetadata>

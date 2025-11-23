@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -2482,7 +2482,7 @@ AC_ARG_ENABLE([pedantic], [AS_HELP_STRING([--enable-pedantic],[enable pedantic c
+ if test "z$enable_pedantic" = "zno" ; then
+     AC_MSG_RESULT([disabled])
+ else
+-    CFLAGS="$CFLAGS -O -std=c99 -pedantic -pedantic-errors -W -Wall -Wextra"
++    CFLAGS="$CFLAGS -std=c99 -pedantic -W -Wall -Wextra"
+     CFLAGS="$CFLAGS -fno-inline -Wnull-dereference -Wdouble-promotion"
+     CFLAGS="$CFLAGS -Wformat=2 -Wformat-security -Wformat-nonliteral"
+     CFLAGS="$CFLAGS -Wconversion -Wunused -Wshadow -Wpointer-arith -Wcast-align"

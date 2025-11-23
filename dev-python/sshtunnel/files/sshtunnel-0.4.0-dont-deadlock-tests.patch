@@ -1,0 +1,38 @@
+From 96a056fb37684496c0495a831f8fd11b48ef01a9 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Sat, 22 Feb 2025 12:40:58 +0200
+Subject: [PATCH] Try to remove defunct threads from running_threads just in
+ case
+
+On Gentoo it was decided to remove server functionality from
+paramiko leading to the ssh-server to be dead before it could be
+properly removed from running_threads. This would lead to a hang where
+memory footprint of the process would grow with repeated "thread
+ssh-server now stopped" messages inevitably leading to an OOM condition.
+
+So try to remove defunct threads from running_threads after the fact to
+stop this problem from coming back and let it fail normally.
+
+Bug: https://github.com/pahaz/sshtunnel/issues/153
+Bug: https://bugs.gentoo.org/666619
+Bug: https://bugs.gentoo.org/683774
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/tests/test_forwarder.py
++++ b/tests/test_forwarder.py
+@@ -251,6 +251,13 @@ class SSHClientTest(unittest.TestCase):
+                                      who='tearDown')
+                 if not x.is_alive():
+                     self.log.info('thread {0} now stopped'.format(thread))
++                    # Try to remove thread running_threads just in case
++                    # the thread is dead but hasn't been properly removed.
++                    # https://github.com/pahaz/sshtunnel/issues/153
++                    try:
++                        self.running_threads.remove(thread)
++                    except ValueError:
++                        pass
+ 
+         for attr in ['server', 'tc', 'ts', 'socks', 'ssockl', 'esockl']:
+             if hasattr(self, attr):
+-- 
+2.49.0
+

@@ -1,0 +1,13 @@
+Index: labltk-8.06.0/lib/Makefile
+===================================================================
+--- labltk-8.06.0.orig/lib/Makefile
++++ labltk-8.06.0/lib/Makefile
+@@ -84,7 +84,7 @@ install-script: $(LIBNAME)
+ install-batch:
+ 	cp labltk.bat $(INSTALLBINDIR)
+ 
+-ifeq ($USE_FINDLIB,yes)
++ifeq ($(USE_FINDLIB),yes)
+ install:
+ 	ocamlfind install labltk -add  $(LIBNAME).cma $(LIBNAME)top$(EXE)
+ 	chmod 755 $(INSTALLDIR)/$(LIBNAME)top$(EXE)

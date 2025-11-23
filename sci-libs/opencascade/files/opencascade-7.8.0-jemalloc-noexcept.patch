@@ -1,0 +1,13 @@
+diff --git a/src/Standard/Standard.cxx b/src/Standard/Standard.cxx
+index bb06de7..f73164f 100644
+--- a/src/Standard/Standard.cxx
++++ b/src/Standard/Standard.cxx
+@@ -28,7 +28,7 @@
+ #elif (defined(__GNUC__) && (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 1)) && (defined(__i386) || defined(__x86_64)))
+ #include <mm_malloc.h>
+ #else
+-extern "C" int posix_memalign(void** thePtr, size_t theAlign, size_t theSize);
++extern "C" int posix_memalign(void** thePtr, size_t theAlign, size_t theSize) throw ();
+ #endif
+ 
+ namespace

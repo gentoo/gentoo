@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -4,7 +4,7 @@
+ OBJS = main.o copyall.o copy.o screen.o log.o path.o misc.o color.o
+ 
+ all: $(OBJS)
+-	$(CC) $(CFLAGS) -o vcp $(OBJS) -lcurses
++	$(CC) $(CFLAGS) $(LDFLAGS) -o vcp $(OBJS) $(shell $(PKG_CONFIG) --libs ncurses)
+ 
+ .c.o:
+ 	$(CC) $(CFLAGS) -c -I/usr/include/ -o $@ $<

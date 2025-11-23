@@ -1,0 +1,34 @@
+From a752f42ebdc0b3cb7c7246c96fdb1601a4d1eae4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?G=C3=B6kt=C3=BCrk=20Y=C3=BCksek?= <gokturk@gentoo.org>
+Date: Wed, 8 Feb 2017 02:00:08 -0500
+Subject: [PATCH] Makefile.in: use DESTDIR for install and deinstall targets
+
+Distinguish between PREFIX and DESTDIR.
+---
+ Makefile.in | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index fd3e299..5ec1471 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -23,12 +23,12 @@ clean:
+ 	$(RM) matwm2 *.o
+ 
+ install: matwm2
+-	mkdir -p $(PREFIX)/bin $(MANDIR)/man1
+-	install -s matwm2 $(PREFIX)/bin
+-	install matwm2.1 $(MANDIR)/man1
++	mkdir -p $(DESTDIR)$(PREFIX)/bin $(DESTDIR)$(MANDIR)/man1
++	install -s matwm2 $(DESTDIR)$(PREFIX)/bin
++	install matwm2.1 $(DESTDIR)$(MANDIR)/man1
+ 
+ deinstall:
+-	$(RM) $(PREFIX)/bin/matwm2 $(MANDIR)/man1/matwm2.1* $(MANDIR)/cat1/matwm2.1*
++	$(RM) $(DESTDIR)$(PREFIX)/bin/matwm2 $(DESTDIR)$(MANDIR)/man1/matwm2.1* $(DESTDIR)$(MANDIR)/cat1/matwm2.1*
+ 
+ # converts default_matwmrc into C code that can be compiled into the binary
+ defcfg:
+-- 
+2.10.2
+

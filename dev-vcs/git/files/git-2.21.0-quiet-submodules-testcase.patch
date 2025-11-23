@@ -1,0 +1,38 @@
+From a57994f2d78134936521375ba9798a1b7418e230 Mon Sep 17 00:00:00 2001
+From: "Robin H. Johnson" <robbat2@gentoo.org>
+Date: Fri, 12 Apr 2019 00:00:07 -0700
+Subject: [PATCH] submodule foreach: test foreach option swallowing
+
+Add a testcase for submodule foreach option parsing not knowing where to
+stop taking options, and accidently removing options intended for
+foreach target commands.
+
+CC: Duy Nguyen <pclouds@gmail.com>
+CC: Prathamesh Chavan <pc44800@gmail.com>
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+---
+ t/t7407-submodule-foreach.sh | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/t/t7407-submodule-foreach.sh b/t/t7407-submodule-foreach.sh
+index 77729ac4aa..706ae762e0 100755
+--- a/t/t7407-submodule-foreach.sh
++++ b/t/t7407-submodule-foreach.sh
+@@ -411,4 +411,14 @@ test_expect_success 'multi-argument command passed to foreach is not shell-evalu
+ 	test_cmp expected actual
+ '
+ 
++test_expect_success 'option-like arguments passed to foreach commands are not lost' '
++	(
++		cd super &&
++		git submodule foreach "echo be --quiet" > ../expected &&
++		git submodule foreach echo be --quiet > ../actual
++	) &&
++	grep -sq -e "--quiet" expected &&
++	test_cmp expected actual
++'
++
+ test_done
+-- 
+2.21.0
+

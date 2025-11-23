@@ -1,0 +1,23 @@
+https://bugs.gentoo.org/861464
+--- a/src/p_global.h
++++ b/src/p_global.h
+@@ -1109,7 +1109,7 @@ int replace(char *rps, char whatc, char toc);
+ char *nobreak(char *tobreak);
+ char *randstring(int length);
+ char *strmcat(char *first,char *second);
+-char *strmncpy(char *dest, char *source, unsigned int len);
++char *strmncpy(char *dest, char *source, size_t len);
+ int strmncasecmp(char *one, char *two);
+ int strmcmp(char *one, char *two);
+ int strmwildcmp(char *line, char *wildcard);
+--- a/src/p_string.c
++++ b/src/p_string.c
+@@ -56,7 +56,7 @@ int ucase (char *inc)
+ 
+ /* string copy with len and zero delimit */
+ 
+-char *strmncpy(char *dest, char *source, unsigned int len)
++char *strmncpy(char *dest, char *source, size_t len)
+ {
+     char bf[strlen(source)+2];
+     char *pt;

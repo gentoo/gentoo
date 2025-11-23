@@ -1,0 +1,49 @@
+# Copyright 2020-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+CRATES="traitobject@0.1.1"
+
+inherit cargo
+
+DESCRIPTION="Command-line client for WebSockets, like netcat, with socat-like functions"
+HOMEPAGE="https://github.com/vi/websocat"
+SRC_URI="https://github.com/vi/websocat/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI+=" https://dev.gentoo.org/~arthurzam/distfiles/net-misc/${PN}/${P}-crates.tar.xz"
+SRC_URI+=" ${CARGO_CRATE_URIS}"
+
+LICENSE="MIT"
+# Dependent crate licenses
+LICENSE+=" Apache-2.0 BSD-2 BSD ISC MIT Unicode-DFS-2016"
+SLOT="0"
+KEYWORDS="~amd64"
+IUSE="ssl"
+RESTRICT+=" test"
+
+RDEPEND="
+	ssl? ( dev-libs/openssl:0= )
+"
+DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-traitobject-lock.patch
+)
+
+QA_FLAGS_IGNORED="/usr/bin/websocat"
+
+src_configure() {
+	local myfeatures=(
+		$(usex ssl ssl '')
+		seqpacket
+		signal_handler
+		tokio-process
+		unix_stdio
+	)
+	cargo_src_configure --no-default-features
+}
+
+src_install() {
+	cargo_src_install
+	dodoc *.md
+}

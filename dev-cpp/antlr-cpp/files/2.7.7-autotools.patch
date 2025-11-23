@@ -1,0 +1,159 @@
+- use libtool+automake for creating shared libraries
+- respect CXXFLAGS/LDFLAGS (#735708)
+- respect nested $(MAKE) (#256880)
+
+--- a/configure.in
++++ b/configure.in
+@@ -13,6 +13,9 @@
+ AC_CONFIG_SRCDIR([LICENSE.txt])
+ AC_CONFIG_AUX_DIR(scripts)
+ 
++LT_INIT
++AM_INIT_AUTOMAKE
++
+ ## This shall be the very first config file. Do not change
+ ## this.
+ AC_CONFIG_FILES([scripts/config.vars])
+@@ -404,7 +407,7 @@
+ esac
+ 
+ ## Test whether we have cygpath
+-test -z "$CYGPATH"    && AC_PATH_PROGS(CYGPATH, cygpath$EXEEXT )
++AC_PATH_PROGS([CYGPATH], [cygpath$EXEEXT])
+ 
+ AC_SUBST([CYGPATH_M])
+ AC_SUBST([CYGPATH_W])
+@@ -448,7 +451,7 @@
+   ]
+ )
+ 
+-## @MAKE@ shall contain absolut path name of make program found.
++## $(MAKE) shall contain absolut path name of make program found.
+ 
+ ## Search for well known make programs - take user given MAKE
+ ## into account. The result will be a list of valid make prog-
+@@ -714,7 +717,6 @@
+     ## just  overrule what autoconf figured out - we never asked for
+     ## this anyway. Our  handling  of compiler options is done below
+     ## in the fine tuning section.
+-    CXXFLAGS=""
+ 
+     ## 'cxx'  shall  be  the canonical compiler name. For example, gcc
+     ## cl, bcc, CC, etc. Note that this is in general not equal to CXX.
+@@ -807,7 +809,6 @@
+         ;;
+     esac
+ 
+-    LDFLAGS=
+     AX_VAR_HEAD([AR])
+ 
+     ##xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx##
+@@ -832,7 +833,7 @@
+ esac
+ 
+ ##
+-test -z "$DOXYGEN" && AC_PATH_PROG(DOXYGEN, doxygen, doxygen,  )
++AC_PATH_PROG([DOXYGEN], [doxygen], [doxygen], [])
+ 
+ # This seems to convince configure to use an absolute path to the backup
+ # install-sh script.
+@@ -840,8 +841,7 @@
+ AC_PROG_INSTALL
+ AC_PROG_RANLIB
+ 
+-test -z "$MKDIR" && AC_PATH_PROG(MKDIR, mkdir$EXEEXT, mkdir$EXEEXT )
+-test -z "$RM"    && AC_PATH_PROG(RM,    rm$EXEEXT, rm$EXEEXT )
++AC_PATH_PROG([MKDIR], [mkdir$EXEEXT], [mkdir$EXEEXT])
+ 
+ AX_PATH_PROGS(
+   [TAR],
+@@ -855,10 +855,10 @@
+   [AX_VAR_HEAD([TOUCH])]
+ )
+ 
+-test -z "$CHMOD" && AC_PATH_PROG(CHMOD, chmod$EXEEXT, chmod$EXEEXT )
+-test -z "$SED"   && AC_PATH_PROG(SED,   sed$EXEEXT, sed$EXEEXT )
+-test -z "$CAT"   && AC_PATH_PROG(CAT,   cat$EXEEXT, cat$EXEEXT )
+-test -z "$GREP"  && AC_PATH_PROG(GREP,  grep$EXEEXT, grep$EXEEXT )
++AC_PATH_PROG([CHMOD], [chmod$EXEEXT], [chmod$EXEEXT])
++AC_PATH_PROG([SED],   [sed$EXEEXT],   [sed$EXEEXT])
++AC_PATH_PROG([CAT],   [cat$EXEEXT],   [cat$EXEEXT])
++AC_PATH_PROG([GREP],  [grep$EXEEXT],  [grep$EXEEXT])
+ 
+ #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx#
+ #                             PYTHON                                 #
+--- /dev/null
++++ b/lib/cpp/antlr/Makefile.am
+@@ -0,0 +1,2 @@
++antlr_includedir = $(includedir)/antlr
++antlr_include_HEADERS = ANTLRException.hpp ANTLRUtil.hpp ASTArray.hpp ASTFactory.hpp AST.hpp ASTNULLType.hpp ASTPair.hpp ASTRefCount.hpp BaseAST.hpp BitSet.hpp CharBuffer.hpp CharInputBuffer.hpp CharScanner.hpp CharStreamException.hpp CharStreamIOException.hpp CircularQueue.hpp CommonAST.hpp CommonASTWithHiddenTokens.hpp CommonHiddenStreamToken.hpp CommonToken.hpp config.hpp InputBuffer.hpp IOException.hpp LexerSharedInputState.hpp LLkParser.hpp MismatchedCharException.hpp MismatchedTokenException.hpp NoViableAltException.hpp NoViableAltForCharException.hpp Parser.hpp ParserSharedInputState.hpp RecognitionException.hpp RefCount.hpp SemanticException.hpp String.hpp TokenBuffer.hpp Token.hpp TokenRefCount.hpp TokenStreamBasicFilter.hpp TokenStreamException.hpp TokenStreamHiddenTokenFilter.hpp TokenStream.hpp TokenStreamIOException.hpp TokenStreamRecognitionException.hpp TokenStreamRetryException.hpp TokenStreamRewriteEngine.hpp TokenStreamSelector.hpp TokenWithIndex.hpp TreeParser.hpp TreeParserSharedInputState.hpp
+--- /dev/null
++++ b/lib/cpp/src/Makefile.am
+@@ -0,0 +1,4 @@
++AM_CPPFLAGS = -I$(abs_top_srcdir)/lib/cpp
++lib_LTLIBRARIES = libantlr.la
++libantlr_la_LDFLAGS = -version-info 2
++libantlr_la_SOURCES = ANTLRUtil.cpp ASTFactory.cpp ASTNULLType.cpp ASTRefCount.cpp BaseAST.cpp BitSet.cpp CharBuffer.cpp CharScanner.cpp CommonAST.cpp CommonASTWithHiddenTokens.cpp CommonHiddenStreamToken.cpp CommonToken.cpp InputBuffer.cpp LLkParser.cpp MismatchedCharException.cpp MismatchedTokenException.cpp NoViableAltException.cpp NoViableAltForCharException.cpp Parser.cpp RecognitionException.cpp String.cpp Token.cpp TokenBuffer.cpp TokenStreamBasicFilter.cpp TokenStreamHiddenTokenFilter.cpp TokenStreamSelector.cpp TokenStreamRewriteEngine.cpp TreeParser.cpp TokenRefCount.cpp
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -31,7 +31,7 @@
+ 
+ test clean distclean install ::
+ 	@ if test -f examples/Makefile ; then \
+-		@MAKE@ -C examples $@ ; \
++		$(MAKE) -C examples $@ ; \
+ 	fi
+ 
+ # Rule  to  remove  all objects, cores, ANTLR generated,
+--- a/scripts/config.deps.in
++++ b/scripts/config.deps.in
+@@ -119,7 +119,7 @@
+ 	  $$subdir ) ;; \
+ 	  * ) d="@abs_this_builddir@/$$subdir" ; \
+         test -f "$$d/Makefile" && {  \
+-         @MAKE@ -C "$$d" $@ ; \
++         $(MAKE) -C "$$d" $@ ; \
+         } 	\
+         ;; \
+     esac
+@@ -130,7 +130,7 @@
+ 	  $$subdir ) ;; \
+ 	  * ) d="@abs_this_builddir@/$$subdir" ; \
+         test -f "$$d/Makefile" && {  \
+-         @MAKE@ -C "$$d" $@ ; \
++         $(MAKE) -C "$$d" $@ ; \
+         } 	\
+         ;; \
+     esac
+@@ -142,7 +142,7 @@
+ 	  $$subdir ) ;; \
+ 	  * ) d="@abs_this_builddir@/$$subdir" ; \
+         test -f "$$d/Makefile" && {  \
+-         @MAKE@ -C "$$d" $@ ; \
++         $(MAKE) -C "$$d" $@ ; \
+         } 	\
+         ;; \
+     esac
+@@ -154,7 +154,7 @@
+ 	  $$subdir ) ;; \
+ 	  * ) d="@abs_this_builddir@/$$subdir" ; \
+         test -f "$$d/Makefile" && {  \
+-         @MAKE@ -C "$$d" $@ ; \
++         $(MAKE) -C "$$d" $@ ; \
+         } 	\
+         ;; \
+     esac
+--- a/scripts/config.make.in
++++ b/scripts/config.make.in
+@@ -47,9 +47,9 @@
+ 		*) \
+ 		if test -f "$${d}/Makefile" ; then \
+ 		  echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" ; \
+-		  echo ">> @MAKE@ -C $(subdir)/$${d} $@                          " ; \
++		  echo ">> $(MAKE) -C $(subdir)/$${d} $@                          " ; \
+ 			echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" ; \
+-			@MAKE@ -C "$$d" $@ || exit 1 ;\
++			$(MAKE) -C "$$d" $@ || exit 1 ;\
+ 		fi ; \
+ 		;; \
+ 		esac ; \

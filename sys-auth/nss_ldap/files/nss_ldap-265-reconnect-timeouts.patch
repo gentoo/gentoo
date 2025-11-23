@@ -1,0 +1,57 @@
+diff -Nuar --exclude '*.orig' nss_ldap-265.orig/ldap.conf nss_ldap-265/ldap.conf
+--- nss_ldap-265.orig/ldap.conf	2009-11-06 10:28:08.000000000 +0000
++++ nss_ldap-265/ldap.conf	2010-02-19 18:36:58.272236290 +0000
+@@ -279,7 +279,8 @@
+ # OpenLDAP SSL mechanism
+ # start_tls mechanism uses the normal LDAP port, LDAPS typically 636
+ #ssl start_tls
+-#ssl on
++###ssl on
++# Gentoo note: Don't use 'ssl on' in 249/250. They are broken in some cases! Use start_tls instead.
+ 
+ # OpenLDAP SSL options
+ # Require and verify server certificate (yes/no)
+@@ -311,3 +312,27 @@
+ # Override the default Kerberos ticket cache location.
+ #krb5_ccname FILE:/etc/.ldapcache
+ 
++# Timeout behavior
++# Upstream nss_ldap hard-codes these values:
++#nss_reconnect_tries 5			# number of times to double the sleep time
++#nss_reconnect_sleeptime 4		# initial sleep value
++#nss_reconnect_maxsleeptime 64	# max sleep value to cap at
++#nss_reconnect_maxconntries 2	# how many tries before sleeping
++# This leads to a delay of 124 seconds (4+8+16+32+64=124) per lookup if the
++# server is not available.
++
++# For Gentoo's distribution of nss_ldap, as of 250-r1, we use these values
++# (The hardwired constants in the code are changed to them as well):
++nss_reconnect_tries 4			# number of times to double the sleep time
++nss_reconnect_sleeptime 1		# initial sleep value
++nss_reconnect_maxsleeptime 16	# max sleep value to cap at
++nss_reconnect_maxconntries 2	# how many tries before sleeping
++# This leads to a delay of 15 seconds (1+2+4+8=15)
++
++# If you are impatient, and know your LDAP server is reliable, fast or local,
++# you may wish to use these values instead:
++#nss_reconnect_tries 1			# number of times to double the sleep time
++#nss_reconnect_sleeptime 1		# initial sleep value
++#nss_reconnect_maxsleeptime 1	# max sleep value to cap at
++#nss_reconnect_maxconntries 3	# how many tries before sleeping
++# This leads to a delay of 1 second.
+diff -Nuar --exclude '*.orig' nss_ldap-265.orig/ldap-nss.h nss_ldap-265/ldap-nss.h
+--- nss_ldap-265.orig/ldap-nss.h	2009-11-06 10:28:08.000000000 +0000
++++ nss_ldap-265/ldap-nss.h	2010-02-19 18:37:49.278474888 +0000
+@@ -96,9 +96,9 @@
+  * unacceptable, in which case you may wish to adjust
+  * the constants below.
+  */
+-#define LDAP_NSS_TRIES	   5	/* number of sleeping reconnect attempts */
+-#define LDAP_NSS_SLEEPTIME       4	/* seconds to sleep; doubled until max */
+-#define LDAP_NSS_MAXSLEEPTIME    64	/* maximum seconds to sleep */
++#define LDAP_NSS_TRIES	   4	/* number of sleeping reconnect attempts */
++#define LDAP_NSS_SLEEPTIME       1	/* seconds to sleep; doubled until max */
++#define LDAP_NSS_MAXSLEEPTIME    16	/* maximum seconds to sleep */
+ #define LDAP_NSS_MAXCONNTRIES    2	/* reconnect attempts before sleeping */
+ 
+ #if defined(HAVE_NSSWITCH_H) || defined(HAVE_IRS_H)

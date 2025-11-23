@@ -1,0 +1,10 @@
+--- kBuild-0.1.9998-pre20110817/src/kash/Makefile.kmk
++++ kBuild-0.1.9998-pre20110817/src/kash/Makefile.kmk
+@@ -59,6 +59,7 @@
+ if "$(USER)" == "bird" && "$(KBUILD_TARGET)" != "win"
+ kash_CFLAGS += -std=gnu99
+ endif
++kash_LIBS += pthread
+ kash_CFLAGS.win.amd64 = -GS-
+ kash_SOURCES = \
+ 	main.c \

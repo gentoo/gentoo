@@ -1,0 +1,18 @@
+diff --git a/config/BuildSystem/config/setCompilers.py b/config/BuildSystem/config/setCompilers.py
+index bcf0181..a56bf8a 100644
+--- a/config/BuildSystem/config/setCompilers.py
++++ b/config/BuildSystem/config/setCompilers.py
+@@ -2543,12 +2543,7 @@ class Configure(config.base.Configure):
+       if Configure.isCygwin(self.log):
+         self.logPrint('Cygwin detected! disabling -rpath test.')
+         testFlags = []
+-      # test '-R' before '-rpath' as sun compilers [c,fortran] don't give proper errors with wrong options.
+-      elif not Configure.isDarwin(self.log):
+-        testFlags = ['-Wl,-rpath,', '-R','-rpath ' , '-Wl,-R,']
+-      else:
+-        testFlags = ['-Wl,-rpath,']
+-      # test '-R' before '-Wl,-rpath' for SUN compilers [as cc on linux accepts -Wl,-rpath, but  f90 & CC do not.
++      testFlags = []
+       if self.isSun(self.framework.getCompiler(), self.log):
+         testFlags.insert(0,'-R')
+       for testFlag in testFlags:

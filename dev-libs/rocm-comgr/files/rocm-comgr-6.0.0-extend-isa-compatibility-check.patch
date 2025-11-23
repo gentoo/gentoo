@@ -1,0 +1,204 @@
+Load kernels when compatible by ISA, e. g. if AMDGPU_TARGETS is set
+to gfx1030 and some application was started on gfx1036, it loads gfx1030 kernel.
+
+Based on Debian patch by Cordell Bloor <cgmb@slerp.xyz>
+https://salsa.debian.org/rocm-team/rocm-hipamd/-/blob/master/debian/patches/0026-extend-hip-isa-compatibility-check.patch
+--- comgr.orig/src/comgr-metadata.cpp
++++ comgr/src/comgr-metadata.cpp
+@@ -923,23 +923,86 @@ static constexpr const char *CLANG_OFFLOAD_BUNDLER_MAGIC =
+ static constexpr size_t OffloadBundleMagicLen =
+     strLiteralLength(CLANG_OFFLOAD_BUNDLER_MAGIC);
+ 
+-bool isCompatibleIsaName(StringRef IsaName, StringRef CodeObjectIsaName) {
++struct GfxPattern {
++  std::string root;
++  std::string suffixes;
++};
++
++static bool matches(const GfxPattern& p, StringRef s) {
++  if (p.root.size() + 1 != s.size()) {
++    return false;
++  }
++  if (0 != std::memcmp(p.root.data(), s.data(), p.root.size())) {
++    return false;
++  }
++  return p.suffixes.find(s[p.root.size()]) != std::string::npos;
++}
++
++static bool isGfx900EquivalentProcessor(StringRef processor) {
++  return matches(GfxPattern{"gfx90", "029c"}, processor);
++}
++
++static bool isGfx900SupersetProcessor(StringRef processor) {
++  return matches(GfxPattern{"gfx90", "0269c"}, processor);
++}
++
++static bool isGfx1030EquivalentProcessor(StringRef processor) {
++  return matches(GfxPattern{"gfx103", "0123456"}, processor);
++}
++
++static bool isGfx1010EquivalentProcessor(StringRef processor) {
++  return matches(GfxPattern{"gfx101", "0"}, processor);
++}
++
++static bool isGfx1010SupersetProcessor(StringRef processor) {
++  return matches(GfxPattern{"gfx101", "0123"}, processor);
++}
++
++enum CompatibilityScore {
++  CS_EXACT_MATCH           = 1 << 4,
++  CS_PROCESSOR_MATCH       = 1 << 3,
++  CS_PROCESSOR_COMPATIBLE  = 1 << 2,
++  CS_XNACK_SPECIALIZED     = 1 << 1,
++  CS_SRAM_ECC_SPECIALIZED  = 1 << 0,
++  CS_INCOMPATIBLE          = 0,
++};
++
++static int getProcessorCompatibilityScore(StringRef CodeObjectProcessor,
++                                          StringRef AgentProcessor) {
++  if (CodeObjectProcessor == AgentProcessor) {
++    return CS_PROCESSOR_MATCH;
++  }
++
++  bool compatible = false;
++  if (isGfx900SupersetProcessor(AgentProcessor)) {
++    compatible = isGfx900EquivalentProcessor(CodeObjectProcessor);
++  } else if (isGfx1010SupersetProcessor(AgentProcessor)) {
++    compatible = isGfx1010EquivalentProcessor(CodeObjectProcessor);
++  } else if (isGfx1030EquivalentProcessor(AgentProcessor)) {
++    compatible = isGfx1030EquivalentProcessor(CodeObjectProcessor);
++  }
++
++  return compatible ? CS_PROCESSOR_COMPATIBLE : CS_INCOMPATIBLE;
++}
++
++static int getCompatiblityScore(StringRef IsaName, StringRef CodeObjectIsaName) {
+   if (IsaName == CodeObjectIsaName) {
+-    return true;
++    return CS_EXACT_MATCH;
+   }
+ 
+   TargetIdentifier CodeObjectIdent;
+   if (parseTargetIdentifier(CodeObjectIsaName, CodeObjectIdent)) {
+-    return false;
++    return CS_INCOMPATIBLE;
+   }
+ 
+   TargetIdentifier IsaIdent;
+   if (parseTargetIdentifier(IsaName, IsaIdent)) {
+-    return false;
++    return CS_INCOMPATIBLE;
+   }
+ 
+-  if (CodeObjectIdent.Processor != IsaIdent.Processor) {
+-    return false;
++  int ProcessorScore = getProcessorCompatibilityScore(CodeObjectIdent.Processor, IsaIdent.Processor);
++  if (ProcessorScore == CS_INCOMPATIBLE) {
++    return CS_INCOMPATIBLE;
+   }
+ 
+   char CodeObjectXnack = ' ', CodeObjectSramecc = ' ';
+@@ -963,18 +1026,23 @@ bool isCompatibleIsaName(StringRef IsaName, StringRef CodeObjectIsaName) {
+     }
+   }
+ 
++  int XnackBonus = 0;
+   if (CodeObjectXnack != ' ') {
+     if (CodeObjectXnack != IsaXnack) {
+-      return false;
++      return CS_INCOMPATIBLE;
+     }
++    XnackBonus = CS_XNACK_SPECIALIZED;
+   }
+ 
++  int SrameccBonus = 0;
+   if (CodeObjectSramecc != ' ') {
+     if (CodeObjectSramecc != IsaSramecc) {
+-      return false;
++      return CS_INCOMPATIBLE;
+     }
++    SrameccBonus = CS_SRAM_ECC_SPECIALIZED;
+   }
+-  return true;
++
++  return ProcessorScore + XnackBonus + SrameccBonus;
+ }
+ 
+ amd_comgr_status_t
+@@ -992,14 +1060,21 @@ lookUpCodeObjectInSharedObject(DataObject *DataP,
+     return Status;
+   }
+ 
++  int MaxScore = 0;
++  unsigned MaxScoreItem;
+   for (unsigned J = 0; J < QueryListSize; J++) {
+-    if (isCompatibleIsaName(QueryList[J].isa, IsaName)) {
+-      QueryList[J].offset = 0;
+-      QueryList[J].size = DataP->Size;
+-      break;
++    int Score = getCompatiblityScore(QueryList[J].isa, IsaName);
++    if (Score > MaxScore) {
++      MaxScore = Score;
++      MaxScoreItem = J;
+     }
+   }
+ 
++  if (MaxScore) {
++    QueryList[MaxScoreItem].offset = 0;
++    QueryList[MaxScoreItem].size = DataP->Size;
++  }
++
+   return AMD_COMGR_STATUS_SUCCESS;
+ }
+ 
+@@ -1011,7 +1086,6 @@ amd_comgr_status_t lookUpCodeObject(DataObject *DataP,
+     return lookUpCodeObjectInSharedObject(DataP, QueryList, QueryListSize);
+   }
+ 
+-  int Seen = 0;
+   BinaryStreamReader Reader(StringRef(DataP->Data, DataP->Size),
+                             support::little);
+ 
+@@ -1037,6 +1111,8 @@ amd_comgr_status_t lookUpCodeObject(DataObject *DataP,
+     QueryList[I].size = 0;
+   }
+ 
++  std::vector<int> QueryListScores(QueryListSize);
++
+   // For each code object, extract BundleEntryID information, and check that
+   // against each ISA in the QueryList
+   for (uint64_t I = 0; I < NumOfCodeObjects; I++) {
+@@ -1069,28 +1145,22 @@ amd_comgr_status_t lookUpCodeObject(DataObject *DataP,
+     }
+ 
+     for (unsigned J = 0; J < QueryListSize; J++) {
+-      // If this QueryList item has already been found to be compatible with
++      // If this QueryList item has exact match with
+       // another BundleEntryID, no need to check against the current
+       // BundleEntryID
+-      if (QueryList[J].size != 0) {
++      if (QueryListScores[J] == CS_EXACT_MATCH) {
+         continue;
+       }
+ 
+       // If the QueryList Isa is compatible with the BundleEntryID, set the
+       // QueryList offset/size to this BundleEntryID
+-      if (isCompatibleIsaName(QueryList[J].isa, OffloadAndTargetId.second)) {
++      int Score = getCompatiblityScore(QueryList[J].isa, OffloadAndTargetId.second);
++      if (Score > QueryListScores[J]) {
++        QueryListScores[J] = Score;
+         QueryList[J].offset = BundleEntryCodeObjectOffset;
+         QueryList[J].size = BundleEntryCodeObjectSize;
+-        Seen++;
+-        break;
+       }
+     }
+-
+-    // Stop iterating over BundleEntryIDs once we have populated the entire
+-    // QueryList
+-    if (Seen == (int) QueryListSize) {
+-      break;
+-    }
+   }
+ 
+   return AMD_COMGR_STATUS_SUCCESS;

@@ -1,0 +1,67 @@
+https://bugs.gentoo.org/861581
+https://github.com/rtrlib/rtrlib/issues/287
+https://github.com/rtrlib/rtrlib/pull/289
+
+From 928a00a617d232be086515ddc22428d6f76faa5d Mon Sep 17 00:00:00 2001
+From: maurim <saluneriya@googlemail.com>
+Date: Mon, 6 May 2024 15:30:15 +0200
+Subject: [PATCH] [FIX] Building with strict aliasing
+
+Motivation
+  - building with strict aliasing flags fails
+  - used flags shown below
+
+```
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -flto=4 -Werror=odr -Werror=lto-type-mismatch -Werror=strict-aliasing")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_FORTIFY_SOURCE=3 -fdiagnostics-color=always -frecord-gcc-switches")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fstack-clash-protection -march=native -O2 -pipe -U_FORTIFY_SOURCE")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror=format-security -Werror=implicit-int -Werror=int-conversion -Wformat")
+```
+
+How:
+  - modify casted variable type in test case to initialized type
+
+Related:
+  - fixes #287
+---
+ tests/test_pfx.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/tests/test_pfx.c b/tests/test_pfx.c
+index e7f26512..cb5a2873 100644
+--- a/tests/test_pfx.c
++++ b/tests/test_pfx.c
+@@ -128,8 +128,8 @@ static void mass_test(void)
+ 		pfx.min_len = 128;
+ 		pfx.max_len = 128;
+ 		pfx.prefix.ver = LRTR_IPV6;
+-		((uint64_t *)pfx.prefix.u.addr6.addr)[1] = max_i;
+-		((uint64_t *)pfx.prefix.u.addr6.addr)[0] = min_i + i;
++		((uint32_t *)pfx.prefix.u.addr6.addr)[2] = max_i;
++		((uint32_t *)pfx.prefix.u.addr6.addr)[0] = min_i + i;
+ 		assert(pfx_table_add(&pfxt, &pfx) == PFX_SUCCESS);
+ 	}
+ 
+@@ -148,8 +148,8 @@ static void mass_test(void)
+ 		pfx.min_len = 128;
+ 		pfx.max_len = 128;
+ 		pfx.prefix.ver = LRTR_IPV6;
+-		((uint64_t *)pfx.prefix.u.addr6.addr)[1] = max_i;
+-		((uint64_t *)pfx.prefix.u.addr6.addr)[0] = min_i + i;
++		((uint32_t *)pfx.prefix.u.addr6.addr)[2] = max_i;
++		((uint32_t *)pfx.prefix.u.addr6.addr)[0] = min_i + i;
+ 
+ 		assert(pfx_table_validate(&pfxt, i + 1, &pfx.prefix, pfx.min_len, &res) == PFX_SUCCESS);
+ 		assert(res == BGP_PFXV_STATE_VALID);
+@@ -172,8 +172,8 @@ static void mass_test(void)
+ 		pfx.prefix.ver = LRTR_IPV6;
+ 		pfx.min_len = 128;
+ 		pfx.max_len = 128;
+-		((uint64_t *)pfx.prefix.u.addr6.addr)[1] = max_i;
+-		((uint64_t *)pfx.prefix.u.addr6.addr)[0] = min_i + i;
++		((uint32_t *)pfx.prefix.u.addr6.addr)[2] = max_i;
++		((uint32_t *)pfx.prefix.u.addr6.addr)[0] = min_i + i;
+ 		assert(pfx_table_remove(&pfxt, &pfx) == PFX_SUCCESS);
+ 	}
+ 
+

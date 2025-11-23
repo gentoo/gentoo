@@ -1,0 +1,21 @@
+diff --git a/tools/CMakeLists.txt b/tools/CMakeLists.txt
+index f3eaa054..4eaff3d1 100644
+--- a/tools/CMakeLists.txt
++++ b/tools/CMakeLists.txt
+@@ -1,12 +1,13 @@
+-if(TARGET cxxopts) # we only build the tools if cxxopts is available
++if(SIMDJSON_TOOLS)
+   message(STATUS "We have cxxopts as a dependency and we are building the tools (e.g., json2json).")
+-  foreach(tool IN ITEMS json2json jsonstats jsonpointer minify)
++  foreach(tool IN ITEMS json2json jsonstats simdjsonpointer minify)
+     add_executable("${tool}" "${tool}.cpp")
+     simdjson_apply_props("${tool}")
+     target_link_libraries(
+         "${tool}" PRIVATE
+-        simdjson simdjson-internal-flags simdjson-windows-headers cxxopts
++        simdjson simdjson-internal-flags simdjson-windows-headers
+     )
++    install(TARGETS "${tool}")
+   endforeach()
+ else()
+   message(STATUS "We are missing cxxopts as a dependency so the tools (e.g., json2json) are omitted.")

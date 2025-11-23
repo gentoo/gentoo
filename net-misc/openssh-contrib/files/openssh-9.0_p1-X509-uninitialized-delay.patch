@@ -1,0 +1,12 @@
+diff -ur a/auth2.c b/auth2.c
+--- a/auth2.c	2022-05-19 15:59:32.875160028 -0700
++++ b/auth2.c	2022-05-19 16:03:44.291594908 -0700
+@@ -226,7 +226,7 @@
+ 	int digest_alg;
+ 	size_t len;
+ 	u_char *hash;
+-	double delay;
++	double delay = 0;
+ 
+ 	digest_alg = ssh_digest_maxbytes();
+ 	if (len = ssh_digest_bytes(digest_alg) > 0) {

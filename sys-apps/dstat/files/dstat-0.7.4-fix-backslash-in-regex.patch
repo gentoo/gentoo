@@ -1,0 +1,168 @@
+diff --git a/dstat b/dstat
+index 9359965..e26334a 100755
+--- a/dstat
++++ b/dstat
+@@ -755,7 +755,7 @@ class dstat_disk(dstat):
+     def __init__(self):
+         self.nick = ('read', 'writ')
+         self.type = 'b'
+-        self.diskfilter = re.compile('^([hsv]d[a-z]+\d+|cciss/c\d+d\d+p\d+|dm-\d+|md\d+|mmcblk\d+p\d0|VxVM\d+)$')
++        self.diskfilter = re.compile(r'^([hsv]d[a-z]+\d+|cciss/c\d+d\d+p\d+|dm-\d+|md\d+|mmcblk\d+p\d0|VxVM\d+)$')
+         self.open('/proc/diskstats')
+         self.cols = 2
+ 
+@@ -841,7 +841,7 @@ class dstat_disk24(dstat):
+     def __init__(self):
+         self.nick = ('read', 'writ')
+         self.type = 'b'
+-        self.diskfilter = re.compile('^([hsv]d[a-z]+\d+|cciss/c\d+d\d+p\d+|dm-\d+|md\d+|mmcblk\d+p\d0|VxVM\d+)$')
++        self.diskfilter = re.compile(r'^([hsv]d[a-z]+\d+|cciss/c\d+d\d+p\d+|dm-\d+|md\d+|mmcblk\d+p\d0|VxVM\d+)$')
+         self.open('/proc/partitions')
+         if self.fd and not self.discover:
+             raise Exception('Kernel has no per-partition I/O accounting [CONFIG_BLK_STATS], use at least 2.4.20')
+@@ -926,8 +926,8 @@ class dstat_disk24_old(dstat):
+     def __init__(self):
+         self.nick = ('read', 'writ')
+         self.type = 'b'
+-        self.diskfilter = re.compile('^([hsv]d[a-z]+\d+|cciss/c\d+d\d+p\d+|dm-\d+|md\d+|mmcblk\d+p\d0|VxVM\d+)$')
+-        self.regexp = re.compile('^\((\d+),(\d+)\):\(\d+,\d+,(\d+),\d+,(\d+)\)$')
++        self.diskfilter = re.compile(r'^([hsv]d[a-z]+\d+|cciss/c\d+d\d+p\d+|dm-\d+|md\d+|mmcblk\d+p\d0|VxVM\d+)$')
++        self.regexp = re.compile(r'^\((\d+),(\d+)\):\(\d+,\d+,(\d+),\d+,(\d+)\)$')
+         self.open('/proc/stat')
+         self.cols = 2
+ 
+@@ -1178,7 +1178,7 @@ class dstat_io(dstat):
+         self.type = 'f'
+         self.width = 5
+         self.scale = 1000
+-        self.diskfilter = re.compile('^([hsv]d[a-z]+\d+|cciss/c\d+d\d+p\d+|dm-\d+|md\d+|mmcblk\d+p\d0|VxVM\d+)$')
++        self.diskfilter = re.compile(r'^([hsv]d[a-z]+\d+|cciss/c\d+d\d+p\d+|dm-\d+|md\d+|mmcblk\d+p\d0|VxVM\d+)$')
+         self.open('/proc/diskstats')
+         self.cols = 2
+ 
+@@ -1324,7 +1324,7 @@ class dstat_net(dstat):
+     def __init__(self):
+         self.nick = ('recv', 'send')
+         self.type = 'b'
+-        self.totalfilter = re.compile('^(lo|bond\d+|face|.+\.\d+)$')
++        self.totalfilter = re.compile(r'^(lo|bond\d+|face|.+\.\d+)$')
+         self.open('/proc/net/dev')
+         self.cols = 2
+ 
+@@ -2329,7 +2329,7 @@ def getcpunr():
+ 
+     # Fallback 2
+     try:
+-        search = re.compile('^cpu\d+')
++        search = re.compile(r'^cpu\d+')
+         cpunr = 0
+         for line in dopen('/proc/stat').readlines():
+             if search.match(line):
+@@ -2346,14 +2346,14 @@ def blockdevices():
+ ### FIXME: Add scsi support too and improve
+ def sysfs_dev(device):
+     "Convert sysfs device names into device names"
+-    m = re.match('ide/host(\d)/bus(\d)/target(\d)/lun(\d)/disc', device)
++    m = re.match(r'ide/host(\d)/bus(\d)/target(\d)/lun(\d)/disc', device)
+     if m:
+         l = m.groups()
+         # ide/host0/bus0/target0/lun0/disc -> 0 -> hda
+         # ide/host0/bus1/target0/lun0/disc -> 2 -> hdc
+         nr = int(l[1]) * 2 + int(l[3])
+         return 'hd' + chr(ord('a') + nr)
+-    m = re.match('cciss/(c\dd\d)', device)
++    m = re.match(r'cciss/(c\dd\d)', device)
+     if m:
+         l = m.groups()
+         return l[0]
+diff --git a/plugins/dstat_disk_avgqu.py b/plugins/dstat_disk_avgqu.py
+index 5da8d46..6cf283f 100644
+--- a/plugins/dstat_disk_avgqu.py
++++ b/plugins/dstat_disk_avgqu.py
+@@ -11,7 +11,7 @@ class dstat_plugin(dstat):
+         self.type = 'f'
+         self.width = 4
+         self.scale = 10
+-        self.diskfilter = re.compile('^([hsv]d[a-z]+\d+|cciss/c\d+d\d+p\d+|dm-\d+|md\d+|mmcblk\d+p\d0|VxVM\d+)$')
++        self.diskfilter = re.compile(r'^([hsv]d[a-z]+\d+|cciss/c\d+d\d+p\d+|dm-\d+|md\d+|mmcblk\d+p\d0|VxVM\d+)$')
+         self.open('/proc/diskstats')
+         self.cols = 1
+         self.struct = dict( rq_ticks=0 )
+diff --git a/plugins/dstat_disk_avgrq.py b/plugins/dstat_disk_avgrq.py
+index 1f2cd20..be25e17 100644
+--- a/plugins/dstat_disk_avgrq.py
++++ b/plugins/dstat_disk_avgrq.py
+@@ -12,7 +12,7 @@ class dstat_plugin(dstat):
+         self.type = 'f'
+         self.width = 4
+         self.scale = 10
+-        self.diskfilter = re.compile('^([hsv]d[a-z]+\d+|cciss/c\d+d\d+p\d+|dm-\d+|md\d+|mmcblk\d+p\d0|VxVM\d+)$')
++        self.diskfilter = re.compile(r'^([hsv]d[a-z]+\d+|cciss/c\d+d\d+p\d+|dm-\d+|md\d+|mmcblk\d+p\d0|VxVM\d+)$')
+         self.open('/proc/diskstats')
+         self.cols = 1
+         self.struct = dict( nr_ios=0, rd_sect=0, wr_sect=0 )
+diff --git a/plugins/dstat_disk_svctm.py b/plugins/dstat_disk_svctm.py
+index 7a9a0f1..c88f0e0 100644
+--- a/plugins/dstat_disk_svctm.py
++++ b/plugins/dstat_disk_svctm.py
+@@ -15,7 +15,7 @@ class dstat_plugin(dstat):
+         self.type = 'f'
+         self.width = 4
+         self.scale = 1
+-        self.diskfilter = re.compile('^([hsv]d[a-z]+\d+|cciss/c\d+d\d+p\d+|dm-\d+|md\d+|mmcblk\d+p\d0|VxVM\d+)$')
++        self.diskfilter = re.compile(r'^([hsv]d[a-z]+\d+|cciss/c\d+d\d+p\d+|dm-\d+|md\d+|mmcblk\d+p\d0|VxVM\d+)$')
+         self.open('/proc/diskstats')
+         self.cols = 1
+         self.struct = dict( nr_ios=0, tot_ticks=0 )
+diff --git a/plugins/dstat_disk_tps.py b/plugins/dstat_disk_tps.py
+index b58dbe8..d2acd78 100644
+--- a/plugins/dstat_disk_tps.py
++++ b/plugins/dstat_disk_tps.py
+@@ -12,7 +12,7 @@ class dstat_plugin(dstat):
+         self.type = 'd'
+         self.width = 5
+         self.scale = 1000
+-        self.diskfilter = re.compile('^([hsv]d[a-z]+\d+|cciss/c\d+d\d+p\d+|dm-\d+|md\d+|mmcblk\d+p\d0|VxVM\d+)$')
++        self.diskfilter = re.compile(r'^([hsv]d[a-z]+\d+|cciss/c\d+d\d+p\d+|dm-\d+|md\d+|mmcblk\d+p\d0|VxVM\d+)$')
+         self.open('/proc/diskstats')
+         self.cols = 2
+ 
+diff --git a/plugins/dstat_disk_util.py b/plugins/dstat_disk_util.py
+index 2632c09..e0b292b 100644
+--- a/plugins/dstat_disk_util.py
++++ b/plugins/dstat_disk_util.py
+@@ -14,7 +14,7 @@ class dstat_plugin(dstat):
+         self.type = 'f'
+         self.width = 4
+         self.scale = 34
+-        self.diskfilter = re.compile('^([hsv]d[a-z]+\d+|cciss/c\d+d\d+p\d+|dm-\d+|md\d+|mmcblk\d+p\d0|VxVM\d+)$')
++        self.diskfilter = re.compile(r'^([hsv]d[a-z]+\d+|cciss/c\d+d\d+p\d+|dm-\d+|md\d+|mmcblk\d+p\d0|VxVM\d+)$')
+         self.open('/proc/diskstats')
+         self.cols = 1
+         self.struct = dict( tot_ticks=0 )
+diff --git a/plugins/dstat_disk_wait.py b/plugins/dstat_disk_wait.py
+index 2b320b2..3f8d331 100644
+--- a/plugins/dstat_disk_wait.py
++++ b/plugins/dstat_disk_wait.py
+@@ -13,7 +13,7 @@ class dstat_plugin(dstat):
+         self.type = 'f'
+         self.width = 4
+         self.scale = 1
+-        self.diskfilter = re.compile('^([hsv]d[a-z]+\d+|cciss/c\d+d\d+p\d+|dm-\d+|md\d+|mmcblk\d+p\d0|VxVM\d+)$')
++        self.diskfilter = re.compile(r'^([hsv]d[a-z]+\d+|cciss/c\d+d\d+p\d+|dm-\d+|md\d+|mmcblk\d+p\d0|VxVM\d+)$')
+         self.open('/proc/diskstats')
+         self.cols = 1
+         self.struct = dict( rd_ios=0, wr_ios=0, rd_ticks=0, wr_ticks=0 )
+diff --git a/plugins/dstat_net_packets.py b/plugins/dstat_net_packets.py
+index c3ef198..f7f34b7 100644
+--- a/plugins/dstat_net_packets.py
++++ b/plugins/dstat_net_packets.py
+@@ -10,7 +10,7 @@ class dstat_plugin(dstat):
+         self.type = 'd'
+         self.width = 5
+         self.scale = 1000
+-        self.totalfilter = re.compile('^(lo|bond\d+|face|.+\.\d+)$')
++        self.totalfilter = re.compile(r'^(lo|bond\d+|face|.+\.\d+)$')
+         self.open('/proc/net/dev')
+         self.cols = 2
+ 

@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting rip98d"
+	start-stop-daemon --start --quiet --background --exec /usr/sbin/rip98d
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping rip98d"
+	start-stop-daemon --stop --quiet --exec /usr/sbin/rip98d
+	eend $?
+}

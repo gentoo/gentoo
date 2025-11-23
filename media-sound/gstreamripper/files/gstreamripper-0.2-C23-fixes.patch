@@ -1,0 +1,62 @@
+https://bugs.gentoo.org/945203
+Fix remaining incorrect usage of a function, prepare for autoreconf
+--- a/configure.in
++++ b/configure.in
+@@ -3,7 +3,7 @@
+ dnl If you don't want it to overwrite it,
+ dnl 	Please disable it in the Anjuta project configuration
+ 
+-AC_INIT(configure.in)
++AC_INIT(configure.ac)
+ AM_INIT_AUTOMAKE(GStreamripperX, 0.2)
+ AM_CONFIG_HEADER(config.h)
+ 
+--- a/src/callbacks.c
++++ b/src/callbacks.c
+@@ -86,7 +86,7 @@
+ 				    (GTK_WIDGET(Mainwidget), "entry1")), "");
+ 
+ 		if(child_pid <= 0)
+-			showError(GTK_WIDGET(button));
++			showError();
+ 	}
+ }
+ 
+@@ -161,7 +161,7 @@
+ 			  error->message);
+ 		g_error_free(error);
+ 		error = NULL;
+-		showError(GTK_WIDGET(Mainwidget));
++		showError();
+ 		return 0;
+ 	}
+ 
+@@ -550,7 +550,7 @@
+ 		{
+ 			gint child_pid = startNewThread();
+ 			if(child_pid <= 0)
+-				showError(GTK_WIDGET(button));
++				showError();
+ 		}
+ 		else
+ 		{
+@@ -571,7 +571,7 @@
+ }
+ 
+ //open location
+-void on_locateButton_clicked(GtkWidget * button, gpointer * user_data)
++void on_locateButton_clicked(GtkWidget * button, gpointer user_data)
+ {
+ 	gchar *file = getFile(dialog1, 1);
+ 	if(file != NULL)
+--- a/src/callbacks.h
++++ b/src/callbacks.h
+@@ -34,7 +34,7 @@
+ 
+ void kill_proc(gboolean all, gint curtab);
+ 
+-void on_locateButton_clicked();
++void on_locateButton_clicked(GtkWidget * button, gpointer user_data);
+ 
+ gboolean on_window1_delete_event(GtkButton * button,GdkEvent * event,
+                                                         gpointer user_data);

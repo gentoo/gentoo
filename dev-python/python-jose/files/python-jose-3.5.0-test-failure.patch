@@ -1,0 +1,22 @@
+Appears to be cryptography related. Works with and without the patch for
+cryptography-45.0.6
+
+From 7c0e4c6640bdc9cd60ac66d96d5d90f4377873db Mon Sep 17 00:00:00 2001
+From: dotlambda <github@dotlambda.de>
+Date: Tue, 21 Oct 2025 20:29:01 -0700
+Subject: [PATCH] fix test_incorrect_public_key_hmac_signing
+
+It used to fail with
+
+    TypeError: curve must be an EllipticCurve instance
+--- a/tests/algorithms/test_EC.py
++++ b/tests/algorithms/test_EC.py
+@@ -235,7 +235,7 @@ def test_incorrect_public_key_hmac_signing():
+     def b64(x):
+         return base64.urlsafe_b64encode(x).replace(b"=", b"")
+ 
+-    KEY = CryptographyEc.generate_private_key(CryptographyEc.SECP256R1)
++    KEY = CryptographyEc.generate_private_key(CryptographyEc.SECP256R1(), CryptographyEc.SECP256R1)
+     PUBKEY = KEY.public_key().public_bytes(
+         encoding=serialization.Encoding.OpenSSH,
+         format=serialization.PublicFormat.OpenSSH,

@@ -1,0 +1,26 @@
+Avoid conflict with app-accessibility/julius
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -37,7 +37,7 @@ if(${TARGET_PLATFORM} STREQUAL "emscripten" AND NOT DEFINED CMAKE_TOOLCHAIN_FILE
+     endif()
+ endif()
+ 
+-set(SHORT_NAME julius)
++set(SHORT_NAME julius-game)
+ set(USER_FRIENDLY_NAME Julius)
+ project(${SHORT_NAME} C)
+ 
+diff --git a/res/julius.desktop b/res/julius.desktop
+--- a/res/julius.desktop
++++ b/res/julius.desktop
+@@ -2,7 +2,7 @@
+ [Desktop Entry]
+ Type=Application
+ Version=1.0
+-Exec=julius
++Exec=julius-game
+ Icon=com.github.bvschaik.julius
+ Name=Julius
+ GenericName=Roman city management game

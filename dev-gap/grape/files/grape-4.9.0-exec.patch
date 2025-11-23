@@ -1,0 +1,21 @@
+diff --git a/lib/grape.g b/lib/grape.g
+index 683abb6..3f5fdf0 100644
+--- a/lib/grape.g
++++ b/lib/grape.g
+@@ -39,13 +39,12 @@ GRAPE_RANDOM := false; # Determines if certain random methods are to be used
+ GRAPE_NRANGENS := 18;  # The number of random generators taken for a subgroup
+ 		       # when  GRAPE_RANDOM=true.
+ 
+-GRAPE_NAUTY := true;   # Use nauty when true, else use bliss.
++GRAPE_NAUTY := @nauty@;   # Use nauty when true, else use bliss.
+ 
+-GRAPE_DREADNAUT_EXE := 
+-   ExternalFilename(DirectoriesPackagePrograms("grape"),"dreadnaut"); 
++GRAPE_DREADNAUT_EXE := "@GENTOO_PORTAGE_EPREFIX@/usr/bin/dreadnaut";
+    # filename of dreadnaut or dreadnautB executable
+ 
+-GRAPE_BLISS_EXE := ExternalFilename(DirectoriesSystemPrograms(),"bliss"); 
++GRAPE_BLISS_EXE := "@GENTOO_PORTAGE_EPREFIX@/usr/bin/bliss";
+    # filename of bliss executable
+ 
+ GRAPE_DREADNAUT_INPUT_USE_STRING := false;

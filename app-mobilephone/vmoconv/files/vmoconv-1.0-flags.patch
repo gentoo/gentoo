@@ -1,0 +1,25 @@
+--- a/configure.in
++++ b/configure.in
+@@ -2,7 +2,7 @@
+ # try CFLAGS="$CFLAGS -g -Wall -Wmissing-declarations -Wmissing-prototypes -Werror"
+ AC_INIT(vmoconv, 1.0, zany@triq.net)
+ AM_INIT_AUTOMAKE(vmoconv, 1.0)
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ 
+ dnl AM_MAINTAINER_MODE
+ 
+@@ -26,10 +26,10 @@
+     [printf(__func__)],,
+     [AC_DEFINE(__func__, "", [non-C99 fake support for __func__])])
+ 
+-dnl Turn on debugging and all warnings when using gcc
++dnl Turn on all warnings when using gcc
+ if test "$ac_cv_prog_gcc" = "yes"; then
+-	CFLAGS="$CFLAGS -g -Wall -Wmissing-declarations -Wmissing-prototypes"
+-	LDFLAGS="$LDFLAGS -g -Wall"
++	CFLAGS="$CFLAGS -Wall -Wmissing-declarations -Wmissing-prototypes"
++	LDFLAGS="$LDFLAGS -Wall"
+ fi
+        
+ AC_SUBST(CFLAGS)

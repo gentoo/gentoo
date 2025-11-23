@@ -1,0 +1,21 @@
+# conf.d file for xroot, cmsd, frm_purged, frm_xfrd daemons
+
+# User to run as, please note that:
+# 1) daemons will refuse to run as root;
+# 2) several dirs must be created with an appropriate permissions
+# and ownership, so be careful when changing default 'xrootd' user.
+XROOTD_USER="xrootd"
+
+# Configuration file MUST be the same for all four daemons.
+# See /etc/xrootd for available simple defaults.
+XROOTD_CONF="/etc/xrootd/xrootd-clustered.cfg"
+
+# Logdir for all daemons
+XROOTD_LOGDIR="/var/log/xrootd"
+
+# Additional options for each daemon, please refer to their
+# documentation for details
+XROOTD_OPTS=""
+CMSD_OPTS=""
+FRM_PURGED=""
+FRM_XFRD=""

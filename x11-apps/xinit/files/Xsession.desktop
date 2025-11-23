@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=XSession
+Comment=This session logs you into your custom Xsession
+Exec=/etc/X11/Sessions/Xsession
+TryExec=/etc/X11/Sessions/Xsession
+# no icon yet, only the top three are currently used
+Icon=
+Type=Application

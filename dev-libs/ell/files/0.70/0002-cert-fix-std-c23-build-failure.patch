@@ -1,0 +1,67 @@
+https://bugs.gentoo.org/943704
+https://lore.kernel.org/all/20241117001814.2149181-2-slyich@gmail.com/T/#m1770e7c457dbb58d6950ee981c68cdd39a996724
+
+From f06bcc6e1b08563ef9a8c8837ad39aaa4357ee43 Mon Sep 17 00:00:00 2001
+Message-ID: <f06bcc6e1b08563ef9a8c8837ad39aaa4357ee43.1731907744.git.sam@gentoo.org>
+In-Reply-To: <fdfed58104edd309431f738eaf3a7b5361ff9c86.1731907744.git.sam@gentoo.org>
+References: <fdfed58104edd309431f738eaf3a7b5361ff9c86.1731907744.git.sam@gentoo.org>
+From: Sergei Trofimovich <slyich@gmail.com>
+Date: Sun, 17 Nov 2024 00:18:12 +0000
+Subject: [PATCH 2/4] cert: fix -std=c23 build failure
+
+gcc-15 switched to -std=c23 by default:
+
+    https://gcc.gnu.org/git/?p=gcc.git;a=commitdiff;h=55e3bd376b2214e200fa76d12b67ff
+259b06c212
+
+As a result `ell` fails the build as:
+
+      390 |                         return false;
+          |                                ^~~~~
+
+ell/cert.c:390:32: error: incompatible types when returning type '_Bool' but 'const uint8_t *' {aka 'const unsigned char *'} was expected
+---
+ ell/cert.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/ell/cert.c b/ell/cert.c
+index 38bb01a..19a6556 100644
+--- a/ell/cert.c
++++ b/ell/cert.c
+@@ -387,13 +387,13 @@ const uint8_t *cert_get_extension(struct l_cert *cert,
+ 
+ 		seq = asn1_der_find_elem(ext, end - ext, 0, &tag, &len);
+ 		if (unlikely(!seq || tag != ASN1_ID_SEQUENCE))
+-			return false;
++			return NULL;
+ 
+ 		ext = seq + len;
+ 
+ 		oid = asn1_der_find_elem(seq, len, 0, &tag, &oid_len);
+ 		if (unlikely(!oid || tag != ASN1_ID_OID))
+-			return false;
++			return NULL;
+ 
+ 		if (!asn1_oid_eq(ext_id, oid_len, oid))
+ 			continue;
+@@ -403,7 +403,7 @@ const uint8_t *cert_get_extension(struct l_cert *cert,
+ 
+ 		if (data && tag == ASN1_ID_BOOLEAN) {
+ 			if (data_len != 1)
+-				return false;
++				return NULL;
+ 
+ 			critical = *data != 0;	/* Tolerate BER booleans */
+ 
+@@ -411,7 +411,7 @@ const uint8_t *cert_get_extension(struct l_cert *cert,
+ 		}
+ 
+ 		if (unlikely(!data || tag != ASN1_ID_OCTET_STRING))
+-			return false;
++			return NULL;
+ 
+ 		if (out_critical)
+ 			*out_critical = critical;
+-- 
+2.47.0
+

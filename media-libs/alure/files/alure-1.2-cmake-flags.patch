@@ -1,0 +1,110 @@
+Fix flag handling in newer CMake versions by using the semicolon-separated
+COMPILE_OPTIONS instead of COMPILE_FLAGS.
+
+James Le Cuirot <chewi@gentoo.org>
+
+diff -Naur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2011-07-29 09:37:48.000000000 +0100
++++ b/CMakeLists.txt	2024-08-05 18:57:24.894117058 +0100
+@@ -74,7 +74,7 @@
+     CHECK_FUNCTION_EXISTS(_fseeki64 HAVE__FSEEKI64)
+ ENDIF(NOT HAVE_FSEEKO)
+ 
+-SET(STATIC_CFLAGS "${STATIC_CFLAGS} -DALURE_STATIC_LIBRARY")
++SET(STATIC_CFLAGS "${STATIC_CFLAGS};-DALURE_STATIC_LIBRARY")
+ 
+ IF(MSVC)
+     # ???
+@@ -85,7 +85,7 @@
+ 
+         # Force -fPIC for the static lib, because it causes problems when the
+         # static version is linked to a dynamic lib
+-        SET(STATIC_CFLAGS "${STATIC_CFLAGS} -fPIC")
++        SET(STATIC_CFLAGS "${STATIC_CFLAGS};-fPIC")
+     ENDIF(NOT WIN32)
+ 
+     CHECK_C_COMPILER_FLAG(-Wextra HAVE_WEXTRA)
+@@ -215,7 +215,7 @@
+         SET(HAS_SNDFILE 1)
+         LINK_DIRECTORIES(${SNDFILE_LIBRARY_DIRS})
+         SET_SOURCE_FILES_PROPERTIES(src/codec_sndfile.cpp PROPERTIES
+-                                    COMPILE_FLAGS "${SNDFILE_CFLAGS}")
++                                    COMPILE_OPTIONS "${SNDFILE_CFLAGS}")
+     ELSE(SNDFILE_FOUND)
+         FIND_PACKAGE(SndFile)
+         IF(SNDFILE_FOUND)
+@@ -237,7 +237,7 @@
+         SET(HAS_VORBISFILE 1)
+         LINK_DIRECTORIES(${VORBISFILE_LIBRARY_DIRS})
+         SET_SOURCE_FILES_PROPERTIES(src/codec_vorbisfile.cpp PROPERTIES
+-                                    COMPILE_FLAGS "${VORBISFILE_CFLAGS}")
++                                    COMPILE_OPTIONS "${VORBISFILE_CFLAGS}")
+     ELSE(VORBISFILE_FOUND)
+         FIND_PACKAGE(OggVorbis)
+         IF(OGGVORBIS_FOUND)
+@@ -258,14 +258,14 @@
+                         SET(VORBISFILE_LIBRARIES "vorbisidec")
+                     ENDIF(HAVE_LIBVORBISIDEC)
+                     SET_SOURCE_FILES_PROPERTIES(src/codec_vorbisfile.cpp PROPERTIES
+-                                                COMPILE_FLAGS "-DHAS_VORBISIDEC")
++                                                COMPILE_OPTIONS "-DHAS_VORBISIDEC")
+                 ENDIF(DYNLOAD OR HAVE_LIBVORBISIDEC)
+             ENDIF(HAVE_TREMOR_IVORBISFILE_H)
+         ELSE(NOT VORBISIDEC_FOUND)
+             SET(HAS_VORBISFILE 1)
+             LINK_DIRECTORIES(${VORBISIDEC_LIBRARY_DIRS})
+             SET_SOURCE_FILES_PROPERTIES(src/codec_vorbisfile.cpp PROPERTIES
+-                                        COMPILE_FLAGS "${VORBISIDEC_CFLAGS} -DHAS_VORBISIDEC")
++                                        COMPILE_OPTIONS "${VORBISIDEC_CFLAGS};-DHAS_VORBISIDEC")
+         ENDIF(NOT VORBISIDEC_FOUND)
+     ENDIF(NOT HAS_VORBISFILE)
+     IF(HAS_VORBISFILE)
+@@ -307,7 +307,7 @@
+         SET(HAS_MPG123 1)
+         LINK_DIRECTORIES(${MPG123_LIBRARY_DIRS})
+         SET_SOURCE_FILES_PROPERTIES(src/codec_mpg123.cpp PROPERTIES
+-                                    COMPILE_FLAGS "${MPG123_CFLAGS}")
++                                    COMPILE_OPTIONS "${MPG123_CFLAGS}")
+     ENDIF(NOT MPG123_FOUND)
+     IF(HAS_MPG123)
+         SET(ALURE_OBJS ${ALURE_OBJS} src/codec_mpg123.cpp)
+@@ -376,7 +376,7 @@
+         SET(HAS_FLUIDSYNTH 1)
+         LINK_DIRECTORIES(${FLUIDSYNTH_LIBRARY_DIRS})
+         SET_SOURCE_FILES_PROPERTIES(src/codec_fluidsynth.cpp PROPERTIES
+-                                    COMPILE_FLAGS "${FLUIDSYNTH_CFLAGS}")
++                                    COMPILE_OPTIONS "${FLUIDSYNTH_CFLAGS}")
+     ENDIF(NOT FLUIDSYNTH_FOUND)
+     IF(HAS_FLUIDSYNTH)
+         SET(ALURE_OBJS ${ALURE_OBJS} src/codec_fluidsynth.cpp)
+@@ -444,7 +444,7 @@
+     #build a static library
+     ADD_LIBRARY(${LIBNAME}-static STATIC ${ALURE_OBJS})
+     SET_TARGET_PROPERTIES(${LIBNAME}-static PROPERTIES DEFINE_SYMBOL ALURE_BUILD_LIBRARY
+-                                                       COMPILE_FLAGS ${STATIC_CFLAGS}
++                                                       COMPILE_OPTIONS "${STATIC_CFLAGS}"
+                                                        VERSION ${LIB_VERSION}.0)
+     INSTALL(TARGETS ${LIBNAME}-static
+             RUNTIME DESTINATION bin
+@@ -460,7 +460,7 @@
+ IF(BUILD_EXAMPLES)
+     IF(HAVE_DDK_NTDDCDRM_H)
+         SET_SOURCE_FILES_PROPERTIES(examples/alurecdplay.c PROPERTIES
+-                                    COMPILE_FLAGS "-DHAVE_DDK_NTDDCDRM_H")
++                                    COMPILE_OPTIONS "-DHAVE_DDK_NTDDCDRM_H")
+     ENDIF(HAVE_DDK_NTDDCDRM_H)
+     ADD_EXECUTABLE(alureplay examples/alureplay.c)
+     ADD_EXECUTABLE(alurecdplay examples/alurecdplay.c)
+@@ -470,9 +470,9 @@
+         TARGET_LINK_LIBRARIES(alurecdplay ${LIBNAME} ${OPENAL_LIBRARIES} ${EXTRA_LIBS})
+         TARGET_LINK_LIBRARIES(alurestream ${LIBNAME} ${OPENAL_LIBRARIES} ${EXTRA_LIBS})
+     ELSE(BUILD_SHARED)
+-        SET_TARGET_PROPERTIES(alureplay PROPERTIES COMPILE_FLAGS -DALURE_STATIC_LIBRARY)
+-        SET_TARGET_PROPERTIES(alurecdplay PROPERTIES COMPILE_FLAGS -DALURE_STATIC_LIBRARY)
+-        SET_TARGET_PROPERTIES(alurestream PROPERTIES COMPILE_FLAGS -DALURE_STATIC_LIBRARY)
++        SET_TARGET_PROPERTIES(alureplay PROPERTIES COMPILE_OPTIONS -DALURE_STATIC_LIBRARY)
++        SET_TARGET_PROPERTIES(alurecdplay PROPERTIES COMPILE_OPTIONS -DALURE_STATIC_LIBRARY)
++        SET_TARGET_PROPERTIES(alurestream PROPERTIES COMPILE_OPTIONS -DALURE_STATIC_LIBRARY)
+         TARGET_LINK_LIBRARIES(alureplay ${LIBNAME}-static ${OPENAL_LIBRARIES} ${EXTRA_LIBS})
+         TARGET_LINK_LIBRARIES(alurecdplay ${LIBNAME}-static ${OPENAL_LIBRARIES} ${EXTRA_LIBS})
+         TARGET_LINK_LIBRARIES(alurestream ${LIBNAME}-static ${OPENAL_LIBRARIES} ${EXTRA_LIBS})

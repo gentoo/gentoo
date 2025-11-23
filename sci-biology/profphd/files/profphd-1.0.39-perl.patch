@@ -1,0 +1,16 @@
+ src/prof/prof | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/prof/prof b/src/prof/prof
+index 4f26024..356442d 100755
+--- a/src/prof/prof
++++ b/src/prof/prof
+@@ -238,7 +238,7 @@ See each keyword for more help.  Most of these are likely to be broken.
+ 
+ alternative connectivity patterns (default=3)
+ 
+-=item 3
++=item C<3>
+ 
+ predict sec + acc + htm
+ 

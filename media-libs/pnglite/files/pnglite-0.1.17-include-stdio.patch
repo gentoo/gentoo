@@ -1,0 +1,16 @@
+This patch comes from the Debian package.
+
+Index: pnglite-0.1.17/pnglite.h
+===================================================================
+--- pnglite-0.1.17.orig/pnglite.h	2008-04-18 17:15:07.000000000 +1000
++++ pnglite-0.1.17/pnglite.h	2008-04-18 17:15:18.000000000 +1000
+@@ -24,7 +24,8 @@
+ 	daniel.karling@gmail.com
+  */
+ 
+-
++
++#include <stdio.h>
+ #ifndef _PNGLITE_H_
+ #define _PNGLITE_H_
+ 

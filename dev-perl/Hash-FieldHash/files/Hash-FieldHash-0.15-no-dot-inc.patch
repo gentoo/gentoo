@@ -1,0 +1,26 @@
+From c4f929a44ace9ef304b270862c81acc07e273f63 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Thu, 2 Jul 2020 23:19:50 +1200
+Subject: Include '.' in @INC for perl 5.26+
+
+Bug: https://github.com/gfx/p5-Hash-FieldHash/issues/4
+---
+ Build.PL | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Build.PL b/Build.PL
+index 8ba2832..cb7f572 100644
+--- a/Build.PL
++++ b/Build.PL
+@@ -8,7 +8,7 @@ use 5.008_001;
+ use strict;
+ use warnings;
+ use utf8;
+-
++use lib '.';
+ use builder::MyBuilder;
+ use File::Basename;
+ use File::Spec;
+-- 
+2.27.0
+

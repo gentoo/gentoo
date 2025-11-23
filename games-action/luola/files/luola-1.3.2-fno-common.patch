@@ -1,0 +1,33 @@
+--- a/src/pilot.c
++++ b/src/pilot.c
+@@ -43,6 +43,8 @@
+ #define PILOT_STD_RADIUS 4.1 /* Normal radius for pilot */
+ #define PILOT_PAR_RADIUS 8.0 /* Parachuting radius for pilot */
+ 
++struct Pilot Pilot;
++
+ /* List of active pilots */
+ struct dllist *pilot_list;
+ 
+--- a/src/pilot.h
++++ b/src/pilot.h
+@@ -45,7 +45,8 @@
+     int toofast;                /* How long has the pilot been falling too fast */
+     struct Spring *rope;        /* The ninjarope */
+     int ropectrl;               /* -1 retracts rope, 1 extends it */
+-} Pilot;
++};
++extern struct Pilot Pilot;
+ 
+ /* Rope length limits. Actual rope length is nodelen*nodecount */
+ static const double pilot_rope_minlen = 0.1;
+--- a/tools/im_vwing.c
++++ b/tools/im_vwing.c
+@@ -24,6 +24,7 @@
+ #include <stdlib.h>
+ #include <limits.h>
+ #include <stdio.h>
++#include <string.h>
+ #include <ctype.h>
+ 
+ #include "im_vwing.h"

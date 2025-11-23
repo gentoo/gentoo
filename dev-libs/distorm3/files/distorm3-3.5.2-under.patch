@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/797283
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -4,7 +4,7 @@ compile = 1
+ optimize = 1
+ 
+ [bdist_wininst]
+-user-access-control = auto
++user_access_control = auto
+ 
+ [egg_info]
+ tag_build = 

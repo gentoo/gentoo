@@ -1,0 +1,35 @@
+--- a/Makefile
++++ b/Makefile
+@@ -4,23 +4,7 @@ UNAME := $(shell uname)
+ BINARY=../bin/$(UNAME)/wav2json
+ SRC=../src
+ 
+-ifeq ($(UNAME), Linux)
+ LD_PLATFORM_FLAGS=-lboost_program_options -lsndfile
+-CC=g++
+-endif
+-ifeq ($(UNAME), Darwin)
+-CC=clang++
+-LD_PLATFORM_FLAGS=\
+-	/usr/local/lib/libboost_program_options-mt.a \
+-	/usr/local/lib/libsndfile.a \
+-	/usr/local/lib/libogg.a \
+-	/usr/local/lib/libvorbis.a \
+-	/usr/local/lib/libvorbisenc.a \
+-	/usr/local/lib/libFLAC.a
+-
+-INCLUDES=\
+-	-I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/X11/include/
+-endif
+ 
+ ifdef USE_FLOAT
+   LD_PLATFORM_FLAGS+=-DUSE_FLOAT
+@@ -42,7 +26,7 @@ $(SRC)/version.hpp: Makefile version.txt
+ 
+ $(BINARY): $(SRC)/*.cpp $(SRC)/*.hpp $(SRC)/version.hpp
+ 	mkdir -p `dirname $(BINARY)`
+-	$(CC) -O3 -Wall -Werror -std=c++11 $(SRC)/*.cpp $(INCLUDES) $(LD_PLATFORM_FLAGS) -o $(BINARY)
++	$(CXX) $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) -Wall -std=c++11 $(SRC)/*.cpp $(INCLUDES) $(LD_PLATFORM_FLAGS) -o $(BINARY)
+ 
+ ../examples/%.json : ../example_data/%.wav
+ 	$(BINARY) $+ --precision 2 --channels left right mid side min max -o $@

@@ -1,0 +1,5 @@
+# This configuration file controls the behaviour of the ipmiseld daemon
+# from FreeIPMI.
+# See `man 8 ipmiseld` for further information.
+
+# OPTIONS="--config-file /etc/freeipmi/ipmiseld.conf"

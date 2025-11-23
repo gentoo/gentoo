@@ -1,0 +1,30 @@
+https://bugs.gentoo.org/905770
+https://gitlab.freedesktop.org/accountsservice/accountsservice/-/merge_requests/136
+https://gitlab.freedesktop.org/accountsservice/accountsservice/-/commit/c9c16b3c47e13e90bb2213141f6f309e2d474396
+
+From c9c16b3c47e13e90bb2213141f6f309e2d474396 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Fri, 5 May 2023 07:43:48 -0700
+Subject: [PATCH] generate-version.sh: fix script inside of a tarball
+
+---
+ generate-version.sh | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/generate-version.sh b/generate-version.sh
+index 3f88bff..8375c86 100755
+--- a/generate-version.sh
++++ b/generate-version.sh
+@@ -4,11 +4,10 @@ exec 3>&2 2> /dev/null
+ SRCDIR=$(dirname "$0")
+ cd "$SRCDIR"
+ CWD=$(realpath "$PWD")
+-TOPLEVEL_WORKING_DIR=$(realpath "$(git rev-parse --show-toplevel)")
+ exec 2>&3
+ 
+ # If it's not from a git checkout, assume it's from a tarball
+-if [ "$TOPLEVEL_WORKING_DIR" != "$CWD" ]; then
++if ! git rev-parse --is-inside-git-dir > /dev/null 2>&1; then
+     VERSION_FROM_DIR_NAME=$(basename "$CWD" | sed -n 's/^accountsservice-\([^-]*\)$/\1/p')
+ 
+     if [ -n "$VERSION_FROM_DIR_NAME" ]; then

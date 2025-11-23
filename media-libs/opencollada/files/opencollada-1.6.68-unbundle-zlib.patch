@@ -1,0 +1,39 @@
+https://bugs.gentoo.org/880407
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -288,7 +288,6 @@ add_subdirectory(common/libftoa)
+ add_subdirectory(${EXTERNAL_LIBRARIES}/UTF)
+ add_subdirectory(common/libBuffer)
+ add_subdirectory(${EXTERNAL_LIBRARIES}/MathMLSolver)
+-add_subdirectory(${EXTERNAL_LIBRARIES}/zlib)
+ 
+ # building OpenCOLLADA libs
+ add_subdirectory(COLLADABaseUtils)
+--- a/DAEValidator/CMakeLists.txt
++++ b/DAEValidator/CMakeLists.txt
+@@ -80,11 +80,8 @@ if (NOT LIBXML2_FOUND)
+ else ()
+     list(APPEND Libraries ${LIBXML2_LIBRARIES})
+ endif ()
+-if (USE_STATIC)
+-        list(APPEND Libraries zlib_static)
+-    else ()
+-        list(APPEND Libraries zlib_shared)
+-    endif ()
++find_package(ZLIB REQUIRED)
++list(APPEND Libraries ZLIB::ZLIB)
+ if (WIN32)
+ 	list(APPEND Libraries ws2_32.lib)
+ endif ()
+@@ -208,10 +205,3 @@ else ()
+     include_directories(${LIBXML2_INCLUDE_DIR})
+ endif ()
+ 
+-# zlib
+-if (USE_STATIC)
+-	add_dependencies(DAEValidatorExecutable zlib_static)
+-else ()
+-	add_dependencies(DAEValidatorExecutable zlib_shared)
+-endif ()
+-include_directories("../Externals/zlib/include")

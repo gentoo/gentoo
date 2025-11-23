@@ -1,0 +1,14 @@
+#It is explicitely required to include fcntl.h in musl.
+#Else we get F_SETFD, FD_CLOEXEC undefined errors.
+#
+#Closes: https://bugs.gentoo.org/828671
+--- a/moonbridge.c
++++ b/moonbridge.c
+@@ -36,6 +36,7 @@
+ #include <getopt.h>
+ #include <sys/file.h>
+ #include <syslog.h>
++#include <fcntl.h>
+ #if defined(__FreeBSD__) || __has_include(<libutil.h>)
+ #include <libutil.h>
+ #endif

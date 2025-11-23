@@ -1,0 +1,25 @@
+From 2c355d9ef0f3ed73fa96d0c6c31293086df36d74 Mon Sep 17 00:00:00 2001
+From: Peter Thorson <git@zaphoyd.com>
+Date: Sun, 19 Apr 2020 22:33:24 -0500
+Subject: [PATCH] Fix typo in CMakeLists.txt that caused CXX_FLAGS to be
+ improperly quoted. Removed unnecessary hardcoded dependency on libc++ for
+ clang. fixes #859
+
+---
+ CMakeLists.txt | 2 +-
+ changelog.md   | 3 +++
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index dcf90d1c8..3e9c80e84 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -152,7 +152,7 @@ if (BUILD_TESTS OR BUILD_EXAMPLES)
+         endif()
+         set (WEBSOCKETPP_PLATFORM_TLS_LIBS ssl crypto)
+         set (WEBSOCKETPP_BOOST_LIBS system thread)
+-        set (CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-std=c++0x -stdlib=libc++") # todo: is libc++ really needed here?
++        set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
+         if (NOT APPLE)
+             add_definitions (-DNDEBUG -Wall -Wno-padded) # todo: should we use CMAKE_C_FLAGS for these?
+         endif ()

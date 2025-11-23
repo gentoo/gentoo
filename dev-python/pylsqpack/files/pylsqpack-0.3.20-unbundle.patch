@@ -1,0 +1,15 @@
+diff --git a/setup.py b/setup.py
+index 03fc754..286eab7 100644
+--- a/setup.py
++++ b/setup.py
+@@ -35,9 +35,8 @@ setuptools.setup(
+             py_limited_api=True,
+             sources=[
+                 "src/pylsqpack/binding.c",
+-                "vendor/ls-qpack/lsqpack.c",
+-                "vendor/ls-qpack/deps/xxhash/xxhash.c",
+             ],
++            libraries=["ls-qpack"],
+         ),
+     ],
+     cmdclass={"bdist_wheel": bdist_wheel_abi3},

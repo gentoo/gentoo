@@ -1,0 +1,119 @@
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# When you add an entry to the top of this file, add your name, the date, and
+# an explanation of why something is getting masked. Please be extremely
+# careful not to commit atoms that are not valid, as it can cause large-scale
+# breakage, especially if it ends up in the daily snapshot.
+#
+## Example:
+##
+## # Dev E. Loper <developer@gentoo.org> (2012-06-28)
+## # Masking foo USE flag until we can get the
+## # foo stuff to work properly again (bug 12345)
+## =media-video/mplayer-0.90_pre5 foo
+## =media-video/mplayer-0.90_pre5-r1 foo
+#
+
+#--- END OF EXAMPLES ---
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
+# dev-perl/Template-GD is not stable here. Bug #962143
+dev-perl/Template-Toolkit gd
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
+# dev-perl/GD-Barcode is not stable here. Bug #962143
+dev-perl/Business-ISBN barcode
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
+# dev-perl/GD is not stable here. Bug #962143
+media-fonts/unifont utils fontforge
+
+# Sam James <sam@gentoo.org> (2025-07-19)
+# Gradually unmask for newer Rust to avoid making users recompile for
+# the change. See bug #735154.
+<dev-lang/rust-1.86 system-llvm
+
+# Sam James <sam@gentoo.org> (2025-04-26)
+# dev-python/scipy is not marked stable here
+dev-cpp/benchmark tools
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-12-16)
+# Destabilising app-emulation/qemu on ppc
+sys-boot/grub test grub_platforms_qemu
+sys-boot/grub test
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2023-06-02)
+# Destabilizing ppc keywords on sci-*/* packages
+dev-perl/PDL gsl
+dev-python/numpy lapack
+dev-python/pythran test
+media-gfx/graphviz gts
+media-libs/a52dec djbfft
+sci-libs/gsl cblas-external
+sci-libs/hdf5 szip
+
+# Hans de Graaff <graaff@gentoo.org> (2023-03-28)
+# dev-ruby/stringex is not marked stable here yet
+dev-ruby/kramdown unicode
+
+# Sam James <sam@gentoo.org> (2022-11-19)
+# Deps not stable on ppc
+llvm-core/clang-common default-lld
+llvm-runtimes/clang-runtime default-lld
+llvm-core/llvm binutils-plugin z3 xar
+
+# Sam James <sam@gentoo.org> (2022-07-27)
+# llvm-core/lld is not marked stable on ppc
+>=dev-lang/spidermonkey-78 lto
+
+# Sam James <sam@gentoo.org> (2022-05-11)
+# sys-apps/keyutils not stable here (test failures)
+# ... and samba[client] pulls in cifs-utils which pulls in keyutils.
+# bug #636252
+net-fs/nfs-utils nfsv4
+net-fs/samba client
+gnome-base/gvfs samba
+media-video/ffmpeg samba
+media-video/ffmpeg-compat samba
+media-video/vlc samba
+
+# Sam James <sam@gentoo.org> (2022-03-03)
+# net-nds/openldap not stable here
+dev-lang/php ldap-sasl
+mail-mta/postfix ldap-bind
+
+# Sam James <sam@gentoo.org> (2022-03-03)
+# No kerberos provider is marked stable here
+sys-auth/pambase pam_krb5
+
+# Sam James <sam@gentoo.org> (2022-03-03)
+# sys-cluster/rdma-core is not marked stable here
+net-libs/libpcap rdma
+
+# Sam James <sam@gentoo.org> (2022-03-03)
+# sys-cluster/sanlock is not marked stable here
+sys-fs/lvm2 sanlock
+
+# Marek Szuba <marecki@gentoo.org> (2021-12-31)
+# No stable dev-ruby/{thor,tty-editor} on this arch yet
+# and there are many dependencies to go through before there are
+app-text/htmltidy test
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-07-21)
+# Unstable test deps.
+dev-cpp/eigen test
+
+# Michael Weber <xmw@gentoo.org> (2017-03-01)
+# Mask until >sys-cluster/ceph-0.94 goes stable
+net-analyzer/rrdtool rados
+
+# Pacho Ramos <pacho@gentoo.org> (2015-05-15)
+# Missing keywords
+net-misc/connman l2tp openconnect
+sci-libs/plplot ocaml
+
+# Pacho Ramos <pacho@gentoo.org> (2014-07-02)
+# Mask due Gnome3 not going to be stabilized on this arch
+gnome-base/gvfs google
+mail-client/balsa webkit

@@ -1,0 +1,8 @@
+Newly added in dxvk-2.4, but the old script does not know about it.
+(see also wow64-setup.patch, this script needs a replacement)
+--- a/setup_dxvk.sh
++++ b/setup_dxvk.sh
+@@ -207,2 +207,3 @@
+ 
++$action d3d8
+ $action d3d9

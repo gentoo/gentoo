@@ -1,0 +1,13 @@
+Disable invoking sphinx
+https://bugs.gentoo.org/806613
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -57,7 +57,6 @@
+ include libmemcachedutil-1.0/include.am
+ 
+ include clients/include.am
+-include docs/include.am
+ include man/include.am
+ 
+ if BUILD_LIBMEMCACHED_PROTOCOL

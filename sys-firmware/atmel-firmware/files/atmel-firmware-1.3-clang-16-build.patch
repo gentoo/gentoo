@@ -1,0 +1,13 @@
+Fix build with clang 16
+Bug: https://bugs.gentoo.org/887113
+--- a/atmel_fwl.c
++++ b/atmel_fwl.c
+@@ -37,7 +37,7 @@ struct atmel_priv_ioctl {
+ 	unsigned short len;    
+ };
+ 
+-main(int argc, char **argv)
++int main(int argc, char **argv)
+ {
+ 	int i, magic, rc, sock = -1;
+ 	struct ifreq ifr;

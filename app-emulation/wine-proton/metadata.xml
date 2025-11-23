@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ionen@gentoo.org</email>
+		<name>Ionen Wolkens</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>wine@gentoo.org</email>
+		<name>Wine</name>
+	</maintainer>
+	<use>
+		<flag name="arm64ec">Enable support for running x86_64 applications on arm64 via binary translation</flag>
+		<flag name="crossdev-mingw">
+			Use <pkg>sys-devel/crossdev</pkg> for the toolchain rather than
+			<pkg>dev-util/mingw64-toolchain</pkg> (requires manual setting up
+			and is mostly unsupported, try disabling if have issues)
+		</flag>
+		<flag name="gecko">Enable mshtml support using <pkg>app-emulation/wine-gecko</pkg></flag>
+		<flag name="mingw">Build PE files using <pkg>dev-util/mingw64-toolchain</pkg> (more tested) rather than <pkg>llvm-core/clang</pkg> (newer)</flag>
+		<flag name="mono">Enable .NET support using <pkg>app-emulation/wine-mono</pkg></flag>
+		<flag name="perl">Install helpers that require perl (winedump/winemaker)</flag>
+		<flag name="sdl">Enable gamepad support using <pkg>media-libs/libsdl2</pkg></flag>
+		<flag name="wow64">
+			Enable the "new" wow64 mode that allows running 32bit
+			applications without 32bit ELF multilib by mapping to
+			64bit calls (experimental, *may* have worse performance
+			or other issues compared to USE=abi_x86_32 aka "old"
+			wow64) -- if USE=mingw is set, still need the default
+			abi_x86_32 set on <pkg>dev-util/mingw64-toolchain</pkg>
+			but that can be done even with /no-multilib/ profiles.
+
+			This can also be enabled on arm64 to allow running
+			x86 applications via binary translation.
+		</flag>
+	</use>
+	<upstream>
+		<changelog>https://github.com/ValveSoftware/Proton/wiki/Changelog</changelog>
+		<remote-id type="github">ValveSoftware/wine</remote-id>
+	</upstream>
+</pkgmetadata>

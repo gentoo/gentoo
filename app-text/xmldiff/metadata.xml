@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription>
+		A python tool that figures out the differences between two
+		similar XML files, in the same way the diff utility does.
+		Xmldiff was initially developed for the Narval project and can
+		be used as a library or as a command line tool. It can work either
+		with XML files or DOM trees.
+	</longdescription>
+	<upstream>
+		<doc>https://xmldiff.readthedocs.io</doc>
+		<remote-id type="github">Shoobx/xmldiff</remote-id>
+		<remote-id type="pypi">xmldiff</remote-id>
+	</upstream>
+</pkgmetadata>

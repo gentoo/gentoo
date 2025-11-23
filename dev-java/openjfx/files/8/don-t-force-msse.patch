@@ -1,0 +1,38 @@
+From 6483d73551590e8036cd5ec6d317e8114b403f36 Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Sun, 26 Apr 2020 20:57:39 -0700
+Subject: [PATCH] don't force msse
+
+--- a/modules/media/src/main/native/gstreamer/projects/linux/avplugin/Makefile
++++ b/modules/media/src/main/native/gstreamer/projects/linux/avplugin/Makefile
+@@ -28,7 +28,6 @@ CFLAGS = -fPIC                   \
+          -Wformat-security       \
+          -Werror=implicit-function-declaration \
+          -fstack-protector       \
+-         -msse2                  \
+          -fbuiltin               \
+          -DHAVE_STDINT_H         \
+          -DLINUX                 \
+--- a/modules/media/src/main/native/gstreamer/projects/linux/fxplugins/Makefile
++++ b/modules/media/src/main/native/gstreamer/projects/linux/fxplugins/Makefile
+@@ -25,7 +25,6 @@ CFLAGS = -fPIC                   \
+          -Wformat-security       \
+          -Werror=implicit-function-declaration \
+          -fstack-protector       \
+-         -msse2                  \
+          -fbuiltin               \
+          -DHAVE_STDINT_H         \
+          -DLINUX                 \
+--- a/modules/media/src/main/native/jfxmedia/projects/linux/Makefile
++++ b/modules/media/src/main/native/jfxmedia/projects/linux/Makefile
+@@ -44,7 +44,6 @@ ifdef HOST_COMPILE
+                   -Wformat-security \
+                   -fstack-protector \
+                   -Werror=implicit-function-declaration \
+-		  -msse2 \
+ 	          -DGSTREAMER_LITE
+ 
+ 	INCLUDES = $(BASE_INCLUDES) \
+-- 
+2.26.2
+

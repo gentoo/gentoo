@@ -1,0 +1,86 @@
+https://bugs.gentoo.org/934532
+https://bugs.gentoo.org/939024
+Ordering of includes is important, so we don't redefine "clamp" from
+under STL internals:
+https://en.cppreference.com/w/cpp/algorithm/clamp takes four args
+but clamp in ext2fs.h takes three
+diff -ur a/src/directories.cc b/src/directories.cc
+--- a/src/directories.cc	2024-12-30 14:12:51.353812001 +0400
++++ b/src/directories.cc	2024-12-30 14:13:51.472524523 +0400
+@@ -21,6 +21,10 @@
+ // You should have received a copy of the GNU General Public License
+ // along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
++#include <cstring>
++#include <ctime>
++#include <algorithm>
++
+ #ifndef USE_PCH
+ #include "sys.h"
+ #include "ext3.h"
+@@ -33,9 +37,6 @@
+ #include "indirect_blocks.h"
+ #include "get_block.h"
+ #include "directories.h"
+-#include <cstring>
+-#include <ctime>
+-#include <algorithm>
+ 
+ //-----------------------------------------------------------------------------
+ //
+diff -ur a/src/init_files.cc b/src/init_files.cc
+--- a/src/init_files.cc	2024-12-30 14:12:51.353812001 +0400
++++ b/src/init_files.cc	2024-12-30 14:13:37.823593692 +0400
+@@ -21,6 +21,8 @@
+ // You should have received a copy of the GNU General Public License
+ // along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
++#include <algorithm>
++
+ #ifndef USE_PCH
+ #include "sys.h"
+ #include <iomanip>
+@@ -33,7 +35,6 @@
+ #include "globals.h"
+ #include "forward_declarations.h"
+ #include "journal.h"
+-#include <algorithm>
+ 
+ //-----------------------------------------------------------------------------
+ //
+diff -ur a/src/journal.cc b/src/journal.cc
+--- a/src/journal.cc	2024-12-30 14:12:51.353812001 +0400
++++ b/src/journal.cc	2024-12-30 14:14:07.808441493 +0400
+@@ -21,6 +21,9 @@
+ // You should have received a copy of the GNU General Public License
+ // along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
++#include <algorithm>
++#include <ctime>
++
+ #ifndef USE_PCH
+ #include "sys.h"
+ #include <stdint.h>
+@@ -37,8 +40,6 @@
+ #include "indirect_blocks.h"
+ #include "get_block.h"
+ #include "commandline.h"
+-#include <algorithm>
+-#include <ctime>
+ 
+ //-----------------------------------------------------------------------------
+ //
+It throws warning - we already define LARGEFILE on Gentoo, so let's not redefine
+diff -ur a/src/sys.h.in b/src/sys.h.in
+--- a/src/sys.h.in	2024-12-30 14:12:51.353812001 +0400
++++ b/src/sys.h.in	2024-12-30 14:24:36.796244569 +0400
+@@ -31,7 +31,9 @@
+ #endif
+ 
+ // This is needed for lseek64.
++#ifndef _LARGEFILE64_SOURCE
+ #define _LARGEFILE64_SOURCE
++#endif
+ 
+ #ifdef CWDEBUG
+ #ifndef _GNU_SOURCE

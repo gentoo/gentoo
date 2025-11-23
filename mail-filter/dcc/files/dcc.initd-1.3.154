@@ -1,0 +1,102 @@
+#!/sbin/openrc-run
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	use logger
+	need net
+	before mta
+}
+
+checkconfig() {
+	if [ ! -f "/etc/dcc/dcc_conf" ]; then
+		eerror "You need a DCC configuration in /etc/dcc/dcc_conf"
+		return 1
+	fi
+	for i in DCCD_ENABLE GREY_ENABLE DCCM_ENABLE DCCM_ARGS DCCIFD_ENABLE DCC_LIBEXEC DCC_RUNDIR \
+		SOCKET_USER SOCKET_GROUP SOCKET_MODE; do
+		read -r ${i} <<-EOF
+		$( grep ^[[:space:]]*${i} /etc/dcc/dcc_conf | sed s/.*=// )
+	EOF
+	done
+	DCC_RUNDIR="${DCC_RUNDIR:-/var/run/dcc}"
+	if [ ! -d "${DCC_RUNDIR}" ]; then
+		checkpath -q -d -o root:root -m 0755 "${DCC_RUNDIR}" || return 1
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	local atleastone="${DCCD_ENABLE}${GREY_ENABLE}${DCCM_ENABLE}${DCCIFD_ENABLE}"
+	atleastone=$( echo ${atleastone} | tr -d 'off' )
+	if [ -z "${atleastone}" ]; then
+		eend 1 "At least one service should be 'on' in /etc/dcc/dcc_conf"
+		return 1
+	fi
+
+	if [ "${DCCD_ENABLE}" = "on" ] && [ -x "${DCC_LIBEXEC}/start-dccd" ]; then
+		ebegin "Starting dccd"
+		${DCC_LIBEXEC}/start-dccd >/dev/null 2>&1
+		eend ${?}
+	fi
+
+	if [ "${GREY_ENABLE}" = "on" ] && [ -x "${DCC_LIBEXEC}/start-grey" ]; then
+		ebegin "Starting grey"
+		${DCC_LIBEXEC}/start-grey >/dev/null 2>&1
+		eend ${?}
+	fi
+
+	if [ "${DCCM_ENABLE}" = "on" ] && [ -x "${DCC_LIBEXEC}/start-dccm" ]; then
+		ebegin "Starting dccm"
+		${DCC_LIBEXEC}/start-dccm >/dev/null 2>&1
+		eend ${?}
+		if !(echo ${DCCM_ARGS}|grep -q "^\-p\|[[:space:]]\-p"); then
+			local dccmtimeout=0
+			while [ ${dccmtimeout} -le 20 ] ; do
+				if [ -S "${DCC_RUNDIR}/dccm" ] || [ -r "${DCC_RUNDIR}/dccm" ]; then
+					break
+				else
+					sleep 1
+					dccmtimeout=$(($dccmtimeout + 1))
+				fi
+			done
+			chown ${SOCKET_USER:-milter}:${SOCKET_GROUP:-milter} ${DCC_RUNDIR}/dccm 1>/dev/null 2>&1
+			chmod ${SOCKET_MODE:-664} ${DCC_RUNDIR}/dccm 1>/dev/null 2>&1
+		fi
+		sed -i -e "s:^\-::" ${DCC_RUNDIR}/dccm.pid 1>/dev/null 2>&1 || return 1
+	fi
+
+	if [ "${DCCIFD_ENABLE}" = "on" ] && [ -x "${DCC_LIBEXEC}/start-dccifd" ]; then
+		ebegin "Starting dccif"
+		${DCC_LIBEXEC}/start-dccifd >/dev/null 2>&1
+		eend ${?}
+	fi
+}
+
+stop() {
+	checkconfig || return 1
+
+	if [ -r "${DCC_RUNDIR}/dccifd.pid" ]; then
+		ebegin "Stopping dccif"
+		kill -s 15 $(cat ${DCC_RUNDIR}/dccifd.pid) 2>/dev/null
+		eend ${?}
+	fi
+
+	if [ -r "${DCC_RUNDIR}/dccm.pid" ]; then
+		ebegin "Stopping dccm"
+		kill -s 15 $(cat ${DCC_RUNDIR}/dccm.pid) 2>/dev/null
+		eend ${?}
+	fi
+
+	if (pidof dccd >/dev/null 2>&1) && [ -x "${DCC_LIBEXEC}/stop-dccd" ]; then
+		ebegin "Stopping dccd"
+		${DCC_LIBEXEC}/stop-dccd >/dev/null 2>&1
+		eend ${?}
+	fi
+
+	if (pidof dccd >/dev/null 2>&1) && [ -x "${DCC_LIBEXEC}/stop-dccd" ]; then
+		ebegin "Stopping grey"
+		${DCC_LIBEXEC}/stop-dccd -G >/dev/null 2>&1
+		eend ${?}
+	fi
+}

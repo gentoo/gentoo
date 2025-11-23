@@ -1,0 +1,25 @@
+--- a/configure.in
++++ b/configure.in
+@@ -50,9 +50,9 @@
+   AC_MSG_WARN([cannot find doxygen, unable to generate Cal3D API Reference!])
+ fi
+ 
+-AC_CHECK_PROG(DB2HTML, db2html, true, false)
++AC_CHECK_PROG(DB2HTML, docbook2html, true, false)
+ if test "$DB2HTML" = false; then
+-  AC_MSG_WARN([cannot find db2html, unable to generate Cal3D User's Guide!])
++  AC_MSG_WARN([cannot find docbook2html, unable to generate Cal3D User's Guide!])
+ fi
+ 
+ AC_PATH_PROG(BLENDER, [blender])
+--- a/docs/Makefile.am
++++ b/docs/Makefile.am
+@@ -18,7 +18,7 @@
+ 	doxygen cal3d.doxygen
+ 
+ doc-guide:
+-	db2html guide.sgml
++	docbook2html guide.sgml
+ 
+ clean-local:
+ 	rm -rf guide guide.junk

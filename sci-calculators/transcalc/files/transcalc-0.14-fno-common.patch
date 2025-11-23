@@ -1,0 +1,70 @@
+--- a/src/transcalc.c
++++ b/src/transcalc.c
+@@ -37,6 +37,15 @@
+ extern gint trc_file_load (FILE *, short);
+ 
+ char version[] = "transcalc " VERSION;
++GtkWidget *main_body_window;
++GtkWidget *transtype_combo;
++
++short current_transtype;
++trans_win *twin;
++short statusint;
++trans_gui *tgui;
++gboolean statusexists;
++int main_window_width, main_window_height;
+ 
+ 
+ /*
+--- a/src/transcalc.h
++++ b/src/transcalc.h
+@@ -53,8 +53,8 @@
+ #endif /* HAVE_STRCPY */
+ 
+ 
+-GtkWidget *main_body_window;
+-GtkWidget *transtype_combo;
++extern GtkWidget *main_body_window;
++extern GtkWidget *transtype_combo;
+ /*GtkWidget *status;*/
+ 
+ #define MICROSTRIP 0
+@@ -163,12 +163,12 @@
+   gfloat electrical_params_value[NUMELECPARS];
+ } trans_value;
+ 
+-short current_transtype;
+-trans_win *twin;
+-short statusint;
+-trans_gui *tgui;
+-gboolean statusexists;
+-int main_window_width, main_window_height;
++extern short current_transtype;
++extern trans_win *twin;
++extern short statusint;
++extern trans_gui *tgui;
++extern gboolean statusexists;
++extern int main_window_width, main_window_height;
+ 
+ void error_mes(gchar * text);
+ 
+--- a/src/unitscombo.c
++++ b/src/unitscombo.c
+@@ -33,6 +33,7 @@
+ #include "transcalc.h"
+ #include "body.h"
+ 
++short length_unit, freq_unit, res_unit, ang_unit;
+ 
+ gchar *length_unit_name[] = { "mil",
+ 			      "cm",
+--- a/src/units.h
++++ b/src/units.h
+@@ -77,6 +77,6 @@
+ #define ohm_to_kohm(a) (a/1000.0)
+ */
+ 
+-short length_unit, freq_unit, res_unit, ang_unit;
++extern short length_unit, freq_unit, res_unit, ang_unit;
+ 
+ #endif

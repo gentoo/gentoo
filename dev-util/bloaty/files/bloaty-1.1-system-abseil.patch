@@ -1,0 +1,92 @@
+https://src.fedoraproject.org/rpms/bloaty/blob/rawhide/f/bloaty-1.1-absl.patch
+https://github.com/google/bloaty/pull/347
+
+diff -up ./CMakeLists.txt.1 ./CMakeLists.txt
+--- ./CMakeLists.txt.1	2020-05-24 00:36:23.000000000 -0400
++++ ./CMakeLists.txt	2020-12-19 12:32:29.021943521 -0500
+@@ -2,7 +2,8 @@ cmake_minimum_required(VERSION 3.5)
+ cmake_policy(SET CMP0048 NEW)
+ project (Bloaty VERSION 1.0)
+ project (Bloaty VERSION 1.1)
+-set(CMAKE_CXX_STANDARD 11)
++set(CMAKE_CXX_STANDARD 17)
++set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+ 
+ # Options we define for users.
+ option(BLOATY_ENABLE_ASAN "Enable address sanitizer." OFF)
+@@ -36,6 +37,8 @@ else(${PKG_CONFIG_FOUND})
+ endif(${PKG_CONFIG_FOUND})
+ endif(UNIX)
+ 
++find_package(absl)
++
+ # Set default build type.
+ if(NOT CMAKE_BUILD_TYPE)
+   message(STATUS "Setting build type to 'RelWithDebInfo' as none was specified.")
+@@ -89,11 +92,10 @@ endif(UNIX)
+ 
+ include_directories(.)
+ include_directories(src)
+-include_directories(third_party/abseil-cpp)
+ include_directories("${CMAKE_CURRENT_BINARY_DIR}/src")
+ 
+ # Baseline build flags.
+-set(CMAKE_CXX_FLAGS "-std=c++11 -W -Wall -Wno-sign-compare")
++set(CMAKE_CXX_FLAGS "-W -Wall -Wno-sign-compare")
+ set(CMAKE_CXX_FLAGS_DEBUG "-g1")
+ set(CMAKE_CXX_FLAGS_RELEASE "-O2")
+ set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O2 -g1")
+@@ -149,7 +151,7 @@ endif(${PROTOC_FOUND})
+ file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/bloaty_package.bloaty
+      DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+ 
+-add_library(libbloaty
++add_library(libbloaty STATIC
+     src/bloaty.cc
+     src/demangle.cc
+     src/disassemble.cc
+@@ -159,6 +161,13 @@ add_library(libbloaty
+     src/macho.cc
+     src/range_map.cc
+     src/webassembly.cc
++)
++
++if (absl_FOUND)
++  target_link_libraries(libbloaty PUBLIC absl::base absl::strings absl::numeric)
++else()
++  include_directories(third_party/abseil-cpp)
++  target_sources(libbloaty
+     # Until Abseil has a proper CMake build system
+     third_party/abseil-cpp/absl/base/internal/raw_logging.cc # Grrrr...
+     third_party/abseil-cpp/absl/base/internal/throw_delegate.cc
+@@ -179,7 +188,8 @@ add_library(libbloaty
+     third_party/abseil-cpp/absl/types/bad_optional_access.cc
+     # One source file, no special build system needed.
+     third_party/demumble/third_party/libcxxabi/cxa_demangle.cpp
+-    )
++  )
++endif()
+ 
+ if(UNIX)
+   set(LIBBLOATY_LIBS libbloaty)
+@@ -249,9 +259,8 @@ else()
+     enable_testing()
+ 
+     if(BUILD_TESTING)
+-      add_subdirectory(third_party/googletest)
+-      include_directories(third_party/googletest/googletest/include)
+-      include_directories(third_party/googletest/googlemock/include)
++      find_package(GTest)
++      pkg_search_module(GMock gmock)
+ 
+       set(TEST_TARGETS
+           bloaty_test
+@@ -261,7 +270,7 @@ else()
+ 
+       foreach(target ${TEST_TARGETS})
+         add_executable(${target} tests/${target}.cc)
+-        target_link_libraries(${target} "${LIBBLOATY_LIBS}" gtest_main gmock "${CMAKE_THREAD_LIBS_INIT}")
++        target_link_libraries(${target} "${LIBBLOATY_LIBS}" GTest::Main GTest::GTest ${GMock_LIBRARIES} "${CMAKE_THREAD_LIBS_INIT}")
+       endforeach(target)
+ 
+       add_executable(fuzz_test tests/fuzz_target.cc tests/fuzz_driver.cc)

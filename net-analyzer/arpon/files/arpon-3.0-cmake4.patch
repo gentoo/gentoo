@@ -1,0 +1,13 @@
+Fix build failures with CMake 4
+https://bugs.gentoo.org/952092
+--- a/CMakeLists.txt	2025-03-26 21:03:28.124742115 +0300
++++ b/CMakeLists.txt	2025-03-26 21:03:56.696915295 +0300
+@@ -40,7 +40,7 @@
+ #                        By default ArpON will be installed to / path.
+ #
+ 
+-cmake_minimum_required(VERSION 2.6)
++cmake_minimum_required(VERSION 3.5...4.0)
+ 
+ project(ArpON C)
+ set(AUTHOR "Andrea Di Pasquale <spikey.it@gmail.com>" INTERNAL "Author")

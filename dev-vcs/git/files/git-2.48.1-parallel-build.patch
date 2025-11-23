@@ -1,0 +1,85 @@
+https://bugs.gentoo.org/948865
+https://lore.kernel.org/git/20250122-b4-pks-meson-additions-v3-4-5a51eb5d3dcd@pks.im/
+
+From: Patrick Steinhardt <ps@pks.im>
+Date: Wed, 22 Jan 2025 13:05:47 +0100
+Subject: [PATCH v3 04/11] meson: fix dependencies for generated headers
+Precedence: bulk
+X-Mailing-List: git@vger.kernel.org
+List-Id: <git.vger.kernel.org>
+List-Subscribe: <mailto:git+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:git+unsubscribe@vger.kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250122-b4-pks-meson-additions-v3-4-5a51eb5d3dcd@pks.im>
+References: <20250122-b4-pks-meson-additions-v3-0-5a51eb5d3dcd@pks.im>
+In-Reply-To: <20250122-b4-pks-meson-additions-v3-0-5a51eb5d3dcd@pks.im>
+To: git@vger.kernel.org
+Cc: Evan Martin <evan.martin@gmail.com>, 
+ Eli Schwartz <eschwartz@gentoo.org>, Junio C Hamano <gitster@pobox.com>, 
+ M Hickford <mirth.hickford@gmail.com>, Toon Claes <toon@iotcl.com>
+X-Mailer: b4 0.14.2
+
+We generate a couple of headers from our documentation. These headers
+are added to the libgit sources, but two of them aren't used by the
+library, but instead by our builtins. This can cause parallel builds to
+fail because the builtin object may be compiled before the header was
+generated.
+
+Fix the issue by adding both "config-list.h" and "hook-list.h" to the
+list of builtin sources. While "command-list.h" is generated similarly,
+it is used by "help.c" and thus part of the libgit sources indeed.
+
+Reported-by: Evan Martin <evan.martin@gmail.com>
+Signed-off-by: Patrick Steinhardt <ps@pks.im>
+---
+ meson.build | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 213998986e..4053024dad 100644
+--- a/meson.build
++++ b/meson.build
+@@ -487,6 +487,13 @@ libgit_sources = [
+   'xdiff/xutils.c',
+ ]
+ 
++libgit_sources += custom_target(
++  input: 'command-list.txt',
++  output: 'command-list.h',
++  command: [shell, meson.current_source_dir() + '/generate-cmdlist.sh', meson.current_source_dir(), '@OUTPUT@'],
++  env: script_environment,
++)
++
+ builtin_sources = [
+   'builtin/add.c',
+   'builtin/am.c',
+@@ -614,14 +621,7 @@ builtin_sources = [
+   'builtin/write-tree.c',
+ ]
+ 
+-libgit_sources += custom_target(
+-  input: 'command-list.txt',
+-  output: 'command-list.h',
+-  command: [shell, meson.current_source_dir() + '/generate-cmdlist.sh', meson.current_source_dir(), '@OUTPUT@'],
+-  env: script_environment,
+-)
+-
+-libgit_sources += custom_target(
++builtin_sources += custom_target(
+   output: 'config-list.h',
+   command: [
+     shell,
+@@ -632,7 +632,7 @@ libgit_sources += custom_target(
+   env: script_environment,
+ )
+ 
+-libgit_sources += custom_target(
++builtin_sources += custom_target(
+   input: 'Documentation/githooks.txt',
+   output: 'hook-list.h',
+   command: [
+
+-- 
+2.48.1.321.gbf1f004a4a.dirty

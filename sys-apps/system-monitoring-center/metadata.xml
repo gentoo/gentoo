@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    Features: detailed system performance and usage usage monitoring/managing
+    features: monitoring CPU, RAM, Disk, Network, GPU hardware/usage
+    information, monitoring and managing processes and services (systemd),
+    monitoring users, sensors and general system information, supports
+    PolicyKit. No need to run the application with "sudo", hardware selection
+    options (selecting CPU cores, disks, network cards, GPUs), plotting
+    performance data of multiple devices at the same time, interactive charts
+    for querying performance data on any point, option for showing processes as
+    tree or list, optimized for low CPU usage and fast start, supports ARM
+    architecture, free and open source.
+  </longdescription>
+  <upstream>
+    <changelog>https://raw.githubusercontent.com/hakandundar34coding/system-monitoring-center/master/Changes.md</changelog>
+    <bugs-to>https://gitlab.com/hakandundar34coding/system-monitoring-center/-/issues/</bugs-to>
+    <remote-id type="github">hakandundar34coding/system-monitoring-center</remote-id>
+  </upstream>
+</pkgmetadata>

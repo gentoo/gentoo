@@ -1,0 +1,12 @@
+--- a/linux_ext/src/linux_ext_stubs.c	2024-05-29 19:59:43.955479960 +0200
++++ b/linux_ext/src/linux_ext_stubs.c	2024-05-29 20:00:26.661018190 +0200
+@@ -236,7 +236,8 @@
+   int count = Int_val(v_count);
+   ssize_t ret;
+   struct iovec *iovecs = caml_stat_alloc(sizeof(struct iovec) * count);
+-  struct msghdr msghdr = {NULL, 0, NULL, 0, NULL, 0, 0};
++  struct msghdr msghdr;
++  memset(&msghdr, 0, sizeof(msghdr));
+   msghdr.msg_iov = iovecs;
+   msghdr.msg_iovlen = count;
+   for (--count; count >= 0; --count) {

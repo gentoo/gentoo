@@ -1,0 +1,19 @@
+commit 2581fbd54434df6dc4babd48bb41eaf7f5d6d06a
+Author: orbea <orbea@riseup.net>
+Date:   Wed Apr 7 10:01:31 2021 -0700
+
+    libventrilo3: Fix -version-info typo.
+
+diff --git a/libventrilo3/Makefile.am b/libventrilo3/Makefile.am
+index a934acf..c2fea99 100644
+--- a/libventrilo3/Makefile.am
++++ b/libventrilo3/Makefile.am
+@@ -7,7 +7,7 @@ libventrilo3_la_SOURCES = libventrilo3.c  libventrilo3_message.c  ventrilo3_hand
+ 
+ libventrilo3_la_LIBADD = $(speex_LIBS) $(opus_LIBS) $(LIBS) -lm
+ 
+-libventrilo3_la_LDFLAGS = -version 0:0:0
++libventrilo3_la_LDFLAGS = -version-info 0:0:0
+ 
+ include_HEADERS = ventrilo3.h
+ 

@@ -1,0 +1,52 @@
+.TH "gentoo-pipewire-launcher" "1" "2023-06-15"
+.SH "NAME"
+gentoo\-pipewire\-launcher \- start instances of PipeWire, PipeWire-Pulse and WirePlumber
+.SH "SYNOPSIS"
+.BR gentoo\-pipewire\-launcher
+[restart]
+.SH "DESCRIPTION"
+\fIgentoo\-pipewire\-launcher\fR starts instances of PipeWire and
+WirePlumber.
+Two instances of PipeWire are started: one as the core sound-server, and
+one for PulseAudio emulation (cf.\&
+.BR pipewire-pulse (1)\fR).
+.PP
+It must be run in an environment with an active D-Bus session bus,
+i.e. one in which the
+.B DBUS_SESSION_BUS_ADDRESS
+environment variable is set appropriately.
+.PP
+\fIgentoo\-pipewire\-launcher\fR
+tries to avoid restarting, in order to avoid audio dropouts.
+However, a restart can be forced by calling
+\fIgentoo\-pipewire\-launcher\fR
+with an argument of \(oqrestart\(cq.
+.PP
+.B ${XDG_CONFIG_HOME}/gentoo\-pipewire\-launcher.conf
+(or, if
+.B ${XDG_CONFIG_HOME}
+is not set,
+.BR ${HOME}/.config/gentoo\-pipewire\-launcher.conf )
+can be used to specify absolute paths of files to which log output
+should be sent, by specifying values for one or more of the
+.B GENTOO_PIPEWIRE_LOG\fR,
+.B GENTOO_PIPEWIRE_PULSE_LOG\fR,
+and
+.B GENTOO_WIREPLUMBER_LOG
+variables, one per line.
+.SH "REPORTING BUGS"
+Please report bugs via https://bugs.gentoo.org/
+.SH "FILES"
+.TP
+.B ${XDG_CONFIG_HOME}/gentoo\-pipewire\-launcher.conf
+configures locations of files for log output.
+.TP
+.B ${HOME}/.config/gentoo\-pipewire\-launcher.conf
+configures locations of files for log output if
+.B ${XDG_CONFIG_HOME}
+is not set.
+.SH "SEE ALSO"
+.BR pipewire (1),
+.BR pipewire-pulse (1),
+.BR wireplumber (1),
+.BR pipewire.conf (5)

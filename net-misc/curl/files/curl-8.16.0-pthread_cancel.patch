@@ -1,0 +1,399 @@
+https://github.com/curl/curl/commit/de3fc1d7adb78c078e4cc7ccc48e550758094ad3
+From: Stefan Eissing <stefan@eissing.org>
+Date: Sat, 13 Sep 2025 15:25:53 +0200
+Subject: [PATCH] asyn-thrdd: drop pthread_cancel
+
+Remove use of pthread_cancel in asnyc threaded resolving. While there
+are system where this works, others might leak to resource leakage
+(memory, files, etc.). The popular nsswitch is one example where resolve
+code can be dragged in that is not prepared.
+
+The overall promise and mechanism of pthread_cancel() is just too
+brittle and the historcal design of getaddrinfo() continues to haunt us.
+
+Fixes #18532
+Reported-by: Javier Blazquez
+Closes #18540
+--- a/docs/libcurl/libcurl-env-dbg.md
++++ b/docs/libcurl/libcurl-env-dbg.md
+@@ -83,11 +83,6 @@ When built with c-ares for name resolving, setting this environment variable
+ to `[IP:port]` makes libcurl use that DNS server instead of the system
+ default. This is used by the curl test suite.
+ 
+-## `CURL_DNS_DELAY_MS`
+-
+-Delay the DNS resolve by this many milliseconds. This is used in the test
+-suite to check proper handling of CURLOPT_CONNECTTIMEOUT(3).
+-
+ ## `CURL_FTP_PWD_STOP`
+ 
+ When set, the first transfer - when using ftp: - returns before sending
+--- a/lib/asyn-thrdd.c
++++ b/lib/asyn-thrdd.c
+@@ -199,14 +199,6 @@ addr_ctx_create(struct Curl_easy *data,
+   return NULL;
+ }
+ 
+-static void async_thrd_cleanup(void *arg)
+-{
+-  struct async_thrdd_addr_ctx *addr_ctx = arg;
+-
+-  Curl_thread_disable_cancel();
+-  addr_ctx_unlink(&addr_ctx, NULL);
+-}
+-
+ #ifdef HAVE_GETADDRINFO
+ 
+ /*
+@@ -220,15 +212,6 @@ static CURL_THREAD_RETURN_T CURL_STDCALL getaddrinfo_thread(void *arg)
+   struct async_thrdd_addr_ctx *addr_ctx = arg;
+   bool do_abort;
+ 
+-/* clang complains about empty statements and the pthread_cleanup* macros
+- * are pretty ill defined. */
+-#if defined(__clang__)
+-#pragma clang diagnostic push
+-#pragma clang diagnostic ignored "-Wextra-semi-stmt"
+-#endif
+-
+-  Curl_thread_push_cleanup(async_thrd_cleanup, addr_ctx);
+-
+   Curl_mutex_acquire(&addr_ctx->mutx);
+   do_abort = addr_ctx->do_abort;
+   Curl_mutex_release(&addr_ctx->mutx);
+@@ -237,9 +220,6 @@ static CURL_THREAD_RETURN_T CURL_STDCALL getaddrinfo_thread(void *arg)
+     char service[12];
+     int rc;
+ 
+-#ifdef DEBUGBUILD
+-    Curl_resolve_test_delay();
+-#endif
+     msnprintf(service, sizeof(service), "%d", addr_ctx->port);
+ 
+     rc = Curl_getaddrinfo_ex(addr_ctx->hostname, service,
+@@ -274,11 +254,6 @@ static CURL_THREAD_RETURN_T CURL_STDCALL getaddrinfo_thread(void *arg)
+ 
+   }
+ 
+-  Curl_thread_pop_cleanup();
+-#if defined(__clang__)
+-#pragma clang diagnostic pop
+-#endif
+-
+   addr_ctx_unlink(&addr_ctx, NULL);
+   return 0;
+ }
+@@ -293,24 +268,11 @@ static CURL_THREAD_RETURN_T CURL_STDCALL gethostbyname_thread(void *arg)
+   struct async_thrdd_addr_ctx *addr_ctx = arg;
+   bool do_abort;
+ 
+-/* clang complains about empty statements and the pthread_cleanup* macros
+- * are pretty ill defined. */
+-#if defined(__clang__)
+-#pragma clang diagnostic push
+-#pragma clang diagnostic ignored "-Wextra-semi-stmt"
+-#endif
+-
+-  Curl_thread_push_cleanup(async_thrd_cleanup, addr_ctx);
+-
+   Curl_mutex_acquire(&addr_ctx->mutx);
+   do_abort = addr_ctx->do_abort;
+   Curl_mutex_release(&addr_ctx->mutx);
+ 
+   if(!do_abort) {
+-#ifdef DEBUGBUILD
+-    Curl_resolve_test_delay();
+-#endif
+-
+     addr_ctx->res = Curl_ipv4_resolve_r(addr_ctx->hostname, addr_ctx->port);
+     if(!addr_ctx->res) {
+       addr_ctx->sock_error = SOCKERRNO;
+@@ -337,12 +299,7 @@ static CURL_THREAD_RETURN_T CURL_STDCALL gethostbyname_thread(void *arg)
+ #endif
+   }
+ 
+-  Curl_thread_pop_cleanup();
+-#if defined(__clang__)
+-#pragma clang diagnostic pop
+-#endif
+-
+-  async_thrd_cleanup(addr_ctx);
++  addr_ctx_unlink(&addr_ctx, NULL);
+   return 0;
+ }
+ 
+@@ -381,12 +338,12 @@ static void async_thrdd_destroy(struct Curl_easy *data)
+       CURL_TRC_DNS(data, "async_thrdd_destroy, thread joined");
+     }
+     else {
+-      /* thread is still running. Detach the thread while mutexed, it will
+-       * trigger the cleanup when it releases its reference. */
++      /* thread is still running. Detach it. */
+       Curl_thread_destroy(&addr->thread_hnd);
+       CURL_TRC_DNS(data, "async_thrdd_destroy, thread detached");
+     }
+   }
++  /* release our reference to the shared context */
+   addr_ctx_unlink(&thrdd->addr, data);
+ }
+ 
+@@ -532,10 +489,12 @@ static void async_thrdd_shutdown(struct Curl_easy *data)
+   done = addr_ctx->thrd_done;
+   Curl_mutex_release(&addr_ctx->mutx);
+ 
+-  DEBUGASSERT(addr_ctx->thread_hnd != curl_thread_t_null);
+-  if(!done && (addr_ctx->thread_hnd != curl_thread_t_null)) {
+-    CURL_TRC_DNS(data, "cancelling resolve thread");
+-    (void)Curl_thread_cancel(&addr_ctx->thread_hnd);
++  /* Wait for the thread to terminate if it is already marked done. If it is
++     not done yet we cannot do anything here. We had tried pthread_cancel but
++     it caused hanging and resource leaks (#18532). */
++  if(done && (addr_ctx->thread_hnd != curl_thread_t_null)) {
++    Curl_thread_join(&addr_ctx->thread_hnd);
++    CURL_TRC_DNS(data, "async_thrdd_shutdown, thread joined");
+   }
+ }
+ 
+@@ -553,9 +512,11 @@ static CURLcode asyn_thrdd_await(struct Curl_easy *data,
+     if(!entry)
+       async_thrdd_shutdown(data);
+ 
+-    CURL_TRC_DNS(data, "resolve, wait for thread to finish");
+-    if(!Curl_thread_join(&addr_ctx->thread_hnd)) {
+-      DEBUGASSERT(0);
++    if(addr_ctx->thread_hnd != curl_thread_t_null) {
++      CURL_TRC_DNS(data, "resolve, wait for thread to finish");
++      if(!Curl_thread_join(&addr_ctx->thread_hnd)) {
++        DEBUGASSERT(0);
++      }
+     }
+ 
+     if(entry)
+--- a/lib/curl_threads.c
++++ b/lib/curl_threads.c
+@@ -100,34 +100,6 @@ int Curl_thread_join(curl_thread_t *hnd)
+   return ret;
+ }
+ 
+-/* do not use pthread_cancel if:
+- * - pthread_cancel seems to be absent
+- * - on FreeBSD, as we see hangers in CI testing
+- * - this is a -fsanitize=thread build
+- *   (clang sanitizer reports false positive when functions to not return)
+- */
+-#if defined(PTHREAD_CANCEL_ENABLE) && !defined(__FreeBSD__)
+-#if defined(__has_feature)
+-#  if !__has_feature(thread_sanitizer)
+-#define USE_PTHREAD_CANCEL
+-#  endif
+-#else /* __has_feature */
+-#define USE_PTHREAD_CANCEL
+-#endif /* !__has_feature */
+-#endif /* PTHREAD_CANCEL_ENABLE && !__FreeBSD__ */
+-
+-int Curl_thread_cancel(curl_thread_t *hnd)
+-{
+-  (void)hnd;
+-  if(*hnd != curl_thread_t_null)
+-#ifdef USE_PTHREAD_CANCEL
+-    return pthread_cancel(**hnd);
+-#else
+-    return 1; /* not supported */
+-#endif
+-  return 0;
+-}
+-
+ #elif defined(USE_THREADS_WIN32)
+ 
+ curl_thread_t Curl_thread_create(CURL_THREAD_RETURN_T
+@@ -182,12 +154,4 @@ int Curl_thread_join(curl_thread_t *hnd)
+   return ret;
+ }
+ 
+-int Curl_thread_cancel(curl_thread_t *hnd)
+-{
+-  if(*hnd != curl_thread_t_null) {
+-    return 1; /* not supported */
+-  }
+-  return 0;
+-}
+-
+ #endif /* USE_THREADS_* */
+--- a/lib/curl_threads.h
++++ b/lib/curl_threads.h
+@@ -66,22 +66,6 @@ void Curl_thread_destroy(curl_thread_t *hnd);
+ 
+ int Curl_thread_join(curl_thread_t *hnd);
+ 
+-int Curl_thread_cancel(curl_thread_t *hnd);
+-
+-#if defined(USE_THREADS_POSIX) && defined(PTHREAD_CANCEL_ENABLE)
+-#define Curl_thread_push_cleanup(a,b)   pthread_cleanup_push(a,b)
+-#define Curl_thread_pop_cleanup()       pthread_cleanup_pop(0)
+-#define Curl_thread_enable_cancel()     \
+-    pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL)
+-#define Curl_thread_disable_cancel()     \
+-    pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, NULL)
+-#else
+-#define Curl_thread_push_cleanup(a,b)   ((void)a,(void)b)
+-#define Curl_thread_pop_cleanup()       Curl_nop_stmt
+-#define Curl_thread_enable_cancel()     Curl_nop_stmt
+-#define Curl_thread_disable_cancel()    Curl_nop_stmt
+-#endif
+-
+ #endif /* USE_THREADS_POSIX || USE_THREADS_WIN32 */
+ 
+ #endif /* HEADER_CURL_THREADS_H */
+--- a/lib/hostip.c
++++ b/lib/hostip.c
+@@ -1132,10 +1132,6 @@ CURLcode Curl_resolv_timeout(struct Curl_easy *data,
+     prev_alarm = alarm(curlx_sltoui(timeout/1000L));
+   }
+ 
+-#ifdef DEBUGBUILD
+-  Curl_resolve_test_delay();
+-#endif
+-
+ #else /* !USE_ALARM_TIMEOUT */
+ #ifndef CURLRES_ASYNCH
+   if(timeoutms)
+@@ -1639,18 +1635,3 @@ CURLcode Curl_resolver_error(struct Curl_easy *data, const char *detail)
+   return result;
+ }
+ #endif /* USE_CURL_ASYNC */
+-
+-#ifdef DEBUGBUILD
+-#include "curlx/wait.h"
+-
+-void Curl_resolve_test_delay(void)
+-{
+-  const char *p = getenv("CURL_DNS_DELAY_MS");
+-  if(p) {
+-    curl_off_t l;
+-    if(!curlx_str_number(&p, &l, TIME_T_MAX) && l) {
+-      curlx_wait_ms((timediff_t)l);
+-    }
+-  }
+-}
+-#endif
+--- a/lib/hostip.h
++++ b/lib/hostip.h
+@@ -216,8 +216,4 @@ struct Curl_addrinfo *Curl_sync_getaddrinfo(struct Curl_easy *data,
+ 
+ #endif
+ 
+-#ifdef DEBUGBUILD
+-void Curl_resolve_test_delay(void);
+-#endif
+-
+ #endif /* HEADER_CURL_HOSTIP_H */
+--- a/tests/data/Makefile.am
++++ b/tests/data/Makefile.am
+@@ -112,7 +112,7 @@ test754 test755 test756 test757 test758 test759 test760 test761 test762 \
+ test763 \
+ \
+ test780 test781 test782 test783 test784 test785 test786 test787 test788 \
+-test789 test790 test791 test792 test793 test794 test795 test796 test797 \
++test789 test790 test791 test792 test793 test794         test796 test797 \
+ \
+ test799 test800 test801 test802 test803 test804 test805 test806 test807 \
+ test808 test809 test810 test811 test812 test813 test814 test815 test816 \
+--- a/tests/data/test795
++++ /dev/null
+@@ -1,36 +0,0 @@
+-<testcase>
+-<info>
+-<keywords>
+-DNS
+-</keywords>
+-</info>
+-
+-# Client-side
+-<client>
+-<features>
+-http
+-Debug
+-!c-ares
+-!win32
+-</features>
+-<name>
+-Delayed resolve --connect-timeout check
+-</name>
+-<setenv>
+-CURL_DNS_DELAY_MS=5000
+-</setenv>
+-<command>
+-http://test.invalid -v --no-progress-meter --trace-config dns --connect-timeout 1 -w \%{time_total}
+-</command>
+-</client>
+-
+-# Verify data after the test has been "shot"
+-<verify>
+-<errorcode>
+-28
+-</errorcode>
+-<postcheck>
+-%SRCDIR/libtest/test795.pl %LOGDIR/stdout%TESTNUMBER 2 >> %LOGDIR/stderr%TESTNUMBER
+-</postcheck>
+-</verify>
+-</testcase>
+--- a/tests/libtest/Makefile.am
++++ b/tests/libtest/Makefile.am
+@@ -42,7 +42,7 @@ AM_CPPFLAGS = -I$(top_srcdir)/include        \
+ include Makefile.inc
+ 
+ EXTRA_DIST = CMakeLists.txt $(FIRST_C) $(FIRST_H) $(UTILS_C) $(UTILS_H) $(TESTS_C) \
+-  test307.pl test610.pl test613.pl test795.pl test1013.pl test1022.pl mk-lib1521.pl
++  test307.pl test610.pl test613.pl test1013.pl test1022.pl mk-lib1521.pl
+ 
+ CFLAGS += @CURL_CFLAG_EXTRAS@
+ 
+--- a/tests/libtest/test795.pl
++++ /dev/null
+@@ -1,46 +0,0 @@
+-#!/usr/bin/env perl
+-#***************************************************************************
+-#                                  _   _ ____  _
+-#  Project                     ___| | | |  _ \| |
+-#                             / __| | | | |_) | |
+-#                            | (__| |_| |  _ <| |___
+-#                             \___|\___/|_| \_\_____|
+-#
+-# Copyright (C) Daniel Stenberg, <daniel@haxx.se>, et al.
+-#
+-# This software is licensed as described in the file COPYING, which
+-# you should have received as part of this distribution. The terms
+-# are also available at https://curl.se/docs/copyright.html.
+-#
+-# You may opt to use, copy, modify, merge, publish, distribute and/or sell
+-# copies of the Software, and permit persons to whom the Software is
+-# furnished to do so, under the terms of the COPYING file.
+-#
+-# This software is distributed on an "AS IS" basis, WITHOUT WARRANTY OF ANY
+-# KIND, either express or implied.
+-#
+-# SPDX-License-Identifier: curl
+-#
+-###########################################################################
+-use strict;
+-use warnings;
+-
+-my $ok = 1;
+-my $exp_duration = $ARGV[1] + 0.0;
+-
+-# Read the output of curl --version
+-open(F, $ARGV[0]) || die "Can't open test result from $ARGV[0]\n";
+-$_ = <F>;
+-chomp;
+-/\s*([\.\d]+)\s*/;
+-my $duration = $1 + 0.0;
+-close F;
+-
+-if ($duration <= $exp_duration) {
+-    print "OK: duration of $duration in expected range\n";
+-    $ok = 0;
+-}
+-else {
+-    print "FAILED: duration of $duration is larger than $exp_duration\n";
+-}
+-exit $ok;

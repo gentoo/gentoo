@@ -1,0 +1,7 @@
+[Unit]
+Description=Very Secure FTP Daemon
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/vsftpd -olisten=NO
+StandardInput=socket

@@ -1,0 +1,57 @@
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Marek Szuba <marecki@gentoo.org> (2023-11-12)
+# FUSE cannot be built with multiple audio drivers, and desktop/gnome
+# profiles set both USE=pulseaudio (directly) and USE=alsa (inherited
+# from desktop). Default to the latter for now because PulseAudio support
+# in FUSE is currently considered experimental.
+app-emulation/fuse -pulseaudio
+
+# Required by sys-apps/fwupd, a dependency of kde-plasma/discover
+dev-libs/libjcat gpg pkcs7
+
+# Required by www-client/falkon[python] and dev-python/pyside2[location],
+# in addition fix REQUIRED_USE conflict caused if "webengine" is enabled.
+# qtwebchannel package is fairly small, and python bindings are
+# required by some popular desktop packages such as calibre,
+# qutebrowser, and freecad (or indirectly through PyQt*WebEngine).
+dev-python/pyqt6 webchannel
+dev-python/pyside webchannel
+
+# Required by sys-apps/flatpak, a dependency of kde-plasma/discover
+dev-util/ostree curl
+
+# Required by app-editors/okteta:5
+dev-qt/qtscript:5 scripttools
+
+# Required by kde-apps/akonadi:6
+dev-qt/qtbase:6 mysql
+
+# Enable by default, requires kde-frameworks/kwayland
+kde-apps/yakuake absolute-position
+
+# Required by media-gfx/graphviz which is required by kde-apps/kcachegrind
+media-libs/gd fontconfig
+
+# Required by kde-apps/kdenlive
+media-libs/mlt ffmpeg frei0r rubberband
+media-libs/opencv features2d
+
+# Required by media-gfx/digikam
+media-libs/opencv contrib contribdnn
+
+# Required by kde-plasma/plasma-firewall
+# Required by net-firewall/firewalld[nftables] (default enabled)
+net-firewall/nftables json python xtables
+
+# Required by dev-qt/qtwebengine
+sys-libs/zlib minizip
+virtual/zlib minizip
+
+# Required by kde-plasma/plasma-meta
+kde-plasma/kwin lock
+kde-plasma/kwin-x11 lock
+
+# plasma profile never enabled pulseaudio. We're skipping to pipewire.
+media-video/pipewire sound-server

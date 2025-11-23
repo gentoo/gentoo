@@ -1,0 +1,27 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -6,12 +6,12 @@
+ RAIN_PLATFORM=@host@
+ RAIN_VERSION="1.2.9beta1"
+ RAIN_URL=http://www.tenebrous.com/rain/
+-CFLAGS= -g -Wall $(LIBS) -I./include -DHAVE_CONFIG_H -D_GNU_SOURCE -DRAIN_PLATFORM=\"$(RAIN_PLATFORM)\" -DRAIN_VERSION=\"$(RAIN_VERSION)\" -DRAIN_URL=\"$(RAIN_URL)\"
++CFLAGS= @CFLAGS@ -Wall $(LIBS) -I./include -DHAVE_CONFIG_H -D_GNU_SOURCE -DRAIN_PLATFORM=\"$(RAIN_PLATFORM)\" -DRAIN_VERSION=\"$(RAIN_VERSION)\" -DRAIN_URL=\"$(RAIN_URL)\"
+ INSTALLER=@INSTALL@
+ MAKE=@SET_MAKE@
+-MANDIR=/usr/local/man
++MANDIR=/usr/share/man
+ MAN1DIR=$(MANDIR)/man1
+-SBINDIR=/sbin
++SBINDIR=/usr/sbin
+ 
+ all:
+ 	@echo Making all
+@@ -30,7 +30,7 @@
+ 	-$(CC) $(CFLAGS) -c source/rain_udp.c
+ 	-$(CC) $(CFLAGS) -c source/rain_main.c
+ 
+-	-$(CC) -o rain rain_command_line.o rain_defaults.o rain_die.o rain_icmp.o rain_igmp.o rain_inet_common.o rain_main.o rain_mem.o rain_resolv.o rain_services.o rain_signal.o rain_string.o rain_tcp.o rain_udp.o
++	-$(CC) $(CFLAGS) $(LDFLAGS) -o rain rain_command_line.o rain_defaults.o rain_die.o rain_icmp.o rain_igmp.o rain_inet_common.o rain_main.o rain_mem.o rain_resolv.o rain_services.o rain_signal.o rain_string.o rain_tcp.o rain_udp.o
+ 
+ 	@echo done.
+ 

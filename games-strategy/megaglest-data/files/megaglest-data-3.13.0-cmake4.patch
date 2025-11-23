@@ -1,0 +1,24 @@
+Fix build with CMake 4
+https://github.com/MegaGlest/megaglest-data/commit/df2ae0a5f6300a4a9d16efa024e177fbe7b6ff9a
+https://bugs.gentoo.org/951889
+From df2ae0a5f6300a4a9d16efa024e177fbe7b6ff9a Mon Sep 17 00:00:00 2001
+From: Jammyjamjamman <jdsherratt3@gmail.com>
+Date: Sat, 4 Mar 2023 21:25:45 +0000
+Subject: [PATCH] Bump minimum cmake
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 58e57263..1e860c4c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ ##################################################################################
+ # Game data
+-CMAKE_MINIMUM_REQUIRED( VERSION 2.8.2 )
++CMAKE_MINIMUM_REQUIRED( VERSION 3.10 )
+ PROJECT( MegaGlest )
+ 
+ OPTION(WANT_INSTALL_DATA "Install MegaGlest's data" ON)

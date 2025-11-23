@@ -1,0 +1,47 @@
+diff -ur tmpreaper-1.6.13+nmu1.orig//debian/cron.daily tmpreaper-1.6.13+nmu1/debian/cron.daily
+--- tmpreaper-1.6.13+nmu1.orig//debian/cron.daily	2008-05-19 10:10:16.000000000 -0700
++++ tmpreaper-1.6.13+nmu1/debian/cron.daily	2010-10-10 19:44:14.563252064 -0700
+@@ -32,28 +32,7 @@
+ 
+ # Set config defaults
+ SHOWWARNING=''
+-
+-# get the TMPREAPER_TIME value from /etc/default/rcS
+-
+-if grep '^TMPTIME=' /etc/default/rcS >/dev/null 2>&1; then
+-    eval $(grep '^TMPTIME=' /etc/default/rcS)
+-    if [ -n "$TMPTIME" ]; then
+-        # Don't clean files if TMPTIME is negative or 'infinite'
+-        # to mimic the way /lib/init/bootclean.sh works.
+-        case "$TMPTIME" in
+-          -*|infinite|infinity)
+-                # don't use this as default
+-                ;;
+-           *)
+-                if [ "$TMPTIME" -gt 0 ]; then
+-                    TMPREAPER_TIME=${TMPTIME}d
+-                else
+-                    TMPREAPER_TIME=7d
+-                fi
+-                ;;
+-        esac
+-    fi
+-fi
++TMPREAPER_TIME=''
+ 
+ # ! Important !  The "set -f" below prevents the shell from expanding
+ #                file paths, which is vital for the configuration below to work.
+diff -ur tmpreaper-1.6.13+nmu1.orig//debian/tmpreaper.conf tmpreaper-1.6.13+nmu1/debian/tmpreaper.conf
+--- tmpreaper-1.6.13+nmu1.orig//debian/tmpreaper.conf	2006-12-08 04:24:03.000000000 -0800
++++ tmpreaper-1.6.13+nmu1/debian/tmpreaper.conf	2010-10-10 19:45:53.251119766 -0700
+@@ -40,9 +40,7 @@
+ # TMPREAPER_ADDITIONALOPTIONS
+ #       extra options that are passed to tmpreaper, e.g. --all
+ 
+-# uncomment and change the next line to overrule the /etc/default/rcS value
+-# TMPREAPER_TIME=7d
+-
++TMPREAPER_TIME=7d
+ TMPREAPER_PROTECT_EXTRA=''
+ TMPREAPER_DIRS='/tmp/.'
+ TMPREAPER_DELAY='256'

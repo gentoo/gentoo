@@ -1,0 +1,31 @@
+fix arguments to build with libwebsockets:0/20
+https://bugs.gentoo.org/962581
+PR pending for driftnet-1.5.0 uses another schema
+https://github.com/deiv/driftnet/pull/57.patch
+--- a/src/http_display/httpd.c
++++ b/src/http_display/httpd.c
+@@ -188,10 +188,22 @@ static void * http_server_dispatch(void *arg)
+         0,
+         0,
+         0,
+-        LWSMPRO_FILE,	                /* mount type is a directory in a filesystem */
++#if LWS_LIBRARY_VERSION_MAJOR >= 4 && LWS_LIBRARY_VERSION_MINOR > 3
++        0,				/* check cache always */
++#endif
++	LWSMPRO_FILE,			/* mount type is a directory in a filesystem */
+         1,		                        /* strlen("/"), ie length of the mountpoint */
+         NULL,
+-        { NULL, NULL } // sentinel
++#if LWS_LIBRARY_VERSION_MAJOR >= 4 && LWS_LIBRARY_VERSION_MINOR > 3
++        NULL,				/* chroot_path */
++        NULL,				/* working directory, default /tmp */
++        NULL,				/* override the headers */
++        0,				/* keepalive_timeout */
++#endif
++#if LWS_LIBRARY_VERSION_MAJOR <= 4 && LWS_LIBRARY_VERSION_MINOR < 3
++        NULL,				/* sentinel */
++        NULL,				/* sentinel */
++#endif
+     };
+ 
+     memset(&info, 0, sizeof info);

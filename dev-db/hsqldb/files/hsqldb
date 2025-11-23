@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+    use net
+}
+
+start() {
+	ebegin "Starting HSQL Database"
+	hsqldb_enable=yes /var/lib/hsqldb/bin/hsqldb start
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping HSQL Database"
+	hsqldb_enable=yes /var/lib/hsqldb/bin/hsqldb stop
+	eend $?
+}

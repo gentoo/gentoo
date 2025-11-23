@@ -1,0 +1,2 @@
+INCUS_AGENT_PATH=/usr/libexec/incus/agents
+INCUS_EDK2_PATH=/usr/share/edk2-ovmf

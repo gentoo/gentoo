@@ -1,0 +1,81 @@
+From 4331c8958698d42933bf4e132f8a7d61f3cedb8c Mon Sep 17 00:00:00 2001
+From: Fangrui Song <i@maskray.me>
+Date: Sat, 23 Nov 2024 18:25:48 -0800
+Subject: [PATCH] Adapt llvmorg-20-init-12964-gdf9a14d7bbf1: createDiagnostics
+
+---
+ src/clang_tu.cc     |  8 +++++---
+ src/indexer.cc      |  6 +++++-
+ src/sema_manager.cc | 13 ++++++++++---
+ 3 files changed, 20 insertions(+), 7 deletions(-)
+
+diff --git ./src/clang_tu.cc ./src/clang_tu.cc
+index 32be1733..54e04ef0 100644
+--- ./src/clang_tu.cc
++++ ./src/clang_tu.cc
+@@ -124,9 +124,11 @@ buildCompilerInvocation(const std::string &main, std::vector<const char *> args,
+     args.insert(args.begin() + 1, std::begin(arr), std::end(arr));
+   }
+ 
+-  IntrusiveRefCntPtr<DiagnosticsEngine> diags(
+-      CompilerInstance::createDiagnostics(new DiagnosticOptions,
+-                                          new IgnoringDiagConsumer, true));
++  IntrusiveRefCntPtr<DiagnosticsEngine> diags(CompilerInstance::createDiagnostics(
++#if LLVM_VERSION_MAJOR >= 20
++      *vfs,
++#endif
++      new DiagnosticOptions, new IgnoringDiagConsumer, true));
+ #if LLVM_VERSION_MAJOR < 12 // llvmorg-12-init-5498-g257b29715bb
+   driver::Driver d(args[0], llvm::sys::getDefaultTargetTriple(), *diags, vfs);
+ #else
+diff --git ./src/indexer.cc ./src/indexer.cc
+index b81f1d9f..dff4ae2d 100644
+--- ./src/indexer.cc
++++ ./src/indexer.cc
+@@ -1312,7 +1312,11 @@ index(SemaManager *manager, WorkingFiles *wfiles, VFS *vfs,
+   IndexDiags dc;
+   auto clang = std::make_unique<CompilerInstance>(pch);
+   clang->setInvocation(std::move(ci));
+-  clang->createDiagnostics(&dc, false);
++  clang->createDiagnostics(
++#if LLVM_VERSION_MAJOR >= 20
++      *fs,
++#endif
++      &dc, false);
+   clang->getDiagnostics().setIgnoreAllWarnings(true);
+   clang->setTarget(TargetInfo::CreateTargetInfo(
+       clang->getDiagnostics(), clang->getInvocation().TargetOpts));
+diff --git ./src/sema_manager.cc ./src/sema_manager.cc
+index bf806e47..59aaed02 100644
+--- ./src/sema_manager.cc
++++ ./src/sema_manager.cc
+@@ -288,7 +288,11 @@ buildCompilerInstance(Session &session, std::unique_ptr<CompilerInvocation> ci,
+ 
+   auto clang = std::make_unique<CompilerInstance>(session.pch);
+   clang->setInvocation(std::move(ci));
+-  clang->createDiagnostics(&dc, false);
++  clang->createDiagnostics(
++#if LLVM_VERSION_MAJOR >= 20
++      *fs,
++#endif
++      &dc, false);
+   clang->setTarget(TargetInfo::CreateTargetInfo(
+       clang->getDiagnostics(), clang->getInvocation().TargetOpts));
+   if (!clang->hasTarget())
+@@ -368,8 +372,11 @@ void buildPreamble(Session &session, CompilerInvocation &ci,
+ #endif
+ 
+   StoreDiags dc(task.path);
+-  IntrusiveRefCntPtr<DiagnosticsEngine> de =
+-      CompilerInstance::createDiagnostics(&ci.getDiagnosticOpts(), &dc, false);
++  IntrusiveRefCntPtr<DiagnosticsEngine> de = CompilerInstance::createDiagnostics(
++#if LLVM_VERSION_MAJOR >= 20
++      *fs,
++#endif
++      &ci.getDiagnosticOpts(), &dc, false);
+   if (oldP) {
+     std::lock_guard lock(session.wfiles->mutex);
+     for (auto &include : oldP->includes)
+-- 
+2.49.1
+

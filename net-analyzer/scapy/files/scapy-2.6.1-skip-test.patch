@@ -1,0 +1,20 @@
+Fails in network-sandbox (probably because of the namespace + fake interface
+Portage makes).
+--- a/test/regression.uts
++++ b/test/regression.uts
+@@ -470,6 +470,7 @@ conf.ifaces.providers = _bkp_providers
+ conf.ifaces.reload()
+ 
+ = Test read_routes6() - default output
++~ netaccess
+ 
+ routes6 = read_routes6()
+ if WINDOWS:
+@@ -519,6 +520,7 @@ pkt.build()
+ 
+ 
+ = Test read_routes6() - check mandatory routes
++~ netaccess
+ 
+ import re
+ ll_route = re.compile(r"fe80:\d{0,2}:")

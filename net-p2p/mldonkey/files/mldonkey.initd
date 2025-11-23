@@ -1,0 +1,49 @@
+#!/sbin/openrc-run
+
+extra_started_commands="reload slow fast info"
+
+MLDONKEY_BINARY=${MLDONKEY_BINARY:-/usr/bin/mlnet}
+
+depend() {
+	need localmount net
+	${USE_LOGGER} && use logger
+}
+
+start() {
+	if [ -n "${BASEDIR}${SUBDIR}${LOW_DOWN}${LOW_UP}${HIGH_DOWN}${HIGH_UP}${SERVER}${PORT}${TELNET_PORT}${USERNAME}${PASSWORD}${MLDONKEY_TIMEOUT}" ]; then
+		ewarn "The following settings are deprecated and will be ignored,"
+		ewarn "please remove them from /etc/conf.d/mldonkey:"
+		ewarn "LOW_DOWN LOW_UP HIGH_DOWN HIGH_UP SERVER PORT TELNET_PORT USERNAME PASSWORD MLDONKEY_TIMEOUT"
+	fi
+
+	if [ -z "${MLDONKEY_DIR}" ]; then
+		eerror "Please set MLDONKEY_DIR in /etc/conf.d/mldonkey to the directory"
+		eerror "where you want MLDonkey to save its files"
+		return 1
+	fi
+
+	if [ ! -d "${MLDONKEY_DIR}" ]; then
+		ebegin "Directory ${MLDONKEY_DIR} not existing, trying to create..."
+		mkdir -p "${MLDONKEY_DIR}" && chown ${USER}:users "${MLDONKEY_DIR}"
+		eend $? || return 1
+	fi
+
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --user "${USER}" --nice "${NICE}" \
+		--exec "${MLDONKEY_BINARY}" --pidfile /var/run/"${SVCNAME}".pid \
+		--env "MLDONKEY_DIR=${MLDONKEY_DIR}" --background --make-pidfile
+	eend $?
+}
+
+stop() {
+	start-stop-daemon --stop --exec "${MLDONKEY_BINARY}" \
+		--pidfile /var/run/"${SVCNAME}".pid
+	eend $?
+}
+
+reload() {
+	ebegin "Reloading ${SVCNAME}"
+	start-stop-daemon --stop --signal HUP --oknodo \
+		--exec "${MLDONKEY_BINARY}" --pidfile /var/run/"${SVCNAME}".pid
+	eend $?
+}

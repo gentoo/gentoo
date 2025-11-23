@@ -1,0 +1,269 @@
+https://github.com/gnosek/fcgiwrap/pull/60
+
+From 93ce8e8489bda4a7ebe5161020c83a68f744481f Mon Sep 17 00:00:00 2001
+From: flu0r1ne <flu0r1ne@flu0r1ne.net>
+Date: Sat, 9 Sep 2023 22:56:05 -0500
+Subject: [PATCH 1/4] Fix implicit fallthrough false positive, noreturn
+
+With warnings and pedantic mode enabled, `gcc (GCC) 13.2.1` returns
+an implicit fall through warning. This can be fixed by annotating
+the error function with NORETURN.
+---
+ fcgiwrap.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/fcgiwrap.c b/fcgiwrap.c
+index b44d8aa..8310284 100644
+--- a/fcgiwrap.c
++++ b/fcgiwrap.c
+@@ -56,6 +56,12 @@
+ #define UNIX_PATH_MAX 108
+ #endif
+ 
++#if defined(__GNUC__) || defined(__clang__)
++# define NORETURN __attribute__((__noreturn__))
++#else
++# define NORETURN
++#endif
++
+ extern char **environ;
+ static char * const * inherited_environ;
+ static const char **allowed_programs;
+@@ -500,7 +506,7 @@ static bool is_allowed_program(const char *program) {
+ 	return false;
+ }
+ 
+-static void cgi_error(const char *message, const char *reason, const char *filename)
++static void NORETURN cgi_error(const char *message, const char *reason, const char *filename)
+ {
+ 	printf("Status: %s\r\nContent-Type: text/plain\r\n\r\n%s\r\n",
+ 		message, message);
+
+From 8b8aae2ac99bc91a72a32ca2040302f785e10e2b Mon Sep 17 00:00:00 2001
+From: flu0r1ne <flu0r1ne@flu0r1ne.net>
+Date: Sun, 10 Sep 2023 03:50:27 -0500
+Subject: [PATCH 2/4] close() always results in a duplicate call
+
+Remove close as it always results in a duplicated call, simplify logic
+---
+ fcgiwrap.c | 27 ++++++++++++++++-----------
+ 1 file changed, 16 insertions(+), 11 deletions(-)
+
+diff --git a/fcgiwrap.c b/fcgiwrap.c
+index 8310284..cfb7797 100644
+--- a/fcgiwrap.c
++++ b/fcgiwrap.c
+@@ -62,6 +62,8 @@
+ # define NORETURN
+ #endif
+ 
++#define FCGI_FD 0
++
+ extern char **environ;
+ static char * const * inherited_environ;
+ static const char **allowed_programs;
+@@ -706,8 +708,8 @@ static int listen_on_fd(int fd) {
+ 		perror("Failed to enable SO_REUSEADDR");
+ 		return -1;
+ 	}
+-	if (dup2(fd, 0) < 0) {
+-		perror("Failed to move socket to fd 0");
++	if (dup2(fd, FCGI_FD) < 0) {
++		fprintf(stderr, "Failed to move socket to fd %d", FCGI_FD);
+ 		return -1;
+ 	}
+ 	if (close(fd) < 0) {
+@@ -809,7 +811,7 @@ int main(int argc, char **argv)
+ {
+ 	int nchildren = 1;
+ 	char *socket_url = NULL;
+-	int fd = 0;
++	int fd = FCGI_FD;
+ 	int c;
+ 
+ 	while ((c = getopt(argc, argv, "c:hfs:p:")) != -1) {
+@@ -860,6 +862,10 @@ int main(int argc, char **argv)
+ 
+ #ifdef HAVE_SYSTEMD
+ 	if (sd_listen_fds(true) > 0) {
++		if(socket_url) {
++			perror("warning: a systemd socket has been provding, ignoring '-s'\n");
++		}
++
+ 		/* systemd woke us up. we should never see more than one FD passed to us. */
+ 		if (listen_on_fd(SD_LISTEN_FDS_START) < 0) {
+ 			return 1;
+@@ -876,16 +882,15 @@ int main(int argc, char **argv)
+ 	prefork(nchildren);
+ 	fcgiwrap_main();
+ 
+-	if (fd) {
+-		const char *p = socket_url;
+-		close(fd);
++	close(FCGI_FD);
+ 
+-		if (socket_url) {
+-			if (!strncmp(p, "unix:", sizeof("unix:") - 1)) {
+-				p += sizeof("unix:") - 1;
+-				unlink(p);
+-			}
++	if (fd && socket_url) { // fd > 0 indicates a socket was setup by us
++		const char *p = socket_url;
++		if (!strncmp(p, "unix:", sizeof("unix:") - 1)) {
++			p += sizeof("unix:") - 1;
++			unlink(p);
+ 		}
+ 	}
++
+ 	return 0;
+ }
+
+From b4f2469369960fb914c1d1eb4942feebf648835a Mon Sep 17 00:00:00 2001
+From: flu0r1ne <flu0r1ne@flu0r1ne.net>
+Date: Sun, 10 Sep 2023 04:14:17 -0500
+Subject: [PATCH 3/4] Add better error handling for socket setup
+
+---
+ fcgiwrap.c | 18 +++++++++++++++---
+ 1 file changed, 15 insertions(+), 3 deletions(-)
+
+diff --git a/fcgiwrap.c b/fcgiwrap.c
+index cfb7797..5b8af47 100644
+--- a/fcgiwrap.c
++++ b/fcgiwrap.c
+@@ -793,18 +793,30 @@ static int setup_socket(char *url) {
+ 	fd = socket(sa.sa.sa_family, SOCK_STREAM, 0);
+ 	if (fd < 0) {
+ 		perror("Failed to create socket");
+-		return -1;
++		goto cleanup_socket;
+ 	}
+ 	if (bind(fd, &sa.sa, sockaddr_size) < 0) {
+ 		perror("Failed to bind");
+-		return -1;
++		goto cleanup_fd;
+ 	}
+ 
+ 	if (listen_on_fd(fd) < 0) {
+-		return -1;
++		goto cleanup_fd;
+ 	}
+ 
+ 	return fd;
++
++cleanup_fd:
++
++	close(fd);
++
++cleanup_socket:
++
++	if(sa.sa.sa_family == AF_UNIX) {
++		unlink(sa.sa_un.sun_path);
++	}
++
++	return -1;
+ }
+ 
+ int main(int argc, char **argv)
+
+From 2870d2729a3930988f0041e2d78fec672e69afac Mon Sep 17 00:00:00 2001
+From: flu0r1ne <flu0r1ne@flu0r1ne.net>
+Date: Sun, 10 Sep 2023 04:36:16 -0500
+Subject: [PATCH 4/4] Kill all child processes on parent SIGTERM
+
+When attached to a terminal, a SIGINT signal is sent to the parent
+and all children, instructing them to exit. In some environments including
+docker, only the parent receives the SIGTERM and is responsible for
+propagating it to the children. This patch kills all child processes
+when the parent receives a SIGTERM or a SIGINT.
+---
+ fcgiwrap.c | 38 ++++++++++++++++++++++++++++----------
+ 1 file changed, 28 insertions(+), 10 deletions(-)
+
+diff --git a/fcgiwrap.c b/fcgiwrap.c
+index 5b8af47..123d279 100644
+--- a/fcgiwrap.c
++++ b/fcgiwrap.c
+@@ -62,6 +62,12 @@
+ # define NORETURN
+ #endif
+ 
++#if defined(__GNUC__)
++# define UNUSED __attribute__((__unused__))
++#else
++# define UNUSED
++#endif
++
+ #define FCGI_FD 0
+ 
+ extern char **environ;
+@@ -646,6 +652,8 @@ static void fcgiwrap_main(void)
+ 	while (FCGI_Accept() >= 0 && !sigint_received) {
+ 		handle_fcgi_request();
+ 	}
++
++	close(FCGI_FD);
+ }
+ 
+ static volatile sig_atomic_t nrunning;
+@@ -665,21 +673,26 @@ static void sigchld_handler(int dummy)
+ 	}
+ }
+ 
++static volatile sig_atomic_t stop_requested;
++
++static void stop_request_handler(int UNUSED signum) {
++	stop_requested = 1;
++}
++
+ static void prefork(int nchildren)
+ {
+ 	int startup = 1;
+ 
+-	if (nchildren == 1) {
+-		return;
+-	}
+-
+ 	signal(SIGCHLD, sigchld_handler);
++	signal(SIGINT, stop_request_handler);
++	signal(SIGTERM, stop_request_handler);
+ 
+-	while (1) {
++	while (!stop_requested) {
+ 		while (nrunning < nchildren) {
+ 			pid_t pid = fork();
+ 			if (pid == 0) {
+-				return;
++				fcgiwrap_main();
++				exit(0);
+ 			} else if (pid != -1) {
+ 				nrunning++;
+ 			} else {
+@@ -695,6 +708,10 @@ static void prefork(int nchildren)
+ 		startup = 0;
+ 		pause();
+ 	}
++
++	if(killpg(0, SIGTERM) != 0) {
++		fprintf(stderr, "killpg() encountered an error, child processes may have to be killed");
++	}
+ }
+ 
+ static int listen_on_fd(int fd) {
+@@ -891,10 +908,11 @@ int main(int argc, char **argv)
+ 		}
+ 	}
+ 
+-	prefork(nchildren);
+-	fcgiwrap_main();
+-
+-	close(FCGI_FD);
++	if(nchildren > 1) {
++		prefork(nchildren);
++	} else {
++		fcgiwrap_main();
++	}
+ 
+ 	if (fd && socket_url) { // fd > 0 indicates a socket was setup by us
+ 		const char *p = socket_url;
+

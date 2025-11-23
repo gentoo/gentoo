@@ -1,0 +1,27 @@
+https://github.com/pocl/pocl/commit/3333cbc6a16fba0bc3f3c66ba6e68ce9bb46c549
+
+From 3333cbc6a16fba0bc3f3c66ba6e68ce9bb46c549 Mon Sep 17 00:00:00 2001
+From: Vitaly <vitaly@easycoding.org>
+Date: Mon, 27 Jan 2025 09:52:47 +0100
+Subject: [PATCH] Added missing cstdint header to fix build with libstdc++ 15.
+
+--- a/lib/CL/devices/spirv_parser.cc
++++ b/lib/CL/devices/spirv_parser.cc
+@@ -25,6 +25,7 @@
+ 
+ #include <algorithm>
+ #include <cassert>
++#include <cstdint>
+ #include <cstring>
+ #include <fstream>
+ #include <iostream>
+--- a/lib/CL/devices/spirv_parser.hh
++++ b/lib/CL/devices/spirv_parser.hh
+@@ -34,6 +34,7 @@
+ #define SPIRV_PARSER_EXPORT POCL_EXPORT
+ #endif
+ 
++#include <cstdint>
+ #include <map>
+ #include <memory>
+ #include <set>

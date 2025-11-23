@@ -1,0 +1,66 @@
+From 0eb2092e930c78fc726d5d05abbcc81aa6c41b89 Mon Sep 17 00:00:00 2001
+From: ABC <abc@openwall.com>
+Date: Mon, 26 Jun 2023 16:29:58 -0300
+Subject: [PATCH] Build compatibility with v6.4 (register_sysctl_paths)
+
+'register_sysctl_paths' is missed from v6.4 due to 0199849acd07
+("sysctl: remove register_sysctl_paths()").
+
+Signed-off-by: ABC <abc@openwall.com>
+
+Slightly modified to fit on 2.6 release
+---
+ gen_compat_def |  2 ++
+ ipt_NETFLOW.c  | 10 ++++++++--
+ 2 files changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/gen_compat_def b/gen_compat_def
+index 396fdb9..a9cb95e 100755
+--- a/gen_compat_def
++++ b/gen_compat_def
+@@ -87,6 +87,8 @@
+ kbuild_test_symbol nf_bridge_info_get linux/netfilter_bridge.h
+ # Stumbled on 5.9
+ kbuild_test_struct vlan_dev_priv linux/if_vlan.h
++# 6.4: 0199849acd07 ("sysctl: remove register_sysctl_paths()")
++kbuild_test_symbol register_sysctl_paths linux/sysctl.h
+ 
+ echo "// End of compat_def.h"
+ 
+diff --git a/ipt_NETFLOW.c b/ipt_NETFLOW.c
+index b3c2c99..eee8074 100644
+--- a/ipt_NETFLOW.c
++++ b/ipt_NETFLOW.c
+@@ -1929,16 +1929,18 @@ static ctl_table netflow_net_table[] = {
+ 	{ }
+ };
+ #else /* >= 2.6.25 */
++# ifdef HAVE_REGISTER_SYSCTL_PATHS
+ static struct ctl_path netflow_sysctl_path[] = {
+ 	{
+ 		.procname = "net",
+-#if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,33)
++#  if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,33)
+ 		.ctl_name = CTL_NET
+-#endif
++#  endif
+ 	},
+ 	{ .procname = "netflow" },
+ 	{ }
+ };
++# endif
+ #endif /* 2.6.25 */
+ #endif /* CONFIG_SYSCTL */
+ 
+@@ -5666,7 +5668,11 @@ static int __init ipt_netflow_init(void)
+ #endif
+ 						      );
+ #else /* 2.6.25 */
++# ifdef HAVE_REGISTER_SYSCTL_PATHS
+ 	netflow_sysctl_header = register_sysctl_paths(netflow_sysctl_path, netflow_sysctl_table);
++# else
++	netflow_sysctl_header = register_sysctl("net/netflow", netflow_sysctl_table);
++# endif
+ #endif
+ 	if (!netflow_sysctl_header) {
+ 		printk(KERN_ERR "netflow: can't register to sysctl\n");

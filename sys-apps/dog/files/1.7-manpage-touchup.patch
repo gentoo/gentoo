@@ -1,0 +1,18 @@
+The correct syntax of the -w option does not have a space between 
+the -w and the cols ... the manpage seems to imply differently though 
+so let's fix it.
+
+http://bugs.gentoo.org/show_bug.cgi?id=69660
+
+--- a/dog.1
++++ b/dog.1
+@@ -8,3 +8,3 @@
+ .B dog
+-[\-AbBeEnstTuv] [\-w cols] [\-l lines] 
++[\-AbBeEnstTuv] [\-w<cols>] [\-l lines] 
+ [\-\-show\-all] [\-\-number\-nonblank] [\-\-no\-blanks] [\-\-bind=port]
+@@ -64,3 +64,3 @@
+ .TP
+-.I \-w n
++.I \-w<n>
+ Print first n characters of each line (default=80)

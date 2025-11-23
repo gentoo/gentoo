@@ -1,0 +1,18 @@
+--- a/sancp.cc
++++ b/sancp.cc
+@@ -54,7 +54,6 @@
+  *************/
+ 
+ int main(int argc, char *argv[]) {
+-	extern struct gvars gVars;
+ 	int cKey;
+ 	pid_t pid=0;
+ 
+@@ -274,7 +273,6 @@
+ 
+ extern "C" void ProcessMyPacket(char *user, struct pcap_pkthdr * pkthdr, u_char * pkt)
+ {
+-	extern struct gvars gVars;
+ 	CBuffer *buffer;
+ 	struct cnx *new_cnx=0;
+         gVars.timeptr.tv_sec=pkthdr->ts.tv_sec;

@@ -1,0 +1,211 @@
+Some parts of the build will use e.g. -O2 -mtune=generic otherwise.
+--- a/solenv/gbuild/platform/ANDROID_AARCH64_GCC.mk
++++ b/solenv/gbuild/platform/ANDROID_AARCH64_GCC.mk
+@@ -9,7 +9,7 @@
+ 
+ # please make generic modifications to unxgcc.mk or android.mk
+ gb_CPUDEFS += -DARM32
+-gb_COMPILEROPTFLAGS := -Os
++gb_COMPILEROPTFLAGS :=
+ 
+ include $(GBUILDDIR)/platform/unxgcc.mk
+ include $(GBUILDDIR)/platform/android.mk
+--- a/solenv/gbuild/platform/ANDROID_ARM_GCC.mk
++++ b/solenv/gbuild/platform/ANDROID_ARM_GCC.mk
+@@ -9,7 +9,7 @@
+ 
+ # please make generic modifications to unxgcc.mk or android.mk
+ gb_CPUDEFS += -DARM32
+-gb_COMPILEROPTFLAGS := -Os
++gb_COMPILEROPTFLAGS :=
+ 
+ include $(GBUILDDIR)/platform/unxgcc.mk
+ include $(GBUILDDIR)/platform/android.mk
+--- a/solenv/gbuild/platform/ANDROID_INTEL_GCC.mk
++++ b/solenv/gbuild/platform/ANDROID_INTEL_GCC.mk
+@@ -9,7 +9,7 @@
+ 
+ # please make generic modifications to unxgcc.mk or android.mk
+ gb_CPUDEFS += -DX86
+-gb_COMPILEROPTFLAGS := -Os
++gb_COMPILEROPTFLAGS :=
+ 
+ include $(GBUILDDIR)/platform/unxgcc.mk
+ include $(GBUILDDIR)/platform/android.mk
+--- a/solenv/gbuild/platform/EMSCRIPTEN_INTEL_GCC.mk
++++ b/solenv/gbuild/platform/EMSCRIPTEN_INTEL_GCC.mk
+@@ -73,7 +73,7 @@ ifeq ($(HAVE_EXTERNAL_DWARF),TRUE)
+ gb_DEBUGINFO_FLAGS += -gsplit-dwarf -gpubnames
+ endif
+ 
+-gb_COMPILEROPTFLAGS := -O3
++gb_COMPILEROPTFLAGS :=
+ 
+ # We need at least code elimination, otherwise linking OOMs even with 64GB.
+ # So we "fake" -Og support to mean -O1 for Emscripten and always enable it for debug in configure.
+--- a/solenv/gbuild/platform/LINUX_ARM_GCC.mk
++++ b/solenv/gbuild/platform/LINUX_ARM_GCC.mk
+@@ -9,7 +9,7 @@
+ 
+ #please make generic modifications to unxgcc.mk or linux.mk
+ gb_CPUDEFS += -DARM32
+-gb_COMPILEROPTFLAGS := -Os
++gb_COMPILEROPTFLAGS :=
+ 
+ include $(GBUILDDIR)/platform/linux.mk
+ 
+--- a/solenv/gbuild/platform/LINUX_AXP_GCC.mk
++++ b/solenv/gbuild/platform/LINUX_AXP_GCC.mk
+@@ -8,7 +8,7 @@
+ #
+ 
+ #please make generic modifications to unxgcc.mk or linux.mk
+-gb_COMPILEROPTFLAGS := -Os
++gb_COMPILEROPTFLAGS :=
+ gb_LinkTarget_LDFLAGS += -Wl,--no-relax
+ 
+ include $(GBUILDDIR)/platform/linux.mk
+--- a/solenv/gbuild/platform/LINUX_INTEL_GCC.mk
++++ b/solenv/gbuild/platform/LINUX_INTEL_GCC.mk
+@@ -9,7 +9,7 @@
+ 
+ #please make generic modifications to unxgcc.mk or linux.mk
+ gb_CPUDEFS := -DX86
+-gb_COMPILEROPTFLAGS := -Os
++gb_COMPILEROPTFLAGS :=
+ 
+ include $(GBUILDDIR)/platform/linux.mk
+ 
+--- a/solenv/gbuild/platform/LINUX_M68K_GCC.mk
++++ b/solenv/gbuild/platform/LINUX_M68K_GCC.mk
+@@ -8,7 +8,7 @@
+ #
+ 
+ #please make generic modifications to unxgcc.mk or linux.mk
+-gb_COMPILEROPTFLAGS := -Os
++gb_COMPILEROPTFLAGS :=
+ 
+ include $(GBUILDDIR)/platform/linux.mk
+ 
+--- a/solenv/gbuild/platform/LINUX_MIPS64_GCC.mk
++++ b/solenv/gbuild/platform/LINUX_MIPS64_GCC.mk
+@@ -9,7 +9,7 @@
+ 
+ #please make generic modifications to unxgcc.mk or linux.mk
+ gb_CPUDEFS += -DMIPS64
+-gb_COMPILEROPTFLAGS := -Os
++gb_COMPILEROPTFLAGS :=
+ 
+ include $(GBUILDDIR)/platform/linux.mk
+ 
+--- a/solenv/gbuild/platform/LINUX_MIPS_GCC.mk
++++ b/solenv/gbuild/platform/LINUX_MIPS_GCC.mk
+@@ -9,7 +9,7 @@
+ 
+ #please make generic modifications to unxgcc.mk or linux.mk
+ gb_CPUDEFS += -DMIPS
+-gb_COMPILEROPTFLAGS := -Os
++gb_COMPILEROPTFLAGS :=
+ 
+ include $(GBUILDDIR)/platform/linux.mk
+ 
+--- a/solenv/gbuild/platform/LINUX_POWERPC64_GCC.mk
++++ b/solenv/gbuild/platform/LINUX_POWERPC64_GCC.mk
+@@ -10,8 +10,7 @@
+ #please make generic modifications to unxgcc.mk or linux.mk
+ gb_CPUDEFS += -DPPC
+ 
+-gb_COMPILEROPTFLAGS := -O2 \
+-		       $(if $(filter powerpc64le-unknown-linux-gnu,$(HOST_PLATFORM)),-mtune=powerpc64le)
++gb_COMPILEROPTFLAGS :=
+ 
+ include $(GBUILDDIR)/platform/linux.mk
+ 
+--- a/solenv/gbuild/platform/LINUX_RISCV64_GCC.mk
++++ b/solenv/gbuild/platform/LINUX_RISCV64_GCC.mk
+@@ -8,7 +8,7 @@
+ #
+ 
+ #please make generic modifications to unxgcc.mk or linux.mk
+-gb_COMPILEROPTFLAGS := -Os
++gb_COMPILEROPTFLAGS :=
+ 
+ include $(GBUILDDIR)/platform/linux.mk
+ 
+--- a/solenv/gbuild/platform/LINUX_SPARC64_GCC.mk
++++ b/solenv/gbuild/platform/LINUX_SPARC64_GCC.mk
+@@ -8,7 +8,7 @@
+ #
+ 
+ #please make generic modifications to unxgcc.mk or linux.mk
+-gb_COMPILEROPTFLAGS := -Os
++gb_COMPILEROPTFLAGS :=
+ 
+ include $(GBUILDDIR)/platform/linux.mk
+ 
+--- a/solenv/gbuild/platform/LINUX_SPARC_GCC.mk
++++ b/solenv/gbuild/platform/LINUX_SPARC_GCC.mk
+@@ -8,7 +8,7 @@
+ #
+ 
+ #please make generic modifications to unxgcc.mk or linux.mk
+-gb_COMPILEROPTFLAGS := -Os
++gb_COMPILEROPTFLAGS :=
+ 
+ include $(GBUILDDIR)/platform/linux.mk
+ 
+--- a/solenv/gbuild/platform/LINUX_X86_64_GCC.mk
++++ b/solenv/gbuild/platform/LINUX_X86_64_GCC.mk
+@@ -9,7 +9,7 @@
+ 
+ #please make generic modifications to unxgcc.mk or linux.mk
+ 
+-gb_COMPILEROPTFLAGS := -O2 -mtune=generic
++gb_COMPILEROPTFLAGS :=
+ 
+ include $(GBUILDDIR)/platform/linux.mk
+ 
+--- a/solenv/gbuild/platform/NETBSD_INTEL_GCC.mk
++++ b/solenv/gbuild/platform/NETBSD_INTEL_GCC.mk
+@@ -10,7 +10,7 @@
+ #please make generic modifications to unxgcc.mk
+ 
+ gb_CPUDEFS := -DX86
+-gb_COMPILEROPTFLAGS := -O -g
++gb_COMPILEROPTFLAGS :=
+ 
+ include $(GBUILDDIR)/platform/unxgcc.mk
+ 
+--- a/solenv/gbuild/platform/NETBSD_X86_64_GCC.mk
++++ b/solenv/gbuild/platform/NETBSD_X86_64_GCC.mk
+@@ -9,7 +9,7 @@
+ 
+ #please make generic modifications to unxgcc.mk
+ 
+-gb_COMPILEROPTFLAGS := -O -g
++gb_COMPILEROPTFLAGS :=
+ 
+ include $(GBUILDDIR)/platform/unxgcc.mk
+ 
+--- a/solenv/gbuild/platform/com_GCC_defs.mk
++++ b/solenv/gbuild/platform/com_GCC_defs.mk
+@@ -38,7 +38,7 @@ endif
+ gb_COMPILER_SETUP :=
+ 
+ ifeq ($(strip $(gb_COMPILEROPTFLAGS)),)
+-gb_COMPILEROPTFLAGS := -O2
++gb_COMPILEROPTFLAGS :=
+ endif
+ 
+ gb_COMPILEROPTFLAGS += $(if $(ENABLE_HARDENING_FLAGS),$(HARDENING_OPT_CFLAGS))
+--- a/solenv/gbuild/platform/iOS.mk
++++ b/solenv/gbuild/platform/iOS.mk
+@@ -24,7 +24,7 @@ ifeq ($(CXX),)
+ $(error You must set CXX in the environment. See README.cross for example.)
+ endif
+ 
+-gb_COMPILEROPTFLAGS := -O2
++gb_COMPILEROPTFLAGS :=
+ 
+ include $(GBUILDDIR)/platform/com_GCC_defs.mk
+ 

@@ -1,0 +1,25 @@
+--- a/Makefile
++++ b/Makefile_new
+@@ -6,19 +6,18 @@
+ GKRELLM_INCLUDE = -I$(PREFIX)/include
+ GTK_CFLAGS = `$(GTK_CONFIG) --cflags` 
+ GTK_LIB = `$(GTK_CONFIG) --libs`
+-FLAGS = -Wall -fPIC $(GTK_CFLAGS) $(GKRELLM_INCLUDE)
+-CFLAGS ?= -O -g
++FLAGS = -fPIC $(GTK_CFLAGS) $(GKRELLM_INCLUDE)
+ CFLAGS += $(FLAGS)
+ CFLAGS += -DVERSION=\"$(VERSION)\"
+ LIBS = $(GTK_LIB)
+ LFLAGS = -shared
+-CC ?= gcc
++CC = $(CC)
+ INSTALL = install -c
+ INSTALL_PROGRAM = $(INSTALL) -s
+ OBJS = trayicons.o
+ 
+ trayicons.so: $(OBJS)
+-	$(CC) $(FLAGS) $(OBJS) -o trayicons.so $(LIBS) $(LFLAGS)
++	$(CC) $(FLAGS) $(LDFLAGS) $(OBJS) -o trayicons.so $(LIBS) $(LFLAGS)
+ 
+ clean:
+ 	rm -f *.o core *.so* *.bak *~

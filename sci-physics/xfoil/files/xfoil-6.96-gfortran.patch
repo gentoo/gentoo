@@ -1,0 +1,29 @@
+--- a/plotlib/ps_subs.f
++++ b/plotlib/ps_subs.f
+@@ -559,7 +559,7 @@
+ c                   in the iout array (3,1,3,1,3,1,3,1)
+ c     Note: the bit mask is shifted to always start counting on a '1' bit.
+ c
+-c---  Uses the library routines and() and rshift() for bit manipulation 
++c---  Uses the library routines and() and ishft() for bit manipulation 
+ c     which are present in most fortran libraries as extensions to f77.
+ c
+       dimension iout(*)
+@@ -570,7 +570,7 @@
+         ibitold = and(1,imask)
+         if(ibitold.NE.0) go to 5
+           nshft = n
+-          imask = rshift(imask,1)
++          imask = ishft(imask,-1)
+       end do
+ c
+  5    nout  = 0
+@@ -594,7 +594,7 @@
+ c
+         ibitold = ibit
+         nbits = nbits + 1
+-        imask = rshift(imask,1)
++        imask = ishft(imask,-1)
+       end do
+ c--- Add final bit(s) to end of 16 bits checked
+ c--- Now append any zero bits shifted out originally

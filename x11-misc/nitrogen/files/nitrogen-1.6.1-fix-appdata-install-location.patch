@@ -1,0 +1,35 @@
+From d7816bc17d03c018e532a4a1b37bd9190f7b65ef Mon Sep 17 00:00:00 2001
+From: Dylan Wolf <etc404@protonmail.com>
+Date: Wed, 12 Oct 2022 17:07:43 -0600
+Subject: [PATCH] Updated appdata installation location to
+ /usr/share/metainfo/nitrogen.metainfo.xml (appdata is deprecated)
+
+Signed-off-by: Dylan Wolf <etc404@protonmail.com>
+---
+ data/Makefile.am                                     | 6 +++---
+ data/{nitrogen.appdata.xml => nitrogen.metainfo.xml} | 0
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+ rename data/{nitrogen.appdata.xml => nitrogen.metainfo.xml} (100%)
+
+diff --git a/data/Makefile.am b/data/Makefile.am
+index 7fa36c5..961b761 100644
+--- a/data/Makefile.am
++++ b/data/Makefile.am
+@@ -1,9 +1,9 @@
+ SUBDIRS = icons
+ 
+-appdatadir = $(datarootdir)/appdata
++metainfodir = $(datarootdir)/metainfo
+ desktopdir = $(datadir)/applications
+ desktop_DATA = nitrogen.desktop
+-appdata_DATA = nitrogen.appdata.xml
++metainfo_DATA = nitrogen.metainfo.xml
+ 
+ UPDATE_DESKTOP = update-desktop-database $(datadir)/applications || :
+ 
+@@ -12,5 +12,5 @@ install-data-hook:
+ uninstall-hook: 
+ 	$(UPDATE_DESKTOP)
+ 
+-EXTRA_DIST = icon-theme-installer nitrogen.appdata.xml
++EXTRA_DIST = icon-theme-installer nitrogen.metainfo.xml

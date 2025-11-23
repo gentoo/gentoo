@@ -1,0 +1,29 @@
+Index: src/lharc.c
+===================================================================
+--- a/src/lharc.c	(revision 773)
++++ b/src/lharc.c	(working copy)
+@@ -561,7 +561,7 @@
+         if (!isatty(1) && cmd == CMD_ADD)
+             quiet = TRUE;
+     }
+-#if 0 /* Comment out; IMHO, this feature is useless. by Koji Arai */
++#ifndef MINGW32
+     else {
+         if (argc == 3 && !isatty(0)) { /* 1999.7.18 */
+             /* Bug(?) on MinGW, isatty() return 0 on Cygwin console.
+Index: configure.ac
+===================================================================
+--- a/configure.ac	(revision 773)
++++ b/configure.ac	(working copy)
+@@ -289,6 +289,11 @@
+ 	    [Define to 1 if you want to ignore dot files with -X command line switch])
+ fi
+ 
++AC_MINGW32
++if test "x$MINGW32" = xyes; then
++  AC_DEFINE(MINGW32, 1, [Define to 1 if we're being compiled with MinGW.])
++fi
++
+ AC_CONFIG_FILES([Makefile src/Makefile man/Makefile olddoc/Makefile])
+ AC_CONFIG_FILES([tests/Makefile tests/lha-test])
+ AC_OUTPUT

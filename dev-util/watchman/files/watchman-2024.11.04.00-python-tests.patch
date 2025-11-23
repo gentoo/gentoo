@@ -1,0 +1,16 @@
+--- a/watchman/python/tests/tests.py
++++ b/watchman/python/tests/tests.py
+@@ -28,13 +28,6 @@ from pywatchman import (
+ )
+ 
+ 
+-if os.path.basename(bser.__file__) == "pybser.py":
+-    raise Exception(
+-        "bser module resolved to pybser! Something is broken in your build. __file__={!r}, sys.path={!r}".format(
+-            bser.__file__, sys.path
+-        )
+-    )
+-
+ PILE_OF_POO = "\U0001F4A9"
+ NON_UTF8_STRING = b"\xff\xff\xff"
+

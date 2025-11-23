@@ -1,0 +1,7 @@
+--- a/brainworkshop.py
++++ b/brainworkshop.py
+@@ -173,3 +173,3 @@
+     else:
+-        return os.path.join(get_main_dir(), FOLDER_RES)
++        return '@GENTOO_DATADIR@'
+ def edit_config_ini():

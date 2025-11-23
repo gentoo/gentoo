@@ -1,0 +1,38 @@
+From Michael Orlitzky <michael@orlitzky.com> in the original version
+of the patch:
+
+This was added upstream when it was pointed out that the codebase
+contains undefined behavior that triggers glibcxx's assertions.
+Disabling the assertions without fixing the undefined behavior is not
+a satisfactory solution, so we drop the override.
+
+diff --git a/configure.ac b/configure.ac
+index 96b0223..cdc5618 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -48,7 +48,7 @@ AC_CHECK_FUNCS(tgammaf)
+ dnl avoid "security" checks for vectors is also included in first.h
+ dnl use -std=c++17 -march=native  for vectorclass v2 optimizations
+ dnl -DUSE_OBJET_BIDON added because xcas::localisation() does not load locales correctly for modules loaded before main() is executed
+-CXXFLAGS="$CXXFLAGS  -U_GLIBCXX_ASSERTIONS -DUSE_OBJET_BIDON"
++CXXFLAGS="$CXXFLAGS -DUSE_OBJET_BIDON"
+ 
+ dnl Define DOUBLEVAL if bigendian
+ if test "x$ac_cv_c_bigendian" = "xyes"; then
+diff --git a/src/first.h b/src/first.h
+index 7852c73..21e15b9 100644
+--- a/src/first.h
++++ b/src/first.h
+@@ -25,9 +25,9 @@
+ #define register 
+ 
+ 
+-#ifdef _GLIBCXX_ASSERTIONS
+-#undef _GLIBCXX_ASSERTIONS
+-#endif
++// #ifdef _GLIBCXX_ASSERTIONS
++// #undef _GLIBCXX_ASSERTIONS
++// #endif
+ 
+ #if defined NUMWORKS && !defined SDL_KHICAS
+ #define KHICAS 1

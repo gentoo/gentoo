@@ -1,0 +1,22 @@
+From 8a29f2263675bf9cb7a567f00fc257728b3ac3d8 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Thu, 9 Jan 2025 19:49:15 +0100
+Subject: [PATCH] boost config
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/src/cmake/externalpackages.cmake b/src/cmake/externalpackages.cmake
+index 7250633..1f032f8 100644
+--- a/src/cmake/externalpackages.cmake
++++ b/src/cmake/externalpackages.cmake
+@@ -57,6 +57,7 @@ else ()
+     checked_find_package (Boost REQUIRED
+                        VERSION_MIN 1.55
+                        COMPONENTS ${Boost_COMPONENTS}
++                       CONFIG
+                        RECOMMEND_MIN 1.66
+                        RECOMMEND_MIN_REASON "Boost 1.66 is the oldest version our CI tests against"
+                        PRINT Boost_INCLUDE_DIRS Boost_LIBRARIES
+-- 
+2.47.1
+

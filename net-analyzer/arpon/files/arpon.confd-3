@@ -1,0 +1,4 @@
+METHOD="--darpi"
+IFACE="eth0"
+
+ARPON_OPTS="${METHOD} --interface ${IFACE}"

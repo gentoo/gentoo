@@ -1,0 +1,55 @@
+https://gitweb.gentoo.org/proj/portage.git/commit/?id=c9a982117e07bbbfc4cd84fedc1c02623cf8e51e
+
+From c9a982117e07bbbfc4cd84fedc1c02623cf8e51e Mon Sep 17 00:00:00 2001
+From: Michał Górny <mgorny@gentoo.org>
+Date: Thu, 10 Apr 2025 12:20:08 +0200
+Subject: isolated-functions.sh: Output package in einfo during depend phase
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Output a banner containing the package name and version, When the einfo
+family of functions is used during the depend phase.  Before, these
+messages would be printed out of context, requiring the caller to
+explicitly include the package name.
+
+The result is, for example:
+
+```
+Calculating dependencies \
+Messages from dev-python/protobuf-4.23.3::gentoo:
+ * distutils_enable_tests setup.py is deprecated and will be removed.
+ * Please use unittest or pytest instead.
+ |
+Messages from dev-python/protobuf-4.22.5::gentoo:
+ * distutils_enable_tests setup.py is deprecated and will be removed.
+ * Please use unittest or pytest instead.
+ -
+```
+
+Closes: https://github.com/gentoo/portage/pull/1433
+Signed-off-by: Michał Górny <mgorny@gentoo.org>
+---
+ bin/isolated-functions.sh | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/bin/isolated-functions.sh b/bin/isolated-functions.sh
+index d4248366d..40d2132be 100644
+--- a/bin/isolated-functions.sh
++++ b/bin/isolated-functions.sh
+@@ -259,6 +259,13 @@ __vecho() {
+ # Internal logging function, don't use this in ebuilds
+ __elog_base() {
+ 	local messagetype
++	if [[ ${EBUILD_PHASE} == depend && -z ${__PORTAGE_ELOG_BANNER_OUTPUT} ]]; then
++		# in depend phase, we want to output a banner indicating which
++		# package emitted the message
++		echo >&2
++		echo "Messages for package ${PORTAGE_COLOR_INFO}${CATEGORY}/${PF}::${PORTAGE_REPO_NAME}${PORTAGE_COLOR_NORMAL}:" >&2
++		__PORTAGE_ELOG_BANNER_OUTPUT=1
++	fi
+ 	[[ -z "${1}" || -z "${T}" || ! -d "${T}/logging" ]] && return 1
+ 	case "${1}" in
+ 		INFO|WARN|ERROR|LOG|QA)
+-- 
+cgit v1.2.3-65-gdbad

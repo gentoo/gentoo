@@ -1,0 +1,24 @@
+diff --git a/Makefile.sharedlibrary b/Makefile.sharedlibrary
+index bf5c0cb..5862b4f 100644
+--- a/Makefile.sharedlibrary
++++ b/Makefile.sharedlibrary
+@@ -70,11 +70,11 @@ all: libduktape.$(SO_REALNAME_SUFFIX) libduktaped.$(SO_REALNAME_SUFFIX) duktape.
+ # to $INSTALL_PREFIX/include on installation.
+ 
+ libduktape.$(SO_REALNAME_SUFFIX):
+-	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -shared -fPIC -Wall -Wextra -Os -Wl,$(LD_SONAME_ARG),libduktape.$(SO_SONAME_SUFFIX) \
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -shared -fPIC -Wall -Wextra -Wl,$(LD_SONAME_ARG),libduktape.$(SO_SONAME_SUFFIX) \
+ 		-o $@ $(DUKTAPE_SRCDIR)/duktape.c
+ 
+ libduktaped.$(SO_REALNAME_SUFFIX):
+-	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -shared -fPIC -g -Wall -Wextra -Os -Wl,$(LD_SONAME_ARG),libduktaped.$(SO_SONAME_SUFFIX) \
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -shared -fPIC -Wall -Wextra -Wl,$(LD_SONAME_ARG),libduktaped.$(SO_SONAME_SUFFIX) \
+ 		-o $@ $(DUKTAPE_SRCDIR)/duktape.c
+ 
+ duktape.pc:
+@@ -101,4 +101,4 @@ install: libduktape.$(SO_REALNAME_SUFFIX) libduktaped.$(SO_REALNAME_SUFFIX) dukt
+ 
+ CCOPTS = -I./examples/cmdline
+ duk:
+-	$(CC) $(CCOPTS) -I$(INSTALL_PREFIX)/include -L$(INSTALL_PREFIX)$(LIBDIR) -Wall -Wextra -Os -o $@ ./examples/cmdline/duk_cmdline.c -lduktape -lm
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(CCOPTS) -I$(INSTALL_PREFIX)/include -L$(INSTALL_PREFIX)$(LIBDIR) -Wall -Wextra -o $@ ./examples/cmdline/duk_cmdline.c -lduktape -lm

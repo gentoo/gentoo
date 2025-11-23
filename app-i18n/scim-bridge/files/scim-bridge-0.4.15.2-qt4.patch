@@ -1,0 +1,58 @@
+diff -Naur scim-bridge-0.4.15.orig/client-qt/qt4/Makefile.am scim-bridge-0.4.15/client-qt/qt4/Makefile.am
+--- scim-bridge-0.4.15.orig/client-qt/qt4/Makefile.am	2009-01-18 01:57:40.000000000 +0900
++++ scim-bridge-0.4.15/client-qt/qt4/Makefile.am	2009-01-25 14:58:09.000000000 +0900
+@@ -24,7 +24,7 @@
+ 
+ noinst_HEADERS = ../scim-bridge-client-qt.h ../scim-bridge-client-imcontext-qt.h ../scim-bridge-client-key-event-utility-qt.h ../scim-bridge-client-common-qt.h
+ 
+-moduledir = @QT4_PREFIX@/plugins/inputmethods
++moduledir = @QT4_LIBDIR@/plugins/inputmethods
+ module_LTLIBRARIES = im-scim-bridge.la
+ 
+ im_scim_bridge_la_SOURCES = ../im-scim-bridge-qt.cpp \
+diff -Naur scim-bridge-0.4.15.orig/client-qt/scim-bridge-client-imcontext-qt.cpp scim-bridge-0.4.15/client-qt/scim-bridge-client-imcontext-qt.cpp
+--- scim-bridge-0.4.15.orig/client-qt/scim-bridge-client-imcontext-qt.cpp	2008-11-02 15:44:46.000000000 +0900
++++ scim-bridge-0.4.15/client-qt/scim-bridge-client-imcontext-qt.cpp	2009-01-25 15:04:34.000000000 +0900
+@@ -219,6 +219,12 @@
+ void ScimBridgeClientIMContextImpl::setFocusWidget (QWidget *widget)
+ {
+     scim_bridge_pdebugln (4, "ScimBridgeClientIMContextImpl::setFocusWidget ()");
++
++    if (focused_imcontext != NULL) {
++        focused_imcontext->focus_out ();
++        focused_imcontext = NULL;
++    }
++
+     QInputContext::setFocusWidget (widget);
+     focus_in ();
+     update ();
+@@ -442,8 +448,15 @@
+         }
+     }
+ 
++#ifdef QT4
++    if (preedit_shown) {
++        set_preedit_shown (false);
++        update_preedit ();
++    }
++#else
+     set_preedit_shown (false);
+     update_preedit ();
++#endif
+ 
+     focused_imcontext = NULL;
+ }
+diff -Naur scim-bridge-0.4.15.orig/configure.ac scim-bridge-0.4.15/configure.ac
+--- scim-bridge-0.4.15.orig/configure.ac	2009-01-18 02:24:32.000000000 +0900
++++ scim-bridge-0.4.15/configure.ac	2009-01-25 14:58:06.000000000 +0900
+@@ -105,6 +105,10 @@
+     QT4_PREFIX=`$PKG_CONFIG --variable=prefix QtCore`
+   fi
+   AC_SUBST(QT4_PREFIX)
++  if test -z "$QT4_LIBDIR"; then
++    QT4_LIBDIR=`$PKG_CONFIG --variable=libdir QtCore`
++  fi
++  AC_SUBST(QT4_LIBDIR)
+   enable_qt4_immodule="yes";
+ fi
+ 

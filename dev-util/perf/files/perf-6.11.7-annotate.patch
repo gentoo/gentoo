@@ -1,0 +1,19 @@
+
+Fix for bug #943203.
+
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5363c306787c88d41a41493f81b4308643696f6e
+
+diff --git a/tools/perf/util/symbol.c b/tools/perf/util/symbol.c
+index a18927d792afc5..3bbf173ad822bc 100644
+--- a/tools/perf/util/symbol.c
++++ b/tools/perf/util/symbol.c
+@@ -1931,6 +1931,9 @@ int dso__load(struct dso *dso, struct map *map)
+ 		if (next_slot) {
+ 			ss_pos++;
+ 
++			if (dso__binary_type(dso) == DSO_BINARY_TYPE__NOT_FOUND)
++				dso__set_binary_type(dso, symtab_type);
++
+ 			if (syms_ss && runtime_ss)
+ 				break;
+ 		} else {

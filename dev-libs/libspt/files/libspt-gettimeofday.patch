@@ -1,0 +1,14 @@
+
+See https://bugs.gentoo.org/895050
+
+diff '--color=auto' -ruN libspt-1.1.orig/sptagent.c libspt-1.1/sptagent.c
+--- libspt-1.1.orig/sptagent.c	2024-11-07 21:12:10.902407126 +0100
++++ libspt-1.1/sptagent.c	2024-11-07 21:12:03.434285665 +0100
+@@ -5,6 +5,7 @@
+ #include "sptprivate.h"
+ #include <stdio.h>
+ #include <sys/stat.h>
++#include <sys/time.h>
+ #include <grp.h>
+ #include <pwd.h>
+ #include <time.h>

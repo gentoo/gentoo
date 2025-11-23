@@ -1,0 +1,70 @@
+https://github.com/robbat2/readahead-list/pull/1
+
+From 37e699689661249c88a020681a70cd0633ee7ef4 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 25 Dec 2022 20:34:38 +0000
+Subject: [PATCH 2/6] Set -D_GNU_SOURCE for readahead() to fix
+ -Wimplicit-function-declaration
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+readahead-list.c: In function ‘process_file’:
+readahead-list.c:111:17: error: implicit declaration of function ‘readahead’ [-Werror=implicit-function-declaration]
+  111 |                 readahead(fd, (loff_t)0, (size_t)buf.st_size);
+      |                 ^~~~~~~~~
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -40,6 +40,9 @@ AC_PATH_PROG(CMP, cmp, cmp)
+ AC_CANONICAL_HOST
+ AC_PROG_RANLIB
+ 
++# Provides _GNU_SOURCE for readahead()
++AC_USE_SYSTEM_EXTENSIONS
++
+ # Checks for header files.
+ AC_CHECK_HEADERS([ errno.h fcntl.h getopt.h linux/fs.h sched.h stdio.h stdlib.h string.h sys/ioctl.h sys/mman.h sys/syscall.h sys/types.h unistd.h ])
+ 
+--- a/src/filelist-order.cxx
++++ b/src/filelist-order.cxx
+@@ -14,6 +14,9 @@
+ // along with this program; if not, write to the Free Software 
+ // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ //
++
++#include <../config.h>
++
+ #include <map>
+ #include <set>
+ #include <iostream>
+@@ -31,7 +34,6 @@
+ 
+ #include <fcntl.h>
+ #include <linux/fs.h>
+-#include <../config.h>
+ 
+ #ifndef BUFFER_SIZE
+ #define BUFFER_SIZE 2048
+--- a/src/readahead-list.c
++++ b/src/readahead-list.c
+@@ -19,6 +19,7 @@
+ // Based on code originally written by Erich Schubert <erich@debian.org>.
+ // $Header: /code/convert/cvsroot/infrastructure/readahead-list/src/readahead-list.c,v 1.5 2006/04/21 10:13:54 robbat2 Exp $
+ 
++#include <../config.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <unistd.h>
+@@ -31,7 +32,6 @@
+ #include <sched.h>
+ #include <string.h>
+ #include <errno.h>
+-#include <../config.h>
+ 
+ #if __STDC_VERSION__ < 199901L
+ # if __GNUC__ >= 2
+-- 
+2.39.0
+

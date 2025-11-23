@@ -1,0 +1,2 @@
+# arguments for docker auth
+command_args="--log_dir /var/log/${RC_SVCNAME} /etc/docker_auth/config.yml"

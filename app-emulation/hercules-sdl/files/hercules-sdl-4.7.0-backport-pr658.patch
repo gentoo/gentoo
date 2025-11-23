@@ -1,0 +1,46 @@
+https://bugs.gentoo.org/931607
+https://github.com/SDL-Hercules-390/hyperion/pull/658
+
+From 655f179dbf34a3b1e9714691462faa9732257937 Mon Sep 17 00:00:00 2001
+From: matoro <matoro@users.noreply.github.com>
+Date: Thu, 9 May 2024 12:36:01 -0400
+Subject: [PATCH] Add missing includes to configure script
+
+This is needed for gcc 14 and clang 16 as they both make implicit
+function definitions a hard error.  In a configure script, this means
+these tests will switch from passing to failing, which likely means
+features will get unintentionally flipped as configure now thinks you
+don't have support.
+
+See: https://wiki.gentoo.org/wiki/Modern_C_porting
+See: https://bugs.gentoo.org/931607
+---
+ autoconf/hercules.m4 | 1 +
+ configure.ac         | 2 ++
+ 2 files changed, 3 insertions(+)
+
+diff --git a/autoconf/hercules.m4 b/autoconf/hercules.m4
+index cb962f5e0..4d35cb039 100755
+--- a/autoconf/hercules.m4
++++ b/autoconf/hercules.m4
+@@ -380,6 +380,7 @@ AC_DEFUN([HC_CHECK_NEED_GETOPT_OPTRESET],
+             AC_TRY_LINK(
+                 [],
+                 [
++                    #include <unistd.h>
+                     extern int optreset;
+                     optreset=1;
+                     getopt(0,0,0);
+diff --git a/configure.ac b/configure.ac
+index f444a9b1e..bfe31357d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1872,6 +1872,8 @@ if test "$GCC" = "yes"; then
+                             -g -O2 -fomit-frame-pointer
+                     */
+ 
++                    #include <string.h>
++
+                     int foo ()
+                     {
+                         char a[50000+16];

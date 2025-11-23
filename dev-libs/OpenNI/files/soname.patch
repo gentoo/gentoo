@@ -1,0 +1,13 @@
+Index: OpenNI-9999/Platform/Linux/Build/Common/CommonCppMakefile
+===================================================================
+--- OpenNI-9999.orig/Platform/Linux/Build/Common/CommonCppMakefile
++++ OpenNI-9999/Platform/Linux/Build/Common/CommonCppMakefile
+@@ -78,7 +78,7 @@ ifneq "$(LIB_NAME)" ""
+ 	ifneq ("$(OSTYPE)","Darwin")
+ 		LDFLAGS += -Wl,--no-undefined
+ 		OUTPUT_NAME = lib$(LIB_NAME).so
+-		OUTPUT_COMMAND = $(CXX) -o $(OUTPUT_FILE) $(OBJ_FILES) $(LDFLAGS) -shared
++		OUTPUT_COMMAND = $(CXX) -o $(OUTPUT_FILE) $(OBJ_FILES)  -Wl,-soname,$(notdir $(OUTPUT_FILE)) $(LDFLAGS) -shared
+ 	else
+ 		LDFLAGS += -undefined error
+ 		OUTPUT_NAME = lib$(LIB_NAME).dylib

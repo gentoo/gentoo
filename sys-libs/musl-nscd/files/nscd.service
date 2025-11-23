@@ -1,0 +1,15 @@
+[Unit]
+Description=Name Service Cache Daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/sbin/nscd -F
+ExecStop=/usr/sbin/nscd --shutdown
+ExecReload=/usr/sbin/nscd -i passwd
+ExecReload=/usr/sbin/nscd -i group
+ExecReload=/usr/sbin/nscd -i hosts
+ExecReload=/usr/sbin/nscd -i services
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

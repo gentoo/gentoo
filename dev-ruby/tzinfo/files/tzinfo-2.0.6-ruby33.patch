@@ -1,0 +1,35 @@
+From 9e04c58ce10920538dc55ba6e547aa15cff39a84 Mon Sep 17 00:00:00 2001
+From: Phil Ross <phil.ross@gmail.com>
+Date: Sat, 16 Dec 2023 19:14:20 +0000
+Subject: [PATCH] Fix loading the gemspec file from rake with Ruby 3.3.
+
+Calculating the current directory name from within the gemspec would
+fail.
+
+`__FILE__` was '(eval)' with Ruby < 3.3. `File.dirname(__FILE__)` is
+'.'.
+
+`__FILE__` is '(eval at /path/Rakefile:linenumber)' with Ruby >= 3.3.
+`File.dirname(__FILE__)` is '(eval at /path'.
+---
+ Rakefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Rakefile b/Rakefile
+index 8a34fa33..69bee7b5 100644
+--- a/Rakefile
++++ b/Rakefile
+@@ -11,11 +11,11 @@ rescue LoadError, RuntimeError
+ end
+ 
+ BASE_DIR = File.expand_path(File.dirname(__FILE__))
++GEMSPEC_PATH = File.join(BASE_DIR, 'tzinfo.gemspec')
++spec = TOPLEVEL_BINDING.eval(File.read(GEMSPEC_PATH), GEMSPEC_PATH)
+ 
+ task default: [:test]
+ 
+-spec = eval(File.read('tzinfo.gemspec'))
+-
+ class TZInfoPackageTask < Gem::PackageTask
+   alias_method :orig_sh, :sh
+   private :orig_sh

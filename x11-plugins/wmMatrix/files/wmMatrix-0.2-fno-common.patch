@@ -1,0 +1,37 @@
+--- a/xutils.h
++++ b/xutils.h
+@@ -18,11 +18,11 @@
+ /*
+  *   Global variable
+  */
+-Display		*display;
+-Window          Root;
+-Window          iconwin, win;
+-int             screen; 
+-int             DisplayDepth;
++extern Display		*display;
++extern Window          Root;
++extern Window          iconwin, win;
++extern int             screen; 
++extern int             DisplayDepth;
+ 
+ 
+ 
+--- a/xutils.c
++++ b/xutils.c
+@@ -42,6 +42,15 @@
+ #include "xutils.h"
+ 
+ 
++/*
++ *   Global variable
++ */
++Display		*display;
++Window          Root;
++Window          iconwin, win;
++int             screen; 
++int             DisplayDepth;
++
+ 
+ /*
+  *   X11 Variables 

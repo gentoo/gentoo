@@ -1,0 +1,12 @@
+--- a/greedy.c
++++ b/greedy.c
+@@ -13,6 +13,9 @@
+ 
+ #include <ncurses.h>
+ #include <stdlib.h>
++#include <time.h>
++#include <unistd.h>
++#include <string.h>
+ #include "playmodes.h"
+ #include "playmodes.c"
+ 

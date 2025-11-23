@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="openpty">Use openpty() in preference to posix_openpt()</flag>
+		<flag name="sixel">Enable sixel graphics support</flag>
+		<flag name="toolbar">Enable the xterm toolbar to be built</flag>
+	</use>
+	<upstream>
+		<changelog>https://invisible-island.net/xterm/xterm.log.html</changelog>
+		<remote-id type="github">ThomasDickey/xterm-snapshots</remote-id>
+	</upstream>
+</pkgmetadata>

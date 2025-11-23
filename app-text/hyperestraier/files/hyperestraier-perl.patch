@@ -1,0 +1,24 @@
+--- a/perlnative/Makefile.in
++++ b/perlnative/Makefile.in
+@@ -29,10 +29,10 @@
+ # Building binaries
+ PERL = @PERL@
+ POD2HTML = @POD2HTML@
+-CC = gcc
++CC = @CC@
+ INC = -I. -I../.. -I$(MYHEADDIR) -I$(HOME)/include -I/usr/local/include
+ OPTIMIZE = @MYOPTIMIZE@
+-LD = gcc
++LD = @CC@
+ LIBS = -L../.. -L$(MYLIBDIR) -L$(HOME)/lib -L/usr/local/lib @LIBS@
+ RUNENV = LD_LIBRARY_PATH=.:..:/lib:/usr/lib:$(MYLIBDIR):$(HOME)/lib:/usr/local/lib:@MYRUNPATH@
+ 
+@@ -46,7 +46,7 @@
+ all :
+ 	( cd src && if ! [ -f Makefile ] ; \
+ 	  then $(RUNENV) $(PERL) Makefile.PL CC="$(CC)" INC="$(INC)" OPTIMIZE="$(OPTIMIZE)" \
+-	  LD="$(LD)" LIBS="$(LIBS)" PREFIX="$(prefix)" ; fi )
++	  LD="$(LD)" LIBS="$(LIBS)" PREFIX="$(prefix)" INSTALLDIRS="vendor" ; fi )
+ 	( cd src && make )
+ 	@printf '\n'
+ 	@printf '#================================================================\n'

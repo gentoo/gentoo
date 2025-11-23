@@ -1,0 +1,31 @@
+https://pagure.io/libaio/pull-request/22.patch
+https://pagure.io/libaio/pull-request/22
+https://pagure.io/libaio/issue/21
+
+From b8eadc9f89e8f7ab0338eacda9f98a6caea76883 Mon Sep 17 00:00:00 2001
+From: Andreas Baumann <mail@andreasbaumann.cc>
+Date: Jun 02 2022 11:33:11 +0000
+Subject: harness: use off64_t instead of off_t in test 23.t (EINVAL on 32-bit)
+
+--- a/harness/cases/23.t
++++ b/harness/cases/23.t
+@@ -72,7 +72,7 @@ static void fail_errno(const char *format, ...)
+ static void *thrproc2(void *arg)
+ {
+ 	for (;;) {
+-		off_t offset = 0;
++		off64_t offset = 0;
+ 
+ 		pthread_barrier_wait(&barrier);
+ 		if (exiting)
+@@ -92,7 +92,7 @@ static void *thrproc3(void *arg)
+ {
+ 	for (;;) {
+ 		char c;
+-		off_t offset = 0;
++		off64_t offset = 0;
+ 
+ 		pthread_barrier_wait(&barrier);
+ 		if (exiting)
+
+

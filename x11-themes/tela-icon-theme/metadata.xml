@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>beatussum@protonmail.com</email>
+		<name>Mattéo Rossillol‑‑Laruelle</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<use>
+		<flag name="hardlink">Hardlink duplicate icons to greatly reduce installation size</flag>
+	</use>
+	<use lang="fr">
+		<flag name="hardlink">Créer des liens durs pour les icônes doublons afin de grandement réduire la taille à l'installation</flag>
+	</use>
+	<upstream>
+		<maintainer status="active">
+			<name>Vince</name>
+			<email>vinceliuice@hotmail.com</email>
+		</maintainer>
+		<bugs-to>https://github.com/vinceliuice/Tela-icon-theme/issues</bugs-to>
+		<remote-id type="github">vinceliuice/Tela-icon-theme</remote-id>
+	</upstream>
+</pkgmetadata>

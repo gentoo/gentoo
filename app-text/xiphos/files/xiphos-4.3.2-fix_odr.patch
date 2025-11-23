@@ -1,0 +1,36 @@
+Fix lto. Merged in upstream
+https://github.com/crosswire/xiphos/commit/9435cdce8ec64f4eb699b0cd7b66df02949fe5fb.patch
+From 9435cdce8ec64f4eb699b0cd7b66df02949fe5fb Mon Sep 17 00:00:00 2001
+From: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
+Date: Wed, 2 Jul 2025 15:52:24 +0200
+Subject: [PATCH] fix One Definition Rule violations (#1242)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+>xiphos-4.3.2/src/main/parallel_view.cc:86:15:
+>error: ‘no_content’ violates the C++ One Definition Rule [-Werror=odr]
+>   86 | extern gchar *no_content;
+>      |               ^
+>xiphos-4.3.2/src/main/display.cc:88:14: note: ‘no_content’ was previously declared here
+>   88 | const gchar *no_content =
+>      |              ^
+
+Signed-off-by: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
+---
+ src/main/parallel_view.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/main/parallel_view.cc b/src/main/parallel_view.cc
+index 39b8037e2..22164d1c8 100644
+--- a/src/main/parallel_view.cc
++++ b/src/main/parallel_view.cc
+@@ -83,7 +83,7 @@ SWBuf unknown_parallel = _("Unknown parallel module: ");
+  */
+ 
+ BackEnd *backend_p;
+-extern gchar *no_content;
++extern const gchar *no_content;
+ 
+ static const gchar *tf2of(int true_false)
+ {

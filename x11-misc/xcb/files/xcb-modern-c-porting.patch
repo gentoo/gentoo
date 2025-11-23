@@ -1,0 +1,342 @@
+diff --git a/xcb.c b/xcb.c
+index 2c990a3..ac9fec2 100644
+--- a/xcb.c
++++ b/xcb.c
+@@ -262,13 +262,8 @@ XCreateFontSetWithGuess (Display * d, const char *pattern, char ***miss, int *n_
+ 
+ static
+ Boolean 
+-CvtStringToFontSet (dpy, args, num_args, fromVal, toVal, closure_ret)
+-     Display *dpy;
+-     XrmValuePtr args;
+-     Cardinal *num_args;
+-     XrmValuePtr fromVal;
+-     XrmValuePtr toVal;
+-     XtPointer *closure_ret;
++CvtStringToFontSet (Display *dpy, XrmValuePtr args, Cardinal *num_args,
++		    XrmValuePtr fromVal, XrmValuePtr toVal, XtPointer *closure_ret)
+ {
+   XFontSet f;
+   char **missing_charset_list;
+@@ -299,10 +294,7 @@ CvtStringToFontSet (dpy, args, num_args, fromVal, toVal, closure_ret)
+  * Fetch the contents of cut buffer n from the root window.
+  */
+ static char *
+-fetch_buffer (a, nb, force_mb)
+-     Atom a;
+-     int *nb;
+-     int force_mb;
++fetch_buffer (Atom a, int *nb, int force_mb)
+ {
+   unsigned long after;
+   char **list;
+@@ -338,11 +330,7 @@ fetch_buffer (a, nb, force_mb)
+  * Store the string p into cut buffer n on the root window.
+  */
+ static void
+-store_buffer (p, nb, atom, force_mb)
+-     char *p;
+-     int nb;
+-     Atom atom;
+-     int force_mb;
++store_buffer (char *p, int nb, Atom atom, int force_mb)
+ {
+   XTextProperty pt;
+ 
+@@ -359,8 +347,7 @@ store_buffer (p, nb, atom, force_mb)
+  * Add an atom to the program's atom cache.
+  */
+ static Atom
+-get_atom (n, ifexists)
+-     int n, ifexists;
++get_atom (int n, int ifexists)
+ {
+   char tmp[32];
+ 
+@@ -403,10 +390,7 @@ initialize_properties (void)
+  * Draw a string in the window with top-left corner justification.
+  */
+ static void
+-place_text (cb, str, len, y)
+-     CbWidget cb;
+-     char *str;
+-     int len, y;
++place_text (CbWidget cb, char *str, int len, int y)
+ {
+   int cols;
+   GC gc;
+@@ -439,10 +423,8 @@ place_text (cb, str, len, y)
+  */
+ 
+ static void
+-cb_initialize (req, wdg, args, nargs)        /*ARGSUSED */
+-     Widget req, wdg;
+-     ArgList args;
+-     Cardinal *nargs;
++cb_initialize (Widget req, Widget wdg,
++	       ArgList args, Cardinal *nargs)        /*ARGSUSED */
+ {
+   CbWidget cb = (CbWidget) wdg;
+   XFontSetExtents *xfe = XExtentsOfFontSet (cb->fontset);
+@@ -455,10 +437,7 @@ cb_initialize (req, wdg, args, nargs)        /*ARGSUSED */
+ }
+ 
+ static void
+-cb_realize (wdg, mask, attrs)
+-     Widget wdg;
+-     XtValueMask *mask;
+-     XSetWindowAttributes *attrs;
++cb_realize (Widget wdg, XtValueMask *mask, XSetWindowAttributes *attrs)
+ {
+   CbWidget cb = (CbWidget) wdg;
+   XtGCMask v_mask = 0L;
+@@ -487,10 +466,7 @@ cb_realize (wdg, mask, attrs)
+  * Keep it simple.
+  */
+ static void
+-cb_redisplay (wdg, event, region)        /*ARGSUSED */
+-     Widget wdg;
+-     XEvent *event;
+-     Region region;
++cb_redisplay (Widget wdg, XEvent *event, Region region)        /*ARGSUSED */
+ {
+   CbWidget cb = (CbWidget) wdg;
+   char *p, *pp, *base;
+@@ -513,8 +489,7 @@ cb_redisplay (wdg, event, region)        /*ARGSUSED */
+ }
+ 
+ static void
+-cb_destroy (wdg)
+-     Widget wdg;
++cb_destroy (Widget wdg)
+ {
+   CbWidget cb = (CbWidget) wdg;
+ 
+@@ -540,11 +515,8 @@ cb_destroy (wdg)
+  * This breaks all the rules for object oriented widgets.  Disgusting, no?
+  */
+ static void
+-cb_cut (wdg, event, parms, nparms)        /*ARGSUSED */
+-     Widget wdg;
+-     XEvent *event;
+-     String *parms;
+-     Cardinal *nparms;
++cb_cut (Widget wdg, XEvent *event,
++	String *parms, Cardinal *nparms)        /*ARGSUSED */
+ {
+   CbWidget cb = (CbWidget) wdg;
+   Window win = cb->core.window;
+@@ -572,11 +544,8 @@ cb_cut (wdg, event, parms, nparms)        /*ARGSUSED */
+ }
+ 
+ static void
+-cb_paste (wdg, event, parms, nparms)        /*ARGSUSED */
+-     Widget wdg;
+-     XEvent *event;
+-     String *parms;
+-     Cardinal *nparms;
++cb_paste (Widget wdg, XEvent *event,
++	  String *parms, Cardinal *nparms)        /*ARGSUSED */
+ {
+   CbWidget cb = (CbWidget) wdg;
+   Window w;
+@@ -596,11 +565,8 @@ cb_paste (wdg, event, parms, nparms)        /*ARGSUSED */
+ }
+ 
+ static void
+-cb_clear (wdg, event, parms, nparms)        /*ARGSUSED */
+-     Widget wdg;
+-     XEvent *event;
+-     String *parms;
+-     Cardinal *nparms;
++cb_clear (Widget wdg, XEvent *event,
++	  String *parms, Cardinal *nparms)        /*ARGSUSED */
+ {
+   CbWidget cb = (CbWidget) wdg;
+   Window win = cb->core.window;
+@@ -614,11 +580,8 @@ cb_clear (wdg, event, parms, nparms)        /*ARGSUSED */
+ }
+ 
+ static void
+-cb_rotate (wdg, event, parms, nparms)        /*ARGSUSED */
+-     Widget wdg;
+-     XEvent *event;
+-     String *parms;
+-     Cardinal *nparms;
++cb_rotate (Widget wdg, XEvent *event,
++	   String *parms, Cardinal *nparms)        /*ARGSUSED */
+ {
+   int n = 0;
+ 
+@@ -630,11 +593,8 @@ cb_rotate (wdg, event, parms, nparms)        /*ARGSUSED */
+ }
+ 
+ static void
+-cb_quit (wdg, event, parms, nparms)        /*ARGSUSED */
+-     Widget wdg;
+-     XEvent *event;
+-     String *parms;
+-     Cardinal *nparms;
++cb_quit (Widget wdg, XEvent *event,
++	 String *parms, Cardinal *nparms)        /*ARGSUSED */
+ {
+   exit (0);
+ }
+@@ -643,11 +603,8 @@ cb_quit (wdg, event, parms, nparms)        /*ARGSUSED */
+  * Clear and redraw the widget's window.
+  */
+ static void
+-cb_refresh (wdg, event, parms, nparms)        /*ARGSUSED */
+-     Widget wdg;
+-     XEvent *event;
+-     String *parms;
+-     Cardinal *nparms;
++cb_refresh (Widget wdg, XEvent *event,
++	    String *parms, Cardinal *nparms)        /*ARGSUSED */
+ {
+   XClearArea (dpy, wdg->core.window, 0, 0, 0, 0, False);
+   cb_redisplay (wdg, (XEvent *) 0, (Region) 0);
+@@ -661,11 +618,8 @@ cb_refresh (wdg, event, parms, nparms)        /*ARGSUSED */
+  * of the cut buffer to the target window+atom.
+  */
+ static void
+-cb_selreq (wdg, event, parms, nparms)        /*ARGSUSED */
+-     Widget wdg;
+-     XEvent *event;
+-     String *parms;
+-     Cardinal *nparms;
++cb_selreq (Widget wdg, XEvent *event,
++	   String *parms, Cardinal *nparms)        /*ARGSUSED */
+ {
+   int nbytes;
+   char *ptr;
+@@ -739,11 +693,8 @@ cb_selreq (wdg, event, parms, nparms)        /*ARGSUSED */
+  * be redrawn without highlighting.
+  */
+ static void
+-cb_selclear (wdg, event, parms, nparms)                /*ARGSUSED */
+-     Widget wdg;
+-     XEvent *event;
+-     String *parms;
+-     Cardinal *nparms;
++cb_selclear (Widget wdg, XEvent *event,
++	     String *parms, Cardinal *nparms)                /*ARGSUSED */
+ {
+   CbWidget cb = (CbWidget) wdg;
+ 
+@@ -858,18 +809,14 @@ usage ()
+  * or in the xdm-errors file when forcibly destroying the client program.
+  */
+ static int
+-xioerror (d)                        /*ARGSUSED */
+-     Display *d;
++xioerror (Display *d)                        /*ARGSUSED */
+ {
+   exit (1);                        /*NOTREACHED */
+ }
+ 
+ static void
+-wmdel (wdg, ptr, ep, cont)        /*ARGSUSED */
+-     Widget wdg;
+-     XtPointer ptr;
+-     XEvent *ep;
+-     Boolean *cont;
++wmdel (Widget wdg, XtPointer ptr,
++       XEvent *ep, Boolean *cont)        /*ARGSUSED */
+ {
+   if (ep->type == ClientMessage && ep->xclient.data.l[0] == delwin)
+     exit (0);
+@@ -879,10 +826,7 @@ wmdel (wdg, ptr, ep, cont)        /*ARGSUSED */
+  * Print the contents of a cut buffer on stdout.
+  */
+ static void
+-doprint (n, ptr, nb)
+-     int n;
+-     char *ptr;
+-     int nb;
++doprint (int n, char *ptr, int nb)
+ {
+   Atom a;
+ 
+@@ -905,10 +849,7 @@ doprint (n, ptr, nb)
+  * Load a new value into one of the cut buffers.
+  */
+ static void
+-doset (n, ptr, nb)
+-     int n;
+-     char *ptr;
+-     int nb;
++doset (int n, char *ptr, int nb)
+ {
+   char *str = malloc (nb + 1);
+ 
+@@ -920,9 +861,7 @@ doset (n, ptr, nb)
+ }
+ 
+ static void
+-timeout (arg, id)
+-     char *arg;
+-     XtIntervalId *id;
++timeout (void *arg, XtIntervalId *id)
+ {
+   exit (2);
+ }
+@@ -931,10 +870,7 @@ timeout (arg, id)
+  * Copy the PRIMARY selection into a cut buffer.
+  */
+ static void
+-dogetseln (n, ptr, nb)
+-     int n;
+-     char *ptr;
+-     int nb;
++dogetseln (int n, char *ptr, int nb)
+ {
+   char *data;
+   int nbytes;
+@@ -981,11 +917,7 @@ dogetseln (n, ptr, nb)
+  * list ordering is significant.
+  */
+ static void
+-dolist (list, fn, data, nbytes)
+-     char *list;
+-     void (*fn) ();
+-     char *data;
+-     int nbytes;
++dolist (char *list, void (*fn)(int, char*, int), char *data, int nbytes)
+ {
+   int m, n, x;
+ 
+@@ -1027,9 +959,7 @@ dolist (list, fn, data, nbytes)
+  * without the need to create any X windows first.
+  */
+ static void
+-dotask (cmd, arg)
+-     int cmd;
+-     char *arg;
++dotask (int cmd, char *arg)
+ {
+   char *ptr;
+   int i, n, nb;
+@@ -1122,9 +1052,7 @@ static XrmOptionDescRec opt[] =
+  * perform all the windows initializations.
+  */
+ static void
+-init (argc, argv)
+-     int argc;
+-     char **argv;
++init (int argc, char **argv)
+ {
+   int i, n;
+   char **p;
+@@ -1350,9 +1278,8 @@ xevents ()
+     }
+ }
+ 
+-main (argc, argv)
+-     int argc;
+-     char **argv;
++int
++main (int argc, char **argv)
+ {
+   init (argc, argv);
+   xevents ();

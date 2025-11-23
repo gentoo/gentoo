@@ -1,0 +1,55 @@
+From 484126708da24d1611cb0697c6e3a20088b1a839 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 12 Nov 2024 23:43:16 +0100
+Subject: [PATCH] Revert "Re-Add sleep mode configuration"
+
+This reverts commit 7707a30dfb2496a4c9c5939f0dd8bb39baebfecd.
+
+sleep.donf.d/10-elogind.conf: Revert set SuspendMode=s2idle deep
+
+This reverts a tiny part of commit c5e7ba0c47ae95e2cf6fd48dc9353e8f333200c4.
+---
+ src/shared/sleep-config.c | 8 --------
+ src/sleep/10-elogind.conf | 1 -
+ 2 files changed, 9 deletions(-)
+
+diff --git a/src/shared/sleep-config.c b/src/shared/sleep-config.c
+index 941a013eb..27f2fcd76 100644
+--- a/src/shared/sleep-config.c
++++ b/src/shared/sleep-config.c
+@@ -42,11 +42,7 @@ static char* const* const sleep_default_state_table[_SLEEP_OPERATION_CONFIG_MAX]
+ };
+ 
+ static char* const* const sleep_default_mode_table[_SLEEP_OPERATION_CONFIG_MAX] = {
+-#if 0 /// elogind supports suspend modes (deep s2idle) so we need defaults, too
+         /* Not used by SLEEP_SUSPEND */
+-#else // 0
+-        [SLEEP_SUSPEND]      = STRV_MAKE("deep", "s2idle"),
+-#endif // 0
+         [SLEEP_HIBERNATE]    = STRV_MAKE("platform", "shutdown"),
+         [SLEEP_HYBRID_SLEEP] = STRV_MAKE("suspend"),
+ };
+@@ -172,11 +168,7 @@ int parse_sleep_config(SleepConfig **ret) {
+                 { "Sleep", "AllowHybridSleep",          config_parse_tristate,    0,               &allow_hybrid_sleep          },
+ 
+                 { "Sleep", "SuspendState",              config_parse_strv,        0,               sc->states + SLEEP_SUSPEND   },
+-#if 0 /// elogind does support suspend modes
+                 { "Sleep", "SuspendMode",               config_parse_warn_compat, DISABLED_LEGACY, NULL                         },
+-#else // 0
+-                { "Sleep", "SuspendMode",               config_parse_sleep_mode,  0,               sc->modes + SLEEP_SUSPEND    },
+-#endif // 0
+ 
+                 { "Sleep", "HibernateState",            config_parse_warn_compat, DISABLED_LEGACY, NULL                         },
+                 { "Sleep", "HibernateMode",             config_parse_sleep_mode,  0,               sc->modes + SLEEP_HIBERNATE  },
+diff --git a/src/sleep/10-elogind.conf b/src/sleep/10-elogind.conf
+index 4d4e29bea..6c9cbd477 100644
+--- a/src/sleep/10-elogind.conf
++++ b/src/sleep/10-elogind.conf
+@@ -19,4 +19,3 @@
+ #HandleNvidiaSleep=no
+ #HibernateByUsing=
+ #SuspendByUsing=
+-#SuspendMode=deep s2idle
+-- 
+2.51.2
+

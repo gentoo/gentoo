@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>arsen@gentoo.org</email>
+		<name>Arsen Arsenović</name>
+	</maintainer>
+	<longdescription>
+		The sd-bus library, extracted from systemd.
+
+		Some projects rely on the sd-bus library for DBus support.
+		However not all systems have systemd or elogind installed. This
+		library provides just sd-bus (and the busctl utility).
+	</longdescription>
+	<upstream>
+		<remote-id type="sourcehut">~emersion/basu</remote-id>
+	</upstream>
+</pkgmetadata>

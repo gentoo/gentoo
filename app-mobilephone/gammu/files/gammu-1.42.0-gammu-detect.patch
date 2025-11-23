@@ -1,0 +1,22 @@
+diff --git a/gammu-detect/udev.c.orig b/gammu-detect/udev.c
+index 4d25949..e0cd383 100644
+--- a/gammu-detect/udev.c.orig
++++ b/gammu-detect/udev.c
+@@ -189,12 +189,12 @@ void udev_detect(void)
+ 	client = g_udev_client_new(subsys);
+ 
+ 	list = g_udev_client_query_by_subsystem(client, subsys[0]);
+-	for (iter = list; iter; iter = g_list_next(iter)) {
+-		dump_device_and_parent(G_UDEV_DEVICE(iter->data), 0);
+-		if (device_is_valid(G_UDEV_DEVICE(iter->data))) {
+-			device_dump_config(G_UDEV_DEVICE(iter->data));
++	for (iter = g_list_first(list); iter; iter = g_list_next(iter)) {
++		dump_device_and_parent(iter->data, 0);
++		if (device_is_valid(iter->data)) {
++			device_dump_config(iter->data);
+ 		}
+-		g_object_unref(G_UDEV_DEVICE(iter->data));
++		g_object_unref(iter->data);
+ 	}
+ }
+ 

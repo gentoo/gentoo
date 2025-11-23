@@ -1,0 +1,44 @@
+--- a/loki_patch/loki_xdelta.c
++++ b/loki_patch/loki_xdelta.c
+@@ -179,6 +179,7 @@ struct _XdFileHandle
+   guint    narrow_high;
+   guint    current_pos;
+   FILE*    in;
++  gzFile   zin;
+   gboolean (* in_read) (XdFileHandle* handle, void* buf, gint nbyte);
+   gboolean (* in_close) (XdFileHandle* handle);
+   gboolean in_compressed;
+@@ -520,7 +521,7 @@ xd_gzwrite (XdFileHandle* fh, const void* buf, gint nbyte)
+ static gboolean
+ xd_gzread (XdFileHandle* fh, void* buf, gint nbyte)
+ {
+-  return gzread (fh->in, buf, nbyte) == nbyte;
++  return gzread (fh->zin, buf, nbyte) == nbyte;
+ }
+ 
+ static gboolean
+@@ -532,7 +533,7 @@ xd_gzclose (XdFileHandle* fh)
+ static gboolean
+ xd_gzrclose (XdFileHandle* fh)
+ {
+-  return gzclose (fh->in) == Z_OK;
++  return gzclose (fh->zin) == Z_OK;
+ }
+ 
+ static void
+@@ -1022,13 +1023,13 @@ xd_handle_narrow (XdFileHandle* fh, guint low, guint high, gboolean compressed)
+ 	}
+ 
+       g_assert (fh->fd >= 0);
+-      fh->in = gzdopen (dup (fh->fd), "rb");
++      fh->zin = gzdopen (dup (fh->fd), "rb");
+       fh->in_read =  &xd_gzread;
+       fh->in_close = &xd_gzrclose;
+       fh->in_compressed = TRUE;
+       fh->current_pos = 0;
+ 
+-      if (! fh->in)
++      if (! fh->zin)
+ 	{
+ 	  xd_error ("gzdopen failed: %s\n", g_strerror (errno));
+ 	  return -1;

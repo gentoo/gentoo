@@ -1,0 +1,30 @@
+Bug #946907
+
+--- a/jaxb-api-test/src/test/java/jakarta/xml/bind/test/JAXBContextTest.java
++++ b/jaxb-api-test/src/test/java/jakarta/xml/bind/test/JAXBContextTest.java
+@@ -150,7 +150,6 @@ public class JAXBContextTest {
+     ) {
+ 
+         // ensure setup may be done ...
+-        System.setSecurityManager(null);
+ 
+         if (systemProperty != null) {
+             System.setProperty("jakarta.xml.bind.JAXBContextFactory", systemProperty);
+@@ -240,7 +239,6 @@ public class JAXBContextTest {
+ 
+         // unsafe; not running:
+         cleanResource(jaxbPropsFile);
+-        System.setSecurityManager(null);
+     }
+ 
+     @Test
+@@ -263,9 +261,7 @@ public class JAXBContextTest {
+ 
+ 
+     private void enableSM() {
+-        System.setSecurityManager(null);
+         System.setProperty("java.security.policy", classesDir + "jakarta/xml/bind/test.policy");
+-        System.setSecurityManager(new SecurityManager());
+     }
+ 
+     private void cleanResource(Path resource) {

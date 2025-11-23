@@ -1,0 +1,52 @@
+From 49e0e9ae69cf96eb4c13527b271c8a70a5f5f843 Mon Sep 17 00:00:00 2001
+From: Simon Steiner <ssteiner@apache.org>
+Date: Mon, 21 Oct 2024 10:10:54 +0100
+Subject: [PATCH] Fix compile on Java 23
+
+---
+ .github/workflows/maven.yml                               | 2 +-
+ .../main/java/org/apache/fop/layoutmgr/KnuthSequence.java | 8 ++++----
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+# diff --git a/.github/workflows/maven.yml b/.github/workflows/maven.yml
+# index a9c6e0f7eba..d5e426590b5 100644
+# --- a/.github/workflows/maven.yml
+# +++ b/.github/workflows/maven.yml
+# @@ -17,7 +17,7 @@ jobs:
+#      strategy:
+#        fail-fast: false
+#        matrix:
+# -        jdk: ['8', '11', '17', '21']
+# +        jdk: ['8', '11', '17', '21', '23']
+#          os: [ubuntu-latest, windows-latest]
+#  
+#      steps:
+# diff --git a/fop-core/src/main/java/org/apache/fop/layoutmgr/KnuthSequence.java b/fop-core/src/main/java/org/apache/fop/layoutmgr/KnuthSequence.java
+# index ce85b686cb4..8f4a6d66c0f 100644
+--- a/fop-core/src/main/java/org/apache/fop/layoutmgr/KnuthSequence.java
++++ b/fop-core/src/main/java/org/apache/fop/layoutmgr/KnuthSequence.java
+@@ -134,20 +134,20 @@ public void wrapPositions(LayoutManager lm) {
+     /**
+      * @return the last element of this sequence.
+      */
+-    public ListElement getLast() {
++    public T getLast() {
+         return (isEmpty()
+                 ? null
+-                : (ListElement) ListUtil.getLast(this));
++                : ListUtil.getLast(this));
+     }
+ 
+     /**
+      * Remove the last element of this sequence.
+      * @return the removed element.
+      */
+-    public ListElement removeLast() {
++    public T removeLast() {
+         return (isEmpty()
+                 ? null
+-                : (ListElement) ListUtil.removeLast(this));
++                : ListUtil.removeLast(this));
+     }
+ 
+     /**

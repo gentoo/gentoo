@@ -1,0 +1,28 @@
+diff -ur relay-ctrl-3.1.1/authenticated.c relay-ctrl-3.1.1-r2/authenticated.c
+--- relay-ctrl-3.1.1/authenticated.c	2002-04-26 09:07:38.000000000 -0700
++++ relay-ctrl-3.1.1-r2/authenticated.c	2004-05-24 02:31:47.000000000 -0700
+@@ -1,14 +1,20 @@
+ #include <stdlib.h>
++#include <string.h>
+ #include "relay-ctrl.h"
+ 
+ int is_authenticated(void)
+ {
+   if (getenv("AUTHUSER") && getenv("AUTHARGV0")) {
+     /* Courier IMAP or POP3 */
+-    if (getenv("AUTHENTICATED"))
+-      return 1;
+-  }
+-  else
++	char *authenticated = getenv("AUTHENTICATED");
++	if (authenticated && strlen(authenticated)) {
++		return 1;
++	} else {
++		return 0;
++	}
++  } else {
+     return 1;
++  }
++  // unreachable code
+   return 0;
+ }

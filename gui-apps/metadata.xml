@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The gui-apps category contains miscellaneous applications that
+		run across various window managers and gui backends.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie gui-apps enthält diverse Anwendungen, die
+		unter verschiedenen Fenstermanagern und GUI-Backends laufen.
+	</longdescription>
+</catmetadata>

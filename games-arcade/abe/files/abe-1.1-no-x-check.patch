@@ -1,0 +1,29 @@
+Remove check for X.
+
+The game uses only SDL library. There is no need to check for X.
+
+diff --git a/configure.in b/configure.in
+index 2270cb4..f0a93c6 100644
+--- a/configure.in
++++ b/configure.in
+@@ -98,17 +98,6 @@ if test "x$is_win32" = "xyes" ; then
+     TR_LIBS="$TR_LIBS -luser32 -lgdi32"
+ fi
+ 
+-dnl --------------------------------------------------------------------------
+-dnl Check for X  
+-dnl Note that we only need libs (so that glut links properly on all systems).
+-dnl --------------------------------------------------------------------------
+-if test "x$is_win32" = "xno" ; then
+-    AC_PATH_XTRA
+-    if test "x$no_x" = "x" ; then
+-	TR_LIBS="$X_PRE_LIBS $X_LIBS -lX11 -lXi -lXext -lXmu -lXt $X_EXTRA_LIBS $TR_LIBS"
+-    fi
+-fi
+-
+ dnl --------------------------------------------------------------------------
+ dnl Check for some common libraries
+ dnl --------------------------------------------------------------------------
+-- 
+2.41.0
+

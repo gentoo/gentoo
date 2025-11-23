@@ -1,0 +1,12 @@
+diff -U 3 -dHrN frobby_v0.9.0.orig/src/StatisticsStrategy.cpp frobby_v0.9.0/src/StatisticsStrategy.cpp
+--- frobby_v0.9.0.orig/src/StatisticsStrategy.cpp	2013-01-15 22:40:13.186967442 +0100
++++ frobby_v0.9.0/src/StatisticsStrategy.cpp	2013-01-15 22:40:33.267100780 +0100
+@@ -140,7 +140,7 @@
+   if (_nodeCount == 0)
+     return 0.0;
+   else {
+-    mpz_class q = mpq_class(_subGenSum) / _nodeCount;
++    mpq_class q = mpq_class(_subGenSum) / _nodeCount;
+     return q.get_d();
+   }
+ }

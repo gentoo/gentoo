@@ -1,0 +1,25 @@
+#!/sbin/openrc-run
+# Copyright 2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name=$RC_SVCNAME
+description="TUXEDO Control Center Service"
+supervisor="supervise-daemon"
+command="/opt/tuxedo-control-center/resources/dist/tuxedo-control-center/data/service/tccd"
+command_args="--start"
+
+depend() {
+	need localmount
+}
+
+start(){
+	ebegin "Starting $RC_SVCNAME"
+	start-stop-daemon -b --start /opt/tuxedo-control-center/resources/dist/tuxedo-control-center/data/service/tccd -- --start
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping $RC_SVCNAME"
+	/opt/tuxedo-control-center/resources/dist/tuxedo-control-center/data/service/tccd --stop
+	eend $?
+}

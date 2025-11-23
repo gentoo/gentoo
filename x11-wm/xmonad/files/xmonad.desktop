@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=xmonad
+Comment=A lightweight window manager
+Exec=/etc/X11/Sessions/xmonad
+TryExec=xmonad
+Icon=
+X-GNOME-WMName=Xmonad
+X-GNOME-Autostart-Phase=WindowManager
+X-GNOME-Provides=windowmanager
+X-GNOME-Autostart-Notify=false

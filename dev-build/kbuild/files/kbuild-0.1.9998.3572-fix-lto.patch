@@ -1,0 +1,11 @@
+--- a/src/kmk/remake.c
++++ b/src/kmk/remake.c
+@@ -417,7 +417,7 @@
+       if (!keep_going_flag && file->parent == 0)
+         {
+           const char *msg_joke = 0;
+-          extern struct dep *goals;
++          extern struct goaldep *goals;
+ 
+           /* classics */
+           if (!strcmp (file->name, "fire")

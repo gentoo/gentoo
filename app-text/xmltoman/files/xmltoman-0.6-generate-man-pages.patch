@@ -1,0 +1,55 @@
+From 39553c816cb8a18d798a6f947d2901f7a3228439 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 29 Oct 2022 18:02:25 +0100
+Subject: [PATCH] Generate man pages
+
+Generate the man pages so that the tool doesn't have to run itself
+during installation. It's a hack to workaround Perl upgrade problems.
+--- /dev/null
++++ b/xmlmantohtml.1
+@@ -0,0 +1,18 @@
++.TH xmlmantohtml 1 User Manuals
++.SH NAME
++xmlmantohtml \- xml to html converter
++.SH SYNOPSIS
++\fBxmlmantohtml \fIfile.1.xml\fB > file.1.html
++\f1
++.SH DESCRIPTION
++xmlmantohtml is a small script to convert XML/MAN(GROFF) to HTML.
++
++You will find the DTD in \fI/usr/share/xmltoman/\f1 on a Debian GNU/Linux system. There is also an XSL file to generate HTML using \fBxsltproc(1)\f1.
++.SH AUTHOR
++xmltoman was written by Oliver Kurth <oku@masqmail.cx>
++.SH MAINTAINER
++xmltoman is currently maintained by Adam Bilbrough
++.SH SEE ALSO
++\fBxmlmantohtml(1)\f1
++.SH COMMENTS
++This man page was written using \fBxmltoman(1)\f1 by the same author and / or maintainer.
+--- /dev/null
++++ b/xmltoman.1
+@@ -0,0 +1,24 @@
++.TH xmltoman 1 User Manuals
++.SH NAME
++xmltoman \- xml to man converter
++.SH SYNOPSIS
++\fBxmltoman \fIfile.1.xml\fB > file.1
++\f1
++.SH DESCRIPTION
++xmltoman is a small script to convert XML to a MAN page in GROFF format. It features the usual man page items such a description, options, see also etc. The XML format also supports converting to HTML pages.
++
++You will find the DTD in \fI/usr/share/xmltoman/\f1 on a Debian GNU/Linux system. There is also an XSL file to generate html using \fBxsltproc(1)\f1.
++.SH FILES
++\fI/usr/share/xmltoman/xmltoman.dtd\f1 the DTD file.
++
++\fI/usr/share/xmltoman/xmltoman.xsl\f1 XSLT stylesheet to generate HTML.
++
++\fI/usr/share/xmltoman/xmltoman.css\f1 stylesheet to be used for HTML.
++.SH AUTHOR
++xmltoman was written by Oliver Kurth <oku@masqmail.cx>
++.SH MAINTAINER
++xmltoman is currently maintained by Adam Bilbrough
++.SH SEE ALSO
++\fBxmlmantohtml(1)\f1
++.SH COMMENTS
++This man page was written using \fBxmltoman(1)\f1 by the same author and / or maintainer.

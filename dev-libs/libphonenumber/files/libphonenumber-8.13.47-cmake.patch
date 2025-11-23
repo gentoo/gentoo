@@ -1,0 +1,31 @@
+https://gitlab.exherbo.org/exherbo/kde/-/blob/master/packages/dev-libs/libphonenumber/files/Link-the-test-program-to-the-shared-lib-to-allow-bui.patch?ref_type=heads
+https://github.com/google/libphonenumber/pull/2556 (previous version)
+
+Upstream: no
+Reason: fails to link with -DBUILD_STATIC_LIB=OFF
+
+From 0b50dcf8299e3c18cdc158f40aa97cdb0318b08e Mon Sep 17 00:00:00 2001
+From: Bernd Steinhauser <berniyh@exherbo.org>
+Date: Tue, 10 Jan 2023 09:14:44 +0100
+Subject: [PATCH] Link the test program to the shared lib to allow building
+ without static libs
+
+---
+ cpp/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cpp/CMakeLists.txt b/cpp/CMakeLists.txt
+index d2d111d5..932b5e63 100644
+--- a/cpp/CMakeLists.txt
++++ b/cpp/CMakeLists.txt
+@@ -599,7 +599,7 @@ if(BUILD_TESTING)
+   # libraries are built properly.
+   if (BUILD_GEOCODER)
+     add_executable (geocoding_test_program "test/phonenumbers/geocoding/geocoding_test_program.cc")
+-    target_link_libraries (geocoding_test_program geocoding phonenumber)
++    target_link_libraries (geocoding_test_program geocoding-shared phonenumber-shared)
+   endif ()
+ endif()
+
+--
+2.39.0

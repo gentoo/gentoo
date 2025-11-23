@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/936550
+
+--- a/java/Makefile
++++ b/java/Makefile
+@@ -4,8 +4,6 @@ FILES = libsvm/svm.class libsvm/svm_model.class libsvm/svm_node.class \
+ 		libsvm/svm_print_interface.class \
+ 		svm_train.class svm_predict.class svm_toy.class svm_scale.class
+ 
+-#JAVAC = jikes
+-JAVAC_FLAGS = -target 1.7 -source 1.7
+ JAVAC = javac
+ # JAVAC_FLAGS =
+ export CLASSPATH := .:$(CLASSPATH)

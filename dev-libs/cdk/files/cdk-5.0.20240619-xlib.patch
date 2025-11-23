@@ -1,0 +1,28 @@
+https://bugs.gentoo.org/831226
+
+lib name is depend on USE flag 'unicode', but for unknown reason,
+upstream remove XLIB in release 5.0.20240619 (always -lcdk instead
+of -lcdkw if unicode is enabled), which cause link failed if
+USE="unicode".
+
+diff --git a/cdk-config.in b/cdk-config.in
+index 19b2972..aa0b2c8 100644
+--- a/cdk-config.in
++++ b/cdk-config.in
+@@ -41,6 +41,7 @@ same_prefix=yes
+ same_exec_prefix=yes
+ 
+ THIS="@PACKAGE@"
++XLIB="@LIB_ROOTNAME@"
+ 
+ [ $# = 0 ] && exec @SHELL@ "$0" --error
+ 
+@@ -66,7 +67,7 @@ while [ $# -gt 0 ]; do
+ 
+ 	eval LDFLAGS='"@LDFLAGS@"'
+ 	eval LIBS='"@LIBS@"'
+-	LIBS="-l${THIS} $LIBS"
++	LIBS="-l${XLIB} $LIBS"
+ 
+ 	# If the directory given by --libdir is not in the LDFLAGS+LIBS set,
+ 	# prepend it to LDFLAGS to help link this application's library.

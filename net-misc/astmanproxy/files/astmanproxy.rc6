@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting astmanproxy"
+	start-stop-daemon --start --exec /usr/sbin/astmanproxy
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping astmanproxy"
+	start-stop-daemon --stop --exec /usr/sbin/astmanproxy
+	eend $?
+}

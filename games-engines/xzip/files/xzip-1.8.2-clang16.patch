@@ -1,0 +1,9 @@
+Ideally belongs in xio.h, but using requires including more headers.
+https://bugs.gentoo.org/874906
+--- a/osdepend.c
++++ b/osdepend.c
+@@ -13,2 +13,4 @@
+ 
++void xio_bell();
++
+ /* File names will be O/S dependent */

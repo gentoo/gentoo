@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="gre-extreme-debug">Log all GRE accepted packets when in
+		debug mode (required if you want upstream support)</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">poptop</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,31 @@
+From 9df21c9ec00ac34174b443cc7cd8c4053b98eb00 Mon Sep 17 00:00:00 2001
+From: webstrand <webstrand@gmail.com>
+Date: Thu, 27 May 2021 17:08:03 -0400
+Subject: [PATCH 1/2] remove deprecated key OnlyShowIn from launcher
+
+Silences a QA notice that the key "OnlyShowIn" in group
+"Desktop Action new-file" and "Desktop Action new-window" is deprecated.
+
+https://bugs.freedesktop.org/show_bug.cgi?id=66712 No replacement or
+alternative is provided, the key is simply ignored.
+---
+ sublime_text.desktop | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/sublime_text.desktop b/sublime_text.desktop
+index 7407709..b171254 100644
+--- a/sublime_text.desktop
++++ b/sublime_text.desktop
+@@ -15,9 +15,7 @@ Actions=new-window;new-file;
+ [Desktop Action new-window]
+ Name=New Window
+ Exec=/opt/sublime_text/sublime_text --launch-or-new-window
+-OnlyShowIn=Unity;
+ 
+ [Desktop Action new-file]
+ Name=New File
+ Exec=/opt/sublime_text/sublime_text --command new_file
+-OnlyShowIn=Unity;
+-- 
+2.31.1
+

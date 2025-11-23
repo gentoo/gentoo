@@ -1,0 +1,30 @@
+https://github.com/michaelforney/samurai/issues/66
+https://github.com/michaelforney/samurai/issues/81
+https://github.com/michaelforney/samurai/commit/fb61f22c7e690715d309c41812412c4f432ef53a
+
+From fb61f22c7e690715d309c41812412c4f432ef53a Mon Sep 17 00:00:00 2001
+From: Michael Forney <mforney@mforney.org>
+Date: Wed, 31 Mar 2021 14:04:29 -0700
+Subject: [PATCH] build: Don't try to print phony edges during dry-run
+
+This causes a segfault since phony edges have no command. It also
+messes up the nstarted/nfinished counts.
+
+Fixes #66.
+---
+ build.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/build.c b/build.c
+index 368e5f9..1cb736f 100644
+--- a/build.c
++++ b/build.c
+@@ -540,7 +540,7 @@ build(void)
+ 		while (work && numjobs < buildopts.maxjobs && numfail < buildopts.maxfail) {
+ 			e = work;
+ 			work = work->worknext;
+-			if (buildopts.dryrun) {
++			if (e->rule != &phonyrule && buildopts.dryrun) {
+ 				++nstarted;
+ 				printstatus(e, edgevar(e, "command", true));
+ 				++nfinished;

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dilfridge@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type='sourceforge'>xsnow</remote-id>
+		<changelog>https://www.ratrabbit.nl/ratrabbit/xsnow/changelog/</changelog>
+	</upstream>
+</pkgmetadata>

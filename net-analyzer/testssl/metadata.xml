@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>cfuga@cfuga.mx</email>
+		<name>Cristian Othón Martínez Vera</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="bundled-openssl">Install precompiled versions of OpenSSL for greater testing coverage</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">testssl/testssl.sh</remote-id>
+	</upstream>
+</pkgmetadata>

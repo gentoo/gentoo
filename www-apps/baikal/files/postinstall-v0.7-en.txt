@@ -1,0 +1,9 @@
+To install, point your browser at the installation url:
+  /admin/install
+To upgrade baikal, do the same but note that starting from version 0.7.0
+baikal now uses a yaml file instead of php config.  The installer will
+try to convert your configuration, but fail to retain your MySQL
+database config (if you use that).
+  https://github.com/sabre-io/Baikal/issues/943
+Simply edit the /etc/baikal/baikal.yaml file and add the missing values
+under the database section.

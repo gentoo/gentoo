@@ -1,0 +1,20 @@
+With CGAL now being header-only and boost-1.77.0 dropping thread-mt (not
+actually linking with it), these link attempts just cause unnecessary issues.
+
+https://bugs.gentoo.org/790779
+https://bugs.gentoo.org/808727
+--- a/configure.ac
++++ b/configure.ac
+@@ -227,5 +227,4 @@
+       has_CGAL="yes  (found CGAL > v3)"
+       AC_CHECK_LIB(gmp,__gmpq_init,,AC_MSG_ERROR([gmp library not found. Please install it.]))
+-      AC_CHECK_LIB(boost_thread-mt,main,,AC_MSG_ERROR([boost_thread-mt library not found. Please install it.]))
+     else
+       AC_DEFINE([CGAL_VERSION3], [1], [CGAL_VERSION3 compatibility])
+@@ -233,5 +232,5 @@
+     fi   
+     CGAL_CFLAGS=-frounding-math
+-    CGAL_LIBS=-lCGAL
++    CGAL_LIBS=
+     AC_DEFINE([WINDDATA3D], [1], [Import code for wind data, needs CGAL, 0 to disable])
+ else

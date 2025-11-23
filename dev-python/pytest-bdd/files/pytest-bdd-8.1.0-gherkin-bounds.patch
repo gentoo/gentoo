@@ -1,0 +1,12 @@
+Unknown how long until next release, and meanwhile `pip check`
+reporting errors has a tendency to break random things.
+
+Backport from:
+https://github.com/pytest-dev/pytest-bdd/commit/8ce79eafa6ac4
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -43,3 +43,3 @@
+ packaging = "*"
+-gherkin-official = "^29.0.0"
++gherkin-official = ">=29.0.0"
+ 

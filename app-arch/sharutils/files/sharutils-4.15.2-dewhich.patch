@@ -1,0 +1,32 @@
+https://bugs.gentoo.org/941724
+which-hunt
+diff '--color=auto' -ru sharutils-4.15.2.old/libopts/m4/libopts.m4 sharutils-4.15.2/libopts/m4/libopts.m4
+--- sharutils-4.15.2.old/libopts/m4/libopts.m4	2025-01-22 13:17:52.302369061 +0000
++++ sharutils-4.15.2/libopts/m4/libopts.m4	2025-01-22 13:19:46.096362975 +0000
+@@ -114,9 +114,9 @@
+   AC_PROG_SED
+   [while :
+   do
+-      POSIX_SHELL=`which bash`
++      POSIX_SHELL=`command -v bash`
+       test -x "$POSIX_SHELL" && break
+-      POSIX_SHELL=`which dash`
++      POSIX_SHELL=`command -v dash`
+       test -x "$POSIX_SHELL" && break
+       POSIX_SHELL=/usr/xpg4/bin/sh
+       test -x "$POSIX_SHELL" && break
+diff '--color=auto' -ru sharutils-4.15.2.old/m4/libopts.m4 sharutils-4.15.2/m4/libopts.m4
+--- sharutils-4.15.2.old/m4/libopts.m4	2025-01-22 13:17:52.365018511 +0000
++++ sharutils-4.15.2/m4/libopts.m4	2025-01-22 13:19:17.856525747 +0000
+@@ -114,9 +114,9 @@
+   AC_PROG_SED
+   [while :
+   do
+-      POSIX_SHELL=`which bash`
++      POSIX_SHELL=`command -v bash`
+       test -x "$POSIX_SHELL" && break
+-      POSIX_SHELL=`which dash`
++      POSIX_SHELL=`command -v dash`
+       test -x "$POSIX_SHELL" && break
+       POSIX_SHELL=/usr/xpg4/bin/sh
+       test -x "$POSIX_SHELL" && break

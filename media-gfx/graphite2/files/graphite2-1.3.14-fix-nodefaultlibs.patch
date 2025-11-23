@@ -1,0 +1,26 @@
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -125,7 +125,7 @@
+                 LINK_FLAGS      "-nostdlib++ ${GRAPHITE_LINK_FLAGS}")
+         else()
+             set_target_properties(graphite2 PROPERTIES
+-                LINK_FLAGS      "-nodefaultlibs ${GRAPHITE_LINK_FLAGS}")
++                LINK_FLAGS      "${GRAPHITE_LINK_FLAGS}")
+ 
+             if (GRAPHITE2_SANITIZERS)
+                 target_link_libraries(graphite2 c gcc_s)
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -51,9 +51,9 @@
+             LINK_FLAGS      "-nostdlib++ ${GRAPHITE_LINK_FLAGS}")
+     else()
+         set_target_properties(graphite2-base PROPERTIES
+-            LINK_FLAGS      "-nodefaultlibs ${GRAPHITE_LINK_FLAGS}")
++            LINK_FLAGS      "${GRAPHITE_LINK_FLAGS}")
+         set_target_properties(graphite2-file PROPERTIES
+-            LINK_FLAGS      "-nodefaultlibs ${GRAPHITE_LINK_FLAGS}")
++            LINK_FLAGS      "${GRAPHITE_LINK_FLAGS}")
+     endif()
+ 
+     set_target_properties(graphite2-base PROPERTIES
+

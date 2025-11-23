@@ -1,0 +1,91 @@
+From 3b6c04d8c02520a973c95b51ca1fa4bd5e7e8e73 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Tue, 4 Jun 2024 14:15:11 +0200
+Subject: [PATCH] python/PyAlembic/Tests: update do python3.12
+
+tests: use assertEqual instead of assertEquals
+tests: use assertRaises instead of failUnlessRaises
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+---
+ maya/Tests/AbcExport_dupRoots_test.py     | 2 +-
+ python/PyAlembic/Tests/testCollections.py | 4 ++--
+ python/PyAlembic/Tests/testCurves.py      | 2 +-
+ python/PyAlembic/Tests/testPropExcept.py  | 2 +-
+ python/PyAlembic/Tests/testTypes.py       | 2 +-
+ 5 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/maya/Tests/AbcExport_dupRoots_test.py b/maya/Tests/AbcExport_dupRoots_test.py
+index d532c10..f864281 100644
+--- a/maya/Tests/AbcExport_dupRoots_test.py
++++ b/maya/Tests/AbcExport_dupRoots_test.py
+@@ -48,7 +48,7 @@ class AbcExport_dupRootsTest(unittest.TestCase):
+         MayaCmds.group(n='group1')
+         MayaCmds.duplicate()
+ 
+-        self.failUnlessRaises(RuntimeError, MayaCmds.AbcExport,
++        self.assertRaises(RuntimeError, MayaCmds.AbcExport,
+             j='-root group1|cube -root group2|cube -f dupRoots.abc')
+ 
+         # the abc file shouldn't exist
+diff --git a/python/PyAlembic/Tests/testCollections.py b/python/PyAlembic/Tests/testCollections.py
+index ab48a54..1745582 100644
+--- a/python/PyAlembic/Tests/testCollections.py
++++ b/python/PyAlembic/Tests/testCollections.py
+@@ -67,14 +67,14 @@ class CollectionTest(unittest.TestCase):
+         prop = group.getSchema().createCollection("prop")
+         prop.setValue(strVec)
+ 
+-        self.assertEquals(group.getSchema().getNumCollections(), 1)
++        self.assertEqual(group.getSchema().getNumCollections(), 1)
+ 
+         # TODO passing in time sampling here causes a segfault, most likely because
+         # of how createCollection currently takes an Argument &, see #274
+         cool = group.getSchema().createCollection("cool", md)
+         cool.setTimeSampling(ts)
+ 
+-        self.assertEquals(
++        self.assertEqual(
+             group.getSchema().getCollection(1).getMetaData().get("coupe"),
+             "de ville" )
+ 
+diff --git a/python/PyAlembic/Tests/testCurves.py b/python/PyAlembic/Tests/testCurves.py
+index dba9e1c..956625a 100644
+--- a/python/PyAlembic/Tests/testCurves.py
++++ b/python/PyAlembic/Tests/testCurves.py
+@@ -59,7 +59,7 @@ class CurvesTest(unittest.TestCase):
+                                            widthSamp, uvSamp )
+ 
+         knots = curvesSamp.getKnots()
+-        self.assertEquals(len(knots), 0)
++        self.assertEqual(len(knots), 0)
+ 
+         newKnots = FloatArray(4)
+         for ii in range(4):
+diff --git a/python/PyAlembic/Tests/testPropExcept.py b/python/PyAlembic/Tests/testPropExcept.py
+index e1a1dff..2ddf40d 100644
+--- a/python/PyAlembic/Tests/testPropExcept.py
++++ b/python/PyAlembic/Tests/testPropExcept.py
+@@ -70,5 +70,5 @@ class PropExceptTest(unittest.TestCase):
+         p = props.getProperty("myprop")
+         self.assertEqual(p.getName(), "myprop")
+ 
+-        self.failUnlessRaises(KeyError, props.getProperty, "notfound")
++        self.assertRaises(KeyError, props.getProperty, "notfound")
+         self.assertRaises(IndexError, props.getProperty, 99)
+diff --git a/python/PyAlembic/Tests/testTypes.py b/python/PyAlembic/Tests/testTypes.py
+index bad9577..f0e8d26 100644
+--- a/python/PyAlembic/Tests/testTypes.py
++++ b/python/PyAlembic/Tests/testTypes.py
+@@ -60,7 +60,7 @@ class TypesTest(unittest.TestCase):
+         self.assertIsNotNone(POD.kUnknownPOD)
+ 
+         # If a new POD type is added, this will throw an exception
+-        self.assertEquals(POD.kNumPlainOldDataTypes, 14)
++        self.assertEqual(POD.kNumPlainOldDataTypes, 14)
+ 
+     def testDataTypeWrapper(self):
+         # Default Constructor
+-- 
+2.45.1
+

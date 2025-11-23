@@ -1,0 +1,79 @@
+diff --git a/cccc/cccc.g b/cccc/cccc.g
+index bdb6805..fd7b504 100644
+--- a/cccc/cccc.g
++++ b/cccc/cccc.g
+@@ -84,6 +84,30 @@ inline void endOfLine(CLexer &lexer)
+ #token MAC_NL		"\r"	<< endOfLine(*this); >>
+ #token UNIX_NL		"\n"    << endOfLine(*this); >>
+ 
++/* augment dialect policies -- M.H added */
++#lexclass SKIP_STMT
++#token SKCOLON ";" << skip();mode(START); >>
++#token SKANYTHING "~[; \t\n]" << skip();more();>>
++#token SKNL "\n" << skip();endOfLine(*this);>>
++#token SKBLANK "[ \t]+" << skip(); >>
++#lexclass START
++
++#lexclass SKIP_BLOCK
++#token SK_ANY "[a-zA-Z0-9_]*"
++<<
++std::string treatment = 
++	CCCC_Options::dialectKeywordPolicy(parse_language,lextext());
++
++if ( treatment != "stop_skipping" )
++{
++    skip();
++}
++else
++{
++    mode(COMMENT_LINE);skip();
++}
++>>
++#lexclass START
+ 
+ /* preprocessor constructs - comments, #defines etc */
+ 
+@@ -343,17 +367,29 @@ inline void endOfLine(CLexer &lexer)
+         if( treatment == "ignore" )
+ 	{
+ 	    skip();
++	    //std::cout << toktext << std::endl <<" :ignore" << std::endl;
+ 	}
+ 	// Ultimately, the next two cases will need to be handled 
+ 	// using a #lexclass or something similar, for the moment
+ 	// we just try to skip the tokens themselves.
+ 	else if ( treatment == "start_skipping" )
+ 	{
+-	    skip();
++	    mode(SKIP_BLOCK);skip();
+ 	}	
+ 	else if ( treatment == "stop_skipping" ) 
+ 	{
+-	    skip();
++	    skip(); mode(COMMENT_LINE);
++	    //gobble end of line M.H.
++	}
++	else if ( treatment == "skip_line" )//M.H added
++	{
++	    mode(COMMENT_LINE);skip(); 
++	    //std::cout << "skip_line" << std::endl;
++	}
++	else if ( treatment == "skip_stmt" )//M.H added
++	{
++	    mode(SKIP_STMT);skip();
++	    //std::cout << "skip_stmt" << std::endl;
+ 	}
+ >>
+ 
+@@ -426,8 +462,10 @@ void init(const string& filename, const string& language)
+ 	pu=ParseUtility::currentInstance();
+ 	ps=ParseStore::currentInstance();
+ 
+-	ANTLRParser::init();
+ 	parse_language=language;
++	ANTLRParser::init();
++	//parse_language=language;
++	//move above, M.H.1st otherwise time init not to language
+ }
+ 
+ >>

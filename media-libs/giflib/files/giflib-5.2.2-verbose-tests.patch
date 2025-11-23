@@ -1,0 +1,74 @@
+--- a/tests/makefile
++++ b/tests/makefile
+@@ -32,7 +32,7 @@ GIFS := $(shell ls ../pic/*.gif)
+ # Test decompression and rendering by unpacking images,
+ # converting them to RGB, and comparing that result to a check file.
+ render-regress:
+-	@for test in $(GIFS); \
++	for test in $(GIFS); \
+ 	do \
+ 	    stem=`basename $${test} | sed -e "s/.gif$$//"`; \
+ 	    if echo "Testing RGB rendering of $${test}" >&2; \
+@@ -42,7 +42,7 @@ render-regress:
+ 	done
+ 	@rm -f $@.*.regress
+ render-rebuild:
+-	@for test in $(GIFS); do \
++	for test in $(GIFS); do \
+ 		stem=`basename $${test} | sed -e "s/.gif$$//"`; \
+ 		echo "Remaking $${stem}.rgb"; \
+ 		$(UTILS)/gif2rgb -1 -o $${stem}.rgb $${test}; \
+@@ -68,7 +68,7 @@ gifbuild-regress:
+ 	@rm -f $@.fire1.ico  $@.fire2.ico $@.fire2.gif
+ 
+ gifclrmp-regress:
+-	@for test in $(GIFS); \
++	for test in $(GIFS); \
+ 	do \
+ 	    stem=`basename $${test} | sed -e "s/.gif$$//"`; \
+ 	    if echo "gifclrmap: Checking colormap of $${test}" >&2; \
+@@ -78,7 +78,7 @@ gifclrmp-regress:
+ 	done
+ 	@rm -f $@.*.regress
+ gifclrmp-rebuild:
+-	@for test in $(GIFS); do \
++	for test in $(GIFS); do \
+ 		stem=`basename $${test} | sed -e "s/.gif$$//"`; \
+ 		echo "Remaking $${stem}.map"; \
+ 		$(UTILS)/gifclrmp <$${test} >$${stem}.map; \
+@@ -92,7 +92,7 @@ gifecho-regress:
+ 	@$(UTILS)/gifecho -t "foobar" | $(UTILS)/gifbuild -d | diff -u foobar.ico -
+ 
+ giffilter-regress:
+-	@for test in $(GIFS); \
++	for test in $(GIFS); \
+ 	do \
+ 	    stem=`basename $${test} | sed -e "s/.gif$$//"`; \
+ 	    if echo "giffiltr: Testing copy of $${test}" >&2; \
+@@ -120,7 +120,7 @@ gifinto-regress:
+ 	@rm -f $@.giflib.tmp
+ 
+ gifsponge-regress:
+-	@for test in $(GIFS); \
++	for test in $(GIFS); \
+ 	do \
+ 	    stem=`basename $${test} | sed -e "s/.gif$$//"`; \
+ 	    if echo "gifsponge: Testing copy of $${test}" >&2; \
+@@ -131,7 +131,7 @@ gifsponge-regress:
+ 	@rm -f  $@.*.regress
+ 
+ giftext-regress:
+-	@for test in $(GIFS); \
++	for test in $(GIFS); \
+ 	do \
+ 	    stem=`basename $${test} | sed -e "s/.gif$$//"`; \
+ 	    if echo "giftext: Checking text dump of $${test}" >&2; \
+@@ -141,7 +141,7 @@ giftext-regress:
+ 	done
+ 	@rm -f  $@.*.regress
+ giftext-rebuild:
+-	@for test in $(GIFS); do \
++	for test in $(GIFS); do \
+ 		stem=`basename $${test} | sed -e "s/.gif$$//"`; \
+ 		echo "Remaking $${stem}.dmp"; \
+ 		$(UTILS)/giftext <$${test} >$${stem}.dmp; \

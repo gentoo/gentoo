@@ -1,0 +1,49 @@
+Subject: [PATCH] fix warnings
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+
+--- a/bores/kurses.c
++++ b/bores/kurses.c
+@@ -139,15 +139,11 @@ void kurses_color_at(int attr) {
+ }
+ 
+ int kurses_width() {
+-   int maxy, maxx;
+-   getmaxyx(stdscr, maxy, maxx);
+-   return maxx;
++   return getmaxx(stdscr);
+ }
+ 
+ int kurses_height() {
+-   int maxy, maxx;
+-   getmaxyx(stdscr, maxy, maxx);
+-   return maxy;
++   return getmaxy(stdscr);
+ }
+ 
+ int kurses_pos_valid(int x, int y) {
+--- a/vlayer.c
++++ b/vlayer.c
+@@ -9,7 +9,7 @@ static void _get_cell_LYR(Cell *r_cell, int x, int y, void *ud) {
+ 
+ /* callback that returns a cell from a document composite */
+ static void _get_cell_COMPOSITE(Cell *r_cell, int x, int y, void *ud) {
+-   Document *doc = (Document*) doc;
++   Document *doc = (Document*) NULL;
+    *r_cell = document_calc_effective_cell(doc, x, y);
+ }
+ 
+-- 
+2.39.1
+
+--- a/helpdlg.h
++++ b/helpdlg.h
+@@ -33,7 +33,7 @@ programa, armazenada no arquivo COPYING).
+ 
+ 
+ #ifndef _btco_aewan_helpdlg_h
+-#define _btco_aewan_helprdlg_h
++#define _btco_aewan_helpdlg_h
+ 
+ /* invokes the "help" dialog */
+ void show_help_dlg(void);

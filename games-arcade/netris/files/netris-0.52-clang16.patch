@@ -1,0 +1,31 @@
+https://bugs.gentoo.org/874021
+--- a/Configure
++++ b/Configure
+@@ -78,3 +78,3 @@
+ echo "Checking for libraries"
+-echo 'main(){}' > test.c
++echo 'int main(void){return 0;}' > test.c
+ LFLAGS=""
+@@ -96,4 +96,5 @@
+ cat << END > test.c
+-void handler(void) {}
+-main() { on_exit(handler, (void *)0); }
++#include <stdlib.h>
++void handler(int a, void *b) {}
++int main(void) { on_exit(handler, (void *)0); return 0; }
+ END
+@@ -108,3 +109,3 @@
+ #include <signal.h>
+-main() { sigset_t set; sigprocmask(SIG_BLOCK, &set, &set); }
++int main(void) { sigset_t set; sigprocmask(SIG_BLOCK, &set, &set); return 0; }
+ END
+@@ -119,3 +120,3 @@
+ #include <getopt.h>
+-main(){}
++int main(void){return 0;}
+ END
+@@ -131,3 +132,3 @@
+ #include <memory.h>
+-main(){}
++int main(void){return 0;}
+ END

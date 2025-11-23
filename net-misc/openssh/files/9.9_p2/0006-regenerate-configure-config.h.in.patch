@@ -1,0 +1,80 @@
+From 7d5b6c7ec3c597a6d57f64d0db925142bccd38a3 Mon Sep 17 00:00:00 2001
+Message-ID: <7d5b6c7ec3c597a6d57f64d0db925142bccd38a3.1758727915.git.sam@gentoo.org>
+In-Reply-To: <4b8d141ec165aa29a48316768089cb03aed3aada.1758727915.git.sam@gentoo.org>
+References: <4b8d141ec165aa29a48316768089cb03aed3aada.1758727915.git.sam@gentoo.org>
+From: Damien Miller <djm@mindrot.org>
+Date: Mon, 3 Mar 2025 14:21:12 +1100
+Subject: [PATCH 06/10] regenerate configure, config.h.in
+
+---
+ config.h.in |  3 +++
+ configure   | 35 ++++++++++++++++++++++++++++++++++-
+ 2 files changed, 37 insertions(+), 1 deletion(-)
+
+diff --git a/config.h.in b/config.h.in
+index c841417f4..57f63355b 100644
+--- a/config.h.in
++++ b/config.h.in
+@@ -1748,6 +1748,9 @@
+ /* Set this to your mail directory if you do not have _PATH_MAILDIR */
+ #undef MAIL_DIRECTORY
+ 
++/* Define if your compiler lacks __builtin_popcount */
++#undef MISSING_BUILTIN_POPCOUNT
++
+ /* Need setpgrp to for controlling tty */
+ #undef NEED_SETPGRP
+ 
+diff --git a/configure b/configure
+index ec1de26c2..a18079da2 100755
+--- a/configure
++++ b/configure
+@@ -16785,6 +16785,40 @@ then :
+ fi
+ 
+ 
++{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether compiler supports __builtin_popcount" >&5
++printf %s "checking whether compiler supports __builtin_popcount... " >&6; }
++cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++/* end confdefs.h.  */
++
++		#include <stdlib.h>
++
++int
++main (void)
++{
++ int x = 123, y;
++	   y = __builtin_popcount(123);
++	   exit(y == 6 ? 0 : -1);
++  ;
++  return 0;
++}
++_ACEOF
++if ac_fn_c_try_link "$LINENO"
++then :
++   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: yes" >&5
++printf "%s\n" "yes" >&6; }
++else $as_nop
++
++		{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
++printf "%s\n" "no" >&6; }
++
++printf "%s\n" "#define MISSING_BUILTIN_POPCOUNT 1" >>confdefs.h
++
++
++
++fi
++rm -f core conftest.err conftest.$ac_objext conftest.beam \
++    conftest$ac_exeext conftest.$ac_ext
++
+ ac_fn_check_decl "$LINENO" "bzero" "ac_cv_have_decl_bzero" "$ac_includes_default" "$ac_c_undeclared_builtin_options" "CFLAGS"
+ if test "x$ac_cv_have_decl_bzero" = xyes
+ then :
+@@ -27769,4 +27803,3 @@ if test "$AUDIT_MODULE" = "bsm" ; then
+ 	echo "WARNING: BSM audit support is currently considered EXPERIMENTAL."
+ 	echo "See the Solaris section in README.platform for details."
+ fi
+-
+-- 
+2.51.0
+

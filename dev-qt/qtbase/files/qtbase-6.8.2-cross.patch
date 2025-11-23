@@ -1,0 +1,36 @@
+When cross-compiling, CMake needs to find the build host's Qt6CoreTools. It
+therefore prepends QT_HOST_PATH, which is /usr, to CMAKE_FIND_ROOT_PATH. The
+problem is that CMAKE_FIND_ROOT_PATH is only a hint, not a definitive
+location. Just below, CMake's find_package is usually told to look in
+/usr/${CHOST}/usr/lib/cmake and /usr/lib/cmake when cross-compiling. Since
+both of these are under /usr, it chooses the former instead of the latter.
+It then ends up trying to execute non-native Qt binaries.
+
+We can avoid this problem by setting CMAKE_FIND_ROOT_PATH to a more precise
+location. All the Qt6 modules are installed under /usr/lib/cmake, represented
+by the __qt_find_package_host_qt_path variable, so we can point it there.
+
+find_package has two modes, module mode and config mode. No mode is
+explicitly chosen in this case, so it tries both. In module mode, it would
+use a module called FindQt6*.cmake, but no such module exists. It is
+therefore safe to assume config mode, which involves the files under
+/usr/lib/cmake.
+
+See the isSameDirectoryOrSubDirectory() call in CMake's
+cmFindCommon::RerootPaths() function for exactly where this goes wrong.
+
+Chewi
+
+https://bugs.gentoo.org/950314
+
+--- a/cmake/QtConfig.cmake.in
++++ b/cmake/QtConfig.cmake.in
+@@ -131,7 +131,7 @@
+         set(__qt_backup_cmake_find_root_path "${CMAKE_FIND_ROOT_PATH}")
+         list(PREPEND CMAKE_PREFIX_PATH "${__qt_find_package_host_qt_path}"
+             ${_qt_additional_host_packages_prefix_paths})
+-        list(PREPEND CMAKE_FIND_ROOT_PATH "${QT_HOST_PATH}"
++        list(PREPEND CMAKE_FIND_ROOT_PATH "${__qt_find_package_host_qt_path}"
+             ${_qt_additional_host_packages_root_paths})
+     endif()
+ 

@@ -1,0 +1,353 @@
+--- utsushi-0.65.0/drivers/esci/grammar-automatic-feed.hpp	2024-01-08 22:20:05.171112996 +0100
++++ utsushi-0.65.0/drivers/esci/grammar-automatic-feed.hpp	2024-01-08 22:25:43.442258670 +0100
+@@ -24,8 +24,7 @@
+ //! \copydoc grammar.hpp
+ 
+ #include <boost/operators.hpp>
+-#include <boost/spirit/include/karma_rule.hpp>
+-#include <boost/spirit/include/karma_symbols.hpp>
++#include <boost/spirit/include/karma.hpp>
+ 
+ #include "buffer.hpp"
+ #include "code-token.hpp"
+--- utsushi-0.65.0/drivers/esci/grammar-automatic-feed.ipp	2024-01-08 22:20:05.167779489 +0100
++++ utsushi-0.65.0/drivers/esci/grammar-automatic-feed.ipp	2024-01-08 22:22:23.921745849 +0100
+@@ -24,11 +24,7 @@
+ //! \copydoc grammar.ipp
+ 
+ //  encoding::basic_grammar_automatic_feed<T> implementation requirements
+-#include <boost/spirit/include/karma_binary.hpp>
+-#include <boost/spirit/include/karma_char_.hpp>
+-
+-//  Support for debugging of parser and generator rules
+-#include <boost/spirit/include/karma_nonterminal.hpp>
++#include <boost/spirit/include/karma.hpp>
+ 
+ #include "code-point.hpp"
+ #include "grammar-automatic-feed.hpp"
+--- utsushi-0.65.0/drivers/esci/grammar-capabilities.hpp	2024-01-08 22:21:32.725717869 +0100
++++ utsushi-0.65.0/drivers/esci/grammar-capabilities.hpp	2024-01-08 22:27:49.542243597 +0100
+@@ -28,7 +28,7 @@
+ 
+ #include <boost/operators.hpp>
+ #include <boost/optional.hpp>
+-#include <boost/spirit/include/qi_rule.hpp>
++#include <boost/spirit/include/qi.hpp>
+ #include <boost/variant.hpp>
+ 
+ #include <utsushi/constraint.hpp>
+--- utsushi-0.65.0/drivers/esci/grammar-capabilities.ipp	2024-01-08 22:21:32.722384361 +0100
++++ utsushi-0.65.0/drivers/esci/grammar-capabilities.ipp	2024-01-08 22:26:39.831899213 +0100
+@@ -24,23 +24,11 @@
+ //! \copydoc grammar.ipp
+ 
+ //  decoding::basic_grammar_capabilities<T> implementation requirements
+-#include <boost/spirit/include/qi_alternative.hpp>
+-#include <boost/spirit/include/qi_and_predicate.hpp>
+-#include <boost/spirit/include/qi_binary.hpp>
+-#include <boost/spirit/include/qi_difference.hpp>
+-#include <boost/spirit/include/qi_eoi.hpp>
+-#include <boost/spirit/include/qi_expect.hpp>
+-#include <boost/spirit/include/qi_matches.hpp>
+-#include <boost/spirit/include/qi_permutation.hpp>
+-#include <boost/spirit/include/qi_plus.hpp>
+-#include <boost/spirit/include/qi_skip.hpp>
++#include <boost/spirit/include/qi.hpp>
+ 
+ //  *::basic_grammar_capabilities<T> implementation requirements
+ #include <boost/fusion/include/adapt_struct.hpp>
+ 
+-//  Support for debugging of parser rules
+-#include <boost/spirit/include/qi_nonterminal.hpp>
+-
+ #include "grammar-capabilities.hpp"
+ 
+ namespace utsushi {
+--- utsushi-0.65.0/drivers/esci/grammar-formats.hpp	2024-01-08 22:21:32.725717869 +0100
++++ utsushi-0.65.0/drivers/esci/grammar-formats.hpp	2024-01-08 22:23:48.012841294 +0100
+@@ -26,10 +26,8 @@
+ #include <sstream>
+ #include <string>
+ 
+-#include <boost/spirit/include/karma_generate.hpp>
+-#include <boost/spirit/include/karma_rule.hpp>
+-#include <boost/spirit/include/qi_parse.hpp>
+-#include <boost/spirit/include/qi_rule.hpp>
++#include <boost/spirit/include/karma.hpp>
++#include <boost/spirit/include/qi.hpp>
+ 
+ #include <utsushi/cstdint.hpp>
+ 
+--- utsushi-0.65.0/drivers/esci/grammar-formats.ipp	2024-01-08 22:21:32.725717869 +0100
++++ utsushi-0.65.0/drivers/esci/grammar-formats.ipp	2024-01-08 22:28:50.565464000 +0100
+@@ -24,37 +24,16 @@
+ //! \copydoc grammar.ipp
+ 
+ //  decoding::basic_grammar_formats<T> implementation requirements
+-#include <boost/spirit/include/qi_action.hpp>
+-#include <boost/spirit/include/qi_alternative.hpp>
+-#include <boost/spirit/include/qi_and_predicate.hpp>
+-#include <boost/spirit/include/qi_binary.hpp>
+-#include <boost/spirit/include/qi_char_class.hpp>
+-#include <boost/spirit/include/qi_repeat.hpp>
+-#include <boost/spirit/include/qi_sequence.hpp>
+-#include <boost/spirit/include/qi_uint.hpp>
++#include <boost/spirit/include/qi.hpp>
+ 
+ //  encoding::basic_grammar_formats<T> implementation requirements
+-#include <boost/spirit/include/karma_action.hpp>
+-#include <boost/spirit/include/karma_alternative.hpp>
+-#include <boost/spirit/include/karma_binary.hpp>
+-#include <boost/spirit/include/karma_char_.hpp>
+-#include <boost/spirit/include/karma_eps.hpp>
+-#include <boost/spirit/include/karma_int.hpp>
+-#include <boost/spirit/include/karma_repeat.hpp>
+-#include <boost/spirit/include/karma_right_alignment.hpp>
+-#include <boost/spirit/include/karma_sequence.hpp>
+-#include <boost/spirit/include/karma_upper_lower_case.hpp>
++#include <boost/spirit/include/karma.hpp>
+ #include "upstream/include/no_attribute_directive.hpp"
+ 
+ //  *::basic_grammar_formats<T> implementation requirements
+-#include <boost/spirit/include/phoenix_container.hpp>
+-#include <boost/spirit/include/phoenix_operator.hpp>
++#include <boost/phoenix.hpp>
+ #include <boost/spirit/include/support_ascii.hpp>
+ 
+-//  Support for debugging of parser and generator rules
+-#include <boost/spirit/include/qi_nonterminal.hpp>
+-#include <boost/spirit/include/karma_nonterminal.hpp>
+-
+ #include "code-point.hpp"
+ #include "grammar-formats.hpp"
+ 
+--- utsushi-0.65.0/drivers/esci/grammar.hpp	2024-01-08 22:21:32.719050852 +0100
++++ utsushi-0.65.0/drivers/esci/grammar.hpp	2024-01-08 22:22:42.532725739 +0100
+@@ -35,10 +35,8 @@
+ 
+ #include <boost/operators.hpp>
+ #include <boost/optional.hpp>
+-#include <boost/spirit/include/karma_delimit.hpp>
+-#include <boost/spirit/include/karma_rule.hpp>
+-#include <boost/spirit/include/karma_symbols.hpp>
+-#include <boost/spirit/include/qi_rule.hpp>
++#include <boost/spirit/include/karma.hpp>
++#include <boost/spirit/include/qi.hpp>
+ 
+ #include "buffer.hpp"
+ #include "code-token.hpp"
+--- utsushi-0.65.0/drivers/esci/grammar-information.hpp	2024-01-08 22:21:32.719050852 +0100
++++ utsushi-0.65.0/drivers/esci/grammar-information.hpp	2024-01-08 22:26:20.097525012 +0100
+@@ -28,7 +28,7 @@
+ 
+ #include <boost/operators.hpp>
+ #include <boost/optional.hpp>
+-#include <boost/spirit/include/qi_rule.hpp>
++#include <boost/spirit/include/qi.hpp>
+ 
+ #include "code-token.hpp"
+ #include "grammar-formats.hpp"
+--- utsushi-0.65.0/drivers/esci/grammar-information.ipp	2024-01-08 22:21:32.722384361 +0100
++++ utsushi-0.65.0/drivers/esci/grammar-information.ipp	2024-01-08 22:27:01.883062422 +0100
+@@ -24,23 +24,11 @@
+ //! \copydoc grammar.ipp
+ 
+ //  decoding::basic_grammar_information<T> implementation requirements
+-#include <boost/spirit/include/qi_alternative.hpp>
+-#include <boost/spirit/include/qi_and_predicate.hpp>
+-#include <boost/spirit/include/qi_binary.hpp>
+-#include <boost/spirit/include/qi_difference.hpp>
+-#include <boost/spirit/include/qi_eoi.hpp>
+-#include <boost/spirit/include/qi_expect.hpp>
+-#include <boost/spirit/include/qi_matches.hpp>
+-#include <boost/spirit/include/qi_permutation.hpp>
+-#include <boost/spirit/include/qi_plus.hpp>
+-#include <boost/spirit/include/qi_skip.hpp>
++#include <boost/spirit/include/qi.hpp>
+ 
+ //  *::basic_grammar_information<T> implementation requirements
+ #include <boost/fusion/include/adapt_struct.hpp>
+ 
+-//  Support for debugging of parser rules
+-#include <boost/spirit/include/qi_nonterminal.hpp>
+-
+ #include "grammar-information.hpp"
+ 
+ namespace utsushi {
+--- utsushi-0.65.0/drivers/esci/grammar.ipp	2024-01-08 22:21:32.725717869 +0100
++++ utsushi-0.65.0/drivers/esci/grammar.ipp	2024-01-08 22:29:05.462917002 +0100
+@@ -33,31 +33,14 @@
+  */
+ 
+ //  decoding::basic_grammar<T> implementation requirements
+-#include <boost/spirit/include/qi_action.hpp>
+-#include <boost/spirit/include/qi_alternative.hpp>
+-#include <boost/spirit/include/qi_and_predicate.hpp>
+-#include <boost/spirit/include/qi_attr.hpp>
+-#include <boost/spirit/include/qi_binary.hpp>
+-#include <boost/spirit/include/qi_difference.hpp>
+-#include <boost/spirit/include/qi_eoi.hpp>
+-#include <boost/spirit/include/qi_expect.hpp>
+-#include <boost/spirit/include/qi_kleene.hpp>
+-#include <boost/spirit/include/qi_omit.hpp>
+-#include <boost/spirit/include/qi_optional.hpp>
+-#include <boost/spirit/include/qi_permutation.hpp>
++#include <boost/spirit/include/qi.hpp>
+ 
+ //  encoding::basic_grammar<T> implementation requirements
+-#include <boost/spirit/include/karma_binary.hpp>
+-#include <boost/spirit/include/karma_char_.hpp>
+-#include <boost/spirit/include/karma_sequence.hpp>
++#include <boost/spirit/include/karma.hpp>
+ 
+ //  *::basic_grammar<T> implementation requirements
+ #include <boost/fusion/include/adapt_struct.hpp>
+-#include <boost/spirit/include/phoenix_operator.hpp>
+-
+-//  Support for debugging of parser and generator rules
+-#include <boost/spirit/include/qi_nonterminal.hpp>
+-#include <boost/spirit/include/karma_nonterminal.hpp>
++#include <boost/phoenix.hpp>
+ 
+ #include "grammar.hpp"
+ 
+--- utsushi-0.65.0/drivers/esci/grammar-mechanics.hpp	2024-01-08 22:20:05.171112996 +0100
++++ utsushi-0.65.0/drivers/esci/grammar-mechanics.hpp	2024-01-08 22:22:23.921745849 +0100
+@@ -24,8 +24,7 @@
+ //! \copydoc grammar.hpp
+ 
+ #include <boost/operators.hpp>
+-#include <boost/spirit/include/karma_rule.hpp>
+-#include <boost/spirit/include/karma_symbols.hpp>
++#include <boost/spirit/include/karma.hpp>
+ 
+ #include "buffer.hpp"
+ #include "code-token.hpp"
+--- utsushi-0.65.0/drivers/esci/grammar-mechanics.ipp	2024-01-08 22:20:05.167779489 +0100
++++ utsushi-0.65.0/drivers/esci/grammar-mechanics.ipp	2024-01-08 22:22:23.921745849 +0100
+@@ -24,21 +24,11 @@
+ //! \copydoc grammar.ipp
+ 
+ //  encoding::basic_grammar_mechanics<T> implementation requirements
+-#include <boost/spirit/include/karma_alternative.hpp>
+-#include <boost/spirit/include/karma_and_predicate.hpp>
+-#include <boost/spirit/include/karma_binary.hpp>
+-#include <boost/spirit/include/karma_bool.hpp>
+-#include <boost/spirit/include/karma_buffer.hpp>
+-#include <boost/spirit/include/karma_char_.hpp>
+-#include <boost/spirit/include/karma_optional.hpp>
+-#include <boost/spirit/include/karma_sequence.hpp>
++#include <boost/spirit/include/karma.hpp>
+ 
+ //  *::basic_grammar_mechanics<T> implementation requirements
+ #include <boost/fusion/include/adapt_struct.hpp>
+ 
+-//  Support for debugging of parser and generator rules
+-#include <boost/spirit/include/karma_nonterminal.hpp>
+-
+ #include "code-point.hpp"
+ #include "grammar-mechanics.hpp"
+ 
+--- utsushi-0.65.0/drivers/esci/grammar-parameters.hpp	2024-01-08 22:21:32.722384361 +0100
++++ utsushi-0.65.0/drivers/esci/grammar-parameters.hpp	2024-01-08 22:22:55.200059463 +0100
+@@ -28,9 +28,8 @@
+ 
+ #include <boost/operators.hpp>
+ #include <boost/optional.hpp>
+-#include <boost/spirit/include/karma_rule.hpp>
+-#include <boost/spirit/include/karma_symbols.hpp>
+-#include <boost/spirit/include/qi_rule.hpp>
++#include <boost/spirit/include/karma.hpp>
++#include <boost/spirit/include/qi.hpp>
+ 
+ #include <utsushi/cstdint.hpp>
+ #include <utsushi/quantity.hpp>
+--- utsushi-0.65.0/drivers/esci/grammar-parameters.ipp	2024-01-08 22:21:32.722384361 +0100
++++ utsushi-0.65.0/drivers/esci/grammar-parameters.ipp	2024-01-08 22:23:31.538640070 +0100
+@@ -24,35 +24,14 @@
+ //! \copydoc grammar.ipp
+ 
+ //  decoding::basic_grammar_parameters<T> implementation requirements
+-#include <boost/spirit/include/qi_alternative.hpp>
+-#include <boost/spirit/include/qi_and_predicate.hpp>
+-#include <boost/spirit/include/qi_binary.hpp>
+-#include <boost/spirit/include/qi_eoi.hpp>
+-#include <boost/spirit/include/qi_expect.hpp>
+-#include <boost/spirit/include/qi_kleene.hpp>
+-#include <boost/spirit/include/qi_permutation.hpp>
+-#include <boost/spirit/include/qi_plus.hpp>
+-#include <boost/spirit/include/qi_repeat.hpp>
+-#include <boost/spirit/include/qi_skip.hpp>
++#include <boost/spirit/include/qi.hpp>
+ 
+ //  encoding::basic_grammar_parameters<T> implementation requirements
+-#include <boost/spirit/include/karma_alternative.hpp>
+-#include <boost/spirit/include/karma_binary.hpp>
+-#include <boost/spirit/include/karma_buffer.hpp>
+-#include <boost/spirit/include/karma_char_.hpp>
+-#include <boost/spirit/include/karma_kleene.hpp>
+-#include <boost/spirit/include/karma_optional.hpp>
+-#include <boost/spirit/include/karma_plus.hpp>
+-#include <boost/spirit/include/karma_repeat.hpp>
+-#include <boost/spirit/include/karma_sequence.hpp>
++#include <boost/spirit/include/karma.hpp>
+ 
+ //  *::basic_grammar_parameters<T> implementation requirements
+ #include <boost/fusion/include/adapt_struct.hpp>
+ 
+-//  Support for debugging of parser and generator rules
+-#include <boost/spirit/include/qi_nonterminal.hpp>
+-#include <boost/spirit/include/karma_nonterminal.hpp>
+-
+ #include "grammar-parameters.hpp"
+ 
+ namespace utsushi {
+--- utsushi-0.65.0/drivers/esci/grammar-status.hpp	2024-01-08 22:21:32.722384361 +0100
++++ utsushi-0.65.0/drivers/esci/grammar-status.hpp	2024-01-08 22:27:35.678178729 +0100
+@@ -27,7 +27,7 @@
+ 
+ #include <boost/operators.hpp>
+ #include <boost/optional.hpp>
+-#include <boost/spirit/include/qi_rule.hpp>
++#include <boost/spirit/include/qi.hpp>
+ 
+ #include <utsushi/media.hpp>
+ 
+--- utsushi-0.65.0/drivers/esci/grammar-status.ipp	2024-01-08 22:21:32.722384361 +0100
++++ utsushi-0.65.0/drivers/esci/grammar-status.ipp	2024-01-08 22:27:22.694160350 +0100
+@@ -24,21 +24,11 @@
+ //! \copydoc grammar.ipp
+ 
+ //  decoding::basic_grammar_status<T> implementation requirements
+-#include <boost/spirit/include/qi_alternative.hpp>
+-#include <boost/spirit/include/qi_and_predicate.hpp>
+-#include <boost/spirit/include/qi_attr.hpp>
+-#include <boost/spirit/include/qi_binary.hpp>
+-#include <boost/spirit/include/qi_eoi.hpp>
+-#include <boost/spirit/include/qi_expect.hpp>
+-#include <boost/spirit/include/qi_permutation.hpp>
+-#include <boost/spirit/include/qi_skip.hpp>
++#include <boost/spirit/include/qi.hpp>
+ 
+ //  *::basic_grammar_status<T> implementation requirements
+ #include <boost/fusion/include/adapt_struct.hpp>
+ 
+-//  Support for debugging of parser rules
+-#include <boost/spirit/include/qi_nonterminal.hpp>
+-
+ #include "grammar-status.hpp"
+ 
+ namespace utsushi {
+--- utsushi-0.65.0/drivers/esci/grammar-tracer.hpp	2024-01-08 22:21:32.725717869 +0100
++++ utsushi-0.65.0/drivers/esci/grammar-tracer.hpp	2024-01-08 22:25:58.496385824 +0100
+@@ -24,8 +24,8 @@
+ #include <string>
+ 
+ #include <boost/fusion/include/empty.hpp>
+-#include <boost/spirit/include/karma_nonterminal.hpp>
+-#include <boost/spirit/include/qi_nonterminal.hpp>
++#include <boost/spirit/include/karma.hpp>
++#include <boost/spirit/include/qi.hpp>
+ #include <boost/spirit/include/support_attributes.hpp>
+ 
+ #if !defined (ESCI_GRAMMAR_TRACE_INDENT)

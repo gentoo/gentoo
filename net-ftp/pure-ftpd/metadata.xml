@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		Free (BSD), secure, production-quality and standard-conformant FTP server
+		based upon Troll-FTPd. It doesn't provide useless bells and whistles,
+		but focuses on efficiency and ease of use.
+	</longdescription>
+	<use>
+		<flag name="anondel">Permit anonymous to delete files</flag>
+		<flag name="anonperm">Permit anonymous to change file permissions</flag>
+		<flag name="anonren">Permit anonymous to rename files</flag>
+		<flag name="anonres">Permit anonymous to resume file transfers</flag>
+		<flag name="implicittls">Enable TLS on Port 990</flag>
+		<flag name="noiplog">Disables logging of IP addresses</flag>
+		<flag name="paranoidmsg">Display paranoid messages instead of normal ones</flag>
+		<flag name="resolveids">Resolve UIDs/GIDs</flag>
+		<flag name="sysquota">Enables system quota support (needs <pkg>sys-fs/quota</pkg>)</flag>
+		<flag name="vchroot">Enable support for virtual chroot (possible security risk)</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">jedisct1/pure-ftpd</remote-id>
+	</upstream>
+</pkgmetadata>

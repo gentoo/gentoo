@@ -1,0 +1,26 @@
+diff --git a/configure.ac b/configure.ac
+index c0a37e9..44348ad 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -535,12 +535,15 @@ AC_CHECK_HEADERS(dssi.h,
+ AM_CONDITIONAL(HAVE_DSSI, test $config_have_dssi = "yes")
+ 
+ # LV2
+-PKG_CHECK_MODULES(LV2, lv2 >= 1.0.0, config_have_lv2="yes", config_have_lv2="no")
+-if test "$config_have_lv2" != "yes"; then
+-    PKG_CHECK_MODULES(LV2, lv2core >= 1.0.0, config_have_lv2="yes", config_have_lv2="no")
+-fi
+-AC_SUBST(LV2_CFLAGS)
+-AC_SUBST(LV2_LIBS)
++AC_ARG_ENABLE([lv2],
++	AS_HELP_STRING([--enable-lv2], [Enable building with lv2]))
++config_have_lv2="no"
++AS_IF([test "x$enable_lv2" = "xyes"], [
++	PKG_CHECK_MODULES(LV2, lv2 >= 1.0.0, config_have_lv2="yes", config_have_lv2="no")
++	if test "$config_have_lv2" != "yes"; then
++	    PKG_CHECK_MODULES(LV2, lv2core >= 1.0.0, config_have_lv2="yes", config_have_lv2="no")
++	fi
++])
+ AM_CONDITIONAL(HAVE_LV2, test $config_have_lv2 = "yes")
+ 
+ # VST

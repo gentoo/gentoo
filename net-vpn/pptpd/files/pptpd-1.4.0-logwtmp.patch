@@ -1,0 +1,25 @@
+diff '--color=auto' -ru a/Makefile.am b/Makefile.am
+--- a/Makefile.am	2025-01-05 09:10:10.847711246 +0000
++++ b/Makefile.am	2025-01-05 09:11:31.846314376 +0000
+@@ -51,7 +51,9 @@
+ 
+ bcrelay_SOURCES = bcrelay.c defaults.h our_syslog.h our_getopt.h
+ 
++if HAVE_LOGWTMP
+ subdirs = plugins
++endif
+ 
+ all-local:
+ 	for d in $(subdirs); do $(MAKE) $(MFLAGS) -C $$d all; done
+diff '--color=auto' -ru a/configure.ac b/configure.ac
+--- a/configure.ac	2025-01-05 09:10:10.855711207 +0000
++++ b/configure.ac	2025-01-05 09:11:01.901461097 +0000
+@@ -187,6 +187,8 @@
+ AC_CHECK_LIB(socket, accept)
+ AC_CHECK_LIB(nsl, gethostbyname)
+ AC_CHECK_LIB(util, openpty)
++AC_CHECK_LIB(util, logwtmp, [has_logwtmp=true])
++AM_CONDITIONAL([HAVE_LOGWTMP], [test "x$has_logwtmp" = "xtrue"])
+ AC_CHECK_LIB(intl, gettext)
+ LIBS="$XYZZY_LIBS"
+ if test "$ac_cv_lib_c_accept" = no; then

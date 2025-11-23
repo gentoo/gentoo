@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The llvm-core category contains packages comprising the LLVM
+		toolchain (normally selected among LLVM components
+		via LLVM_ENABLE_PROJECTS).
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie llvm-core enthält Pakete, die die LLVM-Toolchain
+		umfassen (die normalerweise aus den LLVM-Komponenten über
+		LLVM_ENABLE_PROJECTS ausgewählt werden).
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria llvm-core zawiera paczki narzędzi programistycznych
+		LLVM (spośród komponentów LLVM wybierane za pośrednictwem
+		LLVM_ENABLE_PROJECTS).
+	</longdescription>
+</catmetadata>

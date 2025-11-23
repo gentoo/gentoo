@@ -1,0 +1,14 @@
+Fix build failure due to missing include of udp.h #351602
+
+Patch by Kevin McCarthy <signals@gentoo.org>
+
+--- rtpbreak-1.3a.orig/src/main.c	2011-01-29 11:10:46.960653580 -0500
++++ rtpbreak-1.3a/src/main.c	2011-01-29 11:15:15.833884433 -0500
+@@ -27,6 +27,7 @@
+ #include <sys/stat.h>
+ #include <pwd.h>
+ #include <grp.h>
++#include <netinet/udp.h>
+ #include "queue.h"
+ #include "rtp.h"
+ #include "common.h"

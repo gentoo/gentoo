@@ -1,0 +1,22 @@
+Author: gregor herrmann <gregoa@debian.org>
+Descriotion: fix pod error (=item outside of =over)
+
+--- a/Highlight.pm
++++ b/Highlight.pm
+@@ -247,6 +247,7 @@
+ This module provides Google-like highlighting of words or patterns in HTML
+ documents. This feature is typically used to highlight search results.
+ 
++=over
+ 
+ =item The construcutor:
+ 
+@@ -341,6 +342,8 @@
+ That means only the first occurence of each of the words is taken into
+ account.
+ 
++=back
++
+ =head1 SUPPORT
+ 
+ No official support is provided, but I welcome any comments, patches

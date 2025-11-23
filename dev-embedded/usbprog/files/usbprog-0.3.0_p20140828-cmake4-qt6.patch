@@ -1,0 +1,230 @@
+Source: https://github.com/bwalle/usbprog-tools/pull/1
+
+... but squashed for Gentoo's purpose.
+
+From b5728831447d97eda7de4424ef7eb455318942f2 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 5 Nov 2025 20:14:45 +0100
+Subject: [PATCH 1/4] Bump CMake minimum to 3.16
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c16d2cf..c5d3957 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -16,6 +16,8 @@
+ # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+ # 02110-1301, USA.
+ #
++cmake_minimum_required(VERSION 3.16)
++
+ project(usbprog CXX C)
+ 
+ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake)
+@@ -24,10 +26,6 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake)
+ # Configuration
+ #
+ 
+-cmake_minimum_required(VERSION 2.6)
+-if ("${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" GREATER 3.0)
+-    cmake_policy(SET CMP0028 NEW)
+-endif ()
+ set (PACKAGE_STRING "usbprog")
+ set (PACKAGE_VERSION "0.3.0")
+ include_directories(${CMAKE_SOURCE_DIR})
+-- 
+2.51.2
+
+
+From 2e7b5825012244a90d989709f3735c8d8f419ce3 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 5 Nov 2025 20:28:11 +0100
+Subject: [PATCH 2/4] Use auto for QDomDocument::setContent() result
+
+It is QDomDocument::ParseResult in >=Qt-6.5.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ usbprog/firmwarepool.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/usbprog/firmwarepool.cc b/usbprog/firmwarepool.cc
+index 5ed44d2..35cce2f 100644
+--- a/usbprog/firmwarepool.cc
++++ b/usbprog/firmwarepool.cc
+@@ -428,7 +428,7 @@ void Firmwarepool::readIndex()
+     if (!file.open(QIODevice::ReadOnly))
+         throw core::ParseError("Couldn't open " + filename);
+ 
+-    bool success = doc.setContent(&file);
++    auto success = doc.setContent(&file);
+     file.close();
+     if (!success)
+         throw core::ParseError("Unable to parse '" + filename + "'");
+-- 
+2.51.2
+
+
+From bf992a89fa948f78298b080348ce14c5d444fc57 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 5 Nov 2025 20:29:50 +0100
+Subject: [PATCH 3/4] Port from QTime to QElapsedTimer
+
+It is obsolete in Qt 5.15
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ gui/qtsleeper.cc | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/gui/qtsleeper.cc b/gui/qtsleeper.cc
+index bdd8d03..a089cc5 100644
+--- a/gui/qtsleeper.cc
++++ b/gui/qtsleeper.cc
+@@ -15,7 +15,7 @@
+  * along with this program. If not, see <http://www.gnu.org/licenses/>.
+  */
+ #include <QApplication>
+-#include <QTime>
++#include <QElapsedTimer>
+ 
+ #include <usbprog-core/debug.h>
+ 
+@@ -29,7 +29,7 @@ namespace gui {
+ void QtSleeper::sleep(int ms)
+ {
+     USBPROG_DEBUG_DBG("Qtsleeper: sleep %d ms", ms);
+-    QTime t;
++    QElapsedTimer t;
+     t.start();
+ 
+     while (t.elapsed() < ms)
+-- 
+2.51.2
+
+
+From 2bbe71747dc1b5de1ef3441eb7ac9c90803c8156 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 5 Nov 2025 20:17:09 +0100
+Subject: [PATCH 4/4] CMake: Port to Qt6, drop USE_QT5 (dropping option to
+ build w/ Qt4)
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt         | 38 +++++++-------------------------------
+ gui/CMakeLists.txt     | 12 ++----------
+ usbprog/CMakeLists.txt |  6 +-----
+ 3 files changed, 10 insertions(+), 46 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c5d3957..d9955c4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -32,7 +32,6 @@ include_directories(${CMAKE_SOURCE_DIR})
+ include_directories(${CMAKE_BINARY_DIR})
+ 
+ option(BUILD_GUI "Build the Qt GUI" ON)
+-option(USE_QT5 "Use Qt5 instead of Qt4" OFF)
+ option(BUILD_ONLY_CORE "Builds only the usbprog-core lib and a simple CLI program (has no library dependencies apart from libusb" OFF)
+ option(USE_LEGACY_LIBUSB "Ignore the fact that libusb-1.0 is present and look for legacy libusb 0.1" OFF)
+ 
+@@ -93,35 +92,13 @@ set (EXTRA_LIBS ${EXTRA_LIBS} ${LIBUSB_LIBRARIES})
+ 
+ if (NOT BUILD_ONLY_CORE)
+ 
+-    if (USE_QT5)
+-
+-        find_package(Qt5Core)
+-        find_package(Qt5Network)
+-        find_package(Qt5Xml)
+-        set(EXTRA_LIBS ${EXTRA_LIBS} Qt5::Core Qt5::Network Qt5::Xml)
+-        if (BUILD_GUI)
+-            find_package(Qt5Widgets)
+-            set(EXTRA_LIBS ${EXTRA_LIBS} Qt5::Widgets)
+-        endif (BUILD_GUI)
+-
+-    else (USE_QT5)
+-
+-        # Qt4
+-        include(FindQt4)
+-        if (BUILD_GUI)
+-            set(Qt_Components QtCore QtGui QtXml QtNetwork QtMain)
+-        else (BUILD_GUI)
+-            set(Qt_Components QtCore QtXml QtNetwork QtMain)
+-        endif (BUILD_GUI)
+-
+-        find_package(Qt4 4.4.3 COMPONENTS ${Qt_Components} REQUIRED)
+-        include(${QT_USE_FILE})
+-        set(EXTRA_LIBS ${EXTRA_LIBS} ${QT_LIBRARIES})
+-        if (NOT QT4_FOUND)
+-            message(FATAL_ERROR "Qt4 not found. You can set the USE_QT5 option to try to find Qt5")
+-        endif (NOT QT4_FOUND)
+-
+-    endif (USE_QT5)
++    find_package(Qt6 REQUIRED COMPONENTS Core Network Xml)
++    set(EXTRA_LIBS ${EXTRA_LIBS} Qt6::Core Qt6::Network Qt6::Xml)
++    if (BUILD_GUI)
++        find_package(Qt6Gui REQUIRED)
++        find_package(Qt6Widgets REQUIRED)
++        set(EXTRA_LIBS ${EXTRA_LIBS} Qt6::Gui Qt6::Widgets)
++    endif ()
+ 
+     # libbw
+ 
+@@ -180,7 +157,6 @@ add_subdirectory(udev)
+ 
+ message(STATUS "Build only the core parts   : ${BUILD_ONLY_CORE}")
+ message(STATUS "Building with GUI           : ${BUILD_GUI}")
+-message(STATUS "Building with Qt5           : ${USE_QT5}")
+ message(STATUS "Building manpages           : ${BUILD_MANPAGE}")
+ 
+ # vim: set sw=4 ts=4 et:
+diff --git a/gui/CMakeLists.txt b/gui/CMakeLists.txt
+index d9a0b21..4c74e6a 100644
+--- a/gui/CMakeLists.txt
++++ b/gui/CMakeLists.txt
+@@ -49,18 +49,10 @@ if (BUILD_GUI)
+     set(QtApp_RCCS usbprog.qrc)
+ 
+     # generate rules for building source files from the resources
+-    if (USE_QT5)
+-        qt5_add_resources(usbprog_gui_RCC_SRCS usbprog.qrc)
+-    else (USE_QT5)
+-        qt4_add_resources(usbprog_gui_RCC_SRCS usbprog.qrc)
+-    endif (USE_QT5)
++    qt_add_resources(usbprog_gui_RCC_SRCS usbprog.qrc)
+ 
+     # generate rules for building source files that moc generates
+-    if (USE_QT5)
+-        qt5_wrap_cpp(usbprog_gui_MOC_SRCS ${usbprog_gui_MOCS})
+-    else (USE_QT5)
+-        qt4_wrap_cpp(usbprog_gui_MOC_SRCS ${usbprog_gui_MOCS})
+-    endif (USE_QT5)
++    qt_wrap_cpp(usbprog_gui_MOC_SRCS ${usbprog_gui_MOCS})
+ 
+     # build sources, moc'd sources, and rcc'd sources
+     add_executable(usbprog-gui WIN32
+diff --git a/usbprog/CMakeLists.txt b/usbprog/CMakeLists.txt
+index 1899d46..df183fb 100644
+--- a/usbprog/CMakeLists.txt
++++ b/usbprog/CMakeLists.txt
+@@ -35,11 +35,7 @@ else ()
+     set(libusbprog_SRCS ${libusbprog_SRCS} sysinfo_posix.cpp)
+ endif ()
+ 
+-if (USE_QT5)
+-    qt5_wrap_cpp(libusbprog_MOC_SRCS ${libusbprog_MOCS})
+-else (USE_QT5)
+-    qt4_wrap_cpp(libusbprog_MOC_SRCS ${libusbprog_MOCS})
+-endif (USE_QT5)
++qt_wrap_cpp(libusbprog_MOC_SRCS ${libusbprog_MOCS})
+ add_library(libusbprog STATIC ${libusbprog_SRCS} ${libusbprog_MOC_SRCS})
+ target_link_libraries(libusbprog libusbprog-core ${EXTRA_LIBS})
+ 
+-- 
+2.51.2
+

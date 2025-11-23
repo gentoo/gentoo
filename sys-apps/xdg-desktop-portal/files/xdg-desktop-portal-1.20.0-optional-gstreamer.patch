@@ -1,0 +1,104 @@
+https://bugs.gentoo.org/951611
+https://bugs.gentoo.org/951609
+https://github.com/flatpak/xdg-desktop-portal/issues/1650
+https://github.com/flint2/gentoo/blob/7c8a4b4deb84826f20a7c8af1a0f125cd4942b4a/sys-apps/xdg-desktop-portal/files/xdg-desktop-portal-1.20.0-disable-gstreamer.patch
+
+gstreamer is searched for unconditionally, but we don't have gstreamer-pbutils
+packaged yet, so that's a problem. Make it conditional for now (as it ought
+to be upstream either way if they're going to have an option for it).
+--- a/meson.build
++++ b/meson.build
+@@ -112,7 +112,7 @@ gio_unix_dep = dependency('gio-unix-2.0')
+ json_glib_dep = dependency('json-glib-1.0')
+ fuse3_dep = dependency('fuse3', version: '>= 3.10.0')
+ gdk_pixbuf_dep = dependency('gdk-pixbuf-2.0')
+-gst_pbutils_dep = dependency('gstreamer-pbutils-1.0')
++gst_pbutils_dep = dependency('gstreamer-pbutils-1.0', required: get_option('sandboxed-sound-validation'))
+ geoclue_dep = dependency(
+   'libgeoclue-2.0',
+   version: '>= 2.5.2',
+@@ -122,8 +122,8 @@ pipewire_dep = dependency('libpipewire-0.3', version: '>= 0.2.90')
+ libsystemd_dep = dependency('libsystemd', required: get_option('systemd'))
+ gudev_dep = dependency('gudev-1.0', required: get_option('gudev'))
+ umockdev_dep = dependency('umockdev-1.0', required: get_option('tests'))
+-
+-gst_inspect = find_program('gst-inspect-1.0', required: false)
++gst_inspect = find_program('gst-inspect-1.0', required: get_option('sandboxed-sound-validation'))
++have_gst_inspect = gst_inspect.found()
+ if gst_inspect.found()
+   have_wav_parse = run_command(
+     gst_inspect, 'wavparse', '--exists',
+@@ -132,6 +132,7 @@ if gst_inspect.found()
+ else
+   have_wav_parse = false
+ endif
++
+ if have_wav_parse
+   config_h.set('HAVE_WAV_PARSE', 1)
+ endif
+@@ -224,7 +225,7 @@ enable_tests = get_option('tests') \
+   .require(python.found() and python.language_version().version_compare('>=3.9'),
+            error_message: 'Python version >=3.9 is required') \
+   .require(umockdev_dep.found()) \
+-  .require(have_wav_parse,
++  .require(not have_wav_parse and not get_option('sandboxed-sound-validation').allowed(),
+            error_message: 'gst-inspect and the wavparse plugins are required') \
+   .allowed()
+ 
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -206,14 +206,16 @@ if bwrap.found()
+   validate_sound_c_args += '-DHELPER="@0@"'.format(bwrap.full_path())
+ endif
+ 
+-xdp_validate_sound = executable(
+-  'xdg-desktop-portal-validate-sound',
+-  'validate-sound.c',
+-  dependencies: [gst_pbutils_dep],
+-  c_args: validate_sound_c_args,
+-  install: true,
+-  install_dir: libexecdir,
+-)
++if gst_inspect.found()
++  xdp_validate_sound = executable(
++    'xdg-desktop-portal-validate-sound',
++    'validate-sound.c',
++    dependencies: [gst_pbutils_dep],
++    c_args: validate_sound_c_args,
++    install: true,
++    install_dir: libexecdir,
++  )
++endif
+ 
+ configure_file(
+   input: 'xdg-desktop-portal-rewrite-launchers.service.in',
+--- a/tests/meson.build
++++ b/tests/meson.build
+@@ -94,7 +94,6 @@ pytest_files = [
+   'test_inhibit.py',
+   'test_inputcapture.py',
+   'test_location.py',
+-  'test_notification.py',
+   'test_openuri.py',
+   'test_permission_store.py',
+   'test_print.py',
+@@ -122,7 +121,6 @@ template_files = [
+   'templates/__init__.py',
+   'templates/inputcapture.py',
+   'templates/lockdown.py',
+-  'templates/notification.py',
+   'templates/print.py',
+   'templates/remotedesktop.py',
+   'templates/screenshot.py',
+@@ -131,6 +129,11 @@ template_files = [
+   'templates/wallpaper.py',
+ ]
+ 
++if have_gst_inspect
++  template_files += ['templates/notification.py']
++  pytest_files += ['test_notification.py']
++endif
++
+ foreach pytest_file : pytest_files
+   testname = pytest_file.replace('.py', '').replace('test_', '')
+   test(

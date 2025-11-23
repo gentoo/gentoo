@@ -1,0 +1,33 @@
+--- a/hack/extern.h
++++ b/hack/extern.h
+@@ -583,7 +583,7 @@ int role_index(int);
+ void setrandom(void);
+ struct tm *getlt(void);
+ int getyear(void);
+-char *getdate(void);
++char *get_date(void);
+ int phase_of_the_moon(void);
+ int night(void);
+ int midnight(void);
+--- a/hack/hack.end.c
++++ b/hack/hack.end.c
+@@ -360,7 +360,7 @@ topten()
+ 	(t0->name)[NAMSZ] = 0;
+ 	(void) strncpy(t0->death, killer, DTHSZ);
+ 	(t0->death)[DTHSZ] = 0;
+-	(void) strcpy(t0->date, getdate());
++	(void) strcpy(t0->date, get_date());
+ 
+ 	/* assure minimum number of points */
+ 	if (t0->points < POINTSMIN)
+--- a/hack/hack.unix.c
++++ b/hack/hack.unix.c
+@@ -118,7 +118,7 @@ getyear()
+ }
+ 
+ char           *
+-getdate()
++get_date()
+ {
+ 	static char     datestr[7];
+ 	struct tm      *lt = getlt();

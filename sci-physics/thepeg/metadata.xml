@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>apn-pucky@gentoo.org</email>
+		<name>Alexander Puck Neuwirth</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sci-physics@gentoo.org</email>
+		<name>Gentoo Physics Project</name>
+	</maintainer>
+	<longdescription>
+	Toolkit for High Energy Physics Event Generation.
+	ThePEG has been broken out from the PYTHIA7 program
+	to better factorize the parts which were PYTHIA-specific
+	from those which are general model-independent components
+	of the toolkit and which can be used by any event generator model.
+	</longdescription>
+	<use>
+		<flag name="fastjet">Adds support for <pkg>sci-physics/fastjet</pkg></flag>
+		<flag name="hepmc">Adds support for High Energy Physics Monte Carlo Generators<pkg>sci-physics/hepmc</pkg></flag>
+		<flag name="hepmc3">Adds support for High Energy Physics Monte Carlo Generators 3<pkg>sci-physics/hepmc</pkg></flag>
+		<flag name="lhapdf">Adds support for <pkg>sci-physics/lhapdf</pkg></flag>
+		<flag name="rivet">Adds support for <pkg>sci-physics/rivet</pkg></flag>
+	</use>
+	<upstream>
+		<doc>https://thepeg.hepforge.org/doxygen/</doc>
+	</upstream>
+</pkgmetadata>

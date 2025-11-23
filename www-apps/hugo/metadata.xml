@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>jayf@gentoo.org</email>
+		<name>Jay Faulkner</name>
+	</maintainer>
+	<use>
+		<flag name="extended">Enable SASS/SCSS support</flag>
+		<flag name="deploy">Enable support for deployment support (hugo deploy)</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">gohugoio/hugo</remote-id>
+	</upstream>
+	<longdescription lang="en"> Hugo is a static HTML and CSS website generator written in Go. It is
+		optimized for speed, ease of use, and configurability. </longdescription>
+</pkgmetadata>

@@ -1,0 +1,76 @@
+https://sourceforge.net/p/nas/bugs/15/
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Tue, 30 Apr 2024 01:06:32 +0530
+Subject: [PATCH 1/1] Partially revert commit e792e42
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Commit e792e42 introduced some regression with GCC 14 and 15 espcially
+to the chaged sections of the code in audemo.c. Thus resutling in errors
+such as:
+
+audemo.c: In function ‘rescanCB’:
+audemo.c:524:23: error: passing argument 2 of ‘XawListChange’ from incompatible pointer type [-Wincompatible-pointer-types]
+  524 |                       (const char **)makeFileList(globals->fileNames, globals->numFiles),
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                       |
+      |                       const char **
+In file included from audemo.c:97:
+/usr/include/X11/Xaw/List.h:170:26: note: expected ‘char **’ but argument is of type ‘const char **’
+  170 |  String                 *list,
+      |  ~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+audemo.c:530:41: error: passing argument 2 of ‘XawListChange’ from incompatible pointer type [-Wincompatible-pointer-types]
+  530 |         XawListChange(globals->samples, &noFilesString, 1, -1, True);
+      |                                         ^~~~~~~~~~~~~~
+      |                                         |
+      |                                         const char **
+/usr/include/X11/Xaw/List.h:170:26: note: expected ‘char **’ but argument is of type ‘const char **’
+  170 |  String                 *list,
+      |  ~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+
+First observed on Gentoo Linux with GCC 14, I reproduced with GCC 15 as
+well. Please reffer: https://bugs.gentoo.org/927451
+
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+--- a/clients/audio/audemo/audemo.c
++++ b/clients/audio/audemo/audemo.c
+@@ -501,7 +501,7 @@ static void
+ rescanCB(Widget w, XtPointer globalsp, XtPointer call_data)
+ {
+     GlobalDataPtr       globals = (GlobalDataPtr) globalsp;
+-    static const char   *noFilesString = "No files found";
++    static char   *noFilesString = "No files found";
+     char                *dir,
+                         *template;
+     int                 i;
+@@ -521,7 +521,7 @@ rescanCB(Widget w, XtPointer globalsp, XtPointer call_data)
+     if (globals->numFiles)
+     {
+ 	XawListChange(globals->samples,
+-		      (const char **)makeFileList(globals->fileNames, globals->numFiles),
++		      makeFileList(globals->fileNames, globals->numFiles),
+ 		      globals->numFiles, -1, True);
+ 	XtSetSensitive(globals->samples, True);
+     }
+@@ -597,7 +597,7 @@ bucketQueryCB(Widget w, XtPointer globalsp, XtPointer call_data)
+                         access[4],
+ 			desc[COMMENT_LEN];
+     int                 i;
+-    static const char  *noBucketString = "No buckets";
++    static char  *noBucketString = "No buckets";
+ 
+     if (buf->numBuckets)
+     {
+@@ -652,7 +652,7 @@ bucketQueryCB(Widget w, XtPointer globalsp, XtPointer call_data)
+ 
+     if (buf->numBuckets)
+     {
+-	XawListChange(buf->bucketList, (const char **)buf->bucketText,
++	XawListChange(buf->bucketList, buf->bucketText,
+ 	              buf->numBuckets, -1, True);
+ 	XtSetSensitive(buf->bucketList, True);
+     }
+-- 
+2.45.0.rc1.218.g7b19149425.dirty
+

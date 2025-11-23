@@ -1,0 +1,24 @@
+diff --git a/Makefile b/Makefile
+index 5ccccff..f58d7bb 100644
+--- a/Makefile
++++ b/Makefile
+@@ -63,12 +63,12 @@
+ #
+ #;****************************************************************************;
+ 
++PREFIX := /usr
+ 
+ PROGS = INTEL-SA-00075-Discovery-Tool \
+ 		INTEL-SA-00075-Unprovisioning-Tool
+ 
+ all:$(PROGS)
+-	strip $(PROGS)
+ 
+ INTEL-SA-00075-Discovery-Tool: INTEL-SA-00075-Discovery-Tool.o INTEL-SA-00075.o
+ INTEL-SA-00075-Unprovisioning-Tool: INTEL-SA-00075-Unprovisioning-Tool.o INTEL-SA-00075.o
+@@ -77,3 +77,5 @@ clean:
+ 	rm -f $(PROGS)
+ 	rm -f *.o
+ 
++install:
++	install -D -t $(DESTDIR)$(PREFIX)/sbin/ $(PROGS)

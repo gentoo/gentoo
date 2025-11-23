@@ -1,0 +1,13 @@
+Remove update icon cache as it is a sandbox access violation.
+We do this in the ebuild by ourselves instead.
+
+--- a/driver/Makefile.in
++++ b/driver/Makefile.in
+@@ -564,7 +564,6 @@ install-gnome:: $(LOGO)
+         fi
+
+ install-gnome:: uninstall-old-gnome-icons
+-install-gnome:: update-icon-caches
+
+ update-icon-caches::
+        @for f in /usr/share/icons/index.theme  

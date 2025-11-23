@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>scheme@gentoo.org</email>
+    <name>Gentoo Scheme Project</name>
+  </maintainer>
+  <longdescription>
+    Guile-Lib is intended as an accumulation place for pure-scheme Guile
+    modules, allowing for people to cooperate integrating their generic Guile
+    modules into a coherent library. Think "a down-scaled, limited-scope CPAN
+    for Guile".
+  </longdescription>
+  <upstream>
+    <remote-id type="savannah-nongnu">guile-lib</remote-id>
+  </upstream>
+</pkgmetadata>

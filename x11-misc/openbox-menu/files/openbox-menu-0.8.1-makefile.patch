@@ -1,0 +1,106 @@
+From fa18093783ec77102c304134626bf3b4ddc07ec8 Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Thu, 11 Feb 2021 21:47:47 +0300
+Subject: [PATCH 2/2] Update Makefile build
+
+Introduce CC and PKG_CONFIG variables that can be redefined by user.
+Added variables WITH_ICONS and WITH_SVG that can be also redefined by user.
+Misc enhancements to file globbing.
+
+* 2021-03-15 asturm: Fix BINDIR path, add DESTDIR, adapt to GTK3 change
+
+--- a/Makefile
++++ b/Makefile
+@@ -1,19 +1,31 @@
+-LIBS= `pkg-config --libs glib-2.0 gtk+-3.0 libmenu-cache`
+-CFLAGS+= -g -Wall `pkg-config --cflags glib-2.0 gtk+-3.0 libmenu-cache`
+-CC=gcc
++CC ?= gcc
++PKG_CONFIG ?= pkg-config
++
++CFLAGS ?= -O2 -g
++CFLAGS += -Wall $(shell $(PKG_CONFIG) --cflags glib-2.0 gtk+-3.0 libmenu-cache)
++LIBS += $(shell $(PKG_CONFIG) --libs glib-2.0 gtk+-3.0 libmenu-cache)
++
+ #-DG_DISABLE_DEPRECATED
+ 
+-# Comment this line if you don't want icons to appear in menu
+-CFLAGS+=-DWITH_ICONS
+-# Uncomment this line if Openbox can display SVG icons
++# set to 0 to turn off icons in menus
++WITH_ICONS=1
++
++ifeq ($(WITH_ICONS),1)
++CFLAGS += -DWITH_ICONS
++endif
++
++# set to 0 to turn off svg icons in menus
+ # Check SVG support with '$ ldd /usr/bin/openbox | grep svg', librsvg must appear..
+-# CFLAGS+=-DWITH_SVG
++WITH_SVG=0
++
++ifeq ($(WITH_SVG),1)
++CFLAGS += -DWITH_SVG
++endif
+ 
+-prefix= /usr/local
+-DESTDIR ?= $(prefix)
+-BINDIR= ${DESTDIR}/bin
++prefix = /usr
++BINDIR = ${prefix}/bin
+ 
+-SRC= $(shell ls src/*.c 2> /dev/null)
++SRC= $(wildcard src/*.c)
+ OBJ= $(SRC:.c=.o)
+ 
+ all: $(OBJ) check openbox-menu
+@@ -25,15 +37,18 @@
+ openbox-menu: $(OBJ)
+ 	$(CC) $(OBJ) -o openbox-menu $(LDFLAGS) $(LIBS)
+ 
+-.PHONY: clean install doc changelog check xmllint
++.PHONY: clean install install-strip doc changelog check xmllint
+ 
+ clean:
+ 	@rm -f $(OBJ) $(TEST_OBJ) openbox-menu check
+ 	@rm -rf doc
+ 
+ install:
++	@install -Dm 755 openbox-menu "$(DESTDIR)$(BINDIR)/openbox-menu"
++
++install-strip:
+ 	@strip -s openbox-menu
+-	@install -Dm 755 openbox-menu $(BINDIR)/openbox-menu
++	@install -Dm 755 openbox-menu "$(DESTDIR)$(BINDIR)/openbox-menu"
+ 
+ doc:
+ 	robodoc --src . --doc doc/ --multidoc --index --html --cmode
+
+diff --git a/README.md b/README.md
+--- a/README.md
++++ b/README.md
+@@ -6,17 +6,17 @@ Type `make` then, with superuser privileges, `make install` to install it. openb
+ 
+ ## Compile openbox-menu without icons ##
+ 
+-Openbox-menu shows icons before categories name and applications name (in fact, the menu and the icons are displayed by Openbox; Openbox-menu only outputs text content). You can remove icon support by editing the Makefile and commenting the following line (add a # in the begining)
++Openbox-menu shows icons before categories name and applications name (in fact, the menu and the icons are displayed by Openbox; Openbox-menu only outputs text content). You can enable icon support by running `make` with `WITH_ICONS=1` option (pass `WITH_ICONS=0` to disable it):
+ 
+->  CFLAGS+=-DWITH_ICONS
++>  make WITH_ICONS=1
+ 
+ If errors occur while compiling, remove gtk+-2.0 from lines above the one previously commented.
+ 
+ ## SVG support
+ 
+-Openbox can display SVG icons since version 3.5.1. SVG support in openbox-menu has to be activated in Makefile by uncommenting the following line
++Openbox can display SVG icons since version 3.5.1. SVG support in openbox-menu can be enabled by running `make` with `WITH_SVG=1` option (pass `WITH_SVG=0` to disable it):
+ 
+->  CFLAGS+=-DWITH_SVG
++>  make WITH_SVG=1
+ 
+ SVG suport will be activated by default in the future.
+ 
+-- 
+2.26.2
+

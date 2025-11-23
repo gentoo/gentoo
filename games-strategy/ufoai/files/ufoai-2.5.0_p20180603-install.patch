@@ -1,0 +1,37 @@
+* Prevent stripping
+* Prevent installation of useless wrappers
+* Install binaries to the right locations
+
+Chewi
+2018/06/05
+
+diff -Naur a/Makefile b/Makefile
+--- a/Makefile	2018-06-03 21:55:40.000000000 +0100
++++ b/Makefile	2018-06-05 22:29:08.666944853 +0100
+@@ -33,8 +33,8 @@
+ CONFIGURE_PREFIX ?=
+ 
+ INSTALL         ?= install
+-INSTALL_PROGRAM ?= $(INSTALL) -m 755 -s
+-INSTALL_SCRIPT  ?= $(INSTALL) -m 755
++INSTALL_PROGRAM ?= $(INSTALL) -m 755
++INSTALL_SCRIPT  ?= true
+ INSTALL_DIR     ?= $(INSTALL) -d
+ INSTALL_MAN     ?= $(INSTALL) -m 444
+ INSTALL_DATA    ?= $(INSTALL) -m 444
+@@ -162,8 +162,13 @@
+ 
+ install-$(1): $($(1)_FILE)
+ 	@echo 'Install $$<'
+-	$(Q)$(INSTALL_DIR) $(DESTDIR)$(PKGDATADIR)/$(dir $($(1)_FILE))
+-	$(Q)$(INSTALL_PROGRAM) $$< $(DESTDIR)$(PKGDATADIR)/$$<
++	$(Q)$(INSTALL_DIR) $(DESTDIR)$(PKGBINDIR)/
++	$(Q)$(INSTALL_PROGRAM) $$< $(DESTDIR)$(PKGBINDIR)/
++
++install-game: $(game_FILE)
++	@echo 'Install $$<'
++	$(Q)$(INSTALL_DIR) $(DESTDIR)$(PKGLIBDIR)/
++	$(Q)$(INSTALL_PROGRAM) $$< $(DESTDIR)$(PKGLIBDIR)/$(notdir $(game_FILE))
+ 
+ uninstall-$(1):
+ 	@echo 'Uninstall $($(1)_FILE)'

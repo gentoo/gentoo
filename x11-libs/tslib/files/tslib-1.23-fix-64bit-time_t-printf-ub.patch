@@ -1,0 +1,213 @@
+Source:
+  [PATCH 1/2]: git master
+  [PATCH 2/2]: https://github.com/libts/tslib/pull/229
+
+From acc471e96693b3f772b42687c5378591f0ed54ae Mon Sep 17 00:00:00 2001
+From: steini2001 <179123067+steini2001@users.noreply.github.com>
+Date: Tue, 12 Nov 2024 14:25:15 +0100
+Subject: [PATCH 1/2] Fix build on 32bit arches with 64bit time_t and debug
+ enabled
+
+commit a7a39a6 forgot this one
+---
+ plugins/input-raw.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/plugins/input-raw.c b/plugins/input-raw.c
+index 0e8a22f..da22720 100644
+--- a/plugins/input-raw.c
++++ b/plugins/input-raw.c
+@@ -650,8 +650,8 @@ static int ts_input_read_mt(struct tslib_module_info *inf,
+ 		#ifdef DEBUG
+ 			printf("INPUT-RAW: read type %d  code %3d  value %4d  time %ld.%ld\n",
+ 			       i->ev[it].type, i->ev[it].code,
+-			       i->ev[it].value, (long)i->ev[it].time.tv_sec,
+-			       (long)i->ev[it].time.tv_usec);
++			       i->ev[it].value, (long)i->ev[it].input_event_sec,
++			       (long)i->ev[it].input_event_usec);
+ 		#endif
+ 			switch (i->ev[it].type) {
+ 			case EV_KEY:
+-- 
+2.51.0
+
+
+From 32cf8d1b9e38b5eada97b00c73999af48be2d1cb Mon Sep 17 00:00:00 2001
+From: steini2001 <179123067+steini2001@users.noreply.github.com>
+Date: Tue, 12 Nov 2024 15:02:31 +0100
+Subject: [PATCH 2/2] fix printf with 64bit time_t
+
+Printing long long with %ld is UB. Converting long long to long could overflow.
+To be compatible with 32bit time_t we need an explicit cast to long long.
+---
+ README.md                 |  6 +++---
+ plugins/input-evdev-raw.c | 14 +++++++-------
+ plugins/input-raw.c       | 12 ++++++------
+ tests/ts_print.c          |  2 +-
+ tests/ts_print_mt.c       |  6 +++---
+ tests/ts_print_raw.c      |  2 +-
+ tests/ts_test.c           |  2 +-
+ tests/ts_test_mt_sdl.c    |  6 +++---
+ 8 files changed, 25 insertions(+), 25 deletions(-)
+
+diff --git a/README.md b/README.md
+index aaec82d..1d781b8 100644
+--- a/README.md
++++ b/README.md
+@@ -585,9 +585,9 @@ This is a complete example program, similar to `ts_print_mt.c`:
+ 					continue;
+ 			#endif
+ 
+-				printf("%ld.%06ld: (slot %d) %6d %6d %6d\n",
+-				       samp_mt[j][i].tv.tv_sec,
+-				       samp_mt[j][i].tv.tv_usec,
++				printf("%lld.%06lld: (slot %d) %6d %6d %6d\n",
++				       (long long)samp_mt[j][i].tv.tv_sec,
++				       (long long)samp_mt[j][i].tv.tv_usec,
+ 				       samp_mt[j][i].slot,
+ 				       samp_mt[j][i].x,
+ 				       samp_mt[j][i].y,
+diff --git a/plugins/input-evdev-raw.c b/plugins/input-evdev-raw.c
+index d187645..24208cf 100644
+--- a/plugins/input-evdev-raw.c
++++ b/plugins/input-evdev-raw.c
+@@ -461,11 +461,11 @@ static int ts_input_read(struct tslib_module_info *inf,
+ 				samp->tv = ev.time;
+ 		#ifdef DEBUG
+ 			fprintf(stderr,
+-				"RAW nr %d ---------------------> %d %d %d %ld.%ld\n",
++				"RAW nr %d ---------------------> %d %d %d %lld.%06lld\n",
+ 				total,
+ 				samp->x, samp->y, samp->pressure,
+-				(long)samp->tv.tv_sec,
+-				(long)samp->tv.tv_usec);
++				(long long)samp->tv.tv_sec,
++				(long long)samp->tv.tv_usec);
+ 		#endif /* DEBUG */
+ 				samp++;
+ 				total++;
+@@ -651,11 +651,11 @@ static int ts_input_read_mt(struct tslib_module_info *inf,
+ 		}
+ 
+ 	#ifdef DEBUG
+-		printf("INPUT-RAW nr %d: read type %d  code %3d  value %4d  time %ld.%ld\n",
++		printf("INPUT-RAW nr %d: read type %d  code %3d  value %4d  time %lld.%06lld\n",
+ 		       total,
+-		       ev.type, ev.code,
+-		       ev.value, (long)ev.time.tv_sec,
+-		       (long)ev.time.tv_usec);
++		       ev.type, ev.code, ev.value,
++		       (long long)ev.time.tv_sec,
++		       (long long)ev.time.tv_usec);
+ 	#endif
+ 		switch (ev.type) {
+ 		case EV_KEY:
+diff --git a/plugins/input-raw.c b/plugins/input-raw.c
+index da22720..ae0cad6 100644
+--- a/plugins/input-raw.c
++++ b/plugins/input-raw.c
+@@ -393,10 +393,10 @@ static int ts_input_read(struct tslib_module_info *inf,
+ 					samp->tv.tv_usec = ev.input_event_usec;
+ 			#ifdef DEBUG
+ 				fprintf(stderr,
+-					"RAW---------------------> %d %d %d %ld.%ld\n",
++					"RAW---------------------> %d %d %d %lld.%06lld\n",
+ 					samp->x, samp->y, samp->pressure,
+-					(long)samp->tv.tv_sec,
+-					(long)samp->tv.tv_usec);
++					(long long)samp->tv.tv_sec,
++					(long long)samp->tv.tv_usec);
+ 			#endif /* DEBUG */
+ 					samp++;
+ 					total++;
+@@ -648,10 +648,10 @@ static int ts_input_read_mt(struct tslib_module_info *inf,
+ 
+ 		for (it = 0; it < rd / sizeof(struct input_event); it++) {
+ 		#ifdef DEBUG
+-			printf("INPUT-RAW: read type %d  code %3d  value %4d  time %ld.%ld\n",
++			printf("INPUT-RAW: read type %d  code %3d  value %4d  time %lld.%06lld\n",
+ 			       i->ev[it].type, i->ev[it].code,
+-			       i->ev[it].value, (long)i->ev[it].input_event_sec,
+-			       (long)i->ev[it].input_event_usec);
++			       i->ev[it].value, (long long)i->ev[it].input_event_sec,
++			       (long long)i->ev[it].input_event_usec);
+ 		#endif
+ 			switch (i->ev[it].type) {
+ 			case EV_KEY:
+diff --git a/tests/ts_print.c b/tests/ts_print.c
+index e9e6c4f..406a087 100644
+--- a/tests/ts_print.c
++++ b/tests/ts_print.c
+@@ -106,7 +106,7 @@ int main(int argc, char **argv)
+ 		if (ret != 1)
+ 			continue;
+ 
+-		printf("%ld.%06ld: %6d %6d %6d\n", samp.tv.tv_sec, samp.tv.tv_usec, samp.x, samp.y, samp.pressure);
++		printf("%lld.%06lld: %6d %6d %6d\n", (long long)samp.tv.tv_sec, (long long)samp.tv.tv_usec, samp.x, samp.y, samp.pressure);
+ 
+ 	}
+ 
+diff --git a/tests/ts_print_mt.c b/tests/ts_print_mt.c
+index 6f18c67..5779ca2 100644
+--- a/tests/ts_print_mt.c
++++ b/tests/ts_print_mt.c
+@@ -254,10 +254,10 @@ int main(int argc, char **argv)
+ 				if (!(samp_mt[j][i].valid & TSLIB_MT_VALID))
+ 					continue;
+ 
+-				printf(YELLOW "sample %d - %ld.%06ld -" RESET " (slot %d) %6d %6d %6d\n",
++				printf(YELLOW "sample %d - %lld.%06lld -" RESET " (slot %d) %6d %6d %6d\n",
+ 				       j,
+-				       samp_mt[j][i].tv.tv_sec,
+-				       samp_mt[j][i].tv.tv_usec,
++				       (long long)samp_mt[j][i].tv.tv_sec,
++				       (long long)samp_mt[j][i].tv.tv_usec,
+ 				       samp_mt[j][i].slot,
+ 				       samp_mt[j][i].x,
+ 				       samp_mt[j][i].y,
+diff --git a/tests/ts_print_raw.c b/tests/ts_print_raw.c
+index b9e9466..a4dae3d 100644
+--- a/tests/ts_print_raw.c
++++ b/tests/ts_print_raw.c
+@@ -83,7 +83,7 @@ int main(int argc, char **argv)
+ 		if (ret != 1)
+ 			continue;
+ 
+-		printf("%ld.%06ld: %6d %6d %6d\n", samp.tv.tv_sec, samp.tv.tv_usec, samp.x, samp.y, samp.pressure);
++		printf("%lld.%06lld: %6d %6d %6d\n", (long long)samp.tv.tv_sec, (long long)samp.tv.tv_usec, samp.x, samp.y, samp.pressure);
+ 
+ 	}
+ 
+diff --git a/tests/ts_test.c b/tests/ts_test.c
+index c9ced73..4d6a5ca 100644
+--- a/tests/ts_test.c
++++ b/tests/ts_test.c
+@@ -202,7 +202,7 @@ int main(int argc, char **argv)
+ 					quit_pressed = 1;
+ 				}
+ 
+-		printf("%ld.%06ld: %6d %6d %6d\n", samp.tv.tv_sec, samp.tv.tv_usec,
++		printf("%lld.%06lld: %6d %6d %6d\n", (long long)samp.tv.tv_sec, (long long)samp.tv.tv_usec,
+ 			samp.x, samp.y, samp.pressure);
+ 
+ 		if (samp.pressure > 0) {
+diff --git a/tests/ts_test_mt_sdl.c b/tests/ts_test_mt_sdl.c
+index 556c949..bc4808a 100644
+--- a/tests/ts_test_mt_sdl.c
++++ b/tests/ts_test_mt_sdl.c
+@@ -200,9 +200,9 @@ int main(int argc, char **argv)
+ 				       samp_mt[0][i].x, samp_mt[0][i].y);
+ 
+ 			if (verbose) {
+-				printf("%ld.%06ld: (slot %d) %6d %6d %6d\n",
+-					samp_mt[0][i].tv.tv_sec,
+-					samp_mt[0][i].tv.tv_usec,
++				printf("%lld.%06lld: (slot %d) %6d %6d %6d\n",
++					(long long)samp_mt[0][i].tv.tv_sec,
++					(long long)samp_mt[0][i].tv.tv_usec,
+ 					samp_mt[0][i].slot,
+ 					samp_mt[0][i].x,
+ 					samp_mt[0][i].y,
+-- 
+2.51.0
+

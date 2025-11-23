@@ -1,0 +1,25 @@
+Require version 1 of parskip.sty
+
+Newer versions change the spacing after headings which causes
+different page breaks.
+
+Backported from master, commit 4ebd8cb.
+
+--- a/pms.cls
++++ b/pms.cls
+@@ -27,6 +27,7 @@
+ \PassOptionsToPackage{hyphens}{url} % url.sty implicitly loaded by hyperref
+ \PassOptionsToPackage{chapter}{algorithm}
+ % algorithmic and algorithm to be loaded last to avoid failures
++\RequirePackage{parskip}[=v1] % Space between paragraphs instead of indentation
+ \RequirePackage{%
+     fontenc,    % Load extended font sets
+     isodate,    % Date formatting and conversions
+@@ -39,7 +40,6 @@
+     lscape,     % Rotating pages
+     marginnote, % Typeset a paragraph in the page margin
+     paralist,   % Additional list environments
+-    parskip,    % Space between paragraphs instead of indentation
+     underscore, % Allow simple _ instead of \_
+     verbatim,   % Extend the print-as-is functionality
+     chngcntr,   % Redefinition of counters

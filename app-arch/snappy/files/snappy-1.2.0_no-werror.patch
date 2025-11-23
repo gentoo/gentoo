@@ -1,0 +1,24 @@
+From 8a262c4de10c4a7e07db41779fd7ca1565d92631 Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Thu, 11 Apr 2024 10:06:47 +0300
+Subject: [PATCH 2/3] Don't use -Werror
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -66,13 +66,6 @@ else(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wextra")
+   endif(NOT CMAKE_CXX_FLAGS MATCHES "-Wextra")
+ 
+-  # Use -Werror for clang only.
+-  if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+-    if(NOT CMAKE_CXX_FLAGS MATCHES "-Werror")
+-      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
+-    endif(NOT CMAKE_CXX_FLAGS MATCHES "-Werror")
+-  endif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+-
+   # Disable sign comparison warnings. Matches upcoming Bazel setup.
+   if(NOT CMAKE_CXX_FLAGS MATCHES "-Wno-sign-compare")
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-sign-compare")
+-- 
+2.43.2
+

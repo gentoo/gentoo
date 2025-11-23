@@ -1,0 +1,63 @@
+From eb19c3c29d65b4e0e4f30d49c568846296ea4287 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Fri, 29 Mar 2024 10:21:50 -0400
+Subject: [PATCH 1/2] fix missing includes/prototypes that violate c99
+
+Fixes various -Werror=implicit-function-declaration issues.
+---
+ calendar.c | 2 ++
+ calendar.h | 1 +
+ 2 files changed, 3 insertions(+)
+
+diff --git a/calendar.c b/calendar.c
+index 4da3650..c847853 100644
+--- a/calendar.c
++++ b/calendar.c
+@@ -1,4 +1,6 @@
+ #include "calendar.h"
++#include "settings.h"
++#include "calendarfunc.h"
+ 
+ time_t  modtime;
+ struct  calobj* calRoot;
+diff --git a/calendar.h b/calendar.h
+index bc9e576..7803d0c 100644
+--- a/calendar.h
++++ b/calendar.h
+@@ -33,4 +33,5 @@ int  getDayType(struct icaltimetype dt);
+ int  calcDayType(struct icaltimetype dt);
+ char* read_stream(char *s, size_t size, void *d);
+ void checkicalversion();
++int eventOnDay(struct icaltimetype dt, struct calobj* it);
+ 
+-- 
+2.43.2
+
+
+From a6f7c549f79a8fa50456f06352a3fd1457937c62 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Sun, 28 Apr 2024 01:34:58 -0400
+Subject: [PATCH 2/2] cast a struct pointing to itself to avoid
+ -Werror=incompatible-pointer-types
+
+This is already done the other way around at the beginning of the block.
+---
+ calendar.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/calendar.c b/calendar.c
+index c847853..f8f875b 100644
+--- a/calendar.c
++++ b/calendar.c
+@@ -326,7 +326,7 @@ void deleteCalObjs(){
+ 	free(calRoot->text);
+ 	free(calRoot->comp);
+ 	free(calRoot);
+-	calRoot = help;
++	calRoot = (struct calobj*) help;
+     }
+     for(i = 0; i < 32; i++)
+ 	datetype[i][1] = 0;
+-- 
+2.43.2
+

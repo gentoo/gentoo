@@ -1,0 +1,11 @@
+Bug: https://bugs.gentoo.org/895046
+--- a/src/daemon.c
++++ b/src/daemon.c
+@@ -22,6 +22,7 @@
+  * OTHER DEALINGS IN THE SOFTWARE.
+  */
+ 
++#define _GNU_SOURCE
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <errno.h>

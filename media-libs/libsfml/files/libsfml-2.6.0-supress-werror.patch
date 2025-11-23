@@ -1,0 +1,30 @@
+This primarily to suppress error such as:
+/var/tmp/portage/media-libs/libsfml-2.6.0/work/SFML-2.6.0/src/SFML/Window/Unix/JoystickImpl.cpp:405:36: error: implicit conversion changes signedness: 'unsigned long' to 'int' [-Werror,-Wsign-conversion]
+            int result = ioctl(fd, JSIOCGNAME(sizeof(name)), name);
+                         ~~~~~     ^~~~~~~~~~~~~~~~~~~~~~~~
+/usr/include/linux/joystick.h:59:26: note: expanded from macro 'JSIOCGNAME'
+#define JSIOCGNAME(len)         _IOC(_IOC_READ, 'j', 0x13, len)                 /* get identifier string */
+                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Even seems like upstream is has removed it with commit
+https://github.com/SFML/SFML/commit/aa82ea132b9296a31922772027ad5d14c1fa381b
+--- a/cmake/CompilerWarnings.cmake
++++ b/cmake/CompilerWarnings.cmake
+@@ -68,16 +68,11 @@ function(set_file_warnings)
+         # -Wimplicit-fallthrough # warn when a missing break causes control flow to continue at the next case in a switch statement (disabled until better compiler support for explicit fallthrough is available)
+         ${NON_ANDROID_CLANG_AND_GCC_WARNINGS}
+     )
+-    
++
+     # Disable warnings as errors when using Clang on Windows to work around deprecation warnings in Windows APIs
+     if(SFML_OS_WINDOWS AND (SFML_COMPILER_CLANG OR SFML_COMPILER_CLANG_CL))
+         set(WARNINGS_AS_ERRORS FALSE)
+     endif()
+-    
+-    if(WARNINGS_AS_ERRORS)
+-        set(CLANG_AND_GCC_WARNINGS ${CLANG_AND_GCC_WARNINGS} -Werror)
+-        set(MSVC_WARNINGS ${MSVC_WARNINGS} /WX)
+-    endif()
+ 
+     set(CLANG_WARNINGS
+         ${CLANG_AND_GCC_WARNINGS}

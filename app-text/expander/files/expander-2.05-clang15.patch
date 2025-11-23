@@ -1,0 +1,60 @@
+https://bugs.gentoo.org/870898
+--- a/src/align_columns.c
++++ b/src/align_columns.c
+@@ -28,6 +28,7 @@
+ #include <string.h>
+ #include <stdlib.h>
+ #include <ctype.h>
++#include <unistd.h>
+ 
+ /*============================================================================*/
+ /*                              SYMBOL DEFINITIONS                            */
+--- a/src/align_comments.c
++++ b/src/align_comments.c
+@@ -28,6 +28,7 @@
+ #include <string.h>
+ #include <stdlib.h>
+ #include <ctype.h>
++#include <unistd.h>
+ 
+ /*===========================================================================*/
+ /*                             SYMBOL DEFINITIONS                            */
+--- a/src/boxcomment.c
++++ b/src/boxcomment.c
+@@ -59,6 +59,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdlib.h>
++#include <unistd.h>
+ 
+ /*============================================================================*/
+ /*                              SYMBOL DEFINITIONS                            */
+--- a/src/expander.c
++++ b/src/expander.c
+@@ -114,6 +114,7 @@
+ #include <string.h>
+ #include <time.h>
+ #include <ctype.h>
++#include <unistd.h>
+ 
+ /*==========================================================================*/
+ /*                              MACRO DEFINITIONS                           */
+@@ -1264,7 +1265,7 @@ bool_t locate_definition(
+     bool_t ignore_definition = FALSE;
+     int    i;
+     char   line[ MAXBUF ];
+-    static level = 0;
++    static int level = 0;
+     
+     /*---------------------
+     * Recursion protection.
+--- a/src/where_is.c
++++ b/src/where_is.c
+@@ -54,6 +54,7 @@
+ #include <stdlib.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <unistd.h>
+ 
+ typedef int bool_t;
+ 

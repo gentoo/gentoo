@@ -1,0 +1,26 @@
+diff --git a/kissfft-config.cmake.in b/kissfft-config.cmake.in
+index cd7139a..7d6c7a2 100644
+--- a/kissfft-config.cmake.in
++++ b/kissfft-config.cmake.in
+@@ -66,14 +66,19 @@ foreach(_kissfft_datatype simd int16 int32 float double)
+ endforeach()
+ 
+ if(_kissfft_datatype_detected)
+-    if(NOT TARGET kissfft::kissfft-${_kissfft_datatype_detected})
+-        message(FATAL_ERROR "kissfft with datatype=${_kissfft_datatype_detected} is not installed")
++    if(TARGET kissfft::kissfft-${_kissfft_datatype_detected}-openmp)
++	set(_kissfft_openmp_detected "-openmp")
+     endif()
++
++    if(NOT TARGET kissfft::kissfft-${_kissfft_datatype_detected}${_kissfft_openmp_detected})
++        message(FATAL_ERROR "kissfft with datatype=${_kissfft_datatype_detected}${_kissfft_openmp_detected} is not installed")
++    endif()
++
+     if(TARGET kissfft::kissfft)
+         message(SEND_ERROR "kissfft::kissfft already exists. You cannot use 2 find_package's with datatype that are visible to eachother.")
+     else()
+         add_library(kissfft::kissfft INTERFACE IMPORTED)
+-        set_property(TARGET kissfft::kissfft PROPERTY INTERFACE_LINK_LIBRARIES kissfft::kissfft-${_kissfft_datatype_detected})
++        set_property(TARGET kissfft::kissfft PROPERTY INTERFACE_LINK_LIBRARIES kissfft::kissfft-${_kissfft_datatype_detected}${_kissfft_openmp_detected})
+     endif()
+ endif()

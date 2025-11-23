@@ -1,0 +1,11 @@
+--- a/src/game.c
++++ b/src/game.c
+@@ -642,7 +642,7 @@
+ 		  (game, prev_winner, c, ((i + prev_winner) % 4),
+ 		   game->players[((i + prev_winner) % 4)]->turn, &err))
+ 		{
+-		  g_message (err->message);
++		  g_message ("%s", err->message);
+ 		  turn_nok = TRUE;
+ 		  game->players[((i + prev_winner) % 4)]->ready =
+ 		    MT_PLAYER_READY_SEND_NOK_FOR_CARD;

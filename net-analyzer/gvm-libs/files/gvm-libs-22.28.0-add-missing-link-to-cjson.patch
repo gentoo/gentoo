@@ -1,0 +1,13 @@
+# Upstream: https://github.com/greenbone/gvm-libs/pull/961
+# Fix build error on clang with  -Wl,--no-allow-shlib-undefined
+
+--- a/http_scanner/CMakeLists.txt
++++ b/http_scanner/CMakeLists.txt
+@@ -67,6 +67,7 @@ if(BUILD_SHARED)
+       gvm_util_shared
+       ${GLIB_LDFLAGS}
+       ${CURL_LDFLAGS}
++      ${CJSON_LDFLAGS}
+       ${LINKER_HARDENING_FLAGS}
+   )
+ endif(BUILD_SHARED)

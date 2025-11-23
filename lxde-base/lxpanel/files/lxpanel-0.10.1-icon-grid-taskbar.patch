@@ -1,0 +1,40 @@
+https://bugs.gentoo.org/956049
+
+From 57b258a7d703dd94bdcf67c6e92b63b0d402ae43 Mon Sep 17 00:00:00 2001
+From: Ben Walsh <b@wumpster.com>
+Date: Mon, 7 Feb 2022 07:02:05 +0000
+Subject: [PATCH] Correct icon-grid width under GTK3
+
+When opening multiple windows, the Taskbar plugin does not resize the
+taskbar buttons if they exceed the available space. Everything to the
+right of the taskbar slides off the screen instead.
+
+Do not set the minimum width to the same value as the natural (i.e.
+current) width if the width is constrained by the allocated space,
+but set it to the smallest possible value.
+
+This likely fixes github issue #23, reported by FredericGuilbault,
+fixes github issue #29, reported by johnfound,
+fixes github issue #63, reported by LiohMoeller,
+fixes part of https://bugs.debian.org/1052050,
+fixes https://bugs.debian.org/1052376, and
+fixes part of https://sourceforge.net/p/lxde/bugs/968.
+
+(commit message amended by committer)
+---
+ src/icon-grid.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/icon-grid.c b/src/icon-grid.c
+index 2177971e..c0020de3 100644
+--- a/src/icon-grid.c
++++ b/src/icon-grid.c
+@@ -392,7 +392,7 @@ static void panel_icon_grid_get_preferred_width(GtkWidget *widget,
+     }
+     panel_icon_grid_size_request(widget, &requisition);
+     if (minimal_width)
+-        *minimal_width = requisition.width;
++        *minimal_width = ig->constrain_width ? 0 : requisition.width;
+     if (natural_width)
+         *natural_width = requisition.width;
+ }

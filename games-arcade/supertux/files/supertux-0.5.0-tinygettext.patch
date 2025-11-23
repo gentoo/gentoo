@@ -1,0 +1,30 @@
+--- SuperTux-v0.5.0-Source/external/tinygettext/CMakeLists.txt
++++ SuperTux-v0.5.0-Source/external/tinygettext/CMakeLists.txt
+@@ -59,7 +59,7 @@
+ )
+ 
+ ## Reveal library type choice to users
+-option(BUILD_SHARED_LIBS "Produce dynamic library instead of static archive" ON)
++option(BUILD_SHARED_LIBS "Produce dynamic library instead of static archive" OFF)
+ 
+ # TinyGetText library compilation
+ 
+@@ -128,17 +128,7 @@
+ ## Debug options
+ 
+ option(WERROR "Stops on first compiler warning in debug mode" OFF)
+-option(WARNINGS "Enable long list of warnings for compiler to check" ON)
+-
+-CHECK_CXX_FLAG(std=c++0x)
+-CHECK_CXX_FLAG(O3)
+-IF(NOT MSVC)
+-    #MSVC is excessivly verbose when Wall is activated
+-    CHECK_CXX_FLAG(Wall)
+-ENDIF()
+-CHECK_CXX_FLAG(Wextra)
+-CHECK_CXX_FLAG(Weffc++)
+-CHECK_CXX_FLAG(pedantic)
++option(WARNINGS "Enable long list of warnings for compiler to check" OFF)
+ 
+ if(WARNINGS)
+   CHECK_CXX_FLAG(Wabi)

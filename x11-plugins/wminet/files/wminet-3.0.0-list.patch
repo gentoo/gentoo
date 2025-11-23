@@ -1,0 +1,300 @@
+diff -Naur wminet-3.0.0.orig/src/list.c wminet-3.0.0/src/list.c
+--- wminet-3.0.0.orig/src/list.c	2001-11-24 12:03:32.000000000 +0100
++++ wminet-3.0.0/src/list.c	2016-01-04 13:45:02.137642820 +0100
+@@ -38,7 +38,7 @@
+ 
+ /* Return a cons cell produced from (head . tail) */
+ 
+-INLINE LinkedList* 
++LinkedList* 
+ list_cons(void* head, LinkedList* tail)
+ {
+   LinkedList* cell;
+@@ -51,7 +51,7 @@
+ 
+ /* Return the length of a list, list_length(NULL) returns zero */
+ 
+-INLINE int
++int
+ list_length(LinkedList* list)
+ {
+   int i = 0;
+@@ -66,7 +66,7 @@
+ /* Return the Nth element of LIST, where N count from zero.  If N 
+    larger than the list length, NULL is returned  */
+ 
+-INLINE void*
++void*
+ list_nth(int index, LinkedList* list)
+ {
+   while(index-- != 0)
+@@ -81,7 +81,7 @@
+ 
+ /* Remove the element at the head by replacing it by its successor */
+ 
+-INLINE void
++void
+ list_remove_head(LinkedList** list)
+ {
+   if (!*list) return;  
+@@ -101,7 +101,7 @@
+ 
+ /* Remove the element with `car' set to ELEMENT */
+ /*
+-INLINE void
++void
+ list_remove_elem(LinkedList** list, void* elem)
+ {
+   while (*list)
+@@ -112,7 +112,7 @@
+     }
+ }*/
+ 
+-INLINE LinkedList *
++LinkedList *
+ list_remove_elem(LinkedList* list, void* elem)
+ {
+     LinkedList *tmp;
+@@ -132,7 +132,7 @@
+ 
+ /* Return element that has ELEM as car */
+ 
+-INLINE LinkedList*
++LinkedList*
+ list_find(LinkedList* list, void* elem)
+ {
+   while(list)
+@@ -146,7 +146,7 @@
+ 
+ /* Free list (backwards recursive) */
+ 
+-INLINE void
++void
+ list_free(LinkedList* list)
+ {
+   if(list)
+@@ -158,7 +158,7 @@
+ 
+ /* Map FUNCTION over all elements in LIST */
+ 
+-INLINE void
++void
+ list_mapcar(LinkedList* list, void(*function)(void*))
+ {
+   while(list)
+diff -Naur wminet-3.0.0.orig/src/list.c.orig wminet-3.0.0/src/list.c.orig
+--- wminet-3.0.0.orig/src/list.c.orig	1970-01-01 01:00:00.000000000 +0100
++++ wminet-3.0.0/src/list.c.orig	2001-11-24 12:03:32.000000000 +0100
+@@ -0,0 +1,169 @@
++/* Generic single linked list to keep various information 
++   Copyright (C) 1993, 1994 Free Software Foundation, Inc.
++
++
++Author: Kresten Krab Thorup
++
++Many modifications by Alfredo K. Kojima
++ 
++
++This file is part of GNU CC.
++
++GNU CC is free software; you can redistribute it and/or modify
++it under the terms of the GNU General Public License as published by
++the Free Software Foundation; either version 2, or (at your option)
++any later version.
++
++GNU CC is distributed in the hope that it will be useful,
++but WITHOUT ANY WARRANTY; without even the implied warranty of
++MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++GNU General Public License for more details.
++
++You should have received a copy of the GNU General Public License
++along with GNU CC; see the file COPYING.  If not, write to
++the Free Software Foundation, 59 Temple Place - Suite 330,
++Boston, MA 02111-1307, USA.  */
++
++/* As a special exception, if you link this library with files compiled with
++   GCC to produce an executable, this does not cause the resulting executable
++   to be covered by the GNU General Public License. This exception does not
++   however invalidate any other reasons why the executable file might be
++   covered by the GNU General Public License.  */
++
++#include "list.h"
++#ifdef HAVE_SYS_TYPES_H
++# include <sys/types.h>
++#endif
++#include <stdlib.h>
++
++/* Return a cons cell produced from (head . tail) */
++
++INLINE LinkedList* 
++list_cons(void* head, LinkedList* tail)
++{
++  LinkedList* cell;
++
++  cell = (LinkedList*)malloc(sizeof(LinkedList));
++  cell->head = head;
++  cell->tail = tail;
++  return cell;
++}
++
++/* Return the length of a list, list_length(NULL) returns zero */
++
++INLINE int
++list_length(LinkedList* list)
++{
++  int i = 0;
++  while(list)
++    {
++      i += 1;
++      list = list->tail;
++    }
++  return i;
++}
++
++/* Return the Nth element of LIST, where N count from zero.  If N 
++   larger than the list length, NULL is returned  */
++
++INLINE void*
++list_nth(int index, LinkedList* list)
++{
++  while(index-- != 0)
++    {
++      if(list->tail)
++	list = list->tail;
++      else
++	return 0;
++    }
++  return list->head;
++}
++
++/* Remove the element at the head by replacing it by its successor */
++
++INLINE void
++list_remove_head(LinkedList** list)
++{
++  if (!*list) return;  
++  if ((*list)->tail)
++    {
++      LinkedList* tail = (*list)->tail; /* fetch next */
++      *(*list) = *tail;		/* copy next to list head */
++      free(tail);			/* free next */
++    }
++  else				/* only one element in list */
++    {
++      free(*list);
++      (*list) = 0;
++    }
++}
++
++
++/* Remove the element with `car' set to ELEMENT */
++/*
++INLINE void
++list_remove_elem(LinkedList** list, void* elem)
++{
++  while (*list)
++    {
++      if ((*list)->head == elem)
++        list_remove_head(list);
++      *list = (*list ? (*list)->tail : NULL);
++    }
++}*/
++
++INLINE LinkedList *
++list_remove_elem(LinkedList* list, void* elem)
++{
++    LinkedList *tmp;
++    
++    if (list) {
++	if (list->head == elem) {
++	    tmp = list->tail;
++	    free(list);
++	    return tmp;
++	}
++	list->tail = list_remove_elem(list->tail, elem);
++	return list;
++    }
++    return NULL;
++}
++
++
++/* Return element that has ELEM as car */
++
++INLINE LinkedList*
++list_find(LinkedList* list, void* elem)
++{
++  while(list)
++    {
++    if (list->head == elem)
++      return list;
++    list = list->tail;
++    }
++  return NULL;
++}
++
++/* Free list (backwards recursive) */
++
++INLINE void
++list_free(LinkedList* list)
++{
++  if(list)
++    {
++      list_free(list->tail);
++      free(list);
++    }
++}
++
++/* Map FUNCTION over all elements in LIST */
++
++INLINE void
++list_mapcar(LinkedList* list, void(*function)(void*))
++{
++  while(list)
++    {
++      (*function)(list->head);
++      list = list->tail;
++    }
++}
+diff -Naur wminet-3.0.0.orig/src/list.h wminet-3.0.0/src/list.h
+--- wminet-3.0.0.orig/src/list.h	2001-11-24 12:03:32.000000000 +0100
++++ wminet-3.0.0/src/list.h	2016-01-04 13:45:02.137642820 +0100
+@@ -29,31 +29,25 @@
+ #ifndef __LIST_H_
+ #define __LIST_H_
+ 
+-#if defined(__GNUC__) && !defined(__STRICT_ANSI__)
+-# define INLINE inline
+-#else
+-# define INLINE
+-#endif
+-
+ typedef struct LinkedList {
+   void *head;
+   struct LinkedList *tail;
+ } LinkedList;
+ 
+-INLINE LinkedList* list_cons(void* head, LinkedList* tail);
++LinkedList* list_cons(void* head, LinkedList* tail);
+ 
+-INLINE int list_length(LinkedList* list);
++int list_length(LinkedList* list);
+ 
+-INLINE void* list_nth(int index, LinkedList* list);
++void* list_nth(int index, LinkedList* list);
+ 
+-INLINE void list_remove_head(LinkedList** list);
++void list_remove_head(LinkedList** list);
+ 
+-INLINE LinkedList *list_remove_elem(LinkedList* list, void* elem);
++LinkedList *list_remove_elem(LinkedList* list, void* elem);
+ 
+-INLINE void list_mapcar(LinkedList* list, void(*function)(void*));
++void list_mapcar(LinkedList* list, void(*function)(void*));
+ 
+-INLINE LinkedList*list_find(LinkedList* list, void* elem);
++LinkedList*list_find(LinkedList* list, void* elem);
+ 
+-INLINE void list_free(LinkedList* list);
++void list_free(LinkedList* list);
+ 
+ #endif

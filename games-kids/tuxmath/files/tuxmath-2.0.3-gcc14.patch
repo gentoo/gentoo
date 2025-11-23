@@ -1,0 +1,51 @@
+https://bugs.gentoo.org/925143
+
+--- a/src/menu.c
++++ b/src/menu.c
+@@ -631,8 +631,8 @@ void LoadMenus(void)
+    0 indicates that a choice has been made. */
+ int RunLoginMenu(void)
+ {
+-    const char *trailer_quit = "Quit";
+-    const char *trailer_back = "Back";
++    char *trailer_quit = "Quit";
++    char *trailer_back = "Back";
+     int n_login_questions = 0;
+     char **user_login_questions = NULL;
+     char *title = NULL;
+--- a/src/titlescreen.c
++++ b/src/titlescreen.c
+@@ -406,7 +406,7 @@ int RenderTitleScreen(void)
+ /* handle titlescreen events (easter egg)
+    this function should be called from event loops
+    return 1 if events require full redraw */
+-int HandleTitleScreenEvents(const SDL_Event* evt)
++int HandleTitleScreenEvents(SDL_Event* evt)
+ {
+     if (evt->type == SDL_KEYDOWN)
+ 	if (evt->key.keysym.sym == SDLK_F10)
+@@ -418,9 +418,9 @@ int HandleTitleScreenEvents(const SDL_Event* evt)
+ /* handle a resolution switch. Tux et. al. may need to be resized
+    and/or repositioned
+    */
+-int HandleTitleScreenResSwitch(int new_w, int new_h)
++void HandleTitleScreenResSwitch(int new_w, int new_h)
+ {
+-    return RenderTitleScreen();
++    RenderTitleScreen();
+ }
+ 
+ /* handle all titlescreen blitting
+--- a/src/titlescreen.h
++++ b/src/titlescreen.h
+@@ -102,8 +102,8 @@ extern SDL_Event  event;
+ void          TitleScreen(void);
+ int           RenderTitleScreen(void);
+ void          DrawTitleScreen(void);
+-int           HandleTitleScreenEvents(const SDL_Event* evt);
+-int           HandleTitleScreenResSwitch(int new_w, int new_h);
++int           HandleTitleScreenEvents(SDL_Event* evt);
++void          HandleTitleScreenResSwitch(int new_w, int new_h);
+ void          HandleTitleScreenAnimations();
+ void          HandleTitleScreenAnimations_Reset(bool reset);
+ void          ShowMessage(int font_size, const char* str1, const char* str2, const char* str3, const char* str4);

@@ -1,0 +1,15 @@
+[Unit]
+Description=Minetest multiplayer server (server config %i.conf)
+Documentation=man:minetestserver(6)
+After=network.target
+
+[Service]
+Restart=on-failure
+User=minetest
+Group=minetest
+ExecStart=/usr/bin/minetestserver --config /etc/minetest/%i.conf --logfile /var/log/minetest/%i-server.log
+StandardOutput=null
+
+[Install]
+WantedBy=multi-user.target
+

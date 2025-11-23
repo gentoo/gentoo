@@ -1,0 +1,28 @@
+# Patch from James Burton - https://github.com/jburton/libgpod/commit/342d49c5577682dd4fba35bfd5fb15f7287c7d5a
+--- a/src/itdb_itunesdb.c
++++ b/src/itdb_itunesdb.c
+@@ -1156,6 +1156,7 @@ static gboolean playcounts_plist_read (FImport *fimp, GValue *plist_data)
+     GHashTable *pc_dict, *track_dict;
+     GValue *to_parse;
+     GArray *array;
++    GValue value;
+     gint i;
+     guint32 mac_time;
+     guint64 *dbid;
+@@ -1174,13 +1175,14 @@ static gboolean playcounts_plist_read (FImport *fimp, GValue *plist_data)
+     playcounts = g_hash_table_new_full (g_int64_hash, g_int64_equal, g_free, g_free);
+
+     array = (GArray*)g_value_get_boxed (to_parse);
+     for (i = 0; i < array->len; i++) {
+-       if (!G_VALUE_HOLDS (g_array_index (array, GValue *, i), G_TYPE_HASH_TABLE)) {
++       value = g_array_index (array, GValue, i);
++       if (!G_VALUE_HOLDS (&value, G_TYPE_HASH_TABLE)) {
+           continue;
+        }
+
+-       track_dict = g_value_get_boxed (g_array_index (array, GValue *, i));
++       track_dict = g_value_get_boxed (&value);
+        if (track_dict == NULL)
+            continue;
+ 
+        to_parse = g_hash_table_lookup (track_dict, "persistentID");

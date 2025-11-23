@@ -1,0 +1,195 @@
+--- a/source/bam_cat.c
++++ b/source/bam_cat.c
+@@ -52,8 +52,8 @@
+ #include <stdlib.h>
+ #include <unistd.h>
+ 
+-#include "htslib/htslib/bgzf.h"
+-#include "htslib/htslib/sam.h"
++#include <htslib/bgzf.h>
++#include <htslib/sam.h>
+ #include <cstring>
+ 
+ #define BUF_SIZE 0x10000
+--- a/source/bam_cat.h
++++ b/source/bam_cat.h
+@@ -1,7 +1,7 @@
+ #ifndef CODE_bam_cat
+ #define CODE_bam_cat
+ 
+-#include "htslib/htslib/sam.h"
++#include <htslib/sam.h>
+ 
+ int bam_cat(int nfn, char * const *fn, const bam_hdr_t *h, const char* outbam);
+ 
+--- a/source/BAMfunctions.cpp
++++ b/source/BAMfunctions.cpp
+@@ -1,5 +1,5 @@
+ #include "BAMfunctions.h"
+-#include "htslib/htslib/kstring.h"
++#include <htslib/kstring.h>
+ 
+ 
+ string bam_cigarString (bam1_t *b) {//output CIGAR string
+--- a/source/bamRemoveDuplicates.cpp
++++ b/source/bamRemoveDuplicates.cpp
+@@ -1,7 +1,7 @@
+ #include <unordered_map>
+ #include "bamRemoveDuplicates.h"
+ #include <iostream>
+-#include "htslib/htslib/sam.h"
++#include <htslib/sam.h>
+ #include "IncludeDefine.h"
+ #include SAMTOOLS_BGZF_H
+ #include "ErrorWarning.h"
+--- a/source/IncludeDefine.h
++++ b/source/IncludeDefine.h
+@@ -30,8 +30,8 @@
+ #define ERROR_OUT string ( __FILE__ ) +":"+ to_string ( (uint) __LINE__ ) +":"+ string ( __FUNCTION__ )
+ 
+ //external libs
+-#define SAMTOOLS_BGZF_H "htslib/htslib/bgzf.h"
+-#define SAMTOOLS_SAM_H  "htslib/htslib/sam.h"
++#define SAMTOOLS_BGZF_H <htslib/bgzf.h>
++#define SAMTOOLS_SAM_H  <htslib/sam.h>
+ 
+ using namespace std;
+ 
+--- a/source/Makefile
++++ b/source/Makefile
+@@ -12,11 +12,7 @@
+ CXX ?= g++
+ 
+ # pre-defined flags
+-LDFLAGS_shared := -pthread -Lhtslib -Bstatic -lhts -Bdynamic -lz
+-LDFLAGS_static := -static -static-libgcc -pthread -Lhtslib -lhts -lz
+-LDFLAGS_Mac :=-pthread -lz htslib/libhts.a
+-LDFLAGS_Mac_static :=-pthread -lz -static-libgcc htslib/libhts.a
+-LDFLAGS_gdb := $(LDFLAGS_shared)
++LIBS := -pthread -lhts -lz
+ 
+ DATE_FMT = --iso-8601=seconds
+ ifdef SOURCE_DATE_EPOCH
+@@ -27,7 +23,7 @@
+ 
+ BUILD_PLACE ?= $(HOSTNAME):$(shell pwd)
+ 
+-COMPTIMEPLACE := -D'COMPILATION_TIME_PLACE="$(BUILD_DATE) $(BUILD_PLACE)"'
++COMPTIMEPLACE := -D'COMPILATION_TIME_PLACE=""'
+ 
+ 
+ GIT_CHECK := $(shell git status 1> /dev/null 2> /dev/null && echo 0)
+@@ -41,13 +37,13 @@
+ 
+ # Defaults, can be overridden by make arguments or environment
+ CXXFLAGS ?= -pipe -Wall -Wextra
+-CFLAGS ?= -pipe -Wall -Wextra -O3
++CFLAGS ?= -pipe -Wall -Wextra
+ CXXFLAGS_SIMD ?= -mavx2
+ 
+ # Unconditionally set essential flags and optimization options
+ CXXFLAGS_common := -std=c++11 -fopenmp $(COMPTIMEPLACE) $(GIT_BRANCH_COMMIT_DIFF)
+-CXXFLAGS_main := -O3 $(CXXFLAGS_common)
+-CXXFLAGS_gdb := -O0 -g3 $(CXXFLAGS_common)
++CXXFLAGS_main := $(CXXFLAGS_common)
++CXXFLAGS_gdb := $(CXXFLAGS_common)
+ 
+ ##########################################################################################################
+ OBJECTS = SoloFeature_collapseUMI_Graph.o SoloFeature_collapseUMIall_multiMappers.o ParametersClip_initialize.o ClipMate_clip.o ClipCR4.o opal/opal.o ClipMate_clipChunk.o ClipMate_initialize.o \
+@@ -130,7 +126,7 @@
+ ifneq ($(MAKECMDGOALS),clean_solo)
+ ifneq ($(MAKECMDGOALS),STARforMac)
+ ifneq ($(MAKECMDGOALS),STARforMacGDB)
+-Depend.list: $(SOURCES) parametersDefault.xxd htslib
++Depend.list: $(SOURCES) parametersDefault.xxd
+ 	echo $(SOURCES)
+ 	'rm' -f ./Depend.list
+ 	$(CXX) $(CXXFLAGS_common) -MM $^ >> Depend.list
+@@ -142,57 +138,43 @@
+ endif
+ endif
+ 
+-htslib : htslib/libhts.a
+-
+-htslib/libhts.a :
+-	$(MAKE) -C htslib lib-static
+-
+ parametersDefault.xxd: parametersDefault
+ 	xxd -i parametersDefault > parametersDefault.xxd
+ 
+ STAR$(SFX) : CXXFLAGS := $(CXXFLAGSextra) $(CXXFLAGS_main) $(CXXFLAGS)
+-STAR$(SFX) : LDFLAGS := $(LDFLAGSextra) $(LDFLAGS_shared) $(LDFLAGS)
+ STAR$(SFX) : Depend.list parametersDefault.xxd $(OBJECTS)
+-	$(CXX) -o STAR$(SFX) $(CXXFLAGS) $(OBJECTS) $(LDFLAGS)
++	$(CXX) $(LDFLAGS) -o STAR$(SFX) $(CXXFLAGS) $(OBJECTS) $(LIBS)
+ 
+ STARstatic$(SFX) : CXXFLAGS := $(CXXFLAGSextra) $(CXXFLAGS_main) $(CXXFLAGS)
+-STARstatic$(SFX) : LDFLAGS := $(LDFLAGSextra) $(LDFLAGS_static) $(LDFLAGS)
+ STARstatic$(SFX) : Depend.list parametersDefault.xxd $(OBJECTS)
+-	$(CXX) -o STAR$(SFX) $(CXXFLAGS) $(OBJECTS) $(LDFLAGS)
++	$(CXX) $(LDFLAGS) -o STAR$(SFX) $(CXXFLAGS) $(OBJECTS) $(LIBS)
+ 
+ STARlong$(SFX) : CXXFLAGS := $(CXXFLAGSextra) $(CXXFLAGS_main) -D'COMPILE_FOR_LONG_READS' $(CXXFLAGS)
+-STARlong$(SFX) : LDFLAGS := $(LDFLAGSextra) $(LDFLAGS_shared) $(LDFLAGS)
+ STARlong$(SFX) : Depend.list parametersDefault.xxd $(OBJECTS)
+-	$(CXX) -o STARlong$(SFX) $(CXXFLAGS) $(OBJECTS) $(LDFLAGS)
++	$(CXX) $(LDFLAGS) -o STARlong$(SFX) $(CXXFLAGS) $(OBJECTS) $(LIBS)
+ 
+ STARlongStatic$(SFX) : CXXFLAGS := $(CXXFLAGSextra) $(CXXFLAGS_main) -D'COMPILE_FOR_LONG_READS' $(CXXFLAGS)
+-STARlongStatic$(SFX) : LDFLAGS := $(LDFLAGSextra) $(LDFLAGS_static) $(LDFLAGS)
+ STARlongStatic$(SFX) : Depend.list parametersDefault.xxd $(OBJECTS)
+-	$(CXX) -o STARlong$(SFX) $(CXXFLAGS) $(OBJECTS) $(LDFLAGS)
++	$(CXX) $(LDFLAGS) -o STARlong$(SFX) $(CXXFLAGS) $(OBJECTS) $(LIBS)
+ 
+ 
+ 
+ POSIXSHARED : CXXFLAGS := $(CXXFLAGSextra) $(CXXFLAGS_main) -DPOSIX_SHARED_MEM $(CXXFLAGS)
+-POSIXSHARED : LDFLAGS := $(LDFLAGSextra) $(LDFLAGS_shared) $(LDFLAGS)
+ POSIXSHARED : Depend.list parametersDefault.xxd $(OBJECTS)
+-	$(CXX) -o STAR$(SFX) $(CXXFLAGS) $(OBJECTS) $(LDFLAGS)
++	$(CXX) $(LDFLAGS) -o STAR$(SFX) $(CXXFLAGS) $(OBJECTS) $(LIBS)
+ 
+ gdb : CXXFLAGS := $(CXXFLAGSextra) $(CXXFLAGS_gdb) $(CXXFLAGS)
+-gdb : LDFLAGS := $(LDFLAGSextra) $(LDFLAGS_gdb) $(LDFLAGS)
+ gdb : Depend.list parametersDefault.xxd $(OBJECTS)
+-	$(CXX) -o STAR $(CXXFLAGS) $(OBJECTS) $(LDFLAGS)
++	$(CXX) $(LDFLAGS) -o STAR $(CXXFLAGS) $(OBJECTS) $(LIBS)
+ 
+ gdb-long : CXXFLAGS := $(CXXFLAGSextra) $(CXXFLAGS_gdb) -D'COMPILE_FOR_LONG_READS' $(CXXFLAGS)
+-gdb-long : LDFLAGS := $(LDFLAGSextra) $(LDFLAGS_gdb) $(LDFLAGS)
+ gdb-long : Depend.list parametersDefault.xxd $(OBJECTS)
+-	$(CXX) -o STARlong $(CXXFLAGS) $(OBJECTS) $(LDFLAGS)
++	$(CXX) $(LDFLAGS) -o STARlong $(CXXFLAGS) $(OBJECTS) $(LIBS)
+ 
+ STARforMacStatic : CXXFLAGS := $(CXXFLAGSextra) $(CXXFLAGS_main) -D'COMPILE_FOR_MAC' $(CXXFLAGS)
+-STARforMacStatic : LDFLAGS := $(LDFLAGSextra) $(LDFLAGS_Mac_static) $(LDFLAGS)
+ STARforMacStatic : Depend.list parametersDefault.xxd $(OBJECTS)
+-	$(CXX) -o STAR $(CXXFLAGS) $(OBJECTS) $(LDFLAGS)
++	$(CXX) $(LDFLAGS) -o STAR $(CXXFLAGS) $(OBJECTS) $(LIBS)
+ 
+ STARlongForMacStatic : CXXFLAGS := -D'COMPILE_FOR_LONG_READS' $(CXXFLAGSextra) $(CXXFLAGS_main) -D'COMPILE_FOR_MAC' $(CXXFLAGS)
+-STARlongForMacStatic : LDFLAGS := $(LDFLAGSextra) $(LDFLAGS_Mac_static) $(LDFLAGS)
+ STARlongForMacStatic : Depend.list parametersDefault.xxd $(OBJECTS)
+-	$(CXX) -o STARlong $(CXXFLAGS) $(OBJECTS) $(LDFLAGS)
++	$(CXX) $(LDFLAGS) -o STARlong $(CXXFLAGS) $(OBJECTS) $(LIBS)
+--- a/source/signalFromBAM.h
++++ b/source/signalFromBAM.h
+@@ -1,6 +1,6 @@
+ #ifndef CODE_signalFromBAM
+ #define CODE_signalFromBAM
+-#include "htslib/htslib/sam.h"
++#include <htslib/sam.h>
+ #include  <fstream>
+ #include <string>
+ #include "Stats.h"
+--- a/source/STAR.cpp
++++ b/source/STAR.cpp
+@@ -29,7 +29,7 @@
+ 
+ #include "twoPassRunPass1.h"
+ 
+-#include "htslib/htslib/sam.h"
++#include <htslib/sam.h>
+ #include "parametersDefault.xxd"
+ 
+ void usage(int usageType) {

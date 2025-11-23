@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>holger@applied-asynchrony.com</email>
+		<name>Holger Hoffstätte</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="caps">Use <pkg>sys-libs/libcap</pkg> to enable unprivileged run support</flag>
+		<flag name="clang">Use <pkg>llvm-core/clang</pkg> instead of <pkg>sys-devel/bpf-toolchain</pkg> for BPF CO-RE support</flag>
+		<flag name="llvm">Use <pkg>llvm-core/llvm</pkg> instead of libbfd (<pkg>sys-libs/binutils-libs</pkg>) for JIT disassembly</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">libbpf/bpftool</remote-id>
+	</upstream>
+</pkgmetadata>

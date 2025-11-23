@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="allow-sendfilefd">Allow use of sendfileFd (not available on GNU/kFreeBSD)</flag>
+		<flag name="x509">Adds a dependency on the x509 library to enable getting TLS client certificates.</flag>
+	</use>
+	<upstream>
+		<remote-id type="hackage">warp</remote-id>
+		<remote-id type="github">yesodweb/wai</remote-id>
+	</upstream>
+</pkgmetadata>

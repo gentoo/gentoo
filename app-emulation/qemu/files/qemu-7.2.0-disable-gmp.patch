@@ -1,0 +1,45 @@
+commit 433c2acd1b9c3f7f5903273e85fed9a7f9157b23
+Author: John Helmert III <ajak@gentoo.org>
+Date:   Wed Jan 4 12:25:08 2023 -0600
+
+    meson.build: disable gmp
+    
+    gmp isn't required, and we want to avoid linking to it automatigcally
+    in Gentoo.
+    
+    Bug: https://bugs.gentoo.org/886207
+    Signed-off-by: John Helmert III <ajak@gentoo.org>
+
+diff --git a/meson.build b/meson.build
+index 5c6b5a1c75..2f9550362d 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1234,15 +1234,6 @@ if not gnutls_crypto.found()
+   endif
+ endif
+ 
+-gmp = dependency('gmp', required: false, method: 'pkg-config', kwargs: static_kwargs)
+-if nettle.found() and gmp.found()
+-  hogweed = dependency('hogweed', version: '>=3.4',
+-                       method: 'pkg-config',
+-                       required: get_option('nettle'),
+-                       kwargs: static_kwargs)
+-endif
+-
+-
+ gtk = not_found
+ gtkx11 = not_found
+ vte = not_found
+diff --git a/meson_options.txt b/meson_options.txt
+index 4b749ca549..e06b274960 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -277,6 +277,8 @@ option('vduse_blk_export', type: 'feature', value: 'auto',
+ 
+ option('capstone', type: 'feature', value: 'auto',
+        description: 'Whether and how to find the capstone library')
++option('gmp', type: 'feature', value: 'auto',
++       description: 'Whether or not to find the gmp library')
+ option('fdt', type: 'combo', value: 'auto',
+        choices: ['disabled', 'enabled', 'auto', 'system', 'internal'],
+        description: 'Whether and how to find the libfdt library')

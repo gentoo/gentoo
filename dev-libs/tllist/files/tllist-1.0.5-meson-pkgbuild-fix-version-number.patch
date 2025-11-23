@@ -1,0 +1,37 @@
+From 460a684bb297088581d30a7e78d2ca6be719cdef Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Ekl=C3=B6f?= <daniel@ekloef.se>
+Date: Fri, 26 Feb 2021 10:26:36 +0100
+Subject: [PATCH] meson/pkgbuild: fix version number
+
+---
+ PKGBUILD    | 2 +-
+ meson.build | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+https://codeberg.org/dnkl/tllist/commit/460a684bb297088581d30a7e78d2ca6be719cdef
+https://bugs.gentoo.org/859469
+
+diff --git a/PKGBUILD b/PKGBUILD
+index ec197d1..0339f82 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -1,5 +1,5 @@
+ pkgname=tllist
+-pkgver=1.0.4
++pkgver=1.0.5
+ pkgrel=1
+ pkgdesc="A C header file only implementation of a typed linked list"
+ arch=('x86_64' 'aarch64')
+diff --git a/meson.build b/meson.build
+index 200f2c7..36aadec 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1,4 +1,4 @@
+-project('tllist', 'c', version: '1.0.4', license: 'MIT', meson_version: '>=0.54.0')
++project('tllist', 'c', version: '1.0.5', license: 'MIT', meson_version: '>=0.54.0')
+ tllist = declare_dependency(include_directories: '.')
+ meson.override_dependency('tllist', tllist)
+ 
+-- 
+2.35.1
+

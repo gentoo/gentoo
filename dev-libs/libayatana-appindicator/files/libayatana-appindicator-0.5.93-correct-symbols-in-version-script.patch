@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/934481
+https://github.com/AyatanaIndicators/libayatana-appindicator/pull/79
+https://github.com/AyatanaIndicators/libayatana-appindicator/commit/6e29dc3814da0a425424b8ed4ccb2e3769bb2de2
+
+From 6e29dc3814da0a425424b8ed4ccb2e3769bb2de2 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Tue, 2 Jul 2024 00:08:27 +0300
+Subject: [PATCH 1/1] Correct symbols in version script file
+
+LLVM lld checks for nonexistent symbols in version scripts files.
+Correct symbols names to what appears to be the desired results.
+
+Bug: https://bugs.gentoo.org/934481
+Fixes: 4d97676bb5ba1a7612aed36d219cbaa978adc90e
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/src/app-indicator.symbols
++++ b/src/app-indicator.symbols
+@@ -1,6 +1,6 @@
+ {
+     global: app_indicator_*;
+     local:  _notification_*;
+-            _generate_;
+-            _application_;
++            _generate_id;
++            _application_service_marshal_*;
+ };
+-- 
+2.45.2
+

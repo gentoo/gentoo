@@ -1,0 +1,42 @@
+https://bugs.gentoo.org/943781
+--- a/ttyrec.c
++++ b/ttyrec.c
+@@ -122,14 +122,12 @@ int	aflg;
+ int	uflg;
+ 
+ int
+-main(argc, argv)
+-	int argc;
+-	char *argv[];
++main(int argc, char *argv[])
+ {
+ 	extern int optind;
+ 	int ch;
+ 	void finish();
+-	char *getenv();
++	char *getenv(const char *);
+ 	char *command = NULL;
+ 
+ 	while ((ch = getopt(argc, argv, "aue:h?")) != EOF)
+diff --git a/ttyrec.c b/ttyrec.c
+index b112dc6..ab78ce3 100644
+--- a/ttyrec.c
++++ b/ttyrec.c
+@@ -126,7 +126,7 @@ main(int argc, char *argv[])
+ {
+ 	extern int optind;
+ 	int ch;
+-	void finish();
++	void finish(int);
+ 	char *getenv(const char *);
+ 	char *command = NULL;
+ 
+@@ -207,7 +207,7 @@ doinput()
+ #include <sys/wait.h>
+ 
+ void
+-finish()
++finish(int sig)
+ {
+ #if defined(SVR4)
+ 	int status;

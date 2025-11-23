@@ -1,0 +1,24 @@
+From 7b4c3e2b62a0e988db06051976260faa3889377a Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Thu, 11 Apr 2024 23:11:15 +0200
+Subject: [PATCH] setup.py: Drop script "dot2tex" that collides with entrypoint
+
+---
+ setup.py | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index d107eed..9f50c7c 100644
+--- a/setup.py
++++ b/setup.py
+@@ -25,7 +25,6 @@ Graphviz_, a more LaTeX friendly look and feel. This is accomplished by:
+       author_email='kjellmf@gmail.com',
+       url="https://github.com/kjellmf/dot2tex",
+       py_modules=['dot2tex.dot2tex', 'dot2tex.dotparsing'],
+-      scripts=['dot2tex/dot2tex'],
+       classifiers=[
+           'Development Status :: 4 - Beta',
+           'Environment :: Console',
+-- 
+2.44.0
+

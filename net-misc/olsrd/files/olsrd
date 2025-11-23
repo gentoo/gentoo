@@ -1,0 +1,26 @@
+#!/sbin/openrc-run
+
+depend() {
+	need net
+}
+
+checkconfig() {
+	if [ ! -e /etc/olsrd/olsrd.conf ]; then
+		eerror "You need a /etc/olsrd/olsrd.conf file to run olsrd"
+		eerror "There is sample file in /usr/share/doc/olsrd-version/"
+		return 1
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting olsrd"
+	start-stop-daemon --start --quiet --background --exec /usr/sbin/olsrd
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping olsrd"
+	start-stop-daemon --stop --quiet --exec /usr/sbin/olsrd
+	eend $?
+}

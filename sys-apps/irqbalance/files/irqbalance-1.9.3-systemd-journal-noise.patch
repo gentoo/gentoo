@@ -1,0 +1,21 @@
+https://github.com/Irqbalance/irqbalance/issues/281
+https://github.com/Irqbalance/irqbalance/commit/f3282f4ddc10be44e6c423de6de8db600f748f85
+
+From f3282f4ddc10be44e6c423de6de8db600f748f85 Mon Sep 17 00:00:00 2001
+From: Neil Horman <nhorman@openssl.org>
+Date: Thu, 30 Nov 2023 16:55:30 -0500
+Subject: [PATCH] filter console only output when using journal mode
+
+Fixes #281
+--- a/irqbalance.h
++++ b/irqbalance.h
+@@ -138,7 +138,8 @@ extern unsigned int log_mask;
+ #ifdef HAVE_LIBSYSTEMD
+ #define log(mask, lvl, fmt, args...) do {					\
+ 	if (journal_logging) {							\
+-		sd_journal_print(lvl, fmt, ##args);				\
++        if (log_mask & mask & TO_SYSLOG) \
++            sd_journal_print(lvl, fmt, ##args);			\
+ 		if (log_mask & mask & TO_CONSOLE)				\
+ 			printf(fmt, ##args);					\
+ 	} else { 								\

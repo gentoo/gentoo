@@ -1,0 +1,41 @@
+From aab12549a939d07f638df486f910544c6b11b972 Mon Sep 17 00:00:00 2001
+Message-ID: <aab12549a939d07f638df486f910544c6b11b972.1758727915.git.sam@gentoo.org>
+In-Reply-To: <4b8d141ec165aa29a48316768089cb03aed3aada.1758727915.git.sam@gentoo.org>
+References: <4b8d141ec165aa29a48316768089cb03aed3aada.1758727915.git.sam@gentoo.org>
+From: Darren Tucker <dtucker@dtucker.net>
+Date: Thu, 17 Oct 2024 19:18:23 +1100
+Subject: [PATCH 08/10] MacOS 12 runners are deprecated, replace with 15.
+
+---
+ .github/workflows/c-cpp.yml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/.github/workflows/c-cpp.yml b/.github/workflows/c-cpp.yml
+index c179f73d1..c49aa5ee8 100644
+--- a/.github/workflows/c-cpp.yml
++++ b/.github/workflows/c-cpp.yml
+@@ -17,9 +17,9 @@ jobs:
+         target:
+           - ubuntu-20.04
+           - ubuntu-22.04
+-          - macos-12
+           - macos-13
+           - macos-14
++          - macos-15
+           - windows-2019
+           - windows-2022
+         config: [default]
+@@ -100,9 +100,9 @@ jobs:
+           - { target: ubuntu-22.04, config: selinux }
+           - { target: ubuntu-22.04, config: kitchensink }
+           - { target: ubuntu-22.04, config: without-openssl }
+-          - { target: macos-12, config: pam }
+           - { target: macos-13, config: pam }
+           - { target: macos-14, config: pam }
++          - { target: macos-15, config: pam }
+     runs-on: ${{ matrix.target }}
+     steps:
+     - name: set cygwin git params
+-- 
+2.51.0
+

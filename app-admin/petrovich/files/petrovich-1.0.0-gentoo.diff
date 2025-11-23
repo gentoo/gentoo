@@ -1,0 +1,32 @@
+diff -r -C2 petrovich.orig/petrovich.pl petrovich/petrovich.pl
+*** a/petrovich.pl	Mon Jul 16 12:34:55 2001
+--- b/petrovich.pl	Sun Aug  5 22:22:54 2001
+***************
+*** 278,285 ****
+      
+  #    undef $db_hash_verifier; # for now cuz it's not working    
+!     $config_file = "petrovich.conf" unless defined($config_file);
+      $hash_type = "md5" unless defined($hash_type);
+      @stuff = ("filename", "mode","uid","gid","size","mtime","ctime","$hash_type");
+!     $db_file = "petrovich.db" unless defined($db_file);
+      
+  # if running under windows lowercase everything
+--- 278,285 ----
+      
+  #    undef $db_hash_verifier; # for now cuz it's not working    
+!     $config_file = "/etc/petrovich.conf" unless defined($config_file);
+      $hash_type = "md5" unless defined($hash_type);
+      @stuff = ("filename", "mode","uid","gid","size","mtime","ctime","$hash_type");
+!     $db_file = "/var/db/petrovich/petrovich.db" unless defined($db_file);
+      
+  # if running under windows lowercase everything
+***************
+*** 324,326 ****
+  }
+  
+! }
+\ No newline at end of file
+--- 324,326 ----
+  }
+  
+! }

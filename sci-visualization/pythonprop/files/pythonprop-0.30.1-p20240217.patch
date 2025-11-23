@@ -1,0 +1,169 @@
+diff --git a/data/voacapgui.desktop.in b/data/voacapgui.desktop.in
+index 3237a87..175d7d8 100644
+--- a/data/voacapgui.desktop.in
++++ b/data/voacapgui.desktop.in
+@@ -3,4 +3,5 @@ Type=Application
+ Exec=voacapgui
+ Name=voacapgui
+ Categories=Science;HamRadio
++Keywords=amateur;ham;hf;prediction;plot;radio;voacap;
+ Icon=@PACKAGE@
+diff --git a/man/voa3DPlot.1 b/man/voa3DPlot.1
+new file mode 100644
+index 0000000..1336eea
+--- /dev/null
++++ b/man/voa3DPlot.1
+@@ -0,0 +1,36 @@
++.TH voa3DPlot 1 "FEV 2024" Linux "User Manuals"
++.SH NAME
++voa3DPlot \- Plot the contents of VOACAP output files in a 3D format
++.SH SYNOPSIS
++.B voa3DPlot [options] file
++.SH DESCRIPTION
++.B voa3DPlot
++A python script used to graphically display the contents of output files produced by VOACAP.
++.SH OPTIONS
++.IP --version
++Shows program version number and exit.
++.IP "-h, --help"
++Shows a help message and exit.
++.IP "-b band, --band=band"
++Displays a band plan indicated by 'band', an integer value from 1 to 3 (1:SWL, 2:UK AMATEUR BANDS and 3:KSA AMATEUR BANDS).
++.IP "-f max_frequency, --freqmax=max_frequency"
++Specifies the maximum frequency (MHz) to display on the Y axis.
++.IP "-g group, --group=group"
++Specifies the group(s) within a file containing multiple groups to plot.  Multiple groups must be separated by commas, e.g. '-g 1,3,4' (default = 1).
++.IP "-l 'label', --label='label'"
++Specifies the text label to be printed as a main title at the top of the plot.
++.IP "-m colourmap, --cmap=colourmap"
++Specifies the colourmap to use. Supported colour maps are 'autumn', 'bone', 'cool', 'copper',', 'hot', 'hsv', 'jet', 'pink', 'spring', 'summer', 'winter' (default = 'jet').
++.IP "-o outputfile, --outfile=outputfile"
++Used to specify an output file to save the plot to.
++.IP "-q, --quiet"
++Process quietly, don't produce a graph on the screen.  This only makes sense when used in conjunction with the -o option.
++.IP "-t type, --datatype=type"
++Specifies the type of image to plot.  Supported image types are 0:None 1:MUFday 2:REL 3:SNR 4:S DBW (default = 1).
++.IP "-z timezone, --timezone=timezone"
++Specifies the timezone to shift the plots to.
++.SH AUTHORS
++This program was written by James Watson (M0DNS) <jimwatson at mac dot com>.
++
++This manual page was written by David da Silva Polverari <polverari@debian.org>
++for the Debian Project (but may be used by others).
+diff --git a/man/voaAreaPlot.1 b/man/voaAreaPlot.1
+index 8ddcfde..eb8c76a 100644
+--- a/man/voaAreaPlot.1
++++ b/man/voaAreaPlot.1
+@@ -46,7 +46,7 @@ POI_FILE is a text file with points of interest to plot on the map.  The file is
+ .IP "-p PROJECTION, --projection=PROJECTION"
+ PROJECTION specifies the map projection.  Valid values are 'cyl' (Equidistant
+ Cylindrical), 'mill' (Miller Cylindrical), gall' (Gall Stereographic),
+-'robin' (Robinson), 'vandg' (van der Grinten), 'sinu' (Sinusoidal), 'mbtfpq'
++\(aqrobin' (Robinson), 'vandg' (van der Grinten), 'sinu' (Sinusoidal), 'mbtfpq'
+ (McBryde-Thomas Flat Polar Quartic), 'eck4' (Eckert IV), 'kav7' (Kavrayskiy
+ VII), 'moll' (Mollweide), 'hammer' (Hammer).
+ .IP "-r RESOLUTION, --resolution=RESOLUTION"
+diff --git a/man/voaAreaPlotgui.1 b/man/voaAreaPlotgui.1
+new file mode 100644
+index 0000000..88d07d6
+--- /dev/null
++++ b/man/voaAreaPlotgui.1
+@@ -0,0 +1,13 @@
++.TH voaAreaPlotgui 1 "FEV 2024" Linux "User Manuals"
++.SH NAME
++voaAreaPlotgui \- Graphical frontend to the voaAreaPlot application
++.SH SYNOPSIS
++.B voaAreaPlotgui file
++.SH DESCRIPTION
++.B voaAreaPlotgui
++is a graphical user interface to the voaAreaPlot application. It plots the file contents according to the parameters set on the user interface.
++.SH AUTHORS
++This program was written by James Watson (M0DNS) <jimwatson at mac dot com>.
++
++This manual page was written by David da Silva Polverari <polverari@debian.org>
++for the Debian Project (but may be used by others).
+diff --git a/man/voaP2PPlotgui.1 b/man/voaP2PPlotgui.1
+new file mode 100644
+index 0000000..457a6a0
+--- /dev/null
++++ b/man/voaP2PPlotgui.1
+@@ -0,0 +1,13 @@
++.TH voaP2PPlotgui 1 "FEV 2024" Linux "User Manuals"
++.SH NAME
++voaP2PPlotgui \- Graphical frontend to the voaP2PPlot application
++.SH SYNOPSIS
++.B voaP2PPlotgui file
++.SH DESCRIPTION
++.B voaP2PPlotgui
++is a graphical user interface to the voaP2PPlot application. It plots the file contents according to the parameters set on the user interface.
++.SH AUTHORS
++This program was written by James Watson (M0DNS) <jimwatson at mac dot com>.
++
++This manual page was written by David da Silva Polverari <polverari@debian.org>
++for the Debian Project (but may be used by others).
+diff --git a/man/voacapgui.1 b/man/voacapgui.1
+new file mode 100644
+index 0000000..31b12eb
+--- /dev/null
++++ b/man/voacapgui.1
+@@ -0,0 +1,13 @@
++.TH voacapgui 1 "FEV 2024" Linux "User Manuals"
++.SH NAME
++voacapgui \- An input GUI for voacapl
++.SH SYNOPSIS
++.B voacapgui
++.SH DESCRIPTION
++.B voacapgui
++is a graphical user interface frontend for \fBvoacapl\fP. It generates voacap input files from user input data and plots the resulting predictions.
++.SH AUTHORS
++This program was written by James Watson (M0DNS) <jimwatson at mac dot com>.
++
++This manual page was written by David da Silva Polverari <polverari@debian.org>
++for the Debian Project (but may be used by others).
+diff --git a/src/pythonprop/voaAreaPlot.py b/src/pythonprop/voaAreaPlot.py
+index a0bd789..01f5d86 100644
+--- a/src/pythonprop/voaAreaPlot.py
++++ b/src/pythonprop/voaAreaPlot.py
+@@ -114,6 +114,9 @@ class VOAAreaPlot:
+ 
+         self.datadir = datadir
+ 
++        # set backend during initialization to avoid switching error
++        matplotlib.use('GTK3Agg')
++
+         try:
+             plot_parameters = VOAFile((in_file))
+             plot_parameters.parse_file()
+@@ -146,7 +149,10 @@ class VOAAreaPlot:
+         #    sys.exit(1)
+ 
+         portland = ListedColormap(["#0C3383", "#0b599b","#0a7fb4","#57a18f","#bec255","#f2c438","#f2a638","#ef8235","#e4502a","#d91e1e"])
+-        plt.register_cmap(name='portland', cmap=portland)
++        try:
++            plt.register_cmap(name='portland', cmap=portland)
++        except ValueError:
++            print("Portland colormap is already registered")
+         colMap = color_map
+ 
+         projection = ccrs.PlateCarree()
+diff --git a/src/pythonprop/voaP2PPlot.py b/src/pythonprop/voaP2PPlot.py
+index faf87e6..7255667 100644
+--- a/src/pythonprop/voaP2PPlot.py
++++ b/src/pythonprop/voaP2PPlot.py
+@@ -136,8 +136,15 @@ class VOAP2PPlot:
+ 
+         self.image_defs = self.IMG_TYPE_DICT[self.data_type]
+         self.user_bands = user_bands
++
++        # set backend during initialization to avoid switching error
++        matplotlib.use('GTK3Agg')
++
+         portland = ListedColormap(["#0C3383", "#0b599b","#0a7fb4","#57a18f","#bec255","#f2c438","#f2a638","#ef8235","#e4502a","#d91e1e"])
+-        matplotlib.cm.register_cmap(name='portland', cmap=portland)
++        try:
++            matplotlib.cm.register_cmap(name='portland', cmap=portland)
++        except ValueError:
++            print("Portland colormap is already registered")
+ 
+         if plot_groups[0]=='a':
+             num_grp = self.df.get_number_of_groups()

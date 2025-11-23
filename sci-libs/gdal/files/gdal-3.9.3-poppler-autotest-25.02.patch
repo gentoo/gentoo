@@ -1,0 +1,23 @@
+From f6d4e0608dabfd4f2712172bdb604996178eb744 Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Thu, 6 Feb 2025 14:41:52 +0100
+Subject: [PATCH] Build: fix build against Poppler 25.02.00
+
+Fixes #11804
+---
+ autotest/gdrivers/pdf.py           |  2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/autotest/gdrivers/pdf.py b/autotest/gdrivers/pdf.py
+index 7b74e9b5384c..373604068ec3 100755
+--- a/autotest/gdrivers/pdf.py
++++ b/autotest/gdrivers/pdf.py
+@@ -1524,7 +1524,7 @@ def test_pdf_extra_rasters(poppler_or_pdfium):
+             "LAYER_01_NAME=subbyte",
+         ], "did not get expected layers"
+     if pdf_is_poppler():
+-        assert cs in (7926, 8177, 8174, 8165, 8172)
++        assert cs in (7926, 8177, 8174, 8165, 8172, 8193)
+ 
+ 
+ ###############################################################################

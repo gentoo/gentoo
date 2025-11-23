@@ -1,0 +1,11 @@
+[Unit]
+Description=Incus - Daemon (unix socket)
+
+[Socket]
+ListenStream=/var/lib/incus/unix.socket
+SocketGroup=incus-admin
+SocketMode=0660
+Service=incus.service
+
+[Install]
+WantedBy=sockets.target

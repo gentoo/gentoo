@@ -1,0 +1,27 @@
+From bad99a0bb7981c0287dbc383176338acea98a2d5 Mon Sep 17 00:00:00 2001
+From: Sylvain Henry <sylvain@haskus.fr>
+Date: Fri, 18 Feb 2022 11:01:04 +0100
+Subject: [PATCH] Quick and dirty fix for ModuleOrigin SemiGroup instance
+Bug: https://github.com/gentoo-haskell/gentoo-haskell/issues/1250#issuecomment-1044257595
+Bug: https://gitlab.haskell.org/ghc/ghc/-/issues/21097
+Signed-off-by: hololeap <hololeap@protonmail.com>
+
+---
+diff -urN ghc-9.0.2/compiler/GHC/Unit/State.hs ghc-9.0.2-r1/compiler/GHC/Unit/State.hs
+--- ghc-9.0.2/compiler/GHC/Unit/State.hs	2021-10-19 05:20:00.000000000 -0600
++++ ghc-9.0.2-r1/compiler/GHC/Unit/State.hs	2022-02-19 20:26:16.756489309 -0700
+@@ -235,6 +235,14 @@
+                 | otherwise = panic "ModOrigin: package both exposed/hidden"
+             g Nothing x = x
+             g x Nothing = x
++    ModHidden     <> ModHidden      = ModHidden
++    ModUnusable x <> ModUnusable _y = ModUnusable x
++
++    ModUnusable _  <> ModHidden      = ModHidden
++    ModHidden      <> ModUnusable _  = ModHidden
++    ModUnusable _x <> y@ModOrigin{}  = y
++    x@ModOrigin{}  <> ModUnusable _y = x
++
+     _x <> _y = panic "ModOrigin: hidden module redefined"
+ 
+ instance Monoid ModuleOrigin where

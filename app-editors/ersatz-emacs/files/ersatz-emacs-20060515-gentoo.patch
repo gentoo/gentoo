@@ -1,0 +1,57 @@
+--- a/display.c
++++ b/display.c
+@@ -5,6 +5,7 @@
+  * hints that are left in the windows by the commands
+  */
+ 
++#include <stdlib.h>
+ #include <string.h>
+ #include "estruct.h"
+ #include "edef.h"
+@@ -100,7 +101,6 @@
+ void vtinit ()
+ {
+   VIDEO *vp;
+-  char *malloc ();
+   int i;
+ 
+   (*term.t_open) ();
+--- a/line.c
++++ b/line.c
+@@ -47,7 +47,6 @@
+ {
+   LINE *lp;
+   int size;
+-  char *malloc ();
+ 
+   size = (used + NBLOCK - 1) & ~(NBLOCK - 1);
+   if (size == 0)	       /* Assume that an empty */
+@@ -469,8 +468,6 @@
+  */
+ int kinsert (int c)
+ {
+-  char *realloc ();
+-  char *malloc ();
+   char *nbufp;
+ 
+   if (kused == ksize)
+--- a/tcap.c
++++ b/tcap.c
+@@ -2,6 +2,7 @@
+ 
+ #define	termdef	1		/* don't define "term" external */
+ 
++#include <stdlib.h>
+ #include <stdio.h>		/* puts(3), snprintf(3) */
+ #include "estruct.h"
+ #include "edef.h"
+--- a/termio.c
++++ b/termio.c
+@@ -5,6 +5,7 @@
+  */
+ 
+ #undef CTRL
++#include <stdlib.h>
+ #include <termios.h>
+ #include <unistd.h>
+ #include <signal.h>

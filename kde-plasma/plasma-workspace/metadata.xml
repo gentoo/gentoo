@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?classification=Plasma</bugs-to>
+		<remote-id type="kde-invent">plasma/plasma-workspace</remote-id>
+	</upstream>
+	<use>
+		<flag name="appstream">Enable AppStream software metadata support</flag>
+		<flag name="ksysguard">Enable device notifier and system monitor applets as well as terminate applications runner</flag>
+		<flag name="networkmanager">Enable support for location-based time zone changes</flag>
+		<flag name="phonon">Enable KIO to Phonon bridge for network streaming via <pkg>media-libs/phonon</pkg></flag>
+		<flag name="policykit">Enable locale generation and Users KCM using <pkg>sys-auth/polkit</pkg> and <pkg>sys-apps/accountsservice</pkg></flag>
+		<flag name="screencast">Enable camera indicator applet (requires <pkg>media-video/pipewire</pkg> at runtime)</flag>
+		<flag name="telemetry">Enable User Feedback control module for <pkg>kde-plasma/systemsettings</pkg></flag>
+		<flag name="wallpaper-metadata">Show metadata for image wallpaper plugin using <pkg>kde-apps/libkexiv2</pkg></flag>
+	</use>
+</pkgmetadata>

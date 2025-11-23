@@ -1,0 +1,261 @@
+--- a/addcr.c
++++ b/addcr.c
+@@ -1,7 +1,7 @@
+ #include "buffer.h"
+ #include "exit.h"
+ 
+-main()
++int main()
+ {
+   register int n;
+   register char *x;
+--- a/argv0.c
++++ b/argv0.c
+@@ -1,7 +1,7 @@
+ #include "pathexec.h"
+ #include "strerr.h"
+ 
+-main(int argc,char **argv,char **envp)
++int main(int argc,char **argv,char **envp)
+ {
+   if (argc < 3)
+     strerr_die1x(100,"argv0: usage: argv0 realname program [ arg ... ]");
+--- a/auto-str.c
++++ b/auto-str.c
+@@ -11,7 +11,7 @@ void puts(char *s)
+   if (buffer_puts(&b,s) == -1) _exit(111);
+ }
+ 
+-main(int argc,char **argv)
++int main(int argc,char **argv)
+ {
+   char *name;
+   char *value;
+--- a/chkshsgr.c
++++ b/chkshsgr.c
+@@ -1,7 +1,7 @@
+ #include <grp.h>
+ #include "exit.h"
+ 
+-main()
++int main()
+ {
+   gid_t x[4];
+ 
+--- a/delcr.c
++++ b/delcr.c
+@@ -1,7 +1,7 @@
+ #include "buffer.h"
+ #include "exit.h"
+ 
+-main()
++int main()
+ {
+   register int n;
+   register char *x;
+--- a/fixcrio.c
++++ b/fixcrio.c
+@@ -127,7 +127,7 @@ void doit(int fdleft,int fdright)
+   _exit(0);
+ }
+ 
+-main(int argc,char **argv,char **envp)
++int main(int argc,char **argv,char **envp)
+ {
+   int piin[2];
+   int piout[2];
+--- a/install.c
++++ b/install.c
+@@ -138,7 +138,7 @@ int mode;
+     strerr_die6sys(111,FATAL,"unable to chmod .../",subdir,"/",file,": ");
+ }
+ 
+-main()
++int main()
+ {
+   fdsourcedir = open_read(".");
+   if (fdsourcedir == -1)
+--- a/instcheck.c
++++ b/instcheck.c
+@@ -101,7 +101,7 @@ int mode;
+   perm("",home,"/",file,S_IFREG,uid,gid,mode);
+ }
+ 
+-main()
++int main()
+ {
+   hier();
+   _exit(0);
+--- a/mconnect-io.c
++++ b/mconnect-io.c
+@@ -19,7 +19,7 @@ ssize_t myread(int fd,char *buf,int len)
+   return read(fd,buf,len);
+ }
+ 
+-main()
++int main()
+ {
+   int pid;
+   int wstat;
+--- a/rblsmtpd.c
++++ b/rblsmtpd.c
+@@ -191,7 +191,7 @@ void rblsmtpd(void)
+   _exit(0);
+ }
+ 
+-main(int argc,char **argv,char **envp)
++int main(int argc,char **argv,char **envp)
+ {
+   int flagwantdefaultrbl = 1;
+   char *x;
+--- a/rblspp.c
++++ b/rblspp.c
+@@ -165,7 +165,7 @@ void rblspp(void)
+   _exit(0);
+ }
+ 
+-main(int argc,char **argv,char **envp)
++int main(int argc,char **argv,char **envp)
+ {
+   char *x;
+   int opt;
+--- a/recordio.c
++++ b/recordio.c
+@@ -142,7 +142,7 @@ void doit(int fdleft,int fdright) /* copy 0 -> fdleft, copy fdright -> 1 */
+   _exit(0);
+ }
+ 
+-main(int argc,char **argv,char **envp)
++int main(int argc,char **argv,char **envp)
+ {
+   int piin[2];
+   int piout[2];
+--- a/tcpclient.c
++++ b/tcpclient.c
+@@ -70,7 +70,7 @@ char ipstr[IP6_FMT];
+ 
+ char seed[128];
+ 
+-main(int argc,char **argv)
++int main(int argc,char **argv)
+ {
+   int fakev4=0;
+   unsigned long u;
+--- a/tcprules.c
++++ b/tcprules.c
+@@ -90,7 +90,7 @@ void doaddressdata(void)
+   if (cdb_make_add(&c,address.s,address.len,data.s,data.len) == -1) die_write();
+ }
+ 
+-main(int argc,char **argv)
++int main(int argc,char **argv)
+ {
+   int colon;
+   char *x;
+--- a/tcprulescheck.c
++++ b/tcprulescheck.c
+@@ -34,7 +34,7 @@ void found(char *data,unsigned int datalen)
+   _exit(0);
+ }
+ 
+-main(int argc,char **argv)
++int main(int argc,char **argv)
+ {
+   char *fnrules;
+   int fd;
+--- a/tcpserver.c
++++ b/tcpserver.c
+@@ -323,7 +323,7 @@ void sigchld()
+   }
+ }
+ 
+-main(int argc,char **argv)
++int main(int argc,char **argv)
+ {
+   char *hostname;
+   char *portname;
+--- a/trycpp.c
++++ b/trycpp.c
+@@ -1,4 +1,4 @@
+-main()
++int main()
+ {
+ #ifdef NeXT
+   printf("nextstep\n"); exit(0);
+--- a/trylsock.c
++++ b/trylsock.c
+@@ -1,4 +1,4 @@
+-main()
++int main()
+ {
+   ;
+ }
+--- a/trypoll.c
++++ b/trypoll.c
+@@ -2,7 +2,7 @@
+ #include <fcntl.h>
+ #include <poll.h>
+ 
+-main()
++int main()
+ {
+   struct pollfd x;
+ 
+--- a/trysgact.c
++++ b/trysgact.c
+@@ -1,6 +1,6 @@
+ #include <signal.h>
+ 
+-main()
++int main()
+ {
+   struct sigaction sa;
+   sa.sa_handler = 0;
+--- a/trysgprm.c
++++ b/trysgprm.c
+@@ -1,6 +1,6 @@
+ #include <signal.h>
+ 
+-main()
++int main()
+ {
+   sigset_t ss;
+  
+--- a/tryshsgr.c
++++ b/tryshsgr.c
+@@ -1,4 +1,4 @@
+-main()
++int main()
+ {
+   short x[4];
+  
+--- a/tryvfork.c
++++ b/tryvfork.c
+@@ -1,4 +1,4 @@
+-main()
++int main()
+ {
+   vfork();
+ }
+--- a/trywaitp.c
++++ b/trywaitp.c
+@@ -1,7 +1,7 @@
+ #include <sys/types.h>
+ #include <sys/wait.h>
+ 
+-main()
++int main()
+ {
+   waitpid(0,0,0);
+ }
+--- a/x86cpuid.c
++++ b/x86cpuid.c
+@@ -5,7 +5,7 @@ void nope()
+   exit(1);
+ }
+ 
+-main()
++int main()
+ {
+   unsigned long x[4];
+   unsigned long y[4];

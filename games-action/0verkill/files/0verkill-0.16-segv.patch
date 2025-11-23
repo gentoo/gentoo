@@ -1,0 +1,39 @@
+diff -Naurp 0verkill-0.16.old/data.c 0verkill-0.16/data.c
+--- 0verkill-0.16.old/data.c	2007-10-30 19:49:59.000000000 +0100
++++ 0verkill-0.16/data.c	2007-10-30 20:25:08.000000000 +0100
+@@ -471,7 +471,7 @@ my_double can_go_x(my_double old_x,my_do
+ 		for (x=double2int(old_x)+1;x<=round_up(new_x);x++)  /* go to the right */
+ 		{
+ 			if (x>AREA_X-1) return int2double(AREA_X-1);
+-			for (y=yh;y<=yl;y++)
++			for (y=(yh>=0?yh:0);y<=yl;y++)
+ 				if ((area_a[x+y*AREA_X]&240)==TYPE_WALL)
+ 					return int2double(x-1);
+ 		}
+@@ -479,7 +479,7 @@ my_double can_go_x(my_double old_x,my_do
+ 		for (x=round_up(old_x)-1;x>=double2int(new_x);x--)  /* go to the left */
+ 		{
+ 			if (x<0) return 0;
+-			for (y=yh;y<=yl;y++)
++			for (y=(yh>=0?yh:0);y<=yl;y++)
+ 				if ((area_a[x+y*AREA_X]&240)==TYPE_WALL) return int2double(x+1);
+ 		}
+ 	if(flag)*flag=0;
+@@ -501,7 +501,7 @@ my_double can_go_y(my_double old_y, my_d
+ 		for (y=double2int(old_y)+1;y<=round_up(new_y);y++)  /* go down */
+ 		{
+ 			if (y>AREA_Y-1) return int2double(AREA_Y-1);
+-			for (x=xl;x<=xr;x++)
++			for (x=(xl>=0?xl:0);x<=xr;x++)
+ 				if ((area_a[x+y*AREA_X]&240)==TYPE_WALL||(!down_ladder&&((area_a[x+y*AREA_X]&240)==TYPE_JUMP||(area_a[x+y*AREA_X]&240)==TYPE_JUMP_FOREGROUND))) return int2double(y-1);
+ 		}
+ 	else
+@@ -510,7 +510,7 @@ my_double can_go_y(my_double old_y, my_d
+ 		for (y=round_up(old_y)-1;y>=double2int(new_y);y--)  /* go up */
+ 		{
+ 			if (y<0) return 0;
+-			for (x=xl;x<=xr;x++)
++			for (x=(xl>=0?xl:0);x<=xr;x++)
+ 				if ((area_a[x+y*AREA_X]&240)==TYPE_WALL) return int2double(y+1);
+ 		}
+ 	}

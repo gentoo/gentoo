@@ -1,0 +1,14 @@
+Avoid an implicit int to improve compatibility with future compilers.
+Borrowed from https://src.fedoraproject.org/rpms/foobillard/blob/f41/f/foobillard-c99.patch
+
+--- a/src/billmove.c
++++ b/src/billmove.c
+@@ -409,7 +409,7 @@ void record_move_log_event( enum event_type event,
+ }
+ 
+ 
+-int my_rand(nr)
++int my_rand(int nr)
+ {
+     return rand()%nr;
+ }

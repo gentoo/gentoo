@@ -1,0 +1,27 @@
+https://bugs.gentoo.org/919282
+https://gitlab.gnome.org/GNOME/gimp/-/commit/51311f913d9f417d121f59b83d560c7b4b853d1c
+
+From 51311f913d9f417d121f59b83d560c7b4b853d1c Mon Sep 17 00:00:00 2001
+From: Simon Budig <simon@budig.de>
+Date: Sat, 20 May 2023 22:25:40 +0200
+Subject: [PATCH] metadata: shut up a weird warning
+
+---
+ plug-ins/metadata/metadata-editor.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plug-ins/metadata/metadata-editor.c b/plug-ins/metadata/metadata-editor.c
+index a3992e40ddc..5bf6ef709f1 100644
+--- a/plug-ins/metadata/metadata-editor.c
++++ b/plug-ins/metadata/metadata-editor.c
+@@ -2846,7 +2846,7 @@ metadata_dialog_editor_set_metadata (GExiv2Metadata  *metadata,
+                             }
+                           else
+                             {
+-                              if (! g_strv_contains (values, equiv_values[evi]))
++                              if (! g_strv_contains ((const gchar * const *) values, equiv_values[evi]))
+                                 {
+                                   gchar *tmpvalue;
+ 
+-- 
+GitLab

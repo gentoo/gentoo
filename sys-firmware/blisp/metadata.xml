@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+    <name>Michael Orlitzky</name>
+  </maintainer>
+
+  <upstream>
+    <remote-id type="github">pine64/blisp</remote-id>
+  </upstream>
+
+  <use>
+    <flag name="tools">
+      Build the blisp command-line utility used to upload firmware to
+      the pinecil
+    </flag>
+  </use>
+</pkgmetadata>

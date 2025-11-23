@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    Ghub provides basic support for using the APIs of various Git forges
+    from Emacs packages. Originally it only supported the Github REST API,
+    but now it also supports the Github GraphQL API as well as the REST APIs
+    of Gitlab, Gitea, Gogs and Bitbucket.
+  </longdescription>
+  <stabilize-allarches/>
+  <upstream>
+    <bugs-to>https://github.com/magit/ghub/issues/</bugs-to>
+    <changelog>https://raw.githubusercontent.com/magit/ghub/refs/heads/main/CHANGELOG</changelog>
+    <remote-id type="github">magit/ghub</remote-id>
+  </upstream>
+</pkgmetadata>

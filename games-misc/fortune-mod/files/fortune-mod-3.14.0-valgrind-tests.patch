@@ -1,0 +1,24 @@
+https://gitlab.exherbo.org/exherbo/arbor/-/blob/e1ff3d8f49ee349f289d248747f8139fc42857db/packages/games-misc/fortune-mod/files/fortune-mod-Don-t-run-tests-involving-valgrind.patch
+
+Upstream: no
+Reason: Test wants to install stuff, doesn't work and saves us the dep
+
+From eabc85921ccb8ffda14d34d26f6486700bf63b8f Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heirecka@exherbo.org>
+Date: Wed, 15 Dec 2021 17:11:31 +0100
+Subject: [PATCH] Don't run tests involving valgrind
+
+--- a/run-tests.pl
++++ b/run-tests.pl
+@@ -35,11 +35,6 @@ sub do_system
+     }
+ }
+ 
+-do_system(
+-    {
+-        cmd => [ $^X, "$src_dir/tests/scripts/split-valgrind.pl", ]
+-    }
+-);
+ do_system(
+     {
+         cmd => [

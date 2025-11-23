@@ -1,0 +1,18 @@
+use find_package to prevent failure without native-symlinks
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index baa524a..60e3839 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -85,11 +85,7 @@ if (NOT FOUND_LIBUNISTRING)
+     message(FATAL_ERROR "Missing dependency: did not find libunistring, please install libunistring or equivalent. More details in INSTALL.md")
+ endif()
+ 
+-find_program(FOUND_PKGCONFIG HINTS /usr/include/ NAMES pkg-config dev-util/pkgconf)
+-if (NOT FOUND_PKGCONFIG)
+-    message(FATAL_ERROR "Missing dependency: did not find pkg-config, please install pkg-config or equivalent. More details in INSTALL.md")
+-endif()
+-
++find_package(PkgConfig REQUIRED)
+ 
+ if(ENABLE_DEVELOPMENT)
+     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -ggdb")

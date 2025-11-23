@@ -1,0 +1,22 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -14,7 +14,7 @@
+ # is for a distribution package building.
+ # Set the default icon set aliases (symlinks).
+ install-data-local:
+-	$(bindir)/wm-icons-config --user-dir="$(icondir)" --defaults --quiet
++	true
+ 
+ wm-configs _pack-symlinks _unpack-symlinks:
+	cd devel/bin && $(MAKE) $(AM_MAKEFLAGS) $@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -417,7 +417,7 @@
+ # is for a distribution package building.
+ # Set the default icon set aliases (symlinks).
+ install-data-local:
+-	$(bindir)/wm-icons-config --user-dir="$(icondir)" --defaults --quiet
++	true
+ 
+ wm-configs _pack-symlinks _unpack-symlinks:
+ 	cd devel/bin && $(MAKE) $(AM_MAKEFLAGS) $@

@@ -1,0 +1,210 @@
+diff --git a/build/default.mk b/build/default.mk
+index 38ecea4627..f598425394 100644
+--- a/build/default.mk
++++ b/build/default.mk
+@@ -232,8 +232,8 @@ VORBIS_CFLAGS            ?= $(call PKG_CFLAGS,vorbis)
+ VORBIS_LIBS              ?= $(call PKG_LIBS,vorbis)
+ OGG_CFLAGS               ?= $(call PKG_CFLAGS,ogg)
+ OGG_LIBS                 ?= $(call PKG_LIBS,ogg)
+-MXML_CFLAGS              ?= $(call PKG_CFLAGS,mxml)
+-MXML_LIBS                ?= $(call PKG_LIBS,mxml)
++MXML_CFLAGS              ?= $(call PKG_CFLAGS,mxml4)
++MXML_LIBS                ?= $(call PKG_LIBS,mxml4)
+ PICOMODEL_CFLAGS         ?= $(call PKG_CFLAGS,picomodel)
+ PICOMODEL_LIBS           ?= $(call PKG_LIBS,picomodel)
+ INTL_LIBS                ?=
+@@ -248,16 +248,16 @@ endif
+ MUMBLE_LIBS              ?=
+ MUMBLE_SRCS               = libs/mumble/libmumblelink.c
+ MUMBLE_CFLAGS             = -Isrc/libs/mumble
+-ifndef HAVE_MXML_MXML_H
++ifndef HAVE_MXML4_MXML_H
+ MXML_SRCS                 = libs/mxml/mxml-attr.c \
+-                            libs/mxml/mxml-entity.c \
+                             libs/mxml/mxml-file.c \
++                            libs/mxml/mxml-get.c \
+                             libs/mxml/mxml-index.c \
+                             libs/mxml/mxml-node.c \
++                            libs/mxml/mxml-options.c \
+                             libs/mxml/mxml-private.c \
+                             libs/mxml/mxml-search.c \
+-                            libs/mxml/mxml-set.c \
+-                            libs/mxml/mxml-string.c
++                            libs/mxml/mxml-set.c
+ MXML_CFLAGS               = -Isrc/libs/mxml
+ MXML_LIBS                 =
+ ifeq ($(findstring $(TARGET_OS), mingw32 mingw64),)
+diff --git a/configure b/configure
+index e1dc2610be..fed7a5247b 100755
+--- a/configure
++++ b/configure
+@@ -205,7 +205,7 @@ check_headers() {
+ 	check_header "zlib.h" "zlib"
+ 	check_header "png.h" "libpng"
+ 	check_header "CUnit/Basic.h"
+-	check_header "mxml.h" "mxml"
++	check_header "mxml.h" "mxml4"
+ 	check_header "SDL.h" "sdl"
+ 	check_header "SDL_mixer.h" "SDL_mixer"
+ 	check_header "SDL_ttf.h" "SDL_ttf"
+diff --git a/src/client/cgame/campaign/cp_save.cpp b/src/client/cgame/campaign/cp_save.cpp
+index 70b3887e45..2824977891 100644
+--- a/src/client/cgame/campaign/cp_save.cpp
++++ b/src/client/cgame/campaign/cp_save.cpp
+@@ -249,11 +249,11 @@ static bool SAV_GameSave (const char* filename, const char* comment, char** erro
+ {
+ 	xmlNode_t* topNode, *node;
+ 	char savegame[MAX_OSPATH];
++	char* buf;
+ 	int res;
+ 	int requiredBufferLength;
+ 	uLongf bufLen;
+ 	saveFileHeader_t header;
+-	char dummy[2];
+ 	int i;
+ 	dateLong_t date;
+ 	char message[30];
+@@ -308,19 +308,16 @@ static bool SAV_GameSave (const char* filename, const char* comment, char** erro
+ 		date.year, Date_GetMonthName(date.month - 1), date.day);
+ 	Q_strncpyz(header.realDate, timeStampBuffer, sizeof(header.realDate));
+ 
+-	requiredBufferLength = mxmlSaveString(topNode, dummy, 2, MXML_NO_CALLBACK);
+-
+-	header.xmlSize = LittleLong(requiredBufferLength);
+-	byte* const buf = Mem_PoolAllocTypeN(byte, requiredBufferLength + 1, cp_campaignPool);
++	buf = mxmlSaveAllocString(topNode, nullptr);
++	mxmlDelete(topNode);
+ 	if (!buf) {
+-		mxmlDelete(topNode);
+ 		*error = _("Could not allocate enough memory to save this game");
+ 		Com_Printf("Error: Could not allocate enough memory to save this game\n");
+ 		return false;
+ 	}
+-	res = mxmlSaveString(topNode, (char*)buf, requiredBufferLength + 1, MXML_NO_CALLBACK);
+-	mxmlDelete(topNode);
+-	Com_Printf("XML Written to buffer (%d Bytes)\n", res);
++	requiredBufferLength = strlen(buf) + 1;
++	header.xmlSize = LittleLong(requiredBufferLength);
++	Com_Printf("XML Written to buffer (%d Bytes)\n", requiredBufferLength);
+ 
+ 	if (header.compressed)
+ 		bufLen = compressBound(requiredBufferLength);
+@@ -331,8 +328,8 @@ static bool SAV_GameSave (const char* filename, const char* comment, char** erro
+ 	memcpy(fbuf, &header, sizeof(header));
+ 
+ 	if (header.compressed) {
+-		res = compress(fbuf + sizeof(header), &bufLen, buf, requiredBufferLength);
+-		Mem_Free(buf);
++		res = compress(fbuf + sizeof(header), &bufLen, (byte*) buf, requiredBufferLength);
++		free(buf);
+ 
+ 		if (res != Z_OK) {
+ 			Mem_Free(fbuf);
+@@ -342,7 +339,7 @@ static bool SAV_GameSave (const char* filename, const char* comment, char** erro
+ 		}
+ 	} else {
+ 		memcpy(fbuf + sizeof(header), buf, requiredBufferLength);
+-		Mem_Free(buf);
++		free(buf);
+ 	}
+ 
+ 	/* last step - write data */
+diff --git a/src/client/cgame/cl_game_team.cpp b/src/client/cgame/cl_game_team.cpp
+index 94274e74b4..f37c9ad93e 100644
+--- a/src/client/cgame/cl_game_team.cpp
++++ b/src/client/cgame/cl_game_team.cpp
+@@ -223,7 +223,7 @@ static bool GAME_SaveTeam (const char* filename, const char* name)
+ {
+ 	int requiredBufferLength;
+ 	teamSaveFileHeader_t header;
+-	char dummy[2];
++	char* buf;
+ 	int i;
+ 	xmlNode_t* topNode, *node, *snode;
+ 	equipDef_t* ed = GAME_GetEquipmentDefinition();
+@@ -248,26 +248,22 @@ static bool GAME_SaveTeam (const char* filename, const char* name)
+ 			XML_AddIntValue(ssnode, SAVE_TEAM_NUMLOOSE, ed->numItemsLoose[od->idx]);
+ 		}
+ 	}
+-	requiredBufferLength = mxmlSaveString(topNode, dummy, 2, MXML_NO_CALLBACK);
+-	/* required for storing compressed */
+-	header.xmlSize = LittleLong(requiredBufferLength);
+-
+-	byte* const buf = Mem_PoolAllocTypeN(byte, requiredBufferLength + 1, cl_genericPool);
++	buf = mxmlSaveAllocString(topNode, nullptr);
++	mxmlDelete(topNode);
+ 	if (!buf) {
+-		mxmlDelete(topNode);
+ 		Com_Printf("Error: Could not allocate enough memory to save this game\n");
+ 		return false;
+ 	}
+-	mxmlSaveString(topNode, (char*)buf, requiredBufferLength + 1, MXML_NO_CALLBACK);
+-	mxmlDelete(topNode);
++	requiredBufferLength = strlen(buf) + 1;
++	header.xmlSize = LittleLong(requiredBufferLength);
+ 
+-	byte* const fbuf = Mem_PoolAllocTypeN(byte, requiredBufferLength + 1 + sizeof(header), cl_genericPool);
++	byte* const fbuf = Mem_PoolAllocTypeN(byte, requiredBufferLength + sizeof(header), cl_genericPool);
+ 	memcpy(fbuf, &header, sizeof(header));
+-	memcpy(fbuf + sizeof(header), buf, requiredBufferLength + 1);
+-	Mem_Free(buf);
++	memcpy(fbuf + sizeof(header), buf, requiredBufferLength);
++	free(buf);
+ 
+ 	/* last step - write data */
+-	FS_WriteFile(fbuf, requiredBufferLength + 1 + sizeof(header), filename);
++	FS_WriteFile(fbuf, requiredBufferLength + sizeof(header), filename);
+ 	Mem_Free(fbuf);
+ 
+ 	return true;
+diff --git a/src/common/xml.cpp b/src/common/xml.cpp
+index 1629c90a6a..176846c421 100644
+--- a/src/common/xml.cpp
++++ b/src/common/xml.cpp
+@@ -508,33 +508,37 @@ xmlNode_t* XML_GetNode (xmlNode_t* parent, const char* name)
+  */
+ xmlNode_t* XML_GetNextNode (xmlNode_t* current, xmlNode_t* parent, const char* name)
+ {
+-	return mxmlFindElement(current, parent, name, nullptr, nullptr, MXML_NO_DESCEND);
++	return mxmlFindElement(current, parent, name, nullptr, nullptr, MXML_DESCEND_NONE);
+ }
+ 
+ /**
+  * @brief callback function for parsing the node tree
+  */
+-static mxml_type_t mxml_ufo_type_cb (xmlNode_t* node)
++static mxml_type_t mxml_ufo_type_cb (void *cbdata, xmlNode_t* node)
+ {
+ 	/* You can lookup attributes and/or use the
+ 	 * element name, hierarchy, etc... */
+ 	const char* type = mxmlElementGetAttr(node, "type");
+ 	if (type == nullptr)
+-		type = node->value.element.name;
++		type = mxmlGetElement(node);
+ 
+ 	if (!strcmp(type, "int"))
+-		return MXML_INTEGER;
++		return MXML_TYPE_INTEGER;
+ 	else if (!strcmp(type, "opaque"))
+-		return MXML_OPAQUE;
++		return MXML_TYPE_OPAQUE;
+ 	else if (!strcmp(type, "string"))
+-		return MXML_OPAQUE;
++		return MXML_TYPE_OPAQUE;
+ 	else if (!strcmp(type, "double"))
+-		return MXML_REAL;
++		return MXML_TYPE_REAL;
+ 	else
+-		return MXML_TEXT;
++		return MXML_TYPE_TEXT;
+ }
+ 
+ xmlNode_t* XML_Parse (const char* buffer)
+ {
+-	return mxmlLoadString(nullptr, buffer, mxml_ufo_type_cb);
++	mxml_options_t *options = mxmlOptionsNew();
++	mxmlOptionsSetTypeCallback(options, &mxml_ufo_type_cb, nullptr);
++	xmlNode_t *ret = mxmlLoadString(nullptr, nullptr, buffer);
++	mxmlOptionsDelete(options);
++	return ret;
+ }

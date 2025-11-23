@@ -1,0 +1,17 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Sun Aug  5 16:22:22 UTC 2012
+Subject: sound
+
+resolves crackling background music
+
+--- src/SoundManager.cc
++++ src/SoundManager.cc
+@@ -25,7 +25,7 @@
+ SoundManager::SoundManager(char *datadir)
+ {
+ #ifndef NO_SDL_MIXER
+-  if(Mix_OpenAudio(22050, AUDIO_S16SYS, 2, 1024))
++  if(Mix_OpenAudio(44100, AUDIO_S16SYS, 2, 1024))
+     {
+       printf("SDL_mixer says: %s\n", Mix_GetError());
+     }

@@ -1,0 +1,13 @@
+https://github.com/snapcore/snapd-glib/pull/152
+diff --git a/snapd-qt/meson.build b/snapd-qt/meson.build
+index a767c6d..db2f5bf 100644
+--- a/snapd-qt/meson.build
++++ b/snapd-qt/meson.build
+@@ -131,6 +131,7 @@ source_alias_h = [
+   'Snapd/MarkdownNode',
+   'Snapd/MarkdownParser',
+   'Snapd/Media',
++  'Snapd/Notice',
+   'Snapd/Plug',
+   'Snapd/PlugRef',
+   'Snapd/Price',

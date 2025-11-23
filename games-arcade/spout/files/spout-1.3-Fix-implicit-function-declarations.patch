@@ -1,0 +1,30 @@
+From d2382ee06a8f9feb9bed39bf592ad88b5c02bbf6 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 23 Oct 2022 13:21:55 +0100
+Subject: [PATCH] Fix implicit function declarations
+
+Bug: https://bugs.gentoo.org/875722
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/piece.c
++++ b/piece.c
+@@ -15,6 +15,10 @@ int zoom, fullscreen;
+ 
+ unsigned char *vBuffer = NULL;
+ 
++void pceAppInit (void);
++void pceAppExit (void);
++int pceAppProc (int cnt);
++
+ void
+ pceLCDDispStop ()
+ {
+--- a/spout.c
++++ b/spout.c
+@@ -80,6 +80,7 @@ void sweep (unsigned char c1, unsigned char c2);
+ void initGrain (void);
+ GRAIN *allocGrain (void);
+ GRAIN *freeGrain (GRAIN * current);
++void pceAppInit (void);
+ 
+ #ifdef HAVE_WORDEXP_H
+ wordexp_t *scorefile;

@@ -1,0 +1,18 @@
+diff --git a/scripts/snapper-hourly b/scripts/snapper-hourly
+index 36a41f5..f36d8ec 100755
+--- a/scripts/snapper-hourly
++++ b/scripts/snapper-hourly
+@@ -9,10 +9,10 @@ export PATH
+ 
+ 
+ #
+-# get information from /etc/sysconfig/snapper
++# get information from /etc/conf.d/snapper
+ #
+-if [ -f /etc/sysconfig/snapper ] ; then
+-    . /etc/sysconfig/snapper
++if [ -f /etc/conf.d/snapper ] ; then
++    . /etc/conf.d/snapper
+ fi
+ 
+ 

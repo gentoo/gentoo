@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/716564
+--- a/src/meta.h
++++ b/src/meta.h
+@@ -20,6 +20,7 @@
+ #include <strings.h>
+ #include <cstdlib>
+ #include <errno.h>
++#include <sys/time.h>
+ 
+ #include "astrop.h"
+ 

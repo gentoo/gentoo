@@ -1,0 +1,22 @@
+Fix for missing definitions on some Hardened configurations
+Gentoo bug: https://bugs.gentoo.org/show_bug.cgi?id=437292
+
+diff -Naur quagga-0.99.16.orig/zebra/ipforward_sysctl.c quagga-0.99.16/zebra/ipforward_sysctl.c
+--- quagga-0.99.16.orig/zebra/ipforward_sysctl.c	2010-03-11 12:11:32.000000000 -0500
++++ quagga-0.99.16/zebra/ipforward_sysctl.c	2010-03-11 12:11:39.000000000 -0500
+@@ -31,6 +31,15 @@
+ 
+ #define MIB_SIZ 4
+ 
++/* Fix for recent (2.6.14) kernel headers */
++#ifndef IPCTL_FORWARDING
++    #define IPCTL_FORWARDING       NET_IPV4_FORWARD
++#endif
++
++#ifndef IP6CTL_FORWARDING
++    #define IP6CTL_FORWARDING      NET_IPV6_FORWARDING
++#endif
++
+ extern struct zebra_privs_t zserv_privs;
+ 
+ /* IPv4 forwarding control MIB. */

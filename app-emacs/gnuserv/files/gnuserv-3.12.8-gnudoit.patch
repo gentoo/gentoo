@@ -1,0 +1,15 @@
+--- gnuserv-3.12.8/gnudoit
++++ gnuserv-3.12.8/gnudoit
+@@ -27,10 +27,10 @@
+ 
+ if [ $# -eq 0 ]
+ then
+-    exec gnuclient $quick -batch 
++    exec gnuclient-emacs $quick -batch
+ else
+ # I use "$*" instead of "$@" intentionally -- I don't want to have the
+ # arguments split.
+-    exec gnuclient $quick -batch -eval "$*"
++    exec gnuclient-emacs $quick -batch -eval "$*"
+ fi
+ 

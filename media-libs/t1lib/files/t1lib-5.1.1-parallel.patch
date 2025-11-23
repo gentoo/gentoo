@@ -1,0 +1,12 @@
+diff -Naur t1lib-5.1.1-orig/lib/Makefile.in t1lib-5.1.1/lib/Makefile.in
+--- t1lib-5.1.1-orig/lib/Makefile.in	2006-11-05 17:06:05.000000000 -0600
++++ t1lib-5.1.1/lib/Makefile.in	2007-10-04 21:21:20.000000000 -0600
+@@ -133,7 +133,7 @@
+ 	cp t1lib/t1lib.h .
+ 
+ 
+-libt1x.la: $(T1LIBX_OBJS)
++libt1x.la: $(T1LIBX_OBJS) libt1.la
+ 	$(LIBTOOL) --mode=link \
+ 		$(CC) $(LDFLAGS) -o $@ $(T1LIBX_OBJS) \
+ 	         -version-info @T1LIB_LT_CURRENT@:@T1LIB_LT_REVISION@:@T1LIB_LT_AGE@ \

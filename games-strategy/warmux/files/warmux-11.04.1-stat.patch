@@ -1,0 +1,61 @@
+diff -ur warmux-11.04.orig/lib/warmux/tools/file_tools.cpp warmux-11.04/lib/warmux/tools/file_tools.cpp
+--- warmux-11.04.orig/lib/warmux/tools/file_tools.cpp	2011-04-28 21:03:13.000000000 +0200
++++ warmux-11.04/lib/warmux/tools/file_tools.cpp	2013-03-05 16:58:42.040443845 +0100
+@@ -33,6 +33,8 @@
+ #  include <direct.h>
+ #  undef DeleteFile  // windows.h defines it I think
+ #else
++#  include <sys/types.h>
++#  include <sys/stat.h>
+ #  include <stdlib.h> // getenv
+ #  include <unistd.h> // not needed by mingw
+ #endif
+@@ -275,18 +277,14 @@
+ {
+   DIR           *dir;
+   struct dirent *file;
+-#ifdef __SYMBIAN32__
+   std::string    dname;
+-#endif
+ };
+ 
+ FolderSearch* OpenFolder(const std::string& dirname)
+ {
+   FolderSearch *f = new FolderSearch;
+   f->dir = opendir(dirname.c_str());
+-#ifdef __SYMBIAN32__
+   f->dname = dirname;
+-#endif
+ 
+   if (!f->dir) {
+     delete f;
+@@ -300,11 +298,11 @@
+ {
+   while ((f->file = readdir(f->dir)) != NULL) {
+ 
++    if (
+ #ifdef __SYMBIAN32__
+-    if (f->file->d_namlen && DoesFolderExist(f->dname+"/"+std::string(f->file->d_name))) {
+-#else
+-    if (f->file->d_type == DT_DIR) {
++      f->file->d_namlen &&
+ #endif
++      DoesFolderExist(f->dname+"/"+std::string(f->file->d_name))) {
+       // If we are also looking for files, report it isn't one
+       if (file)
+         file = false;
+@@ -316,11 +314,11 @@
+       continue;
+ 
+     // This is a file and we do search for file
++    if (
+ #ifdef __SYMBIAN32__
+-    if (f->file->d_namlen && DoesFileExist(f->dname+"/"+std::string(f->file->d_name))) {
+-#else
+-    if (f->file->d_type == DT_REG) {
++      f->file->d_namlen &&
+ #endif
++      DoesFileExist(f->dname+"/"+std::string(f->file->d_name))) {
+       file = true;
+       return f->file->d_name;
+     }

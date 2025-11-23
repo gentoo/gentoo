@@ -1,0 +1,77 @@
+https://bugs.gentoo.org/948164
+https://gitlab.freedesktop.org/gstreamer/orc/-/issues/82
+https://gitlab.freedesktop.org/gstreamer/orc/-/commit/8e48a61e27f4d3e60bf2e3e7873fd61363db6ff8
+
+From 8e48a61e27f4d3e60bf2e3e7873fd61363db6ff8 Mon Sep 17 00:00:00 2001
+From: "L. E. Segovia" <amy@centricular.com>
+Date: Wed, 15 Jan 2025 22:20:14 +0000
+Subject: [PATCH] avx: Fix sqrtps encoding, it's an unary operator
+
+Fixes #82
+
+Part-of: <https://gitlab.freedesktop.org/gstreamer/orc/-/merge_requests/213>
+---
+ orc/orcavx.h       | 4 ++--
+ orc/orcprogram-c.c | 1 +
+ orc/orcrules-avx.c | 2 +-
+ testsuite/test.orc | 8 ++++++++
+ 4 files changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/orc/orcavx.h b/orc/orcavx.h
+index f564b63f..ca95bd02 100644
+--- a/orc/orcavx.h
++++ b/orc/orcavx.h
+@@ -224,8 +224,8 @@ ORC_API void orc_avx_restore_mxcsr (OrcCompiler *compiler);
+ #define orc_avx_emit_mulps(p,s1,s2,d) orc_vex_emit_cpuinsn_size(p, ORC_X86_mulps, 32, s1, s2, d, ORC_X86_AVX_VEX256_PREFIX)
+ #define orc_avx_sse_emit_divps(p,s1,s2,d) orc_vex_emit_cpuinsn_size(p, ORC_X86_divps, 32, s1, s2, d, ORC_X86_AVX_VEX128_PREFIX)
+ #define orc_avx_emit_divps(p,s1,s2,d) orc_vex_emit_cpuinsn_size(p, ORC_X86_divps, 32, s1, s2, d, ORC_X86_AVX_VEX256_PREFIX)
+-#define orc_avx_sse_emit_sqrtps(p,s1,s2,d) orc_vex_emit_cpuinsn_size(p, ORC_X86_sqrtps, 32, s1, s2, d, ORC_X86_AVX_VEX128_PREFIX)
+-#define orc_avx_emit_sqrtps(p,s1,s2,d) orc_vex_emit_cpuinsn_size(p, ORC_X86_sqrtps, 32, s1, s2, d, ORC_X86_AVX_VEX256_PREFIX)
++#define orc_avx_sse_emit_sqrtps(p,s1,d) orc_vex_emit_cpuinsn_size(p, ORC_X86_sqrtps, 32, s1, 0, d, ORC_X86_AVX_VEX128_PREFIX)
++#define orc_avx_emit_sqrtps(p,s1,d) orc_vex_emit_cpuinsn_size(p, ORC_X86_sqrtps, 32, s1, 0, d, ORC_X86_AVX_VEX256_PREFIX)
+ #define orc_avx_sse_emit_andps(p,s1,s2,d) orc_vex_emit_cpuinsn_size(p, ORC_X86_andps, 32, s1, s2, d, ORC_X86_AVX_VEX128_PREFIX)
+ #define orc_avx_emit_andps(p,s1,s2,d) orc_vex_emit_cpuinsn_size(p, ORC_X86_andps, 32, s1, s2, d, ORC_X86_AVX_VEX256_PREFIX)
+ #define orc_avx_sse_emit_orps(p,s1,s2,d) orc_vex_emit_cpuinsn_size(p, ORC_X86_orps, 32, s1, s2, d, ORC_X86_AVX_VEX128_PREFIX)
+diff --git a/orc/orcprogram-c.c b/orc/orcprogram-c.c
+index 49e0b73b..1c9ff7cf 100644
+--- a/orc/orcprogram-c.c
++++ b/orc/orcprogram-c.c
+@@ -106,6 +106,7 @@ orc_target_c_get_asm_preamble (void)
+ {
+   return "\n"
+     "/* begin Orc C target preamble */\n"
++    "#include <math.h>\n"
+     "#define ORC_CLAMP(x,a,b) ((x)<(a) ? (a) : ((x)>(b) ? (b) : (x)))\n"
+     "#define ORC_ABS(a) ((a)<0 ? -(a) : (a))\n"
+     "#define ORC_MIN(a,b) ((a)<(b) ? (a) : (b))\n"
+diff --git a/orc/orcrules-avx.c b/orc/orcrules-avx.c
+index 66925982..5cffe145 100644
+--- a/orc/orcrules-avx.c
++++ b/orc/orcrules-avx.c
+@@ -2678,7 +2678,7 @@ BINARY (addf, addps)
+ BINARY (subf, subps)
+ BINARY (mulf, mulps)
+ BINARY (divf, divps)
+-BINARY (sqrtf, sqrtps)
++UNARY (sqrtf, sqrtps)
+ BINARY (orf, orps)
+ BINARY (andf, andps)
+ 
+diff --git a/testsuite/test.orc b/testsuite/test.orc
+index 3e9c5790..9ff53236 100644
+--- a/testsuite/test.orc
++++ b/testsuite/test.orc
+@@ -2806,3 +2806,11 @@ x4 addb argb, x, c128
+ mulslq t1, d1, p1
+ shrsq t1, t1, 27
+ convql d1, t1
++
++.function sqrt_nx
++.dest 4 dst float
++.source 4 src float
++.floatparam 4 k
++.temp 4 tmp
++sqrtf tmp, src
++mulf dst, tmp, k
+-- 
+GitLab

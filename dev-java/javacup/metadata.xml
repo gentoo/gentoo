@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">ultimate-pa/javacup</remote-id>
+	</upstream>
+	<use>
+		<flag name="ant-task">Build and register the ant-task</flag>
+	</use>
+</pkgmetadata>

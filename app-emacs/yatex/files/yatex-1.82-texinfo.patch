@@ -1,0 +1,22 @@
+--- yatex1.82/docs/yatexe.tex
++++ yatex1.82/docs/yatexe.tex
+@@ -382,7 +382,7 @@
+ @section Special Filtering Region
+   A region like below will be passed to external filter command.
+ @example
+-%#BEGIN FILTER{foo.pdf}{dot -T %t -o %o}
++%#BEGIN FILTER@{foo.pdf@}@{dot -T %t -o %o@}
+ \if0
+ ....blah blah blah...
+ ....blah blah blah...
+--- yatex1.82/docs/yatexj.tex
++++ yatex1.82/docs/yatexj.tex
+@@ -488,7 +488,7 @@
+ ます。そのためには以下のようなソースを文書中に書きます。
+ 
+ @example
+-%#BEGIN FILTER{foo.pdf}{blockdiag -T %t -o %o}
++%#BEGIN FILTER@{foo.pdf@}@{blockdiag -T %t -o %o@}
+ \if0
+ ---
+ ....blah blah blah...

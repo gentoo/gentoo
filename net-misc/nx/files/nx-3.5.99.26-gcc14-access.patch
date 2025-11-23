@@ -1,0 +1,28 @@
+Bugs: https://bugs.gentoo.org/934131
+https://gitlab.freedesktop.org/xorg/xserver/-/commit/0ddcd8785199c08d9bded3c767a3b1227c670999
+
+Backport from XOrg server:
+
+    commit 0ddcd8785199c08d9bded3c767a3b1227c670999
+    Author: Joaquim Monteiro <joaquim.monteiro@protonmail.com>
+    Date: Sun, 23 Jun 2024 21:17:25 +0100
+
+        [PATCH 1/2] os: Fix assignment with incompatible pointer type
+
+        struct hostent->h_addr_list is of type char**, not const char**.
+        GCC considers this an error when in C99 mode or later.
+
+        Signed-off-by: Joaquim Monteiro <joaquim.monteiro@protonmail.com>
+        Part-of: <https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/1572>
+
+--- a/nx-X11/programs/Xserver/os/access.c
++++ b/nx-X11/programs/Xserver/os/access.c
+@@ -1941,7 +1941,7 @@
+ 	char hostname[SI_HOSTNAME_MAXLEN];
+ 	int f, hostaddrlen;
+ 	void * hostaddr;
+-	const char **addrlist;
++	char **addrlist;
+ 
+ 	if (siAddrLen >= sizeof(hostname)) 
+ 	    return FALSE;

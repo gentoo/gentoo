@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+	A total conversion mod for Marathon Infinity running on Aleph One.
+	Apotheosis X pushes the boundaries of what's possible aesthetically with the marathon engine whilst retaining its low resolution 90's charm.
+	</longdescription>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>kangie@gentoo.org</email>
+		<name>Matt Jolly</name>
+	</maintainer>
+</pkgmetadata>

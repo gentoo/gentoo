@@ -1,0 +1,627 @@
+--- a/include/draw.h
++++ b/include/draw.h
+@@ -116,19 +116,19 @@
+ 
+ 
+ #ifndef X_DISPLAY_MISSING
+-Display *display;               /* the X display */
++extern Display *display;               /* the X display */
+ extern Window  mainwin;         /* the main display window */
+-int x, y;                       /* the corner of the window */
+-unsigned int width, height;     /* the width and height of the window */
++extern int x, y;                       /* the corner of the window */
++extern unsigned int width, height;     /* the width and height of the window */
+ #define FONT "-*-new century schoolbook-medium-r-*-*-14-*"
+-char *fontrsc;                  /* the font resource */
+-XFontStruct *fontst;            /* the font strcture for the font */
+-XGCValues gcv;                  /* graphics context values */
+-GC gc1;                         /* a graphics context */
+-XtAppContext appcontext;
+-Widget toplevel;
+-int nargc;
+-char** nargv;
++extern char *fontrsc;                  /* the font resource */
++extern XFontStruct *fontst;            /* the font strcture for the font */
++extern XGCValues gcv;                  /* graphics context values */
++extern GC gc1;                         /* a graphics context */
++extern XtAppContext appcontext;
++extern Widget toplevel;
++extern int nargc;
++extern char** nargv;
+ extern String res[16];
+ 
+ #define DEFGEOMETRY "600x400+20+50"
+--- a/include/phylip.h
++++ b/include/phylip.h
+@@ -349,7 +349,8 @@
+ extern AjPFile embossancfile;
+ extern AjPFile embossmixfile;
+ extern AjPFile embossfactfile;
+-extern long spp, words, bits;
++extern AjPPhyloState* phylostates;
++extern long spp, words, bits, outgrno;
+ extern boolean ibmpc, ansi, tranvsp;
+ extern naym *nayme;                     /* names of species */
+ 
+--- a/src/clique.c
++++ b/src/clique.c
+@@ -9,7 +9,6 @@
+ 
+ #define FormWide        80   /* width of outfile page */
+ 
+-AjPPhyloState* phylostates;
+ AjPPhyloProp phyloanc = NULL;
+ AjPPhyloProp phylofact = NULL;
+ AjPPhyloProp phyloweights = NULL;
+@@ -72,10 +71,8 @@
+ Char infilename[FNMLNGTH], ancfilename[FNMLNGTH], factfilename[FNMLNGTH], weightfilename[FNMLNGTH];
+ const char* outfilename;
+ const char* outtreename;
+-AjPFile embossoutfile;
+-AjPFile embossouttree;
+ 
+-long ActualChars, Cliqmin, outgrno,
++long ActualChars, Cliqmin,
+        col, ith, msets, setsz;
+ boolean ancvar, Clmin, Factors, outgropt, trout, weights, noroot, justwts,
+                printcomp, progress, treeprint, mulsets, firstset;
+--- a/src/cons.c
++++ b/src/cons.c
+@@ -6,7 +6,7 @@
+ Char intreename[FNMLNGTH], intree2name[FNMLNGTH];
+ node *root;
+ 
+-long numopts, outgrno, col, setsz;
++long numopts, col, setsz;
+ long maxgrp;               /* max. no. of groups in all trees found  */
+ 
+ boolean trout, firsttree, noroot, outgropt, didreroot, prntsets,
+--- a/src/consense.c
++++ b/src/consense.c
+@@ -19,8 +19,6 @@
+ 
+ const char* outfilename;
+ const char* outtreename;
+-AjPFile embossoutfile;
+-AjPFile embossouttree;
+ 
+ long trees_in;
+ 
+--- a/src/contml.c
++++ b/src/contml.c
+@@ -69,10 +69,8 @@
+ 
+ const char* outfilename;
+ const char* outtreename;
+-AjPFile embossoutfile;
+-AjPFile embossouttree;
+ 
+-long nonodes2, loci, totalleles, df, outgrno, col,
++long nonodes2, loci, totalleles, df, col,
+       datasets, ith, njumble, jumb=0;
+ long inseed, inseed0;
+ long *alleles, *locus, *weight;
+--- a/src/contrast.c
++++ b/src/contrast.c
+@@ -40,7 +40,6 @@
+ 
+ 
+ const char* outfilename;
+-AjPFile embossoutfile;
+ 
+ 
+ 
+--- a/src/discboot.c
++++ b/src/discboot.c
+@@ -56,7 +56,6 @@
+ 
+ 
+ const char* outfilename;
+-AjPFile embossoutfile;
+ 
+ const char* outweightfilename;
+ AjPFile embossoutweightfile;
+--- a/src/disc.c
++++ b/src/disc.c
+@@ -1,7 +1,6 @@
+ #include "phylip.h"
+ #include "disc.h"
+ 
+-AjPPhyloState* phylostates;
+ 
+ /* version 3.6. (c) Copyright 1993-2002 by the University of Washington.
+    Written by Joseph Felsenstein, Akiko Fuseki, Sean Lamont, and Andrew Keeffe.
+--- a/src/discrete.c
++++ b/src/discrete.c
+@@ -6,7 +6,7 @@
+    Permission is granted to copy and use this program provided no fee is
+    charged for it and provided that this copyright notice is not removed. */
+ 
+-long nonodes, endsite, outgrno, nextree, which;
++long nonodes, endsite, nextree, which;
+ boolean interleaved, printdata, outgropt, treeprint, dotdiff;
+ steptr weight, category, alias, location, ally;
+ sequence y, convtab;
+--- a/src/dnacomp.c
++++ b/src/dnacomp.c
+@@ -53,8 +53,6 @@
+ 
+ const char* outfilename;
+ const char* outtreename;
+-AjPFile embossoutfile;
+-AjPFile embossouttree;
+ 
+ node *root, *p;
+ long chars, col, ith, njumble, jumb, msets, numtrees;
+--- a/src/dnadist.c
++++ b/src/dnadist.c
+@@ -27,7 +27,6 @@
+ 
+ Char infilename[FNMLNGTH], catfilename[FNMLNGTH], weightfilename[FNMLNGTH];
+ const char* outfilename;
+-AjPFile embossoutfile;
+ 
+ long sites, categs, weightsum, datasets, ith, rcategs;
+ boolean freqsfrom, jukes, kimura, logdet, gama, invar, similarity, lower, f84,
+--- a/src/dnainvar.c
++++ b/src/dnainvar.c
+@@ -51,7 +51,6 @@
+ Char infilename[FNMLNGTH], weightfilename[FNMLNGTH];
+ 
+ const char* outfilename;
+-AjPFile embossoutfile;
+ 
+ long sites, msets, ith;
+ boolean weights, progress, prntpat, printinv, mulsets, firstset, justwts;
+--- a/src/dnaml.c
++++ b/src/dnaml.c
+@@ -93,12 +93,10 @@
+ 
+ const char* outfilename;
+ const char* outtreename;
+-AjPFile embossoutfile;
+-AjPFile embossouttree;
+ 
+ double *rate, *rrate, *probcat;
+ long nonodes2, sites, weightsum, categs, datasets, ith, njumble, jumb;
+-long parens, outgrno;
++long parens;
+ boolean  freqsfrom, global, jumble, weights, trout, usertree,
+   ctgry, rctgry, auto_, hypstate, ttr, progress, mulsets, justwts,
+   firstset, improve, smoothit, polishing, lngths, gama, invar,inserting=false;
+--- a/src/dnamlk.c
++++ b/src/dnamlk.c
+@@ -119,8 +119,6 @@
+ 
+ const char* outfilename;
+ const char* outtreename;
+-AjPFile embossoutfile;
+-AjPFile embossouttree;
+ double *rrate;
+ long sites, weightsum, categs, datasets, ith, njumble, jumb, numtrees, shimotrees;
+ /*  sites = number of sites in actual sequences
+--- a/src/dnamove.c
++++ b/src/dnamove.c
+@@ -127,7 +127,6 @@
+ node *root;
+ 
+ const char* outtreename;
+-AjPFile embossouttree;
+ 
+ long chars, screenlines, col, treelines, leftedge, topedge, vmargin,
+    hscroll, vscroll, scrollinc, screenwidth, farthest, whichtree, othertree;
+--- a/src/dnapenny.c
++++ b/src/dnapenny.c
+@@ -47,8 +47,6 @@
+ 
+ const char* outfilename;
+ const char* outtreename;
+-AjPFile embossoutfile;
+-AjPFile embossouttree;
+ node *root, *p;
+ long *zeros=NULL;
+ long chars, howmany, howoften, col, msets, ith;
+--- a/src/dollop.c
++++ b/src/dollop.c
+@@ -10,7 +10,6 @@
+ 
+ #define maxtrees        100  /* maximum number of tied trees stored     */
+ 
+-AjPPhyloState* phylostates = NULL;
+ AjPPhyloProp phyloanc = NULL;
+ AjPPhyloProp phyloweights = NULL;
+ AjPPhyloTree* phylotrees = NULL;
+@@ -47,8 +46,6 @@
+ 
+ const char* outfilename;
+ const char* outtreename;
+-AjPFile embossoutfile;
+-AjPFile embossouttree;
+ 
+ 
+ node *root;
+--- a/src/dolmove.c
++++ b/src/dolmove.c
+@@ -11,7 +11,6 @@
+ #define overr           4
+ #define which           1
+ 
+-AjPPhyloState* phylostates = NULL;
+ AjPPhyloProp phyloanc = NULL;
+ AjPPhyloProp phylofact = NULL;
+ AjPPhyloProp phyloweights = NULL;
+@@ -73,10 +72,9 @@
+ Char infilename[FNMLNGTH],intreename[FNMLNGTH], ancfilename[FNMLNGTH], factfilename[FNMLNGTH], weightfilename[FNMLNGTH];
+ 
+ const char* outtreename;
+-AjPFile embossouttree;
+ 
+ node *root;
+-long outgrno, col, screenlines, screenwidth, scrollinc,treelines,
++long col, screenlines, screenwidth, scrollinc,treelines,
+         leftedge,topedge,vmargin,hscroll,vscroll,farthest;
+ /* outgrno indicates outgroup */
+ boolean weights, thresh, ancvar, questions, dollo, factors,
+--- a/src/dolpenny.c
++++ b/src/dolpenny.c
+@@ -15,7 +15,6 @@
+ typedef double *valptr;
+ typedef long *placeptr;
+ 
+-AjPPhyloState* phylostates = NULL;
+ AjPPhyloProp phyloanc = NULL;
+ AjPPhyloProp phyloweights = NULL;
+ 
+@@ -40,8 +39,6 @@
+ Char infilename[FNMLNGTH], weightfilename[FNMLNGTH], ancfilename[FNMLNGTH];
+ const char* outfilename;
+ const char* outtreename;
+-AjPFile embossoutfile;
+-AjPFile embossouttree;
+ 
+ node *root;
+ long howmany, howoften, col, msets, ith;
+--- a/src/draw.c
++++ b/src/draw.c
+@@ -10,6 +10,20 @@
+ #include "phylip.h"
+ #include "draw.h"
+ 
++#ifndef X_DISPLAY_MISSING
++Display *display;
++int x, y;
++unsigned int width, height;
++char *fontrsc;
++XFontStruct *fontst;
++XGCValues gcv;
++GC gc1;
++XtAppContext appcontext;
++Widget toplevel;
++int nargc;
++char** nargv;
++#endif
++
+ #ifdef QUICKC
+ struct videoconfig myscreen;
+ void   setupgraphics();
+--- a/src/factor.c
++++ b/src/factor.c
+@@ -54,7 +54,6 @@
+ const char* outfactname;
+ const char* outancname;
+ AjPFile inputfile;
+-AjPFile embossoutfile;
+ AjPFile embossoutfact;
+ AjPFile embossoutanc;
+ 
+--- a/src/fitch.c
++++ b/src/fitch.c
+@@ -60,11 +60,9 @@
+ 
+ const char* outfilename;
+ const char* outtreename;
+-AjPFile embossoutfile;
+-AjPFile embossouttree;
+ 
+ Char infilename[FNMLNGTH], intreename[FNMLNGTH];
+-long nonodes2, outgrno, nums, col, datasets, ith, njumble, jumb=0, numtrees;
++long nonodes2, nums, col, datasets, ith, njumble, jumb=0, numtrees;
+ long inseed;
+ vector *x;
+ intvector *reps;
+--- a/src/freqboot.c
++++ b/src/freqboot.c
+@@ -52,7 +52,6 @@
+ 
+ 
+ const char* outfilename;
+-AjPFile embossoutfile;
+ 
+ const char* outweightfilename;
+ AjPFile embossoutweightfile;
+--- a/src/gendist.c
++++ b/src/gendist.c
+@@ -24,7 +24,6 @@
+ #endif
+ 
+ const char* outfilename;
+-AjPFile embossoutfile;
+ 
+ long loci, totalleles, df, datasets, ith;
+ long nonodes;
+--- a/src/kitsch.c
++++ b/src/kitsch.c
+@@ -51,8 +51,6 @@
+ 
+ const char* outfilename;
+ const char* outtreename;
+-AjPFile embossoutfile;
+-AjPFile embossouttree;
+ 
+ 
+ Char infilename[FNMLNGTH], intreename[FNMLNGTH];
+--- a/src/mix.c
++++ b/src/mix.c
+@@ -13,7 +13,6 @@
+ 
+ typedef long *placeptr;
+ 
+-AjPPhyloState* phylostates = NULL;
+ AjPPhyloProp phyloweights = NULL;
+ AjPPhyloProp phyloanc = NULL;
+ AjPPhyloProp phylomix = NULL;
+@@ -52,11 +51,9 @@
+ Char infilename[FNMLNGTH], intreename[FNMLNGTH], weightfilename[FNMLNGTH], ancfilename[FNMLNGTH], mixfilename[FNMLNGTH];
+ const char* outfilename;
+ const char* outtreename;
+-AjPFile embossoutfile;
+-AjPFile embossouttree;
+ 
+ node2 *root;
+-long outgrno, msets, ith, njumble, jumb, numtrees;
++long msets, ith, njumble, jumb, numtrees;
+ /*  outgrno indicates outgroup */
+ long inseed, inseed0;
+ boolean jumble, usertree, weights, ancvar, questions, allsokal,
+--- a/src/move.c
++++ b/src/move.c
+@@ -13,7 +13,6 @@
+ #define which           1
+ 
+ 
+-AjPPhyloState* phylostates = NULL;
+ AjPPhyloProp phyloweights = NULL;
+ AjPPhyloProp phyloanc = NULL;
+ AjPPhyloProp phylomix = NULL;
+@@ -77,10 +76,9 @@
+  
+ char infilename[FNMLNGTH],intreename[FNMLNGTH], weightfilename[FNMLNGTH], ancfilename[FNMLNGTH], mixfilename[FNMLNGTH], factfilename[FNMLNGTH];
+ const char* outtreename;
+-AjPFile embossouttree;
+ 
+ node *root;
+-long outgrno, screenlines, col, treelines, leftedge, topedge,
++long screenlines, col, treelines, leftedge, topedge,
+   vmargin, hscroll, vscroll, scrollinc, screenwidth, farthest;
+ /* outgrno indicates outgroup */
+ boolean weights, outgropt, ancvar, questions, allsokal,
+--- a/src/neighbor.c
++++ b/src/neighbor.c
+@@ -32,11 +32,9 @@
+ 
+ const char* outfilename;
+ const char* outtreename;
+-AjPFile embossoutfile;
+-AjPFile embossouttree;
+ 
+ Char infilename[FNMLNGTH];
+-long nonodes2, outgrno, col, datasets, ith;
++long nonodes2, col, datasets, ith;
+ long inseed;
+ vector *x;
+ intvector *reps;
+--- a/src/pars.c
++++ b/src/pars.c
+@@ -9,7 +9,6 @@
+ 
+ #define MAXNUMTREES     1000000  /* bigger than number of user trees can be */
+ 
+-AjPPhyloState* phylostates = NULL;
+ AjPPhyloProp phyloweights = NULL;
+ AjPPhyloTree* phylotrees = NULL;
+ 
+--- a/src/penny.c
++++ b/src/penny.c
+@@ -12,7 +12,6 @@
+ #define often           100  /* how often to notify how many trees examined */
+ #define many            1000 /* how many multiples of howoften before stop  */
+ 
+-AjPPhyloState* phylostates = NULL;
+ AjPPhyloProp phyloweights = NULL;
+ AjPPhyloProp phyloanc = NULL;
+ AjPPhyloProp  phylomix = NULL;
+@@ -44,11 +43,9 @@
+ Char infilename[FNMLNGTH], weightfilename[FNMLNGTH], ancfilename[FNMLNGTH], mixfilename[FNMLNGTH];
+ const char* outfilename;
+ const char* outtreename;
+-AjPFile embossoutfile;
+-AjPFile embossouttree;
+ 
+ node2 *root;
+-long outgrno, rno, howmany, howoften, col, msets, ith;
++long rno, howmany, howoften, col, msets, ith;
+ /*  outgrno indicates outgroup                                        */
+ 
+ boolean weights, ancvar, questions, allsokal, allwagner,
+--- a/src/phylip.c
++++ b/src/phylip.c
+@@ -46,7 +46,8 @@
+ AjPFile embossancfile;
+ AjPFile embossmixfile;
+ AjPFile embossfactfile;
+-long spp, words, bits;
++AjPPhyloState* phylostates = NULL;
++long spp, words, bits, outgrno;
+ boolean ibmpc, ansi, tranvsp;
+ naym *nayme;                     /* names of species */
+ 
+--- a/src/proml.c
++++ b/src/proml.c
+@@ -89,8 +89,6 @@
+ Char infilename[100], intreename[100], catfilename[100], weightfilename[100];
+ const char* outfilename;
+ const char* outtreename;
+-AjPFile embossoutfile;
+-AjPFile embossouttree;
+ 
+ double *rate, *rrate, *probcat;
+ long nonodes2, sites, weightsum, categs,
+--- a/src/promlk.c
++++ b/src/promlk.c
+@@ -88,8 +88,6 @@
+ 
+ const char* outfilename;
+ const char* outtreename;
+-AjPFile embossoutfile;
+-AjPFile embossouttree;
+ 
+ Char infilename[FNMLNGTH], intreename[FNMLNGTH],
+      catfilename[FNMLNGTH], weightfilename[FNMLNGTH];
+--- a/src/protdist.c
++++ b/src/protdist.c
+@@ -79,7 +79,6 @@
+ char infilename[100], catfilename[100], weightfilename[100];
+ 
+ const char* outfilename;
+-AjPFile embossoutfile;
+ 
+ 
+ /* Local variables for makedists, propagated globally for c version: */
+--- a/src/protpars.c
++++ b/src/protpars.c
+@@ -76,8 +76,6 @@
+ 
+ const char* outfilename;
+ const char* outtreename;
+-AjPFile embossoutfile;
+-AjPFile embossouttree;
+ 
+ node *root;
+ long chars, col, msets, ith, njumble, jumb, numtrees;
+--- a/src/restboot.c
++++ b/src/restboot.c
+@@ -54,7 +54,6 @@
+ 
+ 
+ const char* outfilename;
+-AjPFile embossoutfile;
+ 
+ const char* outweightfilename;
+ AjPFile embossoutweightfile;
+--- a/src/restdist.c
++++ b/src/restdist.c
+@@ -13,7 +13,6 @@
+ 
+ extern sequence y;
+ 
+-AjPPhyloState* phylostates = NULL;
+ 
+ 
+ #ifndef OLDC
+@@ -40,7 +39,6 @@
+ Char infilename[FNMLNGTH];
+ 
+ const char* outfilename;
+-AjPFile embossoutfile;
+ 
+ long sites, weightsum, datasets, ith;
+ boolean  restsites, neili, gama, weights, lower,
+--- a/src/restml.c
++++ b/src/restml.c
+@@ -17,7 +17,6 @@
+ 
+ AjPPhyloProp phyloweights = NULL;
+ AjPPhyloTree* phylotrees;
+-AjPPhyloState* phylostates = NULL;
+ 
+ #ifndef OLDC
+ /* function prototypes */
+@@ -101,8 +100,6 @@
+ 
+ const char* outfilename;
+ const char* outtreename;
+-AjPFile embossoutfile;
+-AjPFile embossouttree;
+ 
+ 
+ ajint numwts;
+--- a/src/retree.c
++++ b/src/retree.c
+@@ -123,7 +123,7 @@
+ 
+ node *root, *garbage;
+ 
+-long nonodes, outgrno, screenwidth, vscreenwidth,
++long nonodes, screenwidth, vscreenwidth,
+      screenlines, col, treenumber, leftedge, topedge, treelines,
+      hscroll, vscroll, scrollinc, whichtree, othertree,
+      numtrees, treesread;
+@@ -145,7 +145,6 @@
+ char       intreename[FNMLNGTH];
+ 
+ const char* outtreename;
+-AjPFile embossouttree;
+ 
+ boolean    subtree, written, readnext;
+ node      *nuroot;
+--- a/src/seqbootall.c
++++ b/src/seqbootall.c
+@@ -109,7 +109,6 @@
+ 
+ 
+ const char* outfilename;
+-AjPFile embossoutfile;
+ 
+ const char* outweightfilename;
+ AjPFile embossoutweightfile;
+--- a/src/seqboot.c
++++ b/src/seqboot.c
+@@ -92,7 +92,6 @@
+ 
+ 
+ const char* outfilename;
+-AjPFile embossoutfile;
+ 
+ const char* outweightfilename;
+ AjPFile embossoutweightfile;
+--- a/src/seq.c
++++ b/src/seq.c
+@@ -7,7 +7,7 @@
+    Permission is granted to copy and use this program provided no fee is
+    charged for it and provided that this copyright notice is not removed. */
+ 
+-long nonodes, endsite, outgrno, nextree, which;
++long nonodes, endsite, nextree, which;
+ boolean interleaved, printdata, outgropt, treeprint, dotdiff, transvp;
+ steptr weight, category, alias, location, ally;
+ sequence y;
+--- a/src/treedist.c
++++ b/src/treedist.c
+@@ -16,7 +16,6 @@
+ extern node *root;
+ 
+ const char* outfilename;
+-AjPFile embossoutfile;
+ 
+ long trees_in_1, trees_in_2;
+ 
+--- a/src/treedistpair.c
++++ b/src/treedistpair.c
+@@ -16,7 +16,6 @@
+ extern node *root;
+ 
+ const char* outfilename;
+-AjPFile embossoutfile;
+ 
+ long trees_in_1, trees_in_2;
+ 

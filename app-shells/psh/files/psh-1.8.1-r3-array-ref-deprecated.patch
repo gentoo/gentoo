@@ -1,0 +1,37 @@
+From fec038344e05b4fe1b369a979b9ab224343297dd Mon Sep 17 00:00:00 2001
+From: r <rocky@gnu.org>
+Date: Sun, 25 Mar 2012 18:17:45 -0400
+Subject: [PATCH] Get rid of 'Using an array as a reference is deprecated in
+ Psh/StrategyBunch.pm'
+
+---
+ lib/Psh/Strategy/Darwin_apps.pm | 2 +-
+ lib/Psh/Strategy/Executable.pm  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/Psh/Strategy/Darwin_apps.pm b/lib/Psh/Strategy/Darwin_apps.pm
+index cbcbb1d..8c4879e 100644
+--- a/lib/Psh/Strategy/Darwin_apps.pm
++++ b/lib/Psh/Strategy/Darwin_apps.pm
+@@ -44,7 +44,7 @@ sub _recursive_search {
+ 
+ 
+ sub applies {
+-	my $com= @{$_[2]}->[0];
++	my $com= $_[2]->[0];
+ 	if ($com !~ m/$Psh::which_regexp/) { return ''; }
+ 	my $path=$ENV{APP_PATH}||'/Applications';
+ 	my @path= split /:/, $path;
+diff --git a/lib/Psh/Strategy/Executable.pm b/lib/Psh/Strategy/Executable.pm
+index 7d09119..7767082 100644
+--- a/lib/Psh/Strategy/Executable.pm
++++ b/lib/Psh/Strategy/Executable.pm
+@@ -24,7 +24,7 @@ sub runs_before {
+ }
+ 
+ sub applies {
+-	my $com= @{$_[2]}->[0];
++	my $com= $_[2]->[0];
+ 	my $executable= Psh::Util::which($com);
+ 	return $executable if defined $executable;
+ 	return '';

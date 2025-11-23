@@ -1,0 +1,240 @@
+From f6d4e0608dabfd4f2712172bdb604996178eb744 Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Thu, 6 Feb 2025 14:41:52 +0100
+Subject: [PATCH] Build: fix build against Poppler 25.02.00
+
+Fixes #11804
+---
+ frmts/pdf/pdfdataset.cpp           | 41 ++++++++++++++++++++++++++----
+ frmts/pdf/pdfio.cpp                | 17 +++++++++++++
+ frmts/pdf/pdfio.h                  | 12 +++++++++
+ frmts/pdf/pdfobject.cpp            |  6 ++---
+ frmts/pdf/pdfobject.h              |  2 +-
+ frmts/pdf/pdfsdk_headers.h |  9 +++++--
+ 6 files changed, 76 insertions(+), 11 deletions(-)
+
+diff --git a/frmts/pdf/pdfdataset.cpp b/frmts/pdf/pdfdataset.cpp
+--- a/frmts/pdf/pdfdataset.cpp
++++ b/frmts/pdf/pdfdataset.cpp
+@@ -1964,6 +1964,14 @@ CPLErr PDFDataset::ReadPixels(int nReqXOff, int nReqYOff, int nReqXSize,
+         PDFDoc *poDoc = m_poDocPoppler;
+         poSplashOut->startDoc(poDoc);
+ 
++        // Note: Poppler 25.2 is certainly not the lowest version where we can
++        // avoid the hack.
++#if !(POPPLER_MAJOR_VERSION > 25 ||                                            \
++      (POPPLER_MAJOR_VERSION == 25 && POPPLER_MINOR_VERSION >= 2))
++#define USE_OPTCONTENT_HACK
++#endif
++
++#ifdef USE_OPTCONTENT_HACK
+         /* EVIL: we modify a private member... */
+         /* poppler (at least 0.12 and 0.14 versions) don't render correctly */
+         /* some PDFs and display an error message 'Could not find a OCG with
+@@ -1978,6 +1986,7 @@ CPLErr PDFDataset::ReadPixels(int nReqXOff, int nReqYOff, int nReqXSize,
+         OCGs *poOldOCGs = poCatalog->optContent;
+         if (!m_bUseOCG)
+             poCatalog->optContent = nullptr;
++#endif
+         try
+         {
+             poDoc->displayPageSlice(poSplashOut, m_iPage, m_dfDPI, m_dfDPI, 0,
+@@ -1988,14 +1997,19 @@ CPLErr PDFDataset::ReadPixels(int nReqXOff, int nReqYOff, int nReqXSize,
+         {
+             CPLError(CE_Failure, CPLE_AppDefined,
+                      "PDFDoc::displayPageSlice() failed with %s", e.what());
++
++#ifdef USE_OPTCONTENT_HACK
+             /* Restore back */
+             poCatalog->optContent = poOldOCGs;
++#endif
+             delete poSplashOut;
+             return CE_Failure;
+         }
+ 
++#ifdef USE_OPTCONTENT_HACK
+         /* Restore back */
+         poCatalog->optContent = poOldOCGs;
++#endif
+ 
+         SplashBitmap *poBitmap = poSplashOut->getBitmap();
+         if (poBitmap->getWidth() != nReqXSize ||
+@@ -3734,9 +3748,14 @@ void PDFDataset::ExploreLayersPoppler(GDALPDFArray *poArray,
+                 }
+                 else
+                     osCurLayer = std::move(osName);
+-                // CPLDebug("PDF", "Layer %s", osCurLayer.c_str());
++                    // CPLDebug("PDF", "Layer %s", osCurLayer.c_str());
+ 
+-                OCGs *optContentConfig = m_poDocPoppler->getOptContentConfig();
++#if POPPLER_MAJOR_VERSION > 25 ||                                              \
++    (POPPLER_MAJOR_VERSION == 25 && POPPLER_MINOR_VERSION >= 2)
++                const
++#endif
++                    OCGs *optContentConfig =
++                        m_poDocPoppler->getOptContentConfig();
+                 struct Ref r;
+                 r.num = poObj->GetRefNum().toInt();
+                 r.gen = poObj->GetRefGen();
+@@ -3772,11 +3791,19 @@ void PDFDataset::FindLayersPoppler(int iPageOfInterest)
+     if (poPages)
+         nPageCount = poPages->GetLength();
+ 
+-    OCGs *optContentConfig = m_poDocPoppler->getOptContentConfig();
++#if POPPLER_MAJOR_VERSION > 25 ||                                              \
++    (POPPLER_MAJOR_VERSION == 25 && POPPLER_MINOR_VERSION >= 2)
++    const
++#endif
++        OCGs *optContentConfig = m_poDocPoppler->getOptContentConfig();
+     if (optContentConfig == nullptr || !optContentConfig->isOk())
+         return;
+ 
+-    Array *array = optContentConfig->getOrderArray();
++#if POPPLER_MAJOR_VERSION > 25 ||                                              \
++    (POPPLER_MAJOR_VERSION == 25 && POPPLER_MINOR_VERSION >= 2)
++    const
++#endif
++        Array *array = optContentConfig->getOrderArray();
+     if (array)
+     {
+         GDALPDFArray *poArray = GDALPDFCreateArray(array);
+@@ -3812,7 +3839,11 @@ void PDFDataset::FindLayersPoppler(int iPageOfInterest)
+ 
+ void PDFDataset::TurnLayersOnOffPoppler()
+ {
+-    OCGs *optContentConfig = m_poDocPoppler->getOptContentConfig();
++#if POPPLER_MAJOR_VERSION > 25 ||                                              \
++    (POPPLER_MAJOR_VERSION == 25 && POPPLER_MINOR_VERSION >= 2)
++    const
++#endif
++        OCGs *optContentConfig = m_poDocPoppler->getOptContentConfig();
+     if (optContentConfig == nullptr || !optContentConfig->isOk())
+         return;
+ 
+diff --git a/frmts/pdf/pdfio.cpp b/frmts/pdf/pdfio.cpp
+--- a/frmts/pdf/pdfio.cpp
++++ b/frmts/pdf/pdfio.cpp
+@@ -237,23 +237,40 @@ int VSIPDFFileStream::lookChar()
+ /*                                reset()                               */
+ /************************************************************************/
+ 
++#if POPPLER_MAJOR_VERSION > 25 ||                                              \
++    (POPPLER_MAJOR_VERSION == 25 && POPPLER_MINOR_VERSION >= 2)
++bool VSIPDFFileStream::reset()
++#else
+ void VSIPDFFileStream::reset()
++#endif
+ {
+     nSavedPos = VSIFTellL(f);
+     bHasSavedPos = TRUE;
+     VSIFSeekL(f, nCurrentPos = nStart, SEEK_SET);
+     nPosInBuffer = -1;
+     nBufferLength = -1;
++#if POPPLER_MAJOR_VERSION > 25 ||                                              \
++    (POPPLER_MAJOR_VERSION == 25 && POPPLER_MINOR_VERSION >= 2)
++    return true;
++#endif
+ }
+ 
+ /************************************************************************/
+ /*                         unfilteredReset()                            */
+ /************************************************************************/
+ 
++#if POPPLER_MAJOR_VERSION > 25 ||                                              \
++    (POPPLER_MAJOR_VERSION == 25 && POPPLER_MINOR_VERSION > 2)
++bool VSIPDFFileStream::unfilteredReset()
++{
++    return reset();
++}
++#else
+ void VSIPDFFileStream::unfilteredReset()
+ {
+     reset();
+ }
++#endif
+ 
+ /************************************************************************/
+ /*                                close()                               */
+diff --git a/frmts/pdf/pdfio.h b/frmts/pdf/pdfio.h
+--- a/frmts/pdf/pdfio.h
++++ b/frmts/pdf/pdfio.h
+@@ -48,8 +48,20 @@ class VSIPDFFileStream final : public BaseStream
+     virtual int getUnfilteredChar() override;
+     virtual int lookChar() override;
+ 
++#if POPPLER_MAJOR_VERSION > 25 ||                                              \
++    (POPPLER_MAJOR_VERSION == 25 && POPPLER_MINOR_VERSION >= 2)
++    virtual bool reset() override;
++#else
+     virtual void reset() override;
++#endif
++
++#if POPPLER_MAJOR_VERSION > 25 ||                                              \
++    (POPPLER_MAJOR_VERSION == 25 && POPPLER_MINOR_VERSION > 2)
++    virtual bool unfilteredReset() override;
++#else
+     virtual void unfilteredReset() override;
++#endif
++
+     virtual void close() override;
+ 
+     bool FoundLinearizedHint() const
+diff --git a/frmts/pdf/pdfobject.cpp b/frmts/pdf/pdfobject.cpp
+--- a/frmts/pdf/pdfobject.cpp
++++ b/frmts/pdf/pdfobject.cpp
+@@ -979,11 +979,11 @@ class GDALPDFDictionaryPoppler : public GDALPDFDictionary
+ class GDALPDFArrayPoppler : public GDALPDFArray
+ {
+   private:
+-    Array *m_poArray;
++    const Array *m_poArray;
+     std::vector<std::unique_ptr<GDALPDFObject>> m_v;
+ 
+   public:
+-    GDALPDFArrayPoppler(Array *poArray) : m_poArray(poArray)
++    GDALPDFArrayPoppler(const Array *poArray) : m_poArray(poArray)
+     {
+     }
+ 
+@@ -1334,7 +1334,7 @@ std::map<CPLString, GDALPDFObject *> &GDALPDFDictionaryPoppler::GetValues()
+ /*                           GDALPDFCreateArray()                       */
+ /************************************************************************/
+ 
+-GDALPDFArray *GDALPDFCreateArray(Array *array)
++GDALPDFArray *GDALPDFCreateArray(const Array *array)
+ {
+     return new GDALPDFArrayPoppler(array);
+ }
+diff --git a/frmts/pdf/pdfobject.h b/frmts/pdf/pdfobject.h
+--- a/frmts/pdf/pdfobject.h
++++ b/frmts/pdf/pdfobject.h
+@@ -405,7 +405,7 @@ class GDALPDFObjectPoppler : public GDALPDFObject
+     virtual int GetRefGen() override;
+ };
+ 
+-GDALPDFArray *GDALPDFCreateArray(Array *array);
++GDALPDFArray *GDALPDFCreateArray(const Array *array);
+ 
+ #endif  // HAVE_POPPLER
+ 
+diff --git a/frmts/pdf/pdfsdk_headers.h b/frmts/pdf/pdfsdk_headers.h
+--- a/frmts/pdf/pdfsdk_headers.h
++++ b/frmts/pdf/pdfsdk_headers.h
+@@ -51,10 +51,15 @@
+ 
+ #include <Dict.h>
+ 
+-#define private                                                                \
+-    public /* Ugly! Catalog::optContent is private but we need it... */
++#if POPPLER_MAJOR_VERSION > 25 ||                                              \
++    (POPPLER_MAJOR_VERSION == 25 && POPPLER_MINOR_VERSION >= 2)
++#include <Catalog.h>
++#else
++/* Ugly! Catalog::optContent is private but we need it for ancient Poppler versions. */
++#define private public
+ #include <Catalog.h>
+ #undef private
++#endif
+ 
+ #define private public /* Ugly! PDFDoc::str is private but we need it... */
+ #include <PDFDoc.h>

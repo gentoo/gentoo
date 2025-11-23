@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The lxqt-base category contains core packages for LXQt Desktop Environment.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie lxqt-base enthält grundlegende Pakete für die
+		Desktop-Umgebung LXQt.
+	</longdescription>
+</catmetadata>

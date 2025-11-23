@@ -1,0 +1,35 @@
+commit 6f566c799323feb3b8dc2b82e62953040a6a5129
+Author: Louis Sautier <sautier.louis@gmail.com>
+Date:   Sat Sep 26 10:30:37 2020 +0200
+
+    setup.py: use absolute paths for pth files
+    
+    On some systems (such as PyPy3 on Gentoo), distutils' `data` path is not
+    `sys.prefix`, which means that we cannot rely on relative paths.
+
+diff --git a/setup.py b/setup.py
+index 057dd80..7674adc 100755
+--- a/setup.py
++++ b/setup.py
+@@ -66,9 +66,9 @@ def find_pth_directory():
+     Determine the correct directory pathname for installing ``*.pth`` files.
+ 
+     To install a ``*.pth`` file using a source distribution archive (created
+-    when ``python setup.py sdist`` is called) the relative directory pathname
+-    ``lib/pythonX.Y/site-packages`` needs to be passed to the ``data_files``
+-    option to ``setup()``.
++    when ``python setup.py sdist`` is called) the directory pathname
++    ``/usr/lib/pythonX.Y/site-packages`` needs to be passed to the ``data_files``
++    option of ``setup()``.
+ 
+     Unfortunately this breaks universal wheel archives (created when ``python
+     setup.py bdist_wheel --universal`` is called) because a specific Python
+@@ -81,7 +81,7 @@ def find_pth_directory():
+     directory without hard coding its location.
+     """
+     return ('/' if 'bdist_wheel' in sys.argv
+-            else os.path.relpath(distutils.sysconfig.get_python_lib(), sys.prefix))
++            else distutils.sysconfig.get_python_lib())
+ 
+ 
+ setup(name='coloredlogs',

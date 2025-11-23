@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=JabRef
+GenericName=BibTeX Editor
+Comment=Graphical Java application for managing BibTeX and biblatex (.bib) databases
+Type=Application
+Terminal=false
+Icon=jabref
+Exec=JabRef %U
+Keywords=bibtex;biblatex;latex;bibliography
+Categories=Office;
+StartupWMClass=org.jabref.gui.JabRefGUI
+MimeType=text/x-bibtex;

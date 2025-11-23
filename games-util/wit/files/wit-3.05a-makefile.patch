@@ -1,0 +1,266 @@
+From ecf6121592e9ffa0b2cd220a0de675b64b163000 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Sun, 17 Mar 2024 18:12:43 -0400
+Subject: [PATCH] reroll patch to Makefile for system integration
+
+Don't link libdl into wfuse as it's unnecessary, use system bzip2, respect user
+CFLAGS, use pkgconfig to determine ncurses libs, and use verbose build output.
+---
+ Makefile              | 82 ++++++++++++++++---------------------------
+ test-libwbfs/Makefile | 13 ++-----
+ 2 files changed, 32 insertions(+), 63 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index adaa48a..433578a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -111,11 +111,6 @@ VERSION		:= $(VERSION_NUM)$(BETA_SUFFIX)
+ #-------------------------------------------------------------------------------
+ # compiler settings
+ 
+-PRE		?= 
+-CC		= $(PRE)gcc
+-CPP		= $(PRE)g++
+-STRIP		= $(PRE)strip
+-
+ #-------------------------------------------------------------------------------
+ # files
+ 
+@@ -171,7 +166,7 @@ endif
+ TOPT_wit	:= $(OPT_STATIC)
+ TOPT_wwt	:= $(OPT_STATIC)
+ TOPT_wdf	:= $(OPT_STATIC)
+-TOPT_wfuse	:= -lfuse -lpthread -ldl
++TOPT_wfuse	:= -lfuse -lpthread
+ 
+ #TOPT_ALL	:= $(TOPT_wit) $(TOPT_wwt) $(TOPT_wdf) $(TOPT_wfuse)
+ 
+@@ -206,8 +201,8 @@ else
+ endif
+ 
+ # lib summary
+-LIB_LIST	+= libbz2 lzma
+-LIB_OBJECTS	+= $(LIBBZ2_OBJ) $(LZMA_OBJ)
++LIB_LIST	+= lzma
++LIB_OBJECTS	+= $(LZMA_OBJ)
+ RM_FILES	+= $(foreach l,$(LIB_LIST),src/$(l)/*.{d,o})
+ 
+ 
+@@ -297,10 +292,10 @@ DEFINES1	+= -D_7ZIP_ST=1		# disable 7zip multi threading
+ DEFINES1	+= -D_LZMA_PROB32=1	# LZMA option
+ DEFINES		=  $(strip $(DEFINES1) $(MODE) $(XDEF))
+ 
+-CFLAGS		+= -std=gnu99 -fomit-frame-pointer -fno-strict-aliasing -funroll-loops
++CFLAGS		+= -std=gnu99 -fno-strict-aliasing
+ CFLAGS		+= -Wall -Wno-parentheses -Wno-unused-function
+ #CFLAGS		+= -O3 -Isrc/libwbfs -Isrc/lzma -Isrc -I$(UI) -I. -Iwork
+-CFLAGS		+= -O3 -Isrc/libwbfs -Isrc -I$(UI) -I. -Iwork
++CFLAGS		+= -Isrc/libwbfs -Isrc -I$(UI) -I. -Iwork
+ 
+ ifeq ($(SYSTEM_LINUX),1)
+   LIBS		+= -ltinfo
+@@ -313,8 +308,6 @@ endif
+ 
+ ifeq ($(SYSTEM),mac)
+   CFLAGS	+= -I/usr/local/include
+-else
+-  LDFLAGS	+= -static-libgcc
+ endif
+ 
+ ifeq ($(shell expr $(GCC_VERSION) '>=' 7.0 ),1)
+@@ -334,7 +327,7 @@ LDFLAGS		:= $(strip $(LDFLAGS))
+ ifeq ($(HAVE_ZLIB),1)
+  LIBS		+= -lz
+ endif
+-LIBS		+= -lm -lncurses $(XLIBS)
++LIBS		+= -lm $(shell $(PKG_CONFIG) --libs ncurses) -lbz2 $(XLIBS)
+ 
+ ifeq ($(HAVE_SHA),1)
+  ifeq ($(SYSTEM_LINUX),1)
+@@ -402,60 +395,51 @@ default_rule: all
+ # general rules
+ 
+ $(ALL_TOOLS_X): %: %.o $(ALL_OBJECTS) $(TOBJ_ALL) Makefile | $(HELPER_TOOLS)
+-	@printf "$(LOGFORMAT_TOOL)" tool "$@" "$(MODE) $(TOPT_$@) $(TOBJ_$@)"
+-	@$(CC) $(CFLAGS) $(DEFINES) $(LDFLAGS) $@.o \
++	$(CC) $(CFLAGS) $(DEFINES) $(LDFLAGS) $@.o \
+ 		$(ALL_OBJECTS) $(TOBJ_$@) $(LIBS) $(TOPT_$@) -o $@
+-	@if test -f $@.exe; then $(STRIP) $@.exe; else $(STRIP) $@; fi
+ 
+-	@mkdir -p bin/$(SYSTEM2) bin/$(SYSTEM2)/debug
+-	@if test -s $(MODE_FILE) && grep -Fq -e -DDEBUG $(MODE_FILE); \
++	mkdir -p bin/$(SYSTEM2) bin/$(SYSTEM2)/debug
++	if test -s $(MODE_FILE) && grep -Fq -e -DDEBUG $(MODE_FILE); \
+ 		then cp -p $@ bin/$(SYSTEM2)/debug/; \
+ 		else cp -p $@ bin/; cp -p $@ bin/$(SYSTEM2)/; fi
+ 
+ #--------------------------
+ 
+ $(HELPER_TOOLS): %: %.o $(ALL_OBJECTS) $(UI_TABS) Makefile
+-	@printf "$(LOGFORMAT_TOOL)" helper "$@ $(TOBJ_$@)" "$(MODE)"
+-	@$(CC) $(CFLAGS) $(DEFINES) $(LDFLAGS) $@.o \
++	$(CC) $(CFLAGS) $(DEFINES) $(LDFLAGS) $@.o \
+ 		$(ALL_OBJECTS) $(TOBJ_$@) $(LIBS) -o $@
+ 
+ #--------------------------
+ 
+ $(WDF_LINKS): wdf
+-	@printf "$(LOGFORMAT_INST)" "link" "wdf -> $@" ""
+-	@ln -f wdf "$@"
++	ln -f wdf "$@"
+ 
+ #--------------------------
+ 
+ $(UI_OBJECTS): %.o: %.c ui-%.c ui-%.h version.h Makefile
+-	@printf "$(LOGFORMAT_CC)" +object "$@" "$(MODE)"
+-	@$(CC) $(CFLAGS) $(DEPFLAGS) $(DEFINES) -c $< -o $@
++	$(CC) $(CFLAGS) $(DEPFLAGS) $(DEFINES) -c $< -o $@
+ 
+ #--------------------------
+ 
+ $(C_OBJECTS): %.o: %.c version.h Makefile $(TEXT_FILES)
+-	@printf "$(LOGFORMAT_CC)" object "$@" "$(MODE)"
+-	@$(CC) $(CFLAGS) $(DEPFLAGS) $(DEFINES) -c $< -o $@
++	$(CC) $(CFLAGS) $(DEPFLAGS) $(DEFINES) -c $< -o $@
+ 
+ #--------------------------
+ 
+ $(ASM_OBJECTS): %.o: %.S Makefile
+-	@printf "$(LOGFORMAT_CC)" asm "$@" "$(MODE)"
+-	@$(CC) $(CFLAGS) $(DEPFLAGS) $(DEFINES) -c $< -o $@
++	$(CC) $(CFLAGS) $(DEPFLAGS) $(DEFINES) -c $< -o $@
+ 
+ #--------------------------
+ 
+ $(SETUP_FILES): templates.sed $(SETUP_DIR)/$@
+-	@printf "$(LOGFORMAT)" create "$@" ""
+-	@chmod 775 $(GEN_TEMPLATE)
+-	@$(GEN_TEMPLATE) $@
++	chmod 775 $(GEN_TEMPLATE)
++	$(GEN_TEMPLATE) $@
+ 
+ #--------------------------
+ 
+ $(TEXT_FILES): $(GEN_TEXT_FILE) $(TEXT_DIR)/$@
+-	@printf "$(LOGFORMAT)" text "$@" ""
+-	@chmod 775 $(GEN_TEXT_FILE)
+-	@$(GEN_TEXT_FILE) $(TEXT_DIR) $@
++	chmod 775 $(GEN_TEXT_FILE)
++	$(GEN_TEXT_FILE) $(TEXT_DIR) $@
+ 
+ #--------------------------
+ 
+@@ -465,20 +449,17 @@ $(UI_FILES): gen-ui.c ui.h $(UI_TABS) | gen-ui
+ 
+ .PHONY : ui
+ ui : gen-ui
+-	@printf "$(LOGFORMAT)" run gen-ui ""
+-	@./gen-ui
++	./gen-ui
+ 
+ #
+ ###############################################################################
+ # lib specific rules
+ 
+ $(LIBBZ2_OBJ): %.o: %.c Makefile
+-	@printf "$(LOGFORMAT_CC)" object "$(subst src/libbz2/,,$@)" "$(MODE) [libbz2]"
+-	@$(CC) $(CFLAGS) $(DEPFLAGS) $(BZIP2_FLAGS) $(DEFINES) -c $< -o $@
++	$(CC) $(CFLAGS) $(DEPFLAGS) $(BZIP2_FLAGS) $(DEFINES) -c $< -o $@
+ 
+ $(LZMA_OBJ): %.o: %.c Makefile
+-	@printf "$(LOGFORMAT_CC)" object "$(subst src/lzma/,,$@)" "$(MODE) [lzma]"
+-	@$(CC) $(CFLAGS) $(DEPFLAGS) $(LZMA_FLAGS) $(DEFINES) -c $< -o $@
++	$(CC) $(CFLAGS) $(DEPFLAGS) $(LZMA_FLAGS) $(DEFINES) -c $< -o $@
+ 
+ #
+ ###############################################################################
+@@ -670,9 +651,8 @@ doc: $(MAIN_TOOLS) templates.sed gen-doc
+ 
+ .PHONY : gen-doc
+ gen-doc:
+-	@printf "$(LOGFORMAT)" create documentation ""
+-	@chmod ug+x $(GEN_TEMPLATE)
+-	@$(GEN_TEMPLATE)
++	chmod ug+x $(GEN_TEMPLATE)
++	$(GEN_TEMPLATE)
+ 
+ #
+ #--------------------------
+@@ -778,7 +758,7 @@ old:
+ 
+ .PHONY : predef
+ predef:
+-	@gcc -E -dM none.c | sort
++	@$(CC) -E -dM none.c | sort
+ 
+ #
+ #--------------------------
+@@ -792,8 +772,7 @@ $(SUB_PROJECTS):
+ #--------------------------
+ 
+ templates.sed: Makefile
+-	@printf "$(LOGFORMAT)" create templates.sed ""
+-	@printf '%s\n' \
++	printf '%s\n' \
+ 		'/^~/ d;' \
+ 		's|@.@@@|$(VERSION_NUM)|g;' \
+ 		's|@@@@-@@-@@|$(DATE)|g;' \
+@@ -859,13 +838,12 @@ templates.sed: Makefile
+ 
+ .PHONY : test
+ test:
+-	@printf "$(LOGFORMAT)" enable test "-> define -DTEST"
+-	@rm -f *.o $(ALL_TOOLS_X)
+-	@echo "-DTEST" >>$(MODE_FILE)
+-	@sort $(MODE_FILE) | uniq > $(MODE_FILE).tmp
++	rm -f *.o $(ALL_TOOLS_X)
++	echo "-DTEST" >>$(MODE_FILE)
++	sort $(MODE_FILE) | uniq > $(MODE_FILE).tmp
+ # 2 steps to bypass a cygwin mv failure
+-	@cp $(MODE_FILE).tmp $(MODE_FILE)
+-	@rm -f $(MODE_FILE).tmp
++	cp $(MODE_FILE).tmp $(MODE_FILE)
++	rm -f $(MODE_FILE).tmp
+ 
+ #
+ #--------------------------
+diff --git a/test-libwbfs/Makefile b/test-libwbfs/Makefile
+index 6e937fc..9c0f0f8 100644
+--- a/test-libwbfs/Makefile
++++ b/test-libwbfs/Makefile
+@@ -7,11 +7,6 @@
+ 
+ SHELL			= /bin/bash
+ 
+-PRE		?= 
+-CC		= $(PRE)gcc
+-CPP		= $(PRE)g++
+-STRIP		= $(PRE)strip
+-
+ #-------------------------------------------------------------------------------
+ # files
+ 
+@@ -46,18 +41,14 @@ VPATH		+= ../src/libwbfs
+ DEFINES		=  -DLARGE_FILES -D_FILE_OFFSET_BITS=64 $(XDEF)
+ DEFINES		:= $(strip $(DEFINES))
+ 
+-CFLAGS		=  -fomit-frame-pointer -fno-strict-aliasing
++CFLAGS		+= -fno-strict-aliasing
+ CFLAGS		+= -Wall -Wno-parentheses -Wno-unused-function
+-CFLAGS		+= -O3 -I../src/libwbfs -I.
++CFLAGS		+= -I../src/libwbfs -I.
+ CFLAGS		+= $(XFLAGS)
+ CFLAGS		:= $(strip $(CFLAGS))
+ 
+ DEPFLAGS	+= -MMD
+ 
+-LDFLAGS		+= -static-libgcc
+-#LDFLAGS	+= -static
+-LDFLAGS		:= $(strip $(LDFLAGS))
+-
+ LIBS		+= $(XLIBS)
+ 
+ #
+-- 
+2.43.2
+

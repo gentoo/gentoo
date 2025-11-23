@@ -1,0 +1,62 @@
+--- a/src/c-ffi.c
++++ b/src/c-ffi.c
+@@ -347,7 +347,11 @@
+     }
+     sa = SCM_SLOT_ACCESSOR(SCM_CDR(p));
+     if (0 <= sa->slotNumber) {
++#if !defined(GAUCHE_API_VERSION) || GAUCHE_API_VERSION < 98
+         return SCM_FFI_TYPE_DATA(Scm_InstanceSlotRef(ctype, sa->slotNumber));
++#else
++        return SCM_FFI_TYPE_DATA(Scm_InstanceSlotRef(ctype, sa->slotNumber, SCM_UNBOUND));
++#endif
+     } else {
+         Scm_Error("wrong slot number: %d", sa->slotNumber);
+     }
+--- a/src/c-lex.c
++++ b/src/c-lex.c
+@@ -992,11 +992,6 @@
+     SCM_RETURN(Scm_MakeInteger(v));
+ }
+ 
+-ScmObj Scm_ReadStringLiteral()
+-{
+-    SCM_RETURN(read_string_literal());
+-}
+-
+ ScmObj Scm_ReadCharacterConstant()
+ {
+     SCM_RETURN(read_character_constant());
+--- a/src/c-lex.h
++++ b/src/c-lex.h
+@@ -78,7 +78,6 @@
+ extern ScmObj Scm_IsForceIdentifierSet(ScmObj v);
+ extern ScmObj Scm_ReadIdentifier(ScmObj l);
+ extern ScmObj Scm_ReadOperator(ScmObj c);
+-extern ScmObj Scm_ReadStringLiteral();
+ extern ScmObj Scm_ReadCharacterConstant();
+ extern ScmObj Scm_ReadOctalOrFlonum(ScmObj l);
+ extern ScmObj Scm_ReadDecimal(ScmObj l);
+--- a/src/c-lexlib.stub
++++ b/src/c-lexlib.stub
+@@ -40,7 +40,11 @@
+         "if (nptr == endptr) {"
+         "    SCM_RETURN(SCM_FALSE);"
+         "} else {"
++        "#if !defined(GAUCHE_API_VERSION) || GAUCHE_API_VERSION < 98"
+         "    SCM_RETURN(Scm_MakeInteger64((ScmInt64) v));"
++        "#else"
++        "    SCM_RETURN(Scm_MakeInteger64((int64_t) v));"
++        "#endif"
+         "}"))
+ 
+ (define-cproc strtod (nptr::<const-cstring>)
+@@ -136,9 +140,6 @@
+ (define-cproc read-operator (c)
+   (call "Scm_ReadOperator"))
+ 
+-(define-cproc read-string-literal ()
+-  (call "Scm_ReadStringLiteral"))
+-
+ (define-cproc read-character-constant ()
+   (call "Scm_ReadCharacterConstant"))
+ 

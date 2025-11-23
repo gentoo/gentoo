@@ -1,0 +1,192 @@
+Subject: [PATCH] Fix variable type mismatch in hyperspace
+From: Alexander Miller <alex.miller@gmx.de>
+Date: Sun, 31 Mar 2024 2024-03-31 03:08:04 +0200
+
+Some source files of hyperspace (flare.cpp, goo.cpp, starBurst.cpp)
+were referring to a variable "extern float frameTime" which doesn't
+exist in hyperspace (it's only a parameter of hack_draw() nowadays).
+
+It got mixed up with the driver.c variable "int frameTime".
+
+Remove the mismatched declaration from the 3 files and pass the value
+from hack_draw() to the functions using it by adding a new parameter.
+Also make frameTime (and most other variables) in driver.c static.
+
+Bug: https://bugs.gentoo.org/928251
+Signed-off-by: Alexander Miller <alex.miller@gmx.de>
+--- a/src/driver.c
++++ b/src/driver.c
+@@ -49,24 +49,24 @@
+ 
+ #include "vroot.h"
+ 
+-xstuff_t *XStuff;
++static xstuff_t *XStuff;
+ 
+ extern const char *hack_name;
+ 
+ /*
+  * display parameters
+  */
+-int rootWindow = False;
++static int rootWindow = False;
+ int glewInitialized = False;
+ #ifdef HAVE_GLEW
+-int frameTime = 10000;
+-int vsync = 1;
++static int frameTime = 10000;
++static int vsync = 1;
+ #else
+-int frameTime = 33333;
+-int vsync = 0;
++static int frameTime = 33333;
++static int vsync = 0;
+ #endif
+-int idleOnDPMS = 1;
+-int signalled = 0;
++static int idleOnDPMS = 1;
++static volatile int signalled = 0;
+ 
+ void createWindow (int argc, char **argv)
+ {
+--- a/src/flare.cpp
++++ b/src/flare.cpp
+@@ -45,7 +45,6 @@ extern double modelMat[16];
+ extern double projMat[16];
+ extern int viewport[4];
+ // Calculated in main draw routine each frame
+-extern float frameTime;
+ extern float camPos[3];
+ 
+ 
+@@ -182,7 +181,7 @@ void initFlares(){
+ // Draw a flare at a specified (x,y) location on the screen
+ // Screen corners are at (0,0) and (1,1)
+ // alpha = 0.0 for lowest intensity; alpha = 1.0 for highest intensity
+-void flare(double *pos, float red, float green, float blue, float alpha){
++void flare(double *pos, float red, float green, float blue, float alpha, float frameTime){
+ 	double winx, winy, winz;  // in screen coordinates
+ 	float x, y, dx, dy;
+ 	float fadewidth, temp;
+--- a/src/flare.h
++++ b/src/flare.h
+@@ -36,7 +36,7 @@ void initFlares();
+ // Draw a flare at a specified (x,y) location on the screen
+ // Screen corners are at (0,0) and (1,1)
+ // alpha = 0.0 for lowest intensity; alpha = 1.0 for highest intensity
+-void flare(double *pos, float red, float green, float blue, float alpha);
++void flare(double *pos, float red, float green, float blue, float alpha, float frameTime);
+ 
+ 
+ #endif  // FLARE_H
+--- a/src/goo.cpp
++++ b/src/goo.cpp
+@@ -25,9 +25,7 @@
+ #include "goo.h"
+ 
+ 
+-extern float frameTime, simulationTime;
+ extern float shiftx, shiftz;
+-extern float dFov;
+ 
+ 
+ goo::goo(int res, float rad, float (*func)(float* position)){
+--- a/src/hyperspace.cpp
++++ b/src/hyperspace.cpp
+@@ -340,10 +340,10 @@ void hack_draw (xstuff_t * XStuff, doubl
+ 	}
+ #ifdef HAVE_GLEW
+ 	if (dShaders)
+-		theStarBurst->draw(lerp);
++		theStarBurst->draw(frameTime, lerp);
+ 	else
+ #endif
+-		theStarBurst->draw();
++		theStarBurst->draw(frameTime);
+ 
+ 	// draw tunnel
+ 	theTunnel->make(frameTime);
+@@ -379,7 +379,7 @@ void hack_draw (xstuff_t * XStuff, doubl
+ 	float diff[3] = {(float)flarepos[0] - camPos[0], (float)flarepos[1] - camPos[1], (float)flarepos[2] - camPos[2]};
+ 	float alpha = 0.5f - 0.005f * sqrtf(diff[0] * diff[0] + diff[1] * diff[1] + diff[2] * diff[2]);
+ 	if(alpha > 0.0f)
+-		flare(flarepos, 1.0f, 1.0f, 1.0f, alpha);
++		flare(flarepos, 1.0f, 1.0f, 1.0f, alpha, frameTime);
+ 	glEnable(GL_FOG);
+ }
+ 
+--- a/src/starBurst.cpp
++++ b/src/starBurst.cpp
+@@ -38,7 +38,6 @@
+ 
+ extern int xsize, ysize;
+ extern float aspectRatio;
+-extern float frameTime;
+ extern float camPos[3];
+ extern int numAnimTexFrames;
+ extern wavyNormalCubeMaps* theWNCM;
+@@ -136,7 +135,7 @@ void starBurst::restart(float* position)
+ }
+ 
+ 
+-void starBurst::drawStars(){
++void starBurst::drawStars(float frameTime){
+ 	int i;
+ 	float distance;
+ 
+@@ -158,8 +157,8 @@ void starBurst::drawStars(){
+ }
+ 
+ 
+-void starBurst::draw(){
+-	drawStars();
++void starBurst::draw(float frameTime){
++	drawStars(frameTime);
+ 	
+ 	size += frameTime * 0.5f;
+ 	if(size >= 3.0f)
+@@ -172,7 +171,7 @@ void starBurst::draw(float frameTime){
+ 		p[0] = pos[0];
+ 		p[1] = pos[1];
+ 		p[2] = pos[2];
+-		flare(p, 1.0f, 1.0f, 1.0f, brightness);
++		flare(p, 1.0f, 1.0f, 1.0f, brightness, frameTime);
+ 	}
+ 
+ 	glMatrixMode(GL_MODELVIEW);
+@@ -201,8 +200,8 @@ void starBurst::draw(){
+ 
+ 
+ #ifdef HAVE_GLEW
+-void starBurst::draw(float lerp){
+-	drawStars();
++void starBurst::draw(float frameTime, float lerp){
++	drawStars(frameTime);
+ 	
+ 	size += frameTime * 0.5f;
+ 	if(size >= 3.0f)
+@@ -215,7 +214,7 @@ void starBurst::draw(float frameTime, fl
+ 		p[0] = pos[0];
+ 		p[1] = pos[1];
+ 		p[2] = pos[2];
+-		flare(p, 1.0f, 1.0f, 1.0f, brightness);
++		flare(p, 1.0f, 1.0f, 1.0f, brightness, frameTime);
+ 	}
+ 
+ 	glMatrixMode(GL_MODELVIEW);
+--- a/src/starBurst.h
++++ b/src/starBurst.h
+@@ -43,10 +43,10 @@ public:
+ 	starBurst();
+ 	~starBurst();
+ 	void restart(float* position);
+-	void drawStars();
+-	void draw();  // draw regular
++	void drawStars(float frameTime);
++	void draw(float frameTime);  // draw regular
+ #ifdef HAVE_GLEW
+-	void draw(float lerp);  // draw with shaders
++	void draw(float frameTime, float lerp);  // draw with shaders
+ #endif
+ };
+ 

@@ -1,0 +1,8 @@
+diff -Naur netclasses-1.1.0.orig/Documentation/GNUmakefile.postamble netclasses-1.1.0/Documentation/GNUmakefile.postamble
+--- netclasses-1.1.0.orig/Documentation/GNUmakefile.postamble	2014-06-10 10:16:08.000000000 +0200
++++ netclasses-1.1.0/Documentation/GNUmakefile.postamble	1970-01-01 01:00:00.000000000 +0100
+@@ -1,4 +0,0 @@
+-before-all::
+-	mkdir -p $(DOCUMENT_NAME)
+-	cp -f rfc1459.txt $(DOCUMENT_NAME)
+-

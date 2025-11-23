@@ -1,0 +1,90 @@
+From https://github.com/Aorimn/dislocker/pull/336
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Tue, 11 Feb 2025 00:05:31 +0300
+Subject: [PATCH 1/2] Use MbedTLS 3, remove support for outdated versions
+
+PolarSSL no longer supported and should not be used as dependency. MbedTLS 2 reached EOL, upstream recommends to use MbedTLS 3 branch.
+
+After dropping outdated versions, configuration of dislocker is greatly simplified.
+--- a/.gitignore
++++ b/.gitignore
+@@ -12,7 +12,6 @@ src/dislocker-metadata
+ src/libdislocker.so*
+ 
+ # Configured files
+-include/dislocker/ssl_bindings.h
+ src/dislocker-find.rb
+ 
+ # Unit test files
+--- a/include/dislocker/ssl_bindings.h
++++ b/include/dislocker/ssl_bindings.h
+@@ -24,43 +24,12 @@
+ #define SSL_BINDINGS_H
+ 
+ /*
+- * Here stand the bindings for polarssl SHA256/SHA2/SHA-2 function for dislocker
++ * Here stand the bindings for MbedTLS SHA256/SHA2/SHA-2 function for dislocker
+  */
+-#include "@POLARSSL_INC_FOLDER@/version.h"
+-#if MBEDTLS_VERSION_MAJOR >= 3
+-#include "@POLARSSL_INC_FOLDER@/mbedtls_config.h"
+-#include "@POLARSSL_INC_FOLDER@/compat-2.x.h"
+-#else
+-#include "@POLARSSL_INC_FOLDER@/config.h"
+-#endif
+-#include "@POLARSSL_INC_FOLDER@/aes.h"
+-
+-// Function's name changed
+-#if defined(MBEDTLS_SHA256_C)
+-#  include "mbedtls/sha256.h"
+-#  if MBEDTLS_VERSION_NUMBER >= 0x02070000
+-#    define SHA256(input, len, output)         mbedtls_sha256_ret(input, len, output, 0)
+-#  else
+-#    define SHA256(input, len, output)         mbedtls_sha256(input, len, output, 0)
+-#  endif /* POLARSSL_VERSION_NUMBER >= 0x02070000 */
+-#else /* defined(MBEDTLS_SHA256_C) */
+-
+-#  if defined(POLARSSL_SHA256_C)
+-#    include "polarssl/sha256.h"
+-#    define SHA256(input, len, output)       sha256(input, len, output, 0)
+-#  else /* defined(POLARSSL_SHA256_C) */
+-#    include "polarssl/sha2.h"
+-
+-// 0x00630500 = version 0.99.5, argument's type changed in this release
+-#    if POLARSSL_VERSION_NUMBER >= 0x00630500
+-#     define SHA256(input, len, output)       sha2(input, len, output, 0)
+-#    else
+-#     define SHA256(input, len, output)       sha2(input, (int)len, output, 0)
+-#    endif /* POLARSSL_VERSION_NUMBER >= 0x00630500 */
+-
+-#  endif /* defined(POLARSSL_SHA256_C) */
+-#endif /* defined(MBEDTLS_SHA256_C) */
++#include "mbedtls/aes.h"
++#include "mbedtls/sha256.h"
+ 
++#define SHA256(input, len, output)        mbedtls_sha256(input, len, output, 0)
+ 
+ /* Here stand the bindings for AES functions and contexts */
+ #if defined(MBEDTLS_AES_H)
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -116,14 +116,8 @@ endif()
+ # Libraries
+ set (CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
+ 
+-find_package (PolarSSL REQUIRED)
+-if(POLARSSL_FOUND  AND  POLARSSL_INCLUDE_DIRS  AND  POLARSSL_LIBRARIES)
+-	include_directories (${POLARSSL_INCLUDE_DIRS})
+-	set (LIB ${LIB} ${POLARSSL_LIBRARIES})
+-	configure_file (${PROJECT_SOURCE_DIR}/include/dislocker/ssl_bindings.h.in ${PROJECT_SOURCE_DIR}/include/dislocker/ssl_bindings.h ESCAPE_QUOTES @ONLY)
+-else()
+-	return ()
+-endif()
++find_package (MbedTLS 3 REQUIRED)
++set (LIB ${LIB} MbedTLS::mbedcrypto)
+ 
+ # Ruby bindings
+ set(WITH_RUBY "AUTO" CACHE STRING "Enable Ruby bindings. Valid values are ON, OFF, or AUTO")
+-- 
+2.49.0
+

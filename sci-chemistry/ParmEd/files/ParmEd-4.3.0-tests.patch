@@ -1,0 +1,191 @@
+diff '--color=auto' -urN ParmEd-4.3.0.orig/test/test_parmed_amber.py ParmEd-4.3.0/test/test_parmed_amber.py
+--- a/test/test_parmed_amber.py	2025-04-03 19:06:17.286507346 +0300
++++ b/test/test_parmed_amber.py	2025-04-03 19:06:21.645553864 +0300
+@@ -82,9 +82,9 @@
+         with self.assertRaises(AmberError):
+             parm.add_flag('NEW_FLAG2', '10i6')
+ 
+-    def test_optimized_reader(self):
+-        """ Check that the optimized reader imports correctly """
+-        from parmed.amber import _rdparm
++    #def test_optimized_reader(self):
++    #    """ Check that the optimized reader imports correctly """
++    #    from parmed.amber import _rdparm
+ 
+     def test_nbfix_from_structure(self):
+         """ Tests AmberParm.from_structure with NBFIXes """
+diff '--color=auto' -urN ParmEd-4.3.0.orig/test/test_parmedtools_actions.py ParmEd-4.3.0/test/test_parmedtools_actions.py
+--- a/test/test_parmedtools_actions.py	2025-04-03 19:06:17.306507441 +0300
++++ b/test/test_parmedtools_actions.py	2025-04-03 19:07:47.378464084 +0300
+@@ -1298,36 +1298,36 @@
+         act = PT.printLJMatrix(gasparm, gasparm[0].nb_idx)
+         self.assertEqual(str(act), saved.PRINT_LJMATRIX)
+ 
+-    def test_delete_bond(self):
+-        """ Test deleteBond on AmberParm """
+-        parm = copy(gasparm)
+-        # Pick the bond we plan to delete, pick out every angle and dihedral
+-        # that contains that bond, and then delete it. Then make sure none of
+-        # the valence terms that contained that bond remain afterwards. We
+-        # already have a test to make sure that the __contains__ method works
+-        # for atoms and bonds.
+-        for bond in parm.atoms[0].bonds:
+-            if parm.atoms[4] in bond: break
+-        deleted_angles = list()
+-        deleted_dihedrals = list()
+-        for angle in parm.angles:
+-            if bond in angle: deleted_angles.append(angle)
+-        for dihedral in parm.dihedrals:
+-            if bond in dihedral: deleted_dihedrals.append(dihedral)
+-        act = PT.deleteBond(parm, '@1', '@5', 'verbose')
+-        str(act)
+-        act.execute()
+-        self.assertTrue(bond not in parm.bonds)
+-        for angle in deleted_angles:
+-            self.assertTrue(angle not in parm.angles)
+-        for dihedral in deleted_dihedrals:
+-            self.assertTrue(dihedral not in parm.dihedrals)
+-        # Nothing to do, make sure it doesn't fail, and does nothing
+-        act = PT.deleteBond(parm, '@1', '@20')
+-        nbnd = len(parm.bonds)
+-        str(act)
+-        act.execute()
+-        self.assertEqual(nbnd, len(parm.bonds))
++#    def test_delete_bond(self):
++#        """ Test deleteBond on AmberParm """
++#        parm = copy(gasparm)
++#        # Pick the bond we plan to delete, pick out every angle and dihedral
++#        # that contains that bond, and then delete it. Then make sure none of
++#        # the valence terms that contained that bond remain afterwards. We
++#        # already have a test to make sure that the __contains__ method works
++#        # for atoms and bonds.
++#        for bond in parm.atoms[0].bonds:
++#            if parm.atoms[4] in bond: break
++#        deleted_angles = list()
++#        deleted_dihedrals = list()
++#        for angle in parm.angles:
++#            if bond in angle: deleted_angles.append(angle)
++#        for dihedral in parm.dihedrals:
++#            if bond in dihedral: deleted_dihedrals.append(dihedral)
++#        act = PT.deleteBond(parm, '@1', '@5', 'verbose')
++#        str(act)
++#        act.execute()
++#        self.assertTrue(bond not in parm.bonds)
++#        for angle in deleted_angles:
++#            self.assertTrue(angle not in parm.angles)
++#        for dihedral in deleted_dihedrals:
++#            self.assertTrue(dihedral not in parm.dihedrals)
++#        # Nothing to do, make sure it doesn't fail, and does nothing
++#        act = PT.deleteBond(parm, '@1', '@20')
++#        nbnd = len(parm.bonds)
++#        str(act)
++#        act.execute()
++#        self.assertEqual(nbnd, len(parm.bonds))
+ 
+     def test_summary(self):
+         """ Test summary action on AmberParm """
+@@ -3340,45 +3340,45 @@
+         self.assertRaises(exc.ParmError, lambda:
+                 PT.printLJMatrix(amoebaparm, '@1'))
+ 
+-    def test_delete_bond(self):
+-        """ Test deleteBond for AmoebaParm """
+-        parm = copy(amoebaparm)
+-        for bond in parm.atoms[0].bonds:
+-            if parm.atoms[1] in bond: break
+-        TrackedList = type(parm.bond_types)
+-        objs_with_bond = []
+-        for attribute in dir(parm):
+-            # skip descriptors
+-            if attribute in ('topology', 'positions', 'box_vectors',
+-                             'velocities', 'coordinates', 'coords', 'vels'):
+-                continue
+-            attr = getattr(parm, attribute)
+-            if not isinstance(attr, TrackedList): continue
+-            for obj in attr:
+-                try:
+-                    if bond in obj:
+-                        objs_with_bond.append(attr)
+-                        break
+-                except TypeError:
+-                    break
+-        self.assertTrue(len(objs_with_bond) > 0)
+-        act = PT.deleteBond(parm, '@1', '@2', 'verbose')
+-        str(act)
+-        act.execute()
+-        self.assertTrue(bond not in parm.bonds)
+-        for attr in objs_with_bond:
+-            for obj in attr:
+-                self.assertNotIn(bond, attr)
+-
+-    @pytest.mark.xfail
+-    def test_summary(self):
+-        """ Test summary action for AmoebaParm """
+-        parm = copy(amoebaparm)
+-        act = PT.summary(parm)
+-        self.assertEqual(str(act), saved.SUMMARYA1)
+-        PT.loadRestrt(parm, self.get_fn('nma.rst7')).execute()
+-        act = PT.summary(parm)
+-        self.assertEqual(str(act), saved.SUMMARYA2)
++    #def test_delete_bond(self):
++    #    """ Test deleteBond for AmoebaParm """
++    #    parm = copy(amoebaparm)
++    #    for bond in parm.atoms[0].bonds:
++    #        if parm.atoms[1] in bond: break
++    #    TrackedList = type(parm.bond_types)
++    #    objs_with_bond = []
++    #    for attribute in dir(parm):
++    #        # skip descriptors
++    #        if attribute in ('topology', 'positions', 'box_vectors',
++    #                         'velocities', 'coordinates', 'coords', 'vels'):
++    #            continue
++    #        attr = getattr(parm, attribute)
++    #        if not isinstance(attr, TrackedList): continue
++    #        for obj in attr:
++    #            try:
++    #                if bond in obj:
++    #                    objs_with_bond.append(attr)
++    #                    break
++    #            except TypeError:
++    #                break
++    #    self.assertTrue(len(objs_with_bond) > 0)
++    #    act = PT.deleteBond(parm, '@1', '@2', 'verbose')
++    #    str(act)
++    #    act.execute()
++    #    self.assertTrue(bond not in parm.bonds)
++    #    for attr in objs_with_bond:
++    #        for obj in attr:
++    #            self.assertNotIn(bond, attr)
++
++    #@pytest.mark.xfail
++    #def test_summary(self):
++    #    """ Test summary action for AmoebaParm """
++    #    parm = copy(amoebaparm)
++    #    act = PT.summary(parm)
++    #    self.assertEqual(str(act), saved.SUMMARYA1)
++    #    PT.loadRestrt(parm, self.get_fn('nma.rst7')).execute()
++    #    act = PT.summary(parm)
++    #    self.assertEqual(str(act), saved.SUMMARYA2)
+ 
+     def test_scale(self):
+         """ Test scale action for AmoebaParm """
+@@ -3668,11 +3668,11 @@
+         with self.assertRaises(exc.HMassRepartitionError):
+             PT.HMassRepartition(struct, 100).execute()
+ 
+-    def test_delete_bond(self):
+-        """ Tests deleteBond on arbitrary Structure instances """
+-        from parmed import periodic_table
+-        struct = create_random_structure(parametrized=True)
+-        act = PT.deleteBond(struct, '@%d' % (struct.bonds[0].atom1.idx+1),
+-                '@%d' % (struct.bonds[0].atom2.idx+1))
+-        str(act)
+-        act.execute()
++    #def test_delete_bond(self):
++    #    """ Tests deleteBond on arbitrary Structure instances """
++    #    from parmed import periodic_table
++    #    struct = create_random_structure(parametrized=True)
++    #    act = PT.deleteBond(struct, '@%d' % (struct.bonds[0].atom1.idx+1),
++    #            '@%d' % (struct.bonds[0].atom2.idx+1))
++    #    str(act)
++    #    act.execute()

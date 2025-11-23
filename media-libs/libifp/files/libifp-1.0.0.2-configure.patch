@@ -1,0 +1,50 @@
+Fix implicit declaration to autoconf.
+Introduce dependency on pkgconf to deal with hardcoded paths in CFLAGS
+https://bugs.gentoo.org/899824
+--- a/configure.in
++++ b/configure.ac
+@@ -1,9 +1,9 @@
+-AC_INIT(configure.in)
++AC_INIT
++AC_CONFIG_SRCDIR([configure.ac])
+ 
+ #The automake documentation says this is a no-no, but I don't understand
+ #what the alternative is.
+ #Commented out until I can find out what the portable alternative is.
+-CFLAGS="-g -O2 -Wall -W -Wno-unused-parameter"
+ ##CFLAGS="-g -O2 -Wall -W"
+ 
+ AM_INIT_AUTOMAKE(libifp, 1.0.0.2)
+@@ -12,6 +12,7 @@
+ AC_PROG_LIBTOOL
+ AC_C_BIGENDIAN
+ AC_SUBST(LIBTOOL_DEPS)
++PKG_PROG_PKG_CONFIG
+ 
+ dnl AC_DEFINE(IFP_AUTOCONF)
+ 
+@@ -22,10 +23,14 @@
+ AC_MSG_CHECKING([libusb])
+ AC_ARG_WITH(libusb,
+ 	AC_HELP_STRING([--with-libusb=PATH],[libusb path (default /usr)]),
+-	ac_libusb=$enableval, ac_libusb=no)
++	ac_libusb=$withval, ac_libusb=no)
+ if test "x${ac_libusb}" != "xno" ; then
+ 		case ${with_libusb} in
+ 			"" | "yes" | "YES")
++				PKG_CHECK_MODULES([LIBUSB],[libusb],,[AC_MSG_ERROR([Cannot detect libusb])])
++				CFLAGS+=" $LIBUSB_CFLAGS"
++				CPPFLAGS+=" $LIBUSB_CFLAGS"
++				LDFLAGS+=" $LIBUSB_LDFLAGS"
+ 				;;
+ 			"no" | "NO")
+ 				use_libusb=false
+@@ -93,7 +98,7 @@
+ AC_MSG_CHECKING([kernel source code])
+ AC_ARG_WITH(kmodule,
+     AC_HELP_STRING([--with-kmodule=to/kernel/src], [build as linux kernel module [[default=no]]]),
+-    ac_kmodule=$enableval, ac_kmodule=no)
++    ac_kmodule=$withval, ac_kmodule=no)
+ if test "x$ac_kmodule" != "xno" ; then
+ 	#echo "enableval is $enableval, with_kmodule is $with_kmodule"
+ 	if test "x$with_kmodule" = "xyes" ; then

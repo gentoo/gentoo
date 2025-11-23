@@ -1,0 +1,8 @@
+https://bugs.gentoo.org/875473
+--- a/null.c
++++ b/null.c
+@@ -181,2 +181,4 @@
+ int minmaxfb(f,fb)
++int f;
++int fb;
+ {

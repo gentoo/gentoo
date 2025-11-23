@@ -1,0 +1,55 @@
+--- a/src/plugins/live365/live365.c
++++ b/src/plugins/live365/live365.c
+@@ -1411,7 +1411,7 @@
+ 
+   st_action_register("record-stream", _("Record a stream"), "xterm -e streamripper %q");
+   st_action_register("view-web", _("Open a web page"), "epiphany %q");
+-  st_action_register("play-stream", _("Listen to a stream"), "xmms %q");
++  st_action_register("play-stream", _("Listen to a stream"), "audacious2 %q");
+ 
+   return TRUE;
+ }
+--- a/src/plugins/local/local.c
++++ b/src/plugins/local/local.c
+@@ -1057,7 +1057,7 @@
+ 
+   init_handler();
+ 
+-  st_action_register("play-m3u", _("Listen to a .m3u file"), "xmms %q");
++  st_action_register("play-m3u", _("Listen to a .m3u file"), "audacious2 %q");
+   st_action_register("view-web", _("Open a web page"), "epiphany %q");
+ 
+   return TRUE;
+--- a/src/plugins/shoutcast/shoutcast.c
++++ b/src/plugins/shoutcast/shoutcast.c
+@@ -959,7 +959,7 @@
+ 
+   init_handler();
+   
+-  st_action_register("play-m3u", _("Listen to a .m3u file"), "xmms %q");
++  st_action_register("play-m3u", _("Listen to a .m3u file"), "audacious2 %q");
+   st_action_register("record-stream", _("Record a stream"), "xterm -e streamripper %q");
+   st_action_register("view-web", _("Open a web page"), "epiphany %q");
+ 
+--- a/src/plugins/xiph/xiph.c
++++ b/src/plugins/xiph/xiph.c
+@@ -957,7 +957,7 @@
+   init_handler();
+ 
+   st_action_register("record-stream", _("Record a stream"), "xterm -e streamripper %q");
+-  st_action_register("play-stream", _("Listen to a stream"), "xmms %q");
++  st_action_register("play-stream", _("Listen to a stream"), "audacious2 %q");
+ 
+   return TRUE;
+ }
+--- a/src/streamtuner/st-preselections.c
++++ b/src/streamtuner/st-preselections.c
+@@ -390,7 +390,7 @@
+ {
+   st_preselections_init_handler();
+   
+-  st_action_register("play-stream", _("Listen to a stream"), "xmms %q");
++  st_action_register("play-stream", _("Listen to a stream"), "audacious2 %q");
+   st_action_register("record-stream", _("Record a stream"), "xterm -e streamripper %q");
+   st_action_register("view-web", _("Open a web page"), "epiphany %q");
+ }

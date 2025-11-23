@@ -1,0 +1,14 @@
+diff -aurN a/ext/pdo_odbc/config.m4 b/ext/pdo_odbc/config.m4
+--- a/ext/pdo_odbc/config.m4	2019-11-26 15:13:39.000000000 -0500
++++ b/ext/pdo_odbc/config.m4	2019-12-06 10:39:56.296658492 -0500
+@@ -85,6 +85,10 @@
+     PDO_ODBC_LIBDIR="$pdo_odbc_def_libdir"
+   fi
+ 
++  if test "$pdo_odbc_def_lib" = "iodbc" ; then
++    PDO_ODBC_INCDIR="$PDO_ODBC_INCDIR/iodbc"
++  fi
++
+   AC_MSG_RESULT([$pdo_odbc_flavour
+           libs       $PDO_ODBC_LIBDIR,
+           headers    $PDO_ODBC_INCDIR])

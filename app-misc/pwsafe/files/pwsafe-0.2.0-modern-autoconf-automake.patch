@@ -1,0 +1,61 @@
+https://github.com/nsd20463/pwsafe/commit/7a960f21eed6e3e8b74bf32628c38a5d8c963587
+https://github.com/nsd20463/pwsafe/commit/0bc444c8caadcbd93143e5dba77db3abfd3e51d2
+
+From 7a960f21eed6e3e8b74bf32628c38a5d8c963587 Mon Sep 17 00:00:00 2001
+From: "Nicolas S. Dade" <nic.dade@gmail.com>
+Date: Sat, 13 Jun 2015 16:49:20 -0700
+Subject: [PATCH] update ac input files to fix warnings from modern (version
+ 1.14.1) aclocal
+
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -6,7 +6,7 @@ dnl Define HAVE_STRUCT_UTIMBUF if `struct utimbuf' is declared --
+ dnl usually in <utime.h>.
+ dnl Some systems have utime.h but don't declare the struct anywhere.
+ 
+-AC_DEFUN(jm_CHECK_TYPE_STRUCT_UTIMBUF,
++AC_DEFUN([jm_CHECK_TYPE_STRUCT_UTIMBUF],
+ [
+   AC_CHECK_HEADERS(utime.h)
+   AC_REQUIRE([AC_HEADER_TIME])
+--- a/configure.ac
++++ b/configure.ac
+@@ -146,7 +146,7 @@ AC_CHECK_TYPE(socklen_t,[AC_DEFINE(HAVE_SOCKLEN_T, 1, [Define to 1 if the type s
+ 
+ 
+ dnl Checks for library functions.
+-AM_SYS_POSIX_TERMIOS
++AC_SYS_POSIX_TERMIOS
+ if test "$am_cv_sys_posix_termios" != yes -a "$ac_cv_sys_posix_termios" != yes; then
+   AC_MSG_ERROR("POSIX termios operations are required")
+ fi
+
+From 0bc444c8caadcbd93143e5dba77db3abfd3e51d2 Mon Sep 17 00:00:00 2001
+From: "Nicolas S. Dade" <nic.dade@gmail.com>
+Date: Sat, 13 Jun 2015 17:02:04 -0700
+Subject: [PATCH] Update configure.ac and INSTALL for a modern (1.14.1)
+ automake
+
+It seems fine to let automake symlink to its default versions
+of files it wants (like 'compile' and 'test-driver'), so for
+now I do that.
+
+Maybe instead I should regenerate everything. After all most
+of the autoXxx bits date from 2004.
+--- a/configure.ac
++++ b/configure.ac
+@@ -3,10 +3,10 @@ dnl confgure.ac for pwsafe
+ dnl $Id$
+ 
+ AC_PREREQ(2.5)
+-AC_INIT(pwsafe.cpp)
+ 
+-dnl Every other copy of the package version number gets its value from here
+-AM_INIT_AUTOMAKE(pwsafe, 0.2.0)
++dnl Every other copy of the package version number gets its value from the following line
++AC_INIT([pwsafe.cpp], [0.2.0])
++AM_INIT_AUTOMAKE
+ 
+ dnl create a config.h file (Automake will add -DHAVE_CONFIG_H)
+ AM_CONFIG_HEADER(config.h)
+

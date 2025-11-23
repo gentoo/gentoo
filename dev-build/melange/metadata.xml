@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    Melange can be used to build APK packages using declarative pipelines. It
+    is commonly used to provide custom packages for container images built with
+    apko. The majority of apks are built for use with either the Wolfi or
+    Alpine Linux ecosystems. It's key features are pipeline-oriented builds and
+    multi-architecture by default.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/chainguard-dev/melange/issues/</bugs-to>
+    <remote-id type="github">chainguard-dev/melange</remote-id>
+  </upstream>
+</pkgmetadata>

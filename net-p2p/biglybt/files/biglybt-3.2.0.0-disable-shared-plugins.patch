@@ -1,0 +1,18 @@
+--- a/uis/src/com/biglybt/ui/swt/plugininstaller/IPWFilePanel.java
++++ b/uis/src/com/biglybt/ui/swt/plugininstaller/IPWFilePanel.java
+@@ -162,12 +162,12 @@ public class IPWFilePanel extends AbstractWizardPanel<InstallPluginWizard> {
+   }
+   
+ 	public boolean 
+-	isNextEnabled() 
++	isFinishEnabled()
+ 	{
+ 	   return valid;
+ 	}
+ 	
+-	public IWizardPanel<InstallPluginWizard> getNextPanel() {
+-	   return new IPWInstallModePanel(wizard,this);
++	public IWizardPanel<InstallPluginWizard> getFinishPanel() {
++	   return new IPWFinishPanel(wizard,this);
+ 	}
+ }

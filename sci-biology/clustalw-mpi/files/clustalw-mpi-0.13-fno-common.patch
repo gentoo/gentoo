@@ -1,0 +1,13 @@
+--- a/parallel_compare.c
++++ b/parallel_compare.c
+@@ -74,8 +74,8 @@
+ static sint 	**accum;
+ static sint 	*diag_index;
+ static char 	*slopes;
+-sint ktup,window,wind_gap,signif; 
+-sint *zza, *zzb, *zzc, *zzd;
++extern sint ktup,window,wind_gap,signif;
++extern sint *zza, *zzb, *zzc, *zzd;
+ extern Boolean percent;
+ static void make_p_ptrs(sint *tptr, sint *pl, sint naseq, sint l);
+ static void make_n_ptrs(sint *tptr, sint *pl, sint naseq, sint len);

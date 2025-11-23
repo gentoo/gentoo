@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/919213
+Cast pointer as it is cast everywhere around it
+--- a/gperiodic.c
++++ b/gperiodic.c
+@@ -137,7 +137,7 @@
+ 	    if (col == 0) gtk_label_set_markup (GTK_LABEL (label), _(header.info[row]));
+             else {
+ 	      gtk_label_set_markup (GTK_LABEL (label), _(entry->info[row]));
+-	      gtk_label_set_selectable (label, TRUE);
++	      gtk_label_set_selectable (GTK_LABEL (label), TRUE);
+ 	    }
+ 
+ 	    gtk_misc_set_alignment(GTK_MISC(label), 0, 0);

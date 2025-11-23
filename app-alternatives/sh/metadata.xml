@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
+	<use>
+		<flag name="bash">
+			Symlink to <pkg>app-shells/bash</pkg>
+		</flag>
+		<flag name="busybox">
+			Symlink to <pkg>sys-apps/busybox</pkg>
+		</flag>
+		<flag name="dash">
+			Symlink to <pkg>app-shells/dash</pkg>
+		</flag>
+		<flag name="ksh">
+			Symlink to <pkg>app-shells/ksh</pkg>
+		</flag>
+		<flag name="lksh">
+			Symlink to lksh from <pkg>app-shells/mksh</pkg>
+		</flag>
+		<flag name="mksh">
+			Symlink to mksh from <pkg>app-shells/mksh</pkg>
+		</flag>
+	</use>
+</pkgmetadata>

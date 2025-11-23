@@ -1,0 +1,25 @@
+https://bugs.gentoo.org/955202
+toml is not packaged, use tomllib instead
+upstream still allows python3.8, so no issue for now
+diff --git a/tests/manager/test_knot_resolver_manager.py b/tests/manager/test_knot_resolver_manager.py
+index 05d0e61d..b45c79a4 100644
+--- a/tests/manager/test_knot_resolver_manager.py
++++ b/tests/manager/test_knot_resolver_manager.py
+@@ -1,11 +1,11 @@
+-import toml
++import tomllib
+ 
+ from knot_resolver import __version__
+ 
+ 
+ def test_version():
+-    with open("pyproject.toml", "r") as f:
+-        pyproject = toml.load(f)
++    with open("pyproject.toml", "rb") as f:
++        pyproject = tomllib.load(f)
+ 
+     version = pyproject["tool"]["poetry"]["version"]
+     assert __version__ == version
+-- 
+2.45.2
+

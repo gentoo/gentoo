@@ -1,0 +1,13 @@
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 970c353..1ea3aa9 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -304,7 +304,7 @@ def serve_in_thread(server: Server):
+ 
+ @pytest.fixture(scope="session")
+ def server() -> typing.Iterator[TestServer]:
+-    config = Config(app=app, lifespan="off", loop="asyncio")
++    config = Config(app=app, lifespan="off", loop="asyncio", http="h11")
+     server = TestServer(config=config)
+     yield from serve_in_thread(server)
+ 

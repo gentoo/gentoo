@@ -1,0 +1,33 @@
+needed for mem* funcs
+
+--- a/libhfsp/src/unicode.c
++++ b/libhfsp/src/unicode.c
+@@ -16,7 +16,7 @@
+ #include <stdlib.h>
+ #include <endian.h>
+ #include <byteswap.h>
+-#include <linux/string.h>
++#include <string.h>
+ 
+ #define __USE_GNU
+     /* need wcsrtomb */
+--- a/libhfsp/src/partitions.c
++++ b/libhfsp/src/partitions.c
+@@ -31,6 +31,7 @@
+ #include "os.h"
+ #include "libhfsp.h"
+ 
++#include <string.h>
+ #include <stdlib.h>
+ 
+ /*
+--- a/libhfsp/src/record.c
++++ b/libhfsp/src/record.c
+@@ -32,6 +32,7 @@
+ 
+ #include <errno.h>
+ #include <stdio.h>
++#include <string.h>
+ 
+ #include "libhfsp.h"
+ #include "hfstime.h"

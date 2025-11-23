@@ -1,0 +1,11 @@
+--- gtk-engines-2.18.2/themes/Clearlooks/gtk-2.0/gtkrc.change-bullet	2009-08-25 11:25:25.348520380 -0400
++++ gtk-engines-2.18.2/themes/Clearlooks/gtk-2.0/gtkrc	2009-08-25 11:26:30.477514482 -0400
+@@ -16,6 +16,8 @@ style "default" {
+ 
+ 	GtkCheckButton::indicator-size = 14
+ 
++	GtkEntry::invisible-char = 0x2022
++
+ 	GtkPaned::handle-size = 6
+ 
+ 	GtkRange::trough-border = 0

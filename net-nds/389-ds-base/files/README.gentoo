@@ -1,0 +1,10 @@
+If you are planning to use 389-ds-snmp (ldap-agent),
+make sure to properly configure: /etc/dirsrv/config/ldap-agent.conf
+adding proper 'server' entries, and adding the lines below to
+ => /etc/snmp/snmpd.conf
+master agent
+agentXSocket /var/agentx/master"
+
+To start 389 Directory Server (LDAP service) at boot:"
+
+    rc-update add 389-ds default"

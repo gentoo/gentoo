@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>candrews@gentoo.org</email>
+    <name>Craig Andrews</name>
+  </maintainer>
+  <longdescription>
+    rtmpdump is a toolkit for RTMP streams.
+    All forms of RTMP are supported, including
+    rtmp://, rtmpt://, rtmpe://, rtmpte://, and rtmps://.
+    Includes librtmp library.
+  </longdescription>
+    <use>
+       <flag name="ssl">Enable Cryptographic features</flag>
+       <flag name="gnutls">Use GnuTLS instead of OpenSSL for Cryptography</flag>
+       <flag name="tools">Enable installation of various binary tools in addition to librtmp library</flag>
+    </use>
+</pkgmetadata>

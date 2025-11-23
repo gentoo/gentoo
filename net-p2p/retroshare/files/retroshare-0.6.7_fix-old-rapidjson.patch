@@ -1,0 +1,24 @@
+This fixes a c23 issue in the rapidjson library:
+
+     error: assignment of read-only member 'rapidjson::GenericStringRef::length'
+
+This was fixed upstream in 2016 and this patch combines two commit from PR
+https://github.com/Tencent/rapidjson/pull/719
+We are using OpenBuildService as the tarball source and it bundles libraries that old.
+
+For Gentoo details see https://bugs.gentoo.org/945721
+--- a/supportlibs/rapidjson/include/rapidjson/document.h
++++ b/supportlibs/rapidjson/include/rapidjson/document.h
+@@ -316,10 +316,10 @@
+ 
+     GenericStringRef(const GenericStringRef& rhs) : s(rhs.s), length(rhs.length) {}
+ 
+-    GenericStringRef& operator=(const GenericStringRef& rhs) { s = rhs.s; length = rhs.length; }
+-
+     //! implicit conversion to plain CharType pointer
+     operator const Ch *() const { return s; }
++    //! Copy assignment operator not permitted - immutable type
++    GenericStringRef& operator=(const GenericStringRef& rhs) /* = delete */;
+ 
+     const Ch* const s; //!< plain CharType pointer
+     const SizeType length; //!< length of the string (excluding the trailing NULL terminator)

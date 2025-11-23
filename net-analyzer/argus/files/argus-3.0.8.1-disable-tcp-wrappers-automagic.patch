@@ -1,0 +1,22 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -251,6 +251,11 @@
+ AC_QOSIENT_MEMORY
+ 
+ AC_QOSIENT_THREADS(V_THREADS)
++AC_ARG_WITH(wrappers,
++   [  --with-wrappers         build with libwrappers support],
++   with_wrappers="$withval",
++   with_wrappers="yes")
++if test "x$with_wrappers" != "xno"; then
+ AC_QOSIENT_TCPWRAP(V_WRAPDEP, V_INCLS)
+ if test ! -z "$V_WRAPDEP"; then
+    if test -f "$V_WRAPDEP"; then
+@@ -274,6 +279,7 @@
+    AC_DEFINE([HAVE_TCP_WRAPPER], [], [Using Tcp wrappers])
+    WRAPLIBS="$V_WRAPDEP"
+ fi
++fi
+ 
+ AC_QOSIENT_LIBPCAP(V_PCAPDEP, V_INCLS)
+ if test ! -z "$V_PCAPDEP"; then

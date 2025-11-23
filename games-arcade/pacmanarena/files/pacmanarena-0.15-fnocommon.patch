@@ -1,0 +1,15 @@
+Fix build. https://bugs.gentoo.org/708066#c8
+
+diff --git a/include/input.h b/include/input.h
+index 08a4aee..491c01d 100644
+--- a/include/input.h
++++ b/include/input.h
+@@ -22,8 +22,6 @@
+ #ifndef _INPUT_H
+ #define _INPUT_H
+ 
+-char *keyboard_map;
+-
+ void input_reset(void);
+ void input_update(void);
+ int input_kstate(int ksym);

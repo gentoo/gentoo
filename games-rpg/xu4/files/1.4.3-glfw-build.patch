@@ -1,0 +1,18 @@
+From https://github.com/xu4-engine/u4/commit/6a7ee3d0079cfdc1c8fb9ba7a3c710a957155a71
+From: Karl Robillard <wickedsmoke@users.sourceforge.net>
+Date: Thu, 5 Jun 2025 12:42:51 -0400
+Subject: [PATCH] Makefile.common: Fix GLFW build.
+
+--- a/src/Makefile.common
++++ b/src/Makefile.common
+@@ -77,8 +77,10 @@ CXXSRCS=\
+ ifeq ($(UI),glv)
+ 	CSRCS+=$(GLV_SRC)
+ else
++ifneq ($(UI),glfw)
+ 	CXXSRCS+=event_$(UI).cpp
+ endif
++endif
+ 
+ #ifeq ($(CONF),boron)
+ 	CSRCS+=module.c support/cdi.c

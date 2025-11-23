@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/778578
+
+From 0b990d5db74b5e5055753f4ad5006b8d89d23d26 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sat, 27 Mar 2021 07:47:09 -0700
+Subject: [PATCH 2/2] build: Add -lm to fix undefined references.
+
+---
+ Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 746d893..348bad0 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -35,7 +35,7 @@ noinst_HEADERS=\
+ lib_libtiger_la_CFLAGS=@CWARNFLAGS_FULL@ @CFLAGS_FORTIFY_SOURCE@ @CFLAGS_DEBUG@ @CFLAGS_PROFILE@ \
+                        @PANGOCAIRO_CFLAGS@ @KATE_CFLAGS@ @PTHREAD_CFLAGS@
+ lib_libtiger_la_LIBADD=@PANGOCAIRO_LIBS@ @KATE_LIBS@ @PTHREAD_LIBS@
+-lib_libtiger_la_LDFLAGS=-version-info @LIBTIGER_SHARED_VERSION@ -no-undefined
++lib_libtiger_la_LDFLAGS=-version-info @LIBTIGER_SHARED_VERSION@ -no-undefined -lm
+ 
+ am__tar = ${AMTAR} chof - --owner=0 --group=0 --exclude=CVS --exclude=.cvsignore "$$tardir"
+ 
+-- 
+2.26.3

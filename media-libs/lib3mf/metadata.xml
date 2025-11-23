@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person" proxied="yes">
+	<email>negril.nx+gentoo@gmail.com</email>
+	<name>Paul Zander</name>
+</maintainer>
+<maintainer type="project" proxied="proxy">
+	<email>proxy-maint@gentoo.org</email>
+	<name>Proxy Maintainers</name>
+</maintainer>
+<longdescription>
+	Implementation of the 3MF manufacturing file standard from the 3MF
+	consortium.
+	It provides reading and writing capabilities for 3MF files, as well
+	as conversion and validation tools for input and output data.
+</longdescription>
+<upstream>
+	<remote-id type="github">3MFConsortium/lib3mf</remote-id>
+</upstream>
+</pkgmetadata>

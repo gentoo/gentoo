@@ -1,0 +1,11 @@
+--- a/man/Makefile
++++ b/man/Makefile
+@@ -17,7 +17,7 @@
+ MAN_1_SRC := $(addsuffix .in,$(MAN_1))
+ 
+ MAN_DIR_DEFAULT := /usr/share/man
+-MAN_DIR_RPM     := $(shell rpm --eval %_mandir 2>/dev/null || echo $(MAN_DIR_DEFAULT))
++MAN_DIR_RPM     := /usr/share/man
+ 
+ MAN_DIR := $(DESTDIR)/$(MAN_DIR_RPM)
+ 

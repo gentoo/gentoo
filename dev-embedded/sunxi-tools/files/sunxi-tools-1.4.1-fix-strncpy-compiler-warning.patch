@@ -1,0 +1,42 @@
+From 0825d9aaa6078ef283390662004797a9a1d939f3 Mon Sep 17 00:00:00 2001
+From: Andre Przywara <andre.przywara@arm.com>
+Date: Wed, 15 Dec 2021 23:04:14 +0000
+Subject: [PATCH 1/2] nandpart: fix strncpy compiler warning
+
+More recent versions of GCC warns about the usage of strncpy in
+nandpart.c: we actually only (need to) copy the stub string part of the
+magic string, without the terminating NUL character. This is fine in
+our particular case, but raises the compiler's eyebrows:
+===================
+nand-part.c: In function '_get_mbr':
+nand-part.c:93:4: warning: 'strncpy' output truncated before terminating
+                  nul copying 8 bytes from a string of the same length
+                  [-Wstringop-truncation]
+   93 |    strncpy((char *)mbr->magic, MBR_MAGIC, 8);
+      |    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+===================
+
+Switch to the more fitting memcpy() here to avoid the warning.
+
+Signed-off-by: Andre Przywara <andre.przywara@arm.com>
+Reported-by: slange-dev
+---
+ nand-part.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/nand-part.c b/nand-part.c
+index a0d46c5..af2169d 100644
+--- a/nand-part.c
++++ b/nand-part.c
+@@ -90,7 +90,7 @@ static MBR *_get_mbr(int fd, int mbr_num, int force)
+ 		printf("check partition table copy %d: ", mbr_num);
+ 		printmbrheader(mbr);
+ 		if (force) {
+-			strncpy((char *)mbr->magic, MBR_MAGIC, 8);
++			memcpy(mbr->magic, MBR_MAGIC, 8);
+ 			mbr->version = MBR_VERSION;
+ 			return mbr;
+ 		}
+-- 
+2.32.0
+

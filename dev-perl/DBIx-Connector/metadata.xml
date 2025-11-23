@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">DBIx::Connector</remote-id>
+    <remote-id type="cpan-module">DBIx::Connector</remote-id>
+    <remote-id type="cpan-module">DBIx::Connector::Driver</remote-id>
+    <remote-id type="cpan-module">DBIx::Connector::Driver::Firebird</remote-id>
+    <remote-id type="cpan-module">DBIx::Connector::Driver::MSSQL</remote-id>
+    <remote-id type="cpan-module">DBIx::Connector::Driver::MariaDB</remote-id>
+    <remote-id type="cpan-module">DBIx::Connector::Driver::Oracle</remote-id>
+    <remote-id type="cpan-module">DBIx::Connector::Driver::Pg</remote-id>
+    <remote-id type="cpan-module">DBIx::Connector::Driver::SQLite</remote-id>
+    <remote-id type="cpan-module">DBIx::Connector::Driver::mysql</remote-id>
+  </upstream>
+</pkgmetadata>

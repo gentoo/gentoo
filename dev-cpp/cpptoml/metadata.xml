@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription lang="en">
+A header-only library for parsing TOML configuration files.
+
+Targets: TOML v0.5.0 as of August 2018.
+
+This includes support for the new DateTime format, inline tables, multi-line basic and raw strings, digit separators, hexadecimal integers, octal integers, binary integers, and float special values.
+	</longdescription>
+	<maintainer type="person" proxied="yes">
+		<email>sin-ack@protonmail.com</email>
+		<name>sin-ack</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">ddemidov/vexcl</remote-id>
+	</upstream>
+</pkgmetadata>

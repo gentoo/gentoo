@@ -1,0 +1,26 @@
+--- a/tclconfig/tcl.m4
++++ b/tclconfig/tcl.m4
+@@ -1634,20 +1634,15 @@ dnl AC_CHECK_TOOL(AR, ar)
+ 	    SHLIB_LD="${CC} -shared"
+ 	    TCL_SHLIB_LD_EXTRAS="-soname \$[@]"
+ 	    SHLIB_SUFFIX=".so"
+-	    LDFLAGS=""
++	    LDFLAGS="$LDFLAGS -Wl,--export-dynamic"
+ 	    AS_IF([test $doRpath = yes], [
+-		CC_SEARCH_FLAGS='-Wl,-rpath,${LIB_RUNTIME_DIR}'
+-		LD_SEARCH_FLAGS='-rpath ${LIB_RUNTIME_DIR}'])
++		CC_SEARCH_FLAGS='-Wl,-rpath,${LIB_RUNTIME_DIR}'])
++	    LD_SEARCH_FLAGS=${CC_SEARCH_FLAGS}
+ 	    AS_IF([test "${TCL_THREADS}" = "1"], [
+ 		# The -pthread needs to go in the LDFLAGS, not LIBS
+ 		LIBS=`echo $LIBS | sed s/-pthread//`
+ 		CFLAGS="$CFLAGS $PTHREAD_CFLAGS"
+ 		LDFLAGS="$LDFLAGS $PTHREAD_LIBS"])
+-	    # Version numbers are dot-stripped by system policy.
+-	    TCL_TRIM_DOTS=`echo ${VERSION} | tr -d .`
+-	    UNSHARED_LIB_SUFFIX='${TCL_TRIM_DOTS}.a'
+-	    SHARED_LIB_SUFFIX='${TCL_TRIM_DOTS}\$\{DBGX\}.so.1'
+-	    TCL_LIB_VERSIONS_OK=nodots
+ 	    ;;
+ 	Darwin-*)
+ 	    CFLAGS_OPTIMIZE="-Os"

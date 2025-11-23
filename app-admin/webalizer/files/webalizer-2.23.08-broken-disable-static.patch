@@ -1,0 +1,16 @@
+--- a/configure
++++ b/configure
+@@ -3939,13 +3939,6 @@
+ 
+ 
+ if test "$GCC" = "yes"; then
+-
+-  # Check whether --enable-static was given.
+-if test "${enable_static+set}" = set; then
+-  enableval=$enable_static; LDFLAGS="--static ${LDFLAGS}"
+-fi
+-
+-
+   if test "$IN_CFLAGS" = ""; then
+     CFLAGS="-Wall -O2"
+   fi

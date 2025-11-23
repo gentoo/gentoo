@@ -1,0 +1,23 @@
+From c3d04090260edd77e56c0602f264d923b236c42f Mon Sep 17 00:00:00 2001
+From: Arthur Bols <arthur@bols.dev>
+Date: Tue, 5 Nov 2024 17:20:56 +0100
+Subject: [PATCH] fix: add missing QDirIterator include
+
+Added missing include for QDirIterator in mainwindow.cpp to resolve compilation
+errors introduced with Qt 6.8.
+---
+ src/mainwindow.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/mainwindow.cpp b/src/mainwindow.cpp
+index 66b87dc2..691b8593 100644
+--- a/src/mainwindow.cpp
++++ b/src/mainwindow.cpp
+@@ -19,6 +19,7 @@
+ #include <QCloseEvent>
+ #include <QDesktopServices>
+ #include <QDialog>
++#include <QDirIterator>
+ #include <QFileInfo>
+ #include <QInputDialog>
+ #include <QLabel>

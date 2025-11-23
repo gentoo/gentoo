@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<slots>
+		<subslots>Reflect ABI of liblognorm.so.</subslots>
+	</slots>
+	<upstream>
+		<bugs-to>https://github.com/rsyslog/liblognorm/issues</bugs-to>
+		<remote-id type="github">rsyslog/liblognorm</remote-id>
+	</upstream>
+</pkgmetadata>

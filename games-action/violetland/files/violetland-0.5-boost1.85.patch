@@ -1,0 +1,8 @@
+https://bugs.gentoo.org/932778
+--- a/src/game/Highscores.cpp
++++ b/src/game/Highscores.cpp
+@@ -107,3 +107,3 @@
+ 		boost::filesystem::copy_file(hsTempFile, hsFile, 
+-				boost::filesystem::copy_option::overwrite_if_exists);
++				boost::filesystem::copy_options::overwrite_existing);
+ 		boost::filesystem::remove(hsTempFile);

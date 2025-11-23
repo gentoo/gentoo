@@ -1,0 +1,33 @@
+From ebce389ac68e098f542e34400e114ac992f415af Mon Sep 17 00:00:00 2001
+From: public-release <as-public-release@janestreet.com>
+Date: Tue, 8 Oct 2024 20:31:01 +0100
+Subject: [PATCH] v0.18~preview.130.00+55
+
+---
+ bigstring_unix/src/bigstring_unix_stubs.c     |    7 +-
+
+diff --git a/bigstring_unix/src/bigstring_unix_stubs.c b/bigstring_unix/src/bigstring_unix_stubs.c
+index 0d4c7df..785ff10 100644
+--- a/bigstring_unix/src/bigstring_unix_stubs.c
++++ b/bigstring_unix/src/bigstring_unix_stubs.c
+@@ -46,6 +46,10 @@
+ #define bswap_64 bswap64
+ #endif
+ 
++#define CAML_INTERNALS
++#include <caml/io.h>
++#undef CAML_INTERNALS
++
+ #include "ocaml_utils.h"
+ #include "unix_utils.h"
+ #include <caml/socketaddr.h>
+@@ -309,9 +313,6 @@ CAMLprim value bigstring_recvfrom_assume_fd_is_nonblocking_stub(value v_sock, va
+ 
+ /* I/O of bigstrings from channels */
+ 
+-#define CAML_INTERNALS
+-#include <caml/io.h>
+-
+ CAMLprim value bigstring_input_stub(value v_min_len, value v_chan, value v_pos,
+                                     value v_len, value v_bstr) {
+   CAMLparam2(v_chan, v_bstr);

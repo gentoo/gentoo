@@ -1,0 +1,11 @@
+--- a/src/alsamixer.cxx
++++ b/src/alsamixer.cxx
+@@ -1869,7 +1869,7 @@
+ 			if (procWindow) delete procWindow;
+ 			if (mainWindow) delete mainWindow;
+ 			mainWindow = 0; procWindow = 0; helpWindow = 0;
+-			return 0;
++			mixer_abort (ERR_NONE, "", 0);
+ #endif /* #ifdef ALSAMIXER_GUI */
+       break;
+     case 13:	/* Return */

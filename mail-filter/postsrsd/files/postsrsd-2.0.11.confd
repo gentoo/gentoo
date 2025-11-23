@@ -1,0 +1,6 @@
+# Default settings for PostSRSd
+
+# From the postsrsd-2.0.11 README file:
+# "Most configuration options can no longer be configured with command
+# line arguments, so you will have to set them in /etc/postsrsd.conf."
+#POSTSRSD_OPTS=""

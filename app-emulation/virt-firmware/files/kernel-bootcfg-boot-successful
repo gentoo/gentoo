@@ -1,0 +1,9 @@
+#!/sbin/openrc-run
+# Copyright 2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="UKI Successful Boot"
+
+start() {
+	kernel-bootcfg --boot-successful --update-csv || return 1
+}

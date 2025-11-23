@@ -1,0 +1,36 @@
+commit c80af35e142d7705a367b5b39545fbba5b1f9bc2
+Author: Hans de Graaff <hans@degraaff.org>
+Date:   Sat Dec 9 09:23:29 2023 +0100
+
+    Use non-deprecated File.exist? method
+    
+    File.exists? has been deprecated for some time and is no longer
+    present in Ruby 3.2. With this change the specs pass again on Ruby
+    3.2.
+
+diff --git a/lib/org-ruby/output_buffer.rb b/lib/org-ruby/output_buffer.rb
+index 90a0aae..3179cd5 100644
+--- a/lib/org-ruby/output_buffer.rb
++++ b/lib/org-ruby/output_buffer.rb
+@@ -137,7 +137,7 @@ module Orgmode
+     end
+ 
+     def do_custom_markup
+-      if File.exists? @options[:markup_file]
++      if File.exist? @options[:markup_file]
+         load_custom_markup
+         if @custom_blocktags.empty?
+           no_valid_markup_found
+diff --git a/lib/org-ruby/parser.rb b/lib/org-ruby/parser.rb
+index a57fd9e..192b855 100644
+--- a/lib/org-ruby/parser.rb
++++ b/lib/org-ruby/parser.rb
+@@ -129,7 +129,7 @@ module Orgmode
+ 
+     # Check include file availability and permissions
+     def check_include_file(file_path)
+-      can_be_included = File.exists? file_path
++      can_be_included = File.exist? file_path
+ 
+       if not ENV['ORG_RUBY_INCLUDE_ROOT'].nil?
+         # Ensure we have full paths

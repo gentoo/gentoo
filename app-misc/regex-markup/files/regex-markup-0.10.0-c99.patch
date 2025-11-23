@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/923618
+--- a/m4/regex.m4
++++ b/m4/regex.m4
+@@ -34,6 +34,7 @@ AC_DEFUN([gl_INCLUDED_REGEX],
+ 		   jm_cv_func_working_re_compile_pattern,
+       AC_TRY_RUN(
+ [#include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <regex.h>
+ 	  int

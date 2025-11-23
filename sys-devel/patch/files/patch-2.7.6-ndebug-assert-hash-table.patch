@@ -1,0 +1,40 @@
+https://git.savannah.gnu.org/cgit/patch.git/commit/?id=86ac7e2d7b19e2fd9aab58a8cbeeebd5c6343e5c
+https://lists.gnu.org/archive/html/bug-patch/2025-02/msg00002.html
+
+From 01ae7ce6a7f270937face6aec75db28d30d83059 Mon Sep 17 00:00:00 2001
+Message-ID: <01ae7ce6a7f270937face6aec75db28d30d83059.1738773172.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Wed, 5 Feb 2025 16:16:06 +0000
+Subject: [PATCH] Fix dodgy assert with side-effects in insert_cached_dirfd
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Michał Górny <mgorny@gentoo.org> reported that patch was running out of
+FDs and that the `deep-directories` test was failing. This turns out
+to be because `hash_insert` isn't called at all with `-DNDEBUG` because
+`insert_cached_dirfd` only calls it in one case inside of an `assert`.
+
+See https://github.com/conda-forge/patch-feedstock/issues/11.
+
+This regressed in 025a54b789bd88ed15430f8633514e296826983e.
+
+* src/safe.c (insert_cached_dirfd): Don't use 'assert' for 'hash_insert'
+  call with side-effects.
+--- a/src/safe.c
++++ b/src/safe.c
+@@ -183,7 +183,8 @@ static void insert_cached_dirfd (struct cached_dirfd *entry, int keepfd)
+ 
+   /* Only insert if the parent still exists. */
+   if (! list_empty (&entry->children_link))
+-    assert (hash_insert (cached_dirfds, entry) == entry);
++    if (hash_insert (cached_dirfds, entry) != entry)
++      xalloc_die ();
+ }
+ 
+ static void invalidate_cached_dirfd (int dirfd, const char *name)
+
+base-commit: 1da6bf84db2ed0be88ccb47139256e48243a75f0
+-- 
+2.48.1
+

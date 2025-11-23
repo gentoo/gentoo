@@ -1,0 +1,56 @@
+From 25b22d16fabbdb3e7a6afcd6cd8d1a25afaaa252 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sat, 17 Jul 2021 23:44:44 +0200
+Subject: [PATCH 1/2] Fix install for --without-motif --without-gtk
+
+Related to https://bugs.gentoo.org/796992
+---
+ configure.ac       | 4 ++++
+ driver/Makefile.in | 2 +-
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 2eaea28..4cb3385 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -4148,13 +4148,16 @@ fi
+ 
+ PREFERRED_DEMO_PROGRAM=''
+ ALL_DEMO_PROGRAMS=
++SETTINGS_PROGRAM_OR_NOT=
+ if test "$have_motif" = yes; then
+   PREFERRED_DEMO_PROGRAM=xscreensaver-settings-Xm
+   ALL_DEMO_PROGRAMS="$PREFERRED_DEMO_PROGRAM $ALL_DEMO_PROGRAMS"
++  SETTINGS_PROGRAM_OR_NOT=xscreensaver-settings
+ fi
+ if test "$have_gtk" = yes; then
+   PREFERRED_DEMO_PROGRAM=xscreensaver-settings-Gtk
+   ALL_DEMO_PROGRAMS="$PREFERRED_DEMO_PROGRAM $ALL_DEMO_PROGRAMS"
++  SETTINGS_PROGRAM_OR_NOT=xscreensaver-settings
+ fi
+ 
+ 
+@@ -4306,6 +4309,7 @@ AC_SUBST(INCLUDES)
+ 
+ AC_SUBST(PREFERRED_DEMO_PROGRAM)
+ AC_SUBST(ALL_DEMO_PROGRAMS)
++AC_SUBST(SETTINGS_PROGRAM_OR_NOT)
+ AC_SUBST(SAVER_LIBS)
+ AC_SUBST(MOTIF_LIBS)
+ AC_SUBST(GTK_LIBS)
+diff --git a/driver/Makefile.in b/driver/Makefile.in
+index 0e986a9..1877d8a 100644
+--- a/driver/Makefile.in
++++ b/driver/Makefile.in
+@@ -212,7 +212,7 @@ TEST_EXES	= test-passwd   test-uid        test-xdpms      test-grab     \
+ 		  xdpyinfo      test-screens    test-yarandom   test-xinput   \
+ 	          test-xkb
+ 
+-EXES		= xscreensaver xscreensaver-command xscreensaver-settings
++EXES		= xscreensaver xscreensaver-command @SETTINGS_PROGRAM_OR_NOT@
+ UTIL_EXES	= xscreensaver-gfx @EXES_SYSTEMD@
+ SETUID_EXES	= xscreensaver-auth
+ DEMO_EXES	= @ALL_DEMO_PROGRAMS@
+-- 
+2.32.0
+

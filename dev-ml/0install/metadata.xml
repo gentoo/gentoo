@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>ml@gentoo.org</email>
+		<name>ML</name>
+	</maintainer>
+	<longdescription lang="en">
+		Zero Install is a decentralised cross-distribution software
+		installation system. Other features include full support for shared
+		libraries (with a SAT solver for dependency resolution),
+		sharing between users, and integration with native platform package
+		managers. It supports both binary and source packages, and works on
+		Linux, macOS, Unix and Windows systems.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">0install/0install</remote-id>
+	</upstream>
+</pkgmetadata>

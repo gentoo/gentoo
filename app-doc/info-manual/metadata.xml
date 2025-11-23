@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    The GNU Project distributes most of its manuals in the Info format.
+    There are two primary Info readers: The stand-alone info program
+    in <pkg>sys-apps/texinfo</pkg> and the info package in GNU Emacs
+    <pkg>app-editors/emacs</pkg>.
+
+    This manual describes how to get around inside of Info, various
+    advanced Info commands, and contains references to other sources,
+    which explain how to generate Info files from Texinfo files.
+    It is provided as a separate package because the Texinfo package
+    does not install it (as it is bundled with GNU Emacs), but the
+    stand-alone Info reader refers to it.
+  </longdescription>
+  <stabilize-allarches/>
+  <upstream>
+    <remote-id type="savannah">emacs</remote-id>
+  </upstream>
+</pkgmetadata>

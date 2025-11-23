@@ -1,0 +1,23 @@
+From f0086c2f629365bdca8df76364747f7eb9799b59 Mon Sep 17 00:00:00 2001
+From: Jo Zzsi <jozzsicsataban@gmail.com>
+Date: Tue, 12 Aug 2025 07:17:52 -0400
+Subject: [PATCH] revert(efaee44): hostonly_cmdline should continue to default
+ to yes
+
+Despite the Fedora setting, let's keep the default to yes
+for distributions that do not whish to overwrite the default.
+---
+ dracut.conf.d/hostonly/10-hostonly.conf | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/dracut.conf.d/hostonly/10-hostonly.conf b/dracut.conf.d/hostonly/10-hostonly.conf
+index c5bd9b22..72fc9299 100644
+--- a/dracut.conf.d/hostonly/10-hostonly.conf
++++ b/dracut.conf.d/hostonly/10-hostonly.conf
+@@ -1,3 +1,2 @@
+ # optimize initrd to be as small as possible for faster boot performance, tailored to the current host
+ hostonly="yes"
+-hostonly_cmdline=no
+-- 
+2.49.1
+

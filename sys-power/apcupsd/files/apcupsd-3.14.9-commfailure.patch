@@ -1,0 +1,15 @@
+Author: Tero Janka <tero.janka@mbnet.fi>
+Description: apcaccess call blocking commfailure mails (Closes: #409734).
+
+Index: apcupsd/platforms/etc/commfailure.in
+===================================================================
+--- apcupsd.orig/platforms/etc/commfailure.in
++++ apcupsd/platforms/etc/commfailure.in
+@@ -13,7 +13,5 @@ MSG="$HOSTNAME Communications with UPS $
+    echo "Subject: $MSG"
+    echo " "
+    echo "$MSG"
+-   echo " "
+-   @sbindir@/apcaccess status
+ ) | $APCUPSD_MAIL -s "$MSG" $SYSADMIN
+ exit 0

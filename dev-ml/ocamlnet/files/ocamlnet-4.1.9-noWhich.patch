@@ -1,0 +1,16 @@
+--- a/configure	2024-10-23 21:15:13.597333850 +0200
++++ b/configure	2024-10-23 21:15:34.527082731 +0200
+@@ -1106,11 +1106,11 @@
+ printf "%s" "Checking for make utility... "
+ if [ -z "$MAKE" ]
+ then
+-  if which gmake >/dev/null
++  if command -v gmake >/dev/null
+   then
+     make=gmake
+   else
+-    if which make >/dev/null
++    if command -v make >/dev/null
+     then
+       make=make
+     fi

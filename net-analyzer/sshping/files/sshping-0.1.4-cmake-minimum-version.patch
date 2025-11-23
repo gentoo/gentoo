@@ -1,0 +1,30 @@
+https://github.com/spook/sshping/pull/50
+From: John Helmert III <ajak@gentoo.org>
+Date: Tue, 25 Mar 2025 21:20:43 -0700
+Subject: [PATCH] cmake: set cmake_minimum_required to 3.10
+
+cmake-4 removes support for the minimum version being lower than 3.5,
+and older than 3.10 is deprecated with 3.31.
+
+Closes: #49
+Gentoo-Bug: https://bugs.gentoo.org/951814
+Signed-off-by: John Helmert III <ajak@gentoo.org>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e8a7d0b..046bc72 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ # See https://github.com/spook/sshping
++cmake_minimum_required(VERSION 3.10)
+ project(sshping)
+-cmake_minimum_required(VERSION 2.8)
+ 
+ #find_package(libssh)
+ 
+-- 
+2.48.1
+

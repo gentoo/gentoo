@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<upstream>
+		<remote-id type="gitlab">cespedes/ltrace</remote-id>
+	</upstream>
+	<use>
+		<flag name="elfutils">Use libdwfl from <pkg>dev-libs/elfutils</pkg> for frame unwinding support</flag>
+		<flag name="unwind">Use <pkg>sys-libs/libunwind</pkg> for frame unwinding support</flag>
+	</use>
+</pkgmetadata>

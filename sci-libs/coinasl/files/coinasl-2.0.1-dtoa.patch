@@ -1,0 +1,11 @@
+--- a/solvers/dtoa1.c
++++ b/solvers/dtoa1.c
+@@ -16,6 +16,8 @@
+ of or in connection with the use or performance of this software.
+ *******************************************************************/
+ 
++#include <stddef.h>
++
+ #ifndef No_dtoa /*{{*/
+ #ifdef __cplusplus
+ #include "memory.h"

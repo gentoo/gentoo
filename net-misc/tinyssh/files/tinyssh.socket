@@ -1,0 +1,13 @@
+[Unit]
+Description=TinySSH service (socket-activated)
+Documentation=https://tinyssh.org
+Wants=tinyssh-makekey.service
+
+[Socket]
+ListenStream=%i
+Accept=true
+KeepAlive=true
+IPTOS=low-delay
+
+[Install]
+WantedBy=sockets.target

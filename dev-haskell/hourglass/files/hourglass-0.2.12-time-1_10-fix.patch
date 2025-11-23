@@ -1,0 +1,30 @@
+From 803fc360e3aa7a772ee7fd5bd7a81c8a21f99c38 Mon Sep 17 00:00:00 2001
+From: hololeap <hololeap@users.noreply.github.com>
+Date: Mon, 27 Feb 2023 13:44:09 -0700
+Subject: [PATCH] Fix tests for >=time-1.10
+
+Signed-off-by: hololeap <hololeap@users.noreply.github.com>
+---
+ tests/Tests.hs | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/tests/Tests.hs b/tests/Tests.hs
+index d400032..309eb84 100644
+--- a/tests/Tests.hs
++++ b/tests/Tests.hs
+@@ -210,7 +210,12 @@ tests knowns = testGroup "hourglass"
+         [ testProperty "iso8601 date" $ \(e :: Elapsed) ->
+             let fmt = calTimeFormatTimeISO8601 (elapsedToPosixTime e)
+                 ed1  = localTimeParseE ISO8601_Date fmt
++#if MIN_VERSION_time(0,10,0)
++                md2  = T.parseTimeM False T.defaultTimeLocale fmt "%F"
++#else
+                 md2  = T.parseTime T.defaultTimeLocale fmt "%F"
++#endif
++
+              in case (ed1,md2) of
+                     (Left err, Nothing)       -> error ("both cannot parse: " ++ show fmt ++ " hourglass-err=" ++ show err)
+                     (Left err, Just _)        -> error ("error parsing string: " ++ show err)
+-- 
+2.39.2
+

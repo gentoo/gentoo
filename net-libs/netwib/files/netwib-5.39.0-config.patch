@@ -1,0 +1,35 @@
+--- a/config.dat
++++ b/config.dat
+@@ -7,11 +7,11 @@
+ 
+ ##########################################################################
+ ### directories where netwib will be installed
+-NETWIBDEF_INSTPREFIX=/usr/local
++NETWIBDEF_INSTPREFIX="${EPREFIX}/usr"
+ NETWIBDEF_INSTINCLUDE=${NETWIBDEF_INSTPREFIX}/include
+ NETWIBDEF_INSTLIB=${NETWIBDEF_INSTPREFIX}/lib
+ NETWIBDEF_INSTBIN=${NETWIBDEF_INSTPREFIX}/bin
+-NETWIBDEF_INSTMAN=${NETWIBDEF_INSTPREFIX}/man
++NETWIBDEF_INSTMAN=${NETWIBDEF_INSTPREFIX}/share/man
+ NETWIBDEF_INSTMAN3=${NETWIBDEF_INSTMAN}/man3
+ 
+ ### installation destination directory
+@@ -19,14 +19,14 @@
+ 
+ ##########################################################################
+ ### programs
+-NETWIBDEF_PROGCC=gcc
+-NETWIBDEF_PROGAR=ar
+-NETWIBDEF_PROGRANLIB=ranlib
++NETWIBDEF_PROGCC="${CC}"
++NETWIBDEF_PROGAR="${AR}"
++NETWIBDEF_PROGRANLIB="${RANLIB}"
+ NETWIBDEF_PROGGREP=grep
+ 
+ ##########################################################################
+ ### compiler options
+-NETWIBDEF_PROGCC_OPT="-Wall -O2"
++NETWIBDEF_PROGCC_OPT="${CFLAGS:-} ${CPPFLAGS:-}"
+ NETWIBDEF_PROGCC_INC=""
+ NETWIBDEF_PROGCC_LIB=""
+ NETWIBDEF_PROGCC_OPTPIC=""

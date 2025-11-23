@@ -1,0 +1,39 @@
+From 9e10e873affcadbad27b0b71a7a4bb9bb7644ba4 Mon Sep 17 00:00:00 2001
+From: Mark Wright <gienah@gentoo.org>
+Date: Mon, 14 Jul 2025 15:18:26 +0200
+Subject: [PATCH] avoid latent slots macro conflicts with Qt project
+
+See-also: https://github.com/pybind/pybind11/issues/5788
+Signed-off-by: Mark Wright <gienah@gentoo.org>
+
+--- a/src/Mod/MeshPart/App/MeshFlatteningPy.cpp	2025-08-06 06:19:07.000000000 +1000
++++ b/src/Mod/MeshPart/App/MeshFlatteningPy.cpp	2025-08-22 13:04:15.420426450 +1000
+@@ -35,13 +35,6 @@
+ # include <TopoDS_Face.hxx>
+ #endif
+ 
+-// necessary for the feature despite not all are necessary for compilation
+-#include <pybind11/eigen.h>
+-#include <pybind11/numpy.h>
+-#include <pybind11/operators.h>
+-#include <pybind11/pybind11.h>
+-#include <pybind11/stl.h>
+-
+ #include <Mod/Part/App/TopoShapeFacePy.h>
+ #include <Mod/Part/App/TopoShapeEdgePy.h>
+ 
+@@ -49,6 +42,14 @@
+ #include "MeshFlatteningLscmRelax.h"
+ #include "MeshFlatteningNurbs.h"
+ 
++// necessary for the feature despite not all are necessary for compilation
++// https://github.com/pybind/pybind11/issues/5788 fixed in 3.0.1
++#undef slots
++#include <pybind11/eigen.h>
++#include <pybind11/numpy.h>
++#include <pybind11/operators.h>
++#include <pybind11/pybind11.h>
++#include <pybind11/stl.h>
+ 
+ namespace py = pybind11;
+ 

@@ -1,0 +1,23 @@
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Sun, 28 May 2023 06:25:33 +0000
+Subject: [PATCH] Fix undeclared funtion gettimeofday.
+
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+---
+ utempter.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/utempter.c b/utempter.c
+index 3f2f3a2..13214cc 100644
+--- a/utempter.c
++++ b/utempter.c
+@@ -11,6 +11,7 @@
+ #include <sys/stat.h>
+ #include <sys/sysmacros.h>
+ #include <utmp.h>
++#include <sys/time.h>
+ #ifndef __UCLIBC__
+ #include <utmpx.h>
+ #endif
+--
+2.40.1

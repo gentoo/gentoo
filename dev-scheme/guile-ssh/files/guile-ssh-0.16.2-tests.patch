@@ -1,0 +1,18 @@
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -23,15 +23,12 @@ if !CROSS_COMPILING
+ 
+ SCM_TESTS = \
+ 	log.scm \
+-	version.scm \
+-	server.scm \
+ 	session.scm \
+ 	client-server.scm \
+ 	popen.scm \
+ 	shell.scm \
+ 	server-client.scm \
+ 	sssh-ssshd.scm \
+-	key.scm \
+ 	tunnel.scm \
+ 	dist.scm
+ 

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>negril.nx+gentoo@gmail.com</email>
+		<name>Paul Zander</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+	OpenCV (Open Source Computer Vision) is a library of programming functions mainly aimed at real time computer vision.
+	Example applications of the OpenCV library are Human-Computer Interaction (HCI); Object Identification, Segmentation and Recognition;
+	Face Recognition; Gesture Recognition; Motion Tracking, Ego Motion, Motion Understanding; Structure From Motion (SFM); and Mobile Robotics.
+	</longdescription>
+	<use>
+		<flag name="atlas">Use <pkg>sci-libs/atlas</pkg> for blas, lapack and sparse blas routines (Experimental!)</flag>
+		<flag name="contrib">Install user contributed scripts from opencv_contrib (Experimental!)</flag>
+		<flag name="contribcvv">Enable CVV in contrib</flag>
+		<flag name="contribdnn" restrict="&gt;media-libs/opencv-4.11">Enable DNN module contrib (requires tinydnn)</flag>
+		<flag name="contribdnn" restrict="&lt;media-libs/opencv-4.11">Enable DNN module</flag>
+		<flag name="contribfreetype">Enable Drawing UTF-8 strings with <pkg>media-libs/freetype</pkg>&amp;<pkg>media-libs/harfbuzz</pkg></flag>
+		<flag name="contribhdf">Enable HDF module (requires <pkg>sci-libs/hdf5</pkg>)</flag>
+		<flag name="contribovis">Enable OGRE vision module support (<pkg>dev-games/ogre</pkg>)</flag>
+		<flag name="contribsfm">Enable SFM module (requires USE="eigen gflags glog")</flag>
+		<flag name="contribxfeatures2d" restrict="&gt;media-libs/opencv-4.8.1-r1">Enable xfeatures2d in contrib</flag>
+		<flag name="contribxfeatures2d" restrict="&lt;=media-libs/opencv-4.8.1">Enables xfeatures2d and autodownload of samples in contrib</flag>
+		<flag name="cuda">Enable NVIDIA Cuda computations support (Experimental!)</flag>
+		<flag name="cudnn">Enable support for nVidia cuDNN library</flag>
+		<flag name="dnnsamples">Enable dnn caffeemodel samples</flag>
+		<flag name="eigen">Enable usage of <pkg>dev-cpp/eigen</pkg> for computations</flag>
+		<flag name="features2d">Enable features2d module</flag>
+		<flag name="gdal">Enable support for <pkg>sci-libs/gdal</pkg> library</flag>
+		<flag name="gflags">Use Google's C++ argument parsing library (<pkg>dev-cpp/gflags</pkg>)</flag>
+		<flag name="glog">Use Google's C++ logging library (<pkg>dev-cpp/glog</pkg>)</flag>
+		<flag name="gtk3">Enable <pkg>x11-libs/gtk+</pkg>:3 support</flag>
+		<flag name="jasper">Use <pkg>media-libs/jasper</pkg> for jpeg2k support</flag>
+		<flag name="mkl">Use <pkg>sci-libs/mkl</pkg> for blas, lapack and sparse blas routines</flag>
+		<flag name="non-free">Enable non-free components</flag>
+		<flag name="opencvapps">Enable compilation with opencvapps</flag>
+		<flag name="openni">Adds support for Kinect-like 3D sensors devices with <pkg>dev-libs/OpenNI</pkg></flag>
+		<flag name="openni2">Adds support for Kinect-like 3D sensors devices with <pkg>dev-libs/OpenNI2</pkg> (should be preferred over openni)</flag>
+		<flag name="quirc">Enable qrcode decoding via <pkg>media-libs/quirc</pkg></flag>
+		<flag name="spng">Use <pkg>media-libs/libspng</pkg> for png support</flag>
+		<flag name="tbb">Enable multithreading with the Intel Threads Building Block (<pkg>dev-cpp/tbb</pkg>)</flag>
+		<flag name="tesseract">Use Google's OCR Engine</flag>
+		<flag name="testprograms">Build and install programs for testing OpenCV (performance)</flag>
+		<flag name="truetype">Enable <pkg>media-libs/freetype</pkg> support for gapi module</flag>
+		<flag name="video_cards_intel">Enable Video Acceleration API for hardware decoding for Intel cards</flag>
+		<flag name="vtk">Build new 3D visualization module viz based on <pkg>sci-libs/vtk</pkg></flag>
+		<flag name="vulkan">Enable experimental Vulkan backend</flag>
+		<flag name="wechat-qrcode">Enable wechat_qrcode module</flag>
+	</use>
+	<upstream>
+		<changelog>https://github.com/opencv/opencv/wiki/ChangeLog</changelog>
+		<doc>https://docs.opencv.org</doc>
+		<remote-id type="cpe">cpe:/a:opencv:opencv</remote-id>
+		<remote-id type="github">opencv/opencv</remote-id>
+		<remote-id type="github">opencv/opencv_contrib</remote-id>
+		<remote-id type="github">opencv/opencv_3rdparty</remote-id>
+		<remote-id type="sourceforge">opencvlibrary</remote-id>
+	</upstream>
+</pkgmetadata>

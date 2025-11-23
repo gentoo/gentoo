@@ -1,0 +1,14 @@
+diff --git a/src/Makefile b/src/Makefile
+index 548a4e3f..de5ee7ac 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -16,7 +16,8 @@ SYMBOL_PREFIX	:=
+ #
+ # Locations of tools
+ #
+-HOST_CC		:= gcc
++override CC		:= gcc
++HOST_CC		:= ${CC}
+ RM		:= rm -f
+ TOUCH		:= touch
+ MKDIR		:= mkdir

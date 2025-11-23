@@ -1,0 +1,111 @@
+From 020afd7d6410f73bc205206abe1b88b4890b83b1 Mon Sep 17 00:00:00 2001
+From: Leno Hou <lenohou@gmail.com>
+Date: Sun, 24 Apr 2016 00:46:53 +0800
+Subject: [PATCH] [m4/libtool.m4] linker error for powerpc64le-unknown-linux-gnu
+
+Hi all,
+
+ 1) As we might know, Gentoo has powerpc64le-unknown-linux-gnu compiler
+
+leno@localhost ~ $ powerpc64le-unknown-linux-gnu-gcc -v
+
+Using built-in specs.
+
+COLLECT_GCC=/usr/powerpc64le-unknown-linux-gnu/gcc-bin/5.3.0/powerpc64le-unknown-linux-gnu-gcc
+
+COLLECT_LTO_WRAPPER=/usr/libexec/gcc/powerpc64le-unknown-linux-gnu/5.3.0/lto-wrapper
+
+Target: powerpc64le-unknown-linux-gnu
+
+Configured with:
+/var/tmp/portage/sys-devel/gcc-5.3.0/work/gcc-5.3.0/configure
+--host=powerpc64le-unknown-linux-gnu --build=powerpc64le-unknown-linux-gnu
+--prefix=/usr --bindir=/usr/powerpc64le-unknown-linux-gnu/gcc-bin/5.3.0
+--includedir=/usr/lib/gcc/powerpc64le-unknown-linux-gnu/5.3.0/include
+--datadir=/usr/share/gcc-data/powerpc64le-unknown-linux-gnu/5.3.0
+--mandir=/usr/share/gcc-data/powerpc64le-unknown-linux-gnu/5.3.0/man
+--infodir=/usr/share/gcc-data/powerpc64le-unknown-linux-gnu/5.3.0/info
+--with-gxx-include-dir=/usr/lib/gcc/powerpc64le-unknown-linux-gnu/5.3.0/include/g++-v5
+--with-python-dir=/share/gcc-data/powerpc64le-unknown-linux-gnu/5.3.0/python
+--enable-languages=c,c++,fortran --enable-obsolete --enable-secureplt
+--disable-werror --with-system-zlib --enable-nls --without-included-gettext
+--enable-checking=release --with-bugurl=https://bugs.gentoo.org/
+--with-pkgversion='Gentoo 5.3.0 p1.0, pie-0.6.5' --enable-libstdcxx-time
+--enable-shared --enable-threads=posix --enable-__cxa_atexit
+--enable-clocale=gnu --disable-multilib --enable-altivec
+--disable-fixed-point --enable-targets=all --disable-libgcj
+--enable-libgomp --disable-libmudflap --disable-libssp --disable-libcilkrts
+--enable-lto --without-isl --enable-libsanitizer
+
+Thread model: posix
+
+gcc version 5.3.0 (Gentoo 5.3.0 p1.0, pie-0.6.5)
+
+  2) And the supported emulations
+
+leno@localhost ~ $ powerpc64le-unknown-linux-gnu-ld -V
+GNU ld (Gentoo 2.25.1 p1.1) 2.25.1
+  Supported emulations:
+   elf64lppc
+   elf32lppc
+   elf32lppclinux
+   elf32lppcsim
+
+   3) But when I set CHOST="powerpc64le-unkown-linux-gnu" in Gentoo and
+execute aclocal, automake, libtoolize --copy --force, autoconf. When I
+glance in the latest m4/libtool.m4 :
+
+if AC_TRY_EVAL(ac_compile); then
+   case `/usr/bin/file conftest.o` in
+     *32-bit*)
+       case $host in
+...
+         powerpc64le-*linux*)
+           LD="${LD-ld} -m elf32lppclinux"
+           ;;
+         powerpc64-*linux*)
+           LD="${LD-ld} -m elf32ppclinux"
+           ;;
+...
+     *64-bit*)
+       case $host in
+...
+         powerpcle-*linux*)
+           LD="${LD-ld} -m elf64lppc"
+           ;;
+         powerpc-*linux*)
+           LD="${LD-ld} -m elf64ppc"
+           ;;
+...
+
+seems linked to $LD='$LD-ld -m elf64ppc' and failed to compile packages.
+
+ 4)  Below is my workaround patch and works fine for this case.  If this is
+OK for you, Could this to be merged in upstream? Thanks
+
+URL: https://debbugs.gnu.org/23348
+URL: https://bugs.gentoo.org/581314
+---
+ m4/libtool.m4 | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/m4/libtool.m4 b/m4/libtool.m4
+index ee292aff5bca..758b6951ae07 100644
+--- a/m4/libtool.m4
++++ b/m4/libtool.m4
+@@ -1417,10 +1417,10 @@ s390*-*linux*|s390*-*tpf*|sparc*-*linux*)
+ 	  x86_64-*linux*)
+ 	    LD="${LD-ld} -m elf_x86_64"
+ 	    ;;
+-	  powerpcle-*linux*)
++	  powerpcle-*linux*|powerpc64le-*linux*)
+ 	    LD="${LD-ld} -m elf64lppc"
+ 	    ;;
+-	  powerpc-*linux*)
++	  powerpc-*linux*|powerpc64-*linux*)
+ 	    LD="${LD-ld} -m elf64ppc"
+ 	    ;;
+ 	  s390*-*linux*|s390*-*tpf*)
+-- 
+2.11.1
+

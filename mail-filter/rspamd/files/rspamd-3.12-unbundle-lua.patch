@@ -1,0 +1,70 @@
+diff --git a/cmake/AddDependencySubdirectories.cmake b/cmake/AddDependencySubdirectories.cmake
+index 866204ff5..61781b511 100644
+--- a/cmake/AddDependencySubdirectories.cmake
++++ b/cmake/AddDependencySubdirectories.cmake
+@@ -69,11 +69,6 @@ function(AddDependencySubdirectories)
+         find_package(doctest)
+     endif ()
+ 
+-    # Lua-specific dependencies
+-    if (NOT WITH_LUAJIT)
+-        add_subdirectory(contrib/lua-bit)
+-    endif ()
+-
+     # Lua REPL support
+     add_subdirectory(contrib/replxx)
+     list(APPEND RSPAMD_REQUIRED_LIBRARIES rspamd-replxx)
+diff --git a/cmake/InstallRspamdFiles.cmake b/cmake/InstallRspamdFiles.cmake
+index b6b631cdc..357cb5937 100644
+--- a/cmake/InstallRspamdFiles.cmake
++++ b/cmake/InstallRspamdFiles.cmake
+@@ -67,7 +67,6 @@ function(InstallRspamdFiles)
+ 
+     # Install third-party Lua libraries
+     install(FILES "contrib/lua-fun/fun.lua" DESTINATION ${LUALIBDIR})
+-    install(FILES "contrib/lua-argparse/argparse.lua" DESTINATION ${LUALIBDIR})
+     install(FILES "contrib/lua-tableshape/tableshape.lua" DESTINATION ${LUALIBDIR})
+     install(FILES "contrib/lua-lupa/lupa.lua" DESTINATION ${LUALIBDIR})
+     install(FILES "contrib/lua-lpeg/lpegre.lua" DESTINATION ${LUALIBDIR})
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 6cc49e4e4..5cd6d23e9 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -228,11 +228,6 @@ if (ENABLE_CLANG_PLUGIN)
+     add_dependencies(rspamd-server rspamd-clang)
+ endif ()
+ 
+-# Handle Lua JIT/Lua dependency
+-if (NOT WITH_LUAJIT)
+-    target_link_libraries(rspamd-server PRIVATE rspamd-bit)
+-endif ()
+-
+ # Link additional optional dependencies
+ if (ENABLE_SNOWBALL)
+     target_link_libraries(rspamd-server PRIVATE stemmer)
+diff --git a/src/lua/lua_common.c b/src/lua/lua_common.c
+index 3a0f1a06c..5a9056a3f 100644
+--- a/src/lua/lua_common.c
++++ b/src/lua/lua_common.c
+@@ -915,10 +915,6 @@ rspamd_lua_wipe_realloc(void *ud,
+ 	return NULL;
+ }
+ 
+-#ifndef WITH_LUAJIT
+-extern int luaopen_bit(lua_State *L);
+-#endif
+-
+ static unsigned int lua_initialized = 0;
+ 
+ lua_State *
+@@ -987,7 +983,6 @@ rspamd_lua_init(bool wipe_mem)
+ 	luaopen_compress(L);
+ 	luaopen_shingle(L);
+ #ifndef WITH_LUAJIT
+-	rspamd_lua_add_preload(L, "bit", luaopen_bit);
+ 	lua_settop(L, 0);
+ #endif
+ 
+-- 
+2.49.0
+

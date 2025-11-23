@@ -1,0 +1,24 @@
+#!/sbin/openrc-run
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+
+: ${CONFIGFILE:=/etc/knockd.conf}
+: ${IFACE:=eth0}
+
+get_config() {
+	[ -f ${CONFIGFILE} ] && conf=$(awk 'tolower($1) == "'$1'" { print $3 }' ${CONFIGFILE})
+
+	echo ${conf:-$2}
+}
+
+depend() {
+	need net
+	use net.${IFACE}
+
+	[ "$(get_config usesyslog no)" != "no" ] && use logger
+}
+
+pidfile=$(get_config pidfile /var/run/knockd.pid)
+
+command=/usr/sbin/knockd
+command_args="-d -i ${IFACE} ${OPTS}"

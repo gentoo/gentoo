@@ -1,0 +1,28 @@
+Sandbox won't allow removing sandbox related environment variables.
+
+diff --git a/spec/std/process_spec.cr b/spec/std/process_spec.cr
+index 965ed1431..c32b00537 100644
+--- a/spec/std/process_spec.cr
++++ b/spec/std/process_spec.cr
+@@ -281,20 +281,6 @@ describe Process do
+     end
+ 
+     describe "environ" do
+-      it "clears the environment" do
+-        value = Process.run(*print_env_command, clear_env: true) do |proc|
+-          proc.output.gets_to_end
+-        end
+-        value.should eq("")
+-      end
+-
+-      it "clears and sets an environment variable" do
+-        value = Process.run(*print_env_command, clear_env: true, env: {"FOO" => "bar"}) do |proc|
+-          proc.output.gets_to_end
+-        end
+-        value.should eq("FOO=bar#{newline}")
+-      end
+-
+       it "sets an environment variable" do
+         value = Process.run(*print_env_command, env: {"FOO" => "bar"}) do |proc|
+           proc.output.gets_to_end
+

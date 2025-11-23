@@ -1,0 +1,21 @@
+Don't clobber our toolchain defaults.
+
+https://bugs.gentoo.org/898526
+--- a/configure.ac
++++ b/configure.ac
+@@ -141,7 +141,7 @@ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([], [
+ ])], have_clang=yes, have_clang=no)
+ 
+ if test x$enable_gcc_hardening != xno; then
+-    CFLAGS="$CFLAGS -D_FORTIFY_SOURCE=2"
++    CFLAGS="$CFLAGS"
+     if test x$have_clang = xyes; then
+        OTR_CHECK_CFLAGS(-Qunused-arguments)
+     fi
+@@ -166,4 +166,6 @@ if test x$enable_linker_hardening != xno; then
+     OTR_CHECK_LDFLAGS(-z relro -z now, "$all_ldflags_for_check", "$all_libs_for_check")
+ fi
+ 
++AX_ADD_FORTIFY_SOURCE
++
+ AC_OUTPUT([Makefile po/Makefile.in])

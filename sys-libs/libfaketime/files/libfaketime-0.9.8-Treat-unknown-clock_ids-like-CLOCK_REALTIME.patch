@@ -1,0 +1,35 @@
+From bb635e4367adcac2c1517a698799a60a2bf86e83 Mon Sep 17 00:00:00 2001
+From: Wolfgang Hommel <wolf@code-wizards.com>
+Date: Thu, 30 Nov 2017 20:28:06 +0100
+Subject: [PATCH] Treat unknown clock_ids like CLOCK_REALTIME (experimental)
+
+---
+ src/libfaketime.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/libfaketime.c b/src/libfaketime.c
+index b59298c..b36c75b 100644
+--- a/src/libfaketime.c
++++ b/src/libfaketime.c
+@@ -2020,8 +2020,8 @@ int fake_clock_gettime(clockid_t clk_id, struct timespec *tp)
+         break;
+ #endif
+       default:
+-        printf("Invalid clock_id for clock_gettime: %d", clk_id);
+-        exit(EXIT_FAILURE);
++        timespecsub(tp, &ftpl_starttime.real, &tmp_ts);
++        break;
+     }
+ 
+     if (limited_faking)
+@@ -2171,8 +2171,8 @@ int fake_clock_gettime(clockid_t clk_id, struct timespec *tp)
+             break;
+ #endif
+           default:
+-            printf("Invalid clock_id for clock_gettime: %d", clk_id);
+-            exit(EXIT_FAILURE);
++            timespecsub(tp, &ftpl_starttime.real, &tdiff);
++            break;
+         } // end of switch (clk_id)
+         if (user_rate_set)
+         {

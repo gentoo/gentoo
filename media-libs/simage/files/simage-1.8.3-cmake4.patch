@@ -1,0 +1,19 @@
+From 0d69e6f9e23a13406d49fe3dc855885046408162 Mon Sep 17 00:00:00 2001
+From: Volker Enderlein <volkerenderlein@hotmail.com>
+Date: Tue, 1 Apr 2025 20:22:45 +0200
+Subject: [PATCH] Adapt cmake_minimum_required command for usage with CMake 4.0
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 835c498..276178d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.0...3.29)
+ 
+ set(SIMAGE_MAJOR_VERSION 1)
+ set(SIMAGE_MINOR_VERSION 8)

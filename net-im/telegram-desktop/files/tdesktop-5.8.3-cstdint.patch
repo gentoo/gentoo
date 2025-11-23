@@ -1,0 +1,15 @@
+Fix missing cstdint include
+
+/var/tmp/portage/net-im/telegram-desktop-5.8.3/work/tdesktop-5.8.3-full/Telegram/lib_webview/webview/webview_interface.h:99:14: error: ‘int64_t’ in namespace ‘std’ does not name a type
+   99 |         std::int64_t streamOffset = 0;
+      |              ^~~~~~~
+--- tdesktop-5.8.3-full.orig/Telegram/lib_webview/webview/webview_interface.h
++++ tdesktop-5.8.3-full/Telegram/lib_webview/webview/webview_interface.h
+@@ -12,6 +12,7 @@
+ #include <string>
+ #include <optional>
+ #include <functional>
++#include <cstdint>
+ 
+ #include <rpl/never.h>
+ #include <rpl/producer.h>

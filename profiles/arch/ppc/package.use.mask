@@ -1,0 +1,70 @@
+# Copyright 2023-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Alfred Wingate <parona@protonmail.com> (2025-11-15)
+# sci-libs/libaec is not keyworded here (bug #966099)
+sci-libs/gdal libaec
+
+# Philipp Rösner <rndxelement@protonmail.com> (2025-09-23)
+# media-libs/zxingcpp is not keyworded here
+app-text/mupdf barcode
+
+# Zero_Chaos <zerochaos@gentoo.org> (2025-09-05)
+# Needs app-misc/mosquitto, which is not keyworded
+net-wireless/kismet mqtt
+
+# Cristian Othón Martínez Vera <cfuga@cfuga.mx> (2025-07-15)
+# Needs gui-apps/grim, which is not keyworded here
+x11-misc/xscreensaver wayland
+
+# NRK <nrk@disroot.org> (2025-05-18)
+# app-arch/plzip is not keyworded
+app-alternatives/lzip plzip
+
+# Alfred Wingate (2025-05-13)
+# Need dev-libs/libdispatch which is not keyworded here
+gnustep-base/gnustep-base libdispatch
+
+# Viorel Munteanu (2025-05-06)
+# Needs dev-lang/go which is not keyworded here
+net-dialup/picocom man
+
+# NRK <nrk@disroot.org> (2025-04-07)
+# media-libs/libyuv is not keyworded
+media-libs/imlib2 y4m
+
+# NRK <nrk@disroot.org> (2025-03-17)
+# media-libs/libavif is not keyworded
+media-libs/imlib2 avif
+
+# Matt Jolly <kangie@gentoo.org> (2025-01-29)
+# Needs dev-lang/go which is not keyworded here
+x11-wm/fvwm3 go
+
+# Paul Zander <negril.nx+gentoo@gmail.com> (2024-11-04)
+# media-libs/libavif is not keyworded
+media-libs/opencv avif
+
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-10-08)
+# Not all required dependencies are keyworded here
+sys-kernel/dracut test
+
+# Eli Schwartz <eschwartz93@gmail.com> (2024-06-05)
+# tests require pytest-qt which is not keyworded
+app-portage/elogviewer test
+
+# Eray Aslan <eras@gentoo.org> (2024-03-08)
+# mongodb dependencies are not keyworded
+mail-mta/postfix mongodb
+
+# Joonas Niilola <juippis@gentoo.org> (2024-02-16)
+# Test dependencies not keyworded on this arch.
+www-servers/nginx test
+
+# Eray Aslan <eras@gentoo.org> (2024-02-13)
+# tests require dev-db/mongodb which is not keyworded
+dev-libs/mongo-c-driver test
+
+# Leonardo Hernández Hernández <leohdz172@proton.me> (2023-12-26)
+# net-libs/grpc not keyworded here
+app-admin/syslog-ng grpc

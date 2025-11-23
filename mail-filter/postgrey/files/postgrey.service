@@ -1,0 +1,17 @@
+[Unit]
+Description=Postfix Greylisting Service
+Before=postfix.service
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/postgrey --inet=127.0.0.1:10030 \
+	--pidfile=/var/run/postgrey.pid \
+	--group=postgrey --user=postgrey \
+	--greylist-text="Greylisted for %%s seconds"
+Restart=always
+RestartSec=5
+TimeoutSec=10
+
+[Install]
+WantedBy=multi-user.target
+

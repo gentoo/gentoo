@@ -1,0 +1,118 @@
+--- tiers1.1b/src/tiers_create.cc	2009-01-21 03:56:28.000000000 -0400
++++ tiers1.1/src/tiers_create.cc	2009-01-21 03:57:39.000000000 -0400
+@@ -16,7 +16,7 @@
+ //////////////////////////////////////////////////////////////////////////////
+ 
+ // tiers.cc
+-#include <iostream.h>
++#include <iostream>
+ 
+ #ifndef _TIERS_HH
+ #include "tiers.hh"
+--- tiers1.1b/src/tiers.cc	2009-01-21 03:56:28.000000000 -0400
++++ tiers1.1/src/tiers.cc	2009-01-21 03:57:22.000000000 -0400
+@@ -17,8 +17,9 @@
+ 
+ // tiers.cc
+ 
+-#include <iostream.h>
+-#include <limits.h>
++#include <iostream>
++#include <cstdlib>
++#include <climits>
+ 
+ #ifndef _TIERS_HH
+ #include "tiers.hh"
+--- tiers1.1b/src/tiers_misc.cc	2009-01-21 03:56:28.000000000 -0400
++++ tiers1.1/src/tiers_misc.cc	2009-01-21 04:07:21.000000000 -0400
+@@ -16,9 +16,9 @@
+ //////////////////////////////////////////////////////////////////////////////
+ 
+ // tiers_misc.cc
+-#include <iostream.h>
+-#include <math.h>
+-#include <limits.h>	// for ULONG_MAX
++#include <iostream>
++#include <cmath>
++#include <climits>	// for ULONG_MAX
+ 
+ #ifndef _TIERS_HH
+ #include "tiers.hh"
+--- tiers1.1b/src/tiers_main.cc	2009-01-21 03:56:28.000000000 -0400
++++ tiers1.1/src/tiers_main.cc	2009-01-21 04:08:13.000000000 -0400
+@@ -17,9 +17,9 @@
+ 
+ // tiers_main.cc
+ 
+-#include <iostream.h>
+-#include <stdlib.h>	// for strtoul
+-#include <math.h>		// for random
++#include <iostream>
++#include <cstdlib>	// for strtoul
++#include <cmath>	// for random
+ 
+ #ifndef _TIERS_HH
+ #include "tiers.hh"
+--- tiers1.1b/src/tiers_output.cc	2009-01-21 03:56:28.000000000 -0400
++++ tiers1.1/src/tiers_output.cc	2009-01-21 04:00:09.000000000 -0400
+@@ -17,7 +17,7 @@
+ 
+ // tiers_output.cc
+ 
+-#include <iostream.h>
++#include <iostream>
+ #ifndef _TIERS_HH
+ #include "tiers.hh"
+ #endif
+--- tiers1.1b/src/tiers_output_gnuplot.cc	2009-01-21 03:56:28.000000000 -0400
++++ tiers1.1/src/tiers_output_gnuplot.cc	2009-01-21 04:00:39.000000000 -0400
+@@ -17,7 +17,7 @@
+ 
+ // tiers_output_gnuplot.cc
+ 
+-#include <iostream.h>
++#include <iostream>
+ #ifndef _TIERS_HH
+ #include "tiers.hh"
+ #endif
+--- tiers1.1b/src/tiers_prims.cc	2009-01-21 03:56:28.000000000 -0400
++++ tiers1.1/src/tiers_prims.cc	2009-01-21 04:10:24.000000000 -0400
+@@ -17,9 +17,9 @@
+ 
+ // tiers_prims.cc
+ 
+-#include <iostream.h>
+-#include <math.h>	// for random
+-#include <limits.h>	// for ULONG_MAX
++#include <iostream>
++#include <cmath>	// for random
++#include <climits>	// for ULONG_MAX
+ 
+ #ifndef _TIERS_HH
+ #include "tiers.hh"
+--- tiers1.1b/src/tiers_red_intra.cc	2009-01-21 03:56:28.000000000 -0400
++++ tiers1.1/src/tiers_red_intra.cc	2009-01-21 04:01:21.000000000 -0400
+@@ -17,8 +17,8 @@
+ 
+ // tiers_red_intra.cc
+ 
+-#include <iostream.h>
+-#include <limits.h>	// for ULONG_MAX
++#include <iostream>
++#include <climits>	// for ULONG_MAX
+ 
+ #ifndef _TIERS_HH
+ #include "tiers.hh"
+--- tiers1.1b/src/tiers_red_inter.cc	2009-01-21 03:56:28.000000000 -0400
++++ tiers1.1/src/tiers_red_inter.cc	2009-01-21 04:01:46.000000000 -0400
+@@ -17,8 +17,8 @@
+ 
+ // tiers_red_inter.cc
+ 
+-#include <iostream.h>
+-#include <limits.h>	// for ULONG_MAX
++#include <iostream>
++#include <climits>	// for ULONG_MAX
+ 
+ #ifndef _TIERS_HH
+ #include "tiers.hh"

@@ -1,0 +1,36 @@
+ld.lld: error: undefined symbol: __atomic_is_lock_free
+>>> referenced by atomic_base.h:436 (/usr/lib/gcc/x86_64-pc-linux-gnu/11.2.1/include/g++-v11/bits/atomic_base.h:436)
+>>>               CMakeFiles/watchman.dir/watchman/ChildProcess.cpp.o:(void folly::futures::detail::waitImpl<folly::SemiFuture<w_string>, w_string>(folly::SemiFuture<w_string>&))
+>>> referenced by atomic_base.h:436 (/usr/lib/gcc/x86_64-pc-linux-gnu/11.2.1/include/g++-v11/bits/atomic_base.h:436)
+>>>               CMakeFiles/watchman.dir/watchman/ChildProcess.cpp.o:(void folly::futures::detail::waitImpl<folly::SemiFuture<w_string>, w_string>(folly::SemiFuture<w_string>&))
+>>> referenced by atomic_base.h:436 (/usr/lib/gcc/x86_64-pc-linux-gnu/11.2.1/include/g++-v11/bits/atomic_base.h:436)
+>>>               CMakeFiles/watchman.dir/watchman/ChildProcess.cpp.o:(folly::futures::detail::WaitExecutor::WaitExecutor())
+
+and
+ld.lld: error: undefined symbol: __atomic_is_lock_free
+>>> referenced by atomic_base.h:436 (/usr/lib/gcc/x86_64-pc-linux-gnu/11.2.1/include/g++-v11/bits/atomic_base.h:436)
+>>>               CMakeFiles/cache.t.dir/watchman/test/CacheTest.cpp.o:(void folly::futures::detail::waitImpl<folly::SemiFuture<folly::Unit>, folly::Unit>(folly::SemiFuture<folly::Unit>&))
+>>> referenced by atomic_base.h:436 (/usr/lib/gcc/x86_64-pc-linux-gnu/11.2.1/include/g++-v11/bits/atomic_base.h:436)
+>>>               CMakeFiles/cache.t.dir/watchman/test/CacheTest.cpp.o:(void folly::futures::detail::waitImpl<folly::SemiFuture<folly::Unit>, folly::Unit>(folly::SemiFuture<folly::Unit>&))
+>>> referenced by atomic_base.h:436 (/usr/lib/gcc/x86_64-pc-linux-gnu/11.2.1/include/g++-v11/bits/atomic_base.h:436)
+>>>               CMakeFiles/cache.t.dir/watchman/test/CacheTest.cpp.o:(folly::futures::detail::WaitExecutor::WaitExecutor())
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -716,6 +716,7 @@ target_link_libraries(
+   jansson
+   wildmatch
+   third_party_deps
++  atomic
+ )
+ 
+ if (WIN32)
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -747,6 +747,7 @@ function(t_test NAME)
+     ${NAME}.t
+     testsupport wildmatch third_party_deps
+     ${LIBGMOCK_LIBRARIES}
++    atomic
+   )
+   target_compile_definitions(${NAME}.t
+     PUBLIC WATCHMAN_TEST_SRC_DIR=\"${CMAKE_CURRENT_SOURCE_DIR}\")

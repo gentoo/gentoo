@@ -1,0 +1,17 @@
+# This configuration file is taken from the Arch wiki.
+# https://wiki.archlinux.org/title/RTorrent#Systemd_service_as_a_daemon_for_a_user
+
+[Unit]
+Description=rTorrent for %i
+After=network.target
+
+[Service]
+Type=simple
+User=%i
+Group=%i
+WorkingDirectory=/home/%i
+# Modify the next line to the absolute path for rtorrent.lock, for example
+ExecStartPre=-/bin/rm -f /home/%i/.session/rtorrent.lock
+ExecStart=/usr/bin/rtorrent -o system.daemon.set=true
+Restart=on-failure
+RestartSec=3

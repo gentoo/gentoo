@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="daemon">Enable the backend caching key daemon</flag>
+		<flag name="dynamic">Support for dynamic loading of backends</flag>
+		<flag name="hkp">Proxying backend support</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">u1f35c/onak</remote-id>
+	</upstream>
+</pkgmetadata>

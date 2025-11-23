@@ -1,0 +1,29 @@
+From d4efc1b1f38611984b9d4f3c3aac1ba37224e8d0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 24 May 2025 06:54:07 +0200
+Subject: [PATCH] [py] Fix pytest_ignore_collect hook to respect --ignore
+
+Fix the `pytest_ignore_collect` hook to respect `--ignore` specified
+by the user.  Returning `False` stops pytest from consulting additional
+hooks, including its default hooks that are necessary to process
+`--ignore` option.  By returning `True` or `None`, the hook combines
+files ignored by default with ignores specified by the user.
+---
+ py/conftest.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/py/conftest.py b/py/conftest.py
+index 2c4d0e62d6..45e5c704f8 100644
+--- a/py/conftest.py
++++ b/py/conftest.py
+@@ -90,7 +90,9 @@ def pytest_ignore_collect(collection_path, config):
+     _drivers = set(drivers).difference(drivers_opt or drivers)
+     if drivers_opt:
+         _drivers.add("unit")
+-    return len([d for d in _drivers if d.lower() in collection_path.parts]) > 0
++    if len([d for d in _drivers if d.lower() in collection_path.parts]) > 0:
++        return True
++    return None
+ 
+ 
+ def pytest_generate_tests(metafunc):

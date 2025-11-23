@@ -1,0 +1,13 @@
+--- interprolog212.orig/com/declarativa/interprolog/AbstractPrologEngine.java	2005-09-30 19:26:22.000000000 +0200
++++ interprolog212/com/declarativa/interprolog/AbstractPrologEngine.java	2022-05-27 19:26:35.059409877 +0200
+@@ -389,9 +389,7 @@
+     	progressMessage("Cleaning path "+p);
+         if (System.getProperty("java.version").compareTo("1.4")>=0) {
+             try{
+-                Method decode = URLDecoder.class.getMethod("decode", new
+-                Class[]{String.class, String.class});
+-                return (String)decode.invoke(new URLDecoder(),new Object[]{p,"UTF-8"});
++                return URLDecoder.decode(p,"UTF-8");
+             } catch (Exception e){
+                 throw new IPException("Inconsistency in PrologEngine.cleanPath"+e);
+             }

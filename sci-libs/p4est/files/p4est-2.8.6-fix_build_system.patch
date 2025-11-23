@@ -1,0 +1,25 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 95013ba..6d10c7c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -8,6 +8,8 @@ HOMEPAGE_URL https://www.p4est.org/
+ DESCRIPTION "p4est manages a collection---a forest---of octrees in parallel."
+ VERSION ${PROJECT_VERSION})
+ 
++set(CMAKE_POSITION_INDEPENDENT_CODE ON)
++
+ enable_testing()
+ 
+ # --- user options
+@@ -47,7 +49,10 @@ install(DIRECTORY ${PROJECT_SOURCE_DIR}/src/ ${PROJECT_BINARY_DIR}/include/
+   TYPE INCLUDE
+   FILES_MATCHING PATTERN "*.h")
+ 
+-install(TARGETS p4est EXPORT ${PROJECT_NAME}-targets)
++install(TARGETS p4est EXPORT ${PROJECT_NAME}-targets
++  ARCHIVE DESTINATION ${library_reldir}
++  LIBRARY DESTINATION ${library_reldir}
++  )
+ 
+ #--- p8est
+ 

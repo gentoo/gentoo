@@ -1,0 +1,214 @@
+https://bugs.gentoo.org/932738
+https://bugs.gentoo.org/882197
+
+From 7d9229b60215ebc48d696ce686319ffc7ca146a0 Mon Sep 17 00:00:00 2001
+From: Pavlo Solntsev <p.sun.fun@gmail.com>
+Date: Tue, 12 Nov 2019 22:59:11 -0600
+Subject: [PATCH 1/1] libgda-xslt: Fixing API change
+
+CI environment uses libxslt-1.33 but code uses API for version 1.32. It
+was an API break between 1.32 and 1.33. This commit fixes this
+transition.
+--- a/libgda-xslt/sql_backend.c
++++ b/libgda-xslt/sql_backend.c
+@@ -155,8 +155,8 @@ _gda_xslt_bk_section (GdaXsltExCont * exec, GdaXsltIntCont * pdata,
+ 		     cur_node = cur_node->next) {
+ 			if (IS_XSLT_ELEM (cur_node)) {
+ 				if (IS_XSLT_NAME (cur_node, "call-template")) {
+-					xsltStylePreCompPtr info =
+-						(xsltStylePreCompPtr)
++					xsltElemPreCompPtr info =
++						(xsltElemPreCompPtr)
+ 						cur_node->psvi;
+ 					if (info != NULL) {
+ 						xsltCallTemplate
+-- 
+2.45.1
+
+
+--- a/libgda-ui/data-entries/gdaui-entry-bin.c
++++ b/libgda-ui/data-entries/gdaui-entry-bin.c
+@@ -239,11 +239,11 @@ create_entry (GdauiEntryWrapper *mgwrap)
+ 
+ 	label = gtk_label_new ("");
+ 	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
+-	dbin->priv->button_label = g_object_ref (G_OBJECT (label));
++	dbin->priv->button_label = (GtkWidget *) g_object_ref (G_OBJECT (label));
+ 
+ 	img = gtk_image_new_from_pixbuf (attach_pixbuf);
+ 	gtk_box_pack_start (GTK_BOX (hbox), img, FALSE, FALSE, 0);
+-	dbin->priv->button_image = g_object_ref (G_OBJECT (img));
++	dbin->priv->button_image = (GtkWidget *) g_object_ref (G_OBJECT (img));
+ 
+         arrow = gtk_arrow_new (GTK_ARROW_DOWN, GTK_SHADOW_NONE);
+ 	gtk_misc_set_alignment (GTK_MISC (arrow), 1.0, -1);
+--- a/libgda-ui/data-entries/plugins/libmain.c
++++ b/libgda-ui/data-entries/plugins/libmain.c
+@@ -44,6 +44,7 @@
+   #endif
+ 
+   #include <gtksourceview/gtksourceview.h>
++  #include <gtksourceview/gtksourcelanguage.h>
+   #include <gtksourceview/gtksourcelanguagemanager.h>
+   #include <gtksourceview/gtksourcebuffer.h>
+   #include <gtksourceview/gtksourcestyleschememanager.h>
+--- a/libgda-ui/gdaui-raw-form.c
++++ b/libgda-ui/gdaui-raw-form.c
+@@ -383,7 +383,7 @@ gdaui_raw_form_set_property (GObject *object,
+ 			if (!form->priv->proxy) {
+ 				/* first time setting */
+ 				if (GDA_IS_DATA_PROXY (model))
+-					form->priv->proxy = g_object_ref (G_OBJECT (model));
++					form->priv->proxy = (GdaDataProxy *) g_object_ref (G_OBJECT (model));
+ 				else
+ 					form->priv->proxy = GDA_DATA_PROXY (gda_data_proxy_new (model));
+ 				form->priv->data_model = gda_data_proxy_get_proxied_model (form->priv->proxy);
+--- a/libgda-ui/gdaui-raw-grid.c
++++ b/libgda-ui/gdaui-raw-grid.c
+@@ -517,7 +517,7 @@ gdaui_raw_grid_set_property (GObject *object,
+ 			if (!grid->priv->proxy) {
+ 				/* first time setting */
+ 				if (GDA_IS_DATA_PROXY (model))
+-					grid->priv->proxy = g_object_ref (G_OBJECT (model));
++					grid->priv->proxy = (GdaDataProxy *) g_object_ref (G_OBJECT (model));
+ 				else
+ 					grid->priv->proxy = GDA_DATA_PROXY (gda_data_proxy_new (model));
+ 
+@@ -787,7 +787,7 @@ create_columns_data (GdauiRawGrid *grid)
+ 			/* FIXME: if nullok is FALSE, then set the column title in bold */
+ 			cdata->tooltip_text = g_strdup (_("Can't be NULL"));
+ 			renderer = gdaui_data_cell_renderer_combo_new (grid->priv->iter_info, gdaui_set_group_get_source (group));
+-			cdata->data_cell = g_object_ref_sink ((GObject*) renderer);
++			cdata->data_cell = (GtkCellRenderer *) g_object_ref_sink ((GObject*) renderer);
+ 			g_hash_table_insert (grid->priv->columns_hash, renderer, cdata);
+ 			g_free (cdata->title);
+ 			cdata->title = title;
+@@ -827,7 +827,7 @@ create_columns_data (GdauiRawGrid *grid)
+ 						   GDAUI_ATTRIBUTE_PLUGIN);
+ 			}
+ 			renderer = _gdaui_new_cell_renderer (g_type, plugin);
+-			cdata->data_cell = g_object_ref_sink ((GObject*) renderer);
++			cdata->data_cell = (GtkCellRenderer *) g_object_ref_sink ((GObject*) renderer);
+ 			g_hash_table_insert (grid->priv->columns_hash, renderer, cdata);
+ 			g_free (cdata->title);
+ 			cdata->title = title;
+@@ -849,7 +849,7 @@ create_columns_data (GdauiRawGrid *grid)
+ 
+ 		/* Adding the GValue's information cell as another GtkCellRenderer */
+ 		renderer = gdaui_data_cell_renderer_info_new (grid->priv->store, grid->priv->iter, group);
+-		cdata->info_cell = g_object_ref_sink ((GObject*) renderer);
++		cdata->info_cell = (GtkCellRenderer *) g_object_ref_sink ((GObject*) renderer);
+ 		g_hash_table_insert (grid->priv->columns_hash, renderer, cdata);
+ 		g_signal_connect (G_OBJECT (renderer), "status-changed",
+ 				  G_CALLBACK (data_cell_status_changed), grid);
+@@ -2915,7 +2915,7 @@ paramlist_param_attr_changed_cb (G_GNUC_UNUSED GdaSet *paramlist, GdaHolder *par
+ 		GtkCellRenderer *renderer;
+ 		gint model_col;
+ 		renderer = _gdaui_new_cell_renderer (gda_holder_get_g_type (param), plugin);
+-		cdata->data_cell = g_object_ref_sink ((GObject*) renderer);
++		cdata->data_cell = (GtkCellRenderer *) g_object_ref_sink ((GObject*) renderer);
+ 		g_hash_table_insert (grid->priv->columns_hash, renderer, cdata);
+ 
+ 		model_col = g_slist_index (((GdaSet *)grid->priv->iter)->holders, param);
+--- a/libgda/gda-connection.c
++++ b/libgda/gda-connection.c
+@@ -6458,7 +6458,7 @@ gda_connection_add_prepared_statement (GdaConnection *cnc, GdaStatement *gda_stm
+ 
+ 	if (!cnc->priv->prepared_stmts)
+ 		cnc->priv->prepared_stmts = g_hash_table_new_full (g_direct_hash, g_direct_equal,
+-								   NULL, _gda_prepared_estatement_free);
++								   NULL, (GDestroyNotify) _gda_prepared_estatement_free);
+ 	g_hash_table_remove (cnc->priv->prepared_stmts, gda_stmt);
+ 	PreparedStatementRef *ref = _gda_prepared_estatement_new (gda_stmt, prepared_stmt);
+ 	g_hash_table_insert (cnc->priv->prepared_stmts, gda_stmt, ref);
+--- a/libgda/sqlite/virtual/gda-vconnection-data-model.c
++++ b/libgda/sqlite/virtual/gda-vconnection-data-model.c
+@@ -632,7 +632,7 @@ _gda_vconnection_set_working_obj (GdaVconnectionDataModel *cnc, GObject *obj)
+ 			VContext *vc = NULL;
+ 			
+ 			g_assert (!td->context.current_vcontext);
+-			td->context.mutex = &(cnc->priv->lock_context);
++			td->context.mutex = (GMutex *) &(cnc->priv->lock_context);
+ 			if (! td->context.hash)
+ 				td->context.hash = g_hash_table_new_full (g_direct_hash, g_direct_equal,
+ 									  NULL, (GDestroyNotify) vcontext_free);
+--- a/tools/browser/browser-virtual-connection.c
++++ b/tools/browser/browser-virtual-connection.c
+@@ -489,7 +489,7 @@ browser_virtual_connection_part_copy (const BrowserVirtualConnectionPart *part)
+ 		if (spm->table_name)
+ 			npm->table_name = g_strdup (spm->table_name);
+ 		if (spm->model)
+-			npm->model = g_object_ref (G_OBJECT (spm->model));
++			npm->model = (GdaDataModel *) g_object_ref (G_OBJECT (spm->model));
+ 		break;
+ 	}
+ 	case BROWSER_VIRTUAL_CONNECTION_PART_CNC: {
+@@ -500,7 +500,7 @@ browser_virtual_connection_part_copy (const BrowserVirtualConnectionPart *part)
+ 		if (scnc->table_schema)
+ 			ncnc->table_schema = g_strdup (scnc->table_schema);
+ 		if (scnc->source_cnc)
+-			ncnc->source_cnc = g_object_ref (G_OBJECT (scnc->source_cnc));
++			ncnc->source_cnc = (BrowserConnection *) g_object_ref (G_OBJECT (scnc->source_cnc));
+ 		break;
+ 	}
+ 	default:
+--- a/tools/browser/canvas/browser-canvas.c
++++ b/tools/browser/canvas/browser-canvas.c
+@@ -853,7 +853,7 @@ browser_canvas_perform_auto_layout (BrowserCanvas *canvas, gboolean animate, Bro
+ 
+ #ifdef GRAPHVIZ_NEW_API
+ 	graph = agopen ("BrowserCanvasLayout", Agdirected, NULL);
+-        agnode (graph, "shape", "box");
++        agnode (graph, "shape", 1);
+         agset (graph, "height", ".1");
+         agset (graph, "width", ".1");
+         agset (graph, "fixedsize", "true");
+--- a/tools/browser/common/fk-declare.c
++++ b/tools/browser/common/fk-declare.c
+@@ -403,7 +403,7 @@ fk_declare_new (GtkWindow *parent, GdaMetaStruct *mstruct, GdaMetaTable *table)
+ 	g_free (str);
+ 
+ 	decl = FK_DECLARE (wid);
+-	decl->priv->mstruct = g_object_ref ((GObject*) mstruct);
++	decl->priv->mstruct = (GdaMetaStruct *) g_object_ref ((GObject*) mstruct);
+ 	decl->priv->mtable = table;
+ 
+ 	create_internal_layout (decl);
+--- a/tools/browser/common/ui-formgrid.c
++++ b/tools/browser/common/ui-formgrid.c
+@@ -754,11 +754,11 @@ statement_executed_cb (G_GNUC_UNUSED BrowserConnection *bcnc,
+ 				ui_formgrid_handle_user_prefs (UI_FORMGRID (fg), NULL, stmt);
+ 				g_object_unref (stmt);
+ 			}
+-			aed->model = g_object_ref (out_result);
++			aed->model = (GdaDataModel *) g_object_ref (out_result);
+ 			g_signal_connect (aed->params, "holder-changed",
+ 					  G_CALLBACK (action_executed_holder_changed_cb), aed);
+ 
+-			aed->formgrid = g_object_ref (fg);
++			aed->formgrid = (UiFormGrid *) g_object_ref (fg);
+ 			aed->formgrid->priv->autoupdate_possible = TRUE;
+ 			gtk_widget_show (aed->formgrid->priv->autoupdate_toggle);
+ 		}
+--- a/tools/browser/connection-binding-properties.c
++++ b/tools/browser/connection-binding-properties.c
+@@ -147,7 +147,7 @@ connection_binding_properties_new_create (BrowserConnection *bcnc)
+ 	part = g_new0 (BrowserVirtualConnectionPart, 1);
+ 	part->part_type = BROWSER_VIRTUAL_CONNECTION_PART_CNC;
+ 	part->u.cnc.table_schema = g_strdup (browser_connection_get_name (bcnc));
+-	part->u.cnc.source_cnc = g_object_ref (G_OBJECT (bcnc));
++	part->u.cnc.source_cnc = (BrowserConnection *) g_object_ref (G_OBJECT (bcnc));
+ 	specs->parts = g_slist_append (NULL, part);
+ 
+ 	cprop = CONNECTION_BINDING_PROPERTIES (g_object_new (CONNECTION_TYPE_BINDING_PROPERTIES, NULL));
+--- a/tools/browser/schema-browser/table-info.c
++++ b/tools/browser/schema-browser/table-info.c
+@@ -621,7 +621,7 @@ fk_bind_select_executed_cb (G_GNUC_UNUSED BrowserConnection *bcnc,
+ 			}
+ 		}
+ 	}
+-	fkdata->model = g_object_ref (out_result);
++	fkdata->model = (GdaDataModel *) g_object_ref (out_result);
+ 	fkdata->model_rerunning = FALSE;
+ }
+ 

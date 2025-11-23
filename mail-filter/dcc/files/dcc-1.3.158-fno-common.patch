@@ -1,0 +1,23 @@
+https://bugs.gentoo.org/706988
+--- a/srvrlib/db.c
++++ b/srvrlib/db.c
+@@ -65,7 +65,7 @@ struct timeval db_time;
+ 
+ int db_debug;
+ 
+-u_char grey_on;
++extern u_char grey_on;
+ 
+ DB_BUF_MODE db_buf_mode_hash, db_buf_mode_db;
+ 
+--- a/thrlib/cmn_defs.h
++++ b/thrlib/cmn_defs.h
+@@ -237,7 +237,7 @@ extern u_int dcc_ctxt_sn;		/* change X-DCC header server name */
+ 
+ extern RCPT_ST *rcpt_st_free;
+ 
+-const char *userdirs;
++extern const char *userdirs;
+ 
+ extern u_char dcc_query_only;
+ extern u_char can_discard_1;		/* 1=can trim targets after DATA */

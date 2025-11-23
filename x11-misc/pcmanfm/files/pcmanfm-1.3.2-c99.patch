@@ -1,0 +1,31 @@
+https://bugs.gentoo.org/919077
+https://github.com/lxde/pcmanfm/pull/17
+
+From 9bf5145eba45cd5e3b87d4f040618fe0ea69a81d Mon Sep 17 00:00:00 2001
+From: Mamoru TASAKA <mtasaka@fedoraproject.org>
+Date: Fri, 26 Jul 2024 12:13:32 +0900
+Subject: [PATCH] Fix build with gcc14 -Werror=incompatible-pointer-types
+
+gcc14 now defaults to gcc -Werror=incompatible-pointer-types .
+This commit adds required casts to different pointer types.
+--- a/src/desktop.c
++++ b/src/desktop.c
+@@ -1267,7 +1267,7 @@ static AtkObject *fm_desktop_accessible_ref_selection(AtkSelection *selection,
+         item = items->data;
+         if (item->item->is_selected)
+             if (i-- == 0)
+-                return g_object_ref(item);
++                return (AtkObject *)g_object_ref(item);
+     }
+     return NULL;
+ }
+@@ -1454,7 +1454,7 @@ static AtkObject *fm_desktop_accessible_ref_child(AtkObject *accessible,
+     item = g_list_nth_data(priv->items, index);
+     if (!item)
+         return NULL;
+-    return g_object_ref(item);
++    return (AtkObject *)g_object_ref(item);
+ }
+ 
+ static void fm_desktop_accessible_initialize(AtkObject *accessible, gpointer data)
+

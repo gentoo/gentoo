@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tupone@gentoo.org</email>
+		<name>Tupone Alfredo</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/pytorch/pytorch/issues</bugs-to>
+		<changelog>https://github.com/pytorch/pytorch/releases</changelog>
+		<doc>https://pytorch.org/docs/stable/index.html</doc>
+		<remote-id type="github">pytorch/pytorch</remote-id>
+	</upstream>
+</pkgmetadata>

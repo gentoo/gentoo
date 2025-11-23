@@ -1,0 +1,23 @@
+From https://github.com/breakfastquay/rubberband/pull/126 Mon Sep 17 00:00:00 2001
+From: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
+Date: Sun, 27 Jul 2025 15:53:17 +0200
+Subject: [PATCH] missing include cstdlib
+
+Fix an error with libcxx-21
+
+>In file included from ../rubberband-4.0.0/src/common/mathmisc.cpp:24:
+>../rubberband-4.0.0/src/common/mathmisc.h:58:1:
+>error: unknown type name 'size_t'; did you mean 'std::size_t'?
+
+Signed-off-by: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
+--- a/src/common/mathmisc.h
++++ b/src/common/mathmisc.h
+@@ -26,6 +26,8 @@
+ 
+ #include "sysutils.h"
+ 
++#include <cstdlib>
++
+ #ifndef M_PI
+ #define M_PI 3.14159265358979323846
+ #endif // M_PI

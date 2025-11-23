@@ -1,0 +1,11 @@
+https://github.com/ROCm/ROCR-Runtime/issues/227
+--- a/core/inc/amd_elf_image.hpp
++++ b/core/inc/amd_elf_image.hpp
+@@ -47,6 +47,7 @@
+ #include <sstream>
+ #include <vector>
+ #include <memory>
++#include <cstdint>
+ 
+ namespace rocr {
+ namespace amd {

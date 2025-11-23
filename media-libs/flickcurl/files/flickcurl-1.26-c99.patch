@@ -1,0 +1,261 @@
+https://github.com/dajobe/flickcurl/pull/44
+
+From 96f263150cf025bdcf969fc9884cc90a466f54fb Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 6 May 2024 09:28:24 +0100
+Subject: [PATCH] Fix -Wimplicit-function-declaration
+
+GCC 14 and Clang 16 make this fatal by default.
+
+Bug: https://bugs.gentoo.org/927191
+--- a/src/activity.c
++++ b/src/activity.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+--- a/src/args.c
++++ b/src/args.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+--- a/src/blog.c
++++ b/src/blog.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+--- a/src/category.c
++++ b/src/category.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+--- a/src/collection.c
++++ b/src/collection.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+--- a/src/comments.c
++++ b/src/comments.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+--- a/src/contacts.c
++++ b/src/contacts.c
+@@ -24,6 +24,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+--- a/src/context.c
++++ b/src/context.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+--- a/src/exif.c
++++ b/src/exif.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+--- a/src/gallery.c
++++ b/src/gallery.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+--- a/src/group.c
++++ b/src/group.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+--- a/src/legacy-auth.c
++++ b/src/legacy-auth.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+--- a/src/members.c
++++ b/src/members.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+--- a/src/method.c
++++ b/src/method.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+--- a/src/note.c
++++ b/src/note.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+--- a/src/oauth.c
++++ b/src/oauth.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+--- a/src/perms.c
++++ b/src/perms.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+--- a/src/photo.c
++++ b/src/photo.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ #include <ctype.h>
+ 
+ #ifdef HAVE_CONFIG_H
+--- a/src/photoset.c
++++ b/src/photoset.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+--- a/src/sha1.c
++++ b/src/sha1.c
+@@ -92,6 +92,7 @@ A million repetitions of "a"
+ #include <string.h>
+ #include <stdarg.h>
+ #include <stdint.h>
++#include <stdlib.h>
+ 
+ #include <flickcurl.h>
+ #include <flickcurl_internal.h>
+--- a/src/size.c
++++ b/src/size.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+--- a/src/stat.c
++++ b/src/stat.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+--- a/src/tags.c
++++ b/src/tags.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+--- a/src/ticket.c
++++ b/src/ticket.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+--- a/src/user_upload_status.c
++++ b/src/user_upload_status.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+

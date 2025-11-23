@@ -1,0 +1,65 @@
+From ce5bd091758174c06e0b250040d85b1cc1c8bad0 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Sun, 6 Mar 2016 20:35:45 +1300
+Subject: Disable network tests when tests forcibly required by ENV
+
+Bug: https://bugs.gentoo.org/612256
+---
+ t/gtalk.t                    |  7 ++++++-
+ t/lib/Net/XMPP/Test/Utils.pm |  1 +
+ t/roster.t                   | 10 +++++++++-
+ 3 files changed, 16 insertions(+), 2 deletions(-)
+
+diff --git a/t/gtalk.t b/t/gtalk.t
+index 747b7df..3b1af73 100644
+--- a/t/gtalk.t
++++ b/t/gtalk.t
+@@ -2,7 +2,12 @@ use strict;
+ use warnings;
+ 
+ use Test::More;
+-
++# https://github.com/dap/Net-XMPP/issues/11
++BEGIN {
++  if ($ENV{NO_NETWORK_TESTING}) {
++    Test::More->import(skip_all => "NO_NETWORK_TESTS set");
++  }
++}
+ ######################## XML::Stream mocking starts
+ #{
+ #   package XML::Stream;
+diff --git a/t/lib/Net/XMPP/Test/Utils.pm b/t/lib/Net/XMPP/Test/Utils.pm
+index d69eca3..3c4565e 100644
+--- a/t/lib/Net/XMPP/Test/Utils.pm
++++ b/t/lib/Net/XMPP/Test/Utils.pm
+@@ -23,6 +23,7 @@ sub can_run_tests {
+ }
+ 
+ sub conn_is_available {
++	return if $ENV{NO_NETWORK_TESTING};
+ 	return online();
+ }
+ 
+diff --git a/t/roster.t b/t/roster.t
+index 25ee505..19ed87b 100644
+--- a/t/roster.t
++++ b/t/roster.t
+@@ -1,6 +1,14 @@
+ use lib "t/lib";
+-use Test::More tests=>75;
+ 
++BEGIN {
++  require Test::More;
++  if ($ENV{NO_NETWORK_TESTING}) {
++    Test::More->import(skip_all => "NO_NETWORK_TESTS set");
++  }
++  else {
++    Test::More->import( tests => 75 );
++  }
++}
+ BEGIN{ use_ok( "Net::XMPP" ); }
+ 
+ require "t/mytestlib.pl";
+-- 
+2.14.3
+

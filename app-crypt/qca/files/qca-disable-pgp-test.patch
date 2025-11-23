@@ -1,0 +1,13 @@
+diff --git a/unittest/CMakeLists.txt b/unittest/CMakeLists.txt
+index f4d9eb9..67ef281 100644
+--- a/unittest/CMakeLists.txt
++++ b/unittest/CMakeLists.txt
+@@ -23,7 +23,7 @@ add_subdirectory(keylengthunittest)
+ add_subdirectory(keystore)
+ add_subdirectory(macunittest)
+ add_subdirectory(metatype)
+-add_subdirectory(pgpunittest)
++# add_subdirectory(pgpunittest)
+ add_subdirectory(pipeunittest)
+ add_subdirectory(pkits)
+ add_subdirectory(rsaunittest)

@@ -1,0 +1,35 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index dc31cc0..81528d9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -272,7 +272,6 @@ else()
+ 
+ 	add_compile_options(-Wall)
+ 	add_compile_options(-Wextra)
+-	add_compile_options(-Werror)
+ 	add_compile_options(-Wshadow)
+ 	add_compile_options(-Wcast-qual)
+ 	add_compile_options(-Wwrite-strings)
+@@ -280,7 +279,6 @@ else()
+ 	add_compile_options(-Wbad-function-cast)
+ 	add_compile_options(-Wimplicit-fallthrough)
+ 	add_compile_options(-pedantic)
+-	add_compile_options(-pedantic-errors)
+ 
+ 	set(EXTRA_CFLAGS "-Wconversion -Wsign-conversion")
+ 
+diff --git a/man/CMakeLists.txt b/man/CMakeLists.txt
+index cf32a3a..4aa6005 100644
+--- a/man/CMakeLists.txt
++++ b/man/CMakeLists.txt
+@@ -4,10 +4,8 @@
+ # SPDX-License-Identifier: BSD-2-Clause
+ 
+ find_program(MANDOC_PATH mandoc)
+-find_program(GZIP_PATH gzip)
+ 
+ message(STATUS "MANDOC_PATH: ${MANDOC_PATH}")
+-message(STATUS "GZIP_PATH: ${GZIP_PATH}")
+ 
+ list(APPEND MAN_SOURCES
+ 	eddsa_pk_new.3

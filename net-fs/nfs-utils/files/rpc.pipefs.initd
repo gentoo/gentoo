@@ -1,0 +1,32 @@
+#!/sbin/openrc-run
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+MNT="/var/lib/nfs/rpc_pipefs"
+
+mount_pipefs() {
+	local fstype=rpc_pipefs
+
+	# if things are already mounted, nothing to do
+	mountinfo -q ${MNT} && return 0
+
+	# if rpc_pipefs is not available, try to load sunrpc for it #219566
+	grep -qs ${fstype} /proc/filesystems || modprobe -q sunrpc
+	# if still not available, the `mount` will issue an error for the user
+
+	# now just do it for kicks
+	mkdir -p ${MNT}
+	mount -t ${fstype} ${fstype} ${MNT}
+}
+
+start() {
+	ebegin "Setting up RPC pipefs"
+	mount_pipefs
+	eend $? "make sure you have NFS/SUNRPC enabled in your kernel"
+}
+
+stop() {
+	ebegin "Unmounting RPC pipefs"
+	umount ${MNT}
+	eend $?
+}

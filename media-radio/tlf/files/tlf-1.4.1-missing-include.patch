@@ -1,0 +1,10 @@
+diff --git a/test/test_wwv.c b/test/test_wwv.c
+index f4e20ac..0fa82da 100644
+--- a/test/test_wwv.c
++++ b/test/test_wwv.c
+@@ -1,4 +1,5 @@
+ #include "test.h"
++#include <glib.h>
+ 
+ #include "../src/getwwv.h"
+ 

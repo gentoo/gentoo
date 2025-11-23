@@ -1,0 +1,51 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# Config file for /etc/init.d/flowcap
+
+# This is the default and should be left unless you know what you are doing
+FLOW_VER=5
+
+# local ip. if configured flow-capture will only ps flows sent to this ip.
+LOCALIP=0
+
+# You probably don't want to change this, but in case you do - nest level
+NEST=0
+
+# port to listen on
+PORT=2055
+
+# remote ip. If this is configured only flows from this exporter will be accepted
+# by default we will accept any flows sent to us
+REMOTEIP=0
+
+# program used to rotate 
+ROTATE_PROG="/var/lib/flows/bin/linkme"
+
+# number of rotations per day
+ROTATIONS=287
+
+# Retain the maximum number of files so that the total storage is less than SIZE
+# The letters b,K,M,G can be used as multipliers, ie 16 Megabytes is 16M.
+SIZE=1G
+
+# interval in mins at which flowscan will print out stats in logs
+#STAT_INT=5
+# NOTE: with versions of flow-tools >=0.67 there is a bug that will cause a loop if you specify the STAT_INT
+# Only use that variable if you using an older flow-tools (and consequently a custom built ebuild as this config file is not in our older ebuilds)
+
+# dir we will be saving flows and working in
+WORKDIR=/var/lib/flows/ft
+
+# user to run as
+USER=flows
+
+# Pidfile base
+# The daemon takes the pidfile argument and APPENDS .$PORT itself in writing.
+# It may have multiple children by original design, but this is not recommended
+# for Gentoo at this time.
+PIDFILE_BASE=${PIDFILE_BASE:=/run/flows/flowcapture.pid}
+
+# This pulls in the options above
+FLOW_OPTS="-p $PIDFILE_BASE -w $WORKDIR $LOCALIP/$REMOTEIP/$PORT -V $FLOW_VER -E $SIZE -n $ROTATIONS -N $NEST -R $ROTATE_PROG"
+# Use below only if you have sorted out the STAT_INT problem
+#FLOW_OPTS="-p /run/flows/flowcapture.pid.$PORT -w $WORKDIR $LOCALIP/$REMOTEIP/$PORT -S $STAT_INT -V $FLOW_VER -E $SIZE -n $ROTATIONS -N $NEST -R $ROTATE_PROG"

@@ -1,0 +1,32 @@
+From a4db786271c4ae3b987d7c4facc488db31966221 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Sat, 7 Oct 2017 19:17:38 +1300
+Subject: Fix parallel testing issues by using a non-concurrent tempdir
+
+(Possible) Bug: https://bugs.gentoo.org/403881
+Bug: https://rt.cpan.org/Ticket/Display.html?id=102615
+---
+ t/Test-Setup.pl | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/t/Test-Setup.pl b/t/Test-Setup.pl
+index 8b4a82e..f7400cd 100755
+--- a/t/Test-Setup.pl
++++ b/t/Test-Setup.pl
+@@ -1,11 +1,11 @@
+ #!/usr/bin/env perl
+ 
+ use Carp;
+-
++use File::Temp qw( tempdir );
+ ($DIR,$PROG) = $0 =~ m=^(.*/)?([^/]+)$=;
+ $DIR =~ s=/$== || chop($DIR = `pwd`);
+ 
+-$testdir = -d 't' ? 't' : '.';
++$testdir = tempdir( 'temp.XXXX', DIR => ( -d 't' ? 't' : '.' ), CLEANUP => 1);
+ 
+ # Setup these globals
+ 
+-- 
+2.14.1
+

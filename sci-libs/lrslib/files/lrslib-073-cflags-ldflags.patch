@@ -1,0 +1,169 @@
+diff --git a/makefile b/makefile
+index 8142044..1c26969 100755
+--- a/makefile
++++ b/makefile
+@@ -35,7 +35,7 @@ LRSOBJ2=lrslib2.o lrslong2.o
+ 
+ #legacy lrs and mplrs
+ #CFLAGS     = -g -Wall -I ${ARITH} 
+-CFLAGS     = -O3 -Wall -I ${ARITH} 
++CFLAGS     += -I ${ARITH}
+ 
+ #use this if you want only output file contain data between begin/end lines
+ #CFLAGS     = -O3 -Wall -I ${ARITH} -DLRS_QUIET
+@@ -89,14 +89,14 @@ MPLRSOBJ=lrslong1-mplrs.o lrslib1-mplrs.o lrslibgmp-mplrs.o lrsgmp-mplrs.o lrsdr
+ MPLRSOBJ64=lrslong1-mplrs.o lrslib1-mplrs.o lrslibgmp-mplrs.o lrsgmp-mplrs.o lrsdriver-mplrs.o mplrs64.o
+ 
+ lrs: ${LRSOBJ} ${LRSOBJ2}
+-	$(CC) ${CFLAGS} ${PLRSFLAGS} -DMA ${BITS} -L${LIBDIR} -o lrs ${LRSOBJ} ${LRSOBJ2} ${MINI} ${GMP}
++	$(CC) ${CFLAGS} ${PLRSFLAGS} -DMA ${BITS} -L${LIBDIR} $(LDFLAGS) -o lrs ${LRSOBJ} ${LRSOBJ2} ${MINI} ${GMP}
+ 	ln -s -f lrs redund
+ 	ln -s -f lrs minrep
+ 	ln -s -f lrs fel
+ 
+ lrsMP: ${LRSOBJMP}
+-	$(CC) ${CFLAGS} ${PLRSFLAGS} -DMA ${BITS} -o lrsMP ${LRSOBJMP} 
+-	$(CC) -O3 hvref.c -o hvref
++	$(CC) ${CFLAGS} ${PLRSFLAGS} -DMA ${BITS} $(LDFLAGS) -o lrsMP ${LRSOBJMP} 
++	$(CC) $(CFLAGS) hvref.c $(LDFLAGS) -o hvref
+ 	ln -s -f lrs redund
+ 
+ lrs.o: lrs.c
+@@ -126,10 +126,10 @@ lrsmp.o: ${ARITH}lrsmp.c ${ARITH}lrsmp.h
+ 	$(CC) ${CFLAGS} -DMA -DMP -c -o lrsmp.o ${ARITH}lrsmp.c
+ 
+ inedel: inedel.c ${ARITH}lrsgmp.h ${ARITH}lrsgmp.c
+-	$(CC) ${CFLAGS} -I${INCLUDEDIR} -L${LIBDIR} -DGMP -o inedel inedel.c ${ARITH}lrsgmp.c -lgmp
++	$(CC) ${CFLAGS} -I${INCLUDEDIR} -L${LIBDIR} -DGMP $(LDFLAGS) -o inedel inedel.c ${ARITH}lrsgmp.c -lgmp
+ 
+ polyv: polyv.c ${ARITH}lrsgmp.h ${ARITH}lrsgmp.c
+-	$(CC) $(CFLAGS) -I${INCLUDEDIR} -L${LIBDIR} -DGMP -o polyv polyv.c ${ARITH}lrsgmp.c -lgmp
++	$(CC) $(CFLAGS) -I${INCLUDEDIR} -L${LIBDIR} -DGMP $(LDFLAGS) -o polyv polyv.c ${ARITH}lrsgmp.c -lgmp
+ 
+ lrslong1-mplrs.o: ${ARITH}lrslong.c ${ARITH}lrslong.h
+ 	$(mpicxx) ${CFLAGS} -DTIMES -DSIGNALS -DMA -DSAFE -DLRSLONG -DMPLRS -c -o lrslong1-mplrs.o ${ARITH}lrslong.c
+@@ -159,67 +159,67 @@ mplrs64.o: mplrs.c mplrs.h lrslib.h ${ARITH}lrsgmp.h
+ 	$(mpicxx) ${CFLAGS} -I${INCLUDEDIR} ${GMP} -DMA -DMPLRS -DTIMES -DSIGNALS -D_WITH_GETLINE -c -o mplrs64.o mplrs.c
+ 
+ mplrs: ${MPLRSOBJ} ${MPLRSOBJ2}
+-	$(mpicxx) ${CFLAGS} -DTIMES -DSIGNALS -D_WITH_GETLINE -DMPLRS -DMA ${BITS} -L${LIBDIR} -o mplrs ${MPLRSOBJ} ${MPLRSOBJ2} ${MINI} ${GMP}
++	$(mpicxx) ${CFLAGS} -DTIMES -DSIGNALS -D_WITH_GETLINE -DMPLRS -DMA ${BITS} -L${LIBDIR} $(LDFLAGS) -o mplrs ${MPLRSOBJ} ${MPLRSOBJ2} ${MINI} ${GMP}
+ 
+ mplrs64: ${MPLRSOBJ64} mplrsgmp
+-	$(mpicxx) ${CFLAGS} -DTIMES -DSIGNALS -D_WITH_GETLINE -DMPLRS -DMA -L${LIBDIR} -o mplrs ${MPLRSOBJ64} -lgmp
++	$(mpicxx) ${CFLAGS} -DTIMES -DSIGNALS -D_WITH_GETLINE -DMPLRS -DMA -L${LIBDIR} $(LDFLAGS) -o mplrs ${MPLRSOBJ64} -lgmp
+ 
+ mplrsgmp: mplrs.c mplrs.h lrslib.c lrslib.h ${ARITH}lrsgmp.c ${ARITH}lrsgmp.h lrsdriver.h lrsdriver.c
+-	$(mpicxx) ${CFLAGS} -DTIMES -DSIGNALS -D_WITH_GETLINE -DMPLRS -DGMP -I${INCLUDEDIR} mplrs.c lrslib.c ${ARITH}lrsgmp.c lrsdriver.c -L${LIBDIR} -o mplrsgmp -lgmp
++	$(mpicxx) ${CFLAGS} -DTIMES -DSIGNALS -D_WITH_GETLINE -DMPLRS -DGMP -I${INCLUDEDIR} mplrs.c lrslib.c ${ARITH}lrsgmp.c lrsdriver.c -L${LIBDIR} $(LDFLAGS) -o mplrsgmp -lgmp
+ 
+ mplrs1: mplrs.c mplrs.h lrslib.c lrslib.h ${ARITH}lrslong.c ${ARITH}lrslong.h lrsdriver.h lrsdriver.c
+-	$(mpicxx) ${CFLAGS} -DTIMES -DSIGNALS -D_WITH_GETLINE -DMPLRS -DSAFE -DLRSLONG mplrs.c lrslib.c ${ARITH}lrslong.c lrsdriver.c -o mplrs1
++	$(mpicxx) ${CFLAGS} -DTIMES -DSIGNALS -D_WITH_GETLINE -DMPLRS -DSAFE -DLRSLONG mplrs.c lrslib.c ${ARITH}lrslong.c lrsdriver.c $(LDFLAGS) -o mplrs1
+ 
+ mplrs2: mplrs.c mplrs.h lrslib.c lrslib.h ${ARITH}lrslong.c ${ARITH}lrslong.h lrsdriver.h lrsdriver.c
+-	$(mpicxx) ${CFLAGS} -DTIMES -DSIGNALS -D_WITH_GETLINE -DMPLRS -DSAFE -DLRSLONG ${BITS} mplrs.c lrslib.c ${ARITH}lrslong.c lrsdriver.c -o mplrs2
++	$(mpicxx) ${CFLAGS} -DTIMES -DSIGNALS -D_WITH_GETLINE -DMPLRS -DSAFE -DLRSLONG ${BITS} mplrs.c lrslib.c ${ARITH}lrslong.c lrsdriver.c $(LDFLAGS) -o mplrs2
+ 
+ mplrsmp: mplrs.c mplrs.h lrslib.c lrslib.h ${ARITH}lrsmp.c ${ARITH}lrsmp.h lrsdriver.h lrsdriver.c
+-	$(mpicxx) ${CFLAGS} -DMP -DTIMES -DSIGNALS -D_WITH_GETLINE -DMPLRS mplrs.c lrslib.c ${ARITH}lrsmp.c lrsdriver.c -o mplrsmp
++	$(mpicxx) ${CFLAGS} -DMP -DTIMES -DSIGNALS -D_WITH_GETLINE -DMPLRS mplrs.c lrslib.c ${ARITH}lrsmp.c lrsdriver.c $(LDFLAGS) -o mplrsmp
+ 
+ singlemplrs:  mplrs1 mplrs2
+ 
+ flint:	 	lrs.c lrslib.c lrslib.h ${ARITH}lrsgmp.c ${ARITH}lrsgmp.h
+ 		@test -d  ${INCLUDEDIR}/flint || { echo ${INCLUDEDIR}/flint not found; exit 1; }
+-		$(CC) -O3 -DFLINT ${PLRSFLAGS} -I/usr/local/include/flint lrs.c lrslib.c ${ARITH}lrsgmp.c lrsdriver.c -L/usr/local/lib -Wl,-rpath=/usr/local/lib -lflint -o lrsflint -lgmp
++		$(CC) $(CFLAGS) -DFLINT ${PLRSFLAGS} -I/usr/local/include/flint lrs.c lrslib.c ${ARITH}lrsgmp.c lrsdriver.c -L/usr/local/lib -Wl,-rpath=/usr/local/lib -lflint $(LDFLAGS) -o lrsflint -lgmp
+ 
+ mplrsflint:	mplrs.c mplrs.h lrslib.c lrslib.h ${ARITH}lrsgmp.c ${ARITH}lrsgmp.h lrsdriver.c lrsdriver.h
+-	${mpicxx} ${CFLAGS} -DTIMES -DSIGNALS -D_WITH_GETLINE -DFLINT -I${INCLUDEDIR}/flint -DMPLRS -o mplrsflint mplrs.c lrsdriver.c lrslib.c ${ARITH}lrsgmp.c -L${LIBDIR} -lflint -lgmp
++	${mpicxx} ${CFLAGS} -DTIMES -DSIGNALS -D_WITH_GETLINE -DFLINT -I${INCLUDEDIR}/flint -DMPLRS $(LDFLAGS) -o mplrsflint mplrs.c lrsdriver.c lrslib.c ${ARITH}lrsgmp.c -L${LIBDIR} -lflint -lgmp
+ 
+ lrsgmp:		lrs.c lrslib.c lrslib.h ${ARITH}lrsgmp.c ${ARITH}lrsgmp.h lrsdriver.h lrsdriver.c 
+-		$(CC)  ${CFLAGS} ${PLRSFLAGS} -I${INCLUDEDIR} -o lrsgmp lrs.c lrslib.c ${ARITH}lrsgmp.c lrsdriver.c -L${LIBDIR} ${MINI} ${GMP} 
++		$(CC)  ${CFLAGS} ${PLRSFLAGS} -I${INCLUDEDIR} $(LDFLAGS) -o lrsgmp lrs.c lrslib.c ${ARITH}lrsgmp.c lrsdriver.c -L${LIBDIR} ${MINI} ${GMP} 
+ 
+ single:		lrs.c ${ARITH}lrslong.c ${ARITH}lrslong.h lrslib.c lrslib.h ${ARITH}lrsgmp.c ${ARITH}lrsgmp.h lrsdriver.h lrsdriver.c
+-		$(CC)  ${CFLAGS} ${PLRSFLAGS}  -DSAFE  -DLRSLONG -o lrs1 lrs.c lrslib.c ${ARITH}lrslong.c lrsdriver.c
+-		$(CC)  ${CFLAGS} ${PLRSFLAGS} ${BITS} -DSAFE  -DLRSLONG -o lrs2 lrs.c lrslib.c ${ARITH}lrslong.c lrsdriver.c
+-		$(CC)  ${CFLAGS} ${PLRSFLAGS} -DMP -o lrsmp lrs.c lrslib.c lrsdriver.c ${ARITH}lrsmp.c
+-		$(CC)  ${CFLAGS} ${PLRSFLAGS} -DGMP -I${INCLUDEDIR} -o lrsgmp lrs.c lrslib.c ${ARITH}lrsgmp.c lrsdriver.c -L${LIBDIR}  -lgmp
+-		$(CC)  ${CFLAGS} ${PLRSFLAGS} -DMGMP -DGMP -I${INCLUDEDIR} -o lrsmgmp lrs.c lrslib.c ${ARITH}lrsgmp.c lrsdriver.c ${ARITH}mini-gmp.c
++		$(CC)  ${CFLAGS} ${PLRSFLAGS}  -DSAFE  -DLRSLONG $(LDFLAGS) -o lrs1 lrs.c lrslib.c ${ARITH}lrslong.c lrsdriver.c
++		$(CC)  ${CFLAGS} ${PLRSFLAGS} ${BITS} -DSAFE  -DLRSLONG $(LDFLAGS) -o lrs2 lrs.c lrslib.c ${ARITH}lrslong.c lrsdriver.c
++		$(CC)  ${CFLAGS} ${PLRSFLAGS} -DMP $(LDFLAGS) -o lrsmp lrs.c lrslib.c lrsdriver.c ${ARITH}lrsmp.c
++		$(CC)  ${CFLAGS} ${PLRSFLAGS} -DGMP -I${INCLUDEDIR} $(LDFLAGS) -o lrsgmp lrs.c lrslib.c ${ARITH}lrsgmp.c lrsdriver.c -L${LIBDIR}  -lgmp
++		$(CC)  ${CFLAGS} ${PLRSFLAGS} -DMGMP -DGMP -I${INCLUDEDIR} $(LDFLAGS) -o lrsmgmp lrs.c lrslib.c ${ARITH}lrsgmp.c lrsdriver.c ${ARITH}mini-gmp.c
+ 
+ allmp:		lrs.c lrslib.c lrslib.h ${ARITH}lrsmp.c ${ARITH}lrsmp.h lrsdriver.h lrsdriver.c
+-		$(CC)  ${CFLAGS} ${PLRSFLAGS} -DMP  -o lrsmp lrs.c lrslib.c lrsdriver.c ${ARITH}lrsmp.c
+-		$(CC)  ${CFLAGS} ${PLRSFLAGS} -DSAFE -DLRSLONG -o lrs1 lrs.c lrslib.c lrsdriver.c ${ARITH}lrslong.c
+-		$(CC) ${CFLAGS} ${PLRSFLAGS}  -DSAFE -DLRSLONG ${BITS} -o lrs2 lrs.c lrslib.c lrsdriver.c ${ARITH}lrslong.c
+-		$(CC) ${CFLAGS} -DMP -DLRS_QUIET   -o lrsnash lrsnash.c lrsnashlib.c lrslib.c lrsdriver.c ${ARITH}lrsmp.c
+-		$(CC) ${CFLAGS} -DMP -o setupnash setupnash.c lrslib.c lrsdriver.c ${ARITH}lrsmp.c
+-		$(CC) ${CFLAGS} -DMP -o setupnash2 setupnash2.c lrslib.c lrsdriver.c ${ARITH}lrsmp.c
+-		$(CC) ${CFLAGS}  -o 2nash 2nash.c
++		$(CC)  ${CFLAGS} ${PLRSFLAGS} -DMP $(LDFLAGS) -o lrsmp lrs.c lrslib.c lrsdriver.c ${ARITH}lrsmp.c
++		$(CC)  ${CFLAGS} ${PLRSFLAGS} -DSAFE -DLRSLONG $(LDFLAGS) -o lrs1 lrs.c lrslib.c lrsdriver.c ${ARITH}lrslong.c
++		$(CC) ${CFLAGS} ${PLRSFLAGS}  -DSAFE -DLRSLONG ${BITS} $(LDFLAGS) -o lrs2 lrs.c lrslib.c lrsdriver.c ${ARITH}lrslong.c
++		$(CC) ${CFLAGS} -DMP -DLRS_QUIET $(LDFLAGS) -o lrsnash lrsnash.c lrsnashlib.c lrslib.c lrsdriver.c ${ARITH}lrsmp.c
++		$(CC) ${CFLAGS} -DMP $(LDFLAGS) -o setupnash setupnash.c lrslib.c lrsdriver.c ${ARITH}lrsmp.c
++		$(CC) ${CFLAGS} -DMP $(LDFLAGS) -o setupnash2 setupnash2.c lrslib.c lrsdriver.c ${ARITH}lrsmp.c
++		$(CC) ${CFLAGS} $(LDFLAGS) -o 2nash 2nash.c
+ 
+ demo:	lpdemo1.c lrslib.c lrsdriver.c lrslib.h ${ARITH}lrsgmp.c ${ARITH}lrsgmp.h
+-	$(CC) ${CFLAGS}   -I${INCLUDEDIR} -L${LIBDIR} -o lpdemo1 lpdemo1.c lrslib.c lrsdriver.c ${ARITH}lrsgmp.c -lgmp -DGMP
+-	$(CC) ${CFLAGS}   -I${INCLUDEDIR} -L${LIBDIR} -o lpdemo lpdemo.c lrslib.c lrsdriver.c ${ARITH}lrsgmp.c -lgmp -DGMP
+-	$(CC) ${CFLAGS}   -I${INCLUDEDIR} -L${LIBDIR} -o lpdemo2 lpdemo2.c lrslib.c lrsdriver.c ${ARITH}lrsgmp.c -lgmp -DGMP
+-	$(CC) ${CFLAGS}   -I${INCLUDEDIR} -L${LIBDIR} -o vedemo  vedemo.c lrslib.c lrsdriver.c ${ARITH}lrsgmp.c -lgmp -DGMP
+-	$(CC) ${CFLAGS}   -I${INCLUDEDIR} -L${LIBDIR} -o chdemo  chdemo.c lrslib.c lrsdriver.c ${ARITH}lrsgmp.c -lgmp -DGMP
++	$(CC) ${CFLAGS}   -I${INCLUDEDIR} -L${LIBDIR} $(LDFLAGS) -o lpdemo1 lpdemo1.c lrslib.c lrsdriver.c ${ARITH}lrsgmp.c -lgmp -DGMP
++	$(CC) ${CFLAGS}   -I${INCLUDEDIR} -L${LIBDIR} $(LDFLAGS) -o lpdemo lpdemo.c lrslib.c lrsdriver.c ${ARITH}lrsgmp.c -lgmp -DGMP
++	$(CC) ${CFLAGS}   -I${INCLUDEDIR} -L${LIBDIR} $(LDFLAGS) -o lpdemo2 lpdemo2.c lrslib.c lrsdriver.c ${ARITH}lrsgmp.c -lgmp -DGMP
++	$(CC) ${CFLAGS}   -I${INCLUDEDIR} -L${LIBDIR} $(LDFLAGS) -o vedemo  vedemo.c lrslib.c lrsdriver.c ${ARITH}lrsgmp.c -lgmp -DGMP
++	$(CC) ${CFLAGS}   -I${INCLUDEDIR} -L${LIBDIR} $(LDFLAGS) -o chdemo  chdemo.c lrslib.c lrsdriver.c ${ARITH}lrsgmp.c -lgmp -DGMP
+ 
+ lrsnash:	lrsnash.c nashdemo.c lrsnashlib.c lrslib.c lrsnashlib.h lrslib.h ${ARITH}lrsgmp.c ${ARITH}lrsgmp.h ${ARITH}lrslong.h lrsdriver.h lrsdriver.c
+-		$(CC) ${CFLAGS}   -I${INCLUDEDIR} -L${LIBDIR} -o lrsnashgmp lrsnash.c lrsnashlib.c lrslib.c ${ARITH}lrsgmp.c lrsdriver.c  ${MINI} ${GMP}
+-		$(CC) ${CFLAGS} -DNASH  -I${INCLUDEDIR} -L${LIBDIR} -o lrsnash1 lrsnash.c lrsnashlib.c lrslib.c ${ARITH}lrslong.c lrsdriver.c -DLRSLONG -DSAFE
+-
+-		$(CC) ${CFLAGS} -DNASH  -I${INCLUDEDIR} -L${LIBDIR} -o lrsnash2 lrsnash.c lrsnashlib.c lrslib.c ${ARITH}lrslong.c lrsdriver.c -DLRSLONG -DSAFE ${BITS}
+-		$(CC) ${CFLAGS}   -I${INCLUDEDIR} -L${LIBDIR} -o nashdemo nashdemo.c lrsnashlib.c lrslib.c ${ARITH}lrsgmp.c lrsdriver.c  ${MINI} ${GMP}
+-		$(CC) ${CFLAGS} -DMP -o setupnash setupnash.c lrslib.c lrsdriver.c ${ARITH}lrsmp.c
+-		$(CC) ${CFLAGS} -DMP -o setupnash2 setupnash2.c lrslib.c lrsdriver.c ${ARITH}lrsmp.c
+-		$(CC) ${CFLAGS}  -I${INCLUDEDIR} -L${LIBDIR} -o 2nash 2nash.c
++		$(CC) ${CFLAGS}   -I${INCLUDEDIR} -L${LIBDIR} $(LDFLAGS) -o lrsnashgmp lrsnash.c lrsnashlib.c lrslib.c ${ARITH}lrsgmp.c lrsdriver.c  ${MINI} ${GMP}
++		$(CC) ${CFLAGS} -DNASH  -I${INCLUDEDIR} -L${LIBDIR} $(LDFLAGS) -o lrsnash1 lrsnash.c lrsnashlib.c lrslib.c ${ARITH}lrslong.c lrsdriver.c -DLRSLONG -DSAFE
++
++		$(CC) ${CFLAGS} -DNASH  -I${INCLUDEDIR} -L${LIBDIR} $(LDFLAGS) -o lrsnash2 lrsnash.c lrsnashlib.c lrslib.c ${ARITH}lrslong.c lrsdriver.c -DLRSLONG -DSAFE ${BITS}
++		$(CC) ${CFLAGS}   -I${INCLUDEDIR} -L${LIBDIR} $(LDFLAGS) -o nashdemo nashdemo.c lrsnashlib.c lrslib.c ${ARITH}lrsgmp.c lrsdriver.c  ${MINI} ${GMP}
++		$(CC) ${CFLAGS} -DMP $(LDFLAGS) -o setupnash setupnash.c lrslib.c lrsdriver.c ${ARITH}lrsmp.c
++		$(CC) ${CFLAGS} -DMP $(LDFLAGS) -o setupnash2 setupnash2.c lrslib.c lrsdriver.c ${ARITH}lrsmp.c
++		$(CC) ${CFLAGS}  -I${INCLUDEDIR} -L${LIBDIR} $(LDFLAGS) -o 2nash 2nash.c
+ 		cp lrsnashgmp lrsnash
+ 
+ ######################################################################
+@@ -246,7 +246,7 @@ SHLIBBIN=lrs-shared lrsnash-shared
+ # Building (linking) the shared library, and relevant symlinks.
+ 
+ ${SHLIB}: ${SHLIBOBJ}
+-	$(CC) -shared -Wl,-soname=$(SONAME) $(SHLIBFLAGS) -o $@ ${SHLIBOBJ} -lgmp
++	$(CC) -shared -Wl,-soname=$(SONAME) $(SHLIBFLAGS) $(LDFLAGS) -o $@ ${SHLIBOBJ} -lgmp
+ 
+ ${SONAME}: ${SHLIB}
+ 	ln -sf ${SHLIB} ${SONAME}
+@@ -259,11 +259,11 @@ ${SHLINK}: ${SONAME}
+ all-shared: ${SHLIBBIN}
+ 
+ lrs-shared: ${SHLINK} lrs-shared.o
+-	$(CC) $^ -o $@ -L . -llrs
++	$(CC) $^ $(LDFLAGS) -o $@ -L . -llrs
+ 
+ 
+ lrsnash-shared: ${SHLINK}  lrsnash.c
+-	$(CC) ${CFLAGS} -DGMP -DMA lrsnash.c  lrsnashlib.c -I${INCLUDEDIR} -o $@ -L . -llrs -lgmp
++	$(CC) ${CFLAGS} -DGMP -DMA lrsnash.c  lrsnashlib.c -I${INCLUDEDIR} $(LDFLAGS) -o $@ -L . -llrs -lgmp
+ 
+ # driver object files
+ 

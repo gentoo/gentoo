@@ -1,0 +1,42 @@
+https://lore.kernel.org/git/79de1bcf31f708960a889066ce3d986e55155ad8.1736577530.git.sam@gentoo.org/
+
+From 79de1bcf31f708960a889066ce3d986e55155ad8 Mon Sep 17 00:00:00 2001
+Message-ID: <79de1bcf31f708960a889066ce3d986e55155ad8.1736577546.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Sat, 11 Jan 2025 06:37:48 +0000
+Subject: [PATCH] meson: fix perl dependencies for Documentation
+
+We need an explicit `depends: documentation_deps` so that all of our
+Documentation targets know they require asciidoc.conf. This shows up
+as parallel build failures with it not yet being available.
+
+Other targets look OK already.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ Documentation/technical/meson.build | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/Documentation/technical/meson.build b/Documentation/technical/meson.build
+index 21dfb8b5c9..8c93da3566 100644
+--- a/Documentation/technical/meson.build
++++ b/Documentation/technical/meson.build
+@@ -42,6 +42,7 @@ api_index = custom_target(
+     '@OUTPUT@',
+   ],
+   env: script_environment,
++  depends: documentation_deps,
+   input: api_docs,
+   output: 'api-index.txt',
+ )
+@@ -60,6 +61,7 @@ foreach article : api_docs + articles
+     command: asciidoc_html_options,
+     input: article,
+     output: fs.stem(article) + '.html',
++    depends: documentation_deps,
+     install: true,
+     install_dir: get_option('datadir') / 'doc/git-doc/technical',
+   )
+-- 
+2.48.0.rc2
+

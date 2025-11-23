@@ -1,0 +1,32 @@
+From d58ae05bb7838e1fdae967752f06b0b2471a63f5 Mon Sep 17 00:00:00 2001
+Message-ID: <d58ae05bb7838e1fdae967752f06b0b2471a63f5.1758727915.git.sam@gentoo.org>
+In-Reply-To: <4b8d141ec165aa29a48316768089cb03aed3aada.1758727915.git.sam@gentoo.org>
+References: <4b8d141ec165aa29a48316768089cb03aed3aada.1758727915.git.sam@gentoo.org>
+From: "djm@openbsd.org" <djm@openbsd.org>
+Date: Sun, 2 Mar 2025 22:44:00 +0000
+Subject: [PATCH 05/10] upstream: fix PerSourcePenalty incorrectly using
+ "crash" penalty when
+
+LoginGraceTime was exceeded. Reported by irwin AT princeton.edu via bz3797
+
+OpenBSD-Commit-ID: 1ba3e490a5a9451359618c550d995380af454d25
+---
+ srclimit.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/srclimit.c b/srclimit.c
+index 33116fa52..c63a462e2 100644
+--- a/srclimit.c
++++ b/srclimit.c
+@@ -386,7 +386,7 @@ srclimit_penalise(struct xaddr *addr, int penalty_type)
+ 		reason = "penalty: connection prohibited by RefuseConnection";
+ 		break;
+ 	case SRCLIMIT_PENALTY_GRACE_EXCEEDED:
+-		penalty_secs = penalty_cfg.penalty_crash;
++		penalty_secs = penalty_cfg.penalty_grace;
+ 		reason = "penalty: exceeded LoginGraceTime";
+ 		break;
+ 	default:
+-- 
+2.51.0
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>vulkan@gentoo.org</email>
+		<name>Vulkan Project</name>
+	</maintainer>
+	<use>
+		<flag name="cube">Build the cube/cubepp demos</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">KhronosGroup/Vulkan-Tools</remote-id>
+	</upstream>
+</pkgmetadata>

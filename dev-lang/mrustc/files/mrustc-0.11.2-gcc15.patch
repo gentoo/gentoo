@@ -1,0 +1,28 @@
+From 3df8e7e14485c7f11da4d90dac02aa061f5e1f1a Mon Sep 17 00:00:00 2001
+From: Matt Jolly <kangie@gentoo.org>
+Date: Sun, 19 Jan 2025 14:07:47 +1000
+Subject: [PATCH] gcc15 includes
+
+--- a/src/common.hpp
++++ b/src/common.hpp
+@@ -13,6 +13,7 @@
+ #include <map>
+ #include <set>
+ #include <cassert>
++#include <cstdint>
+ #include <sstream>
+ #include <memory>
+ 
+--- a/tools/minicargo/build.cpp
++++ b/tools/minicargo/build.cpp
+@@ -20,6 +20,7 @@
+ #include <fstream>
+ #include <cassert>
+ 
++#include <cstdint>
+ #include <unordered_map>
+ #include <algorithm>    // sort/find_if
+ 
+-- 
+2.48.0
+

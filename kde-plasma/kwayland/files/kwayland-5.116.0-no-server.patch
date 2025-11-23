@@ -1,0 +1,36 @@
+From fa0425714656919449a53e41c80ac9ad06d89193 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 1 Feb 2025 19:23:24 +0100
+Subject: Only require Wayland Server component if needed
+
+It is only required if building the server API, meaning
+EXCLUDE_DEPRECATED_BEFORE_AND_AT VERSION_LESS 5.74.0
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a177d29..6a71381 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -51,10 +51,11 @@ if (QT_MAJOR_VERSION STREQUAL "5")
+     pkg_check_modules(XKBCommon REQUIRED IMPORTED_TARGET xkbcommon)
+ endif()
+ 
+-find_package(Wayland 1.15 COMPONENTS Client Server)
+-set_package_properties(Wayland PROPERTIES
+-                       TYPE REQUIRED
+-                      )
++find_package(Wayland 1.15 REQUIRED COMPONENTS Client)
++
++if(EXCLUDE_DEPRECATED_BEFORE_AND_AT VERSION_LESS 5.74.0)
++    find_package(Wayland 1.15 REQUIRED COMPONENTS Server)
++endif()
+ 
+ find_package(WaylandScanner)
+ 
+-- 
+2.48.1
+

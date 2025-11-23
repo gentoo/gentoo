@@ -1,0 +1,12 @@
+diff --git a/appliance/init b/appliance/init
+index 5d35a47dd..8b63be245 100755
+--- a/appliance/init
++++ b/appliance/init
+@@ -166,7 +166,6 @@ fi
+ 
+ LVM_SYSTEM_DIR=/tmp/lvm
+ export LVM_SYSTEM_DIR
+-lvmetad
+ 
+ # Scan for LVM.
+ modprobe dm_mod ||:

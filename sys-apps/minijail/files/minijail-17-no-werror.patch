@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/770940
+https://bugs.gentoo.org/732014
+--- a/common.mk
++++ b/common.mk
+@@ -319,7 +319,7 @@ endif
+ # The same goes for CFLAGS.
+ COMMON_CFLAGS-gcc := -fvisibility=internal -ggdb3 -Wa,--noexecstack
+ COMMON_CFLAGS-clang := -fvisibility=hidden -ggdb
+-COMMON_CFLAGS := -Wall -Wunused -Wno-unused-parameter -Werror -Wformat=2 \
++COMMON_CFLAGS := -Wall -Wunused -Wno-unused-parameter -Wformat=2 \
+   -fno-strict-aliasing $(SSP_CFLAGS) -O1
+ CXXFLAGS += $(COMMON_CFLAGS) $(COMMON_CFLAGS-$(CXXDRIVER)) -std=gnu++14
+ CFLAGS += $(COMMON_CFLAGS) $(COMMON_CFLAGS-$(CDRIVER)) -std=gnu11

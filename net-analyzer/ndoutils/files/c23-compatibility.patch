@@ -1,0 +1,40 @@
+From c9e6b3476a36c9be81714c87ff75d3d1986e376d Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Wed, 18 Dec 2024 21:29:56 -0500
+Subject: [PATCH] include/queue.h: ensure prototypes match implementations
+
+In the latest C23 standard, the prototype
+
+  int get_queue_id();
+
+indicates that get_queue_id takes no arguments. This of course
+disagrees with its implementation, which takes one argument. C23 will
+be the default mode in GCC-15, where this leads to a build failure:
+
+  queue.c:57:5: error: conflicting types for 'get_queue_id'; have 'int(int)'
+   57 | int get_queue_id(int id) {
+      |     ^~~~~~~~~~~~
+  In file included from queue.c:30:
+  ../include/queue.h:40:5: note: previous declaration of 'get_queue_id' with
+  type 'int(void)'
+   40 | int get_queue_id();
+      |     ^~~~~~~~~~~~
+
+To fix it, we update the prototype for get_queue_id().
+---
+ include/queue.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/queue.h b/include/queue.h
+index 5f94e4d..4219c5b 100644
+--- a/include/queue.h
++++ b/include/queue.h
+@@ -37,7 +37,7 @@ struct queue_msg
+ void del_queue();
+ 
+ /* initialize new queue or open existing */
+-int get_queue_id();
++int get_queue_id(int);
+ 
+ /* insert into queue */
+ void push_into_queue(char*);

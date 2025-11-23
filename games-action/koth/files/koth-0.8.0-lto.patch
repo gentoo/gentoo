@@ -1,0 +1,13 @@
+Remove extraneous inline that prevents successful linking under LTO
+https://bugs.gentoo.org/942296
+--- a/src/cfgfile.c
++++ b/src/cfgfile.c
+@@ -53,7 +53,7 @@
+     return result;
+ }
+ 
+-inline char *cfgClearWS(char *string)
++char *cfgClearWS(char *string)
+ {
+     char *ret = string, *temp;
+     while(isspace(*ret))

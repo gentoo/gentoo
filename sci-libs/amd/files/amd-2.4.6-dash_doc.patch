@@ -1,0 +1,16 @@
+diff --git a/Doc/Makefile.am b/Doc/Makefile.am
+index 44361ff..039b02f 100644
+--- a/Doc/Makefile.am
++++ b/Doc/Makefile.am
+@@ -1,9 +1,8 @@
+ 
+ AMD_UserGuide.pdf:
+-	echo '\begin{verbatim}' > amd_h.tex
++	printf '\\begin{verbatim}\n' > amd_h.tex
+ 	expand -8 $(top_srcdir)/Include/amd.h >> amd_h.tex
+-	echo '\end{verbatim}' >> amd_h.tex
+-	-ln -s $(srcdir)/*.{tex,bib} .
++	printf '\\end{verbatim}\n' >> amd_h.tex
+ 	$(PDFLATEX) AMD_UserGuide
+ 	$(BIBTEX)  AMD_UserGuide
+ 	$(PDFLATEX) AMD_UserGuide

@@ -1,0 +1,21 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,6 +1,4 @@
+ ALLFILES = *.c *.h Makefile LICENSE HISTORY README config
+-CC = gcc
+-CFLAGS = -O2
+ BINARIES = rcenter
+ PREFIX= /usr/local
+ 
+@@ -19,9 +17,9 @@
+ main.o : main.c
+ 
+ rcenter : main.o lowlevel.o handler.o button.o
+-	$(CC) $(CFLAGS) -o rcenter $^ -lpthread
++	$(CC) $(LDFLAGS) -o rcenter $^ -lpthread
+ 
+-projname := $(shell awk '/RCENTER_VERSION/ { print $$3 }' version.h )
++projname := $(shell gawk '/RCENTER_VERSION/ { print $$3 }' version.h )
+ 
+ install: rcenter
+ 	install -D rcenter $(PREFIX)/bin/rcenter

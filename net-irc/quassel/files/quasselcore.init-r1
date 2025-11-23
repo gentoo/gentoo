@@ -1,0 +1,22 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	after logger postgresql
+}
+
+LISTEN=${LISTEN:-"0.0.0.0"}
+LOGLEVEL=${LOGLEVEL:-"Info"}
+PORT=${PORT:="4242"}
+
+command="/usr/bin/quasselcore"
+command_args="--configdir=/var/lib/quassel
+	--listen=${LISTEN}
+	--loglevel=${LOGLEVEL}
+	--port=${PORT}
+	--syslog"
+command_background="yes"
+command_user="quassel"
+description="Quassel Core"
+pidfile="/run/quassel.pid"

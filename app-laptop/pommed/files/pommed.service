@@ -1,0 +1,10 @@
+[Unit]
+Description=MacBook Hotkey Event Handler
+
+[Service]
+Type=dbus
+BusName=org.pommed
+ExecStart=/usr/bin/pommed -f
+
+[Install]
+WantedBy=multi-user.target

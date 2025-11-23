@@ -1,0 +1,85 @@
+https://bugs.gentoo.org/955406
+https://github.com/rui314/mold/issues/1463#issuecomment-2907548327
+https://github.com/rui314/mold/commit/53c175850350ba24e264ffc3ac7979892b22bf4c
+
+From 53c175850350ba24e264ffc3ac7979892b22bf4c Mon Sep 17 00:00:00 2001
+From: Rui Ueyama <ruiu@cs.stanford.edu>
+Date: Fri, 16 May 2025 10:45:29 +0900
+Subject: [PATCH] Align TLS segment correctly
+
+This effectively reverts 5249edc57f8cfbf5c9a3821f82c71c9713f47cdf.
+---
+ src/passes.cc               | 21 ++++++++++++++++++++-
+ test/tls-large-alignment.sh |  6 +++---
+ 2 files changed, 23 insertions(+), 4 deletions(-)
+
+diff --git a/src/passes.cc b/src/passes.cc
+index 6c41a2abbd..b916f88fab 100644
+--- a/src/passes.cc
++++ b/src/passes.cc
+@@ -2411,6 +2411,15 @@ void sort_output_sections(Context<E> &ctx) {
+     sort_output_sections_by_order(ctx);
+ }
+ 
++template <typename E>
++static i64 get_tls_segment_alignment(Context<E> &ctx) {
++  i64 val = 1;
++  for (Chunk<E> *chunk : ctx.chunks)
++    if (chunk->shdr.sh_flags & SHF_TLS)
++      val = std::max<i64>(val, chunk->shdr.sh_addralign);
++  return val;
++}
++
+ // This function assigns virtual addresses to output sections. Assigning
+ // addresses is a bit tricky because we want to pack sections as tightly
+ // as possible while not violating the constraints imposed by the hardware
+@@ -2455,8 +2464,12 @@ static void set_virtual_addresses_regular(Context<E> &ctx) {
+   std::vector<Chunk<E> *> &chunks = ctx.chunks;
+   u64 addr = ctx.arg.image_base;
+ 
++  auto is_tls = [](Chunk<E> *chunk) {
++    return chunk->shdr.sh_flags & SHF_TLS;
++  };
++
+   auto is_tbss = [](Chunk<E> *chunk) {
+-    return (chunk->shdr.sh_type == SHT_NOBITS) && (chunk->shdr.sh_flags & SHF_TLS);
++    return (chunk->shdr.sh_flags & SHF_TLS) && (chunk->shdr.sh_type == SHT_NOBITS);
+   };
+ 
+   for (i64 i = 0; i < chunks.size(); i++) {
+@@ -2513,6 +2526,12 @@ static void set_virtual_addresses_regular(Context<E> &ctx) {
+       }
+     }
+ 
++    // TLS sections are included only in PT_LOAD but also in PT_TLS.
++    // We align the first TLS section so that the PT_TLS segment starts
++    // at an address that meets the segment's alignment requirement.
++    if (is_tls(chunks[i]) && (i == 0 || !is_tls(chunks[i - 1])))
++      addr = align_to(addr, get_tls_segment_alignment(ctx));
++
+     // TLS BSS sections are laid out so that they overlap with the
+     // subsequent non-tbss sections. Overlapping is fine because a STT_TLS
+     // segment contains an initialization image for newly-created threads,
+diff --git a/test/tls-large-alignment.sh b/test/tls-large-alignment.sh
+index a88ac32da1..afbd777e2f 100755
+--- a/test/tls-large-alignment.sh
++++ b/test/tls-large-alignment.sh
+@@ -18,14 +18,14 @@ extern _Thread_local int x;
+ extern _Thread_local int y[];
+ 
+ int main() {
+-  printf("%d %d %d %d\n", x, y[0], y[1], y[2]);
++  printf("%lu %d %d %d %d\n", (unsigned long)&x % 256, x, y[0], y[1], y[2]);
+ }
+ EOF
+ 
+ $CC -B. -shared -o $t/d.so $t/a.o $t/b.o
+ 
+ $CC -B. -o $t/exe1 $t/a.o $t/b.o $t/c.o
+-$QEMU $t/exe1 | grep '^42 1 2 3$'
++$QEMU $t/exe1 | grep '^0 42 1 2 3$'
+ 
+ $CC -B. -o $t/exe2 $t/c.o $t/d.so
+-$QEMU $t/exe2 | grep '^42 1 2 3$'
++$QEMU $t/exe2 | grep '^0 42 1 2 3$'
+

@@ -1,0 +1,40 @@
+https://bugs.gentoo.org/946066
+https://github.com/Yubico/yubihsm-shell/issues/404
+https://github.com/Yubico/yubihsm-shell/pull/411
+
+From 440ba3ad140732ab51bc2df56ae0c82684d02922 Mon Sep 17 00:00:00 2001
+From: Jakub Jelen <jjelen@redhat.com>
+Date: Tue, 30 Jul 2024 10:18:02 +0200
+Subject: [PATCH] cmake: Fix build against pcsc-lite >= 2.2
+
+The pcsc-lite 2.2.0 switched from autotools to meson and reworked the
+pkgconfig files. The new pkg config provides CFLAGS that work ok, but
+the yubihsm-shell ignores them and hopes that all included files are in
+the default include directory (with the PCSC prefix).
+
+Note, the value ${LIBPCSC_CFLAGS} is a semicolon separated list which
+we need to split to separate items here.
+
+This solution works with both old and new versions.
+
+Fixes: #404
+
+Signed-off-by: Jakub Jelen <jjelen@redhat.com>
+---
+ CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index acbb3926..ecf3df85 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -194,6 +194,8 @@ if(NOT BUILD_ONLY_LIB)
+ 
+   if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+     pkg_search_module (LIBPCSC REQUIRED libpcsclite)
++    string (REPLACE ";" " " MY_LIBPCSC_CFLAGS "${LIBPCSC_CFLAGS}")
++    string (APPEND CMAKE_C_FLAGS " ${MY_LIBPCSC_CFLAGS}")
+   elseif(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+     set (LIBPCSC_LDFLAGS "winscard.lib")
+   elseif(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+

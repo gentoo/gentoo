@@ -1,0 +1,40 @@
+From 51eeea93291bf5f36ac99e528a22401cd17e0e23 Mon Sep 17 00:00:00 2001
+From: Adrian Vovk <adrianvovk@gmail.com>
+Date: Wed, 4 Jun 2025 14:00:32 -0400
+Subject: [PATCH] Exclude gnome-shell from QueryEndSession and EndSession
+
+This is a temporary hack until we drop builtin session management from
+gnome-session and can rely only on systemd session startup
+---
+ gnome-session/gsm-manager.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/gnome-session/gsm-manager.c b/gnome-session/gsm-manager.c
+index f7bb26e6..743a372e 100644
+--- a/gnome-session/gsm-manager.c
++++ b/gnome-session/gsm-manager.c
+@@ -821,6 +821,10 @@ _client_end_session (GsmClient            *client,
+         gboolean ret;
+         GError  *error;
+ 
++        // HACK, but it's temporary until we drop builtin session startup.
++        if (g_strcmp0 ("org.gnome.Shell.desktop", gsm_client_peek_app_id (client)) == 0)
++            return FALSE;
++
+         error = NULL;
+         ret = gsm_client_end_session (client, data->flags, &error);
+         if (! ret) {
+@@ -1004,6 +1008,10 @@ _client_query_end_session (const char           *id,
+         gboolean ret;
+         GError  *error;
+ 
++        // HACK, but it's temporary until we drop builtin session startup.
++        if (g_strcmp0 ("org.gnome.Shell.desktop", gsm_client_peek_app_id (client)) == 0)
++            return FALSE;
++
+         error = NULL;
+         ret = gsm_client_query_end_session (client, data->flags, &error);
+         if (! ret) {
+-- 
+GitLab
+

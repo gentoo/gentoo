@@ -1,0 +1,48 @@
+Index: pwsafe.cpp
+===================================================================
+RCS file: /cvsroot/pwsafe/pwsafe/pwsafe.cpp,v
+retrieving revision 1.56
+retrieving revision 1.57
+diff -u -r1.56 -r1.57
+--- pwsafe.cpp	30 Sep 2005 10:30:56 -0000	1.56
++++ pwsafe.cpp	12 Aug 2007 12:33:06 -0000	1.57
+@@ -3346,6 +3346,12 @@
+     }
+ 
+     bufpos += rc;
++    buf[bufpos] = '\0';
++
++    if (rc == 0) {
++      // EOF (ctrl-D)
++      break;
++    }
+ 
+     if (bufpos == buflen && !strchr(buf,'\n')) {
+       // we needed a bigger buffer
+@@ -3354,6 +3360,7 @@
+         fprintf(stderr, "Error: %s out of memory\n", program_name);
+         memset(buf,0,buflen);
+         free(buf);
++        throw FailEx();
+       }
+ 
+       memcpy(new_buf, buf, bufpos);
+@@ -3364,9 +3371,15 @@
+     }
+   }
+ 
+-  int len = strchr(buf,'\n') - buf;
+-  saved.assign(buf+len+1, bufpos-(len+1));
+-  buf[len] = '\0';
++  char* lf = strchr(buf,'\n');
++  if (lf) {
++    // save the rest of the input for later
++    saved.assign(lf+1);
++    *lf = '\0';
++  } else {
++    saved.assign("",0);
++  }
++
+   return buf;
+ }
+ #endif // WITH_READLINE

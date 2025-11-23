@@ -1,0 +1,41 @@
+https://bugs.gentoo.org/945075
+--- a/lib/ftstat.c
++++ b/lib/ftstat.c
+@@ -831,11 +831,11 @@ struct jump {
+ 
+ struct typelookup {
+   char *name;
+-  void* (*f_new)();
+-  void* (*f_accum)();
+-  void* (*f_calc)();
+-  void* (*f_dump)();
+-  void* (*f_free)();
++  void* (*f_new)(struct ftstat_rpt *);
++  void* (*f_accum)(struct ftstat_rpt *, char *, struct fts3rec_offsets *);
++  void* (*f_calc)(struct ftstat_rpt *);
++  void* (*f_dump)(FILE *, struct ftio *, struct ftstat_rpt *);
++  void* (*f_free)(void *);
+   int allowed_fields; /* FT_STAT_FIELD_* */
+   int allowed_options;/* FT_STAT_OPT_* */
+   uint64_t xfields; /* FT_XFIELD_* */
+--- a/src/acllex.l
++++ b/src/acllex.l
+@@ -1,4 +1,5 @@
+ %{
++#include <ftconfig.h>
+ #include <ftlib.h>
+ 
+ #if HAVE_STRINGS_H
+--- a/src/flow-print.c
++++ b/src/flow-print.c
+@@ -89,9 +89,7 @@ struct jump format[] = {{format0}, {format1}, {format2},
+ 
+ void usage(void);
+ 
+-int main(argc, argv)
+-int argc;
+-char **argv;
++int main(int argc, char **argv)
+ {
+   struct ftio ftio;
+   struct ftprof ftp;

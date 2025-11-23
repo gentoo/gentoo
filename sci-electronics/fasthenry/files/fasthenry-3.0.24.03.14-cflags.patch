@@ -1,0 +1,75 @@
+diff '--color=auto' -ruN fasthenry-3.0wr.orig/src/fasthenry/mk_syscfg.inc fasthenry-3.0wr/src/fasthenry/mk_syscfg.inc
+--- fasthenry-3.0wr.orig/src/fasthenry/mk_syscfg.inc	2024-01-06 21:27:26.000000000 +0100
++++ fasthenry-3.0wr/src/fasthenry/mk_syscfg.inc	2025-10-25 23:07:57.993608185 +0200
+@@ -7,24 +7,7 @@
+ # is 4.8 or later.  This should also work for macOS clang on Intel
+ # Macs.
+ 
+-ifeq "$(shell uname -m)" "x86_64"
+-HAVX = 0
+-CC := gcc
+-GCC_major := "`gcc -dumpversion | cut -f1 -d.`"
+-GCC_minor := "`gcc -dumpversion | cut -f2 -d.`"
+-CHKMAJG := $(shell expr $(GCC_major) ">" 4)
+-CHKMAJE := $(shell expr $(GCC_major) "=" 4)
+-ifeq "$(CHKMAJG)" "1"
+-    HAVX = 1
+-else
+-ifeq "$(CHKMAJE)" "1"
+-CHKMINGE := $(shell expr $(GCC_minor) ">=" 8)
+-ifeq "$(CHKMINGE)" "1"
+-    HAVX = 1
+-endif
+-endif
+-endif
+-endif
++# We need HAVX=(0|1) to be supplied by portage
+ 
+ # If you build with AVX enabled, and run on a system that does not
+ # have AVX, the program will crash.  If is not likely that you would
+@@ -33,11 +16,13 @@
+ # There seems to be no way to accommodate the presence/absence of AVX
+ # at run-time nicely.
+ 
++# -mavx should come from CFLAGS if needed
++
+ ifeq "$(HAVX)" "1"
+-    MAVX = -mavx -DWITH_AVX
++    MAVX = -DWITH_AVX
+ endif
+ 
+-CFLAGS = -O3 -DFOUR $(MAVX) 
++CFLAGS += -DFOUR $(MAVX)
+ 
+ # For debugging.
+ #CFLAGS = -O -g -DFOUR $(MAVX)
+diff '--color=auto' -ruN fasthenry-3.0wr.orig/src/sparse/Makefile fasthenry-3.0wr/src/sparse/Makefile
+--- fasthenry-3.0wr.orig/src/sparse/Makefile	2025-10-25 23:06:07.850948286 +0200
++++ fasthenry-3.0wr/src/sparse/Makefile	2025-10-25 23:06:26.660231747 +0200
+@@ -4,7 +4,7 @@
+ #  UC Berkeley
+ #
+ #CFLAGS = -O -g
+-CFLAGS = -O3
++#CFLAGS = -O3
+ LINTFLAGS = -lc -lm
+ SHELL = /bin/sh
+ #CC = cc
+diff '--color=auto' -ruN fasthenry-3.0wr.orig/src/zbuf/mk_syscfg.inc fasthenry-3.0wr/src/zbuf/mk_syscfg.inc
+--- fasthenry-3.0wr.orig/src/zbuf/mk_syscfg.inc	2020-07-23 00:18:23.000000000 +0200
++++ fasthenry-3.0wr/src/zbuf/mk_syscfg.inc	2025-10-25 23:06:26.660231747 +0200
+@@ -2,7 +2,7 @@
+ # except for MinGW.
+ 
+ #CFLAGS = -O -g -DFOUR
+-CFLAGS = -O3 -DFOUR
++CFLAGS += -DFOUR
+ 
+ # For MinGW, there is no getrusage, and we'll skip a gethostname call
+ # to avoid having to link with winsock.
+@@ -12,4 +12,4 @@
+ 
+ # We're going to assume gcc, you'll need to comment this if a
+ # non-compatible compiler is used.
+-CC := gcc
++#CC := gcc

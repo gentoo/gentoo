@@ -1,0 +1,17 @@
+Fixes the problem of the root partition being returned instead of the boot
+partition when both are already mounted somewhere.
+
+Bug: https://bugs.debian.org/699840
+     https://bugzilla.redhat.com/906886
+
+--- a/linux-boot-prober
++++ b/linux-boot-prober
+@@ -167,7 +167,7 @@ else
+ 			bootpart="${mountboot%% *}"
+ 			bootmounted="${mountboot#* }"
+ 		else
+-			bootpart="$partition"
++			bootpart="$(grep " $mpoint/boot " "$OS_PROBER_TMP/mounted-map" | head -n1 | cut -d " " -f 4)"
+ 			bootmounted=0
+ 		fi
+ 		for test in /usr/lib/linux-boot-probes/mounted/*; do

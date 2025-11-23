@@ -1,0 +1,386 @@
+From 0f268eda235d41f33c778f595d5e6781ba8f38e2 Mon Sep 17 00:00:00 2001
+From: arch1t3cht <arch1t3cht@gmail.com>
+Date: Tue, 21 Jan 2025 21:29:34 +0100
+Subject: [PATCH] Allow building without PCHs on Linux
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+It seems that Aegisub used to be able to be built without precompiled
+headers, but this broke with the meson port since there the PCHs are
+needed to include acconf.h. (On the old build system(s), the feature
+flags were passed directly as defines to the compiler on Visual Studio,
+and acconf.h was forcibly included via -include acconf.h with autoconf.)
+
+Some distributions (gentoo in particular) disable PCHs by default for
+meson due to various bugs, and PCHs can also be quite a headache with
+language servers (I ended up running an sed one-liner after every
+configure to replace -include-pch in my compile_commands.json with the
+respective -include).
+
+Since meson doesn't seem to be able to forcibly include headers for
+every source file, just pass the config as a set of preprocessor
+defines when b_pch is disabled. If it's enabled, stick to acconf.h to
+not bloat the compiler command lines too much.
+
+For now this only works on Linux, Windows will need extra work due to
+windows.h being annoying, but there isn't as much of a need to build
+without PCHs there anyway.
+
+The added includes were mostly taken from TypesettingTools/Aegisub#241
+and TypesettingTools/Aegisub#223.
+
+Co-authored-by: Ștefan Talpalaru <stefantalpalaru@yahoo.com>
+Co-authored-by: Nick Sarnie <sarnex@gentoo.org>
+---
+
+diff --git a/.github/workflows/ci.yml b/.github/workflows/ci.yml
+index fbef59e0e..31bae4f84 100644
+--- a/.github/workflows/ci.yml
++++ b/.github/workflows/ci.yml
+@@ -43,25 +43,25 @@ jobs:
+             name: Ubuntu 22 Debug,
+             os: ubuntu-22.04,
+             buildtype: debugoptimized,
+-            args: ''
++            args: -Db_pch=false
+           }
+           - {
+             name: Ubuntu 22 Release,
+             os: ubuntu-22.04,
+             buildtype: release,
+-            args: ''
++            args: -Db_pch=false
+           }
+           - {
+             name: Ubuntu 24 Debug,
+             os: ubuntu-24.04,
+             buildtype: debugoptimized,
+-            args: ''
++            args: -Db_pch=false
+           }
+           - {
+             name: Ubuntu 24 Release,
+             os: ubuntu-24.04,
+             buildtype: release,
+-            args: ''
++            args: -Db_pch=false
+           }
+           - {
+             name: macOS Debug,
+diff --git a/libaegisub/ass/uuencode.cpp b/libaegisub/ass/uuencode.cpp
+index 893268d07..b2e0df60f 100644
+--- a/libaegisub/ass/uuencode.cpp
++++ b/libaegisub/ass/uuencode.cpp
+@@ -17,6 +17,7 @@
+ #include <libaegisub/ass/uuencode.h>
+ 
+ #include <algorithm>
++#include <cstring>
+ 
+ // Despite being called uuencoding by ass_specs.doc, the format is actually
+ // somewhat different from real uuencoding.  Each 3-byte chunk is split into 4
+diff --git a/libaegisub/audio/provider_dummy.cpp b/libaegisub/audio/provider_dummy.cpp
+index 01a6ae5b4..41b9c9cb2 100644
+--- a/libaegisub/audio/provider_dummy.cpp
++++ b/libaegisub/audio/provider_dummy.cpp
+@@ -18,6 +18,7 @@
+ 
+ #include "libaegisub/fs.h"
+ 
++#include <cstring>
+ #include <random>
+ 
+ /*
+diff --git a/libaegisub/common/cajun/reader.cpp b/libaegisub/common/cajun/reader.cpp
+index 6f32d2ff4..5068dfe90 100644
+--- a/libaegisub/common/cajun/reader.cpp
++++ b/libaegisub/common/cajun/reader.cpp
+@@ -8,6 +8,7 @@ Author: Terry Caton
+ 
+ #include "libaegisub/cajun/reader.h"
+ 
++#include <algorithm>
+ #include <boost/interprocess/streams/bufferstream.hpp>
+ #include <cassert>
+ 
+diff --git a/libaegisub/common/calltip_provider.cpp b/libaegisub/common/calltip_provider.cpp
+index de693e637..d0188cbbb 100644
+--- a/libaegisub/common/calltip_provider.cpp
++++ b/libaegisub/common/calltip_provider.cpp
+@@ -19,6 +19,7 @@
+ #include "libaegisub/ass/dialogue_parser.h"
+ 
+ #include <algorithm>
++#include <cstring>
+ 
+ namespace {
+ struct proto_lit {
+diff --git a/libaegisub/common/mru.cpp b/libaegisub/common/mru.cpp
+index be12812b6..ef41535c1 100644
+--- a/libaegisub/common/mru.cpp
++++ b/libaegisub/common/mru.cpp
+@@ -22,6 +22,8 @@
+ #include "libaegisub/option.h"
+ #include "libaegisub/option_value.h"
+ 
++#include <algorithm>
++
+ namespace {
+ std::string_view mru_names[] = {
+ 	"Audio",
+diff --git a/libaegisub/common/option.cpp b/libaegisub/common/option.cpp
+index 0a1f8c8b3..9b33a3807 100644
+--- a/libaegisub/common/option.cpp
++++ b/libaegisub/common/option.cpp
+@@ -25,6 +25,7 @@
+ #include "libaegisub/log.h"
+ #include "libaegisub/option_value.h"
+ 
++#include <algorithm>
+ #include <boost/interprocess/streams/bufferstream.hpp>
+ #include <cassert>
+ #include <memory>
+diff --git a/libaegisub/common/thesaurus.cpp b/libaegisub/common/thesaurus.cpp
+index 25011b4e6..e5c141e34 100644
+--- a/libaegisub/common/thesaurus.cpp
++++ b/libaegisub/common/thesaurus.cpp
+@@ -19,6 +19,7 @@
+ #include "libaegisub/line_iterator.h"
+ #include "libaegisub/split.h"
+ 
++#include <algorithm>
+ #include <boost/interprocess/streams/bufferstream.hpp>
+ 
+ namespace agi {
+diff --git a/libaegisub/include/libaegisub/lua/ffi.h b/libaegisub/include/libaegisub/lua/ffi.h
+index 17cf0088d..29902f77a 100644
+--- a/libaegisub/include/libaegisub/lua/ffi.h
++++ b/libaegisub/include/libaegisub/lua/ffi.h
+@@ -17,6 +17,7 @@
+ #include <libaegisub/type_name.h>
+ 
+ #include <cstdlib>
++#include <cstring>
+ #include <lua.hpp>
+ 
+ namespace agi::lua {
+diff --git a/libaegisub/lua/modules/unicode.cpp b/libaegisub/lua/modules/unicode.cpp
+index 9ee64b114..d6d84a97b 100644
+--- a/libaegisub/lua/modules/unicode.cpp
++++ b/libaegisub/lua/modules/unicode.cpp
+@@ -18,6 +18,8 @@
+ 
+ #include <unicode/unistr.h>
+ 
++#include <cstring>
++
+ namespace {
+ char *wrap(void (*fn)(icu::UnicodeString&), const char *str, char **err) {
+ 	auto ustr = icu::UnicodeString::fromUTF8(str);
+diff --git a/libaegisub/meson.build b/libaegisub/meson.build
+index 7689d31ae..7755b0d39 100644
+--- a/libaegisub/meson.build
++++ b/libaegisub/meson.build
+@@ -86,7 +86,9 @@ libaegisub_c_pch = ['include/lagi_pre_c.h']
+ 
+ libaegisub_inc = include_directories('include')
+ 
+-libaegisub = static_library('aegisub', libaegisub_src, acconf,
++libaegisub = static_library('aegisub', libaegisub_src, aegisub_order_dep,
++                            c_args: aegisub_defines,
++                            cpp_args: aegisub_defines,
+                             include_directories: [libaegisub_inc, deps_inc],
+                             cpp_pch: libaegisub_cpp_pch,
+                             c_pch: libaegisub_c_pch,
+diff --git a/meson.build b/meson.build
+index f0e56521c..82c92c724 100644
+--- a/meson.build
++++ b/meson.build
+@@ -377,7 +377,23 @@ if not get_option('csri').disabled() and host_machine.system() == 'windows'
+     deps += csri_sp.get_variable('csri_dep')
+ endif
+ 
+-acconf = configure_file(output: 'acconf.h', configuration: conf)
++aegisub_order_dep = []
++aegisub_defines = []
++
++if get_option('b_pch')
++    # Write the feature flags into a configure_file to not bloat the compiler args too much
++    aegisub_order_dep += configure_file(output: 'acconf.h', configuration: conf)
++else
++    # Manually pass the feature flags as compiler args
++    foreach key : conf.keys()
++        aegisub_defines += '-D@0@=@1@'.format(key, conf.get(key))
++    endforeach
++
++    if host_machine.system() == 'windows'
++        # This is also part of all the PCHs
++        aegisub_defines += '-DWIN32_LEAN_AND_MEAN'
++    endif
++endif
+ 
+ subdir('automation')
+ subdir('libaegisub')
+@@ -389,7 +405,9 @@ subdir('tests')
+ aegisub_cpp_pch = ['src/include/agi_pre.h']
+ aegisub_c_pch = ['src/include/agi_pre_c.h']
+ 
+-aegisub = executable('aegisub', aegisub_src, version_h, acconf, resrc,
++aegisub = executable('aegisub', aegisub_src, version_h, resrc, aegisub_order_dep,
++                     c_args: aegisub_defines,
++                     cpp_args: aegisub_defines,
+                      link_with: [libresrc, libaegisub],
+                      include_directories: [libaegisub_inc, libresrc_inc, version_inc, deps_inc, include_directories('src')],
+                      cpp_pch: aegisub_cpp_pch,
+diff --git a/src/ass_parser.h b/src/ass_parser.h
+index 9cf6f5017..c621059b6 100644
+--- a/src/ass_parser.h
++++ b/src/ass_parser.h
+@@ -13,6 +13,7 @@
+ // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ 
+ #include <memory>
++#include <string>
+ 
+ class AssAttachment;
+ class AssFile;
+diff --git a/src/ass_style.cpp b/src/ass_style.cpp
+index 33c93b8f3..559cb337c 100644
+--- a/src/ass_style.cpp
++++ b/src/ass_style.cpp
+@@ -40,6 +40,7 @@
+ #include <libaegisub/format.h>
+ #include <libaegisub/split.h>
+ 
++#include <algorithm>
+ #include <boost/lexical_cast.hpp>
+ #include <wx/intl.h>
+ 
+diff --git a/src/audio_timing_dialogue.cpp b/src/audio_timing_dialogue.cpp
+index fd15582b1..38b1617c0 100644
+--- a/src/audio_timing_dialogue.cpp
++++ b/src/audio_timing_dialogue.cpp
+@@ -39,9 +39,12 @@
+ #include "selection_controller.h"
+ #include "utils.h"
+ 
++#include <list>
++
+ #include <libaegisub/ass/time.h>
+ 
+ #include <boost/range/algorithm.hpp>
++
+ #include <wx/pen.h>
+ 
+ namespace {
+diff --git a/src/base_grid.h b/src/base_grid.h
+index 2f28a21dc..017d8b35c 100644
+--- a/src/base_grid.h
++++ b/src/base_grid.h
+@@ -32,6 +32,8 @@
+ #include <memory>
+ #include <string>
+ #include <vector>
++#include <wx/brush.h>
++#include <wx/scrolbar.h>
+ #include <wx/window.h>
+ 
+ namespace agi {
+diff --git a/src/command/command.h b/src/command/command.h
+index c90b230a0..b9582630b 100644
+--- a/src/command/command.h
++++ b/src/command/command.h
+@@ -17,6 +17,7 @@
+ /// @ingroup command
+ 
+ #include <map>
++#include <memory>
+ #include <string>
+ #include <vector>
+ 
+diff --git a/src/dialog_colorpicker.cpp b/src/dialog_colorpicker.cpp
+index 3430c48bd..4ba6f7f8c 100644
+--- a/src/dialog_colorpicker.cpp
++++ b/src/dialog_colorpicker.cpp
+@@ -38,6 +38,7 @@
+ 
+ #include <libaegisub/scoped_ptr.h>
+ 
++#include <algorithm>
+ #include <memory>
+ #include <vector>
+ 
+diff --git a/src/frame_main.cpp b/src/frame_main.cpp
+index 58a8a3d0f..d20bc44fb 100644
+--- a/src/frame_main.cpp
++++ b/src/frame_main.cpp
+@@ -67,6 +67,7 @@
+ #include <wx/sizer.h>
+ #include <wx/statline.h>
+ #include <wx/sysopt.h>
++#include <wx/toolbar.h>
+ 
+ enum {
+ 	ID_APP_TIMER_STATUSCLEAR = 12002
+diff --git a/src/main.h b/src/main.h
+index de65b65da..35b7be1c9 100644
+--- a/src/main.h
++++ b/src/main.h
+@@ -31,6 +31,8 @@
+ 
+ #include "aegisublocale.h"
+ 
++#include <vector>
++
+ #ifndef wxUSE_EXCEPTIONS
+ #error wxWidgets is compiled without exceptions support. Aegisub requires exceptions support in wxWidgets to run safely.
+ #endif
+diff --git a/src/preferences.cpp b/src/preferences.cpp
+index 1b0033b05..ccc52a905 100644
+--- a/src/preferences.cpp
++++ b/src/preferences.cpp
+@@ -47,6 +47,7 @@
+ 
+ #include <wx/checkbox.h>
+ #include <wx/combobox.h>
++#include <wx/dc.h>
+ #include <wx/event.h>
+ #include <wx/listctrl.h>
+ #include <wx/msgdlg.h>
+diff --git a/src/spline_curve.cpp b/src/spline_curve.cpp
+index b1a799a0f..8020e5bd3 100644
+--- a/src/spline_curve.cpp
++++ b/src/spline_curve.cpp
+@@ -35,6 +35,7 @@
+ #include "spline_curve.h"
+ #include "utils.h"
+ 
++#include <algorithm>
+ #include <limits>
+ 
+ SplineCurve::SplineCurve(Vector2D p1) : p1(p1), type(POINT) { }
+diff --git a/src/utils.cpp b/src/utils.cpp
+index 0a307f10c..5929d6171 100644
+--- a/src/utils.cpp
++++ b/src/utils.cpp
+@@ -41,6 +41,7 @@
+ #ifdef __UNIX__
+ #include <unistd.h>
+ #endif
++#include <algorithm>
+ #include <map>
+ #include <unicode/locid.h>
+ #include <unicode/unistr.h>
+diff --git a/src/video_frame.h b/src/video_frame.h
+index 2a47ed69c..c57c92dc2 100644
+--- a/src/video_frame.h
++++ b/src/video_frame.h
+@@ -14,6 +14,7 @@
+ //
+ // Aegisub Project http://www.aegisub.org/
+ 
++#include <stddef.h>
+ #include <vector>
+ 
+ class wxImage;

@@ -1,0 +1,12 @@
+index e55ba5b..e745367 100644
+--- a/boogie-friends.el
++++ b/boogie-friends.el
+@@ -70,7 +70,7 @@
+   "IDE extensions for the programming languages of the Boogie family."
+   :group 'languages)
+ 
+-(defconst boogie-friends-directory (file-name-directory load-file-name)
++(defconst boogie-friends-directory "@SITEETC@"
+   "Base directory of this package.")
+ 
+ (defconst boogie-friends-symbols-alist '(("<=" . ?≤) (">=" . ?≥) ("!=" . ?≠) (":=" . ?≔)

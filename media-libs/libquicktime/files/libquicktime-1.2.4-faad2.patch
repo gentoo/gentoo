@@ -1,0 +1,86 @@
+diff -ruN a/configure.ac b/configure.ac
+--- a/configure.ac	2012-03-29 21:44:28.000000000 +0200
++++ b/configure.ac	2020-02-09 18:27:31.599127781 +0100
+@@ -728,82 +728,9 @@
+ 
+ if test "x$with_faad2" != "xno"; then
+ 
+-OLD_CFLAGS=$CFLAGS
+-OLD_LIBS=$LIBS
+-
+ CFLAGS="$CFLAGS"
+ LIBS="$LIBS -lfaad -lm"
+ 
+-AC_MSG_CHECKING(for neaacdec.h usability for faad2)
+-
+-
+-AC_TRY_RUN([
+-    #include <neaacdec.h>
+-    #include <stdio.h>
+-    main()
+-    {
+-    int faad_major;
+-    int faad_minor;
+-    faacDecHandle dec;
+-
+-    if(sscanf(FAAD2_VERSION, "%d.%d", &faad_major, &faad_minor) < 2)
+-      return -1;
+-    dec = faacDecOpen();
+-    if(!dec)
+-      return -1;
+-    return 0;
+-    }
+-  ],
+-  [
+-    # program could be run
+-    have_faad2="true"
+-    AC_MSG_RESULT(yes)
+-    FAAD2_CFLAGS=$CFLAGS
+-    FAAD2_LIBS=$LIBS
+-    AC_DEFINE(HAVE_NEAACDEC_H)
+-  ],
+-    # program could not be run
+-    AC_MSG_RESULT(no)
+-)
+-
+-if test "x$have_faad2" != "xtrue"; then
+-
+-AC_MSG_CHECKING(for faad.h usability for faad2)
+-
+-AC_TRY_RUN([
+-    #include <faad.h>
+-    #include <stdio.h>
+-    main()
+-    {
+-    int faad_major;
+-    int faad_minor;
+-    faacDecHandle dec;
+-
+-    if(sscanf(FAAD2_VERSION, "%d.%d", &faad_major, &faad_minor) < 2)
+-      return -1;
+-    dec = faacDecOpen();
+-    if(!dec)
+-      return -1;
+-    return 0;
+-    }
+-  ],
+-  [
+-    # program could be run
+-    have_faad2="true"
+-    AC_MSG_RESULT(yes)
+-    FAAD2_CFLAGS=$CFLAGS
+-    FAAD2_LIBS=$LIBS
+-    
+-
+-  ],
+-    # program could not be run
+-    AC_MSG_RESULT(no)
+-)
+-
+-fi
+-
+-CFLAGS=$OLD_CFLAGS
+-LIBS=$OLD_LIBS
+ 
+ fi
+ 

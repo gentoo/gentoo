@@ -1,0 +1,29 @@
+From 8e1cf0bc6a6d6e1636d1abe18adbf7b5a76841e0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Arsen=20Arsenovi=C4=87?= <arsen@aarsen.me>
+Date: Thu, 9 Sep 2021 14:19:01 +0200
+Subject: [PATCH 2/2] Don't install AUTHORS, COPYING, NEWS, README.rst
+
+We install these in ebuilds.
+---
+ meson.build | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index b4cc736..28ade21 100644
+--- a/meson.build
++++ b/meson.build
+@@ -128,11 +128,6 @@ executable(
+   install: true
+ )
+ 
+-install_data(
+-  'AUTHORS', 'COPYING', 'NEWS', 'README.rst',
+-  install_dir: join_paths(get_option('datadir'), 'doc', meson.project_name()),
+-)
+-
+ subdir('systemd')
+ 
+ subdir('doc')
+-- 
+2.32.0
+

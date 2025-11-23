@@ -1,0 +1,24 @@
+From 7e6c8e08c919216b8d456a8c2fb0b4c9484f5d4c Mon Sep 17 00:00:00 2001
+From: Matthieu Carteron <rubisetcie@gmail.com>
+Date: Fri, 13 Jun 2025 20:14:15 +0200
+Subject: [PATCH] Fixed building when DocTools is disabled.
+
+---
+ kcmaudiocd/CMakeLists.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/kcmaudiocd/CMakeLists.txt b/kcmaudiocd/CMakeLists.txt
+index e7e5e781..c87a469f 100644
+--- a/kcmaudiocd/CMakeLists.txt
++++ b/kcmaudiocd/CMakeLists.txt
+@@ -22,4 +22,6 @@ target_link_libraries(kcm_audiocd
+ 
+ ########### add handbook ################
+ 
+-add_subdirectory(doc)
++if(KF6DocTools_FOUND)
++    add_subdirectory(doc)
++endif()
+-- 
+GitLab
+

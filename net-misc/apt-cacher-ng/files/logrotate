@@ -1,0 +1,15 @@
+/var/log/apt-cacher-ng/*.log {
+        size 10M
+        missingok
+        rotate 12
+        compress
+        delaycompress
+        notifempty
+        create
+        postrotate
+                if [ -s /var/run/apt-cacher-ng/apt-cacher-ng.pid ] ; then
+                        kill -s USR1 "$(cat /var/run/apt-cacher-ng/apt-cacher-ng.pid)"
+                fi
+        endscript
+}
+

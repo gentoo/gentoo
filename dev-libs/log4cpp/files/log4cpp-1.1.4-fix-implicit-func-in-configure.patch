@@ -1,0 +1,20 @@
+clang16 throws an error because of the implicit function declaration of exit().
+This leads to the wrong assumption that snprintf is not present on the system.
+
+Bug: https://bugs.gentoo.org/906535
+Upstream PR: https://sourceforge.net/p/log4cpp/codegit/merge-requests/10/
+
+#  Pascal Jäger <pascal.jaeger@leimstift.de> (2023-09-22)
+
+--- a/m4/AC_FUNC_SNPRINTF.m4
++++ b/m4/AC_FUNC_SNPRINTF.m4
+@@ -12,7 +12,8 @@ dnl @author Caolan McNamara <caolan@skynet.ie>
+ dnl
+ AC_DEFUN([AC_FUNC_SNPRINTF],
+ [AC_CACHE_CHECK(for working snprintf, ac_cv_func_snprintf,
+-[AC_TRY_RUN([#include <stdio.h>
++[AC_TRY_RUN([#include <stdlib.h>
++#include <stdio.h>
+ int main () { int l = snprintf(NULL,0,"%d",100); return !((3 <= l) || (-1 == l)); }
+ ], ac_cv_func_snprintf=yes, ac_cv_func_snprintf=no,
+ ac_cv_func_snprintf=no)])

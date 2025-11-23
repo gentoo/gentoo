@@ -1,0 +1,12 @@
+index e105c33..21295bf 100644
+--- a/build.xml
++++ b/build.xml
+@@ -32,7 +32,7 @@ stage:             Upload new version to Maven Central (owner only)
+             <arg value="describe"/>
+         </exec>
+         <echo>Version is ${version}</echo>
+-        <property name="jar.basename" value="${artifactId}-${version}"/>
++        <property name="jar.basename" value="${artifactId}"/>
+         <tstamp>
+             <format property="build.date" pattern="yyyy-MM-dd"/>
+             <format property="build.year" pattern="yyyy"/>

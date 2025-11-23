@@ -1,0 +1,19 @@
+From df6a2735acccad9131ce73fa07506445cfe69ec2 Mon Sep 17 00:00:00 2001
+From: Rachael Alexanderson <madame-rachelle@users.noreply.github.com>
+Date: Wed, 26 Mar 2025 05:24:13 -0400
+Subject: [PATCH] - use cmake range syntax
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9dc54c3..d83a8ae 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.4)
++cmake_minimum_required(VERSION 3.5...4.0)
+ 
+ project(acc)
+ 

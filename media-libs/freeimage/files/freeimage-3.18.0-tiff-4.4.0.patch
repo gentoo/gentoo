@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/848531
+https://bugs.gentoo.org/848534
+https://www.asmail.be/msg0055228425.html
+--- a/Source/Metadata/XTIFF.cpp
++++ b/Source/Metadata/XTIFF.cpp
+@@ -750,5 +750,5 @@
+ 			}
+ 			// type of storage may differ (e.g. rationnal array vs float array type)
+-			if((unsigned)_TIFFDataSize(tif_tag_type) != FreeImage_TagDataWidth(tag_type)) {
++			if((unsigned)TIFFFieldSetGetSize(fld) != FreeImage_TagDataWidth(tag_type)) {
+ 				// skip tag or _TIFFmemcpy will fail
+ 				continue;

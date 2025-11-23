@@ -1,0 +1,46 @@
+https://github.com/MythTV/mythtv/pull/1153
+
+From c6dad722f966b71ac8dbcea34c45401f12518a14 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Tue, 22 Jul 2025 23:22:23 +0800
+Subject: [PATCH] freemheg: update visibility of MHCreateEngine & MHSetLogging
+
+-lmythfreemheg-35 is used when build libmythtv.35.so, so the visibility
+of MHCreateEngine & MHSetLogging should be different depends on "-DMTV_API",
+otherwise build is failed with:
+
+> /usr/bin/x86_64-pc-linux-gnu-ld.bfd: obj/mhi.o: in function MHIContext:: MHIContext(InteractiveTV*)':
+> /var/tmp/portage/media-tv/mythtv-35.0-r1/work/mythtv-35.0/mythtv/libs/libmythtv/mheg/mhi.cpp: 80:(.text+0xec): undefined reference to MHCreateEngine(MHContext*)'
+> /usr/bin/x86_64-pc-linux-gnu-ld.bfd: obj/interactivetv.o: in function InteractiveTV::InteractiveTV(MythPlayerCaptionsUI*)':
+> /var/tmp/portage/media-tv/mythtv-35.0-r1/work/mythtv-35.0/mythtv/libs/libmythtv/mheg/interactivetv.cpp: (.text+0x17b): undefined reference to MHSetLogging(_IO_FILE*, unsigned int)'
+> /usr/bin/x86_64-pc-linux-gnu-ld.bfd: libmythtv-35.so.35.0.0: protected symbol _Z12MHSetLoggingP8_IO_FILEj' isn't defined
+> /usr/bin/x86_64-pc-linux-gnu-ld.bfd: final link failed: bad value
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/libs/libmythfreemheg/freemheg.h b/libs/libmythfreemheg/freemheg.h
+index 16bc85eb0b..1565c2d8b9 100644
+--- a/libs/libmythfreemheg/freemheg.h
++++ b/libs/libmythfreemheg/freemheg.h
+@@ -45,10 +45,16 @@ class MHContext;
+ class MHEG;
+ class MHStream;
+ 
++#ifdef MTV_API
++#  define MHEG_PUBLIC Q_DECL_IMPORT
++#else
++#  define MHEG_PUBLIC Q_DECL_EXPORT
++#endif
++
+ // Called to create a new instance of the module.
+-extern Q_DECL_EXPORT MHEG *MHCreateEngine(MHContext *context);
++extern MHEG_PUBLIC MHEG *MHCreateEngine(MHContext *context);
+ // Set the logging stream and options.
+-extern Q_DECL_EXPORT void MHSetLogging(FILE *logStream, unsigned int logLevel);
++extern MHEG_PUBLIC void MHSetLogging(FILE *logStream, unsigned int logLevel);
+ 
+ // This abstract class is implemented by the MHEG Engine.
+ class MHEG
+-- 
+2.45.2
+

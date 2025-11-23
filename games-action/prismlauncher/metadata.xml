@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>flowlnlnln@gmail.com</email>
+    <name>Thiago Donato Ferreira</name>
+  </maintainer>
+  <maintainer type="person" proxied="proxy">
+    <email>nowa@gentoo.org</email>
+    <name>Nowa Ammerlaan</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <bugs-to>https://github.com/PrismLauncher/PrismLauncher/issues</bugs-to>
+    <doc>https://prismlauncher.org/wiki/</doc>
+    <remote-id type="github">PrismLauncher/PrismLauncher</remote-id>
+  </upstream>
+  <longdescription>Prism Launcher is a multi-instance Minecraft launcher focused on user freedom, redistributability, and simplicity.</longdescription>
+</pkgmetadata>

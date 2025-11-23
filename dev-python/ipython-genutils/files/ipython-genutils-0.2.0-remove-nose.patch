@@ -1,0 +1,264 @@
+Use pytest instead of nose in testing & backend implementation
+
+https://build.opensuse.org/package/view_file/devel:languages:python:jupyter/python-ipython_genutils/denose.patch
+
+--- a/ipython_genutils/testing/decorators.py
++++ b/ipython_genutils/testing/decorators.py
+@@ -35,6 +35,7 @@ import sys
+ import os
+ import tempfile
+ import unittest
++import pytest
+
+ # For onlyif_cmd_exists decorator
+ from ..py3compat import string_types, which
+@@ -131,81 +132,12 @@ def make_label_dec(label,ds=None):
+ # Inspired by numpy's skipif, but uses the full apply_wrapper utility to
+ # preserve function metadata better and allows the skip condition to be a
+ # callable.
+-def skipif(skip_condition, msg=None):
+-    ''' Make function raise SkipTest exception if skip_condition is true
+-
+-    Parameters
+-    ----------
+-
+-    skip_condition : bool or callable
+-      Flag to determine whether to skip test. If the condition is a
+-      callable, it is used at runtime to dynamically make the decision. This
+-      is useful for tests that may require costly imports, to delay the cost
+-      until the test suite is actually executed.
+-    msg : string
+-      Message to give on raising a SkipTest exception.
+-
+-    Returns
+-    -------
+-    decorator : function
+-      Decorator, which, when applied to a function, causes SkipTest
+-      to be raised when the skip_condition was True, and the function
+-      to be called normally otherwise.
+-
+-    Notes
+-    -----
+-    You will see from the code that we had to further decorate the
+-    decorator with the nose.tools.make_decorator function in order to
+-    transmit function name, and various other metadata.
+-    '''
+-
+-    def skip_decorator(f):
+-        # Local import to avoid a hard nose dependency and only incur the
+-        # import time overhead at actual test-time.
+-        import nose
+-
+-        # Allow for both boolean or callable skip conditions.
+-        if callable(skip_condition):
+-            skip_val = skip_condition
+-        else:
+-            skip_val = lambda : skip_condition
+-
+-        def get_msg(func,msg=None):
+-            """Skip message with information about function being skipped."""
+-            if msg is None: out = 'Test skipped due to test condition.'
+-            else: out = msg
+-            return "Skipping test: %s. %s" % (func.__name__,out)
+-
+-        # We need to define *two* skippers because Python doesn't allow both
+-        # return with value and yield inside the same function.
+-        def skipper_func(*args, **kwargs):
+-            """Skipper for normal test functions."""
+-            if skip_val():
+-                raise nose.SkipTest(get_msg(f,msg))
+-            else:
+-                return f(*args, **kwargs)
+-
+-        def skipper_gen(*args, **kwargs):
+-            """Skipper for test generators."""
+-            if skip_val():
+-                raise nose.SkipTest(get_msg(f,msg))
+-            else:
+-                for x in f(*args, **kwargs):
+-                    yield x
+-
+-        # Choose the right skipper to use when building the actual generator.
+-        if nose.util.isgenerator(f):
+-            skipper = skipper_gen
+-        else:
+-            skipper = skipper_func
+-
+-        return nose.tools.make_decorator(f)(skipper)
+-
+-    return skip_decorator
++def skipif(skip_condition, msg=""):
++    return pytest.mark.skipif(skip_condition, reason=msg)
+
+ # A version with the condition set to true, common case just to attach a message
+ # to a skip decorator
+-def skip(msg=None):
++def skip(msg=""):
+     """Decorator factory - mark a test function for skipping from test suite.
+
+     Parameters
+@@ -219,7 +151,6 @@ def skip(msg=None):
+          Decorator, which, when applied to a function, causes SkipTest
+          to be raised, with the optional message added.
+       """
+-
+     return skipif(True,msg)
+
+
+--- a/ipython_genutils/tests/test_importstring.py
++++ b/ipython_genutils/tests/test_importstring.py
+@@ -3,25 +3,25 @@
+ # Copyright (c) IPython Development Team.
+ # Distributed under the terms of the Modified BSD License.
+
+-import nose.tools as nt
+-
+ from ..importstring import import_item
+
++import pytest
++
++
+ def test_import_plain():
+     "Test simple imports"
+     import os
+     os2 = import_item('os')
+-    nt.assert_true(os is os2)
++    assert os is os2
+
+
+ def test_import_nested():
+     "Test nested imports from the stdlib"
+     from os import path
+     path2 = import_item('os.path')
+-    nt.assert_true(path is path2)
++    assert path is path2
+
+
+ def test_import_raises():
+     "Test that failing imports raise the right exception"
+-    nt.assert_raises(ImportError, import_item, 'IPython.foobar')
+-    
++    pytest.raises(ImportError, import_item, 'IPython.foobar')
+--- a/ipython_genutils/tests/test_path.py
++++ b/ipython_genutils/tests/test_path.py
+@@ -5,15 +5,12 @@
+ # Distributed under the terms of the Modified BSD License.
+
+ import os
+-import sys
+ import tempfile
+
+-import nose.tools as nt
++import pytest
+
+-from ..testing.decorators import skip_if_not_win32, skip_win32
+-from .. import path
+-from .. import py3compat
+-from ..tempdir import TemporaryDirectory
++from ipython_genutils.testing.decorators import skip_if_not_win32, skip_win32
++from ipython_genutils import path
+
+
+ def test_filefind():
+@@ -22,20 +19,24 @@ def test_filefind():
+
+
+ def test_ensure_dir_exists():
+-    with TemporaryDirectory() as td:
++    with tempfile.TemporaryDirectory() as td:
+         d = os.path.join(td, u'∂ir')
+         path.ensure_dir_exists(d) # create it
+         assert os.path.isdir(d)
+         path.ensure_dir_exists(d) # no-op
+         f = os.path.join(td, u'ƒile')
+         open(f, 'w').close() # touch
+-        with nt.assert_raises(IOError):
++        with pytest.raises(IOError):
+             path.ensure_dir_exists(f)
+
+
+ class TestLinkOrCopy(object):
++    def __init__(self):
++        self.tempdir = None
++        self.src = None
++
+     def setUp(self):
+-        self.tempdir = TemporaryDirectory()
++        self.tempdir = tempfile.TemporaryDirectory()
+         self.src = self.dst("src")
+         with open(self.src, "w") as f:
+             f.write("Hello, world!")
+@@ -47,17 +48,17 @@ class TestLinkOrCopy(object):
+         return os.path.join(self.tempdir.name, *args)
+
+     def assert_inode_not_equal(self, a, b):
+-        nt.assert_not_equals(os.stat(a).st_ino, os.stat(b).st_ino,
+-                             "%r and %r do reference the same indoes" %(a, b))
++        assert os.stat(a).st_ino != os.stat(b).st_ino, \
++            "%r and %r do reference the same indoes" % (a, b)
+
+     def assert_inode_equal(self, a, b):
+-        nt.assert_equals(os.stat(a).st_ino, os.stat(b).st_ino,
+-                         "%r and %r do not reference the same indoes" %(a, b))
++        assert os.stat(a).st_ino == os.stat(b).st_ino, \
++            "%r and %r do not reference the same indoes" % (a, b)
+
+     def assert_content_equal(self, a, b):
+         with open(a) as a_f:
+             with open(b) as b_f:
+-                nt.assert_equals(a_f.read(), b_f.read())
++                assert a_f.read() == b_f.read()
+
+     @skip_win32
+     def test_link_successful(self):
+@@ -105,4 +106,4 @@ class TestLinkOrCopy(object):
+         path.link_or_copy(self.src, dst)
+         path.link_or_copy(self.src, dst)
+         self.assert_inode_equal(self.src, dst)
+-        nt.assert_equal(sorted(os.listdir(self.tempdir.name)), ['src', 'target'])
++        assert sorted(os.listdir(self.tempdir.name)) == ['src', 'target']
+--- a/ipython_genutils/tests/test_text.py
++++ b/ipython_genutils/tests/test_text.py
+@@ -5,12 +5,7 @@ from __future__ import print_function
+ # Copyright (c) IPython Development Team.
+ # Distributed under the terms of the Modified BSD License.
+
+-import os
+-import math
+ import random
+-import sys
+-
+-import nose.tools as nt
+
+ from .. import text
+
+@@ -20,11 +15,11 @@ def test_columnize():
+     size = 5
+     items = [l*size for l in 'abc']
+     out = text.columnize(items, displaywidth=80)
+-    nt.assert_equal(out, 'aaaaa  bbbbb  ccccc\n')
++    assert out == 'aaaaa  bbbbb  ccccc\n'
+     out = text.columnize(items, displaywidth=12)
+-    nt.assert_equal(out, 'aaaaa  ccccc\nbbbbb\n')
++    assert out == 'aaaaa  ccccc\nbbbbb\n'
+     out = text.columnize(items, displaywidth=10)
+-    nt.assert_equal(out, 'aaaaa\nbbbbb\nccccc\n')
++    assert out == 'aaaaa\nbbbbb\nccccc\n'
+
+ def test_columnize_random():
+     """Test with random input to hopfully catch edge case """
+@@ -48,12 +43,11 @@ def test_columnize_medium():
+     size = 40
+     items = [l*size for l in 'abc']
+     out = text.columnize(items, displaywidth=80)
+-    nt.assert_equal(out, '\n'.join(items+['']))
++    assert out == '\n'.join(items+[''])
+
+ def test_columnize_long():
+     """Test columnize with inputs longer than the display window"""
+     size = 11
+     items = [l*size for l in 'abc']
+     out = text.columnize(items, displaywidth=size-1)
+-    nt.assert_equal(out, '\n'.join(items+['']))
+-
++    assert out == '\n'.join(items+[''])

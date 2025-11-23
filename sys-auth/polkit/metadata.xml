@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>freedesktop-bugs@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="systemd">Use <pkg>sys-apps/systemd</pkg> for session tracking</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">polkit-org/polkit</remote-id>
+	</upstream>
+</pkgmetadata>

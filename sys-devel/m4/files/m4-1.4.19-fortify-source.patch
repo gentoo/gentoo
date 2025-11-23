@@ -1,0 +1,50 @@
+https://lists.gnu.org/archive/html/m4-patches/2023-01/msg00001.html
+https://bugs.gentoo.org/890273
+
+From 960b9b4d0774f78d286932251d6f53f638aefb19 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 9 Jan 2023 08:00:34 +0000
+Subject: [PATCH] build: Don't add _FORTIFY_SOURCE if already set by
+ user/toolchain
+
+Newer toolchains (GCC 12+ or Clang 9+, glibc-2.34) allow _FORTIFY_SOURCE=3.
+
+The current macro used in configure.ac will forcefully downgrade to F_S=2
+and emit a warning if the user set something else:
+```
+x86_64-pc-linux-gnu-gcc -DEXEEXT=\"\" -I. -I../lib  -DIN_M4_GNULIB_TESTS=1 -I. -I. -I.. -I./.. -I../lib -I./../lib   -O2 -pipe -march=native -fdiagnostics-color=always -frecord-gcc-switches -Wreturn-type      -ggdb3 -Werror=implicit-function-declaration -Werror=implicit-int -c -o glthread/thread.o glthread/thread.c
+In file included from glthread/thread.c:20:
+../lib/config.h:202: warning: "_FORTIFY_SOURCE" redefined
+  202 |    # define _FORTIFY_SOURCE 2
+      |
+<built-in>: note: this is the location of the previous definition
+```
+
+See: 390d259efe8e1c7e4b6babb4738fef7427416857
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -133,7 +133,9 @@ if test "$gl_gcc_warnings" = yes; then
+   [/* Enable compile-time and run-time bounds-checking, and some warnings,
+       without upsetting newer glibc. */
+    #if defined __OPTIMIZE__ && __OPTIMIZE__
+-   # define _FORTIFY_SOURCE 2
++   # ifndef _FORTIFY_SOURCE
++   #  define _FORTIFY_SOURCE 2
++   # endif
+    #endif
+   ])
+ fi
+--- a/lib/config.hin
++++ b/lib/config.hin
+@@ -198,7 +198,9 @@
+ /* Enable compile-time and run-time bounds-checking, and some warnings,
+       without upsetting newer glibc. */
+    #if defined __OPTIMIZE__ && __OPTIMIZE__
+-   # define _FORTIFY_SOURCE 2
++   # ifndef _FORTIFY_SOURCE
++   #  define _FORTIFY_SOURCE 2
++   # endif
+    #endif
+   
+ 

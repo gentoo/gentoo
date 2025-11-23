@@ -1,0 +1,27 @@
+https://bugs.gentoo.org/827173
+https://sources.debian.org/patches/htp/1.19-8/0004-Parallel-ftbfs.patch/
+
+Description: Fix occasional parallel FTBFS
+ Various source files indirectly include $(d)/version.inc,
+ don't regenerate it in the middle of the build.
+Author: Adrian Bunk <bunk@debian.org>
+
+--- htp-1.19.orig/src/Makefile.sub
++++ htp-1.19/src/Makefile.sub
+@@ -57,14 +57,12 @@ $(HTP) : $(OBJ$(d))
+ #
+ # implicit dependencies for source code
+ #
+-$(OBJ$(d)) : %.$(OBJEXT) : %.c
++$(OBJ$(d)) : %.$(OBJEXT) : %.c $(d)/version.inc
+ ifdef WIN32DMC
+ 	cd $(dir $<); $(CC) $(CCOPT) $(DEFINES) $(notdir $<)
+ else
+ 	$(CC) $(CCOPT) $(DEFINES) -o $*.$(OBJEXT) $<
+ endif
+ 
+-$(d)/htp.$(OBJEXT) $(d)/ver.$(OBJEXT): $(d)/version.inc
+-
+ # restore parent dir
+ d := $(p$(d))
+

@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/940006
+--- a/watchman/query/GlobTree.h
++++ b/watchman/query/GlobTree.h
+@@ -7,6 +7,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <memory>
+ #include <string>
+ #include <vector>

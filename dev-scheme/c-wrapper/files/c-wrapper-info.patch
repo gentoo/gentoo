@@ -1,0 +1,66 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -47,7 +47,6 @@
+ AC_PROG_CC
+ AC_PROG_YACC
+ AC_CHECK_PROGS(MAKEINFO, makeinfo)
+-AC_CHECK_PROGS(GZIP_PROGRAM, gzip)
+ AC_CHECK_PROGS(SED, sed)
+ AC_PATH_PROG([LDCONFIG], [ldconfig], [], [$PATH:/sbin:/usr/sbin])
+ 
+--- a/doc/Makefile.in
++++ b/doc/Makefile.in
+@@ -11,7 +11,6 @@
+ GAUCHE_CONFIG = @GAUCHE_CONFIG@
+ INSTALL = @GAUCHE_INSTALL@
+ MAKEINFO = @MAKEINFO@
+-GZIP_PROGRAM = @GZIP_PROGRAM@
+ 
+ TEXIS = c-wrapper-ref.texi
+ 
+@@ -22,7 +21,7 @@
+ all: info
+ 
+ install: all
+-	if test -f c-wrapper-refe.info.gz -o -f c-wrapper-refj.info.gz; then \
++	if test -f c-wrapper-refe.info -o -f c-wrapper-refj.info; then \
+ 	  for info in *.info*; do \
+ 	    $(INSTALL) -m 444 -T $(infodir) $$info; \
+ 	  done; \
+@@ -47,7 +46,7 @@
+ 
+ pdf : c-wrapper-refe.pdf
+ 
+-info : c-wrapper-refe.info.gz c-wrapper-refj.info.gz
++info : c-wrapper-refe.info c-wrapper-refj.info
+ 
+ c-wrapper-refe.html : c-wrapper-refe.texi
+ 	texi2html -number c-wrapper-refe.texi
+@@ -64,11 +63,9 @@
+ c-wrapper-refe.texi : $(TEXIS) extract
+ 	$(GOSH) ./extract -en -o c-wrapper-refe.texi c-wrapper-ref.texi
+ 
+-c-wrapper-refe.info.gz : c-wrapper-refe.texi
+-	if test X$(MAKEINFO) != X -a X$(GZIP_PROGRAM) != X; then \
++c-wrapper-refe.info : c-wrapper-refe.texi
++	if test X$(MAKEINFO) != X; then \
+ 	  $(MAKEINFO) --no-warn c-wrapper-refe.texi; \
+-	  rm -rf c-wrapper-refe.info*.gz; \
+-	  $(GZIP_PROGRAM) c-wrapper-refe.info; \
+ 	fi
+ 
+ c-wrapper-refj.html : c-wrapper-refj.texi
+@@ -91,11 +88,9 @@
+ c-wrapper-refj.texi : $(TEXIS) extract
+ 	$(GOSH) ./extract -jp -o c-wrapper-refj.texi c-wrapper-ref.texi
+ 
+-c-wrapper-refj.info.gz : c-wrapper-refj.texi
+-	if test X$(MAKEINFO) != X -a X$(GZIP_PROGRAM) != X; then \
++c-wrapper-refj.info : c-wrapper-refj.texi
++	if test X$(MAKEINFO) != X; then \
+ 	  $(MAKEINFO) --no-warn c-wrapper-refj.texi; \
+-	  rm -rf c-wrapper-refj.info*.gz; \
+-	  $(GZIP_PROGRAM) c-wrapper-refj.info ; \
+ 	fi
+ 
+ clean:

@@ -1,0 +1,8 @@
+#!/sbin/openrc-run
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# If you want to process each file uploaded through Pure-FTPd, enter the name
+# of the script that should process the files below.
+# Use man pure-uploadscript to learn more about how to write this script.
+# UPLOADSCRIPT="/path/to/uploadscript"

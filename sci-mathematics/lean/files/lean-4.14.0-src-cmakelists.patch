@@ -1,0 +1,23 @@
+diff --git a/src/CMakeLists.txt.orig b/src/CMakeLists.txt
+index 1bd0cb2..7ea94f5 100644
+--- a/src/CMakeLists.txt.orig
++++ b/src/CMakeLists.txt
+@@ -40,15 +40,15 @@ endif()
+ enable_testing()
+ 
+ option(MULTI_THREAD       "MULTI_THREAD"       ON)
+-option(CCACHE             "use ccache"         ON)
++option(CCACHE             "use ccache"         OFF)
+ option(SPLIT_STACK        "SPLIT_STACK"        OFF)
+ # When OFF we disable LLVM support
+ option(LLVM               "LLVM"               OFF)
+ 
+ # When ON we include githash in the version string
+-option(USE_GITHASH        "GIT_HASH"           ON)
++option(USE_GITHASH        "GIT_HASH"           OFF)
+ # When ON we install LICENSE files to CMAKE_INSTALL_PREFIX
+-option(INSTALL_LICENSE "INSTALL_LICENSE" ON)
++option(INSTALL_LICENSE "INSTALL_LICENSE" OFF)
+ # When ON thread storage is automatically finalized, it assumes platform support pthreads.
+ # This option is important when using Lean as library that is invoked from a different programming language (e.g., Haskell).
+ option(AUTO_THREAD_FINALIZATION "AUTO_THREAD_FINALIZATION" ON)

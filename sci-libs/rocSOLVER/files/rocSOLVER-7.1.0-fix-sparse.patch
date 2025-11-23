@@ -1,0 +1,22 @@
+Mask unused dlopen/dlsym functions when rocsparse is linked directly
+https://github.com/ROCm/rocm-libraries/issues/2585
+--- a/library/src/refact/rocsolver_rfinfo.cpp
++++ b/library/src/refact/rocsolver_rfinfo.cpp
+@@ -62,6 +62,8 @@
+         }                                                          \
+     } while(0)
+ 
++#ifndef HAVE_ROCSPARSE
++
+ ROCSOLVER_BEGIN_NAMESPACE
+ 
+ template <typename Fn>
+@@ -217,6 +219,8 @@ static bool try_load_rocsparse()
+ 
+ ROCSOLVER_END_NAMESPACE
+ 
++#endif // HAVE_ROCSPARSE
++
+ extern "C" rocblas_status rocsolver_create_rfinfo(rocsolver_rfinfo* rfinfo, rocblas_handle handle)
+ {
+ #ifndef HAVE_ROCSPARSE

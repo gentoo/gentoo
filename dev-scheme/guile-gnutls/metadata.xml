@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>scheme@gentoo.org</email>
+    <name>Gentoo Scheme Project</name>
+  </maintainer>
+  <upstream>
+    <doc>https://gnutls.gitlab.io/guile/manual/</doc>
+    <bugs-to>https://gitlab.com/gnutls/guile/-/issues/</bugs-to>
+    <remote-id type="gitlab">gnutls/guile</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,27 @@
+--- a/wscript
++++ b/wscript
+@@ -244,15 +244,6 @@
+                        uselib_store='WXGL', mandatory=True,
+                        msg='Finding libs for WXGL')
+ 
+-        if cfg.checkSetup(wxConfigDir, 'wxUSE_WEBVIEW'):
+-            wv_libs = '--libs webview,core,net'
+-        else:
+-            wv_libs = '--libs core,net'
+-        conf.check_cfg(path=conf.options.wx_config, package='',
+-                       args='--cxxflags ' + wv_libs + rpath,
+-                       uselib_store='WXWEBVIEW', mandatory=True,
+-                       msg='Finding libs for WXWEBVIEW')
+-
+         conf.check_cfg(path=conf.options.wx_config, package='',
+                        args='--cxxflags --libs xml,core,net' + rpath,
+                        uselib_store='WXXML', mandatory=True,
+@@ -600,7 +591,6 @@
+     makeETGRule(bld, 'etg/_stc.py',        '_stc',       'WXSTC')
+     makeETGRule(bld, 'etg/_html.py',       '_html',      'WXHTML')
+     makeETGRule(bld, 'etg/_glcanvas.py',   '_glcanvas',  'WXGL')
+-    makeETGRule(bld, 'etg/_html2.py',      '_html2',     'WXWEBVIEW')
+     makeETGRule(bld, 'etg/_xml.py',        '_xml',       'WXXML')
+     makeETGRule(bld, 'etg/_xrc.py',        '_xrc',       'WXXRC')
+     makeETGRule(bld, 'etg/_richtext.py',   '_richtext',  'WXHTML WXRICHTEXT')
+

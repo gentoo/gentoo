@@ -1,0 +1,27 @@
+diff '--color=auto' -ruN JAGS-4.3.1.orig/m4/R.m4 JAGS-4.3.1/m4/R.m4
+--- JAGS-4.3.1.orig/m4/R.m4	2022-04-08 17:30:01.000000000 +0200
++++ JAGS-4.3.1/m4/R.m4	2024-11-15 23:11:49.764622712 +0100
+@@ -1239,6 +1239,7 @@
+ AC_DEFUN([R_FUNC_ISFINITE],
+ [AC_CACHE_CHECK([for working isfinite], [r_cv_func_isfinite_works],
+ [AC_RUN_IFELSE([AC_LANG_SOURCE([[
++#include <stdlib.h>
+ #include <math.h>
+ #include "confdefs.h"
+ int main () {
+@@ -1263,6 +1264,7 @@
+ AC_DEFUN([R_FUNC_LOG],
+ [AC_CACHE_CHECK([for working log], [r_cv_func_log_works],
+ [AC_RUN_IFELSE([AC_LANG_SOURCE([[
++#include <stdlib.h>
+ #include <math.h>
+ #include "confdefs.h"
+ int main () {
+@@ -1292,6 +1294,7 @@
+ AC_DEFUN([R_FUNC_LOG1P],
+ [AC_CACHE_CHECK([for working log1p], [r_cv_func_log1p_works],
+ [AC_RUN_IFELSE([AC_LANG_SOURCE([[
++#include <stdlib.h>
+ #include <math.h>
+ #include "confdefs.h"
+ int main () {

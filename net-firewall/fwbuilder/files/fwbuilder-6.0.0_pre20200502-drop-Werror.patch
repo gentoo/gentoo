@@ -1,0 +1,25 @@
+From e4c76883d8de814050893bec4d196d5d5f48c9c2 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 4 Aug 2021 20:46:56 +0100
+Subject: [PATCH] Drop -Werror
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ddabd38..97477b0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -45,7 +45,7 @@ endif()
+ set(CMAKE_CXX_STANDARD 11)
+ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+ set(CXX_DEFAULT_FLAGS # clang/GCC warnings
+-	$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:GNU>>:-Wall;-Wextra;-Werror;-Wno-overloaded-virtual>
++	$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:GNU>>:-Wall;-Wextra;-Wno-overloaded-virtual>
+                          # MSVC warnings
+     $<$<CXX_COMPILER_ID:MSVC>:/WX;/W4>)
+ 
+-- 
+2.32.0
+

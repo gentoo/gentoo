@@ -1,0 +1,61 @@
+Suppress stripping.
+
+--- qemacs-orig/Makefile
++++ qemacs/Makefile
+@@ -203,7 +203,6 @@
+ qe$(EXE): qe_g$(EXE) Makefile
+ 	@rm -f $@
+ 	cp $< $@
+-	-$(STRIP) $@
+ 	@ls -l $@
+ 	@echo `size $@` `wc -c $@` qe $(OPTIONS) \
+ 		| cut -d ' ' -f 7-10,13,15-40 >> STATS
+@@ -218,7 +217,6 @@
+ xqe$(EXE): xqe_g$(EXE) Makefile
+ 	@rm -f $@
+ 	cp $< $@
+-	-$(STRIP) $@
+ 	@ls -l $@
+ 	@echo `size $@` `wc -c $@` xqe $(OPTIONS) \
+ 		| cut -d ' ' -f 7-10,13,15-40 >> STATS
+@@ -233,7 +231,6 @@
+ tqe$(EXE): tqe_g$(EXE) Makefile
+ 	@rm -f $@
+ 	cp $< $@
+-	-$(STRIP) $@
+ 	@ls -l $@
+ 	@echo `size $@` `wc -c $@` tqe $(OPTIONS) \
+ 		| cut -d ' ' -f 7-10,13,15-40 >> STATS
+@@ -245,7 +242,6 @@
+ t1qe$(EXE): t1qe_g$(EXE) Makefile
+ 	@rm -f $@
+ 	cp $< $@
+-	-$(STRIP) $@
+ 	@ls -l $@
+ 	@echo `size $@` `wc -c $@` t1qe $(OPTIONS) \
+ 		| cut -d ' ' -f 7-10,13,15-40 >> STATS
+@@ -478,12 +474,12 @@
+ 	$(INSTALL) -m 755 -d $(DESTDIR)$(mandir)/man1
+ 	$(INSTALL) -m 755 -d $(DESTDIR)$(datadir)/qe
+ ifdef CONFIG_X11
+-	$(INSTALL) -m 755 -s xqe$(EXE) $(DESTDIR)$(prefix)/bin/qemacs$(EXE)
++	$(INSTALL) -m 755 xqe$(EXE) $(DESTDIR)$(prefix)/bin/qemacs$(EXE)
+ else
+   ifdef CONFIG_TINY
+-	$(INSTALL) -m 755 -s tqe$(EXE) $(DESTDIR)$(prefix)/bin/qemacs$(EXE)
++	$(INSTALL) -m 755 tqe$(EXE) $(DESTDIR)$(prefix)/bin/qemacs$(EXE)
+   else
+-	$(INSTALL) -m 755 -s qe$(EXE) $(DESTDIR)$(prefix)/bin/qemacs$(EXE)
++	$(INSTALL) -m 755 qe$(EXE) $(DESTDIR)$(prefix)/bin/qemacs$(EXE)
+   endif
+ endif
+ 	ln -sf qemacs$(EXE) $(DESTDIR)$(prefix)/bin/qe$(EXE)
+@@ -493,7 +489,7 @@
+ 	$(INSTALL) -m 644 kmaps ligatures $(DESTDIR)$(datadir)/qe
+ 	$(INSTALL) -m 644 qe.1 $(DESTDIR)$(mandir)/man1
+ ifdef CONFIG_HTML
+-	$(INSTALL) -m 755 -s html2png$(EXE) $(DESTDIR)$(prefix)/bin
++	$(INSTALL) -m 755 html2png$(EXE) $(DESTDIR)$(prefix)/bin
+ endif
+ 
+ uninstall:

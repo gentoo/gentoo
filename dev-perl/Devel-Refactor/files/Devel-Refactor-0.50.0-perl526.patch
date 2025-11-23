@@ -1,0 +1,30 @@
+From f7e1813ec2d1be584499f5f2a968dc1bf430fe5b Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Sat, 7 Oct 2017 00:22:26 +1300
+Subject: t/basic.t: Fix test failure on 5.26
+
+use_ok should use the fully qualified name as it runs with blib
+during `make test`
+
+Bug: https://rt.cpan.org/Public/Bug/Display.html?id=121180
+Bug: https://bugs.gentoo.org/615738
+---
+ t/basic.t | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/t/basic.t b/t/basic.t
+index dd8cefc..8f09e23 100755
+--- a/t/basic.t
++++ b/t/basic.t
+@@ -7,7 +7,7 @@ use Data::Dumper;
+ 
+ BEGIN {
+     # diag "\@INC contains:\n", join("\n",@INC);
+-    use_ok 'Refactor';
++    use_ok 'Devel::Refactor';
+ }
+ 
+ my $rf = Devel::Refactor->new;
+-- 
+2.14.1
+

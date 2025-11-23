@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -28,7 +28,7 @@
+ ##########################################################
+ 
+ xjump : main.o game.o key.o misc.o record.o resource.o
+-	$(CC) $(CFLAGS) -o xjump \
++	$(CC) $(LDFLAGS) $(CFLAGS) -o xjump \
+ 		main.o game.o key.o misc.o record.o resource.o\
+ 		-lXaw -lXmu -lXt -lXpm -lXext -lX11 $(LDIR)
+ 

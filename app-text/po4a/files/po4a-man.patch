@@ -1,0 +1,18 @@
+--- a/Po4aBuilder.pm
++++ b/Po4aBuilder.pm
+@@ -243,7 +243,6 @@
+         }
+         $parser->parse_from_file( $file, $out );
+ 
+-        system("gzip", "-9", "-n", "-f", $out) and die;
+         unlink "$file" or die;
+     }
+ 
+@@ -275,7 +274,6 @@
+                     print "Convert $outdir/$outfile.$section (online docbook.xsl file). ";
+                     system("xsltproc", "-o", "$outdir/$outfile.$section", "--nonet", $docbook_xsl_url, $file) and die;
+                 }
+-                system("gzip", "-9", "-n", "-f", "$outdir/$outfile.$section") and die;
+             }
+             unlink "$file" or die;
+         }

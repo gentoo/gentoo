@@ -1,0 +1,17 @@
+3rdparty/pdfium/third_party/libjpeg/fpdfapi_jmemnobs.c:28:9:
+error: type of ‘FXMEM_DefaultAlloc’ does not match original declaration [-Werror=lto-type-mismatch]
+   28 | void*   FXMEM_DefaultAlloc(int byte_size, int);
+      |         ^
+diff --git a/3rdparty/pdfium/third_party/libjpeg/fpdfapi_jmemnobs.c b/3rdparty/pdfium/third_party/libjpeg/fpdfapi_jmemnobs.c
+index 0344f6f..cb470b2 100644
+--- a/3rdparty/pdfium/third_party/libjpeg/fpdfapi_jmemnobs.c
++++ b/3rdparty/pdfium/third_party/libjpeg/fpdfapi_jmemnobs.c
+@@ -25,7 +25,7 @@ extern void * malloc JPP((size_t size));
+ extern void free JPP((void *ptr));
+ #endif
+ 
+-void*	FXMEM_DefaultAlloc(int byte_size, int);
++void*	FXMEM_DefaultAlloc(size_t byte_size, int);
+ void	FXMEM_DefaultFree(void* pointer, int);
+ 
+ /*

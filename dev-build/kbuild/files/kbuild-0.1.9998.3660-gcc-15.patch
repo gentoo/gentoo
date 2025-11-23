@@ -1,0 +1,19 @@
+diff --git a/src/kmk/glob/fnmatch.c b/src/kmk/glob/fnmatch.c
+index b346e10..008a4a7 100644
+--- a/src/kmk/glob/fnmatch.c
++++ b/src/kmk/glob/fnmatch.c
+@@ -120,14 +120,6 @@ USA.  */
+ /* Avoid depending on library functions or files
+    whose names are inconsistent.  */
+ 
+-# if !defined _LIBC && !defined getenv && !defined _MSC_VER
+-extern char *getenv ();
+-# endif
+-
+-# ifndef errno
+-extern int errno;
+-# endif
+-
+ /* This function doesn't exist on most systems.  */
+ 
+ # if !defined HAVE___STRCHRNUL && !defined _LIBC

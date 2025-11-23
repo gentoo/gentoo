@@ -1,0 +1,539 @@
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Z. Liu <zhixu.liu@gmail.com> (2025-10-18)
+# nvidia-drivers only works against glibc.
+dev-python/nvidia-ml-py
+
+# Robert Siebeck <gentoo.2019@r123.de> (2025-10-17)
+# Binary compiled against glibc
+# Bug #964371
+net-im/signal-desktop-bin
+
+# PPN-SD <nicolas.parlant@parhuet.fr> (2025-10-08)
+# Binary bazel is compiled against glibc
+>=app-i18n/mozc-2.31.5851.102
+
+# Michał Górny <mgorny@gentoo.org> (2025-09-28)
+# Required DT_AUXILIARY support in the dynamic linker.
+=sci-libs/blas-lapack-aux-wrappers-0
+
+# PPN-SD <nicolas.parlant@parhuet.fr> (2025-07-28)
+# Bundled pcap-thread, not ported to musl
+# bug #713498, https://github.com/DNS-OARC/pcap-thread/issues/128
+net-dns/dnscap
+
+# Ian Jordan <immoloism@gmail.com> (2025-07-13)
+# Binary is compiled against glibc
+net-misc/anydesk
+
+# Sam James <sam@gentoo.org> (2025-07-12)
+# Not ported to musl (bug #939569, https://github.com/oracle/dtrace-utils/issues/87)
+dev-debug/dtrace
+
+# NHOrus <jy6x2b32pie9@yahoo.com> (2025-03-13)
+# uses functions musl will not implement, bug #942215
+app-admin/sud
+
+# NHOrus <jy6x2b32pie9@yahoo.com> (2025-02-01)
+# not ported to musl, bug #713434
+app-crypt/mit-krb5-appl
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2025-01-25)
+# depends on vscode/vscodium, which are glibc binary package
+kde-misc/krunner-vscodeprojects
+
+# Sam James <sam@gentoo.org> (2025-01-10)
+# These packages are only relevant on musl systems.
+-sys-libs/argp-standalone
+-sys-libs/error-standalone
+-sys-libs/fts-standalone
+-sys-libs/obstack-standalone
+-sys-libs/queue-standalone
+-sys-libs/rpmatch-standalone
+
+# Cheyenne Wills <cwills@witznd.net> (2025-01-05)
+# Not ported to musl, bug #832428
+# openafs hasn't been tested with musl
+# would require a patch to get past the configure step
+net-fs/openafs
+
+# Robert Siebeck <gentoo.2019@r123.de> (2024-10-30)
+# musl not supported by upstream
+app-editors/zed
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2024-10-24)
+# Using a glibc interface, and with that on musl pretty much useless
+sys-auth/nss-mdns
+sys-auth/libnss-cache
+sys-auth/nss-myhostname
+sys-auth/libnss-nis
+sys-auth/nss-pam-ldapd
+sys-auth/libnss-pgsql
+sys-auth/libnss-mysql
+sys-auth/nss_ldap
+net-nds/nsscache
+
+# Sam James <sam@gentoo.org> (2024-09-30)
+# Needs porting to musl (bug #940130)
+~sys-auth/elogind-255.5
+~sys-auth/elogind-255.17
+
+# Sam James <sam@gentoo.org> (2024-08-31)
+# sys-devel/binutils[gprofng] is masked on musl
+dev-debug/gprofng-gui
+
+# Sam James <sam@gentoo.org> (2024-08-21)
+# systemtap needs porting to musl. Fails to compile in a few ways.
+# See bug #925857.
+dev-debug/systemtap
+sys-apps/tuned
+
+# Robert Förster <Dessa@gmake.de> (2024-05-06)
+# needs mongodb
+net-wireless/unifi
+
+# Robert Förster <Dessa@gmake.de> (2024-05-06)
+# bundles old gperftools not supporting musl,
+# among not being buildable itself
+# bug #906782, #716296, et al.
+dev-db/mongodb
+
+# Akinori Hattori <hattya@gentoo.org> (2024-04-14)
+# musl iconv does not implement required encodings.
+app-i18n/nkf
+app-text/cmigemo
+www-client/jd
+
+# Marek Szuba <marecki@gentoo.org> (2024-04-07)
+# Relies on musl-incompatible ldconfig behaviour to determine the list of host
+# library directories. More importantly however, protontricks is useless without
+# Steam and Steam will almost certainly never support musl (see e.g.
+# https://github.com/ValveSoftware/steam-for-linux/issues/9284).
+app-emulation/protontricks
+
+# Matthew Smith <matthew@gentoo.org> (2024-04-07)
+# Mask until execinfo.h use can be properly patched, bug #853856
+media-gfx/renderdoc
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-03-15)
+# Needs ada
+sci-electronics/ghdl
+
+# Alfredo Tupone <tupone@gentoo.org> (2024-03-13)
+# To bootstrap uses an ada compiler built using glibc
+dev-lang/ada-bootstrap
+dev-lang/spark
+dev-ada/gnatcoll-db
+dev-ada/gprbuild
+dev-ada/xmlada
+dev-ada/libgpr
+dev-ada/gnatcoll-core
+dev-ada/gnatcoll-bindings
+dev-ada/langkit
+dev-ada/langkit-contrib
+dev-ada/templates-parser
+dev-ada/libadalang-tools
+dev-ada/libadalang
+dev-ada/spawn
+dev-ada/gtkada
+dev-ada/markdown
+dev-ada/VSS
+dev-ada/aws
+dev-ada/aunit
+dev-ada/ada_language_server
+dev-ada/gnatdoc
+dev-ada/gpr-unit-provider
+dev-ada/gpr
+dev-ada/gnatmem
+dev-ada/ada_libfswatch
+dev-ada/gnatsymbolize
+dev-ada/AdaSAT
+dev-ada/lal-refactor
+dev-ada/prettier-ada
+dev-ada/gnatformat
+
+# Sergey Popov <pinkbyte@gentoo.org> (2024-03-05)
+# games-strategy/seven-kingdoms does not build on musl,
+# requires glibc-specific locale handling. (#923907)
+games-strategy/seven-kingdoms
+
+# Joshua Kinard <kumba@gentoo.org> (2024-02-27)
+# app-arch/lrzip-next cannot work w/ musl's pthreads at
+# this time. (#925547)
+app-arch/lrzip-next
+
+# Christopher Fore <csfore@posteo.net> (2024-01-24)
+# >=sys-fs/bcachefs-tools-1.4.1 uses functions currently not in Musl
+# https://github.com/koverstreet/bcachefs-tools/issues/213
+# The above was fixed in musl 1.2.5, which bcachefs-tools 1.11.0
+# will now depend on.
+# https://www.openwall.com/lists/musl/2024/03/01/2
+<sys-fs/bcachefs-tools-1.11.0
+
+# Conrad Kostecki <conikost@gentoo.org> (2024-01-23)
+# Uses glibc function getsourcefilter(),
+# which are not available on musl.
+net-misc/mcproxy
+
+# Florian Schmaus <flow@gentoo.org> (2023-11-22)
+# Requires systemd which is not supported on musl.
+sys-power/sandmann-bin
+
+# Brahmajit Das <brahmajit.xyz@gmail.com> (2023-06-15)
+# The package uses innetgr which is not available in musl, bug 898556
+# The package is only for long-obsolete polkit policies anyway.
+sys-auth/polkit-pkla-compat
+
+# Mike Gilbert <floppym@gentoo.org> (2023-06-15)
+# Reverse entry from base profile.
+-sys-apps/musl-locales
+
+# Maciej Barć <xgqt@gentoo.org> (2023-04-03)
+# Mask until execinfo.h use can be properly patched, bug #877721 and #903689.
+dev-scheme/guile-ssh
+
+# Alfredo Tupone <tupone@gentoo.org> (2023-02-27)
+# Uses dev-util/nvidia-cuda-sdk
+dev-libs/cutlass
+
+# Conrad Kostecki <conikost@gentoo.org> (2022-12-31)
+# RTLD_DEEPBIND does not exist on musl
+dev-libs/intel-compute-runtime
+
+# Sam James <sam@gentoo.org> (2022-10-17)
+# Needs porting to musl
+# https://github.com/rr-debugger/rr/issues/2236
+dev-debug/rr
+
+# Sam James <sam@gentoo.org> (2022-10-04)
+# Packages with dubious sys-libs/glibc dependencies (non-binary) but
+# masking for now to allow musl profiles to graduate from exp->dev.
+dev-libs/cgreen
+media-sound/xwax
+net-analyzer/gsad
+net-analyzer/gvm
+net-analyzer/gvmd
+net-analyzer/gvm-libs
+net-analyzer/openvas-scanner
+net-analyzer/ospd-openvas
+net-misc/grive
+net-print/pnm2ppa
+sys-apps/noexec
+
+# Giuseppe Foti <foti.giuseppe@gmail.com> (2023-05-19)
+# New packages that require packages masked by the previous block.
+dev-db/pg-gvm
+net-analyzer/notus-scanner
+net-analyzer/greenbone-feed-sync
+net-analyzer/boreas
+
+# Petr Vaněk <arkamar@atlas.cz> (2022-09-23)
+# Musl does not implement rresvport function, bugs #713810 and #713376.
+app-admin/clustershell
+app-shells/pdsh
+net-analyzer/ipcad
+
+# Sam James <sam@gentoo.org> (2022-09-12)
+# libxcrypt migration masks.
+# 1. The libxcrypt migration is optional for musl, so unmask -virtual/libcrypt:0/1.
+# 2. virtual/libcrypt-2 doesn't migrate anything on musl,
+#    we need virtual/libcrypt-2-r1 for the libxcrypt migration there, so
+#   avoid a useless rebuild, and ensure it happens at the right time instead.
+-virtual/libcrypt:0/1
+=virtual/libcrypt-2
+
+# Mike Gilbert <floppym@gentoo.org> (2022-08-01)
+# Fails to build.
+app-emulation/open-vm-tools
+
+# Marek Szuba <marecki@gentoo.org> (2022-07-28)
+# Relies on unimplemented functions outb_p and inb_p,
+# support for which has never made it into musl. Bug #712972.
+sys-libs/libsmbios
+
+# Sam James <sam@gentoo.org> (2022-04-23)
+# Compatibility packages for binary/pre-built software shouldn't
+# be needed on musl (and these fail to build anyway).
+sys-apps/byld
+sys-libs/libtermcap-compat
+sys-libs/libstdc++-v3
+
+# Sam James <sam@gentoo.org> (2022-04-22)
+# Needs strndupa, upstream not interested in supporting musl
+# bug #713542
+net-misc/casync
+
+# Stephan Hartmann <sultan@gentoo.org> (2022-02-10)
+# Doesn't build on musl, bug #833028
+www-client/chromium
+
+# Paolo Pedroni <paolo.pedroni@iol.it> (2022-02-09)
+# It doesn't build on musl
+# bug #832551
+net-misc/netkit-telnetd
+net-misc/sitecopy
+
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-01-20)
+# Binary package linked to glibc (rolling mask, use for all such binpkgs)
+app-admin/awscli-bin
+app-admin/bitwarden-desktop-bin
+app-admin/puppet-agent
+app-admin/puppetserver
+app-admin/winbox
+app-arch/rar
+app-backup/tsm
+app-benchmarks/geekbench
+app-benchmarks/geekbench-ml
+app-crypt/rainbowcrack
+app-crypt/yubioath-flutter-bin
+app-editors/logseq-desktop-bin
+app-editors/sublime-text
+app-editors/vscode
+app-editors/vscodium
+app-emulation/crossover-bin
+app-emulation/genymotion-bin
+app-misc/kryoflux-dtc
+app-office/drawio-desktop-bin
+app-office/joplin-desktop
+app-office/libreoffice-bin
+app-office/onlyoffice-bin
+app-shells/pwsh-bin
+app-text/master-pdf-editor
+app-text/zotero-bin
+dev-db/mongodb-compass-bin
+dev-db/ocp
+dev-db/oracle-instantclient
+dev-db/sqlcl-bin
+dev-games/ps2-packer
+dev-java/openjdk-bin
+dev-java/openjdk-jre-bin
+dev-lang/dafny-bin
+dev-lang/deno-bin
+dev-libs/luise
+dev-libs/nwjs
+dev-perl/Lab-Zhinst
+dev-python/pyzotero
+dev-util/azuredatastudio
+dev-util/idea-community
+games-action/a-story-about-my-uncle
+games-action/badland
+games-action/brutal-legend-gog
+games-action/brutal-legend-hb
+games-action/minecraft-launcher
+games-action/psychonauts-gog
+games-action/psychonauts-hb
+games-action/psychonauts2-hb
+games-action/shadowgrounds-bin
+games-action/shadowgrounds-survivor-bin
+games-action/trine
+games-action/trine-enchanted-edition
+games-action/trine2
+games-arcade/barbarian-bin
+games-arcade/jardinains
+games-emulation/zinc
+games-fps/etqw-bin
+games-fps/etqw-data
+games-fps/etqw-demo
+games-fps/glxquake-bin
+games-fps/legends
+games-fps/soldieroffortune
+games-fps/transfusion-bin
+games-fps/tribes2
+games-fps/ut2003
+games-fps/ut2003-bonuspack-cm
+games-fps/ut2003-bonuspack-de
+games-fps/ut2003-bonuspack-epic
+games-fps/ut2003-data
+games-fps/ut2003-demo
+games-fps/ut2004
+games-fps/ut2004-bonuspack-cbp1
+games-fps/ut2004-bonuspack-cbp2
+games-fps/ut2004-bonuspack-ece
+games-fps/ut2004-bonuspack-mega
+games-fps/ut2004-data
+games-fps/ut2004-demo
+games-puzzle/world-of-goo-demo
+games-puzzle/world-of-goo-gog
+games-puzzle/world-of-goo-hb
+games-roguelike/dwarf-fortress
+games-rpg/crosscode
+games-rpg/crosscode-a-new-home
+games-server/bedrock-server
+games-server/etqw-ded
+games-server/mtavc
+games-server/steamcmd
+games-server/ut2004-ded
+games-simulation/slime-rancher
+games-strategy/darwinia
+games-strategy/knights-demo
+games-util/heroic-bin
+gnome-extra/nautilus-dropbox
+kde-apps/dolphin-plugins-dropbox
+mail-client/thunderbird-bin
+mate-extra/caja-dropbox
+media-gfx/brscan4
+media-gfx/evoluspencil
+media-libs/amdgpu-pro-vulkan
+media-sound/baudline
+media-sound/teamspeak-server
+media-tv/plex-media-server
+media-video/amdgpu-pro-amf
+media-video/dvbackup
+media-video/makemkv
+media-video/popcorntime-bin
+net-analyzer/nessus-agent-bin
+net-analyzer/nessus-bin
+net-im/discord
+net-im/element-desktop-bin
+net-im/gitter-bin
+net-im/mattermost-desktop-bin
+net-im/rocketchat-desktop-bin
+net-im/slack
+net-im/telegram-desktop-bin
+net-im/whatsapp-desktop-bin
+net-im/zoom
+net-misc/chrome-remote-desktop
+net-misc/dropbox
+net-misc/dropbox-cli
+net-misc/ipmiview
+net-misc/teamviewer
+net-misc/yandex-disk
+net-nntp/sabnzbd
+net-p2p/resilio-sync
+net-print/cnijfilter2
+net-print/hplip-plugin
+net-vpn/microsoft-azurevpnclient
+sci-chemistry/cara-bin
+sci-electronics/labone
+sci-libs/aotriton-bin
+sci-libs/mkl
+sci-mathematics/geogebra-bin
+sci-mathematics/gimps
+sci-misc/jupyterlab-desktop-bin
+sci-misc/netlogo-bin
+sys-apps/intune-portal
+sys-apps/ipmicfg
+sys-apps/smcipmitool
+sys-apps/tas
+sys-block/arcconf
+sys-block/hpssacli
+sys-block/megacli
+www-apps/chromedriver-bin
+<www-apps/grafana-bin-11.2
+www-apps/jellyfin-bin
+www-apps/kibana-bin
+www-client/firefox-bin
+www-client/google-chrome
+www-client/google-chrome-beta
+www-client/google-chrome-unstable
+www-client/microsoft-edge
+www-client/microsoft-edge-beta
+www-client/microsoft-edge-dev
+www-client/opera
+www-client/opera-beta
+www-client/opera-developer
+www-client/vivaldi
+www-client/vivaldi-snapshot
+www-plugins/chrome-binary-plugins
+x11-misc/xflux
+x11-misc/xflux-gui
+
+# Ulrich Müller <ulm@gentoo.org> (2022-01-04, 2022-07-31)
+# Emacs 26 segfaults when dumping (bug #862489).
+app-editors/emacs:26
+
+# Conrad Kostecki <conikost@gentoo.org> (2021-12-15)
+# Level Zero needs RTLD_DEEPBIND, which does not exist on musl.
+dev-libs/level-zero
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-11-21)
+# No musl patches in ebuild
+<sys-devel/gcc-9
+
+# Sam James <sam@gentoo.org> (2021-11-20)
+# Wants /usr/bin/locale
+# Fails to build with errors like:
+# ```
+# Use of uninitialized value $Text::WrapI18N::charmap in pattern match (m//) at /usr/lib/perl5/vendor_perl/5.34/Text/WrapI18N.pm line 155.
+# Can't exec "/usr/bin/locale": No such file or directory at /usr/lib/perl5/vendor_perl/5.34/Text/WrapI18N.pm line 134.
+# ```
+app-doc/kicad-doc
+app-i18n/man-pages-l10n
+app-text/po4a
+dev-vcs/git-annex
+games-strategy/colobot
+www-apps/ikiwiki
+
+# Hank Leininger <hlein@korelogic.com> (2021-07-14)
+# Uses glibc-specific rexec(3) function, bug #715898
+net-misc/netkit-rsh
+
+# David Seifert <soap@gentoo.org> (2021-02-08)
+# nvidia-drivers only works against glibc.
+dev-libs/cudnn
+sci-ml/cudnn-frontend
+dev-python/pycuda
+dev-util/nsight-compute
+dev-util/nsight-graphics
+dev-util/nsight-systems
+dev-util/nvidia-cuda-toolkit
+dev-libs/optix
+media-libs/nvidia-vaapi-driver
+x11-drivers/nvidia-drivers
+x11-misc/primus
+dev-libs/cusparselt
+
+# Ulrich Müller (2020-03-31)
+# Not ported to musl, bug #715642.
+# See https://wiki.gentoo.org/wiki/Project:Emacs/Emacs-like_editors
+# for alternatives.
+app-editors/jasspa-microemacs
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-03-21)
+# musl has no support for nss subsystem.
+sys-apps/unscd
+sys-auth/libnss-nis
+sys-auth/sssd
+net-nds/nsscache
+sys-auth/libnss-cache
+sys-auth/libnss-mysql
+sys-auth/libnss-nis
+sys-auth/libnss-pgsql
+sys-auth/nss-mdns
+sys-auth/nss-myhostname
+sys-auth/nss-pam-ldapd
+sys-auth/nss_ldap
+sys-libs/nss-usrfiles
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-03-21)
+# Needs a port to musl. Uses glibc-specific termio and __getppid.
+app-emulation/ski
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-03-21)
+# Linux debugger needs a port to musl.
+app-emulation/dosemu
+
+# Old undated blocks of masks
+#
+sys-libs/glibc
+-sys-libs/musl
+-sys-libs/libucontext
+
+# systemd doesn't work on musl and upstream aren't interested
+# in supporting it.
+app-admin/mkosi
+app-admin/systemdgenie
+dev-python/python-systemd
+gnome-extra/office-runner
+gnome-extra/gnome-logs
+sys-apps/dbus-broker
+sys-apps/gentoo-systemd-integration
+sys-apps/systemd
+sys-apps/systemd-readahead
+sys-process/systemd-cron
+>=www-misc/profile-sync-daemon-6
+sys-block/wait-for-dri-devices-rules
+
+# rust-bin isn't available on all platforms
+dev-lang/rust-bin

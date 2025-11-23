@@ -1,0 +1,38 @@
+meson.build: hardwire Solaris support
+
+- need __EXTENSIONS__ in order to use functions like memmem, strlcopy,
+  etc.
+- need __EXTENSIONS__ for NSIG symbol from signal.h too
+- define for appropriate missing functions and struct members
+- avoid believing sys/sysinfo.h is providing the same as on Linux
+- add missing network libraries so we can succeed linking the final
+  executable
+
+--- a/meson.build
++++ b/meson.build
+@@ -1014,7 +1014,7 @@
+   libgit_c_args += '-DHAVE_ALLOCA_H'
+ endif
+ 
+-if compiler.has_header('sys/sysinfo.h')
++if host_machine.system() != 'sunos' and compiler.has_header('sys/sysinfo.h')
+   libgit_c_args += '-DHAVE_SYSINFO'
+ endif
+
+@@ -1250,6 +1250,16 @@
+   libgit_sources += 'compat/strlcpy.c'
+ endif
+ 
++if host_machine.system() == 'sunos'
++  libgit_c_args += '-DNO_HSTRERROR'
++  libgit_c_args += '-DNO_GETPAGESIZE'
++  libgit_c_args += '-DNO_NSEC'
++  libgit_c_args += '-D__EXTENSIONS__'
++  libgit_sources += 'compat/hstrerror.c'
++  libgit_dependencies += compiler.find_library('socket')
++  libgit_dependencies += compiler.find_library('nsl')
++endif
++
+ if not compiler.has_function('strdup')
+   libgit_c_args += '-DOVERRIDE_STRDUP'
+   libgit_sources += 'compat/strdup.c'

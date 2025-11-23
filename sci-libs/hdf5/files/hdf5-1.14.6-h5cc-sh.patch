@@ -1,0 +1,63 @@
+From 4cca21399b3bca4d21ed962640b8bdee5062550b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Tue, 22 Apr 2025 20:24:09 +0200
+Subject: [PATCH 1/2] h5cc: Fix bashism
+
+Replace the `${@:2}` construct that is specific to bash shell with
+a more portable approach based on `shift`, in order to restore
+compatibility with more strict POSIX shells.  This fixes a regression
+introduced in #5361.
+---
+ config/cmake/libh5cc.in | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/config/cmake/libh5cc.in b/config/cmake/libh5cc.in
+index 2af2abf0aff..eea811e5e18 100644
+--- a/config/cmake/libh5cc.in
++++ b/config/cmake/libh5cc.in
+@@ -66,7 +66,8 @@ for arg in $@ ; do
+       exit $status
+       ;;
+     -show)
+-      echo @_PKG_CONFIG_COMPILER@ ${@:2} `pkg-config $pc_args --define-variable=prefix=$dir --cflags --libs @_PKG_CONFIG_LIBNAME@`
++      shift
++      echo @_PKG_CONFIG_COMPILER@ $@ `pkg-config $pc_args --define-variable=prefix=$dir --cflags --libs @_PKG_CONFIG_LIBNAME@`
+       exit $status
+       ;;
+     -help)
+
+From a8b2c89ad7d1cfd016e6e901efa14a52f65fa883 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Tue, 22 Apr 2025 20:27:26 +0200
+Subject: [PATCH 2/2] h5cc: Fix passing arguments to compiler subprocesses
+
+Pass arguments to subprocesses via quoted `"$@"` rather than plain `$@`,
+in order to prevent the shell from applying word splitting, filename
+expansion, etc., and therefore ensure that they are passed through
+to the compiler process unchanged.
+---
+ config/cmake/libh5cc.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/config/cmake/libh5cc.in b/config/cmake/libh5cc.in
+index eea811e5e18..939698c3640 100644
+--- a/config/cmake/libh5cc.in
++++ b/config/cmake/libh5cc.in
+@@ -67,7 +67,7 @@ for arg in $@ ; do
+       ;;
+     -show)
+       shift
+-      echo @_PKG_CONFIG_COMPILER@ $@ `pkg-config $pc_args --define-variable=prefix=$dir --cflags --libs @_PKG_CONFIG_LIBNAME@`
++      echo @_PKG_CONFIG_COMPILER@ "$@" `pkg-config $pc_args --define-variable=prefix=$dir --cflags --libs @_PKG_CONFIG_LIBNAME@`
+       exit $status
+       ;;
+     -help)
+@@ -79,7 +79,7 @@ for arg in $@ ; do
+       pc_args="$pc_args $arg"
+       ;;
+     *)
+-      @_PKG_CONFIG_COMPILER@ $@ `pkg-config $pc_args --define-variable=prefix=$dir --cflags --libs @_PKG_CONFIG_LIBNAME@`
++      @_PKG_CONFIG_COMPILER@ "$@" `pkg-config $pc_args --define-variable=prefix=$dir --cflags --libs @_PKG_CONFIG_LIBNAME@`
+       status=$?
+       exit $status
+       ;;

@@ -1,0 +1,14 @@
+#!/sbin/openrc-run
+
+description="Foot terminal server mode"
+
+supervisor=supervise-daemon
+command="/usr/bin/foot"
+command_args="--server"
+
+start_pre() {
+	if [ -z "$WAYLAND_DISPLAY" ]; then
+		eerror "$WAYLAND_DISPLAY unset, can't proceed."
+		return 1
+	fi
+}

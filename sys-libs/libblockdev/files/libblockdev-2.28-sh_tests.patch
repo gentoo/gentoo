@@ -1,0 +1,23 @@
+bash is fine with "test . == ." but e.g. dash fails on not having
+the two dots quoted as strings.
+
+--- a/docs/Makefile.am
++++ b/docs/Makefile.am
+@@ -2,7 +2,7 @@
+ 
+ html-doc.stamp: ${srcdir}/libblockdev-docs.xml ${srcdir}/libblockdev-sections.txt $(wildcard ${srcdir}/../src/plugins/*.[ch]) $(wildcard ${srcdir}/../src/lib/*.[ch]) $(wildcard ${srcdir}/../src/utils/*.[ch])
+ 	touch ${builddir}/html-doc.stamp
+-	test ${builddir} == ${srcdir} || cp ${srcdir}/libblockdev-sections.txt ${srcdir}/libblockdev-docs.xml ${builddir}
++	test "${builddir}" == "${srcdir}" || cp ${srcdir}/libblockdev-sections.txt ${srcdir}/libblockdev-docs.xml ${builddir}
+ 	gtkdoc-scan --rebuild-types --module=libblockdev --source-dir=${srcdir}/../src/plugins/ --source-dir=${srcdir}/../src/lib/ --source-dir=${srcdir}/../src/utils/
+ 	gtkdoc-mkdb --module=libblockdev --output-format=xml --source-dir=${srcdir}/../src/plugins/ --source-dir=${srcdir}/../src/lib/ --source-dir=${srcdir}/../src/utils/ --source-suffixes=c,h
+ 	test -d ${builddir}/html || mkdir ${builddir}/html
+@@ -13,7 +13,7 @@
+ 	-rm -rf ${builddir}/html
+ 	-rm -rf ${builddir}/xml
+ 	test ! -f ${builddir}/html-doc.stamp || rm ${builddir}/html-doc.stamp
+-	test ${builddir} == ${srcdir} || rm -f ${builddir}/libblockdev-sections.txt ${builddir}/libblockdev-docs.xml
++	test "${builddir}" == "${srcdir}" || rm -f ${builddir}/libblockdev-sections.txt ${builddir}/libblockdev-docs.xml
+ 
+ install-data-local:
+ 	test -d ${DESTDIR}${datadir}/gtk-doc/html/libblockdev || mkdir -p ${DESTDIR}${datadir}/gtk-doc/html/libblockdev

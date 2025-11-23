@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>pacho@gentoo.org</email>
+		<name>Pacho Ramos</name>
+	</maintainer>
+	<longdescription>Official Realtek r8168 linux driver. The following cards are currently supported:
+RTL8111B RTL8168B RTL8111 RTL8168 RTL8111C RTL8111CP RTL8111D(L) RTL8168C
+RTL8111DP RTL8111E RTL8168E RTL8111F RTL8411</longdescription>
+	<use>
+		<flag name="down-speed-100">Reduce speed to 100 Mbps in WOL-only modes</flag>
+		<flag name="eee">Enable Energy-Efficient Ethernet by default</flag>
+		<flag name="giga-lite">Enable support of 'Giga Lite' (500 Mbps over just two CAT5 pairs) by default</flag>
+		<flag name="hw-acceleration">Enable use of hardware acceleration by default. HW acceleration may cause problems on Realtek NICs!</flag>
+		<flag name="multi-tx-q">Enable Multiple Tx Queue ('RSS' for sending)</flag>
+		<flag name="rss">Enable Receive Side Scaling (RSS)</flag>
+		<flag name="s5-keep-mac">Keep set MAC address in S5 (switched off) by default</flag>
+		<flag name="use-firmware">Enable support for automatic firmware loading</flag>
+		<flag name="wol">Enable Wake-On-LAN by default</flag>
+		<flag name="wol-s5">Enable start from S5 (switched off) by Wake-On-LAN by default</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,11 @@
+--- a/dstr.c	2009-08-05 05:09:21.000000000 +0200
++++ b/dstr.c	2018-09-27 15:43:52.815761856 +0200
+@@ -79,7 +79,7 @@
+ #ifdef SAFECALL
+   if(length == 0) return(ERROR);
+ #endif
+-  if (length > tgt->c) {
++  if (length + 1 > tgt->c) {
+     if(tgt->s != NULL) free( (void *) tgt->s);
+     tgt->s = (wchar_t *) malloc((length + 1) * sizeof(wchar_t));
+     if(tgt->s == NULL) return(ERROR);

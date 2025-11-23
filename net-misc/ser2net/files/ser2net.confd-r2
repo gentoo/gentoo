@@ -1,0 +1,21 @@
+# Config file for /etc/init.d/ser2net
+
+# Set the configuration file to one other than the default of /etc/ser2net/ser2net.yaml
+#
+#CONFIG_FILE="/etc/ser2net/ser2net.yaml"
+
+# Enables the control port and sets the TCP port to listen to for the control port.
+# A port number may be of the form [host,]port, such as 127.0.0.1,2000 or localhost,2000.
+# If this is specified, it will only bind to the IP address specified for the port.
+# Otherwise, it will bind to all the addresses on the machine.
+#
+#CONTROL_PORT=""
+
+# Enable or disable UUCP locking (default=yes)
+#
+#UUCP_LOCKS="no"
+
+# see the ser2net(8) manual page for additional options you can configure here
+#
+#EXTRA_OPTS=""
+

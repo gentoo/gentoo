@@ -1,0 +1,68 @@
+Fixes:
+x86_64-pc-linux-gnu-gcc -O2 -c -o fondu.o fondu.c
+fondu.c: In function 'BuildFondList':
+fondu.c:515: error: called object 'strlen' is not a function
+
+x86_64-pc-linux-gnu-gcc -O2 -c -o frommacbinary.o frommacbinary.c
+frommacbinary.c: In function 'Usage':
+frommacbinary.c:58: warning: too few arguments for format
+
+Upstream: https://sourceforge.net/tracker/?func=detail&aid=2875547&group_id=39411&atid=425133
+Author: Peter Volkov <pva@gentoo.org>
+
+--- a/fondu.c
++++ b/fondu.c
+@@ -473,7 +473,7 @@
+ 	}
+ 	if ( styleoff!=0 ) {
+ 	    unsigned char stringoffsets[48];
+-	    int strcnt, strlen, format;
++	    int strcnt, strlength, format;
+ 	    char **strings, *pt;
+ 	    fseek(f,styleoff,SEEK_SET);
+ 	    /* class = */ getushort(f);
+@@ -484,11 +484,11 @@
+ 	    strcnt = getushort(f);
+ 	    strings = malloc(strcnt*sizeof(char *));
+ 	    for ( j=0; j<strcnt; ++j ) {
+-		strlen = getc(f);
+-		strings[j] = malloc(strlen+2);
+-		strings[j][0] = strlen;
+-		strings[j][strlen+1] = '\0';
+-		for ( k=0; k<strlen; ++k )
++		strlength = getc(f);
++		strings[j] = malloc(strlength+2);
++		strings[j][0] = strlength;
++		strings[j][strlength+1] = '\0';
++		for ( k=0; k<strlength; ++k )
+ 		    strings[j][k+1] = getc(f);
+ 	    }
+ 	    for ( j=0; j<48; ++j ) {
+@@ -498,11 +498,11 @@
+ 		if ( k!=-1 || stringoffsets[j]==0 )
+ 	    continue;		/* this style doesn't exist */
+ 		format = stringoffsets[j]-1;
+-		strlen = strings[0][0];
++		strlength = strings[0][0];
+ 		if ( format!=0 && format!=-1 )
+ 		    for ( k=0; k<strings[format][0]; ++k )
+-			strlen += strings[ strings[format][k+1]-1 ][0];
+-		pt = cur->psnames[j] = malloc(strlen+1);
++			strlength += strings[ strings[format][k+1]-1 ][0];
++		pt = cur->psnames[j] = malloc(strlength+1);
+ 		strcpy(pt,strings[ 0 ]+1);
+ 		pt += strings[ 0 ][0];
+ 		if ( format!=0 && format!=-1 )
+
+--- a/frommacbinary.c
++++ b/frommacbinary.c
+@@ -55,7 +55,7 @@
+ /* frombin filenames */
+ 
+ static void Usage(char *prog) {
+-    fprintf( stderr, "Usage: %s [-usage] [-help] [-version] filenames\n" );
++    fprintf( stderr, "Usage: frombin [-usage] [-help] [-version] filenames\n" );
+     fprintf( stderr, " -usage\t\tPrints this message\n" );
+     fprintf( stderr, " -help\t\tPrints this message\n" );
+     fprintf( stderr, " -version\t\tPrints the version of the program\n" );
+

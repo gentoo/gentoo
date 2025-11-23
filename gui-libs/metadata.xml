@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The gui-libs category contains miscellaneous libraries that
+		support various window managers.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie gui-libs enthält diverse Bibliotheken zur
+		Unterstützung verschiedener Fenstermanager.
+	</longdescription>
+</catmetadata>

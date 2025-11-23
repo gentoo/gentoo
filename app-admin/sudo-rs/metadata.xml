@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chutzpah@gentoo.org</email>
+		<name>Patrick McLean</name>
+	</maintainer>
+	<use>
+		<flag name="system-names">Install as "sudo", "su" etc rather than sudo-rs</flag>
+		<flag name="su">Install the su program</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">trifectatechfoundation/sudo-rs</remote-id>
+	</upstream>
+</pkgmetadata>

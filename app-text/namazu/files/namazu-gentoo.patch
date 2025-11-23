@@ -1,0 +1,54 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -19,9 +19,9 @@
+ 
+ bin_SCRIPTS = nmz-config
+ 
+-etcdir     = $(pkgdatadir)/etc
+-etc_DATA   = AUTHORS ChangeLog ChangeLog.1 CREDITS COPYING INSTALL \
+-	     INSTALL-ja README README-es README-ja NEWS THANKS TODO \
++etcdir     = $(docdir)
++etc_DATA   = AUTHORS ChangeLog ChangeLog.1 CREDITS \
++	     README README-es README-ja NEWS THANKS TODO \
+ 	     HACKING HACKING-ja
+ 
+ EXTRA_DIST = $(etc_DATA) maintMakefile namazu.spec namazu.spec.in \
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -2,7 +2,7 @@
+ AUTOMAKE_OPTIONS = 1.4 no-dependencies
+ SUBDIRS = en ja
+ 
+-cssdir = $(pkgdatadir)/doc
++cssdir = $(htmldir)
+ 
+ css_DATA   = namazu.css
+ EXTRA_DIST = $(css_DATA)
+--- a/doc/en/Makefile.am
++++ b/doc/en/Makefile.am
+@@ -1,4 +1,4 @@
+-htmldir = $(pkgdatadir)/doc/en
++htmldir = @htmldir@/en
+ 
+ html_DATA = manual.html nmz.html tutorial.html tips.html
+ EXTRA_DIST = $(html_DATA)
+--- a/doc/ja/Makefile.am
++++ b/doc/ja/Makefile.am
+@@ -1,4 +1,4 @@
+-htmldir = $(pkgdatadir)/doc/ja
++htmldir = @htmldir@/ja
+ 
+ html_DATA  = manual.html nmz.html tips.html tutorial.html
+ EXTRA_DIST = $(html_DATA)
+--- a/filter/Makefile.am
++++ b/filter/Makefile.am
+@@ -51,9 +51,3 @@
+ 
+ ETAGS_ARGS = $(filter_DATA) --lang=perl
+ TAGS_DEPENDENCIES = $(filter_DATA)
+-
+-# To remove Windows specific files installed by Namazu 2.0 and/or 2.0.1
+-# and old gfilter.pl (Namazu 2.0.7 or earlier).
+-install-data-local:
+-	rm -f $(filterdir)/ole*.pl
+-	rm -f $(filterdir)/gfilter.pl

@@ -1,0 +1,15 @@
+netpbm-11.10.3 contains changes to pnmdice; test must be changed accordingly.
+
+--- a/test/pamdice.ok
++++ b/test/pamdice.ok
+@@ -34,8 +34,8 @@
+ stem_1_0.pbm
+ stem_1_1.pbm
+ Test 5.
+-stem_000_00.pbm
+-stem_00_000.pbm
++stem_00_00.pbm
++stem_00_00.pbm
+ stem_000_000.pbm
+ stem_000_000.pbm
+ stem_0000_0000.pbm

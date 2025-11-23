@@ -1,0 +1,26 @@
+--- a/src/core/audio.c
++++ b/src/core/audio.c
+@@ -385,3 +385,3 @@
+  */
+-void audio_init(int nomusic)
++void audio_init()
+ {
+--- a/src/entities/object_decorators/dialog_box.c
++++ b/src/entities/object_decorators/dialog_box.c
+@@ -39,3 +39,3 @@
+ 
+-static objectmachine_t* make_decorator(objectmachine_t *decorated_machine, const char *title, const char *message, void (*strategy)());
++static objectmachine_t* make_decorator(objectmachine_t *decorated_machine, const char *title, const char *message, void (*strategy)(objectdecorator_dialogbox_t*));
+ 
+@@ -60,3 +60,3 @@
+ /* private methods */
+-objectmachine_t* make_decorator(objectmachine_t *decorated_machine, const char *title, const char *message, void (*strategy)())
++objectmachine_t* make_decorator(objectmachine_t *decorated_machine, const char *title, const char *message, void (*strategy)(objectdecorator_dialogbox_t*))
+ {
+--- a/src/scenes/level.c
++++ b/src/scenes/level.c
+@@ -214,3 +214,3 @@
+ static void update_dlgbox(); /* dialog boxes */
+-static void render_dlgbox(); /* dialog boxes */
++static void render_dlgbox(v2d_t camera_position); /* dialog boxes */
+ 

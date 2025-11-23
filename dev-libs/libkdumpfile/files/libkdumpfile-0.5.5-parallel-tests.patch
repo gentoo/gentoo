@@ -1,0 +1,55 @@
+https://github.com/ptesarik/libkdumpfile/commit/cc927b9e22ebe6de1a6ed23ca8d14d1f3d790fb5
+
+From cc927b9e22ebe6de1a6ed23ca8d14d1f3d790fb5 Mon Sep 17 00:00:00 2001
+From: Petr Tesarik <petr@tesarici.cz>
+Date: Fri, 27 Dec 2024 12:17:35 +0100
+Subject: [PATCH] tests: Fix xlat-linux-x86_64-6.11-pti-user-ver with parallel
+ runs
+
+The xlat-linux-x86_64-6.11-pti-user and xlat-linux-x86_64-6.11-pti-user-ver
+test cases use the same input files, but the logic is flawed, because they
+also use the same output file names. That fails if both run in parallel.
+
+Fixes: #85
+Signed-off-by: Petr Tesarik <petr@tesarici.cz>
+---
+ tests/xlat-linux-x86_64-6.11-pti-user-ver |  2 +-
+ tests/xlat-os-common                      | 11 ++++++-----
+ 2 files changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/tests/xlat-linux-x86_64-6.11-pti-user-ver b/tests/xlat-linux-x86_64-6.11-pti-user-ver
+index 43d500d1..427985bc 100755
+--- a/tests/xlat-linux-x86_64-6.11-pti-user-ver
++++ b/tests/xlat-linux-x86_64-6.11-pti-user-ver
+@@ -14,5 +14,5 @@ opts=(
+     osver=0x060b00
+ )
+ 
+-name=xlat-linux-x86_64-6.11-pti-user
++srcname=xlat-linux-x86_64-6.11-pti-user
+ . "$srcdir"/xlat-os-common
+diff --git a/tests/xlat-os-common b/tests/xlat-os-common
+index a308a743..7dcdee91 100644
+--- a/tests/xlat-os-common
++++ b/tests/xlat-os-common
+@@ -4,13 +4,14 @@
+ 
+ mkdir -p out || exit 99
+ 
+-if [ -z "$name" ]; then
+-    name=$( basename "$0" )
++name=$( basename "$0" )
++if [ -z "$srcname" ]; then
++    srcname="$name"
+ fi
+ resultfile="out/${name}.result"
+-expectfile="$srcdir/$name.expect"
+-symfile="$srcdir/$name.sym"
+-datafile="$srcdir/$name.data"
++expectfile="$srcdir/$srcname.expect"
++symfile="$srcdir/$srcname.sym"
++datafile="$srcdir/$srcname.data"
+ cfgfile="out/${name}.cfg"
+ 
+ optspec=
+

@@ -1,0 +1,25 @@
+From c6bbf02a084a39a02d9e2fc318a59fe2f1ff55c1 Mon Sep 17 00:00:00 2001
+From: Transporter <OgreTransporter@users.noreply.github.com>
+Date: Sun, 26 May 2024 10:37:57 +0200
+Subject: [PATCH] Fix boost hash data type (#6053)
+
+* Fix boost hash data type
+
+* Change file name generation.
+--- a/visualization/src/pcl_visualizer.cpp
++++ b/visualization/src/pcl_visualizer.cpp
+@@ -4591,10 +4591,12 @@ pcl::visualization::PCLVisualizer::getUniqueCameraFile (int argc, char **argv)
+     // Build camera filename
+     if (valid)
+     {
+-      unsigned int digest[5];
++      boost::uuids::detail::sha1::digest_type digest;
+       sha1.get_digest (digest);
+       sstream << ".";
+-      sstream << std::hex << digest[0] << digest[1] << digest[2] << digest[3] << digest[4];
++      for (int i = 0; i < 5; ++i) {
++        sstream << std::hex << *(reinterpret_cast<unsigned int*>(&digest[0]) + i);
++      }
+       sstream << ".cam";
+     }
+   }

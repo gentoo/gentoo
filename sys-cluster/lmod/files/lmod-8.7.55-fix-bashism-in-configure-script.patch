@@ -1,0 +1,256 @@
+From 46c7622bf324fd61f032065053661a71b0c92af0 Mon Sep 17 00:00:00 2001
+From: Robert McLay <mclay@zaniahgroup.com>
+Date: Tue, 24 Dec 2024 15:52:07 -0700
+Subject: [PATCH] Issue #741: Change configure.ac to use only dash compatible
+ code
+
+---
+ configure                 | 24 ++++++++++++------------
+ configure.ac              | 24 ++++++++++++------------
+ proj_mgmt/DATE_cmd.sh     |  2 +-
+ proj_mgmt/convert_mode.sh |  2 +-
+ rt/end2end/end2end.tdesc  |  3 +--
+ 5 files changed, 27 insertions(+), 28 deletions(-)
+
+diff --git a/configure b/configure
+index 6c335867c..fc0015b5c 100755
+--- a/configure
++++ b/configure
+@@ -4435,7 +4435,7 @@ fi
+ if test ${with_lua+y}
+ then :
+   withval=$with_lua; PATH_TO_LUA="$withval"
+-    if test ${PATH_TO_LUA:0:1} != '/' ; then
++    if test $(printf %.1s "$PATH_TO_LUA") != '/' ; then
+       echo
+       echo "ERROR: Path to lua must be absolute!"
+       exit 1
+@@ -4459,7 +4459,7 @@ fi
+ if test ${with_luac+y}
+ then :
+   withval=$with_luac; PATH_TO_LUAC="$withval"
+-    if test ${PATH_TO_LUAC:0:1} != '/' ; then
++    if test $(printf %.1s "$PATH_TO_LUAC") != '/' ; then
+       echo
+       echo "ERROR: Path to luac must be absolute"
+       exit 1
+@@ -4735,7 +4735,7 @@ PATH_TO_SRC=$SRCDIR
+ 
+ 
+ 
+-if test $MODE == "user_default" ; then
++if test $MODE = "user_default" ; then
+   mode=0755
+   EXEC_BITS=$(( 0111 & $mode ));
+   if test $EXEC_BITS = 0; then
+@@ -5403,14 +5403,14 @@ test -n "$PATH_TO_LS" || PATH_TO_LS=""""
+ 
+ ##### LUA configuration -- start
+ 
+-if ! command -v $PATH_TO_LUA &>/dev/null ; then
++if ! (command -v $PATH_TO_LUA &>/dev/null) ; then
+   echo 'The program "'$PATH_TO_LUA'" must be in your path'
+   rm -f makefile
+   exit 1
+ fi
+ 
+ if test "${LUA_SUFFIX}" != no ; then
+-   if test "${PATH_TO_LUA:0:1}" = '/' -o "${PATH_TO_LUAC:0:1}" = '/'; then
++   if test $(printf %.1s "$PATH_TO_LUA") = '/' -o $(printf %.1s "$PATH_TO_LUA") = '/'; then
+       echo "Neither --with-lua= nor --with-luac= can be used with --with-luaSuffix="
+       rm -f makefile
+       exit 1
+@@ -5420,10 +5420,10 @@ if test "${LUA_SUFFIX}" != no ; then
+    echo "1) PATH_TO_LUA: $PATH_TO_LUA"
+ else
+    mismatch=
+-   if test "${PATH_TO_LUA:0:1}" = '/' -a "${PATH_TO_LUAC:0:1}" != '/'; then
++   if test $(printf %.1s "$PATH_TO_LUA") = '/' -a $(printf %.1s "$PATH_TO_LUA") != '/'; then
+       mismatch="true"
+    fi
+-   if test "${PATH_TO_LUA:0:1}" != '/' -a "${PATH_TO_LUAC:0:1}" = '/'; then
++   if test $(printf %.1s "$PATH_TO_LUA") != '/' -a $(printf %.1s "$PATH_TO_LUA") = '/'; then
+       mismatch="true"
+    fi
+    if test "$mismatch" = true ; then
+@@ -5433,13 +5433,13 @@ else
+    fi
+ fi
+ 
+-if ! command -v $PATH_TO_LUA &>/dev/null ; then
++if ! (command -v $PATH_TO_LUA &>/dev/null) ; then
+   echo 'The program "'$PATH_TO_LUA'" must be in your path'
+   rm -f makefile
+   exit 1
+ fi
+ 
+-if test ${PATH_TO_LUA:0:1} != '/' ; then
++if test $(printf %.1s "$PATH_TO_LUA") != '/' ; then
+   # Extract the first word of "$PATH_TO_LUA", so it can be a program name with args.
+ set dummy $PATH_TO_LUA; ac_word=$2
+ { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+@@ -5488,13 +5488,13 @@ fi
+   PATH_TO_LUA=$(FOLLOW_READLINK $FIND_PATH_TO_LUA)
+ fi
+ 
+-if ! command -v $PATH_TO_LUAC &>/dev/null ; then
++if ! (command -v $PATH_TO_LUAC &>/dev/null) ; then
+   echo 'The program "'$PATH_TO_LUAC'" must be in your path'
+   rm -f makefile
+   exit 1
+ fi
+ 
+-if test "${PATH_TO_LUAC:0:1}" != '/' ; then
++if test $(printf %.1s "$PATH_TO_LUA") != '/' ; then
+   # Extract the first word of "$PATH_TO_LUAC", so it can be a program name with args.
+ set dummy $PATH_TO_LUAC; ac_word=$2
+ { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+@@ -5589,7 +5589,7 @@ printf "checking for lua modules: posix"
+ 
+ missingModules=""
+ for i in posix; do
+-  if ! $PATH_TO_LUA $ac_confdir/proj_mgmt/luaModuleAvailable $i 2> /dev/null ; then
++  if ! ($PATH_TO_LUA $ac_confdir/proj_mgmt/luaModuleAvailable $i 2> /dev/null) ; then
+     missingModules="$missingModules $i"
+   fi
+ done
+diff --git a/configure.ac b/configure.ac
+index 1c9f0645a..90fb56d84 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -678,7 +678,7 @@ AC_SUBST(PATH_TO_LUA)
+ AC_ARG_WITH(lua,
+     AS_HELP_STRING([--with-lua=ans],[absolute path to the lua interpreter to use [[lua]]]),
+     PATH_TO_LUA="$withval"
+-    if test ${PATH_TO_LUA:0:1} != '/' ; then
++    if test $(printf %.1s "$PATH_TO_LUA") != '/' ; then
+       echo 
+       echo "ERROR: Path to lua must be absolute!"
+       exit 1
+@@ -695,7 +695,7 @@ AC_SUBST(PATH_TO_LUAC)
+ AC_ARG_WITH(luac,
+     AS_HELP_STRING([--with-luac=ans],[absolute path to the luac interpreter to use [[luac]]]),
+     PATH_TO_LUAC="$withval"
+-    if test ${PATH_TO_LUAC:0:1} != '/' ; then
++    if test $(printf %.1s "$PATH_TO_LUAC") != '/' ; then
+       echo 
+       echo "ERROR: Path to luac must be absolute"
+       exit 1
+@@ -816,7 +816,7 @@ AC_SUBST(PATH_TO_HASHSUM)
+ AC_SUBST(PATH_TO_PAGER)
+ AC_SUBST(PATH_TO_TCLSH)
+ 
+-if test $MODE == "user_default" ; then
++if test $MODE = "user_default" ; then
+   mode=0755
+   EXEC_BITS=$(( 0111 & $mode ));
+   if test $EXEC_BITS = 0; then
+@@ -909,14 +909,14 @@ AC_PATH_PROGS(PATH_TO_LS, [gls] [ls], "")
+ 
+ ##### LUA configuration -- start
+ 
+-if ! command -v $PATH_TO_LUA &>/dev/null ; then
++if ! (command -v $PATH_TO_LUA &>/dev/null) ; then
+   echo 'The program "'$PATH_TO_LUA'" must be in your path'
+   rm -f makefile
+   exit 1
+ fi
+ 
+ if test "${LUA_SUFFIX}" != no ; then
+-   if test "${PATH_TO_LUA:0:1}" = '/' -o "${PATH_TO_LUAC:0:1}" = '/'; then
++   if test $(printf %.1s "$PATH_TO_LUA") = '/' -o $(printf %.1s "$PATH_TO_LUA") = '/'; then
+       echo "Neither --with-lua= nor --with-luac= can be used with --with-luaSuffix="
+       rm -f makefile
+       exit 1
+@@ -926,10 +926,10 @@ if test "${LUA_SUFFIX}" != no ; then
+    echo "1) PATH_TO_LUA: $PATH_TO_LUA"
+ else   
+    mismatch=
+-   if test "${PATH_TO_LUA:0:1}" = '/' -a "${PATH_TO_LUAC:0:1}" != '/'; then
++   if test $(printf %.1s "$PATH_TO_LUA") = '/' -a $(printf %.1s "$PATH_TO_LUA") != '/'; then
+       mismatch="true"
+    fi
+-   if test "${PATH_TO_LUA:0:1}" != '/' -a "${PATH_TO_LUAC:0:1}" = '/'; then
++   if test $(printf %.1s "$PATH_TO_LUA") != '/' -a $(printf %.1s "$PATH_TO_LUA") = '/'; then
+       mismatch="true"
+    fi
+    if test "$mismatch" = true ; then
+@@ -939,24 +939,24 @@ else
+    fi   
+ fi
+ 
+-if ! command -v $PATH_TO_LUA &>/dev/null ; then
++if ! (command -v $PATH_TO_LUA &>/dev/null) ; then
+   echo 'The program "'$PATH_TO_LUA'" must be in your path'
+   rm -f makefile
+   exit 1
+ fi
+ 
+-if test ${PATH_TO_LUA:0:1} != '/' ; then
++if test $(printf %.1s "$PATH_TO_LUA") != '/' ; then
+   AC_PATH_PROG(FIND_PATH_TO_LUA, $PATH_TO_LUA)
+   PATH_TO_LUA=$(FOLLOW_READLINK $FIND_PATH_TO_LUA)
+ fi
+ 
+-if ! command -v $PATH_TO_LUAC &>/dev/null ; then
++if ! (command -v $PATH_TO_LUAC &>/dev/null) ; then
+   echo 'The program "'$PATH_TO_LUAC'" must be in your path'
+   rm -f makefile
+   exit 1
+ fi
+ 
+-if test "${PATH_TO_LUAC:0:1}" != '/' ; then
++if test $(printf %.1s "$PATH_TO_LUA") != '/' ; then
+   AC_PATH_PROG(FIND_PATH_TO_LUAC, $PATH_TO_LUAC)
+   PATH_TO_LUAC=$(FOLLOW_READLINK $FIND_PATH_TO_LUAC)
+ fi
+@@ -1007,7 +1007,7 @@ printf "checking for lua modules: posix"
+ 
+ missingModules=""
+ for i in posix; do
+-  if ! $PATH_TO_LUA $ac_confdir/proj_mgmt/luaModuleAvailable $i 2> /dev/null ; then
++  if ! ($PATH_TO_LUA $ac_confdir/proj_mgmt/luaModuleAvailable $i 2> /dev/null) ; then
+     missingModules="$missingModules $i"
+   fi
+ done
+diff --git a/proj_mgmt/DATE_cmd.sh b/proj_mgmt/DATE_cmd.sh
+index 1c01fd3ba..059cfc07e 100755
+--- a/proj_mgmt/DATE_cmd.sh
++++ b/proj_mgmt/DATE_cmd.sh
+@@ -1,4 +1,4 @@
+-#!/bin/bash 
++#!/bin/sh
+ # -*- shell-script -*-
+ 
+ arg="$1"
+diff --git a/proj_mgmt/convert_mode.sh b/proj_mgmt/convert_mode.sh
+index e56627ee3..51ada7521 100755
+--- a/proj_mgmt/convert_mode.sh
++++ b/proj_mgmt/convert_mode.sh
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/bin/sh
+ # -*- shell-script -*-
+ 
+ KIND=$1
+diff --git a/rt/end2end/end2end.tdesc b/rt/end2end/end2end.tdesc
+index 8371d7fff..bc749ed08 100644
+--- a/rt/end2end/end2end.tdesc
++++ b/rt/end2end/end2end.tdesc
+@@ -29,7 +29,6 @@ testdescript = {
+      DIR=Lmod
+      dir=lmod
+ 
+-
+      remove_generated_lmod_files build b0 lmod results.csv
+ 
+      GIT_BRANCH=`git status | head -n 1 | sed -e 's/^[# ]*On branch //g' -e 's/^[# ]*HEAD detached at//g'`
+@@ -37,7 +36,7 @@ testdescript = {
+      LmodV=`$LUA_EXEC $projectDir/src/$CMD bash --dumpversion 2>&1`
+      echo LmodV=$LmodV
+      mkdir b0
+-     (cd b0; $(projectDir)/configure --prefix=$(outputDir)/b0 --with-useBuiltinPkgs=yes)
++     (cd b0; sh $(projectDir)/configure --prefix=$(outputDir)/b0 --with-useBuiltinPkgs=yes)
+      (cd $(projectDir); make -f $(outputDir)/b0/makefile dist GIT_BRANCH=$GIT_BRANCH)
+      tar xf $projectDir/${DIR}-$LmodV.tar.bz2
+      rm -rf $projectDir/${DIR}-$LmodV.tar.bz2

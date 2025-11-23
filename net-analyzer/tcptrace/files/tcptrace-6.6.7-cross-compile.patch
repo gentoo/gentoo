@@ -1,0 +1,50 @@
+--- a/configure.in
++++ b/configure.in
+@@ -3,8 +3,6 @@
+ 
+ AC_CANONICAL_SYSTEM
+ 
+-AC_LBL_C_INIT(V_CCOPT, V_INCLS)
+-
+ dnl Checks for programs.
+ AC_PROG_CC
+ AC_PROG_MAKE_SET
+@@ -43,13 +41,12 @@
+ dnl check for the IPv6 routines inet_pton
+ AC_CHECK_FUNCS(inet_pton)
+ 
+-AC_MSG_CHECKING(how to print unsigned long long)
+-AC_SUBST(FS_ULL)
+ dnl AC_TRY_RUN is a test program that performs a run-time test to find out
+ dnl the correct syntax to print unsigned long long ints in printf stmts.
+ dnl If strcmp returns 0, we are on an enironment that uses %llu, otherwise
+ dnl we are on a MacOSX environment that uses %qu
+-AC_TRY_RUN([
++AC_CACHE_CHECK([how to print unsigned long long], ac_cv_unsigned_long_long_printf_format,
++  [AC_TRY_RUN([
+ #include <stdio.h>
+ 
+ #define NIX "%llu"
+@@ -63,11 +60,17 @@
+      exit (0);
+   else
+      exit (1);
+-}],
+-AC_DEFINE(USE_LLU)
+-AC_MSG_RESULT(%llu), 
+-AC_MSG_RESULT(%qu),
+-AC_MSG_ERROR(can not run test program while cross compiling))
++}
++    ],
++    ac_cv_unsigned_long_long_printf_format=%llu,
++    ac_cv_unsigned_long_long_printf_format=%qu,
++    [AS_ECHO_N(["cross-comiling, assuming "])]
++    ac_cv_unsigned_long_long_printf_format=%llu
++  )]
++)
++AS_IF([test $ac_cv_unsigned_long_long_printf_format = %llu],
++  AC_DEFINE(USE_LLU)
++)
+ 
+ dnl Grab standard includes under weird Linux versions
+ dnl case "$target_os" in

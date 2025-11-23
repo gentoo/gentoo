@@ -1,0 +1,38 @@
+From 93f53971adfbb9269b589fcce268560b49cd1f83 Mon Sep 17 00:00:00 2001
+From: Kai Uwe Broulik <kai.uwe.broulik@basyskom.com>
+Date: Thu, 19 Sep 2024 12:10:32 +0000
+Subject: [PATCH] KFilePlacesItem: Use Solid to find home mount point
+
+KMountPoints potentially parses MTAB which can be slow.
+Instead, use Solid which already has a cache of all the devices.
+
+The impact on a typical system is negligible but real-world
+testing on a system with lots of network shares showed a
+speed-up of over 80% in this code path.
+
+Signed-off-by: Kiriakos Antoniadis <kiriakos.antoniadis@advantest.com>
+
+(cherry picked from commit b5d45a857e6fdb3fb7b08e44753eef203ea605c6)
+---
+ src/filewidgets/kfileplacesitem.cpp | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/filewidgets/kfileplacesitem.cpp b/src/filewidgets/kfileplacesitem.cpp
+index 4aa562a4f9..3af8a0f1d4 100644
+--- a/src/filewidgets/kfileplacesitem.cpp
++++ b/src/filewidgets/kfileplacesitem.cpp
+@@ -531,8 +531,9 @@ void KFilePlacesItem::onAccessibilityChanged(bool isAccessible)
+         if (m_access->filePath() == QDir::rootPath()) {
+             m_isTeardownAllowed = false;
+         } else {
+-            KMountPoint::Ptr mountPoint = KMountPoint::currentMountPoints().findByPath(QDir::homePath());
+-            if (mountPoint && m_access->filePath() == mountPoint->mountPoint()) {
++            const auto homeDevice = Solid::Device::storageAccessFromPath(QDir::homePath());
++            const auto *homeAccess = homeDevice.as<Solid::StorageAccess>();
++            if (homeAccess && m_access->filePath() == homeAccess->filePath()) {
+                 m_isTeardownAllowed = false;
+             }
+         }
+-- 
+GitLab
+

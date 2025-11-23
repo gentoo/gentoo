@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>amadio@gentoo.org</email>
+    <name>Guilherme Amadio</name>
+  </maintainer>
+  <longdescription lang="en">
+  This library provides an implementation of macaroons, which are flexible
+  authorization tokens that work great in distributed systems. Like cookies,
+  macaroons are bearer tokens that enable applications to ascertain whether
+  their holders' actions are authorized.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">rescrv/libmacaroons</remote-id>
+  </upstream>
+</pkgmetadata>

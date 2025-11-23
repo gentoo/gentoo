@@ -1,0 +1,16 @@
+--- ng-1.5beta1/sys/unix/configure.in
++++ ng-1.5beta1/sys/unix/configure.in
+@@ -33,9 +33,11 @@
+ 	[  --with-termcap          Build with termcap library. (default)],
+ 	[ts_with_terminfo="no"])
+ if test "$ts_with_terminfo" = "yes"; then
+- AC_SEARCH_LIBS(tgetstr, curses ncurses termlib)
++ AC_SEARCH_LIBS(tgetstr, ncurses termlib)
++ AC_SEARCH_LIBS(tputs, tinfo ncurses termlib)
+ else
+- AC_SEARCH_LIBS(tgetstr, termcap curses ncurses)
++ AC_SEARCH_LIBS(tgetstr, termcap ncurses)
++ AC_SEARCH_LIBS(tputs, termcap tinfo ncurses)
+ fi
+ 
+ dnl Checks for header files.

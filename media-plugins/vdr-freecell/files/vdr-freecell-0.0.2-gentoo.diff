@@ -1,0 +1,24 @@
+diff -Naur freecell-0.0.2.orig/cards.c freecell-0.0.2/cards.c
+--- freecell-0.0.2.orig/cards.c	2007-01-08 22:50:05.921165375 +0100
++++ freecell-0.0.2/cards.c	2007-01-08 22:53:55.358240251 +0100
+@@ -34,7 +34,7 @@
+ 	mShape = Shape;
+ 	mValue = Value;
+ 	
+-	asprintf(&filename, "%s/%s_%s.xpm", cPlugin::ConfigDirectory("freecell"), 
++	asprintf(&filename, "%s/%s_%s.xpm", cPlugin::ConfigDirectory("../../../usr/share/vdr/freecell"), 
+ 			ShapeNames[mShape], ValueNames[mValue]);
+ 	::LoadXpm(this, filename);
+ 	free(filename);
+diff -Naur freecell-0.0.2.orig/cursor.c freecell-0.0.2/cursor.c
+--- freecell-0.0.2.orig/cursor.c	2007-01-08 22:50:05.921165375 +0100
++++ freecell-0.0.2/cursor.c	2007-01-08 22:52:58.234984984 +0100
+@@ -8,7 +8,7 @@
+ 
+ 	mX = mY = -1;
+ 
+-	asprintf(&filename, "%s/cursor.xpm", cPlugin::ConfigDirectory("freecell"));
++	asprintf(&filename, "%s/cursor.xpm", cPlugin::ConfigDirectory("../../../usr/share/vdr/freecell"));
+ 	::LoadXpm(this, filename, clrTransparent);
+ 	free(filename);
+ }

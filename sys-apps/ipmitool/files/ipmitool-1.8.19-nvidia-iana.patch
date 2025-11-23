@@ -1,0 +1,23 @@
+Description: Add IANA ID for NVIDIA hardware
+ Add the NVIDIA IANA ID to the hardcoded list used in ipmitool <= 1.8.18.
+ After upstream commit "9d41136 ID:491 - Fetch vendor IDs from IANA", ipmitool
+ generates a list of vendor IDs dynamically at build time, so we can drop this
+ patch in future releases.
+Author: dann frazier <dannf@debian.org>
+Origin: backport
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=903616
+Forwarded: not-needed
+Last-Update: 2020-10-21
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+diff -Nuar --exclude '*.orig' --exclude '*.rej' ipmitool-50d8c36edf9657720e25445a435dabc44572cf5f.orig/include/ipmitool/ipmi.h ipmitool-50d8c36edf9657720e25445a435dabc44572cf5f/include/ipmitool/ipmi.h
+--- ipmitool-50d8c36edf9657720e25445a435dabc44572cf5f.orig/include/ipmitool/ipmi.h	2020-08-07 00:53:06.000000000 -0700
++++ ipmitool-50d8c36edf9657720e25445a435dabc44572cf5f/include/ipmitool/ipmi.h	2020-10-21 14:04:11.675128602 -0700
+@@ -281,6 +281,7 @@
+      /* 4769 for [IBM Corporation] */
+      IPMI_OEM_IBM_4769   = 4769,
+      IPMI_OEM_MAGNUM     = 5593,
++     IPMI_OEM_NVIDIA     = 5703,
+      IPMI_OEM_TYAN       = 6653,
+      IPMI_OEM_QUANTA     = 7244,
+      IPMI_OEM_VIKING     = 9237,

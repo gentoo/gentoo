@@ -1,0 +1,39 @@
+From e3572d266d9b42affc1335e092e461709b29cdea Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Fri, 31 May 2024 17:59:30 +0200
+Subject: [PATCH] Replace additional use of `which(1)` with `shutil.which()`
+
+Replace the remaining use of external `which(1)` tool with
+`shutil.which()` from the standard Python library, finally removing
+the dependency on a third party package.
+
+This is a followup to 1024f4f64ceabd612b4df9a0b9dbe2691b2f5f9d.
+---
+ nodeenv.py | 10 +++-------
+ 1 file changed, 3 insertions(+), 7 deletions(-)
+
+diff --git a/nodeenv.py b/nodeenv.py
+index bbc19fb..a41cd5d 100644
+--- a/nodeenv.py
++++ b/nodeenv.py
+@@ -930,14 +930,10 @@ def install_activate(env_dir, args):
+     prompt = args.prompt or '(%s)' % os.path.basename(os.path.abspath(env_dir))
+ 
+     if args.node == "system":
+-        env = os.environ.copy()
+-        env.update({'PATH': remove_env_bin_from_path(env['PATH'], bin_dir)})
++        path_var = remove_env_bin_from_path(os.environ['PATH'], bin_dir)
+         for candidate in ("nodejs", "node"):
+-            which_node_output, _ = subprocess.Popen(
+-                ["which", candidate],
+-                stdout=subprocess.PIPE, env=env).communicate()
+-            shim_node = clear_output(which_node_output)
+-            if shim_node:
++            shim_node = shutil.which(candidate, path=path_var)
++            if shim_node is not None:
+                 break
+         assert shim_node, "Did not find nodejs or node system executable"
+ 
+-- 
+2.45.1
+

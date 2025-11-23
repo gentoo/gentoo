@@ -1,0 +1,41 @@
+From e16195f28669264227c169d45107ea95b83d8f48 Mon Sep 17 00:00:00 2001
+From: Alexander Tsoy <alexander@tsoy.me>
+Date: Tue, 16 Jul 2024 08:48:54 +0300
+Subject: [PATCH] fix(systemd): move installation of libkmod to udev-rules
+ module
+
+libkmod library should be installed even if systemd module is
+omitted, so move its installation to udev-rules module.
+---
+ modules.d/00systemd/module-setup.sh    | 1 -
+ modules.d/95udev-rules/module-setup.sh | 6 +++++-
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/modules.d/00systemd/module-setup.sh b/modules.d/00systemd/module-setup.sh
+index ce7bb520c..e4fb9a586 100755
+--- a/modules.d/00systemd/module-setup.sh
++++ b/modules.d/00systemd/module-setup.sh
+@@ -171,6 +171,5 @@ EOF
+     _arch=${DRACUT_ARCH:-$(uname -m)}
+     inst_libdir_file \
+         {"tls/$_arch/",tls/,"$_arch/",}"libgcrypt.so*" \
+-        {"tls/$_arch/",tls/,"$_arch/",}"libkmod.so*" \
+         {"tls/$_arch/",tls/,"$_arch/",}"libnss_*"
+ }
+diff --git a/modules.d/95udev-rules/module-setup.sh b/modules.d/95udev-rules/module-setup.sh
+index d82ed5eb9..6078751f6 100755
+--- a/modules.d/95udev-rules/module-setup.sh
++++ b/modules.d/95udev-rules/module-setup.sh
+@@ -93,7 +93,11 @@ install() {
+         "${udevdir}"/usb_id \
+         "${udevdir}"/v4l_id
+ 
+-    inst_libdir_file "libnss_files*"
++    # Install required libraries.
++    _arch=${DRACUT_ARCH:-$(uname -m)}
++    inst_libdir_file \
++        {"tls/$_arch/",tls/,"$_arch/",}"libkmod.so*" \
++        {"tls/$_arch/",tls/,"$_arch/",}"libnss_files*"
+ 
+     # Install the hosts local user configurations if enabled.
+     if [[ $hostonly ]]; then

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>dotnet@gentoo.org</email>
+    <name>Gentoo Dotnet Project</name>
+  </maintainer>
+  <upstream>
+    <bugs-to>https://gitlab.com/StartAutomating/Irregular/issues/</bugs-to>
+    <remote-id type="github">StartAutomating/Irregular</remote-id>
+  </upstream>
+</pkgmetadata>

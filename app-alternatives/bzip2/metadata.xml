@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
+	<use>
+		<flag name="lbzip2">
+			Symlink to <pkg>app-arch/lbzip2</pkg>.
+		</flag>
+		<flag name="pbzip2">
+			Symlink to <pkg>app-arch/pbzip2</pkg>.
+		</flag>
+		<flag name="reference">
+			Symlink to <pkg>app-arch/bzip2</pkg>.
+		</flag>
+	</use>
+</pkgmetadata>

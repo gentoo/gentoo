@@ -1,0 +1,11 @@
+--- a/libportal/meson.build
++++ b/libportal/meson.build
+@@ -280,7 +280,7 @@
+ 
+ if meson.version().version_compare('>= 0.63.0')
+    have_cpp = add_languages('cpp', required: get_option('backend-qt6'), native: false)
+-   qt6_dep = dependency('qt6', modules: ['Core', 'Gui', 'Widgets'], private_headers: true, required: get_option('backend-qt6'))
++   qt6_dep = dependency('qt6', modules: ['Core', 'Gui'], private_headers: true, required: get_option('backend-qt6'))
+ 
+    if have_cpp and qt6_dep.found()
+      qt6_headers = ['portal-qt6.h']

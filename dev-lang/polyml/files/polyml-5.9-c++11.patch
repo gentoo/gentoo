@@ -1,0 +1,11 @@
+--- a/libpolyml/xwindows.cpp	2023-01-22 10:40:35.855024465 +0100
++++ b/libpolyml/xwindows.cpp	2023-01-22 10:41:00.798613288 +0100
+@@ -7274,7 +7274,7 @@
+                              : printf("Old Display <%p>",P.AsAddress()));
+             return;
+             
+-        default:         printf("Pointer "ZERO_X"%p",P.AsAddress());
++        default:         printf("Pointer %p",P.AsAddress());
+             return;
+         }
+     }

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>mario.haustein@hrz.tu-chemnitz.de</email>
+		<name>Mario Haustein</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		YARA is a tool aimed at (but not limited to) helping malware
+		researchers to identify and classify malware samples. With YARA you can
+		create descriptions of malware families (or whatever you want to
+		describe) based on textual or binary patterns.
+
+		YARA-X is a re-incarnation of YARA rewritten in Rust, eventually
+		replacing YARA.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">VirusTotal/yara-x</remote-id>
+	</upstream>
+</pkgmetadata>

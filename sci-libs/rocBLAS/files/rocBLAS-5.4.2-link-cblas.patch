@@ -1,0 +1,12 @@
+Fix CPU blas function not found linking issue
+--- a/clients/CMakeLists.txt
++++ b/clients/CMakeLists.txt
+@@ -119,7 +119,7 @@ if( BUILD_CLIENTS_BENCHMARKS OR BUILD_CLIENTS_TESTS)
+       set( BLIS_CPP ../common/blis_interface.cpp )
+       set( BLAS_LIBRARY ${BUILD_DIR}/deps/blis/lib/libblis.a )
+     else()
+-      set( BLAS_LIBRARY "blas" )
++      set( BLAS_LIBRARY "blas -lcblas" )
+     endif()
+   else() # WIN32
+     set( BLAS_INCLUDE_DIR ${OPENBLAS_DIR}/include CACHE PATH "OpenBLAS library include path" )

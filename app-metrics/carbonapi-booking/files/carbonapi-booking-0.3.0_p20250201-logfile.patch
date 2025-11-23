@@ -1,0 +1,14 @@
+- don't log to stdout
+- change log to be under subdir so ebuild can manage its permissions
+
+--- carbonapi-0.3.0/config/carbonapi.yaml
++++ carbonapi-0.3.0/config/carbonapi.yaml
+@@ -130,7 +130,7 @@
+     - X-Real-Ip
+     - X-Webauth-User
+ loggerConfig:
+-  outputPaths: ["stdout"]
++  outputPaths: ["/var/log/carbonapi/carbonapi.log"]
+   level: "info"
+   encoding: "json"
+ 

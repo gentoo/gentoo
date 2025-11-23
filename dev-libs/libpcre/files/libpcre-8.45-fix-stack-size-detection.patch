@@ -1,0 +1,18 @@
+https://bugs.exim.org/show_bug.cgi?id=2173#c4
+https://bugs.gentoo.org/910188
+https://github.com/MariaDB/server/pull/2700
+--- a/pcre_exec.c
++++ b/pcre_exec.c
+@@ -509,6 +509,12 @@
+                  (e.g. stopped by repeated call or recursion limit)
+ */
+ 
++#ifdef __GNUC__
++static int
++match(REGISTER PCRE_PUCHAR eptr, REGISTER const pcre_uchar *ecode,
++  PCRE_PUCHAR mstart, int offset_top, match_data *md, eptrblock *eptrb,
++  unsigned int rdepth) __attribute__((optnone,noinline,noclone));
++#endif
+ static int
+ match(REGISTER PCRE_PUCHAR eptr, REGISTER const pcre_uchar *ecode,
+   PCRE_PUCHAR mstart, int offset_top, match_data *md, eptrblock *eptrb,

@@ -1,0 +1,28 @@
+From 663aaa7eefbf9dcad54c8c7f4c463bf289a9b907 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Wed, 28 Mar 2018 23:46:13 +1300
+Subject: Move to a TAP::Harness friendly test layout
+
+---
+ MANIFEST           | 2 +-
+ test.pl => t/x11.t | 0
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+ rename test.pl => t/x11.t (100%)
+
+diff --git a/MANIFEST b/MANIFEST
+index 24c14b7..8648607 100644
+--- a/MANIFEST
++++ b/MANIFEST
+@@ -33,4 +33,4 @@ eg/widgets2.pl				X11-Motif version of widget example
+ eg/widgets3.pl				Unfinished OO-interface widget example
+ eg/widgets.c				C Xlib version of widget example
+ eg/wintree.pl				Window hierarchy utility example
+-test.pl					Short test of Protocol.pm et al.
++t/x11.t					Short test of Protocol.pm et al.
+diff --git a/test.pl b/t/x11.t
+similarity index 100%
+rename from test.pl
+rename to t/x11.t
+-- 
+2.16.2
+

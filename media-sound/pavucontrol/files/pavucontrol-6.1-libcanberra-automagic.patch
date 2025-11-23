@@ -1,0 +1,39 @@
+https://bugs.gentoo.org/950761
+https://gitlab.freedesktop.org/pulseaudio/pavucontrol/-/merge_requests/104
+
+From 53b44d9ccd2e095a9c0ce1511e122e4ed37bbbb5 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Mon, 10 Mar 2025 20:44:02 +0200
+Subject: [PATCH] Add a option for controlling libcanberra feature
+
+The retains the previous behavior of automagic except it allows the user to
+explicitly enable or disable the feature.
+
+Chose to call the feature a more agnostic "audio-feedback".
+
+Bug: https://bugs.gentoo.org/950761
+See-Also: 22b04fff6e881b4e0a1b8344a6513bdf99a10c65
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/meson.build
++++ b/meson.build
+@@ -10,7 +10,7 @@ cpp = meson.get_compiler('cpp')
+ 
+ gtkmm_dep = dependency('gtkmm-4.0', version : '>= 4.0', required : true)
+ sigcpp_dep = dependency('sigc++-3.0', required : true)
+-canberragtk_dep = dependency('libcanberra', version : '>= 0.16', required : false)
++canberragtk_dep = dependency('libcanberra', version : '>= 0.16', required : get_option('audio-feedback'))
+ 
+ libpulse_dep = dependency('libpulse', version : '>= 5.0', required : true)
+ libpulsemlglib_dep = dependency('libpulse-mainloop-glib', version : '>= 0.9.16', required : true)
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -1,3 +1,6 @@
+ option('lynx',
+        type : 'boolean', value : true,
+        description : 'Enable building of the README text file for installation')
++option('audio-feedback',
++       type : 'feature', value: 'auto',
++       description : 'Play a sound when you change the volume of a sink')
+-- 
+GitLab
+

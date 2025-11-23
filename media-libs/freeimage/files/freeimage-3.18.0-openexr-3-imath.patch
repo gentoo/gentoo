@@ -1,0 +1,144 @@
+diff --git a/Source/FreeImage/PluginEXR.cpp b/Source/FreeImage/PluginEXR.cpp
+index faa8037..e88bd2d 100644
+--- a/Source/FreeImage/PluginEXR.cpp
++++ b/Source/FreeImage/PluginEXR.cpp
+@@ -28,16 +28,32 @@
+ #pragma warning (disable : 4800) // ImfVersion.h - 'const int' : forcing value to bool 'true' or 'false' (performance warning)
+ #endif 
+ 
+-#include <ImfIO.h>
+-#include <Iex.h>
+-#include <ImfOutputFile.h>
+-#include <ImfInputFile.h>
+-#include <ImfRgbaFile.h>
+-#include <ImfChannelList.h>
+-#include <ImfRgba.h>
+-#include <ImfArray.h>
+-#include <ImfPreviewImage.h>
+-#include <half.h>
++#include <OpenEXR/ImfIO.h>
++#include <OpenEXR/Iex.h>
++#include <OpenEXR/ImfOutputFile.h>
++#include <OpenEXR/ImfInputFile.h>
++#include <OpenEXR/ImfRgbaFile.h>
++#include <OpenEXR/ImfChannelList.h>
++#include <OpenEXR/ImfRgba.h>
++#include <OpenEXR/ImfArray.h>
++#include <OpenEXR/ImfPreviewImage.h>
++
++// The version can reliably be found in this header file from OpenEXR,
++// for both 2.x and 3.x:
++#include <OpenEXR/OpenEXRConfig.h>
++#define COMBINED_OPENEXR_VERSION ((10000*OPENEXR_VERSION_MAJOR) + \
++                                  (100*OPENEXR_VERSION_MINOR) + \
++                                  OPENEXR_VERSION_PATCH)
++
++// There's just no easy way to have an `#include` that works in both
++// cases, so we use the version to switch which set of include files we
++// use.
++#if COMBINED_OPENEXR_VERSION >= 20599 /* 2.5.99: pre-3.0 */
++#   include <Imath/half.h>
++#else
++    // OpenEXR 2.x, use the old locations
++#   include <OpenEXR/half.h>
++#endif
+ 
+ 
+ // ==========================================================
+@@ -66,11 +82,11 @@ public:
+ 		return ((unsigned)n != _io->read_proc(c, 1, n, _handle));
+ 	}
+ 
+-	virtual Imath::Int64 tellg() {
++	virtual uint64_t tellg() {
+ 		return _io->tell_proc(_handle);
+ 	}
+ 
+-	virtual void seekg(Imath::Int64 pos) {
++	virtual void seekg(uint64_t pos) {
+ 		_io->seek_proc(_handle, (unsigned)pos, SEEK_SET);
+ 	}
+ 
+@@ -100,11 +116,11 @@ public:
+ 		}
+ 	}
+ 
+-	virtual Imath::Int64 tellp() {
++	virtual uint64_t tellp() {
+ 		return _io->tell_proc(_handle);
+ 	}
+ 
+-	virtual void seekp(Imath::Int64 pos) {
++	virtual void seekp(uint64_t pos) {
+ 		_io->seek_proc(_handle, (unsigned)pos, SEEK_SET);
+ 	}
+ };
+diff --git a/Source/FreeImage/PluginTIFF.cpp b/Source/FreeImage/PluginTIFF.cpp
+index b9da767..96da4d7 100644
+--- a/Source/FreeImage/PluginTIFF.cpp
++++ b/Source/FreeImage/PluginTIFF.cpp
+@@ -39,7 +39,24 @@
+ #include "Utilities.h"
+ #include "tiffiop.h"
+ #include "../Metadata/FreeImageTag.h"
+-#include <half.h>
++// The version can reliably be found in this header file from OpenEXR,
++// for both 2.x and 3.x:
++#include <OpenEXR/OpenEXRConfig.h>
++#define COMBINED_OPENEXR_VERSION ((10000*OPENEXR_VERSION_MAJOR) + \
++                                  (100*OPENEXR_VERSION_MINOR) + \
++                                  OPENEXR_VERSION_PATCH)
++
++// There's just no easy way to have an `#include` that works in both
++// cases, so we use the version to switch which set of include files we
++// use.
++#if COMBINED_OPENEXR_VERSION >= 20599 /* 2.5.99: pre-3.0 */
++#   include <Imath/ImathVec.h>
++#   include <Imath/half.h>
++#else
++    // OpenEXR 2.x, use the old locations
++#   include <OpenEXR/ImathVec.h>
++#   include <OpenEXR/half.h>
++#endif
+ 
+ #include "FreeImageIO.h"
+ #include "PSDParser.h"
+diff --git a/Makefile.fip b/Makefile.fip
+index 60bedbc..193126d 100644
+--- a/Makefile.fip
++++ b/Makefile.fip
+@@ -28,7 +28,7 @@ LIBRARIES-$(USE_JPEG)   += -ljpeg
+ LIBRARIES-$(USE_JPEG2K) += $(shell $(PKG_CONFIG) --libs libopenjp2)
+ LIBRARIES-$(USE_MNG)    += -lmng
+ LIBRARIES-$(USE_PNG)    += $(shell $(PKG_CONFIG) --libs libpng)
+-LIBRARIES-$(USE_TIFF)   += $(shell $(PKG_CONFIG) --libs libtiff-4 IlmBase)
++LIBRARIES-$(USE_TIFF)   += $(shell $(PKG_CONFIG) --libs libtiff-4 Imath)
+ LIBRARIES-$(USE_RAW)    += $(shell $(PKG_CONFIG) --libs libraw)
+ LIBRARIES-$(USE_WEBP)    += $(shell $(PKG_CONFIG) --libs libwebp libwebpmux)
+ 
+diff --git a/Makefile.gnu b/Makefile.gnu
+index b11c554..3de5a1b 100644
+--- a/Makefile.gnu
++++ b/Makefile.gnu
+@@ -28,7 +28,7 @@ LIBRARIES-$(USE_JPEG)   += -ljpeg
+ LIBRARIES-$(USE_JPEG2K) += $(shell $(PKG_CONFIG) --libs libopenjp2)
+ LIBRARIES-$(USE_MNG)    += -lmng
+ LIBRARIES-$(USE_PNG)    += $(shell $(PKG_CONFIG) --libs libpng)
+-LIBRARIES-$(USE_TIFF)   += $(shell $(PKG_CONFIG) --libs libtiff-4 IlmBase)
++LIBRARIES-$(USE_TIFF)   += $(shell $(PKG_CONFIG) --libs libtiff-4 Imath)
+ LIBRARIES-$(USE_RAW)    += $(shell $(PKG_CONFIG) --libs libraw)
+ LIBRARIES-$(USE_WEBP)    += $(shell $(PKG_CONFIG) --libs libwebp libwebpmux)
+ 
+diff --git a/Makefile.srcs b/Makefile.srcs
+index 26e1a6d..d97eacf 100644
+--- a/Makefile.srcs
++++ b/Makefile.srcs
+@@ -180,7 +180,7 @@ INCLUDE-$(USE_JPEG)   += -DUSE_JPEG
+ INCLUDE-$(USE_JPEG2K) += -DUSE_JPEG2K $(shell $(PKG_CONFIG) --cflags-only-I libopenjp2)
+ INCLUDE-$(USE_MNG)    += -DUSE_MNG
+ INCLUDE-$(USE_PNG)    += -DUSE_PNG    $(shell $(PKG_CONFIG) --cflags-only-I libpng)
+-INCLUDE-$(USE_TIFF)   += -DUSE_TIFF   $(shell $(PKG_CONFIG) --cflags-only-I libtiff-4 IlmBase)
++INCLUDE-$(USE_TIFF)   += -DUSE_TIFF   $(shell $(PKG_CONFIG) --cflags-only-I libtiff-4 Imath)
+ INCLUDE-$(USE_RAW)    += -DUSE_RAW    $(shell $(PKG_CONFIG) --cflags-only-I libraw)
+ INCLUDE-$(USE_WEBP)   += -DUSE_WEBP   $(shell $(PKG_CONFIG) --cflags-only-I libwebp libwebpmux)
+ INCLUDE = $(INCLUDE-yes)

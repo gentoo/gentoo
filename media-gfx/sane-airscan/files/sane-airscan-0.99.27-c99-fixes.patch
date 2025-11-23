@@ -1,0 +1,61 @@
+From c042a6895fe6f663d4bcb8c27d1c7b34fbd68b48 Mon Sep 17 00:00:00 2001
+From: Alexander Pevzner <pzz@apevzner.com>
+Date: Sat, 2 Dec 2023 21:49:40 +0300
+Subject: [PATCH 1/2] Fixed missed #include <stdlib.h> (see #305)
+
+This code used to compile on everywhere, but explicit #include <stdlib.h>
+was actually missed. Seems that sometimes it can cause problems.
+---
+ airscan-xml.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/airscan-xml.c b/airscan-xml.c
+index f376f31..5071ca9 100644
+--- a/airscan-xml.c
++++ b/airscan-xml.c
+@@ -9,6 +9,7 @@
+ #include "airscan.h"
+ 
+ #include <fnmatch.h>
++#include <stdlib.h>
+ 
+ #include <libxml/parser.h>
+ #include <libxml/tree.h>
+-- 
+2.43.0
+
+From 144e7d4187c73566ffc2780ac91ab7e1826826e0 Mon Sep 17 00:00:00 2001
+From: Alexander Pevzner <pzz@apevzner.com>
+Date: Sat, 2 Dec 2023 22:29:55 +0300
+Subject: [PATCH 2/2] Fixed build with recent versions of libxml2 (fixes #305)
+
+libxml2 recently changed a prototype of the xmlStructuredErrorFunc callback,
+adding const modifier to the second parameter.
+
+Adding an explicit cast seems to fix the problem (but I will not be surprised, if
+this fix will not work equally well on all distros).
+
+Found for a first time and fixed on Arch linux on about 2 Dec 2023 (Arch is rolling
+release, so there is no explicit release number)
+---
+ airscan-xml.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/airscan-xml.c b/airscan-xml.c
+index 5071ca9..10f290c 100644
+--- a/airscan-xml.c
++++ b/airscan-xml.c
+@@ -124,7 +124,7 @@ xml_rd_parse (xmlDoc **doc, const char *xml_text, size_t xml_len)
+         goto DONE;
+     }
+
+-    ctxt->sax->serror = xml_rd_error_callback;
++    ctxt->sax->serror = (xmlStructuredErrorFunc) xml_rd_error_callback;
+
+     /* Parse the document */
+     if (xmlCtxtResetPush(ctxt, xml_text, xml_len, NULL, NULL)) {
+--
+2.43.0
+
+
+

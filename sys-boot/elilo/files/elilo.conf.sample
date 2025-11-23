@@ -1,0 +1,9 @@
+boot=/dev/sda1
+install=/usr/lib/elilo/elilo.efi
+delay=20
+default=gentoo
+
+image=/boot/kernel-2.6.12-gentoo-r6
+	label=gentoo
+	root=/dev/sda3
+	read-only

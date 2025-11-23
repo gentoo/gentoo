@@ -1,0 +1,24 @@
+From f50768b0b2176998675e728d84ac05f0eef19614 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Sun, 17 May 2015 12:14:16 -0400
+Subject: [PATCH] Catch/ignore IOError when opening picklefile for reading in
+ yacc.yacc()
+
+Should resolve #66.
+---
+ ply/yacc.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/ply/yacc.py b/ply/yacc.py
+index eb02cc2..2835c90 100644
+--- a/ply/yacc.py
++++ b/ply/yacc.py
+@@ -3265,6 +3265,8 @@ def yacc(method='LALR', debug=yaccdebug, module=None, tabmodule=tab_module, star
+         errorlog.warning(str(e))
+     except ImportError:
+         pass
++    except IOError:
++        pass
+ 
+     if debuglog is None:
+         if debug:

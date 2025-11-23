@@ -1,0 +1,6 @@
+# -*- makefile -*-
+
+all: $(patsubst %.rng,%.rnc,$(wildcard *.rng))
+
+%.rnc: %.rng
+	trang -I rng -O rnc $< $@

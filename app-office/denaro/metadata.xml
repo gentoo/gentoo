@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>dotnet@gentoo.org</email>
+    <name>Gentoo Dotnet Project</name>
+  </maintainer>
+  <longdescription>
+    Manage multiple accounts at a time, with a familiar tab interface. Easily
+    filter transactions by type, group, or date. Easily repeat transactions,
+    such as bills that occur every month. Transfer money from one account to
+    another. Export an account as a CSV file and import a CSV, OFX or QIF file
+    to bulk add transactions to an account.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/NickvisionApps/Denaro/issues/</bugs-to>
+    <remote-id type="github">NickvisionApps/Denaro</remote-id>
+  </upstream>
+</pkgmetadata>

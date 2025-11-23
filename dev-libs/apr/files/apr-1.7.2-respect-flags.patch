@@ -1,0 +1,22 @@
+https://sources.debian.org/patches/apr/1.7.2-2/dont_override_external_buildflags/
+
+# Don't force apr-using projects to use the compile flags used during
+# apr's compilation.
+--- a/build/apr_rules.mk.in
++++ b/build/apr_rules.mk.in
+@@ -42,10 +42,10 @@ LIBTOOL=@LIBTOOL@
+ # compilation and linking flags that are supposed to be set only by the user.
+ # configure adds to them for tests, but we restore them at the end.
+ #
+-CFLAGS=@CFLAGS@
+-CPPFLAGS=@CPPFLAGS@
+-LDFLAGS=@LDFLAGS@
+-LIBS=@LIBS@
++CFLAGS?=@CFLAGS@
++CPPFLAGS?=@CPPFLAGS@
++LDFLAGS?=@LDFLAGS@
++LIBS?=@LIBS@
+ DEFS=@DEFS@
+ 
+ # anything added to the standard flags by configure is moved to EXTRA_*
+

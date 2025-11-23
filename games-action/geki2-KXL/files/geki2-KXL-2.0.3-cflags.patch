@@ -1,0 +1,10 @@
+https://bugs.gentoo.org/437992
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -4,5 +4,5 @@
+ 	        boss.h extern.h ranking.h your.h game.h\
+ 	        geki2.h load.h opening.h my.h misc.h
+ 
+-CFLAGS = @X_CFLAGS@ @KXL_CFLAGS@
++AM_CFLAGS = @X_CFLAGS@ @KXL_CFLAGS@
+ LIBS = @X_LIBS@ -lX11 @KXL_LIBS@ -lKXL

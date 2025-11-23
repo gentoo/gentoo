@@ -1,0 +1,34 @@
+From 89b4a0437dce6f99de80482d484b3e0346067889 Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Fri, 24 Apr 2020 19:12:16 -0700
+Subject: [PATCH] cflags
+
+---
+ Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 2d23118..713daad 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,7 @@
+ VERSION=1.0
+ 
+ CPPFLAGS=-DVERSION=\"${VERSION}\" -D_GNU_SOURCE
+-CFLAGS+=-Wall -Wextra -g -std=c99 -O3 -pedantic -Ideps
++CFLAGS+=-Wall -Wextra -std=c99 -pedantic -Ideps
+ PREFIX?=/usr/local
+ MANDIR?=$(PREFIX)/share/man
+ BINDIR?=$(PREFIX)/bin
+@@ -29,7 +29,7 @@ check: test/fzytest
+ 	$(DEBUGGER) ./test/fzytest
+ 
+ fzy: $(OBJECTS)
+-	$(CC) $(CFLAGS) $(CCFLAGS) -o $@ $(OBJECTS) $(LIBS)
++	$(CC) $(CFLAGS) $(CCFLAGS) $(LDFLAGS) -o $@ $(OBJECTS) $(LIBS)
+ 
+ %.o: %.c config.h
+ 	$(CC) $(CPPFLAGS) $(CFLAGS) -c -o $@ $<
+-- 
+2.26.2
+

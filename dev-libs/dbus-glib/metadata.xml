@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>freedesktop-bugs@gentoo.org</email>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:freedesktop:dbus-glib</remote-id>
+    <remote-id type="freedesktop-gitlab">dbus/dbus-glib</remote-id>
+  </upstream>
+</pkgmetadata>

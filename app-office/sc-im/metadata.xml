@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>efe.izbudak@metu.edu.tr</email>
+		<name>Efe İzbudak</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="plots">Add <pkg>sci-visualization/gnuplot</pkg> for plotting support</flag>
+		<flag name="xls">Add xls support</flag>
+		<flag name="xlsx">Add xlsx support</flag>
+		<flag name="ods">Add ods import support</flag>
+		<flag name="X">Use <pkg>x11-misc/xclip</pkg> for clipboard copy/paste</flag>
+		<flag name="tmux">Use <pkg>app-misc/tmux</pkg> for clipboard copy/paste</flag>
+		<flag name="wayland">Use <pkg>gui-apps/wl-clipboard</pkg> for clipboard copy/paste</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">andmarti1424/sc-im</remote-id>
+	</upstream>
+</pkgmetadata>

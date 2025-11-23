@@ -1,0 +1,22 @@
+--- a/src/tcpsound.c
++++ b/src/tcpsound.c
+@@ -16,7 +16,7 @@
+ #include "parse.h"
+ #include "sound.h"
+ 
+-static const char *DEFAULT_CONF = "searchpath = /usr/share/sounds:/usr/local/share/sounds\n\nsnd.default   = 1,0,0,generic.wav\nsnd.icmp      = 3,0,0,sonar.wav\nsnd.dns       = 2,53,53,warning.wav\nsnd.http.in   = 2,0,80,pop.wav\nsnd.http.out  = 2,80,0,info.wav\nsnd.win.nam   = 2,137,137,cuckoo.wav\n";
++static const char *DEFAULT_CONF = "searchpath = /usr/share/tcpsound\n\nsnd.default   = 1,0,0,generic.wav\nsnd.icmp      = 3,0,0,sonar.wav\nsnd.dns       = 2,53,53,warning.wav\nsnd.http.in   = 2,0,80,pop.wav\nsnd.http.out  = 2,80,0,info.wav\nsnd.win.nam   = 2,137,137,cuckoo.wav\n";
+ 
+ /* struct packet {
+  *     unsigned long time;
+--- a/elaborate.conf
++++ b/elaborate.conf
+@@ -7,7 +7,7 @@
+ # to searchpath).
+ # 
+ 
+-searchpath = /usr/share/sounds:/usr/local/share/sounds
++searchpath = /usr/share/tcpsound
+ 
+ snd.default   = 1,0,0,generic.wav
+ snd.icmp      = 3,0,0,sonar.wav

@@ -1,0 +1,223 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -35,7 +35,7 @@
+ 	config \
+ 	config.h.in \
+ 	configure \
+-	configure.in \
++	configure.ac \
+ 	COPYING \
+ 	INSTALL \
+ 	install-sh \
+@@ -82,13 +82,13 @@
+ 	tar cfj $(distdir).tar.bz2 $(distdir)
+ 	rm -rf $(distdir)
+ 
+-# automatic re-running of configure if the configure.in file has changed
+-configure: configure.in aclocal.m4
++# automatic re-running of configure if the configure.ac file has changed
++configure: configure.ac aclocal.m4
+ 	autoconf
+ 
+ # autoheader might not change config.h.in, so touch a stamp file
+ config.h.in: stamp-h.in
+-stamp-h.in: configure.in aclocal.m4
++stamp-h.in: configure.ac aclocal.m4
+ 	autoheader
+ 	echo timestamp > stamp-h.in
+ 
+--- a/configure.in
++++ b/configure.in
+@@ -68,7 +68,7 @@
+ AC_PROG_INSTALL
+ AC_PROG_LN_S
+ AC_PROG_MAKE_SET
+-AC_PROG_RANLIB
++AC_CHECK_TOOL([AR], [ar])
+ 
+ if test "$GCC" = "yes"; then
+    CFLAGS="$CFLAGS -Wall -std=gnu9x -pedantic -I.."
+@@ -167,55 +167,8 @@
+    AC_CHECK_LIB([pthread], [pthread_mutex_init], [], [AC_MSG_ERROR([ophcrack requires libpthread.])])
+ fi
+ 
+-
+-AC_MSG_CHECKING(for libssl)
+-with_ssl=no
+-AC_ARG_WITH(libssl, AC_HELP_STRING(--with-libssl=DIR,use libssl in DIR),
+-[ case "$withval" in
+-  no)
+-     AC_MSG_RESULT(no)
+-     ;;
+-  *)
+-     AC_MSG_RESULT(yes)
+-     with_ssl=$withval
+-     CFLAGS="$CFLAGS -I$with_ssl/include"
+-     CXXFLAGS="$CXXFLAGS -I$with_ssl/include"
+-	   LIBS="$LIBS -L$with_ssl/lib -lssl -lcrypto"
+-     ;;
+-  esac ]
+-)
+-
+-if test "x$with_ssl" = "xno"; then
+-   CHECK_SSL
+-fi
+-
+-with_expat=no
+-AC_ARG_WITH(libexpat, AC_HELP_STRING(--with-libexpat=DIR,use libexpat in DIR),
+-[ AC_MSG_CHECKING(for libexpat)
+-  case "$withval" in
+-  no)
+-     AC_MSG_RESULT(no)
+-     ;;
+-  *)
+-     AC_MSG_RESULT(yes)
+-     with_expat=$withval
+-     if test "x$enable_win32" = "xyes"; then	
+-     	CFLAGS="$CFLAGS -I$with_expat/lib"
+-     	CXXFLAGS="$CXXFLAGS -I$with_expat/lib"
+-     	LIBS="$LIBS -L$with_expat"
+-	LIBS_END="$LIBS_END -lexpat"
+-     else
+-	CFLAGS="$CFLAGS -I$with_expat/include"
+-	CXXFLAGS="$CXXFLAGS -I$with_expat/include"
+-	LIBS="$LIBS -L$with_expat/lib -lexpat"
+-     fi
+-     ;;
+-  esac ]
+-)
+-
+-if test "x$with_expat" = "xno"; then
+-   AC_CHECK_LIB([expat], [XML_ParserCreate], [], [AC_MSG_ERROR([ophcrack requires libexpat.])])
+-fi
++PKG_CHECK_MODULES([EXPAT], [expat])
++PKG_CHECK_MODULES([CRYPTO], [libcrypto])
+ 
+ AC_CHECK_LIB([m], [sqrt], [], [AC_MSG_ERROR([ophcrack requires libmath.])])
+ 
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -20,9 +20,16 @@
+ 
+ CC = @CC@
+ 
+-CPPFLAGS  = @CPPFLAGS@
+-CFLAGS  = @CFLAGS@ -Icore -Intproba
+-LDFLAGS = @LDFLAGS@ @LIBS@
++CPPFLAGS = @CPPFLAGS@ -Icore -Intproba
++CFLAGS = @CFLAGS@
++LIBS = @LIBS@
++LDFLAGS = @LDFLAGS@
++
++EXPAT_CFLAGS = @EXPAT_CFLAGS@
++EXPAT_LIBS = @EXPAT_LIBS@
++
++CRYPTO_CFLAGS = @CRYPTO_CFLAGS@
++CRYPTO_LIBS = @CRYPTO_LIBS@
+ 
+ SUBDIRS = core ntproba samdump2 test
+ @HAVE_GUI_TRUE@SUBDIRS += gui
+@@ -48,7 +55,7 @@
+ ophcrack: gui/main.cpp core ntproba samdump2
+ 	cp $< main.c
+ 	$(CC) $(CPPFLAGS) $(CFLAGS) -c main.c -o main.o
+-	$(CC) main.o $(ARCHIVES) -o $@ $(LDFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) main.o $(ARCHIVES) -o $@ $(EXPAT_LIBS) $(CRYPTO_LIBS) $(LIBS)
+ 	rm main.c main.o
+ 
+ gui: core ntproba samdump2
+--- a/src/common.mk.in
++++ b/src/common.mk.in
+@@ -23,7 +23,14 @@
+ 
+ CFLAGS  = @CFLAGS@
+ CPPFLAGS  = @CPPFLAGS@
+-LDFLAGS = @LDFLAGS@ @LIBS@
++LDFLAGS = @LDFLAGS@
++LIBS = @LIBS@
++
++EXPAT_CFLAGS = @EXPAT_CFLAGS@
++EXPAT_LIBS = @EXPAT_LIBS@
++
++CRYPTO_CFLAGS = @CRYPTO_CFLAGS@
++CRYPTO_LIBS = @CRYPTO_LIBS@
+ 
+ HEADERS = $(wildcard *.h)
+ SOURCES = $(wildcard *.c)
+@@ -32,11 +39,7 @@
+ all:
+ 
+ %.a:
+-	ar r $@ $^
+-	$(RANLIB) $@
+-
+-%.o: %.c
+-	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
++	$(AR) rcs $@ $^
+ 
+ clean_:
+ 	rm -f *.o *~
+--- a/src/core/Makefile.in
++++ b/src/core/Makefile.in
+@@ -17,7 +17,7 @@
+ 
+ include ../common.mk
+ 
+-CFLAGS += -I../.. -I../samdump2 -I../ntproba
++CPPFLAGS += -I../.. -I../samdump2 -I../ntproba $(CRYPTO_CFLAGS)
+ 
+ all: libophcrack.a
+ 
+--- a/src/gui/gui.pro.in
++++ b/src/gui/gui.pro.in
+@@ -30,7 +30,7 @@
+   ../ntproba/libntproba.a
+ 
+ PRE_TARGETDEPS += $$ARCHIVES
+-LIBS += $$ARCHIVES @LDFLAGS@ @LIBS@
++LIBS += $$ARCHIVES @LDFLAGS@ @EXPAT_LIBS@ @CRYPTO_LIBS@ @LIBS@
+ 
+ QMAKE_CC = @CC@
+ QMAKE_CXX = @CXX@
+--- a/src/ntproba/Makefile.in
++++ b/src/ntproba/Makefile.in
+@@ -17,6 +17,8 @@
+ 
+ include ../common.mk
+ 
++CPPFLAGS += $(EXPAT_CFLAGS) $(CRYPTO_CFLAGS)
++
+ all: libntproba.a
+ 
+ libntproba.a: $(OBJECTS)
+--- a/src/samdump2/Makefile.in
++++ b/src/samdump2/Makefile.in
+@@ -17,7 +17,7 @@
+ 
+ include ../common.mk
+ 
+-CFLAGS += -I../core
++CPPFLAGS += -I../core $(CRYPTO_CFLAGS)
+ 
+ all: libsamdump2.a
+ 
+--- a/src/test/Makefile.in
++++ b/src/test/Makefile.in
+@@ -17,7 +17,7 @@
+ 
+ include ../common.mk
+ 
+-CFLAGS += -I../.. -I../core -I../ntproba
++CPPFLAGS += -I../.. -I../core -I../ntproba
+ 
+ ARCHIVES = \
+ 	../core/libophcrack.a \
+@@ -32,7 +32,7 @@
+ %.a:
+ 
+ test_%: test_%.o $(ARCHIVES)
+-	$(CC) $^ -o $@ $(LDFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ $(EXPAT_LIBS) $(CRYPTO_LIBS) $(LIBS)
+ 
+ clean: clean_
+ 	rm -f $(TARGETS)

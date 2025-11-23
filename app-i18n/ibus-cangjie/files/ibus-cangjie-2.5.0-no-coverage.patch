@@ -1,0 +1,37 @@
+We don't need coverage for our testing purposes.
+--- a/tests/meson.build
++++ b/tests/meson.build
+@@ -1,5 +1,5 @@
+ python = import('python').find_installation('python3',
+-    modules : [ 'cangjie', 'coverage' ])
++    modules : [ 'cangjie' ])
+ 
+ # Run the tests folder as a module
+ # This is the equivalent of running `python -m tests` in the repo folder
+@@ -11,26 +11,3 @@ test(
+     suite: 'unittest',
+     workdir: meson.project_source_root(),
+ )
+-
+-# Generate the coverage information into .coverage
+-test(
+-    'scan tests for coverages',
+-    python,
+-    args: ['-m', 'coverage', 'run', '-m', 'tests'],
+-    suite: 'coverage',
+-    workdir: meson.project_source_root(),
+-)
+-
+-# Generate the XML report from .coverage into meson-logs, which is stored
+-# as CI/CD artifact
+-test(
+-    'generate report (xml)',
+-    python,
+-    args: [
+-        '-m', 'coverage', 'xml',
+-        '-o', meson.project_build_root() / 'meson-logs' / 'coverage.xml',
+-    ],
+-    is_parallel: false,
+-    suite: 'coverage',
+-    workdir: meson.project_source_root(),
+-)

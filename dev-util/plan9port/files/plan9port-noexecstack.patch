@@ -1,0 +1,19 @@
+Remove unneeded executable stack
+
+Assembly routines in libthread and libmp use an executable stack by
+default. This is not needed and can be removed using --noexecstack.
+
+Patch by Andy Spencer
+
+  http://code.swtch.com/plan9port/issue/76/
+--- a/src/mkhdr
++++ b/src/mkhdr
+@@ -13,7 +13,7 @@
+ AR=9ar
+ CFLAGS=
+ LDFLAGS=
+-AFLAGS=
++AFLAGS=--noexecstack
+ CLEANFILES=
+ NUKEFILES=
+ YACC=9 yacc

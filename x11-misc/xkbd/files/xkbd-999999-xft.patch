@@ -1,0 +1,33 @@
+--- a/src/kb.c
++++ b/src/kb.c
+@@ -66,7 +66,7 @@
+   if (*f) XftFontClose(kb->display, *f);
+   return ((*f = XftFontOpenName(kb->display, kb->screen, fontname)) != NULL);
+ #else
+-  if (*f) XUnloadFont((*f)->fid);
++  if (*f) XUnloadFont(kb->display, (*f)->fid);
+   if ((*f = XLoadQueryFont(kb->display, fontname)) == NULL) return 0;
+   XSetFont(kb->display, kb->gc, (*f)->fid);
+   return True;
+--- a/src/button.c
++++ b/src/button.c
+@@ -150,7 +150,7 @@
+ 	&extents);
+   return extents.width;
+ #else
+-  return XTextWidth(kb->font_info, txt, strlen(txt));
++  return XTextWidth(kb->font, txt, strlen(txt));
+ #endif
+ }
+ 
+@@ -441,8 +441,10 @@
+ 
+   b->fg_gc      = k->gc;
+   b->bg_gc      = k->rev_gc;
++#ifdef USE_XFT
+   b->col = k->color;
+   b->col_rev = k->color_rev;
++#endif
+ 
+   b->layout_switch = -1;
+ 

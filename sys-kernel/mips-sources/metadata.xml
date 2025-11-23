@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>mips@gentoo.org</email>
+		<name>MIPS architecture team</name>
+	</maintainer>
+
+	<upstream>
+		<remote-id type="cpe">cpe:/o:linux:linux_kernel</remote-id>
+	</upstream>
+
+	<longdescription>
+		Kernel.org LTS releases that focus on fixing any issues with
+		current in-tree MIPS systems (primarily SGI), as well as adding
+		missing support for any out-of-tree systems via custom patches.
+	</longdescription>
+
+	<use>
+		<flag name="ip27">Enables additional support for SGI Origin (IP27)</flag>
+		<flag name="ip28">Enables additional support for SGI Indigo2 Impact R10000 (IP28)</flag>
+		<flag name="ip30">Enables support for SGI Octane (IP30, 'Speedracer')</flag>
+		<flag name="experimental">Apply experimental (80xx) patches.</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,78 @@
+From 260f94f3914ba18a256e6f1c222f643a57854e80 Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Sat, 9 May 2015 23:30:58 +0200
+Subject: [PATCH] Always use external gtk-update-icon-cache
+
+---
+ configure.ac                   |  8 +++-----
+ docs/reference/gtk/Makefile.am |  2 +-
+ gtk/Makefile.am                | 13 ++-----------
+ 3 files changed, 6 insertions(+), 17 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 4e11b40..7ef8cb6 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -913,11 +913,9 @@ dnl Look for a host system's gdk-pixbuf-csource if we are cross-compiling
+ 
+ AM_CONDITIONAL(CROSS_COMPILING, test $cross_compiling = yes)
+ 
+-if test $cross_compiling = yes; then
+-  AC_PATH_PROG(GTK_UPDATE_ICON_CACHE, gtk-update-icon-cache, no)
+-  if test x$GTK_UPDATE_ICON_CACHE = xno; then
+-    REBUILD_PNGS=#
+-  fi
++AC_PATH_PROG(GTK_UPDATE_ICON_CACHE, gtk-update-icon-cache, no)
++if test x$GTK_UPDATE_ICON_CACHE = xno; then
++  REBUILD_PNGS=#
+ fi
+ 
+ AC_PATH_PROG(GDK_PIXBUF_CSOURCE, gdk-pixbuf-csource, no)
+diff --git a/docs/reference/gtk/Makefile.am b/docs/reference/gtk/Makefile.am
+index c239445..60b5265 100644
+--- a/docs/reference/gtk/Makefile.am
++++ b/docs/reference/gtk/Makefile.am
+@@ -368,7 +368,7 @@ EXTRA_DIST += version.xml.in
+ 
+ if ENABLE_MAN
+ 
+-man_MANS = gtk-query-immodules-2.0.1 gtk-update-icon-cache.1 gtk-builder-convert.1
++man_MANS = gtk-query-immodules-2.0.1 gtk-builder-convert.1
+ 
+ %.1 : %.xml 
+ 	@XSLTPROC@ -nonet http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl $<
+diff --git a/gtk/Makefile.am b/gtk/Makefile.am
+index 8cc4536..a7afbf3 100644
+--- a/gtk/Makefile.am
++++ b/gtk/Makefile.am
+@@ -1087,8 +1087,7 @@ endif
+ # Installed tools
+ #
+ bin_PROGRAMS = \
+-	gtk-query-immodules-2.0 \
+-	gtk-update-icon-cache
++	gtk-query-immodules-2.0
+ 
+ bin_SCRIPTS = gtk-builder-convert
+ 
+@@ -1438,16 +1437,8 @@ stamp-icons: $(STOCK_ICONS)
+ 	) done 								\
+ 	&& touch stamp-icons
+ 
+-if CROSS_COMPILING
+-gtk_update_icon_cache_program = $(GTK_UPDATE_ICON_CACHE)
+-else
+-gtk_update_icon_cache_program =							\
+-	   ./gtk-update-icon-cache
+-endif
+-
+ gtkbuiltincache.h: @REBUILD@ stamp-icons
+-	$(MAKE) $(AM_MAKEFLAGS) gtk-update-icon-cache$(EXEEXT)
+-	$(gtk_update_icon_cache_program) --force --ignore-theme-index		\
++	$(GTK_UPDATE_ICON_CACHE) --force --ignore-theme-index		\
+ 	   --include-image-data							\
+ 	   --source builtin_icons stock-icons > gtkbuiltincache.h.tmp &&        \
+ 	mv gtkbuiltincache.h.tmp gtkbuiltincache.h
+-- 
+2.10.0
+

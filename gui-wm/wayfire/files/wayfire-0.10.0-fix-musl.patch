@@ -1,0 +1,28 @@
+https://github.com/WayfireWM/wayfire/pull/2875/commits/4040e432f917fb488477193304142553e0df8413
+https://bugs.gentoo.org/966059
+
+From: Sammy <samexner@protonmail.com>
+Date: Sun, 2 Nov 2025 18:45:01 -0700
+Subject: [PATCH] fix musl compilation
+
+changed uint to standard type unsigned int, fixes compilation error on musl
+--- a/src/json.cpp
++++ b/src/json.cpp
+@@ -225,7 +225,7 @@ json_reference_t& json_reference_t::operator =(const int& v)
+     return *this;
+ }
+ 
+-json_reference_t& json_reference_t::operator =(const uint& v)
++json_reference_t& json_reference_t::operator =(const unsigned int& v)
+ {
+     yyjson_mut_set_uint(this->v, v);
+     return *this;
+@@ -331,7 +331,7 @@ bool json_reference_t::is_uint() const
+            (yyjson_mut_get_uint(v) <= std::numeric_limits<unsigned int>::max());
+ }
+ 
+-json_reference_t::operator uint() const
++json_reference_t::operator unsigned int() const
+ {
+     wf::dassert(is_uint());
+     return yyjson_mut_get_uint(v);

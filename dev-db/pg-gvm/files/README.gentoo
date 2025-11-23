@@ -1,0 +1,10 @@
+To use the extension in a database create the extension using
+CREATE EXTENSION "pg-gvm";
+
+You can do this on the gvmd database running:
+
+root ~ # sudo -u postgres psql gvmd
+gvmd=>	CREATE EXTENSION "pg-gvm";
+gvmd=>	\q
+
+Please, read: https://github.com/greenbone/pg-gvm/#use-the-extension

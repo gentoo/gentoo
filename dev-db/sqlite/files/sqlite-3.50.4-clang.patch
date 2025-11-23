@@ -1,0 +1,30 @@
+# https://bugs.gentoo.org/928745
+# https://sqlite.org/src/info/9f0a16f6e8
+From dca1f04f0775cce80bcd6831acd9fa69bdfb40f2 Mon Sep 17 00:00:00 2001
+From: stephan <stephan@noemail.net>
+Date: Thu, 28 Aug 2025 15:04:52 +0000
+Subject: [PATCH] Remove sqlite3expert.h from the compiler invocation for that
+ tool, as it (A) doesn't need to be there and (B) it causes some compilers
+ problems (as reported in [forum:a1085109e7db4cf3 | forum post a1085109e7]).
+ This bug was faithfully carried over from the legacy build.
+
+FossilOrigin-Name: 9f0a16f6e893d51f760a8c1e2cb4709fdd16ccb2c0258695767f8305f407f4ac
+---
+ main.mk       |  2 +-
+ manifest      | 14 +++++++-------
+ manifest.uuid |  2 +-
+ 3 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/main.mk b/main.mk
+index f817924fea..6304a0ad30 100644
+--- a/main.mk
++++ b/main.mk
+@@ -1963,7 +1963,7 @@ xbin: sqltclsh$(T.exe) sqlite3_analyzer$(T.exe)
+ 
+ sqlite3_expert$(T.exe): $(TOP)/ext/expert/sqlite3expert.h $(TOP)/ext/expert/sqlite3expert.c \
+                        $(TOP)/ext/expert/expert.c sqlite3.c
+-	$(T.link) $(TOP)/ext/expert/sqlite3expert.h $(TOP)/ext/expert/sqlite3expert.c \
++	$(T.link) $(TOP)/ext/expert/sqlite3expert.c \
+ 		$(TOP)/ext/expert/expert.c sqlite3.c -o sqlite3_expert $(LDFLAGS.libsqlite3)
+ xbin: sqlite3_expert$(T.exe)
+ 

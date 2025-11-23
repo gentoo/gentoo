@@ -1,0 +1,29 @@
+--- a/gui/linux-gtk/Makefile
++++ b/gui/linux-gtk/Makefile
+@@ -2,14 +2,14 @@
+ include $(TOPDIR)/Makefile.inc
+ 
+ # hardening flags: -fPIE -Wl,-z,now -pie
+-CFLAGS += $(shell pkg-config --cflags gtk+-2.0) -fPIE -Wno-strict-prototypes \
++CFLAGS += $(shell $(PKG_CONFIG) --cflags glib-2.0 gdk-pixbuf-2.0 gtk+-2.0) -fPIE -Wno-strict-prototypes \
+           -Wno-cast-qual
+-CPPFLAGS += $(shell pkg-config --cflags gtk+-2.0)
++CPPFLAGS += $(shell $(PKG_CONFIG) --cflags glib-2.0 gdk-pixbuf-2.0 gtk+-2.0)
+ LDFLAGS += -pie
+ #LDFLAGS +=	-Wl,--warn-common
+ 
+ 
+-LIBS := $(shell pkg-config --libs gtk+-2.0) -lm
++LIBS := $(shell $(PKG_CONFIG) --libs glib-2.0 gdk-pixbuf-2.0 gtk+-2.0) -lm
+ 
+ # 32/64 cross compilation
+ ifdef M32
+@@ -30,7 +30,7 @@
+ ifeq ($(VERBOSE),0)
+ 	@echo "[LD] $@"
+ endif
+-	$(MAKECMDPREFIX)$(CC) $(LDFLAGS) -o $@ $(OBJS) $(LIBS)
++	$(MAKECMDPREFIX)$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJS) $(LIBS)
+ 
+ .PHONY: clean install
+ 

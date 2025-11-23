@@ -1,0 +1,10 @@
+locale.h is always needed, include here rather than rely on
+conditional macros which lead to failure with musl
+
+https://bugs.gentoo.org/831726
+--- a/src/gnujump.h
++++ b/src/gnujump.h
+@@ -38,2 +38,3 @@
+ #include <time.h>
++#include <locale.h>
+ 

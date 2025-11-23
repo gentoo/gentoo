@@ -1,0 +1,70 @@
+https://bugs.gentoo.org/936468
+https://github.com/Perl/perl5/issues/22577
+https://github.com/Perl/perl5/pull/22609
+
+From ffbda81ab95a3db3eff972ad22b633c60365bb8e Mon Sep 17 00:00:00 2001
+From: Tony Cook <tony@develop-help.com>
+Date: Wed, 18 Sep 2024 16:32:34 +1000
+Subject: [PATCH] bodies_by_type[SVt_PVNV]: handle __float128 NV alignment on
+ 32-bit
+
+Perl SV body structures include xmg_stash and xmg_u fields at the
+front, which are only valid for type SVt_PVMG and higher.
+
+This allows those fields to be at a constant offset from the start
+of the body.
+
+To save memory perl generally allocates the bodies where
+type < SVt_PVMG without the space needed for these two fields,
+offsetting the body pointer back by the size of the two fields.  At
+least for the first body in an arena this is technically
+undefined behaviour, but we've done it forever.
+
+With -msse __float128 requires 16 byte alignment, but for XPVNV
+bodies the hack used here means that the base of the XPVNV
+body ends up mis-aligned on 32-bit systems.
+
+On 64-bit systems the combined size of those fields is 16-bytes so
+the modified pointer is still properly aligned.
+
+To fix this allocate the full XPVNV structure when 16 byte alignment
+is required for NV, NV is more than 8 bytes and pointers are small
+enough that the NV would have been mis-aligned.
+
+Fixes #22577
+---
+ sv_inline.h | 15 ++++++++++++++-
+ 1 file changed, 14 insertions(+), 1 deletion(-)
+
+diff --git a/sv_inline.h b/sv_inline.h
+index a0fe8ec870c2..7cbca95feef7 100644
+--- a/sv_inline.h
++++ b/sv_inline.h
+@@ -218,12 +218,25 @@ static const struct body_details bodies_by_type[] = {
+       SVt_PVIV, FALSE, NONV, HASARENA,
+       FIT_ARENA(0, sizeof(XPVIV) - STRUCT_OFFSET(XPV, xpv_cur)) },
+ 
++#if NVSIZE > 8 && PTRSIZE < 8 && MEM_ALIGNBYTES > 8
++    /* NV may need strict 16 byte alignment.
++
++       On 64-bit systems the NV ends up aligned despite the hack
++       avoiding allocation of xmg_stash and xmg_u, so only do this
++       for 32-bit systems.
++    */
++    { sizeof(XPVNV),
++      sizeof(XPVNV),
++      0,
++      SVt_PVNV, FALSE, HADNV, HASARENA,
++      FIT_ARENA(0, sizeof(XPVNV)) },
++#else
+     { sizeof(XPVNV) - STRUCT_OFFSET(XPV, xpv_cur),
+       copy_length(XPVNV, xnv_u) - STRUCT_OFFSET(XPV, xpv_cur),
+       + STRUCT_OFFSET(XPV, xpv_cur),
+       SVt_PVNV, FALSE, HADNV, HASARENA,
+       FIT_ARENA(0, sizeof(XPVNV) - STRUCT_OFFSET(XPV, xpv_cur)) },
+-
++#endif
+     { sizeof(XPVMG), copy_length(XPVMG, xnv_u), 0, SVt_PVMG, FALSE, HADNV,
+       HASARENA, FIT_ARENA(0, sizeof(XPVMG)) },
+ 
+

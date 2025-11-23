@@ -1,0 +1,6 @@
+(add-to-list 'load-path "@SITELISP@")
+(autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code" t)
+(autoload 'tuareg-run-ocaml "tuareg" "Run an OCaml toplevel process." t)
+(autoload 'ocamldebug "ocamldebug" "Run the Caml debugger" t)
+(defalias 'camldebug 'ocamldebug)
+(add-to-list 'auto-mode-alist '("\\.ml[iylp]?\\'" . tuareg-mode))

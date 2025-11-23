@@ -1,0 +1,80 @@
+https://bugs.gentoo.org/860879
+https://bugs.gentoo.org/875011
+--- a/configure.in
++++ b/configure.in
+@@ -21,6 +21,9 @@ CPPFLAGS="${CPPFLAGS} -g"
+ 
+ AM_MAINTAINER_MODE
+ 
++# For strcasestr
++AC_USE_SYSTEM_EXTENSIONS
++
+ dnl fix freebsd's broken (?) libpthread
+ AC_CHECK_LIB(c_r,pthread_creat,THREAD_LIBS="-lc_r", [
+   AC_CHECK_LIB(pthread,pthread_create,THREAD_LIBS="-lpthread") ])
+--- a/src/configfile.c
++++ b/src/configfile.c
+@@ -48,6 +48,7 @@
+ #include <sys/wait.h>
+ 
+ #include "configfile.h"
++#include "db-memory.h"
+ #include "err.h"
+ 
+ #ifndef WITHOUT_MDNS
+--- a/src/dynamic-art.c
++++ b/src/dynamic-art.c
+@@ -32,6 +32,7 @@
+ #include <sys/stat.h>
+ 
+ #include "configfile.h"
++#include "dynamic-art.h"
+ #include "err.h"
+ #include "playlist.h"
+ #include "restart.h"
+--- a/src/mp3-scanner.h
++++ b/src/mp3-scanner.h
+@@ -74,5 +74,6 @@ extern void make_composite_tags(MP3FILE *song);
+ 
+ /* this should be refactored out of here... */
+ extern off_t aac_drilltoatom(FILE *aac_fp, char *atom_path, unsigned int *atom_length);
++extern long scan_aac_findatom(FILE *fin, long max_offset, char *which_atom, int *atom_size);
+ 
+ #endif /* _MP3_SCANNER_H_ */
+--- a/src/parser.y
++++ b/src/parser.y
+@@ -26,11 +26,14 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <time.h>
+ #include "playlist.h"
+ 
++#define YYPARSE_PARAM param
+ #define YYERROR_VERBOSE 1
+ 
+ extern int yyerror(char *msg);
++extern int yylex(void);
+ 
+ /* Forwards */
+ 
+--- a/src/query.c
++++ b/src/query.c
+@@ -2,6 +2,7 @@
+ #include "config.h"
+ #endif
+ 
++#include <ctype.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #include <stdio.h>
+--- a/src/webserver.c
++++ b/src/webserver.c
+@@ -41,6 +41,7 @@
+ #include <sys/types.h>
+ #include <sys/socket.h>
+ 
++#include "configfile.h"
+ #include "err.h"
+ #include "webserver.h"
+ 

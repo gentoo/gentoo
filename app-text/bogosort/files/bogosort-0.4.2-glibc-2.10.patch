@@ -1,0 +1,39 @@
+--- a/getlines.c
++++ b/getlines.c
+@@ -49,7 +49,7 @@
+     char **ss = NULL;
+ 
+     /* read all lines available */
+-    while ((s = getline(stream)) != NULL) {
++    while ((s = get_line(stream)) != NULL) {
+ 	if (numlines == allocated)		/* make more room if needed */
+ 	    ss = (char **)xrealloc(ss,
+ 		    (allocated += LINESTEP) * sizeof (char *));
+@@ -81,7 +81,7 @@
+     allocated = numlines + 1;	/* this is a lie, but it's close enough */
+ 
+     /* read all lines available */
+-    while ((s = getline(stream)) != NULL) {
++    while ((s = get_line(stream)) != NULL) {
+ 	if (numlines == allocated)		/* make more room if needed */
+ 	    ss = (char **)xrealloc(ss,
+ 		    (allocated += LINESTEP) * sizeof (char *));
+@@ -100,7 +100,7 @@
+  * line in stream, return NULL on EOF
+  */
+ char *
+-getline(FILE *stream)
++get_line(FILE *stream)
+ {
+     int c, numchars = 0, allocated = 0;
+     char *s = NULL;
+--- a/getlines.h
++++ b/getlines.h
+@@ -39,6 +39,6 @@
+  * getline: return a pointer to a newly allocated string containing the next
+  * line in stream
+  */
+-char *getline(FILE *stream);
++char *get_line(FILE *stream);
+ 
+ #endif /* GETLINES_H */

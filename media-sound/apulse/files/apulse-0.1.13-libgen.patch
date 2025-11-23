@@ -1,0 +1,13 @@
+Fix build with musl 1.2.5
+
+--- a/src/apulse-misc.c
++++ b/src/apulse-misc.c
+@@ -22,6 +22,8 @@
+  * SOFTWARE.
+  */
+ 
++#include <libgen.h>
++
+ #include "apulse.h"
+ #include "trace.h"
+ #include "util.h"

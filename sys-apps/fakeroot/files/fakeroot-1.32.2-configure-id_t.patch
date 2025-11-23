@@ -1,0 +1,35 @@
+https://salsa.debian.org/clint/fakeroot/-/commit/819063eb4d2781ddea0647117ad6ab4d502dd39d
+From: Clint Adams <clint@debian.org>
+Date: Thu, 6 Jun 2024 09:16:52 -0400
+Subject: [PATCH] test for id_t with autoconf instead of blind typedef, fixes
+ FTBFS on FreeBSD
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -111,6 +111,7 @@ AC_C_CONST
+ AC_CHECK_TYPE(mode_t, int)
+ AC_CHECK_TYPE(off_t, long)
+ AC_CHECK_TYPE(size_t, unsigned)
++AC_CHECK_TYPE(id_t, int)
+
+ AH_TEMPLATE([FAKEROOT_ATTR], [for packed])
+ if test -n "$GCC";
+--- a/libfakeroot.c
++++ b/libfakeroot.c
+@@ -139,13 +139,6 @@
+ #define INT_SEND_STAT(a,b) SEND_STAT(a,b,_STAT_VER)
+ #define INT_SEND_GET_XATTR(a,b) SEND_GET_XATTR(a,b,_STAT_VER)
+ #define INT_SEND_GET_STAT(a,b) SEND_GET_STAT(a,b)
+-
+-/* 10.10 uses id_t in getpriority/setpriority calls, so pretend
+-   id_t is used everywhere, just happens to be int on some OSes */
+-#ifndef _ID_T
+-#define _ID_T
+-typedef int id_t;
+-#endif
+ #endif
+
+ #include <sys/types.h>
+--
+GitLab
+

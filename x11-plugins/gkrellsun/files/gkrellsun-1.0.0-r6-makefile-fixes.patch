@@ -1,0 +1,83 @@
+Call inner make in sane way, with error propagation. So build will fail on errors
+--- a/Makefile	2024-04-01 09:38:48.800355255 +0000
++++ b/Makefile	2024-04-01 09:40:12.944908086 +0000
+@@ -2,7 +2,7 @@
+ TMP=.
+ 
+ all: comment
+-	cd src20; make; cd ..
++	$(MAKE) -C src20
+ 
+ comment:
+ 	@echo
+@@ -12,12 +12,12 @@
+ 	@echo 
+ 
+ install: comment
+-	cd src20; make install; cd ..
++	$(MAKE) -C src20 install
+ 
+ distclean: clean
+ 
+ clean:
+-	cd src20; make clean; cd ..
++	$(MAKE) -C src20 clean
+ 	rm -f gkrellsun*.zip gkrellsun*.tar.gz
+ 
+ dist:
+Don't call gcc directly, remove -O2 -Wall flags, respect user's pkg-config
+--- a/src20/Makefile
++++ b/src20/Makefile
+@@ -1,8 +1,8 @@
+ PACKAGE ?= gkrellsun
+ 
+-GTK_CONFIG ?=pkg-config gtk+-2.0
+-GTK_INCLUDE ?= `pkg-config gtk+-2.0 --cflags`
+-GTK_LIB ?= `pkg-config gtk+-2.0 --libs`
++PKG_CONFIG ?= pkg-config
++GTK_INCLUDE ?= $(shell ${PKG_CONFIG} gtk+-2.0 --cflags)
++GTK_LIB ?= $(shell ${PKG_CONFIG} gtk+-2.0 --libs)
+ 
+ INSTALL ?= install
+ 
+@@ -11,7 +11,7 @@ INSTALLDIR ?= $(DESTDIR)$(PREFIX)
+ PLUGINDIR ?= $(INSTALLDIR)/lib/gkrellm2/plugins
+ LOCALEDIR ?= $(INSTALLDIR)/share/locale
+ 
+-FLAGS = -O2 -Wall -fPIC $(GTK_INCLUDE)
++FLAGS = -fPIC $(GTK_INCLUDE)
+ #FLAGS = -g -Wall -fPIC $(GTK_INCLUDE)
+ LIBS = $(GTK_LIB)
+ LFLAGS = -shared
+@@ -25,7 +25,7 @@ endif
+ FLAGS += -DPACKAGE="\"$(PACKAGE)\""
+ export PACKAGE LOCALEDIR
+ 
+-CC = gcc $(CFLAGS) $(FLAGS)
++CC = $(CC)
+ 
+ OBJS = gkrellsun.o CalcEphem.o Moon.o MoonRise.o
+ 
+@@ -37,10 +37,10 @@ all: gkrellsun.so
+ 
+ gkrellsun.so: $(OBJS)
+ 	(cd po && ${MAKE})
+-	$(CC) $(OBJS) -o gkrellsun.so $(LFLAGS) $(LIBS)
++	$(CC) $(CFLAGS) $(FLAGS) $(OBJS) -o gkrellsun.so $(LFLAGS) $(LIBS)
+ 
+ suninfo: suninfo.o CalcEphem.o Moon.o MoonRise.o
+-	$(CC) $^ -o suninfo -lm $(LIBS)
++	$(CC) $(CFLAGS) $(FLAGS) $^ -o suninfo -lm $(LIBS)
+ 
+ clean:
+ 	rm -f *.o core *.so* *.bak *~
+@@ -49,7 +49,8 @@ gkrellsun.o: gkrellsun.c $(IMAGES)
+ 
+ $(OBJS): CalcEphem.h Moon.h MoonRise.h
+ 
+-#%.o: %.c
++%.o: %.c
++	$(CC) $(CFLAGS) $(FLAGS) -c -o $@ $<
+ 
+ install: gkrellsun.so
+ 	(cd po && ${MAKE} install )

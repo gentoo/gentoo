@@ -1,0 +1,11 @@
+--- a/Wrapping/Java/Testing/Java/CMakeLists.txt
++++ b/Wrapping/Java/Testing/Java/CMakeLists.txt
+@@ -22,6 +22,8 @@ if (WIN32)
+ endif ()
+ set(vtk_test_classpath
+   "$<TARGET_FILE:VTK::vtkjava>")
++list(APPEND vtk_test_classpath
++  ${java_classpath})
+ string(REPLACE ";" "${classpath_separator}" vtk_test_classpath "${vtk_test_classpath}")
+ 
+ add_library(vtkjava_tests STATIC

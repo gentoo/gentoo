@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/932237
+--- a/src/lib/vina.h
++++ b/src/lib/vina.h
+@@ -35,7 +35,6 @@
+ #include <boost/program_options.hpp>
+ #include <boost/filesystem/fstream.hpp>
+ #include <boost/filesystem/exception.hpp>
+-#include <boost/filesystem/convenience.hpp> // filesystem::basename
+ #include <boost/thread/thread.hpp> // hardware_concurrency // FIXME rm ?
+ #include <boost/algorithm/string.hpp>
+ //#include <openbabel/mol.h>
+--- a/src/split/split.cpp
++++ b/src/split/split.cpp
+@@ -30,7 +30,6 @@
+ #include <boost/program_options.hpp>
+ #include <boost/filesystem/fstream.hpp>
+ #include <boost/filesystem/exception.hpp>
+-#include <boost/filesystem/convenience.hpp> // filesystem::basename
+ 
+ #include "file.h"
+ #include "parse_error.h"

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>kacper.slominski72@gmail.com</email>
+    <name>Kacper Słomiński</name>
+  </maintainer>
+  <maintainer type="person" proxied="proxy">
+    <email>sam@gentoo.org</email>
+    <name>Sam James</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">limine-bootloader/limine</remote-id>
+    <remote-id type="codeberg">Limine/Limine</remote-id>
+    <bugs-to>https://codeberg.org/Limine/Limine/issues</bugs-to>
+    <changelog>https://codeberg.org/Limine/Limine/src/branch/trunk/ChangeLog</changelog>
+  </upstream>
+  <use>
+    <flag name="uefi-ia32">
+      Enable IA32 (32-bit x86) UEFI support.
+    </flag>
+    <flag name="uefi-x86-64">
+      Enable x86-64 UEFI support.
+    </flag>
+    <flag name="uefi-aarch64">
+      Enable AArch64 UEFI support.
+    </flag>
+    <flag name="uefi-riscv64">
+      Enable 64-bit RISC-V UEFI support.
+    </flag>
+    <flag name="uefi-loongarch64">
+      Enable 64-bit LoongArch UEFI support.
+    </flag>
+    <flag name="uefi-cd">
+        Enable building limine-uefi-cd.bin using <pkg>sys-fs/mtools</pkg>.
+    </flag>
+
+    <flag name="bios">
+      Enable legacy x86 BIOS/MBR boot support.
+    </flag>
+    <flag name="bios-pxe">
+      Enables legacy x86 BIOS PXE boot support.
+    </flag>
+    <flag name="bios-cd">
+      Enables legacy x86 BIOS boot support for CDs.
+    </flag>
+  </use>
+</pkgmetadata>

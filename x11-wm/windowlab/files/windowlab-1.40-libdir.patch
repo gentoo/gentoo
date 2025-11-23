@@ -1,0 +1,20 @@
+https://bugs.gentoo.org/732470
+--- a/Makefile
++++ b/Makefile
+@@ -51,7 +51,6 @@ BINDIR = $(DESTDIR)$(PREFIX)/bin
+ MANDIR = $(DESTDIR)$(PREFIX)$(MANBASE)/man1
+ CFGDIR = $(DESTDIR)$(SYSCONFDIR)
+ INCLUDES = -I$(XROOT)/include $(EXTRA_INC)
+-LDPATH = -L$(XROOT)/lib
+ LIBS = -lX11 $(EXTRA_LIBS)
+ 
+ PROG = windowlab
+@@ -62,7 +61,7 @@ HEADERS = windowlab.h
+ all: $(PROG)
+ 
+ $(PROG): $(OBJS)
+-	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(LDPATH) $(LIBS) -o $@
++	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(LIBS) -o $@
+ 
+ $(OBJS): %.o: %.c $(HEADERS)
+ 	$(CC) $(CFLAGS) $(DEFINES) $(INCLUDES) -c $< -o $@

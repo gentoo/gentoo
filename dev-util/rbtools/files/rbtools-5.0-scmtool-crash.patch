@@ -1,0 +1,483 @@
+From 36efa0724e3b4d941aa0554b1d82934319d25ce3 Mon Sep 17 00:00:00 2001
+From: David Trowbridge <trowbrds@gmail.com>
+Date: Tue, 11 Jun 2024 17:22:15 -0600
+Subject: [PATCH] Use SCMTool IDs to look up repositories when possible.
+
+Many versions of Review Board currently have a bug where sending an
+unknown value in the tool= parameter to the repository list API would
+cause a crash. We'll be shipping a fix for that, but unfortunately there
+are a variety of released versions where the Git and Clearcase clients
+can trigger this crash on servers that do not have Power Pack installed.
+
+This change fixes the RBTools side to not include the Power Pack SCMTool
+names, which will avoid the problem for existing servers. For new
+servers, we'll be shipping a server-side fix that fixes the crash, adds
+the SCMTool IDs to the capabilities, and allows us to pass SCMTool IDs
+rather than names to the repository list API. If we see the IDs in the
+capability blob, we can assume that we can pass the IDs, including
+potentially unknown IDs.
+
+This also fixes a problem where we were sometimes accessing the
+repository list API twice with exactly the same parameters.
+
+Testing Done:
+- Ran unit tests.
+- Verified that the repository list API was accessed using SCMTool names
+  that did not include potentially missing ones when running against an
+  older server.
+- Verified that the repository list API was accessed with SCMTool IDs
+  when running against a server with the new API fixes.
+
+Reviewed at https://reviews.reviewboard.org/r/13973/
+---
+ rbtools/clients/base/scmclient.py | 59 +++++++++++++++++++++++++------
+ rbtools/clients/bazaar.py         |  1 +
+ rbtools/clients/clearcase.py      | 10 +++++-
+ rbtools/clients/cvs.py            |  1 +
+ rbtools/clients/git.py            | 10 +++++-
+ rbtools/clients/mercurial.py      |  1 +
+ rbtools/clients/perforce.py       |  1 +
+ rbtools/clients/plastic.py        |  1 +
+ rbtools/clients/svn.py            |  1 +
+ rbtools/clients/tfs.py            |  1 +
+ rbtools/commands/base/commands.py |  3 +-
+ rbtools/commands/setup_repo.py    | 25 +++++++++----
+ rbtools/utils/repository.py       | 58 ++++++++++++++++++++++--------
+ 13 files changed, 139 insertions(+), 33 deletions(-)
+
+diff --git a/rbtools/clients/base/scmclient.py b/rbtools/clients/base/scmclient.py
+index c053b91b..9f56c084 100644
+--- a/rbtools/clients/base/scmclient.py
++++ b/rbtools/clients/base/scmclient.py
+@@ -9,24 +9,24 @@
+ import argparse
+ import logging
+ import re
+-from typing import (Any, Dict, List, Mapping, Optional, Tuple, Union, cast,
+-                    TYPE_CHECKING)
++from typing import (Any, cast, ClassVar, Dict, List, Mapping, Optional,
++                    TYPE_CHECKING, Tuple, Union)
+ 
+ from typing_extensions import NotRequired, TypedDict, final
+ 
+-from rbtools.api.capabilities import Capabilities
+-from rbtools.api.resource import (ItemResource,
+-                                  ListResource,
+-                                  ReviewRequestResource)
+ from rbtools.clients.base.patch import PatchAuthor, PatchResult
+-from rbtools.clients.base.repository import RepositoryInfo
+ from rbtools.clients.errors import SCMClientDependencyError, SCMError
+ from rbtools.deprecation import RemovedInRBTools50Warning
+-from rbtools.diffs.tools.base import BaseDiffTool
+ from rbtools.diffs.tools.registry import diff_tools_registry
+ from rbtools.utils.process import execute
+ 
+ if TYPE_CHECKING:
++    from rbtools.api.capabilities import Capabilities
++    from rbtools.api.resource import (ItemResource,
++                                      ListResource,
++                                      ReviewRequestResource)
++    from rbtools.clients.base.repository import RepositoryInfo
++    from rbtools.diffs.tools.base import BaseDiffTool
+     from rbtools.config import RBToolsConfig
+ 
+ 
+@@ -281,14 +281,27 @@ class BaseSCMClient(object):
+     #:     str
+     name: str = ''
+ 
+-    #: A comma-separated list of SCMClient names on the server
++    #: A comma-separated list of SCMClient names on the server.
+     #:
+     #: Version Added:
+     #:    3.0
+     #:
+     #: Type:
+     #:     str
+-    server_tool_names: Optional[str] = None
++    server_tool_names: ClassVar[Optional[str]] = None
++
++    #: A comma-separated list of SCMClient IDs on the server.
++    #:
++    #: This supersedes :py:attr:`server_tool_names` when running on a version
++    #: of Review Board that supports passing tool IDs to the repositories
++    #: list API.
++    #:
++    #: Version Added:
++    #:    5.0.1
++    #:
++    #: Type:
++    #:     str
++    server_tool_ids: ClassVar[Optional[List[str]]] = None
+ 
+     #: Whether this tool requires a command line diff tool.
+     #:
+@@ -692,6 +705,32 @@ def get_diff_tool(self) -> Optional[BaseDiffTool]:
+ 
+         return diff_tool
+ 
++    def get_server_tool_names(
++        self,
++        capabilities: Optional[Capabilities],
++    ) -> Optional[str]:
++        """Return the list of supported tool names on the server.
++
++        Version Added:
++            5.0.1
++
++        Args:
++            capabilities (rbtools.api.capabilities.Capabilities):
++                The server capabilities, if present.
++
++        Returns:
++            str:
++            A comma-separated list of server-side tool names to match with.
++        """
++        if (capabilities is not None and
++            capabilities.get_capability('scmtools', 'supported_tools') and
++            self.server_tool_ids is not None):
++            # Versions of Review Board that have this capability allow us to
++            # pass SCMTool IDs rather than names.
++            return ','.join(self.server_tool_ids)
++        else:
++            return self.server_tool_names
++
+     def find_matching_server_repository(
+         self,
+         repositories: ListResource,
+diff --git a/rbtools/clients/bazaar.py b/rbtools/clients/bazaar.py
+index 0e39315d..4174c010 100644
+--- a/rbtools/clients/bazaar.py
++++ b/rbtools/clients/bazaar.py
+@@ -37,6 +37,7 @@ class BazaarClient(BaseSCMClient):
+     scmclient_id = 'bazaar'
+     name = 'Bazaar'
+     server_tool_names = 'Bazaar'
++    server_tool_ids = ['bazaar']
+     supports_diff_exclude_patterns = True
+     supports_parent_diffs = True
+     can_branch = True
+diff --git a/rbtools/clients/clearcase.py b/rbtools/clients/clearcase.py
+index f9c8762e..e2c04633 100644
+--- a/rbtools/clients/clearcase.py
++++ b/rbtools/clients/clearcase.py
+@@ -392,7 +392,15 @@ class ClearCaseClient(BaseSCMClient):
+ 
+     scmclient_id = 'clearcase'
+     name = 'VersionVault / ClearCase'
+-    server_tool_names = 'ClearCase,VersionVault / ClearCase'
++
++    # Review Board versions that use the old names-based repositories/?tool=
++    # API parameter also have a bug where a missing name could cause a
++    # server-side crash. This was making it so servers that did not have Power
++    # Pack were failing when we tried to make a query that included the
++    # VersionVault name. We therefore only include it when we know the server
++    # can use server_tool_ids instead.
++    server_tool_names = 'ClearCase'
++    server_tool_ids = ['clearcase', 'versionvault']
+ 
+     requires_diff_tool = True
+ 
+diff --git a/rbtools/clients/cvs.py b/rbtools/clients/cvs.py
+index 98354e8b..dd2c72ef 100644
+--- a/rbtools/clients/cvs.py
++++ b/rbtools/clients/cvs.py
+@@ -28,6 +28,7 @@ class CVSClient(BaseSCMClient):
+     scmclient_id = 'cvs'
+     name = 'CVS'
+     server_tool_names = 'CVS'
++    server_tool_ids = ['cvs']
+     supports_diff_exclude_patterns = True
+     supports_patch_revert = True
+ 
+diff --git a/rbtools/clients/git.py b/rbtools/clients/git.py
+index f4b96cb6..431fd7c6 100644
+--- a/rbtools/clients/git.py
++++ b/rbtools/clients/git.py
+@@ -76,7 +76,15 @@ class GitClient(BaseSCMClient):
+ 
+     scmclient_id = 'git'
+     name = 'Git'
+-    server_tool_names = 'Git,Perforce,Subversion,Team Foundation Server (git)'
++
++    # Review Board versions that use the old names-based repositories/?tool=
++    # API parameter also have a bug where a missing name could cause a
++    # server-side crash. This was making it so servers that did not have Power
++    # Pack were failing when we tried to make a query that included the TFS-Git
++    # name. We therefore only include it when we know the server can use
++    # server_tool_ids instead.
++    server_tool_names = 'Git,Perforce,Subversion'
++    server_tool_ids = ['git', 'perforce', 'subversion', 'tfs_git']
+ 
+     supports_commit_history = True
+     supports_diff_exclude_patterns = True
+diff --git a/rbtools/clients/mercurial.py b/rbtools/clients/mercurial.py
+index 2ee473c9..6f1c5ea0 100644
+--- a/rbtools/clients/mercurial.py
++++ b/rbtools/clients/mercurial.py
+@@ -64,6 +64,7 @@ class MercurialClient(BaseSCMClient):
+     scmclient_id = 'mercurial'
+     name = 'Mercurial'
+     server_tool_names = 'Mercurial,Subversion'
++    server_tool_ids = ['mercurial', 'subversion']
+ 
+     supports_commit_history = True
+     supports_diff_exclude_patterns = True
+diff --git a/rbtools/clients/perforce.py b/rbtools/clients/perforce.py
+index f5892073..4f5d7fb1 100644
+--- a/rbtools/clients/perforce.py
++++ b/rbtools/clients/perforce.py
+@@ -445,6 +445,7 @@ class PerforceClient(BaseSCMClient):
+     scmclient_id = 'perforce'
+     name = 'Perforce'
+     server_tool_names = 'Perforce'
++    server_tool_ids = ['perforce']
+ 
+     requires_diff_tool = True
+ 
+diff --git a/rbtools/clients/plastic.py b/rbtools/clients/plastic.py
+index c45c7abd..3bec215a 100644
+--- a/rbtools/clients/plastic.py
++++ b/rbtools/clients/plastic.py
+@@ -28,6 +28,7 @@ class PlasticClient(BaseSCMClient):
+     scmclient_id = 'plastic'
+     name = 'Plastic'
+     server_tool_names = 'Plastic SCM'
++    server_tool_ids = ['plastic']
+     supports_changesets = True
+     supports_patch_revert = True
+ 
+diff --git a/rbtools/clients/svn.py b/rbtools/clients/svn.py
+index 34cdffcb..6d0352cc 100644
+--- a/rbtools/clients/svn.py
++++ b/rbtools/clients/svn.py
+@@ -52,6 +52,7 @@ class SVNClient(BaseSCMClient):
+     scmclient_id = 'svn'
+     name = 'Subversion'
+     server_tool_names = 'Subversion'
++    server_tool_ids = ['subversion']
+ 
+     requires_diff_tool = True
+ 
+diff --git a/rbtools/clients/tfs.py b/rbtools/clients/tfs.py
+index 2b70fae3..7b02d3de 100644
+--- a/rbtools/clients/tfs.py
++++ b/rbtools/clients/tfs.py
+@@ -1321,6 +1321,7 @@ class TFSClient(BaseSCMClient):
+     scmclient_id = 'tfs'
+     name = 'Team Foundation Server'
+     server_tool_names = 'Team Foundation Server'
++    server_tool_ids = ['tfs']
+ 
+     requires_diff_tool = True
+ 
+diff --git a/rbtools/commands/base/commands.py b/rbtools/commands/base/commands.py
+index 3313a689..d4e20f61 100644
+--- a/rbtools/commands/base/commands.py
++++ b/rbtools/commands/base/commands.py
+@@ -939,7 +939,8 @@ def initialize(self) -> None:
+                 api_root=self.api_root,
+                 tool=tool,
+                 repository_name=options.repository_name,
+-                repository_paths=repository_info.path)
++                repository_paths=repository_info.path,
++                capabilities=self.capabilities)
+             self.repository = repository
+ 
+             if repository:
+diff --git a/rbtools/commands/setup_repo.py b/rbtools/commands/setup_repo.py
+index 615bc9e3..9905d1b5 100644
+--- a/rbtools/commands/setup_repo.py
++++ b/rbtools/commands/setup_repo.py
+@@ -1,14 +1,20 @@
+ """Implementation of rbt setup-repo."""
+ 
++from __future__ import annotations
++
+ import difflib
+ import os
+ import textwrap
++from typing import Optional, TYPE_CHECKING, Union
+ 
+ from rbtools.commands.base import BaseCommand, CommandError
+ from rbtools.config.loader import CONFIG_FILENAME
+ from rbtools.utils.console import confirm, confirm_select
+ from rbtools.utils.repository import get_repository_resource
+ 
++if TYPE_CHECKING:
++    from rbtools.api.resource import ItemResource, RootResource
++
+ 
+ class SetupRepo(BaseCommand):
+     """Configure a repository to point to a Review Board server.
+@@ -38,22 +44,27 @@ class SetupRepo(BaseCommand):
+         BaseCommand.tfs_options,
+     ]
+ 
+-    def prompt_rb_repository(self, local_tool_name, server_tool_names,
+-                             repository_paths, api_root):
++    def prompt_rb_repository(
++        self,
++        local_tool_name: str,
++        server_tool_names: Optional[str],
++        repository_paths: Optional[Union[str, list[str]]],
++        api_root: RootResource,
++    ) -> Optional[ItemResource]:
+         """Interactively prompt to select a matching repository.
+ 
+         The user is prompted to choose a matching repository found on the
+         Review Board server.
+ 
+         Args:
+-            local_tool_name (unicode):
++            local_tool_name (str):
+                 The local name of the detected tool.
+ 
+-            server_tool_names (unicode):
++            server_tool_names (str):
+                 A comma-separated list of potentially matching SCMTool names in
+                 the Review Board server.
+ 
+-            repository_paths (list or unicode, optional):
++            repository_paths (list or str, optional):
+                 A list of potential paths to match for the repository.
+ 
+             api_root (rbtools.api.resource.RootResource):
+@@ -192,9 +203,11 @@ def main(self, *args):
+         while True:
+             self.stdout.new_line()
+             self.stdout.write('Current server: %s' % server)
++
++            tool_names = tool.get_server_tool_names(self.capabilities)
+             selected_repo = self.prompt_rb_repository(
+                 local_tool_name=tool.name,
+-                server_tool_names=tool.server_tool_names,
++                server_tool_names=tool_names,
+                 repository_paths=repository_info.path,
+                 api_root=api_root)
+ 
+diff --git a/rbtools/utils/repository.py b/rbtools/utils/repository.py
+index d30d2cc0..d3ec280d 100644
+--- a/rbtools/utils/repository.py
++++ b/rbtools/utils/repository.py
+@@ -1,17 +1,34 @@
+ """Utility functions for working with repositories."""
+ 
++from __future__ import annotations
++
++from typing import Optional, TYPE_CHECKING, Union
++
+ from rbtools.api.errors import APIError
+ 
++if TYPE_CHECKING:
++    from rbtools.api.capabilities import Capabilities
++    from rbtools.api.resource import ItemResource, RootResource
++    from rbtools.clients.base.repository import RepositoryInfo
++    from rbtools.clients.base.scmclient import BaseSCMClient
++
+ 
+-def get_repository_resource(api_root,
+-                            tool=None,
+-                            repository_name=None,
+-                            repository_paths=None):
++def get_repository_resource(
++    api_root: RootResource,
++    tool: Optional[BaseSCMClient] = None,
++    repository_name: Optional[str] = None,
++    repository_paths: Optional[Union[str, list[str]]] = None,
++    capabilities: Optional[Capabilities] = None,
++) -> tuple[Optional[ItemResource], Optional[ItemResource]]:
+     """Return the API resource for the matching repository on the server.
+ 
+     Version Added:
+         3.0
+ 
++    Version Changed:
++        5.0.1:
++        Added the ``capabilities`` argument.
++
+     Args:
+         api_root (rbtools.api.resource.RootResource):
+             The root resource for the API.
+@@ -19,12 +36,15 @@ def get_repository_resource(api_root,
+         tool (rbtools.clients.base.BaseSCMClient, optional):
+             The SCM client corresponding to the local working directory.
+ 
+-        repository_name (unicode, optional):
++        repository_name (str, optional):
+             An explicit repository name provided by the local configuration.
+ 
+-        repository_paths (list or unicode, optional):
++        repository_paths (list or str, optional):
+             A list of potential paths to match for the repository.
+ 
++        capabilities (rbtools.api.capabilities.Capabilities, optional):
++            The capabilities fetched from the server.
++
+     Returns:
+         tuple of rbtools.api.resource.ItemResource:
+         A 2-tuple of :py:class:`~rbtools.api.resource.ItemResource`. The first
+@@ -47,8 +67,11 @@ def _get_info(repository):
+         'only_links': 'info,diff_file_attachments',
+     }
+ 
+-    if tool and tool.server_tool_names:
+-        query['tool'] = tool.server_tool_names
++    if tool:
++        server_tool_names = tool.get_server_tool_names(capabilities)
++
++        if server_tool_names:
++            query['tool'] = server_tool_names
+ 
+     if repository_name:
+         query['name'] = repository_name
+@@ -70,9 +93,12 @@ def _get_info(repository):
+     # configured path than the client. In that case, we want to try again
+     # without filtering by path, and ask each tool to match based on other
+     # conditions.
+-    query.pop('path', None)
++    if 'path' in query:
++        query.pop('path', None)
+ 
+-    all_repositories = api_root.get_repositories(**query)
++        all_repositories = api_root.get_repositories(**query)
++    else:
++        all_repositories = repositories
+ 
+     if all_repositories.total_results > 0 and tool:
+         repository, info = tool.find_matching_server_repository(
+@@ -93,7 +119,11 @@ def _get_info(repository):
+     return None, None
+ 
+ 
+-def get_repository_id(repository_info, api_root, repository_name=None):
++def get_repository_id(
++    repository_info: RepositoryInfo,
++    api_root: RootResource,
++    repository_name: Optional[str] = None,
++) -> Optional[int]:
+     """Return the ID of a repository from the server.
+ 
+     This will look up all accessible repositories on the server and try to
+@@ -106,18 +136,18 @@ def get_repository_id(repository_info, api_root, repository_name=None):
+         api_root (rbtools.api.resource.RootResource):
+             The root resource for the API.
+ 
+-        repository_name (unicode, optional):
++        repository_name (str, optional):
+             An explicit repository name provided by local configuration.
+ 
+     Returns:
+         int:
+         The ID of the repository, or ``None`` if not found.
+     """
+-    repository, info = get_repository_resource(
++    repository = get_repository_resource(
+         api_root,
+         tool=None,
+         repository_name=repository_name,
+-        repository_paths=repository_info.path)
++        repository_paths=repository_info.path)[0]
+ 
+     if repository:
+         return repository.id

@@ -1,0 +1,30 @@
+From 5a93f7ba5bea12bd78616a2168035324054ed7b7 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Sun, 7 Apr 2024 23:11:43 -0400
+Subject: [PATCH] simply do not build the mfhdf tools ncgen/ncdump
+
+They were removed upstream in:
+https://github.com/HDFGroup/hdf4/commit/57b87b9927f0127d0d04ab7cd6c93e01bf54e3ee
+
+With the note that people who want them can get them from... yup, you
+guessed it, netcdf.
+---
+ mfhdf/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mfhdf/Makefile.am b/mfhdf/Makefile.am
+index d62d3af..0963923 100644
+--- a/mfhdf/Makefile.am
++++ b/mfhdf/Makefile.am
+@@ -17,7 +17,7 @@ FORTRAN_DIR =
+ endif
+ 
+ # src folder in root Makefile, build other folders now
+-SUBDIRS = $(XDR_DIR) libsrc $(FORTRAN_DIR) test ncdump ncgen dumper hdfimport hdiff hrepack nctest
++SUBDIRS = $(XDR_DIR) libsrc $(FORTRAN_DIR) test dumper hdfimport hdiff hrepack nctest
+ 
+ DIST_SUBDIRS = xdr libsrc fortran test ncdump ncgen dumper hdfimport hdiff hrepack nctest examples
+ 
+-- 
+2.43.2
+

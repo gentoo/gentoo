@@ -1,0 +1,151 @@
+fix compatiblity with heimdal :
+* fix bashism '=='
+* test libkrb5 instead of krb5-private.h for _krb5_principal2principalname
+* include <gssapi/gssapi_krb5.h> even if HAVE_HEIMDAL_KERBEROS for krb5_gss_register_acceptor_identity
+* initialize PrincipalName *pn
+--- a/configure
++++ b/configure
+@@ -2963,7 +2963,7 @@
+ 		fi
+ 		ac_krb5_solaris="`$krb5confpath --version 2>/dev/null | grep -i solaris`"
+ 		ac_krb5_heimdal="`$krb5confpath --version 2>/dev/null | grep -i heimdal`"
+-        	if test "x$ac_krb5_solaris" == x ; then
++        	if test "x$ac_krb5_solaris" = x ; then
+ 			ac_krb5_cflags=`$krb5confpath --cflags krb5 2> /dev/null `
+ 			if test $? != 0; then
+ 				krb5fail=t
+@@ -3455,29 +3455,6 @@
+ 
+ done
+ 
+-
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for _krb5_principal2principalname in krb5-private.h" >&5
+-$as_echo_n "checking for _krb5_principal2principalname in krb5-private.h... " >&6; }
+-cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+-/* end confdefs.h.  */
+-#include <krb5-private.h>
+-
+-_ACEOF
+-if (eval "$ac_cpp conftest.$ac_ext") 2>&5 |
+-  $EGREP "_krb5_principal2principalname" >/dev/null 2>&1; then :
+-
+-$as_echo "#define HAVE_KRB5_PRINCIPAL2PRINCIPAL 1" >>confdefs.h
+-
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+-$as_echo "yes" >&6; }
+-else
+-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+-$as_echo "no" >&6; }
+-fi
+-rm -f conftest*
+-
+-
+-ac_com_error_message=no
+ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ #include <krb5.h>
+@@ -4118,6 +4095,57 @@
+ fi
+ 
+ fi
++if test "x$ac_krb5_heimdal" != x ; then
++	{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for _krb5_principal2principalname in -lkrb5" >&5
++printf %s "checking for _krb5_principal2principalname in -lkrb5... " >&6; }
++if test ${ac_cv_lib_krb5__krb5_principal2principalname+y}
++then :
++  printf %s "(cached) " >&6
++else case e in #(
++  e) ac_check_lib_save_LIBS=$LIBS
++LIBS="-lkrb5  $LIBS"
++cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++/* end confdefs.h.  */
++
++/* Override any GCC internal prototype to avoid an error.
++   Use char because int might match the return type of a GCC
++   builtin and then its argument prototype would still apply.
++   The 'extern "C"' is for builds by C++ compilers;
++   although this is not generally supported in C code supporting it here
++   has little cost and some practical benefit (sr 110532).  */
++#ifdef __cplusplus
++extern "C"
++#endif
++char _krb5_principal2principalname (void);
++int
++main (void)
++{
++return _krb5_principal2principalname ();
++  ;
++  return 0;
++}
++_ACEOF
++if ac_fn_c_try_link "$LINENO"
++then :
++  ac_cv_lib_krb5__krb5_principal2principalname=yes
++else case e in #(
++  e) ac_cv_lib_krb5__krb5_principal2principalname=no ;;
++esac
++fi
++rm -f core conftest.err conftest.$ac_objext conftest.beam \
++    conftest$ac_exeext conftest.$ac_ext
++LIBS=$ac_check_lib_save_LIBS ;;
++esac
++fi
++{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_krb5__krb5_principal2principalname" >&5
++printf "%s\n" "$ac_cv_lib_krb5__krb5_principal2principalname" >&6; }
++if test "x$ac_cv_lib_krb5__krb5_principal2principalname" = xyes
++then :
++
++printf "%s\n" "#define HAVE_KRB5_PRINCIPAL2PRINCIPAL 1" >>confdefs.h
++
++fi
++fi
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for krb5_get_err_text in -lkrb5" >&5
+ $as_echo_n "checking for krb5_get_err_text in -lkrb5... " >&6; }
+ if ${ac_cv_lib_krb5_krb5_get_err_text+:} false; then :
+--- a/mod_gss.h.in
++++ b/mod_gss.h.in
+@@ -204,7 +204,6 @@
+ #include <gssapi/gssapi.h>
+ #endif /* HAVE_GSSAPI_H */
+ 
+-#ifndef HAVE_HEIMDAL_KERBEROS
+ #ifdef HAVE_GSSAPI_GSSAPI_EXT_H
+ #include <gssapi/gssapi_ext.h>
+ #endif /* HAVE_GSSAPI_GSSAPI_EXT_H */
+@@ -214,7 +213,6 @@
+ #ifdef HAVE_GSSAPI_GSSAPI_GENERIC_H
+ #include <gssapi/gssapi_generic.h>
+ #endif /* HAVE_GSSAPI_GSSAPI_GENERIC_H */
+-#endif /* HAVE_HEIMDAL_KERBEROS */
+ 
+ #ifndef HAVE_GSS_INT32
+ #define gss_int32 int32_t
+--- a/mod_auth_gss.c.in
++++ b/mod_auth_gss.c.in
+@@ -109,7 +109,7 @@
+     krb5_principal p;
+     krb5_error_code kerr;
+ #ifdef HAVE_HEIMDAL_KERBEROS
+-    PrincipalName *pn;
++    PrincipalName *pn = NULL;
+ #endif
+     char *princ_name;
+ 
+@@ -179,7 +179,7 @@
+     krb5_principal p;
+     krb5_error_code kerr;
+ #ifdef HAVE_HEIMDAL_KERBEROS
+-    PrincipalName *pn;
++    PrincipalName *pn = NULL;
+ #endif
+     char *princ_name;
+ 
+@@ -251,7 +251,7 @@
+     krb5_principal p;
+     krb5_error_code kerr;
+ #ifdef HAVE_HEIMDAL_KERBEROS
+-    PrincipalName *pn;
++    PrincipalName *pn = NULL;
+ #endif
+     char *princ_name;
+ 

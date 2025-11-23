@@ -1,0 +1,32 @@
+--- a/src/libc_fcns.h
++++ b/src/libc_fcns.h
+@@ -0,0 +1,8 @@
++#ifndef _ZZUF_LIBC_FCNS_H
++#define _ZZUF_LIBC_FCNS_H
++
++/* Prototypes for internal libc functions zzuf hooks into */
++extern int __fseeko64(FILE *fp, off64_t offset, int whence);
++extern int _IO_getc(FILE *__fp);
++
++#endif
+--- a/src/libzzuf/lib-stream.c
++++ b/src/libzzuf/lib-stream.c
+@@ -57,6 +57,7 @@
+ #include "debug.h"
+ #include "fuzz.h"
+ #include "fd.h"
++#include "libc_fcns.h"
+ 
+ #if defined HAVE_FPOS64_T
+ #   define FPOS64_T fpos64_t
+--- a/src/zzat.c
++++ b/src/zzat.c
+@@ -51,6 +51,8 @@
+ 
+ #include "util/getopt.h"
+ 
++#include "libc_fcns.h"
++
+ static int run(char const *sequence, char const *file);
+ static void output(char const *buf, size_t len);
+ 

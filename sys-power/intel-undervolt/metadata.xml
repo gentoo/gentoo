@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="elogind">Use elogind hook to apply voltage after system sleep</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">kitsunyan/intel-undervolt</remote-id>
+	</upstream>
+</pkgmetadata>

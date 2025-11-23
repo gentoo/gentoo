@@ -1,0 +1,58 @@
+From 63598f0194ec0b291af30d8d7b3ee7bab1cd0928 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 12 Feb 2025 15:35:13 +0000
+Subject: [PATCH 2/2] Fix -Wformat-security
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ bcount.c         | 2 +-
+ ncurses/n_nast.c | 6 +++---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/bcount.c b/bcount.c
+index 3130188..7987ac6 100644
+--- a/bcount.c
++++ b/bcount.c
+@@ -153,7 +153,7 @@ void bytecounting ()
+ 	     else icons++;
+ 
+              sprintf (value, "%Ld", number);
+-	     printf (value);
++	     printf ("%s", value);
+ 
+ 	     /* calculate space */
+ 	     if (strlen(value) < 6) printf ("\t\t");
+diff --git a/ncurses/n_nast.c b/ncurses/n_nast.c
+index 3e02859..ba50f2f 100644
+--- a/ncurses/n_nast.c
++++ b/ncurses/n_nast.c
+@@ -641,7 +641,7 @@ void title(void)
+    title = subwin(stdscr,3,COLS,0,0);
+    wbkgd(title,COLOR_PAIR(1));
+    box(title,0,0);
+-   mvwprintw(title,1,(COLS-sizeof(TITLE))/2, TITLE);
++   mvwprintw(title,1,(COLS-sizeof(TITLE))/2, "%s", TITLE);
+    wrefresh(title);
+ }
+ 
+@@ -748,7 +748,7 @@ void pop_up_win(void)
+    pop_up = newwin(17,55,(LINES-17)/2,(COLS-55)/2);
+    wbkgd(pop_up,COLOR_PAIR(4));
+    box(pop_up,0,0);
+-   mvwprintw(pop_up,0,(55 -strlen(message))/2, message);
++   mvwprintw(pop_up,0,(55 -strlen(message))/2, "%s", message);
+    wrefresh(pop_up);
+ }
+ 
+@@ -759,7 +759,7 @@ void help_win(void)
+    help = newwin(23,67,(LINES-23)/2,(COLS-67)/2);
+    wbkgd(help,COLOR_PAIR(4));
+    box(help,0,0);
+-   mvwprintw(help,0,(67 -strlen(message))/2, message);
++   mvwprintw(help,0,(67 -strlen(message))/2, "%s", message);
+    wrefresh(help);
+ }
+ 
+-- 
+2.48.1
+

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>jkroon@gentoo.org</email>
+		<name>Jaco Kroon</name>
+	</maintainer>
+	<longdescription lang="en">
+		OPUS is one of the codecs utilized for WebRTC, this one is a binary module
+		provided by Digium (royalty free) for use in asterisk for transcoding.
+	</longdescription>
+</pkgmetadata>

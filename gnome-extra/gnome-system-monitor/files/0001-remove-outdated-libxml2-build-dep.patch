@@ -1,0 +1,38 @@
+https://gitlab.gnome.org/GNOME/gnome-system-monitor/-/merge_requests/200
+
+doc/CI files excluded
+
+From fe534e86ef34c5a14e9cc0b1cb6ef92ae95a215b Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz@gentoo.org>
+Date: Mon, 30 Jun 2025 23:49:15 -0400
+Subject: [PATCH] remove outdated libxml2 build dep
+
+The code which used it got deleted in 2012. Yet, today, it still causes
+configure checks to fail if it is missing.
+
+Fixes: f354bb932741be156d88c6d29d6986223526d616
+Signed-off-by: Eli Schwartz <eschwartz@gentoo.org>
+---
+ meson.build | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 48d15a69..4e1c5e9a 100644
+--- a/meson.build
++++ b/meson.build
+@@ -62,7 +62,6 @@ gtkmm      = dependency('gtkmm-4.0',   version: '>=4.0.0')
+ libgtop    = dependency('libgtop-2.0', version: '>=2.41.2')
+ libadwaita = dependency('libadwaita-1',version: '>=1.6.alpha')
+ librsvg    = dependency('librsvg-2.0', version: '>=2.46')
+-libxml     = dependency('libxml-2.0',  version: '>=2.0')
+ 
+ if get_option('systemd')
+   libsystemd = dependency('libsystemd', version: '>=44')
+@@ -165,4 +164,3 @@ gnome.post_install(
+   glib_compile_schemas: true,
+   gtk_update_icon_cache: true,
+ )
+-
+-- 
+2.49.0
+

@@ -1,0 +1,44 @@
+Based on patch from Arch additionally using system's Shaders/
+
+Resulting paths:
+/usr/share/higan/{Database,Firmware,Shaders,Templates}
+~/higan/ -> ~/.local/share/higan/Systems
+
+Templates+Systems can be changed in ~/.config/higan/paths.bml and
+does not disrupt existing configurations. Shaders will use default
+~/.config/higan/Shaders over system's if it exists.
+
+https://bugs.gentoo.org/828108
+--- a/higan-ui/higan-ui.cpp
++++ b/higan-ui/higan-ui.cpp
+@@ -44,9 +44,8 @@
+   }
+   if(!directory::exists(Path::templates)) {
+-    Path::templates = {Path::userData(), "higan/"};
+-    directory::create(Path::templates);
++    Path::templates = {Path::sharedData(), "higan/Templates/"};
+   }
+   if(!directory::exists(Path::data)) {
+-    Path::data = {Path::user(), "higan/"};
++    Path::data = {Path::userData(), "higan/Systems/"};
+     directory::create(Path::data);
+   }
+--- a/higan-ui/menus/settings.cpp
++++ b/higan-ui/menus/settings.cpp
+@@ -78,4 +78,6 @@
+ 
+   string location{Path::settings, "Shaders/"};
++  if(!directory::exists(location))
++    location = string{Path::sharedData(), "higan/Shaders/"};
+ 
+   if(settings.video.driver == "OpenGL 3.2") {
+--- a/icarus/icarus.cpp
++++ b/icarus/icarus.cpp
+@@ -9,6 +9,5 @@
+   if(inode::exists(location)) return location;
+ 
+-  directory::create({Path::userData(), "icarus/"});
+-  return {Path::userData(), "icarus/", name};
++  return {Path::sharedData(), "higan/", name};
+ }
+ 

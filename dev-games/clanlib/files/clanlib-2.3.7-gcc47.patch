@@ -1,0 +1,107 @@
+diff -up ClanLib-2.3.4/Sources/Core/IOData/file_help.cpp~ ClanLib-2.3.4/Sources/Core/IOData/file_help.cpp
+--- ClanLib-2.3.4/Sources/Core/IOData/file_help.cpp~	2011-07-22 10:03:21.000000000 +0200
++++ ClanLib-2.3.4/Sources/Core/IOData/file_help.cpp	2012-01-12 22:16:39.779011207 +0100
+@@ -34,6 +34,7 @@
+ #include "API/Core/System/exception.h"
+ 
+ #ifndef WIN32
++#include <unistd.h>
+ #include <sys/stat.h>
+ #endif
+ 
+diff -up ClanLib-2.3.4/Sources/Core/IOData/path_help.cpp~ ClanLib-2.3.4/Sources/Core/IOData/path_help.cpp
+--- ClanLib-2.3.4/Sources/Core/IOData/path_help.cpp~	2011-08-03 10:13:57.000000000 +0200
++++ ClanLib-2.3.4/Sources/Core/IOData/path_help.cpp	2012-01-12 22:18:30.754009662 +0100
+@@ -43,6 +43,7 @@
+ 
+ #ifndef WIN32
+ #include <cstring>
++#include <unistd.h>
+ #endif
+ 
+ /////////////////////////////////////////////////////////////////////////////
+diff -up ClanLib-2.3.4/Sources/Core/IOData/iodevice_provider_pipe_connection.cpp~ ClanLib-2.3.4/Sources/Core/IOData/iodevice_provider_pipe_connection.cpp
+--- ClanLib-2.3.4/Sources/Core/IOData/iodevice_provider_pipe_connection.cpp~	2011-01-27 10:03:39.000000000 +0100
++++ ClanLib-2.3.4/Sources/Core/IOData/iodevice_provider_pipe_connection.cpp	2012-01-12 22:24:55.536004557 +0100
+@@ -33,6 +33,7 @@
+ #include "API/Core/Text/string_help.h"
+ #include "API/Core/Text/string_format.h"
+ #ifndef WIN32
++#include <unistd.h>
+ #include <sys/socket.h>
+ #include <sys/un.h>
+ #ifndef UNIX_PATH_MAX
+diff -up ClanLib-2.3.4/Sources/Core/IOData/pipe_listen_impl.cpp~ ClanLib-2.3.4/Sources/Core/IOData/pipe_listen_impl.cpp
+--- ClanLib-2.3.4/Sources/Core/IOData/pipe_listen_impl.cpp~	2011-01-13 12:17:34.000000000 +0100
++++ ClanLib-2.3.4/Sources/Core/IOData/pipe_listen_impl.cpp	2012-01-12 22:25:17.359004259 +0100
+@@ -36,6 +36,7 @@
+ #include "API/Core/Text/string_help.h"
+ #ifndef WIN32
+ #include "Network/Socket/event_provider_unixsocket.h"
++#include <unistd.h>
+ #include <sys/socket.h>
+ #include <sys/un.h>
+ #ifndef UNIX_PATH_MAX 
+diff -up ClanLib-2.3.4/Sources/Core/IOData/security_identifier.cpp~ ClanLib-2.3.4/Sources/Core/IOData/security_identifier.cpp
+--- ClanLib-2.3.4/Sources/Core/IOData/security_identifier.cpp~	2011-01-13 12:17:34.000000000 +0100
++++ ClanLib-2.3.4/Sources/Core/IOData/security_identifier.cpp	2012-01-12 22:26:06.047003649 +0100
+@@ -31,6 +31,9 @@
+ #include "API/Core/System/exception.h"
+ #ifdef WIN32
+ #include <AclAPI.h>
++#else
++#include <unistd.h>
++#include <sys/types.h>
+ #endif
+ 
+ /////////////////////////////////////////////////////////////////////////////
+diff -up ClanLib-2.3.4/Sources/Core/IOData/virtual_directory.cpp~ ClanLib-2.3.4/Sources/Core/IOData/virtual_directory.cpp
+--- ClanLib-2.3.4/Sources/Core/IOData/virtual_directory.cpp~	2011-11-25 09:16:46.000000000 +0100
++++ ClanLib-2.3.4/Sources/Core/IOData/virtual_directory.cpp	2012-01-12 22:26:37.583003215 +0100
+@@ -38,6 +38,10 @@
+ #include "API/Core/System/weakptr.h"
+ #include "API/Core/Text/string_help.h"
+ 
++#ifndef WIN32
++#include <unistd.h>
++#endif
++
+ /////////////////////////////////////////////////////////////////////////////
+ // CL_VirtualDirectory_Impl Class:
+ 
+diff -up ClanLib-2.3.4/Sources/Core/System/Unix/service_unix.cpp~ ClanLib-2.3.4/Sources/Core/System/Unix/service_unix.cpp
+--- ClanLib-2.3.4/Sources/Core/System/Unix/service_unix.cpp~	2011-01-13 12:17:34.000000000 +0100
++++ ClanLib-2.3.4/Sources/Core/System/Unix/service_unix.cpp	2012-01-12 22:29:12.478001042 +0100
+@@ -35,6 +35,7 @@
+ #include "service_unix.h"
+ #include <iostream>
+ #include <signal.h>
++#include <unistd.h>
+ 
+ /////////////////////////////////////////////////////////////////////////////
+ // CL_Service_Unix Construction:
+diff -up ClanLib-2.3.4/Sources/Core/Text/console_logger.cpp~ ClanLib-2.3.4/Sources/Core/Text/console_logger.cpp
+--- ClanLib-2.3.4/Sources/Core/Text/console_logger.cpp~	2011-01-13 12:17:34.000000000 +0100
++++ ClanLib-2.3.4/Sources/Core/Text/console_logger.cpp	2012-01-12 22:27:54.446002158 +0100
+@@ -33,6 +33,10 @@
+ #include "API/Core/Text/string_format.h"
+ #include "API/Core/System/datetime.h"
+ 
++#ifndef WIN32
++#include <unistd.h>
++#endif
++
+ /////////////////////////////////////////////////////////////////////////////
+ // CL_ConsoleLogger Construction:
+ 
+diff -up ClanLib-2.3.4/Sources/Display/X11/x11_window.cpp~ ClanLib-2.3.4/Sources/Display/X11/x11_window.cpp
+--- ClanLib-2.3.4/Sources/Display/X11/x11_window.cpp~	2012-01-12 22:18:49.000000000 +0100
++++ ClanLib-2.3.4/Sources/Display/X11/x11_window.cpp	2012-01-12 22:30:46.492999847 +0100
+@@ -50,6 +50,7 @@
+ #include "display_message_queue_x11.h"
+ #include <X11/Xatom.h>
+ #include <cstdio>
++#include <unistd.h>
+ #include "../Window/input_context_impl.h"
+ #include <X11/XKBlib.h>
+ #include <dlfcn.h>

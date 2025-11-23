@@ -1,0 +1,26 @@
+Fix build with C23
+https://bugs.gentoo.org/936565
+diff '--color=auto' -ru bomns-0.99.2.old/src/launcher2/main.c bomns-0.99.2/src/launcher2/main.c
+--- a/src/launcher2/main.c	2025-03-02 16:28:35.646507541 +0400
++++ b/src/launcher2/main.c	2025-03-02 16:29:13.890873033 +0400
+@@ -27,6 +27,7 @@
+ #include <gtk/gtk.h>
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <ctype.h>
+ 
+ #include "main.h"
+ #include "interface.h"
+diff '--color=auto' -ru bomns-0.99.2.old/src/launcher2/main.h bomns-0.99.2/src/launcher2/main.h
+--- a/src/launcher2/main.h	2025-03-02 16:28:35.646507541 +0400
++++ b/src/launcher2/main.h	2025-03-02 16:29:54.746212077 +0400
+@@ -26,7 +26,7 @@
+ void set_defaults();
+ void write_bomns_rc();
+ void load_bomns_rc();
+-void parse_bomns_rc();
++void parse_bomns_rc(const char * cszBuf);
+ 
+ 
+ #endif
+Only in bomns-0.99.2/src/launcher2: main.o

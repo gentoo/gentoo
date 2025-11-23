@@ -1,0 +1,15 @@
+diff -Naur mcdp-0.4a.orig/mcdp.h mcdp-0.4a/mcdp.h
+--- mcdp-0.4a.orig/mcdp.h	2005-12-17 21:30:56.000000000 +0900
++++ mcdp-0.4a/mcdp.h	2006-03-04 16:26:06.000000000 +0900
+@@ -27,6 +27,11 @@
+ #include <netinet/in.h>
+ #include <arpa/inet.h>
+ 
++/* hack to avoid re-definition of some stuff */
++#ifdef __dietlibc__
++#define _LINUX_BYTEORDER_GENERIC_H
++#endif /* __dietlibc__ */
++
+ #include "cdrom.h" /* can't be included via <linux/cdrom.h> :( */
+ #include "params.h"
+ 

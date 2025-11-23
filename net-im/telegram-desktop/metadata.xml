@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>esteve.varela@gmail.com</email>
+		<name>Esteve Varela Colominas</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>aliaksei.urbanski@gmail.com</email>
+		<name>Aliaksei Urbanski</name>
+	</maintainer>
+	<maintainer type="person" proxied="proxy">
+		<email>dlan@gentoo.org</email>
+		<name>Yixun Lan</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="enchant">Use the <pkg>app-text/enchant</pkg> spell-checking backend instead of <pkg>app-text/hunspell</pkg></flag>
+		<flag name="fonts">Use builtin patched copy of open-sans fonts (overrides fontconfig)</flag>
+		<flag name="libdispatch">Use <pkg>dev-libs/libdispatch</pkg> to speed up concurrent code execution</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">telegramdesktop/tdesktop</remote-id>
+		<bugs-to>https://github.com/telegramdesktop/tdesktop/issues</bugs-to>
+		<changelog>https://github.com/telegramdesktop/tdesktop/releases</changelog>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,27 @@
+https://bugs.gentoo.org/612584
+
+--- cifs-utils-6.7/cifs.upcall.c
++++ cifs-utils-6.7/cifs.upcall.c
+@@ -75,11 +75,13 @@
+ #define KRB5_KEY_LENGTH(k)      ((k)->keyvalue.length)
+ #define KRB5_KEY_DATA(k)        ((k)->keyvalue.data)
+ #define KRB5_KEY_DATA_CAST      void
++#define KRB5_FREE_STRING(c,k)   krb5_xfree(k)
+ #else /* MIT */
+ #define KRB5_KEY_TYPE(k)        ((k)->enctype)
+ #define KRB5_KEY_LENGTH(k)      ((k)->length)
+ #define KRB5_KEY_DATA(k)        ((k)->contents)
+ #define KRB5_KEY_DATA_CAST      krb5_octet
++#define KRB5_FREE_STRING(c,k)   krb5_free_string(c,k)
+ #endif
+ 
+ #ifdef HAVE_LIBCAP_NG
+@@ -358,7 +360,7 @@
+ 		syslog(LOG_DEBUG, "%s: krb5_cc_get_full_name failed: %d\n", __func__, ret);
+ 	} else {
+ 		syslog(LOG_DEBUG, "%s: default ccache is %s\n", __func__, cachename);
+-		krb5_free_string(context, cachename);
++		KRB5_FREE_STRING(context, cachename);
+ 	}
+ 
+ 	if (!get_tgt_time(cc)) {

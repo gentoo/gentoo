@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    Uxn is a virtual machine with 32 instructions. This one-page computer is
+    capable of hosting small applications, programmable in a unique language.
+    It was designed with an implementation-first mindset with a focus on
+    creating portable tools and games.
+  </longdescription>
+  <upstream>
+    <remote-id type="sourcehut">~rabbits/uxn</remote-id>
+  </upstream>
+</pkgmetadata>

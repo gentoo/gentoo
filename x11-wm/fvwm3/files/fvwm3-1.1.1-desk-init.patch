@@ -1,0 +1,32 @@
+From efef84cf5fcd2c4747ef75dd522605450efd278a Mon Sep 17 00:00:00 2001
+From: Jaimos Skriletz <jaimosskriletz@gmail.com>
+Date: Sat, 30 Nov 2024 16:40:21 -0700
+Subject: [PATCH] FvwmPager: Update current desk correctly during init.
+
+When FvwmPager is tracking the current desk and is run on any desk
+except desk 0, the current desk isn't updated during initialization
+because the monitor update is sent before the desk update, so the
+pager didn't realize the desk has changed.
+
+This ensures that the pager updates the current desk if either
+the desk changes or the new desk is not the same as the current
+desk to also catch updates during pager initialization.
+
+Fixes #1122
+---
+ modules/FvwmPager/messages.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/modules/FvwmPager/messages.c b/modules/FvwmPager/messages.c
+index c93ed3056..86cd32e70 100644
+--- a/modules/FvwmPager/messages.c
++++ b/modules/FvwmPager/messages.c
+@@ -454,7 +454,7 @@ void process_new_desk(unsigned long *body)
+ 		monitor_assign_virtual(fp->m);
+ 
+ 	/* If always tracking current desk. Update Desks[0]. */
+-	if (fAlwaysCurrentDesk && oldDesk != newDesk)
++	if (fAlwaysCurrentDesk && (oldDesk != newDesk || desk1 != newDesk))
+ 	{
+ 		PagerWindow *t;
+ 

@@ -1,0 +1,24 @@
+linux/atm_zatm.h was removed in >=linux-headers-5.19. As the hardware is
+said to be unlikely working on modern systems, just disable its utility
+program to keep the rest building.
+
+See: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=052e1f01bfae8be6
+
+--- a/src/maint/Makefile.am
++++ b/src/maint/Makefile.am
+@@ -1,5 +1,5 @@
+ BOOTPGMS=atmaddr esi
+-SYSPGMS=atmloop atmtcp enitune zntune hediag # nstune
++SYSPGMS=atmloop atmtcp enitune hediag # nstune zntune
+ USRPGMS=atmdiag atmdump sonetdiag saaldump
+ 
+ INCLUDES=-I$(srcdir)/../q2931 -I$(srcdir)/../saal -I.
+@@ -14,7 +14,7 @@ esi_SOURCES = esi.c
+ atmloop_SOURCES = atmloop.c
+ atmtcp_SOURCES = atmtcp.c
+ enitune_SOURCES = enitune.c
+-zntune_SOURCES = zntune.c
++#zntune_SOURCES = zntune.c
+ #nstune_SOURCES = nstune.c
+ 
+ atmdiag_SOURCES = atmdiag.c

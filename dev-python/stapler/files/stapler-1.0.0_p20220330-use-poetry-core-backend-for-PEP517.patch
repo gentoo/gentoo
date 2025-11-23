@@ -1,0 +1,32 @@
+From 3907d86f515ff0e9f042df7111515205e9abaa11 Mon Sep 17 00:00:00 2001
+From: Ben Kohler <bkohler@gentoo.org>
+Date: Thu, 26 May 2022 13:33:38 -0500
+Subject: [PATCH 1/2] pyproject.toml: use poetry-core backend for PEP517
+
+Per poetry upstream, "If your pyproject.toml file still references
+poetry directly as a build backend, you should update it to reference
+poetry-core instead."
+
+https://python-poetry.org/docs/pyproject/#poetry-and-pep-517
+https://projects.gentoo.org/python/guide/distutils.html#deprecated-pep-517-backends
+
+Signed-off-by: Ben Kohler <bkohler@gentoo.org>
+---
+ pyproject.toml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index efa98ea..d34823e 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -28,5 +28,5 @@ pdf-stapler = 'staplelib:main'
+ 
+ # this section is for PEP517 compliance. It is technically unnecessary if using Poetry
+ [build-system]
+-requires = ["poetry>=1.0"]
+-build-backend = "poetry.masonry.api"
++requires = ["poetry-core>=1.0.0"]
++build-backend = "poetry.core.masonry.api"
+-- 
+2.39.0
+

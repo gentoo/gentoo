@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    This package provides a set of list-orientated functions for operating over
+    the contents of Emacs buffers. Functions are generally purish: i.e. they
+    may change the state of one buffer by side-effect, but should not affect
+    point, current buffer, match data or so forth.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/phillord/m-buffer-el/issues/</bugs-to>
+    <remote-id type="github">phillord/m-buffer-el</remote-id>
+  </upstream>
+</pkgmetadata>

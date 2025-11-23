@@ -1,0 +1,18 @@
+--- a/Makefile	2025-06-17 07:59:35.185135080 +0200
++++ b/Makefile	2025-06-17 08:00:23.657589676 +0200
+@@ -141,14 +141,7 @@
+ 	@true
+ 
+ opensslpull:
+-	upstream=`git ls-remote https://github.com/openssl/openssl | grep -Eo '(openssl-3\.5\.[0-9]+)' | sort -V | tail -n 1` ; \
+-	if [ -d openssl -a -d openssl/.git ]; then \
+-		if [ "$$upstream" != "`cd ./openssl && git describe --exact-match --tags`" ]; then \
+-			cd ./openssl && git fetch --depth 1 origin refs/tags/$$upstream:refs/tags/$$upstream && git checkout $$upstream && touch ../.openssl.is.fresh ; \
+-		fi \
+-	else \
+-		git clone --depth 1 -b $$upstream https://github.com/openssl/openssl ./openssl && cd ./openssl && touch ../.openssl.is.fresh ; \
+-	fi
++	@true
+ 
+ openssl/Makefile: .openssl.is.fresh
+ 	cd ./openssl; ./Configure -v -fstack-protector-all -D_FORTIFY_SOURCE=2 -fPIC no-shared enable-weak-ssl-ciphers zlib

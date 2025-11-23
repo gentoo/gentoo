@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/943962
+--- a/id_query.c
++++ b/id_query.c
+@@ -33,7 +33,7 @@
+ 
+ int id_query (ident_t *id, int lport, int fport, struct timeval *timeout)
+ {
+-    RETSIGTYPE (*old_sig)();
++    RETSIGTYPE (*old_sig)(int sig);
+     int res;
+     char buf[80];
+     fd_set ws;

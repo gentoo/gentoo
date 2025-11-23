@@ -1,0 +1,77 @@
+https://bugs.gentoo.org/877109
+fix type confusion
+also add fix glib feature macro for usleep
+diff -ru a/wmBinClock.c b/wmBinClock.c
+--- a/wmBinClock.c	2025-01-05 11:53:41.163293987 +0400
++++ b/wmBinClock.c	2025-01-05 11:55:33.251648423 +0400
+@@ -6,6 +6,7 @@
+ * Copyright (C) 2015 - Thomas Kuiper <tkuiper at inxsoft.net> and Sune Molgaard <sune at molgaard.org> (BSD license)
+ */
+ 
++#define _DEFAULT_SOURCE
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <stdlib.h>
+@@ -66,7 +67,7 @@
+ int             DisplayDepth;
+ GC NormalGC;
+ 
+-void IntToBinary(int x, int *str[]);
++void IntToBinary(int x, int str[]);
+ void PrintHelp(char err[]);
+ 
+ int main(int argc, char *argv[])
+@@ -667,7 +668,7 @@
+ 	    }
+ 
+ 	    tmp_hour = tmworld->tm_hour;
+-	    IntToBinary(tmp_hour, &tmp_str);
++	    IntToBinary(tmp_hour, tmp_str);
+ 
+ 	    for (s = 0; s < 6; s++)
+ 	    {
+@@ -678,7 +679,7 @@
+ 	    }
+ 
+ 	    tmp_minute = tmworld->tm_min;
+-	    IntToBinary(tmp_minute, &tmp_str);
++	    IntToBinary(tmp_minute, tmp_str);
+ 	    for (s = 0; s < 6; s++)
+ 	    {
+ 		if (tmp_str[s] == 1)
+@@ -688,7 +689,7 @@
+ 	    }
+ 	
+ 	    tmp_second = tmworld->tm_sec;
+-	    IntToBinary(tmp_second, &tmp_str);
++	    IntToBinary(tmp_second, tmp_str);
+ 	    
+ 	    for (s = 0; s < 6; s++)
+ 	    {
+@@ -699,7 +700,7 @@
+ 	    }
+ 	    
+ 	    tmp_day = tmworld->tm_mday;
+-	    IntToBinary(tmp_day, &tmp_str);
++	    IntToBinary(tmp_day, tmp_str);
+ 	    
+ 	    for (s = 0; s < 6; s++)
+ 	    {
+@@ -710,7 +711,7 @@
+ 	    }
+ 
+ 	    tmp_month = tmworld->tm_mon + 1;
+-	    IntToBinary(tmp_month, &tmp_str);
++	    IntToBinary(tmp_month, tmp_str);
+ 	    
+ 	    for (s = 0; s < 6; s++)
+ 	    {
+@@ -780,7 +781,7 @@
+ 	usleep(DELAY);
+     }
+ }
+-void IntToBinary(int x, int *str[])
++void IntToBinary(int x, int str[])
+ {
+     int i = 0;
+     int counter = 0;

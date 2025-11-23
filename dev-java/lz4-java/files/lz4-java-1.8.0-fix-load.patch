@@ -1,0 +1,32 @@
+--- a/src/java/net/jpountz/util/Native.java
++++ b/src/java/net/jpountz/util/Native.java
+@@ -100,17 +100,18 @@ public enum Native {
+       return;
+     }
+ 
+-    cleanupOldTempLibs();
++//    cleanupOldTempLibs();
+ 
+     // Try to load lz4-java (liblz4-java.so on Linux) from the java.library.path.
++    final File library = new File(System.mapLibraryName("lz4-java"));
+     try {
+-      System.loadLibrary("lz4-java");
++      System.load(library.getAbsolutePath());
+       loaded = true;
+       return;
+     } catch (UnsatisfiedLinkError ex) {
+       // Doesn't exist, so proceed to loading bundled library.
+     }
+-
++/*
+     String resourceName = resourceName();
+     InputStream is = Native.class.getResourceAsStream(resourceName);
+     if (is == null) {
+@@ -158,6 +159,6 @@ public enum Native {
+           tempLib.deleteOnExit();
+ 	tempLibLock.deleteOnExit();
+       }
+-    }
++    }*/
+   }
+ }

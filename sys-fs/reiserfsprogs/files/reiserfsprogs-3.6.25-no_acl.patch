@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/585978
+
+--- a/reiserfscore/xattr.c
++++ b/reiserfscore/xattr.c
+@@ -1,7 +1,6 @@
+ #include <sys/types.h>
+ #include <stdio.h>
+ #include <errno.h>
+-#include <sys/acl.h>
+ #include "reiserfs_lib.h"
+ 
+ static inline unsigned short from32to16(unsigned int x)

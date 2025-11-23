@@ -1,0 +1,18 @@
+Use system GTest instead of fetching it
+https://bugs.gentoo.org/880353
+--- a/test/CMakeLists.txt	2025-03-23 22:20:35.060895402 +0300
++++ b/test/CMakeLists.txt	2025-03-23 22:22:29.964436254 +0300
+@@ -33,12 +33,7 @@
+ set(BUILD_GMOCK OFF CACHE INTERNAL "Override gtest default" FORCE)
+ set(INSTALL_GTEST OFF CACHE INTERNAL "Override gtest default" FORCE)
+ 
+-include(FetchContent)
+-FetchContent_Declare(gtest
+-    GIT_REPOSITORY https://github.com/google/googletest.git
+-    GIT_TAG v1.15.2
+-)
+-FetchContent_MakeAvailable(gtest)
++find_package(GTest REQUIRED)
+ 
+ add_executable(st_gtests "")
+ target_link_libraries(st_gtests PRIVATE gtest gtest_main string_theory)

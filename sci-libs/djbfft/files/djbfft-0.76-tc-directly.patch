@@ -1,0 +1,22 @@
+# https://bugs.gentoo.org/731874
+# https://bugs.gentoo.org/725432
+--- a/Makefile
++++ b/Makefile
+@@ -736,7 +736,7 @@ warn-auto.sh systype
+ 	echo 'rm -f "$$main"'; \
+ 	echo 'if [ "$${main##*.}" = "a" ]'; \
+ 	echo 'then'; \
+-	echo '  ar cr "$$main" $${1+"$$@"}'; \
++	echo '  $(AR) cr "$$main" $${1+"$$@"}'; \
+ 	case "`cat systype`" in \
+ 	sunos-5.*) ;; \
+ 	unix_sv*) ;; \
+@@ -745,7 +745,7 @@ warn-auto.sh systype
+ 	dgux-*) ;; \
+ 	hp-ux-*) ;; \
+ 	sco*) ;; \
+-	*) echo '  ranlib "$$main"' ;; \
++	*) echo '  $(RANLIB) "$$main"' ;; \
+ 	esac; \
+ 	echo 'else'; \
+ 	echo '  exec `head -1 conf-ld` -shared -Wl,-soname,libdjbfft.so.0.7.6 -o "$$main" $${1+"$$@"}'; \

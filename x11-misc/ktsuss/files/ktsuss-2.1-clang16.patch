@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/874540
+--- a/src/ktsuss.c
++++ b/src/ktsuss.c
+@@ -38,2 +38,3 @@
+ #include <sys/types.h>
++#include <err.h>
+ #include <errno.h>
+--- a/src/su_backend.c
++++ b/src/su_backend.c
+@@ -40,2 +40,3 @@
+ #include <sys/types.h>
++#include <err.h>
+ #include <errno.h>
+@@ -54,2 +55,4 @@
+ 
++void tty_raw(int ttyfd);
++
+ static struct termios orig_termios;
+--- a/src/sudo_backend.c
++++ b/src/sudo_backend.c
+@@ -40,2 +40,3 @@
+ #include <sys/types.h>
++#include <err.h>
+ #include <errno.h>
+@@ -55,2 +56,4 @@
+ 
++void tty_raw(int ttyfd);
++
+ static struct termios orig_termios;

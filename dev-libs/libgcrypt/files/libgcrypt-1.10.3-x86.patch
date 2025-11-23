@@ -1,0 +1,94 @@
+https://bugs.gentoo.org/915060
+https://git.gnupg.org/cgi-bin/gitweb.cgi?p=libgcrypt.git;a=commit;h=08b88b4012f7837736b8d29a3689ce3fff2a10c8
+
+From 08b88b4012f7837736b8d29a3689ce3fff2a10c8 Mon Sep 17 00:00:00 2001
+From: Jussi Kivilinna <jussi.kivilinna@iki.fi>
+Date: Sat, 16 Dec 2023 19:50:23 +0200
+Subject: [PATCH] mpi/ec-nist: fix for -Og build failure on i386
+
+* mpi/ec-nist.c (_gcry_mpi_ec_nist256_mod)
+(_gcry_mpi_ec_nist384_mod): Load p_mult constant with carry offset
+to stack.
+--
+
+Cherry pick master commit of:
+     90097bd2f41c217dc5c666570e5680f432cf92d3
+
+Patch fixes compilation error on i386 with -Og optimization level.
+
+In file included from ../../mpi/ec-nist.c:34:
+../../mpi/ec-nist.c: In function '_gcry_mpi_ec_nist256_mod':
+../../mpi/ec-inline.h:701:3: error: 'asm' operand has impossible constraints
+  701 |   __asm__ ("subl %11, %3\n" \
+      |   ^~~~~~~
+../../mpi/ec-inline.h:894:9: note: in expansion of macro 'SUB4_LIMB32'
+  894 |         SUB4_LIMB32(A1.hi, A1.lo, A0.hi, A0.lo, \
+      |         ^~~~~~~~~~~
+../../mpi/ec-inline.h:1009:5: note: in expansion of macro 'SUB2_LIMB64'
+ 1009 |     SUB2_LIMB64(A4, A3, B4, B3, C4, C3); \
+      |     ^~~~~~~~~~~
+../../mpi/ec-nist.c:474:3: note: in expansion of macro 'SUB5_LIMB64'
+  474 |   SUB5_LIMB64 (s[4], s[3], s[2], s[1], s[0],
+      |   ^~~~~~~~~~~
+
+Appears that in problematic function, too many registers end up being
+allocated for addressing and there is not enough register left for
+asm input/output (4 registers needed for this block). Problem can be
+workaround by reducing needed addressing registers by pushing
+`p_mult[carry + ...]` values to stack.  On other compiler flag levels
+and architectures, compiler should be able to optimize away this
+extra copying and have not effect on performance.
+
+GnuPG-bug-id: T6892
+Signed-off-by: Jussi Kivilinna <jussi.kivilinna@iki.fi>
+---
+ mpi/ec-nist.c | 23 ++++++++++++++++-------
+ 1 file changed, 16 insertions(+), 7 deletions(-)
+
+diff --git a/mpi/ec-nist.c b/mpi/ec-nist.c
+index f792405c..559d02d9 100644
+--- a/mpi/ec-nist.c
++++ b/mpi/ec-nist.c
+@@ -471,11 +471,15 @@ _gcry_mpi_ec_nist256_mod (gcry_mpi_t w, mpi_ec_t ctx)
+ 
+   carry = LO32_LIMB64(s[4]);
+ 
++  /* Load values to stack to ease register pressure on i386. */
++  e[0] = p_mult[carry + 4][0];
++  e[1] = p_mult[carry + 4][1];
++  e[2] = p_mult[carry + 4][2];
++  e[3] = p_mult[carry + 4][3];
++  e[4] = p_mult[carry + 4][4];
+   SUB5_LIMB64 (s[4], s[3], s[2], s[1], s[0],
+ 	       s[4], s[3], s[2], s[1], s[0],
+-	       p_mult[carry + 4][4], p_mult[carry + 4][3],
+-	       p_mult[carry + 4][2], p_mult[carry + 4][1],
+-	       p_mult[carry + 4][0]);
++	       e[4], e[3], e[2], e[1], e[0]);
+ 
+   /* Add 1*P */
+   ADD5_LIMB64 (d[4], d[3], d[2], d[1], d[0],
+@@ -749,12 +753,17 @@ _gcry_mpi_ec_nist384_mod (gcry_mpi_t w, mpi_ec_t ctx)
+ 
+   carry = LO32_LIMB64(s[6]);
+ 
++  /* Load values to stack to ease register pressure on i386. */
++  x[0] = p_mult[carry + 3][0];
++  x[1] = p_mult[carry + 3][1];
++  x[2] = p_mult[carry + 3][2];
++  x[3] = p_mult[carry + 3][3];
++  x[4] = p_mult[carry + 3][4];
++  x[5] = p_mult[carry + 3][5];
++  x[6] = p_mult[carry + 3][6];
+   SUB7_LIMB64 (s[6], s[5], s[4], s[3], s[2], s[1], s[0],
+ 	       s[6], s[5], s[4], s[3], s[2], s[1], s[0],
+-	       p_mult[carry + 3][6], p_mult[carry + 3][5],
+-	       p_mult[carry + 3][4], p_mult[carry + 3][3],
+-	       p_mult[carry + 3][2], p_mult[carry + 3][1],
+-	       p_mult[carry + 3][0]);
++	       x[6], x[5], x[4], x[3], x[2], x[1], x[0]);
+ 
+   ADD7_LIMB64 (d[6], d[5], d[4], d[3], d[2], d[1], d[0],
+ 	       s[6], s[5], s[4], s[3], s[2], s[1], s[0],
+-- 
+2.30.2

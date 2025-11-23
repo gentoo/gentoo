@@ -1,0 +1,20 @@
+https://github.com/google/liblc3/commit/1de85e2d9b8f8f3dffb50f70881b3475bbdfb803
+
+From 1de85e2d9b8f8f3dffb50f70881b3475bbdfb803 Mon Sep 17 00:00:00 2001
+From: anonymix007 <48598263+anonymix007@users.noreply.github.com>
+Date: Sun, 2 Mar 2025 17:13:04 +0300
+Subject: [PATCH] fix: Typo in the lc3_frame_block_bytes function
+ implementation
+
+--- a/src/lc3.c
++++ b/src/lc3.c
+@@ -122,7 +122,7 @@ LC3_EXPORT int lc3_hr_frame_block_bytes(
+         nchannels * lc3_max_frame_bytes(dt, sr) );
+ }
+ 
+-LC3_EXPORT int lc3_frame_bock_bytes(int dt_us, int nchannels, int bitrate)
++LC3_EXPORT int lc3_frame_block_bytes(int dt_us, int nchannels, int bitrate)
+ {
+     return lc3_hr_frame_block_bytes(false, dt_us, 8000, nchannels, bitrate);
+ }
+

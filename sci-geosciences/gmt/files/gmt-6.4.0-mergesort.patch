@@ -1,0 +1,57 @@
+From a898ed6598541a70976a44ece58f5f358a80e1bc Mon Sep 17 00:00:00 2001
+From: Paul Wessel <pwessel@hawaii.edu>
+Date: Mon, 24 Apr 2023 14:41:35 +0200
+Subject: [PATCH] Ensure mergesort is declared if needed
+Upstream: https://github.com/GenericMappingTools/gmt/pull/7411
+Bug: https://bugs.gentoo.org/945480
+
+See #7410  for background.  Here I implement it a bit differently.  The mergesort function is used both in a module (gmtspatial) as well as by some gmt_*.c libraries, hence if it is not part of the standard libraries we declare it in gmt_prototypes.h so it is set for both modules and libs.
+--- a/src/gmt_init.c
++++ b/src/gmt_init.c
+@@ -167,6 +167,10 @@
+ #	include <mex.h>
+ #endif
+ 
++#ifndef HAVE_MERGESORT
++#include "mergesort.c"
++#endif
++
+ /* These are used in gmtinit_init_custom_annot and gmtinit_decode_tinfo only */
+ #define GMT_ITEM_ANNOT		0
+ #define GMT_ITEM_INTVAL		1
+--- a/src/gmt_prototypes.h
++++ b/src/gmt_prototypes.h
+@@ -39,6 +39,15 @@ EXTERN_MSC void gmt_grd_dump (struct GMT_GRID_HEADER *header, gmt_grdfloat *grid
+ EXTERN_MSC char * gmt_strdup (struct GMT_CTRL *GMT, const char *s);
+ #endif
+ 
++#ifdef __APPLE__
++/* macOX has it built in, so ensure we define this flag */
++#define HAVE_MERGESORT
++#endif
++
++#ifndef HAVE_MERGESORT
++EXTERN_MSC int mergesort (void *base, size_t nmemb, size_t size, int (*cmp)(const void *, const void *));
++#endif
++
+ /* gmt_nc.c: */
+ 
+ EXTERN_MSC bool gmt_nc_is_cube (struct GMTAPI_CTRL *API, char *file);
+--- a/src/gmtspatial.c
++++ b/src/gmtspatial.c
+@@ -165,15 +165,6 @@ struct GMTSPATIAL_PAIR {
+ 	uint64_t pos;
+ };
+ 
+-#ifdef __APPLE__
+-/* macOX has it built in, so ensure we define this flag */
+-#define HAVE_MERGESORT
+-#endif
+-
+-#ifndef HAVE_MERGESORT
+-#include "mergesort.c"
+-#endif
+-
+ static void *New_Ctrl (struct GMT_CTRL *GMT) {	/* Allocate and initialize a new control structure */
+ 	struct GMTSPATIAL_CTRL *C;
+ 

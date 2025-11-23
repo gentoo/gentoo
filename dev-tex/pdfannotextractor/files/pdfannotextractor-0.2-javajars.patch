@@ -1,0 +1,12 @@
+Index: work/scripts/pax/pdfannotextractor.pl
+===================================================================
+--- work.orig/scripts/pdfannotextractor.pl
++++ work/scripts/pdfannotextractor.pl
+@@ -84,6 +84,7 @@ my @jar_pdfbox = qw[
+     PDFBox-0.7.2.jar
+ ];
+ my @dir_jar = qw[
++    /usr/share/pdfannotextractor/lib
+     /usr/share/java
+     /usr/local/share/java
+ ];

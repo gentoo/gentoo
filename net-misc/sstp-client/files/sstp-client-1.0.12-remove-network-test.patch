@@ -1,0 +1,11 @@
+--- a/src/Makefile.am	2018-02-07 21:42:37.755739374 +0100
++++ b/src/Makefile.am	2018-02-07 21:45:28.855732178 +0100
+@@ -23,7 +23,7 @@
+     utest_fcs           \
+     utest_route
+ 
+-TESTS= $(check_PROGRAMS)
++TESTS= utest_task utest_cmac utest_chap utest_fcs
+ 
+ sstpc_SOURCES =         \
+     sstp-client.c       \

@@ -1,0 +1,8 @@
+--- a/CMakeLists.txt	2025-08-04 10:53:36.751967370 +0200
++++ b/CMakeLists.txt	2025-08-04 10:53:50.092812021 +0200
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
+ 
+ project(gloo CXX C)
+ 

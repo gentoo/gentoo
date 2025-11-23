@@ -1,0 +1,24 @@
+fix unprototyped function #880435 and missing sentinel
+https://sourceforge.net/p/ckpass/bugs/2/
+--- a/ckpass.h
++++ b/ckpass.h
+@@ -56,7 +56,7 @@ void error_dialog(char *s);
+ int open_db(kpass_db *db, const char *filename);
+ int read_db(kpass_db *db, const char *filename);
+ int decrypt_db(kpass_db *db, const char *password);
+-void init_windows();
++void init_windows(const kpass_db *db);
+ void draw_groups(const kpass_db *, int, int, bool);
+ void draw_entries(const kpass_db *, int, int, int, bool, bool);
+ void draw_top_bar(const char *);
+--- a/ckpass.c
++++ b/ckpass.c
+@@ -677,7 +677,7 @@ int pipeout(const char *command, const char *s)
+ 		close(pipefd[1]); /* Close write end. */
+ 		dup2(pipefd[0], 0); /* Dup read end to stdin. */
+ 
+-		execl(command, command, 0);
++		execl(command, command, NULL);
+ 
+ 		/* I don't really think these are necessary, but just in case. */
+ 		close(pipefd[0]);

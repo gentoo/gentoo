@@ -1,0 +1,36 @@
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# New entries go on top.
+# Please use the same syntax as in use.mask.
+
+
+# Patrick Lauer <patrick@gentoo.org> (2025-10-07)
+# Postgres:18 is not stable yet
+postgres_targets_postgres18
+
+# Alfredo Tupone <tupone@gentoo.org> (1025-05-01)
+# gcc:15 is not stable yet
+ada_target_gcc_15
+
+# Michał Górny <mgorny@gentoo.org> (2024-12-31)
+# LLVM slots with no stable releases yet.
+llvm_slot_22
+llvm_slot_21
+
+# Hans de Graaff <graaff@gentoo.org> (2024-12-26)
+# Currently in testing and not ready to go stable yet.
+ruby_targets_ruby34
+
+# Michał Górny <mgorny@gentoo.org> (2024-05-08)
+# Python implementations without stable keywords.
+python_targets_python3_14t
+python_single_target_python3_14t
+python_targets_python3_13t
+python_single_target_python3_13t
+python_targets_pypy3_11
+python_single_target_pypy3_11
+
+# Michael Orlitzky <mjo@gentoo.org> (2023-12-05)
+# New unstable PHP slots.
+php_targets_php8-4

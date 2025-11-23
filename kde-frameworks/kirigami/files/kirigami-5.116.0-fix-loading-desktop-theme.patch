@@ -1,0 +1,76 @@
+From e8a1c49f7b83d0e06629a32c113eb9bd820e9969 Mon Sep 17 00:00:00 2001
+From: Ilya Fedin <fedin-ilja2010@ya.ru>
+Date: Sat, 19 Oct 2024 22:15:56 +0400
+Subject: [PATCH 1/2] Fix presumable typos confusing background and foreground
+ colors
+
+CCBUG: 491294
+---
+ src/styles/org.kde.desktop/Theme.qml | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/src/styles/org.kde.desktop/Theme.qml b/src/styles/org.kde.desktop/Theme.qml
+index a6e83242..02c54f85 100644
+--- a/src/styles/org.kde.desktop/Theme.qml
++++ b/src/styles/org.kde.desktop/Theme.qml
+@@ -19,7 +19,7 @@ Kirigami.BasicThemeDefinition {
+     highlightedTextColor: palette.highlightedText
+     backgroundColor: palette.window
+     alternateBackgroundColor: Qt.darker(palette.window, 1.05)
+-    activeTextColor: palette.highlight
++    activeTextColor: palette.highlightedText
+     activeBackgroundColor: palette.highlight
+     linkColor: "#2980B9"
+     linkBackgroundColor: "#2980B9"
+@@ -52,15 +52,15 @@ Kirigami.BasicThemeDefinition {
+     selectionHoverColor: palette.highlight
+     selectionFocusColor: palette.highlight
+ 
+-    tooltipTextColor: palette.base
+-    tooltipBackgroundColor: palette.text
+-    tooltipAlternateBackgroundColor: Qt.darker(palette.text, 1.05)
++    tooltipTextColor: palette.text
++    tooltipBackgroundColor: palette.base
++    tooltipAlternateBackgroundColor: palette.alternateBase
+     tooltipHoverColor: palette.highlight
+     tooltipFocusColor: palette.highlight
+ 
+-    complementaryTextColor: palette.base
+-    complementaryBackgroundColor: palette.text
+-    complementaryAlternateBackgroundColor: Qt.darker(palette.text, 1.05)
++    complementaryTextColor: palette.text
++    complementaryBackgroundColor: palette.base
++    complementaryAlternateBackgroundColor: palette.alternateBase
+     complementaryHoverColor: palette.highlight
+     complementaryFocusColor: palette.highlight
+ 
+-- 
+2.47.0
+
+
+From 7767fdbf15828d00d68b06c35f8d4805de678add Mon Sep 17 00:00:00 2001
+From: Ilya Fedin <fedin-ilja2010@ya.ru>
+Date: Sat, 19 Oct 2024 22:17:23 +0400
+Subject: [PATCH 2/2] Fix loading desktop theme
+
+BUG: 491294
+---
+ src/styles/org.kde.desktop/Theme.qml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/styles/org.kde.desktop/Theme.qml b/src/styles/org.kde.desktop/Theme.qml
+index 02c54f85..4a34b1e5 100644
+--- a/src/styles/org.kde.desktop/Theme.qml
++++ b/src/styles/org.kde.desktop/Theme.qml
+@@ -70,7 +70,7 @@ Kirigami.BasicThemeDefinition {
+     headerHoverColor: palette.highlight
+     headerFocusColor: palette.highlight
+ 
+-    property font defaultFont: fontMetrics.font
++    defaultFont: fontMetrics.font
+ 
+     property list<QtObject> children: [
+         TextMetrics {
+-- 
+2.47.0
+

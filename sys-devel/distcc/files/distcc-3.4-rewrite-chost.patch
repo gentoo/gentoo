@@ -1,0 +1,79 @@
+https://bugs.gentoo.org/773652
+https://github.com/distcc/distcc/issues/440
+https://github.com/distcc/distcc/commit/850db9eec0d5dd7f47ade8ffca91b679081f6d85
+
+From 850db9eec0d5dd7f47ade8ffca91b679081f6d85 Mon Sep 17 00:00:00 2001
+From: Alexey Sheplyakov <asheplyakov@altlinux.org>
+Date: Sun, 11 Jul 2021 18:57:00 +0400
+Subject: [PATCH] Improved cross-rewriting on non-x86 systems
+
+Unfortunately autoconf and GCC don't agree on the system name:
+
+- On arm (aarch64): `GNU_HOST` is `aarch64-unknown-linux-gnu`,
+  and GCC triple is `aarch64-linux-gnu` instead.
+- On rpm-based x86_64 distros: `GNU_HOST` is `x86_64-pc-linux-gnu`,
+  and GCC triple is `x86_64-redhat-linux`
+
+Therefore ask the compiler (when running distcc configure script)
+how to correctly identify it.
+
+Closes: #440
+ALTBUG: 40425
+--- a/configure.ac
++++ b/configure.ac
+@@ -547,6 +547,22 @@ AC_SUBST(CPPFLAGS)
+ AC_SUBST(POPT_INCLUDES)
+ AC_SUBST(BUILD_POPT)
+ AC_SUBST(GNOME_BIN)
++
++
++# Sometimes canonical triples as used by configure differ from GCC ones
++# x86: configure: x86_64-pc-linux-gnu, GCC: x86_64-linux-gnu
++# ALT Linux: configure: ${arch}-alt-linux-gnu, GCC: ${arch}-alt-linux
++# Therefore ask the compiler for its triple
++if test "x${GCC}" = xyes ; then
++	native_compiler_triple=`$CC -dumpmachine`
++fi
++if test "x$native_compiler_triple" = "x"; then
++	native_compiler_triple="$host"
++fi
++AC_MSG_NOTICE([Native compiler triple: $native_compiler_triple])
++
++AC_DEFINE_UNQUOTED(NATIVE_COMPILER_TRIPLE, ["$native_compiler_triple"], [Native compiler triple])
++
+ AC_DEFINE_UNQUOTED(GNU_HOST, ["$host"], [Your gnu-style host triple])
+ # The '.stamp-conf' files force creation of the containing directories in the
+ # build tree.
+--- a/src/compile.c
++++ b/src/compile.c
+@@ -549,7 +549,7 @@ static void dcc_rewrite_generic_compiler(char **argv)
+ static void dcc_add_clang_target(char **argv)
+ {
+         /* defined by autoheader */
+-    const char *target = GNU_HOST;
++    const char *target = NATIVE_COMPILER_TRIPLE;
+ 
+     if (strcmp(argv[0], "clang") == 0 || strncmp(argv[0], "clang-", strlen("clang-")) == 0 ||
+         strcmp(argv[0], "clang++") == 0 || strncmp(argv[0], "clang++-", strlen("clang++-")) == 0)
+@@ -577,7 +577,7 @@ static void dcc_add_clang_target(char **argv)
+ static int dcc_gcc_rewrite_fqn(char **argv)
+ {
+         /* defined by autoheader */
+-    const char *target_with_vendor = GNU_HOST;
++    const char *target_with_vendor = NATIVE_COMPILER_TRIPLE;
+     char *newcmd, *t, *path;
+     int pathlen = 0;
+     int newcmd_len = 0;
+@@ -595,11 +595,7 @@ static int dcc_gcc_rewrite_fqn(char **argv)
+         return -ENOMEM;
+     memset(newcmd, 0, newcmd_len);
+ 
+-    if ((t = strstr(target_with_vendor, "-pc-"))) {
+-        memcpy(newcmd, target_with_vendor, t - target_with_vendor);
+-        strcat(newcmd, t + strlen("-pc"));
+-    } else
+-        strcpy(newcmd, target_with_vendor);
++    strcpy(newcmd, target_with_vendor);
+ 
+ 
+     strcat(newcmd, "-");

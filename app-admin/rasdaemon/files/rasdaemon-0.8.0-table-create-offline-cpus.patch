@@ -1,0 +1,179 @@
+https://bugs.gentoo.org/890286
+https://github.com/mchehab/rasdaemon/issues/77
+https://github.com/mchehab/rasdaemon/commit/6f7851f72d8464c7a20a248d4abf4362de8f0ba9
+
+From 6f7851f72d8464c7a20a248d4abf4362de8f0ba9 Mon Sep 17 00:00:00 2001
+From: Shiju Jose <shiju.jose@huawei.com>
+Date: Sun, 5 Mar 2023 23:14:42 +0000
+Subject: [PATCH] rasdaemon: fix table create if some cpus are offline
+
+Fix for regression in ras_mc_create_table() if some cpus are offline
+at the system start
+
+Issue:
+
+Regression in the ras_mc_create_table() if some of the cpus are offline
+at the system start when run the rasdaemon.
+
+This issue is reproducible in ras_mc_create_table() with decode and
+record non-standard events and reproducible sometimes with
+ras_mc_create_table() for the standard events.
+
+Also in the multi thread way, there is memory leak in ras_mc_event_opendb()
+as struct sqlite3_priv *priv and sqlite3 *db allocated/initialized per
+thread, but stored in the common struct ras_events ras in pthread data,
+which is shared across the threads.
+
+Reason:
+
+when the system starts with some of the cpus offline and then run
+the rasdaemon, read_ras_event_all_cpus() exit with error and switch to
+the multi thread way. However read() in read_ras_event() return error in
+threads for each of the offline CPUs and does clean up including calling
+ras_mc_event_closedb().
+
+Since the 'struct ras_events ras' passed in the pthread_data to each of the
+threads is common, struct sqlite3_priv *priv and sqlite3 *db allocated/
+initialized per thread and stored in the common 'struct ras_events ras',
+are getting overwritten in each ras_mc_event_opendb()(which called from
+pthread per cpu), result memory leak.
+
+Also when ras_mc_event_closedb() is called in the above error case from
+the threads corresponding to the offline cpus, close the sqlite3 *db and
+free sqlite3_priv *priv stored in the common 'struct ras_events ras',
+result regression when accessing priv->db in the ras_mc_create_table()
+from another context later.
+
+Solution:
+
+In ras_mc_event_opendb(), allocate struct sqlite3_priv *priv,
+init sqlite3 *db and create tables common for the threads with shared
+'struct ras_events ras' based on a reference count and free them in the
+same way.
+
+Also protect critical code ras_mc_event_opendb() and ras_mc_event_closedb()
+using mutex in the multi thread case from any regression caused by the
+thread pre-emption.
+
+Reported-by: Lei Feng <fenglei47@h-partners.com>
+Signed-off-by: Shiju Jose <shiju.jose@huawei.com>
+Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
+---
+ ras-events.c | 16 +++++++++++++++-
+ ras-events.h |  4 +++-
+ ras-record.c | 12 ++++++++++++
+ 3 files changed, 30 insertions(+), 2 deletions(-)
+
+diff --git a/ras-events.c b/ras-events.c
+index 49e4f9a..5fe8e19 100644
+--- a/ras-events.c
++++ b/ras-events.c
+@@ -625,19 +625,25 @@ static void *handle_ras_events_cpu(void *priv)
+ 
+ 	log(TERM, LOG_INFO, "Listening to events on cpu %d\n", pdata->cpu);
+ 	if (pdata->ras->record_events) {
++		pthread_mutex_lock(&pdata->ras->db_lock);
+ 		if (ras_mc_event_opendb(pdata->cpu, pdata->ras)) {
++			pthread_mutex_unlock(&pdata->ras->db_lock);
+ 			log(TERM, LOG_ERR, "Can't open database\n");
+ 			close(fd);
+ 			kbuffer_free(kbuf);
+ 			free(page);
+ 			return 0;
+ 		}
++		pthread_mutex_unlock(&pdata->ras->db_lock);
+ 	}
+ 
+ 	read_ras_event(fd, pdata, kbuf, page);
+ 
+-	if (pdata->ras->record_events)
++	if (pdata->ras->record_events) {
++		pthread_mutex_lock(&pdata->ras->db_lock);
+ 		ras_mc_event_closedb(pdata->cpu, pdata->ras);
++		pthread_mutex_unlock(&pdata->ras->db_lock);
++	}
+ 
+ 	close(fd);
+ 	kbuffer_free(kbuf);
+@@ -993,6 +999,11 @@ int handle_ras_events(int record_events)
+ 
+ 	/* Poll doesn't work on this kernel. Fallback to pthread way */
+ 	if (rc == -255) {
++		if (pthread_mutex_init(&ras->db_lock, NULL) != 0) {
++			log(SYSLOG, LOG_INFO, "sqlite db lock init has failed\n");
++			goto err;
++		}
++
+ 		log(SYSLOG, LOG_INFO,
+ 		"Opening one thread per cpu (%d threads)\n", cpus);
+ 		for (i = 0; i < cpus; i++) {
+@@ -1005,6 +1016,8 @@ int handle_ras_events(int record_events)
+ 				i);
+ 				while (--i)
+ 					pthread_cancel(data[i].thread);
++
++				pthread_mutex_destroy(&ras->db_lock);
+ 				goto err;
+ 			}
+ 		}
+@@ -1012,6 +1025,7 @@ int handle_ras_events(int record_events)
+ 		/* Wait for all threads to complete */
+ 		for (i = 0; i < cpus; i++)
+ 			pthread_join(data[i].thread, NULL);
++		pthread_mutex_destroy(&ras->db_lock);
+ 	}
+ 
+ 	log(SYSLOG, LOG_INFO, "Huh! something got wrong. Aborting.\n");
+diff --git a/ras-events.h b/ras-events.h
+index 6c9f507..649b0c0 100644
+--- a/ras-events.h
++++ b/ras-events.h
+@@ -56,7 +56,9 @@ struct ras_events {
+ 	time_t		uptime_diff;
+ 
+ 	/* For ras-record */
+-	void		*db_priv;
++	void	*db_priv;
++	int	db_ref_count;
++	pthread_mutex_t db_lock;
+ 
+ 	/* For the mce handler */
+ 	struct mce_priv	*mce_priv;
+diff --git a/ras-record.c b/ras-record.c
+index a367939..adc97a4 100644
+--- a/ras-record.c
++++ b/ras-record.c
+@@ -763,6 +763,10 @@ int ras_mc_event_opendb(unsigned cpu, struct ras_events *ras)
+ 
+ 	printf("Calling %s()\n", __FUNCTION__);
+ 
++	ras->db_ref_count++;
++	if (ras->db_ref_count > 1)
++		return 0;
++
+ 	ras->db_priv = NULL;
+ 
+ 	priv = calloc(1, sizeof(*priv));
+@@ -912,6 +916,13 @@ int ras_mc_event_closedb(unsigned int cpu, struct ras_events *ras)
+ 
+ 	printf("Calling %s()\n", __func__);
+ 
++	if (ras->db_ref_count > 0)
++		ras->db_ref_count--;
++	else
++		return -1;
++	if (ras->db_ref_count > 0)
++		return 0;
++
+ 	if (!priv)
+ 		return -1;
+ 
+@@ -1018,6 +1029,7 @@ int ras_mc_event_closedb(unsigned int cpu, struct ras_events *ras)
+ 		log(TERM, LOG_ERR,
+ 		    "cpu %u: Failed to shutdown sqlite: error = %d\n", cpu, rc);
+ 	free(priv);
++	ras->db_priv = NULL;
+ 
+ 	return 0;
+ }
+

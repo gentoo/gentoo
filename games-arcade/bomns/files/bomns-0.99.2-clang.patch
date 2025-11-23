@@ -1,0 +1,35 @@
+Static-cast int to Sint16, for clang
+https://bugs.gentoo.org/730794
+--- a/src/bomns.cpp
++++ b/src/bomns.cpp
+@@ -643,7 +643,7 @@
+   int      nDig1  = (int)floor(nNum / 10);
+ 	int      nDig2  =  nNum % 10;
+ 	SDL_Rect rcSrc  = {0, 0, 0, 0};
+-	SDL_Rect rcDest = {nX, nY, 15, 20};
++	SDL_Rect rcDest = {static_cast<Sint16>(nX), static_cast<Sint16>(nY), 15, 20};
+ 
+ 	//three digit num
+   if(nDig0 || bPad)
+--- a/src/level.cpp
++++ b/src/level.cpp
+@@ -163,8 +163,8 @@
+ 
+ bool DrawExplosion(int nX, int nY, SDL_Surface * psdlsDest, int nExplosionState)
+ {
+-	SDL_Rect rcDest = {nX, nY, 10, 10};
+-	SDL_Rect rcSrc  = {(nExplosionState == EXPLOSION_1 ? 90 : (nExplosionState == EXPLOSION_2 ? 150 : 160)), 0, 10, 10};
++	SDL_Rect rcDest = {static_cast<Sint16>(nX), static_cast<Sint16>(nY), 10, 10};
++	SDL_Rect rcSrc  = {static_cast<Sint16>(nExplosionState == EXPLOSION_1 ? 90 : (nExplosionState == EXPLOSION_2 ? 150 : 160)), 0, 10, 10};
+ 	if(SDL_BlitSurface(g_psdlsObjects, &rcSrc, psdlsDest, &rcDest) < 0)
+ 	  return FALSE;
+ 		
+@@ -173,7 +173,7 @@
+ 
+ bool ClearTile(int nX, int nY, SDL_Surface * psdlsDest)
+ {
+-  SDL_Rect rcDest = {nX * 10, nY * 10, 10, 10};
++  SDL_Rect rcDest = {static_cast<Sint16>(nX * 10), static_cast<Sint16>(nY * 10), 10, 10};
+ //  SDL_Rect rcSrc  = {X: 246 - 255}
+   SDL_Rect rcSrc = {246, 0, 10, 10};
+   if(SDL_BlitSurface(g_psdlsObjects, &rcSrc, psdlsDest, &rcDest) < 0)

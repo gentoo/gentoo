@@ -1,0 +1,27 @@
+From fe2eb291c5d91a02f01a051de150acfe37598ade Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Tue, 11 Mar 2025 14:36:05 +0100
+Subject: [PATCH] fix enable-gl
+
+Disable -Wno-error=lto-type-mismatch for broken AC_CHECK_LIB
+
+Bug: https://bugs.gentoo.org/949986
+Bug: https://bugs.gentoo.org/934428
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/config/hwloc.m4 b/config/hwloc.m4
+index 832ab39..4149089 100644
+--- a/config/hwloc.m4
++++ b/config/hwloc.m4
+@@ -1488,7 +1488,7 @@ return clGetDeviceIDs(0, 0, 0, NULL, NULL);
+                hwloc_gl_happy=no])
+ 
+         AC_CHECK_HEADERS([NVCtrl/NVCtrl.h], [
+-          AC_CHECK_LIB([XNVCtrl], [XNVCTRLQueryTargetAttribute], [:], [hwloc_gl_happy=no], [-lXext -lX11])
++          AC_CHECK_LIB([XNVCtrl], [XNVCTRLQueryTargetAttribute], [:], [hwloc_gl_happy=no], [-lXext -lX11 -Wno-error=lto-type-mismatch])
+         ], [hwloc_gl_happy=no])
+ 
+         if test "x$hwloc_gl_happy" = "xyes"; then
+-- 
+2.48.1
+

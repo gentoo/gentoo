@@ -1,0 +1,35 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -42,13 +42,11 @@
+ message(STATUS "CMake version is ${CMAKE_VERSION}")
+ if (APPLE)
+     # apple builds with prior cmake version have an @rpath problem
+-    cmake_minimum_required (VERSION 3.12)
++    cmake_minimum_required (VERSION 3.20)
+ else ()
+     # for other platforms
+-    cmake_minimum_required (VERSION 2.8.12)
++    cmake_minimum_required (VERSION 3.20)
+ endif ()
+-# CMP0091 introduced in 3.15 must stay OLD for our /MD -> /MT hack to work
+-cmake_policy(VERSION 2.8...3.3)
+ 
+ # must come before the project command
+ # 10.13.6 High Sierra is the minimum system supported
+--- a/testbinaries/CMakeLists.txt
++++ b/testbinaries/CMakeLists.txt
+@@ -40,12 +40,11 @@
+ #/*----------------------------------------------------------------------------*/
+ if (APPLE)
+ # apple build with lower cmake version have an @rpath problem
+-    cmake_minimum_required (VERSION 3.12)
++    cmake_minimum_required (VERSION 3.20)
+ else()
+ #for other platforms
+-    cmake_minimum_required (VERSION 2.8.12)
++    cmake_minimum_required (VERSION 3.20)
+ endif()
+-cmake_policy(VERSION 2.8...3.3)
+ 
+ #/*----------------------------------------------------------------------------*/
+ #/* Project settings                                                           */

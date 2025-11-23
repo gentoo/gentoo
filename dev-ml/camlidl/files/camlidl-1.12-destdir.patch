@@ -1,0 +1,32 @@
+--- a/runtime/Makefile.unix	2024-06-17 10:03:13.524360767 +0200
++++ b/runtime/Makefile.unix	2024-06-17 10:03:55.768905814 +0200
+@@ -26,10 +26,10 @@
+ #	$(RANLIB) $@
+ 
+ install:
+-	cp camlidlruntime.h $(OCAMLLIB)/caml/camlidlruntime.h
+-	cp libcamlidl.a $(OCAMLLIB)/libcamlidl.a
+-	cp dllcamlidl.so $(OCAMLLIB)/stublibs/dllcamlidl.so
+-	cd $(OCAMLLIB); $(RANLIB) libcamlidl.a
++	cp camlidlruntime.h $(DESTDIR)$(OCAMLLIB)/caml/camlidlruntime.h
++	cp libcamlidl.a $(DESTDIR)$(OCAMLLIB)/libcamlidl.a
++	cp dllcamlidl.so $(DESTDIR)$(OCAMLLIB)/stublibs/dllcamlidl.so
++	cd $(DESTDIR)$(OCAMLLIB); $(RANLIB) libcamlidl.a
+ 
+ clean:
+ 	rm -f *.a *.o *.so
+--- a/lib/Makefile	2024-06-17 10:06:49.145036983 +0200
++++ b/lib/Makefile	2024-06-17 10:07:44.366441218 +0200
+@@ -40,10 +40,10 @@
+ 	$(OCAMLOPT) -a -o $(NATIVELIB) -cclib -lcamlidl $(NATIVEOBJS)
+ 
+ installbyt:
+-	cp -p $(INTERFACES) $(BYTELIB) $(OCAMLLIB)
++	cp -p $(INTERFACES) $(BYTELIB) $(DESTDIR)$(OCAMLLIB)
+ 
+ installopt:
+-	cp -p $(NATIVELIB) $(NATIVELIB:.cmxa=.$(LIBEXT)) $(OCAMLLIB)
++	cp -p $(NATIVELIB) $(NATIVELIB:.cmxa=.$(LIBEXT)) $(DESTDIR)$(OCAMLLIB)
+ 
+ .SUFFIXES: .mli .ml .cmi .cmo .cmx
+ 

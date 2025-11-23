@@ -1,0 +1,51 @@
+--- a/hexcalc.c	1989-11-22 16:29:06.000000000 -0500
++++ b/hexcalc.c	2006-07-18 17:36:40.000000000 -0400
+@@ -37,6 +37,7 @@
+ #endif	
+ 
+ #include	<stdio.h>
++#include	<stdlib.h>
+ #include	<ctype.h>
+ #include	<X11/IntrinsicP.h>
+ #include	<X11/StringDefs.h>
+@@ -509,14 +508,16 @@
+ 
+ 		switch(topOp) {
+ 		case '+' :
+-			ac = PopArg()  + PopArg();
++			temp = PopArg();
++			ac = PopArg() + temp;
+ 			break;
+ 		case '-' :
+ 			temp = PopArg();
+ 			ac = PopArg() - temp;
+ 			break;
+ 		case '*' :
+-			ac = PopArg()  * PopArg();
++			temp = PopArg();
++			ac = temp * PopArg();
+ 			break;
+ 		case '/' :
+ 			temp = PopArg();
+@@ -528,15 +529,18 @@
+ 			break;
+ 			
+ 		case '|' :
+-			ac = PopArg() | PopArg();
++			temp = PopArg();
++			ac = temp | PopArg();
+ 			break;
+ 
+ 		case '&' :
+-			ac = PopArg() & PopArg();
++			temp = PopArg();
++			ac = temp & PopArg();
+ 			break;
+ 
+ 		case '^' :
+-			ac = PopArg() ^ PopArg();
++			temp = PopArg();
++			ac = temp ^ PopArg();
+ 			break;
+ 
+ 		case '<' :

@@ -1,0 +1,156 @@
+https://github.com/dschwen/xprobe2/commit/1a8c68bc904bb1e971ec456aaff0879933a80e23
+https://bugs.gentoo.org/910424
+
+From 1a8c68bc904bb1e971ec456aaff0879933a80e23 Mon Sep 17 00:00:00 2001
+From: Daniel Schwen <daniel@schwen.de>
+Date: Mon, 22 Mar 2021 14:28:25 -0600
+Subject: [PATCH] Fix garbled output (#1)
+
+--- a/src/os_matrix.cc
++++ b/src/os_matrix.cc
+@@ -42,12 +42,12 @@ OS_Name::OS_Name(void) {
+  *******************
+  * returns FAIL is the OS already exist. os_id otherwise.
+  */
+- 
++
+ 
+ int OS_Name::add_os(string &os_name) {
+ 
+     if (find_os(os_name) != FAIL) return FAIL; /* exist */
+-    
++
+     osid_name.insert(pair<int, string>(id_count, os_name));
+     return (id_count++);
+ }
+@@ -58,7 +58,7 @@ int OS_Name::add_os(string &os_name) {
+  *******************
+  * returns FAIL is the OS does not exist. os_id otherwise.
+  */
+- 
++
+ 
+ int OS_Name::find_os(string &os_name) {
+     map <int, string>::iterator osid_i;
+@@ -76,7 +76,7 @@ int OS_Name::find_os(string &os_name) {
+  *******************
+  * for debugging _ONLY_
+  */
+- 
++
+ 
+ void OS_Name::list_oses(void) {
+     map <int, string>::iterator osid_i;
+@@ -94,18 +94,18 @@ void OS_Name::list_oses(void) {
+  *******************
+  * for debugging _ONLY_
+  */
+- 
+ 
+ 
+-const string OS_Name::osid2str(int id) {
++
++const string & OS_Name::osid2str(int id) {
+     map <int, string>::iterator osid_i = osid_name.find(id);
+     if (osid_i != osid_name.end()) return ((*osid_i).second);
+     return ("BUG, PLEASE REPORT! :-)");
+ }
+-    
++
+ /*
+  * OS_Vector stuff:
+- */        
++ */
+ OS_Vector::OS_Vector(int new_os_id) {
+     os_id = new_os_id;
+     total = 0;
+@@ -148,18 +148,18 @@ int OS_Matrix::find_os_id(int os_id) {
+         if (os_id == osid_vec[i].get_os_id()) return i;
+     return -1;
+ }
+-        
++
+ void OS_Matrix::add_result(int test_id, int os_id, int score, int times) {
+     int i;
+ 
+-    xprobe_debug(XPROBE_DEBUG_OSMATRIX, "test_id: %i os_id: %i score: %i\n", test_id, os_id, score); 
++    xprobe_debug(XPROBE_DEBUG_OSMATRIX, "test_id: %i os_id: %i score: %i\n", test_id, os_id, score);
+ 
+     if (find_os_id(os_id) == -1) /* if doesn't exist. we insert it
+                                       * first */
+         osid_vec.push_back(OS_Vector(os_id));
+ 
+     i = find_os_id(os_id);
+-	while (times-- > 0) {			
++	while (times-- > 0) {
+ 	    osid_vec[i].add_result(test_id, score);
+ 	}
+ }
+@@ -173,7 +173,7 @@ int OS_Matrix::get_score(int os_id) {
+ 
+ int OS_Matrix::get_max_score(int os_id) {
+ 	int i = find_os_id(os_id);
+-	
++
+     //return (xp_loaded_mods * XPROBE_MATCH_YES);
+ 	return (osid_vec[i].get_number_of_keywords() * XPROBE_MATCH_YES);
+ 
+@@ -181,12 +181,12 @@ int OS_Matrix::get_max_score(int os_id) {
+ 
+ int OS_Matrix::get_prcnt_score(int os_id) {
+ 
+-    if (get_score(os_id) < 0) return 0;	
++    if (get_score(os_id) < 0) return 0;
+     return get_score(os_id) * 100/get_max_score(os_id);
+ 
+ }
+ 
+-int OS_Matrix::get_top(int num) { 
++int OS_Matrix::get_top(int num) {
+ 
+     sort(osid_vec.begin(), osid_vec.end(), os_vector_compare);
+ 
+@@ -194,5 +194,4 @@ int OS_Matrix::get_top(int num) {
+         return osid_vec[num].get_os_id();
+ 
+     return 0; /* out of range */
+-} 
+-
++}
+--- a/src/os_matrix.h
++++ b/src/os_matrix.h
+@@ -44,9 +44,9 @@ class OS_Name {
+         int id_count;
+     public:
+         OS_Name(void);
+-        const string osid2str(int);
++        const string & osid2str(int);
+         const char *osid2char(int id) {
+-             string s = osid2str(id);
++             const string & s = osid2str(id);
+              return (s.c_str());
+         }
+         int add_os(string &os_name);
+@@ -54,7 +54,7 @@ class OS_Name {
+         void list_oses(void);
+         int get_osnum(void) { return id_count; }
+ };
+-               
++
+ 
+ class OS_Vector {
+ 
+@@ -79,7 +79,7 @@ class OS_Matrix {
+         vector <OS_Vector> osid_vec;
+         int xp_loaded_mods;
+         int find_os_id(int);
+-    
++
+     public:
+         OS_Matrix(int);
+         virtual ~OS_Matrix(void);
+@@ -96,4 +96,3 @@ class OS_Matrix {
+ };
+ 
+ #endif /* INTERFACE_H */
+-            

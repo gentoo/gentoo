@@ -1,0 +1,70 @@
+https://gitlab.freedesktop.org/fontconfig/fontconfig/-/commit/ddc50bd6150a34c78fb09468bdee3466383f9119 (earlier version before it had to be rebased for conflicting change on master)
+https://gitlab.freedesktop.org/fontconfig/fontconfig/-/merge_requests/383
+
+From ddc50bd6150a34c78fb09468bdee3466383f9119 Mon Sep 17 00:00:00 2001
+From: Xi Ruoyao <xry111@xry111.site>
+Date: Sat, 12 Apr 2025 17:17:35 +0800
+Subject: [PATCH] meson: don't force installation of a static library
+
+We shouldn't install the static library if -D default_library=shared.
+
+Changelog: fixed
+Signed-off-by: Xi Ruoyao <xry111@xry111.site>
+---
+ src/meson.build | 36 +++++++++++++++++++-----------------
+ 1 file changed, 19 insertions(+), 17 deletions(-)
+
+diff --git a/src/meson.build b/src/meson.build
+index 2680c5bf..df68ae46 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -47,28 +47,30 @@ lib_sources = [fc_sources, alias_headers, ft_alias_headers, fclang_h, fccase_h,
+ lib_kwargs = {
+   'include_directories': incbase,
+   'dependencies': [deps, math_dep],
+-  'install': true,
+ }
+ 
+-if get_option('default_library') in ['both', 'shared']
+-  # Define FcPublic appropriately for exports on windows
+-  fc_c_shared_args = []
+-  if host_machine.system() == 'windows'
+-    fc_c_shared_args += '-DFcPublic=__declspec(dllexport)'
+-    fc_c_shared_args += '-DDLL_EXPORT'
+-  endif
++# Define FcPublic appropriately for exports on windows
++fc_c_shared_args = []
++if host_machine.system() == 'windows'
++  fc_c_shared_args += '-DFcPublic=__declspec(dllexport)'
++  fc_c_shared_args += '-DDLL_EXPORT'
++endif
++
++libfontconfig = library('fontconfig',
++  lib_sources,
++  c_shared_args: fc_c_shared_args,
++  soversion: soversion,
++  version: libversion,
++  darwin_versions: osxversion,
++  install: true,
++  kwargs: lib_kwargs)
+ 
+-  libfontconfig = both_libraries('fontconfig',
+-    lib_sources,
+-    c_shared_args: fc_c_shared_args,
+-    soversion: soversion,
+-    version: libversion,
+-    darwin_versions: osxversion,
+-    kwargs: lib_kwargs)
++if get_option('default_library') == 'both'
+   libfontconfig_internal = libfontconfig.get_static_lib()
+-else
+-  libfontconfig = static_library('fontconfig', lib_sources, kwargs: lib_kwargs)
++elif get_option('default_library') == 'static'
+   libfontconfig_internal = libfontconfig
++else
++  libfontconfig_internal = static_library('fontconfig', lib_sources, kwargs: lib_kwargs)
+ endif
+ 
+ fontconfig_dep = declare_dependency(link_with: libfontconfig,
+-- 
+GitLab

@@ -1,0 +1,37 @@
+diff '--color=auto' -Naur a/SConstruct b/SConstruct
+--- a/SConstruct
++++ b/SConstruct
+@@ -170,11 +170,7 @@
+ 
+ cantera_git_commit = os.environ.get("CT_GIT_COMMIT")
+ if not cantera_git_commit:
+-    try:
+-        cantera_git_commit = get_command_output("git", "rev-parse", "--short", "HEAD")
+-        logger.info(f"Building Cantera from git commit {cantera_git_commit!r}")
+-    except (subprocess.CalledProcessError, FileNotFoundError):
+-        cantera_git_commit = "unknown"
++    cantera_git_commit = "unknown"
+ else:
+     logger.info(f"Building Cantera from git commit {cantera_git_commit!r}")
+ 
+@@ -866,7 +862,7 @@
+     toolchain = ["default"]
+ 
+ env = Environment(tools=toolchain+["textfile", "subst", "recursiveInstall", "UnitsInterfaceBuilder", "wix", "gch"],
+-                  ENV={"PATH": os.environ["PATH"]},
++                  ENV={'PATH': os.environ['PATH'], 'CCACHE_DIR': os.environ.get('CCACHE_DIR','')},
+                   toolchain=toolchain,
+                   **extraEnvArgs)
+ 
+diff '--color=auto' -Naur a/src/SConscript b/src/SConscript
+--- a/src/SConscript
++++ b/src/SConscript
+@@ -90,7 +90,7 @@
+     shim = pyenv.SharedObject("extensions/pythonShim.cpp")
+     pylibname = f"../lib/cantera_python{pyenv['py_version_short'].replace('.', '_')}"
+     lib = build(pyenv.SharedLibrary(pylibname, shim, SPAWN=get_spawn(pyenv)))
+-    install("$inst_shlibdir", lib)
++    install("$inst_shlibdir/cantera", lib)
+ 
+ 
+ # build the Cantera static library

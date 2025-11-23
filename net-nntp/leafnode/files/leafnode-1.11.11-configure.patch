@@ -1,0 +1,12 @@
+Fix handwritten check for SIOCGIFALIAS on FreeBSD
+https://bugs.gentoo.org/900268
+--- a/configure.ac
++++ b/configure.ac
+@@ -413,6 +413,7 @@
+     #include <stddef.h>
+     #include <sys/types.h>
+     #include <sys/socket.h>
++    #include <sys/ioctl.h>
+     #ifdef HAVE_SYS_SOCKIO_H
+     #include <sys/sockio.h>
+     #endif

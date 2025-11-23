@@ -1,0 +1,38 @@
+From ce97e73493bded33bf83934bd7affd49aff58379 Mon Sep 17 00:00:00 2001
+From: Louis Sautier <sautier.louis@gmail.com>
+Date: Sat, 5 Nov 2022 02:54:34 +0100
+Subject: [PATCH] Remove dependency on nose, fixes #17
+
+Also rename the test file so that it uses a standard name that pytest
+autodetects.
+---
+ test/{tests.py => test_torrentinfo.py} | 5 -----
+ 1 file changed, 5 deletions(-)
+ rename test/{tests.py => test_torrentinfo.py} (99%)
+ mode change 100755 => 100644
+
+diff --git a/test/tests.py b/test/test_torrentinfo.py
+old mode 100755
+new mode 100644
+similarity index 99%
+rename from test/tests.py
+rename to test/test_torrentinfo.py
+index 9e67c9c..ba9bbc7
+--- a/test/tests.py
++++ b/test/test_torrentinfo.py
+@@ -27,7 +27,6 @@
+     from io import StringIO
+ 
+ import unittest
+-import nose
+ import re
+ import torrentinfo
+ 
+@@ -704,7 +703,3 @@ def test_is_printable_ascii_success(self):
+         test_string = 'perfectly printable ascii'
+         torrentinfo.dump(test_string, self.config, 0, newline=False)
+         self.assertEqual(self.out.getvalue(), test_string)
+-
+-
+-if __name__ == '__main__':
+-    nose.main(buffer=True)

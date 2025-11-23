@@ -1,0 +1,33 @@
+From 0e03f8d4d6bc6949cf1c447e632ce0d1b98c4be1 Mon Sep 17 00:00:00 2001
+From: Federico Poloni <fpoloni@di.unipi.it>
+Date: Wed, 4 Oct 2017 19:35:01 +0200
+Subject: [PATCH] Changed source of unordered_set (should hopefully fix #6
+ without reopening #1)
+
+---
+ BastetBlockChooser.hpp | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/BastetBlockChooser.hpp b/BastetBlockChooser.hpp
+index 992e556..7ee3b7c 100644
+--- a/BastetBlockChooser.hpp
++++ b/BastetBlockChooser.hpp
+@@ -23,8 +23,7 @@
+ 
+ #include "Well.hpp"
+ 
+-#include <boost/tr1/tr1/unordered_set>
+-#include <set>
++#include <boost/unordered_set.hpp>
+ #include <boost/functional/hash.hpp>
+ 
+ namespace Bastet{
+@@ -75,7 +74,7 @@ namespace Bastet{
+   public:
+     Searcher(BlockType b, const Well *well, Vertex v, WellVisitor *visitor);
+   private:
+-    std::tr1::unordered_set<Vertex> _visited;
++    boost::unordered_set<Vertex> _visited;
+     //std::set<Vertex> _visited; ^^ the above is more efficient, we need to do many inserts
+     BlockType _block;
+     const Well *_well;

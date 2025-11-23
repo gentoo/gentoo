@@ -1,0 +1,16 @@
+#
+#      /etc/logrotate.d/uftpd
+#
+/var/log/uftpd.log {
+	daily
+	rotate 5
+	notifempty
+	missingok
+}
+
+/var/log/uftpproxyd.log {
+	daily
+	rotate 5
+	notifempty
+	missingok
+}

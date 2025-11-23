@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Gentoo Python Project</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>nowa@gentoo.org</email>
+		<name>Nowa Ammerlaan</name>
+	</maintainer>
+	<longdescription>
+		QtPy is a small abstraction layer that lets you write applications using a single API call to either PyQt or PySide.
+		It provides support for PyQt6, PyQt5 and PySide6.
+		Basically, you can write your code as if you were using PyQt6 but import Qt modules from qtpy instead of PyQt6 (or PySide6)
+	</longdescription>
+	<use>
+		<flag name="pyqt6">Use <pkg>dev-python/pyqt6</pkg> as Qt for Python implementation</flag>
+		<flag name="pyside6">Use <pkg>dev-python/pyside</pkg> as Qt for Python implementation</flag>
+		<flag name="designer">Pull in bindings for the QtDesigner module and enable the designer plugin</flag>
+		<flag name="gui">Pull in bindings for the QtGui module</flag>
+		<flag name="help">Pull in bindings for the QtHelp module</flag>
+		<flag name="multimedia">Pull in QtMultimedia and QtMultimediaWidgets modules</flag>
+		<flag name="network">Pull in bindings for the QtNetwork module</flag>
+		<flag name="nfc">Pull in bindings for the QtNFC module</flag>
+		<flag name="opengl">Pull in bindings for the QtOpenGL module</flag>
+		<flag name="pdfium">Pull in bindings for the QtPDFium module</flag>
+		<flag name="positioning">Pull in bindings for the QtPositioning module</flag>
+		<flag name="printsupport">Pull in bindings for the QtPrintSupport module</flag>
+		<flag name="qml">Build bindings for the QtQml</flag>
+		<flag name="quick">Build bindings for the QtQuick</flag>
+		<flag name="quick3d">Build bindings for the QtQuick3D</flag>
+		<flag name="remoteobjects">Pull in bindings for the QtRemoteObjects module</flag>
+		<flag name="scxml">Pull in bindings for the QtScXml module</flag>
+		<flag name="sensors">Pull in bindings for the QtSensors module</flag>
+		<flag name="serialport">Pull in bindings for the QtSerialPort module</flag>
+		<flag name="spatialaudio">Pull in bindings for the QtSpatialAudio module</flag>
+		<flag name="speech">Pull in bindings for the QtTextToSpeech module</flag>
+		<flag name="sql">Pull in bindings for the QtSql module</flag>
+		<flag name="svg">Pull in bindings for the QtSvg module</flag>
+		<flag name="testlib">Pull in bindings for the QtTest module</flag>
+		<flag name="webchannel">Pull in bindings for the QtWebChannel module</flag>
+		<flag name="webengine">Pull in QtWebEngine and QtWebEngineWidgets modules</flag>
+		<flag name="websockets">Pull in bindings for the QtWebSockets module</flag>
+		<flag name="widgets">Pull in bindings for the QtWidgets module</flag>
+		<flag name="xml">Pull in QtXml module</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">spyder-ide/qtpy</remote-id>
+		<remote-id type="pypi">QtPy</remote-id>
+	</upstream>
+	<stabilize-allarches/>
+</pkgmetadata>

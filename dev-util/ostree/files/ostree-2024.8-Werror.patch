@@ -1,0 +1,35 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -29,32 +29,6 @@ dnl automake variables we want in pkg-config
+ pkglibexecdir=$libexecdir/$PACKAGE
+ AC_SUBST(pkglibexecdir)
+ 
+-AS_IF([echo "$CFLAGS" | grep -q -E -e '-Werror($| )'], [], [
+-CC_CHECK_FLAGS_APPEND([WARN_CFLAGS], [CFLAGS], [\
+-  -pipe \
+-  -Wall \
+-  -Werror=shadow \
+-  -Werror=empty-body \
+-  -Werror=strict-prototypes \
+-  -Werror=missing-prototypes \
+-  -Werror=implicit-function-declaration \
+-  "-Werror=format=2 -Werror=format-security -Werror=format-nonliteral" \
+-  -Werror=pointer-arith -Werror=init-self \
+-  -Werror=missing-declarations \
+-  -Werror=return-type \
+-  -Werror=switch \
+-  -Werror=overflow \
+-  -Werror=int-conversion \
+-  -Werror=parentheses \
+-  -Werror=undef \
+-  -Werror=incompatible-pointer-types \
+-  -Werror=misleading-indentation \
+-  -Werror=missing-include-dirs  \
+-  -Wstrict-aliasing=2 \
+-  -Werror=unused-result \
+-])])
+-AC_SUBST(WARN_CFLAGS)
+-
+ AC_ARG_ENABLE(sanitizers,
+               AS_HELP_STRING([--enable-sanitizers],
+                              [Enable ASAN and UBSAN (default: no)]),,

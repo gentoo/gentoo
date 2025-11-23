@@ -1,0 +1,54 @@
+--- libwmf-0.2.8.4/src/convert/Makefile.am
++++ libwmf-0.2.8.4/src/convert/Makefile.am
+@@ -1,6 +1,6 @@
+-CFLAGS = @CFLAGS@ @WMF_CFLAGS@
++AM_CFLAGS = @WMF_CFLAGS@
+ 
+-LDFLAGS = -L$(top_builddir)/src/.libs @WMF_LIBFLAGS@ @LDFLAGS@
++LDADD = -L$(top_builddir)/src/.libs @WMF_LIBFLAGS@ @LDFLAGS@
+ 
+ DEFS = @DEFS@ @WMF_DEFS@ \
+ 	-DPACKAGE=\"@PACKAGE@\" \
+--- libwmf-0.2.8.4/src/extra/gd/Makefile.am
++++ libwmf-0.2.8.4/src/extra/gd/Makefile.am
+@@ -1,8 +1,6 @@
+ INCLUDES = -I$(srcdir)
+ 
+-CFLAGS = @CFLAGS@ @WMF_CFLAGS@
+-
+-LDFLAGS = @LDFLAGS@
++AM_CFLAGS = @WMF_CFLAGS@
+ 
+ DEFS = @DEFS@ @GD_DEFS@
+ 
+--- libwmf-0.2.8.4/src/extra/trio/Makefile.am
++++ libwmf-0.2.8.4/src/extra/trio/Makefile.am
+@@ -1,6 +1,4 @@
+-CFLAGS = @CFLAGS@ @WMF_CFLAGS@
+-
+-LDFLAGS = @LDFLAGS@
++AM_CFLAGS = @WMF_CFLAGS@
+ 
+ DEFS = @DEFS@ @WMF_DEFS@
+ 
+--- libwmf-0.2.8.4/src/ipa/Makefile.am
++++ libwmf-0.2.8.4/src/ipa/Makefile.am
+@@ -1,6 +1,4 @@
+-CFLAGS = @CFLAGS@ @WMF_CFLAGS@
+-
+-LDFLAGS = @LDFLAGS@
++AM_CFLAGS = @WMF_CFLAGS@
+ 
+ DEFS = @DEFS@ @WMF_DEFS@ \
+ 	-DPACKAGE=\"@PACKAGE@\" \
+--- libwmf-0.2.8.4/src/Makefile.am
++++ libwmf-0.2.8.4/src/Makefile.am
+@@ -20,7 +20,7 @@
+ 
+ SUBDIRS = $(DIRHEAVY)
+ 
+-CFLAGS = @CFLAGS@ @WMF_CFLAGS@ @GDK_PIXBUF_CFLAGS@
++AM_CFLAGS = @WMF_CFLAGS@ @GDK_PIXBUF_CFLAGS@
+ 
+ DEFS = @DEFS@ @WMF_DEFS@ $(DEFHEAVY) $(GDK_PIXBUF_DEFS) \
+ 	-DPACKAGE=\"@PACKAGE@\" \

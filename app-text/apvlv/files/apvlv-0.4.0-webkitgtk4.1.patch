@@ -1,0 +1,45 @@
+From 39f783103e99b954991183cea2b5ccbd9add2a1a Mon Sep 17 00:00:00 2001
+From: Alberto Garcia <berto@igalia.com>
+Date: Wed, 16 Nov 2022 10:05:42 +0100
+Subject: [PATCH] Use the WebKitGTK 4.1 API builds when available
+
+These use soup3 instead of soup2 internally but the API is the same.
+---
+ src/CMakeLists.txt | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 457f576..cd12d9b 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -18,14 +18,20 @@ FIND_PACKAGE(PkgConfig)
+ PKG_CHECK_MODULES(FREETYPE2 freetype2 REQUIRED)
+ PKG_CHECK_MODULES(GTK gtk+-3.0)
+ PKG_CHECK_MODULES(GLIB2 glib-2.0 REQUIRED)
+-PKG_CHECK_MODULES(WEBKIT webkit2gtk-4.0 REQUIRED)
++PKG_CHECK_MODULES(LIBXML libxml-2.0 REQUIRED)
++PKG_CHECK_MODULES(WEBKIT webkit2gtk-4.1)
++if (NOT WEBKIT_FOUND)
++  PKG_CHECK_MODULES(WEBKIT webkit2gtk-4.0 REQUIRED)
++endif()
+ INCLUDE_DIRECTORIES(${FREETYPE2_INCLUDE_DIRS}
+         ${GTK_INCLUDE_DIRS}
+         ${GLIB2_INCLUDE_DIRS}
++        ${LIBXML_INCLUDE_DIRS}
+         ${WEBKIT_INCLUDE_DIRS})
+ LINK_DIRECTORIES(${FREETYPE2_LIBRARY_DIRS}
+         ${GTK_LIBRARY_DIRS}
+         ${GLIB2_LIBRARY_DIRS}
++        ${LIBXML_LIBRARY_DIRS}
+         ${WEBKIT_LIBRARY_DIRS})
+ 
+ IF (WIN32)
+@@ -116,7 +122,7 @@ TARGET_LINK_LIBRARIES(apvlv
+         ${GTHREAD2_LIBRARIES}
+         ${WEBKIT_LIBRARIES}
+         "-lepub"
+-        "-lxml2"
++        ${LIBXML_LIBRARIES}
+         ${APVLV_REQ_LIBRARIES})
+ 
+ IF (WIN32)

@@ -1,0 +1,19 @@
+This should make it built on other archictectures as well
+
+https://bugs.gentoo.org/428228
+
+diff --git a/ld/x86_aout.h b/ld/x86_aout.h
+index 542a70d..a38488d 100644
+--- a/ld/x86_aout.h
++++ b/ld/x86_aout.h
+@@ -19,7 +19,9 @@ typedef long Long;
+ typedef int32_t Long;
+ #define __OUT_OK 1
+ #else
+-typedef char Long[4];
++#define __OUT_OK 1
++#include <inttypes.h>
++typedef int32_t Long;
+ #endif
+ #endif
+ 

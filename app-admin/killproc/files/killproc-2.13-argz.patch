@@ -1,0 +1,10 @@
+--- a/startproc.c
++++ b/startproc.c
+@@ -25,7 +25,6 @@
+ #include <sys/time.h>
+ #include <sys/resource.h>
+ #include <sys/ioctl.h>
+-#include <argz.h>
+ #include <grp.h>
+ 
+ #define USAGE		"Usage:\n"\

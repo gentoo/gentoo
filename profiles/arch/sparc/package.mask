@@ -1,0 +1,22 @@
+# Copyright 1999-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# matoro <matoro_gentoo@matoro.tk> (2024-06-11)
+# Extensive use of unaligned access, no plans to fix, #636552
+# https://github.com/memcached/memcached/issues/902
+net-misc/memcached
+dev-libs/libmemcached
+dev-python/pylibmc
+
+# matoro <matoro_gentoo@matoro.tk> (2023-03-07)
+# Fails tests disastrously.  Present evidence of passing test suite
+# before removing, please.
+dev-db/mariadb
+
+# Sam James <sam@gentoo.org> (2022-11-24)
+# Pulls in gjs which is broken on sparc, bug #882071
+gnome-extra/sushi
+
+# Raúl Porcel <armin76@gentoo.org> (2014-11-17)
+# Mask sys-devel/kgcc64 since >=gcc-4.4 can build 64bit kernels
+sys-devel/kgcc64

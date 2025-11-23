@@ -1,0 +1,112 @@
+diff --git a/cmdif/Makefile.am b/cmdif/Makefile.am
+index 7bb332aa..3ffdf7d6 100644
+--- a/cmdif/Makefile.am
++++ b/cmdif/Makefile.am
+@@ -53,7 +53,7 @@ libcmdif_la_SOURCES = tools_cif.c tools_cif.h icmd_cif_common.c icmd_cif_common.
+ cmdif_pylibdir = $(libdir)/mstflint/python_tools/
+ cmdif_pylib_DATA = ${CCMDIF_SO} cmdif.py
+ ${CCMDIF_SO}: libcmdif.la
+-	$(CC) -g -Wall -pthread -shared ${CFLAGS} *.o -o ${CCMDIF_SO} \
++	$(CC) -g -Wall -pthread -shared ${CFLAGS} ${LDFLAGS} *.o -o ${CCMDIF_SO} \
+ 	$(top_builddir)/tools_layouts/.libs/libtools_layouts.a $(top_builddir)/${MTCR_CONF_DIR}/.libs/libmtcr_ul.a
+ 
+ CLEANFILES = ${CCMDIF_SO}
+diff --git a/configure.ac b/configure.ac
+index bd510607..2ae22057 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -59,9 +59,6 @@ AC_COMPILE_IFELSE(
+ ]])], [OPENSSL_VERSION_VALID=yes], [OPENSSL_VERSION_VALID=no])
+ OS=$(uname -s)
+ KERNEL_VER=`uname -r | egrep -E -o '[[0-9]]+\.[[0-9]]+' | head -1`
+-OFED_VER=`ofed_info -s | egrep -E -o '[[0-9]]+\.[[0-9]]+' | head -1`
+-OFED_EXIST=`ofed_info -s`
+-OFED_NOT_EXIST="ofed_info: command not found"
+ MTCR_CONF_DIR=""
+ LDL=""
+ default_en_inband=""
+diff --git a/dev_mgt/Makefile.am b/dev_mgt/Makefile.am
+index a5f66e9f..0d1417da 100644
+--- a/dev_mgt/Makefile.am
++++ b/dev_mgt/Makefile.am
+@@ -50,7 +50,7 @@ dev_mgt_pylib_DATA = c_dev_mgt.so
+ dist_dev_mgt_pylib_DATA = dev_mgt.py
+ 
+ c_dev_mgt.so: libdev_mgt.la
+-	$(CC) -g -Wall -pthread -shared ${CFLAGS} tools_dev_types.o -o c_dev_mgt.so \
++	$(CC) -g -Wall -pthread -shared ${CFLAGS} ${LDFLAGS} tools_dev_types.o -o c_dev_mgt.so \
+ 	$(top_builddir)/reg_access/.libs/libreg_access.a \
+ 	$(top_builddir)/tools_layouts/.libs/libtools_layouts.a \
+ 	$(top_builddir)/${MTCR_CONF_DIR}/.libs/libmtcr_ul.a
+diff --git a/mtcr_py/Makefile.am b/mtcr_py/Makefile.am
+index 46fa4e60..d032257d 100644
+--- a/mtcr_py/Makefile.am
++++ b/mtcr_py/Makefile.am
+@@ -35,6 +35,6 @@ mtcr_pylibdir = $(libdir)/mstflint/python_tools/
+ mtcr_pylib_DATA = cmtcr.so
+ dist_mtcr_pylib_DATA = mtcr.py
+ cmtcr.so:
+-	$(CC) -g -Wall -pthread -shared ${CFLAGS} -o cmtcr.so -Wl,--whole-archive $(top_builddir)/${MTCR_CONF_DIR}/.libs/libmtcr_ul.a -Wl,--no-whole-archive
++	$(CC) -g -Wall -pthread -shared ${CFLAGS} ${LDFLAGS} -o cmtcr.so -Wl,--whole-archive $(top_builddir)/${MTCR_CONF_DIR}/libmtcr_ul.a -Wl,--no-whole-archive
+ 
+ CLEANFILES = cmtcr.so
+diff --git a/mtcr_ul/Makefile.am b/mtcr_ul/Makefile.am
+index a2a644ee..8c5c6f3b 100644
+--- a/mtcr_ul/Makefile.am
++++ b/mtcr_ul/Makefile.am
+@@ -32,7 +32,8 @@
+ 
+ AM_CPPFLAGS = -I$(top_srcdir) -I$(top_srcdir)/include/mtcr_ul -I$(top_srcdir)/common -I$(top_srcdir)/dev_mgt
+ 
+-pkglib_LTLIBRARIES = libmtcr_ul.la
++noinst_LIBRARIES = libmtcr_ul.a
++noinst_LTLIBRARIES = libmtcr_ul.la
+ 
+ libmtcr_ul_la_SOURCES = mtcr_ul.c mtcr_ib.h  mtcr_int_defs.h\
+ 			mtcr_ib_res_mgt.h mtcr_ib_res_mgt.c\
+@@ -45,14 +46,13 @@ libmtcr_ul_la_SOURCES = mtcr_ul.c mtcr_ib.h  mtcr_int_defs.h\
+ 			packets_layout.c packets_layout.h \
+ 			fwctrl.c fwctrl.h fwctrl_ioctl.h
+ libmtcr_ul_la_CFLAGS = -W -Wall -g -MP -MD -fPIC -DMTCR_API="" -DMST_UL
++libmtcr_ul_a_CFLAGS = -W -Wall -g -MP -MD -fPIC -DMTCR_API="" -DMST_UL
+ 
+ if ENABLE_INBAND
+ libmtcr_ul_la_SOURCES += mtcr_ib_ofed.c
+ endif
+ 
++libmtcr_ul_a_SOURCES = $(libmtcr_ul_la_SOURCES)
++
+ libraryincludedir=$(includedir)/mstflint
+ libraryinclude_HEADERS = $(top_srcdir)/include/mtcr_ul/mtcr.h  $(top_srcdir)/include/mtcr_ul/mtcr_com_defs.h  $(top_srcdir)/include/mtcr_ul/mtcr_mf.h
+-
+-install-exec-hook:
+-	rm -f $(DESTDIR)$(pkglibdir)/libmtcr_ul.so* $(DESTDIR)$(pkglibdir)/libmtcr_ul.la
+-	ln -snf mstflint/libmtcr_ul.a $(DESTDIR)$(libdir)/
+diff --git a/reg_access/Makefile.am b/reg_access/Makefile.am
+index 8e38c473..6228b45a 100644
+--- a/reg_access/Makefile.am
++++ b/reg_access/Makefile.am
+@@ -57,7 +57,7 @@ reg_access_pylib_DATA = ${RREG_ACCESS_SO}
+ dist_reg_access_pylib_DATA = regaccess.py regaccess_hca_ext_structs.py regaccess_switch_ext_structs.py
+ 
+ ${RREG_ACCESS_SO}: libreg_access.la
+-	$(CC) -g -Wall -pthread -shared ${CFLAGS} *.o -o ${RREG_ACCESS_SO} \
++	$(CC) -g -Wall -pthread -shared ${CFLAGS} ${LDFLAGS} *.o -o ${RREG_ACCESS_SO} \
+ 	$(top_builddir)/tools_layouts/.libs/libtools_layouts.a $(top_builddir)/${MTCR_CONF_DIR}/.libs/libmtcr_ul.a
+ 
+ CLEANFILES = ${RREG_ACCESS_SO}
+diff --git a/resourcetools/resourcedump_lib/src/sdk/Makefile.am b/resourcetools/resourcedump_lib/src/sdk/Makefile.am
+index aefc88a4..5cdd37a6 100644
+--- a/resourcetools/resourcedump_lib/src/sdk/Makefile.am
++++ b/resourcetools/resourcedump_lib/src/sdk/Makefile.am
+@@ -86,8 +86,8 @@ resource_dump_sdk_so_DEPS = \
+ 
+ # if !WIN_BUILD
+ libresource_dump_sdk.so: libresource_dump_sdk.la
+-	$(CC) -Wall -pthread -shared ${CFLAGS} $(COMPILER_FPIC) libresource_dump_sdk_la-resource_dump_sdk.o \
+-	-o libresource_dump_sdk.so ${AM_LDFLAGS} $(resource_dump_sdk_so_DEPS)
++	$(CC) -Wall -pthread -shared ${CFLAGS} $(COMPILER_FPIC) .libs/libresource_dump_sdk_la-resource_dump_sdk.o \
++	-o libresource_dump_sdk.so ${AM_LDFLAGS} ${LDFLAGS} $(resource_dump_sdk_so_DEPS)
+ # else
+ # libresource_dump_sdk.dll: libresource_dump_sdk.la
+ # 	$(CC) -Wall -pthread -shared -Wl,--no-undefined,--enable-runtime-pseudo-reloc ${CFLAGS} $(COMPILER_FPIC) libresource_dump_sdk_la-resource_dump_sdk.o \

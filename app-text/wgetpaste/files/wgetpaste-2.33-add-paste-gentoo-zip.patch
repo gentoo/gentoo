@@ -1,0 +1,69 @@
+From cc41231b0ea2ec5cc0a8353fd4a9b6b71301f819 Mon Sep 17 00:00:00 2001
+From: Christopher Fore <csfore@posteo.net>
+Date: Sat, 14 Oct 2023 21:48:39 -0400
+Subject: [PATCH] Add new service - paste.gentoo.zip
+
+Specified in the code with `pgz` and in the cli for usage and brevity.
+---
+See also: https://github.com/zlin/wgetpaste/pull/48
+- Oskari
+
+ wgetpaste | 21 +++++++++++++++++++--
+ 1 file changed, 19 insertions(+), 2 deletions(-)
+
+diff --git a/wgetpaste b/wgetpaste
+index b3a537b..fc0b559 100755
+--- a/wgetpaste
++++ b/wgetpaste
+@@ -41,7 +41,7 @@ POST_generic() {
+ }
+ 
+ ### services
+-SERVICES="0x0 bpaste codepad dpaste gists ix_io snippets"
++SERVICES="0x0 bpaste codepad dpaste gists ix_io pgz snippets"
+ # 0x0
+ ENGINE_0x0=0x0
+ URL_0x0="http://0x0.st"
+@@ -68,6 +68,10 @@ URL_gists="https://api.github.com/gists"
+ ENGINE_ix_io=ix_io
+ URL_ix_io="http://ix.io"
+ SIZE_ix_io="1000000 1%MB"
++# paste.gentoo.zip
++ENGINE_pgz=pgz
++URL_pgz="https://paste.gentoo.zip"
++SIZE_pgz="2000000 2%MB"
+ # snippets
+ ENGINE_snippets=snippets
+ URL_snippets="https://gitlab.com/api/v4/snippets"
+@@ -139,7 +143,6 @@ POST_dpaste() {
+ }
+ REGEX_RAW_dpaste='s|^http.*|\0.txt|'
+ REGEX_URL_dpaste='s|^http.*|\0|p'
+-
+ # gists
+ LANGUAGES_gists="ActionScript Ada Apex AppleScript Arc Arduino ASP Assembly
+ Augeas AutoHotkey Batchfile Befunge BlitzMax Boo Brainfuck Bro C C# C++
+@@ -230,6 +233,20 @@ POST_lodgeit() {
+ 	POST_generic "submit=Paste! % % language % % code" "$1" "$2" "$3" "$4" "$5" "$6"
+ }
+ REGEX_RAW_lodgeit='s|^\(https\?://[^/]*/\)show\(/[[:alnum:]]*/\)$|\1raw\2|'
++# paste.gentoo.zip
++escape_input_pgz() { echo "$*"; }
++POST_pgz() {
++	local content="${6}"
++	local boundary="WGETPASTE-3d8dfd9bff2b12a7410328d2ec1ed145"
++	echo "--${boundary}"
++	echo "Content-Disposition: form-data; name=\"file\""
++	echo ""
++	echo "${content}"
++	echo "--${boundary}--"
++	ADDITIONAL_HEADERS_pgz=("Content-Type: multipart/form-data; boundary=${boundary}")
++}
++REGEX_RAW_pgz='s|^http.*|\0|'
++REGEX_URL_pgz='s|^http.*|\0|p'
+ # pinnwand
+ LANGUAGES_pinnwand="ABAP ActionScript%3 ActionScript Ada ANTLR ANTLR%With%ActionScript%Target \
+ ANTLR%With%CPP%Target ANTLR%With%C#%Target ANTLR%With%Java%Target ANTLR%With%ObjectiveC%Target \
+-- 
+2.41.0
+

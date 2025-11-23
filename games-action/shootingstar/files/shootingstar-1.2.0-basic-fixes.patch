@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/58287 (math.h/SDLKey for gcc 3.4)
+https://bugs.gentoo.org/272374 (cstdio for gcc 4.4)
+https://bugs.gentoo.org/607428 (signed int for segfault)
+--- a/src/engine/cTextureFont.cpp
++++ b/src/engine/cTextureFont.cpp
+@@ -33,2 +33,3 @@
+ #include <GL/glu.h>
++#include <math.h>
+ #include "cTextureManager.hpp"
+--- a/src/engine/dbg.cpp
++++ b/src/engine/dbg.cpp
+@@ -26,2 +26,3 @@
+ #include <cstdlib>
++#include <cstdio>
+ #include <string>
+--- a/src/game/cMainMenu.cpp
++++ b/src/game/cMainMenu.cpp
+@@ -401,3 +401,3 @@
+ 	
+-	static unsigned int i = 0;
++	static int i = 0;
+ 	if ( mLastLetter + 100 < now )
+--- a/src/game/cOptions.cpp
++++ b/src/game/cOptions.cpp
+@@ -203,3 +203,3 @@
+ 		}
+-		int (keys.keys[i]) = key;	// IS THIS SAFE?
++		keys.keys[i] = (SDLKey)key;
+ 		

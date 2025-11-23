@@ -1,0 +1,14 @@
+diff --git a/Configure b/Configure
+index a8bf8f6..3fa9097 100755
+--- a/Configure
++++ b/Configure
+@@ -80,6 +80,9 @@ for lib in -lcurses -lncurses; do
+ 		LFLAGS="$lib"
+ 	fi
+ done
++if $CC $CFLAGS $LEXTRA test.c -ltinfo > /dev/null 2>&1; then
++	LFLAGS="$LFLAGS -ltinfo"
++fi
+ for lib in -lsocket -lnsl -ltermcap; do 
+ 	if $CC $CFLAGS $LEXTRA test.c $lib > /dev/null 2>&1; then
+ 		LFLAGS="$LFLAGS $lib"

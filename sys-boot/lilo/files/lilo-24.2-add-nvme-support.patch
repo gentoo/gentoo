@@ -1,0 +1,70 @@
+diff -Naurp lilo-24.2.orig/src/common.h lilo-24.2/src/common.h
+--- lilo-24.2.orig/src/common.h	2015-11-21 18:50:23.000000000 -0500
++++ lilo-24.2/src/common.h	2020-07-30 23:20:05.611122665 -0400
+@@ -386,7 +386,7 @@ extern char *config_file;
+ extern FILE *errstd;
+ extern FILE *pp_fd;
+ extern char *identify;	/* in identify.c */
+-extern int dm_major_list[16];
++extern int dm_major_list[32];
+ extern int dm_major_nr;
+ 
+ #define crc(a,b) (~crc32((a),(b),CRC_POLY1))
+diff -Naurp lilo-24.2.orig/src/geometry.c lilo-24.2/src/geometry.c
+--- lilo-24.2.orig/src/geometry.c	2015-11-21 18:50:18.000000000 -0500
++++ lilo-24.2/src/geometry.c	2020-07-30 23:20:05.611122665 -0400
+@@ -84,8 +84,9 @@ DM_TABLE *dmtab = NULL;
+ int dm_version_nr = 0;
+ #endif
+ 
+-int dm_major_list[16];
++int dm_major_list[32]; /* increased from 16 to allow for nvme disks  */
+ int dm_major_nr;
++int nvme_pr = 0; /* set to none zero after geo_init if nvme disk present */
+ 
+ #ifdef LCF_LVM
+ struct lv_bmap {
+@@ -200,6 +201,9 @@ void geo_init(char *name)
+ 
+     while(fgets(line, (sizeof line)-1, file)) {
+ 	if (sscanf(line, "%d %31s\n", &major, major_name) != 2) continue;
++	if (strcmp(major_name, "nvme") !=0) {  /* set if nvme drive is present */
++		nvme_pr=-1;
++	}
+ 	if (strcmp(major_name, "device-mapper") != 0) continue;
+ 	dm_major_list[dm_major_nr] = major;
+ 	if (verbose >= 3) {
+@@ -708,6 +712,22 @@ void geo_query_dev(GEOMETRY *geo,int dev
+ 	    geo->start = hdprm.start;
+ 	    break;
+ 	case MAJOR_SATA1:
++	    /* check for nvme device and assume boot/this device is nvme if present */
++	    if (nvme_pr != 0) {
++	    geo->device = 0x80 + last_dev(MAJOR_IDE,64) + (MINOR(device) >> 4);
++	    if (!get_all) break;
++	    if (ioctl(fd,HDIO_GETGEO,&hdprm) < 0)
++		die("geo_query_dev HDIO_GETGEO (dev 0x%04x): %s",device,
++		  strerror(errno));
++	    if (all && !hdprm.sectors)
++		die("HDIO_REQ not supported for your NVME controller. Please "
++		  "use a DISK section");
++	    geo->heads = hdprm.heads;
++	    geo->cylinders = hdprm.cylinders;
++	    geo->sectors = hdprm.sectors;
++	    geo->start = hdprm.start;
++	    break;
++    	}
+ 	case MAJOR_SATA2:
+ 		printf("WARNING: SATA partition in the high region (>15):\n");
+ 		printf("LILO needs the kernel in one of the first 15 SATA partitions. If \n");
+diff -Naurp lilo-24.2.orig/src/lilo.h lilo-24.2/src/lilo.h
+--- lilo-24.2.orig/src/lilo.h	2015-11-21 18:50:20.000000000 -0500
++++ lilo-24.2/src/lilo.h	2020-07-30 23:20:05.611122665 -0400
+@@ -245,6 +245,7 @@
+ 
+ /* high partitions (>15) on SATA hard disks */
+ #define MAJOR_SATA1    259    /* high SATA disk partitions (Block Extended Major) */
++                              /* also used by kernel for nvme disks */
+ #define MAJOR_SATA2    260    /* high SATA disk partitions (Block Extended Major) (obsolete) */
+ 
+ 

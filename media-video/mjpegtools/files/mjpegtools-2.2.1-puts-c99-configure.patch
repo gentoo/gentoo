@@ -1,0 +1,13 @@
+https://sourceforge.net/p/mjpeg/bugs/144/
+https://bugs.gentoo.org/899868
+--- a/configure.ac
++++ b/configure.ac
+@@ -236,7 +236,7 @@ dnl Check to see if __progname is provided by the system
+ dnl ********************************************************************
+ AC_CACHE_CHECK([for __progname],
+                [mjt_cv_extern___progname],
+-               [AC_LINK_IFELSE([AC_LANG_PROGRAM([[]],
++               [AC_LINK_IFELSE([AC_LANG_PROGRAM([[#include <stdio.h>]],
+                                                 [[extern char *__progname;
+                                                   puts(__progname);]])],
+                                [mjt_cv_extern___progname=yes],

@@ -1,0 +1,16 @@
+#!/sbin/openrc-run
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+TUNED_PIDFILE="/run/tuned.pid"
+TUNED_LOGFILE="/var/log/tuned.log"
+
+command="/usr/sbin/tuned"
+command_args="-d --pid ${TUNED_PIDFILE} --log ${TUNED_LOGFILE}"
+pidfile=${TUNED_PIDFILE}
+
+description="tuned is a daemon for monitoring and adaptive tuning of system devices."
+
+depend() {
+	need dbus
+}

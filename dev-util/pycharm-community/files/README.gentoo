@@ -1,0 +1,5 @@
+According to JetBrains, PyCharm has performance and
+graphics issues with OpenJDK Java.
+
+Please consider using Oracle JDK.
+Especially before reporting problems upstream.

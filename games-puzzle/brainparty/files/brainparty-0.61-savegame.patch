@@ -1,0 +1,27 @@
+--- a/BPGame.cpp
++++ b/BPGame.cpp
+@@ -1294,8 +1294,10 @@ void BPGame::LoadSettings() {
+ 	Secret1 = Secret2 = Secret3 = Secret4 = false;
+ 	NumUnlockedGames = 0;
+ 
++	string file = string("/.brainparty");
++	file.insert(0, getenv("HOME"));
+ 	ifstream ifs;
+-	ifs.open(".brainparty");
++	ifs.open(file.c_str());
+ 	
+ 	FirstRun = false;
+ 	
+@@ -1425,8 +1428,11 @@ void BPGame::LoadSettings() {
+ }
+ 
+ void BPGame::SaveSettings() {
++	string file = string("/.brainparty");
++	file.insert(0, getenv("HOME"));
++	
+  	ofstream savefile;
+- 	savefile.open(".brainparty");
++ 	savefile.open(file.c_str());
+ 	savefile << EnableSound << endl;
+ 	savefile << EnableMusic << endl;
+ 	savefile << endl;

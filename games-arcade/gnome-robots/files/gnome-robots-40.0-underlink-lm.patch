@@ -1,0 +1,38 @@
+https://bugs.gentoo.org/950339
+https://gitlab.gnome.org/GNOME/gnome-robots/-/issues/19
+https://gitlab.gnome.org/GNOME/gnome-robots/-/commit/f34f794554f6091071435874a18e1c39696e4d24
+
+From f34f794554f6091071435874a18e1c39696e4d24 Mon Sep 17 00:00:00 2001
+From: Dominique Leuenberger <dimstar@opensuse.org>
+Date: Thu, 2 May 2024 17:54:50 +0200
+Subject: [PATCH] build: Link against libm
+
+Fixes build in case none of our dependenices adds -lm to LDFLAGS.
+Since gnome-robot's own code uses atan2, it is our own responsibility
+to ensure the linking against libm.
+
+Fixes https://gitlab.gnome.org/GNOME/gnome-robots/-/issues/19
+--- a/meson.build
++++ b/meson.build
+@@ -22,6 +22,9 @@ gtk_dependency = dependency('gtk+-3.0', version: '>= 3.24.0')
+ gdk_dependency = dependency('gdk-3.0', version: '>= 3.24.0')
+ rsvg_dependency = dependency('librsvg-2.0', version: '>= 2.36.2')
+ 
++cc = meson.get_compiler('c')
++m_dep = cc.find_library('m', required : false)
++
+ bindir      = join_paths(get_option('prefix'), get_option('bindir'))
+ datadir     = join_paths(get_option('prefix'), get_option('datadir'))
+ pkgdatadir  = join_paths(datadir, meson.project_name())
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -53,7 +53,8 @@ executable(
+         gsound_dependency,
+         gtk_dependency,
+         gdk_dependency,
+-        rsvg_dependency
++        rsvg_dependency,
++        m_dep
+     ],
+     install_dir: get_option('bindir'),
+     install: true

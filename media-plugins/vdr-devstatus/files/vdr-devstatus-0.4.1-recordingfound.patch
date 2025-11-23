@@ -1,0 +1,17 @@
+Index: b/devstatus.c
+===================================================================
+--- a/devstatus.c
++++ b/devstatus.c
+@@ -351,7 +351,11 @@
+                     recordingFound = recording;
+             if (!recordingFound)
+                 return osContinue;
+-            cReplayControl::SetRecording(recordingFound->FileName(), recordingFound->Title());
++            #if VDRVERSNUM < 10728
++               cReplayControl::SetRecording(recordingFound->FileName(), recordingFound->Title());
++            #else
++               cReplayControl::SetRecording(recordingFound->FileName());
++            #endif
+             return osReplay;
+     }
+ 

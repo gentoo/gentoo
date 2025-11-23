@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/948374
+https://bugs.gentoo.org/953635
+
+--- a/meson.build	2024-03-04 21:12:14.000000000 +0100
++++ b/meson.build	2025-04-13 16:44:16.820025467 +0200
+@@ -276,7 +276,7 @@
+ cdata.set('HAVE_GSTREAMER', gst_dep.found(), description: 'Build GStreamer plugin')
+ 
+ # GUPnP IGD
+-gupnp_igd_dep = dependency('gupnp-igd-1.0', version: gupnp_igd_req, required: get_option('gupnp'))
++gupnp_igd_dep = dependency('gupnp-igd-1.6', version: gupnp_igd_req, required: get_option('gupnp'))
+ cdata.set('HAVE_GUPNP', gupnp_igd_dep.found(), description: 'Use the GUPnP IGD library')
+ 
+ libm = cc.find_library('m', required: false)

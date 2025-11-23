@@ -1,0 +1,42 @@
+From df8dd8e8e84005aa6b187b03cd502f3c6e18cf3c Mon Sep 17 00:00:00 2001
+From: Bodigrim <andrew.lelechenko@gmail.com>
+Date: Sun, 4 Jun 2023 17:55:28 +0100
+Bug: https://github.com/haskell/vector/pull/461
+Signed-off-by: hololeap <hololeap@protonmail.com>
+Subject: [PATCH] Fix instance TestData Float/Double
+
+---
+ vector/tests/Utilities.hs | 18 ++++++++++++++++--
+ 1 file changed, 16 insertions(+), 2 deletions(-)
+
+diff --git a/vector/tests/Utilities.hs b/vector/tests/Utilities.hs
+index 24799554..ae19d425 100644
+--- a/tests/Utilities.hs
++++ b/tests/Utilities.hs
+@@ -121,10 +121,24 @@ instance TestData ty where { \
+ id_TestData(())
+ id_TestData(Bool)
+ id_TestData(Int)
+-id_TestData(Float)
+-id_TestData(Double)
+ id_TestData(Ordering)
+ 
++instance TestData Float where
++  type Model Float = Float
++  model = id
++  unmodel = id
++
++  type EqTest Float = Property
++  equal x y = property (x == y || (isNaN x && isNaN y))
++
++instance TestData Double where
++  type Model Double = Double
++  model = id
++  unmodel = id
++
++  type EqTest Double = Property
++  equal x y = property (x == y || (isNaN x && isNaN y))
++
+ bimapEither :: (a -> b) -> (c -> d) -> Either a c -> Either b d
+ bimapEither f _ (Left a) = Left (f a)
+ bimapEither _ g (Right c) = Right (g c)

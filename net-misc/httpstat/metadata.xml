@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<stabilize-allarches/>
+	<upstream>
+		<bugs-to>https://github.com/reorx/httpstat/issues</bugs-to>
+		<remote-id type="github">reorx/httpstat</remote-id>
+		<remote-id type="pypi">httpstat</remote-id>
+	</upstream>
+</pkgmetadata>

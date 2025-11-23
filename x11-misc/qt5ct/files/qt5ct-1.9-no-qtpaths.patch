@@ -1,0 +1,129 @@
+From 5ffc06d5e735fcf9bdf5b92874292bccc88acd28 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 14 Apr 2025 22:50:08 +0200
+Subject: [PATCH] CMake: Make translations optional
+
+ - Use FeatureSummary to list found dependencies in CMake output
+ - Make it possible to build without translations by making LinguistTools optional
+ - When Qt5LinguistTools is optional, then qtpaths would remain as a rather costly dependency on Qt5Tools just to establish PLUGINDIR
+   Hence allow distributions/users to set PLUGINDIR manually and only fallback to qtpaths if not set
+ - Lowercase some cmake commands for consistency
+ - Append `src` to source directory when generating translations, otherwise build directories could be parsed too
+
+(partially cherry-picked from qt6ct 66c08b191b15ab71b206c3bbea4dcb19a26ab874)
+
+Thanks-to: Jonas Kvinge <jonas@jkvinge.net>
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt           | 45 +++++++++++++++++++++-------------------
+ src/qt5ct/CMakeLists.txt |  5 ++++-
+ 2 files changed, 28 insertions(+), 22 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 59256fd..814757e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -3,13 +3,14 @@ cmake_minimum_required(VERSION 3.11.0)
+ project(qt5ct LANGUAGES CXX)
+ 
+ include(GNUInstallDirs)
++include(FeatureSummary)
+ 
+-CONFIGURE_FILE(
++configure_file(
+   "${CMAKE_CURRENT_SOURCE_DIR}/cmake_uninstall.cmake.in"
+   "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
+   IMMEDIATE @ONLY)
+ 
+-ADD_CUSTOM_TARGET(uninstall
++add_custom_target(uninstall
+   "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")
+ 
+ set(CMAKE_CXX_STANDARD 11)
+@@ -25,9 +26,9 @@ set(QT_MINIMUM_VERSION "5.15.0")
+ 
+ option(DISABLE_DBUS "disable D-Bus support (global menu and D-Bus tray icon implementation)" OFF)
+ 
+-ADD_DEFINITIONS(-DQT_DISABLE_DEPRECATED_BEFORE=0x050C00 -DUSE_WIDGETS)
++add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050C00 -DUSE_WIDGETS)
+ 
+-find_package(Qt5 ${QT_MINIMUM_VERSION} COMPONENTS Widgets Concurrent LinguistTools REQUIRED)
++find_package(Qt5 ${QT_MINIMUM_VERSION} REQUIRED COMPONENTS Core Widgets Concurrent OPTIONAL_COMPONENTS LinguistTools)
+ find_package(Qt5Gui ${QT_MINIMUM_VERSION} CONFIG REQUIRED Private)
+ 
+ if(NOT DISABLE_DBUS)
+@@ -37,29 +38,29 @@ else()
+     message(STATUS "D-Bus support: Disabled")
+ endif()
+ 
+-get_target_property(QT_LRELEASE_EXECUTABLE Qt5::lrelease IMPORTED_LOCATION)
+-
+-if(QT_LRELEASE_EXECUTABLE)
+-    message(STATUS "Found lrelease executable: " ${QT_LRELEASE_EXECUTABLE})
+-else()
+-    message(FATAL_ERROR "Could NOT find lrelease executable")
++if(Qt5LinguistTools_FOUND)
++    message(STATUS "Generating translations ...")
++    get_target_property(QT_LRELEASE_EXECUTABLE Qt5::lrelease IMPORTED_LOCATION)
++    execute_process(COMMAND find ${CMAKE_CURRENT_SOURCE_DIR}/src -name *.ts COMMAND xargs ${QT_LRELEASE_EXECUTABLE} -silent)
+ endif()
+ 
+-get_filename_component(QT_QTPATHS_EXECUTABLE ${QT_LRELEASE_EXECUTABLE} DIRECTORY)
+-set(QT_QTPATHS_EXECUTABLE ${QT_QTPATHS_EXECUTABLE}/qtpaths)
++if(Qt5LinguistTools_FOUND AND NOT PLUGINDIR)
++    get_filename_component(QT_QTPATHS_EXECUTABLE ${QT_LRELEASE_EXECUTABLE} DIRECTORY)
++    set(QT_QTPATHS_EXECUTABLE ${QT_QTPATHS_EXECUTABLE}/qtpaths)
+ 
+-if(EXISTS ${QT_QTPATHS_EXECUTABLE})
+-    message(STATUS "Found qtpaths executable: " ${QT_QTPATHS_EXECUTABLE})
+-else()
+-    message(FATAL_ERROR "Could NOT find qtpaths executable")
++    if(EXISTS ${QT_QTPATHS_EXECUTABLE})
++        message(STATUS "Found qtpaths executable: " ${QT_QTPATHS_EXECUTABLE})
++    else()
++        message(FATAL_ERROR "Could NOT find qtpaths executable")
++    endif()
++
++    execute_process(COMMAND ${QT_QTPATHS_EXECUTABLE} --plugin-dir OUTPUT_VARIABLE PLUGINDIR OUTPUT_STRIP_TRAILING_WHITESPACE)
++elseif(NOT Qt5LinguistTools_FOUND AND NOT PLUGINDIR)
++    message(FATAL_ERROR "PLUGINDIR not provided and Qt5LinguistTools not found - aborting.")
+ endif()
+ 
+-execute_process(COMMAND ${QT_QTPATHS_EXECUTABLE} --plugin-dir OUTPUT_VARIABLE PLUGINDIR OUTPUT_STRIP_TRAILING_WHITESPACE)
+ message(STATUS "Plugin path: " ${PLUGINDIR})
+ 
+-message(STATUS "Generating translations ...")
+-execute_process(COMMAND find ${CMAKE_CURRENT_SOURCE_DIR} -name *.ts COMMAND xargs ${QT_LRELEASE_EXECUTABLE} -silent)
+-
+ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/qt5ct-common)
+ 
+ add_link_options(-Wl,--no-undefined)
+@@ -108,4 +109,6 @@ if(UNIX)
+         ARGS -rf ${CMAKE_CURRENT_BINARY_DIR}/doc/html
+         TARGET distclean
+     )
+-endif(UNIX)
++endif()
++
++feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
+diff --git a/src/qt5ct/CMakeLists.txt b/src/qt5ct/CMakeLists.txt
+index 78535e3..3249e21 100644
+--- a/src/qt5ct/CMakeLists.txt
++++ b/src/qt5ct/CMakeLists.txt
+@@ -24,9 +24,12 @@ set(app_SRCS
+   qsseditordialog.ui
+   qsspage.ui
+   troubleshootingpage.ui
+-  translations/translations.qrc
+ )
+ 
++if(Qt5LinguistTools_FOUND)
++  list(APPEND app_SRCS translations/translations.qrc)
++endif()
++
+ add_executable(qt5ct ${app_SRCS})
+ target_link_libraries(qt5ct PRIVATE Qt5::Widgets Qt5::Concurrent Qt5::WidgetsPrivate qt5ct-common)
+ install(TARGETS qt5ct DESTINATION ${CMAKE_INSTALL_BINDIR})
+-- 
+2.49.0
+

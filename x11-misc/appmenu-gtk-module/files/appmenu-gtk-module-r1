@@ -1,0 +1,13 @@
+case :$GTK_MODULES: in
+	*:appmenu-gtk-module:*)
+		;;
+	*)
+		GTK_MODULES=${GTK_MODULES}${GTK_MODULES:+:}appmenu-gtk-module
+esac
+
+if [ -z "$UBUNTU_MENUPROXY" ]; then
+    UBUNTU_MENUPROXY=1
+fi
+
+export GTK_MODULES
+export UBUNTU_MENUPROXY

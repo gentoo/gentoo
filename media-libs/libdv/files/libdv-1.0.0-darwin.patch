@@ -1,0 +1,52 @@
+* grobian@gentoo.org: Darwin 8 lacks sched_setscheduler
+
+https://sourceforge.net/tracker/index.php?func=detail&aid=2606558&group_id=4393&atid=304393
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -244,7 +244,7 @@
+ 
+ dnl Checks for library functions.
+ AC_FUNC_MMAP
+-AC_CHECK_FUNCS(gettimeofday)
++AC_CHECK_FUNCS(gettimeofday sched_get_priority_max sched_setscheduler)
+ 
+ AC_SUBST(ac_aux_dir)
+ AC_SUBST(RPM_RELEASE)
+--- a/configure
++++ b/configure
+@@ -22621,7 +22621,7 @@
+ rm -f conftest.mmap
+ 
+ 
+-for ac_func in gettimeofday
++for ac_func in gettimeofday sched_get_priority_max sched_setscheduler
+ do
+ as_ac_var=`echo "ac_cv_func_$ac_func" | $as_tr_sh`
+ { echo "$as_me:$LINENO: checking for $ac_func" >&5
+--- a/config.h.in
++++ b/config.h.in
+@@ -24,6 +24,12 @@
+ /* Define to 1 if you have the `gettimeofday' function. */
+ #undef HAVE_GETTIMEOFDAY
+ 
++/* Define to 1 if you have the `sched_get_priority_max' function. */
++#undef HAVE_SCHED_GET_PRIORITY_MAX
++
++/* Define to 1 if you have the `sched_setscheduler' function. */
++#undef HAVE_SCHED_SETSCHEDULER
++
+ /* Define as 1 if you have gtk */
+ #undef HAVE_GTK
+ 
+--- a/encodedv/dvconnect.c
++++ b/encodedv/dvconnect.c
+@@ -860,7 +860,7 @@
+ 
+ int rt_raisepri (int pri)
+ {
+-#ifdef _SC_PRIORITY_SCHEDULING
++#if defined(_SC_PRIORITY_SCHEDULING) && defined(HAVE_SCHED_GET_PRIORITY_MAX) && defined(HAVE_SCHED_SETSCHEDULER)
+ 	struct sched_param scp;
+ 
+ 	/*

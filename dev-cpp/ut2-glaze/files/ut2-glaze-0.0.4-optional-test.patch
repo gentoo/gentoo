@@ -1,0 +1,50 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4d0929e..da87e05 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -37,6 +37,7 @@ if(NOT CMAKE_SKIP_INSTALL_RULES)
+   include(cmake/install-rules.cmake)
+ endif()
+ 
+-if (PROJECT_IS_TOP_LEVEL)
++if (PROJECT_IS_TOP_LEVEL AND BUILD_TESTING)
++  enable_testing()
+   include(cmake/dev-mode.cmake)
+-endif()
+\ No newline at end of file
++endif()
+diff --git a/cmake/dev-mode.cmake b/cmake/dev-mode.cmake
+index 8d6c722..a9c5cd4 100644
+--- a/cmake/dev-mode.cmake
++++ b/cmake/dev-mode.cmake
+@@ -10,19 +10,20 @@ set_property(GLOBAL PROPERTY USE_FOLDERS YES)
+ include(CTest)
+ if(BUILD_TESTING)
+   #add_subdirectory(tests)
+-endif()
+ 
+-# Done in developer mode only, so users won't be bothered by this :)
+-file(GLOB_RECURSE headers CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME}/*.hpp")
+-source_group(TREE "${PROJECT_SOURCE_DIR}/include" PREFIX headers FILES ${headers})
++  # Done in developer mode only, so users won't be bothered by this :)
++  file(GLOB_RECURSE headers CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME}/*.hpp")
++  source_group(TREE "${PROJECT_SOURCE_DIR}/include" PREFIX headers FILES ${headers})
++
++  file(GLOB_RECURSE sources CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/src/*.cpp")
++  source_group(TREE "${PROJECT_SOURCE_DIR}/src" PREFIX sources FILES ${sources})
+ 
+-file(GLOB_RECURSE sources CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/src/*.cpp")
+-source_group(TREE "${PROJECT_SOURCE_DIR}/src" PREFIX sources FILES ${sources})
++  add_executable(${PROJECT_NAME}_ide ${sources} ${headers})
+ 
+-add_executable(${PROJECT_NAME}_ide ${sources} ${headers})
++  target_link_libraries(${PROJECT_NAME}_ide PRIVATE ${PROJECT_NAME}::${PROJECT_NAME})
+ 
+-target_link_libraries(${PROJECT_NAME}_ide PRIVATE ${PROJECT_NAME}::${PROJECT_NAME})
++  set_target_properties(${PROJECT_NAME}_${PROJECT_NAME} ${PROJECT_NAME}_ide PROPERTIES FOLDER ProjectTargets)
+ 
+-set_target_properties(${PROJECT_NAME}_${PROJECT_NAME} ${PROJECT_NAME}_ide PROPERTIES FOLDER ProjectTargets)
++  add_test(NAME ${PROJECT_NAME}_ide COMMAND ${PROJECT_NAME}_ide)
+ 
+-add_test(NAME ${PROJECT_NAME}_ide COMMAND ${PROJECT_NAME}_ide)
++endif()

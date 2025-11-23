@@ -1,0 +1,46 @@
+--- a/ea.c
++++ b/ea.c
+@@ -1,10 +1,11 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+-#include <attr/xattr.h>
++#include <sys/xattr.h>
+ #include <string.h>
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <fuse.h>
++#include <sys/errno.h>
+ 
+ #include "helper.h"
+ #include "structs.h"
+--- a/interface.c
++++ b/interface.c
+@@ -23,7 +23,7 @@
+ #include <errno.h>
+ #include <sys/stat.h>
+ #include <stdlib.h>
+-#include <attr/xattr.h>
++#include <sys/xattr.h>
+ #include <sys/time.h>
+ #include <time.h>
+ 
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -27,7 +27,7 @@
+ OBJ	= $(SRC:.c=.o)
+ 
+ CC	= gcc
+-CFLAGS	= -Wall -ansi -W -std=c99 -g -ggdb -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64
++CFLAGS	+= -Wall -ansi -W -std=c99 -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64
+ LIBS	= -lfuse
+ 
+ all: $(TARGET)
+@@ -54,7 +54,7 @@
+ 	rm -rf /tmp/copyfs-dist
+ 
+ $(TARGET): $(OBJ)
+-	gcc -o $(TARGET) $(OBJ) $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $(TARGET) $(OBJ) $(LIBS)
+ 
+ # Dependencies (use gcc -MM -D_FILE_OFFSET_BITS=64 *.c to regenerate)
+ 

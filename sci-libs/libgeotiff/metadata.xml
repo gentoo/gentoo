@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-geosciences@gentoo.org</email>
+    <name>Gentoo Geosciences Project</name>
+  </maintainer>
+  <upstream>
+    <bugs-to>https://github.com/OSGeo/libgeotiff/issues</bugs-to>
+    <changelog>https://github.com/OSGeo/libgeotiff/blob/master/libgeotiff/NEWS</changelog>
+    <remote-id type="github">OSGeo/libgeotiff</remote-id>
+  </upstream>
+</pkgmetadata>

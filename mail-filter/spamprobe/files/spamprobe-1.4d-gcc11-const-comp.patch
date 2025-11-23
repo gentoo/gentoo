@@ -1,0 +1,13 @@
+diff --git a/src/includes/LRUCache.h b/src/includes/LRUCache.h
+index cf7df30..50467d5 100644
+--- a/src/includes/LRUCache.h
++++ b/src/includes/LRUCache.h
+@@ -60,7 +60,7 @@ public:
+   {
+   public:
+     bool operator()(const NodeType *a,
+-                    const NodeType *b)
++                    const NodeType *b) const
+     {
+       return a->key < b->key;
+     }

@@ -1,0 +1,27 @@
+From 99f1ffbd2ff912d0407aa75f980ef918187c6525 Mon Sep 17 00:00:00 2001
+From: sin-ack <sin-ack@protonmail.com>
+Date: Mon, 21 Apr 2025 16:31:18 +0200
+Subject: [PATCH] Use FOLLY_HAS_LIBURING to check for liburing support in Folly
+
+Folly may not be compiled with liburing support enabled, in which case
+the liburing classes must not be used.
+---
+ thrift/lib/cpp2/security/SSLUtil.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/thrift/lib/cpp2/security/SSLUtil.cpp b/thrift/lib/cpp2/security/SSLUtil.cpp
+index 52a15b66de..dbc67dfd81 100644
+--- a/thrift/lib/cpp2/security/SSLUtil.cpp
++++ b/thrift/lib/cpp2/security/SSLUtil.cpp
+@@ -133,7 +133,7 @@ folly::AsyncSocketTransport::UniquePtr moveToPlaintext(FizzSocket* fizzSock) {
+ 
+   auto sock = fizzSock->template getUnderlyingTransport<folly::AsyncSocket>();
+   folly::AsyncSocketTransport::UniquePtr plaintextTransport;
+-#if defined(__linux__) && __has_include(<liburing.h>)
++#if FOLLY_HAS_LIBURING
+   if (!sock &&
+       fizzSock->template getUnderlyingTransport<folly::AsyncIoUringSocket>()) {
+     // `AsyncFdSocket` currently lacks uring support, so hardcode `AsyncSocket`
+-- 
+2.49.0
+

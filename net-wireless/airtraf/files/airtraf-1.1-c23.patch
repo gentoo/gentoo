@@ -1,0 +1,24 @@
+--- a/src/libncurses/deskman.c
++++ b/src/libncurses/deskman.c
+@@ -123,7 +123,7 @@ void colorwin(WINDOW * win)
+     free(blankpad);
+ }
+ 
+-void coloreol()
++void coloreol(WINDOW * win)
+ {
+     char *blankpad;
+     int y, x;
+--- a/src/libncurses/deskman.h
++++ b/src/libncurses/deskman.h
+@@ -50,6 +50,6 @@ void show_paused_win(WINDOW ** win, PANEL ** panel, char * message, char *messag
+ void infobox(char *text, char *prompt);
+ void standardcolors(int color);
+ void refresh_screen(void);
+-void show_sort_statwin();
++void show_sort_statwin(WINDOW **statwin, PANEL **panel);
+ 
+ #endif
+-- 
+2.47.0
+

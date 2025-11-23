@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type='person'>
+		<email>flow@gentoo.org</email>
+		<name>Florian Schmaus</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">com-lihaoyi/Ammonite</remote-id>
+		<bugs-to>https://github.com/com-lihaoyi/Ammonite/issues</bugs-to>
+		<changelog>https://github.com/com-lihaoyi/Ammonite/releases</changelog>
+		<maintainer status='active'>
+			<name>Li Haoyi</name>
+			<email>haoyi.sg@gmail.com</email>
+		</maintainer>
+	</upstream>
+	<use>
+		<flag name="scala2-13">Install Ammonite for Scala 2.13</flag>
+		<flag name="scala3-0">Install Ammonite for Scala 3.0</flag>
+		<flag name="scala3-1">Install Ammonite for Scala 3.1</flag>
+		<flag name="scala3-2">Install Ammonite for Scala 3.2</flag>
+		<flag name="scala3-3">Install Ammonite for Scala 3.3</flag>
+		<flag name="scala3-5">Install Ammonite for Scala 3.5</flag>
+	</use>
+</pkgmetadata>

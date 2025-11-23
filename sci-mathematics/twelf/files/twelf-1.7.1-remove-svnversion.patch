@@ -1,0 +1,13 @@
+diff --git a/bin/buildid b/bin/buildid
+index bb60cd3..5972ac0 100755
+--- a/bin/buildid
++++ b/bin/buildid
+@@ -5,7 +5,7 @@
+ # William Lovas, 08-27-2010
+ #
+ 
+-REV=`svnversion`
++REV="1813"
+ DATE=`date "+%m/%d/%y at %H:%M:%S"`
+ HOST=`hostname`
+ 

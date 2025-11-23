@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/Bachmann1234/diff_cover/issues</bugs-to>
+		<changelog>https://github.com/Bachmann1234/diff_cover/releases</changelog>
+		<remote-id type="github">Bachmann1234/diff_cover</remote-id>
+		<remote-id type="pypi">diff-cover</remote-id>
+	</upstream>
+	<stabilize-allarches/>
+</pkgmetadata>

@@ -1,0 +1,23 @@
+From 7c92c9db299a466aad981dd747bbfd2a57db6827 Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@debian.org>
+Date: Sun, 12 Jan 2025 15:40:39 +0000
+Subject: [PATCH] Fix doctest registration for Python 3.13
+
+`unittest.makeSuite` was deprecated in Python 3.11 and removed in 3.13.
+---
+ test/testspf.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/testspf.py b/test/testspf.py
+index eb8d933..beac450 100644
+--- a/test/testspf.py
++++ b/test/testspf.py
+@@ -225,7 +225,7 @@ def makeSuite(filename):
+   return suite
+ 
+ def docsuite():
+-  suite = unittest.makeSuite(SPFTestCases,'test')
++  suite = unittest.defaultTestLoader.loadTestsFromTestCase(SPFTestCases)
+   try:
+     import authres
+   except:

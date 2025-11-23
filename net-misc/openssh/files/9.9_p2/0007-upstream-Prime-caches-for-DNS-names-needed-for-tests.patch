@@ -1,0 +1,44 @@
+From be8026caf9da985638c762c353c397c0922be233 Mon Sep 17 00:00:00 2001
+Message-ID: <be8026caf9da985638c762c353c397c0922be233.1758727915.git.sam@gentoo.org>
+In-Reply-To: <4b8d141ec165aa29a48316768089cb03aed3aada.1758727915.git.sam@gentoo.org>
+References: <4b8d141ec165aa29a48316768089cb03aed3aada.1758727915.git.sam@gentoo.org>
+From: "dtucker@openbsd.org" <dtucker@openbsd.org>
+Date: Tue, 11 Mar 2025 11:46:44 +0000
+Subject: [PATCH 07/10] upstream: Prime caches for DNS names needed for tests.
+
+When running the SSHFP tests, particularly on an ephemeral VM, the first
+query or two can fail for some reason, presumably because something isn't
+fully initialized or something.  To work around this, issue queries for the
+names we'll need before we need them.
+
+OpenBSD-Regress-ID: 900841133540e7dead253407db5a874a6ed09eca
+---
+ regress/sshfp-connect.sh | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/regress/sshfp-connect.sh b/regress/sshfp-connect.sh
+index f78646922..3c73a35d0 100644
+--- a/regress/sshfp-connect.sh
++++ b/regress/sshfp-connect.sh
+@@ -1,4 +1,4 @@
+-#	$OpenBSD: sshfp-connect.sh,v 1.4 2021/09/01 00:50:27 dtucker Exp $
++#	$OpenBSD: sshfp-connect.sh,v 1.5 2025/03/11 11:46:44 dtucker Exp $
+ #	Placed in the Public Domain.
+ 
+ # This test requires external setup and thus is skipped unless
+@@ -29,6 +29,12 @@ if ! $SSH -Q key-plain | grep ssh-rsa >/dev/null; then
+ elif [ -z "${TEST_SSH_SSHFP_DOMAIN}" ]; then
+ 	skip "TEST_SSH_SSHFP_DOMAIN not set."
+ else
++	# Prime any DNS caches and resolvers.
++	for i in sshtest sshtest-sha1 sshtest-sha256; do
++		host -t sshfp ${i}.${TEST_SSH_SSHFP_DOMAIN} >/dev/null 2>&1
++		host -t sshfp ${i}-bad.${TEST_SSH_SSHFP_DOMAIN} >/dev/null 2>&1
++	done
++
+ 	# Set RSA host key to match fingerprints above.
+ 	mv $OBJ/sshd_proxy $OBJ/sshd_proxy.orig
+ 	$SUDO cp $SRC/rsa_openssh.prv $OBJ/host.ssh-rsa
+-- 
+2.51.0
+

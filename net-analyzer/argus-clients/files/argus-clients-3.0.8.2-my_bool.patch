@@ -1,0 +1,42 @@
+--- a/examples/ramysql/rasql.c
++++ b/examples/ramysql/rasql.c
+@@ -414,7 +414,7 @@
+ void
+ RaMySQLInit ()
+ {
+-   my_bool reconnectbuf = 1, *reconnect = &reconnectbuf;
++   int reconnectbuf = 1, *reconnect = &reconnectbuf;
+    char userbuf[1024], sbuf[1024], db[1024], *dbptr = NULL;
+    char *sptr = NULL, *ptr;
+    MYSQL_RES *mysqlRes;
+--- a/examples/ramysql/rasqlinsert.c
++++ b/examples/ramysql/rasqlinsert.c
+@@ -7026,7 +7026,7 @@
+ void
+ RaMySQLInit ()
+ {
+-   my_bool reconnectbuf = 1, *reconnect = &reconnectbuf;
++   int reconnectbuf = 1, *reconnect = &reconnectbuf;
+    char *sptr = NULL, *ptr;
+    char userbuf[1024], sbuf[1024], db[1024], *dbptr = NULL;
+    MYSQL_RES *mysqlRes;
+--- a/examples/ramysql/rasqltimeindex.c
++++ b/examples/ramysql/rasqltimeindex.c
+@@ -539,7 +539,7 @@
+ void
+ RaMySQLInit ()
+ {
+-   my_bool reconnectbuf = 1, *reconnect = &reconnectbuf;
++   int reconnectbuf = 1, *reconnect = &reconnectbuf;
+    char *sptr = NULL, *ptr;
+    char userbuf[1024], sbuf[1024], db[1024], *dbptr = NULL;
+    MYSQL_RES *mysqlRes;
+@@ -797,7 +797,7 @@
+ void
+ RaMySQLInit ()
+ {
+-   my_bool reconnectbuf = 1, *reconnect = &reconnectbuf;
++   int reconnectbuf = 1, *reconnect = &reconnectbuf;
+    unsigned int RaTableFlags = 0;
+    int retn = 0, x;
+    char *sptr = NULL, *ptr;

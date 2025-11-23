@@ -1,0 +1,14 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -470,7 +470,10 @@ if(NOT DEFINED INSTANCES_ONLY)
+         LIBRARY_NAME composablekernel
+         PACKAGE_NAME examples
+    )
+-   add_subdirectory(example)
++   option(BUILD_EXAMPLES "Build examples" OFF)
++   if(BUILD_EXAMPLES)
++     add_subdirectory(example)
++   endif()
+    if(BUILD_TESTING)
+       add_subdirectory(test)
+    endif()

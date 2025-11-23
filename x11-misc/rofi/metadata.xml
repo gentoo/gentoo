@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<name>Florian Schmaus</name>
+		<email>flow@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="drun">Enable desktop file run dialog</flag>
+		<flag name="windowmode">Enable normal window mode</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">davatorium/rofi</remote-id>
+		<changelog>https://github.com/davatorium/rofi/releases</changelog>
+		<bugs-to>https://github.com/davatorium/rofi/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

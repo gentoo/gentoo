@@ -1,0 +1,22 @@
+--- a/pommed/mactel/nv8600mgt_backlight.c
++++ b/pommed/mactel/nv8600mgt_backlight.c
+@@ -48,7 +48,7 @@
+ #include "../dbus.h"
+ 
+ 
+-struct _lcd_bck_info lcd_bck_info;
++extern struct _lcd_bck_info lcd_bck_info;
+ 
+ 
+ static int nv8600mgt_inited = 0;
+--- a/pommed/mactel/x1600_backlight.c
++++ b/pommed/mactel/x1600_backlight.c
+@@ -45,7 +45,7 @@
+ #include "../dbus.h"
+ 
+ 
+-struct _lcd_bck_info lcd_bck_info;
++extern struct _lcd_bck_info lcd_bck_info;
+ 
+ static int fd = -1;
+ static char *memory = NULL;

@@ -1,0 +1,61 @@
+From 237d8b4e96b36d1818f9d9322d25aaa2a58f4dc8 Mon Sep 17 00:00:00 2001
+From: "Douglas R. Reno" <renodr@linuxfromscratch.org>
+Date: Wed, 2 Apr 2025 18:58:02 -0500
+Subject: [PATCH] CMakeLists: Adjust for CMake 4.0's removal of deprecated
+ syntax.
+
+CMake 4.0 is more strict than previous versions, and has enforced
+removals of deprecated syntax. Compatibility with versions of CMake
+prior to 3.5 is no longer permitted either, so we'll change it to say
+4.0 to fix that problem. After that, the custom commands for generating
+the manual page need to be adjusted as CMake now needs to know when to
+run commands, so we will generate the manual page after the package is
+built by passing POST_BUILD to the custom commands.
+
+Tested with CMake 4.0 and 3.31.6.
+
+* asturm 2025-04-13: Just raise minimum to 3.10 instead.
+
+---
+ CMakeLists.txt | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a01240e8..20997e7d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -17,7 +17,7 @@
+ # @date    Consult git log.
+ ##############################################################################
+ 
+-cmake_minimum_required (VERSION 2.8.12)
++cmake_minimum_required (VERSION 3.10)
+ 
+ set(LIB_NAME tidy)
+ set(LIBTIDY_DESCRIPTION "${LIB_NAME} - HTML syntax checker")
+@@ -528,6 +528,7 @@ if (UNIX AND SUPPORT_CONSOLE_APP)
+  
+         # Run the built EXE to generate xml output .
+         add_custom_command(
++            POST_BUILD
+             TARGET man
+             COMMAND ${CMAKE_CURRENT_BINARY_DIR}/${LIB_NAME} -xml-help > ${TIDYHELP}
+             COMMENT "Generate ${TIDYHELP}"
+@@ -536,6 +537,7 @@ if (UNIX AND SUPPORT_CONSOLE_APP)
+ 
+         # Run the built EXE to generate more xml output.
+         add_custom_command(
++            POST_BUILD
+             TARGET man
+             COMMAND ${CMAKE_CURRENT_BINARY_DIR}/${LIB_NAME} -xml-config > ${TIDYCONFIG}
+             COMMENT "Generate ${TIDYCONFIG}"
+@@ -544,8 +546,8 @@ if (UNIX AND SUPPORT_CONSOLE_APP)
+ 
+         # Run xsltproc to generate the install files.
+         add_custom_command(
++            POST_BUILD
+             TARGET man
+-            DEPENDS ${TIDYHELP}
+             COMMAND xsltproc ARGS ${TIDY1XSL} ${TIDYHELP} > ${CMAKE_CURRENT_BINARY_DIR}/${TIDY_MANFILE}
+             COMMENT "Generate ${TIDY_MANFILE}"
+             VERBATIM

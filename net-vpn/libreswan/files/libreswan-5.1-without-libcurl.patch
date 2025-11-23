@@ -1,0 +1,72 @@
+From 9f0336036caa92eb5f82841d200027c95991fd13 Mon Sep 17 00:00:00 2001
+From: Andrew Cagney <cagney@gnu.org>
+Date: Mon, 14 Oct 2024 11:09:17 -0400
+Subject: [PATCH] building: fix USE_LIBCURL=false
+
+close #1845 Libreswan 5.1 no longer compiles without libcurl support
+---
+ programs/pluto/fetch.c     | 13 ++++---------
+ programs/pluto/rcv_whack.c |  2 --
+ 2 files changed, 4 insertions(+), 11 deletions(-)
+
+diff --git a/programs/pluto/fetch.c b/programs/pluto/fetch.c
+index 299b7ff405..9bc60b9801 100644
+--- a/programs/pluto/fetch.c
++++ b/programs/pluto/fetch.c
+@@ -19,8 +19,6 @@
+  *
+  */
+ 
+-#if defined(LIBCURL) || defined(LIBLDAP)	/* essentially whole body of file */
+-
+ #include <pthread.h>    /* Must be the first include file */
+ #include <stdlib.h>
+ #include <errno.h>
+@@ -30,7 +28,6 @@
+ #include <cert.h>
+ #include <certdb.h>
+ 
+-
+ #include "constants.h"
+ #include "defs.h"
+ #include "log.h"
+@@ -153,9 +150,11 @@ static err_t fetch_curl(const char *url, chunk_t *blob, struct logger *logger)
+ 
+ #else	/* LIBCURL */
+ 
+-static err_t fetch_curl(const char *url UNUSED,
+-			chunk_t *blob UNUSED)
++static err_t fetch_curl(const char *url,
++			chunk_t *blob,
++			struct logger *logger)
+ {
++	ldbg(logger, "%s() ignoring %s %p", __func__, url, blob->ptr);
+ 	return "not compiled with libcurl support";
+ }
+ 
+@@ -578,7 +577,3 @@ void free_crl_fetch(void)
+ 	}
+ #endif
+ }
+-
+-#else /* defined(LIBCURL) || defined(LIBLDAP) */
+-/* we'll just ignore for now - this is all going away anyway */
+-#endif
+diff --git a/programs/pluto/rcv_whack.c b/programs/pluto/rcv_whack.c
+index 7959e9ec1f..a7f811f319 100644
+--- a/programs/pluto/rcv_whack.c
++++ b/programs/pluto/rcv_whack.c
+@@ -522,13 +522,11 @@ static void whack_process(const struct whack_message *const m, struct show *s)
+ 		dbg_whack(s, "purgeocsp: stop:");
+ 	}
+ 
+-#if defined(LIBCURL) || defined(LIBLDAP)
+ 	if (m->whack_fetchcrls) {
+ 		dbg_whack(s, "fetchcrls: start:");
+ 		whack_fetchcrls(s);
+ 		dbg_whack(s, "fetchcrls: stop:");
+ 	}
+-#endif
+ 
+ 	if (m->whack_rereadcerts) {
+ 		dbg_whack(s, "rereadcerts: start:");

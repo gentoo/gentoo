@@ -1,0 +1,101 @@
+From f17bfbabb1f2cabfbc312f42e9628fd9905cde2b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Wolfgang=20M=C3=BCller?= <wolf@oriole.systems>
+Date: Wed, 18 Sep 2024 13:37:36 +0200
+Subject: [PATCH 1/2] uisupport: Use correct application name in KAboutData
+
+In commit 020c1634 (uisupport: fix application name for .desktop shell
+integration, 2023-04-18), a call to setDesktopFileName() was added to
+provide the correct .desktop file name for shell integration. However,
+it also changed the application name from "quassel" to "quasselclient",
+which does not match the application name Quassel sets when not built
+with support for KDE, and breaks integration with KNotifications.
+
+The reason for this is that KNotifications expects the filename of the
+global notification configuration file (quassel.notifyrc) to match the
+application name [1]. With "quasselclient" now set as the application name
+through KAboutData, this is no longer the case, and notifications simply
+do not appear.
+
+Instead, use the previous application name, "quassel". This fixes
+notifications for KDE and does not regress shell integration since we
+still set the correct desktop file name.
+
+[1] https://api.kde.org/frameworks/knotifications/html/index.html
+---
+ src/uisupport/aboutdata.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/uisupport/aboutdata.cpp b/src/uisupport/aboutdata.cpp
+index 380e54a54..afade4d33 100644
+--- a/src/uisupport/aboutdata.cpp
++++ b/src/uisupport/aboutdata.cpp
+@@ -114,7 +114,7 @@ AboutData& AboutData::addCredits(std::initializer_list<AboutPerson> credits)
+ 
+ KAboutData AboutData::kAboutData() const
+ {
+-    KAboutData aboutData(Quassel::buildInfo().clientApplicationName, tr("Quassel IRC"), Quassel::buildInfo().plainVersionString);
++    KAboutData aboutData(Quassel::buildInfo().applicationName, tr("Quassel IRC"), Quassel::buildInfo().plainVersionString);
+     aboutData.addLicense(KAboutLicense::GPL_V2);
+     aboutData.addLicense(KAboutLicense::GPL_V3);
+     aboutData.setShortDescription(tr("A modern, distributed IRC client"));
+
+From 4d6cb4424296e172a95d24f27c1cff54fccde372 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Wolfgang=20M=C3=BCller?= <wolf@oriole.systems>
+Date: Wed, 18 Sep 2024 14:34:35 +0200
+Subject: [PATCH 2/2] data: Set DesktopEntry correctly in notifyrc
+
+KNotifications requires the DesktopEntry field in notifyrc to match the
+base name of the application's desktop file [1]. Monolithic installs come
+with a "quassel.desktop" file, which matches what is set presently in
+notifyrc. However, client installs come with "quasselclient.desktop",
+and do not match.
+
+To match up these values dynamically, introduce a notifyrc.in template
+containing a placeholder which will be replaced by cmake. Since a system
+can technically have both a monolithic binary and a client installed at
+the same time, and we can't install two separate notifyrc files because
+the application name stays the same throughout, assume the user prefers
+the monolithic install when configured.
+
+[1] https://api.kde.org/frameworks/knotifications/html/index.html
+---
+ data/CMakeLists.txt                            | 10 +++++++++-
+ data/{quassel.notifyrc => quassel.notifyrc.in} |  2 +-
+ 2 files changed, 10 insertions(+), 2 deletions(-)
+ rename data/{quassel.notifyrc => quassel.notifyrc.in} (99%)
+
+diff --git a/data/CMakeLists.txt b/data/CMakeLists.txt
+index 099d53b09..509e2c554 100644
+--- a/data/CMakeLists.txt
++++ b/data/CMakeLists.txt
+@@ -1,6 +1,14 @@
+ if (BUILD_GUI)
+     if (WITH_KF5)
+-        install(FILES quassel.notifyrc DESTINATION ${CMAKE_INSTALL_KNOTIFY5RCDIR})
++        set(DESKTOP_FILE "quasselclient")
++
++        if (WANT_MONO)
++            set(DESKTOP_FILE "quassel")
++        endif()
++
++        configure_file(quassel.notifyrc.in quassel.notifyrc @ONLY)
++
++        install(FILES ${CMAKE_BINARY_DIR}/data/quassel.notifyrc DESTINATION ${CMAKE_INSTALL_KNOTIFY5RCDIR})
+     endif()
+ 
+     if (UNIX AND NOT APPLE)
+diff --git a/data/quassel.notifyrc b/data/quassel.notifyrc.in
+similarity index 99%
+rename from data/quassel.notifyrc
+rename to data/quassel.notifyrc.in
+index 733b379a7..c20638fbb 100644
+--- a/data/quassel.notifyrc
++++ b/data/quassel.notifyrc.in
+@@ -1,6 +1,6 @@
+ [Global]
+ IconName=quassel
+-DesktopEntry=quassel
++DesktopEntry=@DESKTOP_FILE@
+ Comment=Quassel IRC
+ Comment[ast]=Quassel IRC
+ Comment[ca]=Xat IRC Quassel

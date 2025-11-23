@@ -1,0 +1,24 @@
+Author: Andreas Tille <tille@debian.org>
+LastChanged: Fri, 15 Nov 2013 10:31:20 +0100
+Description: Prevent conflicting getline by simply renaming it
+
+--- a/src/anchors.c
++++ b/src/anchors.c
+@@ -225,7 +225,7 @@ char* rolltonum(char* str) {
+   return &str[i];
+ }
+ 
+-int getline(FILE* infile, hll* tt) {
++int anchors_getline(FILE* infile, hll* tt) {
+   char temp[1024];
+   char* help;
+   int z, h;
+@@ -248,7 +248,7 @@ hll* parseCHAOS(FILE* infile, int* totnu
+   *totnum = 0;
+   while(!feof(infile)) {
+     tt = (hll*) malloc(sizeof(hll));
+-    while (!feof(infile) && !getline(infile, tt))
++    while (!feof(infile) && !anchors_getline(infile, tt))
+       ;
+     if (feof(infile)) break;
+     if (gapfreechunks) {

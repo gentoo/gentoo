@@ -1,0 +1,14 @@
+Mitigate compilation issue.
+
+std::bad_alloc is defined in <new>
+--- a/clients/include/host_alloc.hpp
++++ b/clients/include/host_alloc.hpp
+@@ -22,6 +22,8 @@
+ 
+ #pragma once
+ 
++#include <new>
++
+ //!
+ //! @brief Host free memory w/o swap.  Returns kB or -1 if unknown.
+ //!

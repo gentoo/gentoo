@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zerochaos@gentoo.org</email>
+		<name>Rick Farina</name>
+	</maintainer>
+	<use>
+		<flag name="internal-tls">Use internal TLSv1 implementation instead of depending on OpenSSL or GnuTLS</flag>
+		<flag name="netlink">Adding support for using netlink to create VLANs</flag>
+		<flag name="suiteb">Adding support for NSA Suite B Cryptography</flag>
+		<flag name="wps">Add support for Wi-Fi Protected Setup</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:w1.fi:hostapd</remote-id>
+	</upstream>
+	<longdescription>
+		User space daemon for the hostap-driver.
+		Extended IEEE 802.11 management, IEEE 802.1X Authenticator,
+		RADIUS Authentication client, RADIUS Accounting client
+	</longdescription>
+</pkgmetadata>

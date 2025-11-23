@@ -1,0 +1,13 @@
+Remove declaration of getopt we already get from headers
+https://bugs.gentoo.org/943827
+--- a/libebutils/getopt.c
++++ b/libebutils/getopt.c
+@@ -87,8 +87,6 @@
+ 
+ #define	EMSG	""
+ 
+-extern char *getenv();
+-
+ static int getopt_internal(int nargc, char * const *nargv,
+     const char *options);
+ static int gcd(int a, int b);

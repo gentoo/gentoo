@@ -1,0 +1,169 @@
+https://bugs.gentoo.org/948952
+https://gitlab.gnome.org/GNOME/evolution-data-server/-/commit/557e2b2a7cc04836c64abd7340092f2395897d57
+
+From 557e2b2a7cc04836c64abd7340092f2395897d57 Mon Sep 17 00:00:00 2001
+From: Milan Crha <mcrha@redhat.com>
+Date: Wed, 22 Jan 2025 12:06:33 +0100
+Subject: [PATCH] Do not use variable named 'bool' in the code
+
+The C23 adds `bool` as a keyword, which breaks the build when this
+standard is enabled.
+---
+ src/camel/camel-sexp.c      | 16 ++++++++--------
+ src/libedataserver/e-sexp.c | 16 ++++++++--------
+ 2 files changed, 16 insertions(+), 16 deletions(-)
+
+diff --git a/src/camel/camel-sexp.c b/src/camel/camel-sexp.c
+index c59bc41eb1..66eedae9d0 100644
+--- a/src/camel/camel-sexp.c
++++ b/src/camel/camel-sexp.c
+@@ -330,7 +330,7 @@ term_eval_and (CamelSExp *sexp,
+ 	GHashTable *ht = g_hash_table_new (g_str_hash, g_str_equal);
+ 	struct IterData lambdafoo;
+ 	gint type=-1;
+-	gint bool = TRUE;
++	gint val = TRUE;
+ 	gint i;
+ 	const gchar *oper;
+ 
+@@ -341,7 +341,7 @@ term_eval_and (CamelSExp *sexp,
+ 	oper = "AND";
+ 	sexp->priv->operators = g_slist_prepend (sexp->priv->operators, (gpointer) oper);
+ 
+-	for (i = 0; bool && i < argc; i++) {
++	for (i = 0; val && i < argc; i++) {
+ 		r1 = camel_sexp_term_eval (sexp, argv[i]);
+ 		if (type == -1)
+ 			type = r1->type;
+@@ -364,7 +364,7 @@ term_eval_and (CamelSExp *sexp,
+ 				g_hash_table_insert (ht, a1[j], GINT_TO_POINTER (n + 1));
+ 			}
+ 		} else if (r1->type == CAMEL_SEXP_RES_BOOL) {
+-			bool = bool && r1->value.boolean;
++			val = val && r1->value.boolean;
+ 		}
+ 		camel_sexp_result_free (sexp, r1);
+ 	}
+@@ -377,7 +377,7 @@ term_eval_and (CamelSExp *sexp,
+ 		result->value.ptrarray = lambdafoo.uids;
+ 	} else if (type == CAMEL_SEXP_RES_BOOL) {
+ 		result->type = CAMEL_SEXP_RES_BOOL;
+-		result->value.boolean = bool;
++		result->value.boolean = val;
+ 	}
+ 
+ 	g_hash_table_destroy (ht);
+@@ -396,7 +396,7 @@ term_eval_or (CamelSExp *sexp,
+ 	GHashTable *ht = g_hash_table_new (g_str_hash, g_str_equal);
+ 	struct IterData lambdafoo;
+ 	gint type = -1;
+-	gint bool = FALSE;
++	gint val = FALSE;
+ 	gint i;
+ 	const gchar *oper;
+ 
+@@ -407,7 +407,7 @@ term_eval_or (CamelSExp *sexp,
+ 
+ 	result = camel_sexp_result_new (sexp, CAMEL_SEXP_RES_UNDEFINED);
+ 
+-	for (i = 0; !bool && i < argc; i++) {
++	for (i = 0; !val && i < argc; i++) {
+ 		r1 = camel_sexp_term_eval (sexp, argv[i]);
+ 		if (type == -1)
+ 			type = r1->type;
+@@ -426,7 +426,7 @@ term_eval_or (CamelSExp *sexp,
+ 				g_hash_table_insert (ht, a1[j], (gpointer) 1);
+ 			}
+ 		} else if (r1->type == CAMEL_SEXP_RES_BOOL) {
+-			bool |= r1->value.boolean;
++			val |= r1->value.boolean;
+ 		}
+ 		camel_sexp_result_free (sexp, r1);
+ 	}
+@@ -439,7 +439,7 @@ term_eval_or (CamelSExp *sexp,
+ 		result->value.ptrarray = lambdafoo.uids;
+ 	} else if (type == CAMEL_SEXP_RES_BOOL) {
+ 		result->type = CAMEL_SEXP_RES_BOOL;
+-		result->value.boolean = bool;
++		result->value.boolean = val;
+ 	}
+ 	g_hash_table_destroy (ht);
+ 
+diff --git a/src/libedataserver/e-sexp.c b/src/libedataserver/e-sexp.c
+index 3adc85196a..ccdabb12cd 100644
+--- a/src/libedataserver/e-sexp.c
++++ b/src/libedataserver/e-sexp.c
+@@ -291,7 +291,7 @@ term_eval_and (ESExp *sexp,
+ 	GHashTable *ht = g_hash_table_new (g_str_hash, g_str_equal);
+ 	struct IterData lambdafoo;
+ 	gint type=-1;
+-	gint bool = TRUE;
++	gint val = TRUE;
+ 	gint i;
+ 	const gchar *oper;
+ 
+@@ -302,7 +302,7 @@ term_eval_and (ESExp *sexp,
+ 	oper = "AND";
+ 	sexp->priv->operators = g_slist_prepend (sexp->priv->operators, (gpointer) oper);
+ 
+-	for (i = 0; bool && i < argc; i++) {
++	for (i = 0; val && i < argc; i++) {
+ 		r1 = e_sexp_term_eval (sexp, argv[i]);
+ 		if (type == -1)
+ 			type = r1->type;
+@@ -325,7 +325,7 @@ term_eval_and (ESExp *sexp,
+ 				g_hash_table_insert (ht, a1[j], GINT_TO_POINTER (n + 1));
+ 			}
+ 		} else if (r1->type == ESEXP_RES_BOOL) {
+-			bool = bool && r1->value.boolean;
++			val = val && r1->value.boolean;
+ 		}
+ 		e_sexp_result_free (sexp, r1);
+ 	}
+@@ -338,7 +338,7 @@ term_eval_and (ESExp *sexp,
+ 		r->value.ptrarray = lambdafoo.uids;
+ 	} else if (type == ESEXP_RES_BOOL) {
+ 		r->type = ESEXP_RES_BOOL;
+-		r->value.boolean = bool;
++		r->value.boolean = val;
+ 	}
+ 
+ 	g_hash_table_destroy (ht);
+@@ -357,7 +357,7 @@ term_eval_or (ESExp *sexp,
+ 	GHashTable *ht = g_hash_table_new (g_str_hash, g_str_equal);
+ 	struct IterData lambdafoo;
+ 	gint type = -1;
+-	gint bool = FALSE;
++	gint val = FALSE;
+ 	gint i;
+ 	const gchar *oper;
+ 
+@@ -368,7 +368,7 @@ term_eval_or (ESExp *sexp,
+ 
+ 	r = e_sexp_result_new (sexp, ESEXP_RES_UNDEFINED);
+ 
+-	for (i = 0; !bool && i < argc; i++) {
++	for (i = 0; !val && i < argc; i++) {
+ 		r1 = e_sexp_term_eval (sexp, argv[i]);
+ 		if (type == -1)
+ 			type = r1->type;
+@@ -387,7 +387,7 @@ term_eval_or (ESExp *sexp,
+ 				g_hash_table_insert (ht, a1[j], (gpointer) 1);
+ 			}
+ 		} else if (r1->type == ESEXP_RES_BOOL) {
+-			bool |= r1->value.boolean;
++			val |= r1->value.boolean;
+ 		}
+ 		e_sexp_result_free (sexp, r1);
+ 	}
+@@ -400,7 +400,7 @@ term_eval_or (ESExp *sexp,
+ 		r->value.ptrarray = lambdafoo.uids;
+ 	} else if (type == ESEXP_RES_BOOL) {
+ 		r->type = ESEXP_RES_BOOL;
+-		r->value.boolean = bool;
++		r->value.boolean = val;
+ 	}
+ 	g_hash_table_destroy (ht);
+ 
+-- 
+GitLab

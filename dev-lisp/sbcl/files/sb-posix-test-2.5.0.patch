@@ -1,0 +1,32 @@
+diff '--color=auto' -r -U2 sbcl-2.5.0.orig/contrib/sb-posix/posix-tests.lisp sbcl-2.5.0/contrib/sb-posix/posix-tests.lisp
+--- sbcl-2.5.0.orig/contrib/sb-posix/posix-tests.lisp	2024-12-29 17:12:03.000000000 +0700
++++ sbcl-2.5.0/contrib/sb-posix/posix-tests.lisp	2024-12-29 23:01:52.817298778 +0700
+@@ -163,16 +163,16 @@
+             #+unix (member err `(,sb-posix:enotdir ,sb-posix:eacces)))))
+ 
+-#-haiku
+-(deftest rmdir.error.3
+-  (handler-case
+-      (sb-posix:rmdir #-win32 "/" #+win32 (sb-ext:posix-getenv "windir"))
+-    (sb-posix:syscall-error (c)
+-      (typep
+-       (sb-posix:syscall-errno c)
+-       `(member #+(or darwin openbsd freebsd) ,sb-posix:eisdir
+-                #+win32 ,sb-posix::eacces #+win32 ,sb-posix::enotempty
+-                #+sunos ,sb-posix::einval
+-                #-(or darwin openbsd freebsd win32 sunos haiku) ,sb-posix::ebusy))))
+-  t)
++;; #-haiku
++;; (deftest rmdir.error.3
++;;   (handler-case
++;;       (sb-posix:rmdir #-win32 "/" #+win32 (sb-ext:posix-getenv "windir"))
++;;     (sb-posix:syscall-error (c)
++;;       (typep
++;;        (sb-posix:syscall-errno c)
++;;        `(member #+(or darwin openbsd freebsd) ,sb-posix:eisdir
++;;                 #+win32 ,sb-posix::eacces #+win32 ,sb-posix::enotempty
++;;                 #+sunos ,sb-posix::einval
++;;                 #-(or darwin openbsd freebsd win32 sunos haiku) ,sb-posix::ebusy))))
++;;   t)
+ 
+ (deftest rmdir.error.4

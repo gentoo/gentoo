@@ -1,0 +1,53 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+    need net
+    
+    # if monitoring snmp variables on this machine:
+    # use net-snmpd
+}
+ 
+checkconfig() {
+    if [ ! -f ${MRTG_CONF} ] ; then
+		eerror "Please create ${MRTG_CONF} (try man cfgmaker)"
+		return 1
+	fi
+
+	mrtg --check ${MRTG_CONF}
+	return $?
+}
+
+start() {
+	# mrtg will not run if LANG=*utf8
+	# use grep instead of bash regexp for bug #159786
+	[ "$(echo $LANG|grep -E '((^[A-Za-z0-9\_\@\-]+\.)|(^))([uU][tT][fF]-?8)$')" ] \
+	&& LANG='C'
+
+	checkconfig || return $?
+
+	# enable logging?
+	[ -n "${MRTG_LOG}" ] && \
+		MRTG_OPTS="${MRTG_OPTS} --logging ${MRTG_LOG}"
+	
+	# run as a different user?
+	[ -n "${MRTG_USER}" ] && \
+		MRTG_OPTS="${MRTG_OPTS} --user ${MRTG_USER}"
+
+	# run as a different group?
+	[ -n "${MRTG_GROUP}" ] && \
+		MRTG_OPTS="${MRTG_OPTS} --group ${MRTG_GROUP}"
+
+	ebegin "Starting mrtg"
+	start-stop-daemon --start --quiet --pidfile ${MRTG_PID} --name mrtg\
+		--exec /usr/bin/mrtg -- --daemon --pid-file=${MRTG_PID} \
+		${MRTG_OPTS} ${MRTG_CONF} >/dev/null
+	eend $? "Failed to start mrtg"
+}
+
+stop() {
+	ebegin "Stopping mrtg"
+	start-stop-daemon --stop --quiet --pidfile ${MRTG_PID}
+	eend $? "Failed to stop mrtg"
+}

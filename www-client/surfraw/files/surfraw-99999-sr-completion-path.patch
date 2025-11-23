@@ -1,0 +1,11 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -112,7 +112,7 @@
+ 	mkdir -p $(DESTDIR)@datadir@/bash-completion/completions
+ 	@cp $(top_srcdir)/surfraw-bash-completion $(DESTDIR)@datadir@/bash-completion/completions/surfraw
+ if INSTALLSR
+-	@ln -sf $(DESTDIR)@datadir@/bash-completion/completions/surfraw $(DESTDIR)@datadir@/bash-completion/completions/sr
++	@ln -sf surfraw $(DESTDIR)@datadir@/bash-completion/completions/sr
+ endif  # INSTALLSR
+ endif  # BASHCOMPLETIONS
+ 

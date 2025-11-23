@@ -1,0 +1,62 @@
+From f9273852c8e3d7af77d6c8929b1ac6c8a26eca50 Mon Sep 17 00:00:00 2001
+From: Zane van Iperen <zane@zanevaniperen.com>
+Date: Mon, 15 Mar 2021 20:57:45 +1000
+Subject: [PATCH] lib/moviedecoder: replace avcodec_decode_video2() usage
+
+---
+ libffmpegthumbnailer/moviedecoder.cpp | 31 +++++++++++++++++++++------
+ 1 file changed, 24 insertions(+), 7 deletions(-)
+
+diff --git a/libffmpegthumbnailer/moviedecoder.cpp b/libffmpegthumbnailer/moviedecoder.cpp
+index da5f32a..f32577a 100644
+--- a/libffmpegthumbnailer/moviedecoder.cpp
++++ b/libffmpegthumbnailer/moviedecoder.cpp
+@@ -548,17 +548,33 @@ bool MovieDecoder::decodeVideoPacket()
+         return false;
+     }
+ 
+-    av_frame_unref(m_pFrame);
+-
+-    int frameFinished;
++    int rc = avcodec_send_packet(m_pVideoCodecContext, m_pPacket);
++    if(rc == AVERROR(EAGAIN))
++    {
++        rc = 0;
++    }
+ 
+-    int bytesDecoded = avcodec_decode_video2(m_pVideoCodecContext, m_pFrame, &frameFinished, m_pPacket);
+-    if (bytesDecoded < 0)
++    if(rc == AVERROR_EOF)
++    {
++        return false;
++    }
++    else if(rc < 0)
+     {
+-        throw logic_error("Failed to decode video frame: bytesDecoded < 0");
++        throw logic_error("Failed to decode video frame: avcodec_send_packet() < 0");
+     }
+ 
+-    return frameFinished > 0;
++    rc = avcodec_receive_frame(m_pVideoCodecContext, m_pFrame);
++    switch(rc)
++    {
++        case 0:
++            return true;
++
++        case AVERROR(EAGAIN):
++            return false;
++
++        default:
++            throw logic_error("Failed to decode video frame: avcodec_receive_frame() < 0");
++    }
+ }
+ 
+ bool MovieDecoder::getVideoPacket()
+@@ -574,6 +590,7 @@ bool MovieDecoder::getVideoPacket()
+ 
+     m_pPacket = new AVPacket();
+ 
++
+     while (framesAvailable && !frameDecoded)
+     {
+         framesAvailable = av_read_frame(m_pFormatContext, m_pPacket) >= 0;

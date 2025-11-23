@@ -1,0 +1,14 @@
+From Fedora:
+Enable changing the video settings.Sent upstream 2 Apr 2006:
+https://sourceforge.net/p/abe/bugs/1/
+--- a/src/Menu.c
++++ b/src/Menu.c
+@@ -116,7 +116,7 @@
+   if(n == SOUND_ENABLED || n == MUSIC_ENABLED)
+     return sound_loaded;
+   else
+-    return 0;
++    return 1;
+ }
+ 
+ void

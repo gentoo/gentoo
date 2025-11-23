@@ -1,0 +1,23 @@
+diff -Naur wmweather-2.4.7.orig/src/wmgeneral.h wmweather-2.4.7/src/wmgeneral.h
+--- wmweather-2.4.7.orig/src/wmgeneral.h	2019-02-13 20:54:48.000000000 +0100
++++ wmweather-2.4.7/src/wmgeneral.h	2020-03-29 13:14:19.373976239 +0200
+@@ -36,7 +36,7 @@
+  /* Global variable */
+ /*******************/
+ 
+-Display		*display;
++extern Display		*display;
+ 
+   /***********************/
+  /* Function Prototypes */
+diff -Naur wmweather-2.4.7.orig/src/wmweather.c wmweather-2.4.7/src/wmweather.c
+--- wmweather-2.4.7.orig/src/wmweather.c	2019-02-13 20:54:49.000000000 +0100
++++ wmweather-2.4.7/src/wmweather.c	2020-03-29 13:14:57.254963956 +0200
+@@ -56,6 +56,7 @@
+ static void update(int);
+ static size_t curl_callback(void*, size_t, size_t, void*);
+ 
++Display *display;
+ CURL
+ 	*curl       = NULL;
+ static struct memory

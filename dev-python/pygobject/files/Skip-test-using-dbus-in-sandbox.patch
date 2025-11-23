@@ -1,0 +1,21 @@
+From 5f57664aca65b5bd433b0a016da92bb74ca378d1 Mon Sep 17 00:00:00 2001
+From: Lukas Schmelting <lschmelting@posteo.com>
+Date: Tue, 27 May 2025 23:46:51 +0200
+Subject: [PATCH 1/2] Skip test using dbus in sandbox
+
+Signed-off-by: Lukas Schmelting <lschmelting@posteo.com>
+---
+ tests/test_gdbus.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tests/test_gdbus.py b/tests/test_gdbus.py
+index 8fe3952..d5e9d79 100644
+--- a/tests/test_gdbus.py
++++ b/tests/test_gdbus.py
+@@ -138,2 +138,3 @@ class TestGDBusClient(unittest.TestCase):
+ 
++    @pytest.mark.skip(reason="Use of dbus in sandbox")
+     def test_python_calls_sync(self):
+-- 
+2.49.0
+

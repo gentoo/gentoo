@@ -1,0 +1,38 @@
+https://bugs.gentoo.org/895694
+https://github.com/open-telemetry/opentelemetry-cpp/pull/2423
+https://github.com/open-telemetry/opentelemetry-cpp/commit/d1143ab37ef7a7e9bbc4289513dbd21b9fe134d2
+
+From d1143ab37ef7a7e9bbc4289513dbd21b9fe134d2 Mon Sep 17 00:00:00 2001
+From: Thomas-Barbier-1A <thomas.barbier@amadeus.com>
+Date: Tue, 5 Dec 2023 10:54:00 +0100
+Subject: [PATCH] [BUILD] 'uint8_t' not declared in this scope with gcc 13.2.1
+ (#2423)
+
+--- a/api/include/opentelemetry/trace/propagation/detail/hex.h
++++ b/api/include/opentelemetry/trace/propagation/detail/hex.h
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <algorithm>
++#include <cstdint>
+ #include <cstring>
+ 
+ #include "opentelemetry/nostd/string_view.h"
+
+https://github.com/open-telemetry/opentelemetry-cpp/commit/cfa130bb9200d6ce307b8e030426b983af562e8a
+
+From cfa130bb9200d6ce307b8e030426b983af562e8a Mon Sep 17 00:00:00 2001
+From: Andrew Stitcher <astitcher@apache.org>
+Date: Sat, 20 May 2023 04:39:20 -0400
+Subject: [PATCH] Missed include (#2143)
+
+--- a/ext/include/opentelemetry/ext/http/common/url_parser.h
++++ b/ext/include/opentelemetry/ext/http/common/url_parser.h
+@@ -3,6 +3,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <string>
+ #include <vector>
+ #include "opentelemetry/nostd/string_view.h"

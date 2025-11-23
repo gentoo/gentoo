@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type='person'>
+		<email>flow@gentoo.org</email>
+		<name>Florian Schmaus</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">com-lihaoyi/mill</remote-id>
+		<bugs-to>https://github.com/com-lihaoyi/mill/issues</bugs-to>
+		<changelog>https://github.com/com-lihaoyi/mill/releases</changelog>
+	</upstream>
+</pkgmetadata>

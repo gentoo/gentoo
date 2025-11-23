@@ -1,0 +1,10 @@
+--- a/src/shared/missing.h~	2025-05-22 17:34:02.000000000 +0200
++++ b/src/shared/missing.h	2025-05-22 17:34:18.732828172 +0200
+@@ -23,6 +23,7 @@
+ 
+ /* Missing glibc definitions to access certain kernel APIs */
+ 
++#include <sys/socket.h>
+ #include <sys/resource.h>
+ #include <sys/syscall.h>
+ #include <fcntl.h>

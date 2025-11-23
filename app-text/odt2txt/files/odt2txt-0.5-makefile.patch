@@ -1,0 +1,116 @@
+--- a/Makefile
++++ b/Makefile
+@@ -2,28 +2,22 @@
+ UNAME_S := $(shell uname -s 2>/dev/null || echo unknown)
+ UNAME_O := $(shell uname -o 2>/dev/null || echo unknown)
+ 
+-ifdef DEBUG
+-CFLAGS = -O0 -g -Wextra -DMEMDEBUG -DSTRBUF_CHECK
+-#LDFLAGS = -lefence
+-LDFLAGS += -g
+-else
+-CFLAGS = -O2
+-endif
+-
+ ifdef NO_ICONV
+-CFLAGS += -DNO_ICONV
++CPPFLAGS += -DNO_ICONV
+ endif
+ 
+-LIBS = -lz
++CPPFLAGS += $(shell $(PKG_CONFIG) --cflags zlib)
++LDLIBS += $(shell $(PKG_CONFIG) --libs zlib)
++
+ ZIP_OBJS =
+ ifdef HAVE_LIBZIP
+-	CFLAGS += -DHAVE_LIBZIP
+-	LIBS += -lzip
++	CPPFLAGS += -DHAVE_LIBZIP
++	LDLIBS += -lzip
+ else
+ 	ZIP_OBJS = kunzip/fileio.o kunzip/zipfile.o
+ endif
+ 
+-OBJ = odt2txt.o regex.o mem.o strbuf.o $(ZIP_OBJS)
++OBJ = regex.o mem.o strbuf.o $(ZIP_OBJS)
+ TEST_OBJ = t/test-strbuf.o t/test-regex.o
+ ALL_OBJ = $(OBJ) $(TEST_OBJ)
+ 
+@@ -37,50 +31,44 @@
+ MAN1DIR = $(MANDIR)/man1
+ 
+ ifeq ($(UNAME_S),FreeBSD)
+-	CFLAGS += -DICONV_CHAR="const char" -I/usr/local/include
++	CPPFLAGS += -DICONV_CHAR="const char"
+ 	LDFLAGS += -L/usr/local/lib
+-	LIBS += -liconv
++	LDLIBS += -liconv
+ endif
+ ifeq ($(UNAME_S),OpenBSD)
+-	CFLAGS += -DICONV_CHAR="const char" -I/usr/local/include
++	CPPFLAGS += -DICONV_CHAR="const char"
+ 	LDFLAGS += -L/usr/local/lib
+-	LIBS += -liconv
++	LDLIBS += -liconv
+ endif
+ ifeq ($(UNAME_S),Darwin)
+-       CFLAGS += -I/opt/local/include
+-       LDFLAGS += -L/opt/local/lib
+-       LIBS += -liconv
++       LDLIBS += -liconv
+ endif
+ ifeq ($(UNAME_S),NetBSD)
+-	CFLAGS += -DICONV_CHAR="const char"
++	CPPFLAGS += -DICONV_CHAR="const char"
+ endif
+ ifeq ($(UNAME_S),SunOS)
+-	ifeq ($(CC),cc)
+-		ifdef DEBUG
+-			CFLAGS = -v -g -DMEMDEBUG -DSTRBUF_CHECK
+-		else
+-			CFLAGS = -xO3
+-		endif
+-	endif
+-	CFLAGS += -DICONV_CHAR="const char"
++	CPPFLAGS += -DICONV_CHAR="const char"
+ endif
+ ifeq ($(UNAME_S),HP-UX)
+-	CFLAGS += -I$(ZLIB_DIR)
+-	LIBS = $(ZLIB_DIR)/libz.a
++	CPPFLAGS += -I$(ZLIB_DIR)
++	LDLIBS += $(ZLIB_DIR)/libz.a
++endif
++ifeq ($(UNAME_S),Darwin)
++	LDLIBS += -liconv
+ endif
+ ifeq ($(UNAME_O),Cygwin)
+-	CFLAGS += -DICONV_CHAR="const char"
+-	LIBS += -liconv
++	CPPFLAGS += -DICONV_CHAR="const char"
++	LDLIBS += -liconv
+ 	EXT = .exe
+ endif
+ ifneq ($(MINGW32),)
+-	CFLAGS += -DICONV_CHAR="const char" -I$(REGEX_DIR) -I$(ZLIB_DIR)
+-	LIBS = $(REGEX_DIR)/regex.o
++	CPPFLAGS += -DICONV_CHAR="const char" -I$(REGEX_DIR) -I$(ZLIB_DIR)
++	LDLIBS += $(REGEX_DIR)/regex.o
+ 	ifdef STATIC
+-		LIBS += $(wildcard $(ICONV_DIR)/lib/.libs/*.o)
+-		LIBS += $(ZLIB_DIR)/zlib.a
++		LDLIBS += $(wildcard $(ICONV_DIR)/lib/.libs/*.o)
++		LDLIBS += $(ZLIB_DIR)/zlib.a
+ 	else
+-		LIBS += -liconv
++		LDLIBS += -liconv
+ 	endif
+ 	EXT = .exe
+ endif
+@@ -89,7 +77,6 @@
+ MAN = odt2txt.1
+ 
+ $(BIN): $(OBJ)
+-	$(CC) -o $@ $(LDFLAGS) $(OBJ) $(LIBS)
+ 
+ t/test-strbuf: t/test-strbuf.o strbuf.o mem.o
+ t/test-regex: t/test-regex.o regex.o strbuf.o mem.o

@@ -1,0 +1,8 @@
+https://bugs.gentoo.org/870412
+--- a/xbatt.c
++++ b/xbatt.c
+@@ -223,3 +223,3 @@
+ 
+-main(
++int main(
+   int	argc,

@@ -1,0 +1,43 @@
+From c0cb641ec6c1ab960df91c23b726836add0ca3a5 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Mon, 6 May 2024 00:26:18 -0400
+Subject: [PATCH] fix broken function signatures for 5-argument functions
+
+These are always called before exit() so presumably no one noticed that
+these "log error and exit(-1)" functions were prone to "exiting with an
+error" (our new term for "hello how would you like to have some UB").
+
+However, the LTO optimizer noticed what was being done and died in
+painful agony. Bring it back to life and soothe its hurts.
+---
+ crm_util_errorhandlers.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/crm_util_errorhandlers.c b/crm_util_errorhandlers.c
+index 1f64f3c..cba9d89 100644
+--- a/crm_util_errorhandlers.c
++++ b/crm_util_errorhandlers.c
+@@ -23,17 +23,17 @@ long untrappableerror ( char *str1, char *str2)
+   fprintf (stderr, "ERROR: %s%s \n", str1, str2);
+   exit (-1);
+ }
+-long fatalerror5 ( char *str1, char *str2)
++long fatalerror5 ( char *str1, char *str2, char* myfile, char* myfunction, unsigned myline)
+ {
+   fprintf (stderr, "ERROR: %s%s \n", str1, str2);
+   exit (-1);
+ }
+-long nonfatalerror5 ( char *str1, char *str2)
++long nonfatalerror5 ( char *str1, char *str2, char* myfile, char* myfunction, unsigned myline)
+ {
+   fprintf (stderr, "ERROR: %s%s \n", str1, str2);
+   exit (-1);
+ }
+-long untrappableerror5 ( char *str1, char *str2)
++long untrappableerror5 ( char *str1, char *str2, char* myfile, char* myfunction, unsigned myline)
+ {
+   fprintf (stderr, "ERROR: %s%s \n", str1, str2);
+   exit (-1);
+-- 
+2.43.2
+

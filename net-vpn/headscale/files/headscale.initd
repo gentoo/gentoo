@@ -1,0 +1,35 @@
+#!/sbin/openrc-run
+# Copyright 2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="Headscale Server daemon"
+command="/usr/bin/headscale"
+user="${HEADSCALE_USER}:${HEADSCALE_GROUP}"
+directory="/var/lib/headscale"
+output_log="/var/log/headscale.log"
+error_log="/var/log/headscale.log"
+private_key="/var/lib/headscale/private.key"
+
+start_stop_daemon_args="--user \"${user}\" ${HEADSCALE_OPTIONS} --background"
+
+depend() {
+	need net
+}
+
+start_pre() {
+	if [ ! -s /etc/headscale/config.yaml ] ; then
+		eerror "Missing headscale configuration file"
+		eerror "Please check the documentation directory for an example"
+		return 1
+	fi
+
+	checkpath -d -m 700 -o "${user}" /run/headscale /var/lib/headscale
+	checkpath -f -m 600 -o "${user}" \
+		/var/lib/headscale/db.sqlite \
+		/var/log/headscale.log \
+		/etc/headscale/config.yaml
+
+	if [ -f ${private_key} ]; then
+		checkpath -f -m 600 -o "${user}" ${private_key}
+	fi
+}

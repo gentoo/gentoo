@@ -1,0 +1,54 @@
+https://bugs.gentoo.org/963605
+https://gitlab.alpinelinux.org/alpine/aports/-/blob/da14a6d0ee52aeaa90485719bcbf33623465780a/community/mypaint/fix-pyobject-userdirectory.patch
+Patch-Source: https://github.com/wobbol/mypaint/commit/3b682d5898f4a6b709a2cd1a4d2b1b9288277cd6
+---
+From 3b682d5898f4a6b709a2cd1a4d2b1b9288277cd6 Mon Sep 17 00:00:00 2001
+From: insane <shreyanshsaha19@proton.me>
+Date: Thu, 3 Apr 2025 03:14:39 -0500
+Subject: [PATCH] Fix pyobject enums in pygobject >= 3.51.0
+
+Co-authored-by: N.F. <nfontenot27@gmail.com>
+
+Fix AttributeError: 'UserDirectory' object has no attribute 'value_name'
+
+k.value_name was resulting in attribute error.
+Changing it to k.name resolves it.
+
+Background information below.
+
+Unregistered pygobject enums in v3.51.0 released on 2025-02-01 are now
+stdlib enums.
+
+From the NEWS file:
+> Note: Only enumerations and flags that have a GType associated will
+> have the GEnum extra properties, such as
+> `value_nicks` and `value_names`.
+
+Further down:
+> * Use standard `enum` module for enums and flags in
+> PyGObject :mr:`394`
+
+Reference:
+https://github.com/mypaint/mypaint/issues/1292
+https://gitlab.gnome.org/GNOME/pygobject/-/blob/1c675e47a160662e5247a387dcd35e0d36b3c4d2/NEWS#L32
+https://gitlab.gnome.org/GNOME/pygobject/-/merge_requests/394
+
+Closes #1292
+---
+ lib/glib.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/glib.py b/lib/glib.py
+index 5d4eef16c..865ec86ae 100644
+--- a/lib/glib.py
++++ b/lib/glib.py
+@@ -190,7 +190,7 @@ def init_user_dir_caches():
+         k = GLib.UserDirectory(i)
+         logger.debug(
+             "Init g_get_user_special_dir(%s): %r",
+-            k.value_name,
++            k.name,
+             get_user_special_dir(k),
+         )
+ 
+

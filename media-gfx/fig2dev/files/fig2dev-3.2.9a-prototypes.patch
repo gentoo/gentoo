@@ -1,0 +1,62 @@
+commit ab4eee3cf0d0c1d861d64b9569a5d1497800cae2
+Author: Mario Haustein <mario.haustein@hrz.tu-chemnitz.de>
+Date:   Thu Jan 30 22:36:48 2025 +0100
+
+    Specify argument types in function prototypes
+    
+    Modern C standards require full prototypes. This commit fixes the bug
+    reported in https://bugs.gentoo.org/944153.
+
+Upstream: https://sourceforge.net/p/mcj/fig2dev/merge-requests/1/
+Bug: https://bugs.gentoo.org/944153
+--- a/transfig/mkfile.c
++++ b/transfig/mkfile.c
+@@ -17,10 +17,12 @@
+ #include <stdio.h>
+ #include "transfig.h"
+ 
+-void puttarget();
+-void putfig();
+-void putoptions();
+-void putclean();
++void puttarget(FILE *mk, char *i, char *suf1, char *suf2);
++void putfig(FILE *mk, enum language to, int altfonts,
++	char *f, char *s, char *m, char *o, char *i, char *suf);
++void putoptions(FILE *mk, int altfonts, char *f, char *s, char *m, char *o,
++	char *i, char *suf);
++void putclean(FILE *mk, char *i, char *suf);
+ 
+ /*
+  * create an appropriate makefile
+--- a/transfig/transfig.c
++++ b/transfig/transfig.c
+@@ -33,8 +33,10 @@ extern void texfile(FILE *tx, char *in);	/* txfile.c */
+ extern void makefile(FILE *mk, int altfonts); /* mkfile.c */
+ 
+ 
+-argument *parse_arg(), *arglist = NULL, *lastarg = NULL;
+-char *strip();
++argument *parse_arg(enum language tolang, char *arg_f, char *arg_s,
++	char *arg_m, char *arg_o, char *arg);
++argument *arglist = NULL, *lastarg = NULL;
++char *strip(char *str, char *suf);
+ 
+ char *mkfile = "Makefile";
+ char *txfile = "transfig.tex";
+--- a/transfig/transfig.h
++++ b/transfig/transfig.h
+@@ -60,11 +60,12 @@ typedef struct argument{
+ 	struct argument *next;
+ } argument ;
+ 
+-extern enum language str2lang();
++extern enum language str2lang(char *s);
+ extern char *lname[];
+ extern char *iname[];
+ 
+-extern char *sysls(), *mksuff();
++extern char *sysls(void);
++extern char *mksuff(char *name, char *suff);
+ extern argument *arglist;
+ extern char *txfile, *mkfile;
+ 

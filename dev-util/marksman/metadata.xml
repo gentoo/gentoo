@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>dotnet@gentoo.org</email>
+    <name>Gentoo Dotnet Project</name>
+  </maintainer>
+  <longdescription>
+    Marksman is a program that integrates with your editor to assist you in
+    writing and maintaining your Markdown documents. Using LSP protocol it
+    provides completion, goto definition, find references, rename refactoring,
+    diagnostics, and more. In addition to regular Markdown, it also supports
+    wiki-link-style references that enable Zettelkasten-like1, 2 note taking.
+    See more about Marksman's features below.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/artempyanykh/marksman/issues/</bugs-to>
+    <remote-id type="github">artempyanykh/marksman</remote-id>
+  </upstream>
+</pkgmetadata>

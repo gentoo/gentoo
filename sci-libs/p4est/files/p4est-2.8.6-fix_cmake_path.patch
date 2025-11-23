@@ -1,0 +1,54 @@
+diff --git a/cmake/install.cmake b/cmake/install.cmake
+index f4f92c4..0f31976 100644
+--- a/cmake/install.cmake
++++ b/cmake/install.cmake
+@@ -4,7 +4,7 @@ include(CMakePackageConfigHelpers)
+ 
+ configure_package_config_file(${CMAKE_CURRENT_LIST_DIR}/config.cmake.in
+ ${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/${PROJECT_NAME}Config.cmake
+-INSTALL_DESTINATION cmake
++INSTALL_DESTINATION ${library_reldir}/cmake/P4est
+ )
+ 
+ write_basic_package_version_file(
+@@ -14,13 +14,13 @@ COMPATIBILITY SameMajorVersion
+ 
+ install(EXPORT ${PROJECT_NAME}-targets
+ NAMESPACE ${PROJECT_NAME}::
+-DESTINATION cmake
++DESTINATION ${library_reldir}/cmake/P4est
+ )
+ 
+ install(FILES
+ ${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/${PROJECT_NAME}Config.cmake
+ ${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/${PROJECT_NAME}ConfigVersion.cmake
+-DESTINATION cmake
++DESTINATION ${library_reldir}/cmake/P4est
+ )
+ 
+ # --- CPack
+diff --git a/cmake/pkgconf.cmake b/cmake/pkgconf.cmake
+index 590d7be..0c46f9d 100644
+--- a/cmake/pkgconf.cmake
++++ b/cmake/pkgconf.cmake
+@@ -4,18 +4,8 @@ set(pc_req_private "ompi ompi-c orte zlib")
+ 
+ set(pc_req_public "p4est sc")
+ 
+-set(pc_filename p4est-${git_version}.pc)
++set(pc_filename p4est.pc)
+ configure_file(${CMAKE_CURRENT_LIST_DIR}/pkgconf.pc.in ${pc_filename} @ONLY)
+ 
+ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${pc_filename}
+-  DESTINATION lib/pkgconfig)
+-
+-set(pc_target ${pc_filename})
+-set(pc_link ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig/p4est.pc)
+-
+-install(CODE "execute_process( \
+-    COMMAND ${CMAKE_COMMAND} -E create_symlink \
+-    ${pc_target} \
+-    ${pc_link}   \
+-    )"
+-  )
++  DESTINATION ${library_reldir}/pkgconfig)

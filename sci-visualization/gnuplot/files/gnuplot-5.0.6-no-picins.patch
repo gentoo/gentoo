@@ -1,0 +1,27 @@
+Do not require picins.sty.
+https://bugs.gentoo.org/577828#c4
+
+--- gnuplot-5.0.6-orig/docs/Makefile.am
++++ gnuplot-5.0.6/docs/Makefile.am
+@@ -189,7 +189,6 @@
+ 	  touch figures.idx ; \
+ 	  rm -f pdffigures.tex ; \
+ 	  ( echo "\usepackage{graphicx}" > pdffigures.tex ; \
+-	    echo "\usepackage{picins}" >> pdffigures.tex ; \
+ 	  ) ; \
+ 	  TEXINPUTS=.:$(srcdir):$(top_srcdir):${TEXINPUTS}: $(PDFLATEX) $< ; \
+ 	  TEXINPUTS=.:$(srcdir):$(top_srcdir):${TEXINPUTS}: $(PDFLATEX) $< ; \
+--- gnuplot-5.0.6-orig/docs/doc2tex.c
++++ gnuplot-5.0.6/docs/doc2tex.c
+@@ -170,9 +170,9 @@
+     case 'F':			/* embedded figure */
+ 	    if (figures) {
+ 		line[strlen(line)-1]=NUL;
+-		(void) fputs("\\parpic[r][rt]{\\includegraphics[width=3in,keepaspectratio]{",b);
++		(void) fputs("\\begin{figure}[htb]\n\\centering\\includegraphics[width=3in,keepaspectratio]{",b);
+ 		fputs(line+1, b);
+-		(void) fputs("}}\n",b);
++		(void) fputs("}\n\\end{figure}\n",b);
+ 	    }
+ 	    break;
+ 

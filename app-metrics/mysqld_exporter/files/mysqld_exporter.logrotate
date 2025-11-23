@@ -1,0 +1,5 @@
+/var/log/mysqld_exporter/*.log {
+	missingok
+	notifempty
+	size 30k
+}

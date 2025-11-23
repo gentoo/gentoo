@@ -1,0 +1,13 @@
+--- djbdns-1.05.o/dns_transmit.c	2001-02-11 23:11:45.000000000 +0200
++++ djbdns-1.05/dns_transmit.c	2024-05-27 16:25:11.857369652 +0200
+@@ -265,9 +265,9 @@
+       if (errno == error_connrefused) if (d->udploop == 2) return 0;
+       return nextudp(d);
+     }
+-    if (r + 1 > sizeof udpbuf) return 0;
+ 
+     if (irrelevant(d,udpbuf,r)) return 0;
++    if ((size_t)r + 1 > sizeof udpbuf) return firsttcp(d); /* if udp overflowed, retry with TCP */
+     if (serverwantstcp(udpbuf,r)) return firsttcp(d);
+     if (serverfailed(udpbuf,r)) {
+       if (d->udploop == 2) return 0;

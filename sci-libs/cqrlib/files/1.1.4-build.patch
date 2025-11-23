@@ -1,0 +1,331 @@
+Upstream-PR: https://github.com/yayahjb/cqrlib/pull/1
+
+From d1a82913a39168bb6d519fd7d2e14e23f4e9f291 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sat, 18 Jun 2022 23:39:18 -0700
+Subject: [PATCH 1/7] build: Fix parallel make
+
+The build will fail with slibtool when the required directories do not
+yet exist. This is because slibtool is significantly faster than GNU
+libtool...
+---
+ Makefile.in | 26 ++++++++------------------
+ 1 file changed, 8 insertions(+), 18 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index fe556ff..59a508e 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -189,12 +189,13 @@ default:
+ #
+ # Compile the library and examples
+ #
+-all:	$(LIB) $(BIN) $(SOURCE) $(HEADERS) \
++all:	$(LIB)/.tag $(BIN)/.tag $(SOURCE) $(HEADERS) \
+ 		$(LIB)/libCQRlib.$(LIB_EXT) \
+ 		$(BIN)/CQRlibTest $(BIN)/CPPQRTest
+ 		
+-install:  all $(INSTALLDIR) $(INSTALLDIR)/lib $(INSTALLDIR)/include \
+-          $(INC) $(LIB)/libCQRlib.$(LIB_EXT)  $(INC)/cqrlib.h
++install:  all $(LIB)/libCQRlib.$(LIB_EXT) $(INC)/cqrlib.h
++		  @mkdir -p $(INSTALLDIR)/lib
++		  @mkdir -p $(INSTALLDIR)/include
+ 		  $(INSTALL_COMMAND) $(LIB)/libCQRlib.$(LIB_EXT) $(INSTALLDIR)/lib/libCQRlib.$(LIB_EXT)
+ 		  $(INSTALL_FINISH_COMMAND) $(INSTALLDIR)/lib/libCQRlib.$(LIB_EXT)
+ 		  -cp $(INSTALLDIR)/include/cqrlib.h $(INSTALLDIR)/include/CQRlib_old.h
+@@ -228,24 +229,13 @@ install:  all $(INSTALLDIR) $(INSTALLDIR)/lib $(INSTALLDIR)/include \
+ #
+ # Directories
+ #
+-$(INSTALLDIR):
+-	mkdir -p $(INSTALLDIR)
+-
+-$(INSTALLDIR)/lib:  $(INSTALLDIR)
+-	mkdir -p $(INSTALLDIR)/lib
+-
+-$(INSTALLDIR)/bin:  $(INSTALLDIR)
+-	mkdir -p $(INSTALLDIR)/bin
+-
+-$(INSTALLDIR)/include:  $(INSTALLDIR)
+-	mkdir -p $(INSTALLDIR)/include
+-	
+-
+-$(LIB):
++$(LIB)/.tag:
+ 	mkdir $(LIB)
++	@touch $@
+ 
+-$(BIN):
++$(BIN)/.tag:
+ 	mkdir $(BIN)
++	@touch $@
+ 
+ #
+ # CQRlib library
+
+From 3cdf6a442228d63c8f771fc0822d74d75fe8b486 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sat, 18 Jun 2022 23:40:46 -0700
+Subject: [PATCH 2/7] build: Use the .la file to link
+
+The correct way to link with internal dependencies and libtool is to use
+the .la files. When using the linker flag directly the build will fail
+with slibtool when it doesn't know where the required library is
+located.
+---
+ Makefile.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 59a508e..ab21e89 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -203,13 +203,13 @@ install:  all $(LIB)/libCQRlib.$(LIB_EXT) $(INC)/cqrlib.h
+ 		  chmod 644 $(INSTALLDIR)/include/cqrlib.h
+ 		  echo "Testing final install dynamic"
+ 		  $(BUILD_COMMAND_DYNAMIC)  $(EXAMPLES)/CQRlibTest.c \
+-		  -lCQRlib -lm -o $(BIN)/CQRlibTest_dynamic
++		  $(LIB)/libCQRlib.la -lm -o $(BIN)/CQRlibTest_dynamic
+ 		  $(BIN)/CQRlibTest_dynamic > $(TESTDATA)/CQRlibTest_dynamic.lst
+ 		  diff -b -c $(TESTDATA)/CQRlibTest_orig.lst \
+ 		    $(TESTDATA)/CQRlibTest_dynamic.lst
+ 		  echo "Testing final install static"
+ 		  $(BUILD_COMMAND_STATIC) $(EXAMPLES)/CQRlibTest.c \
+-		   -lCQRlib -lm -o $(BIN)/CQRlibTest_static
++		   $(LIB)/libCQRlib.la -lm -o $(BIN)/CQRlibTest_static
+ 		  $(BIN)/CQRlibTest_static > $(TESTDATA)/CQRlibTest_static.lst
+ 		  diff -b -c $(TESTDATA)/CQRlibTest_orig.lst \
+ 		    $(TESTDATA)/CQRlibTest_static.lst
+
+From b81e63099004e53f1bfd984f00a4b878485b13b1 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sat, 18 Jun 2022 23:59:24 -0700
+Subject: [PATCH 3/7] build: Use standard install variables
+
+---
+ Makefile.in | 40 ++++++++++++++++++++++------------------
+ 1 file changed, 22 insertions(+), 18 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index ab21e89..22e1ffd 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -72,8 +72,12 @@ SRC      = $(top_builddir)
+ INC      = $(top_builddir)
+ EXAMPLES = $(top_builddir)
+ TESTDATA = $(top_builddir)
+-#INSTALLDIR = /usr/local
+-INSTALLDIR  = $(HOME)
++
++prefix := @prefix@
++exec_prefix := @exec_prefix@
++
++LIBDIR := @libdir@
++INCDIR := @includedir@
+ 
+ #
+ # Include directories
+@@ -85,15 +89,15 @@ INCLUDES = -I$(INC)
+ endif
+ 
+ COMPILE_COMMAND         =  $(LIBTOOL) --mode=compile $(CC) $(CFLAGS) $(INCLUDES) $(WARNINGS) -c
+-LIBRARY_LINK_COMMAND    =  $(LIBTOOL) --mode=link  $(CC) -version-info $(VERSION) -rpath $(INSTALLDIR)/lib
++LIBRARY_LINK_COMMAND    =  $(LIBTOOL) --mode=link  $(CC) -version-info $(VERSION) -rpath $(LIBDIR)
+ BUILD_COMMAND_LOCAL     =  $(LIBTOOL) --mode=link $(CC) $(CFLAGS) $(INCLUDES)
+-BUILD_COMMAND_DYNAMIC   =  $(LIBTOOL) --mode=link $(CC) $(CFLAGS) -dynamic -I $(INSTALLDIR)/include -L$(INSTALLDIR)/lib
+-BUILD_COMMAND_STATIC    =  $(LIBTOOL) --mode=link $(CC) $(CFLAGS) -static -I $(INSTALLDIR)/include -L$(INSTALLDIR)/lib
++BUILD_COMMAND_DYNAMIC   =  $(LIBTOOL) --mode=link $(CC) $(CFLAGS) -dynamic $(INCLUDES)
++BUILD_COMMAND_STATIC    =  $(LIBTOOL) --mode=link $(CC) $(CFLAGS) -static $(INCLUDES)
+ CPPCOMPILE_COMMAND      =  $(LIBTOOL) --mode=compile $(CXX) $(CPPFLAGS) $(INCLUDES) $(WARNINGS) -c
+-CPPLIBRARY_LINK_COMMAND =  $(LIBTOOL) --mode=link $(CXX) -version-info $(VERSION) -rpath $(INSTALLDIR)/lib
++CPPLIBRARY_LINK_COMMAND =  $(LIBTOOL) --mode=link $(CXX) -version-info $(VERSION) -rpath $(LIBDIR)
+ CPPBUILD_COMMAND_LOCAL  =  $(LIBTOOL) --mode=link $(CXX) $(CPPFLAGS) $(INCLUDES)
+-CPPBUILD_COMMAND_DYNAMIC=  $(LIBTOOL) --mode=link $(CXX) $(CPPFLAGS) -dynamic -I $(INSTALLDIR)/include -L$(INSTALLDIR)/lib
+-CPPBUILD_COMMAND_STATIC =  $(LIBTOOL) --mode=link $(CXX) $(CPPFLAGS) -static -I $(INSTALLDIR)/include -L$(INSTALLDIR)/lib
++CPPBUILD_COMMAND_DYNAMIC=  $(LIBTOOL) --mode=link $(CXX) $(CPPFLAGS) -dynamic $(INCLUDES)
++CPPBUILD_COMMAND_STATIC =  $(LIBTOOL) --mode=link $(CXX) $(CPPFLAGS) -static $(INCLUDES)
+ INSTALL_COMMAND         =  $(LIBTOOL) --mode=install cp
+ INSTALL_FINISH_COMMAND  =  $(LIBTOOL) --mode=finish
+ 
+@@ -162,9 +166,9 @@ default:
+ 	@echo ' '
+ 	@echo ' The current values are :'
+ 	@echo ' '
+-	@echo '   $(INSTALLDIR) '	
+-	@echo '   $(INSTALL_COMMAND) '	
+-	@echo '   $(INSTALL_FINISH) '	
++	@echo '   $(DESTDIR) '
++	@echo '   $(INSTALL_COMMAND) '
++	@echo '   $(INSTALL_FINISH) '
+ 	@echo ' '
+ 	@echo ' To compile the CQRlib library and example programs type:'
+ 	@echo ' '
+@@ -194,13 +198,13 @@ all:	$(LIB)/.tag $(BIN)/.tag $(SOURCE) $(HEADERS) \
+ 		$(BIN)/CQRlibTest $(BIN)/CPPQRTest
+ 		
+ install:  all $(LIB)/libCQRlib.$(LIB_EXT) $(INC)/cqrlib.h
+-		  @mkdir -p $(INSTALLDIR)/lib
+-		  @mkdir -p $(INSTALLDIR)/include
+-		  $(INSTALL_COMMAND) $(LIB)/libCQRlib.$(LIB_EXT) $(INSTALLDIR)/lib/libCQRlib.$(LIB_EXT)
+-		  $(INSTALL_FINISH_COMMAND) $(INSTALLDIR)/lib/libCQRlib.$(LIB_EXT)
+-		  -cp $(INSTALLDIR)/include/cqrlib.h $(INSTALLDIR)/include/CQRlib_old.h
+-		  cp $(INC)/cqrlib.h $(INSTALLDIR)/include/cqrlib.h
+-		  chmod 644 $(INSTALLDIR)/include/cqrlib.h
++		  @mkdir -p $(DESTDIR)$(INCDIR)
++		  @mkdir -p $(DESTDIR)$(LIBDIR)
++		  $(INSTALL_COMMAND) $(LIB)/libCQRlib.$(LIB_EXT) $(DESTDIR)$(LIBDIR)/libCQRlib.$(LIB_EXT)
++		  $(INSTALL_FINISH_COMMAND) $(DESTDIR)$(LIBDIR)/libCQRlib.$(LIB_EXT)
++		  -cp $(DESTDIR)$(INCDIR)/cqrlib.h $(DESTDIR)$(INCDIR)/CQRlib_old.h
++		  cp $(INC)/cqrlib.h $(DESTDIR)$(INCDIR)/cqrlib.h
++		  chmod 644 $(DESTDIR)$(INCDIR)/cqrlib.h
+ 		  echo "Testing final install dynamic"
+ 		  $(BUILD_COMMAND_DYNAMIC)  $(EXAMPLES)/CQRlibTest.c \
+ 		  $(LIB)/libCQRlib.la -lm -o $(BIN)/CQRlibTest_dynamic
+
+From f3f780c5504b0f689a37062bb8820a638e0abeb6 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sun, 19 Jun 2022 00:04:58 -0700
+Subject: [PATCH 4/7] build: Support LDFLAGS
+
+---
+ Makefile.in | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 22e1ffd..192aef9 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -49,6 +49,7 @@ CC = @CC@
+ CXX = @CXX@
+ CFLAGS  = -g -O2  -Wall -ansi -pedantic
+ CPPFLAGS = $(CFLAGS) -DCQR_NOCCODE=1
++LDFLAGS = @LDFLAGS@
+ 
+ # Build directory
+ top_builddir = @top_builddir@
+@@ -89,12 +90,12 @@ INCLUDES = -I$(INC)
+ endif
+ 
+ COMPILE_COMMAND         =  $(LIBTOOL) --mode=compile $(CC) $(CFLAGS) $(INCLUDES) $(WARNINGS) -c
+-LIBRARY_LINK_COMMAND    =  $(LIBTOOL) --mode=link  $(CC) -version-info $(VERSION) -rpath $(LIBDIR)
++LIBRARY_LINK_COMMAND    =  $(LIBTOOL) --mode=link  $(CC) -version-info $(VERSION) -rpath $(LIBDIR) $(LDFLAGS)
+ BUILD_COMMAND_LOCAL     =  $(LIBTOOL) --mode=link $(CC) $(CFLAGS) $(INCLUDES)
+ BUILD_COMMAND_DYNAMIC   =  $(LIBTOOL) --mode=link $(CC) $(CFLAGS) -dynamic $(INCLUDES)
+ BUILD_COMMAND_STATIC    =  $(LIBTOOL) --mode=link $(CC) $(CFLAGS) -static $(INCLUDES)
+ CPPCOMPILE_COMMAND      =  $(LIBTOOL) --mode=compile $(CXX) $(CPPFLAGS) $(INCLUDES) $(WARNINGS) -c
+-CPPLIBRARY_LINK_COMMAND =  $(LIBTOOL) --mode=link $(CXX) -version-info $(VERSION) -rpath $(LIBDIR)
++CPPLIBRARY_LINK_COMMAND =  $(LIBTOOL) --mode=link $(CXX) -version-info $(VERSION) -rpath $(LIBDIR) $(LDFLAGS)
+ CPPBUILD_COMMAND_LOCAL  =  $(LIBTOOL) --mode=link $(CXX) $(CPPFLAGS) $(INCLUDES)
+ CPPBUILD_COMMAND_DYNAMIC=  $(LIBTOOL) --mode=link $(CXX) $(CPPFLAGS) -dynamic $(INCLUDES)
+ CPPBUILD_COMMAND_STATIC =  $(LIBTOOL) --mode=link $(CXX) $(CPPFLAGS) -static $(INCLUDES)
+
+From dd4f0a4fb0cd30a472140cd1c3a3b35b1bb063a4 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sun, 19 Jun 2022 00:36:06 -0700
+Subject: [PATCH 5/7] build: Fix make install
+
+---
+ Makefile.in | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 192aef9..3613e37 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -203,7 +203,6 @@ install:  all $(LIB)/libCQRlib.$(LIB_EXT) $(INC)/cqrlib.h
+ 		  @mkdir -p $(DESTDIR)$(LIBDIR)
+ 		  $(INSTALL_COMMAND) $(LIB)/libCQRlib.$(LIB_EXT) $(DESTDIR)$(LIBDIR)/libCQRlib.$(LIB_EXT)
+ 		  $(INSTALL_FINISH_COMMAND) $(DESTDIR)$(LIBDIR)/libCQRlib.$(LIB_EXT)
+-		  -cp $(DESTDIR)$(INCDIR)/cqrlib.h $(DESTDIR)$(INCDIR)/CQRlib_old.h
+ 		  cp $(INC)/cqrlib.h $(DESTDIR)$(INCDIR)/cqrlib.h
+ 		  chmod 644 $(DESTDIR)$(INCDIR)/cqrlib.h
+ 		  echo "Testing final install dynamic"
+
+From 59b95069aab8885919c8b91c825c14384c3d8087 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sun, 19 Jun 2022 20:09:46 -0700
+Subject: [PATCH 6/7] build: Fix compile flags
+
+This sets the compile flags using the configure process and changes
+CPPFLAGS to CXXFLAGS as is standard. CPPFLAGS is also supported now
+which are for setting defines for both C and CXX builds.
+---
+ Makefile.in | 27 ++++++++++++++++-----------
+ 1 file changed, 16 insertions(+), 11 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 3613e37..e4c6942 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -47,8 +47,10 @@ RELEASE = @PACKAGE_VERSION@
+ #
+ CC = @CC@
+ CXX = @CXX@
+-CFLAGS  = -g -O2  -Wall -ansi -pedantic
+-CPPFLAGS = $(CFLAGS) -DCQR_NOCCODE=1
++CFLAGS  = @CFLAGS@
++CXXFLAGS = @CXXFLAGS@
++CPPFLAGS = @CPPFLAGS@
++WARNINGS = -Wall -ansi -pedantic
+ LDFLAGS = @LDFLAGS@
+ 
+ # Build directory
+@@ -89,16 +91,19 @@ else
+ INCLUDES = -I$(INC)
+ endif
+ 
+-COMPILE_COMMAND         =  $(LIBTOOL) --mode=compile $(CC) $(CFLAGS) $(INCLUDES) $(WARNINGS) -c
+-LIBRARY_LINK_COMMAND    =  $(LIBTOOL) --mode=link  $(CC) -version-info $(VERSION) -rpath $(LIBDIR) $(LDFLAGS)
+-BUILD_COMMAND_LOCAL     =  $(LIBTOOL) --mode=link $(CC) $(CFLAGS) $(INCLUDES)
+-BUILD_COMMAND_DYNAMIC   =  $(LIBTOOL) --mode=link $(CC) $(CFLAGS) -dynamic $(INCLUDES)
+-BUILD_COMMAND_STATIC    =  $(LIBTOOL) --mode=link $(CC) $(CFLAGS) -static $(INCLUDES)
+-CPPCOMPILE_COMMAND      =  $(LIBTOOL) --mode=compile $(CXX) $(CPPFLAGS) $(INCLUDES) $(WARNINGS) -c
++COMPILE_C = $(CC) -std=c90 $(WARNINGS) $(CPPFLAGS) $(CFLAGS)
++COMPILE_CXX = $(CXX) -std=c++98 $(WARNINGS) $(CPPFLAGS) -DCQR_NOCCODE=1 $(CXXFLAGS)
++
++COMPILE_COMMAND         =  $(LIBTOOL) --mode=compile $(COMPILE_C) $(INCLUDES) -c
++LIBRARY_LINK_COMMAND    =  $(LIBTOOL) --mode=link $(CC) -version-info $(VERSION) -rpath $(LIBDIR) $(LDFLAGS)
++BUILD_COMMAND_LOCAL     =  $(LIBTOOL) --mode=link $(COMPILE_C) $(INCLUDES)
++BUILD_COMMAND_DYNAMIC   =  $(LIBTOOL) --mode=link $(COMPILE_C) -dynamic $(INCLUDES)
++BUILD_COMMAND_STATIC    =  $(LIBTOOL) --mode=link $(COMPILE_C) -static $(INCLUDES)
++CPPCOMPILE_COMMAND      =  $(LIBTOOL) --mode=compile $(COMPILE_CXX) $(INCLUDES) -c
+ CPPLIBRARY_LINK_COMMAND =  $(LIBTOOL) --mode=link $(CXX) -version-info $(VERSION) -rpath $(LIBDIR) $(LDFLAGS)
+-CPPBUILD_COMMAND_LOCAL  =  $(LIBTOOL) --mode=link $(CXX) $(CPPFLAGS) $(INCLUDES)
+-CPPBUILD_COMMAND_DYNAMIC=  $(LIBTOOL) --mode=link $(CXX) $(CPPFLAGS) -dynamic $(INCLUDES)
+-CPPBUILD_COMMAND_STATIC =  $(LIBTOOL) --mode=link $(CXX) $(CPPFLAGS) -static $(INCLUDES)
++CPPBUILD_COMMAND_LOCAL  =  $(LIBTOOL) --mode=link $(COMPILE_CXX) $(INCLUDES)
++CPPBUILD_COMMAND_DYNAMIC=  $(LIBTOOL) --mode=link $(COMPILE_CXX) -dynamic $(INCLUDES)
++CPPBUILD_COMMAND_STATIC =  $(LIBTOOL) --mode=link $(COMPILE_CXX) -static $(INCLUDES)
+ INSTALL_COMMAND         =  $(LIBTOOL) --mode=install cp
+ INSTALL_FINISH_COMMAND  =  $(LIBTOOL) --mode=finish
+ 
+
+From 87cd184f4df7188380251346dcda502fa21f8cdd Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sun, 19 Jun 2022 20:28:48 -0700
+Subject: [PATCH 7/7] build: Change -dynamic to -shared
+
+With libtool shared libraries can be created with -shared.
+---
+ Makefile.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index e4c6942..9b407c1 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -97,12 +97,12 @@ COMPILE_CXX = $(CXX) -std=c++98 $(WARNINGS) $(CPPFLAGS) -DCQR_NOCCODE=1 $(CXXFLA
+ COMPILE_COMMAND         =  $(LIBTOOL) --mode=compile $(COMPILE_C) $(INCLUDES) -c
+ LIBRARY_LINK_COMMAND    =  $(LIBTOOL) --mode=link $(CC) -version-info $(VERSION) -rpath $(LIBDIR) $(LDFLAGS)
+ BUILD_COMMAND_LOCAL     =  $(LIBTOOL) --mode=link $(COMPILE_C) $(INCLUDES)
+-BUILD_COMMAND_DYNAMIC   =  $(LIBTOOL) --mode=link $(COMPILE_C) -dynamic $(INCLUDES)
++BUILD_COMMAND_DYNAMIC   =  $(LIBTOOL) --mode=link $(COMPILE_C) -shared $(INCLUDES)
+ BUILD_COMMAND_STATIC    =  $(LIBTOOL) --mode=link $(COMPILE_C) -static $(INCLUDES)
+ CPPCOMPILE_COMMAND      =  $(LIBTOOL) --mode=compile $(COMPILE_CXX) $(INCLUDES) -c
+ CPPLIBRARY_LINK_COMMAND =  $(LIBTOOL) --mode=link $(CXX) -version-info $(VERSION) -rpath $(LIBDIR) $(LDFLAGS)
+ CPPBUILD_COMMAND_LOCAL  =  $(LIBTOOL) --mode=link $(COMPILE_CXX) $(INCLUDES)
+-CPPBUILD_COMMAND_DYNAMIC=  $(LIBTOOL) --mode=link $(COMPILE_CXX) -dynamic $(INCLUDES)
++CPPBUILD_COMMAND_DYNAMIC=  $(LIBTOOL) --mode=link $(COMPILE_CXX) -shared $(INCLUDES)
+ CPPBUILD_COMMAND_STATIC =  $(LIBTOOL) --mode=link $(COMPILE_CXX) -static $(INCLUDES)
+ INSTALL_COMMAND         =  $(LIBTOOL) --mode=install cp
+ INSTALL_FINISH_COMMAND  =  $(LIBTOOL) --mode=finish

@@ -1,0 +1,36 @@
+sent upstream on 2023-12-05
+
+From ea63ce2240a9be492086a56921c644533c740924 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 5 Dec 2023 08:39:39 +0000
+Subject: [PATCH 1/2] Fix configure check for time.h
+
+Otherwise, we get an implicit function declaration warning/error (with Clang 16,
+GCC 14) for localtime.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.in
++++ b/configure.in
+@@ -21,7 +21,7 @@ fi
+ AC_LBL_C_INIT(V_CCOPT, V_INCLS)
+ AC_PROG_INSTALL
+ 
+-AC_CHECK_HEADERS(fcntl.h memory.h)
++AC_CHECK_HEADERS(fcntl.h memory.h time.h)
+ 
+ dnl
+ dnl Install rc.d script on FreeBSD
+--- a/report.c
++++ b/report.c
+@@ -59,7 +59,7 @@ struct rtentry;
+ #include <stdlib.h>
+ #include <string.h>
+ #include <syslog.h>
+-#ifdef TIME_WITH_SYS_TIME
++#ifdef HAVE_TIME_H
+ #include <time.h>
+ #endif
+ #include <unistd.h>
+-- 
+2.43.0
+

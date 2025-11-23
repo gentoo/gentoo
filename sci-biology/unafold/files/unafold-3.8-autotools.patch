@@ -1,0 +1,41 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -2,7 +2,7 @@
+ AC_INIT(UNAFold, 3.8, markhn@rpi.edu)
+ AC_CONFIG_SRCDIR(src/hybrid.c)
+ AC_CONFIG_AUX_DIR(config)
+-AM_CONFIG_HEADER(config.h:config.in)
++AC_CONFIG_HEADERS(config.h:config.in)
+ AM_INIT_AUTOMAKE
+ AC_CANONICAL_BUILD
+ AC_PROG_CC
+@@ -12,7 +12,6 @@
+ if test -z "$PERL"; then
+    AC_MSG_ERROR(Perl not found)
+ fi
+-AC_PROG_PERL_VERSION(5.6.1, , AC_MSG_ERROR(Perl 5.6.1 or better is required))
+ AC_CHECK_PROG(GNUPLOT, gnuplot, [system('gnuplot', \"\$prefix.gp\") == 0 or die $!;])
+ 
+ AC_MSG_CHECKING(whether compiler needs -mieee)
+@@ -28,6 +27,7 @@
+ 
+ 
+ # Checks for libraries.
++AX_CHECK_GL
+ AX_CHECK_GLUT
+ AM_CONDITIONAL(GLUT, test -n "$GLUT_LIBS")
+ AX_CHECK_GD
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -33,9 +33,9 @@
+ endif GLUT
+ 
+ hybrid_plot_ng_SOURCES = hybrid-plot-ng.c getopt.h util.h xmalloc.h
+-hybrid_plot_ng_CFLAGS = @GD_CFLAGS@
++hybrid_plot_ng_CFLAGS = @GD_CFLAGS@ $(GL_CFLAGS)
+ hybrid_plot_ng_LDFLAGS = @GD_LDFLAGS@
+-hybrid_plot_ng_LDADD = getopt.$(OBJEXT) getopt1.$(OBJEXT) xmalloc.$(OBJEXT) @GD_LIBS@ -lm
++hybrid_plot_ng_LDADD = getopt.$(OBJEXT) getopt1.$(OBJEXT) xmalloc.$(OBJEXT) @GD_LIBS@ $(GL_LIBS) -lm
+ 
+ sbs_SOURCES = getopt.c getopt1.c energy.c xmalloc.c sbs.c energy.h getopt.h xmalloc.h
+ sbs_LDADD = -lm

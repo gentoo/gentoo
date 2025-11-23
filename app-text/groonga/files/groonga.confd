@@ -1,0 +1,8 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+#GROONGA_USER=groonga
+#GROONGA_GROUP=groonga
+#GROONGA_PID=/run/groonga/groonga.pid
+#CONFIG_FILE=/etc/groonga/groonga.conf
+DATABASE=/var/lib/groonga/db

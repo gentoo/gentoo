@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>ada@gentoo.org</email>
+	</maintainer>
+	<longdescription lang="en">
+		GPRCONFIG KB is a knowledge base for configuring GPR toolchains, used
+		by GPRbuild and GPR2 projects.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">adacore/gprconfig_kb</remote-id>
+	</upstream>
+</pkgmetadata>

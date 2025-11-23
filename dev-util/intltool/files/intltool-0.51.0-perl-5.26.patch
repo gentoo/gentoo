@@ -1,0 +1,12 @@
+diff -ruN intltool-0.51.0.orig/intltool-update.in intltool-0.51.0/intltool-update.in
+--- intltool-0.51.0.orig/intltool-update.in	2017-06-28 00:47:20.889269294 +0200
++++ intltool-0.51.0/intltool-update.in	2017-06-28 00:48:14.592271529 +0200
+@@ -1068,7 +1068,7 @@
+ 	my $untouched = $1;
+ 	my $sub = "";
+         # Ignore recursive definitions of variables
+-        $sub = $varhash{$2} if defined $varhash{$2} and $varhash{$2} !~ /\${?$2}?/;
++        $sub = $varhash{$2} if defined $varhash{$2} and $varhash{$2} !~ /\$\{?$2}?/;
+ 
+ 	return SubstituteVariable ("$untouched$sub$rest");
+     }

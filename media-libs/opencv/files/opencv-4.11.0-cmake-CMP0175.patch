@@ -1,0 +1,22 @@
+From 052f251ab5a80f32ac753824c038094bb360f411 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Sun, 12 Jan 2025 21:49:10 +0100
+Subject: [PATCH] CMP0175
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/modules/python/python_loader.cmake b/modules/python/python_loader.cmake
+index 41dce57..dc16083 100644
+--- a/modules/python/python_loader.cmake
++++ b/modules/python/python_loader.cmake
+@@ -139,6 +139,7 @@ if(${PYTHON}_VERSION_STRING VERSION_GREATER "3.6" AND PYTHON_DEFAULT_VERSION VER
+   # halts on hard error.
+   add_custom_command(
+     TARGET copy_opencv_typing_stubs
++    POST_BUILD
+     COMMAND ${PYTHON_DEFAULT_EXECUTABLE} ${PYTHON_SOURCE_DIR}/src2/copy_typings_stubs_on_success.py
+             --stubs_dir ${OPENCV_PYTHON_BINDINGS_DIR}/cv2
+             --output_dir ${__loader_path}/cv2
+-- 
+2.48.0
+

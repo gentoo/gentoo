@@ -1,0 +1,53 @@
+From 59541041bc3b39e8539fd12a8e584a63040ad7a5 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Tue, 4 Feb 2020 23:17:49 +1300
+Subject: Disable using bundled brotli
+
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -1,6 +1,5 @@
+ use 5.008000;
+ use ExtUtils::MakeMaker;
+-use Alien::cmake3;
+ use File::Spec::Functions qw/catfile/;
+ use Config;
+ 
+@@ -19,6 +18,12 @@ if ($Config{myuname} =~ /strawberry/i || $Config{osname} =~ /MSWin/i ) {
+     }
+ }
+ 
++my $bundled = $ENV{IO_COMPRESS_BROTLI_BUNDLED} || 0;
++
++# Avoid unnecessary dependency
++use if $bundled, 'Alien::cmake3';
++
++
+ WriteMakefile(
+ 	NAME             => 'IO::Compress::Brotli',
+ 	VERSION_FROM     => 'lib/IO/Compress/Brotli.pm',
+@@ -33,6 +38,7 @@ WriteMakefile(
+ 		'Getopt::Long'  => '0',
+ 		'Time::HiRes'   => '0',
+ 	},
++  ( $bundled )  ? (
+ 	CONFIGURE_REQUIRES   => {
+ 		'Alien::cmake3' => '0',
+ 	},
+@@ -43,6 +49,9 @@ WriteMakefile(
+ 	MYEXTLIB         => $myextlib,
+ 	EXTRALIBS        => ' brotli/libbrotlienc$(LIB_EXT) brotli/libbrotlidec$(LIB_EXT) brotli/libbrotlicommon$(LIB_EXT) ',
+ 	clean            => { FILES => "brotli/Makefile $myextlib brotli/CMakeCache.txt brotli/CMakeFiles/* brotli/CTestTestfile.cmake brotli/DartConfiguration.tcl brotli/brotli* brotli/cmake_install.cmake brotli/libbrotlicommon.pc brotli/libbrotlidec.pc brotli/libbrotlienc.pc" },
++  ) : (
++       LIBS => ['-lbrotlienc -lbrotlidec'],
++  ),
+ 	META_ADD         => {
+ 		dynamic_config => 0,
+ 		resources      => {
+@@ -52,6 +61,7 @@ WriteMakefile(
+ );
+ 
+ sub MY::postamble {
++    return '' unless $bundled;
+     my @dirs = Alien::cmake3->bin_dir;
+     my $cmake = defined $dirs[0] ? catfile($dirs[0] , Alien::cmake3->exe) : Alien::cmake3->exe;
+ '

@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/828943
+--- a/Makefile
++++ b/Makefile
+@@ -1,8 +1,8 @@
+ PREFIX = /usr
+ BINDIR = ${PREFIX}/bin
+ 
+-CFLAGS += `imlib2-config --cflags` `${PKG_CONFIG} xft --cflags` -pedantic -Wall
+-LDLIBS = -lX11 -lm `imlib2-config --libs` `${PKG_CONFIG} xft --libs`
++CFLAGS += `${PKG_CONFIG} --cflags imlib2` `${PKG_CONFIG} xft --cflags` -pedantic -Wall
++LDLIBS = -lX11 -lm `${PKG_CONFIG} --libs imlib2` `${PKG_CONFIG} xft --libs`
+ 
+ # Comment these out to disable Xinerama support
+ CFLAGS += -DXINERAMA

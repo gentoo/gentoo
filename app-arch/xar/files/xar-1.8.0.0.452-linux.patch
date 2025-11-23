@@ -1,0 +1,104 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -183,7 +183,7 @@
+ 
+ AC_TRY_COMPILE([#include <sys/types.h> 
+ #include <sys/acl.h>], [acl_t a], [AC_DEFINE([HAVE_SYS_ACL_H],[1], [define if you have sys/acl.h and it has a working acl_t type])])
+-AC_CHECK_HEADERS(ext2fs/ext2_fs.h sys/statfs.h sys/xattr.h sys/param.h sys/extattr.h libutil.h)
++AC_CHECK_HEADERS(ext2fs/ext2_fs.h sys/statfs.h sys/vfs.h sys/xattr.h sys/param.h sys/extattr.h libutil.h)
+ AC_CHECK_FUNCS(lgetxattr)
+ AC_CHECK_FUNCS(lsetxattr)
+ AC_CHECK_FUNCS(getxattr)
+@@ -199,7 +199,22 @@
+ 
+ AC_CHECK_MEMBERS([struct statfs.f_fstypename],,,[#include <sys/types.h>
+ #include <sys/param.h>
+-#include <sys/mount.h>])
++#include <sys/mount.h>
++#ifdef HAVE_SYS_VFS_H
++#include <sys/vfs.h>
++#endif])
++AC_CHECK_MEMBERS([struct statfs.f_iosize],,,[#include <sys/types.h>
++#include <sys/param.h>
++#include <sys/mount.h>
++#ifdef HAVE_SYS_VFS_H
++#include <sys/vfs.h>
++#endif])
++AC_CHECK_MEMBERS([struct statfs.f_bsize],,,[#include <sys/types.h>
++#include <sys/param.h>
++#include <sys/mount.h>
++#ifdef HAVE_SYS_VFS_H
++#include <sys/vfs.h>
++#endif])
+ AC_CHECK_MEMBERS([struct statvfs.f_fstypename],,,[#include <sys/statvfs.h>])
+ AC_CHECK_MEMBERS([struct stat.st_flags])
+ 
+--- a/lib/util.c
++++ b/lib/util.c
+@@ -35,6 +35,8 @@
+  * Christopher Ryan <ryanc@apple.com>
+ */
+ 
++#include "config.h"
++
+ #include <stdio.h>
+ #include <stdint.h>
+ #include <sys/types.h>
+@@ -40,6 +40,9 @@
+ #include <sys/types.h>
+ #include <sys/mount.h>
+ #include <sys/param.h>
++#ifdef HAVE_SYS_VFS_H
++# include <sys/vfs.h>
++#endif
+ #include <arpa/inet.h>
+ #include <string.h>
+ #include <unistd.h>
+@@ -467,6 +467,14 @@
+ 	return tmp;
+ }
+ 
++#ifndef HAVE_STRUCT_STATFS_F_IOSIZE
++# ifdef HAVE_STRUCT_STATFS_F_BSIZE
++#  define f_iosize f_bsize
++# else
++#  error need a field to get optimal transfer block size
++# endif
++#endif
++
+ size_t xar_optimal_io_size_at_path(const char *path)
+ {
+ 	// Start at 1MiB
+@@ -491,6 +491,7 @@
+ 			fs_iosize = optimal_rsize;
+ 		}
+ 		
++#ifdef MNT_LOCAL
+ 		// If we're a remote filesystem, never let us go below the optimal size above of 1MiB
+ 		// NFS is horrible and lies that the optimal size is 512 bytes.
+ 		// Whereas SMB in my testing returns 7MiBs (far more practicle)
+@@ -503,6 +504,7 @@
+ 			}
+ 		}
+ 		else
++#endif
+ 		{
+ 			optimal_rsize = fs_iosize;
+ 		}
+--- a/include/config.h.in
++++ b/include/config.h.in
+@@ -1,4 +1,5 @@
+ #undef HAVE_SYS_STATFS_H
++#undef HAVE_SYS_VFS_H
+ #undef HAVE_SYS_XATTR_H
+ #undef HAVE_SYS_EXTATTR_H
+ #undef HAVE_SYS_PARAM_H
+@@ -15,6 +15,8 @@
+ #undef HAVE_STRUCT_STAT_ST_FLAGS
+ #undef HAVE_STRUCT_STATVFS_F_FSTYPENAME
+ #undef HAVE_STRUCT_STATFS_F_FSTYPENAME
++#undef HAVE_STRUCT_STATFS_F_IOSIZE
++#undef HAVE_STRUCT_STATFS_F_BSIZE
+ #undef HAVE_SYS_ACL_H
+ #undef HAVE_LIBUTIL_H
+ #undef HAVE_LIBPTHREAD

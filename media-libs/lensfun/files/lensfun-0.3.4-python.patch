@@ -1,0 +1,66 @@
+https://bugs.gentoo.org/901997
+https://github.com/lensfun/lensfun/commit/6e0e92b03f90a264d764f696ba02344ab96b5576
+https://github.com/lensfun/lensfun/commit/c54d9bfda1397d3b9deaac1e27d94b0231fdd26a
+https://github.com/lensfun/lensfun/commit/011de2e85813ff496a85404b30891352555de077
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,5 +1,5 @@
+-# require at least cmake 2.8.12
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.12 FATAL_ERROR )
++# require at least cmake 3.12
++CMAKE_MINIMUM_REQUIRED(VERSION 3.12 FATAL_ERROR)
+ 
+ # path for helper modules
+ set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${CMAKE_SOURCE_DIR}/cmake/modules")
+--- a/apps/CMakeLists.txt
++++ b/apps/CMakeLists.txt
+@@ -20,27 +20,33 @@ ENDIF(INSTALL_HELPER_SCRIPTS)
+ 
+ 
+ # Inspired by http://bloerg.net/2012/11/10/cmake-and-distutils.html
++IF(INSTALL_PYTHON_MODULE)
++    FIND_PACKAGE (Python3 COMPONENTS Interpreter REQUIRED)
++    # Windows has a dummy python.exe in the PATH which opens the Microsoft Store, so check if Python is real.
++    EXECUTE_PROCESS(COMMAND ${Python3_EXECUTABLE} --version RESULT_VARIABLE PY_RESULT OUTPUT_QUIET)
++    IF (NOT PY_RESULT EQUAL 0)
++      MESSAGE(FATAL_ERROR "Python3 not found, it might be a dummy python.exe")
++    ENDIF()
+ 
+-FIND_PROGRAM(PYTHON "python3")
+-IF(PYTHON)
+     SET(SETUP_PY_IN "${CMAKE_CURRENT_SOURCE_DIR}/setup.py.in")
+     SET(SETUP_PY    "${CMAKE_CURRENT_BINARY_DIR}/setup.py")
+     SET(DEPS_IN     "${CMAKE_CURRENT_SOURCE_DIR}/lensfun/__init__.py.in")
+     SET(DEPS        "${CMAKE_CURRENT_BINARY_DIR}/lensfun/__init__.py")
+     SET(OUTPUT      "${CMAKE_CURRENT_BINARY_DIR}/build/timestamp")
+ 
++    FILE(TO_NATIVE_PATH "${CMAKE_CURRENT_BINARY_DIR}" PY_PACKAGE_DIR)
+     CONFIGURE_FILE(${SETUP_PY_IN} ${SETUP_PY})
+     CONFIGURE_FILE(${DEPS_IN} ${DEPS})
+ 
+     ADD_CUSTOM_COMMAND(OUTPUT ${OUTPUT}
+-                       COMMAND ${PYTHON} ${SETUP_PY} build
++                       COMMAND ${Python3_EXECUTABLE} ${SETUP_PY} build
+                        COMMAND ${CMAKE_COMMAND} -E touch ${OUTPUT}
+-                       DEPENDS ${DEPS_IN})
++                       DEPENDS ${SETUP_PY_IN} ${DEPS_IN})
+ 
+     ADD_CUSTOM_TARGET(python-package ALL DEPENDS ${OUTPUT})
+ 
+     IF(NOT DEFINED SETUP_PY_INSTALL_PREFIX)
+       SET(SETUP_PY_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
+     ENDIF()
+-    INSTALL(CODE "execute_process(COMMAND ${PYTHON} ${SETUP_PY} install --prefix=\$ENV{DESTDIR}${SETUP_PY_INSTALL_PREFIX})")
+-ENDIF(PYTHON)
++    INSTALL(CODE "execute_process(COMMAND ${Python3_EXECUTABLE} ${SETUP_PY} install --prefix=\$ENV{DESTDIR}${SETUP_PY_INSTALL_PREFIX})")
++ENDIF()
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -29,5 +29,5 @@ ADD_EXECUTABLE(test_modifier_coord_geometry test_modifier_coord_geometry.cpp)
+ TARGET_LINK_LIBRARIES(test_modifier_coord_geometry lensfun ${COMMON_LIBS})
+ ADD_TEST(Modifier_coord_geometry test_modifier_coord_geometry)
+ 
+-FIND_PACKAGE(PythonInterp REQUIRED)
+-ADD_TEST(NAME Database_integrity COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tools/check_database/check_database.py ${CMAKE_SOURCE_DIR}/data/db)
++FIND_PACKAGE(Python3 COMPONENTS Interpreter REQUIRED)
++ADD_TEST(NAME Database_integrity COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tools/check_database/check_database.py ${CMAKE_SOURCE_DIR}/data/db)

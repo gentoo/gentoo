@@ -1,0 +1,39 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index eacec4f..c0f063e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -118,7 +118,8 @@ if(LSQPACK_TESTS)
+     add_subdirectory(test)
+ endif()
+ 
+-if(LSQPACK_BIN)
++# The executables are used within the test suite as well.
++if(LSQPACK_BIN OR LSQPACK_TESTS)
+     add_subdirectory(bin)
+ endif()
+ 
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+index f7002d3..e658e13 100644
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -1,3 +1,5 @@
++add_compile_definitions("TEST_DATA=\"${CMAKE_CURRENT_SOURCE_DIR}/testdata\"")
++
+ function(lsqpack_add_test TARGET)
+     add_executable(test_${TARGET} "")
+     target_sources(test_${TARGET} PRIVATE test_${TARGET}.c)
+diff --git a/test/test_dyn_table_cap_mismatch.c b/test/test_dyn_table_cap_mismatch.c
+index 71975d8..73a8cee 100644
+--- a/test/test_dyn_table_cap_mismatch.c
++++ b/test/test_dyn_table_cap_mismatch.c
+@@ -36,8 +36,8 @@ int main(int argc, const char * argv[]) {
+     size_t size = 0;
+     if (!encoder_stream)
+     {
+-        encoder_stream = fopen("../../test/testdata/encoder_stream", "r");
+-        response = fopen("../../test/testdata/response", "r");
++        encoder_stream = fopen(TEST_DATA "/encoder_stream", "r");
++        response = fopen(TEST_DATA "/response", "r");
+     }
+     while ((size = fread(buffer, 1, sizeof(buffer), encoder_stream)) > 0) {
+         lsqpack_dec_enc_in(&qpackDecoder, buffer, size);

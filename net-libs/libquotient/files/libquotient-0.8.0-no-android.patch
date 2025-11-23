@@ -1,0 +1,29 @@
+From ad928b9f34f5e6f42c8555a0a502c35de6cb86b5 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 3 Jan 2021 15:18:01 +0100
+Subject: [PATCH 1/2] Install EXPORT_ANDROID_MK only if(ANDROID)
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0a32ee4e..7e03085f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -387,7 +387,10 @@ install(FILES
+     "${CMAKE_CURRENT_BINARY_DIR}/${QUOTIENT_LIB_NAME}/${QUOTIENT_LIB_NAME}ConfigVersion.cmake"
+     DESTINATION ${CMakeFilesLocation}
+ )
+-install(EXPORT_ANDROID_MK ${QUOTIENT_LIB_NAME}Targets DESTINATION ${CMAKE_INSTALL_DATADIR}/ndk-modules)
++
++if (ANDROID)
++    install(EXPORT_ANDROID_MK ${QUOTIENT_LIB_NAME}Targets DESTINATION ${CMAKE_INSTALL_DATADIR}/ndk-modules)
++endif ()
+ 
+ if (WIN32)
+     install(FILES mime/packages/freedesktop.org.xml DESTINATION mime/packages)
+-- 
+2.41.0
+

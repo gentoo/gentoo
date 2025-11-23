@@ -1,0 +1,60 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -14,18 +14,13 @@
+ CFLAGS="-g -W -Wall -O2"
+ CXXFLAGS="-g -W -Wall -O2"
+ 
+-AC_CONFIG_SUBDIRS(libltdl)
+-
+ dnl Checks for programs.
+ AC_PROG_CC
+ AC_PROG_CXX
+ AC_PROG_INSTALL
+-AC_LIBTOOL_DLOPEN
+-AC_LIBLTDL_CONVENIENCE
+-AC_PROG_LIBTOOL
+ 
+-AC_SUBST(INCLTDL)
+-AC_SUBST(LIBLTDL)
++LT_PREREQ([2.2.6])
++LT_INIT([dlopen])
+ 
+ dnl *******************************************
+ dnl PATHS AND DIRS ****************************
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,6 +1,6 @@
+ AUTOMAKE_OPTIONS = gnu
+ 
+-SUBDIRS = libltdl addon base data src test
++SUBDIRS = addon base data src test
+ 
+ EXTRA_DIST = bootstrap pinball.spec clean pinball.desktop
+ 
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -7,9 +7,9 @@
+ 
+ pinlib_LIBRARIES = libemilia_pin.a
+ 
+-INCLUDES = -I../base -I../addon @INCLTDL@
++INCLUDES = -I../base -I../addon
+ 
+-pinball_LDADD = ../src/libemilia_pin.a ../addon/libemilia_addon.a ../base/libemilia_base.a @LIBLTDL@
++pinball_LDADD = ../src/libemilia_pin.a ../addon/libemilia_addon.a ../base/libemilia_base.a -lltdl
+ pinball_LDFLAGS = -export-dynamic
+ 
+ pinball_SOURCES = Pinball.cpp
+--- a/test/Makefile.am
++++ b/test/Makefile.am
+@@ -6,8 +6,8 @@
+ noinst_PROGRAMS = scale simple light texture load explode collision signal billboard font thread menu joy sound trans math misc varray unittest
+ dnl noinst_PROGRAMS = unittest
+ 
+-INCLUDES = -I../base -I../addon -I../src @INCLTDL@
+-LDADD = ../src/libemilia_pin.a ../addon/libemilia_addon.a ../base/libemilia_base.a @LIBLTDL@
++INCLUDES = -I../base -I../addon -I../src
++LDADD = ../src/libemilia_pin.a ../addon/libemilia_addon.a ../base/libemilia_base.a -lltdl
+ 
+ testlib_LTLIBRARIES = libModuleTest.la
+ 

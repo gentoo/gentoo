@@ -1,0 +1,64 @@
+From ad49af2601018298478af6ea6f8ae0ce323d7b28 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Wed, 4 May 2022 10:23:51 -0700
+Subject: [PATCH] Fix build without .la files
+
+Many distros do no ship .la files which breaks the build
+and additionally when using slibtool instead of GNU libtool
+the .la files are not installed by default.
+
+This fixes the build to use the linker flags -lcolm and -lfsm
+instead.
+---
+ configure.ac    | 16 ++++++++++++----
+ src/Makefile.am |  1 -
+ 2 files changed, 12 insertions(+), 5 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 6b3a5b4b..9cee5e5f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -44,16 +44,24 @@ AC_ARG_WITH(colm,
+ 	[
+ 		COLM="$withval/bin/colm"
+ 		COLM_WRAP="$withval/bin/colm-wrap"
+-		CPPFLAGS="-I$withval/include ${CPPFLAGS}"
+ 		CPPFLAGS="-I$withval/include/aapl ${CPPFLAGS}"
+-		LDFLAGS="-L$withval/lib ${LDFLAGS}"
+-		LIBCOLM_LA="$withval/lib/libcolm.la"
+-		LIBFSM_LA="$withval/lib/libfsm.la"
+ 		COLM_SHARE="$withval/share"
+ 	],
+ 	[]
+ )
+ 
++AC_CHECK_LIB(
++	[colm],
++	[colm_run_program],
++	[LIBCOLM_LA=-lcolm],
++	[AC_ERROR([libcolm is required to build ragel])]
++)
++AC_CHECK_LIB(
++	[fsm],
++	[hostLangAsm],
++	[LIBFSM_LA=-lfsm],
++	[AC_ERROR([libfsm is required to build ragel])]
++)
+ AC_CHECK_FILES(
+ 	[$COLM],
+ 	[],
+diff --git a/src/Makefile.am b/src/Makefile.am
+index c4fe531c..377f7aa4 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -39,7 +39,6 @@ nodist_ragel_SOURCES = \
+ 	parse.c rlreduce.cc
+ 
+ ragel_LDADD = $(LIBFSM_LA) $(LIBCOLM_LA) libragel.la
+-ragel_DEPENDENCIES = $(LIBFSM_LA) $(LIBCOLM_LA) libragel.la
+ 
+ BUILT_SOURCES = \
+ 	version.h \
+-- 
+2.35.1
+

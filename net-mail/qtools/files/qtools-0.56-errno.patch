@@ -1,0 +1,12 @@
+--- qtools-0.56.old/error.h	2000-03-18 14:01:20.000000000 -0800
++++ qtools-0.56/error.h	2003-03-23 21:50:05.000000000 -0800
+@@ -1,7 +1,8 @@
+ #ifndef ERROR_H
+ #define ERROR_H
+ 
+-extern int errno;
++/* extern int errno; */
++#include <errno.h>
+ 
+ extern int error_intr;
+ extern int error_nomem;

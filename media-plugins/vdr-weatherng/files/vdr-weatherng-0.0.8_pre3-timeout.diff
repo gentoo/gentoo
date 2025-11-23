@@ -1,0 +1,25 @@
+diff -Naur weatherng-0.0.8-pre3.orig/examples/weatherng.sh weatherng-0.0.8-pre3/examples/weatherng.sh
+--- weatherng-0.0.8-pre3.orig/examples/weatherng.sh	2006-10-29 16:12:51.885610489 +0100
++++ weatherng-0.0.8-pre3/examples/weatherng.sh	2006-10-29 16:13:22.559358488 +0100
+@@ -57,9 +57,11 @@
+ 	;;
+ esac
+ 
+-for i in $(seq 0 10) ; do
+-    eval ${URLS[$i]:+ wget -t 4 -T 20 "${URLS[$i]}" -O "${WEATHERNG_DATA_DIR}/pic${i}"}
+-done
++if ping -c2 83.97.42.2 > /dev/null ; then
++
++	for i in $(seq 0 10) ; do
++    	eval ${URLS[$i]:+ wget -t 4 -T 20 "${URLS[$i]}" -O "${WEATHERNG_DATA_DIR}/pic${i}"}
++	done
+ 
+ # Dont change or uncomment this and the following 5 lines. ;)
+ # Uncomment download only  if you have a permission from The Weather Channel (see README).
+@@ -72,4 +74,6 @@
+ wget -t 4 -T 20 "http://xoap.weather.com/weather/local/${WEATHERNG_STATIONID2}?cc=*&unit=m&dayf=10&prod=xoap&par=1004124588&key=079f24145f208494" -O "${WEATHERNG_DATA_DIR}/data2.xml"
+ wget -t 4 -T 20 "http://xoap.weather.com/weather/local/${WEATHERNG_STATIONID3}?cc=*&unit=m&dayf=10&prod=xoap&par=1004124588&key=079f24145f208494" -O "${WEATHERNG_DATA_DIR}/data3.xml"
+ 
++fi
++
+ echo $MESG

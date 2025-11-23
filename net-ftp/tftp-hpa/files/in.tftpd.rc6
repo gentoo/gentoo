@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting tftpd"
+	/usr/sbin/in.tftpd -l ${INTFTPD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping tftpd"
+	start-stop-daemon --stop --exec /usr/sbin/in.tftpd
+	eend $?
+}

@@ -1,0 +1,16 @@
+# Redict-sentinel user.
+REDICT_SENTINEL_USER="redict"
+
+# Redict-sentinel group.
+REDICT_SENTINEL_GROUP="redict"
+
+# Redict-sentinel configuration file.
+REDICT_SENTINEL_CONF="/etc/redict/sentinel.conf"
+
+# Redict-sentinel working directory.
+REDICT_SENTINEL_DIR="/tmp"
+
+# Specify the network service that corresponds to the "bind" setting
+# in your sentinel.conf. For example, if you bind to 127.0.0.1, this should
+# be set to "net.lo" which provides the loopback interface.
+rc_need="net.lo"

@@ -1,0 +1,28 @@
+--- a/ee.c
++++ b/ee.c
+@@ -2105,11 +2105,11 @@
+ 		}
+ 		else if (!strcmp("-?", buff))
+ 		{
+-			fprintf(stderr, usage0, arguments[0]);
+-			fprintf(stderr, usage1);
+-			fprintf(stderr, usage2);
+-			fprintf(stderr, usage3);
+-			fprintf(stderr, usage4);
++			fprintf(stderr, "%s", usage0, arguments[0]);
++			fprintf(stderr, "%s", usage1);
++			fprintf(stderr, "%s", usage2);
++			fprintf(stderr, "%s", usage3);
++			fprintf(stderr, "%s", usage4);
+ 			exit(1);
+ 		}
+ 		else if ((*buff == '+') && (start_at_line == NULL))
+@@ -3243,7 +3243,7 @@
+ 	}
+ 	if (shell_fork)
+ 	{
+-		printf(continue_msg);
++		printf("%s", continue_msg);
+ 		fflush(stdout);
+ 		while ((in = getchar()) != '\n')
+ 			;

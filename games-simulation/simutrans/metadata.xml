@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<upstream>
+		<remote-id type="sourceforge">simutrans</remote-id>
+		<remote-id type="github">aburch/simutrans</remote-id>
+	</upstream>
+	<use>
+		<flag name="minimal">Don't install any PakSets (scenario data)</flag>
+		<flag name="midi">support for background MIDI music via <pkg>media-sound/fluidsynth</pkg></flag>
+	</use>
+	<longdescription lang="en">
+		Simutrans is a freeware and open-source transportation simulator. Your
+		goal is to establish a successful transport company. Transport
+		passengers, mail and goods by rail, road, ship, and even air.
+		Interconnect districts, cities, public buildings, industries and tourist
+		attractions by building a transport network you always dreamed of.
+	</longdescription>
+</pkgmetadata>

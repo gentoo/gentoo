@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<name>Sam James</name>
+		<email>sam@gentoo.org</email>
+	</maintainer>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="gitlab">sequoia-pgp/sequoia</remote-id>
+		<remote-id type="gitlab">sequoia-pgp/sequoia-sop</remote-id>
+		<changelog>https://gitlab.com/sequoia-pgp/sequoia-sop/-/tags</changelog>
+		<bugs-to>https://gitlab.com/sequoia-pgp/sequoia-sop/-/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

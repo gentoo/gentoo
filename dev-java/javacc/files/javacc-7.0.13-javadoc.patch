@@ -1,0 +1,14 @@
+diff --git a/build.xml b/build.xml
+index bddc709..52f3626 100644
+--- a/build.xml
++++ b/build.xml
+@@ -202,9 +202,6 @@ THE POSSIBILITY OF SUCH DAMAGE.
+ 			<fileset dir="${java-src}" />
+ 		</javadoc>
+ 
+-		<zip destfile="${install-name}-javadoc.jar" basedir="${target-folder}/javadoc">
+-		</zip>
+-
+ 	</target>
+ 
+ 

@@ -1,0 +1,19 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -210,15 +210,6 @@ IF(UNIX)
+       )
+     EXEC_PROGRAM(${MY_UNAME} ARGS -r OUTPUT_VARIABLE MY_HOST_SYSTEM_VERSION)
+   ENDIF()
+-  FIND_PROGRAM(MY_DPKG_BUILDFLAGS dpkg-buildflags /bin /usr/bin)
+-  FIND_PROGRAM(MY_RPM rpm /bin /usr/bin)
+-  IF(MY_RPM)
+-    EXECUTE_PROCESS(COMMAND ${MY_RPM} -qf /
+-      OUTPUT_VARIABLE MY_HOST_FILESYSTEM_NAME
+-      OUTPUT_STRIP_TRAILING_WHITESPACE
+-      RESULT_VARIABLE MY_RPM_RESULT
+-      )
+-  ENDIF()
+ ENDIF()
+ 
+ # See comments above, about CMAKE_MINIMUM_REQUIRED VERSION and macOS 11.
+ 

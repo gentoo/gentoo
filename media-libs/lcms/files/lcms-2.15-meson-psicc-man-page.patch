@@ -1,0 +1,15 @@
+https://github.com/mm2/Little-CMS/pull/361
+
+From a88767e99bc1b856946229796faf780ec2d5cbef Mon Sep 17 00:00:00 2001
+From: Biswapriyo Nath <nathbappai@gmail.com>
+Date: Thu, 2 Mar 2023 15:16:45 +0530
+Subject: [PATCH] meson: Install psicc man page
+
+--- a/utils/psicc/meson.build
++++ b/utils/psicc/meson.build
+@@ -12,3 +12,5 @@ psicc_exe = executable(
+ psicc_man = files(
+   'psicc.1',
+ )
++
++install_man(psicc_man)

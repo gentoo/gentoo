@@ -1,0 +1,299 @@
+https://bugs.gentoo.org/961867
+https://issues.redhat.com/browse/RHEL-98672
+https://gitlab.com/gnutls/gnutls/-/issues/1717
+https://gitlab.com/gnutls/gnutls/-/merge_requests/1990
+
+From 5376a0cabf94314316005e6bf411ffcc7628b386 Mon Sep 17 00:00:00 2001
+From: Daiki Ueno <ueno@gnu.org>
+Date: Tue, 22 Jul 2025 10:49:33 +0900
+Subject: [PATCH 1/3] key_update: fix state transition in KTLS code path
+
+Signed-off-by: Daiki Ueno <ueno@gnu.org>
+---
+ lib/record.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/record.c b/lib/record.c
+index d37f79a550..ebc75addec 100644
+--- a/lib/record.c
++++ b/lib/record.c
+@@ -2045,7 +2045,7 @@ ssize_t gnutls_record_send2(gnutls_session_t session, const void *data,
+ 		FALLTHROUGH;
+ 	case RECORD_SEND_KEY_UPDATE_3:
+ 		if (IS_KTLS_ENABLED(session, GNUTLS_KTLS_SEND)) {
+-			return _gnutls_ktls_send(
++			ret = _gnutls_ktls_send(
+ 				session,
+ 				session->internals.record_key_update_buffer.data,
+ 				session->internals.record_key_update_buffer
+-- 
+GitLab
+
+
+From 30c264b661d49d135ef342426c6c4cd853209c06 Mon Sep 17 00:00:00 2001
+From: Daiki Ueno <ueno@gnu.org>
+Date: Thu, 31 Jul 2025 15:34:48 +0900
+Subject: [PATCH 2/3] constate: switch epoch lookup to linear search
+
+The previous logic of epoch lookup was utilizing the fact that epoch
+numbers are monotonically increasing and there are no gaps in between
+after garbarge collection. That is, however, no longer true when a TLS
+1.3 key update is happening in only one direction.
+
+This patch switches to using linear search instead, at the cost of
+approx MAX_EPOCH_INDEX * 2 (= 8) comparison.
+
+Signed-off-by: Daiki Ueno <ueno@gnu.org>
+---
+ lib/constate.c   | 47 ++++++++++++++++-------------------------------
+ lib/gnutls_int.h |  3 ---
+ 2 files changed, 16 insertions(+), 34 deletions(-)
+
+diff --git a/lib/constate.c b/lib/constate.c
+index ca253a2bea..b091d891ff 100644
+--- a/lib/constate.c
++++ b/lib/constate.c
+@@ -932,17 +932,23 @@ static inline int epoch_resolve(gnutls_session_t session,
+ static inline record_parameters_st **epoch_get_slot(gnutls_session_t session,
+ 						    uint16_t epoch)
+ {
+-	uint16_t epoch_index = epoch - session->security_parameters.epoch_min;
++	/* First look for a non-empty slot */
++	for (size_t i = 0; i < MAX_EPOCH_INDEX; i++) {
++		record_parameters_st **slot = &session->record_parameters[i];
++		if (*slot != NULL && (*slot)->epoch == epoch)
++			return slot;
++	}
+ 
+-	if (epoch_index >= MAX_EPOCH_INDEX) {
+-		_gnutls_handshake_log(
+-			"Epoch %d out of range (idx: %d, max: %d)\n",
+-			(int)epoch, (int)epoch_index, MAX_EPOCH_INDEX);
+-		gnutls_assert();
+-		return NULL;
++	/* Then look for an empty slot */
++	for (size_t i = 0; i < MAX_EPOCH_INDEX; i++) {
++		record_parameters_st **slot = &session->record_parameters[i];
++		if (*slot == NULL)
++			return slot;
+ 	}
+-	/* The slot may still be empty (NULL) */
+-	return &session->record_parameters[epoch_index];
++
++	gnutls_assert();
++	_gnutls_handshake_log("No slot available for epoch %u\n", epoch);
++	return NULL;
+ }
+ 
+ int _gnutls_epoch_get(gnutls_session_t session, unsigned int epoch_rel,
+@@ -1063,8 +1069,7 @@ static inline int epoch_alive(gnutls_session_t session,
+ 
+ void _gnutls_epoch_gc(gnutls_session_t session)
+ {
+-	int i, j;
+-	unsigned int min_index = 0;
++	int i;
+ 
+ 	_gnutls_record_log("REC[%p]: Start of epoch cleanup\n", session);
+ 
+@@ -1091,26 +1096,6 @@ void _gnutls_epoch_gc(gnutls_session_t session)
+ 		}
+ 	}
+ 
+-	/* Look for contiguous NULLs at the start of the array */
+-	for (i = 0;
+-	     i < MAX_EPOCH_INDEX && session->record_parameters[i] == NULL; i++)
+-		;
+-	min_index = i;
+-
+-	/* Pick up the slack in the epoch window. */
+-	if (min_index != 0) {
+-		for (i = 0, j = min_index; j < MAX_EPOCH_INDEX; i++, j++) {
+-			session->record_parameters[i] =
+-				session->record_parameters[j];
+-			session->record_parameters[j] = NULL;
+-		}
+-	}
+-
+-	/* Set the new epoch_min */
+-	if (session->record_parameters[0] != NULL)
+-		session->security_parameters.epoch_min =
+-			session->record_parameters[0]->epoch;
+-
+ 	gnutls_mutex_unlock(&session->internals.epoch_lock);
+ 
+ 	_gnutls_record_log("REC[%p]: End of epoch cleanup\n", session);
+diff --git a/lib/gnutls_int.h b/lib/gnutls_int.h
+index 539486bc7d..e083520055 100644
+--- a/lib/gnutls_int.h
++++ b/lib/gnutls_int.h
+@@ -876,9 +876,6 @@ typedef struct {
+ 	/* The epoch that the next handshake will initialize. */
+ 	uint16_t epoch_next;
+ 
+-	/* The epoch at index 0 of record_parameters. */
+-	uint16_t epoch_min;
+-
+ 	/* this is the ciphersuite we are going to use
+ 	 * moved here from internals in order to be restored
+ 	 * on resume;
+-- 
+GitLab
+
+
+From 1d830baac2f8a08a40b13e9eecfcc64ad032e7b5 Mon Sep 17 00:00:00 2001
+From: Daiki Ueno <ueno@gnu.org>
+Date: Sat, 19 Jul 2025 07:08:24 +0900
+Subject: [PATCH 3/3] key_update: rework the rekeying logic
+
+While RFC 8446 4.6.3 says that the sender of a KeyUpdate message
+should only update its sending key, the previous implementation
+updated both the sending and receiving keys, preventing that any
+application data interleaved being decrypted.
+
+This splits the key update logic into 2 phases: when sending a
+KeyUpdate, only update the sending key, and when receiving a
+KeyUpdate, only update the receiving key.  In both cases, KeyUpdate
+messages are encrypted/decrypted with the old keys.
+
+Signed-off-by: Daiki Ueno <ueno@gnu.org>
+---
+ lib/gnutls_int.h       |  2 +-
+ lib/tls13/key_update.c | 72 +++++++++++++++++++++++++++---------------
+ 2 files changed, 47 insertions(+), 27 deletions(-)
+
+diff --git a/lib/gnutls_int.h b/lib/gnutls_int.h
+index e083520055..f3caea1170 100644
+--- a/lib/gnutls_int.h
++++ b/lib/gnutls_int.h
+@@ -1672,7 +1672,7 @@ typedef struct {
+ } internals_st;
+ 
+ /* Maximum number of epochs we keep around. */
+-#define MAX_EPOCH_INDEX 4
++#define MAX_EPOCH_INDEX 16
+ 
+ #define reset_cand_groups(session)                                            \
+ 	session->internals.cand_ec_group = session->internals.cand_dh_group = \
+diff --git a/lib/tls13/key_update.c b/lib/tls13/key_update.c
+index 41243651b5..beee1dc41a 100644
+--- a/lib/tls13/key_update.c
++++ b/lib/tls13/key_update.c
+@@ -52,45 +52,47 @@ static inline int set_ktls_keys(gnutls_session_t session,
+ 	return 0;
+ }
+ 
+-static int update_keys(gnutls_session_t session, hs_stage_t stage)
++static int update_sending_key(gnutls_session_t session, hs_stage_t stage)
+ {
+ 	int ret;
+ 
+-	ret = _tls13_update_secret(session,
+-				   session->key.proto.tls13.temp_secret,
+-				   session->key.proto.tls13.temp_secret_size);
++	_gnutls_epoch_bump(session);
++	ret = _gnutls_epoch_dup(session, EPOCH_WRITE_CURRENT);
+ 	if (ret < 0)
+ 		return gnutls_assert_val(ret);
+ 
+-	_gnutls_epoch_bump(session);
+-	ret = _gnutls_epoch_dup(session, EPOCH_READ_CURRENT);
++	ret = _tls13_write_connection_state_init(session, stage);
+ 	if (ret < 0)
+ 		return gnutls_assert_val(ret);
+ 
+-	/* If we send a key update during early start, only update our
+-	 * write keys */
+-	if (session->internals.recv_state == RECV_STATE_EARLY_START) {
+-		ret = _tls13_write_connection_state_init(session, stage);
++	if (IS_KTLS_ENABLED(session, GNUTLS_KTLS_SEND)) {
++		ret = set_ktls_keys(session, GNUTLS_KTLS_SEND);
+ 		if (ret < 0)
+ 			return gnutls_assert_val(ret);
++	}
+ 
+-		if (IS_KTLS_ENABLED(session, GNUTLS_KTLS_SEND))
+-			ret = set_ktls_keys(session, GNUTLS_KTLS_SEND);
+-	} else {
+-		ret = _tls13_connection_state_init(session, stage);
+-		if (ret < 0)
+-			return gnutls_assert_val(ret);
++	return 0;
++}
+ 
+-		if (IS_KTLS_ENABLED(session, GNUTLS_KTLS_SEND) &&
+-		    stage == STAGE_UPD_OURS)
+-			ret = set_ktls_keys(session, GNUTLS_KTLS_SEND);
+-		else if (IS_KTLS_ENABLED(session, GNUTLS_KTLS_RECV) &&
+-			 stage == STAGE_UPD_PEERS)
+-			ret = set_ktls_keys(session, GNUTLS_KTLS_RECV);
+-	}
++static int update_receiving_key(gnutls_session_t session, hs_stage_t stage)
++{
++	int ret;
++
++	_gnutls_epoch_bump(session);
++	ret = _gnutls_epoch_dup(session, EPOCH_READ_CURRENT);
++	if (ret < 0)
++		return gnutls_assert_val(ret);
++
++	ret = _tls13_read_connection_state_init(session, stage);
+ 	if (ret < 0)
+ 		return gnutls_assert_val(ret);
+ 
++	if (IS_KTLS_ENABLED(session, GNUTLS_KTLS_RECV)) {
++		ret = set_ktls_keys(session, GNUTLS_KTLS_RECV);
++		if (ret < 0)
++			return gnutls_assert_val(ret);
++	}
++
+ 	return 0;
+ }
+ 
+@@ -128,7 +130,13 @@ int _gnutls13_recv_key_update(gnutls_session_t session, gnutls_buffer_st *buf)
+ 	switch (buf->data[0]) {
+ 	case 0:
+ 		/* peer updated its key, not requested our key update */
+-		ret = update_keys(session, STAGE_UPD_PEERS);
++		ret = _tls13_update_secret(
++			session, session->key.proto.tls13.temp_secret,
++			session->key.proto.tls13.temp_secret_size);
++		if (ret < 0)
++			return gnutls_assert_val(ret);
++
++		ret = update_receiving_key(session, STAGE_UPD_PEERS);
+ 		if (ret < 0)
+ 			return gnutls_assert_val(ret);
+ 
+@@ -141,7 +149,13 @@ int _gnutls13_recv_key_update(gnutls_session_t session, gnutls_buffer_st *buf)
+ 		}
+ 
+ 		/* peer updated its key, requested our key update */
+-		ret = update_keys(session, STAGE_UPD_PEERS);
++		ret = _tls13_update_secret(
++			session, session->key.proto.tls13.temp_secret,
++			session->key.proto.tls13.temp_secret_size);
++		if (ret < 0)
++			return gnutls_assert_val(ret);
++
++		ret = update_receiving_key(session, STAGE_UPD_PEERS);
+ 		if (ret < 0)
+ 			return gnutls_assert_val(ret);
+ 
+@@ -248,7 +262,13 @@ int gnutls_session_key_update(gnutls_session_t session, unsigned flags)
+ 	_gnutls_epoch_gc(session);
+ 
+ 	/* it was completely sent, update the keys */
+-	ret = update_keys(session, STAGE_UPD_OURS);
++	ret = _tls13_update_secret(session,
++				   session->key.proto.tls13.temp_secret,
++				   session->key.proto.tls13.temp_secret_size);
++	if (ret < 0)
++		return gnutls_assert_val(ret);
++
++	ret = update_sending_key(session, STAGE_UPD_OURS);
+ 	if (ret < 0)
+ 		return gnutls_assert_val(ret);
+ 
+-- 
+GitLab

@@ -1,0 +1,143 @@
+https://gitlab.freedesktop.org/xdg/xdg-utils/-/issues/252
+https://gitlab.freedesktop.org/xdg/xdg-utils/-/commit/f113a8b997dcb9527b9694d31bddcfa05096aecf
+
+From f113a8b997dcb9527b9694d31bddcfa05096aecf Mon Sep 17 00:00:00 2001
+From: Slatian <baschdel@disroot.org>
+Date: Tue, 21 May 2024 04:08:23 +0000
+Subject: [PATCH] Make the desktop_file_to_binary function less likely to fall
+ over and do something unexpected.
+
+* Uses a shell implementation ( !24) of `which` in the `desktop_file_to_binary` to avoid tripping over unexpected output from `command -v`
+* In addition it also makes the parsing a bit more standards compliant than it previously was.
+* Adds a developer script to easier test internal functions in the xdg-utils-common.in file
+
+Fixes: #252
+---
+ scripts/test-common-function | 13 ++++++++
+ scripts/xdg-utils-common.in  | 64 +++++++++++++++++++++++++++++++-----
+ 2 files changed, 68 insertions(+), 9 deletions(-)
+ create mode 100755 scripts/test-common-function
+
+diff --git a/scripts/test-common-function b/scripts/test-common-function
+new file mode 100755
+index 0000000..c8af98d
+--- /dev/null
++++ b/scripts/test-common-function
+@@ -0,0 +1,13 @@
++#!/bin/sh
++
++# This script is for testing internal functions of the xdg-utils-common.in file
++#
++# Example ./test-common-function xdg_which echo
++
++XDG_UTILS_DEBUG_LEVEL="${XDG_UTILS_DEBUG_LEVEL:-99}"
++
++. ./xdg-utils-common.in
++
++"$@"
++
++exit $?
+diff --git a/scripts/xdg-utils-common.in b/scripts/xdg-utils-common.in
+index f0a1aac..adab368 100644
+--- a/scripts/xdg-utils-common.in
++++ b/scripts/xdg-utils-common.in
+@@ -51,19 +51,24 @@ binary_to_desktop_file()
+ }
+ 
+ #-------------------------------------------------------------
+-# map a .desktop file to a binary
++# map a .desktop file name to its Exec binary
++# Returns the realpath resolved path to the binary or noting.
++
++# desktop_file_to_binary <desktop-file-name>
+ desktop_file_to_binary()
+ {
++    DEBUG 1 "desktop_file_to_binary '$1'"
+     search="${XDG_DATA_HOME:-$HOME/.local/share}:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
+     desktop="$(basename "$1")"
+     IFS=:
+     for dir in $search; do
++        DEBUG 2 "Searching in '$dir/{applications,applnk}'"
+         unset IFS
+-        [ "$dir" ] && [ -d "$dir/applications" ] || [ -d "$dir/applnk" ] || continue
++        [ -n "$dir" ] && [ -d "$dir/applications" ] || [ -d "$dir/applnk" ] || continue
+         # Check if desktop file contains -
+         if [ "${desktop#*-}" != "$desktop" ]; then
+-            vendor=${desktop%-*}
+-            app=${desktop#*-}
++            vendor="${desktop%-*}"
++            app="${desktop#*-}"
+             if [ -r "$dir/applications/$vendor/$app" ]; then
+                 file_path="$dir/applications/$vendor/$app"
+             elif [ -r "$dir/applnk/$vendor/$app" ]; then
+@@ -72,18 +77,31 @@ desktop_file_to_binary()
+         fi
+         if test -z "$file_path" ; then
+             for indir in "$dir"/applications/ "$dir"/applications/*/ "$dir"/applnk/ "$dir"/applnk/*/; do
++		        DEBUG 4 "Does file exist? '$indir/$desktop'"
+                 file="$indir/$desktop"
+                 if [ -r "$file" ]; then
+-                    file_path=$file
++                    file_path="$file"
+                     break
+                 fi
+             done
+         fi
+         if [ -r "$file_path" ]; then
+-            # Remove any arguments (%F, %f, %U, %u, etc.).
+-            command="$(grep -E "^Exec(\[[^]=]*])?=" "$file_path" | cut -d= -f 2- | first_word)"
+-            command="$(command -v "$command")"
+-            xdg_realpath "$command"
++	        DEBUG 2 "Checking desktop file '$file_path'"
++            # Get the command name from the correct Exec
++            # Note: Ignoring quoting and escape sequences here, see #253
++            binary="$(awk -F '=' '
++            	/^\[/{ in_entry=0 }
++            	$0 == "[Desktop Entry]"{ in_entry=1 }
++            	in_entry && /^Exec\s*=/ {
++					sub(/^\s+/,"",$2);
++					match($2,/^[^ ]+/);
++					print substr($2,RSTART,RLENGTH)
++				}' \
++            	< "$file_path" )"
++            DEBUG 2 "Found command: $binary"
++            binary="$(xdg_which "$binary")"
++            DEBUG 2 "Resolved to command to file: '$binary'"
++            [ -z "$binary" ] || xdg_realpath "$binary"
+             return
+         fi
+     done
+@@ -461,3 +479,31 @@ xdg_realpath()
+ 			;;
+ 	esac
+ }
++
++#----------------------------------------------------------------------------
++# The `which` command but as a shell implementation.
++# Returns either the path of the resolved binary or nothing
++# because command -v does not always return the path of a command
++# (builtins, aliases, functions, etc.)
++
++# xdg_which <command>
++xdg_which()
++{
++	if [ -z "$1" ] ; then
++		return 1
++	elif [ -x "$1" ] ; then
++		printf "%s\n" "$1"
++	else
++		# this should be faster than the real thing because of shell builtins
++		old_ifs="$IFS"
++		IFS=:
++		for p in $PATH ; do
++			IFS="$old_ifs"
++			if [ -x "$p/$1" ] ; then
++				printf "%s\n" "$p/$1"
++				return
++			fi
++		done
++		return 1
++	fi
++}
+-- 
+GitLab

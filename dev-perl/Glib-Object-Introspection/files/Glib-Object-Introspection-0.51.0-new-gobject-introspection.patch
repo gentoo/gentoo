@@ -1,0 +1,50 @@
+https://gitlab.gnome.org/GNOME/perl-glib-object-introspection/-/commit/e5adffecdc9b321d1f8d91777b190b8ae08f8dd0
+
+From e5adffecdc9b321d1f8d91777b190b8ae08f8dd0 Mon Sep 17 00:00:00 2001
+From: Emmanuele Bassi <ebassi@gnome.org>
+Date: Sat, 14 Sep 2024 13:09:59 +0100
+Subject: [PATCH] Handle pointer types
+
+Now that gobject-introspection pairs G_TYPE_POINTER types with their
+type registration function, we need to handle the case in which we are
+passed a pointer to a record that inherits from G_TYPE_POINTER. Since
+these types are basically plain pointers, we can reuse the sv_to_struct
+and struct_to_sv functions we use for untyped structures.
+
+Fixes: #7
+---
+ gperl-i11n-marshal-interface.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/gperl-i11n-marshal-interface.c b/gperl-i11n-marshal-interface.c
+index 2bef8eb..50cce51 100644
+--- a/gperl-i11n-marshal-interface.c
++++ b/gperl-i11n-marshal-interface.c
+@@ -41,6 +41,12 @@ instance_sv_to_pointer (GICallableInfo *info, SV *sv, GPerlI11nInvocationInfo *i
+ 				                        info_type,
+ 				                        sv);
+ 			}
++                } else if (g_type_is_a (type, G_TYPE_POINTER)) {
++                        dwarn ("  -> pointer\n");
++                        pointer = sv_to_struct (GI_TRANSFER_NOTHING,
++                                                container,
++                                                info_type,
++                                                sv);
+ 		} else {
+ 			dwarn ("  -> boxed: type=%s (%"G_GSIZE_FORMAT")\n",
+ 			       g_type_name (type), type);
+@@ -397,6 +403,12 @@ interface_to_sv (GITypeInfo* info,
+ 			}
+ 		}
+ 
++                else if (g_type_is_a (type, G_TYPE_POINTER)) {
++                        dwarn ("  -> pointer: pointer=%p, type=%"G_GSIZE_FORMAT" (%s), own=%d\n",
++                               arg->v_pointer, type, g_type_name (type), own);
++			sv = struct_to_sv (interface, info_type, arg->v_pointer, own);
++                }
++
+ #if GLIB_CHECK_VERSION (2, 24, 0)
+ 		else if (g_type_is_a (type, G_TYPE_VARIANT)) {
+ 			dwarn ("  -> variant\n");
+-- 
+GitLab

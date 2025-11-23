@@ -1,0 +1,574 @@
+# Copyright 2003-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+#############################################
+# This is a list of valid profiles for each architecture.  This file is used by
+# pkgcheck when running pkgcheck scan.
+# DO NOT ADD PROFILES WITH A "die" or "exit" IN THEM OR IT KILLS PKGCHECK
+#
+#layout:
+#arch		profile_directory						status
+
+# Alpha Profiles
+# @MAINTAINER: alpha@gentoo.org
+alpha		default/linux/alpha/23.0					stable
+alpha		default/linux/alpha/23.0/systemd				stable
+alpha		default/linux/alpha/23.0/desktop				stable
+alpha		default/linux/alpha/23.0/desktop/gnome				stable
+alpha		default/linux/alpha/23.0/desktop/gnome/systemd			stable
+alpha		default/linux/alpha/23.0/split-usr				stable
+alpha		default/linux/alpha/23.0/split-usr/desktop			stable
+alpha		default/linux/alpha/23.0/split-usr/desktop/gnome		stable
+
+
+# AMD64 Profiles
+# @MAINTAINER: amd64@gentoo.org
+amd64		default/linux/amd64/23.0					stable
+amd64		default/linux/amd64/23.0/systemd				stable
+amd64		default/linux/amd64/23.0/desktop				stable
+amd64		default/linux/amd64/23.0/desktop/systemd			stable
+amd64		default/linux/amd64/23.0/desktop/gnome				stable
+amd64		default/linux/amd64/23.0/desktop/gnome/systemd			stable
+amd64		default/linux/amd64/23.0/desktop/plasma				stable
+amd64		default/linux/amd64/23.0/desktop/plasma/systemd			stable
+amd64		default/linux/amd64/23.0/no-multilib				stable
+amd64		default/linux/amd64/23.0/no-multilib/systemd			stable
+amd64		default/linux/amd64/23.0/no-multilib/hardened			stable
+amd64		default/linux/amd64/23.0/no-multilib/hardened/systemd		stable
+amd64		default/linux/amd64/23.0/no-multilib/hardened/selinux		stable
+amd64		default/linux/amd64/23.0/no-multilib/hardened/selinux/systemd	stable
+amd64		default/linux/amd64/23.0/no-multilib/prefix			exp
+amd64		default/linux/amd64/23.0/no-multilib/prefix/kernel-2.6.32+	exp
+amd64		default/linux/amd64/23.0/no-multilib/prefix/kernel-2.6.16+	exp
+amd64		default/linux/amd64/23.0/no-multilib/prefix/kernel-3.2+		exp
+amd64		default/linux/amd64/23.0/llvm					exp
+amd64		default/linux/amd64/23.0/llvm/systemd				exp
+amd64		default/linux/amd64/23.0/hardened				stable
+amd64		default/linux/amd64/23.0/hardened/systemd			stable
+amd64		default/linux/amd64/23.0/hardened/selinux			stable
+amd64		default/linux/amd64/23.0/hardened/selinux/systemd		stable
+amd64		default/linux/amd64/23.0/split-usr				stable
+amd64		default/linux/amd64/23.0/split-usr/desktop			stable
+amd64		default/linux/amd64/23.0/split-usr/desktop/gnome		stable
+amd64		default/linux/amd64/23.0/split-usr/desktop/plasma		stable
+amd64		default/linux/amd64/23.0/split-usr/no-multilib			stable
+amd64		default/linux/amd64/23.0/split-usr/no-multilib/selinux		stable
+amd64		default/linux/amd64/23.0/split-usr/no-multilib/hardened		stable
+amd64		default/linux/amd64/23.0/split-usr/no-multilib/hardened/selinux	stable
+amd64		default/linux/amd64/23.0/split-usr/no-multilib/prefix		exp
+amd64		default/linux/amd64/23.0/split-usr/no-multilib/prefix/kernel-2.6.32+	exp
+amd64		default/linux/amd64/23.0/split-usr/no-multilib/prefix/kernel-2.6.16+	exp
+amd64		default/linux/amd64/23.0/split-usr/no-multilib/prefix/kernel-3.2+	exp
+amd64		default/linux/amd64/23.0/split-usr/llvm				exp
+amd64		default/linux/amd64/23.0/split-usr/hardened			stable
+amd64		default/linux/amd64/23.0/split-usr/hardened/selinux		stable
+
+
+# AMD64 Profiles
+# @MAINTAINER: amd64@gentoo.org
+amd64		default/linux/amd64/23.0/x32					dev
+amd64		default/linux/amd64/23.0/x32/systemd				exp
+amd64		default/linux/amd64/23.0/split-usr/x32				exp
+
+
+# ARM Profiles
+# @MAINTAINER: arm@gentoo.org
+arm		default/linux/arm/23.0						stable
+arm		default/linux/arm/23.0/desktop					dev
+arm		default/linux/arm/23.0/desktop/gnome				dev
+arm		default/linux/arm/23.0/desktop/gnome/systemd			dev
+arm		default/linux/arm/23.0/desktop/plasma				dev
+arm		default/linux/arm/23.0/desktop/plasma/systemd			dev
+arm		default/linux/arm/23.0/armv4					dev
+arm		default/linux/arm/23.0/armv4t					dev
+arm		default/linux/arm/23.0/armv4t/systemd				dev
+arm		default/linux/arm/23.0/armv5te					dev
+arm		default/linux/arm/23.0/armv5te/systemd				dev
+arm		default/linux/arm/23.0/armv6j_sf				stable
+arm		default/linux/arm/23.0/armv6j_sf/hardened			dev
+arm		default/linux/arm/23.0/armv6j_sf/hardened/selinux		dev
+arm		default/linux/arm/23.0/armv6j_sf/systemd			stable
+arm		default/linux/arm/23.0/armv6j_hf				stable
+arm		default/linux/arm/23.0/armv6j_hf/hardened			dev
+arm		default/linux/arm/23.0/armv6j_hf/hardened/selinux		dev
+arm		default/linux/arm/23.0/armv6j_hf/systemd			stable
+arm		default/linux/arm/23.0/armv7a_sf				stable
+arm		default/linux/arm/23.0/armv7a_sf/hardened			dev
+arm		default/linux/arm/23.0/armv7a_sf/hardened/selinux		dev
+arm		default/linux/arm/23.0/armv7a_sf/desktop			dev
+arm		default/linux/arm/23.0/armv7a_sf/desktop/gnome			dev
+arm		default/linux/arm/23.0/armv7a_sf/desktop/gnome/systemd		dev
+arm		default/linux/arm/23.0/armv7a_sf/desktop/plasma			dev
+arm		default/linux/arm/23.0/armv7a_sf/desktop/plasma/systemd		dev
+arm		default/linux/arm/23.0/armv7a_sf/systemd			stable
+arm		default/linux/arm/23.0/armv7a_hf				stable
+arm		default/linux/arm/23.0/armv7a_hf/hardened			dev
+arm		default/linux/arm/23.0/armv7a_hf/hardened/selinux		dev
+arm		default/linux/arm/23.0/armv7a_hf/desktop			dev
+arm		default/linux/arm/23.0/armv7a_hf/desktop/gnome			dev
+arm		default/linux/arm/23.0/armv7a_hf/desktop/gnome/systemd		dev
+arm		default/linux/arm/23.0/armv7a_hf/desktop/plasma			dev
+arm		default/linux/arm/23.0/armv7a_hf/desktop/plasma/systemd		dev
+arm		default/linux/arm/23.0/armv7a_hf/systemd			stable
+arm		default/linux/arm/23.0/split-usr				stable
+arm		default/linux/arm/23.0/split-usr/desktop			dev
+arm		default/linux/arm/23.0/split-usr/desktop/gnome			dev
+arm		default/linux/arm/23.0/split-usr/desktop/plasma			dev
+arm		default/linux/arm/23.0/split-usr/armv4				dev
+arm		default/linux/arm/23.0/split-usr/armv4t				dev
+arm		default/linux/arm/23.0/split-usr/armv5te			dev
+arm		default/linux/arm/23.0/split-usr/armv6j_sf			stable
+arm		default/linux/arm/23.0/split-usr/armv6j_sf/hardened		dev
+arm		default/linux/arm/23.0/split-usr/armv6j_sf/hardened/selinux	dev
+arm		default/linux/arm/23.0/split-usr/armv6j_hf			stable
+arm		default/linux/arm/23.0/split-usr/armv6j_hf/hardened		dev
+arm		default/linux/arm/23.0/split-usr/armv6j_hf/hardened/selinux	dev
+arm		default/linux/arm/23.0/split-usr/armv7a_sf			stable
+arm		default/linux/arm/23.0/split-usr/armv7a_sf/hardened		dev
+arm		default/linux/arm/23.0/split-usr/armv7a_sf/hardened/selinux	dev
+arm		default/linux/arm/23.0/split-usr/armv7a_sf/desktop		dev
+arm		default/linux/arm/23.0/split-usr/armv7a_sf/desktop/gnome	dev
+arm		default/linux/arm/23.0/split-usr/armv7a_sf/desktop/plasma	dev
+arm		default/linux/arm/23.0/split-usr/armv7a_hf			stable
+arm		default/linux/arm/23.0/split-usr/armv7a_hf/hardened		dev
+arm		default/linux/arm/23.0/split-usr/armv7a_hf/hardened/selinux	dev
+arm		default/linux/arm/23.0/split-usr/armv7a_hf/desktop		dev
+arm		default/linux/arm/23.0/split-usr/armv7a_hf/desktop/gnome	dev
+arm		default/linux/arm/23.0/split-usr/armv7a_hf/desktop/plasma	dev
+
+
+# ARM64 Profiles
+# @MAINTAINER: arm64@gentoo.org
+arm64		default/linux/arm64/23.0					stable
+arm64		default/linux/arm64/23.0/hardened				dev
+arm64		default/linux/arm64/23.0/hardened/systemd			dev
+arm64		default/linux/arm64/23.0/hardened/selinux			dev
+arm64		default/linux/arm64/23.0/hardened/selinux/systemd		dev
+arm64		default/linux/arm64/23.0/desktop				stable
+arm64		default/linux/arm64/23.0/desktop/gnome				stable
+arm64		default/linux/arm64/23.0/desktop/gnome/systemd			stable
+arm64		default/linux/arm64/23.0/desktop/plasma				stable
+arm64		default/linux/arm64/23.0/desktop/plasma/systemd			stable
+arm64		default/linux/arm64/23.0/desktop/systemd			stable
+arm64		default/linux/arm64/23.0/systemd				stable
+arm64		default/linux/arm64/23.0/llvm					exp
+arm64		default/linux/arm64/23.0/llvm/systemd				exp
+arm64		default/linux/arm64/23.0/split-usr				stable
+arm64		default/linux/arm64/23.0/split-usr/hardened			dev
+arm64		default/linux/arm64/23.0/split-usr/hardened/selinux		dev
+arm64		default/linux/arm64/23.0/split-usr/desktop			stable
+arm64		default/linux/arm64/23.0/split-usr/desktop/gnome		stable
+arm64		default/linux/arm64/23.0/split-usr/desktop/plasma		stable
+arm64		default/linux/arm64/23.0/split-usr/llvm				exp
+
+
+# ARM64 Profiles (big-endian)
+# @MAINTAINER: steev@gentoo.org, slyfox@gentoo.org
+# big-endian profile intentionally does not contain all flavours
+# until it's lightly tested.
+arm64		default/linux/arm64/23.0/big-endian				exp
+arm64		default/linux/arm64/23.0/big-endian/systemd			exp
+arm64		default/linux/arm64/23.0/split-usr/big-endian			exp
+
+
+# HPPA Profiles
+# @MAINTAINER: hppa@gentoo.org
+hppa		default/linux/hppa/23.0/hppa1.1					stable
+hppa		default/linux/hppa/23.0/hppa1.1/systemd				stable
+hppa		default/linux/hppa/23.0/hppa1.1/desktop				exp
+hppa		default/linux/hppa/23.0/hppa1.1/desktop/systemd			exp
+hppa		default/linux/hppa/23.0/hppa1.1/split-usr			stable
+hppa		default/linux/hppa/23.0/hppa1.1/split-usr/desktop		exp
+hppa		default/linux/hppa/23.0/hppa2.0					stable
+hppa		default/linux/hppa/23.0/hppa2.0/systemd				stable
+hppa		default/linux/hppa/23.0/hppa2.0/desktop				exp
+hppa		default/linux/hppa/23.0/hppa2.0/desktop/systemd			exp
+hppa		default/linux/hppa/23.0/hppa2.0/split-usr			stable
+hppa		default/linux/hppa/23.0/hppa2.0/split-usr/desktop		exp
+
+
+# LoongArch Profiles
+# @MAINTAINER: loong@gentoo.org
+loong		default/linux/loong/23.0/la64v100/lp64d						stable
+loong		default/linux/loong/23.0/la64v100/lp64d/llvm					exp
+loong		default/linux/loong/23.0/la64v100/lp64d/llvm/systemd				exp
+loong		default/linux/loong/23.0/la64v100/lp64d/desktop					stable
+loong		default/linux/loong/23.0/la64v100/lp64d/desktop/gnome				dev
+loong		default/linux/loong/23.0/la64v100/lp64d/desktop/gnome/systemd			dev
+loong		default/linux/loong/23.0/la64v100/lp64d/desktop/plasma				stable
+loong		default/linux/loong/23.0/la64v100/lp64d/desktop/plasma/systemd			stable
+loong		default/linux/loong/23.0/la64v100/lp64d/desktop/systemd				stable
+loong		default/linux/loong/23.0/la64v100/lp64d/systemd					stable
+loong		default/linux/loong/23.0/la64v100/split-usr/lp64d				stable
+loong		default/linux/loong/23.0/la64v100/split-usr/lp64d/desktop			stable
+loong		default/linux/loong/23.0/la64v100/split-usr/lp64d/desktop/gnome			dev
+loong		default/linux/loong/23.0/la64v100/split-usr/lp64d/desktop/plasma		stable
+
+
+# M68K Profiles
+# @MAINTAINER: m68k@gentoo.org
+m68k		default/linux/m68k/23.0						exp
+m68k		default/linux/m68k/23.0/systemd					exp
+m68k		default/linux/m68k/23.0/split-usr				exp
+# with -malign-int:
+m68k		default/linux/m68k/23.0/time64					exp
+
+# MIPS Profiles
+# @MAINTAINER: mips@gentoo.org
+mips		default/linux/mips/23.0/mipsel/o32_sf				stable
+mips		default/linux/mips/23.0/mipsel/o32_sf/systemd			stable
+mips		default/linux/mips/23.0/mipsel/o32				stable
+mips		default/linux/mips/23.0/mipsel/o32/systemd			stable
+mips		default/linux/mips/23.0/mipsel/n32				stable
+mips		default/linux/mips/23.0/mipsel/n32/systemd			stable
+mips		default/linux/mips/23.0/mipsel/n64				stable
+mips		default/linux/mips/23.0/mipsel/n64/systemd			stable
+mips		default/linux/mips/23.0/mipsel/multilib/n32			dev
+mips		default/linux/mips/23.0/mipsel/multilib/n32/systemd		dev
+mips		default/linux/mips/23.0/mipsel/multilib/n64			dev
+mips		default/linux/mips/23.0/mipsel/multilib/n64/systemd		dev
+mips		default/linux/mips/23.0/o32_sf					stable
+mips		default/linux/mips/23.0/o32_sf/systemd				stable
+mips		default/linux/mips/23.0/o32					stable
+mips		default/linux/mips/23.0/o32/systemd				stable
+mips		default/linux/mips/23.0/n32					stable
+mips		default/linux/mips/23.0/n32/systemd				stable
+mips		default/linux/mips/23.0/n64					stable
+mips		default/linux/mips/23.0/n64/systemd				stable
+mips		default/linux/mips/23.0/multilib/n32				dev
+mips		default/linux/mips/23.0/multilib/n32/systemd			dev
+mips		default/linux/mips/23.0/multilib/n64				dev
+mips		default/linux/mips/23.0/multilib/n64/systemd			dev
+mips		default/linux/mips/23.0/split-usr/mipsel/o32_sf			dev
+mips		default/linux/mips/23.0/split-usr/mipsel/o32			dev
+mips		default/linux/mips/23.0/split-usr/mipsel/n32			dev
+mips		default/linux/mips/23.0/split-usr/mipsel/n64			stable
+mips		default/linux/mips/23.0/split-usr/mipsel/multilib/n32		dev
+mips		default/linux/mips/23.0/split-usr/mipsel/multilib/n64		dev
+mips		default/linux/mips/23.0/split-usr/o32_sf			dev
+mips		default/linux/mips/23.0/split-usr/o32				dev
+mips		default/linux/mips/23.0/split-usr/n32				dev
+mips		default/linux/mips/23.0/split-usr/n64				stable
+mips		default/linux/mips/23.0/split-usr/multilib/n32			dev
+mips		default/linux/mips/23.0/split-usr/multilib/n64			dev
+mips		default/linux/mips/23.0/time64/mipsel/o32_sf			exp
+mips		default/linux/mips/23.0/time64/mipsel/o32_sf/systemd		exp
+mips		default/linux/mips/23.0/time64/mipsel/o32			exp
+mips		default/linux/mips/23.0/time64/mipsel/o32/systemd		exp
+mips		default/linux/mips/23.0/time64/mipsel/n32			exp
+mips		default/linux/mips/23.0/time64/mipsel/n32/systemd		exp
+mips		default/linux/mips/23.0/time64/mipsel/multilib/n32		exp
+mips		default/linux/mips/23.0/time64/mipsel/multilib/n32/systemd	exp
+mips		default/linux/mips/23.0/time64/mipsel/multilib/n64		exp
+mips		default/linux/mips/23.0/time64/mipsel/multilib/n64/systemd	exp
+mips		default/linux/mips/23.0/time64/o32_sf				exp
+mips		default/linux/mips/23.0/time64/o32_sf/systemd			exp
+mips		default/linux/mips/23.0/time64/o32				exp
+mips		default/linux/mips/23.0/time64/o32/systemd			exp
+mips		default/linux/mips/23.0/time64/n32				exp
+mips		default/linux/mips/23.0/time64/n32/systemd			exp
+mips		default/linux/mips/23.0/time64/multilib/n32			exp
+mips		default/linux/mips/23.0/time64/multilib/n32/systemd		exp
+mips		default/linux/mips/23.0/time64/multilib/n64			exp
+mips		default/linux/mips/23.0/time64/multilib/n64/systemd		exp
+mips		default/linux/mips/23.0/time64/split-usr/mipsel/o32_sf		exp
+mips		default/linux/mips/23.0/time64/split-usr/mipsel/o32		exp
+mips		default/linux/mips/23.0/time64/split-usr/mipsel/n32		exp
+mips		default/linux/mips/23.0/time64/split-usr/mipsel/multilib/n32	exp
+mips		default/linux/mips/23.0/time64/split-usr/mipsel/multilib/n64	exp
+mips		default/linux/mips/23.0/time64/split-usr/o32_sf			exp
+mips		default/linux/mips/23.0/time64/split-usr/o32			exp
+mips		default/linux/mips/23.0/time64/split-usr/n32			exp
+mips		default/linux/mips/23.0/time64/split-usr/multilib/n32		exp
+mips		default/linux/mips/23.0/time64/split-usr/multilib/n64		exp
+
+
+# PPC profiles
+# @MAINTAINER: gyakovlev@gentoo.org, ppc@gentoo.org, musl@gentoo.org
+ppc		default/linux/ppc/23.0						stable
+ppc		default/linux/ppc/23.0/desktop					stable
+ppc		default/linux/ppc/23.0/desktop/gnome				stable
+ppc		default/linux/ppc/23.0/desktop/gnome/systemd			stable
+ppc		default/linux/ppc/23.0/systemd					stable
+ppc		default/linux/ppc/23.0/split-usr				stable
+ppc		default/linux/ppc/23.0/split-usr/desktop			stable
+ppc		default/linux/ppc/23.0/split-usr/desktop/gnome			stable
+ppc		default/linux/ppc/23.0/time64					exp
+ppc		default/linux/ppc/23.0/time64/desktop				exp
+ppc		default/linux/ppc/23.0/time64/desktop/gnome			exp
+ppc		default/linux/ppc/23.0/time64/desktop/gnome/systemd		exp
+ppc		default/linux/ppc/23.0/time64/systemd				exp
+ppc		default/linux/ppc/23.0/time64/split-usr				exp
+ppc		default/linux/ppc/23.0/time64/split-usr/desktop			exp
+ppc		default/linux/ppc/23.0/time64/split-usr/desktop/gnome		exp
+
+
+# PPC64 profiles
+# @MAINTAINER: gyakovlev@gentoo.org, ppc64@gentoo.org, musl@gentoo.org
+ppc64		default/linux/ppc64/23.0					stable
+ppc64		default/linux/ppc64/23.0/desktop				stable
+ppc64		default/linux/ppc64/23.0/desktop/gnome				stable
+ppc64		default/linux/ppc64/23.0/desktop/gnome/systemd			stable
+ppc64		default/linux/ppc64/23.0/systemd				stable
+ppc64		default/linux/ppc64/23.0/split-usr				stable
+ppc64		default/linux/ppc64/23.0/split-usr/desktop			stable
+ppc64		default/linux/ppc64/23.0/split-usr/desktop/gnome		stable
+
+
+# PPC64LE profiles
+# @MAINTAINER: gyakovlev@gentoo.org, ppc64@gentoo.org, musl@gentoo.org
+ppc64		default/linux/ppc64le/23.0					stable
+ppc64		default/linux/ppc64le/23.0/desktop				stable
+ppc64		default/linux/ppc64le/23.0/desktop/gnome			stable
+ppc64		default/linux/ppc64le/23.0/desktop/gnome/systemd		stable
+ppc64		default/linux/ppc64le/23.0/desktop/plasma			stable
+ppc64		default/linux/ppc64le/23.0/desktop/plasma/systemd		stable
+ppc64		default/linux/ppc64le/23.0/desktop/systemd			stable
+ppc64		default/linux/ppc64le/23.0/systemd				stable
+ppc64		default/linux/ppc64le/23.0/split-usr				stable
+ppc64		default/linux/ppc64le/23.0/split-usr/desktop			stable
+ppc64		default/linux/ppc64le/23.0/split-usr/desktop/gnome		stable
+ppc64		default/linux/ppc64le/23.0/split-usr/desktop/plasma		stable
+
+
+# RISC-V Profiles
+# @MAINTAINER: riscv@gentoo.org
+riscv		default/linux/riscv/23.0/rv64/lp64d					stable
+riscv		default/linux/riscv/23.0/rv64/lp64d/desktop				dev
+riscv		default/linux/riscv/23.0/rv64/lp64d/desktop/gnome			dev
+riscv		default/linux/riscv/23.0/rv64/lp64d/desktop/gnome/systemd		dev
+riscv		default/linux/riscv/23.0/rv64/lp64d/desktop/plasma			dev
+riscv		default/linux/riscv/23.0/rv64/lp64d/desktop/plasma/systemd		dev
+riscv		default/linux/riscv/23.0/rv64/lp64d/desktop/systemd			dev
+riscv		default/linux/riscv/23.0/rv64/lp64d/systemd				stable
+riscv		default/linux/riscv/23.0/rv64/lp64					stable
+riscv		default/linux/riscv/23.0/rv64/lp64/desktop				dev
+riscv		default/linux/riscv/23.0/rv64/lp64/desktop/gnome			dev
+riscv		default/linux/riscv/23.0/rv64/lp64/desktop/gnome/systemd		dev
+riscv		default/linux/riscv/23.0/rv64/lp64/desktop/plasma			dev
+riscv		default/linux/riscv/23.0/rv64/lp64/desktop/plasma/systemd		dev
+riscv		default/linux/riscv/23.0/rv64/lp64/desktop/systemd			dev
+riscv		default/linux/riscv/23.0/rv64/lp64/systemd				stable
+riscv		default/linux/riscv/23.0/rv64/multilib					exp
+riscv		default/linux/riscv/23.0/rv64/multilib/systemd				exp
+riscv		default/linux/riscv/23.0/rv32/ilp32d					exp
+riscv		default/linux/riscv/23.0/rv32/ilp32d/systemd				exp
+riscv		default/linux/riscv/23.0/rv32/ilp32					exp
+riscv		default/linux/riscv/23.0/rv32/ilp32/systemd				exp
+riscv		default/linux/riscv/23.0/rv64/split-usr/lp64d				stable
+riscv		default/linux/riscv/23.0/rv64/split-usr/lp64d/desktop			dev
+riscv		default/linux/riscv/23.0/rv64/split-usr/lp64d/desktop/gnome		dev
+riscv		default/linux/riscv/23.0/rv64/split-usr/lp64d/desktop/plasma		dev
+riscv		default/linux/riscv/23.0/rv64/split-usr/lp64				stable
+riscv		default/linux/riscv/23.0/rv64/split-usr/lp64/desktop			dev
+riscv		default/linux/riscv/23.0/rv64/split-usr/lp64/desktop/gnome		dev
+riscv		default/linux/riscv/23.0/rv64/split-usr/lp64/desktop/plasma		dev
+riscv		default/linux/riscv/23.0/rv64/split-usr/multilib			exp
+riscv		default/linux/riscv/23.0/rv32/split-usr/ilp32d				exp
+riscv		default/linux/riscv/23.0/rv32/split-usr/ilp32				exp
+
+
+# S390 Profiles
+# @MAINTAINER: s390@gentoo.org
+s390		default/linux/s390/23.0						stable
+s390		default/linux/s390/23.0/systemd					stable
+s390		default/linux/s390/23.0/split-usr				dev
+s390		default/linux/s390/23.0/split-usr/s390x				stable
+s390		default/linux/s390/23.0/s390x					stable
+s390		default/linux/s390/23.0/s390x/systemd				stable
+s390		default/linux/s390/23.0/time64					stable
+s390		default/linux/s390/23.0/time64/systemd				stable
+s390		default/linux/s390/23.0/time64/split-usr			dev
+
+
+# SPARC Profiles
+# @MAINTAINER: sparc@gentoo.org
+sparc		default/linux/sparc/23.0					stable
+sparc		default/linux/sparc/23.0/desktop				dev
+sparc		default/linux/sparc/23.0/systemd				dev
+sparc		default/linux/sparc/23.0/64ul					stable
+sparc		default/linux/sparc/23.0/64ul/desktop				stable
+sparc		default/linux/sparc/23.0/64ul/systemd				stable
+sparc		default/linux/sparc/23.0/split-usr				dev
+sparc		default/linux/sparc/23.0/split-usr/desktop			dev
+sparc		default/linux/sparc/23.0/split-usr/64ul				stable
+sparc		default/linux/sparc/23.0/split-usr/64ul/desktop			stable
+
+
+# x86 Profiles
+# @MAINTAINER: x86@gentoo.org
+x86		default/linux/x86/23.0/i686					stable
+x86		default/linux/x86/23.0/i686/systemd				stable
+x86		default/linux/x86/23.0/i686/hardened				stable
+x86		default/linux/x86/23.0/i686/hardened/selinux			stable
+x86		default/linux/x86/23.0/i686/desktop				stable
+x86		default/linux/x86/23.0/i686/desktop/gnome			stable
+x86		default/linux/x86/23.0/i686/desktop/gnome/systemd		stable
+x86		default/linux/x86/23.0/i686/desktop/plasma			stable
+x86		default/linux/x86/23.0/i686/desktop/plasma/systemd		stable
+x86		default/linux/x86/23.0/i686/prefix				exp
+x86		default/linux/x86/23.0/i686/prefix/kernel-2.6.32+		exp
+x86		default/linux/x86/23.0/i686/prefix/kernel-2.6.16+		exp
+x86		default/linux/x86/23.0/i686/prefix/kernel-3.2+			exp
+x86		default/linux/x86/23.0/i686/split-usr				stable
+x86		default/linux/x86/23.0/i686/split-usr/hardened			stable
+x86		default/linux/x86/23.0/i686/split-usr/hardened/selinux		stable
+x86		default/linux/x86/23.0/i686/split-usr/desktop			stable
+x86		default/linux/x86/23.0/i686/split-usr/desktop/gnome		stable
+x86		default/linux/x86/23.0/i686/split-usr/desktop/plasma		stable
+x86		default/linux/x86/23.0/i686/split-usr/prefix			exp
+x86		default/linux/x86/23.0/i686/split-usr/prefix/kernel-2.6.32+	exp
+x86		default/linux/x86/23.0/i686/split-usr/prefix/kernel-2.6.16+	exp
+x86		default/linux/x86/23.0/i686/split-usr/prefix/kernel-3.2+	exp
+x86		default/linux/x86/23.0/i686/time64				stable
+x86		default/linux/x86/23.0/i686/time64/systemd			stable
+x86		default/linux/x86/23.0/i686/time64/hardened			stable
+x86		default/linux/x86/23.0/i686/time64/hardened/selinux		stable
+x86		default/linux/x86/23.0/i686/time64/desktop			stable
+x86		default/linux/x86/23.0/i686/time64/desktop/gnome		stable
+x86		default/linux/x86/23.0/i686/time64/desktop/gnome/systemd	stable
+x86		default/linux/x86/23.0/i686/time64/desktop/plasma		stable
+x86		default/linux/x86/23.0/i686/time64/desktop/plasma/systemd	stable
+x86		default/linux/x86/23.0/i686/time64/split-usr			stable
+x86		default/linux/x86/23.0/i686/time64/split-usr/hardened		stable
+x86		default/linux/x86/23.0/i686/time64/split-usr/hardened/selinux	stable
+x86		default/linux/x86/23.0/i686/time64/split-usr/desktop		stable
+x86		default/linux/x86/23.0/i686/time64/split-usr/desktop/gnome	stable
+x86		default/linux/x86/23.0/i686/time64/split-usr/desktop/plasma	stable
+x86		default/linux/x86/23.0/i486					stable
+x86		default/linux/x86/23.0/i486/systemd				stable
+x86		default/linux/x86/23.0/i486/hardened				dev
+x86		default/linux/x86/23.0/i486/hardened/selinux			dev
+x86		default/linux/x86/23.0/i486/split-usr				dev
+x86		default/linux/x86/23.0/i486/split-usr/hardened			dev
+x86		default/linux/x86/23.0/i486/split-usr/hardened/selinux		dev
+x86		default/linux/x86/23.0/i486/time64				stable
+x86		default/linux/x86/23.0/i486/time64/systemd			stable
+x86		default/linux/x86/23.0/i486/time64/hardened			dev
+x86		default/linux/x86/23.0/i486/time64/hardened/selinux		dev
+x86		default/linux/x86/23.0/i486/time64/split-usr			dev
+x86		default/linux/x86/23.0/i486/time64/split-usr/hardened		dev
+x86		default/linux/x86/23.0/i486/time64/split-usr/hardened/selinux	dev
+
+
+# musl profiles
+# @MAINTAINER: musl@gentoo.org
+amd64		default/linux/amd64/23.0/musl					dev
+amd64		default/linux/amd64/23.0/musl/llvm				exp
+amd64		default/linux/amd64/23.0/musl/hardened				exp
+amd64		default/linux/amd64/23.0/musl/hardened/selinux			exp
+amd64		default/linux/amd64/23.0/split-usr/musl				dev
+amd64		default/linux/amd64/23.0/split-usr/musl/llvm			exp
+amd64		default/linux/amd64/23.0/split-usr/musl/hardened		exp
+amd64		default/linux/amd64/23.0/split-usr/musl/hardened/selinux	exp
+arm		default/linux/arm/23.0/armv6j_hf/musl				dev
+arm		default/linux/arm/23.0/armv6j_hf/musl/hardened			exp
+arm		default/linux/arm/23.0/armv6j_hf/musl/hardened/selinux		exp
+arm		default/linux/arm/23.0/armv7a_hf/musl				dev
+arm		default/linux/arm/23.0/armv7a_hf/musl/hardened			exp
+arm		default/linux/arm/23.0/armv7a_hf/musl/hardened/selinux		exp
+arm		default/linux/arm/23.0/split-usr/armv6j_hf/musl			dev
+arm		default/linux/arm/23.0/split-usr/armv6j_hf/musl/hardened	exp
+arm		default/linux/arm/23.0/split-usr/armv6j_hf/musl/hardened/selinux	exp
+arm		default/linux/arm/23.0/split-usr/armv7a_hf/musl			dev
+arm		default/linux/arm/23.0/split-usr/armv7a_hf/musl/hardened		exp
+arm		default/linux/arm/23.0/split-usr/armv7a_hf/musl/hardened/selinux	exp
+arm64		default/linux/arm64/23.0/musl					dev
+arm64		default/linux/arm64/23.0/musl/llvm				exp
+arm64		default/linux/arm64/23.0/musl/hardened				exp
+arm64		default/linux/arm64/23.0/musl/hardened/selinux			exp
+arm64		default/linux/arm64/23.0/split-usr/musl				dev
+arm64		default/linux/arm64/23.0/split-usr/musl/llvm			exp
+arm64		default/linux/arm64/23.0/split-usr/musl/hardened		exp
+arm64		default/linux/arm64/23.0/split-usr/musl/hardened/selinux	exp
+m68k		default/linux/m68k/23.0/musl					exp
+m68k		default/linux/m68k/23.0/split-usr/musl				exp
+mips		default/linux/mips/23.0/mipsel/o32/musl				dev
+mips		default/linux/mips/23.0/mipsel/n64/musl				exp
+mips		default/linux/mips/23.0/o32/musl				dev
+mips		default/linux/mips/23.0/n64/musl				exp
+mips		default/linux/mips/23.0/split-usr/mipsel/o32/musl		exp
+mips		default/linux/mips/23.0/split-usr/mipsel/n64/musl		exp
+mips		default/linux/mips/23.0/split-usr/o32/musl			exp
+mips		default/linux/mips/23.0/split-usr/n64/musl			exp
+ppc		default/linux/ppc/23.0/musl					dev
+ppc		default/linux/ppc/23.0/musl/hardened				exp
+ppc		default/linux/ppc/23.0/split-usr/musl				dev
+ppc		default/linux/ppc/23.0/split-usr/musl/hardened			exp
+ppc64		default/linux/ppc64/23.0/musl					dev
+ppc64		default/linux/ppc64/23.0/musl/hardened				exp
+ppc64		default/linux/ppc64/23.0/split-usr/musl				dev
+ppc64		default/linux/ppc64/23.0/split-usr/musl/hardened		exp
+ppc64		default/linux/ppc64le/23.0/musl					dev
+ppc64		default/linux/ppc64le/23.0/musl/hardened			exp
+ppc64		default/linux/ppc64le/23.0/split-usr/musl			dev
+ppc64		default/linux/ppc64le/23.0/split-usr/musl/hardened		exp
+riscv		default/linux/riscv/23.0/rv64/lp64d/musl			dev
+riscv		default/linux/riscv/23.0/rv64/lp64/musl				dev
+riscv		default/linux/riscv/23.0/rv64/split-usr/lp64d/musl		dev
+riscv		default/linux/riscv/23.0/rv64/split-usr/lp64/musl		dev
+riscv		default/linux/riscv/23.0/rv32/ilp32d/musl			exp
+riscv		default/linux/riscv/23.0/rv32/ilp32/musl			exp
+riscv		default/linux/riscv/23.0/rv32/split-usr/ilp32d/musl		exp
+riscv		default/linux/riscv/23.0/rv32/split-usr/ilp32/musl		exp
+x86		default/linux/x86/23.0/i686/musl				dev
+x86		default/linux/x86/23.0/i686/musl/selinux			exp
+x86		default/linux/x86/23.0/i686/split-usr/musl			dev
+x86		default/linux/x86/23.0/i686/split-usr/musl/selinux		exp
+x86		default/linux/x86/23.0/i486/musl				dev
+x86		default/linux/x86/23.0/i486/musl/selinux			exp
+x86		default/linux/x86/23.0/i486/split-usr/musl			dev
+x86		default/linux/x86/23.0/i486/split-usr/musl/selinux		exp
+
+
+# These are Gentoo Prefix profiles, maintained by the Prefix team
+# @MAINTAINER: prefix@gentoo.org
+
+# Linux Profiles
+amd64-linux	prefix/linux/amd64						exp
+arm-linux	prefix/linux/arm						exp
+ppc64-linux	prefix/linux/ppc64						exp
+ppc64-linux	prefix/linux/ppc64le						exp
+riscv-linux	prefix/linux/riscv						exp
+x86-linux	prefix/linux/x86						exp
+
+# Linux Standalone Profiles
+# ??
+
+# macOS Profiles
+ppc-macos	prefix/darwin/macos/10.5/ppc/gcc				exp
+x86-macos	prefix/darwin/macos/10.5/x86/gcc				exp
+x64-macos	prefix/darwin/macos/10.11/x64					exp
+x64-macos	prefix/darwin/macos/10.13/x64					exp
+x64-macos	prefix/darwin/macos/10.13/x64/gcc				exp
+x64-macos	prefix/darwin/macos/10.14/x64					exp
+x64-macos	prefix/darwin/macos/10.14/x64/gcc				exp
+x64-macos	prefix/darwin/macos/10.15/x64					exp
+x64-macos	prefix/darwin/macos/10.15/x64/gcc				exp
+x64-macos	prefix/darwin/macos/11.0/x64					exp
+x64-macos	prefix/darwin/macos/11.0/x64/gcc				exp
+x64-macos	prefix/darwin/macos/12.0/x64					exp
+x64-macos	prefix/darwin/macos/12.0/x64/gcc				exp
+x64-macos	prefix/darwin/macos/13.0/x64/gcc				exp
+x64-macos	prefix/darwin/macos/14.0/x64/gcc				exp
+x64-macos	prefix/darwin/macos/15.0/x64/gcc				exp
+x64-macos	prefix/darwin/macos/26.0/x64/gcc				exp
+arm64-macos	prefix/darwin/macos/11.0/arm64					exp
+arm64-macos	prefix/darwin/macos/11.0/arm64/gcc				exp
+arm64-macos	prefix/darwin/macos/12.0/arm64					exp
+arm64-macos	prefix/darwin/macos/12.0/arm64/gcc				exp
+arm64-macos	prefix/darwin/macos/13.0/arm64/gcc				exp
+arm64-macos	prefix/darwin/macos/14.0/arm64/gcc				exp
+arm64-macos	prefix/darwin/macos/15.0/arm64/gcc				exp
+arm64-macos	prefix/darwin/macos/26.0/arm64/gcc				exp
+
+# Solaris Profiles
+x64-solaris	prefix/sunos/solaris/5.11/x64					exp
+
+# vim: set ts=8 noet ft=conf:
+
+# Local Variables:
+# mode: conf-space
+# tab-width: 8
+# indent-tabs-mode: t
+# End:

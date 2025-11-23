@@ -1,0 +1,14 @@
+--- a/Makefile
++++ b/Makefile
+@@ -99,9 +99,9 @@
+ all: $(NAME)
+ 
+ .objdeps.mk: $(OBJS:%.o=%.c)
+-	gcc -MM -I. $^ >$@
++	$(CC) -MM -I. $^ >$@
+ ifeq ($(OSX),1)
+-	gcc -MM -I. ifctrl-osx.m >>$@
++	$(CC) -MM -I. ifctrl-osx.m >>$@
+ endif
+ 
+ -include .objdeps.mk

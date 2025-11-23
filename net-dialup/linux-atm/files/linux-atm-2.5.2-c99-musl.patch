@@ -1,0 +1,113 @@
+Author: NHOrus <jy6x2b32pie9@yahoo.com>
+Bug: https://bugs.gentoo.org/897842
+Enabling the system extension that gate some POSIX features
+and fixing missing includes, 32/64 bit confusion, standard
+atexit function instead of non-standard, and function signature
+--- a/configure.in
++++ b/configure.in
+@@ -34,6 +34,7 @@ dnl We have some special PERL scripts wh
+ AC_PATH_PROG(PERL, perl)
+ AC_SUBST(PERL)
+ 
++AC_USE_SYSTEM_EXTENSIONS
+ 
+ dnl Check for needed header files
+ AC_CHECK_HEADER(asm/errno.h, ,
+--- a/src/lib/unix.c
++++ b/src/lib/unix.c
+@@ -10,6 +10,7 @@
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <errno.h>
++#include <string.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <sys/socket.h>
+--- a/src/sigd/policy.c
++++ b/src/sigd/policy.c
+@@ -8,6 +8,7 @@
+ 
+ #include <atm.h>
+ #include <atmd.h>
++#include <string.h>
+ 
+ #include "proto.h" /* for "pretty" */
+ #include "policy.h"
+--- a/src/sigd/kernel.c
++++ b/src/sigd/kernel.c
+@@ -10,6 +10,7 @@
+ #include <stdio.h>
+ #include <errno.h>
+ #include <assert.h>
++#include <string.h>
+ 
+ #include <atm.h>
+ #include <linux/atmsvc.h>
+--- a/src/sigd/atmsigd.c
++++ b/src/sigd/atmsigd.c
+@@ -283,12 +283,12 @@ static void setup_signals(void)
+ /* ------------------------------- main ...  ------------------------------- */
+ 
+ 
+-static void trace_on_exit(int status,void *dummy)
++static void trace_on_exit(void)
+ {
+     char path[PATH_MAX+1];
+     FILE *file;
+ 
+-    if (!status) return;
++//    if (!status) return;
+     if (!dump_dir) file = stderr;
+     else {
+ 	sprintf(path,"atmsigd.%d.trace.exit",getpid());
+@@ -517,7 +517,7 @@ int main(int argc,char **argv)
+ 	    exit(0);
+ 	}
+     }
+-    (void) on_exit(trace_on_exit,NULL);
++    (void) atexit(trace_on_exit);
+     poll_loop();
+     close_all();
+     for (sig = entities; sig; sig = sig->next) stop_saal(&sig->saal);
+--- a/src/led/address.c
++++ b/src/led/address.c
+@@ -33,6 +33,7 @@
+ #include <sys/ioctl.h>
+ #include <unistd.h>
+ #include <errno.h>
++#include <string.h>
+ 
+ #include <atm.h>
+ #include <linux/atmdev.h>
+--- a/src/led/conn.c
++++ b/src/led/conn.c
+@@ -405,7 +405,7 @@ Conn_t *accept_conn(Conn_t *conn)
+ {
+         Conn_t *new;
+         struct sockaddr_atmsvc addr;
+-        size_t len;
++        socklen_t len;
+         int fd;
+         char buff[MAX_ATM_ADDR_LEN+1];
+ 
+--- a/src/led/display.c
++++ b/src/led/display.c
+@@ -6,6 +6,7 @@
+ #include <config.h>
+ #endif
+ 
++#include <string.h>
+ #include <atm.h>
+ #include <atmd.h>
+ 
+--- a/src/mpoad/io.c
++++ b/src/mpoad/io.c
+@@ -16,7 +16,7 @@
+ #include <syscall.h>
+ #include <linux/poll.h>
+ #define SYS_poll 168
+-_syscall3(int,poll,struct pollfd *,ufds,unsigned int,nfds,int,timeout);
++int _syscall3(int, int poll,struct pollfd *,int ufds,unsigned int,int nfds,int,int timeout);
+ #endif
+ #include <atm.h>
+ #include <linux/types.h>

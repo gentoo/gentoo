@@ -1,0 +1,24 @@
+# Copyright 1999-2025 Gentoo Authors.
+# Distributed under the terms of the GNU General Public License v2
+
+# This file contains descriptions of NGINX_MODULES_STREAM USE_EXPAND flags.
+
+# Keep it sorted.
+access - Add support for a simple host-based access control
+geo - Add support for creating variables whose values depend on the client IP-address
+geoip - Add support for creating variables whose values depend on the client IP-address, using the precompiled MaxMind databases
+geoip2 - Add support for creating variables whose values depend on the client IP-address, using the precompiled MaxMind GeoIP2 databases
+javascript - Add support for implementing location and variable handlers in njs - a subset of the JavaScript language
+limit_conn - Add support for limiting the number of connections per a defined key, e.g. the number of connections from a single IP address
+map - Add support for creating variables whose values depend on the values of other variables
+pass - Add support for passing the accepted connection directly to any configured listening socket in "http", "stream", "mail", and other similar modules
+realip - Add support for setting the client address and optional port to those sent in the specified header field (e.g. "X-Real-IP" or "X-Forwarded-For")
+return - Add support for sending a specified value to the client and then closing the connection
+set - Add support for setting a value for a variable
+split_clients - Add support for creating variables suitable for A/B testing, also known as split testing
+ssl - Add SSL/TLS protocol support to a stream proxy server
+ssl_preread - Add support for extracting information from the ClientHello message without terminating SSL/TLS connection
+upstream_hash - Add support for distributing upstream requests based on hashed key value
+upstream_least_conn - Add support for passing upstream requests to the server with the least number of active connections
+upstream_random - Add support for passing upstream requests to a randomly selected server
+upstream_zone - Add support for defining a shared memory zone that keeps the group's configuration and run-time state that are shared between worker processes

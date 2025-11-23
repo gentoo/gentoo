@@ -1,0 +1,61 @@
+https://github.com/jstedfast/gmime/commit/2972da2f28e6c5cf51465cdaef6e169fe7710f8b
+
+From 2972da2f28e6c5cf51465cdaef6e169fe7710f8b Mon Sep 17 00:00:00 2001
+From: Biswapriyo Nath <nathbappai@gmail.com>
+Date: Sat, 6 Jul 2024 13:46:11 +0000
+Subject: [PATCH] Fix compiler error with 32 bit gcc 14 in Windows
+
+This fixes the following compiler error.
+
+../../gmime/gmime-gpgme-utils.c:69:9: error: initialization of
+'gpgme_ssize_t (*)(void *, void *, size_t)' {aka 'long int (*)(void *, void *, unsigned int)'}
+from incompatible pointer type
+'ssize_t (*)(void *, void *, size_t)' {aka 'int (*)(void *, void *, unsigned int)'}
+[-Wincompatible-pointer-types]
+   69 |         g_mime_gpgme_stream_read,
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~
+---
+ gmime/gmime-gpgme-utils.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/gmime/gmime-gpgme-utils.c b/gmime/gmime-gpgme-utils.c
+index 2b87c22a..621d9db1 100644
+--- a/gmime/gmime-gpgme-utils.c
++++ b/gmime/gmime-gpgme-utils.c
+@@ -32,28 +32,28 @@
+ 
+ #define _(x) x
+ 
+-static ssize_t
++static gpgme_ssize_t
+ g_mime_gpgme_stream_read (void *stream, void *buffer, size_t size)
+ {
+ 	return g_mime_stream_read ((GMimeStream *) stream, (char *) buffer, size);
+ }
+ 
+-static ssize_t
++static gpgme_ssize_t
+ g_mime_gpgme_stream_write (void *stream, const void *buffer, size_t size)
+ {
+ 	return g_mime_stream_write ((GMimeStream *) stream, (const char *) buffer, size);
+ }
+ 
+-static off_t
+-g_mime_gpgme_stream_seek (void *stream, off_t offset, int whence)
++static gpgme_off_t
++g_mime_gpgme_stream_seek (void *stream, gpgme_off_t offset, int whence)
+ {
+ 	switch (whence) {
+ 	case SEEK_SET:
+-		return (off_t) g_mime_stream_seek ((GMimeStream *) stream, (gint64) offset, GMIME_STREAM_SEEK_SET);
++		return (gpgme_off_t) g_mime_stream_seek ((GMimeStream *) stream, (gint64) offset, GMIME_STREAM_SEEK_SET);
+ 	case SEEK_CUR:
+-		return (off_t) g_mime_stream_seek ((GMimeStream *) stream, (gint64) offset, GMIME_STREAM_SEEK_CUR);
++		return (gpgme_off_t) g_mime_stream_seek ((GMimeStream *) stream, (gint64) offset, GMIME_STREAM_SEEK_CUR);
+ 	case SEEK_END:
+-		return (off_t) g_mime_stream_seek ((GMimeStream *) stream, (gint64) offset, GMIME_STREAM_SEEK_END);
++		return (gpgme_off_t) g_mime_stream_seek ((GMimeStream *) stream, (gint64) offset, GMIME_STREAM_SEEK_END);
+ 	default:
+ 		return -1;
+ 	}
+

@@ -1,0 +1,50 @@
+Descriptions: Fix some spelling errors in output text of the programs
+Author: Cédric Boutillier <boutil@debian.org>
+Author: Doug Torrance <dtorrance@piedmont.edu>
+Forwarded: yes
+Last-Update: 2020-11-13
+
+--- a/src/app_scarfisgeneric.cpp
++++ b/src/app_scarfisgeneric.cpp
+@@ -24,7 +24,7 @@
+   }
+   const char *helpText()
+   {
+-    return "This program takes a matrix as input and checks if it satisfies Scarf's generality conditions. The rows of the matrix are listed on the input. The A1 condition is that there exists a strictly poistive vector in the co-kernel of the matrix. The A2 condition is that te maximal minors of the matrix are non-zero. A3\n";
++    return "This program takes a matrix as input and checks if it satisfies Scarf's generality conditions. The rows of the matrix are listed on the input. The A1 condition is that there exists a strictly poistive vector in the co-kernel of the matrix. The A2 condition is that the maximal minors of the matrix are non-zero. A3\n";
+   }
+   ScarfIsGenericApplication()
+   {
+--- a/src/app_symmetries.cpp
++++ b/src/app_symmetries.cpp
+@@ -35,7 +35,7 @@
+   }
+   SymmetriesApplication():
+     optionSymmetry("--symmetry","Specify subgroup to be searched for permutations keeping the ideal fixed."),
+-    optionTorusSymmetry("--symsigns","Specify for each generator of the group specified wiht --symmetry an element of ${-1,+1}^n$ which by its multiplication on the variables together with the permutation is expected to keep the ideal fixed.")
++    optionTorusSymmetry("--symsigns","Specify for each generator of the group specified with --symmetry an element of ${-1,+1}^n$ which by its multiplication on the variables together with the permutation is expected to keep the ideal fixed.")
+   {
+     registerOptions();
+   }
+--- a/src/app_representatives.cpp
++++ b/src/app_representatives.cpp
+@@ -24,7 +24,7 @@
+   }
+   const char *helpText()
+   {
+-    return "This program computes takes generaters for a subgroup of S_n and a list of n-dimensional integer vectors. The output is a list of vectors, one from each orbit of elements of the list. \n";
++    return "This program computes takes generators for a subgroup of S_n and a list of n-dimensional integer vectors. The output is a list of vectors, one from each orbit of elements of the list. \n";
+   }
+   RepresentativesApplication()
+   {
+--- a/src/tropical2.cpp
++++ b/src/tropical2.cpp
+@@ -271,7 +271,7 @@
+   PolynomialSet r(theRing);
+   if(theRing.getNumberOfVariables()!=weight.size())
+     {
+-      cerr << "Error: Number of varaibles in polynomial ring "<<theRing.getNumberOfVariables()<< " length of weight vector " << weight.size() <<endl;
++      cerr << "Error: Number of variables in polynomial ring "<<theRing.getNumberOfVariables()<< " length of weight vector " << weight.size() <<endl;
+       assert(0);
+     }
+ 

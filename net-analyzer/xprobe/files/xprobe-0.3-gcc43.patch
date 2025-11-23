@@ -1,0 +1,29 @@
+--- a/libs-external/USI++/src/ip.cc
++++ b/libs-external/USI++/src/ip.cc
+@@ -13,6 +13,7 @@
+ #include "usi++/ip.h"
+ 
+ #include "config.h"
++#include <cstdlib>
+ #include <iostream>
+ #include <string.h>
+ #include <errno.h>
+--- a/libs-external/USI++/src/misc.cc
++++ b/libs-external/USI++/src/misc.cc
+@@ -1,5 +1,6 @@
+ #include "usi++/usi++"
+ #include "usi++/usi-structs.h"
++#include <cstdlib>
+ #include <string.h>
+ #include <unistd.h>
+ #include <sys/ioctl.h>
+--- a/libs-external/USI++/usi++/tcp.h
++++ b/libs-external/USI++/usi++/tcp.h
+@@ -15,6 +15,7 @@
+ #include "usi-structs.h"
+ #include "datalink.h"
+ #include "ip.h"
++#include <cstring>
+ 
+ namespace usipp {
+ 

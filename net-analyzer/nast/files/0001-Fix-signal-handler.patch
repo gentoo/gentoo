@@ -1,0 +1,43 @@
+From eff649cd681e52b953dcf37065a7035246930858 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 12 Feb 2025 15:32:37 +0000
+Subject: [PATCH 1/2] Fix signal handler
+
+Signal handlers need to take an argument.
+
+Bug: https://bugs.gentoo.org/944402
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ common.c       | 2 +-
+ include/nast.h | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/common.c b/common.c
+index 5649295..f2b60f4 100644
+--- a/common.c
++++ b/common.c
+@@ -226,7 +226,7 @@ void openfile(void)
+ }
+ 
+ /* signal handler */
+-void sigexit()
++void sigexit(int unused)
+ {
+ #ifdef HAVE_LIBNCURSES
+ # include <ncurses.h>
+diff --git a/include/nast.h b/include/nast.h
+index f5cd047..a65a404 100644
+--- a/include/nast.h
++++ b/include/nast.h
+@@ -73,7 +73,7 @@ int car (char *dev, int lg);
+ int run_bc (char *dev, char *filter);
+ 
+ /* other functions*/
+-void sigexit();
++void sigexit(int unused);
+ void openfile(void);
+ void bkg(void);
+ 
+-- 
+2.48.1
+

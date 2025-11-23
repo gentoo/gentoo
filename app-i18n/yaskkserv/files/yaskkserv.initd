@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/sbin/${RC_SVCNAME}_${YASKKSERV_SERVER_TYPE}"
+command_args="--no-daemonize ${YASKKSERV_OPTS}"
+command_background="true"
+pidfile="${pidfile:-/run/${RC_SVCNAME}.pid}"
+
+depend() {
+	need net
+	use logger
+}

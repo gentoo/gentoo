@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/962818
+
+From 15e34c12deb0afb55f042c017325aea0a25e721f Mon Sep 17 00:00:00 2001
+From: Ted Rodgers <ted.d.rodgers@gmail.com>
+Date: Tue, 30 Sep 2025 18:47:18 -0400
+Subject: [PATCH] lib/core.c - replace <curl/multi.h> with <curl/curl.h>
+
+---
+ lib/core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/core.c b/lib/core.c
+index 86807e6..de380da 100644
+--- a/lib/core.c
++++ b/lib/core.c
+@@ -19,7 +19,7 @@
+  **************************************************************/
+ 
+ #include <errno.h>
+-#include <curl/multi.h>
++#include <curl/curl.h>
+ 
+ #include "stringlib.h"
+ #include "core.h"
+-- 
+2.51.0

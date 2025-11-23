@@ -1,0 +1,49 @@
+https://github.com/beltoforion/muparserx/commit/d671af0882d4ba09a4bba810877b796f1877d41e
+https://github.com/beltoforion/muparserx/commit/c605872591d542e1630e3fcc4b292d8a0702acd2
+
+From d671af0882d4ba09a4bba810877b796f1877d41e Mon Sep 17 00:00:00 2001
+From: nalinigans <nalini@omicsautomation.com>
+Date: Tue, 21 Mar 2023 10:13:14 -0400
+Subject: [PATCH] Move to at least 3.3 to support
+ https://www.cmake.org/cmake/help/latest/policy/CMP0063.html
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2bc28fc..2d43781 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ ########################################################################
+ # Project setup
+ ########################################################################
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.3)
+ project(muparserx CXX)
+ 
+ ########################################################################
+From c605872591d542e1630e3fcc4b292d8a0702acd2 Mon Sep 17 00:00:00 2001
+From: Nalini Ganapati <nalini@datma.com>
+Date: Mon, 18 Dec 2023 11:46:35 -0800
+Subject: [PATCH] Move to 3.17 as cmake is dropping compatibility for <3.5
+ versions
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2d43781..00156e9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ ########################################################################
+ # Project setup
+ ########################################################################
+-cmake_minimum_required(VERSION 3.3)
++cmake_minimum_required(VERSION 3.17)
+ project(muparserx CXX)
+ 
+ ########################################################################

@@ -1,0 +1,103 @@
+https://bugs.gentoo.org/919178
+https://github.com/microcai/ibus-handwrite/commit/04694e914a3a0ba957474d5018e65816d7fa5d59
+From 7f48b7b62964771e648f96181f83a1cf6f15c47a Mon Sep 17 00:00:00 2001
+From: Peng Wu <pwu@redhat.com>
+Date: Mon, 5 Feb 2024 13:58:03 +0800
+Subject: [PATCH] Fix compile issues
+
+---
+ src/UI_gtk.c           |  6 +++---
+ src/engine.c           | 10 ++++------
+ src/engine.h           |  2 +-
+ src/handrecog_zinnia.c |  2 +-
+ 4 files changed, 9 insertions(+), 11 deletions(-)
+
+diff --git a/src/UI_gtk.c b/src/UI_gtk.c
+index 152d2b6..5ecf1de 100644
+--- a/src/UI_gtk.c
++++ b/src/UI_gtk.c
+@@ -58,7 +58,7 @@ static gboolean paint_lines(GtkWidget *widget, cairo_t * cr, IBusHandwriteEngine
+ 	cairo_set_line_cap(cr,CAIRO_LINE_CAP_ROUND);
+ 	cairo_set_line_join(cr,CAIRO_LINE_JOIN_ROUND);
+ 
+-	gdk_cairo_set_source_color (cr, engine->color);
++	gdk_cairo_set_source_rgba (cr, engine->color);
+ 
+ 	//已经录入的笔画
+ 	for (i = 0; i < engine->engine->strokes->len ; i++ )
+@@ -94,7 +94,7 @@ static void regen_loopuptable(GtkWidget * widget, IBusHandwriteEngine * engine)
+ 
+ 		g_object_set(G_OBJECT(bt), "expand", TRUE, NULL);
+ 
+-		gtk_grid_attach(GTK_TABLE(widget), bt, i%5, i/5, 1, 1);
++		gtk_grid_attach(GTK_GRID(widget), bt, i%5, i/5, 1, 1);
+ 
+ 		gtk_widget_show(bt);
+ 
+@@ -247,7 +247,7 @@ void UI_buildui(IBusHandwriteEngine * engine)
+ 		gtk_window_set_position(GTK_WINDOW(engine->drawpanel),GTK_WIN_POS_MOUSE);
+ 
+ 		GtkWidget * vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
+-		gtk_box_set_homogeneous(vbox, FALSE);
++		gtk_box_set_homogeneous(GTK_BOX(vbox), FALSE);
+ 
+ 		gtk_container_add(GTK_CONTAINER(engine->drawpanel),vbox);
+ 
+diff --git a/src/engine.c b/src/engine.c
+index d3d924e..d9d9a71 100644
+--- a/src/engine.c
++++ b/src/engine.c
+@@ -89,6 +89,7 @@ static void ibus_handwrite_engine_init(IBusHandwriteEngine *handwrite)
+ #endif
+ 
+ 	handwrite->engine = ibus_handwrite_recog_new(handwrite->engine_type);
++	handwrite->color[0].alpha = 1.0;
+ 	handwrite->engine->engine = handwrite;
+ }
+ 
+@@ -186,16 +187,13 @@ void ibus_handwrite_property_activate(IBusEngine *engine,const gchar *prop_name,
+ 	{
+ 		g_debug("color choose");
+ 
+-		GtkWidget * dialog = gtk_color_selection_dialog_new(prop_name);
++		GtkWidget * dialog = gtk_color_chooser_dialog_new(prop_name, NULL);
+ 
+-
+-		GtkWidget * color_sel = gtk_color_selection_dialog_get_color_selection(GTK_COLOR_SELECTION_DIALOG(dialog));
+-
+-		gtk_color_selection_set_current_color(GTK_COLOR_SELECTION(color_sel),handwrite->color);
++		gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(dialog),handwrite->color);
+ 
+ 		gtk_dialog_run(GTK_DIALOG(dialog));
+ 
+-		gtk_color_selection_get_current_color(GTK_COLOR_SELECTION(color_sel),handwrite->color);
++		gtk_color_chooser_get_rgba(GTK_COLOR_CHOOSER(dialog),handwrite->color);
+ 
+ 		gtk_widget_destroy(dialog);
+ 	}
+diff --git a/src/engine.h b/src/engine.h
+index d2099d2..f86b124 100644
+--- a/src/engine.h
++++ b/src/engine.h
+@@ -25,7 +25,7 @@ struct _IBusHandwriteEngine
+ 	GtkWidget * drawpanel;
+ 	GtkWidget * lookuppanel;
+ 	GdkPoint lastpoint;
+-	GdkColor color[1]; // color used by pen
++	GdkRGBA color[1]; // color used by pen
+ 	guint mouse_state;
+ 	IbusHandwriteRecog * engine;
+ 	LineStroke currentstroke;
+diff --git a/src/handrecog_zinnia.c b/src/handrecog_zinnia.c
+index 3d8512d..955f4a5 100644
+--- a/src/handrecog_zinnia.c
++++ b/src/handrecog_zinnia.c
+@@ -74,7 +74,7 @@ static gboolean ibus_handwrite_recog_zinnia_domatch(IbusHandwriteRecog*obj,int w
+ 
+ 	LineStroke cl;
+ 
+-	guint width,height;
++	gint width,height;
+ 
+ 	obj->matched = g_array_set_size(obj->matched,0);
+ 

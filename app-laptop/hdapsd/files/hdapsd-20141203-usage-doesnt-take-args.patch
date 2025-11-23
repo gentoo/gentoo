@@ -1,0 +1,23 @@
+From f74b32c417af940dc1ebb64cde49503253064c28 Mon Sep 17 00:00:00 2001
+From: Evgeni Golov <evgeni@golov.de>
+Date: Thu, 30 May 2024 17:32:56 +0200
+Subject: [PATCH] don't pass argv to usage, it doesn't take any params
+
+thanks clang!
+---
+ src/hdapsd.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/hdapsd.c b/src/hdapsd.c
+index 03d21a1..92c6f25 100644
+--- a/src/hdapsd.c
++++ b/src/hdapsd.c
+@@ -1027,7 +1027,7 @@ int main (int argc, char** argv)
+ 	}
+ 
+ 	if (disklist == NULL)
+-		usage(argv);
++		usage();
+ 
+ 	/* Let's see if we're on a ThinkPad or on an *Book */
+ 	if (!position_interface)

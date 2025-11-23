@@ -1,0 +1,12 @@
+diff --git a/config.h b/config.h
+index 6280af8f0..f8c8ddebf 100644
+--- a/config.h
++++ b/config.h
+@@ -833,7 +833,6 @@
+ /*
+  * Use the new meta scheme to do neater things
+  */
+-#define EXPERIMENTAL_META
+ #ifdef EXPERIMENTAL_META
+ /* Retrieve ping times for all servers listed on the meta server. - C. Blue
+    The number indicates the max number of server names we read (raw, ie duplicates included).

@@ -1,0 +1,20 @@
+--- a/gqradio.desktop
++++ b/gqradio.desktop
+@@ -3,12 +3,12 @@
+ Comment=Radio tuner
+ Comment[fr]=Tuner radio
+ Exec=gqradio
+-Icon=gqradio.png
+-Info=Radio tuner app.
+-Info[fr]=Application tuner radio
+-Terminal=0
++Icon=gqradio
++X-Info=Radio tuner app.
++X-Info[fr]=Application tuner radio
++Terminal=false
+ Type=Application
+ StartupNotify=false
+ StartupWMClass=gqradio
+ Encoding=UTF-8
+-Categories=Application;AudioVideo;
++Categories=AudioVideo;

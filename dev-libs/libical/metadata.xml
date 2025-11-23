@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>asturm@gentoo.org</email>
+		<name>Andreas Sturmlechner</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">libical/libical</remote-id>
+	</upstream>
+	<use>
+		<flag name="glib">Enable <pkg>dev-libs/glib</pkg> interface support</flag>
+	</use>
+</pkgmetadata>

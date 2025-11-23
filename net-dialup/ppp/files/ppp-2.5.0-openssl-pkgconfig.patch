@@ -1,0 +1,79 @@
+https://bugs.gentoo.org/905442
+https://github.com/ppp-project/ppp/pull/438
+
+From 9b4bdca70081abbad26277b009ef9c4ab7e276d0 Mon Sep 17 00:00:00 2001
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Thu, 2 Nov 2023 11:26:18 +0530
+Subject: [PATCH] Fix linking error with lld linkers (#438)
+
+When using lld linker, build fails with
+
+ld.lld: error: /usr/lib/gcc/x86_64-pc-linux-gnu/12/../../../../lib64/Scrt1.o is incompatible with elf32-i386
+ld.lld: error: /usr/lib/gcc/x86_64-pc-linux-gnu/12/../../../../lib64/crti.o is incompatible with elf32-i386
+ld.lld: error: /usr/lib/llvm/16/bin/../../../../lib/clang/16/lib/linux
+
+The fix is to check pkg-config first, and not force manual -L /usr/lib.
+If pkg-config succeeded, then we don't bother with -L /usr/lib
+
+Our guess is this what the actual intention was based upon the coments
+
+if pkg-config is installed and openssl has installed a .pc file,
+then use that information and don't search ssldirs
+
+First found on gentoo linux with llvm profile, please check out Bug:
+section of the commit for more info and a complete build log.
+
+Bug: https://bugs.gentoo.org/905442
+
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+Co-authored-by: Sam James <sam@gentoo.org>
+---
+ m4/ax_check_openssl.m4 | 28 ++++++++++++++--------------
+ 1 file changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/m4/ax_check_openssl.m4 b/m4/ax_check_openssl.m4
+index 8ae39cae6..39154c856 100644
+--- a/m4/ax_check_openssl.m4
++++ b/m4/ax_check_openssl.m4
+@@ -55,6 +55,20 @@ AC_DEFUN([AX_CHECK_OPENSSL], [
+         ])
+ 
+     AS_IF([test "${with_openssl}" != "no"], [
++        # if pkg-config is installed and openssl has installed a .pc file,
++        # then use that information and don't search ssldirs
++        AC_PATH_PROG([PKG_CONFIG], [pkg-config])
++        if test x"$PKG_CONFIG" != x""; then
++            OPENSSL_LDFLAGS=`$PKG_CONFIG openssl --libs-only-L 2>/dev/null`
++            if test $? = 0; then
++                OPENSSL_LIBS=`$PKG_CONFIG openssl --libs-only-l 2>/dev/null`
++                OPENSSL_INCLUDES=`$PKG_CONFIG openssl --cflags-only-I 2>/dev/null`
++                found=true
++            fi
++        fi
++    ])
++
++    AS_IF([test "${with_openssl}" != "no" && test ! ${found}], [
+         OPENSSL_INCLUDES=
+         for ssldir in $ssldirs; do
+             AC_MSG_CHECKING([for openssl/ssl.h in $ssldir])
+@@ -69,20 +83,6 @@ AC_DEFUN([AX_CHECK_OPENSSL], [
+                 AC_MSG_RESULT([no])
+             ])
+         done])
+-     
+-    AS_IF([test "${with_openssl}" != "no" && test ! ${found}], [ 
+-        # if pkg-config is installed and openssl has installed a .pc file,
+-        # then use that information and don't search ssldirs
+-        AC_PATH_PROG([PKG_CONFIG], [pkg-config])
+-        if test x"$PKG_CONFIG" != x""; then
+-            OPENSSL_LDFLAGS=`$PKG_CONFIG openssl --libs-only-L 2>/dev/null`
+-            if test $? = 0; then
+-                OPENSSL_LIBS=`$PKG_CONFIG openssl --libs-only-l 2>/dev/null`
+-                OPENSSL_INCLUDES=`$PKG_CONFIG openssl --cflags-only-I 2>/dev/null`
+-                found=true
+-            fi
+-        fi
+-    ])
+ 
+     AS_IF([test "${with_openssl}" != "no" && test ${found}], [
+ 

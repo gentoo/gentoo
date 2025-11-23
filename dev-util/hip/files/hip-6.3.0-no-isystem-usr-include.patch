@@ -1,0 +1,17 @@
+Prevent HIP targets from adding -isystem /usr/include, which breaks <cmath>
+--- a/hipamd/hip-config-amd.cmake.in
++++ b/hipamd/hip-config-amd.cmake.in
+@@ -135,13 +135,11 @@ set_target_properties(hip::host PROPERTIES
+ 
+ set_target_properties(hip::amdhip64 PROPERTIES
+   INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+-  INTERFACE_SYSTEM_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+ )
+ 
+ if(NOT WIN32)
+   set_target_properties(hip::device PROPERTIES
+     INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+-    INTERFACE_SYSTEM_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+   )
+ endif()
+ 

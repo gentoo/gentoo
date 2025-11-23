@@ -1,0 +1,19 @@
+Fix bashism
+Reported upstream by email
+--- a/configure.ac
++++ b/configure.ac
+@@ -16,11 +16,11 @@ fpm2_CFLAGS="${x11_CFLAGS} ${libxml2_CFLAGS} ${nettle_CFLAGS} "
+ fpm2_LIBS="${x11_LIBS} ${libxml2_LIBS} ${nettle_LIBS} "
+ 
+ PKG_CHECK_MODULES([gtk3], [gtk+-3.0])
+-fpm2_CFLAGS+="${gtk3_CFLAGS} "
+-fpm2_LIBS+="${gtk3_LIBS} "
++fpm2_CFLAGS="${fpm2_CFLAGS} ${gtk3_CFLAGS} "
++fpm2_LIBS="${fpm2_LIBS} ${gtk3_LIBS} "
+ 
+ # Get rid of deprecated GTK3 mess
+-fpm2_CFLAGS+="-Wno-deprecated-declarations"
++fpm2_CFLAGS="${fpm2_CFLAGS} -Wno-deprecated-declarations"
+ 
+ AC_SUBST(fpm2_CFLAGS)
+ AC_SUBST(fpm2_LIBS)

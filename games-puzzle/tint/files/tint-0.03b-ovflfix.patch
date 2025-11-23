@@ -1,0 +1,33 @@
+diff -ru tint-0.03b.orig/io.c tint-0.03b/io.c
+--- tint-0.03b.orig/io.c	2001-12-07 10:48:20.000000000 -0500
++++ tint-0.03b/io.c	2010-11-08 13:40:16.786841434 -0500
+@@ -39,7 +39,7 @@
+ #define NUM_COLORS	8
+ 
+ /* Number of attributes defined in io.h */
+-#define NUM_ATTRS	7
++#define NUM_ATTRS	9
+ 
+ /* Cursor definitions */
+ #define CURSOR_INVISIBLE	0
+diff -ru tint-0.03b.orig/tint.c tint-0.03b/tint.c
+--- tint-0.03b.orig/tint.c	2005-07-17 07:26:43.000000000 -0400
++++ tint-0.03b/tint.c	2010-11-08 13:40:04.225203170 -0500
+@@ -365,7 +365,7 @@
+    FILE *handle;
+    int i,j;
+    score_t scores[NUMSCORES];
+-   char header[strlen (SCORE_HEADER)];
++   char header[strlen(SCORE_HEADER) + 1];
+    if (score == 0) return;	/* No need saving this */
+    for (i = 1; i < NUMSCORES; i++)
+ 	 {
+@@ -418,7 +418,7 @@
+    FILE *handle;
+    int i,j,ch;
+    score_t scores[NUMSCORES];
+-   char header[strlen (SCORE_HEADER)];
++   char header[strlen(SCORE_HEADER) + 1];
+    time_t tmp = 0;
+    if ((handle = fopen (scorefile,"r")) == NULL)
+ 	 {

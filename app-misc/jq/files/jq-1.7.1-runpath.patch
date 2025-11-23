@@ -1,0 +1,38 @@
+Fixes: https://github.com/gentoo/gentoo/commit/df24c1f97695d8a64a82577cd785e85ebe7ad4e7
+Upstream-PR: https://github.com/jqlang/jq/pull/3212
+
+From f23a7373d079a4d4fd1f975936e81f35a66dfe84 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Mon, 2 Dec 2024 09:46:33 -0800
+Subject: [PATCH] build: fix insecure RUNPATH
+
+In Gentoo -static-libtool-libs causes a QA Notice.
+
+ * QA Notice: The following files contain insecure RUNPATHs
+ *  Please file a bug about this at https://bugs.gentoo.org/
+ *  with the maintainer of the package.
+ *   /var/tmp/portage/app-misc/jq-1.7.1/image/usr/bin/jqn    RPATH: /var/tmp/portage/app-misc/jq-1.7.1/work/jq-jq-1.7.1/.libs
+
+Gentoo-Issue: https://bugs.gentoo.org/945698
+Signed-off-by: orbea <orbea@riseup.net>
+---
+ Makefile.am | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index a183477fde..3f36993c0a 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -132,11 +132,10 @@ CLEANFILES = src/version.h .remake-version-h src/builtin.inc src/config_opts.inc
+ 
+ bin_PROGRAMS = jq
+ jq_SOURCES = src/main.c src/version.h
+-jq_LDFLAGS = -static-libtool-libs
+ jq_LDADD = libjq.la -lm
+ 
+ if ENABLE_ALL_STATIC
+-jq_LDFLAGS += -all-static
++jq_LDFLAGS = -all-static
+ endif
+ 
+ ### Tests (make check)

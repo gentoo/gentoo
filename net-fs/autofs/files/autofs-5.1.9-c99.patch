@@ -1,0 +1,57 @@
+https://src.fedoraproject.org/rpms/autofs/c/787a553722ec9aecf0c5108065bef9ef110d7639?branch=rawhide
+https://lore.kernel.org/autofs/874jgf4qwu.fsf@oldenburg.str.redhat.com/
+https://lore.kernel.org/autofs/878r5r4qy5.fsf@oldenburg.str.redhat.com/
+
+Fix argument type for ldap_parse_page_control in configure probe,
+to suppress an incompatible-pointer-types error.
+
+Submitted upstream:
+
+  <https://lore.kernel.org/autofs/874jgf4qwu.fsf@oldenburg.str.redhat.com/>
+
+--- a/aclocal.m4
++++ b/aclocal.m4
+@@ -427,7 +427,7 @@ AC_LINK_IFELSE(
+       struct berval *c;
+       int ret;
+       LDAPControl **clp;
+-      ret = ldap_parse_page_control(ld,clp,ct,c); ]])],
++      ret = ldap_parse_page_control(ld,clp,ct,&c); ]])],
+   [ af_have_ldap_parse_page_control=yes
+     AC_MSG_RESULT(yes) ],
+   [ AC_MSG_RESULT(no) ])
+
+Add casts to SASL callbacks to avoid incompatible-pointer-types
+errors.
+
+Submitted upstream:
+
+  <https://lore.kernel.org/autofs/878r5r4qy5.fsf@oldenburg.str.redhat.com/>
+
+--- a/modules/cyrus-sasl.c
++++ b/modules/cyrus-sasl.c
+@@ -109,17 +109,17 @@ static int getpass_func(sasl_conn_t *, void *, int, sasl_secret_t **);
+ static int getuser_func(void *, int, const char **, unsigned *);
+ 
+ static sasl_callback_t callbacks[] = {
+-	{ SASL_CB_USER, &getuser_func, NULL },
+-	{ SASL_CB_AUTHNAME, &getuser_func, NULL },
+-	{ SASL_CB_PASS, &getpass_func, NULL },
++	{ SASL_CB_USER, (int(*)(void)) &getuser_func, NULL },
++	{ SASL_CB_AUTHNAME, (int(*)(void)) &getuser_func, NULL },
++	{ SASL_CB_PASS, (int(*)(void)) &getpass_func, NULL },
+ 	{ SASL_CB_LIST_END, NULL, NULL },
+ };
+ 
+ static sasl_callback_t debug_callbacks[] = {
+-	{ SASL_CB_LOG, &sasl_log_func, NULL },
+-	{ SASL_CB_USER, &getuser_func, NULL },
+-	{ SASL_CB_AUTHNAME, &getuser_func, NULL },
+-	{ SASL_CB_PASS, &getpass_func, NULL },
++	{ SASL_CB_LOG, (int(*)(void)) &sasl_log_func, NULL },
++	{ SASL_CB_USER, (int(*)(void)) &getuser_func, NULL },
++	{ SASL_CB_AUTHNAME, (int(*)(void)) &getuser_func, NULL },
++	{ SASL_CB_PASS, (int(*)(void)) &getpass_func, NULL },
+ 	{ SASL_CB_LIST_END, NULL, NULL },
+ };
+ 

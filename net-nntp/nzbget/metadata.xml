@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>swegener@gentoo.org</email>
+		<name>Sven Wegener</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>sbraz@gentoo.org</email>
+		<name>Louis Sautier</name>
+	</maintainer>
+	<use>
+		<flag name="parcheck">Enable support for checking PAR archives</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">nzbgetcom/nzbget</remote-id>
+		<bugs-to>https://github.com/nzbgetcom/nzbget/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

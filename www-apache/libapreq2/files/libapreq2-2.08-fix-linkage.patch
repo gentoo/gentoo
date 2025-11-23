@@ -1,0 +1,51 @@
+https://bugs.gentoo.org/934379
+https://src.fedoraproject.org/rpms/libapreq2/blob/rawhide/f/libapreq2-2.12-install.patch
+
+From: Lubomir Rintel <lkundrak@v3.sk>
+
+APR shared objects were not properly linked when they were installed to a
+specific DESTDIR. This was broken in r733406, which attempted to fix
+rpaths for the obscure platforms that still use them.
+
+With this applied, we call apreq2-config we just installed and add a library
+path of libraries in DESTDIR to linker.
+
+$ perl -MAPR::Request
+Can't load '/usr/lib/perl5/auto/APR/Request/Request.so' for module APR::Request: /usr/lib/perl5/auto/APR/Request/Request.so: undefined symbol: apreq_hook_disable_uploads at /usr/lib/perl5/DynaLoader.pm line 200.
+ at - line 0
+Compilation failed in require.
+BEGIN failed--compilation aborted.
+
+--- a/glue/Makefile.am
++++ b/glue/Makefile.am
+@@ -15,7 +15,9 @@ perl_test: perl/Makefile
+ 	cd perl; $(MAKE) test
+ 
+ perl_install:
+-	cd perl; INSTALL=1 @PERL@ @PERL_OPTS@ Makefile.PL -apxs @APACHE2_APXS@ @MM_OPTS@
++	cd perl; INSTALL=1 PKG_CONFIG_PATH=$(DESTDIR)$(libdir)/pkgconfig \
++		DESTDIR=$(DESTDIR) LIBDIR=$(libdir) \
++		@PERL@ @PERL_OPTS@ Makefile.PL -apxs @APACHE2_APXS@ @MM_OPTS@
+ 	cd perl; $(MAKE) install
+ 
+ perl_clean:
+--- a/glue/perl/Makefile.PL
++++ b/glue/perl/Makefile.PL
+@@ -136,10 +136,15 @@ if (WIN32) {
+     my $apreq2_config = "$base_dir/apreq2-config";
+     my $bindir = qx{$apreq2_config --bindir};
+     chomp $bindir;
+-    $apreq2_config = "$bindir/apreq2-config" if $ENV{INSTALL};
++    $apreq2_config = "PKG_CONFIG_PATH=$ENV{PKG_CONFIG_PATH} ".
++                     $ENV{DESTDIR}."$bindir/apreq2-config"
++                     if $ENV{INSTALL};
+     $apreq_libs = qx{$apreq2_config --link-ld --ldflags --libs};
++    die "Failed to run $apreq2_config" if $?;
+     chomp $apreq_libs;
++    $apreq_libs = " -L".$ENV{DESTDIR}.$ENV{LIBDIR}." ".$apreq_libs
++                  if $ENV{INSTALL};
+ }
+ 
+ my $mp2_typemaps = Apache2::Build->new->typemaps;
+
+

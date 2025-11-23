@@ -1,0 +1,54 @@
+https://bugs.gentoo.org/881087
+Modified to work with 1.72 and 1.73
+From 223d2a8d0391a655e853f5deba1f06c75196bdf2 Mon Sep 17 00:00:00 2001
+From: =?utf8?q?Luk=C3=A1=C5=A1=20Zaoral?= <lzaoral@redhat.com>
+Date: Fri, 19 Jan 2024 17:39:39 +0100
+Subject: [PATCH 1/1] untracked_param: fix compilation errors with GCC 14
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf8
+Content-Transfer-Encoding: 8bit
+
+select_return_states_hook expects that the passed function does not declare
+the key and value arguments as const.
+
+Signed-off-by: Lukáš Zaoral <lzaoral@redhat.com>
+Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
+---
+ smatch.h                 | 2 +-
+ smatch_untracked_param.c | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/smatch.h b/smatch.h
+index ce09ae73..ecdbe684 100644
+--- a/smatch.h
++++ b/smatch.h
+@@ -1443,6 +1443,6 @@ bool buf_comp2_has_bytes(struct expression *buf_expr, struct expression *var);
+ bool buf_has_bytes(struct expression *buf, struct expression *var);
+ 
+ /* smatch_untracked_param.c */
+-void mark_untracked(struct expression *expr, int param, const char *key, const char *value);
++void mark_untracked(struct expression *expr, int param, char *key, char *value);
+ void add_untracked_param_hook(void (func)(struct expression *call, int param));
+ void add_lost_param_hook(void (func)(struct expression *call, int param));
+diff --git a/smatch_untracked_param.c b/smatch_untracked_param.c
+index b7230f06..a84889ca 100644
+--- a/smatch_untracked_param.c
++++ b/smatch_untracked_param.c
+@@ -120,12 +120,12 @@ free:
+ 
+ }
+ 
+-void mark_untracked(struct expression *expr, int param, const char *key, const char *value)
++void mark_untracked(struct expression *expr, int param, char *key, char *value)
+ {
+ 	mark_untracked_lost(expr, param, key, UNTRACKED_PARAM);
+ }
+ 
+-void mark_lost(struct expression *expr, int param, const char *key, const char *value)
++void mark_lost(struct expression *expr, int param, char *key, char *value)
+ {
+ 	mark_untracked_lost(expr, param, key, LOST_PARAM);
+ }
+-- 
+2.11.4.GIT
+

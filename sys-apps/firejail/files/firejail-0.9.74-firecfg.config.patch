@@ -1,0 +1,73 @@
+diff '--color=auto' -urP firejail-0.9.74.orig/src/firecfg/firecfg.config firejail-0.9.74/src/firecfg/firecfg.config
+--- firejail-0.9.74.orig/src/firecfg/firecfg.config	2025-03-19 05:33:03.000000000 -0600
++++ firejail-0.9.74/src/firecfg/firecfg.config	2025-04-24 15:52:18.691898643 -0600
+@@ -243,7 +243,8 @@
+ electron-mail
+ electrum
+ element-desktop
+-elinks
++# Breaks emerge/portage on Gentoo: 'too many environment variables'
++#elinks
+ empathy
+ enchant
+ enchant-2
+@@ -295,7 +296,8 @@
+ fluffychat
+ foliate
+ font-manager
+-fontforge
++# Breaks emerge/portage on Gentoo
++#fontforge
+ fossamail
+ four-in-a-row
+ fractal
+@@ -548,7 +550,8 @@
+ luminance-hdr
+ lximage-qt
+ lxmusic
+-lynx
++# Breaks emerge/portage on Gentoo: 'too many environment variables'
++#lynx
+ lyriek
+ lyx
+ #lz4 # disable until we fix CLI archivers for makepkg on Arch (see discussion in #3095)
+@@ -638,7 +641,8 @@
+ musictube
+ musixmatch
+ mutool
+-mutt
++# Breaks when configs are under ~/.mutt/
++#mutt
+ mypaint
+ mypaint-ora-thumbnailer
+ natron
+@@ -705,7 +709,8 @@
+ palemoon
+ #pandoc
+ parole
+-patch
++# Breaks emerge/portage on Gentoo: 'too many environment variables', path issues
++#patch
+ pavucontrol
+ pavucontrol-qt
+ pcsxr
+@@ -853,7 +858,8 @@
+ stellarium
+ straw-viewer
+ strawberry
+-strings
++# Breaks emerge/portage on Gentoo
++#strings
+ studio.sh
+ subdownloader
+ sum
+@@ -988,7 +994,8 @@
+ weechat
+ weechat-curses
+ wesnoth
+-wget
++# Breaks emerge/portage on Gentoo: 'too many environment variables', path issues
++#wget
+ wget2
+ whalebird
+ whois

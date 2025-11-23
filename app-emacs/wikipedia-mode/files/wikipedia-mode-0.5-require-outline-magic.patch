@@ -1,0 +1,6 @@
+--- a/wikipedia-mode.el
++++ b/wikipedia-mode.el
+@@ -386,2 +386,3 @@
+ (require 'font-lock)
++(require 'outline-magic)
+ 	

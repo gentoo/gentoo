@@ -1,0 +1,16 @@
+https://bugs.exim.org/show_bug.cgi?id=3144
+
+--- a/src/hintsdb.h
++++ b/src/hintsdb.h
+@@ -596,7 +596,11 @@
+ /* EXIM_DBDELETE_CURSOR - terminate scanning operation. */
+ static inline void
+ exim_dbdelete_cursor(EXIM_CURSOR * cursor)
++# ifdef COMPILE_UTILITY
++{ free(cursor); }
++# else
+ { store_free(cursor); }
++# endif
+ 
+ /* EXIM_DBCLOSE */
+ static inline void

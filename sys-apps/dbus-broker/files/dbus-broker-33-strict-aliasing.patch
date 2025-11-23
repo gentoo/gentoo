@@ -1,0 +1,207 @@
+https://bugs.gentoo.org/919100
+https://github.com/c-util/c-utf8/issues/4
+https://github.com/c-util/c-utf8/commit/4b7cb9f940e45d3c68bf427cdeeaf5da47b03b41
+
+From 4b7cb9f940e45d3c68bf427cdeeaf5da47b03b41 Mon Sep 17 00:00:00 2001
+From: David Rheinsberg <david.rheinsberg@gmail.com>
+Date: Wed, 4 Jan 2023 14:14:56 +0100
+Subject: [PATCH] c-utf8: avoid violating strict-aliasing rules
+
+Use the c_load*() helpers of c-stdaux to avoid the strict aliasing rules
+of the C language.
+
+Signed-off-by: David Rheinsberg <david.rheinsberg@gmail.com>
+--- a/subprojects/libcutf8-1/src/c-utf8.c
++++ b/subprojects/libcutf8-1/src/c-utf8.c
+@@ -17,9 +17,9 @@
+ #define C_UTF8_ASCII_MASK ((size_t)UINT64_C(0x8080808080808080))
+ #define C_UTF8_ASCII_SUB ((size_t)UINT64_C(0x0101010101010101))
+ 
+-static inline int c_utf8_word_is_ascii(const size_t *word) {
++static inline int c_utf8_word_is_ascii(size_t word) {
+         /* True unless any byte is NULL or has the MSB set. */
+-        return ((((*word - C_UTF8_ASCII_SUB) | *word) & C_UTF8_ASCII_MASK) == 0);
++        return ((((word - C_UTF8_ASCII_SUB) | word) & C_UTF8_ASCII_MASK) == 0);
+ }
+ 
+ /**
+@@ -37,10 +37,10 @@ static inline int c_utf8_word_is_ascii(const size_t *word) {
+  * byte, without any upper bound on its length.
+  */
+ _c_public_ void c_utf8_verify_ascii(const char **strp, size_t *lenp) {
+-        unsigned char *str = (unsigned char *)*strp;
++        const char *str = *strp;
+         size_t len = lenp ? *lenp : (size_t)-1;
+ 
+-        while (len > 0 && *str < 128) {
++        while (len > 0 && c_load_8(str, 0) < 128) {
+                 if ((void*)c_align_to((unsigned long)str, sizeof(size_t)) == str) {
+                         /*
+                          * If the string is aligned to a word boundary, scan two
+@@ -51,8 +51,8 @@ _c_public_ void c_utf8_verify_ascii(const char **strp, size_t *lenp) {
+                          * available.
+                          */
+                         while (len >= 2 * sizeof(size_t)) {
+-                                if (!c_utf8_word_is_ascii((size_t*)str) ||
+-                                    !c_utf8_word_is_ascii(((size_t*)str) + 1))
++                                if (!c_utf8_word_is_ascii(c_load(size_t, le, aligned, str, 0)) ||
++                                    !c_utf8_word_is_ascii(c_load(size_t, le, aligned, str, sizeof(size_t))))
+                                         break;
+ 
+                                 str += 2 * sizeof(size_t);
+@@ -63,8 +63,8 @@ _c_public_ void c_utf8_verify_ascii(const char **strp, size_t *lenp) {
+                         /*
+                          * Find the actual end of the ASCII-portion of the string.
+                          */
+-                        while (len > 0 && *str < 128) {
+-                                if (_c_unlikely_(*str == 0x00))
++                        while (len > 0 && c_load_8(str, 0) < 128) {
++                                if (_c_unlikely_(c_load_8(str, 0) == 0x00))
+                                         goto out;
+                                 ++str;
+                                 --len;
+@@ -74,7 +74,7 @@ _c_public_ void c_utf8_verify_ascii(const char **strp, size_t *lenp) {
+                          * The string was not aligned, scan one character at a time until
+                          * it is.
+                          */
+-                        if (_c_unlikely_(*str == 0x00))
++                        if (_c_unlikely_(c_load_8(str, 0) == 0x00))
+                                 goto out;
+                         ++str;
+                         --len;
+@@ -82,7 +82,7 @@ _c_public_ void c_utf8_verify_ascii(const char **strp, size_t *lenp) {
+         }
+ 
+ out:
+-        *strp = (char *)str;
++        *strp = str;
+         if (lenp)
+                 *lenp = len;
+ }
+@@ -104,13 +104,13 @@ _c_public_ void c_utf8_verify_ascii(const char **strp, size_t *lenp) {
+  * byte, without any upper bound on its length.
+  */
+ _c_public_ void c_utf8_verify(const char **strp, size_t *lenp) {
+-        unsigned char *str = (unsigned char *)*strp;
++        const char *str = *strp;
+         size_t len = lenp ? *lenp : (size_t)-1;
+ 
+         /* See Unicode 10.0.0, Chapter 3, Section D92 */
+ 
+         while (len > 0) {
+-                switch (*str) {
++                switch (c_load_8(str, 0)) {
+                 case 0x00:
+                         goto out;
+                 case 0x01 ... 0x7F:
+@@ -123,7 +123,7 @@ _c_public_ void c_utf8_verify(const char **strp, size_t *lenp) {
+                 case 0xC2 ... 0xDF:
+                         if (_c_unlikely_(len < 2))
+                                 goto out;
+-                        if (_c_unlikely_(!C_UTF8_CHAR_IS_TAIL(*(str + 1))))
++                        if (_c_unlikely_(!C_UTF8_CHAR_IS_TAIL(c_load_8(str, 1))))
+                                 goto out;
+ 
+                         str += 2;
+@@ -133,9 +133,9 @@ _c_public_ void c_utf8_verify(const char **strp, size_t *lenp) {
+                 case 0xE0:
+                         if (_c_unlikely_(len < 3))
+                                 goto out;
+-                        if (_c_unlikely_(*(str + 1) < 0xA0 || *(str + 1) > 0xBF))
++                        if (_c_unlikely_(c_load_8(str, 1) < 0xA0 || c_load_8(str, 1) > 0xBF))
+                                 goto out;
+-                        if (_c_unlikely_(!C_UTF8_CHAR_IS_TAIL(*(str + 2))))
++                        if (_c_unlikely_(!C_UTF8_CHAR_IS_TAIL(c_load_8(str, 2))))
+                                 goto out;
+ 
+                         str += 3;
+@@ -145,9 +145,9 @@ _c_public_ void c_utf8_verify(const char **strp, size_t *lenp) {
+                 case 0xE1 ... 0xEC:
+                         if (_c_unlikely_(len < 3))
+                                 goto out;
+-                        if (_c_unlikely_(!C_UTF8_CHAR_IS_TAIL(*(str + 1))))
++                        if (_c_unlikely_(!C_UTF8_CHAR_IS_TAIL(c_load_8(str, 1))))
+                                 goto out;
+-                        if (_c_unlikely_(!C_UTF8_CHAR_IS_TAIL(*(str + 2))))
++                        if (_c_unlikely_(!C_UTF8_CHAR_IS_TAIL(c_load_8(str, 2))))
+                                 goto out;
+ 
+                         str += 3;
+@@ -157,9 +157,9 @@ _c_public_ void c_utf8_verify(const char **strp, size_t *lenp) {
+                 case 0xED:
+                         if (_c_unlikely_(len < 3))
+                                 goto out;
+-                        if (_c_unlikely_(*(str + 1) < 0x80 || *(str + 1) > 0x9F))
++                        if (_c_unlikely_(c_load_8(str, 1) < 0x80 || c_load_8(str, 1) > 0x9F))
+                                 goto out;
+-                        if (_c_unlikely_(!C_UTF8_CHAR_IS_TAIL(*(str + 2))))
++                        if (_c_unlikely_(!C_UTF8_CHAR_IS_TAIL(c_load_8(str, 2))))
+                                 goto out;
+ 
+                         str += 3;
+@@ -169,9 +169,9 @@ _c_public_ void c_utf8_verify(const char **strp, size_t *lenp) {
+                 case 0xEE ... 0xEF:
+                         if (_c_unlikely_(len < 3))
+                                 goto out;
+-                        if (_c_unlikely_(!C_UTF8_CHAR_IS_TAIL(*(str + 1))))
++                        if (_c_unlikely_(!C_UTF8_CHAR_IS_TAIL(c_load_8(str, 1))))
+                                 goto out;
+-                        if (_c_unlikely_(!C_UTF8_CHAR_IS_TAIL(*(str + 2))))
++                        if (_c_unlikely_(!C_UTF8_CHAR_IS_TAIL(c_load_8(str, 2))))
+                                 goto out;
+ 
+                         str += 3;
+@@ -181,11 +181,11 @@ _c_public_ void c_utf8_verify(const char **strp, size_t *lenp) {
+                 case 0xF0:
+                         if (_c_unlikely_(len < 4))
+                                 goto out;
+-                        if (_c_unlikely_(*(str + 1) < 0x90 || *(str + 1) > 0xBF))
++                        if (_c_unlikely_(c_load_8(str, 1) < 0x90 || c_load_8(str, 1) > 0xBF))
+                                 goto out;
+-                        if (_c_unlikely_(!C_UTF8_CHAR_IS_TAIL(*(str + 2))))
++                        if (_c_unlikely_(!C_UTF8_CHAR_IS_TAIL(c_load_8(str, 2))))
+                                 goto out;
+-                        if (_c_unlikely_(!C_UTF8_CHAR_IS_TAIL(*(str + 3))))
++                        if (_c_unlikely_(!C_UTF8_CHAR_IS_TAIL(c_load_8(str, 3))))
+                                 goto out;
+ 
+                         str += 4;
+@@ -195,11 +195,11 @@ _c_public_ void c_utf8_verify(const char **strp, size_t *lenp) {
+                 case 0xF1 ... 0xF3:
+                         if (_c_unlikely_(len < 4))
+                                 goto out;
+-                        if (_c_unlikely_(!C_UTF8_CHAR_IS_TAIL(*(str + 1))))
++                        if (_c_unlikely_(!C_UTF8_CHAR_IS_TAIL(c_load_8(str, 1))))
+                                 goto out;
+-                        if (_c_unlikely_(!C_UTF8_CHAR_IS_TAIL(*(str + 2))))
++                        if (_c_unlikely_(!C_UTF8_CHAR_IS_TAIL(c_load_8(str, 2))))
+                                 goto out;
+-                        if (_c_unlikely_(!C_UTF8_CHAR_IS_TAIL(*(str + 3))))
++                        if (_c_unlikely_(!C_UTF8_CHAR_IS_TAIL(c_load_8(str, 3))))
+                                 goto out;
+ 
+                         str += 4;
+@@ -209,11 +209,11 @@ _c_public_ void c_utf8_verify(const char **strp, size_t *lenp) {
+                 case 0xF4:
+                         if (_c_unlikely_(len < 4))
+                                 goto out;
+-                        if (_c_unlikely_(*(str + 1) < 0x80 || *(str + 1) > 0x8F))
++                        if (_c_unlikely_(c_load_8(str, 1) < 0x80 || c_load_8(str, 1) > 0x8F))
+                                 goto out;
+-                        if (_c_unlikely_(!C_UTF8_CHAR_IS_TAIL(*(str + 2))))
++                        if (_c_unlikely_(!C_UTF8_CHAR_IS_TAIL(c_load_8(str, 2))))
+                                 goto out;
+-                        if (_c_unlikely_(!C_UTF8_CHAR_IS_TAIL(*(str + 3))))
++                        if (_c_unlikely_(!C_UTF8_CHAR_IS_TAIL(c_load_8(str, 3))))
+                                 goto out;
+ 
+                         str += 4;
+@@ -226,7 +226,7 @@ _c_public_ void c_utf8_verify(const char **strp, size_t *lenp) {
+         }
+ 
+ out:
+-        *strp = (char *)str;
++        *strp = str;
+         if (lenp)
+                 *lenp = len;
+ }

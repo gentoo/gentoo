@@ -1,0 +1,173 @@
+port ucl to the x32 ABI
+
+https://bugs.gentoo.org/426334
+
+--- a/acc/acc_arch.h
++++ b/acc/acc_arch.h
+@@ -19,6 +19,7 @@
+  *   ACC_ARCH_UNKNOWN       [default]
+  *   ACC_ARCH_ALPHA
+  *   ACC_ARCH_AMD64         aka x86-64 or ia32e
++ *   ACC_ARCH_X32           aka x86-32
+  *   ACC_ARCH_C166
+  *   ACC_ARCH_IA16          Intel Architecture (8088, 8086, 80186, 80286)
+  *   ACC_ARCH_IA32          Intel Architecture (80386+)
+@@ -42,8 +43,13 @@
+ #  define ACC_ARCH_IA16             1
+ #  define ACC_INFO_ARCH             "ia16"
+ #elif defined(__amd64__) || defined(__x86_64__) || defined(_M_AMD64)
++# ifdef __ILP32__
++#  define ACC_ARCH_X32              1
++#  define ACC_INFO_ARCH             "x32"
++# else
+ #  define ACC_ARCH_AMD64            1
+ #  define ACC_INFO_ARCH             "amd64"
++# endif
+ #elif (UINT_MAX <= ACC_0xffffL) && defined(__AVR__)
+ #  define ACC_ARCH_AVR              1
+ #  define ACC_INFO_ARCH             "avr"
+@@ -92,7 +98,7 @@
+ #endif
+ 
+ 
+-#if (ACC_ARCH_AMD64 || ACC_ARCH_IA16 || ACC_ARCH_IA32)
++#if (ACC_ARCH_AMD64 || ACC_ARCH_IA16 || ACC_ARCH_IA32 || ACC_ARCH_X32)
+ #  define ACC_ENDIAN_LITTLE_ENDIAN  1
+ #  define ACC_INFO_ENDIAN           "little-endian"
+ #elif (ACC_ARCH_M68K)
+--- a/acc/acc_chk.ch
++++ b/acc/acc_chk.ch
+@@ -407,7 +407,7 @@
+ #if (ACC_ARCH_IA16)
+     ACCCHK_ASSERT(sizeof(size_t) == 2)
+     ACCCHK_ASSERT(sizeof(acc_intptr_t) == sizeof(void *))
+-#elif (ACC_ARCH_IA32 || ACC_ARCH_M68K)
++#elif (ACC_ARCH_IA32 || ACC_ARCH_M68K || ACC_ARCH_X32)
+     ACCCHK_ASSERT(sizeof(size_t) == 4)
+     ACCCHK_ASSERT(sizeof(ptrdiff_t) == 4)
+     ACCCHK_ASSERT(sizeof(acc_intptr_t) == sizeof(void *))
+--- a/acc/acc_lib.h
++++ b/acc/acc_lib.h
+@@ -423,13 +423,13 @@ ACCLIB_EXTERN(void, acc_set_le64) (acc_hvoid_p, acc_uint64l_t);
+ #endif
+ 
+ /* inline versions */
+-#if (ACC_ARCH_AMD64 || ACC_ARCH_IA32)
++#if (ACC_ARCH_AMD64 || ACC_ARCH_IA32 || ACC_ARCH_X32)
+ #  define ACC_GET_LE16(p)       (* (const unsigned short *) (p))
+ #  define ACC_GET_LE32(p)       (* (const acc_uint32e_t *) (p))
+ #  define ACC_SET_LE16(p,v)     (* (unsigned short *) (p) = (unsigned short) (v))
+ #  define ACC_SET_LE32(p,v)     (* (acc_uint32e_t *) (p) = (acc_uint32e_t) (v))
+ #endif
+-#if (ACC_ARCH_AMD64)
++#if (ACC_ARCH_AMD64 || ACC_ARCH_X32)
+ #  define ACC_GET_LE64(p)       (* (const acc_uint64l_t *) (p))
+ #  define ACC_SET_LE64(p,v)     (* (acc_uint64l_t *) (p) = (acc_uint64l_t) (v))
+ #endif
+--- a/acc/acclib/bele.ch
++++ b/acc/acclib/bele.ch
+@@ -71,7 +71,7 @@ ACCLIB_PUBLIC(void, acc_set_be32) (acc_hvoid_p p, acc_uint32l_t v)
+ 
+ ACCLIB_PUBLIC(unsigned, acc_get_le16) (const acc_hvoid_p p)
+ {
+-#if (ACC_ARCH_AMD64 || ACC_ARCH_IA32)
++#if (ACC_ARCH_AMD64 || ACC_ARCH_IA32 || ACC_ARCH_X32)
+     return (* (const unsigned short *) (p));
+ #else
+     const acc_hbyte_p b = (const acc_hbyte_p) p;
+@@ -87,7 +87,7 @@ ACCLIB_PUBLIC(acc_uint32l_t, acc_get_le24) (const acc_hvoid_p p)
+ 
+ ACCLIB_PUBLIC(acc_uint32l_t, acc_get_le32) (const acc_hvoid_p p)
+ {
+-#if (ACC_ARCH_AMD64 || ACC_ARCH_IA32)
++#if (ACC_ARCH_AMD64 || ACC_ARCH_IA32 || ACC_ARCH_X32)
+     return (* (const acc_uint32e_t *) (p));
+ #else
+     const acc_hbyte_p b = (const acc_hbyte_p) p;
+@@ -102,7 +102,7 @@ ACCLIB_PUBLIC(acc_uint32l_t, acc_get_le32) (const acc_hvoid_p p)
+ 
+ ACCLIB_PUBLIC(void, acc_set_le16) (acc_hvoid_p p, unsigned v)
+ {
+-#if (ACC_ARCH_AMD64 || ACC_ARCH_IA32)
++#if (ACC_ARCH_AMD64 || ACC_ARCH_IA32 || ACC_ARCH_X32)
+     (* (unsigned short *) (p) = (unsigned short) (v));
+ #else
+     acc_hbyte_p b = (acc_hbyte_p) p;
+@@ -121,7 +121,7 @@ ACCLIB_PUBLIC(void, acc_set_le24) (acc_hvoid_p p, acc_uint32l_t v)
+ 
+ ACCLIB_PUBLIC(void, acc_set_le32) (acc_hvoid_p p, acc_uint32l_t v)
+ {
+-#if (ACC_ARCH_AMD64 || ACC_ARCH_IA32)
++#if (ACC_ARCH_AMD64 || ACC_ARCH_IA32 || ACC_ARCH_X32)
+     (* (acc_uint32e_t *) (p) = (acc_uint32e_t) (v));
+ #else
+     acc_hbyte_p b = (acc_hbyte_p) p;
+@@ -191,7 +191,7 @@ ACCLIB_PUBLIC(void, acc_set_be64) (acc_hvoid_p p, acc_uint64l_t v)
+ 
+ ACCLIB_PUBLIC(acc_uint64l_t, acc_get_le64) (const acc_hvoid_p p)
+ {
+-#if (ACC_ARCH_AMD64)
++#if (ACC_ARCH_AMD64 || ACC_ARCH_X32)
+     return (* (const acc_uint64l_t *) (p));
+ #elif (ACC_ARCH_IA32)
+     const acc_uint32e_t* b = (const acc_uint32e_t*) p;
+@@ -211,7 +211,7 @@ ACCLIB_PUBLIC(acc_uint64l_t, acc_get_le64) (const acc_hvoid_p p)
+ 
+ ACCLIB_PUBLIC(void, acc_set_le64) (acc_hvoid_p p, acc_uint64l_t v)
+ {
+-#if (ACC_ARCH_AMD64)
++#if (ACC_ARCH_AMD64 || ACC_ARCH_X32)
+     (* (acc_uint64l_t *) (p)) = v;
+ #elif (ACC_ARCH_IA32)
+     (((acc_uint32e_t *)(p))[0] = (acc_uint32e_t) (v >>  0));
+--- a/acc/acclib/perfctr.ch
++++ b/acc/acclib/perfctr.ch
+@@ -63,7 +63,7 @@ ACCLIB_PUBLIC(int, acc_perfctr_open) (acc_perfctr_handle_p h)
+         break;      /* no working TSC available */
+     case PERFCTR_X86_AMD_K7:
+ #endif
+-#if (ACC_ARCH_AMD64 || ACC_ARCH_IA32)
++#if (ACC_ARCH_AMD64 || ACC_ARCH_IA32 || ACC_ARCH_X32)
+     case PERFCTR_X86_AMD_K8:
+     case PERFCTR_X86_AMD_K8C:
+         cc->tsc_on = 1; cc->nractrs = 2;
+--- a/acc/acclib/rdtsc.ch
++++ b/acc/acclib/rdtsc.ch
+@@ -21,7 +21,7 @@
+ #if defined(acc_int32e_t)
+ 
+ 
+-#if ((ACC_ARCH_AMD64 || ACC_ARCH_IA32) && ACC_CC_GNUC)
++#if ((ACC_ARCH_AMD64 || ACC_ARCH_IA32 || ACC_ARCH_X32) && ACC_CC_GNUC)
+ #  if (ACC_CC_GNUC >= 0x020000ul)
+ #    define __ACCLIB_RDTSC_REGS : : "r" (t) : "cc", "memory", "eax", "edx"
+ #  else
+@@ -38,7 +38,7 @@
+ 
+ ACCLIB_PUBLIC(int, acc_tsc_read) (acc_uint32e_t* t)
+ {
+-#if (ACC_ARCH_AMD64 || ACC_ARCH_IA32) && defined(__ACCLIB_RDTSC_REGS)
++#if (ACC_ARCH_AMD64 || ACC_ARCH_IA32 || ACC_ARCH_X32) && defined(__ACCLIB_RDTSC_REGS)
+     __asm__ __volatile__(
+         "clc \n" ".byte 0x0f, 0x31\n"
+         "movl %%eax,(%0)\n" "movl %%edx,4(%0)\n"
+@@ -73,7 +73,7 @@ ACCLIB_PUBLIC(int, acc_tsc_read) (acc_uint32e_t* t)
+ 
+ ACCLIB_PUBLIC(int, acc_tsc_read_add) (acc_uint32e_t* t)
+ {
+-#if (ACC_ARCH_AMD64 || ACC_ARCH_IA32) && defined(__ACCLIB_RDTSC_REGS)
++#if (ACC_ARCH_AMD64 || ACC_ARCH_IA32 || ACC_ARCH_X32) && defined(__ACCLIB_RDTSC_REGS)
+     __asm__ __volatile__(
+         "clc \n" ".byte 0x0f, 0x31\n"
+         "addl %%eax,(%0)\n" "adcl $0,%%edx\n" "addl %%edx,4(%0)\n"
+--- a/src/ucl_conf.h
++++ b/src/ucl_conf.h
+@@ -172,7 +172,7 @@
+ #undef UA_SET2
+ #undef UA_GET4
+ #undef UA_SET4
+-#if 1 && (ACC_ARCH_AMD64 || ACC_ARCH_IA32)
++#if 1 && (ACC_ARCH_AMD64 || ACC_ARCH_IA32 || ACC_ARCH_X32)
+ #  define UA_GET2(p)    (* (const ucl_ushortp) (p))
+ #  define UA_SET2(p)    (* (ucl_ushortp) (p))
+ #  define UA_GET4(p)    (* (const acc_uint32e_t *) (p))

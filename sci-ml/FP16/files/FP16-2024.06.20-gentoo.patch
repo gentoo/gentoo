@@ -1,0 +1,21 @@
+--- a/CMakeLists.txt	2022-05-10 09:11:41.286417033 +0200
++++ b/CMakeLists.txt	2022-05-10 09:12:48.647398387 +0200
+@@ -19,7 +19,7 @@
+ ENDIF()
+ 
+ # ---[ Download deps
+-IF(FP16_BUILD_TESTS AND NOT DEFINED GOOGLETEST_SOURCE_DIR)
++IF(FALSE)
+   MESSAGE(STATUS "Downloading Google Test to ${CMAKE_BINARY_DIR}/googletest-source (define GOOGLETEST_SOURCE_DIR to avoid it)")
+   CONFIGURE_FILE(cmake/DownloadGoogleTest.cmake "${CMAKE_BINARY_DIR}/googletest-download/CMakeLists.txt")
+   EXECUTE_PROCESS(COMMAND "${CMAKE_COMMAND}" -G "${CMAKE_GENERATOR}" .
+@@ -60,9 +60,6 @@
+   # ---[ Build google test
+   IF(NOT TARGET gtest)
+     SET(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+-    ADD_SUBDIRECTORY(
+-      "${GOOGLETEST_SOURCE_DIR}"
+-      "${CMAKE_BINARY_DIR}/googletest")
+   ENDIF()
+ 
+   # ---[ Build FP16 unit tests

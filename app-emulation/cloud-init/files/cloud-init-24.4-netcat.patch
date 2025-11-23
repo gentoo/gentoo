@@ -1,0 +1,68 @@
+From 50932590203101f5d8217afc02d8c2b4cecabbd4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Andreas=20K=2E=20H=C3=BCttel?= <dilfridge@gentoo.org>
+Date: Sun, 15 Dec 2024 15:12:40 +0100
+Subject: [PATCH] fix: use program name of netcat as installed by upstream,
+ "nc"
+
+---
+ systemd/cloud-config.service            | 2 +-
+ systemd/cloud-final.service             | 2 +-
+ systemd/cloud-init-local.service.tmpl   | 2 +-
+ systemd/cloud-init-network.service.tmpl | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/systemd/cloud-config.service b/systemd/cloud-config.service
+index 54599b346..68f80d2b3 100644
+--- a/systemd/cloud-config.service
++++ b/systemd/cloud-config.service
+@@ -16,7 +16,7 @@ Type=oneshot
+ # process has completed this stage. The output from the return socket is piped
+ # into a shell so that the process can send a completion message (defaults to
+ # "done", otherwise includes an error message) and an exit code to systemd.
+-ExecStart=sh -c 'echo "start" | netcat -Uu -W1 /run/cloud-init/share/config.sock -s /run/cloud-init/share/config-return.sock | sh'
++ExecStart=sh -c 'echo "start" | nc -Uu -W1 /run/cloud-init/share/config.sock -s /run/cloud-init/share/config-return.sock | sh'
+ RemainAfterExit=yes
+ TimeoutSec=0
+ 
+diff --git a/systemd/cloud-final.service b/systemd/cloud-final.service
+index c48f95c4f..fb74a47c8 100644
+--- a/systemd/cloud-final.service
++++ b/systemd/cloud-final.service
+@@ -19,7 +19,7 @@ Type=oneshot
+ # process has completed this stage. The output from the return socket is piped
+ # into a shell so that the process can send a completion message (defaults to
+ # "done", otherwise includes an error message) and an exit code to systemd.
+-ExecStart=sh -c 'echo "start" | netcat -Uu -W1 /run/cloud-init/share/final.sock -s /run/cloud-init/share/final-return.sock | sh'
++ExecStart=sh -c 'echo "start" | nc -Uu -W1 /run/cloud-init/share/final.sock -s /run/cloud-init/share/final-return.sock | sh'
+ RemainAfterExit=yes
+ TimeoutSec=0
+ TasksMax=infinity
+diff --git a/systemd/cloud-init-local.service.tmpl b/systemd/cloud-init-local.service.tmpl
+index e6a300fd4..b123193a1 100644
+--- a/systemd/cloud-init-local.service.tmpl
++++ b/systemd/cloud-init-local.service.tmpl
+@@ -32,7 +32,7 @@ ExecStartPre=/sbin/restorecon /run/cloud-init
+ # process has completed this stage. The output from the return socket is piped
+ # into a shell so that the process can send a completion message (defaults to
+ # "done", otherwise includes an error message) and an exit code to systemd.
+-ExecStart=sh -c 'echo "start" | netcat -Uu -W1 /run/cloud-init/share/local.sock -s /run/cloud-init/share/local-return.sock | sh'
++ExecStart=sh -c 'echo "start" | nc -Uu -W1 /run/cloud-init/share/local.sock -s /run/cloud-init/share/local-return.sock | sh'
+ RemainAfterExit=yes
+ TimeoutSec=0
+ 
+diff --git a/systemd/cloud-init-network.service.tmpl b/systemd/cloud-init-network.service.tmpl
+index af09fff35..bdc7c8f83 100644
+--- a/systemd/cloud-init-network.service.tmpl
++++ b/systemd/cloud-init-network.service.tmpl
+@@ -53,7 +53,7 @@ Type=oneshot
+ # process has completed this stage. The output from the return socket is piped
+ # into a shell so that the process can send a completion message (defaults to
+ # "done", otherwise includes an error message) and an exit code to systemd.
+-ExecStart=sh -c 'echo "start" | netcat -Uu -W1 /run/cloud-init/share/network.sock -s /run/cloud-init/share/network-return.sock | sh'
++ExecStart=sh -c 'echo "start" | nc -Uu -W1 /run/cloud-init/share/network.sock -s /run/cloud-init/share/network-return.sock | sh'
+ RemainAfterExit=yes
+ TimeoutSec=0
+ 
+-- 
+2.45.2
+

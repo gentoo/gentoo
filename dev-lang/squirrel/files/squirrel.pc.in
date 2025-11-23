@@ -1,0 +1,12 @@
+prefix=/usr
+exec_prefix=/usr
+libdir=/usr/@libdir@
+includedir=/usr/include/squirrel
+
+Name: squirrel
+Description: squirrel library
+Version: @version@
+
+Requires:
+Libs: -L${libdir} -lsquirrel -lsqstdlib
+Cflags: -I${includedir}

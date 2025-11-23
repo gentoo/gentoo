@@ -1,0 +1,28 @@
+--- a/configure.ac.old	2023-03-02 14:21:42.687929964 +0100
++++ b/configure.ac	2023-03-02 14:28:47.497666291 +0100
+@@ -169,12 +169,12 @@
+ 	[enable_appindicator="auto"]
+ )
+ if test x$enable_appindicator = xauto ; then
+-	PKG_CHECK_EXISTS([appindicator3-0.1],
++	PKG_CHECK_EXISTS([ayatana-appindicator3-0.1],
+ 	                 [enable_appindicator="yes"],
+ 	                 [enable_appindicator="no"])
+ fi
+ if test x$enable_appindicator = xyes ; then
+-	PKG_CHECK_MODULES(APP_INDICATOR, appindicator3-0.1)
++	PKG_CHECK_MODULES(APP_INDICATOR, ayatana-appindicator3-0.1)
+ 	AC_SUBST(APP_INDICATOR_CFLAGS)
+ 	AC_SUBST(APP_INDICATOR_LIBS)
+ 	AC_DEFINE(HAVE_APP_INDICATOR, 1, [Have AppIndicator])
+--- a/ui-gtk/UgtkTrayIcon.h.old	2023-03-02 14:32:54.816318966 +0100
++++ b/ui-gtk/UgtkTrayIcon.h	2023-03-02 14:33:20.186180008 +0100
+@@ -41,7 +41,7 @@
+ #include <UgtkConfig.h>
+ 
+ #ifdef HAVE_APP_INDICATOR
+-#include <libappindicator/app-indicator.h>
++#include <libayatana-appindicator/app-indicator.h>
+ #endif
+ 
+ #ifdef __cplusplus

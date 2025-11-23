@@ -1,0 +1,40 @@
+https://bugs.gentoo.org/949127
+https://bugs.gentoo.org/946562
+https://bugs.gentoo.org/944447
+https://github.com/alsa-project/alsa-lib/issues/430
+https://github.com/alsa-project/alsa-lib/issues/436
+https://github.com/alsa-project/alsa-lib/commit/c8bc54a9cae3d5080dc7a298aee573b10f2bbf62
+
+From c8bc54a9cae3d5080dc7a298aee573b10f2bbf62 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Sun, 2 Feb 2025 19:18:25 +0100
+Subject: [PATCH] test/playmidi1: fix compilation caused by conflict between
+ midifile.h and ump_msg.h
+
+It's a fast fix. The better way is to fix midifile.h or remote this example
+(we have already some
+
+Closes: https://github.com/alsa-project/alsa-lib/issues/436
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ test/playmidi1.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/test/playmidi1.c b/test/playmidi1.c
+index 831e95783..286aaa86e 100644
+--- a/test/playmidi1.c
++++ b/test/playmidi1.c
+@@ -45,10 +45,11 @@
+ #include <errno.h>
+ #include <string.h>
+ 
++#include "../include/asoundlib.h"
++
+ #include "midifile.h"		/* SMF library header */
+ #include "midifile.c"		/* SMF library code */
+ 
+-#include "../include/asoundlib.h"
+ 
+ /* send the real-time time stamps (instead of midi ticks) to the ALSA sequencer */
+ static int use_realtime = 0;
+

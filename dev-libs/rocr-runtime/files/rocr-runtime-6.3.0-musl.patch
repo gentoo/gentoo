@@ -1,0 +1,110 @@
+Fix compilation with musl.
+
+Bug: https://github.com/ROCm/ROCR-Runtime/issues/181
+--- a/runtime/hsa-ext-finalize/CMakeLists.txt
++++ b/runtime/hsa-ext-finalize/CMakeLists.txt
+@@ -101,6 +101,18 @@ if( NOT DEFINED OPEN_SOURCE_DIR )
+   set ( OPEN_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/.." )
+ endif()
+ 
++## Check for _GNU_SOURCE pthread extensions
++set(CMAKE_REQUIRED_DEFINITIONS -D_GNU_SOURCE)
++CHECK_SYMBOL_EXISTS ( "pthread_attr_setaffinity_np" "pthread.h" HAVE_PTHREAD_ATTR_SETAFFINITY_NP )
++CHECK_SYMBOL_EXISTS ( "pthread_rwlockattr_setkind_np" "pthread.h" HAVE_PTHREAD_RWLOCKATTR_SETKIND_NP )
++unset(CMAKE_REQUIRED_DEFINITIONS)
++if ( HAVE_PTHREAD_ATTR_SETAFFINITY_NP )
++  target_compile_definitions(${CORE_RUNTIME_TARGET} PRIVATE HAVE_PTHREAD_ATTR_SETAFFINITY_NP )
++endif()
++if ( HAVE_PTHREAD_RWLOCKATTR_SETKIND_NP )
++  target_compile_definitions(${CORE_RUNTIME_TARGET} PRIVATE HAVE_PTHREAD_RWLOCKATTR_SETKIND_NP )
++endif()
++
+ ## ------------------------- Linux Compiler and Linker options -------------------------
+ set ( CMAKE_CXX_FLAGS "-std=c++11 " )
+ 
+--- a/runtime/hsa-runtime/CMakeLists.txt
++++ b/runtime/hsa-runtime/CMakeLists.txt
+@@ -47,7 +47,7 @@ cmake_minimum_required ( VERSION 3.7 )
+ ## Need an update to CMake 3.12 to remove this hack. See CMake policy change CMP0073.
+ unset ( hsa-runtime64_LIB_DEPENDS CACHE )
+ 
+-set(CMAKE_VERBOSE_MAKEFILE ON)
++#_cmake_modify_IGNORE set(CMAKE_VERBOSE_MAKEFILE ON)
+ 
+ ## Set core runtime module name and project name.
+ set ( CORE_RUNTIME_NAME "hsa-runtime64" )
+@@ -109,6 +109,18 @@ if ( HAVE_MEMFD_CREATE )
+   target_compile_definitions(${CORE_RUNTIME_TARGET} PRIVATE HAVE_MEMFD_CREATE )
+ endif()
+ 
++## Check for _GNU_SOURCE pthread extensions
++set(CMAKE_REQUIRED_DEFINITIONS -D_GNU_SOURCE)
++CHECK_SYMBOL_EXISTS ( "pthread_attr_setaffinity_np" "pthread.h" HAVE_PTHREAD_ATTR_SETAFFINITY_NP )
++CHECK_SYMBOL_EXISTS ( "pthread_rwlockattr_setkind_np" "pthread.h" HAVE_PTHREAD_RWLOCKATTR_SETKIND_NP )
++unset(CMAKE_REQUIRED_DEFINITIONS)
++if ( HAVE_PTHREAD_ATTR_SETAFFINITY_NP )
++  target_compile_definitions(${CORE_RUNTIME_TARGET} PRIVATE HAVE_PTHREAD_ATTR_SETAFFINITY_NP )
++endif()
++if ( HAVE_PTHREAD_RWLOCKATTR_SETKIND_NP )
++  target_compile_definitions(${CORE_RUNTIME_TARGET} PRIVATE HAVE_PTHREAD_RWLOCKATTR_SETKIND_NP )
++endif()
++
+ ## Set include directories for ROCr runtime
+ target_include_directories( ${CORE_RUNTIME_TARGET}
+   PUBLIC
+--- a/runtime/hsa-runtime/core/util/lnx/os_linux.cpp
++++ b/runtime/hsa-runtime/core/util/lnx/os_linux.cpp
+@@ -137,12 +137,14 @@ class os_thread {
+       for (int i = 0; i < cores; i++) {
+         CPU_SET_S(i, CPU_ALLOC_SIZE(cores), cpuset);
+       }
++#ifdef HAVE_PTHREAD_ATTR_SETAFFINITY_NP
+       err = pthread_attr_setaffinity_np(&attrib, CPU_ALLOC_SIZE(cores), cpuset);
+       CPU_FREE(cpuset);
+       if (err != 0) {
+         fprintf(stderr, "pthread_setaffinity_np failed: %s\n", strerror(err));
+         return;
+       }
++#endif
+     }
+ 
+     do {
+@@ -165,6 +167,18 @@ class os_thread {
+       }
+     } while (stackSize < 20 * 1024 * 1024);
+ 
++#ifndef HAVE_PTHREAD_ATTR_SETAFFINITY_NP
++    if (cores && cpuset) {
++      err = pthread_setaffinity_np(thread, CPU_ALLOC_SIZE(cores), cpuset);
++      CPU_FREE(cpuset);
++      if (err != 0) {
++        fprintf(stderr, "pthread_setaffinity_np failed: %s\n", strerror(err));
++        thread = 0;
++        return;
++      }
++    }
++#endif
++
+     args.release();
+   }
+ 
+@@ -655,18 +669,12 @@ SharedMutex CreateSharedMutex() {
+     return nullptr;
+   }
+ 
+-#ifdef __GLIBC__
++#ifdef HAVE_PTHREAD_RWLOCKATTR_SETKIND_NP
+   err = pthread_rwlockattr_setkind_np(&attrib, PTHREAD_RWLOCK_PREFER_WRITER_NONRECURSIVE_NP);
+   if (err != 0) {
+     fprintf(stderr, "Set rw lock attribute failure: %s\n", strerror(err));
+     return nullptr;
+   }
+-#else
+-  err = pthread_rwlockattr_setkind(&attrib, PTHREAD_RWLOCK_PREFER_WRITER_NONRECURSIVE_NP);
+-  if (err != 0) {
+-    fprintf(stderr, "Set rw lock attribute failure: %s\n", strerror(err));
+-    return nullptr;
+-  }
+ #endif
+ 
+   pthread_rwlock_t* lock = new pthread_rwlock_t;

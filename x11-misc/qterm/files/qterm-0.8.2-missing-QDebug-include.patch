@@ -1,0 +1,21 @@
+From cd79201bebce732fd47fee97c9d73e66805473f0 Mon Sep 17 00:00:00 2001
+From: Xiaoqiang Wang <xiaoqiangwang@gmail.com>
+Date: Fri, 20 Sep 2024 07:47:10 +0200
+Subject: [PATCH] header for QDebug class
+
+---
+ src/qtermglobal.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/qtermglobal.cpp b/src/qtermglobal.cpp
+index 48c36cc..5055928 100644
+--- a/src/qtermglobal.cpp
++++ b/src/qtermglobal.cpp
+@@ -31,6 +31,7 @@
+ #include <QFileDialog>
+ #include <QMessageBox>
+ #include <QtXml/QDomDocument>
++#include <QtDebug>
+ 
+ #if defined(_OS_WIN32_) || defined(Q_OS_WIN32)
+ #include <windows.h>

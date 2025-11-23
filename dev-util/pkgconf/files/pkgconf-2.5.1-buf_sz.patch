@@ -1,0 +1,19 @@
+https://github.com/pkgconf/pkgconf/commit/aa6b5c4ca9cb5ea723b5c11e68a385fe46fd54a8
+
+From aa6b5c4ca9cb5ea723b5c11e68a385fe46fd54a8 Mon Sep 17 00:00:00 2001
+From: Ariadne Conill <ariadne@ariadne.space>
+Date: Tue, 24 Jun 2025 16:31:21 -0700
+Subject: [PATCH] libpkgconf: dependency: make sure buf_sz is at least 1 byte
+
+--- a/libpkgconf/dependency.c
++++ b/libpkgconf/dependency.c
+@@ -321,7 +321,7 @@ pkgconf_dependency_parse_str(pkgconf_client_t *client, pkgconf_list_t *deplist_h
+ 
+ 	memset(cmpname, '\0', sizeof cmpname);
+ 
+-	buf_sz = strlen(depends) * 2;
++	buf_sz = (strlen(depends) * 2) + 1;
+ 	buf = calloc(1, buf_sz);
+ 	if (buf == NULL)
+ 		return;
+

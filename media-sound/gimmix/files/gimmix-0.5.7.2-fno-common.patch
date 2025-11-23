@@ -1,0 +1,11 @@
+--- a/src/gimmix-playlist.c
++++ b/src/gimmix-playlist.c
+@@ -60,7 +60,7 @@
+ static gchar *invalid_dir_error = "You have specified an invalid music directory. Do you want to specify the correct music directory now ?";
+ 
+ GtkWidget 	*search_combo;
+-GtkWidget	*search_entry;
++extern GtkWidget	*search_entry;
+ GtkWidget	*search_box;
+ 	
+ static GtkWidget	*gimmix_statusbar;

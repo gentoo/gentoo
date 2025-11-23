@@ -1,0 +1,27 @@
+From 1a86fa74e6468f1e10a361a79a441e95f2706d0d Mon Sep 17 00:00:00 2001
+From: sin-ack <sin-ack@protonmail.com>
+Date: Mon, 21 Apr 2025 14:43:56 +0200
+Subject: [PATCH] Forcibly disable liburing support
+
+Folly doesn't have a configure option for disabling liburing, so we
+must manually disable it with this patch.
+---
+ folly/io/async/Liburing.h | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/folly/io/async/Liburing.h b/folly/io/async/Liburing.h
+index 8e81aaae9..64c3ffc0c 100644
+--- a/folly/io/async/Liburing.h
++++ b/folly/io/async/Liburing.h
+@@ -16,8 +16,4 @@
+ 
+ #pragma once
+ 
+-#if defined(__linux__) && __has_include(<liburing.h>)
+-#define FOLLY_HAS_LIBURING 1
+-#else
+ #define FOLLY_HAS_LIBURING 0
+-#endif
+-- 
+2.49.0
+

@@ -1,0 +1,71 @@
+Fix error: 'hsakmt_page_size' undeclared (musl-only)
+Upstream bug: https://github.com/ROCm/ROCR-Runtime/issues/267
+--- a/src/libhsakmt.h
++++ b/src/libhsakmt.h
+@@ -64,14 +64,15 @@ extern HsaVersionInfo hsakmt_kfd_version_info;
+ 	do { if ((minor) > hsakmt_kfd_version_info.KernelInterfaceMinorVersion)\
+ 		return HSAKMT_STATUS_NOT_SUPPORTED; } while (0)
+ 
++extern int hsakmt_page_size;
++extern int hsakmt_page_shift;
++
+ /* Might be defined in limits.h on platforms where it is constant (used by musl) */
+ /* See also: https://pubs.opengroup.org/onlinepubs/7908799/xsh/limits.h.html */
+ #ifndef PAGE_SIZE
+-extern int hsakmt_page_size;
+ #define PAGE_SIZE hsakmt_page_size
+ #endif
+ #ifndef PAGE_SHIFT
+-extern int hsakmt_page_shift;
+ #define PAGE_SHIFT hsakmt_page_shift
+ #endif
+ 
+--- a/tests/kfdtest/src/KFDTestUtilQueue.cpp
++++ b/tests/kfdtest/src/KFDTestUtilQueue.cpp
+@@ -57,13 +57,13 @@ class AsyncMPSQ {
+         void PlacePacketOnNode(PacketList &packetList, int node, TSPattern tsp);
+ 
+         /* Run the packets placed on nodes and return immediately.*/
+-        void Submit(void) { ASSERT_NE((HSAuint64)m_queue, NULL); m_queue->SubmitPacket(); }
++        void Submit(void) { ASSERT_NE(m_queue, nullptr); m_queue->SubmitPacket(); }
+ 
+         /* Return only when all packets are consumed.
+          * If there is any packet issues some IO operations, wait these IO to complete too.
+          */
+         void Wait(void) {
+-            ASSERT_NE((HSAuint64)m_queue, NULL);
++            ASSERT_NE(m_queue, nullptr);
+             m_queue->Wait4PacketConsumption(m_event, std::max((unsigned int)6000, g_TestTimeOut));
+         }
+ 
+@@ -244,7 +244,7 @@ HSAuint64 AsyncMPSQ::Report(int indexOfPacket, HSAuint64 &begin, HSAuint64 &end)
+     if (m_ts_pattern == HEAD_TAIL)
+         indexOfPacket = 0;
+ 
+-    EXPECT_NE((HSAuint64)m_ts, NULL)
++    EXPECT_NE(m_ts, nullptr)
+         << " Error " << ++error << ": No timestamp buf!" << std::endl;
+     /* m_ts_count is equal to packets count + 1, see PlacePacketOnNode().
+      * So the max index of a packet is m_ts_count - 2.
+--- a/tests/kfdtest/src/OSWrapper.hpp
++++ b/tests/kfdtest/src/OSWrapper.hpp
+@@ -23,6 +23,8 @@
+ 
+ #include <stdlib.h>
+ #include <stdint.h>
++#include <limits.h>
++#include <sys/user.h>
+ #include <string>
+ 
+ #include "KFDTestFlags.hpp"
+@@ -33,10 +35,8 @@
+ 
+ #ifndef PAGE_SIZE
+ #define PAGE_SIZE   (1<<12)
+-#define PAGE_SHIFT  (12)
+ #endif
+ #ifndef PAGE_SHIFT
+-#define PAGE_SIZE   (1<<12)
+ #define PAGE_SHIFT  (12)
+ #endif
+ 

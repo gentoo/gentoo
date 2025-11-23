@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		Timewarrior is a time tracking utility that offers simple 
+		stopwatch features as well as sophisticated calendar-based 
+		backfill, along with flexible reporting.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">GothenburgBitFactory/timewarrior</remote-id>
+	</upstream>
+</pkgmetadata>

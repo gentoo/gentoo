@@ -1,0 +1,17 @@
+diff --git a/src/rpc/jsonrpc.cc b/src/rpc/jsonrpc.cc
+index a9fad26..df9c44a 100644
+--- a/src/rpc/jsonrpc.cc
++++ b/src/rpc/jsonrpc.cc
+@@ -6,11 +6,11 @@
+ #include <string>
+ #include <torrent/common.h>
+ #include <torrent/torrent.h>
++#include <nlohmann/json.hpp>
+ 
+ #include "rpc/rpc_manager.h"
+ #include "rpc/command.h"
+ #include "rpc/command_map.h"
+-#include "rpc/nlohmann/json.h"
+ #include "rpc/parse_commands.h"
+ #include "torrent/exceptions.h"
+ #include "torrent/object.h"

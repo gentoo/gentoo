@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/920775
+https://bugs.gentoo.org/927333
+https://sourceforge.net/p/poptop/bugs/54/
+--- a/compat.c
++++ b/compat.c
+@@ -10,9 +10,9 @@
+ 
+ #include "compat.h"
+ #include "our_syslog.h"
++#include <string.h>
+ 
+ #ifndef HAVE_STRLCPY
+-#include <string.h>
+ #include <stdio.h>
+ 
+ void strlcpy(char *dst, const char *src, size_t size)

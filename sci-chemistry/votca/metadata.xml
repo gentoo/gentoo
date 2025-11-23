@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-chemistry@gentoo.org</email>
+		<name>Gentoo Chemistry Project</name>
+	</maintainer>
+	<use>
+		<flag name="gromacs">Add support for gromacs file formats through <pkg>sci-chemistry/gromacs</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">votca/votca</remote-id>
+	</upstream>
+</pkgmetadata>

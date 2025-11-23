@@ -1,0 +1,5 @@
+You will need access to postgresql database to use davical.
+
+Read /usr/share/doc/www-apps/davical-${PVR}/INSTALL.gz for installation
+instructions.
+Full documentation and wiki on http://www.davical.org

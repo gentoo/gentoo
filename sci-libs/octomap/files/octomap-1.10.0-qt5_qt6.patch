@@ -1,0 +1,143 @@
+https://github.com/OctoMap/octomap/pull/433.patch
+switch qt4/qt5 to qt5/qt6
+qt6 just works as is
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f1eb31f3..6a4db7eb 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -6,7 +6,7 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)  # enables -fPIC in applicable compilers
+ 
+ option(BUILD_OCTOVIS_SUBPROJECT "Build targets from subproject octovis" ON)
+ option(BUILD_DYNAMICETD3D_SUBPROJECT  "Build targets from subproject dynamicEDT3D" ON)
+-option(OCTOVIS_QT5 "Link Octovis against Qt5?" ON)
++option(OCTOVIS_QT6 "Link Octovis against Qt6?" ON)
+ 
+ set(CMAKE_CXX_STANDARD 11)
+ 
+diff --git a/octovis/CMakeLists.txt b/octovis/CMakeLists.txt
+index 84fa3675..e6dd604c 100644
+--- a/octovis/CMakeLists.txt
++++ b/octovis/CMakeLists.txt
+@@ -65,17 +65,14 @@ set(INSTALL_TARGETS_DEFAULT_ARGS
+ # libQGLViewer, if dependencies available
+ SET( BUILD_VIEWER 0)
+ 
+-option(OCTOVIS_QT5 "Link Octovis against Qt5?" ON)
++option(OCTOVIS_QT6 "Link Octovis against Qt6?" ON)
+ 
+ # Look for required libraries:
+ set(OpenGL_GL_PREFERENCE LEGACY)
+ FIND_PACKAGE(OpenGL)
+-if(NOT OCTOVIS_QT5)
+-  FIND_PACKAGE(Qt4)
+-endif(NOT OCTOVIS_QT5)
+ 
+-IF (OpenGL-NOTFOUND OR Qt4-NOTFOUND)
+-	MESSAGE ( "OpenGL and QT4 are required for octovis but could not be found.")
++IF (OpenGL-NOTFOUND)
++	MESSAGE ( "OpenGL is required for octovis but could not be found.")
+ ELSE()
+ 	FIND_PACKAGE(QGLViewer)
+ 	IF(QGLViewer_FOUND)
+diff --git a/octovis/CMakeLists_src.txt b/octovis/CMakeLists_src.txt
+index 35bc1f20..6eaa31ad 100644
+--- a/octovis/CMakeLists_src.txt
++++ b/octovis/CMakeLists_src.txt
+@@ -1,5 +1,8 @@
+ 
+-if(OCTOVIS_QT5)
++if(OCTOVIS_QT6)
++  find_package(Qt6 REQUIRED COMPONENTS Core Gui OpenGLWidgets Widgets Xml)
++  set(QT_LIBRARIES Qt6::Core Qt6::Gui Qt6::OpenGLWidgets Qt6::Widgets Qt6::Xml "${OPENGL_gl_LIBRARY}" "${OPENGL_glu_LIBRARY}")
++else(OCTOVIS_QT6)
+   find_package(Qt5Core REQUIRED)
+   find_package(Qt5Gui REQUIRED)
+   find_package(Qt5OpenGL REQUIRED)
+@@ -13,14 +16,7 @@ if(OCTOVIS_QT5)
+     "${Qt5Widgets_INCLUDE_DIRS}"
+     "${Qt5Xml_INCLUDE_DIRS}"
+     )
+-else(OCTOVIS_QT5)
+-  # Qt4-support (more info: http://qtnode.net/wiki?title=Qt_with_cmake)
+-  find_package(Qt4 REQUIRED)
+-  set(QT_USE_QTOPENGL TRUE)
+-  set(QT_USE_QTXML TRUE)
+-  # include the files enabled above
+-  include(${QT_USE_FILE})
+-endif(OCTOVIS_QT5)
++endif(OCTOVIS_QT6)
+ 
+ # Mac OS X seems to require special linker flags:
+ IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+@@ -51,11 +47,11 @@ set(viewer_SRCS
+ )	
+ 
+ # Resource files (icons, ...)
+-if(OCTOVIS_QT5)
++if(OCTOVIS_QT6)
++  QT6_ADD_RESOURCES(viewer_RES src/icons.qrc)
++else(OCTOVIS_QT6)
+   QT5_ADD_RESOURCES(viewer_RES src/icons.qrc)
+-else(OCTOVIS_QT5)
+-  QT4_ADD_RESOURCES(viewer_RES src/icons.qrc)
+-endif(OCTOVIS_QT5)
++endif(OCTOVIS_QT6)
+ 
+ #found QGLViewer lib dir
+ link_directories(${QGLViewer_LIBRARY_DIR})
+@@ -74,11 +70,11 @@ SET(viewer_MOC_HDRS
+ )
+ 
+ # generate list of MOC srcs:
+-if(OCTOVIS_QT5)
++if(OCTOVIS_QT6)
++  QT6_WRAP_CPP(viewer_MOC_SRCS ${viewer_MOC_HDRS})
++else(OCTOVIS_QT6)
+   QT5_WRAP_CPP(viewer_MOC_SRCS ${viewer_MOC_HDRS})
+-else(OCTOVIS_QT5)
+-  QT4_WRAP_CPP(viewer_MOC_SRCS ${viewer_MOC_HDRS})
+-endif(OCTOVIS_QT5)
++endif(OCTOVIS_QT6)
+ 
+ # let cmake generate ui*.h files from .ui files (Qt Designer):
+ SET(viewer_UIS
+@@ -87,11 +83,11 @@ SET(viewer_UIS
+     ${PROJECT_SOURCE_DIR}/include/octovis/ViewerSettingsPanel.ui
+     ${PROJECT_SOURCE_DIR}/include/octovis/ViewerSettingsPanelCamera.ui
+ )
+-if(OCTOVIS_QT5)
++if(OCTOVIS_QT6)
++  QT6_WRAP_UI(viewer_UIS_H ${viewer_UIS})
++else(OCTOVIS_QT6)
+   QT5_WRAP_UI(viewer_UIS_H ${viewer_UIS})
+-else(OCTOVIS_QT5)
+-  QT4_WRAP_UI(viewer_UIS_H ${viewer_UIS})
+-endif(OCTOVIS_QT5)
++endif(OCTOVIS_QT6)
+ 
+ # Don't forget to include output directory, otherwise
+ # the UI file won't be wrapped!
+@@ -101,6 +97,7 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_BINARY_DIR})
+ # Library target 
+ add_library(octovis-static STATIC ${viewerlib_SRCS})
+ target_link_libraries(octovis-static
++  ${QT_LIBRARIES}
+   ${OPENGL_gl_LIBRARY} 
+   ${OPENGL_glu_LIBRARY} 
+   ${OCTOMAP_LIBRARIES}
+@@ -110,6 +107,7 @@ set_target_properties(octovis-static PROPERTIES OUTPUT_NAME octovis)
+ 
+ add_library(octovis-shared SHARED ${viewerlib_SRCS})
+ target_link_libraries(octovis-shared 
++  ${QT_LIBRARIES}
+   ${OPENGL_gl_LIBRARY} 
+   ${OPENGL_glu_LIBRARY} 
+   ${OCTOMAP_LIBRARIES}
+@@ -135,7 +133,6 @@ add_executable(octovis ${viewer_SRCS} ${viewer_UIS_H} ${viewer_MOC_SRCS} ${viewe
+ 
+ target_link_libraries(octovis 
+ #  ${QGLViewer_LIBRARIES}
+-  ${QT_LIBRARIES}
+   ${OCTOMAP_LIBRARIES}
+   octovis-shared
+ )

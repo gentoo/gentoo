@@ -1,0 +1,67 @@
+--- a/script/gen_ostream_ops.py
++++ b/script/gen_ostream_ops.py
+@@ -242,7 +242,15 @@ def gen_cppheader(infilepath, outfilepath, rank):
+         if c == 'max_align_t' or c == '__fsid_t': # Skipping as it is defined in multiple domains
+           continue
+         if len(cppHeader.classes[c]["properties"]["public"]) != 0:
+-          output_filename_h.write("inline static std::ostream& operator<<(std::ostream& out, const " + c + "& v)\n")
++          print_c = ("typename " + c) if '>::' in c else c
++
++          if '<T' in c:
++            output_filename_h.write("template <typename T>\n")
++          elif c == 'HIP_vector_type':
++            output_filename_h.write("template<typename T, unsigned int rank>\n")
++            print_c = 'HIP_vector_type<T, rank>'
++
++          output_filename_h.write("inline static std::ostream& operator<<(std::ostream& out, const " + print_c + "& v)\n")
+           output_filename_h.write("{\n")
+           output_filename_h.write("  std::operator<<(out, '{');\n")
+           output_filename_h.write("  " + apiname.upper() + "_depth_max_cnt++;\n")
+@@ -257,7 +265,13 @@ def gen_cppheader(infilepath, outfilepath, rank):
+           output_filename_h.write("  return out;\n")
+           output_filename_h.write("}\n")
+           global_str = ''
+-          global_ops += "inline static std::ostream& operator<<(std::ostream& out, const " + c + "& v)\n" + "{\n" + "  roctracer::" + apiname.lower() + "_support::detail::operator<<(out, v);\n" + "  return out;\n" + "}\n\n"
++
++          if '<T' in c:
++            global_ops += "template <typename T>\n"
++          elif c == 'HIP_vector_type':
++            global_ops += "template<typename T, unsigned int rank>\n"
++
++          global_ops += "inline static std::ostream& operator<<(std::ostream& out, const " + print_c + "& v)\n" + "{\n" + "  roctracer::" + apiname.lower() + "_support::detail::operator<<(out, v);\n" + "  return out;\n" + "}\n\n"
+ 
+     if rank == 1 or rank == 2:
+       footer = '// end ostream ops for '+ apiname + ' \n'
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -61,11 +61,19 @@ add_custom_command(
+           "${HSA_RUNTIME_INC_PATH}/hsa_ext_image.h" "${HSA_RUNTIME_INC_PATH}/hsa_api_trace.h"
+   COMMENT "Generating hsa_prof_str.h,hsa_prof_str.inline.h...")
+ 
++set(SYSTEM_HEADERS_DIR ${CMAKE_CURRENT_BINARY_DIR}/system-headers)
++
++execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory "${SYSTEM_HEADERS_DIR}")
++execute_process(COMMAND ${CMAKE_COMMAND} -E touch "${SYSTEM_HEADERS_DIR}/array")
++execute_process(COMMAND ${CMAKE_COMMAND} -E touch "${SYSTEM_HEADERS_DIR}/iosfwd")
++execute_process(COMMAND ${CMAKE_COMMAND} -E touch "${SYSTEM_HEADERS_DIR}/type_traits")
++
++
+ ## Generate the HSA pretty printers
+ add_custom_command(
+   OUTPUT hsa_ostream_ops.h
+-  COMMAND ${CMAKE_C_COMPILER} -E "${HSA_RUNTIME_INC_PATH}/hsa.h" -o hsa.h.i
+-  COMMAND ${CMAKE_C_COMPILER} -E "${HSA_RUNTIME_INC_PATH}/hsa_ext_amd.h" -o hsa_ext_amd.h.i
++  COMMAND ${CMAKE_C_COMPILER} -nostdinc++ -isystem ${SYSTEM_HEADERS_DIR} -E "${HSA_RUNTIME_INC_PATH}/hsa.h" -o hsa.h.i
++  COMMAND ${CMAKE_C_COMPILER} -nostdinc++ -isystem ${SYSTEM_HEADERS_DIR} -E "${HSA_RUNTIME_INC_PATH}/hsa_ext_amd.h" -o hsa_ext_amd.h.i
+   BYPRODUCTS hsa.h.i hsa_ext_amd.h.i
+   COMMAND ${Python3_EXECUTABLE} ${PROJECT_SOURCE_DIR}/script/gen_ostream_ops.py
+           -in hsa.h.i,hsa_ext_amd.h.i -out hsa_ostream_ops.h  > /dev/null
+@@ -83,7 +91,7 @@ find_file(HIP_RUNTIME_API_H hip_runtime_api.h
+ ## Generate the HIP pretty printers
+ add_custom_command(
+   OUTPUT hip_ostream_ops.h
+-  COMMAND ${CMAKE_C_COMPILER} "$<$<BOOL:${HIP_INCLUDE_DIRECTORIES}>:-I$<JOIN:${HIP_INCLUDE_DIRECTORIES},$<SEMICOLON>-I>>"
++  COMMAND ${CMAKE_C_COMPILER} -nostdinc++ -isystem ${SYSTEM_HEADERS_DIR} "$<$<BOOL:${HIP_INCLUDE_DIRECTORIES}>:-I$<JOIN:${HIP_INCLUDE_DIRECTORIES},$<SEMICOLON>-I>>"
+           -E "${CMAKE_CURRENT_SOURCE_DIR}/roctracer/hip_full_api.h" -D__HIP_PLATFORM_AMD__=1 -D__HIP_ROCclr__=1 -o hip_runtime_api.h.i
+   BYPRODUCTS hip_runtime_api.h.i
+   COMMAND ${Python3_EXECUTABLE} ${PROJECT_SOURCE_DIR}/script/gen_ostream_ops.py

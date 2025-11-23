@@ -1,0 +1,119 @@
+From e5ae56618dc2a15b9cff792be7315185bbd96ad2 Mon Sep 17 00:00:00 2001
+From: Sergey Poznyakoff <gray@gnu.org>
+Date: Tue, 7 Jan 2025 11:59:33 +0200
+Subject: Fix testsuite (mda & mail) to work with arbitrary default mailbox
+ type
+
+* mail/testsuite/lib/mail.exp (default_mail_start): Force mbox
+mailbox type.
+* mda/mda/tests/forward.at: Likewise.
+* mda/mda/tests/mda.at: Likewise.
+* mda/tests/mda.sh (dumpmail): Handle only mbox.
+---
+ mail/testsuite/lib/mail.exp |  2 ++
+ mda/mda/tests/forward.at    |  2 +-
+ mda/mda/tests/mda.at        | 16 +---------------
+ mda/tests/mda.sh            | 26 --------------------------
+ 4 files changed, 4 insertions(+), 42 deletions(-)
+
+diff --git a/mail/testsuite/lib/mail.exp b/mail/testsuite/lib/mail.exp
+index b7e68b2..9034d57 100644
+--- a/mail/testsuite/lib/mail.exp
++++ b/mail/testsuite/lib/mail.exp
+@@ -51,6 +51,8 @@ proc default_mail_start {args} {
+ 	append sw $MU_TOOL_FLAGS
+     }
+     
++    append sw " --set mailbox.mailbox-type=mbox"
++
+     if [info exists host_board] {
+ 	if [board_info $host_board exists top_srcdir] {
+ 	    append sw " --set \"mailbox.mail-spool='[board_info $host_board top_srcdir]/mail/testsuite/spool'\""
+diff --git a/mda/mda/tests/forward.at b/mda/mda/tests/forward.at
+index 08d22ac..d4af639 100644
+--- a/mda/mda/tests/forward.at
++++ b/mda/mda/tests/forward.at
+@@ -19,7 +19,7 @@ AT_KEYWORDS([maidag forward])
+ 
+ m4_pushdef([TESTMDA_CONF],[cat > testmda.conf <<EOF
+ mailbox {
+-  mailbox-pattern "$(pwd)/spool/\${user}";
++  mailbox-pattern "mbox://$(pwd)/spool/\${user}";
+ }  
+ 
+ mailer {
+diff --git a/mda/mda/tests/mda.at b/mda/mda/tests/mda.at
+index b101ae0..5279f15 100644
+--- a/mda/mda/tests/mda.at
++++ b/mda/mda/tests/mda.at
+@@ -16,7 +16,7 @@
+ 
+ m4_pushdef([TESTMDA_CONF],[cat > testmda.conf <<EOF
+ mailbox {
+-  mailbox-pattern "$(pwd)/spool/\${user}";
++  mailbox-pattern "mbox://$(pwd)/spool/\${user}";
+ }  
+ EOF
+ ])
+@@ -52,20 +52,6 @@ mkdir spool
+ TESTMDA_CONF
+ testmda  --from gulliver@example.net root < msg || exit $?
+ dumpmail spool/root
+-case $MU_DEFAULT_SCHEME in
+-mbox)
+-    head -1 spool/root
+-    echo "$envelope" >> expout
+-    ;;
+-mh)    
+-    sed -n -e '/^X-Envelope-Date: */s///p' spool/root/1
+-    echo "$date" >> expout
+-    ;;
+-maildir)
+-    sed -n -e '/^X-Envelope-Date: */s///p' $(find spool/root/new -type f | head -n 1)
+-    echo "$date" >> expout
+-    ;;
+-esac
+ ],
+ [0],
+ [expout])
+diff --git a/mda/tests/mda.sh b/mda/tests/mda.sh
+index 208602a..90a8d6c 100644
+--- a/mda/tests/mda.sh
++++ b/mda/tests/mda.sh
+@@ -16,33 +16,7 @@
+ 
+ INPUT_MSG=$abs_top_srcdir/mda/tests/input.msg
+ dumpmail() {
+-    case $MU_DEFAULT_SCHEME in
+-	mbox)
+ 	    sed -e '/^From /d'\
+ 		-e /^X-IMAPbase:/d\
+                 -e /^X-UID:/d $1
+-	    ;;
+-	dotmail)
+-	    sed -e '/^\.$/d'\
+-		-e /^X-IMAPbase:/d\
+-                -e /^X-UID:/d $1
+-	    ;;
+-	mh)
+-	    sed -e /^X-IMAPbase:/d\
+-                -e /^X-UID:/d\
+-                -e /^X-Envelope-Sender:/d\
+-                -e /^X-Envelope-Date:/d $1/1
+-	    ;;
+-	maildir)
+-	    f=$(find $1/new -type f | head -n 1)
+-	    if test -n $f; then
+-		sed -e /^X-IMAPbase:/d\
+-                    -e /^X-UID:/d\
+-                    -e /^X-Envelope-Sender:/d\
+-                    -e /^X-Envelope-Date:/d $f
+-	    fi
+-	    ;;
+-	*)  # Should not happen
+-	    echo >&2 "Default mailbox format is uknown"
+-    esac
+ }    
+-- 
+cgit v1.1
+

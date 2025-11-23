@@ -1,0 +1,124 @@
+Description: remove reference to adv lib
+ The build fails with
+   No such 'link' library: 'adv' at /build/libwx-perl-0.9932/build/Wx/build/MakeMaker.pm line 212.
+ And https://raw.githubusercontent.com/wxWidgets/wxWidgets/v3.2.0/docs/changes.txt says for 3.1.2
+   - wxAdvanced library was merged into wxCore, simply remove all references
+    to "adv" from your build system, it is not needed any longer.
+Origin: vendor
+Author: gregor herrmann <gregoa@debian.org>
+Last-Update: 2022-09-15
+
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -86,7 +86,7 @@
+     PMLIBDIRS         => [ 'lib', 'build' ],
+     EXE_FILES         => [ qw(script/wxperl_overload) ],
+     WX_CORE_LIB_MAYBE => $^O eq 'darwin' ? 'media html' : '',
+-    WX_CORE_LIB       => 'adv core base',
++    WX_CORE_LIB       => 'core base',
+     WX_OVERLOAD       => { header  => 'cpp/ovl_const.h',
+                            source  => 'cpp/ovl_const.cpp',
+                          },
+--- a/build/Wx/build/MakeMaker.pm
++++ b/build/Wx/build/MakeMaker.pm
+@@ -48,7 +48,7 @@
+   WX_CORE_LIB => 'xrc core base'
+ 
+ link libraries from wxWidgets' core or contrib directory.
+-If not spedified, defaults to 'adv html core net base' for compatibility.
++If not spedified, defaults to 'html core net base' for compatibility.
+ 
+ =item * WX_LIB
+ 
+@@ -362,7 +362,7 @@
+ 
+   $args{CCFLAGS} .= $options{extra_cflags} ? ' ' . $options{extra_cflags} : '';
+   $args{LIBS} .=  $options{extra_libs} ? ' ' . $options{extra_libs} : '';
+-  $args{WX_CORE_LIB} ||= 'adv html core net base';
++  $args{WX_CORE_LIB} ||= 'html core net base';
+ 
+   foreach ( keys %args ) {
+     my $v = $args{$_};
+--- a/ext/aui/Makefile.PL
++++ b/ext/aui/Makefile.PL
+@@ -19,5 +19,5 @@
+ wxWriteMakefile( NAME         => 'Wx::AUI',
+                  VERSION_FROM => 'lib/Wx/AUI.pm',
+                  REQUIRE_WX   => 2.007002,
+-                 WX_CORE_LIB  => 'aui adv core base',
++                 WX_CORE_LIB  => 'aui core base',
+                  );
+--- a/ext/calendar/Makefile.PL
++++ b/ext/calendar/Makefile.PL
+@@ -18,7 +18,7 @@
+ 
+ wxWriteMakefile( NAME         => 'Wx::Calendar',
+                  VERSION_FROM => 'Calendar.pm',
+-                 WX_CORE_LIB  => 'adv core base',
++                 WX_CORE_LIB  => 'core base',
+                  );
+ 
+ # local variables:
+--- a/ext/dataview/Makefile.PL
++++ b/ext/dataview/Makefile.PL
+@@ -19,5 +19,5 @@
+ wxWriteMakefile( NAME         => 'Wx::DataView',
+                  VERSION_FROM => 'DataView.pm',
+                  REQUIRE_WX   => 2.009000,
+-                 WX_CORE_LIB  => 'adv core base',
++                 WX_CORE_LIB  => 'core base',
+                  );
+--- a/ext/grid/Makefile.PL
++++ b/ext/grid/Makefile.PL
+@@ -16,7 +16,7 @@
+ 
+ wxWriteMakefile( NAME         => 'Wx::Grid',
+                  VERSION_FROM => 'lib/Wx/Grid.pm',
+-                 WX_CORE_LIB  => 'adv core base',
++                 WX_CORE_LIB  => 'core base',
+                  );
+ 
+ # local variables:
+--- a/ext/propgrid/Makefile.PL
++++ b/ext/propgrid/Makefile.PL
+@@ -19,7 +19,7 @@
+ wxWriteMakefile( NAME         => 'Wx::PropertyGrid',
+                  VERSION_FROM => 'lib/Wx/PropertyGrid.pm',
+                  REQUIRE_WX   => 2.009003,
+-                 WX_CORE_LIB  => 'propgrid adv core base',
++                 WX_CORE_LIB  => 'propgrid core base',
+                  REQUIRE_WX_LIB  => 'propgrid',
+                  NO_WX_PLATFORMS => [ ],
+                );
+\ No newline at end of file
+--- a/ext/ribbon/Makefile.PL
++++ b/ext/ribbon/Makefile.PL
+@@ -19,7 +19,7 @@
+ wxWriteMakefile( NAME         => 'Wx::Ribbon',
+                  VERSION_FROM => 'lib/Wx/Ribbon.pm',
+                  REQUIRE_WX   => 2.009003,
+-                 WX_CORE_LIB  => 'ribbon adv core base',
++                 WX_CORE_LIB  => 'ribbon core base',
+                  REQUIRE_WX_LIB  => 'ribbon',
+                  NO_WX_PLATFORMS => [ ],
+                  );
+--- a/ext/richtext/Makefile.PL
++++ b/ext/richtext/Makefile.PL
+@@ -19,5 +19,5 @@
+ wxWriteMakefile( NAME         => 'Wx::RichText',
+                  VERSION_FROM => 'lib/Wx/RichText.pm',
+                  REQUIRE_WX   => 2.007000,
+-                 WX_CORE_LIB  => 'richtext html xml adv core base',
++                 WX_CORE_LIB  => 'richtext html xml core base',
+                  );
+--- a/ext/xrc/Makefile.PL
++++ b/ext/xrc/Makefile.PL
+@@ -16,7 +16,7 @@
+ 
+ wxWriteMakefile( NAME            => 'Wx::XRC',
+                  VERSION_FROM    => 'lib/Wx/XRC.pm',
+-                 WX_CORE_LIB     => 'xrc xml html adv core base',
++                 WX_CORE_LIB     => 'xrc xml html core base',
+                  );
+ 
+ # local variables:

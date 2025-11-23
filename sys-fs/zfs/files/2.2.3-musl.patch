@@ -1,0 +1,63 @@
+https://github.com/openzfs/zfs/pull/15925
+
+From 68419c70dc7235a4954d6c0c09d60f9ebe694a3c Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 23 Feb 2024 05:12:09 +0000
+Subject: [PATCH] Use <fcntl.h> instead of <sys/fcntl.h>
+
+When building on musl, we get:
+```
+In file included from tests/zfs-tests/cmd/getversion.c:22:
+/usr/include/sys/fcntl.h:1:2: error: #warning redirecting incorrect #include <sys/fcntl.h> to <fcntl.h> [-Werror=cpp]
+    1 | #warning redirecting incorrect #include <sys/fcntl.h> to <fcntl.h>
+
+In file included from module/os/linux/zfs/vdev_file.c:36:
+/usr/include/sys/fcntl.h:1:2: error: #warning redirecting incorrect #include <sys/fcntl.h> to <fcntl.h> [-Werror=cpp]
+    1 | #warning redirecting incorrect #include <sys/fcntl.h> to <fcntl.h>
+```
+
+Bug: https://bugs.gentoo.org/925235
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ module/os/linux/zfs/vdev_file.c  | 2 +-
+ tests/zfs-tests/cmd/getversion.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/module/os/linux/zfs/vdev_file.c b/module/os/linux/zfs/vdev_file.c
+index 5abc0426d1..68e3042a97 100644
+--- a/module/os/linux/zfs/vdev_file.c
++++ b/module/os/linux/zfs/vdev_file.c
+@@ -23,6 +23,7 @@
+  * Copyright (c) 2011, 2020 by Delphix. All rights reserved.
+  */
+ 
++#include <fcntl.h>
+ #include <sys/zfs_context.h>
+ #include <sys/spa.h>
+ #include <sys/spa_impl.h>
+@@ -33,7 +34,6 @@
+ #include <sys/fs/zfs.h>
+ #include <sys/fm/fs/zfs.h>
+ #include <sys/abd.h>
+-#include <sys/fcntl.h>
+ #include <sys/vnode.h>
+ #include <sys/zfs_file.h>
+ #ifdef _KERNEL
+diff --git a/tests/zfs-tests/cmd/getversion.c b/tests/zfs-tests/cmd/getversion.c
+index 62c1c5b6ab..1e026b92d1 100644
+--- a/tests/zfs-tests/cmd/getversion.c
++++ b/tests/zfs-tests/cmd/getversion.c
+@@ -19,9 +19,9 @@
+  */
+ 
+ #include <sys/ioctl.h>
+-#include <sys/fcntl.h>
+ #include <linux/fs.h>
+ #include <err.h>
++#include <fcntl.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <unistd.h>
+-- 
+2.43.2
+

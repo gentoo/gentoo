@@ -1,0 +1,9 @@
+diff -Nuar --exclude '*~' dymo-cups-drivers-1.4.0.5.orig/ppd/Makefile.am dymo-cups-drivers-1.4.0.5/ppd/Makefile.am
+--- dymo-cups-drivers-1.4.0.5.orig/ppd/Makefile.am	2012-02-07 05:54:02.000000000 -0800
++++ dymo-cups-drivers-1.4.0.5/ppd/Makefile.am	2019-06-10 21:57:06.785694883 -0700
+@@ -51,4 +51,4 @@
+ testppd_SOURCES=
+ 
+ testppd:
+-	cupstestppd $(dist_cupsmodel_DATA)
++	cupstestppd $(CUPSTESTPPD_OPTS) $(dist_cupsmodel_DATA)

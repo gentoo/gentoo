@@ -1,0 +1,8 @@
+diff -Nuar mcelog-0.8pre.orig/mcelog.cron mcelog-0.8pre/mcelog.cron
+--- mcelog-0.8pre.orig/mcelog.cron	2006-02-08 05:09:03.000000000 -0800
++++ mcelog-0.8pre/mcelog.cron	2008-02-22 11:32:06.717012502 -0800
+@@ -1,2 +1,3 @@
+ #!/bin/bash
+-/usr/sbin/mcelog --ignorenodev --filter >> /var/log/mcelog
++header="$(date +"%b %d %H:%M:%S") $(hostname) "
++/usr/sbin/mcelog --ignorenodev --filter | sed "s,^,$header,g" >> /var/log/mcelog

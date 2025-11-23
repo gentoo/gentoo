@@ -1,0 +1,19 @@
+# Config file for /etc/init.d/barnyard
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+PIDFILE="/var/run/barnyard.pid"
+LOG_FILE="snort_unified.log"
+
+# You probably don't want to change this, but in case you do
+LOGDIR="/var/log/snort"
+ARCHIVEDIR="$LOGDIR/archive"
+GENMSG_FILE="/etc/snort/gen-msg.map"
+SIDMSG_FILE="/etc/snort/sid-msg.map"
+WALDO_FILE="$LOGDIR/barnyard.waldo"
+
+# Probably not this either
+CONF=/etc/snort/barnyard.conf
+
+# This pulls in the options above
+BARNYARD_OPTS="-D -c $CONF -d $LOGDIR -g $GENMSG_FILE -s $SIDMSG_FILE -w $WALDO_FILE -L $LOGDIR -a $ARCHIVEDIR -f $LOG_FILE -X $PIDFILE"

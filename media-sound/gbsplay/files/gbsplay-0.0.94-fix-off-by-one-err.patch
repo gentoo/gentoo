@@ -1,0 +1,24 @@
+From e9ef7a872ac7f7201b195c961b64f6ce33a5b110 Mon Sep 17 00:00:00 2001
+From: Sanqui <me@sanqui.net>
+Date: Thu, 23 Jul 2020 21:41:16 +0300
+Subject: [PATCH] Fix off-by-one error in gbhw_io_peek
+
+This bug made e.g. WAVE display when verbose incorrect, as the
+last byte of the waveform would always be given as FF.
+---
+ gbhw.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gbhw.c b/gbhw.c
+index 931c79d..dd60066 100644
+--- a/gbhw.c
++++ b/gbhw.c
+@@ -1000,7 +1000,7 @@ regparm void gbhw_io_put(uint16_t addr, uint8_t val) {
+ /* unmasked peek used by gbsplay.c to print regs */
+ regparm uint8_t gbhw_io_peek(uint16_t addr)
+ {
+-	if (addr >= 0xff10 && addr <= 0xff3e) {
++	if (addr >= 0xff10 && addr <= 0xff3f) {
+ 		return ioregs[addr & 0x7f];
+ 	}
+ 	return 0xff;

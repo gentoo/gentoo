@@ -1,0 +1,14 @@
+--- a/syna.h
++++ b/syna.h
+@@ -73,9 +73,9 @@
+ #endif
+ 
+ void error(char *str,bool syscall=false);
+-void inline attempt(int x,char *y,bool syscall=false) { if (x == -1) error(y,syscall); }  
++inline void attempt(int x,char *y,bool syscall=false) { if (x == -1) error(y,syscall); }  
+ void warning(char *str,bool syscall=false);
+-void inline attemptNoDie(int x,char *y,bool syscall=false) { if (x == -1) warning(y,syscall); } 
++inline void attemptNoDie(int x,char *y,bool syscall=false) { if (x == -1) warning(y,syscall); } 
+ 
+ /* *wrap */
+ struct BaseScreen {

@@ -1,0 +1,13 @@
+--- a/hcalc.h
++++ b/hcalc.h
+@@ -25,8 +25,8 @@
+ extern Pixmap face;
+ extern Pixmap chars;
+ 
+-int bit_on;
+-int bit_off;
++extern int bit_on;
++extern int bit_off;
+ 
+ extern int char_to_x[256];
+ extern char charmap[];

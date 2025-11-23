@@ -1,0 +1,87 @@
+From 7ec9aea1c525aee1e1a638f943c4374945ea5b17 Mon Sep 17 00:00:00 2001
+Message-ID: <7ec9aea1c525aee1e1a638f943c4374945ea5b17.1763833678.git.sam@gentoo.org>
+In-Reply-To: <7dbc795b44eb54d41e1c6b30d8796525d65d52b5.1763833678.git.sam@gentoo.org>
+References: <7dbc795b44eb54d41e1c6b30d8796525d65d52b5.1763833678.git.sam@gentoo.org>
+From: Lukas Mai <lukasmai.403@gmail.com>
+Date: Wed, 30 Jul 2025 23:09:54 +0200
+Subject: [PATCH 2/4] class.c: gracefully handle reader/writer after 'strict'
+ error
+
+Fixes #23511.
+
+(cherry picked from commit 4e22a3d0e5f933b38e3fa1b98c904fe224001b63)
+---
+ MANIFEST          |  1 +
+ class.c           |  6 ++++--
+ t/class/gh23511.t | 23 +++++++++++++++++++++++
+ 3 files changed, 28 insertions(+), 2 deletions(-)
+ create mode 100644 t/class/gh23511.t
+
+diff --git a/MANIFEST b/MANIFEST
+index f530320dcc..d8c7b04816 100644
+--- a/MANIFEST
++++ b/MANIFEST
+@@ -5997,6 +5997,7 @@ t/class/construct.t			See if class constructors work
+ t/class/destruct.t			See if class destruction works
+ t/class/field.t				See if class field declarations work
+ t/class/gh22169.t			Test defining a class that previously failed to define
++t/class/gh23511.t			Test defining a reader after a strict 'vars' violation
+ t/class/inherit.t			See if class inheritance works
+ t/class/method.t			See if class method declarations work
+ t/class/phasers.t			See if class phaser blocks work
+diff --git a/class.c b/class.c
+index d6d801928d..a91656d469 100644
+--- a/class.c
++++ b/class.c
+@@ -1140,7 +1140,8 @@ apply_field_attribute_reader(pTHX_ PADNAME *pn, SV *value)
+     OP *nameop = newSVOP(OP_CONST, 0, value);
+ 
+     CV *cv = newATTRSUB(floor_ix, nameop, NULL, NULL, ops);
+-    CvIsMETHOD_on(cv);
++    if (cv)
++        CvIsMETHOD_on(cv);
+ }
+ 
+ /* If '@_' is called "snail", then elements of it can be called "slugs"; i.e.
+@@ -1238,7 +1239,8 @@ apply_field_attribute_writer(pTHX_ PADNAME *pn, SV *value)
+     OP *nameop = newSVOP(OP_CONST, 0, value);
+ 
+     CV *cv = newATTRSUB(floor_ix, nameop, NULL, NULL, ops);
+-    CvIsMETHOD_on(cv);
++    if (cv)
++        CvIsMETHOD_on(cv);
+ }
+ 
+ static struct {
+diff --git a/t/class/gh23511.t b/t/class/gh23511.t
+new file mode 100644
+index 0000000000..ae66269003
+--- /dev/null
++++ b/t/class/gh23511.t
+@@ -0,0 +1,23 @@
++#!./perl
++
++BEGIN {
++    chdir 't' if -d 't';
++    require './test.pl';
++    set_up_inc('../lib');
++}
++
++use v5.36;
++use feature 'class';
++no warnings 'experimental::class';
++
++# this used to segfault: GH #23511
++eval <<'CLASS';
++class MyTest {
++    $id = 6;
++    field $f1 :reader;
++    field $f2 :writer;
++}
++CLASS
++like $@, qr/^Global symbol "\$id" requires explicit package name /, "we get the expected 'undeclared variable' error";
++
++done_testing;
+-- 
+2.52.0
+

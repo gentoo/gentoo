@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/944996
+
+--- a/vxp2ps/vxp2ps.c
++++ b/vxp2ps/vxp2ps.c
+@@ -144,7 +144,7 @@
+ }
+ #endif
+ 
+-void ps_init()
++void ps_init(FILE* fo)
+ {
+   fprintf(fo, "%%!PS-Adobe-2.0\n");
+   fprintf(fo, "%%%%Creator: vxp2ps\n");
+--- a/vxp2ps/vxp2tex.c
++++ b/vxp2ps/vxp2tex.c
+@@ -29,7 +29,7 @@
+ #define DRAWOP 0x3000300
+ #define FILLOP 0x2492000
+ 
+-void ps_init()
++void ps_init(FILE* fo)
+ {
+   fprintf(fo, "%%!PS-Adobe-2.0\n");
+   fprintf(fo, "%%%%Creator: vxp2tex\n");

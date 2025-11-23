@@ -1,0 +1,26 @@
+This patch fixes multiple definitions of 'extern inline' functions.
+
+c99 and gnu90 have slightly different semantics
+WRT symbol definition: http://www.greenend.org.uk/rjk/tech/inline.html
+
+gcc-4 defaults to gnu90 and works, gcc-6 defaults to gnu-99
+and fails to link aboot as:
+  alpha-unknown-linux-gnu-ld: Disabling relaxation: it will not work with multiple definitions
+  lib/libaboot.a(isolib.o): In function `prefetchw':
+  (.text+0x60): multiple definition of `prefetchw'
+  fs/ext2.o:(.text+0xe68): first defined here
+
+The change is to force gnu90 explicitly.
+diff --git a/Makefile b/Makefile
+index b4245af..634ac87 100644
+--- a/Makefile
++++ b/Makefile
+@@ -40,6 +40,6 @@ ifeq ($(TESTING),)
+ CPPFLAGS       = $(CFGDEFS) -I$(TOP)/include -I$(KSRC)/include
+-CFLAGS         = $(CPPFLAGS) -D__KERNEL__ -Os -Wall -fno-builtin -mno-fp-regs
++CFLAGS         = $(CPPFLAGS) -std=gnu90 -D__KERNEL__ -Os -Wall -fno-builtin -mno-fp-regs
+ else
+ CPPFLAGS       = -DTESTING $(CFGDEFS) -I$(TOP)/include -I$(KSRC)/include
+-CFLAGS		= $(CPPFLAGS) -O -g3 -Wall -D__KERNEL__ -ffixed-8
++CFLAGS		= $(CPPFLAGS) -std=gnu90 -O -g3 -Wall -D__KERNEL__ -ffixed-8
+ endif

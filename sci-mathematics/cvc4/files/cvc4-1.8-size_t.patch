@@ -1,0 +1,10 @@
+--- a/src/expr/emptyset.h	2025-04-10 18:42:13.297861573 +0200
++++ b/src/expr/emptyset.h	2025-04-10 18:42:59.042293771 +0200
+@@ -20,6 +20,7 @@
+ #pragma once
+ 
+ #include <iosfwd>
++#include <cstddef>
+ 
+ namespace CVC4 {
+   // messy; Expr needs EmptySet (because it's the payload of a

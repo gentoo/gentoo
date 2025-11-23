@@ -1,0 +1,19 @@
+Do not hardcode -m64 into the build system
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -21,12 +21,12 @@
+ 						   [ext_CFLAGS="-arch x86_64 -arch i386 -arch ppc64 -arch ppc"],
+ 						   [ext_CFLAGS="-arch i386 -arch ppc"]);;
+ 	  0) CFLAGS="-m64"
+-	  	 AC_COMPILE_IFELSE([AC_LANG_PROGRAM], [ext_CFLAGS="-m64"], []);;
++	  	 AC_COMPILE_IFELSE([AC_LANG_PROGRAM], [ext_CFLAGS=""], []);;
+ 	esac;;
+   *)
+     AC_MSG_CHECKING([if gcc accepts -m64])
+     CFLAGS="-m64"
+-    AC_COMPILE_IFELSE([AC_LANG_PROGRAM], [ext_CFLAGS="-m64"; AC_MSG_RESULT([yes])],
++    AC_COMPILE_IFELSE([AC_LANG_PROGRAM], [ext_CFLAGS=""; AC_MSG_RESULT([yes])],
+ 					  [ext_CFLAGS="-D_FILE_OFFSET_BITS=64"; AC_MSG_RESULT([no])]);;
+ esac
+ AC_ARG_ENABLE(experimental, [  --enable-experimental   enable experimental features],

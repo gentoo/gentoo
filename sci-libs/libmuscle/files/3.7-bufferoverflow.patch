@@ -1,0 +1,22 @@
+--- a/libMUSCLE/globalslinux.cpp
++++ b/libMUSCLE/globalslinux.cpp
+@@ -159,7 +159,7 @@
+ 			}
+ 		return DEFAULT_RAM;
+ 		}
+-	int Bytes = atoi(pMem+9)*1000;
++	long Bytes = atol(pMem+9)*1000;
+ 	return ((double) Bytes)/1e6;
+ 	}
+ 
+--- a/libMUSCLE/progress.cpp
++++ b/libMUSCLE/progress.cpp
+@@ -48,7 +48,7 @@
+ 	if (MB < 0)
+ 		return "";
+ 
+-	static char Str[9];
++	static char Str[11];
+ 	static double MaxMB = 0;
+ 	static double RAMMB = 0;
+ 

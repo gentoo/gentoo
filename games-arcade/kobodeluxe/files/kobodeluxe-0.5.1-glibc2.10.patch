@@ -1,0 +1,11 @@
+--- a/graphics/window.cpp
++++ b/graphics/window.cpp
+@@ -398,7 +398,7 @@
+ 		 */
+ 		if(token)
+ 		{
+-			char *tok = strchr(txt, token);
++			const char *tok = strchr(txt, token);
+ 			if(tok)
+ 				tokpos = tok-txt;
+ 			else

@@ -1,0 +1,16 @@
+--- a/shell-completion/bash	2018-12-14 21:25:55.000000000 +0300
++++ b/shell-completion/bash	2019-03-21 01:26:46.152181981 +0300
+@@ -57,7 +57,6 @@
+     echo "numbered verbose"
+ }
+ 
+-_have ufw &&
+ _ufw()
+ {
+     cur=${COMP_WORDS[COMP_CWORD]}
+@@ -91,4 +90,4 @@
+     fi
+ }
+ 
+-_have ufw && complete -F _ufw ufw
++complete -F _ufw ufw

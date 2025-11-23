@@ -1,0 +1,17 @@
+diff --git a/config.pl b/config.pl
+index caf2ed3..6a7a8b3 100644
+--- a/config.pl
++++ b/config.pl
+@@ -1270,12 +1270,6 @@ sub GenerateMakefile
+     $rep.="\t".GenInstallFiles('0644',"$makeDir/$ver",'$(libdir)');
+     $stripDebug=($OSf eq 'Darwin') ? '-S' : '--strip-debug';
+     $rep.="\tstrip $stripDebug \$(libdir)/$ver\n" unless $conf{'debugInfo'} eq 'yes';
+-    # FreeBSD: merge data from libdir.
+-    # Darwin: doesn't have ldconfig.
+-    if ($OSf ne 'Darwin')
+-      {
+-       $rep.=($OSf eq 'FreeBSD') ? "\t-ldconfig -m \$(libdir)\n" : "\t-ldconfig\n";
+-      }
+    }
+  if ($internac)
+    {

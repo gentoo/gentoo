@@ -1,0 +1,23 @@
+diff -Nuar autorespond-2.0.5.orig/autorespond.c autorespond-2.0.5/autorespond.c
+--- autorespond-2.0.5.orig/autorespond.c	2003-09-18 13:17:57.000000000 -0700
++++ autorespond-2.0.5/autorespond.c	2008-06-24 20:46:15.615642827 -0700
+@@ -80,7 +80,7 @@
+ #include <sys/wait.h>
+ #include <ctype.h>
+ 
+-#define DEFAULT_MH	1	/* default value for message_handling flag */
++#define DEFAULT_MH	0	/* default value for message_handling flag */
+ #define DEFAULT_FROM	"$"	/* default "from" for the autorespond */
+ 
+ #define WITH_OMESSAGE	1
+@@ -562,8 +562,8 @@
+ 		fprintf(stderr, "dir - the directory to hold the log of messages\n\n");
+ 		fprintf(stderr, "optional parameters:\n\n");
+ 		fprintf(stderr, "flag - handling of original message:\n\n");
+-		fprintf(stderr, "0 - append nothing\n");
+-		fprintf(stderr, "1 - append quoted original message without attachments <default>\n\n");
++		fprintf(stderr, "0 - append nothing <default>\n");
++		fprintf(stderr, "1 - append quoted original message without attachments\n\n");
+ 		fprintf(stderr, "arsender - from address in generated message, or:\n\n");
+ 		fprintf(stderr, "+ = blank from envelope !\n");
+ 		fprintf(stderr, "$ = To: address will be used\n\n");

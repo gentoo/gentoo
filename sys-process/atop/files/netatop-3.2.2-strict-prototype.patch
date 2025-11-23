@@ -1,0 +1,77 @@
+Fix for strict prototypes error: declarations are fine,
+definitions are missing void
+https://bugs.gentoo.org/949835
+--- a/netatop.c	2024-06-01 15:19:08.000000000 +0400
++++ b/netatop.c	2025-02-16 15:48:07.094848633 +0400
+@@ -1053,7 +1053,7 @@
+ ** can be found at the head
+ */
+ static void
+-gctaskexit()
++gctaskexit(void)
+ {
+ 	unsigned long	flags;
+ 	struct taskinfo	*tip;
+@@ -1087,7 +1087,7 @@
+ ** cleanup sockinfo structures that are connected to finished processes
+ */
+ static void
+-gcsockinfo()
++gcsockinfo(void)
+ {
+ 	int		i;
+ 	struct sockinfo	*sip, *sipsave;
+@@ -1300,7 +1300,7 @@
+ ** remove taskinfo structures of finished tasks from hash list
+ */
+ static void
+-gctaskinfo()
++gctaskinfo(void)
+ {
+ 	int		i;
+ 	struct taskinfo	*tip, *tipsave;
+@@ -1376,7 +1376,7 @@
+ ** remove all sockinfo structs
+ */
+ static void
+-wipesockinfo()
++wipesockinfo(void)
+ {
+ 	struct sockinfo	*sip, *sipsave;
+ 	int 		i;
+@@ -1404,7 +1404,7 @@
+ ** remove all taskinfo structs from hash list
+ */
+ static void
+-wipetaskinfo()
++wipetaskinfo(void)
+ {
+ 	struct taskinfo	*tip, *tipsave;
+ 	int 		i;
+@@ -1432,7 +1432,7 @@
+ ** remove all taskinfo structs from exit list
+ */
+ static void
+-wipetaskexit()
++wipetaskexit(void)
+ {
+ 	gctaskexit();
+ }
+@@ -1768,7 +1768,7 @@
+ ** called when module loaded
+ */
+ int
+-init_module()
++init_module(void)
+ {
+ 	int i;
+ 
+@@ -1869,7 +1869,7 @@
+ ** called when module unloaded
+ */
+ void
+-cleanup_module()
++cleanup_module(void)
+ {
+ 	/*
+  	** tell kernel daemon to stop

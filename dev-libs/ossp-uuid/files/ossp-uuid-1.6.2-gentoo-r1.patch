@@ -1,0 +1,70 @@
+--- uuid-1.6.2.orig/Makefile.in	2009-03-21 12:52:49.142847389 +0100
++++ uuid-1.6.2.orig/Makefile.in	2009-03-21 12:53:54.201971177 +0100
+@@ -62,13 +62,13 @@ 
+ PHP         = @PHP@
+ PG_CONFIG   = @PG_CONFIG@
+ 
+-LIB_NAME    = libuuid.la
++LIB_NAME    = libossp-uuid.la
+ LIB_OBJS    = uuid.lo uuid_md5.lo uuid_sha1.lo uuid_prng.lo uuid_mac.lo uuid_time.lo uuid_ui64.lo uuid_ui128.lo uuid_str.lo
+ 
+-DCE_NAME    = libuuid_dce.la
++DCE_NAME    = libossp-uuid_dce.la
+ DCE_OBJS    = uuid_dce.lo $(LIB_OBJS)
+ 
+-CXX_NAME    = libuuid++.la
++CXX_NAME    = libossp-uuid++.la
+ CXX_OBJS    = uuid++.lo $(LIB_OBJS)
+ 
+ PRG_NAME    = uuid
+@@ -112,15 +112,15 @@ 
+ 	@$(LIBTOOL) --mode=compile $(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $<
+ 
+ $(LIB_NAME): $(LIB_OBJS)
+-	@$(LIBTOOL) --mode=link $(CC) -o $(LIB_NAME) $(LIB_OBJS) -rpath $(libdir) \
++	@$(LIBTOOL) --mode=link $(CC) $(LDFLAGS) -o $(LIB_NAME) $(LIB_OBJS) -rpath $(libdir) \
+ 	    -version-info `$(SHTOOL) version -l c -d libtool $(S)/uuid_vers.h`
+ 
+ $(DCE_NAME): $(DCE_OBJS)
+-	@$(LIBTOOL) --mode=link $(CC) -o $(DCE_NAME) $(DCE_OBJS) -rpath $(libdir) \
++	@$(LIBTOOL) --mode=link $(CC) $(LDFLAGS) -o $(DCE_NAME) $(DCE_OBJS) -rpath $(libdir) \
+ 	    -version-info `$(SHTOOL) version -l c -d libtool $(S)/uuid_vers.h`
+ 
+ $(CXX_NAME): $(CXX_OBJS)
+-	@$(LIBTOOL) --mode=link $(CXX) -o $(CXX_NAME) $(CXX_OBJS) -rpath $(libdir) \
++	@$(LIBTOOL) --mode=link $(CXX) $(LDFLAGS) -o $(CXX_NAME) $(CXX_OBJS) -rpath $(libdir) \
+ 	    -version-info `$(SHTOOL) version -l c -d libtool $(S)/uuid_vers.h`
+ 
+ $(PRG_NAME): $(PRG_OBJS) $(LIB_NAME)
+@@ -253,7 +253,7 @@ 
+ 	-@if [ ".$(WITH_CXX)" = .yes ]; then \
+ 	    $(LIBTOOL) --mode=install $(SHTOOL) install -c -m 644 $(CXX_NAME) $(DESTDIR)$(libdir)/; \
+ 	fi
+-	@$(LIBTOOL) --mode=install $(SHTOOL) install -c -s -m 755 uuid $(DESTDIR)$(bindir)/
++	@$(LIBTOOL) --mode=install $(SHTOOL) install -c -m 755 uuid $(DESTDIR)$(bindir)/
+ 	$(SHTOOL) install -c -m 644 $(S)/uuid.1 $(DESTDIR)$(mandir)/man1/
+ 	-@if [ ".$(WITH_PERL)" = .yes ]; then \
+ 	    (cd $(S)/perl && $(MAKE) $(MFLAGS) install DESTDIR=$(DESTDIR)); \
+--- uuid-1.6.2.orig/uuid-config.in	2009-03-21 12:52:49.146166177 +0100
++++ uuid-1.6.2.orig/uuid-config.in	2009-03-21 12:53:06.282809038 +0100
+@@ -121,7 +121,7 @@ 
+             output_extra="$output_extra $uuid_ldflags"
+             ;;
+         --libs)
+-            output="$output -luuid"
++            output="$output -lossp-uuid"
+             output_extra="$output_extra $uuid_libs"
+             ;;
+         * )
+--- uuid-1.6.2.orig/uuid.pc.in	2009-03-21 12:52:49.146166177 +0100
++++ uuid-1.6.2.orig/uuid.pc.in	2009-03-21 12:53:06.282809038 +0100
+@@ -36,7 +36,7 @@ 
+ Description: Universally Unique Identifier (UUID) Library
+ Version: @UUID_VERSION_RAW@
+ URL: http://www.ossp.org/pkg/lib/uuid/
+-Cflags: -I${includedir}
+-Libs: -L${libdir} -luuid
++Cflags: -I${includedir}/ossp
++Libs: -L${libdir} -lossp-uuid
+ Libs.private: @LIBS@
+ 

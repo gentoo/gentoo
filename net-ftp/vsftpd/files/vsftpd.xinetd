@@ -1,0 +1,14 @@
+# default: off
+# description: Very Secure FTP Daemon
+
+service ftp
+{
+	socket_type     = stream
+	wait            = no
+	user            = root
+	server          = /usr/sbin/vsftpd
+	server_args     = -olisten=NO
+	log_on_success  += DURATION 
+	nice            = 10
+	disable         = yes
+}

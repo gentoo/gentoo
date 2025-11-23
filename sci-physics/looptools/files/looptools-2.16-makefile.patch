@@ -1,0 +1,105 @@
+diff -Naru LoopTools-2.16.orig/makefile.in LoopTools-2.16/makefile.in
+--- LoopTools-2.16.orig/makefile.in	2022-04-12 11:04:39.286039581 +0200
++++ LoopTools-2.16/makefile.in	2022-04-12 11:07:50.023602000 +0200
+@@ -1,8 +1,8 @@
+ BLD = build$(QUADSUFFIX)
+ 
+-LIBDIR = $(PREFIX)/lib$(LIBDIRSUFFIX)
+-INCLUDEDIR = $(PREFIX)/include
+-BINDIR = $(PREFIX)/bin
++LIBDIR = $(DESTDIR)/$(PREFIX)/lib$(LIBDIRSUFFIX)
++INCLUDEDIR = $(DESTDIR)/$(PREFIX)/include
++BINDIR = $(DESTDIR)/$(PREFIX)/bin
+ 
+ LIB = libooptools$(QUADSUFFIX).a
+ FE = lt$(QUADSUFFIX)$(EXE)
+@@ -11,6 +11,10 @@
+ FXX = f++$(QUADSUFFIX)
+ INCLUDE = $(BLD)/looptools.h $(BLD)/clooptools.h
+ 
++LIBRARY=libooptools.so
++REALNAME=$(LIBRARY)
++
++
+ ARGS = $(PARALLEL) \
+   LIB="$(LIB)" \
+   FE="$(FE)" \
+@@ -20,14 +24,14 @@
+   EXE="$(EXE)" \
+   DEF="$(DEF)" \
+   NOUNDERSCORE="$(NOUNDERSCORE)" \
+-  XFC="$(FC) $(FFLAGS) -I." \
++  XFC="$(FC) $(FFLAGS) -I. -fPIC" \
+   F90="$(F90)" \
+   CDEFS="$(CDEFS)" \
+   MCDEFS="$(MCDEFS)" \
+   CC="$(CC)" \
+-  CFLAGS="$(CFLAGS)" \
++  CFLAGS="$(CFLAGS) -fPIC" \
+   CXX="$(CXX)" \
+-  CXXFLAGS="$(CXXFLAGS)" \
++  CXXFLAGS="$(CXXFLAGS) -fPIC" \
+   ML="$(ML)" \
+   MCC="$(MCC)" \
+   MCFLAGS="$(MCFLAGS)" \
+@@ -37,24 +41,23 @@
+   NM="$(NM)" \
+   DLLTOOL="$(DLLTOOL)" \
+   LDFLAGS="$(LDFLAGS)" \
+-  LIBPATH="$(LIBPATH)"
++  LIBPATH="$(LIBPATH)" \
++  REALNAME="$(REALNAME)"
+ 
+ 
+-default all lib frontend mma: force
++default all lib solib frontend mma: force
+ 	cd $(BLD) && $(MAKE) $(ARGS) $@
+ 
+-install: lib frontend
+-	-mkdir $(PREFIX)
++install: lib solib frontend
++	-mkdir $(DESTDIR)/$(PREFIX)
+ 	-mkdir $(LIBDIR) $(BINDIR) $(INCLUDEDIR)
+ 	cp -p $(BLD)/$(LIB) $(LIBDIR)
+ 	cp -p $(INCLUDE) $(INCLUDEDIR)
+-	strip $(BLD)/$(FE)
+ 	cp -p $(BLD)/$(FCC) $(BLD)/$(FE) $(BINDIR)
+ 	rm -f $(BINDIR)/$(FXX)
+ 	ln -s $(FCC) $(BINDIR)/$(FXX)
+ 	test ! -f $(BLD)/$(MFE) || { \
+ 	  test -z "$(EXE)" || ldd $(BLD)/$(MFE) | awk '/\/usr\/bin\/cyg/ { system("cp -p " $$3 " $(BINDIR)/"); }' ; \
+-	  strip $(BLD)/$(MFE) ; \
+ 	  cp -p $(BLD)/$(MFE) $(BINDIR); \
+ 	}
+ 
+diff -Naru LoopTools-2.16.orig/src/makefile LoopTools-2.16/src/makefile
+--- LoopTools-2.16.orig/src/makefile	2022-04-12 11:04:39.287039595 +0200
++++ LoopTools-2.16/src/makefile	2022-04-12 11:09:14.079731941 +0200
+@@ -1,6 +1,6 @@
+-default: frontend mma$(ML)
++default: frontend mma$(ML) solib
+ 
+-all: frontend mma1
++all: frontend mma1 solib
+ 
+ frontend: lib $(FE)
+ 
+@@ -8,6 +8,8 @@
+ 
+ mma0 lib: $(LIB) clooptools.h $(FCC)
+ 
++solib: $(REALNAME) fcc
++
+ 
+ .SUFFIXES:
+ 
+@@ -240,6 +242,9 @@
+ 	$(AR) $(ARFLAGS) $(LIB) $?
+ 	-$(RANLIB) $(LIB)
+ 
++$(REALNAME): $(OBJS)
++	$(XFC) $(LDFLAGS) -shared -Wl,--soname,$(REALNAME) -o $@ $?
++
+ 
+ $(FE): lt.F $(LTINC) $(LIB)
+ 	$(XFC) -o $(FE) lt.F $(LIB) $(LDFLAGS)

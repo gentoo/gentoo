@@ -1,0 +1,40 @@
+https://github.com/mchehab/rasdaemon/pull/89
+
+From 9461d22e334686f76c99477386072f4673cd0a72 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 19 Feb 2023 18:33:20 +0000
+Subject: [PATCH] configure.ac: fix bashisms
+
+configure scripts need to be runnable with a POSIX-compliant /bin/sh.
+
+On many (but not all!) systems, /bin/sh is provided by Bash, so errors
+like this aren't spotted. Notably Debian defaults to /bin/sh provided
+by dash which doesn't tolerate such bashisms as '=='.
+
+This retains compatibility with bash.
+
+Fixes configure warnings/errors like:
+```
+checking for libtraceevent... yes
+./configure: 13430: test: x: unexpected operator
+./configure: 13439: test: x: unexpected operator
+```
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -170,11 +170,11 @@ AM_COND_IF([WITH_AMP_NS_DECODE], [USE_AMP_NS_DECODE="yes"], [USE_AMP_NS_DECODE="
+ AC_ARG_ENABLE([cpu_fault_isolation],
+     AS_HELP_STRING([--enable-cpu-fault-isolation], [enable cpu online fault isolation]))
+ 
+-AS_IF([test "x$enable_cpu_fault_isolation" = "xyes" || test "x$enable_all" == "xyes"], [
++AS_IF([test "x$enable_cpu_fault_isolation" = "xyes" || test "x$enable_all" = "xyes"], [
+   AC_DEFINE(HAVE_CPU_FAULT_ISOLATION,1,"have cpu online fault isolation")
+   AC_SUBST([WITH_CPU_FAULT_ISOLATION])
+ ])
+-AM_CONDITIONAL([WITH_CPU_FAULT_ISOLATION], [test x$enable_cpu_fault_isolation = xyes || test x$enable_all == xyes])
++AM_CONDITIONAL([WITH_CPU_FAULT_ISOLATION], [test x$enable_cpu_fault_isolation = xyes || test x$enable_all = xyes])
+ AM_COND_IF([WITH_CPU_FAULT_ISOLATION], [USE_CPU_FAULT_ISOLATION="yes"], [USE_CPU_FAULT_ISOLATION="no"])
+ 
+ test "$sysconfdir" = '${prefix}/etc' && sysconfdir=/etc
+

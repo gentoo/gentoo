@@ -1,0 +1,148 @@
+Subject: [PATCH] fix declarations with type mismatches
+
+Type mismatches between declarations prevent the compile from using LTO
+
+Bug: https://bugs.gentoo.org/854534
+Upstream: https://sourceforge.net/p/softgun/patches/5/
+
+#  Pascal Jäger <pascal.jaeger@leimstift.de> (2023-09-21)
+
+--- a/m16c/idecode_m16c.c
++++ b/m16c/idecode_m16c.c
+@@ -9,7 +9,7 @@
+ #include "sglib.h"
+ 
+ M16C_InstructionProc **iProcTab;
+-M16C_Instruction     **iTab;
++M16C_Instruction     **iTabM16C;
+ 
+ static M16C_Instruction instrlist[] = {
+ {0xfef0,0x76f0,"abs.size_dst",2		,m16c_abs_size_dst},
+@@ -308,7 +308,7 @@ M16C_IDecoderNew()
+ 	int i,j;
+ 	int onecount1,onecount2;
+ 	iProcTab=(M16C_InstructionProc**)sg_calloc(0x10000*sizeof(M16C_InstructionProc*));
+-	iTab=sg_calloc(0x10000*sizeof(M16C_Instruction*));
++	iTabM16C=sg_calloc(0x10000*sizeof(M16C_Instruction*));
+ 	fprintf(stderr,"Allocated M16C Instruction decoder table\n");
+ 	for(j=0;instrlist[j].proc;j++) {
+ 		M16C_Instruction *instr = &instrlist[j];
+@@ -327,8 +327,8 @@ M16C_IDecoderNew()
+ 			}
+ #endif
+ 			if((i & instr->mask) == instr->icode) {
+-				if(iTab[i]) {
+-					M16C_Instruction *instr2 = iTab[i];
++				if(iTabM16C[i]) {
++					M16C_Instruction *instr2 = iTabM16C[i];
+ 					specmask1 = instr->mask;
+ 					specmask2 = instr2->mask;
+ 					onecount1 = SGLib_OnecountU32(instr->mask);
+@@ -336,18 +336,18 @@ M16C_IDecoderNew()
+ 					fprintf(stderr,"Collission %s, %s\n",instr->name,instr2->name);
+ 					#if 0
+ 					if(instr->len > instr2->len) {
+-						iTab[i] = instr;
++						iTabM16C[i] = instr;
+ 						iProcTab[i] = instr->proc;
+ 					} else if(instr2->len > instr->len) {
+-						iTab[i] = instr2;
++						iTabM16C[i] = instr2;
+ 						iProcTab[i] = instr2->proc;
+ 					} else 
+ 					#endif
+ 					if(onecount1 > onecount2) {
+-						iTab[i] = instr;
++						iTabM16C[i] = instr;
+ 						iProcTab[i] = instr->proc;
+ 					} else if(onecount2 > onecount1) {
+-						iTab[i] = instr2;
++						iTabM16C[i] = instr2;
+ 						iProcTab[i] = instr2->proc;
+ 					} else {
+ 						fprintf(stderr,"Can not decide %s, %s\n",instr->name,instr2->name);
+@@ -360,10 +360,10 @@ M16C_IDecoderNew()
+ 						specmask2 |= 0xff00;
+ 					}
+ 					if((specmask2 & specmask1) == specmask1) {
+-						iTab[i] = instr2;
++						iTabM16C[i] = instr2;
+ 						iProcTab[i] = instr2->proc;
+ 					} else if((specmask2 & specmask1) == specmask2) {
+-						iTab[i] = instr;
++						iTabM16C[i] = instr;
+ 						iProcTab[i] = instr->proc;
+ 					} else {
+ 						fprintf(stdout,"%04x: no instruction is more specific %s %s %04x %04x %d %d\n",i,instr->name,instr2->name,instr->icode,instr2->icode,instr->len,instr2->len);
+@@ -371,13 +371,13 @@ M16C_IDecoderNew()
+ 					}
+ 					#endif
+ 				} else {
+-					iTab[i] = instr;
++					iTabM16C[i] = instr;
+ 					iProcTab[i] = instr->proc;
+ 				}
+ 			}
+ 		}
+-		if(iTab[i] == NULL) {
+-			iTab[i] = &undefined_instr; 
++		if(iTabM16C[i] == NULL) {
++			iTabM16C[i] = &undefined_instr;
+ 			iProcTab[i] = (&undefined_instr)->proc;
+ 		}
+ 	}
+--- a/m16c/idecode_m16c.h
++++ b/m16c/idecode_m16c.h
+@@ -11,14 +11,14 @@ typedef struct M16C_Instruction {
+ } M16C_Instruction;
+ 
+ extern M16C_InstructionProc **iProcTab;
+-extern M16C_Instruction     **iTab;
++extern M16C_Instruction     **iTabM16C;
+ 
+ void M16C_IDecoderNew(void);
+ 
+ static inline M16C_Instruction *
+ M16C_InstructionFind(uint16_t icode) 
+ {
+-        return iTab[icode];
++        return iTabM16C[icode];
+ }
+ static inline M16C_InstructionProc *
+ M16C_InstructionProcFind(uint16_t icode) 
+--- a/m16c/instructions_m16c.h
++++ b/m16c/instructions_m16c.h
+@@ -160,7 +160,7 @@ void m16c_smovb_size(void);
+ void m16c_smovf_size(void);
+ void m16c_sstr_size(void);
+ void m16c_stc_srcdst(void);
+-void m16c_stc_pcdst(void);
++void m16c_stc_pcdst(uint16_t icode);
+ void m16c_stctx_abs16abs20(void);
+ void m16c_ste_size_srcabs20(void);
+ void m16c_ste_size_srcdsp20(void);
+--- a/ppc/mmu_ppc.c
++++ b/ppc/mmu_ppc.c
+@@ -587,7 +587,7 @@ PPCMMU_Read8(uint32_t va) {
+ }
+ 
+ void 
+-PPCMMU_Write64(uint32_t value,uint32_t va) {
++PPCMMU_Write64(uint64_t value,uint32_t va) {
+ 	uint32_t pa=translate_data(va);	
+ 	Bus_Write64(value,pa);
+ }
+--- a/printer/decompress.c
++++ b/printer/decompress.c
+@@ -55,7 +55,7 @@ enum
+     eeCachedColor = 0x60
+ };
+ 
+-inline uint32_t get3pixel (uint8_t* src)
++static inline uint32_t get3pixel (uint8_t* src)
+ {
+     return (src[0] << 16) | (src[1] << 8) | (src[2]);
+ } 
+-- 
+2.41.0
+

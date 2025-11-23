@@ -1,0 +1,15 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index 12f578a..e8e27dd 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -15,10 +15,6 @@ build = "build.rs"
+ [[bin]]
+ name = "cargo-tarpaulin"
+ 
+-[[test]]
+-name = "integration"
+-path = "tests/mod.rs"
+-
+ [dependencies]
+ cargo_metadata = "0.14"
+ chrono = "0.4"

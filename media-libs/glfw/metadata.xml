@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">glfw/glfw</remote-id>
+		<changelog>https://www.glfw.org/changelog.html</changelog>
+	</upstream>
+	<use>
+		<flag name="wayland-only">Enable wayland support and disable X11 support</flag>
+	</use>
+</pkgmetadata>

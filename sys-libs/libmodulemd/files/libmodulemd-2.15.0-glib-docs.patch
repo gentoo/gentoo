@@ -1,0 +1,89 @@
+https://github.com/fedora-modularity/libmodulemd/commit/29c339a31b1c753dcdef041e5c2e0e600e48b59d
+https://github.com/fedora-modularity/libmodulemd/commit/9d2809090cc0cccd7bab67453dc00cf43a289082
+https://github.com/fedora-modularity/libmodulemd/commit/f3336199b4e69af3305f156abc7533bed9e9a762
+
+The commits above are required for USE=doc. For some reason upstream cross-reference glib html
+docs?
+
+--- a/meson.build
++++ b/meson.build
+@@ -67,23 +67,34 @@ sed = find_program('sed')
+ test = find_program('test')
+ 
+ with_docs = get_option('with_docs')
++gtk_doc_referred_paths = []
+ if with_docs
+   gtkdoc = dependency('gtk-doc')
+-  glib_docpath = join_paths(glib_prefix, 'share', 'gtk-doc', 'html')
+ 
+-  glib_index_path = join_paths(glib_docpath, 'glib/index.html')
+-  ret = run_command ([test, '-e', glib_index_path],
+-    check: false)
+-  if ret.returncode() != 0
+-    error('Missing documentation for GLib: @0@'.format(glib_index_path))
++  if glib.version().version_compare('<2.79.0')
++    glib_docpath = join_paths(glib_prefix, 'share', 'gtk-doc', 'html')
++    glib_modules = ['glib', 'gobject' ]
++  else
++    warning('glib >= 2.79.0 documention might not be properly referred from libmodulemd documentation.')
++    if glib.version().version_compare('<2.80.1')
++      glib_docpath = join_paths(glib_prefix, 'share', 'doc', 'glib-2.0')
++      glib_modules = ['glib', 'gobject' ]
++    else
++      glib_docpath = join_paths(glib_prefix, 'share', 'doc')
++      glib_modules = ['glib-2.0', 'gobject-2.0' ]
++    endif
+   endif
+ 
+-  gobject_index_path = join_paths(glib_docpath, 'gobject/index.html')
+-  ret = run_command ([test, '-e', gobject_index_path],
+-    check: false)
+-  if ret.returncode() != 0
+-    error('Missing documentation for GObject: @0@'.format(gobject_index_path))
+-  endif
++  foreach referred_module : glib_modules
++    doc_module_path = join_paths(glib_docpath, referred_module)
++    doc_index_file = join_paths(doc_module_path, 'index.html')
++    ret = run_command ([test, '-e', doc_index_file],
++      check: false)
++    if ret.returncode() != 0
++      error('Missing GTK documentation for @0@: @1@'.format(referred_module, doc_index_file))
++    endif
++    gtk_doc_referred_paths += [ doc_module_path ]
++  endforeach
+ endif
+ 
+ # Keep with_manpages option a tristate feature for backward compatibility.
+@@ -198,6 +209,7 @@ summary({'prefix': get_option('prefix'),
+          'datadir': get_option('datadir'),
+          'Python 2 GObject Overrides': gobject_overrides_dir_py2,
+          'Python 3 GObject Overrides': gobject_overrides_dir_py3,
++         'GTK-Doc Referred Paths': gtk_doc_referred_paths,
+         }, section: 'Directories')
+ 
+ summary({'Custom Python': get_option('python_name'),
+--- a/modulemd/meson.build
++++ b/modulemd/meson.build
+@@ -256,6 +256,10 @@ configure_file(
+ # --- Documenatation --- #
+ 
+ if with_docs
++    fixxref_args = []
++    foreach path : gtk_doc_referred_paths
++      fixxref_args += [ '--extra-dir=@0@'.format(path) ]
++    endforeach
+     gnome.gtkdoc(
+         'modulemd-2.0',
+         install_dir: 'modulemd-2.0',
+@@ -265,10 +269,7 @@ if with_docs
+         dependencies : [
+             modulemd_dep,
+         ],
+-        fixxref_args: [
+-                     '--extra-dir=@0@'.format(join_paths(glib_docpath, 'glib')),
+-                     '--extra-dir=@0@'.format(join_paths(glib_docpath, 'gobject')),
+-                   ],
++        fixxref_args: [ fixxref_args ],
+         install : true,
+     )
+ endif

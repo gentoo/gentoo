@@ -1,0 +1,34 @@
+--- a/configure.in
++++ b/configure.in
+@@ -13,6 +13,7 @@
+ AC_PROG_MAKE_SET
+ AC_PROG_CC
+ AC_PROG_CXX
++AM_PROG_AR
+ AC_PROG_RANLIB
+ AC_PROG_INSTALL
+ 
+@@ -102,10 +103,10 @@
+         ;;
+     *-*-beos*)
+         ac_default_prefix=/boot/beos
+-        GAME_INSTALLDIR="\$(prefix)/games/$PACKAGE"
++        GAME_INSTALLDIR="\$(datadir)/$PACKAGE"
+         ;;
+     *)
+-        GAME_INSTALLDIR="\$(prefix)/games/$PACKAGE"
++        GAME_INSTALLDIR="\$(datadir)/$PACKAGE"
+         ;;
+ esac
+ AC_SUBST(GAME_INSTALLDIR)
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -65,7 +65,7 @@
+ 
+ # Special install rule for the game
+ install:
+-	make install_gamedata target=@GAME_INSTALLDIR@
++	$(MAKE) install-binPROGRAMS install_gamedata target=$(DESTDIR)/@GAME_INSTALLDIR@
+ 
+ install_gamedata:
+ 	sh mkinstalldirs $(target)/

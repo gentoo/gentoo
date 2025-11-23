@@ -1,0 +1,12 @@
+app-admin/selint
+app-admin/setools
+sys-apps/checkpolicy
+sys-apps/mcstrans
+sys-apps/policycoreutils
+sys-apps/restorecond
+sys-apps/secilc
+sys-apps/selinux-python
+sys-apps/semodule-utils
+sys-libs/libselinux
+sys-libs/libsemanage
+sys-libs/libsepol

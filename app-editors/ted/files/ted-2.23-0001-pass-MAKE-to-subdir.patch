@@ -1,0 +1,26 @@
+From 570129a519e2b22d900ecf06ed938b7b5d5a7b79 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Sat, 3 Apr 2021 11:04:15 +0200
+Subject: [PATCH] pass $(MAKE) to subdir
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 08224f9..19f3f49 100644
+--- a/Makefile
++++ b/Makefile
+@@ -246,7 +246,7 @@ package: compile tedPackage/makefile
+ 	: To install Ted, you can now run 'make install' AS ROOT
+ 
+ package.shared: compile.shared tedPackage/makefile
+-	cd tedPackage && make package.shared
++	cd tedPackage && $(MAKE) package.shared
+ 	:
+ 	: Dynamically linked package ready.
+ 	: To install Ted, you can now run 'make install' AS ROOT
+-- 
+2.31.1
+

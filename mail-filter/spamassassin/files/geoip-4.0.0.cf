@@ -1,0 +1,86 @@
+# GeoIP / RelayCountry Config
+#
+# The RelayCountry SpamAssassin plugin needs to be enabled
+# in init.pre, but it's suggested that you make configuration
+# changes here.
+#
+# See Also:
+# - https://wiki.apache.org/spamassassin/RelayCountryPlugin
+# - man Mail::SpamAssassin::Plugin::RelayCountry
+# - man Mail::SpamAssassin::Conf
+#
+# NOTE: This is a Gentoo supplied config file.
+#
+
+###############################################################
+#
+# CONFIGURATION
+#
+
+# Which type of Geo database to use.  Valid database types are
+# GeoIP2, Geo::IP, DB_File and Fast.  Tries them in that order
+# if not explicitly specified.  GeoIP2 is the suggested backend
+# which uses dev-perl/GeoIP2.
+#
+# Default: Autodetect
+#
+#geodb_module GeoIP2
+
+# Specifies which DB type and where it is, in
+# dbtype:/path/to/db format.  Multiple entries allowed.
+#
+# For GeoIP2 & GeoIP, geodb_options is only needed if the
+# default location search paths are insufficient.  (Default
+# search paths includes /usr/share/GeoIP/.)
+#
+# See man Mail::SpamAssassin::Conf for details about what is
+# accepted and searched.
+#
+# Default: Autodetect
+#
+#geodb_options country:/usr/share/GeoIP/GeoLite2-Country.mmdb
+
+# Alternative to geodb_options. Overrides the default list of
+# directories to search for default filenames.
+#
+# Default: Autodetect
+#
+#geodb_search_path /path/to/GeoIP
+
+# The following will add a separate MIME header that shows all
+# the message's relay countries, independent of any site-
+# specific rules.
+#
+# It will show up in your MIME headers as:
+#    X-Spam-Relay-Country: US CN RU
+#
+#add_header all Relay-Country _RELAYCOUNTRY_
+
+###############################################################
+#
+# SITE SPECIFIC RULES
+#
+
+# Country metadata will also be added to the Bayesian filtering
+# process, allowing it to learn information based on countries.
+# This will occur even if you don't define any site specific
+# rules.
+
+# NOTE: Many prefer placing custom rules in local.cf.
+
+# The following is an example of a rule that penalizes mail
+# that passed through China by increasing the spam score
+# of the message by 3 points.
+#
+#header       RELAYCOUNTRY_BAD X-Relay-Countries =~ /CN/
+#describe     RELAYCOUNTRY_BAD Relayed through China at some point
+#score        RELAYCOUNTRY_BAD 3.0
+
+# And this is an example of a rule that rewards mail that
+# has first went through Finland or Sweden by reducing the
+# spam score of the message by 0.2 points.
+#
+#header       RELAYCOUNTRY_GOOD X-Relay-Countries =~ /^(FI|SE)/
+#describe     RELAYCOUNTRY_GOOD First untrusted relay is Finland or Sweden :-)
+#score        RELAYCOUNTRY_GOOD -0.2
+

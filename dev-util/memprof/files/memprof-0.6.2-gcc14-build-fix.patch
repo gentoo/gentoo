@@ -1,0 +1,23 @@
+Bug: https://bugs.gentoo.org/923021
+--- a/src/process.c
++++ b/src/process.c
+@@ -526,7 +526,7 @@ input_func (GIOChannel  *source,
+ 	    gpointer     data)
+ {
+ 	MIInfo info;
+-	guint count;
++	gsize count;
+ 	MPProcess *input_process = data;
+ 	MPProcess *process = NULL;
+   
+--- a/src/profile.c
++++ b/src/profile.c
+@@ -31,7 +31,7 @@ block_create_stack_list (Block *block, MPProcess *process, GHashTable *skip_hash
+ 
+     for (element = block->stack; element != NULL; element = element->parent)
+     {
+-	const char *symbol = process_locate_symbol (process, (guint)element->address);
++	const char *symbol = process_locate_symbol (process, (gsize)element->address);
+ 
+ 	if (symbol && g_hash_table_lookup (skip_hash, symbol))
+ 	    continue;

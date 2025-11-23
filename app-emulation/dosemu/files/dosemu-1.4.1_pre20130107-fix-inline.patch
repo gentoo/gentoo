@@ -1,0 +1,14 @@
+diff --git a/src/dosext/sound/sound.c b/src/dosext/sound/sound.c
+index f33f78f..f429362 100644
+--- a/src/dosext/sound/sound.c
++++ b/src/dosext/sound/sound.c
+@@ -173,3 +173,3 @@ void sb_cms_write (ioport_t port, Bit8u value);
+ 
+-inline void sb_mixer_register_write (Bit8u value);
++static inline void sb_mixer_register_write (Bit8u value);
+ void sb_mixer_data_write (Bit8u value);
+@@ -840,3 +840,3 @@ void sb_cms_write (ioport_t port, Bit8u value)
+ 
+-inline void sb_mixer_register_write (Bit8u value)
++static inline void sb_mixer_register_write (Bit8u value)
+ {

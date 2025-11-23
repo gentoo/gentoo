@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>perfinion@gentoo.org</email>
+		<name>Jason Zaman</name>
+	</maintainer>
+	<use>
+		<flag name="tinyxml2">
+		Use vendor tinyxml2 instead of xmlrpc-c. This allows significant reduction in overhead
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">rakshasa/rtorrent</remote-id>
+	</upstream>
+</pkgmetadata>

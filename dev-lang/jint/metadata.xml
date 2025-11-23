@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>dotnet@gentoo.org</email>
+    <name>Gentoo Dotnet Project</name>
+  </maintainer>
+  <longdescription>
+    Jint is a Javascript interpreter for .NET which can run on any modern .NET
+    platform as it supports .NET Standard 2.0 and later.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/sebastienros/jint/issues/</bugs-to>
+    <remote-id type="github">sebastienros/jint</remote-id>
+  </upstream>
+</pkgmetadata>

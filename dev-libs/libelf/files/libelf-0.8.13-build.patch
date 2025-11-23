@@ -1,0 +1,38 @@
+Index: libelf-0.8.13/aclocal.m4
+===================================================================
+--- libelf-0.8.13.orig/aclocal.m4
++++ libelf-0.8.13/aclocal.m4
+@@ -235,7 +235,7 @@ AC_DEFUN(mr_ENABLE_SHARED, [
+     AC_REQUIRE([AC_PROG_CC])
+     AC_PATH_PROG(LD, ld, ld)
+     case "$host" in
+-      *-linux*|*-gnu*)
++      *-linux*|*-gnu*|*-freebsd*|*-solaris*)
+ 	if test "$GCC" = yes; then
+ 	  mr_TARGET_ELF
+ 	  if test "$mr_cv_target_elf" = yes; then
+Index: libelf-0.8.13/lib/Makefile.in
+===================================================================
+--- libelf-0.8.13.orig/lib/Makefile.in
++++ libelf-0.8.13/lib/Makefile.in
+@@ -158,7 +158,7 @@ libelf.a: $(OBJS) $(LIBOBJS)
+ 
+ $(SHLIB): libelf.a
+ 	@$(RM) $(SHLIB)
+-	$(LINK_SHLIB) -o $(SHLIB) $(OBJS:.o=.os) $(LIBOBJS:.o=.os) $(DEPSHLIBS)
++	$(LINK_SHLIB) $(LDFLAGS) -o $(SHLIB) $(OBJS:.o=.os) $(LIBOBJS:.o=.os) $(DEPSHLIBS)
+ 	if test "$(SONAME)" = "$(SHLIB)"; then true; else \
+ 	  $(RM) $(SONAME) && $(LN_S) $(SHLIB) $(SONAME); \
+ 	fi
+@@ -169,9 +169,9 @@ $(SHLIB): libelf.a
+ install: install-data \
+ 	install-shared-$(DO_SHLIB) install-compat-$(DO_COMPAT)
+ 
+-installdirs: $(top_srcdir)/mkinstalldirs
++installdirs:
+ 	dirs="$(installdirs)"; for dir in $$dirs; do \
+-	    $(SHELL) $(top_srcdir)/mkinstalldirs $(instroot)$$dir; \
++	    mkdir -p $(instroot)$$dir; \
+ 	done
+ 
+ install-data: all installdirs

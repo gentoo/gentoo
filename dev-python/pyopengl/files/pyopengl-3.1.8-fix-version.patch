@@ -1,0 +1,17 @@
+https://github.com/mcfletch/pyopengl/issues/123
+--- a/OpenGL/version.py
++++ b/OpenGL/version.py
+@@ -1,2 +1,2 @@
+ """Declares the current version for use in setuptools and the like"""
+-__version__ = "3.1.7"
++__version__ = "3.1.8"
+--- a/accelerate/OpenGL_accelerate/__init__.py
++++ b/accelerate/OpenGL_accelerate/__init__.py
+@@ -6,5 +6,5 @@ wrapper mechanism.  The source code is part of the
+ PyOpenGL package and is built via the setupaccel.py
+ script in the top level of the PyOpenGL source package.
+ """
+-__version__ = "3.1.7"
+-__version_tuple__ = (3, 1, 7)
++__version__ = "3.1.8"
++__version_tuple__ = (3, 1, 8)

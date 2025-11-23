@@ -1,0 +1,34 @@
+From 55ff684d0989ffd65d02fafe1d2a43309576b8fa Mon Sep 17 00:00:00 2001
+From: jiangpeilong <jiangpeilong@ruijie.com.cn>
+Date: Thu, 22 Aug 2024 21:12:11 +0800
+Subject: [PATCH] Fix TCP concurrent sending problem
+
+---
+ socket/tcp-bsd.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/socket/tcp-bsd.c b/socket/tcp-bsd.c
+index 194f29f5..25580353 100644
+--- a/socket/tcp-bsd.c
++++ b/socket/tcp-bsd.c
+@@ -312,6 +312,8 @@ socket_send_message (NiceSocket *sock,
+   if (priv->error)
+     return -1;
+ 
++  g_mutex_lock(&mutex);
++
+   message_len = output_message_get_size (message);
+ 
+   /* First try to send the data, don't send it later if it can be sent now
+@@ -353,6 +355,8 @@ socket_send_message (NiceSocket *sock,
+     }
+   }
+ 
++  g_mutex_unlock(&mutex);
++
+   return ret;
+ }
+ 
+-- 
+GitLab
+

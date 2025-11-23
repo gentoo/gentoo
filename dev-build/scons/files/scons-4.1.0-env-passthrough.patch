@@ -1,0 +1,41 @@
+From fb07dc4b4fa178b0c424c5f400b18669abd8960e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 9 May 2018 17:04:49 +0200
+Subject: [PATCH] posix: Support GENTOO_SCONS_ENV_PASSTHROUGH=1
+
+Support GENTOO_SCONS_ENV_PASSTHROUGH=1 variable to override the default
+of wiping the environment and resetting PATH to default, and instead
+pass all variables through.
+---
+ SCons/Platform/posix.py | 15 ++++++++++++---
+ 1 file changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/SCons/Platform/posix.py b/SCons/Platform/posix.py
+index 4c9f8f9ba..fbc81196d 100644
+--- a/src/SCons/Platform/posix.py
++++ b/src/SCons/Platform/posix.py
+@@ -82,9 +82,18 @@ def generate(env):
+     pspawn = piped_env_spawn
+     # Note that this means that 'escape' is no longer used
+ 
+-    if 'ENV' not in env:
+-        env['ENV']        = {}
+-    env['ENV']['PATH']    = '/usr/local/bin:/opt/bin:/bin:/usr/bin:/snap/bin'
++    # Force pass-through of environment variables in Gentoo builds
++    import os
++    if os.environ.get('GENTOO_SCONS_ENV_PASSTHROUGH', False):
++        new_env = os.environ.copy()
++        if 'ENV' in env:
++            new_env.update(env['ENV'])
++        env['ENV'] = new_env
++    else:
++        if 'ENV' not in env:
++            env['ENV']        = {}
++        env['ENV']['PATH']    = '/usr/local/bin:/opt/bin:/bin:/usr/bin:/snap/bin'
++
+     env['OBJPREFIX']      = ''
+     env['OBJSUFFIX']      = '.o'
+     env['SHOBJPREFIX']    = '$OBJPREFIX'
+-- 
+2.30.0
+

@@ -1,0 +1,32 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -182,3 +182,5 @@
+ 
++  if(CHECK_PULSE)
+   pkg_check_modules(libpulse IMPORTED_TARGET libpulse)
++  endif()
+   if(libpulse_FOUND)
+@@ -189,3 +191,5 @@
+ 
++  if(CHECK_ALSA)
+   pkg_check_modules(alsa IMPORTED_TARGET alsa)
++  endif()
+   if(alsa_FOUND)
+@@ -196,3 +200,5 @@
+ 
++  if(CHECK_JACK)
+   pkg_check_modules(jack IMPORTED_TARGET jack)
++  endif()
+   if(jack_FOUND)
+@@ -203,3 +209,5 @@
+ 
++  if(CHECK_SNDIO)
+   check_include_files(sndio.h USE_SNDIO)
++  endif()
+   if(USE_SNDIO)
+@@ -209,3 +217,5 @@
+ 
++  if(0)
+   check_include_files(aaudio/AAudio.h USE_AAUDIO)
++  endif()
+   if(USE_AAUDIO)

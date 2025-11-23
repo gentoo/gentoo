@@ -1,0 +1,22 @@
+From 1f8d7a37dc91ce41706ca7ee564cf3c48acf79d1 Mon Sep 17 00:00:00 2001
+From: John Helmert III <ajak@gentoo.org>
+Date: Sat, 14 Dec 2024 20:11:09 -0800
+Subject: [PATCH] librz/type: force tree-sitter-c subproject
+
+rizin depends on its fork of tree-sitter-c.
+
+Signed-off-by: John Helmert III <jchelmert3@posteo.net>
+--- a/librz/type/meson.build
++++ b/librz/type/meson.build
+@@ -18,7 +18,7 @@ if r.returncode() == 1 and get_option('subprojects_check')
+   error('Subprojects are not updated. Please run `git clean -dxff subprojects/` to delete all local subprojects directories. If you want to compile against current subprojects then set option `subprojects_check=false`.')
+ endif
+ 
+-tree_sitter_c_dep = dependency('tree-sitter-c')
++tree_sitter_c_dep = subproject('tree-sitter-c').get_variable('tree_sitter_c_dep')
+ 
+ rz_type_inc = [
+   platform_inc,
+-- 
+2.45.2
+

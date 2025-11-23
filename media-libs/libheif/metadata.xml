@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+	<flag name="aom">Use <pkg>media-libs/libaom</pkg> for AVIF encoding/decoding</flag>
+	<flag name="dav1d">Enable support for the dav1d codec decoding using <pkg>media-libs/dav1d</pkg></flag>
+	<flag name="de265">Enable H.265 support using <pkg>media-libs/libde265</pkg></flag>
+	<flag name="gdk-pixbuf">Enable <pkg>x11-libs/gdk-pixbuf</pkg> plugin</flag>
+	<flag name="gui">Build heif-view (requires USE=tools)</flag>
+	<flag name="kvazaar">Enable H.265/HEVC encoding support via <pkg>media-libs/kvazaar</pkg></flag>
+	<flag name="openh264">Enable H.264 support using <pkg>media-libs/openh264</pkg></flag>
+	<flag name="rav1e">Use <pkg>media-video/rav1e</pkg> for AVIF encoding</flag>
+	<flag name="svt-av1">Use <pkg>media-libs/svt-av1</pkg> for SVT-AV1 encoding</flag>
+	<flag name="test-full">Allow tests that rely on options not normally enabled</flag>
+	<flag name="tools">Build command line tools</flag>
+	<flag name="webp">Enable high-quality YCbCr/RGB color space conversion algorithms</flag>
+	<flag name="x265">Use <pkg> media-libs/x265</pkg> for HEIF encoding</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://github.com/strukturag/libheif/issues</bugs-to>
+		<remote-id type="github">strukturag/libheif</remote-id>
+	</upstream>
+</pkgmetadata>

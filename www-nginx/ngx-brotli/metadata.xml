@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>zurabid2016@gmail.com</email>
+		<name>Zurab Kvachadze</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		ngx-brotli provides support for Brotli compression in NGINX server. Brotli is a
+		generic-purpose lossless compression algorithm that compresses data using a
+		combination of a modern variant of the LZ77 algorithm, Huffman coding and 2nd order context
+		modeling, with a compression ratio comparable to the best currently available
+		general-purpose compression methods. It is similar in speed with deflate but offers more
+		dense compression.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/google/ngx_brotli/issues</bugs-to>
+		<remote-id type="github">google/ngx_brotli</remote-id>
+	</upstream>
+</pkgmetadata>

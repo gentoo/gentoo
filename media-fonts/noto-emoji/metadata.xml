@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>pacho@gentoo.org</email>
+		<name>Pacho Ramos</name>
+	</maintainer>
+	<use>
+		<flag name="icons">Install Noto Emoji icon theme</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">googlefonts/noto-emoji</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/917114
+https://sourceforge.net/p/sdcc/support-requests/193/
+
+--- sdcc/Makefile.in
++++ sdcc/Makefile.in
+@@ -98,7 +98,6 @@
+ ifeq ($(OPT_DISABLE_SDBINUTILS), 0)
+ TARGETS        += sdcc-sdbinutils
+ PKGS           += $(SDCC_SDBINUTILS)
+-SDBINUTILS_BINS = sdar$(EXEEXT) sdranlib$(EXEEXT) sdnm$(EXEEXT) sdobjcopy$(EXEEXT)
+ SDCC_BINUTILS   = sdcc-sdbinutils
+ endif
+ 
+@@ -142,7 +141,7 @@
+ 
+ tini: checkconf sdcc-tini
+ 
+-sdcc-libs: ${SDCC_SDBINUTILS}
++sdcc-libs: ${SDCC_BINUTILS}
+ 	for lib in $(SDCC_LIBS); do $(MAKE) -C $$lib; done
+ 
+ sdcc-cc: sdcc-libs

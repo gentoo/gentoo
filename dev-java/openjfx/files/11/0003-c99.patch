@@ -1,0 +1,19 @@
+https://bugs.gentoo.org/919413
+https://src.fedoraproject.org/rpms/openjfx/c/9e893037f3a20273c79603220b7a18a44be60fcc?branch=rawhide
+
+8323077: C type error (incompatible function pointer) in X11GLContext.c
+
+Submitted upstream: <https://github.com/openjdk/jfx/pull/1319>
+
+--- a/modules/javafx.graphics/src/main/native-prism-es2/x11/X11GLContext.c
++++ b/modules/javafx.graphics/src/main/native-prism-es2/x11/X11GLContext.c
+@@ -275,7 +275,8 @@ JNIEXPORT jlong JNICALL Java_com_sun_prism_es2_X11GLContext_nInitialize
+                 dlsym(RTLD_DEFAULT, "glXSwapIntervalSGI");
+ 
+         if (ctxInfo->glXSwapIntervalSGI == NULL) {
+-            ctxInfo->glXSwapIntervalSGI = glXGetProcAddress("glXSwapIntervalSGI");
++            ctxInfo->glXSwapIntervalSGI = (PFNGLXSWAPINTERVALSGIPROC)
++                glXGetProcAddress((const GLubyte *)"glXSwapIntervalSGI");
+         }
+ 
+     }

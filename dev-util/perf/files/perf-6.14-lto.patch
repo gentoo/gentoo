@@ -1,0 +1,17 @@
+
+Adapted to v6.14 from patch submitted upstream:
+https://lore.kernel.org/all/20250321082038.27901-2-holger@applied-asynchrony.com/
+
+Bug: https://bugs.gentoo.org/951151
+
+--- a/tools/perf/Makefile.config
++++ b/tools/perf/Makefile.config
+@@ -820,7 +820,7 @@ else
+   PERL_EMBED_LIBADD = $(call grep-libs,$(PERL_EMBED_LDOPTS))
+   PERL_EMBED_CCOPTS = $(shell perl -MExtUtils::Embed -e ccopts 2>/dev/null)
+   PERL_EMBED_CCOPTS := $(filter-out -specs=%,$(PERL_EMBED_CCOPTS))
+-  PERL_EMBED_CCOPTS := $(filter-out -flto=auto -ffat-lto-objects, $(PERL_EMBED_CCOPTS))
++  PERL_EMBED_CCOPTS := $(filter-out -flto=% -ffat-lto-objects, $(PERL_EMBED_CCOPTS))
+   PERL_EMBED_LDOPTS := $(filter-out -specs=%,$(PERL_EMBED_LDOPTS))
+   FLAGS_PERL_EMBED=$(PERL_EMBED_CCOPTS) $(PERL_EMBED_LDOPTS)
+

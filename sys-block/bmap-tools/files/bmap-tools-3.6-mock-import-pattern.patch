@@ -1,0 +1,94 @@
+Upstream commit: https://github.com/intel/bmap-tools/commit/47908b5389d1f3de9306c0030856b3d3180ade86
+Related Gentoo bug: https://bugs.gentoo.org/833258
+
+I had to change the first hunk a bit to also remove `backports`
+
+From 47908b5389d1f3de9306c0030856b3d3180ade86 Mon Sep 17 00:00:00 2001
+From: Simon McVittie <smcv@debian.org>
+Date: Thu, 28 Oct 2021 12:23:30 +0100
+Subject: [PATCH] tests: Fix import pattern for mock objects
+
+The legacy mock module contains a mock.mock submodule, but unittest.mock
+does not contain a redundant unittest.mock.mock. This bug was masked by
+the transparent fallback to the legacy mock module.
+
+The actual test only uses mock.patch(), so we can simplify by just
+importing the one member that we need.
+
+Fixes: a1ca1172 "tests: Use unittest.mock from Python standard library if possible"
+Signed-off-by: Simon McVittie <smcv@debian.org>
+---
+ tests/test_bmap_helpers.py | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/tests/test_bmap_helpers.py b/tests/test_bmap_helpers.py
+index 56b079e..36c4557 100644
+--- a/tests/test_bmap_helpers.py
++++ b/tests/test_bmap_helpers.py
+@@ -22,10 +22,9 @@
+ import sys
+ import tempfile
+ try:
+-    from unittest.mock import patch, mock
++    from unittest.mock import patch
+ except ImportError:     # for Python < 3.3
+-    from mock import patch, mock
+-from backports import tempfile as btempfile
++    from mock import patch
+ from bmaptools import BmapHelpers
+
+
+@@ -76,7 +76,7 @@ def test_is_zfs_configuration_compatible_enabled(self):
+                                          delete=True, dir=".", suffix=".txt") as fobj:
+             fobj.write("1")
+             fobj.flush()
+-            mockobj = mock.patch.object(BmapHelpers, "ZFS_COMPAT_PARAM_PATH", fobj.name)
++            mockobj = patch.object(BmapHelpers, "ZFS_COMPAT_PARAM_PATH", fobj.name)
+             with mockobj:
+                 self.assertTrue(BmapHelpers.is_zfs_configuration_compatible())
+ 
+@@ -88,7 +88,7 @@ def test_is_zfs_configuration_compatible_disabled(self):
+                                          delete=True, dir=".", suffix=".txt") as fobj:
+             fobj.write("0")
+             fobj.flush()
+-            mockobj = mock.patch.object(BmapHelpers, "ZFS_COMPAT_PARAM_PATH", fobj.name)
++            mockobj = patch.object(BmapHelpers, "ZFS_COMPAT_PARAM_PATH", fobj.name)
+             with mockobj:
+                 self.assertFalse(BmapHelpers.is_zfs_configuration_compatible())
+ 
+@@ -97,7 +97,7 @@ def test_is_zfs_configuration_compatible_invalid_read_value(self):
+ 
+         with tempfile.NamedTemporaryFile("a", prefix="testfile_",
+                                          delete=True, dir=".", suffix=".txt") as fobj:
+-            mockobj = mock.patch.object(BmapHelpers, "ZFS_COMPAT_PARAM_PATH", fobj.name)
++            mockobj = patch.object(BmapHelpers, "ZFS_COMPAT_PARAM_PATH", fobj.name)
+             with self.assertRaises(BmapHelpers.Error):
+                 with mockobj:
+                     BmapHelpers.is_zfs_configuration_compatible()
+@@ -116,7 +116,7 @@ def test_is_zfs_configuration_compatible_notinstalled(self):
+ 
+         directory = os.path.dirname(__file__)
+         filepath = os.path.join(directory, "BmapHelpers/file/does/not/exist")
+-        mockobj = mock.patch.object(BmapHelpers, "ZFS_COMPAT_PARAM_PATH", filepath)
++        mockobj = patch.object(BmapHelpers, "ZFS_COMPAT_PARAM_PATH", filepath)
+         with mockobj:
+             self.assertFalse(BmapHelpers.is_zfs_configuration_compatible())
+ 
+@@ -128,7 +128,7 @@ def test_is_compatible_file_system_zfs_valid(self, mock_get_fs_type): #pylint: d
+                                          delete=True, dir=".", suffix=".img") as fobj:
+             fobj.write("1")
+             fobj.flush()
+-            mockobj = mock.patch.object(BmapHelpers, "ZFS_COMPAT_PARAM_PATH", fobj.name)
++            mockobj = patch.object(BmapHelpers, "ZFS_COMPAT_PARAM_PATH", fobj.name)
+             with mockobj:
+                 self.assertTrue(BmapHelpers.is_compatible_file_system(fobj.name))
+ 
+@@ -140,7 +140,7 @@ def test_is_compatible_file_system_zfs_invalid(self, mock_get_fs_type): #pylint:
+                                          delete=True, dir=".", suffix=".img") as fobj:
+             fobj.write("0")
+             fobj.flush()
+-            mockobj = mock.patch.object(BmapHelpers, "ZFS_COMPAT_PARAM_PATH", fobj.name)
++            mockobj = patch.object(BmapHelpers, "ZFS_COMPAT_PARAM_PATH", fobj.name)
+             with mockobj:
+                 self.assertFalse(BmapHelpers.is_compatible_file_system(fobj.name))
+ 

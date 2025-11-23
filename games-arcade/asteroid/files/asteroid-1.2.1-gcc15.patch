@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/944250
+
+--- a/src/main.c
++++ b/src/main.c
+@@ -244,7 +244,7 @@ void GameTimer(int v)
+ }
+ 
+ #ifdef CFG_GTK
+-static gboolean DisplayDialog()
++static gboolean DisplayDialog(void* a)
+ {
+    GtkWidget * dialog = gtk_message_dialog_new(NULL,
+       GTK_DIALOG_MODAL, GTK_MESSAGE_INFO, GTK_BUTTONS_OK, ASTEROIDS_ABOUT);

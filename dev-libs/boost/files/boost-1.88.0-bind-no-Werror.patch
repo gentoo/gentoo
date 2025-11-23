@@ -1,0 +1,28 @@
+Prevent test failure due to:
+
+bind_dm3_test.cpp: In function 'int main()':
+bind_dm3_test.cpp:39:17: error: possibly dangling reference to a temporary [-Werror=dangling-reference]
+   39 |     int const & x = boost::bind( &pair_type::first, _1 )( pair );
+      |                 ^
+bind_dm3_test.cpp:39:32: note: 'boost::_bi::bind_t<const int&, boost::_mfi::dm<int, std::pair<int, int> >, boost::_bi::list<boost::arg<1> > >' temporary created here
+   39 |     int const & x = boost::bind( &pair_type::first, _1 )( pair );
+      |                     ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~
+cc1plus: all warnings being treated as errors
+
+This was seemingly fixed before in commit:
+https://github.com/boostorg/bind/commit/8729fbdbfa124291612bc011a7d639d8701de0c2
+but either it was not fixed properly or regressed in gcc-15.
+
+Bug: https://bugs.gentoo.org/954810
+
+--- boost_1_88_0/libs/bind/test/Jamfile.v2~	2025-04-03 13:37:23.000000000 +0200
++++ boost_1_88_0/libs/bind/test/Jamfile.v2	2025-04-28 01:23:11.942535523 +0200
+@@ -19,7 +19,7 @@ project
+   : requirements
+ 
+     <toolset>msvc:<warnings-as-errors>on
+-    <toolset>gcc:<warnings-as-errors>on
++    <toolset>gcc:<warnings-as-errors>off
+     <toolset>clang:<warnings-as-errors>on
+ 
+     <toolset>gcc:<cxxflags>$(gcc-flags)

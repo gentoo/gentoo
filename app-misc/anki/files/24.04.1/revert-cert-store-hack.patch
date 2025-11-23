@@ -1,0 +1,21 @@
+pip_system_certs is a hack to force certifi to use the system
+certificate store.  Let's use dev-python/certifi, which is a hack of
+its own, instead of introducing an automagical dependency.
+
+From: Lucio Sauer <watermanpaint@posteo.net>
+--- a/qt/aqt/__init__.py
++++ b/qt/aqt/__init__.py
+@@ -6,13 +6,6 @@ from __future__ import annotations
+ import logging
+ import sys
+ 
+-try:
+-    import pip_system_certs.wrapt_requests
+-except ModuleNotFoundError:
+-    print(
+-        "Python module pip_system_certs is not installed. System certificate store and custom SSL certificates may not work. See: https://github.com/ankitects/anki/issues/3016"
+-    )
+-
+ if sys.version_info[0] < 3 or sys.version_info[1] < 9:
+     raise Exception("Anki requires Python 3.9+")
+ 

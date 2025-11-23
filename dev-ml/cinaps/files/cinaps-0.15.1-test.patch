@@ -1,0 +1,13 @@
+--- a/test/dune	2025-04-13 21:58:20.175375148 +0200
++++ b/test/dune	2025-04-13 21:58:28.498274736 +0200
+@@ -3,7 +3,7 @@
+ 
+ (executables (names test_staged_gen) (modules test_staged_gen)
+  (libraries cinaps.runtime)
+- (preprocess (pps ppx_jane -allow-toplevel-expression)))
++ (preprocess (pps ppx_jane)))
+ 
+ (alias (name runtest) (deps test_staged_gen.exe)
+- (action (bash ./test_staged_gen.exe)))
+\ No newline at end of file
++ (action (bash ./test_staged_gen.exe)))

@@ -1,0 +1,12 @@
+diff -Naur nng-1.10.1-orig/include/nng/nng.h nng-1.10.1/include/nng/nng.h
+--- nng-1.10.1-orig/include/nng/nng.h	2025-01-26 08:38:16.000000000 -0800
++++ nng-1.10.1/include/nng/nng.h	2025-03-13 00:02:11.356499237 -0700
+@@ -58,7 +58,7 @@
+ // may not necessarily match the ABI versions.
+ #define NNG_MAJOR_VERSION 1
+ #define NNG_MINOR_VERSION 10
+-#define NNG_PATCH_VERSION 0
++#define NNG_PATCH_VERSION 1
+ // if non-empty (i.e. "pre"), this is a pre-release
+ #define NNG_RELEASE_SUFFIX ""
+ 

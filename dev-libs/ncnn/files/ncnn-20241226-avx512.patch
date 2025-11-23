@@ -1,0 +1,16 @@
+Quick fix for build with -march that enables avx512f.
+
+This is not where ncnn would include this though, it seems to have
+tendency to put headers not where they're used by in every files
+before including this.
+--- a/src/layer/x86/gemm_int8.h
++++ b/src/layer/x86/gemm_int8.h
+@@ -13,4 +13,8 @@
+ // specific language governing permissions and limitations under the License.
+ 
++#if __AVX512F__
++#include "avx512_mathfun.h"
++#endif
++
+ #if NCNN_RUNTIME_CPU && NCNN_AVX512VNNI && __AVX512F__ && !__AVX512VNNI__
+ void pack_A_tile_int8_avx512vnni(const Mat& A, Mat& AT, int i, int max_ii, int k, int max_kk);

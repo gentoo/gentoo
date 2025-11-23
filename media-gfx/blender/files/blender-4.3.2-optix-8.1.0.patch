@@ -1,0 +1,34 @@
+From 7ce8dbf5f82af7c80890d18b27e1d9df6009d5b4 Mon Sep 17 00:00:00 2001
+From: Patrick Mours <pmours@nvidia.com>
+Date: Mon, 18 Nov 2024 13:16:41 +0100
+Subject: [PATCH] Change OptiX function table name for OptiX 8.1 support
+
+---
+ intern/cycles/device/optix/device.cpp | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/intern/cycles/device/optix/device.cpp b/intern/cycles/device/optix/device.cpp
+index 60a1dbfe4e3..c8608ab5d75 100644
+--- a/intern/cycles/device/optix/device.cpp
++++ b/intern/cycles/device/optix/device.cpp
+@@ -21,12 +21,16 @@
+ #  include <optix_function_table_definition.h>
+ #endif
+ 
++#ifndef OPTIX_FUNCTION_TABLE_SYMBOL
++#  define OPTIX_FUNCTION_TABLE_SYMBOL g_optixFunctionTable
++#endif
++
+ CCL_NAMESPACE_BEGIN
+ 
+ bool device_optix_init()
+ {
+ #ifdef WITH_OPTIX
+-  if (g_optixFunctionTable.optixDeviceContextCreate != NULL) {
++  if (OPTIX_FUNCTION_TABLE_SYMBOL.optixDeviceContextCreate != NULL) {
+     /* Already initialized function table. */
+     return true;
+   }
+-- 
+2.47.2
+

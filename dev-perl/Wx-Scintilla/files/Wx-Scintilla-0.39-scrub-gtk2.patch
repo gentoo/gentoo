@@ -1,0 +1,35 @@
+--- a/inc/Module/Build/Scintilla/GTK.pm
++++ b/inc/Module/Build/Scintilla/GTK.pm
+@@ -63,32 +64,6 @@
+ 	$self->_run_command( \@cmd );
+ }
+ 
+-sub stc_prebuild_check {
+-	my $self      = shift;
+-	my $ld        = Alien::wxWidgets->linker;
+-	my $libstring = $self->stc_extra_scintilla_libs;
+-	my $outfile   = 'stc_checkdepends.out';
+-	my $command   = qq($ld -fPIC -shared $libstring -o $outfile);
+-	if ( system($command) ) {
+-		unlink($outfile);
+-		print qq(Check for gtk2 development libraries failed.\n);
+-		print qq(Perhaps you need to install package libgtk2.0-dev or the equivalent for your system.\n);
+-		print qq(You can ofcourse uninstall it later after the installation is complete.\n);
+-		print qq(The build cannot continue.\n);
+-		exit(1);
+-	}
+-	unlink($outfile);
+-	return 1;
+-}
+-
+-sub stc_extra_scintilla_libs {
+-	my $self   = shift;
+-	my $extras = '-lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lpangoft2-1.0 ';
+-	$extras .= '-lgdk_pixbuf-2.0 -lm -lpango-1.0 -lfreetype -lfontconfig -lgobject-2.0 ';
+-	$extras .= '-lgmodule-2.0 -lgthread-2.0 -lglib-2.0';
+-	return $extras;
+-}
+-
+ sub stc_link_scintilla_objects {
+        my ( $self, $shared_lib, $objects ) = @_;
+

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription>
+    Flocq (Floats for Coq) is a formalization of floating-point arithmetic for
+    the Coq proof assistant. It provides a comprehensive library of theorems on
+    a multi-radix multi-precision arithmetic. It also supports efficient
+    numerical computations inside Coq.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://gitlab.inria.fr/flocq/flocq/-/issues/</bugs-to>
+  </upstream>
+</pkgmetadata>

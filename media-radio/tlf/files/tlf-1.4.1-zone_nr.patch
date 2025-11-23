@@ -1,0 +1,20 @@
+diff --git a/src/zone_nr.c b/src/zone_nr.c
+index c7e2a33..805bd4e 100644
+--- a/src/zone_nr.c
++++ b/src/zone_nr.c
+@@ -20,11 +20,14 @@
+  *   get zone number
+  *
+  *--------------------------------------------------------------*/
+-
++#include "string.h"
+ 
+ int zone_nr(char *comment) {
+     int z = 0;
+ 
++    if (strlen(comment) < 2)
++	return z;
++
+     if (comment[0] <= 57 && comment[0] >= 48)
+ 	z = (comment[0] - 48) * 10;
+     if (comment[1] <= 57 && comment[1] >= 48)

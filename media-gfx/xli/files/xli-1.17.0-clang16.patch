@@ -1,0 +1,27 @@
+https://bugs.gentoo.org/870790
+--- a/send.c
++++ b/send.c
+@@ -37,3 +37,3 @@
+ {
+-  int         (*old_handler)();
++  int         (*old_handler)(Display *, XErrorEvent *);
+   Pixmap        pixmap;
+--- a/window.c
++++ b/window.c
+@@ -211,3 +211,3 @@
+ 	XSetWindowAttributes swa;
+-	static cmap_atom = None;
++	static int cmap_atom = None;
+ 	Window cmap_windows[2];
+--- a/xli.h
++++ b/xli.h
+@@ -14,2 +14,3 @@
+ #include <stdlib.h>
++#include <string.h>
+ #include <math.h>
+--- a/xlito.c
++++ b/xlito.c
+@@ -3,2 +3,3 @@
+ #include <stdlib.h>
++#include <string.h>
+ #include <ctype.h>

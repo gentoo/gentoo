@@ -1,0 +1,11 @@
+diff -ruN Time-Monotonic-v0.9.8.orig/monotonic_clock/src/monotonic_common.c Time-Monotonic-v0.9.8/monotonic_clock/src/monotonic_common.c
+--- Time-Monotonic-v0.9.8.orig/monotonic_clock/src/monotonic_common.c	2015-06-25 10:12:05.000000000 +0200
++++ Time-Monotonic-v0.9.8/monotonic_clock/src/monotonic_common.c	2024-05-29 12:19:26.581286483 +0200
+@@ -10,6 +10,7 @@
+ #include<stdio.h>
+ #include<string.h>
+ #include<errno.h>
++#include<time.h>
+ #include<sys/time.h>
+ 
+ #include"monotonic_clock.h"

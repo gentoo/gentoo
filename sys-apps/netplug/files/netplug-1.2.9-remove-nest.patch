@@ -1,0 +1,187 @@
+This patch replaces the for_each_iface nested funtion with a macro so that we
+don't have an executable stack and work correctly on NX capable hardware.
+See http://www.gentoo.org/proj/en/hardened/gnu-stack.xml for more information.
+
+Patch by Diego Pettenò (flameeyes@gentoo.org)
+
+Index: netplug-1.2.9/if_info.c
+===================================================================
+--- netplug-1.2.9.orig/if_info.c
++++ netplug-1.2.9/if_info.c
+@@ -29,8 +29,7 @@
+ 
+ #include "netplug.h"
+ 
+-#define INFOHASHSZ      16      /* must be a power of 2 */
+-static struct if_info *if_info[INFOHASHSZ];
++struct if_info *if_info[INFOHASHSZ];
+ 
+ static const char *
+ statename(enum ifstate s)
+@@ -95,17 +94,6 @@ flags_str(char *buf, unsigned int fl)
+     return buf;
+ }
+ 
+-void
+-for_each_iface(int (*func)(struct if_info *))
+-{
+-    for(int i = 0; i < INFOHASHSZ; i++) {
+-        for(struct if_info *info = if_info[i]; info != NULL; info = info->next) {
+-            if ((*func)(info))
+-                return;
+-        }
+-    }
+-}
+-
+ /* Reevaluate the state machine based on the current state and flag settings */
+ void
+ ifsm_flagpoll(struct if_info *info)
+@@ -284,6 +272,14 @@ ifsm_flagchange(struct if_info *info, un
+     info->lastchange = time(0);
+ }
+ 
++int find_pid(struct if_info *i, pid_t pid, struct if_info **info) {
++    if (i->worker == pid) {
++        *info = i;
++        return 1;
++    }
++    return 0;
++}
++
+ /* handle a script termination and update the state accordingly */
+ void ifsm_scriptdone(pid_t pid, int exitstatus)
+ {
+@@ -291,16 +287,8 @@ void ifsm_scriptdone(pid_t pid, int exit
+     struct if_info *info;
+     assert(WIFEXITED(exitstatus) || WIFSIGNALED(exitstatus));
+ 
+-    int find_pid(struct if_info *i) {
+-        if (i->worker == pid) {
+-            info = i;
+-            return 1;
+-        }
+-        return 0;
+-    }
+-
+     info = NULL;
+-    for_each_iface(find_pid);
++    for_each_iface(find_pid, pid, &info);
+ 
+     if (info == NULL) {
+         do_log(LOG_INFO, "Unexpected child %d exited with status %d",
+Index: netplug-1.2.9/main.c
+===================================================================
+--- netplug-1.2.9.orig/main.c
++++ netplug-1.2.9/main.c
+@@ -164,6 +164,23 @@ child_handler(int sig, siginfo_t *info, 
+         write(child_handler_pipe[1], &ce, sizeof(ce));
+ }
+ 
++int pollflags_state(struct if_info *info, int sockfd) {
++    struct ifreq ifr;
++
++    if (!if_match(info->name))
++        return 0;
++
++    memcpy(ifr.ifr_name, info->name, sizeof(ifr.ifr_name));
++    if (ioctl(sockfd, SIOCGIFFLAGS, &ifr) < 0)
++        do_log(LOG_ERR, "%s: can't get flags: %m", info->name);
++    else {
++        ifsm_flagchange(info, ifr.ifr_flags);
++        ifsm_flagpoll(info);
++    }
++
++    return 0;
++}
++
+ /* Poll the existing interface state, so we can catch any state
+    changes for which we may not have neen a netlink message. */
+ static void
+@@ -180,28 +197,20 @@ poll_interfaces(void)
+         close_on_exec(sockfd);
+     }
+ 
+-    int pollflags(struct if_info *info) {
+-        struct ifreq ifr;
+-
+-        if (!if_match(info->name))
+-            return 0;
+-
+-        memcpy(ifr.ifr_name, info->name, sizeof(ifr.ifr_name));
+-        if (ioctl(sockfd, SIOCGIFFLAGS, &ifr) < 0)
+-            do_log(LOG_ERR, "%s: can't get flags: %m", info->name);
+-        else {
+-            ifsm_flagchange(info, ifr.ifr_flags);
+-            ifsm_flagpoll(info);
+-        }
+-
+-        return 0;
+-    }
+-
+-    for_each_iface(pollflags);
++    for_each_iface(pollflags_state, sockfd);
+ }
+ 
+ int debug = 0;
+ 
++/* Run over each of the interfaces we know and care about, and
++   make sure the state machine has done the appropriate thing
++   for their current state. */
++int poll_flags_check(struct if_info *i) {
++    if (if_match(i->name))
++        ifsm_flagpoll(i);
++    return 0;
++}
++
+ int
+ main(int argc, char *argv[])
+ {
+@@ -331,17 +340,7 @@ main(int argc, char *argv[])
+         { child_handler_pipe[0], POLLIN, 0 },
+     };
+ 
+-    {
+-        /* Run over each of the interfaces we know and care about, and
+-           make sure the state machine has done the appropriate thing
+-           for their current state. */
+-        int poll_flags(struct if_info *i) {
+-            if (if_match(i->name))
+-                ifsm_flagpoll(i);
+-            return 0;
+-        }
+-        for_each_iface(poll_flags);
+-    }
++    for_each_iface(poll_flags_check);
+ 
+     for(;;) {
+         int ret;
+Index: netplug-1.2.9/netplug.h
+===================================================================
+--- netplug-1.2.9.orig/netplug.h
++++ netplug-1.2.9/netplug.h
+@@ -28,6 +28,9 @@
+ 
+ #define NP_SCRIPT NP_SCRIPT_DIR "/netplug"
+ 
++#define INFOHASHSZ      16      /* must be a power of 2 */
++extern struct if_info *if_info[INFOHASHSZ];
++
+ /* configuration */
+ 
+ void read_config(char *filename);
+@@ -83,7 +86,14 @@ struct if_info *if_info_update_interface
+                                          struct rtattr *attrs[]);
+ int if_info_save_interface(struct nlmsghdr *hdr, void *arg);
+ void parse_rtattrs(struct rtattr *tb[], int max, struct rtattr *rta, int len);
+-void for_each_iface(int (*func)(struct if_info *));
++
++#define for_each_iface(func, ...) \
++    for(int i = 0; i < INFOHASHSZ; i++) { \
++        for(struct if_info *each_iface = if_info[i]; each_iface != NULL; each_iface = each_iface->next) { \
++            if (func (each_iface, ##__VA_ARGS__)) \
++                break; \
++        } \
++    }
+ 
+ void ifsm_flagpoll(struct if_info *info);
+ void ifsm_flagchange(struct if_info *info, unsigned int newflags);

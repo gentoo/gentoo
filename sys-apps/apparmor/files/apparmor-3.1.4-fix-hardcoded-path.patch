@@ -1,0 +1,34 @@
+https://bugs.gentoo.org/895302
+--- a/apparmor.systemd
++++ b/apparmor.systemd
+@@ -15,7 +15,7 @@
+ #    along with this program; if not, contact Novell, Inc.
+ # ----------------------------------------------------------------------
+ 
+-APPARMOR_FUNCTIONS=/lib/apparmor/rc.apparmor.functions
++APPARMOR_FUNCTIONS=/usr/libexec/rc.apparmor.functions
+ 
+ aa_action()
+ {
+--- a/profile-load
++++ b/profile-load
+@@ -21,7 +21,7 @@
+ 
+ [ -z "$1" ]                  && exit 1 # require a profile name
+ 
+-. /lib/apparmor/rc.apparmor.functions
++. /usr/libexec/rc.apparmor.functions
+ 
+ # do not load in a container
+ if [ -x /usr/bin/systemd-detect-virt ] && \
+--- a/rc.apparmor.slackware
++++ b/rc.apparmor.slackware
+@@ -18,7 +18,7 @@
+ # rc.apparmor by Steve Beattie
+ #
+ # /etc/rc.d/rc.apparmor
+-APPARMOR_FUNCTIONS=/lib/apparmor/rc.apparmor.functions
++APPARMOR_FUNCTIONS=/usr/libexec/rc.apparmor.functions
+ 
+ aa_action() {
+ 	STRING=$1

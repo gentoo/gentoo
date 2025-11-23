@@ -1,0 +1,22 @@
+--- a/src/gsm2vmo.c
++++ b/src/gsm2vmo.c
+@@ -27,7 +27,7 @@
+  * 12 bit header and 260 bits standard GSM frame, as described
+  * in GSM 06.10 and GSM 06.12. The header is 0x2010 always.
+  */
+-
++#include <limits.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+--- a/src/vmo2gsm.c
++++ b/src/vmo2gsm.c
+@@ -27,7 +27,7 @@
+  * 12 bit header and 260 bits standart GSM frame, as described
+  * in GSM 06.10 and GSM 06.12. The header is 0x2010 always.
+  */
+-
++#include <limits.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>

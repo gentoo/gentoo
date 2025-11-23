@@ -1,0 +1,42 @@
+From: Filip Kobierski <fkobi@pm.me>
+
+patching just GCC and Clang as we only support that
+
+Bug: https://bugs.gentoo.org/922605
+---
+ cmake/compilers/Clang.cmake | 4 ----
+ cmake/compilers/GNU.cmake   | 3 ---
+ 2 files changed, 7 deletions(-)
+
+diff --git a/cmake/compilers/Clang.cmake b/cmake/compilers/Clang.cmake
+index a0297faa..a5c32d0e 100644
+--- a/cmake/compilers/Clang.cmake
++++ b/cmake/compilers/Clang.cmake
+@@ -72,10 +72,6 @@ endif()
+ 
+ set(TBB_COMMON_LINK_LIBS ${CMAKE_DL_LIBS})
+ 
+-if (NOT CMAKE_CXX_FLAGS MATCHES "_FORTIFY_SOURCE")
+-  set(TBB_COMMON_COMPILE_FLAGS ${TBB_COMMON_COMPILE_FLAGS} $<$<NOT:$<CONFIG:Debug>>:-D_FORTIFY_SOURCE=2>)
+-endif ()
+-
+ if (MINGW)
+     list(APPEND TBB_COMMON_COMPILE_FLAGS -U__STRICT_ANSI__)
+ endif()
+diff --git a/cmake/compilers/GNU.cmake b/cmake/compilers/GNU.cmake
+index da6b408a..857d0888 100644
+--- a/cmake/compilers/GNU.cmake
++++ b/cmake/compilers/GNU.cmake
+@@ -109,9 +109,6 @@ set(TBB_COMMON_COMPILE_FLAGS ${TBB_COMMON_COMPILE_FLAGS} -Wformat -Wformat-secur
+ if (NOT APPLE AND NOT MINGW)
+     set(TBB_LIB_LINK_FLAGS ${TBB_LIB_LINK_FLAGS} -Wl,-z,relro,-z,now,-z,noexecstack)
+ endif()
+-if (NOT CMAKE_CXX_FLAGS MATCHES "_FORTIFY_SOURCE")
+-  set(TBB_COMMON_COMPILE_FLAGS ${TBB_COMMON_COMPILE_FLAGS} $<$<NOT:$<CONFIG:Debug>>:-D_FORTIFY_SOURCE=2> )
+-endif ()
+ 
+ if (TBB_FILE_TRIM AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL 8)
+     set(TBB_COMMON_COMPILE_FLAGS ${TBB_COMMON_COMPILE_FLAGS} -ffile-prefix-map=${NATIVE_TBB_PROJECT_ROOT_DIR}/= -ffile-prefix-map=${NATIVE_TBB_RELATIVE_BIN_PATH}/=)
+-- 
+2.45.2
+

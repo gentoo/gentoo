@@ -1,0 +1,49 @@
+https://github.com/raboof/notion/commit/3c81575d48b2fd1b851536e305961bb199ea36b5.patch
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Wed, 1 May 2024 11:35:59 +0530
+Subject: [PATCH] Fix build with GCC 14 and above
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Newer compilers such as GCC 14 ( and above ) have enabled a few compiler
+flags by default, -Wincompatible-pointer-types being one of them. Thus
+resulting in build errors such as:
+
+frame.c: In function ‘frame_set_numbers_extl’:
+frame.c:799:32: error: passing argument 1 of ‘ioncore_grab_establish’ from incompatible pointer type [-Wincompatible-pointer-types]
+  799 |         ioncore_grab_establish(frame, numbers_grab_handler, NULL,
+      |                                ^~~~~
+      |                                |
+      |                                WFrame * {aka struct WFrame_struct *}
+
+For now a type casting can be used to supress the error, as changing the type
+of frame would require touching other parts of the codebase. This should be
+fine for now as WFrame is a WMPlex which is a WWindow.
+
+TODO:
+According to developer/s, frame->mplex->win would be a more type-safe way to
+achieve the same, but then it becomes less clear whether this is an 'is' or a
+'has' relationship.
+
+First reported on Gentoo Linux with GCC 14, for more details please
+reffer https://bugs.gentoo.org/919249
+
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+---
+ ioncore/frame.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ioncore/frame.c b/ioncore/frame.c
+index dbe0d107c..2f7663815 100644
+--- a/ioncore/frame.c
++++ b/ioncore/frame.c
+@@ -796,7 +796,7 @@ bool frame_set_numbers_extl(WFrame *frame, const char *how)
+ {
+     if(how!=NULL && strcmp(how, "during_grab")==0){
+         bool new_state = frame_set_numbers(frame, SETPARAM_SET);
+-        ioncore_grab_establish(frame, numbers_grab_handler, NULL,
++        ioncore_grab_establish((WRegion *)frame, numbers_grab_handler, NULL,
+                                0, GRAB_DEFAULT_FLAGS&~GRAB_POINTER);
+         return new_state;
+     }

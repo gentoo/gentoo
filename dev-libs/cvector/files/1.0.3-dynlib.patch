@@ -1,0 +1,34 @@
+--- a/Makefile
++++ b/Makefile
+@@ -96,8 +96,8 @@ BUILD_COMMAND_STATIC   =  $(LIBTOOL) --mode=link $(CC) $(CFLAGS) -static -I $(IN
+ INSTALL_COMMAND        =  $(LIBTOOL) --mode=install cp
+ INSTALL_FINISH_COMMAND =  $(LIBTOOL) --mode=finish
+ 
+-OBJ_EXT                =  lo
+-LIB_EXT                =  la
++OBJ_EXT                =  o
++LIB_EXT                =  so
+ 
+ ######################################################################
+ #  You should not need to make modifications below this line         #
+@@ -181,8 +181,7 @@ default:
+ # Compile the library and examples
+ #
+ all:	$(LIB) $(BIN) $(SOURCE) $(HEADERS) \
+-		$(LIB)/libCVector.$(LIB_EXT) \
+-		$(BIN)/CVectorBasicTest
++		$(LIB)/libCVector.$(LIB_EXT)
+ 		
+ install:  all $(INSTALL_PREFIX) $(INSTALL_PREFIX)/lib $(INSTALL_PREFIX)/include \
+           $(INC) $(LIB)/libCVector.$(LIB_EXT)  $(INC)/CVector.h
+@@ -232,8 +231,8 @@ $(BIN):
+ # CVector library
+ #
+ $(LIB)/libCVector.$(LIB_EXT): $(SOURCE) $(HEADERS) $(COMMONDEP)
+-	$(COMPILE_COMMAND) -c $(SOURCE)
+-	$(LIBRARY_LINK_COMMAND) -o $(LIB)/libCVector.$(LIB_EXT) *.$(OBJ_EXT) 
++	$(CC) $(CFLAGS) -fPIC -c $(SOURCE) -o CVector.o -I.
++	$(CC) $(LDFLAGS) -Wl,--soname,libCVector.so.1 -shared -o libCVector.so.$(RELEASE) *.$(OBJ_EXT) -lm 
+ 
+ #
+ # CVectorBasicTest example program

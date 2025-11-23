@@ -1,0 +1,69 @@
+https://github.com/seccomp/libseccomp/pull/424
+
+From 865adeed17cac7063cbbce0c5df225aa35c83621 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 16 Dec 2023 02:17:36 +0000
+Subject: [PATCH] tests: avoid use of non-portable `which`
+
+which is not a standard POSIX utility, and indeed, each of these test scripts
+uses #!/bin/bash as its shebang, so we can use `type -P` which has the same
+behaviour as `which` for free.
+
+(If the tests used POSIX shell, we could do `command -v`, its only caveat is
+that it'll pick up functions in the user's shell, which doesn't matter 99% of
+the time anyway.)
+
+Distributions like Debian [0] and Gentoo [1] are looking to remove `which`
+from their base set of packages.
+
+[0] https://lwn.net/Articles/874049/
+[1] https://bugs.gentoo.org/646588
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/tests/38-basic-pfc_coverage.sh
++++ b/tests/38-basic-pfc_coverage.sh
+@@ -18,7 +18,7 @@
+ #
+ function check_deps() {
+ 	[[ -z "$1" ]] && return
+-	which "$1" >& /dev/null
++	type -P "$1" >& /dev/null
+ 	return $?
+ }
+ 
+--- a/tests/55-basic-pfc_binary_tree.sh
++++ b/tests/55-basic-pfc_binary_tree.sh
+@@ -18,7 +18,7 @@
+ #
+ function check_deps() {
+ 	[[ -z "$1" ]] && return
+-	which "$1" >& /dev/null
++	type -P "$1" >& /dev/null
+ 	return $?
+ }
+ 
+--- a/tests/regression
++++ b/tests/regression
+@@ -73,7 +73,7 @@ GLBL_SYS_API="../tools/scmp_api_level"
+ #
+ function check_deps() {
+ 	[[ -z "$1" ]] && return
+-	which "$1" >& /dev/null
++	type -P "$1" >& /dev/null
+ 	return $?
+ }
+ 
+--- a/tests/testgen
++++ b/tests/testgen
+@@ -32,7 +32,7 @@
+ #
+ function verify_deps() {
+ 	[[ -z "$1" ]] && return
+-	if ! which "$1" >& /dev/null; then
++	if ! type -P "$1" >& /dev/null; then
+ 		echo "error: install \"$1\" and include it in your \$PATH"
+ 		exit 1
+ 	fi
+-- 
+2.43.0
+

@@ -1,0 +1,226 @@
+diff --git a/README.md b/README.md
+index fe466e50..e91dd4ed 100644
+--- a/README.md
++++ b/README.md
+@@ -46,7 +46,7 @@ Jazz² Resurrection is reimplementation of the game **Jazz Jackrabbit 2** releas
+ * Install dependencies: `sudo apt install libglew2.2 libglfw3 libsdl2-2.0-0 libopenal1 libvorbisfile3 libopenmpt0`
+   * Alternatively, install provided `.deb` or `.rpm` package and dependencies should be installed automatically
+ * Copy contents of original *Jazz Jackrabbit 2* directory to `‹Game›/Source/`
+-  * If packages are used, the files must be copied to `~/.local/share/Jazz² Resurrection/Source/` instead
++  * If packages are used, the files must be copied to `~/.local/share/Jazz² Resurrection/Source/` or `/usr/local/share/Jazz² Resurrection/Source/` instead, please follow instructions of specific package
+ * Run `‹Game›/jazz2` or `‹Game›/jazz2_sdl2` application
+   * If packages are used, the game should be visible in application list
+ 
+diff --git a/Sources/Common.h b/Sources/Common.h
+index 865d42bb..cf6f112c 100644
+--- a/Sources/Common.h
++++ b/Sources/Common.h
+@@ -33,6 +33,10 @@
+ 
+ #include <stdlib.h>
+ 
++#if !defined(NCINE_INSTALL_PREFIX) && defined(DEATH_TARGET_UNIX)
++#	define NCINE_INSTALL_PREFIX "/usr/local"
++#endif
++
+ // Check platform-specific capabilities
+ #if defined(WITH_SDL) || defined(DEATH_TARGET_WINDOWS_RT)
+ #	define NCINE_HAS_GAMEPAD_RUMBLE
+diff --git a/Sources/Jazz2/ContentResolver.cpp b/Sources/Jazz2/ContentResolver.cpp
+index 737582db..a7c5d460 100644
+--- a/Sources/Jazz2/ContentResolver.cpp
++++ b/Sources/Jazz2/ContentResolver.cpp
+@@ -207,7 +207,7 @@ namespace Jazz2
+ #	elif defined(NCINE_OVERRIDE_CONTENT_PATH)
+ 		_contentPath = NCINE_OVERRIDE_CONTENT_PATH;
+ #	else
+-		_contentPath = "/usr/share/" NCINE_LINUX_PACKAGE "/Content/";
++		_contentPath = NCINE_INSTALL_PREFIX "/share/" NCINE_LINUX_PACKAGE "/Content/";
+ #	endif
+ #	if defined(NCINE_PACKAGED_CONTENT_PATH)
+ 		// If Content is packaged with binaries, always use standard XDG paths for everything else
+@@ -226,18 +226,25 @@ namespace Jazz2
+ 			auto localStorage = fs::GetLocalStorage();
+ 			if (!localStorage.empty()) {
+ 				// Use "$XDG_DATA_HOME/Jazz² Resurrection/" if exists (for backward compatibility), otherwise "$XDG_DATA_HOME/{NCINE_LINUX_PACKAGE}/"
+-				_sourcePath = fs::CombinePath(localStorage, "Jazz² Resurrection/Source/"_s);
+-				if (fs::DirectoryExists(_sourcePath)) {
+-					_cachePath = fs::CombinePath(localStorage, "Jazz² Resurrection/Cache/"_s);
+-				} else {
++				_cachePath = fs::CombinePath(localStorage, "Jazz² Resurrection/Cache/"_s);
++				if (!fs::DirectoryExists(_cachePath)) {
+ 					auto appData = fs::CombinePath(localStorage, NCINE_LINUX_PACKAGE);
+-					_sourcePath = fs::CombinePath(appData, "Source/"_s);
+ 					_cachePath = fs::CombinePath(appData, "Cache/"_s);
+ 				}
+ 			} else {
+-				_sourcePath = "Source/"_s;
+ 				_cachePath = "Cache/"_s;
+ 			}
++
++			// Prefer system-wide Source only if it exists and local one doesn't exist
++			_sourcePath = fs::CombinePath(fs::GetDirectoryName(_cachePath), "Source/"_s);
++			if (!fs::FindPathCaseInsensitive(fs::CombinePath(_sourcePath, "Anims.j2a"_s)) &&
++				!fs::FindPathCaseInsensitive(fs::CombinePath(_sourcePath, "AnimsSw.j2a"_s))) {
++				auto systemWideSource = NCINE_INSTALL_PREFIX "/share/" NCINE_LINUX_PACKAGE "/Source/";
++				if (fs::FindPathCaseInsensitive(fs::CombinePath(systemWideSource, "Anims.j2a"_s)) ||
++					fs::FindPathCaseInsensitive(fs::CombinePath(systemWideSource, "AnimsSw.j2a"_s))) {
++					_sourcePath = systemWideSource;
++				}
++			}
+ 		} else {
+ 			// Fallback to relative paths
+ 			_contentPath = "Content/"_s;
+diff --git a/Sources/Shared/IO/FileSystem.cpp b/Sources/Shared/IO/FileSystem.cpp
+index 5b5199b0..0d4850bd 100644
+--- a/Sources/Shared/IO/FileSystem.cpp
++++ b/Sources/Shared/IO/FileSystem.cpp
+@@ -701,73 +701,91 @@ namespace Death { namespace IO {
+ #if !defined(DEATH_TARGET_WINDOWS) && !defined(DEATH_TARGET_SWITCH)
+ 	String FileSystem::FindPathCaseInsensitive(const StringView path)
+ 	{
+-		if (Exists(path)) {
++		if (path.empty() || Exists(path)) {
+ 			return path;
+ 		}
+ 
+-		std::size_t l = path.size();
+-		char* p = (char*)alloca(l + 1);
+-		strncpy(p, path.data(), l);
+-		p[l] = '\0';
+-		std::size_t rl = 0;
+-		bool isAbsolute = (p[0] == '/' || p[0] == '\\');
++		DIR* d = nullptr;
++		String result = path;
++		MutableStringView partialResult = result;
++		char* nextPartBegin;
+ 
+-		String result(NoInit, path.size() + (isAbsolute ? 0 : 2));
++		while (MutableStringView separator = partialResult.findLast('/')) {
++			if DEATH_UNLIKELY(separator.begin() == result.begin()) {
++				// Nothing left, only first slash of absolute path
++				break;
++			}
+ 
+-		DIR* d;
+-		if (isAbsolute) {
+-			d = ::opendir("/");
+-			p = p + 1;
+-		} else {
+-			d = ::opendir(".");
+-			result[0] = '.';
+-			result[1] = '\0';
+-			rl = 1;
++			partialResult = partialResult.prefix(separator.begin());
++			separator[0] = '\0';
++			d = ::opendir(result.data());
++			separator[0] = '/';
++			if (d != nullptr) {
++				nextPartBegin = separator.end();
++				break;
++			}
+ 		}
+ 
+-		bool last = false;
+-		char* c = strsep(&p, "/");
+-		while (c) {
+-			if (d == nullptr) {
+-				return {};
++		if (d == nullptr) {
++			if (result[0] == '/' || result[0] == '\\') {
++				d = ::opendir("/");
++				nextPartBegin = result.begin() + 1;
++			} else {
++				d = ::opendir(".");
++				nextPartBegin = result.begin();
+ 			}
+ 
+-			if (last) {
+-				::closedir(d);
++			if DEATH_UNLIKELY(d == nullptr) {
+ 				return {};
+ 			}
++		}
++
++		while (true) {
++			partialResult = result.suffix(nextPartBegin);
++			MutableStringView nextSeparator = partialResult.findOr('/', result.end());
++			if DEATH_UNLIKELY(nextSeparator.begin() == nextPartBegin) {
++				// Skip empty parts
++				nextPartBegin = nextSeparator.end();
++				continue;
++			}
+ 
+-			result[rl] = '/';
+-			rl += 1;
+-			result[rl] = '\0';
++			bool hasNextSeparator = (nextSeparator.begin() != result.end());
++			if DEATH_LIKELY(hasNextSeparator) {
++				nextSeparator[0] = '\0';
++			}
+ 
+ 			struct dirent* entry = ::readdir(d);
+ 			while (entry != nullptr) {
+-				if (::strcasecmp(c, entry->d_name) == 0) {
+-					strcpy(&result[rl], entry->d_name);
+-					rl += strlen(entry->d_name);
+-
++				if (::strcasecmp(partialResult.begin(), entry->d_name) == 0) {
++					std::size_t fileNameLength = std::strlen(entry->d_name);
++					DEATH_DEBUG_ASSERT(partialResult.begin() + fileNameLength == nextSeparator.begin());
++					std::memcpy(partialResult.begin(), entry->d_name, fileNameLength);
+ 					::closedir(d);
++
++					nextPartBegin = nextSeparator.end();
++					if (!hasNextSeparator || nextPartBegin == result.end()) {
++						if (hasNextSeparator) {
++							nextSeparator[0] = '/';
++						}
++						return result;
++					}
++
+ 					d = ::opendir(result.data());
++					if DEATH_UNLIKELY(d == nullptr) {
++						return {};
++					}
++					nextSeparator[0] = '/';
+ 					break;
+ 				}
+ 
+ 				entry = ::readdir(d);
+ 			}
+ 
+-			if (entry == nullptr) {
+-				strcpy(&result[rl], c);
+-				rl += strlen(c);
+-				last = true;
++			if DEATH_UNLIKELY(entry == nullptr) {
++				::closedir(d);
++				return {};
+ 			}
+-
+-			c = strsep(&p, "/");
+ 		}
+-
+-		if (d != nullptr) {
+-			::closedir(d);
+-		}
+-		return result;
+ 	}
+ #endif
+ 
+diff --git a/cmake/ncine_compiler_options.cmake b/cmake/ncine_compiler_options.cmake
+index 9ca461ad..6d981fdc 100644
+--- a/cmake/ncine_compiler_options.cmake
++++ b/cmake/ncine_compiler_options.cmake
+@@ -10,6 +10,10 @@ target_compile_definitions(${NCINE_APP} PUBLIC "NCINE_VERSION=\"${NCINE_VERSION}
+ string(TIMESTAMP NCINE_BUILD_YEAR "%Y") 
+ target_compile_definitions(${NCINE_APP} PUBLIC "NCINE_BUILD_YEAR=\"${NCINE_BUILD_YEAR}\"")
+ 
++if(UNIX)
++	target_compile_definitions(${NCINE_APP} PUBLIC "NCINE_INSTALL_PREFIX=\"${CMAKE_INSTALL_PREFIX}\"")
++endif()
++
+ if(NCINE_OVERRIDE_CONTENT_PATH)
+ 	message(STATUS "Using overriden `Content` path: ${NCINE_OVERRIDE_CONTENT_PATH}")
+ 	target_compile_definitions(${NCINE_APP} PUBLIC "NCINE_OVERRIDE_CONTENT_PATH=\"${NCINE_OVERRIDE_CONTENT_PATH}\"")

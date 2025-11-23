@@ -1,0 +1,23 @@
+commit 0894cc54b5b385201cdcf7ce227c6ea03d765ef9
+Author: Alexander Zubkov <green@qrator.net>
+Date:   Wed Oct 17 22:45:24 2018 +0200
+
+    support openat() syscall too
+
+diff --git a/lib/arch/generic/functions b/lib/arch/generic/functions
+index b0c6572..b1fdbc8 100755
+--- a/lib/arch/generic/functions
++++ b/lib/arch/generic/functions
+@@ -647,9 +647,9 @@ sub extract_open_from_ldd {
+ 
+   local $file;
+   local $val;
+-  if ($line =~ /^open\(\"(.+)\".+\)\s*=\s*([-]?\d+)/) {
+-    $file = $1;
+-    $val = $2;
++  if ($line =~ /^open(at)?\([^\"]*\"(.+)\".+\)\s*=\s*([-]?\d+)/) {
++    $file = $2;
++    $val = $3;
+     return($file,$val);
+   }
+   return();

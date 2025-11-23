@@ -1,0 +1,55 @@
+https://bugs.gentoo.org/922483
+
+--- a/tests/lib/vfs/vfs_path_string_convert.c
++++ b/tests/lib/vfs/vfs_path_string_convert.c
+@@ -116,50 +116,6 @@
+         4,
+         &vfs_test_ops3
+     },
+-#ifdef HAVE_CHARSET
+-    { /* 3. */
+-        "/#test1/bla-bla1/some/path/#test2/bla-bla2/#enc:KOI8-R/some/path#test3/111/22/33",
+-        "/test1://bla-bla1/some/path/test2://#enc:KOI8-R/bla-bla2/some/path/test3://111/22/33",
+-        "111/22/33",
+-        4,
+-        &vfs_test_ops3
+-    },
+-    { /* 4. */
+-        "/#test1/bla-bla1/#enc:IBM866/some/path/#test2/bla-bla2/#enc:KOI8-R/some/path#test3/111/22/33",
+-        "/test1://#enc:IBM866/bla-bla1/some/path/test2://#enc:KOI8-R/bla-bla2/some/path/test3://111/22/33",
+-        "111/22/33",
+-        4,
+-        &vfs_test_ops3
+-    },
+-    {  /* 5. */
+-        "/#test1/bla-bla1/some/path/#test2/bla-bla2/#enc:IBM866/#enc:KOI8-R/some/path#test3/111/22/33",
+-        "/test1://bla-bla1/some/path/test2://#enc:KOI8-R/bla-bla2/some/path/test3://111/22/33",
+-        "111/22/33",
+-        4,
+-        &vfs_test_ops3
+-    },
+-    { /* 6. */
+-        "/#test1/bla-bla1/some/path/#test2/bla-bla2/#enc:IBM866/some/#enc:KOI8-R/path#test3/111/22/33",
+-        "/test1://bla-bla1/some/path/test2://#enc:KOI8-R/bla-bla2/some/path/test3://111/22/33",
+-        "111/22/33",
+-        4,
+-        &vfs_test_ops3
+-    },
+-    { /* 7. */
+-        "/#test1/bla-bla1/some/path/#test2/#enc:IBM866/bla-bla2/#enc:KOI8-R/some/path#test3/111/22/33",
+-        "/test1://bla-bla1/some/path/test2://#enc:KOI8-R/bla-bla2/some/path/test3://111/22/33",
+-        "111/22/33",
+-        4,
+-        &vfs_test_ops3
+-    },
+-    { /* 8. */
+-        "/#test1/bla-bla1/some/path/#enc:IBM866/#test2/bla-bla2/#enc:KOI8-R/some/path#test3/111/22/33",
+-        "/test1://#enc:IBM866/bla-bla1/some/path/test2://#enc:KOI8-R/bla-bla2/some/path/test3://111/22/33",
+-        "111/22/33",
+-        4,
+-        &vfs_test_ops3
+-    },
+-#endif /* HAVE_CHARSET */
+ };
+ /* *INDENT-ON* */
+ 

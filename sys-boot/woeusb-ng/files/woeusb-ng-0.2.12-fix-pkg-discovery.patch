@@ -1,0 +1,28 @@
+Fix setuptools package discovery issues by using custom discovery.
+
+```
+/usr/lib/python3.12/site-packages/setuptools/command/build_py.py:212: _Warning: Package 'WoeUSB.data' is absent from the `packages` configuration.
+ ```
+
+There's an open PR to improve the packaging methods.
+https://github.com/WoeUSB/WoeUSB-ng/pull/79
+--- a/setup.py
++++ b/setup.py
+@@ -2,7 +2,7 @@ import os
+ import shutil
+ import stat
+ 
+-from setuptools import setup
++from setuptools import setup, find_namespace_packages
+ from setuptools.command.develop import develop
+ from setuptools.command.install import install
+ 
+@@ -57,7 +57,7 @@ setup(
+     author_email='jakubmateusz@poczta.onet.pl',
+     license='GPL-3',
+     zip_safe=False,
+-    packages=['WoeUSB'],
++    packages=find_namespace_packages(exclude=['doc', 'miscellaneous']),
+     include_package_data=True,
+     scripts=[
+         'WoeUSB/woeusb',

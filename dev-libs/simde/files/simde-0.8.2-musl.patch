@@ -1,0 +1,19 @@
+This workaround patch should be removable when musl implements C23
+functions (technically this isn't a __GLIBC__-only quirk, but used
+due to lack of anything known that's better beside running a build
+test for it).
+
+https://bugs.gentoo.org/926488
+https://github.com/simd-everywhere/simde/issues/1001
+--- a/simde/simde-math.h
++++ b/simde/simde-math.h
+@@ -1268,3 +1268,3 @@
+   #if \
+-     ((!defined(HEDLEY_EMSCRIPTEN_VERSION) || HEDLEY_EMSCRIPTEN_VERSION_CHECK(3, 1, 43)) && HEDLEY_HAS_BUILTIN(__builtin_roundeven)) || \
++     (defined(__GLIBC__) && (!defined(HEDLEY_EMSCRIPTEN_VERSION) || HEDLEY_EMSCRIPTEN_VERSION_CHECK(3, 1, 43)) && HEDLEY_HAS_BUILTIN(__builtin_roundeven)) || \
+       HEDLEY_GCC_VERSION_CHECK(10,0,0)
+@@ -1288,3 +1288,3 @@
+   #if \
+-     ((!defined(HEDLEY_EMSCRIPTEN_VERSION) || HEDLEY_EMSCRIPTEN_VERSION_CHECK(3, 1, 43)) && HEDLEY_HAS_BUILTIN(__builtin_roundevenf)) || \
++     (defined(__GLIBC__) && (!defined(HEDLEY_EMSCRIPTEN_VERSION) || HEDLEY_EMSCRIPTEN_VERSION_CHECK(3, 1, 43)) && HEDLEY_HAS_BUILTIN(__builtin_roundevenf)) || \
+       HEDLEY_GCC_VERSION_CHECK(10,0,0)

@@ -1,0 +1,53 @@
+https://bugs.gentoo.org/892549
+https://github.com/gentoo/binutils-gdb/pull/5
+
+From 302271b0baa52204fab58bd0b74e3919c0789f87 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sat, 23 Dec 2023 13:48:10 +0000
+Subject: [PATCH] ld: Allow a Gentoo-specific prefix to override the prefix
+ used by ld.bfd
+
+This prefix is only used to locate $prefix/etc/ld.so.conf, with $prefix
+usually being /usr. This file is important on Gentoo Prefix systems,
+where the /usr prefix is within another directory. The problem is that
+Gentoo already passes the same directory as the sysroot, and ld.bfd
+therefore looks for /myprefix/myprefix/usr/etc/ld.so.conf.
+
+The sysroot is dynamic, while the prefix is hardcoded. A hardcoded
+prefix that isn't just /usr is unhelpful, not just because of the
+doubled prefix issue above, but also because it prevents ld.bfd from
+working effectively outside its native environment. We will therefore
+hardcode it to just /usr.
+
+This change does not simply do that though and sets up a $gentoo_prefix
+variable instead, with $prefix as a fallback. This is necessary because
+Gentoo prefix-guest systems, which use the host's libc, do not apply a
+sysroot like RAP prefix systems do. In that case, we must preserve the
+existing behaviour. The binutils ebuild will be responsible for setting
+this variable appropriately.
+---
+ ld/emultempl/elf.em | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/ld/emultempl/elf.em b/ld/emultempl/elf.em
+index 863657e12f5..cf0204e9c76 100644
+--- a/ld/emultempl/elf.em
++++ b/ld/emultempl/elf.em
+@@ -142,7 +142,7 @@ gld${EMULATION_NAME}_before_plugin_all_symbols_read (void)
+   ldelf_before_plugin_all_symbols_read ($IS_LIBPATH, $IS_NATIVE,
+ 				        $IS_LINUX_TARGET,
+ 					$IS_FREEBSD_TARGET,
+-					$ELFSIZE, "$prefix");
++					$ELFSIZE, "${gentoo_prefix-${prefix}}");
+ }
+ 
+ /* This is called after all the input files have been opened.  */
+@@ -151,7 +151,7 @@ static void
+ gld${EMULATION_NAME}_after_open (void)
+ {
+   ldelf_after_open ($IS_LIBPATH, $IS_NATIVE,
+-		    $IS_LINUX_TARGET, $IS_FREEBSD_TARGET, $ELFSIZE, "$prefix");
++		    $IS_LINUX_TARGET, $IS_FREEBSD_TARGET, $ELFSIZE, "${gentoo_prefix-${prefix}}");
+ }
+ 
+ EOF

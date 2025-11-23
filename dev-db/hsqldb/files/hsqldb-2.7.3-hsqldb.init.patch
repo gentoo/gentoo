@@ -1,0 +1,20 @@
+--- a/sample/hsqldb.init
++++ b/sample/hsqldb.init
+@@ -57,7 +57,7 @@ SERVICE=hsqldb
+ # chkconfig: 345 87 13
+ # description: HyperSQL Database, A High Performance Java Database Server
+ # pidfile: /run/hsqldb.pid
+-# config: /etc/sysconfig/hsqldb
++# config: /etc/conf.d/hsqldb
+ 
+ # This block only used by insserv systems (incl. SuSE Linux).
+ ### BEGIN INIT INFO
+@@ -198,7 +198,7 @@ case "`uname`" in
+ esac
+ 
+ for candidate in /etc/hsqldb/${SERVICE}.conf  \
+-        /etc/sysconfig/${SERVICE} /etc/${SERVICE}.conf  \
++        /etc/conf.d/${SERVICE} /etc/${SERVICE}.conf  \
+         /etc/${SERVICE}.cfg  /Library/Hsqldb/conf/${SERVICE}.cfg  \
+         /Library/Hsqldb/${SERVICE}.cfg /usr/local/etc/${SERVICE}.cfg; do
+     [ -f $candidate ] && {

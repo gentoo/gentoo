@@ -1,0 +1,21 @@
+diff -Naurp selectwm-0.4.1-orig/src/options.c selectwm-0.4.1/src/options.c
+--- selectwm-0.4.1-orig/src/options.c	2009-07-26 14:46:44.092880624 -0600
++++ selectwm-0.4.1/src/options.c	2009-07-26 14:46:11.484940363 -0600
+@@ -32,7 +32,7 @@
+ #include "miscui.h"
+ #include "modify.h"
+ 
+-static GString *getline (FILE *fichier) {
++static GString *selectwm_getline (FILE *fichier) {
+ 	GString *temp;
+ 	gchar buf[128];
+ 	
+@@ -64,7 +64,7 @@ static gint read_config_file (config *se
+ 	}
+ 	buf = g_string_new ("");
+ 	while (!feof (config)) {
+-		buf = getline (config);
++		buf = selectwm_getline (config);
+ 
+ 		if (buf->len > 0 && buf->str[0] != '#') {
+ 			if (g_strrstr (buf->str, ":")) {

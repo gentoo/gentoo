@@ -1,0 +1,95 @@
+Allow compilation on Darwin, reverting parts of Linux/Debian patch
+
+Signed-off-by: Fabian Groffen <grobian@gentoo.org>
+
+--- a/netcat.c	2023-09-26 15:04:51.169658537 +0200
++++ b/netcat.c	2023-09-26 15:07:00.270929256 +0200
+@@ -50,13 +50,18 @@
+ # include <bsd/readpassphrase.h>
+ #endif
+ 
++#ifndef IPTOS_LOWCOST
++# define IPTOS_LOWCOST 0x02
++#endif
+ #ifndef IPTOS_LOWDELAY
+ # define IPTOS_LOWDELAY 0x10
+ # define IPTOS_THROUGHPUT 0x08
+ # define IPTOS_RELIABILITY 0x04
+-# define IPTOS_LOWCOST 0x02
+ # define IPTOS_MINCOST IPTOS_LOWCOST
+ #endif /* IPTOS_LOWDELAY */
++#ifndef SOCK_CLOEXEC
++# define SOCK_CLOEXEC 0
++#endif
+ 
+ # ifndef IPTOS_DSCP_AF11
+ # define	IPTOS_DSCP_AF11		0x28
+@@ -108,8 +113,9 @@
+ # include <tls.h>
+ #endif
+ #include <unistd.h>
+-#include <bsd/stdlib.h>
+-#include <bsd/string.h>
++#include <stdlib.h>
++#include <string.h>
++#include <ctype.h>
+ 
+ #include "atomicio.h"
+ 
+@@ -814,9 +820,8 @@
+ 				int connfd;
+ 
+ 				len = sizeof(cliaddr);
+-				connfd = accept4(s, (struct sockaddr *)&cliaddr,
+-				    &len, SOCK_NONBLOCK);
+-				if (connfd == -1) {
++				connfd = accept(s, (struct sockaddr *)&cliaddr, &len);
++				if (connfd == -1 || fcntl(connfd, F_SETFL, O_NONBLOCK) == -1) {
+ 					/* For now, all errnos are fatal */
+ 					err(1, "accept");
+ 				}
+@@ -1069,6 +1074,8 @@
+ 		} else
+ 			err(1, "poll failed");
+ 	}
++	if (fcntl(s, F_SETFD, FD_CLOEXEC) == -1)
++		return -1;
+ 
+ 	return ret;
+ }
+@@ -1218,9 +1225,13 @@
+ 		    port, gai_strerror(error));
+ 
+ 	for (res = res0; res; res = res->ai_next) {
+-		if ((s = socket(res->ai_family, res->ai_socktype |
+-		    SOCK_NONBLOCK, res->ai_protocol)) == -1)
++		if ((s = socket(res->ai_family, res->ai_socktype,
++		    res->ai_protocol)) == -1)
+ 			continue;
++		if (fcntl(s, F_SETFL, O_NONBLOCK) == -1) {
++			close(s);
++			continue;
++		}
+ 
+ 		/* Bind to a local port or source address if specified. */
+ 		if (sflag || pflag) {
+--- a/socks.c	2023-09-26 15:04:51.085185645 +0200
++++ b/socks.c	2023-09-26 15:07:30.947097100 +0200
+@@ -38,7 +38,7 @@
+ #include <string.h>
+ #include <unistd.h>
+ #include <resolv.h>
+-#include <bsd/readpassphrase.h>
++#include <readpassphrase.h>
+ #include "atomicio.h"
+ 
+ #define SOCKS_PORT	"1080"
+@@ -53,6 +53,8 @@
+ #define SOCKS_DOMAIN	3
+ #define SOCKS_IPV6	4
+ 
++#define explicit_bzero(S,L) bzero(S,L)
++
+ int	remote_connect(const char *, const char *, struct addrinfo, char *);
+ int	socks_connect(const char *, const char *, struct addrinfo,
+ 	    const char *, const char *, struct addrinfo, int,

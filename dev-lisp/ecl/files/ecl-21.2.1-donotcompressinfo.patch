@@ -1,0 +1,35 @@
+diff --git a/src/doc/Makefile.in b/src/doc/Makefile.in
+index 5660f41..c2aadbe 100644
+--- a/src/doc/Makefile.in
++++ b/src/doc/Makefile.in
+@@ -15,7 +15,7 @@ INSTALL_PROGRAM = @INSTALL_PROGRAM@
+ INSTALL_DATA = @INSTALL_DATA@
+ INSTALL_INFO = @INSTALL_INFO@
+ mkinstalldirs = $(top_srcdir)/bdwgc/install-sh -d
+-INFO_FILE = ecl.info.gz
++INFO_FILE = ecl.info
+ MAKEINFO = @MAKEINFO@
+ MANUAL_MAKE_TARGET = @MANUAL_MAKE_TARGET@
+ MANUAL_INSTALL_TARGET = @MANUAL_INSTALL_TARGET@
+diff --git a/src/doc/manual/Makefile b/src/doc/manual/Makefile
+index f82c287..2ff67e0 100644
+--- a/src/doc/manual/Makefile
++++ b/src/doc/manual/Makefile
+@@ -5,15 +5,14 @@ FILES= *.txi */*.txi figures/*
+ all: pdf info html
+ 
+ pdf: manual.pdf
+-info: ecl.info.gz
++info: ecl.info
+ html: html/index.html
+ 
+ manual.pdf: $(FILES)
+ 	texi2pdf manual.txi
+ 
+-ecl.info.gz: $(FILES)
++ecl.info: $(FILES)
+ 	$(MAKEINFO) --no-split manual.txi
+-	gzip < ecl.info > ecl.info.gz
+ 
+ html/index.html: $(FILES)
+ 	$(MAKEINFO) --html --css-include=ecl.css --split=section manual.txi

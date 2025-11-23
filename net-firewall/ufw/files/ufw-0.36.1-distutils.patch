@@ -1,0 +1,14 @@
+https://src.fedoraproject.org/rpms/ufw/raw/rawhide/f/ufw-0.35-distutils-setuptools.patch
+--- a/setup.py
++++ b/setup.py
+@@ -26,8 +26,8 @@
+ #
+ 
+ from __future__ import print_function
+-from distutils.command.install import install as _install
+-from distutils.core import setup
++from setuptools.command.install import install as _install
++from setuptools import setup
+ import errno
+ import os
+ import re

@@ -1,0 +1,30 @@
+Source: https://bitbucket.org/heldercorreia/speedcrunch/pull-requests/127
+
+From 579fe071c6229f2d26571b4cbc88afc46ad20943 Mon Sep 17 00:00:00 2001
+From: Oktay Imanzade <imanov.computer@gmail.com>
+Date: Mon, 18 Mar 2024 17:08:15 +0000
+Subject: [PATCH] Fix keypad for Qt6
+
+---
+ src/gui/keypad.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/gui/keypad.cpp b/src/gui/keypad.cpp
+index d206c76c..b252c85d 100644
+--- a/src/gui/keypad.cpp
++++ b/src/gui/keypad.cpp
+@@ -82,7 +82,11 @@ Keypad::Keypad(QWidget* parent)
+     setButtonTooltips();
+     disableButtonFocus();
+     setLayoutDirection(Qt::LeftToRight);
++#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
++    connect(&mapper, SIGNAL(mappedInt(int)), SLOT(emitButtonPressed(int)));
++#else
+     connect(&mapper, SIGNAL(mapped(int)), SLOT(emitButtonPressed(int)));
++#endif
+ }
+ 
+ void Keypad::handleRadixCharacterChange()
+-- 
+2.51.0
+

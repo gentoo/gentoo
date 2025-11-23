@@ -1,0 +1,20 @@
+See https://bugs.gentoo.org/935126
+
+--- a/m4/printf.m4
++++ b/m4/printf.m4
+@@ -894,6 +894,7 @@ AC_DEFUN([gl_PRINTF_DIRECTIVE_N],
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <unistd.h>
+ #ifdef _MSC_VER
+ #include <inttypes.h>
+ /* See page about "Parameter Validation" on msdn.microsoft.com.
+@@ -1708,6 +1709,7 @@ AC_DEFUN([gl_SNPRINTF_DIRECTIVE_N],
+ #include <signal.h>
+ #include <stdio.h>
+ #include <string.h>
++#include <unistd.h>
+ #if HAVE_SNPRINTF
+ # define my_snprintf snprintf
+ #else

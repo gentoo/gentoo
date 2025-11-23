@@ -1,0 +1,11 @@
+Games files have rather generic names and are more like demos
+that most people likely won't care to have installed. Patch
+this out for now so does not install extra files with tests
+(may possibly improve with future FLTK_BUILD_GAMES).
+--- a/CMake/install.cmake
++++ b/CMake/install.cmake
+@@ -126,3 +126,3 @@
+ 
+-if(FLTK_BUILD_TEST) # "OR FLTK_BUILD_GAMES" (not yet implemented)
++if(0) # "OR FLTK_BUILD_GAMES" (not yet implemented)
+ 

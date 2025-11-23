@@ -1,0 +1,13 @@
+--- a/cask.el
++++ b/cask.el
+@@ -345,9 +345,7 @@ Evaluate BODY in the package context of BUNDLE.  Then restore package context."
+             (package-load-list
+              (eval (car (get 'package-load-list 'standard-value))))
+             (package-user-dir (cask-elpa-path ,bundle))
+-	    (,@(if (special-variable-p 'package-gnupghome-dir)
+-		   (cons 'package-gnupghome-dir (list (expand-file-name "gnupg" package-user-dir)))
+-		 (list '_package-gnupghome-dir))))
++	    (package-gnupghome-dir (expand-file-name "gnupg" package-user-dir)))
+        (cask--use-environment ,bundle ,refresh ,no-activate)
+        ;; following will evaluate keys e.g., `:activate t` as separate s-exprs
+        ;; which ought to be no-ops

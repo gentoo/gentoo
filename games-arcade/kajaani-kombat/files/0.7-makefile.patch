@@ -1,0 +1,22 @@
+--- a/Makefile.orig	2005-02-28 22:55:55.000000000 -0500
++++ b/Makefile	2005-02-28 22:58:45.000000000 -0500
+@@ -39,8 +39,8 @@
+ endif
+ ## UNIX RELEASE (default option)
+ ifeq ($(sys), )
+-	MEDIA=-D MEDIA_PATH=\"./\"
+-	DEBUG= -O $(MEDIA)
++	MEDIA=-D MEDIA_PATH=\"GENTOODIR\"
++	DEBUG= $(CFLAGS) $(MEDIA)
+ endif
+ 
+ 
+@@ -55,7 +55,7 @@
+ 
+ server_objs = game_obj.o terrain.o msg.o game_server.o server_main.o coord.o block.o connects.o player.o config.o
+ 
+-CXXFLAGS=`sdl-config --cflags` -Wall $(DEBUG)
++CXXFLAGS+=`sdl-config --cflags` $(MEDIA)
+ 
+ all: client
+ 

@@ -1,0 +1,524 @@
+https://bugs.gentoo.org/show_bug.cgi?id=424269
+several fixes
+missing xgettext handling
+Signed-of-by: Joerg Bornkessel <hd_brummy@gentoo.org> ( 2012/11/02 )
+diff -Naur clock-1.0.0.old/clock.c clock-1.0.0/clock.c
+--- clock-1.0.0.old/clock.c	2008-03-07 16:54:27.000000000 +0100
++++ clock-1.0.0/clock.c	2012-10-30 12:21:59.473174499 +0100
+@@ -26,15 +26,15 @@
+ #include <vdr/remote.h>
+ #include <math.h>
+ #include "enhancedbitmap.h"
+-#include "i18n.h"
++#include <vdr/i18n.h>
+ 
+ #include "images/clock.xpm"
+ #include "images/tux.xpm"
+ #include "images/tuxpart.xpm"
+ 
+ static const char *VERSION        = "1.0.0";
+-static const char *DESCRIPTION    = "A Simple Clock";
+-static const char *MAINMENUENTRY  = "Clock";
++static const char *DESCRIPTION    = trNOOP("A Simple Clock");
++static const char *MAINMENUENTRY  = trNOOP("Clock");
+ 
+ // Global variables
+ 
+@@ -67,21 +67,21 @@
+ int       ColorMin   = 1;
+ int       ColorSec   = 3;
+ int       TeaTime    = 5;
+-const char      *TimeColors[]  = {"Transparent",
+-                            "White",
+-	                    "Black",
+-			    "Red",
+-			    "Green",
+-			    "Yellow",
+-			    "Blue",
++const char      *TimeColors[]  = {trNOOP("Transparent"),
++                            trNOOP("White"),
++	                    trNOOP("Black"),
++			    trNOOP("Red"),
++			    trNOOP("Green"),
++			    trNOOP("Yellow"),
++			    trNOOP("Blue"),
+                            };
+-const char      *ClockType[] = {"Digital",
+-			  "Analog",
+-			  "Analog modern",
+-			  "MorphOS",
+-			  "TuxClock",
+-			  "Internet time",
+-			  "Tea clock",
++const char      *ClockType[] = {trNOOP("Digital"),
++			  trNOOP("Analog"),
++			  trNOOP("Analog modern"),
++			  trNOOP("MorphOS"),
++			  trNOOP("TuxClock"),
++			  trNOOP("Internet time"),
++			  trNOOP("Tea clock"),
+                          };
+ 
+ 
+@@ -590,13 +590,13 @@
+   cPluginClock(void);
+   virtual ~cPluginClock();
+   virtual const char *Version(void) { return VERSION; }
+-  virtual const char *Description(void) { return DESCRIPTION; }
++  virtual const char *Description(void) { return tr(DESCRIPTION); }
+   virtual const char *CommandLineHelp(void);
+   virtual bool ProcessArgs(int argc, char *argv[]);
+   virtual bool Initialize(void);
+   virtual bool Start(void);
+   virtual void Housekeeping(void);
+-  virtual const char *MainMenuEntry(void) { return MAINMENUENTRY; }
++  virtual const char *MainMenuEntry(void) { return tr(MAINMENUENTRY); }
+   virtual cOsdObject *MainMenuAction(void);
+   virtual cMenuSetupPage *SetupMenu(void);
+   virtual bool SetupParse(const char *Name, const char *Value);
+@@ -635,7 +635,6 @@
+ bool cPluginClock::Start(void)
+ {
+   // Start any background activities the plugin shall perform.
+-  RegisterI18n(Phrases);
+   return true;
+ }
+ 
+diff -Naur clock-1.0.0.old/Makefile clock-1.0.0/Makefile
+--- clock-1.0.0.old/Makefile	2008-01-22 10:25:15.000000000 +0100
++++ clock-1.0.0/Makefile	2012-10-30 12:22:19.274187084 +0100
+@@ -48,7 +48,7 @@
+ 
+ ### The object files (add further files here):
+ 
+-OBJS = $(PLUGIN).o i18n.o enhancedbitmap.o
++OBJS = $(PLUGIN).o enhancedbitmap.o
+ 
+ ### Implicit rules:
+ 
+@@ -64,9 +64,34 @@
+ 
+ -include $(DEPFILE)
+ 
++### Internationalization (I18N):
++
++PODIR     = po
++LOCALEDIR = $(VDRDIR)/locale
++I18Npo    = $(wildcard $(PODIR)/*.po)
++I18Nmsgs  = $(addprefix $(LOCALEDIR)/, $(addsuffix /LC_MESSAGES/vdr-$(PLUGIN).mo, $(notdir $(foreach file, $(I18Npo), $(basename $(file))))))
++I18Npot   = $(PODIR)/$(PLUGIN).pot
++
++%.mo: %.po
++	msgfmt -c -o $@ $<
++
++$(I18Npot): $(wildcard *.c)
++	xgettext -C -cTRANSLATORS --no-wrap --no-location -k -ktr -ktrNOOP --msgid-bugs-address='<dev@erichseifert.de>' -o $@ $^
++
++%.po: $(I18Npot)
++	msgmerge -U --no-wrap --no-location --backup=none -q $@ $<
++	@touch $@
++
++$(I18Nmsgs): $(LOCALEDIR)/%/LC_MESSAGES/vdr-$(PLUGIN).mo: $(PODIR)/%.mo
++	@mkdir -p $(dir $@)
++	cp $< $@
++
++.PHONY: i18n
++i18n: $(I18Nmsgs)
++
+ ### Targets:
+ 
+-all: libvdr-$(PLUGIN).so
++all: libvdr-$(PLUGIN).so i18n
+ 
+ libvdr-$(PLUGIN).so: $(OBJS)
+ 	$(CXX) $(CXXFLAGS) -shared $(OBJS) -o $@
+@@ -81,4 +106,5 @@
+ 	@echo Distribution package created as $(PACKAGE).tgz
+ 
+ clean:
++	@-rm -f $(PODIR)/*.mo $(PODIR)/*.pot
+ 	@-rm -f $(OBJS) $(DEPFILE) *.so *.tgz core* *~
+diff -Naur clock-1.0.0.old/po/de_DE.po clock-1.0.0/po/de_DE.po
+--- clock-1.0.0.old/po/de_DE.po	1970-01-01 01:00:00.000000000 +0100
++++ clock-1.0.0/po/de_DE.po	2012-10-30 13:32:46.391048407 +0100
+@@ -0,0 +1,123 @@
++# VDR plugin language source file.
++# Copyright (C) 2007 Klaus Schmidinger <kls@tvdr.de>
++# This file is distributed under the same license as the VDR package.
++# Klaus Schmidinger <kls@tvdr.de>, 2000
++# Erich Seifert <dev@erichseifert.de>, 2012
++#
++msgid ""
++msgstr ""
++"Project-Id-Version: VDR 1.7.27\n"
++"Report-Msgid-Bugs-To: <dev@erichseifert.de>\n"
++"POT-Creation-Date: 2012-10-30 13:00+0200\n"
++"PO-Revision-Date: 2012-10-30 13:35+0200\n"
++"Last-Translator: Erich Seifert <dev@erichseifert.de>\n"
++"Language-Team: <vdr@linuxtv.org>\n"
++"Language: \n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=ISO-8859-15\n"
++"Content-Transfer-Encoding: 8bit\n"
++
++msgid "A Simple Clock"
++msgstr "Eine einfache Uhr"
++
++msgid "Clock"
++msgstr "Uhr"
++
++msgid "Transparent"
++msgstr "Transparent"
++
++msgid "White"
++msgstr "Weiß"
++
++msgid "Black"
++msgstr "Schwarz"
++
++msgid "Red"
++msgstr "Rot"
++
++msgid "Green"
++msgstr "Grün"
++
++msgid "Yellow"
++msgstr "Gelb"
++
++msgid "Blue"
++msgstr "Blau"
++
++msgid "Digital"
++msgstr "Digital"
++
++msgid "Analog"
++msgstr "Analog"
++
++msgid "Analog modern"
++msgstr ""
++
++msgid "MorphOS"
++msgstr ""
++
++msgid "TuxClock"
++msgstr ""
++
++msgid "Internet time"
++msgstr "Internet-Zeit"
++
++msgid "Tea clock"
++msgstr "Teekocher"
++
++msgid "It's tea time"
++msgstr "Es ist Teezeit!"
++
++msgid "x Position"
++msgstr "x-Position"
++
++msgid "y Position"
++msgstr "y-Position"
++
++msgid "Type of the clock"
++msgstr "Art der Uhr"
++
++msgid "Background color"
++msgstr "Hintergrundfarbe"
++
++msgid "Foreground color"
++msgstr "Vordergrundfarbe"
++
++msgid "Show Seconds"
++msgstr "Sekunden anzeigen"
++
++msgid "FullScreen"
++msgstr "FullScreen"
++
++msgid "Analog clock size"
++msgstr "Größe der analogen Uhr"
++
++msgid "Arrow color"
++msgstr "Zeigerfarbe"
++
++msgid "Length of hour arrow [%]"
++msgstr "Länge des Stundenzeigers [%]"
++
++msgid "Width of hour arrow [%]"
++msgstr "Breite des Stundenzeigers [%]"
++
++msgid "Length of min arrow [%]"
++msgstr "Länge des Minutenzeigers [%]"
++
++msgid "Width of min arrow [%]"
++msgstr "Breite des Minutenzeigers [%]"
++
++msgid "Seconds arrow color"
++msgstr "Farbe des Sekundenzeigers"
++
++msgid "Length of sec arrow [%]"
++msgstr "Länge des Sekundenzeigers [%]"
++
++msgid "Width of sec arrow [%]"
++msgstr "Breite des Sekundenzeigers [%]"
++
++msgid "Time till tea"
++msgstr "Zeit bis der Tee fertig ist"
++
++msgid "Show Countdown"
++msgstr "Countdown anzeigen"
+diff -Naur clock-1.0.0.old/po/fr_FR.po clock-1.0.0/po/fr_FR.po
+--- clock-1.0.0.old/po/fr_FR.po	1970-01-01 01:00:00.000000000 +0100
++++ clock-1.0.0/po/fr_FR.po	2012-10-30 12:36:16.925722659 +0100
+@@ -0,0 +1,125 @@
++# VDR plugin language source file.
++# Copyright (C) 2007 Klaus Schmidinger <kls@tvdr.de>
++# This file is distributed under the same license as the VDR package.
++# Jean-Claude Repetto <jc@repetto.org>, 2001
++# Olivier Jacques <jacquesolivier@hotmail.com>, 2003
++# Gregoire Favre <greg@magma.unil.ch>, 2003
++# Nicolas Huillard <nhuillard@e-dition.fr>, 2005
++#
++msgid ""
++msgstr ""
++"Project-Id-Version: VDR 1.7.27\n"
++"Report-Msgid-Bugs-To: <dev@erichseifert.de>\n"
++"POT-Creation-Date: 2012-10-30 13:00+0200\n"
++"PO-Revision-Date: 2012-10-30 13:00+0200\n"
++"Last-Translator: Nicolas Huillard <nhuillard@e-dition.fr>\n"
++"Language-Team: <vdr@linuxtv.org>\n"
++"Language: \n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=ISO-8859-1\n"
++"Content-Transfer-Encoding: 8bit\n"
++
++msgid "A Simple Clock"
++msgstr ""
++
++msgid "Clock"
++msgstr "Heure"
++
++msgid "Transparent"
++msgstr "Transparent"
++
++msgid "White"
++msgstr "Blanc"
++
++msgid "Black"
++msgstr "Noir"
++
++msgid "Red"
++msgstr "Rouge"
++
++msgid "Green"
++msgstr "Vert"
++
++msgid "Yellow"
++msgstr "Jaune"
++
++msgid "Blue"
++msgstr "Bleu"
++
++msgid "Digital"
++msgstr "Digital"
++
++msgid "Analog"
++msgstr "Analogique"
++
++msgid "Analog modern"
++msgstr ""
++
++msgid "MorphOS"
++msgstr ""
++
++msgid "TuxClock"
++msgstr ""
++
++msgid "Internet time"
++msgstr "Temps internet"
++
++msgid "Tea clock"
++msgstr "Pause cafe"
++
++msgid "It's tea time"
++msgstr "c'est l'heure de la pause cafe"
++
++msgid "x Position"
++msgstr "x Position"
++
++msgid "y Position"
++msgstr "y Position"
++
++msgid "Type of the clock"
++msgstr "Format d'affichage"
++
++msgid "Background color"
++msgstr "Couleur de fond"
++
++msgid "Foreground color"
++msgstr "Couleur premier plan"
++
++msgid "Show Seconds"
++msgstr "Afficher secondes"
++
++msgid "FullScreen"
++msgstr "FullScreen"
++
++msgid "Analog clock size"
++msgstr "Taille de l'horloge analogique"
++
++msgid "Arrow color"
++msgstr "Couleur aiguilles"
++
++msgid "Length of hour arrow [%]"
++msgstr "Longueur aiguille Hr [%]"
++
++msgid "Width of hour arrow [%]"
++msgstr "Largeur des aiguilles Hr [%]"
++
++msgid "Length of min arrow [%]"
++msgstr "Longueur aiguille Min [%]"
++
++msgid "Width of min arrow [%]"
++msgstr "Largeur des aiguilles Min [%]"
++
++msgid "Seconds arrow color"
++msgstr "Couleur aiguille Sec"
++
++msgid "Length of sec arrow [%]"
++msgstr "Longueur aiguille Sec [%]"
++
++msgid "Width of sec arrow [%]"
++msgstr "Largeur des aiguilles Sec [%]"
++
++msgid "Time till tea"
++msgstr "Temps restant jusqu'au cafe"
++
++msgid "Show Countdown"
++msgstr "Afficher le compte a rebours"
+diff -Naur clock-1.0.0.old/po/it_IT.po clock-1.0.0/po/it_IT.po
+--- clock-1.0.0.old/po/it_IT.po	1970-01-01 01:00:00.000000000 +0100
++++ clock-1.0.0/po/it_IT.po	2012-10-30 12:36:16.926722660 +0100
+@@ -0,0 +1,124 @@
++# VDR plugin language source file.
++# Copyright (C) 2007 Klaus Schmidinger <kls@tvdr.de>
++# This file is distributed under the same license as the VDR package.
++# Alberto Carraro <bertocar@tin.it>, 2001
++# Antonio Ospite <ospite@studenti.unina.it>, 2003
++# Sean Carlos <seanc@libero.it>, 2005
++#
++msgid ""
++msgstr ""
++"Project-Id-Version: VDR 1.7.27\n"
++"Report-Msgid-Bugs-To: <dev@erichseifert.de>\n"
++"POT-Creation-Date: 2012-10-30 13:00+0200\n"
++"PO-Revision-Date: 2012-10-30 13:00+0200\n"
++"Last-Translator: Sean Carlos <seanc@libero.it>\n"
++"Language-Team: <vdr@linuxtv.org>\n"
++"Language: \n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=ISO-8859-15\n"
++"Content-Transfer-Encoding: 8bit\n"
++
++msgid "A Simple Clock"
++msgstr ""
++
++msgid "Clock"
++msgstr "Orologio"
++
++msgid "Transparent"
++msgstr "Trasparente"
++
++msgid "White"
++msgstr "Bianco"
++
++msgid "Black"
++msgstr "Nero"
++
++msgid "Red"
++msgstr "Rosso"
++
++msgid "Green"
++msgstr "Verde"
++
++msgid "Yellow"
++msgstr "Giallo"
++
++msgid "Blue"
++msgstr "Blu"
++
++msgid "Digital"
++msgstr "Digitale"
++
++msgid "Analog"
++msgstr "Analogico"
++
++msgid "Analog modern"
++msgstr ""
++
++msgid "MorphOS"
++msgstr ""
++
++msgid "TuxClock"
++msgstr ""
++
++msgid "Internet time"
++msgstr "Ora Internet"
++
++msgid "Tea clock"
++msgstr "Pausa tè"
++
++msgid "It's tea time"
++msgstr "E' l'ora del tè!"
++
++msgid "x Position"
++msgstr "Posizione x"
++
++msgid "y Position"
++msgstr "Posizione y"
++
++msgid "Type of the clock"
++msgstr "Tipo di orologio"
++
++msgid "Background color"
++msgstr "Colore sfondo"
++
++msgid "Foreground color"
++msgstr "Colore primo piano"
++
++msgid "Show Seconds"
++msgstr "Mostra secondi"
++
++msgid "FullScreen"
++msgstr "Schermo intero"
++
++msgid "Analog clock size"
++msgstr "Dimensione orologio analogico"
++
++msgid "Arrow color"
++msgstr "Colore freccia"
++
++msgid "Length of hour arrow [%]"
++msgstr "Lunghezza freccia ore [%]"
++
++msgid "Width of hour arrow [%]"
++msgstr "Larghezza freccia ore [%]"
++
++msgid "Length of min arrow [%]"
++msgstr "Lunghezza freccia minuti [%]"
++
++msgid "Width of min arrow [%]"
++msgstr "Larghezza freccia minuti [%]"
++
++msgid "Seconds arrow color"
++msgstr "Colore freccia secondi"
++
++msgid "Length of sec arrow [%]"
++msgstr "Lunghezza freccia secondi [%]"
++
++msgid "Width of sec arrow [%]"
++msgstr "Larghezza freccia secondi [%]"
++
++msgid "Time till tea"
++msgstr "Tempo restante per il tè"
++
++msgid "Show Countdown"
++msgstr "Mostra conto alla rovescia"

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    GHDL is a shorthand for G Hardware Design Language (currently, G has no
+    meaning). It is a VHDL analyzer, compiler, simulator and (experimental)
+    synthesizer that can process (nearly) any VHDL design. Unlike some other
+    simulators, GHDL is a compiler: it directly translates a VHDL file to
+    machine code, without using an intermediary language such as C or C++.
+    Therefore, the compiled code should be faster and the analysis time should
+    be shorter than with a compiler using an intermediary language. GHDL can
+    use multiple back-ends, i.e. code generators, (GCC, LLVM or x86/i386 only,
+    a built-in one named mcode) and runs on GNU/Linux, Windows and macOS; on
+    x86, x86_64, armv6/armv7/aarch32/aarch64, ppc64, etc. GHDL aims at
+    implementing VHDL as defined by IEEE 1076. It supports the 1987, 1993 and
+    2002 revisions and, partially, 2008 and 2019. Property Specification
+    Language (PSL) is also partially supported.
+  </longdescription>
+  <use>
+    <flag name="llvm">Build LLVM code generator</flag>
+  </use>
+  <upstream>
+    <bugs-to>https://github.com/ghdl/ghdl/issues/</bugs-to>
+    <remote-id type="github">ghdl/ghdl</remote-id>
+  </upstream>
+</pkgmetadata>

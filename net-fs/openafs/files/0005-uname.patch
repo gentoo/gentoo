@@ -1,0 +1,37 @@
+From 5379cb53e1486674bd6f51c5771143a5806f770b Mon Sep 17 00:00:00 2001
+From: Andrew Savchenko <bircoph@gmail.com>
+Date: Tue, 1 Jan 2019 10:25:47 +0300
+Subject: [PATCH 05/13] uname
+
+(cherry picked from commit 020c6c42bf001b53f054cafbde739a71d4f07508)
+(cherry picked from commit 99d126271f3302e84252a980639f9e6f39ef8208)
+(cherry picked from commit 14bed4c153e5cbc551587a6de76a453be2e6d9d1)
+---
+ src/cf/sysname.m4 | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/cf/sysname.m4 b/src/cf/sysname.m4
+index aa4ad2cb4287..2991097d0337 100644
+--- a/src/cf/sysname.m4
++++ b/src/cf/sysname.m4
+@@ -270,7 +270,7 @@ else
+                         AFS_SYSNAME="ia64_linuxXX"
+                         ;;
+                 powerpc-*-linux*)
+-                        AFS_SYSNAME="`/bin/arch`_linuxXX"
++                        AFS_SYSNAME="`uname -m`_linuxXX"
+                         ;;
+                 powerpc64-*-linux*)
+                         AFS_SYSNAME="ppc64_linuxXX"
+@@ -288,7 +288,7 @@ else
+                         AFS_SYSNAME="s390x_linuxXX"
+                         ;;
+                 sparc-*-linux*)
+-                        AFS_SYSNAME="`/bin/arch`_linuxXX"
++                        AFS_SYSNAME="`uname -m`_linuxXX"
+                         ;;
+                 sparc64-*-linux*)
+                         AFS_SYSNAME="sparc64_linuxXX"
+-- 
+2.45.2
+

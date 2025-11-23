@@ -1,0 +1,12 @@
+# Config for irtrans-server
+
+# Controls which information is logged. Standard is loglevel 1.
+# Possible values are 0-4. 0=Nothing is logged. 4=debug output.
+LOGLEVEL="1"
+
+# Starts the irserver as a LINUX Service.
+# run '/usr/bin/irtrans --help' for all Parameters 
+OPT="-daemon"
+
+# LINUX Devices: /dev/ttyS0 - /dev/ttySn or /dev/ttyUSB0 - /dev/ttyUSBn for USB devices
+IRDEVICE="/dev/ttyUSB0"

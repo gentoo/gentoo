@@ -1,0 +1,53 @@
+--- a/base/newspost.c
++++ b/base/newspost.c
+@@ -342,7 +342,7 @@
+ 	file = fopen(filename, "r");
+ 	if (file != NULL) {
+ 		while (!feof(file)) {
+-			line = getline(line, file);
++			line = get_line(line, file);
+ 			if(line == NULL){
+ 				text_buffer = buff_add(text_buffer, "\r\n");
+ 				continue;
+--- a/base/utils.c
++++ b/base/utils.c
+@@ -43,7 +43,7 @@
+ 	return NULL;
+ }
+ 
+-Buff * getline(Buff *buff, FILE *file){
++Buff * get_line(Buff *buff, FILE *file){
+ 	int c = fgetc(file);
+ 	buff = buff_free(buff);
+ 	while(TRUE){
+--- a/base/utils.h
++++ b/base/utils.h
+@@ -26,7 +26,7 @@
+ file_entry * file_entry_alloc();
+ file_entry * file_entry_free(file_entry *fe);
+ 
+-Buff * getline(Buff *buff, FILE *file);
++Buff * get_line(Buff *buff, FILE *file);
+ Buff *buff_add(Buff *buff, char *data, ... );
+ Buff * buff_free(Buff *buff);
+ Buff *buff_create(Buff *buff, char *data, ... );
+--- a/ui/options.c
++++ b/ui/options.c
+@@ -332,7 +332,7 @@
+ 		file = fopen(filename->data, "r");
+ 		if (file != NULL) {
+ 			while (!feof(file)) {
+-				line = getline(line, file);
++				line = get_line(line, file);
+ 				linenum++;
+ 				if(line == NULL) continue;
+ 
+@@ -429,7 +429,7 @@
+ 				linenum = 0;
+ 				while (linenum < 8) {
+ 					linenum++;
+-					line = getline(line, file);
++					line = get_line(line, file);
+ 					if(line == NULL) continue;
+ 
+ 					switch (linenum) {

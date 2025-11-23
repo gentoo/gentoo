@@ -1,0 +1,30 @@
+Use correct paths in update-etherncodes.sh
+Bug: https://bugs.gentoo.org/783195
+
+--- a/update-ethercodes.sh.in
++++ b/update-ethercodes.sh.in
+@@ -6,22 +6,19 @@
+ 
+ prog="`basename $0`"
+ 
+-PATH=/usr/local/bin:${PATH}
+-export PATH
+-
+ t1=/tmp/${prog}.1.$$
+ 
+ trap 'rm -f ${t1}; exit 1' 1 2 3 15 EXIT
+ 
+ if [ ! -f arp.dat ]; then
+-	cd /usr/local/arpwatch || exit 1
++	cd @datarootdir@/arpwatch || exit 1
+ fi
+ 
+ fn=ethercodes.dat
+ url=https://standards-oui.ieee.org/oui/oui.csv
+ 
+ cmd1="curl --no-progress-meter ${url}"
+-cmd2=./massagevendor
++cmd2=@sbindir@/massagevendor.py
+ 
+ # Emit exit status of first command in pipe
+ # https://unix.stackexchange.com/a/70675

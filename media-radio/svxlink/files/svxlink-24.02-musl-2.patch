@@ -1,0 +1,12 @@
+diff --git a/src/svxlink/trx/DtmfDecoderTest.cpp b/src/svxlink/trx/DtmfDecoderTest.cpp
+index 7c298d5..7fe9242 100644
+--- a/src/svxlink/trx/DtmfDecoderTest.cpp
++++ b/src/svxlink/trx/DtmfDecoderTest.cpp
+@@ -2,6 +2,7 @@
+ #include <string>
+ #include <fstream>
+ #include <cstdlib>
++#include <cstdint>
+ #include <cmath>
+ 
+ #include <AsyncConfig.h>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>me@rahil.rocks</email>
+    <name>Rahil Bhimjiani</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>grobian@gentoo.org</email>
+    <name>Fabian Groffen</name>
+  </maintainer>
+  <stabilize-allarches/>
+  <upstream>
+    <remote-id type="github">dani-garcia/bw_web_builds</remote-id>
+    <bugs-to>https://github.com/dani-garcia/bw_web_builds/issues</bugs-to>
+    <doc>https://github.com/dani-garcia/bw_web_builds/blob/master/README.md</doc>
+  </upstream>
+</pkgmetadata>

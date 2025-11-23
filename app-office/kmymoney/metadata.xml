@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=kmymoney</bugs-to>
+		<remote-id type="kde-invent">office/kmymoney</remote-id>
+	</upstream>
+	<use>
+		<flag name="activities">Enable <pkg>kde-plasma/plasma-activities</pkg> integration</flag>
+		<flag name="hbci">Enable HBCI support using <pkg>net-libs/aqbanking</pkg></flag>
+		<flag name="holidays">Enable <pkg>kde-frameworks/kholidays</pkg> integration</flag>
+		<flag name="sql">Enable storage of financial data in SQL Db via <pkg>dev-qt/qtsql</pkg></flag>
+		<flag name="sqlcipher">Enable SQLite3 database encryption support via <pkg>dev-db/sqlcipher</pkg></flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>ml@gentoo.org</email>
+    <name>ML</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription>
+    psmt2-frontend is an OCaml library to parse and type-check a conservative
+    extension of the SMT-LIB 2 standard with prenex polymorphism.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/ACoquereau/psmt2-frontend/issues/</bugs-to>
+    <remote-id type="github">ACoquereau/psmt2-frontend</remote-id>
+  </upstream>
+</pkgmetadata>

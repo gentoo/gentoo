@@ -1,0 +1,54 @@
+From 393604963bcfd51b8bc2282fb86c0274abcea89f Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Mon, 22 Feb 2021 11:08:39 -0700
+Subject: [PATCH 01/13] autoconf: use AC_CHECK_TOOL for as and ld
+
+Some platforms use the GNU target triplet as a prefix to the toolchain
+utilities (e.g. x86_64-pc-linux-gnu-as) to allow the use of alternative
+toolchains, cross-compiling, etc.
+
+The Gentoo Linux distribution has a mode of building packages
+(-native-symlinks) where the toolchain utilities only exist as their
+prefixed names (e.g. 'as' does not exist, but 'x86_64_pc-linux-gnu-as'
+does). This results in configure failing to locate the tools when using
+AC_CHECK_PROGS.  (Gentoo uses the --host and --build configure
+parameters to specify the prefix names for the tools).
+
+Replace AC_CHECK_PROGS with AC_CHECK_TOOL for the toolchain related
+commands 'as' and 'ld'.
+
+AC_CHECK_TOOL works like AC_CHECK_PROGS but it will also look for
+the program with a prefix (specified by using configure's --host
+parameter).
+
+Note: libtool.m4 runs AC_CHECK_TOOL for ar.
+
+Change-Id: I8005c765d213b7d1d6292a7dd80f10a3d0e2ec68
+Reviewed-on: https://gerrit.openafs.org/14544
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 268025f841f1a2bd16b802459a8b590939331bcd)
+---
+ src/cf/osconf.m4 | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/cf/osconf.m4 b/src/cf/osconf.m4
+index 843998542e85..aee81cfdb274 100644
+--- a/src/cf/osconf.m4
++++ b/src/cf/osconf.m4
+@@ -25,10 +25,10 @@ PAM_OPTMZ=
+ 
+ dnl standard programs
+ AC_PROG_RANLIB
+-AC_CHECK_PROGS(AS, as, [false])
++AC_CHECK_TOOL(AS, as, [false])
+ AC_CHECK_PROGS(MV, mv, [false])
+ AC_CHECK_PROGS(RM, rm, [false])
+-AC_CHECK_PROGS(LD, ld, [false])
++AC_CHECK_TOOL(LD, ld, [false])
+ AC_CHECK_PROGS(CP, cp, [false])
+ AC_CHECK_PROGS(GENCAT, gencat, [false])
+ 
+-- 
+2.45.2
+

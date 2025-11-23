@@ -1,0 +1,31 @@
+#!/sbin/openrc-run
+# Copyright 1999-2007 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+checkconfig() {
+	sysrqd_secret=/etc/sysrqd/sysrqd.secret
+	sysrqd_pidfile=/var/run/sysrqd.pid
+	if [ ! -e ${sysrqd_secret} ]; then
+		eerror "You need a '${sysrqd_secret}' containing a secret/password!"
+		eerror "Refusing to start."
+		return 1
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --pidfile ${sysrqd_pidfile} --quiet --exec /usr/sbin/sysrqd
+	eend $?
+}
+
+stop() {
+	checkconfig || return 1
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --quiet --pidfile ${sysrqd_pidfile}
+	eend $?
+}

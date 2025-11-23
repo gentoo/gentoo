@@ -1,0 +1,175 @@
+Struct wanted (void)() function pointers. GCC-15 says no.
+We compromised on (void)(const char*) and giving no argument to functions
+that take no argument. Hopefully, when someone upstream adds
+a function with num_args > 1, it would be a problem of upstream
+https://bugs.gentoo.org/949574
+--- a/include/libproto.h
++++ b/include/libproto.h
+@@ -64,7 +64,7 @@
+ extern int64_t new_exp(const object *ob);
+ extern int has_ability(const object *ob);
+ extern void init_experience(void);
+-extern void dump_experience(void);
++extern void dump_experience(const char* v);
+ extern void free_experience(void);
+ /* friend.c */
+ extern void add_friendly_object(object *op);
+--- a/include/sproto.h
++++ b/include/sproto.h
+@@ -458,7 +458,7 @@
+ void quest_set_player_state(player *pl, sstring quest_code, int state);
+ int quest_was_completed(player *pl, sstring quest_code);
+ void command_quest(object *op, const char *params);
+-void dump_quests(void);
++void dump_quests(const char* v);
+ void free_quest(void);
+ void free_quest_definitions(void);
+ void quest_send_initial_states(player *pl);
+--- a/server/init.c
++++ b/server/init.c
+@@ -33,7 +33,7 @@
+ #include "server.h"
+ #include "sproto.h"
+ 
+-static void help(void);
++static void help(const char* v);
+ static void init_beforeplay(void);
+ static void init_startup(void);
+ static void init_signals(void);
+@@ -46,73 +46,73 @@
+  * Command line option: set logfile name.
+  * @param val new name.
+  */
+-static void set_logfile(char *val) {
++static void set_logfile(const char *val) {
+     settings.logfilename = val;
+ }
+ 
+ /** Command line option: show version. */
+-static void call_version(void) {
++static void call_version(const char* v) {
+     puts(FULL_VERSION);
+     exit(EXIT_SUCCESS);
+ }
+ 
+ /** Command line option: debug flag. */
+-static void set_debug(void) {
++static void set_debug(const char* v) {
+     settings.debug = llevDebug;
+ }
+ 
+ /** Command line option: unset debug flag. */
+-static void unset_debug(void) {
++static void unset_debug(const char* v) {
+     settings.debug = llevInfo;
+ }
+ 
+ /** Command line option: monster debug flag. */
+-static void set_mondebug(void) {
++static void set_mondebug(const char* v) {
+     settings.debug = llevMonster;
+ }
+ 
+ /** Command line option: dump monsters. */
+-static void set_dumpmon1(void) {
++static void set_dumpmon1(const char* v) {
+     settings.dumpvalues = 1;
+ }
+ 
+ /** Command line option: dump abilities. */
+-static void set_dumpmon2(void) {
++static void set_dumpmon2(const char* v) {
+     settings.dumpvalues = 2;
+ }
+ 
+ /** Command line option: dump artifacts. */
+-static void set_dumpmon3(void) {
++static void set_dumpmon3(const char* v) {
+     settings.dumpvalues = 3;
+ }
+ 
+ /** Command line option: dump spells. */
+-static void set_dumpmon4(void) {
++static void set_dumpmon4(const char* v) {
+     settings.dumpvalues = 4;
+ }
+ 
+ /** Command line option: ? */
+-static void set_dumpmon5(void) {
++static void set_dumpmon5(const char* v) {
+     settings.dumpvalues = 5;
+ }
+ 
+ /** Command line option: dump races. */
+-static void set_dumpmon6(void) {
++static void set_dumpmon6(const char* v) {
+     settings.dumpvalues = 6;
+ }
+ 
+ /** Command line option: dump alchemy. */
+-static void set_dumpmon7(void) {
++static void set_dumpmon7(const char* v) {
+     settings.dumpvalues = 7;
+ }
+ 
+ /** Command line option: dump gods. */
+-static void set_dumpmon8(void) {
++static void set_dumpmon8(const char* v) {
+     settings.dumpvalues = 8;
+ }
+ 
+ /** Command line option: dump alchemy costs. */
+-static void set_dumpmon9(void) {
++static void set_dumpmon9(const char* v) {
+     settings.dumpvalues = 9;
+ }
+ 
+@@ -246,7 +246,7 @@
+ /**
+  * Dump all animations, then exit.
+  */
+-static void server_dump_animations(void) {
++static void server_dump_animations(const char* v) {
+     dump_animations();
+     cleanup();
+ }
+@@ -267,7 +267,7 @@
+     const char *cmd_option; /**< How it is called on the command line. */
+     uint8_t num_args;         /**< Number or args it takes. */
+     uint8_t pass;             /**< What pass this should be processed on. @todo describe passes :) */
+-    void (*func)();         /**< function to call when we match this.
++    void (*func)(const char* v); /**< function to call when we match this.
+                              * if num_args is true, than that gets passed
+                              * to the function, otherwise nothing is passed
+                              */
+@@ -1056,7 +1056,7 @@
+ /**
+  * Display the command line options and exits.
+  */
+-static void help(void) {
++static void help(const char* v) {
+     printf("Usage: crossfire-server [options]\n\n");
+ 
+     printf("Options:\n");
+--- a/common/exp.c
++++ b/common/exp.c
+@@ -247,7 +247,7 @@
+  * Dump the experience table, then calls exit() - useful in terms of debugging to make sure the
+  * format of the exp_table is correct.
+  */
+-void dump_experience(void) {
++void dump_experience(const char* v) {
+     int i;
+ 
+     for (i = 1; i <= settings.max_level; i++) {
+--- a/server/quest.c
++++ b/server/quest.c
+@@ -1303,7 +1303,7 @@
+  * Dump all of the quests, then calls exit() - useful in terms of debugging to make sure that
+  * quests are set up and recognised correctly.
+  */
+-void dump_quests(void) {
++void dump_quests(const char* v) {
+     quest_load_definitions();
+     output_quests(NULL, 0);
+     exit(0);

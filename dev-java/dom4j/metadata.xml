@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+	<use>
+		<flag name="jaxen">Includes org.jaxen.dom4j package</flag>
+	</use>
+	<longdescription>
+		Easy to use, open source library for working with XML, XPath and
+		XSLT on the Java platform using the Java Collections Framework
+		and with full support for DOM, SAX and JAXP.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">dom4j/dom4j</remote-id>
+		<doc>https://github.com/dom4j/dom4j/wiki</doc>
+		<bugs-to>https://github.com/dom4j/dom4j/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

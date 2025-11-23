@@ -1,0 +1,44 @@
+If /usr/bin/cc exists then get_gcc() is always true on Linux (and many
+others), but will fail in the event it's missing (-native-symlinks).
+
+get_gcc_version does not execute gcc and merely sets defines, so
+call it without using get_gcc(). Validity of using NULL should be
+verified if there's ever a new version.
+--- a/imake.c
++++ b/imake.c
+@@ -1331,6 +1331,7 @@ get_gcc_version(FILE *inFile, char *name)
+ }
+ #endif
+ 
++#if defined CROSSCOMPILE
+ static boolean
+ get_gcc(char *cmd)
+ {
+@@ -1384,7 +1385,6 @@ get_gcc(char *cmd)
+     return FALSE;
+ }
+ 
+-#ifdef CROSSCOMPILE
+ static void
+ get_gcc_incdir(FILE *inFile, char* name)
+ {
+@@ -1630,14 +1630,16 @@ define_os_defaults(FILE *inFile)
+       if (gnu_c)
+ #  endif
+ 	{
++#  if defined CROSSCOMPILE
+ 	  char gcc_name[PATH_MAX];
+ 	  if (get_gcc(gcc_name)) {
+ 	      get_gcc_version (inFile, gcc_name);
+-#  if defined CROSSCOMPILE
+ 	      if (sys != emx)
+ 		  get_gcc_incdir(inFile, gcc_name);
+-#  endif
+ 	  }
++#  else
++	  get_gcc_version(inFile,NULL);
++#  endif
+ 	}
+ # endif
+ # if defined __FreeBSD__
+-- 

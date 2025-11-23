@@ -1,0 +1,26 @@
+# Note that this patch requires >=guile-3, so we apply it conditionally.
+# https://lists.gnu.org/archive/html/guile-devel/2024-05/msg00012.html
+#
+# Fix compile and test failures due to bitvector API change.
+# https://bugs.gentoo.org/877785
+--- a/src/math/primes.scm	2024-05-23 19:26:16.757865343 -0400
++++ b/src/math/primes.scm	2024-05-23 19:28:20.797358650 -0400
+@@ -114,7 +114,7 @@
+ 		      (set! prime:prime-sqr (* nexp nexp))
+ 		      (set! prime:sieve (make-bitvector nexp #f))
+ 		      (for-each (lambda (prime)
+-				  (bitvector-set! prime:sieve prime #t))
++				  (bitvector-set-bit! prime:sieve prime))
+ 				primes)
+ 		      (set! prime:products (reverse (cons comp comps))))
+ 		     (else
+@@ -132,7 +132,7 @@
+ There is a slight chance, @code{(expt 2 (- prime:trials))}, that a 
+ composite will return @code{#t}."
+   (set! n (abs n))
+-  (cond ((< n (bitvector-length prime:sieve)) (bitvector-ref prime:sieve n))
++  (cond ((< n (bitvector-length prime:sieve)) (bitvector-bit-set? prime:sieve n))
+ 	((even? n) #f)
+ 	((primes-gcd? n prime:products) #f)
+ 	((< n prime:prime-sqr) #t)
+

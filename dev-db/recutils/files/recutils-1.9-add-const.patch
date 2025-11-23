@@ -1,0 +1,14 @@
+Cast bash-generated argv from char ** to const char ** so it would be of the same
+type argv was declared
+https://bugs.gentoo.org/941542
+--- a/bash/testrec.c
++++ b/bash/testrec.c
+@@ -60,7 +60,7 @@
+ 
+   /* Get arguments and verify them.  */
+ 
+-  argv = make_builtin_argv (list, &argc);
++  argv = (const char**)make_builtin_argv (list, &argc);
+   if ((argc != 3)
+       || ((strcmp (argv[0], "[%") == 0) && ((strlen (argv[2]) == 2) && ((argv[2][0] != '%') || (argv[2][1] != ']')))))
+     {

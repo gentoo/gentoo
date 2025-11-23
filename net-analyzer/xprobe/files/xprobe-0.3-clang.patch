@@ -1,0 +1,16 @@
+Clang: ISO C++17 does not allow register storage class specifier
+https://bugs.gentoo.org/897838
+--- a/libs-external/USI++/src/misc.cc
++++ b/libs-external/USI++/src/misc.cc
+@@ -18,9 +18,9 @@
+ in_cksum (unsigned short *ptr, int nbytes, bool may_pad)
+ {
+ 
+-  register long sum;		/* assumes long == 32 bits */
++  long sum;		/* assumes long == 32 bits */
+   u_short oddbyte;
+-  register u_short answer;	/* assumes u_short == 16 bits */
++  u_short answer;	/* assumes u_short == 16 bits */
+ 
+ 
+   /* For psuedo-headers: odd len's require

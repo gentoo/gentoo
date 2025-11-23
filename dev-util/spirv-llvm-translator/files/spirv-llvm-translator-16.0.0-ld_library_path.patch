@@ -1,0 +1,63 @@
+From c2133b18cb48b9bb9c47897b16d64c5f0547cde6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Thu, 4 May 2023 08:44:25 +0200
+Subject: [PATCH] [test] Use LD_LIBRARY_PATH to ensure that a new lib is used
+ (#1989)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Add the library `BINARY_DIR` to `LD_LIBRARY_PATH` to ensure that
+the freshly built `libLLVMSPIRVLib.so` is tested.  Otherwise, llvm-spirv
+spawned by the test suite may use the previously installed
+`libLLVMSPIRVLib.so`.
+
+I have noticed the problem after rebuilding LLVM with
+`-DLLVM_ENABLE_ASSSERTIONS=ON`.  This meant that the previous version
+of `libLLVMSPIRVLib.so` now crashed, effectively causing the test suite
+to fail incorrectly.
+
+Signed-off-by: Michał Górny <mgorny@gentoo.org>
+---
+ test/CMakeLists.txt     | 1 +
+ test/lit.cfg.py         | 3 ++-
+ test/lit.site.cfg.py.in | 1 +
+ 3 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+index 235f6d0a0..355baffb8 100644
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -3,6 +3,7 @@ llvm_canonicalize_cmake_booleans(SPIRV_SKIP_DEBUG_INFO_TESTS)
+ 
+ # required by lit.site.cfg.py.in
+ get_target_property(LLVM_SPIRV_DIR llvm-spirv BINARY_DIR)
++get_target_property(LLVM_SPIRV_LIB_DIR LLVMSPIRVLib BINARY_DIR)
+ set(LLVM_SPIRV_TEST_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+ 
+ if(SPIRV_TOOLS_FOUND AND NOT SPIRV-Tools-tools_FOUND)
+diff --git a/test/lit.cfg.py b/test/lit.cfg.py
+index 4b66412c3..fd8d3f94c 100644
+--- a/test/lit.cfg.py
++++ b/test/lit.cfg.py
+@@ -76,6 +76,7 @@
+ else:
+     config.substitutions.append(('spirv-val', ':'))
+ 
++llvm_config.with_system_environment('LD_LIBRARY_PATH')
+ if using_spirv_tools:
+-    llvm_config.with_system_environment('LD_LIBRARY_PATH')
+     llvm_config.with_environment('LD_LIBRARY_PATH', config.spirv_tools_lib_dir, append_path=True)
++llvm_config.with_environment('LD_LIBRARY_PATH', config.llvm_spirv_lib_dir, append_path=True)
+diff --git a/test/lit.site.cfg.py.in b/test/lit.site.cfg.py.in
+index a01f2bb34..fdc4f4319 100644
+--- a/test/lit.site.cfg.py.in
++++ b/test/lit.site.cfg.py.in
+@@ -6,6 +6,7 @@ config.llvm_src_root = "@LLVM_SOURCE_DIR@"
+ config.llvm_obj_root = "@LLVM_BINARY_DIR@"
+ config.llvm_tools_dir = "@LLVM_TOOLS_DIR@"
+ config.llvm_spirv_dir = "@LLVM_SPIRV_DIR@"
++config.llvm_spirv_lib_dir = "@LLVM_SPIRV_LIB_DIR@"
+ config.llvm_libs_dir = "@LLVM_LIBS_DIR@"
+ config.llvm_shlib_dir = "@SHLIBDIR@"
+ config.llvm_plugin_ext = "@LLVM_PLUGIN_EXT@"

@@ -1,0 +1,15 @@
+--- a/Makefile	2003-07-12 03:04:24.000000000 -0400
++++ b/Makefile	2003-07-12 03:04:32.000000000 -0400
+@@ -32,11 +32,8 @@
+ 
+ # some shells are set 'noclobber', so force overwriting of the
+ # executable and installation
+-clean:
+-	\rm -f $(EXECUTABLE)
+-	\rm -f $(TKMOO_BIN_DIR)/$(EXECUTABLE)
+ 
+-executable: clean
++executable:
+ 	if [ ! -e $(WISH) ]; then \
+ 	    echo "***"; \
+ 	    echo "*** Can't find executable '$(WISH)', building anyway..."; \

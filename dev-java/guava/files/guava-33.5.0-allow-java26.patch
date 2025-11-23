@@ -1,0 +1,59 @@
+From 9a406e7f461c27d141eb765d7992e767ee13427f Mon Sep 17 00:00:00 2001
+From: Liam Miller-Cushon <cushon@google.com>
+Date: Thu, 25 Sep 2025 07:58:39 -0700
+Subject: [PATCH] Fix a compilation error caused by
+ https://bugs.openjdk.org/browse/JDK-8357219
+
+RELNOTES=n/a
+PiperOrigin-RevId: 811351810
+---
+ android/guava/src/com/google/common/primitives/Booleans.java | 5 +++--
+ guava/src/com/google/common/primitives/Booleans.java         | 5 +++--
+ 2 files changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/android/guava/src/com/google/common/primitives/Booleans.java b/android/guava/src/com/google/common/primitives/Booleans.java
+index dae0f3b028eb..38c0cbbdee67 100644
+--- a/android/guava/src/com/google/common/primitives/Booleans.java
++++ b/android/guava/src/com/google/common/primitives/Booleans.java
+@@ -18,7 +18,6 @@
+ import static com.google.common.base.Preconditions.checkElementIndex;
+ import static com.google.common.base.Preconditions.checkNotNull;
+ import static com.google.common.base.Preconditions.checkPositionIndexes;
+-import static java.lang.Math.min;
+ 
+ import com.google.common.annotations.GwtCompatible;
+ import com.google.common.annotations.GwtIncompatible;
+@@ -321,7 +320,9 @@ private enum LexicographicalComparator implements Comparator<boolean[]> {
+ 
+     @Override
+     public int compare(boolean[] left, boolean[] right) {
+-      int minLength = min(left.length, right.length);
++      // do not static import Math.min due to https://bugs.openjdk.org/browse/JDK-8357219
++      @SuppressWarnings("StaticImportPreferred")
++      int minLength = Math.min(left.length, right.length);
+       for (int i = 0; i < minLength; i++) {
+         int result = Boolean.compare(left[i], right[i]);
+         if (result != 0) {
+diff --git a/guava/src/com/google/common/primitives/Booleans.java b/guava/src/com/google/common/primitives/Booleans.java
+index dae0f3b028eb..38c0cbbdee67 100644
+--- a/guava/src/com/google/common/primitives/Booleans.java
++++ b/guava/src/com/google/common/primitives/Booleans.java
+@@ -18,7 +18,6 @@
+ import static com.google.common.base.Preconditions.checkElementIndex;
+ import static com.google.common.base.Preconditions.checkNotNull;
+ import static com.google.common.base.Preconditions.checkPositionIndexes;
+-import static java.lang.Math.min;
+ 
+ import com.google.common.annotations.GwtCompatible;
+ import com.google.common.annotations.GwtIncompatible;
+@@ -321,7 +320,9 @@ private enum LexicographicalComparator implements Comparator<boolean[]> {
+ 
+     @Override
+     public int compare(boolean[] left, boolean[] right) {
+-      int minLength = min(left.length, right.length);
++      // do not static import Math.min due to https://bugs.openjdk.org/browse/JDK-8357219
++      @SuppressWarnings("StaticImportPreferred")
++      int minLength = Math.min(left.length, right.length);
+       for (int i = 0; i < minLength; i++) {
+         int result = Boolean.compare(left[i], right[i]);
+         if (result != 0) {

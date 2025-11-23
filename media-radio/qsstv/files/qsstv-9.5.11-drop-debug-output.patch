@@ -1,0 +1,31 @@
+From ed933c456ed859bb82a617f46c3f5fc7b740137c Mon Sep 17 00:00:00 2001
+From: Thomas Beierlein <tomjbe@gentoo.org>
+Date: Mon, 15 Sep 2025 07:11:34 +0200
+Subject: [PATCH] Drop annoying debug output
+
+Each polling of hamlib frequendy is surrounded by a 'getFreq' and a 'got
+Freq' output on command line.
+If needed it should be done by the general logging facility.
+---
+ src/rig/rigcontrol.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/rig/rigcontrol.cpp b/rig/rigcontrol.cpp
+index c006eec..0e41205 100644
+--- a/rig/rigcontrol.cpp
++++ b/rig/rigcontrol.cpp
+@@ -152,9 +152,9 @@ bool rigControl::getFrequency(double &frequency)
+   retcode = rig_get_freq(my_rig, RIG_VFO_CURR, &frequency);
+   for(int i=0;i<RIGCMDTRIES;i++)
+     {
+-      qDebug() << "getFreq";
++//      qDebug() << "getFreq";
+       retcode = rig_get_freq(my_rig, RIG_VFO_CURR, &frequency);
+-      qDebug() << "got Freq";
++//      qDebug() << "got Freq";
+       if (retcode==RIG_OK)
+         {
+           return true;
+-- 
+2.49.1
+

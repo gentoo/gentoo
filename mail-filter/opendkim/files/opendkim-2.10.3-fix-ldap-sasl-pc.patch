@@ -1,0 +1,69 @@
+From f203e0a001468cd30a0a3b780c90f0f90cdc35b8 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sat, 2 Dec 2023 18:44:20 -0500
+Subject: [PATCH 1/2] configure.ac: update OpenLDAP's pkgconfig name
+
+OpenLDAP provides the file ldap.pc for its libldap library. This can
+be verified via libraries/libldap/ldap.pc.in in the repository,
+
+  https://git.openldap.org/openldap/openldap/-/blob/master/
+
+Our ./configure script checks instead for the name "openldap", which
+at some point may have been correct, but no longer works. We switch to
+"ldap" so that we can locate the upstream file.
+
+On some platforms (https://bugs.gentoo.org/918512) this will fix a
+linking error. Thanks to Chris Pritchard for the report and the
+diagnosis.
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 1eaa95d8..b8353077 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1800,7 +1800,7 @@ OPENLDAP_LIBS=""
+ if test \( x"$ldappath" = x"auto" -o x"$ldappath" = x"yes" \) -a \
+ 	x"$PKG_CONFIG" != x""
+ then
+-        PKG_CHECK_MODULES([OPENLDAP], [openldap >= 2.0.0],
++        PKG_CHECK_MODULES([OPENLDAP], [ldap >= 2.0.0],
+ 	[
+ 		ldap_found="yes"
+ 		OPENLDAP_CPPFLAGS="$OPENLDAP_CFLAGS"
+
+From 12b1403eea40f3df59ef130a28164f16d08053fc Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sat, 2 Dec 2023 18:52:09 -0500
+Subject: [PATCH 2/2] configure.ac: update Cyrus SASL's pkgconfig name
+
+Cyrus SASL provides the file libsasl2.pc for its libsasl2
+library. This can be verified in its git repository:
+
+  https://github.com/cyrusimap/cyrus-sasl/blob/master/libsasl2.pc.in
+
+Our ./configure script checks instead for the name "cyrussasl", which
+at some point may have been correct, but no longer works. We switch to
+"libsasl2" so that we can locate the upstream file.
+
+On some platforms (https://bugs.gentoo.org/918512) this will fix a
+linking error. Thanks to Chris Pritchard for the report and the
+diagnosis.
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index b8353077..071e8511 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1890,7 +1890,7 @@ sasl_found="no"
+ if test \( x"$saslpath" = x"auto" -o x"$saslpath" = x"yes" \) -a \
+ 	x"$PKG_CONFIG" != x""
+ then
+-        PKG_CHECK_MODULES([SASL], [cyrussasl >= 2.1.0],
++        PKG_CHECK_MODULES([SASL], [libsasl2 >= 2.1.0],
+ 	[
+ 		sasl_found="yes"
+ 		SASL_CPPFLAGS="$SASL_CFLAGS"

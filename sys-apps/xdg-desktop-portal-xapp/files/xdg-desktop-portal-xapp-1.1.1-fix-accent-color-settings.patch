@@ -1,0 +1,24 @@
+From 326aadd4972d62a3ebccb93ad5c028977ce4ac95 Mon Sep 17 00:00:00 2001
+From: Michael Webster <miketwebster@gmail.com>
+Date: Wed, 21 May 2025 14:58:32 -0400
+Subject: [PATCH] settings.c: Fix ACCENT_COLOR_DEF.
+
+This was keeping settings from being accessed when switching
+to an unsupported gtk theme.
+---
+ src/settings.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/settings.c b/src/settings.c
+index f09e498..f57efa5 100644
+--- a/src/settings.c
++++ b/src/settings.c
+@@ -88,7 +88,7 @@ static const SettingDefinition setting_defs[] = {
+     { "org.freedesktop.appearance", "color-scheme", XAPP_PORTAL_INTERFACE_SCHEMA,   "color-scheme",     get_color_scheme },
+     { "org.freedesktop.appearance", "accent-color", XAPP_PORTAL_INTERFACE_SCHEMA,   "accent-rgb",       get_accent_color }
+ };
+-#define ACCENT_COLOR_DEF 3
++#define ACCENT_COLOR_DEF 2
+ 
+ static gboolean
+ namespace_matches (const char         *namespace,

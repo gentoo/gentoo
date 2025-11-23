@@ -1,0 +1,76 @@
+# Copyright 2022-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# WANG Xuerui <xen0n@gentoo.org> (2025-01-24)
+# dev-util/sysprof-capture is keyworded on loong
+-sysprof
+
+# WANG Xuerui <xen0n@gentoo.org> (2025-01-12)
+# net-misc/dropbox is closed-source and unavailable on loong
+dropbox
+
+# Sam James <sam@gentoo.org> (2025-01-10)
+# Older targets don't have an old enough dev-lang/ada-bootstrap available
+ada_target_gcc_12
+ada_target_gcc_13
+
+# Michał Górny <mgorny@gentoo.org> (2024-02-05)
+# LLVM slots without keywords.
+llvm_slot_15
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
+# media-libs/xine-lib not tested
+xine
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
+# Respective dependency fails to build, pending investigation, mask for the
+# time being
+chromaprint
+mongodb
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
+# Lack of testing
+vtk
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-12-03)
+# sys-cluster/ceph is not keyworded yet.
+ceph
+rbd
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-12-01)
+# app-emulation/xen has arch-specific code, hence not available for loong yet.
+xen
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-11-28)
+# media-sound/nas currently not buildable due to x11-misc/xorg-cf-files
+# lacking arch-specific adaptation
+nas
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-11-01)
+# qtwebengine isn't available on loong yet
+pdfium
+webengine
+
+# Unmask the flag which corresponds to ARCH.
+-loong
+
+# Things we actually can support
+-input_devices_synaptics
+-video_cards_ast
+-video_cards_qxl
+
+# Things without support yet
+java
+luajittex
+lua_single_target_luajit
+lua_targets_luajit
+mono
+ocamlopt
+valgrind
+
+# Temporarily masked during initial keywording
+doc
+fam
+mpi
+tpm
+xemacs

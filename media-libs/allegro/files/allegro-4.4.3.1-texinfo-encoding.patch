@@ -1,0 +1,19 @@
+From 7694155b74a4be1dedc9d13db6d9d2264d05f107 Mon Sep 17 00:00:00 2001
+From: Vitezslav Crhonek <vcrhonek@redhat.com>
+Date: Mon, 4 Nov 2019 12:07:16 +0100
+Subject: [PATCH] Fix FTBFS
+
+@documentencoding needed when generating documentation from
+non UTF-8 encoding source with texinfo-6.7 (rhbz#1767827)
+
+diff -up allegro-4.4.3/docs/src/allegro._tx.orig allegro-4.4.3/docs/src/allegro._tx
+--- allegro-4.4.3/docs/src/allegro._tx.orig	2019-02-02 20:28:46.000000000 +0100
++++ allegro-4.4.3/docs/src/allegro._tx	2019-11-04 11:12:39.352699777 +0100
+@@ -23,6 +23,7 @@
+ @man_shortdesc_force1=allegro
+ @man_shortdesc_force2=Allegro game programming library.
+ @$\input texinfo
++@$@documentencoding ISO-8859-1
+ @$@setfilename allegro.inf
+ @$@settitle Allegro Manual
+ @$@setchapternewpage odd

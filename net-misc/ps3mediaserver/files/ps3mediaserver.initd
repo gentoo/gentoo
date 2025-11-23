@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/ps3mediaserver"
+command_args="console"
+pidfile="${PMS_PIDFILE:-/var/run/ps3mediaserver.pid}"
+retry="10"
+start_stop_daemon_args="
+	--background
+	--make-pidfile
+	${PMS_USER:+--user} ${PMS_USER}
+	${PMS_GROUP:+--group} ${PMS_GROUP}
+"
+
+depend() {
+	need net
+}

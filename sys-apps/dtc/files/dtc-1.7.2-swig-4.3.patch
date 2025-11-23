@@ -1,0 +1,89 @@
+https://git.kernel.org/pub/scm/utils/dtc/dtc.git/commit/?id=9a969f3b70b07bbf1c9df44a38d7f8d1d3a6e2a5
+
+From 9a969f3b70b07bbf1c9df44a38d7f8d1d3a6e2a5 Mon Sep 17 00:00:00 2001
+From: Brandon Maier <brandon.maier@gmail.com>
+Date: Sun, 24 Nov 2024 15:48:04 -0600
+Subject: pylibfdt/libfdt.i: fix backwards compatibility of return values
+
+When our Python functions wrap `fdt_getprop()` they return a list
+containing `[*data, length]`.
+
+In SWIG v4.2 and earlier SWIG would discard `*data` if it is NULL/None.
+Causing the return value to just be `length`.
+
+But starting in SWIG v4.3 it no longer discards `*data`. So the return
+value is now `[None, length]`.
+
+Handle this compatibility issue in libfdt.i by checking if the return
+value looks like the older 4.2 return value, and casting it to the newer
+style.
+
+See https://github.com/swig/swig/pull/2907
+
+Signed-off-by: Brandon Maier <brandon.maier@gmail.com>
+Signed-off-by: David Gibson <david@gibson.dropbear.id.au>
+---
+ pylibfdt/libfdt.i | 25 ++++++++++++++-----------
+ 1 file changed, 14 insertions(+), 11 deletions(-)
+
+diff --git a/pylibfdt/libfdt.i b/pylibfdt/libfdt.i
+index 9f5b6a9..bb9985c 100644
+--- a/pylibfdt/libfdt.i
++++ b/pylibfdt/libfdt.i
+@@ -114,11 +114,14 @@ def check_err_null(val, quiet=()):
+         FdtException if val indicates an error was reported and the error
+         is not in @quiet.
+     """
+-    # Normally a list is returned which contains the data and its length.
+-    # If we get just an integer error code, it means the function failed.
++    # Compatibility for SWIG v4.2 and earlier. SWIG 4.2 would drop the first
++    # item from the list if it was None, returning only the second item.
+     if not isinstance(val, list):
+-        if -val not in quiet:
+-            raise FdtException(val)
++        val = [None, val]
++
++    if val[0] is None:
++        if -val[1] not in quiet:
++            raise FdtException(val[1])
+     return val
+ 
+ class FdtRo(object):
+@@ -395,8 +398,8 @@ class FdtRo(object):
+         """
+         pdata = check_err_null(
+                 fdt_get_property_by_offset(self._fdt, prop_offset), quiet)
+-        if isinstance(pdata, (int)):
+-            return pdata
++        if pdata[0] is None:
++            return pdata[1]
+         return Property(pdata[0], pdata[1])
+ 
+     def getprop(self, nodeoffset, prop_name, quiet=()):
+@@ -417,8 +420,8 @@ class FdtRo(object):
+         """
+         pdata = check_err_null(fdt_getprop(self._fdt, nodeoffset, prop_name),
+                                quiet)
+-        if isinstance(pdata, (int)):
+-            return pdata
++        if pdata[0] is None:
++            return pdata[1]
+         return Property(prop_name, bytearray(pdata[0]))
+ 
+     def hasprop(self, nodeoffset, prop_name, quiet=()):
+@@ -444,10 +447,10 @@ class FdtRo(object):
+         """
+         pdata = check_err_null(fdt_getprop(self._fdt, nodeoffset, prop_name),
+                                quiet + (NOTFOUND,))
+-        if isinstance(pdata, (int)):
+-            if pdata == -NOTFOUND:
++        if pdata[0] is None:
++            if pdata[1] == -NOTFOUND:
+                 return False
+-            return pdata
++            return pdata[1]
+         return True
+ 
+     def get_phandle(self, nodeoffset):
+-- 
+cgit 1.2.3-korg

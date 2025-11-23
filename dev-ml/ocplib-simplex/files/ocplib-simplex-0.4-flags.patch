@@ -1,0 +1,48 @@
+--- a/Makefile.in	2020-06-13 22:27:11.971906805 +0200
++++ b/Makefile.in	2020-06-13 22:28:14.193938195 +0200
+@@ -73,19 +73,19 @@
+ opt: src/$(LIBNAME).cma src/$(LIBNAME).cmxa  src/$(LIBNAME).cmxs
+ 
+ src/$(LIBNAME).cma: src/$(LIBNAME).cmo
+-	$(OCAMLC) -a $(BFLAGS_LIGHT) -o $@ $^
++	$(OCAMLC) -a $(BFLAGS_LIGHT) -ccopt "$(CFLAGS)" -o $@ $^
+ 
+ src/$(LIBNAME).cmxa: src/$(LIBNAME).cmx
+-	$(OCAMLOPT) -a $(OFLAGS_LIGHT) -o $@ $^
++	$(OCAMLOPT) -a $(OFLAGS_LIGHT) -ccopt "$(CFLAGS)" -o $@ $^
+ 
+ src/$(LIBNAME).cmxs: src/$(LIBNAME).cmx
+-	$(OCAMLOPT) -shared $(OFLAGS_LIGHT) -o $@ $^
++	$(OCAMLOPT) -shared $(OFLAGS_LIGHT) -ccopt "$(CFLAGS)" -cclib "$(LDFLAGS)" -o $@ $^
+ 
+ src/$(LIBNAME).cmo: $(CMO) # src/$(LIBNAME).cmi
+-	$(OCAMLC)   $(BFLAGS_LIGHT) -pack -o src/$(LIBNAME).cmo $^
++	$(OCAMLC)   $(BFLAGS_LIGHT) -ccopt "$(CFLAGS)" -pack -o src/$(LIBNAME).cmo $^
+ 
+ src/$(LIBNAME).cmx: $(CMX) # src/$(LIBNAME).cmi
+-	$(OCAMLOPT) $(OFLAGS_LIGHT) -pack -o src/$(LIBNAME).cmx $^
++	$(OCAMLOPT) $(OFLAGS_LIGHT) -pack -ccopt "$(CFLAGS)" -o src/$(LIBNAME).cmx $^
+ 
+ src/extSigs.ml: src/extSigs.mli
+ 	cp src/extSigs.mli src/extSigs.ml
+@@ -125,16 +125,16 @@
+ .SUFFIXES: .mli .ml .cmi .cmo .cmx .mll .mly .tex .dvi .ps .html
+ 
+ .mli.cmi:
+-	$(OCAMLC) -c $(BFLAGS) $<
++	$(OCAMLC) -c $(BFLAGS) -ccopt "$(CFLAGS)" $<
+ 
+ .ml.cmo:
+-	$(OCAMLC) -c $(BFLAGS) $<
++	$(OCAMLC) -c $(BFLAGS) -ccopt "$(CFLAGS)" $<
+ 
+ .ml.o:
+-	$(OCAMLOPT) -c $(OFLAGS) $<
++	$(OCAMLOPT) -c $(OFLAGS) -ccopt "$(CFLAGS)" $<
+ 
+ .ml.cmx:
+-	$(OCAMLOPT) -c $(OFLAGS) $<
++	$(OCAMLOPT) -c $(OFLAGS) -ccopt "$(CFLAGS)" $<
+ 
+ .mll.ml:
+ 	$(OCAMLLEX) $< > /dev/null

@@ -1,0 +1,59 @@
+Respect CC, *FLAGS.  Add datarootdir for autoconf-2.60 warnings.
+
+--- ftjam-2.5.3rc2-orig/builds/unix/Makefile.in
++++ ftjam-2.5.3rc2/builds/unix/Makefile.in
+@@ -37,6 +37,7 @@ exec_prefix  := @exec_prefix@
+ libdir       := @libdir@
+ bindir       := @bindir@
+ includedir   := @includedir@
++datarootdir  := @datarootdir@
+ datadir      := @datadir@
+ 
+ version_info := @version_info@
+--- ftjam-2.5.3rc2-orig/jambase.c
++++ ftjam-2.5.3rc2/jambase.c
+@@ -652,21 +652,21 @@ const char *jambase[] = {
+ "\n",
+ "AR      ?= ar ru ;\n",
+ "AS      ?= as ;\n",
+-"ASFLAGS     ?= ;\n",
++"ASFLAGS     += $(ASFLAGS) ;\n",
+ "AWK     ?= awk ;\n",
+ "BINDIR      ?= /usr/local/bin ;\n",
+-"C++     ?= cc ;\n",
+-"C++FLAGS    ?= ;\n",
+-"CC      ?= cc ;\n",
+-"CCFLAGS     ?= ;\n",
++"C++     ?= $(CXX) ;\n",
++"C++FLAGS    += $(CXXFLAGS) ;\n",
++"CC      ?= $(CC) ;\n",
++"CCFLAGS     += $(CFLAGS) ;\n",
+ "CP      ?= cp -f ;\n",
+ "CRELIB      ?= ;\n",
+ "DOT     ?= . ;\n",
+ "DOTDOT      ?= .. ;\n",
+ "EXEMODE     ?= 711 ;\n",
+ "FILEMODE    ?= 644 ;\n",
+-"FORTRAN     ?= f77 ;\n",
+-"FORTRANFLAGS    ?= ;\n",
++"FORTRAN     ?= $(F77) ;\n",
++"FORTRANFLAGS    += $(FFLAGS) ;\n",
+ "HDRS        ?= ;\n",
+ "INSTALLGRIST    ?= installed ;\n",
+ "JAMFILE     ?= Jamfile ;\n",
+@@ -674,13 +674,13 @@ const char *jambase[] = {
+ "LEX     ?= ;\n",
+ "LIBDIR      ?= /usr/local/lib ;\n",
+ "LINK        ?= $(CC) ;\n",
+-"LINKFLAGS   ?= ;\n",
++"LINKFLAGS   += $(LDFLAGS) ;\n",
+ "LINKLIBS    ?= ;\n",
+ "LN      ?= ln ;\n",
+ "MANDIR      ?= /usr/local/man ;\n",
+ "MKDIR       ?= mkdir ;\n",
+ "MV      ?= mv -f ;\n",
+-"OPTIM       ?= ;\n",
++"OPTIM       = ;\n",
+ "RCP     ?= rcp ;\n",
+ "RM      ?= rm -f ;\n",
+ "RMDIR       ?= $(RM) ;\n",

@@ -1,0 +1,24 @@
+diff --git a/adm/cmake/vtk.cmake b/adm/cmake/vtk.cmake
+index 7d25a37..79257d1 100644
+--- a/adm/cmake/vtk.cmake
++++ b/adm/cmake/vtk.cmake
+@@ -60,7 +60,18 @@ if (3RDPARTY_VTK_DIR AND EXISTS "${3RDPARTY_VTK_DIR}")
+   set (ENV{VTK_DIR} "${3RDPARTY_VTK_DIR}")
+ endif()
+ 
+-find_package(VTK QUIET)
++find_package(VTK
++  COMPONENTS
++    CommonCore
++    FiltersGeneral
++    IOImage
++    ImagingCore
++    InteractionStyle
++    RenderingCore
++    RenderingFreeType
++    RenderingGL2PSOpenGL2
++    RenderingOpenGL2
++)
+ 
+ if (3RDPARTY_VTK_DIR AND EXISTS "${3RDPARTY_VTK_DIR}")
+   set (ENV{VTK_DIR} ${CACHED_VTK_DIR})

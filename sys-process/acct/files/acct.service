@@ -1,0 +1,14 @@
+[Unit]
+Description=Kernel process accounting
+After=syslog.target
+ConditionPathExists=/var/account
+
+[Service]
+Type=oneshot
+ExecStartPre=/bin/sh -c 'if [ ! -e /var/account/pacct ]; then /bin/touch /var/account/pacct ; /bin/chmod 0600 /var/account/pacct; fi'
+ExecStart=/sbin/accton /var/account/pacct
+ExecStop=/sbin/accton off
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

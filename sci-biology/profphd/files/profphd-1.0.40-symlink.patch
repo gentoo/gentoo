@@ -1,0 +1,11 @@
+--- a/src/prof/Makefile
++++ b/src/prof/Makefile
+@@ -40,7 +40,7 @@
+ 		./. $(DESTDIR)$(prefix)/share/profphd/prof/.
+ 	find $(DESTDIR)$(prefix)/share/profphd/prof/embl/phd.pl $(DESTDIR)$(prefix)/share/profphd/prof/scr/CONFprof.pl $(DESTDIR)$(prefix)/share/profphd/prof/prof $(DESTDIR)$(prefix)/share/profphd/prof/scr/lib/prof.pm \
+ 		-type f -exec sed -i -e 's|__PREFIX__|$(prefix)|g;s|__VERSION__|$(VERSION)|;' {} \;
+-	rm -rf $(DESTDIR)$(prefix)/bin/prof && mkdir -p $(DESTDIR)$(prefix)/bin && ln -s ../share/profphd/prof/prof $(DESTDIR)$(prefix)/bin/prof
++	rm -rf $(DESTDIR)$(prefix)/bin/prof && mkdir -p $(DESTDIR)$(prefix)/bin && ln -s ../share/profphd/prof/prof $(DESTDIR)$(prefix)/bin/profphd
+ 
+ install-neuralnet:
+ 	mkdir -p $(DESTDIR)$(prefix)/share/profphd/prof/embl/para && rsync -aC \

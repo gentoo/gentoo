@@ -1,0 +1,10 @@
+[Unit]
+Description=dehydrated ACME client
+Wants=network-online.target
+After=network-online.target
+Documentation=https://github.com/dehydrated-io/dehydrated
+
+[Service]
+Type=oneshot
+User=dehydrated
+ExecStart=dehydrated --cron

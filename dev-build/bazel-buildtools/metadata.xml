@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    Bazel buildtools contain: 1. buildifier - for formatting BUILD,
+    BUILD.bazel and BUCK files in a standard way, 2. buildozer - for doing
+    command-line operations on these files, 3. unused_deps - for finding
+    unneeded dependencies in java_library rules.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/bazelbuild/buildtools/issues/</bugs-to>
+    <remote-id type="github">bazelbuild/buildtools</remote-id>
+  </upstream>
+</pkgmetadata>

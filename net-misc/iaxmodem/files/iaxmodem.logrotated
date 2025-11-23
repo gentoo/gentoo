@@ -1,0 +1,9 @@
+/var/log/iaxmodem/* {
+    notifempty
+    missingok
+    size 1000k
+    sharedscripts
+    postrotate
+	/etc/init.d/iaxmodem --ifstarted --quiet reload
+    endscript
+}

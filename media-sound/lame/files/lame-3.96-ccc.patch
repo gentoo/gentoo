@@ -1,0 +1,21 @@
+If ccc (alpha compiler) is installed on the system, the default
+configure is broken, fix it to respect CC.  This is only
+directly broken for ARCH=alpha but would affect anybody with a
+ccc binary in their PATH.  Bug #41908  (26 Jul 2004 agriffis)
+
+--- a/configure.in
++++ b/configure.in
+@@ -915,11 +915,9 @@
+ alpha*-*-linux*)
+ 
+ ################################################################
+-#### Check if 'ccc' is in our path
++#### Check if we're using Compaq's C Compiler: 'ccc'
+ ################################################################
+-if test "`which ccc 2>/dev/null | grep -c ccc`" != "0" ; then
+-	# Compaq's C Compiler
+-	CC=ccc
++if test "`echo $CC | sed 's/.*\///'`" = ccc; then
+ 
+ ################################################################
+ #### set 'OPTIMIZATION = -arch host -tune host' 

@@ -1,0 +1,50 @@
+From f891957c8f0d355ea7cc20194050f3346fd16006 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Fri, 27 Sep 2024 19:01:53 +0200
+Subject: [PATCH] Update no-warning tests for pytest-8
+
+Replace the deprecated `pytest.warns(None)` with the suggested
+replacement (from https://github.com/pytest-dev/pytest/issues/9404)
+to make the test suite forward compatible with pytest-8.  This works
+correctly with pytest-6 as well.
+---
+ tests/test_deprecated.py | 15 ++++++---------
+ 1 file changed, 6 insertions(+), 9 deletions(-)
+
+diff --git a/tests/test_deprecated.py b/tests/test_deprecated.py
+index c1caead3..ea16d370 100644
+--- a/tests/test_deprecated.py
++++ b/tests/test_deprecated.py
+@@ -35,18 +35,16 @@ def test_message_with_deprecated_field(message):
+ 
+ 
+ def test_message_with_deprecated_field_not_set(message):
+-    with pytest.warns(None) as record:
++    with warnings.catch_warnings():
++        warnings.simplefilter("error")
+         Test(value=10)
+ 
+-    assert not record
+-
+ 
+ def test_message_with_deprecated_field_not_set_default(message):
+-    with pytest.warns(None) as record:
++    with warnings.catch_warnings():
++        warnings.simplefilter("error")
+         _ = Test(value=10).message
+ 
+-    assert not record
+-
+ 
+ @pytest.mark.asyncio
+ async def test_service_with_deprecated_method():
+@@ -58,7 +56,6 @@ async def test_service_with_deprecated_method():
+     assert len(record) == 1
+     assert str(record[0].message) == f"TestService.deprecated_func is deprecated"
+ 
+-    with pytest.warns(None) as record:
++    with warnings.catch_warnings():
++        warnings.simplefilter("error")
+         await stub.func(Empty())
+-
+-    assert not record

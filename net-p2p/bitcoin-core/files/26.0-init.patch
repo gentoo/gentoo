@@ -1,0 +1,196 @@
+From 779e7c8fe188bea5b2185be0784112104be168df Mon Sep 17 00:00:00 2001
+From: Matt Whitlock <bitcoin@mattwhitlock.name>
+Date: Sun, 17 Sep 2023 10:02:20 -0400
+Subject: [PATCH] contrib/init: improve OpenRC scripts and systemd service unit
+
+---
+ contrib/init/bitcoind.openrc     | 112 +++++++++++++++----------------
+ contrib/init/bitcoind.openrcconf |   7 +-
+ contrib/init/bitcoind.service    |   5 ++
+ 3 files changed, 64 insertions(+), 60 deletions(-)
+
+diff --git a/contrib/init/bitcoind.openrc b/contrib/init/bitcoind.openrc
+index 013a1a6070..7d16e975e5 100644
+--- a/contrib/init/bitcoind.openrc
++++ b/contrib/init/bitcoind.openrc
+@@ -1,76 +1,72 @@
+ #!/sbin/openrc-run
+ 
+-# backward compatibility for existing gentoo layout 
+-#
+-if [ -d "/var/lib/bitcoin/.bitcoin" ]; then
+-	BITCOIND_DEFAULT_DATADIR="/var/lib/bitcoin/.bitcoin"
+-else
+-	BITCOIND_DEFAULT_DATADIR="/var/lib/bitcoind"
+-fi
++: ${BITCOIND_CONFIGFILE:=/etc/bitcoin/bitcoin.conf}
++: ${BITCOIND_PIDDIR:=/run/bitcoind}
++: ${BITCOIND_PIDFILE:=${BITCOIND_PIDDIR}/${SVCNAME}.pid}
++: ${BITCOIND_DATADIR:=/var/lib/bitcoind}
++: ${BITCOIND_LOGDIR:=/var/log/bitcoind}
++: ${BITCOIND_USER:=${BITCOIN_USER:-bitcoin}}
++: ${BITCOIND_GROUP:=bitcoin}
++: ${BITCOIND_BIN:=/usr/bin/bitcoind}
++: ${BITCOIND_NICE:=${NICELEVEL:-0}}
++: ${BITCOIND_OPTS=${BITCOIN_OPTS}}
+ 
+-BITCOIND_CONFIGFILE=${BITCOIND_CONFIGFILE:-/etc/bitcoin/bitcoin.conf}
+-BITCOIND_PIDDIR=${BITCOIND_PIDDIR:-/var/run/bitcoind}
+-BITCOIND_PIDFILE=${BITCOIND_PIDFILE:-${BITCOIND_PIDDIR}/bitcoind.pid}
+-BITCOIND_DATADIR=${BITCOIND_DATADIR:-${BITCOIND_DEFAULT_DATADIR}}
+-BITCOIND_USER=${BITCOIND_USER:-${BITCOIN_USER:-bitcoin}}
+-BITCOIND_GROUP=${BITCOIND_GROUP:-bitcoin}
+-BITCOIND_BIN=${BITCOIND_BIN:-/usr/bin/bitcoind}
+-BITCOIND_NICE=${BITCOIND_NICE:-${NICELEVEL:-0}}
+-BITCOIND_OPTS="${BITCOIND_OPTS:-${BITCOIN_OPTS}}"
+-
+-name="Bitcoin Core Daemon"
++name="Bitcoin Core daemon"
+ description="Bitcoin cryptocurrency P2P network daemon"
+ 
+-command="/usr/bin/bitcoind"
+-command_args="-pid=\"${BITCOIND_PIDFILE}\" \
+-		-conf=\"${BITCOIND_CONFIGFILE}\" \
+-		-datadir=\"${BITCOIND_DATADIR}\" \
+-		-daemon \
+-		${BITCOIND_OPTS}"
+-
+ required_files="${BITCOIND_CONFIGFILE}"
+-start_stop_daemon_args="-u ${BITCOIND_USER} \
+-			-N ${BITCOIND_NICE} -w 2000"
+ pidfile="${BITCOIND_PIDFILE}"
+-
+-# The retry schedule to use when stopping the daemon. Could be either
+-# a timeout in seconds or multiple signal/timeout pairs (like
+-# "SIGKILL/180 SIGTERM/300")
+-retry="${BITCOIND_SIGTERM_TIMEOUT}"
++in_background_fake="start"
+ 
+ depend() {
+ 	need localmount net
+ }
+ 
+-# verify
+-# 1) that the datadir exists and is writable (or create it)
+-# 2) that a directory for the pid exists and is writable
+-# 3) ownership and permissions on the config file
+ start_pre() {
+-	checkpath \
+-	-d \
+-	--mode 0750 \
+-	--owner "${BITCOIND_USER}:${BITCOIND_GROUP}" \
+-	"${BITCOIND_DATADIR}"
+-
+-	checkpath \
+-	-d \
+-	--mode 0755 \
+-	--owner "${BITCOIND_USER}:${BITCOIND_GROUP}" \
+-	"${BITCOIND_PIDDIR}"
+-
+-	checkpath -f \
+-	-o "${BITCOIND_USER}:${BITCOIND_GROUP}" \
+-	-m 0660 \
+-	"${BITCOIND_CONFIGFILE}"
+-
+-	checkconfig || return 1
++	checkpath -f --mode 0660 --owner "${BITCOIND_USER}:${BITCOIND_GROUP}" "${BITCOIND_CONFIGFILE}"
++	checkpath -d --mode 0750 --owner "${BITCOIND_USER}:${BITCOIND_GROUP}" "${BITCOIND_DATADIR}"
++	checkpath -d --mode 0755 --owner "${BITCOIND_USER}:${BITCOIND_GROUP}" "${BITCOIND_LOGDIR}"
++	checkpath -d --mode 0755 --owner "${BITCOIND_USER}:${BITCOIND_GROUP}" "${BITCOIND_PIDDIR}"
++	checkconfig
+ }
+ 
+-checkconfig()
+-{
+-	if grep -qs '^rpcuser=' "${BITCOIND_CONFIGFILE}" && \
+-		! grep -qs '^rpcpassword=' "${BITCOIND_CONFIGFILE}" ; then
++start() {
++	ebegin "Starting ${name}"
++	mark_service_inactive
++	if start-stop-daemon \
++		--pidfile="${BITCOIND_PIDFILE}" \
++		--chdir="${BITCOIND_DATADIR}" \
++		--user="${BITCOIND_USER}:${BITCOIND_GROUP}" \
++		--nice="${BITCOIND_NICE}" \
++		--exec="${BITCOIND_BIN}" \
++		-- \
++		-daemonwait \
++		-pid="${BITCOIND_PIDFILE}" \
++		-conf="${BITCOIND_CONFIGFILE}" \
++		-datadir="${BITCOIND_DATADIR}" \
++		-debuglogfile="${BITCOIND_LOGDIR}/debug.log" \
++		${BITCOIND_OPTS}
++	then
++		chmod g+r "${BITCOIND_DATADIR}/.cookie"
++		IN_BACKGROUND=yes rc-service "${SVCNAME}" --quiet start
++	else
++		rc-service "${SVCNAME}" --quiet zap
++	fi &
++}
++
++stop() {
++	ebegin "Stopping ${name}"
++	start-stop-daemon --stop \
++		--pidfile="${BITCOIND_PIDFILE}" \
++		--retry="${BITCOIND_SIGTERM_TIMEOUT}" \
++		--exec="${BITCOIND_BIN}"
++	eend $?
++}
++
++checkconfig() {
++	if grep -qs '^rpcuser=' "${BITCOIND_CONFIGFILE}" &&
++		! grep -qs '^rpcpassword=' "${BITCOIND_CONFIGFILE}"
++	then
+ 		eerror ""
+ 		eerror "ERROR: You must set a secure rpcpassword to run bitcoind."
+ 		eerror "The setting must appear in ${BITCOIND_CONFIGFILE}"
+diff --git a/contrib/init/bitcoind.openrcconf b/contrib/init/bitcoind.openrcconf
+index c8a22a08d9..f5a140ab9d 100644
+--- a/contrib/init/bitcoind.openrcconf
++++ b/contrib/init/bitcoind.openrcconf
+@@ -4,14 +4,17 @@
+ #BITCOIND_CONFIGFILE="/etc/bitcoin/bitcoin.conf"
+ 
+ # What directory to write pidfile to?  (created and owned by $BITCOIND_USER)
+-#BITCOIND_PIDDIR="/var/run/bitcoind"
++#BITCOIND_PIDDIR="/run/bitcoind"
+ 
+ # What filename to give the pidfile
+-#BITCOIND_PIDFILE="${BITCOIND_PIDDIR}/bitcoind.pid"
++#BITCOIND_PIDFILE="${BITCOIND_PIDDIR}/${SVCNAME}.pid"
+ 
+ # Where to write bitcoind data (be mindful that the blockchain is large)
+ #BITCOIND_DATADIR="/var/lib/bitcoind"
+ 
++# Where to write the debug.log file
++#BITCOIND_LOGDIR="/var/log/bitcoind"
++
+ # User and group to own bitcoind process
+ #BITCOIND_USER="bitcoin"
+ #BITCOIND_GROUP="bitcoin"
+diff --git a/contrib/init/bitcoind.service b/contrib/init/bitcoind.service
+index 87da17f955..e1229f300a 100644
+--- a/contrib/init/bitcoind.service
++++ b/contrib/init/bitcoind.service
+@@ -20,6 +20,7 @@ Wants=network-online.target
+ [Service]
+ ExecStart=/usr/bin/bitcoind -pid=/run/bitcoind/bitcoind.pid \
+                             -conf=/etc/bitcoin/bitcoin.conf \
++                            -debuglogfile=/var/log/bitcoind/debug.log \
+                             -datadir=/var/lib/bitcoind \
+                             -startupnotify='systemd-notify --ready' \
+                             -shutdownnotify='systemd-notify --stopping'
+@@ -54,6 +55,10 @@ RuntimeDirectoryMode=0710
+ ConfigurationDirectory=bitcoin
+ ConfigurationDirectoryMode=0710
+ 
++# /var/log/bitcoind
++LogsDirectory=bitcoind
++LogsDirectoryMode=0755
++
+ # /var/lib/bitcoind
+ StateDirectory=bitcoind
+ StateDirectoryMode=0710
+-- 
+2.43.0
+

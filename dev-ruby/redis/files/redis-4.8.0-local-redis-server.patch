@@ -1,0 +1,49 @@
+Gentoo specific patch adapted from redis-4.7.1-local-redis-server.patch
+
+diff --git a/makefile b/makefile
+index df25e4b..57bc941 100644
+--- a/makefile
++++ b/makefile
+@@ -1,18 +1,17 @@
+ REDIS_BRANCH       ?= 7.0
+ ROOT_DIR           :=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
+-TMP                := tmp
+ CONF               := ${ROOT_DIR}/test/support/conf/redis-${REDIS_BRANCH}.conf
+ BUILD_DIR          := ${TMP}/cache/redis-${REDIS_BRANCH}
+ TARBALL            := ${TMP}/redis-${REDIS_BRANCH}.tar.gz
+-BINARY             := ${BUILD_DIR}/src/redis-server
+-REDIS_CLIENT       := ${BUILD_DIR}/src/redis-cli
++BINARY             := /usr/sbin/redis-server
++REDIS_CLIENT       := /usr/bin/redis-cli
+ REDIS_TRIB         := ${BUILD_DIR}/src/redis-trib.rb
+-PID_PATH           := ${BUILD_DIR}/redis.pid
++PID_PATH           := ${TMP}/redis.pid
+ SOCKET_PATH        := ${TMP}/redis.sock
+ PORT               := 6381
+ SLAVE_PORT         := 6382
+-SLAVE_PID_PATH     := ${BUILD_DIR}/redis_slave.pid
+-SLAVE_SOCKET_PATH  := ${BUILD_DIR}/redis_slave.sock
++SLAVE_PID_PATH     := ${TMP}/redis_slave.pid
++SLAVE_SOCKET_PATH  := ${TMP}/redis_slave.sock
+ HA_GROUP_NAME      := master1
+ SENTINEL_PORTS     := 6400 6401 6402
+ SENTINEL_PID_PATHS := $(addprefix ${TMP}/redis,$(addsuffix .pid,${SENTINEL_PORTS}))
+@@ -31,14 +30,8 @@ start_all: start start_slave start_sentinel wait_for_sentinel start_cluster crea
+ 
+ stop_all: stop_sentinel stop_slave stop stop_cluster
+ 
+-${TMP}:
+-	@mkdir -p $@
+-
+-${BINARY}: ${TMP}
+-	@bin/build ${REDIS_BRANCH} $<
+-
+ test:
+-	@env REDIS_SOCKET_PATH=${SOCKET_PATH} bundle exec rake test
++	@env REDIS_SOCKET_PATH=${SOCKET_PATH} ${RUBY} -S rake test
+ 
+ stop:
+ 	@$(call kill-redis,${PID_PATH});\
+-- 
+2.35.1
+

@@ -1,0 +1,33 @@
+#!/sbin/openrc-run
+
+depend() {
+	need icecast
+}
+
+checkconfig() {
+	if [ ! -e ${CONFIGFILE} ]; then
+		eerror "You need to make a config file"
+		return 1
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting ezstream"
+	start-stop-daemon --background --start --pidfile /var/run/ezstream.pid \
+		--make-pidfile --user icecast --group nogroup \
+		--exec /usr/bin/ezstream -- ${EZSTREAM_OPTS} -c "${CONFIGFILE}"
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ezstream"
+	start-stop-daemon --stop --pidfile /var/run/ezstream.pid --name ezstream
+	eend $?
+}
+
+reload() {
+	ebegin "Reloading ezstream"
+	kill -1 `cat /var/run/ezstream.pid`
+	eend $?
+}

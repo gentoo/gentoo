@@ -1,0 +1,179 @@
+Fixes various build issues with newer clang
+https://bugs.gentoo.org/927802
+
+From b6457542bd56507cb2b659d50772f87cc66d6ea3 Mon Sep 17 00:00:00 2001
+From: NRK <nrk@disroot.org>
+Date: Mon, 1 Apr 2024 15:29:47 +0000
+Subject: [PATCH 1/4] Add missing includes
+
+---
+ assemble.c  | 2 +-
+ codegenv2.c | 2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/assemble.c b/assemble.c
+index 2ce0e14..a9f2899 100644
+--- a/assemble.c
++++ b/assemble.c
+@@ -43,7 +43,7 @@
+ #include "lqueue.h"
+ #include "orgfixup.h"
+ #include "macrolib.h"
+-//#include "simd.h"
++#include "simd.h"
+ 
+ #if DLLIMPORT
+ #include "mangle.h"
+diff --git a/codegenv2.c b/codegenv2.c
+index 6bcc08d..7063c27 100644
+--- a/codegenv2.c
++++ b/codegenv2.c
+@@ -1,6 +1,7 @@
+ 
+ #include "codegenv2.h"
+ 
++#include <ctype.h>
+ #include <time.h>
+ #include "globals.h"
+ #include "parser.h"
+@@ -12,6 +13,7 @@
+ #include "types.h"
+ #include "macro.h"
+ #include "listing.h"
++#include "input.h"
+ 
+ #define OutputCodeByte( x ) OutputByte( x )
+ 
+-- 
+2.42.0
+
+
+From bc4ffb4ac77f97b42f7d83cae0f0ea7a59c5b6be Mon Sep 17 00:00:00 2001
+From: NRK <nrk@disroot.org>
+Date: Mon, 1 Apr 2024 15:36:14 +0000
+Subject: [PATCH 2/4] Add missing prototypes
+
+ref: https://github.com/Terraspace/UASM/pull/186
+---
+ H/globals.h | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/H/globals.h b/H/globals.h
+index e202c50..7320cb9 100644
+--- a/H/globals.h
++++ b/H/globals.h
+@@ -49,6 +49,7 @@
+ #endif
+ #define _ltoa   ltoa
+ #define _strupr strupr
++extern char *strupr(char *);
+ 
+ #elif defined(__POCC__)
+ 
+@@ -946,4 +947,11 @@ extern char             *num2hex64(uint_64 value, char *buffer);
+ extern char             *ConvertSectionName( const struct asym *, enum seg_type *pst, char *buffer );
+ extern void             RewindToWin64(void);
+ 
++extern void CreateMacroLibCases64(void);
++extern void CreateMacroLibCases32(void);
++extern void OutputInterleavedBytes(const unsigned char *pbytes, int len, struct fixup *fixup);
++extern void SymSimd(struct dsym *sym);
++extern void RunLineQueue( void );
++extern ret_code BackPatch( struct asym *sym );
++
+ #endif
+-- 
+2.42.0
+
+
+From d4d625d009dfc7ab91136516aafb4fc706d0c1ab Mon Sep 17 00:00:00 2001
+From: NRK <nrk@disroot.org>
+Date: Mon, 1 Apr 2024 15:40:30 +0000
+Subject: [PATCH 3/4] Fix incompatible assignment of `void *` to `uint32_t`
+
+---
+ macho64.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/macho64.c b/macho64.c
+index 8e74842..8b81d5e 100644
+--- a/macho64.c
++++ b/macho64.c
+@@ -725,7 +725,7 @@ static ret_code macho_write_module( struct module_info *modinfo )
+ 		mm.header.cputype = CPU_TYPE_X86_64;
+ 		mm.header.cpusubtype = CPU_SUBTYPE_LITTLE_ENDIAN | CPU_SUBTYPE_X86_64_ALL;
+ 		mm.header.filetype = MH_OBJECT;
+-		mm.header.flags = NULL;
++		mm.header.flags = 0;
+ 		
+ 		macho_build_structures(modinfo, mm);	
+ 	}
+-- 
+2.42.0
+
+
+From 0108e8754737c9ceac0314c8f70da8c9f4bd2095 Mon Sep 17 00:00:00 2001
+From: NRK <nrk@disroot.org>
+Date: Mon, 1 Apr 2024 15:54:02 +0000
+Subject: [PATCH 4/4] Fix incompatible function pointer
+
+---
+ proc.c | 16 ++++++++++++++--
+ 1 file changed, 14 insertions(+), 2 deletions(-)
+
+diff --git a/proc.c b/proc.c
+index fdd8b49..80e8674 100644
+--- a/proc.c
++++ b/proc.c
+@@ -162,10 +162,12 @@ struct delphicall_conv {
+ 
+ 
+ static  int ms32_pcheck(struct dsym *, struct dsym *, int *);
++static  int ms32_syspcheck(struct dsym *, struct dsym *, int *, int *);
+ static void ms32_return(struct dsym *, char *);
+ 
+ #if OWFC_SUPPORT
+ static  int watc_pcheck(struct dsym *, struct dsym *, int *);
++static  int watc_syspcheck(struct dsym *, struct dsym *, int *, int *);
+ static void watc_return(struct dsym *, char *);
+ #endif
+ 
+@@ -212,9 +214,9 @@ static const struct vectorcall_conv vectorcall_tab[] = {
+ };
+ 
+ static const struct sysvcall_conv sysvcall_tab[] = {
+-	{ ms32_pcheck, ms32_return },  /* FCT_MSC */
++	{ ms32_syspcheck, ms32_return },  /* FCT_MSC */
+ #if OWFC_SUPPORT		
+-	{ watc_pcheck, watc_return },  /* FCT_WATCOMC */
++	{ watc_syspcheck, watc_return },  /* FCT_WATCOMC */
+ #endif		
+ #if SYSV_SUPPORT		
+ 	{ sysv_pcheck, sysv_return }   /* FCT_WIN64 / SYSTEMV */
+@@ -380,6 +382,11 @@ static int watc_pcheck(struct dsym *proc, struct dsym *paranode, int *used)
+ 	return(1);
+ }
+ 
++static int watc_syspcheck(struct dsym *proc, struct dsym *paranode, int *used, int *vecused)
++{
++	return watc_pcheck(proc, paranode, used);
++}
++
+ static void watc_return(struct dsym *proc, char *buffer)
+ /********************************************************/
+ {
+@@ -433,6 +440,11 @@ static int ms32_pcheck(struct dsym *proc, struct dsym *paranode, int *used)
+ 	return(1);
+ }
+ 
++static int ms32_syspcheck(struct dsym *proc, struct dsym *paranode, int *used, int *vecused)
++{
++	return ms32_pcheck(proc, paranode, used);
++}
++
+ static void ms32_return(struct dsym *proc, char *buffer)
+ /********************************************************/
+ {
+-- 
+2.42.0
+

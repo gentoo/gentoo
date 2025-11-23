@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>games@gentoo.org</email>
+    <name>Gentoo Games Project</name>
+  </maintainer>
+  <use>
+    <flag name="server">Enable compilation of server</flag>
+  </use>
+  <upstream>
+    <bugs-to>https://github.com/wesnoth/wesnoth/issues/</bugs-to>
+    <doc>https://wiki.wesnoth.org/StartingPoints</doc>
+    <changelog>https://github.com/wesnoth/wesnoth/blob/master/changelog.md</changelog>
+    <remote-id type="github">wesnoth/wesnoth</remote-id>
+    <remote-id type="sourceforge">wesnoth</remote-id> <!-- for distfiles -->
+  </upstream>
+</pkgmetadata>

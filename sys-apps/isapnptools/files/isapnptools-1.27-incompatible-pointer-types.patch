@@ -1,0 +1,20 @@
+--- a/src/resource.c	2024-04-27 08:02:26.232607532 -0000
++++ b/src/resource.c	2024-04-27 08:04:14.600217480 -0000
+@@ -285,7 +285,7 @@
+ void allocate_pci_resources( void )
+ {
+    char *line = 0;
+-   int lineMax = 0;
++   size_t lineMax = 0;
+ 
+    FILE *fp = fopen( "/proc/bus/pci/devices", "rt" );
+    if( !fp )
+@@ -354,7 +354,7 @@
+ 	int io_end;
+     /* Avoid allocating DMA channels used by other devices in /proc. */
+     if ((input = fopen("/proc/interrupts", "r")) != NULL) {
+-      fscanf(input, "%*[^\n]\n"); /* skip first line */
++      (void)fscanf(input, "%*[^\n]\n"); /* skip first line */
+       while (fscanf (input, "%d%*[^\n]\n", &interrupt_num) == 1) {
+ #if 0
+ 		  snprintf(progress_report_buf,

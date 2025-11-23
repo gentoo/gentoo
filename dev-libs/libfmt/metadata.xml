@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>candrews@gentoo.org</email>
+		<name>Craig Andrews</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/fmtlib/fmt/issues</bugs-to>
+		<remote-id type="github">fmtlib/fmt</remote-id>
+		<remote-id type="cpe">cpe:/a:fmt_project:fmt</remote-id>
+	</upstream>
+</pkgmetadata>

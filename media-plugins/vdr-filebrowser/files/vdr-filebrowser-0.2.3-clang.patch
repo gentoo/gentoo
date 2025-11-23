@@ -1,0 +1,11 @@
+--- a/command-sources.c	2021-08-14 21:20:11.367590500 +0200
++++ b/command-sources.c	2021-08-14 21:20:26.375889660 +0200
+@@ -93,7 +93,7 @@
+ void cFilebrowserCommandSourcesList::cSource::SwitchTo(cFilebrowserStatebag* Statebag)
+ {
+   D(fprintf(stderr, "[filebrowser] Setting new source: %s\n", *Path));
+-  sprintf(Statebag->BaseDir, "%s", Path);
++  sprintf(Statebag->BaseDir, "%s", *Path);
+   Statebag->CurrentFiles->Clear();
+   Statebag->CurrentDirectory=Path;
+   Statebag->Filter=Filter;

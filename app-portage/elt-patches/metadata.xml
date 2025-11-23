@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="gentoo">proj/elt-patches</remote-id>
+		<remote-id type="github">gentoo/elt-patches</remote-id>
+	</upstream>
+</pkgmetadata>

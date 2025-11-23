@@ -1,0 +1,6 @@
+#glusterfsd_mountpoint=""
+#glusterfsd_log=""
+#glusterfsd_vol=""
+#glusterfsd_port=""
+#glusterfsd_transport=""
+#glusterfsd_opts=""

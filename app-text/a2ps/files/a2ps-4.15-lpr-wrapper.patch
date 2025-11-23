@@ -1,0 +1,23 @@
+# a2ps-lpr-wrapper exits on bogus parameter-count test
+# https://bugs.gentoo.org/913751
+# https://savannah.gnu.org/bugs/?64047
+--- a/src/a2ps-lpr-wrapper
++++ b/src/a2ps-lpr-wrapper
+@@ -5,7 +5,7 @@
+ set -e
+
+ usage() {
+-  echo "Usage: $(basename "$0") [-d printer] FILE..." >&2
++  echo "Usage: $(basename "$0") [-d printer] [FILE...]" >&2
+   exit 1
+ }
+
+@@ -17,7 +17,6 @@ while getopts d: flag; do
+   esac
+ done
+ shift $((OPTIND - 1))
+-if [ $# -eq 0 ]; then usage; fi
+
+ # If lp (from CUPS) exists, just use it.
+ if command -pv lp > /dev/null; then
+

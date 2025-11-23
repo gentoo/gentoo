@@ -1,0 +1,76 @@
+https://patch-diff.githubusercontent.com/raw/tux4kids/t4kcommon/pull/16.patch
+From: Florian Weimer <fweimer@redhat.com>
+Date: Tue, 7 Feb 2023 16:10:36 +0100
+Subject: [PATCH 1/2] linebreak: Avoid implicit declaration of u8_mbtouc_unsafe
+ function
+
+GNULIB_UNISTR_U8_MBTOUC_UNSAFE tells the bundled unistr.h to
+provide a function prototype for u8_mbtouc_unsafe.  This prevents
+build failures with future compilers which do not support implicit
+function declarations.
+
+Upstream gnulib has split the linebreak module into multiple parts;
+it is hard to tell if it still has the same issue.
+--- a/src/linebreak/linebreak.c
++++ b/src/linebreak/linebreak.c
+@@ -35,6 +35,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
+ //#include "c-ctype.h"
+ #include "ctype.h"
+ #include "xsize.h"
++#define GNULIB_UNISTR_U8_MBTOUC_UNSAFE
+ #include "unistr.h"
+ #include "uniwidth.h"
+ #include "uniwidth/cjk.h"
+-- 
+2.43.0
+
+
+Bug: https://bugs.gentoo.org/923789
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Fri, 9 Feb 2024 11:49:53 +0530
+Subject: [PATCH 2/2] t4k_menu: Fix passing incompatible pointer type
+
+First observed under Gentoo Linux with GCC 14, probably due to
+mismatching types between child (struct _xmlAttr *) and node.children
+(struct _xmlAttr *).
+
+Resulting in build errors such as
+t4k_menu.c:254:23: error: assignment to 'xmlAttr *' {aka 'struct _xmlAttr *'} from incompatible pointer type 'struct _xmlNode *' [-Wincompatible-pointer-types]
+  254 |             for(child = node->children; child; child = child->next) {
+      |                       ^
+t4k_menu.c:256:62: error: passing argument 1 of 'menu_TranslateNode' from incompatible pointer type [-Wincompatible-pointer-types]
+  256 |                     tnode->submenu[i++] = menu_TranslateNode(child);
+      |                                                              ^~~~~
+      |                                                              |
+      |                                                              xmlAttr * {aka struct _xmlAttr *}
+
+Please reffer Gentoo bug: https://bugs.gentoo.org/923789
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+--- a/src/t4k_menu.c
++++ b/src/t4k_menu.c
+@@ -251,9 +251,10 @@ MenuNode *menu_TranslateNode(xmlNode *node) {
+         /* Now add child nodes. */
+         if(xmlStrcasecmp(node->name, "menu") == 0) {
+             i = 0;
+-            for(child = node->children; child; child = child->next) {
+-                if(child->type == XML_ELEMENT_NODE) {
+-                    tnode->submenu[i++] = menu_TranslateNode(child);
++            xmlNode *childNode = NULL;
++            for(childNode = node->children; childNode; childNode = childNode->next) {
++                if(childNode->type == XML_ELEMENT_NODE) {
++                    tnode->submenu[i++] = menu_TranslateNode(childNode);
+                 }
+             }
+         }
+@@ -443,7 +444,7 @@ int T4K_RunMenu(int index, bool return_choice, void (*draw_background)(), int (*
+   int click_flag = 1;
+   int using_scroll = 0;
+ 
+-  internal_res_switch_handler(&T4K_PrerenderAll);
++  internal_res_switch_handler((ResSwitchCallback)&T4K_PrerenderAll);
+   
+   for(;;) /* one loop body execution for one menu page */
+   {
+-- 
+2.43.0
+

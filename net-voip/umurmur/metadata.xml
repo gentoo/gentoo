@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		uMurmur is a minimalistic Mumble server primarily targeted to
+		run on routers with an open OS like OpenWRT. The server part
+		of Mumble is called Murmur, hence the name uMurmur.
+	</longdescription>
+	<use>
+		<flag name="mbedtls">Use <pkg>net-libs/mbedtls</pkg> as TLS provider</flag>
+		<flag name="shm">Enable shared memory support</flag>
+	</use>
+	<upstream>
+		<maintainer status="active">
+			<email>fatbob.snack@gmail.com</email>
+			<name>Martin Johansson</name>
+		</maintainer>
+		<remote-id type="github">umurmur/umurmur</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,14 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# port to listen on
+CANCD_PORT=6667
+
+# directory to output to
+CANCD_LOG_DIR=/var/log/cancd
+
+# one file per minute, one dir per host/date
+#CANCD_LOG_FORMAT="%Q/%Y-%m-%d/%H:%M.log"
+# one file per day, one dir per host
+CANCD_LOG_FORMAT="%Q/%Y-%m-%d.log"

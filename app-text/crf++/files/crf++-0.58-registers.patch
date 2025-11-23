@@ -1,0 +1,57 @@
+From 12204f40fdab494328931f12f45ad7d884ef6dac Mon Sep 17 00:00:00 2001
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Tue, 16 May 2023 12:29:40 +0530
+Subject: [PATCH] Removing register keywords
+
+The register keyword has been dropped since C++17.
+
+Bug: https://bugs.gentoo.org/894642
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+--- a/darts.h
++++ b/darts.h
+@@ -404,10 +404,10 @@ class DoubleArrayImpl {
+     T result;
+     set_result(result, -1, 0);
+ 
+-    register array_type_  b = array_[node_pos].base;
+-    register array_u_type_ p;
++    array_type_  b = array_[node_pos].base;
++    array_u_type_ p;
+ 
+-    for (register size_t i = 0; i < len; ++i) {
++    for (size_t i = 0; i < len; ++i) {
+       p = b +(node_u_type_)(key[i]) + 1;
+       if (static_cast<array_u_type_>(b) == array_[p].check)
+         b = array_[p].base;
+@@ -431,12 +431,12 @@ class DoubleArrayImpl {
+                             size_t node_pos = 0) const {
+     if (!len) len = length_func_()(key);
+ 
+-    register array_type_  b   = array_[node_pos].base;
+-    register size_t     num = 0;
+-    register array_type_  n;
+-    register array_u_type_ p;
++    array_type_  b   = array_[node_pos].base;
++    size_t     num = 0;
++    array_type_  n;
++    array_u_type_ p;
+ 
+-    for (register size_t i = 0; i < len; ++i) {
++    for (size_t i = 0; i < len; ++i) {
+       p = b;  // + 0;
+       n = array_[p].base;
+       if ((array_u_type_) b == array_[p].check && n < 0) {
+@@ -469,8 +469,8 @@ class DoubleArrayImpl {
+                       size_t len = 0) const {
+     if (!len) len = length_func_()(key);
+ 
+-    register array_type_  b = array_[node_pos].base;
+-    register array_u_type_ p;
++    array_type_  b = array_[node_pos].base;
++    array_u_type_ p;
+ 
+     for (; key_pos < len; ++key_pos) {
+       p = b +(node_u_type_)(key[key_pos]) + 1;
+-- 
+2.40.1
+

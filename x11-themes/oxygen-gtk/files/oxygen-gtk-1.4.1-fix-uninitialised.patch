@@ -1,0 +1,35 @@
+Pending MR: https://invent.kde.org/plasma/oxygen-gtk/-/merge_requests/2
+
+From e5950db70e3d075e7a4ef86f766f51d0c06aabcc Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 10 Jun 2025 19:05:48 +0200
+Subject: [PATCH] Fix -Wuninitialized warning
+
+Variable unused since commit 6bef60b327b1e594c63f7611dcaabff44d70eb51
+
+* QA Notice: Package triggers severe warnings which indicate that it
+*            may exhibit random runtime failures.
+* src/animations/oxygencomboboxdata.h:34:11: warning: <unnamed>.Oxygen::ComboBoxData::_cellLayoutInitialized is used uninitialized [-Wuninitialized]
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ src/animations/oxygencomboboxdata.h | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/src/animations/oxygencomboboxdata.h b/src/animations/oxygencomboboxdata.h
+index ca4f8323..96d5398b 100644
+--- a/src/animations/oxygencomboboxdata.h
++++ b/src/animations/oxygencomboboxdata.h
+@@ -242,9 +242,6 @@ namespace Oxygen
+         typedef std::map<GtkWidget*, HoverData> HoverDataMap;
+         HoverDataMap _hoverData;
+ 
+-        //! true if cell layout has been initialized
+-        bool _cellLayoutInitialized;
+-
+         //! cell data
+         ChildData _cell;
+ 
+-- 
+2.49.0
+

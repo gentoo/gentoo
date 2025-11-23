@@ -1,0 +1,12 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,8 +1,8 @@
++cmake_minimum_required(VERSION 3.31)
+ project(Asteroid)
+ set(Asteroid_BUILD_VERSION "1.2.1")
+ 
+ # Dependencies
+-cmake_minimum_required(VERSION 2.6)
+ find_package(OpenGL REQUIRED)
+ if(NOT OPENGL_FOUND)
+    message(FATAL_ERROR "Error: OpenGL not found")

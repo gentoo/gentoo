@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription>
+SimGear is a set of open-source libraries designed to be used as building blocks for 
+quickly assembling 3d simulations, games, and visualization applications.
+	</longdescription>
+	<use>
+		<flag name="ffmpeg">Enable video recording via <pkg>media-video/ffmpeg</pkg></flag>
+		<flag name="gdal">Enable alternative terrain engine based on pagedLOD via <pkg>sci-libs/gdal</pkg></flag>
+		<flag name="subversion">Enable terrasync scenery downloader</flag>
+	</use>
+	<upstream>
+		<remote-id type="gitlab">flightgear/simgear</remote-id>
+	</upstream>
+</pkgmetadata>

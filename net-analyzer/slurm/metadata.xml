@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>netmon@gentoo.org</email>
+		<name>Gentoo network monitoring and analysis project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">mattthias/slurm</remote-id>
+	</upstream>
+	<longdescription>
+	Generic network load monitor for *BSD, Linux, HP-UX and Solaris witgh the next features:
+	* "realtime" traffic statistics
+	* three graph modes: combined RX and TX and two split views
+	* can monitor any network device
+	* curses ascii graphics
+	* ascii theme support
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>cluster@gentoo.org</email>
+		<name>Gentoo Cluster Project</name>
+	</maintainer>
+	<use>
+		<flag name="gssapi">Enable support for <pkg>net-libs/libgssglue</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">distcc/distcc</remote-id>
+	</upstream>
+</pkgmetadata>

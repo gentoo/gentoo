@@ -1,0 +1,22 @@
+--- alienwave.orig/Makefile
++++ alienwave/Makefile
+@@ -1,9 +1,7 @@
+ # This file is part of Alienwave, a game by Alessandro Pira
+ 
+-CC = gcc
+ OBJS = main.o blit.o aliens.o xzarna.o fire.o shield.o levels.o util.o
+ # CFLAGS = -c -O2 -Wall -DDEBUG_LEV
+-CFLAGS = -c -O2 -Wall
+ LIB = -lncurses
+ 
+ # Uncomment this if you want random waves
+@@ -16,8 +14,7 @@
+ 
+ 
+ alienwave: $(OBJS)
+-	$(CC) $(OBJS) $(LIB) -o alienwave
+-	strip alienwave
++	$(CC) $(OBJS) $(LDFLAGS) $(LIB) -o alienwave
+ 
+ main.o: main.c
+ 

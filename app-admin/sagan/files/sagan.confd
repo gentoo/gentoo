@@ -1,0 +1,9 @@
+# Copyright 1999-2011 Gentoo Foundation
+# # Distributed under the terms of the GNU General Public License v2
+
+# Sagan daemon configuration file
+# Make debug mode
+# SAGAN_OPTS = " --debug "
+#
+# Run as user, default sagan
+SAGAN_USER="sagan"

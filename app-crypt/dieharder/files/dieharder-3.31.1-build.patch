@@ -1,0 +1,177 @@
+--- a/include/dieharder/libdieharder.h
++++ b/include/dieharder/libdieharder.h
+@@ -6,6 +6,8 @@
+ 
+ #include "copyright.h"
+ 
++#define _GNU_SOURCE
++
+ /* To enable large file support */
+ #define _FILE_OFFSET_BITS 64
+ 
+@@ -16,13 +18,11 @@
+ #include <sys/time.h>
+ 
+ /* This turns on uint macro in c99 */
+-#define __USE_MISC 1
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <unistd.h>
+ 
+ /* This turns on M_PI in math.h */
+-#define __USE_BSD 1
+ #include <math.h>
+ #include <limits.h>
+ #include <gsl/gsl_rng.h>
+From aee56b67080a5a8732c12216ef4415f315f35e4a Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Sun, 24 Feb 2019 00:04:55 +0200
+Subject: [PATCH 1/2] rgb_operm: convert to noop as implementation missing
+
+---
+ include/dieharder/rgb_operm.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+--- a/include/dieharder/rgb_operm.h
++++ b/include/dieharder/rgb_operm.h
+@@ -1,3 +1,4 @@
++#if 0
+ /*
+  * rgb_operm test header.
+  */
+@@ -36,3 +37,4 @@ static Dtest rgb_operm_dtest __attribute__((unused)) = {
+  * a data stream of rands from x_i to x_{i+k} to compute c[][].
+  */
+ unsigned int rgb_operm_k;
++#endif
+-- 
+2.19.2
+
+From b1140059cab9a5b2847dd312087d44d58fe61263 Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Sun, 24 Feb 2019 00:10:00 +0200
+Subject: [PATCH 2/2] dab_filltree2: inline cannot have prototype nor can it be
+ non static
+
+---
+ libdieharder/dab_filltree.c  | 37 ++++++++++++++-------------
+ libdieharder/dab_filltree2.c | 48 +++++++++++++++++-------------------
+ 2 files changed, 41 insertions(+), 44 deletions(-)
+
+--- a/libdieharder/dab_filltree.c
++++ b/libdieharder/dab_filltree.c
+@@ -34,7 +34,24 @@ static double targetData[] = {
+ 0.0, 0.0, 0.0, 0.0, 0.13333333, 0.20000000, 0.20634921, 0.17857143, 0.13007085, 0.08183633, 0.04338395, 0.01851828, 0.00617270, 0.00151193, 0.00023520, 0.00001680, 0.00000000, 0.00000000, 0.00000000, 0.00000000
+ };
+ 
+-inline int insert(double x, double *array, unsigned int startVal);
++static inline int insert(double x, double *array, unsigned int startVal) {
++ uint d = (startVal + 1) / 2;
++ uint i = startVal;
++ while (d > 0) {
++   if (array[i] == 0) {
++     array[i] = x;
++     return -1;
++   }
++   if (array[i] < x) {
++     i += d;
++   } else {
++     i -= d;
++   }
++   d /= 2;
++ }
++ return i;
++}
++
+ 
+ int dab_filltree(Test **test,int irun) {
+  int size = (ntuple == 0) ? 32 : ntuple;
+@@ -105,24 +122,6 @@ int dab_filltree(Test **test,int irun) {
+ }
+ 
+ 
+-inline int insert(double x, double *array, unsigned int startVal) {
+- uint d = (startVal + 1) / 2;
+- uint i = startVal;
+- while (d > 0) {
+-   if (array[i] == 0) {
+-     array[i] = x;
+-     return -1;
+-   }
+-   if (array[i] < x) {
+-     i += d;
+-   } else {
+-     i -= d;
+-   }
+-   d /= 2;
+- }
+- return i;
+-}
+-
+ #include<time.h>
+ 
+ int main_filltree(int argc, char **argv) {
+--- a/libdieharder/dab_filltree2.c
++++ b/libdieharder/dab_filltree2.c
+@@ -92,7 +92,29 @@ static double targetData[128] = {  // size=128, generated from 6e9 samples
+ 0.00000000000e+00,0.00000000000e+00,0.00000000000e+00,0.00000000000e+00,
+ };
+ 
+-inline int insertBit(uint x, uchar *array, uint *i, uint *d);
++/*
++ * Insert a bit into the tree, represented by an array.
++ * A value of one is marked; zero is unmarked.
++ * The function returns -2 is still on the path.
++ * The function returns -1 if the path ends by marking a node.
++ * The function returns >= 0 if the path went too deep; the
++ * returned value is the last position of the path.
++ */
++static inline int insertBit(uint x, uchar *array, uint *i, uint *d) {
++ if (x != 0) {
++   *i += *d;
++ } else {
++   *i -= *d;
++ }
++ *d /= 2;
++
++ if (array[*i] == 0) {
++   array[*i] = 1;
++   return -1;
++ }
++ if (*d == 0) return *i;
++ else return -2;
++}
+ 
+ int dab_filltree2(Test **test, int irun) {
+  int size = (ntuple == 0) ? 128 : ntuple;
+@@ -173,27 +195,3 @@ int dab_filltree2(Test **test, int irun) {
+  return(0);
+ }
+ 
+-/* 
+- * Insert a bit into the tree, represented by an array.
+- * A value of one is marked; zero is unmarked.
+- * The function returns -2 is still on the path.
+- * The function returns -1 if the path ends by marking a node.
+- * The function returns >= 0 if the path went too deep; the
+- * returned value is the last position of the path.
+- */
+-inline int insertBit(uint x, uchar *array, uint *i, uint *d) {
+- if (x != 0) {
+-   *i += *d;
+- } else {
+-   *i -= *d;
+- }
+- *d /= 2;
+-
+- if (array[*i] == 0) {
+-   array[*i] = 1;
+-   return -1;
+- }
+- if (*d == 0) return *i;
+- else return -2;
+-}
+-
+-- 
+2.19.2
+

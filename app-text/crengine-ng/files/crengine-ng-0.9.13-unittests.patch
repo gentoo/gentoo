@@ -1,0 +1,30 @@
+From 054875c021539c21e93665fcfc969d61d5a3e9e8 Mon Sep 17 00:00:00 2001
+From: Aleksey Chernov <valexlin@gmail.com>
+Date: Thu, 13 Nov 2025 19:41:36 +0400
+Subject: [PATCH] Fixed unittests linking error.
+
+---
+ crengine/tests/CMakeLists.txt | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/crengine/tests/CMakeLists.txt b/crengine/tests/CMakeLists.txt
+index 02d623e8..2905f63a 100644
+--- a/crengine/tests/CMakeLists.txt
++++ b/crengine/tests/CMakeLists.txt
+@@ -126,7 +126,12 @@ if(WIN32)
+ endif(WIN32)
+ 
+ add_executable(unittests ${SRC_LIST})
+-target_link_libraries(unittests ${CRE_NG} GTest::gtest_main)
++if (USE_ZLIB)
++    set(ADD_LIBS "${ZLIB_LIBRARIES}")
++else()
++    set(ADD_LIBS)
++endif()
++target_link_libraries(unittests ${CRE_NG} ${ADD_LIBS} GTest::gtest_main)
+ target_include_directories(unittests PRIVATE ${PRIVATE_INCLUDE_DIRECTORIES})
+ 
+ include(GoogleTest)
+-- 
+2.51.0
+

@@ -1,0 +1,14 @@
+Don't clobber toolchain defaults.
+
+https://bugs.gentoo.org/895530
+--- a/configure
++++ b/configure
+@@ -1381,7 +1381,7 @@ fi
+ echo "Checking for secure compile option support in $CC ..."
+ GCCSEC="no"
+ LDSEC="no"
+-GCCSECOPT="-fstack-protector-all --param ssp-buffer-size=4 -D_FORTIFY_SOURCE=2"
++GCCSECOPT="-fstack-protector-all --param ssp-buffer-size=4"
+ echo '#include <stdio.h>' > $TMPC.c
+ echo 'int main() { printf(""); return 0; }' >> $TMPC.c
+ $CC -pie -fPIE $GCCSEPOPT -o $TMPC $TMPC.c > /dev/null 2> $TMPC.c.err

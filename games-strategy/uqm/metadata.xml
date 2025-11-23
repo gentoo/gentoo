@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<use>
+		<flag name="music">download and install original 3DO music files</flag>
+		<flag name="remix">download and install remixed music files (large)</flag>
+		<flag name="voice">download and install voice files (large)</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">sc2</remote-id>
+	</upstream>
+</pkgmetadata>

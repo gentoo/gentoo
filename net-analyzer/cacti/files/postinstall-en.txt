@@ -1,0 +1,62 @@
+
+New Install
+
+1. Create the new cacti database
+   shell> mysqladmin -p --user=root create cacti
+2. Import the default cacti database:
+   shell> mysql -p --user=root cacti < ${MY_INSTALLDIR}/cacti.sql
+3. Create a MySQL username and password for cacti.
+   shell> mysql -p --user=root mysql
+   mysql> GRANT ALL ON cacti.* TO cactiuser@localhost IDENTIFIED BY 'somepassword';
+   mysql> flush privileges;
+4. Edit ${MY_INSTALLDIR}/include/config.php and modify the MySQL user,
+   password and database for your cacti configuration.
+
+   Example:
+	\$database_default = "cacti";
+	\$database_hostname = "localhost";
+	\$database_username = "cactiuser";
+	\$database_password = "somepassword";
+
+5. Point your web browser to:  http://${VHOST_HOSTNAME}/${VHOST_APPDIR}/
+   Make sure to fill in all of the path variables carefully and
+    correctly on the following screen.
+6. After you've gone through the setup wizard, go back to the main cacti page
+   and login as:
+	Username: admin
+	Password: admin
+
+Upgrading
+
+1. Backup DB in the case that something goes wrong.
+   shell> mysqldump -l --add-drop-table cacti > mysql.cacti
+2. Backup your rra/ directory and any custom scripts in your scripts/
+   directory.
+3. Edit ${MY_INSTALLDIR}/include/config.php, and confirm that the MySQL user,
+   password and database is correct for your cacti configuration.
+   
+   Example:
+        \$database_default = "cacti";
+        \$database_hostname = "localhost";
+        \$database_username = "cactiuser";
+        \$database_password = "somepassword";
+4. Point your web browser to: http://${VHOST_HOSTNAME}/${VHOST_APPDIR}/
+   Select "Upgrade".
+   Make sure to fill in all of the path variables carefully and
+   correctly on the following screen.
+
+Cronjob
+
+Either new or upgrading, make sure you have a cron job - Add this line to 
+your /etc/crontab file:
+
+   */5 * * * * ${VHOST_SERVER_GID} /usr/bin/php ${MY_INSTALLDIR}/poller.php > /dev/null 2>&1
+
+Note that you should use poller.php as the cronjob instead of cmd.php (as it was with 
+earlier versions) to enable you to switch between cmd.php and cactid.
+
+Also make sure that the user poller.php runs as ( ${VHOST_SERVER_GID} ) has
+permission to create new files in Cacti's 'rra/' directory which is
+${MY_INSTALLDIR}/rra
+
+

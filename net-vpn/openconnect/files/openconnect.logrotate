@@ -1,0 +1,8 @@
+# openconnect logrotate snipet for Gentoo Linux
+#
+/var/log/openconnect/*/*  {
+  missingok
+  size 5M
+  notifempty
+}
+

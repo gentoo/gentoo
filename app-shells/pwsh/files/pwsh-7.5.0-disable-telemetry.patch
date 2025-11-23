@@ -1,0 +1,11 @@
+--- a/src/System.Management.Automation/utils/Telemetry.cs
++++ b/src/System.Management.Automation/utils/Telemetry.cs
+@@ -640,6 +640,8 @@ namespace Microsoft.PowerShell.Telemetry
+                         "Az Predictor"
+                     };
+             }
++
++        CanSendTelemetry = false;
+         }
+ 
+         /// <summary>

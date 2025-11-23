@@ -1,0 +1,26 @@
+diff --git a/libarchive/archive_read_support_filter_lrzip.c b/libarchive/archive_read_support_filter_lrzip.c
+index a562d538..f3ec40c4 100644
+--- a/libarchive/archive_read_support_filter_lrzip.c
++++ b/libarchive/archive_read_support_filter_lrzip.c
+@@ -109,7 +109,7 @@ lrzip_bidder_init(struct archive_read_filter *self)
+ {
+ 	int r;
+ 
+-	r = __archive_read_program(self, "lrzip -d -q");
++	r = __archive_read_program(self, "lrzip -d -Q");
+ 	/* Note: We set the format here even if __archive_read_program()
+ 	 * above fails.  We do, after all, know what the format is
+ 	 * even if we weren't able to read it. */
+diff --git a/libarchive/archive_write_add_filter_lrzip.c b/libarchive/archive_write_add_filter_lrzip.c
+index fe974c93..8fe498dd 100644
+--- a/libarchive/archive_write_add_filter_lrzip.c
++++ b/libarchive/archive_write_add_filter_lrzip.c
+@@ -133,7 +133,7 @@ archive_write_lrzip_open(struct archive_write_filter *f)
+ 	int r;
+ 
+ 	archive_string_init(&as);
+-	archive_strcpy(&as, "lrzip -q");
++	archive_strcpy(&as, "lrzip -Q");
+ 
+ 	/* Specify compression type. */
+ 	switch (data->compression) {

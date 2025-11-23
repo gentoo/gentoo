@@ -1,0 +1,197 @@
+diff -Naur ext3grep-0.10.1-orig/src/commandline.cc ext3grep-0.10.1/src/commandline.cc
+--- ext3grep-0.10.1-orig/src/commandline.cc	2008-12-14 16:25:53.000000000 +0100
++++ ext3grep-0.10.1/src/commandline.cc	2009-08-04 00:25:40.000000000 +0200
+@@ -32,6 +32,8 @@
+ #include "globals.h"
+ #include "restore.h"
+ #include "accept.h"
++#include <ctime>
++#include <limits>
+ 
+ // Commandline options.
+ bool commandline_superblock = false;
+diff -Naur ext3grep-0.10.1-orig/src/custom.cc ext3grep-0.10.1/src/custom.cc
+--- ext3grep-0.10.1-orig/src/custom.cc	2008-10-23 00:20:32.000000000 +0200
++++ ext3grep-0.10.1/src/custom.cc	2009-08-04 00:25:40.000000000 +0200
+@@ -42,6 +42,9 @@
+ #include "get_block.h"
+ #include "init_consts.h"
+ #include "print_inode_to.h"
++#include <sys/time.h>
++#include <cstring>
++#include <ctime>
+ 
+ // The first part of this file was written and used for custom job:
+ // recovering emails on a 40 GB partition that had no information
+diff -Naur ext3grep-0.10.1-orig/src/debug.h ext3grep-0.10.1/src/debug.h
+--- ext3grep-0.10.1-orig/src/debug.h	2008-06-27 17:01:19.000000000 +0200
++++ ext3grep-0.10.1/src/debug.h	2009-08-04 00:25:07.000000000 +0200
+@@ -31,6 +31,7 @@
+ 
+ #include <iostream>
+ #include <cstdlib>      // std::exit, EXIT_FAILURE
++#include <stdint.h>
+ 
+ #define AllocTag1(p)
+ #define AllocTag2(p, desc)
+diff -Naur ext3grep-0.10.1-orig/src/directories.cc ext3grep-0.10.1/src/directories.cc
+--- ext3grep-0.10.1-orig/src/directories.cc	2008-10-16 00:45:31.000000000 +0200
++++ ext3grep-0.10.1/src/directories.cc	2009-08-04 00:25:40.000000000 +0200
+@@ -33,6 +33,9 @@
+ #include "indirect_blocks.h"
+ #include "get_block.h"
+ #include "directories.h"
++#include <cstring>
++#include <ctime>
++#include <algorithm>
+ 
+ //-----------------------------------------------------------------------------
+ //
+diff -Naur ext3grep-0.10.1-orig/src/dir_inode_to_block.cc ext3grep-0.10.1/src/dir_inode_to_block.cc
+--- ext3grep-0.10.1-orig/src/dir_inode_to_block.cc	2008-06-28 15:40:06.000000000 +0200
++++ ext3grep-0.10.1/src/dir_inode_to_block.cc	2009-08-04 00:25:40.000000000 +0200
+@@ -40,6 +40,8 @@
+ #include "print_inode_to.h"
+ #include "directories.h"
+ #include "journal.h"
++#include <cstring>
++#include <limits>
+ 
+ //-----------------------------------------------------------------------------
+ //
+diff -Naur ext3grep-0.10.1-orig/src/histogram.cc ext3grep-0.10.1/src/histogram.cc
+--- ext3grep-0.10.1-orig/src/histogram.cc	2008-06-28 16:13:31.000000000 +0200
++++ ext3grep-0.10.1/src/histogram.cc	2009-08-04 00:25:40.000000000 +0200
+@@ -29,6 +29,7 @@
+ #endif
+ 
+ #include "commandline.h"
++#include <cstring>
+ 
+ //-----------------------------------------------------------------------------
+ //
+diff -Naur ext3grep-0.10.1-orig/src/indirect_blocks.cc ext3grep-0.10.1/src/indirect_blocks.cc
+--- ext3grep-0.10.1-orig/src/indirect_blocks.cc	2008-10-20 20:45:29.000000000 +0200
++++ ext3grep-0.10.1/src/indirect_blocks.cc	2009-08-04 00:25:40.000000000 +0200
+@@ -54,6 +54,7 @@
+ #include "forward_declarations.h"
+ #include "endian_conversion.h"
+ #include "superblock.h"
++#include <set>
+ 
+ //-----------------------------------------------------------------------------
+ //
+diff -Naur ext3grep-0.10.1-orig/src/init_directories.cc ext3grep-0.10.1/src/init_directories.cc
+--- ext3grep-0.10.1-orig/src/init_directories.cc	2008-06-29 21:08:31.000000000 +0200
++++ ext3grep-0.10.1/src/init_directories.cc	2009-08-04 00:25:40.000000000 +0200
+@@ -39,6 +39,7 @@
+ #include "get_block.h"
+ #include "journal.h"
+ #include "dir_inode_to_block.h"
++#include <limits>
+ 
+ all_directories_type all_directories;
+ inode_to_directory_type inode_to_directory;
+diff -Naur ext3grep-0.10.1-orig/src/init_files.cc ext3grep-0.10.1/src/init_files.cc
+--- ext3grep-0.10.1-orig/src/init_files.cc	2008-06-29 04:39:33.000000000 +0200
++++ ext3grep-0.10.1/src/init_files.cc	2009-08-04 00:25:40.000000000 +0200
+@@ -33,6 +33,7 @@
+ #include "globals.h"
+ #include "forward_declarations.h"
+ #include "journal.h"
++#include <algorithm>
+ 
+ //-----------------------------------------------------------------------------
+ //
+diff -Naur ext3grep-0.10.1-orig/src/inode.cc ext3grep-0.10.1/src/inode.cc
+--- ext3grep-0.10.1-orig/src/inode.cc	2008-06-29 04:44:39.000000000 +0200
++++ ext3grep-0.10.1/src/inode.cc	2009-08-04 00:25:41.000000000 +0200
+@@ -33,6 +33,7 @@
+ #include "globals.h"
+ #include "conversion.h"
+ #include "inode.h"
++#include <limits>
+ 
+ #if USE_MMAP
+ void inode_unmap(int group)
+diff -Naur ext3grep-0.10.1-orig/src/is_blockdetection.h ext3grep-0.10.1/src/is_blockdetection.h
+--- ext3grep-0.10.1-orig/src/is_blockdetection.h	2008-07-11 02:23:37.000000000 +0200
++++ ext3grep-0.10.1/src/is_blockdetection.h	2009-08-04 00:25:40.000000000 +0200
+@@ -31,6 +31,8 @@
+ 
+ #include "inode.h"	// Needed for InodePointer
+ 
++#include <cstring>
++
+ // Return type of is_directory.
+ enum is_directory_type {
+   isdir_no = 0,         // Block is not a directory.
+diff -Naur ext3grep-0.10.1-orig/src/journal.cc ext3grep-0.10.1/src/journal.cc
+--- ext3grep-0.10.1-orig/src/journal.cc	2008-10-18 03:06:35.000000000 +0200
++++ ext3grep-0.10.1/src/journal.cc	2009-08-04 00:25:40.000000000 +0200
+@@ -37,6 +37,8 @@
+ #include "indirect_blocks.h"
+ #include "get_block.h"
+ #include "commandline.h"
++#include <algorithm>
++#include <ctime>
+ 
+ //-----------------------------------------------------------------------------
+ //
+diff -Naur ext3grep-0.10.1-orig/src/last_undeleted_directory_inode_refering_to_block.cc ext3grep-0.10.1/src/last_undeleted_directory_inode_refering_to_block.cc
+--- ext3grep-0.10.1-orig/src/last_undeleted_directory_inode_refering_to_block.cc	2008-07-11 19:18:57.000000000 +0200
++++ ext3grep-0.10.1/src/last_undeleted_directory_inode_refering_to_block.cc	2009-08-04 00:25:41.000000000 +0200
+@@ -29,6 +29,7 @@
+ #include "is_blockdetection.h"
+ #include "inode_refers_to.h"
+ #include "journal.h"
++#include <limits>
+ 
+ // Return std::numeric_limits<int>::max() if the inode is still allocated
+ // and refering to the given block, otherwise return the Journal sequence
+diff -Naur ext3grep-0.10.1-orig/src/ostream_operators.cc ext3grep-0.10.1/src/ostream_operators.cc
+--- ext3grep-0.10.1-orig/src/ostream_operators.cc	2008-10-20 20:45:29.000000000 +0200
++++ ext3grep-0.10.1/src/ostream_operators.cc	2009-08-04 00:25:41.000000000 +0200
+@@ -31,6 +31,7 @@
+ #include "endian_conversion.h"
+ #include "superblock.h"
+ #include "globals.h"
++#include <ctime>
+ 
+ //-----------------------------------------------------------------------------
+ //
+diff -Naur ext3grep-0.10.1-orig/src/print_inode_to.cc ext3grep-0.10.1/src/print_inode_to.cc
+--- ext3grep-0.10.1-orig/src/print_inode_to.cc	2008-10-17 03:27:15.000000000 +0200
++++ ext3grep-0.10.1/src/print_inode_to.cc	2009-08-04 00:25:41.000000000 +0200
+@@ -30,6 +30,7 @@
+ #include "FileMode.h"
+ #include "globals.h"
+ #include "print_symlink.h"
++#include <ctime>
+ 
+ void print_inode_to(std::ostream& os, Inode const& inode)
+ {
+diff -Naur ext3grep-0.10.1-orig/src/restore.cc ext3grep-0.10.1/src/restore.cc
+--- ext3grep-0.10.1-orig/src/restore.cc	2008-10-18 17:30:54.000000000 +0200
++++ ext3grep-0.10.1/src/restore.cc	2009-08-04 00:25:41.000000000 +0200
+@@ -44,6 +44,9 @@
+ #include "FileMode.h"
+ #include "indirect_blocks.h"
+ #include "print_symlink.h"
++#include <sys/types.h>
++#include <sys/stat.h>
++#include <fcntl.h>
+ 
+ #ifdef CPPGRAPH
+ void iterate_over_all_blocks_of__with__restore_file_action(void) { restore_file_action(0, 0, NULL); }
+diff -Naur ext3grep-0.10.1-orig/src/show_journal_inodes.cc ext3grep-0.10.1/src/show_journal_inodes.cc
+--- ext3grep-0.10.1-orig/src/show_journal_inodes.cc	2008-10-18 03:06:35.000000000 +0200
++++ ext3grep-0.10.1/src/show_journal_inodes.cc	2009-08-04 00:25:41.000000000 +0200
+@@ -30,6 +30,7 @@
+ 
+ #include "journal.h"
+ #include "print_inode_to.h"
++#include <limits>
+ 
+ void show_journal_inodes(int inodenr)
+ {

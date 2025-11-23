@@ -1,0 +1,115 @@
+https://github.com/Cockatrice/Cockatrice/issues/4825
+https://github.com/Cockatrice/Cockatrice/commit/ee674cb0cfa42875eef1a0a80597840816ad86ea
+
+From 07625b7736b8ec1ca1d6013c61b5a48e46715e90 Mon Sep 17 00:00:00 2001
+From: Zach H <zahalpern+github@gmail.com>
+Date: Fri, 13 Oct 2023 14:45:22 -0400
+Subject: [PATCH] Support MacOS 12 & 13. Support Protobuf 23. Deprecate MacOS
+ 11. (#4884)
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -216,11 +216,13 @@ include(FindQtRuntime)
+ set(CMAKE_AUTOMOC TRUE)
+ 
+ # Find other needed libraries
+-find_package(Protobuf REQUIRED)
+-if(NOT EXISTS "${Protobuf_PROTOC_EXECUTABLE}")
++find_package(Protobuf CONFIG)
++if(NOT Protobuf_FOUND)
++  find_package(Protobuf REQUIRED)
++endif()
++
++if(${Protobuf_VERSION} VERSION_LESS "3.21.0.0" AND NOT EXISTS "${Protobuf_PROTOC_EXECUTABLE}")
+   message(FATAL_ERROR "No protoc command found!")
+-else()
+-  message(STATUS "Found Protobuf ${Protobuf_VERSION} at: ${Protobuf_LIBRARIES}")
+ endif()
+ 
+ #Find OpenSSL
+--- a/common/debug_pb_message.cpp
++++ b/common/debug_pb_message.cpp
+@@ -8,15 +8,6 @@
+ #include <google/protobuf/message.h>
+ #include <google/protobuf/text_format.h>
+ 
+-// google/protobuf/stubs/strutil.h is missing on some systems!
+-namespace google
+-{
+-namespace protobuf
+-{
+-std::string CEscape(const std::string &src);
+-} // namespace protobuf
+-} // namespace google
+-
+ // FastFieldValuePrinter is added in protobuf 3.4, going out of our way to add the old FieldValuePrinter is not worth it
+ #if GOOGLE_PROTOBUF_VERSION > 3004000
+ 
+@@ -44,8 +35,8 @@ void LimitedPrinter::PrintString(const std::string &val,
+ {
+     auto length = val.length();
+     if (length > MAX_TEXT_LENGTH) {
+-        generator->PrintString("\"" + ::google::protobuf::CEscape(val.substr(0, MAX_NAME_LENGTH)) + "... ---snip--- (" +
+-                               std::to_string(length) + " bytes total) \"");
++        ::google::protobuf::TextFormat::FastFieldValuePrinter::PrintString(
++            val.substr(0, MAX_NAME_LENGTH) + "... ---snip--- (" + std::to_string(length) + " bytes total", generator);
+     } else {
+         ::google::protobuf::TextFormat::FastFieldValuePrinter::PrintString(val, generator);
+     }
+--- a/common/pb/CMakeLists.txt
++++ b/common/pb/CMakeLists.txt
+@@ -160,23 +160,35 @@ set(PROTO_FILES
+     session_event.proto
+ )
+ 
+-include_directories(${PROTOBUF_INCLUDE_DIRS})
+-include_directories(${CMAKE_CURRENT_BINARY_DIR})
+-protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS ${PROTO_FILES})
++if(${Protobuf_VERSION} VERSION_LESS "3.21.0.0")
++  message(STATUS "Using Protobuf Legacy Mode")
++  include_directories(${PROTOBUF_INCLUDE_DIRS})
++  include_directories(${CMAKE_CURRENT_BINARY_DIR})
++  protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS ${PROTO_FILES})
+ 
+-add_library(cockatrice_protocol ${PROTO_SRCS} ${PROTO_HDRS})
+-set(cockatrice_protocol_LIBS ${PROTOBUF_LIBRARIES})
+-if(UNIX)
+-  set(cockatrice_protocol_LIBS ${cockatrice_protocol_LIBS} -lpthread)
+-endif(UNIX)
+-target_link_libraries(cockatrice_protocol ${cockatrice_protocol_LIBS})
++  add_library(cockatrice_protocol ${PROTO_SRCS} ${PROTO_HDRS})
++  set(cockatrice_protocol_LIBS ${PROTOBUF_LIBRARIES})
++  if(UNIX)
++    set(cockatrice_protocol_LIBS ${cockatrice_protocol_LIBS} -lpthread)
++  endif(UNIX)
++  target_link_libraries(cockatrice_protocol ${cockatrice_protocol_LIBS})
+ 
+-# ubuntu uses an outdated package for protobuf, 3.1.0 is required
+-if(${Protobuf_VERSION} VERSION_LESS "3.1.0")
+-  # remove unused parameter and misleading indentation warnings when compiling to avoid errors
+-  set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wno-unused-parameter -Wno-misleading-indentation")
+-  message(WARNING "Older protobuf version found (${Protobuf_VERSION} < 3.1.0), "
+-                  "disabled the warnings 'unused-parameter' and 'misleading-indentation' for protobuf generated code "
+-                  "to avoid compilation errors."
++  # ubuntu uses an outdated package for protobuf, 3.1.0 is required
++  if(${Protobuf_VERSION} VERSION_LESS "3.1.0")
++    # remove unused parameter and misleading indentation warnings when compiling to avoid errors
++    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wno-unused-parameter -Wno-misleading-indentation")
++    message(WARNING "Older protobuf version found (${Protobuf_VERSION} < 3.1.0), "
++                    "disabled the warnings 'unused-parameter' and 'misleading-indentation' for protobuf generated code "
++                    "to avoid compilation errors."
++    )
++  endif()
++else()
++  add_library(cockatrice_protocol ${PROTO_FILES})
++  target_link_libraries(cockatrice_protocol PUBLIC protobuf::libprotobuf)
++  set(PROTO_BINARY_DIR "${CMAKE_CURRENT_BINARY_DIR}")
++  target_include_directories(cockatrice_protocol PUBLIC "${PROTOBUF_INCLUDE_DIRS}")
++
++  protobuf_generate(
++    TARGET cockatrice_protocol IMPORT_DIRS "${CMAKE_CURRENT_LIST_DIR}" PROTOC_OUT_DIR "${PROTO_BINARY_DIR}"
+   )
+ endif()
+-- 
+2.43.0
+

@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting pamsmbd"
+	start-stop-daemon --start --quiet --exec /usr/sbin/pamsmbd
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping pamsmbd"
+	start-stop-daemon --stop --quiet --name pamsmbd
+	eend $?
+}

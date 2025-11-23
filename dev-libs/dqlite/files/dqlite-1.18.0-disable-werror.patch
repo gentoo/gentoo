@@ -1,0 +1,19 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -3,7 +3,7 @@ AC_INIT([libdqlite], [1.18.0], [https://github.com/canonical/dqlite])
+ AC_CONFIG_MACRO_DIR([m4])
+ AC_CONFIG_AUX_DIR([ac])
+
+-AM_INIT_AUTOMAKE([subdir-objects -Wall -Werror -Wno-portability foreign])
++AM_INIT_AUTOMAKE([subdir-objects -Wall -Wno-portability foreign])
+ AM_SILENT_RULES([yes])
+
+ AC_SUBST(AM_CFLAGS)
+@@ -114,7 +114,6 @@ CC_CHECK_FLAGS_APPEND([AM_CFLAGS],[CFLAGS],[ \
+   -Wnested-externs \
+   -Wconversion \
+   -Wno-format-nonliteral \
+-  -Werror \
+ ])
+ # To enable:
+ #

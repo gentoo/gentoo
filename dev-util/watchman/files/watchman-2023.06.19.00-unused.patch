@@ -1,0 +1,82 @@
+https://bugs.gentoo.org/936225
+https://github.com/facebook/watchman/commit/c3536143cab534cdd9696eb3e2d03c4ac1e2f883
+
+From c3536143cab534cdd9696eb3e2d03c4ac1e2f883 Mon Sep 17 00:00:00 2001
+From: Jun Wu <quark@meta.com>
+Date: Tue, 18 Jun 2024 15:23:48 -0700
+Subject: [PATCH] rust: relax deny(warnings) to internal-only
+
+Summary:
+`deny(warnings)` makes the code fragile with subtle compiler differences
+(upgrade, or internal vs external configuration).
+
+For example, the external rustc complains:
+
+  C:\src\watchman\watchman\rust\watchman_client>cargo check
+      Checking watchman_client v0.9.0 (C:\open\watchman\watchman\rust\watchman_client)
+  error: field `unilateral` is never read
+     --> src\lib.rs:589:17
+      |
+  588 |         pub struct Unilateral {
+      |                    ---------- field in this struct
+  589 |             pub unilateral: bool,
+      |                 ^^^^^^^^^^
+      |
+      = note: `Unilateral` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
+
+while the internal one doesn't:
+
+  watchman/rust/watchman_client % arc rust-check --flagfile fbcode//mode/win  :watchman_client
+  ..
+  BXL SUCCEEDED
+
+It seems a bad idea to publish an internally-green code that fails to compile
+externally, or has to upgrade the code every time a compiler upgrade detects
+some new issues.
+
+Let's just limit `deny(warnings)` to internal only when building with buck.
+
+See also https://www.reddit.com/r/rust/comments/f5xpib/psa_denywarnings_is_actively_harmful/
+
+Reviewed By: MichaelCuevas
+
+Differential Revision: D58753075
+
+fbshipit-source-id: bd09c09b4195c884172afab2200e3b2857af67d3
+---
+ watchman/rust/serde_bser/src/lib.rs      | 3 ++-
+ watchman/rust/watchman_client/src/lib.rs | 2 +-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/watchman/rust/serde_bser/src/lib.rs b/watchman/rust/serde_bser/src/lib.rs
+index cf2fe51b2202..b169c977cf05 100644
+--- a/watchman/rust/serde_bser/src/lib.rs
++++ b/watchman/rust/serde_bser/src/lib.rs
+@@ -1,4 +1,3 @@
+-#![deny(warnings, rust_2018_idioms)]
+ /*
+  * Copyright (c) Meta Platforms, Inc. and affiliates.
+  *
+@@ -6,6 +5,8 @@
+  * LICENSE file in the root directory of this source tree.
+  */
+ 
++#![cfg_attr(fbcode_build, deny(warnings, rust_2018_idioms))]
++
+ pub mod bytestring;
+ pub mod de;
+ mod errors;
+diff --git a/watchman/rust/watchman_client/src/lib.rs b/watchman/rust/watchman_client/src/lib.rs
+index 1d102fe0b2bd..df902313c6a5 100644
+--- a/watchman/rust/watchman_client/src/lib.rs
++++ b/watchman/rust/watchman_client/src/lib.rs
+@@ -33,7 +33,7 @@
+ //!     Ok(())
+ //! }
+ //! ```
+-#![deny(warnings)]
++#![cfg_attr(fbcode_build, deny(warnings))]
+ 
+ pub mod expr;
+ pub mod fields;
+

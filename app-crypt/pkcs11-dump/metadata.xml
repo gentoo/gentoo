@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<upstream>
+		<remote-id type="google-code">pkcs11-tools</remote-id>
+		<remote-id type="github">alonbl/pkcs11-dump</remote-id>
+	</upstream>
+</pkgmetadata>

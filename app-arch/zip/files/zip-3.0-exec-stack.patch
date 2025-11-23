@@ -1,0 +1,22 @@
+add proper GNU stack markings so we dont get the default: executable
+
+--- zip-2.31/crc_i386.S
++++ zip-2.31/crc_i386.S
+@@ -238,3 +238,7 @@
+ #endif /* i386 || _i386 || _I386 || __i386 */
+ 
+ #endif /* !USE_ZLIB && !CRC_TABLE_ONLY */
++
++#if defined __ELF__ && defined __linux__
++.section .note.GNU-stack,"",@progbits
++#endif
+--- zip-2.31/match.S
++++ zip-2.31/match.S
+@@ -405,3 +405,7 @@
+ #endif /* i386 || _I386 || _i386 || __i386  */
+ 
+ #endif /* !USE_ZLIB */
++
++#if defined __ELF__ && defined __linux__
++.section .note.GNU-stack,"",@progbits
++#endif

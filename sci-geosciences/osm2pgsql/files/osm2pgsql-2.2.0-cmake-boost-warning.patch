@@ -1,0 +1,14 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,10 @@
+-
+ cmake_minimum_required(VERSION 3.10.0)
+ 
++# FIXME: Replace with >=Boost-1.70 shipped BoostConfig.cmake
++if (POLICY CMP0167)
++    cmake_policy(SET CMP0167 OLD) # since 3.30
++endif()
++
+ project(osm2pgsql VERSION 2.2.0 LANGUAGES CXX C)
+ 
+ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)

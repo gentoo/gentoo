@@ -1,0 +1,47 @@
+--- a/Makefile
++++ b/Makefile
+@@ -18,21 +18,15 @@
+ # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ #
+ 
+-CROSS		=
+-CC		= $(CROSS)gcc
+ 
+-CFLAGS		=  -I. -I./yaffs2
+-CFLAGS		+= -O2
+-CFLAGS		+= -Wall -Wshadow -Winline -Wpointer-arith -Wnested-externs \
+-		   -Wwrite-strings -Wstrict-prototypes -Wmissing-declarations \
+-		   -Wmissing-prototypes -Wredundant-decls
++CPPFLAGS		+=  -I. -I./yaffs2
+ 
+-CFLAGS		+= -D_HAVE_MMAP
++CPPFLAGS		+= -D_HAVE_MMAP
+ 
+ #CFLAGS		+= -D_MKYAFFS2_DEBUG
+ #CFLAGS		+= -D_UNYAFFS2_DEBUG
+ 
+-LDFLAGS		+= -lm
++LDLIBS		+= -lm
+ 
+ YAFFS2SRCS	= yaffs2/yaffs_hweight.c yaffs2/yaffs_ecc.c \
+ 		  yaffs2/yaffs_packedtags1.c yaffs2/yaffs_packedtags2.c
+@@ -60,14 +54,16 @@ all: $(TARGET)
+ install:
+ 	cp $(TARGET) $(INSTALLDIR)
+ 
++LINK = $(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(LDLIBS)
++
+ mkyaffs2: $(YAFFS2OBJS) $(LIBOBJS) $(MKYAFFS2OBJS)
+-	$(CC) -o $@ $(YAFFS2OBJS) $(LIBOBJS) $(MKYAFFS2OBJS) $(LDFLAGS)
++	$(LINK)
+ 
+ unyaffs2: $(YAFFS2OBJS) $(LIBOBJS) $(UNYAFFS2OBJS)
+-	$(CC) -o $@ $(YAFFS2OBJS) $(LIBOBJS) $(UNYAFFS2OBJS) $(LDFLAGS)
++	$(LINK)
+ 
+ unspare2: $(YAFFS2OBJS) $(LIBOBJS) $(UNSPARE2OBJS)
+-	$(CC) -o $@ $(YAFFS2OBJS) $(LIBOBJS) $(UNSPARE2OBJS) $(LDFLAGS)
++	$(LINK)
+ 
+ clean:
+ 	rm -rf $(YAFFS2OBJS) $(LIBOBJS) \

@@ -1,0 +1,75 @@
+https://bugs.gentoo.org/935392
+https://github.com/fail2ban/fail2ban/commit/6fce23e7baa484c7d1f9b0c9a11986f3916c41dd
+https://github.com/fail2ban/fail2ban/commit/2fed408c05ac5206b490368d94599869bd6a056d
+https://github.com/fail2ban/fail2ban/commit/50ff131a0fd8f54fdeb14b48353f842ee8ae8c1a
+
+From 6fce23e7baa484c7d1f9b0c9a11986f3916c41dd Mon Sep 17 00:00:00 2001
+From: "Sergey G. Brester" <serg.brester@sebres.de>
+Date: Mon, 10 Jun 2024 01:40:59 +0200
+Subject: [PATCH] `filterd./sshd.conf`: fixed journalmatch (sshd.service seems
+ to be renamed to ssh.service)
+
+closes gh-3747
+---
+ config/filter.d/sshd.conf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/config/filter.d/sshd.conf b/config/filter.d/sshd.conf
+index a954774c62..1c8a02deb5 100644
+--- a/config/filter.d/sshd.conf
++++ b/config/filter.d/sshd.conf
+@@ -126,7 +126,7 @@ ignoreregex =
+ 
+ maxlines = 1
+ 
+-journalmatch = _SYSTEMD_UNIT=sshd.service + _COMM=sshd
++journalmatch = _SYSTEMD_UNIT=ssh.service + _COMM=sshd
+ 
+ # DEV Notes:
+ #
+
+From 2fed408c05ac5206b490368d94599869bd6a056d Mon Sep 17 00:00:00 2001
+From: Fabian Dellwing <fabian.dellwing@mbconnectline.de>
+Date: Tue, 2 Jul 2024 07:54:15 +0200
+Subject: [PATCH] Adjust sshd filter for OpenSSH 9.8 new daemon name
+
+---
+ config/filter.d/sshd.conf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/config/filter.d/sshd.conf b/config/filter.d/sshd.conf
+index 1c8a02deb5..a1fd749aed 100644
+--- a/config/filter.d/sshd.conf
++++ b/config/filter.d/sshd.conf
+@@ -16,7 +16,7 @@ before = common.conf
+ 
+ [DEFAULT]
+ 
+-_daemon = sshd
++_daemon = (?:sshd(?:-session)?)
+ 
+ # optional prefix (logged from several ssh versions) like "error: ", "error: PAM: " or "fatal: "
+ __pref = (?:(?:error|fatal): (?:PAM: )?)?
+
+From 50ff131a0fd8f54fdeb14b48353f842ee8ae8c1a Mon Sep 17 00:00:00 2001
+From: "Sergey G. Brester" <serg.brester@sebres.de>
+Date: Wed, 3 Jul 2024 19:35:28 +0200
+Subject: [PATCH] filter.d/sshd.conf: ungroup (unneeded for _daemon)
+
+---
+ config/filter.d/sshd.conf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/config/filter.d/sshd.conf b/config/filter.d/sshd.conf
+index a1fd749aed..3a84b1ba52 100644
+--- a/config/filter.d/sshd.conf
++++ b/config/filter.d/sshd.conf
+@@ -16,7 +16,7 @@ before = common.conf
+ 
+ [DEFAULT]
+ 
+-_daemon = (?:sshd(?:-session)?)
++_daemon = sshd(?:-session)?
+ 
+ # optional prefix (logged from several ssh versions) like "error: ", "error: PAM: " or "fatal: "
+ __pref = (?:(?:error|fatal): (?:PAM: )?)?

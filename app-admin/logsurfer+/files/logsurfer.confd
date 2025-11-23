@@ -1,0 +1,4 @@
+# /etc/conf.d/logsurfer
+
+# Options to pass to the logsurfer process
+LOGSURFER_OPTS="-f /var/log/messages"

@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/881077
+https://gitlab.torproject.org/tpo/core/torsocks/-/issues/40014
+https://lists.torproject.org/pipermail/tor-dev/2022-December/014790.html
+--- a/src/common/config-file.h
++++ b/src/common/config-file.h
+@@ -109,6 +109,7 @@ int conf_file_set_allow_inbound(const char *val, struct configuration *config);
+ int conf_file_set_allow_outbound_localhost(const char *val, struct
+ 		configuration *config);
+ int conf_file_set_isolate_pid(const char *val, struct configuration *config);
++int conf_file_set_enable_ipv6(const char *val, struct configuration *config);
+ 
+ int conf_apply_socks_auth(struct configuration *config);
+

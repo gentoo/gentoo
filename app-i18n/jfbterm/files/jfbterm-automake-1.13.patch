@@ -1,0 +1,14 @@
+--- a/configure.in
++++ b/configure.in
+@@ -1,7 +1,8 @@
+ dnl Process this file with autoconf to produce a configure script.
+-AC_INIT(fbcommon.c)
+-AM_CONFIG_HEADER(config.h)
+-AM_INIT_AUTOMAKE(jfbterm, 0.4.7)
++AC_INIT([jfbterm], [0.4.7])
++AC_CONFIG_SRCDIR([fbcommon.c])
++AC_CONFIG_HEADERS([config.h])
++AM_INIT_AUTOMAKE
+ 
+ dnl Checks for programs.
+ AC_PROG_CC

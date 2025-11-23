@@ -1,0 +1,46 @@
+https://bugs.gentoo.org/947523
+
+Upstream decided to auto-enable srtp, sctp and dtls options, when the
+webrtc option is enabled.  This is going to partially revert upstream
+fd4828bafe613eec33e8f3faef5ab5181a73c8b6 to fix webrtc compilation.
+
+https://gitlab.freedesktop.org/gstreamer/gstreamer/-/commit/fd4828bafe613eec33e8f3faef5ab5181a73c8b6
+
+../gst-plugins-bad-1.24.10/ext/dtls/meson.build:15:33: ERROR: Feature dtls cannot be disabled: webrtc option is enabled
+../gst-plugins-bad-1.24.10/ext/sctp/meson.build:8:33: ERROR: Feature sctp cannot be disabled: webrtc option is enabled
+../gst-plugins-bad-1.24.10/ext/srtp/meson.build:10:33: ERROR: Feature srtp cannot be disabled: webrtc option is enabled
+--- a/ext/dtls/meson.build
++++ b/ext/dtls/meson.build
+@@ -12,7 +12,7 @@ dtls_sources = [
+   'gstdtlselement.c',
+ ]
+ 
+-dtls_option = get_option('dtls').enable_if(get_option('webrtc').enabled(), error_message: 'webrtc option is enabled')
++dtls_option = get_option('dtls')
+ openssl_dep = dependency('openssl', version: '>= 1.0.1', required: dtls_option)
+ libcrypto_dep = dependency('libcrypto', required: dtls_option)
+ 
+--- a/ext/sctp/meson.build
++++ b/ext/sctp/meson.build
+@@ -5,8 +5,8 @@ sctp_sources = [
+   'sctpassociation.c'
+ ]
+ 
+-sctp_option = get_option('sctp').enable_if(get_option('webrtc').enabled(), error_message: 'webrtc option is enabled')
++sctp_option = get_option('sctp')
+ if sctp_option.disabled()
+   subdir_done()
+ endif
+ 
+--- a/ext/srtp/meson.build
++++ b/ext/srtp/meson.build
+@@ -7,8 +7,8 @@ srtp_sources = [
+ ]
+ 
+ srtp_cargs = []
+-srtp_option = get_option('srtp').enable_if(get_option('webrtc').enabled(), error_message: 'webrtc option is enabled')
++srtp_option = get_option('srtp')
+ if srtp_option.disabled()
+   srtp_dep = dependency('', required : false)
+   subdir_done()
+ endif

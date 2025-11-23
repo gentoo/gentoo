@@ -1,0 +1,41 @@
+From d5ebfd72adff704c046170cf7ab798f5f7415dd5 Mon Sep 17 00:00:00 2001
+From: FoldCat <akane@maidagency.org>
+Date: Tue, 4 Mar 2025 13:09:59 +0800
+Subject: [PATCH] work around dead oauth2 credentials, correcting the previous bad patch
+
+Google doesn't let us bake in OAuth2 credentials, and for some time,
+Google sign-in has been broken. Arch dealt with this in March, and so
+did we to some degree, but in the last few months, our sign-in
+credentials have been broken. It appears that we actually did remove API
+credentials in March around Chrome 89, but they got added back, perhaps
+when rotating newer versions to replace older versions. Work around this
+by following Arch's lead: we remove the predefined credentials, as
+before, but also we patch Chromium so that people can use their own
+easily, using Arch's patch for that.
+---
+ google_apis/api_key_cache.cc | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/google_apis/api_key_cache.cc b/google_apis/api_key_cache.cc
+index 55c6028248..12ccf9e358 100644
+--- a/google_apis/api_key_cache.cc
++++ b/google_apis/api_key_cache.cc
+@@ -191,13 +191,13 @@ ApiKeyCache::ApiKeyCache(const DefaultApiKeys& default_api_keys) {
+ 
+   std::string default_client_id = CalculateKeyValue(
+       default_api_keys.google_default_client_id,
+-      STRINGIZE_NO_EXPANSION(GOOGLE_DEFAULT_CLIENT_ID), nullptr, std::string(),
++      STRINGIZE_NO_EXPANSION(GOOGLE_DEFAULT_CLIENT_ID), ::switches::kOAuth2ClientID, std::string(),
+       environment.get(), command_line, gaia_config,
+       default_api_keys.allow_override_via_environment,
+       default_api_keys.allow_unset_values);
+   std::string default_client_secret = CalculateKeyValue(
+       default_api_keys.google_default_client_secret,
+-      STRINGIZE_NO_EXPANSION(GOOGLE_DEFAULT_CLIENT_SECRET), nullptr,
++      STRINGIZE_NO_EXPANSION(GOOGLE_DEFAULT_CLIENT_SECRET), ::switches::kOAuth2ClientSecret,
+       std::string(), environment.get(), command_line, gaia_config,
+       default_api_keys.allow_override_via_environment,
+       default_api_keys.allow_unset_values);
+-- 
+2.45.3
+

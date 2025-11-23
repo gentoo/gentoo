@@ -1,0 +1,52 @@
+https://codeberg.org/gumbo-parser/gumbo-parser/commit/22182be87a5bcb2e9ab46562ccf59d30e7771b92
+
+From 22182be87a5bcb2e9ab46562ccf59d30e7771b92 Mon Sep 17 00:00:00 2001
+From: Grigory Kirillov <txgk@bk.ru>
+Date: Wed, 28 May 2025 09:25:40 +0300
+Subject: [PATCH] meson.build: fix compilation with gtest which requires C++17
+ now
+
+---
+ meson.build | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 39a6c9a..6615119 100644
+--- a/meson.build
++++ b/meson.build
+@@ -2,7 +2,7 @@ project(
+ 	'gumbo-parser',
+ 	'c',
+ 	version: '0.13.1',
+-	default_options: ['c_std=c99', 'cpp_std=c++14', 'default_library=both']
++	default_options: ['c_std=c99', 'default_library=both']
+ )
+ 
+ gumbo_src = files(
+@@ -27,7 +27,7 @@ pkg = import('pkgconfig')
+ pkg.generate(libgumbo, filebase: 'gumbo', name: 'Gumbo', description: 'A fully-compliant HTML5 parser.')
+ 
+ if get_option('tests')
+-	add_languages('cpp')
++	add_languages('cpp', native: false)
+ 
+ 	# TODO: Fallback in case gtest isn't installed
+ 	gtest_main = dependency('gtest_main')
+@@ -47,6 +47,7 @@ if get_option('tests')
+ 	gumbo_test = executable(
+ 		'gumbo_test',
+ 		gumbo_test_src,
++		cpp_args: ['-std=c++17'],
+ 		link_with: [libgumbo],
+ 		include_directories: ['src'],
+ 		dependencies: [gtest_main],
+@@ -57,7 +58,7 @@ if get_option('tests')
+ endif
+ 
+ if get_option('examples')
+-	add_languages('cpp')
++	add_languages('cpp', native: false)
+ 
+ 	example_src = files(
+ 		'examples/clean_text.cc',
+

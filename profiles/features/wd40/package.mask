@@ -1,0 +1,431 @@
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2025-10-06)
+# Rewritten in Rust.
+>=app-misc/task-3
+
+# Azamat H. Hackimov <azamat.hackimov@gmail.com> (2025-09-22)
+# app-i18n/libchewing was ported to Rust.
+>=app-i18n/ibus-chewing-2.1.7
+>=app-i18n/libchewing-0.10.3
+dev-build/corrosion
+
+# Patrick McLean <chutzpah@gentoo.org> (2025-09-16)
+# New version is rewritten in rust
+>=app-misc/asciinema-3.0.0
+
+# Vincent de Phily <moltonel@gmail.com> (2025-09-01)
+# Another package requiring Rust
+app-portage/emlop
+
+# Michał Górny <mgorny@gentoo.org> (2024-05-08)
+# Pure Python packages using dev-python/uv-build, and therefore
+# requiring Rust to install, and their reverse dependencies.
+dev-python/gherkin-official
+dev-python/pytest-bdd
+dev-python/pytest-describe
+dev-python/uv-build
+dev-python/zmq-anyio
+sys-auth/ssh-ldap-pubkey
+
+# Sebastian Pipping <sping@gentoo.org> (2025-06-20)
+# Requires masked packages (bug #958030)
+# (dev-python/keyring, dev-python/pydantic)
+dev-python/deepdiff
+dev-python/poetry
+dev-python/poetry-plugin-export
+
+# Holger Hoffstätte <holger@applied-asynchrony.com> (2025-05-18)
+# >=bpftrace-0.23 needs Rust-based blazesym_c
+>=dev-debug/bpftrace-0.23.2
+>=dev-libs/blazesym_c-0.1.1
+
+# Victor Kustov <ktrace@yandex.ru> (2025-05-08)
+# LibrePCB start ported to Rust
+>=sci-electronics/librepcb-1.3.0
+
+# Michał Górny <mgorny@gentoo.org> (2024-05-08)
+# The sigstore bundle.
+dev-python/betterproto
+dev-python/pypi-attestations
+dev-python/securesystemslib
+dev-python/sigstore
+dev-python/sigstore-models
+dev-python/sigstore-protobuf-specs
+dev-python/sigstore-rekor-types
+dev-python/rfc3161-client
+dev-python/tuf
+
+# Michał Górny <mgorny@gentoo.org> (2024-04-20)
+# The mitmproxy bundle.
+dev-util/bpf-linker
+dev-util/btfdump
+net-proxy/mitmproxy
+net-proxy/mitmproxy-linux
+net-proxy/mitmproxy-rs
+
+# idealseal <realidealseal@protonmail.com> (2025-03-02)
+# Fish was ported to Rust.
+>=app-shells/fish-4.0.0
+
+# James Le Cuirot <chewi@gentoo.org> (2024-12-17)
+# steam-overlay packages requiring Rust.
+x11-libs/extest
+
+# Viorel Munteanu <ceamac@gentoo.org> (2024-10-24)
+# Requires already masked packages (dev-python/bcrypt,
+# dev-python/cryptography, dev-python/fido2, dev-python/pyopenssl)
+dev-python/asyncssh
+
+# Michał Górny <mgorny@gentoo.org> (2024-09-23)
+# Requires dev-python/nh3.
+dev-python/textile
+
+# matoro <matoro_gentoo@matoro.tk> (2024-08-10), #936643
+# Unmask old pre-rust librsvg.  This has vulnerabilities,
+# so it is masked by default and only unmasked on wd40
+-<gnome-base/librsvg-2.41
+
+# matoro <matoro_gentoo@matoro.tk> (2024-07-27)
+# Additional entries exposed by correcting musl, #936643
+x11-terms/alacritty
+www-client/firefox
+www-misc/buku
+www-client/seamonkey
+www-misc/urlwatch
+www-client/tangram
+www-apps/nextcloud-notify_push
+sys-process/below
+sys-process/bottom
+sys-cluster/ceph
+sys-block/dust
+sys-apps/zram-generator
+sys-apps/ripgrep
+sys-apps/eza
+sys-apps/lsd
+sys-apps/fd
+net-wireless/urh
+net-wireless/gr-ieee802154
+net-wireless/gr-rds
+net-wireless/gr-scopy
+net-wireless/gqrx-scanner
+net-misc/electrum
+net-misc/gns3-server
+net-misc/geckodriver
+net-im/synapse
+net-irc/limnoria
+net-irc/limnoria-plugins-progval
+net-irc/limnoria-plugins-jlu5
+net-irc/limnoria-plugins-chantracker
+net-analyzer/nagstamon
+net-analyzer/python-gvm
+net-analyzer/suricata
+net-analyzer/gvm-tools
+net-analyzer/gr-fosphor
+net-analyzer/gvm
+net-analyzer/snmpclitools
+media-sound/beets
+media-sound/gnome-sound-recorder
+media-gfx/oxipng
+media-gfx/curtail
+mail-client/thunderbird
+gui-libs/greetd
+gnome-extra/gnome-shell-extensions
+gui-apps/tuigreet
+gnome-base/gnome-extra-apps
+gui-apps/gtkgreet
+gnome-extra/pch-session
+gnome-extra/gnome-weather
+gnome-extra/gnome-shell-frippery
+gnome-extra/gnome-characters
+gnome-extra/cjs
+gnome-extra/cinnamon
+gnome-extra/gnome-shell-extension-dash-to-panel
+gnome-extra/gnome-shell-extension-weather-in-the-clock
+gnome-extra/gnome-shell-extension-bluetooth-quick-connect
+gnome-extra/gnome-shell-extension-gsconnect
+gnome-extra/gnome-shell-extension-desktop-icons-ng
+gnome-extra/gnome-shell-extension-appindicator
+gnome-extra/gnome-shell-extension-control-blur-effect-on-lock-screen
+gnome-extra/gnome-shell-extension-bing-wallpaper
+gnome-extra/gnome-shell-extension-applications-overview-tooltip
+gnome-extra/gnome-shell-extension-alphabetical-grid
+gnome-extra/gnome-shell-extension-pop-shell
+gnome-base/gnome
+games-strategy/ja2-stracciatella
+games-strategy/0ad
+games-rpg/rpg-cli
+games-board/gnome-chess
+dev-util/pwntools
+dev-util/rustup
+dev-util/sccache
+dev-util/bindgen
+dev-util/cargo-license
+dev-util/cargo-audit
+dev-util/bingrep
+dev-python/trimesh
+dev-python/vpython
+dev-python/treq
+dev-python/twython
+dev-python/txtorcon
+dev-python/txredisapi
+dev-python/sqlglot
+dev-python/spake2
+dev-python/requests-ntlm
+dev-python/python3-discogs-client
+dev-python/python-axolotl
+dev-python/pyghmi
+dev-python/omemo-dr
+dev-python/noiseprotocol
+dev-python/magic-wormhole
+dev-python/magic-wormhole-transit-relay
+dev-python/magic-wormhole-mailbox-server
+dev-python/jwcrypto
+dev-python/websockify
+dev-python/jupyter
+dev-python/jupyter-server-proxy
+dev-python/jupyter-kernel-test
+dev-python/jellyfish
+www-apps/novnc
+dev-python/jsonmerge
+dev-python/jinja2-pluralize
+dev-python/fido2
+dev-python/github3-py
+dev-python/google-auth-oauthlib
+dev-python/elasticsearch
+dev-python/dns-lexicon
+dev-python/dissononce
+dev-python/consonance
+dev-python/pygithub
+dev-python/adblock
+dev-python/pysnmp
+dev-python/pysnmp-mibs
+dev-python/pysmi
+dev-python/pysnmpcrypto
+dev-java/icedtea-web
+dev-debug/pwndbg
+dev-db/mycli
+dev-python/keep
+dev-db/pgcli
+dev-db/mysql-workbench
+>=app-text/pelican-4.9.0
+dev-util/howdoi
+app-text/pdfminer
+app-text/restview
+app-text/fblog
+app-shells/nushell
+app-misc/rpick
+app-misc/skim
+app-misc/anki
+app-i18n/yaskkserv2
+app-emulation/cloud-init
+app-forensics/yara-x
+app-eselect/eselect-gnome-shell-extensions
+app-emacs/rg
+app-emacs/emacs-ipython-notebook
+app-crypt/yubikey-manager
+app-crypt/sequoia-sq
+app-crypt/sequoia-sqv
+app-crypt/certbot-apache
+app-crypt/nitrocli
+app-crypt/certbot-dns-nsone
+app-crypt/certbot-dns-dnsimple
+app-containers/netavark
+app-containers/aardvark-dns
+app-backup/duplicity
+app-backup/backintime
+app-benchmarks/hyperfine
+app-backup/duply
+
+# Agostino Sarubbo <ago@gentoo.org> (2024-04-10)
+# Requires rust on armv4/armv4t/arm5te
+dev-util/bugbite-cli
+dev-util/cargo-nextest
+
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-03-19)
+# Requires dev-python/cryptography
+app-emulation/virt-firmware
+
+# Michał Górny <mgorny@gentoo.org> (2024-02-03)
+# Need dev-python/jsonschema (or its revdeps).
+dev-python/flasgger
+dev-python/nbclient
+dev-python/nbconvert
+dev-python/nbformat
+dev-python/nbsphinx
+dev-python/sphobjinv
+dev-python/warlock
+net-wireless/gnuradio
+net-wireless/gqrx
+net-wireless/gr-iqbal
+net-wireless/gr-osmosdr
+app-emulation/diskimage-builder
+
+# Various packages requiring Rust.
+app-admin/ansible
+app-admin/ansible-core
+app-admin/salt
+>=app-antivirus/clamav-0.105.1
+app-backup/borgbackup
+app-backup/borgmatic
+app-crypt/acme
+app-crypt/certbot
+app-crypt/certbot-nginx
+app-crypt/rpm-sequoia
+app-emulation/virtiofsd
+app-eselect/eselect-rust
+app-misc/gramps
+app-misc/khal
+app-text/mdbook
+dev-embedded/esptool
+dev-lang/rust
+dev-lang/rust-bin
+>=dev-lang/spidermonkey-78
+>=dev-libs/gjs-1.66
+dev-python/aiohttp-oauthlib
+dev-python/autobahn
+dev-python/aws-sam-translator
+>=dev-python/bcrypt-4
+dev-python/cfn-lint
+>=dev-python/cryptography-36
+dev-python/aioquic
+dev-python/apprise
+dev-python/cramjam
+dev-python/dirty-equals
+dev-python/hatch-jupyter-builder
+dev-python/inflect
+dev-python/inline-snapshot
+dev-python/ipyparallel
+dev-python/ipywidgets
+dev-python/jaraco-itertools
+dev-python/josepy
+>=dev-python/jsonschema-4.18.0
+dev-python/jsonschema-path
+dev-python/jsonschema-spec
+dev-python/jsonschema-specifications
+dev-python/jupyter-events
+dev-python/jupyter-lsp
+dev-python/jupyter-server
+dev-python/jupyter-server-mathjax
+dev-python/jupyter-server-terminals
+dev-python/jupyterlab-widgets
+dev-python/jupyterlab-server
+dev-python/jupyterlab
+dev-python/keyring
+dev-python/apache-libcloud
+dev-python/moto
+dev-python/mkdocs-i18n
+dev-python/mkdocs-git-authors-plugin
+dev-python/mkdocs-git-revision-date-localized-plugin
+dev-python/mkdocs-material
+dev-python/mkdocs-material-extensions
+dev-python/mkdocs-pymdownx-material-extras
+dev-python/mkdocs-redirects
+dev-python/mkdocs-static-i18n
+dev-python/nbclassic
+dev-python/nbdime
+dev-python/nbval
+dev-python/nh3
+dev-python/notebook
+dev-python/notebook-shim
+dev-python/oauthlib
+dev-python/openapi-core
+dev-python/openapi-schema-validator
+dev-python/openapi-spec-validator
+dev-python/openstacksdk
+dev-python/orjson
+dev-python/os-client-config
+dev-python/osc-lib
+dev-python/paramiko
+dev-python/patiencediff
+dev-python/pooch
+dev-python/pydantic
+dev-python/pydantic-core
+dev-python/pyfuse3
+>=dev-python/pyopenssl-22
+dev-python/pymdown-extensions
+dev-python/pyspelling
+dev-python/pyspnego
+dev-python/pyproject-fmt
+dev-python/pytest-jupyter
+dev-python/pytest-localftpserver
+dev-python/pytest-salt-factories
+dev-python/pytest-trio
+dev-python/python-glanceclient
+dev-python/python-ironicclient
+dev-python/python-jose
+dev-python/python-neutronclient
+dev-python/python-openstackclient
+dev-python/python-snappy
+dev-python/quart-trio
+dev-python/readme-renderer
+dev-python/referencing
+dev-python/requests-kerberos
+dev-python/requests-oauthlib
+dev-python/rpds-py
+dev-python/secretstorage
+dev-python/selenium
+dev-python/service-identity
+dev-python/setuptools-rust
+dev-python/sshpubkeys
+dev-python/sshtunnel
+dev-python/tempest
+dev-python/trustme
+dev-python/trio
+dev-python/trio-websocket
+dev-python/twine
+dev-python/uv
+dev-python/vdirsyncer
+dev-python/watchfiles
+dev-python/wcmatch
+dev-python/widgetsnbextension
+dev-ruby/selenium-webdriver
+dev-util/buildbot-worker
+dev-util/cargo-c
+dev-util/cbindgen
+dev-util/git-delta
+dev-util/maturin
+dev-util/selenium-manager
+dev-util/tree-sitter-cli
+dev-vcs/breezy
+>=dev-vcs/stgit-2
+>=games-board/gnome-mahjongg-3.40.0
+>=games-puzzle/swell-foop-46
+gnome-base/gdm
+>=gnome-base/gnome-core-apps-3.36.5
+>=gnome-base/gnome-core-libs-3.36.5
+>=gnome-base/gnome-light-3.36.5
+>=gnome-base/gnome-shell-3.38
+>=gnome-base/librsvg-2.41
+gnome-extra/gnome-browser-connector
+>=gnome-extra/gnome-system-monitor-46
+gnome-extra/gnome-tweaks
+gnome-extra/sushi
+>=media-gfx/libimagequant-4
+<media-gfx/gimp-3.0.6
+>=media-libs/libopenraw-0.3.2
+media-plugins/gimp-lqr
+media-video/rav1e
+net-analyzer/wtfis
+net-dns/dnsviz
+net-dns/pdns-recursor
+net-im/gajim
+>=net-irc/polari-3.37
+net-libs/quiche
+net-misc/electrum-ltc
+net-misc/streamlink
+net-news/newsboat
+net-p2p/deluge
+sci-geosciences/gnome-maps
+>=sys-apps/bat-0.18.1
+sys-block/thin-provisioning-tools
+>=sys-process/glances-4.1.2.1
+sys-fs/bcachefs-tools
+virtual/rust
+www-apps/radicale
+>=x11-themes/adwaita-icon-theme-3.36
+x11-themes/adwaita-icon-theme-legacy
+>=gui-libs/gtk-4.20.1
+>=dev-cpp/gtkmm-4.20
+>=gui-libs/libadwaita-1.8.2

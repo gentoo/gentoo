@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>kangie@gentoo.org</email>
+		<name>Matt Jolly</name>
+	</maintainer>
+	<longdescription>
+		This is a simple library to load images of various formats as SDL surfaces.
+		It can load BMP, GIF, JPEG, LBM, PCX, PNG, PNM (PPM/PGM/PBM), QOI, TGA, XCF, XPM, and simple SVG format images.
+		It can also load AVIF, JPEG-XL, TIFF, and WebP images, depending on build options
+	</longdescription>
+	<use>
+		<flag name="samples">Install sample programs</flag>
+		<flag name="stb">Use stb_image from vendored <pkg>dev-libs/stb</pkg> for JPEG and PNG image loading to reduce external dependencies</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">libsdl-org/SDL_image</remote-id>
+		<bugs-to>https://github.com/libsdl-org/SDL_image/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

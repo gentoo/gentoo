@@ -1,0 +1,7 @@
+Gentoo's libx86 package does not have a .pc file (adds -lx86 either way).
+--- a/configure.ac
++++ b/configure.ac
+@@ -38,3 +38,2 @@
+ # Checks for pkg-config packages
+-PKG_CHECK_MODULES(LIBX86, x86)
+ 

@@ -1,0 +1,15 @@
+Uses gettimeofday but won't include sys/time.h without HAVE_SYS_TIME_H
+leading to failure with -Werror=implicit-function-declaration (clang16).
+
+sys/timeb.h is for deprecated ftime() and should not be used.
+
+https://bugs.gentoo.org/870973
+--- a/configure.in
++++ b/configure.in
+@@ -51,5 +51,5 @@
+ dnl Checks for header files.
+ AC_HEADER_STDC
+-AC_CHECK_HEADERS([stropts.h sys/timeb.h sys/select.h])
++AC_CHECK_HEADERS([stropts.h sys/time.h sys/select.h])
+ 
+ dnl ================================================================

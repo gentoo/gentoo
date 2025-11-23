@@ -1,0 +1,87 @@
+https://github.com/yasm/yasm/commit/f79f5e37f0e4b06d5dc303cc219929d7359dd7df
+From: Biswapriyo Nath <nathbappai@gmail.com>
+Date: Thu, 18 May 2023 03:53:32 +0530
+Subject: [PATCH] Fix function declaration warnings with clang (#226)
+
+This fixes the following compiler warnings with clang
+
+tools/genperf/perfect.c:65:6: warning: a function definition without a prototype
+is deprecated in all versions of C and is not supported in C2x [-Wdeprecated-non-prototype]
+
+frontends/yasm/yasm.c:1379:23: warning: a function declaration without a prototype
+is deprecated in all versions of C [-Wstrict-prototypes]
+
+modules/objfmts/elf/elf.c:225:18: warning: a function declaration without a prototype
+is deprecated in all versions of C [-Wstrict-prototypes]
+--- a/frontends/tasm/tasm.c
++++ b/frontends/tasm/tasm.c
+@@ -817,7 +817,7 @@ opt_exe_handler(char *cmd, /*@unused@*/ char *param, int extra)
+ }
+ 
+ static void
+-apply_preproc_builtins()
++apply_preproc_builtins(void)
+ {
+     char *predef;
+ 
+@@ -853,7 +853,7 @@ apply_preproc_standard_macros(const yasm_stdmac *stdmacs)
+ }
+ 
+ static void
+-apply_preproc_saved_options()
++apply_preproc_saved_options(void)
+ {
+     constcharparam *cp, *cpnext;
+ 
+--- a/frontends/yasm/yasm.c
++++ b/frontends/yasm/yasm.c
+@@ -1376,7 +1376,7 @@ opt_plugin_handler(/*@unused@*/ char *cmd, char *param,
+ #endif
+ 
+ static void
+-apply_preproc_builtins()
++apply_preproc_builtins(void)
+ {
+     char *predef;
+ 
+@@ -1409,7 +1409,7 @@ apply_preproc_standard_macros(const yasm_stdmac *stdmacs)
+ }
+ 
+ static void
+-apply_preproc_saved_options()
++apply_preproc_saved_options(void)
+ {
+     constcharparam *cp, *cpnext;
+ 
+--- a/modules/objfmts/elf/elf.c
++++ b/modules/objfmts/elf/elf.c
+@@ -222,7 +222,7 @@ elf_strtab_entry_set_str(elf_strtab_entry *entry, const char *str)
+ }
+ 
+ elf_strtab_head *
+-elf_strtab_create()
++elf_strtab_create(void)
+ {
+     elf_strtab_head *strtab = yasm_xmalloc(sizeof(elf_strtab_head));
+     elf_strtab_entry *entry = yasm_xmalloc(sizeof(elf_strtab_entry));
+@@ -373,7 +373,7 @@ elf_ssym_symtab_entry_print(void *data, FILE *f, int indent_level)
+ }
+ 
+ elf_symtab_head *
+-elf_symtab_create()
++elf_symtab_create(void)
+ {
+     elf_symtab_head *symtab = yasm_xmalloc(sizeof(elf_symtab_head));
+     elf_symtab_entry *entry = yasm_xmalloc(sizeof(elf_symtab_entry));
+--- a/tools/genperf/perfect.c
++++ b/tools/genperf/perfect.c
+@@ -62,8 +62,7 @@ Find the mapping that will produce a perfect hash
+ */
+ 
+ /* return the ceiling of the log (base 2) of val */
+-ub4  phash_log2(val)
+-ub4  val;
++ub4  phash_log2(ub4 val)
+ {
+   ub4 i;
+   for (i=0; ((ub4)1<<i) < val; ++i)

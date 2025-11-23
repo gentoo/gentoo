@@ -1,0 +1,30 @@
+https://gitlab.com/muttmua/mutt/-/merge_requests/175
+
+From 563c5f60521f1541b739480a5e242f6cd3a450ef Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Thu, 7 Dec 2023 19:39:06 +0100
+Subject: [PATCH] configure.ac: Fix ICONV_NONTRANS probe
+
+The standard iconv function uses char ** even for its input argument.
+With a const char ** argument, ICONV_NONTRANS is incorrectly set to 1
+if the compiler produces an error for such incompatible pointer types.
+
+Although as far as I can see, the only thing that accomplishes is
+disabling an assert, so it probably does not matter much.
+--- a/configure.ac
++++ b/configure.ac
+@@ -1325,10 +1325,10 @@ AC_CACHE_CHECK([whether iconv is non-transcribing], mutt_cv_iconv_nontrans,
+ int main()
+ {
+   iconv_t cd;
+-  const char *ib;
++  char *ib;
+   char *ob;
+   size_t ibl, obl;
+-  const char *s = "\304\211";
++  char *s = (char *) "\304\211";
+ changequote(, )dnl
+   char t[3];
+ changequote([, ])dnl
+-- 
+GitLab

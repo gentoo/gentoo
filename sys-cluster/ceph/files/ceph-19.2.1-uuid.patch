@@ -1,0 +1,41 @@
+From 01306208eac492ee0e67bff143fc32d0551a2a6f Mon Sep 17 00:00:00 2001
+From: Luc Ritchie <luc.ritchie@gmail.com>
+Date: Fri, 6 Sep 2024 19:17:53 -0400
+Subject: [PATCH] src/include/uuid.h: fix for boost 1.86.0
+
+Boost 1.86.0 includes a significant rewrite of the UUID library. The
+Changelog[^1] notes that:
+
+> u.data(), where u is of type uuid, now returns a pointer to the first
+> uint8_t of the representation (same as u.begin().) For backward
+> compatibility, data is a function object with operator(), rather than
+> a member function, which allows most existing uses of data as a
+> public member to remain valid, if no longer encouraged.
+
+I don't know enough about C++ to judge how that should have worked, but
+it leads to a compile error here. This patch uses BOOST_VERSION to
+decide whether to access .data as a member or .data() as a function.
+
+[^1]: https://www.boost.org/doc/libs/1_86_0/libs/uuid/doc/html/uuid.html#changes
+
+Signed-off-by: Luc Ritchie <luc.ritchie@gmail.com>
+---
+ src/include/uuid.h | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/include/uuid.h b/src/include/uuid.h
+index f6ef9878daee7..a5d63c372977a 100644
+--- a/src/include/uuid.h
++++ b/src/include/uuid.h
+@@ -60,7 +60,11 @@ struct uuid_d {
+   }
+ 
+   const char *bytes() const {
++#if BOOST_VERSION >= 108600
++    return (const char*)uuid.data();
++#else
+     return (const char*)uuid.data;
++#endif
+   }
+ 
+   void encode(::ceph::buffer::list::contiguous_appender& p) const {

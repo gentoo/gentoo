@@ -1,0 +1,18 @@
+--- apngdis-2.9-src/Makefile
++++ apngdis-2.9-src/Makefile
+@@ -1,11 +1,10 @@
+ PACKAGE    = apngdis
+-CC         = gcc
+-CFLAGS     = -Wall -pedantic
+-CFLAGS_OPT = -O2
+-LIBS       = -lstdc++ -lm -lpng -lz
++CC         ?= gcc
++CFLAGS     += -Wall -pedantic
++LIBS       = -lstdc++ -lm -lpng
+ 
+ all :
+-	$(CC) $(CFLAGS) $(CFLAGS_OPT) -o $(PACKAGE) $(PACKAGE).cpp -s $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $(PACKAGE) $(PACKAGE).cpp $(LIBS)
+ 
+ .PHONY : clean
+ 

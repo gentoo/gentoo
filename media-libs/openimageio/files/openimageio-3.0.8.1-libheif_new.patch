@@ -1,0 +1,34 @@
+https://bugs.gentoo.org/965279
+https://github.com/AcademySoftwareFoundation/OpenImageIO/pull/4822
+
+Replace deprecated libheif API since 1.20.x.
+--- a/src/heif.imageio/heifinput.cpp	2025-07-05 08:39:32.000000000 +0300
++++ b/src/heif.imageio/heifinput.cpp	2025-10-30 08:06:22.249543775 +0300
+@@ -390,8 +390,13 @@
+ #else
+     int ystride = 0;
+ #endif
++#if LIBHEIF_NUMERIC_VERSION >= MAKE_LIBHEIF_VERSION(1, 20, 0, 0)
++    const uint8_t* hdata = m_himage.get_plane2(heif_channel_interleaved,
++                                              &ystride);
++#else
+     const uint8_t* hdata = m_himage.get_plane(heif_channel_interleaved,
+                                               &ystride);
++#endif
+     if (!hdata) {
+         errorfmt("Unknown read error");
+         return false;
+--- a/src/heif.imageio/heifoutput.cpp	2025-07-05 08:39:32.000000000 +0300
++++ b/src/heif.imageio/heifoutput.cpp	2025-10-30 08:06:11.566273402 +0300
+@@ -155,7 +155,11 @@
+ #else
+     int hystride = 0;
+ #endif
++#if LIBHEIF_NUMERIC_VERSION >= MAKE_LIBHEIF_VERSION(1, 20, 0, 0)
++    uint8_t* hdata = m_himage.get_plane2(heif_channel_interleaved, &hystride);
++#else
+     uint8_t* hdata = m_himage.get_plane(heif_channel_interleaved, &hystride);
++#endif
+     hdata += hystride * (y - m_spec.y);
+     memcpy(hdata, data, hystride);
+     return true;

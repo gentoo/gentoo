@@ -1,0 +1,45 @@
+https://github.com/tdf/libcmis/pull/69
+https://github.com/tdf/libcmis/commit/0753091be57edae28655e43a9bae9e4c4e414117
+
+From 0753091be57edae28655e43a9bae9e4c4e414117 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Caol=C3=A1n=20McNamara?= <caolan.mcnamara@collabora.com>
+Date: Fri, 13 Sep 2024 16:02:13 +0100
+Subject: [PATCH] sha1 test fails with older boost
+
+<fridrich> 1) test: XmlTest::sha1Test (F) line: 588 test-xmlutils.cxx
+<fridrich> equality assertion failed
+<fridrich> - Expected: f7ff9e8b7bb2e09b70935a5d785e0cc5d9d0abf0
+<fridrich> - Actual  : 8b9efff79be0b27b5d5a9370c50c5e78f0abd0d9
+---
+ src/libcmis/xml-utils.cxx | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/src/libcmis/xml-utils.cxx b/src/libcmis/xml-utils.cxx
+index cdf088f..3568ec6 100644
+--- a/src/libcmis/xml-utils.cxx
++++ b/src/libcmis/xml-utils.cxx
+@@ -536,17 +536,19 @@ namespace libcmis
+         boost::uuids::detail::sha1::digest_type digest;
+         sha1.get_digest( digest );
+ 
+-        // by using a pointer to unsigned char, we can read the
+-        // object representation of either typedef.
+-        const unsigned char* ptr = reinterpret_cast<const unsigned char*>( digest );
+-
+         stringstream out;
+         // Setup writing mode. Every number must produce two
+         // hexadecimal digits, including possible leading 0s, or we get
+         // less than 40 digits as result.
+         out << hex << setfill('0') << right;
+-        for ( int i = 0; i < sizeof( digest ); ++ptr, ++i )
++#if BOOST_VERSION < 108600
++        for ( int i = 0; i < 5; ++i )
++            out << setw(8) << digest[i];
++#else
++        const unsigned char* ptr = reinterpret_cast<const unsigned char*>( digest );
++        for ( size_t i = 0; i < sizeof( digest ); ++ptr, ++i )
+             out << setw(2) << static_cast<int>( *ptr );
++#endif
+         return out.str();
+     }
+ 

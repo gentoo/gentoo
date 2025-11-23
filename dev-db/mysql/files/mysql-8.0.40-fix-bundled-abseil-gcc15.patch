@@ -1,0 +1,19 @@
+https://github.com/abseil/abseil-cpp/pull/1739
+
+From https://github.com/abseil/abseil-cpp/commit/809e5de7b92950849289236a5a09e9cb4f32c7b9 Mon Sep 17 00:00:00 2001
+From: Christopher Fore <csfore@posteo.net>
+Date: Mon, 5 Aug 2024 12:09:18 -0700
+Subject: [PATCH] PR #1739: container/internal: Explicitly include <cstdint>
+
+GCC 15 will no longer include <cstdint> by default, resulting in build failures in projects that do not explicitly include it.
+
+--- a/extra/abseil/abseil-cpp-20230802.1/absl/container/internal/container_memory.h
++++ b/extra/abseil/abseil-cpp-20230802.1/absl/container/internal/container_memory.h
+@@ -17,6 +17,7 @@
+ 
+ #include <cassert>
+ #include <cstddef>
++#include <cstdint>
+ #include <cstring>
+ #include <memory>
+ #include <new>

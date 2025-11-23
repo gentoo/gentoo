@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/792435
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -106,6 +106,9 @@
+ GTK_VERSION=`$PKG_CONFIG --variable=gtk_binary_version gtk+-3.0`
+ AC_SUBST(GTK_VERSION)
+ 
++AC_CHECK_LIBM
++AC_SUBST([LIBM])
++
+ # Files
+ 
+ AC_CONFIG_FILES([
+--- a/unico/Makefile.am
++++ b/unico/Makefile.am
+@@ -20,6 +20,6 @@
+ 
+ libunico_la_CFLAGS = $(UNICO_CFLAGS)
+ 
+-libunico_la_LIBADD = $(UNICO_LIBADD)
++libunico_la_LIBADD = $(UNICO_LIBADD) $(LIBM)
+ 
+ libunico_la_LDFLAGS = $(UNICO_LDFLAGS)

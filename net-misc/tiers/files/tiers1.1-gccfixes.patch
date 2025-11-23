@@ -1,0 +1,201 @@
+diff -urN tiers1.1/src/Makefile tiers1.1.new/src/Makefile
+--- tiers1.1/src/Makefile	1997-07-12 23:22:30.000000000 -0700
++++ tiers1.1.new/src/Makefile	2004-01-11 04:56:33.000000000 -0800
+@@ -31,7 +31,9 @@
+ # flags
+ #
+ #FLAGS= -fconserve-space -fno-inline -Wall -Winline -Wpointer-arith -g -DDEBUG
+-FLAGS= -g -fconserve-space
++FLAGS = $(CFLAGS) -fPIC #-g -fconserve-space
++CONFIGFILE = ./tiers_config
++FLAGS += -DCONFIGFILE="\"$(CONFIGFILE)\""
+ 
+ #
+ # tools
+diff -urN tiers1.1/src/tiers.cc tiers1.1.new/src/tiers.cc
+--- tiers1.1/src/tiers.cc	1997-03-04 13:54:18.000000000 -0800
++++ tiers1.1.new/src/tiers.cc	2004-01-11 04:56:33.000000000 -0800
+@@ -24,6 +24,7 @@
+ #include "tiers.hh"
+ #endif
+ 
++#include "tiers_vars.hh"
+ 
+ 
+ ////////////////////////////////////////////////////////////////////////
+@@ -506,4 +507,3 @@
+ }
+   
+ // end of file
+-
+diff -urN tiers1.1/src/tiers.hh tiers1.1.new/src/tiers.hh
+--- tiers1.1/src/tiers.hh	1998-01-12 02:10:46.000000000 -0800
++++ tiers1.1.new/src/tiers.hh	2004-01-11 04:56:33.000000000 -0800
+@@ -20,6 +20,8 @@
+ #ifndef _TIERS_HH
+ #define _TIERS_HH
+ 
++using namespace std;
++
+ 
+ ////////////////////////////////////////////////////////////////////////
+ // Model
+@@ -264,46 +266,46 @@
+ // Defined in tiers_config.cc
+ 
+ // Type of output produced by the model, e.g. Model::GENERIC, Model::GNUPLOT
+-Model::OpType OP_TYPE;
++extern Model::OpType OP_TYPE;
+ 
+ // If set, TIERS_VERBOSE causes the output to contain the
+ // parameters used to generate the model and helpful headings
+ // If undefined, the output is a simple list of nodes and edges
+-bool TIERS_VERBOSE;
++extern bool TIERS_VERBOSE;
+ 
+ // If set, TIERS_LABEL_XXX causes the output to contain a label for
+ // each of the nodes of type XXX
+-bool TIERS_LABEL_WAN;
+-bool TIERS_LABEL_MAN;
+-bool TIERS_LABEL_LAN;
++extern bool TIERS_LABEL_WAN;
++extern bool TIERS_LABEL_MAN;
++extern bool TIERS_LABEL_LAN;
+ 
+ 
+ // If defined as true, the operation of the model is more verbose
+ // If undefined, the model should run with no debugging output
+-bool TIERS_DEBUG;
++extern bool TIERS_DEBUG;
+ 
+ // If defined as true, then an undirected list of edges is produced in the 
+ // output, i.e. the edges (i,j) and (j,i) only appear once in the output
+ // Note that all LAN edges are assumed bidirectional
+-bool REMOVE_DUP_EDGES;
++extern bool REMOVE_DUP_EDGES;
+ 
+ // Set these true to apply proxmity tests to nodes in each network type
+-bool PROXIMITY_TEST_WAN;
+-bool PROXIMITY_TEST_MAN;
+-bool PROXIMITY_TEST_LAN;
++extern bool PROXIMITY_TEST_WAN;
++extern bool PROXIMITY_TEST_MAN;
++extern bool PROXIMITY_TEST_LAN;
+ 
+ // The size of a unit in WAN, MAN and LAN grids
+ // e.g. 1000km, 1km, 1m would be best, but the current values fit with 
+ // typical int sizes
+-unsigned long int WAN_SCALE;
+-unsigned long int MAN_SCALE;
+-unsigned long int LAN_SCALE;	
++extern unsigned long int WAN_SCALE;
++extern unsigned long int MAN_SCALE;
++extern unsigned long int LAN_SCALE;	
+ 
+ // GRID is the size of the square grid on which points are placed
+-unsigned long int GRID;
++extern unsigned long int GRID;
+ 
+ // The comment character for output
+-char COM;
++extern char COM;
+ 
+ 
+ //
+@@ -311,13 +313,13 @@
+ //
+ 
+ // The output directory for results from gnuplot
+-char *title;
++extern char *title;
+ 
+ // The title for results from gnuplot
+-char *outputdir;
++extern char *outputdir;
+ 
+ // Create a unique identifier for each model
+-long int ModelId;
++extern long int ModelId;
+ 
+ // Forward declaration
+ unsigned long int max(unsigned long int A, unsigned long int B);
+diff -urN tiers1.1/src/tiers_config.cc tiers1.1.new/src/tiers_config.cc
+--- tiers1.1/src/tiers_config.cc	1997-07-13 02:55:53.000000000 -0700
++++ tiers1.1.new/src/tiers_config.cc	2004-01-11 04:58:36.000000000 -0800
+@@ -17,7 +17,8 @@
+ 
+ // tiers_config.cc
+ 
+-#include <fstream.h>	// for ifstream
++#include <fstream>	// for ifstream
++#include <iostream>	// for ifstream
+ #include <string.h>	// for strcpy
+ #include <stdlib.h>	// for strtoul
+ 
+@@ -36,10 +37,13 @@
+ {
+   bool ret = true;
+ 
+-  ifstream config_file("./tiers_config");
++#ifndef CONFIGFILE
++#error You need to define CONFIGFILE on the commandline
++#endif
++  ifstream config_file(CONFIGFILE);
+   if (!config_file)
+ 	{
+-	  cerr << "Tiers:: cannot open file './tiers_config'" << endl;
++	  cerr << "Tiers:: cannot open file '" << CONFIGFILE << "'" << endl;
+ 	}
+ 
+   // Read the contents of the file in, skipping blank lines or lines which 
+diff -urN tiers1.1/src/tiers_main.cc tiers1.1.new/src/tiers_main.cc
+--- tiers1.1/src/tiers_main.cc	1997-07-06 00:58:31.000000000 -0700
++++ tiers1.1.new/src/tiers_main.cc	2004-01-11 04:56:33.000000000 -0800
+@@ -25,11 +25,11 @@
+ #include "tiers.hh"
+ #endif
+ 
+-extern "C" 
+-{
+-  long int time(int dummy);
+-  char * initstate(unsigned seed, char *state, int n);
+-}
++//extern "C" 
++//{
++//  long int time(int dummy);
++//  char * initstate(unsigned seed, char *state, int n);
++//}
+ 
+ unsigned long int NW;	// maximum number of WANs, currently 1
+ unsigned long int NM;	// maximum number of MANs per WAN
+@@ -63,7 +63,7 @@
+   cout.setf( ios::unitbuf );
+ 
+ // TIERS_VERBOSE
+-#ifdef 0 
++#ifdef FALSE
+   cout << "Main:: Processing arguments. Arguments are:"
+        << endl;
+   for (int i = 0; i < argc; i++)
+diff -urN tiers1.1/src/tiers_vars.hh tiers1.1.new/src/tiers_vars.hh
+--- tiers1.1/src/tiers_vars.hh	1969-12-31 16:00:00.000000000 -0800
++++ tiers1.1.new/src/tiers_vars.hh	2004-01-11 04:56:33.000000000 -0800
+@@ -0,0 +1,18 @@
++Model::OpType OP_TYPE;
++bool TIERS_VERBOSE;
++bool TIERS_LABEL_WAN;
++bool TIERS_LABEL_MAN;
++bool TIERS_LABEL_LAN;
++bool TIERS_DEBUG;
++bool REMOVE_DUP_EDGES;
++bool PROXIMITY_TEST_WAN;
++bool PROXIMITY_TEST_MAN;
++bool PROXIMITY_TEST_LAN;
++unsigned long int WAN_SCALE;
++unsigned long int MAN_SCALE;
++unsigned long int LAN_SCALE;	
++unsigned long int GRID;
++char COM;
++char *title;
++char *outputdir;
++long int ModelId;

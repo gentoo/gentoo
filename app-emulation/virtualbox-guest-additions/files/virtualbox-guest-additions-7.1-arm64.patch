@@ -1,0 +1,14 @@
+# see request https://www.virtualbox.org/ticket/22397
+--- a/configure
++++ b/configure
+@@ -421,6 +421,10 @@ EOF
+         BUILD_MACHINE='sparc32'
+         BUILD_CPU='blend'
+         ;;
++    aarch64)
++        BUILD_MACHINE='arm64'
++        BUILD_CPU='blend'
++        ;;
+     *)
+       log_failure "Cannot determine system"
+       exit 1

@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index 59e033d..2544237 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -51,7 +51,7 @@ AM_CONDITIONAL([ASL_INT64],[test "$intsize" = 64])
+ # The critical function for NO_RUSAGE is getrusage(). Use a standard test.
+ AC_MSG_CHECKING([for getrusage])
+ AC_LINK_IFELSE(
+-  [AC_LANG_PROGRAM([[]],[[getrusage()]])],
++  [AC_LANG_PROGRAM([#include <sys/resource.h>],[struct rusage r; getrusage(RUSAGE_SELF, &r)])],
+   [AC_MSG_RESULT([yes])],
+   [CPPFLAGS="$CPPFLAGS -DNO_RUSAGE"
+    AC_MSG_RESULT([no])])

@@ -1,0 +1,47 @@
+From d6035d97bdf4c87a19cda7553d8a4713b04b47c3 Mon Sep 17 00:00:00 2001
+From: Andrew Savchenko <bircoph@gentoo.org>
+Date: Sun, 12 Dec 2021 01:06:18 +0300
+Subject: [PATCH 13/13] kernel-cc-ld
+
+Pass custom $CC and $LD to kernel during both configure check and build.
+Otherwise hosts without `gcc` and `ld` wrappers will fail configure.
+
+See Gentoo bug 828951.
+
+(cherry picked from commit d4676024fe7b2dfac413e6509caccd13f94ac28d)
+---
+ src/cf/linux-test1.m4             | 4 ++--
+ src/libafs/MakefileProto.LINUX.in | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/cf/linux-test1.m4 b/src/cf/linux-test1.m4
+index 010a4464f25a..0d0eb4c798fc 100644
+--- a/src/cf/linux-test1.m4
++++ b/src/cf/linux-test1.m4
+@@ -24,8 +24,8 @@ $2
+ 
+ MODULE_LICENSE("http://www.openafs.org/dl/license10.html");
+ _ACEOF
+-    echo make -C $LINUX_KERNEL_BUILD M=$SRCDIR_PARENT/conftest.dir $SPARSE_MAKEFLAGS modules KBUILD_VERBOSE=1 >&AS_MESSAGE_LOG_FD &&
+-    make -C $LINUX_KERNEL_BUILD M=$SRCDIR_PARENT/conftest.dir $SPARSE_MAKEFLAGS modules KBUILD_VERBOSE=1 >&AS_MESSAGE_LOG_FD 2>conftest.err &&
++    echo make -C $LINUX_KERNEL_BUILD M=$SRCDIR_PARENT/conftest.dir $SPARSE_MAKEFLAGS modules KBUILD_VERBOSE=1 CC="${CC}" LD="${LD}" >&AS_MESSAGE_LOG_FD &&
++    make -C $LINUX_KERNEL_BUILD M=$SRCDIR_PARENT/conftest.dir modules $SPARSE_MAKEFLAGS KBUILD_VERBOSE=1 CC="${CC}" LD="${LD}" >&AS_MESSAGE_LOG_FD 2>conftest.err &&
+     ! grep -i "WARNING: .* undefined!$" conftest.err >/dev/null 2>&1
+     then [$3]
+     else
+diff --git a/src/libafs/MakefileProto.LINUX.in b/src/libafs/MakefileProto.LINUX.in
+index 6e62c8c97fe1..3d188127afbe 100644
+--- a/src/libafs/MakefileProto.LINUX.in
++++ b/src/libafs/MakefileProto.LINUX.in
+@@ -324,7 +324,7 @@ ${LIBAFS} ${LIBAFS_MP} ${LIBAFS_EP} ${LIBAFS_BM}: ${LINUX_LIBAFS_NAME}.ko
+ ${LINUX_LIBAFS_NAME}.ko afspag.ko: .FORCE
+ 	env EXTRA_CFLAGS="${EXTRA_CFLAGS}" @TOP_SRCDIR@/libafs/make_kbuild_makefile.pl ${KDIR} $@ @TOP_OBJDIR@/src/config/Makefile.config Makefile.afs Makefile.common
+ 	( env EXTRA_CFLAGS="${EXTRA_CFLAGS}" \
+-		$(MAKE) -C ${LINUX_KERNEL_BUILD} M=@TOP_OBJDIR@/src/libafs/${KDIR} $(SPARSE_MAKEFLAGS) modules 2>&1 \
++		$(MAKE) -C ${LINUX_KERNEL_BUILD} M=@TOP_OBJDIR@/src/libafs/${KDIR} $(SPARSE_MAKEFLAGS) CC="${CC}" LD="${LD}" modules 2>&1 \
+ 		|| echo "FAILURE: make exit code $$?" ) | tee .makelog
+ 	@if grep -E -q '^(FAILURE|WARNING)' .makelog; then \
+ 		grep -q '^WARNING' .makelog && echo "Error: Undefined symbols in modules" ; \
+-- 
+2.45.2
+

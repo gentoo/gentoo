@@ -1,0 +1,91 @@
+
+warning: [options] bootstrap class path not set in conjunction with -source 8
+./src/java/com/thoughtworks/qdox/parser/impl/JFlexLexer.java:1010: error: variable yyline is already defined in class JFlexLexer
+  private int yyline;
+              ^
+./src/java/com/thoughtworks/qdox/parser/impl/JFlexLexer.java:1013: error: variable yycolumn is already defined in class JFlexLexer
+  private int yycolumn;
+              ^
+./src/java/com/thoughtworks/qdox/parser/impl/JFlexLexer.java:1017: error: variable yychar is already defined in class JFlexLexer
+  private long yychar;
+               ^
+./src/java/com/thoughtworks/qdox/parser/impl/JFlexLexer.java:1021: error: variable zzAtBOL is already defined in class JFlexLexer
+  private boolean zzAtBOL = true;
+                  ^
+./src/java/com/thoughtworks/qdox/parser/impl/JFlexLexer.java:1024: error: variable zzEOFDone is already defined in class JFlexLexer
+  private boolean zzEOFDone;
+                  ^
+./src/java/com/thoughtworks/qdox/parser/impl/JFlexLexer.java:1408: error: cannot find symbol
+      char [] zzCMapL = ZZ_CMAP;
+                        ^
+  symbol:   variable ZZ_CMAP
+  location: class JFlexLexer
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+6 errors
+
+--- a/src/grammar/skeleton.inner
++++ b/src/grammar/skeleton.inner
+@@ -52,29 +52,9 @@
+       from input */
+   private int zzEndRead;
+ 
+-  /** number of newlines encountered up to the start of the matched text */
+-  private int yyline;
+-
+-  /** the number of characters up to the start of the matched text */
+-  private int yychar;
+-
+-  /**
+-   * the number of characters from the last newline up to the start of the 
+-   * matched text
+-   */
+-  private int yycolumn;
+-
+-  /** 
+-   * zzAtBOL == true <=> the scanner is currently at the beginning of a line
+-   */
+-  private boolean zzAtBOL = true;
+-
+   /** zzAtEOF == true <=> the scanner is at the EOF */
+   private boolean zzAtEOF;
+ 
+-  /** denotes if the user-EOF-code has already been executed */
+-  private boolean zzEOFDone;
+-
+   /** the stack of open (nested) input streams to read from */
+   private java.util.Stack zzStreams = new java.util.Stack();
+ 
+@@ -382,7 +362,6 @@
+       int zzMarkedPosL = zzMarkedPos;
+       int zzEndReadL = zzEndRead;
+       char [] zzBufferL = zzBuffer;
+-      char [] zzCMapL = ZZ_CMAP;
+ 
+ --- start admin (line, char, col count)
+       zzAction = -1;
+@@ -407,15 +386,15 @@
+       zzMarkedPos = zzMarkedPosL;
+ --- char count update
+ 
+---- actions
+-        default: 
+-          if (zzInput == YYEOF && zzStartRead == zzCurrentPos) {
+-            zzAtEOF = true;
++      if (zzInput == YYEOF && zzStartRead == zzCurrentPos) {
++        zzAtEOF = true;
+ --- eofvalue
+-          } 
+-          else {
++      } 
++      else {
++--- actions
++          default: 
+ --- no match
+-          }
++        }
+       }
+     }
+   }

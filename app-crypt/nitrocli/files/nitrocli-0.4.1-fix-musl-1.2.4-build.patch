@@ -1,0 +1,16 @@
+diff --git a/Cargo.lock b/Cargo.lock
+index de9dee..5d7737 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -124,9 +124,9 @@ checksum = "e2abad23fbc42b3700f2f279844dc832adb2b2eb069b2df918f455c4e18cc646"
+ 
+ [[package]]
+ name = "libc"
+-version = "0.2.94"
++version = "0.2.146"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "18794a8ad5b29321f790b55d93dfba91e125cb1a9edbd4f8e3150acc771c1a5e"
++checksum = "f92be4933c13fd498862a9e02a3055f8a8d9c039ce33db97306fd5a6caa7f29b"
+ 
+ [[package]]
+ name = "log"

@@ -1,0 +1,29 @@
+--- a/editor.c
++++ b/editor.c
+@@ -98,7 +98,7 @@ void init()
+ 	level_tab=InitList();
+ }
+ 
+-void perform_mouse_motion(mousex,mousey)
++void perform_mouse_motion(int mousex,int mousey)
+ {	int x,y;
+ 	static SDL_Surface* rubber=NULL;
+ 	mySprite *sprite;
+@@ -134,7 +134,7 @@ void perform_mouse_motion(mousex,mousey)
+ 	displaySprite(disp_sprite,g_SDL_screen,0,0);
+ }
+ 
+-void perform_mouse_add(mousex,mousey)
++void perform_mouse_add(int mousex,int mousey)
+ {	int x,y;
+ 	mySprite *sprite;
+ 	mySprite disp_sprite;
+@@ -174,7 +174,7 @@ void perform_mouse_add(mousex,mousey)
+ 	AddToList(level_tab,&disp_sprite,sizeof(mySprite));
+ }
+ 
+-void perform_mouse_del(mousex,mousey)
++void perform_mouse_del(int mousex,int mousey)
+ {	int x,y;
+ 	mySprite *sprite;
+ 	unsigned int i;

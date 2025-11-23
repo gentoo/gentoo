@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=VSCodium (in new window)
+Comment=Editing evolved
+GenericName=Code Editor
+Exec=/usr/bin/vscodium @exec_extra_flags@ --new-window -- %F
+Icon=vscodium
+NoDisplay=true
+Type=Application
+StartupNotify=false
+Categories=Utility;TextEditor;Development;IDE;
+MimeType=text/plain;inode/directory;application/x-code-workspace;
+Keywords=vscode;vscodium;code;codium;

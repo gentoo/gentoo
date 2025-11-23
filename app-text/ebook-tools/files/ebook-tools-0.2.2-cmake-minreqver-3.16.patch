@@ -1,0 +1,31 @@
+Source:
+https://build.opensuse.org/projects/openSUSE:Factory/packages/ebook-tools/files/ebook-tools-cmake4.patch?expand=1
+
+From ff65f88d25d8c76ed467b1f3c532c7338ed162d1 Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Thu, 20 Mar 2025 23:17:57 +0100
+Subject: [PATCH] Fix build with CMake 4
+
+Required CMake versions older than 3.5 will throw errors.
+
+Bump the minimum version to 3.16
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4bb621c..1dcb5f4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,6 @@
+-project (EBOOK-TOOLS C)
++cmake_minimum_required(VERSION 3.16)
+ 
+-cmake_minimum_required(VERSION 2.4.0)
++project (EBOOK-TOOLS C)
+ 
+ find_package(PkgConfig)
+ pkg_check_modules(ZIP libzip)
+-- 
+2.49.0
+

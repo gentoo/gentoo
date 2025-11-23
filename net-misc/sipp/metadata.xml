@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>jkroon@gentoo.org</email>
+		<name>Jaco Kroon</name>
+	</maintainer>
+	<use>
+		<flag name="pcap">Enable functionality to replay RTP data from a pcap file</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">SIPp/sipp</remote-id>
+	</upstream>
+</pkgmetadata>

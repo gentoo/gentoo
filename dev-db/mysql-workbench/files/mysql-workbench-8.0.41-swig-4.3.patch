@@ -1,0 +1,56 @@
+Last-Update: 2025-03-01
+Forwarded: no
+Author: Dmitry Smirnov <onlyjob@member.fsf.org>
+Bug-Other: https://github.com/numpy/numpy/issues/27578
+Description: fix FTBFS with SWIG 4.3
+```
+error: too few arguments to function 'PyObject* SWIG_Python_AppendOutput
+```
+
+--- a/library/forms/swig/cairo.i
++++ b/library/forms/swig/cairo.i
+@@ -124,9 +124,9 @@
+ }
+ 
+ %typemap(argout) cairo_text_extents_t *extents {
+       PyObject *o= SWIG_NewPointerObj(new cairo_text_extents_t(*$1), SWIGTYPE_p_cairo_text_extents_t, 0 |  0 );
+-      $result= SWIG_Python_AppendOutput($result, o);
++      $result= SWIG_AppendOutput($result, o);
+ }
+ 
+ %typemap(in) const char* (std::string s) {
+   if (PyUnicode_Check($input))
+--- a/library/forms/swig/mforms.i
++++ b/library/forms/swig/mforms.i
+@@ -721,18 +721,18 @@
+ }
+ 
+ %typemap(argout) std::string &ret_password {
+     PyObject *o= PyUnicode_DecodeUTF8(($1)->data(), ($1)->size(), NULL);
+-    $result= SWIG_Python_AppendOutput($result, o);
++    $result= SWIG_AppendOutput($result, o);
+ }
+ 
+ %typemap(in,numinputs=0) std::string &ret_password(std::string temp) {
+     $1 = &temp;
+ }
+ 
+ %typemap(argout) std::string &ret_value {
+     PyObject *o= PyUnicode_DecodeUTF8(($1)->data(), ($1)->size(), NULL);
+-    $result= SWIG_Python_AppendOutput($result, o);
++    $result= SWIG_AppendOutput($result, o);
+ }
+ 
+ %typemap(in,numinputs=0) std::string &ret_value(std::string temp) {
+     $1 = &temp;
+@@ -740,9 +740,9 @@
+ 
+ 
+ %typemap(argout) bool &ret_store {
+     if (*$1) Py_INCREF(Py_True); else Py_INCREF(Py_False);
+-    $result= SWIG_Python_AppendOutput($result, *$1 ? Py_True : Py_False);
++    $result= SWIG_AppendOutput($result, *$1 ? Py_True : Py_False);
+ }
+ 
+ %typemap(in,numinputs=0) bool &ret_store(bool temp) {
+     temp = false;

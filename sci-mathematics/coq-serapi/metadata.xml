@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription>
+    SerAPI is a library for machine-to-machine interaction with the Coq proof
+    assistant, with particular emphasis on applications in IDEs, code analysis
+    tools, and machine learning. SerAPI provides automatic serialization of
+    Coq's internal OCaml datatypes from/to JSON or S-expressions (sexps).
+    SerAPI is a proof-of-concept and should be considered alpha-quality.
+  </longdescription>
+  <upstream>
+    <changelog>https://github.com/ejgallego/coq-serapi/releases/</changelog>
+    <bugs-to>https://github.com/ejgallego/coq-serapi/issues/</bugs-to>
+    <remote-id type="github">ejgallego/coq-serapi</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,11 @@
+--- a/m4/md_conf_db2man.m4
++++ b/m4/md_conf_db2man.m4
+@@ -3,7 +3,7 @@
+     for file in \
+       /usr/share/sgml/docbook/stylesheet/xsl/nwalsh/manpages/docbook.xsl \
+       /usr/share/sgml/docbook/stylesheet/xsl/nwalsh/*/manpages/docbook.xsl \
+-      /usr/share/{x,sg}ml/docbook/xsl-stylesheets-*/manpages/docbook.xsl \
++      /usr/share/{x,sg}ml/docbook/xsl-stylesheets*/manpages/docbook.xsl \
+       /sw/share/xml/xsl/docbook-xsl/manpages/docbook.xsl; do
+ 
+       test -r $file && db2man_file=$file

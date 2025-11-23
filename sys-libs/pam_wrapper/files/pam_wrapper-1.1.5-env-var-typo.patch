@@ -1,0 +1,25 @@
+https://git.samba.org/?p=pam_wrapper.git;a=commit;h=9f0cccf7432dd9be1de953f9b13a7f9b06c40442
+
+From 9f0cccf7432dd9be1de953f9b13a7f9b06c40442 Mon Sep 17 00:00:00 2001
+From: Andreas Schneider <asn@cryptomilk.org>
+Date: Fri, 10 Nov 2023 15:38:37 +0100
+Subject: [PATCH] pwrap: Fix PAM_WRAPPER_DISABLE_DEEPBIND environment variable
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Andreas Schneider <asn@cryptomilk.org>
+Reviewed-by: Pavel FilipenskÃ½ <pfilipensky@samba.org>
+--- a/src/pam_wrapper.c
++++ b/src/pam_wrapper.c
+@@ -336,7 +336,7 @@ static void *pwrap_load_lib_handle(enum pwrap_lib lib)
+ 
+ #ifdef RTLD_DEEPBIND
+ 	const char *env_preload = getenv("LD_PRELOAD");
+-	const char *env_deepbind = getenv("UID_WRAPPER_DISABLE_DEEPBIND");
++	const char *env_deepbind = getenv("PAM_WRAPPER_DISABLE_DEEPBIND");
+ 	bool enable_deepbind = true;
+ 
+ 	/* Don't do a deepbind if we run with libasan */
+-- 
+2.34.1

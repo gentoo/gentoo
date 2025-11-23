@@ -1,0 +1,75 @@
+https://github.com/haampie/libtree/commit/eb56287c1b4eb3b267524ab1e6e31f042b713395
+
+From eb56287c1b4eb3b267524ab1e6e31f042b713395 Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Sun, 15 Jan 2023 22:49:37 +0100
+Subject: [PATCH] Avoid implicit function declarations in tests (#84)
+
+Future compilers are likely to reject implicit function declarations
+by default, causing these tests to fail.  Also replace () with (void)
+where appropriate in the changed tests.
+--- a/tests/01_origin/Makefile
++++ b/tests/01_origin/Makefile
+@@ -7,13 +7,13 @@ LD_LIBRARY_PATH=
+ all: check
+ 
+ liba.so: 
+-	echo 'int f(){return 1;}' | $(CC) -shared -Wl,-soname,$@ -o $@ -nostdlib -x c -
++	echo 'int f(void){return 1;}' | $(CC) -shared -Wl,-soname,$@ -o $@ -nostdlib -x c -
+ 
+ exe_rpath: liba.so
+-	echo 'int _start(){return f();}' | $(CC) -o $@ -Wl,--no-as-needed -Wl,--disable-new-dtags '-Wl,-rpath,$$ORIGIN' -Wno-implicit-function-declaration -nostdlib liba.so -x c -
++	echo 'int f(void); int _start(void){return f();}' | $(CC) -o $@ -Wl,--no-as-needed -Wl,--disable-new-dtags '-Wl,-rpath,$$ORIGIN' -Wno-implicit-function-declaration -nostdlib liba.so -x c -
+ 
+ exe_runpath: liba.so
+-	echo 'int _start(){return f();}' | $(CC) -o $@ -Wl,--no-as-needed -Wl,--enable-new-dtags '-Wl,-rpath,$$ORIGIN' -Wno-implicit-function-declaration -nostdlib liba.so -x c -
++	echo 'int f(void); int _start(void){return f();}' | $(CC) -o $@ -Wl,--no-as-needed -Wl,--enable-new-dtags '-Wl,-rpath,$$ORIGIN' -Wno-implicit-function-declaration -nostdlib liba.so -x c -
+ 
+ check: exe_rpath exe_runpath
+ 	../../libtree exe_rpath
+--- a/tests/02_rpath_of_parents_parent/Makefile
++++ b/tests/02_rpath_of_parents_parent/Makefile
+@@ -8,13 +8,13 @@ LD_LIBRARY_PATH=
+ all: check
+ 
+ libb.so: 
+-	echo 'int g(){return 1;}' | $(CC) -shared -Wl,-soname,$@ -o $@ -nostdlib -x c -
++	echo 'int g(void){return 1;}' | $(CC) -shared -Wl,-soname,$@ -o $@ -nostdlib -x c -
+ 
+ liba.so: libb.so
+-	echo 'int f(){return g();}' | $(CC) -shared -Wl,--no-as-needed -Wl,-soname,$@ -o $@ -Wno-implicit-function-declaration libb.so -nostdlib -x c -
++	echo 'int g(void); int f(void){return g();}' | $(CC) -shared -Wl,--no-as-needed -Wl,-soname,$@ -o $@ -Wno-implicit-function-declaration libb.so -nostdlib -x c -
+ 
+ exe: liba.so
+-	echo 'int _start(){return f();}' | $(CC) -o $@ -Wl,--no-as-needed -Wl,--disable-new-dtags '-Wl,-rpath,$$ORIGIN' '-Wl,-rpath-link,$(CURDIR)' -Wno-implicit-function-declaration -nostdlib -L. -la -x c -
++	echo 'int f(void); int _start(){return f();}' | $(CC) -o $@ -Wl,--no-as-needed -Wl,--disable-new-dtags '-Wl,-rpath,$$ORIGIN' '-Wl,-rpath-link,$(CURDIR)' -Wno-implicit-function-declaration -nostdlib -L. -la -x c -
+ 
+ check: exe liba.so
+ 	! ../../libtree liba.so # should not find libb.so
+--- a/tests/04_rpath_over_env_over_runpath/Makefile
++++ b/tests/04_rpath_over_env_over_runpath/Makefile
+@@ -13,19 +13,19 @@ dir:
+ 	mkdir $@
+ 
+ dir/liba.so: dir
+-	echo 'int a(){return 42;}' | $(CC) -shared -Wl,-soname,$(@F) -Wl,--no-as-needed -o $@ -nostdlib -x c -
++	echo 'int a(void){return 42;}' | $(CC) -shared -Wl,-soname,$(@F) -Wl,--no-as-needed -o $@ -nostdlib -x c -
+ 
+ dir/libb.so: dir/liba.so
+-	echo 'int b(){return a();}' | $(CC) -shared -Wl,-soname,$(@F) -Wl,--no-as-needed -Wl,--disable-new-dtags '-Wl,-rpath,$$ORIGIN' -Wno-implicit-function-declaration -o $@ -nostdlib dir/liba.so -x c -
++	echo 'int a(void); int b(void){return a();}' | $(CC) -shared -Wl,-soname,$(@F) -Wl,--no-as-needed -Wl,--disable-new-dtags '-Wl,-rpath,$$ORIGIN' -Wno-implicit-function-declaration -o $@ -nostdlib dir/liba.so -x c -
+ 
+ libb.so:
+ 	echo 'int b(){return 10;}' | $(CC) -shared -Wl,-soname,$(@F) -Wl,--no-as-needed -o $@ -Wno-implicit-function-declaration -nostdlib -x c -
+ 
+ exe_rpath: libb.so
+-	echo 'int _start(){return b();}' | $(CC) -Wl,--no-as-needed -Wl,--disable-new-dtags "-Wl,-rpath,$(CURDIR)" libb.so -o $@ -Wno-implicit-function-declaration -nostdlib -x c -
++	echo 'int b(void); int _start(void){return b();}' | $(CC) -Wl,--no-as-needed -Wl,--disable-new-dtags "-Wl,-rpath,$(CURDIR)" libb.so -o $@ -Wno-implicit-function-declaration -nostdlib -x c -
+ 
+ exe_runpath: libb.so
+-	echo 'int _start(){return b();}' | $(CC) -Wl,--no-as-needed -Wl,--enable-new-dtags "-Wl,-rpath,$(CURDIR)" libb.so -o $@ -Wno-implicit-function-declaration -nostdlib -x c -
++	echo 'int b(void); int _start(void){return b();}' | $(CC) -Wl,--no-as-needed -Wl,--enable-new-dtags "-Wl,-rpath,$(CURDIR)" libb.so -o $@ -Wno-implicit-function-declaration -nostdlib -x c -
+ 
+ check: exe_rpath exe_runpath dir/libb.so
+ 	../../libtree exe_rpath
+

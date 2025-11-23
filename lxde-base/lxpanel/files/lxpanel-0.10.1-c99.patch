@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/919092
+https://github.com/lxde/lxpanel/commit/0853b0fc981285ebd2ac52f8dfc2a09b1090748c
+
+From 0853b0fc981285ebd2ac52f8dfc2a09b1090748c Mon Sep 17 00:00:00 2001
+From: Ravi Kant Sharma <600723+raviksharma@users.noreply.github.com>
+Date: Tue, 30 Jul 2024 17:52:07 +0200
+Subject: [PATCH] Fix gcc-14 build error
+
+gcc-14 now treats a conversion between pointers of incompatible types
+as an error.
+--- a/plugins/tray.c
++++ b/plugins/tray.c
+@@ -631,7 +631,7 @@ static GtkWidget *tray_constructor(LXPanel *panel, config_setting_t *settings)
+     /* Add GDK event filter. */
+     gdk_window_add_filter(NULL, (GdkFilterFunc) tray_event_filter, tr);
+     /* Reference the window since it is never added to a container. */
+-    tr->invisible = g_object_ref_sink(G_OBJECT(invisible));
++    tr->invisible = GTK_WIDGET(g_object_ref_sink(G_OBJECT(invisible)));
+     tr->invisible_window = GDK_WINDOW_XID(gtk_widget_get_window(invisible));
+ 
+     /* Allocate top level widget and set into Plugin widget pointer. */

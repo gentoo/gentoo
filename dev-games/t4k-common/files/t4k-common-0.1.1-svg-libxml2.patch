@@ -1,0 +1,73 @@
+https://bugs.gentoo.org/763591
+
+https://github.com/tux4kids/t4kcommon/commit/99e9d3895b480d5998513592f6af25096c6d1c50
+From: Paul Huff <paul.huff@gmail.com>
+Date: Wed, 1 May 2019 19:56:12 -0600
+Subject: [PATCH] Use libxml2 to get info from svg files for frame counts since
+ librsvg doesn't let you access the description anymore.
+--- a/src/t4k_loaders.c
++++ b/src/t4k_loaders.c
+@@ -41,4 +41,6 @@
+ #include<librsvg/rsvg.h>
+ #include<librsvg/rsvg-cairo.h>
++#include <libxml/parser.h>
++#include <libxml/tree.h>
+ #endif
+ 
+@@ -49,4 +51,5 @@
+ 
+ #ifdef HAVE_RSVG
++int             get_number_of_frames_from_svg(const char *file_name);
+ SDL_Surface*    load_svg(const char* file_name, int width, int height, const char* layer_name);
+ sprite*         load_svg_sprite(const char* file_name, int width, int height);
+@@ -161,4 +164,43 @@
+ #ifdef HAVE_RSVG
+ 
++int get_number_of_frames_from_svg(const char* file_name) {
++    xmlDocPtr svgFile;
++    xmlNodePtr svgNode = NULL, nodeIterator = NULL;
++    int number_of_frames = 0, found = 0;
++
++    svgFile = xmlReadFile(file_name, NULL, XML_PARSE_RECOVER | XML_PARSE_NOERROR | XML_PARSE_NOWARNING);
++
++    /* If it's null something's really wrong because we're trying to load a sprite that doesn't exist */
++    if(svgFile == NULL) {
++        DEBUGMSG(debug_loaders, "get_number_of_frames_from_svg: couldn't load svgFile: %s\n", file_name);
++        return 0;
++    }
++
++    svgNode = xmlDocGetRootElement(svgFile);
++
++    /* If it's null then something's really wrong because there should be a root in every svg file... */
++    if(svgNode == NULL) {
++        DEBUGMSG(debug_loaders, "get_number_of_frames_from_svg: couldn't load the root from the svgFile: %s", file_name);
++        xmlFreeDoc(svgFile); /* be clean */
++        return 0;
++    }
++
++    nodeIterator = svgNode->children;
++    while(nodeIterator) {
++        if(xmlStrcasecmp(nodeIterator->name, (const xmlChar*)"desc") == 0) {
++            sscanf((const char*)xmlNodeGetContent(nodeIterator), "%d", &number_of_frames);
++            xmlFreeDoc(svgFile);
++            return number_of_frames;
++        }
++        nodeIterator = nodeIterator->next;
++    }
++
++    /* if we get here we had no description, which means something's really wrong */
++    DEBUGMSG(debug_loaders, "get_number_of_frames_from_svg: couldn't find the description frame number count from svgFile: %s", file_name);
++    xmlFreeDoc(svgFile);
++    return 0;
++}
++
++
+ /* Load a layer of SVG file and resize it to given dimensions.
+    If width or height is negative no resizing is applied.
+@@ -215,5 +257,5 @@
+ 
+   /* get number of frames from description */
+-  sscanf(rsvg_handle_get_desc(file_handle), "%d", &new_sprite->num_frames);
++  new_sprite->num_frames = get_number_of_frames_from_svg(file_name);
+   DEBUGMSG(debug_loaders, "load_svg_sprite(): loading %d frames\n", new_sprite->num_frames);
+ 

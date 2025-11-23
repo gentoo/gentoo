@@ -1,0 +1,33 @@
+Index: foremost-1.5.7/main.c
+===================================================================
+--- foremost-1.5.7.orig/main.c
++++ foremost-1.5.7/main.c
+@@ -232,9 +232,7 @@ int main(int argc, char **argv)
+ 	char	**temp = argv;
+ 	DIR* 	dir;
+ 
+-#ifndef __GLIBC__
+-	__progname = basename(argv[0]);
+-#endif
++	char * __progname = basename(argv[0]);
+ 
+ 	/*Initialize the global state struct*/
+ 	if (initialize_state(s, argc, argv))
+Index: foremost-1.5.7/main.h
+===================================================================
+--- foremost-1.5.7.orig/main.h
++++ foremost-1.5.7/main.h
+@@ -187,12 +187,8 @@ int getopt(int argc, char *const argv[],
+ #endif   /* ifdef _WIN32 */
+ 
+ 
+-/* On non-glibc systems we have to manually set the __progname variable */
+-#ifdef __GLIBC__
++/* On non-GNU systems we have to manually set the __progname variable */
+ extern char *__progname;
+-#else
+-char *__progname;
+-#endif /* ifdef __GLIBC__ */
+ 
+ /* -----------------------------------------------------------------
+    Program Defaults

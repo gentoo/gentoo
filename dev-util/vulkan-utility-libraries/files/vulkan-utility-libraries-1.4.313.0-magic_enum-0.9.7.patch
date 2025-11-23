@@ -1,0 +1,26 @@
+Per https://github.com/Neargye/magic_enum/releases/tag/v0.9.7
+> [breaking changes] Need to use #include <magic_enum/magic_enum.hpp> instead of #include <magic_enum.hpp>
+--- a/tests/test_formats.cpp
++++ b/tests/test_formats.cpp
+@@ -8,8 +8,8 @@
+ #include <gtest/gtest.h>
+ #define MAGIC_ENUM_RANGE_MIN 0
+ #define MAGIC_ENUM_RANGE_MAX 512
+-#include <magic_enum.hpp>
+-#include <magic_enum_flags.hpp>
++#include <magic_enum/magic_enum.hpp>
++#include <magic_enum/magic_enum_flags.hpp>
+ #include <vulkan/utility/vk_format_utils.h>
+ 
+ #include <string_view>
+--- a/tests/vk_enum_string_helper.cpp
++++ b/tests/vk_enum_string_helper.cpp
+@@ -5,7 +5,7 @@
+ // SPDX-License-Identifier: Apache-2.0
+ #include <vulkan/vk_enum_string_helper.h>
+ 
+-#include <magic_enum.hpp>
++#include <magic_enum/magic_enum.hpp>
+ 
+ #include <gtest/gtest.h>
+ 

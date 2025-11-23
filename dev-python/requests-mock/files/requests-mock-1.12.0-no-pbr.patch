@@ -1,0 +1,22 @@
+From 82a6d09fa8db7a0667b365e9c06e99f8c0dfd245 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Thu, 28 Mar 2024 12:54:18 +0100
+Subject: [PATCH] Replace the last use of pbr with modern packaging
+
+diff --git a/doc/source/conf.py b/doc/source/conf.py
+index 395acaa..e0895f5 100755
+--- a/doc/source/conf.py
++++ b/doc/source/conf.py
+@@ -16 +16,2 @@ import sys, os
+-import pbr.version
++import importlib.metadata
++import packaging
+@@ -56 +57 @@ copyright = u'2023, Jamie Lennox'
+-version_info = pbr.version.VersionInfo(project)
++version_info = packaging.version.parse(importlib.metadata.version(project))
+@@ -59 +60 @@ version_info = pbr.version.VersionInfo(project)
+-version = version_info.version_string()
++version = version_info.base_version
+@@ -61 +62 @@ version = version_info.version_string()
+-release = version_info.release_string()
++release = version_info.public

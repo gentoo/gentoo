@@ -1,0 +1,41 @@
+diff --git a/ez-ipupdate.c b/ez-ipupdate.c
+index ff093a9..eea7624 100644
+--- a/ez-ipupdate.c
++++ b/ez-ipupdate.c
+@@ -849,6 +849,27 @@ int is_dotted_quad(char *addr)
+   return(1);
+ }
+ 
++int is_ip_addr(char *addr)
++{
++#if HAVE_ARPA_INET_H
++  char dst[16];
++
++  if(inet_pton(AF_INET,addr,dst) == 1)
++  {
++    return(1);
++  }
++
++  if(inet_pton(AF_INET6,addr,dst) == 1)
++  {
++    return(1);
++  }
++
++  return(0);
++#else
++  return is_dotted_quad(addr);
++#endif
++}
++
+ void parse_service(char *str)
+ {
+   int i;
+@@ -1859,7 +1880,7 @@ int DYNDNS_check_info(void)
+     chomp(host);
+   }
+ 
+-  if(address != NULL && !is_dotted_quad(address))
++  if(address != NULL && !is_ip_addr(address))
+   {
+     fprintf(stderr, "the IP address \"%s\" is invalid\n", address);
+     return(-1);

@@ -1,0 +1,14 @@
+Index: comgr/src/comgr-env.cpp
+===================================================================
+--- comgr.orig/src/comgr-env.cpp
++++ comgr/src/comgr-env.cpp
+@@ -269,6 +269,9 @@ InstallationDetector *getDetectorImpl()
+   if (EnvROCMPath) {
+     ROCmInstallPath = EnvROCMPath;
+   }
++  else {
++	ROCmInstallPath = "@GENTOO_PORTAGE_EPREFIX@/usr";
++  }
+ 
+   InstallationDetector *Detector;
+   if (ROCmInstallPath == "") {

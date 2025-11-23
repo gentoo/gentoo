@@ -1,0 +1,24 @@
+was sed -i Makefile.in -e '/ -o /s|$(CFLAGS)|& $(LDFLAGS)|g'
+--- a/Makefile.in	2024-05-09 05:12:18.249018601 -0000
++++ b/Makefile.in	2024-05-09 05:12:20.497004963 -0000
+@@ -79,16 +79,16 @@
+ OBJS = $(COBJS) $(YOBJS)
+ 
+ moo:	$(OBJS)
+-	$(CC) $(CFLAGS) $(OBJS) $(LIBRARIES) -o $@
++	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(LIBRARIES) -o $@
+ 
+ pure_moo: moo
+-	purify $(CC) $(CFLAGS) $(OBJS) $(LIBRARIES) -o $@
++	purify $(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(LIBRARIES) -o $@
+ 
+ client_bsd: client_bsd.o
+-	$(CC) $(CFLAGS) client_bsd.o $(LIBRARIES) -o $@
++	$(CC) $(CFLAGS) $(LDFLAGS) client_bsd.o $(LIBRARIES) -o $@
+ 
+ client_sysv: client_sysv.o
+-	$(CC) $(CFLAGS) client_sysv.o $(LIBRARIES) -o $@
++	$(CC) $(CFLAGS) $(LDFLAGS) client_sysv.o $(LIBRARIES) -o $@
+ 
+ # This rule gets around some "make"s' desire to `derive' it from `restart.sh'.
+ restart:

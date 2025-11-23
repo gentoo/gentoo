@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    Earthly is a versatile, approachable CI/CD framework that runs every
+    pipeline inside containers, giving you repeatable builds that you write
+    once and run anywhere. It has a super simple, instantly recognizable syntax
+    that is easy to write and understand – like Dockerfile and Makefile had a
+    baby. And it leverages and augments popular build tools instead of
+    replacing them, so you don’t have to rewrite all your builds no matter what
+    languages you use.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/earthly/earthly/issues/</bugs-to>
+    <remote-id type="github">earthly/earthly</remote-id>
+  </upstream>
+</pkgmetadata>

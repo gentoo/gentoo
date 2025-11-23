@@ -1,0 +1,9 @@
+Get rid of aclocal warning:
+/usr/share/aclocal/aalib.m4:12: warning: underquoted definition of AM_PATH_AALIB
+--- aalib-1.4.0/aalib.m4
++++ aalib-1.4.0/aalib.m4
+@@ -11,3 +11,3 @@
+ dnl
+-AC_DEFUN(AM_PATH_AALIB,
++AC_DEFUN([AM_PATH_AALIB],
+ [dnl 

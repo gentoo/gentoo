@@ -1,0 +1,15 @@
+diff --git a/src/os_defs.h b/src/os_defs.h
+index 82794f5..13539ee 100644
+--- a/src/os_defs.h
++++ b/src/os_defs.h
+@@ -109,6 +109,10 @@ typedef struct tagRECT {
+ 
+ #define CONST const
+ 
++#ifndef __CONCAT
++	#define __CONCAT( a1, a2 ) a1 ## a2
++#endif
++
+ #define __UNIQUENAME( a1, a2 )  __CONCAT( a1, a2 )
+ #define UNIQUENAME( __text )    __UNIQUENAME( __text, __COUNTER__ )
+ #define STATIC_ASSERT(e)  typedef char UNIQUENAME(STATIC_ASSERT_)[(e)?1:-1]

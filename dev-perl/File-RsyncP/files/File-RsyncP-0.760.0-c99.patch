@@ -1,0 +1,199 @@
+https://src.fedoraproject.org/rpms/perl-File-RsyncP/blob/0faafaa6c4c1ebf930c1c119c57bea85cbd6118b/f/perl-File-RsyncP-configure-c99.patch
+https://rt.cpan.org/Public/Bug/Display.html?id=145943
+
+Various fixes for the configure script.  Most of them are specific to
+this package, and not related to autoconf limitations.  The
+configure.in/configure.ac autoconf input is not included among
+upstream sources, so they are not patched here.
+
+Submitted upstream: <https://rt.cpan.org/Public/Bug/Display.html?id=145943>
+
+diff --git a/FileList/configure b/FileList/configure
+index 023b6066e0f9d362..cdf2a72b57d73abf 100755
+--- a/FileList/configure
++++ b/FileList/configure
+@@ -2246,7 +2246,7 @@ if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
+   echo "$as_me:$LINENO: \$? = $ac_status" >&5
+   (exit $ac_status); }; }; then
+   for ac_declaration in \
+-   '' \
++   '#include <stdlib.h>' \
+    'extern "C" void std::exit (int) throw (); using std::exit;' \
+    'extern "C" void std::exit (int); using std::exit;' \
+    'extern "C" void exit (int) throw ();' \
+@@ -2905,6 +2905,8 @@ cat >>conftest.$ac_ext <<_ACEOF
+ #include <fcntl.h>
+ #include <sys/types.h>
+ #include <sys/wait.h>
++#include <stdlib.h>
++#include <string.h>
+ 
+ int main(void)
+ {
+@@ -4492,8 +4494,8 @@ main ()
+   for (i = 0; i < 256; i++)
+     if (XOR (islower (i), ISLOWER (i))
+ 	|| toupper (i) != TOUPPER (i))
+-      exit(2);
+-  exit (0);
++      return 2;
++  return 0;
+ }
+ _ACEOF
+ rm -f conftest$ac_exeext
+@@ -6841,6 +6843,8 @@ cat >>conftest.$ac_ext <<_ACEOF
+ #define NGID 256
+ #undef MAX
+ #define MAX(x, y) ((x) > (y) ? (x) : (y))
++#include <unistd.h>
++#include <stdlib.h>
+ 
+ int
+ main ()
+@@ -8828,12 +8832,13 @@ cat confdefs.h >>conftest.$ac_ext
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+ $ac_includes_default
++#include <utime.h>
+ int
+ main ()
+ {
+ struct stat s, t;
+   exit (!(stat ("conftest.data", &s) == 0
+-	  && utime ("conftest.data", (long *)0) == 0
++	  && utime ("conftest.data", 0) == 0
+ 	  && stat ("conftest.data", &t) == 0
+ 	  && t.st_mtime >= s.st_mtime
+ 	  && t.st_mtime - s.st_mtime < 120));
+@@ -9397,9 +9402,9 @@ cat >>conftest.$ac_ext <<_ACEOF
+ #include <sys/types.h>
+ #include <sys/socket.h>
+ 
+-main() {
++int main(void) {
+        int fd[2];
+-       exit((socketpair(AF_UNIX, SOCK_STREAM, 0, fd) != -1) ? 0 : 1);
++       return (socketpair(AF_UNIX, SOCK_STREAM, 0, fd) != -1) ? 0 : 1;
+ }
+ _ACEOF
+ rm -f conftest$ac_exeext
+@@ -9451,7 +9456,7 @@ cat confdefs.h >>conftest.$ac_ext
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+ #include <stdio.h>
+-main() { long long x = 1000000; x *= x; exit(((x/1000000) == 1000000)? 0: 1); }
++int main(void) { long long x = 1000000; x *= x; return ((x/1000000) == 1000000)? 0: 1; }
+ _ACEOF
+ rm -f conftest$ac_exeext
+ if { (eval echo "$as_me:$LINENO: \"$ac_link\"") >&5
+@@ -9503,7 +9508,7 @@ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+ #include <stdio.h>
+ #include <sys/stat.h>
+-main() { struct stat64 st; off64_t s; if (sizeof(off_t) == sizeof(off64_t)) exit(1); exit((lstat64("/dev/null", &st)==0)?0:1); }
++int main(void) { struct stat64 st; off64_t s; if (sizeof(off_t) == sizeof(off64_t)) return 1; return (lstat64("/dev/null", &st)==0)?0:1; }
+ _ACEOF
+ rm -f conftest$ac_exeext
+ if { (eval echo "$as_me:$LINENO: \"$ac_link\"") >&5
+@@ -9556,7 +9561,7 @@ cat >>conftest.$ac_ext <<_ACEOF
+ #include <stdio.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+-main() { if (sizeof(ino_t) < sizeof(unsigned int)) return 0; return 1; }
++int main(void) { if (sizeof(ino_t) < sizeof(unsigned int)) return 0; return 1; }
+ _ACEOF
+ rm -f conftest$ac_exeext
+ if { (eval echo "$as_me:$LINENO: \"$ac_link\"") >&5
+@@ -9607,7 +9612,7 @@ cat confdefs.h >>conftest.$ac_ext
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+ #include <stdio.h>
+-main() { char c; c=250; exit((c > 0)?0:1); }
++int main(void) { char c; c=250; return (c > 0)?0:1; }
+ _ACEOF
+ rm -f conftest$ac_exeext
+ if { (eval echo "$as_me:$LINENO: \"$ac_link\"") >&5
+@@ -9659,9 +9664,9 @@ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+ #include <sys/types.h>
+ #include <dirent.h>
+-main() { struct dirent *di; DIR *d = opendir("."); di = readdir(d);
++int main(void) { struct dirent *di; DIR *d = opendir("."); di = readdir(d);
+ if (di && di->d_name[-2] == '.' && di->d_name[-1] == 0 &&
+-di->d_name[0] == 0) exit(0); exit(1);}
++di->d_name[0] == 0) return 0; return 1;}
+ _ACEOF
+ rm -f conftest$ac_exeext
+ if { (eval echo "$as_me:$LINENO: \"$ac_link\"") >&5
+@@ -9713,7 +9718,7 @@ cat >>conftest.$ac_ext <<_ACEOF
+ int
+ main ()
+ {
+-struct utimbuf tbuf;  tbuf.actime = 0; tbuf.modtime = 1; exit(utime("foo.c",&tbuf));
++struct utimbuf tbuf;  tbuf.actime = 0; tbuf.modtime = 1; return utime("foo.c",&tbuf);
+   ;
+   return 0;
+ }
+@@ -9777,7 +9782,7 @@ cat >>conftest.$ac_ext <<_ACEOF
+ 
+ #include <sys/time.h>
+ #include <unistd.h>
+-main() { struct timeval tv; exit(gettimeofday(&tv, NULL));}
++int main(void) { struct timeval tv; return gettimeofday(&tv, NULL);}
+ _ACEOF
+ rm -f conftest$ac_exeext
+ if { (eval echo "$as_me:$LINENO: \"$ac_link\"") >&5
+@@ -9830,6 +9835,9 @@ cat >>conftest.$ac_ext <<_ACEOF
+ 
+ #include <sys/types.h>
+ #include <stdarg.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
+ void foo(const char *format, ...) {
+        va_list ap;
+        int len;
+@@ -9844,7 +9852,7 @@ void foo(const char *format, ...) {
+ 
+        exit(0);
+ }
+-main() { foo("hello"); }
++int main(void) { foo("hello"); }
+ 
+ _ACEOF
+ rm -f conftest$ac_exeext
+@@ -9900,7 +9908,7 @@ cat >>conftest.$ac_ext <<_ACEOF
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <unistd.h>
+-main() {
++int main(void) {
+   struct stat st;
+   char tpl[20]="/tmp/test.XXXXXX";
+   int fd = mkstemp(tpl);
+@@ -9965,10 +9973,11 @@ cat >>conftest.$ac_ext <<_ACEOF
+ #include <sys/types.h>
+ #include <netinet/in.h>
+ #include <arpa/inet.h>
+-main() { struct in_addr ip; ip.s_addr = 0x12345678;
++#include <string.h>
++int main(void) { struct in_addr ip; ip.s_addr = 0x12345678;
+ if (strcmp(inet_ntoa(ip),"18.52.86.120") &&
+-    strcmp(inet_ntoa(ip),"120.86.52.18")) { exit(1); }
+-exit(0);}
++    strcmp(inet_ntoa(ip),"120.86.52.18")) { return 1; }
++return 0;}
+ _ACEOF
+ rm -f conftest$ac_exeext
+ if { (eval echo "$as_me:$LINENO: \"$ac_link\"") >&5
+@@ -10024,8 +10033,8 @@ cat >>conftest.$ac_ext <<_ACEOF
+ #include <sys/types.h>
+ #include <netinet/in.h>
+ #include <arpa/inet.h>
+-main() { struct in_addr ip;
+-if (inet_aton("example", &ip) == 0) exit(0); exit(1);}
++int main(void) { struct in_addr ip;
++if (inet_aton("example", &ip) == 0) return 0; return 1;}
+ _ACEOF
+ rm -f conftest$ac_exeext
+ if { (eval echo "$as_me:$LINENO: \"$ac_link\"") >&5

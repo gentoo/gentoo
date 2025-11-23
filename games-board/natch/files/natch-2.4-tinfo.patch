@@ -1,0 +1,39 @@
+https://bugs.gentoo.org/690078
+
+--- Natch-2.4/configure.in
++++ Natch-2.4/configure.in
+@@ -25,17 +25,19 @@
+ dnl Checks for programs.
+ AC_PROG_CC
+ AC_PATH_PROGS(GENGETOPT, gengetopt)
++PKG_PROG_PKG_CONFIG
+ 
+ dnl for txtc (Text-to-C compiler)
+ AC_PROG_AWK
+ LF_PROG_TXTC
+ 
+ dnl Checks for libraries.
+-AC_SEARCH_LIBS(
+-	initscr,
+-	ncurses curses,
++PKG_CHECK_MODULES(NCURSES, ncurses,[
+ 	AC_DEFINE(HAVE_LIBNCURSES,,
+-		  Define if you have curses library for visual mode. ), )
++		  Define if you have curses library for visual mode. )
++	],[
++	AC_MSG_ERROR([Cannot find ncurses lib])
++])
+ 
+ dnl Replace `main' with a function in -lpc:
+ dnl AC_CHECK_LIB(pc, main)
+--- Natch-2.4/src/Makefile.am
++++ Natch-2.4/src/Makefile.am
+@@ -29,7 +29,7 @@
+ 
+ Natch_SOURCES = main.c main.h types.h cmdline.c cmdline.h distance.c distance.h dis_type.h pcpj.c pcpj.h distimmo.c distimmo.h pcpj_deb.c pcpj_deb.h pcpjcapt.c pcpjcapt.h trajet.c trajet.h explorat.c explorat.h expltype.h pcpjcoup.c pcpjcoup.h hash.c hash.h pcpjtool.c pcpjtool.h myHashTable.c myHashTable.h langues.c langues.h screen.c screen.h common.h moves_order.c moves_order.h test_moves_order.c test_moves_order.h twin_squares.c twin_squares.h precise_trajectories.c precise_trajectories.h captInitSquare.c captInitSquare.h piece.c piece.h reportbugs.text copyright.text
+ 
+-Natch_LDADD = @LIBOBJS@
++Natch_LDADD = @LIBOBJS@ $(NCURSES_LIBS)
+ 
+ AM_CFLAGS = -Wall -fshort-enums -DNDEBUG -O3
+ #AM_CFLAGS = -Wall -fshort-enums

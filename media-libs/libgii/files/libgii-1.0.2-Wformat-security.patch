@@ -1,0 +1,28 @@
+--- a/input/linux_mouse/input.c
++++ b/input/linux_mouse/input.c
+@@ -251,7 +251,7 @@ static int do_mouse_open(gii_input *inp, char *filename,
+ 				"        device may not work as expected\n");
+ #endif /* HAVE_TIOCMSET */
+ 		}
+-		if (dowarn) fprintf(stderr, serialfailstr);
++		if (dowarn) fprintf(stderr, "%s", serialfailstr);
+ 	}
+ 
+ 	return 0;
+--- a/input/lk201/input.c
++++ b/input/lk201/input.c
+@@ -256,12 +256,12 @@ do_lk201_open(gii_input *inp, const char *filename)
+ 		}
+ 		else 
+ 		{
+-			fprintf(stderr, tcsetattrfailstr);
++			fprintf(stderr, "%s", tcsetattrfailstr);
+ 		}
+ 	} 
+ 	else 
+ 	{
+-		fprintf(stderr, tcgetattrfailstr);
++		fprintf(stderr, "%s", tcgetattrfailstr);
+ 	}
+ 	
+ 	/* dump and characters currently in the buffer */

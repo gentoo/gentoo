@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>cjk@gentoo.org</email>
+		<name>Cjk</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">koron/cmigemo</remote-id>
+	</upstream>
+	<use>
+		<flag name="vim">Install Vim plugin for C/Migemo</flag>
+	</use>
+</pkgmetadata>

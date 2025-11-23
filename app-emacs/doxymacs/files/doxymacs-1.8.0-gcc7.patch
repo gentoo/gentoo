@@ -1,0 +1,104 @@
+Fix compilation with GCC 7.
+https://bugs.gentoo.org/635746
+
+--- doxymacs-1.8.0.orig/c/doxymacs_parser.c
++++ doxymacs-1.8.0/c/doxymacs_parser.c
+@@ -70,6 +70,7 @@
+ 
+ hash_entry *symbol_hash[HASH_SIZE];
+ 
++static inline unsigned int hash(const char *s);
+ inline unsigned int hash(const char *s)
+ {
+     unsigned int h = 0;
+@@ -82,6 +83,7 @@
+     return abs(h % HASH_SIZE);
+ }
+ 
++static inline void AddToHash(completion_list *cl);
+ inline void AddToHash(completion_list *cl)
+ {
+     unsigned int h = hash(cl->symbol);
+@@ -96,6 +98,7 @@
+ }
+ 
+ /* mmmmm... free hash */
++static inline void FreeHash(void);
+ inline void FreeHash(void)
+ {
+     unsigned int i;
+@@ -117,6 +120,7 @@
+ 
+ /* XML Helper Functions */
+ 
++static inline char *XMLTagChild(xmlNodePtr node, const char *name);
+ inline char *XMLTagChild(xmlNodePtr node, const char *name)
+ {
+     xmlNodePtr cur = node->xmlChildrenNode;
+@@ -141,6 +145,7 @@
+     return NULL;
+ }
+ 
++static inline char *XMLTagAttr(xmlNodePtr node, const char *attr);
+ inline char *XMLTagAttr(xmlNodePtr node, const char *attr)
+ {
+     xmlAttrPtr props = node->properties;
+@@ -167,6 +172,7 @@
+ 
+ /* Look up functions for symbols and descriptions */
+ 
++static inline completion_list *LookUpSymbol(const char *symbol);
+ inline completion_list *LookUpSymbol(const char *symbol)
+ {
+     unsigned int h = hash(symbol);
+@@ -187,6 +193,7 @@
+     return NULL;
+ }
+ 
++static inline desc_url_list *LookUpDesc(completion_list *entry, const char *desc);
+ inline desc_url_list *LookUpDesc(completion_list *entry, const char *desc)
+ {
+     desc_url_list *cur = entry->descs;
+@@ -206,6 +213,8 @@
+ 
+ /* Add the given name, description and url to our completion list */
+ 
++static inline int AddToCompletionList(const char *name,
++                                      const char *desc, const char *url);
+ inline int AddToCompletionList(const char *name,
+                                const char *desc, const char *url)
+ {
+@@ -274,6 +283,7 @@
+ }
+ 
+ /* Encode the given string so that {X}Emacs will understand it */
++static inline char *Encode(const char *s);
+ inline char *Encode(const char *s)
+ {
+     unsigned int extra_len = 0;
+@@ -341,6 +351,7 @@
+ 
+ /* Output the completion list in a way {X}Emacs can easily read in */
+ 
++static inline int OutputCompletionList(void);
+ inline int OutputCompletionList(void)
+ {
+     completion_list *cur = comp_list;
+@@ -400,6 +411,7 @@
+ 
+ /* Clean up */
+ 
++static inline void FreeCompletionList(void);
+ inline void FreeCompletionList(void)
+ {
+     completion_list *cur = comp_list;
+@@ -428,7 +440,8 @@
+ }
+ 
+ /* Add the members of a compound to the completion list */
+-
++static inline int AddCompoundMembers(xmlNodePtr compound,
++                                     const char *name, const char *url);
+ inline int AddCompoundMembers(xmlNodePtr compound,
+                               const char *name, const char *url)
+ {

@@ -1,0 +1,17 @@
+diff --git a/tests/concurrency.py b/tests/concurrency.py
+index a8ed558..d5ce803 100644
+--- a/tests/concurrency.py
++++ b/tests/concurrency.py
+@@ -5,11 +5,11 @@ Async environment-agnostic concurrency utilities that are only used in tests.
+ import asyncio
+ 
+ import sniffio
+-import trio
+ 
+ 
+ async def sleep(seconds: float) -> None:
+     if sniffio.current_async_library() == "trio":
++        import trio
+         await trio.sleep(seconds)  # pragma: no cover
+     else:
+         await asyncio.sleep(seconds)

@@ -1,0 +1,14 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -813,8 +813,11 @@
+             ;;
+         esac
+         ;;
+     esac
++
++    # do this at the end because it needs double dollar for makefile
++    WINE_TRY_CFLAGS([-Wl,-rpath,\\\$ORIGIN],[UNIXLDFLAGS="$UNIXLDFLAGS '-Wl,-rpath,\$\$ORIGIN'"])
+     ;;
+ esac
+ 
+ enable_winecoreaudio_drv=${enable_winecoreaudio_drv:-no}

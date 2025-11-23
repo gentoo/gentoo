@@ -1,0 +1,47 @@
+diff --git a/Makefile b/Makefile
+index 75fc47a..4a19140 100644
+--- a/Makefile
++++ b/Makefile
+@@ -15,6 +15,8 @@ CXX = g++
+ #    c) RELEASE mode
+ ################################################################################
+ 
++OPT_CXXFLAGS = -O3 -W -Wall -pedantic -funroll-loops
++
+ OTHERFLAGS = -DNumInsertStates=2 -DVERSION="1.12"
+ 
+ # debug mode    
+@@ -25,7 +27,7 @@ OTHERFLAGS = -DNumInsertStates=2 -DVERSION="1.12"
+ 
+ # release mode
+ #CXXFLAGS = -O3 -W -Wall -pedantic -DNDEBUG $(OTHERFLAGS) -mmmx -msse -msse2 -mfpmath=sse -march=pentium4 -mcpu=pentium4 -funroll-loops -fomit-frame-pointer 
+-CXXFLAGS = -O3 -W -Wall -pedantic -DNDEBUG $(OTHERFLAGS) -funroll-loops
++CXXFLAGS = $(OPT_CXXFLAGS) -DNDEBUG $(OTHERFLAGS)
+ 
+ ################################################################################
+ # 3) Dependencies
+@@ -37,19 +39,19 @@ TARGETS = probcons compare project makegnuplot
+ all : $(TARGETS)
+ 
+ probcons : MultiSequence.h ProbabilisticModel.h ScoreType.h Sequence.h FileBuffer.h SparseMatrix.h EvolutionaryTree.h Defaults.h SafeVector.h Main.cc
+-	$(CXX) $(CXXFLAGS) -lm -o probcons Main.cc 
++	$(CXX) $(LDFLAGS) $(CXXFLAGS) -o probcons Main.cc -lm
+ 
+ compare : MultiSequence.h Sequence.h FileBuffer.h SafeVector.h CompareToRef.cc
+-	$(CXX) $(CXXFLAGS) -o compare CompareToRef.cc
++	$(CXX) $(LDFLAGS) $(CXXFLAGS) -o compare CompareToRef.cc
+ 
+ fixref : MultiSequence.h ProbabilisticModel.h ScoreType.h Sequence.h FileBuffer.h SparseMatrix.h EvolutionaryTree.h Defaults.h SafeVector.h FixRef.cc
+-	$(CXX) $(CXXFLAGS) -o fixref FixRef.cc
++	$(CXX) $(LDFLAGS) $(CXXFLAGS) -o fixref FixRef.cc
+ 
+ project : MultiSequence.h Sequence.h SafeVector.h ProjectPairwise.cc
+-	$(CXX) $(CXXFLAGS) -o project ProjectPairwise.cc
++	$(CXX) $(LDFLAGS) $(CXXFLAGS) -o project ProjectPairwise.cc
+ 
+ makegnuplot : MakeGnuPlot.cc
+-	$(CXX) $(CXXFLAGS) -o makegnuplot MakeGnuPlot.cc
++	$(CXX) $(LDFLAGS) $(CXXFLAGS) -o makegnuplot MakeGnuPlot.cc
+ 
+ .PHONY : clean
+ clean:

@@ -1,0 +1,11 @@
+--- a/Makefile	2022-01-23 19:29:56.516323939 +0100
++++ b/Makefile	2022-01-23 19:30:07.289143969 +0100
+@@ -41,7 +41,7 @@
+ allopt:  $(OPT_TARGETS)
+ 
+ depend: *.c *.ml *.mli
+-	gcc -I $(OCAMLDIR) -MM *.c > depend
++	$(CC) -I $(OCAMLDIR) -MM *.c > depend
+ 	$(OCAMLDEP) *.mli *.ml >> depend
+ 
+ ## Library creation

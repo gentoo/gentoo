@@ -1,0 +1,23 @@
+From: hololeap <hololeap@protonmail.com>
+Signed-off-by: hololeap <hololeap@protonmail.com>
+
+Add new USE flag: executable
+This toggles building the executable. Since this seems to be the primary
+purpose of the package, it is enabled by default.
+
+--- markdown-unlit-0.5.1/markdown-unlit.cabal.bak	2021-08-28 01:55:59.160717350 -0600
++++ markdown-unlit-0.5.1/markdown-unlit.cabal	2021-08-28 01:58:49.820717433 -0600
+@@ -35,7 +35,13 @@
+       Paths_markdown_unlit
+   default-language: Haskell2010
+ 
++flag executable
++  description: Build executable
++  default: True
++
+ executable markdown-unlit
++  if !flag(executable)
++      buildable: False
+   main-is: Main.hs
+   other-modules:
+       Paths_markdown_unlit

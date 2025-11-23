@@ -1,0 +1,32 @@
+--- a/lineakd/lineakkb.def
++++ b/lineakd/lineakkb.def
+@@ -2040,9 +2040,29 @@
+      Previous       = 144
+      Next           = 153
+      Stop           = 164
++     WinKey         = 115
++     FnWinKey       = 116
++     Menu           = 117
+    [END KEYS]
+ [END DELL-XPS-GEN-2]
+ 
++[DELL-XPS-M1330-XOrg-1_5] # By skypjack
++   brandname = "Dell"
++   modelname = "Inspiron XPS M1330 XOrg 1.5"
++   [KEYS]
++     Mute           = 121
++     VolumeDown     = 122
++     VolumeUp       = 123
++     Play|Pause     = 172
++     Previous       = 173
++     Next           = 171
++     Stop           = 174
++     WinKey         = 133
++     FnWinKey       = 134
++     Menu           = 135
++   [END KEYS]
++[END DELL-XPS-M1330-XOrg-1_5]
++
+ [DELL-SK-8100] # By Akshoslaa
+   brandname = "Dell"
+   modelname = "SK-8100"

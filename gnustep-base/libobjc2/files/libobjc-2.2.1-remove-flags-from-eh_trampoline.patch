@@ -1,0 +1,28 @@
+https://bugs.gentoo.org/926875
+https://bugs.gentoo.org/940647
+https://github.com/gnustep/libobjc2/pull/288
+https://github.com/gnustep/libobjc2/commit/4a0c2f1afee5a6c618d51fb33efb9ccb95b808b8
+https://github.com/gnustep/libobjc2/issues/177
+
+From 4a0c2f1afee5a6c618d51fb33efb9ccb95b808b8 Mon Sep 17 00:00:00 2001
+From: Frederik Carlier <frederik.carlier@keysight.com>
+Date: Tue, 2 Apr 2024 14:53:43 +0200
+Subject: [PATCH] Don't use CXXFLAGS when compiling eh_trampoline.cc
+
+We don't want the user to override these flags because that file
+needs to be compiled in a very specific way.
+
+Re-applies #178 (365e53632e8be41e49f21ee47a63e41be424a237)
+Related to #183
+Fixes #177
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -230,7 +230,7 @@ elseif (MINGW)
+ 	message(STATUS "Using MinGW-compatible exception model")
+ 	list(APPEND libobjc_CXX_SRCS objcxx_eh.cc objcxx_eh_mingw.cc)
+ else ()
+-	separate_arguments(EH_PERSONALITY_FLAGS NATIVE_COMMAND ${CMAKE_CXX_FLAGS})
++	set(EH_PERSONALITY_FLAGS "")
+ 	if (CMAKE_CXX_COMPILER_TARGET)
+ 		list(APPEND EH_PERSONALITY_FLAGS "${CMAKE_CXX_COMPILE_OPTIONS_TARGET}${CMAKE_CXX_COMPILER_TARGET}")
+ 	endif ()

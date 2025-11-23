@@ -1,0 +1,11 @@
+--- a/demo/Makefile.am
++++ b/demo/Makefile.am
+@@ -17,7 +17,7 @@
+     $(NULL)
+ c_demo_CFLAGS = $(FT2_CFLAGS) $(GL_CFLAGS)
+ c_demo_LDFLAGS = $(FT2_LIBS) $(GLUT_LIBS)
+-c_demo_LDADD = ../src/libftgl.la
++c_demo_LDADD = ../src/libftgl.la -lm
+ 
+ FTGLDemo_SOURCES = \
+ 	FTGLDemo.cpp \

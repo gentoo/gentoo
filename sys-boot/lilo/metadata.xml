@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>hlein@korelogic.com</email>
+		<name>Hank Leininger</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="device-mapper">Enable support for device-mapper from <pkg>sys-fs/lvm2</pkg></flag>
+		<flag name="keytab">Install keytab, keyboard remapping helper script</flag>
+		<flag name="minimal">Do not install optional bits (dolilo helper, docs, etc.)</flag>
+		<flag name="pxeserial">Avoid character echo on PXE serial console</flag>
+	</use>
+</pkgmetadata>

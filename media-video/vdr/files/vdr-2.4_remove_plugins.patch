@@ -1,0 +1,25 @@
+we do not install any plugins from core vdr
+
+Signed-off-by: Martin Dummer <martin.dummer@gmx.net>
+Reviewed-by: Joerg Bornkessel <hd_brummy@gentoo.org>
+diff -Naur vdr-2.4.0.orig/Makefile vdr-2.4.0/Makefile
+--- vdr-2.4.0.orig/Makefile	2017-05-29 10:48:42.000000000 +0200
++++ vdr-2.4.0/Makefile	2019-03-14 12:08:56.857495048 +0100
+@@ -125,7 +125,7 @@
+ VDRVERSION = $(shell sed -ne '/define VDRVERSION/s/^.*"\(.*\)".*$$/\1/p' config.h)
+ APIVERSION = $(shell sed -ne '/define APIVERSION/s/^.*"\(.*\)".*$$/\1/p' config.h)
+ 
+-all: vdr i18n plugins
++all: vdr i18n
+ 
+ # Implicit rules:
+ 
+@@ -271,7 +271,7 @@
+ 
+ # Install the files (note that 'install-pc' must be first!):
+ 
+-install: install-pc install-bin install-conf install-doc install-plugins install-i18n install-includes
++install: install-pc install-bin install-conf install-doc install-i18n install-includes
+ 
+ # VDR binary:
+ 

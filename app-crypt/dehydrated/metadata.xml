@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>mschiff@gentoo.org</email>
+	</maintainer>
+	<stabilize-allarches/>
+	<use>
+		<flag name="cron">Install cron job to sign/renew non-existent/changed/expiring certificates</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">lukas2511/dehydrated</remote-id>
+	</upstream>
+</pkgmetadata>

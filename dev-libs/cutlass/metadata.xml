@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tupone@gentoo.org</email>
+		<name>Tupone Alfredo</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">NVIDIA/cutlass</remote-id>
+	</upstream>
+	<use>
+		<flag name="clang-cuda">Use clang for cuda units compilation</flag>
+		<flag name="cublas">Enable cuBLAS usage for tests</flag>
+		<flag name="cudnn"> Enable cuDNN usage for tests</flag>
+		<flag name="dot">Use dot to generate graphs in the doxygen documentation via <pkg>media-gfx/graphviz</pkg></flag>
+		<flag name="examples">Enable CUTLASS Examples</flag>
+		<flag name="headers-only">Enable only the header library</flag>
+		<flag name="jumbo-build">Enable combined source compilation</flag>
+		<flag name="performance">Enable CUTLASS Performance</flag>
+		<flag name="profiler">Enable CUTLASS Profiler</flag>
+		<flag name="tools">Enable CUTLASS Tools</flag>
+	</use>
+</pkgmetadata>

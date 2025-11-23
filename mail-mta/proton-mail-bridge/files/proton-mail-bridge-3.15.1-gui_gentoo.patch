@@ -1,0 +1,77 @@
+diff --git a/internal/frontend/bridge-gui/BridgeSetup.cmake b/internal/frontend/bridge-gui/BridgeSetup.cmake
+index 7c6c634..6959892 100644
+--- a/internal/frontend/bridge-gui/BridgeSetup.cmake
++++ b/internal/frontend/bridge-gui/BridgeSetup.cmake
+@@ -44,7 +44,7 @@ if (NOT DEFINED BRIDGE_APP_VERSION)
+     endif()
+ endif()
+ 
+-
++if(0)
+ #****************************************************************************************************************************************************
+ # vcpkg, toolchain, and architecture
+ #****************************************************************************************************************************************************
+@@ -87,4 +87,5 @@ if  (WIN32)
+     set(VCPKG_TARGET_TRIPLET x64-windows)
+ endif()
+ 
+-set(CMAKE_TOOLCHAIN_FILE "${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "toolchain")
+\ No newline at end of file
++set(CMAKE_TOOLCHAIN_FILE "${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "toolchain")
++endif()
+diff --git a/internal/frontend/bridge-gui/bridge-gui/CMakeLists.txt b/internal/frontend/bridge-gui/bridge-gui/CMakeLists.txt
+index 93a9f49..ffe3a52 100644
+--- a/internal/frontend/bridge-gui/bridge-gui/CMakeLists.txt
++++ b/internal/frontend/bridge-gui/bridge-gui/CMakeLists.txt
+@@ -167,12 +167,9 @@ set_target_properties(bridge-gui PROPERTIES
+         WIN32_EXECUTABLE TRUE
+         MACOSX_BUNDLE TRUE)
+ 
+-install(TARGETS bridge-gui
+-        RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}"
+-        BUNDLE DESTINATION  "${CMAKE_INSTALL_PREFIX}"
+-        LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}"
+-        )
++install(TARGETS bridge-gui)
+ 
++if(0)
+ qt_generate_deploy_app_script(
+         TARGET bridge-gui
+         FILENAME_VARIABLE deploy_script
+@@ -187,3 +184,4 @@ else()
+ endif()
+ 
+ include(Deploy${DEPLOY_OS}.cmake)
++endif()
+diff --git a/internal/frontend/bridge-gui/bridge-gui/main.cpp b/internal/frontend/bridge-gui/bridge-gui/main.cpp
+index 8c21436..c804410 100644
+--- a/internal/frontend/bridge-gui/bridge-gui/main.cpp
++++ b/internal/frontend/bridge-gui/bridge-gui/main.cpp
+@@ -51,7 +51,7 @@ QString const exeSuffix;
+ 
+ QString const bridgeLock = "bridge-v3.lock"; ///< The file name used for the bridge-gui lock file.
+ QString const bridgeGUILock = "bridge-v3-gui.lock"; ///< The file name used for the bridge-gui lock file.
+-QString const exeName = "bridge" + exeSuffix; ///< The bridge executable file name.*
++QString const exeName = "proton-mail-bridge" + exeSuffix; ///< The bridge executable file name.*
+ qint64 constexpr grpcServiceConfigWaitDelayMs = 180000; ///< The wait delay for the gRPC config file in milliseconds.
+ QString const waitFlag = "--wait"; ///< The wait command-line flag.
+ QString const orphanInstanceException =  "An orphan instance of bridge is already running. Please terminate it and relaunch the application.";
+diff --git a/internal/frontend/bridge-gui/bridgepp/CMakeLists.txt b/internal/frontend/bridge-gui/bridgepp/CMakeLists.txt
+index f4a0a55..17cab0e 100644
+--- a/internal/frontend/bridge-gui/bridgepp/CMakeLists.txt
++++ b/internal/frontend/bridge-gui/bridgepp/CMakeLists.txt
+@@ -164,6 +164,9 @@ target_link_libraries(bridgepp
+ 
+ target_precompile_headers(bridgepp PRIVATE Pch.h)
+ 
++install(TARGETS bridgepp)
++
++if(0)
+ #*****************************************************************************************************************************************************
+ # GoogleTest
+ #*****************************************************************************************************************************************************
+@@ -205,3 +208,4 @@ target_link_libraries(bridgepp-test
+ 
+ include(GoogleTest)
+ gtest_discover_tests(bridgepp-test)
++endif()

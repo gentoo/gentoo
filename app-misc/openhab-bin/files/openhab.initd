@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+
+pidfile=/run/${SVCNAME}.pid
+
+command_user="openhab:openhab"
+command="/usr/bin/openhab"
+command_args="daemon"
+command_background=true
+
+depend() {
+	need net
+}
+
+stop() {
+    ebegin "Stopping ${RC_SVCNAME}"
+    ${command} stop
+    eend $?
+}

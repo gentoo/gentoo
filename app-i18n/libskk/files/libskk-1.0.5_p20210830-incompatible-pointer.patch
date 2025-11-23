@@ -1,0 +1,16 @@
+From 7ec4a42459b090b23a772d6a568f910f380e44db Mon Sep 17 00:00:00 2001
+From: YOSHIOKA Takuma <nop_thread@nops.red>
+Date: Mon, 20 May 2024 06:56:28 +0900
+Subject: [PATCH] Fix build failure with gcc-14
+
+--- a/libskk/file-dict.vala
++++ b/libskk/file-dict.vala
+@@ -70,7 +70,7 @@ namespace Skk {
+         // Skip until the first occurrence of line.  This moves offset
+         // at the beginning of the next line.
+         bool read_until (ref long offset, string line) {
+-            return_val_if_fail (offset < mmap.length, null);
++            return_val_if_fail (offset < mmap.length, false);
+             while (offset + line.length < mmap.length) {
+                 char *p = ((char *)mmap.memory + offset);
+                 if (*p == '\n' &&

@@ -1,0 +1,42 @@
+diff -ur substract_wave-0.3.orig/Makefile substract_wave-0.3/Makefile
+--- substract_wave-0.3.orig/Makefile	2005-10-06 17:23:42.000000000 +0300
++++ substract_wave-0.3/Makefile	2009-05-11 23:19:30.000000000 +0300
+@@ -1,27 +1,22 @@
+-#CC=gcc
+-#CC=/usr/local/bin/gcc
+-
+-
+-CFLAGS = -O2 -Wall -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64
++CC ?= gcc
++CFLAGS += -Wall -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE
++LIBRARY = -lm
+ 
+ .c.o:
+-	gcc $(CFLAGS) -c $<
++	$(CC) $(CFLAGS) -c $<
+ 
+-OBJECT =\
+-substract_wave.o
++OBJECT = substract_wave.o
+ 
+ a.out : $(OBJECT)
+-	gcc -o substract_wave  $(OBJECT) $(LIBRARY)
++	$(CC) $(LDFLAGS) $(CFLAGS) $(OBJECT) $(LIBRARY) -o substract_wave
+ 		
+-# DEPENDENCIES
+ substract_wave.o : substract_wave.c substract_wave.h wave_header.h
+ 
+-install: 
+-	cp substract_wave  /usr/local/bin/
+-
+-install.man:
+-	cp substract_wave.man /usr/local/man/man1/substract_wave.1
++install:
++	mkdir -p $(DESTDIR)/usr/bin
++	cp substract_wave $(DESTDIR)/usr/bin
++	mkdir -p $(DESTDIR)/usr/share/man/man1
++	cp substract_wave.man $(DESTDIR)/usr/share/man/man1/substract_wave.1
+ 
+ clean:
+ 	rm *.o
+-

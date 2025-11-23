@@ -1,0 +1,12 @@
+diff -ur piler.orig/gff.cpp piler/gff.cpp
+--- piler.orig/gff.cpp	2004-12-18 01:25:29.000000000 +0200
++++ piler/gff.cpp	2009-08-09 17:22:33.000000000 +0300
+@@ -70,7 +70,7 @@
+ 		const char *Attrs = Fields[8];
+ 
+ 	// Truncate attrs if comment found
+-		char *Pound = strchr(Attrs, '#');
++		char *Pound = const_cast <char*> (strchr(Attrs, '#'));
+ 		if (0 != Pound)
+ 			*Pound = 0;
+ 

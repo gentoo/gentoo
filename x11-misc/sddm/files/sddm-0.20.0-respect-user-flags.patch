@@ -1,0 +1,25 @@
+From f03f4c977b8038559c4f26e0e10cec4a3167c00c Mon Sep 17 00:00:00 2001
+From: Lorenzo Porta <vindex17@outlook.it>
+Date: Wed, 23 Sep 2015 23:34:38 2015 +0100
+Subject: Respect user flags
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b883a5e..77cd263 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -39,7 +39,7 @@ if(CMAKE_BUILD_TYPE MATCHES [Dd]ebug)
+     message(STATUS "Debug build")
+     add_definitions(-DDEBUG)
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0")
+-else()
++elseif(CMAKE_BUILD_TYPE MATCHES Release)
+     message(STATUS "Release build")
+     add_definitions(-DNDEBUG)
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2")
+-- 
+2.43.0
+

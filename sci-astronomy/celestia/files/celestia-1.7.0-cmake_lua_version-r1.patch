@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -300,7 +300,7 @@
+   if(LUAJIT_FOUND)
+     link_libraries(LuaJIT::LuaJIT)
+   else()
+-    find_package(Lua REQUIRED)
++    find_package(Lua ${LUA_VERSION} EXACT REQUIRED)
+     include(FixLua)
+     MakeLuaTarget()
+     link_libraries(Lua::Lua)

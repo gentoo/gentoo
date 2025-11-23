@@ -1,0 +1,14 @@
+diff --git a/deps/mbedtls.mk b/deps/mbedtls.mk
+index 07d8304..f17d5e3 100644
+--- a/deps/mbedtls.mk
++++ b/deps/mbedtls.mk
+@@ -5,7 +5,8 @@ MBEDTLS_SRC = mbedtls-$(MBEDTLS_VER)
+ MBEDTLS_URL = https://github.com/ARMmbed/mbedtls/archive/v$(MBEDTLS_VER).tar.gz
+ 
+ MBEDTLS_OPTS := $(CMAKE_COMMON) -DUSE_SHARED_MBEDTLS_LIBRARY=ON \
+-    -DUSE_STATIC_MBEDTLS_LIBRARY=OFF -DENABLE_PROGRAMS=OFF -DCMAKE_BUILD_TYPE=Release
++    -DUSE_STATIC_MBEDTLS_LIBRARY=OFF -DENABLE_PROGRAMS=OFF -DCMAKE_BUILD_TYPE=Release \
++    -DMBEDTLS_FATAL_WARNINGS=OFF
+ 
+ MBEDTLS_OPTS += -DENABLE_ZLIB_SUPPORT=OFF
+ ifeq ($(BUILD_OS),WINNT)

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<name>Filip Kobierski</name>
+		<email>fkobi@pm.me</email>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="cb">Install plug-in for ComicBook support</flag>
+		<flag name="epub">Install plug-in E-Book support</flag>
+	</use>
+	<upstream>
+		<maintainer status="active">
+			<email>mlq@pwmt.org</email>
+			<name>Moritz Lipp</name>
+		</maintainer>
+		<maintainer status="active">
+			<email>sebastian+dev@ramacher.at</email>
+			<name>Sebastian Ramacher</name>
+		</maintainer>
+		<bugs-to>https://github.com/pwmt/zathura/issues</bugs-to>
+		<changelog>https://pwmt.org/projects/zathura/download/</changelog>
+		<doc>https://pwmt.org/projects/zathura/documentation/</doc>
+		<remote-id type="github">pwmt/zathura</remote-id>
+	</upstream>
+</pkgmetadata>

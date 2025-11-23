@@ -1,0 +1,85 @@
+From 5fdbfea671f75f869abeadd02a36bc941b25020f Mon Sep 17 00:00:00 2001
+From: Janik Rabe <info@janikrabe.com>
+Date: Tue, 17 Aug 2021 19:28:46 +0100
+Subject: [PATCH] Allow using masquerading without IPv6 support on Linux
+
+---
+ ChangeLog          |  4 ++++
+ NEWS               |  4 ++++
+ src/kernel/linux.c | 10 +++++++++-
+ 3 files changed, 17 insertions(+), 1 deletion(-)
+
+diff --git a/ChangeLog b/ChangeLog
+index 8102669..09f8db6 100644
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -1,3 +1,7 @@
++2021-08-17  Janik Rabe  <info@janikrabe.com>
++
++	* Allow using masquerading without IPv6 support on Linux.
++
+ 2021-08-16  Janik Rabe  <info@janikrabe.com>
+ 
+ 	* Released as version 3.0.0.
+diff --git a/NEWS b/NEWS
+index bb64455..8820d3a 100644
+--- a/NEWS
++++ b/NEWS
+@@ -1,3 +1,7 @@
++Unreleased changes
++
++	* Allow using masquerading without IPv6 support on Linux.
++
+ Changes in version 3.0.0
+ 
+ 	* Support for '--debug' is now included by default.
+diff --git a/src/kernel/linux.c b/src/kernel/linux.c
+index db0296c..f68e433 100644
+--- a/src/kernel/linux.c
++++ b/src/kernel/linux.c
+@@ -462,10 +462,12 @@ static int masq_ct_line(char *line,
+ 		in_addr_t remotem4;
+ 		in_addr_t localn4;
+ 		in_addr_t remoten4;
++#if WANT_IPV6
+ 		struct in6_addr localm6;
+ 		struct in6_addr remotem6;
+ 		struct in6_addr localn6;
+ 		struct in6_addr remoten6;
++#endif
+ 		u_int32_t nport_temp;
+ 		u_int32_t mport_temp;
+ 		u_int32_t masq_lport_temp;
+@@ -511,6 +513,8 @@ static int masq_ct_line(char *line,
+ 			sin_setv4(remoten4, &remoten_ss);
+ 
+ 			break;
++
++#if WANT_IPV6
+ 		case AF_INET6:
+ 			if (strcasecmp(family, "ipv6"))
+ 				return 1;
+@@ -527,9 +531,11 @@ static int masq_ct_line(char *line,
+ 			sin_setv6(&remoten6, &remoten_ss);
+ 
+ 			break;
++#endif
++
+ 		default:
+ 			debug("masq_ct_line: bad address family %d", faddr->ss_family);
+-			return -1;
++			return 1;
+ 		}
+ 
+ 		masq_lport = (in_port_t) masq_lport_temp;
+@@ -561,8 +567,10 @@ static int masq_ct_line(char *line,
+ 		if (con_uid == MISSING_UID && faddr->ss_family == AF_INET)
+ 			con_uid = get_user4(htons(masq_lport), htons(masq_fport), laddr, &remotem_ss);
+ 
++#if WANT_IPV6
+ 		if (con_uid == MISSING_UID && faddr->ss_family == AF_INET6)
+ 			con_uid = get_user6(htons(masq_lport), htons(masq_fport), laddr, &remotem_ss);
++#endif
+ 
+ 		if (con_uid == MISSING_UID)
+ 			return -1;

@@ -1,0 +1,25 @@
+Do not use system's 'qemu-keymap' in native case.
+--- a/meson.build
++++ b/meson.build
+@@ -337,6 +337,8 @@ if 'CONFIG_LIBCAP_NG' in config_host
+ endif
+ if get_option('xkbcommon').auto() and not have_system and not have_tools
+   xkbcommon = not_found
++elif get_option('xkbcommon').disabled()
++  xkbcommon = not_found
+ else
+   xkbcommon = dependency('xkbcommon', required: get_option('xkbcommon'),
+                          method: 'pkg-config', static: enable_static)
+--- a/pc-bios/keymaps/meson.build
++++ b/pc-bios/keymaps/meson.build
+@@ -33,7 +33,9 @@ keymaps = {
+   'tr': '-l tr',
+ }
+ 
+-if meson.is_cross_build() or 'CONFIG_XKBCOMMON' not in config_host
++if meson.is_cross_build()
+   native_qemu_keymap = find_program('qemu-keymap', required: false, disabler: true)
++elif get_option('xkbcommon').disabled()
++  native_qemu_keymap = not_found
+ else
+   native_qemu_keymap = qemu_keymap

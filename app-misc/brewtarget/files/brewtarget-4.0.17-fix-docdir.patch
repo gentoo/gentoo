@@ -1,0 +1,13 @@
+diff --git a/meson.build b/meson.build
+index 506e5aa0..04b2c81f 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1205,7 +1205,7 @@ filesToInstall_license = 'LICENSE'
+ if host_machine.system() == 'linux'
+    #============================================= Linux Install Directories ============================================
+    installSubDir_data = 'share/' + projectName
+-   installSubDir_doc  = 'share/doc/' + projectName
++   installSubDir_doc  = 'share/doc/' + projectName + '-' + meson.project_version()
+    installSubDir_bin  = 'bin'
+    # According to https://specifications.freedesktop.org/menu-spec/menu-spec-1.0.html#paths, .desktop files need to live
+    # in one of the $XDG_DATA_DIRS/applications/.  (Note that $XDG_DATA_DIRS is a colon-separated list of directories,

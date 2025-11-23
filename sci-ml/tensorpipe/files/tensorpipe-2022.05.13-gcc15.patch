@@ -1,0 +1,20 @@
+--- a/tensorpipe/common/allocator.h	2024-09-06 21:57:32.806149494 +0200
++++ b/tensorpipe/common/allocator.h	2024-09-06 21:57:54.018918083 +0200
+@@ -13,6 +13,7 @@
+ #include <functional>
+ #include <memory>
+ #include <vector>
++#include <cstdint>
+ 
+ #include <tensorpipe/common/error.h>
+ 
+--- a/tensorpipe/common/memory.h	2024-11-02 14:00:40.971529014 +0100
++++ b/tensorpipe/common/memory.h	2024-11-02 14:01:16.891890766 +0100
+@@ -10,6 +10,7 @@
+ 
+ #include <sys/mman.h>
+ 
++#include <cstdint>
+ #include <memory>
+ 
+ #include <tensorpipe/common/defs.h>

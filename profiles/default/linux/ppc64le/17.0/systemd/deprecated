@@ -1,0 +1,33 @@
+default/linux/ppc64le/17.0/systemd/merged-usr
+
+As warned about previously in a news item, systemd-255 has dropped
+support for split-usr systems. All Gentoo systems running systemd will
+need to be migrated to merged-usr.
+
+Migrating to merged-usr will move all data from /bin, /sbin, and /lib
+into the /usr/bin and /usr/lib directories. The directories in / are
+replaced with symlinks.
+
+To facilitate this, a new set of sub-profiles has been created, and a
+script is available to perform the actual migration.
+
+To migrate a system to merged-usr, follow this procedure:
+
+1. Ensure your system backups are up to date. Please also update
+   your system fully and depclean before proceeding.
+
+2. Install sys-apps/merge-usr.
+
+3. Run "merge-usr --dryrun" as root to check for conflicts. These will
+   appear with the word ERROR at the start of the line.
+
+4. Resolve any conflicts. This may involve deleting duplicate files. If
+   in doubt, seek support in a Gentoo support channel.
+
+5. Run the merge-usr script from a root shell. Avoid running it via sudo
+   directly to avoid locking yourself out if an unexpected error occurs.
+
+6. Switch to a merged-usr profile.
+
+7. Run emerge with the --newuse or --changed-use option to rebuild
+   any packages that have a "split-usr" USE flag.

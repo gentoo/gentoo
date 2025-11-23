@@ -1,0 +1,69 @@
+Update and fix configure.ac so it works with autoreconf and builds program
+correctly. Logic is preserved, chain invocation is replaced with right macro
+https://bugs.gentoo.org/875734
+https://bugs.gentoo.org/899780
+--- a/configure.in
++++ b/configure.ac
+@@ -1,5 +1,6 @@
+ dnl Process this file with autoconf to produce a configure script.
+-AC_INIT(rblcheck.c)
++AC_INIT
++AC_CONFIG_SRCDIR([rblcheck.c])
+ AC_CONFIG_AUX_DIR(config)
+ AM_CONFIG_HEADER(config.h:config.in)
+ AM_INIT_AUTOMAKE(rblcheck, 1.5)
+@@ -10,9 +11,8 @@
+ AC_PROG_CC
+ AC_PROG_INSTALL
+ 
+-dnl Checks for header files.
+-AC_HEADER_STDC
+-AC_CHECK_HEADERS(unistd.h)
++AC_CHECK_INCLUDES_DEFAULT
++
+ AC_CHECK_HEADERS(getopt.h)
+ AC_CHECK_HEADERS(libc.h)
+ 
+@@ -24,10 +24,8 @@
+ dnl (generally, if you've installed bind 8, you're going to want to use
+ dnl the new library). Finally, check for libresolv (which should exist
+ dnl on most systems).
+-AC_CHECK_FUNC(res_query,,
+-	AC_CHECK_LIB(resolv,res_query,,
+-		AC_CHECK_LIB(bind,res_query,,
+-			AC_MSG_ERROR(cannot locate res_query function))))
++AC_SEARCH_LIBS([res_query], [bind resolv], [],AC_MSG_ERROR([cannot locate res_query function]))
+ 
+ dnl All done.
+-AC_OUTPUT(Makefile docs/Makefile config/rblcheck.spec config/pkginfo)
++AC_CONFIG_FILES([Makefile docs/Makefile config/rblcheck.spec config/pkginfo])
++AC_OUTPUT
+Don't have a dependency on docbook that can appear in QA, every other file is generated
+already
+--- a/docs/Makefile.am
++++ b/docs/Makefile.am
+@@ -4,11 +4,6 @@
+ DISTCLEANFILES = rblcheck.ps rblcheck.rtf html/*.html
+ MAINTAINERCLEANFILES = Makefile.in
+ 
+-html/index.html: rblcheck.sgml
+-	-srcdir=`cd $(srcdir) && pwd`; \
+-	db2html $$srcdir/rblcheck.sgml
+-	-mv rblcheck html
+-
+ rblcheck.ps: rblcheck.sgml
+ 	-srcdir=`cd $(srcdir) && pwd`; \
+ 	db2ps $$srcdir/rblcheck.sgml
+@@ -21,11 +21,7 @@
+ distclean-local:
+ 	-rmdir html
+ 
+-install-data-local: html/index.html rblcheck.ps rblcheck.rtf
+-	-for file in $(srcdir)/*.html; do \
+-		basefile=`echo $$file | sed -e 's,^.*/,,'`; \
+-		$(INSTALL_DATA) $$file $(DESTDIR)$(docdir)/$$basefile; \
+-	done
++install-data-local: rblcheck.ps rblcheck.rtf
+ 	-$(INSTALL_DATA) $(srcdir)/rblcheck.ps $(DESTDIR)$(docdir)/rblcheck.ps
+ 	-$(INSTALL_DATA) $(srcdir)/rblcheck.rtf $(DESTDIR)$(docdir)/rblcheck.rtf
+ 

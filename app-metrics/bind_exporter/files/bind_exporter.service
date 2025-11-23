@@ -1,0 +1,11 @@
+[Unit]
+Description=Bind Exporter
+Documentation="https://github.com/prometheus-community/bind_exporter"
+
+[Service]
+User=bind_exporter
+EnvironmentFile=/etc/sysconfig/bind_exporter
+ExecStart=/usr/sbin/bind_exporter $OPTIONS
+
+[Install]
+WantedBy=multi-user.target

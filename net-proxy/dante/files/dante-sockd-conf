@@ -1,0 +1,13 @@
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Number of processes to fork off
+# 1 is plenty for most users
+# increment SLOWLY for bigger demand
+SOCKD_FORKDEPTH=1
+
+# set this to 1 to enable debug
+SOCKD_DEBUG=0
+
+# disable TCP keepalive for better resource usage
+SOCKD_DISABLE_KEEPALIVE=1

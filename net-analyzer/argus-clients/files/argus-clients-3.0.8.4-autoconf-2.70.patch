@@ -1,0 +1,55 @@
+https://sources.debian.org/patches/argus-clients/1:3.0.8.2-6.1/0007-Fix-autoconf-2.70-build.patch/
+https://bugs.gentoo.org/808861
+
+From: Boyuan Yang <byang@debian.org>
+Date: Fri, 1 Oct 2021 16:13:38 -0400
+Subject: Fix autoconf 2.70 build
+
+Bug-Debian: https://bugs.debian.org/978769
+--- a/acsite.m4
++++ b/acsite.m4
+@@ -715,13 +715,13 @@ AC_DEFUN([AC_QOSIENT_READLINE], [
+         esac
+      fi
+ 
+-     AC_CHECK_HEADERS(readline/readline.h,
+-       AC_CHECK_DECLS([rl_event_hook, rl_catch_signals, rl_done, rl_set_keyboard_input_timeout, rl_replace_line, rl_delete_text, rl_resize_terminal, rl_save_prompt  ], [] , [] ,
+-               [
++     AC_CHECK_HEADERS([readline/readline.h],
++       [AC_CHECK_DECLS([rl_event_hook, rl_catch_signals, rl_done, rl_set_keyboard_input_timeout, rl_replace_line, rl_delete_text, rl_resize_terminal, rl_save_prompt  ], [] , [] ,
++               [[
+                   #include <stdlib.h>
+                   #include <stdio.h>
+                   #include <readline/readline.h>
+-               ]), ac_cv_found_readline=no)
++               ]])], [ac_cv_found_readline=no])
+  
+      if test "$ac_cv_found_readline" != no; then
+        $1="-lreadline"
+--- a/configure.ac
++++ b/configure.ac
+@@ -41,17 +41,17 @@ AC_PROG_INSTALL
+ AC_PROG_RANLIB
+ AC_PROG_YACC
+ 
+-AC_CHECK_PROGS(V_RANLIB, ranlib, @true)
+-AC_QOSIENT_LEX_AND_YACC(V_LEX, V_YACC, argus_)
++AC_CHECK_PROGS([V_RANLIB], [ranlib], [@true])
++AC_QOSIENT_LEX_AND_YACC([V_LEX], [V_YACC], [argus_])
+ 
+ # Checks for libraries.
+-AC_QOSIENT_READLINE(V_READLINE, V_INCLS)
++AC_QOSIENT_READLINE([V_READLINE], [V_INCLS])
+ 
+-CMU_SASL2(V_INCLS)
++CMU_SASL2([V_INCLS])
+ AC_CMU_MYSQL
+ 
+-AC_CHECK_HEADERS(zlib.h, [AC_CHECK_LIB(z, uncompress, ZLIB="-lz")])
+-AC_QOSIENT_FLOWTOOLS(V_FLOWTOOLS, V_INCLS)
++AC_CHECK_HEADERS([zlib.h], [AC_CHECK_LIB([z], [uncompress], [ZLIB="-lz"])])
++AC_QOSIENT_FLOWTOOLS([V_FLOWTOOLS], [V_INCLS])
+ 
+ if test ! -z "$V_FLOWTOOLS"; then
+    AC_DEFINE([ARGUS_FLOWTOOLS], [], [Using Flow Tools library])
+

@@ -1,0 +1,460 @@
+'\" t
+.\"     Title: dia
+.\"    Author: Fredrik Hallenberg <hallon@lysator.liu.se>
+.\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
+.\"      Date: 2004-11-26
+.\"    Manual: [FIXME: manual]
+.\"    Source: [FIXME: source]
+.\"  Language: English
+.\"
+.TH "DIA" "1" "2004\-11\-26" "[FIXME: source]" "[FIXME: manual]"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+dia \- a diagram drawing program
+.SH "SYNOPSIS"
+.HP \w'\fBdia\fR\ 'u
+\fBdia\fR [\fB\-c\fR] [\fB\-\-credits\fR] [\fB\-e\ \fR\fB\fIOUTPUT\fR\fR] [\fB\-\-export=\fR\fB\fIOUTPUT\fR\fR] [\fB\-L\ \fR\fB\fILAYER,LAYER,\&.\&.\&.\fR\fR] [\fB\-\-show\-layers=\fR\fB\fILAYER,LAYER,\&.\&.\&.\fR\fR] [\fB\-h\fR] [\fB\-\-help\fR] [\fB\-n\fR] [\fB\-\-nosplash\fR] [\fB\-s\ \fR\fB\fIWxH\fR\fR] [\fB\-\-size=\fR\fB\fIWxH\fR\fR] [\fB\-t\ \fR\fB\fIFORMAT\fR\fR] [\fB\-\-filter=\fR\fB\fITYPE\fR\fR] [\fB\-v\fR] [\fB\-\-version\fR] [file\ \&.\&.\&.]
+.SH "DESCRIPTION"
+.PP
+\fBDia\fR
+is used to create diagrams\&. Dia has a number of basic tools, like lines and boxes but can also dynamically load
+\fIsheets\fR\&. A sheet is a collection of tools that are used in a certain type of diagram\&.
+.PP
+Most diagram objects in
+\fBDia\fR
+have
+\fIconnection points\fR\&. Lines can be connected to these connection points and this way graph structures can be formed\&. When objects are moved or resized the connections will follow the objects\&.
+.PP
+Diagrams drawn in
+\fBDia\fR
+can be exported to various formats\&.
+.SH "OPTIONS"
+.PP
+\fBDia\fR
+accepts the following options:
+.PP
+\fB\-c\fR \fB\-\-credits\fR
+.RS 4
+Display credits list and exit\&.
+.RE
+.PP
+\fB\-e \fR\fB\fIOUTPUT\fR\fR \fB\-\-export=\fR\fB\fIOUTPUT\fR\fR
+.RS 4
+Export loaded file to OUTPUT and exit\&.
+.RE
+.PP
+\fB\-h\fR \fB\-\-help\fR
+.RS 4
+Display a list of all commandline options\&.
+.RE
+.PP
+\fB\-n\fR \fB\-\-nosplash\fR
+.RS 4
+Do not show the splash screen\&.
+.RE
+.PP
+\fB\-s \fR\fB\fIWxH\fR\fR \fB\-\-size=\fR\fB\fIWxH\fR\fR
+.RS 4
+Export loaded file in decimal given width and/or height\&. It is allowed to only select width or height\&. E\&.g\&.
+\fB\-\-size=\fR\fB\fI520x\fR\fR
+exports an image that is 520 pixels wide, while
+\fB\-\-size=\fR\fB\fIx900\fR\fR
+exports an image of 900 pixels height\&.
+.if n \{\
+.sp
+.\}
+.RS 4
+.it 1 an-trap
+.nr an-no-space-flag 1
+.nr an-break-flag 1
+.br
+.ps +1
+\fBNote\fR
+.ps -1
+.br
+This option is currently only implemented for the PNG export filter\&.
+.sp .5v
+.RE
+.RE
+.PP
+\fB\-L \fR\fB\fILAYER,LAYER,\&.\&.\&.\fR\fR \fB\-\-show\-layers=\fR\fB\fILAYER,LAYER,\&.\&.\&.\fR\fR
+.RS 4
+Only include specified layers when exporting\&. Layers can be specified either as a layer name, the layer number or a numeric range X\-Y of layers\&. \-\-show\-layers=background,2\-5 shows the layer named background and layers 2\-5, \-\-show\-layers=2\- shows layers 2 and up\&.
+.RE
+.PP
+\fB\-t \fR\fB\fITYPE\fR\fR \fB\-\-filter=\fR\fB\fITYPE\fR\fR
+.RS 4
+Export loaded file with TYPE and exit\&. Formats and variants are described below\&.
+.RE
+.PP
+\fB\-\-list\-filters\fR
+.RS 4
+List export filters/formats and exit\&.
+.RE
+.PP
+\fB\-v\fR \fB\-\-version\fR
+.RS 4
+Display
+\fBdia\fR
+version and exit\&.
+.RE
+.SH "EXPORT FORMATS"
+.PP
+The following export formats are supported by
+\fBdia\fR\&. Most formats are implemented by plug\-ins so their availability depends on compile\- and runtime\-configuration\&.
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+cgm
+(Computer Graphics Metafile, ISO 8632)
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+dia
+(Native dia diagram)
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+dxf
+(Drawing Interchange File)
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+eps
+or
+eps\-builtin
+or
+eps\-pango
+(Encapsulated PostScript)
+.sp
+The format specifications
+eps
+and
+eps\-pango
+both use the font renderer of the Pango library, while
+eps\-builtin
+uses a dia specific font renderer\&. If you have problems with Pango rendering, e\&.g\&. Unicode, try
+eps\-builtin
+instead\&.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+fig
+(XFig format)
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+mp
+(TeX MetaPost macros)
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+pdf
+(Portable Document Format)
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+plt
+or
+hpgl
+(HP Graphics Language)
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+png
+(Portable Network Graphics)
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+shape
+(Dia Shape File)
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+svg
+(Scalable Vector Graphics)
+.sp
+There are three different SVG exporters with Dia having different specializations\&.
+cairo\-svg
+is turning text to shapes to become independent of font availability on the target system\&.
+dia\-svg
+is based on Dia core code only\&. It\*(Aqs translating all Dia\*(Aqs rendering capabilities as closely as possible to SVG\&.
+svg\-py
+\- as SVG renderer implemented in Python \- is producing plain SVG\&. It is the most hackable version to allow some user adaptions
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+pstricks\-tex
+(TeX PSTricks macros)
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+pgf\-tex
+(TeX PGF/tikz macros)
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+vdx
+(Visio Diagram XML)
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+wpg
+(WordPerfect Graphics)
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+wmf
+(Windows MetaFile)
+.RE
+.SH "FILES"
+.PP
+\fBdia\fR
+creates a directory
+\&.dia
+in the user\*(Aqs home, which contains different files to store user preferences\&. To reset
+\fBdia\fR
+to it\*(Aqs default behaviour, just remove the respective file:
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+defaults\&.dia: contains default values for elements (XML format)\&.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+diarc: keeps
+\fBdia\fR
+preferences (ASCII)\&.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+history: keeps the list of last edited diagrams (ASCII)\&.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+menurc: contains an automated accelerator map dump (Lisp)\&.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+persistence: contains GUI information, e\&.g\&. open windows (XML)\&.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+pluginrc: the list of loaded plugins (XML)\&.
+.RE
+.SH "SEE ALSO"
+.PP
+\m[blue]\fBPango\fR\m[]\&\s-2\u[1]\d\s+2
+.PP
+X (1)
+.PP
+xfig (1)
+.PP
+inkscape (1)
+.SH "COPYRIGHT"
+.PP
+Copyright 1999 Alexander Larsson\&.
+.PP
+Permission to use, copy, modify, and distribute this software and its documentation for any purpose and without fee is hereby granted, provided that the above copyright notice appear in all copies and that both that copyright notice and this permission notice appear in supporting documentation\&.
+.SH "AUTHORS"
+.PP
+Alexander Larsson
+.PP
+This manual was written by
+Fredrik Hallenberg\&.
+.SH "AUTHORS"
+.PP
+\fBFredrik Hallenberg\fR <\&hallon@lysator\&.liu\&.se\&>
+.RS 4
+Author.
+.RE
+.PP
+\fBW\&. Borgert\fR <\&debacle@debian\&.org\&>
+.RS 4
+Author.
+.RE
+.PP
+\fBAlan Horkan\fR <\&horkana@tcd\&.ie\&>
+.RS 4
+Author.
+.RE
+.SH "COPYRIGHT"
+.br
+Copyright \(co 1999, 2004 Fredrik Hallenberg, W. Borgert, Alan Horkan
+.br
+.SH "NOTES"
+.IP " 1." 4
+Pango
+.RS 4
+\%http://www.pango.org/
+.RE

@@ -1,0 +1,14 @@
+# fix detecxtion of return type of strerror_r (bug #942789)
+diff --git a/configure.ac b/configure.ac
+index 0f4efac..2f4526e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -511,7 +511,7 @@ fi
+ 
+ OLDCFLAGS=$CFLAGS
+ CFLAGS="$CFLAGS -Werror"
+-AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[ #include <string.h> ]], [[ int i = strerror_r(1);]])],[ AC_DEFINE([Z_STRERROR_R_RETURNS_INT], [], [strerror_r returns int not char*])],[]) 
++AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[ #include <string.h> ]], [[ int i = strerror_r(1, NULL, 1);]])],[ AC_DEFINE([STRERROR_R_RETURNS_INT], [], [strerror_r returns int not char*])],[]) 
+ CFLAGS=$OLDCFLAGS               
+ 
+ 

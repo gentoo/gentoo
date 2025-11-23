@@ -1,0 +1,6 @@
+# /etc/conf.d/vdr.joystick
+
+### Joystick device
+#   default: /dev/js0
+#VDR_JOYSTICK_DEVICE="/dev/js0"
+

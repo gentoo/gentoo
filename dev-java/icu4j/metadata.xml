@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">unicode-org/icu</remote-id>
+		<bugs-to>https://unicode-org.atlassian.net/jira/software/c/projects/ICU/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

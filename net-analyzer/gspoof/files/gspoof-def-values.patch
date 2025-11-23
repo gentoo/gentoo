@@ -1,0 +1,29 @@
+diff -Naurp gspoof-3.2-orig/gfuncts.c gspoof-3.2/gfuncts.c
+--- gspoof-3.2-orig/gfuncts.c	2006-09-15 16:39:59.000000000 +0200
++++ gspoof-3.2/gfuncts.c	2006-09-15 17:20:49.000000000 +0200
+@@ -47,12 +47,6 @@ int RestoreDefault()
+    struct libnet_ether_addr *ethaddr; /* eth address */
+    libnet_t *l;
+ 
+-   /* put default value */
+-   bzero (&f, 6);
+-   bzero (&ck, 2);
+-   memset (data, '\0', 128);
+-   memset (device, '\0', 10);
+-
+    /* loading libnet core */
+    if ((l=libnet_init(LIBNET_LINK, NULL, ebuf))==NULL)
+      {
+@@ -126,6 +120,12 @@ int RestoreDefault()
+    gtk_entry_set_text (GTK_ENTRY (win_entry), "32767");
+    gtk_entry_set_text(GTK_ENTRY (urg_entry), ltostr(urgp));
+ 
++   /* put default value */
++   bzero (&f, sizeof(f));
++   bzero (&ck, sizeof(ck));
++   memset (data, '\0', 128);
++   memset (device, '\0', 10);
++
+    /* Set default variable values */
+    f.syn=1;
+    m.number=10;

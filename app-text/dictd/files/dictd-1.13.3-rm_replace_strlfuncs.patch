@@ -1,0 +1,35 @@
+https://bugs.gentoo.org/880531
+Let’s assume that strlcat and strlcpy are declared in string.h
+It avoids a failure while checking
+diff --git a/configure.ac b/configure.ac
+index f727770..a57d048 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -166,8 +166,6 @@ AC_LIBOBJ([iswalnum])
+ AC_LIBOBJ([towlower])
+ #	AC_LIBOBJ([wcwidth])
+ 
+-AC_REPLACE_FUNCS(strlcpy strlcat)
+-
+ echo .
+ echo Making output files
+ 
+diff --git a/dictP.h b/dictP.h
+index 198cce7..fa8ed25 100644
+--- a/dictP.h
++++ b/dictP.h
+@@ -85,14 +85,6 @@ extern wint_t towlower__ (wint_t wc);
+ 
+ #include <wchar.h>
+ 
+-#if !HAVE_STRLCPY
+-extern size_t strlcpy (char *s, const char * wc, size_t size);
+-#endif
+-
+-#if !HAVE_STRLCAT
+-size_t strlcat(char *dst, const char *src, size_t siz);
+-#endif
+-
+ #if !HAVE_WCRTOMB
+ extern size_t wcrtomb__ (char *s, wchar_t wc, mbstate_t *ps);
+ #else

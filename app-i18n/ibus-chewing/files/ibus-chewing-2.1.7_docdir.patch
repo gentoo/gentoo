@@ -1,0 +1,19 @@
+From b5e4366b9dbf56e81a05e0a52adbdbd24f8bce4f Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Mon, 8 Sep 2025 15:06:46 +0300
+Subject: [PATCH] Define version for docdir location
+
+--- a/meson.build
++++ b/meson.build
+@@ -15,7 +15,7 @@ ibus_chewing_prefix = get_option('prefix')
+ ibus_chewing_datadir = ibus_chewing_prefix / get_option('datadir')
+ ibus_chewing_libexecdir = ibus_chewing_prefix / get_option('libexecdir')
+ ibus_chewing_localedir = ibus_chewing_prefix / get_option('localedir')
+-ibus_chewing_docdir = ibus_chewing_datadir / 'doc' / 'ibus-chewing'
++ibus_chewing_docdir = ibus_chewing_datadir / 'doc' / 'ibus-chewing-' + meson.project_version()
+ 
+ ibus_component_dir = ibus_chewing_datadir / 'ibus' / 'component'
+ ibus_chewing_icondir = ibus_chewing_datadir / 'ibus-chewing' / 'icons'
+-- 
+2.49.1
+

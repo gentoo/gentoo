@@ -1,0 +1,32 @@
+https://bugs.gentoo.org/937417
+https://gitlab.freedesktop.org/pulseaudio/webrtc-audio-processing/-/merge_requests/41
+
+From 1d58a17f18bf81bde00ac7d206976fa3c11e66dc Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyich@gmail.com>
+Date: Sat, 3 Aug 2024 06:48:30 +0100
+Subject: [PATCH] webrtc/api/task_queue/task_queue_base.h: add missing
+ <stdint.h> include
+
+Without the change the build fails on upcoming `gcc-15` as:
+
+    FAILED: webrtc/rtc_base/liblibbase.a.p/platform_thread.cc.o
+        g++ -Iwebrtc/rtc_base/liblibbase.a.p -Iwebrtc/rtc_base -I../webrtc/rtc_base -Iwebrtc -I../webrtc -I/nix/store/w2k6x9126cffd3db93bs4435krsbsz90-abseil-cpp-20240116.2/include -fdiagnostics-color=always -D_GLIBCXX_ASSERTIONS=1 -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -std=c++17 -fPIC -DNOMINMAX -pthread -DWEBRTC_LIBRARY_IMPL -DWEBRTC_ENABLE_SYMBOL_EXPORT -DNDEBUG -DWEBRTC_POSIX -DWEBRTC_LINUX -DWEBRTC_THREAD_RR -DWEBRTC_ENABLE_AVX2 -MD -MQ webrtc/rtc_base/liblibbase.a.p/platform_thread.cc.o -MF webrtc/rtc_base/liblibbase.a.p/platform_thread.cc.o.d -o webrtc/rtc_base/liblibbase.a.p/platform_thread.cc.o -c ../webrtc/rtc_base/platform_thread.cc
+        In file included from ../webrtc/rtc_base/synchronization/sequence_checker.h:15,
+                         from ../webrtc/rtc_base/thread_checker.h:17,
+                         from ../webrtc/rtc_base/platform_thread.h:22,
+                         from ../webrtc/rtc_base/platform_thread.cc:11:
+        ../webrtc/api/task_queue/task_queue_base.h:53:32: error: 'uint32_t' has not been declared
+           53 |                                uint32_t milliseconds) = 0;
+              |                                ^~~~~~~~
+--- a/webrtc/api/task_queue/task_queue_base.h
++++ b/webrtc/api/task_queue/task_queue_base.h
+@@ -11,6 +11,7 @@
+ #define API_TASK_QUEUE_TASK_QUEUE_BASE_H_
+ 
+ #include <memory>
++#include <stdint.h>
+ 
+ #include "api/task_queue/queued_task.h"
+ #include "rtc_base/system/rtc_export.h"
+-- 
+GitLab

@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/871249
+--- a/flip.c
++++ b/flip.c
+@@ -10,4 +10,5 @@
+ #include <string.h>
+ #include <sys/time.h>
++#include <ctype.h>
+ #include <unistd.h>
+ #include <aalib.h>
+@@ -59,4 +60,5 @@
+ static char *graph_mem;
+ 
++int f_getkey(void);
+ 
+ static void dcd_color_64( char *data ) {

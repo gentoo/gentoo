@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		OpenRDAP is a command line client for the Registration Data Access Protocol.
+		RDAP is a replacement for WHOIS, which provides domain name and
+		IP address registration information in JSON format over HTTP(S).
+	</longdescription>
+	<upstream>
+		<remote-id type="github">openrdap/rdap</remote-id>
+	</upstream>
+</pkgmetadata>

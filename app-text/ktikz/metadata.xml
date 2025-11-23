@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>arthurzam@gentoo.org</email>
+		<name>Arthur Zamarin</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">fhackenberger/ktikz</remote-id>
+		<bugs-to>https://github.com/fhackenberger/ktikz/issues</bugs-to>
+		<changelog>https://github.com/fhackenberger/ktikz/blob/master/Changelog</changelog>
+	</upstream>
+</pkgmetadata>

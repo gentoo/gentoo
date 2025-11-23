@@ -1,0 +1,111 @@
+From a52d71d202f6e45cab766c83c16366ca5561a9f2 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 4 Feb 2025 15:43:28 +0000
+Subject: [PATCH] Fix C23 compatibility as best as we can
+
+The situation here is complicated. With C23, 'bool' is exposed properly
+out of the box (as the same type as '_Bool'). But this is problematic
+when it comes to C++ where 'bool' was always '_Bool' (or near-enough
+guaranteed), and where we have existing C applications that we don't
+want to break ABI for.
+
+For C++, id3tag was always using native C++ 'bool', so we don't want to change
+that now when looking at C23 compat. This means the ABI issues between
+C and C++ remain: typedef bool my_bool.
+
+For C, continue using the old 'int bool' that the project did before
+C23. This doesn't solve the pre-existing C/C++ ABI issue here where
+C++ always had "good _Bool-as-bool", unfortunately: typedef int my_bool.
+
+Bug: https://bugs.gentoo.org/949086
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/include/id3.h
++++ b/include/id3.h
+@@ -47,12 +47,12 @@ extern "C"
+   ID3_C_EXPORT ID3Tag*              CCONV ID3Tag_New                  (void);
+   ID3_C_EXPORT void                 CCONV ID3Tag_Delete               (ID3Tag *tag);
+   ID3_C_EXPORT void                 CCONV ID3Tag_Clear                (ID3Tag *tag);
+-  ID3_C_EXPORT bool                 CCONV ID3Tag_HasChanged           (const ID3Tag *tag);
+-  ID3_C_EXPORT void                 CCONV ID3Tag_SetUnsync            (ID3Tag *tag, bool unsync);
+-  ID3_C_EXPORT void                 CCONV ID3Tag_SetExtendedHeader    (ID3Tag *tag, bool ext);
+-  ID3_C_EXPORT void                 CCONV ID3Tag_SetPadding           (ID3Tag *tag, bool pad);
++  ID3_C_EXPORT my_bool                 CCONV ID3Tag_HasChanged           (const ID3Tag *tag);
++  ID3_C_EXPORT void                 CCONV ID3Tag_SetUnsync            (ID3Tag *tag, my_bool unsync);
++  ID3_C_EXPORT void                 CCONV ID3Tag_SetExtendedHeader    (ID3Tag *tag, my_bool ext);
++  ID3_C_EXPORT void                 CCONV ID3Tag_SetPadding           (ID3Tag *tag, my_bool pad);
+   ID3_C_EXPORT void                 CCONV ID3Tag_AddFrame             (ID3Tag *tag, const ID3Frame *frame);
+-  ID3_C_EXPORT bool                 CCONV ID3Tag_AttachFrame          (ID3Tag *tag, ID3Frame *frame);
++  ID3_C_EXPORT my_bool                 CCONV ID3Tag_AttachFrame          (ID3Tag *tag, ID3Frame *frame);
+   ID3_C_EXPORT void                 CCONV ID3Tag_AddFrames            (ID3Tag *tag, const ID3Frame *frames, size_t num);
+   ID3_C_EXPORT ID3Frame*            CCONV ID3Tag_RemoveFrame          (ID3Tag *tag, const ID3Frame *frame);
+   ID3_C_EXPORT ID3_Err              CCONV ID3Tag_Parse                (ID3Tag *tag, const uchar header[ID3_TAGHEADERSIZE], const uchar *buffer);
+@@ -66,7 +66,7 @@ extern "C"
+   ID3_C_EXPORT ID3Frame*            CCONV ID3Tag_FindFrameWithASCII   (const ID3Tag *tag, ID3_FrameID id, ID3_FieldID fld, const char *data);
+   ID3_C_EXPORT ID3Frame*            CCONV ID3Tag_FindFrameWithUNICODE (const ID3Tag *tag, ID3_FrameID id, ID3_FieldID fld, const unicode_t *data);
+   ID3_C_EXPORT size_t               CCONV ID3Tag_NumFrames            (const ID3Tag *tag);
+-  ID3_C_EXPORT bool                 CCONV ID3Tag_HasTagType           (const ID3Tag *tag, ID3_TagType);
++  ID3_C_EXPORT my_bool                 CCONV ID3Tag_HasTagType           (const ID3Tag *tag, ID3_TagType);
+   ID3_C_EXPORT ID3TagIterator*      CCONV ID3Tag_CreateIterator       (ID3Tag *tag);
+   ID3_C_EXPORT ID3TagConstIterator* CCONV ID3Tag_CreateConstIterator  (const ID3Tag *tag);
+ 
+@@ -83,8 +83,8 @@ extern "C"
+   ID3_C_EXPORT void                 CCONV ID3Frame_SetID              (ID3Frame *frame, ID3_FrameID id);
+   ID3_C_EXPORT ID3_FrameID          CCONV ID3Frame_GetID              (const ID3Frame *frame);
+   ID3_C_EXPORT ID3Field*            CCONV ID3Frame_GetField           (const ID3Frame *frame, ID3_FieldID name);
+-  ID3_C_EXPORT void                 CCONV ID3Frame_SetCompression     (ID3Frame *frame, bool comp);
+-  ID3_C_EXPORT bool                 CCONV ID3Frame_GetCompression     (const ID3Frame *frame);
++  ID3_C_EXPORT void                 CCONV ID3Frame_SetCompression     (ID3Frame *frame, my_bool comp);
++  ID3_C_EXPORT my_bool                 CCONV ID3Frame_GetCompression     (const ID3Frame *frame);
+ 
+   /* field wrappers */
+   ID3_C_EXPORT void                 CCONV ID3Field_Clear              (ID3Field *field);
+@@ -116,7 +116,7 @@ extern "C"
+   ID3_C_EXPORT flags_t              CCONV ID3FrameInfo_FieldFlags     (ID3_FrameID frameid, int fieldnum);
+ 
+   /* Deprecated */
+-  ID3_C_EXPORT void                 CCONV ID3Tag_SetCompression       (ID3Tag *tag, bool comp);
++  ID3_C_EXPORT void                 CCONV ID3Tag_SetCompression       (ID3Tag *tag, my_bool comp);
+ 
+ #ifdef __cplusplus
+ }
+--- a/include/id3/globals.h
++++ b/include/id3/globals.h
+@@ -82,12 +82,19 @@
+ 
+ #define ID3_C_VAR extern
+ 
+-#ifndef __cplusplus
+-
+-typedef int bool;
+-#  define false (0)
+-#  define true (!false)
+-
++#if __cplusplus
++/* id3tag was always using native C++ 'bool', so we don't want to change
++   that now when looking at C23 compat. This means the ABI issues between
++   C and C++ remain. */
++#include <stdbool.h>
++typedef bool my_bool;
++#else
++/* For C, continue using the old 'int bool' that the project did before
++   C23. This doesn't solve the pre-existing C/C++ ABI issue here where
++   C++ always had "good _Bool-as-bool", unfortunately. */
++typedef int my_bool;
++#define false (0)
++#define true (!false)
+ #endif /* __cplusplus */
+ 
+ ID3_C_VAR const char * const ID3LIB_NAME;
+@@ -532,9 +539,9 @@ ID3_STRUCT(Mp3_Headerinfo)
+   uint32 framesize;
+   uint32 frames;                // nr of frames
+   uint32 time;                  // nr of seconds in song
+-  bool privatebit;
+-  bool copyrighted;
+-  bool original;
++  my_bool privatebit;
++  my_bool copyrighted;
++  my_bool original;
+ };
+ 
+ #define ID3_NR_OF_V1_GENRES 148

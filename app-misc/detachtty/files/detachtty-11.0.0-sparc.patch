@@ -1,0 +1,121 @@
+Fix compilation on sparc.
+Patch from upstream, backported to the 11.0.0 release.
+
+commit db785c7975e364acbf76a4db90296820d36b0740
+Author: matoro <matoro@users.noreply.github.com>
+Date:   Wed May 4 08:28:11 2022 -0400
+
+    check for signal existence before registering in handler (#5)
+
+    Some signals are only defined on certain platforms.  For example,
+    SIGSTKFLT does not exist on sparc.  Use preprocessor macros to check for
+    signal's existence before registering signal handler for it.
+
+    Note that this is the same technique cpython uses:
+    https://github.com/python/cpython/blob/3.10/Modules/signalmodule.c#L1427
+
+    See: https://bugs.gentoo.org/807184
+
+--- detachtty-11.0.0/attachtty.c
++++ detachtty-11.0.0/attachtty.c
+@@ -94,8 +94,45 @@
+ static void init_signal_handlers(void) {
+     struct sigaction act;
+     int i, fatal_sig[] = {
+-        SIGHUP, SIGQUIT, SIGILL, SIGABRT, SIGBUS, SIGFPE, SIGSEGV, SIGPIPE,
+-        SIGTERM, SIGSTKFLT, SIGCHLD, SIGXCPU, SIGXFSZ,
++#ifdef SIGHUP
++        SIGHUP,
++#endif
++#ifdef SIGQUIT
++        SIGQUIT,
++#endif
++#ifdef SIGILL
++        SIGILL,
++#endif
++#ifdef SIGABRT
++        SIGABRT,
++#endif
++#ifdef SIGBUS
++        SIGBUS,
++#endif
++#ifdef SIGFPE
++        SIGFPE,
++#endif
++#ifdef SIGSEGV
++        SIGSEGV,
++#endif
++#ifdef SIGPIPE
++        SIGPIPE,
++#endif
++#ifdef SIGTERM
++        SIGTERM,
++#endif
++#ifdef SIGSTKFLT
++        SIGSTKFLT,
++#endif
++#ifdef SIGCHLD
++        SIGCHLD,
++#endif
++#ifdef SIGXCPU
++        SIGXCPU,
++#endif
++#ifdef SIGXFSZ
++        SIGXFSZ,
++#endif
+     };
+     
+     /* catch SIGINT and send character \003 over the link */
+--- detachtty-11.0.0/detachtty.c
++++ detachtty-11.0.0/detachtty.c
+@@ -392,9 +392,47 @@
+ 
+ static void init_signal_handlers(void) {
+     struct  sigaction act;
+-    int i, fatal_sig[] = { SIGHUP, SIGQUIT, SIGILL, SIGABRT, SIGBUS, SIGFPE,
+-                           SIGSEGV, /*SIGPIPE,*/ SIGTERM, SIGSTKFLT, SIGCHLD,
+-                           SIGXCPU, SIGXFSZ, };
++    int i, fatal_sig[] = {
++#ifdef SIGHUP
++        SIGHUP,
++#endif
++#ifdef SIGQUIT
++        SIGQUIT,
++#endif
++#ifdef SIGILL
++        SIGILL,
++#endif
++#ifdef SIGABRT
++        SIGABRT,
++#endif
++#ifdef SIGBUS
++        SIGBUS,
++#endif
++#ifdef SIGFPE
++        SIGFPE,
++#endif
++#ifdef SIGSEGV
++        SIGSEGV,
++#endif
++#ifdef SIGPIPE
++        /*SIGPIPE,*/
++#endif
++#ifdef SIGTERM
++        SIGTERM,
++#endif
++#ifdef SIGSTKFLT
++        SIGSTKFLT,
++#endif
++#ifdef SIGCHLD
++        SIGCHLD,
++#endif
++#ifdef SIGXCPU
++        SIGXCPU,
++#endif
++#ifdef SIGXFSZ
++        SIGXFSZ,
++#endif
++    };
+ 
+     /* catch SIGCHLD, SIGQUIT, SIGTERM, SIGILL, SIGFPE... and exit */
+     act.sa_handler = fatal_signal_handler;

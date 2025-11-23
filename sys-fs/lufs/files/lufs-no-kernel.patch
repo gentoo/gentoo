@@ -1,0 +1,111 @@
+diff -pur lufs-0.9.7.orig/configure.in lufs-0.9.7/configure.in
+--- lufs-0.9.7.orig/configure.in	2005-02-07 07:59:18.000000000 +0100
++++ lufs-0.9.7/configure.in	2005-02-07 07:59:40.000000000 +0100
+@@ -9,107 +9,6 @@ AM_INIT_AUTOMAKE(lufs,0.9.7)
+ dnl "static" FSs
+ opt_fs="localfs locasefs ftpfs gnetfs"
+ 
+-AC_ARG_ENABLE(kernel-support,
+-    [  --enable-kernel-support enable building of the kernel module (default=yes)],
+-    [  KERNEL_SUPPORT=$enableval ],)
+-
+-if test "$KERNEL_SUPPORT" != "no"
+-then
+-
+-    dnl Checking os
+-    AC_MSG_CHECKING(OS)
+-    OS_DIR=`uname -s`
+-    if test ! -d kernel/$OS_DIR
+-    then
+-	AC_MSG_ERROR($OS_DIR - not supported!)
+-    else
+-	AC_MSG_RESULT($OS_DIR)
+-    fi
+-
+-    dnl LINUX kernel configuration
+-    if test "$OS_DIR"="Linux"
+-    then
+-
+-	dnl Checking kernel & headers
+-        AC_MSG_CHECKING(kernel)
+-	AC_ARG_WITH(kernel, 
+-	    [  --with-kernel=VERSION   specify a kernel version to compile for], 
+-	    [KERNEL_VERSION=$withval],
+-	    [KERNEL_VERSION=`uname -r`])    
+-        MODULES_DIR=/lib/modules/$KERNEL_VERSION
+-	AC_MSG_RESULT($KERNEL_VERSION)
+-
+-        AC_MSG_CHECKING(kernel support)
+-	KERNEL_DIR=`echo $KERNEL_VERSION | cut -d'.' -f1,2`
+-        if test ! -d kernel/$OS_DIR/$KERNEL_DIR
+-	then
+-	    AC_MSG_ERROR([$KERNEL_DIR not supported!])
+-        else
+-	    AC_MSG_RESULT([supported in kernel/$OS_DIR/$KERNEL_DIR])
+-	fi
+-
+-        AC_MSG_CHECKING(kernel headers)
+-	AC_ARG_WITH(kheaders,
+-	    [  --with-kheaders=DIR     specify the location of the kernel headers],
+-	    [KERNEL_HDR=$withval],
+-	    [KERNEL_HDR=$MODULES_DIR/build/include])
+-        if test ! -f $KERNEL_HDR/linux/fs.h
+-	then 
+-	    AC_MSG_ERROR([not found in $KERNEL_HDR. please install them!])
+-        else
+-	    AC_MSG_RESULT([found in $KERNEL_HDR])
+-	fi
+-
+-        AC_MSG_CHECKING(kernel configuration)
+-	if test -f $MODULES_DIR/build/.config
+-        then
+-	    tmp=`cat $MODULES_DIR/build/.config | grep CONFIG_MODVERSIONS=y`
+-	    if test "$tmp"
+-	    then
+-		AC_MSG_RESULT([found, using modversions])
+-		MODVERSIONS="yes"
+-#		MODV_FLAGS="-DMODVERSIONS -include $KERNEL_HDR/linux/modversions.h"
+-	    else
+-		AC_MSG_RESULT([found, not using modversions])
+-	    fi
+-	else
+-	    AC_MSG_RESULT([not found at $MODULES_DIR/build/.config, assuming modversions support])
+-	    MODVERSIONS="yes"
+-#	    MODV_FLAGS="-DMODVERSIONS -include $KERNEL_HDR/linux/modversions.h"        
+-	fi
+-
+-	AC_ARG_ENABLE(modversions, 
+-	    [  --enable-modversions    enable modeversions support (default=auto-detect)],
+-	    [ if test $enableval = "yes"; then MODVERSIONS="yes"; else MODVERSIONS=""; fi ],)
+-    
+-	if test $MODVERSIONS; then
+-	    AC_MSG_CHECKING(modversions.h)
+-	    if test -f $KERNEL_HDR/linux/modversions.h; then
+-		MODV_FILE="$KERNEL_HDR/linux/modversions.h"
+-	    fi
+-	    
+-	    if test -f $KERNEL_HDR/config/modversions.h; then
+-		MODV_FILE="$KERNEL_HDR/config/modversions.h"
+-	    fi
+-	    
+-	    if test $MODV_FILE; then
+-		MODV_FLAGS="-DMODVERSIONS -include $MODV_FILE"
+-		AC_MSG_RESULT([$MODV_FILE])
+-	    else
+-		AC_MSG_ERROR([not found!])
+-	    fi
+-	fi
+-
+-	AC_SUBST(MODV_FLAGS)
+-	AC_SUBST(KERNEL_DIR)
+-        AC_SUBST(MODULES_DIR)
+-	AC_SUBST(KERNEL_HDR)
+-
+-    fi
+-fi
+-AC_SUBST(OS_DIR)
+-
+-
+ dnl options
+ AC_ARG_ENABLE(debug,
+     [  --enable-debug          enable debug messages to stdout (default=no)],

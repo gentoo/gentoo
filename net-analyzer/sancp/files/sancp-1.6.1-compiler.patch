@@ -1,0 +1,45 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,26 +1,26 @@
+ 
+ # !!! Uncomment this CFLAGS for a small binary !!!
+-CFLAGS	=  -O3 -s -I/usr/include/pcap -L/usr/lib/libpcap.so.0.6.2
++CFLAGS	+=  -I/usr/include/pcap -L/usr/lib/libpcap.so.0.6.2
+ 
+ # !!! or uncomment this CFLAGS for a large binary with symbols; use for debugging  !!!
+ #CFLAGS	=  -O0 -g -I/usr/include/pcap -L/usr/lib/libpcap.so.0.6.2
+ 
+ final : sancp.cc Makefile
+-	if [ ! -f build_acl.o -o build_acl.cc -nt build_acl.o ]; then g++ -Wall $(CFLAGS) -c build_acl.cc -o build_acl.o; fi
+-	if [ ! -f misc_functs.o -o misc_functs.cc -nt misc_functs.o ]; then g++ -Wall $(CFLAGS) -c misc_functs.cc -o misc_functs.o; fi
+-	if [ ! -f outputFileHandle.o -o outputFileHandle.cc -nt outputFileHandle.o ]; then g++ -Wall $(CFLAGS) -c outputFileHandle.cc -o outputFileHandle.o; fi
+-	if [ ! -f apply_rule.o -o apply_rule.cc -nt apply_rule.o ]; then g++ -Wall $(CFLAGS) -c apply_rule.cc -o apply_rule.o; fi
+-	if [ ! -f decode.o -o decode.cc -nt decode.o ]; then g++ -Wall $(CFLAGS) -c decode.cc -o decode.o; fi
+-	if [ ! -f fileHandle.o -o fileHandle.cc -nt fileHandle.o ]; then g++ -Wall $(CFLAGS) -c fileHandle.cc -o fileHandle.o; fi
+-	if [ ! -f MemoryPool.o -o MemoryPool.cc -nt MemoryPool.o ]; then g++ -Wall $(CFLAGS) -c MemoryPool.cc -o MemoryPool.o; fi
+-	if [ ! -f pcapFileHandle.o -o pcapFileHandle.cc -nt pcapFileHandle.o ]; then g++ -Wall $(CFLAGS) -c pcapFileHandle.cc -o pcapFileHandle.o; fi
+-	if [ ! -f sancp.o -o sancp.cc -nt sancp.o ]; then 	g++ -Wall $(CFLAGS) -c sancp.cc -o sancp.o; fi
+-	if [ ! -f pcap_functions.o -o pcap_functions.c -nt pcap_functions.o ]; then 	gcc -Wall $(CFLAGS) -c pcap_functions.c -o pcap_functions.o; fi
+-	if [ ! -f help.o -o help.cc -nt help.o ]; then 	g++ -Wall $(CFLAGS) -c help.cc -o help.o ; fi
+-	if [ ! -f permissions.o -o permissions.cc -nt permissions.o ]; then 	g++ -Wall $(CFLAGS) -c permissions.cc -o permissions.o ; fi
+-	if [ ! -f check_packet.o -o check_packet.cc -nt check_packet.o ]; then 	g++ -Wall $(CFLAGS) -c check_packet.cc -o check_packet.o; fi
+-	if [ ! -f statefull_logging.o -o statefull_logging.cc -nt statefull_logging.o ]; then 	g++ -Wall $(CFLAGS) -c statefull_logging.cc -o statefull_logging.o ; fi
+-	g++ -Wall $(CFLAGS) -o sancp sancp.o misc_functs.o check_packet.o statefull_logging.o build_acl.o apply_rule.o decode.o pcap_functions.o pcapFileHandle.o fileHandle.o MemoryPool.o help.o permissions.o outputFileHandle.o -lpcap
++	if [ ! -f build_acl.o -o build_acl.cc -nt build_acl.o ]; then $(CXX) -Wall $(CFLAGS) -c build_acl.cc -o build_acl.o; fi
++	if [ ! -f misc_functs.o -o misc_functs.cc -nt misc_functs.o ]; then $(CXX) -Wall $(CFLAGS) -c misc_functs.cc -o misc_functs.o; fi
++	if [ ! -f outputFileHandle.o -o outputFileHandle.cc -nt outputFileHandle.o ]; then $(CXX) -Wall $(CFLAGS) -c outputFileHandle.cc -o outputFileHandle.o; fi
++	if [ ! -f apply_rule.o -o apply_rule.cc -nt apply_rule.o ]; then $(CXX) -Wall $(CFLAGS) -c apply_rule.cc -o apply_rule.o; fi
++	if [ ! -f decode.o -o decode.cc -nt decode.o ]; then $(CXX) -Wall $(CFLAGS) -c decode.cc -o decode.o; fi
++	if [ ! -f fileHandle.o -o fileHandle.cc -nt fileHandle.o ]; then $(CXX) -Wall $(CFLAGS) -c fileHandle.cc -o fileHandle.o; fi
++	if [ ! -f MemoryPool.o -o MemoryPool.cc -nt MemoryPool.o ]; then $(CXX) -Wall $(CFLAGS) -c MemoryPool.cc -o MemoryPool.o; fi
++	if [ ! -f pcapFileHandle.o -o pcapFileHandle.cc -nt pcapFileHandle.o ]; then $(CXX) -Wall $(CFLAGS) -c pcapFileHandle.cc -o pcapFileHandle.o; fi
++	if [ ! -f sancp.o -o sancp.cc -nt sancp.o ]; then 	$(CXX) -Wall $(CFLAGS) -c sancp.cc -o sancp.o; fi
++	if [ ! -f pcap_functions.o -o pcap_functions.c -nt pcap_functions.o ]; then $(CC) -Wall $(CFLAGS) -c pcap_functions.c -o pcap_functions.o; fi
++	if [ ! -f help.o -o help.cc -nt help.o ]; then 	$(CXX) -Wall $(CFLAGS) -c help.cc -o help.o ; fi
++	if [ ! -f permissions.o -o permissions.cc -nt permissions.o ]; then 	$(CXX) -Wall $(CFLAGS) -c permissions.cc -o permissions.o ; fi
++	if [ ! -f check_packet.o -o check_packet.cc -nt check_packet.o ]; then 	$(CXX) -Wall $(CFLAGS) -c check_packet.cc -o check_packet.o; fi
++	if [ ! -f statefull_logging.o -o statefull_logging.cc -nt statefull_logging.o ]; then 	$(CXX) -Wall $(CFLAGS) -c statefull_logging.cc -o statefull_logging.o ; fi
++	$(CXX) -Wall $(CFLAGS) $(LDFLAGS) -o sancp sancp.o misc_functs.o check_packet.o statefull_logging.o build_acl.o apply_rule.o decode.o pcap_functions.o pcapFileHandle.o fileHandle.o MemoryPool.o help.o permissions.o outputFileHandle.o -lpcap
+ 
+ clean :
+ 	rm -f *.o sancp

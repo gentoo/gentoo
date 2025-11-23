@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<name>Florian Schmaus</name>
+		<email>flow@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="pypi">xml2rfc</remote-id>
+		<remote-id type="github">ietf-tools/xml2rfc</remote-id>
+		<changelog>https://github.com/ietf-tools/xml2rfc/releases</changelog>
+		<bugs-to>https://github.com/ietf-tools/xml2rfc/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    The Qore programming language is a powerful, thread-capable, embeddable
+    weakly-typed language with optional strong typing and procedural and
+    object-oriented features designed for anything from quick scripting to
+    complex multithreaded, network-aware application development to embedded
+    application scripting. Qore was initially designed to facilitate the rapid
+    implementation of sophisticated interfaces in embedded code in an
+    enterprise environment, and has since grown into a general-purpose language
+    as well.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/qorelanguage/qore/issues</bugs-to>
+    <remote-id type="github">qorelanguage/qore</remote-id>
+  </upstream>
+</pkgmetadata>

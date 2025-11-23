@@ -1,0 +1,33 @@
+fix tests hang with clang as reported in https://bugs.gentoo.org/924958
+
+patch from upstream PR at https://github.com/cpputest/cpputest/pull/1679
+commit https://github.com/cpputest/cpputest/commit/094df52c8f6dae1dccb30d0d39dd1eb832ded85c
+adapt to v4.0
+
+diff --git a/src/CppUTest/Utest.cpp b/src/CppUTest/Utest.cpp
+index d078bdf..3cbbcdf 100644
+--- a/src/CppUTest/Utest.cpp
++++ b/src/CppUTest/Utest.cpp
+@@ -153,7 +153,7 @@ UtestShell::~UtestShell()
+ // LCOV_EXCL_START - actually covered but not in .gcno due to race condition
+ static void defaultCrashMethod()
+ {
+-    UtestShell* ptr = (UtestShell*) NULLPTR; ptr->countTests();
++    abort();
+ }
+ // LCOV_EXCL_STOP
+ 
+diff --git a/tests/CppUTest/UtestTest.cpp b/tests/CppUTest/UtestTest.cpp
+index cf6ad1c..a26fb41 100644
+--- a/tests/CppUTest/UtestTest.cpp
++++ b/tests/CppUTest/UtestTest.cpp
+@@ -222,8 +222,7 @@ TEST(UtestShell, TestDefaultCrashMethodInSeparateProcessTest)
+     fixture.runAllTests();
+     fixture.assertPrintContains("Failed in separate process - killed by signal");
+ 
+-    /* Signal 11 usually happens, but with clang3.7 on Linux, it produced signal 4 */
+-    CHECK(fixture.getOutput().contains("signal 11") || fixture.getOutput().contains("signal 4"));
++    CHECK(fixture.getOutput().contains("signal 6"));
+ }
+ 
+ #endif

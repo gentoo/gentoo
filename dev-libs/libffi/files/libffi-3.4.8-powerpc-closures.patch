@@ -1,0 +1,38 @@
+https://github.com/libffi/libffi/issues/900
+
+https://github.com/php/php-src/issues/18881
+
+From aea22de28ec92a69cab9198de479263fe8b1a637 Mon Sep 17 00:00:00 2001
+From: Peter Bergner <bergner@linux.ibm.com>
+Date: Fri, 18 Apr 2025 10:09:45 -0500
+Subject: [PATCH] powerpc: Fix closures on powerpc64-linux when statically
+ linking (#900) (#902)
+
+Closures on powerpc64-linux using static trampolines do not work when
+statically linking libffi.  The problem is the usage of tramp_globals.text
+in libffi assumes it contains the entry point address of the first trampoline.
+Powerpc's ffi_tramp_arch code returns &trampoline_code_table which for ABIs
+that use function descriptors, ends up returning trampoline_code_table's
+function descriptor address instead of its entry point address.  Update
+the code to always return the entry point address for all ABIs.
+---
+ src/powerpc/ffi.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/powerpc/ffi.c b/src/powerpc/ffi.c
+index 0a9774165..3601cc4ab 100644
+--- a/src/powerpc/ffi.c
++++ b/src/powerpc/ffi.c
+@@ -183,6 +183,12 @@ ffi_tramp_arch (size_t *tramp_size, size_t *map_size)
+   extern void *trampoline_code_table;
+   *tramp_size = PPC_TRAMP_SIZE;
+   *map_size = PPC_TRAMP_MAP_SIZE;
++#if defined (_CALL_AIX) || _CALL_ELF == 1
++  /* The caller wants the entry point address of the trampoline code,
++     not the address of the function descriptor.  */
++  return *(void **)trampoline_code_table;
++#else
+   return &trampoline_code_table;
++#endif
+ }
+ #endif

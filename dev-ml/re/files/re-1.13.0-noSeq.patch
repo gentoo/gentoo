@@ -1,0 +1,9 @@
+--- a/lib_test/expect/dune	2024-11-02 16:53:56.144246101 +0100
++++ b/lib_test/expect/dune	2024-11-02 16:54:33.130770522 +0100
+@@ -20,5 +20,5 @@
+  private_re
+  (library
+   (name re_private)
+-  (libraries seq))
++  )
+  (copy_files %{project_root}/lib/*.{ml,mli}))

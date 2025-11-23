@@ -1,0 +1,53 @@
+From b6b25911c050f0bec192e5ccb09ddc6dc3d5fa7d Mon Sep 17 00:00:00 2001
+From: Oz Tiram <oz.tiram@gmail.com>
+Date: Wed, 20 Sep 2023 23:03:57 +0200
+Subject: [PATCH 1/4] Inject system packages
+
+---
+ pipenv/patched/pip/__main__.py | 8 ++++++++
+ pipenv/resolver.py             | 6 ++++++
+ 2 files changed, 14 insertions(+)
+
+diff --git a/pipenv/patched/pip/__main__.py b/pipenv/patched/pip/__main__.py
+index 032297163..59f7ad19e 100644
+--- a/pipenv/patched/pip/__main__.py
++++ b/pipenv/patched/pip/__main__.py
+@@ -21,10 +21,18 @@ if __package__ == "":
+ if __name__ == "__main__":
+     import importlib.util
+     import sys
++
++    SITE_PACKAGES_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
++
++    # Inject site directory into system path.
++    sys.path.insert(-1, SITE_PACKAGES_ROOT)
++
+     spec = importlib.util.spec_from_file_location(
+         "pipenv", location=os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "__init__.py"))
+     pipenv = importlib.util.module_from_spec(spec)
+     sys.modules["pipenv"] = pipenv
++
++
+     spec.loader.exec_module(pipenv)
+     from pipenv.patched.pip._internal.cli.main import main as _main
+ 
+diff --git a/pipenv/resolver.py b/pipenv/resolver.py
+index 82e01ca39..29461b878 100644
+--- a/pipenv/resolver.py
++++ b/pipenv/resolver.py
+@@ -10,6 +10,12 @@ except ImportError:
+     cached_property = property
+ 
+ 
++SITE_PACKAGES_ROOT = os.path.dirname(os.path.dirname(__file__))
++
++# Inject site directory into system path.
++sys.path.insert(-1, SITE_PACKAGES_ROOT)
++
++
+ def _ensure_modules():
+     spec = importlib.util.spec_from_file_location(
+         "typing_extensions",
+-- 
+2.41.0
+

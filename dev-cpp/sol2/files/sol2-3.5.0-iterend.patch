@@ -1,0 +1,58 @@
+https://github.com/ThePhD/sol2/pull/1676
+https://bugs.gentoo.org/955999
+
+From 8f80cd79f60613b96c877cec2bba3efee2a78225 Mon Sep 17 00:00:00 2001
+From: martin nylin <martin.nylin@gmail.com>
+Date: Tue, 11 Mar 2025 20:58:43 +0100
+Subject: [PATCH 1/2] Change end() to sen() in usertype_container.hpp
+
+---
+ include/sol/usertype_container.hpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/sol/usertype_container.hpp b/include/sol/usertype_container.hpp
+index 6d25d2a8..3ff81724 100644
+--- a/include/sol/usertype_container.hpp
++++ b/include/sol/usertype_container.hpp
+@@ -1189,7 +1189,7 @@ namespace sol {
+ 			static int next_associative(std::true_type, lua_State* L_) {
+ 				iter& i = stack::unqualified_get<user<iter>>(L_, 1);
+ 				auto& it = i.it();
+-				auto& end = i.end();
++				auto& end = i.sen();
+ 				if (it == end) {
+ 					return stack::push(L_, lua_nil);
+ 				}
+
+From a6872ef46b08704b9069ebf83161f4637459ce63 Mon Sep 17 00:00:00 2001
+From: martin nylin <martin.nylin@gmail.com>
+Date: Tue, 11 Mar 2025 21:28:44 +0100
+Subject: [PATCH 2/2] Fix array index out of bounds in stack_field.hpp
+
+---
+ include/sol/stack_field.hpp | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/include/sol/stack_field.hpp b/include/sol/stack_field.hpp
+index 9dd66e2e..3b815225 100644
+--- a/include/sol/stack_field.hpp
++++ b/include/sol/stack_field.hpp
+@@ -113,7 +113,17 @@ namespace sol { namespace stack {
+ 						lua_getglobal(L, &key[0]);
+ 					}
+ 					else {
+-						lua_getfield(L, tableindex, &key[0]);
++						if constexpr (std::is_same_v<std::decay_t<Key>, const char*>) {
++							// Handle const char* case
++							if (key != nullptr) {
++								lua_getfield(L, tableindex, key);
++							} else {
++								push(L, lua_nil);
++							}
++						} else {
++							// Handle std::string case
++							lua_getfield(L, tableindex, key.c_str());
++						}
+ 					}
+ 				}
+ 				else if constexpr (std::is_same_v<T, meta_function>) {

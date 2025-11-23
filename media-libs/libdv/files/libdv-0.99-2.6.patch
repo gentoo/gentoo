@@ -1,0 +1,17 @@
+--- a/libdv/enc_input.c
++++ b/libdv/enc_input.c
+@@ -50,13 +50,13 @@
+ #define _DEVICE_H_
+ #define _LINUX_TIME_H
+ #include <sys/types.h>
+-#include <linux/videodev.h>
+ #include <sys/time.h>
+ #include <unistd.h>
+ #include <fcntl.h>
+ #include <sys/stat.h>
+ #include <sys/ioctl.h>
+ #include <sys/mman.h>
++#include <linux/videodev.h>
+ #endif
+ 
+ // #define ARCH_X86 0

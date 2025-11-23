@@ -1,0 +1,22 @@
+https://github.com/simsong/tcpflow/pull/252
+
+From 51973125e3961569b83bd4fdde65272a3843a6a3 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 15 Apr 2023 09:54:14 +0100
+Subject: [PATCH] Fix build with GCC 13
+
+GCC 13 (as usual for new compiler releases) shuffles around some internal includes and so etc is no longer transitively included.
+
+See https://gnu.org/software/gcc/gcc-13/porting_to.html.
+Bug: https://bugs.gentoo.org/895282
+--- a/src/netviz/plot_view.h
++++ b/src/netviz/plot_view.h
+@@ -23,6 +23,7 @@
+ #include <cairo/cairo-pdf.h>
+ #endif
+ 
++#include <cstdint>
+ #include <vector>
+ #include <string>
+ #include <math.h>
+

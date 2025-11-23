@@ -1,0 +1,33 @@
+Remove indirection for face names
+
+--- rnc-mode-1.0.6/rnc-mode.el
++++ rnc-mode-1.0.6/rnc-mode.el
+@@ -156,24 +156,17 @@
+              (concat (substring result 0 -2) "\\)"))
+       (setq result (concat result op "\\|")))))
+ 
+-;; Font lock treats face names differently in GNU Emacs and XEmacs
+-;; The following defvars is a workaround
+-
+-(defvar italic 'italic)
+-(defvar default 'default)
+-(defvar font-lock-preprocessor-face 'font-lock-preprocessor-face)
+-
+ (defvar rnc-font-lock-keywords
+   (list
+    '("\\b\\(attribute\\|element\\)\\b\\([^{]+\\){" 2 
+      font-lock-variable-name-face)
+-   '("[a-zA-Z][-a-zA-Z0-9._]*:[a-zA-Z][-a-zA-Z0-9._]*" . italic)
++   '("[a-zA-Z][-a-zA-Z0-9._]*:[a-zA-Z][-a-zA-Z0-9._]*" . 'italic)
+    '("\\b\\(default\\(\\s +namespace\\)?\\|namespace\\|datatypes\\)\\(\\s +[a-zA-Z][-a-zA-Z0-9._]*\\)?\\s *=" 1 font-lock-preprocessor-face)
+    '("\\([a-zA-Z][-a-zA-Z0-9._]*\\)\\(\\s \\|\n\\)*[|&]?=" 1 
+      font-lock-function-name-face)
+-   '("[a-zA-Z][a-zA-Z0-9._]*\\(-[a-zA-Z][a-zA-Z0-9._]*\\)+" . default)
+-   (cons (rnc-make-regexp-choice rnc-atoms) 'italic)
+-   (cons (rnc-make-regexp-choice rnc-keywords) font-lock-keyword-face)
++   '("[a-zA-Z][a-zA-Z0-9._]*\\(-[a-zA-Z][a-zA-Z0-9._]*\\)+" . 'default)
++   (cons (rnc-make-regexp-choice rnc-atoms) ''italic)
++   (cons (rnc-make-regexp-choice rnc-keywords) 'font-lock-keyword-face)
+    )
+   "RNC Highlighting")
+ 

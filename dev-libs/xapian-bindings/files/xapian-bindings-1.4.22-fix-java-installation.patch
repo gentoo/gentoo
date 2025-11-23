@@ -1,0 +1,15 @@
+The build system installs stray pyc files.
+
+--- a/python3/Makefile.am
++++ b/python3/Makefile.am
+@@ -40,9 +40,7 @@
+ 
+ # Install as _DATA rather than _SCRIPTS because we don't want to make these
+ # executable (they don't have a #! line).
+-pkgpylib_DATA = xapian/__init__.py \
+-		xapian/__pycache__/__init__.@PYTHON3_CACHE_TAG@.pyc \
+-		xapian/__pycache__/__init__.@PYTHON3_CACHE_OPT1_EXT@
++pkgpylib_DATA = xapian/__init__.py
+ 
+ pkgpylib_LTLIBRARIES = _xapian.la
+ 

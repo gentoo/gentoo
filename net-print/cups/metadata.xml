@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>printing@gentoo.org</email>
+		<name>Gentoo Printing Project</name>
+	</maintainer>
+	<use>
+		<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> instead of <pkg>net-libs/gnutls</pkg> for TLS support</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://github.com/OpenPrinting/cups/issues</bugs-to>
+		<changelog>https://github.com/OpenPrinting/cups/blob/master/CHANGES.md</changelog>
+		<doc>https://openprinting.github.io/cups/#DOCUMENTATION</doc>
+		<remote-id type="cpe">cpe:/a:openprinting:cups</remote-id>
+		<remote-id type="github">OpenPrinting/cups</remote-id>
+	</upstream>
+</pkgmetadata>

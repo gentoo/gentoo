@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<!-- no ALLARCHES: mypyc has portability problems -->
+	<upstream>
+		<remote-id type="github">python/mypy</remote-id>
+		<remote-id type="pypi">mypy</remote-id>
+		<bugs-to>https://github.com/python/mypy/issues</bugs-to>
+		<doc>https://mypy.readthedocs.io/</doc>
+	</upstream>
+	<use>
+		<flag name="native-extensions">
+			Compiles native C extensions (speedups, instead of using Python
+			fallback code).
+		</flag>
+	</use>
+
+</pkgmetadata>

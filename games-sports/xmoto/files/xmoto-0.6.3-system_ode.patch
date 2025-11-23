@@ -1,0 +1,54 @@
+see https://github.com/xmoto/xmoto/commit/bd78a394174df2737da5e90153e6e7e198b0272a
+restore system-ode because versions in tree are <0.16
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -4,6 +4,7 @@ option(USE_SDLGFX "Build with SDL2 for g
+ option(USE_GETTEXT "Build with Gettext for internationalization" ON)
+ option(PREFER_SYSTEM_BZip2 "Prefer system BZip2" ON)
+ option(PREFER_SYSTEM_Lua "Prefer system Lua" ON)
++option(PREFER_SYSTEM_ODE "Prefer system ODE" ON)
+ option(PREFER_SYSTEM_XDG "Prefer system XDG" ON)
+ option(ALLOW_DEV "Enable some development/debug features" OFF)
+ option(BUILD_MACOS_BUNDLE "Build xmoto as a macOS Bundle" OFF)
+@@ -38,6 +39,8 @@ find_package(JPEG REQUIRED)
+ find_package(LibLZMA)
+ find_package(LibXml2 REQUIRED)
+ 
++find_package(ODE)
++set(USE_SYSTEM_ODE $<AND:$<BOOL:${PREFER_SYSTEM_ODE}>,$<BOOL:${ODE_FOUND}>>)
+ if(USE_OPENGL)
+   find_package(OpenGL REQUIRED)
+ endif()
+@@ -98,10 +101,12 @@ check_prototype_definition(mkdir
+   MS_MKDIR
+ )
+ 
+-add_subdirectory("${PROJECT_SOURCE_DIR}/vendor/libccd" libccd)
++if(NOT PREFER_SYSTEM_ODE)
++  add_subdirectory("${PROJECT_SOURCE_DIR}/vendor/libccd" libccd)
++  add_subdirectory("${PROJECT_SOURCE_DIR}/vendor/ode" ode)
++endif()
+ add_subdirectory("${PROJECT_SOURCE_DIR}/vendor/chipmunk" chipmunk)
+ add_subdirectory("${PROJECT_SOURCE_DIR}/vendor/md5sum" md5sum)
+-add_subdirectory("${PROJECT_SOURCE_DIR}/vendor/ode" ode)
+ add_subdirectory("${PROJECT_SOURCE_DIR}/vendor/glad" glad)
+ 
+ configure_file(common/XMBuildConfig.h.in common/XMBuildConfig.h)
+@@ -510,7 +515,8 @@ target_link_libraries(xmoto PUBLIC
+   "$<${USE_SYSTEM_Lua}:${LUA_LIBRARIES}>"
+   $<$<NOT:${USE_SYSTEM_Lua}>:lua>
+   md5sum
+-  ode
++  $<${USE_SYSTEM_ODE}:${ODE_LIBRARY}>
++  $<$<NOT:${USE_SYSTEM_ODE}>:ode>
+   glad
+   ${CMAKE_DL_LIBS}
+   ${OPENGL_LIBRARIES}
+@@ -714,6 +720,7 @@ message("Jpeg       libraries: ${JPEG_LI
+ message("LibXml2    libraries: ${LIBXML2_LIBRARIES}")
+ message("LibLZMA    libraries: ${LIBLZMA_LIBRARIES}")
+ message("Lua        libraries: ${LUA_LIBRARIES}")
++message("Ode        libraries: ${ODE_LIBRARY}")
+ message("OpenGL     libraries: ${OPENGL_LIBRARIES}")
+ message("Png        libraries: ${PNG_LIBRARIES}")
+ message("SDL2       libraries: ${SDL2_LIBRARIES}")

@@ -1,0 +1,21 @@
+Correct Makefile, enabling parallel build.
+--- a/Makefile
++++ b/Makefile
+@@ -51,11 +53,15 @@
+ 
+ rail.o: patchlevel.h
+ 
++.PHONY: gram.c gram.h clean
++
+-gram.c gram.h: y.tab.c y.tab.h
++gram.c: y.tab.c
+ 	cmp -s gram.c y.tab.c || cp y.tab.c gram.c
++
++gram.h: y.tab.h
+ 	cmp -s gram.h y.tab.h || cp y.tab.h gram.h
+ 
+-y.tab.c y.tab.h y.output: gram.y
++y.tab.c y.tab.h y.output &: gram.y
+ 	$(YACC) $(YFLAGS) -dv gram.y
+ 
+ rail: $(OBJS)

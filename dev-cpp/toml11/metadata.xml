@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">ToruNiina/toml11</remote-id>
+    <bugs-to>https://github.com/ToruNiina/toml11/issues/</bugs-to>
+  </upstream>
+</pkgmetadata>

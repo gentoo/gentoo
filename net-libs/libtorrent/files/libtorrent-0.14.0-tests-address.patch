@@ -1,0 +1,13 @@
+diff --git a/test/Makefile.am b/test/Makefile.am
+index 0221796..6e23502 100644
+--- a/test/Makefile.am
++++ b/test/Makefile.am
+@@ -39,8 +39,6 @@ LibTorrent_Test_Common = \
+ 	helpers/utils.h
+ 
+ LibTorrent_Test_Torrent_Net_SOURCES = $(LibTorrent_Test_Common) \
+-	torrent/net/test_address_info.cc \
+-	torrent/net/test_address_info.h \
+ 	torrent/net/test_fd.cc \
+ 	torrent/net/test_fd.h \
+ 	torrent/net/test_socket_address.cc \

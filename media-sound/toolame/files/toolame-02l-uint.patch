@@ -1,0 +1,27 @@
+diff -aur toolame-02l/audio_read.c toolame-02l-fixed/audio_read.c
+--- toolame-02l/audio_read.c	2003-03-01 17:18:30.000000000 -0800
++++ toolame-02l-fixed/audio_read.c	2005-04-19 22:32:41.288998770 -0700
+@@ -436,7 +436,7 @@
+ 
+   if (pcm_aiff_data->sampleSize != sizeof (short) * BITS_IN_A_BYTE) {
+     fprintf (stderr, "Sound data is not %d bits in \"%s\".\n",
+-	     sizeof (short) * BITS_IN_A_BYTE, file_name);
++	     (int)(sizeof (short) * BITS_IN_A_BYTE), file_name);
+     exit (1);
+   }
+ 
+diff -aur toolame-02l/fft.c toolame-02l-fixed/fft.c
+--- toolame-02l/fft.c	2003-03-01 23:14:45.000000000 -0800
++++ toolame-02l-fixed/fft.c	2005-04-19 22:47:49.019986989 -0700
+@@ -1190,9 +1190,9 @@
+   static FLOAT atan_t[ATANSIZE];
+ 
+ INLINE FLOAT atan_table(FLOAT y, FLOAT x) {
+-  int index;
++  unsigned int index;
+ 
+-  index = (int)(ATANSCALE * fabs(y/x));
++  index = (unsigned int)(ATANSCALE * fabs(y/x));
+   if (index>=ATANSIZE)
+     index = ATANSIZE-1;
+ 

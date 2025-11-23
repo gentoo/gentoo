@@ -1,0 +1,38 @@
+https://bugs.gentoo.org/885573
+--- a/dvdbackup.c
++++ b/dvdbackup.c
+@@ -30,6 +30,7 @@ COMMENTAIRE :
+ 
+ #include "const.h"
+ #include "dvdformat.h"
++#include "dvdcopy.h"
+ #include "dvdinfo.h"
+ #include "globals.h"
+ #include "systools.h"
+--- a/dvdcopy.h
++++ b/dvdcopy.h
+@@ -14,6 +14,7 @@ COMMENTAIRE :
+ 
+ #ifndef __DVDCOPY_H__
+ #define __DVDCOPY_H__
++#include <dvdread/ifo_read.h>
+ /*@$#[dvdcopy.c] global proto. AutoProtoSigV1.1. date: 106/01/05 21:32:04 */
+ #include "proto.h"
+ #ifdef __cplusplus
+--- a/systools.c
++++ b/systools.c
+@@ -20,12 +20,8 @@ COMMENTAIRE :
+ #include <stdlib.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+-#if defined(__sun)
+-#	include <sys/statvfs.h>
+-#	include <sys/ioctl.h>
+-#else
+-#	include <sys/statfs.h>
+-#endif
++#include <sys/statfs.h>
++#include <sys/ioctl.h>
+ #include <fcntl.h>
+ #include <unistd.h>
+ #if defined(__sun)

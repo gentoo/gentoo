@@ -1,0 +1,40 @@
+https://github.com/MariaDB/server/pull/4081
+
+From 63735967891430ec44761330a6800d548ba32b71 Mon Sep 17 00:00:00 2001
+From: Kostadin Shishmanov <kostadinshishmanov@protonmail.com>
+Date: Sun, 1 Jun 2025 17:35:07 +0300
+Subject: [PATCH] Fix building with gcc 16 (evex512 removal)
+
+Recently, evex512 was removed from gcc trunk [1] which will eventually
+become gcc 16, and that leads to a build failure in
+mariadb, originally reported downstream in a Gentoo bug [2].
+
+This is reproducible across all versions from 10.6 to current master.
+
+The change is as simple as adding an upper boundary to which
+gcc versions can use evex512.
+
+[1] https://gcc.gnu.org/git/?p=gcc.git;a=commitdiff;h=c052a6f4
+[2] https://bugs.gentoo.org/956632
+
+Signed-off-by: Kostadin Shishmanov <kostadinshishmanov@protonmail.com>
+---
+ mysys/crc32/crc32c_x86.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mysys/crc32/crc32c_x86.cc b/mysys/crc32/crc32c_x86.cc
+index fb5dc19f7a5..134596db2cc 100644
+--- a/mysys/crc32/crc32c_x86.cc
++++ b/mysys/crc32/crc32c_x86.cc
+@@ -25,7 +25,7 @@
+ #else
+ # include <cpuid.h>
+ # ifdef __APPLE__ /* AVX512 states are not enabled in XCR0 */
+-# elif __GNUC__ >= 14 || (defined __clang_major__ && __clang_major__ >= 18)
++# elif (__GNUC__ >= 14 && __GNUC__ < 16) || (defined __clang_major__ && __clang_major__ >= 18)
+ #  define TARGET "pclmul,evex512,avx512f,avx512dq,avx512bw,avx512vl,vpclmulqdq"
+ #  define USE_VPCLMULQDQ __attribute__((target(TARGET)))
+ # elif __GNUC__ >= 11 || (defined __clang_major__ && __clang_major__ >= 9)
+-- 
+2.49.0
+

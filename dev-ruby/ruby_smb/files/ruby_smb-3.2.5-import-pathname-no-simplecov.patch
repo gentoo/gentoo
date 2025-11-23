@@ -1,0 +1,21 @@
+https://github.com/rapid7/ruby_smb/pull/250
+
+From a786565241b721e971ec60697d91516695cecb0a Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 22 Mar 2023 07:22:14 +0000
+Subject: [PATCH] virtual_disk: Add 'pathname' require
+
+Needed for join()'s call to Pathname.new(). Only comes up if disabling
+simplecov because of a transitive-require.
+--- a/lib/ruby_smb/server/share/provider/virtual_disk/virtual_pathname.rb
++++ b/lib/ruby_smb/server/share/provider/virtual_disk/virtual_pathname.rb
+@@ -3,6 +3,8 @@ class Server
+     module Share
+       module Provider
+         class VirtualDisk < Disk
++          require 'pathname'
++
+           # This object emulates Ruby's builtin Pathname object but uses a virtual file system instead of the real local
+           # one.
+           class VirtualPathname
+

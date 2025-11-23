@@ -1,0 +1,11 @@
+--- a/src/misc.c
++++ b/src/misc.c
+@@ -58,7 +58,7 @@
+ 	linebuf[64] = ' ';
+ 	linebuf[56 + j - 1 + (j - 1 > 7) + 1] = '\n';
+ 	linebuf[56 + j - 1 + (j - 1 > 7) + 2] = '\0';
+-	printf(linebuf);
++	printf("%s", linebuf);
+ #ifdef DEBUG
+ 	if (strlen(linebuf) > 73) {
+ 		fprintf(stderr, "line too long, wtf?!\n");

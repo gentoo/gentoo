@@ -1,0 +1,72 @@
+Author: Fabian Groffen <grobian@gentoo.org>
+Date:   Wed Dec 14 17:28:13 2022 +0100
+
+    musl: clumpsy buildfixes
+
+    https://review.coreboot.org/c/coreboot/+/73358
+
+diff --git a/src/arch/x86/include/arch/mmio.h b/src/arch/x86/include/arch/mmio.h
+index c2aa0fb910..b2a37a03dd 100644
+--- a/src/arch/x86/include/arch/mmio.h
++++ b/src/arch/x86/include/arch/mmio.h
+@@ -5,6 +5,10 @@
+ 
+ #include <stdint.h>
+ 
++#ifndef __always_inline
++#define __always_inline inline
++#endif
++
+ static __always_inline uint8_t read8(const volatile void *addr)
+ {
+ 	return *((volatile uint8_t *)(addr));
+diff --git a/util/inteltool/inteltool.h b/util/inteltool/inteltool.h
+index 5b40721262..2d0da33d72 100644
+--- a/util/inteltool/inteltool.h
++++ b/util/inteltool/inteltool.h
+@@ -12,6 +12,7 @@
+ #if defined(__GLIBC__)
+ #include <sys/io.h>
+ #endif
++#include <sys/io.h>
+ #if (defined(__MACH__) && defined(__APPLE__))
+ /* DirectHW is available here: https://www.coreboot.org/DirectHW */
+ #define __DARWIN__
+diff --git a/util/superiotool/superiotool.c b/util/superiotool/superiotool.c
+index ed18c13e62..fa2c6ce35d 100644
+--- a/util/superiotool/superiotool.c
++++ b/util/superiotool/superiotool.c
+@@ -324,8 +324,8 @@
+ 	if ((io_fd = open("/dev/io", O_RDWR)) < 0) {
+ 		perror("/dev/io");
+ #else
+-	if (iopl(3) < 0) {
+-		perror("iopl");
++	if (ioperm(0, 6000, 1) < 0) {
++		perror("ioperm");
+ #endif
+ 		printf("Superiotool must be run as root.\n");
+ 		exit(1);
+diff --git a/util/superiotool/superiotool.h b/util/superiotool/superiotool.h
+index a621ae5274..d5f44fece4 100644
+--- a/util/superiotool/superiotool.h
++++ b/util/superiotool/superiotool.h
+@@ -24,6 +24,10 @@
+ # endif
+ #endif
+ 
++#include <sys/types.h>
++#include <stdint.h>
++#include <sys/io.h>
++
+ #if defined(__FreeBSD__)
+ #include <sys/types.h>
+ #include <machine/cpufunc.h>
+@@ -89,6 +93,7 @@ static __inline__ uint32_t inl(uint16_t port)
+ 	__asm__ __volatile__ ("inl %1,%0":"=a" (value):"Nd" (port));
+ 	return value;
+ }
++
+ #endif
+ 
+ #define USAGE "Usage: superiotool [-d] [-e] [-a] [-l] [-V] [-v] [-h]\n\n\

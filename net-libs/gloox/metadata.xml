@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<upstream>
+		<changelog>https://camaya.net/gloox/changelog/</changelog>
+	</upstream>
+	<use>
+		<flag name="xhtmlim">expose internal NodeList for optional XHTML-IM rendering without external parser</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,20 @@
+Index: ushare-1.1a/configure
+===================================================================
+--- ushare-1.1a.orig/configure
++++ ushare-1.1a/configure
+@@ -627,15 +627,6 @@ if enabled debug; then
+   dostrip=no
+ fi
+ 
+-if enabled optimize; then
+-  if test -n "`$cc -v 2>&1 | grep xlc`"; then
+-    add_cflags  "-O5"
+-    add_ldflags "-O5"
+-  else
+-    add_cflags "-O3"
+-  fi
+-fi
+-
+ #################################################
+ #   check for locales (optional)
+ #################################################

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<upstream>
+		<remote-id type="sourceforge">filebench</remote-id><!-- old -->
+		<remote-id type="github">filebench/filebench</remote-id>
+	</upstream>
+</pkgmetadata>

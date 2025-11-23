@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>williamh@gentoo.org</email>
+    <name>William Hubbs</name>
+  </maintainer>
+  <longdescription>This kernel module allows OpenVPN to offload any data plane management to the
+linux kernel, thus allowing it to exploit any Linux low level API, while avoiding
+expensive and slow payload transfer between kernel space and user space.</longdescription>
+  <use>
+    <flag name="debug">Enable debug output in dmesg</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">OpenVPN/ovpn-dco</remote-id>
+  </upstream>
+</pkgmetadata>

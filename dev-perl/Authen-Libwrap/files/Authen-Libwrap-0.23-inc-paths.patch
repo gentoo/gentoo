@@ -1,0 +1,98 @@
+From 012d607fa5ca2dd8d7b48110a9639841cd3db704 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Sun, 16 Aug 2020 12:59:38 +1200
+Subject: Remove libdir/incdir autodetection magic
+
+Instead, in favour of gentoo controled paths and hard-erroring when
+they're wrong.
+
+Bug: https://bugs.gentoo.org/737212
+---
+ Build.PL | 70 +++++++++++---------------------------------------------
+ 1 file changed, 13 insertions(+), 57 deletions(-)
+
+diff --git a/Build.PL b/Build.PL
+index c76c1d8..d2179de 100644
+--- a/Build.PL
++++ b/Build.PL
+@@ -9,64 +9,20 @@ use Module::Build;
+ 
+ use File::Spec;
+ 
+-my $inc_dir;
+-my $lib_dir;
+-
+-# possible prefixes where we might find libwrap.a
+-# if you know of other common ones please let me know
+-my @prefixes = (
+-    File::Spec->catdir( File::Spec->rootdir, 'usr' ),
+-    File::Spec->catdir( File::Spec->rootdir, 'usr', 'local' ),
+-    File::Spec->catdir( File::Spec->rootdir, 'opt' ),
+-    File::Spec->catdir( File::Spec->rootdir, 'opt', 'local' ),
+-    File::Spec->catdir( File::Spec->rootdir, 'opt', 'libwrap' ),
+-    File::Spec->catdir( File::Spec->rootdir, 'opt', 'tcpwrappers' ),
+-);
+-
+-# try to figure out where libwrap.a is
+-for my $prefix( @prefixes ) {
+-    for my $libname( qw|libwrap.so libwrap.a| ) {
+-        my $candidate = File::Spec->catfile( $prefix, 'lib', $libname );
+-        if( -e $candidate && -f _ && -r _ ) {
+-            my $y_n = Module::Build->y_n(
+-                "do you want to link against $candidate?", "y"
+-            );
+-            if( $y_n ) {
+-                $lib_dir = File::Spec->catdir( $prefix, 'lib' );
+-                last;
+-            }
+-        }
+-    }
+-}
+-
+-# try to figure out where tcpd.h is
+-for my $prefix( @prefixes ) {
+-    my $candidate = File::Spec->catfile( $prefix, 'include', 'tcpd.h' );
+-    if( -e $candidate && -f _ && -r _ ) {
+-        my $y_n = Module::Build->y_n(
+-            "do you want to use $candidate as your header?", "y"
+-        );
+-        if( $y_n ) {
+-            $inc_dir = File::Spec->catdir( $prefix, 'include' );
+-            last;
+-        }
+-    }
+-}
+-
+-# if we can't find it, prompt
+-unless( $inc_dir ) {
+-    $inc_dir = Module::Build->prompt(
+-        "enter include directory to use:",
+-        File::Spec->catdir($prefixes[0], 'include')
+-    );
+-}
+-unless( $lib_dir ) {
+-    $lib_dir = Module::Build->prompt(
+-        "enter library directory to use:",
+-        File::Spec->catdir($prefixes[0], 'lib')
+-    );
+-}
++my $inc_dir = $ENV{GENTOO_INCDIR};
++my $lib_dir = $ENV{GENTOO_LIBDIR};
+ 
++die "GENTOO_LIBDIR not set" unless $lib_dir;
++die "GENTOO_INCDIR not set" unless $inc_dir;
++
++die "No usable libwrap.so in $lib_dir" unless -e File::Spec->catfile( $lib_dir, 'libwrap.so' )
++  and -f _ and -r _;
++
++die "No usable tcpd.h in $inc_dir" unless -e File::Spec->catfile( $inc_dir, 'tcpd.h' )
++  and -f _ and -r _;
++
++warn "$0 libdir: $lib_dir\n";
++warn "$0 incdir: $inc_dir\n";
+ # create the Buildfile
+ Module::Build->new(
+ 
+-- 
+2.28.0
+

@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/949813
+https://sourceforge.net/p/gpsim/bugs/296/
+--- ./configure.ac.orig	2025-02-17 13:47:15.764170851 +0100
++++ ./configure.ac	2025-02-17 13:47:52.610171559 +0100
+@@ -167,6 +167,7 @@
+   echo linking with gtk-$GTK_VERSION_T
+   AC_DEFINE_UNQUOTED([GTK_VERSION],"$GTK_VERSION_T",[gtk version])
+ fi
++X_LDFLAGS="$X_LDFLAGS -lm"
+ 
+ wi_LIB_READLINE
+   if test "$wi_cv_lib_readline" != yes; then

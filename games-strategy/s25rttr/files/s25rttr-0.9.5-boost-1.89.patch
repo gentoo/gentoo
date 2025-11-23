@@ -1,0 +1,58 @@
+https://github.com/Return-To-The-Roots/libsiedler2/compare/a2b0374f5d956080329acd2bcdd73beaf5f6b687...8a2a7e274725c97e797b00ab64b4152a6a18fdc6
+https://bugs.gentoo.org/963310
+
+From 8a2a7e274725c97e797b00ab64b4152a6a18fdc6 Mon Sep 17 00:00:00 2001
+From: Alexander Grund <Flamefire@users.noreply.github.com>
+Date: Thu, 18 Sep 2025 16:37:35 +0200
+Subject: [PATCH] Remove "system" component from Boost find_package search
+
+Boost.System is header-only so this is not required and fails with Boost 1.89
+---
+ CMakeLists.txt                           | 2 +-
+ examples/chTransparentIdx/CMakeLists.txt | 4 ++--
+ examples/lstpacker/CMakeLists.txt        | 4 ++--
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/external/libsiedler2/CMakeLists.txt b/external/libsiedler2/CMakeLists.txt
+index 6cc0322..6d78db4 100644
+--- a/external/libsiedler2/CMakeLists.txt
++++ b/external/libsiedler2/CMakeLists.txt
+@@ -35,7 +35,7 @@ endif()
+ 
+ 
+ include(RttrBoostCfg)
+-find_package(Boost 1.69 REQUIRED COMPONENTS system filesystem iostreams)
++find_package(Boost 1.69 REQUIRED COMPONENTS filesystem iostreams)
+ 
+ include(RttrTestingCfg)
+ if(isTopLevel)
+diff --git a/external/libsiedler2/examples/chTransparentIdx/CMakeLists.txt b/external/libsiedler2/examples/chTransparentIdx/CMakeLists.txt
+index a5a03b2..80ace6c 100644
+--- a/external/libsiedler2/examples/chTransparentIdx/CMakeLists.txt
++++ b/external/libsiedler2/examples/chTransparentIdx/CMakeLists.txt
+@@ -1,8 +1,8 @@
+-# Copyright (C) 2005 - 2021 Settlers Freaks <sf-team at siedler25.org>
++# Copyright (C) 2005 - 2025 Settlers Freaks <sf-team at siedler25.org>
+ #
+ # SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-find_package(Boost 1.69 REQUIRED COMPONENTS system program_options)
++find_package(Boost 1.69 REQUIRED COMPONENTS program_options)
+ 
+ add_executable(chTransparentIdx chTransparentIdx.cpp)
+ 
+diff --git a/external/libsiedler2/examples/lstpacker/CMakeLists.txt b/external/libsiedler2/examples/lstpacker/CMakeLists.txt
+index 95b10e4..0b66ea7 100644
+--- a/external/libsiedler2/examples/lstpacker/CMakeLists.txt
++++ b/external/libsiedler2/examples/lstpacker/CMakeLists.txt
+@@ -1,8 +1,8 @@
+-# Copyright (C) 2005 - 2021 Settlers Freaks <sf-team at siedler25.org>
++# Copyright (C) 2005 - 2025 Settlers Freaks <sf-team at siedler25.org>
+ #
+ # SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-find_package(Boost 1.69 REQUIRED COMPONENTS system program_options)
++find_package(Boost 1.69 REQUIRED COMPONENTS program_options)
+ 
+ file(GLOB _sources *.cpp *.h)
+ add_executable(lstpacker ${_sources})

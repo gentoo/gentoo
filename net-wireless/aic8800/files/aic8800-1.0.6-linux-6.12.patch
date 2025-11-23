@@ -1,0 +1,47 @@
+From 04dc3e356a45ffc42dd0363799af9a487f5e1bf0 Mon Sep 17 00:00:00 2001
+From: Shen Mintao <cx330.shen@autocore.ai>
+Date: Thu, 9 Jan 2025 11:06:42 +0800
+Subject: [PATCH] fix some source code for kernel 6.12
+
+--- a/aic8800_fdrv/rwnx_main.c
++++ b/aic8800_fdrv/rwnx_main.c
+@@ -4545,6 +4547,11 @@ int rwnx_cfg80211_start_radar_detection(struct wiphy *wiphy,
+                                     #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 15, 0))
+                                         , u32 cac_time_ms
+                                     #endif
++                                    #if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 12, 0))
++                                        , int link_id
++                                    #endif
++                                    
++                                    
+                                         )
+ {
+     struct rwnx_hw *rwnx_hw = wiphy_priv(wiphy);
+--- a/aic8800_fdrv/rwnx_radar.c
++++ b/aic8800_fdrv/rwnx_radar.c
+@@ -1399,7 +1399,11 @@ static void rwnx_radar_cac_work(struct work_struct *ws)
+                     #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 14, 0)
+                        &ctxt->chan_def,
+                     #endif
+-                       NL80211_RADAR_CAC_FINISHED, GFP_KERNEL);
++                       NL80211_RADAR_CAC_FINISHED, GFP_KERNEL
++                    #if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 12, 0)
++                       , 0
++                    #endif
++                    );
+     rwnx_send_apm_stop_cac_req(rwnx_hw, radar->cac_vif);
+     rwnx_chanctx_unlink(radar->cac_vif);
+ 
+@@ -1499,7 +1503,11 @@ void rwnx_radar_cancel_cac(struct rwnx_radar *radar)
+                         #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 14, 0)
+                            &ctxt->chan_def,
+                         #endif
+-                           NL80211_RADAR_CAC_ABORTED, GFP_KERNEL);
++                           NL80211_RADAR_CAC_ABORTED, GFP_KERNEL
++                        #if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 12, 0)
++                       , 0
++                        #endif
++                        );
+         rwnx_chanctx_unlink(radar->cac_vif);
+     }
+ 

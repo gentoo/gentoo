@@ -1,0 +1,11 @@
+diff '--color=auto' -ruN mrtg-2.17.10.orig/configure.ac mrtg-2.17.10/configure.ac
+--- mrtg-2.17.10.orig/configure.ac	2021-10-10 14:16:11.000000000 +0200
++++ mrtg-2.17.10/configure.ac	2024-11-05 21:45:35.764839321 +0100
+@@ -31,6 +31,7 @@
+ AC_CACHE_VAL(mr_cv_long_long_format_specifier,[
+     for format in ll l q I64; do
+         AC_RUN_IFELSE([AC_LANG_SOURCE([[#include <stdio.h>  
++            #include <stdlib.h>
+             int main()
+             {
+                 long long b, a = -0x3AFAFAFAFAFAFAFALL;

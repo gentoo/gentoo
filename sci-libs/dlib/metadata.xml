@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  dlib is a C++ library for developing portable applications dealing with
+  networking, threads, graphical interfaces, data structures, linear
+  algebra, machine learning, XML and text parsing, numerical
+  optimization, Bayesian nets, and numerous other tasks.
+  </longdescription>
+  <use>
+    <flag name="cblas">Build with CBLAS <pkg>virtual/cblas</pkg></flag>
+    <flag name="cuda">Enable support for CUDA for Deep Neural Networks (cuDNN) on GPU (experimental)</flag>
+    <flag name="mkl">Enable support for Intel FFT <pkg>sci-libs/mkl</pkg></flag>
+    <flag name="python">Enable support for Python API bindings</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">davisking/dlib</remote-id>
+  </upstream>
+</pkgmetadata>

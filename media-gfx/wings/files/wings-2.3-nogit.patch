@@ -1,0 +1,13 @@
+--- a/Makefile	2024-10-20 12:12:36.987424596 +0200
++++ b/Makefile	2024-10-20 12:13:55.487467140 +0200
+@@ -14,10 +14,8 @@
+ # Check if OpenCL package is as external dependency
+ CL_PATH = $(shell $(ERL) -noshell -eval 'erlang:display(code:which(cl))' -s erlang halt)
+ ifneq (,$(findstring non_existing, $(CL_PATH)))
+-DEPS=cl
+ endif
+ 
+-DEPS += libigl eigen
+ SUBDIRS=c_src intl_tools src e3d plugins_src icons
+ 
+ #

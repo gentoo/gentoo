@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="mmap">Enable the file loading via mmap (memory map)</flag>
+	</use>
+	<upstream>
+		<remote-id type="hackage">JuicyPixels</remote-id>
+		<remote-id type="github">Twinside/Juicy.Pixels</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,29 @@
+FAILED: test.methodselectors.ScriptTest.onlyGroup1("beanshell", "groups.
+     containsKey   	    ("test1")", [test1])
+org.testng.TestNGException: 
+No engine found for language: beanshell. Please check your dependencies and have a look at https://github.com/cbeust/testng/wiki/Supported-script-engines
+	at test.BaseTest$InternalTestRunnerFactory.newTestRunner(BaseTest.java:349)
+	at test.BaseTest.run(BaseTest.java:171)
+	at test.methodselectors.ScriptTest.onlyGroup1(ScriptTest.java:25)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+... Removed 35 stack frames
+FAILED: test.methodselectors.ScriptTest.onlyGroup1("groovy", "groups.
+     containsKey   	    ("test2")", [test2])
+org.testng.TestNGException: 
+No engine found for language: groovy. Please check your dependencies and have a look at https://github.com/cbeust/testng/wiki/Supported-script-engines
+	at test.BaseTest$InternalTestRunnerFactory.newTestRunner(BaseTest.java:349)
+	at test.BaseTest.run(BaseTest.java:171)
+	at test.methodselectors.ScriptTest.onlyGroup1(ScriptTest.java:25)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+
+--- a/testng-core/src/test/java/test/methodselectors/ScriptTest.java
++++ b/testng-core/src/test/java/test/methodselectors/ScriptTest.java
+@@ -18,7 +18,7 @@ public class ScriptTest extends BaseTest {
+     };
+   }
+ 
+-  @Test(dataProvider = "dataProvider")
++  @Test(enabled = false)
+   public void onlyGroup1(String language, String expression, String[] passed) {
+     addClass(test.methodselectors.SampleTest.class);
+     setScript(language, expression);

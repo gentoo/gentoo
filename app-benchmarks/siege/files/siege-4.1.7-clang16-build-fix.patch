@@ -1,0 +1,32 @@
+Bug: https://bugs.gentoo.org/894338
+--- a/src/cookies.c
++++ b/src/cookies.c
+@@ -66,7 +66,7 @@
+ BOOLEAN
+ cookies_add(COOKIES this, char *str, char *host)
+ {
+-  size_t  id    = pthread_self();
++  size_t  id    = (size_t) pthread_self();
+   NODE   *cur   = NULL; 
+   NODE   *pre   = NULL; 
+   NODE   *new   = NULL;
+@@ -174,7 +174,7 @@
+   time_t now;
+   struct tm tm;
+   char   oreo[MAX_COOKIES_SIZE];
+-  size_t id = pthread_self();
++  size_t id = (size_t) pthread_self();
+ 
+   memset(oreo, '\0', sizeof oreo);
+   tmp = time(NULL);
+--- a/src/ftp.c
++++ b/src/ftp.c
+@@ -151,7 +151,7 @@
+ {
+   size_t  len;
+   char    *file;
+-  size_t  id = pthread_self();
++  size_t  id = (size_t) pthread_self();
+   int     num = 2;
+   char    **parts;
+  

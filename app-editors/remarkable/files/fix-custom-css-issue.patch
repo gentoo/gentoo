@@ -1,0 +1,29 @@
+From 09459c2e577a0ae2561e4f785efc026dcfb65809 Mon Sep 17 00:00:00 2001
+From: Nikita Zlobin <cook60020tmp@mail.ru>
+Date: Fri, 4 Aug 2023 23:56:43 +0500
+Subject: [PATCH] Fix issue #345 - apply custom css on start
+
+Just a typo, when default empty css was used on application start
+instead of configured.
+
+Fixes #345
+---
+ remarkable/RemarkableWindow.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/remarkable/RemarkableWindow.py b/remarkable/RemarkableWindow.py
+index d54aa32..45134ab 100755
+--- a/remarkable/RemarkableWindow.py
++++ b/remarkable/RemarkableWindow.py
+@@ -331,7 +331,7 @@ class RemarkableWindow(Window):
+             elif self.style == "solarized_light":
+                 styles.set(styles.solarized_light)
+             elif self.style == "custom":
+-                styles.set(styles.custom_css)
++                styles.set(self.custom_css)
+             else:
+                 print("Style key error")
+ 
+-- 
+2.39.3
+

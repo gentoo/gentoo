@@ -1,0 +1,10 @@
+--- a/lgmon3/src/Makefile.am	2020-05-13 23:18:47.936735159 +0200
++++ b/lgmon3/src/Makefile.am	2020-05-13 23:19:12.239525072 +0200
+@@ -6,6 +6,6 @@
+ 
+ cnijlgmon3_SOURCES = cnijcomif.c cnijifusb.c cnijlgmon3.c cnijifnet.c keytext.c cnijifnet2.c cnijutil.c
+ 
+-CFLAGS = -O2 -Wall -I/usr/include/libusb-1.0 -I./common @XML2_CFLAGS@
++AM_CPPFLAGS = -I/usr/include/libusb-1.0 -I./common @XML2_CFLAGS@
+ 
+ cnijlgmon3_LDADD = -ldl -lusb-1.0 -lcnnet2 -lxml2 -lcnbpcnclapicom2 -lcnbpnet30

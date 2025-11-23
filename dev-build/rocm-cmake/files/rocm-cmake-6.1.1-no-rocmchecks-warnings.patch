@@ -1,0 +1,25 @@
+Gentoo uses cmake -C <...>/gentoo_common_config.cmake approach to set toolchain variables.
+There is nothing wrong there, so there is no need to print huge ROCMChecks warnings.
+--- a/share/rocmcmakebuildtools/cmake/ROCMChecks.cmake
++++ b/share/rocmcmakebuildtools/cmake/ROCMChecks.cmake
+@@ -34,20 +34,6 @@ function(rocm_check_toolchain_var var access value list_file)
+         elseif("${base}" MATCHES ".*/CMakeFiles/${CMAKE_VERSION}$")
+             set(cmake_module On)
+         endif()
+-        if(NOT cmake_module)
+-            message( "
+-*******************************************************************************
+-*------------------------------- ${message_title} --------------------------*
+-  Options and properties should be set on a cmake target where possible. The
+-  variable '${var}' may be set by the cmake toolchain, either by
+-  calling 'cmake -D${var}=\"${value}\"'
+-  or set in a toolchain file and added with
+-  'cmake -DCMAKE_TOOLCHAIN_FILE=<toolchain-file>'. ROCMChecks now calling:")
+-            message(${message_type} "'${var}' is set at ${CMAKE_CURRENT_LIST_DIR}/CMakeLists.txt:<line#> shown below:")
+-            message( "*-----------------------------------------------------------------------------*
+-*******************************************************************************
+-")
+-        endif()
+     endif()
+ endfunction()
+ if(UNIX AND (ROCM_WARN_TOOLCHAIN_VAR OR ROCM_ERROR_TOOLCHAIN_VAR))

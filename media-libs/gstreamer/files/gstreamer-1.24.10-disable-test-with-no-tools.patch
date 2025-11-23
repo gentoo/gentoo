@@ -1,0 +1,18 @@
+gstregistry needs to be able to find gst-plugin-scanner which doesn't
+exist if tools are disabled, as we do for multilib.
+
+But really, this seems to be papering over a bigger, longer-standing
+problem:
+* https://bugs.gentoo.org/870361
+* https://bugzilla.redhat.com/show_bug.cgi?id=1472160
+--- a/tests/check/meson.build
++++ b/tests/check/meson.build
+@@ -36,7 +36,7 @@ core_tests = [
+   [ 'gst/gstpreset.c' ],
+   [ 'gst/gstprotection.c' ],
+   [ 'gst/gstquery.c', not gst_registry ],
+-  [ 'gst/gstregistry.c', not gst_registry ],
++  [ 'gst/gstregistry.c', not gst_registry or not get_option('tools').enabled() ],
+   [ 'gst/gstpromise.c'],
+   [ 'gst/gstsegment.c' ],
+   [ 'gst/gststream.c' ],

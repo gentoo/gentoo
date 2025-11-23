@@ -1,0 +1,20 @@
+#!/bin/bash
+
+die() {
+	echo "#####"
+	echo $1
+	echo "#####"
+	exit 1
+}
+
+sed_var() {
+	sed -i "/\\$symon['$1']/s|=.*|='$2';|" "${MY_INSTALLDIR}"/setup.inc \
+		|| die "sed $1 failed"
+}
+
+[[ $1 == "clean" ]] && exit 0
+
+sed_var rrdtool_path /usr/bin/rrdtool
+sed_var cache_dir "${VHOST_ROOT}"/syweb/cache
+sed_var host_tree /var/lib/symon/rrds
+sed_var layout_dir "${VHOST_ROOT}"/syweb

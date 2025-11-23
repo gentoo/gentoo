@@ -1,0 +1,10 @@
+[Unit]
+Description=Unix socket activation for atuin shell history daemon
+
+[Socket]
+ListenStream=%t/atuin.sock
+SocketMode=0600
+RemoveOnStop=true
+
+[Install]
+WantedBy=sockets.target

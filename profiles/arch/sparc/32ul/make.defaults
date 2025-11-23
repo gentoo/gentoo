@@ -1,0 +1,9 @@
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+CHOST="sparc-unknown-linux-gnu"
+
+# Multilib stuff
+MULTILIB_ABIS="sparc32"
+DEFAULT_ABI="sparc32"
+ABI="${DEFAULT_ABI}"

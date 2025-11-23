@@ -1,0 +1,34 @@
+--- a/include/img.h
++++ b/include/img.h
+@@ -27,7 +27,7 @@
+   U8 *pixels;
+ } img_t;
+ 
+-img_t *IMG_SPLASH;
++extern img_t *IMG_SPLASH;
+ 
+ #endif
+ 
+--- a/src/dat_snd.c
++++ b/src/dat_snd.c
+@@ -19,14 +19,14 @@
+ 
+ sound_t *WAV_WAA;
+ sound_t *WAV_BOMB;
+-sound_t *WAV_BULLET;
+-sound_t *WAV_WALK;
+-sound_t *WAV_JUMP;
++extern sound_t *WAV_BULLET;
++extern sound_t *WAV_WALK;
++extern sound_t *WAV_JUMP;
+ sound_t *WAV_TING;
+-sound_t *WAV_BOMBSHHT;
+-sound_t *WAV_BONUS;
++extern sound_t *WAV_BOMBSHHT;
++extern sound_t *WAV_BONUS;
+ sound_t *WAV_SHHT;
+-sound_t *WAV_BOX;
++extern sound_t *WAV_BOX;
+ sound_t *WAV_DDDING;
+ 
+ #endif /* ENABLE_SOUND */

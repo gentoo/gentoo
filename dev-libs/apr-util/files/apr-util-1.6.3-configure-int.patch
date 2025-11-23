@@ -1,0 +1,28 @@
+commit 4286faefa6fe9ee83e30bacd4e4c498981ac92b7
+Author: jorton <jorton@13f79535-47bb-0310-9956-ffa450edef68>
+Date:   Fri Feb 3 16:36:17 2023 +0000
+
+    Merge r1906347 from trunk:
+    
+    Fix configure for compilers which don't accept implicit
+    int (no longer part of C since C99).
+    
+    Submitted by: Florian Weimer <fweimer redhat.com>
+    PR: 66396
+    
+    
+    git-svn-id: https://svn.apache.org/repos/asf/apr/apr-util/branches/1.6.x@1907246 13f79535-47bb-0310-9956-ffa450edef68
+
+diff --git a/build/dbm.m4 b/build/dbm.m4
+index 57bd131..e8c51b5 100644
+--- a/build/dbm.m4
++++ b/build/dbm.m4
+@@ -235,7 +235,7 @@ AC_DEFUN([APU_TRY_BERKELEY_DB],
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <$apu_try_berkeley_db_header>
+-main ()
++int main (void)
+ {
+   int major, minor, patch;
+ 

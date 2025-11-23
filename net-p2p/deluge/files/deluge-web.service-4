@@ -1,0 +1,10 @@
+[Unit]
+Description=Deluge WebUI
+Documentation=man:deluge-web
+After=deluged.service
+
+[Service]
+ExecStart=/usr/bin/deluge-web -d -c ${DELUGE_WEB_HOME} ${DELUGE_WEB_OPTS}
+
+[Install]
+WantedBy=multi-user.target

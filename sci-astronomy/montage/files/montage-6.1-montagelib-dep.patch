@@ -1,0 +1,30 @@
+From: Ole Streicher <olebole@debian.org>
+Date: Fri, 20 Dec 2024 08:17:51 +0100
+Subject: Add dependency for Montagelib::lib target
+
+---
+ MontageLib/Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/MontageLib/Makefile b/MontageLib/Makefile
+index f37df2d..9d41a23 100644
+--- a/MontageLib/Makefile
++++ b/MontageLib/Makefile
+@@ -49,7 +49,7 @@ pgm:
+ 		(cd FitExec       &&                   $(MAKE) && $(MAKE) install)
+ 		(cd ProjExec      &&                   $(MAKE) && $(MAKE) install)
+ 
+-lib:
++lib: pgm
+ 		rm -f libmontage.a libmontage.so libmontagepy.so
+ 		ar q  libmontage.a \
+ 			util/checkFile.o util/checkHdr.o util/checkWCS.o \
+@@ -136,7 +136,7 @@ lib:
+ 			DiffFitExec/montageDiffFitExec.o \
+ 			ProjExec/montageProjExec.o 
+ 
+-pythonlibs:
++pythonlibs: pgm
+ 		rm -f ../python/MontagePy/lib/*.o
+ 		mkdir -p ../python/MontagePy/lib
+ 		cp util/checkFile.o util/checkHdr.o util/checkWCS.o \

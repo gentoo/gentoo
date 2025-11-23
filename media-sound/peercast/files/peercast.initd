@@ -1,0 +1,27 @@
+#!/sbin/openrc-run
+# Copyright 1999-2009 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+pidfile=/var/run/peercast.pid
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting peercast daemon"
+	start-stop-daemon --start --quiet --background \
+		--make-pidfile --pidfile ${pidfile} \
+		--chuid nobody:audio \
+		--exec /usr/sbin/peercast -- \
+		-i /usr/share/peercast/peercast.ini \
+		-l /var/log/peercast.log \
+		-P /usr/share/peercast
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping peercast daemon"
+	start-stop-daemon --stop --quiet --pidfile ${pidfile}
+	eend $?
+}

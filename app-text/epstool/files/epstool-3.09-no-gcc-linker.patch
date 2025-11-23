@@ -1,0 +1,27 @@
+From cbd73f2bb7dd3a55d0d35b0638e84b8f17e56b52 Mon Sep 17 00:00:00 2001
+From: Helmut Grohne <helmut@subdivi.de>
+Date: Fri, 14 Sep 2018 18:17:39 +0200
+Subject: [PATCH] Make epstool cross buildable by not hardcoding gcc as linker
+
+---
+ src/unixcom.mak | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/unixcom.mak b/src/unixcom.mak
+index 1063b65..ca0b031 100755
+--- a/src/unixcom.mak
++++ b/src/unixcom.mak
+@@ -22,8 +22,8 @@ GSCFLAGS= $(CDEFS) -Wall -Wstrict-prototypes -Wmissing-declarations -Wmissing-pr
+ CCAUX=gcc
+ CC=gcc
+ LFLAGS=$(PLINK) $(LIBPNGLIBS) $(GTKLIBS)
+-CLINK=gcc $(LDFLAGS)
+-LINK=gcc $(LDFLAGS)
++CLINK=$(CC) $(LDFLAGS)
++LINK=$(CC) $(LDFLAGS)
+ 
+ 
+ COMP=$(CC) -I$(SRCDIR) -I$(OBJDIR) $(CFLAGS) $(GSCFLAGS)
+-- 
+2.29.2
+

@@ -1,0 +1,21 @@
+From 1d63e9d731bada64f6038818e27f06da63007d73 Mon Sep 17 00:00:00 2001
+From: Nilesh Patra <npatra974@gmail.com>
+Date: Thu, 4 Mar 2021 23:38:30 +0530
+Subject: [PATCH] Fix GCC-11 Build Failure: include limits lib
+
+---
+ src/MinCollector.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/MinCollector.h b/src/MinCollector.h
+index a905f1f..c4460fb 100644
+--- a/src/MinCollector.h
++++ b/src/MinCollector.h
+@@ -7,6 +7,7 @@
+ #include <sstream>
+ #include <vector>
+ #include <unordered_map>
++#include <limits>
+ 
+ #include "KmerIndex.h"
+ #include "weights.h"

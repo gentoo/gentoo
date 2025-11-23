@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=VSCode (in new window)
+Comment=Editing evolved
+GenericName=Code Editor
+Exec=/usr/bin/vscode @exec_extra_flags@ --new-window -- %F
+Icon=vscode
+NoDisplay=true
+Type=Application
+StartupNotify=false
+Categories=Utility;TextEditor;Development;IDE;
+MimeType=text/plain;inode/directory;application/x-code-workspace;
+Keywords=vscode;code;

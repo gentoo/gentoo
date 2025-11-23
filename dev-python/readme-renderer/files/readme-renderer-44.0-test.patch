@@ -1,0 +1,95 @@
+From 04d5cfe76850192364eff344be7fe27730af8484 Mon Sep 17 00:00:00 2001
+From: shenxianpeng <xianpeng.shen@gmail.com>
+Date: Sat, 18 Jan 2025 06:30:04 -0500
+Subject: [PATCH] update test outputs to fix test fail (#325)
+
+---
+ tests/fixtures/test_CommonMark_008.html           | 6 +++---
+ tests/fixtures/test_GFM_doublequotes.html         | 2 +-
+ tests/fixtures/test_GFM_highlight.html            | 2 +-
+ tests/fixtures/test_GFM_highlight_default_py.html | 2 +-
+ tests/fixtures/test_GFM_malicious_pre.html        | 2 +-
+ tests/fixtures/test_rst_008.html                  | 6 +++---
+ 6 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/tests/fixtures/test_CommonMark_008.html b/tests/fixtures/test_CommonMark_008.html
+index eef144d..5072058 100644
+--- a/tests/fixtures/test_CommonMark_008.html
++++ b/tests/fixtures/test_CommonMark_008.html
+@@ -1,9 +1,9 @@
+ <p>Here is some Python code for a <code>Dog</code>:</p>
+-<pre lang="python3"><span class="k">class</span> <span class="nc">Dog</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
+-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
++<pre lang="python3"><span class="k">class</span><span class="w"> </span><span class="nc">Dog</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
++    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+ 
+-    <span class="k">def</span> <span class="nf">make_sound</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
++    <span class="k">def</span><span class="w"> </span><span class="nf">make_sound</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+         <span class="nb">print</span><span class="p">(</span><span class="s1">'Ruff!'</span><span class="p">)</span>
+ 
+ <span class="n">dog</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">(</span><span class="s1">'Fido'</span><span class="p">)</span>
+diff --git a/tests/fixtures/test_GFM_doublequotes.html b/tests/fixtures/test_GFM_doublequotes.html
+index f75a4cf..b26adba 100644
+--- a/tests/fixtures/test_GFM_doublequotes.html
++++ b/tests/fixtures/test_GFM_doublequotes.html
+@@ -1,7 +1,7 @@
+ <p>This is normal text.</p>
+ <pre><code>This is code text.
+ </code></pre>
+-<pre lang="python3"><span class="k">def</span> <span class="nf">this_is_python</span><span class="p">():</span>
++<pre lang="python3"><span class="k">def</span><span class="w"> </span><span class="nf">this_is_python</span><span class="p">():</span>
+ <span class="w">    </span><span class="sd">"""This is a docstring."""</span>
+     <span class="k">pass</span>
+ </pre>
+diff --git a/tests/fixtures/test_GFM_highlight.html b/tests/fixtures/test_GFM_highlight.html
+index c2cf7bb..1eae5fd 100644
+--- a/tests/fixtures/test_GFM_highlight.html
++++ b/tests/fixtures/test_GFM_highlight.html
+@@ -1,7 +1,7 @@
+ <p>This is normal text.</p>
+ <pre><code>This is code text.
+ </code></pre>
+-<pre lang="python3"><span class="k">def</span> <span class="nf">this_is_python</span><span class="p">():</span>
++<pre lang="python3"><span class="k">def</span><span class="w"> </span><span class="nf">this_is_python</span><span class="p">():</span>
+     <span class="k">pass</span>
+ </pre>
+ <pre lang="go"><span class="kd">func</span><span class="w"> </span><span class="nx">ThisIsGo</span><span class="p">(){</span>
+diff --git a/tests/fixtures/test_GFM_highlight_default_py.html b/tests/fixtures/test_GFM_highlight_default_py.html
+index d85d6ce..d1a136f 100644
+--- a/tests/fixtures/test_GFM_highlight_default_py.html
++++ b/tests/fixtures/test_GFM_highlight_default_py.html
+@@ -1,4 +1,4 @@
+-<pre lang="python3"><span class="k">async</span> <span class="k">def</span> <span class="nf">this_is_python</span><span class="p">():</span>
++<pre lang="python3"><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">this_is_python</span><span class="p">():</span>
+     <span class="k">pass</span>
+ 
+ <span class="nb">print</span><span class="p">(</span><span class="k">await</span> <span class="n">this_is_python</span><span class="p">())</span>
+diff --git a/tests/fixtures/test_GFM_malicious_pre.html b/tests/fixtures/test_GFM_malicious_pre.html
+index dc7b6e6..2e586ec 100644
+--- a/tests/fixtures/test_GFM_malicious_pre.html
++++ b/tests/fixtures/test_GFM_malicious_pre.html
+@@ -1,5 +1,5 @@
+ <p>This is normal text.</p>
+-<pre lang="python3"><span class="k">def</span> <span class="nf">this_is_python</span><span class="p">():</span>
++<pre lang="python3"><span class="k">def</span><span class="w"> </span><span class="nf">this_is_python</span><span class="p">():</span>
+ <span class="w">    </span><span class="sd">"""This is a docstring."""</span>
+     <span class="k">pass</span>
+ <span class="o">&lt;</span><span class="n">script</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"text/javascript"</span><span class="o">&gt;</span><span class="n">alert</span><span class="p">(</span><span class="s1">'I am evil.'</span><span class="p">);</span><span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+diff --git a/tests/fixtures/test_rst_008.html b/tests/fixtures/test_rst_008.html
+index 6762f3a..bbb44a8 100644
+--- a/tests/fixtures/test_rst_008.html
++++ b/tests/fixtures/test_rst_008.html
+@@ -1,9 +1,9 @@
+ <p>Here is some Python code for a <span class="docutils literal">Dog</span>:</p>
+-<pre><code><span class="k">class</span> <span class="nc">Dog</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span><span class="w">
+-</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span><span class="w">
++<pre><code><span class="k">class</span><span class="w"> </span><span class="nc">Dog</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span><span class="w">
++</span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span><span class="w">
+ </span>        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="w">
+ 
+-</span>    <span class="k">def</span> <span class="nf">make_sound</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span><span class="w">
++</span>    <span class="k">def</span><span class="w"> </span><span class="nf">make_sound</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span><span class="w">
+ </span>        <span class="nb">print</span><span class="p">(</span><span class="s1">'Ruff!'</span><span class="p">)</span><span class="w">
+ 
+ </span><span class="n">dog</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">(</span><span class="s1">'Fido'</span><span class="p">)</span></code></pre>

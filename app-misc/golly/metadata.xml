@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    Golly is an open source, cross-platform application for exploring Conway's
+    Game of Life and many other types of cellular automata.
+  </longdescription>
+  <upstream>
+    <doc>https://golly.sourceforge.net/Help/index.html</doc>
+    <remote-id type="sourceforge">golly</remote-id>
+  </upstream>
+</pkgmetadata>

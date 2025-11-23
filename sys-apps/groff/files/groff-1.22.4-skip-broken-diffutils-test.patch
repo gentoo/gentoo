@@ -1,0 +1,38 @@
+https://savannah.gnu.org/bugs/?63726
+https://git.savannah.gnu.org/cgit/groff.git/commit/?id=10274fb69e517b2c4b10fcd0ba3347e5bd0eefd7
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -4195,8 +4195,7 @@ SUFFIXES = .roff .in .ps .mom .pdf .me .ms .ps .html .txt .texi .dvi \
+ 
+ # tests launched by make check
+ check_SCRIPTS = 
+-TESTS = contrib/gdiffmk/tests/gdiffmk_tests.sh $(am__append_5) \
+-	$(am__append_8)
++TESTS = $(am__append_5) $(am__append_8)
+ AM_TESTS_ENVIRONMENT = \
+   abs_top_srcdir=$(abs_top_srcdir) \
+   abs_top_builddir=$(abs_top_builddir) \
+@@ -9570,13 +9569,6 @@ recheck: all $(check_PROGRAMS) $(check_SCRIPTS)
+ 	        am__force_recheck=am--force-recheck \
+ 	        TEST_LOGS="$$log_list"; \
+ 	exit $$?
+-contrib/gdiffmk/tests/gdiffmk_tests.sh.log: contrib/gdiffmk/tests/gdiffmk_tests.sh
+-	@p='contrib/gdiffmk/tests/gdiffmk_tests.sh'; \
+-	b='contrib/gdiffmk/tests/gdiffmk_tests.sh'; \
+-	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+-	--log-file $$b.log --trs-file $$b.trs \
+-	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+-	"$$tst" $(AM_TESTS_FD_REDIRECT)
+ contrib/hdtbl/examples/test-hdtbl.sh.log: contrib/hdtbl/examples/test-hdtbl.sh
+ 	@p='contrib/hdtbl/examples/test-hdtbl.sh'; \
+ 	b='contrib/hdtbl/examples/test-hdtbl.sh'; \
+--- a/contrib/gdiffmk/gdiffmk.am
++++ b/contrib/gdiffmk/gdiffmk.am
+@@ -26,7 +26,6 @@
+ ########################################################################
+ gdiffmk_srcdir = $(top_srcdir)/contrib/gdiffmk
+ bin_SCRIPTS += gdiffmk
+-TESTS += contrib/gdiffmk/tests/gdiffmk_tests.sh
+ man1_MANS += contrib/gdiffmk/gdiffmk.1
+ EXTRA_DIST += \
+   contrib/gdiffmk/gdiffmk.1.man \

@@ -1,0 +1,39 @@
+diff --git a/src/media_drv_gen75_render.c b/src/media_drv_gen75_render.c
+index a3d60ff..51b1442 100644
+--- a/src/media_drv_gen75_render.c
++++ b/src/media_drv_gen75_render.c
+@@ -1453,7 +1453,7 @@ media_drv_gen75_render_init(VADriverContextP ctx)
+ 
+     if (IS_HASWELL (drv_ctx->drv_data.device_id)) {
+         memcpy(render_state->render_kernels, render_kernels_gen7_haswell,
+-               sizeof(render_state->render_kernels));
++               sizeof(render_kernels_gen7_haswell));
+         render_state->render_put_surface = gen7_render_put_surface;
+         render_state->render_put_subpicture = gen7_render_put_subpicture;
+     } else {
+diff --git a/src/media_drv_gen8_render.c b/src/media_drv_gen8_render.c
+index 42005ea..da349cc 100644
+--- a/src/media_drv_gen8_render.c
++++ b/src/media_drv_gen8_render.c
+@@ -1741,7 +1741,7 @@ media_drv_gen8_render_init(VADriverContextP ctx)
+     render_state->max_wm_threads = 64;
+ 
+     memcpy(render_state->render_kernels, render_kernels_gen8,
+-           sizeof(render_state->render_kernels));
++           sizeof(render_kernels_gen8));
+ 
+     kernel_size = 4096;
+ 
+diff --git a/src/media_drv_hw_g75.c b/src/media_drv_hw_g75.c
+index 57eddbd..080cd86 100644
+--- a/src/media_drv_hw_g75.c
++++ b/src/media_drv_hw_g75.c
+@@ -3325,7 +3325,7 @@ media_set_curbe_vp8_me (VP8_ME_CURBE_PARAMS * params)
+   MEDIA_CURBE_DATA_ME *cmd = (MEDIA_CURBE_DATA_ME *) params->curbe_cmd_buff;
+ 
+   media_drv_memcpy (cmd, sizeof (MEDIA_CURBE_DATA_ME), ME_CURBE_INIT_DATA,
+-		    sizeof (MEDIA_CURBE_DATA_ME));
++		    sizeof (ME_CURBE_INIT_DATA));
+   me_mode =
+     params->
+     me_16x_enabled ? (params->me_16x ? ME16x_BEFORE_ME4x : ME4x_AFTER_ME16x) :

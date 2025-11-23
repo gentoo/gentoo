@@ -1,0 +1,23 @@
+From 5127212278ef3675f36e962dc2f057583ab80f57 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Mon, 16 Dec 2024 16:02:03 +0100
+Subject: [PATCH] boost config
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 64ead01..0e0b4dc 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -108,7 +108,7 @@ endif(USE_MPI)
+ 
+ 
+ if (USE_MPI AND HDF5_IS_PARALLEL)
+-    find_package(Boost COMPONENTS mpi system serialization thread REQUIRED)
++    find_package(Boost COMPONENTS mpi system serialization thread REQUIRED CONFIG)
+     include_directories(${Boost_INCLUDE_DIRS})
+     add_definitions("-DHAVE_MPI")
+ endif()
+-- 
+2.47.1
+

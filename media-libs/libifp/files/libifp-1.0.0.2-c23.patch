@@ -1,0 +1,25 @@
+Fix incompatible function pointer types
+https://bugs.gentoo.org/880943
+--- a/src/ifp_os_libusb.c	2025-02-13 17:01:02.998513717 +0400
++++ b/src/ifp_os_libusb.c	2025-02-13 17:06:29.903489348 +0400
+@@ -20,8 +20,8 @@
+ 	char * ob, int max_o, const char * ib, int max_i)
+ {
+ 	int i=0, e=0;
+-	char const * ibb = (char const *)ib;
++	char * ibb = (char *) ib; //strip const qualifier for iconv
+ 	char * obb = (char *)ob;
+ 	size_t i_n = max_i;
+ 	size_t o_n = max_o;
+ 	iconv_t ICONV;
+--- a/src/userfile.c	2025-02-13 17:01:02.998513717 +0400
++++ b/src/userfile.c	2025-02-13 17:03:31.117230875 +0400
+@@ -947,7 +947,7 @@
+ 	return i;
+ }
+ 
+-int file_compare_fts(const FTSENT * const*p1, const FTSENT * const*p2)
++int file_compare_fts(const FTSENT const **p1, const FTSENT const **p2)
+ {
+ 	if (p1 == NULL) { ifp_err("p1 shouldn't be NULL"); return 0; }
+ 	if (p2 == NULL) { ifp_err("p2 shouldn't be NULL"); return 0; }

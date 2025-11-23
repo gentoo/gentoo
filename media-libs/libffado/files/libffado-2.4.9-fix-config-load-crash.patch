@@ -1,0 +1,12 @@
+--- a/support/mixer-qt4/ffado/mixer/globalmixer.py
++++ b/support/mixer-qt4/ffado/mixer/globalmixer.py
+@@ -96,8 +96,7 @@ class GlobalMixer(QWidget):
+     @pyqtSlot()
+     def on_txtNickname_returnPressed( self ):
+         if self.nickname.canChangeValue():
+-            asciiData = self.txtNickname.text().toAscii()
+-            self.nickname.setText( asciiData.data() )
++            self.nickname.setText( self.txtNickname.text().encode('utf-8') )
+         else:
+             self.txtNickname.setText( self.nickname.text() )
+ 

@@ -1,0 +1,25 @@
+https://bugs.gentoo.org/919092
+https://github.com/lxde/lxpanel/commit/633a2d46ffd37f3acde539de9a2861d1ade49ef8
+
+From 633a2d46ffd37f3acde539de9a2861d1ade49ef8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Br=C3=BCckl?= <ib@oddnet.de>
+Date: Mon, 18 Sep 2023 13:59:08 +0200
+Subject: [PATCH] Fix warning that argument is of incompatible pointer type
+
+Cast the netstatus icon appropriately.
+---
+ plugins/netstatus/netstatus-dialog.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plugins/netstatus/netstatus-dialog.c b/plugins/netstatus/netstatus-dialog.c
+index f982b1ed..c4e3e8c1 100644
+--- a/plugins/netstatus/netstatus-dialog.c
++++ b/plugins/netstatus/netstatus-dialog.c
+@@ -880,5 +880,5 @@ void netstatus_dialog_present (GtkWidget *dialog)
+ 
+     data = g_object_get_data(G_OBJECT(dialog), "netstatus-dialog-data");
+     gtk_window_present(GTK_WINDOW(dialog));
+-    gtk_widget_show(data->icon);
++    gtk_widget_show(GTK_WIDGET(data->icon));
+ }
+

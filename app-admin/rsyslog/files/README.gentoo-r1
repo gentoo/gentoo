@@ -1,0 +1,39 @@
+Introduction
+============
+
+Since rsyslog version 7.6 we are shipping a new default Gentoo
+configuration. See bug #501982 to learn more about what we were trying to
+achieve by rewriting the entire configuration.
+
+
+Important changes
+=================
+
+1. "/var/log/syslog" log file is now deprecated
+
+   Beginning with rsyslog-7.6, the "/var/log/syslog" log file will no
+   longer being written per default. We are considering this file as
+   deprecated/obsolet for the typical user/system.
+   The content from this log file is still availble through other
+   (dedicated) log files, see
+
+     - /var/log/cron.log
+     - /var/log/daemon.log
+     - /var/log/mail.log
+     - /var/log/messages
+
+   If you really need the old "/var/log/syslog" log file, all you have to
+   do is uncommenting the corresponding configuration directive in
+   "/etc/rsyslog.d/50-default.conf".
+
+   If you do so, don't forget to re-enable log rotation in
+   "/etc/logrotate.d/rsyslog", too.
+
+
+2. "/var/empty/dev/log" no longer default
+
+   Before version 8.2404.0-r1 there was an additional input socket in
+   "/var/empty/dev/log" (default chroot location) in 8.2404.0-r1 that socket
+   was removed from the default configuration. Users can enable that socket
+   if they need to on their own but it shouldn't be necessary when running new
+   versions of OpenSSH.

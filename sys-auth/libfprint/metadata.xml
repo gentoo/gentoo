@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>nowa@gentoo.org</email>
+		<name>Nowa Ammerlaan</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="freedesktop-gitlab">libfprint/libfprint</remote-id>
+		<bugs-to>https://gitlab.freedesktop.org/libfprint/wiki/-/issues</bugs-to>
+	</upstream>
+	<use>
+		<flag name="tod">Build with patches for Touch OEM Drivers</flag>
+	</use>
+</pkgmetadata>

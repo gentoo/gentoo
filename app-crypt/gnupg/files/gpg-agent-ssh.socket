@@ -1,0 +1,13 @@
+[Unit]
+Description=GnuPG cryptographic agent (ssh-agent emulation)
+Documentation=man:gpg-agent(1) man:ssh-add(1) man:ssh-agent(1) man:ssh(1)
+
+[Socket]
+ListenStream=%t/gnupg/S.gpg-agent.ssh
+FileDescriptorName=ssh
+Service=gpg-agent.service
+SocketMode=0600
+DirectoryMode=0700
+
+[Install]
+WantedBy=sockets.target

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<use>
+		<flag name="clang">
+			Use Clang compiler to build (the only compiler that is
+			currently supported by upstream on Linux, do not report
+			bugs if force-disabled)
+		</flag>
+		<flag name="sndio">Enable support for the <pkg>media-sound/sndio</pkg> backend</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://github.com/PCSX2/pcsx2/issues</bugs-to>
+		<remote-id type="github">PCSX2/pcsx2</remote-id>
+	</upstream>
+</pkgmetadata>

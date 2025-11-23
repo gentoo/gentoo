@@ -1,0 +1,27 @@
+#!/sbin/openrc-run
+# Copyright 2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+QBITTORRENT_USER=${QBITTORRENT_USER:-qbittorrent}
+QBITTORRENT_GROUP=${QBITTORRENT_GROUP:-qbittorrent}
+QBITTORRENT_DIRECTORY=${QBITTORRENT_DIRECTORY:-/var/lib/qbittorrent}
+QBITTORRENT_UMASK=${QBITTORRENT_UMASK:-0022}
+QBITTORRENT_IONICE=${QBITTORRENT_IONICE:-0}
+QBITTORRENT_NICE=${QBITTORRENT_NICE:-0}
+
+description="BitTorrent client in C++ and Qt"
+command="/usr/bin/qbittorrent-nox"
+command_args="${QBITTORRENT_OPTS}"
+pidfile="/run/${RC_SVCNAME}.pid"
+command_background="yes"
+command_user="${QBITTORRENT_USER}:${QBITTORRENT_GROUP}"
+umask="${QBITTORRENT_UMASK}"
+start_stop_daemon_args="--ionice ${QBITTORRENT_IONICE} --nicelevel ${QBITTORRENT_NICE}"
+
+depend() {
+    need localmount net
+}
+
+start_pre() {
+    checkpath -q -d -o ${QBITTORRENT_USER}:${QBITTORRENT_GROUP} ${QBITTORRENT_DIRECTORY}
+}

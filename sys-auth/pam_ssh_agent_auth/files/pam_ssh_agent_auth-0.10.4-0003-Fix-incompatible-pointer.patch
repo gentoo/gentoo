@@ -1,0 +1,46 @@
+Description: Avoided incompatible pointer passing to fix GCC 14 build errors.
+ Add missing 'const', cast to expected pointer type (DSA_SIG) and avoid
+ pointer to pointer when pointer is required.
+ Updated for Gentoo.
+Author: Petter Reinholdtsen <pere@debian.org>
+Bug-Debian: https://bugs.debian.org/1075358
+Forwarded: no
+Last-Update: 2024-11-05
+---
+--- a/ssh-ecdsa.c
++++ b/ssh-ecdsa.c
+@@ -73,7 +73,7 @@ ssh_ecdsa_sign(const Key *key, u_char **
+     if (pamsshagentauth_buffer_get_bignum2_ret(&bb, sig->r) == -1 ||
+         pamsshagentauth_buffer_get_bignum2_ret(&bb, sig->s) == -1) {
+ #else
+-    DSA_SIG_get0(sig, &r, &s);
++    DSA_SIG_get0((const DSA_SIG*)sig, (const BIGNUM **)&r, (const BIGNUM **)&s);
+     if (pamsshagentauth_buffer_get_bignum2_ret(&bb, r) == -1 ||
+         pamsshagentauth_buffer_get_bignum2_ret(&bb, s) == -1) {
+ #endif
+--- a/ssh-rsa.c
++++ b/ssh-rsa.c
+@@ -56,9 +56,9 @@ ssh_rsa_sign(const Key *key, u_char **si
+ 		return -1;
+ 	}
+ 	md = EVP_MD_CTX_create();
+-	EVP_DigestInit(&md, evp_md);
+-	EVP_DigestUpdate(&md, data, datalen);
+-	EVP_DigestFinal(&md, digest, &dlen);
++	EVP_DigestInit(md, evp_md);
++	EVP_DigestUpdate(md, data, datalen);
++	EVP_DigestFinal(md, digest, &dlen);
+ 
+ 	slen = RSA_size(key->rsa);
+ 	sig = pamsshagentauth_xmalloc(slen);
+--- a/ssh-ecdsa.c
++++ b/ssh-ecdsa.c
+@@ -145,7 +145,7 @@
+     if ((pamsshagentauth_buffer_get_bignum2_ret(&b, sig->r) == -1) ||
+         (pamsshagentauth_buffer_get_bignum2_ret(&b, sig->s) == -1))
+ #else
+-    DSA_SIG_get0(sig, &r, &s);
++    DSA_SIG_get0((const DSA_SIG*)sig, (const BIGNUM **)&r, (const BIGNUM **)&s);
+     if ((pamsshagentauth_buffer_get_bignum2_ret(&b, r) == -1) ||
+         (pamsshagentauth_buffer_get_bignum2_ret(&b, s) == -1))
+ #endif

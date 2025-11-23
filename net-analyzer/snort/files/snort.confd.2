@@ -1,0 +1,16 @@
+# Config file for /etc/init.d/snort
+
+# The following options are now set in your snort.conf file:
+# config set_gid:
+# config set_uid:
+# config snaplen:
+# config bpf_file:
+# config logdir:
+
+# The only options that should be set here are SNORT_IFACE and SNORT_CONF.
+
+# This tell snort which interface to listen on (any for every interface)
+SNORT_IFACE="eth1"
+
+# Probably not this either
+SNORT_CONF="/etc/snort/snort.conf"

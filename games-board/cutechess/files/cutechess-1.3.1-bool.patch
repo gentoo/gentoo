@@ -1,0 +1,13 @@
+https://github.com/cutechess/cutechess/pull/831
+https://bugs.gentoo.org/944259
+
+--- a/projects/lib/3rdparty/fathom/src/tbconfig.h
++++ b/projects/lib/3rdparty/fathom/src/tbconfig.h
+@@ -66,7 +66,6 @@
+  * Define TB_NO_STDBOOL if you do not want to use <stdbool.h> or it is not
+  * available or unnecessary (e.g. C++).
+  */
+-#define TB_NO_STDBOOL
+ 
+ /*
+  * Define TB_NO_THREADS if your program is not multi-threaded.

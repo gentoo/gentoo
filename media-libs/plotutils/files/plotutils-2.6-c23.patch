@@ -1,0 +1,25 @@
+https://bugs.gentoo.org/946332
+https://build.opensuse.org/projects/openSUSE:Factory/packages/plotutils/files/plotutils-gcc15.patch?expand=1
+--- a/include/sys-defines.h
++++ b/include/sys-defines.h
+@@ -255,7 +255,7 @@ extern __C_LINKAGE void free (void * ptr
+ 
+ #ifndef __cplusplus
+ #ifdef __STDC__
+-typedef enum { false = 0, true = 1 } bool;
++# include <stdbool.h>
+ #else  /* not __STDC__, do things the old-fashioned way */
+ typedef int bool;
+ #define false 0
+--- a/libxmi/sys-defines.h
++++ b/libxmi/sys-defines.h
+@@ -169,7 +169,7 @@ extern __C_LINKAGE void free (void * ptr
+ #ifndef __cplusplus
+ #ifndef HAVE_BOOL_IN_CC
+ #ifdef __STDC__
+-typedef enum { false = 0, true = 1 } bool;
++# include <stdbool.h>
+ #else  /* not __STDC__, do things the old-fashioned way */
+ typedef int bool;
+ #define false 0
+

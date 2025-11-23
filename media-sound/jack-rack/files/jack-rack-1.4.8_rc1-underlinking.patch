@@ -1,0 +1,13 @@
+This should be applied after Debian 02-gcc45_binutils_gold.patch which adds -ldl, but
+we need also -lm wrt http://bugs.gentoo.org/463696 for exp(), log() and logf()
+
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -56,6 +56,7 @@
+ 	-DDTDDIR=\"$(dtddir)\"
+ 
+ LIBS = \
++	-lm \
+ 	-ldl \
+ 	$(JACK_LIBS) \
+ 	$(GTK_LIBS) \

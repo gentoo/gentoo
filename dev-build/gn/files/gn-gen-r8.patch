@@ -1,0 +1,38 @@
+https://gn-review.googlesource.com/c/gn/+/18760 (partially, at least)
+From: Matt Jolly <kangie@gentoo.org>
+Date: Sat, 17 May 2025 12:38:19 +1000
+Subject: [PATCH] Update patch to v8
+
+--- a/build/gen.py
++++ b/build/gen.py
+@@ -432,10 +432,10 @@ def WriteGNNinja(path, platform, host, options, args_list):
+         cflags.extend(['-D_LIBCPP_DEBUG=1', '-D_GLIBCXX_DEBUG=1'])
+     else:
+       cflags.append('-DNDEBUG')
+-      cflags.append('-O3')
+-      if options.no_strip:
+-        cflags.append('-g')
+-      ldflags.append('-O3')
++#      cflags.append('-O3')
++#      if options.no_strip:
++#        cflags.append('-g')
++#      ldflags.append('-O3')
+       # Use -fdata-sections and -ffunction-sections to place each function
+       # or data item into its own section so --gc-sections can eliminate any
+       # unused functions and data items.
+@@ -482,7 +482,6 @@ def WriteGNNinja(path, platform, host, options, args_list):
+         '-D_FILE_OFFSET_BITS=64',
+         '-D__STDC_CONSTANT_MACROS', '-D__STDC_FORMAT_MACROS',
+         '-pthread',
+-        '-pipe',
+         '-fno-exceptions',
+         '-fno-rtti',
+         '-fdiagnostics-color',
+@@ -524,8 +524,6 @@
+         '-Wno-implicit-fallthrough',
+         '-Wno-redundant-move',
+         '-Wno-unused-variable',
+-        '-Wno-format',             # Use of %llx, which is supported by _UCRT, false positive
+-        '-Wno-strict-aliasing',    # Dereferencing punned pointer
+         '-Wno-cast-function-type', # Casting FARPROC to RegDeleteKeyExPtr
+       ])

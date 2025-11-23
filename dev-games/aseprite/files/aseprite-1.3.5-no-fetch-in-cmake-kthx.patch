@@ -1,0 +1,108 @@
+From 147777df737d3f26a05d48eff262c8cd15d7fb37 Mon Sep 17 00:00:00 2001
+From: David Capello <david@igara.com>
+Date: Wed, 6 Mar 2024 09:59:20 -0300
+Subject: [PATCH] Don't try to clone strings repo if Git isn't available (fix
+ #4357)
+
+  This can happen when the source code is downloaded as a .zip and the
+  Git command is not available to clone the strings repo.
+
+Don't clone strings repository by default (fix #4489)
+
+  New ENABLE_I18N_STRINGS option (off by default) to avoid compilation
+  errors cloning the strings repo (no connection, no git, etc.).
+
+Fix typo using ENABLE_I18N_STRINGS var
+
+(cherry picked from commit 50d4f9d8028dc56686b7f0720ef4775db7b2f782)
+(cherry picked from commit 064ddef1901b69c45a40a396b7444769e7fbb4c4)
+(cherry picked from commit 8817724e448a297507b9ef4e41c54c75fd99b543)
+---
+ CMakeLists.txt     |  1 +
+ src/CMakeLists.txt | 52 +++++++++++++++++++++++++++-------------------
+ 2 files changed, 32 insertions(+), 21 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4945a70dd..64234b9ae 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -60,6 +60,7 @@ option(ENABLE_DRM          "Compile the DRM-enabled version (e.g. for automatic
+ option(ENABLE_STEAM        "Compile with Steam library" off)
+ option(ENABLE_DEVMODE      "Compile vesion for developers" off)
+ option(ENABLE_UI           "Compile UI (turn off to compile CLI-only version)" on)
++option(ENABLE_I18N_STRINGS "Clone i18n strings repo (https://github.com/aseprite/strings) to bin/data/strings.git" off)
+ option(FULLSCREEN_PLATFORM "Enable fullscreen by default" off)
+ option(ENABLE_CLANG_TIDY   "Enable static analysis" off)
+ option(ENABLE_CCACHE       "Use CCache to improve recompilation speed (optional)" on)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 708dc7c6d..28adf6ae4 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -155,19 +155,27 @@ set(DATA_OUTPUT_DIR ${CMAKE_BINARY_DIR}/bin/data)
+ ######################################################################
+ # Clone "strings" repo with translations into bin/data/strings.git
+ 
+-include(FetchContent)
+-
+-FetchContent_Declare(
+-  clone_strings
+-  GIT_REPOSITORY    https://github.com/aseprite/strings.git
+-  GIT_TAG           origin/main
+-  SOURCE_DIR        ${DATA_OUTPUT_DIR}/strings.git
+-  CONFIGURE_COMMAND ""
+-  BUILD_COMMAND     ""
+-  INSTALL_COMMAND   ""
+-  TEST_COMMAND      "")
+-FetchContent_MakeAvailable(clone_strings)
+-add_custom_target(clone_strings DEPENDS clone_strings)
++if(ENABLE_I18N_STRINGS)
++  include(FetchContent)
++  find_package(Git)
++  if(GIT_FOUND)
++    FetchContent_Declare(
++      clone_strings
++      GIT_REPOSITORY    https://github.com/aseprite/strings.git
++      GIT_TAG           origin/main
++      SOURCE_DIR        ${DATA_OUTPUT_DIR}/strings.git
++      CONFIGURE_COMMAND ""
++      BUILD_COMMAND     ""
++      INSTALL_COMMAND   ""
++      TEST_COMMAND      "")
++    FetchContent_MakeAvailable(clone_strings)
++    add_custom_target(clone_strings DEPENDS clone_strings)
++  else()
++    add_custom_target(clone_strings)
++  endif()
++else()
++  add_custom_target(clone_strings)
++endif()
+ 
+ ######################################################################
+ # Copy data/ directory target into bin/data/
+@@ -182,14 +190,16 @@ foreach(fn ${src_data_files})
+   list(APPEND out_data_files ${DATA_OUTPUT_DIR}/${fn})
+ endforeach()
+ 
+-# Copy original en.ini to strings.git/en.ini to keep it updated. We
+-# have to manually sync the "en.ini" file in the "strings" repo from
+-# the "aseprite" repo.
+-add_custom_command(
+-  OUTPUT ${DATA_OUTPUT_DIR}/strings.git/en.ini
+-  COMMAND ${CMAKE_COMMAND} -E copy_if_different ${SOURCE_DATA_DIR}/strings/en.ini ${DATA_OUTPUT_DIR}/strings.git/en.ini
+-  MAIN_DEPENDENCY ${SOURCE_DATA_DIR}/strings/en.ini)
+-list(APPEND out_data_files ${DATA_OUTPUT_DIR}/strings.git/en.ini)
++if(ENABLE_I18N_STRINGS AND GIT_FOUND)
++  # Copy original en.ini to strings.git/en.ini to keep it updated. We
++  # have to manually sync the "en.ini" file in the "strings" repo from
++  # the "aseprite" repo.
++  add_custom_command(
++    OUTPUT ${DATA_OUTPUT_DIR}/strings.git/en.ini
++    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${SOURCE_DATA_DIR}/strings/en.ini ${DATA_OUTPUT_DIR}/strings.git/en.ini
++    MAIN_DEPENDENCY ${SOURCE_DATA_DIR}/strings/en.ini)
++  list(APPEND out_data_files ${DATA_OUTPUT_DIR}/strings.git/en.ini)
++endif()
+ 
+ add_custom_command(
+   OUTPUT ${DATA_OUTPUT_DIR}/README.md
+-- 
+2.47.1

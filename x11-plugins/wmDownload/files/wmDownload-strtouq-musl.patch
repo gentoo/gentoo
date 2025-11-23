@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/898922
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Sun, 14 May 2023 14:39:59 +0530
+Subject: [PATCH] Don't use strtouq while building on non-glibc system
+
+Bug: https://bugs.gentoo.org/898922
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+--- a/wmDownload.c
++++ b/wmDownload.c
+@@ -205,7 +205,11 @@ void checknetstats ()
+ 				{
+ 					p = (char *)strtok (NULL, tokens);
+ 						
++#ifdef __GLIBC__
+ 					bytes = strtouq(p, NULL, 0);
++#else
++					bytes = strtoul(p, NULL, 0);
++#endif
+ 						
+ 					kbytes = (bytes == 0)?0:bytes/base;
+ 					bytes = bytes%base;
+-- 
+2.40.1
+

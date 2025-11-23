@@ -1,0 +1,31 @@
+https://gitlab.gnome.org/GNOME/gtk/-/commit/32381771b1cfa55770036e525a6c53c70be6c920
+
+From 32381771b1cfa55770036e525a6c53c70be6c920 Mon Sep 17 00:00:00 2001
+From: Matthias Clasen <mclasen@redhat.com>
+Date: Wed, 12 Feb 2025 12:16:34 +0100
+Subject: [PATCH] im: Fix signal handler signature
+
+This was causing crashes, probably since 2019 :(
+
+Fixes: #7306
+Fixes: #7331
+---
+ gtk/gtkimmulticontext.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/gtk/gtkimmulticontext.c b/gtk/gtkimmulticontext.c
+index 50363559d7b..2d70cdeda06 100644
+--- a/gtk/gtkimmulticontext.c
++++ b/gtk/gtkimmulticontext.c
+@@ -282,7 +282,8 @@ gtk_im_multicontext_get_slave (GtkIMMulticontext *multicontext)
+ }
+ 
+ static void
+-im_module_setting_changed (GtkSettings       *settings, 
++im_module_setting_changed (GtkSettings       *settings,
++                           GParamSpec        *pspec,
+                            GtkIMMulticontext *self)
+ {
+   gtk_im_multicontext_set_slave (self, NULL, FALSE);
+-- 
+GitLab

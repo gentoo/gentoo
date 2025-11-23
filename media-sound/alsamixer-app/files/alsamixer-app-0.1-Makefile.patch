@@ -1,0 +1,32 @@
+diff -ur a/Makefile b/Makefile
+--- a/Makefile	2004-09-30 23:44:06.000000000 +0300
++++ b/Makefile	2008-06-28 08:40:28.000000000 +0300
+@@ -4,22 +4,22 @@
+ 
+ DESTDIR =
+ GNUSTEP_BINDIR = /usr/local/GNUstep/Apps/AlsaMixer.app
+-X11_BINDIR = /usr/X11R6/bin
++X11_BINDIR = /usr/bin
+ 
+-CXX=c++
+-CXXFLAGS += -Wall -pedantic -fno-rtti -fno-exceptions -O2 -I/usr/X11R6/include
+-LDFLAGS += -L/usr/X11R6/lib -lXpm -lXext -lX11 -lasound
++CXX ?= g++
++CXXFLAGS += -Wall -pedantic -fno-rtti -fno-exceptions
++LIBS = -lXpm -lXext -lX11 -lasound
+ 
+ OBJECTS = Main.o Mixer.o Xpm.o AMixer/AMixer.o AMixer/AItem.o AMixer/AChannel.o
+ 
+ all: AlsaMixer.app
+ 
+ AlsaMixer.app: $(OBJECTS)
+-	$(CXX) $(OBJECTS) -o $@ $(LDFLAGS)
++	$(CXX) $(LDFLAGS) $(OBJECTS) $(LIBS) -o $@
+ 
+ .PHONY:	install clean distclean
+ 
+-install: install-gnustep
++install: install-x11
+ 
+ install-gnustep: all
+ 	install -d  $(DESTDIR)$(GNUSTEP_BINDIR)

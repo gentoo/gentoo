@@ -1,0 +1,50 @@
+
+
+Fix for gcc15 breakage (Lukas Wirz)
+
+https://bugs.launchpad.net/bugs/2096612
+
+abi-compliance-checker:
+Problems with Data Types
+High 0
+Medium 0
+Low 1
+filter.h
+[+] typedef lmfunc 1
+Change Effect
+1 Base type has been changed from int(*)(...) to int(*)(int, int, double*, double*, int*). Recompilation of a client program may be broken.
+[+] affected symbols: 26 (4.7%)
+
+--- a/filter.h
++++ b/filter.h
+@@ -410,7 +410,7 @@
+ 
+ // function to minimize in Levenberg-Marquardt solver
+ 
+-typedef		int (*lmfunc)();	
++typedef int (*lmfunc)(int m, int n, double x[], double fvec[], int *iflag);
+ 
+ struct triangle
+ {
+@@ -774,13 +774,19 @@
+ PANO13_IMPEX void 	matrix_inv_mult		( double m[3][3], double vector[3] );
+ PANO13_IMPEX double 	smallestRoot		( double *p );
+ PANO13_IMPEX void 	SetCorrectionRadius	( cPrefs *cP );
+-PANO13_IMPEX int		lmdif				();
++PANO13_IMPEX int    lmdif(int m, int n, double x[], double fvec[],
++                          double ftol, double xtol, double gtol,
++                          int maxfev, double epsfcn, double diag[],
++                          int mode, double factor, int nprint,
++                          int *info, int *nfev, double fjac[],
++                          int ldfjac, int ipvt[], double qtf[],
++                          double wa1[], double wa2[], double wa3[], double wa4[]);
+ PANO13_IMPEX void	fourier				( TrformStr *TrPtr, cPrefs *cP );
+ PANO13_IMPEX unsigned short 	gamma_correct( double pix );
+ PANO13_IMPEX int 	EqualCPrefs( cPrefs *c1, cPrefs *c2 );
+ PANO13_IMPEX double 	OverlapRMS			( MultiLayerImage *mim );
+ PANO13_IMPEX double 	distSquared			( int num ); 
+-PANO13_IMPEX int		fcnPano();
++PANO13_IMPEX int    fcnPano(int m, int n, double x[], double fvec[], int *iflag);
+ PANO13_IMPEX int		EvaluateControlPointError ( int num, double *errptr, double errComponent[2]);
+ PANO13_IMPEX void 	doCoordinateTransform( CoordInfo *c, tMatrix *t );
+ PANO13_IMPEX void 	findOptimumtMatrix( transformCoord *tP, tMatrix *tM, lmfunc f);

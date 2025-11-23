@@ -1,0 +1,10 @@
+service sane-port
+{
+  socket_type = stream
+  server = /usr/sbin/saned
+  protocol = tcp
+  user = saned
+  group = scanner
+  wait = no
+  disable = yes
+}

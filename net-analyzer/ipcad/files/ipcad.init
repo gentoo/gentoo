@@ -1,0 +1,36 @@
+#!/sbin/openrc-run
+# Copyright 1999-2006 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+checkconfig() {
+	if [ ! -f /etc/ipcad.conf ] ; then
+		eerror "No /etc/ipcad.conf file exists!"
+		return 1
+	fi
+
+	`egrep -v "(^#|^$)" /etc/ipcad.conf | grep interface > /dev/null 2>&1` || {
+		eerror "Please, configure at least one interface in /etc/ipcad.conf." ;
+		return 1 ;
+		}
+	
+	return 0
+}
+
+start() {
+	# Comment out the following line to get faster startups
+	checkconfig || return 1
+
+	ebegin "Starting ipcad"
+	start-stop-daemon --start --pidfile=/var/ipcad/run/ipcad.pid --exec /usr/sbin/ipcad -- ${IPCAD_OPTS}
+	eend $?
+}
+
+stop () {
+	ebegin "Stopping ipcad"
+	start-stop-daemon --stop --pidfile=/var/ipcad/run/ipcad.pid --exec /usr/sbin/ipcad --retry 20
+	eend $?
+}

@@ -1,0 +1,40 @@
+#!/sbin/openrc-run
+# Copyright 2016-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="Prometheus monitoring system and time series database"
+pidfile=/var/run/${RC_SVCNAME}.pid
+user=${user:-${RC_SVCNAME}}
+group=${group:-${RC_SVCNAME}}
+command_user=${user}:${group}
+
+command="/usr/bin/prometheus"
+command_args="
+	--web.enable-lifecycle
+	--config.file=/etc/prometheus/prometheus.yml
+	--storage.tsdb.path=/var/lib/prometheus/data
+  --web.listen-address=0.0.0.0:9090
+	--web.enable-admin-api 
+	${prometheus_args}"
+command_background="true"
+error_log=/var/log/${RC_SVCNAME}/${RC_SVCNAME}.log
+output_log=/var/log/${RC_SVCNAME}/${RC_SVCNAME}.log
+
+extra_started_commands="reload"
+
+depend() {
+	after net
+}
+
+reload() {
+	ebegin "Reloading configuration for ${RC_SVCNAME}"
+	case "$supervisor" in
+		supervise-daemon)
+		supervise-daemon ${RC_SVCNAME} --signal HUP
+		;;
+		*)
+		start-stop-daemon --signal HUP --pidfile "${pidfile}"
+		;;
+	esac
+	eend $? "Failed to reload ${RC_SVCNAME}"
+}

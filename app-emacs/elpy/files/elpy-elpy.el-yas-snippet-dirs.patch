@@ -1,0 +1,14 @@
+diff --git a/elpy.el b/elpy.el
+index f2a24a1..7a9b464 100644
+--- a/elpy.el
++++ b/elpy.el
+@@ -2022,8 +3777,7 @@ If a region is selected, fold that region."
+      (unless (listp yas-snippet-dirs)
+        (setq yas-snippet-dirs (list yas-snippet-dirs)))
+      (add-to-list 'yas-snippet-dirs
+-                  (concat (file-name-directory (locate-library "elpy"))
+-                          "snippets/")
++                  "@SITEETC@/snippets"
+                   t)
+ 
+      ;; Now load yasnippets.

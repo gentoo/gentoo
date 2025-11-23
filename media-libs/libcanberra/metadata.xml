@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>gnome@gentoo.org</email>
+		<name>Gentoo GNOME Desktop</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sound@gentoo.org</email>
+		<name>Gentoo Sound project</name>
+	</maintainer>
+	<longdescription>
+		A small and lightweight implementation of the XDG Sound Theme Specification
+		(https://0pointer.de/public/sound-theme-spec.html)
+	</longdescription>
+	<use>
+		<flag name="alsa">Enables ALSA sound driver.</flag>
+		<flag name="gstreamer">Enables gstreamer sound driver. Not useful when
+			alsa or pulseaudio is available.</flag>
+		<flag name="pulseaudio">Enables PulseAudio sound driver that should be
+			able to support positional event sounds. This is the preferred
+			choice for best sound events experience and picked by default if
+			compiled in and possible to use at runtime.</flag>
+		<flag name="tdb">Enables Trivial Database support for caching
+			purposes.</flag>
+	</use>
+</pkgmetadata>

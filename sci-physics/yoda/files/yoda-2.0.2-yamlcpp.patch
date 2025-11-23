@@ -1,0 +1,22 @@
+From 3e74499ba8bbbd6a872e0563625193505c14df90 Mon Sep 17 00:00:00 2001
+From: Christian Gutschow <chris.g@cern.ch>
+Date: Wed, 11 Dec 2024 19:10:11 +0000
+Subject: [PATCH] add missing header
+
+---
+ src/yamlcpp/emitterutils.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/yamlcpp/emitterutils.cpp b/src/yamlcpp/emitterutils.cpp
+index 5e5f00ea..78615970 100644
+--- a/src/yamlcpp/emitterutils.cpp
++++ b/src/yamlcpp/emitterutils.cpp
+@@ -1,4 +1,5 @@
+ #include <algorithm>
++#include <cstdint>
+ #include <iomanip>
+ #include <sstream>
+ 
+-- 
+GitLab
+

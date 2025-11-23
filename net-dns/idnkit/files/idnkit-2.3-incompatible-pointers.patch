@@ -1,0 +1,29 @@
+Fix incompatible pointers for modern C, hope that restrict qualifier
+holds in this scenario
+https://bugs.gentoo.org/919224
+--- a/lib/localconverter.c
++++ b/lib/localconverter.c
+@@ -599,12 +599,12 @@
+ 	inleft = 0;
+ 	outbuf = NULL;
+ 	outleft = 0;
+-	iconv(ictx, (const char **)NULL, &inleft, &outbuf, &outleft);
++	iconv(ictx, NULL, &inleft, &outbuf, &outleft);
+ 
+ 	inleft = strlen(from);
+ 	inbuf = from;
+ 	outleft = tolen - 1;	/* reserve space for terminating NUL */
+-	sz = iconv(ictx, (const char **)&inbuf, &inleft, &to, &outleft);
++	sz = iconv(ictx, (char ** restrict)&inbuf, &inleft, &to, &outleft);
+ 
+ 	if (sz == (size_t)(-1) || inleft > 0) {
+ 		switch (errno) {
+@@ -630,7 +630,7 @@
+ 	 * Append a sequence of state reset.
+ 	 */
+ 	inleft = 0;
+-	sz = iconv(ictx, (const char **)NULL, &inleft, &to, &outleft);
++	sz = iconv(ictx, NULL, &inleft, &to, &outleft);
+ 	if (sz == (size_t)(-1)) {
+ 		switch (errno) {
+ 		case EILSEQ:

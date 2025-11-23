@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/874972
+--- a/cddb_lookup.c
++++ b/cddb_lookup.c
+@@ -25,6 +25,7 @@ Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ #include <string.h>
+ #include <sys/socket.h>
+ #include <signal.h>
++#include <unistd.h>
+ 
+ #define PACKAGE "Audio::CD"
+ 

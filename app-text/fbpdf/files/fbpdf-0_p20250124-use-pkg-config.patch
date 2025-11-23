@@ -1,0 +1,32 @@
+remove hardcoded pkg-config
+use pkg-config for mupdf and libjpeg
+use CXXFLAGS for poppler-cpp
+--- a/Makefile
++++ b/Makefile
+@@ -2,6 +2,7 @@ PREFIX = .
+ CC = cc
+ CFLAGS = -Wall -O2 -I$(PREFIX)/include
+ LDFLAGS = -L$(PREFIX)/lib
++PKG_CONFIG ?= pkg-config
+ 
+ all: fbpdf
+ 
+@@ -12,14 +13,14 @@ clean:
+ 
+ # PDF support using mupdf
+ fbpdf: fbpdf.o mupdf.o draw.o
+-	$(CC) -o $@ $^ $(LDFLAGS) -lmupdf -lmupdf-third -lmupdf-pkcs7 -lmupdf-threads -lm
++	$(CC) -o $@ $^ $(LDFLAGS) $(shell $(PKG_CONFIG) --libs mupdf) -lm
+ 
+ # DjVu support
+ fbdjvu: fbpdf.o djvulibre.o draw.o
+-	$(CXX) -o $@ $^ $(LDFLAGS) -ldjvulibre -ljpeg -lm -lpthread
++	$(CXX) -o $@ $^ $(LDFLAGS) $(shell $(PKG_CONFIG) --libs ddjvuapi libjpeg) -lm -lpthread
+ 
+ # PDF support using poppler
+ poppler.o: poppler.c
+-	$(CXX) -c $(CFLAGS) `pkg-config --cflags poppler-cpp` $<
++	$(CXX) -c $(CXXFLAGS) $(shell $(PKG_CONFIG) --cflags poppler-cpp) $<
+ fbpdf2: fbpdf.o poppler.o draw.o
+-	$(CXX) -o $@ $^ $(LDFLAGS) `pkg-config --libs poppler-cpp`
++	$(CXX) -o $@ $^ $(LDFLAGS) $(shell $(PKG_CONFIG) --libs poppler-cpp)

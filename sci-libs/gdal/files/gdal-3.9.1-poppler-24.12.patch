@@ -1,0 +1,27 @@
+From ada4fa75910dab127ee4b79256a676da6d4636c0 Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Mon, 9 Dec 2024 18:18:31 +0100
+Subject: [PATCH] PDF: fix build issue on CondaForge build infrastructure (gcc
+ 13.3)
+
+Cf https://github.com/conda-forge/gdal-feedstock/pull/1019#issuecomment-2528710051
+---
+ frmts/pdf/pdfsdk_headers.h | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/frmts/pdf/pdfsdk_headers.h b/frmts/pdf/pdfsdk_headers.h
+index 00cc4067fe5b..d2a3a449d124 100644
+--- a/frmts/pdf/pdfsdk_headers.h
++++ b/frmts/pdf/pdfsdk_headers.h
+@@ -19,6 +19,11 @@
+ 
+ #ifdef HAVE_POPPLER
+ 
++// The "#define private public" hacks we do below do not play well with the
++// sstream header.
++// Cf https://github.com/conda-forge/gdal-feedstock/pull/1019#issuecomment-2528710051
++#include <sstream>
++
+ /* Horrible hack because there's a conflict between struct FlateDecode of */
+ /* include/poppler/Stream.h and the FlateDecode() function of */
+ /* pdfium/core/include/fpdfapi/fpdf_parser.h. */

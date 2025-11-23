@@ -1,0 +1,28 @@
+From 5191eb2c1d896a9d87a031cb78235d1586f17d8f Mon Sep 17 00:00:00 2001
+From: Andrew Savchenko <bircoph@gmail.com>
+Date: Tue, 1 Jan 2019 10:15:37 +0300
+Subject: [PATCH 03/13] fbsd
+
+(cherry picked from commit 53a84d83b375483439d79e9d7dc150401f2477a8)
+(cherry picked from commit 6d3c928ae95773f8cfbb801c7b000fa1f03d72c2)
+(cherry picked from commit ea2741bd13e0b0ebdb3687e831ed242a7ea67457)
+---
+ src/comerr/Makefile.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/comerr/Makefile.in b/src/comerr/Makefile.in
+index a867e1ae15b7..556adb3e7133 100644
+--- a/src/comerr/Makefile.in
++++ b/src/comerr/Makefile.in
+@@ -40,7 +40,7 @@ compile_et:	compile_et.o error_table.o
+ 	*_linux* | *_umlinux* | *_darwin* | rs_aix72 | rs_aix73 ) \
+ 	$(LT_LDRULE_static_NOQ) compile_et.o error_table.o -L${TOP_LIBDIR} -lopr $(buildtool_roken) $(MT_LIBS);; \
+ 	* ) \
+-	$(LT_LDRULE_static_NOQ) compile_et.o error_table.o -L${TOP_LIBDIR} -lopr -ll $(buildtool_roken) $(MT_LIBS);; \
++	$(LT_LDRULE_static_NOQ) compile_et.o error_table.o -L${TOP_LIBDIR} -lopr -lfl $(buildtool_roken) $(MT_LIBS);; \
+ 	esac
+ 
+ libafscom_err.a: $(LT_objs)
+-- 
+2.45.2
+

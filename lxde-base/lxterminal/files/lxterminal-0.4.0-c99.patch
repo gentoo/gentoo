@@ -1,0 +1,54 @@
+https://bugs.gentoo.org/919094
+https://github.com/lxde/lxterminal/issues/121
+https://github.com/lxde/lxterminal/pull/122
+https://src.fedoraproject.org/rpms/lxterminal/blob/rawhide/f/lxterminal-pr122-fix-gcc14-incompatible-pointer-types.patch
+
+From c947b9065b470c24064ac1b1c4935e8093970531 Mon Sep 17 00:00:00 2001
+From: Mamoru TASAKA <mtasaka@fedoraproject.org>
+Date: Wed, 21 Feb 2024 17:01:14 +0900
+Subject: [PATCH] Fix: support gcc14 -Werror=incompatible-pointer-types
+
+gcc14 now defaults to -Werror=incompatible-pointer-types .
+Fix code to support this.
+
+* Add GTK cast for GTK_STYLE_PROVIDER
+* VteRegex must be deref'ed with vte_regex_unref
+
+Fixes #121 .
+---
+ src/lxterminal.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/lxterminal.c b/src/lxterminal.c
+index 680e411..dcd7405 100644
+--- a/src/lxterminal.c
++++ b/src/lxterminal.c
+@@ -1208,7 +1208,7 @@ static Term * terminal_new(LXTerminal * terminal, const gchar * label, const gch
+     GtkStyleContext* box_style_ctx =
+         gtk_widget_get_style_context(GTK_WIDGET(terminal->box));
+     gtk_style_context_add_provider(
+-        box_style_ctx, box_css_provider,
++        box_style_ctx, GTK_STYLE_PROVIDER(box_css_provider),
+         GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+     #endif
+ 
+@@ -1232,6 +1232,8 @@ static Term * terminal_new(LXTerminal * terminal, const gchar * label, const gch
+     vte_terminal_match_set_cursor_name(VTE_TERMINAL(term->vte), ret, "pointer");
+     ret = vte_terminal_match_add_regex(VTE_TERMINAL(term->vte), dingus2, 0);
+     vte_terminal_match_set_cursor_name(VTE_TERMINAL(term->vte), ret, "pointer");
++    vte_regex_unref(dingus1);
++    vte_regex_unref(dingus2);
+ #else
+     GRegex * dingus1 = g_regex_new(DINGUS1, G_REGEX_OPTIMIZE, 0, NULL);
+     GRegex * dingus2 = g_regex_new(DINGUS2, G_REGEX_OPTIMIZE, 0, NULL);
+@@ -1239,9 +1241,9 @@ static Term * terminal_new(LXTerminal * terminal, const gchar * label, const gch
+     vte_terminal_match_set_cursor_name(VTE_TERMINAL(term->vte), ret, "pointer");
+     ret = vte_terminal_match_add_gregex(VTE_TERMINAL(term->vte), dingus2, 0);
+     vte_terminal_match_set_cursor_name(VTE_TERMINAL(term->vte), ret, "pointer");
+-#endif
+     g_regex_unref(dingus1);
+     g_regex_unref(dingus2);
++#endif
+ 
+     /* Create a horizontal box inside an event box as the toplevel for the tab label. */
+     term->tab = gtk_event_box_new();

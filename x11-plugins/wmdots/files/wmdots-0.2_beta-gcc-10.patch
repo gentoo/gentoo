@@ -1,0 +1,27 @@
+diff -Naur wmdots.orig/wmdots/wmdots.c wmdots/wmdots/wmdots.c
+--- wmdots.orig/wmdots/wmdots.c	1999-10-11 21:39:11.000000000 +0200
++++ wmdots/wmdots/wmdots.c	2020-03-01 16:08:39.492275206 +0100
+@@ -315,6 +315,9 @@
+ //   10,30,&y_off,-5,30,10
+ // };
+ 
++Display		*display;
++Window          Root, iconwin, win;
++
+ // -----------------------------------------------------------------------
+ // draw a point at x/y in specified colour
+ 
+diff -Naur wmdots.orig/wmgeneral/wmgeneral.h wmdots/wmgeneral/wmgeneral.h
+--- wmdots.orig/wmgeneral/wmgeneral.h	1998-10-16 02:16:59.000000000 +0200
++++ wmdots/wmgeneral/wmgeneral.h	2020-03-01 16:08:45.412276631 +0100
+@@ -36,8 +36,8 @@
+  /* Global variable */
+ /*******************/
+ 
+-Display		*display;
+-Window          Root, iconwin, win;
++extern Display		*display;
++extern Window          Root, iconwin, win;
+ 
+ 
+   /***********************/

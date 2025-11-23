@@ -1,0 +1,36 @@
+https://bugs.gentoo.org/945297
+fix signature of signal
+--- a/include/firewalk.h
++++ b/include/firewalk.h
+@@ -248,7 +248,7 @@
+ int                                 /* 1 on success -1 or failure */
+ catch_sig(
+     int,                            /* signal to catch */
+-    void (*)()                      /* new signal handler */
++    void (*)(int)                      /* new signal handler */
+     );
+ 
+ /* handles SIGINT from user */
+--- a/src/signal.c
++++ b/src/signal.c
+@@ -40,7 +40,7 @@
+ extern int loop;
+ 
+ int
+-catch_sig(int signo, void (*handler)())
++catch_sig(int signo, void (*handler)(int))
+ {
+     struct sigaction action;
+ 
+https://bugs.gentoo.org/731202
+patch out unneedeed strip - portage does it instead, and right.
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -25,7 +25,6 @@
+ 
+ all:
+ 	cp firewalk $(top_srcdir)
+-	strip $(top_srcdir)/firewalk
+ 
+ clean:
+ 	rm -f $(top_srcdir)/firewalk

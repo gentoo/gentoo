@@ -1,0 +1,24 @@
+From 222b4c97f75f5dc426419bc1ffa45f8015af2e64 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Fri, 15 Dec 2023 10:01:22 +0100
+Subject: [PATCH] Fix install with hatchling >= 1.19.0
+
+Explicitly specify the top-level package name in order to fix installing
+with hatchling >= 1.19.0.  These new versions default to installing
+packages that match the project name only, and fail if one cannot
+be found.
+---
+ pyproject.toml | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 98926f2..ef390de 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -110,3 +110,6 @@ known-first-party = ["pelican"]
+ [build-system]
+ requires = ["hatchling"]
+ build-backend = "hatchling.build"
++
++[tool.hatch.build.targets.wheel]
++packages = ["pelican"]

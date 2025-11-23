@@ -1,0 +1,28 @@
+From 1461d7cb0eedb3b53cfcea3dfd34352bc83f5c3d Mon Sep 17 00:00:00 2001
+From: Joachim Desroches <joachim.desroches@epfl.ch>
+Date: Fri, 24 Jul 2020 12:18:07 +0200
+Subject: [PATCH] Remove expantab options.
+
+These options have nothing to do with nftables and should be left to the
+user to configure with an autocommand if desired.
+---
+ ftplugin/nftables.vim | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/ftplugin/nftables.vim b/ftplugin/nftables.vim
+index f330cb8..a09509f 100644
+--- a/ftplugin/nftables.vim
++++ b/ftplugin/nftables.vim
+@@ -12,12 +12,10 @@ setlocal formatoptions-=t formatoptions+=croqnlj
+ 
+ setlocal comments=b:#
+ 
+-setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+ setlocal textwidth=99
+ 
+ let b:undo_ftplugin = '
+     \ setlocal formatoptions< comments< commentstring<
+-    \|setlocal tabstop< shiftwidth< softtabstop< expandtab< textwidth<
+     \'
+ 
+ let &cpoptions = s:save_cpo

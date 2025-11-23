@@ -1,0 +1,32 @@
+--- a/core/src/com/biglybt/pifimpl/update/PluginUpdatePlugin.java
++++ b/core/src/com/biglybt/pifimpl/update/PluginUpdatePlugin.java
+@@ -99,7 +99,7 @@ PluginUpdatePlugin
+ 
+ 		final PluginConfig	plugin_config = plugin_interface.getPluginconfig();
+ 
+-		boolean enabled = plugin_config.getPluginBooleanParameter( "enable.update", true );
++		boolean enabled = plugin_config.getPluginBooleanParameter( "enable.update", false );
+ 
+ 		model.setConfigSectionID(PLUGIN_CONFIGSECTION_ID);
+ 		model.getStatus().setText( enabled?"Running":"Optional checks disabled" );
+@@ -130,7 +130,7 @@ PluginUpdatePlugin
+ 
+ 		BasicPluginConfigModel config = ui_manager.createBasicPluginConfigModel(ConfigSection.SECTION_PLUGINS, PLUGIN_CONFIGSECTION_ID);
+ 
+-		config.addBooleanParameter2( "enable.update", "Plugin.pluginupdate.enablecheck", true );
++		config.addBooleanParameter2( "enable.update", "Plugin.pluginupdate.enablecheck", false );
+ 
+ 		plugin_interface.addEventListener(
+ 			new PluginEventListener()
+@@ -563,7 +563,7 @@ PluginUpdatePlugin
+ 		try{
+ 			if ( 	(!mandatory) &&
+ 					(ids_to_check == null ) && 	// allow custom actions through
+-					(!plugin_interface.getPluginconfig().getPluginBooleanParameter( "enable.update", true ))){
++					(!plugin_interface.getPluginconfig().getPluginBooleanParameter( "enable.update", false ))){
+ 
+ 				return( num_updates_found );
+ 			}
+-- 
+2.44.2
+

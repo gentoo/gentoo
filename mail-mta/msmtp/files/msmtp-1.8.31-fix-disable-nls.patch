@@ -1,0 +1,30 @@
+Subject: [PATCH] Fix header encoding when building with --disable-nls.
+
+With disabled NLS, msmtp now assumes that UTF-8 is the current codeset,
+which is a better guess than ASCII, which is what nl_langinfo() returns.
+
+This fixes github issue #203.
+---
+URL: https://github.com/marlam/msmtp/commit/c6baa5b39e811ea4459a35ae0de88163f65bf8a2
+---
+ src/tools.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/tools.c b/src/tools.c
+index b65b4c5..9d78fc8 100644
+--- a/src/tools.c
++++ b/src/tools.c
+@@ -1012,7 +1012,13 @@ char *encode_for_header(const char *s)
+         size_t b64_s_len = BASE64_LENGTH(s_len);
+         char* encoding =
+ #ifdef HAVE_LANGINFO_H
++            /* With disabled NLS, nl_langinfo() always seems to return
++             * ANSI_X3.4-1968 (i.e. ASCII). We want to assume UTF-8 instead. */
++# ifdef ENABLE_NLS
+                 nl_langinfo(CODESET);
++# else
++                "UTF-8";
++# endif
+ #else
+ # ifdef W32_NATIVE
+                 w32_langinfo_codeset();

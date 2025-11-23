@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>ceamac@gentoo.org</email>
+	<description>Primary maintainer</description>
+</maintainer>
+<upstream>
+	<bugs-to>https://github.com/fastfetch-cli/fastfetch/issues</bugs-to>
+	<changelog>https://github.com/fastfetch-cli/fastfetch/blob/dev/CHANGELOG.md</changelog>
+	<doc>https://github.com/fastfetch-cli/fastfetch/wiki</doc>
+	<remote-id type="github">fastfetch-cli/fastfetch</remote-id>
+</upstream>
+<use>
+	<flag name="chafa">Enables text/graphics renderer with <pkg>media-gfx/chafa</pkg></flag>
+	<flag name="ddcutil">Use <pkg>app-misc/ddcutil</pkg> to query monitor settings</flag>
+	<flag name="drm">Enables support for X.org's <pkg>x11-libs/libdrm</pkg></flag>
+	<flag name="elf">Use libelf to extract strings from binaries</flag>
+	<flag name="vulkan">Enables reading GPU via <pkg>media-libs/vulkan-loader</pkg></flag>
+	<flag name="xrandr">Enables support for Xrandr</flag>
+</use>
+<longdescription>
+fastfetch is a neofetch-like tool for fetching system information and displaying them in a pretty way.
+
+It is written in c to achieve much better performance.
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,22 @@
+https://sources.debian.org/src/libapache-mod-auth-kerb/5.4-2.5/debian/patches/mod_auth_kerb-krb5_kt_close.patch/
+https://bugs.gentoo.org/673066
+
+Description: fix use after free in authenticate_user_krb5pwd()
+Origin: https://sourceforge.net/p/modauthkerb/bugs/61/attachment/mod_auth_kerb-krb5_kt_close.patch
+Bug: https://sourceforge.net/p/modauthkerb/bugs/61/
+Bug-Debian: https://bugs.debian.org/934043
+Author: Johan Ymerson (https://sourceforge.net/u/ymerson/)
+--- a/src/mod_auth_kerb.c
++++ b/src/mod_auth_kerb.c
+@@ -799,11 +799,9 @@
+ 	            "failed to verify krb5 credentials: %s",
+ 		          krb5_get_err_text(context, ret));
+          krb5_kt_end_seq_get(context, keytab, &cursor);
+-         krb5_kt_close(context, keytab);
+          goto end;
+        }
+        krb5_kt_end_seq_get(context, keytab, &cursor);
+-       krb5_kt_close(context, keytab);
+      }
+      else {
+        if ((ret = verify_krb5_init_creds(r, context, &creds, server, keytab))) {

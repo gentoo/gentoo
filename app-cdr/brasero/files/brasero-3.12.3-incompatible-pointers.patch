@@ -1,0 +1,64 @@
+From 5cdefa8c76ddb797bce8b67a3f5767678bd36a5a Mon Sep 17 00:00:00 2001
+From: sid <sidtosh4@gmail.com>
+Date: Mon, 3 Jun 2024 18:51:08 +0100
+Subject: [PATCH] Fix gcc 14.x build failure (due to
+ -Wincompatible-pointer-types)
+
+The changes for 'brasero-drive-properties.c' are kept inline with
+'brasero-burn-options.c' (public API) for the sake of consistency.
+
+Fixes: https://gitlab.gnome.org/GNOME/brasero/-/issues/370
+--- a/libbrasero-burn/brasero-drive-properties.c
++++ b/libbrasero-burn/brasero-drive-properties.c
+@@ -835,23 +835,19 @@ brasero_drive_properties_set_property (GObject *object,
+ 				       GParamSpec *pspec)
+ {
+ 	BraseroDrivePropertiesPrivate *priv;
+-	BraseroBurnSession *session;
+ 
+ 	priv = BRASERO_DRIVE_PROPERTIES_PRIVATE (object);
+ 
+ 	switch (property_id) {
+ 	case PROP_SESSION: /* Readable and only writable at creation time */
+-		/* NOTE: no need to unref a potential previous session since
+-		 * it's only set at construct time */
+-		session = g_value_get_object (value);
+-		priv->session = g_object_ref (session);
++		priv->session = g_object_ref (g_value_get_object (value));
+ 
+ 		brasero_drive_properties_update (BRASERO_DRIVE_PROPERTIES (object));
+-		priv->valid_sig = g_signal_connect (session,
++		priv->valid_sig = g_signal_connect (priv->session,
+ 						    "is-valid",
+ 						    G_CALLBACK (brasero_drive_properties_is_valid_cb),
+ 						    object);
+-		priv->output_sig = g_signal_connect (session,
++		priv->output_sig = g_signal_connect (priv->session,
+ 						     "output-changed",
+ 						     G_CALLBACK (brasero_drive_properties_output_changed_cb),
+ 						     object);
+--- a/libbrasero-utils/brasero-metadata.c
++++ b/libbrasero-utils/brasero-metadata.c
+@@ -665,7 +665,7 @@ brasero_metadata_install_missing_plugins (BraseroMetadata *self)
+ 
+ 	context = gst_install_plugins_context_new ();
+ 	gst_install_plugins_context_set_xid (context, brasero_metadata_get_xid (self));
+-	status = gst_install_plugins_async ((gchar **) details->pdata,
++	status = gst_install_plugins_async ((const gchar* const*) details->pdata,
+ 					    context,
+ 					    brasero_metadata_install_plugins_result,
+ 					    downloads);
+--- a/libbrasero-utils/brasero-pk.c
++++ b/libbrasero-utils/brasero-pk.c
+@@ -230,7 +230,7 @@ brasero_pk_install_gstreamer_plugin (BraseroPK *package,
+ 
+ 	context = gst_install_plugins_context_new ();
+ 	gst_install_plugins_context_set_xid (context, xid);
+-	status = gst_install_plugins_async ((gchar **) gst_plugins->pdata,
++	status = gst_install_plugins_async ((const gchar* const*) gst_plugins->pdata,
+ 	                                    context,
+ 	                                    brasero_pk_install_gst_plugin_result,
+ 	                                    package);
+-- 
+GitLab
+

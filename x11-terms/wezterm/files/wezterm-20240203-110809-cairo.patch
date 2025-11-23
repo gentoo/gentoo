@@ -1,0 +1,19 @@
+--- wezterm-20240203-110809-5046fc22-orig/Cargo.toml	2024-02-04 05:08:09.000000000 +1100
++++ wezterm-20240203-110809-5046fc22/Cargo.toml	2024-05-12 19:13:53.372080150 +1000
+@@ -4,7 +4,6 @@
+   "bidi/generate",
+   "strip-ansi-escapes",
+   "sync-color-schemes",
+-  "deps/cairo",
+   "wezterm",
+   "wezterm-blob-leases",
+   "wezterm-dynamic",
+@@ -26,8 +25,3 @@
+ # https://jakedeichert.com/blog/reducing-rust-incremental-compilation-times-on-macos-by-70-percent/
+ # Disabled because it breaks builds on Windows
+ #split-debuginfo = "unpacked"
+-
+-[patch.crates-io]
+-# We use our own vendored cairo, which has minimal deps and should just
+-# build via cargo.
+-cairo-sys-rs = {path="deps/cairo", version="0.18.0"}

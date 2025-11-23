@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<use>
+		<flag name="local-playback">Allows playing local files with the Spotify client</flag>
+		<flag name="pax-kernel">Triggers a paxmarking of the main Spotify binary</flag>
+		<flag name="pulseaudio">Controls the dependency on pulseaudio or apulse</flag>
+	</use>
+</pkgmetadata>

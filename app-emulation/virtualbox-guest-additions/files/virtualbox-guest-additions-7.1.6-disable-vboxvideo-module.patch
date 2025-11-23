@@ -1,0 +1,19 @@
+The vboxvideo module is deprecated.
+Do not build it when VBOX_NO_LEGACY_XORG_X11 is defined.
+
+--- a/src/VBox/Additions/linux/drm/Makefile.kmk
++++ b/src/VBox/Additions/linux/drm/Makefile.kmk
+@@ -25,6 +25,8 @@
+ # SPDX-License-Identifier: GPL-3.0-only
+ #
+ 
++ifndef VBOX_NO_LEGACY_XORG_X11
++
+ SUB_DEPTH = ../../../../..
+ include $(KBUILD_PATH)/subheader.kmk
+ 
+@@ -50,3 +52,4 @@
+ 
+ include $(FILE_KBUILD_SUB_FOOTER)
+ 
++endif

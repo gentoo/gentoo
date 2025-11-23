@@ -1,0 +1,20 @@
+Description: Don't check upstream versions
+ Don't check new versions page due to privacy concerns.
+Forwarded: no
+Last-Update: 2018-08-21
+Author: Laszlo Boszormenyi (GCS) <gcs@debian.org>
+Bug-Debian: https://bugs.debian.org/761944
+
+---
+
+--- a/src/mainwindowimpl.cpp
++++ b/src/mainwindowimpl.cpp
+@@ -1012,7 +1012,7 @@ void MainWindowImpl::openFlattrLink()
+ void MainWindowImpl::checkForUpdates()
+ {
+     UpdateChecker *up = new UpdateChecker();
+-    up->checkForUpdates();
++//    up->checkForUpdates();
+ }
+ 
+ void MainWindowImpl::bugReport()

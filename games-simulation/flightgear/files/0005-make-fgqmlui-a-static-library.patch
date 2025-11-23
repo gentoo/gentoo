@@ -1,0 +1,25 @@
+From 5cd88182e3b8f3e011be53a307cbf981dbb97836 Mon Sep 17 00:00:00 2001
+From: Fabrice Bellet <fabrice@bellet.info>
+Date: Sun, 8 Apr 2018 18:03:30 +0200
+Subject: [PATCH] make fgqmlui a static library
+
+---
+ src/GUI/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/GUI/CMakeLists.txt b/src/GUI/CMakeLists.txt
+index 0a0bd3398..34a1e1f2d 100644
+--- a/src/GUI/CMakeLists.txt
++++ b/src/GUI/CMakeLists.txt
+@@ -185,7 +185,7 @@ if (HAVE_QT)
+         Qt${QT_VERSION_MAJOR}::Svg 
+         SimGearCore)
+ 
+-    add_library(fgqmlui 
++    add_library(fgqmlui STATIC
+                         PropertyItemModel.cxx
+                         PropertyItemModel.hxx
+                         FGQmlInstance.cxx
+-- 
+2.48.1
+

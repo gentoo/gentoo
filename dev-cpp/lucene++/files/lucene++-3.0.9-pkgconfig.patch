@@ -1,0 +1,24 @@
+https://github.com/luceneplusplus/LucenePlusPlus/commit/f40f59c6e169b4e16b7a6439ecb26a629c6540d1
+
+From f40f59c6e169b4e16b7a6439ecb26a629c6540d1 Mon Sep 17 00:00:00 2001
+From: Sergey Fedorov <vital.had@gmail.com>
+Date: Thu, 14 Mar 2024 20:37:34 +0800
+Subject: [PATCH] Fix install path for liblucene++.pc
+
+---
+ src/config/core/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/config/core/CMakeLists.txt b/src/config/core/CMakeLists.txt
+index e5691f54..69cfefcc 100644
+--- a/src/config/core/CMakeLists.txt
++++ b/src/config/core/CMakeLists.txt
+@@ -9,7 +9,7 @@ if(NOT WIN32)
+   install(
+     FILES
+       "${CMAKE_CURRENT_BINARY_DIR}/liblucene++.pc"
+-    DESTINATION "${LIB_DESTINATION}/pkgconfig")
++    DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+ endif()
+ 
+ 

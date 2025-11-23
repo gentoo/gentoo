@@ -1,0 +1,33 @@
+From: Sam James <sam@gentoo.org>
+Date: Sun, 6 Oct 2024 09:47:03 +0100
+Subject: [PATCH] Forward ported from qemu-7.1.0-capstone-include-path.patch.
+
+Bug: https://bugs.gentoo.org/873157
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ include/disas/capstone.h | 2 +-
+ meson.build              | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+--- a/include/disas/capstone.h
++++ b/include/disas/capstone.h
+@@ -4,7 +4,7 @@
+ #ifdef CONFIG_CAPSTONE
+ 
+ #define CAPSTONE_AARCH64_COMPAT_HEADER
+-#include <capstone.h>
++#include <capstone/capstone.h>
+ 
+ #else
+ 
+--- a/meson.build
++++ b/meson.build
+@@ -1769,7 +1769,7 @@ if not get_option('capstone').auto() or have_system or have_user
+   # that reports a wrong -I path, causing the #include to
+   # fail later. If the system has such a broken version
+   # do not use it.
+-  if capstone.found() and not cc.compiles('#include <capstone.h>',
++  if capstone.found() and not cc.compiles('#include <capstone/capstone.h>',
+                                           dependencies: [capstone])
+     capstone = not_found
+     if get_option('capstone').enabled()

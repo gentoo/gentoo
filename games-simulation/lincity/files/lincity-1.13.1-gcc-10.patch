@@ -1,0 +1,69 @@
+https://bugs.gentoo.org/570574
+https://bugs.gentoo.org/706394
+
+--- a/fileutil.c
++++ b/fileutil.c
+@@ -105,7 +105,7 @@
+  * ---------------------------------------------------------------------- */
+ char LIBDIR[LC_PATH_MAX];
+ 
+-char *lc_save_dir;
++extern char *lc_save_dir;
+ int lc_save_dir_len;
+ static char *lc_temp_filename;
+ 
+--- a/ldsvguts.c
++++ b/ldsvguts.c
+@@ -91,8 +91,6 @@
+  * Private Global Variables
+  * ---------------------------------------------------------------------- */
+ 
+-char save_names[10][42];
+-
+ /* ---------------------------------------------------------------------- *
+  * Public functions
+  * ---------------------------------------------------------------------- */
+--- a/main.c
++++ b/main.c
+@@ -96,9 +96,8 @@
+ #endif
+ #endif
+ 
+-char *lc_save_dir;
++extern char *lc_save_dir;
+ char *lc_temp_file;
+-char save_names[10][42];
+ 
+ #ifdef CS_PROFILE
+ int prof_countdown = PROFILE_COUNTDOWN;
+--- a/mouse.c
++++ b/mouse.c
+@@ -1094,7 +1094,7 @@
+     return 0;
+ }
+ 
+-inline int
++static inline int
+ mt_temp(int x, int y)
+ {
+     if (x < 0 || y < 0 || x >= WORLD_SIDE_LEN || y >= WORLD_SIDE_LEN)
+@@ -1128,7 +1128,7 @@
+     return 0;
+ }
+ 
+-inline int
++static inline int
+ mt_perm(int x, int y)
+ {
+     /* By now, it has already been mt_erase()'d */
+--- a/screen.h
++++ b/screen.h
+@@ -20,7 +20,7 @@
+ extern unsigned char start_font2[4096];
+ extern unsigned char start_font3[4096];
+ 
+-int monthgraph_style;
++extern int monthgraph_style;
+ 
+ /* This is on in screen_full_refresh, used in *_refresh() */
+ extern char screen_refreshing;

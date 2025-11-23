@@ -1,0 +1,18 @@
+--- a/meson.build	2024-07-29 16:43:01.812864903 +0200
++++ b/meson.build	2024-07-29 16:54:16.654741387 +0200
+@@ -113,8 +113,13 @@
+                                                  pkgconfig_define: ['prefix', session_prefix])
+ endif
+ 
+-libsystemd_dep = dependency('libsystemd', version: '>= 209', required: true)
+-session_bin_deps += libsystemd_dep
++libsystemd_dep = dependency('libsystemd', version: '>= 209', required: false)
++if libsystemd_dep.found()
++  session_bin_deps += libsystemd_dep
++else
++  elogind_dep = dependency('libelogind', version: '>=209', required: true)
++  session_bin_deps += elogind_dep
++endif
+ 
+ configure_file(
+   output: 'config.h',

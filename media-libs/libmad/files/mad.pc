@@ -1,0 +1,11 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: mad
+Description: MPEG Audio Decoder
+Requires:
+Version: %VERSION%
+Libs: -L${libdir} -lmad -lm
+Cflags: -I${includedir}

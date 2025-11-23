@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>matoro_gentoo@matoro.tk</email>
+		<name>Matoro Mahri</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		ANSI C General Decimal Arithmetic Library for use by the SDL-Hercules-390 emulator
+	</longdescription>
+	<upstream>
+		<remote-id type="github">SDL-Hercules-390/decNumber</remote-id>
+	</upstream>
+</pkgmetadata>

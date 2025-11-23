@@ -1,0 +1,33 @@
+//http local {
+//	endpoints { "/dns-query"; };
+//};
+
+options {
+	directory "/var/cache/bind";
+	pid-file "/run/named/named.pid";
+
+	listen-on { 127.0.0.1; };
+	listen-on-v6 { ::1; };
+	// dns-over-tls
+	listen-on port 853 tls ephemeral { 127.0.0.1; };
+	listen-on-v6 port 853 tls ephemeral { ::1; };
+	// dns-over-https
+	//listen-on port 443 tls ephemeral http local { 127.0.0.1; };
+	//listen-on-v6 port 443 tls ephemeral http local { ::1; };
+
+	allow-recursion {
+		none;
+	};
+	allow-transfer {
+		none;
+	};
+	allow-update {
+		none;
+	};
+};
+
+zone "example.com." {
+	type primary;
+	file "/var/bind/pri/db.example.com";
+	notify explicit;
+};

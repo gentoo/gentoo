@@ -1,0 +1,35 @@
+Patch for QA notice:
+
+ * QA Notice: One or more compressed files were found in docompress-ed
+ * directories. Please fix the ebuild not to install compressed files
+ * (manpages, documentation) when automatic compression is used:
+ * 
+ *   /usr/share/man/man1/luakit.1.gz
+
+--- a/Makefile
++++ b/Makefile
+@@ -17,7 +17,7 @@
+ # Must be kept in sync with doc/docgen.ld
+ DOC_SRCS = $(filter-out lib/markdown.lua lib/lousy/init.lua,$(shell for d in doc/luadoc lib common/clib; do find $$d -type f; done)) tests/lib.lua
+ 
+-all: options newline luakit luakit.1.gz luakit.so apidoc
++all: options newline luakit luakit.1 luakit.so apidoc
+ 
+ options:
+ 	@echo luakit build options:
+@@ -118,13 +118,13 @@
+ 	install -d $(DESTDIR)$(APPDIR)
+ 	install -m644 extras/luakit.desktop $(DESTDIR)$(APPDIR)
+ 	install -d $(DESTDIR)$(MANPREFIX)/man1/
+-	install -m644 luakit.1.gz $(DESTDIR)$(MANPREFIX)/man1/
++	install -m644 luakit.1 $(DESTDIR)$(MANPREFIX)/man1/
+ 	install -d $(DESTDIR)$(PREFIX)/share/luakit/resources/icons
+ 	for i in resources/icons/*; do install -m644 "$$i" "$(DESTDIR)$(PREFIX)/share/luakit/resources/icons"; done
+ 
+ uninstall:
+ 	rm -rf $(DESTDIR)$(PREFIX)/bin/luakit $(DESTDIR)$(PREFIX)/share/luakit $(DESTDIR)$(PREFIX)/lib/luakit
+-	rm -rf $(DESTDIR)$(MANPREFIX)/man1/luakit.1.gz $(DESTDIR)$(XDGPREFIX)/luakit
++	rm -rf $(DESTDIR)$(MANPREFIX)/man1/luakit.1 $(DESTDIR)$(XDGPREFIX)/luakit
+ 	rm -rf $(DESTDIR)$(APPDIR)/luakit.desktop $(DESTDIR)$(PIXMAPDIR)/luakit.png
+ 
+ tests/util.so: tests/util.c Makefile

@@ -1,0 +1,130 @@
+Fix changed gnu89->gnu11 inline semantics with GCC-5, Gentoo Bug #570252
+https://bugs.gentoo.org/show_bug.cgi?id=570252
+
+In addition, fixed multiple -Wformat= warnings, such as
+
+io.c:535:20: warning: format ‘%li’ expects argument of type ‘long int *’, but argument 3 has type ‘int *’ [-Wformat=]
+   while( fscanf(fp,"%li %li %li %li %li %le\n",&s1,&s2,&sp1,&sp2,&len,&score ) == 6) {
+                    ^
+io.c:535:20: warning: format ‘%li’ expects argument of type ‘long int *’, but argument 4 has type ‘int *’ [-Wformat=]
+io.c:535:20: warning: format ‘%li’ expects argument of type ‘long int *’, but argument 5 has type ‘int *’ [-Wformat=]
+io.c:535:20: warning: format ‘%li’ expects argument of type ‘long int *’, but argument 6 has type ‘int *’ [-Wformat=]
+io.c:535:20: warning: format ‘%li’ expects argument of type ‘long int *’, but argument 7 has type ‘int *’ [-Wformat=]
+
+--- DIALIGN-TX_1.0.2/source/alig.c
++++ DIALIGN-TX_1.0.2/source/alig.c
+@@ -10,9 +10,9 @@
+ 
+ extern void error(char *message);
+ extern void merror(char *msg1, char *msg2);
+-extern inline void calc_weight(struct diag* dg, struct scr_matrix* smatrix, 
++extern void calc_weight(struct diag* dg, struct scr_matrix* smatrix, 
+ 			struct prob_dist *pdist);
+-extern inline void calc_ov_weight(struct diag* dg, struct diag_col *dcol, struct scr_matrix* smatrix, 
++extern void calc_ov_weight(struct diag* dg, struct diag_col *dcol, struct scr_matrix* smatrix, 
+ 		    struct prob_dist *pdist);
+ //extern struct seq_part* create_seq_part(int num, struct seq* aSeq, unsigned int startpos);
+ extern struct diag* create_diag(struct seq_part* part1, struct seq_part* part2, 
+@@ -520,7 +520,7 @@
+  * datastructure (i.e. frontiers). The given diag must be consistent
+  * to the given alignment !
+  */
+-inline char align_diag(struct alignment *algn, struct scr_matrix *smatrix, struct diag* dg) {
++char align_diag(struct alignment *algn, struct scr_matrix *smatrix, struct diag* dg) {
+ 
+   char alignedSomething = 0;
+   int i,j,k;
+--- DIALIGN-TX_1.0.2/source/assemble.c
++++ DIALIGN-TX_1.0.2/source/assemble.c
+@@ -10,9 +10,9 @@
+ 
+ extern void error(char *message);
+ extern void merror(char *msg1, char *msg2);
+-extern inline void calc_weight(struct diag* dg, struct scr_matrix* smatrix, 
++extern void calc_weight(struct diag* dg, struct scr_matrix* smatrix, 
+ 			struct prob_dist *pdist);
+-extern inline void calc_ov_weight(struct diag* dg, struct diag_col *dcol, struct scr_matrix* smatrix, 
++extern void calc_ov_weight(struct diag* dg, struct diag_col *dcol, struct scr_matrix* smatrix, 
+ 		    struct prob_dist *pdist);
+ //extern struct seq_part* create_seq_part(int num, struct seq* aSeq, unsigned int startpos);
+ extern long double** create_tmp_pdist(struct prob_dist *pdist);
+@@ -22,7 +22,7 @@
+                          int n2, struct seq* sq2, unsigned int sp2,
+                          int dlength);
+ extern void free_diag(struct diag* dg);
+-extern inline struct simple_diag_col* find_diags_guided(struct scr_matrix *smatrix,  
++extern struct simple_diag_col* find_diags_guided(struct scr_matrix *smatrix,  
+ 							struct prob_dist *pdist, 
+ 							struct gt_node* n1,  
+ 							struct gt_node* n2, 
+@@ -34,10 +34,10 @@
+ 
+ extern struct alignment* create_empty_alignment(struct seq_col *scol);
+ extern void free_alignment(struct alignment *algn);
+-extern inline struct algn_pos *find_eqc(struct algn_pos **ap, int seqnum, int pos);
++extern struct algn_pos *find_eqc(struct algn_pos **ap, int seqnum, int pos);
+ extern struct alignment* copy_alignment( struct alignment *o_algn, struct alignment *algn, char doDgc);
+ //extern char adapt_diag(struct alignment *algn, struct scr_matrix *smatrix, struct diag* dg);
+-extern inline char align_diag(struct alignment *algn, struct scr_matrix *smatrix, struct diag* dg);
++extern char align_diag(struct alignment *algn, struct scr_matrix *smatrix, struct diag* dg);
+ //extern inline struct diag_cont* enter_sorted(struct diag_cont* backlog_diags, struct diag_cont *cand);
+ //extern inline char fit_fpos_diag(struct alignment *algn, struct diag* dg);
+ 
+--- DIALIGN-TX_1.0.2/source/diag.c
++++ DIALIGN-TX_1.0.2/source/diag.c
+@@ -183,7 +183,7 @@
+  * omitScore = 0:  normal 
+  * omitScore = 1:  no score calculation 
+  */ 
+-inline void real_calc_weight(struct diag* dg, struct scr_matrix* smatrix,  
++void real_calc_weight(struct diag* dg, struct scr_matrix* smatrix,  
+ 		 struct prob_dist *pdist, char omitScore, long double **tmp_dist, struct alignment *algn ) { 
+    
+   if(dg->multi_dg) {
+@@ -302,7 +302,7 @@
+   } 
+ } 
+  
+-inline void calc_weight(struct diag* dg, struct scr_matrix* smatrix,  
++void calc_weight(struct diag* dg, struct scr_matrix* smatrix,  
+ 		 struct prob_dist *pdist) { 
+   real_calc_weight(dg, smatrix, pdist, 0,NULL,NULL); 
+ } 
+--- DIALIGN-TX_1.0.2/source/io.c
++++ DIALIGN-TX_1.0.2/source/io.c
+@@ -267,7 +267,7 @@
+     for( c=r; c<length; c++) {
+       // check whether it is a regular acid or a special character like '$',...
+       if( (r<length-additional) && (c<length-additional)) {
+-		fscanf( fp, "%i", &is);
++		if( fscanf( fp, "%i", &is) ){};
+       } else {
+ 		is = 0;
+       }
+@@ -279,7 +279,7 @@
+       // ensure symmetry of the weight matrix
+       data[length*c+r] = is;
+     }
+-    fscanf(fp, "%s\n", rline);
++    if( fscanf(fp, "%s\n", rline) ){};
+   }
+   fclose(fp);
+ 
+@@ -368,7 +368,7 @@
+     }
+     for(scr=0;scr<=mxscr;scr++) {
+       dist[i][scr]=1.0;
+-      fscanf( fp, "%li %li %Le\n", &ti,&tscr,&weight );
++      if( fscanf( fp, "%li %li %Le\n", &ti,&tscr,&weight ) ){};
+       //if(i!=ti || tscr!=scr) merror("read_scr_matrix(): (4) Invalid format of file ",filename);
+       scr = tscr;
+       if(weight==0.0) weight = 1.0;
+@@ -532,7 +532,7 @@
+   sdcol->data = malloc(sizeof (struct diag*)*alloc_size);
+   sdcol->length=0;
+ 
+-  while( fscanf(fp,"%li %li %li %li %li %le\n",&s1,&s2,&sp1,&sp2,&len,&score ) == 6) {
++  while( fscanf(fp,"%i %i %i %i %i %le\n",&s1,&s2,&sp1,&sp2,&len,&score ) == 6) {
+     if(sdcol->length >= alloc_size) {
+       alloc_size+=16;
+       sdcol->data = realloc(sdcol->data,sizeof (struct diag*)*alloc_size);

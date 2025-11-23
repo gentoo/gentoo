@@ -1,0 +1,80 @@
+From:  Jocelyn Mayer <l_indien@mailmagic.fr>
+Patches missing includes and other C99 compilation errors
+https://bugs.gentoo.org/887249
+--- a/daemon.c	2005-12-29 16:32:02.000000000 +0100
++++ b/daemon.c	2019-06-07 09:50:06.839448716 +0200
+@@ -2,10 +2,14 @@
+ 
+ #include "log.h"
+ 
++#include <stdlib.h>
+ #include <stdio.h>
+ #include <signal.h>
++#include <sys/types.h>
+ #include <sys/param.h>
++#include <sys/stat.h>
+ #include <sys/wait.h>
++#include <unistd.h>
+ #include <errno.h>
+ 
+ #ifdef	SETPGRP_VOID
+@@ -38,7 +42,7 @@ RETSIGTYPE sig_child()
+ 
+ }
+ 
+-daemon_start(ignsigcld)
++void daemon_start(ignsigcld)
+ 
+ 	int	ignsigcld;	
+ 
+--- a/data.c	2004-07-08 22:58:20.000000000 +0200
++++ b/data.c	2019-06-07 09:46:32.896814247 +0200
+@@ -2,7 +2,7 @@
+ 
+ #include <stdlib.h>
+ #include <search.h>
+-#include <stdlib.h>
++#include <string.h>
+ 
+ #include "data.h"
+ #include "log.h"
+--- a/external.c	2004-11-10 14:10:04.000000000 +0100
++++ b/external.c	2019-06-07 09:42:38.903931334 +0200
+@@ -1,5 +1,7 @@
++#include <stdlib.h>
+ #include <stdio.h>
+ #include <signal.h>
++#include <string.h>
+ #include <sys/param.h>
+ #include <sys/wait.h>
+ #include <sys/types.h>
+--- a/parser.c	2004-07-08 15:57:30.000000000 +0200
++++ b/parser.c	2019-06-07 09:41:00.534719377 +0200
+@@ -1,5 +1,6 @@
+ #include "config.h"
+ 
++#include <stdlib.h>
+ #include <stdio.h>
+ #include <ctype.h>
+ #include <string.h>
+--- a/vmpsd.c	2019-06-07 09:28:33.013509568 +0200
++++ b/vmpsd.c	2019-06-07 09:44:38.800408508 +0200
+@@ -1,7 +1,9 @@
+ #include "config.h"
+ 
+ #include <stdlib.h>
++#include <stdio.h>
+ #include <signal.h>
++#include <string.h>
+ 
+ #if HAVE_UNISTD_H
+ #include <unistd.h>
+--- a/vqp.c	2019-06-07 09:28:33.085510455 +0200
++++ b/vqp.c	2019-06-07 09:41:48.839314511 +0200
+@@ -1,5 +1,6 @@
+ #include "config.h"
+ 
++#include <string.h>
+ #include <netdb.h>
+ 
+ #include "log.h"

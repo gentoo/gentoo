@@ -1,0 +1,87 @@
+Fixes for old API, rename of bool for C23
+https://bugs.gentoo.org/953866
+--- a/mod_gss.c.in
++++ b/mod_gss.c.in
+@@ -1412,7 +1412,7 @@
+     }
+     /* If session.user is set, we had a valid login reinforce USER,PASS,ACCT*/
+     if (session.user) {
+-        end_login(0);
++        pr_session_end(0);;
+     }
+     
+     /* Convert the parameter to upper case */
+@@ -2126,18 +2126,18 @@
+ 
+ /* usage: GSSEngine on|off */
+ MODRET set_gssengine(cmd_rec *cmd) {
+-    int        bool = -1;
++    int        Bool = -1;
+     config_rec *c = NULL;
+ 
+     CHECK_ARGS(cmd, 1);
+     CHECK_CONF(cmd, CONF_ROOT|CONF_VIRTUAL|CONF_GLOBAL);
+ 
+-    if ((bool = get_boolean(cmd, 1)) == -1)
++    if ((Bool = get_boolean(cmd, 1)) == -1)
+ 	CONF_ERROR(cmd, "expected Boolean parameter");
+ 
+     c = add_config_param(cmd->argv[0], 1, NULL);
+     c->argv[0] = pcalloc(c->pool, sizeof(unsigned char));
+-    *((unsigned char *) c->argv[0]) = bool;
++    *((unsigned char *) c->argv[0]) = Bool;
+ 
+     return PR_HANDLED(cmd);
+ }
+@@ -2217,14 +2217,14 @@
+ 
+ /* usage: GSSRequired on|off|both|ctrl|control|data */
+ MODRET set_gssrequired(cmd_rec *cmd) {
+-    int           bool = -1;
++    int           Bool = -1;
+     unsigned char on_ctrl = FALSE, on_data = FALSE;
+     config_rec    *c = NULL;
+ 
+     CHECK_ARGS(cmd, 1);
+     CHECK_CONF(cmd, CONF_ROOT|CONF_VIRTUAL|CONF_GLOBAL);
+ 
+-    if ((bool = get_boolean(cmd, 1)) == -1) {
++    if ((Bool = get_boolean(cmd, 1)) == -1) {
+ 
+ 	if (!strcmp(cmd->argv[1], "control") || !strcmp(cmd->argv[1], "ctrl"))
+ 	    on_ctrl = TRUE;
+@@ -2240,7 +2240,7 @@
+ 	    CONF_ERROR(cmd, "bad parameter");
+ 
+     } else {
+-	if (bool == TRUE) {
++	if (Bool == TRUE) {
+ 	    on_ctrl = TRUE;
+ 	    on_data = TRUE;
+ 	}
+@@ -2259,14 +2259,14 @@
+ 
+ /* usage: GSSInet6 on|off|yes|no*/
+ MODRET set_gss_af_inet6(cmd_rec *cmd) {
+-    int           bool = -1;
++    int           Bool = -1;
+     unsigned char on_inet6 = FALSE;
+     config_rec    *c = NULL;
+ 
+     CHECK_ARGS(cmd, 1);
+     CHECK_CONF(cmd, CONF_ROOT|CONF_VIRTUAL|CONF_GLOBAL);
+ 
+-    if ((bool = get_boolean(cmd, 1)) == -1) {
++    if ((Bool = get_boolean(cmd, 1)) == -1) {
+ 
+ 	if (!strcmp(cmd->argv[1], "on") || !strcmp(cmd->argv[1], "yes"))
+ 	    on_inet6 = TRUE;
+@@ -2278,7 +2278,7 @@
+ 	    CONF_ERROR(cmd, "bad parameter");
+ 
+     } else {
+-	if (bool == TRUE)
++	if (Bool == TRUE)
+ 	    on_inet6 = TRUE;
+     }
+ 

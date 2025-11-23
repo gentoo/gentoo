@@ -1,0 +1,68 @@
+https://bugs.gentoo.org/930949
+https://github.com/Perl-Toolchain-Gang/File-Temp/issues/36
+https://github.com/Perl-Toolchain-Gang/File-Temp/pull/41
+https://github.com/Perl/perl5/pull/22156
+https://github.com/Perl/perl5/pull/22161
+
+From 2de518ab67bf3c5be2525ea0a5d78f39de50074f Mon Sep 17 00:00:00 2001
+From: Lukas Mai <lukasmai.403@gmail.com>
+Date: Thu, 18 Apr 2024 20:12:06 +0200
+Subject: [PATCH] use pathconf() to get _PC_CHOWN_RESTRICTED flag
+
+The _PC_* constants are only meaningful in pathconf(); conversely,
+sysconf() only understands _SC_* constants.
+
+Previously, this code didn't do anything meaningful. For example, on x64
+Linux _PC_CHOWN_RESTRICTED is 6, which sysconf() would have interpreted
+as _SC_TZNAME_MAX (also 6).
+---
+ lib/File/Temp.pm | 16 +++++++---------
+ 2 files changed, 8 insertions(+), 10 deletions(-)
+
+diff --git a/lib/File/Temp.pm b/lib/File/Temp.pm
+index ef34f6c..563efeb 100644
+--- a/lib/File/Temp.pm
++++ b/lib/File/Temp.pm
+@@ -718,7 +718,7 @@ sub _is_safe {
+ 
+ # Internal routine to check whether a directory is safe
+ # for temp files. Safer than _is_safe since it checks for
+-# the possibility of chown giveaway and if that is a possibility
++# the possibility of chown giveaway and if that is a possibility,
+ # checks each directory in the path to see if it is safe (with _is_safe)
+ 
+ # If _PC_CHOWN_RESTRICTED is not set, does the full test of each
+@@ -737,18 +737,16 @@ sub _is_verysafe {
+ 
+   my $err_ref = shift;
+ 
+-  # Should Get the value of _PC_CHOWN_RESTRICTED if it is defined
+-  # and If it is not there do the extensive test
++  # Should get the value of _PC_CHOWN_RESTRICTED if it is defined
++  # and if it is not there, do the extensive test
+   local($@);
+-  my $chown_restricted;
+-  $chown_restricted = &POSIX::_PC_CHOWN_RESTRICTED()
+-    if eval { &POSIX::_PC_CHOWN_RESTRICTED(); 1};
++  my $chown_restricted = eval { POSIX::_PC_CHOWN_RESTRICTED() };
+ 
+-  # If chown_resticted is set to some value we should test it
++  # If chown_restricted is set to some value, we should test it
+   if (defined $chown_restricted) {
+ 
+     # Return if the current directory is safe
+-    return _is_safe($path,$err_ref) if POSIX::sysconf( $chown_restricted );
++    return _is_safe($path, $err_ref) if POSIX::pathconf( $path, $chown_restricted );
+ 
+   }
+ 
+@@ -2367,7 +2365,7 @@ for sticky bit.
+ 
+ In addition to the MEDIUM security checks, also check for the
+ possibility of ``chown() giveaway'' using the L<POSIX|POSIX>
+-sysconf() function. If this is a possibility, each directory in the
++pathconf() function. If this is a possibility, each directory in the
+ path is checked in turn for safeness, recursively walking back to the
+ root directory.
+ 
+

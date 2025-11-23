@@ -1,0 +1,16 @@
+--- a/configure
++++ b/configure
+@@ -361,11 +361,8 @@ if [ -e "$LDELF" ]; then
+ 	echo "LDFLAGS+=	-Wl,-rpath=${LIBDIR}" >>$CONFIG_MK
+ fi
+ 
+-if [ -z "$PREFIX" ] || [ "$PREFIX" = / ]; then
+-	ALLOW_USR_LIBS=false
+-else
+-	ALLOW_USR_LIBS=true
+-fi
++ALLOW_USR_LIBS=true
++
+ case "$OS" in
+ linux*|solaris*|sunos*|kfreebsd*|dragonfly*|freebsd*) ;;
+ *)

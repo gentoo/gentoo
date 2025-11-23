@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tupone@gentoo.org</email>
+		<name>Tupone Alfredo</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
+	<use>
+		<flag name="compute">Build the Arrow Compute Modules</flag>
+		<flag name="dataset">Build the Arrow Dataset Modules</flag>
+		<flag name="json">Enables read/write json format</flag>
+		<flag name="parquet">Enables read/write parquet data format</flag>
+		<flag name="re2">Build with support for regular expressions using the re2 library</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">apache/arrow</remote-id>
+		<remote-id type="github">apache/parquet-testing</remote-id>
+		<remote-id type="github">apache/arrow-testing</remote-id>
+	</upstream>
+</pkgmetadata>

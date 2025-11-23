@@ -1,0 +1,37 @@
+diff -Naur a/SConstruct b/SConstruct
+--- a/SConstruct
++++ b/SConstruct
+@@ -819,7 +819,7 @@
+     toolchain = ["default"]
+ 
+ env = Environment(tools=toolchain+["textfile", "subst", "recursiveInstall", "UnitsInterfaceBuilder", "wix", "gch"],
+-                  ENV={"PATH": os.environ["PATH"]},
++                  ENV={'PATH': os.environ['PATH'], 'CCACHE_DIR': os.environ.get('CCACHE_DIR','')},
+                   toolchain=toolchain,
+                   **extraEnvArgs)
+ 
+@@ -970,11 +974,7 @@
+ env["CPU"] = get_processor_name()
+ logger.info(f"Compiling on {env['CPU']!r}")
+ 
+-try:
+-    env["git_commit"] = get_command_output("git", "rev-parse", "--short", "HEAD")
+-    logger.info(f"Building Cantera from git commit {env['git_commit']!r}")
+-except (subprocess.CalledProcessError, FileNotFoundError):
+-    env["git_commit"] = "unknown"
++env["git_commit"] = "unknown"
+ 
+ # Print values of all build options:
+ # the (updated) "cantera.conf" combines all options that were specified by the user
+diff -Naur a/src/SConscript b/src/SConscript
+--- a/src/SConscript
++++ b/src/SConscript
+@@ -89,7 +89,7 @@
+     shim = pyenv.SharedObject("extensions/pythonShim.cpp")
+     pylibname = f"../lib/cantera_python{pyenv['py_version_short'].replace('.', '_')}"
+     lib = build(pyenv.SharedLibrary(pylibname, shim, SPAWN=get_spawn(pyenv)))
+-    install("$inst_shlibdir", lib)
++    install("$inst_shlibdir/cantera", lib)
+ 
+ 
+ # build the Cantera static library

@@ -1,0 +1,37 @@
+Fix for libc++ (std::basic_ostringstream<char> is not a part of C++ standard).
+Upstream bug: https://github.com/ROCm/ROCdbgapi/issues/18
+--- a/src/os_driver.cpp
++++ b/src/os_driver.cpp
+@@ -1006,12 +1006,12 @@ public:
+   template <typename T, std::enable_if_t<!std::is_pointer_v<T>, int> = 0>
+   void write (const T &v)
+   {
+-    m_stream.write (reinterpret_cast<const std::byte *> (&v), sizeof (T));
++    m_stream.write (reinterpret_cast<const char *> (&v), sizeof (T));
+   }
+ 
+   void write (const std::vector<std::byte> &v)
+   {
+-    m_stream.write (reinterpret_cast<const std::byte *> (v.data ()),
++    m_stream.write (reinterpret_cast<const char *> (v.data ()),
+                     v.size ());
+   }
+ 
+@@ -1026,7 +1026,7 @@ public:
+ 
+     auto str = m_stream.str ();
+     note.size = str.size ();
+-    auto buffer = amd::dbgapi::allocate_memory<std::byte> (note.size);
++    auto buffer = amd::dbgapi::allocate_memory<char> (note.size);
+     std::copy (str.begin (), str.end (), buffer.get ());
+     note.data = buffer.release ();
+ 
+@@ -1034,7 +1034,7 @@ public:
+   }
+ 
+ private:
+-  std::basic_ostringstream<std::byte> m_stream;
++  std::basic_ostringstream<char> m_stream;
+ };
+ 
+ }; /* anonymous namespace.  */

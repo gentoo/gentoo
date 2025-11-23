@@ -1,0 +1,33 @@
+From d04f0203febdeac38c4b085babb1183747c2edfb Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Sun, 10 Nov 2024 17:19:20 +0100
+Subject: do not inject lib dirs with installed llvm
+
+Including `${LLVM_INSTALL_PREFIX}/lib` in the `LINK_DIRECTORIES` only works,
+when lib is the correct LIBDIR for the current arch.
+Normally you would use `CMAKE_INSTALL_LIBDIR`, unless you know better.
+
+As a bonus we avoid duplicates.
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4215e49..9f77fb3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -106,7 +106,11 @@ include(ClazySources.cmake)
+ 
+ include_directories(${CMAKE_BINARY_DIR})
+ include_directories(${CLANG_INCLUDE_DIRS} ${CMAKE_CURRENT_LIST_DIR} ${CMAKE_CURRENT_LIST_DIR}/src)
+-link_directories("${LLVM_INSTALL_PREFIX}/lib" ${LLVM_LIBRARY_DIRS})
++link_directories(${LLVM_LIBRARY_DIRS})
++
++if(NOT "${LLVM_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}" IN_LIST LLVM_LIBRARY_DIRS)
++  link_directories("${LLVM_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}")
++endif()
+ 
+ set(clang_tooling_refactoring_lib clangToolingRefactoring)
+ 
+-- 
+2.47.0
+

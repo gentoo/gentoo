@@ -1,0 +1,22 @@
+;;;;; Author: Richard Neese<kb3vgw@gmail.com>
+
+[Unit]
+Description=SvxLink remote transceiver repeater control software
+Documentation=man:remotetrx(1)
+After=network.target remote-fs.target syslog.target time.target
+
+[Service]
+PIDFile=/var/run/remotetrx.pid
+ExecStartPre=-/bin/touch /var/log/remotetrx
+ExecStartPre=-/bin/chown svxlink /var/log/remotetrx
+ExecStart=/bin/sh -c '/usr/bin/remotetrx --pidfile=/var/run/remotetrx.pid --logfile=/var/log/remotetrx --config=/etc/svxlink/remotetrx.conf --runasuser=svxlink'
+ExecReload=/bin/kill -s HUP $MAINPID
+Restart=on-failure
+TimeoutStartSec=60
+#WatchdogSec=@SVX_WatchdogSec@
+#NotifyAccess=main
+LimitCORE=infinity
+WorkingDirectory=/etc/svxlink
+
+[Install]
+WantedBy=multi-user.target

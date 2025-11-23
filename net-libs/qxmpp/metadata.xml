@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://invent.kde.org/libraries/qxmpp/-/issues</bugs-to>
+		<changelog>https://invent.kde.org/libraries/qxmpp/-/blob/master/CHANGELOG.md?ref_type=heads</changelog>
+		<remote-id type="kde-invent">libraries/qxmpp</remote-id>
+	</upstream>
+	<use>
+		<flag name="omemo">Enable OMEMO encryption</flag>
+	</use>
+</pkgmetadata>

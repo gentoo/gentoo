@@ -1,0 +1,22 @@
+diff --color -ur zlib-1.3.1/configure zlib-1.3.1.new/configure
+--- zlib-1.3.1/configure	2024-01-21 02:29:31.000000000 +0000
++++ zlib-1.3.1.new/configure	2024-02-17 19:37:10.614600000 +0000
+@@ -265,14 +265,16 @@
+         SHAREDLIBV=libz.$VER$shared_ext
+         SHAREDLIBM=libz.$VER1$shared_ext
+         LDSHARED=${LDSHARED-"$cc -dynamiclib -install_name $libdir/$SHAREDLIBM -compatibility_version $VER1 -current_version $VER3"}
++        if test -z ${AR}; then
+         if "${CROSS_PREFIX}libtool" -V 2>&1 | grep Apple > /dev/null; then
+             AR="${CROSS_PREFIX}libtool"
+         elif libtool -V 2>&1 | grep Apple > /dev/null; then
+             AR="libtool"
+         else
+             AR="/usr/bin/libtool"
+         fi
+-        ARFLAGS="-o" ;;
++        ARFLAGS="-o"
++        fi ;;
+   *)
+         LDSHARED=${LDSHARED-"$cc -shared"} ;;
+   esac
+

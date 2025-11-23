@@ -1,0 +1,12 @@
+--- a/m4/boost.m4
++++ b/m4/boost.m4
+@@ -229,6 +229,9 @@ AC_LANG_POP([C++])dnl
+                     [#include <boost/version.hpp>
+ boost-lib-version = BOOST_LIB_VERSION],
+     [boost_cv_lib_version=`cat conftest.i`])])
++    if test x"$boost_cv_lib_version" = x; then
++      boost_cv_lib_version=$(grep "#define BOOST_LIB_VERSION" /usr/include/boost/version.hpp | sed 's/.*"\(.*\)".*/\1/')
++    fi
+     # e.g. "134" for 1_34_1 or "135" for 1_35
+     boost_major_version=`echo "$boost_cv_lib_version" | sed 's/_//;s/_.*//'`
+     case $boost_major_version in #(

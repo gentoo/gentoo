@@ -1,0 +1,14 @@
+--- a/configure.in
++++ b/configure.in
+@@ -107,7 +107,10 @@ AC_PROG_INSTALL
+ AC_PATH_PROG(SH,bash sh)
+ AC_PATH_PROG(RM,rm)
+ AC_PATH_PROG(CP,cp)
+-AC_PATH_PROG(MT,mt,AC_MSG_WARN(could not find the program mt - you might need this if you want autoloader support))
++AC_PATH_PROG([MT],[mt])
++
++AS_IF([test -n "$MT"], [], [AC_MSG_WARN([could not find the program mt - you might need this if you want autoloader support])])
++
+ AC_PATH_PROGS(TAR,[gtar tar])
+ AC_PATH_PROG(AWK,awk)
+ AC_SYS_LARGEFILE

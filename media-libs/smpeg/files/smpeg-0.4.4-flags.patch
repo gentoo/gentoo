@@ -1,0 +1,127 @@
+--- smpeg-0.4.4.orig/configure.in
++++ smpeg-0.4.4/configure.in
+@@ -60,7 +60,7 @@ dnl The alpha architecture needs special
+ case "$target" in
+     alpha*-*-linux*)
+ 	if test x$ac_cv_prog_gcc = xyes; then
+-            CFLAGS="$CFLAGS -mcpu=ev4 -Wa,-mall"
++            EXTRA_CFLAGS="$EXTRA_CFLAGS -mcpu=ev4 -Wa,-mall"
+         fi
+         ;;
+     sparc*-*-solaris*)
+@@ -102,17 +102,17 @@ AC_ARG_ENABLE(debug,
+               , enable_debug=yes)
+ if test x$enable_debug != xyes; then
+     if test x$ac_cv_prog_gcc = xyes; then
+-        CFLAGS="$CFLAGS -fexpensive-optimizations -fomit-frame-pointer"
++        EXTRA_CFLAGS="$EXTRA_CFLAGS -fexpensive-optimizations -fomit-frame-pointer"
+     fi
+     case "$target" in
+         i486-*-*)  # Yeah right. :)
+             if test x$ac_cv_prog_gcc = xyes; then
+-                CFLAGS="$CFLAGS -march=486"
++                EXTRA_CFLAGS="$EXTRA_CFLAGS -march=486"
+             fi
+             ;;
+         i?86-*-*)
+             if test x$ac_cv_prog_gcc = xyes; then
+-                CFLAGS="$CFLAGS -march=pentium -mcpu=pentiumpro"
++                EXTRA_CFLAGS="$EXTRA_CFLAGS -march=pentium -mcpu=pentiumpro"
+             fi
+             ;;
+     esac
+@@ -124,7 +124,7 @@ AM_PATH_SDL($SDL_VERSION,
+             :,
+ 	    AC_MSG_ERROR([*** SDL version $SDL_VERSION not found!])
+ )
+-CFLAGS="$CFLAGS $SDL_CFLAGS"
++EXTRA_CFLAGS="$EXTRA_CFLAGS $SDL_CFLAGS"
+ LIBS="$LIBS $SDL_LIBS"
+ 
+ dnl See if we need to pass -lm for the math library
+@@ -145,7 +145,7 @@ if test x$enable_mmx = xyes; then
+     AC_MSG_RESULT($use_mmx)
+ 
+     if test x$use_mmx = xyes; then
+-        CFLAGS="$CFLAGS -DUSE_MMX"
++        EXTRA_CFLAGS="$EXTRA_CFLAGS -DUSE_MMX"
+     fi
+ fi
+ 
+@@ -162,7 +162,7 @@ if test x$enable_ati = xyes; then
+     AC_MSG_RESULT($use_ati)
+ 
+     if test x$use_ati = xyes; then
+-        CFLAGS="$CFLAGS -DUSE_ATI"
++       EXTRA_CFLAGS="$EXTRA_CFLAGS -DUSE_ATI"
+     fi
+ fi
+ 
+@@ -171,7 +171,7 @@ AC_ARG_ENABLE(timestamp-sync,
+ [  --enable-timestamp-sync  enable system timestamp sync [default=yes]],
+               , enable_timestamp_sync=no)
+ if test x$enable_timestamp_sync = xyes; then
+-	CFLAGS="$CFLAGS -DUSE_TIMESTAMP_SYNC"
++EXTRA_CFLAGS="$EXTRA_CFLAGS -DUSE_TIMESTAMP_SYNC"
+ fi
+ 
+ dnl Enable the use of the system thread
+@@ -179,7 +179,7 @@ AC_ARG_ENABLE(threaded-system,
+ [  --enable-threaded-system enable system thread         [default=no]],
+               , enable_threaded_system=no)
+ if test x$enable_threaded_system = xyes; then
+-	CFLAGS="$CFLAGS -DUSE_SYSTEM_THREAD"
++EXTRA_CFLAGS="$EXTRA_CFLAGS -DUSE_SYSTEM_THREAD"
+ fi
+ 
+ dnl Enable threaded audio
+@@ -187,7 +187,7 @@ AC_ARG_ENABLE(threaded-audio,
+ [  --enable-threaded-audio  enable threaded audio        [default=yes]],
+               , enable_threaded_audio=yes)
+ if test x$enable_threaded_audio = xyes; then
+-	CFLAGS="$CFLAGS -DTHREADED_AUDIO"
++EXTRA_CFLAGS="$EXTRA_CFLAGS -DTHREADED_AUDIO"
+ fi
+ 
+ dnl See if we can build the GTk player
+@@ -198,7 +198,7 @@ have_gtk=no
+ if test x$enable_gtk_player = xyes; then
+     AM_PATH_GTK(1.2.1, have_gtk=yes)
+     if test x$have_gtk = xyes; then
+-        CFLAGS="$CFLAGS $GTK_CFLAGS"
++       EXTRA_CFLAGS="$EXTRA_CFLAGS $GTK_CFLAGS"
+     fi
+     AC_SUBST(GTK_LIBS)
+ fi
+@@ -224,7 +224,7 @@ if test x$enable_opengl_player = xyes; t
+             AC_PATH_X
+             AC_PATH_XTRA
+             if test x$have_x = xyes; then
+-                CFLAGS="$CFLAGS $X_CFLAGS"
++               EXTRA_CFLAGS="$EXTRA_CFLAGS $X_CFLAGS"
+                 SYS_GL_LIBS="$X_LIBS -lGL -lGLU"
+             else
+                 SYS_GL_LIBS="-lGL -lGLU"
+@@ -255,17 +255,16 @@ AC_ARG_ENABLE(assertions,
+ [  --enable-assertions     Enable consistency checks in decoding [default=no]],
+               , enable_assertions=no)
+ if test x$enable_assertions != xyes; then
+-    CFLAGS="$CFLAGS -DNDEBUG"
++   EXTRA_CFLAGS="$EXTRA_CFLAGS -DNDEBUG"
+ fi
+ 
+ dnl Add the source include directories
+-CFLAGS="$CFLAGS -I.. -DNOCONTROLS"
+-CFLAGS="$CFLAGS -I\$(top_srcdir) -I\$(top_srcdir)/audio -I\$(top_srcdir)/video"
+-CXXFLAGS="$CFLAGS"
+-
++EXTRA_CFLAGS="$EXTRA_CFLAGS -I.. -DNOCONTROLS"
++EXTRA_CFLAGS="$EXTRA_CFLAGS -I\$(top_srcdir) -I\$(top_srcdir)/audio -I\$(top_srcdir)/video"
++CXXFLAGS="$EXTRA_CFLAGS $CXXFLAGS"
++CFLAGS="$EXTRA_CFLAGS $CFLAGS"
+ 
+ dnl C++ flags are the same as the C flags
+-CXXFLAGS="$CFLAGS"
+ if test x$GCC = xyes; then
+     # Check to see if options -fno-rtti -fno-exceptions are supported
+     AC_MSG_CHECKING(if $CXX supports -fno-rtti -fno-exceptions)

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<upstream>
+		<maintainer status="active">
+			<email>fabrice.thiroux@free.fr</email>
+			<name>Fabrice Thiroux</name>
+		</maintainer>
+		<remote-id type="github">fabriceT/openbox-menu</remote-id>
+	</upstream>
+	<use>
+		<flag name="icons">Enable support for icons in menus</flag>
+		<flag name="svg">Support SVG icons</flag>
+	</use>
+</pkgmetadata>

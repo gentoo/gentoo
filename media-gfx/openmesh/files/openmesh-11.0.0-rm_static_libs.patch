@@ -1,0 +1,55 @@
+Set shared-libs only
+diff --git a/src/OpenMesh/Core/CMakeLists.txt b/src/OpenMesh/Core/CMakeLists.txt
+index 48f5547..b6e4fd6 100644
+--- a/src/OpenMesh/Core/CMakeLists.txt
++++ b/src/OpenMesh/Core/CMakeLists.txt
+@@ -151,16 +151,12 @@ if (WIN32)
+ 
+ 
+ else ()
+-  vci_add_library (OpenMeshCore SHAREDANDSTATIC ${sources} ${headers})
++  vci_add_library (OpenMeshCore SHARED ${sources} ${headers})
+ 
+   target_include_directories(OpenMeshCore PUBLIC
+                                           $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../..>
+                                           $<INSTALL_INTERFACE:include>)
+ 
+-  target_include_directories(OpenMeshCoreStatic PUBLIC
+-                                          $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../..>
+-                                          $<INSTALL_INTERFACE:include>)
+-
+   set_target_properties (OpenMeshCore PROPERTIES VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+                                                SOVERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR} )
+ endif ()
+diff --git a/src/OpenMesh/Tools/CMakeLists.txt b/src/OpenMesh/Tools/CMakeLists.txt
+index 08baecb..1b24daa 100644
+--- a/src/OpenMesh/Tools/CMakeLists.txt
++++ b/src/OpenMesh/Tools/CMakeLists.txt
+@@ -116,26 +116,18 @@ if (WIN32)
+                                         $<INSTALL_INTERFACE:include>)
+ 
+ else ()
+-  vci_add_library (OpenMeshTools SHAREDANDSTATIC ${sources} ${headers})
++  vci_add_library (OpenMeshTools SHARED ${sources} ${headers})
+ 
+   target_include_directories(OpenMeshTools PUBLIC
+                                           $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../..>
+                                           $<INSTALL_INTERFACE:include>)
+ 
+-  target_include_directories(OpenMeshToolsStatic PUBLIC
+-                                          $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../..>
+-                                          $<INSTALL_INTERFACE:include>)
+-
+   set_target_properties (OpenMeshTools PROPERTIES VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+                                                 SOVERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR} )
+ endif ()
+ 
+ target_link_libraries (OpenMeshTools OpenMeshCore)
+ 
+-IF( NOT WIN32 )
+-  target_link_libraries (OpenMeshToolsStatic OpenMeshCoreStatic)
+-ENDIF(NOT WIN32)
+-
+ if ( (${CMAKE_PROJECT_NAME} MATCHES "OpenMesh") AND BUILD_APPS )
+ 
+   if ( WIN32 )

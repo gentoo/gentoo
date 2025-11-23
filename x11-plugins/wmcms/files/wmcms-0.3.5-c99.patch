@@ -1,0 +1,51 @@
+Fix C099 bugs - correct types of static values,
+inclyde correct headers.
+Fold seds from old ebuild.
+Remove CC and CFLAGS from Makefile - toolchain provides
+https://bugs.gentoo.org/874483
+https://bugs.gentoo.org/919218
+--- a/Makefile	2025-02-24 22:58:37.620418861 +0400
++++ b/Makefile	2025-02-24 22:59:58.108959699 +0400
+@@ -1,7 +1,5 @@
+-CC	=	gcc
+ LIBS	=	-lXext -lX11 -L/usr/X11R6/lib -lXpm -ldockapp
+ SRCS	=	wmcms.c
+-CFLAGS	=	-g -O2
+ 
+ all: wmcms
+ 
+@@ -9,7 +7,7 @@
+ 	rm -f wmcms
+ 	
+ wmcms : $(SRCS) wmcms.xpm
+-		$(CC) $(CFLAGS) $(SRCS) $(INC) -o wmcms $(LIBS)
++		$(CC) $(CFLAGS) $(SRCS) $(INC) ${LDFLAGS} -o wmcms $(LIBS)
+ 
+ install : all
+ 		install -c -s wmcms /usr/local/bin
+diff '--color=auto' -ru wmcms-0.3.5.old/wmcms.c wmcms-0.3.5/wmcms.c
+--- wmcms-0.3.5.old/wmcms.c	2025-02-24 22:58:37.620418861 +0400
++++ wmcms-0.3.5/wmcms.c	2025-02-24 22:59:37.916610009 +0400
+@@ -18,9 +18,10 @@
+ 
+ #include <stdio.h>
+ #include <unistd.h>
+-#include <dockapp.h>
++#include <string.h>
++#include <libdockapp/dockapp.h>
+ #include "state_linux_2.6.h"
+ #include "state_linux_2.4.h"
+ #include "wmcms.xpm"
+ 
+ char *displayName = "";
+@@ -133,8 +144,8 @@
+ }
+ int main (int argc, char **argv)
+ {
+-  static unsigned b_width = 64;
+-  static unsigned b_height = 137;
++  static unsigned short b_width = 64;
++  static unsigned short b_height = 137;
+ 
+   int cpu_total;
+   int old_cpu_user;

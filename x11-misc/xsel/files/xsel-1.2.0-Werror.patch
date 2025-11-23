@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -24,7 +24,7 @@
+ dnl Add some useful warnings if we have gcc.
+ dnl changequote(,)dnl
+ if test "x$ac_cv_prog_gcc" = xyes ; then
+-  CFLAGS="$CFLAGS -fno-strict-aliasing -Wall -Werror -g -std=gnu99 -Wdeclaration-after-statement -Wno-unused"
++  CFLAGS="$CFLAGS -fno-strict-aliasing -Wall -Wdeclaration-after-statement -Wno-unused"
+ fi
+ dnl changequote([,])dnl
+ 

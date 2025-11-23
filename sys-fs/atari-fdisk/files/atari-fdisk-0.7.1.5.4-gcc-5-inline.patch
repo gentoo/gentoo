@@ -1,0 +1,22 @@
+gcc 5 changed the default C standard which changes the behavior of extern
+inline.  convert these tiny funcs to static inline to fix builds.
+
+https://bugs.gentoo.org/568732
+
+--- a/fdisk.h
++++ b/fdisk.h
+@@ -224,12 +224,12 @@ extern jmp_buf listingbuf;
+      :									\
+      	(__var = (__typeof(__var))swab32((unsigned long)__var)))
+ 
+-extern __inline__ unsigned short swab16( unsigned short val )
++static __inline__ unsigned short swab16( unsigned short val )
+ {
+     return( (val << 8) | (val >> 8) );
+ }
+ 
+-extern __inline__ unsigned long swab32( unsigned long val )
++static __inline__ unsigned long swab32( unsigned long val )
+ {
+     unsigned short vall = val, valh = val >> 16;
+     vall = (vall << 8) | (vall >> 8);

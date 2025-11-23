@@ -1,0 +1,24 @@
+https://github.com/codeprofis/dymo-cups-drivers/commit/948abc3500f45578a386182c0d2a55bcfcbc2c66.patch
+
+From 948abc3500f45578a386182c0d2a55bcfcbc2c66 Mon Sep 17 00:00:00 2001
+From: Florian Knodt <adlerweb@adlerweb.info>
+Date: Fri, 28 Feb 2020 23:26:34 +0100
+Subject: [PATCH] Add missing backend header. Fixes #11.
+
+---
+ src/common/CupsPrintEnvironment.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/common/CupsPrintEnvironment.h b/src/common/CupsPrintEnvironment.h
+index 23043d8..76ecefc 100644
+--- a/src/common/CupsPrintEnvironment.h
++++ b/src/common/CupsPrintEnvironment.h
+@@ -21,6 +21,8 @@
+ #ifndef h952b1c81_8931_433a_8479_7ae6d8e85a86
+ #define h952b1c81_8931_433a_8479_7ae6d8e85a86
+ 
++#include <cups/backend.h>
++#include <cups/sidechannel.h>
+ #include "PrinterDriver.h"
+ 
+ namespace DymoPrinterDriver

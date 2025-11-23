@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>dlan@gentoo.org</email>
+	<name>Yixun Lan</name>
+</maintainer>
+<longdescription lang="en">
+A tool that performs monitoring and adaptive configuration of the system
+according to selected profile.
+</longdescription>
+<upstream>
+	<remote-id type="github">redhat-performance/tuned</remote-id>
+</upstream>
+<use>
+	<flag name="ppd">Install tuned-ppd, a drop-in replacement for <pkg>sys-power/power-profiles-daemon</pkg></flag>
+</use>
+</pkgmetadata>

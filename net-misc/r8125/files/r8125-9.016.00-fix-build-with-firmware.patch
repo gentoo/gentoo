@@ -1,0 +1,28 @@
+From 6a7458d6b0aec79a5f8aa30db08aea9ec1cba873 Mon Sep 17 00:00:00 2001
+From: "Evgeny Grin (Karlson2k)" <k2k@drgrin.dev>
+Date: Thu, 3 Jul 2025 16:28:52 +0200
+Subject: [PATCH] Fix for building with firmware support.
+
+The fix looks reasonable, but not tested deeply.
+---
+ src/r8125_n.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/r8125_n.c b/src/r8125_n.c
+index 0b838b1..b8563bb 100644
+--- a/src/r8125_n.c
++++ b/src/r8125_n.c
+@@ -16582,8 +16582,10 @@ rtl8125_test_phy_ocp_v5(struct rtl8125_private *tp)
+ 
+         rtl8125_wait_phy_state_ready(tp, HW_PHY_STATUS_INI, 5000000);
+ 
++#ifndef ENABLE_USE_FIRMWARE_FILE
+         if (tp->mcfg == CFG_METHOD_10)
+                 rtl8125_set_phy_mcu_8125d_1_efuse(tp->dev);
++#endif
+ 
+         rtl8125_set_eth_phy_ocp_bit(tp, 0xA468, BIT_0);
+ 
+-- 
+2.49.0
+

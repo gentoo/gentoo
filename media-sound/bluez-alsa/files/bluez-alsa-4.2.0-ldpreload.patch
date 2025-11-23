@@ -1,0 +1,164 @@
+From a51e0603c3c9657dbddc6f2d5e92b51209ed2d13 Mon Sep 17 00:00:00 2001
+From: Arkadiusz Bokowy <arkadiusz.bokowy@gmail.com>
+Date: Mon, 10 Jun 2024 17:36:32 +0200
+Subject: [PATCH] Fix LD_PRELOAD environment variable overwrite
+
+Fixes #717
+---
+ test/Makefile.am                 |  8 ++++----
+ test/inc/preload.inc             | 17 ++++-------------
+ test/inc/spawn.inc               |  3 +--
+ test/{aloader.c => libaloader.c} |  0
+ test/test-alsa-ctl.c             |  4 ++--
+ test/test-alsa-pcm.c             |  4 ++--
+ test/test-utils-aplay.c          |  4 ++--
+ test/test-utils-cli.c            |  4 ++--
+ 8 files changed, 17 insertions(+), 27 deletions(-)
+ rename test/{aloader.c => libaloader.c} (100%)
+
+diff --git a/test/Makefile.am b/test/Makefile.am
+index c120c29a6..cf844472c 100644
+--- a/test/Makefile.am
++++ b/test/Makefile.am
+@@ -57,12 +57,12 @@ check_PROGRAMS += test-msbc
+ endif
+ 
+ check_LTLIBRARIES = \
+-	aloader.la
+-aloader_la_LDFLAGS = \
++	libaloader.la
++libaloader_la_LDFLAGS = \
+ 	-rpath /nowhere \
+ 	-avoid-version \
+-	-shared -module
+-aloader_la_LIBADD = \
++	-shared
++libaloader_la_LIBADD = \
+ 	@ALSA_LIBS@
+ 
+ test_a2dp_SOURCES = \
+diff --git a/test/inc/preload.inc b/test/inc/preload.inc
+index 3dbb1522d..a6d0b9f09 100644
+--- a/test/inc/preload.inc
++++ b/test/inc/preload.inc
+@@ -2,7 +2,7 @@
+  * preload.inc
+  * vim: ft=c
+  *
+- * Copyright (c) 2016-2022 Arkadiusz Bokowy
++ * Copyright (c) 2016-2024 Arkadiusz Bokowy
+  *
+  * This file is a part of bluez-alsa.
+  *
+@@ -16,12 +16,10 @@
+ #include <string.h>
+ #include <unistd.h>
+ 
+-#include "shared/defs.h"
+-
+ #define LD_PRELOAD           "LD_PRELOAD"
+ #define LD_PRELOAD_SANITIZER "LD_PRELOAD_SANITIZER"
+ 
+-int preload(int argc, char * const argv[], char * const envp[], const char *filename) {
++int preload(int argc, char * const argv[], const char *filename) {
+ 	(void)argc;
+ 
+ 	const char *env_preload;
+@@ -40,17 +38,10 @@ int preload(int argc, char * const argv[], char * const envp[], const char *file
+ 
+ 	char app[1024];
+ 	char preload[1024];
+-	char *envp2[256] = { preload, NULL };
+-
+ 	char *dir = dirname(strncpy(app, argv[0], sizeof(app) - 1));
+ 	snprintf(preload, sizeof(preload), "%s=%s:%s/%s:%s",
+ 			LD_PRELOAD, env_preload_sanitizer, dir, filename, env_preload);
+ 
+-	size_t i = 1, j = 0;
+-	while (i < ARRAYSIZE(envp2) - 1 && envp[j] != NULL)
+-		envp2[i++] = envp[j++];
+-	if (i == ARRAYSIZE(envp2) - 1 && envp[j] != NULL)
+-		fprintf(stderr, "WARNING: Couldn't forward ENV variables\n");
+-
+-	return execve(argv[0], argv, envp2);
++	putenv(preload);
++	return execv(argv[0], argv);
+ }
+diff --git a/test/inc/spawn.inc b/test/inc/spawn.inc
+index 4ac1b531d..14eac6a19 100644
+--- a/test/inc/spawn.inc
++++ b/test/inc/spawn.inc
+@@ -97,8 +97,7 @@ int spawn(struct spawn_process *sp, char *argv[], FILE *f_stdin, int flags) {
+ 			close(pipe_stderr[1]);
+ 		}
+ 
+-		execv(argv[0], argv);
+-		return -1;
++		return execv(argv[0], argv);
+ 	}
+ 
+ 	close(pipe_stdout[1]);
+diff --git a/test/aloader.c b/test/libaloader.c
+similarity index 100%
+rename from test/aloader.c
+rename to test/libaloader.c
+diff --git a/test/test-alsa-ctl.c b/test/test-alsa-ctl.c
+index 2d3d03453..b0c0f3350 100644
+--- a/test/test-alsa-ctl.c
++++ b/test/test-alsa-ctl.c
+@@ -576,8 +576,8 @@ CK_START_TEST(test_alsa_high_level_control_interface) {
+ 
+ } CK_END_TEST
+ 
+-int main(int argc, char *argv[], char *envp[]) {
+-	preload(argc, argv, envp, ".libs/aloader.so");
++int main(int argc, char *argv[]) {
++	preload(argc, argv, ".libs/libaloader.so");
+ 
+ 	char *argv_0 = strdup(argv[0]);
+ 	snprintf(bluealsa_mock_path, sizeof(bluealsa_mock_path),
+diff --git a/test/test-alsa-pcm.c b/test/test-alsa-pcm.c
+index aaff9d1bf..724316869 100644
+--- a/test/test-alsa-pcm.c
++++ b/test/test-alsa-pcm.c
+@@ -1100,8 +1100,8 @@ CK_START_TEST(ba_test_playback_device_unplug) {
+ 
+ } CK_END_TEST
+ 
+-int main(int argc, char *argv[], char *envp[]) {
+-	preload(argc, argv, envp, ".libs/aloader.so");
++int main(int argc, char *argv[]) {
++	preload(argc, argv, ".libs/libaloader.so");
+ 
+ 	int opt;
+ 	const char *opts = "hD:c:f:r:";
+diff --git a/test/test-utils-aplay.c b/test/test-utils-aplay.c
+index e3a492851..7925a2710 100644
+--- a/test/test-utils-aplay.c
++++ b/test/test-utils-aplay.c
+@@ -307,8 +307,8 @@ CK_START_TEST(test_play_dbus_signals) {
+ 
+ } CK_END_TEST
+ 
+-int main(int argc, char *argv[], char *envp[]) {
+-	preload(argc, argv, envp, ".libs/aloader.so");
++int main(int argc, char *argv[]) {
++	preload(argc, argv, ".libs/libaloader.so");
+ 
+ 	char *argv_0 = strdup(argv[0]);
+ 	char *argv_0_dir = dirname(argv_0);
+diff --git a/test/test-utils-cli.c b/test/test-utils-cli.c
+index 53510e02e..378c6f2f3 100644
+--- a/test/test-utils-cli.c
++++ b/test/test-utils-cli.c
+@@ -461,8 +461,8 @@ CK_START_TEST(test_open) {
+ 
+ } CK_END_TEST
+ 
+-int main(int argc, char *argv[], char *envp[]) {
+-	preload(argc, argv, envp, ".libs/aloader.so");
++int main(int argc, char *argv[]) {
++	preload(argc, argv, ".libs/libaloader.so");
+ 
+ 	char *argv_0 = strdup(argv[0]);
+ 	char *argv_0_dir = dirname(argv_0);

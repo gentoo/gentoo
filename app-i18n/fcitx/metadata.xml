@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>tanekliang@gmail.com</email>
+		<name>Yongxiang Liang</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>cjk@gentoo.org</email>
+		<name>Cjk</name>
+	</maintainer>
+	<use>
+		<flag name="autostart">Enable XDG-compatible autostart of Fcitx</flag>
+		<flag name="emoji">Enable emoji loading for CLDR</flag>
+		<flag name="enchant">Enable Enchant backend (using <pkg>app-text/enchant</pkg>) for spelling hinting</flag>
+		<flag name="keyboard">Enable key event translation with XKB and build keyboard engine</flag>
+		<flag name="presage">Enable presage for word predication (not stable)</flag>
+		<flag name="server">Build a fcitx as server, disable this option if you want to use fcitx as an embedded library</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">fcitx/fcitx5</remote-id>
+	</upstream>
+</pkgmetadata>

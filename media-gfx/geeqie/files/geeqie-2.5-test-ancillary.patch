@@ -1,0 +1,27 @@
+diff -Naur geeqie-2.5.orig/meson.build geeqie-2.5/meson.build
+--- geeqie-2.5.orig/meson.build	2024-09-21 17:11:19.000000000 +0200
++++ geeqie-2.5/meson.build	2024-09-25 09:30:11.624093709 +0200
+@@ -844,12 +844,6 @@
+     summary({'lua' : ['Test runs:', false]}, section : 'Testing', bool_yn : true)
+ endif
+ 
+-# Ancillary files test
+-test_ancillary_files_sh = find_program('test-ancillary-files.sh', dirs : scriptsdir, required : true)
+-test('Ancillary files', test_ancillary_files_sh, args: [meson.current_source_dir()], timeout: 100, suite : 'analysis')
+-
+-summary({'Ancillary files' : ['Test runs:', true]}, section : 'Testing', bool_yn : true)
+-
+ # Unit tests
+ if conf_data.get('ENABLE_UNIT_TESTS', 0) == 1
+     test('Unit tests', isolate_test_sh, args: [geeqie_exe.full_path(), '--run-unit-tests'], suite : 'unit')
+diff -Naur geeqie-2.5.orig/scripts/untranslated-text.sh geeqie-2.5/scripts/untranslated-text.sh
+--- geeqie-2.5.orig/scripts/untranslated-text.sh	2024-09-21 17:11:19.000000000 +0200
++++ geeqie-2.5/scripts/untranslated-text.sh	2024-09-25 09:30:44.567101060 +0200
+@@ -68,6 +68,7 @@
+ MonoSpace
+ N_(
+ NikonTag
++Néstor
+ Pause
+ PixbufRenderer
+ PluginsMenu

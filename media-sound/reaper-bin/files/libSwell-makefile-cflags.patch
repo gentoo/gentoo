@@ -1,0 +1,23 @@
+diff --git a/WDL/swell/Makefile b/WDL/swell/Makefile
+index c0a52312..fb09826b 100644
+--- a/WDL/swell/Makefile
++++ b/WDL/swell/Makefile
+@@ -72,16 +72,9 @@ endif
+ 
+ 
+ ifdef DEBUG
+-CFLAGS += -O0 -g -D_DEBUG
++CFLAGS += -D_DEBUG
+ else
+-CFLAGS += -O2 -DNDEBUG
+-  ifdef DEBUG_INFO
+-    CFLAGS += -g
+-  else
+-    ifneq ($(COMPILER),CLANG)
+-      CFLAGS += -s
+-    endif
+-  endif
++CFLAGS += -DNDEBUG
+ endif
+ 
+ LINKEXTRA =  -lpthread -ldl 

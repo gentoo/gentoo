@@ -1,0 +1,32 @@
+From 1ae48cfa95e84cb064edc74a4a64bd0f7dee780a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Tue, 4 Oct 2022 09:40:42 +0200
+Subject: [PATCH] Unconditionally disable downloading binaries from Internet
+
+Bug: https://bugs.gentoo.org/874849
+---
+ imageio/core/fetching.py | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/imageio/core/fetching.py b/imageio/core/fetching.py
+index 0380bc7..70f1a3d 100644
+--- a/imageio/core/fetching.py
++++ b/imageio/core/fetching.py
+@@ -97,11 +97,10 @@ def get_remote_file(fname, directory=None, force_download=False, auto=True):
+                     break
+ 
+     # If we get here, we're going to try to download the file
+-    if os.getenv("IMAGEIO_NO_INTERNET", "").lower() in ("1", "true", "yes"):
++    if True:
+         raise InternetNotAllowedError(
+-            "Will not download resource from the "
+-            "internet because environment variable "
+-            "IMAGEIO_NO_INTERNET is set."
++            "Implicit insecure downloads disabled on Gentoo due to security "
++            "concerns.  See https://bugs.gentoo.org/874849."
+         )
+ 
+     # Can we proceed with auto-download?
+-- 
+2.38.0
+

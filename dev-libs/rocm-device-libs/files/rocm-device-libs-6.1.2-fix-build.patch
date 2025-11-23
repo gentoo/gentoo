@@ -1,0 +1,152 @@
+commit 83ef5b48800a47cc30b3d4bcfdf31de9c3bd0dc8
+Author: Patrick Lauer <patrick@gentoo.org>
+Date:   Sun Jul 28 07:43:54 2024 +0000
+
+    Revert "ockl: Don't use wave32 ballot builtin"
+    
+    This reverts commit 066a0b2716b7ade96a2b3e79e5ddcd0c110e9f98.
+
+diff --git a/ockl/src/dm.cl b/ockl/src/dm.cl
+index 18efc54203b7..a3f06c448aee 100644
+--- a/ockl/src/dm.cl
++++ b/ockl/src/dm.cl
+@@ -287,14 +287,9 @@ first(__global void * v)
+     return __builtin_astype(w2, __global void *);
+ }
+ 
+-// Read val from one active lane whose predicate is one.
+-// If no lanes have the predicate set, return none
+-// This is like first, except that first may not have its predicate set
++REQUIRES_WAVE64
+ static uint
+-elect_uint(int pred, uint val, uint none)
+-{
+-  // Pretend wave32 doesn't exist. The wave64 ballot works, and the high half
+-  // will fold out as 0.
++elect_uint_wave64(int pred, uint val, uint none) {
+     uint ret = none;
+ 
+     ulong mask = __builtin_amdgcn_ballot_w64(pred != 0);
+@@ -306,14 +301,51 @@ elect_uint(int pred, uint val, uint none)
+     return ret;
+ }
+ 
+-// Count the number of nonzero arguments across the wave
++REQUIRES_WAVE32
+ static uint
+-votes(bool b)
++elect_uint_wave32(int pred, uint val, uint none) {
++    uint ret = none;
++    uint mask = __builtin_amdgcn_ballot_w32(pred != 0);
++    if (mask != 0U) {
++        uint l = __ockl_ctz_u32(mask);
++        ret = __builtin_amdgcn_ds_bpermute(l << 2, val);
++    }
++
++    return ret;
++}
++
++// Read val from one active lane whose predicate is one.
++// If no lanes have the predicate set, return none
++// This is like first, except that first may not have its predicate set
++static uint
++elect_uint(int pred, uint val, uint none)
++{
++    return __oclc_wavefrontsize64 ?  elect_uint_wave64(pred, val, none) : elect_uint_wave32(pred, val, none);
++}
++
++REQUIRES_WAVE64
++static uint
++votes_wave64(bool b)
+ {
+     ulong mask = __builtin_amdgcn_ballot_w64(b);
+     return __builtin_popcountl(mask);
+ }
+ 
++REQUIRES_WAVE32
++static uint
++votes_wave32(bool b)
++{
++    uint mask = __builtin_amdgcn_ballot_w32(b);
++    return __builtin_popcount(mask);
++}
++
++// Count the number of nonzero arguments across the wave
++static uint
++votes(bool b)
++{
++    return __oclc_wavefrontsize64 ?  votes_wave64(b) : votes_wave32(b);
++}
++
+ // The kind of the smallest block that can hold sz bytes
+ static uint
+ size_to_kind(uint sz)
+diff --git a/ockl/src/wfaas.cl b/ockl/src/wfaas.cl
+index 3861a5bb3eab..4dab97cea5f7 100644
+--- a/ockl/src/wfaas.cl
++++ b/ockl/src/wfaas.cl
+@@ -21,25 +21,60 @@ static int optimizationBarrierHack(int in_val)
+     return out_val;
+ }
+ 
++REQUIRES_WAVE32
++static bool wfany_impl_w32(int e) {
++    return __builtin_amdgcn_ballot_w32(e) != 0;
++}
++
++REQUIRES_WAVE64
++static bool wfany_impl_w64(int e) {
++    return __builtin_amdgcn_ballot_w64(e) != 0;
++}
++
+ ATTR bool
+ OCKL_MANGLE_I32(wfany)(int e)
+ {
+     e = optimizationBarrierHack(e);
+-    return __builtin_amdgcn_ballot_w64(e) != 0;
++    return __oclc_wavefrontsize64 ?
++        wfany_impl_w64(e) : wfany_impl_w32(e);
++}
++
++REQUIRES_WAVE32
++static bool wfall_impl_w32(int e) {
++    return __builtin_amdgcn_ballot_w32(e) == __builtin_amdgcn_read_exec_lo();
++}
++
++REQUIRES_WAVE64
++static bool wfall_impl_w64(int e) {
++    return __builtin_amdgcn_ballot_w64(e) == __builtin_amdgcn_read_exec();
+ }
+ 
+ ATTR bool
+ OCKL_MANGLE_I32(wfall)(int e)
+ {
+     e = optimizationBarrierHack(e);
+-    return __builtin_amdgcn_ballot_w64(e) == __builtin_amdgcn_read_exec();
++    return __oclc_wavefrontsize64 ?
++        wfall_impl_w64(e) : wfall_impl_w32(e);
++}
++
++
++REQUIRES_WAVE32
++static bool wfsame_impl_w32(int e) {
++    uint u = __builtin_amdgcn_ballot_w32(e);
++    return (u == 0) | (u == __builtin_amdgcn_read_exec_lo());
++}
++
++REQUIRES_WAVE64
++static bool wfsame_impl_w64(int e) {
++    ulong u = __builtin_amdgcn_ballot_w64(e);
++    return (u == 0UL) | (u == __builtin_amdgcn_read_exec());
+ }
+ 
+ ATTR bool
+ OCKL_MANGLE_I32(wfsame)(int e)
+ {
+     e = optimizationBarrierHack(e);
+-    ulong u = __builtin_amdgcn_ballot_w64(e);
+-    return (u == 0UL) | (u == __builtin_amdgcn_read_exec());
++    return __oclc_wavefrontsize64 ?
++        wfsame_impl_w64(e) : wfsame_impl_w32(e);
+ }
+ 

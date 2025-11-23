@@ -1,0 +1,121 @@
+Cast normal pointers to array of strings to constant and in one case to void**.
+Casts between menu*_s are valid, because each of them embeds menucommon_s
+as first member there's type tag in that generic struct, and every
+relevant function checks tag value before aborting or casting and doing
+anything else.
+Plus missing function declaration and adding const qualifiers to function
+pointers that always got filled with functions with const parameters.
+https://bugs.gentoo.org/881071
+https://bugs.gentoo.org/921028
+--- a/source/client/menu.c
++++ b/source/client/menu.c
+@@ -3606,7 +3606,7 @@
+ 	s_servers[serverindex].serverinfo_columns[0][1].generic.type		= MTYPE_TEXT;
+ 	s_servers[serverindex].serverinfo_columns[0][1].generic.flags	= QMF_RIGHT_COLUMN;
+ 	
+-	Menu_MakeTable (&s_servers[serverindex].serverinfo_table, 7, 2, sizes, s_servers[serverindex].serverinfo_rows, s_servers[serverindex].serverinfo_rows, s_servers[serverindex].serverinfo_columns, contents);
++	Menu_MakeTable (&s_servers[serverindex].serverinfo_table, 7, 2, sizes, s_servers[serverindex].serverinfo_rows, s_servers[serverindex].serverinfo_rows, s_servers[serverindex].serverinfo_columns, (const char **)contents);
+ 	
+ 	Menu_AddItem (&s_servers[serverindex].serverinfo_submenu, &s_servers[serverindex].serverinfo_table);
+ 	
+@@ -3694,7 +3694,7 @@
+ 						mservers[serverindex].players, SVDATA_PLAYERINFO,
+ 						sizes, &s_servers[serverindex].playerlist_header,
+ 						s_servers[serverindex].playerlist_rows, s_servers[serverindex].playerlist_columns,
+-						local_player_info_ptrs
++						(const char **)local_player_info_ptrs
+ 					);
+ 	
+ 	Menu_AddItem (&s_servers[serverindex].playerlist_submenu, &s_servers[serverindex].playerlist_scrollingmenu);
+@@ -4540,7 +4540,7 @@
+ 		// load info from config file if possible
+ 		
+ 		Com_sprintf (cfgpath, sizeof(cfgpath), "%s/%s.cfg", BOT_GAMEDATA, name);
+-		if( FS_LoadFile (cfgpath, &cfg) == -1 )
++		if( FS_LoadFile (cfgpath, (void **)&cfg) == -1 )
+ 		{
+ 			Com_DPrintf("LoadBotInfo: failed file open: %s\n", fullpath );
+ 			continue;
+--- a/source/client/qmenu.c
++++ b/source/client/qmenu.c
+@@ -160,7 +160,7 @@
+ 	menu_box.width = f->generic.visible_length*font->width;
+ 	FNT_BoundedPrint (font, f->buffer, FNT_CMODE_QUAKE_SRS, FNT_ALIGN_LEFT, &menu_box, light_color);
+ 	
+-	if ( cursor.menuitem == f )
++	if ( cursor.menuitem == (struct _tag_menuitem *)f )
+ 	{
+ 		if ( ( ( int ) ( Sys_Milliseconds() / 300 ) ) & 1 )
+ 			Draw_StretchPic (menu_box.x + menu_box.width - font->size / 8, menu_box.y-1, font->size, font->size+4, "menu/field_cursor");
+@@ -172,7 +172,7 @@
+ 	menufield_s *f;
+ 	extern int keydown[];
+ 	
+-	f = cursor.menuitem;
++	f = (menufield_s *)cursor.menuitem;
+ 	
+ 	if (f == NULL || f->generic.type != MTYPE_FIELD || key > 127)
+ 		return false;
+@@ -968,7 +968,7 @@
+ 	if (menu->maxheight != 0 && CHASELINK(menu->height) > menu->maxheight && cursor.x > right)
+ 	{
+ 		// select the scrollbar
+-		item = &menu->vertical_scrollbar;
++		item = (menuitem_s *)&menu->vertical_scrollbar;
+ 		Cursor_MouseSelectItem (item);
+ 	}
+ 	else for ( i = 0; i < menu->nitems; i++ )
+@@ -1426,7 +1426,7 @@
+ 
+ void Menu_SlideItem (int dir)
+ {
+-	menucommon_s *item = cursor.menuitem;
++	menucommon_s *item = (menucommon_s *)cursor.menuitem;
+ 	
+ 	if ( item )
+ 	{
+@@ -1474,7 +1474,7 @@
+ 	else if ( s->curvalue < s->minvalue )
+ 		s->curvalue = s->minvalue;
+ 
+-	Menu_ActivateItem (s);
++	Menu_ActivateItem ((menuitem_s *)s);
+ }
+ 
+ void Slider_Draw (menuslider_s *s, FNT_font_t font)
+@@ -1531,7 +1531,7 @@
+ 			s->curvalue--;
+ 	}
+ 
+-	Menu_ActivateItem (s);
++	Menu_ActivateItem ((menuitem_s *)s);
+ }
+ 
+ void SpinControl_Draw (menulist_s *s, FNT_font_t font)
+--- a/source/game/game.h
++++ b/source/game/game.h
+@@ -177,10 +177,10 @@
+ 	void	(*FreeTags) (int tag);
+ 
+ 	// console variable interaction
+-	cvar_t	*(*cvar) (char *var_name, char *value, int flags);
+-	void	(*cvar_set) (char *var_name, char *value);
+-	cvar_t	*(*cvar_forceset) (char *var_name, char *value);
+-	void	(*cvar_describe) (cvar_t *var, char *description_string);
++	cvar_t	*(*cvar) (const char *var_name, const char *value, int flags);
++	void	(*cvar_set) (const char *var_name, const char *value);
++	cvar_t	*(*cvar_forceset) (const char *var_name, const char *value);
++	void	(*cvar_describe) (cvar_t *var, const char *description_string);
+ 
+ 	// ClientCommand and ServerCommand parameter access
+ 	int		(*argc) (void);
+--- a/source/qcommon/qcommon.h
++++ b/source/qcommon/qcommon.h
+@@ -132,6 +132,7 @@
+ void MSG_WriteByte (sizebuf_t *sb, int c);
+ void MSG_WriteShort (sizebuf_t *sb, int c);
+ void MSG_WriteLong (sizebuf_t *sb, int c);
++void MSG_WriteSizeInt (sizebuf_t *sb, int bytes, int c);
+ void MSG_WriteFloat (sizebuf_t *sb, float f);
+ void MSG_WriteString (sizebuf_t *sb, char *s);
+ void MSG_WriteCoord (sizebuf_t *sb, float f);

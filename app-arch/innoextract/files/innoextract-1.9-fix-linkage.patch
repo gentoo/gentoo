@@ -1,0 +1,17 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index be9f08f..f7ce42a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -316,12 +316,6 @@ if(NOT MSVC)
+ 	
+ endif()
+ 
+-if($ENV{PORTAGE_REPO_NAME} MATCHES "gentoo")
+-	# Meh
+-	unset(LIBRARIES)
+-endif()
+-
+-
+ # All sources:
+ 
+ set(DOCUMENTATION 0) # never build these

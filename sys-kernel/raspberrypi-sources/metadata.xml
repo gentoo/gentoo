@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ceamac@gentoo.org</email>
+		<name>Viorel Munteanu</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/raspberrypi/linux/issues</bugs-to>
+		<doc>https://www.raspberrypi.com/documentation/computers/linux_kernel.html</doc>
+		<remote-id type="github">raspberrypi/linux</remote-id>
+	</upstream>
+</pkgmetadata>

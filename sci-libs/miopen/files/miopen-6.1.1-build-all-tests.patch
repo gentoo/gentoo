@@ -1,0 +1,13 @@
+Normally, MIOpen compiles tests during test phase instead of "compile".
+This patch allows to build testing executables during compile phase.
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -330,7 +330,7 @@ endfunction()
+ separate_arguments(MIOPEN_TEST_FLAGS_ARGS NATIVE_COMMAND ${MIOPEN_TEST_FLAGS})
+ 
+ function(add_test_executable TEST_NAME)
+-    add_executable (${TEST_NAME} EXCLUDE_FROM_ALL ${ARGN})
++    add_executable (${TEST_NAME} ${ARGN})
+     if(WIN32)
+         target_compile_definitions(${TEST_NAME} PRIVATE NOMINMAX)
+     endif()

@@ -1,0 +1,30 @@
+From 79ded89ab9e477ce93e71d6184104ff273553ae9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Tue, 25 Feb 2025 13:39:06 +0100
+Subject: [PATCH] Force X11
+
+VLC does not support video playback on Wayland.
+
+BUG: 397594
+---
+ src/main.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/main.cpp b/src/main.cpp
+index a7e0efa6..185a6b72 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -211,6 +211,10 @@ int main(int argc, char *argv[])
+ {
+ 	qInstallMessageHandler(verboseMessageHandler);
+ 
++#if LIBVLC_VERSION_MAJOR <= 3
++	qputenv("QT_QPA_PLATFORM", "xcb");
++#endif
++
+ 	KLocalizedString::setApplicationDomain("kaffeine");
+ 
+ 	KaffeineApplication app(argc, argv);
+-- 
+GitLab
+

@@ -1,0 +1,61 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -178,6 +178,8 @@
+  echo "Looking for gtk2"
+ 
+ PKG_CHECK_MODULES(GTK, [gtk+-2.0 >= 2.6.0])
++AC_CHECK_LIB(m,sqrt)
++PKG_CHECK_MODULES(GMODULE, [gmodule-2.0 >= 2.0])
+ 
+ AC_SUBST(GTK_CFLAGS)
+ AC_SUBST(GTK_LIBS)
+
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -4,7 +4,6 @@
+ libggobi_la_GOBHEADERS = $(libggobi_la_GOBS:%.gob=ggobi-%.h)
+ libggobi_la_GOBOBJECTS = $(libggobi_la_GOBS:%.gob=ggobi-%.lo)
+ libggobi_la_GOBSTAMPS = $(libggobi_la_GOBS:%.gob=.%.gob.stamp)
+-libggobi_la_LDFLAGS  = @GTK_LIBS@ @LIBXML_LIBS@
+ libggobi_la_BUILT = array.c ash1d.c barchart.c barchartClass.c \
+   barchart_ui.c brush.c brush_api.c brush_bins.c brush_init.c brush_link.c \
+   brush_ui.c color.c color_ui.c cpanel.c display.c display_tree.c display_ui.c \
+@@ -27,7 +26,7 @@
+   write_csv.c write_xml.c wvis.c wvis_ui.c xlines.c xyplot.c \
+   xyplot_ui.c $(libggobi_la_GOBSOURCES)
+ libggobi_la_SOURCES = $(libggobi_la_BUILT) $(libggobi_la_GOBSTAMPS)
+-libggobi_la_LIBADD = $(libggobi_la_GOBOBJECTS)
++libggobi_la_LIBADD = $(libggobi_la_GOBOBJECTS) @GTK_LIBS@ @LIBXML_LIBS@ @GMODULE_LIBS@
+ libggobi_la_DEPENDENCIES = $(libggobi_la_GOBOBJECTS)
+ pkginclude_HEADERS = GGobiAPI.h ggobiClass.h tour1d_pp.h GGobiApp.h \
+   noop-toggle.h tour2d_pp.h GGobiEvents.h parcoordsClass.h tour_pp.h \
+@@ -59,7 +58,7 @@
+ # Windows specific
+ if OS_WIN32
+ libggobi_la_DEPENDENCIES+=libggobi.def
+-libggobi_la_LDFLAGS+=-Wc,-s -no-undefined -export-symbols libggobi.def
++libggobi_la_LDFLAGS=-Wc,-s -no-undefined -export-symbols libggobi.def
+ ggobi_LDFLAGS = -mwindows -s
+ endif
+ 
+--- a/plugins/GraphLayout/configure.ac
++++ b/plugins/GraphLayout/configure.ac
+@@ -44,6 +44,7 @@
+ AC_MSG_RESULT(no)])
+ 
+ AC_MSG_CHECKING([whether Graphviz API is based on cgraph])
++save_CFLAGS="${CFLAGS}"
+ CFLAGS=$LIBGVC_CFLAGS
+ AC_COMPILE_IFELSE([AC_LANG_SOURCE([
+    #include <gvc.h>
+@@ -53,8 +54,10 @@
+      return 0;
+    }
+ ])], graphviz_new_api=yes, graphviz_new_api=no)
++CFLAGS="${save_CFLAGS}"
+ AC_MSG_RESULT($graphviz_new_api)
+ if test "$graphviz_new_api" = "yes"; then
++  CFLAGS="${CFLAGS} ${LIBGVC_CFLAGS}"
+   AC_DEFINE(HAVE_CGRAPH,[1],[define for cgraph-based graphviz])
+ fi
+ 

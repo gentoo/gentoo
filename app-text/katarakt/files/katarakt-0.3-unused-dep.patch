@@ -1,0 +1,29 @@
+From 610841f58abed7217375c9836ffa05be9282e808 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 2 Nov 2025 18:50:42 +0100
+Subject: [PATCH] Drop unused QtXml dependency
+
+Use of QDomNode/QDomDocument was cleaned up in Qt6 porting commit
+e306cf222a31388910ab0b2ec601976d97fad468
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ katarakt.pro | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/katarakt.pro b/katarakt.pro
+index babb6d9..d136e72 100644
+--- a/katarakt.pro
++++ b/katarakt.pro
+@@ -3,7 +3,7 @@ TARGET = katarakt
+ DEPENDPATH += .
+ INCLUDEPATH += .
+ CONFIG += qt
+-QT += widgets network xml dbus
++QT += widgets network dbus
+ DEFINES += QT_DEPRECATED_WARNINGS
+ 
+ POPPLER = poppler-qt$$QT_MAJOR_VERSION
+-- 
+2.51.2
+

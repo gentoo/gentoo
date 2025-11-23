@@ -1,0 +1,80 @@
+# Copyright 1999-2025 Gentoo Authors.
+# Distributed under the terms of the GNU General Public License v2
+
+# This file contains descriptions of NGINX_MODULES_HTTP USE_EXPAND flags.
+
+# Keep it sorted.
+access - Add support for a simple host-based access control
+addition - Add support for adding contents of other locations before and after the current location's content
+auth_basic - Add support for limiting access to a location by validating the username and password using the HTTP Basic Authentication
+auth_ldap - Add support for LDAP authentication module for NGINX
+auth_pam - Add support for authentication via PAM
+auth_request - Add support for client authorization based on the result of a subrequest
+autoindex - Add support for processing requests ending with the slash character ('/') and produciing a directory listing
+brotli - Add support for on-the-fly Brotli compression
+browser - Add support for creating variables whose values depend on the value of the "User-Agent" request header field
+cache_purge - Add support for purging content from NGINX's FastCGI and proxy caches
+charset - Add support for adding the specified charset to the "Content-Type" response header field and reencoding singe-byte charsets
+dav - Add support for the WebDAV functionality and methods: PUT, DELETE, MKCOL, COPY and MOVE
+dav_ext - Add support for the additional WebDAV methods into the existing WebDAV module: PROPFIND & OPTIONS
+degradation - Add support for returning 204 or 444 code for some locations on low memory condition (reliable on FreeBSD only)
+echo - Add support for shell-style goodies in the NGINX configuration file
+empty_gif - Add support for emiting a single-pixel transparent GIF
+fancyindex - Add support for the fancy generation of file listings
+fastcgi - Add support for passing requests to a FastCGI server
+flv - Add support for the server-side pseudo-streaming of Flash Video (FLV) files
+geo - Add support for creating variables whose values depend on the client IP-address
+geoip - Add support for creating variables whose values depend on the client IP-address, using the precompiled MaxMind databases
+geoip2 - Add support for creating variables whose values depend on the client IP-address, using the precompiled MaxMind GeoIP2 databases
+grpc - Add support for passing requests to a gRPC server
+gunzip - Add support for decompressing responses with "Content-Encoding: gzip" for clients that do not support "gzip" encoding method
+gzip - Add support for compressing responses using the "gzip" method
+gzip_static - Add support for sending precompressed files with the ".gz" filename extension instead of regular files
+headers_more - Add support for setting arbitrary input and output headers
+image_filter - Add support for transforming images in JPEG, GIF, PNG, and WebP formats
+javascript - Add support for implementing location and variable handlers in njs - a subset of the JavaScript language
+limit_conn - Add support for limiting the number of connections per a defined key, e.g. the number of connections from a single IP address
+limit_req - Add support for limiting the request processing rate per a defined key, e.g. the processing rate of requests coming from a single IP address
+lua - Add support for Lua scripting in NGINX
+map - Add support for creating variables whose values depend on values of other variables
+memc - Add support for an extended version of the standard memcached module that supports set, add, delete, and many more memcached commands
+memcached - Add support for obtaining responses from a memcached server
+metrics - Add support for exporting various metrics in an easy-parseable JSON format
+mirror - Add support for mirroring of the original request by creating background mirror subrequests
+mogilefs - Add support for MogileFS
+mp4 - Add support for server-side pseudo-streaming for MP4 files
+naxsi - Add support for NAXSI WAF (Web Application Firewall)
+perl - Add support for implementing location and variable handlers in Perl and inserting Perl calls into SSI
+proxy - Add support for passing subrequests to another server
+push_stream - Add support for the stream HTTP push module, which supports EventSource, WebSocket, Long Polling, and Forever Iframe
+random_index - Add support for processing requests ending with the slash character ('/') by picking a random file in a directory to serve as an index file
+realip - Add support for setting the client address and optional port to those sent in the specified header field (e.g. "X-Real-IP" or "X-Forwarded-For")
+referer - Add support for blocking access to a site for requests with invalid values in the "Referer" header field
+rewrite - Add support for changing the request URI using PCRE regular expressions, returning redirects, and conditionally selecting configurations
+scgi - Add support for passing requests to an SCGI server
+secure_link - Add support for checking authenticity of requested links, protecting resources from unauthorized access, and limiting link lifetime
+security - Add support for modsecurity: web application firewall and intrusion detection system
+slice - Add support for spliting a request into subrequests, each returning a certain range of response
+slowfs_cache - Add support for caching static files
+spdy - Add support for an SPDY implementation. (Deprecated, use USE="nginx_modules_http_v2" instead)
+split_clients - Add support for creating variables suitable for A/B testing, also known as split testing
+ssi - Add support for processing SSI (Server Side Includes) commands in responses passing through NGINX
+ssl - Add support for HTTPS - SSL/TLS-encrypted HTTP
+sticky - Add support for sending a sticky cookie in order to always forward client to the same upstream server
+stub_status - Add support for providing access to basic status information
+sub - Add support for modifying a response by replacing one specified string by another
+upload_progress - Add support for an upload progress system, that monitors RFC1867 POST uploads as they are transmitted to upstream servers
+upstream_check - Add support for performing health check of upstream servers
+upstream_hash - Add support for distributing upstream requests based on hashed key value
+upstream_ip_hash - Add support for distributing upstream requests based on the IP-address of the client
+upstream_keepalive - Add support for caching connections to upstream servers
+upstream_least_conn - Add support for passing upstream requests to the server with the least number of active connections
+upstream_random - Add support for passing upstream requests to a randomly selected server
+upstream_zone - Add support for defining a shared memory zone that keeps the group's configuration and run-time state that are shared between worker processes
+userid - Add support for setting cookies suitable for client identification
+uwsgi - Add support for passing requests to a uwsgi server
+vhost_traffic_status - Add support for providing access to virtual host status information
+v2 - Add support for HTTP/2
+v3 - Add experimental support for HTTP/3
+vod - Add support for streaming video using DASH, HDS, HLS, MSS
+xslt - Add support for transforming XML responses using one or more XSLT stylesheets

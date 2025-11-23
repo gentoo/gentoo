@@ -1,0 +1,11 @@
+--- a/xmountains.c
++++ b/xmountains.c
+@@ -144,7 +144,7 @@
+ void seed_uni(int ijkl);
+ void plot_column(Graph *g);
+ 
+-main (argc,argv)
++int main (argc,argv)
+ int argc;
+ char **argv;
+ {

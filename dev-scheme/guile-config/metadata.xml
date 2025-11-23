@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>scheme@gentoo.org</email>
+    <name>Gentoo Scheme Project</name>
+  </maintainer>
+  <longdescription>
+    Guile Config is a library providing a declarative approach to application
+    configuration specification. The library provides clean configuration
+    declaration forms, and processors that take care of: configuration file
+    creation; configuration file parsing; command-line parameter parsing using
+    getopt-long; basic GNU command-line parameter generation (--help, --usage,
+    --version); automatic output generation for the above command-line
+    parameters.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://gitlab.com/a-sassmannshausen/guile-config/-/issues/</bugs-to>
+    <remote-id type="gitlab">a-sassmannshausen/guile-config</remote-id>
+  </upstream>
+</pkgmetadata>

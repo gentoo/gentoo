@@ -1,0 +1,10 @@
+[Unit]
+Description=TiMidity++ Daemon
+After=sound.target
+
+[Service]
+EnvironmentFile=-/etc/conf.d/timidity
+ExecStart=/usr/bin/timidity -iA $TIMIDITY_OPTS
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,82 @@
+--- a/src/conffile.c
++++ b/src/conffile.c
+@@ -22,6 +22,7 @@
+ #include <sys/types.h>
+ #include <pwd.h>
+ #include <grp.h>
++#include <unistd.h>
+ 
+ #include "conffile.h"
+ #include "config.h"
+--- a/src/luks.c
++++ b/src/luks.c
+@@ -13,7 +13,9 @@
+ #include "utils.h"
+ #include "policy.h"
+ #include <stdio.h>
++#include <fcntl.h>
+ #include <limits.h>
++#include <unistd.h>
+ #include <sys/stat.h>
+ #include <libintl.h>
+ 
+--- a/src/policy.c
++++ b/src/policy.c
+@@ -13,6 +13,7 @@
+ #include "policy.h"
+ #include "utils.h"
+ 
++#include <ctype.h>
+ #include <stdio.h>
+ #include <string.h>
+ #include <unistd.h>
+--- a/src/pmount.c
++++ b/src/pmount.c
+@@ -29,6 +29,7 @@
+ #include "policy.h"
+ #include "utils.h"
+ #include "luks.h"
++#include "loop.h"
+ #include "config.h"
+ 
+ /* Configuration file handling */
+--- a/src/policy.c
++++ b/src/policy.c
+@@ -33,6 +33,7 @@
+ #include <pwd.h>
+ #include <utmpx.h>
+ 
++#include "configuration.h"
+ 
+ /* We use our own safe version of realpath */
+ #include "realpath.h"
+--- a/src/pumount.c
++++ b/src/pumount.c
+@@ -24,6 +24,7 @@
+ #include "utils.h"
+ #include "luks.h"
+ #include "config.h"
++#include "configuration.h"
+ 
+ /* error codes */
+ const int E_ARGS = 1;
+--- a/tests/test_policy.c
++++ b/tests/test_policy.c
+@@ -16,6 +16,7 @@
+ #include "policy.h"
+ #include "utils.h"
+ #include <stdio.h>
++#include <string.h>
+ 
+ int testsFailed = 0;
+ int totalTests = 0;
+--- a/tests/test_spawn.c
++++ b/tests/test_spawn.c
+@@ -12,6 +12,7 @@
+ 
+ 
+ #include <stdio.h>
++#include <string.h>
+ #include <unistd.h>
+ #include "utils.h"
+ 

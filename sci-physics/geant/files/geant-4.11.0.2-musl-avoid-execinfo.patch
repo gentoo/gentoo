@@ -1,0 +1,100 @@
+# Avoid including execinfo and calling backtrace function when execinfo.h is
+# not present or supplied by system's libc
+#
+# Closes: https://bugs.gentoo.org/829151
+--- a/source/global/management/include/G4Backtrace.hh
++++ b/source/global/management/include/G4Backtrace.hh
+@@ -85,23 +85,6 @@
+ #  endif
+ #endif
+
+-#if defined(G4UNIX) && !defined(WIN32)
+-#  include <cxxabi.h>
+-#  include <execinfo.h>
+-#  include <unistd.h>
+-#endif
+-
+-#if defined(G4LINUX)
+-#  include <features.h>
+-#endif
+-
+-#include <cfenv>
+-#include <csignal>
+-#include <type_traits>
+-
+-template <typename FuncT, typename... ArgTypes>
+-using G4ResultOf_t = std::invoke_result_t<FuncT, ArgTypes...>;
+-
+ // compatible OS and compiler
+ #if defined(G4UNIX) &&                                                         \
+   (defined(__GNUC__) || defined(__clang__) || defined(_INTEL_COMPILER))
+@@ -109,7 +92,9 @@ using G4ResultOf_t = std::invoke_result_t<FuncT, ArgTypes...>;
+ #    define G4SIGNAL_AVAILABLE
+ #  endif
+ #  if !defined(G4DEMANGLE_AVAILABLE)
+-#    define G4DEMANGLE_AVAILABLE
++#    if defined(G4UNIX) && defined(HAVE_EXECINFO_H)
++#       define G4DEMANGLE_AVAILABLE
++#    endif
+ #  endif
+ #endif
+
+@@ -121,6 +106,25 @@ using G4ResultOf_t = std::invoke_result_t<FuncT, ArgTypes...>;
+ #  endif
+ #endif
+
++#if defined(G4UNIX) && !defined(WIN32)
++#  include <cxxabi.h>
++#if defined(HAVE_EXECINFO_H)
++#  include <execinfo.h>
++#endif
++#  include <unistd.h>
++#endif
++
++#if defined(G4LINUX)
++#  include <features.h>
++#endif
++
++#include <cfenv>
++#include <csignal>
++#include <type_traits>
++
++template <typename FuncT, typename... ArgTypes>
++using G4ResultOf_t = std::invoke_result_t<FuncT, ArgTypes...>;
++
+ //----------------------------------------------------------------------------//
+
+ inline G4String G4Demangle(const char* _str)
+@@ -368,6 +372,7 @@ G4Backtrace::GetMangled(FuncT&& func)
+   std::array<type, Depth> btrace;
+   btrace.fill((std::is_pointer<type>::value) ? nullptr : type{});
+
++#if defined(G4DEMANGLE_AVAILABLE)
+   // plus one for this stack-frame
+   std::array<void*, Depth + Offset> buffer;
+   // size of returned buffer
+@@ -387,6 +392,7 @@ G4Backtrace::GetMangled(FuncT&& func)
+       btrace[i] = func(bsym[i]);
+     free(bsym);
+   }
++#endif
+   return btrace;
+ }
+
+--- a/source/global/management/sources.cmake
++++ b/source/global/management/sources.cmake
+@@ -6,6 +6,14 @@ set(G4MULTITHREADED ${GEANT4_BUILD_MULTITHREADED})
+ set(G4_STORE_TRAJECTORY ${GEANT4_BUILD_STORE_TRAJECTORY})
+ set(G4VERBOSE ${GEANT4_BUILD_VERBOSE_CODE})
+
++include(CheckIncludeFile)
++
++check_include_file(execinfo.h HAVE_EXECINFO_H)
++
++if(HAVE_SYS_TYPES_H)
++	list(APPEND CMAKE_REQUIRED_DEFINITIONS -DHAVE_EXECINFO_H)
++endif()
++
+ configure_file(${CMAKE_CURRENT_LIST_DIR}/include/G4GlobalConfig.hh.in
+   ${CMAKE_CURRENT_BINARY_DIR}/include/G4GlobalConfig.hh)
+

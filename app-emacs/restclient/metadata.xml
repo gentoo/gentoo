@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    This is a tool to manually explore and test HTTP REST webservices. Runs
+    queries from a plain-text query sheet, displays results as a pretty-printed
+    XML, JSON and even images.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/pashky/restclient.el/issues/</bugs-to>
+    <remote-id type="github">pashky/restclient.el</remote-id>
+  </upstream>
+</pkgmetadata>

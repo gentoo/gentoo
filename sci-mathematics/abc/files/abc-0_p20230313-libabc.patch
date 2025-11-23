@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -221,7 +221,7 @@ lib$(PROG).a: $(LIBOBJ)
+ 
+ lib$(PROG).so: $(LIBOBJ)
+ 	@echo "$(MSG_PREFIX)\`\` Linking:" $(notdir $@)
+-	$(VERBOSE)$(CXX) -shared -o $@ $^ $(LIBS)
++	$(VERBOSE)$(CXX) -shared -o $@ $^ $(LDFLAGS) -Wl,-soname,lib$(PROG).so.0 $(LIBS)
+ 
+ docs:
+ 	@echo "$(MSG_PREFIX)\`\` Building documentation." $(notdir $@)

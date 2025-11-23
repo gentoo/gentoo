@@ -1,0 +1,13 @@
+--- a/configure.ac	2024-05-30 02:23:11.000000000 +0200
++++ b/configure.ac	2024-06-01 10:10:07.602924940 +0200
+@@ -519,6 +519,10 @@
+     ac_cv_path_mkdir="mkdir"
+ ])
+ 
++AS_CASE(["$target_os"],[*],[
++    ac_cv_path_mkdir="mkdir"
++])
++
+ RUBY_PROG_MAKEDIRS
+ 
+ AC_CHECK_PROG([DTRACE], [${ac_tool_prefix}dtrace], [${ac_tool_prefix}dtrace])

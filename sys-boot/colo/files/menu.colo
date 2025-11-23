@@ -1,0 +1,60 @@
+#:CoLo:#
+# Example configuration file for CoLo, version 1.16 or above.
+# 
+
+# Turn on the serial port; if possible.  - means to ignore the error and keep
+# going.  Without this, execution would halt here if this command failed (e.g.
+# on Qube 2700; which lacks serial ports)
+-serial on
+
+# Mount the hard drive
+lcd "Mounting hda1"
+mount hda1
+
+# Ask the user... which kernel?
+# Timeout; 50/10 seconds
+#
+# The format is:
+#   select "Message Goes Here" TimeOut label1 [label2 ... [labelN]]
+#
+# This will set the {menu-option} variable to the entry corresponding to the
+# selected value, or 0 if no option is selected.
+select "Which Kernel?" 50 Working New
+
+# Now... jump to the line corresponding to the selection...
+#
+# Explaination of the goto command...
+#   goto [-]numMarks -- prefixing with - means jump backwards
+# or
+#   goto numMarks{b|f} -- b == jump back, f == jump forward
+# 
+# Marks are indicated by a line starting with a @ symbol.
+# 
+# We use this jump to set the {image-name} variable to a kernel image.
+#
+# Explaination of the var command:
+#   var VariableName Value
+#
+
+goto {menu-option}
+
+# {menu-option} = 0; TimeOut or Cancel
+var image-name vmlinux.gz.working
+
+# Skip to the next two @ lines, start at the third @ line.
+goto 3f
+
+# {menu-option} = 1; "Working" selected.
+@var image-name vmlinux.gz.working
+
+goto 2f
+@var image-name vmlinux.gz.new
+
+# Load the requested image
+@lcd "Loading Linux" {image-name}
+load /{image-name}
+
+# Boot
+lcd "Booting..."
+execute root=/dev/hda5 ro console=ttyS0,115200
+boot

@@ -1,0 +1,21 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -204,18 +204,6 @@
+ fi
+ 
+ dnl -----------------------------------------------
+-dnl Check for GCC -D_FORTIFY_SOURCE support
+-dnl -----------------------------------------------
+-AC_MSG_CHECKING(for gcc support of FORTIFY_SOURCE)
+-TMPCFLAGS="${CFLAGS}"
+-CFLAGS="${CFLAGS} -D_FORTIFY_SOURCE=2"
+-AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]], [[]])],[gcc_have_fortify_source=yes],[gcc_have_fortify_source=no])
+-AC_MSG_RESULT($gcc_have_fortify_source)
+-if test "$gcc_have_fortify_source" != "yes"; then
+-    CFLAGS="${TMPCFLAGS}"
+-fi
+-
+-dnl -----------------------------------------------
+ dnl Check for GCC -Wformat-security support
+ dnl -----------------------------------------------
+ AC_MSG_CHECKING(for gcc support of -Wformat -Wformat-security)

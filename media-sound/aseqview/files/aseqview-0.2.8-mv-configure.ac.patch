@@ -1,0 +1,57 @@
+From b24ee0be7931055928cc7aa48b42cef2b5c12536 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 12 Nov 2024 22:55:41 +0100
+Subject: [PATCH] Move configure.in -> configure.ac
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ Makefile.in                  | 2 +-
+ configure                    | 2 +-
+ configure.in => configure.ac | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+ rename configure.in => configure.ac (97%)
+
+diff --git a/Makefile.in b/Makefile.in
+index f5f3c42..0bf1c90 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -38,7 +38,7 @@ DIST_COMMON = README $(am__configure_deps) $(srcdir)/Makefile.am \
+ 	AUTHORS COPYING ChangeLog INSTALL NEWS depcomp install-sh \
+ 	missing
+ ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
+-am__aclocal_m4_deps = $(top_srcdir)/configure.in
++am__aclocal_m4_deps = $(top_srcdir)/configure.ac
+ am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
+ 	$(ACLOCAL_M4)
+ am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
+diff --git a/configure b/configure
+index a27ba2a..6b5216c 100755
+--- a/configure
++++ b/configure
+@@ -576,7 +576,7 @@ PACKAGE_VERSION=
+ PACKAGE_STRING=
+ PACKAGE_BUGREPORT=
+ 
+-ac_unique_file="configure.in"
++ac_unique_file="configure.ac"
+ # Factoring default headers for most tests.
+ ac_includes_default="\
+ #include <stdio.h>
+diff --git a/configure.in b/configure.ac
+similarity index 97%
+rename from configure.in
+rename to configure.ac
+index e125908..3a8d632 100644
+--- a/configure.in
++++ b/configure.ac
+@@ -1,6 +1,6 @@
+ dnl Process this file with autoconf to produce a configure script.
+ 
+-AC_INIT(configure.in)
++AC_INIT(configure.ac)
+ AM_INIT_AUTOMAKE(aseqview, 0.2.8)
+ AM_CONFIG_HEADER(config.h)
+ 
+-- 
+2.47.0
+

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <!-- maintainer-needed -->
+  <longdescription>
+ZMap is an open-source network scanner that enables researchers to easily 
+perform Internet-wide network studies. With a single machine and a well 
+provisioned network uplink, ZMap is capable of performing a complete scan of 
+the IPv4 address space in under 45 minutes, approaching the theoretical limit 
+of gigabit Ethernet.
+
+ZMap can be used to study protocol adoption over time, monitor service 
+availability, and help us better understand large systems distributed 
+across the Internet.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">zmap/zmap</remote-id>
+  </upstream>
+</pkgmetadata>

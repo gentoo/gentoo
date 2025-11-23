@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -31,7 +31,7 @@
+ 	$(CC) $(CFLAGS) tran.o kc24f.o -o $@
+ kc15f:		tran.o kc15f.o
+ 	$(CC) $(CFLAGS) tran.o kc15f.o -o $@
+-kc8x15:		kc8x15.o
++kc8x15:		tran.o kc8x15.o
+ 	$(CC) $(CFLAGS) tran.o kc8x15.o -o $@
+ kc12x24:	kc12x24.o
+ 	$(CC) $(CFLAGS) kc12x24.o -o $@

@@ -1,0 +1,22 @@
+https://github.com/zmanda/amanda/pull/220
+
+From 74610ac5522caa779b30323f1c731775083c5bbc Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Fri, 14 Apr 2023 15:45:16 +0200
+Subject: [PATCH] configure: Avoid an implicit int in the IPv6 test
+
+Otherwise, the test fails unconditionally with compilers that
+do not support implicit ints (a language feature that was removed with
+the C99 language revision).
+--- a/config/amanda/ipv6.m4
++++ b/config/amanda/ipv6.m4
+@@ -85,7 +85,7 @@ AC_DEFUN([AMANDA_CHECK_IPV6],
+ #include <sys/socket.h>
+ #include <errno.h>
+ 
+-main()
++int main(void)
+ {
+    int aa;
+    aa = socket(AF_INET6, SOCK_STREAM, 0);
+

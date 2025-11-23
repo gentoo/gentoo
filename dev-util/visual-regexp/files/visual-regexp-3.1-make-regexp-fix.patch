@@ -1,0 +1,12 @@
+diff -ur a/visual_regexp.tcl b/visual_regexp.tcl
+--- a/visual_regexp.tcl	2013-11-11 12:11:34.256631106 +0100
++++ b/visual_regexp.tcl	2013-11-11 11:50:46.614881803 +0100
+@@ -1437,7 +1439,7 @@
+ 		set output [text	$f.output \
+ 			-wrap						char \
+ 			-undo						1 \
+-			-background				white 
++			-background				white \
+ 			-font						$::font_regexp \
+ 			-selectbackground		lightblue \
+ 			-selectborderwidth	0 \

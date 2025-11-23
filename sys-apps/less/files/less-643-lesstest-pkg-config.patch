@@ -1,0 +1,34 @@
+https://github.com/gwsw/less/pull/412
+
+From 5d884b29fb11c2686b804428f483f4607334eb68 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 13 Aug 2023 03:57:25 +0100
+Subject: [PATCH] lesstest: use pkg-config to find ncurses libraries
+
+Fails to build with split tinfo otherwise like:
+```
+
+x86_64-pc-linux-gnu-gcc -O2 -pipe -march=native -fdiagnostics-color=always -frecord-gcc-switches -Wreturn-type      -ggdb3 -Wl,-O1 -Wl,--as-needed -Wl,--defsym=__gentoo_check_ldflags__=0 -Wl,-z,pack-relative-relocs    -ggdb3 -o lesstest display.o env.o lesstest.o parse.o pipeline.o log.o run.o term.o wchar.o -lncurses
+/usr/lib/gcc/x86_64-pc-linux-gnu/13/../../../../x86_64-pc-linux-gnu/bin/ld: display.o: in function `display_screen':
+/var/tmp/portage/sys-apps/less-643/work/less-643/lesstest/display.c:86:(.text+0x2e0): undefined reference to `tgoto'
+/usr/lib/gcc/x86_64-pc-linux-gnu/13/../../../../x86_64-pc-linux-gnu/bin/ld: term.o: in function `setup_mode':
+/var/tmp/portage/sys-apps/less-643/work/less-643/lesstest/term.c:83:(.text+0x18): undefined reference to `tgetstr'
+[...]
+```
+
+Going forward, we may want to just add a Makefile.in which configure handles
+to the lesstest subdir.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/lesstest/Makefile
++++ b/lesstest/Makefile
+@@ -1,7 +1,8 @@
+ CC ?= gcc
+ CFLAGS ?= -Wall -O2
+ LDFLAGS ?=
+-TERMLIB = -lncurses
++PKG_CONFIG ?= pkg-config
++TERMLIB ?= $(shell ${PKG_CONFIG} --libs ncurses)
+ srcdir ?= .
+ 
+ all: lesstest lt_screen 

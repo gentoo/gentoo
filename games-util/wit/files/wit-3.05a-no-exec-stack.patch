@@ -1,0 +1,9 @@
+--- wit-2.30a/src/crypto/ssl-asm.S
++++ wit-2.30a/src/crypto/ssl-asm.S
+@@ -37,3 +37,6 @@
+ #define WIT_INCLUDE_SSL_ASM
+ #include "ssl-asm.h"
+ 
++#if defined(__linux__) && defined(__ELF__)
++.section .note.GNU-stack,"",%progbits
++#endif

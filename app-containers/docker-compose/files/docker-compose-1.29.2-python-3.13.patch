@@ -1,0 +1,35 @@
+From e84ec8f7ed416df359b8e26f86232b5c8c1b41d4 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Fri, 28 Mar 2025 19:42:43 +0100
+Subject: [PATCH] Replace pipes.quote by shlex.quote for Python 3.13
+
+---
+ compose/cli/main.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/compose/cli/main.py b/compose/cli/main.py
+index fabd608..fe6ccc2 100644
+--- a/compose/cli/main.py
++++ b/compose/cli/main.py
+@@ -2,8 +2,8 @@ import contextlib
+ import functools
+ import json
+ import logging
+-import pipes
+ import re
++import shlex
+ import subprocess
+ import sys
+ from distutils.spawn import find_executable
+@@ -1579,7 +1579,7 @@ def call_docker(args, dockeropts, environment):
+         )
+ 
+     args = [executable_path] + tls_options + args
+-    log.debug(" ".join(map(pipes.quote, args)))
++    log.debug(" ".join(map(shlex.quote, args)))
+ 
+     filtered_env = {k: v for k, v in environment.items() if v is not None}
+ 
+-- 
+2.48.1
+

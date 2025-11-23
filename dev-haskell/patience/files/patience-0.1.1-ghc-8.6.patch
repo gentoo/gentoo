@@ -1,0 +1,20 @@
+diff -ru patience-0.1.1/Data/Algorithm/Patience.hs patience-modified/Data/Algorithm/Patience.hs
+--- patience-0.1.1/Data/Algorithm/Patience.hs	2011-08-17 08:08:14.000000000 +0800
++++ patience-modified/Data/Algorithm/Patience.hs	2018-07-11 15:17:45.021338649 +0800
+@@ -15,6 +15,7 @@
+ import Data.Sequence ( (<|), (|>), (><), ViewL(..), ViewR(..) )
+ import qualified Data.Foldable as F
+ import qualified Data.Map      as M
++import qualified Data.Map.Strict as MS
+ import qualified Data.IntMap   as IM
+ 
+ import Data.List
+@@ -68,7 +69,7 @@
+ -- Elements whose second component appears exactly once.
+ unique :: (Ord t) => S.Seq (a,t) -> M.Map t a
+ unique = M.mapMaybe id . F.foldr ins M.empty where
+-  ins (a,x) = M.insertWith' (\_ _ -> Nothing) x (Just a)
++  ins (a,x) = MS.insertWith (\_ _ -> Nothing) x (Just a)
+ 
+ -- Given two sequences of numbered "lines", returns a list of points
+ -- where unique lines match up.

@@ -1,0 +1,26 @@
+diff --git a/cmake/modules/Finduring.cmake b/cmake/modules/Finduring.cmake
+index 10c8de4255..c0a4dadfe4 100644
+--- a/cmake/modules/Finduring.cmake
++++ b/cmake/modules/Finduring.cmake
+@@ -8,10 +8,10 @@ find_path(URING_INCLUDE_DIR liburing.h)
+ find_library(URING_LIBRARIES liburing.a liburing)
+ 
+ include(FindPackageHandleStandardArgs)
+-find_package_handle_standard_args(uring DEFAULT_MSG URING_LIBRARIES URING_INCLUDE_DIR)
++pkg_check_modules(URING REQUIRED liburing)
+ 
+ if(uring_FOUND AND NOT TARGET uring::uring)
+-  add_library(uring::uring UNKNOWN IMPORTED)
++  add_library(uring::uring ALIAS ${URING_LIBRARIES})
+   set_target_properties(uring::uring PROPERTIES
+     INTERFACE_INCLUDE_DIRECTORIES "${URING_INCLUDE_DIR}"
+     IMPORTED_LINK_INTERFACE_LANGUAGES "C"
+--- a/src/blk/CMakeLists.txt
++++ b/src/blk/CMakeLists.txt
+@@ -57,5 +57,5 @@
+ endif()
+ 
+ if(WITH_LIBURING)
+-  target_link_libraries(blk PRIVATE uring::uring)
++  target_link_libraries(blk PRIVATE ${URING_LIBRARIES})
+ endif()

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>jstein@gentoo.org</email>
+		<name>Jonas Stein</name>
+	</maintainer>
+	<upstream>
+		<changelog>https://gitlab.com/OldManProgrammer/unix-tree/-/blob/master/CHANGES</changelog>
+		<remote-id type="gitlab">OldManProgrammer/unix-tree</remote-id>
+		<remote-id type="github">Old-Man-Programmer/tree</remote-id>
+	</upstream>
+	<longdescription>Tree is a recursive directory listing command that
+produces a depth indented listing of files, which is colorized ala 
+dircolors if the LS_COLORS environment variable is set and output is to tty.
+	</longdescription>
+</pkgmetadata>

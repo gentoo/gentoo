@@ -1,0 +1,14 @@
+Fix build with clang
+https://bugs.gentoo.org/739090
+
+--- a/src/SFont_gl.cpp
++++ b/src/SFont_gl.cpp
+@@ -223,7 +223,7 @@ void Mafferyew::SFont_gl::create_font_char(SDL_Surface* image,
+                                      0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000);
+ #endif
+     
+-    SDL_Rect src_rect = { begin_x, 1, font_char_w, font_height };
++    SDL_Rect src_rect = { (Sint16)begin_x, 1, (Uint16)font_char_w, (Uint16)font_height };
+     SDL_BlitSurface(image, &src_rect, converted, 0);
+     
+     GLuint texture;

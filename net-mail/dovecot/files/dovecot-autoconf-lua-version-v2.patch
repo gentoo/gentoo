@@ -1,0 +1,15 @@
+--- a/m4/want_lua.m4	2021-06-14 16:40:37.000000000 +0300
++++ b/m4/want_lua.m4	2021-06-22 10:24:39.036095013 +0300
+@@ -16,12 +16,10 @@
+     AS_IF([test -n "$LUA_CFLAGS" -o -n "$LUA_LIBS"], [
+       with_lua=yes
+     ], [
+-      for LUAPC in lua5.3 lua-5.3 lua53 lua5.1 lua-5.1 lua51 lua; do
+          PKG_CHECK_MODULES([LUA], [$LUAPC >= 5.1 $LUAPC != 5.2] , [
+            with_lua=yes
+          ], [LUAPC=""]) # otherwise pkg_check will fail
+          if test "x$LUA_LIBS" != "x"; then break; fi
+-       done
+     ])
+   ])
+ 

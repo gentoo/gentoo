@@ -1,0 +1,42 @@
+From 6b2901929fa7d618bda890adc7ecc15cb18d5b01 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Kacper=20S=C5=82omi=C5=84ski?=
+ <kacper.slominski72@gmail.com>
+Date: Sun, 11 Aug 2024 23:31:25 +0200
+Subject: [PATCH 2/3] Patch out use of stat64
+
+Not available on musl, and we're better off with using
+-D_FILE_OFFSET_BITS=64 instead anyway.
+---
+ CMakeLists.txt                                                 | 2 ++
+ external/JUCE/modules/juce_core/native/juce_posix_SharedCode.h | 2 +-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2c9ade5..ddbaa16 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -9,6 +9,8 @@ set(CMAKE_BINARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+ 
+ set(MINGW_ADDITIONAL_LINKING_FLAGS "-static-libgcc -static-libstdc++ -Wl,-Bstatic -lstdc++ -lpthread -Wl,-Bdynamic")
+ 
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D_FILE_OFFSET_BITS=64")
++
+ if(NOT BUILD_VERSION)
+     set(BUILD_VERSION 1.99)
+ endif()
+diff --git a/external/JUCE/modules/juce_core/native/juce_posix_SharedCode.h b/external/JUCE/modules/juce_core/native/juce_posix_SharedCode.h
+index 700e191..b92f19c 100644
+--- a/external/JUCE/modules/juce_core/native/juce_posix_SharedCode.h
++++ b/external/JUCE/modules/juce_core/native/juce_posix_SharedCode.h
+@@ -167,7 +167,7 @@ int juce_siginterrupt (int sig, int flag)
+ //==============================================================================
+ namespace
+ {
+-   #if JUCE_LINUX || (JUCE_IOS && ! __DARWIN_ONLY_64_BIT_INO_T) // (this iOS stuff is to avoid a simulator bug)
++   #if (JUCE_IOS && ! __DARWIN_ONLY_63_BIT_INO_T) // (this iOS stuff is to avoid a simulator bug)
+     using juce_statStruct = struct stat64;
+     #define JUCE_STAT  stat64
+    #else
+-- 
+2.44.2
+

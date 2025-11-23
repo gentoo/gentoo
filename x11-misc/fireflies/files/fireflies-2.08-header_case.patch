@@ -1,0 +1,12 @@
+diff -Naur fireflies-2.08.orig/libgfx/src/gui.cxx fireflies-2.08/libgfx/src/gui.cxx
+--- fireflies-2.08.orig/libgfx/src/gui.cxx	2015-10-15 23:55:12.000000000 +0200
++++ fireflies-2.08/libgfx/src/gui.cxx	2025-01-04 00:22:31.207703177 +0100
+@@ -13,7 +13,7 @@
+ #include <gfx/gui.h>
+ #include <gfx/raster.h>
+ 
+-#include <FL/fl_file_chooser.H>
++#include <FL/Fl_File_Chooser.H>
+ #include <FL/fl_ask.H>
+ 
+ #include <cstdio>

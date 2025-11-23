@@ -1,0 +1,38 @@
+From 368a0b146a7ce92fcb9ef485eb37f81e135c4c8d Mon Sep 17 00:00:00 2001
+Message-ID: <368a0b146a7ce92fcb9ef485eb37f81e135c4c8d.1760256737.git.sam@gentoo.org>
+In-Reply-To: <17b056cb8ecff88326340ef9e70cd59d78d781a0.1760256737.git.sam@gentoo.org>
+References: <17b056cb8ecff88326340ef9e70cd59d78d781a0.1760256737.git.sam@gentoo.org>
+From: Nick Wellnhofer <wellnhofer@aevum.de>
+Date: Fri, 19 Sep 2025 13:39:41 +0200
+Subject: [PATCH 2/8] parser: Fix attribute normalization and standalone check
+
+Regressed with e4cbc295.
+---
+ parser.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/parser.c b/parser.c
+index 2c3d9048..c7f46a31 100644
+--- a/parser.c
++++ b/parser.c
+@@ -4025,7 +4025,7 @@ xmlParseAttValueInternal(xmlParserCtxtPtr ctxt, int *attlen, int *outFlags,
+     int c, l, quote, entFlags, chunkSize;
+     int inSpace = 1;
+     int replaceEntities;
+-    int normalize = (special & XML_SPECIAL_TYPE_MASK) != 0;
++    int normalize = (special & XML_SPECIAL_TYPE_MASK) > XML_ATTRIBUTE_CDATA;
+     int attvalFlags = 0;
+ 
+     /* Always expand namespace URIs */
+@@ -8578,7 +8578,7 @@ xmlParseAttribute2(xmlParserCtxtPtr ctxt,
+ 
+ #ifdef LIBXML_VALID_ENABLED
+     if ((ctxt->validate) &&
+-        (ctxt->standalone) &&
++        (ctxt->standalone == 1) &&
+         (special & XML_SPECIAL_EXTERNAL) &&
+         (flags & XML_ATTVAL_NORM_CHANGE)) {
+         xmlValidityError(ctxt, XML_DTD_NOT_STANDALONE,
+-- 
+2.51.0
+

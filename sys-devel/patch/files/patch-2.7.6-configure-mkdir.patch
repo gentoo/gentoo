@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/898598
+https://github.com/coreutils/gnulib/commit/3c136a2cc38d71083f123231a8b9ad4b01930789
+
+diff '--color=auto' -ruN patch-2.7.6.orig/configure patch-2.7.6/configure
+--- patch-2.7.6.orig/configure  2018-02-03 14:41:50.000000000 +0100
++++ patch-2.7.6/configure       2024-11-19 23:19:08.710565121 +0100
+@@ -17130,6 +17130,7 @@
+ /* end confdefs.h.  */
+ #include <unistd.h>
+             #include <fcntl.h>
++            #include <sys/stat.h>
+ 
+ int
+ main ()

@@ -1,0 +1,9 @@
+https://bugs.gentoo.org/931596
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -29,3 +29,5 @@
+ 
++if (NOT DEFINED QT_VERSION_MAJOR)
+ find_package(QT NAMES Qt6 Qt5 COMPONENTS Core REQUIRED)
++endif()
+ 

@@ -1,0 +1,25 @@
+From 52f444cad7741da4321cee4896c4d6befa538058 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Sun, 12 Jan 2025 21:44:46 +0100
+Subject: [PATCH] CMP0177
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/samples/CMakeLists.txt b/samples/CMakeLists.txt
+index 6a18b61..042da87 100644
+--- a/samples/CMakeLists.txt
++++ b/samples/CMakeLists.txt
+@@ -10,8 +10,9 @@ include("${CMAKE_CURRENT_LIST_DIR}/samples_utils.cmake")
+ function(ocv_install_example_src relpath)
+   if(INSTALL_C_EXAMPLES)
+     file(GLOB files ${ARGN})
++    cmake_path(SET install_dir NORMALIZE "${OPENCV_SAMPLES_SRC_INSTALL_PATH}/${relpath}" )
+     install(FILES ${files}
+-            DESTINATION "${OPENCV_SAMPLES_SRC_INSTALL_PATH}/${relpath}"
++            DESTINATION "${install_dir}"
+             COMPONENT samples)
+   endif()
+ endfunction()
+-- 
+2.48.0
+

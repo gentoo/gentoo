@@ -1,0 +1,42 @@
+From 167b713ec4e7546a57a9b1dec4eec282baf26414 Mon Sep 17 00:00:00 2001
+From: Hiroshi SHIBATA <hsbt@ruby-lang.org>
+Date: Fri, 13 Dec 2024 15:05:12 +0900
+Subject: [PATCH] Fixed compatibility error with setup command and rdoc plugin
+ on rubygems
+
+---
+ test/rubygems/test_gem_rdoc.rb | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/test/rubygems/test_gem_rdoc.rb b/test/rubygems/test_gem_rdoc.rb
+index 19ccf1e5871b..c4282b309c67 100644
+--- a/test/rubygems/test_gem_rdoc.rb
++++ b/test/rubygems/test_gem_rdoc.rb
+@@ -5,8 +5,6 @@
+ require "rubygems/rdoc"
+ 
+ class TestGemRDoc < Gem::TestCase
+-  Gem::RDoc.load_rdoc
+-
+   def setup
+     super
+ 
+@@ -20,10 +18,16 @@ def setup
+ 
+     install_gem @a
+ 
+-    @hook = Gem::RDoc.new @a
++    hook_class = if defined?(RDoc::RubyGemsHook)
++      RDoc::RubyGemsHook
++    else
++      Gem::RDoc
++    end
++
++    @hook = hook_class.new @a
+ 
+     begin
+-      Gem::RDoc.load_rdoc
++      hook_class.load_rdoc
+     rescue Gem::DocumentError => e
+       pend e.message
+     end

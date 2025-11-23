@@ -1,0 +1,35 @@
+* Remove all traces of sound support, even when Imakefile suggests uncommenting
+* a variable is enough - JeR
+
+--- a/gram.y	2005-05-17 03:19:48.000000000 +0200
++++ b/gram.y	2010-09-17 01:43:51.000000000 +0200
+@@ -339,8 +339,6 @@
+ 		  function
+ 		| ICONS 		{ list = &Scr->IconNames; }
+ 		  icon_list
+-		| SOUNDS
+-		  sound_list
+ 		| COLOR 		{ color = COLOR; }
+ 		  color_list
+                 | SAVECOLOR
+@@ -743,20 +741,6 @@
+ 					}
+ 		;
+ 
+-/* djhjr - 6/22/01 */
+-sound_list	: LB sound_entries RB
+-		;
+-
+-/* djhjr - 6/22/01 */
+-sound_entries	: /* Empty */
+-		| sound_entries sound_entry
+-		;
+-
+-/* djhjr - 8/16/01 */
+-sound_entry	: string string		{ if (Scr->FirstTime) SetSound($1, $2, -1); }
+-		| string string number	{ if (Scr->FirstTime) SetSound($1, $2, $3); }
+-		;
+-
+ /* djhjr - 4/26/99 */
+ applet_list	: LB applet_entries RB
+ 		;

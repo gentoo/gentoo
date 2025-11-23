@@ -1,0 +1,101 @@
+https://github.com/intel/isa-l_crypto/commit/2188e8a03357a64f768a2765bcf452401a2b12fc
+
+From 2188e8a03357a64f768a2765bcf452401a2b12fc Mon Sep 17 00:00:00 2001
+From: Pablo de Lara <pablo.de.lara.guarch@intel.com>
+Date: Tue, 5 Nov 2024 09:07:36 +0000
+Subject: [PATCH] tests: [ACVP] use internal isa-l crypto library
+
+Signed-off-by: Pablo de Lara <pablo.de.lara.guarch@intel.com>
+---
+ tests/acvp/acvp_app.c          | 2 +-
+ tests/acvp/acvp_app_isal_cbc.c | 3 ++-
+ tests/acvp/acvp_app_isal_gcm.c | 3 ++-
+ tests/acvp/acvp_app_isal_sha.c | 5 ++++-
+ tests/acvp/acvp_app_isal_xts.c | 3 ++-
+ tests/acvp/makefile            | 2 +-
+ 6 files changed, 12 insertions(+), 6 deletions(-)
+
+diff --git a/tests/acvp/acvp_app.c b/tests/acvp/acvp_app.c
+index cb811622..c144ef23 100644
+--- a/tests/acvp/acvp_app.c
++++ b/tests/acvp/acvp_app.c
+@@ -33,7 +33,7 @@
+ #include <string.h>
+ #include <getopt.h>
+ #include <acvp/acvp.h>
+-#include <isa-l_crypto.h>
++#include "include/isal_crypto_api.h"
+ 
+ #if defined(__GNUC__) || defined(__clang__)
+ #define ATTRIBUTE(x) __attribute__((x))
+diff --git a/tests/acvp/acvp_app_isal_cbc.c b/tests/acvp/acvp_app_isal_cbc.c
+index 39d0c9f0..f5c6ddc3 100644
+--- a/tests/acvp/acvp_app_isal_cbc.c
++++ b/tests/acvp/acvp_app_isal_cbc.c
+@@ -32,7 +32,8 @@
+ 
+ #include <stdlib.h>
+ #include <acvp/acvp.h>
+-#include <isa-l_crypto.h>
++#include "include/aes_cbc.h"
++#include "include/aes_keyexp.h"
+ 
+ extern uint8_t verbose;
+ 
+diff --git a/tests/acvp/acvp_app_isal_gcm.c b/tests/acvp/acvp_app_isal_gcm.c
+index a1dea085..8f2f4b35 100644
+--- a/tests/acvp/acvp_app_isal_gcm.c
++++ b/tests/acvp/acvp_app_isal_gcm.c
+@@ -31,7 +31,8 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <acvp/acvp.h>
+-#include <isa-l_crypto.h>
++
++#include "include/aes_gcm.h"
+ 
+ extern uint8_t verbose;
+ 
+diff --git a/tests/acvp/acvp_app_isal_sha.c b/tests/acvp/acvp_app_isal_sha.c
+index c15ddaa9..d09d880c 100644
+--- a/tests/acvp/acvp_app_isal_sha.c
++++ b/tests/acvp/acvp_app_isal_sha.c
+@@ -31,7 +31,10 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <acvp/acvp.h>
+-#include <isa-l_crypto.h>
++
++#include "include/sha1_mb.h"
++#include "include/sha256_mb.h"
++#include "include/sha512_mb.h"
+ 
+ extern uint8_t verbose;
+ 
+diff --git a/tests/acvp/acvp_app_isal_xts.c b/tests/acvp/acvp_app_isal_xts.c
+index 621ab78a..da78390f 100644
+--- a/tests/acvp/acvp_app_isal_xts.c
++++ b/tests/acvp/acvp_app_isal_xts.c
+@@ -30,7 +30,8 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <acvp/acvp.h>
+-#include <isa-l_crypto.h>
++
++#include "include/aes_xts.h"
+ 
+ extern uint8_t verbose;
+ 
+diff --git a/tests/acvp/makefile b/tests/acvp/makefile
+index f5d650ab..b6dd7575 100644
+--- a/tests/acvp/makefile
++++ b/tests/acvp/makefile
+@@ -1,6 +1,6 @@
+ ACVP_PATH = /usr/local/acvp
+ 
+-INCLUDES = -I $(ACVP_PATH)/include -L $(ACVP_PATH)/lib
++INCLUDES = -I $(ACVP_PATH)/include -L $(ACVP_PATH)/lib -I ../../
+ CFLAGS = -Wall -O2 $(INCLUDES) -DNO_COMPAT_ISAL_CRYPTO_API_2_24
+ LDLIBS = -lacvp -lisal_crypto
+ 
+

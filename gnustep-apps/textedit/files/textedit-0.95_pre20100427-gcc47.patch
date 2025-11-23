@@ -1,0 +1,20 @@
+--- textedit.app-4.0+20061029.orig/Document.m
++++ textedit.app-4.0+20061029/Document.m
+@@ -1361,13 +1361,13 @@ validateToggleItem (NSMenuItem *aCell, B
+ {
+ 	SEL			action = [aCell action];
+ #ifdef GNUSTEP
+-	const char	*sel_name = sel_get_name (action);
++	const char	*sel_name = sel_getName (action);
+ 
+-	if (!strcmp (sel_name, sel_get_name (@selector (toggleRich:)))) {
++	if (!strcmp (sel_name, sel_getName (@selector (toggleRich:)))) {
+ 		validateToggleItem (aCell, [self isRichText], _(@"&Make Plain Text"), _(@"&Make Rich Text"));
+-	} else if (!strcmp (sel_name, sel_get_name (@selector (togglePageBreaks:)))) {
++	} else if (!strcmp (sel_name, sel_getName (@selector (togglePageBreaks:)))) {
+ 		validateToggleItem (aCell, [self hasMultiplePages], _(@"&Wrap to Window"), _(@"&Wrap to Page"));
+-	} else if (!strcmp (sel_name, sel_get_name (@selector (toggleHyphenation:)))) {
++	} else if (!strcmp (sel_name, sel_getName (@selector (toggleHyphenation:)))) {
+ 		if (!hyphenationSupported())	// Disable it
+ 			return NO;
+ 		validateToggleItem (aCell, ([self hyphenationFactor] > 0.0), _(@"Disallow &Hyphenation"), _(@"Allow &Hyphenation"));

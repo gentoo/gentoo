@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>thican@thican.net</email>
+		<name>Thibaud CANALE</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">certbot/certbot</remote-id>
+		<remote-id type="pypi">certbot</remote-id>
+	</upstream>
+	<use>
+		<flag name="certbot-apache">Enable Apache plugin.</flag>
+		<!--
+		<flag name="certbot-dns-cloudflare">Enable Cloudflare DNS Authenticator plugin.</flag>
+		-->
+		<!--
+		<flag name="certbot-dns-digitalocean">Enable DigitalOcean DNS Authenticator plugin.</flag>
+		-->
+		<flag name="certbot-dns-dnsimple">Enable DNSimple Authenticator plugin.</flag>
+		<flag name="certbot-dns-dnsmadeeasy">Enable DNS Made Easy DNS Authenticator plugin.</flag>
+		<flag name="certbot-dns-gehirn">Enable Gehirn Infrastructure Service DNS Authenticator plugin.</flag>
+		<flag name="certbot-dns-google">Enable Google Cloud DNS Authenticator plugin.</flag>
+		<flag name="certbot-dns-linode">Enable Linode DNS Authenticator plugin plugin.</flag>
+		<flag name="certbot-dns-luadns">Enable LuaDNS Authenticator plugin.</flag>
+		<flag name="certbot-dns-nsone">Enable NS1 DNS Authenticator plugin.</flag>
+		<flag name="certbot-dns-ovh">Enable OVH DNS Authenticator plugin.</flag>
+		<flag name="certbot-dns-rfc2136">Enable RFC 2136 DNS Authenticator plugin.</flag>
+		<flag name="certbot-dns-route53">Enable Route53 DNS Authenticator plugin.</flag>
+		<flag name="certbot-dns-sakuracloud">Enable Sakura Cloud DNS Authenticator plugin.</flag>
+		<flag name="certbot-nginx">Enable Nginx plugin.</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,25 @@
+From f88bd5b0e8869ec5b7992846e5562c414b36f380 Mon Sep 17 00:00:00 2001
+From: Hannes Hornwall <hannes@hornwall.me>
+Date: Tue, 30 Jul 2024 14:46:48 +0200
+Subject: [PATCH] Update test case with classes that are no longer included in
+ rails 7.1
+
+---
+ spec/gettext_i18n_rails/model_attributes_finder_spec.rb | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/spec/gettext_i18n_rails/model_attributes_finder_spec.rb b/spec/gettext_i18n_rails/model_attributes_finder_spec.rb
+index dec15865..9bdaf92a 100644
+--- a/spec/gettext_i18n_rails/model_attributes_finder_spec.rb
++++ b/spec/gettext_i18n_rails/model_attributes_finder_spec.rb
+@@ -24,8 +24,8 @@ class Application < Rails::Application
+       keys = finder.find({}).keys
+       expected = [CarSeat, Part, StiParent]
+       expected.concat [AbstractParentClass, NotConventional] if Rails::VERSION::MAJOR >= 3
+-      expected.concat [ActiveRecord::SchemaMigration] if Rails::VERSION::MAJOR >= 4
+-      expected.concat [ActiveRecord::InternalMetadata] if Rails::VERSION::MAJOR >= 5
++      expected.concat [ActiveRecord::SchemaMigration] if Rails::VERSION::MAJOR >= 4 && !(Rails::VERSION::MAJOR == 7 && Rails::VERSION::MINOR > 0)
++      expected.concat [ActiveRecord::InternalMetadata] if Rails::VERSION::MAJOR >= 5 && !(Rails::VERSION::MAJOR == 7 && Rails::VERSION::MINOR > 0)
+       keys.should =~ expected
+     end
+ 

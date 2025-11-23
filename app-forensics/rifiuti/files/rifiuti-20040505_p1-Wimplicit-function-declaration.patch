@@ -1,0 +1,11 @@
+--- a/rifiuti.c
++++ b/rifiuti.c
+@@ -35,6 +35,8 @@
+ #include <stdio.h>
+ #include <time.h>
+ #include <math.h>
++#include <stdlib.h>
++#include <string.h>
+ 
+ #ifdef CYGWIN
+ ssize_t pread( int d, void *buf, size_t nbytes, off_t offset) {

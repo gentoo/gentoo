@@ -1,0 +1,31 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -65,9 +67,6 @@
+ AC_SUBST(LT_REVISION)
+ AC_SUBST(LT_AGE)
+ 
+-# Prevents setting flags.
+-CXXFLAGS=""
+-
+ # More secret source
+ AC_GNU_SOURCE
+ 
+@@ -145,7 +144,6 @@
+   CXXFLAGS="${CXXFLAGS} -O2 -DNDEBUG"
+   if test "${GXX}" = "yes" ; then
+     CXXFLAGS="${CXXFLAGS} -ffast-math -fstrict-overflow -fstrict-aliasing -finline-functions -fomit-frame-pointer -fcf-protection=none -fno-stack-protector"
+-    LDFLAGS="-s ${LDFLAGS}"
+   fi
+ fi
+ 
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -3,7 +3,7 @@
+ # For non-gcc compilers, change the options to "no-dependencies"
+ AUTOMAKE_OPTIONS = foreign dist-zip
+ 
+-SUBDIRS    = utils include lib chart doc tests shutterbug adie pathfinder calculator controlpanel glviewer windows
++SUBDIRS    = utils include lib chart doc tests shutterbug adie pathfinder calculator controlpanel glviewer
+ EXTRA_DIST = ADDITIONS AUTHORS INSTALL LICENSE LICENSE_ADDENDUM TRACING README fox.spec fox-config index.html aclocal.m4
+ 
+ bin_SCRIPTS = fox-config

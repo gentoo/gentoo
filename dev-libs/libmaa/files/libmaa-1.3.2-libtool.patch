@@ -1,0 +1,62 @@
+https://bugs.gentoo.org/778464
+
+From: orbea <orbea@riseup.net>
+Date: Fri, 17 Jun 2022 15:59:49 -0700
+Subject: [PATCH] configure: Add missing LT_INIT
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -27,6 +27,7 @@ VERSION=$(MAA_MAJOR).$(MAA_MINOR).$(MAA_TEENY)
+ .SUFFIXES:
+ .SUFFIXES: .c .o
+ 
++top_builddir=	@top_builddir@
+ srcdir=		@srcdir@
+ VPATH=		@srcdir@
+ prefix=		@prefix@
+--- a/configure.in
++++ b/configure.in
+@@ -28,6 +28,8 @@ AC_INIT
+ AC_CONFIG_SRCDIR([maa.h])
+ AC_CONFIG_HEADER(config.h)
+ 
++LT_INIT
++
+ MAA_MAJOR=1
+ MAA_MINOR=3
+ MAA_TEENY=2
+@@ -38,7 +40,6 @@ echo .
+ AC_CANONICAL_HOST
+ AC_PROG_AWK
+ AC_PROG_CC
+-#AC_PROG_LIBTOOL
+ AC_ISC_POSIX
+ 
+ if test "$CC" = gcc; then
+@@ -57,8 +58,6 @@ AC_CHECK_PROGS(DVIPS,dvips)
+ AC_CHECK_PROGS(REFBIBTEX,refbibtex)
+ AC_CHECK_PROGS(BIBTEX,bibtex)
+ 
+-AC_CHECK_PROG(LIBTOOL,libtool,libtool)
+-
+ echo .
+ echo Checking for header file support
+ 
+@@ -110,7 +109,6 @@ AC_SUBST(MAA_TEENY)
+ AC_SUBST(MAA_MINOR)
+ AC_SUBST(MAA_MAJOR)
+ AC_SUBST(AWK)
+-AC_SUBST(LIBTOOL)
+ 
+ AC_CONFIG_FILES([Makefile doc/Makefile arggram2c])
+ 
+--- a/doc/Makefile.in
++++ b/doc/Makefile.in
+@@ -22,6 +22,7 @@
+ 
+ .SUFFIXES:
+ 
++top_builddir=	@top_builddir@
+ srcdir=		@srcdir@
+ VPATH=		@srcdir@
+ prefix=		@prefix@

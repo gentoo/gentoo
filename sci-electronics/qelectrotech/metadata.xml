@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<upstream>
+		<bugs-to>https://qelectrotech.org/bugtracker/my_view_page.php</bugs-to>
+		<remote-id type="github">qelectrotech/qelectrotech-source-mirror</remote-id>
+	</upstream>
+</pkgmetadata>

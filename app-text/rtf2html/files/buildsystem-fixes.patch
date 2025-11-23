@@ -1,0 +1,157 @@
+From 257c8fd42362f158afdcd7d7709aa3743f894468 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Thu, 23 May 2024 00:00:26 -0400
+Subject: [PATCH 1/2] configure: remove invalid bashism
+
+configure scripts are POSIX /bin/sh scripts and cannot have
+bash-specific syntax. The test `xxx == yyy` construct with double equals
+is a bash-specific alias for single equals. It does exactly the same
+thing as single equals -- it provides no additional functionality, no
+behavior changes, it is exactly the same but with an additional
+alternate spelling. In exchange for doing nothing, it breaks muscle
+memory when writing POSIX sh scripts and tricks developers into writing
+the wrong thing.
+
+It should never be used under any circumstances. Ideally it would be
+removed altogether from GNU bash.
+
+Bug: https://bugs.gentoo.org/903291
+Signed-off-by: Eli Schwartz <eschwartz93@gmail.com>
+---
+ configure.in |  4 ++--
+ stlport.m4   | 18 +++++++++---------
+ 2 files changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/configure.in b/configure.in
+index 3207599..f8ba73d 100644
+--- a/configure.in
++++ b/configure.in
+@@ -38,7 +38,7 @@ fi
+ 
+ 
+ AC_LIB_STLPORT(no)
+-if test "$ac_stlport_use" == "no"; then
++if test "$ac_stlport_use" = "no"; then
+    AC_CHECK_LIB(stdc++,main,,AC_MSG_ERROR(rtf2html requires either libstdc++ or libstrloprt))
+ fi
+ 
+@@ -47,5 +47,5 @@ AC_CHECK_FUNCS(floor strtol,,AC_MSG_ERROR(STDLIB funcs missing))
+ AC_CHECK_FUNC(rint,AC_DEFINE(HAVE_RINT,1,Define to 1 if you have rint function))
+ 
+ CXXFLAGS="$CPPFLAGS $CFLAGS"
+-                            
++
+ AC_OUTPUT(Makefile)
+diff --git a/stlport.m4 b/stlport.m4
+index baaf94b..ed7e13e 100644
+--- a/stlport.m4
++++ b/stlport.m4
+@@ -4,19 +4,19 @@
+ #   Where DEFAULT is either `yes' or `no'. If omitted, it defaults to
+ #   `yes'.
+ #
+-# If all tests succeed, CPPFLAGS will be *prepended* with 
++# If all tests succeed, CPPFLAGS will be *prepended* with
+ # -nostdinc++ -I<directory>
+ # and LIBS will be appended with
+ # -l<library>
+ #
+ # directory defaults to /usr/include/stlport, but can be overridden with the
+ # --with-stlport-headers directive;
+-# library defaults to stlport, and can be overridden with the 
++# library defaults to stlport, and can be overridden with the
+ # --with-stlport-libs directive
+ #
+ #   $Id: stlport.m4,v 1.4 2007-07-31 15:39:42 vlavrinenko Exp $
+ #
+-#   This file is (c) 2001 Jasper Spaans, <jasper@spaans.ds9a.nl> 
++#   This file is (c) 2001 Jasper Spaans, <jasper@spaans.ds9a.nl>
+ #   Please send your comments, suggestions and bugfixes to the above
+ #   e-mail address.
+ #
+@@ -38,12 +38,12 @@ AC_DEFUN([AC_LIB_STLPORT],
+  [define([AC_LIB_STLPORT_DEFAULT], ifelse($1, no, no, yes))dnl
+   AC_MSG_CHECKING(whether to use stlport libraries)
+   AC_ARG_WITH(stlport, AC_HELP_STRING(--with-stlport,use sgi stlport headers and libraries),
+-  [ if test "x$withval" == xno ; then
++  [ if test "x$withval" = xno ; then
+       ac_stlport_use="no"
+     fi],
+       ac_stlport_use=AC_LIB_STLPORT_DEFAULT)
+   AC_ARG_WITH(stlport-headers, AC_HELP_STRING(--with-stlport-headers,where to find stlport headers),
+-  [ if test "x$withval" == xno  ; then
++  [ if test "x$withval" = xno  ; then
+       ac_stlport_use="no"
+     else
+       ac_stlport_headers="$with_stlport_headers"
+@@ -52,7 +52,7 @@ AC_DEFUN([AC_LIB_STLPORT],
+      ac_stlport_headers="/usr/include/stlport"
+   ])
+   AC_ARG_WITH(stlport-libs, AC_HELP_STRING(--with-stlport-libs, where to find stlport libraries),
+-  [ if test "x$withval" == xno  ; then
++  [ if test "x$withval" = xno  ; then
+       ac_stlport_use="no"
+     else
+       ac_stlport_libs="$with_stlport_libs"
+@@ -61,7 +61,7 @@ AC_DEFUN([AC_LIB_STLPORT],
+      ac_stlport_libs="stlport"
+   ])
+ 
+-  if test "$ac_stlport_use" == no  ; then
++  if test "$ac_stlport_use" = no  ; then
+     AC_MSG_RESULT(no)
+   else
+     AC_MSG_RESULT(yes)
+@@ -70,7 +70,7 @@ AC_DEFUN([AC_LIB_STLPORT],
+     ac_stlport_save_LIBS="$LIBS"
+     CPPFLAGS="-I$ac_stlport_headers $CPPFLAGS"
+     LIBS="-l$ac_stlport_libs $LIBS"
+-    if test "$MSYSTEM" == "MINGW32"; then
++    if test "$MSYSTEM" = "MINGW32"; then
+       CPPFLAGS="$CPPFLAGS -mthreads"
+     fi
+     AC_LANG_PUSH(C++)
+@@ -80,7 +80,7 @@ AC_DEFUN([AC_LIB_STLPORT],
+     AC_MSG_CHECKING(where to find stlport libraries)
+     AC_TRY_RUN([#include <stl/_stlport_version.h>
+ #include <iostream>
+-int 
++int
+ main()
+ {
+   std::cout << "" << std::ends;
+-- 
+2.44.1
+
+
+From dd1ca6d0867eaca2b9be8d7efa4d957c96b7aa51 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Thu, 23 May 2024 00:24:52 -0400
+Subject: [PATCH 2/2] autotools: ensure aclocal runs successfully by passing
+ -I.
+
+autoreconf -fi can update the autotools files automatically, but if
+aclocal doesn't know where project-local macros are it will delete them
+and then the configure script is malformed and errors out.
+
+This tells autoreconf to pass -I. to aclocal, that is, it should check
+for stlport.m4 in the current directory and use it.
+
+Signed-off-by: Eli Schwartz <eschwartz93@gmail.com>
+---
+ Makefile.am | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/Makefile.am b/Makefile.am
+index e7eb60e..0a5fafd 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -2,3 +2,5 @@ AUTOMAKE_OPTIONS = foreign
+ bin_PROGRAMS = rtf2html
+ rtf2html_SOURCES = fmt_opts.cpp rtf2html.cpp rtf_keyword.cpp rtf_table.cpp config.h fmt_opts.h rtf_table.h common.h dbg_iter.h rtf_keyword.h rtf_tools.h
+ noinst_HEADERS = config.h fmt_opts.h rtf_table.h common.h dbg_iter.h rtf_keyword.h rtf_tools.h README.ru
++
++ACLOCAL_AMFLAGS = -I.
+-- 
+2.44.1
+

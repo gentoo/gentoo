@@ -1,0 +1,13 @@
+[Unit]
+Description=A userspace logging daemon for netfilter/iptables related logging
+Before=iptables.service ip6tables.service ebtables.service nftables.service
+After=mysql.service postgresql.service
+
+[Service]
+Type=forking
+PIDFile=/run/ulogd.pid
+ExecStart=/usr/sbin/ulogd --daemon --uid ulogd --pidfile /run/ulogd.pid
+ExecReload=/bin/kill -USR1 $MAINPID
+
+[Install]
+WantedBy=network.target

@@ -1,0 +1,33 @@
+--- a/tests/gunit/Makefile.am
++++ b/tests/gunit/Makefile.am
+@@ -11,8 +11,6 @@ if WITH_UNITTESTS
+ AM_CPPFLAGS = -I$(top_srcdir)/include \
+ 	      -I$(top_srcdir)/src \
+ 	      -I$(top_srcdir)/src/tools \
+-	      -I$(top_srcdir)/googletest/googletest/include \
+-	      -I$(top_srcdir)/googletest/googletest \
+ 	      -std=c++11 \
+ 	      -Wno-write-strings \
+ 	      -DSTATIC= \
+@@ -20,10 +18,7 @@ AM_CPPFLAGS = -I$(top_srcdir)/include \
+ LDADD = $(top_builddir)/src/.libs/libcgroupfortesting.la \
+ 	$(top_builddir)/src/tools/.libs/libcgset.la
+ 
+-EXTRA_DIST = $(top_srcdir)/googletest/build/lib/libgtest.a \
+-	     $(top_srcdir)/googletest/build/lib/libgtest_main.a \
+-	     $(top_srcdir)/googletest/googletest/include \
+-	     libcgroup_unittest.map
++EXTRA_DIST = libcgroup_unittest.map
+ 
+ check_PROGRAMS = gtest
+ TESTS = gtest
+@@ -48,8 +43,7 @@ gtest_SOURCES = gtest.cpp \
+ 		017-API_fuzz_test.cpp \
+ 		018-get_next_rule_field.cpp
+ 
+-gtest_LDFLAGS = -L$(top_srcdir)/googletest/build/lib -l:libgtest.a \
+-		-rpath $(abs_top_srcdir)/googletest/googletest
++gtest_LDFLAGS = -lgtest
+ 
+ clean-local:
+ 	${RM} test-procpidcgroup

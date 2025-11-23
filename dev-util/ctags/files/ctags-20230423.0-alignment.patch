@@ -1,0 +1,88 @@
+https://bugs.gentoo.org/920066
+https://github.com/universal-ctags/ctags/issues/3881
+https://github.com/universal-ctags/ctags/pull/3883
+
+From e6bc697502fcf582ea52e7098becf01ca0b00fc8 Mon Sep 17 00:00:00 2001
+From: Colomban Wendling <ban@herbesfolles.org>
+Date: Sat, 16 Dec 2023 19:20:32 +0100
+Subject: [PATCH] nestlevel: Fix user data alignment
+
+We need to align the user data properly not to trigger undefined
+behavior, which even apparently crashes on SPARC.
+
+As `NestingLevels::levels` is actually a single allocation for all
+levels and their user data mapped as `[NL0|UD0|NL1|UD1|...]` (where NL
+is a NestingLevel, and UD a user data), we need to align twice, as we
+need every `NL*` and every `UD*` to align properly.
+
+Here we align everything to `2*sizeof(size_t)`, which is a logic
+borrowed from GLib, which seems to have borrowed the value from glibc.
+This is pretty conservative in our case, because actually `NL*`s only
+need aligning to `int`'s requirements currently, which on some
+architectures is 4, not 16; but it's trickier to implement (and
+actually impossible with the current API) as we'd need to compute the
+actual alignment for each level taking into account it's position in
+the overall memory region to still align `UD*`s to a conservative
+value.
+Also, having all NL+UD group at the same size makes things a bit
+simpler for debugging, I guess.
+
+We make sure to only add alignment padding manually for cases where
+there's actually some user data, not to waste memory needlessly for the
+common case where `sizeof(UD)` is 0, and thus where we can merely
+align to `sizeof(NL)` -- which C does for us already.
+
+Note that currently only the Ruby parser is affected, as it's the only
+current consumer of nesting level user data.
+
+Fixes #3881.
+--- a/main/nestlevel.c
++++ b/main/nestlevel.c
+@@ -20,8 +20,16 @@
+ 
+ #include <string.h>
+ 
+-/* TODO: Alignment */
+-#define NL_SIZE(nls) (sizeof(NestingLevel) + (nls)->userDataSize)
++/* struct alignment trick, copied from GObject's gtype.c, which borrows
++ * 2*szieof(size_t) from glibc */
++#define STRUCT_ALIGNMENT (2 * sizeof (size_t))
++#define ALIGN_STRUCT(offset) ((offset + (STRUCT_ALIGNMENT - 1)) & -STRUCT_ALIGNMENT)
++
++/* account for the user data alignment if we have user data, otherwise allocate
++ * exactly what's needed not to waste memory for unneeded alignment */
++#define NL_SIZE(nls) ((nls)->userDataSize ? (ALIGN_STRUCT (sizeof (NestingLevel)) + ALIGN_STRUCT ((nls)->userDataSize)) : sizeof (NestingLevel))
++#define NL_USER_DATA(nl) ((void *)(((char *) nl) + ALIGN_STRUCT (sizeof (NestingLevel))))
++
+ #define NL_NTH(nls,n) (NestingLevel *)(((char *)((nls)->levels)) + ((n) * NL_SIZE (nls)))
+ 
+ /*
+@@ -73,7 +81,7 @@ extern NestingLevel * nestingLevelsPush(NestingLevels *nls, int corkIndex)
+ 
+ 	nl->corkIndex = corkIndex;
+ 	if (nls->userDataSize > 0)
+-		memset (nl->userData, 0, nls->userDataSize);
++		memset (NL_USER_DATA (nl), 0, ALIGN_STRUCT (nls->userDataSize));
+ 
+ 	return nl;
+ }
+@@ -117,5 +125,5 @@ extern NestingLevel *nestingLevelsGetNthParent (const NestingLevels *nls, int n)
+ 
+ extern void *nestingLevelGetUserData (const NestingLevel *nl)
+ {
+-	return (void *)nl->userData;
++	return NL_USER_DATA (nl);
+ }
+--- a/main/nestlevel.h
++++ b/main/nestlevel.h
+@@ -26,7 +26,8 @@ typedef struct NestingLevels NestingLevels;
+ struct NestingLevel
+ {
+ 	int corkIndex;
+-	char userData [];
++	/* user data is allocated at the end of this struct (possibly with some
++	 * offset for alignment), get it with nestingLevelGetUserData() */
+ };
+ 
+ struct NestingLevels
+

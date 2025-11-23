@@ -1,0 +1,25 @@
+From 4af5b2752138f004631344cc43a411a38c1e1e2e Mon Sep 17 00:00:00 2001
+From: Jake Turner <jake@evansturner.co.uk>
+Date: Wed, 2 Apr 2025 10:13:57 +0100
+Subject: [PATCH] cmakefile support for building with cmake 4.0
+
+* asturmlechner 2025-04-22: merged with upstream commit
+  368db48054a637c6d508aa22480f49b843270c50 to de-escalate min version
+---
+ CMakeLists.txt | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0f30177774..e197fa5f2a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,8 @@
+-cmake_minimum_required(VERSION 2.8.12)
++if (NOT CMAKE_VERSION VERSION_LESS "4.0")
++  cmake_minimum_required(VERSION 3.5)
++else()
++  cmake_minimum_required(VERSION 2.8.12)
++endif()
+ 
+ if(APPLE)
+   # Building for Apple requires at least CMake 3.23.0

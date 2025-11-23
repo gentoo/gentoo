@@ -1,0 +1,47 @@
+https://bugs.gentoo.org/811501
+https://sourceforge.net/p/ri-li/bugs/2/
+
+From 317a80608a061a0acdf196a6c148bfe63b1eaad5 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyich@gmail.com>
+Date: Thu, 21 Apr 2022 07:52:46 +0100
+Subject: [PATCH] Fix build on gcc-11
+
+Without the change build fails on ordered comparison on pointers:
+
+tableau.cc:90:9: error: ordered comparison of pointer with integer zero ('unsigned char*' and 'int')
+   90 |   if(Buf<=0) return false;
+      |      ~~~^~~
+--- a/src/sprite.cc
++++ b/src/sprite.cc
+@@ -351,7 +351,7 @@ bool Sprite::Load(unsigned char *Buf,long &P)
+     // Fabrique la surface
+     Image[i]=SDL_CreateRGBSurface((Dim[i].bpp-3)*SDL_SRCALPHA,Dim[i].L,Dim[i].H,Dim[i].bpp*8,
+ 				  0xff,0xff00,0xff0000,0xff000000*(Dim[i].bpp-3));
+-    if(Image[i]<=NULL) {
++    if(Image[i]==NULL) {
+       std::cerr <<"Impossible de créer une Surface SDL!"<<std::endl;
+       return false;
+     }
+@@ -485,7 +485,7 @@ bool Sprite::Nouveau(int Lx,int Ly)
+   // Fabrique la surface
+   Image[0]=SDL_CreateRGBSurface((Dim[0].bpp-3)*SDL_SRCALPHA,Dim[0].L,Dim[0].H,Dim[0].bpp*8,
+ 				0xff,0xff00,0xff0000,0xff000000*(Dim[0].bpp-3));
+-  if(Image[0]<=NULL) {
++  if(Image[0]==NULL) {
+     std::cerr <<"Impossible de créer une Surface SDL!"<<std::endl;
+     return false;
+   }
+--- a/src/tableau.cc
++++ b/src/tableau.cc
+@@ -87,7 +87,7 @@ bool Tableau::Save(void)
+   
+   // Alloue la mémoire
+   Buf=new unsigned char [sizeof(s_Tableau)*N+sizeof(int)+1];
+-  if(Buf<=0) return false;
++  if(Buf==NULL) return false;
+ 
+   // Charge les tableaux
+   Buf[0]=N/256;
+-- 
+2.35.1
+

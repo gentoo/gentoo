@@ -1,0 +1,15 @@
+# On musl strftime '%@' returns new line, so we include to check for that too
+# Closes: https://bugs.gentoo.org/833981
+--- a/Test/V09datetime.ztst
++++ b/Test/V09datetime.ztst
+@@ -79,8 +79,8 @@
+ >1973^@03^@03
+
+ # We assume '%@' is not a valid format on any OSs.
+-# The result can be '%@' (Linux), '@' (BSDs) or an error (Cygwin).
+-  [[ $(strftime '%@' 0 2> /dev/null) == (%|)@ || $? != 0 ]]
++# The result can be '%@' (Linux), '\n' (Linux with musl libc) '@', (BSDs) or an error (Cygwin).
++  [[ $(strftime '%@' 0 2> /dev/null) == (%|)@ || $? != 0 || $'\n' ]]
+ 0:bad format specifier
+
+ # This test may fail at 23:59:59.xxx on New Year's Eve :/

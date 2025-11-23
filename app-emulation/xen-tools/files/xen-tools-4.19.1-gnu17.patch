@@ -1,0 +1,10 @@
+ipxe relies on () not being (void), so just force gnu17 for now for compat
+w/ compilers that default to gnu23.
+--- a/tools/firmware/etherboot/Config
++++ b/tools/firmware/etherboot/Config
+@@ -7,3 +7,5 @@ CFLAGS += -DNO_POST_PROMPT
+ 
+ CFLAGS += -UCONSOLE_SERIAL
+ CFLAGS += -DCONSOLE_SERIAL=1
++
++CFLAGS += -std=gnu17

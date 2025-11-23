@@ -1,0 +1,35 @@
+diff -r 8cf704f4cffa configure.ac
+--- a/configure.ac	Thu Oct 15 23:52:32 2020 +0000
++++ b/configure.ac	Thu Oct 15 23:52:58 2020 +0000
+@@ -16,6 +16,6 @@
+ 
+ # Checks for libraries.
+-AC_CHECK_LIB([ncurses], [initscr])
++PKG_CHECK_MODULES([NCURSES], [ncurses], [], [exit 1])
+ 
+ # I18N
+ AM_GNU_GETTEXT_VERSION([0.14.5])
+diff -r e64ba00e0147 src/Makefile.am
+--- a/src/Makefile.am	Fri Oct 16 00:08:17 2020 +0000
++++ b/src/Makefile.am	Fri Oct 16 00:08:39 2020 +0000
+@@ -15,7 +15,7 @@
+ 	-DCONFIGFILE=\"$(sysconfdir)/typespeedrc\" \
+         -DHIGHFILE=\"$(highscoredir)/$(HIGHFILE)\" \
+ 	-DWORDDIR=\"$(WORDDIR)\" -DRULEDIR=\"$(RULEDIR)\"
+-typespeed_LDADD = @LIBINTL@
++typespeed_LDADD = @LIBINTL@ @NCURSES_LIBS@
+ typespeed_SOURCES = file.c gettext.h menu.c misc.c network.c pathnames.h \
+ 	    typespeed.c typespeed.h
+ 
+diff -r 987ceebc438f testsuite/Makefile.am
+--- a/testsuite/Makefile.am	Fri Oct 16 00:14:34 2020 +0000
++++ b/testsuite/Makefile.am	Fri Oct 16 00:15:37 2020 +0000
+@@ -2,7 +2,7 @@
+ 
+ localedir = $(datadir)/locale
+ AM_CPPFLAGS = -DLOCALEDIR=\"$(localedir)\" -DTVERSION=\"v$(VERSION)\" -DTEST
+-LDADD = @LIBINTL@
++LDADD = @LIBINTL@ @NCURSES_LIBS@
+ 
+ EXTRA_DIST = t_unescstr.sh t_loadwords_data/3_empty
+ 

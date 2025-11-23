@@ -1,0 +1,89 @@
+#!/sbin/openrc-run
+
+: ${BITCOIND_CONFIGFILE:=/etc/bitcoin/bitcoin.conf}
+: ${BITCOIND_PIDDIR:=/run/bitcoind}
+: ${BITCOIND_PIDFILE:=${BITCOIND_PIDDIR}/${SVCNAME}.pid}
+: ${BITCOIND_DATADIR:=/var/lib/bitcoind}
+: ${BITCOIND_LOGDIR:=/var/log/bitcoind}
+: ${BITCOIND_USER:=${BITCOIN_USER:-bitcoin}}
+: ${BITCOIND_GROUP:=bitcoin}
+: ${BITCOIND_BIN:=/usr/bin/bitcoind}
+: ${BITCOIND_NICE:=${NICELEVEL:-0}}
+: ${BITCOIND_OPTS=${BITCOIN_OPTS}}
+
+name="Bitcoin Core daemon"
+description="Bitcoin cryptocurrency P2P network daemon"
+
+required_files="${BITCOIND_CONFIGFILE}"
+pidfile="${BITCOIND_PIDFILE}"
+in_background_fake="start"
+
+depend() {
+	need localmount net
+}
+
+start_pre() {
+	checkpath -f --mode 0660 --owner "${BITCOIND_USER}:${BITCOIND_GROUP}" "${BITCOIND_CONFIGFILE}"
+	checkpath -d --mode 0750 --owner "${BITCOIND_USER}:${BITCOIND_GROUP}" "${BITCOIND_DATADIR}"
+	checkpath -d --mode 0755 --owner "${BITCOIND_USER}:${BITCOIND_GROUP}" "${BITCOIND_LOGDIR}"
+	checkpath -d --mode 0755 --owner "${BITCOIND_USER}:${BITCOIND_GROUP}" "${BITCOIND_PIDDIR}"
+	checkconfig
+}
+
+start() {
+	ebegin "Starting ${name}"
+	mark_service_inactive
+	if start-stop-daemon \
+		--pidfile="${BITCOIND_PIDFILE}" \
+		--chdir="${BITCOIND_DATADIR}" \
+		--user="${BITCOIND_USER}:${BITCOIND_GROUP}" \
+		--nice="${BITCOIND_NICE}" \
+		--exec="${BITCOIND_BIN}" \
+		-- \
+		-daemonwait \
+		-pid="${BITCOIND_PIDFILE}" \
+		-conf="${BITCOIND_CONFIGFILE}" \
+		-datadir="${BITCOIND_DATADIR}" \
+		-debuglogfile="${BITCOIND_LOGDIR}/debug.log" \
+		${BITCOIND_OPTS}
+	then
+		chmod g+r "${BITCOIND_DATADIR}/.cookie"
+		IN_BACKGROUND=yes rc-service "${SVCNAME}" --quiet start
+	else
+		rc-service "${SVCNAME}" --quiet zap
+	fi &
+}
+
+stop() {
+	ebegin "Stopping ${name}"
+	start-stop-daemon --stop \
+		--pidfile="${BITCOIND_PIDFILE}" \
+		--retry="${BITCOIND_SIGTERM_TIMEOUT}" \
+		--exec="${BITCOIND_BIN}"
+	eend $?
+}
+
+checkconfig() {
+	if grep -qs '^rpcuser=' "${BITCOIND_CONFIGFILE}" &&
+		! grep -qs '^rpcpassword=' "${BITCOIND_CONFIGFILE}"
+	then
+		eerror ""
+		eerror "ERROR: You must set a secure rpcpassword to run bitcoind."
+		eerror "The setting must appear in ${BITCOIND_CONFIGFILE}"
+		eerror ""
+		eerror "This password is security critical to securing wallets "
+		eerror "and must not be the same as the rpcuser setting."
+		eerror "You can generate a suitable random password using the following "
+		eerror "command from the shell:"
+		eerror ""
+		eerror "bash -c 'tr -dc a-zA-Z0-9 < /dev/urandom | head -c32 && echo'"
+		eerror ""
+		eerror "It is recommended that you also set alertnotify so you are "
+		eerror "notified of problems:"
+		eerror ""
+		eerror "ie: alertnotify=echo %%s | mail -s \"Bitcoin Alert\"" \
+			"admin@foo.com"
+		eerror ""
+		return 1
+	fi
+}

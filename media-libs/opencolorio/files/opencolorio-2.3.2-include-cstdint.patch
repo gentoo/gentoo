@@ -1,0 +1,26 @@
+From fb9b39dcb69746f9011087a6e1bc727872b86cfb Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Wed, 14 Aug 2024 17:43:30 +0200
+Subject: [PATCH] Fix compilation on GCC 15
+
+Bug: https://bugs.gentoo.org/937408
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+---
+ include/OpenColorIO/OpenColorIO.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/OpenColorIO/OpenColorIO.h b/include/OpenColorIO/OpenColorIO.h
+index 784cf8d..7e04976 100644
+--- a/include/OpenColorIO/OpenColorIO.h
++++ b/include/OpenColorIO/OpenColorIO.h
+@@ -6,6 +6,7 @@
+ #define INCLUDED_OCIO_OPENCOLORIO_H
+ 
+ #include <cstddef>
++#include <cstdint>
+ #include <iosfwd>
+ #include <limits>
+ #include <stdexcept>
+-- 
+2.46.0
+

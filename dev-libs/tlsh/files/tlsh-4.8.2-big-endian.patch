@@ -1,0 +1,15 @@
+__SPARC is defined on big endian platforms to fix bug 861710, but upstream
+disables use of default linkage visibility on SPARC systems.  This causes
+symbols to not be exported, causing issues such as bug 934445.
+
+--- tlsh-4.8.2/include/tlsh.h.old	2021-09-09 05:56:28.000000000 +0000
++++ tlsh-4.8.2/include/tlsh.h	2024-06-17 05:48:17.206665205 +0000
+@@ -110,7 +110,7 @@
+ // #include <WinFunctions.h>
+ 	#define TLSH_API
+ #else 
+-	#if defined(__SPARC) || defined(_AS_MK_OS_RH73)
++	#if defined(_AS_MK_OS_RH73)
+ 	   #define TLSH_API
+ 	#else
+ 	   #define TLSH_API __attribute__ ((visibility("default")))

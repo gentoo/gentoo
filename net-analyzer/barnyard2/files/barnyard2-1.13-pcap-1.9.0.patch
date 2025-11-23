@@ -1,0 +1,38 @@
+--- a/src/output-plugins/spo_alert_fwsam.c
++++ b/src/output-plugins/spo_alert_fwsam.c
+@@ -115,7 +115,7 @@
+ #include <sys/filio.h>
+ #endif
+ 
+-typedef int SOCKET;
++typedef int BY2_SOCKET;
+ 
+ #ifndef INVALID_SOCKET
+ #define INVALID_SOCKET  -1
+@@ -961,7 +961,7 @@
+     FWsamPacket sampacket;
+     FWsamStation *station=NULL;
+     FWsamList *fwsamlist;
+-    SOCKET stationsocket;
++    BY2_SOCKET stationsocket;
+     int i,len,deletestation,stationtry=0;
+     char *encbuf,*decbuf;
+     static unsigned long lastbsip[FWSAM_REPET_BLOCKS];
+@@ -1387,7 +1387,7 @@
+ void FWsamCheckOut(FWsamStation *station)
+ {
+     FWsamPacket sampacket;
+-    SOCKET stationsocket;
++    BY2_SOCKET stationsocket;
+     int i,len;
+     char *encbuf,*decbuf;
+ 
+@@ -1538,7 +1538,7 @@
+     int i,len,stationok=TRUE;
+     FWsamPacket sampacket;
+     char *encbuf,*decbuf;
+-    SOCKET stationsocket;
++    BY2_SOCKET stationsocket;
+ 
+ 
+     /* create a socket for the station */

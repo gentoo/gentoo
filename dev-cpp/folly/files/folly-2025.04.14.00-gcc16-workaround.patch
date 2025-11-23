@@ -1,0 +1,62 @@
+https://bugs.gentoo.org/963586
+https://gcc.gnu.org/PR122171
+--- a/folly/Fingerprint.cpp
++++ b/folly/Fingerprint.cpp
+@@ -86,7 +86,7 @@ constexpr auto copy_table(D const (&table)[S0][S1][S2]) {
+ }
+ 
+ template <size_t Deg>
+-constexpr poly_table<Deg> make_poly_table() {
++constexpr std::array<std::array<std::array<uint64_t, poly_size(Deg)>, 256>, 8> make_poly_table() {
+   FingerprintPolynomial<Deg> poly(FingerprintTablePoly<Deg>::data);
+   uint64_t table[8][256][poly_size(Deg)] = {};
+   // table[i][q] is Q(X) * X^(k+8*i) mod P(X),
+@@ -125,11 +125,11 @@ const uint64_t FingerprintTable<128>::poly[poly_size(128)] = {
+     FingerprintTablePoly<127>::data[0], FingerprintTablePoly<127>::data[1]};
+ 
+ template <>
+-const poly_table<64> FingerprintTable<64>::table = poly_table_63;
++const std::array<std::array<std::array<uint64_t, poly_size(64)>, 256>, 8> FingerprintTable<64>::table = poly_table_63;
+ template <>
+-const poly_table<96> FingerprintTable<96>::table = poly_table_95;
++const std::array<std::array<std::array<uint64_t, poly_size(96)>, 256>, 8> FingerprintTable<96>::table = poly_table_95;
+ template <>
+-const poly_table<128> FingerprintTable<128>::table = poly_table_127;
++const std::array<std::array<std::array<uint64_t, poly_size(128)>, 256>, 8> FingerprintTable<128>::table = poly_table_127;
+ 
+ } // namespace detail
+ } // namespace folly
+--- a/folly/Fingerprint.h
++++ b/folly/Fingerprint.h
+@@ -54,20 +54,16 @@ constexpr size_t poly_size(size_t bits) {
+   return 1 + (bits - 1) / 64;
+ }
+ 
+-template <size_t Deg>
+-using poly_table =
+-    std::array<std::array<std::array<uint64_t, poly_size(Deg)>, 256>, 8>;
+-
+ template <int BITS>
+ struct FingerprintTable {
+   static const uint64_t poly[poly_size(BITS)];
+-  static const poly_table<BITS> table;
++  static const std::array<std::array<std::array<uint64_t, poly_size(BITS)>, 256>, 8> table;
+ };
+ 
+ template <int BITS>
+ const uint64_t FingerprintTable<BITS>::poly[poly_size(BITS)] = {};
+ template <int BITS>
+-const poly_table<BITS> FingerprintTable<BITS>::table = {};
++const std::array<std::array<std::array<uint64_t, poly_size(BITS)>, 256>, 8> FingerprintTable<BITS>::table = {};
+ 
+ #ifndef _MSC_VER
+ // MSVC as of 2017 can't handle these extern specialization declarations,
+@@ -78,7 +74,7 @@ const poly_table<BITS> FingerprintTable<BITS>::table = {};
+   template <>                                                   \
+   const uint64_t FingerprintTable<BITS>::poly[poly_size(BITS)]; \
+   template <>                                                   \
+-  const poly_table<BITS> FingerprintTable<BITS>::table
++  const std::array<std::array<std::array<uint64_t, poly_size(BITS)>, 256>, 8> FingerprintTable<BITS>::table
+ 
+ FOLLY_DECLARE_FINGERPRINT_TABLES(64);
+ FOLLY_DECLARE_FINGERPRINT_TABLES(96);

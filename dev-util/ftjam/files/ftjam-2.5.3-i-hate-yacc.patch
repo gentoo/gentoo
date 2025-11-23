@@ -1,0 +1,54 @@
+diff -Naurp ftjam-2.5.3rc2-orig/Jambase ftjam-2.5.3rc2/Jambase
+--- ftjam-2.5.3rc2-orig/Jambase	2007-06-05 08:20:19.000000000 -0600
++++ ftjam-2.5.3rc2/Jambase	2008-07-21 19:26:02.000000000 -0600
+@@ -813,7 +813,7 @@ else if $(UNIX)
+     LINKLIBS    ?= ;
+     OPTIM       ?= -O ;
+     RANLIB      ?= ranlib ;
+-    YACC        ?= yacc ;
++    YACC        ?= bison -y ;
+     YACCGEN     ?= .c ;
+     YACCFILES   ?= y.tab ;
+     YACCFLAGS   ?= -d ;
+@@ -882,10 +882,10 @@ DC ?= dmd ;
+     SUFLIB      ?= .a ;
+     SUFOBJ      ?= .o ;
+     UNDEFFLAG   ?= "-u _" ;
+-    YACC        ?= ;
+-    YACCGEN     ?= ;
+-    YACCFILES   ?= ;
+-    YACCFLAGS   ?= ;
++    YACC        ?= bison -y ;
++    YACCGEN     ?= .c ;
++    YACCFILES   ?= y.tab ;
++    YACCFLAGS   ?= -d ;
+ 
+     HDRPATTERN =
+             "^[ 	]*#[ 	]*include[ 	]*[<\"]([^\">]*)[\">].*$" ;
+diff -Naurp ftjam-2.5.3rc2-orig/jambase.c ftjam-2.5.3rc2/jambase.c
+--- ftjam-2.5.3rc2-orig/jambase.c	2007-06-05 08:31:08.000000000 -0600
++++ ftjam-2.5.3rc2/jambase.c	2008-07-21 19:27:55.000000000 -0600
+@@ -632,7 +632,7 @@ const char *jambase[] = {
+ "LINKLIBS    ?= ;\n",
+ "OPTIM       ?= -O ;\n",
+ "RANLIB      ?= ranlib ;\n",
+-"YACC        ?= yacc ;\n",
++"YACC        ?= bison -y ;\n",
+ "YACCGEN     ?= .c ;\n",
+ "YACCFILES   ?= y.tab ;\n",
+ "YACCFLAGS   ?= -d ;\n",
+@@ -695,10 +695,10 @@ const char *jambase[] = {
+ "SUFLIB      ?= .a ;\n",
+ "SUFOBJ      ?= .o ;\n",
+ "UNDEFFLAG   ?= \"-u _\" ;\n",
+-"YACC        ?= ;\n",
+-"YACCGEN     ?= ;\n",
+-"YACCFILES   ?= ;\n",
+-"YACCFLAGS   ?= ;\n",
++"YACC        ?= bison -y ;\n",
++"YACCGEN     ?= .c ;\n",
++"YACCFILES   ?= y.tab ;\n",
++"YACCFLAGS   ?= -d ;\n",
+ "\n",
+ "HDRPATTERN =\n",
+ "\"^[ 	]*#[ 	]*include[ 	]*[<\\\"]([^\\\">]*)[\\\">].*$\" ;\n",

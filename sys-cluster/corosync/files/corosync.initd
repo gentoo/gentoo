@@ -1,0 +1,29 @@
+#!/sbin/openrc-run
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+	use logger
+}
+
+start() {
+	configtest || return 1
+	ebegin "Starting Corosync Cluster Engine"
+	start-stop-daemon --start -q --exec /usr/sbin/corosync \
+		--pidfile /var/run/corosync.pid --make-pidfile --background \
+		-- -f
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping Corosync Cluster Engine"
+	start-stop-daemon --stop -q --pidfile /var/run/corosync.pid
+	eend $?
+}
+
+configtest() {
+	ebegin "Checking corosync configuration"
+	test -f /etc/corosync/corosync.conf
+	eend $? "failed, please create the corosync configuration file"
+}

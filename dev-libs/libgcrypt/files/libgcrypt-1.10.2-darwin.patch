@@ -1,0 +1,20 @@
+https://dev.gnupg.org/T6442
+
+Patch as suggested by Werned in https://dev.gnupg.org/T6442#169396
+
+--- a/random/rndgetentropy.c
++++ b/random/rndgetentropy.c
+@@ -94,8 +94,13 @@
+                * and might not be applicable on other FIPS modules not running
+                * RHEL kernel.
+                */
++#ifdef GRND_RANDOM
+               nbytes = length < 32 ? length : 32;
+               ret = getrandom (buffer, nbytes, GRND_RANDOM);
++#else
++              ret = -1;
++              gpg_err_set_errno (ENOSYS);
++#endif
+             }
+           else
+             {

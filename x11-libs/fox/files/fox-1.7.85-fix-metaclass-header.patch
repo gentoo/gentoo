@@ -1,0 +1,17 @@
+fix from snapshot
+prevent:
+> /usr/include/fox-1.7/FXObject.h:54:28: error: ‘FXSelector’ in namespace ‘FX’ does not name a type
+
+--- a/include/FXObject.h
++++ b/include/FXObject.h
+@@ -25,6 +25,10 @@
+ #include "FXCallback.h"
+ #endif
+ 
++#ifndef FXMETACLASS_H
++#include "FXMetaClass.h"
++#endif
++
+ namespace FX {
+ 
+ 

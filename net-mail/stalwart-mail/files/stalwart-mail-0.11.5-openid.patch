@@ -1,0 +1,24 @@
+# Taken from https://github.com/stalwartlabs/mail-server/commit/fa6483b6df57513582425119027bc4fce8f03d65
+
+--- a/crates/directory/src/lib.rs    2025-03-13 14:05:03.869755900 +0100
++++ b/crates/directory/src/lib.rs 2025-03-13 14:05:19.297699753 +0100
+@@ -280,7 +280,6 @@
+     Internal(Store),
+     Ldap(LdapDirectory),
+     Sql(SqlDirectory),
+-    #[cfg(feature = "enterprise")]
+     OpenId(backend::oidc::OpenIdDirectory),
+     Imap(ImapDirectory),
+     Smtp(SmtpDirectory),
+
+--- a/crates/jmap/src/api/management/principal.rs    2025-03-13 14:06:20.409477292 +0100
++++ b/crates/jmap/src/api/management/principal.rs 2025-03-13 14:06:27.459451634 +0100
+@@ -838,7 +838,6 @@
+             DirectoryInner::Imap(_) => "IMAP",
+             DirectoryInner::Smtp(_) => "SMTP",
+             DirectoryInner::Memory(_) => "In-Memory",
+-            #[cfg(feature = "enterprise")]
+             DirectoryInner::OpenId(_) => "OpenID",
+         };
+
+

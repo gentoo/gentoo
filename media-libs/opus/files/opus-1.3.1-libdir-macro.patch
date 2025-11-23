@@ -1,0 +1,11 @@
+--- a/opus.m4
++++ b/opus.m4
+@@ -22,7 +22,7 @@ AC_ARG_ENABLE(opustest,AC_HELP_STRING([--disable-opustest],[Do not try to compil
+   elif test "x$opus_prefix" != "x" ; then
+     OPUS_LIBS="-L$opus_prefix/lib"
+   elif test "x$prefix" != "xNONE" ; then
+-    OPUS_LIBS="-L$prefix/lib"
++    OPUS_LIBS="-L${libdir}"
+   fi
+ 
+   if test "x$opus_prefix" != "xno" ; then

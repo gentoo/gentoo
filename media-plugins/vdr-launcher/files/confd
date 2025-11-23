@@ -1,0 +1,10 @@
+# /etc/conf.d/vdr.launcher:
+
+# config file for vdr plugin launcher
+
+# If you want to disable some plugins in the laucher plugin,
+# please specify them here
+#   allowed values: list of plugin names
+#   default value: do not exclude any plugin
+#VDR_LAUNCHER_EXCLUDE="plugin1 plugin2"
+

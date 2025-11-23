@@ -1,0 +1,28 @@
+https://github.com/haiwen/seafile-client/pull/1613
+
+From e60fee894502bd1908f44df0c6c41bb1238cf1c2 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Tue, 8 Apr 2025 03:27:20 +0000
+Subject: [PATCH] CMakeLists.txt: require WebEngine{Core,Widgets} only if
+ BUILD_SHIBBOLETH_SUPPORT
+
+which is handled in 'IF (BUILD_SHIBBOLETH_SUPPORT)'
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2e578c01..62531a4d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -157,7 +157,7 @@ ELSE()
+ ENDIF()
+ 
+ IF(QT_VERSION_MAJOR EQUAL 6)
+-    SET(USE_QT_LIBRARIES Core Gui Widgets LinguistTools Network Core5Compat WebEngineCore WebEngineWidgets)
++    SET(USE_QT_LIBRARIES Core Gui Widgets LinguistTools Network Core5Compat)
+ ELSE()
+     SET(USE_QT_LIBRARIES Core Gui Widgets LinguistTools Network)
+ ENDIF()
+-- 
+2.45.2
+

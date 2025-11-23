@@ -1,0 +1,246 @@
+--- a/cmake/EnableCompilerWarnings.cmake
++++ b/cmake/EnableCompilerWarnings.cmake
+@@ -70,6 +70,7 @@ set(__clang_cxx_compile_options
+     -Wno-unused-command-line-argument
+     -Wno-weak-vtables
+     -Wno-covered-switch-default
++    -Wno-switch-default
+     -Wno-unused-result
+     -Wno-unsafe-buffer-usage
+     -Wno-deprecated-declarations
+--- a/src/include/miopen/bfloat16.hpp
++++ b/src/include/miopen/bfloat16.hpp
+@@ -28,6 +28,7 @@
+ #include <boost/operators.hpp>
+ #include <iostream>
+ #include <miopen/config.h>
++#include <miopen/libcxx_compat.hpp>
+ 
+ class bfloat16 : boost::totally_ordered<bfloat16, boost::arithmetic<bfloat16>>
+ {
+@@ -152,7 +153,7 @@ private:
+     std::uint16_t data_;
+ };
+ 
+-namespace std {
++NAMESPACE_STD_BEGIN
+ template <>
+ class numeric_limits<bfloat16>
+ {
+@@ -173,5 +174,5 @@ public:
+         return bfloat16::generate(0x0001); // 0x0.02p-126
+     }
+ };
+-} // namespace std
++NAMESPACE_STD_END
+ #endif
+--- /dev/null
++++ b/src/include/miopen/libcxx_compat.hpp
+@@ -0,0 +1,44 @@
++/*******************************************************************************
++ *
++ * MIT License
++ *
++ * Copyright (c) 2024 Advanced Micro Devices, Inc.
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in all
++ * copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
++ * SOFTWARE.
++ *
++ *******************************************************************************/
++#ifndef LIBCXX_COMPAT_HPP_
++#define LIBCXX_COMPAT_HPP_
++
++// Definitions for libc++ compatibility
++#ifdef __has_include
++#if __has_include (<__config>)
++#include <__config>
++#endif
++#endif
++
++#ifdef _LIBCPP_VERSION
++#define NAMESPACE_STD_BEGIN _LIBCPP_BEGIN_NAMESPACE_STD
++#define NAMESPACE_STD_END _LIBCPP_END_NAMESPACE_STD
++#else
++#define NAMESPACE_STD_BEGIN namespace std {
++#define NAMESPACE_STD_END }
++#endif
++
++#endif
+--- a/src/kernels/hip_float8.hpp
++++ b/src/kernels/hip_float8.hpp
+@@ -26,6 +26,7 @@
+ #pragma once
+ 
+ #include "miopen_cstdint.hpp"
++#include "libcxx_compat.hpp"
+ 
+ #ifndef MIOPEN_ENABLE_F8_DEVICE_CODE
+ #define MIOPEN_ENABLE_F8_DEVICE_CODE 0
+@@ -590,7 +591,7 @@ public:
+ // from the precompiled header.
+ #else
+ // NOLINTBEGIN(cert-dcl58-cpp)
+-namespace std {
++NAMESPACE_STD_BEGIN
+ inline bool isfinite(miopen_f8::hip_f8<miopen_f8::hip_f8_type::fp8> x) // NOLINT
+ {
+     return !(x.is_inf() || x.is_nan());
+@@ -611,12 +612,12 @@ inline bool isnan(miopen_f8::hip_f8<miopen_f8::hip_f8_type::bf8> x) // NOLINT
+     return x.is_nan();
+ }
+ 
+-} // namespace std
++NAMESPACE_STD_END
+   // NOLINTEND(cert-dcl58-cpp)
+ #endif
+ 
+ // NOLINTBEGIN(cert-dcl58-cpp)
+-namespace std {
++NAMESPACE_STD_BEGIN
+ 
+ template <typename T>
+ class numeric_limits;
+@@ -633,7 +634,7 @@ class numeric_limits<miopen_f8::hip_f8<miopen_f8::hip_f8_type::bf8>>
+ {
+ };
+ 
+-} // namespace std
++NAMESPACE_STD_END
+ // NOLINTEND(cert-dcl58-cpp)
+ 
+ template <miopen_f8::hip_f8_type T>
+--- /dev/null
++++ b/src/kernels/libcxx_compat.hpp
+@@ -0,0 +1,41 @@
++/*******************************************************************************
++ *
++ * MIT License
++ *
++ * Copyright (c) 2024 Advanced Micro Devices, Inc.
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in all
++ * copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
++ * SOFTWARE.
++ *
++ *******************************************************************************/
++#pragma once
++
++// Definitions for libc++ compatibility
++#ifdef __has_include
++#if __has_include (<__config>)
++#include <__config>
++#endif
++#endif
++
++#ifdef _LIBCPP_VERSION
++#define NAMESPACE_STD_BEGIN _LIBCPP_BEGIN_NAMESPACE_STD
++#define NAMESPACE_STD_END _LIBCPP_END_NAMESPACE_STD
++#else
++#define NAMESPACE_STD_BEGIN namespace std {
++#define NAMESPACE_STD_END }
++#endif
+--- a/src/kernels/miopen_limits.hpp
++++ b/src/kernels/miopen_limits.hpp
+@@ -33,8 +33,9 @@
+ 
+ #define MIOPEN_ENABLE_F8_DEVICE_CODE 1
+ #include "hip_float8.hpp"
++#include "libcxx_compat.hpp"
+ 
+-namespace std {
++NAMESPACE_STD_BEGIN
+ 
+ template <typename T>
+ class numeric_limits;
+@@ -91,7 +92,7 @@ public:
+ };
+ #endif
+ 
+-} // namespace std
++NAMESPACE_STD_END
+ 
+ #else
+ 
+--- a/src/kernels/miopen_type_traits.hpp
++++ b/src/kernels/miopen_type_traits.hpp
+@@ -26,8 +26,9 @@
+ #pragma once
+ 
+ #ifdef MIOPEN_DONT_USE_HIP_RUNTIME_HEADERS
++#include "libcxx_compat.hpp"
+ 
+-namespace std {
++NAMESPACE_STD_BEGIN
+ 
+ template <class T>
+ struct remove_reference
+@@ -140,7 +141,7 @@ struct conditional<false, X, Y>
+ template <bool predicate, typename X, typename Y>
+ using conditional_t = typename conditional<predicate, X, Y>::type;
+ 
+-} // namespace std
++NAMESPACE_STD_END
+ #else
+ 
+ #include <type_traits> // std::remove_reference, std::remove_cv, is_pointer
+--- a/src/kernels/miopen_utility.hpp
++++ b/src/kernels/miopen_utility.hpp
+@@ -28,8 +28,9 @@
+ #ifdef MIOPEN_DONT_USE_HIP_RUNTIME_HEADERS
+ 
+ #include "miopen_type_traits.hpp" // std::remove_reference
++#include "libcxx_compat.hpp"
+ 
+-namespace std {
++NAMESPACE_STD_BEGIN
+ 
+ template <typename T>
+ constexpr T&& forward(typename remove_reference<T>::type& t_) noexcept
+@@ -43,7 +44,7 @@ constexpr T&& forward(typename remove_reference<T>::type&& t_) noexcept
+     return static_cast<T&&>(t_);
+ }
+ 
+-} // namespace std
++NAMESPACE_STD_END
+ 
+ #else
+ 
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -481,6 +481,7 @@ if( MIOPEN_BACKEND MATCHES "OpenCL" OR MIOPEN_BACKEND STREQUAL "HIPOC" OR MIOPEN
+         kernels/gpr_alloc.inc
+         kernels/hip_atomic.hpp
+         kernels/hip_f8_impl.hpp
++        kernels/libcxx_compat.hpp
+         kernels/hip_float8.hpp
+         kernels/inst_wrappers.inc
+         kernels/miopen_cstdint.hpp

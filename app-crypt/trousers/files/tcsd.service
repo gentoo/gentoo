@@ -1,0 +1,10 @@
+[Unit]
+Description=TCG Core Services Daemon
+
+[Service]
+User=tss
+ExecStart=/usr/sbin/tcsd -f
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,51 @@
+From b59ab822c261283004c2e87cffc653dc2b35c030 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Fri, 30 Jul 2021 23:23:19 +0100
+Subject: [PATCH] quickcheck-classes-base: move qe1_q under UNARY_LAWS define
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+In https://bugs.gentoo.org/804870 Toralf noticed a build failure:
+
+```
+    $ cabal build --flags=binary-laws --flags=-unary-laws
+    Configuring quickcheck-classes-base-0.6.2.0...
+    Preprocessing library for quickcheck-classes-base-0.6.2.0..
+    Building library for quickcheck-classes-base-0.6.2.0..
+    [ 1 of 30] Compiling Test.QuickCheck.Classes.Internal ( src/Test/QuickCheck/Classes/Internal.hs, dist/build/Test/QuickCheck/Classes/Internal.o, dist/build/Test/QuickCheck/Classes/Internal.dyn_o )
+
+    src/Test/QuickCheck/Classes/Internal.hs:79:5: error:
+        Not in scope: ‘eq1_2’
+       |
+    79 |   , eq1_2
+       |     ^^^^^
+```
+
+In happens due to a mismatch between export and definition #ifdef guards.
+The change fised declaration to match definition.
+
+Reported-by: Toralf Förster
+Bug: https://bugs.gentoo.org/804870
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ quickcheck-classes-base/src/Test/QuickCheck/Classes/Internal.hs | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/src/Test/QuickCheck/Classes/Internal.hs
++++ b/src/Test/QuickCheck/Classes/Internal.hs
+@@ -73,10 +73,10 @@ module Test.QuickCheck.Classes.Internal
+   , isTrue#
+ #if HAVE_UNARY_LAWS
+   , eq1
++  , eq1_2
+ #endif
+ #if HAVE_BINARY_LAWS
+   , eq2
+-  , eq1_2
+ #endif
+   , readMaybe
+   ) where
+-- 
+2.32.0
+

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>nicolas.parlant@parhuet.fr</email>
+		<name>Nicolas PARLANT</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		BibleTime is a completely free Bible study program, built for Linux,
+		Windows, FreeBSD and Mac OS X. BibleTime contains over 200 free Bible
+		texts, commentaries, dictionaries and books, provided by the Crosswire
+		Bible Society via the SWORD programming library. BibleTime is written
+		in C++ and uses the Qt GUI toolkit.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/bibletime/bibletime/issues/</bugs-to>
+		<remote-id type="github">bibletime/bibletime</remote-id>
+		<remote-id type="sourceforge">bibletime</remote-id>
+	</upstream>
+</pkgmetadata>

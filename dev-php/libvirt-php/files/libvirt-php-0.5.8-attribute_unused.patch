@@ -1,0 +1,42 @@
+From 64b28253bb25933b74978906042aa07874500beb Mon Sep 17 00:00:00 2001
+Message-ID: <64b28253bb25933b74978906042aa07874500beb.1760018492.git.mprivozn@redhat.com>
+From: Michal Privoznik <mprivozn@redhat.com>
+Date: Thu, 14 Aug 2025 16:39:44 +0200
+Subject: [libvirt-php][PATCH] src: Don't rely on libxml2 to provide
+ ATTRIBUTE_UNUSED macro
+
+From: Michal Privoznik <mprivozn@redhat.com>
+
+One of the libxml2 header files used to provide ATTRIBUTE_UNUSED
+macro definition (it used to be libxml/xmlexports.h but then it
+was moved to libxml/xmlversion.h). But as of [1] this is no
+longer the case. Thus, declare the macro on our own.
+
+1: https://gitlab.gnome.org/GNOME/libxml2/-/commit/208f27f9641a59863ce1f7d4992df77f7eb0ea9d
+
+Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+(cherry picked from commit 5f78512c0eb139660d0a644895e07f83259cda37)
+Resolves: https://bugs.gentoo.org/963308
+Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+---
+ src/util.h | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/util.h b/src/util.h
+index 9839c3a..a677477 100644
+--- a/src/util.h
++++ b/src/util.h
+@@ -46,6 +46,10 @@
+ 
+ # define IS_BIGENDIAN (*(uint16_t *)"\0\xff" < 0x100)
+ 
++# ifndef ATTRIBUTE_UNUSED
++#  define ATTRIBUTE_UNUSED __attribute__((__unused__))
++# endif
++
+ # define SWAP2_BY_ENDIAN(le, v1, v2)    \
+     (((le && IS_BIGENDIAN) || (!le && !IS_BIGENDIAN)) ? ((v2 << 8) + v1) : ((v1 << 8) + v2))
+ 
+-- 
+2.49.1
+

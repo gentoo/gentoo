@@ -1,0 +1,13 @@
+[Unit]
+Description=Icinga DB
+Documentation=https://icinga.com/docs/icingadb/latest/
+After=network-online.target redis.service mariadb.service postgresql.service
+
+[Service]
+Type=notify
+ExecStart=@EPREFIX@/usr/sbin/icingadb --config /etc/icingadb/config.yml
+User=icinga
+Group=icinga
+
+[Install]
+WantedBy=multi-user.target

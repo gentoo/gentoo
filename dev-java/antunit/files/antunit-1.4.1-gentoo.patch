@@ -1,0 +1,62 @@
+--- a/src/etc/testcases/antunit/java-io.xml
++++ b/src/etc/testcases/antunit/java-io.xml
+@@ -30,7 +30,7 @@ under the License.
+   <target name="testTaskHandlingOutput">
+   	<java classname="org.apache.ant.antunit.AntUnitTest$HelloWorld" 
+   	      outputproperty="propertyToSet"
+-  	      classpath="build/test-classes"
++  	      classpath="target/test-classes"
+   	      failonerror="true" 
+   	/>
+     <au:assertEquals expected="HelloWorld" actual="${propertyToSet}" />
+--- a/src/etc/testcases/assert.xml
++++ b/src/etc/testcases/assert.xml
+@@ -156,28 +156,28 @@ under the License.
+     <au:assertDestIsUptodate
+       src="../../main/org/apache/ant/antunit/AssertTask.java"
+ 
+-      dest="../../../build/classes/org/apache/ant/antunit/AssertTask.class"/>
++      dest="../../../target/classes/org/apache/ant/antunit/AssertTask.class"/>
+   </target>
+ 
+   <target name="assertDestIsUptodateFail">
+     <au:assertDestIsUptodate
+       dest="../../main/org/apache/ant/antunit/AssertTask.java"
+ 
+-      src="../../../build/classes/org/apache/ant/antunit/AssertTask.class"/>
++      src="../../../target/classes/org/apache/ant/antunit/AssertTask.class"/>
+   </target>
+ 
+   <target name="assertDestIsOutofdatePass">
+     <au:assertDestIsOutofdate
+       dest="../../main/org/apache/ant/antunit/AssertTask.java"
+ 
+-      src="../../../build/classes/org/apache/ant/antunit/AssertTask.class"/>
++      src="../../../target/classes/org/apache/ant/antunit/AssertTask.class"/>
+   </target>
+ 
+   <target name="assertDestIsOutofdateFail">
+     <au:assertDestIsOutofdate
+       src="../../main/org/apache/ant/antunit/AssertTask.java"
+ 
+-      dest="../../../build/classes/org/apache/ant/antunit/AssertTask.class"/>
++      dest="../../../target/classes/org/apache/ant/antunit/AssertTask.class"/>
+   </target>
+ 
+   <target name="assertFilesMatchPass">
+--- a/src/tests/junit/org/apache/ant/antunit/AssertTest.java
++++ b/src/tests/junit/org/apache/ant/antunit/AssertTest.java
+@@ -137,11 +137,11 @@ public class AssertTest extends BuildFileTest {
+     }
+     public void testDestIsUptodateFail() {
+         testFail("assertDestIsUptodateFail",
+-                 "Expected '../../main/org/apache/ant/antunit/AssertTask.java' to be more recent than '../../../build/classes/org/apache/ant/antunit/AssertTask.class'");
++                 "Expected '../../main/org/apache/ant/antunit/AssertTask.java' to be more recent than '../../../target/classes/org/apache/ant/antunit/AssertTask.class'");
+     }
+     public void testDestIsOutofdateFail() {
+         testFail("assertDestIsOutofdateFail",
+-                 "Expected '../../main/org/apache/ant/antunit/AssertTask.java' to be more recent than '../../../build/classes/org/apache/ant/antunit/AssertTask.class'");
++                 "Expected '../../main/org/apache/ant/antunit/AssertTask.java' to be more recent than '../../../target/classes/org/apache/ant/antunit/AssertTask.class'");
+     }
+     public void testFilesMatchFail() {
+         testFail("assertFilesMatchFail",

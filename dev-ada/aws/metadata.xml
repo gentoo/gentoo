@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>ada@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="shared">Build shared library</flag>
+		<flag name="wsdl">Used to convert ada to wsdl</flag>
+	</use>
+	<longdescription lang="en">
+		AWS stand for Ada Web Server. It is a small yet powerful HTTP component to
+		embed in any applications. It means that you can communicate with your
+		application using a standard Web browser and this without the need for a Web
+		Server. AWS is fully developed in Ada with GNAT.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">AdaCore/aws</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,25 @@
+From aa55fc7dce7b319f2979ad4c61493a43ac10069d Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sun, 22 Jun 2025 22:24:34 +0100
+Subject: [PATCH] Don't pull in glm and stb as subprojects
+
+Upstream has concerns over which versions might be installed system-wide, but
+Gentoo has control over that.
+--- a/meson.build
++++ b/meson.build
+@@ -50,10 +50,8 @@ dep_x11 = dependency('x11')
+ dep_wayland = dependency('wayland-client')
+ vulkan_dep = dependency('vulkan')
+ 
+-glm_proj = subproject('glm')
+-glm_dep = glm_proj.get_variable('glm_dep')
+-stb_proj = subproject('stb')
+-stb_dep = stb_proj.get_variable('stb_dep')
++glm_dep = dependency('glm')
++stb_dep = dependency('stb')
+ 
+ if get_option('enable_openvr_support')
+   openvr_dep = dependency('openvr', version: '>= 2.7', required : false)
+-- 
+2.49.0
+

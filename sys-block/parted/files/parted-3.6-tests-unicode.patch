@@ -1,0 +1,59 @@
+https://debbugs.gnu.org/61129
+
+From af8ed66e00bfac4a189ea32c62199bffaa3eb836 Mon Sep 17 00:00:00 2001
+From: Kerin Millar <kfm@plushkava.net>
+Date: Sun, 29 Jan 2023 00:34:27 +0000
+Subject: [PATCH] Use any available UTF-8 locale in t0251; skip if none found
+
+The "t0251-gpt-unicode.sh" test presently suffers from several issues
+which are addressed herewith.
+
+Do not begin by trying to match the "en_US.utf8" locale specifically.
+The only requirement for the test to be conducted correctly is that the
+system character type be set to UTF-8. For this, _any_ UTF-8 supporting
+locale will do. Simply select the first locale that ends with ".utf8"
+or "UTF-8". After all, not everyone is American, nor do all systems
+using GNU glibc yet have a C.UTF-8 locale.
+
+Escape the dot/period in the locale-matching regular expression.
+
+Skip the test outright if no UTF-8 supporting locale can be found,
+rather than spuriously fail.
+
+Assign the locale found to LC_CTYPE. There is no need to set any of the
+other locale-related environment variables for the purpose of this
+test. To guarantee that LC_CTYPE takes effect, unset LC_ALL also.
+
+Signed-off-by: Kerin Millar <kfm@plushkava.net>
+Bug: https://bugs.gentoo.org/753677
+--- a/tests/t0251-gpt-unicode.sh
++++ b/tests/t0251-gpt-unicode.sh
+@@ -17,16 +17,21 @@
+ 
+ . "${srcdir=.}/init.sh"; path_prepend_ ../parted
+ 
++# LC_CTYPE must not be overridden
++unset LC_ALL
++
++# any UTF-8 locale will suffice for setting the character type
++LC_CTYPE=$(locale -a | awk '/\.(utf8|UTF-8)$/ { print; exit; }')
++if [ -z "$LC_CTYPE" ]; then
++	skip_ 'no UTF-8 supporting locale is available'
++fi
++export LC_CTYPE
++
+ dev=loop-file
+ 
+ # create zeroed device
+ truncate -s 10m $dev || fail=1
+ 
+-LC_ALL=$(locale -a | grep en_US.utf8)
+-if [ -z "$LC_ALL" ]; then
+-   LC_ALL=C.UTF-8
+-fi
+-export LC_ALL="$LC_ALL"
+ # create gpt label with named partition
+ part_name=$(printf 'foo\341\264\244')
+ parted -s $dev mklabel gpt mkpart primary ext2 1MiB 2MiB name 1 $part_name > empty 2>&1 || fail=1
+-- 
+2.39.1

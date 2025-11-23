@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tamiko@gentoo.org</email>
+		<name>Matthias Maier</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		ArborX is an open-source library designed to provide performance
+		portable algorithms for geometric search, similarly to nanoflann
+		and Boost Geometry.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">arborx/ArborX</remote-id>
+	</upstream>
+</pkgmetadata>

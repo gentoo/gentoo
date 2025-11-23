@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>sound@gentoo.org</email>
+	<name>Gentoo Sound project</name>
+</maintainer>
+<upstream>
+	<remote-id type="freedesktop-gitlab">pulseaudio/pavucontrol</remote-id>
+</upstream>
+<use>
+	<flag name="sound">Enable sound notifications using <pkg>media-libs/libcanberra</pkg></flag>
+</use>
+</pkgmetadata>

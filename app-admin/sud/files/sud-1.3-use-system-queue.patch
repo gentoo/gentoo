@@ -1,0 +1,68 @@
+https://bugs.gentoo.org/713470
+
+--- a/sud/Makefile.am
++++ b/sud/Makefile.am
+@@ -1,7 +1,7 @@
+ AM_YFLAGS = -d
+ 
+ sbin_PROGRAMS = sud
+-sud_SOURCES = conf.c conf_parser.y conf_lexer.l interactive.c noninteractive.c control.c main.c popen.c request.c session.c service.c utility.c extern.h conf.h control.h queue.h session.h
++sud_SOURCES = conf.c conf_parser.y conf_lexer.l interactive.c noninteractive.c control.c main.c popen.c request.c session.c service.c utility.c extern.h conf.h control.h session.h
+ sud_CFLAGS = -Wall -DYY_NO_UNPUT
+ 
+ #INCLUDES = -I..
+--- a/sud/conf.h
++++ b/sud/conf.h
+@@ -31,7 +31,7 @@
+ #include <sys/types.h>
+ #include <grp.h>
+ 
+-#include "queue.h"
++#include <sys/queue.h>
+ /*
+  * XXX: have* variables are oversized, perhaps these could be implemented using
+  * for example gid_t negative values
+--- a/sud/conf_lexer.c
++++ b/sud/conf_lexer.c
+@@ -537,7 +537,7 @@ char *yytext;
+ #include "conf.h"
+ #include "conf_parser.h"
+ #include "extern.h"
+-#include "queue.h"
++#include <sys/queue.h>
+ 
+ extern int nline;
+ 
+--- a/sud/conf_lexer.l
++++ b/sud/conf_lexer.l
+@@ -40,7 +40,7 @@
+ #include "conf.h"
+ #include "conf_parser.h"
+ #include "extern.h"
+-#include "queue.h"
++#include <sys/queue.h>
+ 
+ extern int nline;
+ 
+--- a/sud/service.c
++++ b/sud/service.c
+@@ -47,7 +47,7 @@
+ 
+ #include "conf.h"
+ #include "extern.h"
+-#include "queue.h"
++#include <sys/queue.h>
+ #include "session.h"
+ 
+ 
+--- a/sud/session.h
++++ b/sud/session.h
+@@ -32,7 +32,7 @@
+ 
+ #include <unistd.h>
+ 
+-#include "queue.h"
++#include <sys/queue.h>
+ 
+ 
+ struct sctl {

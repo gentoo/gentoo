@@ -1,0 +1,58 @@
+--- a/src/portmon.c
++++ b/src/portmon.c
+@@ -35,6 +35,15 @@
+ #include <getopt.h>
+ #endif
+ 
++int report_flag;
++int daemonize_flag;
++
++struct host_struct *hosts;
++char *err_msg;
++char logfile[STRLARGE];
++int timeout;
++int verbose;
++
+ void version(void)
+ {
+  printf("This is %s, version %s\n", PACKAGE, VERSION);
+--- a/src/portmon.h
++++ b/src/portmon.h
+@@ -31,8 +31,8 @@
+ #define STRLARGE 512
+ 
+ // flags
+-int report_flag;
+-int daemonize_flag;
++extern int report_flag;
++extern int daemonize_flag;
+ 
+ struct port
+ {
+@@ -43,7 +43,7 @@
+ };
+ 
+ // create an array of hosts
+-struct host_struct
++extern struct host_struct
+ {
+   char name[STRMED];
+   struct port ports[STRSMALL];
+@@ -52,13 +52,13 @@
+  *hosts;
+ 
+ // place to hold error messages
+-char *err_msg;
++extern char *err_msg;
+ // place we log crap
+-char logfile[STRLARGE];
++extern char logfile[STRLARGE];
+ // timeout (seconds)
+-int timeout;
++extern int timeout;
+ // verbose mode
+-int verbose;
++extern int verbose;
+ 
+ // Functions in various files
+ 

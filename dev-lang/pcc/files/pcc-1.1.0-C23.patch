@@ -1,0 +1,293 @@
+Change reserved names to True/False (not actually booleans at all)
+Add includes for libbsd functions
+And enable system extensions, to counteract disabling them and then using them
+https://bugs.gentoo.org/871267
+https://bugs.gentoo.org/932230
+https://bugs.gentoo.org/944894
+--- a/configure.ac
++++ b/configure.ac
+@@ -3,8 +3,9 @@
+ 
+ AC_PREREQ(2.59)
+ AC_INIT([pcc], [1.1.0], [pcc@lists.ludd.ltu.se])
+ AC_CONFIG_HEADER([config.h])
++AC_USE_SYSTEM_EXTENSIONS
+ 
+ AC_CANONICAL_TARGET
+ 
+ abi=unknown
+--- a/cc/ccom/pass1.h
++++ b/cc/ccom/pass1.h
+@@ -37,8 +37,9 @@
+ 
+ #include <sys/types.h>
+ #include <stdarg.h>
+ #include <string.h>
++#include <bsd/string.h>
+ #ifdef HAVE_STDINT_H
+ #include <stdint.h>
+ #endif
+ 
+--- a/cc/ccom/trees.c
++++ b/cc/ccom/trees.c
+@@ -2080,9 +2080,9 @@
+ /*
+  * Write out logical expressions as branches.
+  */
+ static void
+-andorbr(NODE *p, int true, int false)
++andorbr(NODE *p, int True, int False)
+ {
+ 	NODE *q;
+ 	int o, lab;
+ 
+@@ -2123,19 +2123,19 @@
+ 	case LE:
+ 	case LT:
+ 	case GE:
+ 	case GT:
+-calc:		if (true < 0) {
++calc:		if (True < 0) {
+ 			p->n_op = negrel[p->n_op - EQ];
+-			true = false;
+-			false = -1;
++			True = False;
++			False = -1;
+ 		}
+ 
+ 		rmcops(p->n_left);
+ 		rmcops(p->n_right);
+-		fixbranch(p, true);
+-		if (false >= 0)
+-			branch(false);
++		fixbranch(p, True);
++		if (False >= 0)
++			branch(False);
+ 		break;
+ 
+ 	case ULE:
+ 	case UGT:
+@@ -2147,57 +2147,57 @@
+ 	case UGE:
+ 	case ULT:
+ 		/* Already true/false by definition */
+ 		if (nncon(p->n_right) && p->n_right->n_lval == 0) {
+-			if (true < 0) {
++			if (True < 0) {
+ 				o = o == ULT ? UGE : ULT;
+-				true = false;
++				True = False;
+ 			}
+ 			rmcops(p->n_left);
+ 			ecode(p->n_left);
+ 			rmcops(p->n_right);
+ 			ecode(p->n_right);
+ 			nfree(p);
+ 			if (o == UGE) /* true */
+-				branch(true);
++				branch(True);
+ 			break;
+ 		}
+ 		goto calc;
+ 
+ 	case ANDAND:
+-		lab = false<0 ? getlab() : false ;
++		lab = False<0 ? getlab() : False ;
+ 		andorbr(p->n_left, -1, lab);
+ 		comops(p->n_right);
+-		andorbr(p->n_right, true, false);
+-		if (false < 0)
++		andorbr(p->n_right, True, False);
++		if (False < 0)
+ 			plabel( lab);
+ 		nfree(p);
+ 		break;
+ 
+ 	case OROR:
+-		lab = true<0 ? getlab() : true;
++		lab = True<0 ? getlab() : True;
+ 		andorbr(p->n_left, lab, -1);
+ 		comops(p->n_right);
+-		andorbr(p->n_right, true, false);
+-		if (true < 0)
++		andorbr(p->n_right, True, False);
++		if (True < 0)
+ 			plabel( lab);
+ 		nfree(p);
+ 		break;
+ 
+ 	case NOT:
+-		andorbr(p->n_left, false, true);
++		andorbr(p->n_left, False, True);
+ 		nfree(p);
+ 		break;
+ 
+ 	default:
+ 		rmcops(p);
+-		if (true >= 0)
+-			fixbranch(p, true);
+-		if (false >= 0) {
+-			if (true >= 0)
+-				branch(false);
++		if (True >= 0)
++			fixbranch(p, True);
++		if (False >= 0) {
++			if (True >= 0)
++				branch(False);
+ 			else
+-				fixbranch(buildtree(EQ, p, bcon(0)), false);
++				fixbranch(buildtree(EQ, p, bcon(0)), False);
+ 		}
+ 	}
+ }
+ 
+--- a/cc/cxxcom/trees.c
++++ b/cc/cxxcom/trees.c
+@@ -2021,9 +2021,9 @@
+ /*
+  * Write out logical expressions as branches.
+  */
+ static void
+-andorbr(NODE *p, int true, int false)
++andorbr(NODE *p, int True, int False)
+ {
+ 	NODE *q;
+ 	int o, lab;
+ 
+@@ -2064,19 +2064,19 @@
+ 	case LE:
+ 	case LT:
+ 	case GE:
+ 	case GT:
+-calc:		if (true < 0) {
++calc:		if (True < 0) {
+ 			p->n_op = negrel[p->n_op - EQ];
+-			true = false;
+-			false = -1;
++			True = False;
++			False = -1;
+ 		}
+ 
+ 		rmcops(p->n_left);
+ 		rmcops(p->n_right);
+-		fixbranch(p, true);
+-		if (false >= 0)
+-			branch(false);
++		fixbranch(p, True);
++		if (False >= 0)
++			branch(False);
+ 		break;
+ 
+ 	case ULE:
+ 	case UGT:
+@@ -2088,57 +2088,57 @@
+ 	case UGE:
+ 	case ULT:
+ 		/* Already true/false by definition */
+ 		if (nncon(p->n_right) && p->n_right->n_lval == 0) {
+-			if (true < 0) {
++			if (True < 0) {
+ 				o = o == ULT ? UGE : ULT;
+-				true = false;
++				True = False;
+ 			}
+ 			rmcops(p->n_left);
+ 			ecode(p->n_left);
+ 			rmcops(p->n_right);
+ 			ecode(p->n_right);
+ 			nfree(p);
+-			if (o == UGE) /* true */
+-				branch(true);
++			if (o == UGE) /* True */
++				branch(True);
+ 			break;
+ 		}
+ 		goto calc;
+ 
+ 	case ANDAND:
+-		lab = false<0 ? getlab() : false ;
++		lab = False<0 ? getlab() : False ;
+ 		andorbr(p->n_left, -1, lab);
+ 		comops(p->n_right);
+-		andorbr(p->n_right, true, false);
+-		if (false < 0)
++		andorbr(p->n_right, True, False);
++		if (False < 0)
+ 			plabel( lab);
+ 		nfree(p);
+ 		break;
+ 
+ 	case OROR:
+-		lab = true<0 ? getlab() : true;
++		lab = True<0 ? getlab() : True;
+ 		andorbr(p->n_left, lab, -1);
+ 		comops(p->n_right);
+-		andorbr(p->n_right, true, false);
+-		if (true < 0)
++		andorbr(p->n_right, True, False);
++		if (True < 0)
+ 			plabel( lab);
+ 		nfree(p);
+ 		break;
+ 
+ 	case NOT:
+-		andorbr(p->n_left, false, true);
++		andorbr(p->n_left, False, True);
+ 		nfree(p);
+ 		break;
+ 
+ 	default:
+ 		rmcops(p);
+-		if (true >= 0)
+-			fixbranch(p, true);
+-		if (false >= 0) {
+-			if (true >= 0)
+-				branch(false);
++		if (True >= 0)
++			fixbranch(p, True);
++		if (False >= 0) {
++			if (True >= 0)
++				branch(False);
+ 			else
+-				fixbranch(buildtree(EQ, p, bcon(0)), false);
++				fixbranch(buildtree(EQ, p, bcon(0)), False);
+ 		}
+ 	}
+ }
+ 
+--- a/mip/reader.c
++++ b/mip/reader.c
+@@ -65,8 +65,9 @@
+ 
+ # include "pass2.h"
+ 
+ #include <string.h>
++#include <bsd/string.h>
+ #include <stdarg.h>
+ #include <stdlib.h>
+ 
+ /*	some storage declarations */
+--- a/mip/match.c
++++ b/mip/match.c
+@@ -59,8 +59,9 @@
+  * IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  * POSSIBILITY OF SUCH DAMAGE.
+  */
+ 
++#include "config.h"
+ #include "pass2.h"
+ 
+ #ifdef HAVE_STRINGS_H
+ #include <strings.h>
+--- a/mip/regs.c
++++ b/mip/regs.c
+@@ -25,8 +25,9 @@
+  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  */
+ 
++#include "config.h"
+ #include "pass2.h"
+ #include <string.h>
+ #ifdef HAVE_STRINGS_H
+ #include <strings.h>

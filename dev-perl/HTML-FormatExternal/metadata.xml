@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>stasibear@gentoo.org</email>
+    <name>Erik Mackdanz</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">HTML-FormatExternal</remote-id>
+    <remote-id type="cpan-module">HTML::FormatExternal</remote-id>
+    <remote-id type="cpan-module">HTML::FormatText::Elinks</remote-id>
+    <remote-id type="cpan-module">HTML::FormatText::Html2text</remote-id>
+    <remote-id type="cpan-module">HTML::FormatText::Links</remote-id>
+    <remote-id type="cpan-module">HTML::FormatText::Lynx</remote-id>
+    <remote-id type="cpan-module">HTML::FormatText::Netrik</remote-id>
+    <remote-id type="cpan-module">HTML::FormatText::Vilisextum</remote-id>
+    <remote-id type="cpan-module">HTML::FormatText::W3m</remote-id>
+    <remote-id type="cpan-module">HTML::FormatText::Zen</remote-id>
+  </upstream>
+</pkgmetadata>

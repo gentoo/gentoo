@@ -1,0 +1,11 @@
+# Copyright 2022-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
+# sys-boot/gnu-efi applications that need porting (sbsigntools & refind) or
+# is abandoned upstream (elilo)
+app-crypt/efitools
+app-crypt/pesign
+app-crypt/sbsigntools
+sys-boot/elilo
+sys-boot/refind

@@ -1,0 +1,28 @@
+Use files from dev-libs/rocm-device-libs instead of their copy in /tmp.
+--- a/src/comgr-compiler.cpp
++++ b/src/comgr-compiler.cpp
+@@ -1070,24 +1070,7 @@ amd_comgr_status_t AMDGPUCompiler::addCompilationFlags() {
+ }
+ 
+ amd_comgr_status_t AMDGPUCompiler::addDeviceLibraries() {
+-  llvm::SmallString<128> FakeRocmDir = TmpDir;
+-  path::append(FakeRocmDir, "rocm");
+-  llvm::SmallString<128> DeviceLibsDir = FakeRocmDir;
+-  path::append(DeviceLibsDir, "amdgcn", "bitcode");
+-  if (fs::create_directory(InputDir)) {
+-    return AMD_COMGR_STATUS_ERROR;
+-  }
+-  Args.push_back(Saver.save(Twine("--rocm-path=") + FakeRocmDir).data());
+   NoGpuLib = false;
+-
+-  for (auto DeviceLib : getDeviceLibraries()) {
+-    llvm::SmallString<128> DeviceLibPath = DeviceLibsDir;
+-    path::append(DeviceLibPath, std::get<0>(DeviceLib));
+-    if (auto Status = outputToFile(std::get<1>(DeviceLib), DeviceLibPath)) {
+-      return Status;
+-    }
+-  }
+-
+   return AMD_COMGR_STATUS_SUCCESS;
+ }
+ 

@@ -1,0 +1,51 @@
+https://github.com/TeX-Live/texlive-source/commit/bb307f8bd91c5ea4f191b9c788056470626893b7
+
+From bb307f8bd91c5ea4f191b9c788056470626893b7 Mon Sep 17 00:00:00 2001
+From: Karl Berry <karl@freefriends.org>
+Date: Thu, 2 Feb 2023 22:57:47 +0000
+Subject: [PATCH] avoid implicit wait and exit declarations for C99
+
+git-svn-id: svn://tug.org/texlive/trunk/Build/source@65717 c570f23f-e606-0410-a88d-b1316a301751
+--- a/configure
++++ b/configure
+@@ -16406,6 +16406,9 @@ else $as_nop
+ #ifdef HAVE_UNISTD_H
+ #include <unistd.h>
+ #endif
++#ifdef HAVE_SYS_WAIT_H
++#include <sys/wait.h>
++#endif
+ #ifdef HAVE_VFORK_H
+ #include <vfork.h>
+ #endif
+@@ -16427,7 +16430,7 @@ main (void)
+ 
+     while (wait(&status) != child)
+       ;
+-    exit(
++    _exit(
+ 	 /* Was there some problem with vforking?  */
+ 	 child < 0
+ 
+--- a/m4/xdvi-func-setsid-in-fork.m4
++++ b/m4/xdvi-func-setsid-in-fork.m4
+@@ -22,6 +22,9 @@ AC_DEFUN([XDVI_FUNC_SETSID_IN_VFORK],
+ #ifdef HAVE_UNISTD_H
+ #include <unistd.h>
+ #endif
++#ifdef HAVE_SYS_WAIT_H
++#include <sys/wait.h>
++#endif
+ #ifdef HAVE_VFORK_H
+ #include <vfork.h>
+ #endif]],
+@@ -40,7 +43,7 @@ AC_DEFUN([XDVI_FUNC_SETSID_IN_VFORK],
+ 
+     while (wait(&status) != child)
+       ;
+-    exit(
++    _exit(
+ 	 /* Was there some problem with vforking?  */
+ 	 child < 0
+ 
+

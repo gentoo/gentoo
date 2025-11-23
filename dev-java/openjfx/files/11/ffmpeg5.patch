@@ -1,0 +1,17 @@
+--- a/build.gradle
++++ b/build.gradle
+@@ -3710,14 +3710,6 @@
+                                     }
+                                 }
+                             }
+-                        } else {
+-                            // Building fxavcodec plugin (libav plugin)
+-                            exec {
+-                                commandLine ("make", "${makeJobsFlag}", "-C", "${nativeSrcDir}/gstreamer/projects/linux/avplugin")
+-                                args("CC=${mediaProperties.compiler}", "LINKER=${mediaProperties.linker}",
+-                                     "OUTPUT_DIR=${nativeOutputDir}", "BUILD_TYPE=${buildType}",
+-                                     "BASE_NAME=avplugin", IS_64 ? "ARCH=x64" : "ARCH=x32")
+-                            }
+                         }
+                     }
+                 }

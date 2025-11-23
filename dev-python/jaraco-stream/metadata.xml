@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">jaraco.stream</remote-id>
+		<remote-id type="github">jaraco/jaraco.stream</remote-id>
+		<bugs-to>https://github.com/jaraco/jaraco.stream/issues</bugs-to>
+	</upstream>
+	<longdescription lang="en">
+		Routines for handling streaming data, including a set of generators for loading gzip data on the fly.
+	</longdescription>
+</pkgmetadata>

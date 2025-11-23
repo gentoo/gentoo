@@ -1,0 +1,53 @@
+See http://lists.x.org/archives/xorg-devel/2015-February/045755.html
+
+diff --git a/hw/xfree86/parser/Files.c b/hw/xfree86/parser/Files.c
+index 849bf92..5cc3ec7 100644
+--- a/hw/xfree86/parser/Files.c
++++ b/hw/xfree86/parser/Files.c
+@@ -76,14 +76,18 @@ static xf86ConfigSymTabRec FilesTab[] = {
+ #define CLEANUP xf86freeFiles
+ 
+ XF86ConfFilesPtr
+-xf86parseFilesSection(void)
++xf86parseFilesSection(XF86ConfFilesPtr ptr)
+ {
+     int i, j;
+     int k, l;
+     char *str;
+     int token;
+ 
+-    parsePrologue(XF86ConfFilesPtr, XF86ConfFilesRec)
++    if (!ptr) {
++	if( (ptr=calloc(1,sizeof(XF86ConfFilesRec))) == NULL ) {
++		return NULL;
++	}
++    }
+ 
+         while ((token = xf86getToken(FilesTab)) != ENDSECTION) {
+         switch (token) {
+diff --git a/hw/xfree86/parser/configProcs.h b/hw/xfree86/parser/configProcs.h
+index 171f8e8..e8199fe 100644
+--- a/hw/xfree86/parser/configProcs.h
++++ b/hw/xfree86/parser/configProcs.h
+@@ -36,7 +36,7 @@ void xf86freeDeviceList(XF86ConfDevicePtr ptr);
+ int xf86validateDevice(XF86ConfigPtr p);
+ 
+ /* Files.c */
+-XF86ConfFilesPtr xf86parseFilesSection(void);
++XF86ConfFilesPtr xf86parseFilesSection(XF86ConfFilesPtr ptr);
+ void xf86printFileSection(FILE * cf, XF86ConfFilesPtr ptr);
+ void xf86freeFiles(XF86ConfFilesPtr p);
+ 
+diff --git a/hw/xfree86/parser/read.c b/hw/xfree86/parser/read.c
+index 327c02a..e0d6139 100644
+--- a/hw/xfree86/parser/read.c
++++ b/hw/xfree86/parser/read.c
+@@ -110,7 +110,7 @@ xf86readConfigFile(void)
+             if (xf86nameCompare(xf86_lex_val.str, "files") == 0) {
+                 free(xf86_lex_val.str);
+                 xf86_lex_val.str = NULL;
+-                HANDLE_RETURN(conf_files, xf86parseFilesSection());
++                HANDLE_RETURN(conf_files, xf86parseFilesSection(ptr->conf_files));
+             }
+             else if (xf86nameCompare(xf86_lex_val.str, "serverflags") == 0) {
+                 free(xf86_lex_val.str);

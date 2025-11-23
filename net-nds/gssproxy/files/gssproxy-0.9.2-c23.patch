@@ -1,0 +1,106 @@
+https://github.com/gssapi/gssproxy/commit/91c87d24bf844875701957f01552b674cced2ca8
+
+From 91c87d24bf844875701957f01552b674cced2ca8 Mon Sep 17 00:00:00 2001
+From: Simo Sorce <simo@redhat.com>
+Date: Mon, 10 Feb 2025 14:55:37 -0500
+Subject: [PATCH] Change declaration of function map
+
+Newer compilers complain if funciton is declared w/o arguments,
+so we redeclare the xdrptoc_t as xdrfn and give it proper arguments
+
+Signed-off-by: Simo Sorce <simo@redhat.com>
+---
+ rpcgen/gp_xdr.h         | 4 ++++
+ src/client/gpm_common.c | 8 ++++++--
+ src/gp_rpc_process.c    | 8 ++++++--
+ 3 files changed, 16 insertions(+), 4 deletions(-)
+
+diff --git a/rpcgen/gp_xdr.h b/rpcgen/gp_xdr.h
+index bbd747d0a..e7a476f3d 100644
+--- a/rpcgen/gp_xdr.h
++++ b/rpcgen/gp_xdr.h
+@@ -5,6 +5,10 @@
+ 
+ #include "gssrpc/rpc.h"
+ 
++/* Equivalent to xdrptoc_t but with proper arguments so that modern
++ * compilers do not complain */
++typedef int xdrfn(XDR *, void *);
++
+ #define xdr_u_quad_t gp_xdr_uint64_t
+ 
+ bool_t gp_xdr_uint64_t(XDR *xdrs, uint64_t *objp);
+diff --git a/src/client/gpm_common.c b/src/client/gpm_common.c
+index 22a74ab48..2c0925d05 100644
+--- a/src/client/gpm_common.c
++++ b/src/client/gpm_common.c
+@@ -676,6 +676,8 @@ int gpm_make_call(int proc, union gp_rpc_arg *arg, union gp_rpc_res *res)
+     gp_rpc_msg msg;
+     XDR xdr_call_ctx = {0};
+     XDR xdr_reply_ctx = {0};
++    xdrfn *arg_fn;
++    xdrfn *res_fn;
+     char *send_buffer = NULL;
+     char *recv_buffer = NULL;
+     uint32_t send_length;
+@@ -726,7 +728,8 @@ int gpm_make_call(int proc, union gp_rpc_arg *arg, union gp_rpc_res *res)
+     }
+ 
+     /* encode data */
+-    xdrok = gpm_xdr_set[proc].arg_fn(&xdr_call_ctx, (char *)arg);
++    arg_fn = gpm_xdr_set[proc].arg_fn;
++    xdrok = arg_fn(&xdr_call_ctx, arg);
+     if (!xdrok) {
+         ret = EINVAL;
+         goto done;
+@@ -765,7 +768,8 @@ int gpm_make_call(int proc, union gp_rpc_arg *arg, union gp_rpc_res *res)
+     }
+ 
+     /* decode answer */
+-    xdrok = gpm_xdr_set[proc].res_fn(&xdr_reply_ctx, (char *)res);
++    res_fn = gpm_xdr_set[proc].res_fn;
++    xdrok = res_fn(&xdr_reply_ctx, res);
+     if (!xdrok) {
+         ret = EINVAL;
+     }
+diff --git a/src/gp_rpc_process.c b/src/gp_rpc_process.c
+index eaffc55eb..1ac7c167f 100644
+--- a/src/gp_rpc_process.c
++++ b/src/gp_rpc_process.c
+@@ -196,6 +196,7 @@ static int gp_rpc_decode_call(XDR *xdr_call_ctx,
+                               gp_rpc_accept_status *acc,
+                               gp_rpc_reject_status *rej)
+ {
++    xdrfn *arg_fn;
+     bool xdrok;
+     int ret;
+ 
+@@ -204,7 +205,8 @@ static int gp_rpc_decode_call(XDR *xdr_call_ctx,
+         return ret;
+     }
+ 
+-    xdrok = gp_xdr_set[*proc].arg_fn(xdr_call_ctx, (char *)arg);
++    arg_fn = gp_xdr_set[*proc].arg_fn;
++    xdrok = arg_fn(xdr_call_ctx, arg);
+     if (!xdrok) {
+         *acc = GP_RPC_GARBAGE_ARGS;
+         return EINVAL;
+@@ -283,6 +285,7 @@ static int gp_rpc_encode_reply(XDR *xdr_reply_ctx,
+                                gp_rpc_accept_status acc,
+                                gp_rpc_reject_status rej)
+ {
++    xdrfn *res_fn;
+     bool xdrok;
+     int ret;
+ 
+@@ -291,7 +294,8 @@ static int gp_rpc_encode_reply(XDR *xdr_reply_ctx,
+         return ret;
+     }
+ 
+-    xdrok = gp_xdr_set[proc].res_fn(xdr_reply_ctx, (char *)res);
++    res_fn = gp_xdr_set[proc].res_fn;
++    xdrok = res_fn(xdr_reply_ctx, res);
+ 
+     if (!xdrok) {
+         return gp_rpc_encode_reply_header(xdr_reply_ctx, xid, EINVAL,
+

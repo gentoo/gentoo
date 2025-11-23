@@ -1,0 +1,21 @@
+https://bugzilla.redhat.com/show_bug.cgi?id=2141801
+https://src.fedoraproject.org/rpms/liblognorm/c/cdaf4de866002343f4011bb05c71f764258948a7?branch=rawhide
+
+"""
+Submitted to Adiscon via ticket system. See:
+
+  <https://bugzilla.redhat.com/show_bug.cgi?id=2141801>
+"""
+--- a/configure.ac
++++ b/configure.ac
+@@ -38,7 +38,7 @@ m4_ifdef([AX_IS_RELEASE], [
+ # Checks for libraries.
+ save_LIBS=$LIBS
+ LIBS=
+-AC_SEARCH_LIBS(clock_getm4_defn([AC_AUTOCONF_VERSION]), [2.68]time, rt)
++AC_SEARCH_LIBS(clock_gettime, rt)
+ LIBS=$save_LIBS
+ 
+ # Checks for header files.
+
+

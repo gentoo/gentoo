@@ -1,0 +1,21 @@
+Depmod fails here since we're still in DESTDIR and the actual target path may
+not exist...
+
+
+diff -ruN linux-gpib-kernel-4.3.4.orig/Makefile linux-gpib-kernel-4.3.4/Makefile
+--- linux-gpib-kernel-4.3.4.orig/Makefile	2020-12-29 10:42:34.000000000 +0100
++++ linux-gpib-kernel-4.3.4/Makefile	2022-08-02 12:21:38.097344102 +0200
+@@ -20,13 +20,9 @@
+ 		M="$(GPIB_SRCDIR)/drivers/gpib" \
+ 		GPIB_TOP_DIR=$(GPIB_SRCDIR) 
+ 
+-#We run depmod explicitly because the depmod.sh script run
+-#by modules_install fails on Debian due to it failing to find
+-#the System.map file.
+ install:
+ 	$(MAKE) -C $(LINUX_SRCDIR) V=$(VERBOSE) modules_install\
+ 		M="$(GPIB_SRCDIR)/drivers/gpib" \
+ 		GPIB_TOP_DIR=$(GPIB_SRCDIR) \
+ 		INSTALL_MOD_DIR=gpib
+-	/sbin/depmod -A
+ 

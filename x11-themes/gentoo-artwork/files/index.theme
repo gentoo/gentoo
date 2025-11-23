@@ -1,0 +1,20 @@
+[Icon Theme]
+Name=Gentoo
+Comment=The Gentoo Icon Theme
+Directories=32x32,48x48,64x64,l33t
+
+[32x32]
+Size=32
+Type=Fixed
+
+[48x48]
+Size=48
+Type=Fixed
+
+[64x64]
+Size=64
+Type=Fixed
+
+[l33t]
+Size=79
+Type=Fixed

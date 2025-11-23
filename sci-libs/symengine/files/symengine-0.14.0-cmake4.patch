@@ -1,0 +1,44 @@
+From 186f72e208220efd12362c336a49378076f63f30 Mon Sep 17 00:00:00 2001
+From: Isuru Fernando <isuruf@gmail.com>
+Date: Tue, 1 Apr 2025 10:30:43 -0500
+Subject: [PATCH 2/3] set cmake_minimum_required
+
+---
+ cmake/SymEngineConfig.cmake.in | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/cmake/SymEngineConfig.cmake.in b/cmake/SymEngineConfig.cmake.in
+index aaaa8d241..8465298a7 100644
+--- a/cmake/SymEngineConfig.cmake.in
++++ b/cmake/SymEngineConfig.cmake.in
+@@ -31,7 +31,9 @@
+ # target_link_libraries(example ${SYMENGINE_LIBRARIES})
+ #
+ 
+-cmake_minimum_required(VERSION 2.8.12)
++# We are compatible with 2.8.12, but also updated to support policies
++# in 4.0.0
++cmake_minimum_required(VERSION 2.8.12...4.0.0)
+ 
+ if (POLICY CMP0074)
+   cmake_policy(SET CMP0074 NEW)
+
+From 3818ef6b65e1d0da4f485ec8f64661719cbe547c Mon Sep 17 00:00:00 2001
+From: Isuru Fernando <isuruf@gmail.com>
+Date: Tue, 1 Apr 2025 19:40:18 -0500
+Subject: [PATCH 3/3] Update CMakeLists.txt
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 62c367f16..f13772b97 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.13)
++cmake_minimum_required(VERSION 2.8.12...4.0.0)
+ 
+ if (POLICY CMP0074)
+   cmake_policy(SET CMP0074 NEW)

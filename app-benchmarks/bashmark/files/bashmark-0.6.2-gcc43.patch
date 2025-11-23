@@ -1,0 +1,45 @@
+--- a/Benchmark.cpp
++++ b/Benchmark.cpp
+@@ -15,11 +15,11 @@
+  *                                                                         *
+  * You should have received a copy of the GNU General Public License       *
+  * along with this software; if not, write to the Free Software            *
+  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.               *
+  ***************************************************************************/
+-#include <string>
++#include <cstring>
+ #include "Benchmark.hpp"
+ #include "Stopwatch.hpp"
+ #include "Main.hpp"
+ 
+ 
+--- a/main.cpp
++++ b/main.cpp
+@@ -17,10 +17,11 @@
+  * along with this software; if not, write to the Free Software            *
+  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.               *
+  ***************************************************************************/
+ 
+ #include <sstream>
++#include <cstring>
+ using std::stringstream;
+ 
+ 
+ #include "Output.hpp"
+ #include "Sysinfo.hpp"
+--- a/Sysinfo.cpp
++++ b/Sysinfo.cpp
+@@ -15,11 +15,12 @@
+  *                                                                         *
+  * You should have received a copy of the GNU General Public License       *
+  * along with this software; if not, write to the Free Software            *
+  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.               *
+  ***************************************************************************/
+- 
++
++#include <cstring> 
+ #include "Sysinfo.hpp"
+ 
+ using Geno::Sysinfo;
+ using Geno::Cpu_Info;
+ 

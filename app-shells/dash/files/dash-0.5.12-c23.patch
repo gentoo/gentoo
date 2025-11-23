@@ -1,0 +1,150 @@
+https://git.kernel.org/pub/scm/utils/dash/dash.git/commit/?id=b41b0d41228fe82991a63f475e0bef701f539db9 (rebased)
+--- a/src/exec.c
++++ b/src/exec.c
+@@ -769,12 +769,8 @@ typecmd(int argc, char **argv)
+ 	return err;
+ }
+ 
+-STATIC int
+-describe_command(out, command, path, verbose)
+-	struct output *out;
+-	char *command;
+-	const char *path;
+-	int verbose;
++static int describe_command(struct output *out, char *command,
++                            const char *path, int verbose)
+ {
+ 	struct cmdentry entry;
+ 	struct tblentry *cmdp;
+@@ -875,10 +871,7 @@ out:
+ 	return 0;
+ }
+ 
+-int
+-commandcmd(argc, argv)
+-	int argc;
+-	char **argv;
++int commandcmd(int argc, char **argv)
+ {
+ 	char *cmd;
+ 	int c;
+--- a/src/jobs.c
++++ b/src/jobs.c
+@@ -243,10 +243,7 @@ close:
+ #endif
+ 
+ 
+-int
+-killcmd(argc, argv)
+-	int argc;
+-	char **argv;
++int killcmd(int argc, char **argv)
+ {
+ 	extern char *signal_names[];
+ 	int signo = -1;
+--- a/src/mksignames.c
++++ b/src/mksignames.c
+@@ -360,9 +360,7 @@ initialize_signames ()
+       }
+ }
+ 
+-void
+-write_signames (stream)
+-     FILE *stream;
++void write_signames(FILE *stream)
+ {
+   register int i;
+ 
+--- a/src/nodes.c.pat
++++ b/src/nodes.c.pat
+@@ -87,18 +87,14 @@ copyfunc(union node *n)
+ 
+ 
+ 
+-STATIC void
+-calcsize(n)
+-	union node *n;
++static void calcsize(union node *n)
+ {
+ 	%CALCSIZE
+ }
+ 
+ 
+ 
+-STATIC void
+-sizenodelist(lp)
+-	struct nodelist *lp;
++static void sizenodelist(struct nodelist *lp)
+ {
+ 	while (lp) {
+ 		funcblocksize += SHELL_ALIGN(sizeof(struct nodelist));
+@@ -109,9 +105,7 @@ sizenodelist(lp)
+ 
+ 
+ 
+-STATIC union node *
+-copynode(n)
+-	union node *n;
++static union node *copynode(union node *n)
+ {
+ 	union node *new;
+ 
+@@ -120,9 +114,7 @@ copynode(n)
+ }
+ 
+ 
+-STATIC struct nodelist *
+-copynodelist(lp)
+-	struct nodelist *lp;
++static struct nodelist *copynodelist(struct nodelist *lp)
+ {
+ 	struct nodelist *start;
+ 	struct nodelist **lpp;
+@@ -142,9 +134,7 @@ copynodelist(lp)
+ 
+ 
+ 
+-STATIC char *
+-nodesavestr(s)
+-	char   *s;
++static char *nodesavestr(char *s)
+ {
+ 	char   *rtn = funcstring;
+ 
+--- a/src/options.c
++++ b/src/options.c
+@@ -389,9 +389,7 @@ setcmd(int argc, char **argv)
+ }
+ 
+ 
+-void
+-getoptsreset(value)
+-	const char *value;
++void getoptsreset(const char *value)
+ {
+ 	shellparam.optind = number(value) ?: 1;
+ 	shellparam.optoff = -1;
+--- a/src/redir.c
++++ b/src/redir.c
+@@ -281,18 +281,12 @@ ecreate:
+ }
+ 
+ 
+-STATIC void
+ #ifdef notyet
+-dupredirect(redir, f, memory)
++static void dupredirect(union node *redir, int f, char memory[10])
+ #else
+-dupredirect(redir, f)
++static void dupredirect(union node *redir, int f)
+ #endif
+-	union node *redir;
+-	int f;
+-#ifdef notyet
+-	char memory[10];
+-#endif
+-	{
++{
+ 	int fd = redir->nfile.fd;
+ 	int err = 0;
+ 

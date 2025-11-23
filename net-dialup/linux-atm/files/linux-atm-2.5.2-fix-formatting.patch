@@ -1,0 +1,192 @@
+Changes cherry-picked from
+https://sources.debian.org/patches/linux-atm/1:2.5.1-7/misc/
+https://sources.debian.org/patches/linux-atm/1:2.5.1-7/linux-atm-2.5.2-c99-musl.patch/
+to fix -Werror=format
+Also all changes I did on second pass for printing size_t and friends
+https://bugs.gentoo.org/949721
+--- a/src/ilmid/asn1/asn_int.c
++++ b/src/ilmid/asn1/asn_int.c
+@@ -185,7 +185,7 @@ FILE* f _AND_
+ AsnInt* v _AND_
+ unsigned short int indent)
+ {
+-    fprintf(f,"%d", *v);
++    fprintf(f,"%ld", *v);
+ } 
+ 
+ 
+--- a/src/ilmid/asn1/asn_oid.c
++++ b/src/ilmid/asn1/asn_oid.c
+@@ -127,7 +127,7 @@ unsigned short int indent)
+     if (firstArcNum > 2)
+         firstArcNum = 2;
+ 
+-    fprintf(f,"%u %u", firstArcNum, arcNum - (firstArcNum * 40));
++    fprintf(f,"%d %lu", firstArcNum, arcNum - (firstArcNum * 40));
+ 
+     for (; i < v->octetLen ; )
+     {
+@@ -136,7 +136,7 @@ unsigned short int indent)
+ 
+         arcNum = (arcNum << 7) + (v->octs[i] & 0x7f);
+         i++;
+-        fprintf(f," %u", arcNum);
++        fprintf(f," %lu", arcNum);
+     }
+     fprintf(f,"}");
+ 
+--- a/src/lib/ans.c
++++ b/src/lib/ans.c
+@@ -41,7 +41,7 @@
+ static int ans(const char *text,int wanted,void *result,int res_len)
+ {
+     unsigned char answer[MAX_ANSWER];
+-    unsigned char name[MAX_NAME];
++    char name[MAX_NAME];
+     unsigned char *pos,*data,*found;
+     int answer_len,name_len,data_len,found_len;
+     int questions,answers;
+--- a/src/test/ttcp.c
++++ b/src/test/ttcp.c
+@@ -664,7 +664,7 @@ int no_check = 0;
+     exit(0);
+ 
+   usage:
+-    fprintf(stderr, Usage);
++    fprintf(stderr, "%s", Usage);
+     exit(1);
+ }
+ 
+Further changes are novel and fix size_t formatting
+--- a/src/arpd/atmarp.c
++++ b/src/arpd/atmarp.c
+@@ -67,7 +67,7 @@
+     }
+     if (req->type == art_query) return query_result(&reply);
+     if (len != sizeof(int)) {
+-	fprintf(stderr,"bad read: %d != %d\n",len,sizeof(int));
++	fprintf(stderr,"bad read: %d != %zu\n",len,sizeof(int));
+ 	exit(1);
+     }
+     if (*(int *) &reply < 0) {
+--- a/src/ilmid/asn1/asn_int.c
++++ b/src/ilmid/asn1/asn_int.c
+@@ -370,5 +370,5 @@
+ UAsnInt* v _AND_
+ unsigned short int indent)
+ {
+-    fprintf(f,"%u", *v);
++    fprintf(f,"%lu", *v);
+ } 
+--- a/src/lane/mem_lecs.c
++++ b/src/lane/mem_lecs.c
+@@ -77,7 +77,7 @@
+     free(tmp->start);
+     free(tmp);
+   } else {
+-    printf("Trying to free memory by %s, allocated by %s, size %d\n",
++    printf("Trying to free memory by %s, allocated by %s, size %zu\n",
+ 	   unit, tmp->unit, tmp->size);
+   }
+ }
+@@ -89,6 +89,6 @@
+ 
+   printf("Dumping memory allocation\n");
+   for (tmp=memlist;tmp;tmp=tmp->next)
+-    printf("%s : %d bytes from %p\n", tmp->unit, tmp->size, tmp->start);
++    printf("%s : %zu bytes from %p\n", tmp->unit, tmp->size, tmp->start);
+   printf("-------------------------\n");
+ }
+--- a/src/maint/atmaddr.c
++++ b/src/maint/atmaddr.c
+@@ -97,7 +97,7 @@
+     }
+     if (cmd != ATM_GETADDR) return 0;
+     if (req.length % sizeof(*addr)) {
+-	fprintf(stderr,"internal error: len %d %% %d\n",req.length,
++	fprintf(stderr,"internal error: len %d %% %zu\n",req.length,
+ 	  sizeof(*addr));
+ 	return 1;
+     }
+--- a/src/maint/atmtcp.c
++++ b/src/maint/atmtcp.c
+@@ -579,7 +579,7 @@
+ 	exit(1);
+     }
+     if (wrote != sizeof(stream)) {
+-	fprintf(stderr,"short write (%d < %d)\n",wrote,sizeof(stream));
++	fprintf(stderr,"short write (%d < %zu)\n",wrote,sizeof(stream));
+ 	exit(1);
+     }
+     wrote = write(fd,data,size);
+--- a/src/mpoad/lecs.c
++++ b/src/mpoad/lecs.c
+@@ -157,7 +157,7 @@
+                 /* Sampo-Add: end */
+         }
+         if (end_of_tlvs - tlvs != 0)
+-                printf("mpcd: lecs.c: get_reply: ignoring %d bytes of trailing TLV carbage\n",
++                printf("mpcd: lecs.c: get_reply: ignoring %ld bytes of trailing TLV carbage\n",
+                        end_of_tlvs - tlvs);
+         return 1;
+ }
+--- a/src/switch/swc.c
++++ b/src/switch/swc.c
+@@ -28,7 +28,7 @@
+ 	exit(1);
+     }
+     if (size != sizeof(*msg)) {
+-	fprintf(stderr,"bad write: %d != %d\n",size,sizeof(*msg));
++	fprintf(stderr,"bad write: %d != %zu\n",size,sizeof(*msg));
+ 	exit(1);
+     }
+     size = read(s,msg,sizeof(*msg));
+@@ -37,7 +37,7 @@
+ 	exit(1);
+     }
+     if (size != sizeof(*msg)) {
+-	fprintf(stderr,"bad read: %d != %d\n",size,sizeof(*msg));
++	fprintf(stderr,"bad read: %d != %zu\n",size,sizeof(*msg));
+ 	exit(1);
+     }
+ }
+--- a/src/test/isp.c
++++ b/src/test/isp.c
+@@ -37,7 +37,7 @@
+     wrote = write(sock,msg,sizeof(*msg));
+     if (wrote == sizeof(*msg)) return;
+     if (wrote < 0) perror("write");
+-    else fprintf(stderr,"bad write: %d != %d\n",wrote,sizeof(*msg));
++    else fprintf(stderr,"bad write: %d != %zu\n",wrote,sizeof(*msg));
+     exit(1);
+ }
+ 
+@@ -49,7 +49,7 @@
+     got = read(sock,msg,sizeof(*msg));
+     if (got == sizeof(*msg)) return;
+     if (got < 0) perror("read");
+-    else fprintf(stderr,"bad read: %d != %d\n",got,sizeof(*msg));
++    else fprintf(stderr,"bad read: %d != %zu\n",got,sizeof(*msg));
+     exit(1);
+ }
+ 
+--- a/src/test/window.c
++++ b/src/test/window.c
+@@ -180,7 +180,7 @@
+        /* Get a reply */
+        size = read(s2, buffer2, REPLY_SIZE);
+        if (size != REPLY_SIZE) {
+-	 fprintf(stderr,"Received reply of length %d, should be %d.\n",
++	 fprintf(stderr,"Received reply of length %zd, should be %d.\n",
+ 		 size,REPLY_SIZE);
+        }
+ #endif
+@@ -264,7 +264,7 @@
+ 	 }
+ 
+        } else {
+-	 fprintf(stderr,"Received message of length %d, should be %d.\n",
++	 fprintf(stderr,"Received message of length %zd, should be %d.\n",
+ 		 size,PINGPONG_SIZE);
+        }
+      }

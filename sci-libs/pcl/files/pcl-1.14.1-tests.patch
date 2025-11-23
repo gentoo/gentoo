@@ -1,0 +1,26 @@
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Thu, 22 Aug 2024 17:40:21 +0200
+Subject: [PATCH] enable tests
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -8,11 +8,12 @@ if(NOT build)
+   return()
+ endif()
+ 
+-find_package(GTestSource REQUIRED)
+-include_directories(SYSTEM ${GTEST_INCLUDE_DIRS} ${GTEST_SRC_DIR})
+-
+-add_library(pcl_gtest STATIC ${GTEST_SRC_DIR}/src/gtest-all.cc)
+-target_include_directories(pcl_gtest PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
++find_package(GTest REQUIRED)
++add_library(pcl_gtest INTERFACE IMPORTED)
++set_target_properties(pcl_gtest PROPERTIES
++  INTERFACE_LINK_LIBRARIES GTest::gtest
++  INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/include
++)
+ 
+ enable_testing()
+ 
+

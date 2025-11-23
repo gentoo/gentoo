@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="network">Install network plug-ins</flag>
+		<flag name="rootless">Enable libsubid (subuid/subgid mapping) for rootless</flag>
+		<flag name="suid">Install SUID helper binary</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">apptainer/apptainer</remote-id>
+	</upstream>
+</pkgmetadata>

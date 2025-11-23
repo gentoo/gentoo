@@ -1,0 +1,10 @@
+--- a/configure
++++ b/configure
+@@ -109,6 +109,7 @@
+ all_platforms="${all_platforms} ppc64-darwin9-gcc"
+ all_platforms="${all_platforms} ppc64-linux-gcc"
+ all_platforms="${all_platforms} sparc-solaris-gcc"
++all_platforms="${all_platforms} sparc-linux-gcc"
+ all_platforms="${all_platforms} x86-android-gcc"
+ all_platforms="${all_platforms} x86-darwin8-gcc"
+ all_platforms="${all_platforms} x86-darwin8-icc"

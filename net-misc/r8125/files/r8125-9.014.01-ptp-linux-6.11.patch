@@ -1,0 +1,58 @@
+From 2c3c008b5ee7bc87fc8f146b787533c334fa3cf9 Mon Sep 17 00:00:00 2001
+From: Evgeny Grin <k2k@narod.ru>
+Date: Sun, 24 Nov 2024 10:44:00 +0300
+Subject: [PATCH] Fixed missing changes for PTP on kernels >= 6.11
+
+---
+ src/r8125_ptp.h | 9 ++++++++-
+ src/r8125_ptp.c | 2 +-
+ 2 files changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/src/r8125_ptp.h b/src/r8125_ptp.h
+index b24136a..ca137b1 100644
+--- a/src/r8125_ptp.h
++++ b/src/r8125_ptp.h
+@@ -35,12 +35,19 @@
+ #ifndef _LINUX_rtl8125_PTP_H
+ #define _LINUX_rtl8125_PTP_H
+ 
++#include <linux/version.h>
+ #include <linux/ktime.h>
+ #include <linux/timecounter.h>
+ #include <linux/net_tstamp.h>
+ #include <linux/ptp_clock_kernel.h>
+ #include <linux/ptp_classify.h>
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,11,0)
++#  define rtl_ethtool_ts_info   ethtool_ts_info
++#else
++#  define rtl_ethtool_ts_info   kernel_ethtool_ts_info
++#endif /* LINUX_VERSION_CODE < KERNEL_VERSION(6,9,0) */
++
+ struct rtl8125_ptp_info {
+         s64 time_sec;
+         u32 time_ns;
+@@ -66,7 +73,7 @@ struct rtl8125_private;
+ struct RxDescV3;
+ 
+ int rtl8125_get_ts_info(struct net_device *netdev,
+-                        struct ethtool_ts_info *info);
++                        struct rtl_ethtool_ts_info *info);
+ 
+ void rtl8125_ptp_reset(struct rtl8125_private *tp);
+ void rtl8125_ptp_init(struct rtl8125_private *tp);
+diff --git a/src/r8125_ptp.c b/src/r8125_ptp.c
+index 812fced..02a6e41 100644
+--- a/src/r8125_ptp.c
++++ b/src/r8125_ptp.c
+@@ -304,7 +304,7 @@ static int rtl8125_phc_enable(struct ptp_clock_info *ptp,
+ }
+ 
+ int rtl8125_get_ts_info(struct net_device *netdev,
+-                        struct ethtool_ts_info *info)
++                        struct rtl_ethtool_ts_info *info)
+ {
+         struct rtl8125_private *tp = netdev_priv(netdev);
+ 
+-- 
+2.47.0.windows.2

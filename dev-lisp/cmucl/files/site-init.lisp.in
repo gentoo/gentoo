@@ -1,0 +1,56 @@
+;;; -*- Mode: Lisp; Package: System -*-
+;;;
+;;; **********************************************************************
+;;; This code was written as part of the CMU Common Lisp project at
+;;; Carnegie Mellon University, and has been placed in the public domain.
+;;;
+
+;;; Heavy modifications by Peter Van Eynde
+
+;;; More modifications for Gentoo by Matthew Kennedy
+;;; <mkennedy@gentoo.org>
+
+(in-package "SYSTEM")
+
+(if (probe-file "/etc/cmuclrc")
+    (load "/etc/cmuclrc")
+  (format t "~%;;; Warning: There is no /etc/cmuclrc file (which should have been created during emerge"))
+
+;;; If you have sources installed on your system, un-comment the following form
+;;; and change it to point to the source location.  This will allow the Hemlock
+;;; "Edit Definition" command and the debugger to find sources for functions in
+;;; the core.
+(when (probe-file #p"/usr/share/common-lisp/source/cmucl/")
+  (setf (ext:search-list "target:")
+        '(
+          "/usr/share/common-lisp/source/cmucl/" ; object dir
+          )))
+
+;;; (setf (ext:search-list "library:") '("/usr/lib/cmucl/lib/"))
+;;; for safety...
+
+;;; Put your site name here...
+(setq *short-site-name* "Unknown")
+(setq *long-site-name* "Site name not initialized")
+
+(in-package :common-lisp-user)
+
+;;; newbie functions, delete if you don't like them
+
+(defun help ()
+  (format t "~
+Welcome to the Gentoo GNU/Linux port of CMUCL.
+
+The CMUCL REPL does not have GNU Readline-like support, however
+you may wish to install rlwap (see: app-misc/rlwrap) to achieve
+the same effect.
+
+If you think you found a bug, please use http://bugs.gentoo.org/
+
+Read the documentation in /usr/share/doc/@PF@.
+
+\(quit)            exit Lisp
+\(describe 'foo)   gives information about foo
+\(inspect '*foo*)  interactively inspects *foo*
+\(apropos \"foo\") briefly describe all symbols which match \"foo\"
+"))

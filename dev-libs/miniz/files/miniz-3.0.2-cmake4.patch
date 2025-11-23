@@ -1,0 +1,19 @@
+From d0190e5cdfb8af6bf825720e4360bd3aa34beb64 Mon Sep 17 00:00:00 2001
+From: Igor Alexey <igor-alexey@hotmail.com>
+Date: Thu, 28 Sep 2023 09:01:25 -0300
+Subject: [PATCH] bump cmake minimum version
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3cb344b..5ab3b66 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.5)
+ 
+ # determine whether this is a standalone project or included by other projects
+ set (MINIZ_STANDALONE_PROJECT ON)

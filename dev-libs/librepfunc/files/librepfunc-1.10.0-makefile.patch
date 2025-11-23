@@ -1,0 +1,20 @@
+--- a/Makefile
++++ b/Makefile
+@@ -32,7 +32,7 @@
+ #/******************************************************************************
+ # * if you prefer verbose non-coloured build messages, remove the '@' here:
+ # *****************************************************************************/
+-CXX = @g++
++CXX ?= $(CXX)
+ CXXFLAGS += -g -O3 -fPIC -Wall -Wextra -Werror=overloaded-virtual -Wfatal-errors
+ CXXFLAGS += -DVERSION=\"$(VERSION)\"
+ DEFINES   = -D_POSIX_C_SOURCE
+@@ -44,7 +44,7 @@
+ # * packages instead of fixing your broken distro, you may overwrite the
+ # * package_name here.
+ # *****************************************************************************/
+-package_name ?= $(LIBRARY_PATCH)
++package_name ?= librepfunc-$(MAJOR).$(MINOR).$(PATCH)
+ 
+ 
+ #/******************************************************************************

@@ -1,0 +1,108 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -74,19 +74,9 @@ macro(ei_add_cxx_compiler_flag FLAG)
+   endif()
+ endmacro()
+ 
+-check_cxx_compiler_flag("-std=c++11" EIGEN_COMPILER_SUPPORT_CPP11)
+-
+-if(EIGEN_TEST_CXX11)
+-  set(CMAKE_CXX_STANDARD 11)
+-  set(CMAKE_CXX_EXTENSIONS OFF)
+-  if(EIGEN_COMPILER_SUPPORT_CPP11)
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+-  endif()
+-else()
+-  #set(CMAKE_CXX_STANDARD 03)
+-  #set(CMAKE_CXX_EXTENSIONS OFF)
+-  ei_add_cxx_compiler_flag("-std=c++03")
+-endif()
++set(CMAKE_CXX_STANDARD 14)
++set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
++set(CMAKE_CXX_EXTENSIONS OFF)
+ 
+ # Determine if we should build shared libraries on this platform.
+ get_cmake_property(EIGEN_BUILD_SHARED_LIBS TARGET_SUPPORTS_SHARED_LIBS)
+@@ -157,7 +157,6 @@ if(NOT MSVC)
+   ei_add_cxx_compiler_flag("-Wshorten-64-to-32")
+   ei_add_cxx_compiler_flag("-Wlogical-op")
+   ei_add_cxx_compiler_flag("-Wenum-conversion")
+-  ei_add_cxx_compiler_flag("-Wc++11-extensions")
+   ei_add_cxx_compiler_flag("-Wdouble-promotion")
+ #  ei_add_cxx_compiler_flag("-Wconversion")
+
+--- a/Eigen/src/Core/util/Macros.h
++++ b/Eigen/src/Core/util/Macros.h
+@@ -37,7 +37,7 @@
+ // Expected values are 03, 11, 14, 17, etc.
+ // By default, let's use an arbitrarily large C++ version.
+ #ifndef EIGEN_MAX_CPP_VER
+-#define EIGEN_MAX_CPP_VER 99
++#define EIGEN_MAX_CPP_VER 14
+ #endif
+ 
+ /** Allows to disable some optimizations which might affect the accuracy of the result.
+--- a/doc/examples/CMakeLists.txt
++++ b/doc/examples/CMakeLists.txt
+@@ -14,7 +14,3 @@ foreach(example_src ${examples_SRCS})
+   )
+   add_dependencies(all_examples ${example})
+ endforeach()
+-
+-if(EIGEN_COMPILER_SUPPORT_CPP11)
+-ei_add_target_property(nullary_indexing COMPILE_FLAGS "-std=c++11")
+-endif()
+\ No newline at end of file
+diff --git a/doc/snippets/CMakeLists.txt b/doc/snippets/CMakeLists.txt
+index 65f195a..4cb18c8 100644
+--- a/doc/snippets/CMakeLists.txt
++++ b/doc/snippets/CMakeLists.txt
+@@ -15,9 +15,6 @@ foreach(snippet_src ${snippets_SRCS})
+     if(EIGEN_STANDARD_LIBRARIES_TO_LINK_TO)
+       target_link_libraries(${compile_snippet_target} ${EIGEN_STANDARD_LIBRARIES_TO_LINK_TO})
+     endif()
+-    if(${snippet_src} MATCHES "cxx11")
+-      set_target_properties(${compile_snippet_target} PROPERTIES COMPILE_FLAGS "-std=c++11")
+-    endif()
+     if(${snippet_src} MATCHES "deprecated")
+       set_target_properties(${compile_snippet_target} PROPERTIES COMPILE_FLAGS "-DEIGEN_NO_DEPRECATED_WARNING")
+     endif()
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -399,7 +399,6 @@ if(CUDA_FOUND)
+     set(CUDA_NVCC_FLAGS "-ccbin ${CMAKE_C_COMPILER}" CACHE STRING "nvcc flags" FORCE)
+   endif()
+   if(EIGEN_TEST_CUDA_CLANG)
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+     string(APPEND CMAKE_CXX_FLAGS " --cuda-path=${CUDA_TOOLKIT_ROOT_DIR}")
+     foreach(GPU IN LISTS EIGEN_CUDA_COMPUTE_ARCH)
+       string(APPEND CMAKE_CXX_FLAGS " --cuda-gpu-arch=sm_${GPU}")
+--- a/unsupported/test/CMakeLists.txt
++++ b/unsupported/test/CMakeLists.txt
+@@ -59,7 +59,7 @@ find_package(MPREAL)
+ if(MPREAL_FOUND AND EIGEN_COMPILER_SUPPORT_CPP11)
+   ei_add_property(EIGEN_TESTED_BACKENDS "MPFR C++, ")
+   include_directories(${MPREAL_INCLUDES})
+-  ei_add_test(mpreal_support "-std=c++11" "${MPREAL_LIBRARIES}" )
++  ei_add_test(mpreal_support "-std=c++14" "${MPREAL_LIBRARIES}" )
+ else()
+   ei_add_property(EIGEN_MISSING_BACKENDS "MPFR C++, ")
+ endif()
+@@ -308,7 +308,6 @@ if(CUDA_FOUND AND EIGEN_TEST_CUDA)
+     set(CUDA_NVCC_FLAGS "-ccbin ${CMAKE_C_COMPILER}" CACHE STRING "nvcc flags" FORCE)
+   endif()
+   if(EIGEN_TEST_CUDA_CLANG)
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+     string(APPEND CMAKE_CXX_FLAGS " --cuda-path=${CUDA_TOOLKIT_ROOT_DIR}")
+     foreach(ARCH IN LISTS EIGEN_CUDA_COMPUTE_ARCH)
+         string(APPEND CMAKE_CXX_FLAGS " --cuda-gpu-arch=sm_${ARCH}")
+--- a/doc/special_examples/CMakeLists.txt
++++ b/doc/special_examples/CMakeLists.txt
+@@ -23,7 +23,6 @@ if(EIGEN_COMPILER_SUPPORT_CPP11)
+   add_executable(random_cpp11 random_cpp11.cpp)
+   target_link_libraries(random_cpp11 ${EIGEN_STANDARD_LIBRARIES_TO_LINK_TO})
+   add_dependencies(all_examples random_cpp11)
+-  ei_add_target_property(random_cpp11 COMPILE_FLAGS "-std=c++11")
+
+   add_custom_command(
+     TARGET random_cpp11

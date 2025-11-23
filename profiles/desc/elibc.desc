@@ -1,0 +1,13 @@
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# This file contains descriptions of ELIBC USE_EXPAND flags.
+
+# Keep it sorted.
+bionic - ELIBC setting for systems that use Android's Bionic C library
+Cygwin - ELIBC setting for systems that use Cygwin
+Darwin - ELIBC setting for systems that use the Darwin C library
+glibc - ELIBC setting for systems that use the GNU C library
+mingw - ELIBC setting for systems that use the Minimalist GNU for Windows library
+musl - ELIBC setting for systems that use the musl C library
+SunOS - ELIBC setting for systems that use the Sun Solaris C library

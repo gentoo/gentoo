@@ -1,0 +1,63 @@
+https://bugs.gentoo.org/952945
+--- a/configure.ac
++++ b/configure.ac
+@@ -121,11 +121,11 @@ AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ #define _GNU_SOURCE 1
+ #endif
+ #include <features.h>
+-void main(void) {
++int main(void) {
+ #if _XOPEN_SOURCE >= 500
+-exit(0); /* UNIX98 compatible */
++return 0; /* UNIX98 compatible */
+ #else
+-exit(-1); /* not UNIX98 compatible */
++return 1; /* not UNIX98 compatible */
+ #endif
+ }
+ ]])],
+@@ -339,12 +339,12 @@ if test "$config_alsa_driver" = "yes"; then
+     AC_LANG_PUSH([C])
+     AC_RUN_IFELSE([AC_LANG_SOURCE([[
+         #include <alsa/asoundlib.h>
+-        void main(void) {
++        int main(void) {
+             /* ensure backward compatibility */
+             #if !defined(SND_LIB_MAJOR) && defined(SOUNDLIB_VERSION_MAJOR)
+             #define SND_LIB_MAJOR SOUNDLIB_VERSION_MAJOR
+             #endif
+-            exit(SND_LIB_MAJOR);
++            return(SND_LIB_MAJOR);
+         }
+     ]])],
+     alsa_major=0,
+@@ -353,12 +353,12 @@ if test "$config_alsa_driver" = "yes"; then
+     )
+     AC_RUN_IFELSE([AC_LANG_SOURCE([[
+         #include <alsa/asoundlib.h>
+-        void main(void) {
++        int main(void) {
+             /* ensure backward compatibility */
+             #if !defined(SND_LIB_MINOR) && defined(SOUNDLIB_VERSION_MINOR)
+             #define SND_LIB_MINOR SOUNDLIB_VERSION_MINOR
+             #endif
+-            exit(SND_LIB_MINOR);
++            return(SND_LIB_MINOR);
+         }
+     ]])],
+     alsa_minor=0,
+@@ -367,12 +367,12 @@ if test "$config_alsa_driver" = "yes"; then
+     )
+     AC_RUN_IFELSE([AC_LANG_SOURCE([[
+         #include <alsa/asoundlib.h>
+-        void main(void) {
++        int main(void) {
+             /* ensure backward compatibility */
+             #if !defined(SND_LIB_SUBMINOR) && defined(SOUNDLIB_VERSION_SUBMINOR)
+             #define SND_LIB_SUBMINOR SOUNDLIB_VERSION_SUBMINOR
+             #endif
+-            exit(SND_LIB_SUBMINOR);
++            return(SND_LIB_SUBMINOR);
+         }
+     ]])],
+     alsa_subminor=0,

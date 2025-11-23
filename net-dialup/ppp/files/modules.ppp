@@ -1,0 +1,10 @@
+alias char-major-108	ppp_generic
+alias /dev/ppp		ppp_generic
+alias tty-ldisc-3	ppp_async
+alias tty-ldisc-13	n_hdlc
+alias tty-ldisc-14	ppp_synctty
+alias ppp-compress-18	ppp_mppe
+alias ppp-compress-21	bsd_comp
+alias ppp-compress-24	ppp_deflate
+alias ppp-compress-26	ppp_deflate
+alias net-pf-24		pppoe

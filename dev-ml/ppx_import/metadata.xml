@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>ml@gentoo.org</email>
+    <name>ML</name>
+  </maintainer>
+  <upstream>
+    <changelog>https://github.com/ocaml-ppx/ppx_import/releases/</changelog>
+    <bugs-to>https://github.com/ocaml-ppx/ppx_import/issues/</bugs-to>
+    <remote-id type="github">ocaml-ppx/ppx_import</remote-id>
+  </upstream>
+</pkgmetadata>

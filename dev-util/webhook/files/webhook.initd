@@ -1,0 +1,22 @@
+#!/sbin/openrc-run
+# Copyright 2016-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="Webhook server"
+pidfile=${pidfile:-"/run/${RC_SVCNAME}.pid"}
+
+command="/usr/bin/webhook"
+command_args="${command_args}"
+command_background="true"
+extra_started_commands="reload"
+start_stop_daemon_args=""
+
+depend() {
+	after net
+}
+
+reload() {
+	ebegin "Reloading webhooks"
+	start-stop-daemon --signal SIGHUP --pidfile "${pidfile}"
+	eend $?
+}

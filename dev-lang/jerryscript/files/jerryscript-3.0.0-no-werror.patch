@@ -1,0 +1,20 @@
+https://bugs.gentoo.org/840263
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -176,7 +176,6 @@
+ macro(jerry_add_compile_warnings)
+   foreach(_warning ${ARGV})
+     jerry_add_compile_flags(-W${_warning})
+-    jerry_add_compile_flags(-Werror=${_warning})
+   endforeach()
+ endmacro()
+ 
+@@ -224,7 +223,7 @@
+   if(NOT "${PLATFORM}" STREQUAL "WINDOWS")
+     jerry_add_compile_warnings(conversion)
+   endif()
+-  jerry_add_compile_flags(-Wno-stack-protector -Wno-attributes -Werror)
++  jerry_add_compile_flags(-Wno-stack-protector -Wno-attributes)
+ endif()
+ 
+ if(USING_GCC)

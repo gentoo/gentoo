@@ -1,0 +1,101 @@
+Upstream-PR: https://github.com/neovim/unibilium/pull/21
+
+From 8447cc364ac9f42745fdabba54fa8e628451f33b Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Mon, 20 Jun 2022 14:52:04 -0700
+Subject: [PATCH] build: Add a minimal configure.ac
+
+When building with slibtool using the rlibtool symlink the build will
+fail when it fails to find the generated libtool. This is required so
+rlibtool can determine if it should build shared or static libraries.
+
+This can be fixed by adding a minimal configure.ac that can generate the
+required files with autoreconf.
+
+Gentoo Bug: https://bugs.gentoo.org/828492
+---
+ Makefile => Makefile.in | 31 +++++++++++++++++--------------
+ configure.ac            | 16 ++++++++++++++++
+ 2 files changed, 33 insertions(+), 14 deletions(-)
+ rename Makefile => Makefile.in (92%)
+ create mode 100644 configure.ac
+
+diff --git a/Makefile b/Makefile.in
+similarity index 92%
+rename from Makefile
+rename to Makefile.in
+index 6060ee6..d97e222 100644
+--- a/Makefile
++++ b/Makefile.in
+@@ -2,21 +2,19 @@ ifneq ($(wildcard .maint),)
+   include maint.mk
+ endif
+ 
+-ifeq ($(shell uname),Darwin)
+-  LIBTOOL?=glibtool
+-else
+-  LIBTOOL?=libtool
+-endif
++CC=@CC@
++LIBTOOL=@LIBTOOL@
+ 
+-CFLAGS?=-O2
++CFLAGS=@CFLAGS@
++LDFLAGS=@LDFLAGS@
+ 
+ CFLAGS_DEBUG=
+ 
+-PACKAGE=unibilium
++PACKAGE=@PACKAGE_NAME@
+ 
+-PKG_MAJOR=2
+-PKG_MINOR=1
+-PKG_REVISION=1
++PKG_MAJOR=@MAJOR@
++PKG_MINOR=@MINOR@
++PKG_REVISION=@PATCH@
+ 
+ PKG_VERSION=$(PKG_MAJOR).$(PKG_MINOR).$(PKG_REVISION)
+ 
+@@ -26,10 +24,15 @@ LT_REVISION=1
+ LT_CURRENT=4
+ LT_AGE=0
+ 
+-PREFIX=/usr/local
+-LIBDIR=$(PREFIX)/lib
+-INCDIR=$(PREFIX)/include
+-MANDIR=$(PREFIX)/share/man
++top_builddir=@top_builddir@
++
++prefix=@prefix@
++exec_prefix=@prefix@
++datarootdir=@datarootdir@
++
++LIBDIR=@libdir@
++INCDIR=@includedir@
++MANDIR=@mandir@
+ MAN3DIR=$(MANDIR)/man3
+ 
+ ifneq ($(OS),Windows_NT)
+diff --git a/configure.ac b/configure.ac
+new file mode 100644
+index 0000000..13cb888
+--- /dev/null
++++ b/configure.ac
+@@ -0,0 +1,16 @@
++m4_define([MAJOR], [2])
++m4_define([MINOR], [1])
++m4_define([PATCH], [1])
++
++AC_INIT([unibilium], [MAJOR.MINOR.PATCH])
++AC_CONFIG_FILES([Makefile])
++
++LT_INIT
++
++AC_SUBST([top_builddir], [$abs_builddir])
++
++AC_SUBST([MAJOR], [MAJOR])
++AC_SUBST([MINOR], [MINOR])
++AC_SUBST([PATCH], [PATCH])
++
++AC_OUTPUT

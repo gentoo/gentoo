@@ -1,0 +1,27 @@
+From 706554992156dd655e893268f201bbecbe283eb5 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Thu, 23 Feb 2023 17:05:36 -0500
+Subject: [PATCH 1/1] libopendkim/util.c: include stdio.h for snprintf.
+
+This fixes a build failure on musl, reported at
+
+  https://bugs.gentoo.org/896048
+---
+ libopendkim/util.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libopendkim/util.c b/libopendkim/util.c
+index 6792b169..b1c6a769 100644
+--- a/libopendkim/util.c
++++ b/libopendkim/util.c
+@@ -17,6 +17,7 @@
+ # include <stdbool.h>
+ #endif /* HAVE_STDBOOL_H */
+ #include <ctype.h>
++#include <stdio.h>
+ #include <assert.h>
+ #include <string.h>
+ #include <errno.h>
+-- 
+2.39.2
+

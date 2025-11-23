@@ -1,0 +1,135 @@
+https://bugs.gentoo.org/881161
+https://github.com/rui314/mold/issues/410
+https://github.com/oneapi-src/oneTBB/commit/ceacd2207edfb72a8fc235213265afe68ce74ad0
+https://github.com/oneapi-src/oneTBB/commit/137c1a88b690acf3525e0f279720ac489ce66481
+
+From ceacd2207edfb72a8fc235213265afe68ce74ad0 Mon Sep 17 00:00:00 2001
+From: Ilya Isaev <ilya.isaev@intel.com>
+Date: Wed, 26 Oct 2022 13:13:51 +0200
+Subject: [PATCH] Rework test_eh_thread to avoid sporadic failures (#946)
+
+Signed-off-by: Isaev, Ilya <ilya.isaev@intel.com>
+--- a/test/tbb/test_eh_thread.cpp
++++ b/test/tbb/test_eh_thread.cpp
+@@ -54,15 +54,16 @@ void limitThreads(size_t limit)
+     CHECK_MESSAGE(0 == ret, "setrlimit has returned an error");
+ }
+ 
+-static bool g_exception_caught = false;
+-static std::mutex m;
+-static std::condition_variable cv;
+-static std::atomic<bool> stop{ false };
++size_t getThreadLimit() {
++    rlimit rlim;
++
++    int ret = getrlimit(RLIMIT_NPROC, &rlim);
++    CHECK_MESSAGE(0 == ret, "getrlimit has returned an error");
++    return rlim.rlim_cur;
++}
+ 
+ static void* thread_routine(void*)
+ {
+-    std::unique_lock<std::mutex> lock(m);
+-    cv.wait(lock, [] { return stop == true; });
+     return nullptr;
+ }
+ 
+@@ -94,32 +95,17 @@ TEST_CASE("Too many threads") {
+     }
+ 
+     // Some systems set really big limit (e.g. >45К) for the number of processes/threads
+-    limitThreads(1024);
+-
+-    std::thread /* isolate test */ ([] {
+-        std::vector<Thread> threads;
+-        stop = false;
+-        auto finalize = [&] {
+-            stop = true;
+-            cv.notify_all();
+-            for (auto& t : threads) {
+-                t.join();
+-            }
+-        };
+-
+-        for (int i = 0;; ++i) {
++    limitThreads(1);
++    if (getThreadLimit() == 1) {
++        for (int attempt = 0; attempt < 5; ++attempt) {
+             Thread thread;
+-            if (!thread.isValid()) {
+-                break;
+-            }
+-            threads.push_back(thread);
+-            if (i == 1024) {
+-                WARN_MESSAGE(false, "setrlimit seems having no effect");
+-                finalize();
++            if (thread.isValid()) {
++                WARN_MESSAGE(false, "We were able to create a thread. setrlimit seems having no effect");
++                thread.join();
+                 return;
+             }
+         }
+-        g_exception_caught = false;
++        bool g_exception_caught = false;
+         try {
+             // Initialize the library to create worker threads
+             tbb::parallel_for(0, 2, [](int) {});
+@@ -132,9 +118,10 @@ TEST_CASE("Too many threads") {
+         }
+         // Do not CHECK to avoid memory allocation (we can be out of memory)
+         if (!g_exception_caught) {
+-            FAIL("No exception was caught");
++            FAIL("No exception was thrown on library initialization");
+         }
+-        finalize();
+-    }).join();
++    } else {
++        WARN_MESSAGE(false, "setrlimit seems having no effect");
++    }
+ }
+ #endif
+
+From 137c1a88b690acf3525e0f279720ac489ce66481 Mon Sep 17 00:00:00 2001
+From: Rui Ueyama <ruiu@cs.stanford.edu>
+Date: Wed, 26 Oct 2022 04:54:20 -0700
+Subject: [PATCH] Retry if pthread_create fails with EAGAIN (#824)
+
+Signed-off-by: Rui Ueyama <ruiu@cs.stanford.edu>
+--- a/src/tbb/rml_thread_monitor.h
++++ b/src/tbb/rml_thread_monitor.h
+@@ -31,6 +31,7 @@
+ #include <pthread.h>
+ #include <cstring>
+ #include <cstdlib>
++#include <time.h>
+ #else
+ #error Unsupported platform
+ #endif
+@@ -191,8 +192,25 @@ inline thread_monitor::handle_type thread_monitor::launch( void* (*thread_routin
+     check(pthread_attr_init( &s ), "pthread_attr_init has failed");
+     if( stack_size>0 )
+         check(pthread_attr_setstacksize( &s, stack_size ), "pthread_attr_setstack_size has failed" );
++
++    // pthread_create(2) can spuriously fail with EAGAIN. We retry
++    // max_num_tries times with progressively longer wait times.
+     pthread_t handle;
+-    check( pthread_create( &handle, &s, thread_routine, arg ), "pthread_create has failed" );
++    const int max_num_tries = 20;
++    int error = EAGAIN;
++
++    for (int i = 0; i < max_num_tries && error == EAGAIN; i++) {
++      if (i != 0) {
++        // Wait i milliseconds
++        struct timespec ts = {0, i * 1000 * 1000};
++        nanosleep(&ts, NULL);
++      }
++      error = pthread_create(&handle, &s, thread_routine, arg);
++    }
++
++    if (error)
++      handle_perror(error, "pthread_create has failed");
++
+     check( pthread_attr_destroy( &s ), "pthread_attr_destroy has failed" );
+     return handle;
+ }
+

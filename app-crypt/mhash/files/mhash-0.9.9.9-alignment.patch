@@ -1,0 +1,15 @@
+--- a/lib/stdfns.c
++++ b/lib/stdfns.c
+@@ -378,6 +378,12 @@ mutils_memmove(void *dest, __const void 
+ 	bigptr1 = (mutils_word32 *) dest;
+ 	bigptr2 = (mutils_word32 *) src;
+ 
++	/* copy byte-by-byte for small and/or unaligned copies */
++	if ((n < 16) || ((mutils_word32)dest & 0x3) || ((mutils_word32)src & 0x3))
++	{
++		return mutils_memcpy8(dest, src, n);
++	}
++
+ 	words = n >> 2;
+ 	remainder = n - (words << 2);
+ 

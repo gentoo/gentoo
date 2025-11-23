@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'https://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>orbea@riseup.net</email>
+		<name>orbea</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		Nestopia JG is an emulator for the Nintendo Entertainment
+		System/Famicom, including support for the Famicom Disk
+		System and VS. System. Though originally a fork, Nestopia JG
+		has become the de facto upstream branch of the Nestopia
+		emulator.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://gitlab.com/jgemu/nestopia/-/issues</bugs-to>
+		<changelog>https://gitlab.com/jgemu/nestopia/-/blob/master/ChangeLog</changelog>
+		<remote-id type="gitlab">jgemu/nestopia</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,79 @@
+This was taken from the README file in the source distribution
+and cleaned up a bit. Read all of this, or at least skim it. Please?
+
+Note:
+1. If you install a new compile of quake2, you'll lose your savegames. I'm 
+sorry. Don't upgrade in the middle of a single-player game.
+
+===============================================================================
+
+To emerge the Quake2 data:
+--------------------------
+1. emerge quake2-data
+
+That was easy huh ? :)  Note: this requires the Quake2 CD and/or the data files
+from an installed copy of the game (like for windows).
+
+===============================================================================
+
+To install the Quake2 demo data:
+--------------------------------
+1. download ftp://ftp.idsoftware.com/idstuff/quake2/q2-314-demo-x86.exe
+2. unzip -L q2-314-demo-x86.exe into a temp directory
+3. cp baseq2/pak0.pak to /usr/share/games/quake2-data/baseq2/pak0.pak
+
+===============================================================================
+
+To install the Quake2 gamedata from game CD:
+--------------------------------------------
+(assuming the cdrom is mounted at /cdrom)
+
+1. cp /cdrom/Install/Data/baseq2/pak0.pak  /usr/share/games/quake2-data/baseq2/
+
+2. cp /cdrom/Install/Data/baseq2/video/    /usr/share/games/quake2-data/baseq2/
+   (optional)
+   
+3. Download ftp://ftp.idsoftware.com/idstuff/quake2/q2-3.20-x86-full.exe
+   and extract the contents to a temporary directory (use unzip -L, as this 
+   is a standard zip file).
+
+4. cp <temp directory>/baseq2/pak1.pak /usr/share/games/quake2-data/baseq2/
+5. cp <temp directory>/baseq2/pak2.pak /usr/share/games/quake2-data/baseq2/
+6. cp <temp directory>/baseq2/players/ /usr/share/games/quake2-data/baseq2/
+
+7. if you really want to use the crakhor model, you can find the
+   skins/sounds on websites like http://www.mike-d.com/games/modskins.html
+   (optional)
+
+===============================================================================
+
+Capture The Flag:
+-----------
+To run Capture The Flag, you need to do the following:
+
+1. Download ftp://ftp.idsoftware.com/idstuff/quake2/q2-3.20-x86-full-ctf.exe
+2. unzip that file (using unzip -L) into a temp directory
+3. cp <temp directory>/ctf /usr/share/games/quake2-data/
+
+Execute quake2 with:
+
+quake2 +set game ctf +set dedicated 1
+ -- or --
+q2ded +set game ctf
+===============================================================================
+
+Joystick Support:
+-----------------
+Joystick should function on all compatible SDL platforms using the sdlquake2
+binary as well as on linux using the linux kernel joystick API.
+
+Joystick obeys the same free-look/strafe rules as mouse.  You can set these in
+the options menu.
+
+There are four command line settings for joystick:
+1. j_invert_y [1],0 if set to zero pulling back on the joystick points down
+2. j_lr_axis [0] set the axis which controls left right movement
+3. j_ud_axis [1] set the axis which controls up down (in free-look) or 
+   forward back (freelock off)
+4. j_throttle [3] set the axis which controls the players forward backward 
+   throttle (if free-look is true)

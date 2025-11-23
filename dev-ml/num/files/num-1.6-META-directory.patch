@@ -1,0 +1,10 @@
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -48,6 +48,7 @@ META.num:
+ 	@echo 'version = "$(VERSION)"' >> $@
+ 	@echo 'description = "Arbitrary-precision rational arithmetic"' >> $@
+ 	@echo 'package "core" (' >> $@
++	@echo '  directory = ".."' >> $@
+ 	@echo '  version = "$(VERSION)"' >> $@
+ 	@echo '  browse_interfaces = ""' >> $@
+ 	@echo '  archive(byte) = "nums.cma"' >> $@

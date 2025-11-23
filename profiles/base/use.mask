@@ -1,0 +1,87 @@
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# This file is only for generic masks. For arch-specific masks (i.e.
+# mask everywhere, unmask on arch/*) use arch/base.
+
+# Sam James <sam@gentoo.org> (2025-04-19)
+# Ruby 3.1 is no longer supported upstream and will no longer
+# receive security updates.
+ruby_targets_ruby31
+
+# Michał Górny <mgorny@gentoo.org> (2024-12-31)
+# LLVM slots with no keyworded releases yet.
+llvm_slot_22
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-12-11)
+# dev-db/firebird last-rites preparation
+firebird
+
+# Robin H. Johnson <robbat2@gentoo.org> (2024-11-17)
+# bug 943698
+# Poor upstream code quality, unmaintained upstream;
+# no hardware for testing # anymore.
+# https://public-inbox.gentoo.org/gentoo-dev/robbat2-20240529T185323-477923075Z@orbis-terrarum.net/
+lcd_devices_g15
+g15
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2024-10-21)
+# Mechanism for coping with the time64 transition of 32bit arches
+# Will be unmasked in the time64 profiles
+perl_features_time64
+time64
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2024-05-01)
+# PERL_FEATURES=debug is not a setting that should be used lightly.
+# If you really need it, then unmask it...
+perl_features_debug
+
+# Matt Turner <mattst88@gentoo.org> (2022-04-16)
+# dev-util/sysprof not keyworded on most arches yet
+sysprof
+
+# Sam James <sam@gentoo.org> (2022-01-12)
+# PCH has proven itself to be unreliable and lead to spurious build
+# failures. Masking so users aren't exposed to such failures without opting-in.
+# Failures aren't always reproducible and implementations are often fragile.
+# Please speak to <toolchain@gentoo.org> and/or <qa@gentoo.org> before dropping.
+# See e.g. bug #753323, bug #822690.
+pch
+
+# Matt Turner <mattst88@gentoo.org> (2018-11-11)
+# d3d9 only works on amd64/x86.
+d3d9
+
+# masking here and unmasking in default/linux/
+kmod
+
+# profile specific USE flags
+# Don't put hardened in here.
+# TODO: move multilib into arch/base once inherit order is fixed
+selinux
+multilib
+
+elibc_bionic
+elibc_Cygwin
+elibc_Darwin
+elibc_musl
+elibc_SunOS
+
+kernel_Darwin
+kernel_SunOS
+kernel_Winnt
+
+# Jeremy Olexa <darkside@gentoo.org>
+# The prefix USE flags should never be used on non prefix profiles
+prefix
+prefix-guest
+prefix-stack
+
+# Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-27)
+# netlink is a Linux-specific interface
+netlink
+
+# Diego Pettenò <flameeyes@gentoo.org> (2006-12-30)
+# These are specific to Mac OS X
+aqua
+coreaudio

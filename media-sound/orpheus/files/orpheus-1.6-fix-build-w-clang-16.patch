@@ -1,0 +1,87 @@
+Bug: https://bugs.gentoo.org/897794
+Some replacements for making it possible to be built with clang-16
+Some of the functions (for eample binary_function and bind1st) are removed in C++17
+--- a/kkconsui-0.1/src/texteditor.cc
++++ b/kkconsui-0.1/src/texteditor.cc
+@@ -791,7 +791,8 @@ void texteditor::showline(int ln, int startx, int distance, int extrax) {
+     const char *p;
+ 
+     if(!(cs = (char *) curfile->lines->at(ln))) return;
+-    char cp[i = (strlen(cs)+1)*4];
++	i = (strlen(cs)+1)*4;
++    char cp[i];
+     char buf[i];
+ 
+     eolstart = i;
+--- a/kkstrtext-0.1/kkstrtext.cc
++++ b/kkstrtext-0.1/kkstrtext.cc
+@@ -167,7 +167,7 @@ string toutf8(const string &text) {
+ }
+ 
+ char *unmime(char *text) {
+-    register int s, d;
++    int s, d;
+     int htm;
+ 
+     for(s = 0, d = 0; text[s] != 0; s++) {
+@@ -185,7 +185,7 @@ char *unmime(char *text) {
+ }
+ 
+ char *mime(char *dst, const char *src) {
+-    register int s, d;
++    int s, d;
+     char c;
+ 
+     for(s = 0, d = 0; src[s]; s++) {
+--- a/src/cdtrack.cc
++++ b/src/cdtrack.cc
+@@ -45,8 +45,12 @@ int cdfd = -1, numtracks;
+ string cddbquery, cdid, cdtitle;
+ bool ejected = false;
+ 
+-struct istracknumber: public binary_function<int, const track*, bool> {
+-    public: bool operator()(int n, const track *c) const {
++struct istracknumber {
++    public:
++		using first_argument_type = int;
++		using second_argument_type = const track*;
++		using result_type = bool;
++		bool operator()(int n, const track *c) const {
+ 	const cdtrack *cdt = static_cast<const cdtrack *>(c);
+ 
+ 	if(cdt) {
+@@ -104,7 +108,7 @@ vector<string> cdtrack::getstatus() const {
+ 
+ 	r.push_back("CD: " + cdtitle + "; " + buf);
+ 
+-	it = find_if(plist.begin(), plist.end(), bind1st(istracknumber(), subc.cdsc_trk));
++	it = find_if(plist.begin(), plist.end(), bind(istracknumber(), subc.cdsc_trk, std::placeholders::_1));
+ 
+ 	if(it != plist.end()) {
+ 	    cdtrack *ct = static_cast<cdtrack *>(*it);
+@@ -332,7 +336,7 @@ bool cdtrack::loadtracks(const string &fname) {
+ 
+ 		} else if(param.substr(0, 6) == "TTITLE") {
+ 		    ntrack = strtoul(param.substr(6).c_str(), 0, 0);
+-		    it = find_if(plist.begin(), plist.end(), bind1st(istracknumber(), ntrack+1));
++		    it = find_if(plist.begin(), plist.end(), bind(istracknumber(), ntrack+1, std::placeholders::_1));
+ 
+ 		    if(it != plist.end()) {
+ 			cdtrack *ct = static_cast<cdtrack *>(*it);
+--- a/src/streamtrack.cc
++++ b/src/streamtrack.cc
+@@ -283,8 +283,12 @@ string streamtrack::makerequest(const string &url) {
+     return reply;
+ }
+ 
+-struct equals_url: public binary_function<const char *, const track*, bool> {
+-    public: bool operator()(const char *aurl, const track *c) const {
++struct equals_url {
++    public: 
++		using first_argument_type = const char*;
++		using second_argument_type = const track*;
++		using result_type = bool;
++		bool operator()(const char *aurl, const track *c) const {
+ 	const streamtrack *st = static_cast<const streamtrack *>(c);
+ 
+ 	if(st) {

@@ -1,0 +1,69 @@
+From e024a79b7b16b09bfe88222ed7f43b969b3eb444 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Fri, 18 Dec 2009 10:49:19 -0500
+Subject: [PATCH] clean up build system
+
+Respect env build settings (compiler flags and tools) and install the man
+page for people.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+--- a/Makefile
++++ b/Makefile
+@@ -3,14 +3,22 @@ HAS_GTK_GUI = 1
+ 
+ DESTDIR =
+ SBINDIR = /usr/sbin
+-XCFLAGS = -W  -g `pkg-config --cflags glib-2.0` -D_FORTIFY_SOURCE=2 -Wno-sign-compare
+-LDF = -Wl,--as-needed `pkg-config --libs glib-2.0`   -lncursesw 
++DATADIR = /usr/share/latencytop
++MANDIR  = /usr/share/man
++MAN8DIR = $(MANDIR)/man8
++PKG_CONFIG ?= pkg-config
++CFLAGS   ?= -g -W
++CPPFLAGS ?= -D_FORTIFY_SOURCE=2
++override CFLAGS   += -Wno-sign-compare
++override CPPFLAGS += `$(PKG_CONFIG) --cflags glib-2.0`
++LDFLAGS ?= -Wl,--as-needed
++LDADD    = `$(PKG_CONFIG) --libs glib-2.0` `$(PKG_CONFIG) --libs ncursesw`
+ 
+ OBJS= latencytop.o text_display.o translate.o fsync.o
+ 
+-ifdef HAS_GTK_GUI
+-  XCFLAGS += `pkg-config --cflags gtk+-2.0` -DHAS_GTK_GUI
+-  LDF += `pkg-config --libs gtk+-2.0`
++ifeq ($(HAS_GTK_GUI),1)
++  override CPPFLAGS += `$(PKG_CONFIG) --cflags gtk+-2.0` -DHAS_GTK_GUI
++  LDADD += `$(PKG_CONFIG) --libs gtk+-2.0`
+   OBJS += gtk_display.o 
+ endif
+ 
+@@ -24,19 +32,17 @@ endif
+ # libncursesw5-dev package. 
+ #
+ 
+-# We write explicity this "implicit rule"
+-%.o : %.c
+-	gcc -c $(CFLAGS) $(XCFLAGS) $< -o $@
+-
+ latencytop:  $(OBJS) latencytop.h Makefile
+-	gcc $(CFLAGS) $(OBJS) $(LDF) -o latencytop 
++	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $@ $(LDADD)
+ 
+ clean:
+ 	rm -f *~ latencytop DEADJOE *.o
+ 
+ install: latencytop
+-	mkdir -p $(DESTDIR)/usr/share/latencytop
+-	mkdir -p $(DESTDIR)/$(SBINDIR)
+-	install -m 0644 latencytop.trans $(DESTDIR)/usr/share/latencytop/latencytop.trans
+-	install -m 0644 *.png $(DESTDIR)/usr/share/latencytop/
++	mkdir -p $(DESTDIR)$(DATADIR) $(DESTDIR)$(SBINDIR) $(DESTDIR)$(MAN8DIR)
++	install -m 0644 latencytop.trans $(DESTDIR)$(DATADIR)/latencytop.trans
++ifeq ($(HAS_GTK_GUI),1)
++	install -m 0644 *.png $(DESTDIR)$(DATADIR)/
++endif
++	install -m 0644 *.8 $(DESTDIR)$(MAN8DIR)/
+ 	install -m 0755 latencytop $(DESTDIR)$(SBINDIR)/
+-- 
+1.6.5.4
+

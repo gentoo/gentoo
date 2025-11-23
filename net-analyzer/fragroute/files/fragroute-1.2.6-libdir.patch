@@ -1,0 +1,160 @@
+--- a/configure.in
++++ b/configure.in
+@@ -22,157 +22,12 @@
+ AC_PROG_LN_S
+ AC_PROG_RANLIB
+ 
+-dnl XXX - we need MingW32 under Cygwin for win32
+-AC_CYGWIN
+-if test "$CYGWIN" = yes ; then
+-   if test -d /usr/include/mingw; then
+-      CPPFLAGS="$CPPFLAGS -mno-cygwin"
+-      CFLAGS="$CFLAGS -mno-cygwin"
+-      AC_DEFINE(WIN32_LEAN_AND_MEAN, 1, 
+-          [Define for faster code generation.])
+-      AC_DEFINE(snprintf, _snprintf, [Use MingW32's internal snprintf])
+-      AC_DEFINE(vsnprintf, _vsnprintf, [Use MingW32's internal vsnprintf])
+-   else
+-      AC_MSG_ERROR([need MingW32 package to build under Cygwin])
+-   fi
+-   dnl XXX - use our internal event-win32 hack
+-   EVENTINC="-I${srcdir}/win32"
+-   AC_LIBOBJ([event-win32])
+-   AC_SUBST(EVENTINC)
+-
+-else
+-dnl XXX - BEGIN !CYGWIN
+-
+-
+-dnl Checks for libevent
+-AC_MSG_CHECKING(for libevent)
+-AC_ARG_WITH(libevent,
+-[  --with-libevent=DIR     use libevent in DIR],
+-[ case "$withval" in
+-  yes|no)
+-     AC_MSG_RESULT(no)
+-     ;;
+-  *)
+-     AC_MSG_RESULT($withval)
+-     if test -f $withval/include/event.h -a -f $withval/lib/libevent.so; then
+-        owd=`pwd`
+-        if cd $withval; then withval=`pwd`; cd $owd; fi
+-        EVENTINC="-I$withval/include"
+-        EVENTLIB="-L$withval/lib -levent"
+-     elif test -f $withval/include/event.h -a -f $withval/lib64/libevent.so; then
+-        owd=`pwd`
+-        if cd $withval; then withval=`pwd`; cd $owd; fi
+-        EVENTINC="-I$withval/include"
+-        EVENTLIB="-L$withval/lib64 -levent"
+-     elif test -f $withval/event.h -a -f $withval/libevent.so; then
+-        owd=`pwd`
+-        if cd $withval; then withval=`pwd`; cd $owd; fi
+-        EVENTINC="-I$withval"
+-        EVENTLIB="-L$withval -levent"
+-     else
+-        AC_ERROR(event.h or libevent.so not found in $withval)
+-     fi
+-     ;;
+-  esac ],
+-[ if test -f ${prefix}/include/event.h -a -f ${prefix}/lib/libevent.so; then
+-     EVENTINC="-I${prefix}/include"
+-     EVENTLIB="-L${prefix}/lib -levent"
+-  elif test -f ${prefix}/include/event.h -a -f ${prefix}/lib64/libevent.so; then
+-     EVENTINC="-I${prefix}/include"
+-     EVENTLIB="-L${prefix}/lib64 -levent"
+-  else
+-     AC_MSG_RESULT(no)
+-     AC_ERROR(libevent not found)
+-  fi
+-  AC_MSG_RESULT(yes) ]
+-)
+ AC_SUBST(EVENTINC)
+ AC_SUBST(EVENTLIB)
+ 
+-dnl XXX - END !CYGWIN
+-fi
+-
+-dnl Checks for libpcap
+-AC_MSG_CHECKING(for libpcap)
+-AC_ARG_WITH(libpcap,
+-[  --with-libpcap=DIR      use libpcap in DIR],
+-[ case "$withval" in
+-  yes|no)
+-     AC_MSG_RESULT(no)
+-     ;;
+-  *)
+-     AC_MSG_RESULT($withval)
+-     if test -f $withval/pcap.h -a -f $withval/libpcap.so; then
+-        owd=`pwd`
+-        if cd $withval; then withval=`pwd`; cd $owd; fi
+-	PCAPINC="-I$withval -I$withval/bpf"
+-	PCAPLIB="-L$withval -lpcap"
+-     elif test -f $withval/include/pcap.h -a \
+-	       -f $withval/include/pcap-bpf.h; then
+-	owd=`pwd`
+-	if cd $withval; then withval=`pwd`; cd $owd; fi
+-	PCAPINC="-I$withval/include"
+-	if test -f $withval/lib/libwpcap.a; then
+-	   PCAPLIB="-L$withval/lib -lwpcap"
+-	else
+-	   PCAPLIB="-L$withval/lib -lpcap"
+-        fi
+-     else
+-        AC_ERROR(pcap.h, pcap-bpf.h, or libpcap.so not found in $withval)
+-     fi
+-     ;;
+-  esac ],
+-[ if test -f ${prefix}/include/pcap.h; then
+-     PCAPINC="-I${prefix}/include"
+-     if test -f ${prefix}/lib/libwpcap.a; then
+-	PCAPLIB="-L${prefix}/lib -lwpcap"
+-     else
+-        PCAPLIB="-L${prefix}/lib -lpcap"
+-     fi
+-  elif test -f /usr/include/pcap/pcap.h; then
+-     PCAPINC="-I/usr/include/pcap"
+-     PCAPLIB="-lpcap"
+-  elif test -f /usr/include/pcap.h; then
+-     PCAPLIB="-lpcap"
+-  else
+-     AC_MSG_RESULT(no)
+-     AC_ERROR(libpcap not found)
+-  fi
+-  AC_MSG_RESULT(yes) ]
+-)
+ AC_SUBST(PCAPINC)
+ AC_SUBST(PCAPLIB)
+ 
+-dnl Checks for (installed) libdnet
+-AC_MSG_CHECKING(for libdnet)
+-AC_ARG_WITH(libdnet,
+-[  --with-libdnet=DIR      use libdnet in DIR],
+-[ case "$withval" in
+-  yes|no)
+-     AC_MSG_RESULT(no)
+-     ;;
+-  *)
+-     AC_MSG_RESULT($withval)
+-     if test -f $withval/src/libdnet.so; then
+-	DNETINC="-I$withval/include"
+-	DNETLIB="-L$withval/src -ldnet `$withval/dnet-config --libs`"
+-     elif test -x $withval/bin/dnet-config; then
+-	DNETINC="`$withval/bin/dnet-config --cflags`"
+-	DNETLIB="`$withval/bin/dnet-config --libs`"
+-     else
+-        AC_ERROR(dnet-config not found in $withval/bin)
+-     fi
+-     ;;
+-  esac ],
+-[ if test -x ${prefix}/bin/dnet-config; then
+-     DNETINC="`${prefix}/bin/dnet-config --cflags`"
+-     DNETLIB="`${prefix}/bin/dnet-config --libs`"
+-  else
+-     AC_MSG_RESULT(no)
+-     AC_ERROR(libdnet not found)
+-  fi
+-  AC_MSG_RESULT(yes) ]
+-)
+ AC_SUBST(DNETINC)
+ AC_SUBST(DNETLIB)
+ 

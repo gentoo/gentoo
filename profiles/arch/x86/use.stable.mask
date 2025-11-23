@@ -1,0 +1,29 @@
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# New entries go on top.
+# Please use the same syntax as in use.mask.
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-03-07)
+# KDE Frameworks is not stable
+kde
+kwallet
+
+# Paul Zander <negril.nx+gentoo@gmail.org> (2024-02-14)
+# sci-libs/atlas is not stable
+atlas
+
+# Paul Zander <negril.nx+gentoo@gmail.org> (2024-02-14)
+# media-libs/jasper is not stable
+jasper
+
+# Sam James <sam@gentoo.org> (2020-11-10)
+# media-gfx/openvdb is not stable on x86
+# ... and has failing tests right now anyway
+# bug #753566
+openvdb
+
+# Michał Górny <mgorny@gentoo.org> (2014-03-30)
+# PyPy is unstable on this arch.
+python_targets_pypy3_11
+python_single_target_pypy3_11

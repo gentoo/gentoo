@@ -1,0 +1,5 @@
+# Needed for various SELinux tooling
+audit
+# Allows us to avoid suid
+caps
+selinux

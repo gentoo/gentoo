@@ -1,0 +1,10 @@
+[Unit]
+Description=Cron job for OCS-Inventory agent
+After=network.target
+
+[Service]
+User=root
+ExecStart=/usr/bin/ocsinventory-agent --lazy
+
+[Install]
+WantedBy=multi-user.target

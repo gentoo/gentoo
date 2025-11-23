@@ -1,0 +1,56 @@
+From 8e9d059fa88606cba97291232ec16732f552bd48 Mon Sep 17 00:00:00 2001
+From: "Jason A. Donenfeld" <Jason@zx2c4.com>
+Date: Thu, 25 Nov 2021 14:24:25 +0100
+Subject: [PATCH] Makefile: abstract ar to $(AR) and remove tags from all
+
+Build systems need to be able to use a custom `ar` binary. Also, running
+ctags is generally not desirable for the default target.
+
+Signed-off-by: Jason A. Donenfeld <Jason@zx2c4.com>
+---
+Sent upstream as: https://github.com/alexpevzner/sane-airscan/pull/197
+
+ Makefile | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 4c7e202..415d489 100644
+--- a/Makefile
++++ b/Makefile
+@@ -7,6 +7,7 @@
+ #   ----     -------                    -----------
+ #   DESTDIR                             Destination directory for make install
+ #   CC         gcc                      C compiler
++#   AR         ar                       Archiver
+ #   CPPFLAGS                            C preprocessor flags
+ #   CFLAGS     -O2 -g -W -Wall -Werror  C compiler flags
+ #   LDFLAGS                             Linker flags
+@@ -28,6 +29,7 @@
+ #
+ 
+ CC		= gcc
++AR		= ar
+ COMPRESS 	= gzip -n
+ CFLAGS		+= -O2 -g -W -Wall -Werror -pthread $(CPPFLAGS)
+ PKG_CONFIG 	= pkg-config
+@@ -101,7 +103,7 @@ $(OBJDIR)%.o: %.c Makefile airscan.h
+ 
+ .PHONY: all clean install man
+ 
+-all:	tags $(BACKEND) $(DISCOVER) test test-decode test-multipart test-zeroconf test-uri
++all:	$(BACKEND) $(DISCOVER) test test-decode test-multipart test-zeroconf test-uri
+ 
+ tags: $(SRC) airscan.h test.c test-decode.c test-multipart.c test-zeroconf.c test-uri.c
+ 	-ctags -R .
+@@ -113,7 +115,7 @@ $(DISCOVER): $(OBJDIR)discover.o $(LIBAIRSCAN)
+ 	 $(CC) -o $(DISCOVER) discover.c $(CPPFLAGS) $(common_CFLAGS) $(LIBAIRSCAN) $(tools_LDFLAGS)
+ 
+ $(LIBAIRSCAN): $(OBJ) Makefile
+-	ar cru $(LIBAIRSCAN) $(OBJ)
++	$(AR) cru $(LIBAIRSCAN) $(OBJ)
+ 
+ install: all
+ 	mkdir -p $(DESTDIR)/$(bindir)
+-- 
+2.34.1
+

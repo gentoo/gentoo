@@ -1,0 +1,39 @@
+diff '--color=auto' -Naur a/vod/filters/audio_decoder.c b/vod/filters/audio_decoder.c
+--- a/vod/filters/audio_decoder.c	2025-11-01 03:45:56.847237653 +0000
++++ b/vod/filters/audio_decoder.c	2025-11-01 03:48:13.536886918 +0000
+@@ -159,7 +159,7 @@
+ void
+ audio_decoder_free(audio_decoder_state_t* state)
+ {
+-	avcodec_close(state->decoder);
++	avcodec_free_context(&state->decoder);
+ 	av_free(state->decoder);
+ 	state->decoder = NULL;
+ 	av_frame_free(&state->decoded_frame);
+diff '--color=auto' -Naur a/vod/filters/audio_encoder.c b/vod/filters/audio_encoder.c
+--- a/vod/filters/audio_encoder.c	2025-11-01 03:45:56.847422131 +0000
++++ b/vod/filters/audio_encoder.c	2025-11-01 03:48:27.615223710 +0000
+@@ -156,7 +156,7 @@
+ 		return;
+ 	}
+ 	
+-	avcodec_close(state->encoder);
++	avcodec_free_context(&state->encoder);
+ 	av_free(state->encoder);
+ }
+ 
+diff '--color=auto' -Naur a/vod/thumb/thumb_grabber.c b/vod/thumb/thumb_grabber.c
+--- a/vod/thumb/thumb_grabber.c	2025-11-01 03:45:56.847619626 +0000
++++ b/vod/thumb/thumb_grabber.c	2025-11-01 03:47:58.694348026 +0000
+@@ -107,9 +107,9 @@
+ 		av_freep(state->resize_buffer);
+ 	}
+ 	av_frame_free(&state->decoded_frame);
+-	avcodec_close(state->encoder);
++	avcodec_free_context(&state->encoder);
+ 	av_free(state->encoder);
+-	avcodec_close(state->decoder);
++	avcodec_free_context(&state->decoder);
+ 	av_free(state->decoder);
+ }
+ 

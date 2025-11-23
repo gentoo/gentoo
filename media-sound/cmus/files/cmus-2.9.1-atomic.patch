@@ -1,0 +1,11 @@
+--- cmus-2.8.0/Makefile	2019-01-29 09:09:08.000000000 +0000
++++ cmus-2.8.0.new/Makefile	2019-06-12 14:34:13.000000000 +0000
+@@ -21,7 +21,7 @@
+ FFMPEG_CFLAGS += $(shell pkg-config --cflags libswresample)
+ FFMPEG_LIBS += $(shell pkg-config --libs libswresample)
+ 
+-CMUS_LIBS = $(PTHREAD_LIBS) $(NCURSES_LIBS) $(ICONV_LIBS) $(DL_LIBS) $(DISCID_LIBS) \
++CMUS_LIBS = -latomic $(PTHREAD_LIBS) $(NCURSES_LIBS) $(ICONV_LIBS) $(DL_LIBS) $(DISCID_LIBS) \
+ 			-lm $(COMPAT_LIBS) $(LIBSYSTEMD_LIBS)
+ 
+ command_mode.o input.o main.o ui_curses.o op/pulse.lo: .version

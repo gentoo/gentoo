@@ -1,0 +1,37 @@
+https://github.com/linux-pam/linux-pam/commit/4176cf25a3ae8b5fd2956b41b068221b39932c3a
+
+From 4176cf25a3ae8b5fd2956b41b068221b39932c3a Mon Sep 17 00:00:00 2001
+From: "Dmitry V. Levin" <ldv@strace.io>
+Date: Tue, 17 Jun 2025 13:00:00 +0000
+Subject: [PATCH] pam_lastlog: fix compilation warning on some of 32-bit
+ architectures
+
+On those of 32-bit architectures where glibc defines
+__WORDSIZE_TIME64_COMPAT32, struct utmp.ut_tv.tv_sec is unsigned,
+while time_t is signed, causing the following compiler diagnostics:
+
+  pam_lastlog.c: In function 'last_login_failed':
+  pam_lastlog.c:572:29: warning: comparison of integer expressions of different signedness: '__uint32_t' {aka 'unsigned int'} and 'time_t' {aka 'long int'} [-Wsign-compare]
+  572 |         if (ut.ut_tv.tv_sec >= lltime && strncmp(ut.ut_user, user, UT_NAMESIZE) == 0) {
+
+Given that by its nature these values are treated as unsigned, fix this
+by zero-extending both values to unsigned long long before the comparison.
+---
+ modules/pam_lastlog/pam_lastlog.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/modules/pam_lastlog/pam_lastlog.c b/modules/pam_lastlog/pam_lastlog.c
+index 01545a696..c68b5fb04 100644
+--- a/modules/pam_lastlog/pam_lastlog.c
++++ b/modules/pam_lastlog/pam_lastlog.c
+@@ -569,7 +569,8 @@ last_login_failed(pam_handle_t *pamh, int announce, const char *user, time_t llt
+ 
+     while ((retval=pam_modutil_read(fd, (void *)&ut,
+ 			 sizeof(ut))) == sizeof(ut)) {
+-	if (ut.ut_tv.tv_sec >= lltime && strncmp(ut.ut_user, user, UT_NAMESIZE) == 0) {
++	if (zero_extend_signed_to_ull(ut.ut_tv.tv_sec) >= zero_extend_signed_to_ull(lltime)
++	    && strncmp(ut.ut_user, user, UT_NAMESIZE) == 0) {
+ 	    memcpy(&utuser, &ut, sizeof(utuser));
+ 	    failed++;
+ 	}
+

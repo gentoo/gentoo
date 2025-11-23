@@ -1,0 +1,45 @@
+--- a/Makefile.linux
++++ b/Makefile.linux
+@@ -29,11 +29,11 @@
+ 	$(shell pkg-config zlib --cflags) \
+ 	$(foreach FEATURE, $(FEATURES), $($(FEATURE)_CFLAGS))
+ 
+-CFLAGS=$(PLATFORM) $(CWARN) -O1 -ggdb -pipe $(OPTIONS) -fno-strict-aliasing $(EXTRA_INCLUDES)
++CFLAGS += -pipe $(OPTIONS) -fno-strict-aliasing $(EXTRA_INCLUDES)
+ 
+-CXXFLAGS=$(PLATFORM) $(CXXWARN) -O1 -ggdb -pipe $(OPTIONS) -fno-strict-aliasing $(EXTRA_INCLUDES)
++CXXFLAGS += $(OPTIONS) -fno-strict-aliasing $(EXTRA_INCLUDES)
+ 
+-LDFLAGS=$(shell pkg-config sdl2 --libs) \
++LDFLAGS += $(shell pkg-config sdl2 --libs) \
+ 	$(shell pkg-config libxml-2.0 --libs) \
+ 	$(shell pkg-config SDL2_net --libs) \
+ 	$(shell pkg-config SDL2_image --libs) \
+@@ -140,8 +140,8 @@
+ 
+ # the compile targets
+ $(EXE): $(OBJS)
+-	@echo "  LINK $(EXE)"
+-	@$(LINK) $(CFLAGS) -o $(EXE) $(OBJS) $(LDFLAGS)
++	@echo "$(CC) $(CFLAGS) -o $(EXE) $(OBJS) $(LDFLAGS)"
++	@$(CC) $(CFLAGS) -o $(EXE) $(OBJS) $(LDFLAGS)
+ 
+ #recompile on Makefile or conf change
+ #.depend $(OBJS): Makefile.linux make.conf
+@@ -152,14 +152,14 @@
+ DEPS_MAGIC := $(shell mkdir $(DEPS_DIRS) > /dev/null 2>&1 || :)
+ 
+ $(COBJS): %.o: %.c Makefile.linux make.conf
+-	@echo "  CC   $@"
++	@echo "$(CC) $(CFLAGS) -MT '$@' -MD -MP -MF '.deps/$@.pp' -c $< -o $@"
+ 	@if $(CC) $(CFLAGS) -MT '$@' -MD -MP -MF '.deps/$@.pp' -c $< -o $@; then \
+ 		mv ".deps/$@.pp" ".deps/$@.P"; \
+ 	else rm -f ".deps/$@.pp"; exit 1; \
+ 	fi
+ 
+ $(CXXOBJS): %.o: %.cpp Makefile.linux make.conf
+-	@echo "  CXX  $@"
++	@echo "$(CXX) $(CXXFLAGS) -MT '$@' -MD -MP -MF '.deps/$@.pp' -c $< -o $@"
+ 	@if $(CXX) $(CXXFLAGS) -MT '$@' -MD -MP -MF '.deps/$@.pp' -c $< -o $@; then \
+ 		mv ".deps/$@.pp" ".deps/$@.P"; \
+ 	else rm -f ".deps/$@.pp"; exit 1; \

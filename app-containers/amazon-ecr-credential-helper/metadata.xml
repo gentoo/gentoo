@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>arthurzam@gentoo.org</email>
+		<name>Arthur Zamarin</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">awslabs/amazon-ecr-credential-helper</remote-id>
+		<changelog>https://github.com/awslabs/amazon-ecr-credential-helper/blob/main/CHANGELOG.md</changelog>
+	</upstream>
+</pkgmetadata>

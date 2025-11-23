@@ -1,0 +1,30 @@
+#!/bin/bash
+# Written by phoen][x <phoenix@gentoo.org>, Sep/19/2002
+# Modifications, enhancements or bugs? Mail me.
+
+INSTALL="GAMES_PREFIX_OPT//ut2003-demo"
+
+case ${1} in
+    "--results")
+	pushd ${INSTALL}/Benchmark &> /dev/null
+	./results.sh
+	popd &> /dev/null
+	;;
+    "--bench")
+	pushd ${INSTALL}/Benchmark &> /dev/null
+	./benchmark
+	popd &> /dev/null
+	;;
+    "--help")
+	echo "Usage:"
+	echo " ut2003-demo [--bench] || [--results]"
+	echo " Optional parameters, only one at a time."
+	echo "  --bench   : starts ut2003-demo in benchmark mode"
+	echo "  --results : outputs the results of your last benchmark"
+	;;
+    *)
+	pushd ${INSTALL} &> /dev/null
+	./ut2003_demo
+	popd &> /dev/null
+	;;
+esac

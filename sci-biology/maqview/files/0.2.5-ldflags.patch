@@ -1,0 +1,46 @@
+ configure.ac |   18 +++---------------
+ 1 files changed, 3 insertions(+), 15 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 90e612b..5a00d15 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -9,17 +9,10 @@ AC_PROG_INSTALL
+ AC_STDC_HEADERS
+ 
+ is_static=0
+-case ${prefix} in
+-  NONE);;
+-  *) is_static=1
+-     AC_MSG_WARN([Library libglut will be statically linked.])
+-     LDFLAGS="-L${prefix}/lib"
+-     CPPFLAGS="-I${prefix}/include";;
+-esac
+ 
+ # set CFLAGS and LDFLAGS
+ 
+-true_CFLAGS="-g -O2 -Wall -W -DMAQ_LONGREADS"
++true_CFLAGS="-DMAQ_LONGREADS"
+ case "${host_os}" in
+   darwin*)
+     GLLIBS="-framework OpenGL -framework GLUT"
+@@ -30,17 +23,12 @@ case "${host_os}" in
+ 	  i?86) CPPFLAGS="$CPPFLAGS -D_FILE_OFFSET_BITS=64";;
+ 	esac
+ 	AC_CHECK_LIB([glut], [glutMouseWheelFunc], [CPPFLAGS="$CPPFLAGS -DHAVE_FREEGLUT"])
+-    AC_ARG_ENABLE(static, [  --enable-static         statically link GLUT (Linux Only)],
+-				  [is_static=1])
+-    case $is_static in
+-      1) GLLIBS="-Wl,-Bstatic -lglut -Wl,-Bdynamic -lGL -lGLU -lm";;
+-	  0) GLLIBS="-lGL -lglut -lm";;
+-    esac
++	GLLIBS="-lGL -lglut -lm -lGLU"
+ 	AC_SUBST([GLLIBS]);;
+ #  *) AC_MSG_ERROR([OS is not supported]);;
+ esac
+ AM_CONDITIONAL([HAVE_GL], [test "$isgl" = 1])
+-CFLAGS=$true_CFLAGS
++CFLAGS="${CFLAGS} $true_CFLAGS"
+ 
+ AC_CONFIG_FILES([Makefile])
+ AC_OUTPUT

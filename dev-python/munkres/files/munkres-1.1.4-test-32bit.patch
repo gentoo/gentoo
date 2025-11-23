@@ -1,0 +1,34 @@
+From 380a0d593a0569a761c4a035edaa4414c3b4b31d Mon Sep 17 00:00:00 2001
+From: Stefano Rivera <stefano@rivera.za.net>
+Date: Sat, 17 Oct 2020 11:15:04 -0700
+Subject: [PATCH] Use a constant cost calculation in test_profit_float()
+
+Rather than an architecture-specific calculation, when our variable
+precision does not differ across architectures.
+
+Fixes: #40
+---
+ test/test_munkres.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/test/test_munkres.py b/test/test_munkres.py
+index 23796dd..3cc65d9 100644
+--- a/test/test_munkres.py
++++ b/test/test_munkres.py
+@@ -162,13 +162,13 @@ def test_profit_float():
+                      [37.11, 53.12, 57.13, 78.14, 28.15],
+                      [59.16, 43.17, 97.18, 88.19, 48.2],
+                      [52.21, 19.22, 89.23, 60.24, 60.25]]
+-    import sys
++    max_ = 2**32
+     cost_matrix = munkres.make_cost_matrix(
+-        profit_matrix, lambda cost: sys.maxsize - cost
++        profit_matrix, lambda cost: max_ - cost
+     )
+     indices = m.compute(cost_matrix)
+     profit = sum([profit_matrix[row][column] for row, column in indices])
+-    assert profit == pytest.approx(362.65)
++    assert profit == pytest.approx(392.65)
+ 
+ def test_irregular():
+     matrix = [[12, 26, 17],

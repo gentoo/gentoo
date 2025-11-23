@@ -1,0 +1,12 @@
+Closes: https://bugs.gentoo.org/880931
+--- a/display/X/helper/dga/dga.c	2024-03-27 20:58:09.954061371 +0400
++++ b/display/X/helper/dga/dga.c	2024-03-27 20:58:26.408971886 +0400
+@@ -261,7 +261,7 @@
+ 
+ /* This function performs the CheckMode operation and returns
+  * the number of the best mode.  */
+-static int ggi_xdga_validate_mode(ggi_visual * vis, int num,
++static int ggi_xdga_validate_mode(ggi_visual * vis, long int num,
+ 				  ggi_mode * mode)
+ {
+ 	ggi_x_priv *priv;

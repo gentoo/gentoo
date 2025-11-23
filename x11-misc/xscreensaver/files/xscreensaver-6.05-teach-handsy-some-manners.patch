@@ -1,0 +1,42 @@
+This is to teach handly some good manners and get his mind out of the gutter. He let himself go quite a bit lately.
+Fixes: https://bugs.gentoo.org/869218
+
+
+--- a/hacks/glx/handsy_anim.h
++++ b/hacks/glx/handsy_anim.h
+@@ -770,7 +770,6 @@ static const hand_anim goatse_anim[] = {
+ /**************************************************************************/
+
+ static const hand_anim_pair all_hand_anims[] = {
+-  {{ middle_anim,    middle_anim },    0.2 },
+   {{ tap_anim,       tap_anim },       0.7 },
+   {{ tap_anim,       tap_anim },       0.7 },
+   {{ tap_anim,       tap_anim },       0.7 },
+@@ -778,15 +777,12 @@ static const hand_anim_pair all_hand_anims[] = {
+   {{ spock_anim,     hidden_anim},     0 },
+   {{ horns_anim,     horns_anim},      0 },
+   {{ horns_anim,     horns_anim},      0 },
+-  {{ bs1_anim,       bs2_anim },       0 },
+-  {{ upyours_anim,   hidden_anim },    0 },
+   {{ peace_anim,     hidden_anim },    0 },
+   {{ scissor1_anim,  scissor2_anim },  0 },
+   {{ wave_anim,      hidden_anim },    0 },
+   {{ wave2_anim,     hidden_anim },    0 },
+   {{ jazzhands_anim, jazzhands_anim }, 0 },
+   {{ ok_anim,        ok_anim },        0 },
+-  {{ inout1_anim,    inout2_anim },    0 },
+   {{ clap_anim,      clap_anim },      0 },
+   {{ slow_clap_anim, slow_clap_anim }, 0 },
+   {{ pray_anim,      pray_anim },      0 },
+@@ -795,11 +791,9 @@ static const hand_anim_pair all_hand_anims[] = {
+   {{ thumbsup_anim,  thumbsup_anim },  0 },
+   {{ thumbsdn_anim,  thumbsdn_anim },  0 },
+   {{ thisguy_anim,   thisguy_anim },   0 },
+-  {{ outtahere_anim, hidden_anim },    0 },
+   {{ stahhhp_anim,   stahhhp_anim },   0 },
+   {{ gun_anim,       gun_anim },       0.25 },
+   {{ walk_anim,      walk_anim },      0.3 },
+-  {{ goatse_anim,    goatse_anim },    0 },
+   {{ 0, }}};
+
+ #endif /* __HANDSY_ANIM__ */

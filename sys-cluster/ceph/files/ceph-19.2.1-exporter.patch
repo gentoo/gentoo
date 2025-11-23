@@ -1,0 +1,11 @@
+--- a/src/exporter/DaemonMetricCollector.cc
++++ b/src/exporter/DaemonMetricCollector.cc
+@@ -38,7 +38,7 @@
+     dump_asok_metrics(false, -1, true, dump_response, schema_response, true);
+     auto stats_period = g_conf().get_val<int64_t>("exporter_stats_period");
+     // time to wait before sending requests again
+-    timer.expires_from_now(std::chrono::seconds(stats_period));
++    timer.expires_after(std::chrono::seconds(stats_period));
+     request_loop(timer);
+   });
+ }

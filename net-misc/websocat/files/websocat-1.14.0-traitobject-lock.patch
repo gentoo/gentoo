@@ -1,0 +1,30 @@
+From upstream.
+https://bugs.gentoo.org/959621
+
+From d4455623e777231d69b029d69d7a17c0de2bafe7 Mon Sep 17 00:00:00 2001
+From: Vitaly _Vi Shukela <vi0oss@gmail.com>
+Date: Fri, 23 May 2025 21:37:00 +0200
+Subject: [PATCH] Update traitobject dependency to fix compilation on new Rust
+ versions
+
+Addresses #293.
+---
+ Cargo.lock | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -1768,9 +1768,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "traitobject"
+-version = "0.1.0"
++version = "0.1.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "efd1f82c56340fdf16f2a953d7bda4f8fdffba13d93b00844c25572110b26079"
++checksum = "04a79e25382e2e852e8da874249358d382ebaf259d0d34e75d8db16a7efabbc7"
+ 
+ [[package]]
+ name = "typeable"
+-- 
+2.51.0

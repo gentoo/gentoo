@@ -1,0 +1,26 @@
+--- a/test/helper.rb	2017-09-21 23:30:21.000000000 +0200
++++ b/test/helper.rb	2017-10-09 18:23:11.677090278 +0200
+@@ -14,12 +13,0 @@ end
+-if ENV["CI"]
+-  require "simplecov"
+-  SimpleCov.start
+-else
+-  require File.expand_path("simplecov_custom_profile", __dir__)
+-  SimpleCov.start "gem" do
+-    add_filter "/vendor/gem"
+-    add_filter "/vendor/bundle"
+-    add_filter ".bundle"
+-  end
+-end
+-
+@@ -30,2 +17,0 @@ require "minitest/autorun"
+-require "minitest/reporters"
+-require "minitest/profile"
+@@ -46,7 +31,0 @@ include Jekyll
+-
+-# Report with color.
+-Minitest::Reporters.use! [
+-  Minitest::Reporters::DefaultReporter.new(
+-    :color => true
+-  ),
+-]

@@ -1,0 +1,11 @@
+--- remember-1.9/Makefile~	2006-08-06 03:38:34.000000000 +0200
++++ remember-1.9/Makefile	2007-06-25 07:13:22.000000000 +0200
+@@ -21,7 +21,7 @@
+ 
+ %.elc: %.el
+ 	@$(EMACS) -q $(SITEFLAG) -batch -l ./scripts/$(PROJECT)-build.el \
+-		-f batch-byte-compile $< || :
++		-f batch-byte-compile $<
+ 
+ %.info: %.texi
+ 	makeinfo $<

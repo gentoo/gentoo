@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>joshua.downer@gmail.com</email>
+    <name>Joshua Downer</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription lang="en">The Munkres module provides an implementation of the Munkres algorithm (also called the Hungarian algorithm or the Kuhn-Munkres algorithm), useful for solving the Assignment Problem.
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">munkres</remote-id>
+    <remote-id type="github">bmc/munkres</remote-id>
+  </upstream>
+</pkgmetadata>

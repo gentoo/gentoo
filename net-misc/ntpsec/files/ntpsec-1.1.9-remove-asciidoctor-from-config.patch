@@ -1,0 +1,14 @@
+--- a/wafhelpers/asciidoc.py	2020-10-06 20:14:47.040245129 -0700
++++ b/wafhelpers/asciidoc.py	2020-10-06 20:17:48.100394117 -0700
+@@ -37,9 +37,9 @@
+     # asciidoc versions 8.6.5-8.6.7 throw warnings for warp.adoc and versions
+     # < 8.6.4 have no HTML5 backend.
+     # asciidoc3 versions < 3.0.2 throw errors.
+-    adoc_list = [['asciidoctor', (1, 5, 8)],
+-                 ['asciidoc', (8, 6, 8)],
++    adoc_list = [['asciidoc', (8, 6, 8)],
+                  ['asciidoc3', (3, 0, 2)],
++                 ['asciidoctor-bad', (1, 5, 8)],
+                  ]
+     for progname, asciidocminver in adoc_list:
+         if 'BIN_ASCIIDOC' not in ctx.env or ctx.env.BIN_ASCIIDOC == []:

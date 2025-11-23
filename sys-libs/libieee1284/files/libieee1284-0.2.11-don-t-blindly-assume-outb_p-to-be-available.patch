@@ -1,0 +1,27 @@
+Bug: https://bugs.gentoo.org/898080
+Also refer: https://bugs.gentoo.org/590094
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Thu, 15 Jun 2023 17:39:11 +0000
+Subject: [PATCH 1/1] access_io.c: don't blindly assume outb_p to be available
+
+outb_p is not available in musl libc, the condition using the fuction
+was if __i386__ or __x86_64__ was defined. This is not enough, for
+example when using musl libc both the conditions are meet but the
+function is not available. Hence the addtional check for __GLIBC__ being
+defined is added.
+
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+--- a/src/access_io.c
++++ b/src/access_io.c
+@@ -147,7 +147,7 @@ raw_outb (struct parport_internal *port, unsigned char val, unsigned long addr)
+ {
+ #if (defined(HAVE_LINUX) && defined(HAVE_SYS_IO_H)) || defined(HAVE_CYGWIN_9X) \
+ 	|| defined(HAVE_OBSD_I386) || defined(HAVE_FBSD_I386)
+-#if defined(__i386__) || defined(__x86_64__) || defined(_MSC_VER)
++#if (defined(__i386__) || defined(__x86_64__)) && defined(__GLIBC__) || defined(_MSC_VER)
+   outb_p (val, (unsigned short)addr);
+ #else
+   outb (val, addr);
+-- 
+2.41.0
+

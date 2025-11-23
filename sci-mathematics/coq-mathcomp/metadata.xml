@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <upstream>
+    <changelog>https://github.com/math-comp/math-comp/releases/</changelog>
+    <bugs-to>https://github.com/math-comp/math-comp/issues/</bugs-to>
+    <remote-id type="github">math-comp/math-comp</remote-id>
+  </upstream>
+</pkgmetadata>

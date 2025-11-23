@@ -1,0 +1,78 @@
+From c9034c922a87e5692a1aca7262e1eff0598de9c3 Mon Sep 17 00:00:00 2001
+From: Ralph Sennhauser <ralph.sennhauser@gmail.com>
+Date: Thu, 23 Jan 2025 09:51:01 +0100
+Subject: [PATCH] Quick hack to add --libdir support to test
+
+The switch got lost at some point, this PoC allows to run the tests for
+a system install of a27. Should be fixed for 0.28.0 in a cleaner way.
+
+https://gitea.wildfiregames.com/0ad/0ad/issues/7534
+
+Signed-off-by: Ralph Sennhauser <ralph.sennhauser@gmail.com>
+---
+ build/premake/cxxtest/cxxtest.lua |  2 +-
+ source/test_main.tpl              | 39 +++++++++++++++++++++++++++++++
+ 2 files changed, 40 insertions(+), 1 deletion(-)
+ create mode 100644 source/test_main.tpl
+
+diff --git a/build/premake/cxxtest/cxxtest.lua b/build/premake/cxxtest/cxxtest.lua
+index 70840b70a2..1d27612b12 100644
+--- a/build/premake/cxxtest/cxxtest.lua
++++ b/build/premake/cxxtest/cxxtest.lua
+@@ -53,7 +53,7 @@ function m.init(have_std, have_eh, runner, includes, root_includes)
+ 		buildmessage 'Generating test root file'
+ 		buildcommands {
+ 			"{MKDIR} %{wks.location}/generated",
+-			m.exepath.." --root "..m.rootoptions.." --runner="..m.runner.." -o %{wks.location}/generated/test_root.cpp"
++			m.exepath.." --root "..m.rootoptions.." --template ../../../source/test_main.tpl -o %{wks.location}/generated/test_root.cpp"
+ 		}
+ 		cleancommands { "{DELETE} %{wks.location}/generated/test_root.cpp" }
+ 	end
+diff --git a/source/test_main.tpl b/source/test_main.tpl
+new file mode 100644
+index 0000000000..91c7039cdc
+--- /dev/null
++++ b/source/test_main.tpl
+@@ -0,0 +1,39 @@
++// vim: set filetype=cpp :
++
++#include <cxxtest/ErrorPrinter.h>
++#include <cxxtest/XmlPrinter.h>
++
++#include <ps/DllLoader.h>
++#include <cstring>
++#include <iostream>
++
++int main(int argc, char **argv)
++{
++
++	bool xml = false;
++
++	for (int i = 1; i < argc; ++i)
++	{
++		if (std::strcmp(argv[i], "--libdir") == 0)
++		{
++			// check option arg
++			DllLoader::OverrideLibdir(argv[++i]);
++		}
++		else if (std::strcmp(argv[i], "--xml") == 0)
++		{
++			xml = true;
++		}
++		// else fail and print help
++	}
++
++	if (xml)
++	{
++		std::ofstream out{"testresults.xml"};
++		return CxxTest::XmlPrinter(out).run();
++	}
++	else
++		return CxxTest::ErrorPrinter().run();
++}
++
++// The CxxTest "world"
++<CxxTest world>
+-- 
+2.45.3
+

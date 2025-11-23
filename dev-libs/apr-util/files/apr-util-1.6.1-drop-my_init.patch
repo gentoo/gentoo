@@ -1,0 +1,15 @@
+Was finally removed in >=mysql-8.0.2
+
+--- a/dbd/apr_dbd_mysql.c
++++ b/dbd/apr_dbd_mysql.c
+@@ -1262,9 +1262,6 @@ static apr_status_t thread_end(void *data)
+ 
+ static void dbd_mysql_init(apr_pool_t *pool)
+ {
+-#if MYSQL_VERSION_ID < 100000
+-    my_init();
+-#endif
+     mysql_thread_init();
+ 
+     /* FIXME: this is a guess; find out what it really does */
+ 

@@ -1,0 +1,105 @@
+https://bugs.gentoo.org/948110
+https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/merge_requests/844
+
+From 5fc34d11f408e86edea57c9b69e5344da8e150ec Mon Sep 17 00:00:00 2001
+From: "Igor V. Kovalenko" <igor.v.kovalenko@gmail.com>
+Date: Thu, 27 Mar 2025 21:27:23 +0300
+Subject: [PATCH] qpaeq: port to PyQt6
+
+---
+ src/utils/qpaeq | 30 +++++++++++++++---------------
+ 1 file changed, 15 insertions(+), 15 deletions(-)
+
+diff --git a/src/utils/qpaeq b/src/utils/qpaeq
+index 7e01d873f4..53b0f461a5 100755
+--- a/src/utils/qpaeq
++++ b/src/utils/qpaeq
+@@ -18,8 +18,8 @@
+ 
+ import os,math,sys
+ try:
+-    from PyQt5 import QtWidgets,QtCore
+-    import dbus.mainloop.pyqt5
++    from PyQt6 import QtWidgets,QtCore
++    import dbus.mainloop.pyqt6
+     import dbus
+ except ImportError as e:
+     sys.stderr.write('There was an error importing needed libraries\n'
+@@ -86,7 +86,7 @@ class QPaeq(QtWidgets.QWidget):
+         self.main_layout=QtWidgets.QVBoxLayout()
+         self.setLayout(self.main_layout)
+         toprow_layout=QtWidgets.QHBoxLayout()
+-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
++        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Fixed)
+         sizePolicy.setHorizontalStretch(0)
+         sizePolicy.setVerticalStretch(0)
+         #sizePolicy.setHeightForWidth(self.profile_box.sizePolicy().hasHeightForWidth())
+@@ -95,7 +95,7 @@ class QPaeq(QtWidgets.QWidget):
+         self.sink_box = QtWidgets.QComboBox()
+         self.sink_box.setSizePolicy(sizePolicy)
+         self.sink_box.setDuplicatesEnabled(False)
+-        self.sink_box.setInsertPolicy(QtWidgets.QComboBox.InsertAlphabetically)
++        self.sink_box.setInsertPolicy(QtWidgets.QComboBox.InsertPolicy.InsertAlphabetically)
+         #self.sink_box.setSizeAdjustPolicy(QtWidgets.QComboBox.AdjustToContents)
+         toprow_layout.addWidget(self.sink_box)
+ 
+@@ -107,21 +107,21 @@ class QPaeq(QtWidgets.QWidget):
+         toprow_layout.addWidget(QtWidgets.QLabel('Preset'))
+         self.profile_box = QtWidgets.QComboBox()
+         self.profile_box.setSizePolicy(sizePolicy)
+-        self.profile_box.setInsertPolicy(QtWidgets.QComboBox.InsertAlphabetically)
++        self.profile_box.setInsertPolicy(QtWidgets.QComboBox.InsertPolicy.InsertAlphabetically)
+         #self.profile_box.setSizeAdjustPolicy(QtWidgets.QComboBox.AdjustToContents)
+         toprow_layout.addWidget(self.profile_box)
+ 
+-        large_icon_size=self.style().pixelMetric(QtWidgets.QStyle.PM_LargeIconSize)
++        large_icon_size=self.style().pixelMetric(QtWidgets.QStyle.PixelMetric.PM_LargeIconSize)
+         large_icon_size=QtCore.QSize(large_icon_size,large_icon_size)
+         save_profile=QtWidgets.QToolButton()
+-        save_profile.setIcon(self.style().standardIcon(QtWidgets.QStyle.SP_DriveFDIcon))
++        save_profile.setIcon(self.style().standardIcon(QtWidgets.QStyle.StandardPixmap.SP_DriveFDIcon))
+         save_profile.setIconSize(large_icon_size)
+-        save_profile.setToolButtonStyle(QtCore.Qt.ToolButtonIconOnly)
++        save_profile.setToolButtonStyle(QtCore.Qt.ToolButtonStyle.ToolButtonIconOnly)
+         save_profile.clicked.connect(self.save_profile)
+         remove_profile=QtWidgets.QToolButton()
+-        remove_profile.setIcon(self.style().standardIcon(QtWidgets.QStyle.SP_TrashIcon))
++        remove_profile.setIcon(self.style().standardIcon(QtWidgets.QStyle.StandardPixmap.SP_TrashIcon))
+         remove_profile.setIconSize(large_icon_size)
+-        remove_profile.setToolButtonStyle(QtCore.Qt.ToolButtonIconOnly)
++        remove_profile.setToolButtonStyle(QtCore.Qt.ToolButtonStyle.ToolButtonIconOnly)
+         remove_profile.clicked.connect(self.remove_profile)
+         toprow_layout.addWidget(save_profile)
+         toprow_layout.addWidget(remove_profile)
+@@ -370,11 +370,11 @@ class SliderArraySub(QtWidgets.QWidget):
+         qt=QtCore.Qt
+         #self.layout().setHorizontalSpacing(1)
+         def add_slider(slider,label, c):
+-            self.layout().addWidget(slider,0,c,qt.AlignHCenter)
+-            self.layout().addWidget(label,1,c,qt.AlignHCenter)
++            self.layout().addWidget(slider,0,c,qt.AlignmentFlag.AlignHCenter)
++            self.layout().addWidget(label,1,c,qt.AlignmentFlag.AlignHCenter)
+             self.layout().setColumnMinimumWidth(c,max(label.sizeHint().width(),slider.sizeHint().width()))
+         def create_slider(slider_label):
+-            slider=QtWidgets.QSlider(QtCore.Qt.Vertical,self)
++            slider=QtWidgets.QSlider(QtCore.Qt.Orientation.Vertical,self)
+             label=SliderLabel(slider_label,filter_state,self)
+             slider.setRange(-1000,2000)
+             slider.setSingleStep(1)
+@@ -564,11 +564,11 @@ def subdivide(xs, t_points):
+     return left+right
+ 
+ def main():
+-    dbus.mainloop.pyqt5.DBusQtMainLoop(set_as_default=True)
++    dbus.mainloop.pyqt6.DBusQtMainLoop(set_as_default=True)
+     app=QtWidgets.QApplication(sys.argv)
+     qpaeq_main=QPaeq()
+     qpaeq_main.show()
+-    sys.exit(app.exec_())
++    sys.exit(app.exec())
+ 
+ if __name__=='__main__':
+     main()
+-- 
+GitLab
+

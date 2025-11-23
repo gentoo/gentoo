@@ -1,0 +1,93 @@
+From 915ed5f042f2edecce7e0d014a6b0e99efeb9ca5 Mon Sep 17 00:00:00 2001
+From: Heiko Becker <mail@heiko-becker.de>
+Date: Thu, 20 Feb 2025 22:37:44 +0100
+Subject: [PATCH] CMake: Raised required version to 3.5
+
+CMake >= 4.0.0-rc1 removed compatibility with versions < 3.5 and errors
+out with such versions passed to cmake_minimum_required(). 3.5.0 has
+been released 9 years ago, so I'd assume it's available almost everywhere.
+
+Furthermore at least 3.1 was already required, because that's the
+version, which introduced CXX_STANDARD{,_REQUIRED}.
+
+Also remove the FATAL_ERROR part, which has been ignored since 2.6. and
+CMP0012 is now implicitly assumed to be NEW already.
+---
+ CMakeLists.txt                    | 3 +--
+ gr2fonttest/CMakeLists.txt        | 2 +-
+ src/CMakeLists.txt                | 3 +--
+ tests/bittwiddling/CMakeLists.txt | 2 +-
+ tests/json/CMakeLists.txt         | 2 +-
+ tests/sparsetest/CMakeLists.txt   | 2 +-
+ tests/utftest/CMakeLists.txt      | 2 +-
+ 7 files changed, 7 insertions(+), 9 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4870971d..a2e88fa6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -4,5 +4,4 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.0 FATAL_ERROR)
+-cmake_policy(SET CMP0012 NEW)
++cmake_minimum_required(VERSION 3.5.0)
+ include(TestBigEndian)
+ find_package(PythonInterp 3.6)
+ project(graphite2)
+diff --git a/gr2fonttest/CMakeLists.txt b/gr2fonttest/CMakeLists.txt
+--- a/gr2fonttest/CMakeLists.txt
++++ b/gr2fonttest/CMakeLists.txt
+@@ -4,4 +4,4 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.0 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.5.0)
+ 
+ project(gr2fonttest)
+ 
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -2,8 +2,7 @@
+ #    internet at http://www.fsf.org/licenses/lgpl.html.
+ 
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.0 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.5.0)
+ project(graphite2_core)
+-cmake_policy(SET CMP0012 NEW)
+ INCLUDE(CheckCXXSourceCompiles)
+ 
+ set(GRAPHITE_API_CURRENT 3)
+diff --git a/tests/bittwiddling/CMakeLists.txt b/tests/bittwiddling/CMakeLists.txt
+--- a/tests/bittwiddling/CMakeLists.txt
++++ b/tests/bittwiddling/CMakeLists.txt
+@@ -4,4 +4,4 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.0 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.5.0)
+ project(bits)
+ include(Graphite)
+ include_directories(${graphite2_core_SOURCE_DIR})
+diff --git a/tests/json/CMakeLists.txt b/tests/json/CMakeLists.txt
+--- a/tests/json/CMakeLists.txt
++++ b/tests/json/CMakeLists.txt
+@@ -4,4 +4,4 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.0 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.5.0)
+ project(jsontest)
+ include(Graphite)
+ include_directories(${graphite2_core_SOURCE_DIR})
+diff --git a/tests/sparsetest/CMakeLists.txt b/tests/sparsetest/CMakeLists.txt
+--- a/tests/sparsetest/CMakeLists.txt
++++ b/tests/sparsetest/CMakeLists.txt
+@@ -4,4 +4,4 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.0 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.5.0)
+ project(sparsetest)
+ include(Graphite)
+ include_directories(${graphite2_core_SOURCE_DIR})
+diff --git a/tests/utftest/CMakeLists.txt b/tests/utftest/CMakeLists.txt
+--- a/tests/utftest/CMakeLists.txt
++++ b/tests/utftest/CMakeLists.txt
+@@ -4,4 +4,4 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.0 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.5.0)
+ project(utftest)
+ include(Graphite)
+ include_directories(${graphite2_core_SOURCE_DIR})

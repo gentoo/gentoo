@@ -1,0 +1,24 @@
+--- a/tests/query-files/lit.cfg
++++ b/tests/query-files/lit.cfg
+@@ -6,6 +6,7 @@ import os
+ import sys
+ import re
+ import platform
++import shutil
+ 
+ import lit.util
+ import lit.formats
+@@ -107,12 +108,7 @@ lit_config.note('Using solver: {solver}\n'.format(solver=solverExecutable))
+ config.substitutions.append( ('%solver', solverExecutable) )
+ 
+ # Find OutputCheck
+-OutputCheckTool = os.path.join( os.path.dirname( os.path.dirname( config.test_source_root ) ),
+-                                'deps',
+-                                'OutputCheck',
+-                                'bin',
+-                                'OutputCheck'
+-                              )
++OutputCheckTool = shutil.which("OutputCheck")
+ if not os.path.exists(OutputCheckTool):
+     lit_config.fatal('Cannot find OutputCheck executable: {OutputCheck}'.format(OutputCheck=OutputCheckTool))
+ 

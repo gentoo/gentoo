@@ -1,0 +1,31 @@
+--- a/tests/test_speed.py	2023-05-14 18:22:53.206560417 +0200
++++ b/tests/test_speed.py	2023-05-14 18:24:35.611996479 +0200
+@@ -1,4 +1,6 @@
+ from jiwer import wer
++import pytest
++
+ 
+ 
+ def perform_computation(num_sentences):
+@@ -8,17 +10,21 @@
+     wer(truth, hypo)
+ 
+ 
++@pytest.mark.skip(reason="require pytest-benchmark")
+ def test_speed_n1(benchmark):
+     benchmark(perform_computation, 1)
+ 
+ 
++@pytest.mark.skip(reason="require pytest-benchmark")
+ def test_speed_n10(benchmark):
+     benchmark(perform_computation, 10)
+ 
+ 
++@pytest.mark.skip(reason="require pytest-benchmark")
+ def test_speed_n100(benchmark):
+     benchmark(perform_computation, 100)
+ 
+ 
++@pytest.mark.skip(reason="require pytest-benchmark")
+ def test_speed_n1000(benchmark):
+     benchmark(perform_computation, 1000)

@@ -1,0 +1,47 @@
+--- a/CMakeLists.txt	2022-05-09 12:38:59.927116924 +0200
++++ b/CMakeLists.txt	2022-05-09 12:39:39.141532680 +0200
+@@ -37,22 +37,10 @@
+ 
+ # ---[ Download deps
+ IF(NOT DEFINED FXDIV_SOURCE_DIR)
+-  MESSAGE(STATUS "Downloading FXdiv to ${CMAKE_BINARY_DIR}/FXdiv-source (define FXDIV_SOURCE_DIR to avoid it)")
+-  CONFIGURE_FILE(cmake/DownloadFXdiv.cmake "${CMAKE_BINARY_DIR}/FXdiv-download/CMakeLists.txt")
+-  EXECUTE_PROCESS(COMMAND "${CMAKE_COMMAND}" -G "${CMAKE_GENERATOR}" .
+-    WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/FXdiv-download")
+-  EXECUTE_PROCESS(COMMAND "${CMAKE_COMMAND}" --build .
+-    WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/FXdiv-download")
+   SET(FXDIV_SOURCE_DIR "${CMAKE_BINARY_DIR}/FXdiv-source" CACHE STRING "FXdiv source directory")
+ ENDIF()
+ 
+ IF(PTHREADPOOL_BUILD_TESTS AND NOT DEFINED GOOGLETEST_SOURCE_DIR)
+-  MESSAGE(STATUS "Downloading Google Test to ${CMAKE_BINARY_DIR}/googletest-source (define GOOGLETEST_SOURCE_DIR to avoid it)")
+-  CONFIGURE_FILE(cmake/DownloadGoogleTest.cmake "${CMAKE_BINARY_DIR}/googletest-download/CMakeLists.txt")
+-  EXECUTE_PROCESS(COMMAND "${CMAKE_COMMAND}" -G "${CMAKE_GENERATOR}" .
+-    WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/googletest-download")
+-  EXECUTE_PROCESS(COMMAND "${CMAKE_COMMAND}" --build .
+-    WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/googletest-download")
+   SET(GOOGLETEST_SOURCE_DIR "${CMAKE_BINARY_DIR}/googletest-source" CACHE STRING "Google Test source directory")
+ ENDIF()
+ 
+@@ -153,11 +143,7 @@
+ IF(NOT TARGET fxdiv)
+   SET(FXDIV_BUILD_TESTS OFF CACHE BOOL "")
+   SET(FXDIV_BUILD_BENCHMARKS OFF CACHE BOOL "")
+-  ADD_SUBDIRECTORY(
+-    "${FXDIV_SOURCE_DIR}"
+-    "${CMAKE_BINARY_DIR}/FXdiv")
+ ENDIF()
+-TARGET_LINK_LIBRARIES(pthreadpool PRIVATE fxdiv)
+ 
+ INSTALL(TARGETS pthreadpool
+   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+@@ -157,9 +151,6 @@
+   # ---[ Build google test
+   IF(NOT TARGET gtest)
+     SET(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+-    ADD_SUBDIRECTORY(
+-      "${GOOGLETEST_SOURCE_DIR}"
+-      "${CMAKE_BINARY_DIR}/googletest")
+   ENDIF()
+ 
+   ADD_EXECUTABLE(pthreadpool-test test/pthreadpool.cc)

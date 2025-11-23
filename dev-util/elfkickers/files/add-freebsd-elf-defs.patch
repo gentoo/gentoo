@@ -1,0 +1,68 @@
+--- ./elfrw/elfrw.h.orig	2011-05-31 01:47:08.000000000 +0200
++++ ./elfrw/elfrw.h	2011-06-08 12:16:37.000000000 +0200
+@@ -10,6 +10,24 @@
+ #include <stdio.h>
+ #include <elf.h>
+ 
++#ifdef __FreeBSD__
++typedef uint16_t Elf64_Section;
++
++#define PT_GNU_STACK	0x6474e551
++#define PT_GNU_RELRO	0x6474e552
++
++#if  __FreeBSD_version < 700022
++#define SHT_GNU_HASH	0x6ffffff6
++#define EM_CRIS		76
++#define EM_M32R		88
++#define EM_MN10300	89
++#endif
++
++#define ELFCLASSNUM 3
++#define ELFDATANUM  3
++#define EV_NUM      2
++#endif
++
+ /*
+  * The initialization functions. Call one of these to set the flavor
+  * of ELF structures to translate to and from. The library can be
+--- ./elftoc/readelf.h.orig	2011-05-22 20:46:29.000000000 +0200
++++ ./elftoc/readelf.h	2011-06-08 12:16:37.000000000 +0200
+@@ -7,6 +7,12 @@
+ #ifndef	_readelf_h_
+ #define	_readelf_h_
+ 
++#ifdef __FreeBSD__
++#define ELFCLASSNUM 3
++#define ELFDATANUM  3
++#define EV_NUM      2
++#endif
++
+ /* Read all of the basic headers from the file image (namely the ELF
+  * header, the program segment header table, and the section header
+  * table). False is returned if the file could not be parsed as an ELF
+--- ./elftoc/pieces.c.orig	2011-05-26 03:25:14.000000000 +0200
++++ ./elftoc/pieces.c	2011-06-08 12:16:37.000000000 +0200
+@@ -16,6 +16,10 @@
+ #include "out.h"
+ #include "pieces.h"
+ 
++#ifdef __FreeBSD__
++typedef uint64_t Elf32_Xword;
++#endif
++
+ /* Flags used to insert warnings in the generated source code.
+  */
+ #define	PW_MISALIGNED	0x0001	/* piece misaligned for original type */
+--- ./elftoc/outbase.h.orig	2011-05-22 20:46:29.000000000 +0200
++++ ./elftoc/outbase.h	2011-06-08 12:16:37.000000000 +0200
+@@ -7,6 +7,10 @@
+ #ifndef _outbase_h_
+ #define _outbase_h_
+ 
++#ifdef __FreeBSD__
++#define NT_AUXV     6
++#endif
++
+ /* Set the current output file. Call this before calling any output
+  * functions. (The FILE* argument is given as a void* so as to not
+  * include stdio.h here.)

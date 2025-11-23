@@ -1,0 +1,14 @@
+# Copyright 2020-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2022-10-08)
+# openjdk-bin is available on amd64 musl
+-dev-java/openjdk-bin
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-28)
+# rust-bin is available on amd64 musl
+-dev-lang/rust-bin
+
+# Sebastian Parborg <darkdefende@gmail.com> (2025-01-21)
+# blender-bin is only compatible with glibc
+media-gfx/blender-bin

@@ -1,0 +1,20 @@
+--- a/Source/log.c
++++ b/Source/log.c
+@@ -147,7 +147,7 @@
+   }
+ 
+   if (repeats > 0) {
+-    snprintf(date, 27, asctime(localtime(&last_repeat)));
++    snprintf(date, 27, "%s", asctime(localtime(&last_repeat)));
+     snprintf(repeat_message, 40, "last message repeated %d time(s)\n", repeats);
+     write(fd, date+4, strlen(date)-10);
+     write(fd, " ", 1);
+@@ -155,7 +155,7 @@
+     repeats = 0;
+   }
+ 
+-  snprintf(date, 27, asctime(localtime(&current)));
++  snprintf(date, 27, "%s", asctime(localtime(&current)));
+   write(fd, date+4, strlen(date)-10);
+   write(fd, " ", 1);
+   write(fd, entry, (strlen(entry) < 1023) ? strlen(entry) : 1023 );

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Simutrans
+Encoding=UTF-8
+Comment=A free Transport Tycoon clone
+TryExec=simutrans
+Exec=simutrans
+Icon=simutrans
+Terminal=false
+Categories=Game;Simulation

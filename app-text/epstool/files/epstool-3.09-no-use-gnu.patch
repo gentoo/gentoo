@@ -1,0 +1,31 @@
+From 706546a4921b98834ebf241ea751e0db5d0d192f Mon Sep 17 00:00:00 2001
+From: Adrian Bunk <bunk@debian.org>
+Date: Fri, 14 Sep 2018 18:17:39 +0200
+Subject: [PATCH] src/cplat.h: Don't define __USE_GNU
+
+There were two things wrong with it:
+- __USE_GNU is glibc-internal, the external define is _GNU_SOURCE
+- defining such macros after the first include is wrong, in this case
+it caused FTBFS on ia64.
+
+An option would be to pass -D_GNU_SOURCE when building, but as far
+as I can see the define was not (anymore?) needed at all.
+---
+ src/cplat.h | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/cplat.h b/src/cplat.h
+index 8bbd9c5..ad5cee4 100755
+--- a/src/cplat.h
++++ b/src/cplat.h
+@@ -109,7 +109,6 @@ typedef struct POINT_s {
+ typedef struct _GdkRgbCmap GdkRgbCmap;
+ # endif
+ # include <unistd.h>
+-# define __USE_GNU	/* we might need recursive mutex */
+ # include <semaphore.h>
+ # include <pthread.h>
+ # define ZLIBNAME "libz.so"
+-- 
+2.29.2
+

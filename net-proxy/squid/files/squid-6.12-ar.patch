@@ -1,0 +1,29 @@
+https://github.com/squid-cache/squid/pull/1920
+
+From e9d43d7612ab7bd2b5d04ce0d24e06a342a506e1 Mon Sep 17 00:00:00 2001
+Message-ID: <e9d43d7612ab7bd2b5d04ce0d24e06a342a506e1.1729501292.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Mon, 21 Oct 2024 09:56:38 +0100
+Subject: [PATCH] configure.ac: use AC_CHECK_TOOL for ar
+
+Use AC_CHECK_TOOL which checks the environment variable `$AR` as well, which
+is useful for us in Gentoo when cross-compiling.
+
+We could use AC_PROG_AR in newer autoconf or AM_PROG_AR in automake but
+the AR_R use is hardcoded in a bunch of places so not worth it.
+
+Bug: https://bugs.gentoo.org/911945
+--- a/configure.ac
++++ b/configure.ac
+@@ -129,7 +129,7 @@ AS_IF([test "x$ac_cv_path_PERL" = "xnone"],[
+ AC_PATH_PROG(POD2MAN, pod2man, $FALSE)
+ AM_CONDITIONAL(ENABLE_POD2MAN_DOC, test "x${ac_cv_path_POD2MAN}" != "x$FALSE")
+ 
+-AC_PATH_PROG(AR, ar, $FALSE)
++AC_CHECK_TOOL(AR, ar, :)
+ AR_R="$AR r"
+ AC_SUBST(AR_R)
+ 
+-- 
+2.47.0
+

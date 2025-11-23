@@ -1,0 +1,11 @@
+--- a/src/apinger.h
++++ b/src/apinger.h
+@@ -99,7 +99,7 @@
+ 	void *target_id;
+ };
+ 
+-struct target *targets;
++extern struct target *targets;
+ 
+ extern int foreground;
+ extern char *config_file;

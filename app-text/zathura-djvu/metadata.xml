@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<upstream>
+		<maintainer status="active">
+			<email>mlq@pwmt.org</email>
+			<name>Moritz Lipp</name>
+		</maintainer>
+		<maintainer status="active">
+			<email>sebastian+dev@ramacher.at</email>
+			<name>Sebastian Ramacher</name>
+		</maintainer>
+		<changelog>https://pwmt.org/projects/zathura-djvu/download/</changelog>
+		<bugs-to>https://github.com/pwmt/zathura-djvu/issues</bugs-to>
+		<remote-id type="github">pwmt/zathura-djvu</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,50 @@
+https://github.com/robbat2/readahead-list/pull/1
+
+From 4a22080a30c8906f99eb5899218b9a5f1291b634 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 25 Dec 2022 20:57:43 +0000
+Subject: [PATCH 5/6] Fix build with modern C++
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+```
+filelist-order.cxx: In function ‘void printItem(std::pair<mapkey*, const char*>, std::vector<OrderField*>*)’:
+filelist-order.cxx:276:37: error: unable to find string literal operator ‘operator""fmt’ with ‘const char [3]’, ‘long unsigned int’ arguments
+  276 | #define case_entry(fmt,func) printf("%s"fmt,(first ? "" : " "),func_##func(mk)); break;
+      |                                     ^~~~~~~
+```
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/src/filelist-order.cxx
++++ b/src/filelist-order.cxx
+@@ -15,8 +15,6 @@
+ // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ //
+ 
+-#include <../config.h>
+-
+ #include <cstdlib>
+ #include <map>
+ #include <set>
+@@ -36,6 +34,8 @@
+ #include <fcntl.h>
+ #include <linux/fs.h>
+ 
++#include <../config.h>
++
+ #ifndef BUFFER_SIZE
+ #define BUFFER_SIZE 2048
+ #endif
+@@ -275,7 +275,7 @@ void printItem(PAIR_COMPLETE_TYPE p,vector <OrderField*> *ofa) {
+ 					continue;
+ 				}
+ 				OrderField of = *ofp;
+-#define case_entry(fmt,func) printf("%s"fmt,(first ? "" : " "),func_##func(mk)); break;
++#define case_entry(fmt,func) printf("%s" fmt,(first ? "" : " "),func_##func(mk)); break;
+ 				switch(of.type) {
+ 					case ST_DEV: case_entry("%lld",ST_DEV);
+ 					case ST_INO: case_entry("%lld",ST_INO);
+-- 
+2.39.0
+

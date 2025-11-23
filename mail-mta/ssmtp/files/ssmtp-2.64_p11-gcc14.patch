@@ -1,0 +1,43 @@
+From 85acc260f11090415c0f94b7d726917d6a449018 Mon Sep 17 00:00:00 2001
+From: psykose <alice@ayaya.dev>
+Date: Wed, 19 Apr 2023 20:11:39 +0000
+Subject: main/ssmtp: fix int-conversion
+
+fixes -Werror=int-conversion
+--
+diff --git a/ssmtp.c b/ssmtp.c
+index af4d1e5..9a28320 100644
+--- a/ssmtp.c
++++ b/ssmtp.c
+@@ -55,21 +55,21 @@ bool_t use_oldauth = False;		/* use old AUTH LOGIN username style */
+ 
+ #define ARPADATE_LENGTH 32		/* Current date in RFC format */
+ char arpadate[ARPADATE_LENGTH];
+-char *auth_user = (char)NULL;
+-char *auth_pass = (char)NULL;
+-char *auth_method = (char)NULL;		/* Mechanism for SMTP authentication */
+-char *mail_domain = (char)NULL;
+-char *from = (char)NULL;		/* Use this as the From: address */
++char *auth_user = NULL;
++char *auth_pass = NULL;
++char *auth_method = NULL;		/* Mechanism for SMTP authentication */
++char *mail_domain = NULL;
++char *from = NULL;		/* Use this as the From: address */
+ char *hostname;
+ char *mailhost = "mailhub";
+-char *minus_f = (char)NULL;
+-char *minus_F = (char)NULL;
++char *minus_f = NULL;
++char *minus_F = NULL;
+ char *gecos;
+-char *prog = (char)NULL;
++char *prog = NULL;
+ char *root = NULL;
+ char *tls_cert = "/etc/ssl/certs/ssmtp.pem";	/* Default Certificate */
+-char *uad = (char)NULL;
+-char *config_file = (char)NULL;		/* alternate configuration file */
++char *uad = NULL;
++char *config_file = NULL;		/* alternate configuration file */
+ 
+ headers_t headers, *ht;
+ 

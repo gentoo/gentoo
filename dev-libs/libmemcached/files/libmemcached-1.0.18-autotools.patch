@@ -1,0 +1,61 @@
+* Automake 1.14+ fix for AC_PROG_* instantiation
+* Disable old GCC flags
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -13,10 +13,6 @@ m4_include([version.m4])
+ AC_PREREQ([2.61])
+ AC_INIT([libmemcached],VERSION_NUMBER,[http://libmemcached.org/])
+ 
+-# Setup the compilers early on
+-AC_PROG_CC([cc gcc clang])
+-AC_PROG_CXX([c++ g++ clang++])
+-
+ AC_CONFIG_AUX_DIR([build-aux])
+ AC_CONFIG_MACRO_DIR([m4])
+ 
+@@ -61,6 +57,10 @@ LT_LIB_M
+ 
+ AC_SUBST([lt_cv_dlopen_libs])
+ 
++# Setup the compilers early on
++AC_PROG_CC([cc gcc clang])
++AC_PROG_CXX([c++ g++ clang++])
++
+ 
+ AC_PROG_CC_C99
+ AS_IF([test "x${ac_cv_prog_cc_c99}" == "xno"],[AC_MSG_ERROR([No c99 compatible compiler found])])
+--- a/m4/ax_harden_compiler_flags.m4
++++ b/m4/ax_harden_compiler_flags.m4
+@@ -138,7 +138,6 @@
+            _APPEND_COMPILE_FLAGS_ERROR([-H])
+            _APPEND_COMPILE_FLAGS_ERROR([-g])
+            _APPEND_COMPILE_FLAGS_ERROR([-g3])
+-           _APPEND_COMPILE_FLAGS_ERROR([-fmudflapth])
+            _APPEND_COMPILE_FLAGS_ERROR([-fno-eliminate-unused-debug-types])
+            _APPEND_COMPILE_FLAGS_ERROR([-fno-omit-frame-pointer])
+            ],[
+@@ -213,7 +212,6 @@
+           _APPEND_COMPILE_FLAGS_ERROR([-Wunused-local-typedefs])
+           _APPEND_COMPILE_FLAGS_ERROR([-Wwrite-strings])
+           _APPEND_COMPILE_FLAGS_ERROR([-fwrapv])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fmudflapt])
+           _APPEND_COMPILE_FLAGS_ERROR([-pipe])
+           _APPEND_COMPILE_FLAGS_ERROR([-fPIE -pie])
+           _APPEND_COMPILE_FLAGS_ERROR([-Wsizeof-pointer-memaccess])
+@@ -247,7 +245,6 @@
+            _APPEND_COMPILE_FLAGS_ERROR([-H])
+            _APPEND_COMPILE_FLAGS_ERROR([-g])
+            _APPEND_COMPILE_FLAGS_ERROR([-g3])
+-           _APPEND_COMPILE_FLAGS_ERROR([-fmudflapth])
+            _APPEND_COMPILE_FLAGS_ERROR([-fno-inline])
+            _APPEND_COMPILE_FLAGS_ERROR([-fno-eliminate-unused-debug-types])
+            _APPEND_COMPILE_FLAGS_ERROR([-fno-omit-frame-pointer])
+@@ -318,7 +315,6 @@
+           _APPEND_COMPILE_FLAGS_ERROR([-Wwrite-strings])
+           _APPEND_COMPILE_FLAGS_ERROR([-Wformat-security])
+           _APPEND_COMPILE_FLAGS_ERROR([-fwrapv])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fmudflapt])
+           _APPEND_COMPILE_FLAGS_ERROR([-pipe])
+           _APPEND_COMPILE_FLAGS_ERROR([-fPIE -pie])
+           _APPEND_COMPILE_FLAGS_ERROR([-Wsizeof-pointer-memaccess])

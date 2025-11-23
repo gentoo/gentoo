@@ -1,0 +1,19 @@
+https://github.com/raboof/notion/pull/389
+
+From 89c92f49abfeae1168ad343d4f529a52d0edd78c Mon Sep 17 00:00:00 2001
+From: David Seifert <soap@gentoo.org>
+Date: Sun, 9 Nov 2025 11:41:32 +0100
+Subject: [PATCH] C23 fixes
+
+Bug: https://bugs.gentoo.org/946693
+--- a/libtu/objp.h
++++ b/libtu/objp.h
+@@ -26,7 +26,7 @@ DECLSTRUCT(ClassDescr){
+     ClassDescr *ancestor;
+     int funtab_n;
+     DynFunTab *funtab;
+-    void (*destroy_fn)();
++    void (*destroy_fn)(Obj *obj);
+ };
+ 
+ #define OBJ_TYPESTR(OBJ) ((OBJ) ? ((Obj*)OBJ)->obj_type->name : NULL)

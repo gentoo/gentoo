@@ -1,0 +1,20 @@
+--- a/CMakeLists.txt	2024-02-05 00:29:17.000000000 +0100
++++ b/CMakeLists.txt	2024-10-13 17:20:53.412858588 +0200
+@@ -239,13 +239,10 @@
+     endif()
+   endif()
+   if(QUARTER_BUILD_DOC_QTHELP)
+-    find_program(QHG_LOCATION NAMES qhelpgenerator qhelpgenerator-qt5 DOC "Qt qhelpgenerator")
+-    if(NOT QHG_LOCATION)
+-      message(FATAL_ERROR "Missing program Qt qhelpgenerator")
+-    else()
+-      set(GENERATE_QHP YES)
+-      mark_as_advanced(QHG_LOCATION)
+-    endif()
++    find_package(Qt6Tools REQUIRED Help)
++    get_target_property(QHG_LOCATION Qt6::qhelpgenerator LOCATION)
++    set(GENERATE_QHP YES)
++    mark_as_advanced(QHG_LOCATION)
+   endif()
+ 
+   set(DOXYGEN_INTERNAL_DOCS NO)

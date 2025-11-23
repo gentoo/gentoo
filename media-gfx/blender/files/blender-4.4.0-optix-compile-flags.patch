@@ -1,0 +1,40 @@
+From 6e8072c20d37f2ba4b0eaded448d21ffa6f073a1 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx@gmail.com>
+Date: Mon, 21 Apr 2025 17:49:59 +0200
+Subject: [PATCH] optix compile flags
+
+Copy CUDA_HOST_COMPILER logic from cuda to optix
+
+pass CUDA_NVCC_FLAGS into the custom nvcc call for optix, as for
+WITH_CYCLES_CUDA_BINARIES
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+Signed-off-by: Paul Zander <negril.nx@gmail.com>
+
+diff --git a/intern/cycles/kernel/CMakeLists.txt b/intern/cycles/kernel/CMakeLists.txt
+index 6144de7be33..a59d6dd2b7e 100644
+--- a/intern/cycles/kernel/CMakeLists.txt
++++ b/intern/cycles/kernel/CMakeLists.txt
+@@ -943,6 +943,11 @@ if(WITH_CYCLES_DEVICE_OPTIX AND WITH_CYCLES_CUDA_BINARIES)
+       -Wno-deprecated-gpu-targets
+       -o ${output})
+ 
++    if(CUDA_HOST_COMPILER)
++      set(cuda_flags ${cuda_flags}
++        -ccbin="${CUDA_HOST_COMPILER}")
++    endif()
++
+     if(WITH_NANOVDB)
+       set(cuda_flags ${cuda_flags}
+         -D WITH_NANOVDB)
+@@ -970,6 +975,7 @@ if(WITH_CYCLES_DEVICE_OPTIX AND WITH_CYCLES_CUDA_BINARIES)
+         ${CUDA_NVCC_EXECUTABLE}
+         --ptx
+         -arch=sm_50
++        ${CUDA_NVCC_FLAGS}
+         ${cuda_flags}
+         ${input}
+       WORKING_DIRECTORY
+-- 
+2.49.0
+

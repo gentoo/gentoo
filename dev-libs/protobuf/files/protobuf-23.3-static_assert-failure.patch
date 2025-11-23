@@ -1,0 +1,11 @@
+https://github.com/protocolbuffers/protobuf/issues/9433
+--- a/src/google/protobuf/descriptor.cc
++++ b/src/google/protobuf/descriptor.cc
+@@ -384,7 +384,6 @@ class FlatAllocatorImpl {
+     ABSL_CHECK(!has_allocated());
+     if (std::is_trivially_destructible<U>::value) {
+       // Trivial types are aligned to 8 bytes.
+-      static_assert(alignof(U) <= 8, "");
+       total_.template Get<char>() += RoundUpTo<8>(array_size * sizeof(U));
+     } else {
+       // Since we can't use `if constexpr`, just make the expression compile

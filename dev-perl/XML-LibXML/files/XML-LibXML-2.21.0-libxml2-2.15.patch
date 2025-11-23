@@ -1,0 +1,49 @@
+https://github.com/shlomif/perl-XML-LibXML/pull/87
+
+From: Nick Wellnhofer <wellnhofer@aevum.de>
+Date: Fri, 16 May 2025 19:11:12 +0200
+Subject: [PATCH] Remove tests that disable line numbers
+
+Line numbers are always enabled since libxml2 2.15.0.
+---
+ t/02parse.t | 13 ++-----------
+ 1 file changed, 2 insertions(+), 11 deletions(-)
+
+diff --git a/t/02parse.t b/t/02parse.t
+index 40aa5f1..17419f8 100644
+--- a/t/02parse.t
++++ b/t/02parse.t
+@@ -14,7 +14,7 @@ use locale;
+ 
+ POSIX::setlocale(LC_ALL, "C");
+ 
+-use Test::More tests => 533;
++use Test::More tests => 531;
+ use IO::File;
+ 
+ use XML::LibXML::Common qw(:libxml);
+@@ -25,7 +25,7 @@ use constant XML_DECL => "<?xml version=\"1.0\"?>\n";
+ 
+ use Errno qw(ENOENT);
+ 
+-# TEST*533
++# TEST*531
+ 
+ ##
+ # test values
+@@ -773,15 +773,6 @@ EOXML
+ 
+     my $newkid = $root->appendChild( $doc->createElement( "bar" ) );
+     is( $newkid->line_number(), 0, "line number is 0");
+-
+-    $parser->line_numbers(0);
+-    eval { $doc = $parser->parse_string( $goodxml ); };
+-
+-    $root = $doc->documentElement();
+-    is( $root->line_number(), 0, "line number is 0");
+-
+-    @kids = $root->childNodes();
+-    is( $kids[1]->line_number(), 0, "line number is 0");
+ }
+ 
+ SKIP: {

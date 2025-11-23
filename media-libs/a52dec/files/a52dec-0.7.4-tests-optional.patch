@@ -1,0 +1,10 @@
+Index: a52dec-0.7.4/test/Makefile.am
+===================================================================
+--- a52dec-0.7.4.orig/test/Makefile.am
++++ a52dec-0.7.4/test/Makefile.am
+@@ -1,4 +1,4 @@
+-noinst_PROGRAMS = compare
++check_PROGRAMS = compare
+ compare_SOURCES = compare.c
+ compare_LDADD = -lm
+ 

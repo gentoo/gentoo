@@ -1,0 +1,26 @@
+fix possible usage of uninitialized memory
+
+http://bugs.gentoo.org/80286
+
+--- bsd-finger-0.17/finger/lprint.c
++++ bsd-finger-0.17/finger/lprint.c
+@@ -100,7 +100,7 @@
+ 	 *	office, office phone, home phone if available
+ 	 */
+ 	xprintf("Login: %-15s\t\t\tName: %s\nDirectory: %-25s",
+-		pn->name, pn->realname, pn->dir);
++		pn->name, pn->realname ? pn->realname : "", pn->dir);
+ 	xprintf("\tShell: %-s\n", *pn->shell ? pn->shell : _PATH_BSHELL);
+ 
+ 	/*
+--- bsd-finger-0.17/finger/util.c
++++ bsd-finger-0.17/finger/util.c
+@@ -149,6 +149,8 @@
+ 		rname[j] = 0;
+ 
+ 		pn->realname = rname;
++	} else {
++		pn->realname = NULL;
+ 	}
+ 
+ 	pn->office =      fields[1] ? strdup(fields[1]) : NULL;

@@ -1,0 +1,11 @@
+diff -ruN spampd-2.61-v/spampd.pl spampd-2.61/spampd.pl
+--- spampd-2.61-v/spampd.pl	2021-08-07 06:01:37.000000000 +1000
++++ spampd-2.61/spampd.pl	2021-08-13 03:48:34.527166029 +1000
+@@ -761,6 +761,7 @@
+ 
+   # Set misc. options based on other options.
+   $srv_p->{setsid}= 0 if !$srv_p->{background};
++  $srv_p->{pid_file} = undef if !$srv_p->{background};
+   $sa_p->{home_dir_for_helpers} = $sa_p->{userstate_dir};
+   $sa_p->{username} = $srv_p->{user};
+ }

@@ -1,0 +1,13 @@
+Fix -Wliteral-suffix (#731886)
+
+--- a/BasicExcel.cpp
++++ b/BasicExcel.cpp
+@@ -4913,7 +4913,7 @@
+ 	do
+ 	{
+ 		char sname[50];
+-		sprintf(sname, "Sheet"FMT_SIZE_T, sheetNo++);
++		sprintf(sname, "Sheet" FMT_SIZE_T, sheetNo++);
+ 		yesheet = AddWorksheet(sname, sheetIndex);
+ 	} while (!yesheet);
+ 	return yesheet;

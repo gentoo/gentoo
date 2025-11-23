@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/921345
+--- a/configure.ac
++++ b/configure.ac
+@@ -148,7 +148,6 @@ AC_PROG_MAKE_SET
+ # Checks for libraries.
+ 
+ # Checks for header files.
+-AC_INCLUDES_DEFAULT()
+ AC_HEADER_RESOLV
+ AC_CHECK_HEADERS([sys/malloc.h malloc.h], [], [],
+ [[#ifdef HAVE_SYS_MALLOC_H

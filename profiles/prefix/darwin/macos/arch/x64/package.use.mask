@@ -1,0 +1,6 @@
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Jeremy Olexa <darkside@gentoo.org> (2010-07-29)
+# Relocation issues on 32-bit OSX only, bug #329859
+media-sound/mpg123-base -cpu_flags_x86_mmx -cpu_flags_x86_sse

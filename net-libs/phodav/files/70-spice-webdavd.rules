@@ -1,0 +1,1 @@
+ACTION=="add", SUBSYSTEM=="virtio-ports", ENV{DEVLINKS}=="/dev/virtio-ports/org.spice-space.webdav.0", RUN+="/bin/env /etc/init.d/spice-webdavd --quiet start"

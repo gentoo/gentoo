@@ -1,0 +1,22 @@
+https://github.com/Mbed-TLS/mbedtls/pull/8284#issuecomment-2030088495
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Sun, 1 Dec 2024 20:56:50 +0300
+Subject: Exclude 3rd party code from building
+
+Third party code is required only for limited features that not enabled by default.
+
+See: https://github.com/Mbed-TLS/mbedtls/pull/8284#issuecomment-2030088495
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -325,8 +325,6 @@ add_subdirectory(framework)
+ 
+ add_subdirectory(include)
+ 
+-add_subdirectory(3rdparty)
+-
+ add_subdirectory(library)
+ 
+ add_subdirectory(pkgconfig)
+-- 
+2.45.2
+

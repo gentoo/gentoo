@@ -1,0 +1,43 @@
+https://bugs.gentoo.org/882271
+Also change to automake file as consequence of eautoreconf
+--- a/Makefile.in	2024-05-10 09:49:47.696279770 -0000
++++ b/Makefile.in	2024-05-10 09:50:14.532113463 -0000
+@@ -144,13 +144,13 @@
+ .PHONY: config
+ config: ${SRC_DIR}/Makefile ${SRC_DIR}/config.h
+ 
+-${SRC_DIR}/configure: ${SRC_DIR}/configure.in
++${SRC_DIR}/configure: ${SRC_DIR}/configure.ac
+ 	@${ECHO} "The configure script is out of date; rebuilding..."
+ 	autoconf
+ 	@${ECHO} >> ${SRC_DIR}/config.h.in
+ 	@${ECHO} >> $@
+ 
+-${SRC_DIR}/config.h.in: ${SRC_DIR}/configure.in
++${SRC_DIR}/config.h.in: ${SRC_DIR}/configure.ac
+ 	@${ECHO} "The config.h.in header is out of date; rebuilding..."
+ 	autoheader
+ 	@${ECHO} >> $@
+--- a/sound.c	2024-05-10 09:53:25.753928428 -0000
++++ b/sound.c	2024-05-10 09:54:18.646600643 -0000
+@@ -51,6 +51,8 @@
+ #ifdef HAVE_LINUX_SOUNDCARD_H
+ # include <linux/soundcard.h>
+ #endif
++
++#include <sys/ioctl.h>
+ #include "extern.h"
+ #include "options2.h"
+ #include "constant.h"
+--- a/victory.c	2024-05-10 09:53:25.752928434 -0000
++++ b/victory.c	2024-05-10 09:55:09.470285679 -0000
+@@ -7,6 +7,9 @@
+ # include <stdlib.h>
+ #endif
+ 
++#include <string.h>
++#include <unistd.h>
++
+ #include "constant.h"
+ #include "extern.h"
+ 

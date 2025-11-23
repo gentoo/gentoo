@@ -1,0 +1,22 @@
+--- a/src/helpers.c
++++ b/src/helpers.c
+@@ -9,6 +9,8 @@
+ #include <errno.h> // errno
+ #include <libgen.h> // dirname 
+ 
++light_loglevel_t light_loglevel;
++
+ 
+ bool light_file_read_uint64(char const *filename, uint64_t *val)
+ {
+--- a/src/helpers.h
++++ b/src/helpers.h
+@@ -21,7 +21,7 @@
+     LIGHT_NOTE_LEVEL
+ } light_loglevel_t;
+ 
+-light_loglevel_t light_loglevel;
++extern light_loglevel_t light_loglevel;
+ 
+ #define LIGHT_LOG(lvl, fp, fmt, args...)\
+     if (light_loglevel >= lvl)\

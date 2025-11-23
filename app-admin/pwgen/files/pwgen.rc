@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	before local
+}
+
+start() {
+	ebegin "Auto-scrambling root password for security"
+	echo root:`pwgen -s 16` | chpasswd  > /dev/null 2>&1
+	eend $? "Failed to scramble root password."
+}
+
+stop() {
+	ebegin "Stopping pwgen"
+	eend $? "Failed to stop pwgen."
+}

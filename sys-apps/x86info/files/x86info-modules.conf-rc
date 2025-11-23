@@ -1,0 +1,8 @@
+#
+# Aliases needed for x86info to probe data
+# these are so the modules auto-load as needed
+#
+alias char-major-202 	msr
+alias char-major-203 	cpuid
+alias /dev/cpu/*/msr 	msr
+alias /dev/cpu/*/cpuid  cpuid

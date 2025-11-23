@@ -1,0 +1,67 @@
+diff -Naur src.orig/docklib.c src/docklib.c
+--- src.orig/docklib.c	2005-03-26 22:53:38.000000000 +0100
++++ src/docklib.c	2020-05-08 19:21:45.930313064 +0200
+@@ -40,6 +40,29 @@
+ char            *Geometry = "";
+ char            *fonts_xpm[], *leds_xpm[];
+ 
++enum {          /* don't change the order! */
++    GRAY = 0,
++    YELLOW,
++    GREEN,
++    CYAN,
++    SKYBLUE,
++    ORANGE,
++    RED,
++    MAGENTA,
++    BROWN,
++    WHITE   
++} led_colors;
++
++enum {
++    F_NOT_AVAILABLE = 0,
++    F_REGULAR,
++    F_DIRECTORY,
++    F_CHAR_DEVICE,
++    F_BLOCK_DEVICE,
++    F_LINK,
++    F_FIFO,
++    F_SOCK
++} file_types;
+ 
+ /******************************************************************************
+  *
+diff -Naur src.orig/docklib.h src/docklib.h
+--- src.orig/docklib.h	2005-03-26 22:53:50.000000000 +0100
++++ src/docklib.h	2020-05-08 19:21:22.600284802 +0200
+@@ -79,30 +79,6 @@
+ 
+ #define NUM_COLORS  10
+ 
+-enum {          /* don't change the order! */
+-    GRAY = 0,
+-    YELLOW,
+-    GREEN,
+-    CYAN,
+-    SKYBLUE,
+-    ORANGE,
+-    RED,
+-    MAGENTA,
+-    BROWN,
+-    WHITE   
+-} led_colors;
+-
+-enum {
+-    F_NOT_AVAILABLE = 0,
+-    F_REGULAR,
+-    F_DIRECTORY,
+-    F_CHAR_DEVICE,
+-    F_BLOCK_DEVICE,
+-    F_LINK,
+-    F_FIFO,
+-    F_SOCK
+-} file_types;
+-
+ /*-------------------------------------------------------------------------------*/
+ 
+ void    dcl_open_x_window       (int argc, char *argv[], char **, char *, int, int);

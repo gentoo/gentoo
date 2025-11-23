@@ -1,0 +1,15 @@
+Modify Cmake so that it installs the header file
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fed418f..0354c36 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -19,4 +19,8 @@ include(GNUInstallDirs)
+ install(TARGETS pystring
+     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+ )
++install (FILES pystring.h
++    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}
++    COMPONENT developer
++)
+ 

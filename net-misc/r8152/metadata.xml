@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>jayf@gentoo.org</email>
+		<name>Jay Faulkner</name>
+	</maintainer>
+	<longdescription>
+		Official Realtek r8152 linux driver. Supports most realtek
+		USB network cards, including: RTL8157, RTL8156(,B), RTL8153(,B,C,D,E),
+		RTL8154(,B), RTL8152B.
+	</longdescription>
+	<use>
+		<flag name="center-tap-short">Enable support for center tap short</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">jayofdoom/realtek-r8152-unchanged</remote-id>
+	</upstream>
+</pkgmetadata>

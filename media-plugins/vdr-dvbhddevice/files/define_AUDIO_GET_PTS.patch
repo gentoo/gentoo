@@ -1,0 +1,11 @@
+--- a/dvbhdffdevice.h	2018-10-10 09:03:47.464147905 +0200
++++ b/dvbhdffdevice.h	2018-10-10 09:04:59.353350738 +0200
+@@ -4,6 +4,9 @@
+  * See the README file for copyright information and how to reach the author.
+  */
+ 
++#ifndef AUDIO_GET_PTS
++#define AUDIO_GET_PTS              _IOR('o', 19, __u64)
++#endif
+ #ifndef __DVBHDFFDEVICE_H
+ #define __DVBHDFFDEVICE_H

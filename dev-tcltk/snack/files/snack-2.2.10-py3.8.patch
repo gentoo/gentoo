@@ -1,0 +1,11 @@
+--- a/python/tkSnack.py	2024-04-20 16:01:28.403396211 +0200
++++ b/python/tkSnack.py	2024-04-20 16:01:55.094084757 +0200
+@@ -267,7 +267,7 @@
+         
+     def pitch(self, method=None, **kw):
+         """Returns a list of pitch values."""
+-        if method is None or method is "amdf" or method is "AMDF":
++        if method is None or method == "amdf" or method == "AMDF":
+             result = self.tk.call((self.name, 'pitch') + self._options(kw))
+             return self._getdoubles(result)
+         else:

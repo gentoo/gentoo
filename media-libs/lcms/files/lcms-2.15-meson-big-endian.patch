@@ -1,0 +1,21 @@
+https://github.com/mm2/Little-CMS/pull/360
+
+From 4e55c55802e4aee5f65be120291f5f4785483d98 Mon Sep 17 00:00:00 2001
+From: psykose <alice@ayaya.dev>
+Date: Thu, 2 Mar 2023 02:22:01 +0000
+Subject: [PATCH] meson: fix big endian cargs
+
+otherwise they are a string and appending with + [""]
+later fails in
+plugins/fast_float/testbed/meson.build:5:0: ERROR: The `+` operator of str does not accept objects of type list (['-DPROFILES_DIR="/home/buildozer/aports/main/lcms2/src/lcms2-2.15/plugins/test_profiles/"'])
+--- a/meson.build
++++ b/meson.build
+@@ -27,7 +27,7 @@ if cc.has_function_attribute('visibility:hidden')
+ endif
+ 
+ if host_machine.endian() == 'big'
+-  cargs = '-DWORDS_BIGENDIAN=1'
++  cargs += '-DWORDS_BIGENDIAN=1'
+ endif
+ 
+ 

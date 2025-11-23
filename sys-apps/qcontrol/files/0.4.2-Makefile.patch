@@ -1,0 +1,22 @@
+--- a/Makefile	2011-04-02 20:44:05.021252507 +0200
++++ b/Makefile	2011-04-02 20:45:21.751248966 +0200
+@@ -1,5 +1,4 @@
+-CFLAGS=-Os -Wall -I /usr/include/lua5.1
+-LDFLAGS=-llua5.1 -lpthread
++LDFLAGS=-llua -lpthread
+ LDFLAGS_UDEB=-lpthread -lm -ldl
+ SOURCES=qcontrol.c ts209.c ts219.c ts409.c ts41x.c evdev.c
+ OBJECTS=$(SOURCES:.c=.o)
+@@ -8,10 +7,10 @@
+ all:	$(SOURCES) $(EXECUTABLE) qcontrol.udeb
+ 	
+ $(EXECUTABLE): $(OBJECTS) 
+-	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
++	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJECTS) -o $@
+ 
+ qcontrol.udeb: $(OBJECTS)
+-	$(CC) $(LDFLAGS_UDEB) $(OBJECTS) /usr/lib/liblua5.1.a -o $@
++	$(CC) $(CFLAGS) $(LDFLAGS_UDEB) $(OBJECTS) /usr/lib/liblua.a -o $@
+ 
+ .cpp.o:
+ 	$(CC) $(CFLAGS) $< -o $@

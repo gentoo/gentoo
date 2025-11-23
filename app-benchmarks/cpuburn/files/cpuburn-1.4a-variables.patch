@@ -1,0 +1,40 @@
+--- cpuburn-1.4a.orig/burnK7.S
++++ cpuburn-1.4a/burnK7.S
+@@ -74,6 +74,7 @@ int_exit:
+ 	push	%eax
+ 	int	$0x80
+ #endif
++.data				# Data allocation
+ .align 32,0
+ 	.fill 64
+ half:	.long 0x7fffffff,0
+--- cpuburn-1.4a.orig/burnP5.S
++++ cpuburn-1.4a/burnP5.S
+@@ -77,6 +77,7 @@ crunch:
+ #else
+ 	int	$0x80
+ #endif
++.data				# Data allocation
+ .align 32,0
+ half:	.long 0xffffffff,0x3fdfffff
+ one:	.long 0xffffffff,0x3fefffff
+--- cpuburn-1.4a.orig/burnP6.S
++++ cpuburn-1.4a/burnP6.S
+@@ -69,6 +69,7 @@ int_exit:			# error abort
+ 	push	%eax		# *BSD syscall
+ 	int	$0x80
+ #endif
++.data				# Data allocation
+ .align 32,0
+ half:	.long 0x7fffffff,0
+ e:	.long 0xffffffff,0x3fdfffff
+--- cpuburn-1.4a.orig/burnK6.S
++++ cpuburn-1.4a/burnK6.S
+@@ -68,6 +68,7 @@ int_exit:
+ 	push	%eax
+ 	int	$0x80
+ #endif
++.data				# Data allocation
+ .align 32,0
+ half:	.long 0x7fffffff,0
+ e:	.long 0xffffffff,0x3fdfffff

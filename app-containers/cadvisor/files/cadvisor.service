@@ -1,0 +1,13 @@
+[Unit]
+Description=cAdvisor - Analyzes resource usage and performance characteristics of running containers
+Documentation=https://github.com/google/cadvisor
+After=network-online.target docker.socket
+
+[Service]
+User=cadvisor
+Restart=on-failure
+ExecStart=/usr/bin/cadvisor
+TimeoutStopSec=20s
+
+[Install]
+WantedBy=multi-user.target

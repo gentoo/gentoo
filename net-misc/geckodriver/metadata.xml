@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>mozilla@gentoo.org</email>
+		<name>Gentoo Mozilla Team</name>
+	</maintainer>
+	<use>
+		<flag name="unchained">Apply the geckodriver-unchained patch, for Gecko-based non-Firefox browsers (e.g. Librewolf)</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">mozilla/geckodriver</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,19 @@
+diff '--color=auto' -urN genkernel-4.3.16.orig/gen_initramfs.sh genkernel-4.3.16/gen_initramfs.sh
+--- genkernel-4.3.16.orig/gen_initramfs.sh	2024-06-11 20:35:25.000000000 +0200
++++ genkernel-4.3.16/gen_initramfs.sh	2024-11-23 19:44:41.674658947 +0100
+@@ -1783,10 +1783,11 @@
+ 
+ 			myfw_f=( $(compgen -G "${FIRMWARE_DIR}/${myfw}*") )
+ 
+-			if [ ${#myfw_f[@]} -gt 1 ]
+-			then
+-				gen_die "excessive number of firmwares!"
+-			fi
++## see https://bugs.gentoo.org/932907
++#			if [ ${#myfw_f[@]} -gt 1 ]
++#			then
++#				gen_die "excessive number of firmwares!"
++#			fi
+ 
+ 			if [ ${#myfw_f[@]} -lt 1 ]
+ 			then

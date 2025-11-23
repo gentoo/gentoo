@@ -1,0 +1,22 @@
+diff --git a/build.xml b/build.xml
+index 9d3a7d6..a6732b6 100644
+--- a/build.xml
++++ b/build.xml
+@@ -60,7 +60,7 @@
+ 
+ 	<target name="compile" depends="init" description="Compile java sources into class files">
+ 		<!-- compile -->
+-		<javac debug="true" debuglevel="lines,source" target="1.5" source="1.5" destdir="${builddir}" srcdir="${srcdir}" memoryInitialSize="512m" memoryMaximumSize="512m" fork="true">
++		<javac debug="true" debuglevel="lines,source" destdir="${builddir}" srcdir="${srcdir}" memoryInitialSize="512m" memoryMaximumSize="512m" fork="true">
+ 			<classpath>
+ 				<pathelement location="${basedir}" />
+ 				<fileset dir="${libdir}" includes="*.jar" />
+@@ -208,7 +208,7 @@
+ 
+ 		<!-- compile -->
+ 		<echo message="building MegaMek from svn sources" />
+-		<javac debug="true" debuglevel="lines,source" target="1.5" source="1.5" destdir="${svnbuilddir}" srcdir="${svndir}/${srcdir}" memoryInitialSize="512m" memoryMaximumSize="512m" fork="true">
++		<javac debug="true" debuglevel="lines,source" destdir="${svnbuilddir}" srcdir="${svndir}/${srcdir}" memoryInitialSize="512m" memoryMaximumSize="512m" fork="true">
+ 			<classpath>
+ 				<pathelement location="${svndir}" />
+ 				<fileset dir="${svndir}/${libdir}" includes="*.jar" />

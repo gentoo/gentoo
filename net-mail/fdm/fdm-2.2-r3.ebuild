@@ -1,0 +1,61 @@
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+inherit autotools
+
+DESCRIPTION="Fetch, filter and deliver mail"
+HOMEPAGE="https://github.com/nicm/fdm"
+SRC_URI="https://github.com/nicm/fdm/releases/download/${PV}/${P}.tar.gz"
+
+LICENSE="BSD"
+SLOT="0"
+KEYWORDS="amd64 ~arm64 x86"
+IUSE="examples pcre"
+
+DEPEND="
+	dev-libs/openssl:=
+	sys-libs/tdb
+	pcre? ( dev-libs/libpcre2 )
+"
+RDEPEND="
+	${DEPEND}
+	acct-group/fdm
+	acct-user/fdm
+"
+
+QA_CONFIG_IMPL_DECL_SKIP=(
+	# missing on musl, fdm has fallback implememntation
+	b64_ntop
+)
+
+DOCS=( CHANGES README TODO MANUAL )
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.2-configure-strlcpy.patch
+	"${FILESDIR}"/${P}-pcre2.patch
+	"${FILESDIR}"/${P}-uaf.patch
+)
+
+src_prepare() {
+	default
+
+	# Change user '_fdm' to 'fdm'
+	sed -e 's/_fdm/fdm/g' -i fdm.h || die
+
+	eautoreconf
+}
+
+src_configure() {
+	econf $(use_enable pcre pcre2)
+}
+
+src_install() {
+	default
+
+	if use examples ; then
+		docinto examples
+		dodoc examples/*
+	fi
+}

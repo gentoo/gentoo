@@ -1,0 +1,45 @@
+diff -ruN enblend.orig/CMakeLists.txt enblend/CMakeLists.txt
+--- enblend.orig/CMakeLists.txt	2024-04-24 14:42:26.000000000 +1100
++++ enblend/CMakeLists.txt	2024-04-24 14:52:10.533011199 +1100
+@@ -15,9 +15,6 @@
+ endif()
+ 
+ project(enblend)
+-IF(NOT MSVC)
+-  SET(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel" FORCE)
+-ENDIF(NOT MSVC)
+ # where to look first for cmake modules, before ${CMAKE_ROOT}/Modules/
+ # is checked
+ # For now, reuse the hugin modules directory
+@@ -140,7 +137,6 @@
+ ENDIF()
+ 
+ IF(CMAKE_COMPILER_IS_GNUCXX)
+-  SET(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3 -ffast-math -DNDEBUG -Wall")
+   IF(APPLE AND CMAKE_MAJOR_VERSION EQUAL 2 AND CMAKE_MINOR_VERSION LESS 5)
+     ## Add needed Compiler and Linker flags for OSX
+     SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -flat_namespace -undefined suppress")
+diff -ruN enblend.orig/doc/CMakeLists.txt enblend/doc/CMakeLists.txt
+--- enblend.orig/doc/CMakeLists.txt	2024-04-24 14:42:26.000000000 +1100
++++ enblend/doc/CMakeLists.txt	2024-04-24 14:52:10.533011199 +1100
+@@ -406,7 +406,7 @@
+         "${CMAKE_BINARY_DIR}/doc/enfuse.html"
+         ${ENBLEND_PNGFILES}
+         ${ENFUSE_PNGFILES}
+-    DESTINATION ${DocumentsDirectory}
++    DESTINATION ${DocumentsDirectory}/html
+ )
+ endif()
+ 
+diff -ruN enblend.orig/src/CMakeLists.txt enblend/src/CMakeLists.txt
+--- enblend.orig/src/CMakeLists.txt	2024-04-24 14:42:26.000000000 +1100
++++ enblend/src/CMakeLists.txt	2024-04-24 14:55:27.323912752 +1100
+@@ -141,7 +141,7 @@
+   set_target_properties(enblend PROPERTIES LINK_FLAGS "/DELAYLOAD:opencl.dll")
+   set_target_properties(enfuse PROPERTIES LINK_FLAGS "/DELAYLOAD:opencl.dll")
+ endif()
+-install(TARGETS enblend enfuse DESTINATION bin CONFIGURATIONS Release RelWithDebInfo MinSizeRel)
++install(TARGETS enblend enfuse DESTINATION bin)
+ 
+ IF(ENABLE_OPENCL AND NOT ${PREFER_SEPARATE_OPENCL_SOURCE})
+     add_dependencies(enblend cl_sources)

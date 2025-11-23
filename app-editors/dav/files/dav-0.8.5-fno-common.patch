@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/706846
+https://sources.debian.org/patches/dav-text/0.9.0-2/gcc-10.patch/
+--- a/main.c
++++ b/main.c
+@@ -58,7 +58,7 @@ char displayWholeScreen = 0;
+ struct buffer *buffers;
+ struct buffer *currentBuffer;
+ int currentBufferNum = 0;
+-
++ptrToFunction Fn_ptr[12]; //Bindings for the Fn keys; Fx = Fn_ptr[x-1]
+ 
+ int main(int argc, char *argv[])
+ {
+--- dav-text-0.9.0.orig/main.h
++++ dav-text-0.9.0/main.h
+@@ -47,7 +47,7 @@ void connectLines(struct line *baseline)
+ void determineLineNum(struct position *p);
+ void countTabs(struct line *l);
+ void determineCursX(struct position *p);
+-ptrToFunction Fn_ptr[12]; //Bindings for the Fn keys; Fx = Fn_ptr[x-1]
++extern ptrToFunction Fn_ptr[12]; //Bindings for the Fn keys; Fx = Fn_ptr[x-1]
+ 
+ extern int maxY,maxX;
+ extern int helpBarUpdate;

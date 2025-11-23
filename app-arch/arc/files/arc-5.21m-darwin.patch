@@ -1,0 +1,11 @@
+--- a/tmclock.c
++++ b/tmclock.c
+@@ -14,7 +14,7 @@
+ /* Julian day number of the Unix* clock's origin, 01 Jan 1970. */
+ #define JD1970 2440587L
+ #define	CENTURY	19
+-#if	BSD
++#if	BSD || defined(__MACH_O__)
+ #include <sys/time.h>
+ #else
+ #include <time.h>

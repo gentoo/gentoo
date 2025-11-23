@@ -1,0 +1,35 @@
+https://github.com/brofield/simpleini/pull/74
+https://github.com/brofield/simpleini/commit/aeacf861a8ad8add5f4974792a88ffea393e41db
+From: Alexandre Bouvier <contact@amb.tf>
+Date: Tue, 2 Jan 2024 08:42:03 +0100
+Subject: [PATCH 1/2] cmake: fix namespace and include dir (#74)
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -48,7 +48,7 @@ configure_package_config_file(${PROJECT_NAME}Config.cmake.in
+ )
+ 
+ install(FILES SimpleIni.h
+-	DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}
++	DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+ )
+ 
+ install(TARGETS ${PROJECT_NAME}
+@@ -62,12 +62,15 @@ install(FILES
+ )
+ install(EXPORT ${PROJECT_NAME}Targets
+ 	DESTINATION ${CMAKE_INSTALL_DATADIR}/cmake/${PROJECT_NAME}
+-	NAMESPACE EXPORT_NAMESPACE
++	NAMESPACE ${EXPORT_NAMESPACE}
+ )
+ 
+-target_include_directories(${PROJECT_NAME} INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
++target_include_directories(${PROJECT_NAME} INTERFACE
++	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
++	$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
++)
+ 
+ if(IS_TOPLEVEL_PROJECT)
+-	enable_testing()
++	include(CTest)
+ 	add_subdirectory(tests)
+ endif()

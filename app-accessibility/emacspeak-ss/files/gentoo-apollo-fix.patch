@@ -1,0 +1,22 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -3,7 +3,7 @@
+ man1dir=@mandir@/man1
+ exec_prefix = @exec_prefix@
+ bindir=$(prefix)/share/emacs/site-lisp/emacspeak/
+-libdir=$(prefix)/lib/emacs/common/emacspeak/
++libdir=$(prefix)/lib/emacspeak-ss
+ 
+ INSTALL=@INSTALL@
+ VERSION=@VERSION@
+--- a/apollo.in
++++ b/apollo.in
+@@ -101,7 +101,7 @@
+ # write the argument to the synthesizer, and return its response if any
+ proc tts_ping {query} {
+     global tts
+-    set status [exec /usr/lib/emacs/common/emacspeak/ping-apollo "$query" $tts(port) ]
++    set status [exec /usr/lib/emacspeak-ss/ping-apollo "$query" $tts(port) ]
+     return $status
+ }
+ 

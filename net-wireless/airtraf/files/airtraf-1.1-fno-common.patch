@@ -1,0 +1,21 @@
+--- a/src/sniffd/capture_engine.c
++++ b/src/sniffd/capture_engine.c
+@@ -52,7 +52,6 @@
+ FILE * capture_stream;
+ FILE * error_stream;
+ 
+-char atime[TIME_TARGET_MAX];
+ 
+ 
+ ////////////////////////////////////////////////////////////////////////
+--- a/src/libcommon/logger.h
++++ b/src/libcommon/logger.h
+@@ -33,6 +33,8 @@
+ #ifndef __logger_h__
+ #define __logger_h__
+ 
++extern char atime[TIME_TARGET_MAX];
++
+ int init_log(int, char*);
+ int write_log(int, char*);
+ void flush_log(int);

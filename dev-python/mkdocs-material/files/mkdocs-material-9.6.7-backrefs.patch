@@ -1,0 +1,52 @@
+From 13f768034e0935738c7f4d2562d46030bd9b9758 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 5 Mar 2025 20:37:47 +0100
+Subject: [PATCH] Import backrefs only when actually used
+
+---
+ material/plugins/search/plugin.py | 3 ++-
+ src/plugins/search/plugin.py      | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/material/plugins/search/plugin.py b/material/plugins/search/plugin.py
+index ce23c15cb..2bc411c5d 100644
+--- a/material/plugins/search/plugin.py
++++ b/material/plugins/search/plugin.py
+@@ -22,7 +22,6 @@ import json
+ import logging
+ import os
+ import re
+-from backrefs import bre
+ 
+ from html import escape
+ from html.parser import HTMLParser
+@@ -286,6 +285,8 @@ class SearchIndex:
+ 
+     # Find and segment Chinese characters in string
+     def _segment_chinese(self, data):
++        from backrefs import bre
++
+         expr = bre.compile(r"(\p{script: Han}+)", bre.UNICODE)
+ 
+         # Replace callback
+diff --git a/src/plugins/search/plugin.py b/src/plugins/search/plugin.py
+index ce23c15cb..2bc411c5d 100644
+--- a/src/plugins/search/plugin.py
++++ b/src/plugins/search/plugin.py
+@@ -22,7 +22,6 @@ import json
+ import logging
+ import os
+ import re
+-from backrefs import bre
+ 
+ from html import escape
+ from html.parser import HTMLParser
+@@ -286,6 +285,8 @@ class SearchIndex:
+ 
+     # Find and segment Chinese characters in string
+     def _segment_chinese(self, data):
++        from backrefs import bre
++
+         expr = bre.compile(r"(\p{script: Han}+)", bre.UNICODE)
+ 
+         # Replace callback

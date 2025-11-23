@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/890987
+--- a/src/custom.cc
++++ b/src/custom.cc
+@@ -44,6 +44,7 @@
+ #include "init_consts.h"
+ #include "print_inode_to.h"
+ #include <sys/time.h>
++#include <cassert>
+ #include <cstring>
+ #include <ctime>
+ 

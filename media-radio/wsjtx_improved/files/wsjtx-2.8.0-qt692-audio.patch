@@ -1,0 +1,22 @@
+# fixes Bug #https://bugs.gentoo.org/963899
+# Due to changes on the pulseaudio backend >=Qt 692 needs a bytesAvailable() function defined which returns more than zero.
+diff --git a/Modulator/Modulator.hpp b/Modulator/Modulator.hpp
+index fee2877..7203696 100755
+--- a/Modulator/Modulator.hpp
++++ b/Modulator/Modulator.hpp
+@@ -50,14 +50,12 @@ protected:
+   {
+     return -1;			// we don't consume data
+   }
+-#if defined(Q_OS_WIN)
+-// On Windows, bytesAvailable() must return a size that exceeds some threshold 
++// bytesAvailable() must return a size that exceeds some threshold 
+ // in order for the AudioSink to go into Active state and start pulling data.
+   qint64 bytesAvailable () const
+   {
+     return 8000;
+   }
+-#endif
+ 
+ private:
+   qint16 postProcessSample (qint16 sample) const;

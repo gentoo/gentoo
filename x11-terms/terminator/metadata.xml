@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>alexey+gentoo@asokolov.org</email>
+		<name>Alexey Sokolov</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		Much of the behaviour of Terminator is based on GNOME Terminal, and
+		we are adding more features from that as time goes by, but we also
+		want to extend out in different directions with useful features for
+		sysadmins and other users. If you have any suggestions, please file
+		wishlist bugs! (see below for the address)
+	</longdescription>
+	<upstream>
+		<remote-id type="github">gnome-terminator/terminator</remote-id>
+	</upstream>
+</pkgmetadata>

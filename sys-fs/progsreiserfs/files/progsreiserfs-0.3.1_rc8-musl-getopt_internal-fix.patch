@@ -1,0 +1,36 @@
+Bug: https://bugs.gentoo.org/898616
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Tue, 13 Jun 2023 05:23:45 +0000
+Subject: [PATCH] getopt1.c: wrap the getopt_long and getopt_long_only
+ functions around include directive
+
+The header guard HAVE_GETOPT_LONG_ONLY can be used to check if the
+functions are available or not, as the functions getopt_long and
+getopt_long_only defined in getopt1.c uses the function _getopt_internal
+which is glibc specific and cannot be used on other libc systems (for
+example musl).
+Hence we're wrapping those two functions with this include guard.
+
+Bug: https://bugs.gentoo.org/898616
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+--- a/progsreiserfs/libmisc/getopt1.c
++++ b/progsreiserfs/libmisc/getopt1.c
+@@ -63,6 +63,7 @@
+ #define NULL 0
+ #endif
+ 
++#ifndef HAVE_GETOPT_LONG_ONLY
+ int
+ 	getopt_long(argc, argv, options, long_options, opt_index)
+ 	 int argc;
+@@ -89,6 +90,7 @@ int
+ {
+ 	return _getopt_internal(argc, argv, options, long_options, opt_index, 1);
+ }
++#endif
+ 
+ #endif /* Not ELIDE_CODE.  */
+ 
+-- 
+2.41.0
+

@@ -1,0 +1,60 @@
+From 94229c3fdb6bb3afcc6fbecf4b2e521a9d485dd1 Mon Sep 17 00:00:00 2001
+From: tg <tg@mirbsd.org>
+Date: Tue, 27 Jul 2021 19:17:14 +0000
+Subject: [PATCH] =?UTF-8?q?we=20may=20have=20neither=20fgrep=20nor=20grep?=
+ =?UTF-8?q?=20-F=20(scosysv=20has=20only=20the=20former=E2=80=A6)?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ Build.sh | 6 +++---
+ check.t  | 8 ++++----
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/Build.sh b/Build.sh
+index dc98dfa2..08d368d2 100644
+--- a/Build.sh
++++ b/Build.sh
+@@ -1413,7 +1413,7 @@ tcc)
+ 	;;
+ tendra)
+ 	vv '|' "$CC $CFLAGS $CPPFLAGS $LDFLAGS $NOWARN $LIBS -V 2>&1 | \
+-	    grep -F -i -e version -e release"
++	    grep -i -e version -e release"
+ 	;;
+ ucode)
+ 	vv '|' "$CC $CFLAGS $CPPFLAGS $LDFLAGS $NOWARN $LIBS -V"
+@@ -2688,7 +2688,7 @@ cat >test.sh <<-EOF
+ 		args[\${#args[*]}]=\$TMPDIR
+ 	fi
+ 	print Testing mksh for conformance:
+-	grep -F -e 'KSH R' -e Mir''OS: "\$sflag" | sed '/KSH/s/^./&           /'
++	grep -e 'KSH R' -e Mir''OS: "\$sflag" | sed '/KSH/s/^./&           /'
+ 	print "This shell is actually:\\n\\t\$KSH_VERSION"
+ 	print 'test.sh built for mksh $dstversion'
+ 	cstr='\$os = defined \$^O ? \$^O : "unknown";'
+diff --git a/check.t b/check.t
+index 0d9d50c4..bfe116f0 100644
+--- a/check.t
++++ b/check.t
+@@ -6726,7 +6726,7 @@ stdin:
+ 		echo FNORD-7
+ 		typeset -
+ 		echo FNORD-8
+-	} | fgrep FNORD
++	} | grep FNORD
+ 	fnord=(42 23)
+ 	typeset -p fnord
+ 	echo FNORD-9
+@@ -8723,8 +8723,8 @@ stdin:
+ 	(echo x; exit 12) | (cat; exit 23) | (cat; exit 42)
+ 	echo 5 $? , $PIPESTATUS , ${PIPESTATUS[0]} , ${PIPESTATUS[1]} , ${PIPESTATUS[2]} , ${PIPESTATUS[3]} .
+ 	echo 6 ${PIPESTATUS[0]} .
+-	set | fgrep PIPESTATUS
+-	echo 8 $(set | fgrep PIPESTATUS) .
++	set | grep PIPESTATUS
++	echo 8 $(set | grep PIPESTATUS) .
+ expected-stdout:
+ 	1 0 .
+ 	2 0 .

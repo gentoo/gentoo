@@ -1,0 +1,19 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -4,7 +4,7 @@ if(EXT_PLATFORM_STRING)
+     return()
+ endif()
+ 
+-cmake_minimum_required(VERSION 3.10)
++cmake_minimum_required(VERSION 3.20)
+ 
+ option(LUAU_BUILD_CLI "Build CLI" ON)
+ option(LUAU_BUILD_TESTS "Build tests" ON)
+@@ -17,7 +17,6 @@ cmake_policy(SET CMP0054 NEW)
+ cmake_policy(SET CMP0091 NEW)
+ 
+ if(LUAU_STATIC_CRT)
+-    cmake_minimum_required(VERSION 3.15)
+     set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+ endif()
+ 

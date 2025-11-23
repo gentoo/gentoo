@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/932335
+https://github.com/LuminanceHDR/LuminanceHDR/issues/283#issuecomment-2132239165
+--- a/src/Libpfs/manip/resize.hxx
++++ b/src/Libpfs/manip/resize.hxx
+@@ -23,6 +23,7 @@
+ #define PFS_RESIZE_HXX
+ 
+ #include <boost/math/constants/constants.hpp>
++#include <boost/numeric/conversion/bounds.hpp>
+ #include "copy.h"
+ #include "resize.h"
+ #include "../../sleef.c"

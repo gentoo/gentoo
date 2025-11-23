@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'https://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ceamac@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="pypi">openapi3</remote-id>
+		<remote-id type="github">Dorthu/openapi3</remote-id>
+	</upstream>
+</pkgmetadata>

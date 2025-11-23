@@ -1,0 +1,14 @@
+# now part of @system set
+*llvm-core/lld
+*llvm-core/llvm
+*llvm-core/clang
+*llvm-runtimes/libcxx
+*llvm-runtimes/libcxxabi
+*llvm-runtimes/compiler-rt
+*llvm-runtimes/libunwind
+
+# not needed with clang
+-*sys-devel/gcc
+-*sys-devel/gcc-config
+-*sys-devel/binutils
+-*sys-devel/binutils-config
