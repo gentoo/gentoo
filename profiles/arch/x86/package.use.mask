@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alfred Wingate <parona@protonmail.com> (2025-11-23)
+# Requires dev-qt/qtwebengine
+media-sound/easyeffects webengine
+
 # Ionen Wolkens <ionen@gentoo.org> (2025-11-13)
 # media-libs/libvmaf is keyworded here
 media-libs/x265 -vmaf
