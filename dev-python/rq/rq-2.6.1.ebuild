@@ -34,7 +34,6 @@ BDEPEND="
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
-
 EPYTEST_DESELECT=(
 	# requires <sentry-sdk-2
 	tests/test_sentry.py::TestSentry::test_failure_capture
