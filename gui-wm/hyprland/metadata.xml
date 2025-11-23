@@ -24,6 +24,6 @@
 		<flag name="qtutils">Install Hyprland QT utility apps</flag>
         <flag name="X">Enables XWayland support</flag>
         <flag name="hyprpm">Plugin manager</flag>
-        <flag name="uwsm">Enables support for "Universal Wayland Session Manager"</flag>
+        <flag name="uwsm">Enables support for Universal Wayland Session Manager</flag>
 	</use>
 </pkgmetadata>

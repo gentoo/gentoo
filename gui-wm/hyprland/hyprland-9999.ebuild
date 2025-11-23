@@ -38,6 +38,7 @@ RDEPEND="
 	dev-libs/libinput:=
 	dev-libs/hyprgraphics:=
 	dev-libs/re2:=
+	dev-cpp/muParser:=
 	>=dev-libs/udis86-1.7.2
 	>=dev-libs/wayland-1.22.90
 	>=gui-libs/aquamarine-0.9.0:=
@@ -92,10 +93,10 @@ src_configure() {
 	local mycmakeargs=(
 		"-DBUILD_TESTING=OFF" # if enabled, creates a file inside /lib
 							  # causing an error with multilib
-		"$(! use systemd && echo '-DNO_SYSTEMD=ON')"
-		"$(! use X && echo '-DNO_XWAYLAND=ON')"
-		"$(! use hyprpm && echo '-DNO_HYPRPM=ON')"
-		"$(! use uwsm && echo '-DNO_UWSM=ON')"
+		"$(usex systemd '' '-DNO_SYSTEMD=ON')"
+		"$(usex X '' '-DNO_XWAYLAND=ON')"
+		"$(usex hyprpm '' '-DNO_HYPRPM=ON')"
+		"$(usex uwsm '' '-DNO_UWSM=ON')"
 	)
 	cmake_src_configure
 }
