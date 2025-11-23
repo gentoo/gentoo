@@ -19,7 +19,7 @@ else
 		https://github.com/NVIDIA/${PN}/archive/v${PV/_rc/-rc.}.tar.gz -> ${P}.tar.gz
 	"
 	S="${WORKDIR}/${PN}-${PV/_rc/-rc.}"
-	KEYWORDS="amd64"
+	KEYWORDS="~amd64"
 fi
 NVMODS="${WORKDIR}/nvidia-modprobe-${NVMODV}"
 SRC_URI+="
@@ -53,7 +53,6 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.17.0-fix-makefile-r1.patch"
-	"${FILESDIR}/${PN}-1.17.4-go-1.24.patch"
 )
 
 DOCS=( NOTICE README.md )
