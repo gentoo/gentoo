@@ -132,6 +132,7 @@ DEPEND="${COMMON_DEPEND}
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
+	"${FILESDIR}/php-8.4.14-libpcre2-testfix.patch"
 )
 
 PHP_MV="$(ver_cut 1)"
