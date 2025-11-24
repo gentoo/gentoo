@@ -527,7 +527,6 @@ src_configure() {
 		-DWITH_CYCLES_OSL="$(usex osl)"
 		-DWITH_CYCLES_EMBREE="$(usex embree)"
 		-DWITH_CYCLES_PATH_GUIDING="$(usex openpgl)"
-		-DWITH_CYCLES_LOGGING="ON" # "$(usex debug)"
 
 		-DWITH_CYCLES_DEVICE_OPTIX="$(usex optix)"
 		-DWITH_CYCLES_DEVICE_CUDA="$(usex cuda)"
