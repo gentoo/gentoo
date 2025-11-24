@@ -19,7 +19,7 @@ fi
 
 LICENSE="Apache-2.0 BSD LGPL-3 MIT"
 SLOT="0/stable"
-IUSE="apparmor fuidshift nls qemu"
+IUSE="apparmor fuidshift nls qemu selinux"
 
 DEPEND="acct-group/incus
 	acct-group/incus-admin
@@ -247,8 +247,12 @@ src_install() {
 	use nls && domo po/*.mo
 
 	# Incus needs INCUS_EDK2_PATH in env to find OVMF files for virtual machines, #946184,
-	# and INCUS_AGENT_PATH to find multi-setup agents for VMs, #959878.
+	# and INCUS_AGENT_PATH to find multi-setup agents for VMs, #959878,
+	# and INCUS_SECURITY_SELINUX=true to enable selinux support (until its enabled by default)
 	newenvd "${FILESDIR}"/90incus.envd 90incus
+	if use selinux; then
+		echo "INCUS_SECURITY_SELINUX=true" >> "${D}"/etc/env.d/90incus
+	fi
 }
 
 pkg_postinst() {
