@@ -411,6 +411,12 @@ pkg_postinst() {
 		ewarn "Set GRUB_DISABLE_OS_PROBER=false in /etc/default/grub to enable it."
 	fi
 
+	if grep -q GRUB_LINUX_KERNEL_GLOBS "${EROOT}"/etc/default/grub; then
+		ewarn "Support for GRUB_LINUX_KERNEL_GLOBS has been dropped."
+		ewarn "Ensure that your kernels are named appropriately or edit"
+		ewarn "/etc/grub.d/10_linux to compensate."
+	fi
+
 	if use secureboot; then
 		elog
 		elog "The signed standalone grub EFI executable(s) are available in:"
