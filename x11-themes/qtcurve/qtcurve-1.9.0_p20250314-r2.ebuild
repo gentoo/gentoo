@@ -52,9 +52,9 @@ DEPEND="
 		X? ( dev-qt/qtx11extras:5 )
 	)
 	qt6? (
-		dev-qt/qtbase:6[dbus,gui,widgets]
-		dev-qt/qtsvg:6
-		X? ( dev-qt/qtbase:6=[X] )
+		>=dev-qt/qtbase-6.9.0:6[dbus,gui,widgets]
+		>=dev-qt/qtsvg-6.9.0:6
+		X? ( >=dev-qt/qtbase-6.9.0:6=[X] )
 	)
 	X? (
 		x11-libs/libX11
@@ -72,7 +72,10 @@ BDEPEND="
 
 DOCS=( AUTHORS ChangeLog.md README.md TODO.md )
 
-PATCHES=( "${FILESDIR}/${P}-manhandle-cmake.patch" ) # bug 959633
+PATCHES=(
+	"${FILESDIR}/${P}-manhandle-cmake.patch"  # bug 959633
+	"${FILESDIR}/${P}-qt-6.10.patch" # bug 966408
+)
 
 src_configure() {
 	local mycmakeargs=(
