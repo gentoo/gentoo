@@ -590,11 +590,6 @@ src_install() {
 	emake INSTALL_ROOT="${D}" \
 		install-build install-headers install-programs
 
-	# Install shared modules
-	if [ -n "$(find ${PWD}/modules/ -mindepth 1 -maxdepth 1)" ]; then
-		emake INSTALL_ROOT="${D}" install-modules
-	fi
-
 	# Create the directory where we'll put version-specific php scripts
 	keepdir "/usr/share/php${PHP_MV}"
 
