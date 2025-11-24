@@ -16,7 +16,7 @@ S="${WORKDIR}/mail-api-${PV}/api"
 
 LICENSE="EPL-1.0 EPL-2.0 GPL-2-with-classpath-exception"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~ppc64"
+KEYWORDS="amd64 arm64 ppc64"
 
 DEPEND="
 	dev-java/jakarta-activation-api:2
