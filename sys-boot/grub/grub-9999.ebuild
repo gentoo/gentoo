@@ -63,12 +63,6 @@ else
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/grub.git"
 fi
 
-PATCHES=(
-	"${FILESDIR}"/gfxpayload.patch
-	"${FILESDIR}"/grub-2.02_beta2-KERNEL_GLOBS.patch
-	"${FILESDIR}"/grub-2.06-test-words.patch
-)
-
 DEJAVU_VER=2.37
 DEJAVU=dejavu-fonts-ttf-${DEJAVU_VER}
 UNIFONT=unifont-17.0.02
