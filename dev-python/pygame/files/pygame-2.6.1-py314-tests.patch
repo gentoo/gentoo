@@ -1,0 +1,171 @@
+https://github.com/pygame/pygame/commit/ac69c0be7e16
+--- a/test/freetype_test.py
++++ b/test/freetype_test.py
+@@ -1611,3 +1611,7 @@
+             o = font.render_raw(text)
+-            self.assertEqual(getrefcount(o), 2)
++            # if python 3.14+, getrefcount returns 1 instead of 2
++            if sys.version_info >= (3, 14):
++                self.assertEqual(getrefcount(o), 1)
++            else:
++                self.assertEqual(getrefcount(o), 2)
+             self.assertEqual(getrefcount(o[0]), 2)
+@@ -1616,3 +1620,7 @@
+             o = font.get_metrics("AB")
+-            self.assertEqual(getrefcount(o), 2)
++            if sys.version_info >= (3, 14):
++                self.assertEqual(getrefcount(o), 1)
++            else:
++                self.assertEqual(getrefcount(o), 2)
++
+             for i in range(len(o)):
+@@ -1620,3 +1628,6 @@
+             o = font.get_sizes()
+-            self.assertEqual(getrefcount(o), 2)
++            if sys.version_info >= (3, 14):
++                self.assertEqual(getrefcount(o), 1)
++            else:
++                self.assertEqual(getrefcount(o), 2)
+             for i in range(len(o)):
+--- a/test/mask_test.py
++++ b/test/mask_test.py
+@@ -2581,3 +2581,7 @@
+         """Ensures empty and full masks can be drawn onto surfaces."""
+-        expected_ref_count = 3
++        if sys.version_info >= (3, 14):
++            expected_ref_count = 2
++        else:
++            expected_ref_count = 3
++
+         size = (33, 65)
+@@ -2601,3 +2605,7 @@
+         """Ensures empty and full masks can be drawn onto a created surface."""
+-        expected_ref_count = 2
++        if sys.version_info >= (3, 14):
++            expected_ref_count = 1
++        else:
++            expected_ref_count = 2
++
+         expected_flag = SRCALPHA
+@@ -2626,3 +2634,7 @@
+         """Ensures to_surface accepts a surface arg/kwarg."""
+-        expected_ref_count = 4
++        if sys.version_info >= (3, 14):
++            expected_ref_count = 3
++        else:
++            expected_ref_count = 4
++
+         expected_color = pygame.Color("white")
+@@ -2650,3 +2662,7 @@
+         """Ensures to_surface accepts a setsurface arg/kwarg."""
+-        expected_ref_count = 2
++        if sys.version_info >= (3, 14):
++            expected_ref_count = 1
++        else:
++            expected_ref_count = 2
++
+         expected_flag = SRCALPHA
+@@ -2677,3 +2693,7 @@
+         """Ensures to_surface accepts a unsetsurface arg/kwarg."""
+-        expected_ref_count = 2
++        if sys.version_info >= (3, 14):
++            expected_ref_count = 1
++        else:
++            expected_ref_count = 2
++
+         expected_flag = SRCALPHA
+@@ -2703,3 +2723,7 @@
+         """Ensures to_surface accepts a setcolor arg/kwarg."""
+-        expected_ref_count = 2
++        if sys.version_info >= (3, 14):
++            expected_ref_count = 1
++        else:
++            expected_ref_count = 2
++
+         expected_flag = SRCALPHA
+@@ -2740,3 +2764,7 @@
+         """Ensures to_surface accepts a unsetcolor arg/kwarg."""
+-        expected_ref_count = 2
++        if sys.version_info >= (3, 14):
++            expected_ref_count = 1
++        else:
++            expected_ref_count = 2
++
+         expected_flag = SRCALPHA
+@@ -2779,3 +2807,7 @@
+         """Ensures to_surface accepts a dest arg/kwarg."""
+-        expected_ref_count = 2
++        if sys.version_info >= (3, 14):
++            expected_ref_count = 1
++        else:
++            expected_ref_count = 2
++
+         expected_flag = SRCALPHA
+@@ -2835,3 +2867,7 @@
+         """Ensures to_surface accepts an area arg/kwarg."""
+-        expected_ref_count = 2
++        if sys.version_info >= (3, 14):
++            expected_ref_count = 1
++        else:
++            expected_ref_count = 2
++
+         expected_flag = SRCALPHA
+@@ -3329,3 +3365,7 @@
+         """
+-        expected_ref_count = 2
++        if sys.version_info >= (3, 14):
++            expected_ref_count = 1
++        else:
++            expected_ref_count = 2
++
+         expected_flag = SRCALPHA
+@@ -3413,3 +3453,7 @@
+         """
+-        expected_ref_count = 4
++        if sys.version_info >= (3, 14):
++            expected_ref_count = 3
++        else:
++            expected_ref_count = 4
++
+         expected_flag = SRCALPHA
+@@ -5275,3 +5319,7 @@
+         """Ensures zero sized surfaces are handled correctly."""
+-        expected_ref_count = 3
++        if sys.version_info >= (3, 14):
++            expected_ref_count = 2
++        else:
++            expected_ref_count = 3
++
+         size = (0, 0)
+@@ -5289,3 +5337,7 @@
+         """Ensures zero sized setsurfaces are handled correctly."""
+-        expected_ref_count = 2
++        if sys.version_info >= (3, 14):
++            expected_ref_count = 1
++        else:
++            expected_ref_count = 2
++
+         expected_flag = SRCALPHA
+@@ -5309,3 +5361,7 @@
+         """Ensures zero sized unsetsurfaces are handled correctly."""
+-        expected_ref_count = 2
++        if sys.version_info >= (3, 14):
++            expected_ref_count = 1
++        else:
++            expected_ref_count = 2
++
+         expected_flag = SRCALPHA
+--- a/test/rwobject_test.py
++++ b/test/rwobject_test.py
+@@ -2,2 +2,3 @@
+ import unittest
++import sys
+ 
+@@ -85,3 +86,6 @@
+             bpath = encode_string(upath)
+-            self.assertEqual(getrefcount(bpath), before)
++            if sys.version_info >= (3, 14):
++                self.assertEqual(getrefcount(bpath), before - 1)
++            else:
++                self.assertEqual(getrefcount(bpath), before)
+ 
