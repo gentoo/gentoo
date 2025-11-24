@@ -27,7 +27,7 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=( "${FILESDIR}"/${PN}-autoconf-2.68.patch )
 
 FILECAPS=(
-	-m u+s cap_sys_tty_config+ep usr/bin/${PN}
+	-M u-s cap_sys_tty_config+ep usr/bin/${PN}
 )
 
 src_prepare() {
@@ -46,6 +46,11 @@ src_configure() {
 
 src_compile() {
 	emake AR="$(tc-getAR)"
+}
+
+src_install() {
+	default
+	fperms u+s /usr/bin/${PN}
 }
 
 pkg_postinst() {
