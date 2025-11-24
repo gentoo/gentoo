@@ -80,6 +80,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-ods-buildfix.patch"
 	"${FILESDIR}/${P}-qtads-cmake-minreqver-3.16.patch" # bug #965103
 	"${FILESDIR}/${P}-qt-6.10.patch" # bug #966308
+	"${FILESDIR}/${P}-missing-header.patch" # bug #966438
 )
 
 src_prepare() {
