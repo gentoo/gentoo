@@ -14,7 +14,7 @@ LLVM_COMPAT=( {16..21} )
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
 
-inherit distutils-r1 llvm-r2 multiprocessing qmake-utils virtualx
+inherit distutils-r1 llvm-r2 multiprocessing ninja-utils qmake-utils virtualx
 
 MY_PN=${PN}-setup-everywhere-src
 MY_P=${MY_PN}-${PV}
@@ -230,6 +230,7 @@ PATCHES=(
 	# Needs porting to newer wheel and setuptools
 	"${FILESDIR}/${PN}-6.8.2-quick-fix-build-wheel.patch"
 	"${FILESDIR}/${PN}-6.10.0-dont-vendor-ffmpeg.patch"
+	"${FILESDIR}/${PN}-6.10.1-pass-ninja-opts.patch"
 )
 
 # Build system duplicates system libraries. TODO: fix
@@ -307,6 +308,9 @@ python_prepare_all() {
 
 python_configure_all() {
 	export LLVM_INSTALL_DIR="$(get_llvm_prefix)"
+
+	# see pyside-6.10.1-pass-ninja-opts.patch
+	export NINJAOPTS="$(get_NINJAOPTS)"
 
 	ENABLED_QT_MODULES=()
 
