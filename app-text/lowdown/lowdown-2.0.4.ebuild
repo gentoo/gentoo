@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs flag-o-matic
+inherit flag-o-matic multiprocessing toolchain-funcs
 
 MY_PV="VERSION_${PV//./_}"
 DESCRIPTION="Markdown translator producing HTML5, roff documents in the ms and man formats"
@@ -54,17 +54,13 @@ PATCHES=(
 src_configure() {
 	append-flags -fPIC
 	tc-export CC AR
-	export MAKE=bmake
 
-	local flag makeopts
-	for flag in ${MAKEOPTS}; do
-		case "${flag}" in
-			-l*) ;;
-			-O) ;;
-			*) makeopts+=" ${flag}";;
-		esac
-	done
-	export MAKEOPTS="${makeopts}"
+	local jobs="$(makeopts_jobs)"
+	unset MAKEOPTS
+	unset MAKEFLAGS
+
+	export MAKEOPTS="-j${jobs}"
+	export MAKE=bmake
 
 	./configure \
 		PREFIX="${EPREFIX}/usr" \
