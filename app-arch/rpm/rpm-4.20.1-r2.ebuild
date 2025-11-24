@@ -26,8 +26,8 @@ RESTRICT="test"
 
 DEPEND="
 	${LUA_DEPS}
+	app-alternatives/gpg
 	app-arch/libarchive:=
-	>=app-crypt/gnupg-1.2
 	>=dev-lang/perl-5.8.8
 	dev-libs/elfutils
 	>=dev-libs/popt-1.7
