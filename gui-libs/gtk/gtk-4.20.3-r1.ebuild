@@ -118,6 +118,8 @@ PATCHES=(
 	# such support.
 	# https://bugs.gentoo.org/624960
 	"${FILESDIR}"/0001-gdk-add-a-poison-macro-to-hide-GDK_WINDOWING_ge_4.18.5.patch
+
+	"${FILESDIR}"/${P}-32-bit.patch
 )
 
 python_check_deps() {
