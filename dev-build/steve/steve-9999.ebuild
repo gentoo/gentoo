@@ -19,6 +19,9 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
+BDEPEND="
+	virtual/pkgconfig
+"
 
 src_install() {
 	meson_src_install
