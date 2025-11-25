@@ -3,18 +3,22 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE='threads(+)'
-
-EGIT_OVERRIDE_REPO_ENYOJS_BOOTPLATE="https://github.com/enyojs/bootplate.git"
-EGIT_OVERRIDE_BRANCH_ENYOJS_BOOTPLATE="master"
-
-inherit multiprocessing python-any-r1 waf-utils xdg git-r3
+inherit multiprocessing python-any-r1 waf-utils xdg
 
 DESCRIPTION="Virtual guitar amplifier for Linux"
 HOMEPAGE="https://guitarix.org/"
-EGIT_REPO_URI="https://github.com/brummer10/${PN}.git"
-S="${WORKDIR}/${P}/trunk"
+if [[ ${PV} == *9999 ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/brummer10/${PN}.git"
+	EGIT_OVERRIDE_REPO_ENYOJS_BOOTPLATE="https://github.com/enyojs/bootplate.git"
+	EGIT_OVERRIDE_BRANCH_ENYOJS_BOOTPLATE="master"
+	S="${WORKDIR}/${P}/trunk"
+else
+	SRC_URI="https://github.com/brummer10/${PN}/releases/download/V${PV}/guitarix2-${PV}.tar.xz"
+	KEYWORDS="~amd64"
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -23,22 +27,33 @@ REQUIRED_USE="|| ( lv2 standalone )"
 
 DEPEND="
 	dev-cpp/eigen:3
-	dev-cpp/glibmm:2
-	dev-cpp/gtkmm:3.0
-	dev-libs/glib:2
+	dev-libs/libsigc++:2
 	media-libs/libsndfile
 	media-libs/zita-convolver:=
-	media-libs/zita-resampler
-	net-misc/curl
+	media-libs/zita-resampler:=
 	sci-libs/fftw:3.0=
-	x11-libs/gtk+:3
-	lv2? ( media-libs/lv2 )
+	lv2? (
+		media-libs/lv2
+		x11-libs/cairo[X]
+		x11-libs/libX11
+	)
 	standalone? (
 		dev-libs/boost:=
+		dev-cpp/atkmm
+		dev-cpp/cairomm:0
+		dev-cpp/glibmm:2
+		dev-cpp/gtkmm:3.0
+		dev-cpp/pangomm:1.4
+		dev-libs/glib:2
 		media-libs/liblrdf
 		media-libs/lilv
+		net-misc/curl
 		virtual/jack
-		bluetooth? ( net-wireless/bluez )
+		x11-libs/cairo
+		x11-libs/gdk-pixbuf:2
+		x11-libs/gtk+:3
+		x11-libs/pango
+		bluetooth? ( net-wireless/bluez:= )
 		nsm? ( media-libs/liblo )
 		zeroconf? ( net-dns/avahi )
 	)
@@ -55,6 +70,7 @@ BDEPEND="
 	virtual/pkgconfig
 	standalone? (
 		dev-lang/sassc
+		dev-util/gperf
 		nls? (
 			dev-util/intltool
 			sys-devel/gettext
@@ -66,6 +82,7 @@ DOCS=( changelog README )
 
 src_configure() {
 	export -n {CXX,LD}FLAGS
+	export STRIP="true"
 
 	local myconf=(
 		--cxxflags="${CXXFLAGS}"
