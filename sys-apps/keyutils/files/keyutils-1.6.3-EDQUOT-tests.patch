@@ -1,0 +1,58 @@
+https://lore.kernel.org/keyrings/20250810224041.3025756-1-mattst88@gmail.com/
+https://bugs.gentoo.org/789837#c9
+https://bugs.gentoo.org/938132
+
+From: Matt Turner <mattst88@gmail.com>
+To: David Howells <dhowells@redhat.com>
+Cc: keyrings@vger.kernel.org,
+	Matt Turner <mattst88@gmail.com>
+Subject: [PATCH] test: Handle EDQUOT in act_keyctl_test_limits
+Date: Sun, 10 Aug 2025 18:40:41 -0400
+Message-ID: <20250810224041.3025756-1-mattst88@gmail.com>
+X-Mailer: git-send-email 2.49.1
+Precedence: bulk
+X-Mailing-List: keyrings@vger.kernel.org
+List-Id: <keyrings.vger.kernel.org>
+List-Subscribe: <mailto:keyrings+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:keyrings+unsubscribe@vger.kernel.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+
+This matches the behavior in `act_keyctl_test_limits2` and avoids a test
+failure [1] on some platforms:
+
+```
+TEST SIZE 192._._._._._._
+197 desc wrong error: Disk quota exceeded
+._
+198 desc wrong error: Disk quota exceeded
+._
+199 desc wrong error: Disk quota exceeded
+._
+200 desc wrong error: Disk quota exceeded
+```
+
+[1] https://bugs.gentoo.org/789837#c9
+
+Signed-off-by: Matt Turner <mattst88@gmail.com>
+---
+ keyctl_testing.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git ./keyctl_testing.c ./keyctl_testing.c
+index 3161467..588fa83 100644
+--- ./keyctl_testing.c
++++ ./keyctl_testing.c
+@@ -126,6 +126,10 @@ static void act_keyctl_test_limits(int argc, char *argv[])
+ 					fprintf(stderr, "%d desc failed: %m\n", i);
+ 					nr_fail++;
+ 				}
++			} else if (errno == EDQUOT) {
++				/* This might happen due to us creating keys
++				 * really fast.
++				 */
+ 			} else {
+ 				putchar('\n');
+ 				fprintf(stderr, "%d desc wrong error: %m\n", i);
+-- 
+2.49.1

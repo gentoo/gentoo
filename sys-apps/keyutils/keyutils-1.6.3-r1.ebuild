@@ -25,6 +25,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.3-fix-rpmspec-check.patch
 	"${FILESDIR}"/${PN}-1.6.3-symbols.patch
 	"${FILESDIR}"/${P}-tests.patch
+	"${FILESDIR}"/${PN}-1.6.3-EDQUOT-tests.patch
 )
 
 pkg_setup() {
