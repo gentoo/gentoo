@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,7 +28,6 @@ REQUIRED_USE="${GUILE_REQUIRED_USE}"
 
 BDEPEND="
 	app-emacs/geiser
-	app-emacs/transient
 "
 RDEPEND="
 	${BDEPEND}
@@ -40,6 +39,10 @@ PATCHES=( "${FILESDIR}/${PN}-guile-scheme-src-dir.patch" )
 DOCS=( readme.org )
 ELISP_TEXINFO="${PN}.texi"
 SITEFILE="50${PN}-gentoo.el"
+
+pkg_setup() {
+	elisp_pkg_setup
+}
 
 src_prepare() {
 	elisp_src_prepare
