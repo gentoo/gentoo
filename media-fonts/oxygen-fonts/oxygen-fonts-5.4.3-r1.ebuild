@@ -10,7 +10,7 @@ HOMEPAGE="https://invent.kde.org/unmaintained/oxygen-fonts"
 SRC_URI="mirror://kde/Attic/plasma/${PV}/${P}.tar.xz"
 
 LICENSE="OFL-1.1"
-SLOT="5"
+SLOT="0"
 KEYWORDS="amd64 ~arm ~loong x86"
 IUSE=""
 
