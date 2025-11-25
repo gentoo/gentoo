@@ -5,6 +5,6 @@
 		<email>hanno@gentoo.org</email>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">libhx</remote-id>
+		<remote-id type="codeberg">jengelh/libhx</remote-id>
 	</upstream>
 </pkgmetadata>
