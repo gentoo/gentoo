@@ -42,6 +42,8 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND=">=dev-qt/qttools-${QTMIN}:6[linguist]"
 
+PATCHES=( "${FILESDIR}/${P}-qt-6.10.1.patch" ) # bug 966479
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package gsl GSL)
