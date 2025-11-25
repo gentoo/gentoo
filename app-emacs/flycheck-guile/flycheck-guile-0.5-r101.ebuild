@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,6 +28,11 @@ RDEPEND="
 
 DOCS=( README.md )
 SITEFILE="50${PN}-gentoo.el"
+
+pkg_setup() {
+	elisp_pkg_setup
+	guile-single_pkg_setup
+}
 
 src_prepare() {
 	elisp_src_prepare
