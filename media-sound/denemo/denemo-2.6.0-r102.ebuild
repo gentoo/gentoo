@@ -70,6 +70,11 @@ PATCHES=(
 )
 DOCS=( AUTHORS ChangeLog docs/{DESIGN{,.lilypond},GOALS,TODO} NEWS )
 
+pkg_setup() {
+	guile-single_pkg_setup
+	font_pkg_setup
+}
+
 src_prepare() {
 	sed -e '/^Categories=/s/GNOME\;/GNOME\;GTK\;/' -i pixmaps/org.denemo.Denemo.desktop || die
 	sed -e 's|appdatadir = \$(datarootdir)/appdata|appdatadir = \$(datarootdir)/metainfo|' \
