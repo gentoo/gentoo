@@ -12,7 +12,7 @@ S="${WORKDIR}"/${P/_beta/b}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 IUSE="dbus exif jpeg pdf +poppler +postscript png test tiff"
 RESTRICT="!test? ( test )"
 
