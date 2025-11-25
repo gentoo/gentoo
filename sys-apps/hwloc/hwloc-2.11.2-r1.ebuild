@@ -71,11 +71,13 @@ multilib_src_configure() {
 	fi
 
 	if use cuda ; then
-		append-cflags "-I${ESYSROOT}/opt/cuda/include"
-		append-cppflags "-I${ESYSROOT}/opt/cuda/include"
+		append-cflags "-I${CUDA_PATH:-${ESYSROOT}/opt/cuda}/include"
+		append-cxxflags "-I${CUDA_PATH:-${ESYSROOT}/opt/cuda}/include"
 
 		local -x LDFLAGS="${LDFLAGS}"
-		append-ldflags "-L${ESYSROOT}/opt/cuda/$(get_libdir)"
+		append-ldflags "-L${CUDA_PATH:-${ESYSROOT}/opt/cuda}/$(get_libdir)"
+
+		cuda_add_sandbox
 	fi
 
 	export ac_cv_header_valgrind_valgrind_h=$(multilib_native_usex valgrind)
