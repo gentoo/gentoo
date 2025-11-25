@@ -148,7 +148,7 @@ src_configure() {
 
 src_compile() {
 	# Prevent access violations, see bug 201871
-	export VARTEXFONTS="${T}/fonts"
+	local -x TEXMFVAR="${T}" TEXMFCACHE="${T}" VARTEXFONTS="${T}/fonts"
 
 	emake all
 
