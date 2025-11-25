@@ -97,12 +97,12 @@ src_configure() {
 		--shared-lib
 		--jobs=$(makeopts_jobs)
 		$(use_enable nls)
-		$(usex bluetooth "" "--no-bluez")
-		$(usex debug "--debug" "")
+		$(usev !bluetooth --no-bluez)
+		$(usev debug --debug)
 		$(usex lv2 "--lv2dir=${EPREFIX}/usr/$(get_libdir)/lv2" "--no-lv2 --no-lv2-gui")
-		$(usex nsm "" "--no-nsm")
-		$(usex standalone "" "--no-standalone")
-		$(usex zeroconf "" "--no-avahi")
+		$(usev !nsm --no-nsm)
+		$(usev !standalone --no-standalone)
+		$(usev !zeroconf --no-avahi)
 	)
 	waf-utils_src_configure "${myconf[@]}"
 }
