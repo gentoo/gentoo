@@ -11,7 +11,7 @@ SRC_URI="https://github.com/OpenPrinting/cups-filters/releases/download/${PV}/${
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="+foomatic"
 
 RDEPEND="
