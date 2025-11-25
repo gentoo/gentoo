@@ -3,9 +3,7 @@
 
 EAPI=8
 
-GUILE_COMPAT=( 2-2 3-0 )
-
-inherit elisp guile-single
+inherit elisp
 
 DESCRIPTION="Guile's implementation of the Geiser protocols"
 HOMEPAGE="https://gitlab.com/emacs-geiser/guile/"
@@ -24,14 +22,14 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-REQUIRED_USE="${GUILE_REQUIRED_USE}"
 
 BDEPEND="
 	app-emacs/geiser
+	app-emacs/transient
 "
 RDEPEND="
 	${BDEPEND}
-	${GUILE_DEPS}
+	dev-scheme/guile
 "
 
 PATCHES=( "${FILESDIR}/${PN}-guile-scheme-src-dir.patch" )
@@ -40,15 +38,10 @@ DOCS=( readme.org )
 ELISP_TEXINFO="${PN}.texi"
 SITEFILE="50${PN}-gentoo.el"
 
-pkg_setup() {
-	elisp_pkg_setup
-}
-
 src_prepare() {
 	elisp_src_prepare
 
 	sed -e "s|@SITEETC@|${EPREFIX}${SITEETC}/${PN}|" \
-		-e "s|t \"guile\"|t \"${GUILE}\"|" \
 		-i "${PN}.el" || die
 }
 
