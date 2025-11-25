@@ -45,7 +45,7 @@ RDEPEND="
 	joystick? ( !backend-sdl? ( media-libs/libjsw ) )
 	png? ( media-libs/libpng:0= )
 	pulseaudio? ( media-libs/libpulse )
-	xml? ( dev-libs/libxml2 )
+	xml? ( dev-libs/libxml2:2= )
 	zlib? ( virtual/zlib:= )"
 DEPEND="${RDEPEND}
 	backend-fbcon? ( virtual/linux-sources )"
