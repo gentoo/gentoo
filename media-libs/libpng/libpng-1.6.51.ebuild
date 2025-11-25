@@ -6,7 +6,7 @@ EAPI=8
 inherit dot-a libtool multilib-minimal
 
 APNG_REPO=libpng-apng # sometimes libpng-apng is more up to date
-APNG_VERSION="1.6.49"
+APNG_VERSION="1.6.51"
 DESCRIPTION="Portable Network Graphics library"
 HOMEPAGE="https://www.libpng.org/"
 SRC_URI="
