@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2025-11-25)
+# Generates session keys with weak (no) randomness. Please re-encrypt
+# any data/messages using this librnp version. <0.18 is fine as is >=0.18.1.
+# See bug #966299.
+=dev-util/librnp-0.18.0
+
 # Michał Górny <mgorny@gentoo.org> (2025-11-22)
 # A NIH replacement for dev-python/faker with a very slow test suite.
 # No reverse dependencies left.
