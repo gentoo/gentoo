@@ -127,11 +127,6 @@ media-sound/cadence
 # Removal on 2025-11-28.
 sec-keys/openpgp-keys-danielkiper
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2025-10-25)
-# EAPI=7, maintainer-needed, no rev deps, source digest mismatch.
-# Removal on 2025-11-24.  Bugs #965097, #927089.
-dev-libs/eventlog
-
 # Sam James <sam@gentoo.org> (2025-10-13)
 # Crashes in memtodest when handling PATH. Not yet reported upstream.
 =app-shells/dash-0.5.13.1
