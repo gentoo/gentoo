@@ -11,22 +11,30 @@ CHROMIUM_LANGS="
 	hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr sv
 	sw ta te th tr uk ur vi zh-CN zh-TW
 "
+PYTHON_COMPAT=( python3_{11..14} )
+UPDATE_DISABLER_COMMIT="2f26748a667045d26bc19841f1a731b4be7a7514"
 
-inherit chromium-2 desktop linux-info optfeature unpacker xdg
+inherit chromium-2 desktop linux-info optfeature python-single-r1 unpacker xdg
 
 DESCRIPTION="All-in-one voice and text chat for gamers"
 HOMEPAGE="https://discord.com/"
-SRC_URI="https://dl.discordapp.net/apps/linux/${MY_PV}/${MY_PN}-${MY_PV}.tar.gz"
+SRC_URI="
+	https://dl.discordapp.net/apps/linux/${MY_PV}/${MY_PN}-${MY_PV}.tar.gz
+	https://github.com/flathub/com.discordapp.Discord/raw/${UPDATE_DISABLER_COMMIT}/disable-breaking-updates.py
+		-> discord-disable-breaking-updates-${UPDATE_DISABLER_COMMIT}.py
+"
 S="${WORKDIR}/${MY_PN^}"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 
 IUSE="appindicator +seccomp wayland"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="bindist mirror strip test"
 
 RDEPEND="
+	${PYTHON_DEPS}
 	>=app-accessibility/at-spi2-core-2.46.0:2
 	dev-libs/expat
 	dev-libs/glib:2
@@ -88,7 +96,7 @@ src_prepare() {
 
 	# Update exec location in launcher
 	sed --expression "s:@@DESTDIR@@:${DESTDIR}:" \
-		"${FILESDIR}/launcher.sh" > "${T}/launcher.sh" || die "updating of exec location in launcher failed"
+		"${FILESDIR}/launcher-r1.sh" > "${T}/launcher.sh" || die "updating of exec location in launcher failed"
 
 	# USE seccomp in launcher
 	if use seccomp; then
@@ -126,6 +134,10 @@ src_install() {
 	# Crashpad is included in the package once in a while and when it does, it must be installed.
 	# See #903616 and #890595
 	[[ -x chrome_crashpad_handler ]] && doins chrome_crashpad_handler
+
+	# https://bugs.gentoo.org/905289
+	newins "${DISTDIR}/discord-disable-breaking-updates-${UPDATE_DISABLER_COMMIT}.py" disable-breaking-updates.py
+	python_fix_shebang "${ED}/${DESTDIR}/disable-breaking-updates.py"
 
 	exeinto "/usr/bin"
 	newexe "${T}/launcher.sh" "discord" || die "failing to install launcher"
