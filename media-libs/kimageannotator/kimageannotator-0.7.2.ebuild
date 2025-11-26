@@ -36,12 +36,9 @@ DEPEND="${RDEPEND}
 BDEPEND="dev-qt/qttools:6[linguist]"
 
 PATCHES=(
-	"${FILESDIR}/${P}-fix_KeyInputHelperTest.patch"
-	# Pending upstream fixes:
-	"${FILESDIR}/${P}-revert-custom-scaling.patch"
-	# bug #965014:
+	# Pending upstream fix, bug #965014:
 	"${FILESDIR}/${P}-cmake-minreqver-3.16.patch"
-	"${FILESDIR}/${P}-cmake-cleanup.patch"
+	"${FILESDIR}/${PN}-0.7.1-cmake-cleanup.patch"
 )
 
 src_configure() {

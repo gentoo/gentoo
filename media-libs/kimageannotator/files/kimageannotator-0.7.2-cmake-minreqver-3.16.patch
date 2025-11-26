@@ -22,7 +22,7 @@ index 24dd825..360b555 100644
 @@ -1,4 +1,4 @@
 -cmake_minimum_required(VERSION 3.5)
 +cmake_minimum_required(VERSION 3.16)
- project(kImageAnnotator LANGUAGES CXX VERSION 0.7.1)
+ project(kImageAnnotator LANGUAGES CXX VERSION 0.7.2)
  
  set(CMAKE_CXX_STANDARD 17)
 -- 
