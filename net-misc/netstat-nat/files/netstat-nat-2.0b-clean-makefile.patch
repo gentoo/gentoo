@@ -1,0 +1,38 @@
+This is Gentoo specific patch.
+
+Compile flags:
+
+GNUMakefile: Filter -O3 and -g flags since it could be set through the portage.
+
+See man man-pages :
+
+date : The date of the last nontrivial change that was made to the man page.
+
+--- a/GNUmakefile	2025-11-25 17:31:26.002732880 +0300
++++ b/GNUmakefile	2025-11-25 17:32:12.478138463 +0300
+@@ -2,14 +2,12 @@
+ 
+ CC ?= cc
+ VERSION ?= $(shell git describe)
+-DATE_EPOCH = LC_ALL=C date $(shell date -d @0 > /dev/null 2>&1 && echo "-d @" || echo "-r ")
+-SOURCE_DATE_EPOCH ?= $(shell git log -1 --no-show-signature --format=%at "netstat-nat.1.in")
+-MANUAL_DATE ?= $(shell $(DATE_EPOCH)$(SOURCE_DATE_EPOCH) +"%B %e, %Y")
++DATE ?= $(shell date +"%B %e, %Y")
+ PREFIX ?= /usr/local
+ 
+ 
+ CPPFLAGS += -D_GNU_SOURCE
+-CFLAGS   += -O3 -g -Wall -Wextra -std=c17 -Wno-string-plus-int
++CFLAGS   += -Wall -Wextra -std=c17 -Wno-string-plus-int
+ 
+ 
+ .PHONY: all check clean install
+@@ -28,7 +26,7 @@
+ 	cp netstat-nat.1 $(DESTDIR)$(PREFIX)/share/man/man1
+ 
+ netstat-nat.1: netstat-nat.1.in
+-	awk '{gsub(/ \^/, " \\(ha"); gsub(/ ~/, " \\(ti"); if($$1 == ".Dd") $$2 = "$(MANUAL_DATE)"; if($$1 == ".Dt") print ".ds doc-volume-operating-system"; if($$1 == ".Os") $$2 = "netstat-nat-ng $(VERSION)"; print}' < $< > $@
++	awk '{gsub(/ \^/, " \\(ha"); gsub(/ ~/, " \\(ti"); if($$1 == ".Dd") $$2 = "$(DATE)"; if($$1 == ".Dt") print ".ds doc-volume-operating-system"; if($$1 == ".Os") $$2 = "netstat-nat-ng $(VERSION)"; print}' < $< > $@
+ 
+ tst: CPPFLAGS += -DTEST
+ tst: CFLAGS   += -Wno-unused-function -Wno-unused-const-variable
