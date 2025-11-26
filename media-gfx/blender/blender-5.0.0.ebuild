@@ -41,6 +41,8 @@ if [[ "${PV}" == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://projects.blender.org/blender/blender.git"
 	EGIT_SUBMODULES=( '*' '-lib/*' )
+	# using shallow causes long wait times.
+	EGIT_LFS_CLONE_TYPE="single"
 
 	if [[ "${PV}" == 9999* ]]; then
 		EGIT_BRANCH="main"
