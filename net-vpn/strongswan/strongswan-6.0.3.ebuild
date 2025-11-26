@@ -52,7 +52,7 @@ COMMON_DEPEND="
 	systemd? ( sys-apps/systemd )
 	networkmanager? ( net-misc/networkmanager )
 	pam? ( sys-libs/pam )
-	strongswan_plugins_botan? ( dev-libs/botan:= )
+	strongswan_plugins_botan? ( dev-libs/botan:3= )
 	strongswan_plugins_connmark? ( net-firewall/iptables:= )
 	strongswan_plugins_forecast? ( net-firewall/iptables:= )
 	strongswan_plugins_soup? ( net-libs/libsoup:3.0 )
