@@ -121,10 +121,6 @@ dev-python/pyside -webview
 # Dependencies e.g. pypy keyworded (not stable) here.
 dev-build/meson -test-full
 
-# Sv. Lockal <lockalsash@gmail.com> (2025-01-11)
-# dev-cpp/prometheus-cpp is not keyworded
-dev-cpp/opentelemetry-cpp prometheus
-
 # Michał Górny <mgorny@gentoo.org> (2024-12-24)
 # OpenMP offloading is supported on 64-bit architectures only.
 llvm-runtimes/clang-runtime -offload
