@@ -1,0 +1,27 @@
+changeset:   7825:d1d026a0f073
+tag:         tip
+user:        Aidan Kehoe <kehoea@parhasard.net>
+date:        Wed Nov 26 07:16:47 2025 +0000
+summary:     Avoid generating a lock file when generating custom-load.el, cus-dep.el
+
+diff -r c562b019a23b -r d1d026a0f073 lisp/cus-dep.el
+--- a/lisp/cus-dep.el	Tue Nov 25 13:38:30 2025 +0000
++++ b/lisp/cus-dep.el	Wed Nov 26 07:16:47 2025 +0000
+@@ -119,12 +119,11 @@
+ 		       (return nil))))
+ 	      (message "(No changes need to be written)")
+ 	    (when (file-exists-p cusload-file)
+-	      (let ((buf (find-file-noselect cusload-file)))
+-		(with-current-buffer buf
+-		  (goto-char (point-min))
+-		  (when (search-forward cusload-hash-table-marker nil t)
+-		    (setq old-hash (read buf))))
+-		(kill-buffer buf)))
++             (with-temp-buffer
++               (insert-file-contents-internal cusload-file)
++               (goto-char (point-min))
++               (when (search-forward cusload-hash-table-marker nil t)
++                 (setq old-hash (read (current-buffer))))))
+ 	    ;; Process directory
+ 	    (dolist (file files)
+ 	      (let ((old-cache (if (hash-table-p old-hash)
