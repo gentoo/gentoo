@@ -27,9 +27,10 @@ BDEPEND="
 	app-emacs/geiser
 	app-emacs/transient
 "
+# Only calls 'guile' at runtime.
 RDEPEND="
 	${BDEPEND}
-	dev-scheme/guile
+	dev-scheme/guile:*
 "
 
 PATCHES=( "${FILESDIR}/${PN}-guile-scheme-src-dir.patch" )
