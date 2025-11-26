@@ -9,4 +9,7 @@
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 		<remote-id type="kde-invent">libraries/kquickimageeditor</remote-id>
 	</upstream>
+	<use>
+		<flag name="opencv">Enable better blur performance using <pkg>media-libs/opencv</pkg></flag>
+	</use>
 </pkgmetadata>
