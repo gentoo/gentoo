@@ -58,7 +58,7 @@ DEPEND="
 		)
 	)
 	mysql? ( dev-db/mysql-connector-c:= )
-	mongodb? ( >=dev-libs/mongo-c-driver-1.13.0-r1 )
+	mongodb? ( >=dev-libs/mongo-c-driver-1.13.0-r1:0 )
 	odbc? ( dev-db/unixODBC )
 	oracle? ( dev-db/oracle-instantclient[sdk] )
 	pam? ( sys-libs/pam )

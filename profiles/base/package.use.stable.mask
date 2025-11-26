@@ -4,6 +4,10 @@
 # New entries go on top.
 # Please use the same syntax as in package.use.mask.
 
+# Alfred Wingate <parona@protonmail.com> (2025-11-15)
+# Need not-yet-stable dev-libs/mongo-cxx-driver
+sci-libs/gdal mongodb
+
 # Alexey Shvetsov <alexxy@gentoo.org> (2025-10-29)
 # Need non-yet-stable caffe2
 sci-chemistry/gromacs nnpot
