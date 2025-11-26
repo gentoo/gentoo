@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,6 +18,7 @@ DEPEND="
 	>=dev-lang/ocaml-4.14
 	dev-ml/variantslib:${SLOT}
 	>=dev-ml/ppxlib-0.28.0:=
+	<dev-ml/ppxlib-0.36.0
 	>=dev-ml/ocaml-compiler-libs-0.11.0:=
 "
 RDEPEND="${DEPEND}"
