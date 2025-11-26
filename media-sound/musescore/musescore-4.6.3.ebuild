@@ -70,6 +70,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.6.3-rm_tinyxml.patch"
 	"${FILESDIR}/${PN}-4.6.3-missing_includes.patch"
 	"${FILESDIR}/${PN}-4.6.3-fix_qt610.patch"
+	"${FILESDIR}/${PN}-4.6.3-fix_noqtdebug.patch"
 	# unbundle 3rd libs
 	"${FILESDIR}/${PN}-4.6.3-unbundle-lame.patch"
 	"${FILESDIR}/${PN}-4.6.3-unbundle-pugixml.patch"
