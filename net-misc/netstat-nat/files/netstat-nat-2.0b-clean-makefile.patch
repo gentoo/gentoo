@@ -6,7 +6,7 @@ GNUMakefile: Filter -O3 and -g flags since it could be set through the portage.
 
 See man man-pages :
 
-date : The date of the last nontrivial change that was made to the man page.
+date : The date of the last trivial change that was made to the man page.
 
 --- a/GNUmakefile	2025-11-25 17:31:26.002732880 +0300
 +++ b/GNUmakefile	2025-11-25 17:32:12.478138463 +0300
