@@ -4,8 +4,8 @@
 EAPI=8
 
 ECM_TEST="forceoptional"
-KFMIN=6.9.0
-QTMIN=6.8.1
+KFMIN=6.16.0
+QTMIN=6.9.1
 inherit ecm kde.org xdg
 
 DESCRIPTION="Text-based subtitles editor"
@@ -47,6 +47,8 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 "
+
+PATCHES=( "${FILESDIR}/${P}-qt-6.10.patch" ) # bug #966626
 
 src_configure() {
 	local mycmakeargs=(
