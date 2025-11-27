@@ -48,7 +48,7 @@ LICENSE="MPL-2.0 controller? ( ZeroTier )"
 LICENSE+=" controller? ( 0BSD Apache-2.0 BSD ISC MIT MPL-2.0 Unicode-3.0 ZLIB )"
 LICENSE+=" sso? ( 0BSD Apache-2.0 BSD ISC MIT MPL-2.0 Unicode-3.0 ZLIB )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv"
 
 IUSE="controller cpu_flags_arm_neon debug sso"
 
