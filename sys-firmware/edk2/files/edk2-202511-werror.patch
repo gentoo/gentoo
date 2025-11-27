@@ -1,0 +1,56 @@
+diff --git a/BaseTools/Conf/tools_def.template b/BaseTools/Conf/tools_def.template
+index 90a389bdff07..b530e813e6ea 100755
+--- a/BaseTools/Conf/tools_def.template
++++ b/BaseTools/Conf/tools_def.template
+@@ -833,7 +833,7 @@ NOOPT_*_*_OBJCOPY_ADDDEBUGFLAG     = --add-gnu-debuglink="$(DEBUG_DIR)/$(MODULE_
+ *_*_*_DTC_PATH                     = DEF(DTC_BIN)
+ 
+ # All supported GCC archs except LOONGARCH64 support -mstack-protector-guard=global, so set that on everything except LOONGARCH64
+-DEFINE GCC_ALL_CC_FLAGS            = -g -Os -fshort-wchar -fno-builtin -fno-strict-aliasing -Wall -Werror -Wno-array-bounds -include AutoGen.h -fno-common -fstack-protector
++DEFINE GCC_ALL_CC_FLAGS            = -g -Os -fshort-wchar -fno-builtin -fno-strict-aliasing -Wall -Wno-array-bounds -include AutoGen.h -fno-common -fstack-protector
+ DEFINE GCC_IA32_X64_CC_FLAGS       = -mstack-protector-guard=global
+ DEFINE GCC_LOONGARCH64_CC_FLAGS    = DEF(GCC_ALL_CC_FLAGS) -mabi=lp64d -fno-asynchronous-unwind-tables -Wno-address -fno-short-enums -fsigned-char -ffunction-sections -fdata-sections
+ DEFINE GCC_AARCH64_CC_FLAGS        = DEF(GCC_ALL_CC_FLAGS) -mlittle-endian -fno-short-enums -fverbose-asm -funsigned-char  -ffunction-sections -fdata-sections -Wno-address -fno-asynchronous-unwind-tables -fno-unwind-tables -fno-pic -fno-pie -ffixed-x18 -mstack-protector-guard=global
+@@ -914,7 +914,7 @@ DEFINE GCC5_AARCH64_DLINK2_FLAGS     = DEF(GCC49_AARCH64_DLINK2_FLAGS) -Wno-erro
+ DEFINE GCC5_AARCH64_ASLDLINK_FLAGS   = DEF(GCC49_AARCH64_ASLDLINK_FLAGS) DEF(GCC5_DLINK_WARNING_FLAGS)
+ DEFINE GCC5_ASLCC_FLAGS              = DEF(GCC49_ASLCC_FLAGS) -fno-lto
+ 
+-DEFINE GCC5_RISCV_ALL_CC_FLAGS                    = -g -fshort-wchar -fno-omit-frame-pointer -fno-strict-aliasing -Wall -Werror -Wno-array-bounds -ffunction-sections -fdata-sections -include AutoGen.h -fno-common -DSTRING_ARRAY_NAME=$(BASE_NAME)Strings -msmall-data-limit=0
++DEFINE GCC5_RISCV_ALL_CC_FLAGS                    = -g -fshort-wchar -fno-omit-frame-pointer -fno-strict-aliasing -Wall -Wno-array-bounds -ffunction-sections -fdata-sections -include AutoGen.h -fno-common -DSTRING_ARRAY_NAME=$(BASE_NAME)Strings -msmall-data-limit=0
+ DEFINE GCC5_RISCV_ALL_DLINK_COMMON                = -nostdlib -Wl,-n,-q,--gc-sections -z common-page-size=0x40 DEF(GCC5_DLINK_WARNING_FLAGS)
+ DEFINE GCC5_RISCV_ALL_DLINK_FLAGS                 = DEF(GCC5_RISCV_ALL_DLINK_COMMON) -Wl,--entry,$(IMAGE_ENTRY_POINT) -u $(IMAGE_ENTRY_POINT) -Wl,-Map,$(DEST_DIR_DEBUG)/$(BASE_NAME).map
+ DEFINE GCC5_RISCV_ALL_DLINK2_FLAGS                = -Wl,--defsym=PECOFF_HEADER_SIZE=0x220,--script=$(EDK_TOOLS_PATH)/Scripts/GccBase.lds
+@@ -930,7 +930,7 @@ DEFINE GCC5_RISCV64_DLINK_FLAGS            = DEF(GCC5_RISCV_ALL_DLINK_FLAGS) -Wl
+ DEFINE GCC5_RISCV64_DLINK2_FLAGS           = DEF(GCC5_RISCV_ALL_DLINK2_FLAGS)
+ DEFINE GCC5_RISCV64_ASM_FLAGS              = DEF(GCC5_RISCV_ALL_ASM_FLAGS) -march=DEF(GCC5_RISCV64_ARCH) -mcmodel=medany -mabi=lp64
+ 
+-DEFINE GCC5_LOONGARCH64_CC_FLAGS           = DEF(GCC_LOONGARCH64_CC_FLAGS) -march=loongarch64 -mno-memcpy -Werror -Wno-maybe-uninitialized -Wno-stringop-overflow -Wno-pointer-to-int-cast -no-pie -fno-stack-protector -mno-explicit-relocs -mno-relax
++DEFINE GCC5_LOONGARCH64_CC_FLAGS           = DEF(GCC_LOONGARCH64_CC_FLAGS) -march=loongarch64 -mno-memcpy -Wno-maybe-uninitialized -Wno-stringop-overflow -Wno-pointer-to-int-cast -no-pie -fno-stack-protector -mno-explicit-relocs -mno-relax
+ DEFINE GCC5_LOONGARCH64_DLINK_FLAGS        = DEF(GCC_LOONGARCH64_DLINK_FLAGS) DEF(GCC5_DLINK_WARNING_FLAGS) -Wl,--no-relax
+ DEFINE GCC5_LOONGARCH64_DLINK2_FLAGS       = DEF(GCC_DLINK2_FLAGS_COMMON) -Wl,--defsym=PECOFF_HEADER_SIZE=0x228
+ DEFINE GCC5_LOONGARCH64_ASLDLINK_FLAGS     = DEF(GCC_LOONGARCH64_ASLDLINK_FLAGS) DEF(GCC5_LOONGARCH64_DLINK2_FLAGS) DEF(GCC5_DLINK_WARNING_FLAGS)
+diff --git a/BaseTools/Source/C/Makefiles/header.makefile b/BaseTools/Source/C/Makefiles/header.makefile
+index 53e73abe5335..91f2514d61a6 100644
+--- a/BaseTools/Source/C/Makefiles/header.makefile
++++ b/BaseTools/Source/C/Makefiles/header.makefile
+@@ -158,17 +158,17 @@ BUILD_OPTFLAGS = -O2 $(EXTRA_OPTFLAGS)
+ 
+ ifeq ($(DARWIN),Darwin)
+ # assume clang or clang compatible flags on OS X
+-CFLAGS = -MD -fshort-wchar -fno-strict-aliasing -Wall -Werror \
++CFLAGS = -MD -fshort-wchar -fno-strict-aliasing -Wall \
+ -Wno-deprecated-declarations -Wno-self-assign -Wno-unused-result -nostdlib -g
+ else
+ ifneq ($(CLANG),)
+ CFLAGS = -MD -fshort-wchar -fno-strict-aliasing -fwrapv \
+--fno-delete-null-pointer-checks -Wall -Werror \
++-fno-delete-null-pointer-checks -Wall \
+ -Wno-deprecated-declarations -Wno-self-assign \
+ -Wno-unused-result -nostdlib -g
+ else
+ CFLAGS = -MD -fshort-wchar -fno-strict-aliasing -fwrapv \
+--fno-delete-null-pointer-checks -Wall -Werror \
++-fno-delete-null-pointer-checks -Wall \
+ -Wno-deprecated-declarations -Wno-stringop-truncation -Wno-restrict \
+ -Wno-unused-result -nostdlib -g
+ endif
