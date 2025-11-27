@@ -33,8 +33,7 @@ IUSE="debug +editor fribidi cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_s
 
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
-COMMON_DEPEND="
-	${LUA_DEPS}
+DEPEND="${LUA_DEPS}
 	dev-libs/libxml2:=
 	dev-libs/xerces-c:=[icu]
 	media-libs/fontconfig
@@ -60,19 +59,19 @@ COMMON_DEPEND="
 	model-viewer? ( x11-libs/wxGTK:${WX_GTK_VER}=[X] )
 	videos? ( media-video/vlc )
 "
-DEPEND="${COMMON_DEPEND}"
-RDEPEND="
-	${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	~games-strategy/${PN}-data-${PV}
 "
-
-BDEPEND="sys-apps/help2man
+BDEPEND="
+	sys-apps/help2man
 	virtual/pkgconfig
 	editor? ( ${VIRTUALX_DEPEND} )
-	model-viewer? ( ${VIRTUALX_DEPEND} )"
+	model-viewer? ( ${VIRTUALX_DEPEND} )
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.11.1-cmake-lua.patch"
+	"${FILESDIR}/${P}-cmake4.patch" # bug 964656
 
 	# From Fedora and Arch
 	"${FILESDIR}/${P}-underlink.patch"
