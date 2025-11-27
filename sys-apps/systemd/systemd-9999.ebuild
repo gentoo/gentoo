@@ -282,7 +282,7 @@ src_prepare() {
 
 	if ! use vanilla; then
 		PATCHES+=(
-			"${FILESDIR}/gentoo-journald-audit-r3.patch"
+			"${FILESDIR}/gentoo-journald-audit-r4.patch"
 		)
 	fi
 
