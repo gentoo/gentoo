@@ -19,11 +19,7 @@ inherit cmake desktop flag-o-matic lua-single readme.gentoo-r1 virtualx wxwidget
 DESCRIPTION="Cross-platform 3D realtime strategy game"
 HOMEPAGE="https://megaglest.org/ https://github.com/MegaGlest/megaglest-source"
 SRC_URI="https://github.com/MegaGlest/megaglest-source/releases/download/${PV}/megaglest-source-${PV}.tar.xz
-	https://github.com/MegaGlest/megaglest-source/commit/789e1cdf.patch -> ${P}-789e1cdf.patch
-	https://github.com/MegaGlest/megaglest-source/commit/5801b1fa.patch -> ${P}-5801b1fa.patch
-	https://github.com/MegaGlest/megaglest-source/commit/412b37d0.patch -> ${P}-412b37d0.patch
-	https://github.com/MegaGlest/megaglest-source/commit/e09ba53c.patch -> ${P}-e09ba53c.patch
-	https://github.com/MegaGlest/megaglest-source/commit/fbd0cfb1.patch -> ${P}-fbd0cfb1.patch
+	https://dev.gentoo.org/~asturm/distfiles/${P}-wxWidgets-3.2.tar.xz
 "
 
 LICENSE="GPL-3 BitstreamVera"
@@ -80,12 +76,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-GLEW_ERROR_NO_GLX_DISPLAY.patch"
 	"${FILESDIR}/${P}-help2man.patch"
 
-	# Fix build with wxWidgets 3.2
-	"${DISTDIR}/${P}-789e1cdf.patch"
-	"${DISTDIR}/${P}-5801b1fa.patch"
-	"${DISTDIR}/${P}-412b37d0.patch"
-	"${DISTDIR}/${P}-e09ba53c.patch"
-	"${FILESDIR}/${P}-fbd0cfb1.patch"
+	"${WORKDIR}/${P}-wxWidgets-3.2" # upstream git master
 )
 
 DISABLE_AUTOFORMATTING="yes"
