@@ -14,7 +14,7 @@ if [[ ${KDE_BUILD_TYPE} != live ]]; then
 	else
 		SRC_URI="mirror://kde/stable/${PN}/${PV}/${TARNAME}.tar.xz"
 	fi
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="amd64 ~arm64"
 fi
 
 DESCRIPTION="Digital photo management application"
