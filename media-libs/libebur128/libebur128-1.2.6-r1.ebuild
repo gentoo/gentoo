@@ -24,6 +24,8 @@ DEPEND="
 	)
 "
 
+PATCHES=( "${FILESDIR}/${P}-cmake4.patch" ) # bug 952797
+
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DENABLE_INTERNAL_QUEUE_H=OFF
