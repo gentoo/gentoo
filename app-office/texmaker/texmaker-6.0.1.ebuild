@@ -34,6 +34,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.0-unbundle_hunspell_synctex.patch
 	"${FILESDIR}"/${PN}-6.0.0-unforce_webengine.patch
 	"${FILESDIR}"/${PN}-6.0.0-fix_lto_mismatch.patch
+	"${FILESDIR}"/${P}-qt-6.10.patch # downstream, bug #966707
 )
 
 src_prepare() {
