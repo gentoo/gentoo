@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 
 RDEPEND="
 	>=dev-python/pytest-7.1.2[${PYTHON_USEDEP}]
