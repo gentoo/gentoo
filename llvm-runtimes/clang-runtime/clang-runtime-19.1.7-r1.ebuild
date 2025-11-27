@@ -7,6 +7,7 @@ inherit multilib multilib-build
 
 DESCRIPTION="Meta-ebuild for clang runtime libraries"
 HOMEPAGE="https://clang.llvm.org/"
+S=${WORKDIR}
 
 LICENSE="metapackage"
 SLOT="${PV%%.*}"
