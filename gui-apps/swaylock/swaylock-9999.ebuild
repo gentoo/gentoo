@@ -18,29 +18,32 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+gdk-pixbuf +man +pam"
+IUSE="+gdk-pixbuf +pam"
 
 DEPEND="
 	dev-libs/wayland
 	x11-libs/cairo
 	x11-libs/libxkbcommon
-	virtual/libcrypt:=
-	gdk-pixbuf? ( x11-libs/gdk-pixbuf:2 )
+	gdk-pixbuf? (
+		dev-libs/glib:2
+		x11-libs/gdk-pixbuf:2
+	)
 	pam? ( sys-libs/pam )
+	!pam? ( virtual/libcrypt:= )
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
+	app-text/scdoc
 	>=dev-libs/wayland-protocols-1.25
 	>=dev-util/wayland-scanner-1.15
 	virtual/pkgconfig
-	man? ( app-text/scdoc )
 "
 
 src_configure() {
 	local emesonargs=(
-		$(meson_feature man man-pages)
 		$(meson_feature pam)
 		$(meson_feature gdk-pixbuf)
+		-Dman-pages=enabled
 		-Dfish-completions=true
 		-Dzsh-completions=true
 		-Dbash-completions=true
@@ -50,5 +53,5 @@ src_configure() {
 }
 
 pkg_postinst() {
-	use !pam && fcaps -m u+s cap_sys_admin usr/bin/swaylock
+	use !pam && fcaps -m u+s cap_dac_read_search usr/bin/swaylock
 }
