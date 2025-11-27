@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Eli Schwartz <eschwartz@gentoo.org> (2025-11-27)
+# Needs dev-python/mypy for mypyc, not keyworded here
+dev-python/charset-normalizer native-extensions
+
 # Viorel Munteanu <ceamac@gentoo.org> (2025-11-09)
 # Needs media-video/pipewire, not keyworded here
 net-misc/tigervnc wayland

@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Eli Schwartz <eschwartz@gentoo.org> (2025-11-27)
+# Needs dev-python/mypy for mypyc, not keyworded here
+dev-python/charset-normalizer native-extensions
+
 # Ionen Wolkens <ionen@gentoo.org> (2025-11-20)
 # Needs llvm-core/clang which is not keyworded here
 dev-qt/qttools qdoc
