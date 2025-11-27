@@ -18,8 +18,8 @@ else
 	KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~sparc x86"
 fi
 
-SLOT="0"
 LICENSE="GPL-3"
+SLOT="0"
 
 IUSE="archive bogofilter calendar clamav dbus debug doc +gnutls +imap ldap +libcanberra +libnotify litehtml networkmanager nls nntp +notification +oauth pdf perl +pgp python rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind webkit xface"
 REQUIRED_USE="
