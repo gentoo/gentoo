@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
 
 inherit distutils-r1 pypi
 
@@ -45,12 +45,11 @@ BDEPEND="
 		dev-python/editables[${PYTHON_USEDEP}]
 		dev-python/filelock[${PYTHON_USEDEP}]
 		dev-python/flit-core[${PYTHON_USEDEP}]
-		dev-python/pyfakefs[${PYTHON_USEDEP}]
-		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/trustme[${PYTHON_USEDEP}]
 	)
 "
 
+EPYTEST_PLUGINS=( pyfakefs pytest-mock )
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
@@ -71,7 +70,5 @@ python_test() {
 		tests/backend
 	)
 
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -p pytest_fakefs -p pytest_mock \
-		-m "not requires_internet and not requires_docker"
+	epytest -m "not requires_internet and not requires_docker"
 }
