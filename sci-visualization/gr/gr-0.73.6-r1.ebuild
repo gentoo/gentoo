@@ -39,6 +39,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.53.0-musl.patch"
+	"${FILESDIR}/${P}-cmake4.patch" # bug #955792
 )
 
 src_configure() {
