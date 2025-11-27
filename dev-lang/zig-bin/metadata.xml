@@ -10,7 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">ziglang/zig</remote-id>
-		<bugs-to>https://github.com/ziglang/zig/issues</bugs-to>
+		<remote-id type="codeberg">ziglang/zig</remote-id>
+		<bugs-to>https://codeberg.org/ziglang/zig/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
