@@ -37,6 +37,11 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-11-27)
+# Depends on Qt5, upstream needs help with porting. Bug #956453
+# Removal on 2025-12-27.
+media-gfx/panini
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-11-27)
 # Dead upstream, depends on Qt5, so it has no future in ::gentoo.
 # Qt6-based alternatives: KDE Plasma, LXQt, liquidshell.
 # Bug #961737. Removal on 2025-12-27.
