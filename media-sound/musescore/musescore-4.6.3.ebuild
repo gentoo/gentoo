@@ -17,7 +17,7 @@ else
 	SRC_URI="
 		https://github.com/musescore/MuseScore/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 ~x86"
 	S="${WORKDIR}/MuseScore-${PV}"
 fi
 
