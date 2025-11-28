@@ -50,7 +50,7 @@ SRC_URI+="
 "
 S=${WORKDIR}/${BASE_P}
 
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~arm arm64 ~hppa ~ppc ppc64 ~sparc x86"
 IUSE="debug experimental hardened"
 REQUIRED_USE="
 	arm? ( savedconfig )
