@@ -45,7 +45,7 @@ src_configure() {
 	export includedir="${EPREFIX}/usr/include"
 	export localedir="${EPREFIX}/usr/share/locale"
 	export docdir="${EPREFIX}/usr/share/doc/${PF}"
-	export confdir="${EPREFIX}/etc"
+	export confdir="${EPREFIX}/etc/"
 	export bash_completion_dir="$(get_bashcompdir)"
 	export V=1
 	export NLS=$(usex nls true false)
