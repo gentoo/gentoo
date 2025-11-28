@@ -116,7 +116,7 @@ src_install() {
 	if [[ ${OPERA_FORCE_RPM} == yes ]]; then
 		mv "usr/lib64/${PN}" "${OPERA_HOME%${PN}}" || die
 	else
-		mv "usr/lib/x86_64-linux-gnu/${PN}" "${OPERA_HOME%${PN}}" || die
+		mv -T "usr/lib/x86_64-linux-gnu/${MY_PN}" "${OPERA_HOME%${PN}}/${MY_PN%-stable}" || die
 	fi
 	rm -r "usr/lib" || die
 
