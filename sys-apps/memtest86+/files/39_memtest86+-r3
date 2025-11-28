@@ -1,0 +1,70 @@
+#!/bin/sh
+
+. /usr/share/grub/grub-mkconfig_lib
+
+mt32=/boot/memtest86plus/memtest.i586
+mt64=/boot/memtest86plus/memtest.x86_64
+
+if [ $(ls /boot/memtest86plus | wc -l) -gt 1 ]; then
+	multiple_memtest=true
+fi
+
+submenu_indentation=""
+if [ "${multiple_memtest}" = "true" ] && [ "${GRUB_DISABLE_SUBMENU}" != "y" ]; then
+	submenu_indentation="${grub_tab}"
+	cat <<EOF
+submenu 'Memtest86+' {
+EOF
+fi
+
+# Start i586
+if [ -f "${mt32}" ]; then
+	gettext_printf "Found memtest image: %s\n" "${mt32}" >&2
+
+	device="$("${grub_probe}" --target=device "${mt32}")"
+	path="$(make_system_path_relative_to_its_root "${mt32}")"
+	cat <<EOF
+${submenu_indentation}menuentry 'Memtest86+ 32bit' {
+EOF
+
+	if [ -n "${submenu_indentation}" ]; then
+		prepare_grub_to_access_device "${device}" | grub_add_tab | grub_add_tab
+	else
+		prepare_grub_to_access_device "${device}" | grub_add_tab
+	fi
+
+	cat <<EOF
+	${submenu_indentation}linux "${path}"
+${submenu_indentation}}
+EOF
+fi
+# End i586
+
+# Start x86_64
+if [ -f "${mt64}" ]; then
+        gettext_printf "Found memtest image: %s\n" "${mt64}" >&2
+
+        device="$("${grub_probe}" --target=device "${mt64}")"
+        path="$(make_system_path_relative_to_its_root "${mt64}")"
+        cat <<EOF
+${submenu_indentation}menuentry 'Memtest86+ 64bit' {
+EOF
+
+        if [ -n "{submenu_indentation}" ]; then
+                prepare_grub_to_access_device "${device}" | grub_add_tab | grub_add_tab
+        else
+                prepare_grub_to_access_device "${device}" | grub_add_tab
+        fi
+
+        cat <<EOF
+        ${submenu_indentation}linux "${path}"
+${submenu_indentation}}
+EOF
+fi
+# End x86_64
+
+if [ "${multiple_memtest}" = "true" ] && [ "${GRUB_DISABLE_SUBMENU}" != "y" ]; then
+	cat <<EOF
+}
+EOF
+fi
