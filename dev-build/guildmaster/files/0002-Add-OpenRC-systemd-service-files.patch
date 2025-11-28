@@ -1,7 +1,7 @@
-From dcb0802716e5afc574a8a05e9030d1fa66b161d6 Mon Sep 17 00:00:00 2001
-Message-ID: <dcb0802716e5afc574a8a05e9030d1fa66b161d6.1764295572.git.sam@gentoo.org>
-In-Reply-To: <a40447a74c41917643b7a5a28300c50f35b13388.1764295572.git.sam@gentoo.org>
-References: <a40447a74c41917643b7a5a28300c50f35b13388.1764295572.git.sam@gentoo.org>
+From 6ff45889cda654a111db92aa1d347d49bbe307d8 Mon Sep 17 00:00:00 2001
+Message-ID: <6ff45889cda654a111db92aa1d347d49bbe307d8.1764302647.git.sam@gentoo.org>
+In-Reply-To: <a40447a74c41917643b7a5a28300c50f35b13388.1764302647.git.sam@gentoo.org>
+References: <a40447a74c41917643b7a5a28300c50f35b13388.1764302647.git.sam@gentoo.org>
 From: Sam James <sam@gentoo.org>
 Date: Fri, 28 Nov 2025 02:05:02 +0000
 Subject: [PATCH 2/2] Add OpenRC, systemd service files
@@ -9,15 +9,19 @@ Subject: [PATCH 2/2] Add OpenRC, systemd service files
 I've only opted to install the systemd service file as while Gentoo policy
 is to install such files (like for OpenRC) unconditionally, I'm not sure
 other distributions expect the same, or what.
+
+Signed-off-by: Sam James <sam@gentoo.org>
 ---
- guildmaster.confd   | 1 +
- guildmaster.initd   | 5 +++++
- guildmaster.service | 7 +++++++
- meson.build         | 6 ++++++
- 4 files changed, 19 insertions(+)
+ guildmaster.confd   |  1 +
+ guildmaster.initd   |  5 ++++
+ guildmaster.service |  7 ++++++
+ meson.build         | 57 +++++++++++++++++++++++++++++++++++++++++----
+ meson.options       |  5 ++++
+ 5 files changed, 70 insertions(+), 5 deletions(-)
  create mode 100644 guildmaster.confd
  create mode 100644 guildmaster.initd
  create mode 100644 guildmaster.service
+ create mode 100644 meson.options
 
 diff --git a/guildmaster.confd b/guildmaster.confd
 new file mode 100644
@@ -51,29 +55,88 @@ index 0000000..d76a6bb
 +WantedBy=multi-user.target
 +
 diff --git a/meson.build b/meson.build
-index 83d2123..c206839 100644
+index 83d2123..e336485 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -9,6 +9,7 @@ project(
+@@ -8,7 +8,14 @@ project(
+ )
  
  fuse_dep = dependency('fuse3')
- udev_dep = dependency('udev', required: false)
-+systemd_dep = dependency('systemd', required: false)
+-udev_dep = dependency('udev', required: false)
++
++if get_option('udev').enabled()
++    udev_dep = dependency('udev', required: false)
++endif
++
++if get_option('systemd').enabled()
++    systemd_dep = dependency('systemd', required: false)
++endif
  
  dependencies = [fuse_dep]
  
-@@ -26,6 +27,11 @@ gm_exe = executable(
+@@ -26,7 +33,47 @@ gm_exe = executable(
      install: true,
  )
  
-+install_data(
-+    ['guildmaster.service'],
-+    install_dir: join_paths(systemd_dep.get_variable('systemdsystemunitdir')),
-+)
+-install_data(
+-    ['cuse-guild.rules'],
+-    install_dir: join_paths(udev_dep.get_variable('udevdir'), 'rules.d'),
+-)
++if get_option('udev').enabled()
++    if udev_dep.found()
++        udevrulesdir = join_paths(udev_dep.get_variable('udevdir'), 'rules.d')
++    else
++        udevrulesdir = get_option('udevrulesdir')
++        if udevrulesdir = ''
++            udevrulesdir = '/usr/lib/udev/rules.d'
++        endif
++    endif
 +
- install_data(
-     ['cuse-guild.rules'],
-     install_dir: join_paths(udev_dep.get_variable('udevdir'), 'rules.d'),
++    install_data(
++        ['cuse-guild.rules'],
++        install_dir: udevrulesdir,
++    )
++endif
++
++if get_option('openrc').enabled()
++    install_data(
++        ['guildmaster.confd'],
++        rename: ['guildmaster'],
++        install_dir: '/etc/conf.d',
++    )
++    install_data(
++        ['guildmaster.initd'],
++        rename: ['guildmaster'],
++        install_dir: '/etc/init.d',
++    )
++endif
++
++if get_option('systemd').enabled()
++    if systemd_dep.found()
++        systemdunitdir = systemd_dep.get_variable('systemdsystemunitdir')
++    else
++        systemdunitdir = get_option('systemdunitdir')
++        if systemdunitdir = ''
++            systemdunitdirdir = '/usr/lib/systemd/system'
++        endif
++    endif
++
++    install_data(
++        ['guildmaster.service'],
++        install_dir: systemdunitdir,
++    )
++endif
+diff --git a/meson.options b/meson.options
+new file mode 100644
+index 0000000..bc21302
+--- /dev/null
++++ b/meson.options
+@@ -0,0 +1,5 @@
++option('openrc', type : 'feature', value : 'auto', description : 'Install OpenRC service files')
++option('systemd', type : 'feature', value : 'auto', description : 'Install systemd service files')
++option('systemdunitdir', type: 'string', description: 'systemd services directory (defaults to /usr/lib/systemd/system')
++option('udev', type : 'feature', value : 'auto', description : 'Install udev rules')
++option('udevrulesdir', type : 'string', description : 'udev rules directory (defaults to /usr/lib/udev/rules.d)')
 -- 
 2.52.0
 

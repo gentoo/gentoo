@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit meson udev
+inherit meson systemd udev
 
 DESCRIPTION="FIFO-like jobserver node via CUSE"
 HOMEPAGE="https://codeberg.org/amonakov/guildmaster"
@@ -33,11 +33,20 @@ PATCHES=(
 	"${FILESDIR}"/0002-Add-OpenRC-systemd-service-files.patch
 )
 
+src_configure() {
+	local emesonargs=(
+		-Dopenrc=enabled
+		-Dsystemd=enabled
+		-Dsystemdunitdir="$(systemd_get_systemunitdir)"
+		-Dudev=enabled
+		-Dudevrulesdir="$(get_udevdir)"/rules.d
+	)
+
+	meson_src_configure
+}
+
 src_install() {
 	meson_src_install
-
-	doinitd guildmaster.initd
-	doconfd guildmaster.confd
 
 	insinto /etc/sandbox.d
 	newins "${FILESDIR}"/sandbox.conf 90guildmaster
