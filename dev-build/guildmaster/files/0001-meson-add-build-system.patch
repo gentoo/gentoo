@@ -1,7 +1,7 @@
 https://codeberg.org/amonakov/guildmaster/pulls/1
 
 From 418bfa323cf91c63fbc468568c274388fdf0c383 Mon Sep 17 00:00:00 2001
-Message-ID: <418bfa323cf91c63fbc468568c274388fdf0c383.1764302913.git.sam@gentoo.org>
+Message-ID: <418bfa323cf91c63fbc468568c274388fdf0c383.1764304322.git.sam@gentoo.org>
 From: Sam James <sam@gentoo.org>
 Date: Thu, 27 Nov 2025 23:50:10 +0000
 Subject: [PATCH 1/2] meson: add build system

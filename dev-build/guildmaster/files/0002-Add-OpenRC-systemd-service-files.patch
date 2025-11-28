@@ -1,9 +1,9 @@
 https://codeberg.org/amonakov/guildmaster/pulls/1
 
-From f9d11460f1172981ed2356bf57f9c0bcf407ad8a Mon Sep 17 00:00:00 2001
-Message-ID: <f9d11460f1172981ed2356bf57f9c0bcf407ad8a.1764302913.git.sam@gentoo.org>
-In-Reply-To: <418bfa323cf91c63fbc468568c274388fdf0c383.1764302913.git.sam@gentoo.org>
-References: <418bfa323cf91c63fbc468568c274388fdf0c383.1764302913.git.sam@gentoo.org>
+From 22a4fc1504f547b1f685e43bf36b85abdb3b2b8d Mon Sep 17 00:00:00 2001
+Message-ID: <22a4fc1504f547b1f685e43bf36b85abdb3b2b8d.1764304322.git.sam@gentoo.org>
+In-Reply-To: <418bfa323cf91c63fbc468568c274388fdf0c383.1764304322.git.sam@gentoo.org>
+References: <418bfa323cf91c63fbc468568c274388fdf0c383.1764304322.git.sam@gentoo.org>
 From: Sam James <sam@gentoo.org>
 Date: Fri, 28 Nov 2025 02:05:02 +0000
 Subject: [PATCH 2/2] Add OpenRC, systemd service files
@@ -52,7 +52,7 @@ index 0000000..d76a6bb
 +WantedBy=multi-user.target
 +
 diff --git a/meson.build b/meson.build
-index 83d2123..e336485 100644
+index 83d2123..c1ade60 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -8,7 +8,14 @@ project(
@@ -61,11 +61,11 @@ index 83d2123..e336485 100644
  fuse_dep = dependency('fuse3')
 -udev_dep = dependency('udev', required: false)
 +
-+if get_option('udev').enabled()
++if get_option('udev')
 +    udev_dep = dependency('udev', required: false)
 +endif
 +
-+if get_option('systemd').enabled()
++if get_option('systemd')
 +    systemd_dep = dependency('systemd', required: false)
 +endif
  
@@ -79,7 +79,7 @@ index 83d2123..e336485 100644
 -    ['cuse-guild.rules'],
 -    install_dir: join_paths(udev_dep.get_variable('udevdir'), 'rules.d'),
 -)
-+if get_option('udev').enabled()
++if get_option('udev')
 +    if udev_dep.found()
 +        udevrulesdir = join_paths(udev_dep.get_variable('udevdir'), 'rules.d')
 +    else
@@ -95,7 +95,7 @@ index 83d2123..e336485 100644
 +    )
 +endif
 +
-+if get_option('openrc').enabled()
++if get_option('openrc')
 +    install_data(
 +        ['guildmaster.confd'],
 +        rename: ['guildmaster'],
@@ -108,7 +108,7 @@ index 83d2123..e336485 100644
 +    )
 +endif
 +
-+if get_option('systemd').enabled()
++if get_option('systemd')
 +    if systemd_dep.found()
 +        systemdunitdir = systemd_dep.get_variable('systemdsystemunitdir')
 +    else
@@ -125,14 +125,14 @@ index 83d2123..e336485 100644
 +endif
 diff --git a/meson.options b/meson.options
 new file mode 100644
-index 0000000..bc21302
+index 0000000..4b5dd5d
 --- /dev/null
 +++ b/meson.options
 @@ -0,0 +1,5 @@
-+option('openrc', type : 'feature', value : 'auto', description : 'Install OpenRC service files')
-+option('systemd', type : 'feature', value : 'auto', description : 'Install systemd service files')
++option('openrc', type : 'boolean', value : true, description : 'Install OpenRC service files')
++option('systemd', type : 'boolean', value : true, description : 'Install systemd service files')
 +option('systemdunitdir', type: 'string', description: 'systemd services directory (defaults to /usr/lib/systemd/system')
-+option('udev', type : 'feature', value : 'auto', description : 'Install udev rules')
++option('udev', type : 'boolean', value : true, description : 'Install udev rules')
 +option('udevrulesdir', type : 'string', description : 'udev rules directory (defaults to /usr/lib/udev/rules.d)')
 -- 
 2.52.0

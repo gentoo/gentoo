@@ -35,10 +35,10 @@ PATCHES=(
 
 src_configure() {
 	local emesonargs=(
-		-Dopenrc=enabled
-		-Dsystemd=enabled
+		-Dopenrc=true
+		-Dsystemd=true
 		-Dsystemdunitdir="$(systemd_get_systemunitdir)"
-		-Dudev=enabled
+		-Dudev=true
 		-Dudevrulesdir="$(get_udevdir)"/rules.d
 	)
 
