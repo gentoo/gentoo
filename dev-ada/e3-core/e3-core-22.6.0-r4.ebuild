@@ -32,6 +32,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="test? (
 	dev-python/httpretty[${PYTHON_USEDEP}]
 	dev-python/mock[${PYTHON_USEDEP}]
+	dev-python/ptyprocess[${PYTHON_USEDEP}]
 	dev-python/pytest-socket[${PYTHON_USEDEP}]
 	dev-python/requests-mock[${PYTHON_USEDEP}]
 	dev-python/requests-cache[${PYTHON_USEDEP}]
