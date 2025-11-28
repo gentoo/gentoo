@@ -9,10 +9,6 @@
 # Postgres:18 is not stable yet
 postgres_targets_postgres18
 
-# Alfredo Tupone <tupone@gentoo.org> (1025-05-01)
-# gcc:15 is not stable yet
-ada_target_gcc_15
-
 # Michał Górny <mgorny@gentoo.org> (2024-12-31)
 # LLVM slots with no stable releases yet.
 llvm_slot_22
