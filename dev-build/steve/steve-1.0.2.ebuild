@@ -43,10 +43,9 @@ pkg_postinst() {
 
 	if ! grep -q -s -R -- '--jobserver-auth=fifo:/dev/steve' "${EROOT}"/etc/portage/make.conf
 	then
-		elog "In order to use system-wide steve instance, enable the service:"
+		elog "In order to use the system-wide steve instance, enable the service:"
 		elog
-		elog "  systemctl enable steve"
-		elog "  systemctl start steve"
+		elog "  systemctl enable --now steve"
 		elog
 		elog "Then add to your make.conf:"
 		elog
@@ -54,7 +53,7 @@ pkg_postinst() {
 		elog '  NINJAOPTS=""'
 		elog
 		elog "You can use -l in NINJAOPTS but *do not* use -j, as it disables"
-		elog "job server support."
+		elog "jobserver support."
 	fi
 }
 
