@@ -13,7 +13,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 arm64"
+KEYWORDS="amd64 arm64"
 
 src_configure() {
 	# ngx_devel_kit (NDK) is designed in a modular way. As such, only the
