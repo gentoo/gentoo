@@ -19,7 +19,7 @@ NGINX_MODULES=(
 	+stream_{upstream_hash,upstream_least_conn,upstream_random,upstream_zone}
 	stream_{ssl,realip,geoip,ssl_preread}
 )
-NGINX_UPDATE_STREAM=mainline
+NGINX_UPDATE_STREAM=stable
 NGINX_TESTS_COMMIT=06a36245e134eac985cdfc5fac982cb149f61412
 NGINX_MISC_FILES=(
 	nginx-{r2.logrotate,r2.service,r4.conf,r6.initd,r1.confd,r1.tmpfiles}
@@ -28,3 +28,7 @@ NGINX_MISC_FILES=(
 inherit nginx
 
 KEYWORDS="amd64 arm arm64 ~loong ~ppc ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-httpoxy-mitigation-r1.patch"
+)
