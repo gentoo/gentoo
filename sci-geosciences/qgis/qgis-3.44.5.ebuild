@@ -46,7 +46,7 @@ COMMON_DEPEND="
 	dev-libs/libzip:=
 	dev-libs/protobuf:=
 	>=dev-libs/qtkeychain-0.14.1-r1:=[qt6(+)]
-	dev-qt/qtbase:6[concurrent,gui,network,sql,ssl,widgets,xml]
+	dev-qt/qtbase:6=[concurrent,gui,network,sql,ssl,widgets,xml]
 	dev-qt/qtmultimedia:6
 	dev-qt/qtpositioning:6
 	dev-qt/qtserialport:6
@@ -131,7 +131,10 @@ BDEPEND="${PYTHON_DEPS}
 	) )
 "
 
-PATCHES=( "${FILESDIR}/${PN}-3.44.3-testReportDir.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-3.44.3-testReportDir.patch"
+	"${FILESDIR}/${P}-qt-6.10.patch" # bug 966729
+)
 
 src_prepare() {
 	cmake_src_prepare
