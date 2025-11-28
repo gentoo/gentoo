@@ -1,16 +1,13 @@
-From 6ff45889cda654a111db92aa1d347d49bbe307d8 Mon Sep 17 00:00:00 2001
-Message-ID: <6ff45889cda654a111db92aa1d347d49bbe307d8.1764302647.git.sam@gentoo.org>
-In-Reply-To: <a40447a74c41917643b7a5a28300c50f35b13388.1764302647.git.sam@gentoo.org>
-References: <a40447a74c41917643b7a5a28300c50f35b13388.1764302647.git.sam@gentoo.org>
+https://codeberg.org/amonakov/guildmaster/pulls/1
+
+From f9d11460f1172981ed2356bf57f9c0bcf407ad8a Mon Sep 17 00:00:00 2001
+Message-ID: <f9d11460f1172981ed2356bf57f9c0bcf407ad8a.1764302913.git.sam@gentoo.org>
+In-Reply-To: <418bfa323cf91c63fbc468568c274388fdf0c383.1764302913.git.sam@gentoo.org>
+References: <418bfa323cf91c63fbc468568c274388fdf0c383.1764302913.git.sam@gentoo.org>
 From: Sam James <sam@gentoo.org>
 Date: Fri, 28 Nov 2025 02:05:02 +0000
 Subject: [PATCH 2/2] Add OpenRC, systemd service files
 
-I've only opted to install the systemd service file as while Gentoo policy
-is to install such files (like for OpenRC) unconditionally, I'm not sure
-other distributions expect the same, or what.
-
-Signed-off-by: Sam James <sam@gentoo.org>
 ---
  guildmaster.confd   |  1 +
  guildmaster.initd   |  5 ++++
