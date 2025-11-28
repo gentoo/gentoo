@@ -18,8 +18,8 @@ RESTRICT="test"
 
 RDEPEND="net-misc/rsync"
 BDEPEND="
+	>=app-text/asciidoc-8.1.0
 	doc? (
-		>=app-text/asciidoc-8.1.0
 		app-text/docbook-xsl-stylesheets
 		app-text/docbook-xml-dtd:4.2
 		dev-libs/libxslt
