@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 arm64"
+KEYWORDS="amd64 arm64"
 
 DEPEND="dev-libs/libmaxminddb"
 RDEPEND="${DEPEND}"
