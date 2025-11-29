@@ -43,6 +43,7 @@ COMMON_DEPEND="
 	dev-cpp/tomlplusplus
 	>=dev-qt/qtbase-${QTMIN}:6[concurrent,gui,network,widgets,xml(+)]
 	>=dev-qt/qtnetworkauth-${QTMIN}:6
+	games-util/gamemode
 	media-gfx/qrencode:=
 	virtual/zlib:=
 "
