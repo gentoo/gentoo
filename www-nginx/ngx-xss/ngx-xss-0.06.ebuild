@@ -22,7 +22,7 @@ SRC_URI="
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.06-add-dynamic-build-support.patch"
