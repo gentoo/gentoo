@@ -12,10 +12,7 @@ HOMEPAGE="https://prismlauncher.org/ https://github.com/PrismLauncher/PrismLaunc
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/PrismLauncher/PrismLauncher"
-	EGIT_SUBMODULES=(
-		'*' '-libraries/cmark' '-libraries/extra-cmake-modules' '-libraries/filesystem'
-		'-libraries/tomlplusplus' '-libraries/zlib'
-	)
+	EGIT_SUBMODULES=( '*' '-libraries/filesystem' )
 else
 	MY_PN="PrismLauncher"
 	# use vendored tarball to avoid dealing with submodules directly
