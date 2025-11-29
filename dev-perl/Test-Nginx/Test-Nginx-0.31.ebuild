@@ -14,7 +14,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 arm64"
 
 # The following packages in the dev-perl category provide the required Perl
 # modules that Test-Nginx depends on:
