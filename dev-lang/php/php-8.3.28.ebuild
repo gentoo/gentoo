@@ -269,11 +269,6 @@ src_prepare() {
 	   ext/gd/tests/bug73272.phpt \
 	   || die
 
-	# Test requires truetype support
-	if ! use truetype; then
-		rm ext/gd/tests/gh19955.phpt
-	fi
-
 	# Should be OK in the next version, but this test required network
 	# access when it was added:
 	#
