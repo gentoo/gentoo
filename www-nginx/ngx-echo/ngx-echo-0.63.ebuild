@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 
 # Tests require NGINX to be built with debugging log enabled.
 BDEPEND="test? ( www-servers/nginx[debug(-)] )"
