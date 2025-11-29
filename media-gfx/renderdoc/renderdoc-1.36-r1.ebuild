@@ -3,23 +3,12 @@
 
 EAPI=8
 
-# The swig fork is required for compatibility with both provided and
-# 3rd-party Python scripts.  Required patch was sent to upstream in
-# 2014: https://github.com/swig/swig/pull/251
-MY_SWIG_VER=7
-MY_SWIG=swig-${PN}-${MY_SWIG_VER}
+inherit cmake flag-o-matic optfeature verify-sig xdg
 
-AUTOTOOLS_AUTO_DEPEND="no"
-DOCS_BUILDER="sphinx"
-DOCS_DIR="docs"
-PYTHON_COMPAT=( python3_{11..13} )
-inherit autotools cmake flag-o-matic optfeature python-single-r1 docs qmake-utils verify-sig xdg
-
-DESCRIPTION="Stand-alone graphics debugging tool"
+DESCRIPTION="Standalone graphics debugging tool"
 HOMEPAGE="https://renderdoc.org https://github.com/baldurk/renderdoc"
 SRC_URI="
 	https://github.com/baldurk/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
-	qt5? ( https://github.com/baldurk/swig/archive/${PN}-modified-${MY_SWIG_VER}.tar.gz -> ${MY_SWIG}.tar.gz )
 	verify-sig? ( https://github.com/baldurk/renderdoc/releases/download/v${PV}/v${PV}.tar.gz.asc -> ${P}.tar.gz.asc )
 "
 
@@ -41,8 +30,6 @@ SRC_URI="
 LICENSE="BSD BSD-2 CC-BY-3.0 GPL-3+ MIT OFL-1.1 public-domain ZLIB"
 SLOT="0"
 KEYWORDS="amd64"
-IUSE="qt5"
-REQUIRED_USE="doc? ( qt5 ) qt5? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	app-arch/lz4:=
@@ -52,28 +39,11 @@ RDEPEND="
 	x11-libs/libxcb:=
 	x11-libs/xcb-util-keysyms
 	virtual/opengl
-	qt5? (
-		${PYTHON_DEPS}
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtnetwork:5[ssl]
-		dev-qt/qtsvg:5
-		dev-qt/qtwidgets:5
-		dev-qt/qtx11extras:5
-	)
 "
 DEPEND="${RDEPEND}"
-# qtcore provides qmake, which is required to build the qrenderdoc gui.
 BDEPEND="
 	x11-base/xorg-proto
 	virtual/pkgconfig
-	qt5? (
-		${AUTOTOOLS_DEPEND}
-		${PYTHON_DEPS}
-		dev-libs/libpcre
-		dev-qt/qtcore:5
-		app-alternatives/yacc
-	)
 	verify-sig? ( sec-keys/openpgp-keys-baldurkarlsson )
 "
 
@@ -83,15 +53,13 @@ PATCHES=(
 	# selection to off, just in case.
 	"${FILESDIR}"/${PN}-1.18-analytics-off.patch
 
-	# Only search for PySide2 if pyside2 USE flag is set.
-	# Bug #833627
+	# Only search for PySide2 if pyside2 USE flag is set. Bug #833627
 	"${FILESDIR}"/${PN}-1.18-conditional-pyside.patch
 
-	# Pass CXXFLAGS and LDFLAGS through to qmake when qrenderdoc is
-	# built.
+	# Pass CXXFLAGS and LDFLAGS through to qmake when qrenderdoc is built
 	"${FILESDIR}"/${PN}-1.18-system-flags.patch
 
-	# Needed to prevent sandbox violations during build.
+	# Needed to prevent sandbox violations during build
 	"${FILESDIR}"/${PN}-1.27-env-home.patch
 
 	"${FILESDIR}"/${PN}-1.30-r1-system-compress.patch
@@ -106,10 +74,6 @@ PATCHES=(
 DOCS=( util/LINUX_DIST_README )
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/baldurkarlsson.gpg
-
-pkg_setup() {
-	use qt5 && python-single-r1_pkg_setup
-}
 
 src_unpack() {
 	if use verify-sig; then
@@ -129,18 +93,14 @@ src_prepare() {
 	# Remove the calls to install the documentation files.  Instead,
 	# install them with einstalldocs.
 	sed -i '/share\/doc\/renderdoc/d' \
-		"${S}"/CMakeLists.txt "${S}"/qrenderdoc/CMakeLists.txt \
-		|| die 'sed remove doc install failed'
+		CMakeLists.txt qrenderdoc/CMakeLists.txt || die
 
-	# Assumes that the build directory is "${S}"/build, which it is not.
-	sed -i "s|../build/lib|${BUILD_DIR}/lib|" \
-		"${S}"/docs/conf.py \
-		|| die 'sed patch doc sys.path failed'
+	# Assumes that the build directory is "${S}"/build, which it is not
+	sed -i "s|../build/lib|${BUILD_DIR}/lib|" docs/conf.py || die
 
 	# Bug #836235
 	sed -i '/#include <stdarg/i #include <time.h>' \
-		"${S}"/renderdoc/os/os_specific.h \
-		|| die 'sed include time.h failed'
+		renderdoc/os/os_specific.h || die
 }
 
 src_configure() {
@@ -152,8 +112,8 @@ src_configure() {
 		-DENABLE_EGL=ON
 		-DENABLE_GL=ON
 		-DENABLE_GLES=ON
-		-DENABLE_PYRENDERDOC=$(usex qt5)
-		-DENABLE_QRENDERDOC=$(usex qt5)
+		-DENABLE_PYRENDERDOC=OFF # disable Qt5
+		-DENABLE_QRENDERDOC=OFF # disable Qt5
 		-DENABLE_VULKAN=ON
 
 		# Upstream says that this option is unsupported and should not
@@ -167,26 +127,10 @@ src_configure() {
 		-DVULKAN_LAYER_FOLDER="${EPREFIX}"/etc/vulkan/implicit_layer.d
 	)
 
-	use qt5 && mycmakeargs+=(
-		-DPython3_EXECUTABLE="${PYTHON}"
-		-DRENDERDOC_SWIG_PACKAGE="${DISTDIR}"/${MY_SWIG}.tar.gz
-
-		# Needed after qtchooser removal, bug #836474.
-		-DQMAKE_QT5_COMMAND="$(qt5_get_bindir)"/qmake
-
-		# Bug #926549
-		-DQRENDERDOC_ENABLE_PYSIDE2=OFF
-	)
-
 	# Lots of type mismatch issues.
 	filter-lto
 
 	cmake_src_configure
-}
-
-src_compile() {
-	cmake_src_compile
-	docs_compile
 }
 
 pkg_postinst() {
