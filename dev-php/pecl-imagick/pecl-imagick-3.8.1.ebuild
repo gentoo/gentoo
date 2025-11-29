@@ -4,7 +4,7 @@
 EAPI=8
 
 PHP_EXT_NAME="imagick"
-USE_PHP="php8-2 php8-3 php8-4"
+USE_PHP="php8-2 php8-3 php8-4 php8-5"
 
 # https://github.com/Imagick/imagick/issues/626
 PHP_EXT_NEEDED_USE="-debug"
@@ -29,6 +29,16 @@ DEPEND="
 "
 
 PHP_EXT_ECONF_ARGS="--with-imagick=${EPREFIX}/usr"
+
+src_prepare() {
+	# Test fails with ImageMagick >=7.1.2
+	#
+	#	https://github.com/Imagick/imagick/issues/737
+	#
+	rm "${S}/tests/024-ispixelsimilar.phpt" || die
+
+	php-ext-source-r3_src_prepare
+}
 
 src_install() {
 	php-ext-pecl-r3_src_install
