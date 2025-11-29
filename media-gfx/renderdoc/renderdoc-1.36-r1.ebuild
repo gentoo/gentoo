@@ -68,7 +68,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.31-lld.patch
 
 	"${FILESDIR}"/${PN}-1.36-gcc15-fix.patch
-	"${FILESDIR}"/${PN}-1.36-cmake4.patch
+	"${FILESDIR}"/${PN}-1.36-cmake4.patch # bug 964518
 )
 
 DOCS=( util/LINUX_DIST_README )
