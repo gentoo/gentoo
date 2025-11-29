@@ -44,6 +44,7 @@ COMMON_DEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[concurrent,gui,network,widgets,xml(+)]
 	>=dev-qt/qt5compat-${QTMIN}:6
 	>=dev-qt/qtnetworkauth-${QTMIN}:6
+	media-gfx/qrencode:=
 	virtual/zlib:=
 "
 # gulrak-filesystem dependency is only needed at build time, because we don't
