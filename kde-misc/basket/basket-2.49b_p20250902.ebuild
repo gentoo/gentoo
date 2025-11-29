@@ -57,6 +57,8 @@ RDEPEND="${COMMON_DEPEND}
 "
 BDEPEND="git? ( virtual/pkgconfig )"
 
+PATCHES=( "${FILESDIR}/${P}-cmake-minreqver-3.16.patch" ) # bug 966794
+
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_GPG=$(usex crypt)
