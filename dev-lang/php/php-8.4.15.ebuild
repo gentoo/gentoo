@@ -269,25 +269,6 @@ src_prepare() {
 		rm ext/dba/tests/gh19706.phpt
 	fi
 
-	# Test fails in a sandboxed/offline environment,
-	# already fixed upstream, but not yet in this release
-	#
-	#  https://github.com/php/php-src/pull/19776
-	#
-	rm sapi/cli/tests/php_cli_server_ipv4_error_message.phpt || die
-
-	# Test requires truetype support
-	if ! use truetype; then
-		rm ext/gd/tests/gh19955.phpt
-	fi
-
-	# Should be OK in the next version, but this test required network
-	# access when it was added:
-	#
-	#   https://github.com/php/php-src/pull/19776
-	#
-	rm sapi/cli/tests/php_cli_server_ipv6_error_message.phpt || die
-
 	# One-off, somebody forgot to update a version constant
 	rm ext/reflection/tests/ReflectionZendExtension.phpt || die
 
