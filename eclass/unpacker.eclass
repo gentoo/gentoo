@@ -506,6 +506,12 @@ _unpacker() {
 	local m=${a,,}
 	a=$(find_unpackable_file "${a}")
 
+	# do nothing with release signatures
+	case ${m} in
+	*.asc|*.sig)
+		return $?
+	esac
+
 	# first figure out the decompression method
 	local comp=$(_unpacker_get_decompressor "${m}")
 
