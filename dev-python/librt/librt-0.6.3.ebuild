@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="MIT PSF-2.4"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc64"
 
 BDEPEND="
 	test? (
