@@ -269,13 +269,6 @@ src_prepare() {
 	   ext/gd/tests/bug73272.phpt \
 	   || die
 
-	# Should be OK in the next version, but this test required network
-	# access when it was added:
-	#
-	#   https://github.com/php/php-src/pull/19776
-	#
-	rm sapi/cli/tests/php_cli_server_ipv6_error_message.phpt || die
-
 	# One-off, somebody forgot to update a version constant
 	rm ext/reflection/tests/ReflectionZendExtension.phpt || die
 
