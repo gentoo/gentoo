@@ -22,7 +22,7 @@ SRC_URI="
 
 LICENSE="MIT PSF-2.4"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 BDEPEND="
 	test? (
