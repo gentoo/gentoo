@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Michał Górny <mgorny@gentoo.org> (2025-10-25)
-# Use FlexiBLAS by default.
-sci-libs/flexiblas system-blas
+# Use FlexiBLAS by default.  Default-enable OpenBLAS backend for better
+# performance.
+sci-libs/flexiblas openblas system-blas
 sci-libs/lapack flexiblas deprecated lapacke
 virtual/blas flexiblas
 virtual/cblas flexiblas
