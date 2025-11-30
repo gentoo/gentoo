@@ -75,6 +75,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.10.1-add-armv7a-support.patch
 	"${FILESDIR}"/${PN}-1.16.0-miniupnpc-2.2.8.patch
+	"${FILESDIR}"/${PN}-1.16.0-minimise-deps-for-controller.patch
 )
 
 DOCS=( README.md )
@@ -100,14 +101,17 @@ src_prepare() {
 	# otherwise it will hide api breaks at build time such as:
 	# https://github.com/zerotier/ZeroTierOne/issues/2332
 	rm -r ext/{miniupnpc,libnatpmp,nlohmann} || die
-	# rm ext/hiredis-* || die
 	# keep opentelemetry-cpp-api-only to avoid dependency for now
 	rm -r ext/opentelemetry-cpp-1.21.0 || die
 	sed -e '/cd ext\/opentelemetry-cpp-/d' -i make-linux.mk || die
-	# rm -r ext/redis-plus-plus-* || die
-	# rm -r ext/libpqxx-* || die
+	# Dependencies that would be used for ZeroTier Central, requirement patched out.
+	rm -r ext/libpqxx-* || die
+	rm -r ext/hiredis-* || die
+	rm -r ext/redis-plus-plus-* || die
+
 	# header only dependency that could be packaged
 	# rm -r ext/inja || die
+	# Upstream advises against unvendoring
 	# https://github.com/zerotier/ZeroTierOne/issues/355#issuecomment-232086084
 	# rm -r ext/http-parser || die
 	# Messy and needs proper patches
