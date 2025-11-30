@@ -15,14 +15,15 @@ KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="tk"
 
 RDEPEND="
-	tk? ( >=dev-lang/tk-8.5 dev-tcltk/tcllib )
-"
-DEPEND="${RDEPEND}
 	dev-perl/Cairo
 	dev-perl/JSON-MaybeXS
 	dev-perl/Pango
-	virtual/perl-Getopt-Long
+	tk? (
+		>=dev-lang/tk-8.5:=
+		dev-tcltk/tcllib
+	)
 "
+DEPEND="${RDEPEND}"
 DOCS="docs/* examples/defs.rem"
 
 PATCHES=(
