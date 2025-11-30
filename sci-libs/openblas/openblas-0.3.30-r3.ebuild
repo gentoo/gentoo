@@ -154,7 +154,10 @@ src_compile() {
 
 src_test() {
 	emake tests
-	emake64 tests
+
+	if use index64; then
+		emake64 tests
+	fi
 }
 
 src_install() {
