@@ -7,11 +7,11 @@ PHP_EXT_ECONF_ARGS=( --enable-${PN} )
 PHP_EXT_INI="yes"
 PHP_EXT_NAME="${PN}"
 PHP_EXT_ZENDEXT="no"
-USE_PHP="php8-2 php8-3 php8-4"
+USE_PHP="php8-2 php8-3 php8-4 php8-5"
 
 inherit php-ext-source-r3
 
-GH_COMMIT="64178ef6401e039ca515cd00df675779ec407e7f"
+GH_COMMIT="45e8f00fe48ff932cba61018e6b501641b14d1de"
 
 DESCRIPTION="A fast drop-in replacement for the standard PHP serialize"
 HOMEPAGE="https://github.com/igbinary/igbinary"
