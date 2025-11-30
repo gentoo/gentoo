@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2025-11-30)
+# More than 26 years since release, ancient C code, no revdeps in tree,
+# no other distro still packages this.
+# Removal on 2025-12-30. Bug #881017, #944864, #945018.
+sci-libs/djbfft
+
 # Eli Schwartz <eschwartz@gentoo.org> (2025-11-30)
 # Abandoned and unmaintained. It existed solely as a test dep for
 # dev-python/sphinx-rtd-theme, which no longer uses it, so nobody should
