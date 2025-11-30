@@ -37,6 +37,11 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2025-11-30)
+# Last release over 15 years ago, GTK+2, EAPI 7, broken C constructs, removed
+# by other distros already. Removal on 2025-12-30. Bug #944347.
+sys-apps/gscanbus
+
+# David Seifert <soap@gentoo.org> (2025-11-30)
 # Unmaintained, dead package, last release over 20 years ago, no other distro
 # packages this anymore, EAPI 7. Removal on 2025-12-30. Bug #943810.
 sys-fs/lde
