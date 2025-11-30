@@ -48,7 +48,7 @@ fi
 
 LICENSE="BSD-2 CDDL MIT modules? ( debug? ( GPL-2+ ) )"
 # just libzfs soname major for now.
-# possible candidates: libuutil, libzpool, libnvpair. Those do not provide stable abi, but are considered.
+# possible candidates are libzpool and libnvpair. Those do not provide stable abi, but are considered.
 # see libsoversion_check() below as well
 SLOT="0/7"
 IUSE="custom-cflags debug dist-kernel minimal nls pam python +rootfs selinux test-suite unwind"
@@ -316,7 +316,7 @@ src_install() {
 	# bug #965156
 	unset DOCS
 
-	gen_usr_ldscript -a nvpair uutil zfsbootenv zfs zfs_core zpool
+	gen_usr_ldscript -a nvpair zfsbootenv zfs zfs_core zpool
 
 	use pam && { rm -rv "${ED}/unwanted_files" || die ; }
 
