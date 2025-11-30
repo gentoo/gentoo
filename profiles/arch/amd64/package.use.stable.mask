@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2025-11-30)
+# sci-libs/blis and sci-libs/mkl do not have stable keywords
+sci-libs/flexiblas blis mkl
+
 # Sam James <sam@gentoo.org> (2025-04-20)
 # Needs dev-python/scipy for tests which often ends up destabled on arches
 # even if it was previously stable there, as its own test results vary a lot.
