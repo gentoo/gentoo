@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2025-11-30)
+# sci-libs/blis does not have stable keywords
+sci-libs/flexiblas blis
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
 # dev-perl/Template-GD is not stable here. Bug #962143
 dev-perl/Template-Toolkit gd
