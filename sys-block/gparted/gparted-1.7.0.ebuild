@@ -39,6 +39,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.0-handle-failing-pixbuf.patch
+	"${FILESDIR}"/${PN}-1.7.0-gtest-gcc-15.patch
 )
 
 src_configure() {
