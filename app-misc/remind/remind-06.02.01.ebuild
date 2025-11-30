@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit autotools
+
 DESCRIPTION="Ridiculously functional reminder program"
 HOMEPAGE="https://dianne.skoll.ca/projects/remind/"
 SRC_URI="https://dianne.skoll.ca/projects/remind/download/${P}.tar.gz"
@@ -22,6 +24,16 @@ DEPEND="${RDEPEND}
 	virtual/perl-Getopt-Long
 "
 DOCS="docs/* examples/defs.rem"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-06.02.01-no-lto.patch
+)
+
+src_prepare() {
+	default
+	# for LTO patch
+	eautoreconf
+}
 
 src_test() {
 	if [[ ${EUID} -eq 0 ]] ; then
