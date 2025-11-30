@@ -18,8 +18,6 @@ HOMEPAGE="https://github.com/jhawthorn/fzy"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-cflags.patch
