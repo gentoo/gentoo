@@ -2145,6 +2145,8 @@ gcc_do_filter_flags() {
 
 	# Avoid shooting self in foot
 	filter-flags '-mabi*' -m31 -m32 -m64
+	# gcc will try to find libgomp.spec, which may not exist yet (bug #966882)
+	filter-flags -fopenmp
 
 	# bug #490738
 	filter-flags -frecord-gcc-switches
