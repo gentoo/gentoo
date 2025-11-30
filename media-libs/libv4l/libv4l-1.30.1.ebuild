@@ -69,6 +69,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${P}-cpp-fallthrough.patch
 	"${FILESDIR}"/${PN}-bpf-toolchain.patch
+	"${FILESDIR}"/${PN}-1.32-bpf-locale.patch
 )
 
 # Not really prebuilt but BPF objects make our QA checks go crazy.

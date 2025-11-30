@@ -66,6 +66,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.32-bpf-locale.patch
+)
+
 # Not really prebuilt but BPF objects make our QA checks go crazy.
 QA_PREBUILT="*/rc_keymaps/protocols/*.o"
 
