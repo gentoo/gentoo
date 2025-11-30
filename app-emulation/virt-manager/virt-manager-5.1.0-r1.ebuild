@@ -20,7 +20,7 @@ else
 		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-elementtree-fallback.patch.xz
 		verify-sig? ( https://releases.pagure.org/${PN}/${P}.tar.xz.asc	)
 	"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 x86"
+	KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 fi
 
 LICENSE="CC0-1.0 GPL-2+" # appdata & source code
