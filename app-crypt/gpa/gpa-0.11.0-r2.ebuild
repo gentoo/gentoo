@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit xdg
+inherit autotools xdg
 
 DESCRIPTION="GNU Privacy Assistant (GPA): a graphical user interface for GnuPG"
 HOMEPAGE="https://gnupg.org/software/gpa/"
@@ -30,10 +30,14 @@ BDEPEND="
 PATCHES=(
 	# Backports, drop on bump
 	"${FILESDIR}"/${PV}
+
+	# https://bugs.gentoo.org/966859
+	"${FILESDIR}"/gpa-0.11.0-icondir.patch
 )
 
 src_prepare() {
 	default
+	eautoreconf
 
 	sed -i 's/Application;//' gpa.desktop || die
 }
