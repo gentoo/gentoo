@@ -51,7 +51,10 @@ COMMON_DEPEND="
 		)
 	)
 	introspection? ( >=dev-libs/gobject-introspection-1.84:= )
-	vulkan? ( >=media-libs/vulkan-loader-1.3:=[wayland?,X?] )
+	vulkan? (
+		>=media-libs/vulkan-loader-1.3:=[wayland?,X?]
+		media-libs/mesa[vulkan]
+		)
 	wayland? (
 		>=dev-libs/wayland-1.24.0
 		>=dev-libs/wayland-protocols-1.44
