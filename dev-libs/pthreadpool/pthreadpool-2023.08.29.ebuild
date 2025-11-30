@@ -30,7 +30,7 @@ src_prepare() {
 	cmake_src_prepare
 
 	# >=dev-cpp/gtest-1.13.0 requires C++14 standard or later
-	sed -i -e 's/CXX_STANDARD 11/CXX_STANDARD 14/g' \
+	sed -i -e 's/CXX_STANDARD 11/CXX_STANDARD 17/g' \
 		CMakeLists.txt || die "sed failed"
 }
 
