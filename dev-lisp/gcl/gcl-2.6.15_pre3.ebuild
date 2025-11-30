@@ -37,6 +37,7 @@ S="${WORKDIR}"/${PN}-Version_2_6_15pre3/${PN}
 src_configure() {
 	filter-lto # bug #931082
 	strip-flags
+	append-cflags -std=gnu17 # bug #947758
 	filter-flags -fstack-protector -fstack-protector-all
 
 	local tcl=""
