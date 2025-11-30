@@ -1,16 +1,17 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="A tapedrive tool for speeding up reading from and writing to tape"
-HOMEPAGE="http://www.microwerks.net/~hugo/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 
-DEBIAN_PR=12
+DEBIAN_PR=12.1
 DEBIAN_P="${PN}_${PV}"
 DEBIAN_PATCH="${PN}_${PV}-${DEBIAN_PR}.debian.tar.xz"
+
 # We do NOT rename the Debian .orig.tar.gz file at this point
 # Because Gentoo shipped a very slightly DIFFERENT buffer-1.19.tgz than Debian!
 # Enough to make the debian patchset not apply directly. Debian patchset
@@ -31,6 +32,7 @@ src_prepare() {
 		einfo ${p}
 		eapply -p1 "${p}" || die
 	done
+	eapply "${FILESDIR}"/${P}-posix-semun.patch
 
 	cd "${S}" || die
 	emake clean
