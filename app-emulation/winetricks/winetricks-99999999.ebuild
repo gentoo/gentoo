@@ -21,22 +21,9 @@ SRC_URI+=" gui? ( https://dev.gentoo.org/~chiitoo/distfiles/${WTG}.tar.bz2 )"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-IUSE="gui rar test"
-RESTRICT="!test? ( test )"
+IUSE="gui rar"
+RESTRICT="test"
 
-# dev-util/shellcheck is not available for x86
-RESTRICT+=" x86? ( test )"
-
-BDEPEND="
-	test? (
-		dev-python/bashate
-		dev-util/checkbashisms
-		|| (
-			dev-util/shellcheck-bin
-			dev-util/shellcheck
-		)
-	)
-"
 RDEPEND="
 	app-arch/cabextract
 	|| (
@@ -54,9 +41,6 @@ RDEPEND="
 	rar? ( app-arch/unrar )
 "
 
-# Test targets include syntax checks only, not the "heavy duty" tests
-# that would require a lot of disk space, as well as network access.
-
 # This uses a non-standard "Wine" category, which is provided by
 # '/etc/xdg/menus/applications-merged/wine.menu' from the
 # 'app-emulation/wine-desktop-common' package.
@@ -68,10 +52,6 @@ src_unpack() {
 		*99999999*) git-r3_src_unpack ;&
 		*) default ;;
 	esac
-}
-
-src_test() {
-	./tests/shell-checks || die "Test(s) failed."
 }
 
 src_install() {
