@@ -233,8 +233,9 @@ CRATES="
 	zstd@0.13.3
 "
 
+LLVM_COMPAT=( {20..21} )
 RUST_MIN_VER="1.89"
-inherit cargo unpacker
+inherit cargo llvm-r2 unpacker
 
 DESCRIPTION="A very fast linker for Linux"
 HOMEPAGE="https://github.com/davidlattimore/wild"
@@ -252,6 +253,22 @@ LICENSE="|| ( Apache-2.0 MIT )"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0 BSD-2 BSD MIT MPL-2.0 Unicode-3.0 ZLIB"
 SLOT="0"
+IUSE="test"
+RESTRICT="!test? ( test )"
+
+# Upstream uses LLD and Clang for running some of their tests
+DEPEND="
+	test? ( $(llvm_gen_dep '
+			llvm-core/clang:${LLVM_SLOT}=
+			llvm-core/lld:${LLVM_SLOT}=
+		')
+	)
+"
+
+pkg_setup() {
+	rust_pkg_setup
+	use test && llvm-r2_pkg_setup
+}
 
 src_unpack() {
 	if [[ ${PV} == *9999* ]]; then

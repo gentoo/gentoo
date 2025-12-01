@@ -8,13 +8,12 @@ EAPI=8
 CRATES="
 	addr2line@0.25.1
 	adler2@2.0.1
-	aho-corasick@1.1.4
+	aho-corasick@1.1.3
 	allocator-api2@0.2.21
-	android_system_properties@0.1.5
 	anstream@0.6.21
 	anstyle-parse@0.2.7
-	anstyle-query@1.1.5
-	anstyle-wincon@3.0.11
+	anstyle-query@1.1.4
+	anstyle-wincon@3.0.10
 	anstyle@1.0.13
 	anyhow@1.0.100
 	ar@0.9.0
@@ -25,19 +24,17 @@ CRATES="
 	atomic-take@1.1.0
 	autocfg@1.5.0
 	backtrace@0.3.76
+	base64@0.22.1
 	bitflags@2.10.0
 	blake3@1.8.2
-	block2@0.6.2
 	bumpalo-herd@0.1.2
 	bumpalo@3.19.0
 	byteorder@1.5.0
-	bytes@1.11.0
-	bytesize@2.3.0
-	cc@1.2.47
-	cfg-if@1.0.4
-	cfg_aliases@0.2.1
-	clap@4.5.53
-	clap_builder@4.5.53
+	bytesize@2.1.0
+	cc@1.2.41
+	cfg-if@1.0.3
+	clap@4.5.51
+	clap_builder@4.5.51
 	clap_derive@4.5.49
 	clap_lex@0.7.6
 	cobs@0.3.0
@@ -54,10 +51,10 @@ CRATES="
 	crossbeam-queue@0.3.12
 	crossbeam-utils@0.8.21
 	debugid@0.8.0
+	deranged@0.5.4
 	derive_more-impl@2.0.1
 	derive_more@2.0.1
 	dhat@0.3.3
-	dispatch2@0.3.0
 	either@1.15.0
 	embedded-io@0.4.0
 	embedded-io@0.6.1
@@ -66,7 +63,8 @@ CRATES="
 	errno@0.3.14
 	fallible-iterator@0.3.0
 	fastrand@2.3.0
-	find-msvc-tools@0.1.5
+	fd-lock@4.0.4
+	find-msvc-tools@0.1.4
 	flate2@1.1.5
 	foldhash@0.2.0
 	futures-core@0.3.31
@@ -74,23 +72,23 @@ CRATES="
 	futures-task@0.3.31
 	futures-timer@3.0.3
 	futures-util@0.3.31
-	getrandom@0.3.4
+	getrandom@0.3.3
 	gimli@0.32.3
 	git-version-macro@0.3.9
 	git-version@0.3.9
 	glob@0.3.3
 	hash32@0.2.1
-	hashbrown@0.16.1
+	hashbrown@0.16.0
 	heapless@0.7.17
 	heck@0.5.0
 	hex@0.4.3
 	iced-x86@1.21.0
-	indexmap@2.12.1
-	is_terminal_polyfill@1.70.2
+	indexmap@2.12.0
+	is_terminal_polyfill@1.70.1
 	itertools@0.14.0
 	itoa@1.0.15
 	jobserver@0.1.34
-	js-sys@0.3.82
+	js-sys@0.3.81
 	lazy_static@1.5.0
 	leb128@0.2.5
 	libc@0.2.177
@@ -106,48 +104,29 @@ CRATES="
 	minimal-lexical@0.2.1
 	miniz_oxide@0.8.9
 	mintex@0.1.4
-	nix@0.30.1
 	nom@7.1.3
+	num-conv@0.1.0
 	num-traits@0.2.19
-	objc2-cloud-kit@0.3.2
-	objc2-core-data@0.3.2
-	objc2-core-foundation@0.3.2
-	objc2-core-graphics@0.3.2
-	objc2-core-image@0.3.2
-	objc2-core-location@0.3.2
-	objc2-core-text@0.3.2
-	objc2-encode@4.1.0
-	objc2-foundation@0.3.2
-	objc2-io-surface@0.3.2
-	objc2-quartz-core@0.3.2
-	objc2-ui-kit@0.3.2
-	objc2-user-notifications@0.3.2
-	objc2@0.6.3
 	object@0.37.3
-	object@0.38.0
 	once_cell@1.21.3
-	once_cell_polyfill@1.70.2
-	os_info@3.13.0
+	once_cell_polyfill@1.70.1
+	os_info@3.12.0
 	parking_lot@0.12.5
 	parking_lot_core@0.9.12
 	paste@1.0.15
 	perf-event-open-sys@4.0.0
 	perf-event@0.4.8
-	perfetto-recorder@0.2.0
 	pin-project-lite@0.2.16
 	pin-utils@0.1.0
 	pkg-config@0.3.32
+	plist@1.8.0
 	postcard@1.1.3
-	ppv-lite86@0.2.21
+	powerfmt@0.2.0
 	proc-macro-crate@3.4.0
-	proc-macro2@1.0.103
-	prost-derive@0.14.1
-	prost@0.14.1
-	quote@1.0.42
+	proc-macro2@1.0.101
+	quick-xml@0.38.3
+	quote@1.0.41
 	r-efi@5.3.0
-	rand@0.9.2
-	rand_chacha@0.9.0
-	rand_core@0.9.3
 	rayon-core@1.13.0
 	rayon@1.11.0
 	redox_syscall@0.5.18
@@ -185,9 +164,9 @@ CRATES="
 	strsim@0.11.1
 	strum@0.27.2
 	strum_macros@0.27.2
-	symbolic-common@12.17.0
-	symbolic-demangle@12.17.0
-	syn@2.0.111
+	symbolic-common@12.16.3
+	symbolic-demangle@12.16.3
+	syn@2.0.106
 	tempfile@3.23.0
 	thiserror-impl@1.0.69
 	thiserror-impl@2.0.17
@@ -195,6 +174,9 @@ CRATES="
 	thiserror@2.0.17
 	thousands@0.2.0
 	thread_local@1.1.9
+	time-core@0.1.6
+	time-macros@0.2.24
+	time@0.3.44
 	toml@0.9.8
 	toml_datetime@0.7.3
 	toml_edit@0.23.7
@@ -204,42 +186,56 @@ CRATES="
 	tracing-core@0.1.34
 	tracing-subscriber@0.3.20
 	tracing@0.1.41
-	unicode-ident@1.0.22
+	unicode-ident@1.0.19
 	unicode-xid@0.2.6
 	utf8parse@0.2.2
 	uuid@1.18.1
 	wait-timeout@0.2.1
+	wasi@0.14.7+wasi-0.2.4
 	wasip2@1.0.1+wasi-0.2.4
-	wasm-bindgen-macro-support@0.2.105
-	wasm-bindgen-macro@0.2.105
-	wasm-bindgen-shared@0.2.105
-	wasm-bindgen@0.2.105
+	wasm-bindgen-backend@0.2.104
+	wasm-bindgen-macro-support@0.2.104
+	wasm-bindgen-macro@0.2.104
+	wasm-bindgen-shared@0.2.104
+	wasm-bindgen@0.2.104
 	which@8.0.0
 	windows-link@0.2.1
+	windows-sys@0.52.0
 	windows-sys@0.59.0
+	windows-sys@0.60.2
 	windows-sys@0.61.2
 	windows-targets@0.52.6
+	windows-targets@0.53.5
 	windows_aarch64_gnullvm@0.52.6
+	windows_aarch64_gnullvm@0.53.1
 	windows_aarch64_msvc@0.52.6
+	windows_aarch64_msvc@0.53.1
 	windows_i686_gnu@0.52.6
+	windows_i686_gnu@0.53.1
 	windows_i686_gnullvm@0.52.6
+	windows_i686_gnullvm@0.53.1
 	windows_i686_msvc@0.52.6
+	windows_i686_msvc@0.53.1
 	windows_x86_64_gnu@0.52.6
+	windows_x86_64_gnu@0.53.1
 	windows_x86_64_gnullvm@0.52.6
+	windows_x86_64_gnullvm@0.53.1
 	windows_x86_64_msvc@0.52.6
+	windows_x86_64_msvc@0.53.1
 	winnow@0.7.13
 	winsafe@0.0.19
 	wit-bindgen@0.46.0
-	zerocopy-derive@0.8.28
-	zerocopy@0.8.28
+	zerocopy-derive@0.8.27
+	zerocopy@0.8.27
 	zlib-rs@0.5.2
 	zstd-safe@7.2.4
 	zstd-sys@2.0.16+zstd.1.5.7
 	zstd@0.13.3
 "
 
-RUST_MIN_VER="1.90"
-inherit cargo unpacker
+LLVM_COMPAT=( {20..21} )
+RUST_MIN_VER="1.89"
+inherit cargo llvm-r2 unpacker
 
 DESCRIPTION="A very fast linker for Linux"
 HOMEPAGE="https://github.com/davidlattimore/wild"
@@ -257,6 +253,22 @@ LICENSE="|| ( Apache-2.0 MIT )"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0 BSD-2 BSD MIT MPL-2.0 Unicode-3.0 ZLIB"
 SLOT="0"
+IUSE="test"
+RESTRICT="!test? ( test )"
+
+# Upstream uses LLD and Clang for running some of their tests
+DEPEND="
+	test? ( $(llvm_gen_dep '
+			llvm-core/clang:${LLVM_SLOT}=
+			llvm-core/lld:${LLVM_SLOT}=
+		')
+	)
+"
+
+pkg_setup() {
+	rust_pkg_setup
+	use test && llvm-r2_pkg_setup
+}
 
 src_unpack() {
 	if [[ ${PV} == *9999* ]]; then
