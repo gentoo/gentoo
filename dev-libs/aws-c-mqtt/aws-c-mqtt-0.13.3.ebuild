@@ -12,8 +12,18 @@ inherit cmake
 LICENSE="Apache-2.0"
 SLOT="0/1"
 KEYWORDS="~amd64"
+IUSE="test"
+
+RESTRICT="!test? ( test )"
 
 DEPEND="dev-libs/aws-c-common:=
 	dev-libs/aws-c-http:="
 RDEPEND="${DEPEND}"
 BDEPEND="dev-libs/aws-c-common"
+
+src_configure() {
+	local mycmakeargs=(
+		-DBUILD_TESTING=$(usex test)
+	)
+	cmake_src_configure
+}
