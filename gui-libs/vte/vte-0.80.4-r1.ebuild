@@ -14,14 +14,14 @@ LICENSE="LGPL-3+ GPL-3+"
 SLOT="2.91-gtk4" # vte_api_version + "-gtk4" in meson.build
 
 KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="+crypt debug gtk-doc +icu +introspection systemd +vala"
+IUSE="X +crypt debug gtk-doc +icu +introspection systemd +vala wayland"
 REQUIRED_USE="
 	gtk-doc? ( introspection )
 	vala? ( introspection )
 "
 
 DEPEND="
-	>=gui-libs/gtk-4.14:4[introspection?]
+	>=gui-libs/gtk-4.14:4[X?,introspection?,wayland?]
 	>=x11-libs/cairo-1.0
 	dev-cpp/fast_float
 	>=dev-libs/fribidi-1.0.0
@@ -63,6 +63,9 @@ src_prepare() {
 src_configure() {
 	# Upstream don't support LTO & error out on it in meson.build (bug #926156)
 	filter-lto
+
+	use X || append-flags -DGENTOO_GTK_HIDE_X11
+	use wayland || append-flags -DGENTOO_GTK_HIDE_WAYLAND
 
 	local emesonargs=(
 		-Da11y=true
