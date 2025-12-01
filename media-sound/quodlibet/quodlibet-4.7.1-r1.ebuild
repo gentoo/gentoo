@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}-release-${PV}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 x86"
 IUSE="+dbus gstreamer +udev"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
