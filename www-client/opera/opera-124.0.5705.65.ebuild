@@ -9,18 +9,7 @@ CHROMIUM_LANGS="
 	zh-CN zh-TW
 "
 
-# These are intended for ebuild maintainer use to force RPM if DEB is not available.
-: ${OPERA_FORCE_RPM=no}
-
-inherit chromium-2 pax-utils xdg
-
-if [[ ${OPERA_FORCE_RPM} == yes ]]; then
-	inherit rpm
-	OPERA_ARCHIVE_EXT="rpm"
-else
-	inherit unpacker
-	OPERA_ARCHIVE_EXT="deb"
-fi
+inherit chromium-2 pax-utils unpacker xdg
 
 DESCRIPTION="A fast and secure web browser"
 HOMEPAGE="https://www.opera.com/"
@@ -40,10 +29,11 @@ else
 fi
 
 # Commit ref from `strings libffmpeg.so | grep -F "FFmpeg version"` matches this Chromium version
+# or use the Chromicler opera version mapping output. TODO: Teach Chromicler to update and commit
 # used to select the correct ffmpeg-chromium version (corresponds to a major version of Chromium)
 # Does not need to be updated for every new version of Opera, only when it breaks
 CHROMIUM_VERSION="140"
-SRC_URI="${SRC_URI_BASE[@]/%//${PV}/linux/${MY_PN}_${PV}_amd64.${OPERA_ARCHIVE_EXT}}"
+SRC_URI="${SRC_URI_BASE[*]/%//${PV}/linux/${MY_PN}_${PV}_amd64.deb}"
 S=${WORKDIR}
 
 LICENSE="OPERA-2018"
@@ -87,7 +77,7 @@ RDEPEND="
 "
 
 QA_PREBUILT="*"
-OPERA_HOME="opt/opera${PN#opera}"
+OPERA_HOME="opt/${MY_PN}"
 
 pkg_pretend() {
 	# Protect against people using autounmask overzealously
@@ -105,33 +95,22 @@ src_unpack() {
 src_install() {
 	dodir /
 	cd "${ED}" || die
-	if [[ ${OPERA_FORCE_RPM} == yes ]]; then
-		rpm_src_unpack "${A[0]}"
-	else
-		unpacker
-	fi
+	unpacker
 
 	# move to /opt, bug #573052
-	mkdir -p "${OPERA_HOME%${PN}}"
-	if [[ ${OPERA_FORCE_RPM} == yes ]]; then
-		mv "usr/lib64/${PN}" "${OPERA_HOME%${PN}}" || die
-	else
-		mv "usr/lib/x86_64-linux-gnu/${PN}" "${OPERA_HOME%${PN}}" || die
-	fi
+	mkdir opt || die
+	mv "usr/lib/x86_64-linux-gnu/${MY_PN}" "${OPERA_HOME}" || die
 	rm -r "usr/lib" || die
 
 	# disable auto update
 	rm "${OPERA_HOME}/${PN%-*}_autoupdate"{,.licenses,.version} || die
 
-	if [[ ${OPERA_FORCE_RPM} == yes ]]; then
-		rm "${OPERA_HOME}/setup_repo.sh" || die
-	else
-		rm -r "usr/share/lintian" || die
 
-		# fix docs
-		mv usr/share/doc/${MY_PN} usr/share/doc/${PF} || die
-		gzip -d usr/share/doc/${PF}/changelog.gz || die
-	fi
+	rm -r "usr/share/lintian" || die
+
+	# fix docs
+	mv usr/share/doc/${MY_PN} usr/share/doc/${PF} || die
+	gzip -d usr/share/doc/${PF}/changelog.gz || die
 
 	# fix desktop file
 	sed -i \
