@@ -11,7 +11,7 @@ SRC_URI="mirror://mariadb/connector-odbc-${PV}/${P}-src.tar.gz"
 S="${S}-src"
 
 LICENSE="LGPL-2.1"
-SLOT="0/3.1"
+SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~x86"
 IUSE="ssl"
 
