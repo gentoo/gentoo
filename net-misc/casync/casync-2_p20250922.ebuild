@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-inherit meson
+EAPI=8
+inherit meson udev
 
-EGIT_COMMIT="6d185a540c54195a919d4b44f9bf28c341da3bf1"
+EGIT_COMMIT="b4b7e5606f785572b78a43626a27a45fe3df2fbd"
 DESCRIPTION="Content-Addressable Data Synchronization Tool"
 HOMEPAGE="https://github.com/systemd/casync"
 SRC_URI="https://github.com/systemd/casync/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
