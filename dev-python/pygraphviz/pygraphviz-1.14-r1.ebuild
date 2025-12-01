@@ -22,7 +22,7 @@ KEYWORDS="amd64 arm arm64 ~ppc64 ~riscv x86 ~x86-linux ~ppc-macos ~x64-macos"
 
 # Note: only C API of graphviz is used, PYTHON_USEDEP unnecessary.
 DEPEND="
-	media-gfx/graphviz
+	<media-gfx/graphviz-14:=
 "
 RDEPEND="
 	${DEPEND}
