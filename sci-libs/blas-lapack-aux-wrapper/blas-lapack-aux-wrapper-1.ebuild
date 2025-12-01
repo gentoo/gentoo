@@ -40,6 +40,11 @@ BDEPEND="
 QA_FLAGS_IGNORED=".*"
 
 src_configure() {
+	# We rely on some specific linker features (bug #965199)
+	if ! tc-ld-is-bfd && ! tc-ld-is-lld; then
+		tc-ld-force-bfd
+	fi
+
 	local emesonargs=(
 		-Dilp64=$(usex index64 true false)
 	)
