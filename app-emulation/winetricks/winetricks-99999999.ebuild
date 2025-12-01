@@ -3,7 +3,6 @@
 
 EAPI=8
 
-WTG="winetricks-gentoo-2012.11.24"
 inherit xdg
 
 DESCRIPTION="Easy way to install DLLs needed to work around problems in Wine"
@@ -16,8 +15,6 @@ else
 	SRC_URI="https://github.com/Winetricks/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
-
-SRC_URI+=" gui? ( https://dev.gentoo.org/~chiitoo/distfiles/${WTG}.tar.bz2 )"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
@@ -40,12 +37,6 @@ RDEPEND="
 	) )
 	rar? ( app-arch/unrar )
 "
-
-# This uses a non-standard "Wine" category, which is provided by
-# '/etc/xdg/menus/applications-merged/wine.menu' from the
-# 'app-emulation/wine-desktop-common' package.
-# https://bugs.gentoo.org/451552
-QA_DESKTOP_FILE="usr/share/applications/winetricks.desktop"
 
 src_unpack() {
 	case ${PV} in
