@@ -52,6 +52,11 @@ src_configure() {
 	meson_src_configure
 }
 
+src_install() {
+	meson_src_install
+	use pam || fperms u+s /usr/bin/swaylock
+}
+
 pkg_postinst() {
-	use !pam && fcaps -m u+s cap_dac_read_search usr/bin/swaylock
+	use pam || fcaps -M u-s cap_dac_read_search usr/bin/swaylock
 }
