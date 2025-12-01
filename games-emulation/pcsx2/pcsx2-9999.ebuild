@@ -85,10 +85,10 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.7.4667-flags.patch
 	"${FILESDIR}"/${PN}-1.7.5232-cubeb-automagic.patch
 	"${FILESDIR}"/${PN}-1.7.5835-musl-header.patch
 	"${FILESDIR}"/${PN}-1.7.5913-musl-cache.patch
+	"${FILESDIR}"/${PN}-2.5.317-flags.patch
 )
 
 CMAKE_QA_COMPAT_SKIP=1 #957976
