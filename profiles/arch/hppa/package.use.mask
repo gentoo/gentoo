@@ -370,8 +370,8 @@ media-sound/vorbis-tools kate
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-14)
 # dependencies not keyworded
-media-video/ffmpeg dav1d libaribb24 libtesseract vidstab
-media-video/ffmpeg-compat dav1d libaribb24 libtesseract vidstab
+media-video/ffmpeg dav1d libaribb24 ocr vidstab
+media-video/ffmpeg-compat dav1d libaribb24 ocr vidstab
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
 # media-gfx/nvidia-texture-tools, media-libs/allegro not keyworded on hppa

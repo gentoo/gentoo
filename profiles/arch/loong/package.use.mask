@@ -293,8 +293,8 @@ app-cdr/brasero tracker
 # time being
 dev-cpp/libcmis man
 media-libs/opencv tesseract
-media-video/ffmpeg libtesseract
-media-video/ffmpeg-compat libtesseract
+media-video/ffmpeg ocr
+media-video/ffmpeg-compat ocr
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
 # sys-auth/sssd isn't keyworded here yet

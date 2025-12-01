@@ -427,8 +427,8 @@ dev-python/pyopengl test
 # Thomas Deutschmann <whissi@gentoo.org> (2020-03-15)
 # Mask USE=dav1d, media-libs/dav1d is not keyworded
 # Mask USE=libaribb24, media-libs/aribb24 is not keyworded
-media-video/ffmpeg dav1d libaribb24 libtesseract
-media-video/ffmpeg-compat dav1d libaribb24 libtesseract
+media-video/ffmpeg dav1d libaribb24 ocr
+media-video/ffmpeg-compat dav1d libaribb24 ocr
 
 # Andrey Utkin <andrey_utkin@gentoo.org> (2020-03-11)
 # USE=bpf depends on llvm-core/clang which is not keyworded on alpha.

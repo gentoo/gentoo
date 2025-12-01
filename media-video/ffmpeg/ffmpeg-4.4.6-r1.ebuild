@@ -75,11 +75,11 @@ FFMPEG_IUSE_MAP=(
 	libilbc
 	librtmp:librtmp
 	libsoxr
-	libtesseract
 	lv2
 	lzma
 	modplug:libmodplug
 	nvenc:cuvid,ffnvcodec,nvdec,nvenc
+	ocr:libtesseract
 	openal
 	opencl
 	opengl
@@ -201,13 +201,13 @@ RDEPEND="
 	libilbc? ( media-libs/libilbc:=[${MULTILIB_USEDEP}] )
 	librtmp? ( media-video/rtmpdump[${MULTILIB_USEDEP}] )
 	libsoxr? ( media-libs/soxr[${MULTILIB_USEDEP}] )
-	libtesseract? ( app-text/tesseract:=[${MULTILIB_USEDEP}] )
 	lv2? (
 		media-libs/lilv[${MULTILIB_USEDEP}]
 		media-libs/lv2[${MULTILIB_USEDEP}]
 	)
 	lzma? ( app-arch/xz-utils[${MULTILIB_USEDEP}] )
 	modplug? ( media-libs/libmodplug[${MULTILIB_USEDEP}] )
+	ocr? ( app-text/tesseract:=[${MULTILIB_USEDEP}] )
 	openal? ( media-libs/openal[${MULTILIB_USEDEP}] )
 	opencl? ( virtual/opencl[${MULTILIB_USEDEP}] )
 	opengl? ( media-libs/libglvnd[X,${MULTILIB_USEDEP}] )
