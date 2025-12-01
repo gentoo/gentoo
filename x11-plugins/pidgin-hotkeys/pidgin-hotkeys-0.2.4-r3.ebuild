@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}/${PV}/${P}.tar.gz
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ppc ~riscv ~x86"
+KEYWORDS="amd64 ppc ~riscv x86"
 
 RDEPEND="
 	app-accessibility/at-spi2-core:2
