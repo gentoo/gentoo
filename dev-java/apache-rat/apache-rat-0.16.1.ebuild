@@ -32,6 +32,7 @@ DEPEND="
 	${CP_DEPEND}
 	>=virtual/jdk-1.8:*
 	test? (
+		>=dev-java/ant-1.10.15:0[junit,testutil]
 		>=dev-java/assertj-core-3.27.6:0
 		dev-java/junit:5[vintage]
 		>=dev-java/mockito-5.20.0:0
