@@ -28,7 +28,7 @@ COMMON_DEPEND="
 	x11-libs/libXext
 	x11-libs/libXrandr
 	x11-libs/pango
-	x11-misc/xdotool
+	x11-misc/xdotool:=
 	x11-themes/adwaita-icon-theme
 
 	xinerama? ( x11-libs/libXinerama )
