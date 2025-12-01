@@ -1,15 +1,15 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-KDE_ORG_COMMIT=e87e16c8e623a8f5646f5286ac02ac9298dbb235
+KDE_ORG_COMMIT=6b83344d65f4e039b947d15261c11ae80ed3900d
 ECM_HANDBOOK="forceoptional"
 ECM_TEST="forceoptional"
-KFMIN=6.5.0
-QTMIN=6.7.2
+KFMIN=6.9.0
+QTMIN=6.8.1
 VIRTUALX_REQUIRED="test"
-inherit ecm kde.org
+inherit ecm kde.org xdg
 
 DESCRIPTION="Stopwatch application"
 HOMEPAGE="https://apps.kde.org/kronometer https://userbase.kde.org/Kronometer"

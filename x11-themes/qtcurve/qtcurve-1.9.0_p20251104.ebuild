@@ -3,7 +3,7 @@
 
 EAPI=8
 
-KDE_ORG_COMMIT=efb9e510f50f8147f05054d77c3ef433a8b9390e
+KDE_ORG_COMMIT=382013e500fda845cd4fc2f2d08326838f7695c5
 inherit cmake kde.org
 
 DESCRIPTION="Widget styles for Qt and GTK2"
@@ -72,10 +72,7 @@ BDEPEND="
 
 DOCS=( AUTHORS ChangeLog.md README.md TODO.md )
 
-PATCHES=(
-	"${FILESDIR}/${P}-manhandle-cmake.patch"  # bug 959633
-	"${FILESDIR}/${P}-qt-6.10.patch" # bug 966408
-)
+PATCHES=( "${FILESDIR}/${PN}-1.9.0_p20250314-manhandle-cmake.patch" ) # bug 959633
 
 src_configure() {
 	local mycmakeargs=(
