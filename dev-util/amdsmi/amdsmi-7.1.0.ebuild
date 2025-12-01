@@ -84,6 +84,15 @@ src_configure() {
 	cmake_src_configure
 }
 
+src_test() {
+	# GPU access in amdsmitstReadOnly.TestSysInfoRead and amdsmitstReadOnly.TestIdInfoRead
+	addwrite /dev/dri/renderD128
+
+	# Few tests fail on ASUS GZ302E: no metrics from kernel?
+	GTEST_FILTER="-amdsmitstReadOnly.TempRead:amdsmitstReadOnly.TestFrequenciesRead" \
+	"${BUILD_DIR}/tests/amd_smi_test/amdsmitst" || die "Test failed"
+}
+
 src_install() {
 	cmake_src_install
 
@@ -98,13 +107,4 @@ src_install() {
 	dosym -r "/usr/lib/${EPYTHON}/site-packages/amdsmi_cli/amdsmi_cli.py" /usr/bin/amd-smi
 
 	rm -rf "${ED}"/usr/share/amd_smi "${ED}"/usr/libexec/amdsmi_cli || die
-}
-
-src_test() {
-	# GPU access in amdsmitstReadOnly.TestSysInfoRead and amdsmitstReadOnly.TestIdInfoRead
-	addwrite /dev/dri/renderD128
-
-	# Few tests fail on ASUS GZ302E: no metrics from kernel?
-	GTEST_FILTER="-amdsmitstReadOnly.TempRead:amdsmitstReadOnly.TestFrequenciesRead" \
-	"${BUILD_DIR}/tests/amd_smi_test/amdsmitst" || die "Test failed"
 }
