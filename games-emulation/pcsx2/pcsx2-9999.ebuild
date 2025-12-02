@@ -164,7 +164,7 @@ src_install() {
 	newicon bin/resources/icons/AppIconLarge.png pcsx2.png
 	make_desktop_entry pcsx2-qt PCSX2
 
-	dodoc README.md bin/docs/{Debugger.pdf,GameIndex.pdf,debugger.txt}
+	dodoc README.md bin/docs/GameIndex.pdf
 }
 
 pkg_postinst() {
