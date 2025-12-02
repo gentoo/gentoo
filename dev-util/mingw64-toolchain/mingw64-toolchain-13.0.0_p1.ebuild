@@ -147,6 +147,9 @@ src_compile() {
 		--with-system-zlib
 		--without-isl
 		--without-zstd
+
+		# TODO: can likely remove this when bump to >=gcc-15.3 (bug #966990)
+		CXX="$(tc-getCXX) -std=c++14"
 	)
 	${multilib} || conf_gcc+=( --disable-multilib )
 	# libstdc++ may misdetect sys/sdt.h on systemtap-enabled system and fail
