@@ -351,10 +351,6 @@ llvm-runtimes/compiler-rt-sanitizers -gwp-asan -shadowcallstack
 llvm-runtimes/compiler-rt-sanitizers -libfuzzer -profile -xray -rtsan
 >=llvm-runtimes/compiler-rt-sanitizers-16 -orc
 
-# Roy Bamford <neddyseagoon@gentoo.org> (2020-12-07)
-# media-libs/liblastfm fails to build with tests Bug #758896
-media-sound/clementine lastfm
-
 # Sam James <sam@gentoo.org> (2020-10-03)
 # Builds & tests pass on arm64.
 # Available on: amd64, x86, arm{,64}.
