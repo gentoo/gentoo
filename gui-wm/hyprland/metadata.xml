@@ -21,5 +21,6 @@
 	</upstream>
 	<use>
 		<flag name="qtutils">Install Hyprland QT utility apps</flag>
+		<flag name="guiutils">Install Hyprland GUI utility apps</flag>
 	</use>
 </pkgmetadata>
