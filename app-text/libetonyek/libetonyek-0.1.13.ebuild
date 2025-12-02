@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit autotools
+
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://git.libreoffice.org/libetonyek.git"
 	inherit git-r3
@@ -10,7 +12,6 @@ else
 	SRC_URI="https://dev-www.libreoffice.org/src/libetonyek/${P}.tar.xz"
 	KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv x86"
 fi
-inherit autotools
 
 DESCRIPTION="Library parsing Apple Keynote presentations"
 HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libetonyek"
@@ -51,7 +52,6 @@ src_configure() {
 		$(use_with doc docs)
 		$(use_enable test tests)
 	)
-
 	econf "${myeconfargs[@]}"
 }
 
