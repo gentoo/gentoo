@@ -34,7 +34,7 @@ src_install() {
 	dosbin astmanproxy
 
 	dodoc -r samples
-	dodoc README VERSIONS
+	dodoc README.md VERSIONS
 
 	insinto /etc/asterisk
 	doins configs/astmanproxy.{conf,users}
