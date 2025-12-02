@@ -175,7 +175,6 @@ virtual/jpeg
 # Matt Turner <mattst88@gentoo.org> (2022-03-27)
 # Deprecated GNOME 2 era packages
 app-text/enchant:0
-app-text/gnome-doc-utils
 app-text/gtkspell:2
 app-text/scrollkeeper-dtd
 dev-cpp/gtkmm:2.4
