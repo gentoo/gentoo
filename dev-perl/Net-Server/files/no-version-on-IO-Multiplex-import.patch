@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/966221
+--- a/lib/Net/Server/Multiplex.pm
++++ b/lib/Net/Server/Multiplex.pm
+@@ -18,17 +18,17 @@
+ ################################################################
+ 
+ package Net::Server::Multiplex;
+ 
+ use strict;
+ use base qw(Net::Server);
+ use Net::Server::SIG qw(register_sig check_sigs);
+ use Carp qw(confess);
+-eval { require IO::Multiplex; import IO::Multiplex 1.05; };
++eval { require IO::Multiplex; import IO::Multiplex; };
+ $@ && warn "Module IO::Multiplex is required for Multiplex.";
+ 
+ our $VERSION = $Net::Server::VERSION;
+ 
+ sub net_server_type { __PACKAGE__ }
+ 
+ sub loop {
+     my $self = shift;
