@@ -153,9 +153,7 @@ sci-geosciences/qmapshack
 sci-mathematics/rkward
 sys-apps/polychromatic
 www-client/falkon
-www-client/otter
 www-client/qutebrowser
-media-video/jellyfin-media-player
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-02-09)
 # Requires net-libs/nodejs
