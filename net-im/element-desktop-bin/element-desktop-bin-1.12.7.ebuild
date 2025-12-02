@@ -58,8 +58,7 @@ QA_PREBUILT="opt/Element/chrome-sandbox
 	opt/Element/libffmpeg.so
 	opt/Element/libvk_swiftshader.so
 	opt/Element/libvulkan.so.1
-	opt/Element/resources/app.asar.unpacked/node_modules/matrix-seshat/index.node
-	opt/Element/resources/app.asar.unpacked/node_modules/keytar-forked/build/Release/keytar.node"
+	opt/Element/resources/app.asar.unpacked/node_modules/matrix-seshat/index.node"
 
 src_prepare() {
 	default
