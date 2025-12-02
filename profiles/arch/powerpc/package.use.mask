@@ -322,7 +322,6 @@ dev-db/mysql -numa
 # Michael Palimaka <kensington@gentoo.org> (2016-07-07)
 # Requires unkeyworded dependencies
 dev-vcs/subversion kwallet
-net-irc/quassel kde
 sys-auth/polkit kde
 sys-block/gparted kde
 virtual/notification-daemon kde
