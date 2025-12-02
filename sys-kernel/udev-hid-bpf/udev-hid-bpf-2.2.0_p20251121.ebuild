@@ -181,7 +181,7 @@ python_check_deps() {
 }
 
 pkg_pretend() {
-	local CONFIG_CHECK="~BPF ~DEBUG_INFO_BTF ~HID_BPF"
+	local CONFIG_CHECK="~BPF ~DEBUG_INFO_BTF ~HID_BPF ~HIDRAW"
 	check_extra_config
 }
 
