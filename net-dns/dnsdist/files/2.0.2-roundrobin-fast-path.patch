@@ -1,0 +1,39 @@
+Backport of:
+https://github.com/PowerDNS/pdns/commit/495f8e5f1f2c147f7431c5a6bfd4f4606b640fe3
+
+From: =?UTF-8?q?Holger=20Hoffst=C3=A4tte?= <holger@applied-asynchrony.com>
+Date: Thu, 9 Oct 2025 22:04:07 +0200
+Subject: [PATCH] dnsdist: add fast path to roundrobin load balancing policy
+
+There is no need to collect all servers that are up when the current
+server is already a good candidate. This avoids needless heap allocation
+and deallocation in the vast majority of cases.
+
+Signed-off-by: Holger Hoffstätte <holger@applied-asynchrony.com>
+--- a/dnsdist-lbpolicies.cc
++++ b/dnsdist-lbpolicies.cc
+@@ -237,6 +237,14 @@ shared_ptr<DownstreamState> roundrobin(c
+     return shared_ptr<DownstreamState>();
+   }
+ 
++  static std::atomic<unsigned int> counter{0};
++
++  size_t serverIdx = (counter++) % servers.size();
++  shared_ptr<DownstreamState> serverState = servers.at(serverIdx).second;
++  if (serverState->isUp()) {
++    return serverState;
++  }
++
+   vector<size_t> candidates;
+   candidates.reserve(servers.size());
+ 
+@@ -255,8 +264,7 @@ shared_ptr<DownstreamState> roundrobin(c
+     }
+   }
+ 
+-  static std::atomic<unsigned int> counter{0};
+-  return servers.at(candidates.at((counter++) % candidates.size()) - 1).second;
++  return servers.at(candidates.at(counter % candidates.size()) - 1).second;
+ }
+ 
+ shared_ptr<DownstreamState> orderedWrandUntag(const ServerPolicy::NumberedServerVector& servers, const DNSQuestion* dnsq)
