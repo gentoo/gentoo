@@ -21,7 +21,7 @@ RDEPEND="
 	net-libs/libtirpc:=
 	sys-libs/ncurses:=
 	sys-libs/readline:=
-	sys-libs/zlib
+	virtual/zlib
 	ares? ( net-dns/c-ares )
 	curl? ( net-misc/curl )
 	ft? ( net-analyzer/flow-tools )
