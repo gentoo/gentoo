@@ -424,10 +424,6 @@ net-libs/gnome-online-accounts gnome
 # Requires media-libs/mesa[llvm], which is masked.
 dev-python/pyopengl test
 
-# Matt Turner <mattst88@gentoo.org> (2020-03-17)
-# Requires an insane (and always growing) number of ruby deps
-sys-block/thin-provisioning-tools test
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-03-15)
 # Mask USE=dav1d, media-libs/dav1d is not keyworded
 # Mask USE=libaribb24, media-libs/aribb24 is not keyworded

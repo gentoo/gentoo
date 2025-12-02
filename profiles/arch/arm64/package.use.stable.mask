@@ -137,5 +137,4 @@ x11-base/xorg-drivers input_devices_elographics input_devices_joystick input_dev
 app-admin/syslog-ng spoof-source
 app-text/xmlto latex
 sys-auth/pambase pam_krb5 pam_ssh
-sys-block/thin-provisioning-tools test
 sys-devel/distcc gssapi
