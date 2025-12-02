@@ -11,7 +11,7 @@ SRC_URI="https://github.com/rrthomas/rpl/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 # unable to cause tests to pass fully
 RESTRICT="test"
 
