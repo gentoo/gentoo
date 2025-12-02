@@ -36,6 +36,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Jaco Kroon <jkroon@gentoo.org> (2025-12-02)
+# Dead upstream, limited usefulness.  If you're still using it please reach out
+# so we can discuss options.  Likely not worth the effort to fix the compiler
+# warnings soon to be errors.
+# No revdeps.
+# Open bugs: #929259
+# Removal on 2026-01-02.
+net-proxy/sqtop
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-12-01)
 # Depends on PyQt5, no signs of upstream porting/activity.
 # Bugs #965505, 962256. Removal on 2025-12-31.
