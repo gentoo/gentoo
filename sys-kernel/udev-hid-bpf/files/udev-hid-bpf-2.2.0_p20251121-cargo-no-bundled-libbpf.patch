@@ -1,0 +1,23 @@
+--- a/meson.build
++++ b/meson.build
+@@ -76,6 +76,7 @@ cargo = find_program('cargo', required: true)
+ cargo_options = [
+     '--manifest-path', meson.project_source_root() / 'Cargo.toml',
+     '--target-dir', meson.project_build_root(),
++    '--no-default-features',
+ ]
+ 
+ if get_option('buildtype') in ['debug', 'debugoptimized']
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -8,8 +8,8 @@ rust-version = "1.70"
+ # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+ [dependencies]
+ anyhow = "1.0.79"
+-libbpf-rs = ">=0.24"
+-libbpf-sys = "1.5.1"
++libbpf-rs = { version = ">=0.24", default-features = false }
++libbpf-sys = { version = "1.5.1", default-features = false }
+ udev =  { version = "0.7.0", features = ["mio08"] }
+ mio = { version = "0.8", features = ["os-ext"] }
+ libc = "0.2"
