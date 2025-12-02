@@ -6,51 +6,42 @@ EAPI=8
 DISTUTILS_EXT=1
 
 CRATES="
-	autocfg@1.3.0
-	bitflags@1.3.2
-	cfg-if@1.0.0
+	allocator-api2@0.2.21
+	autocfg@1.5.0
+	equivalent@1.0.2
+	foldhash@0.2.0
+	hashbrown@0.16.0
 	heck@0.5.0
-	indoc@2.0.5
-	itoa@1.0.11
-	libc@0.2.155
-	lock_api@0.4.11
-	memchr@2.7.4
-	memmap2@0.9.4
+	indoc@2.0.7
+	itoa@1.0.15
+	libc@0.2.177
+	memchr@2.7.6
+	memmap2@0.9.9
 	memoffset@0.9.1
-	once_cell@1.19.0
-	parking_lot@0.12.1
-	parking_lot_core@0.9.9
-	portable-atomic@1.7.0
-	proc-macro2@1.0.86
-	pyo3-build-config@0.23.5
-	pyo3-ffi@0.23.5
-	pyo3-macros-backend@0.23.5
-	pyo3-macros@0.23.5
-	pyo3@0.23.5
-	quote@1.0.36
-	redox_syscall@0.4.1
-	ryu@1.0.18
-	scopeguard@1.2.0
-	serde@1.0.204
-	serde_derive@1.0.204
-	serde_json@1.0.122
-	smallvec@1.13.2
-	syn@2.0.72
-	target-lexicon@0.12.16
-	unicode-ident@1.0.12
-	unindent@0.2.3
-	windows-targets@0.48.5
-	windows_aarch64_gnullvm@0.48.5
-	windows_aarch64_msvc@0.48.5
-	windows_i686_gnu@0.48.5
-	windows_i686_msvc@0.48.5
-	windows_x86_64_gnu@0.48.5
-	windows_x86_64_gnullvm@0.48.5
-	windows_x86_64_msvc@0.48.5
+	once_cell@1.21.3
+	portable-atomic@1.11.1
+	proc-macro2@1.0.103
+	pyo3-build-config@0.25.1
+	pyo3-ffi@0.25.1
+	pyo3-macros-backend@0.25.1
+	pyo3-macros@0.25.1
+	pyo3@0.25.1
+	quote@1.0.42
+	rustversion@1.0.22
+	ryu@1.0.20
+	serde@1.0.228
+	serde_core@1.0.228
+	serde_derive@1.0.228
+	serde_json@1.0.145
+	syn@2.0.110
+	target-lexicon@0.13.3
+	unicode-ident@1.0.22
+	unindent@0.2.4
 "
 
 DISTUTILS_USE_PEP517=maturin
 PYTHON_COMPAT=( python3_{10..13} )
+RUST_MIN_VER="1.80"
 
 inherit distutils-r1 cargo
 
