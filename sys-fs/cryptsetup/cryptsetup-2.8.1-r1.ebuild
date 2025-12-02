@@ -44,7 +44,7 @@ LIB_DEPEND="
 	openssl? ( dev-libs/openssl:0=[static-libs(+)] )
 	pwquality? ( dev-libs/libpwquality[static-libs(+)] )
 	passwdqc? ( sys-auth/passwdqc )
-	ssh? ( net-libs/libssh[static-libs(+)] )
+	ssh? ( net-libs/libssh[static-libs(+)] net-libs/libssh[sftp(+)] )
 	sys-fs/lvm2[static-libs(+)]
 "
 # We have to always depend on ${LIB_DEPEND} rather than put behind
