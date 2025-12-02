@@ -157,6 +157,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
+	>=dev-util/bpftool-7.0.0
 	llvm-core/clang[llvm_targets_BPF]
 	test? (
 		$(python_gen_any_dep '
