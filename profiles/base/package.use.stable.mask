@@ -129,10 +129,6 @@ app-emulation/winetricks test
 # for stable systems
 dev-lang/rust nightly
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-12-09)
-# Declared experimental, and dev-cpp/websocketpp not stable yet
-sci-libs/indilib websocket
-
 # Mart Raudsepp <leio@gentoo.org> (2019-04-14)
 # Needs media-plugins/gst-plugins-chromaprint, which is not stable
 # anywhere yet.
