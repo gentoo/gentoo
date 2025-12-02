@@ -20,6 +20,7 @@
 		<flag name="doh">Enable support for dns over http via <pkg>net-libs/nghttp2</pkg></flag>
 		<flag name="doh3">Enable support for dns over http3 via <pkg>net-libs/quiche</pkg></flag>
 		<flag name="ipcipher">Enable support for ipcipher via <pkg>dev-libs/openssl</pkg></flag>
+		<flag name="ipcrypt">Enable support for encryption/decryption of IP addresses via IPCrypt</flag>
 		<flag name="lmdb">Enable support for lmdb</flag>
 		<flag name="quic">Enable support for dns over quic via <pkg>net-libs/quiche</pkg></flag>
 		<flag name="regex">Enable support for regular expression matching via <pkg>dev-libs/re2</pkg></flag>
