@@ -27,11 +27,6 @@ dev-libs/libksba verify-sig
 # https://bugs.gentoo.org/964377
 mail-mta/exim pam
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-10-05)
-# Preparation for sci-geosciences/liblas removal. Bug #957235
-<=dev-games/openscenegraph-3.6.5-r117 las
-<=dev-games/openscenegraph-openmw-3.6_p20251012 las
-
 # Michał Górny <mgorny@gentoo.org> (2025-09-27)
 # Building NumPy with ILP64 LAPACK can cause revdeps to segfault if they
 # link to LP64 LAPACK.  To support this properly, we either need to

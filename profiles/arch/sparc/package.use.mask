@@ -631,8 +631,8 @@ net-libs/gnome-online-accounts gnome
 x11-terms/gnome-terminal gnome-shell
 
 # Justin Lecher <jlec@gentoo.org> (2017-01-15)
-# unkeyworded rev deps
-dev-games/openscenegraph gdal las
+# unkeyworded rev dep
+dev-games/openscenegraph gdal
 
 # Pacho Ramos <pacho@gentoo.org> (2017-01-02)
 # Don't keyword redis
