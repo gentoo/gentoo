@@ -121,6 +121,9 @@ src_configure() {
 }
 
 src_test() {
+	local CMAKE_SKIP_TESTS=(
+		"$(usex collada '' 'utCollada.*')"
+	)
 	local myctestargs=(
 		--repeat until-pass:100
 	)
