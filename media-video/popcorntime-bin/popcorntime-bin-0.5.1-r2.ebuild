@@ -1,4 +1,4 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,11 +12,10 @@ CHROMIUM_LANGS="
 inherit chromium-2 desktop unpacker xdg
 
 DESCRIPTION="BitTorrent client that includes an integrated media player"
-HOMEPAGE="https://github.com/popcorn-official/popcorn-desktop"
-SRC_URI="https://github.com/popcorn-official/popcorn-desktop/releases/download/v${PV}/Popcorn-Time-${PV}-amd64.deb"
+HOMEPAGE="https://github.com/popcorn-time-ru/popcorn-desktop"
+SRC_URI="https://github.com/popcorn-time-ru/popcorn-desktop/releases/download/v${PV}/Popcorn-Time-${PV}-amd64.deb -> ${PF}-amd64.deb"
 S="${WORKDIR}"
 
-# Electron bundles a bunch of things
 LICENSE="
 	MIT BSD BSD-2 BSD-4 AFL-2.1 Apache-2.0 Ms-PL GPL-2 LGPL-2.1 APSL-2
 	unRAR OFL-1.1 CC-BY-SA-3.0 MPL-2.0 android public-domain all-rights-reserved
@@ -26,31 +25,7 @@ KEYWORDS="-* ~amd64"
 RESTRICT="bindist mirror"
 
 RDEPEND="
-	>=app-accessibility/at-spi2-core-2.46.0:2
-	dev-libs/expat
-	dev-libs/nspr
-	dev-libs/nss
-	media-libs/alsa-lib
-	net-print/cups
-	sys-apps/dbus
-	sys-libs/glibc
-	x11-libs/cairo
-	x11-libs/gdk-pixbuf
-	x11-libs/gtk+:3
-	x11-libs/libX11
-	x11-libs/libxcb
-	x11-libs/libxkbcommon
-	x11-libs/libXcomposite
-	x11-libs/libXcursor
-	x11-libs/libXdamage
-	x11-libs/libXext
-	x11-libs/libXfixes
-	x11-libs/libXi
-	x11-libs/libXrandr
-	x11-libs/libXrender
-	x11-libs/libXScrnSaver
-	x11-libs/libXtst
-	x11-libs/pango
+	~dev-libs/nwjs-0.86.0
 "
 
 QA_PREBUILT="opt/Popcorn-Time/*"
@@ -82,17 +57,26 @@ src_install() {
 	local DESTDIR="/opt/Popcorn-Time"
 	pushd "opt/Popcorn-Time" || die
 
-	exeinto "${DESTDIR}/lib"
-	doexe lib/*.so
+	nwjs_files=(
+		chrome_crashpad_handler
+		icudtl.dat
+		lib
+		nw
+		nw_100_percent.pak
+		nw_200_percent.pak
+		resources.pak
+		v8_context_snapshot.bin
+	)
 
-	insinto "${DESTDIR}/lib"
-	doins *.json
+	for file in ${nwjs_files[@]}; do
+		dosym ."./nwjs/${file}" "${DESTDIR}/${file}"
+	done
 
 	exeinto "${DESTDIR}"
-	doexe Popcorn-Time nwjc minidump_stackwalk chromedriver chrome_crashpad_handler
+	doexe Popcorn-Time nwjc minidump_stackwalk chromedriver
 
 	insinto "${DESTDIR}"
-	doins *.pak *.bin *.json *.dat
+	doins package.json git.json
 	insopts -m0755
 	doins -r locales src node_modules
 
