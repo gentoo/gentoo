@@ -47,10 +47,10 @@ DEPEND="
 "
 BDEPEND="
 	virtual/pkgconfig
-	verify-sig? ( >=sec-keys/openpgp-keys-knot-resolver-20240304 )
+	verify-sig? ( >=sec-keys/openpgp-keys-knot-resolver-20251203 )
 "
 
-VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/${PN}.gpg
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/${PN}.asc
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.5.3-docdir.patch
