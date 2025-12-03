@@ -417,6 +417,7 @@ python_compile() {
 		DISTUTILS_ARGS=(
 			"${MAIN_DISTUTILS_ARGS[@]}"
 			--reuse-build
+			--shiboken-host-path=="${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/install"
 			--shiboken-target-path="${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/install"
 			--build-type=pyside6
 		)
