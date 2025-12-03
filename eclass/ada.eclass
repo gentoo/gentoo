@@ -31,6 +31,8 @@ esac
 if [[ -z ${_ADA_ECLASS} ]]; then
 _ADA_ECLASS=1
 
+inherit flag-o-matic
+
 # @ECLASS_VARIABLE: ADA_DEPS
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
@@ -470,6 +472,9 @@ ada_setup() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	unset EADA
+
+	# https://gcc.gnu.org/PR116226
+	filter-flags -Warray-bounds
 
 	if [[ ${#_ADA_SUPPORTED_IMPLS[@]} -eq 1 ]]; then
 		if use "ada_target_${_ADA_SUPPORTED_IMPLS[0]}"; then
