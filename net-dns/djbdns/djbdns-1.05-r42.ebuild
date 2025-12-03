@@ -7,9 +7,11 @@ inherit flag-o-matic readme.gentoo-r1 toolchain-funcs
 DESCRIPTION="Collection of DNS client/server software"
 HOMEPAGE="https://cr.yp.to/djbdns.html"
 IPV6_PATCH="test32"
+GENTOO_PATCH="1"
 
 SRC_URI="https://cr.yp.to/djbdns/${P}.tar.gz
 	https://smarden.org/pape/djb/manpages/${P}-man.tar.gz
+	https://downloads.uls.co.za/gentoo/djbdns/djbdns-gentoo-${GENTOO_PATCH}.tar.bz2
 	ipv6? ( https://www.fefe.de/dns/${P}-${IPV6_PATCH}.diff.xz )"
 
 LICENSE="public-domain"
@@ -35,41 +37,19 @@ src_unpack() {
 }
 
 PATCHES=(
-	"${FILESDIR}/dnsroots.patch"
-	"${FILESDIR}/dnstracesort.patch"
-	"${FILESDIR}/string_length_255.patch"
-	"${FILESDIR}/srv_record_support.patch"
-	"${FILESDIR}/increase-cname-recustion-depth.patch"
-	"${FILESDIR}/CVE2009-0858_0001-check-response-domain-name-length.patch"
-	"${FILESDIR}/CVE2012-1191_0001-ghost-domain-attack.patch"
-	"${FILESDIR}/AR-and-RANLIB-support.patch"
-	"${FILESDIR}/tinydns-softlimit.patch"
-	"${FILESDIR}/${PN}-dnscache-configurable-truncate-manpages.patch"
+	"${WORKDIR}/djbdns-gentoo-${GENTOO_PATCH}/base"
 )
 
 src_prepare() {
 	if use ipv6; then
-		PATCHES=(${PATCHES[@]}
+		PATCHES+=(
 			# The big ipv6 patch.
 			"${WORKDIR}/${P}-${IPV6_PATCH}.diff"
-			# Fix CVE2008-4392 (ipv6)
-			"${FILESDIR}/CVE2008-4392_0001-dnscache-merge-similar-outgoing-queries-ipv6-test32.patch"
-			"${FILESDIR}/CVE2008-4392_0002-dnscache-cache-soa-records-ipv6-test29.patch"
-			"${FILESDIR}/${PN}-dnscache-configurable-truncate-size-v6.patch"
-			"${FILESDIR}/${PN}-udp-overflow-response-buffer-truncate-v6.patch"
-			"${FILESDIR}/${PN}-gcc15-v6.patch"
+			"${WORKDIR}/djbdns-gentoo-${GENTOO_PATCH}/ipv6"
 		)
 	else
-		PATCHES=(${PATCHES[@]}
-			"${FILESDIR}/implicit-declarations-nov6.patch"
-			# Fix CVE2008-4392 (no ipv6)
-			"${FILESDIR}/CVE2008-4392_0001-dnscache-merge-similar-outgoing-queries-r1.patch"
-			"${FILESDIR}/CVE2008-4392_0002-dnscache-cache-soa-records.patch"
-			# Later versions of the ipv6 patch include this
-			"${FILESDIR}/${PV}-errno-r1.patch"
-			"${FILESDIR}/${PN}-dnscache-configurable-truncate-size-nov6.patch"
-			"${FILESDIR}/${PN}-udp-overflow-response-buffer-truncate-nov6.patch"
-			"${FILESDIR}/${PN}-gcc15-nov6.patch"
+		PATCHES+=(
+			"${WORKDIR}/djbdns-gentoo-${GENTOO_PATCH}/nov6"
 		)
 	fi
 
