@@ -71,6 +71,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.12-cmake-lua-version.patch"
 	"${FILESDIR}/${PN}-3.14.1-unbundle-lua.patch"
 	"${FILESDIR}/${PN}-3.12-unbundle-snowball.patch"
+	"${FILESDIR}/${P}-lua5.1-fix.patch" #967009
 )
 
 src_prepare() {
