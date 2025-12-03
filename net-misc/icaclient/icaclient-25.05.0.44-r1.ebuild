@@ -66,8 +66,6 @@ RDEPEND="
 	media-libs/alsa-lib
 	media-libs/fontconfig
 	media-libs/freetype
-	>=media-video/ffmpeg-6.0
-	<media-video/ffmpeg-7
 	media-libs/gst-plugins-base:1.0
 	media-libs/gstreamer:1.0
 	media-libs/libogg
@@ -78,6 +76,7 @@ RDEPEND="
 	media-libs/mesa
 	media-libs/speex
 	media-libs/speexdsp
+	media-video/ffmpeg-compat:6
 	sys-apps/util-linux
 	llvm-runtimes/libcxx
 	llvm-runtimes/libcxxabi
@@ -172,6 +171,10 @@ src_install() {
 
 	exeinto "${ICAROOT}"/lib
 	doexe lib/*.so
+
+	# ffmpeg-compat libraries are not in LDPATH, symlink them (bug #967025)
+	dosym -r {/usr/lib/ffmpeg6/$(get_libdir),"${ICAROOT}"/lib}/libavutil.so.58
+	dosym -r {/usr/lib/ffmpeg6/$(get_libdir),"${ICAROOT}"/lib}/libavcodec.so.60
 
 	for dest in "${ICAROOT}"{,/nls/en{,.UTF-8}} ; do
 		insinto "${dest}"
