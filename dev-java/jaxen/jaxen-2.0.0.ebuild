@@ -12,7 +12,7 @@ inherit java-pkg-2 java-pkg-simple
 DESCRIPTION="Jaxen is a universal XPath engine for Java"
 HOMEPAGE="http://www.cafeconleche.org/jaxen/"
 SRC_URI="https://github.com/${PN}-xpath/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${P}"
+S="${WORKDIR}/${P}/core"
 
 LICENSE="BSD-2"
 SLOT="1.2"
@@ -39,10 +39,10 @@ RDEPEND="
 "
 
 JAVA_AUTOMATIC_MODULE_NAME="org.jaxen"
-JAVA_SRC_DIR="core/src/java/main"
+JAVA_SRC_DIR="src/java/main"
 
 JAVA_TEST_GENTOO_CLASSPATH="junit"
-JAVA_TEST_SRC_DIR="core/src/java/test"
+JAVA_TEST_SRC_DIR="src/java/test"
 
 src_prepare() {
 	java-pkg-2_src_prepare
