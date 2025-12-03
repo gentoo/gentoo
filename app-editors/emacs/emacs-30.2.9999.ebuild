@@ -447,12 +447,13 @@ src_test() {
 		%lisp/vc/vc-tests.el
 		%lisp/vc/vc-bzr-tests.el
 
+		%lisp/progmodes/eglot-tests.el  #966957
+
 		# Reason: tries to access network
 		# internet-is-working
 		%src/process-tests.el
 	)
 	use threads || exclude_tests+=(
-			%lisp/progmodes/eglot-tests.el
 			%src/emacs-module-tests.el
 			%src/keyboard-tests.el
 		)
