@@ -80,7 +80,7 @@ RDEPEND="
 	dev-libs/nspr
 	dev-libs/nss
 	media-libs/alsa-lib
-	media-libs/mesa
+	media-libs/mesa[opengl]
 	net-print/cups
 	sys-apps/dbus
 	sys-apps/util-linux
