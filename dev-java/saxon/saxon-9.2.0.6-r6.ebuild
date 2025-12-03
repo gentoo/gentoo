@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ IUSE="ant-task"
 
 BDEPEND="app-arch/unzip"
 CP_DEPEND="
-	dev-java/dom4j:1
+	>=dev-java/dom4j-2.2.0:0
 	dev-java/jdom:0
 	dev-java/xom:0
 "
