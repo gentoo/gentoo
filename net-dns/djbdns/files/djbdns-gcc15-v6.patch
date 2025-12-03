@@ -1,0 +1,939 @@
+Patches for gcc15.
+
+Signed-off-by: André Malo <nd@perlig.de>
+Reference: https://bugs.gentoo.org/945469
+diff '--color=auto' -Nur djbdns-1.05~/alloc.c djbdns-1.05/alloc.c
+--- djbdns-1.05~/alloc.c	2001-02-11 22:11:45.000000000 +0100
++++ djbdns-1.05/alloc.c	2025-12-02 21:10:22.041056713 +0100
+@@ -10,8 +10,7 @@
+ #define space ((char *) realspace)
+ static unsigned int avail = SPACE; /* multiple of ALIGNMENT; 0<=avail<=SPACE */
+ 
+-/*@null@*//*@out@*/char *alloc(n)
+-unsigned int n;
++/*@null@*//*@out@*/void *alloc(size_t n)
+ {
+   char *x;
+   n = ALIGNMENT + n - (n & (ALIGNMENT - 1)); /* XXX: could overflow */
+@@ -21,9 +20,9 @@
+   return x;
+ }
+ 
+-void alloc_free(x)
+-char *x;
++void alloc_free(void *x_)
+ {
++  char *x = x_;
+   if (x >= space)
+     if (x < space + SPACE)
+       return; /* XXX: assuming that pointers are flat */
+diff '--color=auto' -Nur djbdns-1.05~/alloc.h djbdns-1.05/alloc.h
+--- djbdns-1.05~/alloc.h	2001-02-11 22:11:45.000000000 +0100
++++ djbdns-1.05/alloc.h	2025-12-02 21:10:22.041311337 +0100
+@@ -1,8 +1,10 @@
++#include <stddef.h>
++
+ #ifndef ALLOC_H
+ #define ALLOC_H
+ 
+-extern /*@null@*//*@out@*/char *alloc();
+-extern void alloc_free();
+-extern int alloc_re();
++extern /*@null@*//*@out@*/void *alloc(size_t);
++extern void alloc_free(void *);
++extern int alloc_re(void *, size_t, size_t);
+ 
+ #endif
+diff '--color=auto' -Nur djbdns-1.05~/alloc_re.c djbdns-1.05/alloc_re.c
+--- djbdns-1.05~/alloc_re.c	2001-02-11 22:11:45.000000000 +0100
++++ djbdns-1.05/alloc_re.c	2025-12-02 21:10:22.041427910 +0100
+@@ -1,11 +1,9 @@
+ #include "alloc.h"
+ #include "byte.h"
+ 
+-int alloc_re(x,m,n)
+-char **x;
+-unsigned int m;
+-unsigned int n;
++int alloc_re(void *x_, size_t m, size_t n)
+ {
++  char **x = x_;
+   char *y;
+  
+   y = alloc(n);
+diff '--color=auto' -Nur djbdns-1.05~/axfr-get.c djbdns-1.05/axfr-get.c
+--- djbdns-1.05~/axfr-get.c	2025-12-02 21:09:06.740092187 +0100
++++ djbdns-1.05/axfr-get.c	2025-12-02 21:10:22.041581599 +0100
+@@ -371,7 +371,7 @@
+ 
+   fd = open_trunc(fntmp);
+   if (fd == -1) die_write();
+-  buffer_init(&b,buffer_unixwrite,fd,bspace,sizeof bspace);
++  buffer_init(&b,(buffer_op)buffer_unixwrite,fd,bspace,sizeof bspace);
+ 
+   if (!stralloc_copyb(&packet,"\0\0\0\0\0\1\0\0\0\0\0\0",12)) die_generate();
+   if (!stralloc_catb(&packet,zone,zonelen)) die_generate();
+diff '--color=auto' -Nur djbdns-1.05~/buffer.c djbdns-1.05/buffer.c
+--- djbdns-1.05~/buffer.c	2001-02-11 22:11:45.000000000 +0100
++++ djbdns-1.05/buffer.c	2025-12-02 21:10:22.041723489 +0100
+@@ -1,6 +1,6 @@
+ #include "buffer.h"
+ 
+-void buffer_init(buffer *s,int (*op)(),int fd,char *buf,unsigned int len)
++void buffer_init(buffer *s, buffer_op op, int fd, char *buf, size_t len)
+ {
+   s->x = buf;
+   s->fd = fd;
+diff '--color=auto' -Nur djbdns-1.05~/buffer_get.c djbdns-1.05/buffer_get.c
+--- djbdns-1.05~/buffer_get.c	2001-02-11 22:11:45.000000000 +0100
++++ djbdns-1.05/buffer_get.c	2025-12-02 21:10:22.041859592 +0100
+@@ -2,7 +2,7 @@
+ #include "byte.h"
+ #include "error.h"
+ 
+-static int oneread(int (*op)(),int fd,char *buf,unsigned int len)
++static ssize_t oneread(buffer_op op, int fd, char *buf, size_t len)
+ {
+   int r;
+ 
+@@ -13,7 +13,7 @@
+   }
+ }
+ 
+-static int getthis(buffer *s,char *buf,unsigned int len)
++static ssize_t getthis(buffer *s, char *buf, size_t len)
+ {
+   if (len > s->p) len = s->p;
+   s->p -= len;
+@@ -22,9 +22,9 @@
+   return len;
+ }
+ 
+-int buffer_feed(buffer *s)
++ssize_t buffer_feed(buffer *s)
+ {
+-  int r;
++  ssize_t r;
+ 
+   if (s->p) return s->p;
+   r = oneread(s->op,s->fd,s->x,s->n);
+@@ -35,9 +35,9 @@
+   return r;
+ }
+ 
+-int buffer_bget(buffer *s,char *buf,unsigned int len)
++ssize_t buffer_bget(buffer *s, char *buf, size_t len)
+ {
+-  int r;
++  ssize_t r;
+  
+   if (s->p > 0) return getthis(s,buf,len);
+   if (s->n <= len) return oneread(s->op,s->fd,buf,s->n);
+@@ -45,9 +45,9 @@
+   return getthis(s,buf,len);
+ }
+ 
+-int buffer_get(buffer *s,char *buf,unsigned int len)
++ssize_t buffer_get(buffer *s, char *buf, size_t len)
+ {
+-  int r;
++  ssize_t r;
+  
+   if (s->p > 0) return getthis(s,buf,len);
+   if (s->n <= len) return oneread(s->op,s->fd,buf,len);
+@@ -60,7 +60,7 @@
+   return s->x + s->n;
+ }
+ 
+-void buffer_seek(buffer *s,unsigned int len)
++void buffer_seek(buffer *s, size_t len)
+ {
+   s->n += len;
+   s->p -= len;
+diff '--color=auto' -Nur djbdns-1.05~/buffer.h djbdns-1.05/buffer.h
+--- djbdns-1.05~/buffer.h	2001-02-11 22:11:45.000000000 +0100
++++ djbdns-1.05/buffer.h	2025-12-02 21:10:22.041998667 +0100
+@@ -1,27 +1,31 @@
++#include <stddef.h>
++#include <sys/types.h>
++
+ #ifndef BUFFER_H
+ #define BUFFER_H
+ 
++typedef ssize_t (*buffer_op)(int, void *, size_t);
+ typedef struct buffer {
+   char *x;
+-  unsigned int p;
+-  unsigned int n;
++  size_t p;
++  size_t n;
+   int fd;
+-  int (*op)();
++  buffer_op op;
+ } buffer;
+ 
+-#define BUFFER_INIT(op,fd,buf,len) { (buf), 0, (len), (fd), (op) }
++#define BUFFER_INIT(op,fd,buf,len) { (buf), 0, (len), (fd), ((buffer_op)(op)) }
+ #define BUFFER_INSIZE 8192
+ #define BUFFER_OUTSIZE 8192
+ 
+-extern void buffer_init(buffer *,int (*)(),int,char *,unsigned int);
++extern void buffer_init(buffer *, buffer_op, int, char *, size_t);
+ 
+ extern int buffer_flush(buffer *);
+-extern int buffer_put(buffer *,const char *,unsigned int);
+-extern int buffer_putalign(buffer *,const char *,unsigned int);
+-extern int buffer_putflush(buffer *,const char *,unsigned int);
+-extern int buffer_puts(buffer *,const char *);
+-extern int buffer_putsalign(buffer *,const char *);
+-extern int buffer_putsflush(buffer *,const char *);
++extern int buffer_put(buffer *, const char *, size_t);
++extern int buffer_putalign(buffer *,const char *, size_t);
++extern int buffer_putflush(buffer *,const char *, size_t);
++extern int buffer_puts(buffer *, const char *);
++extern int buffer_putsalign(buffer *, const char *);
++extern int buffer_putsflush(buffer *, const char *);
+ 
+ #define buffer_PUTC(s,c) \
+   ( ((s)->n != (s)->p) \
+@@ -29,12 +33,12 @@
+     : buffer_put((s),&(c),1) \
+   )
+ 
+-extern int buffer_get(buffer *,char *,unsigned int);
+-extern int buffer_bget(buffer *,char *,unsigned int);
+-extern int buffer_feed(buffer *);
++extern ssize_t buffer_get(buffer *, char *, size_t);
++extern ssize_t buffer_bget(buffer *, char *, size_t);
++extern ssize_t buffer_feed(buffer *);
+ 
+ extern char *buffer_peek(buffer *);
+-extern void buffer_seek(buffer *,unsigned int);
++extern void buffer_seek(buffer *, size_t);
+ 
+ #define buffer_PEEK(s) ( (s)->x + (s)->n )
+ #define buffer_SEEK(s,len) ( ( (s)->p -= (len) ) , ( (s)->n += (len) ) )
+@@ -47,8 +51,8 @@
+ 
+ extern int buffer_copy(buffer *,buffer *);
+ 
+-extern int buffer_unixread(int,char *,unsigned int);
+-extern int buffer_unixwrite(int,const char *,unsigned int);
++extern ssize_t buffer_unixread(int, void *, size_t);
++extern ssize_t buffer_unixwrite(int, const void *, size_t);
+ 
+ extern buffer *buffer_0;
+ extern buffer *buffer_0small;
+diff '--color=auto' -Nur djbdns-1.05~/buffer_put.c djbdns-1.05/buffer_put.c
+--- djbdns-1.05~/buffer_put.c	2025-12-02 21:09:06.740392048 +0100
++++ djbdns-1.05/buffer_put.c	2025-12-02 21:10:22.042140686 +0100
+@@ -3,12 +3,12 @@
+ #include "byte.h"
+ #include "error.h"
+ 
+-static int allwrite(int (*op)(),int fd,const char *buf,unsigned int len)
++static int allwrite(buffer_op op, int fd, const char *buf, size_t len)
+ {
+-  int w;
++  ssize_t w;
+ 
+   while (len) {
+-    w = op(fd,buf,len);
++    w = op(fd,(char *)buf,len);
+     if (w == -1) {
+       if (errno == error_intr) continue;
+       return -1; /* note that some data may have been written */
+@@ -22,7 +22,7 @@
+ 
+ int buffer_flush(buffer *s)
+ {
+-  int p;
++  size_t p;
+  
+   p = s->p;
+   if (!p) return 0;
+@@ -30,9 +30,9 @@
+   return allwrite(s->op,s->fd,s->x,p);
+ }
+ 
+-int buffer_putalign(buffer *s,const char *buf,unsigned int len)
++int buffer_putalign(buffer *s, const char *buf, size_t len)
+ {
+-  unsigned int n;
++  size_t n;
+  
+   while (len > (n = s->n - s->p)) {
+     byte_copy(s->x + s->p,n,buf); s->p += n; buf += n; len -= n;
+@@ -44,9 +44,9 @@
+   return 0;
+ }
+ 
+-int buffer_put(buffer *s,const char *buf,unsigned int len)
++int buffer_put(buffer *s, const char *buf, size_t len)
+ {
+-  unsigned int n;
++  size_t n;
+  
+   n = s->n;
+   if (len > n - s->p) {
+@@ -66,23 +66,23 @@
+   return 0;
+ }
+ 
+-int buffer_putflush(buffer *s,const char *buf,unsigned int len)
++int buffer_putflush(buffer *s, const char *buf, size_t len)
+ {
+   if (buffer_flush(s) == -1) return -1;
+   return allwrite(s->op,s->fd,buf,len);
+ }
+ 
+-int buffer_putsalign(buffer *s,const char *buf)
++int buffer_putsalign(buffer *s, const char *buf)
+ {
+   return buffer_putalign(s,buf,str_len(buf));
+ }
+ 
+-int buffer_puts(buffer *s,const char *buf)
++int buffer_puts(buffer *s, const char *buf)
+ {
+   return buffer_put(s,buf,str_len(buf));
+ }
+ 
+-int buffer_putsflush(buffer *s,const char *buf)
++int buffer_putsflush(buffer *s, const char *buf)
+ {
+   return buffer_putflush(s,buf,str_len(buf));
+ }
+diff '--color=auto' -Nur djbdns-1.05~/buffer_read.c djbdns-1.05/buffer_read.c
+--- djbdns-1.05~/buffer_read.c	2001-02-11 22:11:45.000000000 +0100
++++ djbdns-1.05/buffer_read.c	2025-12-02 21:10:22.042249620 +0100
+@@ -1,7 +1,7 @@
+ #include <unistd.h>
+ #include "buffer.h"
+ 
+-int buffer_unixread(int fd,char *buf,unsigned int len)
++ssize_t buffer_unixread(int fd, void *buf, size_t len)
+ {
+-  return read(fd,buf,len);
++  return read(fd,(char *)buf,len);
+ }
+diff '--color=auto' -Nur djbdns-1.05~/buffer_write.c djbdns-1.05/buffer_write.c
+--- djbdns-1.05~/buffer_write.c	2001-02-11 22:11:45.000000000 +0100
++++ djbdns-1.05/buffer_write.c	2025-12-02 21:10:22.042357153 +0100
+@@ -1,7 +1,7 @@
+ #include <unistd.h>
+ #include "buffer.h"
+ 
+-int buffer_unixwrite(int fd,const char *buf,unsigned int len)
++ssize_t buffer_unixwrite(int fd, const void *buf, size_t len)
+ {
+-  return write(fd,buf,len);
++  return write(fd,(const char *)buf,len);
+ }
+diff '--color=auto' -Nur djbdns-1.05~/byte_chr.c djbdns-1.05/byte_chr.c
+--- djbdns-1.05~/byte_chr.c	2001-02-11 22:11:45.000000000 +0100
++++ djbdns-1.05/byte_chr.c	2025-12-02 21:10:22.042455234 +0100
+@@ -1,12 +1,9 @@
+ #include "byte.h"
+ 
+-unsigned int byte_chr(s,n,c)
+-char *s;
+-register unsigned int n;
+-int c;
++unsigned int byte_chr(const char *s, register size_t n, int c)
+ {
+   register char ch;
+-  register char *t;
++  register const char *t;
+ 
+   ch = c;
+   t = s;
+diff '--color=auto' -Nur djbdns-1.05~/byte_copy.c djbdns-1.05/byte_copy.c
+--- djbdns-1.05~/byte_copy.c	2001-02-11 22:11:45.000000000 +0100
++++ djbdns-1.05/byte_copy.c	2025-12-02 21:10:22.042559151 +0100
+@@ -1,10 +1,10 @@
+ #include "byte.h"
+ 
+-void byte_copy(to,n,from)
+-register char *to;
+-register unsigned int n;
+-register char *from;
++void byte_copy(void *to_, register size_t n, const void *from_)
+ {
++  register char *to = to_;
++  register const char *from = from_;
++
+   for (;;) {
+     if (!n) return; *to++ = *from++; --n;
+     if (!n) return; *to++ = *from++; --n;
+diff '--color=auto' -Nur djbdns-1.05~/byte_cr.c djbdns-1.05/byte_cr.c
+--- djbdns-1.05~/byte_cr.c	2001-02-11 22:11:45.000000000 +0100
++++ djbdns-1.05/byte_cr.c	2025-12-02 21:10:22.042658751 +0100
+@@ -1,10 +1,10 @@
+ #include "byte.h"
+ 
+-void byte_copyr(to,n,from)
+-register char *to;
+-register unsigned int n;
+-register char *from;
++void byte_copyr(void *to_, register size_t n, const void *from_)
+ {
++  register char *to = to_;
++  register const char *from = from_;
++
+   to += n;
+   from += n;
+   for (;;) {
+diff '--color=auto' -Nur djbdns-1.05~/byte_diff.c djbdns-1.05/byte_diff.c
+--- djbdns-1.05~/byte_diff.c	2001-02-11 22:11:45.000000000 +0100
++++ djbdns-1.05/byte_diff.c	2025-12-02 21:10:22.042754495 +0100
+@@ -1,9 +1,6 @@
+ #include "byte.h"
+ 
+-int byte_diff(s,n,t)
+-register char *s;
+-register unsigned int n;
+-register char *t;
++int byte_diff(register const unsigned char *s, register size_t n, register const unsigned char *t)
+ {
+   for (;;) {
+     if (!n) return 0; if (*s != *t) break; ++s; ++t; --n;
+diff '--color=auto' -Nur djbdns-1.05~/byte.h djbdns-1.05/byte.h
+--- djbdns-1.05~/byte.h	2001-02-11 22:11:45.000000000 +0100
++++ djbdns-1.05/byte.h	2025-12-02 21:10:22.042849665 +0100
+@@ -1,12 +1,13 @@
++#include <stddef.h>
++
+ #ifndef BYTE_H
+ #define BYTE_H
+ 
+-extern unsigned int byte_chr();
+-extern unsigned int byte_rchr();
+-extern void byte_copy();
+-extern void byte_copyr();
+-extern int byte_diff();
+-extern void byte_zero();
++extern unsigned int byte_chr(const char *, register size_t, int);
++extern void byte_copy(void *, register size_t, const void *);
++extern void byte_copyr(void *, register size_t, const void *);
++extern int byte_diff(register const unsigned char *, register size_t, register const unsigned char *);
++extern void byte_zero(void *, register size_t);
+ 
+ #define byte_equal(s,n,t) (!byte_diff((s),(n),(t)))
+ 
+diff '--color=auto' -Nur djbdns-1.05~/byte_zero.c djbdns-1.05/byte_zero.c
+--- djbdns-1.05~/byte_zero.c	2001-02-11 22:11:45.000000000 +0100
++++ djbdns-1.05/byte_zero.c	2025-12-02 21:10:22.042940277 +0100
+@@ -1,9 +1,8 @@
+ #include "byte.h"
+ 
+-void byte_zero(s,n)
+-char *s;
+-register unsigned int n;
++void byte_zero(void *s_, register size_t n)
+ {
++  char *s = s_;
+   for (;;) {
+     if (!n) break; *s++ = 0; --n;
+     if (!n) break; *s++ = 0; --n;
+diff '--color=auto' -Nur djbdns-1.05~/cdb_make.c djbdns-1.05/cdb_make.c
+--- djbdns-1.05~/cdb_make.c	2001-02-11 22:11:45.000000000 +0100
++++ djbdns-1.05/cdb_make.c	2025-12-02 21:10:22.043043560 +0100
+@@ -14,7 +14,7 @@
+   c->numentries = 0;
+   c->fd = fd;
+   c->pos = sizeof c->final;
+-  buffer_init(&c->b,buffer_unixwrite,fd,c->bspace,sizeof c->bspace);
++  buffer_init(&c->b,(buffer_op)buffer_unixwrite,fd,c->bspace,sizeof c->bspace);
+   return seek_set(fd,c->pos);
+ }
+ 
+diff '--color=auto' -Nur djbdns-1.05~/dnscache.c djbdns-1.05/dnscache.c
+--- djbdns-1.05~/dnscache.c	2025-12-02 21:09:06.755741260 +0100
++++ djbdns-1.05/dnscache.c	2025-12-02 21:10:22.043064395 +0100
+@@ -58,7 +58,7 @@
+ static char buf[1024];
+ uint64 numqueries = 0;
+ 
+-static unsigned int truncate_len = 512;
++static unsigned long truncate_len = 512;
+ 
+ static int udp53;
+ 
+@@ -433,7 +433,7 @@
+   socket_tryreservein(udp53,131072);
+ 
+   byte_zero(seed,sizeof seed);
+-  read(0,seed,sizeof seed);
++  (void)read(0,seed,sizeof seed);
+   dns_random_init(seed);
+   close(0);
+ 
+diff '--color=auto' -Nur djbdns-1.05~/FILES djbdns-1.05/FILES
+--- djbdns-1.05~/FILES	2025-12-02 21:09:06.739371861 +0100
++++ djbdns-1.05/FILES	2025-12-02 21:10:37.403618043 +0100
+@@ -168,7 +168,6 @@
+ readclose.c
+ readclose.h
+ scan.h
+-scan_0x.c
+ scan_ulong.c
+ seek.h
+ seek_set.c
+@@ -230,7 +229,6 @@
+ trydrent.c
+ trylsock.c
+ trypoll.c
+-tryshsgr.c
+ trysysel.c
+ tryulong32.c
+ tryulong64.c
+diff '--color=auto' -Nur djbdns-1.05~/generic-conf.c djbdns-1.05/generic-conf.c
+--- djbdns-1.05~/generic-conf.c	2001-02-11 22:11:45.000000000 +0100
++++ djbdns-1.05/generic-conf.c	2025-12-02 21:10:22.043421352 +0100
+@@ -43,7 +43,7 @@
+   fn = s;
+   fd = open_trunc(fn);
+   if (fd == -1) fail();
+-  buffer_init(&ss,buffer_unixwrite,fd,buf,sizeof buf);
++  buffer_init(&ss,(buffer_op)buffer_unixwrite,fd,buf,sizeof buf);
+ }
+ 
+ void outs(const char *s)
+diff '--color=auto' -Nur djbdns-1.05~/hasshsgr.h1 djbdns-1.05/hasshsgr.h1
+--- djbdns-1.05~/hasshsgr.h1	2001-02-11 22:11:45.000000000 +0100
++++ djbdns-1.05/hasshsgr.h1	1970-01-01 01:00:00.000000000 +0100
+@@ -1 +0,0 @@
+-/* sysdep: -shortsetgroups */
+diff '--color=auto' -Nur djbdns-1.05~/hasshsgr.h2 djbdns-1.05/hasshsgr.h2
+--- djbdns-1.05~/hasshsgr.h2	2001-02-11 22:11:45.000000000 +0100
++++ djbdns-1.05/hasshsgr.h2	1970-01-01 01:00:00.000000000 +0100
+@@ -1,2 +0,0 @@
+-/* sysdep: +shortsetgroups */
+-#define HASSHORTSETGROUPS 1
+diff '--color=auto' -Nur djbdns-1.05~/install.c djbdns-1.05/install.c
+--- djbdns-1.05~/install.c	2001-02-11 22:11:45.000000000 +0100
++++ djbdns-1.05/install.c	2025-12-02 21:10:22.043668394 +0100
+@@ -13,11 +13,7 @@
+ 
+ int fdsourcedir = -1;
+ 
+-void h(home,uid,gid,mode)
+-char *home;
+-int uid;
+-int gid;
+-int mode;
++void h(char *home, int uid, int gid, int mode)
+ {
+   if (mkdir(home,0700) == -1)
+     if (errno != error_exist)
+@@ -28,12 +24,7 @@
+     strerr_die4sys(111,FATAL,"unable to chmod ",home,": ");
+ }
+ 
+-void d(home,subdir,uid,gid,mode)
+-char *home;
+-char *subdir;
+-int uid;
+-int gid;
+-int mode;
++void d(char *home, char *subdir, int uid, int gid, int mode)
+ {
+   if (chdir(home) == -1)
+     strerr_die4sys(111,FATAL,"unable to switch to ",home,": ");
+@@ -51,13 +42,7 @@
+ buffer ssin;
+ buffer ssout;
+ 
+-void c(home,subdir,file,uid,gid,mode)
+-char *home;
+-char *subdir;
+-char *file;
+-int uid;
+-int gid;
+-int mode;
++void c(char *home, char *subdir, char *file, int uid, int gid, int mode)
+ {
+   int fdin;
+   int fdout;
+@@ -78,7 +63,7 @@
+   fdout = open_trunc(file);
+   if (fdout == -1)
+     strerr_die6sys(111,FATAL,"unable to write .../",subdir,"/",file,": ");
+-  buffer_init(&ssout,buffer_unixwrite,fdout,outbuf,sizeof outbuf);
++  buffer_init(&ssout,(buffer_op)buffer_unixwrite,fdout,outbuf,sizeof outbuf);
+ 
+   switch(buffer_copy(&ssout,&ssin)) {
+     case -2:
+@@ -101,14 +86,7 @@
+     strerr_die6sys(111,FATAL,"unable to chmod .../",subdir,"/",file,": ");
+ }
+ 
+-void z(home,subdir,file,len,uid,gid,mode)
+-char *home;
+-char *subdir;
+-char *file;
+-int len;
+-int uid;
+-int gid;
+-int mode;
++void z(char *home, char *subdir, char *file, int len, int uid, int gid, int mode)
+ {
+   int fdout;
+ 
+@@ -120,7 +98,7 @@
+   fdout = open_trunc(file);
+   if (fdout == -1)
+     strerr_die6sys(111,FATAL,"unable to write .../",subdir,"/",file,": ");
+-  buffer_init(&ssout,buffer_unixwrite,fdout,outbuf,sizeof outbuf);
++  buffer_init(&ssout,(buffer_op)buffer_unixwrite,fdout,outbuf,sizeof outbuf);
+ 
+   while (len-- > 0)
+     if (buffer_put(&ssout,"",1) == -1)
+@@ -139,7 +117,7 @@
+     strerr_die6sys(111,FATAL,"unable to chmod .../",subdir,"/",file,": ");
+ }
+ 
+-int main()
++int main(void)
+ {
+   fdsourcedir = open_read(".");
+   if (fdsourcedir == -1)
+diff '--color=auto' -Nur djbdns-1.05~/instcheck.c djbdns-1.05/instcheck.c
+--- djbdns-1.05~/instcheck.c	2025-12-02 21:09:06.743944191 +0100
++++ djbdns-1.05/instcheck.c	2025-12-02 21:12:11.953941543 +0100
+@@ -10,15 +10,7 @@
+ #define FATAL "instcheck: fatal: "
+ #define WARNING "instcheck: warning: "
+ 
+-void perm(prefix1,prefix2,prefix3,file,type,uid,gid,mode)
+-char *prefix1;
+-char *prefix2;
+-char *prefix3;
+-char *file;
+-mode_t type;
+-uid_t uid;
+-gid_t gid;
+-mode_t mode;
++void perm(char *prefix1, char *prefix2, char *prefix3, char *file, mode_t type, uid_t uid, gid_t gid, mode_t mode)
+ {
+   struct stat st;
+ 
+@@ -40,46 +32,26 @@
+     strerr_warn6(WARNING,prefix1,prefix2,prefix3,file," has wrong type",0);
+ }
+ 
+-void h(home,uid,gid,mode)
+-char *home;
+-int uid;
+-int gid;
+-int mode;
++void h(char *home, uid_t uid, gid_t gid, mode_t mode)
+ {
+   perm("","","",home,S_IFDIR,uid,gid,mode);
+ }
+ 
+-void d(home,subdir,uid,gid,mode)
+-char *home;
+-char *subdir;
+-int uid;
+-int gid;
+-int mode;
++void d(char *home, char *subdir, uid_t uid, gid_t gid, mode_t mode)
+ {
+   if (chdir(home) == -1)
+     strerr_die4sys(111,FATAL,"unable to switch to ",home,": ");
+   perm("",home,"/",subdir,S_IFDIR,uid,gid,mode);
+ }
+ 
+-void p(home,fifo,uid,gid,mode)
+-char *home;
+-char *fifo;
+-int uid;
+-int gid;
+-int mode;
++void p(char *home, char *fifo, uid_t uid, gid_t gid, mode_t mode)
+ {
+   if (chdir(home) == -1)
+     strerr_die4sys(111,FATAL,"unable to switch to ",home,": ");
+   perm("",home,"/",fifo,S_IFIFO,uid,gid,mode);
+ }
+ 
+-void c(home,subdir,file,uid,gid,mode)
+-char *home;
+-char *subdir;
+-char *file;
+-int uid;
+-int gid;
+-int mode;
++void c(char *home, char *subdir, char *file, uid_t uid, gid_t gid, mode_t mode)
+ {
+   if (chdir(home) == -1)
+     strerr_die4sys(111,FATAL,"unable to switch to ",home,": ");
+@@ -88,21 +60,15 @@
+   perm(".../",subdir,"/",file,S_IFREG,uid,gid,mode);
+ }
+ 
+-void z(home,file,len,uid,gid,mode)
+-char *home;
+-char *file;
+-int len;
+-int uid;
+-int gid;
+-int mode;
++void z(char *home, char *file, int len, uid_t uid, gid_t gid, mode_t mode)
+ {
+-  (void)len;	// unused
++  (void)len;  /* unused */
+   if (chdir(home) == -1)
+     strerr_die4sys(111,FATAL,"unable to switch to ",home,": ");
+   perm("",home,"/",file,S_IFREG,uid,gid,mode);
+ }
+ 
+-int main()
++int main(void)
+ {
+   hier();
+   _exit(0);
+diff '--color=auto' -Nur djbdns-1.05~/Makefile djbdns-1.05/Makefile
+--- djbdns-1.05~/Makefile	2025-12-02 21:09:06.762721750 +0100
++++ djbdns-1.05/Makefile	2025-12-02 21:10:22.043999095 +0100
+@@ -565,12 +565,6 @@
+ 	  *) cat hasdevtcp.h1 ;; \
+ 	esac ) > hasdevtcp.h
+ 
+-hasshsgr.h: \
+-choose compile load tryshsgr.c hasshsgr.h1 hasshsgr.h2 chkshsgr \
+-warn-shsgr
+-	./chkshsgr || ( cat warn-shsgr; exit 1 )
+-	./choose clr tryshsgr hasshsgr.h1 hasshsgr.h2 > hasshsgr.h
+-
+ hier.o: \
+ compile hier.c auto_home.h
+ 	./compile hier.c
+@@ -744,7 +738,7 @@
+ dnstrace dnstracesort cachetest utime rts dnsip6 dnsip6q
+ 
+ prot.o: \
+-compile prot.c hasshsgr.h prot.h
++compile prot.c prot.h
+ 	./compile prot.c
+ 
+ qlog.o: \
+diff '--color=auto' -Nur djbdns-1.05~/prot.c djbdns-1.05/prot.c
+--- djbdns-1.05~/prot.c	2025-12-02 21:09:06.745062267 +0100
++++ djbdns-1.05/prot.c	2025-12-02 21:10:22.044207564 +0100
+@@ -1,4 +1,3 @@
+-#include "hasshsgr.h"
+ #include "prot.h"
+ 
+ #include <sys/types.h>
+@@ -7,13 +6,7 @@
+ 
+ int prot_gid(gid_t gid)
+ {
+-#ifdef HASSHORTSETGROUPS
+-  short x[2];
+-  x[0] = gid; x[1] = 73; /* catch errors */
+-  if (setgroups(1,x) == -1) return -1;
+-#else
+   if (setgroups(1,&gid) == -1) return -1;
+-#endif
+   return setgid(gid); /* _should_ be redundant, but on some systems it isn't */
+ }
+ 
+diff '--color=auto' -Nur djbdns-1.05~/scan.h djbdns-1.05/scan.h
+--- djbdns-1.05~/scan.h	2001-02-11 22:11:45.000000000 +0100
++++ djbdns-1.05/scan.h	2025-12-02 21:10:22.044311724 +0100
+@@ -1,28 +1,9 @@
++#include <stddef.h>
++
+ #ifndef SCAN_H
+ #define SCAN_H
+ 
+-extern unsigned int scan_uint(const char *,unsigned int *);
+-extern unsigned int scan_xint(const char *,unsigned int *);
+-extern unsigned int scan_nbbint(const char *,unsigned int,unsigned int,unsigned int,unsigned int *);
+-extern unsigned int scan_ushort(const char *,unsigned short *);
+-extern unsigned int scan_xshort(const char *,unsigned short *);
+-extern unsigned int scan_nbbshort(const char *,unsigned int,unsigned int,unsigned int,unsigned short *);
+-extern unsigned int scan_ulong(const char *,unsigned long *);
+-extern unsigned int scan_xlong(const char *,unsigned long *);
+-extern unsigned int scan_nbblong(const char *,unsigned int,unsigned int,unsigned int,unsigned long *);
+-
+-extern unsigned int scan_plusminus(const char *,int *);
+-extern unsigned int scan_0x(const char *,unsigned int *);
+-
+-extern unsigned int scan_whitenskip(const char *,unsigned int);
+-extern unsigned int scan_nonwhitenskip(const char *,unsigned int);
+-extern unsigned int scan_charsetnskip(const char *,const char *,unsigned int);
+-extern unsigned int scan_noncharsetnskip(const char *,const char *,unsigned int);
+-
+-extern unsigned int scan_strncmp(const char *,const char *,unsigned int);
+-extern unsigned int scan_memcmp(const char *,const char *,unsigned int);
+-
+-extern unsigned int scan_long(const char *,long *);
+-extern unsigned int scan_8long(const char *,unsigned long *);
++extern size_t scan_ulong(const char *,unsigned long *);
++extern size_t scan_xlong(const char *,unsigned long *);
+ 
+ #endif
+diff '--color=auto' -Nur djbdns-1.05~/scan_ulong.c djbdns-1.05/scan_ulong.c
+--- djbdns-1.05~/scan_ulong.c	2001-02-11 22:11:45.000000000 +0100
++++ djbdns-1.05/scan_ulong.c	2025-12-02 21:10:22.044402229 +0100
+@@ -1,8 +1,8 @@
+ #include "scan.h"
+ 
+-unsigned int scan_ulong(register const char *s,register unsigned long *u)
++size_t scan_ulong(register const char *s,register unsigned long *u)
+ {
+-  register unsigned int pos = 0;
++  register size_t pos = 0;
+   register unsigned long result = 0;
+   register unsigned long c;
+   while ((c = (unsigned long) (unsigned char) (s[pos] - '0')) < 10) {
+diff '--color=auto' -Nur djbdns-1.05~/scan_xlong.c djbdns-1.05/scan_xlong.c
+--- djbdns-1.05~/scan_xlong.c	2025-12-02 21:09:06.746043204 +0100
++++ djbdns-1.05/scan_xlong.c	2025-12-02 21:10:22.044489688 +0100
+@@ -10,7 +10,7 @@
+   return -1;
+ }
+ 
+-unsigned int scan_xlong(const char *src,unsigned long *dest) {
++size_t scan_xlong(const char *src,unsigned long *dest) {
+   register const char *tmp=src;
+   register int l=0;
+   register unsigned char c;
+diff '--color=auto' -Nur djbdns-1.05~/select.h2 djbdns-1.05/select.h2
+--- djbdns-1.05~/select.h2	2001-02-11 22:11:45.000000000 +0100
++++ djbdns-1.05/select.h2	2025-12-02 21:10:22.044575920 +0100
+@@ -6,6 +6,5 @@
+ #include <sys/types.h>
+ #include <sys/time.h>
+ #include <sys/select.h>
+-extern int select();
+ 
+ #endif
+diff '--color=auto' -Nur djbdns-1.05~/server.c djbdns-1.05/server.c
+--- djbdns-1.05~/server.c	2025-12-02 21:09:06.755861157 +0100
++++ djbdns-1.05/server.c	2025-12-02 21:10:22.044682282 +0100
+@@ -95,7 +95,7 @@
+   int *udp53;
+   unsigned int off;
+   unsigned int cnt;
+-  unsigned int truncate_len = 512;
++  unsigned long truncate_len = 512;
+   iopause_fd *iop;
+ 
+   x = env_get("IP");
+diff '--color=auto' -Nur djbdns-1.05~/TARGETS djbdns-1.05/TARGETS
+--- djbdns-1.05~/TARGETS	2025-12-02 21:09:06.739901550 +0100
++++ djbdns-1.05/TARGETS	2025-12-02 21:10:22.044796408 +0100
+@@ -218,7 +218,6 @@
+ it
+ setup
+ check
+-scan_0x.o
+ fmt_xlong.o
+ ip6_scan.o
+ ip6_fmt.o
+diff '--color=auto' -Nur djbdns-1.05~/timeoutread.c djbdns-1.05/timeoutread.c
+--- djbdns-1.05~/timeoutread.c	2001-02-11 22:11:45.000000000 +0100
++++ djbdns-1.05/timeoutread.c	2025-12-02 21:10:22.044885544 +0100
+@@ -3,7 +3,7 @@
+ #include "iopause.h"
+ #include "timeoutread.h"
+ 
+-int timeoutread(int t,int fd,char *buf,int len)
++ssize_t timeoutread(int t,int fd,char *buf,size_t len)
+ {
+   struct taia now;
+   struct taia deadline;
+diff '--color=auto' -Nur djbdns-1.05~/timeoutread.h djbdns-1.05/timeoutread.h
+--- djbdns-1.05~/timeoutread.h	2001-02-11 22:11:45.000000000 +0100
++++ djbdns-1.05/timeoutread.h	2025-12-02 21:10:22.044971349 +0100
+@@ -1,6 +1,6 @@
+ #ifndef TIMEOUTREAD_H
+ #define TIMEOUTREAD_H
+ 
+-extern int timeoutread();
++extern ssize_t timeoutread(int, int, char *, size_t);
+ 
+ #endif
+diff '--color=auto' -Nur djbdns-1.05~/timeoutwrite.c djbdns-1.05/timeoutwrite.c
+--- djbdns-1.05~/timeoutwrite.c	2001-02-11 22:11:45.000000000 +0100
++++ djbdns-1.05/timeoutwrite.c	2025-12-02 21:10:22.045059788 +0100
+@@ -3,7 +3,7 @@
+ #include "iopause.h"
+ #include "timeoutwrite.h"
+ 
+-int timeoutwrite(int t,int fd,char *buf,int len)
++ssize_t timeoutwrite(int t, int fd, const char *buf, size_t len)
+ {
+   struct taia now;
+   struct taia deadline;
+diff '--color=auto' -Nur djbdns-1.05~/timeoutwrite.h djbdns-1.05/timeoutwrite.h
+--- djbdns-1.05~/timeoutwrite.h	2001-02-11 22:11:45.000000000 +0100
++++ djbdns-1.05/timeoutwrite.h	2025-12-02 21:10:22.045145217 +0100
+@@ -1,6 +1,6 @@
+ #ifndef TIMEOUTWRITE_H
+ #define TIMEOUTWRITE_H
+ 
+-extern int timeoutwrite();
++extern ssize_t timeoutwrite(int, int, const char *, size_t);
+ 
+ #endif
+diff '--color=auto' -Nur djbdns-1.05~/tinydns-data.c djbdns-1.05/tinydns-data.c
+--- djbdns-1.05~/tinydns-data.c	2025-12-02 21:09:06.747461059 +0100
++++ djbdns-1.05/tinydns-data.c	2025-12-02 21:10:22.045281915 +0100
+@@ -432,13 +432,13 @@
+ 	if (!dns_domain_fromdot(&d2,f[2].s,f[2].len)) nomem();
+ 
+ 	if (!stralloc_0(&f[4])) nomem();
+-	if (!scan_ulong(f[4].s,&u)) u = 0;
++	if (!scan_u32(f[4].s,&u)) u = 0;
+ 	uint16_pack_big(srv,u);
+ 	if (!stralloc_0(&f[5])) nomem();
+-	if (!scan_ulong(f[5].s,&u)) u = 0;
++	if (!scan_u32(f[5].s,&u)) u = 0;
+ 	uint16_pack_big(srv + 2,u);
+ 	if (!stralloc_0(&f[3])) nomem();
+-	if (!scan_ulong(f[3].s,&u)) nomem();
++	if (!scan_u32(f[3].s,&u)) nomem();
+ 	uint16_pack_big(srv + 4,u);
+ 
+ 	rr_start(DNS_T_SRV,ttl,ttd,loc);
+diff '--color=auto' -Nur djbdns-1.05~/tinydns-edit.c djbdns-1.05/tinydns-edit.c
+--- djbdns-1.05~/tinydns-edit.c	2025-12-02 21:09:06.747563376 +0100
++++ djbdns-1.05/tinydns-edit.c	2025-12-02 21:10:22.045429088 +0100
+@@ -129,7 +129,7 @@
+   fdnew = open_trunc(fnnew);
+   if (fdnew == -1) die_write();
+   if (fchmod(fdnew,st.st_mode & 0644) == -1) die_write();
+-  buffer_init(&bnew,buffer_unixwrite,fdnew,bnewspace,sizeof bnewspace);
++  buffer_init(&bnew,(buffer_op)buffer_unixwrite,fdnew,bnewspace,sizeof bnewspace);
+ 
+   switch(mode) {
+     case '.': case '&':
+diff '--color=auto' -Nur djbdns-1.05~/tryshsgr.c djbdns-1.05/tryshsgr.c
+--- djbdns-1.05~/tryshsgr.c	2025-12-02 21:09:06.747843586 +0100
++++ djbdns-1.05/tryshsgr.c	1970-01-01 01:00:00.000000000 +0100
+@@ -1,18 +0,0 @@
+-#include <sys/types.h>
+-#include <unistd.h>
+-#include <grp.h>
+-
+-int main()
+-{
+-  gid_t x[4];
+- 
+-  x[0] = x[1] = 1;
+-  if (getgroups(1,x) == 0) if (setgroups(1,x) == -1) _exit(1);
+- 
+-  if (getgroups(1,x) == -1) _exit(1);
+-  if (x[1] != 1) _exit(1);
+-  x[1] = 2;
+-  if (getgroups(1,x) == -1) _exit(1);
+-  if (x[1] != 2) _exit(1);
+-  _exit(0);
+-}
