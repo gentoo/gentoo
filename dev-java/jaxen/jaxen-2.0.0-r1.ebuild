@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ IUSE="dom4j jdom xom"
 REQUIRED_USE="test? ( dom4j jdom xom )"
 
 CDEPEND="
-	dom4j? ( dev-java/dom4j:1 )
+	dom4j? ( >=dev-java/dom4j-2.2.0:0 )
 	jdom? ( dev-java/jdom:0 )
 	xom? ( dev-java/xom:0 )
 "
@@ -48,7 +48,7 @@ src_prepare() {
 	java-pkg-2_src_prepare
 
 	if use dom4j; then
-		JAVA_GENTOO_CLASSPATH+=" dom4j-1"
+		JAVA_GENTOO_CLASSPATH+=" dom4j"
 	else
 		rm -rv "${JAVA_SRC_DIR}"/org/jaxen/dom4j || die
 	fi
