@@ -21,7 +21,7 @@ LICENSE="
 	unRAR OFL-1.1 CC-BY-SA-3.0 MPL-2.0 android public-domain all-rights-reserved
 "
 SLOT="0"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* ~amd64 ~x86"
 RESTRICT="bindist mirror"
 
 RDEPEND="
