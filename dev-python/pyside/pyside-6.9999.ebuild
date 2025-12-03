@@ -462,7 +462,7 @@ python_compile() {
 		popd >/dev/null || die
 	fi
 	mkdir -p "${BUILD_DIR}/install/usr/include"
-	for dir in PySide6 shiboken6_generator; do
+	for dir in PySide6 shiboken6 shiboken6_generator; do
 		if [[ -d ${BUILD_DIR}/install/$(python_get_sitedir)/${dir}/include ]]
 		then
 			ln -s "../../$(python_get_sitedir)/${dir}/include" \
@@ -521,6 +521,9 @@ python_compile() {
 		-e "s~libshiboken6\.cpython.*\.so\.$(ver_cut 1-2)~libshiboken6\${PYTHON_CONFIG_SUFFIX}\.so\.$(ver_cut 1-2)~g" \
 		-e "s~libpyside6\.cpython.*\.so\.$(ver_cut 1-2)~libpyside6\${PYTHON_CONFIG_SUFFIX}\.so\.$(ver_cut 1-2)~g" \
 		-e "s~libpyside6qml\.cpython.*\.so\.$(ver_cut 1-2)~libpyside6qml\${PYTHON_CONFIG_SUFFIX}\.so\.$(ver_cut 1-2)~g" \
+		-e "s~\${PACKAGE_PREFIX_DIR}/~$(python_get_sitedir)/PySide6/~g" \
+		-e "s~\${_IMPORT_PREFIX}/shiboken6/include~$(python_get_sitedir)/shiboken6/include~g" \
+		-e "s~\${_IMPORT_PREFIX}/PySide6/include~$(python_get_sitedir)/PySide6/include~g" \
 		-i 	"${BUILD_DIR}/install/usr/lib/cmake/"*/*.cmake || die
 	local file
 	for file in "${BUILD_DIR}/install/usr/lib/cmake/"*/*.cpython-*.cmake
