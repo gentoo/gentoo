@@ -1797,6 +1797,12 @@ toolchain_src_configure() {
 
 	if in_iuse valgrind ; then
 		confgcc+=( $(use_enable valgrind valgrind-annotations) )
+
+		# We patch this in w/ PR66487-object-lifetime-instrumentation-for-Valgrind.patch,
+		# so it may not always be available.
+		if grep -q -- '--enable-valgrind-interop' "${S}"/libgcc/configure.ac ; then
+			confgcc+=( $(use_enable valgrind valgrind-interop) )
+		fi
 	fi
 
 	if in_iuse vtv ; then
