@@ -66,12 +66,15 @@ inherit chromium-2
 MY_P="${PN}-v${PV}"
 DESCRIPTION="Framework that lets you call all Node.js modules directly from the DOM"
 HOMEPAGE="https://nwjs.io"
-SRC_URI="amd64? ( https://dl.nwjs.io/v${PV}/${MY_P}-linux-x64.tar.gz )"
-S="${WORKDIR}/${MY_P}-linux-x64"
+SRC_URI="
+	amd64? ( https://dl.nwjs.io/v${PV}/${MY_P}-linux-x64.tar.gz )
+	x86? ( https://dl.nwjs.io/v${PV}/${MY_P}-linux-ia32.tar.gz )
+"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* ~amd64 ~x86"
 
 RDEPEND="
 	app-accessibility/at-spi2-core:2
@@ -103,6 +106,17 @@ RDEPEND="
 
 DIR="/opt/${PN}"
 QA_PREBUILT="${DIR#/}/*"
+
+src_unpack() {
+	default
+	if use amd64; then
+		mv "${WORKDIR}/${MY_P}-linux-x64" "${WORKDIR}/${MY_P}" || die
+	elif use x86; then
+		mv "${WORKDIR}/${MY_P}-linux-ia32" "${WORKDIR}/${MY_P}" || die
+	else
+		die "Unsupported architecture"
+	fi
+}
 
 src_prepare() {
 	default
