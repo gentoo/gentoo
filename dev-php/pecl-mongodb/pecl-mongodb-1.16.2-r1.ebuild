@@ -18,8 +18,8 @@ IUSE="sasl test"
 PHP_DEPEND="
 	php_targets_php8-2? ( dev-lang/php:8.2[ssl,zlib] )"
 COMMON_DEPEND="${PHP_DEPEND}
-	>=dev-libs/libbson-1.18.0
-	>=dev-libs/mongo-c-driver-1.18.0[sasl?,ssl]
+	>=dev-libs/libbson-1.24.3
+	>=dev-libs/mongo-c-driver-1.24.3[sasl?,ssl]
 	dev-libs/openssl:=
 	sasl? ( dev-libs/cyrus-sasl )"
 DEPEND="${COMMON_DEPEND}
