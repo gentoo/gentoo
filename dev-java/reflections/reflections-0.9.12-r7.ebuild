@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -29,7 +29,7 @@ KEYWORDS="amd64 arm64 ppc64"
 # org.slf4j:slf4j-simple:1.7.24 -> >=dev-java/slf4j-simple-1.7.30:0
 
 CP_DEPEND="
-	dev-java/dom4j:1
+	>=dev-java/dom4j-2.2.0:0
 	dev-java/gson:0
 	dev-java/javassist:3
 	dev-java/slf4j-api:0
