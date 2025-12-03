@@ -182,11 +182,25 @@ python_check_deps() {
 }
 
 pkg_pretend() {
-	local CONFIG_CHECK="~BPF ~DEBUG_INFO_BTF ~DEBUG_INFO_BTF_MODULES"
-	# hidraw: https://docs.kernel.org/hid/hid-bpf.html#tracing
-	CONFIG_CHECK+=" ~HID_BPF ~HIDRAW"
-	CONFIG_CHECK+=" ~BPF_EVENTS ~TRACING"
-	CONFIG_CHECK+=" ~BPF_SYSCALL"
+	local options=(
+		BPF DEBUG_INFO_BTF DEBUG_INFO_BTF_MODULES
+		# hidraw: https://docs.kernel.org/hid/hid-bpf.html#tracing
+		HID_BPF HIDRAW BPF_EVENTS TRACING BPF_SYSCALL
+		# tools/testing/selftests/hid/config
+		BPF_JIT BPF_KPROBE_OVERRIDE BPF_LSM
+		BPF_PRELOAD BPF_PRELOAD_UMD BPF_KPROBE_OVERRIDE
+		BPF_STREAM_PARSER CGROUP_BPF DYNAMIC_FTRACE_WITH_DIRECT_CALLS
+		FPROBE FTRACE_SYSCALLS FUNCTION_TRACER HID
+		INPUT_EVDEV UHID LEDS_CLASS_MULTICOLOR
+		USB USB_HID HID_APPLE HID_ITE HID_MULTITOUCH
+		HID_PLAYSTATION PLAYSTATION_FF HID_SONY
+		SONY_FF HID_WACOM
+	)
+
+	local CONFIG_CHECK f
+	for f in "${options[@]}"; do
+		CONFIG_CHECK+=" ~${f}"
+	done
 
 	check_extra_config
 }
