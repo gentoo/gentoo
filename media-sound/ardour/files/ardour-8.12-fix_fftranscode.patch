@@ -1,0 +1,22 @@
+see https://bugs.gentoo.org/966219
+direct call of ffmpeg binaries instead of harvid wrapper
+--- a/libs/ardour/video_tools_paths.cc
++++ b/libs/ardour/video_tools_paths.cc
+@@ -175,7 +175,7 @@ ArdourVideoToolPaths::transcoder_exe (std::string &ffmpeg_exe, std::string &ffpr
+ 	_ffprobe_exe = X_("");
+ 
+ 	std::string ff_file_path;
+-	if (find_file (Searchpath(Glib::getenv("PATH")), X_("ffmpeg_harvid"), ff_file_path)) {
++	if (find_file (Searchpath(Glib::getenv("PATH")), X_("ffmpeg"), ff_file_path)) {
+ 		_ffmpeg_exe = ff_file_path;
+ 	}
+ #ifdef PLATFORM_WINDOWS
+@@ -203,7 +203,7 @@ ArdourVideoToolPaths::transcoder_exe (std::string &ffmpeg_exe, std::string &ffpr
+ 	}
+ #endif
+ 
+-	if (find_file (Searchpath(Glib::getenv("PATH")), X_("ffprobe_harvid"), ff_file_path)) {
++	if (find_file (Searchpath(Glib::getenv("PATH")), X_("ffprobe"), ff_file_path)) {
+ 		_ffprobe_exe = ff_file_path;
+ 	}
+ #ifdef PLATFORM_WINDOWS
