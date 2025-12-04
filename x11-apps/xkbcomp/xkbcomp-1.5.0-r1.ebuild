@@ -17,7 +17,7 @@ BDEPEND="app-alternatives/yacc"
 
 src_configure() {
 	local XORG_CONFIGURE_OPTIONS=(
-		-Dxkb-config-root="${ESYSROOT}/usr/lib/x11/xkb"
+		-Dxkb-config-root="${ESYSROOT}/usr/share/X11/xkb"
 	)
 
 	xorg-meson_src_configure
