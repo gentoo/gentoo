@@ -21,7 +21,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="tcp_wrappers_license"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
-IUSE="ipv6 netgroups selinux"
+IUSE="netgroups selinux"
 
 DEPEND="
 	netgroups? ( net-libs/libnsl:= )
@@ -48,10 +48,7 @@ temake() {
 	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
 
 	append-cppflags "-DHAVE_WEAKSYMS -DHAVE_STRERROR -DSYS_ERRLIST_DEFINED"
-
-	if use ipv6; then
-		append-cppflags "-DINET6=1 -Dss_family=__ss_family -Dss_len=__ss_len"
-	fi
+	append-cppflags "-DINET6=1 -Dss_family=__ss_family -Dss_len=__ss_len"
 
 	local myemakeargs=(
 		REAL_DAEMON_DIR="${EPREFIX}/usr/sbin"
