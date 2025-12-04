@@ -31,7 +31,7 @@ LICENSE="GPL-2"
 SLOT="0/${PV}"
 IUSE="androiddump bcg729 brotli +capinfos +captype ciscodump +dftest doc dpauxmon"
 IUSE+=" +dumpcap +editcap +gui http2 http3 ilbc kerberos lua lz4 maxminddb"
-IUSE+=" +mergecap +minizip +netlink opus +plugins +pcap +randpkt"
+IUSE+=" +mergecap +minizip +netlink opus pkcs11 +plugins +pcap +randpkt"
 IUSE+=" +randpktdump +reordercap sbc selinux +sharkd smi snappy spandsp sshdump ssl"
 IUSE+=" sdjournal test +text2pcap +tshark +udpdump wifi zlib +zstd"
 
@@ -77,7 +77,7 @@ RDEPEND="
 	snappy? ( app-arch/snappy:= )
 	spandsp? ( media-libs/spandsp:= )
 	sshdump? ( >=net-libs/libssh-0.6:= )
-	ssl? ( >=net-libs/gnutls-3.5.8:= )
+	ssl? ( >=net-libs/gnutls-3.5.8:=[pkcs11?] )
 	wifi? ( >=net-libs/libssh-0.6:= )
 	zlib? ( virtual/zlib:= )
 	zstd? ( app-arch/zstd:= )
@@ -118,6 +118,7 @@ fi
 
 PATCHES=(
 	"${FILESDIR}/4.4.6-lto.patch"
+	"${FILESDIR}/4.6.2-gnutls-pkcs11.patch"
 )
 
 python_check_deps() {
@@ -201,6 +202,7 @@ src_configure() {
 		-DENABLE_BROTLI=$(usex brotli)
 		-DENABLE_CAP=$(usex filecaps caps)
 		-DENABLE_GNUTLS=$(usex ssl)
+		-DENABLE_PKCS11=$(usex pkcs11)
 		-DENABLE_ILBC=$(usex ilbc)
 		-DENABLE_KERBEROS=$(usex kerberos)
 		-DENABLE_LUA=$(usex lua)
