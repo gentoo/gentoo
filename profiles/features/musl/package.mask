@@ -48,6 +48,7 @@ kde-misc/krunner-vscodeprojects
 -sys-libs/argp-standalone
 -sys-libs/error-standalone
 -sys-libs/fts-standalone
+-sys-libs/gcompat
 -sys-libs/obstack-standalone
 -sys-libs/queue-standalone
 -sys-libs/rpmatch-standalone
