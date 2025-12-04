@@ -15,5 +15,6 @@
   </upstream>
   <use>
     <flag name="scripts">Install boot scripts into /etc/runit/.</flag>
+    <flag name="system-init">Installed as a provider of virtual/service-manager.</flag>
   </use>
 </pkgmetadata>
