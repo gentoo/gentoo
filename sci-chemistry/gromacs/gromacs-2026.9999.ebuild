@@ -18,7 +18,7 @@ if [[ ${PV} = *9999* ]]; then
 		https://gitlab.com/gromacs/gromacs.git
 		https://github.com/gromacs/gromacs.git
 		"
-	[[ ${PV} = 9999 ]] && EGIT_BRANCH="master" || EGIT_BRANCH="release-${PV:0:4}"
+	[[ ${PV} = 9999 ]] && EGIT_BRANCH="main" || EGIT_BRANCH="release-${PV:0:4}"
 	inherit git-r3
 else
 	SRC_URI="
@@ -26,6 +26,7 @@ else
 		doc? ( https://ftp.gromacs.org/manual/manual-${PV/_/-}.pdf )
 		test? ( https://ftp.gromacs.org/regressiontests/regressiontests-${PV/_/-}.tar.gz )"
 	# since 2022 arm support was dropped (but not arm64)
+	# since 2025 x86-32 support was dropped
 	KEYWORDS="~amd64 -arm ~arm64 ~riscv -x86 ~amd64-linux -x86-linux ~x64-macos"
 fi
 
@@ -39,7 +40,7 @@ HOMEPAGE="https://www.gromacs.org/"
 #        base,    vmd plugins, fftpack from numpy,  blas/lapck from netlib,        memtestG80 library,  mpi_thread lib
 LICENSE="LGPL-2.1 UoI-NCSA !mkl? ( !fftw? ( BSD ) !blas? ( BSD ) !lapack? ( BSD ) ) cuda? ( LGPL-3 ) threads? ( BSD )"
 SLOT="0/${PV}"
-IUSE="blas clang clang-cuda cuda  +custom-cflags +doc build-manual double-precision +fftw +gmxapi +gmxapi-legacy +hwloc lapack mkl mpi +offensive opencl openmp +python +single-precision test +threads +tng ${ACCE_IUSE}"
+IUSE="blas clang clang-cuda cuda  +custom-cflags +doc build-manual double-precision +fftw +gmxapi +gmxapi-legacy hdf5 +hwloc lapack mkl mpi nnpot +offensive opencl openmp +python +single-precision test +threads +tng ${ACCE_IUSE}"
 
 CDEPEND="
 	blas? ( virtual/blas )
@@ -50,10 +51,12 @@ CDEPEND="
 		llvm-runtimes/clang-runtime[openmp]
 	)
 	fftw? ( sci-libs/fftw:3.0= )
+	hdf5? ( sci-libs/hdf5 )
 	hwloc? ( sys-apps/hwloc:= )
 	lapack? ( virtual/lapack )
 	mkl? ( sci-libs/mkl )
 	mpi? ( virtual/mpi[cxx] )
+	nnpot? ( sci-ml/caffe2[cuda=,opencl=] )
 	sci-libs/lmfit:=
 	>=dev-cpp/muParser-2.3:=
 	${PYTHON_DEPS}
@@ -61,6 +64,13 @@ CDEPEND="
 BDEPEND="${CDEPEND}
 	virtual/pkgconfig
 	clang? ( >=llvm-core/clang-6:* )
+	$(python_gen_cond_dep '
+			dev-python/sphinx[${PYTHON_USEDEP}]
+			dev-python/sphinx-copybutton[${PYTHON_USEDEP}]
+			dev-python/sphinx-inline-tabs[${PYTHON_USEDEP}]
+			dev-python/sphinx-argparse[${PYTHON_USEDEP}]
+			dev-python/sphinxcontrib-autoprogram[${PYTHON_USEDEP}]
+		')
 	build-manual? (
 		app-text/doxygen
 		$(python_gen_cond_dep '
@@ -182,6 +192,11 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs_pre=( ) extra fft_opts=( )
 	local acce="AUTO"
+	local nnpot="OFF"
+
+	if use nnpot; then
+		nnpot="TORCH"
+	fi
 
 	if use custom-cflags; then
 		#go from slowest to fastest acceleration
@@ -229,9 +244,12 @@ src_configure() {
 		-DGMX_COOL_QUOTES=$(usex offensive)
 		-DGMX_USE_TNG=$(usex tng)
 		-DGMX_BUILD_MANUAL=$(usex build-manual)
+		-DGMX_USE_HDF5=$(usex hdf5)
 		-DGMX_HWLOC=$(usex hwloc)
 		-DGMX_DEFAULT_SUFFIX=off
+		-DGMX_BUILD_HELP=$(usex doc)
 		-DGMX_SIMD="$acce"
+		-DGMX_NNPOT="$nnpot"
 		-DGMX_VMD_PLUGIN_PATH="${EPREFIX}/usr/$(get_libdir)/vmd/plugins/*/molfile/"
 		-DBUILD_TESTING=$(usex test)
 		-DGMX_BUILD_UNITTESTS=$(usex test)
@@ -274,6 +292,8 @@ src_compile() {
 		einfo "Compiling for ${x} precision"
 		BUILD_DIR="${WORKDIR}/${P}_${x}"\
 			cmake_src_compile
+		BUILD_DIR="${WORKDIR}/${P}_${x}"\
+			cmake_src_compile man
 		if use python; then
 			BUILD_DIR="${WORKDIR}/${P}_${x}"\
 				cmake_src_compile	python_packaging/all
