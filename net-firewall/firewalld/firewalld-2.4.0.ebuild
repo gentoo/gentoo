@@ -54,7 +54,7 @@ QA_AM_MAINTAINER_MODE=".*--run autom4te --language=autotest.*"
 PLOCALES="ar as ast bg bn_IN ca cs da de el en_GB en_US es et eu fa fi fr gl gu hi hr hu ia id it ja ka kn ko lt ml mr nl or pa pl pt pt_BR ro ru si sk sl sq sr sr@latin sv ta te tr uk zh_CN zh_TW"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.4.0-systemd-service.patch
+	"${FILESDIR}"/${PN}-2.3.2-systemd-service.patch
 )
 
 pkg_setup() {
