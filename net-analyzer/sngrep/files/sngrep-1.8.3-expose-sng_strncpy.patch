@@ -1,0 +1,46 @@
+From b84f0663e47de6f238d9f81eed67612a9ab616ef Mon Sep 17 00:00:00 2001
+From: Victor Seva <linuxmaniac@torreviejawireless.org>
+Date: Thu, 16 Oct 2025 23:33:06 +0200
+Subject: [PATCH] util: expose sng_strncpy() definition
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* introduced at df59a5a3d0723c674f7ae53e10376a4ca23742d3
+  generates build errors:
+
+> gcc -DHAVE_CONFIG_H -I.   -Wdate-time -D_FORTIFY_SOURCE=2 -I/usr/include/p11-kit-1      -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -g -O2 -Werror=implicit-function-declaration -ffile-prefix-map=/build/reproducible-path/sngrep-1.8.3=. -fstack-protector-strong -fstack-clash-protection -Wformat -Werror=format-security -fcf-protection  -c -o sngrep-address.o `test -f 'address.c' || echo './'`address.c
+> address.c: In function ‘address_from_str’:
+> address.c:115:5: error: implicit declaration of function ‘sng_strncpy’; did you mean ‘strncpy’? [-Wimplicit-function-declaration]
+>   115 |     sng_strncpy(scanipport, ipport, sizeof(scanipport));
+>       |     ^~~~~~~~~~~
+>       |     strncpy
+> make[3]: *** [Makefile:628: sngrep-address.o] Error 1
+> make[3]: *** Waiting for unfinished jobs....
+> capture_eep.c: In function ‘capture_eep_set_server_url’:
+> capture_eep.c:910:5: error: implicit declaration of function ‘sng_strncpy’; did you mean ‘strncpy’? [-Wimplicit-function-declaration]
+>   910 |     sng_strncpy(urlstr, url, sizeof(urlstr));
+>       |     ^~~~~~~~~~~
+>       |     strncpy
+> make[3]: *** [Makefile:586: sngrep-capture_eep.o] Error 1
+---
+ src/util.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/util.h b/src/util.h
+index 0b1f4a55..c1b6f16a 100644
+--- a/src/util.h
++++ b/src/util.h
+@@ -57,6 +57,12 @@ sng_free(void *ptr);
+ char *
+ sng_basename(const char *name);
+ 
++/*
++ * @brief Wrapper for strncpy
++ */
++char *
++sng_strncpy(char *dst, const char *src, size_t len);
++
+ /**
+  * @brief Compare two timeval structures
+  *
