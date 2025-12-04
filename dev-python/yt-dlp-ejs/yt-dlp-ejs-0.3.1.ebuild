@@ -32,6 +32,6 @@ src_prepare() {
 	# drop deno/npm calls and use pre-generated .js instead, this
 	# both prevents network use and ensures no hash mismatch given
 	# yt-dlp checks the sha512sum of the .js files
-	sed -i '/wheel.hooks.custom/d' pyproject.toml || die
+	sed -i '/wheel.hooks.custom/,/^$/d' pyproject.toml || die
 	mv ../yt_dlp_ejs/yt/solver/*.js yt_dlp_ejs/yt/solver/ || die
 }
