@@ -52,6 +52,7 @@
 		<flag name="minizip">Build with zip file compression support</flag>
 		<flag name="netlink">Use <pkg>dev-libs/libnl</pkg></flag>
 		<flag name="pcap">Use <pkg>net-libs/libpcap</pkg> for network packet capturing (build dumpcap, rawshark)</flag>
+		<flag name="pkcs11">Add support for PKCS in <pkg>net-libs/gnutls</pkg></flag>
 		<flag name="plugins">Install plugins</flag>
 		<flag name="randpkt">Install randpkt, a utility for creating pcap trace files full of random packets</flag>
 		<flag name="randpktdump">Install randpktdump, an extcap interface to provide access to the random packet generator (randpkt)</flag>
