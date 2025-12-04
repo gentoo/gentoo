@@ -232,6 +232,7 @@ pkg_setup() {
 
 src_unpack() {
 	default
+	go-module_src_unpack
 	cd "${S}"
 	[[ -f go.mod ]] || ln -s vendor.mod go.mod || die
 	[[ -f go.sum ]] || ln -s vendor.sum go.sum || die
