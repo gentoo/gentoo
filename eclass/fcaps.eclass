@@ -87,9 +87,8 @@ esac
 # The caps mode is used to set the permission on the file if capabilities
 # were properly set on the file.  No change is applied by default.
 #
-# If the system is unable to set capabilities, it will use the specified user,
-# group, and mode.  The user and group default to 0.  If mode is unspecified, no
-# change is applied.
+# If capabilities are not sucessfully applied, the permissions on the file are
+# updated according to the owner, group, and mode options, if provided.
 #
 # For example, "-m u+s" may be used to enable suid as a fallback when file caps
 # are unavailable.  This should be used with care, typically when the
@@ -103,8 +102,8 @@ fcaps() {
 	fi
 
 	# Process the user options first.
-	local owner='0'
-	local group='0'
+	local owner=
+	local group=
 	local mode=
 	local caps_mode=
 
@@ -183,12 +182,12 @@ fcaps() {
 			fi
 		fi
 
-		# If we're still here, setcaps failed.
+		# If we're still here, setcaps failed or filecaps are disabled.
+		if [[ -n ${owner} || -n ${group} ]]; then
+			debug-print "${FUNCNAME}: setting owner on '${file}'"
+			chown "${owner}${group:+:}${group}" "${file}" || die
+		fi
 		if [[ -n ${mode} ]]; then
-			if [[ -n ${owner} || -n ${group} ]]; then
-				debug-print "${FUNCNAME}: setting owner on '${file}'"
-				chown "${owner}:${group}" "${file}" || die
-			fi
 			debug-print "${FUNCNAME}: setting mode on '${file}'"
 			chmod ${mode} "${file}" || die
 		fi
