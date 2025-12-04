@@ -111,6 +111,15 @@ BDEPEND="
 	app-arch/unzip
 	dev-qt/qttools:6[linguist]"
 
+PATCHES=( "${FILESDIR}"/librepcb-1.3.0-cmake-minimum-required.patch )
+
+src_prepare() {
+	# remove unbundled
+	rm -r libs/muparser || die
+	rm -r libs/googletest || die
+	cmake_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DQT_MAJOR_VERSION=6
