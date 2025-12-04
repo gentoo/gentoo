@@ -40,14 +40,16 @@ src_prepare() {
 	elisp_src_prepare
 
 	# Remove failing tests.
-	rm ./testing/lisp/test-{ob,ob-exp,ob-tangle,ob-shell,org-clock}.el \
+	rm ./testing/lisp/test-{ob{,-exp,-tangle,-shell},org{,-clock}}.el \
 		|| die "failed to remove some test files"
 }
 
 src_configure() {
 	elisp_src_configure
 
-	use doc && DOCS+=( doc/org.pdf doc/orgcard.pdf doc/orgguide.pdf )
+	if use doc ; then
+		DOCS+=( doc/org.pdf doc/orgcard.pdf doc/orgguide.pdf )
+	fi
 
 	EMAKEARGS=(
 		ORGVERSION="${PV}"
