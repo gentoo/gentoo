@@ -190,7 +190,6 @@ get_distribution_components() {
 			libclang-python-bindings
 
 			# tools
-			c-index-test
 			clang
 			clang-format
 			clang-installapi
