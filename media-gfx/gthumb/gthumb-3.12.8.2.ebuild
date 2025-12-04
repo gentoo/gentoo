@@ -2,24 +2,22 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{11..13} )
-inherit gnome.org gnome2-utils meson python-any-r1 xdg
+PYTHON_COMPAT=( python3_{11..14} )
+inherit flag-o-matic gnome.org gnome2-utils meson python-any-r1 xdg
 
 DESCRIPTION="Image viewer and browser for Gnome"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/gthumb/"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
-IUSE="cdr colord exif keyring gstreamer heif jpegxl lcms raw slideshow svg tiff webkit webp"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+IUSE="cdr colord geolocation gstreamer heif jpegxl lcms raw slideshow svg tiff webp X"
 
-# libX11 dep is a workaround. See files/3.12.2-link-with-x11.patch
 RDEPEND="
-	x11-libs/libX11
-
 	>=dev-libs/glib-2.54.0:2
-	>=x11-libs/gtk+-3.16.0:3
-	exif? ( >=media-gfx/exiv2-0.21:= )
+	>=x11-libs/gtk+-3.16.0:3[X?]
+	X? ( x11-libs/libX11 )
+	>=media-gfx/exiv2-0.21:=
 	slideshow? (
 		>=media-libs/clutter-1.12.0:1.0
 		>=media-libs/clutter-gtk-1:1.0
@@ -32,13 +30,8 @@ RDEPEND="
 	raw? (
 		>=media-libs/libraw-0.14:=
 	)
-	webkit? (
-		>=net-libs/libsoup-2.42.0:2.4
-		>=dev-libs/json-glib-0.15.0
-		>=net-libs/webkit-gtk-1.10.0:4
-	)
-	keyring? ( >=app-crypt/libsecret-0.11 )
 	cdr? ( >=app-cdr/brasero-3.2.0 )
+	geolocation? ( media-libs/libchamplain:0.12[gtk] )
 	svg? ( >=gnome-base/librsvg-2.34:2 )
 	webp? ( >=media-libs/libwebp-0.2.0:= )
 	jpegxl? ( >=media-libs/libjxl-0.3.0:= )
@@ -68,12 +61,13 @@ BDEPEND="
 "
 
 src_configure() {
+	use X || append-cflags -DGENTOO_GTK_HIDE_X11
+
 	local emesonargs=(
 		-Drun-in-place=false
-		$(meson_use exif exiv2)
 		$(meson_use slideshow clutter)
 		$(meson_use gstreamer)
-		-Dlibchamplain=false # Upstream still doesn't seem to consider this ready
+		$(meson_use geolocation libchamplain)
 		$(meson_use colord)
 		$(meson_use tiff libtiff)
 		$(meson_use webp libwebp)
@@ -81,8 +75,6 @@ src_configure() {
 		$(meson_use heif libheif)
 		$(meson_use raw libraw)
 		$(meson_use svg librsvg)
-		$(meson_use keyring libsecret)
-		$(meson_use webkit webservices)
 		$(meson_use cdr libbrasero)
 	)
 
