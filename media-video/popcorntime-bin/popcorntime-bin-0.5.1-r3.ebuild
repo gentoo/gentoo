@@ -25,7 +25,7 @@ KEYWORDS="-* ~amd64 ~x86"
 RESTRICT="bindist mirror"
 
 RDEPEND="
-	~dev-libs/nwjs-0.86.0
+	~dev-libs/nwjs-0.86.0[sdk(-)]
 "
 
 QA_PREBUILT="opt/Popcorn-Time/*"
@@ -58,12 +58,15 @@ src_install() {
 	pushd "opt/Popcorn-Time" || die
 
 	nwjs_files=(
+		chromedriver
 		chrome_crashpad_handler
 		icudtl.dat
 		lib
+		minidump_stackwalk
 		nw
 		nw_100_percent.pak
 		nw_200_percent.pak
+		nwjc
 		resources.pak
 		v8_context_snapshot.bin
 	)
@@ -73,7 +76,7 @@ src_install() {
 	done
 
 	exeinto "${DESTDIR}"
-	doexe Popcorn-Time nwjc minidump_stackwalk chromedriver
+	doexe Popcorn-Time
 
 	insinto "${DESTDIR}"
 	doins package.json git.json
