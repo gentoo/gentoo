@@ -189,8 +189,7 @@ src_configure() {
 }
 
 src_compile() {
-	export NINJA_ARGS=" $(get_NINJAOPTS)"
-	emake -Onone
+	eninja -C out/Release
 }
 
 src_install() {
