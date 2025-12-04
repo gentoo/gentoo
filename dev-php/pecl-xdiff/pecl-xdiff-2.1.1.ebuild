@@ -7,7 +7,7 @@ PHP_EXT_NAME="xdiff"
 PHP_EXT_PECL_PKG="xdiff"
 DOCS=( README.API )
 
-USE_PHP="php8-2 php8-3 php8-4"
+USE_PHP="php8-2 php8-3 php8-4 php8-5"
 
 inherit php-ext-pecl-r3
 
