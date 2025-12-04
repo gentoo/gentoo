@@ -85,6 +85,7 @@ PDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.13.1-delivered_hdr.patch
 	"${FILESDIR}"/${PN}-8.16.1-build-system.patch
+	"${FILESDIR}"/${PN}-8.18.1-tcpwrappers.patch
 )
 
 src_prepare() {
