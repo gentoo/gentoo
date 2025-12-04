@@ -64,19 +64,23 @@ CHROMIUM_LANGS="
 
 inherit chromium-2
 
-MY_P="${PN}-v${PV}"
 DESCRIPTION="Framework that lets you call all Node.js modules directly from the DOM"
 HOMEPAGE="https://nwjs.io"
 SRC_URI="
-	amd64? ( https://dl.nwjs.io/v${PV}/${MY_P}-linux-x64.tar.gz )
-	x86? ( https://dl.nwjs.io/v${PV}/${MY_P}-linux-ia32.tar.gz )
+	sdk? (
+		amd64? ( https://dl.nwjs.io/v${PV}/${PN}-sdk-v${PV}-linux-x64.tar.gz )
+		x86? ( https://dl.nwjs.io/v${PV}/${PN}-sdk-v${PV}-linux-ia32.tar.gz )
+	)
+	!sdk? (
+		amd64? ( https://dl.nwjs.io/v${PV}/${PN}-v${PV}-linux-x64.tar.gz )
+		x86? ( https://dl.nwjs.io/v${PV}/${PN}-v${PV}-linux-ia32.tar.gz )
+	)
 "
-S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="ffmpeg-chromium"
+IUSE="ffmpeg-chromium sdk"
 
 RDEPEND="
 	app-accessibility/at-spi2-core:2
@@ -114,9 +118,9 @@ QA_PREBUILT="${DIR#/}/*"
 src_unpack() {
 	default
 	if use amd64; then
-		mv "${WORKDIR}/${MY_P}-linux-x64" "${WORKDIR}/${MY_P}" || die
+		mv "${WORKDIR}/${PN}-$(usev sdk "sdk-")v${PV}-linux-x64" "${S}" || die
 	elif use x86; then
-		mv "${WORKDIR}/${MY_P}-linux-ia32" "${WORKDIR}/${MY_P}" || die
+		mv "${WORKDIR}/${PN}-$(usev sdk "sdk-")v${PV}-linux-ia32" "${S}" || die
 	else
 		die "Unsupported architecture"
 	fi
@@ -140,6 +144,7 @@ src_install() {
 
 	exeinto "${DIR}"
 	doexe chrome_crashpad_handler nw
+	use sdk && doexe chromedriver minidump_stackwalk nwjc
 
 	insinto "${DIR}"/lib
 	doins lib/*.json
