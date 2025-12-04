@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ inherit java-pkg-2 java-pkg-simple
 DESCRIPTION="Jaxen is a universal XPath engine for Java"
 HOMEPAGE="http://www.cafeconleche.org/jaxen/"
 SRC_URI="https://github.com/${PN}-xpath/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${P}"
+S="${WORKDIR}/${P}/core"
 
 LICENSE="BSD-2"
 SLOT="1.2"
@@ -23,7 +23,7 @@ IUSE="dom4j jdom xom"
 REQUIRED_USE="test? ( dom4j jdom xom )"
 
 CDEPEND="
-	dom4j? ( dev-java/dom4j:1 )
+	dom4j? ( >=dev-java/dom4j-2.2.0:0 )
 	jdom? ( dev-java/jdom:0 )
 	xom? ( dev-java/xom:0 )
 "
@@ -39,16 +39,16 @@ RDEPEND="
 "
 
 JAVA_AUTOMATIC_MODULE_NAME="org.jaxen"
-JAVA_SRC_DIR="core/src/java/main"
+JAVA_SRC_DIR="src/java/main"
 
 JAVA_TEST_GENTOO_CLASSPATH="junit"
-JAVA_TEST_SRC_DIR="core/src/java/test"
+JAVA_TEST_SRC_DIR="src/java/test"
 
 src_prepare() {
 	java-pkg-2_src_prepare
 
 	if use dom4j; then
-		JAVA_GENTOO_CLASSPATH+=" dom4j-1"
+		JAVA_GENTOO_CLASSPATH+=" dom4j"
 	else
 		rm -rv "${JAVA_SRC_DIR}"/org/jaxen/dom4j || die
 	fi
