@@ -6,7 +6,7 @@ EAPI=8
 # ninja does not work due to fortran
 CMAKE_MAKEFILE_GENERATOR=emake
 FORTRAN_NEEDED="fortran"
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit cmake cuda flag-o-matic fortran-2 python-single-r1 toolchain-funcs
 
@@ -14,10 +14,9 @@ DESCRIPTION="C++ data analysis framework and interpreter from CERN"
 HOMEPAGE="https://root.cern"
 LICENSE="LGPL-2.1 freedist MSttfEULA LGPL-3 libpng UoI-NCSA"
 
-IUSE="+X aqua +asimage cuda cudnn +davix debug +examples fits fftw fortran
-	+gdml graphviz +gsl +http jupyter libcxx +minuit mpi mysql odbc +opengl
-	postgres pythia8 +python qt6 R +roofit +root7 shadow sqlite +ssl
-	+tbb test +tmva +unuran uring vc +xml xrootd"
+IUSE="+X aqua cuda cudnn davix debug +examples fits fftw fortran +gdml graphviz
+	+gsl +http jupyter libcxx +minuit mpi +opengl pythia8 +python qt6 R +roofit
+	+root7 shadow sqlite +ssl +tbb test +tmva +unuran uring vc +xml xrootd"
 
 if [[ ${PV} =~ "9999" ]] ; then
 	inherit git-r3
@@ -40,7 +39,7 @@ PROPERTIES="test_network"
 REQUIRED_USE="
 	cuda? ( tmva )
 	cudnn? ( cuda )
-	!X? ( !asimage !opengl !qt6 )
+	!X? ( !opengl !qt6 )
 	davix? ( ssl xml )
 	jupyter? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -92,14 +91,6 @@ CDEPEND="
 	libcxx? ( llvm-runtimes/libcxx )
 	unuran? ( sci-mathematics/unuran:0= )
 	mpi? ( virtual/mpi[fortran?] )
-	mysql? ( dev-db/mysql-connector-c )
-	odbc? (
-		|| (
-			dev-db/libiodbc
-			dev-db/unixODBC
-		)
-	)
-	postgres? ( dev-db/postgresql:= )
 	pythia8? ( sci-physics/pythia:8 )
 	python? ( ${PYTHON_DEPS} )
 	R? ( dev-lang/R )
@@ -235,13 +226,12 @@ src_configure() {
 		-Dbuiltin_zlib=OFF
 		-Dbuiltin_zstd=OFF
 		-Darrow=OFF
-		-Dasimage=$(usex asimage)
+		-Dasimage=ON
 		-Dcefweb=OFF
 		-Dclad=OFF
 		-Dcocoa=$(usex aqua)
 		-Dcuda=$(usex cuda)
 		-Dcudnn=$(usex cudnn)
-		-Dcxxmodules=OFF # requires clang, unstable
 		-Ddaos=OFF # not in gentoo
 		-Ddataframe=ON
 		-Ddavix=$(usex davix)
@@ -259,13 +249,9 @@ src_configure() {
 		-Dminuit=$(usex minuit)
 		-Dmlp=$(usex tmva)
 		-Dmpi=$(usex mpi)
-		-Dmysql=$(usex mysql)
-		-Dodbc=$(usex odbc)
 		-Dopengl=$(usex opengl)
-		-Dpgsql=$(usex postgres)
 		-Dpyroot=$(usex python) # python was renamed to pyroot
 		-Dpythia8=$(usex pythia8)
-		-Dqt5web=OFF # $(usex qt5)
 		-Dqt6web=$(usex qt6)
 		-Dr=$(usex R)
 		-Droofit=$(usex roofit)
@@ -273,7 +259,7 @@ src_configure() {
 		-Droofit_hs3_ryml=OFF
 		-Droot7=$(usex root7)
 		-Drootbench=OFF
-		-Droottest=OFF
+		-Droottest=$(usex test)
 		-Drpath=OFF
 		-Druntime_cxxmodules=ON
 		-Dshadowpw=$(usex shadow)
@@ -302,7 +288,7 @@ src_configure() {
 	)
 
 	# Needs to be here, otherwise gets overriden by cmake.eclass
-	DCMAKE_BUILD_TYPE=$(usex debug RelWithDebInfo Release) cmake_src_configure
+	CMAKE_BUILD_TYPE=$(usex debug RelWithDebInfo Release) cmake_src_configure
 }
 
 src_install() {
