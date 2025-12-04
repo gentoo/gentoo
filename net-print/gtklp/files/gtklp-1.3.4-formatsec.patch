@@ -1,0 +1,38 @@
+https://sources.debian.org/src/gtklp/1.3.4-4/debian/patches/0005-fix-format-security.patch
+
+From: Boyuan Yang <byang@debian.org>
+Date: Sun, 23 Jan 2022 16:19:15 -0500
+Subject: fix format-security
+
+---
+ libgtklp/libgtklp.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/libgtklp/libgtklp.c b/libgtklp/libgtklp.c
+index f380a9c..cf4ad06 100644
+--- a/libgtklp/libgtklp.c
++++ b/libgtklp/libgtklp.c
+@@ -939,9 +939,9 @@ void exitOnError(char *gerror1, char *gerror2, int exitcode)
+ 		gtk_widget_show(pixmapwid);
+ 
+ 		if (strlen(gerror2) == 0)
+-			snprintf(tmplabel, (size_t) MAXLINE, gerror1);
++			snprintf(tmplabel, (size_t) MAXLINE, "%s", gerror1);
+ 		else
+-			snprintf(tmplabel, (size_t) MAXLINE, gerror1, gerror2);
++			snprintf(tmplabel, (size_t) MAXLINE, "%s\n%s", gerror1, gerror2);
+ 		label = gtk_label_new(tmplabel);
+ 		gtk_box_pack_end(GTK_BOX(hbox), label, FALSE, FALSE,
+ 				 FRAME_SPACING_V);
+@@ -973,9 +973,9 @@ void exitOnError(char *gerror1, char *gerror2, int exitcode)
+ #endif
+ 	} else {
+ 		if (strlen(gerror2) == 0)
+-			g_warning(gerror1);
++			g_warning("%s", gerror1);
+ 		else
+-			g_warning(gerror1, gerror2);
++			g_warning("%s\n%s", gerror1, gerror2);
+ 	}
+ 	exit(exitcode);
+ }

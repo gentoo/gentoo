@@ -1,18 +1,20 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools desktop flag-o-matic xdg
 
 DESCRIPTION="A GUI for cupsd"
 HOMEPAGE="https://gtklp.sirtobi.com/"
-SRC_URI="https://downloads.sourceforge.net/gtklp/${P}.src.tar.gz
-	https://downloads.sourceforge.net/gtklp/logo.xpm.gz -> gtklp-logo.xpm.gz"
+SRC_URI="
+	https://downloads.sourceforge.net/project/${PN}/${PN}/${PV}/${P}.src.tar.gz
+	https://downloads.sourceforge.net/project/${PN}/enhancements/icons/logo.xpm.gz -> ${PN}-logo.xpm.gz
+"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ~sparc x86"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="nls ssl"
 
 RDEPEND="
@@ -45,7 +47,7 @@ src_install() {
 	default
 
 	dodoc USAGE
-	doicon "${WORKDIR}"/gtklp-logo.xpm
-	make_desktop_entry 'gtklp -i' "Print files via CUPS" gtklp-logo 'System;HardwareSettings;Settings;Printing'
-	make_desktop_entry gtklpq "CUPS queue manager" gtklp-logo 'System;HardwareSettings;Settings;Printing'
+	doicon "${WORKDIR}"/"${PN}"-logo.xpm
+	make_desktop_entry 'gtklp -i' "${PN} -- Print files via CUPS" "${PN}"-logo 'System;HardwareSettings;Settings;Printing'
+	make_desktop_entry "${PN}"q "${PN}q -- CUPS queue manager" "${PN}"-logo 'System;HardwareSettings;Settings;Printing'
 }
