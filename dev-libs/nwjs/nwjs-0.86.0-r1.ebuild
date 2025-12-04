@@ -3,7 +3,7 @@
 
 EAPI=8
 
-CHROMIUM_VERSION="143"
+#CHROMIUM_VERSION="123"
 CHROMIUM_LANGS="
 	af
 	am
@@ -76,7 +76,6 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="ffmpeg-chromium"
 
 RDEPEND="
 	app-accessibility/at-spi2-core:2
@@ -104,8 +103,7 @@ RDEPEND="
 	virtual/libudev
 	|| ( gui-libs/gtk:4 x11-libs/gtk+:3 )
 	!<games-rpg/crosscode-1.4.2.2-r1
-	!ffmpeg-chromium? ( >=media-video/ffmpeg-7.1:0/59.61.61[chromium] )
-	ffmpeg-chromium? ( media-video/ffmpeg-chromium:${CHROMIUM_VERSION} )
+	<media-video/ffmpeg-7:0/58.60.60[chromium]
 "
 
 DIR="/opt/${PN}"
@@ -147,7 +145,7 @@ src_install() {
 	exeinto "${DIR}"/lib
 	doexe lib/*.so*
 
-	dosym ../../../usr/$(get_libdir)/chromium/libffmpeg.so$(usex ffmpeg-chromium .${CHROMIUM_VERSION} "") \
+	dosym ../../../usr/$(get_libdir)/chromium/libffmpeg.so \
 		"${DIR}"/lib/libffmpeg.so
 
 	dosym ../.."${DIR}"/nw /usr/bin/${PN}
