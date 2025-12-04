@@ -148,6 +148,11 @@ PATCHES=(
 	# demand from developers. It's opt-in (needs a config option)
 	# and the documentation mentions that it is a Gentoo addition.
 	"${FILESDIR}"/${PN}-2.50.0-diff-implement-config.diff.renames-copies-harder.patch
+
+	# Backports for cross
+	"${FILESDIR}"/0001-meson-ignore-subprojects-.wraplock.patch
+	"${FILESDIR}"/0002-meson-only-detect-ICONV_OMITS_BOM-if-possible.patch
+	"${FILESDIR}"/0003-meson-use-is_cross_build-where-possible.patch
 )
 
 pkg_setup() {

@@ -153,6 +153,11 @@ PATCHES=(
 
 	"${FILESDIR}"/${PN}-2.52.0-0001-rust-don-t-pass-quiet-to-cargo.patch
 	"${FILESDIR}"/${PN}-2.52.0-0002-rust-respect-CARGO-environment-variable.patch
+
+	# Backports for cross
+	"${FILESDIR}"/0001-meson-ignore-subprojects-.wraplock.patch
+	"${FILESDIR}"/0002-meson-only-detect-ICONV_OMITS_BOM-if-possible.patch
+	"${FILESDIR}"/0003-meson-use-is_cross_build-where-possible.patch
 )
 
 pkg_setup() {
