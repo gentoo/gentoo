@@ -483,6 +483,7 @@ dev-qt/qtdatavis3d:5
 dev-qt/qtgamepad:5
 dev-qt/qtlocation:5
 dev-qt/qtnetworkauth:5
+dev-qt/qtpositioning:5
 dev-qt/qtquicktimeline:5
 dev-qt/qtsensors:5
 dev-qt/qtserialbus:5
