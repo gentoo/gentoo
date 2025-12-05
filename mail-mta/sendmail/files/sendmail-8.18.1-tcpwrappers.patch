@@ -1,0 +1,13 @@
+https://narkive.com/5o9wtufe.5
+
+--- a/sendmail/conf.c
++++ b/sendmail/conf.c
+@@ -4075,7 +4075,7 @@
+ #if TCPWRAPPERS
+ 	char *host;
+ 	char *addr;
+-	extern int hosts_ctl();
++	extern int hosts_ctl __P((char *, char *, char *, char*));
+ #endif /* TCPWRAPPERS */
+ 
+ 	if (tTd(48, 3))

@@ -5,21 +5,32 @@ EAPI=8
 
 # Note: please bump this together with mail-filter/libmilter and app-shells/smrsh
 
-inherit systemd toolchain-funcs
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/sendmail.asc"
+inherit systemd toolchain-funcs verify-sig
 
 DESCRIPTION="Widely-used Mail Transport Agent (MTA)"
 HOMEPAGE="https://www.sendmail.org/"
 if [[ -n $(ver_cut 4) ]] ; then
 	# Snapshots have an extra version component (e.g. 8.17.1 vs 8.17.1.9)
-	SRC_URI="https://ftp.sendmail.org/snapshots/${PN}.${PV}.tar.gz"
+	SRC_URI="
+		https://ftp.sendmail.org/snapshots/${PN}.${PV}.tar.gz
+		verify-sig? ( https://ftp.sendmail.org/snapshots/${PN}.${PV}.tar.gz.sig )
+	"
 fi
-SRC_URI+=" https://ftp.sendmail.org/${PN}.${PV}.tar.gz"
-SRC_URI+=" https://ftp.sendmail.org/past-releases/${PN}.${PV}.tar.gz"
+
+SRC_URI+="
+	https://ftp.sendmail.org/${PN}.${PV}.tar.gz
+	verify-sig? ( https://ftp.sendmail.org/${PN}.${PV}.tar.gz.sig )
+"
+SRC_URI+="
+	https://ftp.sendmail.org/past-releases/${PN}.${PV}.tar.gz
+	verify-sig? ( https://ftp.sendmail.org/past-releases/${PN}.${PV}.tar.gz.sig )
+"
 
 LICENSE="Sendmail GPL-2" # GPL-2 is here for initscript
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="+berkdb eai fips ipv6 ldap mbox nis sasl selinux sockets ssl tinycdb tcpd"
+IUSE="+berkdb eai fips ldap mbox nis sasl selinux ssl tcpd tinycdb"
 REQUIRED_USE="
 	|| ( berkdb tinycdb )
 	fips? ( ssl )
@@ -36,7 +47,7 @@ DEPEND="
 	nis? ( net-libs/libnsl:= )
 	sasl? ( >=dev-libs/cyrus-sasl-2.1.10 )
 	ssl? (
-		dev-libs/openssl:=
+		>=dev-libs/openssl-1.1.1:=
 		fips? ( >=dev-libs/openssl-3:=[fips] )
 	)
 	tcpd? ( sys-apps/tcp-wrappers )
@@ -61,6 +72,7 @@ RDEPEND="
 BDEPEND="
 	sys-devel/m4
 	virtual/pkgconfig
+	verify-sig? ( ~sec-keys/openpgp-keys-sendmail-20250220 )
 "
 PDEPEND="
 	!mbox? (
@@ -70,11 +82,14 @@ PDEPEND="
 		)
 	)
 "
+PATCHES=(
+	"${FILESDIR}"/${PN}-8.13.1-delivered_hdr.patch
+	"${FILESDIR}"/${PN}-8.16.1-build-system.patch
+	"${FILESDIR}"/${PN}-8.18.1-tcpwrappers.patch
+)
 
 src_prepare() {
-	eapply "${FILESDIR}"/${PN}-8.16.1-build-system.patch
-	eapply -p0 "${FILESDIR}"/${PN}-delivered_hdr.patch
-	eapply_user
+	default
 
 	local confCCOPTS="${CFLAGS}"
 	local confENVDEF="-DMAXDAEMONS=64 -DHAS_GETHOSTBYNAME2=1"
@@ -82,6 +97,9 @@ src_prepare() {
 	local confLIBS=
 	local confMAPDEF="-DMAP_REGEX"
 	local conf_sendmail_LIBS=
+
+	# Always enable ipv6 and sockets
+	confENVDEF+=" -DNETINET6 -DSOCKETMAP"
 
 	if use berkdb; then
 		# See bug #808954 for FLOCK
@@ -102,6 +120,8 @@ src_prepare() {
 		confMAPDEF+=" -DLDAPMAP"
 		confLIBS+=" -lldap -llber"
 	fi
+
+	use nis && confENVDEF+=" -DNIS"
 
 	if use sasl; then
 		confCCOPTS+=" $($(tc-getPKG_CONFIG) --cflags libsasl2)"
@@ -137,13 +157,8 @@ src_prepare() {
 		confMAPDEF+=" -UCDB"
 	fi
 
-	use ipv6 && confENVDEF+=" -DNETINET6"
-	use nis && confENVDEF+=" -DNIS"
-	use sockets && confENVDEF+=" -DSOCKETMAP"
-
 	if use elibc_musl; then
-		confENVDEF+=" -DHASSTRERROR -DHASRRESVPORT=0"
-		use ipv6 && confENVDEF+=" -DNEEDSGETIPNODE"
+		confENVDEF+=" -DHASSTRERROR -DHASRRESVPORT=0 -DNEEDSGETIPNODE"
 
 		eapply "${FILESDIR}"/${PN}-musl-stack-size.patch
 		eapply "${FILESDIR}"/${PN}-musl-disable-cdefs.patch

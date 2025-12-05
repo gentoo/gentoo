@@ -85,6 +85,7 @@ PDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.13.1-delivered_hdr.patch
 	"${FILESDIR}"/${PN}-8.16.1-build-system.patch
+	"${FILESDIR}"/${PN}-8.18.1-tcpwrappers.patch
 )
 
 src_prepare() {
@@ -99,6 +100,9 @@ src_prepare() {
 
 	# Always enable ipv6 and sockets
 	confENVDEF+=" -DNETINET6 -DSOCKETMAP"
+
+	# Enable experimental features
+	confENVDEV+=" -D_FFR_SAMEDOMAIN -D_FFR_MF_ONEDOMAIN"
 
 	if use berkdb; then
 		# See bug #808954 for FLOCK
@@ -210,7 +214,7 @@ src_install() {
 	fowners smmsp:smmsp /var/spool/clientmqueue
 	fperms 770 /var/spool/clientmqueue
 	fperms 700 /var/spool/mqueue
-	dodoc FAQ KNOWNBUGS README RELEASE_NOTES doc/op/op.ps
+	dodoc FAQ KNOWNBUGS README RELEASE_NOTES doc/op/op.ps SNAPSHOT_NOTES
 
 	dodoc sendmail/{SECURITY,TUNING}
 	newdoc sendmail/README README.sendmail
@@ -303,4 +307,11 @@ pkg_postinst() {
 		elog "configuration file:"
 		elog "\tFEATURE(\`local_procmail',\`/usr/bin/maildrop',\`maildrop -d $u')dnl"
 	fi
+
+	ewarn "This version has enabled experimental code. Please read the file"
+	ewarn ""
+	ewarn "\t/usr/share/doc/${PF}/SNAPSHOT_NOTES"
+	ewarn ""
+	ewarn "for enable testing, provide feedback and report potential problems"
+	ewarn "directly to upstream."
 }
