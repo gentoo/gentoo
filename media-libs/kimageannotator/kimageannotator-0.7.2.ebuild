@@ -39,6 +39,7 @@ PATCHES=(
 	# Pending upstream fix, bug #965014:
 	"${FILESDIR}/${P}-cmake-minreqver-3.16.patch"
 	"${FILESDIR}/${PN}-0.7.1-cmake-cleanup.patch"
+	"${FILESDIR}/${P}-testfix.patch" # git master, bug #966772
 )
 
 src_configure() {
