@@ -19,8 +19,8 @@ KEYWORDS="amd64 arm arm64 ~loong ~ppc ppc64 ~riscv x86"
 
 IUSE="
 	dbus debug declarative designer examples gles2-only gui help multimedia
-	network opengl printsupport serialport speech sql +ssl svg testlib
-	websockets widgets x11extras xmlpatterns
+	network opengl printsupport speech sql +ssl svg testlib websockets
+	widgets x11extras xmlpatterns
 "
 
 # The requirements below were extracted from the qmake_QT declarations
@@ -32,7 +32,6 @@ REQUIRED_USE="
 	multimedia? ( gui network )
 	opengl? ( gui widgets )
 	printsupport? ( gui widgets )
-	serialport? ( gui )
 	sql? ( widgets )
 	svg? ( gui widgets )
 	testlib? ( widgets )
@@ -60,7 +59,6 @@ DEPEND="
 	network? ( >=dev-qt/qtnetwork-${QT_PV}[ssl=] )
 	opengl? ( >=dev-qt/qtopengl-${QT_PV} )
 	printsupport? ( >=dev-qt/qtprintsupport-${QT_PV} )
-	serialport? ( >=dev-qt/qtserialport-${QT_PV} )
 	speech? ( >=dev-qt/qtspeech-${QT_PV} )
 	sql? ( >=dev-qt/qtsql-${QT_PV} )
 	svg? ( >=dev-qt/qtsvg-${QT_PV} )
@@ -126,7 +124,7 @@ python_configure_all() {
 		$(pyqt_use_enable network QtNetwork)
 		$(pyqt_use_enable opengl QtOpenGL)
 		$(pyqt_use_enable printsupport QtPrintSupport)
-		$(pyqt_use_enable serialport QtSerialPort)
+		$(pyqt_use_enable serialport )
 		$(pyqt_use_enable speech QtTextToSpeech)
 		$(pyqt_use_enable sql QtSql)
 		$(pyqt_use_enable svg QtSvg)
@@ -142,6 +140,7 @@ python_configure_all() {
 		--disable=QtLocation
 		--disable=QtPositioning
 		--disable=QtSensors
+		--disable=QtSerialPort
 		--disable=QtWebChannel
 
 		$(usev debug '--debug --qml-debug --tracing')
