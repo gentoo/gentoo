@@ -159,6 +159,10 @@ src_install() {
 
 pkg_postinst() {
 	udev_reload
+
+	if has_version ">=media-libs/mesa-25.2" && has_version "x11-drivers/xf86-video-vmare"; then
+		elog "You need to remove x11-drivers/xf86-video-vmware to use the modesetting video driver."
+	fi
 }
 
 pkg_postrm() {
