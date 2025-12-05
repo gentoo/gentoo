@@ -4,10 +4,10 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
-inherit autotools eapi9-ver python-r1 systemd tmpfiles verify-sig
+inherit autotools python-r1 systemd tmpfiles verify-sig
 
 # subslot: libknot major.libdnssec major.libzscanner major
-KNOT_SUBSLOT="16.10.5"
+KNOT_SUBSLOT="15.9.4"
 
 DESCRIPTION="High-performance authoritative-only DNS server"
 HOMEPAGE="https://www.knot-dns.cz/ https://gitlab.nic.cz/knot/knot-dns"
@@ -16,7 +16,7 @@ SRC_URI="
 	!doc? ( https://raw.githubusercontent.com/PPN-SD/gentoo-manpages/refs/tags/${P}/${P}-manpages.tar.xz )
 	verify-sig? ( https://knot-dns.nic.cz/release/${P}.tar.xz.asc )
 "
-LICENSE="GPL-2+"
+LICENSE="GPL-3+"
 SLOT="0/${KNOT_SUBSLOT}"
 KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 
@@ -39,7 +39,7 @@ KNOT_MODULES_OPT=(
 	"geoip"
 )
 
-IUSE="caps +daemon dbus doc doh +fastparser +idn pkcs11 prometheus python quic redis selinux systemd test +utils xdp ${KNOT_MODULES_OPT[@]}"
+IUSE="caps +daemon dbus doc doh +fastparser +idn pkcs11 prometheus python quic selinux systemd test +utils xdp ${KNOT_MODULES_OPT[@]}"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	prometheus? ( python )
@@ -64,7 +64,6 @@ RDEPEND="
 		caps? ( sys-libs/libcap-ng )
 		dbus? ( sys-apps/dbus )
 		geoip? ( dev-libs/libmaxminddb:= )
-		redis? ( >=dev-libs/hiredis-1.1.0:= )
 		systemd? ( sys-apps/systemd:= )
 	)
 	prometheus? (
@@ -88,7 +87,6 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
-	dnstap? ( dev-libs/protobuf[protoc(+)] )
 	doc? (
 		$(python_gen_any_dep '
 			dev-python/sphinx[${PYTHON_USEDEP}]
@@ -101,6 +99,11 @@ BDEPEND="
 	)
 	verify-sig? ( sec-keys/openpgp-keys-knot )
 "
+
+PATCHES=(
+	# PR 1830 merged
+	"${FILESDIR}"/${PN}-3.5.2-fix_automagic_pkcs11.patch
+)
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/${PN}.asc
 
@@ -148,8 +151,8 @@ src_configure() {
 		$(use_enable fastparser)
 		$(use_enable geoip maxminddb)
 		$(use_with idn libidn)
+		$(use_enable pkcs11)
 		$(use_enable quic)
-		$(use_enable redis redis $(usex daemon client))
 		$(use_enable systemd)
 		$(use_enable utils utilities)
 		$(use_enable xdp)
@@ -225,14 +228,4 @@ src_install() {
 
 pkg_postinst() {
 	use daemon && tmpfiles_process ${PN}.conf
-
-	if has_version net-dns/redis-knot || use redis; then
-		ewarn "To use redis, ${EPREFIX}/usr/$(get_libdir)/knot/redis/knot.so from net-dns/redis-knot"
-		ewarn "must be loaded by an instance of Redis."
-	fi
-
-	if ver_replacing -lt 3.5; then
-		elog "See documentation for migration:"
-		elog "https://www.knot-dns.cz/docs/3.5/html/migration.html#upgrade-3-4-x-to-3-5-x"
-	fi
 }
