@@ -72,6 +72,7 @@ src_configure() {
 		-DWITH_LEGACY_HASHES=$(usex legacy ON OFF)
 		-DWITH_LIBMODULEMD=ON
 		-DWITH_ZCHUNK=ON
+		-DBUILD_DOC_C=$(usex doc ON OFF)
 	)
 
 	cmake_src_configure
