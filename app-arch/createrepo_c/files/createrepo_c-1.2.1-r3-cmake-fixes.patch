@@ -1,0 +1,73 @@
+https://github.com/rpm-software-management/createrepo_c/pull/461
+From 1723a3044ed7797978a150a7b3fa2483dba17074 Mon Sep 17 00:00:00 2001
+From: Jaco Kroon <jaco@uls.co.za>
+Date: Fri, 5 Dec 2025 14:05:54 +0200
+Subject: [PATCH] Migrate cmake to find_package(PYTHON* to
+ find_package(Python3.
+
+Also bump minimum cmake version to 3.12.
+
+Closes: #460
+Signed-off-by: Jaco Kroon <jaco@uls.co.za>
+---
+ CMakeLists.txt            |  2 +-
+ src/python/CMakeLists.txt | 25 ++++++-------------------
+ 2 files changed, 7 insertions(+), 20 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c4bf525..5b3925a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-CMAKE_MINIMUM_REQUIRED (VERSION 3.7)
++CMAKE_MINIMUM_REQUIRED (VERSION 3.12)
+ PROJECT (createrepo_c C)
+ 
+ include(GNUInstallDirs)
+diff --git a/src/python/CMakeLists.txt b/src/python/CMakeLists.txt
+index a31b14d..5303876 100644
+--- a/src/python/CMakeLists.txt
++++ b/src/python/CMakeLists.txt
+@@ -1,23 +1,10 @@
+-MACRO(PYTHON_UNSET)
+-    unset(PYTHON_LIBRARY)
+-    unset(PYTHON_INCLUDE_DIR)
+-    unset(PYTHON_EXECUTABLE)
+-    unset(PYTHON_LIBRARY CACHE)
+-    unset(PYTHON_INCLUDE_DIR CACHE)
+-    unset(PYTHON_EXECUTABLE CACHE)
+-ENDMACRO(PYTHON_UNSET)
+-
+ if (NOT SKBUILD)
+-    PYTHON_UNSET()
+-    SET(Python_ADDITIONAL_VERSIONS 3.0 CACHE INTERNAL "")
+-    FIND_PACKAGE(PythonInterp 3 REQUIRED)
+-    FIND_PACKAGE(PythonLibs 3 REQUIRED)
++    FIND_PACKAGE(Python3 REQUIRED Interpreter Development)
+ endif (NOT SKBUILD)
+ 
+-EXECUTE_PROCESS(COMMAND ${PYTHON_EXECUTABLE} -c "from sys import stdout; from sysconfig import get_path; stdout.write(get_path('platlib'))" OUTPUT_VARIABLE PYTHON_INSTALL_DIR)
+-INCLUDE_DIRECTORIES (${PYTHON_INCLUDE_PATH})
++INCLUDE_DIRECTORIES (${Python3_INCLUDE_DIRS})
+ 
+-MESSAGE(STATUS "Python install dir is ${PYTHON_INSTALL_DIR}")
++MESSAGE(STATUS "Python install dir is ${Python3_SITELIB}")
+ 
+ set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fno-strict-aliasing")
+ set (CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -fno-strict-aliasing")
+@@ -72,9 +59,9 @@ IF (SKBUILD)
+     INSTALL(FILES createrepo_c/__init__.py DESTINATION src/python/createrepo_c)
+     INSTALL(TARGETS _createrepo_c LIBRARY DESTINATION src/python/createrepo_c)
+ ELSE ()
+-    INSTALL(FILES createrepo_c/__init__.py DESTINATION ${PYTHON_INSTALL_DIR}/createrepo_c)
+-    INSTALL(TARGETS _createrepo_c LIBRARY DESTINATION ${PYTHON_INSTALL_DIR}/createrepo_c)
++    INSTALL(FILES createrepo_c/__init__.py DESTINATION ${Python3_SITELIB}/createrepo_c)
++    INSTALL(TARGETS _createrepo_c LIBRARY DESTINATION ${Python3_SITELIB}/createrepo_c)
+ 
+     # Version has to be passed as last argument.
+-    INSTALL(CODE "EXECUTE_PROCESS(COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/utils/setup_for_python_metadata.py install_egg_info --install-dir \$ENV{DESTDIR}/${PYTHON_INSTALL_DIR} ${VERSION})")
++    INSTALL(CODE "EXECUTE_PROCESS(COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/utils/setup_for_python_metadata.py install_egg_info --install-dir \$ENV{DESTDIR}/${Python3_SITELIB} ${VERSION})")
+ ENDIF ()
+-- 
+2.51.2
+
