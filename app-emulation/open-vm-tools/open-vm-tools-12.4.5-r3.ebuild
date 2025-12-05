@@ -50,8 +50,18 @@ RDEPEND="
 	dnet? ( dev-libs/libdnet )
 	icu? ( dev-libs/icu:= )
 	resolutionkms? (
-		x11-libs/libdrm[video_cards_vmware]
 		virtual/libudev
+		|| (
+			(
+				>=media-libs/mesa-25.2[-video_cards_vmware]
+				x11-base/xorg-server[xorg]
+				x11-libs/libdrm[-video_cards_vmware]
+			)
+			(
+				<media-libs/mesa-25.2[video_cards_vmware,xa]
+				x11-libs/libdrm[video_cards_vmware]
+			)
+		)
 	)"
 DEPEND="${RDEPEND}
 	net-libs/rpcsvc-proto"
