@@ -32,11 +32,13 @@ BDEPEND="
 
 DOCS=( README.md )
 
+PATCHES=( "${FILESDIR}/${P}-cmake.patch" ) # bug 967123
+
 src_configure() {
 	local mycmakeargs=(
-		-DQT_VERSION=6
 		-DTSMUXER_STATIC_BUILD=OFF
 		-DTSMUXER_GUI=$(usex gui)
 	)
+	use gui && mycmakeargs+=( -DQT_VERSION=6 )
 	cmake_src_configure
 }
