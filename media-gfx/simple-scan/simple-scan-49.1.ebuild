@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/simple-scan"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="colord webp"
 
 DEPEND="
@@ -42,7 +42,7 @@ BDEPEND="
 
 PATCHES=(
 	# Add control for optional dependencies
-	"${FILESDIR}"/"${PV}"-add-control-optional-deps.patch
+	"${FILESDIR}"/46.0-add-control-optional-deps.patch
 )
 
 src_prepare() {
