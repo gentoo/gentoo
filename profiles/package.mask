@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-05)
+# Depends on Qt5, no signs of porting work upstream. Bug #949881
+# Removal on 2026-01-15
+games-strategy/hedgewars
+
 # Nowa Ammerlaan <nowa@gentoo.org (2025-12-05)
 # Stuck on Qt5, no upstream action.
 # Please use the games-action/prismlauncher fork instead.
