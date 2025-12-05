@@ -37,6 +37,11 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-12-05)
+# Depends on Qt5, stalled porting effort upstream. Bug #955277
+# Removal on 2026-01-15
+games-engines/qtads
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-05)
 # Depends on Qt5, no signs of porting work upstream. Bug #949881
 # Removal on 2026-01-15
 games-strategy/hedgewars
