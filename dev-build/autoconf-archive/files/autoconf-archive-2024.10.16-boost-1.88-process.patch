@@ -1,0 +1,58 @@
+https://github.com/autoconf-archive/autoconf-archive/pull/331
+
+From c2314603f8d9e7cf7c8de2f30d77a7f4304544ce Mon Sep 17 00:00:00 2001
+From: Fabrice Delliaux <netbox253@gmail.com>
+Date: Sun, 22 Jun 2025 12:46:57 +0200
+Subject: [PATCH] ax_boost_process: migrate compile code to process::v2
+
+Since boost 1.88, ::process::v1 is deprecated and ::process::v2 is the
+default. AX_BOOST_PROCESS macro is failing to detect the library because
+of the following compile failure :
+
+> configure:24504: checking whether the Boost::Process library is available
+> configure:24530: g++ -c   -I/usr/include conftest.cpp >&5
+> conftest.cpp: In function 'int main()':
+> conftest.cpp:59:17: error: 'child' is not a member of 'boost::process'
+>    59 | boost::process::child* child = new boost::process::child; delete child;
+>       |                 ^~~~~
+> conftest.cpp:59:24: error: 'child' was not declared in this scope
+>    59 | boost::process::child* child = new boost::process::child; delete child;
+>       |                        ^~~~~
+> conftest.cpp:59:52: error: 'child' in namespace 'boost::process' does not name a type
+>    59 | boost::process::child* child = new boost::process::child; delete child;
+>       |                                                    ^~~~~
+> conftest.cpp:59:59: error: type '<type error>' argument given to 'delete', expected pointer
+>    59 | boost::process::child* child = new boost::process::child; delete child;
+>       |                                                           ^~~~~~~~~~~~
+> configure:24530: $? = 1
+
+1. https://github.com/boostorg/process/commit/58586e420cf181ca865945837f6c33a46b973fd8
+2. https://github.com/boostorg/process/commit/2ccd97cd48c5468b0609a488b59253efaa381711
+
+Signed-off-by: Fabrice Delliaux <netbox253@gmail.com>
+---
+ m4/ax_boost_process.m4 | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/m4/ax_boost_process.m4 b/m4/ax_boost_process.m4
+index 5d20e674..a0138b0b 100644
+--- a/m4/ax_boost_process.m4
++++ b/m4/ax_boost_process.m4
+@@ -31,7 +31,7 @@
+ #   and this notice are preserved. This file is offered as-is, without any
+ #   warranty.
+ 
+-#serial 2
++#serial 3
+ 
+ AC_DEFUN([AX_BOOST_PROCESS],
+ [
+@@ -71,7 +71,7 @@ AC_DEFUN([AX_BOOST_PROCESS],
+ 			 CXXFLAGS=
+ 
+              AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[@%:@include <boost/process.hpp>]],
+-                [[boost::process::child* child = new boost::process::child; delete child;]])],
++                [[boost::asio::io_context ctx; boost::process::v2::process* proc = new boost::process::v2::process(ctx); delete proc;]])],
+                 ax_cv_boost_process=yes, ax_cv_boost_process=no)
+ 			 CXXFLAGS=$CXXFLAGS_SAVE
+              AC_LANG_POP([C++])
