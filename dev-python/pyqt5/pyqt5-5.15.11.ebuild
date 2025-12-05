@@ -124,7 +124,6 @@ python_configure_all() {
 		$(pyqt_use_enable network QtNetwork)
 		$(pyqt_use_enable opengl QtOpenGL)
 		$(pyqt_use_enable printsupport QtPrintSupport)
-		$(pyqt_use_enable serialport )
 		$(pyqt_use_enable speech QtTextToSpeech)
 		$(pyqt_use_enable sql QtSql)
 		$(pyqt_use_enable svg QtSvg)
