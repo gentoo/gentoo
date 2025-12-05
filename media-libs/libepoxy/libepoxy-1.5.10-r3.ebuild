@@ -37,7 +37,10 @@ BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}"/libepoxy-1.5.10-libopengl-fallback.patch )
+PATCHES=(
+	"${FILESDIR}"/libepoxy-1.5.10-libopengl-fallback.patch
+	"${FILESDIR}"/libepoxy-1.5.10-riscv.patch
+)
 
 multilib_src_configure() {
 	local emesonargs=(
