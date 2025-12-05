@@ -174,16 +174,6 @@ sys-apps/razercfg
 # Removal on 2025-12-19.
 kde-apps/libkcompactdisc
 
-# Joonas Niilola <juippis@gentoo.org> (2025-11-19)
-# Brahmajit Das (listout) <brahmajit.xyz@gmail.com> (2025-11-19)
-# Currently without a maintainer and being severely outdated in
-# ::gentoo. There seems to be interest in maintaining these over at
-# ::guru, so hoping they get new breath there for someone with direct
-# commit access and interest.
-# Removal on 2025-12-03.  Bugs #966235, #966234.
-sys-kernel/pf-sources
-sys-kernel/zen-sources
-
 # orbea <orbea@riseup.net> (2025-11-16)
 # Dead upstream, non-free licenses, depends on libsdl, no revdeps.
 # Use games-emulation/geolith-jg instead.
