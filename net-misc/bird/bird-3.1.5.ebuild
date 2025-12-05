@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools fcaps
+inherit fcaps
 
 DESCRIPTION="A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6"
 HOMEPAGE="https://bird.nic.cz/"
