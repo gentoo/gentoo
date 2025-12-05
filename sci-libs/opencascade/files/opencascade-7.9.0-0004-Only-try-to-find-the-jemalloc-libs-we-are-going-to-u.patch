@@ -1,0 +1,34 @@
+From 9bf7e7a1729838a2052f9e550b204d1538802143 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Tue, 20 May 2025 14:10:41 +0200
+Subject: [PATCH] Only try to find the jemalloc libs we are going to use
+
+diff --git a/adm/cmake/jemalloc.cmake b/adm/cmake/jemalloc.cmake
+index 8161700ad..8cd19e0e2 100644
+--- a/adm/cmake/jemalloc.cmake
++++ b/adm/cmake/jemalloc.cmake
+@@ -72,6 +72,7 @@ function (JEMALLOC_LIB_SEARCH MMGR_LIB PREFIX)
+ endfunction()
+ 
+ macro (SEARCH_JEMALLOC)
++  if(BUILD_LIBRARY_TYPE EQUAL "Static")
+   # find static jemalloc lib
+   SET(CMAKE_FIND_LIBRARY_SUFFIXES ".dll.a" ".lib" ".a")
+   if (WIN32)
+@@ -81,10 +82,13 @@ macro (SEARCH_JEMALLOC)
+     SET(CMAKE_FIND_LIBRARY_SUFFIXES "" "so")
+     JEMALLOC_LIB_SEARCH ("jemalloc.so.2" "SHARED")
+   endif()
++  endif()
+   
++  if(BUILD_LIBRARY_TYPE EQUAL "Shared")
+   # find shared jemalloc lib
+   SET(CMAKE_FIND_LIBRARY_SUFFIXES ".dll" ".so")
+   JEMALLOC_LIB_SEARCH ("jemalloc" "SHARED")
++  endif()
+ endmacro()
+ 
+ # Reset CSF variable
+-- 
+2.51.2
+

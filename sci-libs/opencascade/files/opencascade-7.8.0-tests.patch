@@ -1,9 +1,10 @@
+From 743733e625c8343548764460b5120b1e7891e8ef Mon Sep 17 00:00:00 2001
 From: Paul Zander <negril.nx+gentoo@gmail.com>
-
-Fix test harness script
+Date: Tue, 20 May 2025 14:10:41 +0200
+Subject: [PATCH] Fix test harness script
 
 diff --git a/adm/templates/draw.sh b/adm/templates/draw.sh
-index 02e6043..c7347e0 100755
+index 02e6043de..c7347e07a 100755
 --- a/adm/templates/draw.sh
 +++ b/adm/templates/draw.sh
 @@ -4,7 +4,8 @@ aCurrentPath="$PWD"
@@ -17,3 +18,6 @@ index 02e6043..c7347e0 100755
 -DRAWEXE
 +cd "${aCurrentPath}"
 +DRAWEXE "$@"
+-- 
+2.49.0
+

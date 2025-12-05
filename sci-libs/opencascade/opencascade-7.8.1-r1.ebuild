@@ -3,20 +3,18 @@
 
 EAPI=8
 
-inherit cmake cuda flag-o-matic multiprocessing virtualx
+inherit cmake cuda flag-o-matic virtualx
 
 DESCRIPTION="Development platform for CAD/CAE, 3D surface/solid modeling and data exchange"
 HOMEPAGE="https://www.opencascade.com"
 
 MY_PN="OCCT"
 
-MY_TEST_PV="7.9.0"
-MY_TEST_PV2="${MY_TEST_PV//./_}_beta1"
+MY_TEST_PV="7.8.0"
+MY_TEST_PV2="${MY_TEST_PV//./_}"
 
 SRC_URI="
-	test? (
-		https://github.com/Open-Cascade-SAS/${MY_PN}/releases/download/V${MY_TEST_PV2}/${PN}-dataset-${MY_TEST_PV}.tar.xz
-	)
+	test? ( https://github.com/Open-Cascade-SAS/${MY_PN}/releases/download/V${MY_TEST_PV2}/${PN}-dataset-${MY_TEST_PV}.tar.xz )
 "
 
 if [[ ${PV} = *9999* ]] ; then
@@ -28,10 +26,7 @@ else
 		https://github.com/Open-Cascade-SAS/${MY_PN}/archive/refs/tags/V${MY_PV}.tar.gz -> ${P}.tar.gz
 	"
 	S="${WORKDIR}/${MY_PN}-${MY_PV}"
-
-	if [[ "${PV}" != *rc* ]]; then
-		KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
-	fi
+	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 fi
 
 LICENSE="|| ( Open-CASCADE-LGPL-2.1-Exception-1.0 LGPL-2.1 )"
@@ -85,12 +80,18 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-7.9.2-0001-fix-installation-of-cmake-config-files.patch"
-	"${FILESDIR}/${PN}-7.9.0-0002-avoid-pre-stripping-binaries.patch"
-	"${FILESDIR}/${PN}-7.9.2-0003-Fix-building-with-musl.patch"
-	"${FILESDIR}/${PN}-7.9.0-0004-Only-try-to-find-the-jemalloc-libs-we-are-going-to-u.patch"
+	"${FILESDIR}/${PN}-7.5.1-0005-fix-write-permissions-on-scripts.patch"
+	"${FILESDIR}/${PN}-7.5.1-0006-fix-creation-of-custom.sh-script.patch"
+	"${FILESDIR}/${PN}-7.7.0-fix-installation-of-cmake-config-files.patch"
+	"${FILESDIR}/${PN}-7.7.0-avoid-pre-stripping-binaries.patch"
+	"${FILESDIR}/${PN}-7.7.0-musl.patch"
+	"${FILESDIR}/${PN}-7.7.0-tbb-detection.patch"
+	"${FILESDIR}/${PN}-7.7.0-jemalloc-lib-type.patch"
+	"${FILESDIR}/${PN}-7.8.0-cmake-min-version.patch"
 	"${FILESDIR}/${PN}-7.8.0-tests.patch"
 	"${FILESDIR}/${PN}-7.8.0-jemalloc-noexcept.patch"
+	"${FILESDIR}/${PN}-7.8.1-vtk_components.patch"
+	"${FILESDIR}/${PN}-7.8.1-freetype-const.patch"
 )
 
 src_unpack() {
@@ -101,7 +102,8 @@ src_unpack() {
 	fi
 
 	if use test; then
-		pushd "${WORKDIR}" > /dev/null || die
+		mkdir "${WORKDIR}/data"
+		pushd "${WORKDIR}/data" > /dev/null || die
 		# should be in paths indicated by CSF_TestDataPath environment variable,
 		# or in subfolder data in the script directory
 		unpack "${PN}-dataset-${MY_TEST_PV}.tar.xz"
@@ -111,6 +113,9 @@ src_unpack() {
 
 src_prepare() {
 	cmake_src_prepare
+
+	sed -e 's|/lib\$|/'"$(get_libdir)"'\$|' \
+		-i adm/templates/OpenCASCADEConfig.cmake.in || die
 
 	# There is an OCCT_UPDATE_TARGET_FILE cmake macro that fails due to some
 	# assumptions it makes about installation paths. Rather than fixing it, just
@@ -128,7 +133,7 @@ src_configure() {
 
 	local mycmakeargs=(
 		-D3RDPARTY_DIR="${ESYSROOT}/usr"
-		# -DBUILD_CPP_STANDARD="C++23"
+		-DBUILD_CPP_STANDARD="C++17"
 		-DBUILD_SOVERSION_NUMBERS=2
 
 		-DBUILD_DOC_Overview="$(usex doc)"
@@ -242,16 +247,13 @@ src_configure() {
 }
 
 src_test() {
-	cat >> "${BUILD_DIR}/custom.sh" <<- _EOF_ || die
-		export CSF_TestDataPath="${WORKDIR}/${PN}-dataset-${MY_TEST_PV}"
-	_EOF_
+	echo "export CSF_OCCTDataPath=${WORKDIR}/data" >> "${BUILD_DIR}/custom.sh" || die
 
 	if has_version media-fonts/dejavu; then
-		# no die here as this isn't fatal
-		cp "${ESYSROOT}/usr/share/fonts/dejavu/DejaVuSans.ttf" "${WORKDIR}/${PN}-dataset-${MY_TEST_PV}/"
+		cp "${ESYSROOT}/usr/share/fonts/dejavu/DejaVuSans.ttf" "${WORKDIR}/data/" # no die here as this isn't fatal
 	fi
 
-	local test_file="${T}/testscript.tcl"
+	local test_file=${T}/testscript.tcl
 
 	local draw_opts=(
 		i # see ${BUILD_DIR}/custom*.sh
@@ -274,107 +276,68 @@ src_test() {
 	local testgrid_opts=()
 
 	local SKIP_TESTS=()
-	local DEL_TESTS=()
 
 	if [[ "${OCCT_OPTIONAL_TESTS}" != "true" ]]; then
 		SKIP_TESTS+=(
 			'blend complex F4'
 			'bugs'
-			'bugs caf bug31918_'{1,2}
-			'bugs fclasses bug'{6143,7287_3}
-			'bugs filling bug16119'
-			'bugs mesh bug'{24127,25594,26372,27693,27845,29641,29962,30008_2,30442,31258,31461,32241,32422}
-			'bugs modalg_1 '{buc60782_3,bug15036}
-			'bugs modalg_2 bug399'
-			'bugs modalg_5 bug23706_'{16,20,21,26,36,38,43,44,45,48,49,50,51,52,53,54,55,56,60,61}
-			'bugs modalg_5 bug24347'
-			'bugs modalg_6 bug'{26308,27383_4,6768}
-			'bugs modalg_7 bug'{26034,29311_4,29807_b3a,29807_sc01}
-			'bugs moddata_1 bug16'
-			'bugs moddata_2 bug712_2'
-			'bugs moddata_3 bug'{24959_1,27534,32058}
-			'geometry circ2d3Tan Circle'{CircleLin_11,LinPoint_11}
+			'geometry circ2d3Tan '{CircleCircleLin_11,CircleLinPoint_11}
 			'heal checkshape bug32448_1'
 			'hlr exact_hlr bug25813_2'
-			'hlr poly_hlr '{Plate,bug25813_{2,3,4}}
-			'lowalgos intss bug'{25950,27431,29807_i{1003,2006,3003},30703,565,567_1}
-			'lowalgos proximity A'{4,5}
+
+			'hlr poly_hlr '{bug25813_2,bug25813_3,bug25813_4,Plate}
+			'lowalgos intss bug'{565,567_1,25950,27431,29807_i1003,29807_i2006,29807_i3003,29807_i5002,30703}
+			'lowalgos proximity '{A4,A5}
+			'opengl background bug27836'
+			'opengl drivers opengles'
+			'opengles3'
+
+			'demo draw bug30430'
+
 			'offset wire_closed_inside_0_005 D1'
-			'opengles3 general msaa'
-			'opengles3 geom interior'{1,2}
-			'opengles3 raytrace msaa'
-			'opengles3 textures alpha_mask'
-			'perf mesh bug26965'
-			'xml ocaf_cbf D3'
 		)
 
-		DEL_TESTS+=(
-			# unable to find CJK/Korean fallback font
-			'bugs/demo/bug14673_1'
+		local DEL_TESTS=(
 			'opengl/data/background/bug27836'
 			'opengl/data/text/bug22149'
 			'opengl/data/text/C2'
-
-			# 'perf/mesh/bug26965'
-			# 'v3d/trsf/bug26029'
-
-			# needs dri3
-			'opengl/drivers/opengles'
-			'opengles3'
+			'perf/mesh/bug26965'
+			'v3d/trsf/bug26029'
 		)
-	fi
 
-	if ! use gles2; then
-		DEL_TESTS+=(
-			# 'opengl/drivers/opengles'
-			# 'opengles3'
-		)
-	else
-		addwrite '/dev/dri/'
-		[[ -c /dev/udmabuf ]] && addwrite /dev/udmabuf
-	fi
-
-	if ! use tk || ! use vtk; then
-		DEL_TESTS+=(
-			'opengl/data/transparency/oit'
-		)
+		for test in "${DEL_TESTS[@]}"; do
+			rm "${CMAKE_USE_DIR}/tests/${test}" || die
+		done
 	fi
 
 	if ! use vtk; then
 		SKIP_TESTS+=(
 			'vtk'
 		)
-		cat >> "${CMAKE_USE_DIR}/tests/opengl/parse.rules" <<- _EOF_ || die
-			IGNORE /Could not open: libTKIVtkDraw/skip VTK
-		_EOF_
+		echo "IGNORE /Could not open: libTKIVtkDraw/skip VTK" >> "${CMAKE_USE_DIR}/tests/opengl/parse.rules"
 	fi
 
 	if [[ -n "${SKIP_TESTS[*]}" ]]; then
 		testgrid_opts+=( -exclude "$(IFS=',' ; echo "${SKIP_TESTS[*]}")" )
 	fi
 
-	for test in "${DEL_TESTS[@]}"; do
-		rm -r "${CMAKE_USE_DIR}/tests/${test}" || die
-	done
-
 	testgrid_opts+=(
-		# -refresh 5 # default is 60
+		# -refresh 5
 		-overwrite
-		-parallel "$(makeopts_jobs)"
 	)
 	cat >> "${test_file}" <<- _EOF_ || die
 		testgrid -outdir "${BUILD_DIR}/test_results" ${testgrid_opts[@]}
 	_EOF_
 
-	# regenerate summary in case we have to
-	cat >> "${test_file}" <<- _EOF_ || die
-		testsummarize "${BUILD_DIR}/test_results"
-	_EOF_
+	# # regenerate summary in case we have to
+	# cat >> "${test_file}" <<- _EOF_ || die
+	# 	testsummarize "${BUILD_DIR}/test_results"
+	# _EOF_
 
 	# Work around zink warnings
 	export LIBGL_ALWAYS_SOFTWARE="true"
 
-	local -x CASROOT="${BUILD_DIR}"
+	export CASROOT="${BUILD_DIR}"
 
 	virtx \
 	"${BUILD_DIR}/draw.sh" \
@@ -385,7 +348,6 @@ src_test() {
 		eerror "tests never ran!"
 		die
 	fi
-
 	failed_tests="$(grep ": FAILED" "${BUILD_DIR}/test_results/tests.log")"
 	if [[ -n ${failed_tests} ]]; then
 		eerror "Failed tests:"

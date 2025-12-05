@@ -91,6 +91,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-7.9.0-0004-Only-try-to-find-the-jemalloc-libs-we-are-going-to-u.patch"
 	"${FILESDIR}/${PN}-7.8.0-tests.patch"
 	"${FILESDIR}/${PN}-7.8.0-jemalloc-noexcept.patch"
+	"${FILESDIR}/${PN}-7.9.2-cmake-4.patch"
 )
 
 src_unpack() {
@@ -110,6 +111,9 @@ src_unpack() {
 }
 
 src_prepare() {
+	# File DEFINES has not been found in
+	touch src/TKOpenGles/DEFINES || die
+
 	cmake_src_prepare
 
 	# There is an OCCT_UPDATE_TARGET_FILE cmake macro that fails due to some

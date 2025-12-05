@@ -1,0 +1,56 @@
+From 32c4af6d0f9b948acf66e4a06c65f2db53600fe2 Mon Sep 17 00:00:00 2001
+From: Violet Purcell <vimproved@inventati.org>
+Date: Tue, 11 Jul 2023 16:13:32 -0400
+Subject: [PATCH] Fix building with musl
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6cf4e00b0..64752383b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -774,6 +774,13 @@ file(COPY ${CMAKE_SOURCE_DIR}/.clang-format DESTINATION ${CMAKE_SOURCE_DIR})
+ OCCT_MAKE_OS_WITH_BITNESS()
+ OCCT_MAKE_COMPILER_SHORT_NAME()
+ 
++# define CSF variable
++OCCT_INCLUDE_CMAKE_FILE ("adm/cmake/occt_csf")
++
++# Check for execinfo.h
++include(CheckIncludeFile)
++CHECK_INCLUDE_FILE("execinfo.h" HAS_EXECINFO_H)
++
+ # do not define INSTALL_DIR_BIN for win.
+ # Leave library structure for win: <prefix>/win64/vc10/bin(d)
+ if (NOT DEFINED INSTALL_DIR_BIN)
+diff --git a/src/Standard/Standard_StackTrace.cxx b/src/Standard/Standard_StackTrace.cxx
+index 811c09e9b..2f6243e6c 100644
+--- a/src/Standard/Standard_StackTrace.cxx
++++ b/src/Standard/Standard_StackTrace.cxx
+@@ -29,7 +29,7 @@
+ // #include <unwind.h>
+ #elif defined(__QNX__)
+ // #include <backtrace.h> // requires linking to libbacktrace
+-#elif !defined(_WIN32) && !(defined(TARGET_OS_IPHONE) && TARGET_OS_IPHONE)
++#elif !defined(_WIN32) && !(defined(TARGET_OS_IPHONE) && TARGET_OS_IPHONE) && defined (HAS_EXECINFO_H)
+   #include <execinfo.h>
+ #elif defined(_WIN32) && !defined(OCCT_UWP)
+ 
+@@ -320,7 +320,7 @@ Standard_Boolean Standard::StackTrace(char*     theBuffer,
+   Message::SendTrace("Standard::StackTrace() is not implemented for this CPU architecture");
+   return false;
+   #endif
+-#else
++#elif defined (HAS_EXECINFO_H)
+   const int aTopSkip  = theNbTopSkip + 1; // skip this function call and specified extra number
+   int       aNbTraces = theNbTraces + aTopSkip;
+   void**    aStackArr = (void**)alloca(sizeof(void*) * aNbTraces);
+@@ -367,5 +367,7 @@ Standard_Boolean Standard::StackTrace(char*     theBuffer,
+     strcat(theBuffer, "\n=============");
+   }
+   return true;
++#else
++  return false;
+ #endif
+ }
+-- 
+2.51.2
+

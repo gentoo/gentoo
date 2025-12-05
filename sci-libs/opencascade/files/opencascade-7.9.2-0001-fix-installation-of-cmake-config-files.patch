@@ -1,0 +1,23 @@
+From 17d5b4f37508c67be67f980dfa86e15c7cf8b423 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Thu, 6 Oct 2022 18:53:41 +0200
+Subject: [PATCH] fix installation of cmake config files
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f8d62e06b..6cf4e00b0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1340,7 +1340,7 @@ foreach (OCCT_CONFIGURATION ${CMAKE_CONFIGURATION_TYPES})
+ endforeach()
+ # install OpenCASCADE config file with compile definitions and C/C++ flags ONLY for current configuration
+ install (CODE "string (TOLOWER \"\${CMAKE_INSTALL_CONFIG_NAME}\" CMAKE_INSTALL_CONFIG_NAME_LOWER)")
+-install (CODE "file(INSTALL FILES \"${CMAKE_BINARY_DIR}/OpenCASCADECompileDefinitionsAndFlags-\${CMAKE_INSTALL_CONFIG_NAME_LOWER}.cmake\" DESTINATION \"${INSTALL_DIR}/${INSTALL_DIR_CMAKE}/\" TYPE FILE)")
++install (FILES "${CMAKE_BINARY_DIR}/OpenCASCADECompileDefinitionsAndFlags-\${CMAKE_INSTALL_CONFIG_NAME_LOWER}.cmake" DESTINATION "${INSTALL_DIR_CMAKE}")
+ 
+ foreach (OCCT_MODULE ${OCCT_MODULES})
+   if (BUILD_MODULE_${OCCT_MODULE})
+-- 
+2.51.2
+
