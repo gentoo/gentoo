@@ -3,7 +3,7 @@
 
 EAPI=8
 
-RUST_MIN_VER="1.86.0"
+RUST_MIN_VER="1.89.0"
 
 inherit cargo
 
@@ -19,8 +19,8 @@ LICENSE+="
 	Unicode-DFS-2016 ZLIB
 "
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv"
-IUSE="plugins system-clipboard X"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
+IUSE="mcp plugins system-clipboard X"
 
 DEPEND="
 	dev-libs/openssl:0=
@@ -51,6 +51,8 @@ src_configure() {
 	export PKG_CONFIG_ALLOW_CROSS=1
 
 	local myfeatures=(
+		$(usev mcp)
+		network
 		plugin
 		native-tls
 		sqlite
