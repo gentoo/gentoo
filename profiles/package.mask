@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Nowa Ammerlaan <nowa@gentoo.org (2025-12-05)
+# Stuck on Qt5, no upstream action.
+# Please use the games-action/prismlauncher fork instead.
+# Removal on 2026-01-05. Bug 967108.
+games-action/multimc-bin
+
 # Ulrich Müller <ulm@gentoo.org> (2025-12-04)
 # No longer functional because the Twitter API has been axed.
 # Last release in 2015, last commit to upstream repository in 2018.
