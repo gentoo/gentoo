@@ -12,6 +12,7 @@ COMMON_VERSION="8.3.1"
 COMMON_FILE="common-${COMMON_VERSION}.jar"
 ENCODER_VERSION="1.2.3"
 ENCODER_FILE="encoder-${ENCODER_VERSION}.jar"
+JMC_SLOT="8.3.0"
 LZ4_JAVA_VERSION="1.8.0"
 LZ4_JAVA_FILE="lz4-java-${LZ4_JAVA_VERSION}.jar"
 NASHORN_CORE_VERSION="15.4"
@@ -42,7 +43,7 @@ COMMON_DEPEND="
 	dev-java/asm:0
 	dev-java/hamcrest-core:1.3
 	dev-java/jcommander:0
-	dev-java/jmc:0
+	dev-java/jmc:${JMC_SLOT}
 	dev-java/jna:0
 	dev-java/junit:4
 	dev-java/junit:5
@@ -92,9 +93,9 @@ src_prepare() {
 
 	# link in external libraries
 	ln -s "${DISTDIR}/${NASHORN_CORE_FILE}" nashorn.jdk15/external || die "Failed to link nashorn core jar"
-	java-pkg_jar-from --into jfr.generic/external jmc jmc-common.jar ${COMMON_FILE} \
+	java-pkg_jar-from --into jfr.generic/external jmc-${JMC_SLOT} jmc-common.jar ${COMMON_FILE} \
 		|| die "Failed to link jmc common jar"
-	java-pkg_jar-from --into jfr.generic/external jmc jmc-flightrecorder.jar ${FLIGHT_RECORDER_FILE} \
+	java-pkg_jar-from --into jfr.generic/external jmc-${JMC_SLOT} jmc-flightrecorder.jar ${FLIGHT_RECORDER_FILE} \
 		|| die "Failed to link jmc flightrecorder jar"
 	java-pkg_jar-from --into jfr.generic/external lz4-java lz4-java.jar ${LZ4_JAVA_FILE} \
 		|| die "Failed to link lz4 java jar"
@@ -165,8 +166,8 @@ src_install() {
 	popd > /dev/null
 
 	pushd "${ED}/${INSTALL_DIR}/cluster/modules/ext" > /dev/null || die
-	rm ${COMMON_FILE} && java-pkg_jar-from jmc jmc-common.jar ${COMMON_FILE} || die
-	rm ${FLIGHT_RECORDER_FILE} && java-pkg_jar-from jmc jmc-flightrecorder.jar ${FLIGHT_RECORDER_FILE} || die
+	rm ${COMMON_FILE} && java-pkg_jar-from jmc-${JMC_SLOT} jmc-common.jar ${COMMON_FILE} || die
+	rm ${FLIGHT_RECORDER_FILE} && java-pkg_jar-from jmc-${JMC_SLOT} jmc-flightrecorder.jar ${FLIGHT_RECORDER_FILE} || die
 	rm ${LZ4_JAVA_FILE} && java-pkg_jar-from lz4-java lz4-java.jar ${LZ4_JAVA_FILE} || die
 	rm ${ENCODER_FILE} && java-pkg_jar-from owasp-java-encoder owasp-java-encoder.jar ${ENCODER_FILE} || die
 	popd > /dev/null

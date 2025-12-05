@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ SRC_URI="https://github.com/openjdk/jmc/archive/${PV}-ga.tar.gz -> ${P}.ga.tar.g
 S="${WORKDIR}/${P}-ga"
 
 LICENSE="UPL-1.0"
-SLOT="0"
+SLOT="8.3.0"
 KEYWORDS="amd64"
 
 DEPEND="
