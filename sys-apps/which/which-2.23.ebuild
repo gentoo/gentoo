@@ -17,7 +17,12 @@ src_configure() {
 	tc-export AR
 
 	# Workaround ancient getopt vs C23 (bug #954755)
-	use elibc_musl && append-cppflags -D__GNU_LIBRARY__
+	if use elibc_musl || \
+		[[ ${CHOST} == *-solaris* ]] || \
+		[[ ${CHOST} == *-darwin* ]]
+	then
+		append-cppflags -D__GNU_LIBRARY__
+	fi
 
 	CONFIG_SHELL="${BROOT}"/bin/bash econf
 }
