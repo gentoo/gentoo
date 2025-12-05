@@ -117,7 +117,6 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	dev-db/sqlite:3
 	dev-libs/crossguid
 	>=dev-libs/fribidi-1.0.5
-	>=dev-libs/libcdio-2.1.0:=[cxx]
 	>=dev-libs/libfmt-6.1.2:=
 	dev-libs/libfstrcmp
 	dev-libs/libpcre2:=
@@ -189,6 +188,9 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	)
 	nfs? (
 		>=net-fs/libnfs-3.0.0:=
+	)
+	optical? (
+		>=dev-libs/libcdio-2.1.0:=[cxx]
 	)
 	pipewire? (
 		>=media-video/pipewire-0.3.50:=
