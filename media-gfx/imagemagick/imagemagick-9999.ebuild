@@ -7,6 +7,9 @@ GENTOO_DEPEND_ON_PERL="no"
 QA_PKGCONFIG_VERSION=$(ver_cut 1-3)
 inherit autotools flag-o-matic perl-module toolchain-funcs
 
+DESCRIPTION="A collection of tools and libraries for many image formats"
+HOMEPAGE="https://imagemagick.org"
+
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/ImageMagick/ImageMagick.git"
 	inherit git-r3
@@ -19,9 +22,6 @@ else
 fi
 
 S="${WORKDIR}/${MY_P}"
-
-DESCRIPTION="A collection of tools and libraries for many image formats"
-HOMEPAGE="https://imagemagick.org/index.php"
 
 LICENSE="imagemagick"
 # Please check this on bumps, SONAME is often not updated! Use abidiff on old/new.
@@ -114,22 +114,8 @@ src_prepare() {
 	eautoreconf
 
 	# For testsuite, see bug #500580#c3
-	local ati_cards mesa_cards nvidia_cards render_cards
 	shopt -s nullglob
-	ati_cards=$(echo -n /dev/ati/card*)
-	for card in ${ati_cards[@]} ; do
-		addpredict "${card}"
-	done
-	mesa_cards=$(echo -n /dev/dri/card*)
-	for card in ${mesa_cards[@]} ; do
-		addpredict "${card}"
-	done
-	nvidia_cards=$(echo -n /dev/nvidia*)
-	for card in ${nvidia_cards[@]} ; do
-		addpredict "${card}"
-	done
-	render_cards=$(echo -n /dev/dri/renderD128*)
-	for card in ${render_cards[@]} ; do
+	for card in /dev/{{ati,dri}/card,nvidia,dri/renderD128}*; do
 		addpredict "${card}"
 	done
 	shopt -u nullglob
@@ -245,13 +231,15 @@ src_install() {
 	einstalldocs
 
 	if use perl; then
-		find "${ED}" -type f -name perllocal.pod -exec rm -f {} +
-		find "${ED}" -depth -mindepth 1 -type d -empty -exec rm -rf {} +
+		find "${ED}" -type f -name perllocal.pod -exec rm -f {} + || die
+		find "${ED}" -depth -mindepth 1 -type d -empty -exec rm -rf {} + || die
 	fi
 
-	find "${ED}" -name '*.la' -exec sed -i -e "/^dependency_libs/s:=.*:='':" {} +
 	# .la files in parent are not needed, keep plugin .la files
 	find "${ED}"/usr/$(get_libdir)/ -maxdepth 1 -name "*.la" -delete || die
+
+	# https://github.com/gentoo/gentoo/pull/37716#discussion_r1696713348
+	find "${ED}" -name '*.la' -exec sed -i -e "/^dependency_libs/s:=.*:='':" {} + || die
 
 	if use opencl; then
 		cat <<-EOF > "${T}"/99${PN}
