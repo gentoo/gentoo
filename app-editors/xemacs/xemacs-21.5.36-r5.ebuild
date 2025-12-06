@@ -1,9 +1,6 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Note: xemacs currently does not work with position independent code
-# so the build forces the use of the -no-pie option
-
 EAPI=8
 
 inherit flag-o-matic xdg-utils desktop autotools
@@ -82,10 +79,6 @@ src_prepare() {
 
 src_configure() {
 	local myconf=""
-
-	# bug #639642
-	test-flags -no-pie >/dev/null && append-flags -no-pie
-	filter-flags -pie
 
 	if use X; then
 
