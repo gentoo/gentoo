@@ -3,7 +3,7 @@
 
 EAPI=8
 
-ADA_COMPAT=( gcc_{12..15} )
+ADA_COMPAT=( gcc_{12..16} )
 inherit ada multiprocessing autotools
 
 MYP=${P}-${PV}0518-19F7B-src
