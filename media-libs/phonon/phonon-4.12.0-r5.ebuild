@@ -63,6 +63,6 @@ src_configure() {
 
 src_install() {
 	cmake_src_install
-	make_desktop_entry "${PN}settings" \
-		"Phonon Audio and Video" preferences-desktop-sound
+	make_desktop_entry --eapi9 "${PN}settings" -d "org.kde.${PN}settings" \
+		-n "Phonon Audio and Video" -i preferences-desktop-sound
 }

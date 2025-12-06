@@ -160,7 +160,8 @@ src_install() {
 
 	if use X; then
 		newicon "${DISTDIR}"/links-graphics-xlinks-logo-pic.png links.png
-		make_desktop_entry 'links -g %u' Links links 'Network;WebBrowser'
+		make_desktop_entry --eapi9 "links" -a "-g %u" -n "Links" \
+			-i "links" -c 'Network;WebBrowser'
 		local d="${ED}"/usr/share/applications
 		echo 'MimeType=x-scheme-handler/http;' >> "${d}"/*.desktop || die
 		if use ssl; then
