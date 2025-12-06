@@ -216,11 +216,6 @@ games-emulation/gngeo
 ~dev-python/click-8.3.0
 =dev-python/click-8.3.1
 
-# Mike Gilbert <floppym@gentoo.org> (2025-10-29)
-# No longer used by sys-boot/grub.
-# Removal on 2025-11-28.
-sec-keys/openpgp-keys-danielkiper
-
 # Sam James <sam@gentoo.org> (2025-10-13)
 # Crashes in memtodest when handling PATH. Not yet reported upstream.
 =app-shells/dash-0.5.13.1
