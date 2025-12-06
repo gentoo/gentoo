@@ -20,10 +20,14 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
 
-RDEPEND="${ADA_DEPS}"
-DEPEND="${RDEPEND}
+RDEPEND="
+	${ADA_DEPS}
+	sys-libs/binutils-libs:=
+"
+DEPEND="
+	${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]
-	sys-libs/binutils-libs:="
+"
 
 REQUIRED_USE="${ADA_REQUIRED_USE}"
 
