@@ -55,8 +55,11 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.88.0-range-any_iterator.patch
 	"${FILESDIR}"/${PN}-1.88.0-system-crashing-test.patch
 	"${FILESDIR}"/${PN}-1.88.0-yap-cstdint.patch
+	"${FILESDIR}"/${PN}-1.89.0-dll-no-lto.patch
 	"${FILESDIR}"/${PN}-1.89.0-graph-remove-system-dependency.patch
 	"${FILESDIR}"/${PN}-1.89.0-predef-include-path.patch
+	"${FILESDIR}"/${PN}-1.89.0-python-exclude-broken-tests.patch
+	"${FILESDIR}"/${PN}-1.89.0-python-pickle.patch
 	"${FILESDIR}"/${PN}-1.89.0-unordered-no-tbb.patch
 )
 
@@ -236,13 +239,13 @@ multilib_src_test() {
 		"config"
 		# undefined reference to `boost::math::concepts::real_concept boost::math::bernoulli_b2n<boost::math::concepts::real_concept>(int)
 		"math"
-		# PyObject* boost::parameter::python::aux::unspecified_type():
-		#   /usr/include/python3.13/object.h:339:30: error: lvalue required as left operand of assignment
+		# In function 'PyObject* boost::parameter::python::aux::unspecified_type()':
+		#  /usr/include/python3.13/object.h:339:30: error: lvalue required as left operand of assignment
+		#  #define Py_TYPE(ob) Py_TYPE(_PyObject_CAST(ob))
+		#                      ~~~~~~~^~~~~~~~~~~~~~~~~~~~
 		"parameter_python"
 		# scope/lambda_tests22.cpp(27): test 'x == 1' failed in function 'int main()'
 		"phoenix"
-		# AttributeError: property '<unnamed Boost.Python function>' of 'X' object has no setter
-		"python"
 		# vec_access.hpp:95:223: error: static assertion failed: Boost QVM static assertion failure
 		"qvm"
 		# Processing file ../boost_1_89_0/libs/regex/example/../include/boost/regex/v5/regex_iterator.hpp
