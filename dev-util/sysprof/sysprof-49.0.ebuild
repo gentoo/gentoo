@@ -12,7 +12,7 @@ LICENSE="GPL-3+ GPL-2+"
 API_VERSION="4"
 SLOT="0/${API_VERSION}"
 KEYWORDS="~amd64 ~arm64 ~loong ~x86"
-IUSE="gtk systemd test"
+IUSE="debuginfod gtk systemd test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -29,7 +29,7 @@ RDEPEND="
 	>=gui-libs/libpanel-1.4:1
 	sys-libs/libunwind:=
 	>=sys-auth/polkit-0.114[daemon(+)]
-	dev-libs/elfutils
+	dev-libs/elfutils[debuginfod?]
 	>=dev-util/sysprof-common-${PV}
 	>=dev-util/sysprof-capture-${PV}:${API_VERSION}
 "
@@ -71,7 +71,7 @@ src_configure() {
 		-Dtools=true
 		$(meson_use test tests)
 		-Dexamples=false
-		-Ddebuginfod=disabled
+		$(meson_feature debuginfod)
 		-Dintrospection=disabled
 		-Ddocs=false
 	)
