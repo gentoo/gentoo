@@ -1,0 +1,24 @@
+Fix cmake warning:
+
+CMake Warning (dev) at CMakeLists.txt:241 (exec_program):
+  Policy CMP0153 is not set: The exec_program command should not be called.
+  Run "cmake --help-policy CMP0153" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+
+  Use execute_process() instead.
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+--- a/CMakeLists.txt	2025-12-02 09:18:42.971941006 +0300
++++ b/CMakeLists.txt	2025-12-02 09:19:21.526822869 +0300
+@@ -238,8 +238,9 @@
+ #
+ 
+ # find files not in git repo
+-exec_program(git ${CMAKE_SOURCE_DIR}
+-    ARGS ls-files --others --directory
++execute_process(
++    COMMAND git ls-files --others --directory
++    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+     OUTPUT_VARIABLE IGNORE_FILES
+ )
+ 
