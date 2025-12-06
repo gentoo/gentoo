@@ -1,8 +1,9 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+RUST_MIN_VER="1.87.0"
 [[ ${PV} == 9999* ]] || CRATES="${PN}@${PV}"
 inherit cargo
 
@@ -23,6 +24,7 @@ LICENSE="Apache-2.0"
 # deps
 LICENSE+=" 0BSD Apache-2.0-with-LLVM-exceptions MIT Unlicense Unicode-DFS-2016 ZLIB"
 SLOT="0"
+
 QA_FLAGS_IGNORED="usr/libexec/podman/${PN}"
 QA_PRESTRIPPED="usr/libexec/podman/${PN}"
 ECARGO_VENDOR="${WORKDIR}/vendor"
@@ -42,6 +44,6 @@ src_prepare() {
 }
 
 src_install() {
-	export PREFIX="${EPREFIX}"/usr
+	local -x PREFIX="${EPREFIX}"/usr
 	default
 }
