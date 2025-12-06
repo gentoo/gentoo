@@ -80,6 +80,8 @@ src_install() {
 		dobashcomp "${T}/${PN}"
 		./rustup completions zsh > "${T}/_${PN}" || die
 		dozshcomp "${T}/_${PN}"
+		./rustup completions fish > "${T}/${PN}.fish" || die
+		dofishcomp "${T}/${PN}.fish"
 	else
 		ewarn "Shell completion files not installed! Install them manually with '${PN} completions --help'"
 	fi
