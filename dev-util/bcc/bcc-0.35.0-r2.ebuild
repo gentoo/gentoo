@@ -70,6 +70,7 @@ PATCHES=(
 	"${FILESDIR}/bcc-0.25.0-cmakelists.patch"
 	"${FILESDIR}/bcc-0.23.0-man-compress.patch"
 	"${FILESDIR}/bcc-0.31.0-no-automagic-deps.patch"
+	"${FILESDIR}/bcc-0.35.0-llvm21.patch"
 )
 
 pkg_pretend() {
