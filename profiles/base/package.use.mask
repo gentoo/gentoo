@@ -6,6 +6,10 @@
 
 # New entries go on top.
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2025-12-06)
+# No suitable versions of dev-libs/protobuf available.
+~dev-java/protobuf-java-4.33.2 system-protoc
+
 # Sam James <sam@gentoo.org> (2025-10-29)
 # Help Portage resolve app-crypt/gnupg[verify-sig] with the app-alternatives/gpg
 # transition. The any-of dep in verify-sig.eclass helps a bit, but it struggles
