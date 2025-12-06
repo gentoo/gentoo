@@ -17,7 +17,7 @@ else
 		https://downloads.isc.org/isc/kea/${PV}/${P}.tar.xz
 		!doc? ( https://codeberg.org/peter1010/kea-manpages/archive/kea-manpages-${PV}.tar.gz )
 	"
-	KEYWORDS="~amd64 arm ~arm64 ~x86"
+	KEYWORDS="~amd64 arm arm64 ~x86"
 fi
 
 LICENSE="MPL-2.0"
