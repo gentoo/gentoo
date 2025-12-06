@@ -47,7 +47,7 @@ RDEPEND="
 	media-libs/libsndfile
 	media-libs/libsoundtouch:=
 	>=media-libs/lilv-0.24
-	media-libs/rnnoise
+	>=media-libs/rnnoise-0.2
 	media-libs/speexdsp
 	media-libs/webrtc-audio-processing:2
 	>=media-libs/zita-convolver-3.0.0:=
