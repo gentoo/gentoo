@@ -23,15 +23,17 @@ REQUIRED_USE="
 DEPEND="
 	>=gui-libs/gtk-4.14:4[X?,introspection?,wayland?]
 	>=x11-libs/cairo-1.0
+	dev-cpp/fast_float
 	>=dev-libs/fribidi-1.0.0
 	>=dev-libs/glib-2.72:2
 	crypt?  ( >=net-libs/gnutls-3.2.7:0= )
 	icu? ( dev-libs/icu:= )
-	>=x11-libs/pango-1.22.0[introspection?]
+	>=x11-libs/pango-1.22.0
 	>=dev-libs/libpcre2-10.21:=
 	systemd? ( >=sys-apps/systemd-220:= )
 	>=app-arch/lz4-1.9
 	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
+	x11-libs/pango[introspection?]
 "
 RDEPEND="${DEPEND}
 	~gui-libs/vte-common-${PV}[systemd?]
@@ -62,8 +64,8 @@ src_configure() {
 	# Upstream don't support LTO & error out on it in meson.build (bug #926156)
 	filter-lto
 
-	use X || append-cppflags -DGENTOO_GTK_HIDE_X11
-	use wayland || append-cppflags -DGENTOO_GTK_HIDE_WAYLAND
+	use X || append-flags -DGENTOO_GTK_HIDE_X11
+	use wayland || append-flags -DGENTOO_GTK_HIDE_WAYLAND
 
 	local emesonargs=(
 		-Da11y=true
