@@ -230,6 +230,7 @@ app-eselect/eselect-gnome-shell-extensions
 app-emacs/rg
 app-emacs/emacs-ipython-notebook
 app-crypt/yubikey-manager
+app-crypt/sequoia-chameleon-gnupg
 app-crypt/sequoia-sq
 app-crypt/sequoia-sqv
 app-crypt/certbot-apache
