@@ -21,7 +21,7 @@ inherit linux-mod-r1 multiprocessing pam systemd udev usr-ldscript
 DESCRIPTION="Linux kernel module and userland utilities for ZFS"
 HOMEPAGE="https://github.com/openzfs/zfs"
 
-MODULES_KERNEL_MAX=6.17
+MODULES_KERNEL_MAX=6.18
 MODULES_KERNEL_MIN=4.18
 
 if [[ ${PV} == "9999" ]]; then
@@ -279,6 +279,7 @@ src_configure() {
 		$(use_with unwind libunwind)
 		--disable-static
 		$(usex minimal --without-python --with-python="${EPYTHON}")
+		--enable-linux-experimental
 
 		# See gentoo.patch
 		GENTOO_MAKEARGS_EVAL="${MODULES_MAKEARGS[*]@Q}"
