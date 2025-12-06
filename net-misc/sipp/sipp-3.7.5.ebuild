@@ -7,7 +7,8 @@ inherit cmake
 
 DESCRIPTION="A free Open Source test tool / traffic generator for the SIP protocol"
 HOMEPAGE="https://github.com/SIPp/sipp"
-SRC_URI="https://github.com/SIPp/sipp/releases/download/v${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/SIPp/sipp/releases/download/v${PV}/${P}.tar.gz
+	https://github.com/SIPp/sipp/commit/0ad66bc14fe9ec41cdee50f9300fd6ea3048417d.patch -> ${PN}-3.7.5-cmake.patch"
 
 LICENSE="GPL-2 ISC"
 SLOT="0"
@@ -24,6 +25,10 @@ DEPEND="sys-libs/ncurses:=
 	ssl? ( dev-libs/openssl:= )
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${DISTDIR}/${PN}-3.7.5-cmake.patch"
+)
 
 src_prepare() {
 	sed -e 's/ -Werror / /' -i "${S}/CMakeLists.txt" || die
