@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="cpudetection eselect-ldso index64 openmp pthread relapack test"
 REQUIRED_USE="?? ( openmp pthread )"
-RESTRICT="cpudetection? ( bindist ) !test? ( test )"
+RESTRICT="!cpudetection? ( bindist ) !test? ( test )"
 
 RDEPEND="
 	eselect-ldso? (
