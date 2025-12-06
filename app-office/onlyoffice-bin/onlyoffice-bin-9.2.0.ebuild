@@ -7,7 +7,7 @@ inherit desktop unpacker xdg
 
 MY_P="ONLYOFFICE-DesktopEditors-"${PV}""
 
-DESCRIPTION="Onlyoffice is an office productivity suite (binary version)"
+DESCRIPTION="A free and open source office and productivity suite (binary version)"
 HOMEPAGE="https://www.onlyoffice.com/"
 SRC_URI="
 	amd64? (
@@ -19,7 +19,7 @@ S="${WORKDIR}"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 RESTRICT="mirror strip test"
 
 RDEPEND="
@@ -28,8 +28,16 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/nspr
 	dev-libs/nss
+	dev-qt/qtcore:5
+	dev-qt/qtdbus:5
 	dev-qt/qtdeclarative:5
 	dev-qt/qtgui:5[eglfs]
+	dev-qt/qtmultimedia:5[widgets]
+	dev-qt/qtnetwork:5
+	dev-qt/qtprintsupport:5
+	dev-qt/qtsvg:5
+	dev-qt/qtwidgets:5
+	dev-qt/qtx11extras:5
 	gnome-base/gsettings-desktop-schemas
 	media-libs/alsa-lib
 	media-libs/fontconfig
@@ -43,17 +51,15 @@ RDEPEND="
 	sys-devel/gcc
 	sys-libs/glibc
 	x11-libs/cairo
-	x11-libs/gtk+:3
-	x11-libs/libICE
-	x11-libs/libSM
+	x11-libs/gtk+:3[X]
 	x11-libs/libX11
 	x11-libs/libXcomposite
 	x11-libs/libXdamage
 	x11-libs/libXext
 	x11-libs/libXfixes
-	x11-libs/libXi
 	x11-libs/libXrandr
 	x11-libs/libdrm
+	x11-libs/libnotify
 	x11-libs/libxcb
 	x11-libs/libxkbcommon
 	x11-libs/pango
@@ -67,6 +73,10 @@ QA_PREBUILT="*"
 
 src_prepare() {
 	default
+
+	# Remove bundled Qt libs + icu bug #961968
+	rm opt/onlyoffice/desktopeditors/libQt* || die
+	rm opt/onlyoffice/desktopeditors/libicu* || die
 
 	# Allow launching the ONLYOFFICE on ALSA systems via media-sound/apulse
 	sed -i -e "/^export LD_LIBRARY_PATH=/ s|$|:${EPREFIX}/usr/$(get_libdir)/apulse|" \
