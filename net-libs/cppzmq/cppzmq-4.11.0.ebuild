@@ -11,7 +11,7 @@ SRC_URI="https://github.com/zeromq/${PN}/archive/v${PV}.tar.gz ->  ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~riscv x86 ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86 ~x86-linux"
 
 IUSE="test"
 RESTRICT="!test? ( test )"
@@ -19,7 +19,7 @@ RESTRICT="!test? ( test )"
 RDEPEND=">=net-libs/zeromq-4.3.1"
 # Tests require cmake modules from catch2 and headers from older version of catch
 DEPEND="${RDEPEND}
-	test? ( =dev-cpp/catch-2* )"
+	test? ( =dev-cpp/catch-3* )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.9.0-disable-static.patch"
