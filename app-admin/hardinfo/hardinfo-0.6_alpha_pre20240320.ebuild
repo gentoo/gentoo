@@ -26,7 +26,10 @@ RDEPEND="dev-libs/glib:2
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}"/hardinfo-0.6-fix-function-declarations.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.6-fix-function-declarations.patch
+	"${FILESDIR}"/${PN}-0.6-cmake-raise-cmake-min-version.patch
+)
 
 src_configure() {
 	# Only used for update checking. Revisit when switching to hardinfo2.
