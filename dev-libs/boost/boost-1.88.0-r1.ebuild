@@ -9,7 +9,7 @@ EAPI=8
 # (e.g. https://www.boost.org/users/history/version_1_83_0.html)
 # Note that the latter may sometimes feature patches not on the former too.
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit dot-a edo flag-o-matic multiprocessing python-r1 toolchain-funcs multilib-minimal
 
