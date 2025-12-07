@@ -17,7 +17,8 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="gtk static-libs static-pic"
 REQUIRED_USE="${ADA_REQUIRED_USE}"
 
-RDEPEND="${ADA_DEPS}"
+RDEPEND="${ADA_DEPS}
+	gtk? ( dev-ada/gtkada )"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-ada/gprbuild[${ADA_USEDEP}]"
 
