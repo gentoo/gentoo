@@ -37,6 +37,12 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-12-07)
+# Depends on PyQt5, stalled porting effort upstream.
+# Needs porting to Python 3.13, but 0.6.5 requires unpackaged dependency.
+# Bugs #948094, #952551. Removal on 2026-01-15
+media-sound/linux-show-player
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-07)
 # IUSE qt5 feature sees no porting effort upstream. 2.4.9-r1 remains
 # available with IUSE qt5 removed. Bug #965503
 # Removal on 2026-01-15
