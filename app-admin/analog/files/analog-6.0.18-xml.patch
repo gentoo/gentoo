@@ -1,0 +1,28 @@
+https://github.com/c-amie/analog-ce/pull/10/commits/405918c5dd2aab6e50b87e6f79aac7a345cbc485
+
+From: Jinseek Ryu <heat2048@gmail.com>
+Date: Mon, 7 Jul 2025 12:29:19 +0900
+Subject: [PATCH] fix xml output segmentation fault
+
+--- a/src/outxml.c
++++ b/src/outxml.c
+@@ -65,7 +65,7 @@ void xml_stylehead(FILE *outf, Outchoices *od)
+ 	*outfp=outf;
+ 
+ 	// KLUDGE!!!!
+-	opts=(Options*)((int)od-offsetof(Options,outopts));	
++	opts=(Options*)((char*)od-offsetof(Options,outopts));
+ 
+ 	t=time(0); 
+ 	strftime( buffer, 256, "%Y%m%d%H%M%S", gmtime(&t) );
+@@ -78,8 +78,8 @@ void xml_stylehead(FILE *outf, Outchoices *od)
+ 		XMLDBG "<analog>",
+ 		xmlversion, 
+ 		encoding,
+-		od->xmldtd,
+-		VNUMBER,	// VERSION instead? VERSION includes platform it was built.
++		od->xmldtd,
++		VNUMBER,	// VERSION instead? VERSION includes platform it was built.
+ 		buffer );
+ 
+ 	// set up appropriate defaults for XML output.
