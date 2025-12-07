@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit meson systemd udev
+inherit linux-info meson systemd udev
 
 DESCRIPTION="FIFO-like jobserver node via CUSE"
 HOMEPAGE="https://codeberg.org/amonakov/guildmaster"
@@ -26,6 +26,11 @@ DEPEND="sys-fs/fuse:3="
 RDEPEND="
 	${DEPEND}
 "
+
+pkg_pretend() {
+	local CONFIG_CHECK="~CUSE"
+	check_extra_config
+}
 
 src_configure() {
 	local emesonargs=(
