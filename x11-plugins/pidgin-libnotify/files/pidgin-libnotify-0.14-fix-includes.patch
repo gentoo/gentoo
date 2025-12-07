@@ -1,0 +1,21 @@
+Bug: https://bugs.gentoo.org/934814
+
+--- a/src/pidgin-libnotify.c
++++ b/src/pidgin-libnotify.c
+@@ -27,11 +27,11 @@
+ #define PURPLE_PLUGINS
+ #endif
+ 
+-#include <pidgin.h>
+-#include <version.h>
+-#include <debug.h>
+-#include <util.h>
+-#include <privacy.h>
++#include <pidgin/pidgin.h>
++#include <libpurple/version.h>
++#include <libpurple/debug.h>
++#include <libpurple/util.h>
++#include <libpurple/privacy.h>
+ 
+ /* for pidgin_create_prpl_icon */
+ #include <gtkutils.h>
