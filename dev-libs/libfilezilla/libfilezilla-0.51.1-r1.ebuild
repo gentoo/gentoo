@@ -11,7 +11,7 @@ HOMEPAGE="https://lib.filezilla-project.org/"
 SRC_URI="https://dev.gentoo.org/~dlan/distfiles/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2+"
-SLOT="0/50" # libfilezilla.so version
+SLOT="0/48" # libfilezilla.so version
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="test"
 
@@ -29,6 +29,7 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.37.1-pthread.patch
 	"${FILESDIR}"/${PN}-0.41.0-gcc13.patch
+	"${FILESDIR}"/${PN}-0.51.1-musl.patch
 )
 
 pkg_pretend() {
