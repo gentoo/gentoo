@@ -41,6 +41,7 @@ BDEPEND="test? (
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-22.1.0-test.patch
+	"${FILESDIR}"/${P}-pkg_resource.patch
 )
 
 distutils_enable_tests pytest
