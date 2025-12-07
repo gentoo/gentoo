@@ -25,7 +25,7 @@ BDEPEND="virtual/pkgconfig"
 
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_INSTALL_LIBDIR="/$(get_libdir)"
+		-DKDE_INSTALL_LIBDIR="/$(get_libdir)"
 	)
 	ecm_src_configure
 }
