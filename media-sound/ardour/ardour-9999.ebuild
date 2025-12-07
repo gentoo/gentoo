@@ -223,6 +223,7 @@ src_install() {
 pkg_postinst() {
 	xdg_pkg_postinst
 
+	optfeature "another synth used by default if installed" media-plugins/gmsynth-lv2
 	optfeature "exporting audio in mp3" media-video/ffmpeg[lame]
 
 	elog "Please do _not_ report problems with the package to ${PN} upstream."
