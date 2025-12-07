@@ -57,6 +57,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.88.0-range-any_iterator.patch
 	"${FILESDIR}"/${PN}-1.88.0-system-crashing-test.patch
 	"${FILESDIR}"/${PN}-1.88.0-yap-cstdint.patch
+	"${FILESDIR}"/${PN}-1.89.0-dll-no-lto.patch
+	"${FILESDIR}"/${PN}-1.89.0-python-exclude-broken-tests.patch
+	"${FILESDIR}"/${PN}-1.89.0-python-pickle.patch
 )
 
 create_user-config.jam() {
@@ -276,8 +279,6 @@ multilib_src_test() {
 		"phoenix"
 		# Unable to find file or target named (yes, really)
 		"predef"
-		# AttributeError: property '<unnamed Boost.Python function>' of 'X' object has no setter
-		"python"
 		# vec_access.hpp:95:223: error: static assertion failed: Boost QVM static assertion failure
 		"qvm"
 		# regex_timer.cpp:19: ../../../boost/timer.hpp:21:3: error: #error This header is
