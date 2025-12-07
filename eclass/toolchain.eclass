@@ -424,7 +424,7 @@ if tc_has_feature zstd ; then
 fi
 
 if tc_has_feature valgrind ; then
-	BDEPEND+=" valgrind? ( dev-debug/valgrind )"
+	DEPEND+=" valgrind? ( dev-debug/valgrind )"
 fi
 
 if [[ ${PN} != gnat-gpl ]] && tc_has_feature ada ; then
