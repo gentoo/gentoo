@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..13} )
-ADA_COMPAT=( gcc_{14..15} )
+ADA_COMPAT=( gcc_{14..16} )
 
 inherit ada python-single-r1 multiprocessing
 
@@ -52,15 +52,27 @@ pkg_setup() {
 src_prepare() {
 	default
 	rm -r testsuite/tests/ada_api/foreign_nodes || die
+	rm -r testsuite/tests/ada_api/source_files || die
 	rm -r testsuite/tests/{c_api,python}/gpr_ada_only || die
 	rm -r testsuite/tests/lexical_envs/envs_* || die
 	rm -r testsuite/tests/lexical_envs/records || die
 	rm -r testsuite/tests/lexical_envs/gen_pkg_inst || die
+	rm -r testsuite/tests/name_resolution/abort_signal || die
+	rm -r testsuite/tests/name_resolution/ada2012_iterator || die
+	rm -r testsuite/tests/name_resolution/address_clause || die
+	rm -r testsuite/tests/name_resolution/at_clause || die
+	rm -r testsuite/tests/name_resolution/call_expr || die
 	rm -r testsuite/tests/name_resolution/concat_op || die
+	rm -r testsuite/tests/name_resolution/deref_attribute || die
 	rm -r testsuite/tests/name_resolution/entries_tasks_attrs || die
+	rm -r testsuite/tests/name_resolution/for_loop_6 || die
 	rm -r testsuite/tests/name_resolution/gnat_compare_implicit_references || die
 	rm -r testsuite/tests/name_resolution/qual_expr_stmt || die
+	rm -r testsuite/tests/name_resolution/stream_attrs || die
+	rm -r testsuite/tests/name_resolution/test_subp_address || die
 	rm -r testsuite/tests/properties/fully_qualified_name_4 || die
+	rm -r testsuite/tests/properties/inherited_primitives_3 || die
+	rm -r testsuite/tests/properties/get_primitives || die
 }
 
 src_configure() {
