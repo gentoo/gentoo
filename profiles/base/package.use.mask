@@ -6,6 +6,10 @@
 
 # New entries go on top.
 
+# Sam James <sam@gentoo.org> (2025-12-07)
+# Needs not-yet-released GCC 16.
+dev-lang/python tail-call-interp
+
 # Sam James <sam@gentoo.org> (2025-10-29)
 # Help Portage resolve app-crypt/gnupg[verify-sig] with the app-alternatives/gpg
 # transition. The any-of dep in verify-sig.eclass helps a bit, but it struggles
