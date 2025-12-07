@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://codeberg.org/amonakov/guildmaster.git"
 	inherit git-r3
 else
-	GUILDMASTER_COMMIT="1237d0d0158c3a6a1ffce2f5d98a9bdda5c23f2a"
+	GUILDMASTER_COMMIT="463382ba5b47625a9355832cd792a164c54237f9"
 	SRC_URI="https://codeberg.org/amonakov/guildmaster/archive/${GUILDMASTER_COMMIT}.tar.gz -> ${PN}-${GUILDMASTER_COMMIT}.cb.tar.gz"
 	S="${WORKDIR}"/${PN}
 
@@ -25,13 +25,7 @@ SLOT="0"
 DEPEND="sys-fs/fuse:3="
 RDEPEND="
 	${DEPEND}
-	!media-gfx/graphicsmagick
 "
-
-PATCHES=(
-	"${FILESDIR}"/0001-meson-add-build-system.patch
-	"${FILESDIR}"/0002-Add-OpenRC-systemd-service-files.patch
-)
 
 src_configure() {
 	local emesonargs=(
