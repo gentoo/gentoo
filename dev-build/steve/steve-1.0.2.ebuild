@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit meson systemd udev
+inherit linux-info meson systemd udev
 
 DESCRIPTION="A simple jobserver for Gentoo"
 HOMEPAGE="https://gitweb.gentoo.org/proj/steve.git/"
@@ -25,6 +25,11 @@ RDEPEND="
 BDEPEND="
 	virtual/pkgconfig
 "
+
+pkg_pretend() {
+	local CONFIG_CHECK="~CUSE"
+	check_extra_config
+}
 
 src_install() {
 	meson_src_install
