@@ -37,6 +37,12 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-12-07)
+# Last release depends on Qt5, upstream appears dormant. Several
+# alternatives are available in ::gentoo. Bug #967107
+# Removal on 2026-01-15
+games-fps/doomsday
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-07)
 # Depends on PyQt5, stalled porting effort upstream.
 # Needs porting to Python 3.13, but 0.6.5 requires unpackaged dependency.
 # Bugs #948094, #952551. Removal on 2026-01-15
