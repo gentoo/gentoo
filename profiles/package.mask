@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-07)
+# IUSE qt5 feature sees no porting effort upstream. 2.4.9-r1 remains
+# available with IUSE qt5 removed. Bug #965503
+# Removal on 2026-01-15
+=media-libs/libffado-2.4.9
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-12-05)
 # Depends on Qt5, stalled porting effort upstream. Bug #955277
 # Removal on 2026-01-15
