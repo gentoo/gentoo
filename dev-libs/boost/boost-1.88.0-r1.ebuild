@@ -57,6 +57,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.88.0-range-any_iterator.patch
 	"${FILESDIR}"/${PN}-1.88.0-system-crashing-test.patch
 	"${FILESDIR}"/${PN}-1.88.0-yap-cstdint.patch
+	# https://github.com/boostorg/dll/issues/108
 	"${FILESDIR}"/${PN}-1.89.0-dll-no-lto.patch
 	"${FILESDIR}"/${PN}-1.89.0-python-exclude-broken-tests.patch
 	"${FILESDIR}"/${PN}-1.89.0-python-pickle.patch
@@ -151,7 +152,12 @@ src_configure() {
 	# https://bugs.gentoo.org/943975
 	# https://github.com/boostorg/quickbook/issues/27
 	# https://github.com/boostorg/spirit/issues/800
-	use tools && filter-lto
+	#
+	# Tests also fail:
+	# https://bugs.gentoo.org/956660
+	# https://github.com/boostorg/smart_ptr/issues/121
+	# https://github.com/boostorg/thread/issues/415
+	filter-lto
 
 	lto-guarantee-fat
 

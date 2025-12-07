@@ -1,6 +1,8 @@
 Unconditionally disable LTO in case it's injected from the outside.
 LTO breaks the test as some symbols and sections are gone/rearranged.
 
+https://github.com/boostorg/dll/issues/108
+
 --- a/libs/dll/test/Jamfile.v2
 +++ a/libs/dll/test/Jamfile.v2
 @@ -36,7 +36,7 @@ project
