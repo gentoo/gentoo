@@ -1,0 +1,10 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -520,7 +520,6 @@
+ else()
+   add_library(onnx ${ONNX_SRCS})
+ endif()
+-set_target_properties(onnx PROPERTIES CXX_VISIBILITY_PRESET hidden)
+ set_target_properties(onnx PROPERTIES VISIBILITY_INLINES_HIDDEN ON)
+ 
+ target_include_directories(onnx PUBLIC
