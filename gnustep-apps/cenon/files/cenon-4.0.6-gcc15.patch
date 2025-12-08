@@ -1,0 +1,67 @@
+https://salsa.debian.org/gnustep-team/cenon.app/-/blob/2a877c7c09ad9a7727f48027fe39c67acb1061c3/debian/patches/gcc-15.patch
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1096423
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1099541
+
+Description: Add workaround to fix FTBFS with GCC 15.
+ The bug is in gobjc-15 (#1099541) so this patch must be removed when it's
+ fixed upstream and the fix is included in Debian.
+Author: Yavor Doganov <yavor@gnu.org>
+Bug-Debian: https://bugs.debian.org/1096423
+Forwarded: not-needed
+Last-Update: 2025-09-07
+--- cenon.app.orig/GraphicObjects.subproj/VArc.m
++++ cenon.app/GraphicObjects.subproj/VArc.m
+@@ -2239,7 +2239,7 @@
+ 
+                 ea = vhfAngleOfPointRelativeCenter(gridPoint, center);
+                 an = ea - begAngle;
+-                if ( angle*an < 0.0 && Diff(angle, an) >= 180.0 )
++                if ( ({angle;})*an < 0.0 && Diff(angle, an) >= 180.0 )
+                     an = (angle>0.0) ? 360.0+an : an-360.0;
+                 if (an<=TOLERANCE) an = 360.0;
+                 [self setCenter:center start:start angle:an];
+@@ -2912,7 +2912,7 @@
+                 a = begAngle + angle; if (a<0.0) a+=360.0; if (a>=360.0) a-=360.0;
+                 begAngle = vhfAngleOfPointRelativeCenter(start, center);
+                 a = a - begAngle;	/* we don't move the end point */
+-                if ( angle*a < 0.0 && Diff(angle, a) >= 180.0 )
++                if ( ({angle;})*a < 0.0 && Diff(angle, a) >= 180.0 )
+                     a = (angle>0.0) ? 360.0+a : a-360.0;
+                 angle = a;
+             }
+@@ -2947,7 +2947,7 @@
+                 end.y = center.y + (dy*radius)/c;
+                 a = vhfAngleOfPointRelativeCenter(end, center);
+                 a = a - begAngle;
+-                if ( angle*a < 0.0 && Diff(angle, a) >= 180.0 )
++                if ( ({angle;})*a < 0.0 && Diff(angle, a) >= 180.0 )
+                     a = (angle>0.0) ? 360.0+a : a-360.0;
+                 angle = a;
+             }
+@@ -3014,7 +3014,7 @@
+                 a = begAngle + angle; if (a<0.0) a+=360.0; if (a>=360.0) a-=360.0;
+                 begAngle = vhfAngleOfPointRelativeCenter(start, center);
+                 a = a - begAngle;	/* we don't move the end point */
+-                if ( angle*a <= 0.0 && Diff(angle, a) >= 180.0 )
++                if ( ({angle;})*a <= 0.0 && Diff(angle, a) >= 180.0 )
+                     a = (angle>0.0) ? 360.0+a : a-360.0;
+                 angle = a;
+             }
+@@ -3049,7 +3049,7 @@
+                 end.y = center.y + (dy*radius)/c;
+                 a = vhfAngleOfPointRelativeCenter(end, center);
+                 a = a - begAngle;
+-                if ( angle*a <= 0.0 && Diff(angle, a) >= 180.0 )
++                if ( ({angle;})*a <= 0.0 && Diff(angle, a) >= 180.0 )
+                     a = (angle>0.0) ? 360.0+a : a-360.0;
+                 angle = a;
+             }
+@@ -3057,7 +3057,7 @@
+             {   end = p;
+                 a = vhfAngleOfPointRelativeCenter(end, center);
+                 a = a - begAngle;
+-                if ( angle*a <= 0.0 && Diff(angle, a) >= 180.0 )
++                if ( ({angle;})*a <= 0.0 && Diff(angle, a) >= 180.0 )
+                     a = (angle>0.0) ? 360.0+a : a-360.0;
+                 angle = a;
+                 start = vhfPointAngleFromRefPoint(center, end, -angle);

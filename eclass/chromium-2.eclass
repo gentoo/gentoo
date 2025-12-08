@@ -78,7 +78,7 @@ fi
 # not selected via the L10N variable.
 # Also performs QA checks to ensure CHROMIUM_LANGS has been set correctly.
 chromium_remove_language_paks() {
-	local lang pak
+	local lang pak suffixed
 
 	# Look for missing pak files.
 	for lang in ${CHROMIUM_LANGS}; do
@@ -93,8 +93,12 @@ chromium_remove_language_paks() {
 
 	# Look for extra pak files.
 	# Remove pak files that the user does not want.
+	# Chromium includes pak files with non-standard _ suffixes. _ is not a valid
+	# language tag character, so we strip this suffix when checking the USE
+	# flag, thereby grouping such files with their non-suffixed counterparts.
 	for pak in *.pak; do
-		lang=${pak%.pak}
+		suffixed=${pak%.pak}
+		lang=${suffixed%%_*}
 
 		if [[ ${lang} == en-US ]]; then
 			continue

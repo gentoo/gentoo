@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~x86"
+KEYWORDS="amd64 arm64"
 
 RDEPEND="
 	dev-python/gherkin-official[${PYTHON_USEDEP}]
@@ -28,7 +28,8 @@ RDEPEND="
 	dev-python/typing-extensions[${PYTHON_USEDEP}]
 "
 
-EPYTEST_PLUGINS=()
+EPYTEST_PLUGINS=( ${PN} )
+EPYTEST_PLUGIN_LOAD_VIA_ENV=1
 distutils_enable_tests pytest
 
 DOCS=( AUTHORS.rst CHANGES.rst README.rst )
@@ -39,7 +40,6 @@ PATCHES=(
 
 src_test() {
 	local -x COLUMNS=80
-	local -x PYTEST_PLUGINS=pytest_bdd.plugin
 
 	local EPYTEST_DESELECT=(
 		# https://github.com/pytest-dev/pytest-bdd/issues/779

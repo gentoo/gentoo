@@ -13,6 +13,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="pypi">smartypants</remote-id>
-		<remote-id type="github">leohemsted/smartypants.py</remote-id>
+		<remote-id type="github">justinmayer/smartypants.py</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -14,7 +14,7 @@ SRC_URI="https://download.fcitx-im.org/fcitx5/fcitx5/fcitx5-${PV}_dict.tar.zst -
 S="${WORKDIR}/${MY_PN}-${PV}"
 LICENSE="LGPL-2+ Unicode-DFS-2016"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc ppc64 ~riscv x86"
 IUSE="+autostart doc +emoji +enchant +keyboard presage +server systemd test wayland +X"
 REQUIRED_USE="
 	|| ( wayland X )
@@ -36,7 +36,7 @@ RDEPEND="
 		app-text/doxygen
 		dev-texlive/texlive-fontutils
 	)
-	emoji? ( sys-libs/zlib )
+	emoji? ( virtual/zlib:= )
 	enchant? ( app-text/enchant:2 )
 	keyboard? (
 		app-text/iso-codes
@@ -73,6 +73,8 @@ BDEPEND="
 	virtual/pkgconfig
 	kde-frameworks/extra-cmake-modules:0
 "
+
+PATCHES=( "${FILESDIR}"/${P}-fix-crashlog-odr.patch )
 
 src_configure() {
 	local mycmakeargs=(

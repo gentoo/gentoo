@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ IUSE="doc examples fasttree judy lzma packed tcl"
 
 RDEPEND="
 	dev-libs/glib:2
-	sys-libs/zlib
+	virtual/zlib:=
 	x11-libs/pango
 	x11-libs/gtk+:3[wayland]
 	judy? ( dev-libs/judy )

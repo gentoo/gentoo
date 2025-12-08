@@ -12,7 +12,7 @@ if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/rpm-software-management/createrepo_c.git"
 else
 	SRC_URI="https://github.com/rpm-software-management/createrepo_c/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-2"
@@ -21,10 +21,13 @@ SLOT="0"
 IUSE="legacy test zstd"
 RESTRICT="!test? ( test )"
 
+# Restrict to <app-arch/rpm-6.0.0 because it fails to build with newer
+# versions due to header changes.
+# https://github.com/rpm-software-management/createrepo_c/commit/4e37bc582b1673ff767dbd0b570ef1c8871d3e8c
 DEPEND="
 	app-arch/bzip2:=
 	app-arch/drpm
-	app-arch/rpm
+	<app-arch/rpm-6.0.0
 	app-arch/xz-utils
 	app-arch/zchunk
 	app-arch/zstd:=
@@ -35,7 +38,7 @@ DEPEND="
 	net-misc/curl
 	sys-apps/file
 	sys-libs/libmodulemd
-	sys-libs/zlib:=
+	virtual/zlib:=
 "
 
 RDEPEND="${DEPEND}"

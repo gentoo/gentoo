@@ -1,9 +1,7 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-# COMMIT=""
 
 inherit elisp
 
@@ -14,10 +12,12 @@ HOMEPAGE="https://www.racket-mode.com/
 if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
 
-	EGIT_REPO_URI="https://github.com/greghendershott/${PN}.git"
+	EGIT_REPO_URI="https://github.com/greghendershott/${PN}"
 else
+	COMMIT=""
+
 	SRC_URI="https://github.com/greghendershott/${PN}/archive/${COMMIT}.tar.gz
-		-> ${P}.tar.gz"
+		-> ${P}.snapshot.gh.tar.gz"
 	S="${WORKDIR}/${PN}-${COMMIT}"
 
 	KEYWORDS="~amd64 ~x86"
@@ -25,8 +25,6 @@ fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-scheme/racket:=[-minimal]
@@ -62,7 +60,9 @@ src_compile() {
 
 src_test() {
 	# Set "PLTUSERHOME" to a safe temp directory to prevent writing to "~".
-	PLTUSERHOME="${T}/racket-mode/test-racket" emake test-racket
+	local -x PLTUSERHOME="${T}/racket-mode/test-racket"
+
+	emake test-racket
 }
 
 src_install() {

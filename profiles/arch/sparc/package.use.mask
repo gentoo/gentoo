@@ -1,9 +1,25 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Philipp Rösner <rndxelement@protonmail.com> (2025-09-23)
+# media-libs/zxingcpp is not keyworded here
+app-text/mupdf barcode
+
+# Michał Górny <mgorny@gentoo.org> (2025-08-21)
+# Requires dev-python/qtconsole.
+dev-python/ipython gui
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-16)
+# virtual/mysql[static] has no keyworded implementations here.
+>=virtual/mysql-8.0 static
+
+# Cristian Othón Martínez Vera <cfuga@cfuga.mx> (2025-07-15)
+# Needs gui-apps/grim, which is not keyworded here
+x11-misc/xscreensaver wayland
+
 # Christopher Byrne <salah.coronya@gmail.com> (2025-06-13)
 # dev-ml/findlib is not keyworkded here
-sys-libs/libnbd test
+sys-libs/libnbd ocaml
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-06-13)
 # dev-libs/libwacom is not keyworded here
@@ -182,7 +198,6 @@ app-crypt/mit-krb5 keyutils
 app-emulation/qemu keyutils
 net-fs/samba ads
 net-fs/cifs-utils ads creds pam
->=sys-libs/libblockdev-3.0.0 cryptsetup
 sys-libs/libnvme keyutils
 
 # Sam James <sam@gentoo.org> (2024-01-02)
@@ -199,8 +214,8 @@ media-libs/libavif rav1e
 
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2023-11-15)
 # Vulkan is not available here
-media-video/ffmpeg shaderc vulkan
-media-video/ffmpeg-compat shaderc vulkan
+media-video/ffmpeg shaderc
+media-video/ffmpeg-compat shaderc
 
 # Michał Górny <mgorny@gentoo.org> (2023-10-22)
 # This is not ISDN CAPI, so unmask it.
@@ -211,10 +226,6 @@ media-video/rav1e -capi
 dev-python/ipython notebook
 dev-python/nbclient test
 dev-python/nbconvert test
-
-# Violet Purcell <vimproved@inventati.org> (2023-10-12)
-# dev-build/samurai is not keyworded here.
-app-alternatives/ninja samurai
 
 # Patrick McLean <chutzpah@gentoo.org> (2023-10-03)
 # sys-apps/s6-linux-init has not been tested on this arch
@@ -389,8 +400,10 @@ dev-cpp/eigen test
 # Sam James <sam@gentoo.org> (2021-04-27)
 # Deps not yet tested/keyworded.
 llvm-core/clang-common default-compiler-rt default-lld
-llvm-core/clang-runtime compiler-rt default-compiler-rt default-lld
+llvm-core/clang-linker-config default-lld
+llvm-runtimes/clang-runtime compiler-rt default-compiler-rt default-lld
 llvm-core/llvm z3
+llvm-runtimes/clang-rtlib-config default-compiler-rt
 
 # Sam James <sam@gentoo.org> (2021-03-19)
 # On sparc, we have to force sys-apps/grep[libsigsegv]
@@ -433,7 +446,7 @@ media-libs/libsdl2 fcitx
 
 # Matt Turner <mattst88@gentoo.org> (2020-08-11)
 # No drivers on this architecture support Vulkan
-media-libs/mesa video_cards_zink vulkan vulkan-overlay
+media-libs/mesa video_cards_zink vulkan-overlay
 
 # Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
 # Mask io-uring & zbc pending keywording
@@ -565,11 +578,6 @@ dev-lang/spidermonkey jit
 # No ffmpeg keywords on sparc
 media-sound/dir2ogg aac wma
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2018-08-30)
-# dev-games/openscenegraph is a heavy unkeyworded dependency.
-# Skip keywording it for now.
-app-office/scribus osg
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2018-05-08)
 # Mask USE=games to avoid unkeyworded games-util/qstat.
 net-analyzer/monitoring-plugins game
@@ -602,7 +610,6 @@ net-libs/gnutls test-full
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-07)
 # Requires USE=bluetooth that is masked in this profile.
-media-sound/pulseaudio ofono-headset
 media-sound/pulseaudio-daemon ofono-headset
 net-misc/ofono dundee
 
@@ -616,7 +623,7 @@ xfce-base/xfwm4 xpresent
 
 # Michał Górny <mgorny@gentoo.org> (2017-03-23)
 # Most of clang runtimes are not supported here
-llvm-core/clang-runtime openmp sanitize
+llvm-runtimes/clang-runtime openmp sanitize
 
 # Pacho Ramos <pacho@gentoo.org> (2017-02-04)
 # Missing keywords, bug #599572
@@ -624,8 +631,8 @@ net-libs/gnome-online-accounts gnome
 x11-terms/gnome-terminal gnome-shell
 
 # Justin Lecher <jlec@gentoo.org> (2017-01-15)
-# unkeyworded rev deps
-dev-games/openscenegraph gdal las
+# unkeyworded rev dep
+dev-games/openscenegraph gdal
 
 # Pacho Ramos <pacho@gentoo.org> (2017-01-02)
 # Don't keyword redis
@@ -745,9 +752,8 @@ x11-misc/colord argyllcms extra-print-profiles
 
 # Robin H Johnson <robbat2@gentoo.org> (2012-11-01)
 # MySQL 5.5 wants systemtap, tcmalloc & jemalloc
->=dev-db/mysql-5.5 systemtap jemalloc
+>=dev-db/mysql-5.5 jemalloc
 >=dev-db/mariadb-5.5 systemtap jemalloc
->=dev-db/percona-server-5.5 jemalloc
 
 # Diego Elio Pettenò <flameeyes@gentoo.org> (2012-06-24)
 # Requires libpcre with jit

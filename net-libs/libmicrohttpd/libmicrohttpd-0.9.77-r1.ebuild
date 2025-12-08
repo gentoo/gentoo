@@ -35,6 +35,7 @@ DOCS=( AUTHORS NEWS COPYING README ChangeLog )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.76-fix-test_tricky-libcurl.patch # Gentoo Bug #953520
+	"${FILESDIR}"/${PN}-0.9.76-fix-test-with-curl-8-16.patch # Gentoo Bug #962980
 )
 
 # All checks in libmicrohttpd's configure are correct

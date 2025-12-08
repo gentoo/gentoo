@@ -11,9 +11,9 @@ SRC_URI="https://downloads.sourceforge.net/mergelog/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~x86"
+KEYWORDS="amd64 ~arm64 ppc x86"
 
-RDEPEND="sys-libs/zlib"
+RDEPEND="virtual/zlib:="
 DEPEND="${RDEPEND}"
 
 PATCHES=(

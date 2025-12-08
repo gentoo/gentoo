@@ -33,7 +33,7 @@ BDEPEND="
 		dev-util/gtk-doc
 		app-text/docbook-xml-dtd:4.3
 	)
-	introspection? ( dev-libs/gobject-introspection:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="
 	dev-libs/glib:2
@@ -41,7 +41,7 @@ DEPEND="
 		dev-libs/glib:2[gtk-doc(+),doc(+)]
 	)
 	dev-libs/libxml2:2=
-	sys-libs/zlib
+	virtual/zlib:=
 	gstreamer? ( ${GST_DEPEND} )
 	packet-socket? ( sys-process/audit )
 	usb? ( virtual/libusb:1 )

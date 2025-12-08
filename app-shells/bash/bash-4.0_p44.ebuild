@@ -10,7 +10,7 @@ GENTOO_PATCH_DEV="sam"
 GENTOO_PATCH_VER="${PV}"
 
 # Official patchlevel
-# See ftp://ftp.cwru.edu/pub/bash/bash-4.0-patches/
+# See https://ftp.gnu.org/gnu/bash/bash-4.0-patches/
 PLEVEL="${PV##*_p}"
 MY_PV="${PV/_p*}"
 MY_PV="${MY_PV/_/-}"
@@ -40,7 +40,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3"
 SLOT="${MY_PV}"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~m68k ~mips ppc ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~m68k ~mips ppc ppc64 ~s390 ~sparc x86"
 IUSE="afs mem-scramble +net nls +readline static"
 
 LIB_DEPEND=">=sys-libs/ncurses-5.2-r2[static-libs(+)]

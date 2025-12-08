@@ -12,7 +12,7 @@ SRC_URI="https://lib.openmpt.org/files/libopenmpt/src/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv sparc x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~sparc x86"
 IUSE="examples mp3 ogg static-libs test vorbis zlib"
 RESTRICT="!test? ( test )"
 
@@ -20,7 +20,7 @@ RDEPEND="
 	mp3? ( media-sound/mpg123[${MULTILIB_USEDEP}] )
 	ogg? ( media-libs/libogg[${MULTILIB_USEDEP}] )
 	vorbis? ( media-libs/libvorbis[${MULTILIB_USEDEP}] )
-	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
+	zlib? ( virtual/zlib:=[${MULTILIB_USEDEP}] )
 "
 
 DEPEND="${RDEPEND}"

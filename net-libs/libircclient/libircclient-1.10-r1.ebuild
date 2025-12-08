@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/libircclient/${P}.tar.gz"
 
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc ppc64 ~riscv sparc x86"
+KEYWORDS="amd64 ~arm64 ppc ppc64 ~riscv ~sparc x86"
 IUSE="doc ssl static-libs threads"
 
 DEPEND="ssl? (

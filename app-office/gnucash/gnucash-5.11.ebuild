@@ -39,7 +39,7 @@ RDEPEND="
 	${GUILE_DEPS}
 	>=app-crypt/libsecret-0.18
 	>=dev-libs/glib-2.56.1:2
-	>=sys-libs/zlib-1.1.4
+	>=virtual/zlib-1.1.4:=
 	dev-libs/boost:=[icu,nls]
 	dev-libs/icu:=
 	dev-libs/libxml2:2=

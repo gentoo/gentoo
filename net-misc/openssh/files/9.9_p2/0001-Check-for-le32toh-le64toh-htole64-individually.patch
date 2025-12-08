@@ -1,0 +1,87 @@
+From 4b8d141ec165aa29a48316768089cb03aed3aada Mon Sep 17 00:00:00 2001
+Message-ID: <4b8d141ec165aa29a48316768089cb03aed3aada.1758727915.git.sam@gentoo.org>
+From: Darren Tucker <dtucker@dtucker.net>
+Date: Wed, 26 Feb 2025 18:16:03 +1100
+Subject: [PATCH 01/10] Check for le32toh, le64toh, htole64 individually.
+
+It appears that at least some versions of endian.h in glibc do not have
+the latter two, so check for and replace each one individually.
+bz#3794, ok djm@
+---
+ configure.ac | 12 ++++++++++++
+ defines.h    | 28 +++++++++++++++++++++-------
+ 2 files changed, 33 insertions(+), 7 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 9053a9a2b..57a8d1007 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -536,6 +536,18 @@ AC_CHECK_HEADERS([ \
+ 	wchar.h \
+ ])
+ 
++AC_CHECK_DECLS([le32toh, le64toh, htole64], [], [], [
++#ifdef HAVE_SYS_TYPES_H
++# include <sys/types.h>
++#endif
++#ifdef HAVE_STDINT_H
++# include <stdint.h>
++#endif
++#ifdef HAVE_ENDIAN_H
++# include <endian.h>
++#endif
++])
++
+ # On some platforms (eg SunOS4) sys/audit.h requires sys/[time|types|label.h]
+ # to be included first.
+ AC_CHECK_HEADERS([sys/audit.h], [], [], [
+diff --git a/defines.h b/defines.h
+index c1c21aba6..090f49f55 100644
+--- a/defines.h
++++ b/defines.h
+@@ -646,7 +646,9 @@ struct winsize {
+ # endif /* WORDS_BIGENDIAN */
+ #endif /* BYTE_ORDER */
+ 
+-#ifndef HAVE_ENDIAN_H
++#if (defined(HAVE_DECL_LE32TOH) && HAVE_DECL_LE32TOH == 0) || \
++    (defined(HAVE_DECL_LE64TOH) && HAVE_DECL_LE64TOH == 0) || \
++    (defined(HAVE_DECL_HTOLE64) && HAVE_DECL_HTOLE64 == 0)
+ # define openssh_swap32(v)					\
+ 	(uint32_t)(((uint32_t)(v) & 0xff) << 24 |		\
+ 	((uint32_t)(v) & 0xff00) << 8 |				\
+@@ -662,13 +664,25 @@ struct winsize {
+ 	((uint64_t)(v) & 0xff000000000000ULL) >> 40 |		\
+ 	((uint64_t)(v) & 0xff00000000000000ULL) >> 56)
+ # ifdef WORDS_BIGENDIAN
+-#  define le32toh(v) (openssh_swap32(v))
+-#  define le64toh(v) (openssh_swap64(v))
+-#  define htole64(v) (openssh_swap64(v))
++#  if defined(HAVE_DECL_LE32TOH) && HAVE_DECL_LE32TOH == 0
++#   define le32toh(v) (openssh_swap32(v))
++#  endif
++#  if defined(HAVE_DECL_LE64TOH) && HAVE_DECL_LE64TOH == 0
++#   define le64toh(v) (openssh_swap64(v))
++#  endif
++#  if defined(HAVE_DECL_HTOLE64) && HAVE_DECL_HTOLE64 == 0
++#   define htole64(v) (openssh_swap64(v))
++# endif
+ # else
+-#  define le32toh(v) ((uint32_t)v)
+-#  define le64toh(v) ((uint64_t)v)
+-#  define htole64(v) ((uint64_t)v)
++#  if defined(HAVE_DECL_LE32TOH) && HAVE_DECL_LE32TOH == 0
++#   define le32toh(v) ((uint32_t)v)
++#  endif
++#  if defined(HAVE_DECL_LE64TOH) && HAVE_DECL_LE64TOH == 0
++#    define le64toh(v) ((uint64_t)v)
++#  endif
++#  if defined(HAVE_DECL_HTOLE64) && HAVE_DECL_HTOLE64 == 0
++#   define htole64(v) ((uint64_t)v)
++#  endif
+ # endif
+ #endif
+ 
+-- 
+2.51.0
+

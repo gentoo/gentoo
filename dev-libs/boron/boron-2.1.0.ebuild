@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ IUSE="bzip2 readline"
 
 DEPEND="
 	bzip2? ( app-arch/bzip2:= )
-	!bzip2? ( sys-libs/zlib:= )
+	!bzip2? ( virtual/zlib:= )
 "
 RDEPEND="${DEPEND}"
 

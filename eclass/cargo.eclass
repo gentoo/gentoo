@@ -43,7 +43,7 @@ case ${EAPI} in
 			# than the oldest in-tree in future.
 			if [[ -z ${CARGO_BOOTSTRAP} ]]; then
 				if ver_test "${RUST_MIN_VER}" -lt "${_CARGO_ECLASS_RUST_MIN_VER}"; then
-					die "RUST_MIN_VERSION must be at least ${_CARGO_ECLASS_RUST_MIN_VER}"
+					die "RUST_MIN_VER must be at least ${_CARGO_ECLASS_RUST_MIN_VER}"
 				fi
 			fi
 		else

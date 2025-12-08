@@ -1,0 +1,23 @@
+From 972a8eb7b768a7d4d97ab3364e5da8e612d88068 Mon Sep 17 00:00:00 2001
+From: Weijia Wang <9713184+wegank@users.noreply.github.com>
+Date: Sat, 18 Oct 2025 10:21:59 +0200
+Subject: [PATCH] CMake: bump minimal required version
+
+Co-authored-by: kyehn <kyehn@users.noreply.github.com>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 269ea77..3fd863c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -8,7 +8,7 @@
+ #
+ #
+ 
+-cmake_minimum_required(VERSION 3.3)
++cmake_minimum_required(VERSION 3.10)
+ 
+ project(tslib LANGUAGES C)
+ 

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.com/amavis/amavis/-/archive/v${PV}/amavis-v${PV}.tar.bz2
 
 LICENSE="GPL-2 BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~arm64 ppc ppc64 ~sparc x86"
 IUSE="clamav courier dkim ldap mysql postgres qmail razor rspamd rspamd-https selinux snmp spamassassin"
 
 MY_RSPAMD_DEPEND="dev-perl/HTTP-Message

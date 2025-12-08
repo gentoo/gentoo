@@ -1,0 +1,34 @@
+
+Update CMake minimum requirement and supported versions
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ #-------------------------------------------------------------------------------
+ # Initialize
+ #-------------------------------------------------------------------------------
+-cmake_minimum_required (VERSION 3.0)
++cmake_minimum_required (VERSION 3.16...4.1)
+ project (davix)
+ 
+ #-------------------------------------------------------------------------------
+--- a/deps/libneon/CMakeLists.txt
++++ b/deps/libneon/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ project(libneon-tuned)
+-cmake_minimum_required (VERSION 3.0)
++cmake_minimum_required (VERSION 3.16...4.1)
+ # main file for src
+ 
+ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/modules/")
+--- a/src/modules/copy/CMakeLists.txt
++++ b/src/modules/copy/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required (VERSION 3.0)
++cmake_minimum_required (VERSION 3.16...4.1)
+ 
+ IF (ENABLE_THIRD_PARTY_COPY)
+     INCLUDE     (CheckLibraryExists)
+-- 
+2.51.0
+

@@ -1,0 +1,85 @@
+The initial suggestion and discussion: https://github.com/nginx/njs/pull/990
+The subsequent (authored by a maintainer?) PR: https://github.com/nginx/njs/pull/993
+diff --git a/auto/cc b/auto/cc
+index 8a615ec4..d4b28489 100644
+--- a/auto/cc
++++ b/auto/cc
+@@ -64,7 +64,6 @@ case $NJS_CC_NAME in
+     gcc)
+         njs_define=NJS_GCC . auto/define
+ 
+-        NJS_CFLAGS="$NJS_CFLAGS -pipe"
+         NJS_CFLAGS="$NJS_CFLAGS -fPIC"
+ 
+         # Do not export symbols except explicitly marked with NJS_EXPORT.
+@@ -72,9 +71,6 @@ case $NJS_CC_NAME in
+ 
+         # c99/gnu99 conflict with Solaris XOPEN.
+         #NJS_CFLAGS="$NJS_CFLAGS -std=gnu99"
+-
+-        NJS_CFLAGS="$NJS_CFLAGS -O"
+-        #NJS_CFLAGS="$NJS_CFLAGS -O0"
+         NJS_CFLAGS="$NJS_CFLAGS -W -Wall -Wextra"
+ 
+         #NJS_CFLAGS="$NJS_CFLAGS -Wunused-result"
+@@ -94,12 +90,6 @@ case $NJS_CC_NAME in
+ 
+         NJS_CFLAGS="$NJS_CFLAGS -Wmissing-prototypes"
+ 
+-        # Stop on warning.
+-        NJS_CFLAGS="$NJS_CFLAGS -Werror"
+-
+-        # Debug.
+-        NJS_CFLAGS="$NJS_CFLAGS -g"
+-
+         if [ "$NJS_ADDRESS_SANITIZER" = "YES" ]; then
+             NJS_CFLAGS="$NJS_CFLAGS -fsanitize=address"
+             NJS_CFLAGS="$NJS_CFLAGS -fno-omit-frame-pointer"
+@@ -109,14 +99,11 @@ case $NJS_CC_NAME in
+     clang)
+         njs_define=NJS_CLANG . auto/define
+ 
+-        NJS_CFLAGS="$NJS_CFLAGS -pipe"
+         NJS_CFLAGS="$NJS_CFLAGS -fPIC"
+ 
+         # Do not export symbols except explicitly marked with NJS_EXPORT.
+         NJS_CFLAGS="$NJS_CFLAGS -fvisibility=hidden"
+ 
+-        NJS_CFLAGS="$NJS_CFLAGS -O"
+-        #NJS_CFLAGS="$NJS_CFLAGS -O0"
+         NJS_CFLAGS="$NJS_CFLAGS -W -Wall -Wextra"
+ 
+         #NJS_CFLAGS="$NJS_CFLAGS -Wunused-result"
+@@ -130,17 +117,6 @@ case $NJS_CC_NAME in
+ 
+         NJS_CFLAGS="$NJS_CFLAGS -Wmissing-prototypes"
+ 
+-        # Stop on warning.
+-        NJS_CFLAGS="$NJS_CFLAGS -Werror"
+-
+-        # Debug.
+-
+-        if [ "$NJS_SYSTEM_PLATFORM" != "powerpc" ]; then
+-            # "-g" flag causes the "unknown pseudo-op: `.cfi_sections'"
+-            # error on PowerPC Clang.
+-            NJS_CFLAGS="$NJS_CFLAGS -g"
+-        fi
+-
+         if [ "$NJS_ADDRESS_SANITIZER" = "YES" ]; then
+             NJS_CFLAGS="$NJS_CFLAGS -fsanitize=address"
+             NJS_CFLAGS="$NJS_CFLAGS -fno-omit-frame-pointer"
+diff --git a/auto/options b/auto/options
+index 0a4dc6c7..c3399062 100644
+--- a/auto/options
++++ b/auto/options
+@@ -3,8 +3,8 @@
+ # Copyright (C) NGINX, Inc.
+ 
+ 
+-NJS_CC_OPT=${NJS_CC_OPT:--O}
+-NJS_LD_OPT=${NJS_CC_OPT:--O}
++NJS_CC_OPT=
++NJS_LD_OPT=
+ 
+ NJS_DEBUG=NO
+ NJS_DEBUG_MEMORY=NO

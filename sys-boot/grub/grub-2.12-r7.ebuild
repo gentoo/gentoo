@@ -20,7 +20,7 @@ GRUB_AUTOGEN=1
 GRUB_AUTORECONF=1
 PYTHON_COMPAT=( python3_{10..13} )
 WANT_LIBTOOL=none
-VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/dkiper.gpg
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/grub.asc
 
 if [[ -n ${GRUB_AUTORECONF} ]]; then
 	inherit autotools
@@ -52,8 +52,8 @@ if [[ ${PV} != 9999 ]]; then
 		"
 		S=${WORKDIR}/${P%_*}
 	fi
-	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-danielkiper )"
-	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv sparc x86"
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-grub )"
+	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/grub.git"

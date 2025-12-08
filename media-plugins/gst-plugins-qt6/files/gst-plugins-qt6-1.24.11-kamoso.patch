@@ -1,0 +1,141 @@
+https://mail.kde.org/pipermail/release-team/2025-June/013691.html
+https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/9226
+
+From ae57ec2ebbbbac9de40dd36e2ed54b12fe7ed869 Mon Sep 17 00:00:00 2001
+From: Aleix Pol <aleixpol@kde.org>
+Date: Mon, 26 May 2025 23:51:16 +0200
+Subject: [PATCH] qml6glitem,qtitem: Allow configuring if the item will consume
+ input events
+
+At the moment we are always accepting the input events to forward into
+GStreamer infrastructure. This works but we might have other uses for
+such events elsewhere in the QtQuick scene so allow opting out to this
+behaviour.
+
+Part-of: <https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/9226>
+---
+ ext/qt6/qt6glitem.cc     | 22 +++++++++++++++++--
+ ext/qt6/qt6glitem.h      |  9 +++++++-
+ 2 files changed, 28 insertions(+), 3 deletions(-)
+
+diff --git a/ext/qt6/qt6glitem.cc b/ext/qt6/qt6glitem.cc
+index 971a027de969..d1d89c3fd7f3 100644
+--- a/ext/qt6/qt6glitem.cc
++++ b/ext/qt6/qt6glitem.cc
+@@ -193,6 +193,16 @@ Qt6GLVideoItem::setForceAspectRatio(bool force_aspect_ratio)
+   emit forceAspectRatioChanged(force_aspect_ratio);
+ }
+ 
++void
++Qt6GLVideoItem::setAcceptEvents(bool accept)
++{
++  if (accept == acceptEvents)
++    return;
++
++  acceptEvents = accept;
++  Q_EMIT acceptEventsChanged(acceptEvents);
++}
++
+ bool
+ Qt6GLVideoItem::getForceAspectRatio()
+ {
+@@ -487,18 +497,22 @@ Qt6GLVideoItem::wheelEvent(QWheelEvent * event)
+     g_object_unref (element);
+   }
+   g_mutex_unlock (&this->priv->lock);
++
++  event->setAccepted(acceptEvents);
+ }
+ 
+ void
+-Qt6GLVideoItem::hoverEnterEvent(QHoverEvent *)
++Qt6GLVideoItem::hoverEnterEvent(QHoverEvent *event)
+ {
+   mouseHovering = true;
++  event->setAccepted(acceptEvents);
+ }
+ 
+ void
+-Qt6GLVideoItem::hoverLeaveEvent(QHoverEvent *)
++Qt6GLVideoItem::hoverLeaveEvent(QHoverEvent *event)
+ {
+   mouseHovering = false;
++  event->setAccepted(acceptEvents);
+ }
+ 
+ void
+@@ -527,6 +541,7 @@ Qt6GLVideoItem::hoverMoveEvent(QHoverEvent * event)
+     }
+   }
+   g_mutex_unlock (&this->priv->lock);
++  event->setAccepted(acceptEvents);
+ }
+ 
+ void
+@@ -589,6 +604,7 @@ Qt6GLVideoItem::touchEvent(QTouchEvent * event)
+ 
+   g_object_unref (element);
+   g_mutex_unlock (&this->priv->lock);
++  event->setAccepted(acceptEvents);
+ }
+ 
+ void
+@@ -641,12 +657,14 @@ Qt6GLVideoItem::mousePressEvent(QMouseEvent * event)
+ {
+   forceActiveFocus();
+   sendMouseEvent(event, TRUE);
++  event->setAccepted(acceptEvents);
+ }
+ 
+ void
+ Qt6GLVideoItem::mouseReleaseEvent(QMouseEvent * event)
+ {
+   sendMouseEvent(event, FALSE);
++  event->setAccepted(acceptEvents);
+ }
+ 
+ void
+diff --git a/ext/qt6/qt6glitem.h b/ext/qt6/qt6glitem.h
+index bfe28a1fc606..886a4a221f54 100644
+--- a/ext/qt6/qt6glitem.h
++++ b/ext/qt6/qt6glitem.h
+@@ -73,7 +73,10 @@ class Qt6GLVideoItem : public QQuickItem, protected QOpenGLFunctions
+                READ getForceAspectRatio
+                WRITE setForceAspectRatio
+                NOTIFY forceAspectRatioChanged)
+-
++    Q_PROPERTY(bool acceptEvents
++               READ getAcceptEvents
++               WRITE setAcceptEvents
++               NOTIFY acceptEventsChanged)
+ public:
+     Qt6GLVideoItem();
+     ~Qt6GLVideoItem();
+@@ -83,6 +86,8 @@ public:
+     void setForceAspectRatio(bool);
+     bool getForceAspectRatio();
+     bool itemInitialized();
++    bool getAcceptEvents() const { return acceptEvents; }
++    void setAcceptEvents(bool accept);
+ 
+     QSharedPointer<Qt6GLVideoItemInterface> getInterface() { return proxy; };
+     /* private for C interface ... */
+@@ -91,6 +96,7 @@ public:
+ Q_SIGNALS:
+     void itemInitializedChanged();
+     void forceAspectRatioChanged(bool);
++    void acceptEventsChanged(bool acceptEvents);
+ 
+ private Q_SLOTS:
+     void handleWindowChanged(QQuickWindow * win);
+@@ -120,6 +126,7 @@ private:
+ 
+     quint32 mousePressedButton;
+     bool mouseHovering;
++    bool acceptEvents = true;
+ 
+     QSharedPointer<Qt6GLVideoItemInterface> proxy;
+ };
+-- 
+GitLab
+

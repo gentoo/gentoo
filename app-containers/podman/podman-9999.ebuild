@@ -51,7 +51,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-5.2.5-togglable-seccomp.patch
+	"${FILESDIR}"/${PN}-5.5.2-togglable-seccomp.patch
 )
 
 CONFIG_CHECK="
@@ -69,7 +69,7 @@ src_prepare() {
 
 	# assure necessary files are present
 	local file
-	for file in apparmor_tag btrfs_installed_tag btrfs_tag systemd_tag; do
+	for file in apparmor_tag btrfs_installed_tag systemd_tag; do
 		[[ -f hack/"${file}".sh ]] || die
 	done
 
@@ -81,10 +81,9 @@ src_prepare() {
 		EOF
 	done
 
-	echo -e "#!/usr/bin/env bash\n echo" > hack/btrfs_installed_tag.sh || die
-	cat <<-EOF > hack/btrfs_tag.sh || die
+	cat <<-EOF > hack/btrfs_installed_tag.sh || die
 	#!/usr/bin/env bash
-	$(usex btrfs echo 'echo exclude_graphdriver_btrfs btrfs_noversion')
+	$(usex btrfs echo 'echo exclude_graphdriver_btrfs')
 	EOF
 }
 

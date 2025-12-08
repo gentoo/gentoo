@@ -1,0 +1,399 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 12e7562..6c6601c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ project(bladeRF CXX C)
+ # Indicate that this is a top-level build
+ set(BLADERF_TOP_LEVEL_BUILD ON)
+diff --git a/fx3_firmware/CMakeLists.txt b/fx3_firmware/CMakeLists.txt
+index 85bb380..1c75428 100644
+--- a/fx3_firmware/CMakeLists.txt
++++ b/fx3_firmware/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ ################################################################################
+ # Build bladeRF FX3 Firmware
+ ################################################################################
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ project(bladeRF_fw C)
+ 
+ ################################################################################
+diff --git a/fx3_firmware/util/elf2img/CMakeLists.txt b/fx3_firmware/util/elf2img/CMakeLists.txt
+index 92c2c18..1762bff 100644
+--- a/fx3_firmware/util/elf2img/CMakeLists.txt
++++ b/fx3_firmware/util/elf2img/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ ################################################################################
+ # Build for FX3 elf2img utility
+ ################################################################################
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ project(elf2img C)
+ 
+ if(WIN32)
+diff --git a/hdl/fpga/ip/analogdevicesinc/no_OS/CMakeLists.txt b/hdl/fpga/ip/analogdevicesinc/no_OS/CMakeLists.txt
+index d745dae..79e0680 100644
+--- a/hdl/fpga/ip/analogdevicesinc/no_OS/CMakeLists.txt
++++ b/hdl/fpga/ip/analogdevicesinc/no_OS/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ project(ad936x C)
+ 
+ message(STATUS "libad936x: Configuring build...")
+diff --git a/host/CMakeLists.txt b/host/CMakeLists.txt
+index 6e3d97f..1a5bee2 100644
+--- a/host/CMakeLists.txt
++++ b/host/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ project(bladeRF C)
+ 
+ ################################################################################
+diff --git a/host/common/test/dc_calibration/CMakeLists.txt b/host/common/test/dc_calibration/CMakeLists.txt
+index 1ab124e..383a70b 100644
+--- a/host/common/test/dc_calibration/CMakeLists.txt
++++ b/host/common/test/dc_calibration/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ project(test_dc_calibration C)
+ 
+ set(INCLUDES 
+diff --git a/host/libraries/CMakeLists.txt b/host/libraries/CMakeLists.txt
+index 5937fd1..6eb493d 100644
+--- a/host/libraries/CMakeLists.txt
++++ b/host/libraries/CMakeLists.txt
+@@ -1,3 +1,3 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ add_subdirectory(libbladeRF)
+ add_subdirectory(libbladeRF_test)
+diff --git a/host/libraries/libbladeRF/CMakeLists.txt b/host/libraries/libbladeRF/CMakeLists.txt
+index f280b07..e7be341 100644
+--- a/host/libraries/libbladeRF/CMakeLists.txt
++++ b/host/libraries/libbladeRF/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ project(libbladeRF C)
+ 
+ 
+diff --git a/host/libraries/libbladeRF/doc/examples/CMakeLists.txt b/host/libraries/libbladeRF/doc/examples/CMakeLists.txt
+index be0e41a..507d424 100644
+--- a/host/libraries/libbladeRF/doc/examples/CMakeLists.txt
++++ b/host/libraries/libbladeRF/doc/examples/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ project(libbladeRF_doc_examples C)
+ 
+ set(INCLUDES
+diff --git a/host/libraries/libbladeRF/include/CMakeLists.txt b/host/libraries/libbladeRF/include/CMakeLists.txt
+index 4decc6f..75706a1 100644
+--- a/host/libraries/libbladeRF/include/CMakeLists.txt
++++ b/host/libraries/libbladeRF/include/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ 
+ ################################################################################
+ # Install libbladeRF header files
+diff --git a/host/libraries/libbladeRF_test/CMakeLists.txt b/host/libraries/libbladeRF_test/CMakeLists.txt
+index 491c59f..9f0414d 100644
+--- a/host/libraries/libbladeRF_test/CMakeLists.txt
++++ b/host/libraries/libbladeRF_test/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ 
+ add_subdirectory(test_async)
+ add_subdirectory(test_bootloader_recovery)
+diff --git a/host/libraries/libbladeRF_test/test_async/CMakeLists.txt b/host/libraries/libbladeRF_test/test_async/CMakeLists.txt
+index a63869e..d327d31 100644
+--- a/host/libraries/libbladeRF_test/test_async/CMakeLists.txt
++++ b/host/libraries/libbladeRF_test/test_async/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ project(libbladeRF_test_async C)
+ 
+ set(INCLUDES
+diff --git a/host/libraries/libbladeRF_test/test_bootloader_recovery/CMakeLists.txt b/host/libraries/libbladeRF_test/test_bootloader_recovery/CMakeLists.txt
+index c0743cb..3abb120 100644
+--- a/host/libraries/libbladeRF_test/test_bootloader_recovery/CMakeLists.txt
++++ b/host/libraries/libbladeRF_test/test_bootloader_recovery/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ project(libbladeRF_test_bootloader_recovery C)
+ 
+ set(INCLUDES
+diff --git a/host/libraries/libbladeRF_test/test_c/CMakeLists.txt b/host/libraries/libbladeRF_test/test_c/CMakeLists.txt
+index 0c37db7..42f9b91 100644
+--- a/host/libraries/libbladeRF_test/test_c/CMakeLists.txt
++++ b/host/libraries/libbladeRF_test/test_c/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ project(libbladeRF_test_c C)
+ 
+ set(INCLUDES ${libbladeRF_SOURCE_DIR}/include)
+diff --git a/host/libraries/libbladeRF_test/test_config_file/CMakeLists.txt b/host/libraries/libbladeRF_test/test_config_file/CMakeLists.txt
+index e38697c..5169c29 100644
+--- a/host/libraries/libbladeRF_test/test_config_file/CMakeLists.txt
++++ b/host/libraries/libbladeRF_test/test_config_file/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ project(libbladeRF_test_config_file C)
+ 
+ set(TEST_CONFIG_FILE_INCLUDES
+diff --git a/host/libraries/libbladeRF_test/test_cpp/CMakeLists.txt b/host/libraries/libbladeRF_test/test_cpp/CMakeLists.txt
+index 660a9a7..b04d9c0 100644
+--- a/host/libraries/libbladeRF_test/test_cpp/CMakeLists.txt
++++ b/host/libraries/libbladeRF_test/test_cpp/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ project(libbladeRF_test_cpp CXX)
+ 
+ include_directories(${libbladeRF_SOURCE_DIR}/include)
+diff --git a/host/libraries/libbladeRF_test/test_ctrl/CMakeLists.txt b/host/libraries/libbladeRF_test/test_ctrl/CMakeLists.txt
+index b22a1e6..df91974 100644
+--- a/host/libraries/libbladeRF_test/test_ctrl/CMakeLists.txt
++++ b/host/libraries/libbladeRF_test/test_ctrl/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ project(libbladeRF_test_ctrl C)
+ 
+ set(INCLUDES
+diff --git a/host/libraries/libbladeRF_test/test_digital_loopback/CMakeLists.txt b/host/libraries/libbladeRF_test/test_digital_loopback/CMakeLists.txt
+index 728ae6d..391c0cd 100644
+--- a/host/libraries/libbladeRF_test/test_digital_loopback/CMakeLists.txt
++++ b/host/libraries/libbladeRF_test/test_digital_loopback/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ project(libbladeRF_test_digital_loopback C)
+ 
+ set(INCLUDES
+diff --git a/host/libraries/libbladeRF_test/test_freq_hop/CMakeLists.txt b/host/libraries/libbladeRF_test/test_freq_hop/CMakeLists.txt
+index ef93c28..e4f198b 100644
+--- a/host/libraries/libbladeRF_test/test_freq_hop/CMakeLists.txt
++++ b/host/libraries/libbladeRF_test/test_freq_hop/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ project(libbladeRF_test_freq_hop C)
+ 
+ set(INCLUDES
+diff --git a/host/libraries/libbladeRF_test/test_fw_check/CMakeLists.txt b/host/libraries/libbladeRF_test/test_fw_check/CMakeLists.txt
+index 4a8e221..f128923 100644
+--- a/host/libraries/libbladeRF_test/test_fw_check/CMakeLists.txt
++++ b/host/libraries/libbladeRF_test/test_fw_check/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ project(libbladeRF_test_fw_check C)
+ 
+ set(INCLUDES
+diff --git a/host/libraries/libbladeRF_test/test_interleaver/CMakeLists.txt b/host/libraries/libbladeRF_test/test_interleaver/CMakeLists.txt
+index 5825b25..b91e92e 100644
+--- a/host/libraries/libbladeRF_test/test_interleaver/CMakeLists.txt
++++ b/host/libraries/libbladeRF_test/test_interleaver/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ project(libbladeRF_test_interleaver C)
+ 
+ set(INCLUDES
+diff --git a/host/libraries/libbladeRF_test/test_open/CMakeLists.txt b/host/libraries/libbladeRF_test/test_open/CMakeLists.txt
+index abd1af5..46a5336 100644
+--- a/host/libraries/libbladeRF_test/test_open/CMakeLists.txt
++++ b/host/libraries/libbladeRF_test/test_open/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ project(libbladeRF_test_open C)
+ 
+ set(INCLUDES
+diff --git a/host/libraries/libbladeRF_test/test_parse/CMakeLists.txt b/host/libraries/libbladeRF_test/test_parse/CMakeLists.txt
+index 68adb19..b72a8e6 100644
+--- a/host/libraries/libbladeRF_test/test_parse/CMakeLists.txt
++++ b/host/libraries/libbladeRF_test/test_parse/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ project(libbladeRF_test_parse C)
+ 
+ set(INCLUDES
+diff --git a/host/libraries/libbladeRF_test/test_peripheral_timing/CMakeLists.txt b/host/libraries/libbladeRF_test/test_peripheral_timing/CMakeLists.txt
+index 1ab45b2..b378d10 100644
+--- a/host/libraries/libbladeRF_test/test_peripheral_timing/CMakeLists.txt
++++ b/host/libraries/libbladeRF_test/test_peripheral_timing/CMakeLists.txt
+@@ -5,7 +5,7 @@
+ # the NIOS II code, it probably won't get much general use, so we'll just
+ # leave this as-is for now.
+ if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+-    cmake_minimum_required(VERSION 2.8.12)
++    cmake_minimum_required(VERSION 3.10)
+     project(libbladeRF_test_peripheral_timing C)
+ 
+     set(INCLUDES
+diff --git a/host/libraries/libbladeRF_test/test_quick_retune/CMakeLists.txt b/host/libraries/libbladeRF_test/test_quick_retune/CMakeLists.txt
+index dcd447b..75bfdde 100644
+--- a/host/libraries/libbladeRF_test/test_quick_retune/CMakeLists.txt
++++ b/host/libraries/libbladeRF_test/test_quick_retune/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ project(libbladeRF_test_quick_retune C)
+ 
+ set(INCLUDES
+diff --git a/host/libraries/libbladeRF_test/test_repeated_stream/CMakeLists.txt b/host/libraries/libbladeRF_test/test_repeated_stream/CMakeLists.txt
+index 2030959..e5ba6a3 100644
+--- a/host/libraries/libbladeRF_test/test_repeated_stream/CMakeLists.txt
++++ b/host/libraries/libbladeRF_test/test_repeated_stream/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ project(libbladeRF_test_repeated_stream C)
+ 
+ set(INCLUDES
+diff --git a/host/libraries/libbladeRF_test/test_repeater/CMakeLists.txt b/host/libraries/libbladeRF_test/test_repeater/CMakeLists.txt
+index 64b09c4..dcf2762 100644
+--- a/host/libraries/libbladeRF_test/test_repeater/CMakeLists.txt
++++ b/host/libraries/libbladeRF_test/test_repeater/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ project(libbladeRF_test_repeater C)
+ 
+ if(MSVC)
+diff --git a/host/libraries/libbladeRF_test/test_rx_discont/CMakeLists.txt b/host/libraries/libbladeRF_test/test_rx_discont/CMakeLists.txt
+index 6c561c9..0c6298b 100644
+--- a/host/libraries/libbladeRF_test/test_rx_discont/CMakeLists.txt
++++ b/host/libraries/libbladeRF_test/test_rx_discont/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ project(libbladeRF_test_rx_discont C)
+ 
+ set(INCLUDES
+diff --git a/host/libraries/libbladeRF_test/test_scheduled_retune/CMakeLists.txt b/host/libraries/libbladeRF_test/test_scheduled_retune/CMakeLists.txt
+index 2d37ced..b3aaccb 100644
+--- a/host/libraries/libbladeRF_test/test_scheduled_retune/CMakeLists.txt
++++ b/host/libraries/libbladeRF_test/test_scheduled_retune/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ project(libbladeRF_test_scheduled_retune C)
+ 
+ include_directories(${libbladeRF_SOURCE_DIR}/include)
+diff --git a/host/libraries/libbladeRF_test/test_sync/CMakeLists.txt b/host/libraries/libbladeRF_test/test_sync/CMakeLists.txt
+index 7060186..75566ad 100644
+--- a/host/libraries/libbladeRF_test/test_sync/CMakeLists.txt
++++ b/host/libraries/libbladeRF_test/test_sync/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ project(libbladeRF_test_sync C)
+ 
+ set(TEST_SYNC_INCLUDES
+diff --git a/host/libraries/libbladeRF_test/test_timestamps/CMakeLists.txt b/host/libraries/libbladeRF_test/test_timestamps/CMakeLists.txt
+index 1718e12..bdf0f05 100644
+--- a/host/libraries/libbladeRF_test/test_timestamps/CMakeLists.txt
++++ b/host/libraries/libbladeRF_test/test_timestamps/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ project(libbladeRF_test_timestamps C)
+ 
+ include_directories(${libbladeRF_SOURCE_DIR}/include)
+diff --git a/host/libraries/libbladeRF_test/test_tune_timing/CMakeLists.txt b/host/libraries/libbladeRF_test/test_tune_timing/CMakeLists.txt
+index bcd0cc1..90a5763 100644
+--- a/host/libraries/libbladeRF_test/test_tune_timing/CMakeLists.txt
++++ b/host/libraries/libbladeRF_test/test_tune_timing/CMakeLists.txt
+@@ -5,7 +5,7 @@
+ # the NIOS II code, it probably won't get much general use, so we'll just
+ # leave this as-is for now.
+ if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+-    cmake_minimum_required(VERSION 2.8.12)
++    cmake_minimum_required(VERSION 3.10)
+     project(libbladeRF_test_tune_timing C)
+ 
+     set(INCLUDES
+diff --git a/host/libraries/libbladeRF_test/test_unused_sync/CMakeLists.txt b/host/libraries/libbladeRF_test/test_unused_sync/CMakeLists.txt
+index 5e82a01..3e65fcd 100644
+--- a/host/libraries/libbladeRF_test/test_unused_sync/CMakeLists.txt
++++ b/host/libraries/libbladeRF_test/test_unused_sync/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ project(libbladeRF_test_unused_sync C)
+ 
+ set(INCLUDES ${libbladeRF_SOURCE_DIR}/include)
+diff --git a/host/libraries/libbladeRF_test/test_version/CMakeLists.txt b/host/libraries/libbladeRF_test/test_version/CMakeLists.txt
+index 2d2a227..eaa08c2 100644
+--- a/host/libraries/libbladeRF_test/test_version/CMakeLists.txt
++++ b/host/libraries/libbladeRF_test/test_version/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ project(libbladeRF_test_version C)
+ 
+ set(INCLUDES ${libbladeRF_SOURCE_DIR}/include)
+diff --git a/host/misc/CMakeLists.txt b/host/misc/CMakeLists.txt
+index 7ac411d..4336fb0 100644
+--- a/host/misc/CMakeLists.txt
++++ b/host/misc/CMakeLists.txt
+@@ -1,2 +1,2 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ add_subdirectory(udev)
+diff --git a/host/misc/udev/CMakeLists.txt b/host/misc/udev/CMakeLists.txt
+index 99e1f69..a1d5ecd 100644
+--- a/host/misc/udev/CMakeLists.txt
++++ b/host/misc/udev/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ 
+ if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+     SET(SYSTEM_IS_LINUX TRUE)
+diff --git a/host/utilities/CMakeLists.txt b/host/utilities/CMakeLists.txt
+index 5169cd4..24f88f5 100644
+--- a/host/utilities/CMakeLists.txt
++++ b/host/utilities/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ 
+ add_subdirectory(bladeRF-cli)
+ add_subdirectory(bladeRF-fsk/c)
+diff --git a/host/utilities/bladeRF-cli/CMakeLists.txt b/host/utilities/bladeRF-cli/CMakeLists.txt
+index 8c7faa1..e080757 100644
+--- a/host/utilities/bladeRF-cli/CMakeLists.txt
++++ b/host/utilities/bladeRF-cli/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ project(bladeRF-cli C)
+ 
+ ################################################################################
+diff --git a/host/utilities/bladeRF-fsk/c/CMakeLists.txt b/host/utilities/bladeRF-fsk/c/CMakeLists.txt
+index dc2f1cb..91e30e0 100644
+--- a/host/utilities/bladeRF-fsk/c/CMakeLists.txt
++++ b/host/utilities/bladeRF-fsk/c/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ project(bladeRF-fsk C)
+ 
+ ################################################################################

@@ -29,7 +29,7 @@ RESTRICT="!test? ( test )"
 DEPEND="~dev-util/vulkan-headers-${PV}
 	test? (
 		dev-cpp/gtest
-		>=dev-cpp/magic_enum-0.9.2
+		>=dev-cpp/magic_enum-0.9.7
 	)"
 BDEPEND="${PYTHON_DEPS}"
 

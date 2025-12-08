@@ -14,6 +14,6 @@
 		<name>Gentoo VDR Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">rofafor/vdr-plugin-femon</remote-id>
+		<remote-id type="github">wirbel-at-vdr-portal/vdr-plugin-femon</remote-id>
 	</upstream>
 </pkgmetadata>

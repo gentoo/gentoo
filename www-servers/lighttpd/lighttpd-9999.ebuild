@@ -57,7 +57,7 @@ COMMON_DEPEND="
 		dev-db/sqlite
 	)
 	xattr? ( kernel_linux? ( sys-apps/attr ) )
-	zlib? ( >=sys-libs/zlib-1.1 )
+	zlib? ( >=virtual/zlib-1.1:= )
 	zstd? ( app-arch/zstd:= )
 "
 DEPEND="
@@ -151,6 +151,7 @@ src_configure() {
 		$(meson_feature webdav with_webdav_props)
 
 		# Unpackaged in Gentoo
+		-Dwith_boringssl=false
 		-Dwith_wolfssl=false
 
 		$(meson_use xattr with_xattr)

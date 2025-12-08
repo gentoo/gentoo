@@ -25,7 +25,7 @@ IUSE="+curl gnutls kerberos +ssl static-libs test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	sys-libs/zlib:=[${MULTILIB_USEDEP}]
+	virtual/zlib:=[${MULTILIB_USEDEP}]
 	virtual/libiconv:=[${MULTILIB_USEDEP}]
 	curl? ( net-misc/curl[${MULTILIB_USEDEP}] )
 	kerberos? (

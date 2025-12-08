@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,7 +26,7 @@ DEPEND="acct-user/snort
 	>=dev-libs/libpcre-8.33
 	net-libs/libnsl:0=
 	>=net-libs/libpcap-1.3.0
-	sys-libs/zlib
+	virtual/zlib:=
 	!libtirpc? ( sys-libs/glibc[rpc(-)] )
 	libtirpc? ( net-libs/libtirpc )
 	open-appid? ( ${LUA_DEPS} )"

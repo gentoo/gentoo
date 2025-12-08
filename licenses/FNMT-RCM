@@ -1,0 +1,90 @@
+ACUERDO DE LICENCIA DE USUARIO FINAL
+
+APLICACIÓN FNMT-RCM DE GENERACIÓN DE CLAVES FUERA DEL NAVEGADOR
+
+CONFIGURADOR FNMT
+
+© Copyright 2019 FNMT-RCM. Todos los derechos reservados.
+
+Acuerdo de Licencia de Usuario Final y Condiciones de Uso (el Acuerdo) de la aplicación informática Configurador FNMT (la Aplicación) titularidad de la Fábrica Nacional de Moneda y Timbre-Real Casa de la Moneda, Entidad Pública Empresarial, Medio Propio (FNMT-RCM), con domicilio institucional en Madrid, calle Jorge Juan, 106. NIF: Q2826004J, ceres@fnmt.es. 
+Lea los términos y condiciones de este Acuerdo detenidamente antes de utilizar la Aplicación. Este es un contrato legalmente vinculante. Al aceptar electrónicamente la descarga y/o instalación de la Aplicación, tanto si se utiliza como si no, usted acepta todos los términos y condiciones de este Acuerdo en nombre suyo y de cualquier entidad o persona que represente o para cuyo dispositivo descargue la Aplicación. Si no está de acuerdo con los términos y condiciones de este Acuerdo, no continúe con el proceso de instalación, no use la Aplicación y elimine todas las descargas/copias en su poder o control. 
+
+OBJETO
+FNMT-RCM otorga una licencia de uso, no exclusiva, de ámbito mundial y sin derecho a sublicencia de ningún tipo, sobre la aplicación informática Configurador FNMT (la Aplicación) y para los usos definidos en este Acuerdo. La Licencia se otorga a la persona física, jurídica o entidad (Usuario o licenciatario) que descargan y/o instalan y utilizan la Aplicación para la generación de claves criptográficas en el equipo del usuario final. Este es el único propósito de la Aplicación.
+El usuario final (el Usuario), por el hecho de la descarga y/o instalación de la Aplicación, acepta el presente Acuerdo en toda su extensión, incluyendo la cláusula de responsabilidad y sus exclusiones. No se otorga ningún otro derecho de propiedad industrial o intelectual sobre la Aplicación o la documentación puesta a su disposición.
+El Usuario debe cumplir con todos los términos y condiciones de este contrato para la descarga, instalación y uso de la Aplicación objeto de este Acuerdo de Licencia.
+La FNMT-RCM, se reserva el derecho de modificar y evolucionar su Aplicación, así como otros servicios y sistemas de gestión, administración, etc. para su adecuado desarrollo. La FNMT-RCM podrá realizar las modificaciones que sean necesarias en la Aplicación y ofrecer una descarga que actualice la versión anterior de la Aplicación (ya sea con una nueva versión o nueva aplicación o incluir parches, evoluciones o cualesquiera otros elementos técnicos). En estos casos, FNMT-RCM pondrá a disposición del Usuario esta actualización o nueva versión quien podrá decidir si la descarga, o no. Si el Usuario no estuviera de acuerdo con los cambios, tanto de la Aplicación como del Acuerdo, podrá dar por resuelto el contrato y no descargar e instalar la modificación o nueva versión, no pudiendo acceder a las nuevas versiones o aplicaciones, respetando en todo caso lo dispuesto en la cláusula relativa a “Duración y finalización del acuerdo”.
+
+CONDICIONES DE USO
+La Aplicación tiene la funcionalidad de generación de claves RSA para la solicitud de los certificados emitidos por la FNMT-RCM y la descarga e instalación del certificado en los navegadores web que el usuario tenga instalados en su equipo, pudiendo el usuario seleccionar si tal generación se realiza en el equipo o en una tarjeta criptográfica que cumpla el estándar PKCS#11. Los usos permitidos se han de referir, únicamente, a su utilización para el propósito definido en este Acuerdo, quedando prohibida su utilización para cualquier otro propósito.
+El incumplimiento por parte del Usuario de las condiciones de uso de la licencia y en el resto de obligaciones contenidas en este Acuerdo, dará lugar a la inmediata resolución del contrato y a la reclamación de una indemnización por los daños y perjuicios efectivamente causados por el incumplimiento del Acuerdo y, en su caso, por el uso indebido de los derechos de propiedad intelectual e industrial sobre la Aplicación, sus marcas o secretos empresariales.
+Usos permitidos y no permitidos. Durante la vigencia del presente Acuerdo y posteriormente, el Usuario de la Aplicación (licenciatario) se obliga a no utilizar la Aplicación para otros usos y específicamente y sin que esta descripción tenga carácter limitativo ni exhaustivo, se obliga a:
+a) No realizar modificación alguna sobre la Aplicación.
+b) No utilizar técnicas de ingeniería inversa, descompilar, desensamblar, traducir, reconstruir, transformar, cambiar, modificar, alterar de otra manera o extraer la Aplicación o cualquier parte de la Aplicación.
+c) Descargar, instalar y utilizar la Aplicación en los equipos donde se utilicen los certificados para los propósitos definidos en este Acuerdo.
+d) No comercializar la Aplicación, tanto con ánimo de lucro como sin él, y tanto de forma aislada como formando parte de un paquete de oferta de servicios para terceros que pudiera competir con la Aplicación.
+e) No utilizar la Aplicación de forma que resulte contraria a las leyes españolas o que infrinja los derechos de terceros.
+f) No realizar cracks, copia o vulneración de números de serie de programas o cualquier otra manipulación del contenido de la Aplicación, de este Acuerdo y de cualquier otra documentación técnica puesta a disposición de los Usuarios y del público en general, incluyendo los documentos contractuales que afectaren al desarrollo de la Aplicación, que vulnere derechos de la propiedad intelectual, industrial, secretos comerciales, know-how o cualesquiera otros derechos sobre la Aplicación o que pertenezcan a terceros.
+g) La recogida y/o utilización de datos personales de otros usuarios sin su consentimiento expreso o contraviniendo lo dispuesto en el Reglamento (UE) 2016/679  del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protección de las personas físicas en lo que respecta al tratamiento de sus datos personales y a la libre circulación de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protección de datos) y la Ley Orgánica 3/2018, de 5 diciembre, de Protección de Datos Personales y Garantía de los Derechos Digitales y resto de normativa comunitaria y española de aplicación.
+
+PRECIO
+La licencia, sobre la presente versión de la Aplicación, no tiene coste para el Usuario.
+
+DURACIÓN Y FINALIZACIÓN DEL ACUERDO 
+Este Acuerdo tiene una duración de un año y se renovará por idénticos períodos de tiempo, siempre que la Aplicación se encuentre instalada en el equipo del Usuario. Se producirá la extinción del presente Acuerdo si el Usuario lo notificara a la FNMT-RCM, o si se produjera la desinstalación de la Aplicación, o cuando se ponga a disposición de los Usuarios una nueva versión de la Aplicación, u otra que la sustituya, y sea descargada en el equipo y aceptados los términos del nuevo Acuerdo.
+En caso de desinstalación, resolución, rescisión y, en definitiva, extinción de este Acuerdo, por las causas establecidas en el mismo o cualesquiera otras admitidas en Derecho, el Usuario deberá cumplir las obligaciones asumidas con anterioridad a la finalización de este Acuerdo frente a FNMT-RCM y frente a terceros. 
+
+DESCARGA, INSTALACIÓN y DESINSTALACIÓN
+La descarga del fichero instalable de la Aplicación se realizará desde el enlace “Descarga de Software” de la sede electrónica de la FNMT-RCM: https://www.sede.fnmt.gob.es/descargas/descarga-software, debiendo el usuario seleccionar el sistema operativo del equipo en el que quiera hacer uso de la Aplicación. Una vez descargado el fichero instalable, el usuario deberá ejecutar el mismo con el fin de instalar la Aplicación.
+En caso de que su navegador web no soporte la generación de claves, esta Aplicación será invocada por las aplicaciones web de la FNMT-RCM durante los procesos de solicitud y descarga de certificados.
+Si realiza la desinstalación de la Aplicación y su navegador web no soporta la generación de claves, no podrá solicitar y descargar certificados de la FNMT-RCM. 
+Si ha solicitado un certificado con la aplicación instalada y, antes de realizar la descarga e instalación del certificado, desinstala la Aplicación, formatea el disco duro de su ordenador o cambia de equipo, perderá las claves generadas y no podrá realizar la descarga e instalación del certificado solicitado, teniendo que solicitar un nuevo certificado.
+
+REQUERIMIENTOS MÍNIMOS DEL EQUIPO 
+Los requerimientos mínimos del equipo para la descarga, instalación y uso de la Aplicación son: 
+• Sistema operativo Microsoft Windows 7, 8, 8.1, 10 (en 32 o en 64 bits) y, al menos, uno de los siguientes navegadores: Edge, Internet Explorer 11, Mozilla Firefox 58 o superior y Chrome.
+• Sistema operativo Apple MacOS (10.13 o superior) y, al menos, uno de los siguientes navegadores: Mozilla Firefox 58 o superior, Chrome y Safari.
+• Sistema operativo Linux (Debian, Ubuntu, CentOS, RedHat y SuSe) y, al menos, uno de los siguientes navegadores: Mozilla Firefox 58 o superior y Chrome. 
+
+COPIA
+Siendo, actualmente, la descarga, instalación y uso de carácter gratuito, no se limita al Usuario la realización de copias o descargas de la Aplicación, siempre que estén referidas, exclusivamente, al uso para los fines expresados en este Acuerdo.
+Recuerde que, según la modalidad de instalación que utilice, una copia de la Aplicación puede quedar en su carpeta de “Descargas” de su equipo (o ubicación similar, según los sistemas operativos), aunque recomendamos que la Aplicación sea siempre descargada desde su ubicación original.  
+
+CESIÓN
+No se permite la cesión del presente Acuerdo, ni la de la Aplicación, en todo o en parte, ni de ninguno de los derechos que la FNMT-RCM ostenta sobre la mismo, por lo que el usuario final no podrá revenderlo ni transferirlo a terceros, ni podrá arrendar, alquilar o prestar el producto cedido. 
+Cada usuario final ha de aceptar el presente Acuerdo de manera originaria por el hecho de la descarga y/o instalación y posterior uso de la Aplicación.
+
+PROPIEDAD INTELECTUAL
+La FNMT-RCM, es la titular en pleno dominio de los derechos de explotación de la Aplicación, desarrollada por su personal y, en su caso, personal contratado a estos efectos y cuenta con todos los derechos de propiedad intelectual e industrial, incluyendo los secretos comerciales, que pueden transferirse. 
+Los derechos de propiedad intelectual e industrial protegen tanto la Aplicación desarrollada por la FNMT-RCM, el código fuente y el código máquina, así como todos los datos, listados, diagramas y esquemas elaborados en la fase de análisis, el manual de instrucciones o los restantes materiales de apoyo, los símbolos de identificación o cualquier copia parcial o total realizada por la propia Entidad o por cualquier otra persona (bajo su encargo), los derechos de copia, las patentes, las marcas, los secretos comerciales y cualquier otro que pudiera surgir en cumplimiento del presente contrato, incluida toda información o documentación que la FNMT-RCM pueda proporcionar al usuario.
+Para el desarrollo de una parte de la Aplicación, y para la adecuada funcionalidad con otras aplicaciones de las Administraciones, la FNMT-RCM reutiliza código del “Cliente @firma” del Ministerio de Política Territorial y Función Pública, con licencia dual GPLv2 y EUPLv1.1.
+
+GARANTÍA Y SOPORTE
+La FNMT-RCM garantiza el buen funcionamiento de la Aplicación tal y como se presenta y para el objeto definido en este Acuerdo. FNMT-RCM, se responsabiliza de que la Aplicación que se descargue desde una ubicación controlada por esta Entidad, está libre de virus y de que ha realizado las pruebas y controles para su buen funcionamiento de conformidad con este Acuerdo. No obstante, lo anterior, no se considerará cubierta por la garantía los supuestos de culpa o negligencia en el manejo o conservación de los equipos donde se instale la Aplicación. 
+Para cualquier duda o problema, puede consultar el apartado “Atención a usuarios” de la sede electrónica de la FNMT-RCM https://www.sede.fnmt.gob.es/soporte-tecnico/atencion-a-usuarios.
+
+RESPONSABILIDAD
+FNMT-RCM solo será responsable por los daños y perjuicios efectivamente causados por los actos realizados por esta Entidad cuando su actuación se deba a su culpa o negligencia grave, limitando su responsabilidad hasta un máximo de 2.000€ por persona y reclamación, siempre que queden debidamente acreditados. FNMT-RCM no será, en ningún caso, responsable de las pérdidas o daños, directos o indirectos, emergentes o lucros cesantes sufridos por el Usuario, o por sus empleados o colaboradores, que sean consecuencia del mal funcionamiento del programa, ni del resto de actos u omisiones que se puedan producir por:
+
+• la pérdida, deterioro o borrado de los certificados de firma electrónica instalados en el equipo del Usuario y los daños o perjuicios derivados de esta circunstancia,
+• la posible contaminación por virus en los equipos donde se descargue la Aplicación,  
+• las intrusiones de terceros en el equipo y resto de elementos del Usuario, 
+• la configuración defectuosa del equipo o no respetar las condiciones mínimas establecidas en este Acuerdo,
+• el deterioro o mal uso de los equipos.
+• cualquier otra consecuencia no definida anteriormente y que cause un daño o perjuicio al Usuario, de la que no deba responder la FNMT-RCM según este Acuerdo.
+
+FNMT-RCM no responde que la disponibilidad de la Aplicación para su descarga sea continua e ininterrumpida durante el periodo de vigencia del contrato, debido a problemas ajenos a la Entidad como problemas en la red Internet, en las comunicaciones, averías en los equipos servidores y otras posibles contingencias imprevisibles. El Usuario acepta soportar riesgos e imperfecciones o indisponibilidad de los servidores o de las redes y comunicaciones. 
+Por tanto, el Usuario renuncia expresamente a reclamar cualquier responsabilidad, contractual o extracontractual, daños y perjuicios a FNMT-RCM por posibles fallos, lentitud o errores en el acceso y uso de la Aplicación, (con las excepciones antes expresadas).
+
+PRIVACIDAD
+En la descarga y uso de la Aplicación, no se recogen, ni tratan, datos de carácter personal de los Usuarios o sus representantes, por ser un software de descarga gratuita sin registro previo. Pueden consultar la Política de Privacidad y el Registro de Actividades de Tratamiento de datos de la FNMT-RCM en http://www.fnmt.es/rgpd y consultar con nuestro Delegado de Protección de Datos: dpd@fnmt.es  
+La FNMT-RCM ha obtenido la certificación ISO/IEC 27001 sobre el Sistema de Gestión de Seguridad de la Información para sistemas de información que dan soporte a la fabricación de documentos de identificación y tarjetas y la prestación de servicios de certificación confiable en relación con la declaración de aplicabilidad vigente a la fecha de emisión del certificado (28/09/2018).
+
+GENERALIDADES
+El presente Acuerdo y reemplaza cualquier contrato o acuerdo anterior entre las partes con el mismo objeto y sólo podrá ser modificado por un nuevo Acuerdo aceptado por ambas partes.
+Si alguna de las cláusulas del presente Acuerdo fuera declarada nula o inaplicable, dicha cláusula se considerará excluida del mismo, sin que implique la completa nulidad del Acuerdo. En este caso las partes harán cuanto esté a su alcance para encontrar una solución equivalente que sea válida y que refleje debidamente sus intenciones.
+Los encabezamientos de las distintas cláusulas lo son sólo a efectos informativos, y no afectarán, calificarán o ampliarán la interpretación de este Acuerdo.
+
+LEY APLICABLE Y JURISDICCIÓN
+El presente Acuerdo se regirá por sus propias cláusulas, y en lo en ellas no dispuesto, por lo previsto en la legislación española.
+Para cuantas cuestiones o divergencias pudieran suscitarse en relación con el presente Acuerdo, serán competentes, como lugar de cumplimiento de la obligación, los Juzgados y Tribunales de la ciudad de Madrid (España), renunciando las partes al fuero que pudiera corresponderles.

@@ -18,7 +18,7 @@ RDEPEND="
 	!<media-libs/gst-plugins-ugly-1.22.3
 	>=media-libs/gst-plugins-base-${PV}:${SLOT}[${MULTILIB_USEDEP}]
 	>=app-arch/bzip2-1.0.6-r4[${MULTILIB_USEDEP}]
-	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
+	>=virtual/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}]
 	orc? ( >=dev-lang/orc-0.4.33[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}"

@@ -262,7 +262,7 @@ LICENSE="AGPL-3+"
 # Dependent crate licenses
 LICENSE+=" 0BSD Apache-2.0 BSD MIT Unicode-3.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 IUSE="test"
 RESTRICT="!test? ( test )"

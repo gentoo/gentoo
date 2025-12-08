@@ -9,14 +9,14 @@ SRC_URI="https://oligarchy.co.uk/xapian/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~mips ppc ppc64 ~sparc x86"
 
 DEPEND="
 	dev-lang/perl
 	dev-libs/libpcre2:=
 	~dev-libs/xapian-${PV}:0/30
 	sys-apps/file
-	sys-libs/zlib
+	virtual/zlib:=
 "
 RDEPEND="${DEPEND}"
 

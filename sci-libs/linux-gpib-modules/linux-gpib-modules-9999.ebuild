@@ -32,7 +32,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-9999-depmod.patch"
 )
 
-MODULES_KERNEL_MIN=2.6.8
+MODULES_KERNEL_MIN=4.0
 
 src_unpack() {
 	if [[ ${PV} == 9999 ]]; then

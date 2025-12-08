@@ -33,7 +33,7 @@ DEPEND="
 	dev-libs/lzo:2
 	>=dev-libs/openssl-1.0.2l:0=
 	=media-tv/kodi-${PV%%.*}*
-	sys-libs/zlib
+	virtual/zlib:=
 "
 RDEPEND="${DEPEND}"
 

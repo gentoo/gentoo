@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit autotools python-single-r1
 
 DESCRIPTION="Standalone file import filter library for spreadsheet documents"
@@ -30,7 +30,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/boost:=[zlib(+)]
-	sys-libs/zlib
+	virtual/zlib:=
 	python? ( ${PYTHON_DEPS} )
 	spreadsheet-model? ( dev-libs/libixion:${SLOT} )
 "

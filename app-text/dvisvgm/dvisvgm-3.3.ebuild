@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,7 +28,7 @@ RDEPEND="
 	>=media-gfx/potrace-1.10-r1
 	media-libs/freetype:2
 	>=media-libs/woff2-1.0.2
-	sys-libs/zlib
+	virtual/zlib:=
 	virtual/tex-base
 "
 DEPEND="

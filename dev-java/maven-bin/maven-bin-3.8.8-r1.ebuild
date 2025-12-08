@@ -11,8 +11,9 @@ MY_P="${MY_PN}-${MY_PV}"
 MY_MV="${PV%%.*}"
 
 DESCRIPTION="Project Management and Comprehension Tool for Java"
-SRC_URI="mirror://apache/maven/maven-${MY_MV}/${PV}/binaries/${MY_P}-bin.tar.gz"
 HOMEPAGE="https://maven.apache.org/"
+SRC_URI="mirror://apache/maven/maven-${MY_MV}/${PV}/binaries/${MY_P}-bin.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0"
 SLOT="3.8"
@@ -20,12 +21,10 @@ KEYWORDS="amd64"
 
 DEPEND="
 	>=virtual/jdk-1.8:*
-	app-eselect/eselect-java"
+	app-eselect/eselect-java
+"
 
-RDEPEND="
-	>=virtual/jre-1.8:*"
-
-S="${WORKDIR}/${MY_P}"
+RDEPEND=">=virtual/jre-1.8:*"
 
 MAVEN="${PN}-${SLOT}"
 MAVEN_SHARE="/usr/share/${MAVEN}"

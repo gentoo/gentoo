@@ -20,7 +20,7 @@ RDEPEND="
 	dev-lang/perl
 	$(python_gen_cond_dep 'dev-python/matplotlib[${PYTHON_USEDEP}]')
 	=sci-libs/htslib-$(ver_cut 1-2)*:=
-	sys-libs/zlib
+	virtual/zlib:=
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}"
 BDEPEND="${PYTHON_DEPS}"

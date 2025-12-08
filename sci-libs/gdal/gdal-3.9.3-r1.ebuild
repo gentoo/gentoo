@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit cmake java-pkg-opt-2 python-single-r1
 
 DESCRIPTION="Translator library for raster geospatial data formats (includes OGR support)"
@@ -50,7 +50,7 @@ DEPEND="
 	media-libs/tiff
 	>=sci-libs/libgeotiff-1.5.1-r1:=
 	>=sci-libs/proj-6.0.0:=
-	sys-libs/zlib[minizip(+)]
+	virtual/minizip:=
 	armadillo? ( sci-libs/armadillo:=[lapack] )
 	curl? ( net-misc/curl )
 	fits? ( sci-libs/cfitsio:= )
@@ -104,6 +104,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.6.4-abseil-cpp-20230125.2-c++17.patch
 	"${FILESDIR}"/${PN}-3.9.1-poppler-24.12.patch
 	"${FILESDIR}"/${P}-poppler-25.0{2,5}.patch
+	"${FILESDIR}"/gdal-3.11.3-java-no-strict-aliasing.patch
+	"${FILESDIR}"/gdal-3.11.4-poppler-25.10.patch
 )
 
 pkg_setup() {
@@ -279,9 +281,9 @@ src_install() {
 
 	if use java; then
 		# Move the native library into the proper place for Gentoo.  The
-		# library in ${D} has already had its RPATH fixed, so we use it
+		# library in ${ED} has already had its RPATH fixed, so we use it
 		# rather than ${BUILD_DIR}/swig/java/libgdalalljni.so.
-		java-pkg_doso "${D}/usr/$(get_libdir)/jni/libgdalalljni.so"
+		java-pkg_doso "${ED}/usr/$(get_libdir)/jni/libgdalalljni.so"
 		rm -rf "${ED}/usr/$(get_libdir)/jni" || die
 	fi
 

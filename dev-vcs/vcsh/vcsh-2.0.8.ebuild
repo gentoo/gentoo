@@ -9,7 +9,7 @@ SRC_URI="https://github.com/RichiH/vcsh/releases/download/v${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

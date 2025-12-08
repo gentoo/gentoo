@@ -1,0 +1,21 @@
+diff -r 7aafcc60b4f5 passlib/handlers/bcrypt.py
+--- a/passlib/handlers/bcrypt.py	Thu Oct 08 15:01:32 2020 -0400
++++ b/passlib/handlers/bcrypt.py	Wed Oct 01 09:04:12 2025 +0200
+@@ -366,6 +366,8 @@
+             NOTE: if in future we need to deliberately create hashes which have this bug,
+                   can use something like 'hashpw(repeat_string(secret[:((1+secret) % 256) or 1]), 72)'
+             """
++            return False
++
+             # check if it exhibits wraparound bug
+             secret = (b"0123456789"*26)[:255]
+             bug_hash = ident.encode("ascii") + b"04$R1lJ2gkNaoPGdafE.H.16.nVyh2niHsGJhayOHLMiXlI45o8/DU.6"
+@@ -609,7 +611,7 @@
+         except ImportError: # pragma: no cover
+             return False
+         try:
+-            version = _bcrypt.__about__.__version__
++            version = _bcrypt.__version__
+         except:
+             log.warning("(trapped) error reading bcrypt version", exc_info=True)
+             version = '<unknown>'

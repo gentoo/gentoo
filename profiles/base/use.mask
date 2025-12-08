@@ -4,6 +4,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sam James <sam@entoo.org> (2025-12-02)
+# GCC 16 is not yet released
+ada_target_gcc_16
+
 # Sam James <sam@gentoo.org> (2025-04-19)
 # Ruby 3.1 is no longer supported upstream and will no longer
 # receive security updates.
@@ -11,7 +15,7 @@ ruby_targets_ruby31
 
 # Michał Górny <mgorny@gentoo.org> (2024-12-31)
 # LLVM slots with no keyworded releases yet.
-llvm_slot_21
+llvm_slot_22
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-12-11)
 # dev-db/firebird last-rites preparation
@@ -25,13 +29,6 @@ firebird
 lcd_devices_g15
 g15
 
-# Michael Orlitzky <mjo@gentoo.org> (2024-11-13)
-# The 8.1 slot is masked, so the USE flag that pulls it in has to be
-# masked too. The bare "php8-1" is for www-servers/nginx-unit which
-# has a non-standard flag name.
-php_targets_php8-1
-php8-1
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2024-10-21)
 # Mechanism for coping with the time64 transition of 32bit arches
 # Will be unmasked in the time64 profiles
@@ -42,10 +39,6 @@ time64
 # PERL_FEATURES=debug is not a setting that should be used lightly.
 # If you really need it, then unmask it...
 perl_features_debug
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-04-06)
-# Telepathy is dead and packages masked for removal.
-telepathy
 
 # Matt Turner <mattst88@gentoo.org> (2022-04-16)
 # dev-util/sysprof not keyworded on most arches yet
@@ -58,10 +51,6 @@ sysprof
 # Please speak to <toolchain@gentoo.org> and/or <qa@gentoo.org> before dropping.
 # See e.g. bug #753323, bug #822690.
 pch
-
-# Matt Turner <mattst88@gentoo.org> (2019-09-01)
-# app-office/texmacs is package.mask'd. Bug #436400
-texmacs
 
 # Matt Turner <mattst88@gentoo.org> (2018-11-11)
 # d3d9 only works on amd64/x86.

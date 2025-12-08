@@ -12,12 +12,12 @@ CODENAME="Piers"
 LIBDVDCSS_VERSION="1.4.3-Next-Nexus-Alpha2-2"
 LIBDVDREAD_VERSION="6.1.3-Next-Nexus-Alpha2-2"
 LIBDVDNAV_VERSION="6.1.1-Next-Nexus-Alpha2-2"
-FFMPEG_VERSION="7.1"
+FFMPEG_VERSION="8.0.1"
 
 # Java bundles from xbmc/interfaces/swig/CMakeLists.txt
-GROOVY_VERSION="4.0.16"
-APACHE_COMMON_LANG_VERSION="3.14.0"
-APACHE_COMMON_TEXT_VERSION="1.11.0"
+GROOVY_VERSION="4.0.26"
+APACHE_COMMON_LANG_VERSION="3.17.0"
+APACHE_COMMON_TEXT_VERSION="1.13.0"
 
 _JAVA_PKG_WANT_BUILD_VM=( {openjdk{,-jre},icedtea}{,-bin}-{8,11,17,21} )
 JAVA_PKG_WANT_BUILD_VM=${_JAVA_PKG_WANT_BUILD_VM[@]}
@@ -26,7 +26,7 @@ JAVA_PKG_WANT_SOURCE="21"
 JAVA_PKG_WANT_TARGET="21"
 
 PYTHON_REQ_USE="sqlite,ssl"
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 # See cmake/scripts/common/ArchSetup.cmake for available options
 CPU_FLAGS="cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_arm_neon"
@@ -45,12 +45,10 @@ SRC_URI="
 	https://mirrors.kodi.tv/build-deps/sources/apache-groovy-binary-${GROOVY_VERSION}.zip
 	https://mirrors.kodi.tv/build-deps/sources/commons-lang3-${APACHE_COMMON_LANG_VERSION}-bin.tar.gz
 	https://mirrors.kodi.tv/build-deps/sources/commons-text-${APACHE_COMMON_TEXT_VERSION}-bin.tar.gz
+	https://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.xz
 	css? (
 		https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_VERSION}.tar.gz
 			-> libdvdcss-${LIBDVDCSS_VERSION}.tar.gz
-	)
-	!system-ffmpeg? (
-		https://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.gz
 	)
 "
 if [[ ${PV} == *9999 ]] ; then
@@ -67,7 +65,10 @@ else
 	MY_PV="${MY_PV}-${CODENAME}"
 	MY_P="${PN}-${MY_PV}"
 	SRC_URI+=" https://github.com/xbmc/xbmc/archive/${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+	# Dont keyword
+	if ! [[ ${PV} =~ _alpha ]] && ! [[ ${PV} =~ _beta ]] && ! [[ ${PV} =~ _rc ]]; then
+		KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+	fi
 	S=${WORKDIR}/xbmc-${MY_PV}
 fi
 
@@ -78,20 +79,19 @@ LICENSE+=" Apache-2.0"
 # libdvdnav, libdvdread and libdvdcss.
 LICENSE+=" GPL-2+"
 # ffmpeg built as USE="gpl"
-LICENSE+=" !system-ffmpeg? ( GPL-2 )"
+LICENSE+=" GPL-2"
 
 SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="airplay alsa bluetooth bluray caps cec +css dbus doc eventclients gbm gles lcms libusb lirc mariadb mysql nfs +optical pipewire pulseaudio samba soc +system-ffmpeg test udf udev upnp vaapi vdpau wayland webserver X +xslt zeroconf ${CPU_FLAGS}"
+IUSE="airplay alsa bluetooth bluray caps cec +css dbus doc eventclients gbm gles lcms libusb lirc mariadb mysql nfs +optical pipewire pulseaudio samba +system-ffmpeg test udf udev upnp vaapi vdpau wayland webserver X +xslt zeroconf ${CPU_FLAGS}"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	|| ( gbm wayland X )
 	?? ( mariadb mysql )
 	bluray? ( udf )
 	gbm? ( udev )
-	soc? ( system-ffmpeg )
 	udev? ( !libusb )
 	vdpau? ( X !gles !gbm )
 	zeroconf? ( dbus )
@@ -110,12 +110,13 @@ COMMON_DEPEND="
 	)
 "
 COMMON_TARGET_DEPEND="${PYTHON_DEPS}
+	app-arch/bzip2
+	app-arch/xz-utils
 	>=net-misc/curl-7.68.0[http2]
-	>=sys-libs/zlib-1.2.11
+	>=virtual/zlib-1.2.11:=
 	dev-db/sqlite:3
 	dev-libs/crossguid
 	>=dev-libs/fribidi-1.0.5
-	>=dev-libs/libcdio-2.1.0:=[cxx]
 	>=dev-libs/libfmt-6.1.2:=
 	dev-libs/libfstrcmp
 	dev-libs/libpcre2:=
@@ -125,12 +126,14 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	dev-libs/tinyxml2:=
 	media-fonts/roboto
 	media-gfx/exiv2:=
+	media-libs/dav1d:=
 	media-libs/libglvnd[X?]
 	>=media-libs/freetype-2.10.1
 	media-libs/harfbuzz:=
 	>=media-libs/libass-0.15.0:=
 	media-libs/mesa[opengl,wayland?,X?]
 	media-libs/taglib:=
+	net-libs/gnutls:=
 	virtual/libiconv
 	virtual/ttf-fonts
 	x11-libs/libdrm
@@ -186,6 +189,9 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	nfs? (
 		>=net-fs/libnfs-3.0.0:=
 	)
+	optical? (
+		>=dev-libs/libcdio-2.1.0:=[cxx]
+	)
 	pipewire? (
 		>=media-video/pipewire-0.3.50:=
 	)
@@ -194,15 +200,6 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	)
 	samba? (
 		>=net-fs/samba-3.4.6[smbclient(+)]
-	)
-	system-ffmpeg? (
-		=media-video/ffmpeg-7*:=[encode(+),soc(-)?,postproc(-),vaapi?,vdpau?,X?]
-	)
-	!system-ffmpeg? (
-		app-arch/bzip2
-		app-arch/xz-utils
-		media-libs/dav1d:=
-		net-libs/gnutls:=
 	)
 	udf? (
 		>=dev-libs/libudfread-1.0.0
@@ -263,7 +260,7 @@ BDEPEND="
 	dev-build/cmake
 	dev-lang/swig
 	virtual/pkgconfig
-	<=virtual/jre-21:*
+	<=virtual/jre-21-r9999:*
 	doc? (
 		app-text/doxygen
 	)
@@ -390,15 +387,16 @@ src_configure() {
 		-DENABLE_VDPAU=$(usex vdpau)
 		-DENABLE_XSLT=$(usex xslt)
 
-		-DWITH_FFMPEG=$(usex system-ffmpeg)
+		# ffmpeg hasn't decided on if postproc is removed or not and kodi has chosen to patch it back
+		-DWITH_FFMPEG=OFF
 
 		#To bundle or not
-		-DENABLE_INTERNAL_CEC=OFF
+		-DENABLE_INTERNAL_ASS=OFF
 		-DENABLE_INTERNAL_CURL=OFF
 		-DENABLE_INTERNAL_CROSSGUID=OFF
 		-DENABLE_INTERNAL_DAV1D=OFF
 		-DENABLE_INTERNAL_EXIV2=OFF
-		-DENABLE_INTERNAL_FFMPEG="$(usex !system-ffmpeg)"
+		-DENABLE_INTERNAL_FFMPEG=ON
 		-DENABLE_INTERNAL_FLATBUFFERS=OFF
 		-DENABLE_INTERNAL_FMT=OFF
 		-DENABLE_INTERNAL_FSTRCMP=OFF
@@ -414,15 +412,13 @@ src_configure() {
 		-Dgroovy_SOURCE_DIR="${WORKDIR}/groovy-${GROOVY_VERSION}"
 		-Dapache-commons-lang_SOURCE_DIR="${WORKDIR}/commons-lang3-${APACHE_COMMON_LANG_VERSION}"
 		-Dapache-commons-text_SOURCE_DIR="${WORKDIR}/commons-text-${APACHE_COMMON_TEXT_VERSION}"
+		-DFFMPEG_URL="${DISTDIR}/ffmpeg-${FFMPEG_VERSION}.tar.xz"
 	)
 
 	# Separated to avoid "Manually-specified variables were not used by the project:"
 	use cec && mycmakeargs+=( -DENABLE_INTERNAL_CEC=OFF )
 	use css && mycmakeargs+=( -Dlibdvdcss_URL="${DISTDIR}/libdvdcss-${LIBDVDCSS_VERSION}.tar.gz" )
 	use nfs && mycmakeargs+=( -DENABLE_INTERNAL_NFS=OFF )
-	use !system-ffmpeg && mycmakeargs+=(
-		-DFFMPEG_URL="${DISTDIR}/ffmpeg-${FFMPEG_VERSION}.tar.gz"
-	)
 	use !udev && mycmakeargs+=( -DENABLE_LIBUSB=$(usex libusb) )
 	use X && use !gles && mycmakeargs+=( -DENABLE_GLX=ON )
 
@@ -442,6 +438,12 @@ src_configure() {
 	else
 		mycmakeargs+=( -DUSE_LTO=OFF )
 	fi
+
+	# bug #926076
+	append-flags -fPIC
+
+	# used by vendored libdvdread
+	tc-export PKG_CONFIG
 
 	if tc-is-cross-compiler; then
 		for t in "${NATIVE_TOOLS[@]}" ; do
@@ -476,6 +478,9 @@ src_test() {
 		# Tries to ping localhost, naturally breaking network-sandbox
 		TestNetwork.PingHost
 	)
+
+	# Tests assumes bluray support is enabled
+	use !bluray && CMAKE_SKIP_TESTS+=( TestURIUtils.GetBasePath )
 
 	if use arm || use x86; then
 		# bug #779184

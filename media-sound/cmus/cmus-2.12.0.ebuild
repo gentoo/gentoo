@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/cmus/cmus/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm64 ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 ~arm64 ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 fi
 
 DESCRIPTION="Ncurses based music player with plugin support for many formats"

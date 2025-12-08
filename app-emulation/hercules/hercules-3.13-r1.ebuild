@@ -11,13 +11,13 @@ SRC_URI="http://downloads.hercules-390.eu/${P}.tar.gz"
 
 LICENSE="QPL-1.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc sparc x86 ~x64-macos"
+KEYWORDS="~alpha amd64 ppc ~sparc x86 ~x64-macos"
 IUSE="bzip2 custom-cflags +suid"
 
 RDEPEND="
 	dev-libs/libltdl:=
 	net-libs/libnsl:0=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	bzip2? ( app-arch/bzip2:= )"
 DEPEND="${RDEPEND}"
 

@@ -50,6 +50,10 @@ else
 	PDEPEND="!crypt? ( sys-libs/libxcrypt[system] )"
 fi
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-getifaddrs-qemu-workaround.patch
+)
+
 just_headers() {
 	use headers-only && target_is_not_host
 }
@@ -240,6 +244,7 @@ pkg_preinst() {
 
 	[[ -n ${ROOT} ]] && return 0
 	[[ -d ${ED}/usr/$(get_libdir) ]] || return 0
+	target_is_not_host && return 0
 	musl_sanity_check
 }
 

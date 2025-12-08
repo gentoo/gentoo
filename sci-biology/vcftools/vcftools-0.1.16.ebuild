@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="lapack"
 
-RDEPEND="sys-libs/zlib
+RDEPEND="virtual/zlib:=
 	dev-lang/perl:=
 	lapack? ( virtual/lapack )"
 DEPEND="${RDEPEND}"

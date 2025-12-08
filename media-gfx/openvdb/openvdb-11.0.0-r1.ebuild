@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..12} )
 LLVM_OPTIONAL=1
 LLVM_COMPAT=( 15 )
 
@@ -54,11 +54,11 @@ RDEPEND="
 	)
 	blosc? (
 		dev-libs/c-blosc:=
-		sys-libs/zlib:=
+		virtual/zlib:=
 	)
 	nanovdb? (
 		zlib? (
-			sys-libs/zlib:=
+			virtual/zlib:=
 		)
 		cuda? (
 			dev-util/nvidia-cuda-toolkit:=

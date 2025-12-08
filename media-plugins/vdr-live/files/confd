@@ -1,0 +1,41 @@
+# configuration of media-plugins/vdr-live
+
+# for people who want more security with ssl access
+#
+# SSL ADDRESS -->  https://<your-ip>:8443/
+#
+# allowed values: yes no
+# default: no
+#
+#LIVE_USE_SSL="yes"
+
+# default TCP portnumbers for live webserver
+#
+#LIVE_PORT="8008"
+#LIVE_SSL_PORT="8443"
+
+# default installation of the LIVE plugin creates a self-signed certificate
+# which has a lifetime of 365 days = 1 year
+#
+# If you want to replace this certificate with a new one, execute
+#    emerge --config vdr-live
+#
+# If you want a different certificate, store certificate and keyfile in
+#   /etc/vdr/plugins/live/
+# For security, make sure the keyfile is only readable by the vdr user!
+#
+# default:
+#LIVE_SSL_CERTFILE="/etc/vdr/plugins/live/live.pem"
+#LIVE_SSL_KEYFILE="/etc/vdr/plugins/live/live-key.pem"
+
+# bind webserver to IP addresses
+# default: 0.0.0.0 (all IP addresses)
+#
+LIVE_BIND_IPS="127.0.0.1"
+
+# for people who have epgimages
+# if the directory exists, it will be added to LIVE
+# set this to your own path, if needed
+#
+# default:
+#EPGIMAGES_DIR="/var/cache/vdr/epgimages"

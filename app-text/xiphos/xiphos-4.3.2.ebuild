@@ -11,7 +11,7 @@ SRC_URI="https://github.com/crosswire/${PN}/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2 MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="dbus debug"
 
 RDEPEND="
@@ -21,7 +21,7 @@ RDEPEND="
 	dev-libs/libxml2:=
 	net-libs/biblesync
 	net-libs/webkit-gtk:4.1
-	sys-libs/zlib[minizip]
+	virtual/minizip:=
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
 	dbus? ( dev-libs/dbus-glib )
@@ -41,10 +41,17 @@ BDEPEND="
 "
 
 PATCHES=(
+	# both merged. to be removed at next version
 	"${FILESDIR}"/${PN}-4.3.2-include_dbus.patch
-	# merged. to be removed at next version
 	"${FILESDIR}"/${PN}-4.3.2-fix_odr.patch
 )
+
+src_prepare() {
+	cmake_src_prepare
+
+	# bug 964692, don't build translations for help-pages for now
+	echo "" > help/HELP_LINGUAS || die
+}
 
 src_configure() {
 	local mycmakeargs=(

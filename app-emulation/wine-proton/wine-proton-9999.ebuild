@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{11..14} )
 inherit optfeature python-any-r1 readme.gentoo-r1 toolchain-funcs wine
 
 WINE_GECKO=2.47.4
-WINE_MONO=10.0.0
+WINE_MONO=10.4.0
 WINE_PV=$(ver_rs 2 -)
 
 if [[ ${PV} == 9999 ]]; then
@@ -102,7 +102,11 @@ RDEPEND="
 		app-emulation/wine-gecko:${WINE_GECKO}[${WINE_USEDEP}]
 		wow64? ( app-emulation/wine-gecko[abi_x86_32] )
 	)
-	gstreamer? ( media-plugins/gst-plugins-meta:1.0[${WINE_USEDEP}] )
+	gstreamer? (
+		media-libs/gst-plugins-bad:1.0[${WINE_USEDEP}]
+		media-plugins/gst-plugins-libav:1.0[${WINE_USEDEP}]
+		media-plugins/gst-plugins-meta:1.0[${WINE_USEDEP}]
+	)
 	mono? ( app-emulation/wine-mono:${WINE_MONO} )
 	perl? (
 		dev-lang/perl
@@ -159,9 +163,6 @@ src_prepare() {
 		sed -e '/^UNIX_LIBS.*=/s/$/ -latomic/' \
 			-i dlls/{ntdll,winevulkan}/Makefile.in || die
 	fi
-
-	# similarly to staging, append to `wine --version` for identification
-	sed -i "s/wine_build[^1]*1/& (Proton-${WINE_PV})/" configure.ac || die
 
 	# proton variant also needs specfiles and vulkan
 	tools/make_specfiles || die # perl

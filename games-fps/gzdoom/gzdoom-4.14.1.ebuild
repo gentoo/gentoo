@@ -24,7 +24,7 @@ DEPEND="
 	media-libs/libwebp
 	media-libs/openal
 	>=media-libs/zmusic-1.1.14
-	sys-libs/zlib
+	virtual/zlib:=
 	gtk? ( x11-libs/gtk+:3 )"
 RDEPEND="${DEPEND}"
 

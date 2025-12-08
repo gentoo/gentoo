@@ -1,0 +1,26 @@
+--- a/configure.in
++++ b/configure.in
+@@ -34,14 +34,15 @@ CFLAGS="$CFLAGS $AALIB_CFLAGS"
+ LIBS="$LIBS $AALIB_LIBS"
+ 
+ SOUNDFILES=""
+-AM_PATH_LIBMIKMOD(3.0.0, 
+-CFLAGS="$CFLAGS $LIBMIKMOD_CFLAGS"
+-LIBS="$LIBS $LIBMIKMOD_LIBS"
+-LDADD="$LDADD $LIBMIKMOD_LDADD"
+-AC_DEFINE(HAVE_LIBMIKMOD)
+-SOUNDFILES="bb.s3m bb2.s3m bb3.s3m"
+-dnl AC_DEFINE_UNQUOTED(SOUNDDIR,"$datadir/bb")
+-,
++PKG_CHECK_MODULES([LIBMIKMOD],
++[libmikmod >= 3.0.0],
++[
++	CFLAGS="$CFLAGS $LIBMIKMOD_CFLAGS"
++	LIBS="$LIBS $LIBMIKMOD_LIBS"
++	AC_DEFINE(HAVE_LIBMIKMOD)
++	SOUNDFILES="bb.s3m bb2.s3m bb3.s3m"
++	dnl AC_DEFINE_UNQUOTED(SOUNDDIR,"$datadir/bb")
++],
+ AC_MSG_RESULT([Libmikmod is missing - sound support will be disabled])
+ )
+ 

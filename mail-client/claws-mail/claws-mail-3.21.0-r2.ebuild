@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit autotools desktop python-any-r1 xdg
 
@@ -31,7 +31,7 @@ REQUIRED_USE="
 COMMONDEPEND="
 	dev-libs/nettle:=
 	net-mail/ytnef
-	sys-libs/zlib:=
+	virtual/zlib:=
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2[jpeg]
 	x11-libs/gtk+:2

@@ -34,7 +34,7 @@ RDEPEND="
 	readline? ( >=sys-libs/readline-7.0:= )
 	pcre? ( dev-libs/libpcre:3 )
 	svm? ( sci-libs/libsvm )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib:= )
 	X? ( x11-libs/libXpm )
 	hyperspec? ( dev-lisp/hyperspec )
 	berkdb? ( sys-libs/db:5.3 )

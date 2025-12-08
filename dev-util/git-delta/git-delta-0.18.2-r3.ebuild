@@ -252,7 +252,7 @@ CRATES="
 	zerovec-derive@0.10.3
 	zerovec@0.10.4
 "
-
+RUST_MIN_VER="1.81"
 inherit cargo shell-completion
 
 DESCRIPTION="A syntax-highlighting pager for git"
@@ -275,7 +275,7 @@ BDEPEND="
 DEPEND="
 	dev-libs/libgit2:0/1.9
 	dev-libs/oniguruma:=
-	sys-libs/zlib
+	virtual/zlib:=
 "
 RDEPEND="
 	${DEPEND}

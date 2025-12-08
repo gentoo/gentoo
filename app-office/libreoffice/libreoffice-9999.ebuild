@@ -110,7 +110,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	app-arch/unzip
 	app-arch/zip
 	app-crypt/argon2:=
-	app-crypt/gpgme:=[cxx]
+	dev-cpp/gpgmepp:=
 	app-text/hunspell:=
 	>=app-text/libabw-0.1.0
 	>=app-text/libebook-0.1
@@ -168,7 +168,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=media-libs/zxing-cpp-2.3.0:=
 	net-misc/curl
 	sci-mathematics/lpsolve:=
-	sys-libs/zlib
+	virtual/zlib:=
 	virtual/opengl
 	x11-libs/cairo[X]
 	x11-libs/libXinerama
@@ -191,14 +191,14 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	)
 	gstreamer? (
 		media-libs/gstreamer:1.0
-		media-libs/gst-plugins-base:1.0
+		media-plugins/gst-plugins-meta:1.0
 	)
 	gtk? (
 		app-accessibility/at-spi2-core:2
 		dev-libs/glib:2
 		gnome-base/dconf
 		media-libs/mesa[egl(+)]
-		gui-libs/gtk[X]
+		gui-libs/gtk[wayland,X]
 		x11-libs/pango
 	)
 	kde? (

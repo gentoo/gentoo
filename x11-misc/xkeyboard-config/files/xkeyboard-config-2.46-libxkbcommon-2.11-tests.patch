@@ -1,0 +1,46 @@
+https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config/-/commit/1eaadd20d69d2dd3744371c853aa68f6571b7a77
+
+From 1eaadd20d69d2dd3744371c853aa68f6571b7a77 Mon Sep 17 00:00:00 2001
+From: Pierre Le Marre <dev@wismill.eu>
+Date: Sun, 5 Oct 2025 09:20:24 +0200
+Subject: [PATCH] =?UTF-8?q?test:=20Fix=20test=5Fcompat=20for=20libxkbcommo?=
+ =?UTF-8?q?n=20=E2=89=A4=201.11?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Restore test support for libxkbcommon ≤ 1.11.
+
+Follow-up of 5c94ff232d60e1d7e253549b2d3722fc719f76f6, which introduced
+a fix for libxkbcommon-1.12 but mistakenly removed support for anterior
+versions.
+
+Part-of: <https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config/-/merge_requests/857>
+---
+ tests/test_compat_rules.py | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/tests/test_compat_rules.py b/tests/test_compat_rules.py
+index ebcc8bd18..edb649f62 100644
+--- a/tests/test_compat_rules.py
++++ b/tests/test_compat_rules.py
+@@ -174,9 +174,16 @@ def test_compat_layout(xkb_base: Path, rules: str, mapping: tuple[Layout, Layout
+ 
+         # [HACK] Fix keycodes aliases
+         if alias.layout == "de" and target.layout != "de":
++            # libxkbcommon ≤ 1.11
++            alias_string = alias_string.replace(
++                "<LatZ>         = <AD06>", "<LatY>         = <AD06>"
++            )
++            alias_string = alias_string.replace(
++                "<LatY>         = <AB01>", "<LatZ>         = <AB01>"
++            )
++            # libxkbcommon ≥ 1.12
+             alias_string = alias_string.replace("<LatZ> = <AD06>", "<LatZ> = <AB01>")
+             alias_string = alias_string.replace("<LatY> = <AB01>", "<LatY> = <AD06>")
+-            pass
+ 
+         # [HACK] Discard components names
+         alias_string = COMPONENT_NAME_PATTERN.sub(drop_component_name, alias_string)
+-- 
+GitLab

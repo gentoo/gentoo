@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~mips ppc ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="selinux stunnel3 systemd tcpd test"
 RESTRICT="!test? ( test )"
 
@@ -43,6 +43,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.71-dont-clobber-fortify-source.patch
 	"${FILESDIR}"/${PN}-5.71-respect-EPYTHON-for-tests.patch
+	"${FILESDIR}"/${PN}-5.74-hardened-mimalloc.patch
 )
 
 python_check_deps() {

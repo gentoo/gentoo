@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1
 
@@ -33,8 +33,13 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 "
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 distutils_enable_sphinx docs
+
+PATCHES=(
+	"${FILESDIR}"/python-jose-3.5.0-test-failure.patch
+)
 
 python_prepare_all() {
 	distutils-r1_python_prepare_all
@@ -44,6 +49,6 @@ python_prepare_all() {
 }
 
 python_test() {
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	# bug #723616
 	epytest -o addopts=
 }

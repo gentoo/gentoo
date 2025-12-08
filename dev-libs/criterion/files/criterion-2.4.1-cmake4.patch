@@ -1,0 +1,18 @@
+Combines:
+https://github.com/nanopb/nanopb/commit/37bea38a137dda4d90433fe91ac88b671035a5e1
+https://github.com/nanopb/nanopb/commit/0c3bb686654c0629834fd4cf0d4bf58eea30bfcc
+
+--- a/subprojects/nanopb/CMakeLists.txt
++++ b/subprojects/nanopb/CMakeLists.txt
+@@ -1,8 +1,8 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.14.0)
+ 
+-project(nanopb C)
++project(nanopb VERSION 0.4.5 LANGUAGES C)
+ 
+-set(nanopb_VERSION_STRING nanopb-0.4.5)
++set(nanopb_VERSION_STRING ${PROJECT_NAME}-${${PROJECT_NAME}_VERSION}-dev)
+ set(nanopb_SOVERSION 0)
+ 
+ string(REPLACE "nanopb-" "" nanopb_VERSION ${nanopb_VERSION_STRING})

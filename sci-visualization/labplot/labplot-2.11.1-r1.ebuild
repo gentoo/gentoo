@@ -61,7 +61,7 @@ DEPEND="
 	origin? ( sci-libs/liborigin:2 )
 	root? (
 		app-arch/lz4
-		sys-libs/zlib
+		virtual/zlib:=
 	)
 	serial? ( >=dev-qt/qtserialport-${QTMIN}:6 )
 	share? ( >=kde-frameworks/purpose-${KFMIN}:6 )
@@ -76,7 +76,12 @@ BDEPEND="
 	sys-devel/gettext
 "
 
-PATCHES=( "${FILESDIR}/${P}-ods-buildfix.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-ods-buildfix.patch"
+	"${FILESDIR}/${P}-qtads-cmake-minreqver-3.16.patch" # bug #965103
+	"${FILESDIR}/${P}-qt-6.10.patch" # bug #966308
+	"${FILESDIR}/${P}-missing-header.patch" # bug #966438
+)
 
 src_prepare() {
 	# bug 958185

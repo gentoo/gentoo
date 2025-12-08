@@ -1,0 +1,108 @@
+From f166433a660647836bdfd398d0edc0edec36caf3 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Fri, 28 Mar 2025 15:25:45 -0400
+Subject: [PATCH 1/3] freshclam/freshclam.c: always allow HTTPUserAgent
+
+---
+ freshclam/freshclam.c | 20 ++++----------------
+ 1 file changed, 4 insertions(+), 16 deletions(-)
+
+diff --git a/freshclam/freshclam.c b/freshclam/freshclam.c
+index 7c23b9e..5da6251 100644
+--- a/freshclam/freshclam.c
++++ b/freshclam/freshclam.c
+@@ -928,22 +928,10 @@ static fc_error_t initialize(struct optstruct *opts)
+     }
+ 
+     if (optget(opts, "HTTPUserAgent")->enabled) {
+-
+-        if (!(optget(opts, "PrivateMirror")->enabled) &&
+-            (optget(opts, "DatabaseMirror")->enabled) &&
+-            (strstr(optget(opts, "DatabaseMirror")->strarg, "clamav.net"))) {
+-            /*
+-             * Using the official project CDN.
+-             */
+-            logg("In an effort to reduce CDN data costs, HTTPUserAgent may not be used when updating from clamav.net.\n");
+-            logg("The HTTPUserAgent specified in your config will be ignored so that FreshClam is not blocked by the CDN.\n");
+-            logg("If ClamAV's user agent is not allowed through your firewall/proxy, please contact your network administrator.\n\n");
+-        } else {
+-            /*
+-             * Using some other CDN or private mirror.
+-             */
+-            fcConfig.userAgent = optget(opts, "HTTPUserAgent")->strarg;
+-        }
++        /*
++         * Using some other CDN or private mirror.
++         */
++        fcConfig.userAgent = optget(opts, "HTTPUserAgent")->strarg;
+     }
+ 
+     fcConfig.maxAttempts    = optget(opts, "MaxAttempts")->numarg;
+-- 
+2.45.2
+
+From 58177ecd5dc2dec6f0170fd4eb346272fa3877df Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Fri, 28 Mar 2025 15:26:08 -0400
+Subject: [PATCH 2/3] etc/freshclam.conf.sample: demonstrate version override
+
+The HTTPUserAgent option can be used to trick the database server
+into thinking your version of ClamAV is not outdated. Now we give
+an example that does that.
+---
+ etc/freshclam.conf.sample | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/etc/freshclam.conf.sample b/etc/freshclam.conf.sample
+index 5d38500..b5612b4 100644
+--- a/etc/freshclam.conf.sample.in.in
++++ b/etc/freshclam.conf.sample.in.in
+@@ -138,7 +138,7 @@ DatabaseMirror database.clamav.net
+ # As of ClamAV 0.103.3, this setting may not be used when updating from the
+ # clamav.net CDN and can only be used when updating from a private mirror.
+ # Default: clamav/version_number (OS: ..., ARCH: ..., CPU: ..., UUID: ...)
+-#HTTPUserAgent SomeUserAgentIdString
++HTTPUserAgent ClamAV/1.4.3
+ 
+ # Use aaa.bbb.ccc.ddd as client address for downloading databases. Useful for
+ # multi-homed systems.
+-- 
+2.45.2
+
+From 67ef383deec72aa6a299b70a4be93aae15126eb0 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Fri, 28 Mar 2025 15:27:23 -0400
+Subject: [PATCH 3/3] libfreshclam/libfreshclam_internal.c: append junk to
+ HTTPUserAgent
+
+Sending the bare HTTPUserAgent to the CDN won't work because we need
+the other junk (package info, arch, UUID, etc.) We update the
+user-agent routine to combine the user-supplied agent with the
+required mumbo jumbo.
+---
+ libfreshclam/libfreshclam_internal.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/libfreshclam/libfreshclam_internal.c b/libfreshclam/libfreshclam_internal.c
+index f6128e6..0af1d81 100644
+--- a/libfreshclam/libfreshclam_internal.c
++++ b/libfreshclam/libfreshclam_internal.c
+@@ -587,7 +587,14 @@ static fc_error_t create_curl_handle(
+     }
+ 
+     if (g_userAgent) {
+-        strncpy(userAgent, g_userAgent, sizeof(userAgent));
++        /*
++	 * Use the HTTPUserAgent supplied by the user instead of the
++	 * default PACKAGE/get_version().
++	 */
++        snprintf(userAgent, sizeof(userAgent),
++                 "%s (OS: " TARGET_OS_TYPE ", ARCH: " TARGET_ARCH_TYPE ", CPU: " TARGET_CPU_TYPE ", UUID: %s)",
++                 g_userAgent,
++                 g_freshclamDat->uuid);
+     } else {
+         /*
+          * Use a randomly generated UUID in the User-Agent
+-- 
+2.45.2
+

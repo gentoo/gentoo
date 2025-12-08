@@ -1,0 +1,32 @@
+add user-flags
+add ffnvcodec if required, because autodetect is disabled
+disable lto, handled by user-flags
+--- a/avidemux_core/cmake/ffmpeg_configure.sh.cmake
++++ b/avidemux_core/cmake/ffmpeg_configure.sh.cmake
+@@ -1,2 +1,2 @@
+ export PATH=${FF_ENV_PATH}:$PATH
+-${FFMPEG_SOURCE_DIR}/configure ${FFMPEG_FLAGS}
+\ No newline at end of file
++${FFMPEG_SOURCE_DIR}/configure ${FFMPEG_FLAGS} @@GENTOO_FFMPEG_FLAGS@@
+\ No newline at end of file
+--- a/avidemux_core/cmake/admFFmpegBuild_native.cmake
++++ b/avidemux_core/cmake/admFFmpegBuild_native.cmake
+@@ -8,6 +8,7 @@ ADM_FF_SET_DEFAULT()
+ IF(USE_NVENC)
+   SET(FFMPEG_ENCODERS ${FFMPEG_ENCODERS} nvenc)
+   SET(FFMPEG_DECODERS ${FFMPEG_DECODERS} nvdec)
++  xadd("--enable-ffnvcodec")
+   xadd("--enable-nvenc")
+   xadd("--enable-nvdec")
+   xadd("--extra-cflags=-I${NVENC_INCLUDE_DIR}")
+@@ -44,10 +45,6 @@ IF(APPLE AND "$ENV{MACOSX_DEPLOYMENT_TARGET}" VERSION_EQUAL "10.15")
+   xadd(--extra-cflags="-fno-stack-check") # see https://trac.ffmpeg.org/ticket/8073
+ ENDIF()
+ 
+-IF(NOT APPLE AND NOT ADM_CPU_X86_32 AND NOT "${CMAKE_C_COMPILER}" MATCHES ".*[cC]lang.*")
+-  xadd(--enable-lto)
+-ENDIF()
+-
+ #@@
+ ADM_FF_ADD_OPTIONS()
+ 

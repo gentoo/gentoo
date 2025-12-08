@@ -39,6 +39,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2023.01.17-cuda.patch
 	"${FILESDIR}"/${PN}-2023.01.17-ssl3.patch
 	"${FILESDIR}"/${P}-gcc15.patch
+	"${FILESDIR}"/${P}-cmake.patch
 )
 
 src_prepare() {

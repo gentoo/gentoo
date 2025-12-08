@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,7 @@ REQUIRED_USE="gles2-only? ( !osd )"
 DEPEND="
 	media-libs/libpng:=
 	media-libs/libsdl2[joystick,opengl,video]
-	sys-libs/zlib[minizip]
+	virtual/minizip:=
 	gles2-only? ( media-libs/libsdl2[gles2] )
 	lirc? ( app-misc/lirc )
 	netplay? ( media-libs/sdl2-net )

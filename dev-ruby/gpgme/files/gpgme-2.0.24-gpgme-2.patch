@@ -1,0 +1,524 @@
+https://github.com/ueno/ruby-gpgme/commit/6c22a5b29578e99ec8079755a2c923e21c29c095 (just the constants hunk, harmless enough)
+https://github.com/ueno/ruby-gpgme/commit/63f5c635b567a26bb040604e731741c434d8abb2 (with tarballs cut out)
+
+--- a/lib/gpgme/constants.rb
++++ b/lib/gpgme/constants.rb
+@@ -265,4 +265,12 @@ module GPGME
+     VALIDITY_FULL       => :full,
+     VALIDITY_ULTIMATE   => :ultimate
+   }
++
++  if defined?(GPGME_DELETE_ALLOW_SECRET)
++    DELETE_ALLOW_SECRET = GPGME_DELETE_ALLOW_SECRET
++  end
++
++  if defined?(GPGME_DELETE_FORCE)
++    DELETE_FORCE = GPGME_DELETE_FORCE
++  end
+ end
+
+From 63f5c635b567a26bb040604e731741c434d8abb2 Mon Sep 17 00:00:00 2001
+From: Jamie Magee <jamie.magee@gmail.com>
+Date: Fri, 18 Jul 2025 08:10:16 -0700
+Subject: [PATCH] Bump `gpgme` to `2.0.0` and `libassuan` to `3.0.2`
+
+- Bumped `gpgme` from `1.21.0` to `2.0.0`
+  - https://github.com/gpg/gpgme/blob/master/NEWS
+- Bumped `libassuan` from `2.5.6` to `3.0.2`
+  - https://github.com/gpg/libassuan/blob/master/NEWS
+
+Changes I had to account for from `gpgme`:
+- Removed trust item functions
+  - `gpgme_op_trustlist_start`, `gpgme_op_tristlist_next`, and `gpgme_op_trustlist_end` were removed
+- Removed `GPGME_ATTR_*` constants
+- Timestamp field type change
+  - `gpgme_subkey_t`, `gpgme_key_sig_t`, and `gpgme_new_signature_t` changed from `signed long` to `unsigned long`
+- New functions
+  - `gpgme_op_random_bytes` and `gpgme_op_random_value`
+- New constants
+  - `GPGME_RANDOM_MODE_NORMAL`, `GPGME_RANDOM_MODE_ZBASE32`, `GPGME_DECRYPT_LISTONLY`, `GPGME_CREATE_GROUP`
+
+Closes #202
+---
+ ext/gpgme/extconf.rb                   |   8 +-
+ ext/gpgme/gpgme_n.c                    | 109 +++++++++++++++++++
+ lib/gpgme/constants.rb                 | 143 +++++++++++++++++++------
+ lib/gpgme/ctx.rb                       |  33 ++++++
+ ports/archives/gpgme-1.21.0.tar.bz2    | Bin 1830113 -> 0 bytes
+ ports/archives/gpgme-2.0.0.tar.bz2     | Bin 0 -> 1383911 bytes
+ ports/archives/libassuan-2.5.6.tar.bz2 | Bin 577012 -> 0 bytes
+ ports/archives/libassuan-3.0.2.tar.bz2 | Bin 0 -> 593917 bytes
+ 8 files changed, 258 insertions(+), 35 deletions(-)
+ delete mode 100644 ports/archives/gpgme-1.21.0.tar.bz2
+ create mode 100644 ports/archives/gpgme-2.0.0.tar.bz2
+ delete mode 100644 ports/archives/libassuan-2.5.6.tar.bz2
+ create mode 100644 ports/archives/libassuan-3.0.2.tar.bz2
+
+diff --git a/ext/gpgme/extconf.rb b/ext/gpgme/extconf.rb
+index 5190131..18b1c62 100644
+--- a/ext/gpgme/extconf.rb
++++ b/ext/gpgme/extconf.rb
+@@ -86,11 +86,11 @@
+     recipe.activate
+   end
+ 
+-  libassuan_recipe = MiniPortile.new('libassuan', '2.5.6').tap do |recipe|
++  libassuan_recipe = MiniPortile.new('libassuan', '3.0.2').tap do |recipe|
+     recipe.target = File.join(ROOT, "ports")
+     recipe.files = [{
+       :url => "https://www.gnupg.org/ftp/gcrypt/#{recipe.name}/#{recipe.name}-#{recipe.version}.tar.bz2",
+-      :sha256 => 'e9fd27218d5394904e4e39788f9b1742711c3e6b41689a31aa3380bd5aa4f426'
++      :sha256 => 'd2931cdad266e633510f9970e1a2f346055e351bb19f9b78912475b8074c36f6'
+     }]
+     recipe.configure_options = [
+       '--disable-shared',
+@@ -116,11 +116,11 @@
+   # if PKG_CONFIG_PATH is not set properly.
+   ENV["PKG_CONFIG_PATH"] = [*pkg_config_paths, ENV["PKG_CONFIG_PATH"]].compact.join(File::PATH_SEPARATOR)
+ 
+-  gpgme_recipe = MiniPortile.new('gpgme', '1.21.0').tap do |recipe|
++  gpgme_recipe = MiniPortile.new('gpgme', '2.0.0').tap do |recipe|
+     recipe.target = File.join(ROOT, "ports")
+     recipe.files = [{
+       :url => "https://www.gnupg.org/ftp/gcrypt/#{recipe.name}/#{recipe.name}-#{recipe.version}.tar.bz2",
+-      :sha256 => '416e174e165734d84806253f8c96bda2993fd07f258c3aad5f053a6efd463e88'
++      :sha256 => 'ddf161d3c41ff6a3fcbaf4be6c6e305ca4ef1cc3f1ecdfce0c8c2a167c0cc36d'
+     }]
+     recipe.configure_options = [
+       '--disable-shared',
+diff --git a/ext/gpgme/gpgme_n.c b/ext/gpgme/gpgme_n.c
+index c1f1941..0d2f712 100644
+--- a/ext/gpgme/gpgme_n.c
++++ b/ext/gpgme/gpgme_n.c
+@@ -106,11 +106,13 @@
+ #define UNWRAP_GPGME_KEY(vkey, key)                                \
+   Data_Get_Struct(vkey, struct _gpgme_key, key)
+ 
++#if defined(GPGME_VERSION_NUMBER) && GPGME_VERSION_NUMBER < 0x020000
+ #define WRAP_GPGME_TRUST_ITEM(item)                                          \
+   Data_Wrap_Struct(cTrustItem, 0, gpgme_trust_item_unref, item)
+ /* `gpgme_trust_item_t' is typedef'ed as `struct _gpgme_trust_item *'. */
+ #define UNWRAP_GPGME_TRUST_ITEM(vitem, item)                        \
+   Data_Get_Struct(vitem, struct _gpgme_trust_item, item)
++#endif
+ 
+ static VALUE cEngineInfo,
+   cCtx,
+@@ -123,7 +125,9 @@ static VALUE cEngineInfo,
+   cNewSignature,
+   cSignature,
+   cSigNotation,
++#if defined(GPGME_VERSION_NUMBER) && GPGME_VERSION_NUMBER < 0x020000
+   cTrustItem,
++#endif
+   cRecipient,
+   cDecryptResult,
+   cVerifyResult,
+@@ -1044,11 +1048,19 @@ save_gpgme_key_attrs (VALUE vkey, gpgme_key_t key)
+       rb_iv_set (vsubkey, "@keyid", rb_str_new2 (subkey->keyid));
+       if (subkey->fpr)
+         rb_iv_set (vsubkey, "@fpr", rb_str_new2 (subkey->fpr));
++#if defined(GPGME_VERSION_NUMBER) && GPGME_VERSION_NUMBER >= 0x020000
++      rb_iv_set (vsubkey, "@timestamp", ULONG2NUM(subkey->timestamp));
++      rb_iv_set (vsubkey, "@expires", ULONG2NUM(subkey->expires));
++#else
+       rb_iv_set (vsubkey, "@timestamp", LONG2NUM(subkey->timestamp));
+       rb_iv_set (vsubkey, "@expires", LONG2NUM(subkey->expires));
++#endif
+ #if defined(GPGME_VERSION_NUMBER) && GPGME_VERSION_NUMBER >= 0x010500
+       if (subkey->curve)
+         rb_iv_set (vsubkey, "@curve", rb_str_new2 (subkey->curve));
++#endif
++#if defined(GPGME_VERSION_NUMBER) && GPGME_VERSION_NUMBER >= 0x020000
++      rb_iv_set (vsubkey, "@subkey_match", INT2FIX(subkey->subkey_match));
+ #endif
+       rb_ary_push (vsubkeys, vsubkey);
+     }
+@@ -1079,8 +1091,13 @@ save_gpgme_key_attrs (VALUE vkey, gpgme_key_t key)
+           rb_iv_set (vkey_sig, "@exportable", INT2FIX(key_sig->exportable));
+           rb_iv_set (vkey_sig, "@pubkey_algo", INT2FIX(key_sig->pubkey_algo));
+           rb_iv_set (vkey_sig, "@keyid", rb_str_new2 (key_sig->keyid));
++#if defined(GPGME_VERSION_NUMBER) && GPGME_VERSION_NUMBER >= 0x020000
++          rb_iv_set (vkey_sig, "@timestamp", ULONG2NUM(key_sig->timestamp));
++          rb_iv_set (vkey_sig, "@expires", ULONG2NUM(key_sig->expires));
++#else
+           rb_iv_set (vkey_sig, "@timestamp", LONG2NUM(key_sig->timestamp));
+           rb_iv_set (vkey_sig, "@expires", LONG2NUM(key_sig->expires));
++#endif
+           rb_ary_push (vsignatures, vkey_sig);
+         }
+       rb_ary_push (vuids, vuser_id);
+@@ -1653,6 +1670,7 @@ rb_s_gpgme_op_card_edit_start (VALUE dummy, VALUE vctx, VALUE vkey,
+   return LONG2NUM(err);
+ }
+ 
++#if defined(GPGME_VERSION_NUMBER) && GPGME_VERSION_NUMBER < 0x020000
+ static VALUE
+ rb_s_gpgme_op_trustlist_start (VALUE dummy, VALUE vctx, VALUE vpattern,
+                                VALUE vmax_level)
+@@ -1716,6 +1734,7 @@ rb_s_gpgme_op_trustlist_end (VALUE dummy, VALUE vctx)
+   err = gpgme_op_trustlist_end (ctx);
+   return LONG2NUM(err);
+ }
++#endif
+ 
+ static VALUE
+ rb_s_gpgme_op_decrypt (VALUE dummy, VALUE vctx, VALUE vcipher, VALUE vplain)
+@@ -2066,8 +2085,13 @@ rb_s_gpgme_op_sign_result (VALUE dummy, VALUE vctx)
+                  INT2FIX(new_signature->hash_algo));
+       rb_iv_set (vnew_signature, "@sig_class",
+                  UINT2NUM(new_signature->sig_class));
++#if defined(GPGME_VERSION_NUMBER) && GPGME_VERSION_NUMBER >= 0x020000
++      rb_iv_set (vnew_signature, "@timestamp",
++                 ULONG2NUM(new_signature->timestamp));
++#else
+       rb_iv_set (vnew_signature, "@timestamp",
+                  LONG2NUM(new_signature->timestamp));
++#endif
+       rb_iv_set (vnew_signature, "@fpr", rb_str_new2 (new_signature->fpr));
+       rb_ary_push (vsignatures, vnew_signature);
+     }
+@@ -2356,6 +2380,57 @@ rb_s_gpgme_op_spawn (VALUE dummy, VALUE vctx, VALUE vfile,
+ }
+ #endif
+ 
++#if defined(GPGME_VERSION_NUMBER) && GPGME_VERSION_NUMBER >= 0x020000
++static VALUE
++rb_s_gpgme_op_random_bytes (VALUE dummy, VALUE vctx, VALUE vsize, VALUE vmode)
++{
++  gpgme_ctx_t ctx;
++  gpgme_error_t err;
++  size_t size;
++  char *buffer;
++  VALUE result;
++
++  CHECK_KEYLIST_NOT_IN_PROGRESS(vctx);
++
++  UNWRAP_GPGME_CTX(vctx, ctx);
++  if (!ctx)
++    rb_raise (rb_eArgError, "released ctx");
++  
++  size = NUM2SIZET(vsize);
++  buffer = ALLOC_N(char, size);
++
++  err = gpgme_op_random_bytes (ctx, NUM2INT(vmode), buffer, size);
++  if (err) {
++    xfree(buffer);
++    return LONG2NUM(err);
++  }
++
++  result = rb_str_new(buffer, size);
++  xfree(buffer);
++  return result;
++}
++
++static VALUE
++rb_s_gpgme_op_random_value (VALUE dummy, VALUE vctx, VALUE vlimit)
++{
++  gpgme_ctx_t ctx;
++  size_t limit, result;
++  gpgme_error_t err;
++
++  CHECK_KEYLIST_NOT_IN_PROGRESS(vctx);
++
++  UNWRAP_GPGME_CTX(vctx, ctx);
++  if (!ctx)
++    rb_raise (rb_eArgError, "released ctx");
++
++  limit = NUM2SIZET(vlimit);
++  err = gpgme_op_random_value (ctx, limit, &result);
++  if (gpgme_err_code(err) == GPG_ERR_NO_ERROR)
++    return SIZET2NUM(result);
++  return LONG2NUM(err);
++}
++#endif
++
+ void
+ Init_gpgme_n (void)
+ {
+@@ -2422,8 +2497,10 @@ Init_gpgme_n (void)
+     rb_define_class_under (mGPGME, "Signature", rb_cObject);
+   cSigNotation =
+     rb_define_class_under (mGPGME, "SigNotation", rb_cObject);
++#if defined(GPGME_VERSION_NUMBER) && GPGME_VERSION_NUMBER < 0x020000
+   cTrustItem =
+     rb_define_class_under (mGPGME, "TrustItem", rb_cObject);
++#endif
+   cInvalidKey =
+     rb_define_class_under (mGPGME, "InvalidKey", rb_cObject);
+   cNewSignature =
+@@ -2581,12 +2658,14 @@ Init_gpgme_n (void)
+                              rb_s_gpgme_op_card_edit_start, 5);
+ 
+   /* Trust Item Management */
++#if defined(GPGME_VERSION_NUMBER) && GPGME_VERSION_NUMBER < 0x020000
+   rb_define_module_function (mGPGME, "gpgme_op_trustlist_start",
+                              rb_s_gpgme_op_trustlist_start, 3);
+   rb_define_module_function (mGPGME, "gpgme_op_trustlist_next",
+                              rb_s_gpgme_op_trustlist_next, 2);
+   rb_define_module_function (mGPGME, "gpgme_op_trustlist_end",
+                              rb_s_gpgme_op_trustlist_end, 1);
++#endif
+ 
+   /* Decrypt */
+   rb_define_module_function (mGPGME, "gpgme_op_decrypt",
+@@ -2648,6 +2727,14 @@ Init_gpgme_n (void)
+                              rb_s_gpgme_op_spawn_start, 7);
+ #endif
+ 
++  /* Random Number Generation */
++#if defined(GPGME_VERSION_NUMBER) && GPGME_VERSION_NUMBER >= 0x020000
++  rb_define_module_function (mGPGME, "gpgme_op_random_bytes",
++                             rb_s_gpgme_op_random_bytes, 3);
++  rb_define_module_function (mGPGME, "gpgme_op_random_value",
++                             rb_s_gpgme_op_random_value, 2);
++#endif
++
+   /* gpgme_pubkey_algo_t */
+   rb_define_const (mGPGME, "GPGME_PK_RSA", INT2FIX(GPGME_PK_RSA));
+   rb_define_const (mGPGME, "GPGME_PK_DSA", INT2FIX(GPGME_PK_DSA));
+@@ -2828,6 +2915,7 @@ Init_gpgme_n (void)
+                    INT2FIX(GPGME_SIG_MODE_CLEAR));
+ 
+   /* gpgme_attr_t */
++#if defined(GPGME_VERSION_NUMBER) && GPGME_VERSION_NUMBER < 0x020000
+   rb_define_const (mGPGME, "GPGME_ATTR_KEYID",
+                    INT2FIX(GPGME_ATTR_KEYID));
+   rb_define_const (mGPGME, "GPGME_ATTR_FPR",
+@@ -2890,6 +2978,7 @@ Init_gpgme_n (void)
+                    INT2FIX(GPGME_ATTR_ERRTOK));
+   rb_define_const (mGPGME, "GPGME_ATTR_SIG_SUMMARY",
+                    INT2FIX(GPGME_ATTR_SIG_SUMMARY));
++#endif
+ 
+   /* gpgme_validity_t */
+   rb_define_const (mGPGME, "GPGME_VALIDITY_UNKNOWN",
+@@ -3135,6 +3224,26 @@ Init_gpgme_n (void)
+                    INT2FIX(GPGME_ENCRYPT_NO_ENCRYPT_TO));
+ #endif
+ 
++  /* Random number generation mode flags added in 2.0.0 */
++#if defined(GPGME_VERSION_NUMBER) && GPGME_VERSION_NUMBER >= 0x020000
++  rb_define_const (mGPGME, "GPGME_RANDOM_MODE_NORMAL",
++                   INT2FIX(GPGME_RANDOM_MODE_NORMAL));
++  rb_define_const (mGPGME, "GPGME_RANDOM_MODE_ZBASE32",
++                   INT2FIX(GPGME_RANDOM_MODE_ZBASE32));
++#endif
++
++  /* Decrypt flags added in 2.0.0 */
++#if defined(GPGME_VERSION_NUMBER) && GPGME_VERSION_NUMBER >= 0x020000
++  rb_define_const (mGPGME, "GPGME_DECRYPT_LISTONLY",
++                   INT2FIX(GPGME_DECRYPT_LISTONLY));
++#endif
++
++  /* Key generation flags added in 2.0.0 */
++#if defined(GPGME_VERSION_NUMBER) && GPGME_VERSION_NUMBER >= 0x020000
++  rb_define_const (mGPGME, "GPGME_CREATE_GROUP",
++                   INT2FIX(GPGME_CREATE_GROUP));
++#endif
++
+   /* These flags were added in 1.4.0. */
+ #if defined(GPGME_VERSION_NUMBER) && GPGME_VERSION_NUMBER >= 0x010400
+   rb_define_const (mGPGME, "GPGME_PINENTRY_MODE_DEFAULT",
+diff --git a/lib/gpgme/constants.rb b/lib/gpgme/constants.rb
+index 565f5d6..8d0d268 100644
+--- a/lib/gpgme/constants.rb
++++ b/lib/gpgme/constants.rb
+@@ -1,36 +1,98 @@
+ module GPGME
+ 
+-  ATTR_ALGO = GPGME_ATTR_ALGO
+-  ATTR_CAN_CERTIFY = GPGME_ATTR_CAN_CERTIFY
+-  ATTR_CAN_ENCRYPT = GPGME_ATTR_CAN_ENCRYPT
+-  ATTR_CAN_SIGN = GPGME_ATTR_CAN_SIGN
+-  ATTR_CHAINID = GPGME_ATTR_CHAINID
+-  ATTR_COMMENT = GPGME_ATTR_COMMENT
+-  ATTR_CREATED = GPGME_ATTR_CREATED
+-  ATTR_EMAIL = GPGME_ATTR_EMAIL
+-  ATTR_ERRTOK = GPGME_ATTR_ERRTOK
+-  ATTR_EXPIRE = GPGME_ATTR_EXPIRE
+-  ATTR_FPR = GPGME_ATTR_FPR
+-  ATTR_ISSUER = GPGME_ATTR_ISSUER
+-  ATTR_IS_SECRET = GPGME_ATTR_IS_SECRET
+-  ATTR_KEYID = GPGME_ATTR_KEYID
+-  ATTR_KEY_CAPS = GPGME_ATTR_KEY_CAPS
+-  ATTR_KEY_DISABLED = GPGME_ATTR_KEY_DISABLED
+-  ATTR_KEY_EXPIRED = GPGME_ATTR_KEY_EXPIRED
+-  ATTR_KEY_INVALID = GPGME_ATTR_KEY_INVALID
+-  ATTR_KEY_REVOKED = GPGME_ATTR_KEY_REVOKED
+-  ATTR_LEN = GPGME_ATTR_LEN
+-  ATTR_LEVEL = GPGME_ATTR_LEVEL
+-  ATTR_NAME = GPGME_ATTR_NAME
+-  ATTR_OTRUST = GPGME_ATTR_OTRUST
+-  ATTR_SERIAL = GPGME_ATTR_SERIAL
+-  ATTR_SIG_STATUS = GPGME_ATTR_SIG_STATUS
+-  ATTR_SIG_SUMMARY = GPGME_ATTR_SIG_SUMMARY
+-  ATTR_TYPE = GPGME_ATTR_TYPE
+-  ATTR_UID_INVALID = GPGME_ATTR_UID_INVALID
+-  ATTR_UID_REVOKED = GPGME_ATTR_UID_REVOKED
+-  ATTR_USERID = GPGME_ATTR_USERID
+-  ATTR_VALIDITY = GPGME_ATTR_VALIDITY
++  if defined?(GPGME_ATTR_ALGO)
++    ATTR_ALGO = GPGME_ATTR_ALGO
++  end
++  if defined?(GPGME_ATTR_CAN_CERTIFY)
++    ATTR_CAN_CERTIFY = GPGME_ATTR_CAN_CERTIFY
++  end
++  if defined?(GPGME_ATTR_CAN_ENCRYPT)
++    ATTR_CAN_ENCRYPT = GPGME_ATTR_CAN_ENCRYPT
++  end
++  if defined?(GPGME_ATTR_CAN_SIGN)
++    ATTR_CAN_SIGN = GPGME_ATTR_CAN_SIGN
++  end
++  if defined?(GPGME_ATTR_CHAINID)
++    ATTR_CHAINID = GPGME_ATTR_CHAINID
++  end
++  if defined?(GPGME_ATTR_COMMENT)
++    ATTR_COMMENT = GPGME_ATTR_COMMENT
++  end
++  if defined?(GPGME_ATTR_CREATED)
++    ATTR_CREATED = GPGME_ATTR_CREATED
++  end
++  if defined?(GPGME_ATTR_EMAIL)
++    ATTR_EMAIL = GPGME_ATTR_EMAIL
++  end
++  if defined?(GPGME_ATTR_ERRTOK)
++    ATTR_ERRTOK = GPGME_ATTR_ERRTOK
++  end
++  if defined?(GPGME_ATTR_EXPIRE)
++    ATTR_EXPIRE = GPGME_ATTR_EXPIRE
++  end
++  if defined?(GPGME_ATTR_FPR)
++    ATTR_FPR = GPGME_ATTR_FPR
++  end
++  if defined?(GPGME_ATTR_ISSUER)
++    ATTR_ISSUER = GPGME_ATTR_ISSUER
++  end
++  if defined?(GPGME_ATTR_IS_SECRET)
++    ATTR_IS_SECRET = GPGME_ATTR_IS_SECRET
++  end
++  if defined?(GPGME_ATTR_KEYID)
++    ATTR_KEYID = GPGME_ATTR_KEYID
++  end
++  if defined?(GPGME_ATTR_KEY_CAPS)
++    ATTR_KEY_CAPS = GPGME_ATTR_KEY_CAPS
++  end
++  if defined?(GPGME_ATTR_KEY_DISABLED)
++    ATTR_KEY_DISABLED = GPGME_ATTR_KEY_DISABLED
++  end
++  if defined?(GPGME_ATTR_KEY_EXPIRED)
++    ATTR_KEY_EXPIRED = GPGME_ATTR_KEY_EXPIRED
++  end
++  if defined?(GPGME_ATTR_KEY_INVALID)
++    ATTR_KEY_INVALID = GPGME_ATTR_KEY_INVALID
++  end
++  if defined?(GPGME_ATTR_KEY_REVOKED)
++    ATTR_KEY_REVOKED = GPGME_ATTR_KEY_REVOKED
++  end
++  if defined?(GPGME_ATTR_LEN)
++    ATTR_LEN = GPGME_ATTR_LEN
++  end
++  if defined?(GPGME_ATTR_LEVEL)
++    ATTR_LEVEL = GPGME_ATTR_LEVEL
++  end
++  if defined?(GPGME_ATTR_NAME)
++    ATTR_NAME = GPGME_ATTR_NAME
++  end
++  if defined?(GPGME_ATTR_OTRUST)
++    ATTR_OTRUST = GPGME_ATTR_OTRUST
++  end
++  if defined?(GPGME_ATTR_SERIAL)
++    ATTR_SERIAL = GPGME_ATTR_SERIAL
++  end
++  if defined?(GPGME_ATTR_SIG_STATUS)
++    ATTR_SIG_STATUS = GPGME_ATTR_SIG_STATUS
++  end
++  if defined?(GPGME_ATTR_SIG_SUMMARY)
++    ATTR_SIG_SUMMARY = GPGME_ATTR_SIG_SUMMARY
++  end
++  if defined?(GPGME_ATTR_TYPE)
++    ATTR_TYPE = GPGME_ATTR_TYPE
++  end
++  if defined?(GPGME_ATTR_UID_INVALID)
++    ATTR_UID_INVALID = GPGME_ATTR_UID_INVALID
++  end
++  if defined?(GPGME_ATTR_UID_REVOKED)
++    ATTR_UID_REVOKED = GPGME_ATTR_UID_REVOKED
++  end
++  if defined?(GPGME_ATTR_USERID)
++    ATTR_USERID = GPGME_ATTR_USERID
++  end
++  if defined?(GPGME_ATTR_VALIDITY)
++    ATTR_VALIDITY = GPGME_ATTR_VALIDITY
++  end
+   DATA_ENCODING_ARMOR = GPGME_DATA_ENCODING_ARMOR
+   DATA_ENCODING_BASE64 = GPGME_DATA_ENCODING_BASE64
+   DATA_ENCODING_BINARY = GPGME_DATA_ENCODING_BINARY
+@@ -273,4 +335,23 @@ module GPGME
+   if defined?(GPGME_DELETE_FORCE)
+     DELETE_FORCE = GPGME_DELETE_FORCE
+   end
++
++  # Random number generation mode flags added in 2.0.0
++  if defined?(GPGME_RANDOM_MODE_NORMAL)
++    RANDOM_MODE_NORMAL = GPGME_RANDOM_MODE_NORMAL
++  end
++
++  if defined?(GPGME_RANDOM_MODE_ZBASE32)
++    RANDOM_MODE_ZBASE32 = GPGME_RANDOM_MODE_ZBASE32
++  end
++
++  # Decrypt flags added in 2.0.0
++  if defined?(GPGME_DECRYPT_LISTONLY)
++    DECRYPT_LISTONLY = GPGME_DECRYPT_LISTONLY
++  end
++
++  # Key generation flags added in 2.0.0
++  if defined?(GPGME_CREATE_GROUP)
++    CREATE_GROUP = GPGME_CREATE_GROUP
++  end
+ end
+diff --git a/lib/gpgme/ctx.rb b/lib/gpgme/ctx.rb
+index 81d8777..8380357 100644
+--- a/lib/gpgme/ctx.rb
++++ b/lib/gpgme/ctx.rb
+@@ -570,6 +570,39 @@ def spawn(file, argv, datain, dataout, dataerr, flags = 0)
+       raise exc if exc
+     end
+ 
++    # Generate cryptographically strong random bytes.
++    # Available since GPGME 2.0.0.
++    #
++    # @param [Integer] size Number of bytes to generate
++    # @param [Integer] mode Random generation mode (RANDOM_MODE_NORMAL or RANDOM_MODE_ZBASE32)
++    # @return [String] Random bytes as a binary string
++    def random_bytes(size, mode = GPGME::RANDOM_MODE_NORMAL)
++      result = GPGME::gpgme_op_random_bytes(self, size, mode)
++      if result.is_a?(String)
++        result
++      else
++        exc = GPGME::error_to_exception(result)
++        raise exc if exc
++        result
++      end
++    end
++
++    # Generate a cryptographically strong random unsigned integer value.
++    # Available since GPGME 2.0.0.
++    #
++    # @param [Integer] limit Upper limit for the random value (exclusive)
++    # @return [Integer] Random unsigned integer value in range [0, limit)
++    def random_value(limit)
++      result = GPGME::gpgme_op_random_value(self, limit)
++      if result.is_a?(Integer) && result >= 0
++        result
++      else
++        exc = GPGME::error_to_exception(result)
++        raise exc if exc
++        result
++      end
++    end
++
+     def inspect
+       "#<#{self.class} protocol=#{PROTOCOL_NAMES[protocol] || protocol}, \
+ armor=#{armor}, textmode=#{textmode}, \

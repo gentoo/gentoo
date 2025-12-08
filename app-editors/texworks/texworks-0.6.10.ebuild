@@ -4,7 +4,7 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-{1..4} )
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 CMAKE_REMOVE_MODULES_LIST=( FindLua )
 inherit lua-single python-single-r1 cmake xdg
 
@@ -31,7 +31,7 @@ RDEPEND="
 	dev-qt/qtbase:6[concurrent,dbus,gui,widgets,xml]
 	dev-qt/qtdeclarative:6
 	dev-qt/qttools:6[widgets]
-	sys-libs/zlib
+	virtual/zlib:=
 	lua? ( ${LUA_DEPS} )
 	python? ( ${PYTHON_DEPS} )
 "

@@ -61,6 +61,9 @@ src_prepare() {
 	# Disable tests for manpages
 	eapply "${FILESDIR}"/${PN}-disable_tests_man.patch
 
+	# bug 913669 fix underlinking with slibtool
+	eapply "${FILESDIR}"/${PN}-fix_underlinking.patch
+
 	sed -e "s:pkg-config:$(tc-getPKG_CONFIG):g" \
 		-i configure.ac || die
 

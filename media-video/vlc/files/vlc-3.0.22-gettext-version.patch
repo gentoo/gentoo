@@ -1,0 +1,23 @@
+Fix gettext version mismatch errors
+https://bugs.gentoo.org/766549
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index ada8110..bf1868e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -564,7 +564,7 @@ AS_IF([test "${enable_shared}" = "no" -a "${enable_vlc}" != "no"], [
+ dnl
+ dnl Gettext stuff
+ dnl
+-AM_GNU_GETTEXT_VERSION([0.19.8])
++AM_GNU_GETTEXT_REQUIRE_VERSION([0.19.8])
+ AM_GNU_GETTEXT([external], [need-formatstring-macros])
+ 
+ dnl
+-- 
+2.51.0
+

@@ -6,7 +6,7 @@ EAPI=8
 # Check the upstream uwsgi-2.0 branch, not master, for backports
 
 LUA_COMPAT=( lua5-1 )
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..12} )
 PYTHON_REQ_USE="threads(+)"
 
 RUBY_OPTIONAL="yes"
@@ -15,7 +15,7 @@ USE_RUBY="ruby31 ruby32"
 PHP_EXT_INI="no"
 PHP_EXT_NAME="dummy"
 PHP_EXT_OPTIONAL_USE="php"
-USE_PHP="php8-1 php8-2" # deps must be registered separately below
+USE_PHP="php8-2" # deps must be registered separately below
 
 POSTGRES_COMPAT=( 13 14 15 )
 
@@ -95,7 +95,7 @@ REQUIRED_USE="
 # 3. Plugins
 # 4. Language/app support
 CDEPEND="
-	sys-libs/zlib
+	virtual/zlib:=
 	virtual/libcrypt:=
 	caps? ( sys-libs/libcap )
 	json? (
@@ -132,7 +132,6 @@ CDEPEND="
 	mono? ( dev-lang/mono:= )
 	perl? ( dev-lang/perl:= )
 	php? (
-		php_targets_php8-1? ( dev-lang/php:8.1[embed] )
 		php_targets_php8-2? ( dev-lang/php:8.2[embed] )
 	)
 	python? ( ${PYTHON_DEPS} )

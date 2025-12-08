@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..12} )
 PYTHON_REQ_USE="threads(+),xml(+)"
 
 inherit cmake flag-o-matic python-single-r1
@@ -51,7 +51,7 @@ DEPEND="
 	)
 	png? ( media-libs/libpng:0= )
 	tiff? ( media-libs/tiff:= )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib:= )
 "
 # Python is needed as a runtime dep of installed vigra-config
 RDEPEND="

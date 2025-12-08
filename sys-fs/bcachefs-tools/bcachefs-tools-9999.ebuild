@@ -88,7 +88,8 @@ CRATES="
 "
 
 LLVM_COMPAT=( {17..20} )
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
+RUST_MIN_VER="1.77.0"
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/kentoverstreet.asc
 inherit cargo flag-o-matic llvm-r1 python-any-r1 shell-completion toolchain-funcs unpacker verify-sig
 
@@ -105,7 +106,9 @@ else
 	KEYWORDS="~amd64 ~arm64"
 fi
 
-LICENSE="Apache-2.0 BSD GPL-2 MIT"
+LICENSE="GPL-2"
+# Dependent crate licenses
+LICENSE+=" Apache-2.0 BSD ISC MIT Unicode-DFS-2016"
 SLOT="0"
 IUSE="fuse verify-sig"
 RESTRICT="test"
@@ -118,7 +121,7 @@ DEPEND="
 	dev-libs/userspace-rcu:=
 	sys-apps/keyutils:=
 	sys-apps/util-linux
-	sys-libs/zlib
+	virtual/zlib:=
 	virtual/udev
 	fuse? ( >=sys-fs/fuse-3.7.0 )
 "

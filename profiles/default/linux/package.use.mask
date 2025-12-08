@@ -1,11 +1,28 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Jaco Kroon <jkroon@gentoo.org> (2025-11-11)
+# The depended on packages will need to be keyworded for various arches
+# to which I don't have access.
+dev-db/mariadb aws-km
+
+# Patrick Lauer <patrick@gentoo.org> (2025-09-19)
+# Dependency currently in ::guru
+games-board/lc0 onnx
+
+# Conrad Kostecki <conikost@gentoo.org> (2025-09-06)
+# Currently does not build in headless mode.
+# See: https://github.com/OpenRCT2/OpenRCT2/issues/25119
+>=games-simulation/openrct2-0.4.26 dedicated
+
+# idealseal <realidealseal@protonmail.com> (2025-07-08)
+# Only supported on x86-64.
+dev-util/sccache dist-server
+
 # Matt Turner <mattst88@gentoo.org> (2025-04-23)
 # Requires osmesa, which was removed in mesa-25.1
 app-emulation/aranym osmesa
 app-emulation/crossover-bin osmesa
-media-gfx/asymptote offscreen
 
 # Sam James <sam@gentoo.org> (2023-06-06)
 # Needs linux-only dev-libs/libaio.

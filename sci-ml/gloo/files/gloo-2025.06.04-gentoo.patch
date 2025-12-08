@@ -1,0 +1,109 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 3.18 FATAL_ERROR)
+ 
+ project(gloo CXX C)
+ 
++include(GNUInstallDirs)
++include(CTest)
++
+ set(GLOO_VERSION_MAJOR 0)
+ set(GLOO_VERSION_MINOR 5)
+ set(GLOO_VERSION_PATCH 0)
+--- a/cmake/Dependencies.cmake
++++ b/cmake/Dependencies.cmake
+@@ -81,7 +81,7 @@ if(USE_LIBUV)
+       pkg_search_module(libuv REQUIRED libuv>=1.26)
+       find_file(
+         libuv_LIBRARY
+-        NAMES libuv.a libuv_a.a
++        NAMES libuv.so
+         PATHS ${libuv_LIBDIR}
+         NO_DEFAULT_PATH)
+       if(NOT EXISTS ${libuv_LIBRARY})
+@@ -90,10 +90,7 @@ if(USE_LIBUV)
+     endif()
+ 
+     add_library(uv_a INTERFACE IMPORTED)
+-    set_target_properties(uv_a PROPERTIES
+-      INTERFACE_INCLUDE_DIRECTORIES ${libuv_INCLUDE_DIRS}
+-      INTERFACE_LINK_LIBRARIES ${libuv_LIBRARY}
+-      )
++    list(APPEND gloo_DEPENDENCY_LIBS -luv)
+   endif()
+ endif()
+ 
+--- a/gloo/CMakeLists.txt
++++ b/gloo/CMakeLists.txt
+@@ -191,14 +191,14 @@ endif()
+ # want to statically link with Gloo and not install any artifacts.
+ if(GLOO_INSTALL)
+   install(TARGETS gloo EXPORT GlooTargets
+-      DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
++      DESTINATION ${CMAKE_INSTALL_LIBDIR})
+   if(USE_CUDA)
+     install(TARGETS gloo_cuda EXPORT GlooTargets
+-        DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
++        DESTINATION ${CMAKE_INSTALL_LIBDIR})
+   endif()
+   if(USE_ROCM)
+     install(TARGETS gloo_hip EXPORT GlooTargets
+-        DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
++        DESTINATION ${CMAKE_INSTALL_LIBDIR})
+   endif()
+   install(FILES ${CMAKE_CURRENT_BINARY_DIR}/config.h
+     DESTINATION ${CMAKE_INSTALL_PREFIX}/include/gloo)
+@@ -215,11 +215,7 @@ if(GLOO_INSTALL)
+     endforeach()
+   endif()
+   if(USE_ROCM)
+-    foreach(HEADER ${GLOO_HIP_HDRS})
+-      string(REGEX MATCH "(.*)[/\\]" DIR ${HEADER})
+-      string(REGEX REPLACE "${CMAKE_CURRENT_SOURCE_DIR}" "gloo" DIR ${DIR})
+-      install(FILES ${HEADER} DESTINATION ${CMAKE_INSTALL_PREFIX}/include/${DIR})
+-    endforeach()
++    install(FILES ${GLOO_HIP_HDRS} DESTINATION ${CMAKE_INSTALL_PREFIX}/include/gloo)
+   endif()
+ endif()
+ 
+--- a/gloo/common/linux.cc
++++ b/gloo/common/linux.cc
+@@ -198,7 +198,7 @@ static int getInterfaceSpeedGLinkSettings(int sock, struct ifreq* ifr) {
+   } ecmd;
+   int rv;
+ 
+-  ifr->ifr_data = (__caddr_t)&ecmd;
++  ifr->ifr_data = (char *)&ecmd;
+   memset(&ecmd, 0, sizeof(ecmd));
+   ecmd.req.cmd = ETHTOOL_GLINKSETTINGS;
+ 
+@@ -226,7 +226,7 @@ static int getInterfaceSpeedGSet(int sock, struct ifreq* ifr) {
+   struct ethtool_cmd edata;
+   int rv;
+ 
+-  ifr->ifr_data = (__caddr_t)&edata;
++  ifr->ifr_data = (char *)&edata;
+   memset(&edata, 0, sizeof(edata));
+   edata.cmd = ETHTOOL_GSET;
+ 
+--- a/gloo/transport/tcp/tls/pair.cc
++++ b/gloo/transport/tcp/tls/pair.cc
+@@ -17,6 +17,7 @@
+ 
+ #include <poll.h>
+ #include <cstring>
++#include <array>
+ 
+ namespace gloo {
+ namespace transport {
+--- a/cmake/Hip.cmake
++++ b/cmake/Hip.cmake
+@@ -13,7 +13,7 @@ ELSE()
+ ENDIF()
+ 
+ # Add HIP to the CMAKE Module Path
+-set(CMAKE_MODULE_PATH ${ROCM_PATH}/lib/cmake/hip ${CMAKE_MODULE_PATH})
++set(CMAKE_MODULE_PATH ${ROCM_PATH}/${CMAKE_INSTALL_LIBDIR}/cmake/hip ${CMAKE_MODULE_PATH})
+ 
+ # Disable Asserts In Code (Can't use asserts on HIP stack.)
+ ADD_DEFINITIONS(-DNDEBUG)

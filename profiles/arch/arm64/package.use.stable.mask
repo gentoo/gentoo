@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2025-11-30)
+# sci-libs/blis does not have stable keywords
+sci-libs/flexiblas blis
+
 # Sam James <sam@gentoo.org> (2025-04-28)
 # Needs sys-cluster/ceph which isn't marked stable here
 sys-block/fio rbd
@@ -12,11 +16,6 @@ sys-block/fio rbd
 # scipy will surely be around in future.
 media-sound/liblc3 -test
 
-# Ionen Wolkens <ionen@gentoo.org> (2025-03-12)
-# dev-util/nvidia-cuda-toolkit may never be stabilized
-media-video/ffmpeg npp
-media-video/ffmpeg-compat npp
-
 # Eli Schwartz <eschwartz@gentoo.org> (2025-01-27)
 # Dependencies e.g. pypy not stable here.
 dev-build/meson test-full
@@ -24,18 +23,6 @@ dev-build/meson test-full
 # Eray Aslan <eras@gentoo.org> (2024-06-17)
 # mongodb needed for tests which is not stable keyworded for arm64
 dev-libs/mongo-c-driver test
-
-# Sam Jamrs <sam@gentoo.org> (2024-06-07)
-# dev-libs/capstone hasn't been stabilized yet
-app-emulation/qemu capstone
-
-# Nowa Ammerlaan <nowa@gentoo.org> (2024-03-21)
-# Experimental, virt-firmware is keyworded only unstable
-sys-kernel/installkernel efistub
-
-# Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
-# dev-python/pyside is not stable here yet
-dev-python/qtpy pyside6
 
 # Michał Górny <mgorny@gentoo.org> (2023-04-22)
 # Needs unkeyworded dev-python/sympy
@@ -84,21 +71,6 @@ app-emulation/libvirt glusterfs rbd
 # bug #785685
 app-text/dblatex inkscape
 
-# Sam James <sam@gentoo.org> (2021-02-25)
-# Roy Bamford <neddyseagoon@gentoo.org> (2021-02-25)
-# Dependencies not yet stable, migrated from p.u.m.
-app-crypt/qca botan
-gnome-base/nautilus previewer
-
-# Sam James <sam@gentoo.org> (2021-02-05)
-# Thomas Deutschmann <whissi@gentoo.org> (2017-02-14)
-# No lua stable for this arch yet
-www-servers/nginx nginx_modules_http_lua
-
-# Sam James <sam@gentoo.org> (2020-12-23)
-# Needs stable dev-lang/luajit
-kde-apps/cantor lua
-
 # Sam James <sam@gentoo.org> (2020-10-18)
 # Needs dev-tex/hevea which isn't stable yet
 media-gfx/enblend doc
@@ -127,7 +99,6 @@ net-misc/spice-gtk smartcard
 # Sam James <sam@gentoo.org> (2020-06-29)
 # Deps not yet stable
 dev-python/pymongo test-full
-net-misc/ntpsec rclock_oncore rclock_pps
 dev-util/bcc test
 dev-libs/libisoburn launch-frontend launch-frontend-setuid frontend-optional
 net-analyzer/rrdtool rados
@@ -166,9 +137,4 @@ x11-base/xorg-drivers input_devices_elographics input_devices_joystick input_dev
 app-admin/syslog-ng spoof-source
 app-text/xmlto latex
 sys-auth/pambase pam_krb5 pam_ssh
-sys-block/thin-provisioning-tools test
 sys-devel/distcc gssapi
-
-# Michał Górny <mgorny@gentoo.org> (2018-02-19)
-# Masked due to unstable deps.
-net-analyzer/netcat crypt

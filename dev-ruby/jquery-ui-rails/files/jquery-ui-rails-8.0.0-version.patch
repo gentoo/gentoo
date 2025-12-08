@@ -1,0 +1,11 @@
+--- a/lib/jquery/ui/rails/version.rb	2025-04-17 15:20:29.000000000 +0200
++++ b/lib/jquery/ui/rails/version.rb	2025-07-23 13:16:45.194343416 +0200
+@@ -1,7 +1,7 @@
+ module Jquery
+   module Ui
+     module Rails
+-      VERSION = "7.0.0"
++      VERSION = "8.0.0"
+       JQUERY_UI_VERSION = "1.14.1"
+     end
+   end

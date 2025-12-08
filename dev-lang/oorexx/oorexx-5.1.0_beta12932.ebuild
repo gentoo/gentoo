@@ -39,7 +39,24 @@ PATCHES=(
 	"${FILESDIR}/oorexx-5.0.0-man.patch"
 )
 
+src_prepare() {
+	find ./samples/ -type f -iname "CMakeLists.txt" -exec sed -i {} \
+		-e "/cmake_minimum_required/I s|(.*)|(VERSION 3.20)|g"  \
+		-e "/cmake_policy.*/d" \; \
+		|| die
+
+	cmake_src_prepare
+}
+
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/952966
+	# https://sourceforge.net/p/oorexx/bugs/2029/
+	#
+	# Do not trust LTO either
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	# bug 924171
 	if use elibc_musl ; then
 		append-cppflags -D_LARGEFILE64_SOURCE

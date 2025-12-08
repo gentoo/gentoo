@@ -40,15 +40,15 @@ LICENSE="
 	ZPL BSD BSD-2 ISC LGPL-2+ LGPL-2.1+ MIT public-domain
 "
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE="+abi_x86_32 +bin-symlinks custom-cflags +strip"
 
 RDEPEND="
 	dev-libs/gmp:=
 	dev-libs/mpc:=
 	dev-libs/mpfr:=
-	sys-libs/zlib:=
 	virtual/libiconv
+	virtual/zlib:=
 	bin-symlinks? (
 		abi_x86_64? (
 			!cross-x86_64-w64-mingw32/binutils

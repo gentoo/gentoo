@@ -24,15 +24,19 @@ HOMEPAGE="https://kbd-project.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="nls selinux pam test"
+IUSE="bzip2 lzma nls selinux pam test zlib zstd"
 RESTRICT="!test? ( test )"
 
 DEPEND="
 	app-alternatives/gzip
+	bzip2? ( app-arch/bzip2 )
+	lzma? ( app-arch/xz-utils )
 	pam? (
 		!app-misc/vlock
 		sys-libs/pam
 	)
+	zlib? ( virtual/zlib:= )
+	zstd? ( app-arch/zstd:= )
 "
 RDEPEND="
 	${DEPEND}
@@ -73,16 +77,16 @@ src_configure() {
 		$(use_enable nls)
 		$(use_enable pam vlock)
 		$(use_enable test tests)
+		$(use_with bzip2)
+		$(use_with lzma)
+		$(use_with zlib)
+		$(use_with zstd)
 	)
 
 	econf "${myeconfargs[@]}"
 }
 
 src_test() {
-	# These tests want a tty and the check passes when it shouldn't
-	# when running via the ebuild.
-	sed -i -e "s:tty 2>/dev/null:false:" tests/testsuite || die
-
 	emake -Onone check TESTSUITEFLAGS="--jobs=$(get_makeopts_jobs)"
 }
 

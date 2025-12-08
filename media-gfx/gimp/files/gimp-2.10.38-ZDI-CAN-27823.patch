@@ -1,0 +1,76 @@
+https://bugs.gentoo.org/965334
+https://www.zerodayinitiative.com/advisories/ZDI-25-978/
+https://gitlab.gnome.org/GNOME/gimp/-/issues/14814
+https://gitlab.gnome.org/GNOME/gimp/-/merge_requests/2449
+https://gitlab.gnome.org/GNOME/gimp/-/commit/4eb106f2bff2d9b8e518aa455a884c6f38d70c6a
+
+From 345c79b73b1a6d0fbdc11ff86899a3d0a9c8c003 Mon Sep 17 00:00:00 2001
+From: Jacob Boerema <jgboerema@gmail.com>
+Date: Wed, 3 Sep 2025 18:37:26 -0400
+Subject: [PATCH] plug-ins: fix ZDI-CAN-27823
+
+GIMP XWD File Parsing Heap-based Buffer Overflow Remote Code Execution
+Vulnerability.
+
+Check offset in colormap is valid before writing to it.
+
+Cherry-picked to 2.10 and modified to work correctly with this context:
+ea68d87b66ec53e3cc5073993bd84ed96ce59590
+44ebcee901f25180b8b9b04f6d26474919557f0d
+--- a/plug-ins/common/file-xwd.c
++++ b/plug-ins/common/file-xwd.c
+@@ -183,7 +183,8 @@ static gint32     load_xwd_f2_d8_b8   (const gchar       *filename,
+ static gint32     load_xwd_f2_d16_b16 (const gchar       *filename,
+                                        FILE              *ifp,
+                                        L_XWDFILEHEADER   *xwdhdr,
+-                                       L_XWDCOLOR        *xwdcolmap);
++                                       L_XWDCOLOR        *xwdcolmap,
++                                       GError           **error);
+ static gint32     load_xwd_f2_d24_b32 (const gchar       *filename,
+                                        FILE              *ifp,
+                                        L_XWDFILEHEADER   *xwdhdr,
+@@ -581,7 +582,7 @@ load_image (const gchar  *filename,
+         }
+       else if ((depth <= 16) && (bpp == 16))
+         {
+-          image_ID = load_xwd_f2_d16_b16 (filename, ifp, &xwdhdr, xwdcolmap);
++          image_ID = load_xwd_f2_d16_b16 (filename, ifp, &xwdhdr, xwdcolmap, error);
+         }
+       else if ((depth <= 24) && ((bpp == 24) || (bpp == 32)))
+         {
+@@ -1543,7 +1544,8 @@ static gint32
+ load_xwd_f2_d16_b16 (const gchar     *filename,
+                      FILE            *ifp,
+                      L_XWDFILEHEADER *xwdhdr,
+-                     L_XWDCOLOR      *xwdcolmap)
++                     L_XWDCOLOR      *xwdcolmap,
++                     GError         **error)
+ {
+   register guchar *dest, lsbyte_first;
+   gint             width, height, linepad, i, j, c0, c1, ncols;
+@@ -1606,9 +1608,20 @@ load_xwd_f2_d16_b16 (const gchar     *filename,
+           greenval = (green * 255) / maxgreen;
+           for (blue = 0; blue <= maxblue; blue++)
+             {
++              guint32 offset = ((red << redshift) + (green << greenshift) +
++                                (blue << blueshift)) * 3;
++
++              if (offset+2 >= maxval)
++                {
++                  g_set_error (error, GIMP_PLUG_IN_ERROR, 0,
++                               _("Invalid colormap offset. Possibly corrupt image."));
++                  g_free (data);
++                  g_free (ColorMap);
++                  g_object_unref (buffer);
++                  return -1;
++                }
+               blueval = (blue * 255) / maxblue;
+-              cm = ColorMap + ((red << redshift) + (green << greenshift)
+-                               + (blue << blueshift)) * 3;
++              cm = ColorMap + offset;
+               *(cm++) = redval;
+               *(cm++) = greenval;
+               *cm = blueval;
+-- 
+2.51.2
+

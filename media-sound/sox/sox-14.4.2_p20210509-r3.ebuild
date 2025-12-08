@@ -22,7 +22,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="alsa amr ao encode flac id3tag ladspa mad ogg openmp oss opus png pulseaudio sndfile sndio twolame wavpack"
 
 RDEPEND="
@@ -47,7 +47,7 @@ RDEPEND="
 	)
 	png? (
 		media-libs/libpng:0=
-		sys-libs/zlib
+		virtual/zlib:=
 	)
 	pulseaudio? ( media-libs/libpulse )
 	sndfile? ( >=media-libs/libsndfile-1.0.11 )

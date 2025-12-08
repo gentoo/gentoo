@@ -5,7 +5,7 @@ EAPI=8
 
 # Please bump with dev-python/btrfsutil
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit bash-completion-r1 python-any-r1 udev
 
 if [[ ${PV} == 9999 ]]; then
@@ -26,7 +26,7 @@ else
 	S="${WORKDIR}"/${PN}-${MY_PV}
 
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+		KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 	fi
 fi
 
@@ -46,7 +46,7 @@ RESTRICT="test"
 RDEPEND="
 	dev-libs/lzo:2=
 	sys-apps/util-linux:=[static-libs(+)?]
-	sys-libs/zlib:=
+	virtual/zlib:=
 	convert? (
 		sys-fs/e2fsprogs:=
 		reiserfs? (
@@ -63,7 +63,7 @@ DEPEND="
 	static? (
 		dev-libs/lzo:2[static-libs(+)]
 		sys-apps/util-linux:0[static-libs(+)]
-		sys-libs/zlib:0[static-libs(+)]
+		virtual/zlib:=[static-libs(+)]
 		convert? (
 			sys-fs/e2fsprogs[static-libs(+)]
 			reiserfs? (

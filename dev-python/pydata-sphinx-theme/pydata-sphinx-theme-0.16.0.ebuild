@@ -24,7 +24,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD-with-disclosure"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 RDEPEND="
 	dev-python/accessible-pygments[${PYTHON_USEDEP}]
@@ -40,6 +40,10 @@ BDEPEND="
 		dev-python/pytest-regressions[${PYTHON_USEDEP}]
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.16.0-tests-ignorecase.patch
+)
 
 EPYTEST_XDIST=1
 distutils_enable_tests pytest

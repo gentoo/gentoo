@@ -12,13 +12,13 @@ S="${WORKDIR}/${PN}-$(ver_cut 1-3)"
 
 LICENSE="GPL-2"
 SLOT="0/3"
-KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 arm64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="java static-libs suitesparse"
 
 DEPEND="media-libs/libpng:=
 	media-libs/tiff:=
 	media-libs/libjpeg-turbo:=
-	sys-libs/zlib
+	virtual/zlib:=
 	java? ( >=virtual/jdk-1.8:* )
 	suitesparse? ( sci-libs/suitesparse )"
 RDEPEND="${DEPEND}"

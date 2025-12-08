@@ -1,0 +1,23 @@
+diff --git c/Makefile w/Makefile
+index ba61cc2a..d301c3c2 100644
+--- c/Makefile
++++ w/Makefile
+@@ -17,6 +17,9 @@
+ 
+ # Set the shell.
+ SHELL=/usr/bin/env bash
++# Use standard variables if missing
++AR      ?= ar
++ARFLAGS ?= cr
+ 
+ # Include the configuration and set the local directory structure.
+ ifeq (,$(findstring clean, $(MAKECMDGOALS)))
+@@ -129,7 +132,7 @@ $(LOCAL_TMP)/Streams.o: $(LOCAL_SRC)/Streams.cc Makefile.inc
+ $(LOCAL_TMP)/%.o: $(LOCAL_SRC)/%.cc
+ 	$(CXX) $< -o $@ -c $(OBJ_COMMON)
+ $(LOCAL_LIB)/libpythia8.a: $(OBJECTS)
+-	ar cr $@ $^
++	$(AR) $(ARFLAGS) $@ $^
+ $(LOCAL_LIB)/libpythia8$(LIB_SUFFIX): $(OBJECTS)
+ 	$(CXX) $^ -o $@ $(CXX_COMMON) $(CXX_SHARED) $(CXX_SONAME)$(notdir $@)\
+ 	  $(LIB_COMMON) $(CXX_DTAGS)

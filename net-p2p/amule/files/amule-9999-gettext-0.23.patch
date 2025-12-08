@@ -1,0 +1,22 @@
+https://github.com/amule-project/amule/pull/413
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -318,6 +318,7 @@ AC_LANG_POP([C++])
+ dnl Sets gettext version.
+ dnl AM_GNU_GETTEXT_VERSION *must not* be moved away from configure.ac!
+ AM_GNU_GETTEXT_VERSION(0.11.5)
++AM_GNU_GETTEXT([no-libtool], [need-ngettext])
+ MULE_CHECK_NLS
+ AS_IF([test x$USE_INCLUDED_LIBINTL = xyes], [AC_CONFIG_COMMANDS([intl], [[
+ 	test -d intl || mkdir intl
+--- a/m4/nls.m4
++++ b/m4/nls.m4
+@@ -82,7 +82,6 @@ AC_DEFUN([MULE_CHECK_NLS],
+ 			[Specify a comma-separated list of languages you want to have installed. See po/LINGUAS for available languages])],
+ 		[AS_IF([test "$withval" != "all"], [LINGUAS="`echo $withval | sed -e 's/,/ /g'`"])])
+ 
+-	AM_GNU_GETTEXT([no-libtool], [need-ngettext])
+ 	AS_IF([test $USE_INCLUDED_LIBINTL = yes], [INCINTL=-I\${top_builddir}/intl])
+ 
+ 	AS_IF([test x$USE_NLS = xyes], [MULE_CHECK_AUTOPOINT(, [USE_NLS=no])])

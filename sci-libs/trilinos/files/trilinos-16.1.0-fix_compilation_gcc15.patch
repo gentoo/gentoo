@@ -1,0 +1,13 @@
+diff --git a/commonTools/gtest/gtest/gtest-all.cc b/commonTools/gtest/gtest/gtest-all.cc
+index cef5397f..bfe2d02d 100644
+--- a/commonTools/gtest/gtest/gtest-all.cc
++++ b/commonTools/gtest/gtest/gtest-all.cc
+@@ -33,6 +33,8 @@
+ // Sometimes it's desirable to build Google Test by compiling a single file.
+ // This file serves this purpose.
+ 
++#include <cstdint>
++
+ // This line ensures that gtest.h can be compiled on its own, even
+ // when it's fused.
+ #include "gtest/gtest.h"

@@ -11,5 +11,6 @@
 	<use>
 		<flag name="libuv">Enable libuv support</flag>
 		<flag name="redis">Enable Redis backend for storage via <pkg>dev-libs/hiredis</pkg></flag>
+		<flag name="rocm">Enable ROCm gpu computing support</flag>
 	</use>
 </pkgmetadata>

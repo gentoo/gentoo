@@ -53,7 +53,7 @@ src_compile() {
 
 src_test() {
 	# workaround parallel test failures
-	LC_ALL=en_US.utf8 emake -j1 test
+	LC_ALL=en_US.UTF-8 emake -j1 test
 }
 
 src_install() {

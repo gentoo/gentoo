@@ -70,5 +70,5 @@ src_install() {
 
 pkg_postinst() {
 	optfeature "access branches over sftp" "dev-python/pycryptodome dev-python/paramiko"
-	optfeature "PGP sign and verify commits" "app-crypt/gpgme[python]"
+	optfeature "PGP sign and verify commits" "dev-python/gpgmepy"
 }

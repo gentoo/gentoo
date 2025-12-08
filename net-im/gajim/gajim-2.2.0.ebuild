@@ -70,6 +70,7 @@ BDEPEND="
 	>=sys-devel/gettext-0.17-r1
 "
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 python_compile_all() {

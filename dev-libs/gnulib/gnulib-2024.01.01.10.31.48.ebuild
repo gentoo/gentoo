@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,13 +8,12 @@ GIT_TAG="5b92dd0a45c8d27f13a21076b57095ea5e220870"
 DESCRIPTION="Library of common routines intended to be shared"
 HOMEPAGE="https://www.gnu.org/software/gnulib"
 SRC_URI="https://git.savannah.gnu.org/cgit/${PN}.git/snapshot/${PN}-${GIT_TAG}.tar.xz"
+S="${WORKDIR}/${PN}-${GIT_TAG}"
 
 LICENSE="GPL-3+ LGPL-2.1+ FDL-1.3+"
 SLOT="0"
 KEYWORDS="~arm64-macos ~x64-macos ~x64-solaris"
 IUSE="doc"
-
-S="${WORKDIR}/${PN}-${GIT_TAG}"
 
 src_compile() {
 	if use doc; then

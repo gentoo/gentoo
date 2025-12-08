@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>zurabid2016@gmail.com</email>
+		<name>Zurab Kvachadze</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		This Lua library reimplements part of the ngx_lua module's NGINX API for Lua with LuaJIT FFI
+		and installs the new FFI-based Lua API into the ngx.* and ndk.* namespaces used by the
+		ngx_lua module.
+
+		In addition, this Lua library implements any significant new Lua APIs of the ngx_lua module
+		as proper Lua modules, like ngx.semaphore and ngx.balancer.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/openresty/lua-resty-core/issues</bugs-to>
+		<remote-id type="github">openresty/lua-resty-core</remote-id>
+	</upstream>
+</pkgmetadata>

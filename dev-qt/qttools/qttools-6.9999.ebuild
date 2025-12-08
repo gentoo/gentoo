@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=( {17..20} ) # see .cmake.conf for minimum
+LLVM_COMPAT=( {17..21} ) # see .cmake.conf for minimum
 LLVM_OPTIONAL=1
 
 # behaves very badly when qttools is not already installed, also
@@ -37,12 +37,22 @@ REQUIRED_USE="
 
 RDEPEND="
 	~dev-qt/qtbase-${PV}:6[widgets?]
-	assistant? ( ~dev-qt/qtbase-${PV}:6[concurrent,network,sql,sqlite] )
+	assistant? (
+		~dev-qt/qtbase-${PV}:6[concurrent,network,sql,sqlite]
+		!dev-qt/assistant:5
+	)
 	designer? (
 		~dev-qt/qtbase-${PV}:6[network,xml,zstd=]
 		zstd? ( app-arch/zstd:= )
+		!<dev-qt/designer-5.15.18-r1:5
 	)
-	qdbus? ( ~dev-qt/qtbase-${PV}:6[dbus,xml] )
+	linguist? (
+		widgets? ( !dev-qt/linguist:5 )
+	)
+	qdbus? (
+		~dev-qt/qtbase-${PV}:6[dbus,xml]
+		widgets? ( !dev-qt/qdbusviewer:5 )
+	)
 	qdoc? (
 		$(llvm_gen_dep '
 			llvm-core/clang:${LLVM_SLOT}=
@@ -65,7 +75,7 @@ src_prepare() {
 	qt6-build_src_prepare
 
 	# qttools is picky about clang versions and ignores LLVM_SLOT
-	sed -e '/find_package/s/${\(LLVM_\)*VERSION}//' \
+	sed -e '/find_package/s/${\(LLVM_\)*VERSION_CLEAN}//' \
 		-i cmake/FindWrapLibClang.cmake || die
 }
 
@@ -87,13 +97,7 @@ src_configure() {
 		$(qt_feature qtattributionsscanner)
 		$(qt_feature qtdiag)
 		$(qt_feature qtplugininfo)
-
 		$(usev widgets -DQT_INSTALL_XDG_DESKTOP_ENTRIES=ON)
-
-		# TODO?: package litehtml, but support for latest releases seem
-		# to lag behind and bundled may work out better for now
-		# https://github.com/litehtml/litehtml/issues/266
-		#$(usev assistant -DQLITEHTML_USE_SYSTEM_LITEHTML=ON)
 
 		# USE=qmlls' help plugin may be temporary, upstream has plans to split
 		# QtHelp into another package so that qtdeclarative can depend on it

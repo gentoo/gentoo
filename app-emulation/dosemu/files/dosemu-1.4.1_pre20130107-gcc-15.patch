@@ -1,0 +1,26 @@
+Bug: https://bugs.gentoo.org/944235
+--- a/src/arch/linux/dosext/sound/midid/midid.h
++++ b/src/arch/linux/dosext/sound/midid/midid.h
+@@ -8,7 +8,8 @@
+ #define _MIDID_H
+ 
+ typedef unsigned char byte;
+-typedef enum {FALSE, TRUE} bool;
++#include <stdbool.h>
++enum {FALSE, TRUE};
+ typedef enum {EMUMODE_MT32, EMUMODE_GM} Emumode;
+ 
+ /* Configuration */
+--- a/src/base/init/parser.y.in
++++ b/src/base/init/parser.y.in
+@@ -92,8 +92,8 @@ int dexe_running = 0;
+ static int dexe_forbid_disk = 1;
+ char own_hostname[128];
+ 
+-static struct printer nullptr;
+-static struct printer *pptr = &nullptr;
++static struct printer null_ptr;
++static struct printer *pptr = &null_ptr;
+ static int c_printers = 0;
+ 
+ static int ports_permission = IO_RDWR;

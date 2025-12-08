@@ -18,8 +18,6 @@ move sys-devel/remake dev-build/remake
 move dev-util/valgrind dev-debug/valgrind
 move dev-util/meson-format-array dev-build/meson-format-array
 move dev-util/meson dev-build/meson
-move dev-util/cmake-fedora dev-build/cmake-fedora
-move dev-util/ignition-cmake dev-build/ignition-cmake
 move dev-util/rocm-cmake dev-build/rocm-cmake
 move dev-util/tinycmmc dev-build/tinycmmc
 move dev-util/cmake dev-build/cmake
@@ -46,7 +44,6 @@ move dev-util/scons dev-build/scons
 move dev-util/b2 dev-build/b2
 move dev-util/kbuild dev-build/kbuild
 move dev-util/ddd dev-debug/ddd
-move dev-util/edb-debugger dev-debug/edb-debugger
 move dev-util/kdbg dev-debug/kdbg
 move dev-util/pwndbg dev-debug/pwndbg
 move dev-util/gef dev-debug/gef

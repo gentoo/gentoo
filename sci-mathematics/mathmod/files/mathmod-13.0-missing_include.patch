@@ -1,0 +1,26 @@
+PR pending https://github.com/parisolab/mathmod/pull/288.patch
+fix compile w/ qt-6.10.0
+move <QElapsedTimer> in header
+--- a/pariso/isosurface/Iso3D.cpp
++++ b/pariso/isosurface/Iso3D.cpp
+@@ -20,7 +20,6 @@
+ #include "TableMap.h"
+ #include "Iso3D.h"
+ #include "internalfunctions.cpp"
+-#include <QElapsedTimer>
+ 
+ double * Iso3D::Results;
+ Voxel  * Iso3D::GridVoxelVarPt;
+--- a/pariso/isosurface/Iso3D.h
++++ b/pariso/isosurface/Iso3D.h
+@@ -21,6 +21,7 @@
+ 
+ 
+ #include "../parisoobject.h"
++#include <QElapsedTimer>
+ 
+ /*
+ 
+-- 
+2.51.0
+

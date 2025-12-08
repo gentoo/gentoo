@@ -13,11 +13,11 @@ SLOT="0"
 IUSE="gtk-doc +introspection vala"
 REQUIRED_USE="vala? ( introspection )"
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 DEPEND="
 	>=dev-libs/glib-2.56:2[${MULTILIB_USEDEP}]
-	introspection? ( dev-libs/gobject-introspection )"
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )"
 RDEPEND="${DEPEND}"
 BDEPEND="
 	dev-util/gdbus-codegen

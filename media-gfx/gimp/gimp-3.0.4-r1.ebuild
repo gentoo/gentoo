@@ -15,7 +15,7 @@ SRC_URI="mirror://gimp/v$(ver_cut 1-2)/${P}.tar.xz"
 
 LICENSE="GPL-3+ LGPL-3+"
 SLOT="0/3"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~x86"
 
 IUSE="X aalib alsa doc fits gnome heif javascript jpeg2k jpegxl lua mng openexr openmp postscript test udev unwind vala vector-icons wayland webp wmf xpm"
 REQUIRED_USE="
@@ -42,7 +42,7 @@ COMMON_DEPEND="
 	>=app-text/poppler-data-0.4.9
 	>=dev-libs/appstream-glib-0.7.16:=
 	>=dev-libs/glib-2.70.0:2
-	dev-libs/gobject-introspection
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	>=dev-libs/json-glib-1.4.4
 	>=gnome-base/librsvg-2.57.3:2
 	>=media-gfx/mypaint-brushes-1.3.1:1.0=
@@ -58,7 +58,7 @@ COMMON_DEPEND="
 	>=media-libs/libpng-1.6.37:0=
 	>=media-libs/tiff-4.1.0:=
 	net-libs/glib-networking[ssl]
-	sys-libs/zlib
+	virtual/zlib:=
 	>=x11-libs/cairo-1.16.0[X?]
 	>=x11-libs/gdk-pixbuf-2.40.0:2[introspection]
 	>=x11-libs/gtk+-3.24.48:3[introspection,wayland?,X?]
@@ -112,7 +112,7 @@ BDEPEND="
 	dev-util/gdbus-codegen
 	>=sys-devel/gettext-0.21
 	doc? (
-		dev-libs/gobject-introspection[doctool]
+		>=dev-libs/gobject-introspection-1.82.0-r2[doctool]
 		dev-util/gi-docgen
 	)
 	virtual/pkgconfig

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit flag-o-matic meson pax-utils python-any-r1 virtualx
 
@@ -19,7 +19,7 @@ IUSE="+cairo examples readline sysprof test"
 RDEPEND="
 	dev-lang/spidermonkey:115
 	>=dev-libs/glib-2.66.0:2
-	>=dev-libs/gobject-introspection-1.71.0:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 	>=dev-libs/libffi-3.3:0=
 
 	cairo? (

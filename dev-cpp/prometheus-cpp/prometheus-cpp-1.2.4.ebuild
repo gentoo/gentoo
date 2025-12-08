@@ -11,13 +11,13 @@ SRC_URI="https://github.com/jupp0r/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~riscv x86"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
 IUSE="test zlib"
 
 RESTRICT="!test? ( test )"
 
 RDEPEND="net-misc/curl
-	sys-libs/zlib
+	virtual/zlib:=
 	www-servers/civetweb[cxx]"
 DEPEND="${RDEPEND}
 	test? (

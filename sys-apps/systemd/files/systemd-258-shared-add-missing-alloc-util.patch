@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/963481
+https://github.com/systemd/systemd/pull/39149
+
+From 3df39cedda01dec35e49f1ab5632cf9f325e5320 Mon Sep 17 00:00:00 2001
+From: Xarblu <xarblu@protonmail.com>
+Date: Fri, 26 Sep 2025 21:40:50 +0200
+Subject: [PATCH] shared: add missing alloc-util.h include
+
+Needed for _cleanup_free_
+---
+ src/shared/password-quality-util-passwdqc.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/shared/password-quality-util-passwdqc.c b/src/shared/password-quality-util-passwdqc.c
+index d74e0fb7f2370..844068a4d64a3 100644
+--- a/src/shared/password-quality-util-passwdqc.c
++++ b/src/shared/password-quality-util-passwdqc.c
+@@ -1,5 +1,6 @@
+ /* SPDX-License-Identifier: LGPL-2.1-or-later */
+ 
++#include "alloc-util.h"
+ #include "dlfcn-util.h"
+ #include "errno-util.h"
+ #include "log.h"

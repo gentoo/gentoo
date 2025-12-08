@@ -10,7 +10,7 @@ HOMEPAGE="https://apps.gnome.org/Console/ https://gitlab.gnome.org/GNOME/console
 
 LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~loong"
+KEYWORDS="amd64 arm64 ~loong"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -27,6 +27,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	>=dev-util/gdbus-codegen-2.80
 	virtual/pkgconfig
 	test? (
 		dev-util/desktop-file-utils

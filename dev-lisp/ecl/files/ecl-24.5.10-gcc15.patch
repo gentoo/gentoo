@@ -1,0 +1,229 @@
+From 1aec8f741f69fd736f020b7fe4d3afc33e60ae6a Mon Sep 17 00:00:00 2001
+From: Marius Gerbershagen <marius.gerbershagen@gmail.com>
+Date: Sat, 26 Apr 2025 17:49:44 +0200
+Subject: [PATCH] port to C23 standard
+
+There are two things to fix:
+
+- `bool` is a keyword in C23, so `typedef int bool` is invalid. We
+  already require C99, so just include stdbool.h instead. This also
+  means that `bool` and `int` are no longer synonymous, so we have to
+  be more careful in defining return types for some functions.
+- Function definitions and function pointers with unspecified
+  arguments are no longer valid. Fix the definitions to include
+  arguments and add casts for the function pointers.
+---
+ src/c/backq.d    |  2 +-
+ src/c/cinit.d    |  2 +-
+ src/c/dpp.c      | 10 ----------
+ src/c/file.d     |  2 +-
+ src/c/macros.d   |  6 +++---
+ src/c/read.d     |  4 ++--
+ src/c/tcp.d      |  5 +----
+ src/h/ecl.h      |  1 +
+ src/h/external.h |  2 +-
+ src/h/internal.h |  2 +-
+ src/h/object.h   |  3 ---
+ 11 files changed, 12 insertions(+), 27 deletions(-)
+
+diff --git a/src/c/backq.d b/src/c/backq.d
+index 973d5b922..02c3cfbd4 100644
+--- a/src/c/backq.d
++++ b/src/c/backq.d
+@@ -259,5 +259,5 @@ quasiquote_macro(cl_object whole, cl_object env)
+ void
+ init_backq(void)
+ {
+-  ecl_def_c_macro(@'si::quasiquote', quasiquote_macro, 2);
++  ecl_def_c_macro(@'si::quasiquote', (cl_objectfn_fixed)quasiquote_macro, 2);
+ }
+diff --git a/src/c/cinit.d b/src/c/cinit.d
+index 54ac36abb..8f81d28d4 100644
+--- a/src/c/cinit.d
++++ b/src/c/cinit.d
+@@ -188,7 +188,7 @@ main(int argc, char **args)
+ #endif
+   ECL_SET(@'*features*', features);
+   top_level = _ecl_intern("TOP-LEVEL", cl_core.system_package);
+-  ecl_def_c_function(top_level, si_simple_toplevel, 0);
++  ecl_def_c_function(top_level, (cl_objectfn_fixed)si_simple_toplevel, 0);
+   _ecl_funcall1(top_level);
+   return(0);
+ }
+diff --git a/src/c/dpp.c b/src/c/dpp.c
+index 462361f9f..82c86fedf 100644
+--- a/src/c/dpp.c
++++ b/src/c/dpp.c
+@@ -85,10 +85,7 @@
+ #include <ctype.h>
+ #include <string.h>
+ #include <stdarg.h>
+-
+-#if defined(_MSC_VER) && (_MSC_VER >= 1800)
+ #include <stdbool.h> 
+-#endif
+ 
+ #define DPP
+ #include <ecl/config.h>
+@@ -106,13 +103,6 @@
+ #define TRUE            1
+ #define FALSE           0
+ 
+-#ifndef __cplusplus
+-#if ! ( defined(__bool_true_false_are_defined) \
+-        &&__bool_true_false_are_defined )
+-typedef int bool;
+-#endif
+-#endif
+-
+ FILE *in, *out;
+ 
+ char filename[BUFSIZ];
+diff --git a/src/c/file.d b/src/c/file.d
+index 6d0d4785b..798b0a37f 100644
+--- a/src/c/file.d
++++ b/src/c/file.d
+@@ -5166,7 +5166,7 @@ ecl_unread_char(ecl_character c, cl_object strm)
+   stream_dispatch_table(strm)->unread_char(strm, c);
+ }
+ 
+-bool
++int
+ ecl_listen_stream(cl_object strm)
+ {
+   return stream_dispatch_table(strm)->listen(strm);
+diff --git a/src/c/macros.d b/src/c/macros.d
+index 1a356241e..d1cf70022 100644
+--- a/src/c/macros.d
++++ b/src/c/macros.d
+@@ -179,7 +179,7 @@ void
+ init_macros(void)
+ {
+   ECL_SET(@'*macroexpand-hook*', @'funcall');
+-  ecl_def_c_macro(@'or', or_macro, 2);
+-  ecl_def_c_macro(@'and', and_macro, 2);
+-  ecl_def_c_macro(@'when', when_macro, 2);
++  ecl_def_c_macro(@'or', (cl_objectfn_fixed)or_macro, 2);
++  ecl_def_c_macro(@'and', (cl_objectfn_fixed)and_macro, 2);
++  ecl_def_c_macro(@'when', (cl_objectfn_fixed)when_macro, 2);
+ }
+diff --git a/src/c/read.d b/src/c/read.d
+index 4fba0b93b..356b94826 100644
+--- a/src/c/read.d
++++ b/src/c/read.d
+@@ -2019,8 +2019,8 @@ extra_argument(int c, cl_object stream, cl_object d)
+ }
+ 
+ 
+-#define make_cf2(f)     ecl_make_cfun((f), ECL_NIL, NULL, 2)
+-#define make_cf3(f)     ecl_make_cfun((f), ECL_NIL, NULL, 3)
++#define make_cf2(f)     ecl_make_cfun((cl_objectfn_fixed)(f), ECL_NIL, NULL, 2)
++#define make_cf3(f)     ecl_make_cfun((cl_objectfn_fixed)(f), ECL_NIL, NULL, 3)
+ 
+ void
+ init_read(void)
+diff --git a/src/c/tcp.d b/src/c/tcp.d
+index f26275516..8325b131d 100644
+--- a/src/c/tcp.d
++++ b/src/c/tcp.d
+@@ -32,6 +32,7 @@ extern int errno;
+ #include <arpa/inet.h>
+ #include <netdb.h>
+ #include <unistd.h>
++#include <stdlib.h>
+ #endif
+ #include <string.h>
+ 
+@@ -86,10 +87,6 @@ int connect_to_server(char *host, int port)
+   struct sockaddr *addr;        /* address to connect to */
+   struct hostent *host_ptr;
+   int addrlen;                  /* length of address */
+-#if !defined(ECL_MS_WINDOWS_HOST)
+-  extern char *getenv();
+-  extern struct hostent *gethostbyname();
+-#endif
+   int fd;                       /* Network socket */
+ 
+   INIT_TCP
+diff --git a/src/h/ecl.h b/src/h/ecl.h
+index 42e7b1dc2..ee1fca141 100644
+--- a/src/h/ecl.h
++++ b/src/h/ecl.h
+@@ -22,6 +22,7 @@
+ #include <stdarg.h>             /* va_list */
+ #include <setjmp.h>             /* setjmp and buffers */
+ #include <stdio.h>              /* FILE */
++#include <stdbool.h>
+ /* Microsoft VC++ does not have va_copy() */
+ #if ( defined(_MSC_VER) && (_MSC_VER < 1800) ) || !defined(va_copy)
+ #define va_copy(dst, src) \
+diff --git a/src/h/external.h b/src/h/external.h
+index a0276837d..99b924344 100755
+--- a/src/h/external.h
++++ b/src/h/external.h
+@@ -744,7 +744,7 @@ extern ECL_API void ecl_force_output(cl_object strm);
+ extern ECL_API void ecl_finish_output(cl_object strm);
+ extern ECL_API void ecl_clear_input(cl_object strm);
+ extern ECL_API void ecl_clear_output(cl_object strm);
+-extern ECL_API bool ecl_listen_stream(cl_object strm);
++extern ECL_API int ecl_listen_stream(cl_object strm);
+ extern ECL_API cl_object ecl_file_position(cl_object strm);
+ extern ECL_API cl_object ecl_file_position_set(cl_object strm, cl_object disp);
+ extern ECL_API cl_object ecl_file_length(cl_object strm);
+diff --git a/src/h/internal.h b/src/h/internal.h
+index 2c9bec5c3..b6d64e0cc 100755
+--- a/src/h/internal.h
++++ b/src/h/internal.h
+@@ -468,7 +468,7 @@ extern void ecl_clear_bignum_registers(cl_env_ptr env);
+ 
+ /* threads/mutex.d */
+ 
+-extern cl_object si_mutex_timeout();
++extern cl_object si_mutex_timeout(cl_object process, cl_object lock, cl_object timeout);
+ 
+ /* print.d */
+ 
+diff --git a/src/h/object.h b/src/h/object.h
+index 1f9b581a2..bbf82bdb4 100644
+--- a/src/h/object.h
++++ b/src/h/object.h
+@@ -23,9 +23,6 @@ extern "C" {
+ #define TRUE            1       /*  boolean true value  */
+ #define FALSE           0       /*  boolean false value  */
+ 
+-#if !defined(__cplusplus) && !defined(bool)
+-typedef int bool;
+-#endif
+ typedef unsigned char byte;
+ 
+ /*
+-- 
+GitLab
+
+From f69ded9777c43df20021788d2a4bfc0e9c6b4566 Mon Sep 17 00:00:00 2001
+From: Marius Gerbershagen <marius.gerbershagen@gmail.com>
+Date: Sun, 4 May 2025 18:02:59 +0200
+Subject: [PATCH] remove bogus `#undef bool` statement
+
+Not sure why that was ever there.
+---
+ src/c/ffi/libraries.d | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/src/c/ffi/libraries.d b/src/c/ffi/libraries.d
+index 9973ae457..098cd483d 100644
+--- a/src/c/ffi/libraries.d
++++ b/src/c/ffi/libraries.d
+@@ -44,9 +44,6 @@
+ # ifdef HAVE_DLFCN_H
+ #  include <dlfcn.h>
+ #  define INIT_PREFIX "init_fas_"
+-#  ifdef bool
+-#   undef bool
+-#  endif
+ # endif
+ # ifdef HAVE_MACH_O_DYLD_H
+ #  include <mach-o/dyld.h>
+-- 
+GitLab
+

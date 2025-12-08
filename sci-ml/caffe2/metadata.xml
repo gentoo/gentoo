@@ -21,6 +21,7 @@
 		<flag name="qnnpack">Use QNNPACK</flag>
 		<flag name="rocm">Enable ROCm gpu computing support</flag>
 		<flag name="xnnpack">Use <pkg>sci-ml/XNNPACK</pkg></flag>
+		<flag name="nccl">Use <pkg>dev-libs/rccl</pkg> (NCCL compatible) backend for distributed operations</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">pytorch/pytorch</remote-id>

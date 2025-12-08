@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit autotools desktop python-single-r1 xdg
 
@@ -21,20 +21,30 @@ fi
 LICENSE="GPL-3"
 SLOT="0"
 
-IUSE="appindicator archive bogofilter calendar clamav dbus debug doc +gnutls +imap ldap +libcanberra +libnotify litehtml networkmanager nls nntp +notification +oauth pdf perl +pgp python rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind webkit xface"
+IUSE="archive bogofilter calendar clamav dbus debug doc +gnutls +imap ldap litehtml networkmanager nls nntp +notification +oauth pdf perl +pgp python rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind webkit xface"
 REQUIRED_USE="
-	notification? ( || ( appindicator libcanberra libnotify ) )
 	networkmanager? ( dbus )
 	oauth? ( gnutls )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	smime? ( pgp )
 "
 
-COMMONDEPEND="
+# the three libraries are automagic so we pull them all
+# https://www.claws-mail.org/bugzilla/show_bug.cgi?id=4870
+# https://bugs.gentoo.org/952993
+NOTIFICATIONDEPEND="
+	notification? (
+		dev-libs/libayatana-appindicator
+		media-libs/libcanberra-gtk3
+		x11-libs/libnotify
+	)
+"
+
+COMMONDEPEND="${NOTIFICATIONDEPEND}
 	>=dev-libs/glib-2.50:2
 	dev-libs/nettle:=
 	net-mail/ytnef
-	sys-libs/zlib:=
+	virtual/zlib:=
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2[jpeg]
 	x11-libs/gtk+:3
@@ -64,14 +74,6 @@ COMMONDEPEND="
 	)
 	nls? ( >=sys-devel/gettext-0.18 )
 	nntp? ( >=net-libs/libetpan-0.57 )
-	notification? (
-		appindicator? ( dev-libs/libayatana-appindicator )
-		libcanberra? ( || (
-			media-libs/libcanberra-gtk3
-			media-libs/libcanberra[gtk3(-)]
-		) )
-		libnotify? ( x11-libs/libnotify )
-	)
 	perl? (
 		dev-lang/perl:=
 		virtual/libcrypt:=

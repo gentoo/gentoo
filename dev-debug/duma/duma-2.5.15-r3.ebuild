@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit flag-o-matic toolchain-funcs
+inherit dot-a flag-o-matic toolchain-funcs
 
 DESCRIPTION="DUMA (Detect Unintended Memory Access) is a memory debugging library"
 HOMEPAGE="http://duma.sourceforge.net"
@@ -22,6 +22,7 @@ PATCHES=(
 )
 
 src_configure() {
+	lto-guarantee-fat
 	# other flags will break duma
 	export CFLAGS="-O0 -Wall -Wextra -U_FORTIFY_SOURCE"
 	tc-export AR CC CXX LD RANLIB
@@ -63,6 +64,7 @@ src_test() {
 src_install() {
 	emake prefix="${ED}/usr" libdir="${ED}/usr/$(get_libdir)" \
 		docdir="${ED}/usr/share/doc/${PF}" install
+	strip-lto-bytecode
 
 	sed -i "s|LD_PRELOAD=./libduma|LD_PRELOAD=libduma|" "${D}"/usr/bin/duma \
 		|| die "sed failed"

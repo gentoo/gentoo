@@ -43,7 +43,7 @@ DEPEND="${RDEPEND}
 QA_SONAME="/usr/lib[^/]*/libVkLayer_khronos_validation.so"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.4.313.0-tests-no-static.patch
+	"${FILESDIR}"/${PN}-1.4.328.0-tests-no-static.patch
 )
 
 multilib_src_configure() {

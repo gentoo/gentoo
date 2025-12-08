@@ -29,6 +29,12 @@ BDEPEND="
 	nls? ( sys-devel/gettext )
 "
 
+PATCHES=(
+	# fix typo/c23
+	# https://github.com/zapping-vbi/zvbi/pull/59.patch
+	"${FILESDIR}"/${P}-fix_typo.patch
+)
+
 src_prepare() {
 	default
 	eautoreconf
@@ -50,7 +56,7 @@ multilib_src_install() {
 
 	if multilib_is_native_abi; then
 		if use doc; then
-			local HTML_DOCS=( doc/html/*.{css,gif,html,js,png,svg} )
+			local HTML_DOCS=( doc/html/. )
 			einstalldocs
 		fi
 	fi

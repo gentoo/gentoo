@@ -1,0 +1,61 @@
+commit a948473b7e4b306565e58b89543f40ef8b4d9a7d
+Author: Bruce Schultz <brulzki@gmail.com>
+Date:   Sat Jun 21 20:15:26 2025 +1000
+
+    Fix Boost 1.88 compilation with boost::process::v1
+
+diff --git a/include/boost_process_compat.hpp b/include/boost_process_compat.hpp
+new file mode 100644
+index 000000000..8ac76a2f1
+--- /dev/null
++++ b/include/boost_process_compat.hpp
+@@ -0,0 +1,36 @@
++/*
++ * Work around a missing boost/process/v1.h header as of boost 1.88
++ * -> https://github.com/boostorg/process/issues/480
++ */
++
++#include <boost/version.hpp>
++#if BOOST_VERSION < 108800
++#if !defined(BOOST_PROCESS_VERSION)
++#define  BOOST_PROCESS_VERSION 2
++#endif
++#include <boost/process.hpp>
++#else
++#if !defined(BOOST_PROCESS_VERSION)
++#define  BOOST_PROCESS_VERSION 1
++#define  BOOST_PROCESS_V1_INLINE inline
++#endif
++#include <boost/process/v1/args.hpp>
++#include <boost/process/v1/async.hpp>
++#include <boost/process/v1/async_system.hpp>
++#include <boost/process/v1/group.hpp>
++#include <boost/process/v1/child.hpp>
++#include <boost/process/v1/cmd.hpp>
++#include <boost/process/v1/env.hpp>
++#include <boost/process/v1/environment.hpp>
++#include <boost/process/v1/error.hpp>
++#include <boost/process/v1/exe.hpp>
++#include <boost/process/v1/group.hpp>
++#include <boost/process/v1/handles.hpp>
++#include <boost/process/v1/io.hpp>
++#include <boost/process/v1/pipe.hpp>
++#include <boost/process/v1/shell.hpp>
++#include <boost/process/v1/search_path.hpp>
++#include <boost/process/v1/spawn.hpp>
++#include <boost/process/v1/system.hpp>
++#include <boost/process/v1/start_dir.hpp>
++#endif
+diff --git a/src/pulse_info_ui.cpp b/src/pulse_info_ui.cpp
+index abb308b10..d1673d3b3 100644
+--- a/src/pulse_info_ui.cpp
++++ b/src/pulse_info_ui.cpp
+@@ -19,7 +19,7 @@
+ 
+ #include "pulse_info_ui.hpp"
+ #include <boost/algorithm/string.hpp>
+-#include <boost/process.hpp>
++#include "boost_process_compat.hpp"
+ #include "util.hpp"
+ 
+ PulseInfoUi::PulseInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, PulseManager* pm_ptr)

@@ -6,7 +6,10 @@
 		<name>William Hubbs</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="pypi">diff-cover</remote-id>
+		<bugs-to>https://github.com/Bachmann1234/diff_cover/issues</bugs-to>
+		<changelog>https://github.com/Bachmann1234/diff_cover/releases</changelog>
 		<remote-id type="github">Bachmann1234/diff_cover</remote-id>
+		<remote-id type="pypi">diff-cover</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>

@@ -22,7 +22,7 @@ RDEPEND="
 	~dev-qt/qtquicktimeline-${PV}:6
 	~dev-qt/qtshadertools-${PV}:6
 	media-libs/assimp:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 "
 DEPEND="
 	${RDEPEND}
@@ -33,15 +33,16 @@ BDEPEND="
 	~dev-qt/qtshadertools-${PV}:6
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-6.6.2-gcc14.patch
-	"${FILESDIR}"/${PN}-6.6.2-x32abi.patch
-)
-
 CMAKE_SKIP_TESTS=(
 	# needs off-by-default assimp[collada] that is masked on some profiles,
 	# not worth the extra trouble
 	tst_qquick3dassetimport
+)
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.6.2-gcc14.patch
+	"${FILESDIR}"/${PN}-6.6.2-x32abi.patch
+	"${FILESDIR}"/${PN}-6.9.2-assimp6.patch
 )
 
 src_configure() {

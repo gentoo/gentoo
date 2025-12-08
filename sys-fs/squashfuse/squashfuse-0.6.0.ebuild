@@ -11,7 +11,7 @@ SRC_URI="https://github.com/vasi/squashfuse/archive/refs/tags/${PV}.tar.gz -> ${
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 IUSE="lz4 lzma lzo static-libs +zlib zstd"
 REQUIRED_USE="|| ( lz4 lzma lzo zlib zstd )"
 
@@ -26,7 +26,7 @@ DEPEND="
 		>=sys-fs/fuse-2.8.6:0
 	)
 	lzma? ( >=app-arch/xz-utils-5.0.4:= )
-	zlib? ( >=sys-libs/zlib-1.2.5-r2:= )
+	zlib? ( >=virtual/zlib-1.2.5-r2:= )
 	lzo? ( >=dev-libs/lzo-2.06:= )
 	lz4? ( >=app-arch/lz4-0_p106:= )
 	zstd? ( app-arch/zstd:= )

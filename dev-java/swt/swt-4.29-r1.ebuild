@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,11 +12,12 @@ MY_DMF="https://archive.eclipse.org/eclipse/downloads/drops4/R-${MY_PV}-20230903
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="GTK based SWT Library"
-HOMEPAGE="https://www.eclipse.org/swt/"
+HOMEPAGE="https://eclipse.dev/eclipse/swt/"
 SRC_URI="
 	amd64? ( ${MY_DMF}/${MY_P}-gtk-linux-x86_64.zip )
 	arm64? ( ${MY_DMF}/${MY_P}-gtk-linux-aarch64.zip )
-	ppc64? ( ${MY_DMF}/${MY_P}-gtk-linux-ppc64le.zip )"
+	ppc64? ( ${MY_DMF}/${MY_P}-gtk-linux-ppc64le.zip )
+"
 
 LICENSE="CPL-1.0 LGPL-2.1 MPL-1.1"
 SLOT="4.27"
@@ -35,7 +36,8 @@ COMMON_DEP="
 	)
 	webkit? (
 		net-libs/webkit-gtk:4.1
-	)"
+	)
+"
 DEPEND="${COMMON_DEP}
 	>=virtual/jdk-11:*[-headless-awt]
 	x11-base/xorg-proto
@@ -56,9 +58,7 @@ HTML_DOCS=( about.html )
 JAVA_RESOURCE_DIRS="resources"
 JAVA_SRC_DIR="src"
 
-PATCHES=(
-	"${FILESDIR}/swt-4.27-as-needed-and-flag-fixes.patch"
-)
+PATCHES=( "${FILESDIR}/swt-4.27-as-needed-and-flag-fixes.patch" )
 
 src_unpack() {
 	default
@@ -66,7 +66,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	default
+	default # bug #780585
 	java-pkg-2_src_prepare
 	# .css stuff is essential at least for running net-p2p/biglybt
 	unzip swt.jar 'org/eclipse/swt/internal/gtk/*.css' -d resources || die
@@ -74,16 +74,15 @@ src_prepare() {
 	mkdir src || die "mkdir failed"
 	mv org src || die "moving java sources failed"
 	pushd src > /dev/null || die
-		find -type f ! -name '*.java' \
-			| xargs \
-			cp --parent -t ../resources -v \
+		find -type f ! -name '*.java' |
+			xargs cp --parent -t ../resources -v \
 			|| die "copying resources failed"
 	popd > /dev/null || die
 	cp version.txt resources || die "adding version.txt failed"
 }
 
 src_compile() {
-	append-cflags -fcommon # https://bugs.gentoo.org/707838
+	append-cflags -fcommon -std=gnu17 # bug #707838, bug #963048
 
 	local JAWTSO="libjawt.so"
 	IFS=":" read -r -a ldpaths <<< $(java-config -g LDPATH)

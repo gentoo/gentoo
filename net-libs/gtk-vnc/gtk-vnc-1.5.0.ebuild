@@ -12,7 +12,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gtk-vnc"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ppc64 ~riscv ~sparc x86"
 IUSE="gtk-doc +introspection pulseaudio sasl +vala valgrind wayland X"
 REQUIRED_USE="vala? ( introspection )"
 
@@ -21,11 +21,11 @@ RDEPEND="
 	>=dev-libs/gmp-6.0.0:=
 	>=x11-libs/gdk-pixbuf-2.36.0:2
 	>=net-libs/gnutls-3.6.0:0=
-	>=sys-libs/zlib-1.2.11
+	>=virtual/zlib-1.2.11:=
 	>=x11-libs/gtk+-3.24.41-r1:3[introspection?,wayland?,X?]
 	>=x11-libs/cairo-1.15.0
 	elibc_musl? ( sys-libs/libucontext )
-	introspection? ( >=dev-libs/gobject-introspection-1.56.0:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	pulseaudio? ( media-libs/libpulse )
 	sasl? ( >=dev-libs/cyrus-sasl-2.1.27:2 )
 	X? ( >=x11-libs/libX11-1.6.5 )

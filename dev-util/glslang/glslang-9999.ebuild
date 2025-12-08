@@ -20,7 +20,7 @@ DESCRIPTION="Khronos reference front-end for GLSL and ESSL, and sample SPIR-V ge
 HOMEPAGE="https://www.khronos.org/opengles/sdk/tools/Reference-Compiler/ https://github.com/KhronosGroup/glslang"
 
 LICENSE="BSD"
-SLOT="0/15.1"
+SLOT="0/16.0"
 
 BDEPEND="${PYTHON_DEPS}
 	~dev-util/spirv-tools-${PV}[${MULTILIB_USEDEP}]

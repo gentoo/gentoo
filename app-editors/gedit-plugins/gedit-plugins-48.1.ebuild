@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit gnome.org gnome2-utils meson python-single-r1 vala xdg
@@ -12,7 +12,7 @@ HOMEPAGE="https://gitlab.gnome.org/World/gedit/gedit/-/blob/master/plugins/list-
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~loong ~riscv x86"
 
 IUSE="charmap +python terminal vala"
 REQUIRED_USE="

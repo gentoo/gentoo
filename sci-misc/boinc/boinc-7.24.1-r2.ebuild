@@ -17,7 +17,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI+=" https://github.com/BOINC/boinc/archive/client_release/${MY_PV}/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 arm64 ~ppc ppc64 sparc ~x86"
+	KEYWORDS="amd64 arm64 ~ppc ppc64 ~sparc ~x86"
 	S="${WORKDIR}/${PN}-client_release-${MY_PV}-${PV}"
 fi
 
@@ -37,7 +37,7 @@ DEPEND="
 	app-misc/ca-certificates
 	dev-libs/openssl:=
 	net-misc/curl[curl_ssl_gnutls(-)=,curl_ssl_openssl(-)=,-curl_ssl_axtls(-),-curl_ssl_cyassl(-)]
-	sys-libs/zlib
+	virtual/zlib:=
 	cuda? (
 		x11-drivers/nvidia-drivers
 	)

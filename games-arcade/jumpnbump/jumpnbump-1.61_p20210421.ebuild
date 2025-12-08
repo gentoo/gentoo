@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit desktop python-single-r1 toolchain-funcs
 
 MY_COMMIT="73c5fe86fd831dec45a22077e8d63dd2b6a6349e"
@@ -24,7 +24,7 @@ DEPEND="
 	media-libs/libsdl2[joystick,sound,video]
 	media-libs/sdl2-mixer[mod]
 	media-libs/sdl2-net
-	sys-libs/zlib:=
+	virtual/zlib:=
 "
 RDEPEND="
 	${DEPEND}

@@ -12,7 +12,7 @@ SRC_URI="https://ecsft.cern.ch/dist/cvmfs/${P}/source.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="server"
 
 CDEPEND="
@@ -32,7 +32,7 @@ CDEPEND="
 	sys-fs/fuse:0=
 	sys-fs/fuse:3=
 	sys-libs/libcap:0=
-	sys-libs/zlib:0=
+	virtual/zlib:=
 "
 
 RDEPEND="${CDEPEND}

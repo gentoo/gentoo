@@ -36,7 +36,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 
-DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
+DESCRIPTION="The advanced, extensible, customizable, self-documenting editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
@@ -67,7 +67,7 @@ X_DEPEND="x11-libs/libICE
 			>=dev-libs/m17n-lib-1.5.1
 		)
 	)
-	gtk? ( x11-libs/gtk+:3 )
+	gtk? ( x11-libs/gtk+:3[X] )
 	!gtk? (
 		motif? (
 			>=x11-libs/motif-2.3:0
@@ -100,7 +100,7 @@ RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui?]
 	!inotify? ( gfile? ( >=dev-libs/glib-2.28.6 ) )
 	jit? (
 		sys-devel/gcc:=[jit(-)]
-		sys-libs/zlib
+		virtual/zlib:=
 	)
 	kerberos? ( virtual/krb5 )
 	lcms? ( media-libs/lcms:2 )
@@ -111,10 +111,13 @@ RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui?]
 	sqlite? ( dev-db/sqlite:3 )
 	ssl? ( net-libs/gnutls:0= )
 	systemd? ( sys-apps/systemd )
-	tree-sitter? ( dev-libs/tree-sitter:= )
+	tree-sitter? (
+		dev-libs/tree-sitter:=
+		dev-libs/tree-sitter-jsdoc
+	)
 	valgrind? ( dev-debug/valgrind )
 	xattr? ( sys-apps/attr )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib:= )
 	gui? (
 		gif? ( media-libs/giflib:0= )
 		jpeg? ( media-libs/libjpeg-turbo:0= )
@@ -217,8 +220,6 @@ src_prepare() {
 }
 
 src_configure() {
-	replace-flags "-O[3-9]" -O2			#839405
-
 	# We want floating-point arithmetic to be correct #933380
 	replace-flags -Ofast -O2
 	append-flags -fno-fast-math -ffp-contract=off
@@ -407,6 +408,8 @@ src_configure() {
 }
 
 src_compile() {
+	unset SHELL #965834
+
 	if tc-is-cross-compiler; then
 		# Build native tools for compiling lisp etc.
 		emake -C "${S}-build" src
@@ -427,6 +430,11 @@ src_test() {
 	# subtests which caused failure. Elements should begin with a %.
 	# e.g. %lisp/gnus/mml-sec-tests.el.
 	local exclude_tests=(
+		# Reason: not yet known (we skipped this in the past but finally
+		# dropped it for Emacs 30 as it seemed to be passing again)
+		# mml-secure-select-preferred-keys-4
+		%lisp/gnus/mml-sec-tests.el
+
 		# Reason: permission denied on /nonexistent
 		# (vc-*-bzr only fails if breezy is installed, as they
 		# try to access cache dirs under /nonexistent)
@@ -443,12 +451,21 @@ src_test() {
 		%lisp/vc/vc-tests.el
 		%lisp/vc/vc-bzr-tests.el
 
+		%lisp/progmodes/eglot-tests.el  #966957
+
+		# Reason: flaky (https://bugs.gnu.org/73441, fails even with the fix)
+		# proced-refine-test
+		%lisp/proced-tests.el
+
+		# Reason: flaky (https://bugs.gnu.org/79056)
+		# tab-bar-tests-quit-restore-window
+		%lisp/tab-bar-tests.el
+
 		# Reason: tries to access network
 		# internet-is-working
 		%src/process-tests.el
 	)
 	use threads || exclude_tests+=(
-			%lisp/progmodes/eglot-tests.el
 			%src/emacs-module-tests.el
 			%src/keyboard-tests.el
 		)

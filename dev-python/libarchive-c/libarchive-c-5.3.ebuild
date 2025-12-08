@@ -28,9 +28,9 @@ RDEPEND="
 	app-arch/libarchive
 "
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 python_test() {
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest -o tmp_path_retention_policy=all
 }

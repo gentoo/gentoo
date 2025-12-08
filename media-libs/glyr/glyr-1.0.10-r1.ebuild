@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,9 +13,11 @@ LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 ~riscv x86"
 
-RDEPEND="dev-db/sqlite:3
+RDEPEND="
+	dev-db/sqlite:3
 	>=dev-libs/glib-2.10:2
-	net-misc/curl"
+	net-misc/curl
+"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
@@ -23,6 +25,7 @@ DOCS=( AUTHORS README.textile ) # CHANGELOG is obsolete in favour of git history
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fix-version.patch
+	"${FILESDIR}"/${PN}-1.0.10-curl.patch
 )
 
 src_prepare() {

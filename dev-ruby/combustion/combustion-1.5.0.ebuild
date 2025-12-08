@@ -1,12 +1,14 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby32 ruby33 ruby34"
+
 RUBY_FAKEGEM_BINWRAP=""
 RUBY_FAKEGEM_EXTRADOC="README.md"
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
+
 inherit ruby-fakegem
 
 DESCRIPTION="Elegant Rails Engine Testing"
@@ -27,7 +29,7 @@ ruby_add_bdepend "
 	test? (
 		>=dev-ruby/activemodel-3.0.0:*
 		>=dev-ruby/activerecord-3.0.0:*[sqlite]
-		>=dev-ruby/sqlite3-1.4:0
+		dev-ruby/sqlite3:2
 		dev-ruby/bundler
 		dev-ruby/net-smtp
 		>=dev-ruby/rails-3.0.0:*
@@ -38,6 +40,7 @@ ruby_add_bdepend "
 each_ruby_prepare() {
 	sed -i \
 		-e '/rubocop/d' \
+		-e '/sqlite/ s/1.4/2.0/' \
 		Gemfile || die
 
 	# appraisal, rubocop: useless for us test deps

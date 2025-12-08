@@ -19,7 +19,7 @@ RDEPEND="
 	dev-libs/libevent:=
 	sys-apps/hwloc:=
 	sys-cluster/ucx
-	sys-libs/zlib:=
+	virtual/zlib:=
 	munge? ( sys-auth/munge )
 	pmi? ( !sys-cluster/slurm )
 "

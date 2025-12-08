@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ DESCRIPTION="vim plugin: open a file without supplying a path"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=858"
 
 LICENSE="vim"
-KEYWORDS="~alpha amd64 ~mips ppc sparc x86"
+KEYWORDS="~alpha amd64 ~mips ppc ~sparc x86"
 
 RDEPEND="sys-apps/mlocate"
 

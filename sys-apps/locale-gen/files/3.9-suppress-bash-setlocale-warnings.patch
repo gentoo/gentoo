@@ -1,0 +1,104 @@
+From a4dbd5aa801fbe5510a7bc10af1027b6ce19061b Mon Sep 17 00:00:00 2001
+From: Kerin Millar <kfm@plushkava.net>
+Date: Fri, 31 Oct 2025 19:44:55 +0000
+Subject: [PATCH] Suppress bash warnings regarding setlocale(3) failures
+
+Presently, there are five instances in which sh(1) will be executed by
+locale-gen(8). Consequently, irritating warnings will be raised where
+both of the following conditions hold true.
+
+- bash(1) is the effective /bin/sh implementation
+- the LC_ALL environment variable is set as an unavailable locale
+
+For example:
+
+$ LC_ALL=unavailable bash -c ''
+bash: warning: setlocale: LC_ALL: cannot change locale (unavailable): No
+such file or directory
+
+This occurs because bash chooses to report setlocale(3) failures. While
+there is nothing wrong in doing so, to encounter such warnings while
+executing locale-gen(8) is tantamount to noise. Address this annoyance
+by having Perl ensure that the execve(2) call responsible for launching
+sh(1) specifies LC_ALL as 'C'.
+
+See-also: 04c08067b15933d195d8500eefdc363cb46c1b32
+Signed-off-by: Kerin Millar <kfm@plushkava.net>
+---
+ locale-gen | 32 +++++++++++++++++++++++---------
+ 1 file changed, 23 insertions(+), 9 deletions(-)
+
+diff --git a/locale-gen b/locale-gen
+index 3f825b4..a65b99a 100644
+--- a/locale-gen
++++ b/locale-gen
+@@ -138,7 +138,10 @@ umask 0022;
+ }
+ 
+ sub get_locale_dir () {
+-	my $stdout = qx{ LC_ALL=C localedef --help 2>/dev/null };
++	my $stdout = do {
++		local $ENV{'LC_ALL'} = 'C';
++		qx{ localedef --help 2>/dev/null };
++	};
+ 	if ($? == 0 && $stdout =~ m/\hlocale path\h*:\s+(\/[^:]+)/) {
+ 		return canonpath($1);
+ 	} elsif (($? & 0x7F) == 0) {
+@@ -415,7 +418,10 @@ sub check_archive_dir ($prefix, $locale_dir) {
+ 	my $archive_dir = local $ENV{'DIR'} = catdir($prefix, $locale_dir);
+ 
+ 	# Quietly attempt to create the directory if it does not already exist.
+-	system q{ mkdir -p -- "$DIR" 2>/dev/null };
++	{
++		local $ENV{'LC_ALL'} = 'C';
++		system q{ mkdir -p -- "$DIR" 2>/dev/null };
++	}
+ 
+ 	# Check whether the directory exists and can be modified by the EUID.
+ 	if (! utime undef, undef, $archive_dir) {
+@@ -609,8 +615,10 @@ sub check_effective_locale ($supported_by) {
+ }
+ 
+ sub copy_security_context ($src_path, $dst_path) {
+-	local @ENV{'SRC_PATH', 'DST_PATH'} = ($src_path, $dst_path);
+-	my $stderr = qx{ LC_ALL=C chcon --reference="\$SRC_PATH" -- "\$DST_PATH" 2>&1 >/dev/null };
++	my $stderr = do {
++		local @ENV{'LC_ALL', 'SRC_PATH', 'DST_PATH'} = ('C', $src_path, $dst_path);
++		qx{ chcon --reference="\$SRC_PATH" -- "\$DST_PATH" 2>&1 >/dev/null };
++	};
+ 	# Throw exceptions for any errors that are not a consequence of ENOTSUP.
+ 	if ($? != 0 && $stderr !~ m/: Operation not supported$/m) {
+ 		if (length $stderr) {
+@@ -631,7 +639,11 @@ sub fopen ($path) {
+ }
+ 
+ sub get_nprocs () {
+-	chomp(my $nproc = qx{ { nproc || getconf _NPROCESSORS_CONF; } 2>/dev/null });
++	my $nproc = do {
++		local $ENV{'LC_ALL'} = 'C';
++		qx{ { nproc || getconf _NPROCESSORS_CONF; } 2>/dev/null };
++	};
++	chomp $nproc;
+ 	return $nproc;
+ }
+ 
+@@ -693,10 +705,12 @@ sub dirname ($path) {
+ sub has_mount_option ($target, $option) {
+ 	# Per bug 962817, / may not necessarily exist as a mountpoint. Assuming
+ 	# it does not, ignore the case that findmnt(8) exits with a status of 1.
+-	local $ENV{'TARGET'} = $target;
+-	my $stdout = qx{
+-		findmnt -no options -T "\$TARGET"
+-		case \$? in 1) ! mountpoint -q / ;; *) exit "\$?" ;; esac
++	my $stdout = do {
++		local @ENV{'LC_ALL', 'TARGET'} = ('C', $target);
++		qx{
++			findmnt -no options -T "\$TARGET"
++			case \$? in 1) ! mountpoint -q / ;; *) exit "\$?" ;; esac
++		};
+ 	};
+ 	throw_child_error('findmnt');
+ 	chomp $stdout;
+-- 
+2.51.2
+

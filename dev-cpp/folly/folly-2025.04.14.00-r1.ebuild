@@ -41,7 +41,7 @@ RDEPEND="
 	dev-libs/libfmt:=
 	dev-libs/libsodium:=
 	dev-libs/openssl:=
-	sys-libs/zlib
+	virtual/zlib:=
 	llvm-libunwind? ( llvm-runtimes/libunwind:= )
 	!llvm-libunwind? ( sys-libs/libunwind:= )
 	io-uring? ( >=sys-libs/liburing-2.10:= )
@@ -75,6 +75,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #949607
+	filter-lto
+
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_DIR="$(get_libdir)/cmake/${PN}"
 		-DLIB_INSTALL_DIR="$(get_libdir)"

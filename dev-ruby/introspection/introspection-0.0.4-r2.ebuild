@@ -16,7 +16,7 @@ HOMEPAGE="https://jamesmead.org/"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="test"
 
 ruby_add_rdepend ">=dev-ruby/metaclass-0.0.1"

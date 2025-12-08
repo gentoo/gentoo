@@ -24,7 +24,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	=dev-libs/aml-0.3*
-	sys-libs/zlib
+	virtual/zlib:=
 	x11-libs/pixman
 	examples? (
 		media-libs/libpng:=
@@ -53,7 +53,7 @@ BDEPEND="
 src_prepare() {
 	default
 
-	# useful soname
+	# useful soname (https://github.com/any1/neatvnc/issues/124)
 	sed -i -e "s/'0.0.0'/meson.project_version()/" meson.build || die
 }
 

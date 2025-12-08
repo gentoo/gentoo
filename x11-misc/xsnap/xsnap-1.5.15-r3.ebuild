@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ KEYWORDS="amd64 ppc x86 ~amd64-linux"
 COMMON_DEPEND="
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	x11-libs/libX11
 	x11-libs/libXft
 	x11-libs/libXpm"

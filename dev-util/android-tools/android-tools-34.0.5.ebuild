@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..12} )
 
 inherit cmake flag-o-matic python-r1
 
@@ -31,7 +31,7 @@ DEPEND="
 	dev-cpp/abseil-cpp:=
 	dev-libs/libpcre2:=
 	<dev-libs/protobuf-30:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	virtual/libusb:1=
 "
 RDEPEND="${DEPEND}

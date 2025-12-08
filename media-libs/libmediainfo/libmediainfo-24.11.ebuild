@@ -28,7 +28,7 @@ RESTRICT="test"
 RDEPEND="
 	dev-libs/tinyxml2:=
 	>=media-libs/libzen-0.4.41
-	sys-libs/zlib
+	virtual/zlib:=
 	curl? ( net-misc/curl )
 	mms? ( >=media-libs/libmms-0.6.1 )
 "

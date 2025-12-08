@@ -4,7 +4,7 @@
 EAPI=8
 
 FORTRAN_NEEDED=plugins
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 DOCS_BUILDER="doxygen"
 DOCS_DEPEND="
 	media-gfx/graphviz
@@ -12,7 +12,7 @@ DOCS_DEPEND="
 	virtual/latex-base
 "
 
-inherit autotools docs flag-o-matic fortran-2 python-single-r1
+inherit cmake docs fortran-2 python-single-r1
 
 DESCRIPTION="A software package for jet finding in pp and e+e- collisions"
 HOMEPAGE="https://fastjet.fr/"
@@ -27,60 +27,50 @@ fi
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="cgal examples python +plugins"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} ) examples? ( plugins )"
 
 # cgal is header-only in version 5.4 and up. We need to use the
 # special --enable-cgal-header-only argument to use these versions.
 DEPEND="
 	cgal? ( >=sci-mathematics/cgal-5.4:=[shared(+)] )
-	plugins? ( sci-physics/siscone:= )
-	python? ( ${PYTHON_DEPS} )
+	plugins? ( >=sci-physics/siscone-3.1.2-r1:= )
+	python? (
+		${PYTHON_DEPS}
+		dev-lang/swig
+	)
 "
 RDEPEND="${DEPEND}"
-BDEPEND="app-shells/bash"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-3.4.0-system-siscone.patch
-	"${FILESDIR}"/${PN}-3.4.0-gfortran.patch
-)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
-}
-
-src_prepare() {
-	default
-	eautoreconf
+	fortran-2_pkg_setup
 }
 
 src_configure() {
-	use cgal && \
-		has_version 'sci-mathematics/cgal[gmp]' && append-libs -lgmp
-	# only bash compatible
-	sed -i 's#/bin/sh#/bin/bash#g' ./configure || die
-	econf \
-		$(use_enable cgal cgal-header-only) \
-		$(use_enable plugins allplugins) \
-		$(use_enable plugins allcxxplugins) \
-		--enable-shared \
-		--enable-static=no \
-		--disable-static \
-		--disable-auto-ptr  \
-		$(use_enable python pyext)
+	local mycmakeargs=(
+		-DFASTJET_ENABLE_CGAL=$(usex cgal)
+		-DFASTJET_ENABLE_ALLPLUGINS=$(usex plugins)
+		-DFASTJET_ENABLE_ALLCXXPLUGINS=$(usex plugins)
+		-DFASTJET_ENABLE_PYTHON=$(usex python)
+		-DFASTJET_BUILD_EXAMPLES=$(usex examples)
+		-DFASTJET_HAVE_AUTO_PTR_INTERFACE=OFF
+		-DFASTJET_USE_INSTALLED_SISCONE=ON
+	)
+	use python && mycmakeargs+=(
+		-DFASTJET_CUSTOM_PYTHON_INSTALL="$(python_get_sitedir)"
+	)
+	cmake_src_configure
 }
 
 src_compile() {
-	default
+	cmake_src_compile
 	docs_compile
 }
 
 src_install() {
-	default
+	cmake_src_install
 	use python && python_optimize
 	if use examples; then
-		emake -C example maintainer-clean
-		find example -iname 'makefile*' -delete || die
-
 		docinto examples
 		dodoc -r example/.
 		docompress -x /usr/share/doc/${PF}/examples

@@ -4,12 +4,14 @@
 # New entries go on top.
 # Please use the same syntax as in use.mask.
 
-# Alfredo Tupone <tupone@gentoo.org> (1025-05-01)
-# gcc:15 is not stable yet
-ada_target_gcc_15
+
+# Patrick Lauer <patrick@gentoo.org> (2025-10-07)
+# Postgres:18 is not stable yet
+postgres_targets_postgres18
 
 # Michał Górny <mgorny@gentoo.org> (2024-12-31)
 # LLVM slots with no stable releases yet.
+llvm_slot_22
 llvm_slot_21
 
 # Hans de Graaff <graaff@gentoo.org> (2024-12-26)
@@ -20,8 +22,6 @@ ruby_targets_ruby34
 # Python implementations without stable keywords.
 python_targets_python3_14t
 python_single_target_python3_14t
-python_targets_python3_14
-python_single_target_python3_14
 python_targets_python3_13t
 python_single_target_python3_13t
 python_targets_pypy3_11

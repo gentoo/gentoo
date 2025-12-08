@@ -54,19 +54,15 @@
 		</flag>
 		<flag name="libaribb24">Enable ARIB text and caption decoding via <pkg>media-libs/aribb24</pkg></flag>
 		<flag name="libilbc">Enable internet Low Bitrate Codec de/encoding support via <pkg>media-libs/libilbc</pkg></flag>
+		<flag name="liblc3">Enable Low Complexity Communication Codec de/encoding support via <pkg>media-sound/liblc3</pkg></flag>
 		<flag name="libplacebo">Enable use of GPU-accelerated filters from <pkg>media-libs/libplacebo</pkg></flag>
 		<flag name="librtmp">
 			Enable Real Time Messaging Protocol support via <pkg>media-video/rtmpdump</pkg>
 			in addition to FFmpeg's own implementation
 		</flag>
 		<flag name="libsoxr">Enable use of the audio resampler from <pkg>media-libs/soxr</pkg></flag>
-		<flag name="libtesseract">Enable Optical Character Recognition (OCR) filter support via <pkg>app-text/tesseract</pkg></flag>
 		<flag name="lv2">Enable use of filters through <pkg>media-libs/lv2</pkg></flag>
-		<flag name="npp">
-			Enable Nvidia Performance Primitives-based filters via
-			<pkg>dev-util/nvidia-cuda-toolkit</pkg> (warning: if USE=gpl
-			is enabled, this produces non-redistributable build)
-		</flag>
+		<flag name="ocr">Enable Optical Character Recognition (OCR) filter support via <pkg>app-text/tesseract</pkg></flag>
 		<flag name="openh264">Enable H.264 encoding support via <pkg>media-libs/openh264</pkg></flag>
 		<flag name="openmpt">Enable MPTM tracked music files decoding support via <pkg>media-libs/libopenmpt</pkg></flag>
 		<flag name="openssl">
@@ -77,7 +73,9 @@
 			Enable libpostproc video post processing library support
 			(should not disable this unless need to disable USE=gpl)
 		</flag>
+		<flag name="qrcode">Enable QR encode generation support via <pkg>media-gfx/qrencode</pkg></flag>
 		<flag name="qsv">Enable Intel Quick Sync Video support via <pkg>media-libs/libvpl</pkg></flag>
+		<flag name="quirc">Enable QR decoding support via <pkg>media-libs/quirc</pkg></flag>
 		<flag name="rabbitmq">Enable AMQP stream support via <pkg>net-libs/rabbitmq-c</pkg></flag>
 		<flag name="rav1e">Enable AV1 encoding support via <pkg>media-video/rav1e</pkg></flag>
 		<flag name="rubberband">Enable time-stretching and pitch-shifting audio filter support via <pkg>media-libs/rubberband</pkg></flag>

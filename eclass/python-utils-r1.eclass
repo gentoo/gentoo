@@ -929,8 +929,12 @@ _python_wrapper_setup() {
 			chmod +x "${workdir}/bin/python-config" \
 				"${workdir}/bin/python3-config" || die
 
-			# Python 2.6+.
-			ln -s "${PYTHON/python/2to3-}" "${workdir}"/bin/2to3 || die
+			# Python 2.6+. Deprecated in 3.11, removed in 3.13.
+			if ver_test ${EPYTHON#python} -lt 3.13; then
+				ln -s "${PYTHON/python/2to3-}" "${workdir}"/bin/2to3 || die
+			else
+				nonsupp+=( 2to3 )
+			fi
 
 			# Python 2.7+.
 			ln -s "${EPREFIX}"/usr/$(get_libdir)/pkgconfig/${EPYTHON/n/n-}.pc \
@@ -1312,6 +1316,15 @@ _python_check_occluded_packages() {
 # The recommended way to disable it in EAPI 8 or earlier is to set
 # EPYTEST_PLUGINS (possibly to an empty array).
 
+# @ECLASS_VARIABLE: EPYTEST_PLUGIN_LOAD_VIA_ENV
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# If set to a non-empty value, plugins will be loaded via PYTEST_PLUGINS
+# environment variable rather than explicit "-p" options.  This ensures
+# that plugins are passed down to subprocess, which may be necessary
+# when testing pytest plugins.  However, this is also more likely
+# to cause duplicate plugin errors.
+
 # @FUNCTION: _set_epytest_plugins
 # @INTERNAL
 # @DESCRIPTION:
@@ -1344,6 +1357,16 @@ _set_epytest_plugins() {
 		fi
 	fi
 }
+
+# @ECLASS_VARIABLE: EPYTEST_RERUNS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# If set to a non-empty value, enables pytest-rerunfailures plugin
+# and sets rerun count to the specified value.  This variable can be
+# either set in ebuilds with flaky tests, or by user to try if it helps.
+# If this variable is set prior to calling distutils_enable_tests
+# in distutils-r1, a test dependency on dev-python/pytest-rerunfailures
+# is added automatically.
 
 # @ECLASS_VARIABLE: EPYTEST_TIMEOUT
 # @DEFAULT_UNSET
@@ -1397,7 +1420,7 @@ epytest() {
 	[[ ${NO_COLOR} ]] && color=no
 
 	mkdir -p "${T}/pytest-xml" || die
-	local junit_xml=$(mktemp "${T}/pytest-xml/${EPYTHON}-XXX.xml" || die)
+	local junit_xml=$(mktemp "${T}/pytest-xml/${EPYTHON}-XXXXXX.xml" || die)
 
 	local args=(
 		# verbose progress reporting and tracebacks
@@ -1442,20 +1465,41 @@ epytest() {
 
 	if [[ ${PYTEST_DISABLE_PLUGIN_AUTOLOAD} ]]; then
 		if [[ ${EPYTEST_PLUGINS[@]} ]]; then
-			local plugin_args=()
-			readarray -t -d '' plugin_args < <(
-				"${EPYTHON}" - "${EPYTEST_PLUGINS[@]}" <<-EOF || die
-					import sys
-					from importlib.metadata import distribution, entry_points
-					packages = {distribution(x).name for x in sys.argv[1:]}
-					eps = {
-						f"-p{x.name}" for x in entry_points(group="pytest11")
-						if x.dist.name in packages
-					}
-					sys.stdout.write("\\0".join(sorted(eps)))
-				EOF
-			)
-			args+=( "${plugin_args[@]}" )
+			if [[ ${EPYTEST_PLUGIN_LOAD_VIA_ENV} ]]; then
+				local -x PYTEST_PLUGINS=$(
+					"${EPYTHON}" - "${EPYTEST_PLUGINS[@]}" <<-EOF || die
+						import sys
+						from importlib.metadata import distribution, entry_points
+
+						packages = {distribution(x).name for x in sys.argv[1:]}
+						# In packages defining multiple entry points, we must
+						# list them in the same order!
+						plugins = (
+							x.value for x in entry_points(group="pytest11")
+							if x.dist.name in packages
+						)
+						sys.stdout.write(",".join(plugins))
+					EOF
+				)
+			else
+				local plugin_args=()
+				readarray -t -d '' plugin_args < <(
+					"${EPYTHON}" - "${EPYTEST_PLUGINS[@]}" <<-EOF || die
+						import os
+						import sys
+						from importlib.metadata import distribution, entry_points
+
+						env_plugins = os.environ.get("PYTEST_PLUGINS", "").split(",")
+						packages = {distribution(x).name for x in sys.argv[1:]}
+						eps = {
+							f"-p{x.name}" for x in entry_points(group="pytest11")
+							if x.dist.name in packages and x.value not in env_plugins
+						}
+						sys.stdout.write("\\0".join(sorted(eps)))
+					EOF
+				)
+				args+=( "${plugin_args[@]}" )
+			fi
 		fi
 	else
 		args+=(
@@ -1485,6 +1529,26 @@ epytest() {
 			# does something to logging
 			-p no:salt-factories
 		)
+	fi
+
+	if [[ -n ${EPYTEST_RERUNS} ]]; then
+		if [[ ${PYTEST_PLUGINS} != *pytest_rerunfailures* ]]; then
+			args+=(
+				-p rerunfailures
+			)
+		fi
+
+		if has_version ">=dev-python/pytest-rerunfailures-16.1"; then
+			args+=(
+				# --reruns only adds N reruns for tests not marked for reruns
+				# --force-reruns overrides the rerun count for all tests
+				"--force-reruns=${EPYTEST_RERUNS}"
+			)
+		else
+			args+=(
+				"--reruns=${EPYTEST_RERUNS}"
+			)
+		fi
 	fi
 
 	if [[ -n ${EPYTEST_TIMEOUT} ]]; then
@@ -1518,6 +1582,17 @@ epytest() {
 		fi
 	fi
 
+	# If we are using hypothesis (require use via EPYTEST_PLUGINS, since
+	# ebuilds may disable autoloading manually) *and* hypothesis-gentoo
+	# is available, use it to disable all health checks, to prevent the tests
+	# from failing randomly under load.
+	if has hypothesis "${EPYTEST_PLUGINS[@]}" &&
+		"${EPYTHON}" -c 'import hypothesis_gentoo' 2>/dev/null &&
+		[[ ! ${HYPOTHESIS_NO_PLUGINS} ]]
+	then
+		args+=( --hypothesis-profile=gentoo )
+	fi
+
 	local x
 	for x in "${EPYTEST_DESELECT[@]}"; do
 		args+=( --deselect "${x}" )
@@ -1527,6 +1602,9 @@ epytest() {
 	done
 	set -- "${EPYTHON}" -m pytest "${args[@]}" "${@}" ${EPYTEST_FLAGS}
 
+	if [[ ${PYTEST_PLUGINS} ]]; then
+		einfo "PYTEST_PLUGINS=${PYTEST_PLUGINS}"
+	fi
 	echo "${@}" >&2
 	"${@}"
 	local ret=${?}

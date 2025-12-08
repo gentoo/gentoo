@@ -1,0 +1,289 @@
+https://github.com/curl/curl/pull/19408
+
+From f36ab2dd6f33b9a9c069a034cf4f1451006d0f21 Mon Sep 17 00:00:00 2001
+From: Stefan Eissing <stefan@eissing.org>
+Date: Sat, 8 Nov 2025 14:28:38 +0100
+Subject: [PATCH 1/4] fix --capath use
+
+A regression in curl 8.17.0 led to a customer CAPATH set by the application
+(or the curl command) to be ignored unless licurl was built with a default
+CAPATH.
+
+Add test cases using `--capath` on the custom pytest CA, generated with
+the help of the openssl command when available.
+
+refs #19401
+---
+ lib/vtls/vtls.c               |  4 ++--
+ tests/http/test_17_ssl_use.py | 23 +++++++++++++++++++++++
+ tests/http/testenv/certs.py   | 16 ++++++++++++++++
+ tests/http/testenv/curl.py    |  3 ++-
+ tests/http/testenv/env.py     | 20 ++++++++++++++++++++
+ 5 files changed, 63 insertions(+), 3 deletions(-)
+
+diff --git a/lib/vtls/vtls.c b/lib/vtls/vtls.c
+index 3b7a095c8b75..3858cad98312 100644
+--- a/lib/vtls/vtls.c
++++ b/lib/vtls/vtls.c
+@@ -310,7 +310,6 @@ CURLcode Curl_ssl_easy_config_complete(struct Curl_easy *data)
+       if(result)
+         return result;
+     }
+-    sslc->primary.CApath = data->set.str[STRING_SSL_CAPATH];
+ #endif
+ #ifdef CURL_CA_BUNDLE
+     if(!sslc->custom_cafile && !set->str[STRING_SSL_CAFILE]) {
+@@ -322,6 +321,7 @@ CURLcode Curl_ssl_easy_config_complete(struct Curl_easy *data)
+   }
+   sslc->primary.CAfile = data->set.str[STRING_SSL_CAFILE];
+   sslc->primary.CRLfile = data->set.str[STRING_SSL_CRLFILE];
++  sslc->primary.CApath = data->set.str[STRING_SSL_CAPATH];
+   sslc->primary.issuercert = data->set.str[STRING_SSL_ISSUERCERT];
+   sslc->primary.issuercert_blob = data->set.blobs[BLOB_SSL_ISSUERCERT];
+   sslc->primary.cipher_list = data->set.str[STRING_SSL_CIPHER_LIST];
+@@ -358,7 +358,6 @@ CURLcode Curl_ssl_easy_config_complete(struct Curl_easy *data)
+       if(result)
+         return result;
+     }
+-    sslc->primary.CApath = data->set.str[STRING_SSL_CAPATH_PROXY];
+ #endif
+ #ifdef CURL_CA_BUNDLE
+     if(!sslc->custom_cafile && !set->str[STRING_SSL_CAFILE_PROXY]) {
+@@ -370,6 +369,7 @@ CURLcode Curl_ssl_easy_config_complete(struct Curl_easy *data)
+ #endif
+   }
+   sslc->primary.CAfile = data->set.str[STRING_SSL_CAFILE_PROXY];
++  sslc->primary.CApath = data->set.str[STRING_SSL_CAPATH_PROXY];
+   sslc->primary.cipher_list = data->set.str[STRING_SSL_CIPHER_LIST_PROXY];
+   sslc->primary.cipher_list13 = data->set.str[STRING_SSL_CIPHER13_LIST_PROXY];
+   sslc->primary.pinned_key = data->set.str[STRING_SSL_PINNEDPUBLICKEY_PROXY];
+diff --git a/tests/http/test_17_ssl_use.py b/tests/http/test_17_ssl_use.py
+index 57e1c014042b..20b6fdaef18b 100644
+--- a/tests/http/test_17_ssl_use.py
++++ b/tests/http/test_17_ssl_use.py
+@@ -597,3 +597,26 @@ def test_17_20_correct_pin(self, env: Env, proto, httpd):
+         ])
+         # expect NOT_IMPLEMENTED or OK
+         assert r.exit_code in [0, 2], f'{r.dump_logs()}'
++
++    @pytest.mark.skipif(condition=not Env.have_openssl(), reason="needs openssl command")
++    def test_17_21_capath_valid(self, env: Env, httpd):
++        proto = 'http/1.1'
++        curl = CurlClient(env=env)
++        url = f'https://{env.authority_for(env.domain1, proto)}/curltest/sslinfo'
++        r = curl.http_get(url=url, alpn_proto=proto, extra_args=[
++            '--capath', os.path.join(env.gen_dir, 'ca/hashdir')
++        ])
++        assert r.exit_code == 0, f'{r.dump_logs()}'
++        assert r.json['HTTPS'] == 'on', f'{r.json}'
++
++    @pytest.mark.skipif(condition=not Env.have_openssl(), reason="needs openssl command")
++    def test_17_22_capath_invalid(self, env: Env, httpd):
++        proto = 'http/1.1'
++        curl = CurlClient(env=env)
++        url = f'https://{env.authority_for(env.domain1, proto)}/curltest/sslinfo'
++        r = curl.http_get(url=url, alpn_proto=proto, extra_args=[
++            '--capath', os.path.join(env.gen_dir, 'ca/invalid')
++        ])
++        # CURLE_PEER_FAILED_VERIFICATION
++        assert r.exit_code == 60, f'{r.dump_logs()}'
++
+diff --git a/tests/http/testenv/certs.py b/tests/http/testenv/certs.py
+index e59b1ea147e1..c9a30aaac065 100644
+--- a/tests/http/testenv/certs.py
++++ b/tests/http/testenv/certs.py
+@@ -28,6 +28,8 @@
+ import ipaddress
+ import os
+ import re
++import shutil
++import subprocess
+ from datetime import timedelta, datetime, timezone
+ from typing import List, Any, Optional
+ 
+@@ -200,6 +202,10 @@ def pkey_file(self) -> Optional[str]:
+     def combined_file(self) -> Optional[str]:
+         return self._combined_file
+ 
++    @property
++    def hashdir(self) -> Optional[str]:
++        return os.path.join(self._store.path, 'hashdir')
++
+     def get_first(self, name) -> Optional['Credentials']:
+         creds = self._store.get_credentials_for_name(name) if self._store else []
+         return creds[0] if len(creds) else None
+@@ -236,6 +242,16 @@ def issue_cert(self, spec: CertificateSpec,
+             creds.issue_certs(spec.sub_specs, chain=subchain)
+         return creds
+ 
++    def create_hashdir(self, openssl):
++        os.makedirs(self.hashdir, exist_ok=True)
++        p = subprocess.run(args=[
++            openssl, 'x509', '-hash', '-noout', '-in', self.cert_file
++        ], capture_output=True, text=True)
++        if p.returncode != 0:
++            raise Exception(f'openssl failed to compute cert hash: {p}')
++        cert_hname = f'{p.stdout.strip()}.0'
++        shutil.copy(self.cert_file, os.path.join(self.hashdir, cert_hname))
++
+ 
+ class CertStore:
+ 
+diff --git a/tests/http/testenv/curl.py b/tests/http/testenv/curl.py
+index dc885ab8cba9..a92e4f681f34 100644
+--- a/tests/http/testenv/curl.py
++++ b/tests/http/testenv/curl.py
+@@ -987,7 +987,8 @@ def _complete_args(self, urls, timeout=None, options=None,
+                 pass
+             elif insecure:
+                 args.append('--insecure')
+-            elif active_options and "--cacert" in active_options:
++            elif active_options and ("--cacert" in active_options or \
++                    "--capath" in active_options):
+                 pass
+             elif u.hostname:
+                 args.extend(["--cacert", self.env.ca.cert_file])
+diff --git a/tests/http/testenv/env.py b/tests/http/testenv/env.py
+index ff8741530b70..859b704a35a3 100644
+--- a/tests/http/testenv/env.py
++++ b/tests/http/testenv/env.py
+@@ -199,6 +199,16 @@ def __init__(self, pytestconfig: Optional[pytest.Config] = None,
+             ]),
+         ]
+ 
++        self.openssl = 'openssl'
++        p = subprocess.run(args=[self.openssl, 'version'],
++                           capture_output=True, text=True)
++        if p.returncode != 0:
++            # no openssl in path
++            self.openssl = None
++            self.openssl_version = None
++        else:
++            self.openssl_version = p.stdout.strip()
++
+         self.nghttpx = self.config['nghttpx']['nghttpx']
+         if len(self.nghttpx.strip()) == 0:
+             self.nghttpx = None
+@@ -372,6 +382,10 @@ def setup_incomplete() -> bool:
+     def incomplete_reason() -> Optional[str]:
+         return Env.CONFIG.get_incomplete_reason()
+ 
++    @staticmethod
++    def have_openssl() -> bool:
++        return Env.CONFIG.openssl is not None
++
+     @staticmethod
+     def have_nghttpx() -> bool:
+         return Env.CONFIG.nghttpx is not None
+@@ -548,6 +562,8 @@ def issue_certs(self):
+                                               store_dir=ca_dir,
+                                               key_type="rsa2048")
+                 self._ca.issue_certs(self.CONFIG.cert_specs)
++                if self.have_openssl():
++                    self._ca.create_hashdir(self.openssl)
+ 
+     def setup(self):
+         os.makedirs(self.gen_dir, exist_ok=True)
+@@ -703,6 +719,10 @@ def ws_port(self) -> int:
+     def curl(self) -> str:
+         return self.CONFIG.curl
+ 
++    @property
++    def openssl(self) -> Optional[str]:
++        return self.CONFIG.openssl
++
+     @property
+     def httpd(self) -> str:
+         return self.CONFIG.httpd
+
+From 02a595146a0bd3036f653ec48d5bfc9a0187ab75 Mon Sep 17 00:00:00 2001
+From: Stefan Eissing <stefan@eissing.org>
+Date: Sat, 8 Nov 2025 14:37:22 +0100
+Subject: [PATCH 2/4] use correct hashdir
+
+---
+ tests/http/test_17_ssl_use.py | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/tests/http/test_17_ssl_use.py b/tests/http/test_17_ssl_use.py
+index 20b6fdaef18b..0019bb1239d2 100644
+--- a/tests/http/test_17_ssl_use.py
++++ b/tests/http/test_17_ssl_use.py
+@@ -604,7 +604,7 @@ def test_17_21_capath_valid(self, env: Env, httpd):
+         curl = CurlClient(env=env)
+         url = f'https://{env.authority_for(env.domain1, proto)}/curltest/sslinfo'
+         r = curl.http_get(url=url, alpn_proto=proto, extra_args=[
+-            '--capath', os.path.join(env.gen_dir, 'ca/hashdir')
++            '--capath', env.ca.hashdir
+         ])
+         assert r.exit_code == 0, f'{r.dump_logs()}'
+         assert r.json['HTTPS'] == 'on', f'{r.json}'
+@@ -619,4 +619,3 @@ def test_17_22_capath_invalid(self, env: Env, httpd):
+         ])
+         # CURLE_PEER_FAILED_VERIFICATION
+         assert r.exit_code == 60, f'{r.dump_logs()}'
+-
+
+From 5a952c670b0cf6e5735c2178014600af062390c4 Mon Sep 17 00:00:00 2001
+From: Stefan Eissing <stefan@eissing.org>
+Date: Sat, 8 Nov 2025 14:50:23 +0100
+Subject: [PATCH 3/4] test_17_21 skip for rustls test_17_22 accept error 77 as
+ well
+
+---
+ tests/http/test_17_ssl_use.py | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/tests/http/test_17_ssl_use.py b/tests/http/test_17_ssl_use.py
+index 0019bb1239d2..76f20080b3d6 100644
+--- a/tests/http/test_17_ssl_use.py
++++ b/tests/http/test_17_ssl_use.py
+@@ -600,6 +600,8 @@ def test_17_20_correct_pin(self, env: Env, proto, httpd):
+ 
+     @pytest.mark.skipif(condition=not Env.have_openssl(), reason="needs openssl command")
+     def test_17_21_capath_valid(self, env: Env, httpd):
++        if env.curl_uses_lib('rustls'):
++            pytest.skip('rustls does not support CURLOPT_CAPATH')
+         proto = 'http/1.1'
+         curl = CurlClient(env=env)
+         url = f'https://{env.authority_for(env.domain1, proto)}/curltest/sslinfo'
+@@ -611,11 +613,13 @@ def test_17_21_capath_valid(self, env: Env, httpd):
+ 
+     @pytest.mark.skipif(condition=not Env.have_openssl(), reason="needs openssl command")
+     def test_17_22_capath_invalid(self, env: Env, httpd):
++        # we can test all TLS backends here. the ones not supporting CAPATH
++        # need to fail as well as the ones which do, but get an invalid path.
+         proto = 'http/1.1'
+         curl = CurlClient(env=env)
+         url = f'https://{env.authority_for(env.domain1, proto)}/curltest/sslinfo'
+         r = curl.http_get(url=url, alpn_proto=proto, extra_args=[
+             '--capath', os.path.join(env.gen_dir, 'ca/invalid')
+         ])
+-        # CURLE_PEER_FAILED_VERIFICATION
+-        assert r.exit_code == 60, f'{r.dump_logs()}'
++        # CURLE_PEER_FAILED_VERIFICATION or CURLE_SSL_CACERT_BADFILE
++        assert r.exit_code in [60, 77], f'{r.dump_logs()}'
+
+From 10d57fbbe4c1036780d36feed6f55a87307c6e25 Mon Sep 17 00:00:00 2001
+From: Stefan Eissing <stefan@eissing.org>
+Date: Sat, 8 Nov 2025 14:58:25 +0100
+Subject: [PATCH 4/4] use 'rustls-ffi' to check for rustsls backend
+
+---
+ tests/http/test_17_ssl_use.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/http/test_17_ssl_use.py b/tests/http/test_17_ssl_use.py
+index 76f20080b3d6..615658f06c01 100644
+--- a/tests/http/test_17_ssl_use.py
++++ b/tests/http/test_17_ssl_use.py
+@@ -600,7 +600,7 @@ def test_17_20_correct_pin(self, env: Env, proto, httpd):
+ 
+     @pytest.mark.skipif(condition=not Env.have_openssl(), reason="needs openssl command")
+     def test_17_21_capath_valid(self, env: Env, httpd):
+-        if env.curl_uses_lib('rustls'):
++        if env.curl_uses_lib('rustls-ffi'):
+             pytest.skip('rustls does not support CURLOPT_CAPATH')
+         proto = 'http/1.1'
+         curl = CurlClient(env=env)
+

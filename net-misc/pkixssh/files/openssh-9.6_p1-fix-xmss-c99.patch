@@ -1,0 +1,20 @@
+xmss_hash.c: In function ‘core_hash_SHA2’:
+xmss_hash.c:56:5: error: implicit declaration of function ‘SHA256’ [-Wimplicit-function-declaration]
+   56 |     SHA256(buf, inlen + keylen + n, out);
+      |     ^~~~~~
+xmss_hash.c:61:7: error: implicit declaration of function ‘SHA512’ [-Wimplicit-function-declaration]
+   61 |       SHA512(buf, inlen + keylen + n, out);
+      |       ^~~~~~
+
+diff --git a/xmss_hash.c b/xmss_hash.c
+index 70c126ae2..cb17de2af 100644
+--- a/xmss_hash.c
++++ b/xmss_hash.c
+@@ -12,6 +12,7 @@ Public domain.
+ #include "xmss_hash_address.h"
+ #include "xmss_commons.h"
+ #include "xmss_hash.h"
++#include <openssl/sha.h>
+ 
+ #include <stddef.h>
+ #ifdef HAVE_STDINT_H

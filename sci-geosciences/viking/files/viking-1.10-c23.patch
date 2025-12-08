@@ -1,0 +1,82 @@
+From d447c19b6a2fe499fd60aa8969ea91c5cbfda159 Mon Sep 17 00:00:00 2001
+From: Otto Liljalaakso <otto.liljalaakso@iki.fi>
+Date: Wed, 29 Jan 2025 00:49:42 +0200
+Subject: [PATCH] C23 compatibility
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+In C23, empty paramter list in function declaration actually means that
+function takes parameters. Update to declare parameters for all
+functions that take them, and pass NULL as needed.
+
+Without this change, building with C23 fails with errors like shown
+below. These broke build for Fedora 42, which comes with GCC 15 and
+uses C23 by default.
+
+    vikaggregatelayer.c: In function ‘vik_aggregate_layer_create’:
+    vikaggregatelayer.c:631:27: error: too many arguments to function ‘vik_aggregate_layer_new’; expected 0, have 1
+      631 |   VikAggregateLayer *rv = vik_aggregate_layer_new (vp);
+          |                           ^~~~~~~~~~~~~~~~~~~~~~~  ~~
+    In file included from viking.h:57:
+    vikaggregatelayer.h:48:20: note: declared here
+       48 | VikAggregateLayer *vik_aggregate_layer_new ();
+          |                    ^~~~~~~~~~~~~~~~~~~~~~~
+    vikaggregatelayer.c: In function ‘aggregate_layer_unmarshall’:
+    vikaggregatelayer.c:680:27: error: too many arguments to function ‘vik_aggregate_layer_new’; expected 0, have 1
+      680 |   VikAggregateLayer *rv = vik_aggregate_layer_new(vvp);
+          |                           ^~~~~~~~~~~~~~~~~~~~~~~ ~~~
+    vikaggregatelayer.h:48:20: note: declared here
+       48 | VikAggregateLayer *vik_aggregate_layer_new ();
+          |                    ^~~~~~~~~~~~~~~~~~~~~~~
+    vikaggregatelayer.c: At top level:
+    vikaggregatelayer.c:700:20: error: conflicting types for ‘vik_aggregate_layer_new’; have ‘VikAggregateLayer *(VikViewport *)’ {aka ‘struct _VikAggregateLayer *(struct _VikViewport *)’}
+      700 | VikAggregateLayer *vik_aggregate_layer_new (VikViewport *vvp)
+          |                    ^~~~~~~~~~~~~~~~~~~~~~~
+    vikaggregatelayer.h:48:20: note: previous declaration of ‘vik_aggregate_layer_new’ with type ‘VikAggregateLayer *(void)’ {aka ‘struct _VikAggregateLayer *(void)’}
+       48 | VikAggregateLayer *vik_aggregate_layer_new ();
+          |                    ^~~~~~~~~~~~~~~~~~~~~~~
+---
+ src/vikaggregatelayer.h | 2 +-
+ src/viklayerspanel.c    | 2 +-
+ test/test_file_load.c   | 2 +-
+ test/vik2vik.c          | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/vikaggregatelayer.h b/src/vikaggregatelayer.h
+index fe726600..38061152 100644
+--- a/src/vikaggregatelayer.h
++++ b/src/vikaggregatelayer.h
+@@ -45,7 +45,7 @@ GType vik_aggregate_layer_get_type ();
+ typedef struct _VikAggregateLayer VikAggregateLayer;
+ 
+ void vik_aggregate_layer_uninit ();
+-VikAggregateLayer *vik_aggregate_layer_new ();
++VikAggregateLayer *vik_aggregate_layer_new ( VikViewport *vvp );
+ void vik_aggregate_layer_add_layer ( VikAggregateLayer *val, VikLayer *l, gboolean allow_reordering );
+ void vik_aggregate_layer_insert_layer ( VikAggregateLayer *val, VikLayer *l, VikLayer *crt_layer, gboolean allow_reordering );
+ void vik_aggregate_layer_move_layer ( VikAggregateLayer *val, GtkTreeIter *child_iter, gboolean up );
+diff --git a/src/viklayerspanel.c b/src/viklayerspanel.c
+index 2ac4b33e..cc513885 100644
+--- a/src/viklayerspanel.c
++++ b/src/viklayerspanel.c
+@@ -659,7 +659,7 @@ static void vik_layers_panel_init ( VikLayersPanel *vlp )
+   vlp->hbox = gtk_hbox_new ( TRUE, 2 );
+   vlp->vt = vik_treeview_new ( );
+ 
+-  vlp->toplayer = vik_aggregate_layer_new ();
++  vlp->toplayer = vik_aggregate_layer_new ( NULL );
+   vik_layer_rename ( VIK_LAYER(vlp->toplayer), _("Top Layer"));
+   g_signal_connect_swapped ( G_OBJECT(vlp->toplayer), "update", G_CALLBACK(layers_panel_emit_update), vlp );
+ 
+diff --git a/test/vik2vik.c b/test/vik2vik.c
+index e53a9746..ff8c8fa1 100644
+--- a/test/vik2vik.c
++++ b/test/vik2vik.c
+@@ -43,5 +43,5 @@ int main(int argc, char *argv[])
+   // Also get lots of warnings about no actual drawing GCs available
+   // but for file processing this seems to be good enough
+   VikLoadType_t lt;
+-  VikAggregateLayer* agg = vik_aggregate_layer_new ();
++  VikAggregateLayer* agg = vik_aggregate_layer_new ( NULL );
+   VikViewport* vp = vik_viewport_new ();

@@ -1,0 +1,102 @@
+Use consistent function signatures when handling function pointers
+
+This fixes compilation with gcc-15.
+
+Author: Alexander Golubev <fatzer2@gmail.com>
+Bug: https://bugs.gentoo.org/944303
+Bug: https://bugs.gentoo.org/946207
+Bug: https://bugs.gentoo.org/947851
+Bug: https://bugs.gentoo.org/948138
+Origin: Self-created patch to fix the gentoo bug
+diff --git a/src/class_backlight.h b/src/class_backlight.h
+index db2ccdf..41f9e6a 100644
+--- a/src/class_backlight.h
++++ b/src/class_backlight.h
+@@ -40,7 +40,7 @@ struct driver_backlight {
+ 	char *name;
+ 	int  (*get_brightness)();
+ 	int  (*get_brightness_max)();
+-	void (*set_brightness)();
++	void (*set_brightness)(int val);
+ 	void (*driver_exit)();
+ };
+ 
+diff --git a/src/input_manager.c b/src/input_manager.c
+index dbbfc6b..1dcc61c 100644
+--- a/src/input_manager.c
++++ b/src/input_manager.c
+@@ -382,7 +382,7 @@ handleInputSource (GIOChannel *io, GIOCondition condition, gpointer data)
+  * @{
+  */
+ InputSource*
+-addInputSource (int fd, int (*handler)(), gpointer user_data, gboolean close_on_exit)
++addInputSource (int fd, int (*handler)(int fd, gpointer user_data), gpointer user_data, gboolean close_on_exit)
+ {
+ 	struct moddata_inputmanager *base = &modbase_inputmanager;
+ 	InputSource *src;
+diff --git a/src/input_manager.h b/src/input_manager.h
+index b65a500..b2de0d5 100644
+--- a/src/input_manager.h
++++ b/src/input_manager.h
+@@ -15,7 +15,7 @@
+ #include <glib.h>
+ #include <pbbtaglist.h>
+ 
+-typedef void (*inputqueue_t)();
++typedef void (*inputqueue_t)(struct tagitem *taglist);
+ 
+ #define MAXINPUTS   16
+ #define TIMERCOUNT  3     /* ATTENTION: keep an eye on the init routine */
+@@ -65,8 +65,8 @@ gint cbEventDevices (gconstpointer a, gconstpointer b);
+ void scanEventDevices ();
+ void destroyInputSource (gpointer data);
+ gboolean handleInputSource (GIOChannel *io, GIOCondition condition, gpointer data);
+-InputSource *addInputSource (int fd, int (*handler)(), gpointer user_data, gboolean close_on_exit);
+-int register_function (int queueid, void (*func)());
++InputSource *addInputSource (int fd, int (*handler)(int fd, gpointer user_data), gpointer user_data, gboolean close_on_exit);
++int register_function (int queueid, inputqueue_t func);
+ long process_queue_single (int queueid, long tag, long data);
+ int process_queue (int queueid, struct tagitem *taglist);
+ void ipc_handler ();
+diff --git a/src/input_manager.c b/src/input_manager.c
+index 1dcc61c..908d821 100644
+--- a/src/input_manager.c
++++ b/src/input_manager.c
+@@ -421,7 +421,7 @@ addInputSource (int fd, int (*handler)(int fd, gpointer user_data), gpointer use
+ /* --- queue managers --- */
+ 
+ int
+-register_function (int queueid, void (*func)())
++register_function (int queueid, inputqueue_t func)
+ {
+   struct moddata_inputmanager *base = &modbase_inputmanager;
+   inputqueue_t *queue = base->iqueues[queueid];
+@@ -486,12 +486,14 @@ process_queue (int queueid, struct tagitem *taglist)
+  * were successful.
+  */ 
+ void
+-ipc_handler ()
++ipc_handler (struct tagitem *taglist)
+ {
+ 	struct pbbmessage *msg;
+ 	struct tagitem *source, *dest;
+ 	char msgbuffer[8192];
+ 
++	(void) taglist; /* unused */
++
+ 	if ((ipc_receive (msgbuffer, sizeof(msgbuffer))) == 0) {
+ 		msg = (struct pbbmessage *) msgbuffer;
+ 		switch (msg->action) {
+diff --git a/src/input_manager.h b/src/input_manager.h
+index b2de0d5..ea78bf8 100644
+--- a/src/input_manager.h
++++ b/src/input_manager.h
+@@ -69,7 +69,7 @@ InputSource *addInputSource (int fd, int (*handler)(int fd, gpointer user_data),
+ int register_function (int queueid, inputqueue_t func);
+ long process_queue_single (int queueid, long tag, long data);
+ int process_queue (int queueid, struct tagitem *taglist);
+-void ipc_handler ();
++void ipc_handler (struct tagitem *taglist);
+ gboolean input_event_handler (int fd, gpointer user_data);
+ /*gboolean mice_handler (int fd, gpointer user_data);*/
+ gboolean cb_timer100 (gpointer data);

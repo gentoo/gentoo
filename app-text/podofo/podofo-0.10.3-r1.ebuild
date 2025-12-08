@@ -30,12 +30,17 @@ RDEPEND="
 	png? ( media-libs/libpng:= )
 	dev-libs/libxml2:=
 	tiff? ( media-libs/tiff:= )
-	sys-libs/zlib:="
+	virtual/zlib:="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	test? ( fontconfig? ( media-fonts/liberation-fonts ) )
 "
+
+PATCHES=(
+	# backport of https://github.com/podofo/podofo/commit/aa9267229b40b49e5927f286841be4cbe81d05d5
+	"${FILESDIR}/${P}-libcxx-20-from_chars.patch"
+)
 
 src_prepare() {
 	cmake_src_prepare

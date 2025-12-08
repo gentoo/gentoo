@@ -22,7 +22,7 @@ RDEPEND="
 	>=dev-libs/glib-2.72:2
 	>=gui-libs/gtk-4.6:4[introspection?]
 	>=dev-libs/libxml2-2.6:2=
-	introspection? ( >=dev-libs/gobject-introspection-1.70.0:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	>=dev-libs/fribidi-0.19.7
 	media-libs/fontconfig
 	x11-libs/pango[introspection?]

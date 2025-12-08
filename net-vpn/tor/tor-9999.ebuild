@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/torproject.org.asc
 inherit edo python-any-r1 readme.gentoo-r1 systemd verify-sig
 
@@ -31,7 +31,7 @@ else
 		KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~ppc-macos"
 	fi
 
-	BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-tor-20230727 )"
+	BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-tor-20250713 )"
 fi
 
 # BSD in general, but for PoW, needs --enable-gpl (GPL-3 per --version)
@@ -45,7 +45,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-libs/libevent-2.1.12-r1:=[ssl]
 	dev-libs/openssl:=[-bindist(-)]
-	sys-libs/zlib
+	virtual/zlib:=
 	caps? ( sys-libs/libcap )
 	man? ( app-text/asciidoc )
 	lzma? ( app-arch/xz-utils )
@@ -119,6 +119,9 @@ src_configure() {
 
 	export ac_cv_lib_cap_cap_init=$(usex caps)
 	export tor_cv_PYTHON="${EPYTHON}"
+	# Already set by default in profiles for our toolchain
+	export tor_cv_cflags__fcf_protection_full=no
+	export tor_cv_cflags__mbranch_protection_standard=no
 
 	local myeconfargs=(
 		--localstatedir="${EPREFIX}/var"

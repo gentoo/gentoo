@@ -1,6 +1,18 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Turner <mattst88@gentoo.org> (2025-11-24)
+# spirv-llvm-translator < 20 is not stable here.
+dev-util/mesa_clc llvm_slot_17 llvm_slot_18 llvm_slot_19
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
+# dev-perl/GD-Barcode is not stable here. Bug #661634
+dev-perl/Business-ISBN barcode
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-18)
+# net-libs/farstream is not stable here. Bug #953811
+net-im/pidgin gstreamer
+
 # Pacho Ramos <pacho@gentoo.org> (2025-06-28)
 # It needs gnome-control-center and many more gnome packages to be
 # stabilized before
@@ -35,7 +47,6 @@ app-admin/syslog-ng grpc
 # Destabilize dev-db/redis for ~arm due to a lack of security stabilization
 # almost one year to this this date. bug 915548#c6
 dev-libs/hiredis test
-dev-python/redis test
 
 # Matt Turner <mattst88@gentoo.org> (2023-10-30)
 # libei not stable yet
@@ -175,10 +186,6 @@ dev-util/geany-plugins gtkspell
 # Markus Meier <maekke@gentoo.org> (2016-09-27)
 # Missing stable
 dev-db/mariadb jdbc
-
-# Ian Whyman <thev00d00@gentoo.org> (2016-05-22)
-# RPI support on arm
-dev-libs/libcec -raspberry-pi
 
 # Brian Evans <grknight@gentoo.org> (2016-01-08)
 # net-misc/libteam is not yet stable on arm

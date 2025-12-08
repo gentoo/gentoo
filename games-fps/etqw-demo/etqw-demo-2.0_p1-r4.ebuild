@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,7 +23,7 @@ RESTRICT="bindist strip mirror"
 RDEPEND="
 	>=media-libs/libsdl-1.2.15-r4[video,sound,opengl,abi_x86_32(-)]
 	sys-libs/ncurses-compat[abi_x86_32(-)]
-	>=sys-libs/zlib-1.2.8-r1[abi_x86_32(-)]
+	>=virtual/zlib-1.2.8-r1:=[abi_x86_32(-)]
 	virtual/jpeg-compat:62[abi_x86_32(-)]
 	>=x11-libs/libX11-1.6.2[abi_x86_32(-)]
 	>=x11-libs/libXext-1.3.2[abi_x86_32(-)]

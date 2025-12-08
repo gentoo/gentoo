@@ -68,7 +68,7 @@ DEPEND="${RDEPEND}"
 BDEPEND+="
 	dev-build/gtk-doc-am
 	gtk-doc? ( dev-util/gtk-doc )
-	introspection? ( >=dev-libs/gobject-introspection-1.3.0 )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 	test? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
@@ -143,7 +143,7 @@ src_configure() {
 
 src_test() {
 	# See http://storaged.org/libblockdev/ch03.html
-	# Largest subset which doesn't require root priviledges
+	# Largest subset which doesn't require root privileges
 	"${EPYTHON}" tests/run_tests.py --include-tags extradeps sourceonly || die
 }
 

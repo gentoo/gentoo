@@ -19,7 +19,7 @@ IUSE="doc minimal nls pax-kernel selinux xen"
 # Details on dotnet overlay issue: https://github.com/gentoo/dotnet/issues/429
 DEPEND="
 	app-crypt/mit-krb5[${MULTILIB_USEDEP}]
-	sys-libs/zlib[${MULTILIB_USEDEP}]
+	virtual/zlib:=[${MULTILIB_USEDEP}]
 	!minimal? ( >=dev-dotnet/libgdiplus-6.0.2 )
 	nls? ( sys-devel/gettext )
 "

@@ -26,7 +26,7 @@ CDEPEND="
 	>=sys-apps/groff-1.20.0
 	sys-libs/gdbm:=
 	seccomp? ( sys-libs/libseccomp )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib:= )
 "
 DEPEND="${CDEPEND}"
 BDEPEND="

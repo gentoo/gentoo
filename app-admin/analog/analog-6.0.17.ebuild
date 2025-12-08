@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,12 +14,12 @@ S="${WORKDIR}/${PN}-ce-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ppc ppc64 ~riscv ~sparc x86"
 
 DEPEND="
 	>=dev-libs/libpcre-3.4
 	>=media-libs/gd-1.8.4-r2[jpeg,png]
-	sys-libs/zlib"
+	virtual/zlib:="
 RDEPEND="${DEPEND}"
 
 PATCHES=(

@@ -1224,8 +1224,11 @@ _modules_sanity_kernelversion() {
 		fi
 	fi
 
+	# wrt *, KV_EXTRA can have e.g. -p1 used by dist-kernel's version as
+	# _p1, ideally would check it too but this string can contain about
+	# anything so ignore it rather than try to figure out what it is
 	if use dist-kernel &&
-		! has_version "~virtual/dist-kernel-${KV_MAJOR}.${KV_MINOR}.${KV_PATCH}"
+		! has_version "=virtual/dist-kernel-${KV_MAJOR}.${KV_MINOR}.${KV_PATCH}*"
 	then
 		ewarn
 		ewarn "The kernel modules in ${CATEGORY}/${PN} are being built for"

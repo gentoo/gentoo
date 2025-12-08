@@ -16,6 +16,7 @@ KEYWORDS="amd64 x86"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
+	"${FILESDIR}/${P}-cmake.patch"
 	"${FILESDIR}/${P}-musl.patch"
 )
 

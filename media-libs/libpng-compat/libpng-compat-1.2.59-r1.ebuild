@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,18 +7,18 @@ EAPI=8
 
 inherit libtool multilib-minimal
 
-MY_P=libpng-${PV}
+MY_P="libpng-${PV}"
 DESCRIPTION="Portable Network Graphics library"
-HOMEPAGE="http://www.libpng.org/"
+HOMEPAGE="https://www.libpng.org/"
 SRC_URI="https://downloads.sourceforge.net/libpng/${MY_P}.tar.xz"
-S="${WORKDIR}"/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="libpng"
 SLOT="1.2"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
-	>=sys-libs/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}]
+	>=virtual/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}]
 	!=media-libs/libpng-1.2*
 "
 DEPEND="${RDEPEND}"

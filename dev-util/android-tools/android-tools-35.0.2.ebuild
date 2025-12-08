@@ -31,7 +31,7 @@ DEPEND="
 	dev-cpp/abseil-cpp:=
 	dev-libs/libpcre2:=
 	dev-libs/protobuf:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	>=dev-libs/libusb-1.0.28
 	>=dev-libs/libfmt-11:=
 "

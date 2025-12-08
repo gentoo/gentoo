@@ -15,7 +15,7 @@ SLOT="2.4"
 # TODO: Default enable brotli at some point? But in 2.70.0 not advertised to servers yet - https://gitlab.gnome.org/GNOME/libsoup/issues/146
 IUSE="brotli gssapi gtk-doc +introspection samba ssl sysprof test +vala"
 REQUIRED_USE="vala? ( introspection )"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -25,9 +25,9 @@ DEPEND="
 	brotli? ( >=app-arch/brotli-1.0.6-r1:=[${MULTILIB_USEDEP}] )
 	>=net-libs/libpsl-0.20[${MULTILIB_USEDEP}]
 	sysprof? ( >=dev-util/sysprof-capture-3.40.1:4[${MULTILIB_USEDEP}] )
-	sys-libs/zlib
+	virtual/zlib:=
 	gssapi? ( virtual/krb5[${MULTILIB_USEDEP}] )
-	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	samba? ( net-fs/samba )
 "
 RDEPEND="${DEPEND}

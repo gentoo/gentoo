@@ -3,6 +3,7 @@
 
 EAPI=8
 
+EPYTEST_PLUGINS=( pytest-asyncio )
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 
@@ -16,20 +17,16 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 # Tests fail with network-sandbox, since they try to resolve google.com
 PROPERTIES="test_network"
 RESTRICT="test"
 
 RDEPEND=">=dev-python/pycares-4.9.0[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="
-	dev-python/pytest-asyncio[${PYTHON_USEDEP}]
-"
 
 distutils_enable_tests pytest
 
 python_test() {
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -p asyncio --asyncio-mode=auto
+	epytest --asyncio-mode=auto
 }

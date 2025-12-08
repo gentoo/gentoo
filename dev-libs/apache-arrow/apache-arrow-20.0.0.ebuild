@@ -32,7 +32,7 @@ LICENSE="Apache-2.0"
 SLOT="0/$(ver_cut 1)"
 KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ~riscv ~s390 x86"
 IUSE="
-	+brotli bzip2 compute dataset +json lz4 +parquet re2 +snappy ssl
+	+brotli bzip2 +compute +dataset +json lz4 +parquet +re2 +snappy ssl
 	test zlib zstd
 "
 REQUIRED_USE="
@@ -60,7 +60,7 @@ RDEPEND="
 	)
 	re2? ( dev-libs/re2:= )
 	snappy? ( app-arch/snappy:= )
-	zlib? ( sys-libs/zlib:= )
+	zlib? ( virtual/zlib:= )
 	zstd? ( app-arch/zstd:= )
 "
 DEPEND="

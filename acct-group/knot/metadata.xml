@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
-		<email>nemunaire@nemunai.re</email>
-		<name>Pierre-Olivier Mercier</name>
+		<email>nicolas.parlant@parhuet.fr</email>
+		<name>Nicolas PARLANT</name>
 	</maintainer>
 	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>

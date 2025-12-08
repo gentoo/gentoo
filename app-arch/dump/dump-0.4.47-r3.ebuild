@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ppc ppc64 ~sparc x86"
 # We keep uuid USE flag default dsiabled for this version. Don't forget
 # to default enable it for later versions as this is the upstream default.
 IUSE="bzip2 debug ermt lzo readline selinux sqlite ssl static test uuid zlib"
@@ -31,7 +31,7 @@ RDEPEND="
 		app-arch/bzip2:=
 		static? ( app-arch/bzip2[static-libs] )
 	)
-	zlib? ( >=sys-libs/zlib-1.1.4:= )
+	zlib? ( >=virtual/zlib-1.1.4:= )
 	lzo? (
 		dev-libs/lzo:2=
 		static? ( dev-libs/lzo:2[static-libs] )

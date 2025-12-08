@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/871996
+--- a/files/fail2ban.service.in
++++ b/files/fail2ban.service.in
+@@ -1,7 +1,10 @@
+ [Unit]
+ Description=Fail2Ban Service
+ Documentation=man:fail2ban(1)
++
++Before=iptables-store.service ip6tables-store.service
+ After=network.target iptables.service firewalld.service ip6tables.service ipset.service nftables.service
++After=iptables-restore.service ip6tables-restore.service
+ PartOf=iptables.service firewalld.service ip6tables.service ipset.service nftables.service
+
+ [Service]

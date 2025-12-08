@@ -27,6 +27,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+QA_PRESTRIPPED=usr/bin/mongodb_exporter
+
 src_compile() {
 	emake \
 		COMPONENT_BRANCH=${BRANCH} \

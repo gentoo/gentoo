@@ -22,6 +22,11 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+CMAKE_SKIP_TESTS=(
+	# hangs+timeout with offscreen rendering
+	tst_qgqmltest
+)
+
 src_configure() {
 	local mycmakeargs=(
 		# simpler than keeping track of and disabling every graphs-3d* features

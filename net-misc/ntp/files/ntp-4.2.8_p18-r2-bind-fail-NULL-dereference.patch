@@ -1,0 +1,20 @@
+Patch supplied by Nick Bowler on https://bugs.gentoo.org/962770
+
+This avoids a NULL dereference in case ntp fails to bind() to a decided upon
+address that should be bound.
+--- ntp-4.2.8p18/ntpd/ntp_io.c.orig
++++ ntp-4.2.8p18/ntpd/ntp_io.c
+@@ -1921,11 +1921,11 @@
+ 		}
+ 		else {
+ 			DPRINT_INTERFACE(3,
+-				(ep, "updating ", " new - FAILED"));
++				(ep2, "updating ", " new - FAILED"));
+ 
+ 			msyslog(LOG_ERR,
+ 				"cannot bind address %s",
+-				stoa(&ep->sin));
++				stoa(&ep2->sin));
+ 		}
+ 		free(ep2);
+ 	}

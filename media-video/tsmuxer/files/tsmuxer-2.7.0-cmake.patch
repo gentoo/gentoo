@@ -1,0 +1,105 @@
+From 528da5cefecf86cae5867a940f51a5a208d0399b Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 5 Dec 2025 15:24:13 +0100
+Subject: [PATCH 1/2] Bump minimum CMake version to 3.10
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt              | 2 +-
+ libmediation/CMakeLists.txt | 2 +-
+ tsMuxer/CMakeLists.txt      | 2 +-
+ tsMuxerGUI/CMakeLists.txt   | 6 +-----
+ 4 files changed, 4 insertions(+), 8 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index eaf429e..a3f70f9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required (VERSION 3.1)
++cmake_minimum_required (VERSION 3.10)
+ project (tsmuxer_main CXX)
+ 
+ set(CMAKE_CXX_STANDARD 17)
+diff --git a/libmediation/CMakeLists.txt b/libmediation/CMakeLists.txt
+index e766334..3d93bc3 100644
+--- a/libmediation/CMakeLists.txt
++++ b/libmediation/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required (VERSION 3.1)
++cmake_minimum_required (VERSION 3.10)
+ project(mediation)
+ 
+ add_library(mediation STATIC
+diff --git a/tsMuxer/CMakeLists.txt b/tsMuxer/CMakeLists.txt
+index 61c4b2d..32ed84d 100644
+--- a/tsMuxer/CMakeLists.txt
++++ b/tsMuxer/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required (VERSION 3.1)
++cmake_minimum_required (VERSION 3.10)
+ project (tsmuxer LANGUAGES CXX)
+ 
+ add_executable (tsmuxer
+diff --git a/tsMuxerGUI/CMakeLists.txt b/tsMuxerGUI/CMakeLists.txt
+index 2ebb2bd..e0ccb5e 100644
+--- a/tsMuxerGUI/CMakeLists.txt
++++ b/tsMuxerGUI/CMakeLists.txt
+@@ -1,14 +1,10 @@
+-cmake_minimum_required (VERSION 3.1)
++cmake_minimum_required (VERSION 3.10)
+ project(tsMuxerGUI CXX)
+ 
+ set(CMAKE_AUTOMOC ON)
+ set(CMAKE_AUTORCC ON)
+ set(CMAKE_AUTOUIC ON)
+ 
+-if(CMAKE_VERSION VERSION_LESS "3.7.0")
+-  set(CMAKE_INCLUDE_CURRENT_DIR ON)
+-endif()
+-
+ set(QT_VERSION 5 CACHE STRING "Qt version to use")
+ set_property(CACHE QT_VERSION PROPERTY STRINGS 5 6)
+ 
+-- 
+2.52.0
+
+
+From 1dd8433c09ae5a00de79e8528f3dcbe609b8574b Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 5 Dec 2025 15:26:55 +0100
+Subject: [PATCH 2/2] Disable git rev-parse
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a3f70f9..414bcf8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -5,13 +5,13 @@ set(CMAKE_CXX_STANDARD 17)
+ set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
+ set(CMAKE_CXX_EXTENSIONS FALSE)
+ 
+-execute_process(
+-  COMMAND git rev-parse --short HEAD
+-  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+-  RESULT_VARIABLE GIT_REV_SHORT_RV
+-  OUTPUT_VARIABLE GIT_REV_SHORT
+-  OUTPUT_STRIP_TRAILING_WHITESPACE
+-)
++#execute_process(
++#  COMMAND git rev-parse --short HEAD
++#  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
++#  RESULT_VARIABLE GIT_REV_SHORT_RV
++#  OUTPUT_VARIABLE GIT_REV_SHORT
++#  OUTPUT_STRIP_TRAILING_WHITESPACE
++#)
+ set(TSMUXER_RELEASE TRUE)
+ set(VERSION_NUMBER "2.7.0")
+ if(${TSMUXER_RELEASE})
+-- 
+2.52.0
+

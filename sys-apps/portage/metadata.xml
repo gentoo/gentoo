@@ -16,7 +16,7 @@
 		</flag>
 		<flag name="rsync-verify">
 		Enable full-tree cryptographic verification of Gentoo repository
-		rsync checkouts using <pkg>app-portage/gemato</pkg>.
+		git or rsync checkouts using <pkg>app-portage/gemato</pkg>.
 		</flag>
 		<flag name="xattr">
 		Preserve extended attributes (filesystem-stored metadata)

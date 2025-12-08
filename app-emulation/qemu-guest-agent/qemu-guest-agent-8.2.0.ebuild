@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,14 +6,14 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="ensurepip(-),ncurses,readline"
 
-inherit edo systemd toolchain-funcs python-any-r1 udev
+inherit edo linux-info python-any-r1 systemd toolchain-funcs udev
 
 MY_PN="qemu"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="QEMU Guest Agent (qemu-ga) for use when running inside a VM"
 HOMEPAGE="https://wiki.qemu.org/Features/GuestAgent"
-SRC_URI="http://wiki.qemu.org/download/${MY_P}.tar.xz"
+SRC_URI="https://download.qemu.org/${MY_P}.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2 BSD-2"
@@ -24,6 +24,9 @@ RDEPEND="dev-libs/glib"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
+	$(python_gen_any_dep '
+		dev-python/distlib[${PYTHON_USEDEP}]
+	')
 	dev-lang/perl
 	app-alternatives/ninja
 "
@@ -31,6 +34,18 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/qemu-8.1.0-find-sphinx.patch
 )
+
+python_check_deps() {
+	python_has_version "dev-python/distlib[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	# While qemu-ga supports multiple modes, virtio-serial is the
+	# default. Make sure it's enabled in kernel.
+	CONFIG_CHECK="~VIRTIO_CONSOLE"
+	linux-info_pkg_setup
+	python-any-r1_pkg_setup
+}
 
 src_configure() {
 	tc-export AR LD OBJCOPY RANLIB
@@ -70,7 +85,7 @@ src_install() {
 	dobin build/qga/qemu-ga
 
 	# Normal init stuff
-	newinitd "${FILESDIR}/qemu-ga.init-r1" qemu-guest-agent
+	newinitd "${FILESDIR}/qemu-ga.init-r2" qemu-guest-agent
 	newconfd "${FILESDIR}/qemu-ga.conf-r1" qemu-guest-agent
 
 	insinto /etc/logrotate.d

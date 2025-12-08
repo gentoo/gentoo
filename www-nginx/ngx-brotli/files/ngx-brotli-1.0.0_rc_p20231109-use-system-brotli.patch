@@ -1,0 +1,103 @@
+From 0b42e57bb6fa4e039585f1ebac8584b8d45b7a2a Mon Sep 17 00:00:00 2001
+From: Mikel Olasagasti Uranga <mikel@olasagasti.info>
+Date: Wed, 16 Apr 2025 23:50:52 +0200
+Subject: [PATCH] filter/config: restore "system‑first, bundled‑fallback" Brotli detection
+
+63ca02a made the bundled sub‑module mandatory by hard‑coding
+deps/brotli and linking the objects produced in ../out. This broke
+distribution builds that are required to link against the shared
+libbrotli already shipped by the system.
+
+This change brings back the original behaviour while integrating
+`pkg-config`:
+
+* Detect a system installation with `pkg-config libbrotlienc`;
+  if found, use the reported cflags/libs and compile only the NGINX
+  wrapper source.
+* If no suitable system copy exists, fall back to the bundled
+  git sub‑module exactly as before.
+* Abort early with a clear error message when neither flavour is
+  available, including instructions to initialise the sub‑module.
+
+No command‑line flags are needed for the common case; packagers simply
+omit the sub‑module and let `pkg-config` do the work, while end users
+who prefer the bundled copy keep the sub‑module checked out.
+
+Fixes: 63ca02a (“filter: require bundled Brotli out/ artifacts”)
+
+Signed-off-by: Mikel Olasagasti Uranga <mikel@olasagasti.info>
+---
+ filter/config | 50 +++++++++++++++++++++++++++++++++++---------------
+ 1 file changed, 35 insertions(+), 15 deletions(-)
+
+diff --git a/filter/config b/filter/config
+index 167e1d2..98b2504 100644
+--- a/filter/config
++++ b/filter/config
+@@ -42,31 +42,51 @@ fi
+ ngx_module_type=HTTP_FILTER
+ ngx_module_name=ngx_http_brotli_filter_module
+ 
+-brotli="$ngx_addon_dir/deps/brotli/c"
+-if [ ! -f "$brotli/include/brotli/encode.h" ]; then
+-cat << END
++use_system_brotli=no
++brotli_prefix=""
++
++if pkg-config --exists libbrotlienc 2>/dev/null ; then
++    brotli_prefix=$(pkg-config --variable=prefix libbrotlienc)
++    if [ -f "$brotli_prefix/include/brotli/encode.h" ]; then
++        use_system_brotli=yes
++    fi
++fi
++
++if [ "$use_system_brotli" = no ]; then
++    brotli="$ngx_addon_dir/deps/brotli/c"
++    if [ ! -f "$brotli/include/brotli/encode.h" ]; then
++cat <<END
+ 
+-$0: error: \
+-Brotli library is missing from the $brotli directory.
++$0: error:
++Brotli library not found – neither a system installation detected
++(tried \`pkg-config libbrotlienc\`) nor the bundled sub‑module present.
+ 
+-Please make sure that the git submodule has been checked out:
++If you want to use the bundled copy, run:
+ 
+     cd $ngx_addon_dir && git submodule update --init && cd $PWD
+ 
+ END
+-    exit 1
++        exit 1
++    fi
+ fi
+ 
+-BROTLI_OUTPUT_DIRECTORY="$brotli/../out"
+-BROTLI_ENC_H="$brotli/include/brotli/encode.h \
+-              $brotli/include/brotli/port.h \
+-              $brotli/include/brotli/types.h"
++ngx_module_srcs="$BROTLI_MODULE_SRC_DIR/ngx_http_brotli_filter_module.c"
+ 
++if [ "$use_system_brotli" = yes ]; then
++    ngx_module_incs="$(pkg-config --cflags-only-I libbrotlienc)"
++    ngx_module_libs="$(pkg-config --libs libbrotlienc) -lm"
++    ngx_module_deps=""
++else
++    BROTLI_OUTPUT_DIRECTORY="$brotli/../out"
++    BROTLI_ENC_H="$brotli/include/brotli/encode.h \
++                  $brotli/include/brotli/port.h \
++                  $brotli/include/brotli/types.h"
++
++    ngx_module_incs="$brotli/include"
++    ngx_module_deps="$BROTLI_ENC_H"
++    ngx_module_libs="-L$BROTLI_OUTPUT_DIRECTORY -lbrotlienc -lbrotlicommon -lm"
++fi
+ 
+-ngx_module_incs="$brotli/include"
+-ngx_module_deps="$BROTLI_ENC_H"
+-ngx_module_srcs="$BROTLI_MODULE_SRC_DIR/ngx_http_brotli_filter_module.c"
+-ngx_module_libs="-L$BROTLI_OUTPUT_DIRECTORY -lbrotlienc -lbrotlicommon -lm"
+ ngx_module_order="$ngx_module_name \
+                   ngx_pagespeed \
+                   ngx_http_postpone_filter_module \

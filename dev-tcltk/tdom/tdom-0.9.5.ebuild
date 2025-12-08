@@ -3,13 +3,13 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic
+inherit autotools dot-a flag-o-matic
 
 MY_P="tDOM-${PV}"
 
 DESCRIPTION="A XML/DOM/XPath/XSLT Implementation for Tcl"
 HOMEPAGE="https://core.tcl.tk/tdom/"
-SRC_URI="http://tdom.org/downloads/${P}-src.tgz"
+SRC_URI="https://tdom.org/downloads/${P}-src.tgz"
 
 S="${WORKDIR}"/${P}-src
 
@@ -47,6 +47,7 @@ src_prepare() {
 }
 
 src_configure() {
+	lto-guarantee-fat
 	local myeconfargs=(
 		$(use_enable threads)
 		--enable-shared
@@ -83,4 +84,5 @@ src_install() {
 			emake DESTDIR="${D}" install
 		popd > /dev/null
 	done
+	strip-lto-bytecode
 }

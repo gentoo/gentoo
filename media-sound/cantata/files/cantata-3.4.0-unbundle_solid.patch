@@ -1,0 +1,131 @@
+upstream uses a bundled version for win/macos
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -628,7 +630,8 @@
+     # Cantata still links to taglib, even if external tag reader/writer is used, because JamendoService uses taglib for ID3 genres.
+     target_link_libraries(cantata PRIVATE TagLib::TagLib)
+     if(ENABLE_DEVICES_SUPPORT)
+-        target_link_libraries(cantata PRIVATE solidlite)
++	    find_package(KF6Solid REQUIRED)
++	    target_link_libraries(cantata PRIVATE KF6::Solid)
+     endif()
+ 
+     if(FFMPEG_FOUND OR MPG123_FOUND)
+@@ -646,7 +649,6 @@
+     add_subdirectory(tags)
+ 
+     if(ENABLE_DEVICES_SUPPORT)
+-        add_subdirectory(3rdparty/solid-lite)
+         if(MTP_FOUND)
+             target_sources(cantata PRIVATE devices/mtpdevice.cpp)
+             target_link_libraries(cantata PRIVATE MTP::MTP)
+--- a/devices/audiocddevice.cpp
++++ b/devices/audiocddevice.cpp
+@@ -35,7 +35,7 @@
+ #include "models/musiclibraryitemsong.h"
+ #include "models/playqueuemodel.h"
+ #include "mpd-interface/mpdconnection.h"
+-#include "solid-lite/block.h"
++#include <solid/block.h>
+ #include "support/utils.h"
+ #include "widgets/icons.h"
+ #include <QDir>
+--- a/devices/audiocddevice.h
++++ b/devices/audiocddevice.h
+@@ -27,7 +27,7 @@
+ #include "device.h"
+ #include "gui/covers.h"
+ #include "http/httpserver.h"
+-#include "solid-lite/opticaldrive.h"
++#include <solid/opticaldrive.h>
+ #include <QImage>
+ 
+ class CddbInterface;
+--- a/devices/device.cpp
++++ b/devices/device.cpp
+@@ -46,11 +46,11 @@
+ #include "models/musiclibrarymodel.h"
+ #include "mpd-interface/mpdparseutils.h"
+ #include "mpd-interface/song.h"
+-#include "solid-lite/genericinterface.h"
+-#include "solid-lite/opticaldisc.h"
+-#include "solid-lite/portablemediaplayer.h"
+-#include "solid-lite/storageaccess.h"
+-#include "solid-lite/storagedrive.h"
++#include <solid/genericinterface.h>
++#include <solid/opticaldisc.h>
++#include <solid/portablemediaplayer.h>
++#include <solid/storageaccess.h>
++#include <solid/storagedrive.h>
+ #include "tags/tags.h"
+ #include "widgets/icons.h"
+ #endif// ENABLE_DEVICES_SUPPORT
+--- a/devices/device.h
++++ b/devices/device.h
+@@ -30,7 +30,7 @@
+ #include "mpd-interface/song.h"
+ #ifdef ENABLE_DEVICES_SUPPORT
+ #include "deviceoptions.h"
+-#include "solid-lite/device.h"
++#include <solid/device.h>
+ #endif
+ 
+ class QWidget;
+--- a/devices/mtpdevice.h
++++ b/devices/mtpdevice.h
+@@ -27,7 +27,7 @@
+ #include "config.h"
+ #include "fsdevice.h"
+ #include "mpd-interface/song.h"
+-#include "solid-lite/portablemediaplayer.h"
++#include <solid/portablemediaplayer.h>
+ #include <libmtp.h>
+ 
+ class MusicLibraryItemRoot;
+--- a/devices/umsdevice.cpp
++++ b/devices/umsdevice.cpp
+@@ -25,7 +25,7 @@
+ #include "actiondialog.h"
+ #include "devicepropertiesdialog.h"
+ #include "devicepropertieswidget.h"
+-#include "solid-lite/storagedrive.h"
++#include <solid/storagedrive.h>
+ #include "support/icon.h"
+ #include "support/utils.h"
+ #include <QDir>
+--- a/devices/umsdevice.h
++++ b/devices/umsdevice.h
+@@ -25,7 +25,7 @@
+ #define UMSDEVICE_H
+ 
+ #include "fsdevice.h"
+-#include "solid-lite/storageaccess.h"
++#include <solid/storageaccess.h>
+ 
+ class UmsDevice : public FsDevice {
+ 	Q_OBJECT
+--- a/models/devicesmodel.cpp
++++ b/models/devicesmodel.cpp
+@@ -42,14 +42,14 @@
+ #if defined CDDB_FOUND || defined MusicBrainz5_FOUND
+ #include "devices/audiocddevice.h"
+ #endif
+-#include "solid-lite/device.h"
+-#include "solid-lite/deviceinterface.h"
+-#include "solid-lite/devicenotifier.h"
+-#include "solid-lite/opticaldisc.h"
+-#include "solid-lite/portablemediaplayer.h"
+-#include "solid-lite/storageaccess.h"
+-#include "solid-lite/storagedrive.h"
+-#include "solid-lite/storagevolume.h"
++#include <solid/device.h>
++#include <solid/deviceinterface.h>
++#include <solid/devicenotifier.h>
++#include <solid/opticaldisc.h>
++#include <solid/portablemediaplayer.h>
++#include <solid/storageaccess.h>
++#include <solid/storagedrive.h>
++#include <solid/storagevolume.h>
+ #include "support/globalstatic.h"
+ #include "support/utils.h"
+ #include <QMimeData>

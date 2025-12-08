@@ -26,7 +26,7 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	app-arch/zstd:=[${MULTILIB_USEDEP}]
-	sys-libs/zlib:=[${MULTILIB_USEDEP}]
+	virtual/zlib:=[${MULTILIB_USEDEP}]
 	virtual/libiconv:=[${MULTILIB_USEDEP}]
 	curl? ( net-misc/curl[${MULTILIB_USEDEP}] )
 	gnutls? ( >=net-libs/gnutls-3.3.24:=[${MULTILIB_USEDEP}] )
@@ -90,7 +90,11 @@ multilib_src_configure() {
 		-DWITH_SSL:STRING=$(usex gnutls GNUTLS OPENSSL)
 		-DWITH_CURL=$(usex curl)
 		-DWITH_ICONV=ON
+
+		# This variable is available only if dependency requirements are met,
+		# thus the related QA notice is falsely positive in this case.
 		-DCLIENT_PLUGIN_AUTH_GSSAPI_CLIENT:STRING=$(usex kerberos DYNAMIC OFF)
+
 		-DMARIADB_UNIX_ADDR="${EPREFIX}/var/run/mysqld/mysqld.sock"
 		-DINSTALL_LIBDIR="$(get_libdir)"
 		-DINSTALL_MANDIR=share/man

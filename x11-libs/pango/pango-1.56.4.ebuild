@@ -50,9 +50,11 @@ src_prepare() {
 	# get rid of a win32 example
 	rm examples/pangowin32tobmp.c || die
 
-	# Skip broken test:
-	# https://gitlab.gnome.org/GNOME/pango/-/issues/677
+	# Skip broken test: https://gitlab.gnome.org/GNOME/pango/-/issues/677
 	rm tests/layouts/valid-20.layout || die
+
+	# Often breaks w/ new harfbuzz (bug #960222)
+	sed -i -e '/test-font-data/d' tests/meson.build || die
 }
 
 multilib_src_configure() {

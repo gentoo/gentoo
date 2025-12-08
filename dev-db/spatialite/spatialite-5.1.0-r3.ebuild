@@ -24,7 +24,7 @@ RESTRICT="test"
 RDEPEND="
 	>=dev-db/sqlite-3.7.5:3[extensions(+)]
 	dev-libs/libxml2:=
-	sys-libs/zlib[minizip]
+	virtual/minizip:=
 	geos? ( >=sci-libs/geos-3.11.0 )
 	proj? ( sci-libs/proj:= )
 	rttopo? ( sci-geosciences/librttopo )
@@ -32,7 +32,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-macro-surgery.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-macro-surgery.patch"
+	"${FILESDIR}/${P}-libxml2-2.14.patch" # bug 955675
+)
 
 src_prepare() {
 	default

@@ -10,12 +10,11 @@ DESCRIPTION="HTTP client library"
 HOMEPAGE="https://serf.apache.org/"
 SRC_URI="
 	mirror://apache/${PN}/${P}.tar.bz2
-	https://archive.apache.org/dist/serf/${P}.tar.bz2
 "
 
 LICENSE="Apache-2.0"
 SLOT="1"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="kerberos"
 # Many test failures.
 RESTRICT="test"
@@ -24,7 +23,7 @@ RDEPEND="
 	dev-libs/apr:1=
 	dev-libs/apr-util:1=
 	dev-libs/openssl:=
-	sys-libs/zlib
+	virtual/zlib:=
 	kerberos? ( virtual/krb5 )
 "
 DEPEND="${RDEPEND}"

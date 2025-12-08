@@ -11,7 +11,7 @@ SRC_URI="https://github.com/libhangul/${PN}/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/1"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~loong ppc ppc64 ~riscv x86"
 IUSE="nls static-libs test"
 RESTRICT="!test? ( test )"
 

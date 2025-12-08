@@ -14,7 +14,7 @@ HOMEPAGE="https://cucumber.io/"
 LICENSE="MIT"
 
 SLOT="$(ver_cut 1)"
-KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="test"
 
 # Tests depend on specific versions of testing frameworks where bundler

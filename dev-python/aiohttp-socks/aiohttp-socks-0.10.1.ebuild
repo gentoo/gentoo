@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
+PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 
 inherit distutils-r1
 
@@ -28,7 +28,6 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/trustme[${PYTHON_USEDEP}]
 		dev-python/attrs[${PYTHON_USEDEP}]
 		dev-python/yarl[${PYTHON_USEDEP}]
@@ -37,4 +36,11 @@ BDEPEND="
 	)
 "
 
+EPYTEST_PLUGINS=( pytest-asyncio )
 distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/romis2012/aiohttp-socks/pull/53
+	# https://github.com/romis2012/aiohttp-socks/commit/0d8800233dc8aa7384abaf02ebf3543d3d2dea97
+	"${FILESDIR}/${P}-test.patch"
+)

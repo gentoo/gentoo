@@ -15,7 +15,7 @@ KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ppc64 ~riscv x86"
 
 RDEPEND="
 	>=dev-perl/glib-perl-1.320.0
-	>=dev-libs/gobject-introspection-1.0
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	>=dev-libs/libffi-3.0.0:=
 	>=dev-libs/glib-2.0.0
 "

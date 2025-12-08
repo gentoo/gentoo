@@ -17,12 +17,12 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/glib-2.68.0:2
-	sys-libs/zlib
+	virtual/zlib:=
 	crypt? ( >=app-crypt/gpgme-1.8.0:= )
 	idn? ( net-dns/libidn2:= )
 	vala? (
 		$(vala_depend)
-		>=dev-libs/gobject-introspection-1.30.0:=
+		>=dev-libs/gobject-introspection-1.82.0-r2:=
 	)
 "
 DEPEND="${RDEPEND}

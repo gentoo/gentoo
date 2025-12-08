@@ -3,7 +3,7 @@
 
 EAPI=8
 
-RUST_MIN_VER="1.79.0"
+RUST_MIN_VER="1.82.0"
 inherit cargo shell-completion
 
 DESCRIPTION="A new way to see and navigate directory trees"
@@ -18,13 +18,13 @@ LICENSE+="
 	LGPL-3+ MIT MPL-2.0 UoI-NCSA Unicode-3.0 ZLIB
 "
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="X"
 
 DEPEND="
 	dev-db/sqlite:3
 	dev-libs/libgit2:=
-	sys-libs/zlib
+	virtual/zlib:=
 	X? ( x11-libs/libxcb:= )
 "
 RDEPEND="${DEPEND}"

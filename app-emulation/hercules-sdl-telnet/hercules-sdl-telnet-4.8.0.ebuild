@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake dot-a
 
 # Use ../hercules-sdl/files/gen_hashes.sh to identify the relevant
 # commit when tagging new versions.
@@ -18,3 +18,13 @@ LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="amd64 ppc64"
 PATCHES=( "${FILESDIR}/cmakefix.patch" )
+
+src_configure() {
+	lto-guarantee-fat
+	cmake_src_configure
+}
+
+src_install() {
+	cmake_src_install
+	strip-lto-bytecode
+}

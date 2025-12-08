@@ -30,8 +30,6 @@ BDEPEND="
 	dev-python/hatch-jupyter-builder[${PYTHON_USEDEP}]
 	test? (
 		dev-python/nbval[${PYTHON_USEDEP}]
-		dev-python/pytest-jupyter[${PYTHON_USEDEP}]
-		dev-python/pytest-tornasync[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/requests-unixsocket[${PYTHON_USEDEP}]
 		dev-python/testpath[${PYTHON_USEDEP}]
@@ -41,6 +39,7 @@ BDEPEND="
 	)
 "
 
+EPYTEST_PLUGINS=( pytest-{jupyter,tornasync} )
 distutils_enable_tests pytest
 distutils_enable_sphinx docs/source \
 	dev-python/pydata-sphinx-theme \
@@ -67,12 +66,10 @@ src_prepare() {
 }
 
 python_test() {
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-
 	# Notebook interferes with our tests, pretend it does not exist
 	echo "raise ImportError" > notebook.py || die
 
-	epytest -p pytest_tornasync.plugin
+	epytest
 }
 
 python_install_all() {

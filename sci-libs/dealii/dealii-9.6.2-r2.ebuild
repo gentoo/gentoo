@@ -3,11 +3,6 @@
 
 EAPI=8
 
-# deal.II uses its own FindLAPACK.cmake file that calls into the system
-# FindLAPACK.cmake module and does additional internal setup. Do not remove
-# any of these modules:
-CMAKE_REMOVE_MODULES_LIST=""
-
 inherit cmake flag-o-matic verify-sig
 
 DESCRIPTION="Solving partial differential equations with the finite element method"
@@ -46,7 +41,7 @@ REQUIRED_USE="
 
 RDEPEND="dev-libs/boost:=
 	app-arch/bzip2
-	sys-libs/zlib
+	virtual/zlib:=
 	dev-cpp/tbb:=
 	arborx? ( sci-libs/arborx[mpi=] )
 	adolc? ( sci-libs/adolc )
@@ -62,7 +57,7 @@ RDEPEND="dev-libs/boost:=
 		>=sci-libs/metis-5
 		mpi? ( >=sci-libs/parmetis-4 )
 	)
-	mpi? ( virtual/mpi[cxx] )
+	mpi? ( virtual/mpi )
 	muparser? ( dev-cpp/muParser )
 	opencascade? ( sci-libs/opencascade:= )
 	p4est? ( sci-libs/p4est[mpi] )

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,7 +27,7 @@ DEPEND="dev-db/mysql-connector-c:=
 	>=net-libs/zeromq-3:=
 	net-misc/curl
 	sys-libs/libcap
-	sys-libs/zlib"
+	virtual/zlib:="
 RDEPEND="${DEPEND}
 	acct-user/ntopng
 	acct-group/ntopng

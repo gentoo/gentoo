@@ -1,0 +1,206 @@
+--- a/configure
++++ b/configure
+@@ -662,8 +662,8 @@
+ QT_LIB
+ QT_CFLAGS
+ QT_INC
+-qt5_LIBS
+-qt5_CFLAGS
++qt6_LIBS
++qt6_CFLAGS
+ ffmpeg_LIBS
+ ffmpeg_CFLAGS
+ PKG_CONFIG_LIBDIR
+@@ -777,7 +777,7 @@
+ with_sysroot
+ enable_libtool_lock
+ enable_gui
+-enable_qt5
++enable_qt6
+ enable_noec
+ enable_debug
+ '
+@@ -800,8 +800,8 @@
+ PKG_CONFIG_LIBDIR
+ ffmpeg_CFLAGS
+ ffmpeg_LIBS
+-qt5_CFLAGS
+-qt5_LIBS'
++qt6_CFLAGS
++qt6_LIBS'
+ 
+ 
+ # Initialize some variables set by options.
+@@ -1431,7 +1431,7 @@
+                           optimize for fast installation [default=yes]
+   --disable-libtool-lock  avoid locking (might break parallel builds)
+   --disable-gui           do not build GUI (default is build GUI)
+-  --disable-qt5           do not use Qt5
++  --disable-qt6           do not use Qt6
+   --enable-noec           use private ECDSA code (default - use openssl ECDSA
+                           if available)
+   --enable-debug          keep debug symbols in binarfies (default - strip
+@@ -1471,8 +1471,8 @@
+   ffmpeg_CFLAGS
+               C compiler flags for ffmpeg, overriding pkg-config
+   ffmpeg_LIBS linker flags for ffmpeg, overriding pkg-config
+-  qt5_CFLAGS  C compiler flags for qt5, overriding pkg-config
+-  qt5_LIBS    linker flags for qt5, overriding pkg-config
++  qt6_CFLAGS  C compiler flags for qt6, overriding pkg-config
++  qt6_LIBS    linker flags for qt6, overriding pkg-config
+ 
+ Use these variables to override the choices made by `configure' or to help
+ it to find libraries and programs with nonstandard names/locations.
+@@ -12545,12 +12545,12 @@
+ 
+ #AM_CONDITIONAL([ENABLE_GUI],[test "x$enable_gui" = "xyes"])
+ 
+-# Check whether --enable-qt5 was given.
+-if test ${enable_qt5+y}
++# Check whether --enable-qt6 was given.
++if test ${enable_qt6+y}
+ then :
+-  enableval=$enable_qt5;
++  enableval=$enable_qt6;
+ else $as_nop
+-  enable_qt5=yes
++  enable_qt6=yes
+ fi
+ 
+ 
+@@ -17312,7 +17312,7 @@
+ test -z "$INSTALL_DATA" && INSTALL_DATA='${INSTALL} -m 644'
+ 
+ 
+-  ax_cxx_compile_alternatives="11 0x"    ax_cxx_compile_cxx11_required=true
++  ax_cxx_compile_alternatives="17"    ax_cxx_compile_cxx11_required=true
+   ac_ext=cpp
+ ac_cpp='$CXXCPP $CPPFLAGS'
+ ac_compile='$CXX -c $CXXFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+@@ -18295,24 +18295,24 @@
+ if test "x$enable_gui" != "xno"
+ then :
+ 
+-  if test "x$enable_qt5" != "xno"
++  if test "x$enable_qt6" != "xno"
+ then :
+ 
+ 
+ pkg_failed=no
+-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for Qt5Core Qt5Gui Qt5Widgets Qt5DBus" >&5
+-printf %s "checking for Qt5Core Qt5Gui Qt5Widgets Qt5DBus... " >&6; }
++{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for Qt6Core Qt6Gui Qt6Widgets Qt6DBus" >&5
++printf %s "checking for Qt6Core Qt6Gui Qt6Widgets Qt6DBus... " >&6; }
+ 
+-if test -n "$qt5_CFLAGS"; then
+-    pkg_cv_qt5_CFLAGS="$qt5_CFLAGS"
++if test -n "$qt6_CFLAGS"; then
++    pkg_cv_qt6_CFLAGS="$qt6_CFLAGS"
+  elif test -n "$PKG_CONFIG"; then
+     if test -n "$PKG_CONFIG" && \
+-    { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"Qt5Core Qt5Gui Qt5Widgets Qt5DBus\""; } >&5
+-  ($PKG_CONFIG --exists --print-errors "Qt5Core Qt5Gui Qt5Widgets Qt5DBus") 2>&5
++    { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"Qt6Core Qt6Gui Qt6Widgets Qt6DBus\""; } >&5
++  ($PKG_CONFIG --exists --print-errors "Qt6Core Qt6Gui Qt6Widgets Qt6DBus") 2>&5
+   ac_status=$?
+   printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+   test $ac_status = 0; }; then
+-  pkg_cv_qt5_CFLAGS=`$PKG_CONFIG --cflags "Qt5Core Qt5Gui Qt5Widgets Qt5DBus" 2>/dev/null`
++  pkg_cv_qt6_CFLAGS=`$PKG_CONFIG --cflags "Qt6Core Qt6Gui Qt6Widgets Qt6DBus" 2>/dev/null`
+ 		      test "x$?" != "x0" && pkg_failed=yes
+ else
+   pkg_failed=yes
+@@ -18320,16 +18320,16 @@
+  else
+     pkg_failed=untried
+ fi
+-if test -n "$qt5_LIBS"; then
+-    pkg_cv_qt5_LIBS="$qt5_LIBS"
++if test -n "$qt6_LIBS"; then
++    pkg_cv_qt6_LIBS="$qt6_LIBS"
+  elif test -n "$PKG_CONFIG"; then
+     if test -n "$PKG_CONFIG" && \
+-    { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"Qt5Core Qt5Gui Qt5Widgets Qt5DBus\""; } >&5
+-  ($PKG_CONFIG --exists --print-errors "Qt5Core Qt5Gui Qt5Widgets Qt5DBus") 2>&5
++    { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"Qt6Core Qt6Gui Qt6Widgets Qt6DBus\""; } >&5
++  ($PKG_CONFIG --exists --print-errors "Qt6Core Qt6Gui Qt6Widgets Qt6DBus") 2>&5
+   ac_status=$?
+   printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+   test $ac_status = 0; }; then
+-  pkg_cv_qt5_LIBS=`$PKG_CONFIG --libs "Qt5Core Qt5Gui Qt5Widgets Qt5DBus" 2>/dev/null`
++  pkg_cv_qt6_LIBS=`$PKG_CONFIG --libs "Qt6Core Qt6Gui Qt6Widgets Qt6DBus" 2>/dev/null`
+ 		      test "x$?" != "x0" && pkg_failed=yes
+ else
+   pkg_failed=yes
+@@ -18350,12 +18350,12 @@
+         _pkg_short_errors_supported=no
+ fi
+         if test $_pkg_short_errors_supported = yes; then
+-                qt5_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "Qt5Core Qt5Gui Qt5Widgets Qt5DBus" 2>&1`
++                qt6_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "Qt6Core Qt6Gui Qt6Widgets Qt6DBus" 2>&1`
+         else
+-                qt5_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "Qt5Core Qt5Gui Qt5Widgets Qt5DBus" 2>&1`
++                qt6_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "Qt6Core Qt6Gui Qt6Widgets Qt6DBus" 2>&1`
+         fi
+         # Put the nasty error message in config.log where it belongs
+-        echo "$qt5_PKG_ERRORS" >&5
++        echo "$qt6_PKG_ERRORS" >&5
+ 
+         qt_ok=no
+ elif test $pkg_failed = untried; then
+@@ -18363,16 +18363,16 @@
+ printf "%s\n" "no" >&6; }
+         qt_ok=no
+ else
+-        qt5_CFLAGS=$pkg_cv_qt5_CFLAGS
+-        qt5_LIBS=$pkg_cv_qt5_LIBS
++        qt6_CFLAGS=$pkg_cv_qt6_CFLAGS
++        qt6_LIBS=$pkg_cv_qt6_LIBS
+         { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+ printf "%s\n" "yes" >&6; }
+ 
+-      QT_INC="$qt5_CFLAGS";
++      QT_INC="$qt6_CFLAGS";
+       QT_CFLAGS="-fPIC";
+-      QT_LIB="$qt5_LIBS";
+-      qt5_host_bins=`$PKG_CONFIG --variable host_bins "Qt5Core" 2>/dev/null`;
+-      QT_MOC="$qt5_host_bins/moc";
++      QT_LIB="$qt6_LIBS";
++      qt6_libexecdir=`$PKG_CONFIG --variable libexecdir "Qt6Core" 2>/dev/null`;
++      QT_MOC="$qt6_libexecdir/moc";
+       qt_ok=yes
+ 
+ fi
+--- a/makemkvgui/src/dirselectbox.cpp
++++ b/makemkvgui/src/dirselectbox.cpp
+@@ -121,7 +121,7 @@
+             if ( (dir.at(dlen-(alen+1))==QLatin1Char('/')) ||
+                  (dir.at(dlen-(alen+1))==QLatin1Char('\\')) )
+             {
+-                if (dir.endsWith(appendName)) {
++                if (dir.endsWith(*appendName)) {
+                     dir.chop(alen+1);
+                 }
+             }
+--- a/makemkvgui/src/mainwnd.cpp
++++ b/makemkvgui/src/mainwnd.cpp
+@@ -35,7 +35,7 @@
+     Qt::MacWindowToolBarButtonHint |
+     Qt::WindowMinMaxButtonsHint ;
+ #else
+-    0;
++    Qt::Widget;
+ #endif
+ 
+ MainWnd::MainWnd(CGUIApClient* App,const char* AppDir)
+--- a/makemkvgui/src/qtgui.h
++++ b/makemkvgui/src/qtgui.h
+@@ -46,7 +46,7 @@
+ #include <QtWidgets/QProgressBar>
+ #include <QtWidgets/QStackedWidget>
+ #include <QtWidgets/QComboBox>
+-#include <QtWidgets/QAction>
++#include <QtGui/QAction>
+ #include <QtWidgets/QCheckBox>
+ #include <QtWidgets/QGridLayout>
+ #include <QtWidgets/QBoxLayout>

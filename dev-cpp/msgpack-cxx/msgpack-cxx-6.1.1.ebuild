@@ -22,7 +22,7 @@ RDEPEND="boost? ( dev-libs/boost[context] )
 	!<dev-libs/msgpack-5.0.0"
 DEPEND="${RDEPEND}"
 BDEPEND="doc? ( app-text/doxygen[dot] )
-	test? ( sys-libs/zlib )"
+	test? ( virtual/zlib )"
 
 src_configure() {
 	local mycmakeargs=(

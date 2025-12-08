@@ -13,7 +13,7 @@ SRC_URI="https://github.com/jasper-software/xv/archive/refs/tags/v${PV}.tar.gz -
 
 LICENSE="xv"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~hppa ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="jpeg tiff png webp"
 
 DEPEND="
@@ -22,7 +22,7 @@ DEPEND="
 	tiff? ( media-libs/tiff:= )
 	png? (
 		>=media-libs/libpng-1.2:=
-		sys-libs/zlib
+		virtual/zlib:=
 	)
 	webp? ( media-libs/libwebp:= )
 "

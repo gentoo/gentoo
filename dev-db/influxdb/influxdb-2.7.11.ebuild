@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -189,6 +189,8 @@ CRATES="
 	yansi@0.5.1
 "
 
+# bug #961269
+RUST_MAX_VER=1.88.0
 inherit cargo go-module systemd
 
 DESCRIPTION="Scalable datastore for metrics, events, and real-time analytics"

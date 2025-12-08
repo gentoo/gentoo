@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -42,7 +42,7 @@ RDEPEND="
 	dev-qt/qtwebchannel:6
 	dev-qt/qtwebengine:6[widgets]
 	sci-libs/shapelib:=
-	sys-libs/zlib:=[minizip]
+	virtual/minizip:=
 	virtual/libusb:1
 "
 DEPEND="${RDEPEND}"

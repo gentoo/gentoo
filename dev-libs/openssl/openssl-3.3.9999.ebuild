@@ -42,7 +42,7 @@ RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	!<net-misc/openssh-9.2_p1-r3
-	tls-compression? ( >=sys-libs/zlib-1.2.8-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
+	tls-compression? ( >=virtual/zlib-1.2.8-r1:=[static-libs(+)?,${MULTILIB_USEDEP}] )
 "
 BDEPEND+="
 	>=dev-lang/perl-5
@@ -212,6 +212,9 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	emake build_sw
+	if multilib_is_native_abi; then
+		emake build_docs
+	fi
 }
 
 multilib_src_test() {
@@ -273,7 +276,8 @@ pkg_preinst() {
 	if use fips; then
 		# Regen fipsmodule.cnf, bug 900625
 		ebegin "Running openssl fipsinstall"
-		"${ED}/usr/bin/openssl" fipsinstall -quiet \
+		LD_LIBRARY_PATH="${ED}/usr/$(get_libdir)" \
+			"${ED}/usr/bin/openssl" fipsinstall -quiet \
 			-out "${ED}${SSL_CNF_DIR}/fipsmodule.cnf" \
 			-module "${ED}/usr/$(get_libdir)/ossl-modules/fips.so"
 		eend $?

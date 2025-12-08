@@ -3,8 +3,8 @@
 
 EAPI="8"
 
-PYTHON_COMPAT=( python3_{10..13} )
-inherit cmake flag-o-matic python-single-r1 xdg
+PYTHON_COMPAT=( python3_{11..13} )
+inherit cmake python-single-r1 xdg
 
 DESCRIPTION="Advanced IRC Client"
 HOMEPAGE="https://www.kvirc.net/ https://github.com/kvirc/KVIrc"
@@ -33,7 +33,7 @@ DEPEND="
 	dev-qt/qtbase:6[concurrent,gui,network,sql,widgets,xml]
 	dev-qt/qtmultimedia:6
 	dev-qt/qt5compat:6
-	sys-libs/zlib:0=
+	virtual/zlib:=
 	x11-libs/libX11
 	audiofile? ( media-libs/audiofile )
 	dbus? ( dev-qt/qtbase:6[dbus] )
@@ -83,8 +83,6 @@ src_prepare() {
 }
 
 src_configure() {
-	append-flags -fno-strict-aliasing
-
 	local libdir="$(get_libdir)"
 	local mycmakeargs=(
 		-DLIB_SUFFIX=${libdir#lib}

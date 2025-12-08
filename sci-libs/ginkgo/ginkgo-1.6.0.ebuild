@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,7 +28,6 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fix_type_mismatch.patch
-	"${FILESDIR}"/${P}-disable_automagic_dependencies.patch
 )
 
 pkg_pretend() {
@@ -53,6 +52,7 @@ src_configure() {
 		-DGINKGO_BUILD_TESTS=OFF
 		-DGINKGO_BUILD_BENCHMARKS=OFF
 		-DGINKGO_BUILD_REFERENCE=ON
+		-DGINKGO_BUILD_EXAMPLES=OFF
 		-DGINKGO_BUILD_CUDA=$(usex cuda)
 		-DGINKGO_BUILD_HWLOC=$(usex hwloc)
 		-DGINKGO_BUILD_OMP=$(usex openmp)

@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}-${P}-release"
 LICENSE="Boost-1.0"
 # SHARED_LIBRARY_VERSION -> "${S}"/libversion
 SLOT="0/112"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm arm64 ppc64 x86"
 IUSE="7z activerecord avahi cppparser +crypt +data examples +file2pagecompiler iodbc mariadb +mongodb mysql +net odbc +pagecompiler pdf pocodoc postgres prometheus sqlite test +util +xml +zip"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
@@ -55,7 +55,7 @@ RDEPEND="
 		dev-libs/openssl:=
 	)
 	xml? ( dev-libs/expat )
-	zip? ( sys-libs/zlib:= )
+	zip? ( virtual/zlib:= )
 "
 DEPEND="${RDEPEND}"
 

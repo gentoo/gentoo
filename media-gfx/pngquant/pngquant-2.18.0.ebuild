@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ REQUIRED_USE="test? ( lcms )"
 RDEPEND="
 	media-libs/libpng:=
 	media-gfx/libimagequant:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	lcms? ( media-libs/lcms:2 )
 "
 DEPEND="${RDEPEND}"

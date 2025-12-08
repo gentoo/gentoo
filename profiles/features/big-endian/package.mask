@@ -29,7 +29,6 @@ media-gfx/blender
 media-plugins/gst-plugins-vpx
 dev-qt/qtwebengine
 www-client/falkon
-www-client/otter
 net-libs/signon-ui
 media-video/cheese
 kde-apps/messagelib
@@ -41,7 +40,6 @@ kde-apps/grantlee-editor
 kde-apps/akregator
 dev-util/kdevelop
 dev-qt/qtwebview
-app-text/kchmviewer
 app-office/merkuro
 app-editors/ghostwriter
 kde-misc/zanshin
@@ -87,7 +85,6 @@ games-engines/odamex
 games-fps/chocolate-doom
 games-fps/doomsday
 games-fps/gzdoom
-games-fps/prboom-plus
 games-fps/freedoom-data
 media-libs/zmusic
 games-util/deutex
@@ -126,6 +123,23 @@ media-libs/zimg
 # Test failures on BE (#833010).  Supported by Debian CI.
 # https://gitlab.freedesktop.org/wayland/weston/-/issues/739
 dev-libs/weston
+
+# The following packages depend on gui-libs/gtk, while "gui-libs/gtk wayland" is
+# in big-endian package.use.mask:
+# Hard depends on gui-libs/gtk[wayland] since version 48.3
+>=gnome-base/gnome-control-center-48.3
+# Hard depends on gui-libs/gtk[X,wayland] since atleast version 47.4
+gnome-base/nautilus
+# gnome-base/nautilus reverse-dependencies
+dev-python/nautilus-python
+gnome-base/gnome-core-apps
+gnome-base/gnome-light
+gnome-extra/sushi
+# packages affected by nautilus reverse-dependencies
+gnome-base/gnome
+media-gfx/gthumb
+media-sound/rhythmbox
+media-sound/sound-juicer
 
 # matoro <matoro_gentoo@matoro.tk> (2023-04-10)
 # Explicit no-support for BE (#801238)

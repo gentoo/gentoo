@@ -3,9 +3,12 @@
 
 EAPI=8
 
+# https://bugs.gentoo.org/958256, bundled fluidsynth:
+# src/framework/audio/thirdparty/fluidsynth/fluidsynth-2.3.3/src/gentables/CMakeLists.txt
+# upstream files are >=3.16, KDDockWidgets is 3.12
+CMAKE_QA_COMPAT_SKIP=yes
 CHECKREQS_DISK_BUILD=3500M
-VIRTUALX_REQUIRED="test"
-inherit cmake flag-o-matic qmake-utils xdg check-reqs virtualx
+inherit cmake flag-o-matic xdg check-reqs
 
 if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
@@ -26,7 +29,8 @@ SRC_URI+=" https://dev.gentoo.org/~fordfrog/distfiles/MuseScore_General-0.2.0.ta
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="jack test video"
+IUSE="jack pipewire test video websockets"
+REQUIRED_USE="?? ( jack pipewire )"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
@@ -34,35 +38,37 @@ BDEPEND="
 	virtual/pkgconfig
 "
 RDEPEND="
-	dev-libs/tinyxml2:=
-	dev-qt/qtbase[concurrent,dbus,gui,network,opengl,widgets,xml]
+	dev-libs/pugixml
+	dev-qt/qtbase:6[concurrent,dbus,gui,network,opengl,widgets,xml,X]
 	dev-qt/qt5compat:6[qml]
 	dev-qt/qtdeclarative:6
 	dev-qt/qtnetworkauth:6
 	dev-qt/qtscxml:6
 	dev-qt/qtsvg:6
-	dev-qt/qttools:6[assistant]
-	>=media-libs/alsa-lib-1.0.0
+	media-libs/alsa-lib
 	media-libs/flac:=
-	>=media-libs/freetype-2.5.2
+	media-libs/freetype
+	media-libs/harfbuzz:=
 	media-libs/libopusenc
-	media-libs/libsndfile
 	media-libs/opus
 	media-sound/lame
-	sys-libs/zlib:=
+	virtual/zlib:=
 	jack? ( virtual/jack )
-	video? ( media-video/ffmpeg )
+	pipewire? ( media-video/pipewire:= )
+	video? ( media-video/ffmpeg:= )
+	websockets? ( dev-qt/qtwebsockets:6 )
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}
+	dev-libs/utfcpp
+	test? ( dev-cpp/gtest )
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-4.4.0-uncompressed-man-pages.patch"
-	"${FILESDIR}/${PN}-4.5.0-unbundle-deps.patch"
-	"${FILESDIR}/${PN}-4.2.0-dynamic_cast-crash.patch"
-	"${FILESDIR}/${PN}-4.4.0-include.patch"
-	"${FILESDIR}/${PN}-4.5.0-missing-includes.patch"
+	# unbundle 3rd libs
+	"${FILESDIR}/${PN}-4.7-unbundle-gtest.patch"
+	"${FILESDIR}/${PN}-4.7-unbundle-lame.patch"
+	"${FILESDIR}/${PN}-4.7-unbundle-pugixml.patch"
+	"${FILESDIR}/${PN}-4.7-unbundle-utfcpp.patch"
 )
 
 src_unpack() {
@@ -75,6 +81,27 @@ src_unpack() {
 }
 
 src_prepare() {
+	# see https://github.com/musescore/MuseScore/issues/11572
+	# keep global/thirdparty/picojson, upstream is inactive
+	# keep dockwindow/thirdparty/KDDockWidgets, using priv headers
+	# keep audio/thirdparty/fluidsynth, using priv headers
+	# keep audio/thirdparty/stb, one file, same as miniaudio
+	local rm_deps=(
+		audio/thirdparty/flac
+		audio/thirdparty/lame
+		audio/thirdparty/opus
+		audio/thirdparty/opusenc
+		draw/thirdparty/freetype
+		global/thirdparty/pugixml
+		global/thirdparty/utfcpp
+		testing/thirdparty/googletest
+	)
+
+	local bundle
+	for bundle in "${rm_deps[@]}"; do
+		rm -r src/framework/"${bundle}" || die
+	done
+
 	cmake_src_prepare
 
 	# Move soundfonts to the correct directory
@@ -85,29 +112,32 @@ src_configure() {
 	# confuses rcc, bug #908808
 	filter-lto
 
-	# bug #766111
-	export PATH="$(qt5_get_bindir):${PATH}"
-
 	local mycmakeargs=(
+		-DCMAKE_POSITION_INDEPENDENT_CODE=ON # https://github.com/musescore/MuseScore/issues/28797
 		-DCMAKE_BUILD_TYPE="release"
 		-DCMAKE_CXX_FLAGS_RELEASE="${CXXFLAGS}"
 		-DCMAKE_C_FLAGS_RELEASE="${CFLAGS}"
-		-DCMAKE_INSTALL_PREFIX=/usr
 		-DCMAKE_SKIP_RPATH=TRUE
-		-DMUE_BUILD_VIDEOEXPORT_MODULE="$(usex video)"
+		-DGZIP_EXECUTABLE=OFF # avoid compressed manpages
+		-DMUE_BUILD_IMPEXP_VIDEOEXPORT_MODULE="$(usex video)"
 		-DMUE_COMPILE_USE_SYSTEM_FLAC=ON
 		-DMUE_COMPILE_USE_SYSTEM_FREETYPE=ON
 		-DMUE_COMPILE_USE_SYSTEM_OPUS=ON
 		-DMUE_COMPILE_USE_SYSTEM_OPUSENC=ON
-		-DMUE_COMPILE_USE_SYSTEM_TINYXML=ON
 		-DMUE_COMPILE_USE_SYSTEM_HARFBUZZ=ON
 		-DMUE_DOWNLOAD_SOUNDFONT=OFF
 		-DMUSE_APP_BUILD_MODE="release"
-		-DMUSE_COMPILE_USE_CCACHE=OFF
+		-DMUSE_COMPILE_USE_COMPILER_CACHE=OFF
+		-DMUSE_COMPILE_USE_PCH=OFF
 		-DMUSE_MODULE_AUDIO_JACK="$(usex jack)"
 		-DMUSE_MODULE_DIAGNOSTICS_CRASHPAD_CLIENT=OFF
+		-DMUSE_MODULE_NETWORK_WEBSOCKET="$(usex websockets)"
+		-DMUSE_MODULE_UPDATE=OFF
+		-DMUSE_PIPEWIRE_AUDIO_DRIVER="$(usex pipewire)"
 		# tests
+		-DMUSE_ENABLE_UNIT_TESTS="$(usex test)"
 		-DMUE_BUILD_BRAILLE_TESTS="$(usex test)"
+		-DMUE_BUILD_CONVERTER_TESTS="$(usex test)"
 		-DMUE_BUILD_ENGRAVING_TESTS="$(usex test)"
 		-DMUE_BUILD_IMPORTEXPORT_TESTS="$(usex test)"
 		-DMUE_BUILD_NOTATION_TESTS="$(usex test)"
@@ -117,24 +147,33 @@ src_configure() {
 	cmake_src_configure
 }
 
-src_compile() {
-	cd "${BUILD_DIR}" || die
-	cmake_build
-	cmake_src_compile
-}
-
 src_test() {
 	CMAKE_SKIP_TESTS=(
-		# bug #950450
+		# see https://github.com/musescore/MuseScore/issues/30434
+		# Global_AllocatorTests* fail with gcc only, to investigate
+		muse_global_tests
+		# segfault
+		muse_audio_tests
+		# see bug #950450 too
 		iex_musicxml_tests
 	)
 
-	virtx cmake_src_test
+	QT_QPA_PLATFORM=offscreen cmake_src_test
 }
 
-src_install() {
-	cmake_src_install
+pkg_preinst() {
+	xdg_pkg_preinst
 
-	# Hack to not install bundled libraries
-	rm -rf "${ED}/usr/include" "${ED}/usr/$(get_libdir)" || die
+	if ! has_version "media-sound/musescore" && ! use pipewire; then
+		show_pipewire_warning=1
+	fi
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+
+	if [[ -n ${show_pipewire_warning} ]]; then
+		ewarn "PipeWire support is disabled but it's the default audio driver anyway!"
+		ewarn "Check your configuration."
+	fi
 }

@@ -22,7 +22,7 @@ DEPEND="
 	>=x11-libs/libnotify-0.7.0
 	virtual/libudev:=
 	>=sys-power/upower-0.99.14:=
-	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 RDEPEND="${DEPEND}
 	acct-group/plugdev

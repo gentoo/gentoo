@@ -84,7 +84,11 @@ RDEPEND="
 	${WINE_COMMON_DEPEND}
 	app-emulation/wine-desktop-common
 	gecko? ( app-emulation/wine-gecko:${WINE_GECKO}[${MULTILIB_USEDEP}] )
-	gstreamer? ( media-plugins/gst-plugins-meta:1.0[${MULTILIB_USEDEP}] )
+	gstreamer? (
+		media-libs/gst-plugins-bad:1.0[${MULTILIB_USEDEP}]
+		media-plugins/gst-plugins-libav:1.0[${MULTILIB_USEDEP}]
+		media-plugins/gst-plugins-meta:1.0[${MULTILIB_USEDEP}]
+	)
 	mono? ( app-emulation/wine-mono:${WINE_MONO} )
 	perl? (
 		dev-lang/perl

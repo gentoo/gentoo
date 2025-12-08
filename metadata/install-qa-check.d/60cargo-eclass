@@ -7,6 +7,7 @@
 cargo_ver_check() {
 	has cargo ${INHERITED} || return
 
+	local min_rust_ver= min_rust_source=
 	# First version of Rust to support that edition
 	declare -A RUST_EDITIONS=(
 		[2024]="1.85.0"
@@ -15,18 +16,32 @@ cargo_ver_check() {
 
 	# Maximum value for "edition" across Cargo.toml files
 	local cargo_toml_edition=$(
-		find "${S}" -name Cargo.toml -exec sed -n -e 's/^\s*edition\s*=\s*"\([0-9]*\)"\s*$/\1/p' {} \+ |
+		find "${WORKDIR}" -name Cargo.toml -exec sed -n -e 's/^\s*edition\s*=\s*"\([0-9]*\)"\s*$/\1/p' {} \+ |
 		sort -n |
 		tail -n 1
 	)
-	if [[ -n ${cargo_toml_edition} ]]; then
-		local min_rust_ver="${RUST_EDITIONS[${cargo_toml_edition}]}"
-		if [[ -n ${min_rust_ver} ]] && ver_test "${RUST_MIN_VER:-0}" -lt "${min_rust_ver}"; then
-			eqawarn
-			eqawarn "QA Notice: found Cargo.toml file which specifies edition=\"${cargo_toml_edition}\""
-			eqawarn "which requires RUST_MIN_VER=\"${min_rust_ver}\""
-			eqawarn
-		fi
+	if [[ -n ${cargo_toml_edition} && -n ${RUST_EDITIONS[${cargo_toml_edition}]} ]]; then
+		min_rust_ver="${RUST_EDITIONS[${cargo_toml_edition}]}"
+		min_rust_source="found Cargo.toml file which specifies edition=\"${cargo_toml_edition}\""
+	fi
+
+	# Maximum value for "rust-version" across Cargo.toml files
+	local cargo_toml_rust_version=$(
+		find "${WORKDIR}" -name Cargo.toml -exec sed -n -e 's/^\s*rust-version\s*=\s*"\([0-9.]*\)"\s*$/\1/p' {} \+ |
+		sort -V |
+		tail -n 1
+	)
+	if [[ -n ${cargo_toml_rust_version} ]] && ver_test "${min_rust_ver:-0}" -lt "${cargo_toml_rust_version}"; then
+		min_rust_ver=${cargo_toml_rust_version}
+		min_rust_source="found Cargo.toml file which specifies rust-version=\"${cargo_toml_rust_version}\""
+	fi
+
+
+	if [[ -n ${min_rust_ver} ]] && ver_test "${RUST_MIN_VER:-0}" -lt "${min_rust_ver}"; then
+		eqawarn
+		eqawarn "QA Notice: ${min_rust_source}"
+		eqawarn "which requires RUST_MIN_VER=\"${min_rust_ver}\""
+		eqawarn
 	fi
 }
 

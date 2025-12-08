@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 CMAKE_BUILD_TYPE=Release
 
 inherit cmake linux-info python-single-r1 systemd
@@ -29,7 +29,7 @@ DEPEND="
 	${PYTHON_DEPS}
 	app-arch/zstd:=
 	dev-libs/capnproto:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 "
 RDEPEND="
 	${DEPEND}
@@ -54,6 +54,7 @@ RESTRICT="test" # toolchain and kernel version dependent
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.7.0-no-force-lto.patch
 	"${FILESDIR}"/${PN}-5.9.0-zen-workaround-service.patch
+	"${FILESDIR}"/${PN}-5.9.0-glibc-2.42-termio.patch
 )
 
 pkg_setup() {

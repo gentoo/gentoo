@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: golang-base.eclass
@@ -30,9 +30,6 @@ fi
 
 # Do not complain about CFLAGS etc since go projects do not use them.
 QA_FLAGS_IGNORED='.*'
-
-# Upstream does not support stripping go packages
-RESTRICT="strip"
 
 # force GO111MODULE to be auto for bug https://bugs.gentoo.org/771129
 export GO111MODULE=auto

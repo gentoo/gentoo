@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,12 +24,12 @@ SRC_URI="https://github.com/tianocore/edk2/archive/edk2-stable${PV}.tar.gz -> ed
 	https://github.com/google/brotli/archive/${BUNDLED_BROTLI_SUBMODULE_SHA}.tar.gz -> brotli-${BUNDLED_BROTLI_SUBMODULE_SHA}.tar.gz
 	https://dev.gentoo.org/~ajak/distfiles/edk2-ovmf-${PV}-qemu-firmware.tar.xz"
 
-LICENSE="BSD-2 MIT"
+LICENSE="BSD-2-with-patent MIT"
 SLOT="0"
 KEYWORDS="-* amd64"
 
 BDEPEND="app-emulation/qemu
-	>=dev-lang/nasm-2.0.7
+	<dev-lang/nasm-3
 	sys-apps/which
 	>=sys-power/iasl-20160729
 	${PYTHON_DEPS}"

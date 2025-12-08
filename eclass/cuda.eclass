@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cuda.eclass
@@ -154,6 +154,11 @@ cuda_add_sandbox() {
 			addpredict $i
 		fi
 	done
+	if [[ $1 == '-w' ]]; then
+		addwrite /proc/self/task
+	else
+		addpredict /proc/self/task
+	fi
 }
 
 # @FUNCTION: cuda_toolkit_version

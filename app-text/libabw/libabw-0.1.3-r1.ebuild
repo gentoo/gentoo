@@ -13,13 +13,14 @@ KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv x86"
 IUSE="doc"
 
 BDEPEND="
+	dev-util/gperf
 	virtual/pkgconfig
 	doc? ( app-text/doxygen )
 "
 RDEPEND="
 	dev-libs/librevenge
 	dev-libs/libxml2:=
-	sys-libs/zlib
+	virtual/zlib:=
 "
 DEPEND="${RDEPEND}
 	dev-libs/boost

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..12} )
 DOCS_BUILDER="doxygen"
 inherit cmake flag-o-matic desktop docs python-single-r1 qmake-utils toolchain-funcs xdg
 
@@ -47,7 +47,7 @@ RDEPEND="
 	sci-libs/hdf5:=[mpi=]
 	>=sci-libs/netcdf-4.2[hdf5]
 	>=sci-libs/netcdf-cxx-4.2:3
-	sys-libs/zlib
+	virtual/zlib:=
 	virtual/glu
 	media-libs/libjpeg-turbo:=
 	x11-libs/libX11
@@ -56,7 +56,7 @@ RDEPEND="
 	x11-libs/libXt
 	virtual/opengl
 	ffmpeg? ( media-video/ffmpeg )
-	mpi? ( virtual/mpi[cxx,romio] )
+	mpi? ( virtual/mpi[romio] )
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
@@ -87,7 +87,7 @@ DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	boost? (
 		$(python_gen_cond_dep '
-			dev-libs/boost[mpi?,python,${PYTHON_USEDEP}]
+			dev-libs/boost[python,${PYTHON_USEDEP}]
 		')
 	)
 "
@@ -99,6 +99,8 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.5.0-allow_custom_build_type.patch
 	"${FILESDIR}"/${PN}-5.13.0-cmake-3.31-compat.patch
+	"${FILESDIR}"/${PN}-5.13.0-fix_compilation.patch
+	"${FILESDIR}"/${PN}-5.13.0-fix_compilation-2.patch
 )
 
 # false positive when checking for available HDF5 interface, bug #904731

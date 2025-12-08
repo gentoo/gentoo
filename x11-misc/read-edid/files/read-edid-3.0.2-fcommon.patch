@@ -1,0 +1,37 @@
+Source: https://salsa.debian.org/debian/read-edid/-/blob/master/debian/patches/0002-Fix-multiple-definitions-of-int-quiet.patch
+
+From: =?utf-8?b?0L3QsNCx?= <nabijaczleweli@nabijaczleweli.xyz>
+Date: Sun, 8 Jun 2025 14:20:52 +0200
+Subject: Fix multiple definitions of int quiet
+
+---
+ get-edid/classic.c | 2 +-
+ get-edid/i2c.c     | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/get-edid/classic.c b/get-edid/classic.c
+index 9cc8ee3..b13f5f0 100644
+--- a/get-edid/classic.c
++++ b/get-edid/classic.c
+@@ -26,7 +26,7 @@ typedef byte* real_ptr;
+ #define dosmemput(buffer,length,offset) memcpy(offset,buffer,length)
+ 
+ #define display(...) if (quiet == 0) { fprintf(stderr, __VA_ARGS__); }
+-int quiet;
++extern int quiet;
+ 
+ real_ptr far_ptr_to_real_ptr( uint32 farptr )
+ {
+diff --git a/get-edid/i2c.c b/get-edid/i2c.c
+index 625d7cb..0929e98 100644
+--- a/get-edid/i2c.c
++++ b/get-edid/i2c.c
+@@ -15,7 +15,7 @@
+ 
+ //Ideas (but not too much actual code) taken from i2c-tools. Thanks guys.
+ 
+-int quiet;
++extern int quiet;
+ 
+ #define display(...) if (quiet == 0) { fprintf(stderr, __VA_ARGS__); }
+ 

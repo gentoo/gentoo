@@ -18,11 +18,18 @@
 		<flag name="multilib-bootstrap">Provide prebuilt libgcc.a and crt files if missing. Only needed for ABI switch.</flag>
 		<flag name="nscd">Build, and enable support for, the Name Service Cache Daemon</flag>
 		<flag name="perl">Install additional scripts written in Perl</flag>
+		<flag name="sframe">enable building with sframe backtrace support</flag>
 		<flag name="ssp">protect stack of glibc internals</flag>
 		<flag name="stack-realign">Realign the stack in the 32-bit build for compatibility with older binaries at some performance cost</flag>
 		<flag name="static-pie">Enable static PIE support (runtime files for -static-pie gcc option).</flag>
 		<flag name="suid">Make internal pt_chown helper setuid -- not needed if using Linux and have /dev/pts mounted with gid=5</flag>
-		<flag name="systemtap">enable systemtap static probe points</flag>
+		<flag name="systemtap">
+			Enable enhanced debugging hooks/interface via SystemTap static probe points.
+
+			Note that this isn't exclusive to SystemTap, despite the name. This provides
+			an interface which <pkg>dev-debug/gdb</pkg> optionally uses, see
+			https://sourceware.org/gdb/wiki/LinkerInterface.
+		</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:gnu:glibc</remote-id>

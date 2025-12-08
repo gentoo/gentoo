@@ -20,7 +20,7 @@ SRC_URI="https://github.com/uclouvain/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="BSD-2"
 SLOT="2/7" # based on SONAME
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
@@ -28,7 +28,7 @@ RDEPEND="
 	media-libs/lcms:2
 	media-libs/libpng:0=
 	media-libs/tiff:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="doc? ( app-text/doxygen )"
@@ -85,6 +85,11 @@ multilib_src_test() {
 		toskip+=( "${S}"/tools/travis-ci/knownfailures-*x86_64*.txt )
 	elif use x86 || use arm || use arm64; then
 		toskip+=( "${S}"/tools/travis-ci/knownfailures-*i386*.txt )
+	fi
+	if has_version "sys-libs/zlib-ng" ; then
+		elog "Some tests will be skipped due to being known to fail with sys-libs/zlib-ng"
+		elog
+		toskip+=( "${FILESDIR}"/zlib-ng-knownfailures.txt )
 	fi
 
 	local exp=$(sort "${toskip[@]}" | uniq | tr '\n' '|'; assert)

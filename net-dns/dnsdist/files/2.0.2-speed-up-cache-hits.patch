@@ -1,0 +1,327 @@
+Backport of:
+https://github.com/PowerDNS/pdns/commit/8cad5a2288c9a4af5e6269277483df250adfce52
+
+From: Remi Gacogne <remi.gacogne@powerdns.com>
+Date: Tue, 26 Aug 2025 14:00:26 +0200
+Subject: [PATCH] dnsdist: Speed up cache hits by skipping the LB policy when possible
+
+We use to execute the load-balancing policy to select a backend before
+doing the cache lookup, because in some corner cases the selected
+backend might have settings that impact our cache lookup. In practice
+most configurations have a consistent set of settings for all servers
+in a given pool, so it makes no sense to waste CPU cycles selecting a
+backend if we are going to get a hit from the cache.
+This PR adds a bit of code to check if a pool is in a consistent state,
+and if it is it delays the execution of the load-balancing policy to
+after the cache lookup, skipping it entirely for cache hits.
+
+Signed-off-by: Remi Gacogne <remi.gacogne@powerdns.com>
+--- a/dnsdist-backend.cc
++++ b/dnsdist-backend.cc
+@@ -1049,6 +1049,18 @@ size_t ServerPool::poolLoad()
+   return load;
+ }
+ 
++bool ServerPool::hasAtLeastOneServerAvailable()
++{
++  auto servers = d_servers.read_lock();
++  // NOLINTNEXTLINE(readability-use-anyofallof): no it's not more readable
++  for (const auto& server : **servers) {
++    if (std::get<1>(server)->isUp()) {
++      return true;
++    }
++  }
++  return false;
++}
++
+ const std::shared_ptr<const ServerPolicy::NumberedServerVector> ServerPool::getServers()
+ {
+   std::shared_ptr<const ServerPolicy::NumberedServerVector> result;
+@@ -1060,59 +1072,117 @@ const std::shared_ptr<const ServerPolicy::NumberedServerVector> ServerPool::getS
+ 
+ void ServerPool::addServer(shared_ptr<DownstreamState>& server)
+ {
+-  auto servers = d_servers.write_lock();
+-  /* we can't update the content of the shared pointer directly even when holding the lock,
+-     as other threads might hold a copy. We can however update the pointer as long as we hold the lock. */
+-  unsigned int count = static_cast<unsigned int>((*servers)->size());
+-  auto newServers = ServerPolicy::NumberedServerVector(*(*servers));
+-  newServers.emplace_back(++count, server);
+-  /* we need to reorder based on the server 'order' */
+-  std::stable_sort(newServers.begin(), newServers.end(), [](const std::pair<unsigned int,std::shared_ptr<DownstreamState> >& a, const std::pair<unsigned int,std::shared_ptr<DownstreamState> >& b) {
+-      return a.second->d_config.order < b.second->d_config.order;
++  {
++    auto servers = d_servers.write_lock();
++    /* we can't update the content of the shared pointer directly even when holding the lock,
++       as other threads might hold a copy. We can however update the pointer as long as we hold the lock. */
++    auto count = static_cast<unsigned int>((*servers)->size());
++    auto newServers = ServerPolicy::NumberedServerVector(*(*servers));
++    newServers.emplace_back(++count, server);
++    /* we need to reorder based on the server 'order' */
++    std::stable_sort(newServers.begin(), newServers.end(), [](const std::pair<unsigned int,std::shared_ptr<DownstreamState> >& lhs, const std::pair<unsigned int,std::shared_ptr<DownstreamState> >& rhs) {
++      return lhs.second->d_config.order < rhs.second->d_config.order;
+     });
+-  /* and now we need to renumber for Lua (custom policies) */
+-  size_t idx = 1;
+-  for (auto& serv : newServers) {
+-    serv.first = idx++;
+-  }
+-  *servers = std::make_shared<const ServerPolicy::NumberedServerVector>(std::move(newServers));
++    /* and now we need to renumber for Lua (custom policies) */
++    size_t idx = 1;
++    for (auto& serv : newServers) {
++      serv.first = idx++;
++    }
++    *servers = std::make_shared<const ServerPolicy::NumberedServerVector>(std::move(newServers));
+ 
+-  if ((*servers)->size() == 1) {
+-    d_tcpOnly = server->isTCPOnly();
+-  }
+-  else if (!server->isTCPOnly()) {
+-    d_tcpOnly = false;
++    if ((*servers)->size() == 1) {
++      d_tcpOnly = server->isTCPOnly();
++    }
++    else if (!server->isTCPOnly()) {
++      d_tcpOnly = false;
++    }
+   }
++
++  updateConsistency();
+ }
+ 
+ void ServerPool::removeServer(shared_ptr<DownstreamState>& server)
+ {
+-  auto servers = d_servers.write_lock();
+-  /* we can't update the content of the shared pointer directly even when holding the lock,
+-     as other threads might hold a copy. We can however update the pointer as long as we hold the lock. */
+-  auto newServers = std::make_shared<ServerPolicy::NumberedServerVector>(*(*servers));
+   size_t idx = 1;
+   bool found = false;
+-  bool tcpOnly = true;
+-  for (auto it = newServers->begin(); it != newServers->end();) {
++  {
++    auto servers = d_servers.write_lock();
++    /* we can't update the content of the shared pointer directly even when holding the lock,
++       as other threads might hold a copy. We can however update the pointer as long as we hold the lock. */
++    auto newServers = std::make_shared<ServerPolicy::NumberedServerVector>(*(*servers));
++
++    for (auto it = newServers->begin(); it != newServers->end();) {
++      if (found) {
++        /* we need to renumber the servers placed
++           after the removed one, for Lua (custom policies) */
++        it->first = idx++;
++        it++;
++      }
++      else if (it->second == server) {
++        it = newServers->erase(it);
++        found = true;
++      } else {
++        idx++;
++        it++;
++      }
++    }
++
+     if (found) {
+-      tcpOnly = tcpOnly && it->second->isTCPOnly();
+-      /* we need to renumber the servers placed
+-         after the removed one, for Lua (custom policies) */
+-      it->first = idx++;
+-      it++;
++      *servers = std::move(newServers);
++    }
++  }
++
++  if (found && !d_isConsistent) {
++    updateConsistency();
++  }
++}
++
++void ServerPool::updateConsistency()
++{
++  bool first{true};
++  bool useECS{false};
++  bool tcpOnly{false};
++  bool disableZeroScope{false};
++
++  auto servers = d_servers.read_lock();
++  for (const auto& serverPair : **servers) {
++    const auto& server = serverPair.second;
++    if (first) {
++      first = false;
++      useECS = server->d_config.useECS;
++      tcpOnly = server->isTCPOnly();
++      disableZeroScope = server->d_config.disableZeroScope;
+     }
+-    else if (it->second == server) {
+-      it = newServers->erase(it);
+-      found = true;
+-    } else {
+-      tcpOnly = tcpOnly && it->second->isTCPOnly();
+-      idx++;
+-      it++;
++    else {
++      if (server->d_config.useECS != useECS ||
++          server->isTCPOnly() != tcpOnly ||
++          server->d_config.disableZeroScope != disableZeroScope) {
++        d_tcpOnly = false;
++        d_isConsistent = false;
++        return;
++      }
+     }
+   }
++
+   d_tcpOnly = tcpOnly;
+-  *servers = std::move(newServers);
++  /* at this point we know that all servers agree
++     on these settings, so let's just use the same
++     values for the pool itself */
++  d_useECS = useECS;
++  d_disableZeroScope = disableZeroScope;
++  d_isConsistent = true;
++}
++
++void ServerPool::setDisableZeroScope(bool disable)
++{
++  d_disableZeroScope = disable;
++  updateConsistency();
++}
++
++void ServerPool::setECS(bool useECS)
++{
++  d_useECS = useECS;
++  updateConsistency();
+ }
+ 
+ namespace dnsdist::backend
+--- a/dnsdist-lua-bindings.cc
++++ b/dnsdist-lua-bindings.cc
+@@ -107,6 +107,8 @@ void setupLuaBindings(LuaContext& luaCtx, bool client, bool configCheck)
+   });
+   luaCtx.registerFunction("getECS", &ServerPool::getECS);
+   luaCtx.registerFunction("setECS", &ServerPool::setECS);
++  luaCtx.registerFunction("getDisableZeroScope", &ServerPool::getDisableZeroScope);
++  luaCtx.registerFunction("setDisableZeroScope", &ServerPool::setDisableZeroScope);
+ 
+ #ifndef DISABLE_DOWNSTREAM_BINDINGS
+   /* DownstreamState */
+--- a/dnsdist-settings-definitions.yml
++++ b/dnsdist-settings-definitions.yml
+@@ -2040,6 +2040,14 @@ pool:
+       type: "String"
+       default: ""
+       description: "The name of the load-balancing policy associated to this pool. If left empty, the global policy will be used"
++    - name: "use_ecs"
++      type: "bool"
++      default: "false"
++      description: "Whether to add EDNS Client Subnet information to the query before looking up into the cache, when all servers from this pool are down. If at least one server is up, the preference of the selected server is used, this parameter is only useful if all the backends in this pool are down and have EDNS Client Subnet enabled, since the queries in the cache will have been inserted with ECS information"
++    - name: "disable_zero_scope"
++      type: "bool"
++      default: "false"
++      description: "Whether to disable the EDNS Client Subnet :doc:`../advanced/zero-scope` feature, which does a cache lookup for an answer valid for all subnets (ECS scope of 0) before adding ECS information to the query and doing the regular lookup, when all servers from this pool are down. If at least one server is up, the preference of the selected server is used, this parameter is only useful if all the backends in this pool are down, have EDNS Client Subnet enabled and zero scope disabled"
+ 
+ custom_load_balancing_policy:
+   description: "Settings for a custom load-balancing policy"
+--- a/dnsdist.cc
++++ b/dnsdist.cc
+@@ -1441,7 +1441,13 @@ ProcessQueryResult processQueryAfterRules(DNSQuestion& dnsQuestion, std::shared_
+     }
+     std::shared_ptr<ServerPool> serverPool = getPool(dnsQuestion.ids.poolName);
+     dnsQuestion.ids.packetCache = serverPool->packetCache;
+-    selectBackendForOutgoingQuery(dnsQuestion, serverPool, selectedBackend);
++
++    bool backendLookupDone = false;
++    if (!dnsQuestion.ids.packetCache || !serverPool->isConsistent()) {
++      selectBackendForOutgoingQuery(dnsQuestion, serverPool, selectedBackend);
++      backendLookupDone = true;
++    }
++
+     bool willBeForwardedOverUDP = !dnsQuestion.overTCP() || dnsQuestion.ids.protocol == dnsdist::Protocol::DoH;
+     if (selectedBackend && selectedBackend->isTCPOnly()) {
+       willBeForwardedOverUDP = false;
+@@ -1450,17 +1456,22 @@ ProcessQueryResult processQueryAfterRules(DNSQuestion& dnsQuestion, std::shared_
+       willBeForwardedOverUDP = !serverPool->isTCPOnly();
+     }
+ 
+-    uint32_t allowExpired = selectedBackend ? 0 : dnsdist::configuration::getCurrentRuntimeConfiguration().d_staleCacheEntriesTTL;
++    uint32_t allowExpired = 0;
++    if (!selectedBackend && dnsdist::configuration::getCurrentRuntimeConfiguration().d_staleCacheEntriesTTL > 0 && (backendLookupDone || !serverPool->hasAtLeastOneServerAvailable())) {
++      allowExpired = dnsdist::configuration::getCurrentRuntimeConfiguration().d_staleCacheEntriesTTL;
++    }
+ 
+     if (dnsQuestion.ids.packetCache && !dnsQuestion.ids.skipCache && !dnsQuestion.ids.dnssecOK) {
+       dnsQuestion.ids.dnssecOK = (dnsdist::getEDNSZ(dnsQuestion) & EDNS_HEADER_FLAG_DO) != 0;
+     }
+ 
+-    if (dnsQuestion.useECS && ((selectedBackend && selectedBackend->d_config.useECS) || (!selectedBackend && serverPool->getECS()))) {
++    const bool useECS = dnsQuestion.useECS && ((selectedBackend && selectedBackend->d_config.useECS) || (!selectedBackend && serverPool->getECS()));
++    if (useECS) {
++      const bool useZeroScope = (selectedBackend && !selectedBackend->d_config.disableZeroScope) || (!selectedBackend && !serverPool->getDisableZeroScope());
+       // we special case our cache in case a downstream explicitly gave us a universally valid response with a 0 scope
+       // we need ECS parsing (parseECS) to be true so we can be sure that the initial incoming query did not have an existing
+       // ECS option, which would make it unsuitable for the zero-scope feature.
+-      if (dnsQuestion.ids.packetCache && !dnsQuestion.ids.skipCache && (!selectedBackend || !selectedBackend->d_config.disableZeroScope) && dnsQuestion.ids.packetCache->isECSParsingEnabled()) {
++      if (dnsQuestion.ids.packetCache && !dnsQuestion.ids.skipCache && useZeroScope && dnsQuestion.ids.packetCache->isECSParsingEnabled()) {
+         if (dnsQuestion.ids.packetCache->get(dnsQuestion, dnsQuestion.getHeader()->id, &dnsQuestion.ids.cacheKeyNoECS, dnsQuestion.ids.subnet, *dnsQuestion.ids.dnssecOK, willBeForwardedOverUDP, allowExpired, false, true, false)) {
+ 
+           vinfolog("Packet cache hit for query for %s|%s from %s (%s, %d bytes)", dnsQuestion.ids.qname.toLogString(), QType(dnsQuestion.ids.qtype).toString(), dnsQuestion.ids.origRemote.toStringWithPort(), dnsQuestion.ids.protocol.toString(), dnsQuestion.getData().size());
+@@ -1543,9 +1554,14 @@ ProcessQueryResult processQueryAfterRules(DNSQuestion& dnsQuestion, std::shared_
+         serverPool = getPool(dnsQuestion.ids.poolName);
+         dnsQuestion.ids.packetCache = serverPool->packetCache;
+         selectBackendForOutgoingQuery(dnsQuestion, serverPool, selectedBackend);
++        backendLookupDone = true;
+       }
+     }
+ 
++    if (!backendLookupDone) {
++      selectBackendForOutgoingQuery(dnsQuestion, serverPool, selectedBackend);
++    }
++
+     if (!selectedBackend) {
+       auto servFailOnNoPolicy = dnsdist::configuration::getCurrentRuntimeConfiguration().d_servFailOnNoPolicy;
+       ++dnsdist::metrics::g_stats.noPolicy;
+--- a/dnsdist.hh
++++ b/dnsdist.hh
+@@ -951,9 +951,18 @@ struct ServerPool
+     return d_useECS;
+   }
+ 
+-  void setECS(bool useECS)
++  void setECS(bool useECS);
++
++  bool getDisableZeroScope() const
++  {
++    return d_disableZeroScope;
++  }
++
++  void setDisableZeroScope(bool disable);
++
++  bool isConsistent() const
+   {
+-    d_useECS = useECS;
++    return d_isConsistent;
+   }
+ 
+   std::shared_ptr<DNSDistPacketCache> packetCache{nullptr};
+@@ -961,6 +970,7 @@ struct ServerPool
+ 
+   size_t poolLoad();
+   size_t countServers(bool upOnly);
++  bool hasAtLeastOneServerAvailable();
+   const std::shared_ptr<const ServerPolicy::NumberedServerVector> getServers();
+   void addServer(shared_ptr<DownstreamState>& server);
+   void removeServer(shared_ptr<DownstreamState>& server);
+@@ -971,9 +981,13 @@ struct ServerPool
+   }
+ 
+ private:
++  void updateConsistency();
++
+   SharedLockGuarded<std::shared_ptr<const ServerPolicy::NumberedServerVector>> d_servers;
+   bool d_useECS{false};
+   bool d_tcpOnly{false};
++  bool d_disableZeroScope{false};
++  bool d_isConsistent{true};
+ };
+ 
+ enum ednsHeaderFlags

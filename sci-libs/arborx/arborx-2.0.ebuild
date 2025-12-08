@@ -17,7 +17,7 @@ SLOT="0"
 IUSE="mpi"
 
 RDEPEND="dev-libs/boost:=
-	mpi? ( virtual/mpi[cxx] )
+	mpi? ( virtual/mpi )
 	sci-libs/trilinos"
 
 DEPEND="${RDEPEND}"

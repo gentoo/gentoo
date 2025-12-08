@@ -26,6 +26,6 @@
 		<flag name="freeipmi">Compile in FreeIPMI support via <pkg>sys-libs/freeipmi</pkg></flag>
 	</use>
 	<upstream>
-		<remote-id type="github">conserver/conserver</remote-id>
+		<remote-id type="github">bstansell/conserver</remote-id>
 	</upstream>
 </pkgmetadata>

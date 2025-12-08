@@ -53,7 +53,7 @@ S="${WORKDIR}"
 
 LICENSE="MIT"
 SLOT="${PV%_p*}"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 
 # sys-devel/gcc for libgcc_s.so
 RDEPEND="
@@ -61,7 +61,7 @@ RDEPEND="
 	dev-libs/expat:0/0
 	dev-libs/libffi:0/8
 	sys-libs/ncurses:0/6
-	>=sys-libs/zlib-1.1.3:0/1
+	>=virtual/zlib-1.1.3:0/1
 	virtual/libintl:0/0
 	elibc_glibc? (
 		sys-devel/gcc

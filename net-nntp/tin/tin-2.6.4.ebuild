@@ -21,7 +21,7 @@ RDEPEND="
 	dev-libs/uulib
 	net-dns/libidn2:=
 	sys-libs/ncurses:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	virtual/libiconv
 	cancel-locks? ( >=net-libs/canlock-3.0:= )
 	gpg? ( app-crypt/gnupg )

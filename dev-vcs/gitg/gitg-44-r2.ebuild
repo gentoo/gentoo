@@ -11,7 +11,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gitg"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~riscv x86 ~amd64-linux ~x86-linux"
 IUSE="glade +python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -22,7 +22,7 @@ RDEPEND="
 	app-crypt/libsecret[vala]
 	>=app-text/gspell-1[vala]
 	>=dev-libs/glib-2.38:2[dbus]
-	>=dev-libs/gobject-introspection-0.10.1:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 	dev-libs/json-glib
 	dev-libs/libdazzle[vala]
 	dev-libs/libgee:0.8[introspection]

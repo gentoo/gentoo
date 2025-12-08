@@ -3,8 +3,8 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
-inherit libtool python-single-r1
+PYTHON_COMPAT=( python3_{11..14} )
+inherit autotools python-single-r1
 
 DESCRIPTION="General purpose formula parser & interpreter"
 HOMEPAGE="https://gitlab.com/ixion/ixion"
@@ -12,7 +12,7 @@ HOMEPAGE="https://gitlab.com/ixion/ixion"
 if [[ ${PV} == *9999* ]]; then
 	MDDS_SLOT="1/3.0"
 	EGIT_REPO_URI="https://gitlab.com/ixion/ixion.git"
-	inherit git-r3 autotools
+	inherit git-r3
 else
 	MDDS_SLOT="1/2.1"
 	# Invalid as of 0.20.0, serves HTML
@@ -34,17 +34,17 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.20.0-boost-m4.patch # bug 961528
+)
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
 	default
-	if [[ ${PV} == *9999* ]]; then
-		eautoreconf
-	else
-		elibtoolize
-	fi
+	eautoreconf
 }
 
 src_configure() {

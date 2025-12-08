@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ HOMEPAGE="https://jaafreitas.github.io/mkgallery/"
 SRC_URI="https://github.com/jaafreitas/${PN}/releases/download/v${PV}/${P/-/_}.tgz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
-KEYWORDS="amd64 ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ppc ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 SLOT="0"
 
 RDEPEND="

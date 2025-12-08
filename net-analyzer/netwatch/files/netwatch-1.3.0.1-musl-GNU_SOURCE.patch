@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/713202
+--- a/Make.common.in
++++ b/Make.common.in
+@@ -36,7 +36,7 @@ AWK = @AWK@
+ # Flags & libs
+ # No way, to make make happy (except GNU), we cannot use := to append
+ # something to these, so that's why there is a leading _
+-XCFLAGS = @CFLAGS@
++XCFLAGS = @CFLAGS@ -D_GNU_SOURCE
+ XCPPFLAGS = @CPPFLAGS@ -I.. -DBINDIR=\""$(bindir)/"\" -DLIBDIR=\""$(libdir)/"\" -DICONDIR=\""$(icondir)/"\" $(XINC)
+ XLDFLAGS = @LDFLAGS@
+ XDEFS = @DEFS@

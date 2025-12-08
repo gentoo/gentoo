@@ -11,7 +11,7 @@ SRC_URI="https://github.com/greenbone/pg-gvm/archive/refs/tags/v${PV}.tar.gz -> 
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 # Tests requires a running database that match up with the current
 # testing slot. Won't run from ${ED}, want's to install too early.

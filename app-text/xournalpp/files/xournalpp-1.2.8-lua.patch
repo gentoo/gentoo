@@ -1,0 +1,12 @@
+diff '--color=auto' -ruN xournalpp-1.2.8.orig/CMakeLists.txt xournalpp-1.2.8/CMakeLists.txt
+--- xournalpp-1.2.8.orig/CMakeLists.txt	2025-10-17 22:29:38.032938951 +0200
++++ xournalpp-1.2.8/CMakeLists.txt	2025-10-17 22:30:51.683943411 +0200
+@@ -147,7 +147,7 @@
+ option(ENABLE_PLUGINS "Compile with plugin support" ON)
+ if (ENABLE_PLUGINS)
+     message(STATUS "Enable Xournal++ Plugins")
+-    find_package(Lua REQUIRED)
++    find_package(Lua ${LUA_VERSION} EXACT REQUIRED)
+     add_library(lua INTERFACE)
+     target_link_libraries(lua INTERFACE ${LUA_LIBRARIES})
+     target_include_directories(lua INTERFACE ${LUA_INCLUDE_DIR})

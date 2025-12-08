@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit cmake python-any-r1
 
@@ -18,7 +18,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	SRC_URI="https://github.com/mity/md4c/archive/refs/tags/release-${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/md4c-release-${PV}"
-	KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv x86"
 fi
 
 LICENSE="MIT test? ( CC-BY-SA-4.0 )"

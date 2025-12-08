@@ -1,0 +1,23 @@
+# We don't need to declare getopt
+# No conflict with musl or glibc
+diff --git a/compat/getopt.h b/compat/getopt.h
+index b0147e9..62de71c 100644
+--- a/compat/getopt.h
++++ b/compat/getopt.h
+@@ -127,15 +127,7 @@ struct option
+    `getopt'.  */
+ 
+ #if defined __STDC__ && __STDC__
+-# ifdef __GNU_LIBRARY__
+-/* Many other libraries have conflicting prototypes for getopt, with
+-   differences in the consts, in stdlib.h.  To avoid compilation
+-   errors, only prototype getopt for the GNU C library.  */
+-extern int getopt (int __argc, char *const *__argv, const char *__shortopts);
+-# else /* not __GNU_LIBRARY__ */
+-extern int getopt ();
+-# endif /* __GNU_LIBRARY__ */
+-
++// getopt already declared in glibc and musl
+ # ifndef __need_getopt
+ extern int getopt_long (int __argc, char *const *__argv, const char *__shortopts,
+ 		        const struct option *__longopts, int *__longind);

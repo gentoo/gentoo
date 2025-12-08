@@ -41,9 +41,9 @@ RDEPEND="
 	dev-libs/re2:=
 	>=dev-libs/udis86-1.7.2
 	>=dev-libs/wayland-1.22.90
-	>=gui-libs/aquamarine-0.8.0:=
+	>=gui-libs/aquamarine-0.9.0:=
 	>=gui-libs/hyprcursor-0.1.9
-	>=gui-libs/hyprutils-0.5.2:=
+	>=gui-libs/hyprutils-0.8.2:=
 	media-libs/libglvnd
 	media-libs/mesa
 	sys-apps/util-linux
@@ -64,26 +64,26 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	dev-cpp/glaze
-	>=dev-libs/hyprland-protocols-0.6.0
-	>=dev-libs/wayland-protocols-1.41
+	>=dev-libs/hyprland-protocols-0.6.4
+	>=dev-libs/wayland-protocols-1.45
 "
 BDEPEND="
-	|| ( >=sys-devel/gcc-14:* >=llvm-core/clang-18:* )
+	|| ( >=sys-devel/gcc-15:* >=llvm-core/clang-19:* )
 	app-misc/jq
 	dev-build/cmake
-	>=dev-util/hyprwayland-scanner-0.3.10
+	>=dev-util/hyprwayland-scanner-0.4.5
 	virtual/pkgconfig
 "
 
 pkg_setup() {
 	[[ ${MERGE_TYPE} == binary ]] && return
 
-	if tc-is-gcc && ver_test $(gcc-version) -lt 14; then
-		eerror "Hyprland requires >=sys-devel/gcc-14 to build"
+	if tc-is-gcc && ver_test $(gcc-version) -lt 15; then
+		eerror "Hyprland requires >=sys-devel/gcc-15 to build"
 		eerror "Please upgrade GCC: emerge -v1 sys-devel/gcc"
 		die "GCC version is too old to compile Hyprland!"
-	elif tc-is-clang && ver_test $(clang-version) -lt 18; then
-		eerror "Hyprland requires >=llvm-core/clang-18 to build"
+	elif tc-is-clang && ver_test $(clang-version) -lt 19; then
+		eerror "Hyprland requires >=llvm-core/clang-19 to build"
 		eerror "Please upgrade Clang: emerge -v1 llvm-core/clang"
 		die "Clang version is too old to compile Hyprland!"
 	fi

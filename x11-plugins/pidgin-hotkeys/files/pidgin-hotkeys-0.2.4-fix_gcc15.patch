@@ -1,0 +1,31 @@
+reported https://sourceforge.net/p/pidgin-hotkeys/patches/8/
+bool is a keyword since c23, use boolean instead
+--- a/src/hotkeys.c
++++ b/src/hotkeys.c
+@@ -216,21 +216,21 @@ free_keys(GtkWidget* widget)
+ static void
+ hotkey_set_bool(GtkWidget *widget, HotkeyEntry* key)
+ {
+-    gboolean bool;
++    gboolean boolean;
+     GdkDisplay* display;
+     GdkWindow* root;
+ 
+-    bool = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget));
+-    purple_prefs_set_bool(key->use_pref, bool);
++    boolean = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget));
++    purple_prefs_set_bool(key->use_pref, boolean);
+     
+-    key->enable = bool;
++    key->enable = boolean;
+ 
+     if (key->code)
+     {
+         display = widget ? gtk_widget_get_display(widget) : gdk_display_get_default();
+         root = widget ? gtk_widget_get_root_window(widget) : gdk_get_default_root_window();
+ 
+-        if (bool && grab_key(display, root, key))
++        if (boolean && grab_key(display, root, key))
+ 	    reconfig_blist(key - hotkeys);
+         else
+ 	{

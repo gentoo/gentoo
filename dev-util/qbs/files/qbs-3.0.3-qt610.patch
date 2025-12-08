@@ -1,0 +1,8 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -45,2 +45,5 @@
+ if (Qt6_FOUND)
++    if(Qt6_VERSION VERSION_GREATER_EQUAL 6.10)
++      find_package(Qt${QT_VERSION_MAJOR} COMPONENTS CorePrivate REQUIRED)
++    endif()
+     find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core5Compat REQUIRED)

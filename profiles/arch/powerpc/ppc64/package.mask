@@ -15,7 +15,6 @@ dev-lisp/sbcl
 # bug #818424
 dev-games/openscenegraph
 dev-games/openscenegraph-openmw
-dev-games/openscenegraph-qt
 games-engines/openmw
 media-libs/openexr
 media-libs/ctl

@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit edo toolchain-funcs
 
 DESCRIPTION="feature rich database generator for high performance C applications"
 HOMEPAGE="http://datadraw.sourceforge.net/"
@@ -16,11 +16,14 @@ IUSE="examples"
 
 S="${WORKDIR}/${PN}${PV}"
 
-PATCHES=( "${FILESDIR}"/${P}-buildsystem.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-buildsystem.patch
+	"${FILESDIR}"/${P}-bashism.patch
+)
 
 src_configure() {
 	tc-export AR CC
-	default
+	edo ./configure --prefix="${EPREFIX}/usr"
 }
 
 src_install() {

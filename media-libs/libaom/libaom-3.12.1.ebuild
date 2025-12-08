@@ -16,7 +16,7 @@ else
 		https://storage.googleapis.com/aom-releases/${P}.tar.gz
 		test? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-testdata.tar.xz )
 	"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~loong ppc64 ~riscv x86"
 fi
 
 DESCRIPTION="Alliance for Open Media AV1 Codec SDK"
@@ -51,6 +51,14 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.7.0-allow-fortify-source.patch
 	"${FILESDIR}"/${PN}-3.8.1-tests-parallel.patch
 )
+
+src_prepare() {
+	# fix hardcoded path
+	# libvmaf ERROR could not read model from path: "/usr/local/share/model/vmaf_v0.6.1.json"
+	sed -e "s#/usr/local/share/model/#${EPREFIX}/usr/share/vmaf/model/#g" -i README.md av1/av1_cx_iface.c || die
+
+	cmake_src_prepare
+}
 
 multilib_src_configure() {
 	# Follow upstream recommendations in README (bug #921438) and avoid

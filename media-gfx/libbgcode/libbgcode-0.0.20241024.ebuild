@@ -1,4 +1,4 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/heatshrink-0.4.1
-	>=sys-libs/zlib-1.0
+	>=virtual/zlib-1.0:=
 "
 DEPEND="${RDEPEND}
 	dev-libs/boost

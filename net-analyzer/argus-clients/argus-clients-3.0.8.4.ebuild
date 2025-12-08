@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ RDEPEND="
 	net-libs/libtirpc:=
 	sys-libs/ncurses:=
 	sys-libs/readline:=
-	sys-libs/zlib
+	virtual/zlib:=
 	ft? ( net-analyzer/flow-tools )
 	geoip? ( dev-libs/geoip )
 	mysql? ( dev-db/mysql-connector-c:0= )

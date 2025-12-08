@@ -32,6 +32,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="test? (
 	dev-python/httpretty[${PYTHON_USEDEP}]
 	dev-python/mock[${PYTHON_USEDEP}]
+	dev-python/ptyprocess[${PYTHON_USEDEP}]
 	dev-python/pytest-socket[${PYTHON_USEDEP}]
 	dev-python/requests-mock[${PYTHON_USEDEP}]
 	dev-python/requests-cache[${PYTHON_USEDEP}]
@@ -40,6 +41,7 @@ BDEPEND="test? (
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-22.1.0-test.patch
+	"${FILESDIR}"/${P}-pkg_resource.patch
 )
 
 distutils_enable_tests pytest

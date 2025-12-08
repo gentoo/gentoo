@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gnustep-base.eclass
@@ -18,7 +18,7 @@ esac
 if [[ -z ${_GNUSTEP_BASE_ECLASS} ]] ; then
 _GNUSTEP_BASE_ECLASS=1
 
-inherit flag-o-matic
+inherit flag-o-matic toolchain-funcs
 
 # IUSE variables across all GNUstep packages
 # "debug": enable code for debugging
@@ -37,13 +37,6 @@ typeset -a GS_ENV
 
 # Ebuild function overrides
 gnustep-base_pkg_setup() {
-	if test_version_info 3.3 ; then
-		strip-unsupported-flags
-	elif test_version_info 3.4 ; then
-		# strict-aliasing is known to break obj-c stuff in gcc-3.4*
-		filter-flags -fstrict-aliasing
-	fi
-
 	# known to break ObjC (bug 86089)
 	filter-flags -fomit-frame-pointer
 }
@@ -70,7 +63,7 @@ gnustep-base_src_prepare() {
 gnustep-base_src_configure() {
 	egnustep_env
 	if [[ -x ./configure ]] ; then
-		econf || die "configure failed"
+		econf ${*}
 	fi
 }
 
@@ -138,29 +131,38 @@ egnustep_env() {
 			esac
 		fi
 
-		# Set up env vars for make operations
-		GS_ENV=( AUXILIARY_LDFLAGS="${LDFLAGS}" \
-			ADDITIONAL_NATIVE_LIB_DIRS="${GNUSTEP_SYSTEM_LIBRARIES}" \
-			DESTDIR="${D}" \
-			HOME="${T}" \
-			GNUSTEP_CONFIG_FILE="${WORKDIR}"/GNUstep.conf \
-			GNUSTEP_INSTALLATION_DOMAIN=SYSTEM \
-			TAR_OPTIONS="${TAR_OPTIONS} --no-same-owner" \
-			messages=yes )
-
-		use doc \
-			&& GS_ENV=( "${GS_ENV[@]}" VARTEXFONTS="${T}"/fonts )
-
-		use debug \
-			&& GS_ENV=( "${GS_ENV[@]}" "debug=yes" ) \
-			|| GS_ENV=( "${GS_ENV[@]}" "debug=no" )
-
-		if has_version "gnustep-base/gnustep-make[libobjc2]";
+		if has_version "gnustep-base/gnustep-make[libobjc2]" && tc-is-gcc;
 		then
 			# Set clang for packages that do not respect gnustep-make
 			# settings (gnustep-base's configure for example)
-			export CC=clang CXX=clang CPP="clang -E" LD="clang"
+			einfo "Forcing clang"
+			export CC="${CHOST}-clang"
+			export CXX="${CHOST}-clang"
+			export CPP="${CHOST}-clang -E"
+			export LD="${CHOST}-clang"
+
+			strip-unsupported-flags
 		fi
+
+		# Set up env vars for make operations
+		GS_ENV=(
+			AUXILIARY_LDFLAGS="${LDFLAGS}"
+			ADDITIONAL_NATIVE_LIB_DIRS="${GNUSTEP_SYSTEM_LIBRARIES}"
+			DESTDIR="${D}"
+			HOME="${T}"
+			GNUSTEP_CONFIG_FILE="${WORKDIR}"/GNUstep.conf
+			GNUSTEP_INSTALLATION_DOMAIN=SYSTEM
+			TAR_OPTIONS="${TAR_OPTIONS} --no-same-owner"
+			messages=yes
+			debug="$(usex debug yes no)"
+
+			# bug #950346
+			OPTFLAG="${CFLAGS}"
+			LDFLAGS="${LDFLAGS}"
+			CCFLAGS="${CFLAGS}"
+		)
+
+		use doc && GS_ENV+=( VARTEXFONTS="${T}"/fonts )
 
 		return 0
 	fi

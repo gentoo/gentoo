@@ -24,7 +24,7 @@ else
 		)
 	"
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~amd64 arm arm64 ~hppa ~mips ppc ~ppc64 ~riscv ~sparc ~x86"
 
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-teemutoivola )"
 fi
@@ -62,12 +62,12 @@ src_install() {
 	default
 
 	exeinto /usr/share/${PN}
-	newexe "${FILESDIR}"/vnstat.cron-r1 vnstat.cron
+	newexe "${FILESDIR}"/vnstat.cron-r2 vnstat.cron
 
 	newconfd "${FILESDIR}"/vnstatd.confd-r1 vnstatd
-	newinitd "${FILESDIR}"/vnstatd.initd-r2 vnstatd
+	newinitd "${FILESDIR}"/vnstatd.initd-r3 vnstatd
 
-	systemd_newunit "${FILESDIR}"/vnstatd.systemd vnstatd.service
+	systemd_newunit "${FILESDIR}"/vnstatd.systemd-r1 vnstatd.service
 	newtmpfiles "${FILESDIR}"/vnstatd.tmpfile vnstatd.conf
 
 	newdoc INSTALL README.setup

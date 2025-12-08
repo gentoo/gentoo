@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit multilib-minimal toolchain-funcs
+inherit flag-o-matic multilib-minimal toolchain-funcs
 
 DESCRIPTION="Extremely fast non-cryptographic hash algorithm"
 HOMEPAGE="https://xxhash.com/"
@@ -12,7 +12,7 @@ S=${WORKDIR}/xxHash-${PV}
 
 LICENSE="BSD-2 GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 
 src_prepare() {
 	default
@@ -20,12 +20,27 @@ src_prepare() {
 	multilib_copy_sources
 }
 
+src_configure() {
+	# Needed for -Og to be buildable, otherwise fails a/ always_inline (bug #961093)
+	# https://github.com/Cyan4973/xxHash?tab=readme-ov-file#binary-size-control
+	is-flagq '-Og' && append-cppflags -DXXH_NO_INLINE_HINTS
+	multilib-minimal_src_configure
+}
+
+myemake() {
+	emake \
+		AR="$(tc-getAR)" \
+		CC="$(tc-getCC)" \
+		"${@}"
+}
+
 multilib_src_compile() {
-	emake AR="$(tc-getAR)" CC="$(tc-getCC)"
+	myemake
 }
 
 multilib_src_test() {
-	emake CC="$(tc-getCC)" check
+	# Injecting CPPFLAGS into CFLAGS is needed for test_sanity
+	myemake CFLAGS="${CPPFLAGS} ${CFLAGS}" check
 }
 
 multilib_src_install() {
@@ -35,7 +50,7 @@ multilib_src_install() {
 		LIBDIR="${EPREFIX}"/usr/$(get_libdir)
 	)
 
-	emake "${emakeargs[@]}" install
+	myemake "${emakeargs[@]}" install
 	einstalldocs
 
 	rm "${ED}"/usr/$(get_libdir)/libxxhash.a || die

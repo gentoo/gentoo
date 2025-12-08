@@ -13,7 +13,7 @@ HOMEPAGE="http://www.formbuilder.org/ https://metacpan.org/release/CGI-FormBuild
 # Explicit declaration by upstream
 LICENSE="|| ( Artistic GPL-1 )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 # Templates that can be used - but they are optional
 #	>=dev-perl/CGI-SSI-0.920.0

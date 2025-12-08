@@ -19,7 +19,7 @@ S="${WORKDIR}/${P/-/_}"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 
 IUSE="fortran contrib debug"
 
@@ -37,7 +37,7 @@ RDEPEND="
 		app-text/hunspell:=
 		dev-libs/boost:=
 		media-libs/fontconfig
-		sys-libs/zlib
+		virtual/zlib:=
 	)
 "
 

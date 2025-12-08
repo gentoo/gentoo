@@ -11,7 +11,7 @@ SRC_URI="https://www.freeradius.org/ftp/pub/freeradius/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~sparc x86"
 
 IUSE="scp shadow static-libs"
 

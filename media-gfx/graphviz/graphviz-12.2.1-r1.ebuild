@@ -4,7 +4,7 @@
 EAPI=8
 
 GUILE_COMPAT=( 2-2 3-0 )
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit guile-single libtool python-single-r1
 
 DESCRIPTION="Open Source Graph Visualization Software"
@@ -15,7 +15,7 @@ SRC_URI="https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-re
 
 LICENSE="CPL-1.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="+cairo devil doc examples gtk2 gts guile lasi nls pdf perl postscript python qt6 ruby svg tcl webp X"
 
 REQUIRED_USE="
@@ -35,7 +35,7 @@ RDEPEND="
 	>=media-libs/gd-2.0.34:=[fontconfig,jpeg,png,truetype,zlib]
 	media-libs/libjpeg-turbo:=
 	>=media-libs/libpng-1.2:=
-	sys-libs/zlib
+	virtual/zlib:=
 	virtual/libiconv
 	cairo? (
 		>=x11-libs/cairo-1.1.10[svg(+)]

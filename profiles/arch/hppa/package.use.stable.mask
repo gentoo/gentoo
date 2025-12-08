@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
+# dev-perl/GD-Barcode is not stable here. Bug #661634
+dev-perl/Business-ISBN barcode
+
 # Sam James <sam@gentoo.org> (2024-07-31)
 # Qt 6 not stable here.
 dev-build/cmake gui
@@ -276,7 +280,6 @@ net-wireless/bluez obex
 # to bug 626682
 dev-ruby/bundler doc
 dev-ruby/rspec-core highlight test
-sys-block/thin-provisioning-tools test
 
 # David Seifert <soap@gentoo.org> (2017-09-23)
 #  >=virtual/mpi-2.0-r4 does not have stable keywords on hppa

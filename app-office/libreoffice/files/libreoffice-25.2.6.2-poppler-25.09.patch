@@ -1,0 +1,58 @@
+From b4e581f3e3ded8d13065e6c21777eca1f229e53d Mon Sep 17 00:00:00 2001
+From: Xisco Fauli <xiscofauli@libreoffice.org>
+Date: Tue, 2 Sep 2025 10:42:44 +0200
+Subject: poppler: upgrade to 25.09.0
+
+Downloaded from https://poppler.freedesktop.org/poppler-25.09.0.tar.xz
+
+Change-Id: Ic7f3abd64d129543dcdc370816a0d69e5a59be90
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/190513
+Tested-by: Jenkins
+Reviewed-by: Xisco Fauli <xiscofauli@libreoffice.org>
+---
+ sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx | 8 ++++++++++++
+ sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.hxx | 4 ++++++++
+ 2 files changed, 12 insertions(+), 0 deletions(-)
+
+diff --git a/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx b/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx
+index 392a5b3ee426..a3b34db15464 100644
+--- a/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx
++++ b/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx
+@@ -1285,11 +1285,19 @@ poppler_bool PDFOutDev::axialShadedFill(GfxState *state, GfxAxialShading *, doub
+ 
+ #if POPPLER_CHECK_VERSION(21, 3, 0)
+ poppler_bool PDFOutDev::tilingPatternFill(GfxState *state, Gfx *, Catalog *,
++#if POPPLER_CHECK_VERSION(25, 9, 0)
++                                          GfxTilingPattern *tPat, const std::array<double, 6> &mat,
++#else
+                                           GfxTilingPattern *tPat, const double *mat,
++#endif
+                                           int x0, int y0, int x1, int y1,
+                                           double xStep, double yStep)
+ {
++#if POPPLER_CHECK_VERSION(25, 9, 0)
++    const std::array<double, 4> pBbox = tPat->getBBox();
++#else
+     const double *pBbox = tPat->getBBox();
++#endif
+     const int nPaintType = tPat->getPaintType();
+     Dict *pResDict = tPat->getResDict();
+     Object *aStr = tPat->getContentStream();
+diff --git a/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.hxx b/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.hxx
+--- a/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.hxx
++++ b/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.hxx
+@@ -297,7 +293,11 @@ namespace pdfi
+ #if POPPLER_CHECK_VERSION(21, 3, 0)
+         poppler_bool useTilingPatternFill() override { return true; };
+         poppler_bool tilingPatternFill(GfxState *state, Gfx *gfx, Catalog *cat,
++#if POPPLER_CHECK_VERSION(25, 9, 0)
++                                       GfxTilingPattern *tPat, const std::array<double, 6> &mat,
++#else
+                                        GfxTilingPattern *tPat, const double *mat,
++#endif
+                                        int x0, int y0, int x1, int y1,
+                                        double xStep, double yStep) override;
+ #endif
+-- 
+cgit v1.2.3
+

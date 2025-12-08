@@ -48,7 +48,7 @@ COMMON_DEPEND="
 	>=net-libs/libpsl-0.21.1
 	>=net-libs/miniupnpc-1.7:=
 	>=net-misc/curl-7.28.0[ssl]
-	sys-libs/zlib:=
+	virtual/zlib:=
 	nls? ( virtual/libintl )
 	gtk? (
 		>=dev-cpp/gtkmm-4.11.1:4.0
@@ -67,10 +67,6 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	${ACCT_DEPEND}
 "
-
-PATCHES=(
-	"${FILESDIR}/transmission-4.1.0-mbedtls-3.patch"
-)
 
 src_configure() {
 	local mycmakeargs=(
@@ -125,8 +121,6 @@ src_install() {
 	newconfd "${FILESDIR}"/transmission-daemon.confd.4 transmission-daemon
 
 	if use systemd; then
-		# Service sets Type=notify
-		systemd_dounit daemon/transmission-daemon.service
 		systemd_install_serviced "${FILESDIR}"/transmission-daemon.service.conf
 	fi
 

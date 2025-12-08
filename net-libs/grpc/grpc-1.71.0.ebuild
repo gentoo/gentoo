@@ -4,7 +4,7 @@
 EAPI=8
 
 CMAKE_IN_SOURCE_BUILD=1
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit cmake flag-o-matic python-any-r1
 
 MY_PV="${PV//_pre/-pre}"
@@ -47,7 +47,7 @@ RDEPEND="
 	>=dev-libs/protobuf-27.0:=
 	dev-libs/xxhash
 	>=net-dns/c-ares-1.19.1:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	systemd? ( sys-apps/systemd:= )
 "
 DEPEND="

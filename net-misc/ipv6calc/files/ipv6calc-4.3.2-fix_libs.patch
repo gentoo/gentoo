@@ -1,0 +1,246 @@
+PR merged
+https://github.com/pbiering/ipv6calc/pull/50.patch
+From c92628f1fb4a7b61ddde19bab8e75ae258d000b7 Mon Sep 17 00:00:00 2001
+From: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
+Date: Sat, 26 Jul 2025 07:40:08 +0200
+Subject: [PATCH] fix link issues with clang and --as-needed
+
+> ld.lld: error: undefined reference: EVP_MD_CTX_new
+> >>> referenced by ../lib/libipv6calc.so.4.3.2
+
+> ./ipv6calc: symbol lookup error:
+> ../databases/lib/libipv6calc_db_wrapper.so.4.3.2: undefined symbol: log2
+
+add MD5_LIB for libmd/openssl
+add EXTDB_LIB where IPV6CALC_LIB is called
+
+move extern math in LIBS instead of LDFLAGS
+
+Signed-off-by: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
+---
+ configure.ac              | 22 ++++++++++------------
+ databases/lib/Makefile.in |  4 +++-
+ ipv6calc/Makefile.in      |  6 +++---
+ ipv6loganon/Makefile.in   |  6 +++---
+ ipv6logconv/Makefile.in   |  6 +++---
+ ipv6logstats/Makefile.in  |  6 +++---
+ lib/Makefile.in           |  4 +++-
+ 7 files changed, 28 insertions(+), 26 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 65d57e4b..268e8a22 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -481,27 +481,24 @@ if test "$ENABLE_BUNDLED_MD5" = "1"; then
+ 	AC_DEFINE(ENABLE_BUNDLED_MD5, 1, Define if bundled MD5 should be used)
+ else
+ 	if test "$ENABLE_LIBMD_MD5" = "1"; then
+-		LDFLAGS_EXTRA="${LDFLAGS_EXTRA:+$LDFLAGS_EXTRA }-lmd"
+-		LDFLAGS_EXTRA_MOD_IPV6CALC="-lmd $LDFLAGS_EXTRA_MOD_IPV6CALC"
+-		LDFLAGS_EXTRA_STATIC="${LDFLAGS_EXTRA_STATIC:+$LDFLAGS_EXTRA_STATIC }-lmd -lz -ldl -lpthread -lc"
++		MD5_LIB="-lmd"
++		LDFLAGS_EXTRA_STATIC="${LDFLAGS_EXTRA_STATIC:+$LDFLAGS_EXTRA_STATIC }-lz -ldl -lpthread -lc"
+ 
+ 		AC_DEFINE(ENABLE_LIBMD_MD5, 1, Define if libmd MD5 should be used)
+ 		AC_MSG_RESULT([*** use of libmd MD5 implementation])
+ 	fi
+ 
+ 	if test "$ENABLE_OPENSSL_EVP_MD5" = "1"; then
+-		LDFLAGS_EXTRA="${LDFLAGS_EXTRA:+$LDFLAGS_EXTRA }-lcrypto"
+-		LDFLAGS_EXTRA_MOD_IPV6CALC="-lcrypto $LDFLAGS_EXTRA_MOD_IPV6CALC"
+-		LDFLAGS_EXTRA_STATIC="${LDFLAGS_EXTRA_STATIC:+$LDFLAGS_EXTRA_STATIC }-lcrypto -lz -ldl -lpthread -lc"
++		MD5_LIB="-lcrypto"
++		LDFLAGS_EXTRA_STATIC="${LDFLAGS_EXTRA_STATIC:+$LDFLAGS_EXTRA_STATIC }-lz -ldl -lpthread -lc"
+ 
+ 		AC_DEFINE(ENABLE_OPENSSL_EVP_MD5, 1, Define if OpenSSL EVP MD5 should be used)
+ 		AC_MSG_RESULT([*** use of OpenSSL EVP MD5 implementation])
+ 	fi
+ 
+ 	if test "$ENABLE_OPENSSL_MD5" = "1"; then
+-		LDFLAGS_EXTRA="${LDFLAGS_EXTRA:+$LDFLAGS_EXTRA }-lcrypto"
+-		LDFLAGS_EXTRA_MOD_IPV6CALC="-lcrypto $LDFLAGS_EXTRA_MOD_IPV6CALC"
+-		LDFLAGS_EXTRA_STATIC="${LDFLAGS_EXTRA_STATIC:+$LDFLAGS_EXTRA_STATIC }-lcrypto -lz -ldl -lpthread -lc"
++		MD5_LIB="-lcrypto"
++		LDFLAGS_EXTRA_STATIC="${LDFLAGS_EXTRA_STATIC:+$LDFLAGS_EXTRA_STATIC }-lz -ldl -lpthread -lc"
+ 
+ 		AC_DEFINE(ENABLE_OPENSSL_MD5, 1, Define if OpenSSL legacy MD5 should be used)
+ 		AC_MSG_RESULT([*** use of OpenSSL legacy MD5 implementation])
+@@ -509,6 +506,7 @@ else
+ fi
+ 
+ AC_SUBST(MD5_INCLUDE)
++AC_SUBST(MD5_LIB)
+ AC_SUBST(ENABLE_BUNDLED_MD5)
+ AC_SUBST(ENABLE_LIBMD_MD5)
+ AC_SUBST(ENABLE_OPENSSL_EVP_MD5)
+@@ -767,19 +765,19 @@ if test "$require_libdb" = "yes"; then
+ 		DB_VERSION=`/sbin/ldconfig -p | grep -E '#?\s*libdb-[0-9]+.[0-9]+' | sed -e 's/^#\?\s*libdb-\([0-9]*\)\.\([0-9]*\).*/\1.\2/' | sort -n | tail -1`
+ 		if test -n "$DB_VERSION"; then
+ 			AC_MSG_RESULT([Berkeley DB library version found: libdb-$DB_VERSION])
+-			LDFLAGS_EXTRA_STATIC="-ldb-$DB_VERSION${LDFLAGS_EXTRA_STATIC:+ $LDFLAGS_EXTRA_STATIC}"
++			EXTDB_LIB="-ldb-$DB_VERSION"
+ 		fi
+ 	],[
+ 		AC_MSG_WARN([Missing /sbin/ldconfig, cannot detect Berkeley DB library version])
+ 	])
+ 
+-	LDFLAGS_EXTRA="${LDFLAGS_EXTRA:+$LDFLAGS_EXTRA }-ldb"
+-	LDFLAGS_EXTRA_MOD_IPV6CALC="-ldb $LDFLAGS_EXTRA_MOD_IPV6CALC"
++	EXTDB_LIB="-ldb"
+ 	HAVE_BERKELEY_DB_SUPPORT=1
+ 	AC_DEFINE(HAVE_BERKELEY_DB_SUPPORT, 1, Define if Berkeley DB support is required.)
+ 	AC_MSG_RESULT([*** Berkeley DB library found and usable (required)])
+ fi
+ 
++AC_SUBST(EXTDB_LIB)
+ 
+ dnl *************************************************
+ dnl MaxMindDB support (GeoIP2, DB-IP, IP2Location)
+diff --git a/databases/lib/Makefile.in b/databases/lib/Makefile.in
+index a3846a72..061bb0bc 100644
+--- a/databases/lib/Makefile.in
++++ b/databases/lib/Makefile.in
+@@ -17,6 +17,8 @@ LDFLAGS += @LDFLAGS@
+ 
+ INCLUDES= -I../../lib -I../.. @MMDB_INCLUDE_L2@ @IP2LOCATION_INCLUDE_L2@
+ 
++LIBS = @MMDB_LIB_L1@ @IP2LOCATION_LIB_L1@ @EXTDB_LIB@ @DYNLOAD_LIB@ -lm
++
+ SHARED_LIBRARY=@SHARED_LIBRARY@
+ 
+ ifeq ($(shell uname), Darwin)
+@@ -71,7 +73,7 @@ libipv6calc_db_wrapper.a:	$(OBJS)
+ libipv6calc_db_wrapper.so.@PACKAGE_VERSION@:	$(OBJS)
+ ifeq ($(SHARED_LIBRARY), yes)
+ 		echo "Create shared library (libipv6calc_db_wrapper.so)"
+-		$(CC) -o libipv6calc_db_wrapper.so.@PACKAGE_VERSION@ $(OBJS) $(CFLAGS) $(LDFLAGS) -shared -Wl,$(SO_NAME_FLAGS),libipv6calc_db_wrapper.so.@PACKAGE_VERSION@
++		$(CC) -o libipv6calc_db_wrapper.so.@PACKAGE_VERSION@ $(OBJS) $(CFLAGS) $(LDFLAGS) $(LIBS) -shared -Wl,$(SO_NAME_FLAGS),libipv6calc_db_wrapper.so.@PACKAGE_VERSION@
+ else
+ 		echo "Nothing to do (shared library mode is not enabled)"
+ endif
+diff --git a/ipv6calc/Makefile.in b/ipv6calc/Makefile.in
+index b3442f04..55d48643 100644
+--- a/ipv6calc/Makefile.in
++++ b/ipv6calc/Makefile.in
+@@ -19,7 +19,7 @@ LDFLAGS += @LDFLAGS_EXTRA@
+ 
+ INCLUDES= @MD5_INCLUDE@ @GETOPT_INCLUDE@ @MMDB_INCLUDE_L1@ @IP2LOCATION_INCLUDE_L1@ -I../ -I../lib/ -I../databases/lib/
+ 
+-LIBS = @IPV6CALC_LIB@ @MMDB_LIB_L1@ @IP2LOCATION_LIB_L1@ @DYNLOAD_LIB@
++LIBS = @IPV6CALC_LIB@ @MMDB_LIB_L1@ @IP2LOCATION_LIB_L1@ @EXTDB_LIB@ @MD5_LIB@ @DYNLOAD_LIB@ -lm
+ 
+ GETOBJS = @LIBOBJS@
+ 
+@@ -49,10 +49,10 @@ libipv6calc_db_wrapper:
+ 		cd ../ && ${MAKE} lib-make
+ 
+ ipv6calc:	$(OBJS) libipv6calc libipv6calc_db_wrapper
+-		$(CC) -o ipv6calc $(OBJS) $(GETOBJS) $(LDFLAGS) $(LIBS) -lm
++		$(CC) -o ipv6calc $(OBJS) $(GETOBJS) $(LDFLAGS) $(LIBS)
+ 
+ static:		ipv6calc
+-		$(CC) -o ipv6calc-static $(OBJS) $(GETOBJS) $(LDFLAGS) $(LIBS) $(LDFLAGS_EXTRA_STATIC) -lm -static
++		$(CC) -o ipv6calc-static $(OBJS) $(GETOBJS) $(LDFLAGS) $(LIBS) $(LDFLAGS_EXTRA_STATIC) -static
+ 
+ distclean:
+ 		${MAKE} clean
+diff --git a/ipv6loganon/Makefile.in b/ipv6loganon/Makefile.in
+index 81b02a48..9e234846 100644
+--- a/ipv6loganon/Makefile.in
++++ b/ipv6loganon/Makefile.in
+@@ -19,7 +19,7 @@ LDFLAGS += @LDFLAGS_EXTRA@
+ 
+ INCLUDES= $(COPTS) @MD5_INCLUDE@ @GETOPT_INCLUDE@ @IP2LOCATION_INCLUDE_L1@ @MMDB_INCLUDE_L1@ -I../ -I../lib/
+ 
+-LIBS = @IPV6CALC_LIB@ @IP2LOCATION_LIB_L1@ @MMDB_LIB_L1@ @DYNLOAD_LIB@
++LIBS = @IPV6CALC_LIB@ @IP2LOCATION_LIB_L1@ @MMDB_LIB_L1@ @EXTDB_LIB@ @DYNLOAD_LIB@ -lm
+ 
+ GETOBJS = @LIBOBJS@
+ 
+@@ -47,10 +47,10 @@ libipv6calc_db_wrapper:
+ 		cd ../ && ${MAKE} lib-make
+ 
+ ipv6loganon:	$(OBJS) libipv6calc libipv6calc_db_wrapper
+-		$(CC) -o ipv6loganon $(OBJS) $(GETOBJS) $(LDFLAGS) $(LIBS) -lm
++		$(CC) -o ipv6loganon $(OBJS) $(GETOBJS) $(LDFLAGS) $(LIBS)
+ 
+ static:		ipv6loganon
+-		$(CC) -o ipv6loganon-static $(OBJS) $(GETOBJS) $(LDFLAGS) $(LIBS) $(LDFLAGS_EXTRA_STATIC) -lm -static
++		$(CC) -o ipv6loganon-static $(OBJS) $(GETOBJS) $(LDFLAGS) $(LIBS) $(LDFLAGS_EXTRA_STATIC) -static
+ 
+ distclean:
+ 		${MAKE} clean
+diff --git a/ipv6logconv/Makefile.in b/ipv6logconv/Makefile.in
+index dfd1e0b4..b624eb73 100644
+--- a/ipv6logconv/Makefile.in
++++ b/ipv6logconv/Makefile.in
+@@ -19,7 +19,7 @@ LDFLAGS += @LDFLAGS_EXTRA@
+ 
+ INCLUDES= @MD5_INCLUDE@ @GETOPT_INCLUDE@ @IP2LOCATION_INCLUDE_L1@ @MMDB_INCLUDE_L1@ -I../ -I../lib/ -I../databases/lib/
+ 
+-LIBS = @IPV6CALC_LIB@ @IP2LOCATION_LIB_L1@ @MMDB_LIB_L1@ @DYNLOAD_LIB@
++LIBS = @IPV6CALC_LIB@ @IP2LOCATION_LIB_L1@ @MMDB_LIB_L1@ @EXTDB_LIB@ @DYNLOAD_LIB@ -lm
+ 
+ GETOBJS = @LIBOBJS@
+ 
+@@ -47,10 +47,10 @@ libipv6calc_db_wrapper:
+ 		cd ../ && ${MAKE} lib-make
+ 
+ ipv6logconv:	$(OBJS) libipv6calc libipv6calc_db_wrapper
+-		$(CC) -o ipv6logconv $(OBJS) $(GETOBJS) $(LDFLAGS) $(LIBS) -lm
++		$(CC) -o ipv6logconv $(OBJS) $(GETOBJS) $(LDFLAGS) $(LIBS)
+ 
+ static:		ipv6logconv
+-		$(CC) -o ipv6logconv-static $(OBJS) $(GETOBJS) $(LDFLAGS) $(LIBS) $(LDFLAGS_EXTRA_STATIC) -lm -static
++		$(CC) -o ipv6logconv-static $(OBJS) $(GETOBJS) $(LDFLAGS) $(LIBS) $(LDFLAGS_EXTRA_STATIC) -static
+ 
+ distclean:
+ 		${MAKE} clean
+diff --git a/ipv6logstats/Makefile.in b/ipv6logstats/Makefile.in
+index 241723a4..98c093c2 100644
+--- a/ipv6logstats/Makefile.in
++++ b/ipv6logstats/Makefile.in
+@@ -19,7 +19,7 @@ LDFLAGS += @LDFLAGS_EXTRA@
+ 
+ INCLUDES= $(COPTS) @MD5_INCLUDE@ @GETOPT_INCLUDE@ @MMDB_INCLUDE_L1@ @IP2LOCATION_INCLUDE_L1@ -I../ -I../lib/ -I../databases/lib/
+ 
+-LIBS = @IPV6CALC_LIB@ @MMDB_LIB_L1@ @IP2LOCATION_LIB_L1@ @DYNLOAD_LIB@
++LIBS = @IPV6CALC_LIB@ @MMDB_LIB_L1@ @IP2LOCATION_LIB_L1@ @EXTDB_LIB@ @DYNLOAD_LIB@ -lm
+ 
+ GETOBJS = @LIBOBJS@
+ 
+@@ -47,10 +47,10 @@ libipv6calc_db_wrapper.a:
+ $(OBJS):	ipv6logstatsoptions.h ipv6logstatshelp.h ipv6logstats.h
+ 
+ ipv6logstats:	$(OBJS) libipv6calc.a libipv6calc_db_wrapper.a
+-		$(CC) -o ipv6logstats $(OBJS) $(GETOBJS) $(LDFLAGS) $(LIBS) -lm
++		$(CC) -o ipv6logstats $(OBJS) $(GETOBJS) $(LDFLAGS) $(LIBS)
+ 
+ static:		ipv6logstats
+-		$(CC) -o ipv6logstats-static $(OBJS) $(GETOBJS) $(LDFLAGS) $(LIBS) $(LDFLAGS_EXTRA_STATIC) -lm -static
++		$(CC) -o ipv6logstats-static $(OBJS) $(GETOBJS) $(LDFLAGS) $(LIBS) $(LDFLAGS_EXTRA_STATIC) -static
+ 
+ distclean:
+ 		${MAKE} clean
+diff --git a/lib/Makefile.in b/lib/Makefile.in
+index 846b3d1f..1b9acec4 100644
+--- a/lib/Makefile.in
++++ b/lib/Makefile.in
+@@ -17,6 +17,8 @@ LDFLAGS += @LDFLAGS@
+ 
+ INCLUDES= -I. -I../ -I../databases/lib/ @GETOPT_INCLUDE@ @MD5_INCLUDE@ @MMDB_INCLUDE_L1@ @IP2LOCATION_INCLUDE_L1@
+ 
++LIBS = @MD5_LIB@ -lm
++
+ ifeq ($(shell uname), Darwin)
+ 	SO_NAME_FLAGS=-install_name
+ else
+@@ -102,7 +104,7 @@ ifeq ($(SHARED_LIBRARY), yes)
+ 		cd ../ && ${MAKE} db-ipv4-assignment-make
+ 		cd ../ && ${MAKE} db-ipv6-assignment-make
+ 		echo "Creates shared library (libipv6calc.so)"
+-		$(CC) -o libipv6calc.so.@PACKAGE_VERSION@ $(OBJS) $(CFLAGS) $(LDFLAGS) -shared -Wl,$(SO_NAME_FLAGS),libipv6calc.so.@PACKAGE_VERSION@
++		$(CC) -o libipv6calc.so.@PACKAGE_VERSION@ $(OBJS) $(CFLAGS) $(LDFLAGS) $(LIBS) -shared -Wl,$(SO_NAME_FLAGS),libipv6calc.so.@PACKAGE_VERSION@
+ else
+ 		echo "Nothing to do (shared library mode is not enabled)"
+ endif

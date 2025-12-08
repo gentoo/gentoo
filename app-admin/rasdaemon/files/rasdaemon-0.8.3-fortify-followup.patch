@@ -1,0 +1,64 @@
+https://bugs.gentoo.org/955453
+https://github.com/mchehab/rasdaemon/issues/214
+https://github.com/mchehab/rasdaemon/pull/215
+
+From eb08c94a1b563c69415cb82d73d4d97f64d92d91 Mon Sep 17 00:00:00 2001
+From: Shiju Jose <shiju.jose@huawei.com>
+Date: Tue, 3 Jun 2025 16:47:39 +0100
+Subject: [PATCH 1/2] rasdaemon: Fix for return error code in
+ add_event_handler()
+
+Fix for return the error code in add_event_handler().
+
+Signed-off-by: Shiju Jose <shiju.jose@huawei.com>
+---
+ ras-events.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ras-events.c b/ras-events.c
+index 6692a31..3d3a4d1 100644
+--- a/ras-events.c
++++ b/ras-events.c
+@@ -864,7 +864,7 @@ static int add_event_handler(struct ras_events *ras, struct tep_handle *pevent,
+ 			log(TERM, LOG_ERR, "Can't get arch page size\n");
+ 			free(page);
+ 			close(fd);
+-			return size;
++			return rc;
+ 		}
+ 		size += rc;
+ 	} while (rc > 0);
+
+From 3deaaa3b3c38e594b28d696b37a64d7f79d782b4 Mon Sep 17 00:00:00 2001
+From: Shiju Jose <shiju.jose@huawei.com>
+Date: Tue, 3 Jun 2025 16:57:34 +0100
+Subject: [PATCH 2/2] rasdaemon: Revert page_size to 4096 in get_pagesize()
+
+Revert page_size to 4096, which was modified in commit
+c4cee52ef7392a259cf76bc24a7aeefaf276cdfb
+("rasdaemon: Fix for parsing error when trace event's format file is
+larger than PAGE_SIZE")
+
+Note:
+This will work when the event data exceed 4096, only after following
+fix is merged.
+https://github.com/mchehab/rasdaemon/pull/212
+
+Signed-off-by: Shiju Jose <shiju.jose@huawei.com>
+---
+ ras-events.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ras-events.c b/ras-events.c
+index 3d3a4d1..154ec5f 100644
+--- a/ras-events.c
++++ b/ras-events.c
+@@ -376,7 +376,7 @@ static int filter_ras_mc_event(struct ras_events *ras, char *group, char *event,
+ 
+ static int get_pagesize(struct ras_events *ras, struct tep_handle *pevent)
+ {
+-	int fd, len, page_size = 8192;
++	int fd, len, page_size = 4096;
+ 	char buf[page_size];
+ 
+ 	fd = open_trace(ras, "events/header_page", O_RDONLY);

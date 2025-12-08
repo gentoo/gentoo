@@ -37,7 +37,7 @@ DEPEND="
 	dev-libs/libpcre2:=
 	>=dev-libs/tre-0.8.0_p20210321[approx]
 	net-misc/curl
-	sys-libs/zlib[minizip]
+	virtual/minizip:=
 	sys-apps/coreutils
 	sys-libs/timezone-data
 	virtual/blas

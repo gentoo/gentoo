@@ -1,0 +1,31 @@
+https://bugs.gentoo.org/949724
+https://git.musl-libc.org/cgit/musl/patch/?id=ab4635fba6769e19fb411a1ab3c8aa7407e11188
+
+From ab4635fba6769e19fb411a1ab3c8aa7407e11188 Mon Sep 17 00:00:00 2001
+From: Szabolcs Nagy <nsz@port70.net>
+Date: Thu, 12 Oct 2023 20:31:48 +0200
+Subject: make __getauxval a public ABI symbol
+
+This is needed so that libgcc can access AT_HWCAP without violating
+link namespace rules.
+
+Internally musl already used __getauxval symbol for the same reason,
+we just remove the hidden marking.
+---
+ src/include/sys/auxv.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/include/sys/auxv.h b/src/include/sys/auxv.h
+index 9358a4a5..63c5bfe9 100644
+--- a/src/include/sys/auxv.h
++++ b/src/include/sys/auxv.h
+@@ -5,6 +5,6 @@
+ 
+ #include <features.h>
+ 
+-hidden unsigned long __getauxval(unsigned long);
++unsigned long __getauxval(unsigned long);
+ 
+ #endif
+-- 
+cgit v1.2.1

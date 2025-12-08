@@ -1,0 +1,66 @@
+diff --git a/voacapl/itshfbc/bin/dst/dst2ascii.f90 b/voacapl/itshfbc/bin/dst/dst2ascii.f90
+index 328aebb..b2bed49 100644
+--- a/voacapl/itshfbc/bin/dst/dst2ascii.f90
++++ b/voacapl/itshfbc/bin/dst/dst2ascii.f90
+@@ -123,9 +123,9 @@ program dst2ascii
+     rewind(ASC_FILE)
+ 
+     do utcPtr = 1, NUMHOUR
+-        write(ASC_FILE, '(AI2A)') "UTC:", utcPtr, ":00"
++        write(ASC_FILE, '(A, I2, A)') "UTC:", utcPtr, ":00"
+         do freqPtr = 1, NUMFREQ
+-            write(ASC_FILE, '(AF6.3A)') "Freq:", freqs(freqPtr), "MHz"
++            write(ASC_FILE, '(A, F6.3, A)') "Freq:", freqs(freqPtr), "MHz"
+             write(ASC_FILE, '(A3, A8, 2A10, A5, 23A8)') "id", "gcdkm", "Latitude", "Longitude", "Mode", &
+                     "MUF", "FOT", "ANGLE", "DELAY", "VHITE", "MUFday", "LOSS", "DBU", "SDBW", "NDBW", "SNR", &
+                     "RPWRG", "REL", "MPROB", "SPRB", "SIGLW", "SIGUP", "SNRLW", "SNRUP", "TGAIN", "RGAIN",  &
+diff --git a/voacapl/itshfbc/bin/dst/dst2ascii.f90 b/voacapl/itshfbc/bin/dst/dst2ascii.f90
+index b2bed49..a084539 100644
+--- a/voacapl/itshfbc/bin/dst/dst2ascii.f90
++++ b/voacapl/itshfbc/bin/dst/dst2ascii.f90
+@@ -79,17 +79,17 @@ program dst2ascii
+ 
+     open(IDX_FILE, file=idx_path, status='old')
+     ! Read the number of distances
+-    read(IDX_FILE, '(I5A)') NUMDIST, index_buffer
++    read(IDX_FILE, '(I5, A)') NUMDIST, index_buffer
+ 
+     ! Read the frequencies
+-    read(IDX_FILE, '(I2A)') NUMFREQ, index_buffer
++    read(IDX_FILE, '(I2, A)') NUMFREQ, index_buffer
+     do freqPtr = 1, NUMFREQ
+         offset = 1 + (7*(freqPtr-1))
+         read(index_buffer((offset): (offset+7)), '(F7.3)') FREQS(freqPtr)
+     end do
+ 
+     ! Read the hours
+-    read(IDX_FILE, '(I3A)') NUMHOUR, index_buffer
++    read(IDX_FILE, '(I3, A)') NUMHOUR, index_buffer
+     do ptr = 1, NUMHOUR
+         offset = 1 + (3*(ptr-1))
+         read(index_buffer((offset): (offset+3)), '(I3)') hours(ptr)
+diff --git a/voacapl/itshfbc/bin/dst/dst2csv.f90 b/voacapl/itshfbc/bin/dst/dst2csv.f90
+index b72508c..59684a0 100644
+--- a/voacapl/itshfbc/bin/dst/dst2csv.f90
++++ b/voacapl/itshfbc/bin/dst/dst2csv.f90
+@@ -79,17 +79,17 @@ program dst2csv
+ 
+     open(IDX_FILE, file=idx_path, status='old')
+     ! Read the number of distances
+-    read(IDX_FILE, '(I5A)') NUMDIST, index_buffer
++    read(IDX_FILE, '(I5, A)') NUMDIST, index_buffer
+ 
+     ! Read the frequencies
+-    read(IDX_FILE, '(I2A)') NUMFREQ, index_buffer
++    read(IDX_FILE, '(I2, A)') NUMFREQ, index_buffer
+     do freqPtr = 1, NUMFREQ
+         offset = 1 + (7*(freqPtr-1))
+         read(index_buffer((offset): (offset+7)), '(F7.3)') FREQS(freqPtr)
+     end do
+ 
+     ! Read the hours
+-    read(IDX_FILE, '(I3A)') NUMHOUR, index_buffer
++    read(IDX_FILE, '(I3, A)') NUMHOUR, index_buffer
+     do ptr = 1, NUMHOUR
+         offset = 1 + (3*(ptr-1))
+         read(index_buffer((offset): (offset+3)), '(I3)') hours(ptr)

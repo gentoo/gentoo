@@ -1,0 +1,27 @@
+From 0ac56cc6a18bdb2062d2a7e41289ae07f62f32f7 Mon Sep 17 00:00:00 2001
+From: "Victor M. Alvarez" <vmalvarez@virustotal.com>
+Date: Thu, 9 Oct 2025 16:32:55 +0200
+Subject: [PATCH] tests: increase the number of iterations in test case for
+ timeouts
+Upstream: https://github.com/VirusTotal/yara-x/issues/471
+
+The current rule was too fast in some hardware.
+
+Closes #471
+---
+ lib/src/scanner/blocks.rs | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/src/scanner/blocks.rs b/lib/src/scanner/blocks.rs
+index cc8a0b5f..c067a8c2 100644
+--- a/lib/src/scanner/blocks.rs
++++ b/lib/src/scanner/blocks.rs
+@@ -474,7 +474,7 @@ mod tests {
+             r#"
+             rule slow {
+                 condition: 
+-                    for any i in (0..10000000) : (
++                    for any i in (0..1000000000) : (
+                          uint8(i) == 0xCC
+                     )
+             }"#,

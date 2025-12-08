@@ -5,7 +5,7 @@ EAPI=8
 
 GUILE_REQ_USE="regex"
 GUILE_COMPAT=( 2-2 3-0 )
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit cmake flag-o-matic gnome2 guile-single python-single-r1 xdg
 
@@ -38,7 +38,7 @@ REQUIRED_USE="
 RDEPEND="
 	${GUILE_DEPS}
 	>=dev-libs/glib-2.56.1:2
-	>=sys-libs/zlib-1.1.4
+	>=virtual/zlib-1.1.4:=
 	dev-libs/boost:=[icu,nls]
 	dev-libs/icu:=
 	dev-libs/libxml2:2=

@@ -18,7 +18,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_BRANCH="develop"
 else
 	SRC_URI="https://github.com/Diaoul/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
 SRC_URI+=" test? ( https://downloads.sourceforge.net/matroska/test_files/matroska_test_w1_1.zip )"
@@ -67,9 +67,6 @@ EPYTEST_DESELECT=(
 	tests/test_archives.py::test_scan_password_protected_archive
 	tests/test_archives.py::test_scan_archive_error
 	tests/test_archives.py::test_scan_videos_error
-	'tests/test_cli.py::test_cli_download_use_absolute_path[never]'
-	'tests/test_cli.py::test_cli_download_use_absolute_path[always]'
-	'tests/test_cli.py::test_cli_download_use_absolute_path[fallback]'
 
 	# TODO
 	tests/test_core.py::test_refine_video_metadata
@@ -78,6 +75,8 @@ EPYTEST_DESELECT=(
 EPYTEST_IGNORE=(
 	# Needs pypandoc and irrelevant for us
 	scripts/generate-gh-release-notes.py
+	# Needs network
+	tests/cli/test_download.py
 )
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}

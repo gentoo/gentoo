@@ -4,15 +4,15 @@
 EAPI=8
 PYTHON_COMPAT=( python3_{11..13} )
 
-inherit autotools flag-o-matic linux-info python-single-r1 systemd udev multilib-minimal #readme.gentoo-r1
+inherit autotools flag-o-matic linux-info optfeature python-single-r1 systemd udev multilib-minimal #readme.gentoo-r1
 
 DESCRIPTION="Bluetooth Tools and System Daemons for Linux"
-HOMEPAGE="http://www.bluez.org https://github.com/bluez/bluez"
+HOMEPAGE="https://www.bluez.org https://github.com/bluez/bluez"
 SRC_URI="https://www.kernel.org/pub/linux/bluetooth/${P}.tar.xz"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0/3"
-KEYWORDS="amd64 arm arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv x86"
 IUSE="btpclient cups doc debug deprecated extra-tools experimental man +mesh midi +obex +readline selinux systemd test test-programs +udev"
 
 # Since this release all remaining extra-tools need readline support, but this could
@@ -39,6 +39,7 @@ BDEPEND="
 "
 DEPEND="
 	>=dev-libs/glib-2.36:2[${MULTILIB_USEDEP}]
+	>=sys-apps/dbus-1.6:=
 	btpclient? ( >=dev-libs/ell-0.39 )
 	cups? ( net-print/cups:= )
 	mesh? (
@@ -50,7 +51,6 @@ DEPEND="
 	obex? ( dev-libs/libical:= )
 	readline? ( sys-libs/readline:0= )
 	systemd? ( sys-apps/systemd )
-	>=sys-apps/dbus-1.6:=
 	udev? ( >=virtual/udev-196 )
 "
 RDEPEND="${DEPEND}
@@ -272,7 +272,7 @@ pkg_postinst() {
 	use udev && udev_reload
 	systemd_reenable bluetooth.service
 
-	has_version net-dialup/ppp || elog "To use dial up networking you must install net-dialup/ppp"
+	optfeature "Dial-up networking" net-dialup/ppp
 }
 
 pkg_postrm() {

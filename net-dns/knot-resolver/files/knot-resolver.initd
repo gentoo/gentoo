@@ -31,7 +31,7 @@ depend() {
 }
 
 reload() {
-	ebegin "Reloading ${SVCNAME}"
-	/usr/bin/kresctl --config=${KNOT_RESOLVER_CONFIG} reload
+	ebegin "Force-reloading ${SVCNAME}"
+	/usr/bin/kresctl --config=${KNOT_RESOLVER_CONFIG} reload --force
 	eend $?
 }

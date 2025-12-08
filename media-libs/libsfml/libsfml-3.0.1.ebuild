@@ -24,7 +24,7 @@ LICENSE+=" || ( MIT public-domain )"
 LICENSE+=" Apache-2.0"
 
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
 IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 

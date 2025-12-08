@@ -12,13 +12,13 @@ S="${WORKDIR}/XEphem-${PV}"
 
 LICENSE="MIT"
 SLOT=0
-KEYWORDS="amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc ppc64 ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	dev-libs/openssl:=
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:0=
-	sys-libs/zlib
+	virtual/zlib:=
 	>=x11-libs/motif-2.3:0
 	x11-libs/libXext
 	x11-libs/libXmu

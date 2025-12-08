@@ -6,6 +6,6 @@
     <name>Gentoo Office project</name>
   </maintainer>
   <upstream>
-    <remote-id type="bitbucket">tagoh/liblangtag</remote-id>
+    <remote-id type="gitlab">tagoh/liblangtag</remote-id>
   </upstream>
 </pkgmetadata>

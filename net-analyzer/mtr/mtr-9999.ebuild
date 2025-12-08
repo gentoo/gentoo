@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,17 +13,17 @@ if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/traviscross/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="gtk +ipinfo +ipv6 jansson ncurses"
-# TODO: This is an inherited RESTRICT - figure out why!
+IUSE="gui +ipinfo +ipv6 jansson ncurses"
+# Tests timeout even w/o sandbox
 RESTRICT="test"
 
 RDEPEND="
-	gtk? (
+	gui? (
 		dev-libs/glib:2
 		x11-libs/gtk+:3
 	)
@@ -37,7 +37,7 @@ DOCS=( AUTHORS FORMATS NEWS README.md SECURITY TODO )
 FILECAPS=( cap_net_raw usr/sbin/mtr-packet )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.88-tinfo.patch
+	"${FILESDIR}"/${PN}-0.96-tinfo.patch
 )
 
 src_prepare() {
@@ -47,13 +47,16 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		$(use_enable ipv6) \
-		$(use_with gtk) \
-		$(use_with ipinfo) \
-		$(use_with jansson) \
-		$(use_with ncurses) \
+	local myeconfargs=(
+		$(use_enable ipv6)
+		$(use_with gui gtk)
+		$(use_with ipinfo)
+		$(use_with jansson)
+		$(use_with ncurses)
 		--with-bashcompletiondir="$(get_bashcompdir)"
+	)
+
+	econf "${myeconfargs[@]}"
 }
 
 pkg_postinst() {

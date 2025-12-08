@@ -4,8 +4,8 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..13} )
-LLVM_COMPAT=( {16..20} )
-inherit cmake llvm-r1 python-single-r1
+LLVM_COMPAT=( {16..21} )
+inherit cmake llvm-r2 optfeature python-single-r1
 
 DESCRIPTION="Super-parallel Python port of the C-Reduce"
 HOMEPAGE="https://github.com/marxin/cvise"
@@ -38,8 +38,11 @@ RDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		dev-python/chardet[${PYTHON_USEDEP}]
+		dev-python/jsonschema[${PYTHON_USEDEP}]
+		dev-python/msgspec[${PYTHON_USEDEP}]
 		dev-python/pebble[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
+		dev-python/zstandard[${PYTHON_USEDEP}]
 	')
 	dev-util/unifdef
 	app-alternatives/lex
@@ -49,15 +52,18 @@ BDEPEND="
 	app-alternatives/lex
 	test? (
 		$(python_gen_cond_dep '
-			dev-python/pebble[${PYTHON_USEDEP}]
 			dev-python/pytest[${PYTHON_USEDEP}]
+			dev-python/pytest-mock[${PYTHON_USEDEP}]
+			dev-python/pytest-subprocess[${PYTHON_USEDEP}]
 		')
 	)
 "
 
+EPYTEST_PLUGINS=( pytest-{mock,subprocess} )
+
 pkg_setup() {
 	python-single-r1_pkg_setup
-	llvm-r1_pkg_setup
+	llvm-r2_pkg_setup
 }
 
 src_prepare() {
@@ -74,4 +80,8 @@ src_install() {
 	cmake_src_install
 
 	python_fix_shebang "${ED}"
+}
+
+pkg_postinst() {
+	optfeature "colorful --print-diff support" app-misc/colordiff
 }

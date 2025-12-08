@@ -3,15 +3,18 @@
 
 EAPI=8
 
-inherit gnustep-base toolchain-funcs
+inherit gnustep-base toolchain-funcs verify-sig
 
 DESCRIPTION="A library of general-purpose, non-graphical Objective C objects"
 HOMEPAGE="https://gnustep.github.io"
-SRC_URI="https://github.com/gnustep/libs-base/releases/download/base-${PV//./_}/${P}.tar.gz"
+SRC_URI="
+	https://github.com/gnustep/libs-base/releases/download/base-${PV//./_}/${P}.tar.gz
+	verify-sig? ( https://github.com/gnustep/libs-base/releases/download/base-${PV//./_}/${P}.tar.gz.sig )
+"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="+gnutls +iconv +icu libdispatch +libffi zeroconf"
 
 # gnustep-make: tests use the option --timeout which was added in 2.9.3
@@ -29,10 +32,15 @@ RDEPEND="${GNUSTEP_CORE_DEPEND}
 	>=dev-libs/libxml2-2.6
 	>=dev-libs/libxslt-1.1
 	>=dev-libs/gmp-4.1:=
-	>=sys-libs/zlib-1.2
+	>=virtual/zlib-1.2:=
 	zeroconf? ( net-dns/avahi )"
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	virtual/pkgconfig
+	verify-sig? ( sec-keys/openpgp-keys-gnustep )
+"
+
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/gnustep.asc
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.26.0-no_compress_man.patch

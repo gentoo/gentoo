@@ -13,7 +13,7 @@ S="${WORKDIR}/SDL_image-release-${PV}"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE="avif gif jpeg jpegxl png samples static-libs stb test tiff webp"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
@@ -23,7 +23,7 @@ REQUIRED_USE="
 
 RDEPEND="
 	>=media-libs/libsdl3-3.0.0[${MULTILIB_USEDEP}]
-	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
+	>=virtual/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}]
 	avif? ( >=media-libs/libavif-1.0.0:=[${MULTILIB_USEDEP}] )
 	!stb? (
 		png? ( >=media-libs/libpng-1.6.10:0=[${MULTILIB_USEDEP}] )

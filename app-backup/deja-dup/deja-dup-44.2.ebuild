@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit meson gnome2-utils vala xdg
 
 DESCRIPTION="Simple backup tool using duplicity back-end"
-HOMEPAGE="https://wiki.gnome.org/Apps/DejaDup"
+HOMEPAGE="https://apps.gnome.org/DejaDup/"
 SRC_URI="https://gitlab.gnome.org/World/deja-dup/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-3+"

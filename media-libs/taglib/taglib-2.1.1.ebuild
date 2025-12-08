@@ -11,12 +11,12 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1 MPL-1.1"
 SLOT="0/2"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="doc examples test"
 
 RESTRICT="!test? ( test )"
 
-RDEPEND="sys-libs/zlib[${MULTILIB_USEDEP}]"
+RDEPEND="virtual/zlib:=[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-libs/utfcpp
 	test? ( dev-util/cppunit[${MULTILIB_USEDEP}] )
@@ -25,6 +25,9 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-text/doxygen[dot] )
 "
+
+# https://github.com/taglib/taglib/pull/1285
+PATCHES=( "${FILESDIR}"/${P}-cmake-minreqver-3.10.patch ) # bug #964576
 
 MULTILIB_CHOST_TOOLS=(
 	/usr/bin/taglib-config

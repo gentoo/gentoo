@@ -12,7 +12,7 @@ if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/rpm-software-management/drpm/"
 else
 	SRC_URI="https://github.com/rpm-software-management/drpm/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="LGPL-2.1+"
@@ -26,7 +26,7 @@ DEPEND="
 	app-arch/rpm
 	app-arch/xz-utils
 	dev-libs/openssl:=
-	sys-libs/zlib
+	virtual/zlib:=
 	lzip? ( app-arch/lzlib )
 	zstd? ( app-arch/zstd:= )
 "

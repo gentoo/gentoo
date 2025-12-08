@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit python-single-r1 unpacker
 
@@ -60,7 +60,7 @@ RDEPEND="${DEPEND}
 	v4l? ( media-libs/libv4l[abi_x86_32(-)] )
 	vulkan? ( media-libs/vulkan-loader[abi_x86_32(-)] )
 	dev-libs/glib:2
-	dev-libs/gobject-introspection
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	dev-libs/openssl-compat:1.1.1
 	dev-util/desktop-file-utils
 	media-libs/alsa-lib[abi_x86_32(-)]
@@ -71,7 +71,7 @@ RDEPEND="${DEPEND}
 	sys-apps/util-linux[abi_x86_32(-)]
 	sys-libs/libunwind[abi_x86_32(-)]
 	sys-libs/ncurses-compat:5[abi_x86_32(-)]
-	sys-libs/zlib[abi_x86_32(-)]
+	virtual/zlib:=[abi_x86_32(-)]
 	x11-libs/libICE[abi_x86_32(-)]
 	x11-libs/libSM[abi_x86_32(-)]
 	x11-libs/libX11[abi_x86_32(-)]

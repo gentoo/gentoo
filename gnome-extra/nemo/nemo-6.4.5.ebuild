@@ -24,7 +24,7 @@ COMMON_DEPEND="
 	${PYTHON_DEPS}
 	>=app-accessibility/at-spi2-core-2.46.0:2
 	>=dev-libs/glib-2.45.7:2[dbus]
-	>=dev-libs/gobject-introspection-0.9.12:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 	>=dev-libs/json-glib-1.6.0
 	dev-libs/libxmlb:0/2[introspection]
 	>=gnome-extra/cinnamon-desktop-6.4:0=

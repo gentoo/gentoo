@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit gnome.org gnome2-utils meson python-any-r1 vala xdg
 
 DESCRIPTION="Simple document scanning utility"
@@ -17,7 +17,7 @@ DEPEND="
 	>=dev-libs/glib-2.38:2
 	>=gui-libs/gtk-4.10.0:4
 	>=gui-libs/libadwaita-1.2.0:1
-	>=sys-libs/zlib-1.2.3.1:=
+	>=virtual/zlib-1.2.3.1:=
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	>=dev-libs/libgusb-0.2.7

@@ -64,7 +64,7 @@ RDEPEND="
 	berkdb? ( sys-libs/db:= )
 	gdbm? ( >=sys-libs/gdbm-1.8.3:= )
 	app-arch/bzip2
-	>=sys-libs/zlib-1.2.12
+	>=virtual/zlib-1.2.12:=
 	virtual/libcrypt:=
 "
 DEPEND="${RDEPEND}"
@@ -276,6 +276,8 @@ src_prepare_perlcross() {
 
 	# bug 794463, needs further analysis what is exactly wrong here
 	eapply "${FILESDIR}/perl-5.34.0-crossfit.patch"
+	# bug 959686, rebase via upstream PR (no 5.42.0 release)
+	eapply "${FILESDIR}/perl-5.42.0-cross-rebase.patch"
 
 	# bug 604072
 	MAKEOPTS+=" -j1"

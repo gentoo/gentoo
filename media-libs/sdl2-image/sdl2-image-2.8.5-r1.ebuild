@@ -13,14 +13,14 @@ S="${WORKDIR}"/${MY_P}
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc64 ~riscv ~sparc x86"
 IUSE="avif gif jpeg jpegxl png samples static-libs test tiff webp"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( jpeg png )"
 
 RDEPEND="
 	>=media-libs/libsdl2-2.30.0[${MULTILIB_USEDEP}]
-	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
+	>=virtual/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}]
 	avif? ( >=media-libs/libavif-1.0.0:=[${MULTILIB_USEDEP}] )
 	png? ( >=media-libs/libpng-1.6.10:0=[${MULTILIB_USEDEP}] )
 	jpeg? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="tk?"
 inherit cmake desktop flag-o-matic optfeature python-single-r1 xdg
 
@@ -53,7 +53,7 @@ DEPEND="${PYTHON_DEPS}
 	media-libs/libzmf
 	media-libs/tiff:=
 	net-print/cups
-	sys-libs/zlib[minizip]
+	virtual/minizip:=
 	x11-libs/cairo[X,svg(+)]
 	x11-libs/libxcb
 	boost? ( dev-libs/boost:= )
@@ -78,7 +78,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.8-cmake.patch # bug 886251
 	"${FILESDIR}"/${PN}-1.5.3-fpic.patch
 	"${FILESDIR}"/${PN}-1.7.0-findhyphen.patch
-	"${FILESDIR}"/${PN}-1.7.0-dont-install-thirdparty-license.patch
+	"${FILESDIR}"/${PN}-1.7.0-dont-install-qtadvanceddocking.patch # bugs 961290, 960017
 	"${FILESDIR}"/${PN}-1.7.0-fix-icon-version.patch
 )
 

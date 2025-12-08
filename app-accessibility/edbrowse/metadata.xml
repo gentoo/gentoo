@@ -6,6 +6,6 @@
 	<name>Gentoo Accessibility Project</name>
 </maintainer>
 <upstream>
-	<remote-id type="github">CMB/edbrowse</remote-id>
+	<remote-id type="github">edbrowse/edbrowse</remote-id>
 </upstream>
 </pkgmetadata>

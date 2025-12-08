@@ -1,6 +1,19 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alfred Wingate <parona@protonmail.com> (2025-09-20)
+# Experimental and only available on a subset of architectures
+generic-uki
+
+# Sam James <sam@gentoo.org> (2025-09-19)
+# libquadmath from GCC is only available on some arches
+# https://gcc.gnu.org/PR96016
+perl_features_quadmath
+
+# Michał Górny <mgorny@gentoo.org> (2025-09-02)
+# dev-python/pypi-attestations is not keyworded everywhere.
+verify-provenance
+
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-05-01)
 # media-libs/libspng only keyworded on amd64, arm64
 spng
@@ -70,6 +83,7 @@ cudnn
 
 # ROCm/HIP only works on amd64
 hip
+hiprt
 
 # masking here, and unmasking in arch/x86/use.mask
 vidix
@@ -92,6 +106,9 @@ svga
 cpu_flags_x86_3dnow
 cpu_flags_x86_3dnowext
 cpu_flags_x86_aes
+cpu_flags_x86_amx_bf16
+cpu_flags_x86_amx_int8
+cpu_flags_x86_amx_tile
 cpu_flags_x86_avx
 cpu_flags_x86_avx2
 cpu_flags_x86_avx512_4fmaps
@@ -112,6 +129,9 @@ cpu_flags_x86_avx512ifma
 cpu_flags_x86_avx512pf
 cpu_flags_x86_avx512vbmi
 cpu_flags_x86_avx512vl
+cpu_flags_x86_avx_vnni
+cpu_flags_x86_bmi1
+cpu_flags_x86_bmi2
 cpu_flags_x86_f16c
 cpu_flags_x86_fma3
 cpu_flags_x86_fma4
@@ -137,12 +157,10 @@ cpu_flags_ppc_altivec
 cpu_flags_ppc_vsx
 cpu_flags_ppc_vsx2
 cpu_flags_ppc_vsx3
+cpu_flags_ppc_vsx4
 
 # mips arch specific USE flags
 loongson2f
-mipsdspr1
-mipsdspr2
-mipsfpu
 
 # ppc64 arch specific USE flags
 ibm
@@ -157,20 +175,30 @@ cpu_flags_arm_v5
 cpu_flags_arm_v6
 cpu_flags_arm_v7
 cpu_flags_arm_v8
+
 cpu_flags_arm_aes
+cpu_flags_arm_asimd
+cpu_flags_arm_asimddp
+cpu_flags_arm_asimdfhm
+cpu_flags_arm_asimdhp
 cpu_flags_arm_crc32
 cpu_flags_arm_edsp
+cpu_flags_arm_i8mm
 cpu_flags_arm_iwmmxt
 cpu_flags_arm_iwmmxt2
 cpu_flags_arm_neon
+cpu_flags_arm_neon-fp16
 cpu_flags_arm_sha1
 cpu_flags_arm_sha2
+cpu_flags_arm_sm4
+cpu_flags_arm_sve
+cpu_flags_arm_sve2
 cpu_flags_arm_thumb
 cpu_flags_arm_thumb2
 cpu_flags_arm_vfp
+cpu_flags_arm_vfp-d32
 cpu_flags_arm_vfpv3
 cpu_flags_arm_vfpv4
-cpu_flags_arm_vfp-d32
 
 # nVidia XvMC requires nvidia-drivers/nvidia-legacy-drivers
 nvidia

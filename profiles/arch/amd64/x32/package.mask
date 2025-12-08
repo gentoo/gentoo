@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mario Haustein <mario.haustein@hrz.tu-chemnitz.de> (2025-10-06)
+# Requires qtwebengine
+media-radio/qlog
+
 # Jay Faulkner <jayf@gentoo.org> (2025-06-01)
 # Requires >=net-libs/nodejs-18[npm]
 dev-util/claude-code
@@ -85,7 +89,7 @@ dev-qt/qtwebengine
 dev-qt/qtwebview
 dev-python/pyqt6-webengine
 dev-python/qpageview
-app-admin/calamares
+<app-admin/calamares-3.3.14
 app-text/zeal
 app-editors/ghostwriter
 app-editors/retext
@@ -149,9 +153,7 @@ sci-geosciences/qmapshack
 sci-mathematics/rkward
 sys-apps/polychromatic
 www-client/falkon
-www-client/otter
 www-client/qutebrowser
-media-video/jellyfin-media-player
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-02-09)
 # Requires net-libs/nodejs
@@ -183,7 +185,6 @@ app-metrics/ceph_exporter
 # Michał Górny <mgorny@gentoo.org> (2018-04-15)
 # Broken multilib dependencies.
 net-im/mattermost-desktop-bin
-net-im/skypeforlinux
 net-im/slack
 
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (2012-10-07)

@@ -26,6 +26,10 @@
       Install <pkg>net-analyzer/fping</pkg> required for fancy ping
       monitoring. Disabling the flag does not remove any plugin file.
     </flag>
+    <flag name="rpc">
+      Install <pkg>net-nds/rpcbind</pkg> required for monitoring RPC
+      services. Disabling the flag does not remove any plugin file.
+    </flag>
     <flag name="ssh">
       Install <pkg>net-misc/openssh</pkg> required for monitoring SSH
       servers. Disabling the flag does not remove any plugin file.

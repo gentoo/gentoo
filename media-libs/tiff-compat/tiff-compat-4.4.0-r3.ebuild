@@ -10,7 +10,7 @@ QA_PKGCONFIG_VERSION="$(ver_cut 1-3)"
 # stuff too like PROJ, GDAL. Previous release manager of TIFF was
 # GraphicsMagick maintainer Bob Friesenhahn. Please be careful when verifying
 # who made releases.
-VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/rouault.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/evenrouault.asc
 inherit multilib-minimal verify-sig flag-o-matic autotools
 
 MY_P="${P/_rc/rc}"
@@ -37,11 +37,11 @@ RDEPEND="
 	jpeg? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
 	lzma? ( >=app-arch/xz-utils-5.0.5-r1[${MULTILIB_USEDEP}] )
 	webp? ( media-libs/libwebp:=[${MULTILIB_USEDEP}] )
-	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
+	zlib? ( >=virtual/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}] )
 	zstd? ( >=app-arch/zstd-1.3.7-r1:=[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="verify-sig? ( sec-keys/openpgp-keys-evenrouault )"
+BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-evenrouault-20250913 )"
 
 # Easier to keep this even though we remove the headers to avoid
 # triggering multilib header check
@@ -53,6 +53,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN/-compat}-4.4.0_rc1-skip-thumbnail-test.patch
 	"${FILESDIR}"/${P/-compat}-hylafaxplus-regression.patch
 	"${FILESDIR}"/${P/-compat}-C23.patch
+	"${FILESDIR}"/${P/-compat}-skip-tests-requiring-tools.patch
 )
 
 src_prepare() {

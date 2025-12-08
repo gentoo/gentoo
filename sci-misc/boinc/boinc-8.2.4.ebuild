@@ -27,7 +27,7 @@ else
 	#
 	# The current versions for each of release channels can be found at:
 	# https://boinc.berkeley.edu/linux_install.php
-	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="amd64 arm64 ~ppc ppc64 ~sparc ~x86"
 fi
 
 LICENSE="LGPL-3+"
@@ -42,7 +42,7 @@ DEPEND="
 	app-misc/ca-certificates
 	dev-libs/openssl:=
 	net-misc/curl[ssl]
-	sys-libs/zlib:=
+	virtual/zlib:=
 	X? (
 		media-libs/freeglut
 		media-libs/libjpeg-turbo:=

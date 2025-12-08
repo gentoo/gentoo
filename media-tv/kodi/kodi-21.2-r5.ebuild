@@ -26,7 +26,7 @@ JAVA_PKG_WANT_SOURCE="21"
 JAVA_PKG_WANT_TARGET="21"
 
 PYTHON_REQ_USE="sqlite,ssl"
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 # See cmake/scripts/common/ArchSetup.cmake for available options
 CPU_FLAGS="cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_arm_neon"
@@ -111,7 +111,7 @@ COMMON_DEPEND="
 "
 COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	>=net-misc/curl-7.68.0[http2]
-	>=sys-libs/zlib-1.2.11
+	>=virtual/zlib-1.2.11:=
 	dev-db/sqlite:3
 	dev-libs/crossguid
 	>=dev-libs/fribidi-1.0.5
@@ -273,6 +273,7 @@ PATCHES=(
 	"${FILESDIR}"/kodi-21-optional-ffmpeg-libx11.patch
 	"${FILESDIR}"/kodi-21.1-silence-libdvdread-git.patch
 	"${FILESDIR}"/kodi-21.2-pipewire-1.4.0-fix.patch
+	"${FILESDIR}"/kodi-21.2-fix-curl-8.16.patch
 )
 
 # bug #544020
@@ -455,6 +456,12 @@ src_configure() {
 	# Violates ODR (bug #860984) and USE_LTO does spooky stuff
 	# https://github.com/xbmc/xbmc/commit/cb72a22d54a91845b1092c295f84eeb48328921e
 	filter-lto
+
+	# bug #926076
+	append-flags -fPIC
+
+	# used by vendored libdvdread
+	tc-export PKG_CONFIG
 
 	if tc-is-cross-compiler; then
 		for t in "${NATIVE_TOOLS[@]}" ; do

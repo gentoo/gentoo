@@ -1,0 +1,67 @@
+see https://bugs.gentoo.org/964932 and https://github.com/IgnorantGuru/spacefm/issues/670
+patch from upstream but not released
+https://github.com/IgnorantGuru/spacefm/pull/704.patch
+--- a/src/ptk/ptk-dir-tree-view.c
++++ b/src/ptk/ptk-dir-tree-view.c
+@@ -812,6 +812,12 @@ gboolean on_dir_tree_view_drag_motion ( GtkWidget *widget,
+     GdkAtom target;
+     GtkTargetList* target_list;
+ 
++    /*  Don't call the default handler  */
++    g_signal_stop_emission_by_name( widget, "drag-motion" );
++
++    /* We actually want it to run first, and then override the selected action */
++    GTK_WIDGET_GET_CLASS (widget)->drag_motion( widget, drag_context, x, y, time );
++
+     target_list = gtk_target_list_new( drag_targets, G_N_ELEMENTS(drag_targets) );
+     target = gtk_drag_dest_find_target( widget, drag_context, target_list );
+     gtk_target_list_unref( target_list );
+@@ -850,47 +856,9 @@ gboolean on_dir_tree_view_drag_motion ( GtkWidget *widget,
+                 suggested_action = gdk_drag_context_get_selected_action( drag_context );
+             }
+         }
+-#if GTK_CHECK_VERSION (3, 0, 0)
+-        /* hack to be able to call the default handler with the correct suggested_action */
+-        struct _GdkDragContext {
+-          GObject parent_instance;
+-
+-          /*< private >*/
+-          GdkDragProtocol protocol;
+-#if GTK_CHECK_VERSION (3, 22, 0)
+-          /* 1.0.6 per Teklad: _GdkDragContext appears to change between
+-           * different versions of GTK3 which causes the crash. It appears they
+-           * added/removed some variables from that struct.
+-           * https://github.com/IgnorantGuru/spacefm/issues/670 */
+-          GdkDisplay *display;
+-#endif
+-          gboolean is_source;
+-          GdkWindow *source_window;
+-          GdkWindow *dest_window;
+-
+-          GList *targets;
+-          GdkDragAction actions;
+-          GdkDragAction suggested_action;
+-          GdkDragAction action;
+-
+-          guint32 start_time;
+-
+-          GdkDevice *device;
+-#if GTK_CHECK_VERSION (3, 22, 0)
+-          /* 1.0.6 per Teklad: _GdkDragContext appears to change between
+-           * different versions of GTK3 which causes the crash. It appears they
+-           * added/removed some variables from that struct.
+-           * https://github.com/IgnorantGuru/spacefm/issues/670 */
+-          guint drop_done : 1; /* Whether gdk_drag_drop_done() was performed */
+-#endif
+-        };
+-        ((struct _GdkDragContext *)drag_context)->suggested_action = suggested_action;
+-#else
+-        drag_context->suggested_action = suggested_action; // needed for default handler
+-#endif
+         gdk_drag_status( drag_context, suggested_action, gtk_get_current_event_time() );
+     }
+-    return FALSE;
++    return TRUE;
+ }
+ 
+ static gboolean on_dir_tree_view_drag_leave ( GtkWidget *widget,

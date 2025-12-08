@@ -12,7 +12,7 @@ SRC_URI="https://www.tarsnap.com/${PN}/${P}.tgz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="
 	dev-libs/openssl:=

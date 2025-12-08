@@ -4,7 +4,7 @@
 EAPI=8
 
 CONFIG_CHECK="~ADVISE_SYSCALLS"
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit bash-completion-r1 check-reqs flag-o-matic linux-info ninja-utils pax-utils python-any-r1 toolchain-funcs xdg-utils
@@ -40,7 +40,7 @@ RDEPEND=">=app-arch/brotli-1.1.0:=
 	>=net-dns/c-ares-1.34.4:=
 	>=net-libs/nghttp2-1.64.0:=
 	>=net-libs/nghttp3-1.7.0:=
-	sys-libs/zlib
+	virtual/zlib:=
 	corepack? ( !sys-apps/yarn )
 	system-icu? ( >=dev-libs/icu-73:= )
 	system-ssl? (
@@ -185,8 +185,7 @@ src_configure() {
 }
 
 src_compile() {
-	export NINJA_ARGS=" $(get_NINJAOPTS)"
-	emake -Onone
+	eninja -C out/Release
 }
 
 src_install() {

@@ -41,7 +41,7 @@ BDEPEND="
 	virtual/pkgconfig
 	gtk-doc? ( dev-util/gtk-doc )
 	introspection? (
-		dev-libs/gobject-introspection
+		>=dev-libs/gobject-introspection-1.82.0-r2
 		dev-libs/libgusb[introspection]
 	)
 "

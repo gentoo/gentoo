@@ -9,6 +9,7 @@
 		<flag name="dri3">Build with DRI3 support</flag>
 		<flag name="drm">Build with DRM support</flag>
 		<flag name="java">Build TigerVNC Java viewer</flag>
+		<flag name="pwquality">Use <pkg>dev-libs/libpwquality</pkg> for password quality checking in vncpasswd</flag>
 		<flag name="server">Build TigerVNC server</flag>
 		<flag name="viewer">Build TigerVNC viewer</flag>
 	</use>

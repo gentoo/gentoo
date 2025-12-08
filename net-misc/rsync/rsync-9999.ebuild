@@ -5,7 +5,7 @@ EAPI=8
 
 # Uncomment when introducing a patch which touches configure
 RSYNC_NEEDS_AUTOCONF=1
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit flag-o-matic prefix python-single-r1 systemd
 
 DESCRIPTION="File transfer program to keep remote files into sync"
@@ -37,7 +37,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="acl examples iconv lz4 rrsync ssl stunnel system-zlib xattr xxhash zstd"
+IUSE="acl examples iconv lz4 rrsync ssl stunnel system-zlib xattr +xxhash zstd"
 REQUIRED_USE+=" examples? ( ${PYTHON_REQUIRED_USE} )"
 REQUIRED_USE+=" rrsync? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -58,7 +58,7 @@ RDEPEND="
 		')
 	)
 	ssl? ( dev-libs/openssl:= )
-	system-zlib? ( sys-libs/zlib )
+	system-zlib? ( virtual/zlib:= )
 	xxhash? ( >=dev-libs/xxhash-0.8 )
 	zstd? ( >=app-arch/zstd-1.4:= )
 	iconv? ( virtual/libiconv )"
@@ -76,10 +76,6 @@ if [[ ${PV} == *9999 ]] ; then
 else
 	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-andrewtridgell )"
 fi
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-3.4.1-c23.patch
-)
 
 pkg_setup() {
 	# - USE=examples needs Python itself at runtime, but nothing else

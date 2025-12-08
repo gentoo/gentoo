@@ -39,7 +39,7 @@ RDEPEND="
 	dev-libs/libfmt:=
 	dev-libs/libsodium:=
 	dev-libs/openssl:=
-	sys-libs/zlib
+	virtual/zlib:=
 "
 uEPEND="
 	${RDEPEND}

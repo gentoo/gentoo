@@ -1,0 +1,19 @@
+Upstream: https://gitlab.kitware.com/vtk/vtk-m/-/merge_requests/3272
+Gentoo Bug: https://bugs.gentoo.org/939533
+
+diff --git a/vtkm/filter/contour/worklet/mir/MIRTables.h b/vtkm/filter/contour/worklet/mir/MIRTables.h
+index 3dff3329eb4d129a6dd7929be63eb8bf061fb0c3..a6f4d4f1fdb9f9b35e7c6157619caf59cb6e8a77 100644
+--- a/VTK/ThirdParty/vtkm/vtkvtkm/vtk-m/vtkm/filter/contour/worklet/mir/MIRTables.h
++++ b/VTK/ThirdParty/vtkm/vtkvtkm/vtk-m/vtkm/filter/contour/worklet/mir/MIRTables.h
+@@ -11400,11 +11400,6 @@ public:
+       return FacesLookup[shape];
+     }
+ 
+-    VTKM_EXEC vtkm::UInt8 GetPoint(vtkm::Id pointIndex) const
+-    {
+-      return this->CellFacePortal.Get(pointIndex);
+-    }
+-
+   private:
+     typename vtkm::cont::ArrayHandle<vtkm::UInt8>::ReadPortalType MIRTablesDataPortal;
+     typename vtkm::cont::ArrayHandle<vtkm::UInt16>::ReadPortalType MIRTablesIndicesPortal;

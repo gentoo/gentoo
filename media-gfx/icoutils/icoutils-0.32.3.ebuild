@@ -21,7 +21,7 @@ RDEPEND="
 	>=dev-lang/perl-5.6
 	>=dev-perl/libwww-perl-5.64
 	media-libs/libpng:0
-	sys-libs/zlib
+	virtual/zlib:=
 	nls? ( virtual/libintl )
 "
 DEPEND="${RDEPEND}"

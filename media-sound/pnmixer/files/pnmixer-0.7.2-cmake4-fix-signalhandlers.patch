@@ -1,0 +1,57 @@
+Thanks-to: Maciej S. Szmigiero
+Source: https://bugs.gentoo.org/961943
+
+--- a/src/ui-hotkey-dialog.c
++++ b/src/ui-hotkey-dialog.c
+@@ -248,6 +248,8 @@
+ 	gtk_window_set_transient_for(GTK_WINDOW(dialog->hotkey_dialog), parent);
+ 
+ 	/* Connect ui signal handlers */
++	gtk_builder_add_callback_symbol(builder, "on_hotkey_dialog_key_press_event", G_CALLBACK(on_hotkey_dialog_key_press_event));
++	gtk_builder_add_callback_symbol(builder, "on_hotkey_dialog_key_release_event", G_CALLBACK(on_hotkey_dialog_key_release_event));
+ 	gtk_builder_connect_signals(builder, dialog);
+ 
+ 	/* Cleanup */
+--- a/src/ui-popup-menu.c
++++ b/src/ui-popup-menu.c
+@@ -330,6 +330,11 @@
+ #endif
+ 
+ 	/* Connect ui signal handlers */
++	gtk_builder_add_callback_symbol(builder, "on_mute_item_activate", G_CALLBACK(on_mute_item_activate));
++	gtk_builder_add_callback_symbol(builder, "on_mixer_item_activate", G_CALLBACK(on_mixer_item_activate));
++	gtk_builder_add_callback_symbol(builder, "on_prefs_item_activate", G_CALLBACK(on_prefs_item_activate));
++	gtk_builder_add_callback_symbol(builder, "on_reload_item_activate", G_CALLBACK(on_reload_item_activate));
++	gtk_builder_add_callback_symbol(builder, "on_about_item_activate", G_CALLBACK(on_about_item_activate));
+ 	gtk_builder_connect_signals(builder, menu);
+ 
+ 	/* Connect audio signal handlers */
+--- a/src/ui-popup-window.c
++++ b/src/ui-popup-window.c
+@@ -476,6 +476,10 @@
+ 	configure_vol_increment(GTK_ADJUSTMENT(window->vol_scale_adj));
+ 
+ 	/* Connect ui signal handlers */
++	gtk_builder_add_callback_symbol(builder, "on_popup_window_event", G_CALLBACK(on_popup_window_event));
++	gtk_builder_add_callback_symbol(builder, "on_vol_scale_value_changed", G_CALLBACK(on_vol_scale_value_changed));
++	gtk_builder_add_callback_symbol(builder, "on_mute_check_toggled", G_CALLBACK(on_mute_check_toggled));
++	gtk_builder_add_callback_symbol(builder, "on_mixer_button_clicked", G_CALLBACK(on_mixer_button_clicked));
+ 	gtk_builder_connect_signals(builder, window);
+ 
+ 	/* Connect audio signal handlers */
+--- a/src/ui-prefs-dialog.c
++++ b/src/ui-prefs-dialog.c
+@@ -922,6 +922,13 @@
+ 	gtk_window_set_transient_for(GTK_WINDOW(dialog->prefs_dialog), parent);
+ 
+ 	/* Connect ui signal handlers */
++	gtk_builder_add_callback_symbol(builder, "on_noti_enable_check_toggled", G_CALLBACK(on_noti_enable_check_toggled));
++	gtk_builder_add_callback_symbol(builder, "on_card_combo_changed", G_CALLBACK(on_card_combo_changed));
++	gtk_builder_add_callback_symbol(builder, "on_vol_text_check_toggled", G_CALLBACK(on_vol_text_check_toggled));
++	gtk_builder_add_callback_symbol(builder, "on_vol_meter_draw_check_toggled", G_CALLBACK(on_vol_meter_draw_check_toggled));
++	gtk_builder_add_callback_symbol(builder, "on_middle_click_combo_changed", G_CALLBACK(on_middle_click_combo_changed));
++	gtk_builder_add_callback_symbol(builder, "on_hotkeys_enable_check_toggled", G_CALLBACK(on_hotkeys_enable_check_toggled));
++	gtk_builder_add_callback_symbol(builder, "on_hotkey_event_box_button_press_event", G_CALLBACK(on_hotkey_event_box_button_press_event));
+ 	gtk_builder_connect_signals(builder, dialog);
+ 
+ 	/* Save some references */

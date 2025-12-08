@@ -21,7 +21,7 @@ RDEPEND="
 	>=app-arch/libarchive-3.4.0:=
 	>=dev-libs/glib-2.35.6:2
 	gtk? ( >=x11-libs/gtk+-3.2:3[introspection?] )
-	introspection? ( >=dev-libs/gobject-introspection-1.30.0:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

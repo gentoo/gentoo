@@ -7,7 +7,7 @@
   </maintainer>
   <stabilize-allarches/>
   <upstream>
-    <remote-id type="pypi">XlsxWriter</remote-id>
+    <remote-id type="pypi">xlsxwriter</remote-id>
     <remote-id type="github">jmcnamara/XlsxWriter</remote-id>
   </upstream>
 </pkgmetadata>

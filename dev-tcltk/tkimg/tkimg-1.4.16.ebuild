@@ -22,7 +22,7 @@ RDEPEND="
 	dev-tcltk/tcllib
 	media-libs/tiff:=
 	media-libs/libpng:0=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	x11-libs/libX11
 	media-libs/libjpeg-turbo:="
 DEPEND="${RDEPEND}

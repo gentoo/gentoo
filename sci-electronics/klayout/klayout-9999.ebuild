@@ -4,10 +4,10 @@
 EAPI=8
 
 RUBY_OPTIONAL=no
-USE_RUBY="ruby32"
+USE_RUBY="ruby33"
 # note: define maximally ONE implementation here
 
-PYTHON_COMPAT=( python3_{11,12,13} )
+PYTHON_COMPAT=( python3_{11,12,13,14} )
 
 inherit toolchain-funcs python-single-r1 ruby-ng
 
@@ -32,11 +32,13 @@ RDEPEND="
 	dev-qt/qtsvg:6
 	dev-qt/qttools:6[designer]
 	dev-libs/libgit2:=
-	sys-libs/zlib
+	virtual/zlib:=
 	${PYTHON_DEPS}
 	$(ruby_implementations_depend)
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	sys-apps/which
+"
 
 pkg_setup() {
 	python-single-r1_pkg_setup

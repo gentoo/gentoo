@@ -4,6 +4,8 @@
 EAPI=8
 
 CRATES=""
+RUST_MIN_VER="1.75"
+
 inherit cargo
 
 DESCRIPTION="A simple TUI for interacting with systemd services and their logs"

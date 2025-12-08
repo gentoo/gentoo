@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ if [[ ${PV} == "9999" ]] ; then
 	S="${WORKDIR}/${P}/${PN}"
 else
 	SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}/${PV}/${P}.tar.xz"
-	KEYWORDS="amd64 ppc sparc x86"
+	KEYWORDS="amd64 ppc ~sparc x86"
 fi
 
 DESCRIPTION="Tool for communicating over JTAG with flash chips, CPUs, and many more"

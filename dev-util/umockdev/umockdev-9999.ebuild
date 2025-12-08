@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit flag-o-matic meson-multilib python-any-r1 vala
 
@@ -26,7 +26,7 @@ RDEPEND="
 	net-libs/libpcap[${MULTILIB_USEDEP}]
 	virtual/libudev:=[${MULTILIB_USEDEP}]
 	>=dev-libs/glib-2.32:2[${MULTILIB_USEDEP}]
-	>=dev-libs/gobject-introspection-1.32:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 "
 DEPEND="${RDEPEND}
 	test? (
@@ -58,5 +58,6 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
-	meson_src_test --no-suite fails-valgrind
+	export SLOW_TESTBED_FACTOR=10
+	meson_src_test --num-processes=1 --timeout-multiplier=10 --setup installed
 }

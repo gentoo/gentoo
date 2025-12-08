@@ -20,7 +20,7 @@ PV_SERIES=$(ver_cut 1-2)
 RDEPEND="
 	>=dev-libs/glib-2.52:2
 	>=sys-apps/dbus-1.3.2
-	>=dev-libs/gobject-introspection-1.54:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 	>=dev-libs/icu-4.8.1.2:=
 	>=dev-libs/json-glib-1.4
 	>=net-libs/libsoup-2.99.2:3.0

@@ -17,7 +17,7 @@ SRC_URI="https://services.gradle.org/distributions/${MY_P}-all.zip -> ${P}.zip"
 S="${WORKDIR}/${MY_P}"
 LICENSE="Apache-2.0"
 SLOT="${PV}"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DEPEND="app-eselect/eselect-gradle"
 BDEPEND="app-arch/unzip"

@@ -4,6 +4,7 @@
 	<!-- maintainer-needed -->
 	<use>
 		<flag name="network">Install network plug-ins</flag>
+		<flag name="rootless">Enable libsubid (subuid/subgid mapping) for rootless</flag>
 		<flag name="suid">Install SUID helper binary</flag>
 	</use>
 	<upstream>

@@ -14,7 +14,7 @@ SRC_URI="https://download.fcitx-im.org/fcitx5/${MY_PN}/${MY_PN}-${PV}.tar.zst ->
 S="${WORKDIR}/${MY_PN}-${PV}"
 LICENSE="LGPL-2.1+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~loong ~riscv x86"
 IUSE="gtk2 +gtk3 +gtk4 +introspection +snooper onlyplugin wayland +X"
 REQUIRED_USE="|| ( gtk2 gtk3 gtk4 )"
 
@@ -25,7 +25,7 @@ RDEPEND="
 	gtk2? ( x11-libs/gtk+:2 )
 	gtk3? ( x11-libs/gtk+:3[wayland?,X?] )
 	gtk4? ( gui-libs/gtk:4[wayland?,X?] )
-	introspection? ( dev-libs/gobject-introspection )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 	X? ( x11-libs/libX11 )
 "
 DEPEND="${RDEPEND}"

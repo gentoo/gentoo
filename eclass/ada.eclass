@@ -31,6 +31,8 @@ esac
 if [[ -z ${_ADA_ECLASS} ]]; then
 _ADA_ECLASS=1
 
+inherit flag-o-matic
+
 # @ECLASS_VARIABLE: ADA_DEPS
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
@@ -57,7 +59,7 @@ _ADA_ECLASS=1
 # @DESCRIPTION:
 # All supported Ada implementations, most preferred last.
 _ADA_ALL_IMPLS=(
-	gcc_12 gcc_13 gcc_14 gcc_15
+	gcc_12 gcc_13 gcc_14 gcc_15 gcc_16
 )
 readonly _ADA_ALL_IMPLS
 
@@ -119,7 +121,7 @@ _ada_impl_supported() {
 	# keep in sync with _ADA_ALL_IMPLS!
 	# (not using that list because inline patterns shall be faster)
 	case "${impl}" in
-		gcc_12|gcc_13|gcc_14|gcc_15)
+		gcc_12|gcc_13|gcc_14|gcc_15|gcc_16)
 			return 0
 			;;
 		*)
@@ -213,7 +215,7 @@ ada_export() {
 	local impl var
 
 	case "${1}" in
-		gcc_12|gcc_13|gcc_14|gcc_15)
+		gcc_12|gcc_13|gcc_14|gcc_15|gcc_16)
 			impl=${1}
 			shift
 			;;
@@ -244,6 +246,10 @@ ada_export() {
 		gcc_15)
 			gcc_pv=15
 			slot=15
+			;;
+		gcc_16)
+			gcc_pv=16
+			slot=16
 			;;
 		*)
 			gcc_pv="9.9.9"
@@ -295,7 +301,7 @@ ada_export() {
 				;;
 			ADA_PKG_DEP)
 				case "${impl}" in
-					gcc_12|gcc_13|gcc_14|gcc_15)
+					gcc_12|gcc_13|gcc_14|gcc_15|gcc_16)
 						ADA_PKG_DEP="sys-devel/gcc:${slot}[ada]"
 						;;
 					*)
@@ -466,6 +472,9 @@ ada_setup() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	unset EADA
+
+	# https://gcc.gnu.org/PR116226
+	filter-flags -Warray-bounds
 
 	if [[ ${#_ADA_SUPPORTED_IMPLS[@]} -eq 1 ]]; then
 		if use "ada_target_${_ADA_SUPPORTED_IMPLS[0]}"; then

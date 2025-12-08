@@ -36,6 +36,9 @@
 		<flag name="hip">
 			Build cycles renderer with AMD HIP support.
 		</flag>
+		<flag name="hiprt">
+			Enable AMD HIP GPU ray tracing acceleration via <pkg>dev-libs/hiprt</pkg>.
+		</flag>
 		<flag name="cycles">
 			Enable the Cycles raytracing render engine.
 		</flag>
@@ -63,7 +66,6 @@
 			Enable NDOF input devices (SpaceNavigator and friends).
 		</flag>
 		<flag name="oidn">Enable OpenImageDenoiser Support</flag>
-		<flag name="oneapi">Build cycles renderer with Intel oneAPI SyCL support</flag>
 		<flag name="openpgl">Enable path guiding support in Cycles</flag>
 		<flag name="opensubdiv">
 			Add rendering support form OpenSubdiv from Dreamworks Animation
@@ -90,11 +92,17 @@
 		<flag name="renderdoc">
 			Build Blender with renderdoc support
 		</flag>
+		<flag name="rubberband">
+			Build with Rubber Band for audio time-stretching and pitch-scaling (used by Audaspace) via <pkg>media-libs/rubberband</pkg>
+		</flag>
 		<flag name="tbb">
 			Use threading building blocks library from <pkg>dev-cpp/tbb</pkg>.
 		</flag>
-		<flag name="vulkan">
+		<flag name="vulkan" restrict="&lt;media-gfx/blender-5">
 			Add support for the experimental Vulkan viewport backend
+		</flag>
+		<flag name="vulkan" restrict="&gt;=media-gfx/blender-5">
+			Add support for the Vulkan viewport backend
 		</flag>
 	</use>
 </pkgmetadata>

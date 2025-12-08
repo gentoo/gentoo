@@ -27,7 +27,7 @@ RDEPEND="
 	dev-libs/boost:=
 	dev-libs/gmp:=[cxx]
 	dev-libs/mpfr:=
-	sys-libs/zlib
+	virtual/zlib:=
 	x11-libs/libX11:=
 	virtual/glu:=
 	virtual/opengl:=

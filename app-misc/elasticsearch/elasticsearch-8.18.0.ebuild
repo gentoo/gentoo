@@ -18,7 +18,7 @@ DEPEND="acct-group/elasticsearch
 # This package _actually does depend_ on JDK at runtime. #950962
 RDEPEND="acct-group/elasticsearch
 	acct-user/elasticsearch
-	sys-libs/zlib
+	virtual/zlib:=
 	virtual/jdk:17"
 
 QA_FLAGS_IGNORED="usr/share/elasticsearch/lib/platform/linux-x64/*.so"

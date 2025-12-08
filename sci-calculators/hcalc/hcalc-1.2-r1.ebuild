@@ -1,12 +1,12 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake
 
 DESCRIPTION="DJ's Hex Calculator"
-HOMEPAGE="http://www.delorie.com/store/hcalc/ https://github.com/jlec/hcalc"
+HOMEPAGE="https://www.delorie.com/store/hcalc/ https://github.com/jlec/hcalc"
 SRC_URI="https://github.com/jlec/hcalc/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="GPL-2"
@@ -21,6 +21,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${P}-fno-common.patch
 	"${FILESDIR}"/${P}-clang16.patch
+	"${FILESDIR}"/${P}-cmake4.patch # bug 952071, downstream patch
 )
 
 pkg_postinst() {

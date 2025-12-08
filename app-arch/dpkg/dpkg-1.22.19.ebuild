@@ -26,7 +26,7 @@ RDEPEND="
 	lzma? ( app-arch/xz-utils )
 	nls? ( virtual/libintl )
 	selinux? ( sys-libs/libselinux )
-	zlib? ( >=sys-libs/zlib-1.1.4 )
+	zlib? ( >=virtual/zlib-1.1.4:= )
 	zstd? ( app-arch/zstd:= )
 "
 DEPEND="

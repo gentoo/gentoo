@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,6 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-ml/cmdliner:=[ocamlopt]
-	>=dev-lang/ocaml-4.08:=[ocamlopt]
 	dev-ml/result:=[ocamlopt]
 	dev-ml/stdlib-shims:=[ocamlopt]
 	dev-ml/uchar:=[ocamlopt]

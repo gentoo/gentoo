@@ -19,7 +19,7 @@ LICENSE="
 	zerotier? ( BUSL-1.1 )
 "
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="debug +sodium test zerotier"
 RESTRICT="bindist mirror !test? ( test )"
 
@@ -29,7 +29,7 @@ RDEPEND="
 	media-libs/libsdl2[haptic,joystick,opengl,video]
 	media-libs/sdl2-image[png]
 	media-libs/sdl_audiolib
-	sys-libs/zlib:=
+	virtual/zlib:=
 	sodium? ( dev-libs/libsodium:= )
 "
 DEPEND="

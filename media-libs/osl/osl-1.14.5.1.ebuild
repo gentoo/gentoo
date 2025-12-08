@@ -71,7 +71,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-util/patchelf
 	>=media-libs/openexr-3
-	sys-libs/zlib
+	virtual/zlib:=
 	test? (
 		media-fonts/droid
 		optix? (
@@ -277,7 +277,7 @@ src_configure() {
 		mycmakeargs+=(
 			-DUSE_LLVM_BITCODE="$(usex clang-cuda)"
 			-DCUDA_OPT_FLAG_NVCC="$(get-flag O)"
-			-DCUDA_OPT_FLAG_NVCC="$(get-flag O)"
+			-DCUDA_OPT_FLAG_CLANG="$(get-flag O)"
 		)
 	fi
 

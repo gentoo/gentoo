@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Librest"
 
 LICENSE="LGPL-2.1"
 SLOT="1.0" # librest_soversion
-KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="gtk-doc +introspection test vala"
 REQUIRED_USE="
 	gtk-doc? ( introspection )
@@ -24,7 +24,7 @@ RDEPEND="
 	dev-libs/json-glib:0[introspection?]
 	dev-libs/libxml2:2=
 	app-misc/ca-certificates
-	introspection? ( >=dev-libs/gobject-introspection-1.74.0:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

@@ -1,0 +1,7 @@
+https://github.com/KhronosGroup/glslang/commit/e40c14a3e007
+--- a/external/glslang/SPIRV/SpvBuilder.h
++++ b/external/glslang/SPIRV/SpvBuilder.h
+@@ -58,2 +58,3 @@
+ #include <algorithm>
++#include <cstdint>
+ #include <map>

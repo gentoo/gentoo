@@ -20,6 +20,8 @@ operations, including with ssh.
 		<flag name="gcrypt">Enables strong encryption support</flag>
 		<flag name="gpg">Enables usage of asymmetric encryption algorithms</flag>
 		<flag name="rsync">Enables linking with <pkg>net-libs/librsync</pkg> for delta compression support</flag>
+		<flag name="sftp">Enables SFTP support with <pkg>net-libs/libssh</pkg></flag>
+		<flag name="whirlpool">Enables Whirlpool hashing support with <pkg>app-crypt/rhash</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">dar</remote-id>

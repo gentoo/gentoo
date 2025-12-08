@@ -33,7 +33,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-db/sqlite:3
 	dev-cpp/abseil-cpp:=
-	dev-libs/hidapi
+	>=dev-libs/hidapi-0.14.0
 	dev-libs/protobuf:=
 	dev-qt/qt5compat:6
 	dev-qt/qtbase:6[concurrent,dbus,gles2-only=,gui,icu,network,opengl,sql,sqlite,ssl,widgets,xml,X?]

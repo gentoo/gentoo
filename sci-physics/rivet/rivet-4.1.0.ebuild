@@ -38,12 +38,12 @@ RDEPEND="
 	>=sci-physics/fastjet-contrib-1.048
 	>=sci-physics/hepmc-3.1.1:3=[-cm(-),gev(+)]
 	highfive? (
-		sci-libs/HighFive
+		sci-libs/highfive
 		sci-libs/hdf5[cxx]
 	)
 
 	sci-libs/gsl
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib:= )
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '

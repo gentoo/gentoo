@@ -54,7 +54,7 @@ is_cross() { [[ ${CHOST} != ${CTARGET} ]] ; }
 #
 RDEPEND="
 	>=sys-devel/binutils-config-3
-	sys-libs/zlib
+	virtual/zlib:=
 	debuginfod? (
 		dev-libs/elfutils[debuginfod(-)]
 	)
@@ -92,10 +92,12 @@ src_unpack() {
 		"
 		EGIT_CHECKOUT_DIR=${WORKDIR}/patches-git
 		git-r3_src_unpack
-		mv patches-git/9999 patch || die
 
 		if [[ ${PV} != 9999 ]] ; then
 			EGIT_BRANCH=binutils-$(ver_cut 1)_$(ver_cut 2)-branch
+			mv patches-git/${PV%*.9999} patch || die
+		else
+			mv patches-git/9999 patch || die
 		fi
 		EGIT_REPO_URI="
 			https://sourceware.org/git/binutils-gdb.git
@@ -141,7 +143,7 @@ src_prepare() {
 			# This is applied conditionally for now just out of caution.
 			# It should be okay on non-prefix systems though. See bug #892549.
 			if is_cross || use prefix; then
-				eapply "${FILESDIR}"/binutils-2.43-linker-search-path.patch \
+				eapply "${FILESDIR}"/binutils-2.40-linker-search-path.patch \
 					   "${FILESDIR}"/binutils-2.43-linker-prefix.patch
 			fi
 		fi
@@ -528,9 +530,6 @@ src_install() {
 
 # Simple test to make sure our new binutils isn't completely broken.
 # Skip if this binutils is a cross compiler.
-#
-# If coreutils is built with USE=multicall, some of these files
-# will just be wrapper scripts, not actual ELFs we can test.
 binutils_sanity_check() {
 	pushd "${T}" >/dev/null
 
@@ -556,7 +555,8 @@ binutils_sanity_check() {
 	local opt opt2
 	# TODO: test multilib variants?
 	for opt in '' '-O2' ; do
-		for opt2 in '-static' '-static-pie' '-fno-PIE -no-pie' ; do
+		# TODO: add static-pie? we need to check if support exists, though (bug #965478)
+		for opt2 in '-static' '-fno-PIE -no-pie' ; do
 			$(tc-getCC) ${opt} ${opt2} -B"${ED}${BINPATH}" "${T}"/number.c "${T}"/test.c -o "${T}"/test
 			if "${T}"/test | grep -q "Hello Gentoo! Your magic number is: 42" ; then
 				:;
@@ -571,6 +571,7 @@ binutils_sanity_check() {
 
 pkg_preinst() {
 	[[ -n ${ROOT} ]] && return 0
+	[[ -n ${EPREFIX} ]] && return 0
 	[[ -d ${ED}${BINPATH} ]] || return 0
 	[[ -n ${BOOTSTRAP_RAP} ]] || return 0
 	is_cross && return 0

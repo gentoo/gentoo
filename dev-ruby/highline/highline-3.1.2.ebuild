@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_BINWRAP=""
 RUBY_FAKEGEM_EXTRADOC="Changelog.md README.md TODO"
@@ -18,7 +18,7 @@ SRC_URI="https://github.com/JEG2/highline/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 Ruby-BSD )"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm64 ~hppa ~ppc ppc64 ~sparc ~x86"
 IUSE="test"
 
 ruby_add_rdepend "dev-ruby/reline"

@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 SCONS_MIN_VERSION="2.3.0"
 
 inherit distutils-r1 scons-utils systemd toolchain-funcs udev
@@ -30,11 +30,11 @@ GPSD_PROTOCOLS=(
 	sirf skytraq superstar2 tnt tripmate tsip
 )
 IUSE_GPSD_PROTOCOLS=${GPSD_PROTOCOLS[@]/#/+gpsd_protocols_}
-IUSE="${IUSE_GPSD_PROTOCOLS} bluetooth +cxx dbus debug ipv6 latency-timing ncurses ntp qt5 selinux +shm static systemd test udev usb X"
+IUSE="${IUSE_GPSD_PROTOCOLS} bluetooth +cxx dbus debug latency-timing ncurses ntp qt6 selinux +shm static systemd test udev usb X"
 REQUIRED_USE="
 	gpsd_protocols_nmea2000? ( gpsd_protocols_aivdm )
 	${PYTHON_REQUIRED_USE}
-	qt5? ( cxx )
+	qt6? ( cxx )
 "
 RESTRICT="!test? ( test )"
 
@@ -53,10 +53,7 @@ RDEPEND="
 		net-misc/ntpsec
 		net-misc/chrony
 	) )
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtnetwork:5
-	)
+	qt6? ( dev-qt/qtbase:6[network] )
 	${PYTHON_DEPS}
 	dev-python/pyserial[${PYTHON_USEDEP}]
 	usb? ( virtual/libusb:1 )
@@ -158,7 +155,6 @@ src_configure() {
 		libgpsmm=$(usex cxx)
 		clientdebug=$(usex debug)
 		dbus_export=$(usex dbus)
-		ipv6=$(usex ipv6)
 		timing=$(usex latency-timing)
 		ncurses=$(usex ncurses)
 		ntpshm=$(usex ntp)
@@ -166,7 +162,7 @@ src_configure() {
 		# force a predictable python libdir because lib vs. lib64 usage differs
 		# from 3.5 to 3.6+
 		python_libdir="${EPREFIX}"/python-discard
-		qt=$(usex qt5)
+		qt=$(usex qt6)
 		shm_export=$(usex shm)
 		socket_export=True # Required, see bug #900891
 		usb=$(usex usb)
@@ -177,7 +173,7 @@ src_configure() {
 	fi
 
 	use X && scons_opts+=( xgps=1 xgpsspeed=1 )
-	use qt5 && scons_opts+=( qt_versioned=5 )
+	use qt6 && scons_opts+=( qt_versioned=6 )
 
 	# enable specified protocols
 	local protocol

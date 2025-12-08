@@ -19,7 +19,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="strip !test? ( test ) test"
 
 RDEPEND="
-	>=dev-lang/ocaml-4.08.0:=[ocamlopt?]
+	dev-lang/ocaml:=[ocamlopt?]
 	dev-ml/sexplib:=[ocamlopt(+)?]
 	dev-ml/menhir:=[ocamlopt?]
 	dev-ml/camlp4:=[ocamlopt?]
@@ -51,6 +51,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-find-xxdate.patch
 	"${FILESDIR}"/${PN}-1.1.1-shuffle.patch
 	"${FILESDIR}"/${P}-python-3.13.patch
+	"${FILESDIR}"/${P}-stdcompat.patch
 )
 SITEFILE=50coccinelle-gentoo.el
 

@@ -49,7 +49,7 @@ BDEPEND="
 "
 RDEPEND="
 	lzma? ( app-arch/xz-utils[static-libs?,${MULTILIB_USEDEP}] )
-	zlib? ( sys-libs/zlib[static-libs?,${MULTILIB_USEDEP}] )
+	zlib? ( virtual/zlib:=[static-libs?,${MULTILIB_USEDEP}] )
 "
 # We just use the header from libatomic.
 DEPEND="

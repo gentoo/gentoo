@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs flag-o-matic prefix
+inherit toolchain-funcs prefix
 
 DESCRIPTION="Your Own Document Language: a pre-document language and tools to process it"
 HOMEPAGE="https://fbb-git.gitlab.io/yodl/ https://gitlab.com/fbb-git/yodl"
@@ -18,32 +18,25 @@ IUSE="doc"
 BDEPEND="
 	>=dev-build/icmake-9.03.01-r1
 	doc? (
+		app-text/ghostscript-gpl
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-plaingeneric
 	)
 "
 
 PATCHES=(
-	"${FILESDIR}/${P}"-stdbool.patch
 	"${FILESDIR}/${P}"-echo.patch
 	"${FILESDIR}/${P}"-man.patch
+	"${FILESDIR}/${P}"-fix_c23.patch
 )
 
 src_prepare() {
 	sed -e "/DOC.* =/s/yodl\(-doc\)\?/${PF}/" \
 		-e "/COMPILER =/s/gcc/$(tc-getCC)/" \
-		-e "/CXX =/s/g++/$(tc-getCXX)/" \
 		-i INSTALL.im || die
-
-	sed -e "s/ar r /$(tc-getAR) r /" \
-		-e "s/ranlib/$(tc-getRANLIB)/" \
-		-i icmake/stdcompile || die
 
 	sed -e '/strip/s|"-s"|""|g' \
 		-i icmake/program || die
-
-	# required for std::filesystem usage
-	append-cxxflags -std=c++17
 
 	hprefixify build
 
@@ -52,8 +45,8 @@ src_prepare() {
 
 src_compile() {
 	local target
-	for target in  programs macros man $(usex doc manual ''); do
-		AR=$(tc-getAR) RANLIB=$(tc-getRANLIB) ./build ${target} ||
+	for target in  programs macros man $(usev doc manual); do
+		CXX=$(tc-getCXX) AR=$(tc-getAR) RANLIB=$(tc-getRANLIB) ./build ${target} ||
 			die "${target} failed"
 	done
 }

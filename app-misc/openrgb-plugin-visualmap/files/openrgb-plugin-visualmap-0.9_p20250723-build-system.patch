@@ -1,0 +1,15 @@
+Avoid running `git`
+
+--- a/OpenRGBVisualMapPlugin.pro
++++ b/OpenRGBVisualMapPlugin.pro
+@@ -27,10 +27,7 @@ MAJOR       = 0
+ MINOR       = 9
+ SUFFIX      = git
+ 
+-SHORTHASH   = $$system("git rev-parse --short=7 HEAD")
+ LASTTAG     = "release_"$$MAJOR"."$$MINOR
+-COMMAND     = "git rev-list --count "$$LASTTAG"..HEAD"
+-COMMITS     = $$system($$COMMAND)
+ 
+ VERSION_NUM = $$MAJOR"."$$MINOR"."$$COMMITS
+ VERSION_STR = $$MAJOR"."$$MINOR

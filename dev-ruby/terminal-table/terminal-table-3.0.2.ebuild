@@ -23,7 +23,7 @@ LICENSE="MIT"
 SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64 ~arm64"
 
-ruby_add_rdepend "|| ( dev-ruby/unicode-display_width:2 >=dev-ruby/unicode-display_width-1.1.1:1 )"
+ruby_add_rdepend "dev-ruby/unicode-display_width:2"
 
 ruby_add_bdepend "test? ( dev-ruby/term-ansicolor )"
 

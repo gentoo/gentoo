@@ -10,4 +10,4 @@ inherit perl-module
 DESCRIPTION="Cross-platform functions emulating common shell commands"
 
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"

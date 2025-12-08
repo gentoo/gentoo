@@ -1,0 +1,12 @@
+--- a/dynolog/src/rdmamon/CMakeLists.txt	2025-08-22 09:22:27.653494653 +0200
++++ b/dynolog/src/rdmamon/CMakeLists.txt	2025-08-22 09:22:58.096166699 +0200
+@@ -2,6 +2,8 @@
+ 
+ file (GLOB dynolog_rdmamon_files "*.h" "*.cpp")
+ add_library(dynolog_rdmamon_lib ${dynolog_rdmamon_files})
+-target_link_libraries(dynolog_rdmamon_lib PUBLIC gflags::gflags)
++target_link_libraries(dynolog_rdmamon_lib PUBLIC gflags)
++find_package(glog)
+ target_link_libraries(dynolog_rdmamon_lib PUBLIC glog::glog)
++find_package(fmt)
+ target_link_libraries(dynolog_rdmamon_lib PUBLIC fmt::fmt)

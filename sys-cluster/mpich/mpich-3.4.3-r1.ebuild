@@ -45,9 +45,9 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/opa_config.h
 )
 
-#PATCHES=(
-#	"${FILESDIR}"/${PN}-3.3-add-external-libdir-parameter.patch
-#)
+PATCHES=(
+	"${FILESDIR}"/${P}_fix_test_double_serializer.patch
+)
 
 src_prepare() {
 	default

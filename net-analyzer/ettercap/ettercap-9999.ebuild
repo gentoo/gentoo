@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/Ettercap/${PN}.git"
 else
 	SRC_URI="https://github.com/Ettercap/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm ppc ppc64 sparc x86"
+	KEYWORDS="~alpha amd64 arm ppc ppc64 ~sparc x86"
 fi
 
 IUSE="doc geoip gtk ipv6 ncurses +plugins test"
@@ -28,7 +28,7 @@ RDEPEND="
 	dev-libs/openssl:=
 	net-libs/libnet:1.1
 	>=net-libs/libpcap-0.8.1
-	sys-libs/zlib
+	virtual/zlib:=
 	geoip? ( dev-libs/geoip )
 	gtk? (
 		>=app-accessibility/at-spi2-core-2.46.0

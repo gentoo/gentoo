@@ -12,7 +12,7 @@ S="${WORKDIR}"
 
 LICENSE="LGPL-3+ Texinfo-manual"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="truetype test"
 RESTRICT="!test? ( test )"
 
@@ -21,7 +21,7 @@ RDEPEND="
 	media-libs/gd:2=[jpeg,png]
 	media-libs/libpng:0=
 	virtual/latex-base
-	sys-libs/zlib
+	virtual/zlib:=
 	truetype? ( >=media-libs/freetype-2.1.5 )"
 DEPEND="${RDEPEND}
 	virtual/texi2dvi

@@ -25,4 +25,7 @@ This package installs a backend that supports libart_lgpl.
 <use>
 	<flag name="xim">Enable X11 XiM input method</flag>
 </use>
+<upstream>
+	<remote-id type="github">gnustep/libs-back</remote-id>
+</upstream>
 </pkgmetadata>

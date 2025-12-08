@@ -1,0 +1,50 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12.2)
++cmake_minimum_required(VERSION 3.20)
+ 
+ if (BUILD_TESTING)
+     enable_testing()
+diff --git a/third_party/libelfin/CMakeLists.txt b/third_party/libelfin/CMakeLists.txt
+index 5168212..658c054 100644
+--- a/third_party/libelfin/CMakeLists.txt
++++ b/third_party/libelfin/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12.2)
++cmake_minimum_required(VERSION 3.20)
+ 
+ project(libelfin)
+ 
+diff --git a/third_party/libelfin/dwarf/CMakeLists.txt b/third_party/libelfin/dwarf/CMakeLists.txt
+index 89db24d..2c7b400 100644
+--- a/third_party/libelfin/dwarf/CMakeLists.txt
++++ b/third_party/libelfin/dwarf/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.6)
++cmake_minimum_required(VERSION 3.20)
+ 
+ project(dwarf++)
+ 
+diff --git a/third_party/libelfin/elf/CMakeLists.txt b/third_party/libelfin/elf/CMakeLists.txt
+index 1c56c53..97fa55d 100644
+--- a/third_party/libelfin/elf/CMakeLists.txt
++++ b/third_party/libelfin/elf/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.6)
++cmake_minimum_required(VERSION 3.20)
+ 
+ project(elf++)
+ 
+diff --git a/third_party/linenoise-ng/CMakeLists.txt b/third_party/linenoise-ng/CMakeLists.txt
+index 434f432..df12d33 100755
+--- a/third_party/linenoise-ng/CMakeLists.txt
++++ b/third_party/linenoise-ng/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ # -*- mode: CMAKE; -*-
+ 
+-cmake_minimum_required(VERSION 2.6)
++cmake_minimum_required(VERSION 3.20)
+ 
+ project(linenoise)
+ 

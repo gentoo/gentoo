@@ -1,0 +1,29 @@
+From e156f14b262ec3dce32e87dfeb0dabce4821646c Mon Sep 17 00:00:00 2001
+From: Zurab Kvachadze <zurabid2016@gmail.com>
+Date: Sun, 16 Feb 2025 22:51:03 +0100
+Subject: [PATCH] src/ngx_http_lua_common.h: always #define NDK
+
+In Gentoo, NDK is a mandatory dependency. Make life easier for everybody
+and just define the NDK macro.
+
+Signed-off-by: Zurab Kvachadze <zurabid2016@gmail.com>
+---
+ src/ngx_http_lua_common.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/ngx_http_lua_common.h b/src/ngx_http_lua_common.h
+index cc2d36a3..42a7df6b 100644
+--- a/src/ngx_http_lua_common.h
++++ b/src/ngx_http_lua_common.h
+@@ -23,6 +23,8 @@
+ #include <lualib.h>
+ #include <lauxlib.h>
+ 
++#define NDK 1
++
+ 
+ #if defined(NDK) && NDK
+ #include <ndk.h>
+-- 
+2.45.3
+

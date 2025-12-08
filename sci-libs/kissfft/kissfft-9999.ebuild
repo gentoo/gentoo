@@ -33,7 +33,6 @@ DEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-131.1.0-cross.patch
 	"${FILESDIR}"/${PN}-131.1.0-cmake.patch
 )
 

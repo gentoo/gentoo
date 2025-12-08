@@ -18,7 +18,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-libs/gjs-1.50
 	>=dev-libs/glib-2.32:2
-	>=dev-libs/gobject-introspection-1.35.9:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 	>=gui-libs/gtk-4.6:4[introspection]
 	>=gui-libs/libadwaita-1.5_alpha:1=
 	x11-libs/gdk-pixbuf:2

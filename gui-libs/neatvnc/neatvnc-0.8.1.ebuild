@@ -1,4 +1,4 @@
-# Copyright 2020-2024 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	=dev-libs/aml-0.3*
-	sys-libs/zlib
+	virtual/zlib:=
 	x11-libs/pixman
 	examples? (
 		media-libs/libpng:=
@@ -57,7 +57,7 @@ PATCHES=(
 src_prepare() {
 	default
 
-	# useful soname
+	# useful soname (https://github.com/any1/neatvnc/issues/124)
 	sed -i -e "s/'0.0.0'/meson.project_version()/" meson.build || die
 }
 

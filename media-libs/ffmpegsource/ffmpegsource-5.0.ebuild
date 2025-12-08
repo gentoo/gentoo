@@ -23,7 +23,7 @@ SLOT="0/5"
 
 RDEPEND="
 	>=media-video/ffmpeg-6.1:=
-	sys-libs/zlib
+	virtual/zlib:=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"

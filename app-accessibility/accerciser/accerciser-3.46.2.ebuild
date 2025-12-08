@@ -29,7 +29,7 @@ RDEPEND="
 
 	dev-libs/atk[introspection]
 	>=dev-libs/glib-2.28:2
-	dev-libs/gobject-introspection:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 	x11-libs/gdk-pixbuf[introspection]
 	x11-libs/libwnck:3[introspection]
 	x11-libs/pango[introspection]

@@ -15,12 +15,12 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit autotools git-r3
 else
 	inherit libtool gnome.org
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="crypt debug examples python static-libs"
+IUSE="crypt debug debugger examples python static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 BDEPEND=">=virtual/pkgconfig-1"
@@ -59,6 +59,7 @@ multilib_src_configure() {
 			--without-python \
 			$(use_with crypt crypto) \
 			$(use_with debug) \
+			$(use_with debugger) \
 			$(use_enable static-libs static) \
 			"$@"
 	}

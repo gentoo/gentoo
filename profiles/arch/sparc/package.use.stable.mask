@@ -1,9 +1,18 @@
 # Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
+# dev-perl/GD-Barcode is not stable here. Bug #962143
+dev-perl/Business-ISBN barcode
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
+# dev-perl/GD is not stable here. Bug #962143
+media-fonts/unifont utils fontforge
+
 # Ionen Wolkens <ionen@gentoo.org> (2025-05-25)
 # media-sound/liblc3 is not stable here yet
 media-video/ffmpeg liblc3
+media-video/ffmpeg-compat liblc3
 
 # Ionen Wolkens <ionen@gentoo.org> (2025-03-12)
 # app-arch/snappy is not stable here yet
@@ -105,8 +114,8 @@ media-sound/vorbis-tools kate
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-14)
 # dependencies not stable on sparc
-media-video/ffmpeg codec2 libaribb24 libilbc libtesseract lv2 rubberband vidstab
-media-video/ffmpeg-compat codec2 libaribb24 libilbc libtesseract lv2 rubberband vidstab
+media-video/ffmpeg codec2 libaribb24 libilbc lv2 ocr rubberband vidstab
+media-video/ffmpeg-compat codec2 libaribb24 libilbc lv2 ocr rubberband vidstab
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-10)
 # gnome-online-accounts not stable on sparc

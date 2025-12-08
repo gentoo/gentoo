@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="NCSA-HDF"
 SLOT="0/${PV%%_p*}"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="cxx debug examples fortran +hl mpi szip threads unsupported zlib"
 REQUIRED_USE="
 	!unsupported? (
@@ -30,8 +30,8 @@ REQUIRED_USE="
 
 RDEPEND="
 	mpi? ( virtual/mpi[romio] )
-	szip? ( virtual/szip )
-	zlib? ( sys-libs/zlib:0= )"
+	szip? ( virtual/szip:= )
+	zlib? ( virtual/zlib:= )"
 DEPEND="${RDEPEND}"
 
 PATCHES=(
@@ -88,6 +88,8 @@ src_prepare() {
 src_configure() {
 	# bug #686620
 	use sparc && tc-is-gcc && append-flags -fno-tree-ccp
+	# bug #922800, LTO failures:
+	use fortran && filter-lto
 
 	econf \
 		--disable-static \

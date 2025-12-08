@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 pypi
 
@@ -30,11 +30,11 @@ BDEPEND="
 	test? (
 		dev-python/jupyter-kernel-test[${PYTHON_USEDEP}]
 		dev-python/pydot[${PYTHON_USEDEP}]
-		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 	)
 "
 
+EPYTEST_PLUGINS=( pytest-timeout )
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(

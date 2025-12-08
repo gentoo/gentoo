@@ -42,7 +42,7 @@ RDEPEND="
 	dev-libs/libsodium:=
 	dev-libs/openssl:=
 	>=sys-libs/liburing-2.3:=
-	sys-libs/zlib
+	virtual/zlib:=
 	llvm-libunwind? ( llvm-runtimes/libunwind:= )
 	!llvm-libunwind? ( sys-libs/libunwind:= )
 "
@@ -65,6 +65,9 @@ src_unpack() {
 }
 
 src_configure() {
+	# bug #949607
+	filter-lto
+
 	# TODO: liburing could in theory be optional but fails to link
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_DIR="$(get_libdir)/cmake/${PN}"

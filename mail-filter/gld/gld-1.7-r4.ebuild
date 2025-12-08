@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 IUSE="postgres"
 # Not adding a mysql USE flag. The package defaults to it, so we will too.
-DEPEND="sys-libs/zlib
+DEPEND="virtual/zlib:=
 	dev-libs/openssl:0=
 	!postgres? ( dev-db/mysql-connector-c:0= )
 	postgres? ( dev-db/postgresql:*[server] )"

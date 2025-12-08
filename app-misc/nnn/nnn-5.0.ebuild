@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit bash-completion-r1 flag-o-matic toolchain-funcs xdg
+inherit flag-o-matic shell-completion toolchain-funcs xdg
 
 DESCRIPTION="The missing terminal file browser for X"
 HOMEPAGE="https://github.com/jarun/nnn"
@@ -60,11 +60,9 @@ src_install() {
 
 	newbashcomp misc/auto-completion/bash/nnn-completion.bash nnn
 
-	insinto /usr/share/fish/vendor_completions.d
-	doins misc/auto-completion/fish/nnn.fish
+	dofishcomp misc/auto-completion/fish/nnn.fish
 
-	insinto /usr/share/zsh/site-functions
-	doins misc/auto-completion/zsh/_nnn
+	dozshcomp misc/auto-completion/zsh/_nnn
 
 	einstalldocs
 

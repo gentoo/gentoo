@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,8 @@ RDEPEND="
 	berkdb? ( >=sys-libs/db-4.2:= )
 	sasl?	( dev-libs/cyrus-sasl )
 	ssl?	( >=dev-libs/openssl-0.9.6:0= )
-	zlib?	( sys-libs/zlib:0= )
+	zlib?	( virtual/zlib:= )
+	!sci-chemistry/mdtraj
 "
 DEPEND="${RDEPEND}"
 BDEPEND=">=dev-lang/perl-5.14"

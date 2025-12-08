@@ -1,0 +1,45 @@
+Bug: https://bugs.gentoo.org/967060
+
+diff -rup wireshark-4.6.2/CMakeLists.txt wireshark-4.6.2-pkcs11/CMakeLists.txt
+--- wireshark-4.6.2/CMakeLists.txt	2025-12-04 13:48:57.732168127 +0100
++++ wireshark-4.6.2-pkcs11/CMakeLists.txt	2025-12-04 13:48:29.067453231 +0100
+@@ -1587,16 +1587,18 @@ if(GNUTLS_FOUND)
+ 	# Calculating public keys from PKCS #11 private keys requires GnuTLS
+ 	# 3.4.0 or greater.
+ 	#
+-	# Check that the support is present in case GnuTLS was compiled
+-	# --without-p11-kit as macos-setup.sh did until December 2020.
+-	cmake_push_check_state()
+-	if(WIN32 AND NOT MINGW)
+-		set(CMAKE_REQUIRED_DEFINITIONS -Dssize_t=int)
+-	endif()
+-	set(CMAKE_REQUIRED_INCLUDES ${GNUTLS_INCLUDE_DIRS})
+-	set(CMAKE_REQUIRED_LIBRARIES ${GNUTLS_LIBRARIES})
+-	check_symbol_exists(gnutls_pkcs11_obj_list_import_url4 gnutls/pkcs11.h HAVE_GNUTLS_PKCS11)
+-	cmake_pop_check_state()
++	if (ENABLE_PKCS11)
++		# Check that the support is present in case GnuTLS was compiled
++		# --without-p11-kit as macos-setup.sh did until December 2020.
++		cmake_push_check_state()
++		if(WIN32 AND NOT MINGW)
++			set(CMAKE_REQUIRED_DEFINITIONS -Dssize_t=int)
++		endif()
++		set(CMAKE_REQUIRED_INCLUDES ${GNUTLS_INCLUDE_DIRS})
++		set(CMAKE_REQUIRED_LIBRARIES ${GNUTLS_LIBRARIES})
++		check_symbol_exists(gnutls_pkcs11_obj_list_import_url4 gnutls/pkcs11.h HAVE_GNUTLS_PKCS11)
++		cmake_pop_check_state()
++	endif (PKCS11)
+ endif()
+ 
+ if (QT_FOUND)
+diff -rup wireshark-4.6.2/CMakeOptions.txt wireshark-4.6.2-pkcs11/CMakeOptions.txt
+--- wireshark-4.6.2/CMakeOptions.txt	2025-12-03 18:45:32.000000000 +0100
++++ wireshark-4.6.2-pkcs11/CMakeOptions.txt	2025-12-04 13:44:49.553654179 +0100
+@@ -106,6 +106,7 @@ option(ENABLE_NGHTTP3    "Build with HTT
+ option(ENABLE_LUA        "Build with Lua dissector support" ON)
+ option(ENABLE_SMI        "Build with libsmi snmp support" ON)
+ option(ENABLE_GNUTLS     "Build with RSA decryption support" ON)
++option(ENABLE_PKCS11     "Build with PKCS11 support" ON)
+ if(WIN32 AND USE_REPOSITORY)
+ 	option(ENABLE_WINSPARKLE "Enable automatic updates using WinSparkle" ON)
+ endif()

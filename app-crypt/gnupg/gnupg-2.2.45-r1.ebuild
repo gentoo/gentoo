@@ -23,7 +23,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="bzip2 doc ldap nls readline selinux +smartcard ssl test tofu tools usb user-socket wks-server"
 RESTRICT="!test? ( test )"
 
@@ -35,7 +35,7 @@ DEPEND="
 	>=dev-libs/libgpg-error-1.38
 	>=dev-libs/libksba-1.4.0
 	>=dev-libs/npth-1.2
-	sys-libs/zlib
+	virtual/zlib:=
 	bzip2? ( app-arch/bzip2 )
 	ldap? ( net-nds/openldap:= )
 	readline? ( sys-libs/readline:= )

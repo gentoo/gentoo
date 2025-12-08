@@ -47,7 +47,7 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	media-gfx/qrencode:=
 	sys-libs/readline:0=
-	sys-libs/zlib:=[minizip]
+	virtual/minizip:=
 	X? (
 		dev-qt/qtx11extras:5
 	)

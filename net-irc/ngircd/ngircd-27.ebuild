@@ -4,7 +4,7 @@
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/alexbarton.asc
-inherit tmpfiles systemd verify-sig
+inherit flag-o-matic tmpfiles systemd verify-sig
 
 DESCRIPTION="An IRC server written from scratch"
 HOMEPAGE="https://ngircd.barton.de/"
@@ -31,7 +31,7 @@ RDEPEND="
 		)
 	)
 	tcpd? ( sys-apps/tcp-wrappers )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -71,6 +71,7 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cppflags -DPROTOTYPES # fix c23
 	local myeconfargs=(
 		--sysconfdir="${EPREFIX}"/etc/${PN}
 

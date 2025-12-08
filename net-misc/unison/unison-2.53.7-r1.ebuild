@@ -38,7 +38,7 @@ DEPEND="
 	)
 "
 RDEPEND="
-	>=dev-lang/ocaml-4.08:=
+	dev-lang/ocaml:=
 	gui? (
 		dev-ml/lablgtk:3=[ocamlopt?]
 		|| (

@@ -52,7 +52,7 @@ BDEPEND="
 	app-alternatives/yacc
 	dev-libs/cereal
 	test? (
-		app-editors/vim-core
+		|| ( dev-util/xxd app-editors/vim-core )
 		dev-util/pahole
 	)
 	virtual/pkgconfig

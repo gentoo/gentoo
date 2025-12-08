@@ -1,0 +1,63 @@
+https://github.com/curl/curl/commit/f7cac7cc07a45481b246c875e8113d741ba2a6e1
+From: Daniel Stenberg <daniel@haxx.se>
+Date: Sun, 14 Sep 2025 23:28:03 +0200
+Subject: [PATCH] setopt: accept *_SSL_VERIFYHOST set to 2L
+
+... without outputing a verbose message about it. In the early days we
+had 2L and 1L have different functionalities.
+
+Reported-by: Jicea
+Bug: https://curl.se/mail/lib-2025-09/0031.html
+Closes #18547
+--- a/lib/setopt.c
++++ b/lib/setopt.c
+@@ -443,6 +443,7 @@ static CURLcode setopt_bool(struct Curl_easy *data, CURLoption option,
+                             long arg, bool *set)
+ {
+   bool enabled = !!arg;
++  int ok = 1;
+   struct UserDefined *s = &data->set;
+   switch(option) {
+   case CURLOPT_FORBID_REUSE:
+@@ -619,7 +620,7 @@ static CURLcode setopt_bool(struct Curl_easy *data, CURLoption option,
+      * Enable verification of the hostname in the peer certificate for proxy
+      */
+     s->proxy_ssl.primary.verifyhost = enabled;
+-
++    ok = 2;
+     /* Update the current connection proxy_ssl_config. */
+     Curl_ssl_conn_config_update(data, TRUE);
+     break;
+@@ -723,6 +724,7 @@ static CURLcode setopt_bool(struct Curl_easy *data, CURLoption option,
+      * Enable verification of the hostname in the peer certificate for DoH
+      */
+     s->doh_verifyhost = enabled;
++    ok = 2;
+     break;
+   case CURLOPT_DOH_SSL_VERIFYSTATUS:
+     /*
+@@ -732,6 +734,7 @@ static CURLcode setopt_bool(struct Curl_easy *data, CURLoption option,
+       return CURLE_NOT_BUILT_IN;
+ 
+     s->doh_verifystatus = enabled;
++    ok = 2;
+     break;
+ #endif /* ! CURL_DISABLE_DOH */
+   case CURLOPT_SSL_VERIFYHOST:
+@@ -743,6 +746,7 @@ static CURLcode setopt_bool(struct Curl_easy *data, CURLoption option,
+        this argument took a boolean when it was not and misused it.
+        Treat 1 and 2 the same */
+     s->ssl.primary.verifyhost = enabled;
++    ok = 2;
+ 
+     /* Update the current connection ssl_config. */
+     Curl_ssl_conn_config_update(data, FALSE);
+@@ -844,7 +848,7 @@ static CURLcode setopt_bool(struct Curl_easy *data, CURLoption option,
+   default:
+     return CURLE_OK;
+   }
+-  if((arg > 1) || (arg < 0))
++  if((arg > ok) || (arg < 0))
+     /* reserve other values for future use */
+     infof(data, "boolean setopt(%d) got unsupported argument %ld,"
+           " treated as %d", option, arg, enabled);

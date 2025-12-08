@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: fcaps.eclass
@@ -84,13 +84,15 @@ esac
 # appropriate path var ($D/$ROOT/etc...) will be prefixed based on the current
 # ebuild phase.
 #
-# The caps mode (default 711) is used to set the permission on the file if
-# capabilities were properly set on the file.
+# The caps mode is used to set the permission on the file if capabilities
+# were properly set on the file.  No change is applied by default.
 #
-# If the system is unable to set capabilities, it will use the specified user,
-# group, and mode (presumably to make the binary set*id).  The defaults there
-# are 0:0 and 4711.  Otherwise, the ownership and permissions will be
-# unchanged.
+# If capabilities are not sucessfully applied, the permissions on the file are
+# updated according to the owner, group, and mode options, if provided.
+#
+# For example, "-m u+s" may be used to enable suid as a fallback when file caps
+# are unavailable.  This should be used with care, typically when the
+# application is written to handle dropping privileges itself.
 fcaps() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -100,15 +102,10 @@ fcaps() {
 	fi
 
 	# Process the user options first.
-	local owner='0'
-	local group='0'
-	local mode=u+s
+	local owner=
+	local group=
+	local mode=
 	local caps_mode=
-
-	if [[ -n ${FCAPS_DENY_WORLD_READ} ]]; then
-		mode=u+s,go-r
-		caps_mode=go-r
-	fi
 
 	while [[ $# -gt 0 ]] ; do
 		case $1 in
@@ -143,12 +140,16 @@ fcaps() {
 	for file ; do
 		[[ ${file} != /* ]] && file="${root}/${file}"
 
+		# Remove the read bits if requested.
+		if [[ -n ${FCAPS_DENY_WORLD_READ} ]]; then
+			chmod go-r "${file}" || die
+		fi
+
 		if use filecaps ; then
 			# Try to set capabilities.  Ignore errors when the
 			# fs doesn't support it, but abort on all others.
 			debug-print "${FUNCNAME}: setting caps '${caps}' on '${file}'"
 
-			# Remove the read bits if requested.
 			if [[ -n ${caps_mode} ]]; then
 				chmod ${caps_mode} "${file}" || die
 			fi
@@ -181,10 +182,10 @@ fcaps() {
 			fi
 		fi
 
-		# If we're still here, setcaps failed.
+		# If we're still here, setcaps failed or filecaps are disabled.
 		if [[ -n ${owner} || -n ${group} ]]; then
 			debug-print "${FUNCNAME}: setting owner on '${file}'"
-			chown "${owner}:${group}" "${file}" || die
+			chown "${owner}${group:+:}${group}" "${file}" || die
 		fi
 		if [[ -n ${mode} ]]; then
 			debug-print "${FUNCNAME}: setting mode on '${file}'"

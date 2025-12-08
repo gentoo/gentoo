@@ -7,7 +7,7 @@ CHECKREQS_DISK_BUILD="1200M"
 inherit desktop check-reqs xdg
 
 DESCRIPTION="Narrative-driven, single-player adventure like mom used to make"
-HOMEPAGE="https://mattmakesgames.itch.io/celeste"
+HOMEPAGE="https://maddymakesgamesinc.itch.io/celeste"
 SRC_URI="${PN}-linux.zip"
 S="${WORKDIR}"
 

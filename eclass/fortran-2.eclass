@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: fortran-2.eclass
@@ -34,7 +34,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 # @ECLASS_VARIABLE: FORTRAN_NEED_OPENMP
 # @DESCRIPTION:
@@ -187,6 +187,66 @@ _fortran-has-openmp() {
 	return ${ret}
 }
 
+# @FUNCTION: _fortran-test-lto
+# @INTERNAL
+# @DESCRIPTION:
+# Test if C and Fortran files can be linked together.  If it fails, remove
+# LTO flags.  This may be necessary if users are combining Clang
+# with GNU Fortran, and enabling LTO, since this will result in two different
+# kinds of bytecode being linked with a linker that's set up for only one
+# of them.
+_fortran-test-lto() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	local compiler=${1}
+	local flags=${2}
+	local fcode=${T}/test-fc.f
+	local ccode=${T}/test-fc.c
+	local fail=
+
+	einfo "Testing linking C and Fortran code ..."
+
+	cat <<- EOF > "${fcode}" || die
+		       subroutine fsub()
+		       end
+	EOF
+	cat <<- EOF > "${ccode}" || die
+		void fsub_();
+
+		int main() {
+			fsub_();
+			return 0;
+		}
+	EOF
+
+	# Prepare test objects.  If either failed, do nothing.
+
+	set -- ${compiler} ${flags} -c "${fcode}" -o "${fcode}.o"
+	echo "${@}" >&2
+	"${@}" || return
+
+	set -- $(tc-getCC) ${CFLAGS} -c "${ccode}" -o "${ccode}.o"
+	echo "${@}" >&2
+	"${@}" || return
+
+	# Try cross-linking.
+
+	set -- ${compiler} ${flags} ${LDFLAGS} -o "${fcode}.exe" "${fcode}.o" "${ccode}.o"
+	echo "${@}" >&2
+	"${@}" || fail=1
+
+	set -- $(tc-getCC) ${CFLAGS} ${LDFLAGS} -o "${fcode}.exe" "${fcode}.o" "${ccode}.o"
+	echo "${@}" >&2
+	"${@}" || fail=1
+
+	if [[ ! ${fail} ]]; then
+		einfo "Looks like we can link C and Fortran code together"
+	else
+		einfo "Cross-linking C and Fortran failed, force-disabling LTO"
+		filter-lto
+	fi
+}
+
 # @FUNCTION: _fortran_die_msg
 # @INTERNAL
 # @DESCRIPTION:
@@ -211,19 +271,31 @@ _fortran_die_msg() {
 _fortran_test_function() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	local dialect
+	local compiler dialect flags
 
 	: "${F77:=$(tc-getFC)}"
 
 	: "${FORTRAN_STANDARD:=77}"
 	for dialect in ${FORTRAN_STANDARD}; do
 		case ${dialect} in
-			77) _fortran_compile_test "$(tc-getF77)" || \
-				_fortran_die_msg ;;
-			90|95) _fortran_compile_test "$(tc-getFC)" 90 || \
-				_fortran_die_msg ;;
-			2003) _fortran_compile_test "$(tc-getFC)" 03 || \
-				_fortran_die_msg ;;
+			77)
+				compiler=$(tc-getF77)
+				flags=${FFLAGS}
+				_fortran_compile_test "${compiler}" ||
+					_fortran_die_msg 
+				;;
+			90|95)
+				compiler=$(tc-getFC)
+				flags=${FCFLAGS}
+				_fortran_compile_test "${compiler}" 90 ||
+					_fortran_die_msg
+				;;
+			2003)
+				compiler=$(tc-getFC)
+				flags=${FCFLAGS}
+				_fortran_compile_test "${compiler}" 03 ||
+					_fortran_die_msg
+				;;
 			2008) die "Future" ;;
 			*) die "${dialect} is not a Fortran dialect." ;;
 		esac
@@ -241,6 +313,8 @@ _fortran_test_function() {
 			die "Please install current gcc with USE=openmp or set the FC variable to a compiler that supports OpenMP"
 		fi
 	fi
+
+	_fortran-test-lto "${compiler}" "${flags}"
 }
 
 # @FUNCTION: _fortran-2_pkg_setup

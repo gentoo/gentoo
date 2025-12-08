@@ -7,9 +7,8 @@
 	<use>
 		<flag name="daemon">Build the system daemon, not just the client tool</flag>
 		<flag name="lvm">Add support for Logical Volume Management via <pkg>sys-fs/lvm2</pkg></flag>
+		<flag name="smart">Support SMART via <pkg>sys-libs/libblockdev</pkg></flag>
 		<flag name="systemd">Support <pkg>sys-apps/systemd</pkg>'s logind</flag>
-		<flag name="vdo">Enable Virtual Data Optimizer support.</flag>
-		<flag name="zram">Enable ZRAM support (requires <pkg>sys-apps/systemd</pkg>)</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://github.com/storaged-project/udisks/issues</bugs-to>

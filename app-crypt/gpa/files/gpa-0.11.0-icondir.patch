@@ -1,0 +1,32 @@
+From c37e514a51d365640a55973d77cf5e8885c1a520 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Sun, 30 Nov 2025 15:47:29 -0500
+Subject: [PATCH] Makefile.am: revert icondir to previous value
+
+Setting icondir to src/ results in gpa.png being installed to
+$(DESTDIR)src/gpa.png. This is likely a mistake.
+
+Partially reverts f6dfae5e822b8079a2a68c5185fedf0721ce8090.
+
+Bug: https://bugs.gentoo.org/966859
+---
+ Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index c6be8c7..bf6265c 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -45,8 +45,8 @@ DISTCLEANFILES = gpadefs.h
+ desktopdir = $(datadir)/applications/
+ desktop_DATA = gpa.desktop
+ 
++icondir = $(datadir)/pixmaps
+ icon_DATA = gpa.png
+-icondir = src/
+ 
+ pkgdata_DATA = gpa.png
+ 
+-- 
+2.52.0
+

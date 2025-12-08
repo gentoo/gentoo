@@ -1,0 +1,46 @@
+From 03e822bc3cf029ef01da81cdade78fa14d38d3f4 Mon Sep 17 00:00:00 2001
+Message-ID: <03e822bc3cf029ef01da81cdade78fa14d38d3f4.1760256737.git.sam@gentoo.org>
+In-Reply-To: <17b056cb8ecff88326340ef9e70cd59d78d781a0.1760256737.git.sam@gentoo.org>
+References: <17b056cb8ecff88326340ef9e70cd59d78d781a0.1760256737.git.sam@gentoo.org>
+From: Nick Wellnhofer <wellnhofer@aevum.de>
+Date: Mon, 29 Sep 2025 10:46:47 +0200
+Subject: [PATCH 6/8] Revert "globals: Don't export DllMain on Windows"
+
+This reverts commit bd2072f8d025e7a37d527b23b84698460c5798bf.
+
+Apparently, this change would require to recompile downstream code.
+---
+ globals.c | 16 +++++++++++-----
+ 1 file changed, 11 insertions(+), 5 deletions(-)
+
+diff --git a/globals.c b/globals.c
+index de131552..8306f94e 100644
+--- a/globals.c
++++ b/globals.c
+@@ -779,12 +779,18 @@ int
+ xmlDllMain(ATTRIBUTE_UNUSED void *hinstDLL, unsigned long fdwReason,
+            ATTRIBUTE_UNUSED void *lpvReserved)
+ #else
+-/* declare to avoid "no previous prototype for 'DllMain'" warning */
+-/* Note that we do NOT want to include this function declaration in
+-   a public header because it's meant to be called by Windows itself,
+-   not a program that uses this library. */
+ 
+-BOOL WINAPI
++/*
++ * Declare to avoid "no previous prototype for 'DllMain'" warning.
++ *
++ * Note that we do NOT want to include this function declaration in
++ * a public header because it's meant to be called by Windows itself,
++ * not a program that uses this library.
++ *
++ * It is a mistake to export this function, but changing that seems
++ * to break the ABI.
++ */
++XMLPUBFUN BOOL WINAPI
+ DllMain (HINSTANCE hinstDLL,
+          DWORD     fdwReason,
+          LPVOID    lpvReserved);
+-- 
+2.51.0
+

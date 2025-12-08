@@ -22,7 +22,7 @@ if [[ ${PV} == 9999 ]]; then
 	"
 	inherit git-r3
 else
-	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/valgrind.gpg
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/valgrind.asc
 	inherit verify-sig
 
 	MY_P="${P/_rc/.RC}"
@@ -46,7 +46,7 @@ else
 	fi
 fi
 
-LICENSE="GPL-2"
+LICENSE="GPL-3+"
 SLOT="0"
 IUSE="mpi"
 
@@ -59,7 +59,7 @@ if [[ ${PV} == 9999 ]] ; then
 		dev-libs/libxslt
 	"
 else
-	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-valgrind )"
+	BDEPEND+=" verify-sig? ( >=sec-keys/openpgp-keys-valgrind-20251018 )"
 fi
 
 PATCHES=(

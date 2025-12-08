@@ -5,6 +5,9 @@
 		<email>tupone@gentoo.org</email>
 		<name>Alfredo Tupone</name>
 	</maintainer>
+	<use>
+		<flag name="rocm">Enable ROCm gpu computing support</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">pytorch/vision</remote-id>
 	</upstream>

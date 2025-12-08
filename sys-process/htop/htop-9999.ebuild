@@ -96,7 +96,8 @@ pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_icon_cache_update
 
-	fcaps cap_sys_ptrace usr/bin/${PN}
+	# Non-caps mode is blank to avoid suid with USE="-filecaps" (bug 961054)
+	fcaps -m '' cap_sys_ptrace usr/bin/htop
 
 	optfeature "Viewing processes accessing certain files" sys-process/lsof
 }

@@ -26,10 +26,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-disable_automagic_dependencies.patch
-)
-
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
@@ -44,14 +40,19 @@ src_configure() {
 	# https://github.com/ginkgo-project/ginkgo/issues/1657
 	#
 	# Do not trust it with LTO either.
+	#
+	# Fixed after 1.10.0, remove on next version bump.
 	append-flags -fno-strict-aliasing
 	filter-lto
 
 	local mycmakeargs=(
+		# ignores FEATURES=ccache handling
+		-DGINKGO_WITH_CCACHE=OFF
 		-DGINKGO_DEVEL_TOOLS=OFF
 		-DGINKGO_BUILD_TESTS=OFF
 		-DGINKGO_BUILD_BENCHMARKS=OFF
 		-DGINKGO_BUILD_REFERENCE=ON
+		-DGINKGO_BUILD_EXAMPLES=OFF
 		-DGINKGO_BUILD_CUDA=$(usex cuda)
 		-DGINKGO_BUILD_HWLOC=$(usex hwloc)
 		-DGINKGO_BUILD_OMP=$(usex openmp)

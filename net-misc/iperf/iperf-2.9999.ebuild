@@ -1,25 +1,34 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit git-r3 toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Tool to measure IP bandwidth using UDP or TCP"
 HOMEPAGE="https://sourceforge.net/projects/iperf2/"
-EGIT_REPO_URI="https://git.code.sf.net/p/iperf2/code"
+
+if [[ ${PV} == *9999* ]] ; then
+	EGIT_REPO_URI="https://git.code.sf.net/p/iperf2/code"
+	inherit git-r3
+else
+	SRC_URI="https://downloads.sourceforge.net/iperf2/${P}.tar.gz"
+
+	KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+fi
 
 LICENSE="HPND"
 SLOT="2"
-IUSE="ipv6 threads debug"
-
-DOCS=( INSTALL README )
+IUSE="debug"
+# Fails w/ connection refused to just-spawned daemon
+RESTRICT="test"
 
 src_configure() {
-	econf \
-		$(use_enable debug debuginfo) \
-		$(use_enable ipv6) \
-		$(use_enable threads)
+	local myeconfargs=(
+		$(use_enable debug debuginfo)
+	)
+
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {

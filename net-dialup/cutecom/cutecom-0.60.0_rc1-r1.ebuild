@@ -14,7 +14,7 @@ S="${WORKDIR}/cutecom-v${MY_PV}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 DEPEND="
 	dev-qt/qtbase:6[gui,network,widgets]

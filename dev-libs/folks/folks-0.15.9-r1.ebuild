@@ -20,7 +20,7 @@ RESTRICT="!test? ( test )"
 DEPEND="
 	>=dev-libs/glib-2.58:2
 	>=dev-libs/libgee-0.10:0.8[introspection]
-	>=dev-libs/gobject-introspection-1.54:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 	telepathy? (
 		>=net-libs/telepathy-glib-0.19.9
 		dev-libs/dbus-glib

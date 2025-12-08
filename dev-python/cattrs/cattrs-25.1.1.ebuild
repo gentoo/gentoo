@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 
 inherit distutils-r1
 
@@ -72,6 +72,67 @@ python_test() {
 			tests/test_preconf.py::test_orjson
 			tests/test_preconf.py::test_orjson_converter
 			tests/test_preconf.py::test_orjson_converter_unstruct_collection_overrides
+		)
+	fi
+
+	# https://github.com/python-attrs/cattrs/issues/626
+	# https://github.com/python-attrs/cattrs/pull/653
+	if [[ ${EPYTHON} == python3.14* ]] ; then
+		EPYTEST_DESELECT+=(
+			'tests/strategies/test_include_subclasses.py::test_circular_reference[with-subclasses]'
+			'tests/strategies/test_include_subclasses.py::test_overrides[wo-union-strategy-child1-only]'
+			'tests/strategies/test_include_subclasses.py::test_overrides[wo-union-strategy-child2-only]'
+			'tests/strategies/test_include_subclasses.py::test_overrides[wo-union-strategy-grandchild-only]'
+			'tests/strategies/test_include_subclasses.py::test_overrides[wo-union-strategy-parent-only]'
+			'tests/strategies/test_include_subclasses.py::test_parents_with_generics[False]'
+			'tests/strategies/test_include_subclasses.py::test_parents_with_generics[True]'
+			tests/strategies/test_include_subclasses.py::test_structure_as_union
+			'tests/strategies/test_include_subclasses.py::test_structuring_unstructuring_unknown_subclass'
+			'tests/strategies/test_include_subclasses.py::test_structuring_with_inheritance[with-subclasses-child1-only]'
+			'tests/strategies/test_include_subclasses.py::test_structuring_with_inheritance[with-subclasses-child2-only]'
+			'tests/strategies/test_include_subclasses.py::test_structuring_with_inheritance[with-subclasses-grandchild-only]'
+			'tests/strategies/test_include_subclasses.py::test_structuring_with_inheritance[with-subclasses-non-union-compose-child]'
+			'tests/strategies/test_include_subclasses.py::test_structuring_with_inheritance[with-subclasses-non-union-compose-grandchild]'
+			'tests/strategies/test_include_subclasses.py::test_structuring_with_inheritance[with-subclasses-non-union-compose-parent]'
+			'tests/strategies/test_include_subclasses.py::test_structuring_with_inheritance[with-subclasses-non-union-container]'
+			'tests/strategies/test_include_subclasses.py::test_structuring_with_inheritance[with-subclasses-parent-only]'
+			'tests/strategies/test_include_subclasses.py::test_structuring_with_inheritance[with-subclasses-union-compose-child]'
+			'tests/strategies/test_include_subclasses.py::test_structuring_with_inheritance[with-subclasses-union-compose-grandchild]'
+			'tests/strategies/test_include_subclasses.py::test_structuring_with_inheritance[with-subclasses-union-compose-parent]'
+			'tests/strategies/test_include_subclasses.py::test_structuring_with_inheritance[with-subclasses-union-container]'
+			'tests/strategies/test_include_subclasses.py::test_unstructuring_with_inheritance[with-subclasses-child1-only]'
+			'tests/strategies/test_include_subclasses.py::test_unstructuring_with_inheritance[with-subclasses-child2-only]'
+			'tests/strategies/test_include_subclasses.py::test_unstructuring_with_inheritance[with-subclasses-grandchild-only]'
+			'tests/strategies/test_include_subclasses.py::test_unstructuring_with_inheritance[with-subclasses-non-union-compose-child]'
+			'tests/strategies/test_include_subclasses.py::test_unstructuring_with_inheritance[with-subclasses-non-union-compose-grandchild]'
+			'tests/strategies/test_include_subclasses.py::test_unstructuring_with_inheritance[with-subclasses-non-union-compose-parent]'
+			'tests/strategies/test_include_subclasses.py::test_unstructuring_with_inheritance[with-subclasses-non-union-container]'
+			'tests/strategies/test_include_subclasses.py::test_unstructuring_with_inheritance[with-subclasses-parent-only]'
+			'tests/strategies/test_include_subclasses.py::test_unstructuring_with_inheritance[with-subclasses-union-compose-child]'
+			'tests/strategies/test_include_subclasses.py::test_unstructuring_with_inheritance[with-subclasses-union-compose-grandchild]'
+			'tests/strategies/test_include_subclasses.py::test_unstructuring_with_inheritance[with-subclasses-union-compose-parent]'
+			'tests/strategies/test_include_subclasses.py::test_unstructuring_with_inheritance[with-subclasses-union-container]'
+			tests/test_gen_dict.py::test_type_names_with_quotes
+			tests/test_generics.py::test_deep_copy
+			'tests/test_generics.py::test_structure_nested_generics_with_cols[False-int-result0]'
+			'tests/test_generics.py::test_structure_nested_generics_with_cols[False]'
+			'tests/test_generics.py::test_structure_nested_generics_with_cols[True-int-result0]'
+			'tests/test_generics.py::test_structure_nested_generics_with_cols[True]'
+			'tests/test_self.py::test_nested_roundtrip[False]'
+			'tests/test_self.py::test_nested_roundtrip[True]'
+			'tests/test_self.py::test_self_roundtrip[False]'
+			'tests/test_self.py::test_self_roundtrip[True]'
+			'tests/test_self.py::test_self_roundtrip_dataclass[False]'
+			'tests/test_self.py::test_self_roundtrip_dataclass[True]'
+			'tests/test_self.py::test_self_roundtrip_namedtuple[False]'
+			'tests/test_self.py::test_self_roundtrip_namedtuple[True]'
+			'tests/test_self.py::test_self_roundtrip_typeddict[False]'
+			'tests/test_self.py::test_self_roundtrip_typeddict[True]'
+			'tests/test_self.py::test_subclass_roundtrip[False]'
+			'tests/test_self.py::test_subclass_roundtrip[True]'
+			'tests/test_self.py::test_subclass_roundtrip_dataclass[False]'
+			'tests/test_self.py::test_subclass_roundtrip_dataclass[True]'
+			tests/test_structure.py::test_structuring_unsupported
 		)
 	fi
 

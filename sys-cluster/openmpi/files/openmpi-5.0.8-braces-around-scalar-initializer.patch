@@ -1,0 +1,828 @@
+From ba7be99849836a6641542ff2dc911525ee0981f6 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Mon, 20 Oct 2025 18:01:30 +0200
+Subject: [PATCH] remove excess braces around scalar initializer
+
+Caused by
+https://gcc.gnu.org/git/?p=gcc.git;a=commit;h=1b876bdffd875ce061b35c7bb73f76a9bf7ec9f2
+
+Bug: https://bugs.gentoo.org/963631
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/ompi/communicator/comm_init.c b/ompi/communicator/comm_init.c
+index 498bf4a1e7..9f383e8967 100644
+--- a/ompi/communicator/comm_init.c
++++ b/ompi/communicator/comm_init.c
+@@ -60,13 +60,13 @@
+ ** on cid.
+ **
+ */
+-opal_pointer_array_t ompi_mpi_communicators = {{0}};
+-opal_pointer_array_t ompi_comm_f_to_c_table = {{0}};
+-opal_hash_table_t ompi_comm_hash = {{0}};
++opal_pointer_array_t ompi_mpi_communicators = {0};
++opal_pointer_array_t ompi_comm_f_to_c_table = {0};
++opal_hash_table_t ompi_comm_hash = {0};
+ 
+-ompi_predefined_communicator_t  ompi_mpi_comm_world = {{{{0}}}};
+-ompi_predefined_communicator_t  ompi_mpi_comm_self = {{{{0}}}};
+-ompi_predefined_communicator_t  ompi_mpi_comm_null = {{{{0}}}};
++ompi_predefined_communicator_t  ompi_mpi_comm_world = {0};
++ompi_predefined_communicator_t  ompi_mpi_comm_self = {0};
++ompi_predefined_communicator_t  ompi_mpi_comm_null = {0};
+ ompi_communicator_t  *ompi_mpi_comm_parent = NULL;
+ 
+ int ompi_comm_output = -1;
+diff --git a/ompi/datatype/ompi_datatype_module.c b/ompi/datatype/ompi_datatype_module.c
+index 77747100d9..96954acda9 100644
+--- a/ompi/datatype/ompi_datatype_module.c
++++ b/ompi/datatype/ompi_datatype_module.c
+@@ -387,7 +387,7 @@ const ompi_datatype_t* ompi_datatype_basicDatatypes[OMPI_DATATYPE_MPI_MAX_PREDEF
+     [OMPI_DATATYPE_MPI_UNAVAILABLE] = &ompi_mpi_unavailable.dt,
+ };
+ 
+-opal_pointer_array_t ompi_datatype_f_to_c_table = {{0}};
++opal_pointer_array_t ompi_datatype_f_to_c_table = {0};
+ 
+ #define COPY_DATA_DESC( PDST, PSRC )                                                 \
+     do {                                                                             \
+diff --git a/ompi/errhandler/errcode-internal.c b/ompi/errhandler/errcode-internal.c
+index e1b8a0abf2..cfb6de08ab 100644
+--- a/ompi/errhandler/errcode-internal.c
++++ b/ompi/errhandler/errcode-internal.c
+@@ -36,7 +36,7 @@
+ #include "ompi/instance/instance.h"
+ 
+ /* Table holding all error codes */
+-opal_pointer_array_t ompi_errcodes_intern = {{0}};
++opal_pointer_array_t ompi_errcodes_intern = {0};
+ int ompi_errcode_intern_lastused=0;
+ 
+ static ompi_errcode_intern_t ompi_success_intern;
+diff --git a/ompi/errhandler/errcode.c b/ompi/errhandler/errcode.c
+index 63b55be9fe..439b969bc9 100644
+--- a/ompi/errhandler/errcode.c
++++ b/ompi/errhandler/errcode.c
+@@ -40,7 +40,7 @@
+ #include "ompi/instance/instance.h"
+ 
+ /* Table holding all error codes */
+-opal_pointer_array_t ompi_mpi_errcodes = {{0}};
++opal_pointer_array_t ompi_mpi_errcodes = {0};
+ int ompi_mpi_errcode_lastused=0;
+ int ompi_mpi_errcode_lastpredefined=0;
+ 
+@@ -58,7 +58,7 @@ static ompi_mpi_errcode_t ompi_err_op;
+ static ompi_mpi_errcode_t ompi_err_topology;
+ static ompi_mpi_errcode_t ompi_err_dims;
+ static ompi_mpi_errcode_t ompi_err_arg;
+-ompi_mpi_errcode_t ompi_err_unknown = {{0}};
++ompi_mpi_errcode_t ompi_err_unknown = {0};
+ static ompi_mpi_errcode_t ompi_err_truncate;
+ static ompi_mpi_errcode_t ompi_err_other;
+ static ompi_mpi_errcode_t ompi_err_intern;
+diff --git a/ompi/errhandler/errhandler.c b/ompi/errhandler/errhandler.c
+index 54af7c4cd3..1cb691e490 100644
+--- a/ompi/errhandler/errhandler.c
++++ b/ompi/errhandler/errhandler.c
+@@ -43,7 +43,7 @@
+ /*
+  * Table for Fortran <-> C errhandler handle conversion
+  */
+-opal_pointer_array_t ompi_errhandler_f_to_c_table = {{0}};
++opal_pointer_array_t ompi_errhandler_f_to_c_table = {0};
+ 
+ /*
+  * default errhandler id
+@@ -67,16 +67,16 @@ OBJ_CLASS_INSTANCE(ompi_errhandler_t, opal_object_t, ompi_errhandler_construct,
+ /*
+  * _addr flavors are for F03 bindings
+  */
+-ompi_predefined_errhandler_t ompi_mpi_errhandler_null = {{{0}}};
++ompi_predefined_errhandler_t ompi_mpi_errhandler_null = {0};
+ ompi_predefined_errhandler_t *ompi_mpi_errhandler_null_addr =
+     &ompi_mpi_errhandler_null;
+-ompi_predefined_errhandler_t ompi_mpi_errors_are_fatal = {{{0}}};
++ompi_predefined_errhandler_t ompi_mpi_errors_are_fatal = {0};
+ ompi_predefined_errhandler_t *ompi_mpi_errors_are_fatal_addr =
+     &ompi_mpi_errors_are_fatal;
+-ompi_predefined_errhandler_t ompi_mpi_errors_abort = {{{0}}};
++ompi_predefined_errhandler_t ompi_mpi_errors_abort = {0};
+ ompi_predefined_errhandler_t *ompi_mpi_errors_abort_addr =
+     &ompi_mpi_errors_abort;
+-ompi_predefined_errhandler_t ompi_mpi_errors_return = {{{0}}};
++ompi_predefined_errhandler_t ompi_mpi_errors_return = {0};
+ ompi_predefined_errhandler_t *ompi_mpi_errors_return_addr =
+     &ompi_mpi_errors_return;
+ 
+diff --git a/ompi/file/file.c b/ompi/file/file.c
+index 3420ff26e5..d9a900e65e 100644
+--- a/ompi/file/file.c
++++ b/ompi/file/file.c
+@@ -42,12 +42,12 @@ opal_mutex_t ompi_mpi_file_bootstrap_mutex = OPAL_MUTEX_STATIC_INIT;
+ /*
+  * Table for Fortran <-> C file handle conversion
+  */
+-opal_pointer_array_t ompi_file_f_to_c_table = {{0}};
++opal_pointer_array_t ompi_file_f_to_c_table = {0};
+ 
+ /*
+  * MPI_FILE_NULL (_addr flavor is for F03 bindings)
+  */
+-ompi_predefined_file_t  ompi_mpi_file_null = {{{{0}}}};
++ompi_predefined_file_t  ompi_mpi_file_null = {0};
+ ompi_predefined_file_t  *ompi_mpi_file_null_addr = &ompi_mpi_file_null;
+ 
+ 
+diff --git a/ompi/group/group_init.c b/ompi/group/group_init.c
+index 77fd697aa2..5c13cbc2a6 100644
+--- a/ompi/group/group_init.c
++++ b/ompi/group/group_init.c
+@@ -44,13 +44,13 @@ OBJ_CLASS_INSTANCE(ompi_group_t,
+ /*
+  * Table for Fortran <-> C group handle conversion
+  */
+-opal_pointer_array_t ompi_group_f_to_c_table = {{0}};
++opal_pointer_array_t ompi_group_f_to_c_table = {0};
+ 
+ /*
+  * Predefined group objects
+  */
+-ompi_predefined_group_t ompi_mpi_group_empty = {{{0}}};
+-ompi_predefined_group_t ompi_mpi_group_null = {{{0}}};
++ompi_predefined_group_t ompi_mpi_group_empty = {0};
++ompi_predefined_group_t ompi_mpi_group_null = {0};
+ ompi_predefined_group_t *ompi_mpi_group_empty_addr = &ompi_mpi_group_empty;
+ ompi_predefined_group_t *ompi_mpi_group_null_addr = &ompi_mpi_group_null;
+ 
+diff --git a/ompi/info/info.c b/ompi/info/info.c
+index 577910da84..4d4b0e4599 100644
+--- a/ompi/info/info.c
++++ b/ompi/info/info.c
+@@ -59,9 +59,9 @@
+ /*
+  * Global variables
+  */
+-ompi_predefined_info_t ompi_mpi_info_null = {{{{{0}}}}};
++ompi_predefined_info_t ompi_mpi_info_null = {0};
+ ompi_predefined_info_t *ompi_mpi_info_null_addr = &ompi_mpi_info_null;
+-ompi_predefined_info_t ompi_mpi_info_env = {{{{{0}}}}};
++ompi_predefined_info_t ompi_mpi_info_env = {0};
+ 
+ /*
+  * Local functions
+@@ -80,7 +80,7 @@ OBJ_CLASS_INSTANCE(ompi_info_t,
+ /*
+  * The global fortran <-> C translation table
+  */
+-opal_pointer_array_t ompi_info_f_to_c_table = {{0}};
++opal_pointer_array_t ompi_info_f_to_c_table = {0};
+ 
+ /*
+  * This function is called during ompi_init and initializes the
+diff --git a/ompi/instance/instance.c b/ompi/instance/instance.c
+index 8063e24880..5ed076ac7c 100644
+--- a/ompi/instance/instance.c
++++ b/ompi/instance/instance.c
+@@ -60,7 +60,7 @@
+ #include "opal/mca/pmix/pmix-internal.h"
+ #include "opal/util/clock_gettime.h"
+ 
+-ompi_predefined_instance_t ompi_mpi_instance_null = {{{{0}}}};
++ompi_predefined_instance_t ompi_mpi_instance_null = {0};
+ 
+ #if defined(OPAL_RECURSIVE_MUTEX_STATIC_INIT)
+ static opal_recursive_mutex_t instance_lock = OPAL_RECURSIVE_MUTEX_STATIC_INIT;
+@@ -138,9 +138,9 @@ static int ompi_mpi_instance_finalize_common (void);
+ /*
+  * Hash tables for MPI_Type_create_f90* functions
+  */
+-opal_hash_table_t ompi_mpi_f90_integer_hashtable = {{0}};
+-opal_hash_table_t ompi_mpi_f90_real_hashtable = {{0}};
+-opal_hash_table_t ompi_mpi_f90_complex_hashtable = {{0}};
++opal_hash_table_t ompi_mpi_f90_integer_hashtable = {0};
++opal_hash_table_t ompi_mpi_f90_real_hashtable = {0};
++opal_hash_table_t ompi_mpi_f90_complex_hashtable = {0};
+ 
+ static size_t  ompi_mpi_instance_num_pmix_psets;
+ static char  **ompi_mpi_instance_pmix_psets;
+@@ -151,9 +151,9 @@ static char  **ompi_mpi_instance_pmix_psets;
+  * de-registered during MPI_FINALIZE so that memory-tracking debuggers
+  * don't show Open MPI as leaking memory.
+  */
+-opal_list_t ompi_registered_datareps = {{0}};
++opal_list_t ompi_registered_datareps = {0};
+ 
+-opal_pointer_array_t ompi_instance_f_to_c_table = {{0}};
++opal_pointer_array_t ompi_instance_f_to_c_table = {0};
+ 
+ /*
+  * PMIx event handlers
+diff --git a/ompi/mca/bml/base/bml_base_init.c b/ompi/mca/bml/base/bml_base_init.c
+index 6d1060d469..43a0701a74 100644
+--- a/ompi/mca/bml/base/bml_base_init.c
++++ b/ompi/mca/bml/base/bml_base_init.c
+@@ -40,7 +40,7 @@ mca_bml_base_module_t mca_bml = {
+     NULL,                    /* bml_finalize*/
+     NULL                     /* FT event */
+ };
+-mca_bml_base_component_t mca_bml_component = {{0}};
++mca_bml_base_component_t mca_bml_component = {0};
+ 
+ bool mca_bml_component_init_called = false;
+ 
+diff --git a/ompi/mca/coll/ftagree/coll_ftagree_earlyreturning.c b/ompi/mca/coll/ftagree/coll_ftagree_earlyreturning.c
+index b1832b4738..df178874c6 100644
+--- a/ompi/mca/coll/ftagree/coll_ftagree_earlyreturning.c
++++ b/ompi/mca/coll/ftagree/coll_ftagree_earlyreturning.c
+@@ -40,7 +40,7 @@ static opal_hash_table_t era_ongoing_agreements;
+ static opal_hash_table_t era_incomplete_messages;
+ static ompi_comm_rank_failure_callback_t *ompi_stacked_rank_failure_callback_fct = NULL;
+ static uint64_t msg_seqnum = 1;
+-static opal_free_list_t era_iagree_requests = {{{0}}};
++static opal_free_list_t era_iagree_requests = {0};
+ 
+ typedef enum {
+     MSG_UP = 1,
+diff --git a/ompi/mca/coll/tuned/coll_tuned_component.c b/ompi/mca/coll/tuned/coll_tuned_component.c
+index 08cd6f7464..f823310c35 100644
+--- a/ompi/mca/coll/tuned/coll_tuned_component.c
++++ b/ompi/mca/coll/tuned/coll_tuned_component.c
+@@ -73,7 +73,7 @@ int   ompi_coll_tuned_scatter_blocking_send_ratio = 0;
+ 
+ /* forced algorithm variables */
+ /* indices for the MCA parameters */
+-coll_tuned_force_algorithm_mca_param_indices_t ompi_coll_tuned_forced_params[COLLCOUNT] = {{0}};
++coll_tuned_force_algorithm_mca_param_indices_t ompi_coll_tuned_forced_params[COLLCOUNT] = {0};
+ /* max algorithm values */
+ int ompi_coll_tuned_forced_max_algorithms[COLLCOUNT] = {0};
+ 
+diff --git a/ompi/mca/common/ompio/common_ompio_request.c b/ompi/mca/common/ompio/common_ompio_request.c
+index 40b99043da..b7259cbf93 100644
+--- a/ompi/mca/common/ompio/common_ompio_request.c
++++ b/ompi/mca/common/ompio/common_ompio_request.c
+@@ -28,7 +28,7 @@ bool mca_common_ompio_progress_is_registered=false;
+ /*
+  * Global list of requests for this component
+  */
+-opal_list_t mca_common_ompio_pending_requests = {{0}};
++opal_list_t mca_common_ompio_pending_requests = {0};
+ 
+ 
+ 
+diff --git a/ompi/mca/fbtl/base/fbtl_base_frame.c b/ompi/mca/fbtl/base/fbtl_base_frame.c
+index 028a98ba5a..a9f86ac3cd 100644
+--- a/ompi/mca/fbtl/base/fbtl_base_frame.c
++++ b/ompi/mca/fbtl/base/fbtl_base_frame.c
+@@ -43,7 +43,7 @@
+  * Global variables; most of which are loaded by back-ends of MCA
+  * variables
+  */
+-mca_fbtl_base_component_t mca_fbtl_base_selected_component = {{0}};
++mca_fbtl_base_component_t mca_fbtl_base_selected_component = {0};
+ mca_fbtl_base_module_t mca_fbtl = {0};
+ 
+ MCA_BASE_FRAMEWORK_DECLARE(ompi, fbtl, NULL, NULL, NULL, NULL,
+diff --git a/ompi/mca/io/ompio/io_ompio_component.c b/ompi/mca/io/ompio/io_ompio_component.c
+index 99b030196a..5d69b2655f 100644
+--- a/ompi/mca/io/ompio/io_ompio_component.c
++++ b/ompi/mca/io/ompio/io_ompio_component.c
+@@ -92,7 +92,7 @@ static int delete_priority_param = 30;
+ /*
+  * Global, component-wide OMPIO mutex because OMPIO is not thread safe
+  */
+-opal_mutex_t mca_io_ompio_mutex = {{0}};
++opal_mutex_t mca_io_ompio_mutex = {0};
+ 
+ 
+ 
+diff --git a/ompi/mca/io/romio341/src/io_romio341_component.c b/ompi/mca/io/romio341/src/io_romio341_component.c
+index 7d96a638cb..db22ba6570 100644
+--- a/ompi/mca/io/romio341/src/io_romio341_component.c
++++ b/ompi/mca/io/romio341/src/io_romio341_component.c
+@@ -71,7 +71,7 @@ static int delete_priority_param = 20;
+ /*
+  * Global, component-wide ROMIO mutex because ROMIO is not thread safe
+  */
+-opal_mutex_t mca_io_romio341_mutex = {{0}};
++opal_mutex_t mca_io_romio341_mutex = {0};
+ 
+ 
+ /*
+diff --git a/ompi/mca/part/base/part_base_frame.c b/ompi/mca/part/base/part_base_frame.c
+index f9da354845..4c224b2c30 100644
+--- a/ompi/mca/part/base/part_base_frame.c
++++ b/ompi/mca/part/base/part_base_frame.c
+@@ -70,8 +70,8 @@ mca_part_base_module_t mca_part = {
+     .part_progress = mca_part_base_progress   /* part_progress */
+ };
+ 
+-mca_part_base_component_t mca_part_base_selected_component = {{0}};
+-opal_pointer_array_t mca_part_base_part = {{0}};
++mca_part_base_component_t mca_part_base_selected_component = {0};
++opal_pointer_array_t mca_part_base_part = {0};
+ 
+ static int mca_part_base_register(mca_base_register_flag_t flags)
+ {
+diff --git a/ompi/mca/part/base/part_base_prequest.c b/ompi/mca/part/base/part_base_prequest.c
+index e96fe059b0..b414f77f9b 100644
+--- a/ompi/mca/part/base/part_base_prequest.c
++++ b/ompi/mca/part/base/part_base_prequest.c
+@@ -28,8 +28,8 @@
+  * If you wonder why these 2 freelists are declared here read the comment
+  * in the part_base_request.h file.
+  */
+-opal_free_list_t mca_part_base_psend_requests = {{{0}}};
+-opal_free_list_t mca_part_base_precv_requests = {{{0}}};
++opal_free_list_t mca_part_base_psend_requests = {0};
++opal_free_list_t mca_part_base_precv_requests = {0};
+ 
+ static void mca_part_base_prequest_construct(mca_part_base_prequest_t* req)
+ {
+diff --git a/ompi/mca/pml/base/pml_base_frame.c b/ompi/mca/pml/base/pml_base_frame.c
+index 2f02b2ab0b..64eb20fb11 100644
+--- a/ompi/mca/pml/base/pml_base_frame.c
++++ b/ompi/mca/pml/base/pml_base_frame.c
+@@ -95,8 +95,8 @@ mca_pml_base_module_t mca_pml = {
+     NULL                     /* pml_get_transports */
+ };
+ 
+-mca_pml_base_component_t mca_pml_base_selected_component = {{0}};
+-opal_pointer_array_t mca_pml_base_pml = {{0}};
++mca_pml_base_component_t mca_pml_base_selected_component = {0};
++opal_pointer_array_t mca_pml_base_pml = {0};
+ char *ompi_pml_base_bsend_allocator_name = NULL;
+ bool ompi_pml_base_check_pml = true;
+ 
+diff --git a/ompi/mca/pml/base/pml_base_request.c b/ompi/mca/pml/base/pml_base_request.c
+index 791e6838ab..20ba297d18 100644
+--- a/ompi/mca/pml/base/pml_base_request.c
++++ b/ompi/mca/pml/base/pml_base_request.c
+@@ -27,8 +27,8 @@
+  * If you wonder why these 2 freelists are declared here read the comment
+  * in the pml_base_request.h file.
+  */
+-opal_free_list_t mca_pml_base_send_requests = {{{0}}};
+-opal_free_list_t mca_pml_base_recv_requests = {{{0}}};
++opal_free_list_t mca_pml_base_send_requests = {0};
++opal_free_list_t mca_pml_base_recv_requests = {0};
+ 
+ static void mca_pml_base_request_construct(mca_pml_base_request_t* req)
+ {
+diff --git a/ompi/mca/pml/monitoring/pml_monitoring_component.c b/ompi/mca/pml/monitoring/pml_monitoring_component.c
+index e11f2826c7..93ed9bc3c0 100644
+--- a/ompi/mca/pml/monitoring/pml_monitoring_component.c
++++ b/ompi/mca/pml/monitoring/pml_monitoring_component.c
+@@ -23,7 +23,7 @@
+ 
+ static int mca_pml_monitoring_active = 0;
+ 
+-mca_pml_base_component_t pml_selected_component = {{0}};
++mca_pml_base_component_t pml_selected_component = {0};
+ mca_pml_base_module_t pml_selected_module = {0};
+ 
+ mca_pml_monitoring_module_t mca_pml_monitoring_module = {
+diff --git a/ompi/message/message.c b/ompi/message/message.c
+index 9bbe5f3d1f..b1822e9044 100644
+--- a/ompi/message/message.c
++++ b/ompi/message/message.c
+@@ -32,11 +32,11 @@ OBJ_CLASS_INSTANCE(ompi_message_t,
+ 
+ static int ompi_message_finalize (void);
+ 
+-opal_free_list_t ompi_message_free_list = {{{0}}};
+-opal_pointer_array_t  ompi_message_f_to_c_table = {{0}};
++opal_free_list_t ompi_message_free_list = {0};
++opal_pointer_array_t  ompi_message_f_to_c_table = {0};
+ 
+-ompi_predefined_message_t ompi_message_null = {{{{{0}}}}};
+-ompi_predefined_message_t ompi_message_no_proc = {{{{{0}}}}};
++ompi_predefined_message_t ompi_message_null = {0};
++ompi_predefined_message_t ompi_message_no_proc = {0};
+ 
+ static void ompi_message_constructor(ompi_message_t *msg)
+ {
+diff --git a/ompi/mpi/java/c/mpi_MPI.c b/ompi/mpi/java/c/mpi_MPI.c
+index f596411c05..e001f729fb 100644
+--- a/ompi/mpi/java/c/mpi_MPI.c
++++ b/ompi/mpi/java/c/mpi_MPI.c
+@@ -87,7 +87,7 @@
+ 
+ ompi_java_globals_t ompi_java = {0};
+ int ompi_mpi_java_eager = 65536;
+-opal_free_list_t ompi_java_buffers = {{{0}}};
++opal_free_list_t ompi_java_buffers = {0};
+ 
+ static void bufferConstructor(ompi_java_buffer_t *item)
+ {
+diff --git a/ompi/op/op.c b/ompi/op/op.c
+index 3977fa8b97..40bea6caf2 100644
+--- a/ompi/op/op.c
++++ b/ompi/op/op.c
+@@ -69,35 +69,35 @@ OBJ_CLASS_INSTANCE(ompi_op_t, opal_object_t,
+ /*
+  * Intrinsic MPI_Op objects (_addr flavors are for F03 bindings)
+  */
+-ompi_predefined_op_t ompi_mpi_op_null = {{{0}}};
++ompi_predefined_op_t ompi_mpi_op_null = {0};
+ ompi_predefined_op_t *ompi_mpi_op_null_addr = &ompi_mpi_op_null;
+-ompi_predefined_op_t ompi_mpi_op_max = {{{0}}};
++ompi_predefined_op_t ompi_mpi_op_max = {0};
+ ompi_predefined_op_t *ompi_mpi_op_max_addr = &ompi_mpi_op_max;
+-ompi_predefined_op_t ompi_mpi_op_min = {{{0}}};
++ompi_predefined_op_t ompi_mpi_op_min = {0};
+ ompi_predefined_op_t *ompi_mpi_op_min_addr = &ompi_mpi_op_min;
+-ompi_predefined_op_t ompi_mpi_op_sum = {{{0}}};
++ompi_predefined_op_t ompi_mpi_op_sum = {0};
+ ompi_predefined_op_t *ompi_mpi_op_sum_addr = &ompi_mpi_op_sum;
+-ompi_predefined_op_t ompi_mpi_op_prod = {{{0}}};
++ompi_predefined_op_t ompi_mpi_op_prod = {0};
+ ompi_predefined_op_t *ompi_mpi_op_prod_addr = &ompi_mpi_op_prod;
+-ompi_predefined_op_t ompi_mpi_op_land = {{{0}}};
++ompi_predefined_op_t ompi_mpi_op_land = {0};
+ ompi_predefined_op_t *ompi_mpi_op_land_addr = &ompi_mpi_op_land;
+-ompi_predefined_op_t ompi_mpi_op_band = {{{0}}};
++ompi_predefined_op_t ompi_mpi_op_band = {0};
+ ompi_predefined_op_t *ompi_mpi_op_band_addr = &ompi_mpi_op_band;
+-ompi_predefined_op_t ompi_mpi_op_lor = {{{0}}};
++ompi_predefined_op_t ompi_mpi_op_lor = {0};
+ ompi_predefined_op_t *ompi_mpi_op_lor_addr = &ompi_mpi_op_lor;
+-ompi_predefined_op_t ompi_mpi_op_bor = {{{0}}};
++ompi_predefined_op_t ompi_mpi_op_bor = {0};
+ ompi_predefined_op_t *ompi_mpi_op_bor_addr = &ompi_mpi_op_bor;
+-ompi_predefined_op_t ompi_mpi_op_lxor = {{{0}}};
++ompi_predefined_op_t ompi_mpi_op_lxor = {0};
+ ompi_predefined_op_t *ompi_mpi_op_lxor_addr = &ompi_mpi_op_lxor;
+-ompi_predefined_op_t ompi_mpi_op_bxor = {{{0}}};
++ompi_predefined_op_t ompi_mpi_op_bxor = {0};
+ ompi_predefined_op_t *ompi_mpi_op_bxor_addr = &ompi_mpi_op_bxor;
+-ompi_predefined_op_t ompi_mpi_op_maxloc = {{{0}}};
++ompi_predefined_op_t ompi_mpi_op_maxloc = {0};
+ ompi_predefined_op_t *ompi_mpi_op_maxloc_addr = &ompi_mpi_op_maxloc;
+-ompi_predefined_op_t ompi_mpi_op_minloc = {{{0}}};
++ompi_predefined_op_t ompi_mpi_op_minloc = {0};
+ ompi_predefined_op_t *ompi_mpi_op_minloc_addr = &ompi_mpi_op_minloc;
+-ompi_predefined_op_t ompi_mpi_op_replace = {{{0}}};
++ompi_predefined_op_t ompi_mpi_op_replace = {0};
+ ompi_predefined_op_t *ompi_mpi_op_replace_addr = &ompi_mpi_op_replace;
+-ompi_predefined_op_t ompi_mpi_op_no_op = {{{0}}};
++ompi_predefined_op_t ompi_mpi_op_no_op = {0};
+ ompi_predefined_op_t *ompi_mpi_op_no_op_addr = &ompi_mpi_op_no_op;
+ 
+ /*
+diff --git a/ompi/proc/proc.c b/ompi/proc/proc.c
+index 080506925c..8b21359b69 100644
+--- a/ompi/proc/proc.c
++++ b/ompi/proc/proc.c
+@@ -47,7 +47,7 @@
+ #include "ompi/runtime/params.h"
+ #include "ompi/mca/pml/pml.h"
+ 
+-opal_list_t  ompi_proc_list = {{0}};
++opal_list_t  ompi_proc_list = {0};
+ static opal_mutex_t ompi_proc_lock;
+ static opal_hash_table_t ompi_proc_hash;
+ 
+diff --git a/ompi/request/request.c b/ompi/request/request.c
+index 843d9ae95f..0aafa255b1 100644
+--- a/ompi/request/request.c
++++ b/ompi/request/request.c
+@@ -40,12 +40,12 @@
+ #include "ompi/mca/pml/base/pml_base_sendreq.h"
+ #endif
+ 
+-opal_pointer_array_t             ompi_request_f_to_c_table = {{0}};
+-ompi_predefined_request_t        ompi_request_null = {{{{{0}}}}};
++opal_pointer_array_t             ompi_request_f_to_c_table = {0};
++ompi_predefined_request_t        ompi_request_null = {0};
+ ompi_predefined_request_t        *ompi_request_null_addr = &ompi_request_null;
+-ompi_request_t                   ompi_request_empty = {{{{0}}}};
++ompi_request_t                   ompi_request_empty = {0};
+ #if MPI_VERSION >= 4
+-ompi_request_t                   ompi_request_empty_send = {{{{0}}}};
++ompi_request_t                   ompi_request_empty_send = {0};
+ #endif
+ ompi_status_public_t             ompi_status_empty = {0};
+ ompi_request_fns_t               ompi_request_functions = {
+diff --git a/ompi/win/win.c b/ompi/win/win.c
+index 2f0974ac01..8db77951a6 100644
+--- a/ompi/win/win.c
++++ b/ompi/win/win.c
+@@ -47,9 +47,9 @@
+  * Table for Fortran <-> C communicator handle conversion.  Note that
+  * these are not necessarily global.
+  */
+-opal_pointer_array_t ompi_mpi_windows = {{0}};
++opal_pointer_array_t ompi_mpi_windows = {0};
+ 
+-ompi_predefined_win_t ompi_mpi_win_null = {{{{0}}}};
++ompi_predefined_win_t ompi_mpi_win_null = {0};
+ ompi_predefined_win_t *ompi_mpi_win_null_addr = &ompi_mpi_win_null;
+ mca_base_var_enum_t *ompi_win_accumulate_ops = NULL;
+ mca_base_var_enum_flag_t *ompi_win_accumulate_order = NULL;
+diff --git a/opal/datatype/opal_datatype_module.c b/opal/datatype/opal_datatype_module.c
+index 527bb310bb..0c270f7bd8 100644
+--- a/opal/datatype/opal_datatype_module.c
++++ b/opal/datatype/opal_datatype_module.c
+@@ -92,7 +92,7 @@ OPAL_DECLSPEC const opal_datatype_t opal_datatype_unavailable
+     = OPAL_DATATYPE_INITIALIZER_UNAVAILABLE_NAMED(UNAVAILABLE, 0);
+ 
+ OPAL_DECLSPEC dt_elem_desc_t opal_datatype_predefined_elem_desc[2 * OPAL_DATATYPE_MAX_PREDEFINED]
+-    = {{{{0}}}};
++    = {0};
+ 
+ /*
+  * NOTE: The order of this array *MUST* match the order in opal_datatype_basicDatatypes
+diff --git a/opal/mca/accelerator/base/accelerator_base_frame.c b/opal/mca/accelerator/base/accelerator_base_frame.c
+index fcaf86be94..4294a3addd 100644
+--- a/opal/mca/accelerator/base/accelerator_base_frame.c
++++ b/opal/mca/accelerator/base/accelerator_base_frame.c
+@@ -28,7 +28,7 @@
+ 
+ 
+ opal_accelerator_base_module_t opal_accelerator = {0};
+-opal_accelerator_base_component_t opal_accelerator_base_selected_component = {{0}};
++opal_accelerator_base_component_t opal_accelerator_base_selected_component = {0};
+ 
+ static int opal_accelerator_base_frame_register(mca_base_register_flag_t flags)
+ {
+diff --git a/opal/mca/btl/base/btl_base_frame.c b/opal/mca/btl/base/btl_base_frame.c
+index 4341d78f6e..6890865c3e 100644
+--- a/opal/mca/btl/base/btl_base_frame.c
++++ b/opal/mca/btl/base/btl_base_frame.c
+@@ -75,7 +75,7 @@ mca_base_var_enum_value_flag_t mca_btl_base_atomic_enum_flags[]
+        {MCA_BTL_ATOMIC_SUPPORTS_GLOB, "global"},
+        {0, NULL, 0}};
+ 
+-mca_btl_active_message_callback_t mca_btl_base_active_message_trigger[MCA_BTL_TAG_MAX] = {{0}};
++mca_btl_active_message_callback_t mca_btl_base_active_message_trigger[MCA_BTL_TAG_MAX] = {0};
+ 
+ /*
+  *  mca_btl_base_descriptor_t
+@@ -113,7 +113,7 @@ char *mca_btl_base_include = NULL;
+ char *mca_btl_base_exclude = NULL;
+ int mca_btl_base_warn_component_unused = 1;
+ int mca_btl_base_warn_peer_error = true;
+-opal_list_t mca_btl_base_modules_initialized = {{0}};
++opal_list_t mca_btl_base_modules_initialized = {0};
+ bool mca_btl_base_thread_multiple_override = false;
+ 
+ static int mca_btl_base_register(mca_base_register_flag_t flags)
+diff --git a/opal/mca/btl/tcp/btl_tcp_component.c b/opal/mca/btl/tcp/btl_tcp_component.c
+index 131d9c1fe5..37d219d225 100644
+--- a/opal/mca/btl/tcp/btl_tcp_component.c
++++ b/opal/mca/btl/tcp/btl_tcp_component.c
+@@ -103,8 +103,8 @@ static int mca_btl_tcp_component_close(void);
+ opal_event_base_t *mca_btl_tcp_event_base = NULL;
+ int mca_btl_tcp_progress_thread_trigger = -1;
+ int mca_btl_tcp_pipe_to_progress[2] = {-1, -1};
+-static opal_thread_t mca_btl_tcp_progress_thread = {{0}};
+-opal_list_t mca_btl_tcp_ready_frag_pending_queue = {{0}};
++static opal_thread_t mca_btl_tcp_progress_thread = {0};
++opal_list_t mca_btl_tcp_ready_frag_pending_queue = {0};
+ opal_mutex_t mca_btl_tcp_ready_frag_mutex = OPAL_MUTEX_STATIC_INIT;
+ 
+ mca_btl_tcp_component_t mca_btl_tcp_component = {
+diff --git a/opal/mca/btl/usnic/btl_usnic_component.c b/opal/mca/btl/usnic/btl_usnic_component.c
+index 84f96938be..193bcc90c9 100644
+--- a/opal/mca/btl/usnic/btl_usnic_component.c
++++ b/opal/mca/btl/usnic/btl_usnic_component.c
+@@ -86,7 +86,7 @@
+ opal_recursive_mutex_t btl_usnic_lock;  /* recursive mutexes must be dynamically initialized */
+ 
+ /* RNG buffer definition */
+-opal_rng_buff_t opal_btl_usnic_rand_buff = {{0}};
++opal_rng_buff_t opal_btl_usnic_rand_buff = {0};
+ 
+ /* simulated clock */
+ uint64_t opal_btl_usnic_ticks = 0;
+diff --git a/opal/mca/if/base/if_base_components.c b/opal/mca/if/base/if_base_components.c
+index 86d2aea4ee..b9d0af11cb 100644
+--- a/opal/mca/if/base/if_base_components.c
++++ b/opal/mca/if/base/if_base_components.c
+@@ -21,7 +21,7 @@
+ #include "opal/util/output.h"
+ 
+ /* instantiate the global list of interfaces */
+-opal_list_t opal_if_list = {{0}};
++opal_list_t opal_if_list = {0};
+ bool opal_if_do_not_resolve = false;
+ bool opal_if_retain_loopback = false;
+ 
+diff --git a/opal/mca/mpool/base/mpool_base_frame.c b/opal/mca/mpool/base/mpool_base_frame.c
+index d003de0b31..83f2ff7591 100644
+--- a/opal/mca/mpool/base/mpool_base_frame.c
++++ b/opal/mca/mpool/base/mpool_base_frame.c
+@@ -49,7 +49,7 @@
+  * Global variables
+  */
+ 
+-opal_list_t mca_mpool_base_modules = {{0}};
++opal_list_t mca_mpool_base_modules = {0};
+ static char *mca_mpool_base_default_hints;
+ 
+ int mca_mpool_base_default_priority = 50;
+diff --git a/opal/mca/mpool/base/mpool_base_tree.c b/opal/mca/mpool/base/mpool_base_tree.c
+index 29a5ba3e69..f242d73ec1 100644
+--- a/opal/mca/mpool/base/mpool_base_tree.c
++++ b/opal/mca/mpool/base/mpool_base_tree.c
+@@ -54,8 +54,8 @@ OBJ_CLASS_INSTANCE(mca_mpool_base_tree_item_t, opal_free_list_item_t,
+ /*
+  * use globals for the tree and the tree_item free list..
+  */
+-opal_rb_tree_t mca_mpool_base_tree = {{0}};
+-opal_free_list_t mca_mpool_base_tree_item_free_list = {{{0}}};
++opal_rb_tree_t mca_mpool_base_tree = {0};
++opal_free_list_t mca_mpool_base_tree_item_free_list = {0};
+ static opal_mutex_t tree_lock;
+ 
+ /*
+diff --git a/opal/mca/rcache/base/rcache_base_frame.c b/opal/mca/rcache/base/rcache_base_frame.c
+index 4bd035ead8..e80fab958a 100644
+--- a/opal/mca/rcache/base/rcache_base_frame.c
++++ b/opal/mca/rcache/base/rcache_base_frame.c
+@@ -71,7 +71,7 @@ OBJ_CLASS_INSTANCE(mca_rcache_base_registration_t, opal_free_list_item_t,
+ /*
+  * Global variables
+  */
+-opal_list_t mca_rcache_base_modules = {{0}};
++opal_list_t mca_rcache_base_modules = {0};
+ 
+ OBJ_CLASS_INSTANCE(mca_rcache_base_selected_module_t, opal_list_item_t, NULL, NULL);
+ 
+diff --git a/opal/runtime/opal_finalize_core.c b/opal/runtime/opal_finalize_core.c
+index c7516477d4..2b681a0a68 100644
+--- a/opal/runtime/opal_finalize_core.c
++++ b/opal/runtime/opal_finalize_core.c
+@@ -40,7 +40,7 @@
+ extern int opal_util_initialized;
+ 
+ static opal_mutex_t opal_finalize_cleanup_fns_lock = OPAL_MUTEX_STATIC_INIT;
+-opal_list_t opal_finalize_cleanup_fns = {{0}};
++opal_list_t opal_finalize_cleanup_fns = {0};
+ 
+ struct opal_cleanup_fn_item_t {
+     opal_list_item_t super;
+@@ -87,8 +87,8 @@ OBJ_CLASS_INSTANCE(opal_finalize_domain_t, opal_list_t, opal_finalize_domain_con
+                    opal_finalize_domain_destruct);
+ 
+ static opal_finalize_domain_t *current_finalize_domain;
+-opal_finalize_domain_t opal_init_util_domain = {{{0}}};
+-opal_finalize_domain_t opal_init_domain = {{{0}}};
++opal_finalize_domain_t opal_init_util_domain = {0};
++opal_finalize_domain_t opal_init_domain = {0};
+ 
+ void opal_finalize_append_cleanup(opal_cleanup_fn_t cleanup_fn, const char *fn_name,
+                                   void *user_data)
+diff --git a/opal/util/error.c b/opal/util/error.c
+index 7f8be1e581..8e53c69be5 100644
+--- a/opal/util/error.c
++++ b/opal/util/error.c
+@@ -53,7 +53,7 @@ struct converter_info_t {
+ typedef struct converter_info_t converter_info_t;
+ 
+ /* all default to NULL */
+-static converter_info_t converters[MAX_CONVERTERS] = {{0}};
++static converter_info_t converters[MAX_CONVERTERS] = {0};
+ 
+ static int opal_strerror_int(int errnum, const char **str)
+ {
+diff --git a/oshmem/mca/atomic/base/atomic_base_select.c b/oshmem/mca/atomic/base/atomic_base_select.c
+index 5d3fe50d8c..7b6b28a9a7 100644
+--- a/oshmem/mca/atomic/base/atomic_base_select.c
++++ b/oshmem/mca/atomic/base/atomic_base_select.c
+@@ -31,7 +31,7 @@
+  * Global variables; most of which are loaded by back-ends of MCA
+  * variables
+  */
+-mca_atomic_base_module_t mca_atomic = {{0}};
++mca_atomic_base_module_t mca_atomic = {0};
+ 
+ /*
+  * Local types
+diff --git a/oshmem/mca/memheap/base/memheap_base_frame.c b/oshmem/mca/memheap/base/memheap_base_frame.c
+index 53a71b27a9..46e5f2faf6 100644
+--- a/oshmem/mca/memheap/base/memheap_base_frame.c
++++ b/oshmem/mca/memheap/base/memheap_base_frame.c
+@@ -33,9 +33,9 @@
+ 
+ int mca_memheap_base_output = -1;
+ int mca_memheap_base_key_exchange = 1;
+-opal_list_t mca_memheap_base_components_opened = {{0}};
++opal_list_t mca_memheap_base_components_opened = {0};
+ int mca_memheap_base_already_opened = 0;
+-mca_memheap_map_t mca_memheap_base_map = {{{{0}}}};
++mca_memheap_map_t mca_memheap_base_map = {0};
+ int mca_memheap_num_segments_warn = 32;
+ 
+ static int mca_memheap_base_register(mca_base_register_flag_t flags)
+diff --git a/oshmem/mca/memheap/base/memheap_base_mkey.c b/oshmem/mca/memheap/base/memheap_base_mkey.c
+index cda9253e98..f57bd05515 100644
+--- a/oshmem/mca/memheap/base/memheap_base_mkey.c
++++ b/oshmem/mca/memheap/base/memheap_base_mkey.c
+@@ -62,7 +62,7 @@ struct oob_comm {
+ 
+ mca_memheap_map_t* memheap_map = NULL;
+ 
+-struct oob_comm memheap_oob = {{{0}}};
++struct oob_comm memheap_oob = {0};
+ 
+ static int send_buffer(int pe, pmix_data_buffer_t *msg);
+ 
+diff --git a/oshmem/mca/spml/base/spml_base_frame.c b/oshmem/mca/spml/base/spml_base_frame.c
+index d732f6b247..61a9daa0c0 100644
+--- a/oshmem/mca/spml/base/spml_base_frame.c
++++ b/oshmem/mca/spml/base/spml_base_frame.c
+@@ -46,8 +46,8 @@
+  */
+ mca_spml_base_module_t mca_spml = {0};
+ 
+-mca_spml_base_component_t mca_spml_base_selected_component = {{0}};
+-opal_pointer_array_t mca_spml_base_spml = {{0}};
++mca_spml_base_component_t mca_spml_base_selected_component = {0};
++opal_pointer_array_t mca_spml_base_spml = {0};
+ 
+ 
+ static int mca_spml_base_register(mca_base_register_flag_t flags)
+diff --git a/oshmem/mca/spml/base/spml_base_request.c b/oshmem/mca/spml/base/spml_base_request.c
+index 7db9c2fae2..81e3a88c92 100644
+--- a/oshmem/mca/spml/base/spml_base_request.c
++++ b/oshmem/mca/spml/base/spml_base_request.c
+@@ -21,9 +21,9 @@
+  * If you wonder why these 2 freelists are declared here read the comment
+  * in the spml_base_request.h file.
+  */
+-opal_free_list_t mca_spml_base_put_requests = {{{0}}};
+-opal_free_list_t mca_spml_base_get_requests = {{{0}}};
+-opal_free_list_t mca_spml_base_atomic_requests = { { { 0 } } };
++opal_free_list_t mca_spml_base_put_requests = {0};
++opal_free_list_t mca_spml_base_get_requests = {0};
++opal_free_list_t mca_spml_base_atomic_requests = { {0} };
+ 
+ static void mca_spml_base_request_construct(mca_spml_base_request_t* req)
+ {
+diff --git a/oshmem/op/op.c b/oshmem/op/op.c
+index 577a1e3f6e..15faceaea7 100644
+--- a/oshmem/op/op.c
++++ b/oshmem/op/op.c
+@@ -24,7 +24,7 @@
+ /*
+  * Table for op handle conversion
+  */
+-opal_pointer_array_t oshmem_op_array = {{0}};
++opal_pointer_array_t oshmem_op_array = {0};
+ 
+ /*
+  * Class information
+diff --git a/oshmem/proc/proc.c b/oshmem/proc/proc.c
+index da6fdeaeb9..db1c4eb84b 100644
+--- a/oshmem/proc/proc.c
++++ b/oshmem/proc/proc.c
+@@ -91,7 +91,7 @@ int oshmem_proc_finalize(void)
+     return OSHMEM_SUCCESS;
+ }
+ 
+-opal_pointer_array_t oshmem_group_array = {{0}};
++opal_pointer_array_t oshmem_group_array = {0};
+ 
+ oshmem_group_t* oshmem_group_all = NULL;
+ oshmem_group_t* oshmem_group_self = NULL;
+diff --git a/oshmem/request/request.c b/oshmem/request/request.c
+index c153baa411..62a86434b5 100644
+--- a/oshmem/request/request.c
++++ b/oshmem/request/request.c
+@@ -21,13 +21,13 @@
+ #include "oshmem/constants.h"
+ #include "oshmem/proc/proc.h"
+ 
+-opal_pointer_array_t             oshmem_request_f_to_c_table = {{0}};
++opal_pointer_array_t             oshmem_request_f_to_c_table = {0};
+ size_t                           oshmem_request_waiting = 0;
+ size_t                           oshmem_request_completed = 0;
+-opal_mutex_t                     oshmem_request_lock = {{0}};
+-opal_condition_t                 oshmem_request_cond = {{0}};
+-oshmem_predefined_request_t        oshmem_request_null = {{{{{0}}}}};
+-oshmem_request_t                   oshmem_request_empty = {{{{0}}}};
++opal_mutex_t                     oshmem_request_lock = {0};
++opal_condition_t                 oshmem_request_cond = {0};
++oshmem_predefined_request_t        oshmem_request_null = {0};
++oshmem_request_t                   oshmem_request_empty = {0};
+ oshmem_status_public_t             oshmem_status_empty = {0};
+ oshmem_request_fns_t               oshmem_request_functions = {
+     NULL, /*oshmem_request_default_test,*/
+diff --git a/oshmem/runtime/oshmem_shmem_init.c b/oshmem/runtime/oshmem_shmem_init.c
+index 64af4e18f3..df8fb4cdab 100644
+--- a/oshmem/runtime/oshmem_shmem_init.c
++++ b/oshmem/runtime/oshmem_shmem_init.c
+@@ -91,7 +91,7 @@ MPI_Comm oshmem_comm_world = {0};
+ 
+ opal_thread_t *oshmem_mpi_main_thread = NULL;
+ 
+-shmem_internal_mutex_t shmem_internal_mutex_alloc = {{0}};
++shmem_internal_mutex_t shmem_internal_mutex_alloc = {0};
+ 
+ shmem_ctx_t oshmem_ctx_default = NULL;
+ 
+-- 
+2.51.1
+

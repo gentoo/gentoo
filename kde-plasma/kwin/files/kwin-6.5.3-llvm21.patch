@@ -1,0 +1,30 @@
+From 0fa6591e559fdc964bb4bb95d22e0e223c9a1532 Mon Sep 17 00:00:00 2001
+From: Xaver Hugl <xaver.hugl@kde.org>
+Date: Thu, 20 Nov 2025 12:31:20 +0100
+Subject: [PATCH] backends/drm: add missing thread include
+
+required for std::this_thread::sleep_for()
+
+
+(cherry picked from commit 1aa08bf7ecdb638b5f6461f16407662b27fbbaa0)
+
+Co-authored-by: Jonas Rakebrandt <xarblu@protonmail.com>
+---
+ src/backends/drm/drm_backend.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/backends/drm/drm_backend.cpp b/src/backends/drm/drm_backend.cpp
+index f7189f50b22..720bac32859 100644
+--- a/src/backends/drm/drm_backend.cpp
++++ b/src/backends/drm/drm_backend.cpp
+@@ -38,6 +38,7 @@
+ #include <cerrno>
+ #include <ranges>
+ #include <sys/stat.h>
++#include <thread>
+ #include <unistd.h>
+ // drm
+ #include <gbm.h>
+-- 
+GitLab
+

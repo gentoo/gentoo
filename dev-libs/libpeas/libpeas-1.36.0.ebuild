@@ -21,7 +21,7 @@ REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )
 
 RDEPEND="
 	>=dev-libs/glib-2.44:2
-	>=dev-libs/gobject-introspection-1.39:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 	gtk? ( >=x11-libs/gtk+-3.0.0:3[introspection] )
 	glade? ( >=dev-util/glade-3.9.1:3.10 )
 	lua? (

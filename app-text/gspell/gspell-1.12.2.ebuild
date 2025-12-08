@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gspell"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/2" # subslot = libgspell-1 soname version
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 
 IUSE="+introspection +vala"
 REQUIRED_USE="vala? ( introspection )"
@@ -20,7 +20,7 @@ RDEPEND="
 	>=dev-libs/glib-2.44:2
 	>=x11-libs/gtk+-3.20:3[introspection?]
 	dev-libs/icu:=
-	introspection? ( >=dev-libs/gobject-introspection-1.42.0:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}
 	test? ( sys-apps/dbus )

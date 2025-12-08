@@ -24,7 +24,7 @@ fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+gstreamer soup wayland webkit"
 
 RDEPEND="
@@ -63,6 +63,9 @@ DOCS=(
 )
 
 src_prepare() {
+	sed -i -e '/cmake_minimum_required/s/3\.7/&...3.20/' \
+		CMakeLists.txt || die  #964651
+
 	if ! use wayland; then  #958395
 		sed -i -e 's/GDK_WINDOWING_WAYLAND/GdK_nO_wAyLaNd/' \
 			src/display_backend.c || die

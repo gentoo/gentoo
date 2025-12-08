@@ -44,10 +44,6 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="test? ( virtual/pkgconfig )"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-643-lesstest-pkg-config.patch
-)
-
 src_prepare() {
 	default
 	# Per upstream README to prepare live build

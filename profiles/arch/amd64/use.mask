@@ -4,6 +4,15 @@
 # Unmask the flag which corresponds to ARCH.
 -amd64
 
+# Sam James <sam@gentoo.org> (2025-09-19)
+# libquadmath from GCC is only available on some arches
+# https://gcc.gnu.org/PR96016
+-perl_features_quadmath
+
+# Michał Górny <mgorny@gentoo.org> (2025-09-02)
+# dev-python/pypi-attestations is keyworded here.
+-verify-provenance
+
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-05-01)
 # media-libs/libspng only keyworded on amd64, arm64
 -spng
@@ -40,6 +49,7 @@
 # Paul Zander <negril.nx+gentoo@gmail.com> (2023-11-17)
 # ROCm/HIP works here
 -hip
+-hiprt
 
 # Nowa Ammerlaan <nowa@gentoo.org> (2023-07-11)
 # Unmask secureboot flag on arches where sbsigntools is keyworded
@@ -163,6 +173,9 @@
 -cpu_flags_x86_3dnow
 -cpu_flags_x86_3dnowext
 -cpu_flags_x86_aes
+-cpu_flags_x86_amx_bf16
+-cpu_flags_x86_amx_int8
+-cpu_flags_x86_amx_tile
 -cpu_flags_x86_avx
 -cpu_flags_x86_avx2
 -cpu_flags_x86_avx512_4fmaps
@@ -182,6 +195,9 @@
 -cpu_flags_x86_avx512ifma
 -cpu_flags_x86_avx512pf
 -cpu_flags_x86_avx512vbmi
+-cpu_flags_x86_avx_vnni
+-cpu_flags_x86_bmi1
+-cpu_flags_x86_bmi2
 -cpu_flags_x86_avx512vl
 -cpu_flags_x86_f16c
 -cpu_flags_x86_fma3

@@ -29,7 +29,7 @@ RDEPEND="${GNUSTEP_CORE_DEPEND}
 	>=dev-libs/libxml2-2.6
 	>=dev-libs/libxslt-1.1
 	>=dev-libs/gmp-4.1:=
-	>=sys-libs/zlib-1.2
+	>=virtual/zlib-1.2:=
 	zeroconf? ( net-dns/avahi )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"

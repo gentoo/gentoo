@@ -11,11 +11,11 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~sparc x86"
 IUSE="static-libs +xml"
 
 RDEPEND="
-	>=dev-libs/libcdio-2.0.0:0=[-minimal,${MULTILIB_USEDEP}]
+	>=dev-libs/libcdio-2.0.0:=[-minimal,${MULTILIB_USEDEP}]
 	dev-libs/popt
 	xml? ( dev-libs/libxml2:2= )
 "
@@ -29,7 +29,7 @@ PATCHES=("${FILESDIR}/${P}-pkg-config.patch")
 src_prepare() {
 	default
 
-	# Avoid building useless programs. Bug #226249
+	# Avoid building useless programs (bug #226249)
 	sed -i \
 		-e 's/check_PROGRAMS =/check_PROGRAMS +=/' \
 		-e 's/noinst_PROGRAMS =/check_PROGRAMS =/' \
@@ -38,7 +38,7 @@ src_prepare() {
 		-e 's/noinst_PROGRAMS =/check_PROGRAMS =/' \
 		example/Makefile.am || die
 
-	# don't call nm directly. Bug #724838
+	# Don't call nm directly (bug #724838)
 	sed -i \
 		-e "s|nm|$(tc-getNM)|" \
 		lib/Makefile.am || die
@@ -49,14 +49,15 @@ src_prepare() {
 multilib_src_configure() {
 	local myeconfargs=(
 		$(use_enable static-libs static)
+		$(multilib_native_with cli-frontend)
+		$(multilib_native_use_with xml xml-frontend)
 	)
-	multilib_is_native_abi || myeconfargs+=( --without-cli-frontend )
-	if ! use xml || ! multilib_is_native_abi ; then
-		myeconfargs+=( --without-xml-frontend )
-	fi
 
-	ECONF_SOURCE="${S}" \
-		econf ${myeconfargs[@]}
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+}
+
+multilib_src_test() {
+	emake -j1 check
 }
 
 multilib_src_install_all() {

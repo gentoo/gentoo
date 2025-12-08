@@ -16,7 +16,7 @@ IUSE=""
 DEPEND="dev-libs/libxml2:=
 	media-libs/libpng:0=
 	media-libs/freeglut
-	sys-libs/zlib
+	virtual/zlib:=
 	virtual/jpeg:0
 	x11-libs/libXmu
 	x11-libs/libXt

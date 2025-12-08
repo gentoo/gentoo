@@ -1,0 +1,25 @@
+Source:
+https://salsa.debian.org/debian/lasi/-/blob/master/debian/patches/fix-gcc11-throw-ftbfs.patch?ref_type=heads
+
+Description: Avoid dynamic exception spec, to fix build with C++17 (GCC-11)
+ GCC 11 defaults to C++17 which does not allow dynamic exception
+ specifications anymore. Replace "throw(std::runtime_error)" with
+ "noexcept(false)" as described in https://gcc.gnu.org/gcc-11/porting_to.html
+Author: Lukas Märdian <slyon@ubuntu.com>
+Origin: vendor, Ubuntu
+Bug-Debian: https://bugs.debian.org/984083
+Forwarded: no
+Last-Update: 2021-10-15
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/src/util.h
++++ b/src/util.h
+@@ -27,7 +27,7 @@
+ 
+ /** Converts a freetype return code into an exception.
+  */
+-inline void evalReturnCode(const int errCode, const char* funcName) throw (std::runtime_error) {
++inline void evalReturnCode(const int errCode, const char* funcName) noexcept(false) {
+   if (errCode)
+     throw std::runtime_error(std::string("Error returned from ") + funcName);
+ }

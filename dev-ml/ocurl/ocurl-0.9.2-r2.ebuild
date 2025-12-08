@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit findlib
+inherit dot-a findlib
 
 DESCRIPTION="OCaml interface to the libcurl library"
 HOMEPAGE="https://forge.ocamlcore.org/projects/ocurl/ https://github.com/ygrek/ocurl"
@@ -20,6 +20,11 @@ RDEPEND="net-misc/curl
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+src_configure() {
+	lto-guarantee-fat
+	default
+}
+
 src_compile() {
 	emake -j1 all
 }
@@ -33,4 +38,5 @@ src_install() {
 		dodoc -r examples
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
+	strip-lto-bytecode
 }

@@ -22,7 +22,7 @@ SLOT="0"
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
-IUSE="audit bluetooth +concheck connection-sharing debug dhclient dhcpcd elogind gnutls +gtk-doc +introspection iptables iwd psl libedit +nss nftables +modemmanager ofono ovs policykit +ppp resolvconf selinux syslog systemd teamd test +tools vala +wext +wifi"
+IUSE="audit bluetooth +concheck connection-sharing debug dhclient dhcpcd elogind gnutls gtk-doc +introspection iptables iwd psl libedit +nss nftables +modemmanager ofono ovs policykit +ppp resolvconf selinux syslog systemd teamd test +tools vala +wext +wifi"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -47,7 +47,7 @@ COMMON_DEPEND="
 	net-libs/libndp
 	systemd? ( >=sys-apps/systemd-209:0= )
 	>=dev-libs/glib-2.42:2[${MULTILIB_USEDEP}]
-	introspection? ( >=dev-libs/gobject-introspection-0.10.3:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	selinux? (
 		sec-policy/selinux-networkmanager
 		sys-libs/libselinux
@@ -180,6 +180,9 @@ meson_nm_native_program() {
 }
 
 multilib_src_configure() {
+	# Workaround for LLD on musl systems (bug #959603)
+	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
+
 	# LTO is restricted in older clang for unclear reasons.
 	# https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/issues/593
 	# https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/merge_requests/2053

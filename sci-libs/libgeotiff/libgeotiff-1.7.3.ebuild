@@ -19,7 +19,7 @@ DEPEND="
 	>=sci-libs/proj-6.0.0:=
 	>=media-libs/tiff-3.9.1:=
 	jpeg? ( media-libs/libjpeg-turbo:= )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib:= )
 "
 RDEPEND="${DEPEND}"
 BDEPEND="

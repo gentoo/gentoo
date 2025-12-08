@@ -12,7 +12,7 @@ SLOT="0/${PV}"
 KEYWORDS="amd64 arm arm64 ~hppa ~ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 IUSE="+ocamlopt"
 
-RDEPEND=">=dev-lang/ocaml-4.02.3-r1:=[ocamlopt?]"
+RDEPEND="dev-lang/ocaml:=[ocamlopt?]"
 DEPEND="${RDEPEND}
 	dev-ml/findlib"
 

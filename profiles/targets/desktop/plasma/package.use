@@ -47,10 +47,7 @@ net-firewall/nftables json python xtables
 
 # Required by dev-qt/qtwebengine
 sys-libs/zlib minizip
-
-# Keep existing defaults after dropping IUSE=phonon from make.defaults
-kde-apps/kio-extras phonon
-kde-apps/marble phonon
+virtual/zlib minizip
 
 # Required by kde-plasma/plasma-meta
 kde-plasma/kwin lock

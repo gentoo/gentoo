@@ -40,7 +40,7 @@ BDEPEND="
 RDEPEND="
 	dev-libs/expat
 	sci-libs/shapelib:=
-	sys-libs/zlib:=[minizip]
+	virtual/minizip:=
 	virtual/libusb:1
 	dev-qt/qtbase:6
 	dev-qt/qt5compat:6

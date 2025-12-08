@@ -10,4 +10,4 @@ inherit perl-module
 DESCRIPTION="Efficient resampling and calculation of medians with confidence intervals"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"

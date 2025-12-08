@@ -6,7 +6,7 @@ EAPI=8
 LUA_REQ_USE="deprecated(+)"
 LUA_COMPAT=( lua5-{1,2} luajit )
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit flag-o-matic lua-single meson python-any-r1 xdg
 
@@ -47,7 +47,7 @@ RDEPEND="${LUA_DEPS}
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	sys-apps/dbus
-	sys-libs/zlib
+	virtual/zlib:=
 	X? (
 		!opengl? ( media-libs/libglvnd )
 		media-libs/freetype

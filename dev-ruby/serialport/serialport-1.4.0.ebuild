@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/hparra/ruby-serialport/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 
 all_ruby_prepare() {
 	# Fix the miniterm script so that it might actually work, we'll

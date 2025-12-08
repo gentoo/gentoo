@@ -101,7 +101,7 @@ COMMON_DEPEND="
 		x11-libs/libxkbcommon
 	)
 	zimg? ( media-libs/zimg )
-	zlib? ( sys-libs/zlib:= )
+	zlib? ( virtual/zlib:= )
 "
 RDEPEND="
 	${COMMON_DEPEND}
@@ -126,6 +126,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-wayland-clipboard-cpu.patch
+	"${FILESDIR}"/${P}-ffmpeg8.patch
 )
 
 pkg_pretend() {

@@ -81,7 +81,6 @@ multilib_src_configure() {
 		-Dgles1=disabled
 		$(meson_feature gles2)
 		-Dglut=disabled
-		-Dosmesa=disabled
 		$(meson_feature vulkan)
 		$(meson_feature wayland)
 		$(meson_feature X x11)

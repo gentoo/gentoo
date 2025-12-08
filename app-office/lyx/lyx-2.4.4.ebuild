@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE="aspell cups dia dot enchant gnumeric html +hunspell +latex monolithic-build nls rcs rtf svg l10n_he"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="test"
@@ -25,7 +25,7 @@ RDEPEND="${PYTHON_DEPS}
 	app-text/mythes
 	dev-libs/boost:=
 	sys-apps/file
-	sys-libs/zlib:=
+	virtual/zlib:=
 	virtual/imagemagick-tools[png,svg?]
 	x11-libs/libxcb
 	x11-misc/xdg-utils

@@ -16,6 +16,7 @@ dev-lang/php jit
 mail-filter/rspamd jit
 net-proxy/haproxy pcre-jit
 www-servers/varnish jit
+www-apache/mod_security jit
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-03-24)
 # Requires unkeyworded dev-qt/qtwebengine
@@ -63,6 +64,7 @@ games-util/lgogdownloader gui
 kde-apps/kde-apps-meta pim
 kde-apps/kdenetwork-meta bittorrent
 kde-apps/kleopatra pim
+kde-apps/umbrello php
 kde-misc/kio-gdrive share
 kde-plasma/plasma-nm openconnect
 net-misc/seafile-client shibboleth

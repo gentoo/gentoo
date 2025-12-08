@@ -1,0 +1,29 @@
+From 9f0dd9505db695aab1148a977e2668666ad4d177 Mon Sep 17 00:00:00 2001
+From: Darren Tucker <dtucker@dtucker.net>
+Date: Tue, 7 Oct 2025 20:25:07 +1100
+Subject: [PATCH 5/6] Add fcntl.h to includes.
+
+From FreeBSD via bz#3874: "This was previously included due to nested
+includes in Heimdal's headers.  Without this, the build fails with an
+error due to redefining AT_FDCWD."
+---
+ includes.h | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/includes.h b/includes.h
+index 8f933568d..96cddbc26 100644
+--- a/includes.h
++++ b/includes.h
+@@ -34,6 +34,9 @@
+ #ifdef HAVE_ENDIAN_H
+ # include <endian.h>
+ #endif
++#ifdef HAVE_FCNTL_H
++# include <fcntl.h>
++#endif
+ #ifdef HAVE_TTYENT_H
+ # include <ttyent.h>
+ #endif
+-- 
+2.51.0
+

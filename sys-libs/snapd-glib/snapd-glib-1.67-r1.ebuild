@@ -11,7 +11,7 @@ SRC_URI="https://github.com/canonical/snapd-glib/archive/refs/tags/${PV}.tar.gz 
 
 LICENSE="LGPL-3"
 SLOT="0/1"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 IUSE="doc introspection qml qt6 vala"
 REQUIRED_USE="
@@ -35,7 +35,7 @@ DEPEND="
 		dev-util/gi-docgen
 		dev-util/gtk-doc
 	)
-	introspection? ( dev-libs/gobject-introspection )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 	qml? (
 		qt6? ( dev-qt/qtdeclarative:6 )
 	)

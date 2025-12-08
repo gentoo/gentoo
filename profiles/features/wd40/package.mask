@@ -1,6 +1,39 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2024-11-29)
+# dev-python/translate-toolkit has Rust deps now.
+dev-python/translate-toolkit
+dev-python/unicode-segmentation-rs
+
+# Sam James <sam@gentoo.org> (2025-10-06)
+# Rewritten in Rust.
+>=app-misc/task-3
+
+# Azamat H. Hackimov <azamat.hackimov@gmail.com> (2025-09-22)
+# app-i18n/libchewing was ported to Rust.
+>=app-i18n/ibus-chewing-2.1.7
+>=app-i18n/libchewing-0.10.3
+dev-build/corrosion
+
+# Patrick McLean <chutzpah@gentoo.org> (2025-09-16)
+# New version is rewritten in rust
+>=app-misc/asciinema-3.0.0
+
+# Vincent de Phily <moltonel@gmail.com> (2025-09-01)
+# Another package requiring Rust
+app-portage/emlop
+
+# Michał Górny <mgorny@gentoo.org> (2024-05-08)
+# Pure Python packages using dev-python/uv-build, and therefore
+# requiring Rust to install, and their reverse dependencies.
+dev-python/gherkin-official
+dev-python/pytest-bdd
+dev-python/pytest-describe
+dev-python/uv-build
+dev-python/zmq-anyio
+sys-auth/ssh-ldap-pubkey
+
 # Sebastian Pipping <sping@gentoo.org> (2025-06-20)
 # Requires masked packages (bug #958030)
 # (dev-python/keyring, dev-python/pydantic)
@@ -20,8 +53,10 @@ dev-python/poetry-plugin-export
 # Michał Górny <mgorny@gentoo.org> (2024-05-08)
 # The sigstore bundle.
 dev-python/betterproto
+dev-python/pypi-attestations
 dev-python/securesystemslib
 dev-python/sigstore
+dev-python/sigstore-models
 dev-python/sigstore-protobuf-specs
 dev-python/sigstore-rekor-types
 dev-python/rfc3161-client
@@ -29,7 +64,6 @@ dev-python/tuf
 
 # Michał Górny <mgorny@gentoo.org> (2024-04-20)
 # The mitmproxy bundle.
-dev-python/mitmproxy-wireguard
 dev-util/bpf-linker
 dev-util/btfdump
 net-proxy/mitmproxy
@@ -196,7 +230,7 @@ app-eselect/eselect-gnome-shell-extensions
 app-emacs/rg
 app-emacs/emacs-ipython-notebook
 app-crypt/yubikey-manager
-app-crypt/yubikey-manager-qt
+app-crypt/sequoia-chameleon-gnupg
 app-crypt/sequoia-sq
 app-crypt/sequoia-sqv
 app-crypt/certbot-apache
@@ -310,6 +344,7 @@ dev-python/orjson
 dev-python/os-client-config
 dev-python/osc-lib
 dev-python/paramiko
+dev-python/patiencediff
 dev-python/pooch
 dev-python/pydantic
 dev-python/pydantic-core
@@ -339,7 +374,6 @@ dev-python/secretstorage
 dev-python/selenium
 dev-python/service-identity
 dev-python/setuptools-rust
-dev-python/spur
 dev-python/sshpubkeys
 dev-python/sshtunnel
 dev-python/tempest
@@ -375,7 +409,7 @@ gnome-extra/gnome-browser-connector
 gnome-extra/gnome-tweaks
 gnome-extra/sushi
 >=media-gfx/libimagequant-4
-media-gfx/gimp
+<media-gfx/gimp-3.0.6
 >=media-libs/libopenraw-0.3.2
 media-plugins/gimp-lqr
 media-video/rav1e
@@ -391,10 +425,14 @@ net-news/newsboat
 net-p2p/deluge
 sci-geosciences/gnome-maps
 >=sys-apps/bat-0.18.1
->=sys-block/thin-provisioning-tools-1.0.6
+sys-block/thin-provisioning-tools
 >=sys-process/glances-4.1.2.1
 sys-fs/bcachefs-tools
 virtual/rust
 www-apps/radicale
 >=x11-themes/adwaita-icon-theme-3.36
 x11-themes/adwaita-icon-theme-legacy
+>=gui-libs/gtk-4.20.1
+>=dev-cpp/gtkmm-4.20
+>=gui-libs/libadwaita-1.8.2
+>=gnome-extra/gnome-user-share-48.2

@@ -30,7 +30,7 @@ else
 	S="${WORKDIR}/${MY_P}"
 
 	if [[ ${PV} != *_rc* ]]; then
-		KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~sparc"
+		KEYWORDS="amd64 arm64 ~loong ppc64 ~riscv ~sparc"
 	fi
 fi
 
@@ -45,7 +45,7 @@ DEPEND="
 	dev-libs/openssl:=
 	net-libs/libtirpc:=
 	sys-apps/util-linux
-	sys-libs/zlib
+	virtual/zlib:=
 	virtual/libudev:=
 	!minimal? ( ${PYTHON_DEPS} )
 	pam? ( sys-libs/pam )

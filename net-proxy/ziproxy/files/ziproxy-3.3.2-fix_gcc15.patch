@@ -1,0 +1,13 @@
+see https://sourceforge.net/p/ziproxy/bugs/37/
+fix c23 https://bugs.gentoo.org/943947
+--- a/src/image.c
++++ b/src/image.c
+@@ -1216,7 +1216,7 @@ int jpg2bitmap(char *inbuf, int insize,
+ 	return IMG_RET_OK;
+ }
+ 
+-static boolean jpeg_dest_empty_output_buffer()
++static boolean jpeg_dest_empty_output_buffer(struct jpeg_compress_struct *)
+ {
+ 		return FALSE; //output file larger than original..
+ }

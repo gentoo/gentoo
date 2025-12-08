@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ SLOT="0"
 KEYWORDS="amd64 arm arm64 ~hppa ~loong ~ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="doc +ocamlopt tk"
 
-DEPEND=">=dev-lang/ocaml-4.02.3-r1:=[ocamlopt?]
+DEPEND="dev-lang/ocaml:=[ocamlopt?]
 	tk? ( dev-ml/labltk:= )"
 RDEPEND="${DEPEND}"
 

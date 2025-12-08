@@ -1,0 +1,130 @@
+from upstream, fix compile with clang-19
+https://github.com/danielknobe/blobbyvolley2/pull/152/commits/f5111f93827bc7e1dc7423209986fe14a92823db.patch
+--- a/src/raknet/LinkedList.h
++++ b/src/raknet/LinkedList.h
+@@ -272,7 +272,9 @@ namespace BasicDataStructures
+ 	template <class LinkedListType>
+ 		bool LinkedList<LinkedListType>::operator= ( const LinkedList<LinkedListType>& original_copy )
+ 	{
+-		typename LinkedList::node * original_copy_pointer, *save_position;
++		typename LinkedList::node* original_copy_pointer;
++		typename LinkedList::node* last;
++		typename LinkedList::node* save_position;
+ 
+ 		if ( ( &original_copy ) != this )
+ 		{
+@@ -318,7 +320,7 @@ namespace BasicDataStructures
+ 
+ 
+ 						// Save the current element
+-						this->last = this->position;
++						last = this->position;
+ 
+ 						// Point to the next node in the source list
+ 						original_copy_pointer = original_copy_pointer->next;
+@@ -336,10 +338,10 @@ namespace BasicDataStructures
+ 
+ 
+ 						// Set the previous pointer for the new node
+-						( this->position->previous ) = this->last;
++						( this->position->previous ) = last;
+ 
+ 						// Set the next pointer for the old node to the new node
+-						( this->last->next ) = this->position;
++						( last->next ) = this->position;
+ 
+ 					}
+ 
+@@ -383,7 +385,9 @@ namespace BasicDataStructures
+ 	template <class LinkedListType>
+ 		LinkedList<LinkedListType>::LinkedList( const LinkedList& original_copy )
+ 	{
+-		typename LinkedList::node * original_copy_pointer, *last, *save_position;
++		typename LinkedList::node * original_copy_pointer;
++		typename LinkedList::node * last;
++		typename LinkedList::node * save_position;
+ 
+ 		if ( original_copy.list_size == 0 )
+ 		{
+@@ -422,7 +426,7 @@ namespace BasicDataStructures
+ 				do
+ 				{
+ 					// Save the current element
+-					this->last = this->position;
++					last = this->position;
+ 
+ 					// Point to the next node in the source list
+ 					original_copy_pointer = original_copy_pointer->next;
+@@ -442,7 +446,7 @@ namespace BasicDataStructures
+ 					( this->position->previous ) = last;
+ 
+ 					// Set the next pointer for the old node to the new node
+-					( this->last->next ) = this->position;
++					( last->next ) = this->position;
+ 
+ 				}
+ 
+@@ -462,7 +466,8 @@ namespace BasicDataStructures
+ 	template <class CircularLinkedListType>
+ 		CircularLinkedList<CircularLinkedListType>::CircularLinkedList( const CircularLinkedList& original_copy )
+ 	{
+-		node * original_copy_pointer;
++		node *original_copy_pointer;
++		node *last;
+ 		node *save_position;
+ 
+ 		if ( original_copy.list_size == 0 )
+@@ -504,7 +509,7 @@ namespace BasicDataStructures
+ 
+ 
+ 					// Save the current element
+-					this->last = this->position;
++					last = this->position;
+ 
+ 					// Point to the next node in the source list
+ 					original_copy_pointer = original_copy_pointer->next;
+@@ -521,10 +526,10 @@ namespace BasicDataStructures
+ 						save_position = position;
+ 
+ 					// Set the previous pointer for the new node
+-					( this->position->previous ) = this->last;
++					( this->position->previous ) = last;
+ 
+ 					// Set the next pointer for the old node to the new node
+-					( this->last->next ) = this->position;
++					( last->next ) = this->position;
+ 
+ 				}
+ 
+@@ -544,7 +549,8 @@ namespace BasicDataStructures
+ 	template <class CircularLinkedListType>
+ 		bool CircularLinkedList<CircularLinkedListType>::operator= ( const CircularLinkedList& original_copy )
+ 	{
+-		node * original_copy_pointer;
++		node *original_copy_pointer;
++		node *last;
+ 		node *save_position;
+ 
+ 		if ( ( &original_copy ) != this )
+@@ -589,7 +595,7 @@ namespace BasicDataStructures
+ 					do
+ 					{
+ 						// Save the current element
+-						this->last = this->position;
++						last = this->position;
+ 
+ 						// Point to the next node in the source list
+ 						original_copy_pointer = original_copy_pointer->next;
+@@ -606,10 +612,10 @@ namespace BasicDataStructures
+ 							save_position = this->position;
+ 
+ 						// Set the previous pointer for the new node
+-						( this->position->previous ) = this->last;
++						( this->position->previous ) = last;
+ 
+ 						// Set the next pointer for the old node to the new node
+-						( this->last->next ) = this->position;
++						( last->next ) = this->position;
+ 
+ 					}
+ 

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,12 +11,12 @@ SRC_URI="https://github.com/dun/munge/releases/download/munge-${PV}/munge-${PV}.
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm64 ~hppa ~mips ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 ~arm64 ~hppa ~mips ppc ppc64 ~riscv ~sparc x86"
 IUSE="debug gcrypt static-libs"
 
 DEPEND="
 	app-arch/bzip2
-	sys-libs/zlib
+	virtual/zlib:=
 	gcrypt? ( dev-libs/libgcrypt:0 )
 	!gcrypt? ( dev-libs/openssl:0= )
 "

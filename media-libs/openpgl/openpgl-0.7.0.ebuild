@@ -11,7 +11,7 @@ SRC_URI="https://github.com/RenderKit/openpgl/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="Apache-2.0"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="-* ~amd64 ~arm64"
+KEYWORDS="-* amd64 ~arm64"
 
 X86_CPU_FLAGS=( sse4_2 avx2 avx512dq )
 CPU_FLAGS=( "${X86_CPU_FLAGS[@]/#/cpu_flags_x86_}" )

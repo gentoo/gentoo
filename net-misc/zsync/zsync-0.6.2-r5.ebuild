@@ -15,7 +15,7 @@ LICENSE="Artistic-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ppc ppc64 x86"
 
-RDEPEND="sys-libs/zlib"
+RDEPEND="virtual/zlib:="
 DEPEND="${RDEPEND}"
 
 PATCHES=(

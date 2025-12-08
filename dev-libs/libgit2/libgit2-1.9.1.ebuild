@@ -16,14 +16,14 @@ S=${WORKDIR}/${P/_/-}
 
 LICENSE="GPL-2-with-linking-exception"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="amd64 arm arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="examples gssapi +ssh test +threads trace"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/libpcre2:=
 	net-libs/llhttp:=
-	sys-libs/zlib
+	virtual/zlib:=
 	dev-libs/openssl:0=
 	gssapi? ( virtual/krb5 )
 	ssh? ( net-libs/libssh2 )

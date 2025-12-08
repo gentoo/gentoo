@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~loong ppc ~ppc64 ~s390 ~sparc x86"
 
 RDEPEND="media-libs/libpng:=
-	 sys-libs/zlib"
+	 virtual/zlib:="
 DEPEND="${RDEPEND}"
 BDEPEND="app-arch/gzip"
 

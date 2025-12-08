@@ -158,7 +158,11 @@ src_configure() {
 	# will just ignore it.
 	for i in $(get-flag mcpu) $(get-flag march) ; do
 		[[ ${i} = native ]] && i="host" # bug #273421
-		myconf+=( --cpu=${i} )
+		if use arm64; then # 830165 - 'host' explicitly not supported on arm64
+			[[ ${i} != host ]] && myconf+=( --cpu=${i} )
+		else
+			myconf+=( --cpu=${i} )
+		fi
 		break
 	done
 
@@ -212,15 +216,16 @@ src_configure() {
 		--disable-error-resilience \
 		--disable-everything \
 		--disable-faan \
+		--disable-iamf \
 		--disable-iconv \
 		--disable-network \
 		--enable-avcodec \
 		--enable-avformat \
 		--enable-avutil \
 		--enable-libopus \
-		--enable-decoder=aac,flac,h264,libopus,mp3,pcm_alaw,pcm_f32le,pcm_mulaw,pcm_s16be,pcm_s16le,pcm_s24be,pcm_s24le,pcm_s32le,pcm_u8,theora,vorbis,vp8 \
+		--enable-decoder=aac,flac,h264,libopus,mp3,pcm_alaw,pcm_f32le,pcm_mulaw,pcm_s16be,pcm_s16le,pcm_s24be,pcm_s24le,pcm_s32le,pcm_u8,vorbis \
 		--enable-demuxer=aac,flac,matroska,mov,mp3,ogg,wav \
-		--enable-parser=aac,flac,h264,mpegaudio,opus,vorbis,vp3,vp8,vp9 \
+		--enable-parser=aac,flac,h264,mpegaudio,opus,vorbis,vp9 \
 		--enable-pic \
 		--enable-static \
 		"${myconf[@]}" \

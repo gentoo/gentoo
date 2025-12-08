@@ -12,10 +12,7 @@ SRC_URI="https://liba52.sourceforge.net/files/${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
-IUSE="djbfft oss"
-
-RDEPEND="djbfft? ( >=sci-libs/djbfft-0.76-r2[${MULTILIB_USEDEP}] )"
-DEPEND="${RDEPEND}"
+IUSE="oss"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-build.patch
@@ -23,6 +20,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-tests-optional.patch
 	"${FILESDIR}"/${P}-test-hidden-symbols.patch
 	"${FILESDIR}"/${P}-dont-mangle-cflags.patch
+	"${FILESDIR}"/${P}-rm_getopt.patch
 )
 
 src_prepare() {
@@ -30,6 +28,9 @@ src_prepare() {
 
 	sed -i -e 's:AM_CONFIG_HEADER:AC_CONFIG_HEADERS:' configure.in || die # bug #466978
 	mv configure.{in,ac} || die
+
+	# use getopt.h from glibc/musl, bug 944997
+	rm src/getopt.h || die
 
 	eautoreconf
 
@@ -39,7 +40,7 @@ src_prepare() {
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
 		--enable-shared \
-		$(use_enable djbfft) \
+		--disable-djbfft \
 		$(usev !oss --disable-oss)
 
 	# remove useless subdirs

@@ -11,13 +11,13 @@ SRC_URI="https://libopenraw.freedesktop.org/download/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="2/8"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~loong ppc64 ~riscv x86"
 IUSE="examples test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/expat-2:=
-	sys-libs/zlib
+	virtual/zlib:=
 	virtual/libiconv
 "
 DEPEND="

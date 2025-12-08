@@ -23,7 +23,7 @@ DEPEND="
 	dev-libs/mxml:0
 	media-libs/liblo
 	sci-libs/fftw:3.0
-	sys-libs/zlib
+	virtual/zlib:=
 	virtual/opengl
 	alsa? ( media-libs/alsa-lib )
 	doc? ( dev-texlive/texlive-fontutils )

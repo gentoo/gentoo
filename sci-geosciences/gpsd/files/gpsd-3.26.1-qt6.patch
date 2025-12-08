@@ -1,0 +1,14 @@
+Source: https://gitlab.com/gpsd/gpsd/-/issues/340
+Thanks-to: James Browning
+
+--- a/libgps/gpsutils.c
++++ b/libgps/gpsutils.c
+@@ -833,7 +833,7 @@ timespec_t iso8601_to_timespec(const char *isotime)
+     if (1 < sl.size()) {
+         usec = sl[1].toInt() / pow(10., (double)sl[1].size());
+     }
+-    ret.tv_sec = d.toTime_t();
++    ret.tv_sec = d.toSecsSinceEpoch();
+     ret.tv_nsec = usec * 1e9;
+ #else  // USE_QT
+     double usec = 0;

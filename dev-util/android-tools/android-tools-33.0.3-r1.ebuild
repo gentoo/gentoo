@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_11 )
 
 inherit cmake python-r1
 
@@ -31,7 +31,7 @@ DEPEND="
 	dev-cpp/abseil-cpp:=
 	dev-libs/libpcre2:=
 	<dev-libs/protobuf-30:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	virtual/libusb:1=
 "
 RDEPEND="${DEPEND}

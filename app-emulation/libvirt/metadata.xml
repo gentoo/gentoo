@@ -38,9 +38,6 @@
 		<flag name="lxc">
 			Support management of Linux Containers virtualisation (<pkg>app-containers/lxc</pkg>)
 		</flag>
-		<flag name="openvz">
-			Support management of OpenVZ virtualisation (openvz-sources)
-		</flag>
 		<flag name="qemu">
 			Support management of QEMU virtualisation (<pkg>app-emulation/qemu</pkg>)
 		</flag>

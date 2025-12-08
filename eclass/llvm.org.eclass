@@ -57,7 +57,7 @@ LLVM_VERSION=$(ver_cut 1-3)
 # @DESCRIPTION:
 # The major version of current LLVM trunk.  Used to determine
 # the correct branch to use.
-_LLVM_MAIN_MAJOR=21
+_LLVM_MAIN_MAJOR=22
 
 # @ECLASS_VARIABLE: _LLVM_SOURCE_TYPE
 # @INTERNAL
@@ -72,11 +72,14 @@ if [[ -z ${_LLVM_SOURCE_TYPE+1} ]]; then
 			_LLVM_SOURCE_TYPE=snapshot
 
 			case ${PV} in
-				21.0.0_pre20250628)
-					EGIT_COMMIT=e34e02128ec5eb89e36a8f0f7307dcbcfecabbee
+				22.0.0_pre20251127)
+					EGIT_COMMIT=8401a8d0be7671fb5089f850a34dc92ad4a2eb12
 					;;
-				21.0.0_pre20250614)
-					EGIT_COMMIT=814ac2e3735e52c1162ac495c24158e0ac256520
+				22.0.0_pre20251120)
+					EGIT_COMMIT=21c4c1502e3383988ba77eac75b13da7b9426957
+					;;
+				22.0.0_pre20251108)
+					EGIT_COMMIT=0875755f5275dc7a84b1aeb526b7822b47a733c9
 					;;
 				*)
 					die "Unknown snapshot: ${PV}"
@@ -142,6 +145,10 @@ fi
 # - llvm - this package uses targets from LLVM.  RDEPEND+DEPEND
 #   on matching llvm-core/llvm versions with requested flags will
 #   be added.
+#
+# - llvm+eq - this package automagically uses targets from LLVM by using
+#   a function like InitializeAllTargets.  Same behavior as =llvm, but
+#   with matching use= deps for targets.
 #
 # Note that you still need to pass enabled targets to the build system,
 # usually grabbing them from ${LLVM_TARGETS} (via USE_EXPAND).
@@ -267,7 +274,7 @@ llvm.org_set_globals() {
 			fi
 			BDEPEND+="
 				verify-sig? (
-					>=sec-keys/openpgp-keys-llvm-20.1.5
+					>=sec-keys/openpgp-keys-llvm-21.1.4
 				)
 			"
 			VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/llvm.asc
@@ -315,6 +322,9 @@ llvm.org_set_globals() {
 				20*)
 					LLVM_MANPAGE_DIST="llvm-20.1.0-manpages.tar.xz"
 					;;
+				21*)
+					LLVM_MANPAGE_DIST="llvm-21.1.0-manpages.tar.xz"
+					;;
 			esac
 		fi
 
@@ -337,15 +347,26 @@ llvm.org_set_globals() {
 	case ${LLVM_USE_TARGETS:-__unset__} in
 		__unset__)
 			;;
-		provide|llvm)
+		provide|llvm|llvm+eq)
 			IUSE+=" ${ALL_LLVM_TARGET_FLAGS[*]}"
 			REQUIRED_USE+=" || ( ${ALL_LLVM_TARGET_FLAGS[*]} )"
 			;;&
 		llvm)
+			# We do x? ( ... ) instead of [x?,y?,...] to workaround
+			# a pkgcheck bug: https://github.com/pkgcore/pkgcheck/pull/423
 			local dep=
 			for x in "${ALL_LLVM_TARGET_FLAGS[@]}"; do
 				dep+="
 					${x}? ( ~llvm-core/llvm-${PV}[${x}] )"
+			done
+			RDEPEND+=" ${dep}"
+			DEPEND+=" ${dep}"
+			;;
+		llvm+eq)
+			local dep=
+			for x in "${ALL_LLVM_TARGET_FLAGS[@]}"; do
+				dep+="
+					${x}? ( ~llvm-core/llvm-${PV}[${x}=] )"
 			done
 			RDEPEND+=" ${dep}"
 			DEPEND+=" ${dep}"

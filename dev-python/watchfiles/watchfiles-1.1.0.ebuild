@@ -7,6 +7,7 @@ DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
 PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 
+RUST_MIN_VER="1.77.0"
 CRATES="
 	autocfg@1.3.0
 	bitflags@1.3.2
@@ -81,7 +82,7 @@ LICENSE+="
 	Apache-2.0-with-LLVM-exceptions CC0-1.0 ISC MIT Unicode-DFS-2016
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 RDEPEND="
 	>=dev-python/anyio-4.0.0[${PYTHON_USEDEP}]
@@ -90,8 +91,6 @@ BDEPEND="
 	dev-python/setuptools-rust[${PYTHON_USEDEP}]
 	test? (
 		dev-python/dirty-equals[${PYTHON_USEDEP}]
-		dev-python/pytest-mock[${PYTHON_USEDEP}]
-		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 	)
 "
 
@@ -100,6 +99,7 @@ QA_FLAGS_IGNORED=".*/_rust_notify.*"
 
 export PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
 
+EPYTEST_PLUGINS=( anyio pytest-{mock,timeout} )
 distutils_enable_tests pytest
 
 python_test() {

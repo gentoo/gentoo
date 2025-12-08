@@ -28,7 +28,7 @@ RDEPEND="
 	dev-libs/crypto++:=
 	sys-libs/binutils-libs:0=
 	sys-libs/readline:0=
-	sys-libs/zlib
+	virtual/zlib:=
 	x11-libs/wxGTK:${WX_GTK_VER}=
 	daemon? ( acct-user/amule )
 	geoip? ( dev-libs/geoip )
@@ -55,6 +55,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.3.3-fix-exception.patch"
 	"${FILESDIR}/${PN}-2.3.3-backport-pr368.patch"
 	"${FILESDIR}/${PN}-2.3.3-use-xdg-open-as-preview-default.patch"
+	"${FILESDIR}/${PN}-9999-gettext-0.23.patch"
 )
 
 src_prepare() {

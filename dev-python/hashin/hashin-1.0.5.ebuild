@@ -4,23 +4,24 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 pypi
 
 DESCRIPTION="Adds hashed entries for packages to requirements.txt"
-HOMEPAGE="https://github.com/peterbe/hashin"
+HOMEPAGE="
+	https://github.com/peterbe/hashin/
+	https://pypi.org/project/hashin/
+"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
 
 RDEPEND="
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/pip[${PYTHON_USEDEP}]
 "
 
-RESTRICT="!test? ( test )"
-
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest

@@ -30,7 +30,7 @@ REQUIRED_USE="
 RDEPEND="
 	>=media-libs/libpng-1.4:=
 	media-libs/libsdl2[joystick]
-	sys-libs/zlib:=
+	virtual/zlib:=
 	virtual/glu
 	virtual/opengl
 	link? (

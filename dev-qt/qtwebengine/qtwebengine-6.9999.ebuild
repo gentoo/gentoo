@@ -3,14 +3,13 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
-PYTHON_REQ_USE="xml(+)"
+PYTHON_COMPAT=( python3_{11..14} )
 inherit check-reqs flag-o-matic multiprocessing optfeature
 inherit prefix python-any-r1 qt6-build toolchain-funcs
 
 DESCRIPTION="Library for rendering dynamic web content in Qt6 C++ and QML applications"
 SRC_URI+="
-	https://dev.gentoo.org/~ionen/distfiles/${PN}-6.9-patchset-7.tar.xz
+	https://dev.gentoo.org/~ionen/distfiles/${PN}-6.10-patchset-7.tar.xz
 "
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
@@ -31,7 +30,6 @@ REQUIRED_USE="
 RDEPEND="
 	app-arch/snappy:=
 	dev-libs/expat
-	dev-libs/libevent:=
 	dev-libs/libxml2:=[icu]
 	dev-libs/libxslt
 	dev-libs/nspr
@@ -52,8 +50,9 @@ RDEPEND="
 	media-libs/tiff:=
 	sys-apps/dbus
 	sys-apps/pciutils
-	sys-libs/zlib:=[minizip]
 	virtual/libudev:=
+	virtual/minizip:=
+	virtual/zlib:=
 	x11-libs/libX11
 	x11-libs/libXcomposite
 	x11-libs/libXdamage
@@ -127,7 +126,7 @@ qtwebengine_check-reqs() {
 		ewarn "If run into issues, please try disabling before reporting a bug."
 	fi
 
-	local CHECKREQS_DISK_BUILD=10G
+	local CHECKREQS_DISK_BUILD=11G
 	local CHECKREQS_DISK_USR=400M
 
 	if ! has distcc ${FEATURES}; then #830661
@@ -159,9 +158,9 @@ src_prepare() {
 	# store chromium versions, only used in postinst for a warning
 	local chromium
 	mapfile -t chromium < CHROMIUM_VERSION || die
-	[[ ${chromium[1]} =~ ^Based.*:[^0-9]+([0-9.]+$) ]] &&
+	[[ ${chromium[0]} =~ ^Based.*:[^0-9]+([0-9.]+$) ]] &&
 		QT6_CHROMIUM_VER=${BASH_REMATCH[1]} || die
-	[[ ${chromium[2]} =~ ^Patched.+:[^0-9]+([0-9.]+$) ]] &&
+	[[ ${chromium[1]} =~ ^Patched.+:[^0-9]+([0-9.]+$) ]] &&
 		QT6_CHROMIUM_PATCHES_VER=${BASH_REMATCH[1]} || die
 }
 
@@ -212,6 +211,10 @@ src_configure() {
 		# this by default in 6.7.3+ (bug #913923)
 		-DQT_FEATURE_webengine_system_re2=OFF
 
+		# currently seems unused with our configuration, doesn't link and grep
+		# seems(?) to imply no dlopen nor using bundled (TODO: check again)
+		-DQT_FEATURE_webengine_system_openh264=OFF
+
 		# system_libvpx=ON is intentionally ignored with USE=vaapi which leads
 		# to using system's being less tested, prefer disabling for now until
 		# vaapi can use it as well
@@ -220,13 +223,16 @@ src_configure() {
 		# not necessary to pass these (default), but in case detection fails
 		# given qtbase's force_system_libs does not affect these right now
 		$(printf -- '-DQT_FEATURE_webengine_system_%s=ON ' \
-			freetype gbm glib harfbuzz lcms2 libevent libjpeg \
-			libopenjpeg2 libpci libpng libtiff libudev libwebp \
-			libxml minizip opus snappy zlib)
+			freetype gbm glib harfbuzz lcms2 libjpeg libopenjpeg2 \
+			libpci libpng libtiff libudev libwebp libxml minizip \
+			opus snappy zlib)
 
 		# TODO: fixup gn cross, or package dev-qt/qtwebengine-gn with =ON
 		# (see also BUILD_ONLY_GN option added in 6.8+ for the latter)
 		-DINSTALL_GN=OFF
+
+		# TODO: drop this if no longer errors out early during cmake generation
+		-DQT_GENERATE_SBOM=OFF
 	)
 
 	local mygnargs=(
@@ -268,11 +274,12 @@ src_configure() {
 }
 
 src_compile() {
-	# tentatively work around a possible (rare) race condition (bug #921680),
-	# has good chances to be obsolete but keep for now as a safety
-	cmake_build WebEngineCore_sync_all_public_headers
-
 	cmake_src_compile
+
+	# exact cause unknown, but >=qtwebengine-6.9.2 started to act as if
+	# QtWebEngineProcess is marked USER_FACING despite not set anywhere
+	# and this creates a user_facing_tool_links.txt with a broken symlink
+	:> "${BUILD_DIR}"/user_facing_tool_links.txt || die
 }
 
 src_test() {
@@ -283,11 +290,12 @@ src_test() {
 	fi
 
 	local CMAKE_SKIP_TESTS=(
-		# fails with network sandbox
+		# fails with *-sandbox
 		tst_certificateerror
 		tst_loadsignals
 		tst_qquickwebengineview
 		tst_qwebengineglobalsettings
+		tst_qwebenginepermission
 		tst_qwebengineview
 		# fails with offscreen rendering, may be worth retrying if the issue
 		# persist given these are rather major tests (or consider virtx)
@@ -319,8 +327,17 @@ src_install() {
 	[[ -e ${D}${QT6_LIBDIR}/libQt6WebEngineCore.so ]] || #601472
 		die "${CATEGORY}/${PF} failed to build anything. Please report to https://bugs.gentoo.org/"
 
-	if use test && use webdriver; then
-		rm -- "${D}${QT6_BINDIR}"/testbrowser || die
+	if use test; then
+		local delete=( # sigh
+			"${D}${QT6_ARCHDATADIR}"/metatypes/*testmockdelegates*
+			"${D}${QT6_ARCHDATADIR}"/modules/*TestMockDelegates*
+			"${D}${QT6_BINDIR}"/testbrowser
+			"${D}${QT6_LIBDIR}"/{,cmake,pkgconfig}/*TestMockDelegates*
+			"${D}${QT6_MKSPECSDIR}"/modules/*testmockdelegates*
+			"${D}${QT6_QMLDIR}"/QtWebEngine/TestMockDelegates
+		)
+		# using -f given not tracking which tests may be skipped or not
+		rm -rf -- "${delete[@]}" || die
 	fi
 }
 

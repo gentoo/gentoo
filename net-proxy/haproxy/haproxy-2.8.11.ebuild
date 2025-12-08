@@ -49,11 +49,11 @@ DEPEND="
 		dev-libs/openssl:0=
 	)
 	systemd? ( sys-apps/systemd )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib:= )
 	lua? ( ${LUA_DEPS} )
 	test? (
 		dev-libs/libpcre2
-		sys-libs/zlib
+		virtual/zlib:=
 	)"
 RDEPEND="${DEPEND}
 	acct-group/haproxy

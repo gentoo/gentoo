@@ -23,7 +23,7 @@ SRC_URI="
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~ppc ~ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~x64-macos"
 IUSE="drafts"
 
 # There are additional test failures if zeromq has the draft api enabled, but pyzmq has it disabled.
@@ -40,12 +40,11 @@ BDEPEND="
 		>=dev-python/cython-3.0.0[${PYTHON_USEDEP}]
 	' 'python*')
 	test? (
-		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
-		dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
 		>=dev-python/tornado-5.0.2[${PYTHON_USEDEP}]
 	)
 "
 
+EPYTEST_PLUGINS=( pytest-{asyncio,rerunfailures} )
 distutils_enable_tests pytest
 # TODO: Package enum_tools
 # distutils_enable_sphinx docs/source \
@@ -80,8 +79,7 @@ python_test() {
 			)
 	esac
 
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	rm -rf zmq || die
 	# avoid large to reduce memory consumption
-	epytest -p asyncio -p rerunfailures tests -m "not large"
+	epytest tests -m "not large"
 }

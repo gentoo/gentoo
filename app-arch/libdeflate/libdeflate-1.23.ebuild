@@ -13,13 +13,13 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/ebiggers/libdeflate.git"
 else
 	SRC_URI="https://github.com/ebiggers/libdeflate/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 fi
 
 LICENSE="MIT"
 SLOT="0"
 # the zlib USE-flag enables support for zlib
-# the test USE-flag programs depend on sys-libs/zlib for comparison tests
+# the test USE-flag programs depend on virtual/zlib for comparison tests
 IUSE="+utils test"
 
 RESTRICT="
@@ -27,7 +27,7 @@ RESTRICT="
 "
 
 DEPEND="
-	test? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
+	test? ( virtual/zlib[${MULTILIB_USEDEP}] )
 "
 
 PATCHES=(

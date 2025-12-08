@@ -9,7 +9,7 @@ SPIDERMONKEY_PATCHSET="spidermonkey-115-patches-02.tar.xz"
 
 LLVM_COMPAT=( 18 )
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..12} )
 PYTHON_REQ_USE="ncurses,ssl,xml(+)"
 
 RUST_NEEDS_LLVM="1"
@@ -63,7 +63,7 @@ SRC_URI="${MOZ_SRC_BASE_URI}/source/${MOZ_P}.source.tar.xz -> ${MOZ_P_DISTFILES}
 DESCRIPTION="SpiderMonkey is Mozilla's JavaScript engine written in C and C++"
 HOMEPAGE="https://spidermonkey.dev https://firefox-source-docs.mozilla.org/js/index.html "
 
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 
 SLOT="$(ver_cut 1)"
 LICENSE="MPL-2.0"
@@ -87,7 +87,7 @@ BDEPEND="${PYTHON_DEPS}
 DEPEND=">=dev-libs/icu-73.1:=
 	dev-libs/nspr
 	sys-libs/readline:0=
-	sys-libs/zlib"
+	virtual/zlib:="
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/firefox-${MY_PV}/js/src"

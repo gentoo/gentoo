@@ -1,4 +1,4 @@
-# Copyright 2004-2024 Gentoo Authors
+# Copyright 2004-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-utils-2.eclass
@@ -6,7 +6,7 @@
 # java@gentoo.org
 # @AUTHOR:
 # Thomas Matthijs <axxo@gentoo.org>, Karl Trygve Kalleberg <karltk@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 8
 # @BLURB: Base eclass for Java packages
 # @DESCRIPTION:
 # This eclass provides functionality which is used by java-pkg-2.eclass and
@@ -20,7 +20,7 @@ if [[ -z ${_JAVA_UTILS_2_ECLASS} ]] ; then
 _JAVA_UTILS_2_ECLASS=1
 
 case ${EAPI} in
-	7|8) ;;
+	8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -294,6 +294,13 @@ JAVA_PKG_COMPILERS_CONF=${JAVA_PKG_COMPILERS_CONF:="/etc/java-config-2/build/com
 #	    "${PN}-connector-factory"
 #	)
 # @CODE
+
+# @ECLASS_VARIABLE: JAVA_DISABLE_DEPEND_ON_JAVA_DEP_CHECK
+# @PRE_INHERIT
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Helper variable to be used in packages which would otherwise have circular
+# dependencies with dev-java/java-dep-check once this is forced to BDEPEND.
 
 # @FUNCTION: java-pkg_doexamples
 # @USAGE: [--subdir <subdir>] <file1/dir1> [<file2> ...]
@@ -1298,7 +1305,7 @@ java-pkg_getjar() {
 	classpath=$(java-config --classpath=${pkg})
 	[[ $? != 0 ]] && die ${error_msg}
 
-	java-pkg_ensure-dep "${build_only}" "${pkg}"
+	[[ -z ${PORTAGE_QUIET} ]] && java-pkg_ensure-dep "${build_only}" "${pkg}"
 
 	# Record the package(Virtual) as a dependency and then set build_only
 	# So that individual jars are not recorded.
@@ -1318,7 +1325,7 @@ java-pkg_getjar() {
 
 		if [[ "$(basename ${jar})" == "${target_jar}" ]] ; then
 			# Only record jars that aren't build-only
-			if [[ -z "${record_jar}" ]]; then
+			if [[ -z "${record_jar}" && -z ${PORTAGE_QUIET} ]]; then
 				if [[ -z "${build_only}" ]]; then
 					java-pkg_record-jar_ "${pkg}" "${jar}"
 				else
@@ -2995,6 +3002,16 @@ is-java-strict() {
 	[[ -n ${JAVA_PKG_STRICT} ]]
 	return $?
 }
+
+# Avoid having to emerge them separately every time
+if is-java-strict; then
+	# Needed for java-pkg_verify-classes
+	BDEPEND="${BDEPEND} dev-java/javatoolkit"
+	if [[ -z "${JAVA_DISABLE_DEPEND_ON_JAVA_DEP_CHECK}" ]]; then
+		# Needed for java-utils-2_pkg_preinst
+		BDEPEND="${BDEPEND} dev-java/java-dep-check:0" || die
+	fi
+fi
 
 # @FUNCTION: java-pkg_clean
 # @DESCRIPTION:

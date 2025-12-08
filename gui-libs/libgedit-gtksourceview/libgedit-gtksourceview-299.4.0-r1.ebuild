@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/World/gedit/libgedit-gtksourceview"
 
 LICENSE="LGPL-2.1+"
 SLOT="300"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 
 IUSE="gtk-doc test"
 
@@ -19,7 +19,7 @@ RDEPEND="
 	>=x11-libs/gtk+-3.20:3[introspection]
 	>=dev-libs/libxml2-2.6:2=
 
-	dev-libs/gobject-introspection:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

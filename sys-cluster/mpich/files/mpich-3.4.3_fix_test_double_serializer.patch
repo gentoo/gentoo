@@ -1,0 +1,26 @@
+Upstream json-c patch with modified path
+Mpich upstream issue: https://github.com/pmodels/mpich/issues/7130
+Gentoo issue: https://bugs.gentoo.org/928317
+
+From 79ad1c9b9fcc846e6bc31f47b801d11ba6d8613a Mon Sep 17 00:00:00 2001
+From: Björn Esser <besser82@fedoraproject.org>
+Date: Mon, 18 May 2020 11:38:36 +0200
+Subject: [PATCH] tests: Fix test_double_serializer without thread-local
+ storage.
+
+---
+ tests/test_double_serializer.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tests/test_double_serializer.c b/tests/test_double_serializer.c
+index bad7ef559e..53727eb856 100644
+--- a/modules/json-c/tests/test_double_serializer.c
++++ b/modules/json-c/tests/test_double_serializer.c
+@@ -58,6 +58,7 @@ int main()
+ #else
+ 	// Just fake it up, so the output matches.
+ 	printf("obj.to_string(with thread format)=%s\n", "T0.52X");
++	printf("obj.to_string(long thread format)=%s\n", "Ttttttttttttt0.52xxxxxxxxxxxxxxxxxxX");
+ 	printf("obj.to_string(back to global format)=%s\n", "x0.524y");
+ #endif
+ 	if (json_c_set_serialization_double_format(NULL, JSON_C_OPTION_GLOBAL) < 0)

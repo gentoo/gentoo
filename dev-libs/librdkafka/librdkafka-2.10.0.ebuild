@@ -3,7 +3,7 @@
 
 EAPI="8"
 
-PYTHON_COMPAT=( python3_{10..14} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit flag-o-matic python-any-r1 toolchain-funcs
 
@@ -16,7 +16,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/confluentinc/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="amd64 arm arm64 ~hppa ~loong ~ppc ppc64 ~riscv ~sparc x86"
 fi
 
 LICENSE="BSD-2"
@@ -31,7 +31,7 @@ LIB_DEPEND="
 	sasl? ( dev-libs/cyrus-sasl:=[static-libs(+)] )
 	ssl? ( dev-libs/openssl:0=[static-libs(+)] )
 	zstd? ( app-arch/zstd:=[static-libs(+)] )
-	sys-libs/zlib:=[static-libs(+)]
+	virtual/zlib:=[static-libs(+)]
 "
 # which: https://github.com/confluentinc/librdkafka/pull/4353
 BDEPEND="

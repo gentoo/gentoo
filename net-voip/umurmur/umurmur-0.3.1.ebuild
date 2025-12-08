@@ -11,7 +11,7 @@ SRC_URI="https://github.com/umurmur/umurmur/archive/refs/tags/v${PV}.tar.gz -> $
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="gnutls mbedtls shm"
 
 # ssl-provider precendence: gnutls, mbedtls and openssl if none specified
@@ -38,7 +38,6 @@ DOC_CONTENTS="
 	https://github.com/umurmur/umurmur/wiki/Configuration "
 
 PATCHES=(
-#	"${FILESDIR}/${PN}-0.2.20-openssl3.patch" #806154
 	"${FILESDIR}/umurmur-0.3.1-mbedtls-3.patch"
 )
 

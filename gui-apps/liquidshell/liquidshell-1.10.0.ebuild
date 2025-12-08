@@ -19,7 +19,7 @@ LICENSE="GPL-3+"
 SLOT="0"
 IUSE=""
 
-DEPEND="
+COMMON_DEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui,network,widgets]
 	>=kde-frameworks/bluez-qt-${KFMIN}:6
 	>=kde-frameworks/karchive-${KFMIN}:6
@@ -42,7 +42,10 @@ DEPEND="
 	>=kde-frameworks/networkmanager-qt-${KFMIN}:6
 	>=kde-frameworks/solid-${KFMIN}:6
 "
-RDEPEND="${DEPEND}
+DEPEND="${COMMON_DEPEND}
+	>=kde-frameworks/kstatusnotifieritem-${KFMIN}:6
+"
+RDEPEND="${COMMON_DEPEND}
 	>=dev-qt/qttools-${QTMIN}:6[qdbus]
 	>=kde-frameworks/kded-${KFMIN}:6
 	sys-apps/dbus

@@ -52,6 +52,11 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2020-gentoo.patch
 )
 
+pkg_setup() {
+	ada_pkg_setup
+	python-any-r1_pkg_setup
+}
+
 src_prepare() {
 	default
 	rmdir templates_parser || die

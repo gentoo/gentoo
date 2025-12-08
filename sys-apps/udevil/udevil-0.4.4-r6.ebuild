@@ -11,7 +11,7 @@ SRC_URI="https://github.com/IgnorantGuru/udevil/archive/${PV}.tar.gz -> ${P}.tar
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 RDEPEND="
 	acct-group/plugdev
@@ -32,8 +32,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.4.4-include-sysmacros.patch
 	"${FILESDIR}"/${PN}-0.4.4-no-libtool.patch
 	"${FILESDIR}"/${PN}-0.4.4-no-conf.d.patch
-	"${FILESDIR}"/${PN}-0.4.4-include-sysstat.patch
 	"${FILESDIR}"/${PN}-0.4.4-remove-exfat-options.patch
+	"${FILESDIR}"/${PN}-0.4.4-signal-handlers.patch
 )
 
 src_prepare() {

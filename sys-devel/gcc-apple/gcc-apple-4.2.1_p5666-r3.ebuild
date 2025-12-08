@@ -21,7 +21,7 @@ SLOT="42"
 KEYWORDS="~ppc-macos ~x64-macos"
 IUSE="bootstrap fortran nls +openmp objc objc++ +cxx"
 
-RDEPEND=">=sys-libs/zlib-1.1.4
+RDEPEND=">=virtual/zlib-1.1.4:=
 	>=sys-libs/ncurses-5.2-r2
 	nls? ( sys-devel/gettext )
 	>=sys-devel/gcc-config-1.8-r1

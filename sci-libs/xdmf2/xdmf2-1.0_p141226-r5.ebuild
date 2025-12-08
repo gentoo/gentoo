@@ -1,7 +1,7 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake
 
@@ -42,7 +42,6 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DBUILD_SHARED_LIBS=1
 		-DXDMF_BUILD_DOCUMENTATION=$(usex doc)
 		-DBUILD_TESTING=$(usex test)
 		-DXDMF_WRAP_PYTHON=OFF

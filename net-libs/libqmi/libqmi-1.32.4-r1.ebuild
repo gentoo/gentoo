@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ IUSE="gtk-doc introspection +mbim +qrtr"
 RDEPEND="
 	>=dev-libs/glib-2.56
 	>=dev-libs/libgudev-232
-	introspection? ( dev-libs/gobject-introspection:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	mbim? ( >=net-libs/libmbim-1.18.0 )
 	qrtr? ( >=net-libs/libqrtr-glib-1.0.0:= )
 "
@@ -33,6 +33,10 @@ BDEPEND="
 	virtual/pkgconfig
 	gtk-doc? ( dev-util/gtk-doc )
 "
+
+PATCHES=(
+	"${FILESDIR}"/libqmi-1.32.4-gtkdoc-without-tests-meson-1.7.0.patch
+)
 
 src_configure() {
 	local emesonargs=(

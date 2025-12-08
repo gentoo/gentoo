@@ -32,7 +32,7 @@ DEPEND="
 	msgpack? ( dev-libs/msgpack:= )
 	sphinx? ( >=dev-python/sphinx-1.0.1 )
 	zeromq? ( net-libs/zeromq:0= )
-	zlib? ( sys-libs/zlib:0= )
+	zlib? ( virtual/zlib:= )
 	zstd? ( app-arch/zstd:0= )
 "
 RDEPEND="${DEPEND}"

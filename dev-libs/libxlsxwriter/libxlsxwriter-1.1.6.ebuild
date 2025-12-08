@@ -12,12 +12,12 @@ S="${WORKDIR}/${PN}-RELEASE_${PV}"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~x86"
 IUSE="openssl test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	sys-libs/zlib[minizip]
+	virtual/minizip:=
 	openssl? ( dev-libs/openssl:= )
 "
 RDEPEND="${DEPEND}"

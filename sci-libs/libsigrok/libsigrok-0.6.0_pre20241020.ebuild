@@ -47,7 +47,7 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="
 	>=dev-libs/glib-2.32.0
 	>=dev-libs/libzip-0.8:=
-	sys-libs/zlib
+	virtual/zlib:=
 	bluetooth? ( >=net-wireless/bluez-4.0:= )
 	cxx? ( dev-cpp/glibmm:2 )
 	ftdi? ( dev-embedded/libftdi:1 )
@@ -84,6 +84,10 @@ BDEPEND="
 	cxx? ( app-text/doxygen )
 "
 [[ ${PV} == *_p* ]] && BDEPEND+=" app-arch/unzip"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.6.0_pre20241020-swig.patch
+)
 
 pkg_setup() {
 	use python && python_setup

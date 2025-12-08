@@ -8,7 +8,7 @@ EAPI=8
 # stuff too like PROJ, GDAL. Previous release manager of TIFF was
 # GraphicsMagick maintainer Bob Friesenhahn. Please be careful when verifying
 # who made releases.
-VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/rouault.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/evenrouault.asc
 inherit libtool multilib-minimal verify-sig flag-o-matic
 
 MY_P="${P/_rc/rc}"
@@ -35,11 +35,11 @@ RDEPEND="
 	lzma? ( >=app-arch/xz-utils-5.0.5-r1[${MULTILIB_USEDEP}] )
 	opengl? ( media-libs/freeglut )
 	webp? ( media-libs/libwebp:=[${MULTILIB_USEDEP}] )
-	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
+	zlib? ( >=virtual/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}] )
 	zstd? ( >=app-arch/zstd-1.3.7-r1:=[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="verify-sig? ( sec-keys/openpgp-keys-evenrouault )"
+BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-evenrouault-20250913 )"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/tiffconf.h

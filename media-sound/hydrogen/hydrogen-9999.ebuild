@@ -49,7 +49,10 @@ BDEPEND="
 
 DOCS=( AUTHORS CHANGELOG.md DEVELOPERS.md README.md )
 
-PATCHES=( "${FILESDIR}/${PN}-1.3.0-cflags.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-1.3.0-cflags.patch"
+	"${FILESDIR}/${PN}-1.3.0-missing-includes.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(

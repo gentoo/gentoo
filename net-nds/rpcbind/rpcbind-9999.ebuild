@@ -16,7 +16,8 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
-LICENSE="BSD"
+# GPL-2 for init script (bug #426104)
+LICENSE="BSD GPL-2"
 SLOT="0"
 IUSE="debug remotecalls selinux systemd tcpd warmstarts"
 REQUIRED_USE="systemd? ( warmstarts )"

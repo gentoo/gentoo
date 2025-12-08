@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit edo flag-o-matic linux-info systemd toolchain-funcs udev
+inherit edo flag-o-matic linux-info multilib systemd toolchain-funcs udev
 
 DESCRIPTION="Dynamic BPF-based system-wide tracing tool"
 HOMEPAGE="https://github.com/oracle/dtrace-utils https://wiki.gentoo.org/wiki/DTrace"
@@ -23,9 +23,6 @@ LICENSE="UPL-1.0"
 SLOT="0"
 IUSE="test-install valgrind"
 
-# XXX: right now, we auto-adapt to whether multilibs are present:
-# should we force them to be? how?
-#
 # TODO: can we make the wireshark dep conditional?
 DEPEND="
 	dev-libs/elfutils
@@ -35,7 +32,7 @@ DEPEND="
 	net-libs/libpcap
 	>=sys-fs/fuse-3.2.0:3=
 	>=sys-libs/binutils-libs-2.42:=
-	sys-libs/zlib
+	virtual/zlib:=
 "
 RDEPEND="
 	${DEPEND}
@@ -89,6 +86,7 @@ pkg_pretend() {
 	CONFIG_CHECK+=" ~UPROBES ~UPROBE_EVENTS"
 	CONFIG_CHECK+=" ~FTRACE ~FTRACE_SYSCALLS ~DYNAMIC_FTRACE ~FUNCTION_TRACER"
 	CONFIG_CHECK+=" ~FPROBE"
+	CONFIG_CHECK+=" ~BPF_KPROBE_OVERRIDE ~FUNCTION_ERROR_INJECTION"
 	# DTrace can fallback to kprobes for fbt but people often want them off
 	# for security and newer kernels work fine with BPF for that, so
 	# let's omit it. kprobes are slower and scale poorly.
@@ -145,8 +143,17 @@ src_configure() {
 }
 
 src_compile() {
+	local myemakeargs=(
+		verbose=1
+		$(usev !test-install TRIGGERS='')
+	)
+
+	if use amd64 ; then
+		! has_multilib_profile && myemakeargs+=( NATIVE_BITNESS_ONLY=1 )
+	fi
+
 	# -j1: https://github.com/oracle/dtrace-utils/issues/82
-	emake verbose=1 -j1 $(usev !test-install TRIGGERS='')
+	emake -j1 "${myemakeargs[@]}"
 }
 
 src_test() {
@@ -157,7 +164,8 @@ src_test() {
 src_install() {
 	emake DESTDIR="${D}" -j1 install $(usev test-install install-test)
 
-	# Stripping the BPF libs breaks them
+	# We want to strip neither the BPF libraries nor libdtrace.so itself
+	# as probes attach to some symbols that would get removed otherwise.
 	dostrip -x "/usr/$(get_libdir)"
 
 	# It's a binary (TODO: move it?)

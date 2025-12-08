@@ -34,7 +34,7 @@ else
 			)
 		)"
 
-	KEYWORDS="~amd64 ~arm64 -x86"
+	KEYWORDS="amd64 ~arm64 -x86"
 	LANGS=" cs de es fi fr hu it ja nl pt-BR ru sl sq uk zh-CN zh-TW"
 fi
 
@@ -71,7 +71,7 @@ DEPEND="dev-db/sqlite:3
 	media-libs/libpng:=
 	media-libs/tiff:=
 	net-misc/curl
-	sys-libs/zlib:=
+	virtual/zlib:=
 	x11-libs/cairo
 	>=x11-libs/gtk+-3.22:3
 	x11-libs/pango

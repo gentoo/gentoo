@@ -1,0 +1,38 @@
+https://bugs.gentoo.org/953122
+https://lore.kernel.org/git/20251202-toon-cross-compile-v1-0-cabc8bce529f@iotcl.com/
+
+From 4f638a773a0f9f6961abe92226be9c23a486110d Mon Sep 17 00:00:00 2001
+Message-ID: <4f638a773a0f9f6961abe92226be9c23a486110d.1764817376.git.sam@gentoo.org>
+In-Reply-To: <6437cb608c9c9894852499da36e22095adb57a8e.1764817376.git.sam@gentoo.org>
+References: <6437cb608c9c9894852499da36e22095adb57a8e.1764817376.git.sam@gentoo.org>
+From: Toon Claes <toon@iotcl.com>
+Date: Tue, 2 Dec 2025 11:48:09 +0100
+Subject: [PATCH 2/3] meson: only detect ICONV_OMITS_BOM if possible
+
+In our Meson setup it automatically detects whether ICONV_OMITS_BOM
+should be defined. To check this, a piece of code is compiled and ran.
+
+When cross-compiling, it's not possible to run this piece of code. Guard
+this test with a can_run_host_binaries() check to ensure it can run.
+
+Signed-off-by: Toon Claes <toon@iotcl.com>
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index f1b3615659..95348e69a4 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1064,7 +1064,7 @@ if iconv.found()
+     }
+   '''
+ 
+-  if compiler.run(iconv_omits_bom_source,
++  if meson.can_run_host_binaries() and compiler.run(iconv_omits_bom_source,
+     dependencies: iconv,
+     name: 'iconv omits BOM',
+   ).returncode() != 0
+-- 
+2.52.0
+

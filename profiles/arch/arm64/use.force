@@ -1,8 +1,12 @@
-# Copyright 2014-2023 Gentoo Authors
+# Copyright 2014-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Force the flag which corresponds to ARCH.
 arm64
+
+# Sam James <sam@gentoo.org> (2025-07-19)
+# Force the native/host target
+llvm_targets_AArch64
 
 # Instruction sets that are always available
 cpu_flags_arm_v8

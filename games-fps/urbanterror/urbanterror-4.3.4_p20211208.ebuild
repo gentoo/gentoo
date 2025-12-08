@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -43,7 +43,7 @@ RDEPEND="
 	)
 	curl? ( net-misc/curl )
 	~games-fps/urbanterror-data-4.3.4
-	sys-libs/zlib:=[minizip]
+	virtual/minizip:=
 	virtual/jpeg:0
 	x11-libs/libX11
 	x11-libs/libXxf86vm
@@ -68,7 +68,7 @@ src_configure() {
 src_compile() {
 	# Workaround for used zlib macro, which got renamed in Gentoo
 	# wrt bug #449510
-	has_version "<sys-libs/zlib-1.3" && append-cppflags "-DOF=_Z_OF"
+	has_version "<virtual/zlib-1.3:=" && append-cppflags "-DOF=_Z_OF"
 
 	local myemakeargs=(
 		ARCH=$(usex amd64 "x86_64" "i686" )

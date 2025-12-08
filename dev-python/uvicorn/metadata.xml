@@ -8,7 +8,7 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">uvicorn</remote-id>
-		<remote-id type="github">encode/uvicorn</remote-id>
-		<bugs-to>https://github.com/encode/uvicorn/issues</bugs-to>
+		<remote-id type="github">Kludex/uvicorn</remote-id>
+		<bugs-to>https://github.com/Kludex/uvicorn/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

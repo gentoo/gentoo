@@ -15,7 +15,7 @@ IUSE="+zstd"
 DEPEND="
 	app-arch/bzip2
 	app-arch/xz-utils
-	sys-libs/zlib
+	virtual/zlib:=
 	zstd? ( app-arch/zstd:= )
 "
 RDEPEND="${DEPEND}"

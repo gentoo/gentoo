@@ -1,0 +1,56 @@
+diff --git a/Makefile b/Makefile
+index 18d9259..612c797 100644
+--- a/Makefile
++++ b/Makefile
+@@ -119,9 +119,9 @@ GTEST_CXXFLAGS := -std=gnu++20
+ GTEST_LIBS := gtest.a
+ UNITTEST_DEPS += $(GTEST_LIBS)
+ else
+-GTEST_CXXFLAGS := $(shell gtest-config --cxxflags 2>/dev/null || \
++GTEST_CXXFLAGS ?= $(shell gtest-config --cxxflags 2>/dev/null || \
+   echo "-pthread")
+-GTEST_LIBS := $(shell gtest-config --libs 2>/dev/null || \
++GTEST_LIBS ?= $(shell gtest-config --libs 2>/dev/null || \
+   echo "-lgtest -pthread -lpthread")
+ endif
+ GTEST_CXXFLAGS += -DGTEST_REMOVE_LEGACY_TEST_CASEAPI_
+@@ -152,6 +152,7 @@ clean: CLEAN(minijail0)
+ 
+ 
+ CC_LIBRARY(libminijail.so): LDLIBS += -lcap
++CC_LIBRARY(libminijail.so): LDFLAGS += -Wl,-soname,libminijail.so
+ CC_LIBRARY(libminijail.so): $(CORE_OBJECT_FILES)
+ clean: CLEAN(libminijail.so)
+ 
+@@ -173,6 +174,7 @@ TEST(CXX_BINARY(libminijail_unittest)): CC_LIBRARY(libminijailpreload.so)
+ 
+ 
+ CC_LIBRARY(libminijailpreload.so): LDLIBS += -lcap -ldl
++CC_LIBRARY(libminijailpreload.so): LDFLAGS += -Wl,-soname,libminijailpreload.so
+ CC_LIBRARY(libminijailpreload.so): libminijailpreload.o $(CORE_OBJECT_FILES)
+ clean: CLEAN(libminijailpreload.so)
+ 
+diff --git a/common.mk b/common.mk
+index dfaa8ca..4fbaa77 100644
+--- a/common.mk
++++ b/common.mk
+@@ -315,8 +315,8 @@ endif
+ #  CXXFLAGS := -mahflag $(CXXFLAGS) # Prepend to the list
+ #  CXXFLAGS := $(filter-out badflag,$(CXXFLAGS)) # Filter out a value
+ # The same goes for CFLAGS.
+-COMMON_CFLAGS-gcc := -fvisibility=internal -ggdb3 -Wa,--noexecstack
+-COMMON_CFLAGS-clang := -fvisibility=hidden -ggdb -Wimplicit-fallthrough \
++COMMON_CFLAGS-gcc := -fvisibility=internal -Wa,--noexecstack
++COMMON_CFLAGS-clang := -fvisibility=hidden -Wimplicit-fallthrough \
+   -Wstring-plus-int
+ # When a class is exported through __attribute__((visibility("default"))), we
+ # still want to eliminate symbols from inline class member functions to reduce
+@@ -333,7 +333,7 @@ CFLAGS += $(COMMON_CFLAGS) $(COMMON_CFLAGS-$(CDRIVER)) -std=gnu17
+ # We undefine _FORTIFY_SOURCE because some distros enable it by default in
+ # their toolchains.  This makes the compiler issue warnings about redefines
+ # and our -Werror usage breaks it all.
+-CPPFLAGS += -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=3
++CPPFLAGS +=
+ 
+ # Enable large file support.
+ CPPFLAGS += -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE

@@ -1,0 +1,32 @@
+From 49124d74da99b7678e60b2b326a6c1d1f1fc391b Mon Sep 17 00:00:00 2001
+From: Olivier Ramonat <ramonat@adacore.com>
+Date: Wed, 11 Dec 2024 10:16:19 +0100
+Subject: [PATCH] Replace pkg_resources by importlib.resources
+
+pkg_resources is deprecated
+
+for it/e3-core#31
+---
+ src/e3/os/process.py | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/src/e3/os/process.py b/src/e3/os/process.py
+index 98675f39..63523149 100644
+--- a/src/e3/os/process.py
++++ b/src/e3/os/process.py
+@@ -83,9 +83,13 @@ def get_rlimit(platform: str | None = None) -> str:
+     if platform == "x86_64-windows64":
+         platform = "x86_64-windows"
+ 
+-    from pkg_resources import resource_filename
++    import importlib.resources
+ 
+-    return resource_filename(__name__, os.path.join("data", f"rlimit-{platform}"))
++    return str(
++        importlib.resources.files("e3.os").joinpath(
++            os.path.join("data", f"rlimit-{platform}")
++        )
++    )
+ 
+ 
+ def quote_arg(arg: str) -> str:

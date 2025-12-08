@@ -123,6 +123,8 @@ src_configure() {
 
 	# Not an autotools generated script
 	local myconf=(
+		# TODO: Do we want to wire up --with-user= and --with-chronyc-user?
+		# Need to check how it interacts with the init script & systemd unit.
 		$(use_enable seccomp scfilter)
 
 		$(usev !caps '--disable-linuxcaps')

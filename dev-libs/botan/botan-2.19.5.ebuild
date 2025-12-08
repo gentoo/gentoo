@@ -35,7 +35,7 @@ DEPEND="
 	lzma? ( app-arch/xz-utils:= )
 	python? ( ${PYTHON_DEPS} )
 	sqlite? ( dev-db/sqlite:3= )
-	zlib? ( >=sys-libs/zlib-1.2.3:= )
+	zlib? ( >=virtual/zlib-1.2.3:= )
 "
 RDEPEND="
 	${DEPEND}
@@ -57,6 +57,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-no-distutils.patch
 	"${FILESDIR}"/${P}-boost-1.87.patch
 	"${FILESDIR}"/${P}-cloudflare.patch
+	"${FILESDIR}"/${P}-include.patch
 )
 
 python_check_deps() {

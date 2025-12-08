@@ -12,7 +12,7 @@ S="${WORKDIR}"/${P/_beta/b}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 hppa ~loong ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="+postscript +poppler"
 
 # pdftops has various possible implementations, but the default
@@ -23,7 +23,7 @@ RDEPEND="
 	>=net-print/cups-2
 	net-print/libcupsfilters
 	!<net-print/cups-filters-2.0.0
-	sys-libs/zlib
+	virtual/zlib:=
 	postscript? ( >=app-text/ghostscript-gpl-9.09[cups] )
 	poppler? ( >=app-text/poppler-0.32[utils] )
 "

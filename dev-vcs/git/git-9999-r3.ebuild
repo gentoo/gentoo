@@ -7,8 +7,9 @@ GENTOO_DEPEND_ON_PERL=no
 
 # bug #329479: git-remote-testgit is not multiple-version aware
 PYTHON_COMPAT=( python3_{11..14} )
-
-inherit toolchain-funcs perl-module bash-completion-r1 optfeature plocale python-single-r1 systemd meson
+RUST_OPTIONAL=1
+inherit flag-o-matic toolchain-funcs perl-module shell-completion optfeature
+inherit plocale python-single-r1 rust systemd meson
 
 PLOCALES="bg ca de es fr is it ko pt_PT ru sv vi zh_CN"
 
@@ -58,12 +59,12 @@ S="${WORKDIR}"/${MY_P}
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+curl cgi cvs doc keyring +gpg highlight +iconv +nls +pcre perforce +perl +safe-directory selinux subversion test tk +webdav xinetd"
+IUSE="+curl cgi cvs doc keyring +gpg highlight +iconv +nls +pcre perforce +perl rust +safe-directory selinux subversion test tk +webdav xinetd"
 
 # Common to both DEPEND and RDEPEND
 DEPEND="
 	dev-libs/openssl:=
-	sys-libs/zlib
+	virtual/zlib:=
 	curl? (
 		net-misc/curl
 		webdav? ( dev-libs/expat )
@@ -79,7 +80,7 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	gpg? ( app-crypt/gnupg )
+	gpg? ( app-alternatives/gpg )
 	perl? (
 		dev-perl/Error
 		dev-perl/MailTools
@@ -117,6 +118,7 @@ BDEPEND="
 	)
 	keyring? ( virtual/pkgconfig )
 	nls? ( sys-devel/gettext )
+	rust? ( ${RUST_DEPEND} )
 	test? (
 		app-arch/unzip
 		app-crypt/gnupg
@@ -148,6 +150,9 @@ PATCHES=(
 	# demand from developers. It's opt-in (needs a config option)
 	# and the documentation mentions that it is a Gentoo addition.
 	"${FILESDIR}"/${PN}-2.50.0-diff-implement-config.diff.renames-copies-harder.patch
+
+	"${FILESDIR}"/${PN}-2.52.0-0001-rust-don-t-pass-quiet-to-cargo.patch
+	"${FILESDIR}"/${PN}-2.52.0-0002-rust-respect-CARGO-environment-variable.patch
 )
 
 pkg_setup() {
@@ -159,6 +164,10 @@ pkg_setup() {
 
 	if use perforce ; then
 		python-single-r1_pkg_setup
+	fi
+
+	if use rust ; then
+		rust_pkg_setup
 	fi
 }
 
@@ -228,6 +237,7 @@ src_configure() {
 		$(meson_feature pcre pcre2)
 		$(meson_feature perl)
 		$(meson_feature perforce python)
+		$(meson_feature rust)
 		$(meson_use test tests)
 
 		-Dcontrib=$(IFS=, ; echo "${contrib[*]}" )
@@ -240,11 +250,13 @@ src_configure() {
 	)
 
 	[[ ${CHOST} == *-darwin* ]] && emesonargs+=( -Dfsmonitor=false )
+	[[ ${CHOST} == *-solaris* ]] && append-flags -D__EXTENSIONS__
 
 	# For non-live, we use a downloaded docs tarball instead.
 	if [[ ${PV} == *9999 ]] || use doc ; then
 		emesonargs+=(
 			-Ddocs="man$(usev doc ',html')"
+			-Dhtmldir="${EPREFIX}/usr/share/doc/${PF}/html"
 		)
 	fi
 
@@ -334,11 +346,6 @@ src_test() {
 src_install() {
 	meson_src_install
 
-	if use doc ; then
-		cp -r "${ED}"/usr/share/doc/git-doc/. "${ED}"/usr/share/doc/${PF}/html || die
-		rm -rf "${ED}"/usr/share/doc/git-doc/ || die
-	fi
-
 	# Depending on the tarball and manual rebuild of the documentation, the
 	# manpages may exist in either OR both of these directories.
 	find man?/*.[157] >/dev/null 2>&1 && doman man?/*.[157]
@@ -354,6 +361,7 @@ src_install() {
 
 	newbashcomp contrib/completion/git-completion.bash ${PN}
 	bashcomp_alias git gitk
+	newzshcomp contrib/completion/git-completion.zsh _${PN}
 	# Not really a bash-completion file (bug #477920)
 	# but still needed uncompressed (bug #507480)
 	insinto /usr/share/${PN}
@@ -388,7 +396,6 @@ src_install() {
 		fast-import
 		rerere-train.sh
 		stats
-		workdir
 	)
 	local i
 	for i in "${contrib_objects[@]}" ; do
@@ -469,6 +476,14 @@ pkg_postinst() {
 		elog "completion."
 		elog "Please read /usr/share/git/git-prompt.sh for Git bash prompt"
 		elog "Note that the prompt bash code is now in that separate script"
+	fi
+
+	if has_version app-shells/zsh ; then
+		elog 'There are two competing zsh completions available for Git.'
+		elog 'One is from app-shells/zsh, the other from dev-vcs/git.'
+		elog 'To choose between them, order the entries of $fpath so that your'
+		elog 'desired completion is earlier in the list or symlink the relevant'
+		elog 'script into a personal override directory early on fpath.'
 	fi
 
 	optfeature_header "Some scripts require additional dependencies:"

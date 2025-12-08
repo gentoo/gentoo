@@ -12,11 +12,11 @@ DESCRIPTION="Ruby Gtk2 bindings"
 KEYWORDS="~amd64 ~ppc ~riscv ~x86"
 
 DEPEND="dev-libs/glib
-	dev-libs/gobject-introspection
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	x11-base/xorg-proto
 	x11-libs/gtk+:3"
 RDEPEND="dev-libs/glib
-	dev-libs/gobject-introspection
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	x11-libs/gtk+:3"
 
 ruby_add_rdepend "

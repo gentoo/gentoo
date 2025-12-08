@@ -1,0 +1,14 @@
+xkbfile looks like an unused dependency, remove it to fix USE="-X" build
+
+diff --git a/src/lib/configlib/CMakeLists.txt b/src/lib/configlib/CMakeLists.txt
+index 6c257c6..1c204d7 100644
+--- a/src/lib/configlib/CMakeLists.txt
++++ b/src/lib/configlib/CMakeLists.txt
+@@ -19,6 +19,6 @@ target_include_directories(configlib INTERFACE ${CMAKE_CURRENT_SOURCE_DIR} ${CMA
+ target_link_libraries(configlib
+     Qt${QT_MAJOR_VERSION}::Core Qt${QT_MAJOR_VERSION}::Gui Fcitx5Qt${QT_MAJOR_VERSION}::DBusAddons
+     Fcitx5::Core Fcitx5::Utils
+-    Fcitx5Qt${QT_MAJOR_VERSION}::WidgetsAddons PkgConfig::XkbFile
++    Fcitx5Qt${QT_MAJOR_VERSION}::WidgetsAddons
+ )
+ 

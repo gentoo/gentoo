@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ppc ~sparc x86"
 IUSE=""
 
-DEPEND="sys-libs/zlib:="
+DEPEND="virtual/zlib:="
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/cramfs-tools-${PV}"

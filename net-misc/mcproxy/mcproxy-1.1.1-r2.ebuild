@@ -1,22 +1,22 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit linux-info qmake-utils systemd
 
-DESCRIPTION="A multicast proxy for IGMP/MLD"
+DESCRIPTION="Multicast proxy for IGMP/MLD"
 HOMEPAGE="https://mcproxy.realmv6.org/ https://github.com/mcproxy/mcproxy"
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${P}/${PN}"
 
-KEYWORDS="amd64 x86"
 LICENSE="GPL-2+"
 SLOT="0"
+KEYWORDS="amd64 x86"
 IUSE="doc"
 
 DEPEND="
-	dev-qt/qtcore:5
+	dev-qt/qtbase:6
 	doc? ( app-text/doxygen )
 "
 
@@ -35,7 +35,7 @@ src_prepare() {
 }
 
 src_configure() {
-	eqmake5
+	eqmake6
 }
 
 src_compile() {

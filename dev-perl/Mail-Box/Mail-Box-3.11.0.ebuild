@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Mail folder manager and MUA backend"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ppc64 ~riscv x86"
 
 PDEPEND="
 	dev-perl/Mail-Box-IMAP4

@@ -1,0 +1,23 @@
+From b92ca87835e41c87a0b636f38171954cae4faf8b Mon Sep 17 00:00:00 2001
+From: Emily <hello@emily.moe>
+Date: Mon, 12 Aug 2024 15:35:32 +0100
+Subject: [PATCH] [IMPROVEMENT] Raise CMake minimum to 3.24.0 [effectively]
+
+asturm 2025-09-28: was: "Use Corrosion to build Rust code (#1630)"
+
+---
+ src/CMakeLists.txt      |  8 ++---
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index b1ae689b4..3852799b4 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1,6 +1,6 @@
+-cmake_minimum_required (VERSION 3.0.2)
++cmake_minimum_required (VERSION 3.24.0)
+ 
+ project (CCExtractor)
+ 
+ option (WITH_FFMPEG "Build using FFmpeg demuxer and decoder" OFF)
+ option (WITH_OCR "Build with OCR (Optical Character Recognition) feature" OFF)

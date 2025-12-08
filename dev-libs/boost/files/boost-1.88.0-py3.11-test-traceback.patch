@@ -1,0 +1,33 @@
+https://github.com/boostorg/python/pull/481
+paths fixed for monolithic build
+
+From aa458d2ca959bc93ff78e0d39eae9eb17e05cbf6 Mon Sep 17 00:00:00 2001
+From: Eisuke Kawashima <e-kwsm@users.noreply.github.com>
+Date: Mon, 31 Mar 2025 19:54:55 +0900
+Subject: [PATCH] fix(test.properties): use doctest.ELLIPSIS for traceback
+
+Since python 3.11 (PEP 657) traceback info is changed
+fix #460
+---
+ test/properties.py | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/libs/python/test/properties.py b/libs/python/test/properties.py
+index 88374b410..e95d59bef 100644
+--- a/libs/python/test/properties.py
++++ b/libs/python/test/properties.py
+@@ -56,11 +56,10 @@ class instance count from object:
+ 1
+ 
+ as expected you can't assign new value to read only property
+->>> x1.value_r = 2
++>>> x1.value_r = 2  # doctest: +ELLIPSIS
+ Traceback (most recent call last):
+-  File "properties.py", line 49, in ?
+-    x1.value_r = 2
+-AttributeError: can't set attribute
++    ...
++AttributeError: ...
+ 
+ setting value_rw to 2. value_direct: 
+ >>> x1.value_rw = 2

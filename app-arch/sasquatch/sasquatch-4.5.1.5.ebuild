@@ -24,7 +24,7 @@ REQUIRED_USE="
 "
 
 DEPEND="
-	sys-libs/zlib
+	virtual/zlib:=
 	lz4? ( app-arch/lz4 )
 	lzma? ( app-arch/xz-utils )
 	lzo? ( dev-libs/lzo )

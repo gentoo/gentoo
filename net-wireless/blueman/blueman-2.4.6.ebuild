@@ -21,7 +21,7 @@ else
 		https://github.com/blueman-project/blueman/releases/download/${PV/_/.}/${P/_/.}.tar.xz
 	"
 	S=${WORKDIR}/${P/_/.}
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
 fi
 
 # icons are GPL-2
@@ -78,8 +78,8 @@ RDEPEND="
 	)
 	pulseaudio? (
 		|| (
-			media-sound/pulseaudio-daemon[bluetooth]
 			media-video/pipewire[bluetooth]
+			media-sound/pulseaudio-daemon[bluetooth]
 			<media-sound/pulseaudio-15.99.1[bluetooth]
 		)
 	)

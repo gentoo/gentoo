@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 OC_COMMIT="119fe41a83bc455a24a11ecc9b78e7b13fcfcc45"
 GT_COMMIT="2ad076167a676e3ed62f90b754b30fac5caa1f88"
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..12} )
 
 inherit flag-o-matic python-single-r1 cmake
 
@@ -35,7 +35,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-libs/boost:=
 	sci-mathematics/minisat:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	cryptominisat? (
 		dev-db/sqlite:3
 		dev-libs/icu:=

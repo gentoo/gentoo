@@ -50,6 +50,7 @@ src_prepare() {
 	local PATCHES=(
 		"${FILESDIR}/6.04_pre1"
 		"${FILESDIR}/6.04_pre3"
+		"${FILESDIR}/syslinux-musl.patch"
 	)
 	default
 

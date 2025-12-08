@@ -1,0 +1,33 @@
+diff '--color=auto' -Naur extrecmenung-v2.0.12.orig/mymenu.c extrecmenung-v2.0.12/mymenu.c
+--- extrecmenung-v2.0.12.orig/mymenu.c	2024-03-16 12:06:32.000000000 +0100
++++ extrecmenung-v2.0.12/mymenu.c	2025-09-27 16:08:59.981088185 +0200
+@@ -1642,7 +1642,8 @@
+ 
+   Display(); // this keeps the higher level menus from showing up briefly when pressing 'Back' during replay
+ 
+-  if (wasdvd && !cControl::Control()) {
++  cMutexLock MutexLock;
++  if (wasdvd && !cControl::Control(MutexLock)) {
+      char *cmd = NULL;
+      if (-1 != asprintf(&cmd, "dvdarchive.sh umount \"%s\"", *strescape(myReplayControl::LastReplayed(), "'\\\"$"))) {
+         isyslog("[extrecmenu] calling %s to unmount dvd", cmd);
+@@ -1658,7 +1659,8 @@
+ 
+      wasdvd = false;
+      }
+-  if (washdd &&! cControl::Control()) {
++  cMutexLock MutexLock2;
++  if (washdd &&! cControl::Control(MutexLock2)) {
+      char *cmd=NULL;
+      if (-1 != asprintf(&cmd, "hddarchive.sh umount \"%s\"", *strescape(myReplayControl::LastReplayed(), "'\\\"$"))) {
+         isyslog("[extrecmenu] calling %s to unmount Archive-HDD", cmd);
+@@ -1982,7 +1984,8 @@
+                  }
+               else if (CurrentRecording && strcmp(CurrentRecording, Recording->FileName()) == 0) {
+                  SetCurrent(LastDir ? LastDir : LastItem);
+-                 if (Item && !Item->IsDirectory() && (Item->IsDVD() || Item->IsHDD()) && !cControl::Control())
++                 cMutexLock MutexLock;
++                 if (Item && !Item->IsDirectory() && (Item->IsDVD() || Item->IsHDD()) && !cControl::Control(MutexLock))
+                     cReplayControl::ClearLastReplayed(cReplayControl::LastReplayed());
+                  }
+               }

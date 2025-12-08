@@ -1,0 +1,87 @@
+'\" t
+.\"     Title: awesome-client
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.26
+.\"      Date: 2019-01-28
+.\"    Manual: \ \&
+.\"    Source: \ \&
+.\"  Language: English
+.\"
+.TH "AWESOME\-CLIENT" "1" "2019-01-28" "\ \&" "\ \&"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+awesome-client \- awesome window manager remote execution
+.SH "SYNOPSIS"
+.sp
+awesome\-client [\-h|\-\-help] [command [command.\|.\|.]]
+.SH "DESCRIPTION"
+.sp
+awesome\-client is a remote command line interface to awesome.
+It communicates with awesome via D\-Bus, allowing remote execution of Lua code.
+.SH "USAGE"
+.sp
+awesome\-client reads commands passed on the command line or from standard input
+and sends them via D\-Bus to awesome.
+If \fIrlwrap\fP is installed, it will be used to provide a readline command line
+interface.
+.sp
+The \fIawful.remote\fP module has to be loaded if you want this command to work.
+.SH "EXAMPLES"
+.sp
+.if n .RS 4
+.nf
+.fam C
+$ awesome\-client \*(Aqreturn 1+1, "Hello, world"\(rs
+   double 2
+   string "Hello, world"
+
+# The following does not return anything on the command line,
+# but will show a notification.
+$ awesome\-client \*(Aq
+> naughty = require("naughty")
+> naughty.notify({
+> title="CLI Notification",
+> text="This is a notification sent from the command line!"})
+> \*(Aq
+
+# Entering read\-eval\-print\-loop mode
+# This mode will send every line to awesome, exactly the same as passing
+# multiple commands on the command line.
+$ awesome\-client
+awesome# return 1+1
+   double 2
+awesome# return 1+1, "Hello, world"
+   double 2
+   string "Hello, world"
+awesome#
+.fam
+.fi
+.if n .RE
+.SH "SEE ALSO"
+.sp
+awesome(1) awesomerc(5)
+.SH "AUTHORS"
+.sp
+Julien Danjou \c
+.MTO "julien\(atdanjou.info" "" ""
+.SH "WWW"
+.sp
+.URL "https://awesomewm.org" "" ""

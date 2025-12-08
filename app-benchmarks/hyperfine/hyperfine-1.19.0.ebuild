@@ -3,6 +3,8 @@
 
 EAPI=8
 
+RUST_MIN_VER="1.76.0"
+
 CRATES="
 	ahash@0.7.8
 	aho-corasick@1.1.3

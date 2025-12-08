@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 RUBY_OPTIONAL="yes"
 USE_RUBY="ruby32"
@@ -14,14 +14,15 @@ PHP_EXT_ZENDEXT="no"
 
 PHP_EXT_OPTIONAL_USE=php
 
-USE_PHP="php8-1 php8-2 php8-3"
+USE_PHP="php8-2 php8-3 php8-4"
 
 inherit php-ext-source-r3 python-r1 ruby-ng toolchain-funcs
 
 DESCRIPTION="ICE middleware C++ library and generator tools"
-HOMEPAGE="https://zeroc.com/products/ice"
+HOMEPAGE="https://zeroc.com/ice"
 SRC_URI="https://github.com/zeroc-ice/ice/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	doc? ( https://download.zeroc.com/Ice/$(ver_cut 1-2)/${PN}-3.7.1.pdf )"
+S="${WORKDIR}/${P,}"
 LICENSE="GPL-2"
 SLOT="0/37"
 KEYWORDS="amd64 ~arm ~arm64 x86"
@@ -47,11 +48,11 @@ DEPEND="${RDEPEND}
 # Maintainer notes:
 # TODO: java bindings
 
-S="${WORKDIR}/${P,}"
 PHP_EXT_S="${S}/php"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.7.8-fix-musl-build.patch"
+	"${FILESDIR}/${PN}-3.7.8-python3.13.patch"
 )
 
 pkg_setup() {

@@ -7,7 +7,7 @@ USE_RUBY="ruby32"
 RUBY_OPTIONAL=yes
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit perl-module ruby-ng python-single-r1 strip-linguas
+inherit dot-a libtool perl-module ruby-ng python-single-r1 strip-linguas
 
 DESCRIPTION="Library for reading and writing Windows Registry 'hive' binary files"
 HOMEPAGE="https://libguestfs.org"
@@ -74,6 +74,7 @@ src_unpack() {
 
 src_prepare() {
 	default
+	elibtoolize
 
 	use perl && perl-module_src_prepare
 	use ruby && ruby-ng_src_prepare
@@ -87,6 +88,8 @@ src_configure() {
 		perl-module_src_configure
 		popd || die
 	fi
+
+	use ocaml && lto-guarantee-fat
 
 	local myeconfargs=(
 		--enable-nls
@@ -148,6 +151,7 @@ src_install() {
 
 	use python && python_optimize
 	use ruby && ruby-ng_src_install
+	use ocaml && strip-lto-bytecode
 
 	if use perl; then
 		perl_delete_localpod

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,7 +26,7 @@ RDEPEND="dev-db/sqlite
 	net-libs/http-parser:=
 	net-libs/libpcap
 	sys-libs/libcap-ng
-	sys-libs/zlib:=
+	virtual/zlib:=
 	cairo? (
 		x11-libs/cairo
 	)"

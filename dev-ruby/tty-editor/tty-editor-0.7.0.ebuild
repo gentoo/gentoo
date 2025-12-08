@@ -3,7 +3,8 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby32 ruby33 ruby34"
+
 RUBY_FAKEGEM_BINWRAP=""
 RUBY_FAKEGEM_EXTRADOC="README.md"
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
@@ -30,7 +31,7 @@ each_ruby_prepare() {
 	mkdir tmp || die
 
 	case ${RUBY} in
-		*ruby33)
+		*ruby33|*ruby34)
 			sed -e 's/* 3/* 5/' -i spec/integration/editor_spec.rb || die
 			;;
 	esac

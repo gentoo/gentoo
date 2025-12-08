@@ -31,7 +31,7 @@ CDEPEND="
 	fastjet? ( sci-physics/fastjet:0= )
 	hepmc? ( sci-physics/hepmc:2= )
 	lhapdf? ( >=sci-physics/lhapdf-6.0:0= )
-	zlib? ( sys-libs/zlib:0= )"
+	zlib? ( virtual/zlib:= )"
 DEPEND="${CDEPEND}
 	java? ( >=virtual/jdk-1.8:*[-headless-awt] )
 	test? ( sys-process/time )"

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ RDEPEND=">=app-text/mupdf-1.17.0:0=
 	media-libs/freetype:2
 	media-libs/jbig2dec:=
 	media-libs/openjpeg:2
-	sys-libs/zlib
+	virtual/zlib:=
 	virtual/jpeg:0
 	x11-libs/libX11
 	x11-libs/libXau
@@ -31,7 +31,7 @@ DEPEND="${RDEPEND}
 	dev-ml/lablgl:=[glut,ocamlopt?]"
 BDEPEND="
 	app-text/asciidoc
-	>=dev-lang/ocaml-4.09[ocamlopt?]
+	dev-lang/ocaml[ocamlopt?]
 	virtual/pkgconfig
 "
 

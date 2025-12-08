@@ -1,0 +1,39 @@
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+inherit toolchain-funcs
+
+DESCRIPTION="Simple command line tool to split WAV files"
+HOMEPAGE="https://sourceforge.net/projects/wavsplit/"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
+
+LICENSE="GPL-2"
+SLOT="0"
+#-sparc, -amd64: 1.0: "Only supports PCM wave format" error message.
+KEYWORDS="amd64 -sparc x86"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-Makefile.patch
+	"${FILESDIR}"/${P}-large-files.patch
+	"${FILESDIR}"/${P}-64bit.patch
+	"${FILESDIR}"/${P}-gcc15.patch
+)
+
+src_prepare() {
+	default
+	emake clean
+}
+
+src_compile() {
+	emake CC="$(tc-getCC)"
+}
+
+src_test() { :; } #294302
+
+src_install() {
+	dobin wav{ren,split}
+	doman wav{ren,split}.1
+	dodoc BUGS CHANGES CREDITS README{,.wavren}
+}

@@ -1,0 +1,105 @@
+https://github.com/espressomd/espresso/pull/4992
+
+backported by upstream to fedora:
+https://src.fedoraproject.org/rpms/espresso/c/1c764324a21a92d6500289b4d72043471b5f3840
+
+diff --git a/testsuite/python/brownian_dynamics.py b/testsuite/python/brownian_dynamics.py
+index 223340e15..f99d94018 100644
+--- a/testsuite/python/brownian_dynamics.py
++++ b/testsuite/python/brownian_dynamics.py
+@@ -161,5 +161,5 @@ class BrownianThermostat(ut.TestCase):
+         system.integrator.run(3)
+         np.testing.assert_allclose(
+-            part.omega_lab, [0, 0, 1.3 / 1.5], atol=1e-14)
++            np.copy(part.omega_lab), [0, 0, 1.3 / 1.5], atol=1e-14)
+ 
+         # noise only
+@@ -168,5 +168,5 @@ class BrownianThermostat(ut.TestCase):
+             kT=1, gamma=1, gamma_rotation=1.5, act_on_virtual=False, seed=41)
+         system.integrator.run(3)
+-        self.assertGreater(np.linalg.norm(part.omega_lab), 0.)
++        self.assertGreater(np.linalg.norm(np.copy(part.omega_lab)), 0.)
+ 
+ 
+diff --git a/testsuite/python/lees_edwards.py b/testsuite/python/lees_edwards.py
+index 002340bd2..4539f1af5 100644
+--- a/testsuite/python/lees_edwards.py
++++ b/testsuite/python/lees_edwards.py
+@@ -397,5 +397,5 @@ class LeesEdwards(ut.TestCase):
+                 a=k_non_bonded / 2, n=-2, cutoff=r_cut)
+             system.integrator.run(0)
+-            r_12 = system.distance_vec(p1, p2)
++            r_12 = np.copy(system.distance_vec(p1, p2))
+ 
+             np.testing.assert_allclose(
+@@ -405,5 +405,5 @@ class LeesEdwards(ut.TestCase):
+             np.testing.assert_allclose(
+                 np.copy(system.analysis.pressure_tensor()["non_bonded"]),
+-                np.outer(r_12, p2.f) / system.volume())
++                np.outer(r_12, np.copy(p2.f)) / system.volume())
+ 
+             np.testing.assert_almost_equal(
+@@ -438,5 +438,5 @@ class LeesEdwards(ut.TestCase):
+             shear_direction="x", shear_plane_normal="y", protocol=lin_protocol)
+         # Test position and velocity of VS with Le shift
+-        old_p3_pos = p3.pos
++        old_p3_pos = np.copy(p3.pos)
+         expected_p3_pos = old_p3_pos - \
+             np.array((get_lin_pos_offset(system.time, **params_lin), 0, 0))
+@@ -444,5 +444,5 @@ class LeesEdwards(ut.TestCase):
+         np.testing.assert_allclose(np.copy(p3.pos_folded), expected_p3_pos)
+         np.testing.assert_allclose(
+-            p3.v, p1.v + np.array((params_lin["shear_velocity"], 0, 0)))
++            np.copy(p3.v), np.copy(p1.v) + np.array((params_lin["shear_velocity"], 0, 0)))
+ 
+         # Check distances
+diff --git a/testsuite/python/test_checkpoint.py b/testsuite/python/test_checkpoint.py
+index f295cec44..4b30aaefb 100644
+--- a/testsuite/python/test_checkpoint.py
++++ b/testsuite/python/test_checkpoint.py
+@@ -217,12 +217,12 @@ class CheckpointTest(ut.TestCase):
+             np.testing.assert_allclose(np.copy(p3.ext_torque), [0.3, 0.5, 0.7])
+         if espressomd.has_features('ROTATIONAL_INERTIA'):
+-            np.testing.assert_allclose(p3.rinertia, [2., 3., 4.])
++            np.testing.assert_allclose(np.copy(p3.rinertia), [2., 3., 4.])
+         if espressomd.has_features('THERMOSTAT_PER_PARTICLE'):
+             gamma = 2.
+             if espressomd.has_features('PARTICLE_ANISOTROPY'):
+                 gamma = np.array([2., 3., 4.])
+-            np.testing.assert_allclose(p4.gamma, gamma)
++            np.testing.assert_allclose(np.copy(p4.gamma), gamma)
+             if espressomd.has_features('ROTATION'):
+-                np.testing.assert_allclose(p3.gamma_rot, 2. * gamma)
++                np.testing.assert_allclose(np.copy(p3.gamma_rot), 2. * gamma)
+         if espressomd.has_features('ENGINE'):
+             self.assertEqual(p3.swimming, {"f_swim": 0.03, "mode": "N/A",
+@@ -237,9 +237,11 @@ class CheckpointTest(ut.TestCase):
+             q_ind = ([1, 2, 3, 0],)  # convert from scalar-first to scalar-last
+             vs_id, vs_dist, vs_quat = p2.vs_relative
+-            d = p2.pos - p1.pos
++            d = np.copy(p2.pos - p1.pos)
++            vs_quat = np.copy(vs_quat)
++            p_quat = np.copy(p1.quat)
+             theta = np.arccos(d[2] / np.linalg.norm(d))
+             assert abs(theta - 3. * np.pi / 4.) < 1e-8
+             q = np.array([0., 0., np.sin(theta / 2.), -np.cos(theta / 2.)])
+-            r = R.from_quat(p1.quat[q_ind]) * R.from_quat(vs_quat[q_ind])
++            r = R.from_quat(p_quat[q_ind]) * R.from_quat(vs_quat[q_ind])
+             self.assertEqual(vs_id, p1.id)
+             np.testing.assert_allclose(vs_dist, np.sqrt(2.))
+@@ -500,5 +502,5 @@ class CheckpointTest(ut.TestCase):
+         self.assertEqual(p_virt.vs_relative[1], np.sqrt(2.))
+         np.testing.assert_allclose(
+-            p_real.vs_relative[2], [1., 0., 0., 0.], atol=1e-10)
++            np.copy(p_real.vs_relative[2]), [1., 0., 0., 0.], atol=1e-10)
+ 
+     def test_mean_variance_calculator(self):
+@@ -785,6 +787,6 @@ class CheckpointTest(ut.TestCase):
+         p2 = system.part.add(pos=[system.box_l[0] - 1., 1.6, 0.], type=6)
+         system.integrator.run(0, recalc_forces=True)
+-        np.testing.assert_allclose(p1.f, [0., 1e8, 0.], atol=1e-3)
+-        np.testing.assert_allclose(p2.f, [0., 1e8, 0.], atol=1e-3)
++        np.testing.assert_allclose(np.copy(p1.f), [0., 1e8, 0.], atol=1e-3)
++        np.testing.assert_allclose(np.copy(p2.f), [0., 1e8, 0.], atol=1e-3)
+         p1.remove()
+         p2.remove()

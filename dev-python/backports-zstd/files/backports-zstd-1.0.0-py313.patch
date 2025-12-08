@@ -1,0 +1,31 @@
+From be7548ac9a08de3ae1a8cf3c47630336d65b656f Mon Sep 17 00:00:00 2001
+From: Rogdham <contact@rogdham.net>
+Date: Sun, 19 Oct 2025 09:06:31 +0200
+Subject: [PATCH] fix: assertions on 3.13
+
+---
+ src/c/compat/backports_zstd_edits.h | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/src/c/compat/backports_zstd_edits.h b/src/c/compat/backports_zstd_edits.h
+index 1e4b9f7..4cf076c 100644
+--- a/src/c/compat/backports_zstd_edits.h
++++ b/src/c/compat/backports_zstd_edits.h
+@@ -107,12 +107,14 @@ static inline int BACKPORTSZSTD_LOCK_isLocked(PyThread_type_lock *mp)
+ #define BACKPORTSZSTD_LOCK_lock PyMutex_Lock
+ #define BACKPORTSZSTD_LOCK_unlock PyMutex_Unlock
+ #define BACKPORTSZSTD_LOCK_free(l)
++#if PY_VERSION_HEX < 0x030E0000 // Python 3.13 and below
+ static inline int BACKPORTSZSTD_LOCK_isLocked(PyMutex *lp)
+ {
+-    // note: this function is only used in asserts
+-    // PyMutex_IsLocked is not exposed publicly https://github.com/python/cpython/issues/134009
+-    Py_FatalError("Not implemented");
++    return (_Py_atomic_load_uint8(&lp->_bits) & _Py_LOCKED) != 0;
+ }
++#else // Python 3.14 and above
++#define BACKPORTSZSTD_LOCK_isLocked PyMutex_IsLocked
++#endif
+ 
+ #endif /* !BACKPORTSZSTD_LOCK */
+ 

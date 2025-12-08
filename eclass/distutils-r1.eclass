@@ -292,7 +292,7 @@ _distutils_set_globals() {
 			;;
 		scikit-build-core)
 			bdep+='
-				>=dev-python/scikit-build-core-0.10.7[${PYTHON_USEDEP}]
+				>=dev-python/scikit-build-core-0.11.5[${PYTHON_USEDEP}]
 			'
 			;;
 		setuptools)
@@ -412,6 +412,28 @@ unset -f _distutils_set_globals
 # @CODE
 # python_configure_all() {
 # 	DISTUTILS_ARGS=( --enable-my-hidden-option )
+# }
+# @CODE
+
+# @ECLASS_VARIABLE: DISTUTILS_CONFIG_SETTINGS_JSON
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# The JSON object deserialized into config_settings dictionary passed
+# to the build backend.
+#
+# Allowed only for DISTUTILS_USE_PEP517=standalone.  Use DISTUTILS_ARGS
+# for other backends.
+#
+# Example:
+# @CODE
+# python_configure_all() {
+# 	DISTUTILS_CONFIG_SETTINGS_JSON='
+# 		{
+# 			"verbose": true,
+# 			"targets": ["foo", "bar"],
+# 			"build-type": "release"
+# 		}
+# 	'
 # }
 # @CODE
 
@@ -551,9 +573,13 @@ distutils_enable_tests() {
 	case ${1} in
 		import-check)
 			test_pkgs+=' dev-python/pytest-import-check[${PYTHON_USEDEP}]'
+			EPYTEST_PLUGINS+=( pytest-import-check )
 			;&
 		pytest)
 			test_pkgs+=' >=dev-python/pytest-7.4.4[${PYTHON_USEDEP}]'
+			if [[ -n ${EPYTEST_RERUNS} ]]; then
+				test_pkgs+=' dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]'
+			fi
 			if [[ -n ${EPYTEST_TIMEOUT} ]]; then
 				test_pkgs+=' dev-python/pytest-timeout[${PYTHON_USEDEP}]'
 			fi
@@ -565,6 +591,10 @@ distutils_enable_tests() {
 			_set_epytest_plugins
 			for plugin in "${EPYTEST_PLUGINS[@]}"; do
 				case ${plugin} in
+					${PN})
+						# don't add a dependency on self
+						continue
+						;;
 					pkgcore)
 						plugin=sys-apps/${plugin}
 						;;
@@ -1138,9 +1168,9 @@ distutils_pep517_install() {
 					ninjaopts = shlex.split(os.environ["NINJAOPTS"])
 					print(json.dumps({
 						"build.tool-args": ninjaopts,
+						"build.verbose": True,
 						"cmake.args": ";".join(sys.argv[1:]),
 						"cmake.build-type": "${CMAKE_BUILD_TYPE}",
-						"cmake.verbose": True,
 						"install.strip": False,
 					}))
 				EOF
@@ -1188,6 +1218,12 @@ distutils_pep517_install() {
 				die "DISTUTILS_ARGS are not supported by ${DISTUTILS_USE_PEP517}"
 			;;
 	esac
+
+	if [[ ${DISTUTILS_USE_PEP517} == standalone ]]; then
+		config_settings=${DISTUTILS_CONFIG_SETTINGS_JSON}
+	elif [[ -n ${DISTUTILS_CONFIG_SETTINGS_JSON} ]]; then
+		die "DISTUTILS_CONFIG_SETTINGS_JSON supported only for standalone backends"
+	fi
 
 	# https://pyo3.rs/latest/building-and-distribution.html#cross-compiling
 	if tc-is-cross-compiler; then
@@ -1280,7 +1316,7 @@ distutils-r1_python_compile() {
 			# from the oldest to the newest implementation,
 			# and the wheels are forward-compatible.
 			if [[
-				( ! ${DISTUTILS_EXT} && ${whl} == *py3-none-any* ) ||
+				( ! ${DISTUTILS_EXT} && ${whl} == *py3-none* ) ||
 				(
 					${EPYTHON} == python* &&
 					# freethreading does not support stable ABI
@@ -1478,8 +1514,8 @@ distutils-r1_run_phase() {
 
 	local -x PATH=${BUILD_DIR}/install${EPREFIX}/usr/bin:${PATH}
 	# Set up build environment, bug #513664.
-	local -x AR=${AR} CC=${CC} CPP=${CPP} CXX=${CXX}
-	tc-export AR CC CPP CXX
+	local -x AR=${AR} CC=${CC} CPP=${CPP} CXX=${CXX} PKG_CONFIG=${PKG_CONFIG}
+	tc-export AR CC CPP CXX PKG_CONFIG
 
 	# Perform additional environment modifications only for python_compile
 	# phase.  This is the only phase where we expect to be calling the Python

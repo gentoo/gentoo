@@ -13,7 +13,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/gabime/${PN}"
 else
 	SRC_URI="https://github.com/gabime/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 fi
 
 LICENSE="MIT"
@@ -28,7 +28,7 @@ BDEPEND="
 	)
 "
 DEPEND="
-	dev-libs/libfmt:=[${MULTILIB_USEDEP}]
+	>=dev-libs/libfmt-11.0.2:=[${MULTILIB_USEDEP}]
 "
 RDEPEND="${DEPEND}"
 
@@ -36,7 +36,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-force_external_fmt.patch"
 )
 
-multilib_src_prepare() {
+src_prepare() {
 	cmake_src_prepare
 	rm -r include/spdlog/fmt/bundled || die "Failed to delete bundled libfmt"
 }

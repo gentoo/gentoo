@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~loong ~riscv x86"
 IUSE="+cloudpinyin +data +gui lua +opencc test webengine"
 REQUIRED_USE="webengine? ( gui )"
 RESTRICT="!test? ( test )"
@@ -43,10 +43,8 @@ src_configure() {
 		-DENABLE_CLOUDPINYIN=$(usex cloudpinyin)
 		-DENABLE_DATA=$(usex data)
 		-DENABLE_GUI=$(usex gui)
-		-DUSE_QT6=$(usex gui)
 		-DENABLE_OPENCC=$(usex opencc)
 		-DENABLE_TEST=$(usex test)
-		-DUSE_WEBKIT=no
 	)
 	cmake_src_configure
 }

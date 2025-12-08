@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit meson python-any-r1
 
 DESCRIPTION="X keyboard configuration database"
@@ -59,7 +59,6 @@ src_prepare() {
 
 src_configure() {
 	local emesonargs=(
-		-Dxkb-base="${EPREFIX}/usr/share/X11/xkb"
 		-Dcompat-rules=true
 	)
 	meson_src_configure

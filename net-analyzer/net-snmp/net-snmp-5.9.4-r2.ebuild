@@ -4,7 +4,7 @@
 EAPI=8
 
 GENTOO_DEPEND_ON_PERL=no
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 WANT_AUTOMAKE=none
 
 inherit autotools python-single-r1 libtool perl-module systemd
@@ -18,7 +18,7 @@ else
 	# https://github.com/net-snmp/net-snmp/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	SRC_URI="https://downloads.sourceforge.net/${PN}/${PN}/${PV}/${P}.tar.gz"
 
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 fi
 
 SRC_URI+=" https://dev.gentoo.org/~jsmolic/distfiles/${PN}-5.7.3-patches-3.tar.xz"
@@ -60,7 +60,7 @@ COMMON_DEPEND="
 		>=dev-libs/openssl-0.9.6d:0=
 	)
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
-	zlib? ( >=sys-libs/zlib-1.1.4 )
+	zlib? ( >=virtual/zlib-1.1.4:= )
 "
 BDEPEND="doc? ( app-text/doxygen )"
 DEPEND="

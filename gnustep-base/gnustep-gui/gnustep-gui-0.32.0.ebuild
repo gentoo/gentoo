@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit gnustep-base multilib virtualx
+inherit flag-o-matic gnustep-base multilib virtualx
 
 DESCRIPTION="Library of GUI classes written in Obj-C"
 HOMEPAGE="https://gnustep.github.io/"
@@ -10,7 +10,7 @@ SRC_URI="https://ftp.gnustep.org/pub/gnustep/core/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ppc ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="cups icu jpeg png speech"
 
 DEPEND="${GNUSTEP_CORE_DEPEND}
@@ -35,9 +35,16 @@ src_prepare() {
 		Tools/say/GNUmakefile \
 		Tools/speech/GNUmakefile \
 		|| die
+
+	# test failures.
+	rm -r  Tests/gui/NSPasteboard/ || die # bug #935828
+	sed -e '/START_SET/aSKIP("Skipped by the ebuild bug #941901");' -i Tests/gui/NSSavePanel/setDelegate_reload.m || die
 }
 
 src_configure() {
+	# lto-type-mismatch
+	filter-lto
+
 	egnustep_env
 
 	econf \

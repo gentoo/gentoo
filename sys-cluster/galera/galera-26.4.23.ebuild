@@ -18,7 +18,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2 BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ppc64 x86"
 IUSE="garbd ssl"
 
 RDEPEND="
@@ -32,6 +32,14 @@ DEPEND="
 	<dev-cpp/asio-1.33
 	dev-libs/check
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-26.4-musl.patch
+)
+
+# Skip false positive QA Notice for wsrep/src/CMakeLists.txt, which is not used
+# in this package. Galera uses wsrep/src only as a include directory.
+CMAKE_QA_COMPAT_SKIP=1
 
 src_prepare() {
 	cmake_src_prepare

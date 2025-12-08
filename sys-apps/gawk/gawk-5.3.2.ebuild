@@ -32,12 +32,13 @@ else
 	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 
-LICENSE="GPL-3+"
+LICENSE="GPL-3+ pma? ( AGPL-3+ )"
 SLOT="0"
-# While tempting to enable mpfr by default as e.g. Fedora do, as of 5.2.x,
-# MPFR support is "on parole" and may be removed:
-# https://www.gnu.org/software/gawk/manual/html_node/MPFR-On-Parole.html.
-IUSE="mpfr pma nls readline"
+# The gawk docs claim MPFR support is "on parole" and may be removed,
+# https://www.gnu.org/software/gawk/manual/html_node/MPFR-On-Parole.html
+# however this is somewhat outdated information, see
+# https://public-inbox.org/libc-alpha/202412190851.4BJ8psq4404509@freefriends.org/
+IUSE="+mpfr pma nls readline"
 
 RDEPEND="
 	mpfr? (

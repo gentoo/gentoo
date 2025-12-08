@@ -14,7 +14,7 @@
 		other software to extend them with scripting capabilities.
 	</longdescription>
 	<upstream>
-		<bugs-to>https://github.com/ccxvii/mujs/issues</bugs-to>
-		<remote-id type="github">ccxvii/mujs</remote-id>
+		<bugs-to>https://codeberg.org/ccxvii/mujs/issues</bugs-to>
+		<remote-id type="codeberg">ccxvii/mujs</remote-id>
 	</upstream>
 </pkgmetadata>

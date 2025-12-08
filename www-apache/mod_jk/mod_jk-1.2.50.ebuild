@@ -11,10 +11,8 @@ DESCRIPTION="Provides an AJP Apache2-JK-connector for the Tomcat servlet engine"
 HOMEPAGE="https://tomcat.apache.org/connectors-doc/"
 SRC_URI="
 	mirror://apache/tomcat/tomcat-connectors/jk/${MY_P}.tar.gz
-	https://archive.apache.org/dist/tomcat/tomcat-connectors/jk/${MY_P}.tar.gz
 	verify-sig? (
-		https://downloads.apache.org/tomcat/tomcat-connectors/jk/tomcat-connectors-${PV}-src.tar.gz.asc
-		https://archive.apache.org/dist/tomcat/tomcat-connectors/jk/tomcat-connectors-${PV}-src.tar.gz.asc
+		mirror://apache/tomcat/tomcat-connectors/jk/${MY_P}.tar.gz.asc
 	)
 "
 S="${WORKDIR}/${MY_P}/native"

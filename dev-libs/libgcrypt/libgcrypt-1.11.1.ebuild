@@ -96,6 +96,14 @@ src_configure() {
 	#
 	use riscv && filter-lto
 
+	# Temporary workaround for mfpmath=sse on x86 cauing issues when -msse is
+	# stripped as it's not clear cut on how to handle in flag-o-matic we can at
+	# least solve it the ebuild see https://bugs.gentoo.org/959349
+	use x86 && filter-flags -mfpmath=sse
+
+	# Temporary workaround for build failures with gcc-15, see bug 951267
+	append-cflags -std=gnu17
+
 	# Hardcodes the path to FGREP in libgcrypt-config
 	export ac_cv_path_SED="sed"
 	export ac_cv_path_EGREP="grep -E"
@@ -146,6 +154,7 @@ multilib_src_configure() {
 		$(use asm || echo "--disable-asm")
 
 		GPG_ERROR_CONFIG="${ESYSROOT}/usr/bin/${CHOST}-gpg-error-config"
+		GPGRT_CONFIG="${ESYSROOT}/usr/bin/${CHOST}-gpgrt-config"
 	)
 
 	if use kernel_linux; then

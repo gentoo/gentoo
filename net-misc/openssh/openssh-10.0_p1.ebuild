@@ -51,7 +51,7 @@ LIB_DEPEND="
 	selinux? ( >=sys-libs/libselinux-1.28[static-libs(+)] )
 	ssl? ( >=dev-libs/openssl-1.1.1l-r1:0=[static-libs(+)] )
 	virtual/libcrypt:=[static-libs(+)]
-	>=sys-libs/zlib-1.2.3:=[static-libs(+)]
+	>=virtual/zlib-1.2.3:=[static-libs(+)]
 "
 RDEPEND="
 	acct-group/sshd

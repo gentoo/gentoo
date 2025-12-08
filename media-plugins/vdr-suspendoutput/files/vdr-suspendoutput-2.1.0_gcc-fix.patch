@@ -1,0 +1,57 @@
+diff '--color=auto' -Naur suspendoutput-2.1.0.orig/suspendoutput.c suspendoutput-2.1.0/suspendoutput.c
+--- suspendoutput-2.1.0.orig/suspendoutput.c	2016-12-31 21:26:54.000000000 +0100
++++ suspendoutput-2.1.0/suspendoutput.c	2025-09-27 23:13:21.067926000 +0200
+@@ -320,8 +320,9 @@
+      (!cDummyPlayerControl::IsOpen()) ) {
+     bool Play, Forward;
+     int Speed;
+-    if(cControl::Control() &&
+-       cControl::Control()->GetReplayMode(Play, Forward, Speed) &&
++    cMutexLock MutexLock;
++    if(cControl::Control(MutexLock) &&
++       cControl::Control(MutexLock)->GetReplayMode(Play, Forward, Speed) &&
+        Play)
+       Activity();
+   }
+diff '--color=auto' -Naur suspendoutput-2.1.0.orig/timer.c suspendoutput-2.1.0/timer.c
+--- suspendoutput-2.1.0.orig/timer.c	2016-06-08 21:15:54.000000000 +0200
++++ suspendoutput-2.1.0/timer.c	2025-09-27 23:08:01.032626387 +0200
+@@ -121,7 +121,7 @@
+       m_Lock.Lock();
+       while(m_Events.First()) {
+         m_Signal.TimedWait(m_Lock,
+-                           max(1, m_Events.First()->TimeToNextEvent()));
++                           std::max(1, m_Events.First()->TimeToNextEvent()));
+         TRACE("cTimerThread::Action waked up");
+         while(NULL != (m_RunningEvent = m_Events.First()) &&
+               m_RunningEvent->TimeToNextEvent() <= 0) {
+@@ -204,7 +204,7 @@
+         m_Instance->m_Lock.Lock();
+         m_Instance->m_Signal.Broadcast();
+       }
+-      m_Instance->Add(new cTimerThreadEvent(Handler, max(1U,TimeoutMs),
++      m_Instance->Add(new cTimerThreadEvent(Handler, std::max(1U,TimeoutMs),
+                                             DeleteOnCancel));
+       m_Instance->m_Lock.Unlock();
+       m_InstanceLock.Unlock();
+diff '--color=auto' -Naur suspendoutput-2.1.0.orig/timer.h suspendoutput-2.1.0/timer.h
+--- suspendoutput-2.1.0.orig/timer.h	2016-06-08 21:20:37.000000000 +0200
++++ suspendoutput-2.1.0/timer.h	2025-09-27 23:09:24.600443250 +0200
+@@ -243,7 +243,7 @@
+ 
+ template<class TCLASS>
+ cTimerEvent *CreateTimerEvent(TCLASS *c, void (TCLASS::*fp)(void),
+-                              unsigned int TimeoutMs, bool runOnce = true)
++                              unsigned int TimeoutMs, bool runOnce)
+ {
+   return new cTimerFunctor0<TCLASS>(c,fp,TimeoutMs,runOnce);
+ }
+@@ -251,7 +251,7 @@
+ template<class TCLASS, class TARG1>
+ cTimerEvent *CreateTimerEvent(TCLASS *c, void (TCLASS::*fp)(TARG1),
+                               TARG1 arg1,
+-                              unsigned int TimeoutMs, bool runOnce = true)
++                              unsigned int TimeoutMs, bool runOnce)
+ {
+   return new cTimerFunctor1<TCLASS,TARG1>(c,fp,arg1,TimeoutMs,runOnce);
+ }

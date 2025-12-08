@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit distutils-r1
 
@@ -32,18 +32,14 @@ BDEPEND="
 	)
 "
 
+EPYTEST_PLUGIN_LOAD_VIA_ENV=1
+EPYTEST_PLUGINS=( "${PN}" )
 distutils_enable_tests pytest
-#distutils_enable_sphinx docs/source \
-#	dev-python/autoapi \
-#	dev-python/sphinx-rtd-theme
 
 python_test() {
 	local EPYTEST_DESELECT=(
 		tests/test_pytest_cli.py::test_simple_pytest_import_error_cli
 	)
-
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	local -x PYTEST_PLUGINS=xdoctest.plugin
 
 	epytest --pyargs tests xdoctest
 }

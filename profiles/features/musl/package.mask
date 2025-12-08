@@ -1,6 +1,40 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Jaco Kroon <jkroon@gentoo.org> (2025-12-06)
+# anydesk is pre-build with glibc, will not work on MUSL.
+net-misc/anydesk
+
+# Z. Liu <zhixu.liu@gmail.com> (2025-10-18)
+# nvidia-drivers only works against glibc.
+dev-python/nvidia-ml-py
+
+# Robert Siebeck <gentoo.2019@r123.de> (2025-10-17)
+# Binary compiled against glibc
+# Bug #964371
+net-im/signal-desktop-bin
+
+# PPN-SD <nicolas.parlant@parhuet.fr> (2025-10-08)
+# Binary bazel is compiled against glibc
+>=app-i18n/mozc-2.31.5851.102
+
+# Michał Górny <mgorny@gentoo.org> (2025-09-28)
+# Required DT_AUXILIARY support in the dynamic linker.
+=sci-libs/blas-lapack-aux-wrappers-0
+
+# PPN-SD <nicolas.parlant@parhuet.fr> (2025-07-28)
+# Bundled pcap-thread, not ported to musl
+# bug #713498, https://github.com/DNS-OARC/pcap-thread/issues/128
+net-dns/dnscap
+
+# Ian Jordan <immoloism@gmail.com> (2025-07-13)
+# Binary is compiled against glibc
+net-misc/anydesk
+
+# Sam James <sam@gentoo.org> (2025-07-12)
+# Not ported to musl (bug #939569, https://github.com/oracle/dtrace-utils/issues/87)
+dev-debug/dtrace
+
 # NHOrus <jy6x2b32pie9@yahoo.com> (2025-03-13)
 # uses functions musl will not implement, bug #942215
 app-admin/sud
@@ -46,7 +80,6 @@ net-nds/nsscache
 
 # Sam James <sam@gentoo.org> (2024-09-30)
 # Needs porting to musl (bug #940130)
-~sys-auth/elogind-255.5
 ~sys-auth/elogind-255.17
 
 # Sam James <sam@gentoo.org> (2024-08-31)
@@ -133,14 +166,6 @@ games-strategy/seven-kingdoms
 # this time. (#925547)
 app-arch/lrzip-next
 
-# Christopher Fore <csfore@posteo.net> (2024-01-24)
-# >=sys-fs/bcachefs-tools-1.4.1 uses functions currently not in Musl
-# https://github.com/koverstreet/bcachefs-tools/issues/213
-# The above was fixed in musl 1.2.5, which bcachefs-tools 1.11.0
-# will now depend on.
-# https://www.openwall.com/lists/musl/2024/03/01/2
-<sys-fs/bcachefs-tools-1.11.0
-
 # Conrad Kostecki <conikost@gentoo.org> (2024-01-23)
 # Uses glibc function getsourcefilter(),
 # which are not available on musl.
@@ -187,7 +212,6 @@ net-analyzer/gvmd
 net-analyzer/gvm-libs
 net-analyzer/openvas-scanner
 net-analyzer/ospd-openvas
-net-misc/grive
 net-print/pnm2ppa
 sys-apps/noexec
 
@@ -279,6 +303,7 @@ dev-games/ps2-packer
 dev-java/openjdk-bin
 dev-java/openjdk-jre-bin
 dev-lang/dafny-bin
+dev-lang/deno-bin
 dev-libs/luise
 dev-libs/nwjs
 dev-perl/Lab-Zhinst
@@ -325,6 +350,7 @@ games-fps/ut2004-demo
 games-puzzle/world-of-goo-demo
 games-puzzle/world-of-goo-gog
 games-puzzle/world-of-goo-hb
+games-roguelike/dwarf-fortress
 games-rpg/crosscode
 games-rpg/crosscode-a-new-home
 games-server/bedrock-server
@@ -357,7 +383,6 @@ net-im/element-desktop-bin
 net-im/gitter-bin
 net-im/mattermost-desktop-bin
 net-im/rocketchat-desktop-bin
-net-im/skypeforlinux
 net-im/slack
 net-im/telegram-desktop-bin
 net-im/whatsapp-desktop-bin
@@ -375,7 +400,9 @@ net-print/hplip-plugin
 net-vpn/microsoft-azurevpnclient
 sci-chemistry/cara-bin
 sci-electronics/labone
+sci-libs/aotriton-bin
 sci-libs/mkl
+sci-mathematics/geogebra-bin
 sci-mathematics/gimps
 sci-misc/jupyterlab-desktop-bin
 sci-misc/netlogo-bin
@@ -387,7 +414,6 @@ sys-block/arcconf
 sys-block/hpssacli
 sys-block/megacli
 www-apps/chromedriver-bin
-<www-apps/grafana-bin-11.2
 www-apps/jellyfin-bin
 www-apps/kibana-bin
 www-client/firefox-bin

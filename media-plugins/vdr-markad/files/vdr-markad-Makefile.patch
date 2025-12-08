@@ -1,0 +1,13 @@
+# do not install compressed manpage
+#
+--- vdr-plugin-markad-4.2.15.orig/command/Makefile	2025-07-31 17:48:24.000000000 +0200
++++ vdr-plugin-markad-4.2.15/command/Makefile	2025-09-27 10:07:24.720617866 +0200
+@@ -173,7 +173,7 @@
+ 
+ install-doc:
+ 	@mkdir -p $(DESTDIR)$(MANDIR)/man1
+-	@gzip -c markad.1 > $(DESTDIR)$(MANDIR)/man1/markad.1.gz
++	install -D markad.1 $(DESTDIR)$(MANDIR)/man1
+ 
+ install: install-doc markad $(I18Nmsgs)
+ 	@mkdir -p $(DESTDIR)$(BINDIR)

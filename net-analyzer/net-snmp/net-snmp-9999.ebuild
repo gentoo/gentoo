@@ -4,7 +4,7 @@
 EAPI=8
 
 GENTOO_DEPEND_ON_PERL=no
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 WANT_AUTOMAKE=none
 
 inherit autotools python-single-r1 libtool perl-module systemd
@@ -29,6 +29,7 @@ SLOT="0/40"
 IUSE="
 	X bzip2 doc elf kmem ipv6 lm-sensors mfd-rewrites minimal mysql
 	netlink pcap pci pcre perl python rpm selinux smux ssl tcpd ucd-compat valgrind zlib
+	${GENTOO_PERL_USESTRING}
 "
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -45,7 +46,10 @@ COMMON_DEPEND="
 	pcap? ( net-libs/libpcap )
 	pci? ( sys-apps/pciutils )
 	pcre? ( dev-libs/libpcre2 )
-	perl? ( dev-lang/perl:= )
+	perl? (
+		${GENTOO_PERL_DEPSTRING}
+		dev-lang/perl:=
+	)
 	python? (
 		$(python_gen_cond_dep '
 			dev-python/setuptools[${PYTHON_USEDEP}]
@@ -60,7 +64,7 @@ COMMON_DEPEND="
 		>=dev-libs/openssl-0.9.6d:0=
 	)
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
-	zlib? ( >=sys-libs/zlib-1.1.4 )
+	zlib? ( >=virtual/zlib-1.1.4:= )
 "
 BDEPEND="doc? ( app-text/doxygen )"
 DEPEND="

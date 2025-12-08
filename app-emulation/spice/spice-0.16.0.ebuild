@@ -9,7 +9,7 @@ inherit meson python-any-r1 readme.gentoo-r1 xdg-utils
 DESCRIPTION="SPICE server"
 HOMEPAGE="https://www.spice-space.org/"
 if [[ ${PV} == 9999 ]] ; then
-	EGIT_REPO_URI="https://anongit.freedesktop.org/git/spice/spice.git"
+	EGIT_REPO_URI="https://gitlab.freedesktop.org/spice/spice.git"
 	inherit git-r3
 
 	DEPEND="~app-emulation/spice-protocol-9999"
@@ -30,7 +30,7 @@ RDEPEND="
 	dev-libs/openssl:0=[static-libs(+)?]
 	media-libs/opus[static-libs(+)?]
 	media-libs/libjpeg-turbo:0=[static-libs(+)?]
-	sys-libs/zlib[static-libs(+)?]
+	virtual/zlib:=[static-libs(+)?]
 	>=x11-libs/pixman-0.17.7[static-libs(+)?]
 	virtual/libudev
 	lz4? ( app-arch/lz4:0=[static-libs(+)?] )
@@ -64,6 +64,10 @@ python_check_deps() {
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && python-any-r1_pkg_setup
 }
+
+PATCHES=(
+	"${FILESDIR}/${P}-c++20-adjust-designated-init.patch"
+)
 
 src_configure() {
 	# Prevent sandbox violations, bug #586560

@@ -12,7 +12,6 @@ MY_PN="kafka"
 MY_P="${MY_PN}_${SCALA_VERSION}-${PV}"
 SRC_URI="
 	mirror://apache/${MY_PN}/${PV}/${MY_P}.tgz
-	https://archive.apache.org/dist/${MY_PN}/${PV}/${MY_P}.tgz
 "
 
 RESTRICT="mirror"

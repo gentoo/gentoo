@@ -17,13 +17,13 @@ else
 		https://github.com/ebiggers/libdeflate/commit/2a3762cf736aff9aa5dda329fdec3c08a816eb9b.patch -> ${P}-gcc-16.1.patch
 		https://github.com/ebiggers/libdeflate/commit/6bb493615b0ef35c98fc4aa4ec04f448788db6a5.patch -> ${P}-gcc-16.2.patch
 	"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 fi
 
 LICENSE="MIT"
 SLOT="0"
 # the zlib USE-flag enables support for zlib
-# the test USE-flag programs depend on sys-libs/zlib for comparison tests
+# the test USE-flag programs depend on virtual/zlib for comparison tests
 IUSE="+utils test"
 
 RESTRICT="
@@ -31,7 +31,7 @@ RESTRICT="
 "
 
 DEPEND="
-	test? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
+	test? ( virtual/zlib[${MULTILIB_USEDEP}] )
 "
 
 PATCHES=(

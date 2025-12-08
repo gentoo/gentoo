@@ -179,7 +179,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="amd64 ~arm arm64"
+KEYWORDS="amd64 arm arm64"
 IUSE="gui vanilla"
 RESTRICT="test"
 

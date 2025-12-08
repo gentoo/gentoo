@@ -23,7 +23,7 @@ LIBS_DEPEND="
 	app-arch/bzip2
 	>=dev-libs/newt-0.52
 	>=sys-libs/slang-2
-	sys-libs/zlib:=
+	virtual/zlib:=
 	!nologin? ( virtual/libcrypt:= )
 	ssl? ( dev-libs/openssl:0= )
 "

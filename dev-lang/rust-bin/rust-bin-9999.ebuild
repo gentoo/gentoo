@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=( 20 )
+LLVM_COMPAT=( 21 )
 LLVM_OPTIONAL="yes"
 
 inherit edo llvm-r1 multilib prefix rust-toolchain verify-sig multilib-minimal optfeature
@@ -21,8 +21,8 @@ elif [[ ${PV} == *beta* ]]; then
 	"
 else
 	# curl -Ls static.rust-lang.org/dist/channel-rust-${PV}.toml | grep "xz_url.*rust-src"
-	SRC_URI="$(rust_all_arch_uris "${PV}")
-		rust-src? ( ${RUST_TOOLCHAIN_BASEURL%/}/2025-01-30/rust-src-${PV}.tar.xz )
+	SRC_URI="$(rust_all_arch_uris "rust-${PV}")
+		rust-src? ( ${RUST_TOOLCHAIN_BASEURL%/}/2025-09-18/rust-src-${PV}.tar.xz )
 	"
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
@@ -104,8 +104,6 @@ src_unpack() {
 		curl -Ls static.rust-lang.org/dist/channel-rust-nightly.toml > "${WORKDIR}/channel-rust-nightly.toml" ||
 			die "Failed to fetch nightly revision info"
 		rustc_src_url=$(grep 'xz_url.*rust-src' "${WORKDIR}/channel-rust-nightly.toml" | cut -d '"' -f 2)
-		rust_bin_url=$(grep "xz_url.*rust-nightly-$(rust_abi)" "${WORKDIR}/channel-rust-nightly.toml" | cut -d '"' -f 2)
-		einfo "Using nightly Rust from: ${rust_bin_url}"
 
 		if use rust-src; then
 			einfo "Using nightly Rust-src from: ${rustc_src_url}"
@@ -117,15 +115,23 @@ src_unpack() {
 			tar -xf "${WORKDIR}/rust-src-${PV}.tar.xz" || die "Failed to unpack nightly rust-src tarball"
 		fi
 
-		einfo "Fetching nightly Rust tarball ..."
-		curl --progress-bar -L "${rust_bin_url}" -O || die "Failed to fetch nightly tarball"
-		if use verify-sig; then
-			einfo "Fetching nightly signature ..."
-			curl --progress-bar -L "${rust_bin_url}.asc" -O || die "Failed to fetch nightly signature"
-			verify-sig_verify_detached "${WORKDIR}/rust-nightly-$(rust_abi).tar.xz" \
-				"${WORKDIR}/rust-nightly-$(rust_abi).tar.xz.asc"
-		fi
-		tar -xf "${WORKDIR}/rust-nightly-$(rust_abi).tar.xz" || die "Failed to unpack nightly tarball"
+		local v
+		for v in $(multilib_get_enabled_abi_pairs); do
+			rust_target="$(rust_abi $(get_abi_CHOST ${v##*.}))"
+			rust_bin_url=$(grep "xz_url.*rust-nightly-${rust_target}" "${WORKDIR}/channel-rust-nightly.toml" | cut -d '"' -f 2)
+			einfo "Using nightly Rust from ${rust_bin_url} for ${rust_target}"
+
+			einfo "Fetching nightly Rust tarball for ${rust_target} ..."
+			curl --progress-bar -L "${rust_bin_url}" -O || die "Failed to fetch nightly tarball for ${rust_target}"
+			if use verify-sig; then
+				einfo "Fetching nightly signature for ${rust_target} ..."
+				curl --progress-bar -L "${rust_bin_url}.asc" -O || die "Failed to fetch nightly signature for ${rust_target}"
+				verify-sig_verify_detached "${WORKDIR}/rust-nightly-${rust_target}.tar.xz" \
+					"${WORKDIR}/rust-nightly-${rust_target}.tar.xz.asc"
+			fi
+
+			tar -xf "${WORKDIR}/rust-nightly-${rust_target}.tar.xz" || die "Failed to unpack nightly tarball for ${rust_target}"
+		done
 	else
 		# sadly rust-src tarball does not have corresponding .asc file
 		# so do partial verification
@@ -138,8 +144,10 @@ src_unpack() {
 		fi
 
 		default_src_unpack
-
 	fi
+
+	# We only want to do this for the native ABI. Non-native ABIs are
+	# handled differently in multilib_src_install.
 	case ${PV} in
 		*9999*)
 			mv "${WORKDIR}/rust-nightly-$(rust_abi)" "${S}" || die
@@ -165,13 +173,15 @@ patchelf_for_bin() {
 
 rust_native_abi_install() {
 	pushd "${S}" >/dev/null || die
-	local analysis="$(grep 'analysis' ./components || die "analysis not found in components")"
 	local std="$(grep 'std' ./components || die "std not found in components")"
 	local components=( "rustc" "cargo" "${std}" )
 	use doc && components+=( "rust-docs" )
 	use clippy && components+=( "clippy-preview" )
 	use rustfmt && components+=( "rustfmt-preview" )
-	use rust-analyzer && components+=( "rust-analyzer-preview" "${analysis}" )
+	if use rust-analyzer; then
+		local analysis="$(grep 'analysis' ./components || die "analysis not found in components")"
+		components+=( "rust-analyzer-preview" "${analysis}" )
+	fi
 	# Rust component 'rust-src' is extracted from separate archive
 	if use rust-src; then
 		einfo "Combining rust and rust-src installers"
@@ -200,8 +210,8 @@ rust_native_abi_install() {
 
 	if use prefix; then
 		local interpreter=$(patchelf --print-interpreter "${EPREFIX}"/bin/bash)
-		ebegin "Changing interpreter to ${interpreter} for Gentoo prefix at ${ED}/opt/${SLOT}/bin"
-		find "${ED}/opt/${SLOT}/bin" -type f -print0 | \
+		ebegin "Changing interpreter to ${interpreter} for Gentoo prefix at ${ED}/opt/rust-bin-${SLOT}/bin"
+		find "${ED}/opt/rust-bin-${SLOT}/bin" -type f -print0 | \
 			while IFS=  read -r -d '' filename; do
 				patchelf_for_bin ${filename} ${interpreter} \; || die
 			done
@@ -281,10 +291,21 @@ multilib_src_install() {
 	if multilib_is_native_abi; then
 		rust_native_abi_install
 	else
-		local rust_target
+		local rust_target version
+		case ${PV} in
+			*9999*)
+				version=nightly
+				;;
+			*beta*)
+				version=beta
+				;;
+			*)
+				version=${PV}
+				;;
+		esac
 		rust_target="$(rust_abi $(get_abi_CHOST ${v##*.}))"
 		dodir "/opt/${P}/lib/rustlib"
-		cp -vr "${WORKDIR}/rust-${PV}-${rust_target}/rust-std-${rust_target}/lib/rustlib/${rust_target}"\
+		cp -vr "${WORKDIR}/rust-${version}-${rust_target}/rust-std-${rust_target}/lib/rustlib/${rust_target}"\
 			"${ED}/opt/${P}/lib/rustlib" || die
 	fi
 

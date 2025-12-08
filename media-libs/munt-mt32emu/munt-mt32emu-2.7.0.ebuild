@@ -13,7 +13,7 @@ S="${WORKDIR}/munt-${MY_P}/mt32emu"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.6.1-docs.patch

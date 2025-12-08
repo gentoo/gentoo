@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,10 +21,11 @@ SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-BDEPEND=">=dev-util/lxqt-build-tools-2.1.0"
+BDEPEND=">=dev-util/lxqt-build-tools-2.2.0"
 DEPEND="
-	>=dev-qt/qtbase-6.6:6[dbus,gui,widgets,X]
+	>=dev-qt/qtbase-6.6:6=[dbus,gui,widgets,X]
 	kde-plasma/layer-shell-qt:6
+	media-libs/libcanberra
 	x11-libs/libX11
 	~x11-libs/qtermwidget-${PV}:=
 "

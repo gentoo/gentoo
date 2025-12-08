@@ -38,7 +38,7 @@ RDEPEND="
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	media-libs/tiff:=
-	sys-libs/zlib
+	virtual/zlib:=
 	virtual/glu
 	x11-libs/libXpm
 	x11-libs/motif:0

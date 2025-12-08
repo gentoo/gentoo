@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 MY_P=${P/_/-}
 inherit autotools python-single-r1 xdg
@@ -16,11 +16,11 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-3+"
 SLOT="0"
 
-KEYWORDS="~alpha ~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm64 ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="gucharmap nls python spell"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND="sys-libs/zlib
+RDEPEND="virtual/zlib:=
 	x11-libs/gtk+:3
 	gucharmap? ( gnome-extra/gucharmap:2.90 )
 	python? ( ${PYTHON_DEPS} )

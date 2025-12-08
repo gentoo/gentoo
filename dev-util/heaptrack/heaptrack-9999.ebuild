@@ -16,11 +16,11 @@ IUSE="+gui test zstd"
 
 RESTRICT="!test? ( test )"
 
-# TODO: unbundle robin-map
 DEPEND="
+	dev-cpp/robin-map
 	dev-libs/boost:=[zstd?,zlib]
 	sys-libs/libunwind:=
-	sys-libs/zlib
+	virtual/zlib:=
 	gui? (
 		dev-libs/kdiagram:6
 		dev-qt/qtbase:6[gui,widgets]
@@ -40,19 +40,21 @@ RDEPEND="${DEPEND}
 "
 BDEPEND="gui? ( kde-frameworks/extra-cmake-modules:0 )"
 
+PATCHES=( "${FILESDIR}/${PN}-1.5.80_pre20251017-unbundle-robin-map.patch" ) # bug #964521
+
 QA_CONFIG_IMPL_DECL_SKIP=(
 	# This doesn't exist in libunwind (bug #898768).
 	unw_backtrace_skip
 )
 
 src_prepare() {
+	rm -r 3rdparty/{boost-zstd,robin-map} || die # ensure no bundling
 	cmake_src_prepare
-	rm -rf 3rdparty/boost-zstd || die # ensure no bundling
 }
 
 src_configure() {
 	local mycmakeargs=(
-		-DHEAPTRACK_USE_QT6=ON
+		-DHEAPTRACK_USE_SYSTEM_ROBINMAP=ON
 		-DHEAPTRACK_BUILD_GUI=$(usex gui)
 		-DBUILD_TESTING=$(usex test)
 		$(cmake_use_find_package zstd ZSTD)

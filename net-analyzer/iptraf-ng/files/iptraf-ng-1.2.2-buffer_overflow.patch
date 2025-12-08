@@ -1,0 +1,15 @@
+Fix this issue:
+
+src/tcptable.c:484:140: warning: ‘%s’ directive output may be truncated writing up to 63 bytes into a region of size between 0 and 225 [-Wformat-truncation=]
+
+--- a/src/tcptable.c
++++ b/src/tcptable.c
+@@ -22,7 +22,7 @@
+ #include "hostmon.h"
+ #include "sockaddr.h"
+ 
+-#define MSGSTRING_MAX	320
++#define MSGSTRING_MAX	640
+ 
+ unsigned int bmaxy = 0;
+ unsigned int imaxy = 0;

@@ -29,7 +29,7 @@ RDEPEND="
 		media-sound/wavpack
 	)
 	dev-libs/openssl:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

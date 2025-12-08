@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="A size profiler for binaries"
 HOMEPAGE="https://github.com/google/bloaty"
@@ -32,10 +32,6 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.1-system-abseil.patch
-)
-
 src_configure() {
 	local mycmakeargs=(
 		-DBLOATY_ENABLE_CMAKETARGETS=OFF
@@ -48,6 +44,9 @@ src_configure() {
 			$(usex test -DINSTALL_GTEST=OFF "")
 		)
 	fi
+
+	# capstone-6 compatibility (#964344)
+	append-flags -DCAPSTONE_AARCH64_COMPAT_HEADER
 
 	cmake_src_configure
 }

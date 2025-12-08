@@ -93,6 +93,7 @@ BDEPEND="
 # unalz
 # uncompress.real
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 python_prepare_all() {

@@ -1,0 +1,180 @@
+https://github.com/open-telemetry/opentelemetry-cpp/commit/3f0eee6b9143d018f907e45d7035e36882f1ecb3
+
+Removed non cmake changes
+
+From 3f0eee6b9143d018f907e45d7035e36882f1ecb3 Mon Sep 17 00:00:00 2001
+From: Tom Tan <Tom.Tan@microsoft.com>
+Date: Wed, 23 Nov 2022 17:01:33 -0800
+Subject: [PATCH] Add option WITH_BENCHMARK to disable building benchmarks
+ (#1794)
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -164,6 +164,8 @@ option(WITH_NO_GETENV "Whether the platform supports environment variables" OFF)
+ 
+ option(BUILD_TESTING "Whether to enable tests" ON)
+ 
++option(WITH_BENCHMARK "Whether to build benchmark program" ON)
++
+ option(BUILD_W3CTRACECONTEXT_TEST "Whether to build w3c trace context" OFF)
+ 
+ option(OTELCPP_MAINTAINER_MODE "Build in maintainer mode (-Wall -Werror)" OFF)
+@@ -478,8 +480,10 @@ if(BUILD_TESTING)
+   message("GTEST_INCLUDE_DIRS   = ${GTEST_INCLUDE_DIRS}")
+   message("GTEST_BOTH_LIBRARIES = ${GTEST_BOTH_LIBRARIES}")
+   enable_testing()
+-  # Benchmark respects the CMAKE_PREFIX_PATH
+-  find_package(benchmark CONFIG REQUIRED)
++  if(WITH_BENCHMARK)
++    # Benchmark respects the CMAKE_PREFIX_PATH
++    find_package(benchmark CONFIG REQUIRED)
++  endif()
+ endif()
+ 
+ include(CMakePackageConfigHelpers)
+--- a/api/test/baggage/CMakeLists.txt
++++ b/api/test/baggage/CMakeLists.txt
+@@ -9,7 +9,10 @@ foreach(testname baggage_test)
+     TEST_PREFIX baggage.
+     TEST_LIST ${testname})
+ endforeach()
+-add_executable(baggage_benchmark baggage_benchmark.cc)
+-target_link_libraries(baggage_benchmark benchmark::benchmark
+-                      ${CMAKE_THREAD_LIBS_INIT} opentelemetry_api)
++
++if(WITH_BENCHMARK)
++  add_executable(baggage_benchmark baggage_benchmark.cc)
++  target_link_libraries(baggage_benchmark benchmark::benchmark
++                        ${CMAKE_THREAD_LIBS_INIT} opentelemetry_api)
++endif()
+ add_subdirectory(propagation)
+--- a/api/test/common/CMakeLists.txt
++++ b/api/test/common/CMakeLists.txt
+@@ -10,6 +10,8 @@ foreach(testname kv_properties_test string_util_test)
+     TEST_LIST ${testname})
+ endforeach()
+ 
+-add_executable(spinlock_benchmark spinlock_benchmark.cc)
+-target_link_libraries(spinlock_benchmark benchmark::benchmark
+-                      ${CMAKE_THREAD_LIBS_INIT} opentelemetry_api)
++if(WITH_BENCHMARK)
++  add_executable(spinlock_benchmark spinlock_benchmark.cc)
++  target_link_libraries(spinlock_benchmark benchmark::benchmark
++                        ${CMAKE_THREAD_LIBS_INIT} opentelemetry_api)
++endif()
+--- a/api/test/trace/CMakeLists.txt
++++ b/api/test/trace/CMakeLists.txt
+@@ -21,9 +21,11 @@ foreach(
+     TEST_LIST api_${testname})
+ endforeach()
+ 
+-add_executable(span_id_benchmark span_id_benchmark.cc)
+-target_link_libraries(span_id_benchmark benchmark::benchmark
+-                      ${CMAKE_THREAD_LIBS_INIT} opentelemetry_api)
+-add_executable(span_benchmark span_benchmark.cc)
+-target_link_libraries(span_benchmark benchmark::benchmark
+-                      ${CMAKE_THREAD_LIBS_INIT} opentelemetry_api)
++if(WITH_BENCHMARK)
++  add_executable(span_id_benchmark span_id_benchmark.cc)
++  target_link_libraries(span_id_benchmark benchmark::benchmark
++                        ${CMAKE_THREAD_LIBS_INIT} opentelemetry_api)
++  add_executable(span_benchmark span_benchmark.cc)
++  target_link_libraries(span_benchmark benchmark::benchmark
++                        ${CMAKE_THREAD_LIBS_INIT} opentelemetry_api)
++endif()
+--- a/exporters/etw/CMakeLists.txt
++++ b/exporters/etw/CMakeLists.txt
+@@ -32,8 +32,6 @@ if(BUILD_TESTING)
+   add_executable(etw_tracer_test test/etw_tracer_test.cc)
+   add_executable(etw_logger_test test/etw_logger_test.cc)
+ 
+-  add_executable(etw_perf_test test/etw_perf_test.cc)
+-
+   target_link_libraries(etw_provider_test ${GTEST_BOTH_LIBRARIES}
+                         opentelemetry_exporter_etw ${CMAKE_THREAD_LIBS_INIT})
+ 
+@@ -43,9 +41,12 @@ if(BUILD_TESTING)
+   target_link_libraries(etw_logger_test ${GTEST_BOTH_LIBRARIES}
+                         opentelemetry_exporter_etw ${CMAKE_THREAD_LIBS_INIT})
+ 
+-  target_link_libraries(
+-    etw_perf_test benchmark::benchmark ${GTEST_BOTH_LIBRARIES}
+-    opentelemetry_exporter_etw ${CMAKE_THREAD_LIBS_INIT})
++  if(WITH_BENCHMARK)
++    add_executable(etw_perf_test test/etw_perf_test.cc)
++    target_link_libraries(
++      etw_perf_test benchmark::benchmark ${GTEST_BOTH_LIBRARIES}
++      opentelemetry_exporter_etw ${CMAKE_THREAD_LIBS_INIT})
++  endif()
+ 
+   gtest_add_tests(
+     TARGET etw_provider_test
+--- a/sdk/test/common/CMakeLists.txt
++++ b/sdk/test/common/CMakeLists.txt
+@@ -24,14 +24,16 @@ add_executable(random_fork_test random_fork_test.cc)
+ target_link_libraries(random_fork_test opentelemetry_common)
+ add_test(random_fork_test random_fork_test)
+ 
+-add_executable(random_benchmark random_benchmark.cc)
+-target_link_libraries(random_benchmark benchmark::benchmark
+-                      ${CMAKE_THREAD_LIBS_INIT} opentelemetry_common)
++if(WITH_BENCHMARK)
++  add_executable(random_benchmark random_benchmark.cc)
++  target_link_libraries(random_benchmark benchmark::benchmark
++                        ${CMAKE_THREAD_LIBS_INIT} opentelemetry_common)
+ 
+-add_executable(circular_buffer_benchmark circular_buffer_benchmark.cc)
+-target_link_libraries(circular_buffer_benchmark benchmark::benchmark
+-                      ${CMAKE_THREAD_LIBS_INIT} opentelemetry_api)
++  add_executable(circular_buffer_benchmark circular_buffer_benchmark.cc)
++  target_link_libraries(circular_buffer_benchmark benchmark::benchmark
++                        ${CMAKE_THREAD_LIBS_INIT} opentelemetry_api)
+ 
+-add_executable(attributemap_hash_benchmark attributemap_hash_benchmark.cc)
+-target_link_libraries(attributemap_hash_benchmark benchmark::benchmark
+-                      ${CMAKE_THREAD_LIBS_INIT} opentelemetry_common)
++  add_executable(attributemap_hash_benchmark attributemap_hash_benchmark.cc)
++  target_link_libraries(attributemap_hash_benchmark benchmark::benchmark
++                        ${CMAKE_THREAD_LIBS_INIT} opentelemetry_common)
++endif()
+--- a/sdk/test/metrics/CMakeLists.txt
++++ b/sdk/test/metrics/CMakeLists.txt
+@@ -28,12 +28,15 @@ foreach(
+     TEST_LIST ${testname})
+ endforeach()
+ 
+-add_executable(attributes_processor_benchmark attributes_processor_benchmark.cc)
+-target_link_libraries(attributes_processor_benchmark benchmark::benchmark
+-                      ${CMAKE_THREAD_LIBS_INIT} opentelemetry_common)
++if(WITH_BENCHMARK)
++  add_executable(attributes_processor_benchmark
++                 attributes_processor_benchmark.cc)
++  target_link_libraries(attributes_processor_benchmark benchmark::benchmark
++                        ${CMAKE_THREAD_LIBS_INIT} opentelemetry_common)
+ 
+-add_executable(attributes_hashmap_benchmark attributes_hashmap_benchmark.cc)
+-target_link_libraries(attributes_hashmap_benchmark benchmark::benchmark
+-                      ${CMAKE_THREAD_LIBS_INIT} opentelemetry_common)
++  add_executable(attributes_hashmap_benchmark attributes_hashmap_benchmark.cc)
++  target_link_libraries(attributes_hashmap_benchmark benchmark::benchmark
++                        ${CMAKE_THREAD_LIBS_INIT} opentelemetry_common)
++endif()
+ 
+ add_subdirectory(exemplar)
+--- a/sdk/test/trace/CMakeLists.txt
++++ b/sdk/test/trace/CMakeLists.txt
+@@ -24,7 +24,10 @@ foreach(
+     TEST_LIST ${testname})
+ endforeach()
+ 
+-add_executable(sampler_benchmark sampler_benchmark.cc)
+-target_link_libraries(
+-  sampler_benchmark benchmark::benchmark ${CMAKE_THREAD_LIBS_INIT}
+-  opentelemetry_trace opentelemetry_resources opentelemetry_exporter_in_memory)
++if(WITH_BENCHMARK)
++  add_executable(sampler_benchmark sampler_benchmark.cc)
++  target_link_libraries(
++    sampler_benchmark benchmark::benchmark ${CMAKE_THREAD_LIBS_INIT}
++    opentelemetry_trace opentelemetry_resources
++    opentelemetry_exporter_in_memory)
++endif()

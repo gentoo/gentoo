@@ -14,7 +14,7 @@ SRC_URI="https://github.com/caolanm/libwmf/archive/refs/tags/v${PV}.tar.gz -> ${
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="debug doc expat X"
 
 RDEPEND="
@@ -23,7 +23,7 @@ RDEPEND="
 	media-libs/freetype:2=
 	media-libs/libpng:=
 	media-libs/libjpeg-turbo
-	sys-libs/zlib:=
+	virtual/zlib:=
 	x11-libs/gdk-pixbuf:2
 	expat? ( dev-libs/expat )
 	!expat? ( dev-libs/libxml2:2= )

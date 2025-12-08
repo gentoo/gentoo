@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit flag-o-matic gnome.org vala meson python-any-r1 xdg
 
@@ -21,10 +21,10 @@ RDEPEND="
 	>=x11-libs/gdk-pixbuf-2.36.0:2
 	>=dev-libs/libgcrypt-1.8.0:0=
 	>=net-libs/gnutls-3.6.0:0=
-	>=sys-libs/zlib-1.2.11
+	>=virtual/zlib-1.2.11:=
 	>=x11-libs/gtk+-3.24.41-r1:3[introspection?,wayland?,X?]
 	>=x11-libs/cairo-1.15.0
-	introspection? ( >=dev-libs/gobject-introspection-1.56.0:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	pulseaudio? ( media-libs/libpulse )
 	sasl? ( >=dev-libs/cyrus-sasl-2.1.27:2 )
 	X? ( >=x11-libs/libX11-1.6.5 )

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..13} python3_13t )
+PYTHON_COMPAT=( python3_{11..13} python3_13t )
 DISTUTILS_EXT=1
 DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517="setuptools"
@@ -43,7 +43,7 @@ REQUIRED_USE="
 CDEPEND="acct-group/xrootd
 	acct-user/xrootd
 	dev-libs/openssl:0=
-	sys-libs/zlib
+	virtual/zlib:=
 	virtual/libcrypt:=
 	ceph? ( sys-cluster/ceph )
 	fuse? ( sys-fs/fuse:0= )

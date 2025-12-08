@@ -15,7 +15,7 @@ S="${WORKDIR}"/${MY_P}
 
 LICENSE="|| ( LGPL-2.1+ !ssl? ( GPL-2+-with-eCos-exception-2 ) )"
 SLOT="0/12"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="debug +epoll +eventfd ssl static-libs test +thread-names verify-sig"
 REQUIRED_USE="epoll? ( kernel_linux )"
 RESTRICT="!test? ( test )"
@@ -35,6 +35,7 @@ DOCS=( AUTHORS NEWS COPYING README ChangeLog )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.76-fix-test_tricky-libcurl.patch # Gentoo Bug #953520
+	"${FILESDIR}"/${PN}-0.9.76-fix-test-with-curl-8-16.patch # Gentoo Bug #962980
 )
 
 # All checks in libmicrohttpd's configure are correct

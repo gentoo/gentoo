@@ -16,7 +16,7 @@ IUSE="doc nss +openssl zstd lz4 lzo2"
 
 DEPEND=">=sys-cluster/libqb-2.0.0:=
 	dev-libs/libnl:3
-	sys-libs/zlib:=
+	virtual/zlib:=
 	app-arch/bzip2:=
 	app-arch/xz-utils
 	zstd? ( app-arch/zstd:= )

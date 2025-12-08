@@ -1,0 +1,370 @@
+https://github.com/gnustep/tools-make/pull/56
+
+From 4b67844896e3d51bbd1b432eac443434a083dccf Mon Sep 17 00:00:00 2001
+From: Niels Grewe <niels@zasta.de>
+Date: Tue, 2 Sep 2025 07:23:29 +0200
+Subject: [PATCH] feat: Support Swift's libBlocksRuntime
+
+--- a/aclocal.m4
++++ b/aclocal.m4
+@@ -294,3 +294,4 @@ m4_include([m4/gs_gcc_version.m4])
+ m4_include([m4/gs_library_combo.m4])
+ m4_include([m4/gs_objc_runtime.m4])
+ m4_include([m4/gs_runtime_abi.m4])
++m4_include([m4/gs_blocks_support.m4])
+--- a/config.make.in
++++ b/config.make.in
+@@ -67,6 +67,7 @@ CLANG_CC = @CLANG_CC@
+ OPTFLAG  = @CFLAGS@
+ OBJCFLAGS= @OBJCFLAGS@
+ OBJC_LIB_FLAG = @OBJC_LIB_FLAG@
++BLOCKS_LIB_FLAG = @BLOCKS_LIBS@
+ CPPFLAGS = @CPPFLAGS@
+ CPP      = @CPP@
+ CCFLAGS  = @CXXFLAGS@
+old mode 100755
+new mode 100644
+--- a/configure
++++ b/configure
+@@ -645,6 +645,7 @@ OBJ_MERGE_CMD_FLAG
+ USE_ARC
+ ac_cv_objc_threaded
+ objc_threaded
++BLOCKS_LIBS
+ libobjc_LIBS
+ libobjc_CFLAGS
+ PKG_CONFIG_LIBDIR
+@@ -5824,53 +5825,7 @@ fi
+ 
+ 
+ else
+-  if test "$OBJC_RUNTIME_LIB" = ng; then
+-    #
+-    # Detect compiler support for Blocks; perhaps someday -fblocks won't be
+-    # required, in which case we'll need to change this.
+-    #
+-    saveCFLAGS="$CFLAGS"
+-    CFLAGS="$CFLAGS -fblocks"
+-    ac_ext=c
+-ac_cpp='$CPP $CPPFLAGS'
+-ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+-ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+-ac_compiler_gnu=$ac_cv_c_compiler_gnu
+-
+-
+-cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+-/* end confdefs.h.  */
+-
+-int
+-main (void)
+-{
+-(void)^{int i; i = 0; }();
+-  ;
+-  return 0;
+-}
+-_ACEOF
+-if ac_fn_c_try_compile "$LINENO"
+-then :
+-
+-      ac_cv_blocks="yes"
+-
+-else $as_nop
+-
+-      ac_cv_blocks="no"
+ 
+-fi
+-rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
+-    CFLAGS="$saveCFLAGS"
+-    ac_ext=c
+-ac_cpp='$CPP $CPPFLAGS'
+-ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+-ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+-ac_compiler_gnu=$ac_cv_c_compiler_gnu
+-
+-    if test "$ac_cv_blocks" = no; then
+-      as_fn_error $? "Your compiler doesn't appear to support blocks. To fix this use the CC environment varibale to specify a different compiler (or use a different library-combo)" "$LINENO" 5;
+-    fi
+-  fi
+   # Extract the first word of "ar", so it can be a program name with args.
+ set dummy ar; ac_word=$2
+ { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+@@ -8152,7 +8107,7 @@ printf "%s\n" "$gs_cv_libobjc_domain_ng" >&6; }
+ 
+         if test ! x"$libobjc_LIBS" = x""; then
+         OBJC_CPPFLAGS=$libobjc_CFLAGS
+-        OBCJ_LDFLAGS=""
++        OBJC_LDFLAGS=""
+         OBJC_FINAL_LIB_FLAG=$libobjc_LIBS
+         elif test ! x"$gs_cv_libobjc_domain_ng" = x""; then
+         if test x"$gs_cv_libobjc_domain_ng" = x"SYSTEM"; then
+@@ -8219,7 +8174,8 @@ printf "%s\n" "$gs_cv_libobjc_domain_ng" >&6; }
+ 
+ 
+ 
+-      ac_fn_c_check_func "$LINENO" "objc_test_capability" "ac_cv_func_objc_test_capability"
++
++ac_fn_c_check_func "$LINENO" "objc_test_capability" "ac_cv_func_objc_test_capability"
+ if test "x$ac_cv_func_objc_test_capability" = xyes
+ then :
+ 
+@@ -8666,7 +8622,7 @@ printf "%s\n" "$gs_cv_libobjc_domain_dflt" >&6; }
+ 
+         if test ! x"$libobjc_LIBS" = x""; then
+         OBJC_CPPFLAGS=$libobjc_CFLAGS
+-        OBCJ_LDFLAGS=""
++        OBJC_LDFLAGS=""
+         OBJC_FINAL_LIB_FLAG=$libobjc_LIBS
+         elif test ! x"$gs_cv_libobjc_domain_dflt" = x""; then
+         if test x"$gs_cv_libobjc_domain_dflt" = x"SYSTEM"; then
+@@ -8730,6 +8686,122 @@ printf "%s\n" "$gs_cv_libobjc_domain_dflt" >&6; }
+ 
+ 
+ 
++
++
++    BLOCKS_LIBS=""
++    if test "$OBJC_RUNTIME_LIB" = ng; then
++    #
++    # Detect compiler support for Blocks; perhaps someday -fblocks won't be
++    # required, in which case we'll need to change this.
++    #
++    saveCFLAGS="$CFLAGS"
++    CFLAGS="$CFLAGS -fblocks"
++
++    ac_ext=c
++ac_cpp='$CPP $CPPFLAGS'
++ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
++ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
++ac_compiler_gnu=$ac_cv_c_compiler_gnu
++
++    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for blocks support in compiler" >&5
++printf %s "checking for blocks support in compiler... " >&6; }
++    cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++/* end confdefs.h.  */
++
++int
++main (void)
++{
++(void)^{int i; i = 0; }();
++  ;
++  return 0;
++}
++_ACEOF
++if ac_fn_c_try_compile "$LINENO"
++then :
++
++      ac_cv_blocks="yes"
++
++else $as_nop
++
++      ac_cv_blocks="no"
++
++fi
++rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
++    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_blocks" >&5
++printf "%s\n" "$ac_cv_blocks" >&6; }
++    CFLAGS="$saveCFLAGS"
++    if test "$ac_cv_blocks" = yes; then
++      saveLIBS="$LIBS"
++      LIBS="$LIBS $OBJC_FINAL_LIB_FLAG"
++      ac_fn_c_check_func "$LINENO" "_Block_copy" "ac_cv_func__Block_copy"
++if test "x$ac_cv_func__Block_copy" = xyes
++then :
++
++fi
++
++      LIBS="$saveLIBS"
++      if test "$ac_cv_func__Block_copy" = no; then
++        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for _Block_copy in -lBlocksRuntime" >&5
++printf %s "checking for _Block_copy in -lBlocksRuntime... " >&6; }
++if test ${ac_cv_lib_BlocksRuntime__Block_copy+y}
++then :
++  printf %s "(cached) " >&6
++else $as_nop
++  ac_check_lib_save_LIBS=$LIBS
++LIBS="-lBlocksRuntime  $LIBS"
++cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++/* end confdefs.h.  */
++
++/* Override any GCC internal prototype to avoid an error.
++   Use char because int might match the return type of a GCC
++   builtin and then its argument prototype would still apply.  */
++char _Block_copy ();
++int
++main (void)
++{
++return _Block_copy ();
++  ;
++  return 0;
++}
++_ACEOF
++if ac_fn_c_try_link "$LINENO"
++then :
++  ac_cv_lib_BlocksRuntime__Block_copy=yes
++else $as_nop
++  ac_cv_lib_BlocksRuntime__Block_copy=no
++fi
++rm -f core conftest.err conftest.$ac_objext conftest.beam \
++    conftest$ac_exeext conftest.$ac_ext
++LIBS=$ac_check_lib_save_LIBS
++fi
++{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_BlocksRuntime__Block_copy" >&5
++printf "%s\n" "$ac_cv_lib_BlocksRuntime__Block_copy" >&6; }
++if test "x$ac_cv_lib_BlocksRuntime__Block_copy" = xyes
++then :
++  printf "%s\n" "#define HAVE_LIBBLOCKSRUNTIME 1" >>confdefs.h
++
++  LIBS="-lBlocksRuntime $LIBS"
++
++fi
++
++        if test "$ac_cv_lib_BlocksRuntime__Block_copy" = yes; then
++          BLOCKS_LIBS="-lBlocksRuntime"
++        else
++          as_fn_error $? "Your compiler supports blocks, but the symbols required for blocks support are found neither in libobjc nor in libBlocksRuntime. To fix this, recompile libobjc2 with an embedded blocks runtime, or install libBlocksRuntime/libdispatch with private headers." "$LINENO" 5
++        fi
++      fi
++    else
++      as_fn_error $? "Your compiler doesn't appear to support blocks. To fix this use the CC environment varibale to specify a different compiler (or use a different library-combo)" "$LINENO" 5;
++    fi
++    ac_ext=c
++ac_cpp='$CPP $CPPFLAGS'
++ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
++ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
++ac_compiler_gnu=$ac_cv_c_compiler_gnu
++
++  fi
++
++
+ #--------------------------------------------------------------------
+ # Check if libobjc was compiled with thread support.
+ #--------------------------------------------------------------------
+--- a/configure.ac
++++ b/configure.ac
+@@ -228,25 +228,7 @@ if test "x$target" != "x$host"; then
+   AC_CHECK_PROG(DLLTOOL, "${targetArgument}-dlltool", dnl
+                          "${targetArgument}-dlltool", dlltool)
+ else
+-  if test "$OBJC_RUNTIME_LIB" = ng; then
+-    #
+-    # Detect compiler support for Blocks; perhaps someday -fblocks won't be
+-    # required, in which case we'll need to change this.
+-    #
+-    saveCFLAGS="$CFLAGS"
+-    CFLAGS="$CFLAGS -fblocks"
+-    AC_LANG_PUSH(C)
+-    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([],[(void)^{int i; i = 0; }();])], [
+-      ac_cv_blocks="yes"
+-    ], [
+-      ac_cv_blocks="no"
+-    ])
+-    CFLAGS="$saveCFLAGS"
+-    AC_LANG_POP(C)
+-    if test "$ac_cv_blocks" = no; then
+-      AC_MSG_ERROR([Your compiler doesn't appear to support blocks. To fix this use the CC environment varibale to specify a different compiler (or use a different library-combo)]);
+-    fi
+-  fi
++
+   AC_CHECK_PROG(AR,      ar,      ar)
+   AC_CHECK_PROG(DLLTOOL, dlltool, dlltool)
+   AC_PROG_RANLIB
+@@ -1147,7 +1129,7 @@ fi
+ 
+ 
+ GS_CHECK_OBJC_RUNTIME()
+-
++GS_BLOCKS_SUPPORT()
+ #--------------------------------------------------------------------
+ # Check if libobjc was compiled with thread support.
+ #--------------------------------------------------------------------
+--- a/library-combo.make
++++ b/library-combo.make
+@@ -42,7 +42,7 @@ endif
+ ifeq ($(OBJC_RUNTIME_LIB), ng)
+   OBJC_LDFLAGS =
+   OBJC_LIB_DIR =
+-  OBJC_LIBS = $(OBJC_LIB_FLAG)
++  OBJC_LIBS = $(OBJC_LIB_FLAG) $(BLOCKS_LIB_FLAG)
+   ifeq ($(RUNTIME_VERSION),)
+     ifneq ($(DEFAULT_OBJC_RUNTIME_ABI),)
+       RUNTIME_VERSION=$(DEFAULT_OBJC_RUNTIME_ABI)
+--- /dev/null
++++ b/m4/gs_blocks_support.m4
+@@ -0,0 +1,50 @@
++# SYNOPSIS
++#
++#   GS_BLOCKS_SUPPORT()
++#
++# DESCRIPTION
++#
++# This macro determines whether and how blocks are used
++#
++AC_DEFUN([GS_BLOCKS_SUPPORT],dnl
++  [
++    AC_REQUIRE([GS_LIBRARY_COMBO])
++    AC_REQUIRE([GS_CHECK_OBJC_RUNTIME])
++    BLOCKS_LIBS=""
++    if test "$OBJC_RUNTIME_LIB" = ng; then
++    #
++    # Detect compiler support for Blocks; perhaps someday -fblocks won't be
++    # required, in which case we'll need to change this.
++    #
++    saveCFLAGS="$CFLAGS"
++    CFLAGS="$CFLAGS -fblocks"
++
++    AC_LANG_PUSH(C)
++    AC_MSG_CHECKING([for blocks support in compiler])
++    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([],[(void)^{int i; i = 0; }();])], [
++      ac_cv_blocks="yes"
++    ], [
++      ac_cv_blocks="no"
++    ])
++    AC_MSG_RESULT([$ac_cv_blocks])
++    CFLAGS="$saveCFLAGS"
++    if test "$ac_cv_blocks" = yes; then
++      saveLIBS="$LIBS"
++      LIBS="$LIBS $OBJC_FINAL_LIB_FLAG"
++      AC_CHECK_FUNC([_Block_copy])
++      LIBS="$saveLIBS"
++      if test "$ac_cv_func__Block_copy" = no; then
++        AC_CHECK_LIB([BlocksRuntime], [_Block_copy])
++        if test "$ac_cv_lib_BlocksRuntime__Block_copy" = yes; then
++          BLOCKS_LIBS="-lBlocksRuntime"
++        else
++          AC_MSG_ERROR([Your compiler supports blocks, but the symbols required for blocks support are found neither in libobjc nor in libBlocksRuntime. To fix this, recompile libobjc2 with an embedded blocks runtime, or install libBlocksRuntime/libdispatch with private headers.])
++        fi
++      fi
++    else
++      AC_MSG_ERROR([Your compiler doesn't appear to support blocks. To fix this use the CC environment varibale to specify a different compiler (or use a different library-combo)]);
++    fi
++    AC_LANG_POP(C)
++  fi
++  AC_SUBST(BLOCKS_LIBS)
++])
+--- a/m4/gs_objc_runtime.m4
++++ b/m4/gs_objc_runtime.m4
+@@ -164,7 +164,7 @@ AC_DEFUN([GS_OBJC_LIB_FLAG], [
+ # Configure the installed Objective-C runtime, if it is installed. This sets up CFLAGS/LDFLAGS/LD_LIBRARY_PATH 
+ # as required. Additionally, following variables are set after execution of this macro:
+ # * OBJC_CPPFLAGS
+-# * OBCJ_LDFLAGS
++# * OBJC_LDFLAGS
+ # * OBJC_FINAL_LIB_FLAG
+ # * OBJCRT
+ #
+@@ -185,7 +185,7 @@ AC_DEFUN([GS_CHECK_OBJC_RUNTIME], [
+     dnl pkg-config makes it easy for us to configure the flags
+     if test ! x"$libobjc_LIBS" = x""; then
+         OBJC_CPPFLAGS=$libobjc_CFLAGS
+-        OBCJ_LDFLAGS=""
++        OBJC_LDFLAGS=""
+         OBJC_FINAL_LIB_FLAG=$libobjc_LIBS
+     dnl we need to invest more smarts if
+     elif test ! x"$gs_cv_libobjc_domain" = x""; then
+@@ -279,4 +279,4 @@ AC_DEFUN([GS_CHECK_RUNTIME_ABI20_SUPPORT], [
+             fi
+     ])
+     AS_VAR_SET([libobjc_SUPPORTS_ABI20], [${gs_cv_libobjc_abi_20}])
+-])
+\ No newline at end of file
++])

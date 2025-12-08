@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,7 +26,7 @@ RDEPEND="
 	media-libs/libpng
 	media-libs/freetype:2
 	net-misc/curl
-	sys-libs/zlib:=
+	virtual/zlib:=
 	X? (
 		${COMMON_UIDEPEND}
 		media-libs/libglvnd[X]
@@ -48,6 +48,10 @@ BDEPEND="app-arch/unzip"
 
 CHECKREQS_DISK_BUILD="1500M"
 CHECKREQS_DISK_USR="1200M"
+
+PATCHES=(
+	"${FILESDIR}/${P}-fix-c23.patch"
+)
 
 src_prepare() {
 	default

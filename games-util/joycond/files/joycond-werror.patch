@@ -1,0 +1,23 @@
+From 5c58b2b44982e6e4958444888bc5e5f8d1634887 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Fri, 17 Oct 2025 22:32:15 +0100
+Subject: [PATCH] cmake: Only apply -Werror to debug builds
+
+It is really unhelpful for end users and distributions who might not be
+using the same toolchain version as you.
+
+Signed-off-by: James Le Cuirot <chewi@gentoo.org>
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -11,7 +11,7 @@ pkg_check_modules(LIBEVDEV REQUIRED libevdev)
+ pkg_check_modules(LIBUDEV REQUIRED libudev)
+ 
+ add_executable(joycond "")
+-target_compile_options(joycond PRIVATE -Wall -Werror)
++target_compile_options(joycond PRIVATE -Wall $<$<CONFIG:Debug>:-Werror>)
+ include_directories(
+     include/
+     ${LIBEVDEV_INCLUDE_DIRS}
+-- 
+2.51.0
+

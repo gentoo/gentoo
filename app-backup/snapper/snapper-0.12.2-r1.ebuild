@@ -11,7 +11,7 @@ SRC_URI="https://github.com/openSUSE/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~riscv x86"
 IUSE="lvm pam test systemd xattr"
 RESTRICT="test"
 
@@ -28,7 +28,7 @@ RDEPEND="dev-libs/boost:=
 	sys-apps/dbus
 	sys-apps/util-linux
 	>=sys-fs/btrfs-progs-3.17.1
-	sys-libs/zlib
+	virtual/zlib:=
 	virtual/libintl
 	lvm? ( sys-fs/lvm2 )
 	pam? ( sys-libs/pam )

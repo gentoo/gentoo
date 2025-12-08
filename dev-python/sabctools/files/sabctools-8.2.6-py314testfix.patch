@@ -1,0 +1,46 @@
+diff --git a/tests/test_decoder.py b/tests/test_decoder.py
+index 9503923..d45e607 100644
+--- a/tests/test_decoder.py
++++ b/tests/test_decoder.py
+@@ -76,29 +76,32 @@ def test_empty():
+ 
+ def test_ref_counts():
+     """Note that sys.getrefcount itself adds another reference!"""
++    # In Python 3.14+, getrefcount returns 1, in earlier versions it returns 2
++    expected_refcount = 1 if sys.version_info >= (3, 14) else 2
++    
+     # Test regular case
+     data_plain = read_plain_yenc_file("test_regular.yenc")
+     data_out, filename, filesize, begin, end, crc_correct = sabctools_yenc_wrapper(data_plain)
+ 
+-    assert sys.getrefcount(data_plain) == 2
+-    assert sys.getrefcount(data_out) == 2
+-    assert sys.getrefcount(filename) == 2
+-    assert sys.getrefcount(begin) == 2
+-    assert sys.getrefcount(end) == 2
+-    assert sys.getrefcount(crc_correct) == 2
++    assert sys.getrefcount(data_plain) == expected_refcount
++    assert sys.getrefcount(data_out) == expected_refcount
++    assert sys.getrefcount(filename) == expected_refcount
++    assert sys.getrefcount(begin) == expected_refcount
++    assert sys.getrefcount(end) == expected_refcount
++    assert sys.getrefcount(crc_correct) == expected_refcount
+ 
+     # Test simple error case
+     fake_inp = memoryview(bytearray(b"1234"))
+-    assert sys.getrefcount(fake_inp) == 2
++    assert sys.getrefcount(fake_inp) == expected_refcount
+     with pytest.raises(ValueError):
+         sabctools.yenc_decode(fake_inp)
+-    assert sys.getrefcount(fake_inp) == 2
++    assert sys.getrefcount(fake_inp) == expected_refcount
+ 
+     # Test further processing
+     data_plain = read_plain_yenc_file("test_bad_crc_end.yenc")
+     with pytest.raises(ValueError):
+         sabctools_yenc_wrapper(data_plain)
+-    assert sys.getrefcount(data_plain) == 2
++    assert sys.getrefcount(data_plain) == expected_refcount
+ 
+ 
+ def test_crc_pickles():

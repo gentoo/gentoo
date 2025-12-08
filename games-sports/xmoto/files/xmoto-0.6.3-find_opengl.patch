@@ -1,0 +1,13 @@
+avoid find_package(OpenGL) that requires GLX
+check glu because that's what xmoto uses
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -39,7 +39,7 @@ find_package(LibLZMA)
+ find_package(LibXml2 REQUIRED)
+ 
+ if(USE_OPENGL)
+-  find_package(OpenGL REQUIRED)
++  pkg_check_modules(OPENGL glu REQUIRED)
+ endif()
+ 
+ if(APPLE)

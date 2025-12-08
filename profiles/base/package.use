@@ -1,6 +1,16 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2025-10-25)
+# Use FlexiBLAS by default.  Default-enable OpenBLAS backend for better
+# performance.
+sci-libs/flexiblas openblas system-blas
+sci-libs/lapack flexiblas deprecated lapacke
+virtual/blas flexiblas
+virtual/cblas flexiblas
+virtual/lapack flexiblas
+virtual/lapacke flexiblas
+
 # Mike Gilbert <floppym@gentoo.org> (2025-01-12)
 # Requires >= lua-5.3.
 >=dev-lua/lutok-0.6 lua_single_target_lua5-4
@@ -12,6 +22,8 @@ dev-python/python-tests:3.11 python_targets_python3_11
 dev-python/python-tests:3.12 python_targets_python3_12
 dev-python/python-tests:3.13 python_targets_python3_13
 dev-python/python-tests:3.13t python_targets_python3_13t
+dev-python/python-tests:3.14 python_targets_python3_14
+dev-python/python-tests:3.14t python_targets_python3_14t
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-03-23)
 # Used by pkgcheck, so let's make it easier for all developers to install it
@@ -59,6 +71,8 @@ media-video/wireplumber lua_single_target_lua5-4
 dev-ml/llvm llvm_targets_BPF
 llvm-core/clang llvm_targets_BPF
 llvm-core/llvm llvm_targets_BPF
+llvm-core/lld llvm_targets_BPF
+llvm-core/flang llvm_targets_BPF
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2012-07-27)
 # Modular X: Build the Xorg X server by default

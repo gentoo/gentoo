@@ -1,0 +1,16 @@
+--- a/SConstruct
++++ b/SConstruct
+@@ -304,2 +304,3 @@
+ opts.Add("CC", "C compiler binary")
++opts.Add("AR", "Archiver")
+ opts.Add("LINK", "Linker binary")
+@@ -745,3 +746,3 @@
+         # `-msse2` is implied when compiling for x86_64.
+-        env.Append(CCFLAGS=["-msse4.2", "-mpopcnt"])
++        pass
+ elif env["arch"] == "x86_32":
+@@ -817,3 +818,3 @@
+         else:
+-            env.AppendUnique(LINKFLAGS=["-s"])
++            pass
+ 

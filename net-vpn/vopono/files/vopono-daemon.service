@@ -1,0 +1,13 @@
+[Unit]
+Description=Vopono root daemon
+After=network.target
+Requires=network.target
+[Service]
+Type=simple
+ExecStart=/usr/bin/vopono daemon
+Restart=on-failure
+RestartSec=2s
+# Optional: enable structured logs
+Environment=RUST_LOG=info
+[Install]
+WantedBy=multi-user.target

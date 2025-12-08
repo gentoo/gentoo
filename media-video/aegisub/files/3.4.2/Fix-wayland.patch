@@ -1,0 +1,34 @@
+From 17ea2947a24ed87df5a6842deb561b01c9643601 Mon Sep 17 00:00:00 2001
+From: EL_File4138 <elfile4138@elfile4138.moe>
+Date: Mon, 12 May 2025 00:48:35 +0200
+Subject: [PATCH] fix: Fallback to X11 if lacks EGL support
+
+This should fix #233. It's recurring and is hard to fix in the downstream package.
+Fixing is trivial.
+---
+ src/main.cpp | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/src/main.cpp b/src/main.cpp
+index 65dbb4529c..c5d7e50ab1 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -95,6 +95,18 @@ void AegisubApp::OnAssertFailure(const wxChar *file, int line, const wxChar *fun
+ AegisubApp::AegisubApp() {
+ 	// http://trac.wxwidgets.org/ticket/14302
+ 	wxSetEnv("UBUNTU_MENUPROXY", "0");
++
++	// Fallback to X11 if wxGTK implementation is build without Wayland EGL support
++	// Fix https://github.com/TypesettingTools/Aegisub/issues/233
++	#if defined(__WXGTK__) && !wxUSE_GLCANVAS_EGL
++		wxString xdg_session_type = wxGetenv("XDG_SESSION_TYPE");
++		wxString wayland_display  = wxGetenv("WAYLAND_DISPLAY");
++
++		if (xdg_session_type == "wayland" || wayland_display.Contains("wayland")) {
++			wxSetEnv("GDK_BACKEND", "x11");
++		}
++	#endif
++
+ }
+ 
+ namespace {

@@ -7,7 +7,7 @@ EAPI=8
 
 VIM_VERSION="9.1"
 VIM_PATCHES_VERSION="9.0.2092"
-inherit bash-completion-r1 desktop flag-o-matic prefix toolchain-funcs vim-doc xdg-utils
+inherit desktop flag-o-matic prefix toolchain-funcs vim-doc xdg-utils
 
 if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3
@@ -27,6 +27,7 @@ LICENSE="vim"
 SLOT="0"
 IUSE="nls acl minimal"
 
+RDEPEND="dev-util/xxd"
 # ncurses is only needed by ./configure, so no subslot operator required
 DEPEND=">=sys-libs/ncurses-5.2-r2:0"
 BDEPEND="dev-build/autoconf"
@@ -37,6 +38,9 @@ if [[ ${PV} != 9999* ]]; then
 		"${WORKDIR}/vim-patches-vim-${VIM_PATCHES_VERSION}-patches"
 	)
 fi
+
+# unbundle xxd
+PATCHES+=( "${FILESDIR}/vim-core-9.1.1652-r1-unbundle-xxd.patch" )
 
 # platform-specific checks (bug #898406):
 # - acl()     -- Solaris
@@ -159,7 +163,6 @@ src_configure() {
 
 src_compile() {
 	emake -j1 -C src auto/osdef.h objects
-	emake tools
 }
 
 src_test() { :; }
@@ -186,7 +189,7 @@ src_install() {
 	# default vimrc is installed by vim-core since it applies to
 	# both vim and gvim
 	insinto /etc/vim/
-	newins "${FILESDIR}"/vimrc-r7 vimrc
+	newins "${FILESDIR}"/vimrc-r8 vimrc
 	eprefixify "${ED}"/etc/vim/vimrc
 
 	if use minimal; then
@@ -208,8 +211,6 @@ src_install() {
 			fi
 		done | xargs -0 rm -f || die
 	fi
-
-	newbashcomp "${FILESDIR}"/xxd-completion xxd
 
 	# install gvim icon since both vim/gvim desktop files reference it
 	doicon -s scalable "${FILESDIR}"/gvim.svg

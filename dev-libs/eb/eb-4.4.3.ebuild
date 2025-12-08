@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,11 +11,11 @@ SRC_URI="ftp://ftp.sra.co.jp/pub/misc/eb/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ppc ppc64 ~riscv ~sparc x86"
 IUSE="nls threads"
 
 RDEPEND="
-	sys-libs/zlib
+	virtual/zlib:=
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}"
 BDEPEND="nls? ( sys-devel/gettext )"

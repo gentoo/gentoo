@@ -14,7 +14,7 @@ S="${WORKDIR}/w3m-${COMMIT}"
 
 LICENSE="w3m"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="fbcon gdk-pixbuf gpm imlib l10n_ja lynxkeymap nls nntp ssl unicode X xface"
 
 REQUIRED_USE="
@@ -25,7 +25,7 @@ REQUIRED_USE="
 RDEPEND="
 	dev-libs/boehm-gc:=
 	sys-libs/ncurses:0=
-	sys-libs/zlib
+	virtual/zlib:=
 	gdk-pixbuf? (
 		x11-libs/gdk-pixbuf
 		X? ( x11-libs/gdk-pixbuf-xlib )

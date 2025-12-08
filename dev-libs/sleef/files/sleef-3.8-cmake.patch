@@ -1,0 +1,8 @@
+--- a/docs/src/CMakeLists.txt	2025-07-06 16:23:35.266745870 +0200
++++ b/docs/src/CMakeLists.txt	2025-07-06 16:23:49.417596815 +0200
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.4.3)
++cmake_minimum_required(VERSION 3.18)
+ project(MyProject)
+ include(ExternalProject)
+ find_package(Git REQUIRED)

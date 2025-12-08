@@ -144,7 +144,7 @@ RDEPEND="
 	dev-libs/libpcre2
 	virtual/libcrypt:=
 	apache2_modules_brotli? ( >=app-arch/brotli-0.6.0:= )
-	apache2_modules_deflate? ( sys-libs/zlib )
+	apache2_modules_deflate? ( virtual/zlib:= )
 	apache2_modules_http2? (
 		>=net-libs/nghttp2-${NGHTTP2_VERSION}:=
 		kernel_linux? ( sys-apps/util-linux )
@@ -152,6 +152,7 @@ RDEPEND="
 	apache2_modules_lua? ( ${LUA_DEPS} )
 	apache2_modules_md? ( >=dev-libs/jansson-2.10:= )
 	apache2_modules_mime? ( app-misc/mime-types )
+	apache2_modules_proxy_html? ( dev-libs/libxml2:= )
 	apache2_modules_proxy_http2? (
 		>=net-libs/nghttp2-${NGHTTP2_VERSION}:=
 		kernel_linux? ( sys-apps/util-linux )
@@ -159,6 +160,7 @@ RDEPEND="
 	apache2_modules_session_crypto? (
 		dev-libs/apr-util[openssl]
 	)
+	apache2_modules_xml2enc? ( dev-libs/libxml2:= )
 	gdbm? ( sys-libs/gdbm:= )
 	ldap? ( net-nds/openldap:= )
 	selinux? ( sec-policy/selinux-apache )
@@ -451,7 +453,7 @@ apache-2_src_prepare() {
 	# idea for everyone
 	case ${CHOST} in
 		*-linux-gnu|*-solaris*)
-			# do nothing, these use GNU binutils
+			# do nothing, these use GNU Binutils
 			:
 		;;
 		*-darwin*)

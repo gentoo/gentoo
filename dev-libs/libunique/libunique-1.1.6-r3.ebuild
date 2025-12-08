@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Attic/LibUnique"
 
 LICENSE="LGPL-2.1"
 SLOT="1"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="debug dbus +introspection"
 
 RDEPEND="
@@ -24,7 +24,7 @@ RDEPEND="
 		>=dev-libs/dbus-glib-0.70
 		sys-apps/dbus[X]
 	)
-	introspection? ( >=dev-libs/gobject-introspection-0.6.3:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}
 	dev-util/glib-utils

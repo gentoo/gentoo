@@ -12,8 +12,9 @@ SRC_URI="https://github.com/janestreet/${PN}/archive/refs/tags/v${PV}.tar.gz
 
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv"
 IUSE="+ocamlopt"
+RESTRICT="test"
 
 # Jane Street Minor
 JSM=$(ver_cut 1-2)*

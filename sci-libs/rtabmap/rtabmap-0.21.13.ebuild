@@ -29,7 +29,7 @@ RDEPEND="
 	sci-libs/octomap:=
 	sci-libs/pcl:=[openni,vtk,qt6(-)?]
 	sci-libs/vtk:=[qt6(-)?]
-	sys-libs/zlib
+	virtual/zlib:=
 	ieee1394? ( media-libs/libdc1394:2= )
 	openni2? ( dev-libs/OpenNI2 )
 	qt6? (

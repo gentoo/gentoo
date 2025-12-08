@@ -48,7 +48,7 @@ else
 				-> mgba-${MGBA_COMMIT}.tar.gz
 		)
 	"
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="amd64 ~arm64"
 fi
 
 DESCRIPTION="Gamecube and Wii game emulator"
@@ -157,6 +157,8 @@ declare -A KEEP_BUNDLED=(
 
 PATCHES=(
 	"${FILESDIR}"/dolphin-2407-minizip.patch
+	# https://github.com/dolphin-emu/dolphin/pull/13727
+	"${FILESDIR}/${P}-fmt-12.patch"
 )
 
 add_bundled_licenses() {

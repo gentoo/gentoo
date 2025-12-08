@@ -11,7 +11,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gcr"
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="4/gcr-4.4-gck-2.2" # subslot = soname and soversion of libgcr and libgck
 
-KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 
 IUSE="gtk gtk-doc +introspection systemd test +vala"
 REQUIRED_USE="
@@ -28,7 +28,7 @@ DEPEND="
 	systemd? ( sys-apps/systemd:= )
 	gtk? ( gui-libs/gtk:4[introspection?] )
 	>=sys-apps/dbus-1
-	introspection? ( >=dev-libs/gobject-introspection-1.58:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 RDEPEND="${DEPEND}"
 PDEPEND="app-crypt/gnupg"

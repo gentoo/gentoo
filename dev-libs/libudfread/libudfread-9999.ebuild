@@ -1,37 +1,25 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit autotools multilib-minimal
+inherit meson-multilib
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://code.videolan.org/videolan/${PN}.git"
 	inherit git-r3
 else
 	SRC_URI="https://code.videolan.org/videolan/libudfread/-/archive/${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 DESCRIPTION="Library for reading UDF from raw devices and image files"
 HOMEPAGE="https://code.videolan.org/videolan/libudfread/"
 
 LICENSE="LGPL-2.1+"
-SLOT="0"
-IUSE="static-libs"
+SLOT="0/3"
 
-src_prepare() {
-	default
-	eautoreconf
-}
-
-multilib_src_configure() {
-	ECONF_SOURCE="${S}" econf
-}
-
-multilib_src_install_all() {
-	find "${D}" -name '*.la' -delete || die
-	if ! use static-libs ; then
-		find "${D}" -name '*.a' -delete || die
-	fi
+multilib_src_install() {
+	meson_src_install
+	find "${D}" -name '*.la' -delete -o -name '*.a' -delete || die
 }

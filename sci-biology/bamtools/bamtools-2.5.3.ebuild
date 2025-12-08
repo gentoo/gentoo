@@ -21,7 +21,7 @@ SLOT="0/${PV}" # no stable ABI yet
 
 RDEPEND="
 	>=dev-libs/jsoncpp-1.8.0:=
-	sys-libs/zlib:="
+	virtual/zlib:="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 

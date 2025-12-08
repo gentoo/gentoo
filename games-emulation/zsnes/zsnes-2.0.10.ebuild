@@ -1,4 +1,4 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,14 +18,14 @@ RDEPEND="
 	media-libs/libglvnd[X,abi_x86_32(-)]
 	media-libs/libpng:=[abi_x86_32(-)]
 	media-libs/libsdl[abi_x86_32(-),joystick,opengl,sound,video]
-	sys-libs/zlib:=[abi_x86_32(-)]
+	virtual/zlib:=[abi_x86_32(-)]
 	x11-libs/libX11[abi_x86_32(-)]"
 DEPEND="
 	${RDEPEND}
 	x11-base/xorg-proto"
 BDEPEND="
 	dev-lang/nasm
-	sys-libs/zlib
+	virtual/zlib:=
 	virtual/pkgconfig"
 
 PATCHES=(

@@ -16,8 +16,6 @@ QEMU_DOC_USEFLAG="+doc"
 PYTHON_COMPAT=( python3_{11..13} )
 PYTHON_REQ_USE="ensurepip(-),ncurses,readline"
 
-FIRMWARE_ABI_VERSION="7.2.0"
-
 inherit eapi9-ver flag-o-matic linux-info toolchain-funcs python-r1 udev fcaps \
 		readme.gentoo-r1 pax-utils xdg-utils
 
@@ -27,7 +25,6 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://gitlab.com/qemu-project/qemu.git/"
 	EGIT_SUBMODULES=()
 	inherit git-r3
-	SRC_URI=""
 	declare -A SUBPROJECTS=(
 		[keycodemapdb]="f5772a62ec52591ff6870b7e8ef32482371f22c6"
 		[berkeley-softfloat-3]="b64af41c3276f97f0e181920400ee056b9c88037"
@@ -62,11 +59,11 @@ IUSE="accessibility +aio alsa bpf bzip2 capstone +curl debug ${QEMU_DOC_USEFLAG}
 	+fdt fuse glusterfs +gnutls gtk infiniband iscsi io-uring
 	jack jemalloc +jpeg keyutils
 	lzo multipath
-	ncurses nfs nls numa opengl +oss pam +pin-upstream-blobs pipewire
+	ncurses nfs nls numa opengl +oss pam passt +pin-upstream-blobs pipewire
 	plugins +png pulseaudio python rbd sasl +seccomp sdl sdl-image selinux
 	+slirp
 	smartcard snappy spice ssh static-user systemtap test udev usb
-	usbredir vde +vhost-net virgl virtfs +vnc vte wayland X xattr xdp xen
+	usbredir valgrind vde +vhost-net virgl virtfs +vnc vte wayland X xattr xdp xen
 	zstd"
 
 COMMON_TARGETS="
@@ -156,7 +153,7 @@ done
 # when available rather than always using the external library.
 ALL_DEPEND="
 	dev-libs/glib:2[static-libs(+)]
-	sys-libs/zlib[static-libs(+)]
+	virtual/zlib:=[static-libs(+)]
 	python? ( ${PYTHON_DEPS} )
 	systemtap? ( dev-debug/systemtap )
 	xattr? ( sys-apps/attr[static-libs(+)] )
@@ -172,7 +169,7 @@ SOFTMMU_TOOLS_DEPEND="
 	)
 	aio? ( dev-libs/libaio[static-libs(+)] )
 	alsa? ( >=media-libs/alsa-lib-1.0.13 )
-	bpf? ( dev-libs/libbpf:= )
+	bpf? ( >=dev-libs/libbpf-1.1.0:= )
 	bzip2? ( app-arch/bzip2[static-libs(+)] )
 	capstone? ( dev-libs/capstone:=[static-libs(+)] )
 	curl? ( >=net-misc/curl-7.15.4[static-libs(+)] )
@@ -210,6 +207,7 @@ SOFTMMU_TOOLS_DEPEND="
 		media-libs/mesa[egl(+),gbm(+)]
 	)
 	pam? ( sys-libs/pam )
+	passt? ( net-misc/passt )
 	pipewire? ( >=media-video/pipewire-0.3.60 )
 	png? ( >=media-libs/libpng-1.6.34:=[static-libs(+)] )
 	pulseaudio? ( media-libs/libpulse )
@@ -240,7 +238,23 @@ SOFTMMU_TOOLS_DEPEND="
 	zstd? ( >=app-arch/zstd-1.4.0[static-libs(+)] )
 "
 
-EDK2_OVMF_VERSION="202202"
+#
+# With USE=+pin-upstream-blobs we pin firmware versions to known good
+# version in order to  minimize the frequency of disruptive changes. This
+# avoids unnecessary frustration on user side because changing the firmware
+# version can break resume of hibernated guest, inhibit live migrations,
+# and might have other unwanted consequences. For now, let us try to
+# synchronize firmware blobs with the ones bundled in upstream qemu. Simply
+# check the upstream git repository for any changes, for example:
+#   https://github.com/qemu/qemu/tree/v10.0.2/roms for the 10.0.2 release.
+#
+# When changing pinned firmware versions
+#  - create a separate ebuild with revision -r50
+#  - update the FIRMWARE_ABI_VERSION to the current package version
+#
+
+FIRMWARE_ABI_VERSION="10.0.2"
+EDK2_OVMF_VERSION="202408"
 SEABIOS_VERSION="1.16.3"
 
 X86_FIRMWARE_DEPEND="
@@ -277,7 +291,8 @@ PPC_FIRMWARE_DEPEND="
 
 # See bug #913084 for pip dep
 BDEPEND="
-	$(python_gen_impl_dep)
+	${PYTHON_DEPS}
+	dev-python/distlib[${PYTHON_USEDEP}]
 	dev-lang/perl
 	>=dev-build/meson-0.63.0
 	app-alternatives/ninja
@@ -305,6 +320,7 @@ DEPEND="
 	${CDEPEND}
 	kernel_linux? ( >=sys-kernel/linux-headers-2.6.35 )
 	static-user? ( ${ALL_DEPEND} )
+	valgrind? ( dev-debug/valgrind )
 "
 RDEPEND="
 	${CDEPEND}
@@ -556,6 +572,7 @@ qemu_src_configure() {
 		$(use_enable pulseaudio pa)
 		$(use_enable selinux)
 		$(use_enable xattr attr)
+		$(use_enable valgrind)
 	)
 
 	# Disable options not used by user targets. This simplifies building
@@ -618,6 +635,8 @@ qemu_src_configure() {
 		$(conf_notuser numa)
 		$(conf_notuser opengl)
 		$(conf_notuser pam auth-pam)
+		$(conf_notuser passt)
+		$(conf_notuser passt gio)
 		$(conf_notuser png)
 		$(conf_notuser rbd)
 		$(conf_notuser sasl vnc-sasl)
@@ -880,6 +899,9 @@ src_install() {
 	pax-mark mr "${softmmu_bins[@]}" "${user_bins[@]}" # bug 575594
 	popd >/dev/null || die
 
+	# suid in src_install to allow FEATURES=suidctl to work properly
+	fperms u+s /usr/libexec/qemu-bridge-helper
+
 	# Install config file example for qemu-bridge-helper
 	insinto "/etc/qemu"
 	doins "${FILESDIR}/bridge.conf"
@@ -943,7 +965,7 @@ pkg_postinst() {
 	xdg_icon_cache_update
 
 	[[ -z ${EPREFIX} ]] && [[ -f ${EROOT}/usr/libexec/qemu-bridge-helper ]] && \
-		fcaps cap_net_admin "${EROOT}"/usr/libexec/qemu-bridge-helper
+		fcaps -M u-s cap_net_admin "${EROOT}"/usr/libexec/qemu-bridge-helper
 
 	DISABLE_AUTOFORMATTING=true
 	readme.gentoo_print_elog
@@ -968,8 +990,7 @@ pkg_postinst() {
 		ewarn "This might break resume of hibernated guests (started with a different"
 		ewarn "firmware version) and live migration to/from qemu versions with different"
 		ewarn "firmware. Please (cold) restart all running guests. For functional"
-		ewarn "guest migration ensure that all"
-		ewarn "hosts run at least"
+		ewarn "guest migration ensure that all hosts run at least"
 		ewarn "	app-emulation/qemu-${FIRMWARE_ABI_VERSION}."
 	fi
 }

@@ -18,14 +18,14 @@ S="${WORKDIR}/MediaInfo"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv x86"
 IUSE="curl mms wxwidgets"
 
 # The libzen dep usually needs to be bumped for each release!
 RDEPEND="
 	~media-libs/libmediainfo-${PV}[curl=,mms=]
 	>=media-libs/libzen-0.4.41
-	sys-libs/zlib
+	virtual/zlib:=
 	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}=[X] )
 "
 DEPEND="${RDEPEND}"

@@ -34,7 +34,7 @@ PATCHES=(
 
 RDEPEND="
 	dev-libs/rocm-device-libs:${SLOT}
-	llvm-core/clang-runtime:=
+	llvm-runtimes/clang-runtime:=
 	$(llvm_gen_dep '
 		llvm-core/clang:${LLVM_SLOT}=
 		llvm-core/lld:${LLVM_SLOT}=

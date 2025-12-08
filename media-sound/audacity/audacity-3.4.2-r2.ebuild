@@ -5,7 +5,7 @@ EAPI=8
 
 WX_GTK_VER="3.2-gtk3"
 
-inherit cmake wxwidgets xdg virtualx
+inherit cmake flag-o-matic wxwidgets xdg virtualx
 
 DESCRIPTION="Free crossplatform audio editor"
 HOMEPAGE="https://www.audacityteam.org/"
@@ -79,7 +79,7 @@ RDEPEND="dev-db/sqlite:3
 	media-libs/soxr
 	media-sound/lame
 	sys-apps/util-linux
-	sys-libs/zlib:=
+	virtual/zlib:=
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
 	x11-libs/wxGTK:${WX_GTK_VER}=[X]
@@ -160,6 +160,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# Reportedly also -Werror=odr but I could not get that far.
+	# https://bugs.gentoo.org/915226
+	# https://github.com/audacity/audacity/issues/6096
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	setup-wxwidgets
 
 	# * always use system libraries if possible

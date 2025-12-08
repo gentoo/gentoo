@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/965077
+https://code.videolan.org/videolan/x264/-/commit/32c3b8011
+--- a/input/lavf.c
++++ b/input/lavf.c
+@@ -34,4 +34,5 @@
+ #include <libavutil/mem.h>
+ #include <libavutil/pixdesc.h>
++#include <libavutil/version.h>
+ 
+ #define FAIL_IF_ERROR( cond, ... ) FAIL_IF_ERR( cond, "lavf", __VA_ARGS__ )
+@@ -142,6 +143,11 @@
+     {
+         info->fullrange  = is_fullrange;
++#if LIBAVUTIL_VERSION_MAJOR < 60
+         info->interlaced = h->frame->interlaced_frame;
+         info->tff        = h->frame->top_field_first;
++#else
++        info->interlaced = !!(h->frame->flags & AV_FRAME_FLAG_INTERLACED);
++        info->tff        = !!(h->frame->flags & AV_FRAME_FLAG_TOP_FIELD_FIRST);
++#endif
+     }
+ 

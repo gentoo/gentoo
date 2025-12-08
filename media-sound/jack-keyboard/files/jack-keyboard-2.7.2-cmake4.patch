@@ -1,0 +1,20 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -25,7 +25,7 @@
+ #
+ # Makefile for Jack Keyboard
+ #
+-cmake_minimum_required(VERSION 2.8)
++cmake_minimum_required(VERSION 3.10)
+ 
+ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/")
+ set(VERSION "2.7.2")
+@@ -36,7 +36,7 @@
+ 
+ project(jack-keyboard)
+ 
+-add_executable(jack-keyboard src/jack-keyboard src/pianokeyboard)
++add_executable(jack-keyboard src/jack-keyboard.c src/pianokeyboard.c)
+ 
+ find_package(GTK2 2.2 REQUIRED gtk)
+ include_directories(${GTK2_INCLUDE_DIRS})

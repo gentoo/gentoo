@@ -4,6 +4,10 @@
 # New entries go on top.
 # Please use the same syntax as in package.use.mask.
 
+# Alexey Shvetsov <alexxy@gentoo.org> (2025-10-29)
+# Need non-yet-stable caffe2
+sci-chemistry/gromacs nnpot
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-06)
 # USE=experimental is not stable by definition
 media-libs/zxing-cpp experimental
@@ -12,11 +16,6 @@ media-libs/zxing-cpp experimental
 # dev-python/mpi4py has no stable keywords.
 media-gfx/netgen mpi
 sci-libs/vtk mpi
-
-# Sam James <sam@gentoo.org> (2025-03-07)
-# Gradually unmask for newer Rust to avoid making users recompile for
-# the change. See bug #735154.
-<dev-lang/rust-1.86 system-llvm
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2025-02-03)
 # Requires dev-util/shelltestrunner
@@ -30,10 +29,6 @@ app-arch/mt-st test
 # Calendar is broken with some languages on 115.0 release with <icu-75.
 # Bug #910229, #920713
 >=mail-client/thunderbird-115.0 system-icu
-
-# Michał Górny <mgorny@gentoo.org> (2023-06-11)
-# xfce-base/libxfce4windowing is not ready to go stable (4.19 branch).
-xfce-extra/xfce4-pulseaudio-plugin libxfce4windowing
 
 # Daniel Pielmeier <billie@gentoo.org> (2023-03-04)
 # For docs, app-text/pandoc is required. For details see:
@@ -72,11 +67,6 @@ app-text/nuspell doc
 # test deps are not stable and tests do not work
 # due to network access issues #829430
 net-libs/grpc test
-
-# Sergey Popov <pinkbyte@gentoo.org> (2021-10-14)
-# net-libs/grpc is not yet stabilized,
-# so mask optional use flag on net-misc/frr
-net-misc/frr grpc
 
 # Joonas Niilola <juippis@gentoo.org> (2021-08-13)
 # dev-libs/efl is only stabilized on two arches.
@@ -135,20 +125,6 @@ app-emulation/winetricks test
 # for stable systems
 dev-lang/rust nightly
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-12-09)
-# Declared experimental, and dev-cpp/websocketpp not stable yet
-sci-libs/indilib websocket
-
-# Kent Fredric <kentnl@gentoo.org> (2019-07-30)
-# These features require dev-perl/GD, which currently can't be
-# considered stable due to serious defects upstream. Bug #661634
-app-misc/g15daemon perl
-dev-lang/php coverage
-dev-perl/Business-ISBN barcode
-dev-perl/Template-Toolkit gd
-media-fonts/unifont utils fontforge
-media-video/vdrsync dvdr
-
 # Mart Raudsepp <leio@gentoo.org> (2019-04-14)
 # Needs media-plugins/gst-plugins-chromaprint, which is not stable
 # anywhere yet.
@@ -177,10 +153,6 @@ app-backup/backup-manager s3
 # Requires unmaintained unstable dependency net-libs/gloox.
 # The go flag requires stable masked dev-lang/go[gccgo].
 www-servers/uwsgi go uwsgi_plugins_alarm_xmpp
-
-# Tim Harder <radhermit@gentoo.org> (2017-09-11)
-# Requires guile-2 which is still unstable.
->=net-irc/weechat-1.7 guile
 
 # Michael Palimaka <kensington@gentoo.org> (2017-08-11)
 # Unstable dependencies.
@@ -230,7 +202,3 @@ app-crypt/tpm-tools pkcs11
 # Bug #486076, ocaml masked to allow xen to once again
 # become a stabilisable package
 app-emulation/xen-tools ocaml
-
-# Andreas K. Huettel <dilfridge@gentoo.org> (2013-03-28)
-# Depends on unstable sci-libs/avogadrolibs
-kde-apps/kalzium editor

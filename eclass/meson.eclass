@@ -1,4 +1,4 @@
-# Copyright 2017-2024 Gentoo Authors
+# Copyright 2017-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: meson.eclass
@@ -305,6 +305,18 @@ setup_meson_src_configure() {
 				MESONARGS+=( -Db_lto_threads=${v} )
 				;;
 		esac
+
+		if has_version -b ">=dev-build/meson-1.10.0" ; then
+			local v=$(get-flag -flto-incremental=)
+			v=${v#-flto-incremental=}
+			if [[ ${v} ]] ; then
+				MESONARGS+=(
+					-Db_thinlto_cache=true
+					-Db_thinlto_cache_dir=${v}
+				)
+			fi
+		fi
+
 		# finally, remove it from *FLAGS to avoid passing it:
 		# - twice, with potentially different values
 		# - on excluded targets

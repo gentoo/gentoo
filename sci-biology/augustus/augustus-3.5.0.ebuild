@@ -33,7 +33,7 @@ RDEPEND="
 	sci-libs/htslib:=
 	sci-libs/suitesparse
 	sci-mathematics/lpsolve:=
-	sys-libs/zlib
+	virtual/zlib:=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

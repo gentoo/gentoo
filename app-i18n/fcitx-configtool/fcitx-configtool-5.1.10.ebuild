@@ -14,7 +14,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64"
+KEYWORDS="amd64 ~loong"
 IUSE="kcm +config-qt test X"
 RESTRICT="!test? ( test )"
 
@@ -64,7 +64,6 @@ src_configure() {
 		-DENABLE_CONFIG_QT=$(usex config-qt)
 		-DENABLE_X11=$(usex X)
 		-DENABLE_TEST=$(usex test)
-		-DUSE_QT6=ON
 	)
 
 	cmake_src_configure

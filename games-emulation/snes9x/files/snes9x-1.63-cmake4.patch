@@ -1,0 +1,7 @@
+https://bugs.gentoo.org/958599
+https://github.com/KhronosGroup/SPIRV-Cross/commit/82331a2ca9
+--- a/external/SPIRV-Cross/CMakeLists.txt
++++ b/external/SPIRV-Cross/CMakeLists.txt
+@@ -22 +22 @@
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.10)

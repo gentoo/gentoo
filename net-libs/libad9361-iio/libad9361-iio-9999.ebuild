@@ -28,6 +28,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.2-libdir-pkgconfig.patch
 	"${FILESDIR}"/${PN}-0.3-cmake-gnuinstalldirs.patch
 	"${FILESDIR}"/${PN}-0.3-cmake4.patch
+	"${FILESDIR}"/${PN}-0.3-with_doc.patch
 )
 
 src_configure() {
@@ -41,6 +42,6 @@ src_configure() {
 src_install() {
 	cmake_src_install
 	if use doc; then
-		mv "${ED}/usr/share/doc/ad93610-doc" "${ED}/usr/share/doc/${P}" || die
+		mv "${ED}/usr/share/doc/ad93610-doc" "${ED}/usr/share/doc/${PF}" || die
 	fi
 }

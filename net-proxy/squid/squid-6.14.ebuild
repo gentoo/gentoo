@@ -140,7 +140,8 @@ src_prepare() {
 	sed -i -e 's:_LTDL_SETUP:LTDL_INIT([installable]):' \
 		libltdl/configure.ac || die
 
-	eautoreconf
+	# https://bugs.gentoo.org/956509
+	AT_NO_RECURSIVE="yes" eautoreconf
 }
 
 src_configure() {

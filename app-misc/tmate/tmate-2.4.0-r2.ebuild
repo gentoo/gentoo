@@ -19,7 +19,7 @@ RDEPEND="
 	dev-libs/msgpack:=
 	dev-libs/openssl:=
 	>=net-libs/libssh-0.6.0
-	sys-libs/zlib
+	virtual/zlib:=
 	sys-libs/libutempter
 "
 DEPEND="${RDEPEND}"

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit python-any-r1 toolchain-funcs
 
@@ -21,7 +21,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	app-arch/bzip2
 	app-arch/xz-utils
-	sys-libs/zlib"
+	virtual/zlib:="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}

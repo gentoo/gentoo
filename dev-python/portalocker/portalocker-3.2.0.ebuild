@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 BDEPEND="
 	test? (
@@ -32,6 +32,7 @@ BDEPEND="
 	)
 "
 
+EPYTEST_PLUGINS=( pytest-{rerunfailures,timeout} )
 distutils_enable_tests pytest
 
 src_prepare() {
@@ -39,11 +40,6 @@ src_prepare() {
 
 	# Disable code coverage in tests.
 	sed -i '/--cov/d' pyproject.toml || die
-}
-
-python_test() {
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -p rerunfailures -p timeout
 }
 
 pkg_postinst() {

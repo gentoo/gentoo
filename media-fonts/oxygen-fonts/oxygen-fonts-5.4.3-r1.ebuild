@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,19 +10,21 @@ HOMEPAGE="https://invent.kde.org/unmaintained/oxygen-fonts"
 SRC_URI="mirror://kde/Attic/plasma/${PV}/${P}.tar.xz"
 
 LICENSE="OFL-1.1"
-SLOT="5"
+SLOT="0"
 KEYWORDS="amd64 ~arm ~loong x86"
 IUSE=""
 
 BDEPEND="
-	>=dev-qt/qtcore-5.12.3:5
-	>=kde-frameworks/extra-cmake-modules-5.60.0:0
+	kde-frameworks/extra-cmake-modules:0
 	media-gfx/fontforge
 "
 
 DOCS=( README.md )
 
-PATCHES=( "${FILESDIR}/${P}-fix-d-and-t-accents.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-fix-d-and-t-accents.patch"
+	"${FILESDIR}/${P}-cmake4.patch" # bug 957482
+)
 
 src_configure() {
 	xdg_environment_reset

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,13 +26,15 @@ REQUIRED_USE="${LUA_REQUIRED_USE}"
 # Doesn't play nicely with the sandbox + requires an active D-BUS session
 RESTRICT="test"
 
-RDEPEND="${LUA_DEPS}
+RDEPEND="
+	${LUA_DEPS}
 	dev-libs/glib:2
 	dev-libs/libxdg-basedir
 	$(lua_gen_cond_dep 'dev-lua/lgi[${LUA_USEDEP}]')
+	gnome-base/librsvg[introspection]
 	x11-libs/cairo[X,xcb(+)]
 	x11-libs/gdk-pixbuf:2[introspection]
-	x11-libs/libxcb
+	x11-libs/libxcb:=
 	x11-libs/pango[introspection]
 	x11-libs/startup-notification
 	x11-libs/xcb-util
@@ -40,11 +42,12 @@ RDEPEND="${LUA_DEPS}
 	x11-libs/xcb-util-keysyms
 	x11-libs/xcb-util-wm
 	x11-libs/xcb-util-xrm
-	x11-libs/libXcursor
 	x11-libs/libxkbcommon[X]
 	x11-libs/libX11
-	dbus? ( sys-apps/dbus )"
-DEPEND="${RDEPEND}
+	dbus? ( sys-apps/dbus )
+"
+DEPEND="
+	${RDEPEND}
 	x11-base/xcb-proto
 	x11-base/xorg-proto
 	test? (
@@ -53,21 +56,19 @@ DEPEND="${RDEPEND}
 			dev-lua/busted[${LUA_USEDEP}]
 			dev-lua/luacheck[${LUA_USEDEP}]
 		')
-	)"
+	)
+"
 # graphicsmagick's 'convert -channel' has no Alpha support, bug #352282
-# ldoc is used by invoking its executable, hence no need for LUA_SINGLE_USEDEP.
-# On the other hand, it means that we should explicitly depend on a version
-# migrated to Lua eclasses so that during the upgrade from unslotted
-# to slotted dev-lang/lua, the package manager knows to emerge migrated
-# ldoc before migrated awesome.
-BDEPEND="app-text/asciidoc
+BDEPEND="
+	dev-ruby/asciidoctor
 	media-gfx/imagemagick[png]
 	virtual/pkgconfig
-	doc? ( >=dev-lua/ldoc-1.4.6-r100 )
+	doc? ( dev-lua/ldoc )
 	test? (
 		app-shells/zsh
 		x11-apps/xeyes
-	)"
+	)
+"
 
 # Skip installation of README.md by einstalldocs, which leads to broken symlink
 DOCS=()
@@ -75,7 +76,7 @@ DOCS=()
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.0-convert-path.patch  # bug #408025
 	"${FILESDIR}"/${PN}-xsession.patch          # bug #408025
-	"${FILESDIR}"/${PN}-4.0-cflag-cleanup.patch # bug #509658
+	"${FILESDIR}"/${PN}-4.3-cflag-cleanup.patch # bug #509658
 )
 
 src_configure() {
@@ -92,6 +93,9 @@ src_configure() {
 		-DLUA_INCLUDE_DIR="$(lua_get_include_dir)"
 		-DLUA_LIBRARY="$(lua_get_shared_lib)"
 	)
+
+	[[ ${PV} != *9999* ]] && mycmakeargs+=( -DOVERRIDE_VERSION="v${PV}" )
+
 	cmake_src_configure
 }
 
@@ -123,8 +127,10 @@ src_install() {
 		doins "${FILESDIR}"/${PN}-gnome-xsession.desktop
 	fi
 
-	# This directory contains SVG images which we don't want to compress
-	use doc && docompress -x /usr/share/doc/${PF}/doc
+	# use html subdir
+	if use doc; then
+		mv "${ED}"/usr/share/doc/${PF}/{doc,html} || die
+	fi
 }
 
 pkg_postinst() {
@@ -138,12 +144,4 @@ pkg_postinst() {
 		elog "For more info visit"
 		elog "  https://bugs.gentoo.org/show_bug.cgi?id=447308"
 	fi
-
-	# bug #440724
-	elog "If you are having issues with Java application windows being"
-	elog "completely blank, try installing"
-	elog "  x11-misc/wmname"
-	elog "and setting the WM name to LG3D."
-	elog "For more info visit"
-	elog "  https://bugs.gentoo.org/show_bug.cgi?id=440724"
 }

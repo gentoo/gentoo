@@ -3,10 +3,10 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 TMPFILES_OPTIONAL=1
 
-inherit pam python-r1 meson-multilib tmpfiles toolchain-funcs
+inherit flag-o-matic pam python-r1 meson-multilib tmpfiles toolchain-funcs
 
 MY_PV="${PV/_/-}"
 MY_P="${PN}-${MY_PV}"
@@ -41,7 +41,7 @@ RDEPEND="
 	virtual/libcrypt:=
 	audit? ( >=sys-process/audit-2.6:= )
 	caps? ( sys-libs/libcap-ng )
-	cramfs? ( sys-libs/zlib:= )
+	cramfs? ( virtual/zlib:= )
 	cryptsetup? ( >=sys-fs/cryptsetup-2.1.0 )
 	hardlink? ( dev-libs/libpcre2:= )
 	ncurses? (
@@ -127,6 +127,11 @@ src_unpack() {
 
 src_prepare() {
 	default
+
+	# Workaround for bug #961040 (gcc PR120006)
+	if tc-is-gcc && [[ $(gcc-major-version) == 15 && $(gcc-minor-version) -lt 2 ]] ; then
+		append-flags -fno-ipa-pta
+	fi
 
 	if use test ; then
 		# Known-failing tests

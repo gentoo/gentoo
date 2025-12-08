@@ -11,7 +11,7 @@ SRC_URI="https://xm1math.net/texmaker/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="webengine"
 
 # dev-qt/qtbase slot op: Qt6::CorePrivate, includes private/qabstractitemmodel_p.h
@@ -34,6 +34,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.0-unbundle_hunspell_synctex.patch
 	"${FILESDIR}"/${PN}-6.0.0-unforce_webengine.patch
 	"${FILESDIR}"/${PN}-6.0.0-fix_lto_mismatch.patch
+	"${FILESDIR}"/${P}-qt-6.10.patch # downstream, bug #966707
 )
 
 src_prepare() {

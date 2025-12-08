@@ -35,7 +35,7 @@ fi
 
 LICENSE="|| ( BSD GPL-2 )"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="audit berkdb elogind examples debug nis nls selinux systemd"
 REQUIRED_USE="?? ( elogind systemd )"
 
@@ -188,5 +188,5 @@ pkg_postinst() {
 
 	# The pam_unix module needs to check the password of the user which requires
 	# read access to /etc/shadow only.
-	fcaps cap_dac_override sbin/unix_chkpwd
+	fcaps -m u+s cap_dac_override sbin/unix_chkpwd
 }

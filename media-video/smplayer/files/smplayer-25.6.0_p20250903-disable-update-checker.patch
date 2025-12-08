@@ -1,0 +1,52 @@
+From cda243ccd8cffc750b286ea267ee85864d860d21 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 2 Nov 2025 19:41:35 +0100
+Subject: [PATCH 1/2] Disable update checker
+
+Also keep CHECK_UPGRADED and SHARE_WIDGET in context even if *currently*
+already upstream-disabled.
+
+Turned seds into patch:
+```
+	# Turn off online update checker, bug #479902
+	sed -e 's:DEFINES += UPDATE_CHECKER:#&:' \
+		-e 's:DEFINES += CHECK_UPGRADED:#&:' \
+		-i src/smplayer.pro || die
+
+	# Turn off intrusive share widget
+	sed -e 's:DEFINES += SHARE_WIDGET:#&:' \
+		-i src/smplayer.pro || die
+```
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ src/smplayer.pro | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/smplayer.pro b/src/smplayer.pro
+index fce8553..aa1438e 100644
+--- a/src/smplayer.pro
++++ b/src/smplayer.pro
+@@ -25,8 +25,8 @@ DEFINES += MINIGUI
+ DEFINES += MPCGUI
+ DEFINES += SKINS
+ DEFINES += MPRIS2
+-DEFINES += UPDATE_CHECKER
+-#DEFINES += CHECK_UPGRADED
++#DEFINES += UPDATE_CHECKER
++##DEFINES += CHECK_UPGRADED
+ DEFINES += AUTO_SHUTDOWN_PC
+ #DEFINES += CAPTURE_STREAM
+ DEFINES += BOOKMARKS
+@@ -49,7 +49,7 @@ DEFINES += MPLAYER_SUPPORT
+ 
+ # OBSOLETE:
+ #DEFINES += SHARE_ACTIONS
+-#DEFINES += SHARE_WIDGET
++##DEFINES += SHARE_WIDGET
+ 
+ greaterThan(QT_VERSION, 0x050400) {
+ 	DEFINES += HDPI_SUPPORT
+-- 
+2.51.2
+

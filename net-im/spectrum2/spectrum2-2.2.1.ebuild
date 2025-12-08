@@ -33,7 +33,7 @@ RDEPEND="
 	net-dns/libidn:=
 	>=net-im/swift-4.0.2-r2:=
 	net-misc/curl
-	sys-libs/zlib:=
+	virtual/zlib:=
 	frotz? ( !games-engines/frotz )
 	irc? ( net-im/libcommuni )
 	mysql? (
@@ -59,7 +59,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.1-boost-1.85.patch
-	"${FILESDIR}"/${PN}-2.2.1-use-c++14.patch
+	"${FILESDIR}"/${PN}-2.2.1-use-c++17.patch
 )
 
 src_prepare() {

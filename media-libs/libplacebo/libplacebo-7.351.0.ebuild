@@ -22,7 +22,7 @@ else
 		)
 	"
 	S="${WORKDIR}/${PN}-v${PV}"
-	KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ppc ppc64 ~riscv x86"
+	KEYWORDS="amd64 ~arm arm64 ~loong ppc ppc64 ~riscv x86"
 fi
 
 DESCRIPTION="Reusable library for GPU-accelerated image processing primitives"
@@ -69,6 +69,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.229.1-llvm-libunwind.patch
+	"${FILESDIR}"/${P}-vulkan-python-xml.patch
 )
 
 python_check_deps() {

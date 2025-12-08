@@ -11,7 +11,7 @@ SRC_URI="https://distfiles.audacious-media-player.org/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~riscv x86"
+KEYWORDS="amd64 ~ppc64 ~riscv x86"
 IUSE="
 	aac +alsa ampache bs2b cdda cue ffmpeg flac fluidsynth gme gtk http jack
 	lame libnotify libsamplerate lirc mms modplug mp3 opengl openmpt opus
@@ -50,7 +50,7 @@ DEPEND="
 	dev-libs/glib:2
 	dev-libs/libxml2:2=
 	~media-sound/audacious-${PV}[gtk=,qt6=]
-	sys-libs/zlib
+	virtual/zlib:=
 	>=x11-libs/gdk-pixbuf-2.26:2
 	aac? ( >=media-libs/faad2-2.7 )
 	alsa? ( >=media-libs/alsa-lib-1.0.16 )

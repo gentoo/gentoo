@@ -5,6 +5,6 @@
 		<email>amynka@gentoo.org</email>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">freepascal</remote-id>
+		<remote-id type="gitlab">freepascal.org/fpc/source</remote-id>
 	</upstream>
 </pkgmetadata>

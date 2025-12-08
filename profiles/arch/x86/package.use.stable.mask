@@ -17,6 +17,22 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2025-11-30)
+# sci-libs/blis does not have stable keywords
+sci-libs/flexiblas blis
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
+# dev-perl/Template-GD is not stable here. Bug #962143
+dev-perl/Template-Toolkit gd
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
+# dev-perl/GD-Barcode is not stable here. Bug #962143
+dev-perl/Business-ISBN barcode
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
+# dev-perl/GDTextUtil is not stable here. Bug #661634
+media-video/vdrsync dvdr
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-03-07)
 # KDE Frameworks is no longer stable on x86
 x11-themes/QGnomePlatform qt5
@@ -63,14 +79,9 @@ virtual/notification-daemon kde
 # sys-block/nbdkit is not yet marked stable here
 app-emulation/libvirt nbd
 
-# Nowa Ammerlaan <nowa@gentoo.org> (2024-03-21)
-# Experimental, virt-firmware is keyworded only unstable
-sys-kernel/installkernel efistub
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2023-06-03)
 # Destabilizing x86 keywords on sci-*/* packages
 app-metrics/collectd collectd_plugins_gps
-dev-games/openscenegraph las
 dev-libs/efl physics
 media-libs/a52dec djbfft
 dev-python/graphviz test

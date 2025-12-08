@@ -1,12 +1,12 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools
+inherit autotools optfeature
 
 DESCRIPTION="Generate a file list suitable for full or incremental backups"
-HOMEPAGE="https://github.com/miekg/rdup/releases"
+HOMEPAGE="https://github.com/miekg/rdup"
 SRC_URI="https://github.com/miekg/rdup/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
@@ -24,7 +24,12 @@ RDEPEND="
 	dev-libs/nettle
 "
 DEPEND="${RDEPEND}"
-BDEPEND="test? ( dev-util/dejagnu )"
+BDEPEND="
+	test? (
+		app-crypt/mcrypt
+		dev-util/dejagnu
+	)
+"
 
 src_prepare() {
 	default
@@ -34,4 +39,8 @@ src_prepare() {
 
 src_configure() {
 	econf $(use_enable debug)
+}
+
+pkg_postinst() {
+	optfeature "encryption with a keyfile (-k ...)" app-crypt/mcrypt
 }

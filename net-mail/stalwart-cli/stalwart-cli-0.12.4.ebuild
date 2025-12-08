@@ -900,7 +900,7 @@ inherit cargo
 
 DESCRIPTION="Stalwart Mail Server command line utility"
 HOMEPAGE="https://stalw.art"
-SRC_URI="https://github.com/stalwartlabs/stalwart/archive/refs/tags/v${PV}.tar.gz -> stalwart-${PV}.tar.gz
+SRC_URI="https://github.com/stalwartlabs/stalwart/archive/refs/tags/v${PV}.tar.gz -> stalwart-mail-${PV}.tar.gz
 	${CARGO_CRATE_URIS}
 "
 

@@ -1,0 +1,10 @@
+--- a/GsKit/base/interface/FindFile.cpp
++++ b/GsKit/base/interface/FindFile.cpp
+@@ -512,7 +512,6 @@ void InitBaseSearchPaths()
+       AddToFileList(&basesearchpaths, "${HOME}/.CommanderGenius");
+     #endif
+ #endif
+-    AddToFileList(&basesearchpaths, ".");
+     AddToFileList(&basesearchpaths, SYSTEM_DATA_DIR"/commandergenius"); // no use of ${SYSTEM_DATA}, because it is uncommon and could cause confusion to the user
+ #endif
+ }

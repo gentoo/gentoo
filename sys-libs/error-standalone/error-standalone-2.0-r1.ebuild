@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="standalone <error.h> implementation intended for musl"
 HOMEPAGE="https://hacktivis.me/git/error-standalone/"
@@ -20,7 +20,7 @@ IUSE="static-libs"
 src_compile() {
 	append-flags -fPIC
 
-	emake liberror.so $(usex static-libs liberror.a '')
+	emake CC="$(tc-getCC)" AR="$(tc-getAR)" liberror.so $(usex static-libs liberror.a '')
 }
 
 src_install() {

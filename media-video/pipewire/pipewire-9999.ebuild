@@ -26,7 +26,7 @@ PIPEWIRE_DOCS_PREBUILT_DEV=sam
 PIPEWIRE_DOCS_VERSION="$(ver_cut 1-2).0"
 # Default to generating docs (inc. man pages) if no prebuilt; overridden later
 PIPEWIRE_DOCS_USEFLAG="+man"
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit meson-multilib optfeature prefix python-any-r1 systemd tmpfiles udev
 
 if [[ ${PV} == 9999 ]] ; then
@@ -105,8 +105,7 @@ BDEPEND="
 # * While udev could technically be optional, it's needed for a number of options,
 # and not really worth it, bug #877769.
 #
-# * Supports both legacy webrtc-audio-processing:2 and new webrtc-audio-processing:1.
-# Automagic but :2 isn't yet packaged.
+# * Supports both new webrtc-audio-processing:2 and legacy webrtc-audio-processing:1.
 #
 # * Older Doxygen (<1.9.8) may work but inferior output is created:
 #   - https://gitlab.freedesktop.org/pipewire/pipewire/-/merge_requests/1778
@@ -130,7 +129,13 @@ RDEPEND="
 	)
 	elogind? ( sys-auth/elogind )
 	dbus? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
-	echo-cancel? ( >=media-libs/webrtc-audio-processing-1.2:1 )
+	echo-cancel? (
+		media-libs/webrtc-audio-processing:=
+		|| (
+			>=media-libs/webrtc-audio-processing-2.0:2
+			>=media-libs/webrtc-audio-processing-1.2:1
+		)
+	)
 	extra? ( >=media-libs/libsndfile-1.0.20 )
 	ffmpeg? ( media-video/ffmpeg:= )
 	fftw? ( sci-libs/fftw:3.0=[${MULTILIB_USEDEP}] )
@@ -224,7 +229,7 @@ multilib_src_configure() {
 		$(meson_native_use_feature gstreamer)
 		$(meson_native_use_feature gstreamer gstreamer-device-provider)
 		$(meson_native_use_feature gsettings)
-		$(meson_native_use_feature systemd)
+		$(meson_native_use_feature systemd libsystemd)
 		-Dlogind=${logind}
 		-Dlogind-provider=$(usex systemd 'libsystemd' 'libelogind')
 
@@ -368,7 +373,7 @@ multilib_src_install_all() {
 		newins "${FILESDIR}"/pipewire.desktop-r2 pipewire.desktop
 
 		exeinto /usr/bin
-		newexe "${FILESDIR}"/gentoo-pipewire-launcher.in-r3 gentoo-pipewire-launcher
+		newexe "${FILESDIR}"/gentoo-pipewire-launcher.in-r4 gentoo-pipewire-launcher
 
 		doman "${FILESDIR}"/gentoo-pipewire-launcher.1
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -40,7 +40,7 @@ RESTRICT="!test? ( test )"
 # ssl? -> openssl || (gnutls + (nettle || libgcrypt ))
 # !ssl? -> nettle || libgcrypt
 RDEPEND="
-	sys-libs/zlib:0=
+	virtual/zlib:=
 	adns? ( >=net-dns/c-ares-1.5.0:0= )
 	jemalloc? ( dev-libs/jemalloc )
 	libuv? ( >=dev-libs/libuv-1.13:0= )

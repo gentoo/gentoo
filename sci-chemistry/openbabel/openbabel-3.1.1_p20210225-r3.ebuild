@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..12} )
 WX_GTK_VER=3.2-gtk3
 
 inherit cmake desktop flag-o-matic perl-functions python-r1 toolchain-funcs wxwidgets xdg-utils
@@ -59,7 +59,7 @@ BDEPEND="
 COMMON_DEPEND="
 	dev-cpp/eigen:3
 	dev-libs/libxml2:2=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	inchi? ( sci-libs/inchi )
 	json? ( >=dev-libs/rapidjson-1.1.0 )
 	png? ( x11-libs/cairo )

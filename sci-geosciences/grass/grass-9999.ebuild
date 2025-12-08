@@ -3,17 +3,17 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="sqlite"  # bug 572440
 
 inherit desktop flag-o-matic python-single-r1 toolchain-funcs xdg
 
-DESCRIPTION="A free GIS with raster and vector functionality, as well as 3D vizualization"
+DESCRIPTION="Free GIS with raster and vector functionality, as well as 3D vizualization"
 HOMEPAGE="https://grass.osgeo.org/"
 
 LICENSE="GPL-2"
 
-if [[ ${PV} =~ "9999" ]]; then
+if [[ ${PV} == *9999* ]]; then
 	SLOT="0/8.4"
 else
 	SLOT="0/$(ver_cut 1-2 ${PV})"
@@ -23,7 +23,7 @@ GVERSION=${SLOT#*/}
 MY_PM="${PN}${GVERSION}"
 MY_PM="${MY_PM/.}"
 
-if [[ ${PV} =~ "9999" ]]; then
+if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/OSGeo/grass.git"
 else
@@ -36,7 +36,7 @@ else
 	S="${WORKDIR}/${MY_P}"
 fi
 
-IUSE="blas bzip2 cxx fftw geos lapack las mysql netcdf nls odbc opencl opengl openmp pdal png postgres readline sqlite svm threads tiff truetype X zstd"
+IUSE="blas bzip2 cxx fftw geos lapack mysql netcdf nls odbc opencl opengl openmp pdal png postgres readline sqlite svm threads tiff truetype X zstd"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	opengl? ( X )
@@ -54,18 +54,28 @@ RDEPEND="
 	sys-libs/gdbm:=
 	sys-libs/ncurses:=
 	sci-libs/proj:=
-	sys-libs/zlib
+	virtual/zlib:=
 	media-libs/libglvnd
 	media-libs/glu
 	blas? (
-		virtual/cblas[eselect-ldso(+)]
-		virtual/blas[eselect-ldso(+)]
+		|| (
+			virtual/cblas[eselect-ldso(+)]
+			virtual/cblas[flexiblas(-)]
+		)
+		|| (
+			virtual/blas[eselect-ldso(+)]
+			virtual/blas[flexiblas(-)]
+		)
 	)
 	bzip2? ( app-arch/bzip2:= )
 	fftw? ( sci-libs/fftw:3.0= )
 	geos? ( sci-libs/geos:= )
-	lapack? ( virtual/lapack[eselect-ldso(+)] )
-	las? ( sci-geosciences/liblas )
+	lapack? (
+		|| (
+			virtual/lapack[eselect-ldso(+)]
+			virtual/lapack[flexiblas(-)]
+		)
+	)
 	mysql? ( dev-db/mysql-connector-c:= )
 	netcdf? ( sci-libs/netcdf:= )
 	odbc? ( dev-db/unixODBC )
@@ -109,7 +119,7 @@ pkg_pretend() {
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 
-	if use lapack; then
+	if use lapack && has_version "virtual/lapack[eselect-ldso(+)]"; then
 		local mylapack=$(eselect lapack show)
 		if [[ -z "${mylapack/.*reference.*/}" ]] && \
 			[[ -z "${mylapack/.*atlas.*/}" ]]; then
@@ -120,7 +130,7 @@ pkg_setup() {
 		fi
 	fi
 
-	if use blas; then
+	if use blas && has_version "virtual/blas[eselect-ldso(+)]"; then
 		local myblas=$(eselect blas show)
 		if [[ -z "${myblas/.*reference.*/}" ]] && \
 			[[ -z "${myblas/.*atlas.*/}" ]]; then
@@ -188,6 +198,7 @@ src_configure() {
 	local myeconfargs=(
 		--enable-shared
 		--disable-w11
+		--without-liblas
 		--without-opendwg
 		--with-regex
 		--with-gdal="${EPREFIX}"/usr/bin/gdal-config
@@ -216,7 +227,6 @@ src_configure() {
 		$(use_with opencl)
 		$(use_with bzip2 bzlib)
 		$(use_with pdal pdal "${EPREFIX}"/usr/bin/pdal-config)
-		$(use_with las liblas "${EPREFIX}"/usr/bin/liblas-config)
 		$(use_with netcdf netcdf "${EPREFIX}"/usr/bin/nc-config)
 		$(use_with geos geos "${EPREFIX}"/usr/bin/geos-config)
 		$(use_with svm libsvm)

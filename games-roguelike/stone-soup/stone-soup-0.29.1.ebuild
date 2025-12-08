@@ -62,7 +62,7 @@ REQUIRED_USE="${LUA_REQUIRED_USE}"
 RDEPEND="
 	${LUA_DEPS}
 	dev-db/sqlite:3
-	sys-libs/zlib
+	virtual/zlib:=
 	!ncurses? ( !tiles? ( sys-libs/ncurses:0 ) )
 	ncurses? ( sys-libs/ncurses:0 )
 	tiles? (

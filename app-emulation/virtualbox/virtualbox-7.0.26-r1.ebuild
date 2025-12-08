@@ -48,7 +48,7 @@ COMMON_DEPEND="
 	media-libs/libpng:0=
 	media-libs/libvpx:0=
 	net-misc/curl
-	sys-libs/zlib
+	virtual/zlib:=
 	dbus? ( sys-apps/dbus )
 	lvm? ( sys-fs/lvm2 )
 	opengl? (
@@ -172,6 +172,8 @@ REQUIRED_USE="
 PATCHES=(
 	# Downloaded patchset
 	"${WORKDIR}"/virtualbox-patches-7.0.22-r1/patches
+
+	"${FILESDIR}"/${PN}-7.2.2-curl-8.16.patch
 )
 
 pkg_pretend() {

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit gnome.org meson xdg
+inherit gnome.org meson xdg flag-o-matic
 
 DESCRIPTION="Playlist parsing library"
 HOMEPAGE="https://developer.gnome.org/totem-pl-parser/stable/"
@@ -19,7 +19,7 @@ RDEPEND="
 	dev-libs/libxml2:2=
 	crypt? ( dev-libs/libgcrypt:0= )
 	uchardet? ( app-i18n/uchardet )
-	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -64,6 +64,7 @@ src_configure() {
 		$(meson_use gtk-doc enable-gtk-doc)
 		$(meson_use introspection)
 	)
+	append-ldflags $(test-flags-CCLD -Wl,--undefined-version) # bug 915087
 	meson_src_configure
 }
 

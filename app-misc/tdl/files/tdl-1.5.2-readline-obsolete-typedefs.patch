@@ -1,0 +1,42 @@
+https://bugs.gentoo.org/944033
+--- a/inter.c
++++ b/inter.c
+@@ -28,7 +28,7 @@
+ #include <unistd.h>
+ 
+ #ifdef USE_READLINE
+-#if BARE_READLINE_H 
++#if BARE_READLINE_H
+ #include <readline.h>
+ #include <history.h>
+ #else
+@@ -556,7 +556,7 @@ static int setup_initval_hook(void)/*{{{*/
+ static char *interactive_text_readline(char *prompt, char *initval, int *is_blank, int *error)/*{{{*/
+ {
+   char *line;
+-  Function *old_rl_pre_input_hook = NULL;
++  rl_hook_func_t *old_rl_pre_input_hook = NULL;
+   
+   *error = 0;
+   old_rl_pre_input_hook = rl_pre_input_hook;
+@@ -633,9 +633,9 @@ char *interactive_text (char *prompt, char *initval, int *is_blank, int *error)/
+ #ifdef USE_READLINE
+   if (isatty(0)) {
+     char *result;
+-    rl_attempted_completion_function = (CPPFunction *) null_tdl_completion;
++    rl_attempted_completion_function = (rl_completion_func_t *) null_tdl_completion;
+     result = interactive_text_readline(prompt, initval, is_blank, error);
+-    rl_attempted_completion_function = (CPPFunction *) tdl_completion;
++    rl_attempted_completion_function = (rl_completion_func_t *) tdl_completion;
+     return result;
+   } else {
+     /* In case someone wants to drive tdl from a script, by redirecting stdin to it. */
+@@ -653,7 +653,7 @@ void interactive(void)/*{{{*/
+ #ifdef USE_READLINE
+   if (isatty(0)) {
+     rl_completion_entry_function = NULL;
+-    rl_attempted_completion_function = (CPPFunction *) tdl_completion;
++    rl_attempted_completion_function = (rl_completion_func_t *) tdl_completion;
+     interactive_readline();
+   } else {
+     /* In case someone wants to drive tdl from a script, by redirecting stdin to it. */

@@ -1,5 +1,8 @@
-cmake_minimum_required (VERSION 2.6)
+cmake_minimum_required (VERSION 3.31)
 project (pdbcat)
+
+include(GNUInstallDirs)
+
 add_executable(pdbcat
 	Common.C
 	Common.h
@@ -7,5 +10,4 @@ add_executable(pdbcat
 	PDBData.C
 	PDBData.h)
 
-install (TARGETS pdbcat DESTINATION bin)
-
+install (TARGETS pdbcat DESTINATION ${CMAKE_INSTALL_BINDIR})

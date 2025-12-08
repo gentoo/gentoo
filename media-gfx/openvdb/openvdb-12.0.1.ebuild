@@ -114,7 +114,7 @@ RDEPEND="
 		media-libs/libglvnd[X]
 	)
 	zlib? (
-		sys-libs/zlib:=
+		virtual/zlib:=
 	)
 "
 

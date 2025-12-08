@@ -1,14 +1,56 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Nowa Ammerlaan <nowa@gentoo.org> (2025-12-03)
+# media-video/ffmpeg-chromium is not available here
+dev-libs/nwjs ffmpeg-chromium
+
+# Alfred Wingate <parona@protonmail.com> (2025-11-23)
+# Requires dev-qt/qtwebengine
+media-sound/easyeffects webengine
+
+# Ionen Wolkens <ionen@gentoo.org> (2025-11-13)
+# media-libs/libvmaf is keyworded here
+media-libs/x265 -vmaf
+
+# Michał Górny <mgorny@gentoo.org> (2025-10-03)
+# Now keyworded on x86 too.
+sci-libs/flexiblas -system-blas
+sci-libs/lapack -flexiblas
+virtual/blas -flexiblas
+virtual/cblas -flexiblas
+virtual/lapack -flexiblas
+virtual/lapacke -flexiblas
+
+# Cristian Othón Martínez Vera <cfuga@cfuga.mx> (2025-10-02)
+# Michael Palimaka <kensington@gentoo.org> (2018-10-12)
+# Unmask arch-specific USE flag available on x86
+<net-analyzer/testssl-3.1 -bundled-openssl
+
+# Nicolas PARLANT <nicolas.parlant@parhuet.fr> (2025-09-20)
+# Require dev-libs/libtsm, keyworded here
+>=media-gfx/fbida-2.14_p20241216 -fbcon
+
+# Michał Górny <mgorny@gentoo.org> (2025-09-12)
+# These BLAS/LAPACK providers are keyworded here.
+sci-libs/flexiblas -blis -openblas
+
+# Sam James <sam@gentoo.org> (2025-08-29)
+# net-misc/passt not yet keyworded here
+app-emulation/qemu passt
+
+# Alfred Wingate <parona@protonmail.com> (2025-07-31)
+# mongodb not keyworded here
+sci-libs/gdal mongodb
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-07-26)
+# kde-apps/kamoso not keyworded yet, bug #946343
+>=kde-apps/kdemultimedia-meta-25.04.2-r1 gstreamer
+
 # Robin H. Johnson <robbat2@gentoo.org> (2025-07-04)
 # Deeper test dependencies with Ruby 3.3 are no longer yet keyworded keyword;
 # manually tested instead; Test dependencies work with stable Ruby 3.2.
 dev-ruby/facter test
-
-# Mike Gilbert <floppym@gentoo.org> (2025-06-18)
-# media-libs/libsdl3 is missing keywords.
->=net-misc/freerdp-3.16.0 sdl
 
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-05-02)
 # dev-python/nanobind is not keyworded here
@@ -20,10 +62,6 @@ media-gfx/openvdb python
 >=dev-ml/camlp4-5.2_p1 ocamlopt
 >=dev-ml/findlib-1.9.8-r1 ocamlopt
 dev-ml/labltk ocamlopt
-
-# Conrad Kostecki <conikost@gentoo.org> (2025-04-02)
-# media-libs/libsdl3 is not keyworded
-app-emulation/faudio sdl3
 
 # NRK <nrk@disroot.org> (2025-03-17)
 # media-libs/libyuv is not keyworded
@@ -50,7 +88,7 @@ dev-python/qtpy remoteobjects
 # Upstream dropbox no longer producing x86 releases
 kde-apps/kdenetwork-meta dropbox
 
-# Alexander Puck Neuwirth <alexander@neuwirth-informatik.de> (2024-10-20)
+# Alexander Puck Neuwirth <apn-pucky@gentoo.org> (2024-10-20)
 # sci-physics/rivet is unavailable on x86
 sci-physics/pythia rivet
 
@@ -86,7 +124,6 @@ games-emulation/rmg -dynarec
 # We only want to support spirv-llvm-translator >= 17 on x86, which is a
 # dependency of mesa.
 >=media-libs/mesa-24.1 llvm_slot_15 llvm_slot_16
->=dev-util/intel_clc-24.1 llvm_slot_16
 
 # Michael Orlitzky <mjo@gentoo.org> (2024-07-09)
 # The opcache extension fails to build on hardened x86, but only
@@ -164,7 +201,6 @@ media-tv/mythtv nvdec
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-02-06)
 # Successful build of dev-qt/qtwebengine depends on 64-bit host
 # Bug #893234
-app-misc/anki gui
 app-office/kraft pim
 dev-lang/idris2 test-full
 dev-python/cloudscraper test
@@ -172,14 +208,11 @@ dev-python/qtpy test
 games-util/lgogdownloader gui
 kde-apps/kde-apps-meta pim
 kde-apps/kdenetwork-meta bittorrent
+kde-apps/umbrello php
 kde-plasma/plasma-nm openconnect
 net-misc/seafile-client shibboleth
 net-p2p/ktorrent rss
 sci-physics/root qt6
-
-# Ionen Wolkens <ionen@gentoo.org> (2022-11-07)
-# Vulkan is usable here.
-media-video/mpv -vulkan
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-10-07)
 # sys-libs/libsmbios is available here.
@@ -209,15 +242,6 @@ app-vim/jedi test
 # Ben Kohler <bkohler@gentoo.org> (2022-06-07)
 # Disable 64bit builds on x86
 sys-apps/memtest86+ bios64 uefi64 iso64
-
-# Jimi Huotari <chiitoo@gentoo.org> (2022-05-08)
-# Not keyworded here yet.
-lxqt-base/lxqt-meta desktop-portal
-
-# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
-# Untested useflag on other arches, needs keywording
-media-video/ffmpeg vmaf
-media-video/ffmpeg-compat vmaf
 
 # Sam James <sam@gentoo.org> (2022-03-10)
 # dev-util/hip and its rocm dependencies not keyworded here
@@ -370,25 +394,9 @@ x11-apps/igt-gpu-tools -overlay
 # freeipmi is supported on x86
 app-admin/conserver -freeipmi
 
-# Mikle Kolyada <zlogene@gentoo.org> (2019-03-03)
-# No Spice protocol for x86
-app-emulation/nemu spice
-
 # Tomáš Mózes <hydrapolic@gmail.com> (2019-11-02)
 # Requires dev-db/mongodb which has dropped x86 support
 dev-php/pecl-mongodb test
-
-# Alexys Jacob <ultrabug@gentoo.org> (2018-11-05)
-# Requires dev-db/mongodb which has dropped x86 support
-net-analyzer/zmap mongo
-
-# Michael Palimaka <kensington@gentoo.org> (2018-10-12)
-# Unmask arch-specific USE flag available on x86
-net-analyzer/testssl -bundled-openssl
-
-# Rick Farina <zerochaos@gentoo.org> (2018-06-27)
-# Catalyst has support for assembling bootloader on this arch
-dev-util/catalyst -system-bootloader
 
 # Jan Ziak <0xe2.0x9a.0x9b@gmail.com> (2018-03-14)
 # Expose SVGA backend for x86 users
@@ -448,7 +456,6 @@ app-metrics/collectd -collectd_plugins_mqtt
 # Thomas Deutschmann <whissi@gentoo.org> (2016-08-26)
 # Enable numa support on supported architectures
 dev-db/mysql -numa
-dev-db/percona-server -numa
 
 # Brian Evans <grknight@gentoo.org> (2016-08-18)
 # Allow jdbc on this arch
@@ -478,14 +485,6 @@ sys-kernel/installkernel -systemd-boot -ukify -uki
 # Ben de Groot <yngwin@gentoo.org> (2015-03-15)
 # media-libs/libbdplus is keyworded on x86, so unmask the useflag
 media-libs/libbluray -bdplus
-
-# Yixun Lan <dlan@gentoo.org> (2014-05-21)
-# sys-fs/zfs not keyworded on x86
-sys-cluster/ceph zfs
-
-# Lars Wendler <polynomial-c@gentoo.org> (2014-04-23)
-# Works on 32bit x86
-media-sound/lmms -vst
 
 # Samuli Suominen <ssuominen@gentoo.org> (2014-02-16)
 # Still considered experimental by upstream:

@@ -1,24 +1,9 @@
 #!/bin/sh
 
-gamesdir=/opt/dwarf-fortress
-install="$HOME/.dwarf-fortress"
+set -eu
 
-do_install() {
-	cp -rn "$gamesdir"/data "$install"/
-	# DF gets unhappy when this is out of sync
-	cp -f "$gamesdir"/data/index "$install"/data/
-	cp -rsn "$gamesdir"/* "$install"/
-}
+srcdir="/opt/dwarf-fortress"
+dstdir="${XDG_DATA_HOME:-${HOME}/.local/share}/dwarf-fortress"
 
-if [ -d "$install" ]; then
-	# delete dangling symlinks
-	find -L "$install/" -type l -delete
-	# ignore "are the same file" errors
-	do_install 2>/dev/null
-else
-	mkdir "$install" || exit
-	do_install || exit
-fi
-
-cd "$install" || exit
-exec ./libs/Dwarf_Fortress "$@"
+mkdir -p "${dstdir}/upperdir" "${dstdir}/workdir"
+exec bwrap --bind / / --dev-bind /dev /dev --overlay-src "${srcdir}" --overlay "${dstdir}/upperdir" "${dstdir}/workdir" "${dstdir}/upperdir" --chdir "${dstdir}/upperdir" -- ./dwarfort "${@}"

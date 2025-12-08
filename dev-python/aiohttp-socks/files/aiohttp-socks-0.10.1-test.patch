@@ -1,0 +1,96 @@
+From 2ef7cba5f8d47d059d666683e7dcf01af214596f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 4 Oct 2025 19:17:44 +0200
+Subject: [PATCH] Fix test compatibility with pytest-asyncio >= 1.0.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Replace the obsolete `event_loop` fixture with
+`asyncio.get_running_loop()`, to fix testing with newer versions
+of `pytest-asyncio`.  This change is backwards compatible.
+
+Signed-off-by: Michał Górny <mgorny@gentoo.org>
+---
+ tests/test_connector.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_connector.py b/tests/test_connector.py
+index 988fc20..e24ef48 100644
+--- a/tests/test_connector.py
++++ b/tests/test_connector.py
+@@ -272,7 +272,6 @@ async def test_socks5_open_connection(url, rdns, target_ssl_context):
+ async def test_socks5_http_create_connection(
+     url: str,
+     rdns: bool,
+-    event_loop: asyncio.AbstractEventLoop,
+     target_ssl_context: ssl.SSLContext,
+ ):
+     url = URL(url)
+@@ -281,6 +280,7 @@ async def test_socks5_http_create_connection(
+     if url.scheme == 'https':
+         ssl_context = target_ssl_context
+ 
++    event_loop = asyncio.get_running_loop()
+     reader = asyncio.StreamReader(loop=event_loop)
+     protocol = asyncio.StreamReaderProtocol(reader, loop=event_loop)
+ 
+From 0d8800233dc8aa7384abaf02ebf3543d3d2dea97 Mon Sep 17 00:00:00 2001
+From: Roman Snegirev <rsng@mail.ru>
+Date: Mon, 26 May 2025 13:14:40 +0300
+Subject: [PATCH] Fix tests, update README
+
+diff --git a/tests/test_connector.py b/tests/test_connector.py
+index 8692fe6..988fc20 100644
+--- a/tests/test_connector.py
++++ b/tests/test_connector.py
+@@ -35,6 +35,16 @@
+ )
+ 
+ 
++def is_proxy_connection_error(e: Exception):
++    return isinstance(e, ProxyConnectionError) or isinstance(
++        e.__cause__, ProxyConnectionError
++    )
++
++
++def is_proxy_timeout_error(e: Exception):
++    return isinstance(e, ProxyTimeoutError) or isinstance(e.__cause__, ProxyTimeoutError)
++
++
+ async def fetch(
+     connector: TCPConnector,
+     url: str,
+@@ -105,13 +115,15 @@ async def test_socks5_proxy_with_timeout(target_ssl_context):
+ async def test_socks5_proxy_with_proxy_connect_timeout(target_ssl_context):
+     connector = ProxyConnector.from_url(SOCKS5_IPV4_URL)
+     timeout = aiohttp.ClientTimeout(total=32, sock_connect=0.001)
+-    with pytest.raises(ProxyTimeoutError):
++    # with pytest.raises(ProxyTimeoutError):
++    with pytest.raises(Exception) as exc_info:
+         await fetch(
+             connector=connector,
+             url=TEST_URL_IPV4,
+             timeout=timeout,
+             ssl_context=target_ssl_context,
+         )
++    assert is_proxy_timeout_error(exc_info.value)
+ 
+ 
+ @pytest.mark.asyncio
+@@ -123,12 +135,14 @@ async def test_socks5_proxy_with_invalid_proxy_port(unused_tcp_port, target_ssl_
+         username=LOGIN,
+         password=PASSWORD,
+     )
+-    with pytest.raises(ProxyConnectionError):
++    # with pytest.raises(ProxyConnectionError):
++    with pytest.raises(Exception) as exc_info:
+         await fetch(
+             connector=connector,
+             url=TEST_URL_IPV4,
+             ssl_context=target_ssl_context,
+         )
++    assert is_proxy_connection_error(exc_info.value)
+ 
+ 
+ @pytest.mark.parametrize('url', (TEST_URL_IPV4, TEST_URL_IPV4_HTTPS))

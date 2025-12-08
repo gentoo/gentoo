@@ -1,0 +1,29 @@
+From 01b1a2150e5d2c1a065aeb05a504f1f92b2cc147 Mon Sep 17 00:00:00 2001
+From: Egbert Eich <eich@suse.com>
+Date: Sun, 9 Mar 2025 11:12:22 +0100
+Subject: [PATCH] Fix build on C23 compiler (gcc >= 15)
+
+'true' and 'false' are proper keywords in C23.
+This fixes issue #165.
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+---
+ src/common/macros.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/common/macros.h b/src/common/macros.h
+index 3cab336..ea227ab 100644
+--- a/src/common/macros.h
++++ b/src/common/macros.h
+@@ -58,9 +58,11 @@
+ 
+ #ifndef _BOOL_DEFINED
+ #  define _BOOL_DEFINED
++# if __STDC_VERSION__ < 202311L
+ #  if !defined (true) && !defined (false)
+ typedef enum { false, true } bool;
+ #  endif
++# endif
+ #endif
+ 
+ #endif                          /* !_MACROS_INCLUDED */

@@ -47,7 +47,7 @@ SRC_URI="
 "
 
 S="${WORKDIR}/${PN}-${PN}-stable${PV}"
-LICENSE="BSD-2 MIT"
+LICENSE="BSD-2-with-patent MIT"
 SLOT="0"
 KEYWORDS="-* amd64 arm64"
 
@@ -56,7 +56,7 @@ BDEPEND="
 	app-emulation/qemu
 	app-emulation/virt-firmware
 	>=sys-power/iasl-20160729
-	amd64? ( >=dev-lang/nasm-2.0.7 )
+	amd64? ( <dev-lang/nasm-3 )
 "
 
 RDEPEND="

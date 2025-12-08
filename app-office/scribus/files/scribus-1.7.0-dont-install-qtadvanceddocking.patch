@@ -1,0 +1,86 @@
+--- a/scribus/third_party/Qt-Advanced-Docking-System/src/CMakeLists.txt
++++ b/scribus/third_party/Qt-Advanced-Docking-System/src/CMakeLists.txt
+@@ -71,13 +71,13 @@
+ endif()
+ 
+ set(library_name "qt${QT_VERSION_MAJOR}advanceddocking")
+-if(BUILD_STATIC)
++#if(BUILD_STATIC)
+     add_library(${library_name} STATIC ${ads_SRCS} ${ads_HEADERS})
+     target_compile_definitions( ${library_name} PUBLIC ADS_STATIC)
+-else()
+-    add_library( ${library_name} SHARED ${ads_SRCS} ${ads_HEADERS})
+-    target_compile_definitions( ${library_name} PRIVATE ADS_SHARED_EXPORT)
+-endif()
++#else()
++#    add_library( ${library_name} SHARED ${ads_SRCS} ${ads_HEADERS})
++#    target_compile_definitions( ${library_name} PRIVATE ADS_SHARED_EXPORT)
++#endif()
+ 
+ add_library(ads::${library_name} ALIAS ${library_name})
+ 
+@@ -119,35 +119,35 @@
+     VERSION ${VERSION_SHORT}
+     COMPATIBILITY SameMajorVersion
+ )
+-install(FILES ${ads_HEADERS}
+-    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${library_name}
+-    COMPONENT headers
+-)
+-install(FILES
+-    "${CMAKE_CURRENT_SOURCE_DIR}/../LICENSE"
+-    "${CMAKE_CURRENT_SOURCE_DIR}/../gnu-lgpl-v2.1.md"
+-    DESTINATION license/ads
+-    COMPONENT license
+-)
+-install(TARGETS ${library_name}
+-    EXPORT adsTargets
+-    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+-    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+-    INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${library_name}
+-)
+-
+-install(EXPORT adsTargets
+-    FILE adsTargets.cmake
+-    NAMESPACE ads::
+-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${library_name}
+-)
+-install(FILES qtadvanceddockingConfig.cmake RENAME ${library_name}Config.cmake
+-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${library_name}
+-)
+-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${library_name}ConfigVersion.cmake"
+-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${library_name}
+-)
++#install(FILES ${ads_HEADERS}
++#    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${library_name}
++#    COMPONENT headers
++#)
++#install(FILES
++#    "${CMAKE_CURRENT_SOURCE_DIR}/../LICENSE"
++#    "${CMAKE_CURRENT_SOURCE_DIR}/../gnu-lgpl-v2.1.md"
++#    DESTINATION license/ads
++#    COMPONENT license
++#)
++#install(TARGETS ${library_name}
++#    EXPORT adsTargets
++#    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++#    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++#    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++#    INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${library_name}
++#)
++#
++#install(EXPORT adsTargets
++#    FILE adsTargets.cmake
++#    NAMESPACE ads::
++#    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${library_name}
++#)
++#install(FILES qtadvanceddockingConfig.cmake RENAME ${library_name}Config.cmake
++#    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${library_name}
++#)
++#install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${library_name}ConfigVersion.cmake"
++#    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${library_name}
++#)
+ 
+ target_include_directories(${library_name} PUBLIC
+     $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>

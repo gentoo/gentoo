@@ -75,7 +75,7 @@ COMMON_DEPEND="
 	>=media-libs/x264-0.0.20220222:=
 	>=media-libs/zimg-3.0.4
 	media-sound/lame
-	sys-libs/zlib
+	virtual/zlib:=
 	fdk? ( media-libs/fdk-aac:= )
 	libdovi? ( media-libs/libdovi:= )
 	gui? (

@@ -158,6 +158,7 @@ www-apache
 www-apps
 www-client
 www-misc
+www-nginx
 www-plugins
 www-servers
 x11-apps

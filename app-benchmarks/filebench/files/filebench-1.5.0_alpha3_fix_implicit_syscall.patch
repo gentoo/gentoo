@@ -1,0 +1,22 @@
+PR pending / bug #906004
+https://github.com/filebench/filebench/pull/160.patch
+From bee9657493f66432a20d1e9e02132da5819b6133 Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Tue, 20 Dec 2022 10:11:08 +0100
+Subject: [PATCH] configure.ac: Improve C99 compatibility of HAVE_IOPRIO check
+
+Include <unistd.h> to obtain a declaration of the syscall function.
+Implicit function declarations are likely to be rejected by future
+compilers by default.
+--- a/configure.ac
++++ b/configure.ac
+@@ -370,7 +370,8 @@ AC_TRY_COMPILE([
+ # check for I/O priority system calls
+ AC_MSG_CHECKING(for I/O priority system calls)
+ AC_TRY_COMPILE([
+-	#include <syscall.h>],
++	#include <syscall.h>
++	#include <unistd.h>],
+   	[(void)syscall(__NR_ioprio_set, 0, 0, 0);
+ 	],[
+ 	    AC_DEFINE(HAVE_IOPRIO, 1, [ Define if you have I/O priority syscalls. ])

@@ -34,7 +34,7 @@ COMMON_DEPS="
 	sys-apps/texinfo
 	dev-libs/libpcre2
 	sys-libs/ncurses:=
-	sys-libs/zlib
+	virtual/zlib:=
 	virtual/blas
 	virtual/lapack
 	curl? ( net-misc/curl:= )
@@ -113,6 +113,9 @@ src_prepare() {
 	rm doc/interpreter/contributors.texi || die
 
 	eautoreconf
+
+	# bug 956766
+	rm build-aux/texinfo.tex || die
 }
 
 src_configure() {

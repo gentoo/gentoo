@@ -47,7 +47,7 @@ RDEPEND="
 	dev-libs/libsodium:=
 	dev-libs/openssl:0=[-bindist(-)]
 	dev-libs/snowball-stemmer:=
-	sys-libs/zlib
+	virtual/zlib:=
 	blas? (
 		virtual/blas
 		virtual/lapack
@@ -69,7 +69,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.12-cmake-lua-version.patch"
-	"${FILESDIR}/${PN}-3.12-unbundle-lua.patch"
+	"${FILESDIR}/${PN}-3.14.1-unbundle-lua.patch"
 	"${FILESDIR}/${PN}-3.12-unbundle-snowball.patch"
 )
 

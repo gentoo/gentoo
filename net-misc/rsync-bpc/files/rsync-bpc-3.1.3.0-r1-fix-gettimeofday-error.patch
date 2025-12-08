@@ -1,0 +1,13 @@
+--- rsync-bpc-3.1.3.0/configure.ac.old	2025-02-21 20:05:47.000000000 -0600
++++ rsync-bpc-3.1.3.0/configure.ac	2025-02-21 20:02:27.000000000 -0600
+@@ -852,7 +852,9 @@
+ 
+ AC_CACHE_CHECK([if gettimeofday takes tz argument],rsync_cv_HAVE_GETTIMEOFDAY_TZ,[
+ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <sys/time.h>
+-#include <unistd.h>]], [[struct timeval tv; exit(gettimeofday(&tv, NULL));]])],[rsync_cv_HAVE_GETTIMEOFDAY_TZ=yes],[rsync_cv_HAVE_GETTIMEOFDAY_TZ=no])])
++#ifdef HAVE_UNISTD_H
++#include <unistd.h>
++#endif]], [[struct timeval tv; return gettimeofday(&tv, NULL);]])],[rsync_cv_HAVE_GETTIMEOFDAY_TZ=yes],[rsync_cv_HAVE_GETTIMEOFDAY_TZ=no])])
+ if test x"$rsync_cv_HAVE_GETTIMEOFDAY_TZ" != x"no"; then
+     AC_DEFINE(HAVE_GETTIMEOFDAY_TZ, 1, [Define to 1 if gettimeofday() takes a time-zone arg])
+ fi

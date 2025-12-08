@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -25,13 +25,18 @@ RDEPEND="fuse? ( sys-fs/fuse:0= )
 	)
 	pfm? ( app-misc/pfm )
 	snmp? ( net-analyzer/net-snmp )
-	zlib? ( sys-libs/zlib )"
+	zlib? ( virtual/zlib:= )"
 DEPEND="${RDEPEND}"
 BDEPEND="app-admin/genromfs"
 
 src_prepare() {
 	default
 	sed -i -e 's/-lncurses/-lncurses -ltinfo/' "${S}"/hyptop/Makefile || die
+
+	# zipl only builds on 64bit
+	if use abi_s390_32 ; then
+		sed -i -e 's/^TOOL_DIRS = zipl /TOOL_DIRS = /' "${S}"/Makefile || die
+	fi
 }
 
 src_configure() {

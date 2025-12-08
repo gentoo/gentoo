@@ -19,14 +19,14 @@ LICENSE="Apache-2.0"
 # same build of ERTS that was used when compiling the code.  See
 # http://erlang.org/doc/system_principles/misc.html for more information.
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="doc emacs java +kpoll odbc sctp ssl systemd tk wxwidgets"
 
 RDEPEND="
 	acct-group/epmd
 	acct-user/epmd
 	sys-libs/ncurses:0
-	sys-libs/zlib
+	virtual/zlib:=
 	emacs? ( >=app-editors/emacs-23.1:* )
 	java? ( >=virtual/jdk-1.8:* )
 	odbc? ( dev-db/unixODBC )
@@ -83,7 +83,7 @@ src_configure() {
 		$(use_with java javac)
 		$(use_with odbc)
 		$(use_enable sctp)
-		$(use_with ssl ssl)
+		$(use_with ssl ssl="${EPREFIX}"/usr)
 		$(use_enable ssl dynamic-ssl-lib)
 		$(use_enable systemd)
 		$(usex wxwidgets "--with-wx-config=${WX_CONFIG}" "--with-wxdir=/dev/null")

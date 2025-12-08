@@ -1,0 +1,41 @@
+From df1718b0b155cee9ad58f8699f3335f879d710f2 Mon Sep 17 00:00:00 2001
+From: Andreas Schneider <asn@samba.org>
+Date: Thu, 17 Jul 2025 15:18:13 +0200
+Subject: [PATCH] tests: Add missing stdint.h
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf8
+Content-Transfer-Encoding: 8bit
+
+This is required by cmocka.
+
+Signed-off-by: Andreas Schneider <asn@samba.org>
+Reviewed-by: Pavel FilipenskÃ½ <pfilipensky@samba.org>
+---
+ tests/test_ioctl.c              | 1 +
+ tests/test_sendmsg_recvmsg_fd.c | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/tests/test_ioctl.c b/tests/test_ioctl.c
+index 25bec38..addcb36 100644
+--- a/tests/test_ioctl.c
++++ b/tests/test_ioctl.c
+@@ -1,5 +1,6 @@
+ #include <stdarg.h>
+ #include <stddef.h>
++#include <stdint.h>
+ #include <setjmp.h>
+ #include <cmocka.h>
+ 
+diff --git a/tests/test_sendmsg_recvmsg_fd.c b/tests/test_sendmsg_recvmsg_fd.c
+index 30c9861..1f8154d 100644
+--- a/tests/test_sendmsg_recvmsg_fd.c
++++ b/tests/test_sendmsg_recvmsg_fd.c
+@@ -1,5 +1,6 @@
+ #include <stdarg.h>
+ #include <stddef.h>
++#include <stdint.h>
+ #include <setjmp.h>
+ #include <cmocka.h>
+ 
+-- 
+2.34.1

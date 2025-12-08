@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2025-11-30)
+# sci-libs/blis and sci-libs/mkl do not have stable keywords
+sci-libs/flexiblas blis mkl
+
 # Sam James <sam@gentoo.org> (2025-04-20)
 # Needs dev-python/scipy for tests which often ends up destabled on arches
 # even if it was previously stable there, as its own test results vary a lot.
@@ -26,8 +30,6 @@ media-sound/liblc3 -test
 
 # Ionen Wolkens <ionen@gentoo.org> (2025-03-10)
 # dev-util/nvidia-cuda-toolkit may never be stabilized
-media-video/ffmpeg npp
-media-video/ffmpeg-compat npp
 media-libs/osl clang-cuda
 
 # Sam James <sam@gentoo.org> (2025-02-13)
@@ -47,10 +49,6 @@ dev-python/qtpy remoteobjects
 # No stable versions of ROCm at the moment
 sys-apps/hwloc rocm
 
-# Nowa Ammerlaan <nowa@gentoo.org> (2024-03-17)
-# Experimental, virt-firmware is keyworded only unstable
-sys-kernel/installkernel efistub
-
 # Ionen Wolkens <ionen@gentoo.org> (2024-01-16)
 # cuda (and thus cudnn) are not available in stable
 media-libs/opencv cudnn
@@ -58,14 +56,6 @@ media-libs/opencv cudnn
 # Joonas Niilola <juippis@gentoo.org> (2024-01-08)
 # Pulls in pandoc with all of its glory (haskell). #921501
 www-apps/hugo test
-
-# Jon Janzen <jon@jonjanzen.com> (2023-09-11)
-# librttopo has not been stabalized on this arch yet
-dev-db/spatialite rttopo
-
-# Sam James <sam@gentoo.org> (2023-05-15)
-# net-libs/rustls-ffi is not marked stable
-www-servers/apache apache2_modules_tls
 
 # Michał Górny <mgorny@gentoo.org> (2023-04-22)
 # pandoc is stable here.
@@ -81,11 +71,6 @@ llvm-runtimes/openmp llvm_targets_AMDGPU
 # Sam James <sam@gentoo.org> (2022-12-11)
 # net-libs/rustls-ffi is not yet marked stable
 net-misc/curl rustls curl_ssl_rustls ech
-
-# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
-# needs stabilizing
-media-video/ffmpeg vmaf
-media-video/ffmpeg-compat vmaf
 
 # Joonas Niilola <juippis@gentoo.org> (2021-08-13)
 # dev-libs/efl is stabilized on amd64.
@@ -118,10 +103,6 @@ sys-auth/pambase -sssd
 
 # Thomas Deutschmann <whissi@gentoo.org> (2018-06-01)
 net-analyzer/wireshark -doc
-
-# Thomas Beierlein <tomjbe@gentoo.org> (2018-04-20)
-# Needs asciidoctor which pulls a lot unstable ruby deps
-media-radio/wsjtx doc
 
 # Mikle Kolyada <zlogene@gentoo.org> (2018-03-18)
 # Pulls too much unstable ruby deps (some are not even keyworded)

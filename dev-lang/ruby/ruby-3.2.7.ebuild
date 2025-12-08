@@ -19,7 +19,7 @@ SLOT=$(ver_cut 1-2)
 MY_SUFFIX=$(ver_rs 1 '' ${SLOT})
 RUBYVERSION=${SLOT}.0
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="berkdb debug doc examples gdbm jemalloc jit socks5 +ssl static-libs systemtap tk valgrind xemacs"
 
 RDEPEND="
@@ -39,7 +39,7 @@ RDEPEND="
 	dev-libs/libyaml
 	dev-libs/libffi:=
 	sys-libs/readline:0=
-	sys-libs/zlib
+	virtual/zlib:=
 	virtual/libcrypt:=
 	>=app-eselect/eselect-ruby-20231008
 "
@@ -86,6 +86,7 @@ src_prepare() {
 	eapply "${FILESDIR}"/"${SLOT}"/010*.patch
 	eapply "${FILESDIR}"/"${SLOT}"/011*.patch
 	eapply "${FILESDIR}"/"${SLOT}"/013*.patch
+	eapply "${FILESDIR}"/"${SLOT}"/017*.patch
 	eapply "${FILESDIR}"/"${SLOT}"/902*.patch
 
 	if use elibc_musl ; then
@@ -157,9 +158,6 @@ src_configure() {
 	# In many places aliasing rules are broken; play it safe
 	# as it's risky with newer compilers to leave it as it is.
 	append-flags -fno-strict-aliasing
-	# Avoid a compile error with certain USE flag combinations when
-	# using std=gnu23, bug #945643 and bug #945502
-	append-cflags -std=gnu17
 
 	# Workaround for bug #938302
 	if use systemtap && has_version "dev-debug/systemtap[-dtrace-symlink(+)]" ; then

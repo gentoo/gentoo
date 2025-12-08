@@ -5,7 +5,7 @@ EAPI=8
 
 WANT_AUTOMAKE="none"
 GENTOO_DEPEND_ON_PERL="no"
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 USE_RUBY="ruby31 ruby32 ruby33"
 
 inherit autotools bash-completion-r1 db-use depend.apache flag-o-matic java-pkg-opt-2
@@ -16,14 +16,13 @@ DESCRIPTION="Advanced version control system"
 HOMEPAGE="https://subversion.apache.org/"
 SRC_URI="
 	mirror://apache/${PN}/${MY_P}.tar.bz2
-	https://archive.apache.org/dist/${PN}/${MY_P}.tar.bz2
 "
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0 BSD MIT BSD-2 FSFAP unicode"
 SLOT="0"
 if [[ ${PV} != *_rc* ]] ; then
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 fi
 IUSE="apache2 berkdb debug doc extras keyring java kwallet nls perl plaintext-password-storage ruby sasl test"
 RESTRICT="!test? ( test )"
@@ -38,7 +37,7 @@ COMMON_DEPEND="
 	>=dev-libs/libutf8proc-2.5.0:=
 	>=net-libs/serf-1.3.4
 	sys-apps/file
-	sys-libs/zlib
+	virtual/zlib:=
 	berkdb? ( >=sys-libs/db-4.0.14:= )
 	keyring? (
 		dev-libs/glib:2

@@ -5,7 +5,7 @@
    ADD_EXECUTABLE(clog-test test/clog.cc)
    SET_TARGET_PROPERTIES(clog-test PROPERTIES
 -    CXX_STANDARD 11
-+    CXX_STANDARD 14
++    CXX_STANDARD 17
      CXX_EXTENSIONS NO)
    CLOG_TARGET_RUNTIME_LIBRARY(clog-test)
    TARGET_LINK_LIBRARIES(clog-test PRIVATE clog gtest gtest_main)

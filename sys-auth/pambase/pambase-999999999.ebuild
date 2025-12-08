@@ -3,9 +3,9 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
-inherit pam python-any-r1 readme.gentoo-r1
+inherit edo pam python-any-r1 readme.gentoo-r1
 
 DESCRIPTION="PAM base configuration files"
 HOMEPAGE="https://github.com/gentoo/pambase"
@@ -70,27 +70,38 @@ python_check_deps() {
 }
 
 src_configure() {
-	${EPYTHON} ./${PN}.py \
-		$(usex caps '--caps' '') \
-		$(usex debug '--debug' '') \
-		$(usex elogind '--elogind' '') \
-		$(usex gnome-keyring '--gnome-keyring' '') \
-		$(usex homed '--homed' '') \
-		$(usex minimal '--minimal' '') \
-		$(usex mktemp '--mktemp' '') \
-		$(usex nullok '--nullok' '') \
-		$(usex pam_krb5 '--krb5' '') \
-		$(usex pam_ssh '--pam-ssh' '') \
-		$(usex passwdqc '--passwdqc' '') \
-		$(usex pwhistory '--pwhistory' '') \
-		$(usex pwquality '--pwquality' '') \
-		$(usex securetty '--securetty' '') \
-		$(usex selinux '--selinux' '') \
-		$(usex sha512 '--sha512' '') \
-		$(usex systemd '--systemd' '--openrc') \
-		$(usex yescrypt '--yescrypt' '') \
-		$(usex sssd '--sssd' '') \
-	|| die
+	local crypt=md5
+	# TODO: sha256, blowfish, gost_yescrypt
+	use sha512 && crypt=sha512
+	use yescrypt && crypt=yescrypt
+
+	local pamargs=(
+		# Not all 'upstream' options are (currently) wired up
+		# in the ebuild.
+		#
+		# TODO: pam_shells
+		$(usev caps '--caps')
+		$(usev debug '--debug')
+		$(usev elogind '--elogind')
+		$(usev gnome-keyring '--gnome-keyring')
+		$(usev homed '--homed')
+		$(usev minimal '--minimal')
+		$(usev mktemp '--mktemp')
+		$(usev nullok '--nullok')
+		$(usev pam_krb5 '--krb5')
+		$(usev pam_ssh '--pam-ssh')
+		$(usev passwdqc '--passwdqc')
+		$(usev pwhistory '--pwhistory')
+		$(usev pwquality '--pwquality')
+		$(usev securetty '--securetty')
+		$(usev selinux '--selinux')
+		$(usex systemd '--systemd' '--openrc')
+		$(usev sssd '--sssd')
+
+		--encrypt=${crypt}
+	)
+
+	edo ${EPYTHON} ./${PN}.py "${pamargs[@]}"
 }
 
 src_test() { :; }

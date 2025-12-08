@@ -1,0 +1,216 @@
+commit 594f576033e8042c1339e45a5ca67dd0395b9788
+Author: Martin Dummer <martin.dummer@gmx.net>
+Date:   Sun Oct 12 23:58:35 2025 +0200
+
+    add priority and lifetime to timer list
+
+diff --git a/po/de.po b/po/de.po
+index d532626..6cd13d4 100644
+--- a/po/de.po
++++ b/po/de.po
+@@ -1511,3 +1511,15 @@ msgstr "Timer"
+ 
+ msgid "System default"
+ msgstr "Systemstandard"
++
++msgid "Priority"
++msgstr "Priorität"
++
++msgid "Lifetime"
++msgstr "Lebenszeit"
++
++msgid "Show priority in timer list:"
++msgstr "Timer-Priorität in Timer-Liste anzeigen:"
++
++msgid "Show lifetime in timer list:"
++msgstr "Aufnahme-Lebenszeit in Timer-Liste anzeigen:"
+diff --git a/po/vdradmin.pot b/po/vdradmin.pot
+index 74f854b..4d9a04d 100644
+--- a/po/vdradmin.pot
++++ b/po/vdradmin.pot
+@@ -1523,3 +1523,15 @@ msgstr ""
+ 
+ msgid "System default"
+ msgstr ""
++
++msgid "Priority"
++msgstr ""
++
++msgid "Lifetime"
++msgstr ""
++
++msgid "Show priority in timer list:"
++msgstr ""
++
++msgid "Show lifetime in timer list:"
++msgstr ""
+diff --git a/template/default/config.html b/template/default/config.html
+index 094a327..a3318ab 100644
+--- a/template/default/config.html
++++ b/template/default/config.html
+@@ -315,6 +315,20 @@
+ 					<input type="radio" name="TM_TT_LIST" value="0" id="tm_tl_list_no" <?% UNLESS config.TM_TT_LIST %?>checked="checked"<?% END %?> /><label for="tm_tl_list_no"><?% gettext('No') %?></label>
+ 				</td>
+ 			</tr>
++			<tr class="row_odd">
++				<td class="col_label"><h5><?% gettext('Show priority in timer list:') %?></h5></td>
++				<td class="col_value">
++					<input type="radio" name="TM_LIST_PRIORITY" value="1" id="tm_list_priority_yes" <?% IF config.TM_LIST_PRIORITY %?>checked="checked"<?% END %?> /><label for="tm_list_priority_yes"><?% gettext('Yes') %?></label>
++					<input type="radio" name="TM_LIST_PRIORITY" value="0" id="tm_list_priority_no" <?% UNLESS config.TM_LIST_PRIORITY %?>checked="checked"<?% END %?> /><label for="tm_list_priority_no"><?% gettext('No') %?></label>
++				</td>
++			</tr>
++			<tr class="row_even">
++				<td class="col_label"><h5><?% gettext('Show lifetime in timer list:') %?></h5></td>
++				<td class="col_value">
++					<input type="radio" name="TM_LIST_LIFETIME" value="1" id="tm_list_lifetime_yes" <?% IF config.TM_LIST_LIFETIME %?>checked="checked"<?% END %?> /><label for="tm_list_lifetime_yes"><?% gettext('Yes') %?></label>
++					<input type="radio" name="TM_LIST_LIFETIME" value="0" id="tm_list_lifetime_no" <?% UNLESS config.TM_LIST_LIFETIME %?>checked="checked"<?% END %?> /><label for="tm_list_lifetime_no"><?% gettext('No') %?></label>
++				</td>
++			</tr>
+ 		</table>
+ 
+ <?% IF config.ST_FUNC %?>
+diff --git a/template/default/timer_list.html b/template/default/timer_list.html
+index cafe28d..cf47459 100644
+--- a/template/default/timer_list.html
++++ b/template/default/timer_list.html
+@@ -304,6 +304,32 @@
+ 							</a>
+ 						</h2>
+ 					</td>
++				<?% IF showprio %?>
++					<td class="col_prio <?% IF sortbyprio %?>selected<?% END %?>">
++						<h2>
++							<a href="<?% sortbypriourl %?>"><?% gettext('Priority') %?>
++								<?% IF sortbyprio %?>
++									<img src="bilder/sortiert_<?% desc %?>.gif" alt="" width="9" height="11" border="0" />
++								<?% ELSE %?>
++									<img src="bilder/spacer.gif" alt="" width="9" height="11" border="0" />
++								<?% END %?>
++							</a>
++						</h2>
++					</td>
++				<?% END %?>
++				<?% IF showlft %?>
++					<td class="col_lft <?% IF sortbylft %?>selected<?% END %?>">
++						<h2>
++							<a href="<?% sortbylfturl %?>"><?% gettext('Lifetime') %?>
++								<?% IF sortbylft %?>
++									<img src="bilder/sortiert_<?% desc %?>.gif" alt="" width="9" height="11" border="0" />
++								<?% ELSE %?>
++									<img src="bilder/spacer.gif" alt="" width="9" height="11" border="0" />
++								<?% END %?>
++							</a>
++						</h2>
++					</td>
++				<?% END %?>
+ 					<td class="col_name <?% IF sortbyname %?>selected<?% END %?>">
+ 						<h2>
+ 							<a href="<?% sortbynameurl %?>">
+@@ -396,6 +422,16 @@
+ 							<?% timer.stop %?>
+ 						</div>
+ 					</td>
++				<?% IF showprio %?>
++					<td class="col_prio <?% IF timer.sortbyprio %?>selected<?% END %?>">
++						<div><?% timer.prio %?></div>
++					</td>
++				<?% END %?>
++				<?% IF showlft %?>
++					<td class="col_lft <?% IF timer.sortbylft %?>selected<?% END %?>">
++						<div><?% timer.lft %?></div>
++					</td>
++				<?% END %?>
+ 					<td class="col_name <?% IF timer.sortbyname %?>selected<?% END %?>">
+ 						<div <?% IF config.TM_TT_LIST %?>onmouseover="tip('VDR-
+ 							<?% timer.id %?>'); return true;" onmouseout="untip(); return true;"
+diff --git a/vdradmind.pl b/vdradmind.pl
+index 7e83baa..08acbac 100755
+--- a/vdradmind.pl
++++ b/vdradmind.pl
+@@ -213,6 +213,8 @@ $CONFIG{TM_TT_TIMELINE}  = 1;
+ $CONFIG{TM_TT_LIST}      = 1;
+ $CONFIG{TM_SORTBY}       = "day";
+ $CONFIG{TM_DESC}         = 0;
++$CONFIG{TM_LIST_PRIORITY}= 0;	# show timer's priority in timerlist
++$CONFIG{TM_LIST_LIFETIME}= 0;	# show timer's lifetime in timerlist
+ 
+ #
+ $CONFIG{ST_FUNC}           = 1;
+@@ -4717,6 +4719,8 @@ sub timer_list {
+     $CONFIG{TM_DESC} = ($q->param("desc") ? 1 : 0) if (defined($q->param("desc")));
+     $CONFIG{TM_SORTBY} = $q->param("sortby") if (defined($q->param("sortby")));
+     $CONFIG{TM_SORTBY} = "day" if (!$CONFIG{TM_SORTBY});
++    $CONFIG{TM_SORTBY} = "day" if (($CONFIG{TM_SORTBY} eq "prio") && (! $CONFIG{TM_LIST_PRIORITY}));
++    $CONFIG{TM_SORTBY} = "day" if (($CONFIG{TM_SORTBY} eq "lft") && (! $CONFIG{TM_LIST_LIFETIME}));
+ 
+     #
+     my @timer;
+@@ -4757,6 +4761,8 @@ sub timer_list {
+         $timer->{sortbyname}    = 1 if ($CONFIG{TM_SORTBY} eq "name");
+         $timer->{sortbystart}   = 1 if ($CONFIG{TM_SORTBY} eq "start");
+         $timer->{sortbystop}    = 1 if ($CONFIG{TM_SORTBY} eq "stop");
++        $timer->{sortbyprio}    = 1 if ($CONFIG{TM_SORTBY} eq "prio");
++        $timer->{sortbylft}     = 1 if ($CONFIG{TM_SORTBY} eq "lft");
+         $timer->{sortbyday}     = 1 if ($CONFIG{TM_SORTBY} eq "day");
+ 
+         $timer->{transponder} = get_transponder_from_vdrid($timer->{vdr_id});
+@@ -4941,6 +4947,18 @@ sub timer_list {
+         } else {
+             @timer = sort({ $a->{stop} <=> $b->{stop} } @timer);
+         }
++    } elsif ($CONFIG{TM_SORTBY} eq "prio") {
++        if ($CONFIG{TM_DESC}) {
++            @timer = sort({ $b->{prio} <=> $a->{prio} } @timer);
++        } else {
++            @timer = sort({ $a->{prio} <=> $b->{prio} } @timer);
++        }
++    } elsif ($CONFIG{TM_SORTBY} eq "lft") {
++        if ($CONFIG{TM_DESC}) {
++            @timer = sort({ $b->{lft} <=> $a->{lft} } @timer);
++        } else {
++            @timer = sort({ $a->{lft} <=> $b->{lft} } @timer);
++        }
+     } elsif ($CONFIG{TM_SORTBY} eq "day") {
+         if ($CONFIG{TM_DESC}) {
+             @timer = sort({ $b->{startsse} <=> $a->{startsse} } @timer);
+@@ -4958,13 +4976,19 @@ sub timer_list {
+                  sortbyactiveurl  => "$MyURL?aktion=timer_list&amp;sortby=active&amp;desc=" .  (($CONFIG{TM_SORTBY} eq "active")  ? $toggle_desc : $CONFIG{TM_DESC}),
+                  sortbystarturl   => "$MyURL?aktion=timer_list&amp;sortby=start&amp;desc=" .   (($CONFIG{TM_SORTBY} eq "start")   ? $toggle_desc : $CONFIG{TM_DESC}),
+                  sortbystopurl    => "$MyURL?aktion=timer_list&amp;sortby=stop&amp;desc=" .    (($CONFIG{TM_SORTBY} eq "stop")    ? $toggle_desc : $CONFIG{TM_DESC}),
++                 sortbypriourl    => "$MyURL?aktion=timer_list&amp;sortby=prio&amp;desc=" .    (($CONFIG{TM_SORTBY} eq "prio")    ? $toggle_desc : $CONFIG{TM_DESC}),
++                 sortbylfturl     => "$MyURL?aktion=timer_list&amp;sortby=lft&amp;desc=" .     (($CONFIG{TM_SORTBY} eq "lft")     ? $toggle_desc : $CONFIG{TM_DESC}),
+                  sortbyday     => ($CONFIG{TM_SORTBY} eq "day")     ? 1 : 0,
+                  sortbychannel => ($CONFIG{TM_SORTBY} eq "channel") ? 1 : 0,
+                  sortbyname    => ($CONFIG{TM_SORTBY} eq "name")    ? 1 : 0,
+                  sortbyactive  => ($CONFIG{TM_SORTBY} eq "active")  ? 1 : 0,
+                  sortbystart   => ($CONFIG{TM_SORTBY} eq "start")   ? 1 : 0,
+                  sortbystop    => ($CONFIG{TM_SORTBY} eq "stop")    ? 1 : 0,
++                 sortbyprio    => ($CONFIG{TM_SORTBY} eq "prio")    ? 1 : 0,
++                 sortbylft     => ($CONFIG{TM_SORTBY} eq "lft")     ? 1 : 0,
+                  sortby        => $CONFIG{TM_SORTBY},
++                 showprio      => $CONFIG{TM_LIST_PRIORITY},
++                 showlft       => $CONFIG{TM_LIST_LIFETIME},
+                  desc          => $CONFIG{TM_DESC} ? "desc" : "asc",
+                  timer_loop    => \@timer,
+                  timers        => \@timer2,
+diff --git a/template/default/style.css b/template/default/style.css
+index 3f83433..c454a3b 100644
+--- a/template/default/style.css
++++ b/template/default/style.css
+@@ -479,11 +479,16 @@ body.help .heading {
+ }
+ .col_start,
+ .col_stop,
++.col_prio,
+ .col_date,
+ .col_time {
+ 	width: 75px;
+ 	text-align: left;
+ }
++.col_lft {
++	width: 85px;
++	text-align: left;
++}
+ .col_length {
+ 	width: 75px;
+ 	text-align: right;

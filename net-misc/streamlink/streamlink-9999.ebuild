@@ -44,7 +44,7 @@ RDEPEND="
 		>=dev-python/websocket-client-1.2.1[${PYTHON_USEDEP}]
 		dev-python/pycountry[${PYTHON_USEDEP}]
 		>=dev-python/pycryptodome-3.4.3[${PYTHON_USEDEP}]
-		>dev-python/pysocks-1.5.7[${PYTHON_USEDEP}]
+		>dev-python/pysocks-1.5.7-r9999[${PYTHON_USEDEP}]
 		>=dev-python/trio-0.22.0[${PYTHON_USEDEP}]
 		>=dev-python/trio-websocket-0.9.0[${PYTHON_USEDEP}]
 		>=dev-python/urllib3-1.26.0[${PYTHON_USEDEP}]
@@ -67,5 +67,7 @@ if [[ ${PV} == 9999* ]]; then
 		')
 	"
 fi
+
+EPYTEST_PLUGINS=( pytest-trio freezegun requests-mock )
 
 distutils_enable_tests pytest

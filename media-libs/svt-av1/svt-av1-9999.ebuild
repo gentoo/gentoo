@@ -24,18 +24,19 @@ SLOT="0/$(ver_cut 1)"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="amd64? ( dev-libs/cpuinfo )"
-DEPEND="${RDEPEND}"
 BDEPEND="
 	amd64? ( dev-lang/yasm )
 	test? ( dev-util/gtest-parallel )
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.5.0-fortify-no-override.patch
+	"${FILESDIR}"/${PN}-3.1.2-fortify-no-override.patch
 )
 
 src_prepare() {
+	# Unused project that triggers the cmake eclasses minimum required cmake check
+	rm -rf gstreamer-plugin || die
+
 	cmake_src_prepare
 
 	# Lets not install tests
@@ -53,7 +54,6 @@ multilib_src_configure() {
 		# Other enviroments will fail to build due to missing symbols.
 		-DBUILD_TESTING=$(multilib_native_usex test)
 		-DCMAKE_OUTPUT_DIRECTORY="${BUILD_DIR}"
-		-DUSE_CPUINFO=SYSTEM # will only be used on amd64
 	)
 
 	[[ ${ABI} != amd64 ]] && mycmakeargs+=( -DCOMPILE_C_ONLY=ON )

@@ -17,6 +17,23 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
+# dev-perl/Template-GD is not stable here. Bug #962143
+dev-perl/Template-Toolkit gd
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
+# dev-perl/GD-Barcode is not stable here. Bug #962143
+dev-perl/Business-ISBN barcode
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
+# dev-perl/GD is not stable here. Bug #962143
+media-fonts/unifont utils fontforge
+
+# Sam James <sam@gentoo.org> (2025-07-19)
+# Gradually unmask for newer Rust to avoid making users recompile for
+# the change. See bug #735154.
+<dev-lang/rust-1.86 system-llvm
+
 # Sam James <sam@gentoo.org> (2025-04-26)
 # dev-python/scipy is not marked stable here
 dev-cpp/benchmark tools
@@ -43,7 +60,7 @@ dev-ruby/kramdown unicode
 # Sam James <sam@gentoo.org> (2022-11-19)
 # Deps not stable on ppc
 llvm-core/clang-common default-lld
-llvm-core/clang-runtime default-lld
+llvm-runtimes/clang-runtime default-lld
 llvm-core/llvm binutils-plugin z3 xar
 
 # Sam James <sam@gentoo.org> (2022-07-27)

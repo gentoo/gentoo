@@ -11,10 +11,8 @@ MY_P="${MY_PN}-${PV}-bin-all"
 DESCRIPTION="Web-based interactive data analytics notebook launcher"
 HOMEPAGE="https://zeppelin.apache.org"
 SRC_URI="mirror://apache/zeppelin/${MY_PN}-${PV}/${MY_P}.tgz -> ${P}.tgz
-	https://archive.apache.org/dist/zeppelin/${MY_PN}-${PV}/${MY_P}.tgz -> ${P}.tgz
 	verify-sig? (
-		https://downloads.apache.org/zeppelin/zeppelin-${PV}/${MY_P}.tgz.asc -> ${P}.tgz.asc
-		https://archive.apache.org/dist/zeppelin/${MY_PN}-${PV}/${MY_P}.tgz.asc -> ${P}.tgz.asc
+		mirror://apache/zeppelin/${MY_PN}-${PV}/${MY_P}.tgz.asc -> ${P}.tgz.asc
 	)"
 S="${WORKDIR}/${MY_P}"
 

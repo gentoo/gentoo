@@ -1,0 +1,40 @@
+From 8b8e64253c27a8ad4f35f70db5627cf54ebfdb9c Mon Sep 17 00:00:00 2001
+From: Dominik 'Rathann' Mierzejewski <dominik@greysector.net>
+Date: Tue, 14 Oct 2025 13:37:48 +0200
+Subject: [PATCH] use default cpu instead of ia64
+
+Recent NASM release (3.0+) enforces cpu levels more strictly, causing
+assembly to fail otherwise.
+
+Fixes #401 .
+---
+ src/core/bandwidth/OOC/utility-x86-64bit.asm | 2 +-
+ src/core/bandwidth/routines-x86-64bit.asm    | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/core/bandwidth/OOC/utility-x86-64bit.asm b/src/core/bandwidth/OOC/utility-x86-64bit.asm
+index 259d9f4b..9c360540 100644
+--- a/src/core/bandwidth/OOC/utility-x86-64bit.asm
++++ b/src/core/bandwidth/OOC/utility-x86-64bit.asm
+@@ -20,7 +20,7 @@
+ ;=============================================================================
+ 
+ bits	64
+-cpu	ia64
++cpu	default
+ 
+ ; Note:
+ ; Unix ABI says integer param are put in these registers in this order:
+diff --git a/src/core/bandwidth/routines-x86-64bit.asm b/src/core/bandwidth/routines-x86-64bit.asm
+index 67c9d5fe..675f8800 100644
+--- a/src/core/bandwidth/routines-x86-64bit.asm
++++ b/src/core/bandwidth/routines-x86-64bit.asm
+@@ -38,7 +38,7 @@
+ %endif
+ 
+ bits	64
+-cpu	ia64
++cpu	default
+ 
+ global	CopyWithMainRegisters
+ global	_CopyWithMainRegisters

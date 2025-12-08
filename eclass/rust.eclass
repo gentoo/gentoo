@@ -67,7 +67,10 @@ fi
 # @DESCRIPTION:
 # Definitive list of Rust slots and the associated LLVM slot, newest first.
 declare -A -g -r _RUST_LLVM_MAP=(
-	["9999"]=20
+	["9999"]=21
+	["1.91.0"]=21
+	["1.90.0"]=20
+	["1.89.0"]=20
 	["1.88.0"]=20
 	["1.87.0"]=20
 	["1.86.0"]=19
@@ -95,6 +98,9 @@ declare -A -g -r _RUST_LLVM_MAP=(
 # this array is used to store the Rust slots in a more convenient order for iteration.
 declare -a -g -r _RUST_SLOTS_ORDERED=(
 	"9999"
+	"1.91.0"
+	"1.90.0"
+	"1.89.0"
 	"1.88.0"
 	"1.87.0"
 	"1.86.0"
@@ -137,12 +143,14 @@ declare -a -g -r _RUST_SLOTS_ORDERED=(
 # == control variables ==
 
 # @ECLASS_VARIABLE: RUST_MAX_VER
+# @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Highest Rust slot supported by the package. Needs to be set before
 # rust_pkg_setup is called. If unset, no upper bound is assumed.
 
 # @ECLASS_VARIABLE: RUST_MIN_VER
+# @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Lowest Rust slot supported by the package. Needs to be set before
@@ -161,6 +169,7 @@ declare -a -g -r _RUST_SLOTS_ORDERED=(
 # This is set by rust_pkg_setup.
 
 # @ECLASS_VARIABLE: RUST_NEEDS_LLVM
+# @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If set to a non-empty value generate a llvm_slot_${llvm_slot}? gated
@@ -173,6 +182,7 @@ declare -a -g -r _RUST_SLOTS_ORDERED=(
 # means that a LLVM slot in LLVM_COMPAT has had all of its Rust slots filtered.
 
 # @ECLASS_VARIABLE: RUST_MULTILIB
+# @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If set to a non-empty value insert MULTILIB_USEDEP into the generated
@@ -188,6 +198,7 @@ declare -a -g -r _RUST_SLOTS_ORDERED=(
 # implementations listed in LLVM_COMPAT.
 
 # @ECLASS_VARIABLE: RUST_OPTIONAL
+# @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If set to a non-empty value, the Rust dependency will not be added
@@ -195,6 +206,7 @@ declare -a -g -r _RUST_SLOTS_ORDERED=(
 # certain USE themselves.
 
 # @ECLASS_VARIABLE: RUST_REQ_USE
+# @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Additional USE-dependencies to be added to the Rust dependency.

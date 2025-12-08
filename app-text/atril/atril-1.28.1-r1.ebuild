@@ -4,17 +4,14 @@
 EAPI=8
 
 MATE_LA_PUNT="yes"
-
-PYTHON_COMPAT=( python3_{10..12} )
-
+PYTHON_COMPAT=( python3_{11..13} )
 inherit mate python-any-r1 virtualx
 
 DESCRIPTION="Atril document viewer for MATE"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
 
 LICENSE="FDL-1.1+ GPL-2+ GPL-3+ LGPL-2+ LGPL-2.1+"
 SLOT="0"
-
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
 IUSE="caja dbus debug djvu dvi epub +introspection keyring nls +postscript synctex t1lib test tiff xps"
 
 REQUIRED_USE="t1lib? ( dvi )"
@@ -25,7 +22,7 @@ DEPEND="
 	dev-libs/glib:2
 	dev-libs/libxml2:2=
 	>=mate-base/mate-desktop-$(ver_cut 1-2)
-	sys-libs/zlib
+	virtual/zlib:=
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3[introspection?]
 	x11-libs/libICE
@@ -44,7 +41,7 @@ DEPEND="
 		net-libs/webkit-gtk:4.1
 	)
 	keyring? ( app-crypt/libsecret )
-	introspection? ( dev-libs/gobject-introspection:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	postscript? ( app-text/libspectre )
 	synctex? ( virtual/tex-base )
 	tiff? ( media-libs/tiff:= )

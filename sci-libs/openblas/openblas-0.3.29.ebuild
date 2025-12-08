@@ -14,7 +14,7 @@ S="${WORKDIR}"/${MY_P}
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv ~x86 ~amd64-linux ~x86-linux ~x64-macos"
-IUSE="dynamic eselect-ldso index-64bit openmp pthread relapack test"
+IUSE="dynamic eselect-ldso index64 openmp pthread relapack test"
 REQUIRED_USE="?? ( openmp pthread )"
 RESTRICT="!test? ( test )"
 
@@ -65,8 +65,8 @@ src_prepare() {
 	sed -i -e "/^all :: tests/s: tests::g" Makefile || die
 
 	# If 64bit-index is needed, create second library with LIBPREFIX=libopenblas64
-	if use index-64bit; then
-		cp -aL "${S}" "${S}-index-64bit" || die
+	if use index64; then
+		cp -aL "${S}" "${S}-index64" || die
 	fi
 }
 
@@ -123,8 +123,8 @@ src_compile() {
 
 	use eselect-ldso && emake -C interface shared-blas-lapack
 
-	if use index-64bit; then
-		emake -C "${S}-index-64bit" \
+	if use index64; then
+		emake -C "${S}-index64" \
 			  INTERFACE64=1 \
 			  LIBPREFIX=libopenblas64 shared
 	fi
@@ -141,8 +141,8 @@ src_install() {
 
 	dodoc GotoBLAS_*.txt *.md Changelog.txt
 
-	if use index-64bit; then
-		dolib.so "${S}-index-64bit"/libopenblas64*.so*
+	if use index64; then
+		dolib.so "${S}-index64"/libopenblas64*.so*
 	fi
 
 	if use eselect-ldso; then

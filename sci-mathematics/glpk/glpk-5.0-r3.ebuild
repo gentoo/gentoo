@@ -11,14 +11,14 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0/40"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples gmp odbc mysql"
 
 BDEPEND="virtual/pkgconfig"
 DEPEND="
 	sci-libs/amd:0=
 	sci-libs/colamd:=
-	sys-libs/zlib:0=
+	virtual/zlib:=
 	gmp? ( dev-libs/gmp:0= )
 	mysql? (
 		dev-db/mysql-connector-c

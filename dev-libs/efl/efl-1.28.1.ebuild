@@ -48,7 +48,7 @@ RDEPEND="${LUA_DEPS}
 	media-libs/libpng:=
 	sys-apps/dbus
 	sys-apps/util-linux
-	sys-libs/zlib
+	virtual/zlib:=
 	X? (
 		!opengl? ( media-libs/libglvnd )
 		media-libs/freetype

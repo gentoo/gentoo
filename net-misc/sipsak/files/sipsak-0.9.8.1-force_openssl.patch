@@ -1,0 +1,26 @@
+use openssl with md5 instead of gnutls and outdated-vendor-md5
+https://bugs.gentoo.org/880535
+https://bugs.gentoo.org/898094
+--- a/configure.ac
++++ b/configure.ac
+@@ -52,12 +52,6 @@ PKG_CHECK_MODULES([CHECK], [check >= 0.9.3], [
+     AC_DEFINE([HAVE_CHECK_H], [1], [Has check.h])
+   ],:)
+ 
+-PKG_CHECK_MODULES([GNUTLS], [gnutls >= 1.0.0], [
+-    AC_DEFINE([HAVE_GNUTLS], [1], [Has gnutls >= 1.0.0])
+-    HAVE_GNUTLS=1
+-    LIBS="${LIBS} ${GNUTLS_LIBS}"
+-    CFLAGS="${CFLAGS} ${GNUTLS_CFLAGS}"
+-  ], [
+     AC_CHECK_HEADERS([openssl/md5.h], [
+       AC_SEARCH_LIBS([MD5_Init], [crypto], [
+         AC_DEFINE([HAVE_CRYPTO_WITH_MD5], [1], [The crypto lib has MD5 functions])
+@@ -69,7 +63,6 @@ PKG_CHECK_MODULES([GNUTLS], [gnutls >= 1.0.0], [
+         AC_DEFINE([HAVE_CRYPTO_WITH_SHA1], [1], [The crpyto lib has SHA1 functions])
+       ])
+     ])
+-])
+ PKG_CHECK_MODULES([GNUTLS319], [gnutls >= 3.1.9], [
+     AC_DEFINE([HAVE_GNUTLS_319], [1], [Has gntuls >= 3.1.9])
+   ],:)

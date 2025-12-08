@@ -22,7 +22,7 @@ RDEPEND="
 	>=dev-libs/glib-2.66:2
 	>=net-libs/libsoup-3:3.0[introspection?]
 	playlist? ( >=dev-libs/totem-pl-parser-3.4.1:= )
-	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 
 	gtk? (
 		net-libs/liboauth

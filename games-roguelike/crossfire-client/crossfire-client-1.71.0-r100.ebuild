@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,7 +27,7 @@ RDEPEND="
 	sdl? ( media-libs/libsdl[video]
 		media-libs/sdl-image[png] )
 	sound? ( media-libs/sdl-mixer[vorbis] )
-	sys-libs/zlib
+	virtual/zlib:=
 	x11-libs/gtk+:2"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"

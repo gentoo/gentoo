@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,9 +13,7 @@ if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/osmocom/gr-iqbal.git"
 else
-	COMMIT="fbee239a6fb36dd2fb564f6e6a0d393c4bc844db"
-	SRC_URI="https://github.com/osmocom/gr-iqbal/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/${PN}-${COMMIT}"
+	SRC_URI="https://github.com/osmocom/gr-iqbal/archive/refs/tags/v${PV}.tar.gz -> "${P}.gh.tar.gz""
 	KEYWORDS="~amd64 ~arm ~riscv ~x86"
 fi
 

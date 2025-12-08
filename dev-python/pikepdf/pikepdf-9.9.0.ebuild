@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="big-endian"
 
 # Check QPDF_MIN_VERSION in pyproject.toml on bumps, as well as
@@ -38,11 +38,9 @@ BDEPEND="
 	>=dev-python/setuptools-scm-7.0.5[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/attrs-20.2.0[${PYTHON_USEDEP}]
-		>=dev-python/hypothesis-6.36[${PYTHON_USEDEP}]
 		>=dev-python/numpy-1.21.0[${PYTHON_USEDEP}]
 		>=dev-python/pillow-5.0.0[${PYTHON_USEDEP},jpeg,lcms,tiff]
 		>=dev-python/psutil-5.9[${PYTHON_USEDEP}]
-		>=dev-python/pytest-timeout-2.1.0[${PYTHON_USEDEP}]
 		>=dev-python/python-dateutil-2.8.1[${PYTHON_USEDEP}]
 		!big-endian? (
 			>=dev-python/python-xmp-toolkit-2.0.1[${PYTHON_USEDEP}]
@@ -51,6 +49,7 @@ BDEPEND="
 	)
 "
 
+EPYTEST_PLUGINS=( hypothesis pytest-timeout )
 distutils_enable_tests pytest
 
 src_prepare() {
@@ -60,13 +59,7 @@ src_prepare() {
 }
 
 python_test() {
-	local EPYTEST_DESELECT=(
-		# fragile to system load
-		tests/test_image_access.py::test_random_image
-		tests/test_image_access.py::test_image_save_compare
-		tests/test_image_access.py::test_palette_nonrgb
-	)
-
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -p timeout
+	# work around https://github.com/pikepdf/pikepdf/issues/660
+	local -x TMPDIR=/tmp
+	epytest
 }
