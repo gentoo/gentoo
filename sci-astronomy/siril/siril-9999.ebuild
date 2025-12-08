@@ -3,7 +3,10 @@
 
 EAPI=8
 
-inherit meson toolchain-funcs xdg
+PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_REQ_USE="tk"
+
+inherit meson python-r1 toolchain-funcs xdg
 
 DESCRIPTION="A free astronomical image processing software"
 HOMEPAGE="https://siril.org/"
@@ -37,6 +40,7 @@ DEPEND="
 	x11-libs/cairo
 	x11-libs/pango
 	>=x11-libs/gtk+-3.22.0:3
+	virtual/zlib:=
 	curl? ( net-misc/curl )
 	exif? ( >=media-gfx/exiv2-0.25:= )
 	ffmpeg? ( media-video/ffmpeg:= )
@@ -48,14 +52,22 @@ DEPEND="
 	raw? ( media-libs/libraw:= )
 	tiff? ( media-libs/tiff:= )
 "
+
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
 RDEPEND="
 	${DEPEND}
+	${PYTHON_DEPS}
+	dev-python/pip[${PYTHON_USEDEP}]
+	dev-python/virtualenv[${PYTHON_USEDEP}]
 "
-BDEPEND="dev-build/cmake
-	x11-base/xorg-proto"
+BDEPEND="
+	dev-build/cmake
+	x11-base/xorg-proto
+"
 
 PATCHES=(
-	"${FILESDIR}/${P}-docfiles.patch"
+	"${FILESDIR}/${PN}-1.4-docfiles.patch"
 )
 
 DOCS=( README.md ChangeLog AUTHORS )
