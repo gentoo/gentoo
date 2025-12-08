@@ -42,7 +42,6 @@ PDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/ninja-cflags.patch
-	"${FILESDIR}"/${PN}-1.13.2-allow-psuedo-fifo.patch
 )
 
 pkg_setup() {
