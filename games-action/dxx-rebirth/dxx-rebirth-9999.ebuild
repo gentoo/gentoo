@@ -236,7 +236,7 @@ src_install() {
 		local PROGRAM=d${DV}x-rebirth
 		docinto "${PROGRAM}"
 		dodoc "${PROGRAM}"/*.txt
-		make_desktop_entry "${PROGRAM}" "Descent ${DV} Rebirth" "${PROGRAM}"
+		make_desktop_entry --eapi9 "${PROGRAM}" -n "Descent ${DV} Rebirth" -i "${PROGRAM}"
 		doicon "${PROGRAM}/${PROGRAM}.xpm"
 	done
 }
