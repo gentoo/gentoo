@@ -15,7 +15,6 @@ LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="amd64"
 
-IUSE="jetbrains"
 RESTRICT="bindist strip"
 
 RDEPEND="
@@ -36,13 +35,6 @@ src_install() {
 	rm -f README.md LICENSE.md package.json || die
 	# remove vendored ripgrep
 	rm -rf vendor/ripgrep || die
-
-	# Install extentions these under /opt, and let users configure their
-	# IDEs appropriately if they have opted-into having them installed.
-	# Normally I wouldn't allow a few megs of data to be USE-flag-toggled,
-	# but removing these cuts the already-small package size in half, so
-	# it seems worth it.
-	use jetbrains || rm -r vendor/${PN}-jetbrains-plugin || die
 
 	insinto /opt/${PN}
 	doins -r ./*
@@ -77,4 +69,9 @@ pkg_preinst() {
 	if test -f "${ROOT}/etc/${PN}/policies.json"; then
 		mv "${ROOT}/etc/${PN}/policies.json" "${ROOT}/etc/${PN}/managed-settings.json"
 	fi
+}
+
+pkg_postinst() {
+	elog "As of claude-code 2.0.61, the jetbrains plugin is no longer bundled."
+	elog "Users of the jetbrains IDE plugin should source it elsewhere."
 }
