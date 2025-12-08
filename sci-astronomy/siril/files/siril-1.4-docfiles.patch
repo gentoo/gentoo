@@ -1,0 +1,44 @@
+--- a/meson.build
++++ b/meson.build
+@@ -709,7 +709,6 @@ subdir('data')
+ subdir('po')
+ subdir('python_module')
+ subdir('scripts')
+-subdir('3rdparty_licenses')
+ 
+ ################################################################################
+ # Install misc
+@@ -728,12 +727,6 @@ man_files = [
+ ]
+ 
+ install_man(man_files)
+-install_data(['AUTHORS', 'LICENSE.md'],
+-             rename : [
+-	       'doc/siril/AUTHORS',
+-	       'doc/siril/LICENSE.md',
+-	     ],
+-             install_dir : siril_share)
+ 
+ 
+ ################################################################################
+--- a/python_module/meson.build
++++ b/python_module/meson.build
+@@ -9,16 +9,7 @@ install_data(python_files,
+             install_dir: siril_datadir + '/python_module'
+ )
+             
+-install_data(['README.md'],
+-            install_dir: siril_share + 'doc/siril/python_module'
+-)
+-
+-# Create the locale directory in doc and install its README.md
+-install_data(['locale/README.md'],
+-            install_dir: siril_share + 'doc/siril/python_module/locale'
+-)
+-
+ # Install the entire 'sirilpy' subdirectory (this will handle all .py files in sirilpy/)
+ install_subdir('sirilpy',
+             install_dir: siril_datadir + '/python_module'
+-)
+\ No newline at end of file
++)

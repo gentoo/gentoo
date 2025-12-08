@@ -1,0 +1,33 @@
+From 0ea30faf4236432a43aa552f53447c9bcdb3a57c Mon Sep 17 00:00:00 2001
+From: Cyril Richard <cyril.richard42@gmail.com>
+Date: Sun, 7 Dec 2025 21:09:34 +0100
+Subject: [PATCH] Closes #1886
+Upstream: https://gitlab.com/free-astro/siril/-/issues/1886
+
+(cherry picked from commit 4b74c4de02e5341d82999837bc9d46e889780356)
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -1,3 +1,8 @@
++siril-1.4.1
++--/--/--
++**Fixes**
++* Fixes build error when compiled without libgit2 (#1886)
++
+ siril-1.4.0
+ 12/05/25
+ **Improvements**
+--- a/src/io/siril_pythonmodule.c
++++ b/src/io/siril_pythonmodule.c
+@@ -2153,7 +2153,9 @@ static PythonVenvInfo* prepare_venv_environment(const gchar *venv_path) {
+ 		// this repopulates gui.repo_scripts and updates the script menu
+ 		// the reason for doing it on completion of python installation is that pyscript_version_check
+ 		// cannot check python script versions until it knows what module version is installed
++#ifdef HAVE_LIBGIT2
+ 		g_thread_unref(g_thread_new("update_scripts_list", update_repo_scripts_list_and_menu_in_thread, NULL));
++#endif
+ 	}
+ 	g_free(module_path);
+ 
+-- 
+GitLab
+
