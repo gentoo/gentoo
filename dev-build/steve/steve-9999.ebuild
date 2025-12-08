@@ -5,7 +5,7 @@ EAPI=8
 
 inherit git-r3 linux-info meson systemd udev
 
-DESCRIPTION="A simple jobserver for Gentoo"
+DESCRIPTION="A load-balancing jobserver for Gentoo"
 HOMEPAGE="https://gitweb.gentoo.org/proj/steve.git/"
 EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/steve.git"
 
