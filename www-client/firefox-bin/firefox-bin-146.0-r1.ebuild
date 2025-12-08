@@ -58,7 +58,7 @@ RDEPEND="${DEPEND}
 	media-libs/alsa-lib
 	media-libs/fontconfig
 	>=media-libs/freetype-2.4.10
-	<media-video/ffmpeg-8.0
+	media-video/ffmpeg
 	sys-apps/dbus
 	virtual/freedesktop-icon-theme
 	>=x11-libs/cairo-1.10[X]
