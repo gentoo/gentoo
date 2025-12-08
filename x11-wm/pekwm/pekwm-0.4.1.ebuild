@@ -22,6 +22,8 @@ IUSE="debug +jpeg pango +png test truetype xinerama +xpm"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	net-misc/curl
+	virtual/udev
 	x11-libs/libX11
 	x11-libs/libXext
 	jpeg? ( media-libs/libjpeg-turbo:= )
