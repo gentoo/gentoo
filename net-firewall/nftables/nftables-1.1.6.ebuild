@@ -88,7 +88,8 @@ src_configure() {
 		$(use_with xtables)
 	)
 
-	econf "${myeconfargs[@]}"
+	# bash until 1.1.7 (https://git.netfilter.org/nftables/commit/?id=2e3c68f26d5bd60c8ea7467fa9018c282a7d8c47)
+	CONFIG_SHELL="${BROOT}"/bin/bash econf "${myeconfargs[@]}"
 
 	if use python; then
 		pushd py >/dev/null || die
