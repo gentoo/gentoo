@@ -1,0 +1,19 @@
+PR pending https://github.com/mhogomchungu/zuluCrypt/pull/241.patch
+remove -pie for shared-libs zuluCrypt and zuluCrypt-exe
+see https://bugs.gentoo.org/961174
+--- a/zuluCrypt-cli/CMakeLists.txt
++++ b/zuluCrypt-cli/CMakeLists.txt
+@@ -132,11 +132,11 @@ endif()
+         TARGET_LINK_LIBRARIES( zuluCrypt     String StringList Process ${cryptsetup_lib} ${blkid} ${uuid_lib} ${devmapper_lib} -lgcrypt -lzuluplay )
+  endif()
+ 
+- set_target_properties( zuluCrypt PROPERTIES LINK_FLAGS "-pie -Wl,-z,relro -Wl,-z,now" )
++ set_target_properties( zuluCrypt PROPERTIES LINK_FLAGS "-Wl,-z,relro -Wl,-z,now" )
+ 
+  TARGET_LINK_LIBRARIES( zuluCrypt-exe zuluCrypt zuluCryptPluginManager )
+ 
+- set_target_properties( zuluCrypt-exe PROPERTIES LINK_FLAGS "-pie -Wl,-z,relro -Wl,-z,now" )
++ set_target_properties( zuluCrypt-exe PROPERTIES LINK_FLAGS "-Wl,-z,relro -Wl,-z,now" )
+ 
+  #TARGET_LINK_LIBRARIES( zuluCrypt-static String StringList Process )
+  #TARGET_LINK_LIBRARIES( zuluCrypt-exe-static zuluCrypt-static zuluCryptPluginManager-static )
