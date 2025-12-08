@@ -1,0 +1,46 @@
+https://github.com/mariadb-corporation/wsrep-lib/pull/257
+
+From cac2ae3d9ea218637b6ef3b05bd5dfe5f32457bf Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Sun, 7 Dec 2025 23:18:13 +0800
+Subject: [PATCH] Fix compilation for gcc 15 with musl libc
+
+when building on Gentoo with the musl profile, gcc 15 reports the
+following errors:
+
+> In file included from /var/tmp/portage/dev-db/mariadb-11.8.3-r2/work/mysql/wsrep-lib/src/provider_options.cpp:20:
+> /var/tmp/portage/dev-db/mariadb-11.8.3-r2/work/mysql/wsrep-lib/include/wsrep/provider_options.hpp:114:30: error: unknown type name 'int64_t'
+>   114 |             option_value_int(int64_t value)
+>       |                              ^
+> /var/tmp/portage/dev-db/mariadb-11.8.3-r2/work/mysql/wsrep-lib/include/wsrep/provider_options.hpp:127:13: error: unknown type name 'int64_t'
+>   127 |             int64_t value_;
+>       |             ^
+> /var/tmp/portage/dev-db/mariadb-11.8.3-r2/work/mysql/wsrep-lib/include/wsrep/provider_options.hpp:127:21: warning: private field 'value_' is not used [-Wunused-private-field]
+>   127 |             int64_t value_;
+>       |                     ^
+> 1 warning and 2 errors generated.
+
+The root cause is that including <memory> pulls in bits/align.h, and GCC
+15 has removed the implicit inclusion of <stdint.h> from bits/align.h.
+As a result, int64_t is no longer defined unless <cstdint> is explicitly
+included.
+
+This patch adds the missing <cstdint> include to fix the build.
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/wsrep-lib/include/wsrep/provider_options.hpp b/wsrep-lib/include/wsrep/provider_options.hpp
+index 022e159..7009a20 100644
+--- a/wsrep-lib/include/wsrep/provider_options.hpp
++++ b/wsrep-lib/include/wsrep/provider_options.hpp
+@@ -31,6 +31,7 @@
+ #include <map>
+ #include <memory>
+ #include <string>
++#include <cstdint>
+ 
+ namespace wsrep
+ {
+-- 
+2.49.1
+
