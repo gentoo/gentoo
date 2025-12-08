@@ -3,31 +3,7 @@
 
 EAPI=8
 
-CARGO_OPTIONAL=1
-
-CRATES="
-	cc@1.0.83
-	cfg-if@1.0.0
-	libc@0.2.152
-	libloading@0.7.4
-	libusb1-sys@0.6.4
-	once_cell@1.19.0
-	pkg-config@0.3.29
-	proc-macro2@1.0.78
-	quote@1.0.35
-	rusb@0.9.3
-	serde@1.0.195
-	serde_derive@1.0.195
-	syn@2.0.48
-	toml@0.5.11
-	unicode-ident@1.0.12
-	vcpkg@0.2.15
-	winapi-i686-pc-windows-gnu@0.4.0
-	winapi-x86_64-pc-windows-gnu@0.4.0
-	winapi@0.3.9
-"
-
-inherit cargo cmake toolchain-funcs xdg
+inherit cmake toolchain-funcs xdg
 
 MY_PN="${PN^^}"
 MY_P="${MY_PN}-${PV}"
@@ -40,7 +16,6 @@ else
 	SRC_URI="
 		https://github.com//Rosalie241/${MY_PN}/archive/v${PV}/${MY_P}.tar.gz \
 			-> ${P}.tar.gz
-		rust-plugin? ( ${CARGO_CRATE_URIS} )
 	"
 	S="${WORKDIR}/${MY_P}"
 	KEYWORDS="~amd64"
@@ -49,13 +24,13 @@ fi
 LICENSE="
 	BSD-2 CC0-1.0 GPL-2 GPL-3 MIT ZLIB public-domain
 	angrylion-plugin? ( XMAME )
-	rust-plugin? ( ISC Unicode-DFS-2016 )
 "
 SLOT="0"
-IUSE="angrylion-plugin discord dynarec netplay rust-plugin"
+IUSE="angrylion-plugin dynarec netplay"
 
 DEPEND="
 	dev-libs/hidapi
+	dev-libs/libusb:1
 	dev-qt/qtbase:6[gui,opengl,vulkan,widgets]
 	dev-qt/qtsvg:6
 	media-libs/freetype
@@ -66,45 +41,15 @@ DEPEND="
 	virtual/minizip:=
 	virtual/opengl
 	netplay? ( dev-qt/qtwebsockets:6 )
-	rust-plugin? ( dev-libs/libusb:1 )
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	dynarec? ( dev-lang/nasm )
-	rust-plugin? ( ${RUST_DEPEND} )
 "
-
-PATCHES=(
-	# https://github.com/Rosalie241/RMG/issues/436
-	"${FILESDIR}"/${PN}-0.8.3-rust.patch
-)
-
-pkg_setup() {
-	QA_FLAGS_IGNORED="/usr/$(get_libdir)/RMG/Plugin/Input/libmupen64plus_input_gca.so"
-	use rust-plugin && rust_pkg_setup
-}
-
-src_unpack() {
-	if [[ "${PV}" == *9999 ]] ; then
-		git-r3_src_unpack
-		if use rust-plugin; then
-			S="${S}"/Source/3rdParty/mupen64plus-input-gca \
-			cargo_live_src_unpack
-		fi
-	else
-		if use rust-plugin; then
-			cargo_src_unpack
-		else
-			default
-		fi
-	fi
-}
 
 src_prepare() {
 	# Remove unused 3rdParty code - https://bugs.gentoo.org/959468
-	rm -r "${S}"/Source/3rdParty/discord-rpc/thirdparty/rapidjson/example || die
-	rm -r "${S}"/Source/3rdParty/fmt || die
 	rm -r "${S}"/Source/3rdParty/imgui/examples || die
 	rm -r "${S}"/Source/3rdParty/mupen64plus-rsp-parallel/win32 || die
 
@@ -124,19 +69,15 @@ src_prepare() {
 
 src_configure() {
 	export PKG_CONFIG="$(tc-getPKG_CONFIG)"
-	export PKG_CONFIG_ALLOW_CROSS=1
 
 	local mycmakeargs=(
 		-DAPPIMAGE_UPDATER=OFF
-		-DDISCORD_RPC=$(usex discord)
 		-DNETPLAY=$(usex netplay)
 		-DNO_ASM=$(usex dynarec OFF ON)
-		-DNO_RUST=$(usex rust-plugin OFF ON)
 		-DPORTABLE_INSTALL=OFF
 		-DUPDATER=OFF
 		-DUSE_ANGRYLION=$(usex angrylion-plugin)
 		-DUSE_CCACHE=OFF
-		-DUSE_LIBFMT=OFF # Use std::format
 		-DUSE_LTO=OFF
 		-DVRU=OFF # Precompiled binaries
 	)
