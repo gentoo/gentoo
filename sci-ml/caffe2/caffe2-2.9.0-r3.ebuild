@@ -71,7 +71,7 @@ RDEPEND="
 	dev-libs/protobuf:=
 	dev-libs/sleef
 	~sci-ml/kineto-0.4.0_p20250617
-	<sci-ml/onnx-1.18.0
+	sci-ml/onnx
 	virtual/lapack
 	cuda? (
 		dev-libs/cudnn
@@ -153,7 +153,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.1-unbundle_kineto.patch
 	"${FILESDIR}"/${PN}-2.8.0-unbundle_pocketfft.patch
 	"${FILESDIR}"/${PN}-2.5.1-cudnn_include_fix.patch
-	"${FILESDIR}"/${PN}-2.9.0-gentoo.patch
+	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${PN}-2.4.0-cpp-httplib.patch
 	"${FILESDIR}"/${PN}-2.5.1-glog-0.6.0.patch
 	"${FILESDIR}"/${PN}-2.5.1-newfix-functorch-install.patch
@@ -161,9 +161,14 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.7.0-glog-0.7.1.patch
 	"${FILESDIR}"/${PN}-2.7.1-aotriton-fixes.patch
 	"${FILESDIR}"/${PN}-2.8.0-rocm-minus-flash.patch
-	"${FILESDIR}"/${PN}-2.9.0-cmake.patch
-	"${FILESDIR}"/${PN}-2.9.0-rocm-distributed-link.patch
+	"${FILESDIR}"/${P}-cmake.patch
+	"${FILESDIR}"/${P}-rocm-distributed-link.patch
 )
+
+pkg_setup() {
+	python-single-r1_pkg_setup
+	use cuda && cuda_pkg_setup
+}
 
 src_prepare() {
 	if use cuda && ( use flash || use memefficient ); then
