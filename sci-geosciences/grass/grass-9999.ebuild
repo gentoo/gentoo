@@ -277,8 +277,7 @@ os.environ\[\"GRASS_PYTHON\"\] = \"${EPYTHON}\":" \
 		-i "${ED}"/usr/bin/grass || die
 
 	if use X; then
-		local GUI="--gui"
-		make_desktop_entry "/usr/bin/grass ${GUI}" "${PN}" "${PN}-48x48" "Science;Education"
+		make_desktop_entry --eapi9 grass -a "--gui" -n "${PN}" -i "${PN}-48x48" -c "Science;Education"
 		doicon -s 48 gui/icons/${PN}-48x48.png
 	fi
 
