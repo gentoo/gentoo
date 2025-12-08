@@ -9,129 +9,126 @@ CRATES="
 	aead@0.5.2
 	aes-gcm@0.10.3
 	aes@0.8.4
-	aho-corasick@1.1.3
-	android-tzdata@0.1.1
+	aho-corasick@1.1.4
 	android_system_properties@0.1.5
-	anstyle@1.0.10
-	anyhow@1.0.97
+	anstyle@1.0.13
+	anyhow@1.0.100
 	argon2@0.5.3
 	ascii-canvas@3.0.0
-	assert_cmd@2.0.16
-	autocfg@1.4.0
+	assert_cmd@2.1.1
+	autocfg@1.5.0
 	base16ct@0.2.0
 	base64@0.22.1
-	base64ct@1.6.0
+	base64ct@1.8.0
 	bindgen@0.70.1
 	bit-set@0.5.3
 	bit-vec@0.6.3
-	bitflags@2.9.0
+	bitflags@2.10.0
 	blake2@0.10.6
 	block-buffer@0.10.4
 	block-padding@0.3.3
 	blowfish@0.9.1
 	botan-sys@0.11.1
 	botan@0.11.1
-	bstr@1.11.3
+	bstr@1.12.1
 	buffered-reader@1.4.0
-	bumpalo@3.17.0
+	bumpalo@3.19.0
 	byteorder@1.5.0
 	camellia@0.1.0
 	cast5@0.11.1
-	cc@1.2.17
+	cc@1.2.47
 	cdylib-link-lines@0.1.5
 	cexpr@0.6.0
 	cfb-mode@0.8.2
-	cfg-if@1.0.0
-	chrono@0.4.40
+	cfg-if@1.0.4
+	chrono@0.4.42
 	cipher@0.4.4
 	clang-sys@1.8.1
 	cmac@0.7.2
 	const-oid@0.9.6
 	core-foundation-sys@0.8.7
 	cpufeatures@0.2.17
-	crunchy@0.2.3
+	crunchy@0.2.4
 	crypto-bigint@0.5.5
-	crypto-common@0.1.6
+	crypto-common@0.1.7
 	ctr@0.9.2
 	curve25519-dalek-derive@0.1.1
 	curve25519-dalek@4.1.3
 	dbl@0.3.2
-	der@0.7.9
+	der@0.7.10
 	des@0.8.1
 	difflib@0.4.0
 	digest@0.10.7
 	dirs-next@2.0.0
 	dirs-sys-next@0.1.2
 	displaydoc@0.2.5
-	doc-comment@0.3.3
+	doc-comment@0.3.4
 	dsa@0.6.3
-	dyn-clone@1.0.19
+	dyn-clone@1.0.20
 	eax@0.5.0
 	ecb@0.1.2
 	ecdsa@0.16.9
-	ed25519-dalek@2.1.1
+	ed25519-dalek@2.2.0
 	ed25519@2.2.3
 	either@1.15.0
 	elliptic-curve@0.13.8
 	ena@0.14.3
 	equivalent@1.0.2
-	errno@0.3.10
+	errno@0.3.14
 	fastrand@2.3.0
 	ff@0.13.1
 	fiat-crypto@0.2.9
+	find-msvc-tools@0.1.5
 	fixedbitset@0.4.2
 	foreign-types-shared@0.1.1
 	foreign-types@0.3.2
 	generic-array@0.14.7
-	getrandom@0.2.15
-	getrandom@0.3.2
+	getrandom@0.2.16
+	getrandom@0.3.4
 	ghash@0.5.1
-	glob@0.3.2
+	glob@0.3.3
 	group@0.13.0
-	hashbrown@0.15.2
+	hashbrown@0.16.1
 	hkdf@0.12.4
 	hmac@0.12.1
 	iana-time-zone-haiku@0.1.2
-	iana-time-zone@0.1.63
-	icu_collections@1.5.0
-	icu_locid@1.5.0
-	icu_locid_transform@1.5.0
-	icu_locid_transform_data@1.5.1
-	icu_normalizer@1.5.0
-	icu_normalizer_data@1.5.1
-	icu_properties@1.5.1
-	icu_properties_data@1.5.1
-	icu_provider@1.5.0
-	icu_provider_macros@1.5.0
+	iana-time-zone@0.1.64
+	icu_collections@2.1.1
+	icu_locale_core@2.1.1
+	icu_normalizer@2.1.1
+	icu_normalizer_data@2.1.1
+	icu_properties@2.1.1
+	icu_properties_data@2.1.1
+	icu_provider@2.1.1
 	idea@0.5.1
-	idna@1.0.3
-	idna_adapter@1.2.0
-	indexmap@2.8.0
+	idna@1.1.0
+	idna_adapter@1.2.1
+	indexmap@2.12.1
 	inout@0.1.4
 	itertools@0.11.0
 	itertools@0.13.0
-	js-sys@0.3.77
+	js-sys@0.3.82
 	keccak@0.1.5
 	lalrpop-util@0.20.2
 	lalrpop@0.20.2
 	lazy_static@1.5.0
-	libc@0.2.171
-	libloading@0.8.6
-	libm@0.2.11
-	libredox@0.1.3
-	linux-raw-sys@0.9.3
-	litemap@0.7.4
-	lock_api@0.4.12
-	log@0.4.27
+	libc@0.2.177
+	libloading@0.8.9
+	libm@0.2.15
+	libredox@0.1.10
+	linux-raw-sys@0.11.0
+	litemap@0.8.1
+	lock_api@0.4.14
+	log@0.4.28
 	md-5@0.10.6
-	memchr@2.7.4
+	memchr@2.7.6
 	memsec@0.7.0
 	minimal-lexical@0.2.1
 	nettle-sys@2.3.1
 	nettle@7.4.0
 	new_debug_unreachable@1.0.6
 	nom@7.1.3
-	num-bigint-dig@0.8.4
+	num-bigint-dig@0.8.6
 	num-integer@0.1.46
 	num-iter@0.1.45
 	num-traits@0.2.19
@@ -139,13 +136,13 @@ CRATES="
 	once_cell@1.21.3
 	opaque-debug@0.3.1
 	openssl-macros@0.1.1
-	openssl-sys@0.9.106
-	openssl@0.10.71
+	openssl-sys@0.9.111
+	openssl@0.10.75
 	p256@0.13.2
 	p384@0.13.1
 	p521@0.13.3
-	parking_lot@0.12.3
-	parking_lot_core@0.9.10
+	parking_lot@0.12.5
+	parking_lot_core@0.9.12
 	password-hash@0.5.0
 	pem-rfc7468@0.7.0
 	petgraph@0.6.5
@@ -154,120 +151,111 @@ CRATES="
 	pkcs8@0.10.2
 	pkg-config@0.3.32
 	polyval@0.6.2
+	potential_utf@0.1.4
 	ppv-lite86@0.2.21
 	precomputed-hash@0.1.1
 	predicates-core@1.0.9
 	predicates-tree@1.0.12
 	predicates@3.1.3
 	primeorder@0.13.6
-	proc-macro2@1.0.94
-	quote@1.0.40
-	r-efi@5.2.0
+	proc-macro2@1.0.103
+	quote@1.0.42
+	r-efi@5.3.0
 	rand@0.8.5
 	rand_chacha@0.3.1
 	rand_core@0.6.4
-	redox_syscall@0.5.10
+	redox_syscall@0.5.18
 	redox_users@0.4.6
-	regex-automata@0.4.9
-	regex-syntax@0.8.5
-	regex@1.11.1
+	regex-automata@0.4.13
+	regex-syntax@0.8.8
+	regex@1.12.2
 	rfc6979@0.4.0
 	ripemd@0.1.3
-	rsa@0.9.8
+	rsa@0.9.9
 	rustc-hash@1.1.0
 	rustc_version@0.4.1
-	rustix@1.0.3
-	rustversion@1.0.20
+	rustix@1.1.2
+	rustversion@1.0.22
 	same-file@1.0.6
 	scopeguard@1.2.0
 	sec1@0.7.3
-	semver@1.0.26
+	semver@1.0.27
 	sequoia-openpgp@2.0.0
 	sequoia-policy-config@0.8.0
-	serde@1.0.219
-	serde_derive@1.0.219
+	serde@1.0.228
+	serde_core@1.0.228
+	serde_derive@1.0.228
 	sha1collisiondetection@0.3.4
-	sha2@0.10.8
+	sha2@0.10.9
 	sha3@0.10.8
 	shlex@1.3.0
 	signature@2.2.0
 	siphasher@1.0.1
-	smallvec@1.14.0
+	smallvec@1.15.1
 	spin@0.9.8
 	spki@0.7.3
-	stable_deref_trait@1.2.0
+	stable_deref_trait@1.2.1
 	string_cache@0.8.9
 	subtle@2.6.1
-	syn@2.0.100
-	synstructure@0.13.1
-	tempfile@3.19.1
+	syn@2.0.111
+	synstructure@0.13.2
+	tempfile@3.23.0
 	term@0.7.0
 	termtree@0.5.1
 	thiserror-impl@1.0.69
-	thiserror-impl@2.0.12
+	thiserror-impl@2.0.17
 	thiserror@1.0.69
-	thiserror@2.0.12
+	thiserror@2.0.17
 	tiny-keccak@2.0.2
-	tinystr@0.7.6
+	tinystr@0.8.2
 	toml@0.5.11
 	twofish@0.7.1
-	typenum@1.18.0
-	unicode-ident@1.0.18
+	typenum@1.19.0
+	unicode-ident@1.0.22
 	unicode-xid@0.2.6
 	universal-hash@0.5.1
-	utf16_iter@1.0.5
 	utf8_iter@1.0.4
 	vcpkg@0.2.15
 	version_check@0.9.5
 	wait-timeout@0.2.1
 	walkdir@2.5.0
-	wasi@0.11.0+wasi-snapshot-preview1
-	wasi@0.14.2+wasi-0.2.4
-	wasm-bindgen-backend@0.2.100
-	wasm-bindgen-macro-support@0.2.100
-	wasm-bindgen-macro@0.2.100
-	wasm-bindgen-shared@0.2.100
-	wasm-bindgen@0.2.100
+	wasi@0.11.1+wasi-snapshot-preview1
+	wasip2@1.0.1+wasi-0.2.4
+	wasm-bindgen-macro-support@0.2.105
+	wasm-bindgen-macro@0.2.105
+	wasm-bindgen-shared@0.2.105
+	wasm-bindgen@0.2.105
 	win-crypto-ng@0.5.1
 	winapi-i686-pc-windows-gnu@0.4.0
-	winapi-util@0.1.9
+	winapi-util@0.1.11
 	winapi-x86_64-pc-windows-gnu@0.4.0
 	winapi@0.3.9
-	windows-core@0.61.0
-	windows-implement@0.60.0
-	windows-interface@0.59.1
-	windows-link@0.1.1
-	windows-result@0.3.2
-	windows-strings@0.4.0
-	windows-sys@0.59.0
-	windows-targets@0.52.6
-	windows_aarch64_gnullvm@0.52.6
-	windows_aarch64_msvc@0.52.6
-	windows_i686_gnu@0.52.6
-	windows_i686_gnullvm@0.52.6
-	windows_i686_msvc@0.52.6
-	windows_x86_64_gnu@0.52.6
-	windows_x86_64_gnullvm@0.52.6
-	windows_x86_64_msvc@0.52.6
-	wit-bindgen-rt@0.39.0
-	write16@1.0.0
-	writeable@0.5.5
+	windows-core@0.62.2
+	windows-implement@0.60.2
+	windows-interface@0.59.3
+	windows-link@0.2.1
+	windows-result@0.4.1
+	windows-strings@0.5.1
+	windows-sys@0.61.2
+	wit-bindgen@0.46.0
+	writeable@0.6.2
 	x25519-dalek@2.0.1
 	xxhash-rust@0.8.15
-	yoke-derive@0.7.5
-	yoke@0.7.5
-	zerocopy-derive@0.8.24
-	zerocopy@0.8.24
+	yoke-derive@0.8.1
+	yoke@0.8.1
+	zerocopy-derive@0.8.30
+	zerocopy@0.8.30
 	zerofrom-derive@0.1.6
-	zerofrom@0.1.5
-	zeroize@1.8.1
+	zerofrom@0.1.6
+	zeroize@1.8.2
 	zeroize_derive@1.4.2
-	zerovec-derive@0.10.3
-	zerovec@0.10.4
+	zerotrie@0.2.3
+	zerovec-derive@0.11.2
+	zerovec@0.11.5
 "
 
-LLVM_COMPAT=( 18 19 )
-RUST_MIN_VER="1.79.0"
+LLVM_COMPAT=( {19..21} )
+RUST_MIN_VER="1.85.0"
 RUST_NEEDS_LLVM=1
 
 inherit cargo llvm-r1
@@ -286,7 +274,7 @@ LICENSE+="
 	|| ( GPL-2 GPL-3 LGPL-3 )
 "
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~sparc ~x86"
 IUSE="nettle +openssl"
 REQUIRED_USE="^^ ( nettle openssl )"
 
