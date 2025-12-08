@@ -24,7 +24,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	dev-cpp/jsoncons
+	<dev-cpp/jsoncons-1.5.0
 	dev-cpp/pcg-cpp
 "
 BDEPEND="virtual/pkgconfig"
