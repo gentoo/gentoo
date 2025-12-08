@@ -288,6 +288,9 @@ pkg_postinst() {
 	fi
 
 	if ver_replacing -lt 3.0; then
+		ewarn "Make sure that ${EPREFIX}/var/lib/kea and all the files in it are owned by dhcp:"
+		ewarn "chown -R dhcp:dhcp ${EPREFIX}/var/lib/kea"
+		ewarn
 		ewarn "If using openrc;"
 		ewarn "  There are now separate conf.d scripts and associated init.d per daemon!"
 		ewarn "    Each Daemon needs to be launched separately, i.e. the daemons are"
