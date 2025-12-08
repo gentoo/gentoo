@@ -39,7 +39,7 @@ IUSE="+deno"
 # (should "typically" be updated in Gentoo within 24h if willing to wait)
 RDEPEND="
 	dev-python/pycryptodome[${PYTHON_USEDEP}]
-	~dev-python/yt-dlp-ejs-0.3.2[${PYTHON_USEDEP}]
+	=dev-python/yt-dlp-ejs-0.3*[${PYTHON_USEDEP}]
 	deno? ( dev-lang/deno-bin )
 "
 BDEPEND="
