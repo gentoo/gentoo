@@ -15,8 +15,6 @@ KEYWORDS="~amd64"
 
 DOCS=( ChangeLog README.md )
 
-PATCHES=( "${FILESDIR}/${P}-cmake4-compat.patch" )
-
 pkg_postinst() {
 	ewarn "Defragmentation should be done OFFLINE only! You MUST unmount your reiserfs partition before starting ${PN}"
 }
