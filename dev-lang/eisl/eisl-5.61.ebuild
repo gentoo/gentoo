@@ -33,7 +33,7 @@ DEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-5.53-makefile.patch"
+	"${FILESDIR}/${P}-makefile.patch"
 )
 
 src_compile() {
@@ -41,7 +41,7 @@ src_compile() {
 	# don't clean and compile in one invocation with --shuffle possible
 	local target=""
 	for target in clean edlis eisl ; do
-		emake CC="$(tc-getCC)" FLAGS="${CFLAGS} ${LDFLAGS}" "${target}"
+		emake CC="$(tc-getCC)" FLAGS="${LDFLAGS}" "${target}"
 	done
 }
 
