@@ -14,7 +14,7 @@ fi
 
 declare -A QT6_IUSE=(
 	[global]="+ssl +udev zstd"
-	[core]="icu journald syslog"
+	[core]="icu io-uring journald syslog"
 	[modules]="+concurrent +dbus +gui +network +sql +xml"
 
 	[gui]="
@@ -65,6 +65,7 @@ COMMON_DEPEND="
 	dev-libs/glib:2
 	dev-libs/libpcre2:=[pcre16,unicode(+)]
 	icu? ( dev-libs/icu:= )
+	io-uring? ( sys-libs/liburing:= )
 	journald? ( sys-apps/systemd )
 
 	dbus? ( sys-apps/dbus )
@@ -241,6 +242,7 @@ src_configure() {
 
 		# qtcore
 		$(qt_feature icu)
+		$(qt_feature io-uring liburing)
 		$(qt_feature journald)
 		$(qt_feature syslog)
 		# currently jemalloc upstream is dead and tests fail with it
