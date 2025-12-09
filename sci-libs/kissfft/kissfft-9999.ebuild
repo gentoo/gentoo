@@ -3,11 +3,11 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit cmake multibuild python-any-r1 toolchain-funcs
 
-DESCRIPTION="A Fast Fourier Transform (FFT) library that tries to Keep it Simple, Stupid"
+DESCRIPTION="Fast Fourier Transform (FFT) library that tries to Keep it Simple, Stupid"
 HOMEPAGE="https://github.com/mborgerding/kissfft"
 
 if [[ ${PV} == *9999 ]] ; then
@@ -23,7 +23,9 @@ SLOT="0"
 IUSE="alloca cpu_flags_x86_sse double int16 int32 openmp test tools"
 RESTRICT="!test? ( test )"
 
+RDEPEND="tools? ( media-libs/libpng:= )"
 DEPEND="
+	${RDEPEND}
 	test? (
 		sci-libs/fftw:3.0
 		$(python_gen_any_dep '
@@ -33,6 +35,7 @@ DEPEND="
 "
 
 PATCHES=(
+	# PR pending https://github.com/mborgerding/kissfft/pull/92
 	"${FILESDIR}"/${PN}-131.1.0-cmake.patch
 )
 
