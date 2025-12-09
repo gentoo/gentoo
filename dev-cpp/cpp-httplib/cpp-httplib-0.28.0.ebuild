@@ -25,6 +25,7 @@ LICENSE="MIT"
 SLOT="0/$(ver_cut 0-2)"  # soversion
 
 IUSE="brotli ssl test zlib zstd"
+REQUIRED_USE="test? ( brotli zlib zstd )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
