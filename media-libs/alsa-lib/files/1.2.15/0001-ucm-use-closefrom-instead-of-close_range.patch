@@ -1,0 +1,51 @@
+From a068cf08ad67447893b707cddfce31c9cafee643 Mon Sep 17 00:00:00 2001
+Message-ID: <a068cf08ad67447893b707cddfce31c9cafee643.1765319211.git.sam@gentoo.org>
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Mon, 8 Dec 2025 23:46:17 -0500
+Subject: [PATCH 1/4] ucm: use closefrom instead of close_range
+
+closefrom is a library function with a fallback mechanism for when the
+kernel does not support the close_range syscall.
+
+Also check for the function properly instead of assuming it is available
+with _GNU_SOURCE defined.
+
+Closes: https://github.com/alsa-project/alsa-lib/pull/486
+Fixes: https://github.com/alsa-project/alsa-lib/issues/485
+Signed-off-by: Mike Gilbert <floppym@gentoo.org>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ configure.ac       | 1 +
+ src/ucm/ucm_exec.c | 4 ++--
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 8f4bd0de..f4862f64 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -52,6 +52,7 @@ dnl Checks for library functions.
+ AC_PROG_GCC_TRADITIONAL
+ AC_CHECK_FUNCS([uselocale])
+ AC_CHECK_FUNCS([eaccess])
++AC_CHECK_DECLS([closefrom])
+ 
+ dnl Enable largefile support
+ AC_SYS_LARGEFILE
+diff --git a/src/ucm/ucm_exec.c b/src/ucm/ucm_exec.c
+index b5a22023..713039b4 100644
+--- a/src/ucm/ucm_exec.c
++++ b/src/ucm/ucm_exec.c
+@@ -259,8 +259,8 @@ int uc_mgr_exec(const char *prog)
+ 
+ 		close(f);
+ 
+-#if defined(_GNU_SOURCE)
+-		close_range(3, maxfd, 0);
++#if HAVE_DECL_CLOSEFROM
++		closefrom(3);
+ #else
+ 		for (f = 3; f < maxfd; f++)
+ 			close(f);
+-- 
+2.52.0
+

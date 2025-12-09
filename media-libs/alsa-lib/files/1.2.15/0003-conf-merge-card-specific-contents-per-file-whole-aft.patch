@@ -1,0 +1,51 @@
+From a6238053c4fa518b214f99d91a01b96c5ef6e3ca Mon Sep 17 00:00:00 2001
+Message-ID: <a6238053c4fa518b214f99d91a01b96c5ef6e3ca.1765319211.git.sam@gentoo.org>
+In-Reply-To: <a068cf08ad67447893b707cddfce31c9cafee643.1765319211.git.sam@gentoo.org>
+References: <a068cf08ad67447893b707cddfce31c9cafee643.1765319211.git.sam@gentoo.org>
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Tue, 9 Dec 2025 18:04:07 +0100
+Subject: [PATCH 3/4] conf: merge card specific contents per file (whole) after
+ parsing
+
+Unfortunately, mentioned fix caused a regression for items stored in one file.
+Merge the file contents after parsing not inside parsing process.
+
+BugLink: https://bugzilla.redhat.com/show_bug.cgi?id=2420645
+Fixes: eda76146 ("conf: fix load_for_all_cards() - do not merge the card specific contents")
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/conf.c | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/src/conf.c b/src/conf.c
+index 49499ecd..b1ec9b38 100644
+--- a/src/conf.c
++++ b/src/conf.c
+@@ -4119,14 +4119,21 @@ static int config_filename_filter(const struct dirent64 *dirent)
+ static int config_file_open(snd_config_t *root, const char *filename, int merge)
+ {
+ 	snd_input_t *in;
++	snd_config_t *top;
+ 	int err;
+ 
+ 	err = snd_input_stdio_open(&in, filename, "r");
+ 	if (err >= 0) {
+-		if (merge)
++		if (merge) {
+ 			err = snd_config_load(root, in);
+-		else
+-			err = snd_config_load_override(root, in);
++		} else {
++			err = snd_config_top(&top);
++			if (err >= 0) {
++				err = snd_config_load(top, in);
++				if (err >= 0)
++					err = snd_config_merge(root, top, 1);
++			}
++		}
+ 		snd_input_close(in);
+ 		if (err < 0)
+ 			snd_error(CORE, "%s may be old or corrupted: consider to remove or fix it", filename);
+-- 
+2.52.0
+

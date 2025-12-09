@@ -34,7 +34,8 @@ BDEPEND="doc? ( >=app-text/doxygen-1.2.6 )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.1.6-missing_files.patch" # bug #652422
-	"${FILESDIR}/alsa-lib-1.2.15-closefrom.patch"
+	# Backports since last tag
+	"${FILESDIR}/${PV}"
 )
 
 pkg_setup() {
