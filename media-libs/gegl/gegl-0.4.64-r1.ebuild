@@ -78,6 +78,7 @@ DOCS=( AUTHORS docs/ChangeLog docs/NEWS.adoc )
 
 PATCHES=(
 	"${FILESDIR}"/gegl-0.4.64-system-libnsgif.patch
+	"${FILESDIR}"/gegl-0.4.64-Fix-implicit-declaration.patch
 )
 
 pkg_pretend() {

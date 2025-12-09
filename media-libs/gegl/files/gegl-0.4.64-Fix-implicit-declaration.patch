@@ -1,0 +1,24 @@
+From a320f639952d2beee994ab5da96aa925e1823e77 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jeremy=20B=C3=ADcha?= <jbicha@debian.org>
+Date: Mon, 6 Oct 2025 23:17:33 -0400
+Subject: [PATCH] gegl-tester: Fix implicit declaration
+
+---
+ tools/gegl-tester.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git ./tools/gegl-tester.c ./tools/gegl-tester.c
+index 59aaf8379..9379442f1 100644
+--- ./tools/gegl-tester.c
++++ ./tools/gegl-tester.c
+@@ -22,6 +22,7 @@
+ #include <gegl.h>
+ #include <gegl-plugin.h>
+ #include <glib.h>
++#include <glib/gprintf.h>
+ #include <gio/gio.h>
+ 
+ //#define MAX_DIFFERENCE_THRESHOLD 0.5  // not visible
+-- 
+2.51.2
+
