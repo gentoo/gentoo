@@ -221,6 +221,10 @@ _rename_plugins() {
 
 src_test() {
 	local -x LD_LIBRARY_PATH="${BUILD_DIR}/libgimp:${LD_LIBRARY_PATH}"
+	# Try hard to avoid system installed gimp causing issues
+	local -x GIMP3_DIRECTORY="${BUILD_DIR}/"
+	local -x GIMP3_PLUGINDIR="${BUILD_DIR}/plug-ins/"
+	local -x GIMP3_SYSCONFDIR="${BUILD_DIR}/etc/"
 	meson_src_test
 }
 
