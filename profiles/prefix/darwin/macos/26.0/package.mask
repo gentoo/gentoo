@@ -1,0 +1,34 @@
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Fabian Groffen <grobian@gentoo.org> (2025-12-09)
+# Fails to compile in gnulib on invalid decls for memset, memmove,
+# strncpy, etc. probably incompatibility with system headers
+=sys-devel/m4-1.4.20
+
+# Sam James <sam@gentoo.org> (2025-04-01)
+# Fails to build w/ `error: implicit declaration of function 'clock_nanosleep'`
+# See bug #951918.
+=sys-libs/gdbm-1.25
+
+# Benda Xu <heroxbd@gentoo.org> (2023-08-20)
+# Does not play well with linkers under macOS.
+# Undefined symbols for architecture x86_64:
+#  "_main", referenced from:
+#     implicit entry/start for main executable
+dev-python/pydevd
+
+# Benda Xu <heroxbd@gentoo.org> (2023-08-18)
+# strlcpy and other BSD functions are available in the libc of macOS.
+# Should not use libbsd.
+dev-libs/libbsd
+
+# Benda Xu <heroxbd@gentoo.org> (2023-08-01)
+# embrace guile-3. (bug #825334)
+media-sound/lilypond
+
+# Benda Xu <heroxbd@gentoo.org> (2023-07-09)
+# Requires Glibc <sys/xattr.h> to work properly.
+# For example, 'lgetxattr' is not available on macOS or gnulib.
+# https://www.gnu.org/software/gnulib/manual/html_node/lgetxattr.html
+sys-apps/attr
