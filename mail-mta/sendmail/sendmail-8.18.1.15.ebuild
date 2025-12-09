@@ -310,7 +310,7 @@ pkg_postinst() {
 
 	ewarn "This version has enabled experimental code. Please read the file"
 	ewarn ""
-	ewarn "\t/usr/share/doc/${PF}/SNAPSHOT_NOTES"
+	ewarn "\t${EPREFIX}/usr/share/doc/${PF}/SNAPSHOT_NOTES"
 	ewarn ""
 	ewarn "for enable testing, provide feedback and report potential problems"
 	ewarn "directly to upstream."
