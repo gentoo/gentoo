@@ -14,6 +14,7 @@ SRC_URI="
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
+IUSE="debug"
 
 DEPEND="
 	dev-libs/libevent:=
@@ -29,6 +30,14 @@ BDEPEND="
 pkg_pretend() {
 	local CONFIG_CHECK="~CUSE"
 	check_extra_config
+}
+
+src_configure() {
+	local emesonargs=(
+		$(meson_use !debug b_ndebug)
+	)
+
+	meson_src_configure
 }
 
 src_install() {

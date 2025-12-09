@@ -11,6 +11,7 @@ EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/steve.git"
 
 LICENSE="GPL-2+"
 SLOT="0"
+IUSE="debug"
 
 DEPEND="
 	dev-libs/libevent:=
@@ -26,6 +27,14 @@ BDEPEND="
 pkg_pretend() {
 	local CONFIG_CHECK="~CUSE"
 	check_extra_config
+}
+
+src_configure() {
+	local emesonargs=(
+		$(meson_use !debug b_ndebug)
+	)
+
+	meson_src_configure
 }
 
 src_install() {
