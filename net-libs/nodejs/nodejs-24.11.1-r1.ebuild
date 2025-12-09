@@ -33,23 +33,23 @@ REQUIRED_USE="inspector? ( icu ssl )
 
 RESTRICT="!test? ( test )"
 
-RDEPEND=">=app-arch/brotli-1.1.0:=
+COMMON_DEPEND=">=app-arch/brotli-1.1.0:=
+	dev-db/sqlite:3
 	>=dev-cpp/ada-3.3.0:=
 	>=dev-cpp/simdutf-7.3.4:=
-	dev-db/sqlite:3
 	>=dev-libs/libuv-1.51.0:=
-	>=dev-libs/simdjson-3.10.1:=
-	>=net-dns/c-ares-1.34.4:=
-	>=net-libs/nghttp2-1.64.0:=
+	>=dev-libs/simdjson-4.0.7:=
+	>=net-dns/c-ares-1.34.5:=
+	>=net-libs/nghttp2-1.66.0:=
 	>=net-libs/nghttp3-1.7.0:=
 	virtual/zlib:=
 	corepack? ( !sys-apps/yarn )
 	system-icu? ( >=dev-libs/icu-73:= )
 	system-ssl? (
-		>=net-libs/ngtcp2-1.9.1:=
-		>=dev-libs/openssl-1.1.1:0=
+		>=net-libs/ngtcp2-1.11.0:=
+		>=dev-libs/openssl-3.5.4:0=
 	)
-	!system-ssl? ( >=net-libs/ngtcp2-1.9.1:=[-gnutls] )
+	!system-ssl? ( >=net-libs/ngtcp2-1.11.0:=[-gnutls] )
 	|| (
 		sys-devel/gcc:*
 		llvm-runtimes/libatomic-stub
@@ -60,7 +60,8 @@ BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig
 	test? ( net-misc/curl )
 	pax-kernel? ( sys-apps/elfix )"
-DEPEND="${RDEPEND}"
+DEPEND="${COMMON_DEPEND}"
+RDEPEND="${COMMON_DEPEND}"
 
 # These are measured on a loong machine with -ggdb on, and only checked
 # if debugging flags are present in CFLAGS.
@@ -112,7 +113,8 @@ src_prepare() {
 	fi
 
 	# We need to disable mprotect on two files when it builds Bug 694100.
-	use pax-kernel && PATCHES+=( "${FILESDIR}"/${PN}-24.1.0-paxmarking.patch )
+	use pax-kernel &&
+		PATCHES+=( "${FILESDIR}"/${PN}-24.1.0-paxmarking.patch )
 
 	default
 }
@@ -266,6 +268,11 @@ src_test() {
 		test/sequential/test-tls-session-timeout.js
 		test/sequential/test-util-debug.js
 	)
+	# https://bugs.gentoo.org/963649
+	has_version '>=dev-libs/openssl-3.6' &&
+		drop_tests+=(
+			test/parallel/test-tls-ocsp-callback
+		)
 	use inspector ||
 		drop_tests+=(
 			test/parallel/test-inspector-emit-protocol-event.js
