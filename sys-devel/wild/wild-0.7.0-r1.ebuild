@@ -246,7 +246,7 @@ else
 	SRC_URI="https://github.com/davidlattimore/wild/archive/${PV}.tar.gz -> ${P}.tar.gz
 	${CARGO_CRATE_URIS}
 "
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm64"
 fi
 
 LICENSE="|| ( Apache-2.0 MIT )"
