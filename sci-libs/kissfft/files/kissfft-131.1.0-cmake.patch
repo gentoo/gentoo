@@ -1,5 +1,4 @@
-diff --git a/kissfft-config.cmake.in b/kissfft-config.cmake.in
-index cd7139a..7d6c7a2 100644
+PR pending https://github.com/mborgerding/kissfft/pull/92.patch
 --- a/kissfft-config.cmake.in
 +++ b/kissfft-config.cmake.in
 @@ -66,14 +66,19 @@ foreach(_kissfft_datatype simd int16 int32 float double)
