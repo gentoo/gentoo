@@ -10,6 +10,7 @@
 		<flag name="clang">Enable using libclang for code parsing (linguist/qdoc)</flag>
 		<flag name="designer">Build Qt Designer</flag>
 		<flag name="distancefieldgenerator">Build Qt Distance Field Generator</flag>
+		<flag name="kmap2qmap">Build tool to generate keymaps for use on Embedded Linux</flag>
 		<flag name="linguist">Build Qt Linguist tools (GUI requires USE=widgets and USE=qml)</flag>
 		<flag name="pixeltool">Build Qt Pixeltool</flag>
 		<flag name="qdbus">Build the Qt D-Bus Interface (D-Bus Viewer requires USE=widgets)</flag>

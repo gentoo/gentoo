@@ -20,9 +20,9 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 fi
 
 IUSE="
-	+assistant designer distancefieldgenerator gles2-only +linguist
-	opengl pixeltool +qdbus qdoc qml qmlls qtattributionsscanner qtdiag
-	qtplugininfo vulkan +widgets zstd
+	+assistant designer distancefieldgenerator gles2-only kmap2qmap
+	+linguist opengl pixeltool +qdbus qdoc qml qmlls
+	qtattributionsscanner qtdiag qtplugininfo vulkan +widgets zstd
 "
 # note that some tools do not *require* widgets but will skip a sub-tool
 # if not enabled (e.g. linguist gives lrelease but not the GUI linguist6)
@@ -46,6 +46,7 @@ RDEPEND="
 		zstd? ( app-arch/zstd:= )
 		!<dev-qt/designer-5.15.18-r1:5
 	)
+	kmap2qmap? ( ~dev-qt/qtbase-${PV}:6[evdev] )
 	linguist? (
 		widgets? ( !dev-qt/linguist:5 )
 	)
@@ -90,6 +91,7 @@ src_configure() {
 		$(qt_feature assistant)
 		$(qt_feature designer)
 		$(qt_feature distancefieldgenerator)
+		$(qt_feature kmap2qmap)
 		$(qt_feature linguist)
 		$(qt_feature pixeltool)
 		$(qt_feature qdbus)
