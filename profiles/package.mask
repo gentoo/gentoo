@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Orlitzky <mjo@gentoo.org> (2025-12-08)
+# An experimental attempt to avoid the gtk -> librsvg -> rust dependency
+# that is now obsolete because upstream gtk links directly to librsvg.
+# Removal on or after 2026-01-08.
+media-libs/libsvgtiny-pixbuf
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-12-07)
 # Last release depends on Qt5, upstream appears dormant. Several
 # alternatives are available in ::gentoo. Bug #967107
