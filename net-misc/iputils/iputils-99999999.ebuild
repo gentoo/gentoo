@@ -55,10 +55,6 @@ if [[ ${PV} == 9999 ]] ; then
 	"
 fi
 
-PATCHES=(
-	"${FILESDIR}/meson-build-strict-check-for-error-function.patch"
-)
-
 src_prepare() {
 	default
 
