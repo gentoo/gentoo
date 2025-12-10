@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # WANG Xuerui <xen0n@gentoo.org> (2025-12-10)
+# Requires ocamlopt which has not been ported to loong.
+# See https://github.com/ocaml/ocaml/pull/11974
+sys-libs/libnbd ocaml
+
+# WANG Xuerui <xen0n@gentoo.org> (2025-12-10)
 # postgresql:14 is not keyworded on loong.
 www-servers/uwsgi postgres_targets_postgres14
 
