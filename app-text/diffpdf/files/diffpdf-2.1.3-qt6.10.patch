@@ -1,0 +1,11 @@
+--- a/textitem.cpp
++++ b/textitem.cpp
+@@ -161,7 +161,7 @@ void TextItems::debug(const int page, const int ToleranceY,
+         const QRect rect = item.toRect();
+         out << item.text;
+         if (!ComparingWords)
+-            out << QString(" %1").arg(item.text.at(0).unicode(), 4, 16,
++            out << QString(" %1").arg(static_cast<int>(item.text.at(0).unicode()), 4, 16,
+                                       QChar('0'));
+         if (Yx) {
+             const int y = normalizedY(static_cast<int>(item.rect.y()),
