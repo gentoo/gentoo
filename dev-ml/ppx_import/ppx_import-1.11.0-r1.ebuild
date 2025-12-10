@@ -16,7 +16,10 @@ KEYWORDS="amd64 arm64 x86"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
-RDEPEND=">=dev-ml/ppxlib-0.26:="
+RDEPEND="
+	>=dev-ml/ppxlib-0.26:=
+	<dev-lang/ocaml-5.4
+"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	test? (
