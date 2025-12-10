@@ -28,7 +28,7 @@ diff -rup wireshark-4.6.2/CMakeLists.txt wireshark-4.6.2-pkcs11/CMakeLists.txt
 +		set(CMAKE_REQUIRED_LIBRARIES ${GNUTLS_LIBRARIES})
 +		check_symbol_exists(gnutls_pkcs11_obj_list_import_url4 gnutls/pkcs11.h HAVE_GNUTLS_PKCS11)
 +		cmake_pop_check_state()
-+	endif (PKCS11)
++	endif (ENABLE_PKCS11)
  endif()
  
  if (QT_FOUND)
