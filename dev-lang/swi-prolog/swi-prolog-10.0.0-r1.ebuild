@@ -159,6 +159,12 @@ src_configure() {
 		-DSWIPL_PACKAGES_YAML=$(usex yaml)
 	)
 
+	if use cli ; then
+		mycmakeargs+=(
+			-DSYSTEM_LIBEDIT="ON"
+		)
+	fi
+
 	if use test && use java ; then
 		mycmakeargs+=(
 			-DJUNIT_JAR="${ESYSROOT}/usr/share/junit-4/lib/junit.jar"
