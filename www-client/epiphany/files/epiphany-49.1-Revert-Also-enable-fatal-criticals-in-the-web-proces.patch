@@ -1,0 +1,28 @@
+From 006083ff71f7a7863ae9ee06bfb22c7c9c8bc137 Mon Sep 17 00:00:00 2001
+From: Swagtoy <me@ow.swag.toys>
+Date: Sat, 1 Nov 2025 22:14:30 -0400
+Subject: [PATCH] Revert "Also enable fatal criticals in the web process"
+
+This reverts commit 0a903444af0ed81032b9963a9763befef340e037.
+
+Signed-off-by: Swagtoy <me@ow.swag.toys>
+---
+ embed/web-process-extension/ephy-web-process-extension-main.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/embed/web-process-extension/ephy-web-process-extension-main.c b/embed/web-process-extension/ephy-web-process-extension-main.c
+index bfc06636f..6220b1499 100644
+--- a/embed/web-process-extension/ephy-web-process-extension-main.c
++++ b/embed/web-process-extension/ephy-web-process-extension-main.c
+@@ -41,8 +41,6 @@ webkit_web_process_extension_initialize_with_user_data (WebKitWebProcessExtensio
+   g_autoptr (GVariant) web_extensions = NULL;
+   g_autoptr (GError) error = NULL;
+ 
+-  ephy_debug_set_fatal_criticals ();
+-
+   g_variant_get (user_data, "(&sm&sbv)", &guid, &profile_dir, &should_remember_passwords, &web_extensions);
+ 
+   if (!ephy_file_helpers_init (profile_dir, 0, &error))
+-- 
+2.49.1
+

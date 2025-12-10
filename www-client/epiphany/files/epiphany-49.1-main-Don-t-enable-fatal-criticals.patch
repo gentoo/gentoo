@@ -1,0 +1,38 @@
+From 04600354fef86b875a0bcda6489006748b5dd908 Mon Sep 17 00:00:00 2001
+From: Swagtoy <me@ow.swag.toys>
+Date: Sat, 1 Nov 2025 23:19:44 -0400
+Subject: [PATCH] main: Don't enable fatal criticals.
+
+It's very controversial among GNOME developers themselves to do
+this. Epiphany is the only known program that actually does this. It
+results in too many cases where epiphany just "dies" without a reason.
+
+Another case where this can be bad is if you install certain
+plugins. If a bug occurs that throws a critical, this essentially
+breaks your epiphany until you edit the dconf setting and remove your
+plugin from starting. It's happened to me personally.
+
+Upstream needs to decide on a better way to handle these issues. Some
+projects like loupe show a page allowing the user to report the bug.
+
+Signed-off-by: Swagtoy <me@ow.swag.toys>
+---
+ src/ephy-main.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/src/ephy-main.c b/src/ephy-main.c
+index d53f9648b..b41c14945 100644
+--- a/src/ephy-main.c
++++ b/src/ephy-main.c
+@@ -207,8 +207,6 @@ main (int   argc,
+    */
+   LIBXML_TEST_VERSION;
+ 
+-  ephy_debug_set_fatal_criticals ();
+-
+   /* If we're given -remote arguments, translate them */
+   if (argc >= 2 && strcmp (argv[1], "-remote") == 0) {
+     const char *opening, *closing;
+-- 
+2.49.1
+
