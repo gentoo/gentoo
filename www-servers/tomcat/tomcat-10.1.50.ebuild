@@ -9,37 +9,33 @@ inherit java-pkg-2 prefix verify-sig
 
 MY_P="apache-${P}-src"
 
-DESCRIPTION="Tomcat Servlet-6.1/JSP-4.0/EL-6.0/WebSocket-2.2/JASPIC-3.1 Container"
+DESCRIPTION="Tomcat Servlet-6.0/JSP-3.1/EL-5.0/WebSocket-2.1/JASPIC-3.0 Container"
 HOMEPAGE="https://tomcat.apache.org/"
-SRC_URI="mirror://apache/${PN}/tomcat-$(ver_cut 1)/v${PV}/src/${MY_P}.tar.gz
+SRC_URI="mirror://apache/${PN}/tomcat-10/v${PV}/src/${MY_P}.tar.gz
 	verify-sig? ( https://downloads.apache.org/tomcat/tomcat-$(ver_cut 1)/v${PV}/src/${MY_P}.tar.gz.asc )"
 S=${WORKDIR}/${MY_P}
 
 LICENSE="Apache-2.0"
-SLOT="11"
-
-KEYWORDS="amd64 ~arm64 ~amd64-linux"
+SLOT="10.1"
+KEYWORDS="~amd64 ~arm64 ~amd64-linux"
 IUSE="extra-webapps"
 
 RESTRICT="test" # can we run them on a production system?
 
-ECJ_SLOT="4.37"
+ECJ_SLOT="4.26"
 
 COMMON_DEP="
 	>=dev-java/ant-1.10.15:0
 	dev-java/bnd-annotation:0
 	dev-java/eclipse-ecj:${ECJ_SLOT}
 	dev-java/jax-rpc-api:0
-	>=dev-java/jakartaee-migration-1.0.7-r2:0
+	>=dev-java/jakartaee-migration-1.0.9:0
 	dev-java/wsdl4j:0"
-
-# jre-17:* because of line 1081, build.xml
-# <filter token="target.jdk" value="${compile.release}"/>
 RDEPEND="
 	${COMMON_DEP}
 	acct-group/tomcat
 	acct-user/tomcat
-	>=virtual/jre-17:*"
+	>=virtual/jre-11:*"
 DEPEND="
 	${COMMON_DEP}
 	app-admin/pwgen
@@ -62,7 +58,7 @@ VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/tomcat-$(ver_cut 1).apache.
 
 PATCHES=(
 	"${FILESDIR}/tomcat-10.1.20-do-not-copy.patch"
-	"${FILESDIR}/tomcat-11.0.0-offline.patch"
+	"${FILESDIR}/tomcat-10.1.20-offline.patch"
 	"${FILESDIR}/tomcat-9.0.87-gentoo-bnd.patch"
 )
 
@@ -83,14 +79,14 @@ src_prepare() {
 		bnd-util.jar=$(java-pkg_getjars --build-only bnd-util)
 		bnd.jar=$(java-pkg_getjars --build-only bnd)
 		bndlib.jar=$(java-pkg_getjars --build-only bndlib)
-		jaxrpc-lib.jar=$(java-pkg_getjars --build-only jax-rpc-api)
+		jaxrpc-lib.jar=$(java-pkg_getjars jax-rpc-api)
 		jdt.jar=$(java-pkg_getjars eclipse-ecj-${ECJ_SLOT})
 		libg.jar=$(java-pkg_getjars --build-only libg)
 		migration-lib.jar=$(java-pkg_getjars jakartaee-migration)
 		osgi-cmpn.jar=$(java-pkg_getjars --build-only osgi-cmpn-8)
 		osgi-core.jar=$(java-pkg_getjars --build-only osgi-core)
 		slf4j-api.jar=$(java-pkg_getjars --build-only slf4j-api)
-		wsdl4j-lib.jar=$(java-pkg_getjars --build-only wsdl4j)
+		wsdl4j-lib.jar=$(java-pkg_getjars wsdl4j)
 	EOF
 	if use test; then
 		echo "easymock.jar=$(java-pkg_getjars --build-only easymock-3.2)" \
