@@ -315,6 +315,7 @@ app-admin/syslog-ng test
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-02)
 # sys-cluster/ceph is not keyworded yet.
 net-analyzer/rrdtool rados
+www-servers/uwsgi uwsgi_plugins_rados
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-02)
 # Boost.Context has had support for loong since 1.79.0.
