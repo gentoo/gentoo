@@ -67,6 +67,7 @@
 		<flag name="tshark">Install tshark, to dump and analyzer network traffic from the command line</flag>
 		<flag name="udpdump">Install udpdump, to get packets exported from a source (like a network device or a GSMTAP producer) that are dumped to a pcap file</flag>
 		<flag name="wifi">Install wifidump, to dump and analyse 802.11 traffic</flag>
+		<flag name="xxhash">Enable <pkg>dev-libs/xxhash</pkg> support for hashing</flag>
 	</use>
 	<upstream>
 		<changelog>https://www.wireshark.org/news/</changelog>
