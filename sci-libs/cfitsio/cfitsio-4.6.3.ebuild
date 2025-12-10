@@ -28,8 +28,10 @@ RDEPEND="
 # Bug #803350
 DEPEND="
 	${RDEPEND}
-	<dev-lang/cfortran-20110621
+	dev-lang/cfortran
 "
+
+PATCHES=( "${FILESDIR}/${P}-system-fortran.patch" ) # bug #803350
 
 pkg_setup() {
 	fortran-2_pkg_setup
