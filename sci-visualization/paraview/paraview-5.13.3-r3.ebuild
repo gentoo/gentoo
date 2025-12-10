@@ -82,7 +82,8 @@ RDEPEND="
 	)
 	sqlite? ( dev-db/sqlite:3 )
 	tk? ( dev-lang/tk:0= )
-	webengine? ( dev-qt/qtwebengine:6[widgets] )"
+	webengine? ( dev-qt/qtwebengine:6[widgets] )
+"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	boost? (
@@ -91,7 +92,6 @@ DEPEND="${RDEPEND}
 		')
 	)
 "
-
 BDEPEND="
 	openmp? ( virtual/fortran )
 "
@@ -102,6 +102,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.13.0-fix_compilation.patch
 	"${FILESDIR}"/${PN}-5.13.0-fix_compilation-2.patch
 	"${FILESDIR}"/${PN}-5.13.0-avoid_file_collisions.patch
+	"${FILESDIR}"/${P}-qt-6.10.patch # bug #967029
 )
 
 # false positive when checking for available HDF5 interface, bug #904731
