@@ -1,6 +1,13 @@
 # Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Eli Schwartz <eschwartz@gentoo.org> (2025-12-09)
+# libyuv is Google code, fails on "fringe" arches.
+# https://bugs.gentoo.org/959389
+media-libs/imlib2 y4m
+media-libs/libavif libyuv
+net-libs/pjproject libyuv
+
 # Alfred Wingate <parona@protonmail.com> (2025-11-15)
 # sci-libs/libaec is not keyworded here (bug #966099)
 sci-libs/gdal libaec
