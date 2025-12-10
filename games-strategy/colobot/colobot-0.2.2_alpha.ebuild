@@ -50,6 +50,12 @@ DEPEND+="
 "
 
 src_prepare() {
+	local PATCHES=(
+		# https://bugs.gentoo.org/938227
+		# https://github.com/colobot/colobot/commit/1561854b03500d39955c66971c9c98de1937d7e6
+		"${FILESDIR}/${P}-gcc15.patch"
+	)
+
 	cmake_src_prepare
 
 	# https://bugs.gentoo.org/963468
