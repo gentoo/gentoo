@@ -1,0 +1,27 @@
+From 2173c20b95c5b64a3f6c3ba1f5b7d47f948b1f41 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jaime=20Marqui=CC=81nez=20Ferra=CC=81ndiz?=
+ <jaime.marquinez.ferrandiz@fastmail.net>
+Date: Fri, 17 Oct 2025 16:54:58 +0200
+Subject: [PATCH 2/2] Fix linking with Qt::GuiPrivate on Qt 6.10
+
+---
+ src/libs/ui/qxtglobalshortcut/CMakeLists.txt | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/libs/ui/qxtglobalshortcut/CMakeLists.txt b/src/libs/ui/qxtglobalshortcut/CMakeLists.txt
+index 476c2f589768..cd2a25f33228 100644
+--- a/src/libs/ui/qxtglobalshortcut/CMakeLists.txt
++++ b/src/libs/ui/qxtglobalshortcut/CMakeLists.txt
+@@ -42,6 +42,9 @@ elseif(UNIX AND X11_FOUND)
+         find_package(Qt5 COMPONENTS X11Extras REQUIRED)
+         target_link_libraries(QxtGlobalShortcut Qt5::X11Extras)
+     else()
++        if(Qt6Core_VERSION VERSION_GREATER_EQUAL 6.10)
++            find_package(Qt6 COMPONENTS GuiPrivate REQUIRED)
++        endif()
+         target_link_libraries(QxtGlobalShortcut Qt${QT_VERSION_MAJOR}::GuiPrivate)
+     endif()
+ 
+-- 
+2.52.0
+
