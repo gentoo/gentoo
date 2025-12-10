@@ -24,16 +24,14 @@ RESTRICT="test"
 RDEPEND="${PYTHON_DEPS}
 	app-text/mythes
 	dev-libs/boost:=
+	dev-qt/qt5compat:6
+	dev-qt/qtbase:6[concurrent,dbus,gui,widgets]
+	dev-qt/qtsvg:6
 	sys-apps/file
 	virtual/zlib:=
 	virtual/imagemagick-tools[png,svg?]
 	x11-libs/libxcb
 	x11-misc/xdg-utils
-
-	dev-qt/qtbase:6[concurrent,dbus,gui,widgets]
-	dev-qt/qt5compat:6
-	dev-qt/qtsvg:6
-
 	aspell? ( app-text/aspell )
 	cups? ( net-print/cups )
 	dia? ( app-office/dia )
@@ -79,7 +77,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	app-alternatives/bc
 	virtual/pkgconfig
-	dev-qt/qttools[linguist]
+	dev-qt/qttools:6[linguist]
 	nls? ( sys-devel/gettext )
 "
 
@@ -93,6 +91,7 @@ PATCHES=(
 	# Try first with xdg-open before hardcoded commands
 	# Patch from Debian using a similar approach to Fedora
 	"${FILESDIR}"/lyx-2.4.4-prefer-xdg-open.patch
+	"${FILESDIR}"/${P}-qt-6.10.patch # bug #967230
 )
 
 pkg_setup() {
