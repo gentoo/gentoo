@@ -9,7 +9,7 @@ inherit cmake python-any-r1
 
 MY_PV="$(ver_rs 3 -)"
 MY_P="${PN}-${MY_PV}"
-DOCS_COMMIT="af9dcd8d9c66cf445237f9a060d07c2a4dd3d382"
+DOCS_COMMIT="5cc751c3f4383530f472008828a6614b97412abd"
 
 DESCRIPTION="A high-performance multi-threaded backup (and restore) toolset for MySQL"
 HOMEPAGE="https://github.com/mydumper/mydumper"
@@ -19,7 +19,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 RDEPEND="
