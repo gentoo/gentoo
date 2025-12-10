@@ -1,0 +1,13 @@
+Bug: https://bugs.gentoo.org/967045
+
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -209,7 +209,7 @@
+ sub CheckExternalDependencies {
+   my @dependencies = @_;
+   for my $program (@dependencies) {
+-    if (system("which $program > /dev/null") != 0) {
++    if (system("command -v $program > /dev/null") != 0) {
+       warn "W: Required test dependency not found: $program\n";
+     }
+   }
