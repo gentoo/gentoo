@@ -150,6 +150,8 @@ declare -A KEEP_BUNDLED=(
 
 PATCHES=(
 	"${FILESDIR}"/dolphin-2509-retroachievents-test.patch
+	# https://github.com/dolphin-emu/dolphin/pull/14008
+	"${FILESDIR}/${P}-qt-6.10.patch" # bug #965410
 )
 
 add_bundled_licenses() {
