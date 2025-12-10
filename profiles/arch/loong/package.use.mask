@@ -1,6 +1,10 @@
 # Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2025-12-10)
+# postgresql:14 is not keyworded on loong.
+www-servers/uwsgi postgres_targets_postgres14
+
 # Michal Rostecki <vadorovsky@protonmail.com> (2025-11-26)
 # llvm-core/lld supports loong from 17.x.
 <=llvm-core/clang-linker-config-16 default-lld
