@@ -7,7 +7,11 @@ DESCRIPTION="OpenPGP keys used by the strace project"
 HOMEPAGE="https://strace.io/"
 # Mirrored from https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x296d6f29a020808e8717a8842db5bd89a340aeb7
 # on 2024-09-18.
-SRC_URI="https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-ldv.asc"
+SRC_URI="
+	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-20151021-ldv.asc
+	https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xfb3dcd19ff874735e4f61ce64e9fe8522f160ec2
+		-> ldv-FB3DCD19FF874735E4F61CE64E9FE8522F160EC2.asc
+"
 S=${WORKDIR}
 
 LICENSE="public-domain"
