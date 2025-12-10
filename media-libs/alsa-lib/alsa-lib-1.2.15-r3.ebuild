@@ -18,6 +18,8 @@ else
 	SRC_URI="https://www.alsa-project.org/files/pub/lib/${P}.tar.bz2"
 fi
 
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-patches.tar.xz"
+
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
@@ -35,7 +37,7 @@ BDEPEND="doc? ( >=app-text/doxygen-1.2.6 )"
 PATCHES=(
 	"${FILESDIR}/${PN}-1.1.6-missing_files.patch" # bug #652422
 	# Backports since last tag
-	"${FILESDIR}/${PV}"
+	"${WORKDIR}/${P}-patches"
 )
 
 pkg_setup() {
