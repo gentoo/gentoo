@@ -32,6 +32,10 @@ BDEPEND="
 	~dev-qt/qtshadertools-${PV}:6
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.10.1-QTBUG-142331.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package qmlls Qt6LanguageServerPrivate)
