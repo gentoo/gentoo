@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -51,6 +51,10 @@ DEPEND+="
 
 src_prepare() {
 	cmake_src_prepare
+
+	# https://bugs.gentoo.org/963468
+	# boost already removed upstream
+	sed -i -e '/find_package(Boost/s: system : :' CMakeLists.txt || die
 
 	# we need to call it explicitly to help Ninja figure out the deps
 	cd desktop || die
