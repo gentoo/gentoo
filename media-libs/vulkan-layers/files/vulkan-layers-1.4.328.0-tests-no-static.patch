@@ -1,7 +1,7 @@
-diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
-index c7e2a73d8..1ae06aee9 100644
---- a/tests/CMakeLists.txt
-+++ b/tests/CMakeLists.txt
+diff --git ./tests/CMakeLists.txt ./tests/CMakeLists.txt
+index c7e2a73d8..5742cb8a1 100644
+--- ./tests/CMakeLists.txt
++++ ./tests/CMakeLists.txt
 @@ -337,7 +337,6 @@ endif()
  
  find_package(GTest CONFIG)
@@ -18,8 +18,8 @@ index c7e2a73d8..1ae06aee9 100644
      SPIRV-Headers::SPIRV-Headers
      GTest::gtest
      GTest::gtest_main
-@@ -542,6 +540,21 @@ target_link_libraries(vk_layer_validation_tests PRIVATE
-     $<TARGET_NAME_IF_EXISTS:PkgConfig::WAYlAND_CLIENT>
+@@ -554,6 +552,21 @@ target_include_directories(vk_layer_validation_tests PRIVATE
+     ${VVL_SOURCE_DIR}/layers/external
  )
  
 +find_package(SPIRV-Tools CONFIG QUIET)
@@ -35,8 +35,8 @@ index c7e2a73d8..1ae06aee9 100644
 +    target_link_libraries(vk_layer_validation_tests PRIVATE SPIRV-Tools-shared)
 +else()
 +    message(FATAL_ERROR "Cannot determine SPIRV-Tools target name")
-+endif(
++endif()
 +
- # setup framework/config.h using framework/config.h.in as a source
- file(GENERATE OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/config_$<CONFIG>.h" INPUT "${CMAKE_CURRENT_SOURCE_DIR}/framework/config.h.in")
- 
+ # More details in tests/android/mock/README.md
+ option(VVL_MOCK_ANDROID "Enable building for Android on desktop for testing with MockICD setup")
+ if(VVL_MOCK_ANDROID)
