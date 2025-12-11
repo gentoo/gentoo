@@ -23,6 +23,6 @@ depend() {
 }
 
 start_pre() {
-	checkpath -q -d -o ${SYNCTHING_USER}:${SYNCTHING_GROUP} ${SYNCTHING_HOMEDIR}
-	checkpath -q -f -o ${SYNCTHING_USER}:${SYNCTHING_GROUP} ${SYNCTHING_LOGFILE}
+	checkpath -q -d -o ${command_user} ${SYNCTHING_HOMEDIR}
+	checkpath -q -f -o ${command_user} ${SYNCTHING_LOGFILE}
 }
