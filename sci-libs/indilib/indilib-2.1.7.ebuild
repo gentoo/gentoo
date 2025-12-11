@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake udev
+inherit cmake dot-a udev
 
 DESCRIPTION="INDI Astronomical Control Protocol library"
 HOMEPAGE="https://www.indilib.org/"
@@ -42,6 +42,8 @@ DEPEND="${RDEPEND}
 "
 
 src_configure() {
+	lto-guarantee-fat
+
 	local mycmakeargs=(
 		-DINDI_SYSTEM_HIDAPILIB=ON
 		-DINDI_SYSTEM_HTTPLIB=ON
@@ -69,6 +71,11 @@ src_test() {
 	# They fail in parallel because they try to bind to the same port more
 	# than once.
 	BUILD_DIR="${BUILD_DIR}"/integs cmake_src_test -j1
+}
+
+src_install() {
+	cmake_src_install
+	strip-lto-bytecode
 }
 
 pkg_postinst() {
