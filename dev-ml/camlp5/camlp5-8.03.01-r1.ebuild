@@ -12,16 +12,16 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/${PV}.tar.gz
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 arm arm64 ~ppc ppc64 x86"
 IUSE="doc +ocamlopt"
 
 RDEPEND="
+	<dev-lang/ocaml-5
 	dev-ml/bos:=
 	dev-ml/camlp-streams:=[ocamlopt?]
 	dev-ml/fmt:=[ocamlopt?]
 	dev-ml/fpath:=
 	dev-ml/logs:=[ocamlopt?]
-	dev-ml/pcre2-ocaml:=[ocamlopt?]
 	dev-ml/re:=[ocamlopt?]
 	dev-ml/rresult:=
 "
