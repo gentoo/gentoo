@@ -66,7 +66,7 @@ RDEPEND="${COMMON_DEPEND}
 # kde-apps/kidentitymanagement through its cmake module forces
 # kpimtextedit[speech=] in order not to break w/ kalarm[-speech]
 DEPEND="${COMMON_DEPEND}
-	>=kde-apps/kpimtextedit-${PVCUT}:6[speech=]
+	>=kde-apps/kpimtextedit-${PVCUT}:6[speech(-)=]
 	X? ( x11-base/xorg-proto )
 "
 
