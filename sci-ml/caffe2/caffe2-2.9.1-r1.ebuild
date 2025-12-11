@@ -163,6 +163,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.8.0-rocm-minus-flash.patch
 	"${FILESDIR}"/${PN}-2.9.0-cmake.patch
 	"${FILESDIR}"/${PN}-2.9.0-rocm-distributed-link.patch
+	"${FILESDIR}"/${P}-CCCL31.patch
 )
 
 src_prepare() {
