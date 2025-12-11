@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="doc +ocamlopt"
 
 RDEPEND="
-	<dev-lang/ocaml-5.4
+	<dev-lang/ocaml-5
 	dev-ml/bos:=
 	dev-ml/camlp-streams:=[ocamlopt?]
 	dev-ml/fmt:=[ocamlopt?]
