@@ -40,7 +40,7 @@ COMMON_DEPEND="
 	>=kde-apps/kmailtransport-${PVCUT}:6=
 	>=kde-apps/kmime-${PVCUT}:6=
 	>=kde-apps/kontactinterface-${PVCUT}:6=
-	>=kde-apps/kpimtextedit-${PVCUT}:6=[speech=]
+	>=kde-apps/kpimtextedit-${PVCUT}:6=[speech(-)=]
 	>=kde-apps/libgravatar-${PVCUT}:6=
 	>=kde-apps/libkdepim-${PVCUT}:6=
 	>=kde-apps/libkleo-${PVCUT}:6=
