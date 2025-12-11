@@ -10,6 +10,7 @@ PYTHON_COMPAT=( python3_{11..14} )
 
 RUST_PATCH_VER=${PV#*_p}
 RUST_MAX_VER=${PV%%_*}
+RUST_PV=${PV%%_p*}
 
 if [[ ${PV} == *9999* ]]; then
 	RUST_MIN_VER="1.88.0" # Update this as new `beta` releases come out.
@@ -31,16 +32,16 @@ elif [[ ${PV} == *beta* ]]; then
 	betaver=${PV//*beta}
 	BETA_SNAPSHOT="${betaver:0:4}-${betaver:4:2}-${betaver:6:2}"
 	MY_P="rustc-beta"
-	SRC_URI="https://static.rust-lang.org/dist/${BETA_SNAPSHOT}/rustc-beta-src.tar.xz -> rustc-${PV}-src.tar.xz
-		https://gitweb.gentoo.org/proj/rust-patches.git/snapshot/rust-patches-${RUST_PATCH_VER}.tar.bz2
+	SRC_URI="https://static.rust-lang.org/dist/${BETA_SNAPSHOT}/rustc-beta-src.tar.xz -> rustc-${RUST_PV}-src.tar.xz
+		https://gitweb.gentoo.org/proj/rust-patches.git/snapshot/rust-patches-${PV}.tar.bz2
 		verify-sig? ( https://static.rust-lang.org/dist/${BETA_SNAPSHOT}/rustc-beta-src.tar.xz.asc
-			-> rustc-${PV}-src.tar.xz.asc )
+			-> rustc-${RUST_PV}-src.tar.xz.asc )
 	"
 	S="${WORKDIR}/${MY_P}-src"
 else
-	MY_P="rustc-${PV}"
+	MY_P="rustc-${RUST_PV}"
 	SRC_URI="https://static.rust-lang.org/dist/${MY_P}-src.tar.xz
-		https://gitweb.gentoo.org/proj/rust-patches.git/snapshot/rust-patches-${RUST_PATCH_VER}.tar.bz2
+		https://gitweb.gentoo.org/proj/rust-patches.git/snapshot/rust-patches-${PV}.tar.bz2
 		verify-sig? ( https://static.rust-lang.org/dist/${MY_P}-src.tar.xz.asc )
 	"
 	S="${WORKDIR}/${MY_P}-src"
@@ -316,7 +317,7 @@ src_unpack() {
 		_EOF_
 	elif use verify-sig ; then
 		# Patch tarballs are not signed (but we trust Gentoo infra)
-		verify-sig_verify_detached "${DISTDIR}"/rustc-${PV}-src.tar.xz{,.asc}
+		verify-sig_verify_detached "${DISTDIR}"/rustc-${RUST_PV}-src.tar.xz{,.asc}
 		default
 	else
 		default
@@ -332,7 +333,7 @@ src_prepare() {
 	# Commit patches to the appropriate branch in proj/rust-patches.git
 	# then cut a new tag / tarball. Don't add patches to ${FILESDIR}
 	PATCHES=(
-		"${WORKDIR}/rust-patches-${RUST_PATCH_VER}/"
+		"${WORKDIR}/rust-patches-${PV}/"
 	)
 
 	if use lto && tc-is-clang && ! tc-ld-is-lld && ! tc-ld-is-mold; then
@@ -836,7 +837,7 @@ pkg_postinst() {
 
 	if has_version dev-debug/gdb || has_version llvm-core/lldb; then
 		elog "Rust installs helper scripts for calling GDB and LLDB,"
-		elog "for convenience they are installed under /usr/bin/rust-{gdb,lldb}-${PV}."
+		elog "for convenience they are installed under /usr/bin/rust-{gdb,lldb}-${RUST_PV}."
 	fi
 
 	if has_version app-editors/emacs; then
