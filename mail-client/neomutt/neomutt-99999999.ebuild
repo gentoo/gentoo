@@ -25,7 +25,10 @@ IUSE="autocrypt berkdb doc gdbm gnutls gpgme idn kerberos kyotocabinet lmdb lz4
 	nls notmuch pgp-classic qdbm sasl selinux smime-classic ssl tokyocabinet
 	test zlib zstd"
 REQUIRED_USE="
-	autocrypt? ( gpgme ) ssl? ( !gnutls )  gnutls? ( !ssl )"
+	autocrypt? ( gpgme )
+	gnutls? ( !ssl )
+	ssl? ( !gnutls )
+"
 
 CDEPEND="
 	app-misc/mime-types
