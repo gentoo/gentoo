@@ -64,6 +64,13 @@ src_prepare() {
 	sed -e "s|^Exec=/opt/Signal/signal-desktop|Exec=${MY_PN}|" \
 		-i usr/share/applications/signal-desktop.desktop || die
 	unpack usr/share/doc/signal-desktop/changelog.gz
+
+	# https://github.com/signalapp/Signal-Desktop/issues/6239
+	# https://github.com/signalapp/Signal-Desktop/issues/6122
+	# fixes app icon issues on wayland because "app-id" is "signal"
+	# and desktop file needs to match
+	mv usr/share/applications/signal-desktop.desktop \
+		usr/share/applications/signal.desktop || die
 }
 
 src_install() {
@@ -82,12 +89,6 @@ src_install() {
 		#!/bin/sh
 		exec ${EPREFIX}/opt/Signal/signal-desktop --ozone-platform-hint=auto "\${@}"
 	_EOF_
-
-	# https://github.com/signalapp/Signal-Desktop/issues/6239
-	# https://github.com/signalapp/Signal-Desktop/issues/6122
-	# fixes app icon issues on wayland because "app-id" is "signal"
-	# and desktop file needs to match
-	dosym signal-desktop.desktop /usr/share/applications/signal.desktop
 }
 
 pkg_postinst() {
