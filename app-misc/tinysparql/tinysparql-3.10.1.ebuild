@@ -35,7 +35,7 @@ BDEPEND="
 	dev-util/glib-utils
 	app-text/asciidoc
 	dev-libs/libxslt
-	$(vala_depend)
+	vala? ( $(vala_depend) )
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	gtk-doc? (
@@ -66,7 +66,7 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	vala_setup
+	use vala && vala_setup
 	xdg_environment_reset
 }
 
