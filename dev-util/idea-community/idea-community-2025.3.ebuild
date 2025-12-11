@@ -111,6 +111,17 @@ src_prepare() {
 		done
 	fi
 
+	if ! use amd64; then
+		if [[ -d "${S}"/lib/async-profiler/ ]]; then
+			rm -v  "${S}"/lib/async-profiler/amd64/libasyncProfiler.so || die
+		fi
+	fi
+	if ! use arm64; then
+		if [[ -d "${S}"/lib/async-profiler/ ]]; then
+			rm -v  "${S}"/lib/async-profiler/aarch64/libasyncProfiler.so || die
+		fi
+	fi
+
 	rm -vf "${S}"/lib/pty4j-native/linux/x86-64/libpty.so
 
 	sed -i \
