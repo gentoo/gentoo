@@ -18,7 +18,7 @@ S="${WORKDIR}/bc-java-${MY_PV}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~ppc64"
+KEYWORDS="amd64 arm64 ppc64"
 
 # Restricted to max jdk:21 to avoid test failures with higher jdk versions.
 DEPEND="|| ( virtual/jdk:21 virtual/jdk:17 virtual/jdk:11 )"
