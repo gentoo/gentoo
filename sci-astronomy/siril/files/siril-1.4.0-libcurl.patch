@@ -1,0 +1,503 @@
+From 7ea2a86229acd35cb2e67d882ca4670afa9bd8eb Mon Sep 17 00:00:00 2001
+From: Cyril Richard <cyril.richard42@gmail.com>
+Date: Sun, 7 Dec 2025 21:58:36 +0100
+Subject: [PATCH] Closes #1887 and #1888
+Upstream: https://gitlab.com/free-astro/siril/-/issues/1887
+Upstream: https://gitlab.com/free-astro/siril/-/issues/1888
+
+(cherry picked from commit c5bcc5ae764813dc1a6d89af08d9d417f1288dda)
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -1,7 +1,7 @@
+ siril-1.4.1
+ --/--/--
+ **Fixes**
+-* Fixes build error when compiled without libgit2, libjpeg (#1886, #1889)
++* Fixes build error when compiled without libgit2, libjpeg and libcurl (#1886, #1887, #1888, #1889)
+ 
+ siril-1.4.0
+ 12/05/25
+--- a/src/core/siril_networking.c
++++ b/src/core/siril_networking.c
+@@ -18,12 +18,6 @@
+  * along with Siril. If not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+-#ifdef HAVE_CONFIG_H
+-#include <config.h>
+-#endif
+-#if defined(HAVE_LIBCURL)
+-#include <curl/curl.h>
+-
+ #include <string.h>
+ 
+ #include "core/siril.h"
+@@ -35,6 +29,13 @@
+ 
+ static gboolean online_status = TRUE;
+ 
++#ifdef HAVE_CONFIG_H
++#include <config.h>
++#endif
++#if defined(HAVE_LIBCURL)
++
++#include <curl/curl.h>
++
+ static size_t cbk_curl(void *buffer, size_t size, size_t nmemb, void *userp) {
+ 	size_t realsize = size * nmemb;
+ 	struct ucontent *mem = (struct ucontent *) userp;
+@@ -193,6 +194,41 @@ gboolean siril_compiled_with_networking() {
+ 
+ #else
+ 
++// Stub functions when libcurl is not available
++// These return errors but allow the code to compile and link
++
++gpointer fetch_url_async(gpointer p) {
++	fetch_url_async_data *args = (fetch_url_async_data *) p;
++	g_assert(args->idle_function != NULL);
++
++	siril_log_color_message(_("Error: Siril was compiled without libcurl support. Network features are unavailable.\n"), "red");
++
++	// Clean up and call the idle function with NULL content to signal failure
++	g_free(args->url);
++	args->url = NULL;
++	args->length = 0;
++	args->content = NULL;
++	args->code = 0;
++
++	siril_add_idle(args->idle_function, args);
++	return NULL;
++}
++
++char* fetch_url(const gchar *url, gsize *length, int *error, gboolean quiet) {
++	if (!quiet) {
++		siril_log_color_message(_("Error: Siril was compiled without libcurl support. Cannot fetch URL: %s\n"), "red", url);
++	}
++	*error = 1;
++	*length = 0;
++	return NULL;
++}
++
++int submit_post_request(const char *url, const char *post_data, char **post_response) {
++	siril_log_color_message(_("Error: Siril was compiled without libcurl support. Cannot submit POST request to: %s\n"), "red", url);
++	*post_response = NULL;
++	return 1;
++}
++
+ gboolean siril_compiled_with_networking() {
+ 	return FALSE;
+ }
+@@ -209,4 +245,4 @@ gboolean set_online_status(gboolean status) {
+ 	if (!siril_compiled_with_networking())
+ 		return FALSE;
+ 	return online_status;
+-}
++}
+\ No newline at end of file
+--- a/src/core/siril_networking.h
++++ b/src/core/siril_networking.h
+@@ -21,12 +21,8 @@ gpointer fetch_url_async(gpointer p);
+ char *fetch_url(const gchar *url, gsize *length, int *error, gboolean quiet);
+ int submit_post_request(const char *url, const char *post_data, char **post_response);
+ 
+-// HAVE_LIBCURL
+-//#endif
+-
+ gboolean siril_compiled_with_networking();
+ gboolean is_online();
+ gboolean set_online_status(gboolean status);
+ 
+-// SIRIL_NETWORKING_H
+-#endif
++#endif
+\ No newline at end of file
+--- a/src/core/siril_update.c
++++ b/src/core/siril_update.c
+@@ -21,21 +21,21 @@
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+ #endif
+-#if defined(HAVE_LIBCURL)
+-#include "yyjson.h"
+ 
+ #include <string.h>
+ 
+ #include "core/siril.h"
+-#include "core/siril_networking.h"
+ #include "core/proto.h"
+-#include "core/processing.h"
+ #include "core/siril_log.h"
+ #include "gui/utils.h"
+-#include "gui/message_dialog.h"
+-#include "gui/progress_and_log.h"
+ #include "core/siril_update.h"
+ 
++#if defined(HAVE_LIBCURL)
++#include "yyjson.h"
++#include "core/siril_networking.h"
++#include "core/processing.h"
++#include "gui/message_dialog.h"
++#include "gui/progress_and_log.h"
+ 
+ #define SIRIL_DOMAIN "https://siril.org/"
+ #define SIRIL_VERSIONS SIRIL_DOMAIN"siril_versions.json"
+@@ -43,6 +43,171 @@
+ #define GITLAB_URL "https://gitlab.com/free-astro/siril/raw"
+ #define BRANCH "master"
+ #define SIRIL_NOTIFICATIONS "notifications/siril_notifications.json"
++#endif
++
++// ============================================================================
++// UTILITY FUNCTIONS - Independent of libcurl
++// These functions work with version numbers and strings, no network required
++// ============================================================================
++
++static void remove_alpha(gchar *str, gboolean *is_rc, gboolean *is_beta) {
++	unsigned long i = 0;
++	unsigned long j = 0;
++	char c;
++
++	if (g_str_has_prefix(str, "beta")) {
++		*is_rc = FALSE;
++		*is_beta = TRUE;
++	} else if (g_str_has_prefix(str, "rc")) {
++		*is_rc = TRUE;
++		*is_beta = FALSE;
++	} else {
++		*is_rc = FALSE;
++		*is_beta = FALSE;
++	}
++
++	while ((c = str[i++]) != '\0') {
++		if (g_ascii_isdigit(c)) {
++			str[j++] = c;
++		}
++	}
++	str[j] = '\0';
++}
++
++/**
++ * Check if the version is a patched version.
++ * patched version are named like that x.y.z.patch where patch only contains digits.
++ * if patch contains alpha char it is because that's a RC or beta version. Not a patched one.
++ * @param version version to be tested
++ * @return 0 if the version is not patched. The version of the patch is returned otherwise.
++ */
++static guint check_for_patch(gchar *version, gboolean *is_rc, gboolean *is_beta) {
++	remove_alpha(version, is_rc, is_beta);
++	return (g_ascii_strtoull(version, NULL, 10));
++}
++
++version_number get_version_number_from_string(const gchar *input) {
++	version_number version = { 0 };
++	gchar **version_string = NULL;
++	const gchar *string = find_first_numeric(input);
++	if (!string)
++		goto the_end;
++	version_string = g_strsplit_set(string, ".-", -1);
++	version.major_version = g_ascii_strtoull(version_string[0], NULL, 10);
++	if (version_string[1])
++		version.minor_version = g_ascii_strtoull(version_string[1], NULL, 10);
++	else
++		goto the_end;
++	if (version_string[2])
++		version.micro_version = g_ascii_strtoull(version_string[2], NULL, 10);
++	else
++		goto the_end;
++	if (version_string[3] == NULL) {
++		version.patched_version = 0;
++		version.rc_version = FALSE;
++		version.beta_version = FALSE;
++	} else {
++		version.patched_version = check_for_patch(version_string[3], &version.rc_version, &version.beta_version);
++	}
++the_end:
++	g_strfreev(version_string);
++	return version;
++}
++
++version_number get_current_version_number() {
++	return get_version_number_from_string(PACKAGE_VERSION);
++}
++
++/**
++ * This function compares two version numbers following the pattern x.y.z[-type#]
++ * where type can be beta, rc, or a stable patch number.
++ * Version ordering: beta < rc < stable < stable-patch
++ * Examples: 1.4.0-beta1 < 1.4.0-rc2 < 1.4.0 < 1.4.0-1
++ * @param v1 First version number to be tested
++ * @param v2 Second version number to be tested
++ * @return -1 if v1 < v2, 1 if v1 > v2 and 0 if v1 is equal to v2
++ */
++int compare_version(version_number v1, version_number v2) {
++	if (v1.major_version < v2.major_version)
++		return -1;
++	else if (v1.major_version > v2.major_version)
++		return 1;
++	else {
++		if (v1.minor_version < v2.minor_version)
++			return -1;
++		else if (v1.minor_version > v2.minor_version)
++			return 1;
++		else {
++			if (v1.micro_version < v2.micro_version)
++				return -1;
++			else if (v1.micro_version > v2.micro_version)
++				return 1;
++			else {
++				// Determine version type
++				int v1_is_stable = !v1.rc_version && !v1.beta_version;
++				int v2_is_stable = !v2.rc_version && !v2.beta_version;
++
++				// Order: beta < rc < stable
++				if (v1.beta_version && !v2.beta_version) return -1;  // beta < (rc or stable)
++				if (v2.beta_version && !v1.beta_version) return 1;   // (rc or stable) > beta
++				if (v1.rc_version && v2_is_stable) return -1;        // rc < stable
++				if (v2.rc_version && v1_is_stable) return 1;         // stable > rc
++
++				// Same type: compare patched_version
++				if (v1.beta_version && v2.beta_version) {
++					// Both beta versions
++					if (v1.patched_version < v2.patched_version)
++						return -1;
++					else if (v1.patched_version > v2.patched_version)
++						return 1;
++				}
++				else if (v1.rc_version && v2.rc_version) {
++					// Both rc versions
++					if (v1.patched_version < v2.patched_version)
++						return -1;
++					else if (v1.patched_version > v2.patched_version)
++						return 1;
++				}
++				else if (v1_is_stable && v2_is_stable) {
++					// Both stable versions: compare patches
++					// 1.4.0 (patch=0) < 1.4.0-1 (patch=1)
++					if (v1.patched_version < v2.patched_version)
++						return -1;
++					else if (v1.patched_version > v2.patched_version)
++						return 1;
++				}
++			}
++		}
++	}
++	return 0;
++}
++
++// ============================================================================
++// NETWORK-DEPENDENT FUNCTIONS - Require libcurl
++// ============================================================================
++
++#if defined(HAVE_LIBCURL)
++
++static version_number get_last_version_number(gchar *version_str) {
++	gchar **v;
++	version_number version = { 0 };
++
++	v = g_strsplit_set(version_str, ".-", -1);
++
++	if (v[0])
++		version.major_version = g_ascii_strtoull(v[0], NULL, 10);
++	if (v[0] && v[1])
++		version.minor_version = g_ascii_strtoull(v[1], NULL, 10);
++	if (v[0] && v[1] && v[2])
++		version.micro_version = g_ascii_strtoull(v[2], NULL, 10);
++	if (v[0] && v[1] && v[2] && v[3]) {
++		remove_alpha(v[3], &version.rc_version, &version.beta_version);
++		version.patched_version = g_ascii_strtoull(v[3], NULL, 10);
++	}
++
++	g_strfreev(v);
++	return version;
++}
+ 
+ static gboolean siril_update_get_highest(yyjson_doc *doc,
+ 		gchar **highest_version, gint64 *release_timestamp,
+@@ -195,159 +360,6 @@ static gboolean siril_update_get_highest(yyjson_doc *doc,
+ 	return FALSE;
+ }
+ 
+-static void remove_alpha(gchar *str, gboolean *is_rc, gboolean *is_beta) {
+-	unsigned long i = 0;
+-	unsigned long j = 0;
+-	char c;
+-
+-	if (g_str_has_prefix(str, "beta")) {
+-		*is_rc = FALSE;
+-		*is_beta = TRUE;
+-	} else if (g_str_has_prefix(str, "rc")) {
+-		*is_rc = TRUE;
+-		*is_beta = FALSE;
+-	} else {
+-		*is_rc = FALSE;
+-		*is_beta = FALSE;
+-	}
+-
+-	while ((c = str[i++]) != '\0') {
+-		if (g_ascii_isdigit(c)) {
+-			str[j++] = c;
+-		}
+-	}
+-	str[j] = '\0';
+-}
+-
+-/**
+- * Check if the version is a patched version.
+- * patched version are named like that x.y.z.patch where patch only contains digits.
+- * if patch contains alpha char it is because that's a RC or beta version. Not a patched one.
+- * @param version version to be tested
+- * @return 0 if the version is not patched. The version of the patch is returned otherwise.
+- */
+-static guint check_for_patch(gchar *version, gboolean *is_rc, gboolean *is_beta) {
+-	remove_alpha(version, is_rc, is_beta);
+-	return (g_ascii_strtoull(version, NULL, 10));
+-}
+-
+-version_number get_version_number_from_string(const gchar *input) {
+-	version_number version = { 0 };
+-	gchar **version_string = NULL;
+-	const gchar *string = find_first_numeric(input);
+-	if (!string)
+-		goto the_end;
+-	version_string = g_strsplit_set(string, ".-", -1);
+-	version.major_version = g_ascii_strtoull(version_string[0], NULL, 10);
+-	if (version_string[1])
+-		version.minor_version = g_ascii_strtoull(version_string[1], NULL, 10);
+-	else
+-		goto the_end;
+-	if (version_string[2])
+-		version.micro_version = g_ascii_strtoull(version_string[2], NULL, 10);
+-	else
+-		goto the_end;
+-	if (version_string[3] == NULL) {
+-		version.patched_version = 0;
+-		version.rc_version = FALSE;
+-		version.beta_version = FALSE;
+-	} else {
+-		version.patched_version = check_for_patch(version_string[3], &version.rc_version, &version.beta_version);
+-	}
+-the_end:
+-	g_strfreev(version_string);
+-	return version;
+-}
+-
+-version_number get_current_version_number() {
+-	return get_version_number_from_string(PACKAGE_VERSION);
+-}
+-
+-static version_number get_last_version_number(gchar *version_str) {
+-	gchar **v;
+-	version_number version = { 0 };
+-
+-	v = g_strsplit_set(version_str, ".-", -1);
+-
+-	if (v[0])
+-		version.major_version = g_ascii_strtoull(v[0], NULL, 10);
+-	if (v[0] && v[1])
+-		version.minor_version = g_ascii_strtoull(v[1], NULL, 10);
+-	if (v[0] && v[1] && v[2])
+-		version.micro_version = g_ascii_strtoull(v[2], NULL, 10);
+-	if (v[0] && v[1] && v[2] && v[3]) {
+-		remove_alpha(v[3], &version.rc_version, &version.beta_version);
+-		version.patched_version = g_ascii_strtoull(v[3], NULL, 10);
+-	}
+-
+-	g_strfreev(v);
+-	return version;
+-}
+-
+-/**
+- * This function compares two version numbers following the pattern x.y.z[-type#]
+- * where type can be beta, rc, or a stable patch number.
+- * Version ordering: beta < rc < stable < stable-patch
+- * Examples: 1.4.0-beta1 < 1.4.0-rc2 < 1.4.0 < 1.4.0-1
+- * @param v1 First version number to be tested
+- * @param v2 Second version number to be tested
+- * @return -1 if v1 < v2, 1 if v1 > v2 and 0 if v1 is equal to v2
+- */
+-int compare_version(version_number v1, version_number v2) {
+-	if (v1.major_version < v2.major_version)
+-		return -1;
+-	else if (v1.major_version > v2.major_version)
+-		return 1;
+-	else {
+-		if (v1.minor_version < v2.minor_version)
+-			return -1;
+-		else if (v1.minor_version > v2.minor_version)
+-			return 1;
+-		else {
+-			if (v1.micro_version < v2.micro_version)
+-				return -1;
+-			else if (v1.micro_version > v2.micro_version)
+-				return 1;
+-			else {
+-				// Determine version type
+-				int v1_is_stable = !v1.rc_version && !v1.beta_version;
+-				int v2_is_stable = !v2.rc_version && !v2.beta_version;
+-
+-				// Order: beta < rc < stable
+-				if (v1.beta_version && !v2.beta_version) return -1;  // beta < (rc or stable)
+-				if (v2.beta_version && !v1.beta_version) return 1;   // (rc or stable) > beta
+-				if (v1.rc_version && v2_is_stable) return -1;        // rc < stable
+-				if (v2.rc_version && v1_is_stable) return 1;         // stable > rc
+-
+-				// Same type: compare patched_version
+-				if (v1.beta_version && v2.beta_version) {
+-					// Both beta versions
+-					if (v1.patched_version < v2.patched_version)
+-						return -1;
+-					else if (v1.patched_version > v2.patched_version)
+-						return 1;
+-				}
+-				else if (v1.rc_version && v2.rc_version) {
+-					// Both rc versions
+-					if (v1.patched_version < v2.patched_version)
+-						return -1;
+-					else if (v1.patched_version > v2.patched_version)
+-						return 1;
+-				}
+-				else if (v1_is_stable && v2_is_stable) {
+-					// Both stable versions: compare patches
+-					// 1.4.0 (patch=0) < 1.4.0-1 (patch=1)
+-					if (v1.patched_version < v2.patched_version)
+-						return -1;
+-					else if (v1.patched_version > v2.patched_version)
+-						return 1;
+-				}
+-			}
+-		}
+-	}
+-	return 0;
+-}
+-
+ static gchar *parse_changelog(gchar *changelog) {
+ 	gchar **token;
+ 	GString *strResult;
+@@ -683,4 +695,4 @@ void siril_check_notifications(gboolean verbose) {
+ 	g_thread_new("siril-notifications", fetch_url_async, args);
+ }
+ 
+-#endif
++#endif // HAVE_LIBCURL
+\ No newline at end of file
+--- a/src/core/siril_update.h
++++ b/src/core/siril_update.h
+@@ -20,11 +20,12 @@
+ #ifndef SRC_CORE_SIRIL_UPDATE_H_
+ #define SRC_CORE_SIRIL_UPDATE_H_
+ 
+-#if ( defined(HAVE_LIBCURL)  || defined(HAVE_LIBGIT2) )
+-
+ int compare_version(version_number v1, version_number v2);
+ version_number get_version_number_from_string(const gchar *string);
+ version_number get_current_version_number();
++
++#if ( defined(HAVE_LIBCURL)  || defined(HAVE_LIBGIT2) )
++
+ void siril_check_updates(gboolean verbose);
+ void siril_check_notifications(gboolean verbose);
+ 
+-- 
+GitLab
+
