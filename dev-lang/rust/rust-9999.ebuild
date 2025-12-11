@@ -8,7 +8,6 @@ EAPI=8
 LLVM_COMPAT=( 21 )
 PYTHON_COMPAT=( python3_{11..14} )
 
-RUST_PATCH_VER=${PV#*_p}
 RUST_MAX_VER=${PV%%_*}
 RUST_PV=${PV%%_p*}
 
@@ -273,7 +272,7 @@ rust_live_get_sources() {
 	EGIT_REPO_URI="
 		https://anongit.gentoo.org/git/proj/rust-patches.git
 	"
-	EGIT_CHECKOUT_DIR="${WORKDIR}/rust-patches-${RUST_PATCH_VER}"
+	EGIT_CHECKOUT_DIR="${WORKDIR}/rust-patches-${PV}"
 	git-r3_src_unpack
 
 	EGIT_REPO_URI="
