@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2025-12-11)
+# The twitter API is no longer available making this package
+# useless. Upstream has archived the gem and refers to an X gem as an
+# alternative. Removal on 2026-01-11.
+dev-ruby/twitter
+
 # Michael Orlitzky <mjo@gentoo.org> (2025-12-08)
 # An experimental attempt to avoid the gtk -> librsvg -> rust dependency
 # that is now obsolete because upstream gtk links directly to librsvg.
