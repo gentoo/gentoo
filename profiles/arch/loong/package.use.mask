@@ -1,6 +1,12 @@
 # Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2025-12-11)
+# Mysterious segfault at build time (building splash image), during exiv2
+# XMP namespace registration, due to unidentified interaction between C++
+# exception handling and loongarch64 libunwind operation.
+media-gfx/gimp unwind
+
 # WANG Xuerui <xen0n@gentoo.org> (2025-12-10)
 # Test case "c_test" fails with "free: invalid size".
 dev-libs/rocksdb jemalloc
