@@ -19,6 +19,7 @@ KEYWORDS="~amd64"
 IUSE="ocamlopt test"
 
 RDEPEND="
+	<dev-lang/ocaml-5.4
 	dev-ml/ocurl:=[ocamlopt?]
 	dev-ml/cryptokit:=[ocamlopt?]
 	dev-ml/yojson:=[ocamlopt?]
