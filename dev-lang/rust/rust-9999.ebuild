@@ -8,8 +8,18 @@ EAPI=8
 LLVM_COMPAT=( 21 )
 PYTHON_COMPAT=( python3_{11..14} )
 
+# Patches are kept in rust-patches.git, see its README.rst for the versioning
+# scheme.
+#
+# We use _pN from the ebuild version for the patchset but it can be overridden
+# in the ebuild for changes that don't require a revbump.
+#
+# Uncomment this line when the ebuild needs a patchset update but no revbump.
+#RUST_PATCH_VER=${PV}-1
+
 RUST_MAX_VER=${PV%%_*}
 RUST_PV=${PV%%_p*}
+[[ -z ${RUST_PATCH_VER} ]] && RUST_PATCH_VER=${PV}
 
 if [[ ${PV} == *9999* ]]; then
 	# Update this as new `beta` releases come out.
@@ -35,7 +45,7 @@ elif [[ ${PV} == *beta* ]]; then
 	MY_P="rustc-beta"
 	SRC_URI="
 		https://static.rust-lang.org/dist/${BETA_SNAPSHOT}/rustc-beta-src.tar.xz -> rustc-${RUST_PV}-src.tar.xz
-		https://gitweb.gentoo.org/proj/rust-patches.git/snapshot/rust-patches-${PV}.tar.bz2
+		https://gitweb.gentoo.org/proj/rust-patches.git/snapshot/rust-patches-${RUST_PATCH_VER}.tar.bz2
 		verify-sig? (
 			https://static.rust-lang.org/dist/${BETA_SNAPSHOT}/rustc-beta-src.tar.xz.asc
 				-> rustc-${RUST_PV}-src.tar.xz.asc
@@ -46,7 +56,7 @@ else
 	MY_P="rustc-${RUST_PV}"
 	SRC_URI="
 		https://static.rust-lang.org/dist/${MY_P}-src.tar.xz
-		https://gitweb.gentoo.org/proj/rust-patches.git/snapshot/rust-patches-${PV}.tar.bz2
+		https://gitweb.gentoo.org/proj/rust-patches.git/snapshot/rust-patches-${RUST_PATCH_VER}.tar.bz2
 		verify-sig? ( https://static.rust-lang.org/dist/${MY_P}-src.tar.xz.asc )
 	"
 	S="${WORKDIR}/${MY_P}-src"
@@ -272,7 +282,7 @@ rust_live_get_sources() {
 	EGIT_REPO_URI="
 		https://anongit.gentoo.org/git/proj/rust-patches.git
 	"
-	EGIT_CHECKOUT_DIR="${WORKDIR}/rust-patches-${PV}"
+	EGIT_CHECKOUT_DIR="${WORKDIR}/rust-patches-${RUST_PATCH_VER}"
 	git-r3_src_unpack
 
 	EGIT_REPO_URI="
@@ -339,7 +349,7 @@ src_prepare() {
 	# Commit patches to the appropriate branch in proj/rust-patches.git
 	# then cut a new tag / tarball. Don't add patches to ${FILESDIR}
 	PATCHES=(
-		"${WORKDIR}/rust-patches-${PV}/"
+		"${WORKDIR}/rust-patches-${RUST_PATCH_VER}/"
 	)
 
 	if use lto && tc-is-clang && ! tc-ld-is-lld && ! tc-ld-is-mold; then
