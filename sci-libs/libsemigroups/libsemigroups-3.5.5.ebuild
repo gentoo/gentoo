@@ -26,7 +26,9 @@ DEPEND="dev-libs/libfmt"
 
 #...but magic_enum.hpp is included in one of the headers that
 # libsemigroups installs, so it needs to be installed too
+# eigen has a subslot
 RDEPEND="${DEPEND}
+	eigen? ( >=dev-cpp/eigen-5.0.1:= )
 	dev-cpp/magic_enum"
 
 PATCHES=(
