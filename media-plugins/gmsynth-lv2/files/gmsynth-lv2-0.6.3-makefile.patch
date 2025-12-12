@@ -1,0 +1,34 @@
+respect userflags
+--- a/Makefile
++++ b/Makefile
+@@ -17,18 +17,12 @@ gmsynth_VERSION?=$(shell git describe --tags HEAD 2>/dev/null | sed 's/-g.*$$//;
+ 
+ ###############################################################################
+ 
+-MACHINE=$(shell uname -m)
+-ifneq (,$(findstring x64,$(MACHINE)))
+-  HAVE_SSE=yes
+-endif
+-ifneq (,$(findstring 86,$(MACHINE)))
+-  HAVE_SSE=yes
+-endif
++HAVE_SSE ?= yes
+ 
+ ifeq ($(HAVE_SSE),yes)
+-  OPTIMIZATIONS ?= -msse -msse2 -mfpmath=sse -ffast-math -fomit-frame-pointer -O3 -fno-finite-math-only -DNDEBUG
++  OPTIMIZATIONS ?= -msse -msse2 -mfpmath=sse -ffast-math -fomit-frame-pointer -fno-finite-math-only -DNDEBUG
+ else
+-  OPTIMIZATIONS ?= -fomit-frame-pointer -O3 -fno-finite-math-only -DNDEBUG
++  OPTIMIZATIONS ?= -fomit-frame-pointer -fno-finite-math-only -DNDEBUG
+ endif
+ 
+ ###############################################################################
+@@ -166,7 +160,7 @@ DSP_DEPS = $(DSP_SRC)
+ 
+ $(BUILDDIR)$(LV2NAME)$(LIB_EXT): $(DSP_DEPS) Makefile
+ 	@mkdir -p $(BUILDDIR)
+-	$(CC) $(CPPFLAGS) $(CFLAGS) -std=gnu99 \
++	$(CC) $(CPPFLAGS) -std=gnu99 $(CFLAGS) \
+ 	  -o $(BUILDDIR)$(LV2NAME)$(LIB_EXT) $(DSP_SRC) \
+ 	  -shared $(LV2LDFLAGS) $(LDFLAGS) $(LOADLIBES)
+	$(STRIP) $(STRIPFLAGS) $(BUILDDIR)$(LV2NAME)$(LIB_EXT)

@@ -28,7 +28,7 @@ else
 fi
 
 LICENSE="GPL-2"
-SLOT="9"
+SLOT="8"
 IUSE="doc jack phonehome pulseaudio test"
 CPU_USE=(
 	cpu_flags_x86_{avx,avx512f,fma3,sse}
@@ -83,7 +83,6 @@ DEPEND="
 	dev-libs/boost
 	dev-libs/sord
 	media-libs/sratom
-	x11-libs/libXi
 	test? ( dev-util/cppunit )
 "
 BDEPEND="
@@ -98,6 +97,9 @@ BDEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}/${PN}-9.0.0-fix-clang-crash.patch"
+	"${FILESDIR}/${PN}-9.0.0-properly-check-for-syscall.patch"
+	"${FILESDIR}/${PN}-9.0.0-fix-unlikely-buffer-overflow.patch"
 	"${FILESDIR}/${PN}-8.12-fix_fpu.patch"
 	# see bug #966219
 	"${FILESDIR}/${PN}-8.12-fix_fftranscode.patch"
@@ -156,6 +158,7 @@ src_configure() {
 	# VST support is enabled by default given --no-lxvst is not called.
 	# But please keep in mind the README (obsolete?) made by upstream.
 	# https://github.com/Ardour/ardour/blob/master/PACKAGER_README
+
 	tc-export CC CXX
 	local myconf=(
 		--configdir="${EPREFIX}"/etc
@@ -218,6 +221,12 @@ src_install() {
 	# the appdata directory is deprecated
 	# no patch because this causes the translation fail
 	mv "${ED}"/usr/share/{appdata,metainfo} || die
+
+	if use test; then
+		# do not install the testsuite
+		rm "${ED}"/usr/bin/run-tests || die
+		rm "${ED}"/usr/$(get_libdir)/ardour${SLOT}/run-tests || die
+	fi
 }
 
 pkg_postinst() {
