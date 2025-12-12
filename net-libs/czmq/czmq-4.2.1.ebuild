@@ -10,7 +10,7 @@ SRC_URI="https://github.com/zeromq/${PN}/releases/download/v${PV}/${P}.tar.gz"
 LICENSE="MPL-2.0"
 SLOT="0/4"
 KEYWORDS="amd64 arm arm64 ~hppa ~ppc64 ~riscv x86"
-IUSE="curl drafts http-client http-server lz4 nss static-libs systemd test +uuid"
+IUSE="curl drafts http-client http-server lz4 nss systemd test +uuid"
 RESTRICT="!test? ( test )"
 
 BDEPEND="app-text/asciidoc
@@ -55,7 +55,4 @@ src_install() {
 	default
 
 	find "${ED}" -type f -name "*.la" -delete || die
-	if ! use static-libs ; then
-		find "${ED}" -type f -name "*.a" -delete || die
-	fi
 }
