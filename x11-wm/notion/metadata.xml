@@ -5,9 +5,6 @@
 		<email>soap@gentoo.org</email>
 		<name>David Seifert</name>
 	</maintainer>
-	<use>
-		<flag name="xrandr">Add support for xrandr</flag>
-	</use>
 	<upstream>
 		<remote-id type="sourceforge">notion</remote-id>
 		<remote-id type="github">raboof/notion</remote-id>
