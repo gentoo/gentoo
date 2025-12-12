@@ -5,4 +5,4 @@
 description="Open Source Continuous File Synchronization"
 supervisor=supervise-daemon
 command="/usr/bin/syncthing"
-command_args="serve --no-browser --no-restart --logflags=0"
+command_args="serve --no-browser --no-restart"
