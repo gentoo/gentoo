@@ -13,6 +13,7 @@
 			If your system uses LVM2 for managing disks and partitions, enable this flag.
 		</flag>
 		<flag name="sanlock">Enable lvmlockd with support for sanlock</flag>
+		<flag name="nvme">Build and install NVMe plugin</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:heinz_mauelshagen:lvm2</remote-id>
