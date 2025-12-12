@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 LUA_COMPAT=( lua5-4 )
 
-inherit lua-single toolchain-funcs readme.gentoo-r1
+inherit flag-o-matic lua-single toolchain-funcs readme.gentoo-r1
 
 DESCRIPTION="Notion is a tiling, tabbed window manager for the X window system"
 HOMEPAGE="https://notionwm.net/"
@@ -44,6 +44,12 @@ BDEPEND="
 	virtual/pkgconfig"
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/965850
+	# https://github.com/raboof/notion/issues/390
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	tc-export AR CC PKG_CONFIG
 	export INSTALL_STRIP=""
 
