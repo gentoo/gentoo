@@ -44,7 +44,7 @@ DEPEND="
 		>=kde-frameworks/kparts-${KFMIN}:6
 		>=kde-frameworks/kservice-${KFMIN}:6
 	)
-	eigen? ( dev-cpp/eigen:3= )
+	eigen? ( dev-cpp/eigen:= )
 	xlsx? ( dev-libs/qxlsx:= )
 	fftw? ( sci-libs/fftw:3.0= )
 	fits? ( sci-libs/cfitsio:= )
