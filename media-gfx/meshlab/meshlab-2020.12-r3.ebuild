@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ IUSE="double-precision minimal"
 # qhull: newer meshlab supports system re-entrant version
 # levmar: build system hardcodes vendored copy
 DEPEND="
-	dev-cpp/eigen:3
+	dev-cpp/eigen:=
 	dev-cpp/muParser
 	dev-libs/gmp:=
 	dev-qt/qtcore:5
