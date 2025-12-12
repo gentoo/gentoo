@@ -18,7 +18,7 @@ SLOT="0/15"
 KEYWORDS="amd64 ~ppc ~riscv ~x86"
 
 DEPEND="
-	dev-cpp/eigen:3
+	dev-cpp/eigen:=
 	dev-qt/qtbase:6[gui,opengl,widgets,-gles2-only]
 	media-libs/glm
 "
