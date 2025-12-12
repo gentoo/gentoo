@@ -18,7 +18,7 @@ RDEPEND="
 	media-libs/glu
 	media-libs/libsdl[opengl]
 	virtual/opengl
-	dev-cpp/eigen
+	dev-cpp/eigen:=
 	sci-libs/libigl
 "
 DEPEND="
