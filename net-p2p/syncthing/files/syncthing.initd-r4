@@ -8,7 +8,7 @@ SYNCTHING_HOMEDIR=${SYNCTHING_HOMEDIR:-/var/lib/syncthing/.config/syncthing}
 SYNCTHING_LOGFILE=${SYNCTHING_LOGFILE:-/var/log/syncthing/syncthing.log}
 SYNCTHING_GUI_ADDRESS=${SYNCTHING_GUI_ADDRESS:-http://127.0.0.1:8384}
 
-description="Syncthing is an open, trustworthy and decentralized cloud storage system"
+description="Open Source Continuous File Synchronization"
 command="/usr/bin/syncthing"
 supervisor=supervise-daemon
 
