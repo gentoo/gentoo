@@ -72,6 +72,8 @@ else
 		)
 		https://github.com/opencv/opencv/commit/54b03cc2f84cfe83222c59b747e17cb378a9744c.patch
 		-> ${P}-fix_videowriter_raw_return_code.patch
+		https://github.com/opencv/opencv/commit/353b4ddf52db48ba85d2efaa33310afa0eb73a72.patch
+		-> ${PN}-4.12.0-eigen5.patch
 	"
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 fi
@@ -215,6 +217,7 @@ COMMON_DEPEND="
 		media-libs/harfbuzz:=[${MULTILIB_USEDEP}]
 	)
 	contribovis? ( >=dev-games/ogre-1.12:= )
+	eigen? ( >=dev-cpp/eigen-3.3.8-r1:= )
 	ffmpeg? ( media-video/ffmpeg:0=[${MULTILIB_USEDEP}] )
 	gdal? ( sci-libs/gdal:= )
 	gflags? ( dev-cpp/gflags:=[${MULTILIB_USEDEP}] )
@@ -316,7 +319,6 @@ GST_TEST_DEPEND="
 "
 DEPEND="
 	${COMMON_DEPEND}
-	eigen? ( >=dev-cpp/eigen-3.3.8-r1:3 )
 	java? ( >=virtual/jdk-1.8:* )
 	test? (
 		wayland? ( gui-wm/tinywl )
@@ -390,6 +392,7 @@ PATCHES=(
 
 	"${FILESDIR}/${PN}-4.11.0-ffmpeg8.patch" # PR 27691
 	"${DISTDIR}/${P}-fix_videowriter_raw_return_code.patch"
+	"${DISTDIR}/${PN}-4.12.0-eigen5.patch" # PR 27536
 
 	# TODO applied in src_prepare
 	# "${FILESDIR}/${PN}_contrib-4.8.1-rgbd.patch"

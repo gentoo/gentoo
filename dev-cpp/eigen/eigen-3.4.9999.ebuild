@@ -82,7 +82,7 @@ IUSE_TEST_BACKENDS=(
 	"umfpack"
 )
 
-IUSE="benchmark ${CPU_FEATURES_MAP[*]%:*} clang-cuda cuda hip debug doc lapack mathjax test ${IUSE_TEST_BACKENDS[*]}" #zvector
+IUSE="${CPU_FEATURES_MAP[*]%:*} clang-cuda cuda hip debug doc lapack mathjax test ${IUSE_TEST_BACKENDS[*]}" #zvector
 
 REQUIRED_USE="
 	test? (
@@ -158,7 +158,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.4.0-doc-nocompress.patch" # bug 830064
 	"${FILESDIR}/${PN}-3.4.0-buildstring.patch"
 	"${FILESDIR}/${PN}-3.4.1-cxxstandard-17.patch"
-	"${FILESDIR}/${PN}-5.0.0-please_protect_your_min_with_parentheses.patch"
 )
 
 # TODO should be in cuda.eclass
@@ -213,21 +212,14 @@ src_unpack() {
 
 src_prepare() {
 	sed \
+		-e "/add_subdirectory(bench\/spbench/s/^/#DONOTCOMPILE /g" \
 		-e "/add_subdirectory(demos/s/^/#DONOTCOMPILE /g" \
 		-i CMakeLists.txt || die
 
-	rm -r demos || die
+	rm -r bench demos || die
 
 	# run patches here as we patch in test/
 	cmake_src_prepare
-
-	if ! use bench; then
-		sed \
-			-e "/add_subdirectory(bench\/spbench/s/^/#DONOTCOMPILE /g" \
-			-i CMakeLists.txt || die
-
-		rm -r bench || die
-	fi
 
 	if ! use test; then
 		sed \
@@ -259,7 +251,6 @@ src_configure() {
 		-DBUILD_SHARED_LIBS="yes"
 		-DBUILD_TESTING="$(usex test)"
 
-		-DEIGEN_BUILD_BTL="$(usex benchmark)" # Build benchmark suite
 		-DEIGEN_BUILD_DOC="$(usex doc)" # Enable creation of Eigen documentation
 		-DEIGEN_BUILD_PKGCONFIG="yes" # Build pkg-config .pc file for Eigen
 	)
@@ -495,18 +486,19 @@ src_test() {
 	if use cuda ; then
 		cuda_add_sandbox -w
 
-		CMAKE_SKIP_TESTS+=(
-			# "^cxx11_tensor_cast_float16_gpu$"
-			# "^cxx11_tensor_gpu_5$"
-		)
+# 		CMAKE_SKIP_TESTS+=(
+# 			cxx11_tensor_cast_float16_gpu
+# 			cxx11_tensor_gpu_5
+# 		)
 	fi
 
 	if use lapack ; then
-		CMAKE_SKIP_TESTS+=(
-			# "^LAPACK-.*$"
-		)
+		:
+# 		CMAKE_SKIP_TESTS+=(
+# 			"^LAPACK-.*$"
+# 		)
 	fi
-
+# 	unset CMAKE_SKIP_TESTS
 	local myctestargs=(
 		# slowdowns?
 		-j1 # otherwise breaks due to cmake reruns

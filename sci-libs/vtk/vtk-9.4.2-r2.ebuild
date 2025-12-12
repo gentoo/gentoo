@@ -144,7 +144,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	dev-cpp/cli11
-	dev-cpp/eigen
+	dev-cpp/eigen:=
 	dev-cpp/nlohmann_json
 	>=dev-libs/pegtl-3
 	dev-libs/utfcpp

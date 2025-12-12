@@ -26,7 +26,7 @@ RESTRICT="test"
 # No dep on sci-libs/libigl, in-tree version cannot build
 # static library currently. Using bundled one.
 RDEPEND="
-	dev-cpp/eigen:3
+	dev-cpp/eigen:=
 	dev-cpp/tbb:=
 	dev-libs/boost:=[nls]
 	dev-libs/cereal

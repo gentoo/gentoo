@@ -1,0 +1,72 @@
+From cd8bb671321b5163c21f84689f929b671ed68750 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Mon, 20 Oct 2025 21:26:47 +0200
+Subject: [PATCH] cxx standard 17
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 80d36b991..8106bb264 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -330,11 +330,8 @@ if (EIGEN_BUILD_TESTING)
+ 
+   option(EIGEN_TEST_CXX11 "Enable testing with C++11 and C++11 features (e.g. Tensor module)." ${EIGEN_COMPILER_SUPPORT_CPP11})
+   if(EIGEN_TEST_CXX11)
+-    set(CMAKE_CXX_STANDARD 11)
++    set(CMAKE_CXX_STANDARD 17)
+     set(CMAKE_CXX_EXTENSIONS OFF)
+-    if(EIGEN_COMPILER_SUPPORT_CPP11)
+-      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+-    endif()
+   else()
+     ei_add_cxx_compiler_flag("-std=c++03")
+   endif()
+@@ -373,7 +370,7 @@ if (EIGEN_BUILD_TESTING)
+     ei_add_cxx_compiler_flag("-Wshorten-64-to-32")
+     ei_add_cxx_compiler_flag("-Wlogical-op")
+     ei_add_cxx_compiler_flag("-Wenum-conversion")
+-    ei_add_cxx_compiler_flag("-Wc++11-extensions")
++    # ei_add_cxx_compiler_flag("-Wc++11-extensions")
+     ei_add_cxx_compiler_flag("-Wdouble-promotion")
+     # ei_add_cxx_compiler_flag("-Wconversion")
+     ei_add_cxx_compiler_flag("-Wshadow")
+diff --git a/doc/special_examples/CMakeLists.txt b/doc/special_examples/CMakeLists.txt
+index a0267a512..d7fc80976 100644
+--- a/doc/special_examples/CMakeLists.txt
++++ b/doc/special_examples/CMakeLists.txt
+@@ -23,7 +23,6 @@ if(EIGEN_COMPILER_SUPPORT_CPP11)
+   add_executable(random_cpp11 random_cpp11.cpp)
+   target_link_libraries(random_cpp11 ${EIGEN_STANDARD_LIBRARIES_TO_LINK_TO} Eigen3::Eigen)
+   add_dependencies(all_examples random_cpp11)
+-  target_compile_options(random_cpp11 PRIVATE "-std=c++11")
+ 
+   add_custom_command(
+     TARGET random_cpp11
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+index 7ce260e0e..f503efc5d 100644
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -386,7 +386,6 @@ if(CUDA_FOUND AND EIGEN_TEST_CUDA)
+   string(REPLACE "-fno-check-new" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
+ 
+   if(EIGEN_TEST_CUDA_CLANG)
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+     string(APPEND CMAKE_CXX_FLAGS " --cuda-path=${CUDA_TOOLKIT_ROOT_DIR}")
+     foreach(GPU IN LISTS EIGEN_CUDA_COMPUTE_ARCH)
+       string(APPEND CMAKE_CXX_FLAGS " --cuda-gpu-arch=sm_${GPU}")
+diff --git a/unsupported/test/CMakeLists.txt b/unsupported/test/CMakeLists.txt
+index 1d5e9b174..cf394de86 100644
+--- a/unsupported/test/CMakeLists.txt
++++ b/unsupported/test/CMakeLists.txt
+@@ -227,7 +227,6 @@ if(CUDA_FOUND AND EIGEN_TEST_CUDA)
+   string(REPLACE "-ansi" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
+ 
+   if(EIGEN_TEST_CUDA_CLANG)
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+     string(APPEND CMAKE_CXX_FLAGS " --cuda-path=${CUDA_TOOLKIT_ROOT_DIR}")
+     foreach(ARCH IN LISTS EIGEN_CUDA_COMPUTE_ARCH)
+         string(APPEND CMAKE_CXX_FLAGS " --cuda-gpu-arch=sm_${ARCH}")
+-- 
+2.51.1
+
