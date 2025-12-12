@@ -11,11 +11,12 @@ SRC_URI="https://github.com/garrigue/lablgl/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc glut +ocamlopt tk"
 
 RDEPEND="
 	>=dev-lang/ocaml-4.14:=[ocamlopt?]
+	dev-ml/camlp-streams
 	x11-libs/libXext
 	x11-libs/libXmu
 	x11-libs/libX11
@@ -28,7 +29,10 @@ RDEPEND="
 		dev-ml/labltk:=
 	)
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	dev-ml/findlib
+"
 
 PATCHES=( "${FILESDIR}"/${PN}-1.06-makefile.patch )
 
