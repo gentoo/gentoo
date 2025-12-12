@@ -14,7 +14,7 @@ LICENSE="Apache-2.0"
 # Dependent licenses
 LICENSE+=" BSD-2 BSD MIT Unlicense"
 SLOT="0"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="amd64 ~arm64 ~loong"
 RESTRICT="test"
 PROPERTIES="test_network"
 
