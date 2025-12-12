@@ -6,7 +6,7 @@ EAPI=8
 PHP_EXT_NAME="yaml"
 PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
-USE_PHP="php8-2 php8-3"
+USE_PHP="php8-2 php8-3 php8-4 php8-5"
 
 inherit php-ext-pecl-r3
 
@@ -18,4 +18,3 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 
 DEPEND="dev-libs/libyaml"
 RDEPEND="${DEPEND}"
-PATCHES=( "${FILESDIR}/${P}-c99-incompatible-pointer-types.patch" )
