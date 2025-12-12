@@ -22,7 +22,7 @@ REQUIRED_USE="test? ( gflags ) sparse? ( lapack ) abi_x86_32? ( !sparse !lapack 
 RESTRICT="!test? ( test )"
 
 BDEPEND="${PYTHON_DEPS}
-	>=dev-cpp/eigen-3.3.4:3
+	>=dev-cpp/eigen-3.3.4:=
 	lapack? ( virtual/pkgconfig )
 	doc? ( <dev-libs/mathjax-3 )
 "
