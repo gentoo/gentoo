@@ -102,7 +102,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.13.0-fix_compilation.patch
 	"${FILESDIR}"/${PN}-5.13.0-fix_compilation-2.patch
 	"${FILESDIR}"/${PN}-5.13.0-avoid_file_collisions.patch
-	"${FILESDIR}"/${P}-qt-6.10.patch # bug #967029
+	"${FILESDIR}"/${P}-qt-6.10{,-1}.patch # bug #967029
 )
 
 # false positive when checking for available HDF5 interface, bug #904731
