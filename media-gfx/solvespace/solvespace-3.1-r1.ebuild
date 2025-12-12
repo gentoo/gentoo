@@ -36,6 +36,7 @@ IUSE="openmp +system-mimalloc"
 
 RDEPEND="
 	dev-cpp/atkmm:0
+	dev-cpp/eigen:=
 	dev-cpp/glibmm:2
 	dev-cpp/gtkmm:3.0[X]
 	dev-cpp/pangomm:1.4
@@ -54,7 +55,6 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	dev-cpp/eigen:3
 "
 BDEPEND="virtual/pkgconfig"
 
