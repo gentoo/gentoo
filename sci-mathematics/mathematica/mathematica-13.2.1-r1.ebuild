@@ -4,44 +4,30 @@
 EAPI=8
 
 CHECKREQS_DISK_BUILD=20G
-inherit check-reqs desktop unpacker xdg
+inherit check-reqs desktop ffmpeg-compat unpacker xdg
 
 DESCRIPTION="Wolfram Mathematica"
 HOMEPAGE="https://www.wolfram.com/mathematica/"
-SRC_URI="
-	bundle?  ( Mathematica_${PV}_BNDL_LINUX.sh )
-	!bundle? ( Mathematica_${PV}_LINUX.sh )
-"
+SRC_URI="Mathematica_${PV}_BNDL_LINUX.sh"
 S="${WORKDIR}"
 
 LICENSE="all-rights-reserved"
-KEYWORDS="-* ~amd64"
 SLOT="0"
-IUSE="bundle cuda doc ffmpeg R"
+KEYWORDS="-* ~amd64"
+IUSE="cuda doc ffmpeg R"
 
 RESTRICT="strip mirror bindist fetch"
 
 # Mathematica comes with a lot of bundled stuff. We should place here only what we
 # explicitly override with LD_PRELOAD.
 # RLink (libjri.so) requires dev-lang/R
-# FFmpegTools (FFmpegToolsSystem-6.0.so) requires media-video/ffmpeg-6.0
-# FFmpegTools (FFmpegToolsSystem-4.4.so) requires media-video/ffmpeg-4.4
+# FFmpegTools (FFmpegToolsSystem-5.0.so) requires media-video/ffmpeg
 RDEPEND="
-	dev-qt/qt5compat:6
-	dev-qt/qtbase:6[eglfs,wayland]
-	dev-qt/qtsvg:6
-	dev-qt/qtwayland:6[compositor(+)]
+	cuda? ( dev-util/nvidia-cuda-toolkit )
 	media-libs/freetype
-	virtual/libcrypt
-	cuda? (
-		>=dev-util/nvidia-cuda-toolkit-11
-		<dev-util/nvidia-cuda-toolkit-13
-		)
-	ffmpeg? ( || (
-		media-video/ffmpeg:0/56.58.58
-		media-video/ffmpeg:0/58.60.60
-		) )
+	ffmpeg? ( media-video/ffmpeg-compat:4 )
 	R? ( dev-lang/R )
+	virtual/libcrypt
 "
 
 DEPEND="
@@ -76,9 +62,6 @@ src_install() {
 	sed -e "s|xdg-mime|xdg-dummy-command|g" -i "Unix/Installer/MathInstaller" || die
 	# fix ACCESS DENIED issue when installer check the avahi-daemon
 	sed -e "s|avahi-daemon -c|true|g" -i "Unix/Installer/MathInstaller" || die
-	# fix ACCESS DENIED issue when installing documentation
-	sed -e "s|\(exec ./MathInstaller\) -noprompt|\1 -auto -targetdir=${S}/${M_TARGET}/Documentation -noexec|" -i "Unix/Installer/MathInstaller" || die
-
 	/bin/sh "Unix/Installer/MathInstaller" -auto "-targetdir=${S}/${M_TARGET}" "-execdir=${S}/opt/bin" || die
 	popd > /dev/null || die
 
@@ -99,7 +82,8 @@ src_install() {
 
 	if ! use cuda; then
 		einfo 'Removing cuda support'
-		rm -r "${S}/${M_TARGET}/SystemFiles/Components/CUDACompileTools/LibraryResources/Linux-x86-64/CUDAExtensions"*.so || die
+		rm -r "${S}/${M_TARGET}/SystemFiles/Components/CUDACompileTools/LibraryResources/Linux-x86-64/CUDAExtensions.so" \
+			|| die
 	fi
 
 	# Linux-x86-64/AllVersions is the supported version, other versions remove
@@ -116,6 +100,8 @@ src_install() {
 	if ! use ffmpeg; then
 		einfo 'Removing FFmpegTools support'
 		rm -r "${S}/${M_TARGET}/SystemFiles/Links/FFmpegTools/LibraryResources/Linux-x86-64/FFmpegToolsSystem"*.so || die
+	else
+		ffmpeg_compat_setup 4
 	fi
 
 	# fix RPATH
@@ -136,7 +122,8 @@ src_install() {
 	done < <(find "${S}/${M_TARGET}" -type f -print0)
 
 	# fix broken symbolic link
-	ln -sf "/${M_TARGET}/SystemFiles/Kernel/Binaries/Linux-x86-64/wolframscript" "${S}/${M_TARGET}/Executables/wolframscript" || die
+	ln -sf "/${M_TARGET}/SystemFiles/Kernel/Binaries/Linux-x86-64/wolframscript" \
+		"${S}/${M_TARGET}/Executables/wolframscript" || die
 
 	# move all over
 	mv "${S}"/opt "${ED}"/opt || die

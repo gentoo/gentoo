@@ -1,21 +1,23 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-CHECKREQS_DISK_BUILD=20G
-inherit check-reqs desktop unpacker xdg
+CHECKREQS_DISK_BUILD=19G
+inherit check-reqs desktop ffmpeg-compat unpacker xdg
 
 DESCRIPTION="Wolfram Mathematica"
 HOMEPAGE="https://www.wolfram.com/mathematica/"
-SRC_URI="Mathematica_${PV}_BNDL_LINUX.sh"
+SRC_URI="
+	doc? ( WLDocs_${PV}_LINUX.sh )
+	Mathematica_${PV}_LINUX.sh
+"
 S="${WORKDIR}"
 
 LICENSE="all-rights-reserved"
-KEYWORDS="-* ~amd64"
 SLOT="0"
+KEYWORDS="-* ~amd64"
 IUSE="cuda doc ffmpeg R"
-
 RESTRICT="strip mirror bindist fetch"
 
 # Mathematica comes with a lot of bundled stuff. We should place here only what we
@@ -25,7 +27,7 @@ RESTRICT="strip mirror bindist fetch"
 RDEPEND="
 	cuda? ( dev-util/nvidia-cuda-toolkit )
 	media-libs/freetype
-	ffmpeg? ( <media-video/ffmpeg-5 )
+	ffmpeg? ( media-video/ffmpeg-compat:4 )
 	R? ( dev-lang/R )
 	virtual/libcrypt
 "
@@ -48,7 +50,10 @@ M_TARGET="opt/Wolfram/${MPN}/${MPV}"
 QA_PREBUILT="opt/*"
 
 src_unpack() {
-	/bin/sh "${DISTDIR}/${A}" --nox11 --keep --target "${S}/unpack_app" -- "-help" || die
+	/bin/sh "${DISTDIR}/Mathematica_${PV}_LINUX.sh" --nox11 --keep --target "${S}/unpack_app" -- "-help" || die
+	if use doc; then
+		/bin/sh "${DISTDIR}/WLDocs_${PV}_LINUX.sh" --nox11 --keep --target "${S}/unpack_doc" -- "-help" || die
+	fi
 }
 
 src_install() {
@@ -68,6 +73,14 @@ src_install() {
 	if ! use doc; then
 		einfo "Removing documentation"
 		rm -r "${S}/${M_TARGET}/Documentation" || die
+	else
+		pushd "${S}/unpack_doc" > /dev/null || die
+		/bin/sh "Unix/Installer/MathInstaller" -auto "-targetdir=${S}/temp_doc" "-execdir=${S}/opt/bin" || die
+		popd > /dev/null || die
+		# Merge contents of Mathematica_docs with Mathematica
+		rm -r "${S}/${M_TARGET}"/Documentation/English/{SearchIndex,System} || die
+		mv "${S}"/temp_doc/Documentation/English/* "${S}/${M_TARGET}/"Documentation/English/ || die
+		rm -r "${S}"/temp_doc || die
 	fi
 
 	# fix world writable file QA problem for files
@@ -82,7 +95,8 @@ src_install() {
 
 	if ! use cuda; then
 		einfo 'Removing cuda support'
-		rm -r "${S}/${M_TARGET}/SystemFiles/Components/CUDACompileTools/LibraryResources/Linux-x86-64/CUDAExtensions.so" || die
+		rm -r "${S}/${M_TARGET}/SystemFiles/Components/CUDACompileTools/LibraryResources/Linux-x86-64/CUDAExtensions.so" \
+			|| die
 	fi
 
 	# Linux-x86-64/AllVersions is the supported version, other versions remove
@@ -99,6 +113,8 @@ src_install() {
 	if ! use ffmpeg; then
 		einfo 'Removing FFmpegTools support'
 		rm -r "${S}/${M_TARGET}/SystemFiles/Links/FFmpegTools/LibraryResources/Linux-x86-64/FFmpegToolsSystem"*.so || die
+	else
+		ffmpeg_compat_setup 4
 	fi
 
 	# fix RPATH
@@ -119,7 +135,8 @@ src_install() {
 	done < <(find "${S}/${M_TARGET}" -type f -print0)
 
 	# fix broken symbolic link
-	ln -sf "/${M_TARGET}/SystemFiles/Kernel/Binaries/Linux-x86-64/wolframscript" "${S}/${M_TARGET}/Executables/wolframscript" || die
+	ln -sf "/${M_TARGET}/SystemFiles/Kernel/Binaries/Linux-x86-64/wolframscript" \
+		"${S}/${M_TARGET}/Executables/wolframscript" || die
 
 	# move all over
 	mv "${S}"/opt "${ED}"/opt || die

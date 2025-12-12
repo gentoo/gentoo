@@ -4,7 +4,7 @@
 EAPI=8
 
 CHECKREQS_DISK_BUILD=20G
-inherit check-reqs desktop unpacker xdg
+inherit check-reqs desktop ffmpeg-compat unpacker xdg
 
 DESCRIPTION="Wolfram Mathematica"
 
@@ -47,9 +47,9 @@ RDEPEND="
 		<dev-util/nvidia-cuda-toolkit-13
 		)
 	ffmpeg? ( || (
-		media-video/ffmpeg:0/56.58.58
-		media-video/ffmpeg:0/58.60.60
-		media-video/ffmpeg:0/59.61.61
+		media-video/ffmpeg-compat:4
+		media-video/ffmpeg-compat:6
+		media-video/ffmpeg-compat:7
 		) )
 	R? ( dev-lang/R )
 	mqtt? (
@@ -146,15 +146,22 @@ src_install() {
 		einfo 'Removing FFmpegTools support'
 		rm -r "${S}/${M_TARGET}/SystemFiles/Links/FFmpegTools/LibraryResources/Linux-x86-64/FFmpegToolsSystem"*.so || die
 	else                      # Support ffmpeg, but remove support for versions not installed
-		if ! has_version 'media-video/ffmpeg:0/56.58.58'; then
+		if has_version 'media-video/ffmpeg-compat:7'; then
+			ffmpeg_compat_setup 7
+		elif has_version 'media-video/ffmpeg-compat:6'; then
+			ffmpeg_compat_setup 6
+		elif has_version 'media-video/ffmpeg-compat:4'; then
+			ffmpeg_compat_setup 4
+		fi
+		if ! has_version 'media-video/ffmpeg-compat:4'; then
 			einfo 'Removing FFmpegTools version 4 support'
 			rm -r "${S}/${M_TARGET}/SystemFiles/Links/FFmpegTools/LibraryResources/Linux-x86-64/FFmpegToolsSystem-4.4.so" || die
 		fi
-		if ! has_version 'media-video/ffmpeg:0/58.60.60'; then
+		if ! has_version 'media-video/ffmpeg-compat:6'; then
 			einfo 'Removing FFmpegTools version 6 support'
 			rm -r "${S}/${M_TARGET}/SystemFiles/Links/FFmpegTools/LibraryResources/Linux-x86-64/FFmpegToolsSystem-6.0.so" || die
 		fi
-		if ! has_version 'media-video/ffmpeg:0/59.61.61'; then
+		if ! has_version 'media-video/ffmpeg-compat:7'; then
 			einfo 'Removing FFmpegTools version 7 support'
 			rm -r "${S}/${M_TARGET}/SystemFiles/Links/FFmpegTools/LibraryResources/Linux-x86-64/FFmpegToolsSystem-7.0.so" || die
 		fi
