@@ -4,31 +4,28 @@
 EAPI=8
 
 JAVA_PKG_IUSE="doc source test"
-MAVEN_ID="org.bouncycastle:bcmail-jdk18on:${PV}"
 JAVA_TESTING_FRAMEWORKS="junit-4"
+MAVEN_ID="org.bouncycastle:bcpg-jdk18on:${PV}"
 
 inherit java-pkg-2 java-pkg-simple
 
-DESCRIPTION="The Bouncy Castle Java S/MIME APIs for handling S/MIME protocols"
+DESCRIPTION="Java cryptography APIs"
 HOMEPAGE="https://www.bouncycastle.org/download/bouncy-castle-java/"
 MY_PV="r$(ver_rs 1 'rv' 2 'v')"
 SRC_URI="https://github.com/bcgit/bc-java/archive/${MY_PV}.tar.gz -> bc-java-${MY_PV}.tar.gz"
-S="${WORKDIR}/bc-java-${MY_PV}/mail"
+S="${WORKDIR}/bc-java-${MY_PV}/pg"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm64 ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 
 CP_DEPEND="
-	~dev-java/bcpkix-${PV}:0
 	~dev-java/bcprov-${PV}:0
 	~dev-java/bcutil-${PV}:0
-	dev-java/javax-mail:0
 "
 
 DEPEND="
 	${CP_DEPEND}
-	dev-java/jakarta-activation:1
 	>=virtual/jdk-11:*
 "
 
@@ -40,22 +37,22 @@ RDEPEND="
 DOCS=( ../{README,SECURITY}.md )
 HTML_DOCS=( ../{CONTRIBUTORS,index}.html )
 
-JAVA_AUTOMATIC_MODULE_NAME="org.bouncycastle.mail"
-JAVA_CLASSPATH_EXTRA="jakarta-activation-1"
-JAVA_RESOURCE_DIRS="src/main/resources"
-JAVA_SRC_DIR=(
-	"src/main/java"
-	"src/main/jdk1.9"
-)
-
+JAVA_AUTOMATIC_MODULE_NAME="org.bouncycastle.pg"
+JAVA_SRC_DIR=( src/main/{java,jdk1.9} )
 JAVA_TEST_GENTOO_CLASSPATH="junit-4"
-JAVA_TEST_RESOURCE_DIRS=( "src/test/resources" "../pkix/src/main/resources" )
-JAVA_TEST_RUN_ONLY="org.bouncycastle.mail.smime.test.AllTests"
+JAVA_TEST_RESOURCE_DIRS="src/test/resources"
 JAVA_TEST_SRC_DIR="src/test/java"
 
 src_prepare() {
 	java-pkg-2_src_prepare
 	java-pkg_clean ..
+}
+
+src_test() {
+	local TESTS=$(find src/test/java -name 'AllTests.java' -printf '%P\n' )
+	TESTS="${TESTS//.java}"
+	JAVA_TEST_RUN_ONLY="${TESTS//\//.}"
+	java-pkg-simple_src_test
 }
 
 src_install() {

@@ -4,8 +4,8 @@
 EAPI=8
 
 JAVA_PKG_IUSE="doc source test"
-MAVEN_ID="org.bouncycastle:bcprov-jdk18on:${PV}"
 JAVA_TESTING_FRAMEWORKS="junit-4"
+MAVEN_ID="org.bouncycastle:bcprov-jdk18on:${PV}"
 
 inherit java-pkg-2 java-pkg-simple check-reqs
 
@@ -18,7 +18,7 @@ S="${WORKDIR}/bc-java-${MY_PV}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm64 ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 
 DEPEND=">=virtual/jdk-11:*"
 RDEPEND=">=virtual/jre-1.8:*"
@@ -78,24 +78,18 @@ src_test() {
 	einfo "Testing \"core\""
 	JAVA_TEST_RESOURCE_DIRS="core/src/test/resources"
 	JAVA_TEST_SRC_DIR="core/src/test/java"
-	pushd core/src/test/java || die
-		local JAVA_TEST_RUN_ONLY=$(find * \
-			-name "AllTests.java" )
-	popd || die
-	JAVA_TEST_RUN_ONLY="${JAVA_TEST_RUN_ONLY//.java}"
-	JAVA_TEST_RUN_ONLY="${JAVA_TEST_RUN_ONLY//\//.}"
+	local TESTS=$(find core/src/test/java -name "AllTests.java" -printf "%P\n")
+	TESTS="${TESTS//.java}"
+	JAVA_TEST_RUN_ONLY="${TESTS//\//.}"
 	java-pkg-simple_src_test
 
 	einfo "Testing bcprov"
 	JAVA_GENTOO_CLASSPATH_EXTRA=":core.jar:libs/unboundid-ldapsdk-6.0.8.jar"
 	JAVA_TEST_RESOURCE_DIRS="prov/src/test/resources"
 	JAVA_TEST_SRC_DIR="prov/src/test/java"
-	pushd prov/src/test/java || die
-		local JAVA_TEST_RUN_ONLY=$(find * \
-			-name "AllTests.java" )
-	popd || die
-	JAVA_TEST_RUN_ONLY="${JAVA_TEST_RUN_ONLY//.java}"
-	JAVA_TEST_RUN_ONLY="${JAVA_TEST_RUN_ONLY//\//.}"
+	local TESTS=$(find prov/src/test/java -name "AllTests.java" -printf "%P\n")
+	TESTS="${TESTS//.java}"
+	JAVA_TEST_RUN_ONLY="${TESTS//\//.}"
 	java-pkg-simple_src_test
 }
 

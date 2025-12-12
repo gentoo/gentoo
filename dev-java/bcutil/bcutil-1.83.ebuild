@@ -4,8 +4,8 @@
 EAPI=8
 
 JAVA_PKG_IUSE="doc source test"
-MAVEN_ID="org.bouncycastle:bcutil-jdk18on:${PV}"
 JAVA_TESTING_FRAMEWORKS="junit-4"
+MAVEN_ID="org.bouncycastle:bcutil-jdk18on:${PV}"
 
 inherit java-pkg-2 java-pkg-simple
 
@@ -17,17 +17,17 @@ S="${WORKDIR}/bc-java-${MY_PV}/util"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm64 ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 
-CDEPEND="~dev-java/bcprov-${PV}:0"
+CP_DEPEND="~dev-java/bcprov-${PV}:0"
 
 DEPEND="
-	${CDEPEND}
+	${CP_DEPEND}
 	>=virtual/jdk-11:*
 "
 
 RDEPEND="
-	${CDEPEND}
+	${CP_DEPEND}
 	>=virtual/jre-1.8:*
 "
 
@@ -35,23 +35,21 @@ DOCS=( ../{README,SECURITY}.md )
 HTML_DOCS=( ../{CONTRIBUTORS,index}.html )
 
 JAVA_AUTOMATIC_MODULE_NAME="org.bouncycastle.util"
-JAVA_GENTOO_CLASSPATH="bcprov"
-JAVA_SRC_DIR=(
-	"src/main/java"
-	"src/main/jdk1.9"
-)
-
+JAVA_SRC_DIR=( src/main/{java,jdk1.9} )
 JAVA_TEST_GENTOO_CLASSPATH="junit-4"
 JAVA_TEST_RESOURCE_DIRS="src/test/resources"
-JAVA_TEST_RUN_ONLY=(
-	"org.bouncycastle.asn1.util.test.AllTests"
-	"org.bouncycastle.oer.test.AllTests"
-)
 JAVA_TEST_SRC_DIR="src/test/java"
 
 src_prepare() {
 	java-pkg-2_src_prepare
 	java-pkg_clean ..
+}
+
+src_test() {
+	local TESTS=$(find src/test/java -name 'AllTests.java' -printf '%P\n' )
+	TESTS="${TESTS//.java}"
+	JAVA_TEST_RUN_ONLY="${TESTS//\//.}"
+	java-pkg-simple_src_test
 }
 
 src_install() {

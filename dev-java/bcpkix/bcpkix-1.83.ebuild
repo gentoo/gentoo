@@ -4,8 +4,8 @@
 EAPI=8
 
 JAVA_PKG_IUSE="doc source test"
-MAVEN_ID="org.bouncycastle:bcpkix-jdk18on:${PV}"
 JAVA_TESTING_FRAMEWORKS="junit-4"
+MAVEN_ID="org.bouncycastle:bcpkix-jdk18on:${PV}"
 
 inherit java-pkg-2 java-pkg-simple check-reqs
 
@@ -18,25 +18,20 @@ S="${WORKDIR}/bc-java-${MY_PV}/pkix"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm64 ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 
-# 1) testSANMismatchIP(org.bouncycastle.est.test.TestHostNameAuthorizer)
-# org.bouncycastle.est.ESTException: localhost.me: Temporary failure in name resolution HTTP Status Code: 0
-PROPERTIES="test_network"
-RESTRICT="test"
-
-CDEPEND="
+CP_DEPEND="
 	~dev-java/bcprov-${PV}:0
 	~dev-java/bcutil-${PV}:0
 "
 
 DEPEND="
-	${CDEPEND}
+	${CP_DEPEND}
 	>=virtual/jdk-11:*
 "
 
 RDEPEND="
-	${CDEPEND}
+	${CP_DEPEND}
 	>=virtual/jre-1.8:*
 "
 
@@ -44,12 +39,7 @@ DOCS=( ../{README,SECURITY}.md )
 HTML_DOCS=( ../{CONTRIBUTORS,index}.html )
 
 JAVA_AUTOMATIC_MODULE_NAME="org.bouncycastle.pkix"
-JAVA_GENTOO_CLASSPATH="bcprov,bcutil"
-JAVA_SRC_DIR=(
-	"src/main/java"
-	"src/main/jdk1.9"
-)
-
+JAVA_SRC_DIR=( src/main/{java,jdk1.9} )
 JAVA_TEST_EXTRA_ARGS="-Dbc.test.data.home=${S}/../core/src/test/data"
 JAVA_TEST_GENTOO_CLASSPATH="junit-4"
 JAVA_TEST_RESOURCE_DIRS=( src/{main,test}/resources )
@@ -85,19 +75,15 @@ src_prepare() {
 	java-pkg_clean ..
 }
 
-# https://bugs.gentoo.org/823347
 src_test() {
 	mv ../../bc-test-data-${MY_PV} bc-test-data || die "cannot move bc-test-data"
 
+	# https://bugs.gentoo.org/823347
 	JAVA_TEST_EXTRA_ARGS+=" -Xmx${CHECKREQS_MEMORY}"
-	pushd src/test/java || die
-		local JAVA_TEST_RUN_ONLY=$(find * \
-		-name "AllTests.java" \
-		)
-	popd
-	einfo "${JAVA_TEST_RUN_ONLY}"
-	JAVA_TEST_RUN_ONLY="${JAVA_TEST_RUN_ONLY//.java}"
-	JAVA_TEST_RUN_ONLY="${JAVA_TEST_RUN_ONLY//\//.}"
+
+	local TESTS=$(find src/test/java -name 'AllTests.java' -printf '%P\n' )
+	TESTS="${TESTS//.java}"
+	JAVA_TEST_RUN_ONLY="${TESTS//\//.}"
 	java-pkg-simple_src_test
 }
 
