@@ -28,7 +28,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-cpp/eigen:3
+	dev-cpp/eigen:=
 	dev-cpp/tbb:=
 	dev-cpp/nlohmann_json:=
 	dev-libs/boost:=[nls]
