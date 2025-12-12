@@ -58,6 +58,7 @@ REQUIRED_USE="
 "
 
 RDEPEND="
+	dev-cpp/eigen:=
 	dev-libs/boost:=
 	dev-libs/double-conversion:=
 	dev-libs/glib:2
@@ -94,7 +95,6 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	dev-cpp/eigen:3
 "
 BDEPEND="
 	app-alternatives/yacc
