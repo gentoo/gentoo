@@ -23,7 +23,7 @@ IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-cpp/eigen
+	dev-cpp/eigen:=
 	dev-libs/boost:=
 	dev-libs/gmp:=[cxx]
 	dev-libs/mpfr:=
