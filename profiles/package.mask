@@ -37,6 +37,11 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-12-12)
+# Last release depends on Qt5, upstream appears dormant. Bug #953260
+# Removal on 2026-01-15
+x11-misc/projecteur
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-12)
 # Last release depends on Qt5, upstream appears dormant. Bug #950474
 # Removal on 2026-01-15
 media-gfx/luminance-hdr
