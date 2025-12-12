@@ -11,8 +11,7 @@
 #SSD_IONICELEVEL=0
 
 # User and group as which to run
-#SYNCTHING_USER=syncthing
-#SYNCTHING_GROUP=syncthing
+#command_user="syncthing:syncthing"
 
 # Configuration directory
 #SYNCTHING_HOMEDIR="/var/lib/syncthing/.config/syncthing"
