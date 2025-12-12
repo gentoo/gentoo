@@ -14,7 +14,7 @@ LICENSE="Apache-2.0"
 # Dependent licenses
 LICENSE+=" Apache-2.0 BSD MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~loong"
 
 src_compile() {
 	ego build
