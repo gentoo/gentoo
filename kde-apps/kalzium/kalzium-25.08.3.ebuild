@@ -18,7 +18,7 @@ IUSE="solver"
 
 # TODO: IUSE="editor"
 # 	editor? (
-# 		dev-cpp/eigen:3
+# 		dev-cpp/eigen:=
 # 		>=dev-qt/qtopengl-${QTMIN}:6
 # 		>=kde-frameworks/knewstuff-${KFMIN}:6
 # 		sci-chemistry/openbabel:=
