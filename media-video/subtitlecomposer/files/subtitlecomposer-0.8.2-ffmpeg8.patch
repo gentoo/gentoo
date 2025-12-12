@@ -1,0 +1,42 @@
+From 0043f4434886c5aabe99705d40bd7f633b8b73e7 Mon Sep 17 00:00:00 2001
+From: Pino Toscano <pino@kde.org>
+Date: Tue, 16 Sep 2025 22:17:22 +0200
+Subject: [PATCH] Include libavcodec/avfft.h only when AUDIO_VISUALIZATION is
+ enabled
+
+libavcodec/avfft.h is needed only when the code of AUDIO_VISUALIZATION
+is enabled (and it is off by default). This helps to build with
+FFmpeg 8, which ships libavcodec 62 that drops all the FFT APIs (used
+only within AUDIO_VISUALIZATION).
+---
+ src/videoplayer/backend/videostate.h | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/src/videoplayer/backend/videostate.h b/src/videoplayer/backend/videostate.h
+index 80e7fe83..acd9cc3f 100644
+--- a/src/videoplayer/backend/videostate.h
++++ b/src/videoplayer/backend/videostate.h
+@@ -23,7 +23,6 @@
+ 
+ extern "C" {
+ #include "libavformat/avformat.h"
+-#include "libavcodec/avfft.h"
+ #include "libswscale/swscale.h"
+ }
+ 
+@@ -58,6 +57,12 @@ extern "C" {
+ #undef AUDIO_VISUALIZATION
+ #undef VIDEO_SUBTITLE
+ 
++#ifdef AUDIO_VISUALIZATION
++extern "C" {
++#include "libavcodec/avfft.h"
++}
++#endif
++
+ namespace SubtitleComposer {
+ class RenderThread;
+ class GLRenderer;
+-- 
+GitLab
+

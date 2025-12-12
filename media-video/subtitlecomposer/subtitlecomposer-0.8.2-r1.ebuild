@@ -48,7 +48,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}/${P}-qt-6.10.patch" ) # bug #966626
+PATCHES=(
+	"${FILESDIR}/${P}-qt-6.10.patch" # bug #966626
+	"${FILESDIR}/${P}-ffmpeg8.patch" # bug #966741
+)
 
 src_configure() {
 	local mycmakeargs=(
