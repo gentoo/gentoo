@@ -44,6 +44,8 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.4.0-change-setup-spy-script-location.patch
+	"${FILESDIR}"/${PN}-2.4.0-systemd-fixes.patch
+	"${FILESDIR}"/${PN}-2.4.0-systemd-sysusers-fixup.patch
 )
 
 multilib_src_configure() {

@@ -1,0 +1,97 @@
+https://github.com/LudovicRousseau/PCSC/commit/504e3ba2d81d801fee45b97fbe9e7a5b0d0c24cd
+https://github.com/LudovicRousseau/PCSC/commit/448dbe2aa10780775d361ad38b0dd3cd18530bec
+
+From 504e3ba2d81d801fee45b97fbe9e7a5b0d0c24cd Mon Sep 17 00:00:00 2001
+From: Stephan Guilloux <stephan.guilloux@crisalid.com>
+Date: Fri, 5 Dec 2025 16:33:29 +0100
+Subject: [PATCH] systemd Fails to parse boolean value.
+
+My host is installed with a Rocky Linux 9.x
+It should be the same with other distros.
+
+When PCSC is started, I can observe the following in /var/log/messages:
+```
+...
+Dec 05 16:22:43 Host-9A38CE systemd[1]: /usr/lib/systemd/system/pcscd.service:32: Failed to parse boolean value, ignoring: identity
+                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+```
+
+This comes from the following line, in pcscd.service:
+```
+RuntimeDirectoryPreserve=true
+```
+
+When `true` is replaced by `yes`, the error is no more seen.
+By the way, the rest of pcscd.service is already using `yes`.
+---
+ etc/pcscd.service.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/etc/pcscd.service.in b/etc/pcscd.service.in
+index 14ab8442..874a03dc 100644
+--- a/etc/pcscd.service.in
++++ b/etc/pcscd.service.in
+@@ -10,7 +10,7 @@ ExecReload=@sbindir_exp@/pcscd --hotplug
+ EnvironmentFile=-@sysconfdir@/default/pcscd
+ User=pcscd
+ RuntimeDirectory=pcscd
+-RuntimeDirectoryPreserve=true
++RuntimeDirectoryPreserve=yes
+ PIDFile=@ipcdir@/pcscd.pid
+ 
+ # Paths
+
+From 448dbe2aa10780775d361ad38b0dd3cd18530bec Mon Sep 17 00:00:00 2001
+From: Ludovic Rousseau <ludovic.rousseau@free.fr>
+Date: Wed, 10 Dec 2025 15:55:29 +0100
+Subject: [PATCH] meson: install systemd files even if libsystemd is not used
+
+---
+ meson.build | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 4d4d2bf9..1b2926f4 100644
+--- a/meson.build
++++ b/meson.build
+@@ -127,11 +127,19 @@ if get_option('polkit')
+   features += 'polkit'
+ endif
+ 
++systemdunit = get_option('systemdunit')
+ if get_option('libsystemd')
+   systemd_dep = dependency('libsystemd')
+   pcscd_dep += systemd_dep
+   conf_data.set('USE_LIBSYSTEMD', true)
+   features += 'systemd'
++
++  systemd = dependency('systemd')
++  systemdsystemunitdir = systemd.get_variable(pkgconfig : 'systemd' + systemdunit + 'unitdir')
++  sysusersdir = systemd.get_variable(pkgconfig : 'sysusersdir')
++else
++  systemdsystemunitdir = get_option('prefix') / 'lib' / 'systemd' / systemdunit
++  sysusersdir = get_option('prefix') / 'sysusers.d'
+ endif
+ 
+ # architecture
+@@ -291,11 +299,6 @@ configure_file(output : 'pcsclite.h',
+ configure_file(output : 'pcscd.h',
+   input : 'src/pcscd.h.in',
+   configuration : confgen_data)
+-if get_option('libsystemd')
+-  systemd = dependency('systemd')
+-  unit = get_option('systemdunit')
+-  systemdsystemunitdir = systemd.get_variable(pkgconfig : 'systemd' + unit + 'unitdir')
+-  sysusersdir = systemd.get_variable(pkgconfig : 'sysusersdir')
+ configure_file(output : 'pcscd.socket',
+   input : 'etc/pcscd.socket.in',
+   install_dir : systemdsystemunitdir,
+@@ -306,7 +309,6 @@ configure_file(output : 'pcscd.service',
+   configuration : confgen_data)
+ install_data('etc/pcscd-sysusers.conf',
+   install_dir : sysusersdir)
+-endif
+ configure_file(output : 'pcscd.8',
+   input : 'doc/pcscd.8.in',
+   install_dir : join_paths(get_option('mandir'), 'man8'),
