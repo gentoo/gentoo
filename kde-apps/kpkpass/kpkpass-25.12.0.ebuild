@@ -7,7 +7,7 @@ ECM_QTHELP="true"
 ECM_TEST="true"
 KFMIN=6.19.0
 QTMIN=6.9.1
-inherit ecm gear.kde.org
+inherit ecm gear.kde.org xdg
 
 DESCRIPTION="Library to deal with Apple Wallet pass files"
 HOMEPAGE="https://apps.kde.org/kontact/"
