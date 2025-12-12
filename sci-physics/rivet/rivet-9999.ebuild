@@ -51,7 +51,7 @@ RDEPEND="
 		')
 		>=sci-physics/yoda-2.1[${PYTHON_SINGLE_USEDEP}]
 	)
-	>=sci-physics/yoda-2.1:=[highfive(-)?]
+	>=sci-physics/yoda-2.1:=[eigen(-),highfive(-)?]
 	!sci-physics/rivet:3
 "
 DEPEND="${RDEPEND}"
