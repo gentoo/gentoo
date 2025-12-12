@@ -218,6 +218,7 @@ COMMON_DEPEND="
 		media-libs/harfbuzz:=[${MULTILIB_USEDEP}]
 	)
 	contribovis? ( >=dev-games/ogre-1.12:= )
+	eigen? ( >=dev-cpp/eigen-3.3.8-r1:= )
 	ffmpeg? ( media-video/ffmpeg:0=[${MULTILIB_USEDEP}] )
 	gdal? ( sci-libs/gdal:= )
 	gflags? ( dev-cpp/gflags:=[${MULTILIB_USEDEP}] )
@@ -316,7 +317,6 @@ GST_TEST_DEPEND="
 "
 DEPEND="
 	${COMMON_DEPEND}
-	eigen? ( >=dev-cpp/eigen-3.3.8-r1:3 )
 	java? ( >=virtual/jdk-1.8:* )
 	test? (
 		wayland? ( gui-wm/tinywl )
