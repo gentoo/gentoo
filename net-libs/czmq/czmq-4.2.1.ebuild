@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -54,7 +54,8 @@ src_configure() {
 src_install() {
 	default
 
+	find "${ED}" -type f -name "*.la" -delete || die
 	if ! use static-libs ; then
-		find "${ED}" -type f \( -name "*.a" -o -name "*.la" \) -delete || die
+		find "${ED}" -type f -name "*.a" -delete || die
 	fi
 }
