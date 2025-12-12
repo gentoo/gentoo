@@ -4,7 +4,7 @@
 EAPI=8
 
 CHECKREQS_DISK_BUILD=20G
-inherit check-reqs desktop unpacker xdg
+inherit check-reqs desktop ffmpeg-compat unpacker xdg
 
 DESCRIPTION="Wolfram Mathematica"
 
@@ -45,8 +45,8 @@ RDEPEND="
 		<dev-util/nvidia-cuda-toolkit-13
 		)
 	ffmpeg? ( || (
-		media-video/ffmpeg:0/56.58.58
-		media-video/ffmpeg:0/58.60.60
+		media-video/ffmpeg-compat:4
+		media-video/ffmpeg-compat:6
 		) )
 	R? ( dev-lang/R )
 "
@@ -133,6 +133,12 @@ src_install() {
 	if ! use ffmpeg; then
 		einfo 'Removing FFmpegTools support'
 		rm -r "${S}/${M_TARGET}/SystemFiles/Links/FFmpegTools/LibraryResources/Linux-x86-64/FFmpegToolsSystem"*.so || die
+	else
+		if has_version 'media-video/ffmpeg-compat:6'; then
+			ffmpeg_compat_setup 6
+		elif has_version 'media-video/ffmpeg-compat:4'; then
+			ffmpeg_compat_setup 4
+		fi
 	fi
 
 	# fix RPATH
