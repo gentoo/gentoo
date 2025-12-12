@@ -19,7 +19,7 @@ DEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[-gles2-only,gui,opengl,widgets,xml]
 	>=dev-qt/qtdeclarative-${QTMIN}:6
 	>=dev-qt/qtsvg-${QTMIN}:6
-	eigen? ( dev-cpp/eigen:3 )
+	eigen? ( dev-cpp/eigen:= )
 "
 RDEPEND="${DEPEND}"
 BDEPEND=">=dev-qt/qttools-${QTMIN}:6[linguist]"
