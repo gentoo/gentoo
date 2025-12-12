@@ -30,7 +30,7 @@ DEPEND="
 	test? (
 		>=dev-cpp/catch-3.4.0:0
 		dev-libs/boost
-		dev-cpp/eigen
+		dev-cpp/eigen:=
 		media-libs/opencv
 	)
 "
