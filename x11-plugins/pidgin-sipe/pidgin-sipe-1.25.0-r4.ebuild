@@ -17,29 +17,35 @@ IUSE="dbus debug kerberos ocs2005-message-hack openssl test voice"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-libs/gmime:2.6
+	>=dev-libs/glib-2.18.0:2
+	dev-libs/gmime:3.0
 	dev-libs/libxml2:=
-	net-im/pidgin[dbus?]
+	net-im/pidgin
+	dbus? (
+		net-im/pidgin[dbus]
+		sys-apps/dbus
+	)
 	kerberos? ( virtual/krb5 )
 	openssl? ( dev-libs/openssl:= )
-	!openssl? ( dev-libs/nss )
-	test? ( dev-libs/appstream )
+	!openssl? (
+		dev-libs/nspr
+		dev-libs/nss
+	)
 	voice? (
-		>=dev-libs/glib-2.28.0
 		>=net-libs/libnice-0.1.0
+		media-libs/gst-plugins-base:1.0
 		media-libs/gstreamer:1.0
 		net-im/pidgin[v4l]
 		net-libs/farstream:0.2
-	)
-	!voice? (
-		>=dev-libs/glib-2.12.0:2
 	)
 "
 
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-util/intltool
+	sys-devel/gettext
 	virtual/pkgconfig
+	test? ( dev-libs/appstream )
 "
 
 PATCHES=(
@@ -71,7 +77,7 @@ src_configure() {
 
 src_install() {
 	emake install DESTDIR="${D}"
-	dodoc AUTHORS ChangeLog NEWS TODO README
+	einstalldocs
 
 	find "${ED}" -type f -name "*.la" -delete || die
 }
