@@ -4,8 +4,6 @@
 EAPI=8
 PYTHON_COMPAT=( python3_{11..14} )
 
-GNOME_ORG_MODULE=tracker
-
 inherit bash-completion-r1 flag-o-matic gnome.org gnome2-utils linux-info meson python-any-r1 systemd vala xdg
 
 DESCRIPTION="Low-footprint RDF triple store with SPARQL 1.1 interface"
@@ -13,44 +11,45 @@ HOMEPAGE="https://gnome.pages.gitlab.gnome.org/tinysparql"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="3/0" # libtracker-sparql-3.0 soname version
-KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
-IUSE="gtk-doc +miners stemmer test vala"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+IUSE="dbus gtk-doc +localsearch stemmer systemd test vala zeroconf"
 RESTRICT="!test? ( test )"
 
 PV_SERIES=$(ver_cut 1-2)
 
 RDEPEND="
 	>=dev-libs/glib-2.52:2
-	>=sys-apps/dbus-1.3.2
 	>=dev-libs/gobject-introspection-1.82.0-r2:=
 	>=dev-libs/icu-4.8.1.2:=
 	>=dev-libs/json-glib-1.4
 	>=net-libs/libsoup-2.99.2:3.0
 	>=dev-libs/libxml2-2.7:=
 	>=dev-db/sqlite-3.29.0:3
-	stemmer? ( dev-libs/snowball-stemmer:= )
+	dev-libs/snowball-stemmer:=
+	dbus? ( >=sys-apps/dbus-1.3.2 )
+	zeroconf? ( net-dns/avahi )
+	systemd? ( >=sys-apps/systemd-2.42 )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-util/glib-utils
 	app-text/asciidoc
 	dev-libs/libxslt
-	$(vala_depend)
+	vala? ( $(vala_depend) )
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
-	gtk-doc? ( dev-util/gi-docgen )
+	gtk-doc? (
+		dev-util/gi-docgen
+		media-gfx/graphviz
+		app-text/xmlto
+	)
 	test? (
 		$(python_gen_any_dep 'dev-python/pygobject[${PYTHON_USEDEP}]')
 		$(python_gen_any_dep 'dev-python/tap-py[${PYTHON_USEDEP}]')
 	)
 	${PYTHON_DEPS}
 "
-PDEPEND="miners? ( >=app-misc/localsearch-3.6_rc )"
-
-PATCHES=(
-	"${FILESDIR}"/3.6.0-configure-c99.patch
-	"${FILESDIR}"/${PV}-sqlite-3.45.3-compat.patch
-)
+PDEPEND="localsearch? ( >=app-misc/localsearch-3.6_rc )"
 
 python_check_deps() {
 	python_has_version -b \
@@ -67,7 +66,7 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	vala_setup
+	use vala && vala_setup
 	xdg_environment_reset
 }
 
@@ -79,12 +78,12 @@ src_configure() {
 		-Dman=true
 		$(meson_feature stemmer)
 		-Dunicode_support=icu
+		$(meson_feature zeroconf avahi)
 		-Dbash_completion_dir="$(get_bashcompdir)"
 		-Dsystemd_user_services_dir="$(systemd_get_userunitdir)"
 		$(meson_use test tests)
 		-Dintrospection=enabled
 		$(meson_feature vala vapi)
-		-Dsoup=soup3
 	)
 	meson_src_configure
 }
@@ -98,7 +97,7 @@ src_install() {
 
 	if use gtk-doc; then
 		mkdir -p "${ED}"/usr/share/gtk-doc/html/ || die
-		mv "${ED}"/usr/share/doc/Tracker-3.0 "${ED}"/usr/share/gtk-doc/html/ || die
+		mv "${ED}"/usr/share/doc/Tsparql-3.0 "${ED}"/usr/share/gtk-doc/html/ || die
 	fi
 }
 
