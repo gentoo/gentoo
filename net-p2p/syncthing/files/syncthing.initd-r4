@@ -12,11 +12,10 @@ command="/usr/bin/syncthing"
 supervisor=supervise-daemon
 
 command_args="serve --no-browser --no-restart \
+	--log-file=\"${SYNCTHING_LOGFILE}\"
 	--home=${SYNCTHING_HOMEDIR} \
 	--gui-address=${SYNCTHING_GUI_ADDRESS} \
 	${SYNCTHING_OPTS}"
-output_log="\"${SYNCTHING_LOGFILE}\""
-error_log="\"${SYNCTHING_LOGFILE}\""
 
 depend() {
 	need localmount
