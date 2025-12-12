@@ -1,0 +1,27 @@
+The msm-unit-tests-cxxstd20 testsuite sets <cxxstd>20, but unfortunately
+this setting is prepended relative to the ebuild's setting:
+
+  x86_64-pc-linux-gnu-g++ -std=c++20 -fvisibility-inlines-hidden
+  -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE
+  -pipe -O -std=c++17
+
+which causes an expected build error:
+
+  In file included from Back11OrthogonalDeferred3WithPuml.cpp:15:
+  boost/msm/front/puml/puml.hpp: In function 'constexpr auto boost::msm::front::puml::detail::parse_guard_simple(Func)':
+  boost/msm/front/puml/puml.hpp:511:25: error: lambda-expression in unevaluated context only available with
+  '-std=c++20' or '-std=gnu++20' [-Wtemplate-body]
+
+Setting -std=c++20 globally for the gcc toolchain lets all tests pass.
+
+--- boost_1_90_0/libs/msm/test/Jamfile.v2~
++++ boost_1_90_0/libs/msm/test/Jamfile.v2
+@@ -19,7 +19,7 @@ project
+     requirements
+        <library>/boost/msm//boost_msm
+        <include>.
+-       <toolset>gcc:<cxxflags>"-ftemplate-depth-300 -g0"
++       <toolset>gcc:<cxxflags>"-ftemplate-depth-300 -g0 -std=c++20"
+        <toolset>darwin:<cxxflags>"-ftemplate-depth-300 -g0"
+        <toolset>intel:<cxxflags>"-g0"
+        <toolset>gcc:<optimization>off
