@@ -43,6 +43,7 @@ REQUIRED_USE="
 # TODO: Not yet packaged:
 # sci-libs/libmsym (https://github.com/mcodev31/libmsym)
 RDEPEND="
+	dev-cpp/eigen:=
 	dev-cpp/nlohmann_json
 	dev-libs/pugixml
 	hdf5? ( sci-libs/hdf5:= )
@@ -63,7 +64,6 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	dev-cpp/eigen:3
 "
 BDEPEND="
 	doc? ( app-text/doxygen )
