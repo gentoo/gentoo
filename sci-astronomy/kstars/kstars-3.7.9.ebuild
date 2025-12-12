@@ -54,7 +54,7 @@ COMMON_DEPEND="
 "
 # TODO: what about virtual/opengl?
 DEPEND="${COMMON_DEPEND}
-	dev-cpp/eigen:3
+	dev-cpp/eigen:=
 	>=dev-qt/qtbase-${QTMIN}:6[concurrent]
 	test? ( sci-astronomy/erfa )
 "
