@@ -36,6 +36,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2025-12-12)
+# Upstream has switched to LLM-first coding which has already caused
+# a number of suspicious bugs.  At this point, new versions
+# of the packages cannot be trusted to be safe to use.  Furthermore,
+# the maintenance cost of dealing with packaging bugs alone
+# is overwhelming to human maintainers of this package.
+>=dev-python/autobahn-25.10
+>=dev-python/txaio-25.10
+
 # Hans de Graaff <graaff@gentoo.org> (2025-12-11)
 # The twitter API is no longer available making this package
 # useless. Upstream has archived the gem and refers to an X gem as an
