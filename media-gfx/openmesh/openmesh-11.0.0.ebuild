@@ -36,7 +36,7 @@ BDEPEND="
 		dev-texlive/texlive-latexrecommended
 	)
 	test? (
-		dev-cpp/eigen:3
+		dev-cpp/eigen
 		dev-cpp/gtest
 	)
 "
