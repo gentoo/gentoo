@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,6 +26,7 @@ REQUIRED_USE="
 
 RDEPEND="
 	${PYTHON_DEPS}
+	dev-cpp/eigen:=
 	dev-cpp/yaml-cpp
 	hdf5? ( sci-libs/highfive )
 	!lapack? ( sci-libs/sundials:0= )
@@ -43,7 +44,6 @@ RDEPEND="
 
 DEPEND="
 	${RDEPEND}
-	dev-cpp/eigen:3
 	dev-libs/boost:=
 	dev-libs/libfmt
 	python? (
