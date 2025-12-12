@@ -5,7 +5,7 @@ EAPI=8
 
 # Both Daniel and Brad are listed as possible signers on the homepage
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/bradhouse.asc
-inherit edo flag-o-matic libtool multilib-minimal verify-sig
+inherit edo libtool multilib-minimal verify-sig
 
 DESCRIPTION="C library that resolves names asynchronously"
 HOMEPAGE="https://c-ares.org/"
