@@ -43,6 +43,7 @@ RESTRICT="test"
 
 RDEPEND="
 	app-arch/gzip
+	dev-cpp/eigen:=
 	media-libs/libpng:0
 	virtual/zlib:=
 	mpi? (
@@ -61,8 +62,7 @@ RDEPEND="
 		dev-util/hip:=
 		sci-libs/hipCUB:=
 	)
-	dev-cpp/eigen:3
-	"
+"
 	# Kokkos-3.5 not in tree atm
 	# kokkos? ( dev-cpp/kokkos-3.5.* )
 BDEPEND="${DISTUTILS_DEPS}"
