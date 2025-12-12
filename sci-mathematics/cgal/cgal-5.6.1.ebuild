@@ -21,7 +21,7 @@ KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples"
 
 RDEPEND="
-	dev-cpp/eigen
+	dev-cpp/eigen:=
 	dev-libs/boost:=
 	dev-libs/gmp:=[cxx]
 	dev-libs/mpfr:=
