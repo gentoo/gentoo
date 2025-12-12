@@ -20,7 +20,7 @@ RESTRICT="!test? ( test )"
 DEPEND="
 	test? (
 		dev-cpp/asio
-		>=dev-cpp/eigen-3.4
+		>=dev-cpp/eigen-3.4:=
 		dev-cpp/ut2-glaze
 	)
 "
