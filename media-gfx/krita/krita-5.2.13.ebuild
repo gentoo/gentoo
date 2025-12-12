@@ -26,6 +26,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="test"
 
 RDEPEND="${PYTHON_DEPS}
+	dev-cpp/eigen:=
 	dev-libs/boost:=
 	dev-libs/libunibreak:=
 	>=dev-libs/quazip-1.3-r2:=[qt5(-)]
@@ -87,7 +88,6 @@ DEPEND="${RDEPEND}
 	dev-libs/zug
 "
 BDEPEND="
-	dev-cpp/eigen:3
 	dev-lang/perl
 	sys-devel/gettext
 "

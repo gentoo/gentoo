@@ -25,6 +25,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="test"
 
 COMMON_DEPEND="${PYTHON_DEPS}
+	dev-cpp/eigen:=
 	>=dev-cpp/xsimd-13.0.0
 	dev-libs/boost:=
 	dev-libs/libunibreak:=
@@ -84,7 +85,6 @@ DEPEND="${COMMON_DEPEND}
 	dev-libs/zug
 "
 BDEPEND="
-	dev-cpp/eigen:3
 	dev-lang/perl
 	sys-devel/gettext
 "
