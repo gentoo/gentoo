@@ -19,7 +19,7 @@ KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv x86"
 RESTRICT="test"
 
 RDEPEND="media-libs/mesa[X(+)]
-	>=dev-cpp/eigen-3.2.0:3
+	>=dev-cpp/eigen-3.2.0:=
 	media-libs/libepoxy[egl(+),X]
 	>=sci-libs/fftw-3:=
 	media-libs/libsdl2"
