@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,7 +35,7 @@ RDEPEND="
 	!sci-chemistry/votca-xtp
 	${PYTHON_DEPS}
 	app-shells/bash:*
-	>=dev-cpp/eigen-3.3
+	>=dev-cpp/eigen-3.3:=
 	dev-libs/boost:=
 	dev-libs/expat
 	sci-libs/fftw:3.0=
