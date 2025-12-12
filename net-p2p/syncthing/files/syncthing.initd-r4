@@ -10,9 +10,9 @@ SYNCTHING_GUI_ADDRESS=${SYNCTHING_GUI_ADDRESS:-http://127.0.0.1:8384}
 
 description="Syncthing is an open, trustworthy and decentralized cloud storage system"
 command="/usr/bin/syncthing"
+supervisor=supervise-daemon
+
 command_args="--no-browser --home=${SYNCTHING_HOMEDIR} --gui-address=${SYNCTHING_GUI_ADDRESS} ${SYNCTHING_OPTS}"
-pidfile="/run/${RC_SVCNAME}.pid"
-command_background="yes"
 command_user="${SYNCTHING_USER}:${SYNCTHING_GROUP}"
 output_log="\"${SYNCTHING_LOGFILE}\""
 error_log="\"${SYNCTHING_LOGFILE}\""
