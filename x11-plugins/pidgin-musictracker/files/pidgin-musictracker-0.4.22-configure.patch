@@ -1,0 +1,29 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -27,14 +27,15 @@
+ 	DEBUG_CFLAGS="-g -O0"
+ fi
+ AC_SUBST(DEBUG_CFLAGS)
++PKG_PROG_PKG_CONFIG
+ 
+ PKG_CHECK_MODULES([PIDGIN],[pidgin >= 2.0.0],,AC_MSG_ERROR([
+ *** Pidgin 2.0+ is required to build pidgin-musictracker
+ *** Please make sure you have the Pidgin development files installed.
+ *** The latest version of Pidgin is always available at http://pidgin.im/]))
+ AC_SUBST(PIDGIN_CFLAGS)
+-PIDGIN_LIBDIR=`pkg-config --variable=libdir pidgin`
+-PIDGIN_DATADIR=`pkg-config --variable=datadir pidgin`
++PIDGIN_LIBDIR=`$PKG_CONFIG --variable=libdir pidgin`
++PIDGIN_DATADIR=`$PKG_CONFIG --variable=datadir pidgin`
+ AC_SUBST(PIDGIN_LIBDIR)
+ AC_SUBST(PIDGIN_DATADIR)
+ 
+@@ -96,8 +97,6 @@
+ AC_SUBST(PCRE_LIBS)
+ AC_SUBST(PCRE_CFLAGS)
+ 
+-AC_PREFIX_DEFAULT(`pkg-config --variable=prefix pidgin`)
+-
+ AC_CONFIG_FILES([ po/Makefile.in
+    Makefile
+    README

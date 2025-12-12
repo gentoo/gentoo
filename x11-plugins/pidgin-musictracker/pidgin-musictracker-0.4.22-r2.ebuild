@@ -16,13 +16,20 @@ IUSE="debug"
 
 DEPEND="
 	dev-libs/dbus-glib
+	dev-libs/glib:2
 	dev-libs/libpcre
 	net-im/pidgin[gui]
+	sys-apps/dbus
+	x11-libs/gtk+:2
 "
 RDEPEND="${DEPEND}"
-BDEPEND="sys-devel/gettext"
+BDEPEND="
+	sys-devel/gettext
+	virtual/pkgconfig
+"
 
 PATCHES=(
+	"${FILESDIR}"/${P}-configure.patch
 	"${FILESDIR}"/${P}-fno-common.patch
 	"${FILESDIR}"/${P}-fix-includes.patch
 )
