@@ -1,0 +1,180 @@
+https://bugzilla.netfilter.org/show_bug.cgi?id=1823
+
+From c8deec46b6e133f7af727309b4bc2f9dac045ebc Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Fri, 12 Dec 2025 18:17:45 +0800
+Subject: [PATCH] place export_symbol before the function implementation
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+otherwise, with clang 20 — and possibly earlier versions — the warning
+attribute declaration must precede definition [-Wignored-attributes]
+prevents certain symbols from being exported. As a result, programs
+that link against this library will fail with errors such as:
+
+> undefined reference to `nfacct_...'
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/src/libnetfilter_acct.c b/src/libnetfilter_acct.c
+index fbb5697..833b098 100644
+--- a/src/libnetfilter_acct.c
++++ b/src/libnetfilter_acct.c
+@@ -70,6 +70,7 @@ struct nfacct {
+  * @{
+  */
+ 
++EXPORT_SYMBOL(nfacct_alloc);
+ /**
+  * nfacct_alloc - allocate a new accounting object
+  *
+@@ -80,8 +81,8 @@ struct nfacct *nfacct_alloc(void)
+ {
+ 	return calloc(1, sizeof(struct nfacct));
+ }
+-EXPORT_SYMBOL(nfacct_alloc);
+ 
++EXPORT_SYMBOL(nfacct_free);
+ /**
+  * nfacct_free - release one accounting object
+  * \param nfacct pointer to the accounting object
+@@ -90,8 +91,8 @@ void nfacct_free(struct nfacct *nfacct)
+ {
+ 	free(nfacct);
+ }
+-EXPORT_SYMBOL(nfacct_free);
+ 
++EXPORT_SYMBOL(nfacct_attr_set);
+ /**
+  * nfacct_attr_set - set one attribute of the accounting object
+  * \param nfacct pointer to the accounting object
+@@ -126,8 +127,8 @@ nfacct_attr_set(struct nfacct *nfacct, enum nfacct_attr_type type,
+ 		break;
+ 	}
+ }
+-EXPORT_SYMBOL(nfacct_attr_set);
+ 
++EXPORT_SYMBOL(nfacct_attr_set_str);
+ /**
+  * nfacct_attr_set_str - set one attribute the accounting object
+  * \param nfacct pointer to the accounting object
+@@ -140,8 +141,8 @@ nfacct_attr_set_str(struct nfacct *nfacct, enum nfacct_attr_type type,
+ {
+ 	nfacct_attr_set(nfacct, type, name);
+ }
+-EXPORT_SYMBOL(nfacct_attr_set_str);
+ 
++EXPORT_SYMBOL(nfacct_attr_set_u64);
+ /**
+  * nfacct_attr_set_u64 - set one attribute the accounting object
+  * \param nfacct pointer to the accounting object
+@@ -154,8 +155,8 @@ nfacct_attr_set_u64(struct nfacct *nfacct, enum nfacct_attr_type type,
+ {
+ 	nfacct_attr_set(nfacct, type, &value);
+ }
+-EXPORT_SYMBOL(nfacct_attr_set_u64);
+ 
++EXPORT_SYMBOL(nfacct_attr_unset);
+ /**
+  * nfacct_attr_unset - unset one attribute the accounting object
+  * \param nfacct pointer to the accounting object
+@@ -182,8 +183,8 @@ nfacct_attr_unset(struct nfacct *nfacct, enum nfacct_attr_type type)
+ 		break;
+ 	}
+ }
+-EXPORT_SYMBOL(nfacct_attr_unset);
+ 
++EXPORT_SYMBOL(nfacct_attr_get);
+ /**
+  * nfacct_attr_get - get one attribute the accounting object
+  * \param nfacct pointer to the accounting object
+@@ -220,8 +221,8 @@ const void *nfacct_attr_get(struct nfacct *nfacct, enum nfacct_attr_type type)
+ 	}
+ 	return ret;
+ }
+-EXPORT_SYMBOL(nfacct_attr_get);
+ 
++EXPORT_SYMBOL(nfacct_attr_get_str);
+ /**
+  * nfacct_attr_get_str - get one attribute the accounting object
+  * \param nfacct pointer to the accounting object
+@@ -235,8 +236,8 @@ nfacct_attr_get_str(struct nfacct *nfacct, enum nfacct_attr_type type)
+ {
+ 	return nfacct_attr_get(nfacct, type);
+ }
+-EXPORT_SYMBOL(nfacct_attr_get_str);
+ 
++EXPORT_SYMBOL(nfacct_attr_get_u64);
+ /**
+  * nfacct_attr_get_u64 - get one attribute the accounting object
+  * \param nfacct pointer to the accounting object
+@@ -250,7 +251,6 @@ uint64_t nfacct_attr_get_u64(struct nfacct *nfacct, enum nfacct_attr_type type)
+ 	const void *ret = nfacct_attr_get(nfacct, type);
+ 	return ret ? *((uint64_t *)ret) : 0;
+ }
+-EXPORT_SYMBOL(nfacct_attr_get_u64);
+ 
+ static int
+ nfacct_snprintf_plain(char *buf, size_t rem, struct nfacct *nfacct,
+@@ -413,6 +413,7 @@ err:
+ 	return ret;
+ }
+ 
++EXPORT_SYMBOL(nfacct_snprintf);
+ /**
+  * nfacct_snprintf - print accounting object into one buffer
+  * \param buf: pointer to buffer that is used to print the object
+@@ -445,7 +446,6 @@ int nfacct_snprintf(char *buf, size_t size, struct nfacct *nfacct,
+ 	}
+ 	return ret;
+ }
+-EXPORT_SYMBOL(nfacct_snprintf);
+ 
+ /**
+  * @}
+@@ -456,6 +456,7 @@ EXPORT_SYMBOL(nfacct_snprintf);
+  * @{
+  */
+ 
++EXPORT_SYMBOL(nfacct_nlmsg_build_hdr);
+ /**
+  * nfacct_nlmsg_build_hdr - build netlink message header for nfacct subsystem
+  * \param buf: buffer where this function outputs the netlink message.
+@@ -502,8 +503,8 @@ nfacct_nlmsg_build_hdr(char *buf, uint8_t cmd, uint16_t flags, uint32_t seq)
+ 
+ 	return nlh;
+ }
+-EXPORT_SYMBOL(nfacct_nlmsg_build_hdr);
+ 
++EXPORT_SYMBOL(nfacct_nlmsg_build_payload);
+ /**
+  * nfacct_nlmsg_build_payload - build payload from accounting object
+  * \param nlh: netlink message that you want to use to add the payload.
+@@ -526,7 +527,6 @@ void nfacct_nlmsg_build_payload(struct nlmsghdr *nlh, struct nfacct *nfacct)
+ 	if (nfacct->bitset & (1 << NFACCT_ATTR_QUOTA))
+ 		mnl_attr_put_u64(nlh, NFACCT_QUOTA, htobe64(nfacct->quota));
+ }
+-EXPORT_SYMBOL(nfacct_nlmsg_build_payload);
+ 
+ static int nfacct_nlmsg_parse_attr_cb(const struct nlattr *attr, void *data)
+ {
+@@ -555,6 +555,7 @@ static int nfacct_nlmsg_parse_attr_cb(const struct nlattr *attr, void *data)
+ 	return MNL_CB_OK;
+ }
+ 
++EXPORT_SYMBOL(nfacct_nlmsg_parse_payload);
+ /**
+  * nfacct_nlmsg_parse_payload - set accounting object attributes from message
+  * \param nlh: netlink message that you want to use to add the payload.
+@@ -589,7 +590,6 @@ nfacct_nlmsg_parse_payload(const struct nlmsghdr *nlh, struct nfacct *nfacct)
+ 
+ 	return 0;
+ }
+-EXPORT_SYMBOL(nfacct_nlmsg_parse_payload);
+ 
+ /**
+  * @}
+-- 
+2.49.1
+
