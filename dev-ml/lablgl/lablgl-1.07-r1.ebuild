@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit dot-a toolchain-funcs
 
 DESCRIPTION="Objective CAML interface for OpenGL"
 HOMEPAGE="https://github.com/garrigue/lablgl"
@@ -37,6 +37,7 @@ DEPEND="
 PATCHES=( "${FILESDIR}"/${PN}-1.06-makefile.patch )
 
 src_configure() {
+	lto-guarantee-fat
 	# make configuration file
 	echo "BINDIR=/usr/bin" > Makefile.config || die
 	echo "GLLIBS = -lGL -lGLU" >> Makefile.config || die
@@ -88,6 +89,7 @@ src_install() {
 	BINDIR="${ED}/usr/bin"
 	BASE="${ED}/usr/$(get_libdir)/ocaml"
 	emake BINDIR="${BINDIR}" INSTALLDIR="${BASE}/lablGL" DLLDIR="${BASE}/stublibs" install
+	strip-lto-bytecode
 
 	dodoc README CHANGES
 
