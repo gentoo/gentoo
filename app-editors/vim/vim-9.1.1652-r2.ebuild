@@ -31,7 +31,7 @@ HOMEPAGE="https://www.vim.org https://github.com/vim/vim"
 
 LICENSE="vim"
 SLOT="0"
-IUSE="X acl crypt cscope debug gpm lua minimal nls perl python racket ruby selinux sound tcl terminal vim-pager ${GENTOO_PERL_USESTRING}"
+IUSE="X acl crypt cscope debug gpm lua minimal nls perl python racket ruby selinux sound tcl terminal vim-pager wayland ${GENTOO_PERL_USESTRING}"
 REQUIRED_USE="
 	lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -61,6 +61,7 @@ RDEPEND="
 	selinux? ( sys-libs/libselinux )
 	sound? ( media-libs/libcanberra )
 	tcl? ( dev-lang/tcl:0= )
+	wayland? ( dev-libs/wayland )
 	X? ( x11-libs/libXt )
 "
 DEPEND="${RDEPEND}
@@ -187,6 +188,7 @@ src_configure() {
 			--disable-acl
 			--enable-gui=no
 			--without-x
+			--without-wayland
 			--disable-darwin
 			--disable-luainterp
 			--disable-perlinterp
@@ -216,6 +218,7 @@ src_configure() {
 			$(use_enable selinux)
 			$(use_enable tcl tclinterp)
 			$(use_enable terminal)
+			$(use_with   wayland)
 		)
 
 		# --with-features=huge forces on cscope even if we --disable it. We need
