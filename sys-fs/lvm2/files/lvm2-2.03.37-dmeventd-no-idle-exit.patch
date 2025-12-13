@@ -1,0 +1,55 @@
+diff --git a/daemons/dmeventd/dmeventd.c b/daemons/dmeventd/dmeventd.c
+index 305e1d18eb89..c069be0af75c 100644
+--- a/daemons/dmeventd/dmeventd.c
++++ b/daemons/dmeventd/dmeventd.c
+@@ -2758,6 +2758,17 @@ int main(int argc, char *argv[])
+ 	};
+ 	time_t now, idle_exit_timeout = DMEVENTD_IDLE_EXIT_TIMEOUT;
+ 
++	/* Provide a basic way to config the idle timeout */
++	char* idle_exit_timeout_env = getenv("DMEVENTD_IDLE_EXIT_TIMEOUT") ? : NULL;
++	if(NULL != idle_exit_timeout_env) {
++		char* endptr;
++		idle_exit_timeout = strtol(idle_exit_timeout_env, &endptr, 10);
++		if (errno == ERANGE || *endptr != '\0') {
++			fprintf(stderr, "DMEVENTD_IDLE_EXIT_TIMEOUT: bad time input\n");
++			exit(EXIT_FAILURE);
++		}
++	}
++
+ 	optopt = optind = opterr = 0;
+ 	optarg = (char*) "";
+ 	while ((opt = getopt(argc, argv, ":?e:g:fhiVdlR")) != EOF) {
+@@ -2890,7 +2901,7 @@ int main(int argc, char *argv[])
+ 		_process_initial_registrations();
+ 
+ 	for (;;) {
+-		if (_idle_since) {
++		if (_idle_since || _exit_now) {
+ 			if (_exit_now) {
+ 				if (_exit_now == DM_SCHEDULED_EXIT)
+ 					break; /* Only prints shutdown message */
+@@ -2899,7 +2910,7 @@ int main(int argc, char *argv[])
+ 					 (long) (_get_curr_time() - _idle_since));
+ 				break;
+ 			}
+-			if (idle_exit_timeout) {
++			if (idle_exit_timeout && idle_exit_timeout > 0) {
+ 				now = _get_curr_time();
+ 				if (now < _idle_since)
+ 					_idle_since = now; /* clock change? */
+diff --git a/man/dmeventd.8_main b/man/dmeventd.8_main
+index 9443a04ae95c..ff3c21020009 100644
+--- a/man/dmeventd.8_main
++++ b/man/dmeventd.8_main
+@@ -220,6 +220,10 @@ Variable is not set when error event is processed.
+ Variable is set by thin and vdo plugin to prohibit recursive interaction
+ with dmeventd by any executed lvm2 command from
+ a thin_command, vdo_command environment.
++.TP
++.B DMEVENTD_IDLE_EXIT_TIMEOUT
++Configure the dmeventd idle exit timeout behavior, value in seconds. Default
++is 3600 (1 hour). -1 means do not exit.
+ .
+ .SH SEE ALSO
+ .
