@@ -14,7 +14,7 @@ HOMEPAGE="https://wummel.github.io/patool/"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 BDEPEND="
 	test? (
@@ -103,15 +103,6 @@ python_prepare_all() {
 	sed -e 's/setuptools-reproducible/setuptools/' \
 		-e 's/setuptools_reproducible/setuptools.build_meta/' \
 		-i pyproject.toml || die
-
-	# Workaround setuptools-reproducible setting file stamps to invalid dates.
-	# bug #958470
-	#
-	# Test fails because the timestamp of the zip archive is before 1980.
-	# This is due to the timestamps getting reset to the unix epoch in
-	# the unpacked tar archive.
-	# ValueError: ZIP does not support timestamps before 1980
-	find tests/data/ -exec touch {} + || die
 }
 
 python_install_all() {
