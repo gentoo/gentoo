@@ -12,9 +12,9 @@ command="/usr/bin/syncthing"
 supervisor=supervise-daemon
 
 command_args="serve --no-browser --no-restart \
+	--home=${SYNCTHING_HOMEDIR} \
 	--log-file=\"${SYNCTHING_LOGFILE}\"
 	--no-log-format-level-string --log-format-level-syslog \
-	--home=${SYNCTHING_HOMEDIR} \
 	--gui-address=${SYNCTHING_GUI_ADDRESS} \
 	${SYNCTHING_OPTS}"
 
