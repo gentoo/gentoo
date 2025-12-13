@@ -6,7 +6,8 @@ description="Open Source Continuous File Synchronization"
 command="/usr/bin/syncthing"
 supervisor=supervise-daemon
 
-command_args="serve --no-browser --no-restart"
+command_args="serve --no-browser --no-restart \
+	${SYNCTHING_OPTS}"
 
 depend() {
 	need localmount
