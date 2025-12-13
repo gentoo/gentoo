@@ -253,24 +253,6 @@ games-emulation/gngeo
 # by dev-lang/rust-bin.  Also needs net-proxy/mitmproxy-linux updates.
 >=dev-util/bpf-linker-0.9.15-r1
 
-# Hans de Graaff <graaff@gentoo.org> (2025-10-10)
-# No longer supported upstream since 2025-04-01. Use Rails 7.2 or newer
-# instead. Masked for removal on 2025-11-10).
-dev-ruby/activerecord:7.0
-dev-ruby/actioncable:7.0
-dev-ruby/actionview:7.0
-dev-ruby/activejob:7.0
-dev-ruby/activesupport:7.0
-dev-ruby/activestorage:7.0
-dev-ruby/actionpack:7.0
-dev-ruby/activemodel:7.0
-dev-ruby/actionmailer:7.0
-dev-ruby/actionmailbox:7.0
-dev-ruby/actiontext:7.0
-dev-ruby/rails:7.0
-dev-ruby/railties:7.0
-dev-ruby/haml:5
-
 # Lukas Schmelting <lschmelting@posteo.com> (2025-10-03)
 # Breaks e.g. in combination with gnome-shell-48.4, gettext/gjs (bug #963815)
 >=dev-libs/glib-2.86.0
