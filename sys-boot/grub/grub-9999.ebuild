@@ -77,7 +77,7 @@ SRC_URI+="
 # Includes licenses for dejavu and unifont
 LICENSE="GPL-3+ BSD MIT fonts? ( GPL-2-with-font-exception ) themes? ( CC-BY-SA-3.0 BitstreamVera )"
 SLOT="2/${PVR}"
-IUSE="+branding +device-mapper doc efiemu +fonts mount nls protect sdl test +themes truetype libzfs"
+IUSE="+device-mapper doc efiemu +fonts mount nls protect sdl test +themes truetype libzfs"
 
 GRUB_ALL_PLATFORMS=( coreboot efi-32 efi-64 emu ieee1275 loongson multiboot
 	qemu qemu-mips pc uboot xen xen-32 xen-pvh )
@@ -131,7 +131,6 @@ DEPEND="
 	protect? ( dev-libs/libtasn1:= )
 "
 RDEPEND="${DEPEND}
-	branding? ( sys-boot/grub-themes-gentoo )
 	kernel_linux? (
 		grub_platforms_efi-32? ( sys-boot/efibootmgr )
 		grub_platforms_efi-64? ( sys-boot/efibootmgr )
@@ -174,11 +173,6 @@ src_unpack() {
 
 src_prepare() {
 	default
-
-	if use branding ; then
-		eapply "${FILESDIR}/${PN}-2.14_rc1-gentootheme.patch"
-		eapply "${FILESDIR}/${PN}-2.14_rc1-themerecursive.patch"
-	fi
 
 	python_setup
 
@@ -379,9 +373,6 @@ src_install() {
 
 	insinto /etc/default
 	newins "${FILESDIR}"/grub.default-4 grub
-	if use branding && use themes ; then
-		sed -e 's:^#GRUB_THEME=.*$:GRUB_THEME="/boot/grub/themes/gentoo_glass/theme.txt":g' -i "${D}/etc/default/grub" || die
-	fi
 
 	# https://bugs.gentoo.org/231935
 	dostrip -x /usr/lib/grub
