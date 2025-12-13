@@ -53,7 +53,7 @@ ruby_add_bdepend "test? (
 	|| ( dev-ruby/rack:3.1 dev-ruby/rack:3.0 )
 	dev-ruby/rexml
 	dev-ruby/mocha
-	>dev-ruby/minitest-5.15.0:*
+	>=dev-ruby/minitest-5.15.0:*
 	)"
 
 all_ruby_prepare() {
