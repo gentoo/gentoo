@@ -130,6 +130,15 @@ src_configure() {
 		$(use_with seccomp libseccomp)
 
 		--with-db=gdbm
+
+		# explicitly enable all types of compression
+		# so they aren't disabled automagically
+		--with-gzip=gzip
+		--with-compress=compress
+		--with-bzip2=bzip2
+		--with-xz=xz
+		--with-lzip=lzip
+		--with-zstd=zstd
 	)
 
 	case ${CHOST} in
