@@ -8,18 +8,18 @@ inherit cmake
 DESCRIPTION="Cross-platform library for building Telegram clients"
 HOMEPAGE="https://github.com/tdlib/td"
 
-MY_PV="51743dfd01dff6179e2d8f7095729caa4e2222e9"
+MY_PV="282f96ca66421c348ed75aaca84471b3e39e64dd"
 SRC_URI="https://github.com/tdlib/td/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/td-${MY_PV}"
 
 LICENSE="Boost-1.0"
 SLOT="0/${PV%_p*}"
-KEYWORDS="amd64 ~arm64 ~loong ~riscv"
+KEYWORDS="~amd64 ~arm64 ~loong ~riscv"
 IUSE="+tde2e test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-libs/openssl
+	dev-libs/openssl:=
 	virtual/zlib:=
 "
 DEPEND="${RDEPEND}"
