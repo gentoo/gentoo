@@ -234,7 +234,13 @@ CRATES="
 "
 
 LLVM_COMPAT=( {20..21} )
-RUST_MIN_VER="1.89"
+
+if [[ ${PV} == *9999* ]]; then
+	RUST_MIN_VER="1.90"
+else
+	RUST_MIN_VER="1.89"
+fi
+
 inherit cargo llvm-r2 unpacker
 
 DESCRIPTION="A very fast linker for Linux"
