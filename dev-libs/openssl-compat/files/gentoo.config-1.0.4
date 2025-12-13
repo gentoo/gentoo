@@ -64,6 +64,7 @@ case ${CHOST} in
 	*-winnt*)        system="winnt";;
 	x86_64-*-mingw*) system="mingw64";;
 	*mingw*)         system="mingw";;
+	*-gnu*)          system="hurd";;
 	*)               exit 0;;
 esac
 
@@ -168,6 +169,13 @@ winnt)
 mingw*)
 	# special case ... no xxx-yyy style name
 	echo ${system}
+	;;
+hurd)
+	case ${chost_machine} in
+		i[0-9]86*)    machine=x86;;
+		x86_64*)      machine=x86_64;;
+		*)            machine=generic32;;
+	esac
 	;;
 esac
 
