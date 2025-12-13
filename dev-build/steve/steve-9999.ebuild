@@ -23,6 +23,7 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
+	acct-user/steve
 "
 BDEPEND="
 	virtual/pkgconfig
