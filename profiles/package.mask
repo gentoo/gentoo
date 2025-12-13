@@ -36,6 +36,27 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-13)
+# Last release depends on Qt5, upstream appears dormant. Bug #959826
+# Removal on 2026-01-15
+net-misc/electrum-ltc
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-12)
+# Packages that still depend on Qt5 with no upstream activity in years.
+# Bugs #960220, #960814. Removal on 2026-01-15
+media-sound/mp3diags
+media-sound/qmidiroute
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-12)
+# Last release depends on Qt5, upstream appears dormant. Bug #953260
+# Removal on 2026-01-15
+x11-misc/projecteur
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-12)
+# Last release depends on Qt5, upstream appears dormant. Bug #950474
+# Removal on 2026-01-15
+media-gfx/luminance-hdr
+
 # Michał Górny <mgorny@gentoo.org> (2025-12-12)
 # Upstream has switched to LLM-first coding which has already caused
 # a number of suspicious bugs.  At this point, new versions
