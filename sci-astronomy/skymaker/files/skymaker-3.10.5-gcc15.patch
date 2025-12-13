@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/944935
+https://github.com/astromatic/skymaker/pull/6
+
+--- a/src/random.c
++++ b/src/random.c
+@@ -46,7 +46,7 @@
+ #define	LOGGAMMA(x)	lgamma_r(x,&signp)	/* Generally slower */
+ #else
+ #define	LOGGAMMA	gammln
+-static double		gammln();
++static double		gammln(double x);
+ #endif
+ 
+ #ifdef USE_THREADS

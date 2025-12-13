@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Program that simulates astronomical images"
 HOMEPAGE="http://www.astromatic.net/software/skymaker"
@@ -15,7 +15,11 @@ IUSE="threads"
 RDEPEND="sci-libs/fftw:3.0="
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-fno-common.patch
+	"${FILESDIR}"/${P}-gcc15.patch
+	"${FILESDIR}"/${P}-lto.patch
+)
 
 src_configure() {
 	econf $(use_enable threads)
