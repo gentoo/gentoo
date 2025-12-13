@@ -1,0 +1,45 @@
+From c0a83f8ae0f4dfddf4ef360385d61fef2860f9e8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Andreas=20K=2E=20H=C3=BCttel?= <dilfridge@gentoo.org>
+Date: Sat, 13 Dec 2025 19:15:58 +0100
+Subject: [PATCH] grub-install: Allow recursive copying of theme dirs
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This should be upstreamed in some way.
+
+Signed-off-by: Andreas K. Hüttel <dilfridge@gentoo.org>
+---
+ util/grub-install-common.c | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/util/grub-install-common.c b/util/grub-install-common.c
+index a913ee61c..c1c3c5704 100644
+--- a/util/grub-install-common.c
++++ b/util/grub-install-common.c
+@@ -803,13 +803,20 @@ copy_all (const char *srcd,
+ 	  || strcmp (de->d_name, "..") == 0)
+ 	continue;
+       srcf = grub_util_path_concat (2, srcd, de->d_name);
+-      if (grub_util_is_special_file (srcf)
+-	  || grub_util_is_directory (srcf))
++      if (grub_util_is_special_file (srcf))
+ 	{
+ 	  free (srcf);
+ 	  continue;
+ 	}
+       dstf = grub_util_path_concat (2, dstd, de->d_name);
++      if (grub_util_is_directory (srcf))
++	{
++	  grub_install_mkdir_p (dstf);
++	  copy_all (srcf, dstf);
++	  free (srcf);
++	  free (dstf);
++	  continue;
++	}
+       grub_install_compress_file (srcf, dstf, 1);
+       free (srcf);
+       free (dstf);
+-- 
+2.51.2
+

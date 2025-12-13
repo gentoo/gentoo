@@ -1,0 +1,37 @@
+From c28e65bbe31d47663c546077670888d4c44e042c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Andreas=20K=2E=20H=C3=BCttel?= <dilfridge@gentoo.org>
+Date: Tue, 18 Nov 2025 20:26:59 +0100
+Subject: [PATCH] Install the themes starfield *and* gentoo_glass by default
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This patch is clearly Gentoo-specific.
+
+Signed-off-by: Andreas K. Hüttel <dilfridge@gentoo.org>
+---
+ util/grub-install-common.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/util/grub-install-common.c b/util/grub-install-common.c
+index a913ee61c..7af7915fe 100644
+--- a/util/grub-install-common.c
++++ b/util/grub-install-common.c
+@@ -1082,10 +1082,11 @@ grub_install_copy_files (const char *src,
+   if (install_themes.is_default)
+     {
+       install_themes.is_default = 0;
+-      install_themes.n_entries = 1;
+-      install_themes.entries = xmalloc (2 * sizeof (install_themes.entries[0]));
++      install_themes.n_entries = 2;
++      install_themes.entries = xmalloc (3 * sizeof (install_themes.entries[0]));
+       install_themes.entries[0] = xstrdup ("starfield");
+-      install_themes.entries[1] = NULL;
++      install_themes.entries[1] = xstrdup ("gentoo_glass");
++      install_themes.entries[2] = NULL;
+     }
+ 
+   if (grub_install_themes_directory)
+-- 
+2.51.0
+

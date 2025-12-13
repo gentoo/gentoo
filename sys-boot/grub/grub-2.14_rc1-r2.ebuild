@@ -16,8 +16,8 @@ EAPI=8
 # If any of the above applies to a user patch, the user should set the
 # corresponding variable in make.conf or the environment.
 
+GRUB_AUTORECONF=1
 if [[ ${PV} == 9999  ]]; then
-	GRUB_AUTORECONF=1
 	GRUB_BOOTSTRAP=1
 fi
 
@@ -62,6 +62,13 @@ else
 	inherit git-r3
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/grub.git"
 fi
+
+PATCHES=(
+	"${FILESDIR}"/gfxpayload.patch
+	"${FILESDIR}"/grub-2.02_beta2-KERNEL_GLOBS.patch
+	"${FILESDIR}"/grub-2.06-test-words.patch
+	"${FILESDIR}"/grub-2.14_rc1-configure.ac-avoid-bashisms.patch
+)
 
 DEJAVU_VER=2.37
 DEJAVU=dejavu-fonts-ttf-${DEJAVU_VER}
@@ -159,7 +166,6 @@ src_unpack() {
 		local GNULIB_REVISION=$(source bootstrap.conf >/dev/null; echo "${GNULIB_REVISION}")
 		git-r3_fetch "${GNULIB_URI}" "${GNULIB_REVISION}"
 		git-r3_checkout "${GNULIB_URI}" gnulib
-		sh linguas.sh || die
 		popd >/dev/null || die
 	elif use verify-sig; then
 		verify-sig_verify_detached "${DISTDIR}"/${MY_P}.tar.xz{,.sig} \
@@ -415,15 +421,14 @@ pkg_postinst() {
 		ewarn
 	fi
 
+	if has_version 'sys-boot/grub:0'; then
+		elog "A migration guide for GRUB Legacy users is available:"
+		elog "    https://wiki.gentoo.org/wiki/GRUB2_Migration"
+	fi
+
 	if has_version sys-boot/os-prober; then
 		ewarn "Due to security concerns, os-prober is disabled by default."
 		ewarn "Set GRUB_DISABLE_OS_PROBER=false in /etc/default/grub to enable it."
-	fi
-
-	if grep -q GRUB_LINUX_KERNEL_GLOBS "${EROOT}"/etc/default/grub; then
-		ewarn "Support for GRUB_LINUX_KERNEL_GLOBS has been dropped."
-		ewarn "Ensure that your kernels are named appropriately or edit"
-		ewarn "/etc/grub.d/10_linux to compensate."
 	fi
 
 	if use secureboot; then
