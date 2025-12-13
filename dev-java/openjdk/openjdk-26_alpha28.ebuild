@@ -189,10 +189,10 @@ src_prepare() {
 src_configure() {
 	local myconf=()
 
-	if has_version dev-java/openjdk:25; then
-		export JDK_HOME=${BROOT}/usr/$(get_libdir)/openjdk-25
-	elif has_version dev-java/openjdk:${SLOT}; then
+	if has_version dev-java/openjdk:${SLOT}; then
 		export JDK_HOME=${BROOT}/usr/$(get_libdir)/openjdk-${SLOT}
+	elif has_version dev-java/openjdk:25; then
+		export JDK_HOME=${BROOT}/usr/$(get_libdir)/openjdk-25
 	elif use !system-bootstrap ; then
 		local xpakvar="${ARCH^^}_XPAK"
 		export JDK_HOME="${WORKDIR}/openjdk-bootstrap-${!xpakvar}"
