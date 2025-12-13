@@ -32,10 +32,10 @@ IUSE="${IUSE}
 IUSE="${IUSE} acl apparmor argon2 avif bcmath berkdb bzip2 calendar
 	capstone cdb +ctype curl debug
 	enchant exif ffi +fileinfo +filter
-	+flatfile ftp gd gdbm gmp +iconv imap inifile
-	intl iodbc ipv6 +jit jpeg kerberos ldap ldap-sasl libedit lmdb
+	+flatfile ftp gd gdbm gmp +iconv inifile
+	intl iodbc ipv6 +jit jpeg ldap ldap-sasl libedit lmdb
 	mhash mssql mysql mysqli nls
-	odbc +opcache +opcache-jit pcntl pdo +phar +posix postgres png
+	odbc +opcache-jit pcntl pdo +phar +posix postgres png
 	qdbm readline selinux +session session-mm sharedmem
 	+simplexml snmp soap sockets sodium spell sqlite ssl
 	sysvipc systemd test tidy +tokenizer tokyocabinet truetype unicode
@@ -86,9 +86,7 @@ COMMON_DEPEND="
 	gdbm? ( sys-libs/gdbm:0= )
 	gmp? ( dev-libs/gmp:0= )
 	iconv? ( virtual/libiconv )
-	imap? ( net-libs/c-client[kerberos=,ssl=] )
 	intl? ( dev-libs/icu:= )
-	kerberos? ( virtual/krb5 )
 	ldap? ( net-nds/openldap:= )
 	ldap-sasl? ( dev-libs/cyrus-sasl )
 	libedit? ( dev-libs/libedit )
@@ -134,8 +132,8 @@ DEPEND="${COMMON_DEPEND}
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}/php-8.3.9-gd-cachevars.patch"
 	"${FILESDIR}/php-8.4.14-libpcre2-testfix.patch"
+	"${FILESDIR}/php-gh-20528-fix.patch"
 )
 
 PHP_MV="$(ver_cut 1)"
@@ -181,14 +179,6 @@ php_install_ini() {
 	dodir "${PHP_EXT_INI_DIR#${EPREFIX}}"
 	dodir "${PHP_EXT_INI_DIR_ACTIVE#${EPREFIX}}"
 
-	if use opcache; then
-		elog "Adding opcache to $PHP_EXT_INI_DIR"
-		echo "zend_extension = opcache.so" >> \
-			 "${D}/${PHP_EXT_INI_DIR}"/opcache.ini
-		dosym "../ext/opcache.ini" \
-			  "${PHP_EXT_INI_DIR_ACTIVE#${EPREFIX}}/opcache.ini"
-	fi
-
 	# SAPI-specific handling
 	if [[ "${sapi}" == "fpm" ]] ; then
 		einfo "Installing FPM config files php-fpm.conf and www.conf"
@@ -214,7 +204,7 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	# In php-7.x, the FPM pool configuration files have been split off
+	# In php-8.x, the FPM pool configuration files have been split off
 	# of the main config. By default the pool config files go in
 	# e.g. /etc/php-fpm.d, which isn't slotted. So here we move the
 	# include directory to a subdirectory "fpm.d" of $PHP_INI_DIR. Later
@@ -248,12 +238,6 @@ src_prepare() {
 	   sapi/cli/tests/bug78323.phpt \
 	   || die
 
-	# This is a memory usage test with hard-coded limits. Whenever the
-	# limits are surpassed... they get increased... but in the meantime,
-	# the tests fail. This is not really a test that end users should
-	# be running pre-install, in my opinion. Bug 927461.
-	rm ext/fileinfo/tests/bug78987.phpt || die
-
 	# Most tests failing with an external libgd have been fixed,
 	# but there are a few stragglers:
 	#
@@ -268,6 +252,15 @@ src_prepare() {
 	   ext/gd/tests/bug65148.phpt \
 	   ext/gd/tests/bug73272.phpt \
 	   || die
+
+	# Test requires USE=cdb, so we have to skip it when
+	# the cdb USE flag is unset
+	#
+	#  * https://github.com/php/php-src/issues/19706
+	#
+	if ! use cdb; then
+		rm ext/dba/tests/gh19706.phpt
+	fi
 
 	# One-off, somebody forgot to update a version constant
 	rm ext/reflection/tests/ReflectionZendExtension.phpt || die
@@ -331,19 +324,16 @@ src_configure() {
 			$(use elibc_glibc || use elibc_musl || echo "${EPREFIX}/usr"))
 		$(use_enable intl)
 		$(use_enable ipv6)
-		$(use_with kerberos)
 		$(use_with xml libxml)
 		$(use_enable unicode mbstring)
 		$(use_with ssl openssl)
 		$(use_enable pcntl)
 		$(use_enable phar)
 		$(use_enable pdo)
-		$(use_enable opcache)
 		$(use_enable opcache-jit)
 		$(use_with postgres pgsql "$("${PG_CONFIG:-true}" --bindir)/..")
 		$(use_enable posix)
 		$(use_with selinux fpm-selinux)
-		$(use_with spell pspell "${EPREFIX}/usr")
 		$(use_enable simplexml)
 		$(use_enable sharedmem shmop)
 		$(use_with snmp snmp "${EPREFIX}/usr")
@@ -409,14 +399,6 @@ src_configure() {
 		php_cv_lib_gd_gdImageCreateFromWebp=$(usex webp)
 		php_cv_lib_gd_gdImageCreateFromXpm=$(usex xpm)
 	)
-
-	# IMAP support
-	if use imap ; then
-		our_conf+=(
-			$(use_with imap imap "${EPREFIX}/usr")
-			$(use_with ssl imap-ssl "${EPREFIX}/usr")
-		)
-	fi
 
 	# LDAP support
 	if use ldap ; then
@@ -609,7 +591,6 @@ src_install() {
 	cd "${WORKDIR}/sapis-build/$first_sapi" || die
 	emake INSTALL_ROOT="${D}" \
 		install-build install-headers install-programs
-	use opcache && emake INSTALL_ROOT="${D}" install-modules
 
 	# Create the directory where we'll put version-specific php scripts
 	keepdir "/usr/share/php${PHP_MV}"
