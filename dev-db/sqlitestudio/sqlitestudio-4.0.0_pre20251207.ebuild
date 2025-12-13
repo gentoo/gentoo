@@ -18,7 +18,7 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="GPL-3"
 SLOT="0"
-# KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="cli python tcl test"
 
 REQUIRED_USE="
@@ -41,8 +41,8 @@ RDEPEND="
 	tcl? ( dev-lang/tcl:0= )
 "
 DEPEND="${RDEPEND}
-	dev-qt/designer:6
-	dev-qt/qtconcurrent:6
+	dev-qt/qttools:6[designer]
+	dev-qt/qtbase:6[concurrent]
 "
 BDEPEND="
 	dev-qt/qttools:6[linguist]
