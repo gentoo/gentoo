@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit mount-boot
+
 MY_PN=gentoo-grub-themes
 
 DESCRIPTION="Grub2 Themes for Gentoo"
@@ -17,6 +19,6 @@ KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 PDEPEND="sys-boot/grub"
 
 src_install() {
-	insinto /usr/share/grub/themes
+	insinto /boot/grub/themes
 	doins -r gentoo_frosted gentoo_glass gentoo_minimalist
 }
