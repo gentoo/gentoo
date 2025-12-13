@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,20 +20,11 @@ LICENSE="GPL-2"
 SLOT="0"
 
 DEPEND="
-	>=media-video/obs-studio-30.2.0
+	>=media-video/obs-studio-31.1
 "
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	sed -i '/-Werror$/d' cmake/ObsPluginHelpers.cmake || die
+	sed -i '/-Werror$/d' cmake/linux/compilerconfig.cmake || die
 	cmake_src_prepare
-}
-
-src_configure() {
-	local mycmakeargs=(
-		-DLIB_OUT_DIR=/lib64/obs-plugins
-		-DLINUX_PORTABLE=OFF
-	)
-
-	cmake_src_configure
 }
