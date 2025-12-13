@@ -3,14 +3,13 @@
 
 EAPI=8
 
-if [[ ${PV} == *9999* ]]; then
+if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://git.libreoffice.org/libzmf"
-	inherit git-r3
+	inherit git-r3 autotools
 else
 	SRC_URI="http://dev-www.libreoffice.org/src/${PN}/${P}.tar.xz"
 	KEYWORDS="amd64 ~arm arm64 ~loong ppc ppc64 ~riscv x86"
 fi
-inherit autotools
 
 DESCRIPTION="Library for parsing Zoner Callisto/Draw documents"
 HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libzmf"
@@ -32,13 +31,9 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="doc? ( app-text/doxygen )"
 
-PATCHES=(
-	"${FILESDIR}/${P}-fix-doc-install.patch" # bug 961617
-)
-
 src_prepare() {
 	default
-	eautoreconf
+	[[ ${PV} == *9999 ]] && eautoreconf
 }
 
 src_configure() {
