@@ -3,17 +3,17 @@
 
 EAPI=8
 inherit go-module systemd tmpfiles
-GIT_COMMIT=507c0de87
+GIT_COMMIT=d2809cf00
 
 DESCRIPTION="Highly-available key value store for shared configuration and service discovery"
 HOMEPAGE="https://github.com/etcd-io/etcd"
 SRC_URI="https://github.com/etcd-io/etcd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-SRC_URI+=" https://dev.gentoo.org/~zmedico/dist/${P}-deps.tar.xz"
+SRC_URI+=" https://dev.gentoo.org/~chewi/distfiles/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0"
 LICENSE+=" BSD BSD-2 MIT"
 SLOT="0"
-KEYWORDS="amd64 ~loong ~riscv"
+KEYWORDS="~amd64 ~arm64 ~loong ~riscv"
 IUSE="doc +server"
 
 COMMON_DEPEND="server? (
@@ -24,35 +24,32 @@ DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
 
 # Unit tests attempt to download go modules.
+PROPERTIES="test_network"
 RESTRICT="test"
 
 src_prepare() {
-	export FORCE_HOST_GO=1 GO_BUILD_FLAGS="-v -x"
 	default
-	sed -e "s|GIT_SHA=.*|GIT_SHA=${GIT_COMMIT}|" \
-		-i "${S}"/build.sh || die
-	sed -e 's:\(for p in \)shellcheck :\1 :' \
-		-e 's:^      goword \\$:\\:' \
-		-e 's:^      gofmt \\$:\\:' \
-		-e 's:^      govet \\$:\\:' \
-		-e 's:^      revive \\$:\\:' \
-		-e 's:^      mod_tidy \\$:\\:' \
-		-e "s|GO_BUILD_FLAGS=\"[^\"]*\"|GO_BUILD_FLAGS=\"${GO_BUILD_FLAGS}\"|" \
-		-e "s|go test |go test ${GO_BUILD_FLAGS} |" \
-		-e 's|PASSES=${PASSES:-"fmt bom dep build unit"}|PASSES=${PASSES:-"fmt dep unit"}|' \
-		-i ./test.sh || die
+	sed -i "s|GIT_SHA=.*|GIT_SHA=${GIT_COMMIT}|" scripts/build_lib.sh || die
+
+	# Don't test these as they are not built.
+	find tools/ -name "*_test.go" -delete || die
+}
+
+src_configure() {
+	export FORCE_HOST_GO=1 GO_BUILD_FLAGS="-v -x"
 }
 
 src_compile() {
-	./build.sh || die
+	scripts/build.sh || die
 }
 
 src_test() {
-	./test || die
+	PASSES="unit" scripts/test.sh -v || die
 }
 
 src_install() {
 	dobin bin/etcdctl
+	dobin bin/etcdutl
 	use doc && dodoc -r Documentation
 	if use server; then
 		insinto /etc/${PN}
