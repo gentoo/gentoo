@@ -227,11 +227,6 @@ src_install() {
 	fi
 }
 
-pkg_preinst() {
-	rm -f "${EROOT}"/etc/pam.d/system-auth.new \
-		"${EROOT}/etc/login.defs.new"
-}
-
 pkg_postinst() {
 	# Missing entries from /etc/passwd can cause odd system blips.
 	# See bug #829872.
@@ -268,6 +263,4 @@ pkg_postinst() {
 		touch "${EROOT}"/etc/subgid
 	[[ ! -f "${EROOT}"/etc/subuid ]] &&
 		touch "${EROOT}"/etc/subuid
-
-	einfo "The 'adduser' symlink to 'useradd' has been dropped."
 }
