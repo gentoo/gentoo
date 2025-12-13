@@ -3,14 +3,13 @@
 
 EAPI=8
 PYTHON_COMPAT=( python3_{11..14} )
+GNOME_ORG_MODULE="vte"
 
 inherit flag-o-matic gnome.org meson python-any-r1
 
 DESCRIPTION="Library providing a virtual terminal emulator widget"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/vte"
 
-# Upstream is hostile and refuses to upload tarballs.
-SRC_URI="https://gitlab.gnome.org/GNOME/vte/-/archive/${PV}/vte-${PV}.tar.bz2"
 S="${WORKDIR}/vte-${PV}"
 
 # Once SIXEL support ships (0.66 or later), might need xterm license (but code might be considered upgraded to LGPL-3+)
@@ -18,13 +17,14 @@ LICENSE="LGPL-3+ GPL-3+"
 
 SLOT="2.91" # vte_api_version in meson.build
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 IUSE="systemd"
 
 DEPEND="
 	|| ( >=gui-libs/gtk-4.0.1:4 >=x11-libs/gtk+-3.24.22:3 )
 	>=x11-libs/cairo-1.0
+	dev-cpp/fast_float
 	>=dev-libs/fribidi-1.0.0
 	>=dev-libs/glib-2.60:2
 	>=x11-libs/pango-1.22.0
@@ -40,6 +40,10 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}/vte-${PV}-fix-unknown-variable.patch"
+)
 
 src_prepare() {
 	default
