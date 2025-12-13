@@ -49,10 +49,33 @@ src_compile() {
 	setup_py build
 }
 
+# Upstream zips the sources, shoves a shebang in front, and installs this to
+# /usr/bin. It works, but it's not optimal. This installs things properly.
 src_install() {
 	setup_py --destdir="${D}" prebuilt
 
-	python_fix_shebang "${ED}"/usr/bin/${PN}
+	# setup.py rewrites each source file to a file suffixed with ".install". We
+	# need to strip the suffix before installing these.
+	local src
+	for src in src/*.py.install; do
+		mv -v "${src}" "${src%.install}" || die
+	done
+
+	# Only the main file is executable, but all the files have shebangs.
+	python_fix_shebang src/*.py
+
+	# Install the sources under site-packages.
+	python_moduleinto ${PN}
+	python_domodule src/*.py
+
+	# Make the main file executable for the symlinks below.
+	local main=$(python_get_sitedir)/ponysay/__main__.py
+	fperms 0755 "${main}"
+
+	# All the tools are symlinks pointing to the main file.
+	dosym -r "${main}" /usr/bin/${PN}
+	dosym -r "${main}" /usr/bin/${PN}-tool
+	dosym -r "${main}" /usr/bin/${PN%say}think
 
 	rm -rv "${ED}"/usr/share/licenses || die
 	dodoc CHANGELOG CONTRIBUTING CREDITS README.md
