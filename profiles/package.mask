@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-15)
+# Last release depends on Qt5, upstream appears dormant. Bug #959826
+# Removal on 2026-01-15
+net-misc/electrum-ltc
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-12-14)
 # Still depends on Qt5 with no upstream activity in years. Bug #960814
 # Removal on 2026-01-15
