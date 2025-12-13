@@ -7,3 +7,13 @@ command="/usr/bin/syncthing"
 supervisor=supervise-daemon
 
 command_args="serve --no-browser --no-restart"
+
+depend() {
+	need localmount
+	after net
+}
+
+start_pre() {
+	checkpath -q -d -o ${command_user} ${SYNCTHING_HOMEDIR}
+	checkpath -q -f -o ${command_user} ${SYNCTHING_LOGFILE}
+}
