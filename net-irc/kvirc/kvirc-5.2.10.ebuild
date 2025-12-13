@@ -3,8 +3,8 @@
 
 EAPI="8"
 
-PYTHON_COMPAT=( python3_{11..13} )
-inherit cmake flag-o-matic python-single-r1 xdg
+PYTHON_COMPAT=( python3_{11..14} )
+inherit cmake python-single-r1 xdg
 
 DESCRIPTION="Advanced IRC Client"
 HOMEPAGE="https://www.kvirc.net/ https://github.com/kvirc/KVIrc"
@@ -15,7 +15,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	SRC_URI="https://github.com/kvirc/KVIrc/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/KVIrc-${PV}"
-	KEYWORDS="amd64 ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 LICENSE="GPL-2+"
@@ -64,10 +64,6 @@ RDEPEND="${DEPEND}
 
 DOCS=()
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-5.2.6-qt-6.9.patch
-)
-
 pkg_setup() {
 	if use python; then
 		python-single-r1_pkg_setup
@@ -87,8 +83,6 @@ src_prepare() {
 }
 
 src_configure() {
-	append-flags -fno-strict-aliasing
-
 	local libdir="$(get_libdir)"
 	local mycmakeargs=(
 		-DLIB_SUFFIX=${libdir#lib}
