@@ -19,7 +19,7 @@ IUSE="+tde2e test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-libs/openssl
+	dev-libs/openssl:=
 	virtual/zlib:=
 "
 DEPEND="${RDEPEND}"
