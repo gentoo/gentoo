@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Fantasy adventure game, based on the works of J.R.R. Tolkien"
 HOMEPAGE="https://github.com/tome2/tome2"
-MY_COMMIT="3892fbcb1c2446afcb0c34f59e2a24f78ae672c4"
+MY_COMMIT="8e2f6361e1a55b21e7abcf051e47a22761d41471"
 SRC_URI="https://github.com/tome2/tome2/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/tome2-${MY_COMMIT}"
 
@@ -18,32 +18,16 @@ IUSE="X"
 
 RDEPEND="
 	dev-libs/boost:=
-	dev-libs/libfmt:=
+	>=dev-libs/libfmt-12:=
 	sys-libs/ncurses:=
 	X? ( x11-libs/libX11 )
 "
 DEPEND="
 	${RDEPEND}
-	dev-cpp/jsoncons
+	<dev-cpp/jsoncons-1.5.0
 	dev-cpp/pcg-cpp
 "
 BDEPEND="virtual/pkgconfig"
-
-PATCHES=(
-	"${FILESDIR}/tome-2.4.0-json.patch"
-	"${FILESDIR}/tome-2.4.0-datadir.patch"
-	"${FILESDIR}/tome-2.4.0-order.patch"
-	"${FILESDIR}/tome-2.4.0-boost.patch"
-	"${FILESDIR}/tome-2.4.0-cmake4.patch"
-	"${FILESDIR}/tome-2.4.0-header.patch"
-	"${FILESDIR}/tome-2.4.0-fmt.patch"
-)
-
-src_prepare() {
-	# The rest of bundled deps are test-only and very old
-	rm -r vendor/fmt* vendor/jsoncons* vendor/pcg-cpp* || die
-	cmake_src_prepare
-}
 
 src_configure() {
 	local mycmakeargs=(
@@ -51,6 +35,8 @@ src_configure() {
 		-DBUILD_SHARED_LIBS=no
 		-DCMAKE_DISABLE_FIND_PACKAGE_X11=$(usex !X)
 		-DCMAKE_DISABLE_FIND_PACKAGE_GTK2=yes
+		-DCPM_LOCAL_PACKAGES_ONLY=yes
+		-DUSE_SYSTEM_PCG_RANDOM=yes
 	)
 	cmake_src_configure
 }
