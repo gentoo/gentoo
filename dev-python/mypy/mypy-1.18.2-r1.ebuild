@@ -43,6 +43,7 @@ BDEPEND="
 		>=dev-python/attrs-18.0[${PYTHON_USEDEP}]
 		>=dev-python/filelock-3.3.0[${PYTHON_USEDEP}]
 		>=dev-python/lxml-4.9.1[${PYTHON_USEDEP}]
+		dev-python/test[${PYTHON_USEDEP}]
 	)
 "
 
