@@ -1,0 +1,20 @@
+Bug: https://bugs.gentoo.org/940560
+
+--- a/src/utils.c
++++ b/src/utils.c
+@@ -1,4 +1,4 @@
+-#include "debug.h"
++#include <libpurple/debug.h>
+ #include "utils.h"
+ #include "musictracker.h"
+ #include <string.h>
+--- a/src/mpris.c
++++ b/src/mpris.c
+@@ -46,6 +46,7 @@
+ #include <glib.h>
+ #include <dbus/dbus.h>
+ #include <dbus/dbus-glib.h>
++#include <libpurple/debug.h>
+ 
+ #include "musictracker.h"
+ #include "utils.h"
