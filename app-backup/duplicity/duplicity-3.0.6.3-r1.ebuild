@@ -30,6 +30,7 @@ COMMON_DEPEND="
 	app-alternatives/gpg
 	net-libs/librsync:=
 	dev-python/fasteners[${PYTHON_USEDEP}]
+	dev-python/pexpect[${PYTHON_USEDEP}]
 "
 DEPEND="
 	${COMMON_DEPEND}
@@ -37,7 +38,6 @@ DEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		|| ( app-arch/par2cmdline app-arch/par2cmdline-turbo )
-		dev-python/pexpect[${PYTHON_USEDEP}]
 	)
 "
 RDEPEND="
