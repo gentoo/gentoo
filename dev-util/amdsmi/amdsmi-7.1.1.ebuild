@@ -44,6 +44,7 @@ RDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-7.0.2-no-git.patch
 	"${FILESDIR}"/${PN}-7.0.2-unbundle-gtest.patch
+	"${FILESDIR}"/${PN}-7.1.1-libdrm-compat.patch
 )
 
 CONFIG_CHECK="~HSA_AMD ~DRM_AMDGPU"
