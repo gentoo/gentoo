@@ -1,0 +1,14 @@
+Fix build with GCC 15
+https://bugs.gentoo.org/945196
+
+--- a/src/report.c
++++ b/src/report.c
+@@ -253,8 +253,6 @@ get_errmsg()
+ {
+ /*	Return pointer to static string which gives full filesystem error message.
+ */
+-	extern int errno;
+-	extern char *strerror();
+ 
+ 	return strerror(errno);
+ }
