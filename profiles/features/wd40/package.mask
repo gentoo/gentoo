@@ -436,3 +436,4 @@ x11-themes/adwaita-icon-theme-legacy
 >=dev-cpp/gtkmm-4.20
 >=gui-libs/libadwaita-1.8.2
 >=gnome-extra/gnome-user-share-48.2
+>=app-editors/gnome-text-editor-49.0
