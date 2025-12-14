@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit gnome2 meson readme.gentoo-r1
+inherit gnome2 meson optfeature
 
 DESCRIPTION="Desktop note-taking application"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/gnote"
@@ -29,6 +29,7 @@ RDEPEND="${DEPEND}
 	gnome-base/gsettings-desktop-schemas
 "
 BDEPEND="
+	dev-libs/appstream
 	dev-util/itstool
 	virtual/pkgconfig
 "
@@ -39,23 +40,9 @@ src_prepare() {
 	if ! use test; then
 		sed -i -e "/unit_test_pp/ s/ = .*/ = disabler()/" meson.build || die
 	fi
-
-	if has_version net-fs/wdfs; then
-		DOC_CONTENTS="You have net-fs/wdfs installed. app-misc/gnote will use it to
-		synchronize notes."
-	else
-		DOC_CONTENTS="Gnote can use net-fs/wdfs to synchronize notes.
-		If you want to use that functionality just emerge net-fs/wdfs.
-		Gnote will automatically detect that you did and let you use it."
-	fi
-}
-
-src_install() {
-	meson_src_install
-	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
 	gnome2_pkg_postinst
-	readme.gentoo_print_elog
+	optfeature "notes synchronization" net-fs/wdfs
 }
