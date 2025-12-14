@@ -23,7 +23,8 @@ HOMEPAGE="https://github.com/KhronosGroup/Vulkan-ValidationLayers"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="wayland test X"
-RESTRICT="!test? ( test )"
+# Many segfaults as of 1.4.313.0
+RESTRICT="!test? ( test ) test"
 
 RDEPEND="~dev-util/spirv-tools-${PV}[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
@@ -57,11 +58,6 @@ multilib_src_configure() {
 		-DBUILD_TESTS=$(usex test)
 	)
 	cmake_src_configure
-}
-
-multilib_src_test() {
-	addwrite "/dev/dri/renderD128"
-	cmake_src_test
 }
 
 multilib_src_install_all() {
