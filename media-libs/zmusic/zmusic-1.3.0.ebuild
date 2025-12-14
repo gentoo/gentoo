@@ -6,26 +6,25 @@ EAPI=8
 inherit cmake flag-o-matic
 
 MY_PN="ZMusic"
-DESCRIPTION="GZDoom's music system as a standalone library"
-HOMEPAGE="https://github.com/ZDoom/ZMusic"
-SRC_URI="https://github.com/ZDoom/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+DESCRIPTION="UZDoom's music system as a standalone library"
+HOMEPAGE="https://github.com/UZDoom/ZMusic"
+SRC_URI="https://github.com/UZDoom/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="BSD DUMB-0.9.3 GPL-3 LGPL-2.1+ LGPL-3 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 IUSE="alsa mpg123 +sndfile"
 
 DEPEND="
 	dev-libs/glib:2
 	alsa? ( media-libs/alsa-lib )
 	mpg123? ( media-sound/mpg123 )
-	sndfile? ( media-libs/libsndfile[-minimal] )"
-RDEPEND="${DEPEND}"
-
-PATCHES=(
-	"${FILESDIR}"/${P}-no-sndfile.patch
-)
+	sndfile? ( media-libs/libsndfile[-minimal] )
+"
+RDEPEND="
+	${DEPEND}
+"
 
 src_prepare() {
 	rm -rf licenses || die
