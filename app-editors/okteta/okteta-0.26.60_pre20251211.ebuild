@@ -19,7 +19,7 @@ https://dev.gentoo.org/~asturm/distfiles/kde/${KDE_ORG_NAME}-0.26.60-ecm-6.21.pa
 
 LICENSE="GPL-2 handbook? ( FDL-1.2 )"
 SLOT="0/4"
-# KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE=""
 
 DEPEND="
