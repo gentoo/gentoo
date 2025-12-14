@@ -20,8 +20,8 @@ SRC_URI="
 "
 
 LICENSE="Apache-2.0 Boost-1.0 BSD MIT"
-SLOT="0/29"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+SLOT="0/27"
+#KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="+all-impls test tools"
 
 BDEPEND="
@@ -83,7 +83,7 @@ src_configure() {
 		)
 	elif ! use test; then
 		mycmakeargs+=(
-			-DSIMDJSON_DEVELOPER_MODELBOOL=OFF
+			-DSIMDJSON_DEVELOPER_MODE:BOOL=OFF
 		)
 	fi
 
