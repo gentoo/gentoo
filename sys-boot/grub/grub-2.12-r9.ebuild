@@ -372,7 +372,7 @@ src_install() {
 	newins "${FILESDIR}"/grub.default-4 grub
 
 	if use branding && use themes ; then
-		sed -e 's:^#GRUB_THEME=.*$:GRUB_THEME="/boot/grub/themes/gentoo_glass/theme.txt":g' -i "${D}/etc/default/grub" || die
+		sed -e 's:^#GRUB_THEME=.*$:GRUB_THEME="/boot/grub/themes/gentoo_glass/theme.txt":g' -i "${ED}/etc/default/grub" || die
 	fi
 
 	# https://bugs.gentoo.org/231935
