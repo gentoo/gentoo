@@ -159,7 +159,9 @@ src_unpack() {
 		local GNULIB_REVISION=$(source bootstrap.conf >/dev/null; echo "${GNULIB_REVISION}")
 		git-r3_fetch "${GNULIB_URI}" "${GNULIB_REVISION}"
 		git-r3_checkout "${GNULIB_URI}" gnulib
-		sh linguas.sh || die
+		if use nls; then
+			sh linguas.sh || die
+		fi
 		popd >/dev/null || die
 	elif use verify-sig; then
 		verify-sig_verify_detached "${DISTDIR}"/${MY_P}.tar.xz{,.sig} \
@@ -179,7 +181,7 @@ src_prepare() {
 
 	if [[ -n ${GRUB_BOOTSTRAP} ]]; then
 		eautopoint --force
-		AUTOPOINT=: AUTORECONF=: ./bootstrap || die
+		AUTOPOINT=: AUTORECONF=: ./bootstrap --skip-po || die
 	elif [[ -n ${GRUB_AUTOGEN} ]]; then
 		FROM_BOOTSTRAP=1 ./autogen.sh || die
 	fi
