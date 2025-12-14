@@ -34,7 +34,7 @@ LICENSE+="
 	LGPL-3+ MIT Unicode-3.0 WTFPL-2 ZLIB
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 
 RDEPEND="
 	~net-proxy/mitmproxy-linux-${PV}[${PYTHON_USEDEP}]
