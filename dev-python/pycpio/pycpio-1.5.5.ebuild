@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 
 RDEPEND="
 	>=dev-python/zenlib-3.0.2[${PYTHON_USEDEP}]
