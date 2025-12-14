@@ -6,6 +6,8 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="gitlab">oauth-xx/oauth-tty</remote-id>
+    <remote-id type="github">ruby-oauth/oauth-tty</remote-id>
+    <remote-id type="gitlab">ruby-oauth/oauth-tty</remote-id>
+    <remote-id type="rubygems">oauth-tty</remote-id>
   </upstream>
 </pkgmetadata>
