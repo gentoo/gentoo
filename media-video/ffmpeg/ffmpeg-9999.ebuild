@@ -447,10 +447,12 @@ multilib_src_configure() {
 		--disable-libdavs2
 		--disable-libklvanc
 		--disable-liblcevc-dec
+		--disable-libmpeghdec
 		--disable-libmysofa
 		--disable-liboapv
 		--disable-libopenvino
 		--disable-libshine
+		--disable-libsvtjpegxs
 		--disable-libtls
 		--disable-libuavs3d
 		--disable-libvvenc
@@ -461,7 +463,6 @@ multilib_src_configure() {
 		--disable-libxeve
 		--disable-libxeveb
 		--disable-ohcodec
-		--disable-libmpeghdec
 		--disable-pocketsphinx
 		--disable-rkmpp
 		--disable-vapoursynth
