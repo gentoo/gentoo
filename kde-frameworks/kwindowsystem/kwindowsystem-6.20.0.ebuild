@@ -39,7 +39,14 @@ DEPEND="${RDEPEND}
 	)
 "
 RDEPEND+=" wayland? ( || ( >=dev-qt/qtbase-6.10:6[wayland] <dev-qt/qtwayland-6.10:6 ) )"
-BDEPEND=">=dev-qt/qttools-${QTMIN}:6[linguist]"
+BDEPEND="
+	>=dev-qt/qttools-${QTMIN}:6[linguist]
+	wayland? (
+		>=dev-qt/qtbase-${QTMIN}:6[wayland]
+		dev-util/wayland-scanner
+	)
+"
+BDEPEND+=" wayland? ( || ( >=dev-qt/qtbase-6.10:6[wayland] <dev-qt/qtwayland-6.10:6 ) )"
 
 DOCS=( docs/README.kstartupinfo )
 
