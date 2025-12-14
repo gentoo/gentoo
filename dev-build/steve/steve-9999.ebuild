@@ -23,6 +23,7 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
+	acct-group/jobserver
 	acct-user/steve
 "
 BDEPEND="
