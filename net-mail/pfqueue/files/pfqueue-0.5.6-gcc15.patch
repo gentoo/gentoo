@@ -1,0 +1,35 @@
+Fix build with GCC 15
+https://bugs.gentoo.org/945067
+
+--- a/fe_ncurses.h
++++ b/fe_ncurses.h
+@@ -53,6 +53,6 @@ int 		fe_init();
+ void		fe_close();
+ const char* 	fe_current_id();
+ 
+-void		msg_show_body();
++void		msg_show_body(int force_own);
+ 
+ #endif
+--- a/libpfq/pfqlib.c
++++ b/libpfq/pfqlib.c
+@@ -713,7 +713,7 @@ int pfql_start(struct pfql_context_t *ctx) {
+ int pfql_context_destroy(struct pfql_context_t *ctx) {
+ 
+ 	pthread_mutex_destroy ( &ctx->qfill_mutex );
+-	queue_fill_stop(ctx);
++	queue_fill_stop();
+ 
+ 	if (ctx->beptr) {
+ 		ctx->pfqbe_close(ctx);
+--- a/pfqlib.h
++++ b/pfqlib.h
+@@ -69,7 +69,7 @@ struct pfql_context_t {
+ 	int (*pfqbe_apiversion)();
+ 	int (*pfqbe_init)();
+ 	int (*pfqbe_setup)(struct msg_t*,struct be_msg_t*);
+-	int (*pfqbe_close)();
++	int (*pfqbe_close)(struct pfql_context_t*);
+ 	int (*pfqbe_fill_queue)();
+ 	int (*pfqbe_retr_headers)(const char*);
+ 	int (*pfqbe_retr_status)(const char*);
