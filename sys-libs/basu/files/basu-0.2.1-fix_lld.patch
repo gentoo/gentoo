@@ -1,0 +1,15 @@
+see https://bugs.gentoo.org/918937
+from upstream https://git.sr.ht/~emersion/basu/commit/a08cf5a575325435040d35710dbac3d0c32b1676.patch
+Drop unused symbols from version script
+--- a/src/libsystemd/libsystemd.sym
++++ b/src/libsystemd/libsystemd.sym
+@@ -72,9 +72,6 @@ global:
+         sd_bus_get_current_message;
+         sd_bus_get_current_handler;
+         sd_bus_get_current_userdata;
+-        sd_bus_attach_event;
+-        sd_bus_detach_event;
+-        sd_bus_get_event;
+         sd_bus_add_filter;
+         sd_bus_add_match;
+         sd_bus_add_object;
