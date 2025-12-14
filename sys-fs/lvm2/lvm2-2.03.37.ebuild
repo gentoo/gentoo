@@ -206,8 +206,12 @@ src_compile() {
 }
 
 src_test() {
-	einfo "Tests are disabled because of device-node mucking, if you want to"
-	einfo "run tests, compile the package and see ${S}/tests"
+	einfo "Tests other than unit tests are disabled because of device-node"
+	einfo "mucking, run tests, compile the package and see ${S}/tests"
+
+	# run only unit tests
+	cd "${S}"/test || die
+	emake -j1 run-unit-test
 }
 
 src_install() {
