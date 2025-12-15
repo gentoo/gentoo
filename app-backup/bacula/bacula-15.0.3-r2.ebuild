@@ -30,6 +30,7 @@ DEPEND="
 	dev-libs/gmp:0
 	qt6? (
 		dev-qt/qtbase:6[gui,widgets]
+		!sys-apps/bat
 	)
 	logwatch? ( sys-apps/logwatch )
 	readline? ( sys-libs/readline:0 )
