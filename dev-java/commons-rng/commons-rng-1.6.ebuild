@@ -20,11 +20,14 @@ KEYWORDS="amd64 ppc64"
 
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-aherbert )"
 
+# [-vintage] because, if junit:5 compiled with 'USE=vintage':
+# Error: Module junit not found, required by org.junit.vintage.engine
 DEPEND="
 	>=virtual/jdk-11:*
 	test? (
 		>=dev-java/commons-math-3.6.1-r2:3
 		>=dev-java/jmh-core-1.37:0
+		dev-java/junit:5[-vintage]
 		dev-java/opentest4j:0
 	)
 "
