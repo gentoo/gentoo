@@ -110,7 +110,7 @@ games-strategy/hedgewars
 # Bugs #929093, #952086, #952528, #955277. Removal on 2026-01-04.
 media-gfx/yafaray
 
-# Nowa Ammerlaan <nowa@gentoo.org (2025-12-05)
+# Nowa Ammerlaan <nowa@gentoo.org> (2025-12-05)
 # Stuck on Qt5, no upstream action.
 # Please use the games-action/prismlauncher fork instead.
 # Removal on 2026-01-05. Bug 967108.
