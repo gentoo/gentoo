@@ -36,6 +36,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Eli Schwartz <eschwartz@gentoo.org> (2025-12-15)
+# This version has lit a firecracker under the community and attracted
+# some ire. The situation is in a state of mild flux, and more generally
+# requires further consideration to determine the correct course of
+# action. Use at your own risk.
+>=app-text/calibre-8.11.0
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-12-21)
 # Fails to build against Qt 6.10, upstream repository was archived.
 # Bug #966389. Removal on 2026-01-15
