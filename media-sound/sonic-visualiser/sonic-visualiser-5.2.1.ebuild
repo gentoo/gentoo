@@ -61,6 +61,7 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}/${P}-meson.build.patch" # downstream
 	"${FILESDIR}/${P}-qt-6.9.patch" # bug #966627, svcore git master
+	"${FILESDIR}/${P}-qt-6.10.1.patch" # bug #966627, svgui git master
 )
 
 src_configure() {

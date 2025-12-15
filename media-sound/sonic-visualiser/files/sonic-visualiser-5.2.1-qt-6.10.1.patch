@@ -1,0 +1,22 @@
+From d5dccf33e3431bbe48731cd168cf2fb25c8ace32 Mon Sep 17 00:00:00 2001
+From: Chris Cannam <cannam@all-day-breakfast.com>
+Date: Sun, 7 Dec 2025 16:08:54 +0000
+Subject: [PATCH] Fix compile error in debug code with new Qt
+
+---
+ svgui/view/Pane.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/svgui/view/Pane.cpp b/svgui/view/Pane.cpp
+index fb802c4..8d4c229 100644
+--- a/svgui/view/Pane.cpp
++++ b/svgui/view/Pane.cpp
+@@ -1423,7 +1423,7 @@ modifierNames(Qt::KeyboardModifiers m)
+     if (m & Qt::GroupSwitchModifier) s << "GroupSwitch";
+     m &= (~ (Qt::ShiftModifier | Qt::ControlModifier | Qt::AltModifier |
+              Qt::MetaModifier | Qt::KeypadModifier | Qt::GroupSwitchModifier));
+-    if (m) s << QString(" (residue %1)").arg(m);
++    if (m) s << QString(" (residue %1)").arg((uint64_t)m);
+     if (s.empty()) return "(none)";
+     else return s.join(" | ");
+ }
