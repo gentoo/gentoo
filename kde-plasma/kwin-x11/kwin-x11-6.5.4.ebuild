@@ -100,6 +100,8 @@ BDEPEND="
 "
 BDEPEND+=" || ( >=dev-qt/qtbase-6.10:6[wayland] <dev-qt/qtwayland-6.10:6 )"
 
+PATCHES=( "${FILESDIR}/${P}-fix-qt-6.10.2.patch" )
+
 src_prepare() {
 	ecm_src_prepare
 
