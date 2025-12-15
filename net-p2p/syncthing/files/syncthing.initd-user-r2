@@ -16,11 +16,9 @@ command_args="serve --no-browser --no-restart \
 	${SYNCTHING_OPTS}"
 
 depend() {
-	need localmount
 	after net
 }
 
 start_pre() {
-	checkpath -q -d -o "${command_user}" "${SYNCTHING_HOMEDIR}"
 	checkpath -q -f -o "${command_user}" "${SYNCTHING_LOGFILE}"
 }
