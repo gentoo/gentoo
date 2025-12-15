@@ -54,7 +54,7 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.14.1-qt-6.10.1.patch
+	"${FILESDIR}"/${P}-qt-6.10.1.patch
 )
 
 src_configure() {
@@ -108,8 +108,9 @@ src_test() {
 src_install() {
 	cmake_src_install
 
-	# FIXME upstream: workaround for bug #966114
-	mv "${D}"/usr/share/applications/{SuperColliderIDE,scide}.desktop || die
+	if use qt6; then # FIXME upstream: workaround for bug #966114
+		mv "${D}"/usr/share/applications/{SuperColliderIDE,scide}.desktop || die
+	fi
 
 	use emacs && newdoc editors/sc-el/README.md README.emacs
 	use vim && newdoc editors/scvim/README.md README.vim
