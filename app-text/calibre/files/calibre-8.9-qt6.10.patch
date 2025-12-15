@@ -1,0 +1,105 @@
+From 4c44e8f76f197629af695091c49b1a0efbb30bae Mon Sep 17 00:00:00 2001
+From: Marcin Serwin <marcin@serwin.dev>
+Date: Sat, 11 Oct 2025 02:00:04 +0200
+Subject: [PATCH] Fix building with Qt 6.10
+
+Qt 6.10 no longer implicitly imports private modules, see https://doc.qt.io/qt-6/whatsnew610.html#build-system-changes.
+---
+ src/calibre/headless/CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/calibre/headless/CMakeLists.txt b/src/calibre/headless/CMakeLists.txt
+index c2c8fa88e58f..3fc5d8e4862f 100644
+--- a/src/calibre/headless/CMakeLists.txt
++++ b/src/calibre/headless/CMakeLists.txt
+@@ -1,8 +1,8 @@
+ cmake_minimum_required(VERSION 3.21)
+ project(headless)
+ set(CMAKE_AUTOMOC ON)
+-find_package(Qt6Gui REQUIRED)
++find_package(Qt6 REQUIRED COMPONENTS Gui GuiPrivate Core CorePrivate)
+ add_library(headless MODULE main.cpp headless_backingstore.cpp headless_integration.cpp)
+ set_property(TARGET headless PROPERTY QT_PLUGIN_TYPE "platforms")
+ set_property(TARGET headless PROPERTY QT_PLUGIN_CLASS_NAME "HeadlessIntegrationPlugin")
+-target_link_libraries(headless PRIVATE Qt::Gui Qt::GuiPrivate Qt::Core Qt::CorePrivate)
++target_link_libraries(headless PRIVATE Qt6::Gui Qt6::GuiPrivate Qt6::Core Qt6::CorePrivate)
+
+
+From 8820bffc86631ca7020177a4998b478141a7b8c1 Mon Sep 17 00:00:00 2001
+From: Kovid Goyal <kovid@kovidgoyal.net>
+Date: Sat, 11 Oct 2025 08:26:28 +0530
+Subject: [PATCH] Only change CMakeLists.txt for headless if actually building
+ with Qt >= 6.10
+
+---
+ setup/build.py                      | 18 +++++++++++++++++-
+ setup/build_environment.py          |  3 ++-
+ src/calibre/headless/CMakeLists.txt |  3 ++-
+ 3 files changed, 21 insertions(+), 3 deletions(-)
+
+diff --git a/setup/build.py b/setup/build.py
+index 5ed34720dbb9..7816493ad94b 100644
+--- a/setup/build.py
++++ b/setup/build.py
+@@ -648,6 +648,22 @@ def build_headless(self):
+         bdir = self.j(self.build_dir, 'headless')
+         if os.path.exists(bdir):
+             shutil.rmtree(bdir)
++        sdir = os.path.join(bdir, 'src')
++        shutil.copytree(os.path.dirname(sources[0]), sdir)
++        with open(os.path.join(sdir, 'CMakeLists.txt'), 'r+') as f:
++            raw = f.read()
++            qt = lazy_load('qt')
++            if qt['version'] >= (6, 10):
++                fp = 'find_package(Qt6 REQUIRED COMPONENTS Gui GuiPrivate Core CorePrivate)'
++                ll = 'target_link_libraries(headless PRIVATE Qt6::Gui Qt6::GuiPrivate Qt6::Core Qt6::CorePrivate)'
++            else:
++                fp = 'find_package(Qt6Gui REQUIRED)'
++                ll = 'target_link_libraries(headless PRIVATE Qt::Gui Qt::GuiPrivate Qt::Core Qt::CorePrivate)'
++            raw = raw.replace('__FIND_GUI__', fp)
++            raw = raw.replace('__LINK_TARGETS__', ll)
++            f.seek(0), f.truncate()
++            f.write(raw)
++        bdir = os.path.join(bdir, 'build')
+         cmd = [CMAKE]
+         if is_macos_universal_build:
+             cmd += ['-DCMAKE_OSX_ARCHITECTURES=x86_64;arm64']
+@@ -657,7 +673,7 @@ def build_headless(self):
+         cwd = os.getcwd()
+         os.chdir(bdir)
+         try:
+-            self.check_call(cmd + ['-S', os.path.dirname(sources[0])])
++            self.check_call(cmd + ['-S', sdir])
+             self.check_call([self.env.make] + [f'-j{cpu_count or 1}'])
+         finally:
+             os.chdir(cwd)
+diff --git a/setup/build_environment.py b/setup/build_environment.py
+index a0fd7f2dd260..f5ca099d71a1 100644
+--- a/setup/build_environment.py
++++ b/setup/build_environment.py
+@@ -119,8 +119,9 @@ def readvar(name):
+     return re.search(f'^{name}:(.+)$', qraw, flags=re.M).group(1).strip()
+ 
+ 
+-qt = {x:readvar(y) for x, y in {'libs':'QT_INSTALL_LIBS', 'plugins':'QT_INSTALL_PLUGINS'}.items()}
++qt = {x:readvar(y) for x, y in {'libs':'QT_INSTALL_LIBS', 'plugins':'QT_INSTALL_PLUGINS', 'version_str': 'QT_VERSION'}.items()}
+ qmakespec = readvar('QMAKE_SPEC') if iswindows else None
++qt['version'] = tuple(map(int, qt['version_str'].split('.')[:2]))
+ freetype_lib_dirs = []
+ freetype_libs = []
+ freetype_inc_dirs = []
+diff --git a/src/calibre/headless/CMakeLists.txt b/src/calibre/headless/CMakeLists.txt
+index 3fc5d8e4862f..49b110477b6d 100644
+--- a/src/calibre/headless/CMakeLists.txt
++++ b/src/calibre/headless/CMakeLists.txt
+@@ -1,8 +1,9 @@
+ cmake_minimum_required(VERSION 3.21)
+ project(headless)
+ set(CMAKE_AUTOMOC ON)
++__FIND_GUI__
+ find_package(Qt6 REQUIRED COMPONENTS Gui GuiPrivate Core CorePrivate)
+ add_library(headless MODULE main.cpp headless_backingstore.cpp headless_integration.cpp)
+ set_property(TARGET headless PROPERTY QT_PLUGIN_TYPE "platforms")
+ set_property(TARGET headless PROPERTY QT_PLUGIN_CLASS_NAME "HeadlessIntegrationPlugin")
+-target_link_libraries(headless PRIVATE Qt6::Gui Qt6::GuiPrivate Qt6::Core Qt6::CorePrivate)
++__LINK_TARGETS__
