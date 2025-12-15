@@ -17,7 +17,7 @@ S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="color-management fftw gif +gsl heif jpeg2k jpegxl +mypaint-brush-engine openexr pdf media +raw webp"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
