@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit prefix
+inherit branding prefix
 
 DESCRIPTION="LSB version query program"
 HOMEPAGE="https://wiki.linuxfoundation.org/lsb/"
@@ -34,6 +34,6 @@ src_install() {
 
 	insinto /etc
 	newins - lsb-release <<-EOF
-		DISTRIB_ID="Gentoo"
+		DISTRIB_ID="${BRANDING_OS_NAME// }"
 	EOF
 }
