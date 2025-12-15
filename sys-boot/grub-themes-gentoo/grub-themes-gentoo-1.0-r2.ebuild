@@ -19,6 +19,9 @@ KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 PDEPEND="sys-boot/grub"
 
 src_install() {
-	insinto /boot/grub/themes
-	doins -r gentoo_frosted gentoo_glass gentoo_minimalist
+	local d
+	for d in /boot /usr/share; do
+		insinto "${d}"/grub/themes
+		doins -r gentoo_frosted gentoo_glass gentoo_minimalist
+	done
 }
