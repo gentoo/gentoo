@@ -66,6 +66,17 @@ PATCHES=(
 
 distutils_enable_tests pytest
 
+python_test() {
+	# The default portage tempdir is too long for AF_UNIX sockets
+	local -x TMPDIR DOCKER_GNUPGHOME
+	TMPDIR="$(mktemp -d --tmpdir=/tmp ${PF}-XXX || die)"
+	# testing/__init__.py doesn't respect GNUPGHOME
+	DOCKER_GNUPGHOME="${TMPDIR}/gnupg"
+	cp -ar "${S}"/testing/gnupg "${DOCKER_GNUPGHOME}"/ || die
+
+	epytest
+}
+
 pkg_postinst() {
 	elog "Duplicity has many optional dependencies to support various backends."
 	elog "Currently it's up to you to install them as necessary."
