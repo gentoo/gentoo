@@ -32,7 +32,7 @@ KEYWORDS="amd64 arm64 ppc64 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-s
 CP_DEPEND="
 	~dev-java/antlr-runtime-${PV}:${SLOT}
 	dev-java/antlr-runtime:3.5
-	>=dev-java/icu4j-77.1:0
+	~dev-java/icu4j-77.1:0
 	dev-java/stringtemplate:4
 	dev-java/treelayout:0
 "
