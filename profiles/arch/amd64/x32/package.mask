@@ -102,6 +102,7 @@ dev-python/spyder
 dev-python/spyder-unittest
 dev-python/spyder-line-profiler
 dev-python/spyder-notebook
+dev-python/spyder-terminal
 dev-util/kdevelop
 dev-util/kdevelop-php
 dev-util/kdevelop-python
