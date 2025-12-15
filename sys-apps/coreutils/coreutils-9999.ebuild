@@ -11,7 +11,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{11..13} )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/coreutils.asc
-inherit flag-o-matic python-any-r1 toolchain-funcs verify-sig
+inherit branding flag-o-matic python-any-r1 toolchain-funcs verify-sig
 
 MY_PATCH="${PN}-9.6-patches"
 DESCRIPTION="Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)"
@@ -155,9 +155,7 @@ src_configure() {
 	# still experimental at the moment, but:
 	# https://git.savannah.gnu.org/cgit/coreutils.git/commit/?id=85edb4afbd119fb69a0d53e1beb71f46c9525dd0
 	local myconf=(
-		--with-packager="Gentoo"
 		--with-packager-version="${PVR} (p${PATCH_VER:-0})"
-		--with-packager-bug-reports="https://bugs.gentoo.org/"
 		# kill/uptime - procps
 		# hostname    - net-tools
 		--enable-install-program="arch,$(usev hostname),$(usev kill)"
