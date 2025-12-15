@@ -36,7 +36,7 @@ detect_version
 
 DESCRIPTION="Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches"
 HOMEPAGE="https://pfkernel.natalenko.name/
-	https://dev.gentoo.org/~mpagano/genpatches/"
+	https://dev.gentoo.org/~alicef/genpatches/"
 SRC_URI="https://codeberg.org/pf-kernel/linux/archive/v${PFPV}.tar.gz -> linux-${PFPV}.tar.gz
 	${GENPATCHES_URI}"
 
