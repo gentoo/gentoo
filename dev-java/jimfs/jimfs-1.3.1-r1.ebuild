@@ -22,7 +22,7 @@ CP_DEPEND="
 	dev-java/auto-service-annotations:0
 	>=dev-java/error-prone-annotations-2.41.0:0
 	>=dev-java/guava-33.4.8:0
-	>=dev-java/icu4j-77.1:0
+	~dev-java/icu4j-77.1:0
 	dev-java/jsr305:0
 "
 
