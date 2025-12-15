@@ -28,13 +28,14 @@ IUSE="python static-libs test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-# We need newer kernel headers; we don't keep strict control of the exact
-# version here, just be safe and pull in the latest stable ones. bug #551248
-DEPEND="
-	>=sys-kernel/linux-headers-5.15
+RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 "
-RDEPEND="${DEPEND}"
+# We need newer kernel headers; we don't keep strict control of the exact
+# version here, just be safe and pull in the latest stable ones. bug #551248
+DEPEND="${RDEPEND}
+	>=sys-kernel/linux-headers-5.15
+"
 BDEPEND="
 	${DEPEND}
 	dev-util/gperf
