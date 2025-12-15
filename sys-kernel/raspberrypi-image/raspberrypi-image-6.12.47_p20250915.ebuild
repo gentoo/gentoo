@@ -41,21 +41,23 @@ RDEPEND="sys-boot/raspberrypi-firmware"
 src_prepare() {
 	default
 
-	local expected_kernel_version="$(ver_cut 1-3)+"
-	local found_kernel_version=( "${S}"/modules/$(ver_cut 1).*.*+ )
+	if [[ ${PV} != 9999 ]]; then
+		local expected_kernel_version="$(ver_cut 1-3)+"
+		local found_kernel_version=( "${S}"/modules/$(ver_cut 1).*.*+ )
 
-	found_kernel_version=${found_kernel_version[0]}
-	found_kernel_version=${found_kernel_version##*/}
+		found_kernel_version=${found_kernel_version[0]}
+		found_kernel_version=${found_kernel_version##*/}
 
-	if [[ ${expected_kernel_version} != ${found_kernel_version} ]] ; then
-		eerror "Expected kernel version: ${expected_kernel_version}"
-		eerror "Found kernel version: ${found_kernel_version}"
-		die "Please fix ebuild version to contain ${found_kernel_version}!"
-	fi
+		if [[ ${expected_kernel_version} != ${found_kernel_version} ]] ; then
+			eerror "Expected kernel version: ${expected_kernel_version}"
+			eerror "Found kernel version: ${found_kernel_version}"
+			die "Please fix ebuild version to contain ${found_kernel_version}!"
+		fi
 
-	if [[ ! -d "${S}"/modules/${expected_kernel_version} ]] ; then
-		eerror "Kernel module directory is missing!"
-		die "${S}/modules/${expected_kernel_version} not found!"
+		if [[ ! -d "${S}"/modules/${expected_kernel_version} ]] ; then
+			eerror "Kernel module directory is missing!"
+			die "${S}/modules/${expected_kernel_version} not found!"
+		fi
 	fi
 }
 
