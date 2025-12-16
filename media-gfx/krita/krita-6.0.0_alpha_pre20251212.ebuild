@@ -93,6 +93,7 @@ PATCHES=(
 	# downstream
 	"${FILESDIR}"/${PN}-5.3.0-tests-optional.patch
 	"${FILESDIR}"/${PN}-5.2.2-fftw.patch # bug 913518
+	"${FILESDIR}"/${P}-missing-header.patch # git master
 )
 
 src_prepare() {
