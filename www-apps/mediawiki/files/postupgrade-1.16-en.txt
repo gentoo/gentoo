@@ -18,7 +18,7 @@ installer. To run command-line maintenance script, change to the maintenance
 directory and execute the update script:
 
 $ cd ${MY_INSTALLDIR}/maintenance
-$ php update.php
+$ php run.php update.php
 
 MediaWiki will inspect the existing schema and update it to work with the new
 code, adding tables and columns as needed.
