@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>nowa@gentoo.org</email>
+		<name>Nowa Ammerlaan</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="pypi">spyder-terminal</remote-id>
+		<remote-id type="github">spyder-ide/spyder-terminal</remote-id>
+	</upstream>
+	<stabilize-allarches/>
+</pkgmetadata>

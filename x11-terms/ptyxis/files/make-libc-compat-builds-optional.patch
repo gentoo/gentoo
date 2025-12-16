@@ -1,0 +1,61 @@
+From 64affa1242283923b24a1b3d683e8438a1585c6d Mon Sep 17 00:00:00 2001
+From: Christian Hergert <chergert@redhat.com>
+Date: Mon, 17 Nov 2025 15:12:46 -0800
+Subject: [PATCH] build: make libc-compat builds optional
+
+---
+ agent/meson.build           | 2 ++
+ meson_options.txt           | 5 +++++
+ org.gnome.Ptyxis.Devel.json | 3 ++-
+ 3 files changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/agent/meson.build b/agent/meson.build
+index 147c70b..bd0b928 100644
+--- a/agent/meson.build
++++ b/agent/meson.build
+@@ -45,6 +45,7 @@ ptyxis_agent_c_args = [
+   '-DGLIB_VERSION_MAX_ALLOWED=GLIB_VERSION_@0@_@1@'.format(PTYXIS_AGENT_MIN_GLIB_MAJOR, PTYXIS_AGENT_MIN_GLIB_MINOR),
+ ]
+ 
++if get_option('libc-compat')
+ libc_compat = true
+ if target_machine.cpu_family() == 'x86_64'
+   ptyxis_agent_c_args += ['-include', 'x86_64/force_link_glibc_2.17.h']
+@@ -56,6 +57,7 @@ if libc_compat
+   config_h.set10('LIBC_COMPAT', libc_compat)
+   ptyxis_agent_link_args += ['-Wl,--wrap=__libc_start_main']
+ endif
++endif
+ 
+ executable('ptyxis-agent', ptyxis_agent_sources,
+          dependencies: ptyxis_agent_deps,
+diff --git a/meson_options.txt b/meson_options.txt
+index ec7f85c..a2d918e 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -5,3 +5,8 @@ option('generic', type: 'combo', value: 'ptyxis',
+ option('app-id', type: 'string', value: '', description: 'An alternate app-id to use for the application')
+ option('gschema-id', type: 'string', value: '', description: 'An alternative gschema identifier prefix')
+ option('gschema-path', type: 'string', value: '', description: 'An alternative gschema path to use')
++
++# Building with libc-compat is generally just useful when building the Flatpak
++# since that is where we will want to build a binary that can run on the host
++# outside of the Flatpak container.
++option('libc-compat', type: 'boolean', value: false, description: 'Try to build the agent with old glibc symbols for running on older hosts')
+diff --git a/org.gnome.Ptyxis.Devel.json b/org.gnome.Ptyxis.Devel.json
+index 9350c88..ae53aaf 100644
+--- a/org.gnome.Ptyxis.Devel.json
++++ b/org.gnome.Ptyxis.Devel.json
+@@ -100,7 +100,8 @@
+             "builddir" : true,
+             "buildsystem" : "meson",
+             "config-opts" : [
+-                "-Ddevelopment=true"
++                "-Ddevelopment=true",
++                "-Dlibc-compat=true"
+             ],
+             "sources" : [
+                 {
+-- 
+GitLab
+

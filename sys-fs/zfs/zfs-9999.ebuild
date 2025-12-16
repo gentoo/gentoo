@@ -10,7 +10,7 @@ EAPI=8
 
 DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..14} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 MODULES_INITRAMFS_IUSE=+initramfs
 MODULES_OPTIONAL_IUSE=+modules
@@ -21,7 +21,7 @@ inherit linux-mod-r1 multiprocessing pam systemd udev usr-ldscript
 DESCRIPTION="Linux kernel module and userland utilities for ZFS"
 HOMEPAGE="https://github.com/openzfs/zfs"
 
-MODULES_KERNEL_MAX=6.17
+MODULES_KERNEL_MAX=6.18
 MODULES_KERNEL_MIN=4.18
 
 if [[ ${PV} == "9999" ]]; then
@@ -48,9 +48,9 @@ fi
 
 LICENSE="BSD-2 CDDL MIT modules? ( debug? ( GPL-2+ ) )"
 # just libzfs soname major for now.
-# possible candidates: libuutil, libzpool, libnvpair. Those do not provide stable abi, but are considered.
+# possible candidates are libzpool and libnvpair. Those do not provide stable abi, but are considered.
 # see libsoversion_check() below as well
-SLOT="0/6"
+SLOT="0/7"
 IUSE="custom-cflags debug dist-kernel minimal nls pam python +rootfs selinux test-suite unwind"
 
 DEPEND="
@@ -304,6 +304,7 @@ src_compile() {
 
 src_install() {
 	DOCS=( AUTHORS COPYRIGHT META README.md )
+
 	if use modules; then
 		emake "${MODULES_MAKEARGS[@]}" DESTDIR="${ED}" install
 		modules_post_process
@@ -315,7 +316,7 @@ src_install() {
 	# bug #965156
 	unset DOCS
 
-	gen_usr_ldscript -a nvpair uutil zfsbootenv zfs zfs_core zpool
+	gen_usr_ldscript -a nvpair zfsbootenv zfs zfs_core zpool
 
 	use pam && { rm -rv "${ED}/unwanted_files" || die ; }
 

@@ -22,7 +22,7 @@ S="${WORKDIR}/mysql-connector-j-${PV}"
 
 LICENSE="GPL-2-with-MySQL-FLOSS-exception"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 # Most tests fail with:
 # Cannot connect to MySQL server on localhost:3,306.

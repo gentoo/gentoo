@@ -71,7 +71,11 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/tg_owt-0_pre20250515-fix-gcc16.patch"
 	"${FILESDIR}/tg_owt-0_pre20250515-fix-clang20.patch"
+
+	# Bug 964949. Incomplete, regresses abseil-cpp-2025012.
 	"${FILESDIR}/tg_owt-0_pre20250515-nonnull.patch"
+	# Bug 965838. Fixes regression with abseil-cpp-2025012.
+	"${FILESDIR}/tg_owt-0_pre20250515-scope-nonnull.patch"
 )
 
 src_unpack() {

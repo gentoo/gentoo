@@ -35,7 +35,7 @@ cat >> src/autoload.php <<EOF || die "failed to extend autoload.php"
 
 // Dependencies
 \Fedora\Autoloader\Dependencies::required([
-	'/usr/share/php/React/Promise/functions.php'
+	'${EPREFIX}/usr/share/php/React/Promise/functions.php'
 ]);
 EOF
 }

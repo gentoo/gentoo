@@ -17,7 +17,7 @@
 			Build (experimental) command-line client
 		</flag>
 		<flag name="manager">
-			Manager is a user-friendly interface and a component handling rolling restarts, config update logic and more.
+			Manager is a user-friendly interface and a component handling rolling restarts, config update logic and more
 		</flag>
 		<flag name="nghttp2">
 			DNS-over-HTTPS support

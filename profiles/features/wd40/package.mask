@@ -1,6 +1,11 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2024-11-29)
+# dev-python/translate-toolkit has Rust deps now.
+dev-python/translate-toolkit
+dev-python/unicode-segmentation-rs
+
 # Sam James <sam@gentoo.org> (2025-10-06)
 # Rewritten in Rust.
 >=app-misc/task-3
@@ -225,6 +230,7 @@ app-eselect/eselect-gnome-shell-extensions
 app-emacs/rg
 app-emacs/emacs-ipython-notebook
 app-crypt/yubikey-manager
+app-crypt/sequoia-chameleon-gnupg
 app-crypt/sequoia-sq
 app-crypt/sequoia-sqv
 app-crypt/certbot-apache
@@ -428,3 +434,6 @@ www-apps/radicale
 x11-themes/adwaita-icon-theme-legacy
 >=gui-libs/gtk-4.20.1
 >=dev-cpp/gtkmm-4.20
+>=gui-libs/libadwaita-1.8.2
+>=gnome-extra/gnome-user-share-48.2
+>=app-editors/gnome-text-editor-49.0

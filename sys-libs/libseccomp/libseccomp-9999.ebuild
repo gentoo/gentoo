@@ -8,7 +8,7 @@ DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit distutils-r1 multilib-minimal
+inherit distutils-r1 multilib-minimal multiprocessing
 
 DESCRIPTION="High level interface to Linux seccomp filter"
 HOMEPAGE="https://github.com/seccomp/libseccomp"
@@ -47,6 +47,9 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/libseccomp-2.6.0-python-shared.patch
 	"${FILESDIR}"/libseccomp-2.5.3-skip-valgrind.patch
+	"${FILESDIR}"/${P}-drop-bogus-test.patch
+	"${FILESDIR}"/${P}-aliasing.patch
+	"${FILESDIR}"/${P}-bounds.patch
 )
 
 src_prepare() {
@@ -57,6 +60,9 @@ src_prepare() {
 
 		eautoreconf
 	fi
+
+	# Silence noise when running Python tests
+	sed -i -e 's:$(pwd)/../src/python/build/lib\.\*:$(pwd):' tests/regression || die
 }
 
 multilib_src_configure() {
@@ -88,6 +94,17 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
+	local -x LIBSECCOMP_TSTCFG_JOBS="$(makeopts_jobs)"
+	emake -Onone check
+
+	if multilib_is_native_abi && use python ; then
+		distutils-r1_src_test
+	fi
+}
+
+python_test() {
+	local -x LIBSECCOMP_TSTCFG_MODE_LIST="python"
+
 	emake -Onone check
 }
 

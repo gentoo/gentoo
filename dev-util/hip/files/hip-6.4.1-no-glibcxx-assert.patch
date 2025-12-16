@@ -13,7 +13,7 @@ Bug: https://bugs.gentoo.org/955623
  #define __HIP_HAS_GET_PCH ${_pchStatus}\n
 +
 +// Workaround for https://gcc.gnu.org/bugzilla/show_bug.cgi?id=115740
-+#if defined(__has_include) && defined(__cplusplus) && defined(__HIP__)
++#if defined(__has_include) && defined(__cplusplus) && defined(__HIP__) && !defined(__HIPCC_RTC__)
 +  #if __has_include(\"bits/c++config.h\")
 +    #include <bits/c++config.h>
 +    #undef __glibcxx_assert

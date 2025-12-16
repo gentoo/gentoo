@@ -8,8 +8,8 @@ GENTOO_DEPEND_ON_PERL="no"
 PYTHON_COMPAT=( python3_{11..13} )
 USE_RUBY="ruby31 ruby32 ruby33"
 
-inherit autotools bash-completion-r1 db-use depend.apache flag-o-matic java-pkg-opt-2
-inherit libtool multilib multiprocessing perl-module prefix python-any-r1 ruby-single xdg-utils
+inherit autotools bash-completion-r1 db-use depend.apache flag-o-matic java-pkg-opt-2 libtool
+inherit multilib multiprocessing perl-module prefix python-any-r1 ruby-single toolchain-funcs xdg-utils
 
 MY_P="${P/_/-}"
 DESCRIPTION="Advanced version control system"
@@ -179,6 +179,7 @@ src_prepare() {
 }
 
 src_configure() {
+	export ac_cv_path_PKG_CONFIG="$(tc-getPKG_CONFIG)"
 	local myconf=(
 		--libdir="${EPREFIX}/usr/$(get_libdir)"
 		$(use_with apache2 apache-libexecdir)

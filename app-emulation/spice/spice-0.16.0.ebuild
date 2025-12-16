@@ -65,6 +65,10 @@ pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && python-any-r1_pkg_setup
 }
 
+PATCHES=(
+	"${FILESDIR}/${P}-c++20-adjust-designated-init.patch"
+)
+
 src_configure() {
 	# Prevent sandbox violations, bug #586560
 	# https://bugzilla.gnome.org/show_bug.cgi?id=744134

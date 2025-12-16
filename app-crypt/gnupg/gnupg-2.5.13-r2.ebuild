@@ -31,7 +31,7 @@ REQUIRED_USE="test? ( tofu )"
 # Existence of executables is checked during configuration.
 # Note: On each bump, update dep bounds on each version from configure.ac!
 DEPEND="
-	>=dev-libs/libassuan-3.0.0:=
+	>=dev-libs/libassuan-3.0.0-r1:=
 	>=dev-libs/libgcrypt-1.11.0:=
 	>=dev-libs/libgpg-error-1.56
 	>=dev-libs/libksba-1.6.3
@@ -148,8 +148,10 @@ my_src_configure() {
 	fi
 
 	if [[ ${CHOST} == *-solaris* ]] ; then
-		# https://dev.gnupg.org/T7368
-		export ac_cv_should_define__xopen_source=yes
+		# these somehow are treated as fatal, but Solaris has different
+		# types for getpeername with socket_t
+		append-flags -Wno-incompatible-pointer-types
+		append-flags -Wno-unused-label
 	fi
 
 	# bug #663142

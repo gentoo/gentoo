@@ -1,0 +1,22 @@
+From dab9aa1fa5ae245c2f8becf1396205f7655b1c01 Mon Sep 17 00:00:00 2001
+From: pfeatherstone <45853521+pfeatherstone@users.noreply.github.com>
+Date: Thu, 18 May 2023 13:03:15 +0100
+Subject: [PATCH] missing include (#2798)
+
+Co-authored-by: pf <pf@me>
+---
+ dlib/type_traits.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/dlib/type_traits.h b/dlib/type_traits.h
+index 8391050699..a5bb863278 100644
+--- a/dlib/type_traits.h
++++ b/dlib/type_traits.h
+@@ -10,6 +10,7 @@
+ */
+ 
+ #include <type_traits>
++#include <cstdint>
+ 
+ namespace dlib
+ {

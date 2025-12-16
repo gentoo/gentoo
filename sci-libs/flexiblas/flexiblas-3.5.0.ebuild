@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake fortran-2 multilib toolchain-funcs
+inherit cmake flag-o-matic fortran-2 multilib toolchain-funcs
 
 MY_P=flexiblas-release-v${PV}
 DESCRIPTION="A BLAS and LAPACK wrapper library with runtime exchangable backends"
@@ -19,7 +19,7 @@ S=${WORKDIR}/${MY_P}
 # BSD for vendored cblas/lapacke
 LICENSE="LGPL-3+ BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv x86"
 IUSE="blis index64 mkl openblas openmp system-blas tbb test"
 RESTRICT="!test? ( test )"
 
@@ -72,6 +72,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #963667
+	filter-flags -fno-semantic-interposition
+
 	BACKENDS=( $(usev blis) $(usev openblas) )
 	local extra=${BACKENDS[*]}
 	local libdir="${ESYSROOT}/usr/$(get_libdir)"

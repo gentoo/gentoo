@@ -42,7 +42,7 @@ else
 	S="${WORKDIR}"/${MY_P}
 
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="-* ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
+		KEYWORDS="-* amd64 ~arm arm64 ~ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
 	fi
 fi
 
@@ -67,6 +67,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.7.0-respect-flags.patch
 	"${FILESDIR}"/${PN}-3.15.0-Build-ldst_multiple-test-with-fno-pie.patch
 	"${FILESDIR}"/${PN}-3.21.0-glibc-2.34-suppressions.patch
+	"${FILESDIR}"/${P}-gcc16.patch
 )
 
 QA_CONFIG_IMPL_DECL_SKIP+=(

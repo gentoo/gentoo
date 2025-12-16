@@ -1,0 +1,24 @@
+From c2db2ec28aa8958f7041ae5cd03ddae9f44e5aa3 Mon Sep 17 00:00:00 2001
+From: Alexander Semke <alexander.semke@web.de>
+Date: Sun, 12 Oct 2025 13:54:57 +0200
+Subject: [PATCH] Added the missing include to fix the build.
+
+---
+ src/backend/worksheet/plots/cartesian/XYFourierFilterCurve.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/backend/worksheet/plots/cartesian/XYFourierFilterCurve.cpp b/src/backend/worksheet/plots/cartesian/XYFourierFilterCurve.cpp
+index 5957bb22ce..f6d0ed4b56 100644
+--- a/src/backend/worksheet/plots/cartesian/XYFourierFilterCurve.cpp
++++ b/src/backend/worksheet/plots/cartesian/XYFourierFilterCurve.cpp
+@@ -24,6 +24,7 @@ extern "C" {
+ #include "backend/nsl/nsl_sf_poly.h"
+ }
+ 
++#include <QElapsedTimer>
+ #include <QDebug> // qWarning()
+ #include <QIcon>
+ #include <QThreadPool>
+-- 
+GitLab
+

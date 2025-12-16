@@ -28,7 +28,6 @@ RDEPEND="app-arch/zip
 	contrib? (
 		app-arch/bzip2
 		app-text/hunspell:=
-		dev-libs/boost:=
 		media-libs/fontconfig
 		virtual/zlib:=
 	)"
@@ -36,6 +35,7 @@ RDEPEND="app-arch/zip
 DEPEND="
 	${RDEPEND}
 	x11-base/xorg-proto
+	contrib? ( dev-libs/boost:= )
 "
 
 PATCHES=( "${FILESDIR}/${P}-nodebug.diff" )

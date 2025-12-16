@@ -5,7 +5,7 @@ EAPI=8
 
 LUA_COMPAT=( lua5-4 )
 
-inherit desktop lua-single meson xdg
+inherit lua-single meson xdg
 
 DESCRIPTION="Multiplayer strategy game (Civilization Clone)"
 HOMEPAGE="https://www.freeciv.org/ https://github.com/freeciv/freeciv/"
@@ -214,9 +214,7 @@ src_install() {
 			-o -name 'freeciv-ruleup.6' -o -name 'freeciv-server.6' \) -mindepth 1 -delete || die
 	else
 		# sdl client needs some special handling
-		if use sdl ; then
-			make_desktop_entry freeciv-sdl "Freeciv (SDL)" freeciv-client
-		else
+		if ! use sdl ; then
 			rm "${ED}"/usr/share/man/man6/freeciv-sdl2.6 || die
 		fi
 	fi

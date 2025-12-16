@@ -143,7 +143,7 @@ src_configure() {
 
 src_test() {
 	# See http://storaged.org/libblockdev/ch03.html
-	# Largest subset which doesn't require root priviledges
+	# Largest subset which doesn't require root privileges
 	"${EPYTHON}" tests/run_tests.py --include-tags extradeps sourceonly || die
 }
 

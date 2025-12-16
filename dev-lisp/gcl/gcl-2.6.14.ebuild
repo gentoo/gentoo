@@ -29,6 +29,7 @@ DEPEND="${RDEPEND}
 src_configure() {
 	filter-lto # bug #931082
 	strip-flags
+	append-cflags -std=gnu17 # bug #947758
 	filter-flags -fstack-protector -fstack-protector-all
 	# breaks linking on multiple defined syms
 	#append-cflags $(test-flags-CC -fgnu89-inline)

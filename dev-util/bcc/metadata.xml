@@ -8,6 +8,9 @@
   <maintainer type="person">
     <email>zmedico@gentoo.org</email>
   </maintainer>
+  <use>
+    <flag name="debuginfod">Enable debuginfod support via <pkg>dev-libs/elfutils</pkg> libdebuginfod</flag>
+  </use>
   <upstream>
     <remote-id type="github">iovisor/bcc</remote-id>
   </upstream>

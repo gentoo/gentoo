@@ -23,11 +23,6 @@ RDEPEND="
 	>=dev-python/sphinx-6[${PYTHON_USEDEP}]
 	>=dev-python/sphinxcontrib-jquery-4[${PYTHON_USEDEP}]
 "
-BDEPEND="
-	test? (
-		dev-python/readthedocs-sphinx-ext[${PYTHON_USEDEP}]
-	)
-"
 
 distutils_enable_tests pytest
 

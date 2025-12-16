@@ -42,6 +42,8 @@ src_configure() {
 
 	# Using RelWithDebInfo bypasses upstream's default (bug #948388)
 	append-flags -fno-strict-aliasing
+	# Workaround for bug #953466
+	append-cflags -std=gnu17
 
 	local mycmakeargs=(
 		-DFORCE_X11=$(usex !wayland)

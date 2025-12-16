@@ -113,7 +113,7 @@ PATCHES=(
 	# Restore Java viewer
 	"${FILESDIR}"/${PN}-1.11.0-install-java-viewer.patch
 	"${FILESDIR}"/${PN}-1.14.0-xsession-path.patch
-	"${FILESDIR}"/${PN}-1.15.90-disable-server-and-pam.patch
+	"${FILESDIR}"/${PN}-1.15.90-r2-disable-server-and-pam.patch
 	"${FILESDIR}"/${PN}-1.14.1-pam.patch
 )
 

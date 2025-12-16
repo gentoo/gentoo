@@ -39,6 +39,10 @@ REQUIRED_USE="
 	amd64? ( cpu_flags_x86_sse4_2 )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.4.12-build.patch
+)
+
 src_prepare() {
 	local sedargs=(
 		# Respect user -m flags (march/mtune)

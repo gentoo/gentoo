@@ -1,0 +1,11 @@
+--- a/gpr/src/gpr-compilation-process.adb	2025-12-02 20:16:02.856971670 +0100
++++ b/gpr/src/gpr-compilation-process.adb	2025-12-02 20:16:18.920776145 +0100
+@@ -41,7 +41,7 @@
+    --  A set of key=value
+ 
+    package Prj_Maps is new Containers.Indefinite_Ordered_Maps
+-     (String, Env_Maps.Map, Env_Maps."<", Env_Maps."=");
++     (String, Env_Maps.Map, "<", Env_Maps."=");
+    --  A set of project+language=map
+ 
+    function "<" (Left, Right : Id) return Boolean is

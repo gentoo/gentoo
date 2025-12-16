@@ -1,0 +1,31 @@
+diff --git a/Makefile b/Makefile
+index d7ef2f9..055b746 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,7 @@
+ VERSION=1.1
+ 
+ CPPFLAGS=-DVERSION=\"${VERSION}\" -D_GNU_SOURCE
+-CFLAGS+=-MD -Wall -Wextra -g -std=c99 -O3 -pedantic -Ideps -Werror=vla
++CFLAGS+=-MD -Wall -Wextra -std=c99 -pedantic -Ideps -Werror=vla
+ PREFIX?=/usr/local
+ MANDIR?=$(PREFIX)/share/man
+ BINDIR?=$(PREFIX)/bin
+@@ -19,7 +19,7 @@ TESTOBJECTS=test/fzytest.c test/test_properties.c test/test_choices.c test/test_
+ all: fzy
+ 
+ test/fzytest: $(TESTOBJECTS)
+-	$(CC) $(CFLAGS) $(CCFLAGS) -Isrc -o $@ $(TESTOBJECTS) $(LIBS)
++	$(CC) $(CFLAGS) $(CCFLAGS) $(LDFLAGS) -Isrc -o $@ $(TESTOBJECTS) $(LIBS)
+ 
+ acceptance: fzy
+ 	cd test/acceptance && bundle --quiet && bundle exec ruby acceptance_test.rb
+@@ -29,7 +29,7 @@ check: test/fzytest
+ 	$(DEBUGGER) ./test/fzytest
+ 
+ fzy: $(OBJECTS)
+-	$(CC) $(CFLAGS) $(CCFLAGS) -o $@ $(OBJECTS) $(LIBS)
++	$(CC) $(CFLAGS) $(CCFLAGS) $(LDFLAGS) -o $@ $(OBJECTS) $(LIBS)
+ 
+ %.o: %.c config.h
+ 	$(CC) $(CPPFLAGS) $(CFLAGS) -c -o $@ $<

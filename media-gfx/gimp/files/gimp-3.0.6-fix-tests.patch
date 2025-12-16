@@ -1,0 +1,28 @@
+https://gitlab.gnome.org/GNOME/gimp/-/issues/14822
+https://gitlab.gnome.org/GNOME/gimp/-/issues/15257
+https://gitlab.gnome.org/GNOME/gimp/-/merge_requests/2566
+https://gitlab.gnome.org/GNOME/gimp/-/commit/2fd12847496a9a242ca8edc448d400d3660b8009
+https://gitlab.gnome.org/GNOME/gimp/-/commit/93869f43cf3f489ed5aa35ce018f6f4edbbdcb67
+
+From 2fd12847496a9a242ca8edc448d400d3660b8009 Mon Sep 17 00:00:00 2001
+From: Jehan <jehan@girinstud.io>
+Date: Thu, 4 Dec 2025 23:47:00 +0100
+Subject: [PATCH] Issue #15257: test failing because gegl:bevel doesn't see GPL
+ ops.
+
+--- a/app/tests/tests.c
++++ b/app/tests/tests.c
+@@ -162,6 +162,10 @@ gimp_init_for_gui_testing_internal (gboolean  show_gui,
+ 
+   /* from main() */
+   gimp_log_init ();
++  g_object_set (gegl_config (),
++                "use-opencl",          FALSE,
++                "application-license", "GPL3",
++                NULL);
+   gegl_init (NULL, NULL);
+ 
+   /* Introduce an error margin for positions written to sessionrc */
+-- 
+GitLab
+

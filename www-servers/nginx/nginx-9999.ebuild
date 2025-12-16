@@ -26,3 +26,7 @@ NGINX_MISC_FILES=(
 )
 
 inherit nginx
+
+PATCHES=(
+	"${FILESDIR}/${PN}-httpoxy-mitigation-r1.patch"
+)

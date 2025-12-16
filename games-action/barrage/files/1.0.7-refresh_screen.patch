@@ -1,0 +1,51 @@
+Description: Fix incorrect refresh_screen() calls
+Author: Adrian Bunk <bunk@debian.org>
+Bug-Debian: https://bugs.debian.org/1096357
+
+--- barrage-1.0.7.orig/src/main.c
++++ barrage-1.0.7/src/main.c
+@@ -301,7 +301,7 @@ static void fade_screen( int type, int t
+ 		SDL_FillRect( screen, 0, 0x0 );
+ 		SDL_SetAlpha( buffer, SDL_SRCALPHA | SDL_RLEACCEL, (int)alpha );
+ 		SDL_BlitSurface( buffer, 0, screen, 0 );
+-		refresh_screen(screen);
++		refresh_screen();
+ 		if (delay>0) SDL_Delay(10);
+ 	}
+ 
+@@ -311,7 +311,7 @@ static void fade_screen( int type, int t
+ 		SDL_BlitSurface( buffer, 0, screen, 0 );
+ 	else
+ 		SDL_FillRect( screen, 0, 0x0 );
+-	refresh_screen(screen);
++	refresh_screen();
+ 	SDL_FreeSurface( buffer );
+ }
+ 
+@@ -529,7 +529,7 @@ static void game_finalize( int check_cha
+ 			sprintf( buf, "Topgunner #%i", rank+1 );
+ 			SDL_WriteTextCenter( ft_chart, screen, 320, 230, buf );
+ 			SDL_WriteTextCenter( ft_chart, screen, 320, 290, "Sign here:" );
+-			refresh_screen(screen);
++			refresh_screen();
+ 			SDL_EnterTextCenter( ft_chart, screen, 320, 320, 18, player_name );
+ 			chart_add_entry( player_name, player_score );
+ 		}
+@@ -538,7 +538,7 @@ static void game_finalize( int check_cha
+ 					ft_chart, screen, 320, 290, "Not enough to be a topgunner!" );
+ 			SDL_WriteTextCenter( 
+ 					ft_chart, screen, 320, 320, "Go, try again! Dismissed." );
+-			refresh_screen(screen);
++			refresh_screen();
+ 			wait_for_input();
+ 		}
+ 		chart_save();
+@@ -635,7 +635,7 @@ static void main_loop()
+ 		draw_cursor( screen, x, y );
+ 		
+ 		/* udpate screen */
+-		refresh_screen(screen);
++		refresh_screen();
+ 		frames++;
+ 
+ 		/* end game? */

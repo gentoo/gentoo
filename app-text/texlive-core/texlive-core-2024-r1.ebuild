@@ -133,7 +133,7 @@ SRC_URI+=" )"
 S="${WORKDIR}/${MY_P}"
 LICENSE="BSD CC-BY-SA-4.0 GPL-1+ GPL-2 GPL-2+ GPL-3+ MIT TeX-other-free"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm ~loong ppc ppc64 ~riscv x86"
 IUSE="cjk X doc source tk +luajittex xetex xindy"
 
 TEXMF_PATH=/usr/share/texmf-dist
@@ -254,6 +254,11 @@ src_configure() {
 	# I'm fairly sure it just hides a real bug in pdftex, keeping 928096
 	# thus open, but hey, at least it's not a regression...
 	append-cflags -Wno-incompatible-pointer-types
+
+	# bug #966834
+	# running reautoconf would also fix the issue; however, there are several
+	# configure scripts, so adding the flag is a much faster approach.
+	append-cxxflags $(test-flags-CXX -std=gnu++17)
 
 	# It fails on alpha without this
 	use alpha && append-ldflags "-Wl,--no-relax"

@@ -3,7 +3,6 @@
 
 # @ECLASS: tree-sitter-grammar.eclass
 # @MAINTAINER:
-# Matthew Smith <matthew@gentoo.org>
 # Arthur Zamarin <arthurzam@gentoo.org>
 # @AUTHOR:
 # Matthew Smith <matthew@gentoo.org>

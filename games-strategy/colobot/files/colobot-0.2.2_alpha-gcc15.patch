@@ -1,0 +1,45 @@
+From 1561854b03500d39955c66971c9c98de1937d7e6 Mon Sep 17 00:00:00 2001
+From: suve <veg@svgames.pl>
+Date: Thu, 16 Jan 2025 16:33:33 +0100
+Subject: [PATCH] Check if SDL_main is in use
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The main() function of colobot-app is declared as extern "C" to prevent
+name mangling. This is required because on some platforms, SDL2 declares
+its own main() function and defines a macro that renames the user's main
+to SDL_main; in which case, name mangling may cause linking failures.
+
+However, when building for platforms where this is not the case,
+gcc15 complains that specifying linkage for main is not allowed.
+> error: cannot declare ‘::main’ with a linkage
+>        specification [-Wpedantic]
+
+This commit wraps the extern block in #ifdefs that check
+if the main -> SDL_main macro is in use.
+--- a/src/app/main.cpp
++++ b/src/app/main.cpp
+@@ -94,10 +94,14 @@ The current layout is the following:
+  - src/script - link with the CBot library
+ */
+ 
+-//! Entry point to the program
++// On *some* platforms, SDL declares a macro which renames main to SDL_main.
++// If that's the case, use "extern C" to prevent name mangling.
++#ifdef main
+ extern "C"
+ {
++#endif
+ 
++//! Entry point to the program
+ int main(int argc, char *argv[])
+ {
+     CLogger logger; // single instance of logger
+@@ -176,4 +180,6 @@ int main(int argc, char *argv[])
+     return code;
+ }
+ 
++#ifdef main
+ } // extern "C"
++#endif

@@ -161,10 +161,18 @@ src_test() {
 	QT_QPA_PLATFORM=offscreen cmake_src_test
 }
 
+pkg_preinst() {
+	xdg_pkg_preinst
+
+	if ! has_version "media-sound/musescore" && ! use pipewire; then
+		show_pipewire_warning=1
+	fi
+}
+
 pkg_postinst() {
 	xdg_pkg_postinst
 
-	if has_version "media-sound/musescore" || ! use pipewire; then
+	if [[ -n ${show_pipewire_warning} ]]; then
 		ewarn "PipeWire support is disabled but it's the default audio driver anyway!"
 		ewarn "Check your configuration."
 	fi

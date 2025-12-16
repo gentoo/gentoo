@@ -43,6 +43,7 @@ RDEPEND="
 
 BDEPEND="
 	app-arch/xz-utils
+	dev-lang/perl
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 	test? ( dev-libs/check )

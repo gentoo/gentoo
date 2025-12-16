@@ -14,7 +14,7 @@ SRC_URI+=" https://github.com/gentoo-crate-dist/${PN}/releases/download/v${PV}/$
 
 LICENSE="Apache-2.0 Boost-1.0 MIT Unicode-DFS-2016 Unlicense"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~x86"
 
 QA_FLAGS_IGNORED="/usr/bin/${PN}"
 

@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2025-11-30)
+# sci-libs/blis does not have stable keywords
+sci-libs/flexiblas blis
+
 # Sam James <sam@gentoo.org> (2025-04-28)
 # Needs sys-cluster/ceph which isn't marked stable here
 sys-block/fio rbd
@@ -133,5 +137,4 @@ x11-base/xorg-drivers input_devices_elographics input_devices_joystick input_dev
 app-admin/syslog-ng spoof-source
 app-text/xmlto latex
 sys-auth/pambase pam_krb5 pam_ssh
-sys-block/thin-provisioning-tools test
 sys-devel/distcc gssapi

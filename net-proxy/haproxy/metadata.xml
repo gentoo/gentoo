@@ -22,6 +22,7 @@
 		<flag name="net_ns">Enable network namespace support (CONFIG_NET_NS)</flag>
 		<flag name="pcre-jit">Use JIT support for PCRE</flag>
 		<flag name="prometheus-exporter">Also build the prometheus exporter</flag>
+		<flag name="quic">Enable support for QUIC (RFC 9000); a UDP-based protocol intended to replace TCP</flag>
 		<flag name="slz">Use <pkg>dev-libs/libslz</pkg> compression library</flag>
 		<flag name="tools">Install additional tools (halog, iprange)</flag>
 		<flag name="51degrees">Device Detection using 51 Degrees</flag>

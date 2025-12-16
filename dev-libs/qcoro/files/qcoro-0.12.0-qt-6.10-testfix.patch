@@ -1,0 +1,23 @@
+From bc04b0f5ba37d6c71f9817fc44636ee7ec532fc6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Vr=C3=A1til?= <dvratil@kde.org>
+Date: Wed, 10 Dec 2025 11:11:09 +0100
+Subject: [PATCH] Fix QCoroNetworkReply test on Qt 6.10
+
+---
+ tests/qcoronetworkreply.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/tests/qcoronetworkreply.cpp b/tests/qcoronetworkreply.cpp
+index 3623a469..aa94a1af 100644
+--- a/tests/qcoronetworkreply.cpp
++++ b/tests/qcoronetworkreply.cpp
+@@ -175,7 +175,8 @@ class QCoroNetworkReplyTest : public QCoro::TestObject<QCoroNetworkReplyTest> {
+         auto reply = co_await nam.get(request);
+         QCORO_VERIFY(reply != nullptr);
+         QCORO_VERIFY(reply->isFinished());
+-        QCORO_COMPARE(reply->error(), QNetworkReply::OperationCanceledError);
++        // Seems to depend on the Qt version which error we get.
++        QCORO_VERIFY(reply->error() == QNetworkReply::TimeoutError || reply->error() == QNetworkReply::OperationCanceledError);
+         // QNAM is destroyed here and so is all its associated state, which could
+         // crash (or cause invalid memory access)
+     }

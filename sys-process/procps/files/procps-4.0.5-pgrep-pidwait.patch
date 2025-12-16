@@ -1,0 +1,186 @@
+From 66a37d3abf14dfd450b4ded7f1ccb0506699e7d1 Mon Sep 17 00:00:00 2001
+Message-ID: <66a37d3abf14dfd450b4ded7f1ccb0506699e7d1.1763650309.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Thu, 20 Nov 2025 14:43:13 +0000
+Subject: [PATCH] build-sys: fix option handling
+
+Explicit --enable-pidwait wasn't setting ENABLE_PIDWAIT. Fix that by
+moving the ENABLE_PIDWAIT handling outside of AC_ARG_ENABLE.
+
+While here, fix all the other AC_* calls to correctly set enable_XYZ or
+with_XYZ to avoid other problems, otherwise they'd be left unset if
+enabled rather than set to the correct value (yes or no).
+---
+ configure.ac | 43 ++++++++++++++++++++++---------------------
+ 1 file changed, 22 insertions(+), 21 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index fe5ac458..97033143 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -181,7 +181,7 @@ fi
+ AC_SUBST([WITH_COLORWATCH])
+ AC_ARG_ENABLE([colorwatch],
+   AS_HELP_STRING([--enable-colorwatch], [enable watch to use color by default]),
+-  [], [enable_colorwatch=no]
++  [enable_colorwatch=$enableval], [enable_colorwatch=no]
+ )
+ if test "$enable_colorwatch" = "yes"; then
+   AC_DEFINE([WITH_COLORWATCH], [1], [Enable color watch by default])
+@@ -191,7 +191,7 @@ fi
+ 
+ AC_ARG_ENABLE([libselinux],
+   AS_HELP_STRING([--enable-libselinux], [enable libselinux]),
+-  [], [enable_libselinux=no]
++  [enable_libselinux=$enableval], [enable_libselinux=no]
+ )
+ if test "$enable_libselinux" = "yes"; then
+   AC_DEFINE([ENABLE_LIBSELINUX], [1], [Enable libselinux])
+@@ -223,7 +223,7 @@ AC_SUBST([HARDEN_LDFLAGS])
+ # Optional packages - AC_ARG_WITH
+ AC_ARG_WITH([ncurses],
+   AS_HELP_STRING([--without-ncurses], [build only applications not needing ncurses]),
+-  [],
++  [with_ncurses=$withval],
+   [with_ncurses=yes]
+ )
+ if test "x$with_ncurses" = xno; then
+@@ -267,7 +267,7 @@ fi
+ 
+ AC_ARG_WITH([systemd],
+   [AS_HELP_STRING([--with-systemd], [enable systemd support])],
+-  [], [with_systemd=no]
++  [with_systemd=$withval], [with_systemd=no]
+ )
+ AS_IF([test "x$with_systemd" != "xno"], [
+   PKG_CHECK_MODULES([SYSTEMD], [libsystemd],,
+@@ -286,7 +286,7 @@ AM_CONDITIONAL([WITH_SYSTEMD], [test x$with_systemd != xno])
+ 
+ AC_ARG_WITH([elogind],
+   [AS_HELP_STRING([--with-elogind], [enable elogind support])],
+-  [], [with_elogind=no]
++  [with_elogind=$withval], [with_elogind=no]
+ )
+ # Do not allow elogind if systemd is wanted and found
+ AS_IF([test "x$with_systemd" != "xno"], [with_elogind=no])
+@@ -300,7 +300,7 @@ AM_CONDITIONAL([WITH_ELOGIND], [test x$with_elogind != xno])
+ # AC_ARG_ENABLEs
+ AC_ARG_ENABLE([pidof],
+   AS_HELP_STRING([--disable-pidof], [do not build pidof]),
+-  [], [enable_pidof=yes]
++  [enable_pidof=$enableval], [enable_pidof=yes]
+ )
+ AM_CONDITIONAL(BUILD_PIDOF, test "x$enable_pidof" = xyes)
+ 
+@@ -308,11 +308,12 @@ AM_CONDITIONAL(BUILD_PIDOF, test "x$enable_pidof" = xyes)
+ # Cannot use AC_CHECK_FUNC as it (incorrectly) passes with pidfd_open missing
+ AC_ARG_ENABLE([pidwait],
+   AS_HELP_STRING([--disable-pidwait], [do not build pidwait]),
+-  [], [
+-    enable_pidwait=yes
+-    AC_DEFINE(ENABLE_PIDWAIT, 1, [enable pidwait])
+-  ]
++  [enable_pidwait=$enableval], [enable_pidwait=yes]
+ )
++
++AS_IF([test "x$enable_pidwait" = xyes], [
++  AC_DEFINE(ENABLE_PIDWAIT, 1, [enable pidwait])
++], [])
+ AM_CONDITIONAL(BUILD_PIDWAIT, test "x$enable_pidwait" = xyes)
+ AC_MSG_CHECKING([for pidfd_open()])
+ AC_LINK_IFELSE([AC_LANG_PROGRAM([[#include <sys/pidfd.h>]], [[pidfd_open(1,1)]])],
+@@ -346,12 +347,12 @@ AC_LINK_IFELSE(
+ 
+ AC_ARG_ENABLE([kill],
+   AS_HELP_STRING([--disable-kill], [do not build kill]),
+-  [], [enable_kill=yes]
++  [enable_kill=$enableval], [enable_kill=yes]
+ )
+ AM_CONDITIONAL(BUILD_KILL, test "x$enable_kill" = xyes)
+ AC_ARG_ENABLE([w],
+   AS_HELP_STRING([--disable-w], [do not build w]),
+-  [], [enable_w=yes]
++  [enable_w=$enableval], [enable_w=yes]
+ )
+ AM_CONDITIONAL(BUILD_W, test "x$enable_w" = xyes)
+ 
+@@ -360,19 +361,19 @@ AM_CONDITIONAL(CYGWIN, test "x$host_os" = xcygwin)
+ 
+ AC_ARG_ENABLE([skill],
+   AS_HELP_STRING([--enable-skill], [build skill and snice]),
+-  [], [enable_skill=no]
++  [enable_skill=$enableval], [enable_skill=no]
+ )
+ AM_CONDITIONAL(BUILD_SKILL, test "x$enable_skill" = xyes)
+ 
+ AC_ARG_ENABLE([examples],
+   AS_HELP_STRING([--enable-examples], [add example files to installation]),
+-  [], [enable_examples=no]
++  [enable_examples=$enableval], [enable_examples=no]
+ )
+ AM_CONDITIONAL(EXAMPLE_FILES, test "x$enable_examples" = xyes)
+ 
+ AC_ARG_ENABLE([sigwinch],
+   AS_HELP_STRING([--enable-sigwinch], [reduce impact of x-windows resize operations on top]),
+-  [], [enable_sigwinch=no]
++  [enable_sigwinch=$enableval], [enable_sigwinch=no]
+ )
+ if test "x$enable_sigwinch" = xyes; then
+   AC_DEFINE(SIGNALS_LESS, 1, [reduce impact of x-windows resize operations on top])
+@@ -380,7 +381,7 @@ fi
+ 
+ AC_ARG_ENABLE([wide-percent],
+   AS_HELP_STRING([--enable-wide-percent], [provide extra precision under %CPU and %MEM for top]),
+-  [], [enable_wide_percent=no]
++  [enable_wide_percent=$enableval], [enable_wide_percent=no]
+ )
+ if test "x$enable_wide_percent" = xyes; then
+   AC_DEFINE(BOOST_PERCNT, 1, [provide extra precision under %CPU and %MEM for top])
+@@ -388,7 +389,7 @@ fi
+ 
+ AC_ARG_ENABLE([wide-memory],
+   AS_HELP_STRING([--enable-wide-memory], [provide extra precision under memory fields for top]),
+-  [], [enable_wide_memory=no]
++  [enable_wide_memory=$enableval], [enable_wide_memory=no]
+ )
+ if test "x$enable_wide_memory" = xyes; then
+   AC_DEFINE(BOOST_MEMORY, 1, [provide extra precision under memory fields for top])
+@@ -396,7 +397,7 @@ fi
+ 
+ AC_ARG_ENABLE([modern-top],
+   AS_HELP_STRING([--disable-modern-top], [disable new startup defaults, return to original top]),
+-  [], [enable_modern_top=yes]
++  [enable_modern_top=$enableval], [enable_modern_top=yes]
+ )
+ if test "x$enable_modern_top" = xno; then
+   AC_DEFINE(ORIG_TOPDEFS, 1, [disable new startup defaults, return to original top])
+@@ -405,7 +406,7 @@ fi
+ DL_LIB=
+ AC_ARG_ENABLE([numa],
+   AS_HELP_STRING([--disable-numa], [disable NUMA/Node support in top]),
+-  [], [enable_numa=yes]
++  [enable_numa=$enableval], [enable_numa=yes]
+ )
+ if test "x$enable_numa" = xno; then
+   AC_DEFINE([NUMA_DISABLE], [1], [disable NUMA/Node support in top])
+@@ -420,7 +421,7 @@ AC_SUBST([DL_LIB])
+ 
+ AC_ARG_ENABLE([w-from],
+   AS_HELP_STRING([--enable-w-from], [enable w from field by default]),
+-  [], [enable_w_from=no]
++  [enable_w_from=$enableval], [enable_w_from=no]
+ )
+ if test "x$enable_w_from" = xyes; then
+   AC_DEFINE(W_SHOWFROM, 1, [enable w from field by default])
+@@ -428,7 +429,7 @@ fi
+ 
+ AC_ARG_ENABLE([whining],
+   AS_HELP_STRING([--disable-whining], [do not print unnecessary warnings (slackware-ism)]),
+-  [], [enable_whining=yes]
++  [enable_whining=$enableval], [enable_whining=yes]
+ )
+ if test "x$enable_whining" = xyes; then
+   AC_DEFINE(BUILD_WITH_WHINE, 1, [should extra warnings be printed (slackware-ism)])
+-- 
+2.52.0
+

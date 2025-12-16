@@ -41,6 +41,7 @@ BDEPEND="
 		${PYTHON_DEPS}
 		sys-apps/dbus
 	)
+	dev-util/glib-utils
 "
 
 PATCHES=(

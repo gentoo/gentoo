@@ -4,6 +4,14 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Eli Schwartz <eschwartz@gentoo.org> (2025-11-27)
+# Needs dev-python/mypy for mypyc, not keyworded here
+dev-python/charset-normalizer native-extensions
+
+# Ionen Wolkens <ionen@gentoo.org> (2025-11-20)
+# Needs llvm-core/clang which is not keyworded here
+dev-qt/qttools qdoc
+
 # Alfred Wingate <parona@protonmail.com> (2025-10-20)
 # sys-libs/libnvme is not keyworded here
 net-misc/networkmanager nbft
@@ -362,8 +370,8 @@ media-sound/vorbis-tools kate
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-14)
 # dependencies not keyworded
-media-video/ffmpeg dav1d libaribb24 libtesseract vidstab
-media-video/ffmpeg-compat dav1d libaribb24 libtesseract vidstab
+media-video/ffmpeg dav1d libaribb24 ocr vidstab
+media-video/ffmpeg-compat dav1d libaribb24 ocr vidstab
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
 # media-gfx/nvidia-texture-tools, media-libs/allegro not keyworded on hppa
@@ -444,8 +452,8 @@ media-video/ffmpeg libilbc zimg
 media-video/ffmpeg-compat libilbc zimg
 
 # Justin Lecher <jlec@gentoo.org> (2017-01-15)
-# unkeyworded rev deps
-dev-games/openscenegraph gdal las
+# unkeyworded rev dep
+dev-games/openscenegraph gdal
 
 # Jeroen Roovers <jer@gentoo.org> (2016-12-28)
 # "#error Unsupported architecture"

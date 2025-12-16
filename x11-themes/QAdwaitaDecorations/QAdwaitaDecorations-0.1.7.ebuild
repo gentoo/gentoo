@@ -20,6 +20,11 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="${RDEPEND}"
 
+PATCHES=(
+	# https://github.com/FedoraQt/QAdwaitaDecorations/issues/87
+	"${FILESDIR}/${P}-qt6.10.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DUSE_QT6=true

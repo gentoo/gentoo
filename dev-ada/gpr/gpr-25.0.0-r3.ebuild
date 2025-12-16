@@ -3,7 +3,7 @@
 
 EAPI=8
 
-ADA_COMPAT=( gcc_{14..15} )
+ADA_COMPAT=( gcc_{14..16} )
 PYTHON_COMPAT=( python3_{10..13} )
 
 inherit ada python-any-r1 multiprocessing
@@ -37,6 +37,8 @@ BDEPEND="test? (
 	')
 	dev-ada/gnatmem
 )"
+
+PATCHES=( "${FILESDIR}"/${P}-gcc16.patch )
 
 python_check_deps() {
 	use test || return 0

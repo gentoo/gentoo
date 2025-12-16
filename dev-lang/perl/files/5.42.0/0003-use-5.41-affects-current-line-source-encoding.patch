@@ -1,0 +1,52 @@
+From 0e0b91d4881226a5532f166662a27ba58f4f718b Mon Sep 17 00:00:00 2001
+Message-ID: <0e0b91d4881226a5532f166662a27ba58f4f718b.1763833678.git.sam@gentoo.org>
+In-Reply-To: <7dbc795b44eb54d41e1c6b30d8796525d65d52b5.1763833678.git.sam@gentoo.org>
+References: <7dbc795b44eb54d41e1c6b30d8796525d65d52b5.1763833678.git.sam@gentoo.org>
+From: Yitzchak Scott-Thoennes <sthoenna@gmail.com>
+Date: Fri, 31 Oct 2025 05:05:33 -0600
+Subject: [PATCH 3/4] 'use 5.41' affects current line source::encoding
+
+Previously it didn't take effect until subsequent lines
+
+Fixes #23881
+
+(cherry picked from commit 5d62050d173f59a343236c6259b5c821d58268d2)
+---
+ lib/source/source_encoding.t | 7 ++++++-
+ op.c                         | 1 +
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/lib/source/source_encoding.t b/lib/source/source_encoding.t
+index a08489637e..a11b1ca45b 100644
+--- a/lib/source/source_encoding.t
++++ b/lib/source/source_encoding.t
+@@ -44,8 +44,13 @@ if (fresh_perl_like(<<~'EOT',
+                     EOT
+                 "",
+                 { }, "source encoding can be turned off");
++    fresh_perl_like(<<~'EOT',
++                 use v5.41.0; my $var = "¶";
++                 EOT
++                qr/Use of non-ASCII character 0x[[:xdigit:]]{2} illegal/,
++                { }, ">= 'use statement affects rest of current line'");
+ }
+-else { # Above test depends on the previous one; if that failed, use this
++else { # Above tests depend on the previous one; if that failed, use this
+        # alternate one
+     fresh_perl_is(<<~'EOT',
+                     use source::encoding 'ascii';
+diff --git a/op.c b/op.c
+index 3c316ea8b4..f51eeb3945 100644
+--- a/op.c
++++ b/op.c
+@@ -8341,6 +8341,7 @@ Perl_utilize(pTHX_ int aver, I32 floor, OP *version, OP *idop, OP *arg)
+         else {
+             PL_hints &= ~HINT_ASCII_ENCODING;
+         }
++        notify_parser_that_encoding_changed();
+ 
+         PL_prevailing_version = shortver;
+     }
+-- 
+2.52.0
+

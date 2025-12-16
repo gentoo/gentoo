@@ -62,6 +62,7 @@ RDEPEND="
 	${DEPEND}
 "
 BDEPEND="
+	virtual/pkgconfig
 	test? (
 		dev-lang/python:3.9
 		dev-lang/python:3.10

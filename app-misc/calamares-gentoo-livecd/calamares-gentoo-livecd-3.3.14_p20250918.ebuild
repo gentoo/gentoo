@@ -13,7 +13,7 @@ SRC_URI="https://github.com/StefanCristian/${PN}/archive/refs/tags/${PV}.tar.gz 
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
 	app-admin/calamares[livecd(-)]

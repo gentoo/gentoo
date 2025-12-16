@@ -1,6 +1,18 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# James Le Cuirot <chewi@gentoo.org> (2025-11-22)
+# gnuplot is not keyworded or tested.
+net-misc/ntpsec ntpviz
+
+# James Le Cuirot <chewi@gentoo.org> (2025-11-22)
+# The imagemagick-tools[svg] dependency is currently problematic.
+app-alternatives/gpg freepg
+
+# James Le Cuirot <chewi@gentoo.org> (2025-11-21)
+# GTK is not keyworded or tested.
+gnome-base/librsvg tools
+
 # James Le Cuirot <chewi@gentoo.org> (2024-07-13)
 # These tests pass, but the net-misc/memcached tests do not, so we should not
 # keyword memcached-related packages such as dev-python/pylibmc.
@@ -29,8 +41,8 @@ app-text/highlight gui
 net-misc/openvswitch unwind
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2022-05-29)
-# No TMP here, no xkb here
-sys-apps/systemd tpm xkb
+# No xkb here
+sys-apps/systemd xkb
 
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
 # Untested useflag on other arches, needs keywording
@@ -60,16 +72,9 @@ dev-vcs/git doc
 media-gfx/graphviz pdf
 
 # James Le Cuirot <chewi@gentoo.org> (2021-09-19)
-# Requires Rust, which is currently unavailable on m68k.
-app-editors/emacs svg
-media-gfx/graphviz svg
-media-gfx/imagemagick svg
-
-# James Le Cuirot <chewi@gentoo.org> (2021-09-19)
 # Requires Ruby, which is broken on m68k.
 app-text/htmltidy test
 net-misc/chrony html
-sys-block/thin-provisioning-tools test
 
 # James Le Cuirot <chewi@gentoo.org> (2021-09-19)
 # Requires texlive and friends to be keyworded.

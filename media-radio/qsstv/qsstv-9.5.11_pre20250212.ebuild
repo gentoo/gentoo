@@ -6,7 +6,7 @@ EAPI=8
 inherit qmake-utils
 
 DESCRIPTION="Amateur radio SSTV software"
-HOMEPAGE="http://users.telenet.be/on4qz/"
+HOMEPAGE="https://www.qsl.net/o/on4qz/"
 SRC_URI="https://dev.gentoo.org/~tomjbe/distfiles/${P}.tgz"
 
 LICENSE="GPL-3"

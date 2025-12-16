@@ -27,7 +27,8 @@
     <flag name="rendering">Building Redering modules</flag>
     <flag name="tbb">Use <pkg>dev-cpp/tbb</pkg> to handle smp support</flag>
     <flag name="views">Building Views modules</flag>
-    <flag name="vtkm">Build the vtkm accelerations modules</flag>
+    <flag name="vtkm" restrict="&lt;sci-libs/vtk-9.5">Build the vtkm accelerations modules</flag>
+    <flag name="vtkm" restrict="&gt;=sci-libs/vtk-9.5">Build the viskores accelerations modules</flag>
     <flag name="web">Install web component</flag>
   </use>
   <upstream>

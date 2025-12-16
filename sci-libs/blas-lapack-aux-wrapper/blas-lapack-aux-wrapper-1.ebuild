@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv x86"
 IUSE="index64 test"
 RESTRICT="!test? ( test )"
 
@@ -40,6 +40,11 @@ BDEPEND="
 QA_FLAGS_IGNORED=".*"
 
 src_configure() {
+	# We rely on some specific linker features (bug #965199)
+	if ! tc-ld-is-bfd && ! tc-ld-is-lld; then
+		tc-ld-force-bfd
+	fi
+
 	local emesonargs=(
 		-Dilp64=$(usex index64 true false)
 	)

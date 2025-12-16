@@ -83,6 +83,7 @@ RDEPEND+="
 	!sys-apps/mktemp
 	!<app-forensics/tct-1.18-r1
 	!<net-fs/netatalk-2.0.3-r4
+	!<sys-apps/shadow-4.19.0_rc1
 "
 
 QA_CONFIG_IMPL_DECL_SKIP=(
@@ -157,10 +158,9 @@ src_configure() {
 		--with-packager-version="${PVR} (p${PATCH_VER:-0})"
 		--with-packager-bug-reports="https://bugs.gentoo.org/"
 		# kill/uptime - procps
-		# groups/su   - shadow
 		# hostname    - net-tools
 		--enable-install-program="arch,$(usev hostname),$(usev kill)"
-		--enable-no-install-program="groups,$(usev !hostname),$(usev !kill),su,uptime"
+		--enable-no-install-program="$(usev !hostname),$(usev !kill),su,uptime"
 		$(usev !caps --disable-libcap)
 		$(use_enable nls)
 		$(use_enable acl)

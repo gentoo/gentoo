@@ -1,0 +1,2 @@
+# Give write access to the PC speaker to the user logged in on the current virtual console
+ACTION=="add", SUBSYSTEM=="input", ATTRS{name}=="PC Speaker", ENV{DEVNAME}!="", TAG+="uaccess"

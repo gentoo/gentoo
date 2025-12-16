@@ -1,0 +1,9 @@
+# Copyright 2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# This file contains descriptions of SELINUX_POLICY_TYPES USE_EXPAND flags.
+
+targeted - Targeted policy
+strict - Strict policy
+mcs - Multi-Category Security policy
+mls - Multi-Level Security policy

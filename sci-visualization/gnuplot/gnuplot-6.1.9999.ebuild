@@ -92,7 +92,7 @@ src_prepare() {
 
 	if [[ ${PV##*.} = 9999 ]]; then
 		local dir
-		for dir in config demo m4 term tutorial; do
+		for dir in config demo m4 term; do
 			emake -C "$dir" -f Makefile.am.in Makefile.am
 		done
 	fi
@@ -148,7 +148,7 @@ src_configure() {
 
 src_compile() {
 	# Prevent access violations, see bug 201871
-	export VARTEXFONTS="${T}/fonts"
+	local -x TEXMFVAR="${T}" TEXMFCACHE="${T}" VARTEXFONTS="${T}/fonts"
 
 	emake all
 

@@ -1,0 +1,20 @@
+--- a/libs/rfc2045/reformime.C
++++ b/libs/rfc2045/reformime.C
+@@ -342,14 +342,15 @@ std::string get_suitable_filename(const rfc2045::entity &message,
+ 			       filename.begin()+2);	/* Skip over ./ */
+ 	}
+ 
+-	filename.insert(filename.begin(), pfix.begin(), pfix.end());
+-
+ 	for (char &c:filename)
+ 	{
+ 		unsigned char d=c;
+ 		if (!isalnum(d) && d != '.' && d != '-' && d != '=')
+ 			c='_';
+ 	}
++
++	filename.insert(filename.begin(), pfix.begin(), pfix.end());
++
+ 	if (pfix.size() == 0)
+ 	{
+ 		std::fstream tty{"/dev/tty"};

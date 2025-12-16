@@ -1,0 +1,37 @@
+https://bugs.gentoo.org/945373
+
+media-libs/mesa became incompatible with media-libs/mesa-amber.
+The best way to deal with this seems to be to rename mesa-amber
+libraries and install them alongside.
+
+This patch renames libgbm.so to libgbm-amber.so and libglapi.so to
+libglapi-amber.so, so mesa-amber drivers can use their own libraries.
+
+--- a/src/gbm/meson.build
++++ b/src/gbm/meson.build
+@@ -45,8 +45,10 @@ if with_platform_wayland
+   incs_gbm += inc_wayland_drm
+ endif
+ 
++gbm_lib_name = 'gbm_@0@'.format(glvnd_vendor_name)
++
+ libgbm = shared_library(
+-  'gbm',
++  gbm_lib_name,
+   files_gbm,
+   include_directories : incs_gbm,
+   c_args : [args_gbm],
+--- a/src/mapi/shared-glapi/meson.build
++++ b/src/mapi/shared-glapi/meson.build
+@@ -41,8 +41,10 @@ if with_platform_windows
+   _glapi_c_args += ['-D_GLAPI_DLL_EXPORTS']
+ endif
+ 
++glapi_lib_name = 'glapi_@0@'.format(glvnd_vendor_name)
++
+ libglapi = shared_library(
+-  'glapi',
++  glapi_lib_name,
+   [files_mapi_glapi, files_mapi_util, shared_glapi_mapi_tmp_h],
+   c_args : [
+     _glapi_c_args,

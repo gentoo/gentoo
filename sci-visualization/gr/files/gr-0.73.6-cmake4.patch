@@ -1,0 +1,87 @@
+From 75bbc7f8d9c2dad10581a421409642d7a6b1192b Mon Sep 17 00:00:00 2001
+From: Ingo Meyer <i.meyer@fz-juelich.de>
+Date: Tue, 1 Apr 2025 08:55:27 +0200
+Subject: [PATCH] [CMake] Add support for CMake 4
+
+CMake 4 does not support any CMake versions before 3.5, so adjust
+`CMakeLists.txt` to not require older versions. The main CMakeLists now
+also specifies to use new CMake policies up to version 4.
+---
+ CMakeLists.txt                               |  5 +----
+ examples/qt4_ex/CMakeLists.txt               |  2 +-
+ examples/qt5_ex/CMakeLists.txt               |  2 +-
+ examples/qt6_ex/CMakeLists.txt               |  2 +-
+ lib/grm/test/internal_api/grm/CMakeLists.txt |  2 +-
+ lib/grm/test/public_api/grm/CMakeLists.txt   |  2 +-
+ 6 files changed, 6 insertions(+), 9 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5c73ef0c5..59fa57107 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.1 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.5...4.0 FATAL_ERROR)
+ 
+ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
+ include(GetVersionFromGit)
+@@ -13,9 +13,6 @@ project(
+ include(GNUInstallDirs)
+ include(CheckCXXCompilerFlag)
+ 
+-# Honor `C_VISIBILITY_PRESET hidden` and `CXX_VISIBILITY_PRESET hidden` in static libraries
+-cmake_policy(SET CMP0063 NEW)
+-
+ check_cxx_compiler_flag("-Werror=implicit" ERROR_IMPLICIT_SUPPORTED)
+ if(ERROR_IMPLICIT_SUPPORTED)
+   set(COMPILER_OPTION_ERROR_IMPLICIT
+diff --git a/examples/qt4_ex/CMakeLists.txt b/examples/qt4_ex/CMakeLists.txt
+index 7cc31a943..084e763c4 100644
+--- a/examples/qt4_ex/CMakeLists.txt
++++ b/examples/qt4_ex/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.1...3.19)
++cmake_minimum_required(VERSION 3.5...4.0 FATAL_ERROR)
+ 
+ project(gr_qt4_example LANGUAGES CXX)
+ 
+diff --git a/examples/qt5_ex/CMakeLists.txt b/examples/qt5_ex/CMakeLists.txt
+index 40f7a1842..cbea22930 100644
+--- a/examples/qt5_ex/CMakeLists.txt
++++ b/examples/qt5_ex/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.1...3.19)
++cmake_minimum_required(VERSION 3.5...4.0 FATAL_ERROR)
+ 
+ project(gr_qt5_example LANGUAGES CXX)
+ 
+diff --git a/examples/qt6_ex/CMakeLists.txt b/examples/qt6_ex/CMakeLists.txt
+index a652c747c..5c71b160c 100644
+--- a/examples/qt6_ex/CMakeLists.txt
++++ b/examples/qt6_ex/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.16...4.0 FATAL_ERROR)
+ 
+ project(gr_qt6_example LANGUAGES CXX)
+ 
+diff --git a/lib/grm/test/internal_api/grm/CMakeLists.txt b/lib/grm/test/internal_api/grm/CMakeLists.txt
+index 55f4d4675..c1100882a 100644
+--- a/lib/grm/test/internal_api/grm/CMakeLists.txt
++++ b/lib/grm/test/internal_api/grm/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.1...3.16)
++cmake_minimum_required(VERSION 3.5...4.0 FATAL_ERROR)
+ 
+ project(
+   grm_test_internal_api
+diff --git a/lib/grm/test/public_api/grm/CMakeLists.txt b/lib/grm/test/public_api/grm/CMakeLists.txt
+index e9b721c80..a86c2d054 100644
+--- a/lib/grm/test/public_api/grm/CMakeLists.txt
++++ b/lib/grm/test/public_api/grm/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.1...3.16)
++cmake_minimum_required(VERSION 3.5...4.0 FATAL_ERROR)
+ 
+ project(
+   grm_test_public_api

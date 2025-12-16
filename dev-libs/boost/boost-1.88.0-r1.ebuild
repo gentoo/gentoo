@@ -9,7 +9,7 @@ EAPI=8
 # (e.g. https://www.boost.org/users/history/version_1_83_0.html)
 # Note that the latter may sometimes feature patches not on the former too.
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit dot-a edo flag-o-matic multiprocessing python-r1 toolchain-funcs multilib-minimal
 
@@ -57,6 +57,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.88.0-range-any_iterator.patch
 	"${FILESDIR}"/${PN}-1.88.0-system-crashing-test.patch
 	"${FILESDIR}"/${PN}-1.88.0-yap-cstdint.patch
+	# https://github.com/boostorg/dll/issues/108
+	"${FILESDIR}"/${PN}-1.89.0-dll-no-lto.patch
+	"${FILESDIR}"/${PN}-1.89.0-python-exclude-broken-tests.patch
+	"${FILESDIR}"/${PN}-1.89.0-python-pickle.patch
 )
 
 create_user-config.jam() {
@@ -148,7 +152,12 @@ src_configure() {
 	# https://bugs.gentoo.org/943975
 	# https://github.com/boostorg/quickbook/issues/27
 	# https://github.com/boostorg/spirit/issues/800
-	use tools && filter-lto
+	#
+	# Tests also fail:
+	# https://bugs.gentoo.org/956660
+	# https://github.com/boostorg/smart_ptr/issues/121
+	# https://github.com/boostorg/thread/issues/415
+	filter-lto
 
 	lto-guarantee-fat
 
@@ -276,8 +285,6 @@ multilib_src_test() {
 		"phoenix"
 		# Unable to find file or target named (yes, really)
 		"predef"
-		# AttributeError: property '<unnamed Boost.Python function>' of 'X' object has no setter
-		"python"
 		# vec_access.hpp:95:223: error: static assertion failed: Boost QVM static assertion failure
 		"qvm"
 		# regex_timer.cpp:19: ../../../boost/timer.hpp:21:3: error: #error This header is

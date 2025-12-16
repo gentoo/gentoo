@@ -1,0 +1,12 @@
+PR merged https://github.com/musescore/MuseScore/pull/31333.patch
+add missing include
+--- a/src/print/internal/printprovider.cpp
++++ b/src/print/internal/printprovider.cpp
+@@ -23,6 +23,7 @@
+ 
+ #include <QPrinter>
+ #include <QPrintDialog>
++#include <QWindow>
+ 
+ #include "log.h"
+ 

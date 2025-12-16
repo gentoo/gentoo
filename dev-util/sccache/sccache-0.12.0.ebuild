@@ -435,7 +435,7 @@ CRATES+="
 "
 
 # https://github.com/mozilla/sccache?tab=readme-ov-file#build-requirements
-RUST_MIN_VER="1.75.0"
+RUST_MIN_VER="1.85.0"
 
 inherit cargo optfeature systemd
 
@@ -458,7 +458,7 @@ IUSE="azure dist-client dist-server gcs memcached redis s3 webdav"
 BDEPEND="virtual/pkgconfig"
 DEPEND="
 	app-arch/zstd
-	sys-libs/zlib:=
+	virtual/zlib:=
 	dist-server? ( dev-libs/openssl:= )
 	gcs? ( dev-libs/openssl:= )
 "

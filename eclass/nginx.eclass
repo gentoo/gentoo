@@ -795,9 +795,13 @@ nginx_src_install() {
 	# /usr/share/nginx.
 	pushd "${ED}/etc/nginx" >/dev/null || die "pushd failed"
 	# mime-types* are provided by app-misc/mime-types[nginx], .default config
-	# files are redundant due to CONFIG_PROTECT and fastcgi.conf is a copy of
-	# fastcgi_params. As for nginx.conf, we ship our own config file.
-	rm -- *.default mime.types fastcgi.conf nginx.conf || die "rm failed"
+	# files are redundant due to CONFIG_PROTECT. As for nginx.conf, we ship our
+	# own config file.
+	rm -- *.default mime.types nginx.conf || die "rm failed"
+	# fastcgi.conf is almost identical to fastcgi_params barring the
+	# SCRIPT_FILENAME param. Rename fastcgi.conf to fastcgi_params to have
+	# consistent *_params files. See bug 966799.
+	mv fastcgi.conf fastcgi_params || die "mv failed"
 	popd >/dev/null || die "Returning to the previous directory failed"
 
 	dodir /usr/share/nginx

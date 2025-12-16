@@ -14,7 +14,7 @@ HOMEPAGE="https://apps.kde.org/artikulate/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~riscv ~x86"
 IUSE=""
 
 DEPEND="
@@ -36,6 +36,8 @@ DEPEND="
 RDEPEND="${DEPEND}
 	dev-libs/kirigami-addons:6
 "
+
+CMAKE_SKIP_TESTS=( test_editorsession ) # fixed in >=25.12
 
 src_configure() {
 	local mycmakeargs=(

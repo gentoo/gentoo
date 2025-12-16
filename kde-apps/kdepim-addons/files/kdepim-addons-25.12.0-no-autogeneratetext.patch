@@ -1,0 +1,27 @@
+From 1fd41b5b6ceea127685e97759b55fd3ba7c3711f Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 4 Dec 2025 18:09:22 +0100
+Subject: [PATCH] Allow to disable pimautogeneratetext and kaichat-plugins via
+ OPTION_ADD_AUTOGENERATETEXT
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a0747c38c..fd2a50ed2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -377,7 +377,7 @@ add_subdirectory(kldap)
+ if(TARGET KPim6::ImportWizard)
+     add_subdirectory(akonadi-import-wizard)
+ endif()
+-if(TARGET KF6::TextAutoGenerateText)
++if(OPTION_ADD_AUTOGENERATETEXT)
+     add_subdirectory(pimautogeneratetext)
+     add_subdirectory(kaichat-plugins)
+ endif()
+-- 
+2.52.0
+

@@ -1,0 +1,11 @@
+https://github.com/duncanthrax/scream/pull/234
+https://bugs.gentoo.org/964612
+
+--- a/Receivers/unix/CMakeLists.txt
++++ b/Receivers/unix/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.7)
++cmake_minimum_required(VERSION 3.7...4.0)
+ 
+ project(scream LANGUAGES C)
+ 

@@ -17,6 +17,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2025-11-25)
+# The package has turned into complete AI slop.  Every subsequent
+# release introduces serious quality issues, and potential security
+# concerns.  Please ask upstreams to move away from it.
+dev-python/autobahn
+
 # Michał Górny <mgorny@gentoo.org> (2025-11-04)
 # Please depend on virtual/zlib, unless you are sure that the package
 # in question is not compatible with sys-libs/zlib-ng[compat] and/or
@@ -30,12 +36,6 @@ sys-libs/zlib
 # No activity since 2022.  Already requires extensive patching,
 # broken with Python 3.14.
 dev-python/httpretty
-
-# Michał Górny <mgorny@gentoo.org> (2025-10-26)
-# Upstream discontinued the PyPI package, expects people to vendor it
-# instead.  They also made random changes that make backporting fixes
-# hard.
-dev-python/click-plugins
 
 # Alfred Wingate <parona@protonmail.com> (2025-10-18)
 # Only exists temporarily to facilitate upgrades for exaile.
@@ -57,7 +57,6 @@ dev-python/passlib
 # fixed at all. Bug 948836
 dev-qt/designer:5
 dev-qt/linguist-tools:5
-dev-qt/qtcharts:5
 dev-qt/qtconcurrent:5
 dev-qt/qtdbus:5
 dev-qt/qtdeclarative:5
@@ -176,7 +175,6 @@ virtual/jpeg
 # Matt Turner <mattst88@gentoo.org> (2022-03-27)
 # Deprecated GNOME 2 era packages
 app-text/enchant:0
-app-text/gnome-doc-utils
 app-text/gtkspell:2
 app-text/scrollkeeper-dtd
 dev-cpp/gtkmm:2.4

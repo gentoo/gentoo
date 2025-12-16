@@ -1,0 +1,13 @@
+diff --git a/tools/test_sync_with_kernel_tree.py b/tools/test_sync_with_kernel_tree.py
+index 21f8d51..1b098a9 100644
+--- a/tools/test_sync_with_kernel_tree.py
++++ b/tools/test_sync_with_kernel_tree.py
+@@ -138,7 +138,7 @@ def run_cli(virtual_git, command, args):
+         command,
+     ]
+     _args.extend(args)
+-    runner = CliRunner(mix_stderr=False)
++    runner = CliRunner()
+     return runner.invoke(
+         sync_with_kernel_tree.cli,
+         _args,

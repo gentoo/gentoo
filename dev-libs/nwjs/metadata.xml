@@ -7,5 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="ffmpeg-chromium">Use Chromium FFmpeg fork (<pkg>media-video/ffmpeg-chromium</pkg>) rather than mainline FFmpeg (<pkg>media-video/ffmpeg</pkg>)</flag>
+		<flag name="sdk">Fetch and install the NW.js software development kit</flag>
 	</use>
 </pkgmetadata>

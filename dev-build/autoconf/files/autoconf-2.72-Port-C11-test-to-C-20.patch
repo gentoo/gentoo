@@ -1,0 +1,28 @@
+From e6c9cb69c8c0a4ef9ce0538d7b4106dad3d7ad47 Mon Sep 17 00:00:00 2001
+From: Paul Eggert <eggert@cs.ucla.edu>
+Date: Sun, 26 May 2024 07:04:19 -0700
+Subject: [PATCH] Port C11 test to C++20
+
+Trivial fix suggested by Peter Johansson in:
+https://lists.gnu.org/r/autoconf/2024-05/msg00004.html
+* lib/autoconf/c.m4 (_AC_CXX_CXX11_TEST_MAIN):
+Do not test assigning u8"..." to char const *, as this
+runs afoul of C++20.
+---
+ lib/autoconf/c.m4 | 3 +--
+ 1 files changed, 1 insertions(+), 2 deletions(-)
+
+diff --git a/lib/autoconf/c.m4 b/lib/autoconf/c.m4
+index d4f7fbe..673d62e 100644
+--- a/lib/autoconf/c.m4
++++ b/lib/autoconf/c.m4
+@@ -2638,8 +2638,7 @@ ac_cxx_conftest_cxx11_main='
+   test_template<::test_template<int>> v(test_template<int>(12));
+ }
+ {
+-  // Unicode literals
+-  char const *utf8 = u8"UTF-8 string \u2500";
++  // Unicode literals.  Do not test u8"..." as C++20 would reject it.
+   char16_t const *utf16 = u"UTF-8 string \u2500";
+   char32_t const *utf32 = U"UTF-32 string \u2500";
+ }

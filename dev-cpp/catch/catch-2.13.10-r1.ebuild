@@ -28,6 +28,13 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="test? ( ${PYTHON_DEPS} )"
 
+PATCHES=( "${FILESDIR}"/${P}-cmake4.patch ) # bug 957561
+
+src_prepare() {
+	rm -r .conan misc || die # unused, bug 957561
+	cmake_src_prepare
+}
+
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }

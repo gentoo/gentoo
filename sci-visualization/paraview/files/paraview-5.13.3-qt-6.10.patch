@@ -1,0 +1,40 @@
+From 9ba0a2104840ac5ddf0b73a36d72b282bf6b03d9 Mon Sep 17 00:00:00 2001
+From: Louis Gombert <louis.gombert@kitware.com>
+Date: Tue, 2 Dec 2025 14:18:06 +0100
+Subject: [PATCH] Fix for Qt6.10.1: Explicitly cast unscoped enums to int
+
+---
+ pqAbstractItemViewEventTranslator.cxx | 4 ++--
+ pqBasicWidgetEventTranslator.cxx      | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/ThirdParty/QtTesting/vtkqttesting/pqAbstractItemViewEventTranslator.cxx b/ThirdParty/QtTesting/vtkqttesting/pqAbstractItemViewEventTranslator.cxx
+index 31b1d44..61ce1dd 100644
+--- a/ThirdParty/QtTesting/vtkqttesting/pqAbstractItemViewEventTranslator.cxx
++++ b/ThirdParty/QtTesting/vtkqttesting/pqAbstractItemViewEventTranslator.cxx
+@@ -90,8 +90,8 @@ bool pqAbstractItemViewEventTranslator::translateEvent(QObject* Object, QEvent*
+ 
+       QString info = QString("%1,%2,%3,%4,%5,%6")
+                        .arg(mouseEvent->button())
+-                       .arg(mouseEvent->buttons())
+-                       .arg(mouseEvent->modifiers())
++                       .arg(static_cast<int>(mouseEvent->buttons()))
++                       .arg(static_cast<int>(mouseEvent->modifiers()))
+                        .arg(relPt.x())
+                        .arg(relPt.y())
+                        .arg(idxStr);
+diff --git a/ThirdParty/QtTesting/vtkqttesting/pqBasicWidgetEventTranslator.cxx b/ThirdParty/QtTesting/vtkqttesting/pqBasicWidgetEventTranslator.cxx
+index afdd360..9217f27 100644
+--- a/ThirdParty/QtTesting/vtkqttesting/pqBasicWidgetEventTranslator.cxx
++++ b/ThirdParty/QtTesting/vtkqttesting/pqBasicWidgetEventTranslator.cxx
+@@ -53,8 +53,8 @@ bool pqBasicWidgetEventTranslator::translateEvent(
+ #endif
+         QString info = QString("%1,%2,%3,%4,%5")
+                          .arg(mouseEvent->button())
+-                         .arg(mouseEvent->buttons())
+-                         .arg(mouseEvent->modifiers())
++                         .arg(static_cast<int>(mouseEvent->buttons()))
++                         .arg(static_cast<int>(mouseEvent->modifiers()))
+                          .arg(mouseEvent->x())
+                          .arg(mouseEvent->y());
+ 

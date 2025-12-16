@@ -1,0 +1,37 @@
+Remove hardcoded optimization level
+
+--- a/makefile
++++ b/makefile
+@@ -12,8 +12,9 @@
+ CURSES_CFLAGS := $(shell ncursesw6-config --cflags) 
+ CURSES_LIBS := $(shell ncursesw6-config --libs)
+ 
+-
+-CFLAGS += $(INCS) -Wall $(CURSES_CFLAGS) 
++LIBS += $(CURSES_LIBS)
++FLAGS := 
++CFLAGS += $(FLAGS) $(INCS) -Wall $(CURSES_CFLAGS) 
+ 
+ # Files in library/ that need to be compiled
+ SRC_LISP := library/bit.lsp \
+@@ -29,19 +30,13 @@
+ 		library/plot.lsp \
+ 		library/unistd.lsp 
+ 
+-CFLAGS += -O3
+-
+ ifeq ($(USE_FLTO),1)
+-CFLAGS += -O3 -flto
++CFLAGS += -flto
+ endif
+ ifeq ($(USE_GDB),1)
+ CFLAGS += -O0 -g
+ endif 
+ 
+-ifeq  ($(shell uname -n),raspberrypi)
+-CFLAGS += -O3
+-endif
+-
+ OBJ_LISP := $(SRC_LISP:.lsp=.o)
+ 
+ ifeq  ($(shell uname -n),raspberrypi)

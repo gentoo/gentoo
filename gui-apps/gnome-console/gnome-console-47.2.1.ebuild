@@ -27,6 +27,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	>=dev-util/gdbus-codegen-2.80
 	virtual/pkgconfig
 	test? (
 		dev-util/desktop-file-utils

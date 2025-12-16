@@ -9,11 +9,6 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
-  <use>
-    <flag name="debug">
-      Enable debug messages using the pam logging macros.
-    </flag>
-  </use>
   <upstream>
     <remote-id type="github">Yubico/pam-u2f</remote-id>
     <bugs-to>https://github.com/Yubico/pam-u2f/issues</bugs-to>

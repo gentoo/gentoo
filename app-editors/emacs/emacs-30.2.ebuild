@@ -447,6 +447,12 @@ src_test() {
 		%lisp/vc/vc-tests.el
 		%lisp/vc/vc-bzr-tests.el
 
+		# Reason: malformed html tag in test, https://bugs.gnu.org/79041
+		# shr-test/zoom-image
+		%lisp/net/shr-tests.el
+
+		%lisp/progmodes/eglot-tests.el  #966957
+
 		# Reason: tries to access network
 		# internet-is-working
 		%src/process-tests.el
@@ -457,7 +463,6 @@ src_test() {
 			%src/fns-tests.el
 		)
 	use threads || exclude_tests+=(
-			%lisp/progmodes/eglot-tests.el
 			%src/emacs-module-tests.el
 			%src/keyboard-tests.el
 		)

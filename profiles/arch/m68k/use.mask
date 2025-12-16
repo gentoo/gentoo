@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -m68k
 
+# James Le Cuirot <chewi@gentoo.org> (2025-11-22)
+# Vala looks like it would work well enough, but m68k doesn't need it.
+vala
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-06-12)
 # x11-drivers/xf86-input-wacom is not keyworded here
 input_devices_wacom
@@ -37,6 +41,7 @@ vim-syntax
 # James Le Cuirot <chewi@gentoo.org> (2022-01-01)
 # Hardware that probably doesn't apply to m68k.
 input_devices_elographics
+tpm
 video_cards_amdgpu
 video_cards_mga
 video_cards_nouveau

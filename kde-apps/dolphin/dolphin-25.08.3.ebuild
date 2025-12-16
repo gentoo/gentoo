@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/dolphin/ https://userbase.kde.org/Dolphin"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="semantic-desktop telemetry"
 
 # slot op: Uses Qt::GuiPrivate for qtx11extras_p.h
@@ -59,6 +59,14 @@ RDEPEND="${DEPEND}
 	>=kde-apps/thumbnailers-${PVCUT}:6
 "
 
+CMAKE_SKIP_TESTS=(
+	servicemenuinstaller # requires ruby, no thanks
+	# these hang forever:
+	{dolphinmainwindow,kfile{itemlistview,itemmodel},listcontroller}test
+	placesitemmodeltest # requires DBus
+	kitemlistcontrollerexpandtest # maybe fixed in >=25.12
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_PackageKitQt6=ON
@@ -70,16 +78,6 @@ src_configure() {
 		-DCMAKE_DISABLE_FIND_PACKAGE_SeleniumWebDriverATSPI=ON # not packaged
 	)
 	ecm_src_configure
-}
-
-src_test() {
-	local myctestargs=(
-		# servicemenuinstaller requires ruby, no thanks
-		# dolphinmainwindowtest, kitemlistcontrollertest, kfileitemlistviewtest, kfileitemmodeltest hang forever
-		# placesitemmodeltest requires DBus
-		-E "(servicemenuinstaller|dolphinmainwindowtest|kfileitemlistviewtest|kfileitemmodeltest|kitemlistcontrollertest|placesitemmodeltest)"
-	)
-	ecm_src_test
 }
 
 pkg_postinst() {

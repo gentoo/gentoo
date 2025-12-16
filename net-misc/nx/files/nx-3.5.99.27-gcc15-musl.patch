@@ -1,0 +1,104 @@
+Bug: https://bugs.gentoo.org/945519
+
+Patch copied from Alpine Linux.
+https://gitlab.alpinelinux.org/strophy/aports/-/commit/10d31cd725f131693153f003893f8a9c41fec5d9
+
+--- a/nx-X11/programs/Xserver/dbe/dbe.c
++++ b/nx-X11/programs/Xserver/dbe/dbe.c
+@@ -56,7 +56,7 @@
+ /* GLOBALS */
+ 
+ /* Per-screen initialization functions [init'ed by DbeRegisterFunction()] */
+-static Bool	(* DbeInitFunct[MAXSCREENS])();	/* pScreen, pDbeScreenPriv */
++static Bool	(* DbeInitFunct[MAXSCREENS])(ScreenPtr, DbeScreenPrivPtr);	/* pScreen, pDbeScreenPriv */
+ 
+ /* These are static globals copied to DBE's screen private for use by DDX */
+ static int	dbeScreenPrivIndex;
+@@ -89,7 +89,7 @@ static Bool	firstRegistrationPass = TRUE;
+  *****************************************************************************/
+ 
+ void
+-DbeRegisterFunction(ScreenPtr pScreen, Bool (*funct) (/* ??? */))
++DbeRegisterFunction(ScreenPtr pScreen, Bool (*funct) (ScreenPtr, DbeScreenPrivPtr))
+ {
+     int	i;
+ 
+--- a/nx-X11/programs/Xserver/dix/window.c
++++ b/nx-X11/programs/Xserver/dix/window.c
+@@ -375,7 +375,7 @@ AllocateWindow(ScreenPtr pScreen)
+ 	    else
+ 		ppriv->ptr = (void *)NULL;
+ 	}
+-#if _XSERVER64
++#ifdef _XSERVER64
+ 	pWin->drawable.pad0 = 0;
+         pWin->drawable.pad1 = 0;
+ #endif
+--- a/nx-X11/programs/Xserver/hw/nxagent/Clipboard.h
++++ b/nx-X11/programs/Xserver/hw/nxagent/Clipboard.h
+@@ -26,6 +26,15 @@
+ #ifndef __Clipboard_H__
+ #define __Clipboard_H__
+ 
++#ifndef _XSERVER64
++typedef unsigned long XlibAtom;
++#else
++typedef unsigned long Atom64;
++#define XlibAtom Atom64
++#endif
++
++typedef union _XEvent XEvent;
++
+ /*
+  * Queried at clipboard initialization.
+  */
+@@ -58,17 +67,10 @@ extern int nxagentConvertSelection(ClientPtr client, WindowPtr pWin, Atom select
+                                       Window requestor, Atom property, Atom target, Time time);
+ 
+ extern void nxagentHandleSelectionClearFromXServerByIndex(int index);
+-#ifdef XEvent
+ extern void nxagentHandleSelectionClearFromXServerByAtom(XlibAtom sel);
+ extern void nxagentHandleSelectionClearFromXServer(XEvent *X);
+ extern void nxagentHandleSelectionRequestFromXServer(XEvent *X);
+ extern void nxagentHandleSelectionNotifyFromXServer(XEvent *X);
+-#else
+-extern void nxagentHandleSelectionClearFromXServerByAtom();
+-extern void nxagentHandleSelectionClearFromXServer();
+-extern void nxagentHandleSelectionRequestFromXServer();
+-extern void nxagentHandleSelectionNotifyFromXServer();
+-#endif
+ 
+ extern int nxagentFindCurrentSelectionIndex(Atom sel);
+ /*
+--- a/nx-X11/programs/Xserver/hw/nxagent/Screen.c
++++ b/nx-X11/programs/Xserver/hw/nxagent/Screen.c
+@@ -1533,8 +1533,8 @@ N/A
+     pScreen->SaveScreen = nxagentSaveScreen;
+     pScreen->GetImage = nxagentGetImage;
+     pScreen->GetSpans = nxagentGetSpans;
+-    pScreen->PointerNonInterestBox = (void (*)()) 0;
+-    pScreen->SourceValidate = (void (*)()) 0;
++    pScreen->PointerNonInterestBox = NULL;
++    pScreen->SourceValidate = NULL;
+ 
+     pScreen->CreateScreenResources = nxagentCreateScreenResources;
+ 
+@@ -1610,12 +1610,12 @@ N/A
+      * Backing store procedures.
+      */
+ 
+-    pScreen->SaveDoomedAreas = (void (*)()) 0;
+-    pScreen->RestoreAreas = (RegionPtr (*)()) 0;
+-    pScreen->ExposeCopy = (void (*)()) 0;
+-    pScreen->TranslateBackingStore = (RegionPtr (*)()) 0;
+-    pScreen->ClearBackingStore = (RegionPtr (*)()) 0;
+-    pScreen->DrawGuarantee = (void (*)()) 0;
++    pScreen->SaveDoomedAreas = NULL;
++    pScreen->RestoreAreas = NULL;
++    pScreen->ExposeCopy = NULL;
++    pScreen->TranslateBackingStore = NULL;
++    pScreen->ClearBackingStore = NULL;
++    pScreen->DrawGuarantee = NULL;
+ 
+     if (enableBackingStore)
+     {

@@ -1,0 +1,20 @@
+Allows passing --load-average and not passing --jobs which would stop the jobserver from working.
+
+This is a Gentoo'ism so its not upstreamable in this form.
+
+diff --git a/build_scripts/main.py b/build_scripts/main.py
+index cdaa439ff..3e088961e 100644
+--- a/build_scripts/main.py
++++ b/build_scripts/main.py
+@@ -854,8 +854,8 @@ class PysideBuild(_build, CommandMixin, BuildInfoCollectorMixin):
+ 
+         log.info(f"-- Compiling module {extension}...")
+         cmd_make = [str(self.make_path)]
+-        if OPTION["JOBS"]:
+-            cmd_make.append(OPTION["JOBS"])
++        if self.make_generator == "Ninja":
++            cmd_make.extend(os.getenv("NINJAOPTS").split(' '))
+         if OPTION["LOG_LEVEL"] == LogLevel.VERBOSE and self.make_generator == "Ninja":
+             cmd_make.append("-v")
+         if run_process(cmd_make) != 0:
+

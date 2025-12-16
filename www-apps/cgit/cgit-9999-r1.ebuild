@@ -61,6 +61,8 @@ BDEPEND="
 	)
 "
 
+PATCHES=( "${FILESDIR}"/${PN}-highlight.patch )
+
 pkg_setup() {
 	python_setup
 	webapp_pkg_setup

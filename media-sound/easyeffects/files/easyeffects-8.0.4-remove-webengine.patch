@@ -1,0 +1,81 @@
+Optional patch to remove use of qtwebengine.
+
+This is to make the package less controversial to users while making keywording
+a smoother ride on arches without qtwebengine.
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cb4393fef..031801b2e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -51,7 +51,6 @@ find_package(Qt${QT_MAJOR_VERSION} REQUIRED NO_MODULE COMPONENTS
+     Quick
+     QuickControls2
+     Widgets
+-    WebEngineQuick
+ )
+ 
+ find_package(KF${QT_MAJOR_VERSION} REQUIRED COMPONENTS
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 885d9a30f..7c149577c 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -53,7 +53,6 @@ qt_add_qml_module(easyeffects
+         contents/ui/Expander.qml
+         contents/ui/Filter.qml
+         contents/ui/Gate.qml
+-        contents/ui/HelpSheet.qml
+         contents/ui/LevelMeter.qml
+         contents/ui/Limiter.qml
+         contents/ui/Loudness.qml
+@@ -238,7 +237,6 @@ target_link_libraries(easyeffects PRIVATE
+     Qt::Quick
+     Qt::QuickControls2
+     Qt::Widgets
+-    Qt::WebEngineQuick
+     TBB::tbb
+     GSL::gsl
+     GSL::gslcblas
+diff --git a/src/contents/ui/Main.qml b/src/contents/ui/Main.qml
+index d550231fd..7512fb146 100644
+--- a/src/contents/ui/Main.qml
++++ b/src/contents/ui/Main.qml
+@@ -161,7 +161,7 @@ Kirigami.ApplicationWindow {
+     Shortcut {
+         sequences: ["F1"]
+         onActivated: {
+-            helpSheet.open();
++            Qt.openUrlExternally("https://wwmm.github.io/easyeffects/")
+         }
+     }
+ 
+@@ -224,10 +224,6 @@ Kirigami.ApplicationWindow {
+         id: shortcutsSheet
+     }
+ 
+-    HelpSheet {
+-        id: helpSheet
+-    }
+-
+     Kirigami.PromptDialog {
+         id: resetPromptDialog
+ 
+@@ -401,9 +397,7 @@ Kirigami.ApplicationWindow {
+                 text: i18n("Manual") // qmllint disable
+                 icon.name: "help-contents-symbolic"
+                 onTriggered: {
+-                    appWindow.show();
+-                    appWindow.raise();
+-                    helpSheet.open();
++                    Qt.openUrlExternally("https://wwmm.github.io/easyeffects/")
+                 }
+             }
+ 
+@@ -550,7 +544,7 @@ Kirigami.ApplicationWindow {
+                         icon.name: "help-contents-symbolic"
+                         displayHint: Kirigami.DisplayHint.AlwaysHide
+                         onTriggered: {
+-                            helpSheet.open();
++                            Qt.openUrlExternally("https://wwmm.github.io/easyeffects/")
+                         }
+                     },
+                     Kirigami.Action {

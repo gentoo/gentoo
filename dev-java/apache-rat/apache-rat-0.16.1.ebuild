@@ -16,7 +16,7 @@ S="${WORKDIR}/${P}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-pottlinger )"
 CP_DEPEND="
@@ -32,6 +32,7 @@ DEPEND="
 	${CP_DEPEND}
 	>=virtual/jdk-1.8:*
 	test? (
+		>=dev-java/ant-1.10.15:0[junit,testutil]
 		>=dev-java/assertj-core-3.27.6:0
 		dev-java/junit:5[vintage]
 		>=dev-java/mockito-5.20.0:0

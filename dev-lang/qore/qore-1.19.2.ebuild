@@ -54,6 +54,7 @@ src_configure() {
 	local -a myconf=(
 		--disable-optimization
 		--disable-profile
+		--disable-single-compilation-unit
 		--disable-static-bz2
 		--disable-static-common
 		--disable-static-openssl

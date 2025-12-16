@@ -1,0 +1,108 @@
+From 3669921bb1bab7bc9f7f5fb1ef4b9ceb2cf02ff7 Mon Sep 17 00:00:00 2001
+From: Reuben Thomas <rrt@sc3d.org>
+Date: Mon, 10 Nov 2025 23:37:49 +0000
+Subject: [PATCH] Revert "Use UcharDet VAPI from vala-extra-vapis project, not
+ our own one"
+
+This reverts commit f5e40e01f84b8841c8a30ef9b7890bf0cbd0beaf.
+
+The vala-extra-vapis VAPI does not work properly with pkg-config; see
+https://gitlab.gnome.org/GNOME/vala-extra-vapis/-/issues/28
+---
+ .gitmodules      |  3 ---
+ Makefile.am      |  4 ++--
+ rpl.vala         |  5 ++---
+ uchardet.vapi    | 36 ++++++++++++++++++++++++++++++++++++
+ vala-extra-vapis |  1 -
+ 5 files changed, 40 insertions(+), 9 deletions(-)
+ create mode 100644 uchardet.vapi
+ delete mode 160000 vala-extra-vapis
+
+diff --git a/Makefile.am b/Makefile.am
+index 8c3301d..5a86282 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -8,11 +8,11 @@ SUBDIRS = lib
+
+ include $(top_srcdir)/aminclude_static.am
+
+-AM_VALAFLAGS = --debug --vapidir=$(srcdir) --vapidir=$(srcdir)/vala-extra-vapis
++AM_VALAFLAGS = --debug --vapidir=$(srcdir)
+ if OS_WIN32
+ AM_VALAFLAGS += -D WINDOWS
+ endif
+-VAPIS =	config.vapi cmdline.vapi gnu.vapi pcre2.vapi
++VAPIS =	config.vapi cmdline.vapi gnu.vapi pcre2.vapi uchardet.vapi
+
+ LDADD = $(top_builddir)/lib/libgnu.a $(CODE_COVERAGE_LDFLAGS)
+ AM_CPPFLAGS = -I$(top_srcdir)/lib -I$(top_builddir)/lib $(CODE_COVERAGE_CPPFLAGS)
+diff --git a/rpl.vala b/rpl.vala
+index 32aab87..9bc0374 100644
+--- a/rpl.vala
++++ b/rpl.vala
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env -S vala --vapidir=. --vapidir=./vala-extra-vapis --pkg gio-2.0 --pkg posix --pkg gnu --pkg config --pkg cmdline --pkg pcre2 --pkg uchardet fd-stream.vala prefix-input-stream.vala
++#! /usr/bin/env -S vala --vapidir=. --pkg gio-2.0 --pkg posix --pkg gnu --pkg config --pkg cmdline --pkg pcre2 --pkg uchardet fd-stream.vala prefix-input-stream.vala
+ // rpl: search and replace text in files
+ //
+ // © 2025 Reuben Thomas <rrt@sc3d.org>
+@@ -20,7 +20,6 @@ using Config;
+ using Posix;
+ using Pcre2;
+ using Gengetopt;
+-using UcharDet;
+
+
+ void info (string msg) {
+@@ -569,7 +568,7 @@ int main (string[] argv) {
+ 				warn (@"error reading $filename: $(e.message); skipping!");
+ 				continue;
+ 			} // GCOVR_EXCL_STOP
+-			var detector = new UcharDet.Classifier ();
++			var detector = new UCharDet ();
+ 			var ok = detector.handle_data (buf.data) == 0;
+ 			GLib.assert (ok);
+ 			detector.data_end ();
+diff --git a/uchardet.vapi b/uchardet.vapi
+new file mode 100644
+index 0000000..db25893
+--- /dev/null
++++ b/uchardet.vapi
+@@ -0,0 +1,36 @@
++/* uchardet.vapi
++ *
++ * Copyright (C) 2025 Reuben Thomas
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
++ *
++ * Author:
++ *  Reuben Thomas <rrt@sc3d.org>
++ */
++
++[Compact]
++[CCode (cprefix = "uchardet_", cheader_filename = "uchardet.h", cname = "uchardet_t", free_function = "uchardet_delete")]
++public class UCharDet {
++	[CCode (cname = "uchardet_new")]
++	public UCharDet ();
++
++	public int handle_data ([CCode (array_length_type = "size_t")] uint8[] data);
++
++	public void data_end ();
++
++	public void data_reset ();
++
++	public unowned string get_charset ();
++}
+\ No newline at end of file

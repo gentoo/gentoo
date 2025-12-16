@@ -1,0 +1,25 @@
+From b15763a8a1dca3e8feb7852e14c5cb84f9aacca5 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx@gmail.com>
+Date: Sun, 17 Aug 2025 17:43:48 +0200
+Subject: [PATCH] don't show variable names
+
+Signed-off-by: Paul Zander <negril.nx@gmail.com>
+
+diff --git a/source/blender/nodes/composite/nodes/node_composite_pixelate.cc b/source/blender/nodes/composite/nodes/node_composite_pixelate.cc
+index 1315312c612..e2cdbabcc31 100644
+--- a/source/blender/nodes/composite/nodes/node_composite_pixelate.cc
++++ b/source/blender/nodes/composite/nodes/node_composite_pixelate.cc
+@@ -99,8 +99,8 @@ class PixelateOperation : public NodeOperation {
+         }
+       }
+ 
+-      int2 size = end - start;
+-      int count = size.x * size.y;
++      int2 pixel = end - start;
++      int count = pixel.x * pixel.y;
+       output.store_pixel(texel, accumulated_color / count);
+     });
+   }
+-- 
+2.50.1
+

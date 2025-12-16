@@ -21,17 +21,18 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/librevenge
+	media-libs/lcms
 	virtual/zlib:=
 "
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	dev-libs/boost
 	dev-libs/icu
-	dev-util/gperf
-	media-libs/lcms
-	dev-build/libtool
 	test? ( dev-util/cppunit )
 "
 BDEPEND="
+	dev-build/libtool
+	dev-util/gperf
 	virtual/pkgconfig
 	doc? ( app-text/doxygen )
 "

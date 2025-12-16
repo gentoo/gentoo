@@ -1,0 +1,27 @@
+From cba66efc2b062baa953bd91229eee4b2aa2294d1 Mon Sep 17 00:00:00 2001
+From: Jaco Kroon <jaco@uls.co.za>
+Date: Fri, 22 Sep 2023 10:47:28 +0200
+Subject: [PATCH] Include sys/types.h for off64_t. (#4215)
+
+Reference: https://bugs.gentoo.org/908588
+
+As per off64_t(3) we need to include sys/types.h.
+---
+ libglusterfs/src/glusterfs/syscall.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libglusterfs/src/glusterfs/syscall.h b/libglusterfs/src/glusterfs/syscall.h
+index 4f1bfdc83c..f6c904df38 100644
+--- a/libglusterfs/src/glusterfs/syscall.h
++++ b/libglusterfs/src/glusterfs/syscall.h
+@@ -17,6 +17,7 @@
+ #include <sys/stat.h>
+ #include <sys/time.h>
+ #include <sys/socket.h>
++#include <sys/types.h>
+ #include <stdio.h>
+ 
+ /* GF follows the Linux XATTR definition, which differs in Darwin. */
+-- 
+2.51.2
+

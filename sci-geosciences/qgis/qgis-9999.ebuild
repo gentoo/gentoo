@@ -133,7 +133,6 @@ BDEPEND="${PYTHON_DEPS}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.44.3-testReportDir.patch"
-	"${FILESDIR}/${PN}-3.44.3-include-memory.patch"
 )
 
 src_prepare() {

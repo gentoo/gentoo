@@ -1,0 +1,46 @@
+see https://bugs.gentoo.org/944765
+--- a/src/xml_validate.c
++++ b/src/xml_validate.c
+@@ -28,6 +28,7 @@ THE SOFTWARE.
+ 
+ #include <config.h>
+ 
++#include <unistd.h>
+ #include <string.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+@@ -408,15 +409,31 @@ valMain(int argc, char **argv)
+         for (i=start; i<argc; i++)
+         {
+             int failed = 0;
++            int is_stdin = argv[i][0] == '-' && argv[i][1] == 0;
++
+             if (ops.embed) options |= XML_PARSE_DTDVALID;
+ 
+             if (!reader)
+             {
+-                reader = xmlReaderForFile(argv[i], NULL, options);
++                if (is_stdin)
++                {
++                    reader = xmlReaderForFd(STDIN_FILENO, argv[i], NULL, options);
++                }
++                else
++                {
++                    reader = xmlReaderForFile(argv[i], NULL, options);
++                }
+             }
+             else
+             {
+-                failed = xmlReaderNewFile(reader, argv[i], NULL, options);
++                if (is_stdin)
++                {
++                    failed = xmlReaderNewFd(reader, STDIN_FILENO, argv[i], NULL, options);
++                }
++                else
++                {
++                    failed = xmlReaderNewFile(reader, argv[i], NULL, options);
++                }
+             }
+ 
+             errorInfo.xmlReader = reader;
+

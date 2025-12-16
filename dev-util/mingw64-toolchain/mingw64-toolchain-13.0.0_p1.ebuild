@@ -40,7 +40,7 @@ LICENSE="
 	ZPL BSD BSD-2 ISC LGPL-2+ LGPL-2.1+ MIT public-domain
 "
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE="+abi_x86_32 +bin-symlinks custom-cflags +strip"
 
 RDEPEND="
@@ -147,6 +147,9 @@ src_compile() {
 		--with-system-zlib
 		--without-isl
 		--without-zstd
+
+		# TODO: can likely remove this when bump to >=gcc-15.3 (bug #966990)
+		CXX="$(tc-getCXX) -std=c++14"
 	)
 	${multilib} || conf_gcc+=( --disable-multilib )
 	# libstdc++ may misdetect sys/sdt.h on systemtap-enabled system and fail

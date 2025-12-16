@@ -21,10 +21,12 @@ SRC_URI="
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
+IUSE="socks5"
 
 RDEPEND="
 	dev-python/certifi[${PYTHON_USEDEP}]
 	dev-python/pyparsing[${PYTHON_USEDEP}]
+	socks5? ( dev-python/pysocks[${PYTHON_USEDEP}] )
 "
 BDEPEND="
 	test? (

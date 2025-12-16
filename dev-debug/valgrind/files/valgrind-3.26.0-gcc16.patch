@@ -1,0 +1,21 @@
+Small backport(ish) of https://sourceware.org/git/?p=valgrind.git;a=commit;h=51c5973d9d1f096b9472df75638f2a53324fafed
+--- a/configure.ac
++++ b/configure.ac
+@@ -2591,7 +2591,7 @@ AC_GCC_WARNING_SUBST_NO([unused-result], [FLAG_W_NO_UNUSED_RESULT])
+ AC_GCC_WARNING_SUBST_NO([infinite-recursion], [FLAG_W_NO_INFINITE_RECURSION])
+ AC_GCC_WARNING_SUBST_NO([deprecated], [FLAG_W_NO_DEPRECATED])
+ # OK for 32 and 64 bit
+-AC_GCC_WARNING_SUBST_NO([alloc-size-larger-than=18446744073709551615], [FLAG_W_NO_ALLOC_SIZE_LARGER_THAN])
++AC_GCC_WARNING_SUBST([alloc-size-larger-than=18446744073709551616], [FLAG_W_NO_ALLOC_SIZE_LARGER_THAN])
+ AC_GCC_WARNING_SUBST_NO([alloc-size], [FLAG_W_NO_ALLOC_SIZE])
+ 
+ AC_GCC_WARNING_SUBST([write-strings], [FLAG_W_WRITE_STRINGS])
+@@ -2610,7 +2610,7 @@ AC_GCC_WARNING_SUBST([implicit-fallthrough=2], [FLAG_W_IMPLICIT_FALLTHROUGH])
+ AC_DEFUN([AC_GXX_WARNING_SUBST_NO],[
+   AC_MSG_CHECKING([if g++ accepts -W$1])
+   safe_CXXFLAGS=$CXXFLAGS
+-  CXXFLAGS="-W$1 -Werror"
++  CXXFLAGS="-W$1 -Wno-$1 -Werror"
+   AC_LANG_PUSH(C++)
+   AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]], [[;]])], [
+                     AC_SUBST([$2], [-Wno-$1])

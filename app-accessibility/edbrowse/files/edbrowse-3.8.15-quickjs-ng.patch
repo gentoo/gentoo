@@ -1,0 +1,38 @@
+use shared quickjs-ng instead of static quickjs
+--- a/src/makefile
++++ b/src/makefile
+@@ -2,16 +2,13 @@
+ CC ?=		cc
+ PERL ?= perl
+ PREFIX ?=	/usr/local
+-QUICKJS_INCLUDE ?= $(PREFIX)/include
+-QUICKJS_LIB ?= $(PREFIX)/lib
+-QUICKJS_LIB_NAME ?= qjs
+ CFLAGS +=	-Wall -D_FILE_OFFSET_BITS=64
+ 
+ # determine includes and linker flags
+-DEPENDENCIES = libcurl:curl odbc libpcre2-8:pcre2-8 readline openssl
++DEPENDENCIES = libcurl:curl odbc libpcre2-8:pcre2-8 readline openssl quickjs-ng
+ INCLUDES = $(shell ./make-helper.sh pkg-config-includes $(DEPENDENCIES))
+ LINKER_LIBS = $(shell ./make-helper.sh pkg-config-libs $(DEPENDENCIES))
+-CPPFLAGS += $(INCLUDES) -I$(QUICKJS_INCLUDE)
++CFLAGS += $(INCLUDES)
+ 
+ #  Set EBDEMIN=on to support dynamic js deminimization
+ ifneq ($(EBDEMIN),)
+@@ -34,14 +31,7 @@ ifneq ($(EBPROF),)
+ 	STRIP = -pg
+ endif
+ 
+-# LDFLAGS for quickjs loading.
+-QUICKJS_LDFLAGS = -L$(QUICKJS_LIB) -l$(QUICKJS_LIB_NAME) -ldl
+-ifeq ($(shell uname),Linux)
+-	QUICKJS_LDFLAGS += -latomic
+-endif
+-LDFLAGS += $(QUICKJS_LDFLAGS)
+-#  and the other loader flags
+-LDFLAGS += $(STRIP) $(LINKER_LIBS) -lpthread -lm -lssl -lcrypto
++LDFLAGS += $(STRIP) $(LINKER_LIBS) -lpthread
+ 
+ #  ESQL C load flags
+ #ESQLDFLAGS = $(STRIP) -Xlinker -rpath -Xlinker $(INFORMIXDIR)/lib:$(INFORMIXDIR)/lib/esql

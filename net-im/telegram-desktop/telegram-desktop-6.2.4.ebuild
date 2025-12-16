@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
 
-inherit xdg cmake python-any-r1 optfeature toolchain-funcs flag-o-matic
+inherit xdg cmake python-any-r1 optfeature flag-o-matic
 
 DESCRIPTION="Official desktop client for Telegram"
 HOMEPAGE="https://desktop.telegram.org https://github.com/telegramdesktop/tdesktop"
@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD GPL-3-with-openssl-exception LGPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~loong"
+KEYWORDS="amd64 ~loong"
 IUSE="dbus enchant +fonts +libdispatch screencast wayland webkit +X"
 
 CDEPEND="
@@ -90,14 +90,6 @@ pkg_pretend() {
 			ewarn "ccache does not work with ${PN} out of the box"
 			ewarn "due to usage of precompiled headers"
 			ewarn "check bug https://bugs.gentoo.org/715114 for more info"
-			ewarn
-		fi
-		if tc-is-clang && [[ $(tc-get-cxx-stdlib) = libstdc++ ]]; then
-			ewarn "this package frequently fails to compile with clang"
-			ewarn "in combination with libstdc++."
-			ewarn "please use libc++, or build this package with gcc."
-			ewarn "(if you have a patch or a fix, please open a"
-			ewarn "bug report about it)"
 			ewarn
 		fi
 	fi

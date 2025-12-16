@@ -12,7 +12,7 @@ SRC_URI="https://github.com/johnfactotum/foliate/archive/refs/tags/${PV}.tar.gz 
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 BDEPEND="${MESON_DEPEND}"
 RDEPEND="dev-libs/gjs

@@ -1,0 +1,22 @@
+diff --git a/src/api/scoped_refptr.h b/src/api/scoped_refptr.h
+index 6ff8a3cf..5d58968e 100644
+--- a/src/api/scoped_refptr.h
++++ b/src/api/scoped_refptr.h
+@@ -68,6 +68,9 @@
+ 
+ #include "absl/base/nullability.h"
+ 
++// Compatibility shim for abseil versions that remove absl::Nonnull and
++// absl::Nullable.
++#if ABSL_LTS_RELEASE_VERSION > 20250512
+ namespace absl {
+ #ifdef absl_nonnull
+ template<typename T>
+@@ -79,6 +82,7 @@ template<typename T>
+ using Nullable = T absl_nullable;
+ #endif // absl_nullable
+ }
++#endif // ABSL_LTS_RELEASE_VERSION > 20250512
+ 
+ namespace webrtc {
+ 

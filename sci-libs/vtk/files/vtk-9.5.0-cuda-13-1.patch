@@ -1,0 +1,99 @@
+From 00d84bf753a0f4d79ea3025c04862d0308cbcb6b Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Mon, 25 Aug 2025 21:14:03 +0200
+Subject: [PATCH] cuda 13
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/ThirdParty/viskores/vtkviskores/viskores/viskores/cont/cuda/internal/CudaAllocator.cu b/ThirdParty/viskores/vtkviskores/viskores/viskores/cont/cuda/internal/CudaAllocator.cu
+index cc2da2b..ad382ee 100644
+--- a/ThirdParty/viskores/vtkviskores/viskores/viskores/cont/cuda/internal/CudaAllocator.cu
++++ b/ThirdParty/viskores/vtkviskores/viskores/viskores/cont/cuda/internal/CudaAllocator.cu
+@@ -284,10 +284,14 @@ void CudaAllocator::PrepareForControl(const void* ptr, std::size_t numBytes)
+ {
+   if (IsManagedPointer(ptr) && numBytes >= Threshold)
+   {
++    // Create device location with specific device ID
++    cudaMemLocation hostLoc;
++    hostLoc.type = cudaMemLocationTypeHost;
++
+     // TODO these hints need to be benchmarked and adjusted once we start
+     // sharing the pointers between cont/exec
+-    VISKORES_CUDA_CALL(cudaMemAdvise(ptr, numBytes, cudaMemAdviseSetAccessedBy, cudaCpuDeviceId));
+-    VISKORES_CUDA_CALL(cudaMemPrefetchAsync(ptr, numBytes, cudaCpuDeviceId, cudaStreamPerThread));
++    VISKORES_CUDA_CALL(cudaMemAdvise(ptr, numBytes, cudaMemAdviseSetAccessedBy, hostLoc));
++    VISKORES_CUDA_CALL(cudaMemPrefetchAsync(ptr, numBytes, hostLoc, 0));
+   }
+ }
+ 
+@@ -299,10 +303,15 @@ void CudaAllocator::PrepareForInput(const void* ptr, std::size_t numBytes)
+     viskores::cont::RuntimeDeviceInformation()
+       .GetRuntimeConfiguration(viskores::cont::DeviceAdapterTagCuda())
+       .GetDeviceInstance(dev);
++
++    cudaMemLocation deviceLoc;
++    deviceLoc.type = cudaMemLocationTypeDevice;
++    deviceLoc.id   = dev;
++
+     // VISKORES_CUDA_CALL(cudaMemAdvise(ptr, numBytes, cudaMemAdviseSetPreferredLocation, dev));
+     // VISKORES_CUDA_CALL(cudaMemAdvise(ptr, numBytes, cudaMemAdviseSetReadMostly, dev));
+-    VISKORES_CUDA_CALL(cudaMemAdvise(ptr, numBytes, cudaMemAdviseSetAccessedBy, dev));
+-    VISKORES_CUDA_CALL(cudaMemPrefetchAsync(ptr, numBytes, dev, cudaStreamPerThread));
++    VISKORES_CUDA_CALL(cudaMemAdvise(ptr, numBytes, cudaMemAdviseSetAccessedBy, deviceLoc));
++    VISKORES_CUDA_CALL(cudaMemPrefetchAsync(ptr, numBytes, deviceLoc, 0, cudaStreamPerThread));
+   }
+ }
+ 
+@@ -314,10 +323,15 @@ void CudaAllocator::PrepareForOutput(const void* ptr, std::size_t numBytes)
+     viskores::cont::RuntimeDeviceInformation()
+       .GetRuntimeConfiguration(viskores::cont::DeviceAdapterTagCuda())
+       .GetDeviceInstance(dev);
++
++    cudaMemLocation deviceLoc;
++    deviceLoc.type = cudaMemLocationTypeDevice;
++    deviceLoc.id   = dev;
++
+     // VISKORES_CUDA_CALL(cudaMemAdvise(ptr, numBytes, cudaMemAdviseSetPreferredLocation, dev));
+     // VISKORES_CUDA_CALL(cudaMemAdvise(ptr, numBytes, cudaMemAdviseUnsetReadMostly, dev));
+-    VISKORES_CUDA_CALL(cudaMemAdvise(ptr, numBytes, cudaMemAdviseSetAccessedBy, dev));
+-    VISKORES_CUDA_CALL(cudaMemPrefetchAsync(ptr, numBytes, dev, cudaStreamPerThread));
++    VISKORES_CUDA_CALL(cudaMemAdvise(ptr, numBytes, cudaMemAdviseSetAccessedBy, deviceLoc));
++    VISKORES_CUDA_CALL(cudaMemPrefetchAsync(ptr, numBytes, deviceLoc, 0, cudaStreamPerThread));
+   }
+ }
+ 
+@@ -329,10 +343,15 @@ void CudaAllocator::PrepareForInPlace(const void* ptr, std::size_t numBytes)
+     viskores::cont::RuntimeDeviceInformation()
+       .GetRuntimeConfiguration(viskores::cont::DeviceAdapterTagCuda())
+       .GetDeviceInstance(dev);
++
++    cudaMemLocation deviceLoc;
++    deviceLoc.type = cudaMemLocationTypeDevice;
++    deviceLoc.id   = dev;
++
+     // VISKORES_CUDA_CALL(cudaMemAdvise(ptr, numBytes, cudaMemAdviseSetPreferredLocation, dev));
+     // VISKORES_CUDA_CALL(cudaMemAdvise(ptr, numBytes, cudaMemAdviseUnsetReadMostly, dev));
+-    VISKORES_CUDA_CALL(cudaMemAdvise(ptr, numBytes, cudaMemAdviseSetAccessedBy, dev));
+-    VISKORES_CUDA_CALL(cudaMemPrefetchAsync(ptr, numBytes, dev, cudaStreamPerThread));
++    VISKORES_CUDA_CALL(cudaMemAdvise(ptr, numBytes, cudaMemAdviseSetAccessedBy, deviceLoc));
++    VISKORES_CUDA_CALL(cudaMemPrefetchAsync(ptr, numBytes, deviceLoc, 0, cudaStreamPerThread));
+   }
+ }
+ 
+diff --git a/ThirdParty/viskores/vtkviskores/viskores/viskores/Swap.h b/ThirdParty/viskores/vtkviskores/viskores/viskores/Swap.h
+index 918075e..4d380db 100644
+--- a/ThirdParty/viskores/vtkviskores/viskores/viskores/Swap.h
++++ b/ThirdParty/viskores/vtkviskores/viskores/viskores/Swap.h
+@@ -41,7 +41,8 @@ namespace viskores
+ // defined in the `viskores` namespace as an argument. If that function has an unqualified call to
+ // `Swap`, it results in ADL being used, causing the templated functions `cub::Swap` and
+ // `viskores::Swap` to conflict.
+-#if defined(VISKORES_CUDA_VERSION_MAJOR) && (VISKORES_CUDA_VERSION_MAJOR >= 12)
++// This was deprecated in favour of `cuda::std::swap` in CUDA 13.
++#if defined(VISKORES_CUDA_VERSION_MAJOR) && (VISKORES_CUDA_VERSION_MAJOR == 12)
+ using cub::Swap;
+ #else
+ template <typename T>
+-- 
+2.51.0
+

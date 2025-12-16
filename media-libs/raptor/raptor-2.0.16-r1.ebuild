@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools multilib-minimal
+inherit autotools dot-a multilib-minimal toolchain-funcs
 
 MY_PN=${PN}2
 MY_P=${MY_PN}-${PV}
@@ -55,6 +55,9 @@ src_prepare() {
 multilib_src_configure() {
 	# FIXME: It should be possible to use net-nntp/inn for libinn.h and -linn!
 
+	# export PKG_CONFIG for xml2-config
+	tc-export PKG_CONFIG
+	lto-guarantee-fat
 	local myeconfargs=(
 		--with-html-dir="${EPREFIX}"/usr/share/gtk-doc/html
 		--with-www=curl
@@ -76,4 +79,5 @@ multilib_src_install() {
 	default
 
 	find "${ED}" -name '*.la' -delete || die
+	strip-lto-bytecode
 }

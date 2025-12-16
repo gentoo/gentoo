@@ -44,6 +44,7 @@ BDEPEND+="
 	$(llvm_gen_dep '
 		llvm-core/clang:${LLVM_SLOT}
 	')
+	dev-libs/protobuf[protoc(+)]
 	test? ( dev-util/cargo-nextest )
 "
 

@@ -43,6 +43,8 @@ BDEPEND="
 	)
 "
 
+PATCHES=( "${FILESDIR}/${P}-qt-6.10.patch" ) # bug #966392
+
 src_configure() {
 	local mycmakeargs=(
 		-DCOMPILE_DOC=ON

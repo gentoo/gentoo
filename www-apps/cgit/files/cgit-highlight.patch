@@ -1,0 +1,16 @@
+cgit's highlighter script supports newer highlight versions, but the config has
+to be patched to enable that instead of the legacy version, which does not ship
+with Gentoo any more. See: https://bugs.gentoo.org/962035
+
+--- a/filters/syntax-highlighting.sh
++++ b/filters/syntax-highlighting.sh
+@@ -115,7 +115,7 @@
+ # found (for example) on EPEL 6.
+ #
+ # This is for version 2
+-exec highlight --force -f -I -X -S "$EXTENSION" 2>/dev/null
++#exec highlight --force -f -I -X -S "$EXTENSION" 2>/dev/null
+ 
+ # This is for version 3
+-#exec highlight --force -f -I -O xhtml -S "$EXTENSION" 2>/dev/null
++exec highlight --force -f -I -O xhtml -S "$EXTENSION" 2>/dev/null

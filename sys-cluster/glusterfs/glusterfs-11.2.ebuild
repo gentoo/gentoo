@@ -26,6 +26,7 @@ RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-11.0-extras-defer-invoking-of-gluster-volume-set-help-as-.patch"
+	"${FILESDIR}/${PN}-11.2-sys-types.h-for-off64_t.patch"
 )
 
 # sys-apps/util-linux is required for libuuid

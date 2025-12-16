@@ -5,18 +5,23 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{11..13} )
 PYTHON_REQ_USE='threads(+)'
-PLOCALES="ca cs de el en_GB es eu fr it ja ko nn pl pt pt_PT ru sv zh"
-inherit toolchain-funcs flag-o-matic plocale python-any-r1 waf-utils desktop xdg
+inherit desktop edo flag-o-matic optfeature python-any-r1 waf-utils toolchain-funcs xdg
 
 DESCRIPTION="Digital Audio Workstation"
 HOMEPAGE="https://ardour.org/"
 
 if [[ ${PV} == *9999* ]]; then
-	# Main repo disabled for now by upstream
+	# Main repo not stable
 	#EGIT_REPO_URI="https://git.ardour.org/ardour/ardour.git"
 	EGIT_REPO_URI="https://github.com/Ardour/ardour.git"
 	inherit git-r3
 else
+	# We previously had 8.12 instead of 8.12.0 despite SRC_URI + S
+	[[ ${PV} != 8.12 ]] && die "Please fix the version to be X.Y.Z instead of X.Y on this next bump!"
+	# upstream doesn't provide a release tarball in github repo
+	# see https://github.com/Ardour/ardour/blob/master/README-GITHUB.txt
+	# official link is available here, but with token/expiration:
+	# https://community.ardour.org/download?architecture=x86_64&type=source
 	SRC_URI="https://dev.gentoo.org/~fordfrog/distfiles/Ardour-${PV}.0.tar.bz2"
 	S="${WORKDIR}/Ardour-${PV}.0"
 	KEYWORDS="~amd64 ~loong ~x86"
@@ -24,101 +29,110 @@ fi
 
 LICENSE="GPL-2"
 SLOT="9"
-IUSE="doc jack nls phonehome pulseaudio cpu_flags_ppc_altivec cpu_flags_x86_sse cpu_flags_x86_mmx cpu_flags_x86_3dnow"
+IUSE="doc jack phonehome pulseaudio test"
+CPU_USE=(
+	cpu_flags_x86_{avx,avx512f,fma3,sse}
+)
+IUSE+=" ${CPU_USE[@]}"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-cpp/cairomm:0
+	app-arch/libarchive:=
+	dev-cpp/cairomm:0[X]
 	dev-cpp/glibmm:2
 	dev-cpp/pangomm:1.4
-	dev-libs/boost:=
 	dev-libs/glib:2
 	dev-libs/libsigc++:2
 	dev-libs/libxml2:2=
 	media-libs/alsa-lib
-	media-libs/aubio
-	media-libs/flac:=
+	media-libs/aubio:=
+	media-libs/flac
+	media-libs/fontconfig
 	media-libs/freetype:2
 	media-libs/liblo
 	media-libs/liblrdf
+	media-libs/libpng:=
 	media-libs/libsamplerate
 	media-libs/libsndfile
-	media-libs/libsoundtouch
+	media-libs/lilv
+	media-libs/lv2
 	media-libs/raptor:2
-	media-libs/rubberband
+	media-libs/rubberband:=
 	media-libs/taglib:=
 	media-libs/vamp-plugin-sdk
-	net-libs/libwebsockets
+	net-libs/libwebsockets:=
 	net-misc/curl
+	sys-apps/dbus
 	sys-libs/readline:0=
-	sci-libs/fftw:3.0[threads]
+	sci-libs/fftw:3.0=[threads]
 	virtual/libusb:1
-	x11-libs/cairo
+	x11-libs/cairo[X]
+	x11-libs/libX11
+	x11-libs/libXext
+	x11-libs/libXinerama
+	x11-libs/libXrandr
 	x11-libs/pango
+	x11-themes/hicolor-icon-theme
 	jack? ( virtual/jack )
 	pulseaudio? ( media-libs/libpulse )
-	media-libs/lilv
-	media-libs/sratom
-	dev-libs/sord
-	media-libs/lv2"
+"
 #	media-libs/suil[X,gtk2] bundled suil is used, maybe probably because of ytk
 #	!bundled-libs? ( media-sound/fluidsynth ) at least libltc is missing to be able to unbundle...
-
-DEPEND="${RDEPEND}
-	jack? ( virtual/jack )"
-BDEPEND="${PYTHON_DEPS}
+DEPEND="
+	${RDEPEND}
+	dev-libs/boost
+	dev-libs/sord
+	media-libs/sratom
+	x11-libs/libXi
+	test? ( dev-util/cppunit )
+"
+BDEPEND="
+	${PYTHON_DEPS}
 	dev-util/itstool
 	sys-devel/gettext
 	virtual/pkgconfig
-	doc? ( app-text/doxygen[dot] )"
+	doc? (
+		app-text/doxygen
+		media-gfx/graphviz
+	)
+"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-6.8-metadata.patch"
+	"${FILESDIR}/${PN}-8.12-fix_fpu.patch"
+	# see bug #966219
+	"${FILESDIR}/${PN}-8.12-fix_fftranscode.patch"
 )
-
-pkg_pretend() {
-	[[ $(tc-getLD) == *gold* ]] && (has_version sci-libs/fftw[openmp] || has_version sci-libs/fftw[threads]) && \
-		ewarn "Linking with gold linker might produce broken executable, see bug #733972"
-}
 
 src_prepare() {
 	default
 
-	# delete optimization flags
-	sed 's/'full-optimization\'\ :\ \\[.*'/'full-optimization\'\ :\ \'\','/' -i "${S}"/wscript || die
-
-	# handle arch
-	MARCH=$(get-flag march)
-	OPTFLAGS=""
-	if use cpu_flags_x86_sse; then
-		if [[ ${MARCH} == "i686" ]] || [[ ${MARCH} == "i486" ]]; then
-			elog "You enabled sse but use an march that does not support sse!"
-			elog "We add -msse to the flags now, but please consider switching your march in make.conf!"
-		fi
-		OPTFLAGS="sse"
+	local optflags=(
+		$(usev cpu_flags_x86_sse sse)
+	)
+	# these flags imply sse and avx
+	if use cpu_flags_x86_sse && use cpu_flags_x86_avx; then
+		optflags+=(
+			avx
+			$(usev cpu_flags_x86_avx512f avx512f)
+			$(usev cpu_flags_x86_fma3 fma)
+		)
 	fi
-	if use cpu_flags_x86_mmx; then
-		if [[ ${MARCH} == "i486" ]]; then
-			elog "You enabled mmx with i486 set as march! You have been warned!"
-		fi
-		OPTFLAGS="${OPTFLAGS} mmx"
-	fi
-	if use cpu_flags_x86_3dnow; then
-		OPTFLAGS="${OPTFLAGS} 3dnow"
-	fi
-	sed 's/flag_line\ =\ o.*/flag_line\ =\ \": '"${OPTFLAGS}"' just some place holders\"/' \
-		-i "${S}"/wscript || die
-	sed 's/cpu\ ==\ .*/cpu\ ==\ "LeaveMarchAsIs":/' -i "${S}"/wscript || die
 
-	# boost and shebang
-	append-flags "-lboost_system"
-	python_fix_shebang "${S}"/wscript
-	python_fix_shebang "${S}"/waf
+	# use only flags defined by users
+	sed 's/flag_line = o.*/flag_line = \": '"${optflags[*]}"'\"/' \
+		-i wscript || die
 
-	# handle locales
-	my_lcmsg() {
-		rm -f {gtk2_ardour,gtk2_ardour/appdata,libs/ardour,libs/gtkmm2ext}/po/${1}.po
-	}
-	plocale_for_each_disabled_locale my_lcmsg
+	# shebang
+	python_fix_shebang wscript
+	python_fix_shebang waf
+
+	# fix hardcoded cpp, apply `gcc -E` needs patching but will fail w/ clang
+	tc-export CPP
+	sed -e "s@obj.command = 'cpp'@obj.command = '${CPP/-gcc -E/-cpp}'@" \
+		-i gtk2_ardour/wscript || die
+
+	# skip non-generic tests with failures
+	sed -e "\@'test/fpu_test.cc',@d" -i libs/ardour/wscript || die
 }
 
 src_configure() {
@@ -130,22 +144,29 @@ src_configure() {
 	# https://bugs.gentoo.org/917095
 	filter-lto
 
-	local backends="alsa,dummy"
-	use jack && backends+=",jack"
-	use pulseaudio && backends+=",pulseaudio"
+	append-ldflags -Wl,-rpath,"${EPREFIX}/usr/$(get_libdir)/ardour${SLOT}"
 
+	local backends=(
+		alsa
+		dummy
+		$(usev jack)
+		$(usev pulseaudio)
+	)
+
+	# VST support is enabled by default given --no-lxvst is not called.
+	# But please keep in mind the README (obsolete?) made by upstream.
+	# https://github.com/Ardour/ardour/blob/master/PACKAGER_README
 	tc-export CC CXX
 	local myconf=(
-		--configdir=/etc
+		--configdir="${EPREFIX}"/etc
+		--cxx17
 		--freedesktop
 		--noconfirm
 		--optimize
-		--with-backends=${backends}
-		$({ use cpu_flags_ppc_altivec || use cpu_flags_x86_sse; } && \
-			echo '' || echo "--no-fpu-optimization")
-		$(usex doc "--docs" '')
-		$(usex nls '' "--no-nls")
-		$(usex phonehome '' "--no-phone-home")
+		--with-backends=$(IFS=','; echo "${backends[*]}")
+		$(usev !cpu_flags_x86_sse --no-fpu-optimization)
+		$(usev !phonehome --no-phone-home)
+		$(usev test --test)
 		# not possible right now  --use-external-libs
 		# missing dependency: https://github.com/c4dm/qm-dsp
 	)
@@ -155,23 +176,34 @@ src_configure() {
 
 src_compile() {
 	waf-utils_src_compile
-	use nls && waf-utils_src_compile i18n
+	waf-utils_src_compile i18n
+	if use doc; then
+		pushd doc >/dev/null || die
+		doxygen -u Doxyfile || die
+		doxygen Doxyfile || die
+		find . \( -iname '*.map' -o -iname '*.md5' \) -delete || die
+		popd >/dev/null || die
+	fi
+}
+
+src_test() {
+	pushd "${S}"/libs/ardour/ >/dev/null || die
+	edo ./run-tests.sh
+	popd >/dev/null || die
 }
 
 src_install() {
-	local s
+	use doc && local HTML_DOCS=( doc/html/. )
 
 	waf-utils_src_install
 
 	mv ${PN}.1 ${PN}${SLOT}.1 || die
 	doman ${PN}${SLOT}.1
 
+	local s
 	for s in 16 22 32 48 256 512; do
 		newicon -s ${s} gtk2_ardour/resources/Ardour-icon_${s}px.png ardour${SLOT}.png
 	done
-
-	# the build system still installs ardour6.png files so we get rid of those to not conflict with ardour:6
-	find "${D}/usr/share/icons/" -name ardour6.png -delete
 
 	sed -i \
 		-e "s/\(^Name=\).*/\1Ardour ${SLOT}/" \
@@ -182,10 +214,17 @@ src_install() {
 	insinto /usr/share/mime/packages
 	newins build/gtk2_ardour/ardour.xml ardour${SLOT}.xml
 	rm "${D}/usr/share/mime/packages/ardour.xml" || die
+
+	# the appdata directory is deprecated
+	# no patch because this causes the translation fail
+	mv "${ED}"/usr/share/{appdata,metainfo} || die
 }
 
 pkg_postinst() {
 	xdg_pkg_postinst
+
+	optfeature "another synth used by default if installed" media-plugins/gmsynth-lv2
+	optfeature "exporting audio in mp3" media-video/ffmpeg[lame]
 
 	elog "Please do _not_ report problems with the package to ${PN} upstream."
 	elog "If you think you've found a bug, check the upstream binary package"

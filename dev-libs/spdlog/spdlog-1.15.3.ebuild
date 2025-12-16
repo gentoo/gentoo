@@ -36,7 +36,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-force_external_fmt.patch"
 )
 
-multilib_src_prepare() {
+src_prepare() {
 	cmake_src_prepare
 	rm -r include/spdlog/fmt/bundled || die "Failed to delete bundled libfmt"
 }

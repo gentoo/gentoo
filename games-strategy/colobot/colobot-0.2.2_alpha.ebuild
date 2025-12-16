@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -50,7 +50,17 @@ DEPEND+="
 "
 
 src_prepare() {
+	local PATCHES=(
+		# https://bugs.gentoo.org/938227
+		# https://github.com/colobot/colobot/commit/1561854b03500d39955c66971c9c98de1937d7e6
+		"${FILESDIR}/${P}-gcc15.patch"
+	)
+
 	cmake_src_prepare
+
+	# https://bugs.gentoo.org/963468
+	# boost already removed upstream
+	sed -i -e '/find_package(Boost/s: system : :' CMakeLists.txt || die
 
 	# we need to call it explicitly to help Ninja figure out the deps
 	cd desktop || die

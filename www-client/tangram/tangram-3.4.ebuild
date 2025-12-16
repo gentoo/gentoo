@@ -24,7 +24,7 @@ else
 	"
 	S="${WORKDIR}/${P^}"
 
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 LICENSE="GPL-3+"

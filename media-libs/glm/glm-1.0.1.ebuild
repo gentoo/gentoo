@@ -20,6 +20,7 @@ RESTRICT="!test? ( test )"
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.9.6-simd.patch
 	"${FILESDIR}"/${PN}-0.9.9.8-big-endian-tests.patch
+	"${FILESDIR}"/${P}-cmake.patch
 )
 
 DOCS=( manual.md readme.md )

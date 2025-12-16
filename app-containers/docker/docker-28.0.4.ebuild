@@ -113,7 +113,7 @@ pkg_setup() {
 	if kernel_is lt 6 1; then
 		CONFIG_CHECK+="
 			~MEMCG_SWAP
-			"
+		"
 	fi
 
 	if kernel_is le 5 8; then
@@ -124,15 +124,15 @@ pkg_setup() {
 
 	CONFIG_CHECK+="
 		~!LEGACY_VSYSCALL_NATIVE
-		"
+	"
 	if kernel_is lt 5 19; then
 		CONFIG_CHECK+="
 			~LEGACY_VSYSCALL_EMULATE
-			"
+		"
 	fi
 	CONFIG_CHECK+="
 		~!LEGACY_VSYSCALL_NONE
-		"
+	"
 	WARNING_LEGACY_VSYSCALL_NONE="CONFIG_LEGACY_VSYSCALL_NONE enabled: \
 		Containers with <=glibc-2.13 will not work"
 
@@ -160,18 +160,18 @@ pkg_setup() {
 		~IP_VS_PROTO_TCP
 		~IP_VS_PROTO_UDP
 		~IP_VS_RR
-		"
+	"
 
 	if use selinux; then
 		CONFIG_CHECK+="
 			~SECURITY_SELINUX
-			"
+		"
 	fi
 
 	if use apparmor; then
 		CONFIG_CHECK+="
 			~SECURITY_APPARMOR
-			"
+		"
 	fi
 
 	# if ! is_set EXT4_USE_FOR_EXT2; then
@@ -207,10 +207,10 @@ pkg_setup() {
 
 	CONFIG_CHECK+="
 		~IPVLAN
-		"
+	"
 	CONFIG_CHECK+="
 		~MACVLAN ~DUMMY
-		"
+	"
 	CONFIG_CHECK+="
 		~NF_NAT_FTP ~NF_CONNTRACK_FTP ~NF_NAT_TFTP ~NF_CONNTRACK_TFTP
 	"
@@ -232,6 +232,7 @@ pkg_setup() {
 
 src_unpack() {
 	default
+	go-module_src_unpack
 	cd "${S}"
 	[[ -f go.mod ]] || ln -s vendor.mod go.mod || die
 	[[ -f go.sum ]] || ln -s vendor.sum go.sum || die

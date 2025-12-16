@@ -1,12 +1,12 @@
 The OpenLDAP Public License
-  Version 2.7, 7 September 2001
+  Version [2.7, 7 September 2001] {2.8, 17 August 2003}
 
 Redistribution and use of this software and associated documentation
 ("Software"), with or without modification, are permitted provided
 that the following conditions are met:
 
-1. Redistributions of source code must retain copyright statements
-   and notices,
+1. Redistributions [of] {in} source [code] {form} must retain copyright
+   statements and notices,
 
 2. Redistributions in binary form must reproduce applicable copyright
    statements and notices, this list of conditions, and the following
@@ -42,6 +42,12 @@ copyright holders.
 
 OpenLDAP is a registered trademark of the OpenLDAP Foundation.
 
-Copyright 1999-2001 The OpenLDAP Foundation, Redwood City,
+Copyright [1999-2001] {1999-2003} The OpenLDAP Foundation, Redwood City,
 California, USA.  All Rights Reserved.  Permission to copy and
 distribute verbatim copies of this document is granted.
+
+---
+
+Gentoo license note: Versions 2.7 and 2.8 of this license slightly
+differ. Square brackets [like this] hold text that occurs in 2.7;
+curly braces {like this} hold text that occurs in 2.8.

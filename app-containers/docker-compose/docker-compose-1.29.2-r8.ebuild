@@ -4,9 +4,9 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
-inherit bash-completion-r1 distutils-r1
+inherit distutils-r1 shell-completion
 
 MY_PV=${PV/_/-}
 DESCRIPTION="Multi-container orchestration for Docker"
@@ -72,10 +72,8 @@ python_test() {
 }
 
 python_install_all() {
-	newbashcomp contrib/completion/bash/docker-compose ${PN}
-
-	insinto /usr/share/zsh/site-functions
-	doins contrib/completion/zsh/*
+	dobashcomp contrib/completion/bash/${PN}
+	dozshcomp contrib/completion/zsh/_${PN}
 
 	distutils-r1_python_install_all
 }

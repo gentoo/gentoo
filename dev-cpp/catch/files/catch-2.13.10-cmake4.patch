@@ -1,0 +1,46 @@
+From 98d37da03ee21e8a87cd3e0e6542c794c667e78b Mon Sep 17 00:00:00 2001
+From: Dimitrij Mijoski <dmjpp@hotmail.com>
+Date: Fri, 16 Sep 2022 17:56:00 +0200
+Subject: [PATCH] Raise the minimum CMake version to 3.10 (#2523)
+
+---
+ CMakeLists.txt                  | 2 +-
+ examples/CMakeLists.txt         | 2 +-
+ tests/ExtraTests/CMakeLists.txt | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ae8e86b9b9..be12d516c4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.10)
+ 
+ # detect if Catch is being bundled,
+ # disable testsuite in that case
+diff --git a/examples/CMakeLists.txt b/examples/CMakeLists.txt
+index b934aa7cd7..7118482eaf 100644
+--- a/examples/CMakeLists.txt
++++ b/examples/CMakeLists.txt
+@@ -1,5 +1,5 @@
+-cmake_minimum_required( VERSION 3.0 )
++cmake_minimum_required( VERSION 3.10 )
+
+-project( CatchExamples CXX )
++project( CatchExamples LANGUAGES CXX )
+ 
+ message( STATUS "Examples included" )
+diff --git a/projects/ExtraTests/CMakeLists.txt b/projects/ExtraTests/CMakeLists.txt
+index f1a02af3f6..0943a9c370 100644
+--- a/projects/ExtraTests/CMakeLists.txt
++++ b/projects/ExtraTests/CMakeLists.txt
+@@ -2,7 +2,7 @@
+ # Build extra tests.
+ #
+ 
+-cmake_minimum_required( VERSION 3.5 )
++cmake_minimum_required( VERSION 3.10 )
+ 
+ project( Catch2ExtraTests LANGUAGES CXX )
+ 

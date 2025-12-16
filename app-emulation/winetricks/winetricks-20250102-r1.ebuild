@@ -3,7 +3,6 @@
 
 EAPI=8
 
-WTG="winetricks-gentoo-2012.11.24"
 inherit xdg
 
 DESCRIPTION="Easy way to install DLLs needed to work around problems in Wine"
@@ -14,29 +13,14 @@ if [[ ${PV} == *99999999* ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/Winetricks/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
-
-SRC_URI+=" gui? ( https://dev.gentoo.org/~chiitoo/distfiles/${WTG}.tar.bz2 )"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-IUSE="gui rar test"
-RESTRICT="!test? ( test )"
+IUSE="gui rar"
+RESTRICT="test"
 
-# dev-util/shellcheck is not available for x86
-RESTRICT+=" x86? ( test )"
-
-BDEPEND="
-	test? (
-		dev-python/bashate
-		dev-util/checkbashisms
-		|| (
-			dev-util/shellcheck-bin
-			dev-util/shellcheck
-		)
-	)
-"
 RDEPEND="
 	app-arch/cabextract
 	|| (
@@ -54,24 +38,11 @@ RDEPEND="
 	rar? ( app-arch/unrar )
 "
 
-# Test targets include syntax checks only, not the "heavy duty" tests
-# that would require a lot of disk space, as well as network access.
-
-# This uses a non-standard "Wine" category, which is provided by
-# '/etc/xdg/menus/applications-merged/wine.menu' from the
-# 'app-emulation/wine-desktop-common' package.
-# https://bugs.gentoo.org/451552
-QA_DESKTOP_FILE="usr/share/applications/winetricks.desktop"
-
 src_unpack() {
 	case ${PV} in
 		*99999999*) git-r3_src_unpack ;&
 		*) default ;;
 	esac
-}
-
-src_test() {
-	./tests/shell-checks || die "Test(s) failed."
 }
 
 src_install() {

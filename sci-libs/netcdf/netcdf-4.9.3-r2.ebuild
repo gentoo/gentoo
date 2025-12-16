@@ -13,7 +13,7 @@ S="${WORKDIR}"/${PN}-c-${PV}
 LICENSE="UCAR-Unidata"
 # SONAME of libnetcdf.so
 SLOT="0/22"
-KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 IUSE="blosc bzip2 +dap doc examples hdf +hdf5 mpi szip test zstd"
 RESTRICT="!test? ( test )"
 
@@ -23,6 +23,7 @@ RESTRICT="!test? ( test )"
 # automagic in 4.9.3 :(
 RDEPEND="
 	dev-libs/libxml2:=
+	dev-libs/libzip:=
 	virtual/zlib:=
 	blosc? ( dev-libs/c-blosc:= )
 	bzip2? ( app-arch/bzip2:= )

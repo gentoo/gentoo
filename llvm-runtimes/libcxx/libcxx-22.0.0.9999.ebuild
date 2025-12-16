@@ -179,7 +179,7 @@ multilib_src_test() {
 	local -x LIT_PRESERVES_TMP=1
 	# https://github.com/llvm/llvm-project/issues/153940
 	local -x LIT_XFAIL="libcxx/gdb/gdb_pretty_printer_test.sh.cpp"
-	cmake_build install-cxx-test-suite-prefix
+	cmake_build libcxx-test-suite-install-cxx
 	if [[ ${CHOST} != *-darwin* ]] ; then
 		local libdir=$(get_libdir)
 		cp "${BUILD_DIR}"/{,libcxx/test-suite-install/}"${libdir}"/libc++_shared.so || die

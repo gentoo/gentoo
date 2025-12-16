@@ -1,0 +1,48 @@
+https://bugs.gentoo.org/953122
+https://lore.kernel.org/git/20251202-toon-cross-compile-v1-0-cabc8bce529f@iotcl.com/
+
+From 9e911f149088538f67ca9e8bf5cbfc95d3fe23fe Mon Sep 17 00:00:00 2001
+Message-ID: <9e911f149088538f67ca9e8bf5cbfc95d3fe23fe.1764817376.git.sam@gentoo.org>
+In-Reply-To: <6437cb608c9c9894852499da36e22095adb57a8e.1764817376.git.sam@gentoo.org>
+References: <6437cb608c9c9894852499da36e22095adb57a8e.1764817376.git.sam@gentoo.org>
+From: Toon Claes <toon@iotcl.com>
+Date: Wed, 3 Dec 2025 15:53:31 +0100
+Subject: [PATCH 3/3] meson: use is_cross_build() where possible
+
+In previous commit the first use of meson.can_run_host_binaries() was
+introduced. This is a guard around compiler.run() to ensure it's
+actually possible to execute the provided.
+
+In other places we've been having the same issue, but here `not
+meson.is_cross_build()` is used as guard. This does the trick, but it
+also prevents the code from running even when an exe_wrapper is
+configured.
+
+Switch to using meson.can_run_host_binaries() here as well.
+
+There is another place left that still uses `not
+meson.is_cross_build()`, but here it's a guard around fs.exists(). That
+function will always run on the build machine, so checking for
+cross-compilation is still in place here.
+
+Signed-off-by: Toon Claes <toon@iotcl.com>
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 95348e69a4..00ad8a5c60 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1492,7 +1492,7 @@ if not has_bsd_sysctl
+   endif
+ endif
+ 
+-if not meson.is_cross_build() and compiler.run('''
++if meson.can_run_host_binaries() and compiler.run('''
+   #include <stdio.h>
+ 
+   int main(int argc, const char **argv)
+-- 
+2.52.0
+
