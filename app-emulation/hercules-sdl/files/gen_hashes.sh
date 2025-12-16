@@ -11,7 +11,7 @@ done
 
 VERSIONARR=( ${1//./ })
 VERSIONTAG="Release_${VERSIONARR[0]}.${VERSIONARR[1]}"
-[[ "${VERSIONARR[2]}" == "0" ]] || VERSIONTAG=".${VERSIONARR[2]}"
+[[ "${VERSIONARR[2]}" == "0" ]] || VERSIONTAG+=".${VERSIONARR[2]}"
 RELEASEDATE="$(git -C "${CLONEDIR}/hyperion" show -s --format="%ci" "${VERSIONTAG}")"
 
 echo
