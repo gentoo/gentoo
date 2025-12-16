@@ -36,6 +36,8 @@ PATCHES=(
 	"${FILESDIR}/${P}-lunar-lake.patch"
 	# https://github.com/OpenMathLib/OpenBLAS/pull/5360
 	"${FILESDIR}/${P}-arm-assembly.patch"
+	# https://github.com/OpenMathLib/OpenBLAS/pull/5303
+	"${FILESDIR}/${P}-enomem-check.patch"
 )
 
 pkg_pretend() {
@@ -109,7 +111,29 @@ src_configure() {
 		export DYNAMIC_ARCH=1 NO_AFFINITY=1 TARGET=GENERIC
 	fi
 
-	export NUM_PARALLEL=${OPENBLAS_NPARALLEL:-8} NUM_THREADS=${OPENBLAS_NTHREAD:-64}
+	case $(tc-get-ptr-size) in
+		4)
+			# NUM_BUFFERS = MAX(50, (2*NUM_PARALLEL*NUM_THREADS)
+			# BUFFER_SIZE = (16 << 20) (on x86)
+			# NUM_BUFFERS * BUFFER_SIZE is allocated and must be
+			# <4GiB on 32-bit arches (bug #967251).
+			#
+			# Scale down to 2*8*(16 << 20) = 256MiB for 32-bit
+			# arches. This avoids spinning in blas_memory_alloc
+			# which doesn't handle ENOMEM.
+			export NUM_PARALLEL=${OPENBLAS_NPARALLEL:-2}
+			export NUM_THREADS=${OPENBLAS_NTHREAD:-8}
+			;;
+		8)
+			# XXX: The current values here rely on overcommit
+			# for most systems (bug #967026).
+			export NUM_PARALLEL=${OPENBLAS_NPARALLEL:-8}
+			export NUM_THREADS=${OPENBLAS_NTHREAD:-64}
+			;;
+		*)
+			die "Unexpected tc-get-ptr-size. Please file a bug."
+			;;
+	esac
 
 	# Allow setting OPENBLAS_TARGET to override auto detection in case the
 	# toolchain is not enough to detect.
