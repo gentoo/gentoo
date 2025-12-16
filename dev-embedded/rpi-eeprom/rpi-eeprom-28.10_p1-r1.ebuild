@@ -39,6 +39,9 @@ src_prepare() {
 	sed -i \
 		-e 's:/usr/bin/rpi-eeprom-update:/usr/sbin/rpi-eeprom-update:' \
 		"debian/rpi-eeprom.rpi-eeprom-update.service" || die "Failed sed on rpi-eeprom.rpi-eeprom-update.service"
+	sed -i \
+		-e 's:/usr/lib/firmware:/lib/firmware:' \
+		"${MY_P}/rpi-eeprom-update-default" || die "Failed sed on rpi-eeprom-update-default"
 }
 
 src_configure() {
