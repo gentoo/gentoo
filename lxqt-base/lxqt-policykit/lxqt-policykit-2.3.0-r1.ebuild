@@ -29,7 +29,7 @@ BDEPEND="
 DEPEND="
 	>=dev-qt/qtbase-6.6:6[gui,widgets]
 	=lxqt-base/liblxqt-${MY_PV}*:=
-	>=sys-auth/polkit-qt-0.200.0[qt6]
+	>=sys-auth/polkit-qt-0.200.0[qt6(+)]
 "
 RDEPEND="${DEPEND}"
 
