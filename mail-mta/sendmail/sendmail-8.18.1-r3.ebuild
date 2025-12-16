@@ -87,6 +87,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-8.16.1-build-system.patch
 	"${FILESDIR}"/${PN}-8.18.1-c23.patch
 	"${FILESDIR}"/${PN}-8.18.1-tcpwrappers.patch
+	"${FILESDIR}"/${PN}-8.18.1-more-c23.patch
 )
 
 src_prepare() {
@@ -252,7 +253,7 @@ src_install() {
 	EOF
 
 	cat <<- EOF > "${ED}"/etc/mail/access || die "access cat failed"
-		# Check the /usr/share/sendmail-cf/README file for a description
+		# Check the ${EPREFIX}/usr/share/sendmail-cf/README file for a description
 		# of the format of this file. (search for access_db in that file)
 		#
 
