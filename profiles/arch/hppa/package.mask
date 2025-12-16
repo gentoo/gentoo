@@ -1,13 +1,6 @@
 # Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Sam James <sam@gentoo.org> (2025-11-05)
-# Fails to build on HPPA (stack size calculation goes wrong), bug #959416.
-dev-lang/python:3.14
-dev-lang/python:3.14t
-dev-python/python-tests:3.14
-dev-python/python-tests:3.14t
-
 # Sam James <sam@gentoo.org> (2023-03-28)
 # Needs explicit porting to each platform (bug 894078#c6)
 dev-python/py-cpuinfo
