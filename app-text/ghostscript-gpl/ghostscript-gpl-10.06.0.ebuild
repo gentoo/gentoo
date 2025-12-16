@@ -152,8 +152,9 @@ src_configure() {
 	# leptonica and tesseract are bundled but modified upstream, like in
 	# mujs/mupdf.
 	#
-	# There is --without-local-brotli but it wants a non-existent -lbrotli
-	# and it's not clear what that corresponds do, as we have split libs.
+	# There is --without-local-brotli but it wants a non-existent -lbrotli.
+	# Fixed in https://bugs.ghostscript.com/show_bug.cgi?id=708832 for next
+	# release.
 	PKGCONFIG=$(type -P $(tc-getPKG_CONFIG)) econf \
 		--enable-freetype \
 		--enable-fontconfig \
