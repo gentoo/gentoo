@@ -25,6 +25,11 @@ IUSE="pulseaudio wayland"
 DEPEND="
 	>=dev-python/cairocffi-1.7.0[${PYTHON_USEDEP}]
 	>=dev-python/cffi-1.1.0:=[${PYTHON_USEDEP}]
+	wayland? (
+		dev-libs/libinput:=
+		dev-libs/wayland
+		gui-libs/wlroots:0.19
+	)
 "
 RDEPEND="
 	${DEPEND}
@@ -37,10 +42,6 @@ RDEPEND="
 	pulseaudio? (
 		dev-python/pulsectl-asyncio[${PYTHON_USEDEP}]
 		media-libs/libpulse
-	)
-	wayland? (
-		>=dev-python/pywayland-0.4.17[${PYTHON_USEDEP}]
-		>=dev-python/pywlroots-0.17[${PYTHON_USEDEP}]
 	)
 "
 BDEPEND="
