@@ -1,0 +1,41 @@
+https://github.com/legionus/kbd/commit/51ee1d95fae950323b62d3f31b14dc1e0e436762
+
+From 51ee1d95fae950323b62d3f31b14dc1e0e436762 Mon Sep 17 00:00:00 2001
+From: "Haelwenn (lanodan) Monnier" <contact@hacktivis.me>
+Date: Fri, 31 Oct 2025 04:44:33 +0100
+Subject: [PATCH] data/Makefile.am: put `--` between end of option and mode
+
+POSIX comforming getopt(3) will stop parsing options at the mode argument
+(provided it doesn't starts with a dash).
+So prior to this change `--` would be taken as a file argument
+because getopt(3) already stopped.
+
+Signed-off-by: Haelwenn (lanodan) Monnier <contact@hacktivis.me>
+---
+ data/Makefile.am | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/data/Makefile.am b/data/Makefile.am
+index 4d2ae3d1..8cd3610a 100644
+--- a/data/Makefile.am
++++ b/data/Makefile.am
+@@ -22,15 +22,15 @@ V_PACK_1 =
+ 
+ # compress data files - do not touch the distribution but copy first
+ $(SRC_KEYMAPDIR): $(KEYMAPDIR)
+-	$(V_PACK)cp -r -- "$<" "$@" && chmod -R u+w -- "$@" && \
++	$(V_PACK)cp -r -- "$<" "$@" && chmod -R -- u+w "$@" && \
+ 	$(srcdir)/compress.sh "$@"/*/*.map "$@"/*/*/*.map
+ 
+ $(SRC_FONTDIR): $(FONTDIR)
+-	$(V_PACK)cp -r -- "$<" "$@" && chmod -R u+w -- "$@" && \
++	$(V_PACK)cp -r -- "$<" "$@" && chmod -R -- u+w "$@" && \
+ 	$(srcdir)/compress.sh "$@"/*
+ 
+ $(SRC_PARTIALDIR): $(PARTIALDIR)
+-	$(V_PACK)cp -r -- "$<" "$@" && chmod -R u+w -- "$@" && \
++	$(V_PACK)cp -r -- "$<" "$@" && chmod -R -- u+w "$@" && \
+ 	$(srcdir)/compress.sh "$@"/*
+ 
+ # (not yet screenmaps - some other time)
+
