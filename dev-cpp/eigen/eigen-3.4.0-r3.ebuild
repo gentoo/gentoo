@@ -154,6 +154,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.4.0-noansi.patch"
 	"${FILESDIR}/${PN}-3.4.0-cxxstandard.patch"
 	"${FILESDIR}/${PN}-3.4.0-ppc-no-vsx.patch" # bug 936107
+	"${FILESDIR}/${PN}-3.4.0-c++-20.patch"
 )
 
 # TODO should be in cuda.eclass
