@@ -20,7 +20,7 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="X +qtutils systemd hyprpm +uwsm"
+IUSE="X hyprpm +qtutils systemd +uwsm"
 
 # hyprpm (hyprland plugin manager) requires the dependencies at runtime
 # so that it can clone, compile and install plugins.
