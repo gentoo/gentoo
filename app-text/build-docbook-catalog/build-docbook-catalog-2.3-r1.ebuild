@@ -34,5 +34,5 @@ src_configure() {
 pkg_postinst() {
 	# New version -> regen files
 	# See bug #816303 for rationale behind die
-	build-docbook-catalog || die "Failed to regenerate docbook catalog."
+	"${EROOT}"/usr/sbin/build-docbook-catalog || die "Failed to regenerate docbook catalog."
 }

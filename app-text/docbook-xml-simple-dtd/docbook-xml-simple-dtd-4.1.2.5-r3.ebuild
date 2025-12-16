@@ -44,12 +44,12 @@ pkg_postinst() {
 	fi
 
 	# See bug #816303 for rationale behind die
-	build-docbook-catalog || die "Failed to regenerate docbook catalog. Is /run mounted?"
+	"${EROOT}"/usr/sbin/build-docbook-catalog || die "Failed to regenerate docbook catalog. Is /run mounted?"
 	sgml-catalog-r1_pkg_postinst
 }
 
 pkg_postrm() {
 	# See bug #816303 for rationale behind die
-	build-docbook-catalog || die "Failed to regenerate docbook catalog. Is /run mounted?"
+	"${EROOT}"/usr/sbin/build-docbook-catalog || die "Failed to regenerate docbook catalog. Is /run mounted?"
 	sgml-catalog-r1_pkg_postrm
 }
