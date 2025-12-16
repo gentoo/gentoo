@@ -87,7 +87,7 @@ RDEPEND="${PYTHON_DEPS}
 		$(python_gen_cond_dep 'dev-python/pyqt5[opengl,${PYTHON_USEDEP}]')
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
-		x11-libs/qwt:6=[qt5(+)]
+		x11-libs/qwt:6=[qt5(-)]
 		dev-qt/qtwidgets:5
 	)
 	soapy? (
