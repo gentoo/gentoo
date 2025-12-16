@@ -67,19 +67,12 @@ distutils_enable_tests pytest
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
-	# make extension builds fatal
-	sed -i -e 's:Exception:None:' builder.py || die
-
-	if ! use wayland; then
-		sed -e "s/ffi_compile(verbose=wayland_requested)/pass/" \
-			-i builder.py || die
-	fi
-
 	mkdir bin || die
 }
 
 src_compile() {
 	local -x CFFI_TMPDIR=${T}
+	local DISTUTILS_CONFIG_SETTINGS_JSON="{\"backend\": \"$(usex wayland wayland x11)\"}"
 	distutils-r1_src_compile
 }
 
