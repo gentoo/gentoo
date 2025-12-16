@@ -1,0 +1,41 @@
+see https://bugs.gentoo.org/967067
+lerp is declared globally with c++20 which is by default with gcc-16
+rename lerp to avoid conflict with the non-identical function std::lerp
+lerp is int here but std::lerp is float
+--- a/src/rxvttoolkit.C
++++ b/src/rxvttoolkit.C
+@@ -834,7 +834,7 @@ rxvt_color::set (rxvt_screen *screen, const char *name)
+   // parse the nonstandard "[alphapercent]" prefix
+   if (1 <= sscanf (name, "[%hd]%n", &c.a, &skip))
+     {
+-      c.a = lerp<int, int, int> (0, rgba::MAX_CC, c.a);
++      c.a = rxlerp<int, int, int> (0, rgba::MAX_CC, c.a);
+       name += skip;
+     }
+ 
+@@ -981,10 +981,10 @@ rxvt_color::fade (rxvt_screen *screen, int percent, rxvt_color &result, const rg
+   result.set (
+     screen,
+     rgba (
+-      lerp (c.r, to.r, percent),
+-      lerp (c.g, to.g, percent),
+-      lerp (c.b, to.b, percent),
+-      lerp (c.a, to.a, percent)
++      rxlerp (c.r, to.r, percent),
++      rxlerp (c.g, to.g, percent),
++      rxlerp (c.b, to.b, percent),
++      rxlerp (c.a, to.a, percent)
+     )
+   );
+ }
+--- a/src/rxvtutil.h
++++ b/src/rxvtutil.h
+@@ -21,7 +21,7 @@ template<typename T, typename U, typename V> static inline void clamp_it (T &v,
+ // linear interpolation
+ template<typename T, typename U, typename P>
+ static inline T
+-lerp (T a, U b, P p)
++rxlerp (T a, U b, P p)
+ {
+   return (long(a) * long(100 - p) + long(b) * long(p) + 50) / 100;
+ }
