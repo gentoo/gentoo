@@ -28,8 +28,10 @@ BDEPEND="
 src_prepare() {
 	default
 
-	# remove stripping from Makefile
-	sed -e '/ldflags/s/-s //g' -i Makefile || die
+	# remove stripping & buildvcs from Makefile
+	sed -e '/ldflags/s/-s //g' \
+		-e '/buildvcs/s/-buildvcs=true //g' \
+		-i Makefile || die
 
 	# Broken on dates other than 2023-01-07
 	sed -e 's/TestHTML/_&/' -i internal/audit/output_test.go || die
