@@ -34,6 +34,8 @@ PATCHES=(
 	"${FILESDIR}/${P}-cmake_libdir.patch"
 	# https://github.com/OpenMathLib/OpenBLAS/pull/5378
 	"${FILESDIR}/${P}-lunar-lake.patch"
+	# https://github.com/OpenMathLib/OpenBLAS/pull/5360
+	"${FILESDIR}/${P}-arm-assembly.patch"
 )
 
 pkg_pretend() {
