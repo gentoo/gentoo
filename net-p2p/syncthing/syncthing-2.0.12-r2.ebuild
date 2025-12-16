@@ -90,7 +90,7 @@ src_install() {
 	newconfd "${FILESDIR}"/${PN}.confd-r2 ${PN}
 	newinitd "${FILESDIR}"/${PN}.initd-r5 ${PN}
 	exeinto /etc/user/init.d
-	newexe "${FILESDIR}"/syncthing.initd-user-r1 syncthing
+	newexe "${FILESDIR}"/syncthing.initd-user-r2 syncthing
 
 	keepdir /var/log/${PN}
 	insinto /etc/logrotate.d
