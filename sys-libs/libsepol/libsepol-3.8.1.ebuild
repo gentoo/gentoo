@@ -3,7 +3,7 @@
 
 EAPI="8"
 
-inherit toolchain-funcs multilib-minimal
+inherit dot-a toolchain-funcs multilib-minimal
 
 MY_PV="${PV//_/-}"
 MY_P="${PN}-${MY_PV}"
@@ -34,6 +34,7 @@ src_prepare() {
 }
 
 my_make() {
+	use static-libs && lto-guarantee-fat
 	emake \
 		PREFIX="${EPREFIX}/usr" \
 		LIBDIR="\$(PREFIX)/$(get_libdir)" \
@@ -51,5 +52,9 @@ multilib_src_compile() {
 
 multilib_src_install() {
 	my_make DESTDIR="${D}" install
-	use static-libs || rm "${ED}"/usr/$(get_libdir)/*.a || die
+	if use static-libs; then
+		strip-lto-bytecode
+	else
+		rm "${ED}"/usr/$(get_libdir)/*.a || die
+	fi
 }
