@@ -11,7 +11,7 @@ SRC_URI="https://github.com/postfixadmin/postfixadmin/archive/${P}.tar.gz"
 S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="+mysql postgres +vacation imap"
 REQUIRED_USE="|| ( mysql postgres )"
 
