@@ -21,8 +21,6 @@ SRC_URI="
 	doc? (
 		https://www.scons.org/doc/${PV}/PDF/${PN}-user.pdf
 			-> ${P}-user.pdf
-		https://www.scons.org/doc/${PV}/HTML/${PN}-user.html
-			-> ${P}-user.html
 	)
 	test? (
 		https://github.com/SCons/scons/archive/${PV}.tar.gz
@@ -157,5 +155,5 @@ python_install_all() {
 	distutils-r1_python_install_all
 
 	doman *.1
-	use doc && dodoc "${DISTDIR}/${P}"-user.{pdf,html}
+	use doc && dodoc "${DISTDIR}/${P}"-user.pdf
 }
