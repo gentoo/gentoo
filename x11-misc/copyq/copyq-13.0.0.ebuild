@@ -51,6 +51,7 @@ BDEPEND="
 PATCHES=(
 	# used in tests
 	"${FILESDIR}/${PN}-7.1.0-support-plugin-dir-envvar-r1.patch"
+	"${FILESDIR}/${P}-fix-cmake-qt-6.10.patch" # bug #966739
 )
 
 src_configure() {
