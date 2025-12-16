@@ -16,7 +16,7 @@ IUSE="abi_s390_32 cryptsetup curl fuse ncurses openssl pfm snmp zlib"
 
 RDEPEND="
 	curl? ( net-misc/curl:0= )
-	fuse? ( sys-fs/fuse:0= )
+	fuse? ( sys-fs/fuse:3= )
 	ncurses? ( sys-libs/ncurses:0= )
 	openssl? (
 		dev-libs/openssl:0=
