@@ -221,6 +221,7 @@ PATCHES=(
 	# PRs
 	"${FILESDIR}/${PN}-5.0.0-doxygen-1.14.patch"
 
+	"${FILESDIR}/${PN}-5.0.1-c++-20.patch"
 	"${FILESDIR}/${PN}-5.0.1-cmake-GNUInstallDirs.patch"
 	"${FILESDIR}/${PN}-5.0.1-make-static-libs-optional.patch"
 

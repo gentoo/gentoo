@@ -219,6 +219,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.4.0-buildstring.patch"
 	"${FILESDIR}/${PN}-3.4.1-cxxstandard-17.patch"
 
+	"${FILESDIR}/${PN}-3.4.0-c++-20.patch"
+
 	"${FILESDIR}/${PN}-3.4.1-bug1213-link-with-Eigen3-Eigen.patch"
 
 	"${FILESDIR}/${PN}-5.0.1-cmake-GNUInstallDirs.patch"
