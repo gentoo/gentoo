@@ -12,9 +12,11 @@ SRC_URI="https://github.com/ibm-${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="-* ~s390"
-IUSE="abi_s390_32 cryptsetup fuse ncurses openssl pfm snmp zlib"
+IUSE="abi_s390_32 cryptsetup curl fuse ncurses openssl pfm snmp zlib"
 
-RDEPEND="fuse? ( sys-fs/fuse:0= )
+RDEPEND="
+	curl? ( net-misc/curl:0= )
+	fuse? ( sys-fs/fuse:0= )
 	ncurses? ( sys-libs/ncurses:0= )
 	openssl? (
 		dev-libs/openssl:0=
@@ -53,6 +55,7 @@ src_configure() {
 	export HAVE_OPENSSL=$(usex openssl 1 0)
 	export HAVE_CRYPTSETUP2=$(usex cryptsetup 1 0)
 	export HAVE_JSONC=$(usex cryptsetup 1 0)
+	export HAVE_LIBCURL=$(usex curl 1 0)
 	tc-export AR BUILD_CC CC CXX LD NM OBJCOPY
 }
 
