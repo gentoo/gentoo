@@ -161,6 +161,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.4.0-buildstring.patch"
 	"${FILESDIR}/${PN}-3.4.1-cxxstandard-17.patch"
 
+	"${FILESDIR}/${PN}-3.4.0-c++-20.patch"
+
 	"${DISTDIR}/${P}_p1.patch"
 	"${DISTDIR}/${P}_p2.patch"
 )

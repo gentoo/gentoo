@@ -158,6 +158,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.4.0-doc-nocompress.patch" # bug 830064
 	"${FILESDIR}/${PN}-3.4.0-buildstring.patch"
 	"${FILESDIR}/${PN}-3.4.1-cxxstandard-17.patch"
+
+	"${FILESDIR}/${PN}-3.4.0-c++-20.patch"
 )
 
 # TODO should be in cuda.eclass

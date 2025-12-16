@@ -158,6 +158,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.4.0-doc-nocompress.patch" # bug 830064
 	"${FILESDIR}/${PN}-3.4.0-buildstring.patch"
 	"${FILESDIR}/${PN}-5.0.0-please_protect_your_min_with_parentheses.patch"
+	"${FILESDIR}/${PN}-5.0.1-c++-20.patch"
 )
 
 # TODO should be in cuda.eclass
@@ -233,6 +234,15 @@ src_prepare() {
 }
 
 src_configure() {
+	# TODO BUG TEST
+	# fixed via "${FILESDIR}/${PN}-3.4.0-c++-20.patch"
+	# test/product_threaded.cpp unconditionally sets EIGEN_GEMM_THREADPOOL which
+	# causes the following build failure when openmp is also set
+	#
+	#     EIGEN_HAS_OPENMP and EIGEN_GEMM_THREADPOOL may not both be defined.
+	#
+	use openmp && use test && die "Cannot run test suite with openmp set"
+
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS="yes"
 		-DBUILD_TESTING="$(usex test)"
