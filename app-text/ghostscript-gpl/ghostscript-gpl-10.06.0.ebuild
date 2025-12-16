@@ -65,6 +65,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-10.03.1-arm64-neon-tesseract.patch
 	"${FILESDIR}"/${PN}-10.06.0-tesseract-fPIC.patch
 	"${FILESDIR}"/${PN}-10.06.0-32-bit.patch
+	"${FILESDIR}"/${PN}-10.06.0-arm-brotli.patch
 )
 
 src_prepare() {
