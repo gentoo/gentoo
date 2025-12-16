@@ -1,0 +1,47 @@
+From 27370be06e09281761be34c53a6d50d87978d4f4 Mon Sep 17 00:00:00 2001
+From: Harald Sitter <sitter@kde.org>
+Date: Tue, 14 Jan 2025 15:09:13 +0100
+Subject: [PATCH] ListenerAdapter: uniquify the identities
+
+prevents duplicated entries
+---
+ agent/listeneradapter.cpp | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/agent/listeneradapter.cpp b/agent/listeneradapter.cpp
+index 507f4b6..a1b84e9 100644
+--- a/agent/listeneradapter.cpp
++++ b/agent/listeneradapter.cpp
+@@ -71,13 +71,17 @@ void ListenerAdapter::polkit_qt_listener_initiate_authentication(PolkitAgentList
+ {
+     qDebug() << "polkit_qt_listener_initiate_authentication callback for " << listener;
+ 
+-    PolkitQt1::Identity::List idents;
+     PolkitQt1::Details dets(details);
+ 
+     Listener *list = findListener(listener);
+ 
+-    for (GList *identity = g_list_first(identities); identity != nullptr; identity = g_list_next(identity)) {
+-         idents.append(PolkitQt1::Identity((PolkitIdentity *)identity->data));
++    // Polkit enumerates identities without regard for their hash value, potentially leading to duplicated entries.
++    // Unique the identities on our end.
++    // https://github.com/polkit-org/polkit/issues/542
++    QHash<guint, PolkitQt1::Identity> uniqueIdentities;
++    for (GList *entry = g_list_first(identities); entry != nullptr; entry = g_list_next(entry)) {
++        auto identity = static_cast<PolkitIdentity *>(entry->data);
++        uniqueIdentities.insert(polkit_identity_hash(identity), PolkitQt1::Identity(identity));
+     }
+ 
+     list->initiateAuthentication(QString::fromUtf8(action_id),
+@@ -85,7 +89,7 @@ void ListenerAdapter::polkit_qt_listener_initiate_authentication(PolkitAgentList
+                                  QString::fromUtf8(icon_name),
+                                  dets,
+                                  QString::fromUtf8(cookie),
+-                                 idents,
++                                 uniqueIdentities.values(),
+                                  new AsyncResult(result));
+ }
+ 
+-- 
+2.52.0
+
