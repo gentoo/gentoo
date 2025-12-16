@@ -9,7 +9,7 @@
 <kde-plasma/breeze-6.5.0:6 qt5
 <kde-plasma/oxygen-6.5.0:6 qt5
 <kde-plasma/plasma-integration-6.5.0:6 qt5
-<kde-plasma/plasma-meta-6.5.5
+<kde-plasma/plasma-meta-6.5.5 qt5
 <sys-auth/polkit-qt-0.200.0-r1 qt5
 <x11-libs/qwt-6.3.0 qt5
 
