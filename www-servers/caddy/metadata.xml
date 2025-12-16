@@ -42,6 +42,17 @@
       Adds module which allows to manage Duck DNS hosted DNS zones using Caddy
       https://caddyserver.com/docs/modules/dns.providers.duckdns
     </flag>
+    <flag name="dns-dynv6">
+      Adds module which allows to manage Dynv6 hosted DNS zones using Caddy
+    </flag>
+    <flag name="dns-gandi">
+      Adds module which allows to manage Gandi hosted DNS zones using Caddy
+      https://caddyserver.com/docs/modules/dns.providers.gandi
+    </flag>
+    <flag name="dns-godaddy">
+      Adds module which allows to manage Godaddy hosted DNS zones using Caddy
+      https://caddyserver.com/docs/modules/dns.providers.godaddy
+    </flag>
     <flag name="dns-googleclouddns">
       Adds module which allows to manage Google Cloud hosted DNS zones using Caddy
       https://caddyserver.com/docs/modules/dns.providers.googleclouddns
@@ -58,13 +69,25 @@
       Adds module which allows to manage Huawei Cloud hosted DNS zones using Caddy
       https://caddyserver.com/docs/modules/dns.providers.huaweicloud
     </flag>
+    <flag name="dns-linode">
+      Adds module which allows to manage Linode hosted DNS zones using Caddy
+      https://caddyserver.com/docs/modules/dns.providers.linode
+    </flag>
     <flag name="dns-mailinabox">
       Adds module which allows to manage Mail-in-a-Box hosted DNS zones using Caddy
       https://caddyserver.com/docs/modules/dns.providers.mailinabox
     </flag>
+    <flag name="dns-namecheap">
+      Adds module which allows to manage Namecheap hosted DNS zones using Caddy
+      https://caddyserver.com/docs/modules/dns.providers.namecheap
+    </flag>
     <flag name="dns-netcup">
       Adds module which allows to manage netcup hosted DNS zones using Caddy
       https://caddyserver.com/docs/modules/dns.providers.netcup
+    </flag>
+    <flag name="dns-netlify">
+      Adds module which allows to manage Netlify hosted DNS zones using Caddy
+      https://caddyserver.com/docs/modules/dns.providers.netlify
     </flag>
     <flag name="dns-ovh">
       Adds module which allows to manage OVHcloud hosted DNS zones using Caddy
@@ -74,9 +97,17 @@
       Adds module which allows to manage porkbun hosted DNS zones using Caddy
       https://caddyserver.com/docs/modules/dns.providers.porkbun
     </flag>
+    <flag name="dns-powerdns">
+      Adds module which allows to manage DNS zones of <pkg>net-dns/pdns</pkg> using Caddy
+      https://caddyserver.com/docs/modules/dns.providers.powerdns
+    </flag>
     <flag name="dns-rfc2136">
       Adds module which allows to manage DNS zones using RFC2136 Dynamic Updates within Caddy
       https://caddyserver.com/docs/modules/dns.providers.rfc2136
+    </flag>
+    <flag name="dns-route53">
+      Adds module which allows to manage AWS route53 hosted DNS zones using Caddy
+      https://caddyserver.com/docs/modules/dns.providers.route53
     </flag>
     <flag name="dns-vultr">
       Adds module which allows to manage Vultr hosted DNS zones using Caddy
