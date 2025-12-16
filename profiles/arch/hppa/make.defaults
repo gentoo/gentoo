@@ -22,10 +22,3 @@ CHOST_hppa="${CHOST}"
 # Donnie Berkholz <dberkholz@gentoo.org> (2006-08-18)
 # Defaults for video drivers
 VIDEO_CARDS="fbdev"
-
-# Sam James <sam@gentoo.org> (2025-11-05)
-# Since Python 3.14 is masked on HPPA, we need to re-enable Python 3.13
-# and explicitly disable 3.14. See bug #959416.
-PYTHON_SINGLE_TARGET="python3_13 -python3_14 -python3_14t"
-PYTHON_TARGETS="python3_13 -python3_14 -python3_14t"
-BOOTSTRAP_USE="unicode pkg-config split-usr xml python_targets_python3_13 python_single_target_python3_13"
