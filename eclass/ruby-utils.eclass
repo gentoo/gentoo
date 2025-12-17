@@ -6,7 +6,7 @@
 # Ruby team <ruby@gentoo.org>
 # @AUTHOR:
 # Author: Hans de Graaff <graaff@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: An eclass for supporting ruby scripts and bindings in non-ruby packages
 # @DESCRIPTION:
 # The ruby-utils eclass is designed to allow an easier installation of
@@ -19,7 +19,7 @@ if [[ -z ${_RUBY_UTILS_ECLASS} ]] ; then
 _RUBY_UTILS_ECLASS=1
 
 case ${EAPI} in
-	7|8) ;;
+	7|8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
