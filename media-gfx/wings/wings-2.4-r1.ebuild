@@ -12,8 +12,13 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
+# Run failed with dev-lang/erlang in the range [28, 28.3), see bug 964737
 RDEPEND="
 	>dev-lang/erlang-21[wxwidgets]
+	|| (
+		<dev-lang/erlang-28
+		>=dev-lang/erlang-28.3
+	)
 	dev-libs/cl
 	media-libs/glu
 	media-libs/libsdl[opengl]
