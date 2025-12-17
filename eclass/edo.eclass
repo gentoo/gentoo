@@ -6,11 +6,12 @@
 # QA Team <qa@gentoo.org>
 # @AUTHOR:
 # Sam James <sam@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
-# @BLURB: Convenience function to run commands verbosely and die on failure
+# @SUPPORTED_EAPIS: 7 8 9
+# @BLURB: convenience function to run commands verbosely and die on failure
 # @DESCRIPTION:
-# This eclass provides the 'edo' command, and an 'edob' variant for ebegin/eend,
-# which logs the command used verbosely and dies (exits) on failure.
+# This eclass provides the 'edo' command in EAPIs 7 and 8, and an 'edob'
+# variant for ebegin/eend, which logs the command used verbosely and
+# dies (exits) on failure.
 #
 # The 'edo' command should be used only where needed to give a more verbose log,
 # e.g. for invoking non-standard ./configure scripts, or building
@@ -22,14 +23,16 @@
 # those commands produce output.  The 'edob' command will suppress the
 # command's output and only present it if the command returned with a
 # non-zero exit status.
-case ${EAPI} in
-	7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
 
 if [[ -z ${_EDO_ECLASS} ]] ; then
 _EDO_ECLASS=1
 
+case ${EAPI} in
+	7|8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+if [[ ${EAPI} = [78] ]]; then
 # @FUNCTION: edo
 # @USAGE: <command> [<args>...]
 # @DESCRIPTION:
@@ -57,6 +60,7 @@ edo() {
 	printf '%s\n' "${out:1}" >&2
 	"$@" || die -n "Failed to run command: ${1}"
 }
+fi
 
 # @FUNCTION: edob
 # @USAGE: [-l <log-name>] [-m <message>] <command> [<args>...]
