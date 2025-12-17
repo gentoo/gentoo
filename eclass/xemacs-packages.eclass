@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: xemacs-packages.eclass
 # @MAINTAINER:
 # xemacs@gentoo.org
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @BLURB: Eclass to support elisp packages distributed by XEmacs.
 # @DESCRIPTION:
 # This eclass supports ebuilds for packages distributed by XEmacs.
@@ -24,13 +24,13 @@
 # in the experimental repository are auto-generated from XEmacs VCS, so
 # they may not be well-tested.
 
-case ${EAPI} in
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_XEMACS_PACKAGES_ECLASS} ]] ; then
 _XEMACS_PACKAGES_ECLASS=1
+
+case ${EAPI} in
+	8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 RDEPEND="app-editors/xemacs"
 S="${WORKDIR}"
