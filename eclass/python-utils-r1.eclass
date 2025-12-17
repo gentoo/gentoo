@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
 # Based on work of: Krzysztof Pawlik <nelchael@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: Utility functions for packages with Python parts.
 # @DESCRIPTION:
 # A utility eclass providing functions to query Python implementations,
@@ -27,11 +27,12 @@ if [[ -z ${_PYTHON_UTILS_R1_ECLASS} ]]; then
 _PYTHON_UTILS_R1_ECLASS=1
 
 case ${EAPI} in
-	7|8) ;;
+	7) inherit eapi8-dosym eapi9-pipestatus ;;
+	8) inherit eapi9-pipestatus ;;
+	9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-[[ ${EAPI} == 7 ]] && inherit eapi8-dosym
 inherit multiprocessing toolchain-funcs
 
 # @ECLASS_VARIABLE: _PYTHON_ALL_IMPLS
@@ -1231,12 +1232,12 @@ _python_check_occluded_packages() {
 				comm -1 -3 <(
 					find "${fn}" -type f -not -path '*/__pycache__/*' |
 						sort
-					assert
+					pipestatus || die
 				) <(
 					cd "${sitedir}" &&
 						find "${fn}" -type f -not -path '*/__pycache__/*' |
 						sort
-					assert
+					pipestatus || die
 				)
 			)
 
