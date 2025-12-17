@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: app-alternatives.eclass
@@ -6,7 +6,7 @@
 # Michał Górny <mgorny@gentoo.org>
 # @AUTHOR:
 # Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @BLURB: Common logic for app-alternatives/*
 # @DESCRIPTION:
 # This eclass provides common logic shared by app-alternatives/*
@@ -16,13 +16,13 @@
 # A get_alternative() function is provided that determines the selected
 # alternative and prints its respective flag name.
 
-case ${EAPI} in
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} unsupported."
-esac
-
 if [[ -z ${_APP_ALTERNATIVES_ECLASS} ]]; then
 _APP_ALTERNATIVES_ECLASS=1
+
+case ${EAPI} in
+	8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} unsupported."
+esac
 
 # @ECLASS_VARIABLE: ALTERNATIVES
 # @PRE_INHERIT
