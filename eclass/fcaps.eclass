@@ -4,7 +4,7 @@
 # @ECLASS: fcaps.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: function to set POSIX file-based capabilities
 # @DESCRIPTION:
 # This eclass provides a function to set file-based capabilities on binaries.
@@ -29,13 +29,13 @@
 # )
 # @CODE
 
-case ${EAPI} in
-	7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_FCAPS_ECLASS} ]]; then
 _FCAPS_ECLASS=1
+
+case ${EAPI} in
+	7|8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 IUSE="+filecaps"
 
