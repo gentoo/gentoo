@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Michał Górny <mgorny@gentoo.org>
 # Mike Gilbert <floppym@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: common bits to run app-alternatives/ninja builder
 # @DESCRIPTION:
 # This eclass provides a single function -- eninja -- that can be used
@@ -17,13 +17,13 @@
 # be used indirectly by the eclasses for other build systems (CMake,
 # Meson).
 
-case ${EAPI} in
-	7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_NINJA_UTILS_ECLASS} ]]; then
 _NINJA_UTILS_ECLASS=1
+
+case ${EAPI} in
+	7|8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # @ECLASS_VARIABLE: NINJA
 # @PRE_INHERIT
