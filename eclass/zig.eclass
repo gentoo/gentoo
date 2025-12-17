@@ -8,7 +8,7 @@
 # Alfred Wingate <parona@protonmail.com>
 # Violet Purcell <vimproved@inventati.org>
 # Eric Joldasov <bratishkaerik@landless-city.net>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @PROVIDES: zig-utils
 # @BLURB: Functions for working with ZBS (Zig Build System)
 # @DESCRIPTION:
@@ -50,7 +50,7 @@ if [[ -z ${_ZIG_ECLASS} ]]; then
 _ZIG_ECLASS=1
 
 case ${EAPI} in
-	8) ;;
+	8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
