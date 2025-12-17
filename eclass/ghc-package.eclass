@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ghc-package.eclass
@@ -6,18 +6,18 @@
 # "Gentoo's Haskell Language team" <haskell@gentoo.org>
 # @AUTHOR:
 # Original Author: Andres Loeh <kosmikus@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: This eclass helps with the Glasgow Haskell Compiler's package configuration utility.
 # @DESCRIPTION:
 # Helper eclass to handle ghc installation/upgrade/deinstallation process.
 
-inherit multiprocessing
-
 # Maintain version-testing compatibility with ebuilds not using EAPI 7.
 case ${EAPI} in
-	7|8) ;;
+	7|8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
+
+inherit multiprocessing
 
 # GHC uses it's own native code generator. Portage's
 # QA check generates false positive because it assumes
