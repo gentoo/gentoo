@@ -6,7 +6,7 @@
 # Nowa Ammerlaan <nowa@gentoo.org>
 # @AUTHOR:
 # Author: Nowa Ammerlaan <nowa@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: A small eclass to sign efi files for Secure Boot
 # @DESCRIPTION:
 # Eclass for packages that install .efi files. A use flag and two user
@@ -39,7 +39,7 @@
 # secureboot_auto_sign can be used to ensure that the signed version is used.
 
 case ${EAPI} in
-	7|8) ;;
+	7|8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
