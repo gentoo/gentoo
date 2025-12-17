@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: prefix.eclass
 # @MAINTAINER:
 # Feel free to contact the Prefix team through <prefix@gentoo.org> if
 # you have problems, suggestions or questions.
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: Eclass to provide Prefix functionality
 # @DESCRIPTION:
 # Gentoo Prefix allows users to install into a self defined offset
@@ -16,7 +16,7 @@ if [[ -z ${_PREFIX_ECLASS} ]]; then
 _PREFIX_ECLASS=1
 
 case ${EAPI} in
-	7|8) ;;
+	7|8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
