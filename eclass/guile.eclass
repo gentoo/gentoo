@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: guile.eclass
@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Author: Arsen Arsenović <arsen@gentoo.org>
 # Inspired by prior work in the Gentoo Python ecosystem.
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @PROVIDES: guile-utils
 # @BLURB: Utilities for packages multi-implementation Guile packages.
 # @DESCRIPTION:
@@ -85,13 +85,13 @@
 # DEPEND="${RDEPEND}"
 # @CODE
 
-case "${EAPI}" in
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ ! "${_GUILE_ECLASS}" ]]; then
 _GUILE_ECLASS=1
+
+case "${EAPI}" in
+	8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 inherit guile-utils multibuild
 
