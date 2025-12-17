@@ -4,14 +4,14 @@
 # @ECLASS: rust-toolchain.eclass
 # @MAINTAINER:
 # Rust Project <rust@gentoo.org>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @BLURB: helps map gentoo arches to rust ABIs
 # @DESCRIPTION:
 # This eclass contains helper functions, to aid in proper rust-ABI handling for
 # various gentoo arches.
 
 case ${EAPI} in
-	8) ;;
+	8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
