@@ -8,7 +8,7 @@
 # Author: Diego E. Pettenò <flameeyes@gentoo.org>
 # Author: Alex Legler <a3li@gentoo.org>
 # Author: Hans de Graaff <graaff@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: An eclass for installing Ruby packages with proper support for multiple Ruby slots.
 # @DESCRIPTION:
 # The Ruby eclass is designed to allow an easier installation of Ruby packages
@@ -70,7 +70,7 @@ if [[ -z ${_RUBY_NG_ECLASS} ]]; then
 _RUBY_NG_ECLASS=1
 
 case ${EAPI} in
-	7|8) ;;
+	7|8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
