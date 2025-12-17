@@ -37,7 +37,7 @@ LATEX_DEPEND="
 	virtual/latex-base
 	app-text/dvipng
 	app-text/ghostscript-gpl
-	app-text/poppler[utils]
+	app-text/poppler[cairo,png,utils]
 	dev-texlive/texlive-fontsrecommended
 	dev-texlive/texlive-latexextra
 	dev-texlive/texlive-luatex
