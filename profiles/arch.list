@@ -21,7 +21,6 @@ ppc64-linux
 riscv-linux
 x86-linux
 arm64-macos
-ppc-macos
 x86-macos
 x64-macos
 x64-solaris

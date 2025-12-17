@@ -34,7 +34,6 @@ ppc64-linux	testing
 riscv-linux	testing
 x86-linux	testing
 arm64-macos	testing
-ppc-macos	testing
 x86-macos	testing
 x64-macos	testing
 x64-solaris	testing

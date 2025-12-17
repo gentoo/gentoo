@@ -35,7 +35,6 @@ SRC_URI="https://downloads.sourceforge.net/sbcl/${P}-source.tar.bz2
 		arm? ( https://downloads.sourceforge.net/sbcl/${PN}-${BV_ARM}-armhf-linux-binary.tar.bz2 )
 		arm64? ( https://downloads.sourceforge.net/sbcl/${PN}-${BV_ARM64}-arm64-linux-binary.tar.bz2 )
 		x64-macos? ( https://downloads.sourceforge.net/sbcl/${PN}-${BV_X64_MACOS}-x86-64-darwin-binary.tar.bz2 )
-		ppc-macos? ( https://downloads.sourceforge.net/sbcl/${PN}-${BV_PPC_MACOS}-powerpc-darwin-binary.tar.bz2 )
 		x64-solaris? ( https://downloads.sourceforge.net/sbcl/${PN}-${BV_X64_SOLARIS}-x86-64-solaris-binary.tar.bz2 )
 	)"
 

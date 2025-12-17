@@ -16,7 +16,7 @@ S="${WORKDIR}/qdox-${P}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc-macos ~x64-macos"
+KEYWORDS="~amd64 ~x64-macos"
 
 BDEPEND="dev-java/byaccj:0"
 DEPEND="

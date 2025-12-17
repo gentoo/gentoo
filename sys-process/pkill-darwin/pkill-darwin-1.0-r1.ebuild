@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~grobian/distfiles/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~arm64-macos ~ppc-macos ~x64-macos"
+KEYWORDS="~arm64-macos ~x64-macos"
 
 src_compile() {
 	edo $(tc-getCC) ${CFLAGS} -o pkill ${LDFLAGS} pkill.c

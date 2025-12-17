@@ -11,7 +11,7 @@ SRC_URI="http://frodo.looijaard.name/system/files/software/getopt/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~arm64-macos ~x64-macos ~x64-solaris"
 IUSE="nls"
 
 RDEPEND="nls? ( virtual/libintl )"

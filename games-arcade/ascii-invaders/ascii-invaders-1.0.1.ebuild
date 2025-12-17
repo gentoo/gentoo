@@ -11,7 +11,7 @@ SRC_URI="https://github.com/macdice/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~ppc64 ~x86 ~ppc-macos"
+KEYWORDS="~amd64 ~mips ~ppc64 ~x86"
 
 RDEPEND="sys-libs/ncurses:="
 DEPEND="${RDEPEND}"
