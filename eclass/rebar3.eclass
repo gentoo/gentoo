@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: rebar3.eclass
@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Amadeusz Żołnowski <aidecoe@gentoo.org>
 # Anna (cybertailor) Vyalkova <cyber+gentoo@sysrq.in>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @PROVIDES: rebar-utils
 # @BLURB: Build Erlang/OTP projects using dev-util/rebar:3.
 # @DESCRIPTION:
@@ -21,15 +21,16 @@
 # targets. The eclass workarounds some of these problems. It handles
 # installation in a generic way for Erlang/OTP structured projects.
 
-case ${EAPI} in
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_REBAR3_ECLASS} ]]; then
 _REBAR3_ECLASS=1
 
-inherit edo rebar-utils
+case ${EAPI} in
+	8) inherit edo ;;
+	9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+inherit rebar-utils
 
 RDEPEND="dev-lang/erlang:="
 DEPEND="${RDEPEND}"
