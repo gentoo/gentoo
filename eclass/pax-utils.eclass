@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: pax-utils.eclass
@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Author: Kevin F. Quinn <kevquinn@gentoo.org>
 # Author: Anthony G. Basile <blueness@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: functions to provide PaX markings for hardened kernels
 # @DESCRIPTION:
 #
@@ -25,7 +25,7 @@ if [[ -z ${_PAX_UTILS_ECLASS} ]]; then
 _PAX_UTILS_ECLASS=1
 
 case ${EAPI} in
-	7|8) ;;
+	7|8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
