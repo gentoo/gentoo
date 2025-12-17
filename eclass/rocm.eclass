@@ -6,7 +6,7 @@
 # Gentoo Science Project <sci@gentoo.org>
 # @AUTHOR:
 # Yiyang Wu <xgreenlandforwyy@gmail.com>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @BLURB: Common functions and variables for ROCm packages written in HIP
 # @DESCRIPTION:
 # ROCm packages such as sci-libs/<roc|hip>*, and packages built on top of ROCm
@@ -84,13 +84,13 @@
 # }
 # @CODE
 
-case ${EAPI} in
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_ROCM_ECLASS} ]]; then
 _ROCM_ECLASS=1
+
+case ${EAPI} in
+	8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 inherit flag-o-matic
 
@@ -342,7 +342,7 @@ rocm_use_clang() {
 	if ! hipclangpath=$(hipconfig --hipclangpath); then
         die "Error: \"hipconfig --hipclangpath\" failed"
     fi
-	
+
 	export CC="${hipclangpath}/${CHOST}-clang"
 	export CXX="${hipclangpath}/${CHOST}-clang++"
 	_rocm_strip_unsupported_flags
