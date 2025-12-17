@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: mercurial.eclass
@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Next gen author: Krzysztof Pawlik <nelchael@gentoo.org>
 # Original author: Aron Griffis <agriffis@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: This eclass provides generic mercurial fetching functions
 # @DESCRIPTION:
 # This eclass provides generic mercurial fetching functions. To fetch sources
@@ -15,13 +15,13 @@
 # you need to share single repository between several ebuilds set EHG_PROJECT to
 # project name in all of them.
 
-case ${EAPI:-0} in
-	[78]) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_MERCURIAL_ECLASS} ]] ; then
 _MERCURIAL_ECLASS=1
+
+case ${EAPI:-0} in
+	7|8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 PROPERTIES+=" live"
 
