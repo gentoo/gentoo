@@ -8,7 +8,7 @@ HOMEPAGE="https://github.com/dlbeer/quirc"
 
 inherit flag-o-matic multilib-minimal toolchain-funcs
 
-if [[ ${PV} = *9999* ]] ; then
+if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/dlbeer/${PN}.git"
 else
@@ -19,11 +19,24 @@ else
 fi
 
 DEPEND="
-	media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}]
-	media-libs/libpng:=[${MULTILIB_USEDEP}]
-	media-libs/libsdl:=[${MULTILIB_USEDEP}]
-	opencv? ( media-libs/opencv:=[${MULTILIB_USEDEP}] )
-	sdl? ( media-libs/sdl-gfx:=[${MULTILIB_USEDEP}] )
+	opencv? (
+		media-libs/libjpeg-turbo:=
+		media-libs/libpng:=
+		media-libs/opencv:=
+	)
+	sdl? (
+		media-libs/libjpeg-turbo:=
+		media-libs/libpng:=
+		media-libs/libsdl:=
+		media-libs/sdl-gfx:=
+	)
+	tools? (
+		media-libs/libjpeg-turbo:=
+		media-libs/libpng:=
+	)
+	v4l? (
+		media-libs/libjpeg-turbo:=
+	)
 "
 RDEPEND="
 	${DEPEND}
@@ -35,38 +48,58 @@ SLOT="0/${PV}"
 IUSE="opencv sdl tools v4l"
 
 src_prepare() {
-	LIB_VERSION=$(grep '^LIB_VERSION = ' "${S}/Makefile" | cut -d ' ' -f 3 || die)
+	read -r LIB_VERSION <<< "$(grep '^LIB_VERSION = ' "${S}/Makefile" | cut -d ' ' -f 3 || die)"
+	export LIB_VERSION
+
 	sed -r \
 		-e "s#\.o libquirc.a#.o libquirc.so.${LIB_VERSION}#g" \
 		-e '/^QUIRC_CFLAGS/ s/$/ -fPIC/' \
 		-i Makefile || die
 
 	default
+
 	multilib_copy_sources
 }
 
 multilib_src_configure() {
 	tc-export CC CXX
-
-	targets=( libquirc.so )
-	use opencv && targets+=( opencv )
-	use sdl && targets+=( sdl )
-	use tools && targets+=( qrtest )
-	use v4l && targets+=( v4l )
 }
 
 multilib_src_compile() {
 	append-ldflags "-Wl,-soname,libquirc.so.${LIB_VERSION}"
+
+	local targets=( "libquirc.so" )
+
+	if multilib_is_native_abi; then
+		if use opencv; then
+			targets+=( "opencv" )
+		fi
+
+		if use sdl; then
+			targets+=( "sdl" )
+		fi
+
+		if use tools; then
+			targets+=( "qrtest" )
+		fi
+
+		if use v4l; then
+			targets+=( "v4l" )
+		fi
+	fi
+
 	emake V=1 DESTDIR="${D}" PREFIX="${EPREFIX}/usr" "${targets[@]}"
 }
 
 multilib_src_install() {
 	dolib.so "libquirc.so.${LIB_VERSION}"
+
 	dosym "libquirc.so.${LIB_VERSION}" "${EPREFIX}/usr/$(get_libdir)/libquirc.so"
 	dosym "libquirc.so.${LIB_VERSION}" "${EPREFIX}/usr/$(get_libdir)/libquirc.so.$(ver_cut 1 "${LIB_VERSION}")"
 
 	if multilib_is_native_abi; then
 		into "/usr/libexec/${PN}"
+
 		if use opencv; then
 			dobin inspect-opencv
 			dobin quirc-demo-opencv
