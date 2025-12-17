@@ -19,11 +19,12 @@ PYTHON_COMPAT=( python3_{11..14} )
 
 RUST_MAX_VER=${PV%%_*}
 RUST_PV=${PV%%_p*}
+RUST_P=${PN}-${RUST_PV}
 [[ -z ${RUST_PATCH_VER} ]] && RUST_PATCH_VER=${PV}
 
 if [[ ${PV} == *9999* ]]; then
 	# Update this as new `beta` releases come out.
-	RUST_MIN_VER="1.91.0"
+	RUST_MIN_VER="1.88.0"
 elif [[ ${PV} == *beta* ]]; then
 	RUST_MAX_VER="$(ver_cut 1).$(ver_cut 2).0"
 	RUST_MIN_VER="$(ver_cut 1).$(($(ver_cut 2) - 1)).0"
@@ -781,7 +782,7 @@ src_install() {
 		# we need realpath on /usr/bin/* symlink return version-appended binary path.
 		# so /usr/bin/rustc should point to /usr/lib/rust/<ver>/bin/rustc-<ver>
 		# need to fix eselect-rust to remove this hack.
-		local ver_i="${i}-${PV%%_*}"
+		local ver_i="${i}-${RUST_PV}"
 		if [[ -f "${ED}/usr/lib/${PN}/${SLOT}/bin/${i}" ]]; then
 			einfo "Installing ${i} symlink"
 			ln -v "${ED}/usr/lib/${PN}/${SLOT}/bin/${i}" "${ED}/usr/lib/${PN}/${SLOT}/bin/${ver_i}" || die
@@ -797,9 +798,9 @@ src_install() {
 	use rust-analyzer && dosym "${SLOT}/libexec" "/usr/lib/${PN}/libexec-${SLOT}"
 	dosym "${SLOT}/share/man" "/usr/lib/${PN}/man-${SLOT}"
 	dosym "rust/${SLOT}/lib/rustlib" "/usr/lib/rustlib-${SLOT}"
-	dosym "../../lib/${PN}/${SLOT}/share/doc/rust" "/usr/share/doc/${P}"
+	dosym "../../lib/${PN}/${SLOT}/share/doc/rust" "/usr/share/doc/${RUST_P}"
 
-	newenvd - "50${P}" <<-_EOF_
+	newenvd - "50${RUST_P}" <<-_EOF_
 		MANPATH="${EPREFIX}/usr/lib/rust/man-${SLOT}"
 	_EOF_
 
@@ -821,20 +822,20 @@ src_install() {
 	_EOF_
 
 	if use clippy; then
-		echo /usr/bin/clippy-driver >> "${T}/provider-${P}"
-		echo /usr/bin/cargo-clippy >> "${T}/provider-${P}"
+		echo /usr/bin/clippy-driver >> "${T}/provider-${RUST_P}"
+		echo /usr/bin/cargo-clippy >> "${T}/provider-${RUST_P}"
 	fi
 	if [[ ${SLOT} == *9999* ]] && use miri; then
-		echo /usr/bin/miri >> "${T}/provider-${P}"
-		echo /usr/bin/cargo-miri >> "${T}/provider-${P}"
+		echo /usr/bin/miri >> "${T}/provider-${RUST_P}"
+		echo /usr/bin/cargo-miri >> "${T}/provider-${RUST_P}"
 	fi
 	if use rustfmt; then
-		echo /usr/bin/rustfmt >> "${T}/provider-${P}"
-		echo /usr/bin/cargo-fmt >> "${T}/provider-${P}"
+		echo /usr/bin/rustfmt >> "${T}/provider-${RUST_P}"
+		echo /usr/bin/cargo-fmt >> "${T}/provider-${RUST_P}"
 	fi
 	if use rust-analyzer; then
-		echo /usr/lib/rust/libexec >> "${T}/provider-${P}"
-		echo /usr/bin/rust-analyzer >> "${T}/provider-${P}"
+		echo /usr/lib/rust/libexec >> "${T}/provider-${RUST_P}"
+		echo /usr/bin/rust-analyzer >> "${T}/provider-${RUST_P}"
 	fi
 
 	insinto /etc/env.d/rust
@@ -848,7 +849,6 @@ src_install() {
 }
 
 pkg_postinst() {
-
 	eselect rust update
 
 	if has_version dev-debug/gdb || has_version llvm-core/lldb; then
