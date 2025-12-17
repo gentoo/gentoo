@@ -6,7 +6,7 @@
 # java@gentoo.org
 # @AUTHOR:
 # Yuan Liao <liaoyuan@gmail.com>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @BLURB: Experimental eclass to add support for testing on the JUnit Platform
 # @DESCRIPTION:
 # This eclass runs tests on the JUnit Platform (which is a JUnit 5 sub-project)
@@ -17,8 +17,8 @@
 if [[ ! ${_JUNIT5_ECLASS} ]]; then
 
 case ${EAPI} in
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI} unsupported." ;;
+	8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 inherit java-pkg-simple
