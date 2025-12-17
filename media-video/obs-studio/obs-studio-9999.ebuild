@@ -160,11 +160,6 @@ QA_PREBUILT="
 	usr/lib*/obs-plugins/swiftshader/libGLESv2.so
 "
 
-PATCHES=(
-	# https://bugs.gentoo.org/966051
-	"${FILESDIR}/${PN}-32.0.2-fix-build-with-qt-6.10.patch"
-)
-
 pkg_setup() {
 	use lua && lua-single_pkg_setup
 	use python && python-single-r1_pkg_setup
@@ -185,8 +180,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	# Un-comment after all patches are gone.
-	#default
+	default
 
 	sed -i 's/-Werror //' libobs/cmake/linux/libobs.pc.in || die
 
