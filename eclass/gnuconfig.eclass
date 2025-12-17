@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gnuconfig.eclass
@@ -6,7 +6,7 @@
 # Sam James <sam@gentoo.org>
 # @AUTHOR:
 # Will Woods <wwoods@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: Refresh bundled gnuconfig files (config.guess, config.sub)
 # @DESCRIPTION:
 # This eclass is used to automatically update files that typically come with
@@ -20,7 +20,7 @@ if [[ -z ${_GNUCONFIG_ECLASS} ]] ; then
  _GNUCONFIG_CLASS=1
 
 case ${EAPI} in
-	7|8) ;;
+	7|8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
