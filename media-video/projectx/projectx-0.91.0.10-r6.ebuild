@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,9 +31,10 @@ RDEPEND="
 	${COMMON_DEPEND}
 	>=virtual/jre-1.8:*
 "
+# max jdk-25 for bug #966706, see https://bugs.openjdk.org/browse/JDK-8368226
 DEPEND="
 	${COMMON_DEPEND}
-	>=virtual/jdk-1.8:*
+	<virtual/jdk-26:*
 	app-arch/xz-utils
 "
 
