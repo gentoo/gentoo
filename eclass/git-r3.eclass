@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: git-r3.eclass
 # @MAINTAINER:
 # Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: Eclass for fetching and unpacking git repositories.
 # @DESCRIPTION:
 # Third generation eclass for easing maintenance of live ebuilds using
@@ -25,13 +25,13 @@
 # defined but EGIT_LFS is not turned on and vice versa.
 # If non-empty, then the repo likely needs EGIT_LFS to clone properly.
 
-case ${EAPI} in
-	7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_GIT_R3_ECLASS} ]]; then
 _GIT_R3_ECLASS=1
+
+case ${EAPI} in
+	7|8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 PROPERTIES+=" live"
 
