@@ -6,7 +6,7 @@
 # Gentoo Scheme project <scheme@gentoo.org>
 # @AUTHOR:
 # Author: Arsen Arsenović <arsen@gentoo.org>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @BLURB: Common code between GNU Guile-related eclasses and ebuilds.
 # @DESCRIPTION:
 # This eclass contains various bits of common code between
@@ -15,13 +15,13 @@
 #
 # Inspired by prior work in the Gentoo Python ecosystem.
 
-case "${EAPI}" in
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ ! "${_GUILE_UTILS_ECLASS}" ]]; then
 _GUILE_UTILS_ECLASS=1
+
+case "${EAPI}" in
+	8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 inherit toolchain-funcs
 
