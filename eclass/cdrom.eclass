@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cdrom.eclass
 # @MAINTAINER:
 # games@gentoo.org
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: Functions for CD-ROM handling
 # @DESCRIPTION:
 # Acquire CD(s) for those lovely CD-based emerges.  Yes, this violates
@@ -19,7 +19,7 @@ if [[ -z ${_CDROM_ECLASS} ]]; then
 _CDROM_ECLASS=1
 
 case ${EAPI} in
-	7|8) ;;
+	7|8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
