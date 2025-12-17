@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: lua.eclass
@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Marek Szuba <marecki@gentoo.org>
 # Based on python-r1.eclass by Michał Górny <mgorny@gentoo.org> et al.
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @PROVIDES: lua-utils
 # @BLURB: A common eclass for Lua packages
 # @DESCRIPTION:
@@ -50,13 +50,13 @@
 # }
 # @CODE
 
-case ${EAPI} in
-	7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_LUA_ECLASS} ]]; then
 _LUA_ECLASS=1
+
+case ${EAPI} in
+	7|8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 if [[ ${_LUA_SINGLE_ECLASS} ]]; then
 	die 'lua.eclass cannot be used with lua-single.eclass.'
