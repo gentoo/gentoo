@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: findlib.eclass
@@ -6,18 +6,18 @@
 # ML <ml@gentoo.org>
 # @AUTHOR:
 # Original author: Matthieu Sozeau <mattam@gentoo.org> (retired)
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: ocamlfind (a.k.a. findlib) eclass
 # @DESCRIPTION:
 # ocamlfind (a.k.a. findlib) eclass
 
-case ${EAPI} in
-	7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_FINDLIB_ECLASS} ]] ; then
 _FINDLIB_ECLASS=1
+
+case ${EAPI} in
+	7|8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # Do not complain about CFLAGS etc since ML projects do not use them.
 QA_FLAGS_IGNORED='.*'
