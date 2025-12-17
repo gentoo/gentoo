@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,11 +19,11 @@ else
 fi
 
 DEPEND="
-	media-libs/libjpeg-turbo:=
-	media-libs/libpng:=
-	media-libs/libsdl:=
-	opencv? ( media-libs/opencv:= )
-	sdl? ( media-libs/sdl-gfx:= )
+	media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}]
+	media-libs/libpng:=[${MULTILIB_USEDEP}]
+	media-libs/libsdl:=[${MULTILIB_USEDEP}]
+	opencv? ( media-libs/opencv:=[${MULTILIB_USEDEP}] )
+	sdl? ( media-libs/sdl-gfx:=[${MULTILIB_USEDEP}] )
 "
 RDEPEND="
 	${DEPEND}
