@@ -6,7 +6,7 @@
 # Ionen Wolkens <ionen@gentoo.org>
 # @AUTHOR:
 # Ionen Wolkens <ionen@gentoo.org>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @BLURB: Helper functions to link with slotted ffmpeg-compat libraries
 # @DESCRIPTION:
 # To use this, run ``ffmpeg_compat_setup <slot>`` before packages use
@@ -34,13 +34,13 @@
 # is stabilized, but idea is to not mangle normal ffmpeg with slotting
 # logic and make this an isolated temporary deal.
 
-case ${EAPI} in
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_FFMPEG_COMPAT_ECLASS} ]]; then
 _FFMPEG_COMPAT_ECLASS=1
+
+case ${EAPI} in
+	8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 inherit flag-o-matic toolchain-funcs
 
