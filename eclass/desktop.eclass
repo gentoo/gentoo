@@ -4,14 +4,14 @@
 # @ECLASS: desktop.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: support for desktop files, menus, and icons
 
 if [[ -z ${_DESKTOP_ECLASS} ]]; then
 _DESKTOP_ECLASS=1
 
 case ${EAPI} in
-	7|8) ;;
+	7|8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
