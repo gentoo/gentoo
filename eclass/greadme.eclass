@@ -4,7 +4,7 @@
 # @ECLASS: greadme.eclass
 # @MAINTAINER:
 # Florian Schmaus <flow@gentoo.org>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @BLURB: install a doc file, that will be conditionally shown via elog messages
 # @DESCRIPTION:
 # An eclass for installing a README.gentoo doc file with important
@@ -44,7 +44,8 @@ if [[ -z ${_GREADME_ECLASS} ]]; then
 _GREADME_ECLASS=1
 
 case ${EAPI} in
-	8) ;;
+	8) inherit eapi9-pipestatus ;;
+	9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -120,7 +121,7 @@ _greadme_install_doc() {
 		# https://bugs.gentoo.org/460050#c7
 		fold -s -w 70 "${_GREADME_TMP_FILE}" |
 			sed 's/[[:space:]]*$//' > "${greadme}"
-		assert "failed to autoformat README.gentoo"
+		pipestatus || die "failed to autoformat README.gentoo"
 	fi
 
 	# Subshell to avoid pollution of calling environment.
