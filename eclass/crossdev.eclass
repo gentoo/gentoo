@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: crossdev.eclass
@@ -6,18 +6,18 @@
 # cat@catcream.org
 # @AUTHOR:
 # Alfred Persson Forsberg <cat@catcream.org> (21 Jul 2023)
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: Convenience wrappers for packages used by the Crossdev tool.
 
 inherit toolchain-funcs
 
-case ${EAPI} in
-	7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_CROSSDEV_ECLASS} ]]; then
 _CROSSDEV_ECLASS=1
+
+case ${EAPI} in
+	7|8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # @ECLASS_VARIABLE: _CROSS_CATEGORY_PREFIX
 # @INTERNAL
