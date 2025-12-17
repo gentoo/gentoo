@@ -21,6 +21,7 @@ RDEPEND="
 	dev-python/cffi[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	media-libs/libsndfile
+	test? ( media-libs/libsndfile[-minimal] )
 "
 
 distutils_enable_tests pytest
