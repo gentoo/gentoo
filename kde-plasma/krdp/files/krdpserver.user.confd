@@ -1,0 +1,7 @@
+# Config file for /etc/user/init.d/krdpserver
+
+# Number of retries to wait for plasmashell (default: 150)
+#PLASMA_WAIT_RETRIES=150
+
+# Interval between retries in seconds (default: 2)
+#PLASMA_WAIT_INTERVAL=2
