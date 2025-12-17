@@ -6,18 +6,22 @@
 # Arthur Zamarin <arthurzam@gentoo.org>
 # @AUTHOR:
 # Matthew Smith <matthew@gentoo.org>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @BLURB: Common functions and variables for Tree Sitter grammars
-
-case ${EAPI} in
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
 
 if [[ -z ${_TREE_SITTER_GRAMMAR_ECLASS} ]]; then
 _TREE_SITTER_GRAMMAR_ECLASS=1
 
-inherit edo multilib toolchain-funcs
+case ${EAPI} in
+	8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+inherit multilib toolchain-funcs
+
+if [[ ${EAPI} = 8 ]]; then
+	inherit edo
+fi
 
 SRC_URI="https://github.com/tree-sitter/${PN}/archive/${TS_PV:-v${PV}}.tar.gz
 	-> ${P}.tar.gz"
