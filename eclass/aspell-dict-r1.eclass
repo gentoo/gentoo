@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: aspell-dict-r1.eclass
@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Seemant Kulleen <seemant@gentoo.org> (original author)
 # David Seifert <soap@gentoo.org> (-r1 author)
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @BLURB: An eclass to streamline the construction of ebuilds for new Aspell dictionaries.
 # @DESCRIPTION:
 # The aspell-dict-r1 eclass is designed to streamline the construction of ebuilds for
@@ -36,13 +36,13 @@ readonly ASPELL_SPELLANG=${PN/aspell-/}
 # This value is used to construct SRC_URI strings.
 # If the value needs to be overridden, it needs to be overridden before inheriting the eclass.
 
-case ${EAPI} in
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_ASPELL_DICT_R1_ECLASS} ]]; then
 _ASPELL_DICT_R1_ECLASS=1
+
+case ${EAPI} in
+	8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # Most of those aspell packages have an idiosyncratic versioning scheme,
 # where the last separating version separator is replaced by a '-'.
