@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: office-ext-r1.eclass
@@ -6,18 +6,19 @@
 # The office team <office@gentoo.org>
 # @AUTHOR:
 # Tomáš Chvátal <scarabeus@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: Eclass for installing libreoffice extensions
 # @DESCRIPTION:
 # Eclass for easing maintenance of libreoffice extensions.
 
-case ${EAPI} in
-	7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_OFFICE_EXT_R1_ECLASS} ]]; then
 _OFFICE_EXT_R1_ECLASS=1
+
+case ${EAPI} in
+	7|8) inherit eapi9-pipestatus ;;
+	9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # @ECLASS_VARIABLE: OFFICE_REQ_USE
 # @PRE_INHERIT
@@ -109,7 +110,8 @@ office-ext-r1_src_unpack() {
 					pushd "${WORKDIR}/${i}/" > /dev/null || die
 					einfo "Unpacking "${OFFICE_EXTENSIONS_LOCATION}/${i}" to ${PWD}"
 					unzip -qo ${OFFICE_EXTENSIONS_LOCATION}/${i}
-					assert "failed unpacking ${OFFICE_EXTENSIONS_LOCATION}/${i}"
+					pipestatus \
+						|| die "failed unpacking ${OFFICE_EXTENSIONS_LOCATION}/${i}"
 					popd > /dev/null || die
 					;;
 				*) unpack ${i} ;;
