@@ -81,6 +81,12 @@ src_install() {
 	insinto /etc/sandbox.d
 	newins data/sandbox.conf 90steve
 	udev_newrules data/steve.udev 90-steve.rules
+
+	# TODO: can we manage to get the correct cuse permissions otherwise?
+	insinto /usr/lib/modules-load.d
+	newins - steve.conf <<-EOF
+		cuse
+	EOF
 }
 
 pkg_postinst() {
