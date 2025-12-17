@@ -4,7 +4,7 @@
 # @ECLASS: cvs.eclass
 # @MAINTAINER:
 # No maintainer <maintainer-needed@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: This eclass provides generic cvs fetching functions
 # @DESCRIPTION:
 # This eclass provides the generic cvs fetching functions. To use this from an
@@ -13,13 +13,14 @@
 # cvs_src_unpack. If you find that you need to call the cvs_* functions
 # directly, I'd be interested to hear about it.
 
-case ${EAPI} in
-	7|8) inherit eapi9-pipestatus ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_CVS_ECLASS} ]]; then
 _CVS_ECLASS=1
+
+case ${EAPI} in
+	7|8) inherit eapi9-pipestatus ;;
+	9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # TODO:
 
