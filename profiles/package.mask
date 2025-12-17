@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-12-17)
+# This version breaks building (at least) media-gfx/krita, issue may
+# or may not be on sip's side but masking until it is figured out.
+# https://bugs.gentoo.org/967648
+=dev-python/sip-6.15.0
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-12-15)
 # Last release depends on Qt5, upstream appears dormant. Bug #959826
 # Removal on 2026-01-15
