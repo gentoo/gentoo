@@ -6,7 +6,7 @@
 # Zurab Kvachadze <zurabid2016@gmail.com>
 # @AUTHOR:
 # Zurab Kvachadze <zurabid2016@gmail.com>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @BLURB: Provides a common set of functions for building the NGINX server
 # @DESCRIPTION:
 # This eclass automates building, testing and installation of the NGINX server.
@@ -22,13 +22,14 @@
 # And 1 optional variable (see description):
 #  - NGINX_MISC_FILES
 
-case ${EAPI} in
-	8) inherit eapi9-pipestatus ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_NGINX_ECLASS} ]]; then
 _NGINX_ECLASS=1
+
+case ${EAPI} in
+	8) inherit eapi9-pipestatus edo ;;
+	9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # The 60tmpfiles-paths install check produces QA warning if it does not detect
 # tmpfiles_process() in pkg_postinst(). Even though the tmpfiles_process() is
@@ -37,7 +38,7 @@ _NGINX_ECLASS=1
 # Nonetheless, it is possible to opt out from the QA check by setting the
 # TMPFILES_OPTIONAL variable.
 TMPFILES_OPTIONAL=1
-inherit edo multiprocessing perl-functions systemd toolchain-funcs tmpfiles
+inherit multiprocessing perl-functions systemd toolchain-funcs tmpfiles
 
 #-----> ebuild-defined variables <-----
 
