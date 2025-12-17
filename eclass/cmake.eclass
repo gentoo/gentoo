@@ -10,7 +10,7 @@
 # Maciej Mrozowski <reavertm@gentoo.org>
 # (undisclosed contributors)
 # Original author: Zephyrus (zephyrus@mirach.it)
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @PROVIDES: ninja-utils
 # @BLURB: common ebuild functions for cmake-based packages
 # @DESCRIPTION:
@@ -18,13 +18,13 @@
 # It provides all inherited features (DOCS, HTML_DOCS, PATCHES) along with
 # out-of-source builds (default) and in-source builds.
 
-case ${EAPI} in
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_CMAKE_ECLASS} ]]; then
 _CMAKE_ECLASS=1
+
+case ${EAPI} in
+	8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 inherit flag-o-matic multiprocessing ninja-utils toolchain-funcs xdg-utils
 
