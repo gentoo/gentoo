@@ -6,7 +6,7 @@
 # Pacho Ramos <pacho@gentoo.org>
 # @AUTHOR:
 # Author: Pacho Ramos <pacho@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: install a doc file shown via elog messages
 # @DESCRIPTION:
 # An eclass for installing a README.gentoo doc file recording tips
@@ -22,6 +22,7 @@ _README_GENTOO_ECLASS=1
 
 case ${EAPI} in
 	7|8) inherit eapi9-pipestatus ;;
+	9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
