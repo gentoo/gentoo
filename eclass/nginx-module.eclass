@@ -6,7 +6,7 @@
 # Zurab Kvachadze <zurabid2016@gmail.com>
 # @AUTHOR:
 # Zurab Kvachadze <zurabid2016@gmail.com>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @BLURB: Provides a common set of functions for building NGINX's dynamic modules
 # @DESCRIPTION:
 # The nginx-module.eclass automates configuring, building and installing NGINX's
@@ -81,15 +81,16 @@
 # }
 # @CODE
 
-case ${EAPI} in
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_NGINX_MODULE_ECLASS} ]]; then
 _NGINX_MODULE_ECLASS=1
 
-inherit edo flag-o-matic toolchain-funcs
+case ${EAPI} in
+	8) inherit edo ;;
+	9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+inherit flag-o-matic toolchain-funcs
 
 #-----> Generic helper functions <-----
 
