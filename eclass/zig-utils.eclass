@@ -6,7 +6,7 @@
 # Eric Joldasov <bratishkaerik@landless-city.net>
 # @AUTHOR:
 # Eric Joldasov <bratishkaerik@landless-city.net>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @BLURB: Prepare Zig toolchain and set global variables
 # @DESCRIPTION:
 # Prepare Zig toolchain and set global variables.
@@ -23,11 +23,15 @@ if [[ -z ${_ZIG_UTILS_ECLASS} ]]; then
 _ZIG_UTILS_ECLASS=1
 
 case ${EAPI} in
-	8) ;;
+	8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-inherit edo flag-o-matic linux-info
+inherit flag-o-matic linux-info
+
+if [[ ${EAPI} = 8 ]]; then
+	inherit edo
+fi
 
 # @ECLASS_VARIABLE: ZIG_SLOT
 # @PRE_INHERIT
