@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: xdg.eclass
@@ -6,7 +6,7 @@
 # freedesktop-bugs@gentoo.org
 # @AUTHOR:
 # Original author: Gilles Dartiguelongue <eva@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @PROVIDES: xdg-utils
 # @BLURB: Provides phases for XDG compliant packages.
 # @DESCRIPTION:
@@ -17,7 +17,7 @@ if [[ -z ${_XDG_ECLASS} ]]; then
 _XDG_ECLASS=1
 
 case ${EAPI} in
-	7|8) ;;
+	7|8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -126,7 +126,7 @@ xdg_pkg_postrm() {
 fi
 
 case ${EAPI} in
-	6|7)
+	7)
 		EXPORT_FUNCTIONS src_prepare
 		;;
 	*)
