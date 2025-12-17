@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: meson-multilib.eclass
@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Michał Górny <mgorny@gentoo.org>
 # Matt Turner <mattst88@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @PROVIDES: meson multilib-minimal
 # @BLURB: meson wrapper for multilib builds
 # @DESCRIPTION:
@@ -21,13 +21,13 @@
 # in multilib-minimal, yet they ought to call appropriate meson
 # phase rather than 'default'.
 
-case ${EAPI} in
-	7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_MESON_MULTILIB_ECLASS} ]] ; then
 _MESON_MULTILIB_ECLASS=1
+
+case ${EAPI} in
+	7|8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 inherit meson multilib-minimal
 
