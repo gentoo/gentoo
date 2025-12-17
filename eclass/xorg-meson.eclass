@@ -6,7 +6,7 @@
 # x11@gentoo.org
 # @AUTHOR:
 # Author: Matt Turner <mattst88@gentoo.org>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @PROVIDES: meson meson-multilib
 # @BLURB: Reduces code duplication in the X11 ebuilds.
 # @DESCRIPTION:
@@ -20,13 +20,13 @@
 # with the other X packages, you don't need to set SRC_URI. Pretty much
 # everything else should be automatic.
 
-case ${EAPI} in
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_XORG_MESON_ECLASS} ]]; then
 _XORG_MESON_ECLASS=1
+
+case ${EAPI} in
+	8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 inherit flag-o-matic
 
