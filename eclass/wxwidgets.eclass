@@ -4,7 +4,7 @@
 # @ECLASS: wxwidgets.eclass
 # @MAINTAINER:
 # wxwidgets@gentoo.org
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @BLURB: Manages build configuration for wxGTK-using packages.
 # @DESCRIPTION:
 # This eclass sets up the proper environment for ebuilds using the wxGTK
@@ -21,13 +21,13 @@
 # The configuration chosen is based on the version required and the flags
 # wxGTK was built with.
 
-case ${EAPI} in
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_WXWIDGETS_ECLASS} ]]; then
 _WXWIDGETS_ECLASS=1
+
+case ${EAPI} in
+	8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # @ECLASS_VARIABLE: WX_GTK_VER
 # @PRE_INHERIT
