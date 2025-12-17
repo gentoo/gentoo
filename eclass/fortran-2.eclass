@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Author Justin Lecher <jlec@gentoo.org>
 # Test functions provided by Sebastien Fabbro and Kacper Kowalik
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: Simplify fortran compiler management
 # @DESCRIPTION:
 # If you need a fortran compiler, then you should be inheriting this eclass.
@@ -30,7 +30,7 @@ if [[ -z ${_FORTRAN_2_ECLASS} ]]; then
 _FORTRAN_2_ECLASS=1
 
 case ${EAPI} in
-	7|8) ;;
+	7|8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -282,7 +282,7 @@ _fortran_test_function() {
 				compiler=$(tc-getF77)
 				flags=${FFLAGS}
 				_fortran_compile_test "${compiler}" ||
-					_fortran_die_msg 
+					_fortran_die_msg
 				;;
 			90|95)
 				compiler=$(tc-getFC)
