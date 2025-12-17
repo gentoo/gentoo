@@ -23,7 +23,9 @@ RDEPEND="
 
 src_install() {
 	udev_newrules util/udev.rules 99-fuse.rules
-	udev_dorules "${FILESDIR}"/99-cuse.rules
+	udev_newrules - 99-cuse.rules <<-EOF
+		KERNEL=="cuse", GROUP="cuse"
+	EOF
 
 	if use kernel_linux ; then
 		newinitd "${FILESDIR}"/fuse.init fuse
