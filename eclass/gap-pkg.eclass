@@ -1,4 +1,4 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gap-pkg.eclass
@@ -9,7 +9,7 @@
 # @AUTHOR:
 # François Bissey <frp.bissey@gmail.com>
 # Michael Orlitzky <mjo@gentoo.org>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @BLURB: Simplify the installation of GAP packages.
 # @DESCRIPTION:
 # The main purpose of this eclass is to build and install GAP packages
@@ -46,7 +46,7 @@ if [[ -z ${_GAP_PKG_ECLASS} ]]; then
 _GAP_PKG_ECLASS=1
 
 case ${EAPI} in
-	8) ;;
+	8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
