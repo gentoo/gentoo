@@ -8,7 +8,7 @@
 # Original author: Author Olivier Fisette <ofisette@gmail.com>
 # Next gen author: Justin Lecher <jlec@gentoo.org>
 # Next gen author: Ted Tanberry <ted.tanberry@gmail.com>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @BLURB: Use this to easy install EMBOSS and EMBASSY programs (EMBOSS add-ons).
 # @DESCRIPTION:
 # The inheriting ebuild must provide EBO_DESCRIPTION before the inherit line.
@@ -33,13 +33,13 @@
 #
 # Defaults to the upstream name of the module.
 
-case ${EAPI} in
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_EMBOSS_R3_ECLASS} ]]; then
 _EMBOSS_R3_ECLASS=1
+
+case ${EAPI} in
+	8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 inherit flag-o-matic
 
