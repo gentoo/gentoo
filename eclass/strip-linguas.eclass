@@ -6,14 +6,14 @@
 # Ulrich Müller <ulm@gentoo.org>
 # @AUTHOR:
 # Mike Frysinger <vapier@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: convenience function for LINGUAS support
 
 if [[ -z ${_STRIP_LINGUAS_ECLASS} ]]; then
 _STRIP_LINGUAS_ECLASS=1
 
 case ${EAPI} in
-	7|8) ;;
+	7|8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
