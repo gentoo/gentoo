@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: mozcoreconf-v6.eclass
 # @MAINTAINER:
 # Mozilla team <mozilla@gentoo.org>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @BLURB: core options and configuration functions for mozilla
 # @DESCRIPTION:
 #
@@ -15,13 +15,13 @@
 # This is an eclass-generated variable that defines the rpath that the mozilla
 # product will be installed in.  Read-only
 
-case ${EAPI} in
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_MOZCORECONF_V6_ECLASS} ]]; then
 _MOZCORECONF_V6_ECLASS=1
+
+case ${EAPI} in
+	8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 inherit toolchain-funcs flag-o-matic python-any-r1
 
