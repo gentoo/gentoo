@@ -8,17 +8,17 @@
 # Doug Goldstein <cardoe@gentoo.org>
 # Georgy Yakovlev <gyakovlev@gentoo.org>
 # Matt Jolly <kangie@gentoo.org>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @PROVIDES: rust
 # @BLURB: common functions and variables for cargo builds
 
-case ${EAPI} in
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_CARGO_ECLASS} ]]; then
 _CARGO_ECLASS=1
+
+case ${EAPI} in
+	8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 if [[ -n ${RUST_NEEDS_LLVM} ]]; then
 		inherit llvm-r1
