@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: apache-module.eclass
 # @MAINTAINER:
 # apache-bugs@gentoo.org
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: Provides a common set of functions for apache modules
 # @DESCRIPTION:
 # This eclass handles apache modules in a sane way.
@@ -48,7 +48,7 @@ if [[ -z ${_APACHE_MODULE_ECLASS} ]]; then
 _APACHE_MODULE_ECLASS=1
 
 case ${EAPI} in
-	7|8) ;;
+	7|8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
