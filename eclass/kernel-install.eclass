@@ -6,7 +6,7 @@
 # Distribution Kernel Project <dist-kernel@gentoo.org>
 # @AUTHOR:
 # Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @PROVIDES: dist-kernel-utils
 # @BLURB: Installation mechanics for Distribution Kernels
 # @DESCRIPTION:
@@ -53,7 +53,8 @@ if [[ -z ${_KERNEL_INSTALL_ECLASS} ]]; then
 _KERNEL_INSTALL_ECLASS=1
 
 case ${EAPI} in
-	8) ;;
+	8) inherit eapi9-pipestatus ;;
+	9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -575,7 +576,7 @@ kernel-install_pkg_pretend() {
 		ewarn "will not enforce the configuration of an initramfs generator in"
 		ewarn "sys-kernel/installkernel."
 		ewarn
-		ewarn "If you wish to use a custom initramfs generator, then please ensure that" 
+		ewarn "If you wish to use a custom initramfs generator, then please ensure that"
 		ewarn "/sbin/installkernel is capable of calling it via a kernel installation hook,"
 		ewarn "and is also configured to use it via /etc/kernel/install.conf."
 		ewarn
@@ -868,7 +869,7 @@ kernel-install_compress_modules() {
 
 		find "${ED}/lib/modules/${KV_FULL}" -name '*.ko' -print0 |
 			xargs -0 -P "$(makeopts_jobs)" -n 128 "${compress[@]}"
-		assert "Compressing kernel modules failed"
+		pipestatus || die "Compressing kernel modules failed"
 
 		# Module paths have changed, run depmod
 		depmod --all --basedir "${ED}" ${KV_FULL} || die
