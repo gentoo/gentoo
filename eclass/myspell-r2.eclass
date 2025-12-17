@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: myspell-r2.eclass
@@ -6,7 +6,7 @@
 # Conrad Kostecki <conikost@gentoo.org>
 # @AUTHOR:
 # Tomáš Chvátal <scarabeus@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: An eclass to streamline the construction of ebuilds for new Myspell dictionaries.
 # @DESCRIPTION:
 # The myspell-r2 eclass is designed to streamline the construction of ebuilds for
@@ -37,7 +37,8 @@
 # @CODE
 
 case ${EAPI} in
-	7|8) ;;
+	7|8) inherit eapi9-pipestatus ;;
+	9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -62,7 +63,7 @@ myspell-r2_src_unpack() {
 			*.oxt)
 				echo ">>> Unpacking "${DISTDIR}/${f}" to ${PWD}"
 				unzip -qoj "${DISTDIR}"/${f}
-				assert "failed unpacking ${DISTDIR}/${f}"
+				pipestatus || die "failed unpacking ${DISTDIR}/${f}"
 				;;
 			*) unpack ${f} ;;
 		esac
