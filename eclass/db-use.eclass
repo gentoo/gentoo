@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 # This is a common location for functions that aid the use of sys-libs/db
 #
@@ -8,7 +8,7 @@
 # maintainer-needed@gentoo.org
 # @AUTHOR:
 # Paul de Vrieze <pauldv@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: This is a common location for functions that aid the use of sys-libs/db
 # @DESCRIPTION:
 # This eclass is designed to provide helpful functions for depending on
@@ -16,7 +16,7 @@
 
 # multilib is used for get_libname in all EAPI
 case ${EAPI} in
-	7|8) inherit multilib ;;
+	7|8|9) inherit multilib ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
