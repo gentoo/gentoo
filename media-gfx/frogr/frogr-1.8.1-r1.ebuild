@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/frogr"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc"
 
 RDEPEND="
 	>=dev-libs/glib-2.56:2
