@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: mate.eclass
@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Authors: NP-Hardass <NP-Hardass@gentoo.org> based upon the gnome2
 # and autotools-utils eclasses
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @PROVIDES: mate-desktop.org
 # @BLURB: Provides phases for MATE based packages.
 # @DESCRIPTION:
@@ -15,13 +15,13 @@
 # MATE framework. Occasionally acts as a wrapper to gnome2 due to the
 # fact that MATE is a GNOME fork. For additional functions, see gnome2-utils.eclass.
 
-case ${EAPI} in
-	7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_MATE_ECLASS} ]]; then
 _MATE_ECLASS=1
+
+case ${EAPI} in
+	7|8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # Inherit happens below after declaration of GNOME2_LA_PUNT
 
