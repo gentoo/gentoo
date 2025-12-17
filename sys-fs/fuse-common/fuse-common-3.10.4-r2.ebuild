@@ -39,3 +39,12 @@ src_install() {
 	insinto /etc
 	doins util/fuse.conf
 }
+
+pkg_postinst() {
+	tmpfiles_process static-nodes-permissions-cuse.conf
+	udev_reload
+}
+
+pkg_postrm() {
+	udev_reload
+}
