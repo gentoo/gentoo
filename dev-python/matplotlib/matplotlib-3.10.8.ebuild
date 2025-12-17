@@ -33,6 +33,17 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos"
 IUSE="cairo excel gtk3 latex qt6 tk webagg wxwidgets"
 
+LATEX_DEPEND="
+	virtual/latex-base
+	app-text/dvipng
+	app-text/ghostscript-gpl
+	app-text/poppler[utils]
+	dev-texlive/texlive-fontsrecommended
+	dev-texlive/texlive-latexextra
+	dev-texlive/texlive-luatex
+	dev-texlive/texlive-xetex
+"
+
 DEPEND="
 	media-libs/freetype:2
 	>=media-libs/qhull-2013:=
@@ -66,14 +77,7 @@ RDEPEND="
 		x11-libs/gtk+:3[introspection]
 	)
 	latex? (
-		virtual/latex-base
-		app-text/dvipng
-		app-text/ghostscript-gpl
-		app-text/poppler[utils]
-		dev-texlive/texlive-fontsrecommended
-		dev-texlive/texlive-latexextra
-		dev-texlive/texlive-luatex
-		dev-texlive/texlive-xetex
+		${LATEX_DEPEND}
 	)
 	qt6? (
 		$(python_gen_cond_dep '
@@ -100,6 +104,7 @@ BDEPEND="
 	virtual/pkgconfig
 	test? (
 		$(python_gen_impl_dep 'tk')
+		${LATEX_DEPEND}
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
 		>=dev-python/tornado-6.0.4[${PYTHON_USEDEP}]
