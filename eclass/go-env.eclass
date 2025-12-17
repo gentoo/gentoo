@@ -6,19 +6,19 @@
 # Flatcar Linux Maintainers <infra@flatcar-linux.org>
 # @AUTHOR:
 # Flatcar Linux Maintainers <infra@flatcar-linux.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: Helper eclass for setting the Go compile environment. Required for cross-compiling.
 # @DESCRIPTION:
 # This eclass includes helper functions for setting the compile environment for Go ebuilds.
 # Intended to be called by other Go eclasses in an early build stage, e.g. src_unpack.
 
-case ${EAPI} in
-	7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_GO_ENV_ECLASS} ]]; then
 _GO_ENV_ECLASS=1
+
+case ${EAPI} in
+	7|8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 inherit flag-o-matic toolchain-funcs
 
