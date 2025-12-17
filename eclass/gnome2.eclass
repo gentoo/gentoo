@@ -1,23 +1,23 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gnome2.eclass
 # @MAINTAINER:
 # gnome@gentoo.org
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @PROVIDES: gnome2-utils
 # @BLURB: Provides phases for Gnome/Gtk+ based packages.
 # @DESCRIPTION:
 # Exports portage base functions used by ebuilds written for packages using the
 # GNOME framework. For additional functions, see gnome2-utils.eclass.
 
-case ${EAPI} in
-	7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_GNOME2_ECLASS} ]]; then
 _GNOME2_ECLASS=1
+
+case ${EAPI} in
+	7|8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # @ECLASS_VARIABLE: GNOME2_EAUTORECONF
 # @DEFAULT_UNSET
