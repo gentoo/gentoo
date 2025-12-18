@@ -63,7 +63,7 @@ RDEPEND="
 	!build? (
 		>=app-admin/eselect-1.2
 		app-portage/getuto
-		>=app-shells/bash-5.0:0
+		>=app-shells/bash-5.3:0
 		>=sec-keys/openpgp-keys-gentoo-release-20240703
 		>=sys-apps/sed-4.0.5
 		rsync-verify? (
