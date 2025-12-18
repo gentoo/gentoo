@@ -83,6 +83,7 @@ src_install() {
 	emake DESTDIR="${D}" PYTHON=: install
 	python_fix_shebang "${ED}"
 	distutils-r1_src_install
+	python_optimize "${ED}/usr/share/system-config-printer/"
 }
 
 pkg_postinst() {
