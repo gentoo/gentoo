@@ -7,18 +7,17 @@ MATE_LA_PUNT="yes"
 
 inherit mate
 
-SRC_URI="https://github.com/mate-desktop/${PN}/releases/download/v${PV}/mate-notification-daemon-${PV}.tar.xz"
-
 MINOR=$(($(ver_cut 2) % 2))
 if [[ ${MINOR} -eq 0 ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
 fi
 
 DESCRIPTION="MATE Notification daemon"
+SRC_URI="https://github.com/mate-desktop/${PN}/releases/download/v${PV}/mate-notification-daemon-${PV}.tar.xz"
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
 
-IUSE="nls X wayland"
+IUSE="nls +X wayland"
 REQUIRED_USE="|| ( X wayland )"
 
 COMMON_DEPEND=">=app-accessibility/at-spi2-core-2.46.0
