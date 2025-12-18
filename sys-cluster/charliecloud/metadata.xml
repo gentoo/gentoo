@@ -15,6 +15,7 @@
   <use>
     <flag name="ch-image">Build the internal builder ch-image (previously named ch-grow)</flag>
     <flag name="fuse">Enable FUSE support for mounting squashfs images</flag>
+    <flag name="gc">Enable garbage collection support via dev-libs/boehm-gc</flag>
     <flag name="json">Enable features that rely on cJSON such as CDI</flag>
   </use>
 </pkgmetadata>
