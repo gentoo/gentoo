@@ -54,7 +54,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	default
+	cmake_src_prepare
 	# bug #883407
 	hprefixify alc/alconfig.cpp || die
 }
