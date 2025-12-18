@@ -29,7 +29,7 @@ REQUIRED_USE="?? ( unwind elfutils )"
 
 BDEPEND="
 	virtual/pkgconfig
-	verify-sig? ( >=sec-keys/openpgp-keys-strace-20151021 )
+	verify-sig? ( >=sec-keys/openpgp-keys-strace-20251130 )
 "
 LIB_DEPEND="
 	unwind? ( sys-libs/libunwind[static-libs(+)] )
