@@ -1,0 +1,51 @@
+https://bugs.gentoo.org/941260
+https://github.com/dlbeer/quirc/pull/149
+
+Note: This will mask errors for pkg-config sdl.
+
+From 39a51ffb71173803f158a9f91234b40ea0d43269 Mon Sep 17 00:00:00 2001
+From: YAMAMOTO Takashi <yamamoto@midokura.com>
+Date: Sun, 2 Feb 2025 11:09:19 +0900
+Subject: [PATCH] Ignore pkg-config error messages
+
+To avoid errors like the following:
+
+```
+cc -Ilib -O3 -Wall -fPIC Package sdl was not found in the pkg-config search path. Perhaps you should add the directory containing `sdl.pc' to the PKG_CONFIG_PATH environment variable Package 'sdl' not found -o lib/decode.o -c lib/decode.c
+/bin/sh: -c: line 0: unexpected EOF while looking for matching ``'
+/bin/sh: -c: line 1: syntax error: unexpected end of file
+gmake: *** [Makefile:90: lib/decode.o] Error 2
+```
+
+This (at least the SDL part) was neccessary on my environment:
+
+* macOS 15.2
+* Xcode 16.2
+* pkg-config 2.3.0 (homebrew)
+* GNU make 4.4.1 (homebrew)
+* opencv 4.11.0 (homebrew)
+* no SDL installed
+--- a/Makefile
++++ b/Makefile
+@@ -15,8 +15,8 @@
+ 
+ CC ?= gcc
+ PREFIX ?= /usr/local
+-SDL_CFLAGS := $(shell pkg-config --cflags sdl 2>&1)
+-SDL_LIBS = $(shell pkg-config --libs sdl)
++SDL_CFLAGS := $(shell pkg-config --cflags sdl 2> /dev/null)
++SDL_LIBS = $(shell pkg-config --libs sdl 2> /dev/null)
+ 
+ LIB_VERSION = 1.2
+ 
+@@ -43,8 +43,8 @@ DEMO_UTIL_OBJ = \
+     demo/dthash.o \
+     demo/demoutil.o
+ 
+-OPENCV_CFLAGS := $(shell pkg-config --cflags opencv4 2>&1)
+-OPENCV_LIBS = $(shell pkg-config --libs opencv4)
++OPENCV_CFLAGS := $(shell pkg-config --cflags opencv4 2> /dev/null)
++OPENCV_LIBS = $(shell pkg-config --libs opencv4 2> /dev/null)
+ QUIRC_CXXFLAGS = $(QUIRC_CFLAGS) $(OPENCV_CFLAGS) --std=c++17
+ 
+ .PHONY: all v4l sdl opencv install uninstall clean
