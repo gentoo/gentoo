@@ -24,18 +24,18 @@ IUSE="
 
 RDEPEND="
 	dev-lang/perl
-	virtual/udev
-	sys-apps/hdparm
 	net-wireless/iw
-	!app-laptop/laptop-mode-tools
+	sys-apps/hdparm
 	sys-apps/pciutils
-	!sys-apps/tuned
 	sys-apps/usbutils
-	pd? ( dev-python/dbus-python )
-	pd? ( !sys-power/power-profiles-daemon )
-	pd? ( dev-python/pygobject )
-	pd? ( ${PYTHON_DEPS} )
-	pd? ( !sys-apps/tuned )
+	virtual/udev
+	pd? (
+		$(python_gen_cond_dep
+		    'dev-python/dbus-python[${PYTHON_USEDEP}]'
+		    'dev-python/pygobject[${PYTHON_USEDEP}]'
+		)
+		${PYTHON_DEPS}
+	)
 	rdw? ( net-misc/networkmanager )
 "
 DEPEND="${RDEPEND}"
@@ -76,6 +76,30 @@ pkg_postinst() {
 	optfeature "see disk drive health info in tlp-stat" sys-apps/smartmontools
 	optfeature "Sleep hooks" sys-auth/elogind sys-apps/systemd
 	optfeature "Battery functions for ThinkPads prior to the Sandy Bridge generation (2011)" app-laptop/tp_smapi
+
+	if has_version "sys-power/power-profiles-daemon" && use pd; then
+		ewarn
+		ewarn "sys-power/power-profiles-daemon is installed, but is "
+		ewarn "incompatible with tlp-pd daemon. For best results, "
+		ewarn "uninstall one of these packages or set use tlp[-pd]."
+		ewarn
+	fi
+
+	if has_version "sys-apps/tuned"; then
+		ewarn
+		ewarn "sys-apps/tuned is installed, but is "
+		ewarn "documented by upstream sys-power/tlp to be conficting. "
+		ewarn "For best results, uninstall one of these packages."
+		ewarn
+	fi
+
+	if has_version "app-laptop/laptop-mode-tools"; then
+		ewarn
+		ewarn "app-laptop/laptop-mode-tools is installed, but is "
+		ewarn "documented by upstream sys-power/tlp to be conficting. "
+		ewarn "For best results, uninstall one of these packages."
+		ewarn
+	fi
 }
 
 pkg_postrm() {
