@@ -142,7 +142,7 @@ src_configure() {
 		$(meson_feature pdf poppler)
 		-Dquantizr=disabled # not packaged, can use imagequant instead
 		$(meson_feature raw)
-		-Dspng=disabled # not packaged, can use libpng instead
+		-Dspng=disabled # not packaged, and libpng is preferred
 		$(meson_feature svg rsvg)
 		$(meson_feature tiff)
 		-Duhdr=disabled # not packaged
