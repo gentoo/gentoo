@@ -6,10 +6,10 @@ EAPI=8
 inherit java-pkg-opt-2 multibuild
 
 if [[ ${PV} == "9999" ]]; then
-	EGIT_REPO_URI="https://github.com/perl6/${PN}.git"
+	EGIT_REPO_URI="https://github.com/Raku/${PN}.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/perl6/${PN}/releases/download/${PV}/${P}.tar.gz"
+	SRC_URI="https://github.com/Raku/${PN}/releases/download/${PV}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
