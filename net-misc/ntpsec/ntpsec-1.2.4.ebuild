@@ -73,6 +73,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.1.9-remove-asciidoctor-from-config.patch"
 	"${FILESDIR}/${PN}-1.2.2-logrotate.patch"
 	"${FILESDIR}/${PN}-1.2.4-pep517-no-egg.patch"
+	"${FILESDIR}/${PN}-1.2.4-s390x-tests.patch"
 )
 
 WAF_BINARY="${S}/waf"
