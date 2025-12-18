@@ -47,6 +47,10 @@ SLOT="0/${PV}"
 
 IUSE="opencv sdl tools v4l"
 
+PATCHES=(
+	"${FILESDIR}/quirc-1.2-allow-sdl-less-build.patch"
+)
+
 src_prepare() {
 	read -r LIB_VERSION <<< "$(grep '^LIB_VERSION = ' "${S}/Makefile" | cut -d ' ' -f 3 || die)"
 	export LIB_VERSION
