@@ -8,8 +8,8 @@ inherit dot-a multilib-minimal libtool
 MY_P="gc-${PV}"
 
 DESCRIPTION="The Boehm-Demers-Weiser conservative garbage collector"
-HOMEPAGE="https://www.hboehm.info/gc/ https://github.com/ivmai/bdwgc/"
-SRC_URI="https://github.com/ivmai/bdwgc/releases/download/v${PV}/${MY_P}.tar.gz"
+HOMEPAGE="https://www.hboehm.info/gc/ https://github.com/bdwgc/bdwgc/"
+SRC_URI="https://github.com/bdwgc/bdwgc/releases/download/v${PV}/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="boehm-gc"
