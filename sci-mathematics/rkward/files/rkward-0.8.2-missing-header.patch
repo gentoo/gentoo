@@ -1,0 +1,24 @@
+From 02e95931485e610ed8e41e5dbf791a3b8fab8210 Mon Sep 17 00:00:00 2001
+From: Thomas Friedrichsmeier <thomas.friedrichsmeier@kdemail.net>
+Date: Sun, 12 Oct 2025 22:08:22 +0200
+Subject: [PATCH] Add missing include
+
+---
+ rkward/autotests/core_test.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/rkward/autotests/core_test.cpp b/rkward/autotests/core_test.cpp
+index 1345dfd81..76e4091d8 100644
+--- a/rkward/autotests/core_test.cpp
++++ b/rkward/autotests/core_test.cpp
+@@ -9,6 +9,7 @@ SPDX-License-Identifier: GPL-2.0-or-later
+ #include <QApplication>
+ #include <QButtonGroup>
+ #include <QDir>
++#include <QElapsedTimer>
+ #include <QFile>
+ #include <QLoggingCategory>
+ #include <QObject>
+-- 
+GitLab
+

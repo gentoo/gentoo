@@ -49,6 +49,8 @@ RDEPEND="${DEPEND}
 "
 BDEPEND="sys-devel/gettext"
 
+PATCHES=( "${FILESDIR}/${P}"-missing-header.patch ) # bug #967651
+
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		optfeature "kate plugins support" "kde-apps/kate-addons:6"
