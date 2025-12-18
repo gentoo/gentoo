@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-21)
+# Fails to build against Qt 6.10, upstream repository was archived.
+# Bug #966389. Removal on 2026-01-15
+gui-libs/hyprland-qtutils
+
 # Michał Górny <mgorny@gentoo.org> (2025-12-20)
 # Packages that are missing Python 3.12+ support (or in case
 # of dev-lang/julia, all versions are unkeyworded).

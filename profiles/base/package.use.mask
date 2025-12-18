@@ -6,6 +6,11 @@
 
 # New entries go on top.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-21)
+# gui-libs/hyprland-qtutils fails to build against Qt 6.10, upstream
+# repository was archived.
+gui-wm/hyprland qtutils
+
 # Michał Górny <mgorny@gentoo.org> (2025-12-20)
 # Needs last-rited dev-lang/julia.
 kde-apps/cantor julia
