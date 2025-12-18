@@ -36,6 +36,23 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2025-12-18)
+# Another change to multiprocessing broke Portage. >=sys-apps/portage-3.0.73-r2
+# is fixed, but a fixed version of Portage must be running in order to safely
+# upgrade or re-emerge Portage with >= Python 3.14.2. Mask until more users
+# have had a chance to upgrade Portage.
+#
+# This only affects users with non-default PYTHON_TARGETS (3.14) set.
+#
+# If you are unable to upgrade Portage, please manually edit
+# /usr/lib/python-exec/python3.14/emerge and /usr/lib/python-exec/python3.14/ebuild
+# by deleting the first 3 lines beginning with 'signal.signal(' (bug #967199).
+~app-doc/python-docs-3.14.2
+~dev-lang/python-3.14.2
+~dev-lang/python-0.3.14.2
+~dev-python/python-tests-3.14.2
+~dev-python/python-tests-0.3.14.2
+
 # Ionen Wolkens <ionen@gentoo.org> (2025-12-17)
 # This version breaks building (at least) media-gfx/krita, issue may
 # or may not be on sip's side but masking until it is figured out.
