@@ -1581,6 +1581,10 @@ toolchain_src_configure() {
 				--enable-__cxa_atexit
 				--enable-clocale=gnu
 			)
+
+			if [[ ${CTARGET} == *linux* ]] && tc_version_is_at_least 16.0.0_p20251214 ${PV} ; then
+				confgcc+=( --with-tls=gnu2 )
+			fi
 			;;
 		*-solaris*)
 			confgcc+=( --enable-__cxa_atexit )
