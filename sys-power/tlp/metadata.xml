@@ -10,7 +10,7 @@
 		kernel settings that affect power consumption.
 	</longdescription>
 	<use>
-		<flag name="pd">TLP Profiles Daemon that replaces power-profiles-daemon by using the same D-Bus API.</flag>
+		<flag name="ppd">TLP Profiles Daemon that replaces power-profiles-daemon by using the same D-Bus API.</flag>
 		<flag name="rdw">Enables TLP Radio Device Wizard feature</flag> 
 	</use>
 	<upstream>
