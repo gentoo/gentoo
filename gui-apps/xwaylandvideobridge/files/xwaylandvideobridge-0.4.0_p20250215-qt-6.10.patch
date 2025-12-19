@@ -1,0 +1,92 @@
+From 81348eeefeb4b390c530dcc89c8b9f9d1345ffaa Mon Sep 17 00:00:00 2001
+From: Kai Uwe Broulik <kde@privat.broulik.de>
+Date: Thu, 30 Jan 2025 21:48:57 +0100
+Subject: [PATCH] Port from GuiPrivate
+
+Use KWindowSystem::isPlatformX11() from KWindowSystem that we already use
+and for Qt 6 port to QNativeInterface.
+
+This avoids depending on GuiPrivate.
+
+While at it, include xcb explicitly and don't rely on the Qt header
+(that we no longer include) to include it.
+---
+ src/CMakeLists.txt     |  4 +---
+ src/contentswindow.cpp | 24 +++++++++++++++++-------
+ 2 files changed, 18 insertions(+), 10 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index b707d36..6781162 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -37,9 +37,7 @@ target_link_libraries(xwaylandvideobridge
+     XCB::RECORD
+ )
+ 
+-if(QT_MAJOR_VERSION STREQUAL "6")
+-    target_link_libraries(xwaylandvideobridge Qt6::GuiPrivate)
+-elseif(QT_MAJOR_VERSION STREQUAL "5")
++if(QT_MAJOR_VERSION STREQUAL "5")
+     target_link_libraries(xwaylandvideobridge Qt5::X11Extras)
+ endif()
+ 
+diff --git a/src/contentswindow.cpp b/src/contentswindow.cpp
+index 88b13a3..f7f4f14 100644
+--- a/src/contentswindow.cpp
++++ b/src/contentswindow.cpp
+@@ -12,12 +12,12 @@
+ #include <KWindowSystem>
+ #include <KX11Extras>
+ 
+-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+-#include <private/qtx11extras_p.h>
+-#else
++#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+ #include <QX11Info>
+ #endif
+ 
++#include <xcb/xcb.h>
++
+ struct MotifHints
+ {
+     u_int32_t flags = 0;
+@@ -45,6 +45,16 @@ static xcb_atom_t intern_atom(xcb_connection_t *c, const char *name)
+     return atom;
+ }
+ 
++static xcb_connection_t *xConnection()
++{
++#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
++    auto x11App = qGuiApp->nativeInterface<QNativeInterface::QX11Application>();
++    return x11App->connection();
++#else
++    return QX11Info::connection();
++#endif
++}
++
+ ContentsWindow::ContentsWindow()
+ {
+     resize(QSize(100, 100));
+@@ -64,8 +74,8 @@ ContentsWindow::ContentsWindow()
+     // that keeps us valid for streams
+     MotifHints hints;
+     hints.flags = 2;
+-    xcb_atom_t motif_hints_atom = intern_atom(QX11Info::connection(), "_MOTIF_WM_HINTS");
+-    xcb_change_property(QX11Info::connection(), XCB_PROP_MODE_REPLACE, winId(), motif_hints_atom, motif_hints_atom, 32, 5, (const void *)&hints);
++    xcb_atom_t motif_hints_atom = intern_atom(xConnection(), "_MOTIF_WM_HINTS");
++    xcb_change_property(xConnection(), XCB_PROP_MODE_REPLACE, winId(), motif_hints_atom, motif_hints_atom, 32, 5, (const void *)&hints);
+ 
+     handleResize();
+ }
+@@ -101,6 +111,6 @@ void ContentsWindow::handleResize()
+     frame.left = width() -1 ;
+     setX(-width() + 1); // unforutnately we still need 1px on screen to get callbacks
+ 
+-    xcb_atom_t gtk_frame_extent_atom = intern_atom(QX11Info::connection(), "_GTK_FRAME_EXTENTS");
+-    xcb_change_property(QX11Info::connection(), XCB_PROP_MODE_REPLACE, winId(), gtk_frame_extent_atom, XCB_ATOM_CARDINAL, 32, 4, (const void *)&frame);
++    xcb_atom_t gtk_frame_extent_atom = intern_atom(xConnection(), "_GTK_FRAME_EXTENTS");
++    xcb_change_property(xConnection(), XCB_PROP_MODE_REPLACE, winId(), gtk_frame_extent_atom, XCB_ATOM_CARDINAL, 32, 4, (const void *)&frame);
+ }
+-- 
+GitLab
+
