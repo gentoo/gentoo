@@ -470,6 +470,11 @@ setup_flags() {
 		append-ldflags '-Wl,--hash-style=both'
 	fi
 
+	# clang warns about linker flags unused during compilation, but we don't
+	# want that to turn into errors!
+	# Let's turn the warning off entirely since it spams.
+	append-flags -Wno-unused-command-line-argument
+
 	# #492892
 	filter-flags -frecord-gcc-switches
 
