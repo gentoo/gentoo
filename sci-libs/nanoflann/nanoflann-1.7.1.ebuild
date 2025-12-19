@@ -21,7 +21,7 @@ SLOT="0"
 IUSE="examples test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-cpp/eigen:3"
+RDEPEND="dev-cpp/eigen:="
 DEPEND="${RDEPEND}"
 
 src_configure() {
