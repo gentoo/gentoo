@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="gui lv2 nls osc"
 
 REQUIRED_USE="osc? ( gui )"
