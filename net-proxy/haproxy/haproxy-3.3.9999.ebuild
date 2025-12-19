@@ -29,6 +29,8 @@ else
 	EGIT_BRANCH=master
 fi
 
+S="${WORKDIR}/${MY_P}"
+
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/$(ver_cut 1-2)"
 IUSE="+crypt doc examples +slz +net_ns +pcre pcre-jit prometheus-exporter quic
@@ -61,8 +63,6 @@ DEPEND="
 RDEPEND="${DEPEND}
 	acct-group/haproxy
 	acct-user/haproxy"
-
-S="${WORKDIR}/${MY_P}"
 
 DOCS=( CHANGELOG CONTRIBUTING MAINTAINERS )
 EXTRAS=( admin/halog admin/iprange dev/tcploop dev/hpack )
