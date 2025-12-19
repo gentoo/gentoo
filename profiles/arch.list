@@ -15,6 +15,5 @@ x86
 
 # Prefix keywords
 arm64-macos
-x86-macos
 x64-macos
 x64-solaris

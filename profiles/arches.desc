@@ -28,7 +28,6 @@ x86		stable
 
 # Prefix keywords
 arm64-macos	testing
-x86-macos	testing
 x64-macos	testing
 x64-solaris	testing
 
