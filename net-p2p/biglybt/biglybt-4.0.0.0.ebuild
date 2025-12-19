@@ -3,13 +3,8 @@
 
 EAPI=8
 
-# for 3.8.0.2 USE=doc produces 2 errors:
-#   uis/src/com/biglybt/ui/swt/plugin/net/buddy/swt/BuddyPluginView.java:68:
-#   uis/src/com/biglybt/ui/swt/plugin/net/buddy/swt/BuddyPluginViewChat.java:45:
-#   error: package com.biglybt.ui.swt.plugin.net.buddy does not exist
-JAVA_PKG_IUSE="source test"
+JAVA_PKG_IUSE="source doc test"
 JAVA_TESTING_FRAMEWORKS="junit-jupiter"
-MAVEN_PROVIDES="com.${PN}:${PN}-core:${PV} com.${PN}:${PN}-ui:${PV}"
 
 inherit desktop java-pkg-2 java-pkg-simple junit5 optfeature xdg
 
@@ -60,6 +55,7 @@ PATCHES=(
 	"${FILESDIR}"/biglybt-3.8.0.2-unbundle-bcprov.patch #936549
 )
 
+JAVADOC_SRC_DIRS=( {core,uis}/src )
 JAVA_GENTOO_CLASSPATH_EXTRA="target/classes"
 JAVA_JAR_FILENAME="BiglyBT.jar"
 JAVA_MAIN_CLASS="com.${PN}.ui.Main"
@@ -125,8 +121,8 @@ src_compile() {
 
 	java-pkg-simple_src_compile
 
-	# see top comment
-	# use doc && JAVA_SRC_DIR=( {core,uis}/src ) ejavadoc
+	JAVADOC_CLASSPATH="${JAVA_GENTOO_CLASSPATH}"
+	use doc && ejavadoc
 }
 
 src_install() {
