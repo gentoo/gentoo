@@ -251,11 +251,6 @@ gui-apps/xwaylandvideobridge
 # Bug #965508; Removal on 2025-12-20.
 sys-apps/razercfg
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-11-19)
-# No more revdeps, no longer developed upstream, Phonon revdep.
-# Removal on 2025-12-19.
-kde-apps/libkcompactdisc
-
 # orbea <orbea@riseup.net> (2025-11-16)
 # Dead upstream, non-free licenses, depends on libsdl, no revdeps.
 # Use games-emulation/geolith-jg instead.
