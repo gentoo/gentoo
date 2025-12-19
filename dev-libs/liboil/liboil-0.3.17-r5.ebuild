@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Library of simple functions that are optimized for various CPUs"
 HOMEPAGE="https://liboil.freedesktop.org/"
@@ -49,8 +49,8 @@ src_configure() {
 	# bug #931004
 	filter-lto
 
-	# For use with Clang, which is the only compiler on OSX, bug #576646
-	[[ ${CHOST} == *-darwin* ]] && append-flags -fheinous-gnu-extensions
+	# bug #576646
+	tc-is-clang && append-flags -fheinous-gnu-extensions
 
 	default
 }
