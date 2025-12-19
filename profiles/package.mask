@@ -240,12 +240,6 @@ x11-misc/fraqtive
 # Removal on 2025-12-22.  Bug #966327.
 dev-python/fake-py
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-11-20)
-# Unmaintained in Gentoo for 2.5 years, still PyQt5 based upstream.
-# Potential replacements: RazerGenie + libopenrazer
-# Bug #965508; Removal on 2025-12-20.
-sys-apps/razercfg
-
 # orbea <orbea@riseup.net> (2025-11-16)
 # Dead upstream, non-free licenses, depends on libsdl, no revdeps.
 # Use games-emulation/geolith-jg instead.
