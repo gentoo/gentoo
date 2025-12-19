@@ -39,25 +39,10 @@ PATCHES=(
 	"${FILESDIR}"/${P}-multilib.patch
 	"${FILESDIR}"/${PN}-1.3-as-needed.patch
 	"${FILESDIR}"/${P}-cmake4.patch # bug 967729
+	"${FILESDIR}"/${P}-disable-broken-tests.patch
 )
 
 src_prepare() {
-	local t
-	for t in \
-		max_clique \
-		max_flow \
-		graph_utils \
-		random \
-		time_measure \
-		tsp; do
-		sed -i -e "/${t}_test/d" test/CMakeLists.txt || die
-	done
-
-	sed -i \
-		-e '/ADD_TEST(lp_test lp_test)/d' \
-		-e '/ADD_DEPENDENCIES(check lp_test)/d' \
-		test/CMakeLists.txt || die
-
 	cmake_comment_add_subdirectory demo
 
 	use doc || cmake_comment_add_subdirectory doc
