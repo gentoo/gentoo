@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}/${PV}/${P}.tar.bz
 
 LICENSE="qwt"
 SLOT="6/3.0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~riscv ~x86"
 IUSE="designer doc examples opengl polar svg"
 
 # tests require package to be already installed

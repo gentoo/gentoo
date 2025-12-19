@@ -11,7 +11,7 @@ SRC_URI="https://download.mono-project.com/sources/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
 IUSE="cairo"
 #skip tests due https://bugs.gentoo.org/687784
 RESTRICT="test"

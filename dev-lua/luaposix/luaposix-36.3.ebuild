@@ -13,7 +13,7 @@ SRC_URI="https://github.com/luaposix/luaposix/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~riscv-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="doc"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 

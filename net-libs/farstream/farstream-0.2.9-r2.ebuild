@@ -12,7 +12,7 @@ SRC_URI="https://freedesktop.org/software/farstream/releases/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0.2/5" # .so version
-KEYWORDS="~alpha amd64 ~arm arm64 ~loong ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm arm64 ~loong ppc ppc64 ~riscv x86"
 IUSE="+introspection test upnp valgrind"
 
 # Tests need shmsink from gst-plugins-bad, which isn't packaged

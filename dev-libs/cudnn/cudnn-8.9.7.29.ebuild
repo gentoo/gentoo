@@ -19,7 +19,7 @@ S="${WORKDIR}"
 
 LICENSE="NVIDIA-cuDNN"
 SLOT="0/$(ver_cut 1-3)"
-KEYWORDS="~amd64 ~arm64 ~amd64-linux ~arm64-linux"
+KEYWORDS="~amd64 ~arm64"
 RESTRICT="bindist test"
 
 RDEPEND="

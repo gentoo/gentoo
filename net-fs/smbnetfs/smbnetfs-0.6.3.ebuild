@@ -10,7 +10,7 @@ SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}/SMBNetFS-${PV}/${
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="keyring"
 
 RDEPEND=">=sys-fs/fuse-2.3:0=

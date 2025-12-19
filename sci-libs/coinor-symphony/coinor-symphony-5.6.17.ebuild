@@ -10,7 +10,7 @@ S="${WORKDIR}/SYMPHONY-releases-${PV}/SYMPHONY"
 
 LICENSE="EPL-1.0"
 SLOT="0/3"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc glpk test"
 RESTRICT="!test? ( test )"
 

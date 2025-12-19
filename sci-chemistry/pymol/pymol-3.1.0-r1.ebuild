@@ -16,7 +16,7 @@ S="${WORKDIR}"/${PN}-open-source-${PV}
 
 LICENSE="BitstreamVera BSD freedist HPND MIT-0 OFL-1.0 public-domain UoI-NCSA" #844991
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~amd64 ~x86 ~x64-macos"
 IUSE="+netcdf web"
 
 DEPEND="

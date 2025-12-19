@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ~sparc x86 ~amd64-linux ~x86-linux ~x64-solaris"
+KEYWORDS="amd64 ppc ~sparc x86 ~x64-solaris"
 
 RDEPEND="x11-libs/libX11
 	x11-libs/libXext

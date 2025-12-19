@@ -10,7 +10,7 @@ else
 	# For 3.0.0, it mysteriously redirects to 2.0.0
 	#SRC_URI="https://kohei.us/files/${PN}/src/${P}.tar.xz"
 	SRC_URI="https://gitlab.com/api/v4/projects/mdds%2Fmdds/packages/generic/source/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 fi
 inherit autotools toolchain-funcs
 

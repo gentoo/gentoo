@@ -12,7 +12,7 @@ SRC_URI="https://github.com/lastfm/liblastfm/archive/${COMMIT}.tar.gz -> ${P}.ta
 S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="GPL-3"
-KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 x86"
 SLOT="0"
 IUSE="test"
 

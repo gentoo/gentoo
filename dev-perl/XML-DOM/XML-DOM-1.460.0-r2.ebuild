@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="A Perl module for an DOM Level 1 compliant interface"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 RDEPEND="
 	dev-perl/libwww-perl

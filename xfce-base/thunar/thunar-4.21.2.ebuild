@@ -14,7 +14,7 @@ SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.xz"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0/3"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="X exif gtk-doc introspection libnotify pcre policykit +trash-panel-plugin udisks"
 
 DEPEND="

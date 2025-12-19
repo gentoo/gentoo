@@ -13,7 +13,7 @@ HOMEPAGE="https://rkward.kde.org/"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~amd64-linux"
+	KEYWORDS="~amd64"
 fi
 
 LICENSE="GPL-2+ LGPL-2"

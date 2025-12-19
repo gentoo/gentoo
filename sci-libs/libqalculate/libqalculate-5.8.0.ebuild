@@ -17,7 +17,7 @@ S="${WORKDIR}"/"${PN}-${MY_PV}"
 LICENSE="GPL-2+"
 # SONAME changes pretty often on bumps. Check!
 SLOT="0/23.3"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="+curl icu gnuplot +hardened readline test"
 RESTRICT="!test? ( test )"
 

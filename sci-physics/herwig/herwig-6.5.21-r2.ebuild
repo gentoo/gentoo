@@ -19,7 +19,7 @@ S="${WORKDIR}"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86"
 
 IUSE="doc static-libs"
 RESTRICT="mirror bindist"

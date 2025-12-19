@@ -16,7 +16,7 @@ else
 		doc? (
 			https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}-offline_documentation.tar.gz
 			)"
-	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="LGPL-2.1+"

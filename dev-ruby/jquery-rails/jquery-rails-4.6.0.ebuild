@@ -21,7 +21,7 @@ HOMEPAGE="https://github.com/rails/jquery-rails"
 
 LICENSE="MIT"
 SLOT="4"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
 ruby_add_rdepend "
 	>=dev-ruby/railties-4.2.0:*

@@ -14,7 +14,7 @@ HOMEPAGE="https://rubygems.org/gems/text-hyphen"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 ~hppa ppc ppc64 ~sparc x86 ~x64-macos ~x64-solaris"
 IUSE="test"
 
 ruby_add_bdepend "

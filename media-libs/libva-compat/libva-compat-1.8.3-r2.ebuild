@@ -14,7 +14,7 @@ SRC_URI="https://github.com/intel/libva/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="1"
-KEYWORDS="amd64 arm64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm64 x86"
 IUSE="+drm egl opengl wayland X"
 
 RDEPEND=">=x11-libs/libdrm-2.4.46[${MULTILIB_USEDEP}]

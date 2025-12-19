@@ -11,7 +11,7 @@ SRC_URI="https://yoda.hepforge.org/downloads?f=${P^^}.tar.bz2 -> ${P^^}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="root"
 
 RDEPEND="root? ( sci-physics/root:= )"

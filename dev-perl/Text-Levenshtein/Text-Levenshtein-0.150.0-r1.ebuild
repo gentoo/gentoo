@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="An implementation of the Levenshtein edit distance"
 
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 
 BDEPEND="
 	test? (

@@ -13,7 +13,7 @@ SRC_URI="https://github.com/hypre-space/hypre/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="debug examples fortran int64 openmp mpi"
 
 BDEPEND="virtual/pkgconfig"

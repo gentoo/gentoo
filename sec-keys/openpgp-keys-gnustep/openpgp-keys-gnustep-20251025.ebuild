@@ -12,4 +12,4 @@ inherit sec-keys
 DESCRIPTION="OpenPGP keys used by the GNUstep project"
 HOMEPAGE="https://www.gnustep.org/"
 
-KEYWORDS="~alpha amd64 ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ppc ~ppc64 ~sparc x86"

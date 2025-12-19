@@ -11,7 +11,7 @@ SRC_URI="https://www.ssisc.org/lis/dl/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="cpu_flags_x86_fma3 cpu_flags_x86_fma4 cpu_flags_x86_sse2 doc fortran mpi openmp quad saamg static-libs"
 
 RDEPEND="mpi? ( virtual/mpi )"

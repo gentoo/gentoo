@@ -14,7 +14,7 @@ SRC_URI="https://downloads.sourceforge.net/fluxbox/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="nls xinerama bidi +truetype +imlib +slit +systray test +toolbar vim-syntax"
 REQUIRED_USE="systray? ( toolbar )"
 # Tests are all manual and throw an exception on launch.

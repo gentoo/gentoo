@@ -9,4 +9,4 @@ inherit vim-spell
 
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~arm ppc ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="amd64 ~arm ppc ~sparc x86 ~x64-macos"

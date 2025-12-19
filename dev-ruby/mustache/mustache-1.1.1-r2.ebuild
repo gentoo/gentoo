@@ -17,7 +17,7 @@ HOMEPAGE="https://mustache.github.io/"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 
 PATCHES=( "${FILESDIR}/${P}-test-ordering.patch" )
 

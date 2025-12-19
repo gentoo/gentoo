@@ -11,7 +11,7 @@ SRC_URI="https://github.com/dbry/WavPack/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 IUSE="test-full"
 
 RDEPEND=">=virtual/libiconv-0-r1"

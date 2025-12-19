@@ -11,7 +11,7 @@ SRC_URI="https://fping.org/dist/${P}.tar.gz"
 
 LICENSE="fping"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ppc ppc64 ~riscv ~sparc x86"
 IUSE="suid"
 
 FILECAPS=( cap_net_raw+ep usr/sbin/fping )

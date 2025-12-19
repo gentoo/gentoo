@@ -9,7 +9,7 @@ SRC_URI="https://www.thregr.org/~wavexx/software/wmnd/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~x64-solaris"
+KEYWORDS="amd64 ppc x86 ~x64-solaris"
 IUSE="snmp"
 
 RDEPEND="x11-libs/libX11

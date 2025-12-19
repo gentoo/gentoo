@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 
 PATCHES=( "${FILESDIR}"/${PN}-2.0.3-fix-buildsystem.patch )
 

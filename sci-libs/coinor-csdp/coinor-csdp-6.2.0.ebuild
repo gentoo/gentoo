@@ -14,7 +14,7 @@ SRC_URI="https://www.coin-or.org/download/source/${MY_PN}/${MY_P}.tgz -> ${P}.ta
 
 LICENSE="EPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc examples openmp"
 
 RDEPEND="virtual/blas

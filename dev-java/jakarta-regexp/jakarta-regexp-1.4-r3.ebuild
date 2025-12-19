@@ -14,7 +14,7 @@ S="${WORKDIR}/${P}"
 
 LICENSE="Apache-1.1"
 SLOT="${PV}"
-KEYWORDS="amd64 arm64 ppc64 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm64 ppc64"
 
 DEPEND="<virtual/jdk-26:*" # bug #965859
 RDEPEND=">=virtual/jre-1.8:*"

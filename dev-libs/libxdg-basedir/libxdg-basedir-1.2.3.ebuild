@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv x86 ~amd64-linux ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv x86 ~x64-macos"
 IUSE="doc"
 
 BDEPEND="doc? ( app-text/doxygen )"

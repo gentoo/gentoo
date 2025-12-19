@@ -8,7 +8,7 @@ if [ "${PV}" = "9999" ]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/junghans/cwdiff/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x64-macos"
+	KEYWORDS="~amd64 ~arm ~x86 ~x64-macos"
 fi
 
 DESCRIPTION="A script that wraps wdiff to support directories and colorize the output"

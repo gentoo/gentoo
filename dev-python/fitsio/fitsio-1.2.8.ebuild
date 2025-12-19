@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	>=dev-python/numpy-1.17:=[${PYTHON_USEDEP}]

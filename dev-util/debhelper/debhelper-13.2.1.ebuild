@@ -10,7 +10,7 @@ SRC_URI="mirror://debian/pool/main/d/${PN}/${P/-/_}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~m68k ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux"
+KEYWORDS="~alpha amd64 arm ~hppa ~m68k ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 DH_LANGS=( de es fr )

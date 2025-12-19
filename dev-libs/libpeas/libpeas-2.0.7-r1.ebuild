@@ -13,7 +13,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/libpeas"
 
 LICENSE="LGPL-2.1+"
 SLOT="2"
-KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 
 IUSE="glade gtk-doc javascript lua +python vala"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )

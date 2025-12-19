@@ -11,7 +11,7 @@ SRC_URI="https://mathcs.holycross.edu/~ahwang/epix/${P}_withpdf.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE="doc emacs examples"
 
 DEPEND="

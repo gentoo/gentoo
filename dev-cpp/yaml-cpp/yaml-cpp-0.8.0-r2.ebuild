@@ -11,7 +11,7 @@ SRC_URI="https://github.com/jbeder/yaml-cpp/archive/refs/tags/${PV}.tar.gz -> ${
 
 LICENSE="MIT"
 SLOT="0/0.8"
-KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

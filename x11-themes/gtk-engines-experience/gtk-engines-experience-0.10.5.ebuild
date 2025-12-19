@@ -13,7 +13,7 @@ SRC_URI="http://benjamin.sipsolutions.net/experience/${MY_P}.tar.bz2"
 
 LICENSE="LGPL-2"
 SLOT="2"
-KEYWORDS="amd64 ~ppc ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 
 RDEPEND="x11-libs/gtk+:2"
 DEPEND="${RDEPEND}"

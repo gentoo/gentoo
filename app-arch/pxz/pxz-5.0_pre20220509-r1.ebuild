@@ -12,7 +12,7 @@ SRC_URI="https://github.com/jnovy/pxz/archive/${PXZ_COMMIT}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 x86 ~amd64-linux"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 
 # Needs the library from xz-utils
 RDEPEND="app-arch/xz-utils"

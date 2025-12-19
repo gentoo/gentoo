@@ -14,7 +14,7 @@ S="${WORKDIR}/${MYP}"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~loong ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~loong ~riscv ~x86"
 IUSE="doc examples metis mpi +scotch static-libs"
 
 BDEPEND="virtual/pkgconfig"

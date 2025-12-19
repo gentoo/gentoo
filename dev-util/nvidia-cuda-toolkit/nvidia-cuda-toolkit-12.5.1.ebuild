@@ -14,7 +14,7 @@ S="${WORKDIR}"
 
 LICENSE="NVIDIA-CUDA"
 SLOT="0/${PV}"
-KEYWORDS="-* ~amd64 ~amd64-linux"
+KEYWORDS="-* ~amd64"
 IUSE="debugger examples nsight profiler rdma vis-profiler sanitizer"
 RESTRICT="bindist mirror"
 

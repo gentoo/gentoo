@@ -7,7 +7,7 @@ inherit xorg-3
 
 DESCRIPTION="round X clock"
 
-KEYWORDS="~alpha amd64 arm ~arm64 ~mips ppc ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm ~arm64 ~mips ppc ppc64 ~s390 ~sparc x86"
 
 RDEPEND="
 	x11-libs/libX11

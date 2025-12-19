@@ -28,7 +28,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="geant4"
 SLOT="4/$(ver_cut 1-4)"
 
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="+data debug doc examples freetype gdml geant3 hdf5 inventor motif opengl
 	qt6 raytracerx static-libs tbb threads trajectories vtk"
 

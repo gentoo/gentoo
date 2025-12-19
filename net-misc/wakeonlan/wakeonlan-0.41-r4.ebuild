@@ -10,7 +10,7 @@ SRC_URI="https://github.com/jpoliv/wakeonlan/archive/${P}.tar.gz"
 
 LICENSE="Artistic GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ppc ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm ~arm64 ppc ~sparc x86"
 IUSE=""
 
 DEPEND="virtual/perl-ExtUtils-MakeMaker"

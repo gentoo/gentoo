@@ -17,7 +17,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${MY_P}.zip
 
 LICENSE="|| ( GPL-2 FIPL-1.0 )"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
 IUSE="jpeg jpeg2k mng openexr png raw static-libs tiff webp"
 
 # The tiff/imath+openexr isn't a typo. The TIFF plugin cheats and

@@ -21,7 +21,7 @@ S="${WORKDIR}/${PN}-${MY_DIR2}"
 # are no GPL-2-only files.
 LICENSE="BSD GPL-2 GPL-2+ GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~riscv ~x86 ~x86-linux"
+KEYWORDS="~amd64 ~ppc ~riscv ~x86"
 IUSE="emacs examples polymake +readline"
 
 # The interactive help uses "info" from sys-apps/texinfo.

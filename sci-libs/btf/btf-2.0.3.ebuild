@@ -13,7 +13,7 @@ SRC_URI="https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/refs/tags/v$
 
 LICENSE="LGPL-2.1"
 SLOT="0/2"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 DEPEND=">=sci-libs/suitesparseconfig-${Sparse_PV}"
 RDEPEND="${DEPEND}"

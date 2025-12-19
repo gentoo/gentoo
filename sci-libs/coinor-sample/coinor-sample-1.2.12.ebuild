@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/coin-or-tools/Data-Sample/"
 SRC_URI="https://github.com/coin-or-tools/${MY_PN}/archive/releases/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="EPL-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~loong ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~loong ~riscv ~x86"
 IUSE=""
 
 S="${WORKDIR}/${MY_PN}-releases-${PV}"

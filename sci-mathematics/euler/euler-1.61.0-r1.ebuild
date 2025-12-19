@@ -10,7 +10,7 @@ HOMEPAGE="http://euler.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/euler/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc -sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc -sparc ~x86"
 
 BDEPEND="virtual/pkgconfig"
 DEPEND="x11-libs/gtk+:2"

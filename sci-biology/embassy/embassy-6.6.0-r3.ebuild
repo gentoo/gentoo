@@ -8,7 +8,7 @@ HOMEPAGE="http://emboss.sourceforge.net/embassy/"
 
 LICENSE="metapackage"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	>=sci-biology/embassy-cbstools-1.0.0.660

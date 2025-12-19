@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}-${HTTPERF_COMMIT}"
 
 LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~x86 ~amd64-linux ~x64-macos"
+KEYWORDS="~amd64 ~mips ~x86 ~x64-macos"
 IUSE="debug idleconn"
 
 DEPEND="

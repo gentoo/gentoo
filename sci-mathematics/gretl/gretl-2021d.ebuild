@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}/${PV}/${P}.tar.xz
 
 LICENSE="GPL-3"
 SLOT="0/40"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="cpu_flags_x86_avx emacs extras gnome gtk mpi nls odbc openmp python
 	readline cpu_flags_x86_sse2 R"
 

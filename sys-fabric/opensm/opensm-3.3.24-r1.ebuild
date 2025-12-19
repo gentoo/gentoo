@@ -11,7 +11,7 @@ SRC_URI="https://github.com/linux-rdma/opensm/releases/download/${PV}/${P}.tar.g
 
 LICENSE="|| ( GPL-2 BSD-2 )"
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-linux"
+KEYWORDS="amd64 x86"
 IUSE="selinux tools"
 
 DEPEND="sys-cluster/rdma-core"

@@ -14,7 +14,7 @@ if [[ "${PV}" == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.srcbox.net/gkrellm/gkrellm.git"
 else
 	SRC_URI="http://gkrellm.srcbox.net/releases/${P}.tar.bz2"
-	KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~mips ppc ppc64 ~riscv ~sparc x86"
 fi
 LICENSE="GPL-3+"
 SLOT="2"

@@ -20,7 +20,7 @@ SRC_URI="https://github.com/doudou/flexmock/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="flexmock"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~x64-macos ~x64-solaris"
 IUSE="test"
 
 ruby_add_bdepend "

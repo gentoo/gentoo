@@ -10,7 +10,7 @@ SRC_URI="http://${PN}.sourceforge.net/download/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="2"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 
 RDEPEND="
 	x11-libs/gtk+:2

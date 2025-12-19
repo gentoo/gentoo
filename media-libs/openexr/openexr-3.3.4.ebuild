@@ -22,7 +22,7 @@ SRC_URI="
 LICENSE="BSD"
 SLOT="0/32" # based on SONAME
 # -ppc -sparc because broken on big endian, bug #818424
-KEYWORDS="~amd64 ~arm ~arm64 ~loong -ppc ~ppc64 ~riscv -sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong -ppc ~ppc64 ~riscv -sparc ~x86 ~x64-macos"
 
 IUSE="cpu_flags_x86_avx doc examples large-stack utils test threads"
 REQUIRED_USE="doc? ( utils )"

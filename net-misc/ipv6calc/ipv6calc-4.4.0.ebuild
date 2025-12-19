@@ -11,7 +11,7 @@ SRC_URI="https://github.com/pbiering/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~hppa ppc ~ppc64 ~sparc x86"
 IUSE="apache geoip +openssl test"
 RESTRICT="!test? ( test )"
 

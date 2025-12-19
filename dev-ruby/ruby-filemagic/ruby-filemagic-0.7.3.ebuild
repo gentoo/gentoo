@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/blackwinter/ruby-filemagic"
 
 LICENSE="Ruby-BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~hppa ~x86"
 IUSE="test"
 
 DEPEND="${DEPEND} sys-apps/file test? ( >=sys-apps/file-5.30 )"

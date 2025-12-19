@@ -11,7 +11,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ppc ppc64 ~sparc x86"
 IUSE="gpm gui xft"
 
 RDEPEND=">=sys-libs/slang-2

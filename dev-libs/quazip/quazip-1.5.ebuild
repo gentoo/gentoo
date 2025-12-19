@@ -12,7 +12,7 @@ SRC_URI="https://github.com/stachenov/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="LGPL-2.1-with-linking-exception"
 # SONAME of libquazip1-qt6.so, check QUAZIP_LIB_SOVERSION in CMakeLists.txt
 SLOT="0/1.5"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
 IUSE="bzip2 test"
 
 RESTRICT="!test? ( test )"

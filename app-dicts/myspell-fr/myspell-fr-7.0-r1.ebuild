@@ -35,7 +35,7 @@ SRC_URI="https://grammalecte.net/grammalecte/oxt/lo-oo-ressources-linguistiques-
 
 LICENSE="MPL-2.0 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 IUSE=""
 
 src_prepare() {

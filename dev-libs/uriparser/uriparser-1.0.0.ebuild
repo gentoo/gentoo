@@ -11,7 +11,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="test? ( LGPL-2.1+ ) BSD"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 ppc ~ppc64 ~sparc x86"
 IUSE="+doc qt5 test unicode"  # +doc to address warning RequiredUseDefaults
 
 REQUIRED_USE="qt5? ( doc ) test? ( unicode )"

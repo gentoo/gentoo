@@ -9,7 +9,7 @@ SRC_URI="https://dev.gentoo.org/~ionen/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 arm64 ppc ~ppc64 ~riscv ~sparc x86 ~x86-linux"
+KEYWORDS="amd64 arm64 ppc ~ppc64 ~riscv ~sparc x86"
 
 RDEPEND="
 	dev-libs/glib:2

@@ -13,7 +13,7 @@ SRC_URI="https://lemon.cs.elte.hu/pub/sources/${P}.tar.gz"
 
 LICENSE="Boost-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="+coin doc glpk static-libs test"
 RESTRICT="!test? ( test )"
 

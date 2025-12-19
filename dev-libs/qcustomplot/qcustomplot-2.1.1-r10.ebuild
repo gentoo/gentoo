@@ -14,7 +14,7 @@ S=${WORKDIR}/${PN}-source
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86"
 IUSE=""
 
 RDEPEND="dev-qt/qtbase:6[gui,widgets]"

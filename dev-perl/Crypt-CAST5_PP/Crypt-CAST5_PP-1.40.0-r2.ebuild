@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="CAST5 block cipher in pure Perl"
 
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ppc ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~hppa ~ppc ~sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

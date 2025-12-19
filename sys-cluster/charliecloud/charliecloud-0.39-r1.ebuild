@@ -12,7 +12,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://gitlab.com/${PN}/main.git"
 else
 	SRC_URI="https://gitlab.com/${PN}/main/-/archive/v${PV}/main-v${PV}.tar.bz2 -> ${P}.tar.bz2"
-	KEYWORDS="~amd64 ~x86 ~x86-linux"
+	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/main-v${PV}"
 fi
 

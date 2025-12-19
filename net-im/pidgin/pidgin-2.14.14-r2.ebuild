@@ -14,7 +14,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0/2" # libpurple version
-KEYWORDS="~alpha amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
 IUSE="aqua dbus debug doc eds gadu gnutls groupwise +gstreamer +gui idn
 meanwhile ncurses networkmanager nls perl prediction python sasl spell tcl
 test tk v4l +xscreensaver zephyr zeroconf"

@@ -7,7 +7,7 @@ EBO_DESCRIPTION="Protein domain analysis add-on package"
 
 inherit autotools emboss-r3
 
-KEYWORDS="~amd64 ~x86 ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 
 S="${WORKDIR}/DOMAINATRIX-0.1.650"
 PATCHES=( "${FILESDIR}"/${PN}-0.1.650_fix-build-system.patch )

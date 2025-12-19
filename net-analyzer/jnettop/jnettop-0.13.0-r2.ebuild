@@ -11,7 +11,7 @@ SRC_URI="http://jnettop.kubs.info/dist/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~sparc x86"
 IUSE="berkdb ncurses syslog"
 
 RDEPEND="

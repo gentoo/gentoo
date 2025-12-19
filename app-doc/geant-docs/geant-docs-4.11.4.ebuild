@@ -29,7 +29,7 @@ S="${DISTDIR}"
 
 LICENSE="geant4"
 SLOT="4"
-KEYWORDS="amd64 ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~riscv x86"
 
 src_unpack() {
 		: # empty, nothing to unpack

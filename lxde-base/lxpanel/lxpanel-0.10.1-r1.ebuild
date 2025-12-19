@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/lxde/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~riscv ~x86"
 IUSE="+alsa wifi"
 
 RDEPEND="

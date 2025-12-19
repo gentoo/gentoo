@@ -11,7 +11,7 @@ SRC_URI="https://github.com/vasi/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.ta
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~riscv ~x86"
 IUSE="lz4 lzma lzo static-libs +zlib zstd"
 REQUIRED_USE="|| ( lz4 lzma lzo zlib zstd )"
 RESTRICT="test" # Tests require access to /dev/fuse.

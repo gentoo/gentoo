@@ -15,7 +15,7 @@ CMAKE_USE_DIR="${S}/ImageLounge"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~riscv x86 ~amd64-linux"
+KEYWORDS="amd64 ~arm64 ~riscv x86"
 IUSE="+opencv plugins raw +tiff test zip"
 REQUIRED_USE="
 	raw? ( opencv )

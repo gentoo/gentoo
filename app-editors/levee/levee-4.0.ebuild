@@ -12,7 +12,7 @@ SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-patches.
 
 LICENSE="levee"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 ppc ~sparc x86"
 
 RDEPEND="
 	!app-text/lv

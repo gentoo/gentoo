@@ -12,7 +12,7 @@ DESCRIPTION="Perform remote procedure calls using extensible markup language"
 SRC_URI+=" http://perl-xml.sourceforge.net/xml-rpc/${PN}-${DIST_VERSION}.tar.gz"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~mips ppc ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm ~hppa ~mips ppc ppc64 ~s390 ~sparc x86"
 
 RDEPEND="
 	dev-perl/HTTP-Daemon

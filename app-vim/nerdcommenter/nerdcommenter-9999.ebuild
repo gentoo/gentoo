@@ -10,7 +10,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/preservim/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86 ~x86-linux"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="vim plugin: easy commenting of code for many filetypes"
