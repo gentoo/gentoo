@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -37,7 +37,7 @@ CP_DEPEND="
 	dev-java/bcpkix:0
 	dev-java/commons-io:1
 	dev-java/commons-logging:0
-	dev-java/fontbox:0
+	>=dev-java/fontbox-2.0.32-r1:2
 	dev-java/jakarta-servlet-api:6.1
 	dev-java/qdox:1.12
 	dev-java/sun-jai-bin:0
@@ -49,7 +49,7 @@ DEPEND="
 	>=virtual/jdk-1.8:*
 	test? (
 		dev-java/mockito:2
-		dev-java/pdfbox:0
+		>=dev-java/pdfbox-2.0.32-r1:2
 		dev-java/xmlunit:1
 	)
 "
