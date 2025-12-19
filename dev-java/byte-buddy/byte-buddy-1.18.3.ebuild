@@ -25,7 +25,7 @@ DEPEND="
 	>=dev-java/findbugs-annotations-3.0.1:0
 	>=dev-java/jna-5.18.1:0
 	>=dev-java/jsr305-3.0.2-r1:0
-	>=virtual/jdk-11:*
+	|| ( virtual/jdk:26 virtual/jdk:25 virtual/jdk:21 virtual/jdk:17 virtual/jdk:11 )
 	test? (
 		>=dev-java/mockito-2.28.2-r1:2
 	)
