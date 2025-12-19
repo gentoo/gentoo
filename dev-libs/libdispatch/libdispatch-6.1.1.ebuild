@@ -51,6 +51,7 @@ src_configure () {
 	tc-export CC CXX LD AR NM OBJDUMP RANLIB PKG_CONFIG
 
 	local mycmakeargs=(
+		-D_GNU_SOURCE=ON # fix musl bug #967741
 		-DINSTALL_PRIVATE_HEADERS=ON # private headers needed by gnustep-base/libobjc2[libdispatch]
 		-DBUILD_TESTING=$(usex test)
 	)
