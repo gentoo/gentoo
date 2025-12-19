@@ -119,9 +119,9 @@ src_prepare() {
 
 src_compile() {
 	# build core classes, needed for compiling uis
-	ejavac -d target/classes \
-		-cp "$(java-pkg_getjars commons-cli):$(java-pkg_getjars swt):$(java-pkg_getjars bcprov)" \
-		$(find core/src -type f -name "*.java")
+	find core/src -type f -name '*.java' > sources.lst
+	ejavac -d target/classes @sources.lst \
+		-cp "$(java-pkg_getjars bcprov,commons-cli,swt)"
 
 	java-pkg-simple_src_compile
 
