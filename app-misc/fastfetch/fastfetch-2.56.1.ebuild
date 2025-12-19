@@ -68,7 +68,6 @@ REQUIRED_USE="
 "
 
 src_configure() {
-
 	local fastfetch_enable_imagemagick7=no
 	local fastfetch_enable_imagemagick6=no
 	if use imagemagick; then
