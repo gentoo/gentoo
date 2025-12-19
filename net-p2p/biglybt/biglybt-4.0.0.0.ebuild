@@ -89,7 +89,7 @@ src_prepare() {
 	rm -r core/src/org/gudy || die "removing bundled bouncycastle failed" #936549
 	java-pkg-2_src_prepare
 
-	find -type f -name ".editorconfig" -o -name ".gitignore" -delete \
+	find -type f -name '*.editorconfig' -delete \
 		|| die "Cleaning distfile artifacts failed"
 
 	# AENameServiceDescriptor fails to compile with jdk >= 11
