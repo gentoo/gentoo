@@ -23,8 +23,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64"
 
 CP_DEPEND="
-	>=dev-java/bcprov-1.80:0
-	dev-java/commons-cli:0
+	>=dev-java/bcprov-1.83:0
+	>=dev-java/commons-cli-1.10.0:0
 	dev-java/swt:0[cairo]
 "
 
