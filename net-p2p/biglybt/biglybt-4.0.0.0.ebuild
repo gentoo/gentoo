@@ -55,9 +55,7 @@ DOCS=( README.md ChangeLog.txt )
 PATCHES=(
 	"${FILESDIR}"/biglybt-3.2.0.0-disable-SWTUpdateChecker.patch
 	"${FILESDIR}"/biglybt-3.2.0.0-disable-shared-plugins.patch
-	"${FILESDIR}"/biglybt-3.5.0.0-Entities.javadoc.patch
 	"${FILESDIR}"/biglybt-3.6.0.0-disable-PluginUpdatePlugin.patch
-	"${FILESDIR}"/biglybt-3.6.0.0-fix-ambiguous.patch
 	"${FILESDIR}"/biglybt-3.8.0.2-unbundle-bcprov.patch #936549
 )
 
