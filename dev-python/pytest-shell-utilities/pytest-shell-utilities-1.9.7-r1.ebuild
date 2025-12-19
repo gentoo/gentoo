@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~riscv x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 
 RDEPEND="
 	>=dev-python/attrs-22.1.0[${PYTHON_USEDEP}]
@@ -35,6 +35,10 @@ BDEPEND="
 		dev-python/pytest-subtests[${PYTHON_USEDEP}]
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}/pytest-shell-utilities-1.9.7-py314.patch"
+)
 
 distutils_enable_tests pytest
 

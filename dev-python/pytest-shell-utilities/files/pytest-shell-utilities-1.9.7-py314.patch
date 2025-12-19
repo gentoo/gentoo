@@ -1,0 +1,22 @@
+From c8edc1e1060b48de2da5f6c5fa08789b5f1bc783 Mon Sep 17 00:00:00 2001
+From: Daniel Garcia Moreno <daniel.garcia@suse.com>
+Date: Mon, 17 Nov 2025 10:48:36 +0100
+Subject: [PATCH] test: Set start method to "fork" in test_daemon
+
+Fix https://github.com/saltstack/pytest-shell-utilities/issues/56
+---
+ tests/functional/shell/test_daemon.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tests/functional/shell/test_daemon.py b/tests/functional/shell/test_daemon.py
+index 8f2f32d..86c1f76 100644
+--- a/tests/functional/shell/test_daemon.py
++++ b/tests/functional/shell/test_daemon.py
+@@ -48,6 +48,7 @@ def test_daemon_process_termination(request: FixtureRequest, tempfiles: Tempfile
+ 
+         import time
+         import multiprocessing
++        multiprocessing.set_start_method('fork')
+ 
+         def spin():
+             while True:
