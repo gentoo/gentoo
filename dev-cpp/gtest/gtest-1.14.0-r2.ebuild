@@ -52,7 +52,7 @@ multilib_src_configure() {
 		-Dgtest_build_tests=$(usex test)
 	)
 	if use test; then
-		if use x86 || use x86-linux; then
+		if use x86; then
 			append-cxxflags -ffloat-store # bug #905007
 		fi
 		mycmakeargs+=( -DPython3_EXECUTABLE="${PYTHON}" )

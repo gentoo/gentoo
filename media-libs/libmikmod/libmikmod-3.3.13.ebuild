@@ -46,7 +46,7 @@ multilib_src_configure() {
 	if use ppc || use ppc64; then
 		mysimd="$(use_enable cpu_flags_ppc_altivec simd)"
 	fi
-	if use amd64 || use x86 || use amd64-linux || use x86-linux || use x64-macos; then
+	if use amd64 || use x86 || use x64-macos; then
 		mysimd="$(use_enable cpu_flags_x86_sse2 simd)"
 	fi
 

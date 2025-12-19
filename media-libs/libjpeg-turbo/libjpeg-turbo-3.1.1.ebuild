@@ -35,8 +35,6 @@ RDEPEND="
 BDEPEND="
 	amd64? ( ${ASM_DEPEND} )
 	x86? ( ${ASM_DEPEND} )
-	amd64-linux? ( ${ASM_DEPEND} )
-	x86-linux? ( ${ASM_DEPEND} )
 	x64-macos? ( ${ASM_DEPEND} )
 "
 
