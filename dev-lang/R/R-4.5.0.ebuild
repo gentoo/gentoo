@@ -79,6 +79,7 @@ PATCHES=(
 	"${FILESDIR}"/R-4.3.0-parallel.patch
 	"${FILESDIR}"/R-4.3.0-no-LDFLAGS-in-libR-pkg-config.patch
 	"${FILESDIR}"/R-4.3.0-no-gzip-doc.patch
+	"${FILESDIR}"/R-4.5.0-static-initializer.patch  # 4.5.0 only
 )
 
 # false positive, the linking step fails (as it should)
