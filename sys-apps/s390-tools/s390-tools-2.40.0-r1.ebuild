@@ -58,6 +58,8 @@ src_configure() {
 	export HAVE_OPENSSL=$(usex openssl 1 0)
 	export HAVE_CRYPTSETUP2=$(usex cryptsetup 1 0)
 	export HAVE_JSONC=$(usex cryptsetup 1 0)
+	# Yes, really. Half the code uses one, the other half the other.
+	export HAVE_CURL=$(usex curl 1 0)
 	export HAVE_LIBCURL=$(usex curl 1 0)
 	# These need checking, but disabled for now to avoid automagic
 	export HAVE_GLIB2=0
