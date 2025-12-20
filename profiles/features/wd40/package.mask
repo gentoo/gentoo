@@ -413,6 +413,7 @@ gnome-extra/gnome-browser-connector
 >=gnome-extra/gnome-system-monitor-46
 gnome-extra/gnome-tweaks
 gnome-extra/sushi
+>=gnome-extra/yelp-49
 >=media-gfx/libimagequant-4
 <media-gfx/gimp-3.0.6
 >=media-libs/libopenraw-0.3.2
