@@ -20,7 +20,7 @@ else
 		https://ftp.ntpsec.org/pub/releases/${P}.tar.gz
 		verify-sig? ( https://ftp.ntpsec.org/pub/releases/${P}.tar.gz.asc )
 	"
-	KEYWORDS="amd64 arm arm64 ~loong ~m68k ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 ~loong ~m68k ~ppc ~ppc64 ~riscv ~s390 ~x86"
 
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-ntpsec )"
 fi
