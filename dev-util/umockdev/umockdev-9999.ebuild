@@ -31,7 +31,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? (
 		${PYTHON_DEPS}
-		dev-libs/libgudev:=[${MULTILIB_USEDEP}]
+		dev-libs/libgudev:=[introspection,${MULTILIB_USEDEP}]
 	)
 "
 BDEPEND="
@@ -58,6 +58,6 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
-	export SLOW_TESTBED_FACTOR=10
+	export SLOW_TESTBED_FACTOR=100
 	meson_src_test --num-processes=1 --timeout-multiplier=10 --setup installed
 }
