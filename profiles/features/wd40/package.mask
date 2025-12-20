@@ -397,6 +397,7 @@ dev-util/tree-sitter-cli
 dev-vcs/breezy
 >=dev-vcs/stgit-2
 >=games-board/gnome-mahjongg-3.40.0
+>=games-board/gnome-mines-49
 >=games-puzzle/swell-foop-46
 >=games-puzzle/quadrapassel-49
 gnome-base/gdm
