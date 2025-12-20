@@ -288,7 +288,7 @@ else
 	BINPATH=${TOOLCHAIN_BINPATH:-${PREFIX}/${CTARGET#accel-}/gcc-bin/${GCC_CONFIG_VER}}
 fi
 
-DATAPATH=${TOOLCHAIN_DATAPATH:-${PREFIX}/share/gcc-data/${CTARGET#accel-}/${GCC_CONFIG_VER}}
+DATAPATH=${TOOLCHAIN_DATAPATH:-${PREFIX}/share/gcc-data/${CTARGET}/${GCC_CONFIG_VER}}
 
 # Don't install in /usr/include/g++-v3/, but instead to gcc's internal directory.
 # We will handle /usr/include/g++-v3/ with gcc-config ...
