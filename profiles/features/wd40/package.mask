@@ -409,6 +409,7 @@ gnome-base/gdm
 gnome-extra/gnome-browser-connector
 >=gnome-extra/gnome-calculator-49
 >=gnome-extra/gnome-calendar-49
+>=gnome-extra/gnome-contacts-49
 >=gnome-extra/gnome-system-monitor-46
 gnome-extra/gnome-tweaks
 gnome-extra/sushi
