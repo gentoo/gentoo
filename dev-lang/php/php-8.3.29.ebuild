@@ -4,7 +4,7 @@
 EAPI=8
 
 WANT_AUTOMAKE="none"
-POSTGRES_COMPAT=( {15..17} )
+POSTGRES_COMPAT=( {15..18} )
 inherit autotools flag-o-matic multilib postgres systemd
 
 DESCRIPTION="The PHP language runtime engine"
