@@ -6,7 +6,7 @@ EAPI=8
 inherit gnome.org gnome2-utils meson xdg
 
 DESCRIPTION="Log viewer for the systemd journal"
-HOMEPAGE="https://wiki.gnome.org/Apps/Logs"
+HOMEPAGE="https://apps.gnome.org/Logs/"
 
 LICENSE="GPL-3+"
 SLOT="0"
