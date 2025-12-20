@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Generate SQL from Perl data structures"
 
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86 ~ppc-macos"
+KEYWORDS="amd64 ~ppc x86"
 
 RDEPEND="
 	>=virtual/perl-Exporter-5.570.0

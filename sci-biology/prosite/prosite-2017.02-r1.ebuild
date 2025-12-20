@@ -12,7 +12,7 @@ LICENSE="swiss-prot"
 SLOT="0"
 # Minimal build keeps only the indexed files (if applicable).
 # The non-indexed database is not installed.
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="emboss minimal"
 
 BDEPEND="emboss? ( sci-biology/emboss )"

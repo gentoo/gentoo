@@ -12,6 +12,9 @@ inherit cmake
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="test"
+
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-libs/aws-c-auth:=
@@ -31,6 +34,11 @@ src_configure()
 {
 	local mycmakeargs=(
 		-DBUILD_DEPS=OFF # disable embedded 3rd-party repositories.
+		-DBUILD_TESTING=$(usex test)
+	)
+
+	use test && mycmakeargs+=(
+		-DENABLE_NET_TESTS=OFF # Network Sandbox cause these to fail.
 	)
 
 	cmake_src_configure

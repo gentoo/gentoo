@@ -65,6 +65,7 @@ src_prepare() {
 		--pkg-config=$(tc-getPKG_CONFIG)
 		# avoid automagic with libdrm, vaapi, vdpau ...
 		--disable-autodetect
+		$(tc-is-lto && echo --enable-lto) #966255
 		"--optflags='${CFLAGS} -std=gnu17'"
 	)
 

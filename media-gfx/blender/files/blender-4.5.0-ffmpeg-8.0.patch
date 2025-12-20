@@ -1,0 +1,40 @@
+diff --git a/extern/audaspace/plugins/ffmpeg/FFMPEGReader.cpp b/extern/audaspace/plugins/ffmpeg/FFMPEGReader.cpp
+index efe36df4204..2a4dcd45f07 100644
+--- a/extern/audaspace/plugins/ffmpeg/FFMPEGReader.cpp
++++ b/extern/audaspace/plugins/ffmpeg/FFMPEGReader.cpp
+@@ -285,9 +285,11 @@ FFMPEGReader::FFMPEGReader(std::shared_ptr<Buffer> buffer, int stream) :
+ 		m_membuffer(buffer),
+ 		m_membufferpos(0)
+ {
+-	m_membuf = reinterpret_cast<data_t*>(av_malloc(AV_INPUT_BUFFER_MIN_SIZE + AV_INPUT_BUFFER_PADDING_SIZE));
++	// Default buffer size (aligns with the x86 page size), taken from FFmpeg's "doc/examples/avio_read_callback.c" example
++	size_t avio_ctx_buffer_size = 4096;
++	m_membuf = reinterpret_cast<data_t*>(av_malloc(avio_ctx_buffer_size));
+ 
+-	m_aviocontext = avio_alloc_context(m_membuf, AV_INPUT_BUFFER_MIN_SIZE, 0, this, read_packet, nullptr, seek_packet);
++	m_aviocontext = avio_alloc_context(m_membuf, avio_ctx_buffer_size, 0, this, read_packet, nullptr, seek_packet);
+ 
+ 	if(!m_aviocontext)
+ 	{
+diff --git a/source/blender/imbuf/movie/intern/movie_write_audio.cc b/source/blender/imbuf/movie/intern/movie_write_audio.cc
+index 16d01359a60..2af40944c2e 100644
+--- a/source/blender/imbuf/movie/intern/movie_write_audio.cc
++++ b/source/blender/imbuf/movie/intern/movie_write_audio.cc
+@@ -334,12 +334,11 @@ AVStream *alloc_audio_stream(MovieWriter *context,
+   c->time_base.num = 1;
+   c->time_base.den = c->sample_rate;
+ 
+-  if (c->frame_size == 0) {
+-    /* Used to be if ((c->codec_id >= CODEC_ID_PCM_S16LE) && (c->codec_id <= CODEC_ID_PCM_DVD))
+-     * not sure if that is needed anymore, so let's try out if there are any
+-     * complaints regarding some FFMPEG versions users might have. */
+-    context->audio_input_samples = AV_INPUT_BUFFER_MIN_SIZE * 8 / c->bits_per_coded_sample /
+-                                   audio_channels;
++  if (c->codec->capabilities & AV_CODEC_CAP_VARIABLE_FRAME_SIZE) {
++    /* If the audio format has a variable frame size, default to 10000.
++     * This logic is taken from the FFmpeg "doc/examples/mux.c" example
++     */
++    context->audio_input_samples = 10000;
+   }
+   else {
+     context->audio_input_samples = c->frame_size;

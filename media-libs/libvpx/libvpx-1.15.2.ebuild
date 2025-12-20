@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0/11"
-KEYWORDS="amd64 arm arm64 ~loong ~ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 ~loong ~ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="cpu_flags_ppc_vsx3 doc +highbitdepth postproc static-libs test +threads"
 REQUIRED_USE="test? ( threads )"
 RESTRICT="!test? ( test )"

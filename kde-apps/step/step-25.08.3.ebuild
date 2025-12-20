@@ -14,7 +14,7 @@ HOMEPAGE="https://apps.kde.org/step/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~riscv ~x86"
 IUSE="+gsl +qalculate"
 
 DEPEND="
@@ -41,6 +41,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND=">=dev-qt/qttools-${QTMIN}:6[linguist]"
+
+PATCHES=( "${FILESDIR}/${P}-qt-6.10.1.patch" ) # bug 966479
 
 src_configure() {
 	local mycmakeargs=(

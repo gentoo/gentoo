@@ -38,7 +38,7 @@ pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
 
-multilib_src_prepare() {
+src_prepare() {
 	if ! use arm ; then
 		rm -r "test/arm" || die
 	fi

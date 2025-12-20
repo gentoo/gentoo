@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/project/bbe-/bbe/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86"
 
 PATCHES=(
 	"${FILESDIR}"/bbe-0.2.2-inline.patch

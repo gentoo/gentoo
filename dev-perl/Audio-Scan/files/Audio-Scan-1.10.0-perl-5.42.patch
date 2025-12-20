@@ -1,0 +1,80 @@
+https://bugs.gentoo.org/959573
+https://rt.cpan.org/Public/Bug/Display.html?id=167903
+https://rt.cpan.org/Transaction/Display.html?id=3098149
+
+>From ced0f4272dc8f66ae6efa2e84246c00b65409c12 Mon Sep 17 00:00:00 2001
+From: Niko Tyni <ntyni@debian.org>
+Date: Sun, 24 Aug 2025 17:10:44 +0100
+Subject: [PATCH] Fix invalid XS syntax that breaks the build with Perl 5.42
+
+Older versions of ExtUtils::ParseXS used to silently ignore parameter
+declarations that it could not parse. Newer ones (starting around Perl
+5.42) issue a syntax error ("Unparseable XSUB parameter") instead.
+
+See https://rt.cpan.org/Public/Bug/Display.html?id=162293 for a similar
+issue in another module (Crypt-SMIME), where Dave Mitchell recommends
+giving the ignored parameter a name but no type.
+---
+ Scan.xs | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/Scan.xs b/Scan.xs
+index 96e4f19..b6bfd55 100644
+--- a/Scan.xs
++++ b/Scan.xs
+@@ -214,7 +214,7 @@ _generate_hash(const char *file)
+ MODULE = Audio::Scan		PACKAGE = Audio::Scan
+ 
+ HV *
+-_scan( char *, char *suffix, PerlIO *infile, SV *path, int filter, int md5_size, int md5_offset )
++_scan( class, char *suffix, PerlIO *infile, SV *path, int filter, int md5_size, int md5_offset )
+ CODE:
+ {
+   taghandler *hdl;
+@@ -266,7 +266,7 @@ OUTPUT:
+   RETVAL
+   
+ int
+-_find_frame( char *, char *suffix, PerlIO *infile, SV *path, int offset )
++_find_frame( class, char *suffix, PerlIO *infile, SV *path, int offset )
+ CODE:
+ {
+   taghandler *hdl;
+@@ -282,7 +282,7 @@ OUTPUT:
+   RETVAL
+ 
+ HV *
+-_find_frame_return_info( char *, char *suffix, PerlIO *infile, SV *path, int offset )
++_find_frame_return_info( class, char *suffix, PerlIO *infile, SV *path, int offset )
+ CODE:
+ {
+   taghandler *hdl = _get_taghandler(suffix);
+@@ -306,7 +306,7 @@ OUTPUT:
+   RETVAL
+ 
+ int
+-is_supported(char *, SV *path)
++is_supported(class, SV *path)
+ CODE:
+ {
+   char *suffix = strrchr( SvPVX(path), '.' );
+@@ -322,7 +322,7 @@ OUTPUT:
+   RETVAL
+ 
+ SV *
+-type_for(char *, SV *suffix)
++type_for(class, SV *suffix)
+ CODE:
+ {
+   taghandler *hdl = NULL;
+@@ -360,7 +360,7 @@ OUTPUT:
+   RETVAL
+ 
+ AV *
+-extensions_for(char *, SV *type)
++extensions_for(class, SV *type)
+ CODE:
+ {
+   int i, j;
+-- 
+2.49.0

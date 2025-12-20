@@ -11,7 +11,7 @@ SRC_URI="https://www.gnokii.org/download/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~hppa ~ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~arm64 ~hppa ~ppc ppc64 ~sparc x86"
 IUSE="bluetooth debug ical irda mysql nls +pcsc-lite postgres sms usb X"
 
 RDEPEND="

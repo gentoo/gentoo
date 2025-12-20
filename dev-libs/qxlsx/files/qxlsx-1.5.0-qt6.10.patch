@@ -1,0 +1,28 @@
+From 90d762625750c6b2c73f6cd96b633e9158aed72e Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@kdab.com>
+Date: Tue, 10 Jun 2025 11:47:39 +0200
+Subject: [PATCH] Search for GuiPrivate package with Qt 6.10
+
+Qt 6.10 extracts the private modules into a separate CMake package, so search for it
+
+See https://bugreports.qt.io/browse/QTBUG-87776
+---
+ QXlsx/CMakeLists.txt | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/QXlsx/CMakeLists.txt b/QXlsx/CMakeLists.txt
+index 5e16bddc..bbc28e8f 100644
+--- a/QXlsx/CMakeLists.txt
++++ b/QXlsx/CMakeLists.txt
+@@ -17,6 +17,11 @@ if(NOT DEFINED QT_VERSION_MAJOR)
+     find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Gui REQUIRED)
+ endif()
+ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Gui REQUIRED)
++
++if(Qt6Gui_VERSION VERSION_GREATER_EQUAL "6.10.0")
++    find_package(Qt6 REQUIRED COMPONENTS GuiPrivate)
++endif()
++
+ set(EXPORT_NAME QXlsxQt${QT_VERSION_MAJOR})
+ 
+ if (QT_VERSION_MAJOR EQUAL 6)

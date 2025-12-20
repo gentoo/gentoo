@@ -12,7 +12,7 @@ SRC_URI="https://github.com/4ti2/4ti2/releases/download/Release_${PV//./_}/${P}.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc ~riscv ~x86"
 
 RDEPEND="
 	sci-mathematics/glpk:=[gmp]

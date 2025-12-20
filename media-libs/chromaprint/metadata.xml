@@ -9,7 +9,6 @@
     <flag name="tools">Build and install fpcalc and fpcollect tools</flag>
   </use>
   <upstream>
-    <remote-id type="bitbucket">acoustid/chromaprint</remote-id>
-    <remote-id type="github">google/googletest</remote-id>
+    <remote-id type="github">acoustid/chromaprint</remote-id>
   </upstream>
 </pkgmetadata>

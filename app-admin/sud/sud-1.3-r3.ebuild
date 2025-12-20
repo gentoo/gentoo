@@ -14,6 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 
 DEPEND="elibc_musl? ( sys-libs/queue-standalone )"
+BDEPEND="app-alternatives/lex"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3-fix-build-system.patch

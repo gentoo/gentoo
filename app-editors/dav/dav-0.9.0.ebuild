@@ -12,7 +12,7 @@ S="${WORKDIR}/dav-text-dav-text-${PV}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ppc ~riscv x86"
 
 RDEPEND="sys-libs/ncurses:0="
 DEPEND="${RDEPEND}"

@@ -11,7 +11,7 @@ SRC_URI="ftp://rostlab.org/profnet/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="sys-libs/libunwind"
 DEPEND="${RDEPEND}"

@@ -14,7 +14,7 @@ SRC_URI="http://www.feynarts.de/looptools/${MY_P}.tar.gz"
 LICENSE="LGPL-3"
 
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 PATCHES=( "${FILESDIR}"/${P}-makefile.patch )

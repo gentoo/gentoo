@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}"
 
 LICENSE="CAOSL"
 SLOT="0"
-KEYWORDS="amd64 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64"
 
 BDEPEND="app-arch/unzip"
 CP_DEPEND=">=dev-java/javahelp-2.0.02_p46:0"

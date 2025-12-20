@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/pslib/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ppc ~ppc64 ~sparc ~x86"
 IUSE="debug jpeg png tiff"
 
 RDEPEND="

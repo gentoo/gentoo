@@ -3,6 +3,7 @@
 
 EAPI=8
 
+CMAKE_QA_COMPAT_SKIP=1
 ECM_QTHELP="true"
 ECM_TEST="true"
 PVCUT=$(ver_cut 1-3)
@@ -53,5 +54,5 @@ src_configure() {
 
 src_install() {
 	ecm_src_install
-	python_optimize
+	use python && python_optimize
 }

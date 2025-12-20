@@ -9,7 +9,7 @@ SRC_URI="http://ftp.parrot.org/releases/all/${PV}/${P}.tar.gz"
 
 LICENSE="Artistic-2"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86 ~x64-macos"
 IUSE="opengl nls doc examples gdbm +gmp ssl +unicode pcre"
 
 # weird failures

@@ -16,7 +16,7 @@ S="${WORKDIR}/beanshell-${PV}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 arm64 ppc64 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm64 ppc64"
 
 # There was 1 failure:
 # 1) do_not_access_non_open_methods(bsh.Java_9_Test)

@@ -12,7 +12,7 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/rakshasa/${PN}.git"
 else
 	SRC_URI="https://github.com/rakshasa/rtorrent/releases/download/v${PV}/${P}.tar.gz"
-	KEYWORDS="amd64 arm64 ~hppa ~ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="amd64 arm64 ~hppa ~ppc ppc64 ~sparc x86 ~x64-macos ~x64-solaris"
 fi
 
 LICENSE="GPL-2"

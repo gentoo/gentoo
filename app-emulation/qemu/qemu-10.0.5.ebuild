@@ -44,7 +44,7 @@ else
 	fi
 
 	S="${WORKDIR}/${MY_P}"
-	[[ "${PV}" != *_rc* ]] && KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ppc64 ~riscv x86"
+	[[ "${PV}" != *_rc* ]] && KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ppc64 ~riscv x86"
 fi
 
 DESCRIPTION="QEMU + Kernel-based Virtual Machine userland tools"
@@ -421,7 +421,7 @@ pkg_pretend() {
 			use test && CONFIG_CHECK+=" IP_MULTICAST"
 			ERROR_IP_MULTICAST="Test suite requires IP_MULTICAST"
 
-			if use amd64 || use x86 || use amd64-linux || use x86-linux; then
+			if use amd64 || use x86; then
 				if grep -q AuthenticAMD /proc/cpuinfo; then
 					CONFIG_CHECK+=" ~KVM_AMD"
 				elif grep -q GenuineIntel /proc/cpuinfo; then

@@ -20,7 +20,7 @@ if [[ -z ${PV%%*9999} ]]; then
 else
 	MY_P="${P/_/.}"
 	SRC_URI="https://downloads.sourceforge.net/gnuplot/${MY_P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos ~x64-solaris"
 fi
 
 S="${WORKDIR}/${MY_P}"
@@ -92,7 +92,7 @@ src_prepare() {
 
 	if [[ ${PV##*.} = 9999 ]]; then
 		local dir
-		for dir in config demo m4 term tutorial; do
+		for dir in config demo m4 term; do
 			emake -C "$dir" -f Makefile.am.in Makefile.am
 		done
 	fi
@@ -148,7 +148,7 @@ src_configure() {
 
 src_compile() {
 	# Prevent access violations, see bug 201871
-	export VARTEXFONTS="${T}/fonts"
+	local -x TEXMFVAR="${T}" TEXMFCACHE="${T}" VARTEXFONTS="${T}/fonts"
 
 	emake all
 

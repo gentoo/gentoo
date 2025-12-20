@@ -1,0 +1,22 @@
+Fix compatibility with x11-libs/libdrm-2.4.130
+
+Bug: https://bugs.gentoo.org/967246
+Upstream PR: https://github.com/ROCm/amdsmi/pull/165
+--- a/include/amd_smi/impl/amdgpu_drm.h
++++ b/include/amd_smi/impl/amdgpu_drm.h
+@@ -1625,15 +1625,6 @@ struct drm_amdgpu_info_uq_metadata {
+ #define AMDGPU_FAMILY_GC_11_5_0			150 /* GC 11.5.0 */
+ #define AMDGPU_FAMILY_GC_12_0_0			152 /* GC 12.0.0 */
+ 
+-/* FIXME wrong namespace! */
+-struct drm_color_ctm_3x4 {
+-	/*
+-	 * Conversion matrix with 3x4 dimensions in S31.32 sign-magnitude
+-	 * (not two's complement!) format.
+-	 */
+-	__u64 matrix[12];
+-};
+-
+ #if defined(__cplusplus)
+ }
+ #endif

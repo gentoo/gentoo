@@ -12,7 +12,7 @@ SRC_URI="
 S="${WORKDIR}/${P^^}"
 
 LICENSE+=" Apache-2.0 GPL-3+ CC-BY-3.0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="minimal"
 
 RDEPEND="

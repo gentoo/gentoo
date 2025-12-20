@@ -10,4 +10,4 @@ inherit perl-module
 DESCRIPTION="Manages sets of integers"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ppc ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ppc ~riscv x86"

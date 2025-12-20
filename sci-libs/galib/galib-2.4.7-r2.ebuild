@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}${MY_PV}"
 
 LICENSE="BSD examples? ( GPL-2 )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc examples"
 
 PATCHES=( "${WORKDIR}"/patches )

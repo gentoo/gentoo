@@ -11,8 +11,8 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-keyring"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
-IUSE="caps pam selinux ssh-agent systemd test"
+KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
+IUSE="caps pam selinux +ssh-agent systemd test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -41,6 +41,7 @@ BDEPEND="
 		${PYTHON_DEPS}
 		sys-apps/dbus
 	)
+	dev-util/glib-utils
 "
 
 PATCHES=(

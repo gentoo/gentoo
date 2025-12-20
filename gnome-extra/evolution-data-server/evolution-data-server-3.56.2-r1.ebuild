@@ -12,7 +12,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/evolution/-/wikis/home https://gitlab.g
 LICENSE="|| ( LGPL-2 LGPL-3 ) BSD Sleepycat"
 SLOT="0/64-11-21-4-3-27-2-27-4-0" # subslot = libcamel-1.2/libebackend-1.2/libebook-1.2/libebook-contacts-1.2/libecal-2.0/libedata-book-1.2/libedata-cal-2.0/libedataserver-1.2/libedataserverui-1.2/libedataserverui4-1.0 soname version
 
-KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 
 IUSE="berkdb +gnome-online-accounts +gtk gtk-doc +introspection ldap kerberos oauth-gtk3 oauth-gtk4 sound vala +weather"
 REQUIRED_USE="

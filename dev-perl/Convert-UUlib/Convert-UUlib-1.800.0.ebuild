@@ -11,7 +11,7 @@ DESCRIPTION="decode uu/xx/b64/mime/yenc/etc-encoded data"
 # https://wiki.gentoo.org/wiki/Project:Perl/maint-notes/dev-perl/Convert-UUlib#Licensing
 LICENSE="BSD CC0-1.0 GPL-1 GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~m68k ppc ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm ~hppa ~m68k ppc ppc64 ~s390 ~sparc x86 ~x64-macos ~x64-solaris"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

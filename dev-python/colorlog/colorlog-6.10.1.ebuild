@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~riscv x86"
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest

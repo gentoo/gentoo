@@ -14,7 +14,7 @@ if [[ ${PV} == *9999* ]] ; then
 else
 	SRC_URI="https://github.com/emacs-php/${PN}/archive/v${PV}.tar.gz
 		-> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+	KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 S="${WORKDIR}"/${P}/lisp

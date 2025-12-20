@@ -6,7 +6,7 @@ EAPI=8
 # require 64-bit integer
 LUA_COMPAT=( lua5-{3,4} )
 
-inherit autotools linux-info lua-single systemd
+inherit autotools linux-info lua-single systemd toolchain-funcs
 
 DESCRIPTION="BitTorrent Client using libtorrent"
 HOMEPAGE="https://rakshasa.github.io/rtorrent/"
@@ -15,7 +15,7 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/rakshasa/${PN}.git"
 else
 	SRC_URI="https://github.com/rakshasa/rtorrent/releases/download/v${PV}/${P}.tar.gz"
-	KEYWORDS="amd64 arm64 ~ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="amd64 arm64 ~ppc ppc64 x86 ~x64-macos ~x64-solaris"
 fi
 
 LICENSE="GPL-2"
@@ -82,6 +82,8 @@ src_prepare() {
 }
 
 src_configure() {
+	# used by xmlrpc-c-config
+	tc-export PKG_CONFIG
 	local myeconfargs=(
 		$(use_enable debug)
 		$(use_with lua)

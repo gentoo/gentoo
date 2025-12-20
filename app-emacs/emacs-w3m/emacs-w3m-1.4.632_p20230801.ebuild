@@ -18,7 +18,7 @@ else
 	SRC_URI="https://github.com/emacs-w3m/emacs-w3m/archive/${COMMIT}.tar.gz
 		-> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${COMMIT}"
-	KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+	KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
 fi
 
 LICENSE="GPL-2+"

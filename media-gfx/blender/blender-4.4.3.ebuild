@@ -132,7 +132,7 @@ RDEPEND="${PYTHON_DEPS}
 	gmp? ( dev-libs/gmp[cxx] )
 	gnome? ( gui-libs/libdecor )
 	hip? (
-		>=dev-util/hip-5.7:=
+		>=dev-util/hip-5.7:= <dev-util/hip-7:=
 		hiprt? (
 			dev-libs/hiprt:2.5=
 		)

@@ -1,0 +1,21 @@
+--- a/ui/ui.h
++++ b/ui/ui.h
+@@ -30,7 +30,7 @@
+ void display_banned_cpus();
+ int toggle_cpu(GList *cpu_list, int cpu_number);
+ void get_new_cpu_ban_values(cpu_ban_t *cpu, void *data);
+-void get_cpu();
++void get_cpu(cpu_node_t *node, void *data __attribute__((unused)));
+ void handle_sleep_setting();
+ void handle_cpu_banning();
+ 
+--- a/ui/irqbalance-ui.h
++++ b/ui/irqbalance-ui.h
+@@ -83,7 +83,6 @@
+ void assign_cpu_mask(cpu_node_t *node, void *data);
+ void parse_into_tree(char *data);
+ gboolean rescan_tree(gpointer data);
+-int main();
+ 
+ 
+ #endif /* IRQBALANCE_UI_H */

@@ -9,7 +9,7 @@ SRC_URI="http://download.ofb.net/gale/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-linux ~ppc-macos"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-libs/libxml2:="
 DEPEND="${RDEPEND}"

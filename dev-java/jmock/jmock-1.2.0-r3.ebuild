@@ -14,7 +14,7 @@ S="${WORKDIR}/${P}"
 
 LICENSE="BSD"
 SLOT="1.0"
-KEYWORDS="amd64 arm64 ppc64 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 arm64 ppc64 ~x64-macos"
 
 CP_DEPEND="dev-java/junit:0"
 

@@ -11,6 +11,7 @@ inherit ecm gear.kde.org
 
 DESCRIPTION="Straightforward graphical means to format 3.5\" and 5.25\" floppy disks"
 HOMEPAGE="https://apps.kde.org/kfloppy/"
+SRC_URI="https://dev.gentoo.org/~asturm/distfiles/kde/${KDE_ORG_NAME}-${PV}-${KDE_ORG_COMMIT:0:8}.tar.gz"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="0"

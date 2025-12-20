@@ -9,7 +9,7 @@ SRC_URI="https://github.com/lib${PN}/${PN}/releases/download/${PN}-${PV//./_}-re
 
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~hppa ppc ppc64 ~sparc x86"
 IUSE="nls"
 
 BDEPEND="

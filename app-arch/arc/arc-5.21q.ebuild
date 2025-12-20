@@ -12,7 +12,7 @@ SRC_URI="https://github.com/ani6al/${PN}/archive/refs/tags/${PV}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm64 ~hppa ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~arm64 ~hppa ppc ppc64 ~sparc x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.21m-darwin.patch

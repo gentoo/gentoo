@@ -1,0 +1,71 @@
+https://bugs.gentoo.org/966481
+https://gitlab.alpinelinux.org/alpine/aports/-/issues/17736
+
+From 7ca52bb11c92e80a2d7c16efbf77194115a1b678 Mon Sep 17 00:00:00 2001
+From: Lauri Tirkkonen <lauri@hacktheplanet.fi>
+Date: Mon, 24 Nov 2025 20:38:44 +0900
+Subject: [PATCH 10/10] Revert "pam_elogind: Add special treatment of
+ openrc-user"
+
+https://gitlab.alpinelinux.org/alpine/aports/-/issues/17745
+
+This reverts commit ff4c383caa3963bee0df0b92c7f851ef1c161e66.
+
+Signed-off-by: Achill Gilgenast <achill@achill.org>
+---
+ src/login/pam_elogind.c | 22 ++++++++--------------
+ 1 file changed, 8 insertions(+), 14 deletions(-)
+
+diff --git a/src/login/pam_elogind.c b/src/login/pam_elogind.c
+index 5ceab0a80955..add1c340417f 100644
+--- a/src/login/pam_elogind.c
++++ b/src/login/pam_elogind.c
+@@ -779,6 +779,7 @@ static uint64_t pick_default_capability_ambient_set(
+                 const char *service,
+                 const char *seat) {
+ 
++#if 0 /// elogind has no user instances like systemd-user
+         /* If not configured otherwise, let's enable CAP_WAKE_ALARM for regular users when logging in on a
+          * seat (i.e. when they are present physically on the device), or when invoked for the systemd --user
+          * instances. This allows desktops to install CAP_WAKE_ALARM to implement alarm clock apps without
+@@ -786,11 +787,15 @@ static uint64_t pick_default_capability_ambient_set(
+ 
+         return ur &&
+                 user_record_disposition(ur) == USER_REGULAR &&
+-#if 0 /// elogind also recognizes openrc-user
+                 (streq_ptr(service, "systemd-user") || !isempty(seat)) ? (UINT64_C(1) << CAP_WAKE_ALARM) : UINT64_MAX;
+ #else // 0
+-                (streq_ptr(service, "openrc-user") || streq_ptr(service, "systemd-user") || !isempty(seat))
+-                        ? (UINT64_C(1) << CAP_WAKE_ALARM) : UINT64_MAX;
++        /* If not configured otherwise, let's enable CAP_WAKE_ALARM for regular users when logging in on a
++         * seat (i.e. when they are present physically on the device).
++         * This allows desktops to install CAP_WAKE_ALARM to implement alarm clock apps without
++         * much fuss. */
++
++        return ur && user_record_disposition(ur) == USER_REGULAR && (!isempty(seat))
++                ? (UINT64_C(1) << CAP_WAKE_ALARM) : UINT64_MAX;
+ #endif // 0
+ }
+ 
+@@ -1003,18 +1008,7 @@ _public_ PAM_EXTERN int pam_sm_open_session(
+ 
+         tty = strempty(tty);
+ 
+-#if 0 /// Detect when elogind is called from an openrc-user PAM stack.
+         if (strchr(tty, ':')) {
+-#else // 0
+-        if (streq_ptr(service, "openrc-user")) {
+-                /* If we detect that we are running in the "openrc-user" PAM stack, then let's patch the class to
+-                 * 'manager' if not set, simply for robustness reasons. */
+-                type = "unspecified";
+-                class = IN_SET(user_record_disposition(ur), USER_INTRINSIC, USER_SYSTEM, USER_DYNAMIC) ?
+-                        "manager-early" : "manager";
+-                tty = NULL;
+-        } else if (strchr(tty, ':')) {
+-#endif // 0
+                 /* A tty with a colon is usually an X11 display, placed there to show up in utmp. We rearrange things
+                  * and don't pretend that an X display was a tty. */
+                 if (isempty(display))
+-- 
+2.52.0
+

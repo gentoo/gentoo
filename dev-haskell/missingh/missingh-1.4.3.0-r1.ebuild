@@ -17,7 +17,7 @@ HOMEPAGE="https://hackage.haskell.org/package/MissingH"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RESTRICT=test # tests are present for removed modules
 

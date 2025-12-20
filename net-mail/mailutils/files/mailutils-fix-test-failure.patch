@@ -1,0 +1,172 @@
+--- a/libmailutils/wordsplit/wordsplit.at	2025-12-18 20:44:10.041576656 +0100
++++ b/libmailutils/wordsplit/wordsplit.at	2025-12-18 20:45:50.538476607 +0100
+@@ -1207,10 +1207,10 @@
+ 
+ AT_BANNER([Substring removal])
+ TESTWSP([strip shortest prefix],[wsp-strip wsp-spref],
+-[-DA=talis:ac:tanta -DB=talis:ac -DC=talis],
+-[${A#*:}
+-${B#*:}
+-${C#*:}],
++[-D_A=talis:ac:tanta -D_B=talis:ac -D_C=talis],
++[${_A#*:}
++${_B#*:}
++${_C#*:}],
+ [NF: 1
+ 0: ac:tanta
+ TOTAL: 1
+@@ -1223,10 +1223,10 @@
+ ])
+ 
+ TESTWSP([strip longest prefix],[wsp-strip wsp-lpref],
+-[-DA=talis:ac:tanta -DB=talis:ac -DC=talis],
+-[${A##*:}
+-${B##*:}
+-${C##*:}],
++[-D_A=talis:ac:tanta -D_B=talis:ac -D_C=talis],
++[${_A##*:}
++${_B##*:}
++${_C##*:}],
+ [NF: 1
+ 0: tanta
+ TOTAL: 1
+@@ -1239,10 +1239,10 @@
+ ])
+ 
+ TESTWSP([strip shortest suffix],[wsp-strip wsp-ssuf],
+-[-DA=talis:ac:tanta -DB=talis:ac -DC=talis],
+-[${A%:*}
+-${B%:*}
+-${C%:*}],
++[-D_A=talis:ac:tanta -D_B=talis:ac -D_C=talis],
++[${_A%:*}
++${_B%:*}
++${_C%:*}],
+ [NF: 1
+ 0: talis:ac
+ TOTAL: 1
+@@ -1255,10 +1255,10 @@
+ ])
+ 
+ TESTWSP([strip longest suffix],[wsp-strip wsp-lsuf],
+-[-DA=talis:ac:tanta -DB=talis:ac -DC=talis],
+-[${A%%:*}
+-${B%%:*}
+-${C%%:*}],
++[-D_A=talis:ac:tanta -D_B=talis:ac -D_C=talis],
++[${_A%%:*}
++${_B%%:*}
++${_C%%:*}],
+ [NF: 1
+ 0: talis
+ TOTAL: 1
+--- a/libmailutils/tests/testsuite	2025-12-18 20:44:22.052684969 +0100
++++ b/libmailutils/tests/testsuite	2025-12-18 20:48:14.911648132 +0100
+@@ -17432,18 +17432,18 @@
+ 
+ { set +x
+ printf "%s\n" "$at_srcdir/wordsplit.at:1209:
+- wsp -DA=talis:ac:tanta -DB=talis:ac -DC=talis <<'EOT'
+-\${A#*:}
+-\${B#*:}
+-\${C#*:}
++ wsp -D_A=talis:ac:tanta -D_B=talis:ac -D_C=talis <<'EOT'
++\${_A#*:}
++\${_B#*:}
++\${_C#*:}
+ EOT
+ "
+ at_fn_check_prepare_notrace 'a ${...} parameter expansion' "wordsplit.at:1209"
+ ( $at_check_trace;
+- wsp -DA=talis:ac:tanta -DB=talis:ac -DC=talis <<'EOT'
+-${A#*:}
+-${B#*:}
+-${C#*:}
++ wsp -D_A=talis:ac:tanta -D_B=talis:ac -D_C=talis <<'EOT'
++${_A#*:}
++${_B#*:}
++${_C#*:}
+ EOT
+ 
+ ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+@@ -17481,18 +17481,18 @@
+ 
+ { set +x
+ printf "%s\n" "$at_srcdir/wordsplit.at:1225:
+- wsp -DA=talis:ac:tanta -DB=talis:ac -DC=talis <<'EOT'
+-\${A##*:}
+-\${B##*:}
+-\${C##*:}
++ wsp -D_A=talis:ac:tanta -D_B=talis:ac -D_C=talis <<'EOT'
++\${_A##*:}
++\${_B##*:}
++\${_C##*:}
+ EOT
+ "
+ at_fn_check_prepare_notrace 'a ${...} parameter expansion' "wordsplit.at:1225"
+ ( $at_check_trace;
+- wsp -DA=talis:ac:tanta -DB=talis:ac -DC=talis <<'EOT'
+-${A##*:}
+-${B##*:}
+-${C##*:}
++ wsp -D_A=talis:ac:tanta -D_B=talis:ac -D_C=talis <<'EOT'
++${_A##*:}
++${_B##*:}
++${_C##*:}
+ EOT
+ 
+ ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+@@ -17530,18 +17530,18 @@
+ 
+ { set +x
+ printf "%s\n" "$at_srcdir/wordsplit.at:1241:
+- wsp -DA=talis:ac:tanta -DB=talis:ac -DC=talis <<'EOT'
+-\${A%:*}
+-\${B%:*}
+-\${C%:*}
++ wsp -D_A=talis:ac:tanta -D_B=talis:ac -D_C=talis <<'EOT'
++\${_A%:*}
++\${_B%:*}
++\${_C%:*}
+ EOT
+ "
+ at_fn_check_prepare_notrace 'a ${...} parameter expansion' "wordsplit.at:1241"
+ ( $at_check_trace;
+- wsp -DA=talis:ac:tanta -DB=talis:ac -DC=talis <<'EOT'
+-${A%:*}
+-${B%:*}
+-${C%:*}
++ wsp -D_A=talis:ac:tanta -D_B=talis:ac -D_C=talis <<'EOT'
++${_A%:*}
++${_B%:*}
++${_C%:*}
+ EOT
+ 
+ ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+@@ -17579,18 +17579,18 @@
+ 
+ { set +x
+ printf "%s\n" "$at_srcdir/wordsplit.at:1257:
+- wsp -DA=talis:ac:tanta -DB=talis:ac -DC=talis <<'EOT'
+-\${A%%:*}
+-\${B%%:*}
+-\${C%%:*}
++ wsp -D_A=talis:ac:tanta -D_B=talis:ac -D_C=talis <<'EOT'
++\${_A%%:*}
++\${_B%%:*}
++\${_C%%:*}
+ EOT
+ "
+ at_fn_check_prepare_notrace 'a ${...} parameter expansion' "wordsplit.at:1257"
+ ( $at_check_trace;
+- wsp -DA=talis:ac:tanta -DB=talis:ac -DC=talis <<'EOT'
+-${A%%:*}
+-${B%%:*}
+-${C%%:*}
++ wsp -D_A=talis:ac:tanta -D_B=talis:ac -D_C=talis <<'EOT'
++${_A%%:*}
++${_B%%:*}
++${_C%%:*}
+ EOT
+ 
+ ) >>"$at_stdout" 2>>"$at_stderr" 5>&-

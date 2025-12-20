@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>ceamac@gentoo.org</email>
+    <name>Viorel Munteanu</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">labwc/labwc</remote-id>
+  </upstream>
+  <use>
+    <flag name="icons">Add support for window icons. Icons will only be displayed with USE=svg enabled</flag>
+  </use>
+</pkgmetadata>

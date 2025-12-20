@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit prefix
+
 DESCRIPTION="Find the system CA bundle or fall back to the Mozilla one"
 HOMEPAGE="https://github.com/composer/ca-bundle"
 SRC_URI="https://github.com/composer/ca-bundle/archive/${PV}.tar.gz -> ${P}.tar.gz"
@@ -17,6 +19,7 @@ RDEPEND="
 
 src_install() {
 	insinto /usr/share/php/Composer/CaBundle
-	doins src/CaBundle.php "${FILESDIR}/autoload.php"
+	doins src/CaBundle.php \
+		"$(prefixify_ro "${FILESDIR}"/autoload.php)"
 	dodoc README.md
 }

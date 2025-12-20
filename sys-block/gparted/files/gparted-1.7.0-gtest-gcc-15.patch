@@ -1,0 +1,10 @@
+--- a/lib/gtest/src/gtest-death-test.cc
++++ b/lib/gtest/src/gtest-death-test.cc
+@@ -32,6 +32,7 @@
+ 
+ #include "gtest/gtest-death-test.h"
+ 
++#include <cstdint>
+ #include <utility>
+ 
+ #include "gtest/internal/gtest-port.h"

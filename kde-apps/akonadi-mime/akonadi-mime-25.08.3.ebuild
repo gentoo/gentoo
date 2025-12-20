@@ -14,7 +14,7 @@ DESCRIPTION="Library for akonadi mime types"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="6/$(ver_cut 1-2)"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 IUSE=""
 
 # some akonadi tests time out, that probably needs more work as it's ~700 tests

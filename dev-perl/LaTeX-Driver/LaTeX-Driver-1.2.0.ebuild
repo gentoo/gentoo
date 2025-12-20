@@ -9,7 +9,7 @@ inherit perl-module
 DESCRIPTION="Perl encapsulation of invoking the Latex programs"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 ~arm arm64 ~loong ppc ppc64 ~riscv x86 ~x64-macos ~x64-solaris"
 
 RDEPEND="
 	dev-perl/Capture-Tiny

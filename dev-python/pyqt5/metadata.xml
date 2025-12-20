@@ -15,7 +15,6 @@
 		<flag name="network">Build bindings for the QtNetwork module</flag>
 		<flag name="opengl">Build bindings for the QtOpenGL module</flag>
 		<flag name="printsupport">Build bindings for the QtPrintSupport module</flag>
-		<flag name="serialport">Build bindings for the QtSerialPort module</flag>
 		<flag name="speech">Build bindings for the QtTextToSpeech module</flag>
 		<flag name="sql">Build bindings for the QtSql module</flag>
 		<flag name="svg">Build bindings for the QtSvg module</flag>

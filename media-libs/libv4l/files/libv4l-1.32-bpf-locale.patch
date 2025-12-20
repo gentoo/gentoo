@@ -1,0 +1,20 @@
+From 0cc4983c997a5f5d71754ee40007fbf266909ce5 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sun, 30 Nov 2025 16:08:58 +0000
+Subject: [PATCH] bpf: Use C locale when determining Linux headers
+
+Otherwise the sed pattern may not match.
+
+Signed-off-by: James Le Cuirot <chewi@gentoo.org>
+--- a/utils/keytable/bpf_protocols/cc_sys_includes.sh
++++ b/utils/keytable/bpf_protocols/cc_sys_includes.sh
+@@ -6,5 +6,5 @@
+ #
+ # Use '-idirafter': Don't interfere with include mechanics except where the
+ # build would have failed anyways.
+-"$@" -v -E - </dev/null 2>&1 \
++LC_ALL=C "$@" -v -E - </dev/null 2>&1 \
+ 	| sed -n '/<...> search starts here:/,/End of search list./{ s| \(/.*\)|-idirafter \1|p }'
+-- 
+2.52.0
+

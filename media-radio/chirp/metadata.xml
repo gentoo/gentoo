@@ -6,9 +6,6 @@
 		<name>Rick Farina</name>
 	</maintainer>
 	<stabilize-allarches/>
-	<use>
-		<flag name="radioreference">pull in optional deps for query of radioreference</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">kk7ds/chirp</remote-id>
 	</upstream>

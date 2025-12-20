@@ -23,7 +23,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="IBM BSD openafs-krb5-a APSL-2"
 SLOT="0"
-KEYWORDS="~amd64 -riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 -riscv ~sparc ~x86"
 
 IUSE="apidoc bitmap-later debug doc fuse kauth kerberos +modules +namei
 ncurses perl +pthreaded-ubik selinux +supergroups tsm ubik-read-while-write"

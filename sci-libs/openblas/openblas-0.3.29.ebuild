@@ -13,7 +13,7 @@ S="${WORKDIR}"/${MY_P}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv ~x86 ~x64-macos"
 IUSE="dynamic eselect-ldso index64 openmp pthread relapack test"
 REQUIRED_USE="?? ( openmp pthread )"
 RESTRICT="!test? ( test )"

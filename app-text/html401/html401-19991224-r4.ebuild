@@ -10,7 +10,7 @@ SRC_URI="https://www.w3.org/TR/1999/REC-html401-${PV}/html40.tgz"
 
 LICENSE="W3C"
 SLOT="0"
-KEYWORDS="amd64 ppc ~s390 x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ppc ~s390 x86"
 IUSE=""
 
 S=${WORKDIR}

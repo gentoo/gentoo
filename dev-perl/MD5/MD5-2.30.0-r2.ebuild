@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="The Perl MD5 Module"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ppc ~sparc x86"
 
 RDEPEND="virtual/perl-Digest-MD5"
 BDEPEND="${RDEPEND}"

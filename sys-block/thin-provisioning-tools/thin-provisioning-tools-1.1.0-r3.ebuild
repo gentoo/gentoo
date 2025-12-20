@@ -166,7 +166,7 @@ else
 		https://github.com/jthornber/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		${CARGO_CRATE_URIS}
 	"
-	KEYWORDS="amd64 arm arm64 ~loong ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 arm arm64 ~loong ppc64 ~riscv ~sparc x86"
 fi
 
 LICENSE="GPL-3"

@@ -16,7 +16,7 @@ SRC_URI="https://github.com/copiousfreetime/hitimes/archive/refs/tags/v${PV}.tar
 
 LICENSE="ISC"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x64-macos ~x64-solaris"
 IUSE="test"
 
 ruby_add_bdepend "test? ( dev-ruby/minitest )"

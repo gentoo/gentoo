@@ -11,7 +11,7 @@ SRC_URI="https://download.savannah.gnu.org/releases/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2+ || ( GPL-2+ FDL-1.2+ )"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~hppa ppc x86"
 IUSE="debug emacs +history sloppy +xft +xrandr"
 
 RDEPEND="

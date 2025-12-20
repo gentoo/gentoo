@@ -17,7 +17,7 @@ S="${WORKDIR}"/${MY_PN}-${SDL_NET_COMMIT}
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 arm ~hppa ppc ppc64 ~sparc x86"
 
 RDEPEND="media-libs/libsdl[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"

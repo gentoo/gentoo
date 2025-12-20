@@ -15,7 +15,7 @@ SRC_URI="mirror://gimp/v$(ver_cut 1-2)/${P}.tar.xz"
 
 LICENSE="GPL-3+ LGPL-3+"
 SLOT="0/3"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~x86"
 
 IUSE="X aalib alsa doc fits gnome heif javascript jpeg2k jpegxl lua mng openexr openmp postscript test udev unwind vala vector-icons wayland webp wmf xpm"
 REQUIRED_USE="
@@ -120,6 +120,10 @@ BDEPEND="
 
 DOCS=( "AUTHORS" "NEWS" "README" "README.i18n" )
 
+PATCHES=(
+	"${FILESDIR}"/gimp-3.0.6-fix-tests.patch
+)
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
@@ -179,9 +183,7 @@ src_configure() {
 		$(meson_feature openexr)
 		$(meson_feature openmp)
 		$(meson_feature postscript ghostscript)
-		# https://gitlab.gnome.org/GNOME/gimp/-/issues/14822
-		-Dheadless-tests=disabled
-		#$(meson_feature test headless-tests)
+		$(meson_feature test headless-tests)
 		$(meson_feature udev gudev)
 		$(meson_feature vala)
 		$(meson_feature webp)
@@ -221,6 +223,10 @@ _rename_plugins() {
 
 src_test() {
 	local -x LD_LIBRARY_PATH="${BUILD_DIR}/libgimp:${LD_LIBRARY_PATH}"
+	# Try hard to avoid system installed gimp causing issues
+	local -x GIMP3_DIRECTORY="${BUILD_DIR}/"
+	local -x GIMP3_PLUGINDIR="${BUILD_DIR}/plug-ins/"
+	local -x GIMP3_SYSCONFDIR="${BUILD_DIR}/etc/"
 	meson_src_test
 }
 

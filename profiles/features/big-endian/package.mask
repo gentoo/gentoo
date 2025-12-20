@@ -29,7 +29,6 @@ media-gfx/blender
 media-plugins/gst-plugins-vpx
 dev-qt/qtwebengine
 www-client/falkon
-www-client/otter
 net-libs/signon-ui
 media-video/cheese
 kde-apps/messagelib
@@ -41,7 +40,6 @@ kde-apps/grantlee-editor
 kde-apps/akregator
 dev-util/kdevelop
 dev-qt/qtwebview
-app-text/kchmviewer
 app-office/merkuro
 app-editors/ghostwriter
 kde-misc/zanshin
@@ -87,7 +85,6 @@ games-engines/odamex
 games-fps/chocolate-doom
 games-fps/doomsday
 games-fps/gzdoom
-games-fps/prboom-plus
 games-fps/freedoom-data
 media-libs/zmusic
 games-util/deutex

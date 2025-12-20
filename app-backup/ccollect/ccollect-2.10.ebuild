@@ -11,15 +11,15 @@ SRC_URI="https://www.nico.schottelius.org/software/${PN}/download/${P}.tar.bz2"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~hppa ppc ~sparc x86"
 IUSE="doc examples"
 # tests need ssh-access
 RESTRICT="test"
 
 RDEPEND="net-misc/rsync"
 BDEPEND="
+	>=app-text/asciidoc-8.1.0
 	doc? (
-		>=app-text/asciidoc-8.1.0
 		app-text/docbook-xsl-stylesheets
 		app-text/docbook-xml-dtd:4.2
 		dev-libs/libxslt

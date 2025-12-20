@@ -6,5 +6,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">freewvs</remote-id>
+		<remote-id type="cpe">cpe:/a:schokokeks:freewvs</remote-id>
 	</upstream>
 </pkgmetadata>

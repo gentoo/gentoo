@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/davisking/dlib/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Boost-1.0"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="cblas cuda debug examples gif jpeg lapack mkl png python sqlite test X cpu_flags_x86_avx cpu_flags_x86_sse2 cpu_flags_x86_sse4_1"
 REQUIRED_USE="python? ( png ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
@@ -44,6 +44,11 @@ BDEPEND="
 "
 
 DOCS=( docs/README.txt )
+
+PATCHES=(
+	# Bug 939094
+	"${FILESDIR}/${PN}-missing-include.patch"
+)
 
 src_prepare() {
 	use cuda && cuda_src_prepare

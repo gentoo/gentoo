@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/jkriege2/${MY_PN}.git"
 else
 	SRC_URI="https://github.com/jkriege2/JKQtPlotter/archive/${HASH_COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${MY_PN}-${HASH_COMMIT}"
 fi
 

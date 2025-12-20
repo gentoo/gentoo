@@ -14,7 +14,7 @@
 		<flag name="llvm">Build with LLVM backend and extensions enabled.</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">ziglang/zig</remote-id>
-		<bugs-to>https://github.com/ziglang/zig/issues</bugs-to>
+		<remote-id type="codeberg">ziglang/zig</remote-id>
+		<bugs-to>https://codeberg.org/ziglang/zig/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

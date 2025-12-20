@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Generate (possibly exuberant) Ctags style tags for Perl sourcecode"
 
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ppc x86"
 IUSE="minimal"
 
 PATCHES=(

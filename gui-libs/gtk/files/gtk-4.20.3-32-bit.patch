@@ -1,0 +1,81 @@
+https://gitlab.gnome.org/GNOME/gtk/-/issues/7883
+https://gitlab.gnome.org/GNOME/gtk/-/commit/3b7ed49f26700c65fa9c6f41cf40d4fd5f921756
+
+From af9440dea029d225adcfc1f9024a1122e9abb006 Mon Sep 17 00:00:00 2001
+From: Benjamin Otte <otte@redhat.com>
+Date: Fri, 21 Nov 2025 10:07:31 +0100
+Subject: [PATCH 1/2] vulkan: Don't treat Vulkan objects as pointers or 32bit
+ breaks
+
+Fixes: #7883
+Part-of: <https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/9171>
+---
+ gdk/gdkvulkancontext.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/gdk/gdkvulkancontext.c b/gdk/gdkvulkancontext.c
+index 541842bfa50..26393892f04 100644
+--- a/gdk/gdkvulkancontext.c
++++ b/gdk/gdkvulkancontext.c
+@@ -688,7 +688,7 @@ gdk_vulkan_present_is_busy (GdkVulkanContext *self,
+ {
+   VkResult res;
+ 
+-  if (present->vk_swapchain == NULL)
++  if (!present->vk_swapchain)
+     return FALSE;
+ 
+   if (!present->vk_fence)
+@@ -1208,7 +1208,7 @@ gdk_vulkan_context_surface_detach (GdkDrawContext *context)
+       if (priv->presents[i].vk_swapchain)
+         {
+           gdk_vulkan_context_unref_swapchain (self, priv->presents[i].vk_swapchain);
+-          priv->presents[i].vk_swapchain = NULL;
++          priv->presents[i].vk_swapchain = VK_NULL_HANDLE;
+         }
+       vkDestroySemaphore (vk_device,
+                           priv->presents[i].vk_semaphore,
+-- 
+GitLab
+
+
+From 1f9e80c8c0e7440f6d2256fbf8ead29c44a83b90 Mon Sep 17 00:00:00 2001
+From: Benjamin Otte <otte@redhat.com>
+Date: Fri, 21 Nov 2025 10:08:12 +0100
+Subject: [PATCH 2/2] Fix a few profiler messges for 32bit
+
+Related: #7883
+Part-of: <https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/9171>
+---
+ gdk/gdkmemoryformat.c  | 2 +-
+ gdk/gdkvulkancontext.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/gdk/gdkmemoryformat.c b/gdk/gdkmemoryformat.c
+index 03f30448113..04f6057104d 100644
+--- a/gdk/gdkmemoryformat.c
++++ b/gdk/gdkmemoryformat.c
+@@ -6620,7 +6620,7 @@ gdk_memory_mipmap_same_format_linear (gpointer data)
+     }
+ 
+   ADD_MARK (before,
+-            "Mipmap linear (thread)", "size %lux%lu, lod %u, %lu rows",
++            "Mipmap linear (thread)", "size %zux%zu, lod %u, %zu rows",
+             mipmap->src_layout.width, mipmap->src_layout.height, mipmap->lod_level, rows);
+ }
+ 
+diff --git a/gdk/gdkvulkancontext.c b/gdk/gdkvulkancontext.c
+index 26393892f04..c39774bf9d6 100644
+--- a/gdk/gdkvulkancontext.c
++++ b/gdk/gdkvulkancontext.c
+@@ -1541,7 +1541,7 @@ gdk_vulkan_save_pipeline_cache (GdkDisplay *display)
+     }
+ 
+   gdk_profiler_end_markf (begin_time,
+-                          "Save Vulkan pipeline cache", "%s size %lu",
++                          "Save Vulkan pipeline cache", "%s size %zu",
+                           g_file_peek_path (file), size);
+ 
+   g_object_unref (file);
+-- 
+GitLab

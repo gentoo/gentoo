@@ -408,7 +408,7 @@ pkg_pretend() {
 			use test && CONFIG_CHECK+=" IP_MULTICAST"
 			ERROR_IP_MULTICAST="Test suite requires IP_MULTICAST"
 
-			if use amd64 || use x86 || use amd64-linux || use x86-linux; then
+			if use amd64 || use x86; then
 				if grep -q AuthenticAMD /proc/cpuinfo; then
 					CONFIG_CHECK+=" ~KVM_AMD"
 				elif grep -q GenuineIntel /proc/cpuinfo; then

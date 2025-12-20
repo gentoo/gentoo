@@ -1,0 +1,46 @@
+https://bugs.gentoo.org/967251
+https://github.com/OpenMathLib/OpenBLAS/issues/5289
+https://github.com/OpenMathLib/OpenBLAS/pull/5303
+
+From 31ef2cbbb353c1331a22ed4f909a6ffb5cc45b45 Mon Sep 17 00:00:00 2001
+From: Martin Kroeker <martin@ruby.chemie.uni-freiburg.de>
+Date: Fri, 13 Jun 2025 14:11:03 +0200
+Subject: [PATCH] Exit if memory allocation keeps failing, instead of looping
+ forever
+
+---
+ driver/others/memory.c | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/driver/others/memory.c b/driver/others/memory.c
+index c53e798bc1..c8415f348e 100644
+--- a/driver/others/memory.c
++++ b/driver/others/memory.c
+@@ -2922,6 +2922,7 @@ void *blas_memory_alloc(int procpos){
+   blas_unlock(&memory[position].lock);
+ #endif
+   if (!memory[position].addr) {
++    int failcount = 0;
+     do {
+ #ifdef DEBUG
+       printf("Allocation Start : %lx\n", base_address);
+@@ -2973,8 +2974,16 @@ void *blas_memory_alloc(int procpos){
+ #ifdef DEBUG
+       printf("  Success -> %08lx\n", map_address);
+ #endif
+-      if (((BLASLONG) map_address) == -1) base_address = 0UL;
+-
++      if (((BLASLONG) map_address) == -1) {
++	      base_address = 0UL;
++	      failcount++;
++	      if (failcount >10) {
++		      fprintf(stderr, "OpenBLAS error: Memory allocation still failed after 10 retries, giving up.\n");
++		      exit(1);
++	      }
++      } else {
++	      failcount = 0;
++      }
+       if (base_address) base_address += BUFFER_SIZE + FIXED_PAGESIZE;
+ 
+     } while ((BLASLONG)map_address == -1);
+

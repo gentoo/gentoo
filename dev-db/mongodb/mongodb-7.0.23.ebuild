@@ -80,7 +80,7 @@ python_check_deps() {
 	python_has_version -b ">=dev-build/scons-3.1.1[${PYTHON_USEDEP}]" &&
 	python_has_version -b "dev-python/cheetah3[${PYTHON_USEDEP}]" &&
 	python_has_version -b "dev-python/psutil[${PYTHON_USEDEP}]" &&
-	python_has_version -b "dev-python/pyyaml[${PYTHON_USEDEP}]"
+	python_has_version -b "dev-python/pyyaml[${PYTHON_USEDEP}]" &&
 	python_has_version -b "dev-python/pymongo[${PYTHON_USEDEP}]"
 }
 

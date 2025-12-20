@@ -344,7 +344,7 @@ src_prepare() {
 		's/&apos;[^&]*\(vboxdrv setup\|vboxconfig\)&apos;/\&apos;emerge -1 virtualbox-modules\&apos;/' {} \+ || die
 	sed -i "s:'/sbin/vboxconfig':'emerge -1 virtualbox-modules':" \
 		src/VBox/Frontends/VirtualBox/src/main.cpp \
-		src/VBox/VMM/VMMR3/VM.cpp || die
+		src/VBox/VMM/VMMR3/VMR3.cpp || die
 
 	# 890561
 	echo -e "\nVBOX_GTAR=gtar" >> LocalConfig.kmk || die

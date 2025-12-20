@@ -20,7 +20,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="NCSA-HDF"
 SLOT="0/311"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos"
 IUSE="cxx debug examples fortran +hl mpi szip test threads unsupported zlib"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="

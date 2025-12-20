@@ -1,0 +1,22 @@
+From 7eedc8975fe447761fee7c2ec591e7024ee57520 Mon Sep 17 00:00:00 2001
+From: dflogeras <dflogeras2@gmail.com>
+Date: Mon, 1 Dec 2025 05:29:47 -0400
+Subject: [PATCH] Explicitly set test image format to match resultImage. (#345)
+
+---
+ tests/annotations/core/AnnotationAreaTest.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/annotations/core/AnnotationAreaTest.cpp b/tests/annotations/core/AnnotationAreaTest.cpp
+index 9833d8f..8d1ff85 100644
+--- a/tests/annotations/core/AnnotationAreaTest.cpp
++++ b/tests/annotations/core/AnnotationAreaTest.cpp
+@@ -61,7 +61,7 @@ void AnnotationAreaTest::ExportAsImage_Should_ExportUnscaledImage_When_ScalingEn
+ 
+ 	auto resultImage = annotationArea.image();
+ 
+-	QCOMPARE(resultImage, pixmap.toImage());
++	QCOMPARE(resultImage, pixmap.toImage().convertToFormat(QImage::Format_ARGB32_Premultiplied));
+ }
+ 
+ void AnnotationAreaTest::AddAnnotationItem_Should_AddAnnotationItemToScene()

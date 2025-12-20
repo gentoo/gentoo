@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/thkukuk/rpcsvc-proto"
 
 LICENSE="LGPL-2.1+ BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~m68k ~mips ppc ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~m68k ~mips ppc ppc64 ~s390 ~sparc x86"
 
 DEPEND="elibc_glibc? ( sys-libs/glibc[rpc(-)] )"
 RDEPEND="${DEPEND}"

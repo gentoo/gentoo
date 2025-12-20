@@ -33,7 +33,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 # need protobuf compiler
 BDEPEND="
 	test? (
-		dev-libs/protobuf
+		dev-libs/protobuf[protoc(+)]
 		dev-python/absl-py[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 	)

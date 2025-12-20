@@ -72,7 +72,7 @@ DEPEND=">=dev-games/physfs-3[hog,mvl,zip]
 # For each flag, depend on freedata using the same flag.  If none of the
 # flags are set, freedata is not needed.
 DXX_RDEPEND_USE_FREEDATA_FRAGMENT='
-	${USE}? ( games-action/descent${ENGINE}-freedata[${USE}] )
+	${TEMPLATE_USE}? ( games-action/descent${ENGINE}-freedata[${TEMPLATE_USE}] )
 '
 # Block <0.59.100 due to file collision.
 #
@@ -95,9 +95,9 @@ DXX_RDEPEND_ENGINE_FRAGMENT='
 			)
 		)
 		'"
-		${DXX_RDEPEND_USE_FREEDATA_FRAGMENT//\$\{USE\}/l10n_de}
-		${DXX_RDEPEND_USE_FREEDATA_FRAGMENT//\$\{USE\}/opl3-musicpack}
-		${DXX_RDEPEND_USE_FREEDATA_FRAGMENT//\$\{USE\}/sc55-musicpack}
+		${DXX_RDEPEND_USE_FREEDATA_FRAGMENT//\$\{TEMPLATE_USE\}/l10n_de}
+		${DXX_RDEPEND_USE_FREEDATA_FRAGMENT//\$\{TEMPLATE_USE\}/opl3-musicpack}
+		${DXX_RDEPEND_USE_FREEDATA_FRAGMENT//\$\{TEMPLATE_USE\}/sc55-musicpack}
 		"'
 	)
 '

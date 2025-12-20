@@ -12,7 +12,7 @@ S="${WORKDIR}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~mips ppc x86 ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~mips ppc x86"
 
 BDEPEND="app-arch/unzip"
 

@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Dynamic PerlIO layers"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~mips ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~mips ~ppc x86"
 
 RDEPEND="
 	>=virtual/perl-File-Temp-0.14

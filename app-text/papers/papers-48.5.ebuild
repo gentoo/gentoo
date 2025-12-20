@@ -219,7 +219,7 @@ RUST_MIN_VER="1.81"
 inherit cargo gnome.org gnome2 meson xdg
 
 DESCRIPTION="A document viewer for the GNOME desktop"
-HOMEPAGE="https://apps.gnome.org/Papers/"
+HOMEPAGE="https://apps.gnome.org/Papers"
 
 # SRC_URI for loupe is set by gnome.org eclass.
 SRC_URI+=" ${CARGO_CRATE_URIS}"
@@ -235,8 +235,7 @@ SLOT="0/ppsd4.0.5-ppsv4.0.4"
 
 KEYWORDS="amd64"
 
-IUSE="+comics djvu doc gnome-keyring introspection nautilus +spell sysprof
-test tiff"
+IUSE="+comics djvu doc gnome-keyring introspection nautilus +spell sysprof test tiff"
 RESTRICT="!test? ( test )"
 
 BDEPEND="

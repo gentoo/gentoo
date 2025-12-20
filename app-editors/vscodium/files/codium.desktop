@@ -1,16 +1,16 @@
 [Desktop Entry]
 Name=VSCodium
-Comment=Editing evolved
-GenericName=Code Editor
+Comment=Code Editing. Redefined.
+GenericName=Text Editor
 Exec=/usr/bin/vscodium @exec_extra_flags@ -- %F
 Icon=vscodium
 Type=Application
 StartupNotify=false
-StartupWMClass=Codium
-Categories=Utility;TextEditor;Development;IDE;
-MimeType=text/plain;inode/directory;application/x-code-workspace;
+StartupWMClass=VSCodium
+Categories=TextEditor;Development;IDE;
+MimeType=text/plain;inode/directory;application/x-codium-workspace;
 Actions=new-empty-window;
-Keywords=vscode;vscodium;code;codium;
+Keywords=vscodium;codium;vscode;code;
 
 [Desktop Action new-empty-window]
 Name=New Empty Window
@@ -23,5 +23,5 @@ Name[ko]=새 빈 창
 Name[ru]=Новое пустое окно
 Name[zh_CN]=新建空窗口
 Name[zh_TW]=開新空視窗
-Exec=/usr/bin/vscodium @exec_extra_flags@ --new-window
+Exec=/usr/bin/vscodium @exec_extra_flags@ --new-window %F
 Icon=vscodium

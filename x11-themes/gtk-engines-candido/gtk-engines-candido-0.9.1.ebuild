@@ -13,7 +13,7 @@ SRC_URI="https://downloads.sourceforge.net/candido.berlios/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86"
 
 RDEPEND="x11-libs/gtk+:2"
 DEPEND="${RDEPEND}"

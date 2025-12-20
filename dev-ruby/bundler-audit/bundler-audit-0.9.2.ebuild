@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/rubysec/bundler-audit"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x64-macos ~x64-solaris"
 IUSE="test"
 
 #tests are trying to download files

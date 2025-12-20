@@ -10,7 +10,7 @@ pidfile=/var/run/bacula-dir.9101.pid
 depend() {
 	need net
 	if [ "${LOCAL_DB}" -eq 1 ]; then
-		:
+		need %database%
 	fi
 	use dns bacula-fd bacula-sd
 }

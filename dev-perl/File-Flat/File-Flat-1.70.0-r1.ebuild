@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Implements a flat filesystem"
 
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~mips ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~hppa ~mips ppc x86"
 
 RDEPEND="
 	>=dev-perl/File-Copy-Recursive-0.350.0

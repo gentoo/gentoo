@@ -11,7 +11,7 @@ SRC_URI="https://pages.physics.wisc.edu/~craigm/idl/down/${P}.tar.gz"
 
 LICENSE="public-domain minpack"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 
 DOCS=( README DISCLAIMER )
 

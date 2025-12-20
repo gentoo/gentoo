@@ -15,7 +15,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc ~sparc x86 ~x86-linux"
+KEYWORDS="~alpha amd64 ppc ~sparc x86"
 
 RDEPEND="
 	>=dev-python/lxml-3.1.0[${PYTHON_USEDEP}]

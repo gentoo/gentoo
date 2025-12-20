@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/nick8325/quickcheck"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="+template-haskell"
 
 RDEPEND=">=dev-haskell/random-1.2.0:=[profile?] <dev-haskell/random-1.3:=[profile?]

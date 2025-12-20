@@ -11,7 +11,7 @@ SRC_URI="http://hnb.sourceforge.net/.files/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ppc ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ppc ~sparc x86"
 
 RDEPEND="sys-libs/ncurses"
 DEPEND="${RDEPEND}"

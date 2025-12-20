@@ -11,6 +11,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Program to create cross stitch patterns"
 HOMEPAGE="https://apps.kde.org/kxstitch/ https://userbase.kde.org/KXStitch"
+SRC_URI="https://dev.gentoo.org/~asturm/distfiles/kde/${KDE_ORG_NAME}-${PV}-${KDE_ORG_COMMIT:0:8}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

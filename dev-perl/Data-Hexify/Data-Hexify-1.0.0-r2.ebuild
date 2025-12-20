@@ -10,4 +10,4 @@ inherit perl-module
 
 DESCRIPTION="Perl extension for hexdumping arbitrary data"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~mips x86 ~amd64-linux"
+KEYWORDS="amd64 ~arm ~mips x86"

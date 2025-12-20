@@ -12,7 +12,7 @@ SRC_URI="https://downloads.unidata.ucar.edu/netcdf-cxx/${PV}/${PN}4-${PV}.tar.gz
 
 LICENSE="UCAR-Unidata"
 SLOT="0/1"
-KEYWORDS="amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 IUSE="examples"
 # 6 out of 9 fail, reported upstream
 #RESTRICT="test"

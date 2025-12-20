@@ -12,7 +12,7 @@ SRC_URI="https://www.tinc-vpn.org/packages/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~arm ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="+lzo uml vde +zlib"
 
 DEPEND="

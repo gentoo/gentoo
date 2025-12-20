@@ -9,7 +9,7 @@ SRC_URI="https://github.com/hpc/libcircle/releases/download/v$(ver_cut 1-2)/${P}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 

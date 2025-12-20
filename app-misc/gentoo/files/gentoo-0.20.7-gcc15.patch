@@ -1,0 +1,49 @@
+Author: Andreas Tille <tille@debian.org>
+Last-Update: 2025-09-02
+Bug-Debian: https://bugs.debian.org/1096693
+Description: Fix build with gcc-15
+
+--- a/src/xmlutil.c
++++ b/src/xmlutil.c
+@@ -70,7 +70,7 @@ typedef union {
+ 	XVInt	integer;
+ 	XVUInt	uinteger;
+ 	XVReal	real;
+-	XVBool	bool;
++	XVBool	bool_val;
+ 	XVColor	color;
+ } XmlData;
+ 
+@@ -334,7 +334,7 @@ gboolean xml_get_boolean(const XmlNode *
+ 	if((data = get_node(node, name, XVT_BOOL)) != NULL)
+ 	{
+ 		if(x != NULL)
+-			*x = data->data.bool.value;
++			*x = data->data.bool_val.value;
+ 		return TRUE;
+ 	}
+ 	return FALSE;
+@@ -677,12 +677,12 @@ static gint get_data(XmlNode *node, cons
+ 		node->data.type = XVT_INTEGER;
+ 	else if(is_word(str, XML_TRUE))
+ 	{
+-		node->data.bool.value = TRUE;
++		node->data.bool_val.value = TRUE;
+ 		node->data.type = XVT_BOOL;
+ 	}
+ 	else if(is_word(str, XML_FALSE))
+ 	{
+-		node->data.bool.value = FALSE;
++		node->data.bool_val.value = FALSE;
+ 		node->data.type = XVT_BOOL;
+ 	}
+ 	else
+@@ -822,7 +822,7 @@ void xml_tree_print(const XmlNode *root,
+ 					printf(" = %f", root->data.real.value);
+ 					break;
+ 				case XVT_BOOL:
+-					printf(" = %s", root->data.bool.value ? XML_TRUE : XML_FALSE);
++					printf(" = %s", root->data.bool_val.value ? XML_TRUE : XML_FALSE);
+ 					break;
+ 				case XVT_COLOR:
+ 					printf(" = [%04X,%04X,%04X]", root->data.color.value.red, root->data.color.value.green, root->data.color.value.blue);

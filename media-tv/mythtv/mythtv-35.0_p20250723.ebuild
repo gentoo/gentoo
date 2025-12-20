@@ -172,7 +172,6 @@ src_configure() {
 
 	if use debug; then
 		myconf+=( --compile-type=debug )
-		myconf+=( --disable-stripping ) # FIXME: does not disable for all files, only for some
 		myconf+=( --enable-valgrind ) # disables timeouts for valgrind memory debugging
 	else
 		myconf+=( --compile-type=release )
@@ -293,6 +292,7 @@ src_configure() {
 		--cc="$(tc-getCC)" \
 		--cxx="$(tc-getCXX)" \
 		--ar="$(tc-getAR)" \
+		--nm="$(tc-getNM)" \
 		--optflags="${CFLAGS}" \
 		--extra-cflags="${CFLAGS}" \
 		--extra-cxxflags="${CXXFLAGS}" \

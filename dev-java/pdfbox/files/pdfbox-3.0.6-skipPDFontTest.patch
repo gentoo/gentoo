@@ -1,0 +1,88 @@
+             	at org.apache.pdfbox.pdmodel.font.PDFontTest.testPDFBox3826(PDFontTest.java:159)
+             	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+             	at java.base/java.util.concurrent.RecursiveAction.exec(RecursiveAction.java:194)
+             	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:511)
+             	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1450)
+             	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2019)
+             	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:187)
+
+             	at org.junit.jupiter.api.Assumptions.throwAssumptionFailed(Assumptions.java:316)
+             	at org.junit.jupiter.api.Assumptions.assumeTrue(Assumptions.java:115)
+             	at org.apache.pdfbox.pdmodel.font.PDFontTest.testPDFBox3747(PDFontTest.java:121)
+             	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+             	at java.base/java.util.concurrent.RecursiveAction.exec(RecursiveAction.java:194)
+             	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:511)
+             	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1450)
+             	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2019)
+             	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:187)
+│  │  │   duration:  duration: 33 ms
+
+│  │  │     status: ✘ FAILED
+: ■ ABORTED
+PDFBOX5920TrueType()
+testDeleteFont()
+│  │  │       tags: []
+: []
+│  │  │   uniqueId: [engine:junit-jupiter]/[class:org.apache.pdfbox.pdmodel.font.PDFontTest]/[method:PDFBOX5920TrueType()]
+: [engine:junit-jupiter]/[class:org.apache.pdfbox.pdmodel.font.PDFontTest]/[method:testDeleteFont()]
+│  │  │     parent: [engine:junit-jupiter]/[class:org.apache.pdfbox.pdmodel.font.PDFontTest]
+: [engine:junit-jupiter]/[class:org.apache.pdfbox.pdmodel.font.PDFontTest]
+│  │  │     source: MethodSource [className = 'org.apache.pdfbox.pdmodel.font.PDFontTest', methodName = 'PDFBOX5920TrueType', methodParameterTypes = '']
+: MethodSource [className = 'org.apache.pdfbox.pdmodel.font.PDFontTest', methodName = 'testDeleteFont', methodParameterTypes = '']
+   caught: java.net.UnknownHostException: issues.apache.org
+             	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:569)
+             	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:284)
+             	at java.base/java.net.Socket.connect(Socket.java:668)
+             	at java.base/sun.security.ssl.SSLSocketImpl.connect(SSLSocketImpl.java:304)
+             	at java.base/sun.security.ssl.BaseSSLSocketImpl.connect(BaseSSLSocketImpl.java:181)
+             	at java.base/sun.net.NetworkClient.doConnect(NetworkClient.java:166)
+             	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:516)
+             	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:604)
+             	at java.base/sun.net.www.protocol.https.HttpsClient.<init>(HttpsClient.java:206)
+             	at java.base/sun.net.www.protocol.https.HttpsClient.New(HttpsClient.java:288)
+             	at java.base/sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(AbstractDelegateHttpsURLConnection.java:193)
+             	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:963)
+             	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:899)
+             	at java.base/sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:179)
+             	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1382)
+             	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1307)
+             	at java.base/sun.net.www.protocol.https.HttpsURLConnectionImpl.getInputStream(HttpsURLConnectionImpl.java:223)
+             	at java.base/java.net.URL.openStream(URL.java:1264)
+             	at org.apache.pdfbox.pdmodel.font.PDFontTest.testPDFox5048(PDFontTest.java:281)
+             	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+             	at java.base/java.util.concurrent.RecursiveAction.exec(RecursiveAction.java:194)
+             	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:511)
+             	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1450)
+             	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2019)
+             	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:187)
+ duration: 138 ms
+   status: ✘ FAILED
+
+--- a/pdfbox/src/test/java/org/apache/pdfbox/pdmodel/font/PDFontTest.java
++++ b/pdfbox/src/test/java/org/apache/pdfbox/pdmodel/font/PDFontTest.java
+@@ -56,6 +56,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
+ import org.junit.jupiter.api.Assumptions;
+ import org.junit.jupiter.api.BeforeAll;
+ import org.junit.jupiter.api.Test;
++import org.junit.jupiter.api.Disabled;
+ import org.junit.jupiter.api.parallel.Execution;
+ import org.junit.jupiter.api.parallel.ExecutionMode;
+ 
+@@ -151,7 +152,7 @@ class PDFontTest
+      * @throws IOException
+      * @throws URISyntaxException
+      */
+-    @Test
++    @Test @Disabled
+     void testPDFBox3826() throws IOException, URISyntaxException
+     {
+         URL url = PDFont.class.getResource(
+@@ -273,7 +274,7 @@ class PDFontTest
+      * @throws IOException
+      * @throws URISyntaxException
+      */
+-    @Test
++    @Test @Disabled
+     void testPDFox5048() throws IOException, URISyntaxException
+     {
+         try (PDDocument doc = Loader.loadPDF(RandomAccessReadBuffer.createBufferFromStream(

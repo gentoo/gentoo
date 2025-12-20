@@ -52,7 +52,7 @@ else
 		BDEPEND="verify-sig? ( sec-keys/openpgp-keys-alejandro-colomar )"
 	fi
 
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos"
 fi
 
 SRC_URI+="

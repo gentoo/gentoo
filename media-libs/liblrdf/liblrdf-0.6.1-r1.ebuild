@@ -11,7 +11,7 @@ SRC_URI="https://github.com/swh/LRDF/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ppc ppc64 x86"
 IUSE="static-libs"
 
 RDEPEND="

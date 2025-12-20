@@ -1,6 +1,0 @@
-# Copyright 1999-2019 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
-
-# Fabian Groffen <grobian@gentoo.org> (2012-05-03)
-# Needs 10.6 or up
->=dev-lang/ghc-7

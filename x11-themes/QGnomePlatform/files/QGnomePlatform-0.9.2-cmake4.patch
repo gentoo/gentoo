@@ -1,0 +1,22 @@
+Raise CMake minimum version to 3.10
+
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 85b3c2b..b3cc3b3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,6 @@
+-project(QGnomePlatform)
++cmake_minimum_required(VERSION 3.10)
+ 
+-cmake_minimum_required(VERSION 3.0)
++project(QGnomePlatform)
+ 
+ set(QGNOMEPLATFORM_VERSION "0.9.2")
+ 
+-- 
+2.52.0
+

@@ -1,0 +1,121 @@
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+DISTUTILS_EXT=1
+DISTUTILS_USE_PEP517=standalone
+PYPI_VERIFY_REPO=https://github.com/qtile/qtile
+PYTHON_COMPAT=( python3_13 )
+
+inherit distutils-r1 pypi virtualx
+
+DESCRIPTION="A full-featured, hackable tiling window manager written in Python"
+HOMEPAGE="
+	https://qtile.org/
+	https://github.com/qtile/qtile/
+	https://pypi.org/project/qtile/
+"
+
+LICENSE="MIT"
+SLOT="0"
+KEYWORDS="~amd64 ~riscv"
+IUSE="pulseaudio wayland"
+
+DEPEND="
+	>=dev-python/cairocffi-1.7.0[${PYTHON_USEDEP}]
+	>=dev-python/cffi-1.1.0:=[${PYTHON_USEDEP}]
+	wayland? (
+		dev-libs/libinput:=
+		dev-libs/wayland
+		gui-libs/wlroots:0.19
+	)
+"
+RDEPEND="
+	${DEPEND}
+	dev-python/dbus-fast[${PYTHON_USEDEP}]
+	dev-python/pygobject[${PYTHON_USEDEP}]
+	>=dev-python/xcffib-1.4.0[${PYTHON_USEDEP}]
+	x11-libs/cairo[X,xcb(+)]
+	x11-libs/libnotify[introspection]
+	x11-libs/pango
+	pulseaudio? (
+		dev-python/pulsectl-asyncio[${PYTHON_USEDEP}]
+		media-libs/libpulse
+	)
+"
+BDEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
+	test? (
+		dev-python/isort[${PYTHON_USEDEP}]
+		dev-python/libcst[${PYTHON_USEDEP}]
+		media-gfx/imagemagick[X]
+		x11-base/xorg-server[xephyr,xvfb]
+		x11-terms/xterm
+	)
+	wayland? (
+		>=dev-python/pywayland-0.4.17[${PYTHON_USEDEP}]
+		>=dev-python/pywlroots-0.17[${PYTHON_USEDEP}]
+	)
+"
+
+EPYTEST_PLUGINS=( anyio pytest-{asyncio,httpbin} )
+EPYTEST_RERUNS=5
+: ${EPYTEST_TIMEOUT:=180}
+distutils_enable_tests pytest
+
+python_prepare_all() {
+	distutils-r1_python_prepare_all
+
+	mkdir bin || die
+}
+
+src_compile() {
+	local -x CFFI_TMPDIR=${T}
+	local DISTUTILS_CONFIG_SETTINGS_JSON="{\"backend\": \"$(usex wayland wayland x11)\"}"
+	distutils-r1_src_compile
+}
+
+src_test() {
+	virtx distutils-r1_src_test
+}
+
+python_test() {
+	local EPYTEST_DESELECT=(
+		# mypy stuff
+		test/test_check.py
+		test/migrate/test_check_migrations.py
+
+		# TODO
+		'test/backend/wayland/test_idle_inhibit.py::test_inhibitor_open[1-x11-InhibitorConfig]'
+		'test/backend/wayland/test_idle_inhibit.py::test_inhibitor_visible[1-x11-InhibitorConfig]'
+		'test/backend/wayland/test_idle_inhibit.py::test_inhibitor_focus[1-x11-InhibitorConfig]'
+		'test/backend/wayland/test_idle_inhibit.py::test_inhibitor_fullscreen[1-x11-InhibitorConfig]'
+		'test/backend/wayland/test_idle_inhibit.py::test_inhibitor_global[1-x11-InhibitorConfig]'
+	)
+
+	cd "${BUILD_DIR}/install$(python_get_sitedir)" || die
+	cp -R "${S}/test" . || die
+
+	local -x TZ=UTC
+	nonfatal epytest --backend=x11 $(usev wayland '--backend=wayland')
+	local ret=${?}
+	rm -rf test || die
+
+	[[ ${ret} -eq 0 ]] || die -n "Tests failed with ${EPYTHON}"
+}
+
+python_install_all() {
+	local DOCS=( CHANGELOG README.rst )
+	distutils-r1_python_install_all
+
+	insinto /usr/share/xsessions
+	doins resources/qtile.desktop
+
+	insinto /usr/share/wayland-sessions
+	doins resources/qtile-wayland.desktop
+
+	exeinto /etc/X11/Sessions
+	newexe "${FILESDIR}"/${PN}-session-r1 ${PN}
+}

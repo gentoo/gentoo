@@ -103,7 +103,7 @@ BDEPEND=">=dev-build/meson-1.2.3
 #          '--unicode-16=𐐷', '--unicode-32=𐤅']
 #
 _meson_env_array() {
-	meson-format-array "$@"
+	meson-format-array "$@" || die
 }
 
 # @FUNCTION: _meson_get_machine_info
@@ -150,7 +150,7 @@ _meson_create_cross_file() {
 
 	local fn=${T}/meson.${CHOST}.${ABI}.ini
 
-	cat > "${fn}" <<-EOF
+	cat > "${fn}" <<-EOF || die "failed to create cross file"
 	[binaries]
 	ar = $(_meson_env_array "$(tc-getAR)")
 	c = $(_meson_env_array "$(tc-getCC)")
@@ -207,7 +207,7 @@ _meson_create_native_file() {
 
 	local fn=${T}/meson.${CBUILD}.${ABI}.ini
 
-	cat > "${fn}" <<-EOF
+	cat > "${fn}" <<-EOF || die "failed to create native file"
 	[binaries]
 	ar = $(_meson_env_array "$(tc-getBUILD_AR)")
 	c = $(_meson_env_array "$(tc-getBUILD_CC)")

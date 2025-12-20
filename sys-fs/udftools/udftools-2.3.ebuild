@@ -9,7 +9,7 @@ SRC_URI="https://github.com/pali/udftools/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 ~riscv ~sparc x86"
 
 RDEPEND="sys-libs/readline:0="
 DEPEND="${RDEPEND}"

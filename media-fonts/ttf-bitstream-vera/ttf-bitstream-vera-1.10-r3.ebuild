@@ -11,7 +11,7 @@ SRC_URI="mirror://gnome/sources/ttf-bitstream-vera/${PV}/${P}.tar.bz2"
 
 LICENSE="BitstreamVera"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos"
 
 DOCS="COPYRIGHT.TXT README.TXT RELEASENOTES.TXT"
 FONT_SUFFIX="ttf"

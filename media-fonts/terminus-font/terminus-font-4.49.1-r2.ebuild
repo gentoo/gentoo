@@ -13,7 +13,7 @@ SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}-$(ver_cut 1-2)/${
 
 LICENSE="OFL-1.1 GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="a-like-o +center-tilde distinct-l +otf pcf-8bit +pcf-unicode +psf quote
 	ru-dv +ru-g ru-i ru-k"
 

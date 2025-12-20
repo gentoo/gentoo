@@ -280,7 +280,6 @@ net-wireless/bluez obex
 # to bug 626682
 dev-ruby/bundler doc
 dev-ruby/rspec-core highlight test
-sys-block/thin-provisioning-tools test
 
 # David Seifert <soap@gentoo.org> (2017-09-23)
 #  >=virtual/mpi-2.0-r4 does not have stable keywords on hppa

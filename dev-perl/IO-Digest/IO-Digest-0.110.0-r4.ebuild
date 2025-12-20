@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="IO::Digest - Calculate digests while reading or writing"
 
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~ppc x86"
 
 RDEPEND=">=dev-perl/PerlIO-via-dynamic-0.10"
 BDEPEND="${RDEPEND}"

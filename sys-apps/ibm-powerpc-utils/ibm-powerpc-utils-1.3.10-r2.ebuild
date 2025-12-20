@@ -12,7 +12,7 @@ S="${WORKDIR}/${P//ibm-}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~ppc ~ppc64"
+KEYWORDS="ppc ppc64"
 IUSE="+rtas"
 
 RDEPEND="

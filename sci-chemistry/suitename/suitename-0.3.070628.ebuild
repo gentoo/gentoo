@@ -13,7 +13,7 @@ SRC_URI="http://kinemage.biochem.duke.edu/downloads/software/${PN}/${MY_P}.src.t
 
 LICENSE="richardson"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 
 S="${WORKDIR}/${MY_P}"
 

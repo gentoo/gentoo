@@ -16,7 +16,7 @@ if [[ ${PV} = 9999* ]]; then
 else
 	SRC_URI="https://mesa.freedesktop.org/archive/demos/${MY_P}.tar.xz
 		https://mesa.freedesktop.org/archive/demos/${PV}/${MY_P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 LICENSE="LGPL-2"
@@ -81,7 +81,6 @@ multilib_src_configure() {
 		-Dgles1=disabled
 		$(meson_feature gles2)
 		-Dglut=disabled
-		-Dosmesa=disabled
 		$(meson_feature vulkan)
 		$(meson_feature wayland)
 		$(meson_feature X x11)

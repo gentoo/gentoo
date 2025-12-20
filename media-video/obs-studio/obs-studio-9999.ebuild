@@ -182,6 +182,8 @@ src_unpack() {
 src_prepare() {
 	default
 
+	sed -i 's/-Werror //' libobs/cmake/linux/libobs.pc.in || die
+
 	# -Werror=lto-type-mismatch
 	# https://bugs.gentoo.org/867250
 	# https://github.com/obsproject/obs-studio/issues/8988

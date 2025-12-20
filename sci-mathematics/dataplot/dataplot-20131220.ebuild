@@ -21,7 +21,7 @@ S="${WORKDIR}/${MY_P}"
 
 SLOT="0"
 LICENSE="public-domain"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="examples gd opengl X"
 
 REQUIRED_USE="opengl? ( X )"

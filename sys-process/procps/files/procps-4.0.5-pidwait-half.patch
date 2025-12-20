@@ -1,0 +1,43 @@
+https://gitlab.com/procps-ng/procps/-/issues/386
+https://gitlab.com/procps-ng/procps/-/merge_requests/262
+
+From 0298cd70368f76ce6bfe46a55cebd105d5d53e94 Mon Sep 17 00:00:00 2001
+From: Chris Down <chris@chrisdown.name>
+Date: Sat, 26 Jul 2025 22:38:12 +0100
+Subject: [PATCH] pgrep: Fix pidwait only waiting for half of specified
+ processes
+
+The pidwait command currently waits for only half of the given
+processes. This happens because when a monitored process terminates, its
+pidfd can generate two events: one for the process exiting (EPOLLIN),
+and another for it being reaped by its parent (EPOLLIN or EPOLLHUP). The
+existing code increments its completion counter for every event
+returned, causing it to count each process termination twice and exit
+prematurely.
+
+This fix tells the kernel to deactivate the file descriptor after the
+first event (process exit) is delivered, and prevents any subsequent
+events from being processed for the same pidfd.
+
+References: #386
+
+Signed-off-by: Chris Down <chris@chrisdown.name>
+---
+ src/pgrep.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/pgrep.c b/src/pgrep.c
+index 4c5ed521..20cc251d 100644
+--- a/src/pgrep.c
++++ b/src/pgrep.c
+@@ -1433,7 +1433,7 @@ int main (int argc, char **argv)
+                     warn(_("opening pid %ld failed"), procs[i].num);
+                 continue;
+             }
+-            ev.events = EPOLLIN | EPOLLET;
++            ev.events = EPOLLIN | EPOLLET | EPOLLONESHOT;
+             ev.data.fd = pidfd;
+             if (epoll_ctl(epollfd, EPOLL_CTL_ADD, pidfd, &ev) != -1)
+                 poll_count++;
+-- 
+GitLab

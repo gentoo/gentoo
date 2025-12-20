@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..14} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 # xml.etree.ElementTree module required.
 PYTHON_REQ_USE="xml(+)"
 
@@ -15,7 +15,7 @@ HOMEPAGE="https://supervisord.org/ https://pypi.org/project/supervisor/"
 
 LICENSE="repoze ZPL BSD HPND GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~riscv x86"
 
 RDEPEND="acct-group/supervisor"
 

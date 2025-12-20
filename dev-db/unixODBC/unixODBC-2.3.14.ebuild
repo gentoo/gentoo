@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit multilib-minimal
+inherit flag-o-matic multilib-minimal
 
 DESCRIPTION="Complete ODBC driver manager"
 HOMEPAGE="https://www.unixodbc.org/"
@@ -11,7 +11,7 @@ SRC_URI="https://www.unixodbc.org/unixODBC-${PV}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos ~x64-solaris"
 IUSE="+minimal odbcmanual static-libs unicode"
 
 RDEPEND="
@@ -34,6 +34,9 @@ multilib_src_configure() {
 	# Needs flex, bison
 	export LEX=flex
 	unset YACC
+
+	# bug #965105
+	append-cflags -std=gnu17
 
 	# --enable-driver-conf is --enable-driverc as per configure.in
 	local myeconfargs=(

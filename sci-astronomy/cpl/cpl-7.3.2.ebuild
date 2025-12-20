@@ -13,7 +13,7 @@ SRC_URI="https://ftp.eso.org/pub/dfs/pipelines/libraries/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/26"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 
 IUSE="doc gasgano static-libs threads"
 

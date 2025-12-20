@@ -10,7 +10,7 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Library to allow separating the structure of documents from data they contain"
 
 LICENSE="LGPL-2.1+"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv ~x86"
 IUSE=""
 
 RDEPEND="
@@ -19,3 +19,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-qt/qttools:6[linguist] )"
+
+src_prepare() {
+	rm -r examples # unused, causes bug #966102
+	ecm_src_prepare
+}

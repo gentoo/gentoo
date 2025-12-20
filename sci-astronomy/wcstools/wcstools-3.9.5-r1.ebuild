@@ -11,7 +11,7 @@ SRC_URI="http://tdc-www.harvard.edu/software/wcstools/Old/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~ppc ~x86"
 
 DOCS=( Readme Programs NEWS )
 

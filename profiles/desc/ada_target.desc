@@ -5,3 +5,4 @@ gcc_12 - Compile with sys-devel/gcc:12
 gcc_13 - Compile with sys-devel/gcc:13
 gcc_14 - Compile with sys-devel/gcc:14
 gcc_15 - Compile with sys-devel/gcc:15
+gcc_16 - Compile with sys-devel/gcc:16

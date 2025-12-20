@@ -1,21 +1,22 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 inherit autotools flag-o-matic toolchain-funcs multilib-minimal
 
 APPLE_PV=$(ver_cut 5-)  # 498: macOS 13.3 and up
 DESCRIPTION="An easily extensible archive format"
 HOMEPAGE="https://github.com/apple-oss-distributions/xar"
 SRC_URI="https://github.com/apple-oss-distributions/xar/archive/xar-${APPLE_PV}.tar.gz"
+S=${WORKDIR}/${PN}-${PN}-${APPLE_PV}/${PN}
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~ppc ppc64 ~riscv ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 
 DEPEND="
 	elibc_musl? ( sys-libs/fts-standalone )
-	kernel_linux? ( virtual/acl )
+	kernel_linux? ( virtual/acl[${MULTILIB_USEDEP}] )
 	dev-libs/openssl:0=[${MULTILIB_USEDEP}]
 	app-arch/bzip2[${MULTILIB_USEDEP}]
 	virtual/zlib:=[${MULTILIB_USEDEP}]
@@ -34,8 +35,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.8.0.0.487-variable-sized-object.patch
 	"${FILESDIR}"/${PN}-1.8.0.0.498-impl-decls.patch
 )
-
-S=${WORKDIR}/${PN}-${PN}-${APPLE_PV}/${PN}
 
 src_prepare() {
 	default

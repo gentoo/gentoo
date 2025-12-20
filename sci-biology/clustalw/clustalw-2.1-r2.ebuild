@@ -9,7 +9,7 @@ SRC_URI="http://www.clustal.org/download/current/${P}.tar.gz"
 
 LICENSE="GPL-3 LGPL-3"
 SLOT="2"
-KEYWORDS="amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~ppc ~ppc64 ~sparc ~x86"
 
 src_install() {
 	default

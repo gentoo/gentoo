@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/gentoo-haskell/haskell-updater#readme"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86 ~x64-macos"
 
 # Need a lower version for portage to get --keep-going
 RDEPEND="

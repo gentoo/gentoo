@@ -11,7 +11,7 @@ SRC_URI="https://ccrma.stanford.edu/software/${PN}/${P}.tar.gz"
 
 LICENSE="Snd 0BSD BSD-2 HPND GPL-2+ LGPL-2.1+ LGPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="alsa doc fftw gmp gsl gui jack ladspa notcurses opengl oss portaudio pulseaudio readline ruby +s7"
 
 RDEPEND="

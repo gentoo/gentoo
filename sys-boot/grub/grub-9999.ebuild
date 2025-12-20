@@ -63,12 +63,6 @@ else
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/grub.git"
 fi
 
-PATCHES=(
-	"${FILESDIR}"/gfxpayload.patch
-	"${FILESDIR}"/grub-2.02_beta2-KERNEL_GLOBS.patch
-	"${FILESDIR}"/grub-2.06-test-words.patch
-)
-
 DEJAVU_VER=2.37
 DEJAVU=dejavu-fonts-ttf-${DEJAVU_VER}
 UNIFONT=unifont-17.0.02
@@ -83,7 +77,7 @@ SRC_URI+="
 # Includes licenses for dejavu and unifont
 LICENSE="GPL-3+ BSD MIT fonts? ( GPL-2-with-font-exception ) themes? ( CC-BY-SA-3.0 BitstreamVera )"
 SLOT="2/${PVR}"
-IUSE="+device-mapper doc efiemu +fonts mount nls protect sdl test +themes truetype libzfs"
+IUSE="+branding +device-mapper doc efiemu +fonts mount nls protect sdl test +themes truetype libzfs"
 
 GRUB_ALL_PLATFORMS=( coreboot efi-32 efi-64 emu ieee1275 loongson multiboot
 	qemu qemu-mips pc uboot xen xen-32 xen-pvh )
@@ -137,6 +131,7 @@ DEPEND="
 	protect? ( dev-libs/libtasn1:= )
 "
 RDEPEND="${DEPEND}
+	branding? ( >=sys-boot/grub-themes-gentoo-1.0-r1 )
 	kernel_linux? (
 		grub_platforms_efi-32? ( sys-boot/efibootmgr )
 		grub_platforms_efi-64? ( sys-boot/efibootmgr )
@@ -164,7 +159,9 @@ src_unpack() {
 		local GNULIB_REVISION=$(source bootstrap.conf >/dev/null; echo "${GNULIB_REVISION}")
 		git-r3_fetch "${GNULIB_URI}" "${GNULIB_REVISION}"
 		git-r3_checkout "${GNULIB_URI}" gnulib
-		sh linguas.sh || die
+		if use nls; then
+			sh linguas.sh || die
+		fi
 		popd >/dev/null || die
 	elif use verify-sig; then
 		verify-sig_verify_detached "${DISTDIR}"/${MY_P}.tar.xz{,.sig} \
@@ -184,7 +181,7 @@ src_prepare() {
 
 	if [[ -n ${GRUB_BOOTSTRAP} ]]; then
 		eautopoint --force
-		AUTOPOINT=: AUTORECONF=: ./bootstrap || die
+		AUTOPOINT=: AUTORECONF=: ./bootstrap --skip-po || die
 	elif [[ -n ${GRUB_AUTOGEN} ]]; then
 		FROM_BOOTSTRAP=1 ./autogen.sh || die
 	fi
@@ -380,6 +377,11 @@ src_install() {
 	insinto /etc/default
 	newins "${FILESDIR}"/grub.default-4 grub
 
+	if use branding && use themes ; then
+		sed -i -e 's:^#GRUB_THEME=.*$:GRUB_THEME="/boot/grub/themes/gentoo_glass/theme.txt":g' \
+			"${ED}/etc/default/grub" || die
+	fi
+
 	# https://bugs.gentoo.org/231935
 	dostrip -x /usr/lib/grub
 
@@ -412,14 +414,15 @@ pkg_postinst() {
 		ewarn
 	fi
 
-	if has_version 'sys-boot/grub:0'; then
-		elog "A migration guide for GRUB Legacy users is available:"
-		elog "    https://wiki.gentoo.org/wiki/GRUB2_Migration"
-	fi
-
 	if has_version sys-boot/os-prober; then
 		ewarn "Due to security concerns, os-prober is disabled by default."
 		ewarn "Set GRUB_DISABLE_OS_PROBER=false in /etc/default/grub to enable it."
+	fi
+
+	if grep -q GRUB_LINUX_KERNEL_GLOBS "${EROOT}"/etc/default/grub; then
+		ewarn "Support for GRUB_LINUX_KERNEL_GLOBS has been dropped."
+		ewarn "Ensure that your kernels are named appropriately or edit"
+		ewarn "/etc/grub.d/10_linux to compensate."
 	fi
 
 	if use secureboot; then

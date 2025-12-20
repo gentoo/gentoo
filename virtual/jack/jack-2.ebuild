@@ -7,7 +7,7 @@ inherit multilib-build
 
 DESCRIPTION="Virtual for JACK Audio Connection Kit"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~x64-macos"
 
 RDEPEND="
 	|| (

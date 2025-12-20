@@ -7,7 +7,7 @@ EBO_DESCRIPTION="sim4 - Alignment of cDNA and genomic DNA"
 
 inherit autotools emboss-r3 flag-o-matic
 
-KEYWORDS="~amd64 ~x86 ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 
 S="${WORKDIR}/ESIM4-1.0.0.650"
 PATCHES=( "${FILESDIR}"/${PN}-1.0.0.650_fix-build-system.patch )

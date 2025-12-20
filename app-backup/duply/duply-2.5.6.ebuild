@@ -10,7 +10,7 @@ S="${WORKDIR}/${PN}_${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 BDEPEND="app-text/txt2man"
 RDEPEND="app-backup/duplicity"

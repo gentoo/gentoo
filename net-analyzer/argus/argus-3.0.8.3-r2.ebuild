@@ -12,7 +12,7 @@ S="${WORKDIR}"/${P/_rc/.rc.}
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ppc x86"
 IUSE="debug sasl tcpd"
 
 DEPEND="

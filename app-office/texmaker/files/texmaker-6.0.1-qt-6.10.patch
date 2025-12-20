@@ -1,0 +1,13 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -387,7 +387,9 @@
+ set(CMAKE_AUTORCC ON)
+ 
+ find_package(Qt6 REQUIRED COMPONENTS Gui Concurrent Core Core5Compat Network PrintSupport Qml Widgets Xml LinguistTools)
+-
++if(Qt6Core_VERSION VERSION_GREATER_EQUAL "6.9.0")
++    find_package(Qt6 ${REQUIRED_QT_VERSION} CONFIG REQUIRED CorePrivate)
++endif()
+ qt_standard_project_setup()
+ 
+ if (UNIX AND NOT APPLE)

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: desktop.eclass
@@ -15,170 +15,274 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-# @FUNCTION: make_desktop_entry
-# @USAGE: <command> [name] [icon] [type] [fields]
+# @ECLASS_VARIABLE: _DESKTOP_IDS
+# @DEFAULT_UNSET
 # @DESCRIPTION:
-# Make a .desktop file.
+# Internal array containing any app-ids used by make_desktop_entry() calls.
+# Lets us keep track of/avoid duplicate desktop file names.
+_DESKTOP_IDS=()
+
+# @FUNCTION: make_desktop_entry
+# @USAGE: [--eapi9] <command> [options]
+# @DESCRIPTION:
+# Make a .desktop file and install it in /usr/share/applications/.
 #
 # @CODE
-# binary:   what command does the app run with ?
-# name:     the name that will show up in the menu
-# icon:     the icon to use in the menu entry
-#           this can be relative (to /usr/share/pixmaps) or
-#           a full path to an icon
-# type:     what kind of application is this?
-#           for categories:
-#           https://specifications.freedesktop.org/menu-spec/latest/apa.html
-#           if unset, function tries to guess from package's category
-# fields:	extra fields to append to the desktop file; a printf string
+# --eapi9:    Switch to getopts style arguments instead of order based
+#             As the naming implies, this is off by default for EAPI=[78],
+#             but mandated by future EAPI.
+# command:    Exec command the app is being run with, also base for TryExec
+# ---         Options:
+# name:       Name that will show up in the menu; defaults to PN
+#             with --eapi9: must not contain arguments, use --args for that
+# icon:       Icon to use with the menu entry; defaults to PN
+#             this can be relative (to /usr/share/pixmaps) or
+#             a full path to an icon
+# categories: Categories for this kind of application. Examples:
+#             https://specifications.freedesktop.org/menu-spec/latest/apa.html
+#             if unset, function tries to guess from package's category
+# entry:      Key=Value entry to append to the desktop file;
+#             with --eapi9: multiple allowed; old style: a printf string
+# ---         Additional parameters available using --eapi9:
+# args:       Arguments (binary params and desktop spec field codes) to add
+#             to Exec value, separated by a space if multiple
+# desktopid:  <desktopid>.desktop will be created. Must be same as "app id"
+#             defined in code (including reverse qualified domain if set);
+#             defaults to <command>
+# comment:    Comment (menu entry tooltip), defaults to DESCRIPTION
+# force:      Force-write resulting desktop file (overwrite existing)
+# @CODE
+#
+# Example usage:
+# @CODE
+# Deprecated, in order:
+#   <command> [name] [icon] [categories] [entries...]
+# New style:
+#   --eapi9 <command> [-a args] [-d desktopid] [-C comment] [-i icon]
+#   --eapi9 <command> [-n name] [-e entry...] [-c categories]
 # @CODE
 make_desktop_entry() {
-	[[ -z $1 ]] && die "make_desktop_entry: You must specify the executable"
+	local eapi9
+	if [[ -n ${1} ]]; then
+		case ${EAPI} in
+			7|8)
+				if [[ ${1} == --eapi9 ]]; then
+					eapi9=1
+					shift
+				fi
+				;;
+			*)
+				if [[ ${1} == --eapi9 ]]; then
+					ewarn "make_desktop_entry: --eapi9 arg is obsolete in EAPI-${EAPI} and may be cleaned up now."
+					shift
+				fi
+				eapi9=1
+				;;
+		esac
+	fi
+	[[ -z ${1} ]] && die "make_desktop_entry: You must specify at least a command"
 
-	local exec=${1}
-	local name=${2:-${PN}}
-	local icon=${3:-${PN}}
-	local type=${4}
-	local fields=${5}
+	if [[ ${eapi9} ]]; then
+		local args cats cmd comment desktopid entries force icon name
+		while [[ $# -gt 0 ]] ; do
+			case "${1}" in
+			-a|--args)
+				args="${2}";         shift 2 ;;
+			-c|--categories)
+				cats="${2}";         shift 2 ;;
+			-C|--comment)
+				comment="${2}";      shift 2 ;;
+			-d|--desktopid)
+				desktopid="${2}";    shift 2 ;;
+			-e|--entry)
+				entries+=( "${2}" ); shift 2 ;;
+			-f|--force)
+				force=1;             shift 1 ;;
+			-i|--icon)
+				icon="${2}";         shift 2 ;;
+			-n|--name)
+				name="${2}";         shift 2 ;;
+			*)
+				if [[ -z ${cmd} ]] ; then
+					cmd="${1}"
+				else
+					die "make_desktop_entry: Can only take one command! First got: ${cmd}; then got: ${1}"
+				fi
+				shift ;;
+			esac
+		done
+		[[ -z ${cmd} ]] && die "make_desktop_entry: You must specify at least a command"
+		[[ -z ${name} ]] && name=${PN}
+		[[ -z ${icon} ]] && icon=${PN}
+	else
+		local cmd=${1}
+		local name=${2:-${PN}}
+		local icon=${3:-${PN}}
+		local cats=${4}
+		local entries=${5}
+	fi
 
-	if [[ -z ${type} ]] ; then
+	[[ -z ${comment} ]] && comment="${DESCRIPTION}"
+
+	if [[ -z ${cats} ]] ; then
 		local catmaj=${CATEGORY%%-*}
 		local catmin=${CATEGORY##*-}
 		case ${catmaj} in
 			app)
 				case ${catmin} in
-					accessibility) type="Utility;Accessibility";;
-					admin)         type=System;;
-					antivirus)     type=System;;
-					arch)          type="Utility;Archiving";;
-					backup)        type="Utility;Archiving";;
-					cdr)           type="AudioVideo;DiscBurning";;
-					dicts)         type="Office;Dictionary";;
-					doc)           type=Documentation;;
-					editors)       type="Utility;TextEditor";;
-					emacs)         type="Development;TextEditor";;
-					emulation)     type="System;Emulator";;
-					laptop)        type="Settings;HardwareSettings";;
-					office)        type=Office;;
-					pda)           type="Office;PDA";;
-					vim)           type="Development;TextEditor";;
-					xemacs)        type="Development;TextEditor";;
+					accessibility) cats="Utility;Accessibility";;
+					admin)         cats=System;;
+					antivirus)     cats=System;;
+					arch)          cats="Utility;Archiving";;
+					backup)        cats="Utility;Archiving";;
+					cdr)           cats="AudioVideo;DiscBurning";;
+					dicts)         cats="Office;Dictionary";;
+					doc)           cats=Documentation;;
+					editors)       cats="Utility;TextEditor";;
+					emacs)         cats="Development;TextEditor";;
+					emulation)     cats="System;Emulator";;
+					laptop)        cats="Settings;HardwareSettings";;
+					office)        cats=Office;;
+					pda)           cats="Office;PDA";;
+					vim)           cats="Development;TextEditor";;
+					xemacs)        cats="Development;TextEditor";;
 				esac
 				;;
 
 			dev)
-				type="Development"
+				cats="Development"
 				;;
 
 			games)
 				case ${catmin} in
-					action|fps) type=ActionGame;;
-					arcade)     type=ArcadeGame;;
-					board)      type=BoardGame;;
-					emulation)  type=Emulator;;
-					kids)       type=KidsGame;;
-					puzzle)     type=LogicGame;;
-					roguelike)  type=RolePlaying;;
-					rpg)        type=RolePlaying;;
-					simulation) type=Simulation;;
-					sports)     type=SportsGame;;
-					strategy)   type=StrategyGame;;
+					action|fps) cats=ActionGame;;
+					arcade)     cats=ArcadeGame;;
+					board)      cats=BoardGame;;
+					emulation)  cats=Emulator;;
+					kids)       cats=KidsGame;;
+					puzzle)     cats=LogicGame;;
+					roguelike)  cats=RolePlaying;;
+					rpg)        cats=RolePlaying;;
+					simulation) cats=Simulation;;
+					sports)     cats=SportsGame;;
+					strategy)   cats=StrategyGame;;
 				esac
-				type="Game;${type}"
+				cats="Game;${cats}"
 				;;
 
 			gnome)
-				type="Gnome;GTK"
+				cats="Gnome;GTK"
 				;;
 
 			kde)
-				type="KDE;Qt"
+				cats="KDE;Qt"
 				;;
 
 			mail)
-				type="Network;Email"
+				cats="Network;Email"
 				;;
 
 			media)
 				case ${catmin} in
 					gfx)
-						type=Graphics
+						cats=Graphics
 						;;
 					*)
 						case ${catmin} in
-							radio) type=Tuner;;
-							sound) type=Audio;;
-							tv)    type=TV;;
-							video) type=Video;;
+							radio) cats=Tuner;;
+							sound) cats=Audio;;
+							tv)    cats=TV;;
+							video) cats=Video;;
 						esac
-						type="AudioVideo;${type}"
+						cats="AudioVideo;${cats}"
 						;;
 				esac
 				;;
 
 			net)
 				case ${catmin} in
-					dialup) type=Dialup;;
-					ftp)    type=FileTransfer;;
-					im)     type=InstantMessaging;;
-					irc)    type=IRCClient;;
-					mail)   type=Email;;
-					news)   type=News;;
-					nntp)   type=News;;
-					p2p)    type=FileTransfer;;
-					voip)   type=Telephony;;
+					dialup) cats=Dialup;;
+					ftp)    cats=FileTransfer;;
+					im)     cats=InstantMessaging;;
+					irc)    cats=IRCClient;;
+					mail)   cats=Email;;
+					news)   cats=News;;
+					nntp)   cats=News;;
+					p2p)    cats=FileTransfer;;
+					voip)   cats=Telephony;;
 				esac
-				type="Network;${type}"
+				cats="Network;${cats}"
 				;;
 
 			sci)
 				case ${catmin} in
-					astro*)  type=Astronomy;;
-					bio*)    type=Biology;;
-					calc*)   type=Calculator;;
-					chem*)   type=Chemistry;;
-					elec*)   type=Electronics;;
-					geo*)    type=Geology;;
-					math*)   type=Math;;
-					physics) type=Physics;;
-					visual*) type=DataVisualization;;
+					astro*)  cats=Astronomy;;
+					bio*)    cats=Biology;;
+					calc*)   cats=Calculator;;
+					chem*)   cats=Chemistry;;
+					elec*)   cats=Electronics;;
+					geo*)    cats=Geology;;
+					math*)   cats=Math;;
+					physics) cats=Physics;;
+					visual*) cats=DataVisualization;;
 				esac
-				type="Education;Science;${type}"
+				cats="Education;Science;${cats}"
 				;;
 
 			sys)
-				type="System"
+				cats="System"
 				;;
 
 			www)
 				case ${catmin} in
-					client) type=WebBrowser;;
+					client) cats=WebBrowser;;
 				esac
-				type="Network;${type}"
+				cats="Network;${cats}"
 				;;
 
 			*)
-				type=
+				cats=
 				;;
 		esac
 	fi
 
-	local desktop_exec="${exec%%[[:space:]]*}"
-	desktop_exec="${desktop_exec##*/}"
-	local desktop_suffix="-${PN}"
-	[[ ${SLOT%/*} != 0 ]] && desktop_suffix+="-${SLOT%/*}"
-	# Replace foo-foo.desktop by foo.desktop
-	[[ ${desktop_suffix#-} == "${desktop_exec}" ]] && desktop_suffix=""
+	if [[ ${eapi9} ]]; then
+		if [[ -z ${desktopid} ]]; then
+			if [[ ${cmd} =~ .+[[:space:]].+ ]]; then
+				die "make_desktop_entry: --desktopid must be provided when <command> contains a space"
+			fi
+			desktopid="${cmd##*/}"
+		fi
+		if [[ ! ${desktopid} =~ ^[A-Za-z0-9._-]+$ ]]; then
+			die "make_desktop_entry: <desktopid> must only consist of ASCII letters, digits, dash, underscore and dots"
+		fi
+		if [[ ${_DESKTOP_IDS[*]} =~ (^|[[:space:]])"${desktopid}"($|[[:space:]]) ]]; then
+			die "make_desktop_entry: desktopid \"${desktopid}\" already used in a previous call, choose a different one"
+		else
+			_DESKTOP_IDS+=( "${desktopid}" )
+		fi
+		local desktop="${T}/${desktopid}.desktop"
+		if [[ ! ${force} && -e ${ED}/usr/share/applications/${desktopid}.desktop ]]; then
+			die "make_desktop_entry: desktopid \"${desktopid}\" already exists, must be unique"
+		fi
+	else
+		local desktop_exec="${cmd%%[[:space:]]*}"
+		desktop_exec="${desktop_exec##*/}"
+		local desktop_suffix="-${PN}"
+		[[ ${SLOT%/*} != 0 ]] && desktop_suffix+="-${SLOT%/*}"
+		# Replace foo-foo.desktop by foo.desktop
+		[[ ${desktop_suffix#-} == "${desktop_exec}" ]] && desktop_suffix=""
 
-	# Prevent collisions if a file with the same name already exists #771708
-	local desktop="${desktop_exec}${desktop_suffix}" count=0
-	while [[ -e ${ED}/usr/share/applications/${desktop}.desktop ]]; do
-		desktop="${desktop_exec}-$((++count))${desktop_suffix}"
-	done
-	desktop="${T}/${desktop}.desktop"
+		# Prevent collisions if a file with the same name already exists #771708
+		local desktop="${desktop_exec}${desktop_suffix}" count=0
+		while [[ -e ${ED}/usr/share/applications/${desktop}.desktop ]]; do
+			desktop="${desktop_exec}-$((++count))${desktop_suffix}"
+		done
+		desktop="${T}/${desktop}.desktop"
+	fi
 
 	# Don't append another ";" when a valid category value is provided.
-	type=${type%;}${type:+;}
+	cats=${cats%;}${cats:+;}
 
 	if [[ -n ${icon} && ${icon} != /* ]] && [[ ${icon} == *.xpm || ${icon} == *.png || ${icon} == *.svg ]]; then
 		ewarn "As described in the Icon Theme Specification, icon file extensions are not"
@@ -186,24 +290,46 @@ make_desktop_entry() {
 		icon=${icon%.*}
 	fi
 
-	cat <<-EOF > "${desktop}" || die
-	[Desktop Entry]
-	Name=${name}
-	Type=Application
-	Comment=${DESCRIPTION}
-	Exec=${exec}
-	TryExec=${exec%% *}
-	Icon=${icon}
-	Categories=${type}
-	EOF
+	cat > "${desktop}" <<- _EOF_ || die
+		[Desktop Entry]
+		Type=Application
+		Name=${name}
+		Comment=${comment}
+		Icon=${icon}
+		Categories=${cats}
+	_EOF_
 
-	if [[ ${fields:-=} != *=* ]] ; then
-		# 5th arg used to be value to Path=
-		ewarn "make_desktop_entry: update your 5th arg to read Path=${fields}"
-		fields="Path=${fields}"
+	if [[ ${eapi9} ]]; then
+		local cmd_args="${cmd} ${args}"
+		cat >> "${desktop}" <<- _EOF_ || die
+			Exec=${cmd_args%[[:space:]]}
+			TryExec=${cmd}
+		_EOF_
+	else
+		cat >> "${desktop}" <<- _EOF_ || die
+			Exec=${cmd}
+			TryExec=${cmd%% *}
+		_EOF_
 	fi
-	if [[ -n ${fields} ]]; then
-		printf '%b\n' "${fields}" >> "${desktop}" || die
+
+	if [[ ${eapi9} && -n ${entries} ]]; then
+		local entry
+		for entry in ${entries[@]}; do
+			if [[ ${entry} =~ ^[A-Za-z0-9-]+=.* ]]; then
+				printf "%s\n" "${entry}" >> "${desktop}" || die
+			else
+				die "make_desktop_entry: <entry> \"${entry}\" rejected; must be passed a Key=Value pair"
+			fi
+		done
+	else
+		if [[ ${entries:-=} != *=* ]]; then
+			# 5th arg used to be value to Path=
+			ewarn "make_desktop_entry: update your 5th arg to read Path=${entries}"
+			entries="Path=${entries}"
+		fi
+		if [[ -n ${entries} ]]; then
+			printf '%b\n' "${entries}" >> "${desktop}" || die
+		fi
 	fi
 
 	(

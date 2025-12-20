@@ -15,7 +15,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~arm ~arm64 ~mips ppc ppc64 ~sparc x86"
 IUSE="cpu_flags_x86_avx2 lzo lzma cpu_flags_x86_sse4_2 static test xattr"
 RESTRICT="!test? ( test )"
 

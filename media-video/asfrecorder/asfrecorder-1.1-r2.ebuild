@@ -14,7 +14,7 @@ S="${WORKDIR}/${MY_PN}"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ppc x86 ~x86-linux ~ppc-macos"
+KEYWORDS="~amd64 ppc x86"
 
 BDEPEND="app-arch/unzip"
 

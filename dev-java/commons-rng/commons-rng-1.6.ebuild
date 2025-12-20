@@ -20,11 +20,14 @@ KEYWORDS="amd64 arm64 ppc64"
 
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-aherbert )"
 
+# [-vintage] because, if junit:5 compiled with 'USE=vintage':
+# Error: Module junit not found, required by org.junit.vintage.engine
 DEPEND="
 	>=virtual/jdk-11:*
 	test? (
 		>=dev-java/commons-math-3.6.1-r2:3
 		>=dev-java/jmh-core-1.37:0
+		dev-java/junit:5[-vintage]
 		dev-java/opentest4j:0
 	)
 "
@@ -38,6 +41,8 @@ JAVADOC_SRC_DIRS=(
 	commons-rng-core/src/main/java
 	commons-rng-simple/src/main/java
 )
+JAVA_TEST_GENTOO_CLASSPATH="commons-math-3 jmh-core junit-5 opentest4j"
+JAVA_TEST_SRC_DIR=( commons-rng-{client-api,core,simple}/src/test/java )
 VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/aherbert.asc"
 
 src_prepare() {
@@ -80,19 +85,6 @@ src_compile() {
 	rm -r target || die
 
 	use doc && ejavadoc
-}
-
-src_test() {
-	JAVA_TEST_GENTOO_CLASSPATH="commons-math-3 jmh-core junit-5 opentest4j"
-
-	JAVA_TEST_SRC_DIR="commons-rng-client-api/src/test/java"
-	junit5_src_test
-
-	JAVA_TEST_SRC_DIR="commons-rng-core/src/test/java"
-	junit5_src_test
-
-	JAVA_TEST_SRC_DIR="commons-rng-simple/src/test/java"
-	junit5_src_test
 }
 
 src_install() {

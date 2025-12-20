@@ -16,7 +16,7 @@ SRC_URI="mirror://gnu/${PN%-*}/${MY_P}.tar.bz2"
 # clause "or later" so we use LGPL-2.1 without +
 LICENSE="GPL-3+ GPL-2+ LGPL-2.1"
 SLOT="0/2" # soname version
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~x64-macos"
 IUSE="+cxx static-libs test"
 
 RDEPEND="app-eselect/eselect-cdparanoia

@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/file-roller"
 
 LICENSE="GPL-2+ CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv x86"
 IUSE="gtk-doc +introspection nautilus"
 REQUIRED_USE="gtk-doc? ( introspection )"
 

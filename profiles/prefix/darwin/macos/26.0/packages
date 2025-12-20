@@ -1,0 +1,6 @@
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# doesn't compile any more on this version, isn't necessary any more
+# either, so drop it
+-*sys-apps/darwin-miscutils

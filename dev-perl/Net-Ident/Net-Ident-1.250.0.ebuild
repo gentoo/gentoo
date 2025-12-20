@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Lookup the username on the remote end of a TCP/IP connection"
 
 SLOT="0"
-KEYWORDS="amd64 ~hppa ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~hppa ppc ppc64 ~sparc x86"
 
 RDEPEND="
 	virtual/perl-Carp

@@ -1,5 +1,11 @@
 --- a/CMakeLists.txt	2022-05-09 12:38:59.927116924 +0200
 +++ b/CMakeLists.txt	2022-05-09 12:39:39.141532680 +0200
+@@ -1,4 +1,4 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 3.5 FATAL_ERROR)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.10 FATAL_ERROR)
+ 
+ # ---[ Project
+ PROJECT(pthreadpool C)
 @@ -37,22 +37,10 @@
  
  # ---[ Download deps

@@ -15,4 +15,5 @@
 	<use>
 		<flag name="orblite">Install the ORBlite scanner plugin</flag>
 	</use>
+	<stabilize-allarches/>
 </pkgmetadata>

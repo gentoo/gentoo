@@ -1,0 +1,41 @@
+unbundle gtest
+set gnu++17 for >=gtest-1.17
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -27,7 +27,7 @@ find_package(Threads)
+ 
+ option(BUILD_SHARED_LIBS "Build shared libraries" ON)
+ 
+-set(CMAKE_CXX_STANDARD 14)
++set(CMAKE_CXX_STANDARD 17)
+ 
+ if(BUILD_SHARED_LIBS)
+   set(CMAKE_C_VISIBILITY_PRESET hidden)
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -1,13 +1,3 @@
+-include(GoogleTest)
+-
+-set(BUILD_GMOCK OFF CACHE BOOL "" FORCE)
+-set(INSTALL_GTEST OFF CACHE BOOL "" FORCE)
+-mark_as_advanced(BUILD_GMOCK INSTALL_GTEST GTEST_HAS_ABSL)
+-
+-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+-
+-add_subdirectory("${PROJECT_SOURCE_DIR}/src/3rdparty/googletest" "test/3rdparty/googletest")
+-
+ add_executable(all_tests 
+   $<TARGET_OBJECTS:chromaprint_objs>
+   main.cpp
+@@ -35,8 +25,10 @@ add_executable(all_tests
+   ../src/utils/rolling_integral_image_test.cpp
+ )
+ 
++find_package(GTest REQUIRED)
++include(GoogleTest)
+ target_include_directories(all_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+-target_link_libraries(all_tests PRIVATE chromaprint gtest gtest_main)
++target_link_libraries(all_tests PRIVATE chromaprint GTest::gtest_main)
+ 
+ if(BUILD_TOOLS)
+   target_sources(all_tests PRIVATE ../src/audio/ffmpeg_audio_reader_test.cpp)

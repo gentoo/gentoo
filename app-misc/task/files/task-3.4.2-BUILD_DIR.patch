@@ -1,0 +1,40 @@
+Fix paths based on the assumption that the CMake build tree is in
+${CMAKE_SOURCE_DIR}/build.
+
+See-also: https://github.com/GothenburgBitFactory/taskwarrior/pull/3998
+From: Lucio Sauer <watermanpaint@posteo.net>
+--- a/test/bash_completion.test.py
++++ b/test/bash_completion.test.py
+@@ -34,9 +34,9 @@ from contextlib import contextmanager
+ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+ 
+ from basetest import Task, TestCase
+-from basetest.utils import BIN_PREFIX
++from basetest.utils import SOURCE_DIR
+ 
+-TASKSH = os.path.abspath(os.path.join(BIN_PREFIX, "..", "..", "scripts/bash/task.sh"))
++TASKSH = os.path.abspath(os.path.join(SOURCE_DIR, "scripts/bash/task.sh"))
+ 
+ 
+ @contextmanager
+--- a/test/tw-1379.test.py
++++ b/test/tw-1379.test.py
+@@ -32,8 +32,7 @@ import unittest
+ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+ 
+ from basetest import Task, TestCase
+-
+-REPO_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
++from basetest.utils import SOURCE_DIR
+ 
+ 
+ class TestBug1379(TestCase):
+@@ -41,7 +40,7 @@ class TestBug1379(TestCase):
+         self.t = Task()
+         # Themes are a special case that cannot be set via "task config"
+         with open(self.t.taskrc, "a") as fh:
+-            fh.write("include " + REPO_DIR + "/../doc/rc/no-color.theme\n")
++            fh.write("include " + SOURCE_DIR + "/doc/rc/no-color.theme\n")
+ 
+         self.t.config("color.alternate", "")
+         self.t.config("_forcecolor", "1")

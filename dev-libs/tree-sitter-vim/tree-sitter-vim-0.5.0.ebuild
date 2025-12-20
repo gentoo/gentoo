@@ -14,3 +14,7 @@ SRC_URI="https://github.com/tree-sitter-grammars/tree-sitter-vim/archive/v${PV}.
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv x86"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-0.5.0-fix-config-add-file-types-to-tree-sitter.patch"
+)

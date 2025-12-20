@@ -11,7 +11,7 @@ SRC_URI="http://www.netlib.org/f2c/${PN}.zip -> ${P}.zip"
 
 LICENSE="HPND"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="static-libs"
 
 BDEPEND="app-arch/unzip"

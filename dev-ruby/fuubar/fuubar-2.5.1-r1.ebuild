@@ -17,7 +17,7 @@ SRC_URI="https://github.com/thekompanee/fuubar/archive/releases/v${PV}.tar.gz ->
 
 LICENSE="MIT"
 SLOT="2"
-KEYWORDS="amd64 ~hppa ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 ~hppa ~ppc ~ppc64 ~riscv ~x86 ~x64-macos ~x64-solaris"
 RUBY_S="${PN}-releases-v${PV}"
 
 ruby_add_rdepend "dev-ruby/rspec:3 >=dev-ruby/ruby-progressbar-1.4:0"

@@ -1,0 +1,129 @@
+From b266466e0a05b30615ec43d72782c345470455b9 Mon Sep 17 00:00:00 2001
+From: Pierre-Marie de Rodat <derodat@adacore.com>
+Date: Thu, 17 Jul 2025 07:38:41 +0000
+Subject: [PATCH] Opt_Parse: refactor to avoid a new accessibility check
+ failure
+
+Use cursor types rather than reference types for return types when the
+referenced vector element come from a function formal. This is necessary
+to avoid the failure of a new accessibility check that was just
+implemented in GNAT. It will also be necessary once reference types are
+made limited (as per AI22-0082).
+---
+ core/src/gnatcoll-opt_parse.adb | 39 ++++++++++++++++-----------------
+ 1 file changed, 19 insertions(+), 20 deletions(-)
+
+diff --git a/core/src/gnatcoll-opt_parse.adb b/core/src/gnatcoll-opt_parse.adb
+index 5e52684c..09ae755b 100644
+--- a/core/src/gnatcoll-opt_parse.adb
++++ b/core/src/gnatcoll-opt_parse.adb
+@@ -77,11 +77,10 @@ package body GNATCOLL.Opt_Parse is
+    --  to Col, and set the next start column to `Col`, so that text on
+    --  subsequent lines starts at `Col`.
+ 
+-   subtype XString_Ref is XString_Vectors.Reference_Type;
+-   --  Shortcut for a reference to a XString
++   subtype XString_Cur is XString_Vectors.Cursor;
++   --  Shortcut for a XString vector cursor
+ 
+-   function Append_Line
+-     (Self : aliased in out Text_Wrapper) return XString_Ref;
++   function Append_Line (Self : in out Text_Wrapper) return XString_Cur;
+    --  Append a new line to Self
+ 
+    procedure Append_Line
+@@ -92,11 +91,10 @@ package body GNATCOLL.Opt_Parse is
+    --  `Col_After` is not `No_Col`, then set the next start column to
+    --  `Col_After`.
+ 
+-   function Current_Line
+-     (Self : aliased in out Text_Wrapper) return XString_Ref
++   function Current_Line (Self : in out Text_Wrapper) return XString_Cur
+    is
+      (if Self.Lines.Is_Empty
+-      then Self.Append_Line else Self.Lines.Reference (Self.Lines.Last_Index));
++      then Self.Append_Line else Self.Lines.Last);
+    --  Return a reference to the current line.
+ 
+    function Render (Self : Text_Wrapper) return String;
+@@ -191,7 +189,7 @@ package body GNATCOLL.Opt_Parse is
+       end if;
+ 
+       declare
+-         Dummy : XString_Ref := Self.Append_Line;
++         Dummy : XString_Cur := Self.Append_Line;
+       begin
+          null;
+       end;
+@@ -204,14 +202,15 @@ package body GNATCOLL.Opt_Parse is
+    procedure Set_Column
+      (Self : in out Text_Wrapper; Col : Col_Type)
+    is
++      Current_Line_Length : constant Natural :=
++        Self.Lines.Reference (Self.Current_Line).Length;
+    begin
+       Self.Set_Next_Start_Column (Col);
+ 
+-      if Self.Current_Line.Length > Col then
++      if Current_Line_Length > Col then
+          Self.Append_Line;
+       else
+-         Self.Append_Text
+-           ((1 .. Col - Self.Current_Line.Length => ' '), False);
++         Self.Append_Text ((1 .. Col - Current_Line_Length => ' '), False);
+       end if;
+    end Set_Column;
+ 
+@@ -233,19 +232,16 @@ package body GNATCOLL.Opt_Parse is
+    -- Append_Line --
+    -----------------
+ 
+-   function Append_Line
+-     (Self : aliased in out Text_Wrapper) return XString_Vectors.Reference_Type
+-   is
++   function Append_Line (Self : in out Text_Wrapper) return XString_Cur is
+       Ret : XString;
+    begin
+       Self.Lines.Append (Ret);
+ 
+       declare
+-         L : constant XString_Ref := Self.Current_Line;
++         L : constant XString_Cur := Self.Current_Line;
+       begin
+          if Self.Start_Col > 0 then
+-
+-            L.Append ((1 .. Self.Start_Col => ' '));
++            Self.Lines.Reference (L).Append ((1 .. Self.Start_Col => ' '));
+          end if;
+ 
+          return L;
+@@ -276,7 +272,8 @@ package body GNATCOLL.Opt_Parse is
+          end;
+       else
+          declare
+-            Cur_Line : constant XString_Ref := Self.Current_Line;
++            Cur_Line : XString renames
++              Self.Lines.Reference (Self.Current_Line);
+          begin
+             if Cur_Line.Length + Text'Length <= Self.Wrap_Col then
+                Cur_Line.Append (Text);
+@@ -285,7 +282,8 @@ package body GNATCOLL.Opt_Parse is
+          end;
+ 
+          declare
+-            Cur_Line : constant XString_Ref := Append_Line (Self);
++            Cur_Line : XString renames
++              Self.Lines.Reference (Append_Line (Self));
+          begin
+             Cur_Line.Append (Text);
+          end;
+@@ -301,7 +299,8 @@ package body GNATCOLL.Opt_Parse is
+      (Self : in out Text_Wrapper; Col : Col_Type := 0) is
+    begin
+       if Col = Current_Col then
+-         Self.Start_Col := Col_Type (Self.Current_Line.Length);
++         Self.Start_Col :=
++           Col_Type (Self.Lines.Reference (Self.Current_Line).Length);
+       else
+          Self.Start_Col := Col;
+       end if;

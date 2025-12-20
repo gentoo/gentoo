@@ -9,7 +9,7 @@ SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ppc ppc64 ~sparc x86"
 IUSE=""
 
 RDEPEND="app-misc/pax-utils

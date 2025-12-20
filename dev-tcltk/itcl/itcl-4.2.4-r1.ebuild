@@ -13,7 +13,7 @@ SRC_URI="https://github.com/tcltk/${PN}/archive/refs/tags/${MYP}.tar.gz"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~alpha ~amd64 ~arm64 ~ppc ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm64 ~ppc ~riscv ~sparc ~x86"
 
 RDEPEND=">=dev-lang/tcl-8.6:0="
 DEPEND="${RDEPEND}"

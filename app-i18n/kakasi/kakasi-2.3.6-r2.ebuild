@@ -11,7 +11,7 @@ SRC_URI="http://kakasi.namazu.org/stable/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ppc ppc64 ~sparc x86"
 IUSE="l10n_ja"
 
 BDEPEND="sys-devel/gettext"

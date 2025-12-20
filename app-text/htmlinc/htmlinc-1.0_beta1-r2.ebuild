@@ -11,7 +11,7 @@ SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~sparc x86 ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 
 S="${WORKDIR}/${PN}"
 PATCHES=(

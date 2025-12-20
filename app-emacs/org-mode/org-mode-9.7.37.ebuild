@@ -15,11 +15,8 @@ if [[ "${PV}" == 9999 ]] ; then
 	EGIT_CHECKOUT_DIR="${WORKDIR}/org"
 	S="${WORKDIR}/org"
 else
-	MY_P="${PN}-release_${PV}"
-
-	SRC_URI="https://git.savannah.gnu.org/cgit/emacs/${PN}.git/snapshot/${MY_P}.tar.gz"
-	S="${WORKDIR}/${MY_P}"
-
+	# git archive --prefix=${P}/ release_${PV} | xz > ${P}.tar.xz
+	SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~riscv ~x86"
 fi
 

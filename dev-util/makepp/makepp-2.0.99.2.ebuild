@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/2.1/${MY_P}.txz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86 ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
 IUSE=""
 
 DEPEND="dev-lang/perl:="

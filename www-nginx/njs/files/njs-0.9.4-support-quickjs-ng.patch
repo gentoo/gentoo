@@ -1,0 +1,88 @@
+Original proposal: https://github.com/nginx/njs/pull/988
+Enhanced version merged upstream in: https://github.com/nginx/njs/pull/989
+diff --git a/src/quickjs_compat.h b/src/quickjs_compat.h
+index 3b7a618c7..7753086d3 100644
+--- a/src/quickjs_compat.h
++++ b/src/quickjs_compat.h
+@@ -22,3 +22,7 @@
+ #ifndef JS_BOOL
+     #define JS_BOOL bool
+ #endif
++
++#ifdef QUICKJS_NG
++    #define JS_IsError(cx, val) JS_IsError(val)
++#endif
+
+diff --git a/auto/quickjs b/auto/quickjs
+index 8d6b544f9..c574c83f3 100644
+--- a/auto/quickjs
++++ b/auto/quickjs
+@@ -7,6 +7,10 @@ NJS_QUICKJS_LIB=
+ NJS_HAVE_QUICKJS=NO
+ NJS_QUICKJS_DEFAULT_INCS="src $NJS_BUILD_DIR"
+ 
++# Alternative pkg-config binary can be supplied by setting the PKG_CONFIG
++# environment variable.
++: "${PKG_CONFIG:=pkg-config}"
++
+ if [ $NJS_TRY_QUICKJS = YES ]; then
+     njs_found=no
+ 
+@@ -57,6 +61,20 @@ if [ $NJS_TRY_QUICKJS = YES ]; then
+         . auto/feature
+     fi
+ 
++    if [ $njs_found = no ]; then
++        njs_feature="QuickJS-NG library via pkg-config"
++
++        flags="$("${PKG_CONFIG}" --cflags-only-I quickjs-ng)"
++        # Trim the -I prefix from includes.
++        pkg_config_includes="$(printf "%s\n" "$flags" | sed 's|-I||g')"
++        pkg_config_libs="$("${PKG_CONFIG}" --libs quickjs-ng)"
++
++        njs_feature_incs="$NJS_QUICKJS_DEFAULT_INCS ${pkg_config_includes}"
++        njs_feature_libs="-lm -ldl -lpthread ${pkg_config_libs}"
++
++        . auto/feature
++    fi
++
+ 
+     if [ $njs_found = yes ]; then
+ 
+diff --git a/nginx/config b/nginx/config
+index 3386dac08..0a74cd969 100644
+--- a/nginx/config
++++ b/nginx/config
+@@ -26,6 +26,10 @@ NJS_QUICKJS_INC=
+ NJS_QUICKJS_DEFAULT_INCS="$ngx_addon_dir/../src $ngx_addon_dir/../build"
+ NJS_HAVE_QUICKJS=
+ 
++# Alternative pkg-config binary can be supplied by setting the PKG_CONFIG
++# environment variable.
++: "${PKG_CONFIG:=pkg-config}"
++
+ if [ $NJS_QUICKJS != NO ]; then
+ 
+     ngx_feature="QuickJS library -lquickjs.lto"
+@@ -71,6 +75,21 @@ if [ $NJS_QUICKJS != NO ]; then
+         . auto/feature
+     fi
+ 
++    if [ $ngx_found = no ]; then
++        ngx_feature="QuickJS-NG library via pkg-config"
++
++        flags="$("${PKG_CONFIG}" --cflags-only-I quickjs-ng)"
++        # Trim the -I prefix from includes.
++        pkg_config_includes="$(printf "%s\n" "$flags" | sed 's|-I||g')"
++        pkg_config_libs="$("${PKG_CONFIG}" --libs quickjs-ng)"
++
++        ngx_feature_path="$NJS_QUICKJS_DEFAULT_INCS ${pkg_config_includes}"
++        ngx_feature_libs="-lm -ldl -lpthread ${pkg_config_libs}"
++
++        . auto/feature
++    fi
++
++
+     if [ $ngx_found = yes ]; then
+ 
+         ngx_feature="QuickJS JS_GetClassID()"

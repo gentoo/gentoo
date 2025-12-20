@@ -13,7 +13,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/pwmt/zathura.git"
 else
 	SRC_URI="https://github.com/pwmt/zathura/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 fi
 
 LICENSE="ZLIB"
@@ -73,5 +73,20 @@ src_install() {
 	if use seccomp || use landlock; then
 		mv "${ED}"/usr/bin/zathura{,-full} || die
 		dosym zathura-sandbox /usr/bin/zathura
+	fi
+}
+
+pkg_postinst() {
+	if use seccomp || use landlock; then
+		elog "Zathura has been installed as a symlink to zathura-sandbox due to USE"
+		elog "seccomp or USE landlock.  Some features such as printing or hyperlinks"
+		elog "may be unavailable when running with the default executable (zathura)."
+		elog "If you require these features, you can temporarily switch to using"
+		elog "zathura-full or disable these use flags."
+		if ! use elibc_glibc; then
+			ewarn ""
+			ewarn "Upstream zathura does not test sandboxing rules on non-glibc"
+			ewarn "environments.  Your mileage may vary using the sandboxed variant."
+		fi
 	fi
 }

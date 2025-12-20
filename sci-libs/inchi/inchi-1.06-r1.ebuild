@@ -15,7 +15,7 @@ S="${WORKDIR}/INCHI-1-SRC"
 
 LICENSE="IUPAC-InChi"
 SLOT="0"
-KEYWORDS="amd64 arm ~ppc ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm ~ppc ppc64 ~x86"
 IUSE="doc"
 
 BDEPEND="app-arch/unzip"

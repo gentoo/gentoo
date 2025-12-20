@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}${PV}/unix"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~hppa ppc ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~arm64 ~hppa ppc ~sparc x86"
 IUSE="alsa examples python vorbis"
 
 RESTRICT="!test? ( test )"

@@ -17,7 +17,7 @@ S="${WORKDIR}"/${MY_PV}
 # under GNU LGPL." -ffcall author
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~mips ppc ppc64 ~riscv ~sparc x86"
 
 PATCHES=(
 	# bug 842915, drop on next version bump

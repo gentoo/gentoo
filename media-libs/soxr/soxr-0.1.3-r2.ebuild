@@ -23,6 +23,7 @@ RESTRICT="!test? ( test )"
 PATCHES=(
 	"${FILESDIR}/${PN}-0.1.1-nodoc.patch"
 	"${FILESDIR}/${P}-fix-pkgconfig.patch"
+	"${FILESDIR}/${P}-cmake4.patch" # bug 951815
 )
 
 src_configure() {

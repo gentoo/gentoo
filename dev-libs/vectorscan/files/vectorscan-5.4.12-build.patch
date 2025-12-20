@@ -1,0 +1,27 @@
+https://github.com/VectorCamp/vectorscan/commit/f472bfee05c88e3e46c149df1028557f47388b0e
+
+From f472bfee05c88e3e46c149df1028557f47388b0e Mon Sep 17 00:00:00 2001
+From: wnwu <madtrapper@users.noreply.github.com>
+Date: Fri, 10 Oct 2025 14:49:45 -0700
+Subject: [PATCH] fix mingw compile error by resolving std::min type mismatch
+ (#346)
+
+Co-authored-by: Weining Wu <wnwu@fortinet.com>
+---
+ src/fdr/fdr_engine_description.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/fdr/fdr_engine_description.cpp b/src/fdr/fdr_engine_description.cpp
+index 6de09f92b..7efe5ceff 100644
+--- a/src/fdr/fdr_engine_description.cpp
++++ b/src/fdr/fdr_engine_description.cpp
+@@ -71,7 +71,7 @@ u32 findDesiredStride(size_t num_lits, size_t min_len, size_t min_len_count) {
+         } else if (num_lits < 5000) {
+             // for larger but not huge sizes, go to stride 2 only if we have at
+             // least minlen 3
+-            desiredStride = std::min(min_len - 1, 2UL);
++	     desiredStride = std::min(min_len - 1, static_cast<std::size_t>(2UL));
+         }
+     }
+ 
+

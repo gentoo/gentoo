@@ -11,7 +11,7 @@ SRC_URI="http://http.debian.net/debian/pool/main/f/${PN}/${PN}_${PV}.orig.tar.gz
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~hppa ppc ppc64 ~sparc x86"
 
 RDEPEND="
 	>=media-libs/openal-1.15.1

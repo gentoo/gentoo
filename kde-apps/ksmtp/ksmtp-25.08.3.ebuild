@@ -14,7 +14,7 @@ HOMEPAGE="https://api.kde.org/kdepim/ksmtp/html/index.html"
 
 LICENSE="LGPL-2.1+"
 SLOT="6/$(ver_cut 1-2)"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 IUSE=""
 
 RESTRICT="test" # bug 642410

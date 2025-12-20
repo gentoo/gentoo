@@ -1,0 +1,16 @@
+Description: Fix compilation with gcc15 / c23
+Author: Dan Horák <dan@danny.cz>
+Bug-Debian: http://bugs.debian.org/1097421
+
+--- a/mtx.h
++++ b/mtx.h
+@@ -222,7 +222,8 @@ typedef unsigned char Direction_T;
+ #define Input   0
+ #define Output  1
+ #else
+-typedef enum { false, true } boolean;
++#include <stdbool.h>
++typedef bool boolean;
+ 
+ typedef enum { Input, Output } Direction_T;
+ #endif

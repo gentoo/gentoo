@@ -1,0 +1,26 @@
+From fba5a4e01a4d4e1114bbea21bf3ac9c27f3f8af9 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 12 Dec 2025 22:42:31 +0100
+Subject: [PATCH] Add missing QJsonValue and QUuid headers
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ SQLiteStudio3/coreSQLiteStudio/common/utils.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/SQLiteStudio3/coreSQLiteStudio/common/utils.cpp b/SQLiteStudio3/coreSQLiteStudio/common/utils.cpp
+index f9b550901..dc6177456 100644
+--- a/SQLiteStudio3/coreSQLiteStudio/common/utils.cpp
++++ b/SQLiteStudio3/coreSQLiteStudio/common/utils.cpp
+@@ -4,6 +4,8 @@
+ #include "dbobjecttype.h"
+ #include "rsa/RSA.h"
+ #include <QJsonDocument>
++#include <QJsonValue>
++#include <QUuid>
+ #include <QLine>
+ #include <QString>
+ #include <QStringConverter>
+-- 
+2.52.0
+

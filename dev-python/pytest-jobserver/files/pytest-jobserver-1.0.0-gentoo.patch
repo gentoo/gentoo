@@ -1,0 +1,125 @@
+diff --git a/pytest_jobserver/configure.py b/pytest_jobserver/configure.py
+index aa3c998..364729d 100644
+--- a/pytest_jobserver/configure.py
++++ b/pytest_jobserver/configure.py
+@@ -21,9 +21,6 @@ def path_to_file_descriptors(jobserver_path: str) -> Optional[FileDescriptorsRW]
+     if os.path.exists(jobserver_path) is False:
+         raise pytest.UsageError("jobserver doesn't exist: {}".format(jobserver_path))
+ 
+-    if is_fifo(jobserver_path) is False:
+-        raise pytest.UsageError("jobserver is not a fifo: {}".format(jobserver_path))
+-
+     if is_rw_ok(jobserver_path) is False:
+         raise pytest.UsageError(
+             "jobserver is not read/writeable to current user: {}".format(jobserver_path)
+@@ -50,16 +47,19 @@ def jobserver_from_env_make(config: Config) -> Optional[FileDescriptorsRW]:
+ 
+     parser = argparse.ArgumentParser(prog="makeflags")
+     parser.add_argument("--jobserver-fds", default=None)
+-    parser.add_argument("--jobserver-auth", default=None)
++    parser.add_argument("--jobserver-auth", default="")
+     args, _ = parser.parse_known_args(shlex.split(makeflags))
+ 
++    if args.jobserver_auth.startswith("fifo:"):
++        return path_to_file_descriptors(args.jobserver_auth[5:])
++
+     fds = args.jobserver_fds or args.jobserver_auth
+     if fds is None:
+         return None
+ 
+     if config.pluginmanager.hasplugin("xdist"):
+         raise pytest.UsageError(
+-            "pytest-jobserver does not support using pytest-xdist with MAKEFLAGS"
++            "pytest-jobserver does not support using pytest-xdist with fd-based jobserver in MAKEFLAGS"
+         )
+ 
+     fd_read, fd_write = tuple(FileDescriptor(int(fd)) for fd in fds.split(","))
+diff --git a/pytest_jobserver/plugin.py b/pytest_jobserver/plugin.py
+index fc4f11c..c3b781e 100644
+--- a/pytest_jobserver/plugin.py
++++ b/pytest_jobserver/plugin.py
+@@ -23,16 +23,29 @@ class JobserverPlugin(object):
+         self._fd_read, self._fd_write = fds
+         self._thread_locals = threading.local()
+ 
++    @pytest.hookimpl(hookwrapper=True, tryfirst=True)
++    def pytest_collection(self, session: pytest.Session) -> Iterator[Any]:
++        if os.environ.get("PYTEST_XDIST_WORKER", "gw0") != "gw0":
++            token = os.read(self._fd_read, 1)
++            yield
++            os.write(self._fd_write, token)
++        else:
++            yield
++
+     @pytest.hookimpl(hookwrapper=True, tryfirst=True)
+     def pytest_runtest_protocol(self, item: Item) -> Iterator[Any]:
+-        token = os.read(self._fd_read, 1)
+-        self._thread_locals.token = ord(token)
+-        yield
+-        os.write(self._fd_write, token)
++        if os.environ.get("PYTEST_XDIST_WORKER", "gw0") != "gw0":
++            token = os.read(self._fd_read, 1)
++            self._thread_locals.token = ord(token)
++            yield
++            os.write(self._fd_write, token)
++        else:
++            self._thread_locals.token = None
++            yield
+ 
+     @pytest.fixture(scope="function", autouse=True)
+-    def jobserver_token(self, request: Any) -> int:
+-        int_token: int = self._thread_locals.token
++    def jobserver_token(self, request: Any) -> int | None:
++        int_token: int | None = self._thread_locals.token
+         return int_token
+ 
+     def pytest_report_header(self, config: Config) -> str:
+diff --git a/pytest_jobserver/test/test_plugin.py b/pytest_jobserver/test/test_plugin.py
+index 6f51376..45cce4d 100644
+--- a/pytest_jobserver/test/test_plugin.py
++++ b/pytest_jobserver/test/test_plugin.py
+@@ -68,6 +68,25 @@ def test_config_env_pytest(testdir: TestDir) -> None:
+     assert result.ret == 0
+ 
+ 
++def test_config_makeflags_pytest(testdir: TestDir) -> None:
++    testdir.makepyfile(
++        """
++        def test_pass(request):
++            pass
++    """
++    )
++    make_jobserver(testdir.tmpdir, "jobserver_fifo", 1)
++    testdir.monkeypatch.setenv("MAKEFLAGS", "--jobserver-auth=fifo:jobserver_fifo")
++
++    result = testdir.runpytest("-v")
++
++    result.stdout.fnmatch_lines(["*::test_pass PASSED*"])
++    result.stdout.fnmatch_lines(
++        ["jobserver: configured at file descriptors (read: *, write: *)"]
++    )
++    assert result.ret == 0
++
++
+ def test_jobserver_token_fixture(testdir: TestDir) -> None:
+     testdir.makepyfile(
+         f"""
+@@ -94,7 +113,9 @@ def test_xdist_makeflags_fails(testdir: TestDir) -> None:
+     result = testdir.runpytest("-v", "-n2")
+     assert result.ret == 4, "Expected pytest would fail to run with MAKEFLAGS and xdist"
+     result.stderr.fnmatch_lines(
+-        ["ERROR: pytest-jobserver does not support using pytest-xdist with MAKEFLAGS"]
++        [
++            "ERROR: pytest-jobserver does not support using pytest-xdist with fd-based jobserver in MAKEFLAGS"
++        ]
+     )
+ 
+ 
+@@ -166,6 +187,7 @@ def test_server_not_found(testdir: TestDir) -> None:
+ 
+ 
+ def test_server_not_fifo(testdir: TestDir) -> None:
++    return
+     testdir.makefile(".txt", jobserver="X")
+     testdir.makepyfile(
+         """

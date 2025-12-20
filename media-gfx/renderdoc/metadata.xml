@@ -2,11 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <!-- maintainer-needed -->
-  <use>
-    <flag name="qt5">
-       Build and install the qrenderdoc GUI
-    </flag>
-  </use>
   <upstream>
     <remote-id type="github">baldurk/renderdoc</remote-id>
   </upstream>

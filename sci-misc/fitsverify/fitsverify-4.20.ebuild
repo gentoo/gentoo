@@ -11,7 +11,7 @@ SRC_URI="https://heasarc.gsfc.nasa.gov/docs/software/ftools/fitsverify/${P}.tar.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="sci-libs/cfitsio:0="
 DEPEND="${RDEPEND}"

@@ -1,0 +1,38 @@
+From 4549446008a321732335a2f46ab69a90a91acaa9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jaime=20Marqui=CC=81nez=20Ferra=CC=81ndiz?=
+ <jaime.marquinez.ferrandiz@fastmail.net>
+Date: Fri, 17 Oct 2025 16:45:30 +0200
+Subject: [PATCH 1/2] Use the return value of QTemporaryFile::open
+
+It is marked with [[nodiscard]] by default on Qt 6.10
+---
+ src/libs/ui/docsetsdialog.cpp | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/libs/ui/docsetsdialog.cpp b/src/libs/ui/docsetsdialog.cpp
+index 8c9fe633e380..6e2ccfec9db5 100644
+--- a/src/libs/ui/docsetsdialog.cpp
++++ b/src/libs/ui/docsetsdialog.cpp
+@@ -360,7 +360,8 @@ void DocsetsDialog::downloadCompleted()
+         QTemporaryFile *tmpFile = m_tmpFiles[docsetName];
+         if (!tmpFile) {
+             tmpFile = new QTemporaryFile(QStringLiteral("%1/%2.XXXXXX.tmp").arg(Core::Application::cacheLocation(), docsetName), this);
+-            tmpFile->open();
++            if (!tmpFile->open())
++                return;
+             m_tmpFiles.insert(docsetName, tmpFile);
+         }
+ 
+@@ -403,7 +404,8 @@ void DocsetsDialog::downloadProgress(qint64 received, qint64 total)
+         QTemporaryFile *tmpFile = m_tmpFiles[docsetName];
+         if (!tmpFile) {
+             tmpFile = new QTemporaryFile(QStringLiteral("%1/%2.XXXXXX.tmp").arg(Core::Application::cacheLocation(), docsetName), this);
+-            tmpFile->open();
++            if (!tmpFile->open())
++                return;
+             m_tmpFiles.insert(docsetName, tmpFile);
+         }
+ 
+-- 
+2.52.0
+

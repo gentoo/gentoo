@@ -14,7 +14,7 @@ SRC_URI="ftp://ftp.eso.org/pub/dfs/${PN}/${P}.tar.gz
 
 LICENSE="Apache-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64"
 IUSE="doc"
 
 DEPEND=">=virtual/jdk-1.8:*"

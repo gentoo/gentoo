@@ -15,7 +15,7 @@ S="${WORKDIR}"/${PN}
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
 IUSE="gtk postgres ssl tcl threads X"
 RESTRICT="test" #298101
 

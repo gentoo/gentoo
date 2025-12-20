@@ -31,7 +31,7 @@ else
 	ZFS_KERNEL_DEP="${ZFS_KERNEL_DEP%%.*}.$(( ${ZFS_KERNEL_DEP##*.} + 1))"
 
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~sparc"
+		KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv ~sparc"
 	fi
 fi
 

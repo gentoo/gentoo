@@ -18,7 +18,7 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 LICENSE="POSTGRESQL GPL-2"
 SLOT=$(ver_cut 1)
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos ~x64-solaris"
 
 IUSE="debug doc +icu kerberos ldap llvm +lz4 +numa nls oauth pam perl python
 	+readline selinux +server systemd ssl static-libs tcl uuid +uring

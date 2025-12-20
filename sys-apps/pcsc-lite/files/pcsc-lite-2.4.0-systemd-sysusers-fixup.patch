@@ -1,0 +1,11 @@
+--- a/meson.build
++++ b/meson.build
+@@ -139,7 +139,7 @@ if get_option('libsystemd')
+   sysusersdir = systemd.get_variable(pkgconfig : 'sysusersdir')
+ else
+   systemdsystemunitdir = get_option('prefix') / 'lib' / 'systemd' / systemdunit
+-  sysusersdir = get_option('prefix') / 'sysusers.d'
++  sysusersdir = get_option('prefix') / 'lib' / 'sysusers.d'
+ endif
+ 
+ # architecture

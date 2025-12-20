@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Perl extension for the automatic generation of LaTeX tables"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 ~loong ppc ppc64 ~riscv x86"
 
 RDEPEND="
 	virtual/perl-Carp

@@ -8,7 +8,7 @@ if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/grobian/html2text.git"
 else
 	SRC_URI="https://github.com/grobian/${PN}/releases/download/v${PV}/${P}.tar.gz"
-	KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ppc ppc64 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 fi
 
 DESCRIPTION="HTML to text converter"

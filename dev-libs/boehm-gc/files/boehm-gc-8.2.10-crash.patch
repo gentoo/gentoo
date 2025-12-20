@@ -1,0 +1,258 @@
+https://github.com/bdwgc/bdwgc/issues/783
+https://github.com/bdwgc/bdwgc/issues/802
+https://github.com/bdwgc/bdwgc/commit/910b4f008f3bcb436a23a2d5f9784e5dd9ab66cd
+https://github.com/bdwgc/bdwgc/commit/1058994bc264dd99a7b6d3caefe0c129bfbd1fb7
+https://github.com/bdwgc/bdwgc/commit/73fdfdaf45fd35993c7f9e051875147ca39438c4
+
+From 910b4f008f3bcb436a23a2d5f9784e5dd9ab66cd Mon Sep 17 00:00:00 2001
+From: Ivan Maidanski <ivmai@mail.ru>
+Date: Sat, 25 Oct 2025 23:19:33 +0300
+Subject: [PATCH] Fix SIGSEGV in remove_all_threads_but_me if fork from
+ unregistered thread (a cherry-pick of commit 44fbb3b9e from 'master')
+
+Issue #783 (bdwgc).
+
+Some clients call `fork()` from an unregistered thread, thus we might
+find no entry for the current thread in `GC_remove_all_threads_but_me`.
+
+* include/gc.h (GC_atfork_child): Add comment about `fork()` from
+an unregistered thread.
+* pthread_support.c [CAN_HANDLE_FORK] (GC_remove_all_threads_but_me):
+If `me` is null, then return immediately after loop (instead of `ABORT`
+or the assertion, regardless of `CPPCHECK` and `LINT2`).
+* win32_threads.c [CAN_HANDLE_FORK] (GC_remove_all_threads_but_me):
+Likewise.
+---
+ include/gc.h      |  1 +
+ pthread_support.c | 19 ++++++++-----------
+ win32_threads.c   |  4 +++-
+ 3 files changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/include/gc.h b/include/gc.h
+index 54d704a06..b929240fc 100644
+--- a/include/gc.h
++++ b/include/gc.h
+@@ -512,6 +512,7 @@ GC_API void GC_CALL GC_set_handle_fork(int);
+ /* non-zero); GC_atfork_child is to be called immediately in the child  */
+ /* branch (i.e., fork result is 0).  Note that GC_atfork_child() call   */
+ /* should, of course, precede GC_start_mark_threads call (if any).      */
++/* Note that fork() could be called from an unregistered thread.        */
+ GC_API void GC_CALL GC_atfork_prepare(void);
+ GC_API void GC_CALL GC_atfork_parent(void);
+ GC_API void GC_CALL GC_atfork_child(void);
+diff --git a/pthread_support.c b/pthread_support.c
+index dbde77f25..0efbcdd9c 100644
+--- a/pthread_support.c
++++ b/pthread_support.c
+@@ -829,11 +829,11 @@ GC_API void GC_CALL GC_register_altstack(void *stack, GC_word stack_size,
+     GC_threads[hv] = me;
+   }
+ 
+-/* Remove all entries from the GC_threads table, except the one for */
+-/* the current thread.  Also update thread identifiers stored in    */
+-/* the table for the current thread.  We need to do this in the     */
+-/* child process after a fork(), since only the current thread      */
+-/* survives in the child.                                           */
++/* Remove all entries from the GC_threads table, except the one (if */
++/* any) for the current thread.  Also update thread identifiers     */
++/* stored in the table for the current thread.  We need to do this  */
++/* in the child process after a fork(), since only the current      */
++/* thread survives in the child.                                    */
+ STATIC void GC_remove_all_threads_but_me(void)
+ {
+     int hv;
+@@ -870,12 +870,9 @@ STATIC void GC_remove_all_threads_but_me(void)
+       store_to_threads_table(hv, NULL);
+     }
+ 
+-#   if defined(CPPCHECK) || defined(LINT2)
+-      if (NULL == me)
+-        ABORT("Current thread is not found after fork");
+-#   else
+-      GC_ASSERT(me != NULL);
+-#   endif
++    if (NULL == me)
++      return; /* fork() is called from an unregistered thread */
++
+     /* Update pthread's id as it is not guaranteed to be the same   */
+     /* between this (child) process and the parent one.             */
+     me -> id = pthread_self();
+diff --git a/win32_threads.c b/win32_threads.c
+index d1b7d5dbe..0335085ed 100644
+--- a/win32_threads.c
++++ b/win32_threads.c
+@@ -1185,8 +1185,10 @@ GC_API void * GC_CALL GC_get_my_stackbottom(struct GC_stack_base *sb)
+         GC_threads[hv] = NULL;
+       }
+ 
++      if (NULL == me)
++        return; /* fork() is called from an unregistered thread */
++
+       /* Put "me" back to GC_threads.   */
+-      GC_ASSERT(me != NULL);
+       thread_id = GetCurrentThreadId(); /* differs from that in parent */
+       GC_threads[THREAD_TABLE_INDEX(thread_id)] = me;
+ 
+
+From 1058994bc264dd99a7b6d3caefe0c129bfbd1fb7 Mon Sep 17 00:00:00 2001
+From: Ivan Maidanski <ivmai@mail.ru>
+Date: Thu, 30 Oct 2025 23:39:44 +0300
+Subject: [PATCH] Fix code defect of LOCK/UNLOCK in separate 'if' in
+ GC_generic_malloc_many (a cherry-pick of commit c7d342c83 from 'master')
+
+* mallocx.c [PARALLEL_MARK] (GC_generic_malloc_many): Check
+`GC_parallel` once around `GC_reclaim_generic()` call (so that
+nearby `UNLOCK()` and the following `LOCK()` to be placed inside
+a single `if` statement block).
+---
+ mallocx.c | 82 +++++++++++++++++++++++++++----------------------------
+ 1 file changed, 41 insertions(+), 41 deletions(-)
+
+diff --git a/mallocx.c b/mallocx.c
+index 340bd5231..927008958 100644
+--- a/mallocx.c
++++ b/mallocx.c
+@@ -374,54 +374,54 @@ GC_API void GC_CALL GC_generic_malloc_many(size_t lb, int k, void **result)
+                   ++ GC_fl_builder_count;
+                   UNLOCK();
+                   GC_release_mark_lock();
+-              }
+-#           endif
+-            op = GC_reclaim_generic(hbp, hhdr, lb,
+-                                    ok -> ok_init, 0, &my_bytes_allocd);
+-            if (op != 0) {
+-#             ifdef PARALLEL_MARK
+-                if (GC_parallel) {
+-                  *result = op;
+-                  (void)AO_fetch_and_add(&GC_bytes_allocd_tmp,
+-                                         (AO_t)my_bytes_allocd);
++
++                  op = GC_reclaim_generic(hbp, hhdr, lb, ok -> ok_init, NULL,
++                                          &my_bytes_allocd);
++                  if (op != NULL) {
++                      *result = op;
++                      (void)AO_fetch_and_add(&GC_bytes_allocd_tmp,
++                                             (AO_t)my_bytes_allocd);
++                      GC_acquire_mark_lock();
++                      -- GC_fl_builder_count;
++                      if (GC_fl_builder_count == 0) GC_notify_all_builder();
++#                     ifdef THREAD_SANITIZER
++                        GC_release_mark_lock();
++                        LOCK();
++                        GC_bytes_found += my_bytes_allocd;
++                        UNLOCK();
++#                     else
++                        GC_bytes_found += my_bytes_allocd;
++                                        /* The result may be inaccurate. */
++                        GC_release_mark_lock();
++#                     endif
++                      (void) GC_clear_stack(0);
++                      return;
++                  }
++
+                   GC_acquire_mark_lock();
+                   -- GC_fl_builder_count;
+                   if (GC_fl_builder_count == 0) GC_notify_all_builder();
+-#                 ifdef THREAD_SANITIZER
+-                    GC_release_mark_lock();
+-                    LOCK();
+-                    GC_bytes_found += my_bytes_allocd;
+-                    UNLOCK();
+-#                 else
+-                    GC_bytes_found += my_bytes_allocd;
+-                                        /* The result may be inaccurate. */
+-                    GC_release_mark_lock();
+-#                 endif
+-                  (void) GC_clear_stack(0);
+-                  return;
+-                }
+-#             endif
+-              /* We also reclaimed memory, so we need to adjust       */
+-              /* that count.                                          */
++                  GC_release_mark_lock();
++                  LOCK();
++                  /* GC lock is needed for reclaim list access.   We    */
++                  /* must decrement fl_builder_count before reacquiring */
++                  /* the lock.  Hopefully this path is rare.            */
++
++                  rlh = ok -> ok_reclaim_list; /* reload rlh after locking */
++                  if (NULL == rlh) break;
++                  continue;
++              }
++#           endif
++
++            op = GC_reclaim_generic(hbp, hhdr, lb, ok -> ok_init, NULL,
++                                    &my_bytes_allocd);
++            if (op != NULL) {
++              /* We also reclaimed memory, so we need to adjust */
++              /* that count.                                    */
+               GC_bytes_found += my_bytes_allocd;
+               GC_bytes_allocd += my_bytes_allocd;
+               goto out;
+             }
+-#           ifdef PARALLEL_MARK
+-              if (GC_parallel) {
+-                GC_acquire_mark_lock();
+-                -- GC_fl_builder_count;
+-                if (GC_fl_builder_count == 0) GC_notify_all_builder();
+-                GC_release_mark_lock();
+-                LOCK();
+-                /* GC lock is needed for reclaim list access.   We      */
+-                /* must decrement fl_builder_count before reacquiring   */
+-                /* the lock.  Hopefully this path is rare.              */
+-
+-                rlh = ok -> ok_reclaim_list; /* reload rlh after locking */
+-                if (NULL == rlh) break;
+-              }
+-#           endif
+         }
+     }
+     /* Next try to use prefix of global free list if there is one.      */
+From 73fdfdaf45fd35993c7f9e051875147ca39438c4 Mon Sep 17 00:00:00 2001
+From: Ivan Maidanski <ivmai@mail.ru>
+Date: Fri, 31 Oct 2025 22:44:52 +0300
+Subject: [PATCH] Fix SIGSEGV if pthread_detach is called before collector
+ initialization (a cherry-pick of commit e40697e26 from 'master')
+
+The only case this seems to be needed is when the client calls
+`pthread_detach(pthread_self())` before the collector initialization.
+
+* pthread_support.c [!SN_TARGET_ORBIS && !SN_TARGET_PSP2]
+(GC_pthread_detach): Call `GC_init()` if the collector is not
+initialized; add comment.
+* win32_threads.c [GC_PTHREADS] (GC_pthread_detach): Likewise.
+---
+ pthread_support.c | 7 +++++++
+ win32_threads.c   | 1 +
+ 2 files changed, 8 insertions(+)
+
+diff --git a/pthread_support.c b/pthread_support.c
+index 0efbcdd9c..fb09f3d17 100644
+--- a/pthread_support.c
++++ b/pthread_support.c
+@@ -2016,6 +2016,13 @@ GC_INNER_PTHRSTART void GC_thread_exit_proc(void *arg)
+     DCL_LOCK_STATE;
+ 
+     INIT_REAL_SYMS();
++    if (!EXPECT(GC_is_initialized, TRUE)) {
++      /*
++       * The only case this seems to be needed is when the client calls
++       * pthread_detach(pthread_self()) before the collector initialization.
++       */
++      GC_init();
++    }
+     LOCK();
+     t = (GC_thread)COVERT_DATAFLOW(GC_lookup_thread(thread));
+     UNLOCK();
+diff --git a/win32_threads.c b/win32_threads.c
+index 0335085ed..0ec33cf95 100644
+--- a/win32_threads.c
++++ b/win32_threads.c
+@@ -3257,6 +3257,7 @@ GC_INNER void GC_thr_init(void)
+     GC_thread t;
+     DCL_LOCK_STATE;
+ 
++    if (!EXPECT(GC_is_initialized, TRUE)) GC_init();
+     GC_ASSERT(!GC_win32_dll_threads);
+     t = GC_lookup_pthread(thread);
+     result = pthread_detach(thread);

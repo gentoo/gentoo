@@ -12,7 +12,7 @@ SRC_URI="https://github.com/openpmix/openpmix/releases/download/v${PV}/${P}.tar.
 LICENSE="BSD"
 SLOT="0"
 # No support for 32-bit systems as of 4.2.8 (https://github.com/open-mpi/ompi/issues/11248)
-KEYWORDS="~amd64 ~arm64 ~ppc64 -x86 ~amd64-linux"
+KEYWORDS="~amd64 ~arm64 ~ppc64 -x86"
 IUSE="debug +munge pmi"
 
 RDEPEND="

@@ -1,0 +1,63 @@
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+if [[ ${PV} == *9999 ]]; then
+	EGIT_REPO_URI="https://git.libreoffice.org/libfreehand.git"
+	inherit autotools git-r3
+else
+	SRC_URI="https://dev-www.libreoffice.org/src/libfreehand/${P}.tar.xz"
+	KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86"
+fi
+
+DESCRIPTION="Library for import of FreeHand drawings"
+HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libfreehand"
+
+LICENSE="MPL-2.0"
+SLOT="0"
+IUSE="doc test"
+RESTRICT="!test? ( test )"
+
+RDEPEND="
+	dev-libs/librevenge
+	media-libs/lcms
+	virtual/zlib:=
+"
+DEPEND="
+	${RDEPEND}
+	dev-libs/boost
+	dev-libs/icu
+	test? ( dev-util/cppunit )
+"
+BDEPEND="
+	dev-build/libtool
+	dev-util/gperf
+	virtual/pkgconfig
+	doc? ( app-text/doxygen )
+"
+
+PATCHES=( "${FILESDIR}"/${P}-icu-65.patch )
+
+src_prepare() {
+	default
+
+	if [[ ${PV} == *9999 ]]; then
+		mkdir -p m4 || die
+		eautoreconf
+	fi
+}
+
+src_configure() {
+	local myeconfargs=(
+		--disable-werror
+		$(use_with doc docs)
+		$(use_enable test tests)
+	)
+	econf "${myeconfargs[@]}"
+}
+
+src_install() {
+	default
+	find "${ED}" -name '*.la' -type f -delete || die
+}

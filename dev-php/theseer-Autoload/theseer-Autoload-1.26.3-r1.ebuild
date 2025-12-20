@@ -57,9 +57,9 @@ src_prepare() {
 		vendor/zetacomponents/console-tools \
 		|| die
 
-	ln -s /usr/share/php/TheSeer/DirectoryScanner	vendor/theseer/directoryscanner/src || die
-	ln -s /usr/share/php/ezc/Base			vendor/zetacomponents/base/src || die
-	ln -s /usr/share/php/ezc/ConsoleTools		vendor/zetacomponents/console-tools/src  || die
+	ln -s "${EPREFIX}"/usr/share/php/TheSeer/DirectoryScanner	vendor/theseer/directoryscanner/src || die
+	ln -s "${EPREFIX}"/usr/share/php/ezc/Base			vendor/zetacomponents/base/src || die
+	ln -s "${EPREFIX}"/usr/share/php/ezc/ConsoleTools		vendor/zetacomponents/console-tools/src  || die
 
 	./phpab.php \
 		--output src/autoload.php \

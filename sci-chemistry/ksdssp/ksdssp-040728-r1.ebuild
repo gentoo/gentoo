@@ -11,7 +11,7 @@ SRC_URI="mirror://gentoo/${P}.shar"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="sci-libs/libpdb++"
 DEPEND="${RDEPEND}"

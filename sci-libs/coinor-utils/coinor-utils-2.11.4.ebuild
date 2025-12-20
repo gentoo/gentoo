@@ -16,7 +16,7 @@ LICENSE="EPL-1.0"
 # major soname component
 SLOT="0/3"
 
-KEYWORDS="~amd64 ~loong ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~loong ~riscv ~x86"
 IUSE="bzip2 doc glpk blas lapack static-libs test zlib"
 RESTRICT="!test? ( test )"
 

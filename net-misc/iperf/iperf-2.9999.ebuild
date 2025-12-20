@@ -14,7 +14,7 @@ if [[ ${PV} == *9999* ]] ; then
 else
 	SRC_URI="https://downloads.sourceforge.net/iperf2/${P}.tar.gz"
 
-	KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+	KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 LICENSE="HPND"

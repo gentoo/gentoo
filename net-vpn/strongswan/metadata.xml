@@ -42,6 +42,7 @@
 		<flag name="strongswan_plugins_ccm">Enable support for the ccm plugin</flag>
 		<flag name="strongswan_plugins_chapoly">Enable ChaCha20/Poly1305 AEAD implementation and ChaCha20 XOF plugin</flag>
 		<flag name="strongswan_plugins_cmac">Enable support for the cmac plugin</flag>
+		<flag name="strongswan_plugins_connmark">Enable connmark plugin using conntrack based marks to select return path SA</flag>
 		<flag name="strongswan_plugins_ctr">Enable support for the ctr plugin</flag>
 		<flag name="strongswan_plugins_curve25519">Enable support for X25519 DH group and Ed25519 public key uthentication</flag>
 		<flag name="strongswan_plugins_des">Enable DES/3DES cipher implementation</flag>

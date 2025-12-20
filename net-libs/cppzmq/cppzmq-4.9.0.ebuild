@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,9 +9,9 @@ DESCRIPTION="High-level CPP Binding for ZeroMQ"
 HOMEPAGE="https://github.com/zeromq/cppzmq"
 SRC_URI="https://github.com/zeromq/${PN}/archive/v${PV}.tar.gz ->  ${P}.tar.gz"
 
-SLOT="0"
 LICENSE="MIT"
-KEYWORDS="amd64 ~arm ~arm64 ~riscv x86 ~x86-linux"
+SLOT="0"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
 
 IUSE="test"
 RESTRICT="!test? ( test )"

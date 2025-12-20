@@ -9,7 +9,7 @@ SRC_URI="https://wh0rd.org/books/${P}.tar.lzma"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 arm ~hppa ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="doc"
 RESTRICT="mirror bindist"
 

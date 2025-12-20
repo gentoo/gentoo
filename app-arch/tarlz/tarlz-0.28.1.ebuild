@@ -11,7 +11,7 @@ SRC_URI="https://download.savannah.gnu.org/releases/lzip/${PN}/${P}.tar.lz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 IUSE="test"
 RESTRICT="!test? ( test )"

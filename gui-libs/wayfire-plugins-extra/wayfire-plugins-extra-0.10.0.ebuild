@@ -34,6 +34,7 @@ WAYFIRE_REVDEP="
 DEPEND="
 	${WAYFIRE_REVDEP}
 	dev-cpp/glibmm:2
+	dev-libs/boost
 	dev-libs/libevdev
 	dev-libs/wayland
 	gui-wm/wayfire:0/0.10

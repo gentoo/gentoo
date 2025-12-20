@@ -11,7 +11,7 @@ SRC_URI="https://ftp.sdaoden.eu/${P}.tar.xz"
 
 LICENSE="BSD BSD-4 ISC RSA"
 SLOT="0"
-KEYWORDS="amd64 ~loong ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="idn kerberos net +split-usr ssl"
 
 RDEPEND="

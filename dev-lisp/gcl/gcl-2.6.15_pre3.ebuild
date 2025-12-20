@@ -11,7 +11,7 @@ SRC_URI="http://git.savannah.gnu.org/cgit/gcl.git/snapshot/${PN}-Version_2_6_15p
 
 LICENSE="LGPL-2+ GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~ppc ppc64 ~riscv x86"
 IUSE="+ansi athena doc emacs +readline tk X"
 RESTRICT="strip"  #205803
 
@@ -37,6 +37,8 @@ S="${WORKDIR}"/${PN}-Version_2_6_15pre3/${PN}
 src_configure() {
 	filter-lto # bug #931082
 	strip-flags
+	append-cflags -std=gnu17 # bug #947758
+	append-cppflags -std=gnu17 # ditto
 	filter-flags -fstack-protector -fstack-protector-all
 
 	local tcl=""

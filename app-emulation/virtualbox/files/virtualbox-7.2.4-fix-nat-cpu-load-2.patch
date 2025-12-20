@@ -1,0 +1,21 @@
+https://github.com/VirtualBox/virtualbox/commit/1af38857c2c5e47ecfbdfeb31bda97101009b604
+https://bugs.gentoo.org/967656
+
+From 1af38857c2c5e47ecfbdfeb31bda97101009b604 Mon Sep 17 00:00:00 2001
+From: Jack Doherty <jack.doherty@oracle.com>
+Date: Mon, 10 Nov 2025 22:17:26 +0000
+Subject: [PATCH] Network/NAT: Fix release burns. github:gh-356
+
+svn:sync-xref-src-repo-rev: r171191
+--- a/src/VBox/Devices/Network/DrvNAT.cpp
++++ b/src/VBox/Devices/Network/DrvNAT.cpp
+@@ -561,6 +561,9 @@ static DECLCALLBACK(void) drvNATNetworkUp_EndXmit(PPDMINETWORKUP pInterface)
+  */
+ static void drvNATNotifyNATThread(PDRVNAT pThis, const char *pszWho)
+ {
++#ifndef LOG_ENABLED
++    RT_NOREF(pszWho);
++#endif
+     Log3(("Notifying NAT Thread. Culprit: %s\n", pszWho));
+ #ifdef RT_OS_WINDOWS
+     int cbWritten = send(pThis->ahWakeupSockPair[0], "", 1, NULL);

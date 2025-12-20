@@ -12,7 +12,7 @@ HOMEPAGE="https://vim-latex.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="vim"
-KEYWORDS="~alpha amd64 ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ppc ppc64 ~riscv ~sparc x86"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

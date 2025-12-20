@@ -13,12 +13,16 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="
+BDEPEND="
 	acct-group/ubridge
+"
+DEPEND="
 	>=dev-libs/iniparser-4.1-r2:=
-	net-libs/libpcap"
-
-DEPEND="${RDEPEND}"
+	net-libs/libpcap
+"
+RDEPEND="${DEPEND}
+	acct-group/ubridge
+"
 
 src_compile() {
 	# iniparser.pc only exists in >=4.2 and it changes headers location
@@ -31,15 +35,14 @@ src_compile() {
 }
 
 src_install() {
-	exeinto /usr/bin
-	exeopts -m 710 -g ubridge
-	doexe ubridge
-
+	dobin ubridge
+	fowners :ubridge /usr/bin/ubridge
+	fperms 4754 /usr/bin/ubridge
 	dodoc README.md
 }
 
 pkg_postinst() {
-	fcaps -g ubridge -m 4710 -M 0710 cap_net_raw,cap_net_admin \
+	fcaps -g ubridge -M 0754 cap_net_raw,cap_net_admin \
 		"${EROOT}"/usr/bin/ubridge
 
 	einfo "\nNOTE: To read packets from the network interfaces with ubridge as"

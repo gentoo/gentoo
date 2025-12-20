@@ -40,7 +40,7 @@ S="${WORKDIR}/VTK-${PV}"
 
 LICENSE="BSD LGPL-2"
 SLOT="0/${MY_PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 # TODO: Like to simplify these. Mostly the flags related to Groups.
 IUSE="all-modules boost +cgns cuda debug doc examples ffmpeg gdal gles2-only imaging
@@ -488,7 +488,7 @@ src_configure() {
 		-DVTK_MODULE_ENABLE_VTK_pegtl="YES"
 		-DVTK_MODULE_ENABLE_VTK_png="YES"
 		-DVTK_MODULE_ENABLE_VTK_pugixml="YES"
-		# -DVTK_MODULE_ENABLE_VTK_scn
+		-DVTK_MODULE_ENABLE_VTK_scn="$(usex test "YES" "NO")"
 		-DVTK_MODULE_ENABLE_VTK_sqlite="YES"
 		-DVTK_MODULE_ENABLE_VTK_theora="$(usex minimal "NO" "YES")"
 		-DVTK_MODULE_ENABLE_VTK_tiff="YES"

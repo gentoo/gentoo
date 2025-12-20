@@ -11,6 +11,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Universal currency converter and calculator"
 HOMEPAGE="https://apps.kde.org/keurocalc/ https://userbase.kde.org/KEuroCalc"
+SRC_URI="https://dev.gentoo.org/~asturm/distfiles/kde/${KDE_ORG_NAME}-${PV}-${KDE_ORG_COMMIT:0:8}.tar.gz"
 
 LICENSE="GPL-2+ FDL-1.2"
 SLOT="0"

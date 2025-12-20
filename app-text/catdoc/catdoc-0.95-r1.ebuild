@@ -9,7 +9,7 @@ SRC_URI="http://ftp.wagner.pp.ru/pub/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc x86 ~amd64-linux ~ppc-macos ~x64-solaris"
+KEYWORDS="amd64 ~arm ~ppc x86 ~x64-solaris"
 IUSE="tk"
 
 DEPEND="tk? ( >=dev-lang/tk-8.1 )"

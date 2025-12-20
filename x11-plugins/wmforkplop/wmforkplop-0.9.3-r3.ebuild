@@ -10,7 +10,7 @@ SRC_URI="http://hules.free.fr/wmforkplop/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-solaris"
+KEYWORDS="~amd64 ~x86 ~x64-solaris"
 
 DEPEND="gnome-base/libgtop
 	media-libs/imlib2[X,text(+)]"

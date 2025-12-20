@@ -9,7 +9,7 @@ SRC_URI="https://dev.gentoo.org/~grobian/distfiles/${P}.perl"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~amd64 ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
 
 DEPEND="dev-perl/Spreadsheet-ParseExcel"
 RDEPEND="${DEPEND}"

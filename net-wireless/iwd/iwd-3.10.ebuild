@@ -83,7 +83,7 @@ pkg_setup() {
 		WARNING_CRYPTO_AES_NI_INTEL="CRYPTO_AES_NI_INTEL: enable for increased performance"
 	fi
 
-	if use cpu_flags_x86_ssse3 && use amd64; then
+	if use cpu_flags_x86_ssse3 && use amd64 && kernel_is -lt 6 17; then
 		CONFIG_CHECK="${CONFIG_CHECK} ~CRYPTO_SHA1_SSSE3 ~CRYPTO_SHA256_SSSE3 ~CRYPTO_SHA512_SSSE3"
 		WARNING_CRYPTO_SHA1_SSSE3="CRYPTO_SHA1_SSSE3: enable for increased performance"
 		WARNING_CRYPTO_SHA256_SSSE3="CRYPTO_SHA256_SSSE3: enable for increased performance"

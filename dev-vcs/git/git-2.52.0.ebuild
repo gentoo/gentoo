@@ -51,7 +51,7 @@ if [[ ${PV} != *9999 ]]; then
 	SRC_URI+=" doc? ( ${SRC_URI_KORG}/${PN}-htmldocs-${DOC_VER}.tar.${SRC_URI_SUFFIX} )"
 
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
 	fi
 fi
 
@@ -153,6 +153,11 @@ PATCHES=(
 
 	"${FILESDIR}"/${PN}-2.52.0-0001-rust-don-t-pass-quiet-to-cargo.patch
 	"${FILESDIR}"/${PN}-2.52.0-0002-rust-respect-CARGO-environment-variable.patch
+
+	# Backports for cross
+	"${FILESDIR}"/0001-meson-ignore-subprojects-.wraplock.patch
+	"${FILESDIR}"/0002-meson-only-detect-ICONV_OMITS_BOM-if-possible.patch
+	"${FILESDIR}"/0003-meson-use-is_cross_build-where-possible.patch
 )
 
 pkg_setup() {

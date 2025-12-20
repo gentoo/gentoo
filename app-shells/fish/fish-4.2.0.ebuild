@@ -28,7 +28,7 @@ else
 		https://github.com/gentoo-crate-dist/fish-shell/releases/download/${MY_PV}/fish-shell-${MY_PV}-crates.tar.xz
 		${CARGO_CRATE_URIS}
 	"
-	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x64-macos"
 fi
 
 S="${WORKDIR}/${MY_P}"

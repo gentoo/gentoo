@@ -7,7 +7,7 @@ EBO_DESCRIPTION="InterProScan motif detection add-on package"
 
 inherit autotools emboss-r3
 
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 
 S="${WORKDIR}/IPRSCAN-4.3.1.650"
 PATCHES=( "${FILESDIR}"/${PN}-4.3.1.650_fix-build-system.patch )

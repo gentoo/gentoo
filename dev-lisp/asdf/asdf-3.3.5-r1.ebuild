@@ -11,7 +11,7 @@ SRC_URI="https://asdf.common-lisp.dev/archives/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PVR}"
-KEYWORDS="~alpha amd64 ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~alpha amd64 ~mips ppc ppc64 ~riscv ~sparc x86 ~x64-macos"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 

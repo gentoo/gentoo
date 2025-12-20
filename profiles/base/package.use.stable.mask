@@ -8,10 +8,6 @@
 # Need non-yet-stable caffe2
 sci-chemistry/gromacs nnpot
 
-# Sam James <sam@gentoo.org> (2025-10-10)
-# Needs not-yet-stable GCC 15.
-dev-lang/python tail-call-interp
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-06)
 # USE=experimental is not stable by definition
 media-libs/zxing-cpp experimental
@@ -128,10 +124,6 @@ app-emulation/winetricks test
 # For bleeding edge features and testing, not generally suitable
 # for stable systems
 dev-lang/rust nightly
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-12-09)
-# Declared experimental, and dev-cpp/websocketpp not stable yet
-sci-libs/indilib websocket
 
 # Mart Raudsepp <leio@gentoo.org> (2019-04-14)
 # Needs media-plugins/gst-plugins-chromaprint, which is not stable

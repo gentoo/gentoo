@@ -1,0 +1,93 @@
+Upstream patch:
+https://github.com/phillipberndt/pqiv/commit/4000533e84387816fd59c0bc6a346e9742a6232c
+From 4000533e84387816fd59c0bc6a346e9742a6232c Mon Sep 17 00:00:00 2001
+From: NHOrus <jy6x2b32pie9@yahoo.com>
+Date: Fri, 21 Nov 2025 18:13:52 +0300
+Subject: [PATCH] Introduce scaling factor to montage view.
+
+Fixes #236
+---
+ pqiv.c | 28 ++++++++++++++--------------
+ 1 file changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/pqiv.c b/pqiv.c
+index 27e667b..f746d8f 100644
+--- a/pqiv.c
++++ b/pqiv.c
+@@ -4414,8 +4414,8 @@ void calculate_base_draw_pos_and_size(int *image_transform_width, int *image_tra
+ }/*}}}*/
+ #ifndef CONFIGURED_WITHOUT_MONTAGE_MODE
+ void montage_window_set_cursor(int pos_x, int pos_y) {/*{{{*/
+-	const unsigned n_thumbs_x = main_window_width / (option_thumbnails.width + 10);
+-	const unsigned n_thumbs_y = main_window_height / (option_thumbnails.height + 10);
++	const unsigned n_thumbs_x = main_window_width / (option_thumbnails.width + 10) / screen_scale_factor;
++	const unsigned n_thumbs_y = main_window_height / (option_thumbnails.height + 10) / screen_scale_factor;
+ 	const size_t number_of_images = (ptrdiff_t)bostree_node_count(file_tree);
+ 
+ 	if(!montage_window_control.selected_node) {
+@@ -4465,8 +4465,8 @@ gboolean montage_window_get_move_cursor_target(int pos_x, int pos_y, int move_y_
+ 	   scrolling
+ 	 */
+ 
+-	const int n_thumbs_x = main_window_width / (option_thumbnails.width + 10);
+-	const int n_thumbs_y = main_window_height / (option_thumbnails.height + 10);
++	const int n_thumbs_x = main_window_width / (option_thumbnails.width + 10) / screen_scale_factor;
++	const int n_thumbs_y = main_window_height / (option_thumbnails.height + 10) / screen_scale_factor;
+ 	const ptrdiff_t number_of_images = (ptrdiff_t)bostree_node_count(file_tree);
+ 	const int n_rows_total       = (number_of_images + n_thumbs_x - 1) / n_thumbs_x;
+ 	const int last_row_n_thumbs  = (number_of_images % n_thumbs_x == 0) ? n_thumbs_x : number_of_images % n_thumbs_x;
+@@ -4577,8 +4577,8 @@ gboolean montage_window_get_move_cursor_target(int pos_x, int pos_y, int move_y_
+ }/*}}}*/
+ void montage_window_move_cursor(int move_x, int move_y, int move_y_pages) {/*{{{*/
+ 	// Must be called with an active lock.
+-	const int n_thumbs_x = main_window_width / (option_thumbnails.width + 10);
+-	const int n_thumbs_y = main_window_height / (option_thumbnails.height + 10);
++	const int n_thumbs_x = main_window_width / (option_thumbnails.width + 10) / screen_scale_factor;
++	const int n_thumbs_y = main_window_height / (option_thumbnails.height + 10) / screen_scale_factor;
+ 
+ 	if(n_thumbs_x == 0 || n_thumbs_y == 0) {
+ 		return;
+@@ -4654,8 +4654,8 @@ struct window_draw_thumbnail_montage_show_binding_overlays_data {
+ 	char *active_prefix;
+ };
+ void window_draw_thumbnail_montage_show_binding_overlays_looper(gpointer key, gpointer value, gpointer user_data) {/*{{{*/
+-	const int n_thumbs_x = main_window_width / (option_thumbnails.width + 10);
+-	const int n_thumbs_y = main_window_height / (option_thumbnails.height + 10);
++	const int n_thumbs_x = main_window_width / (option_thumbnails.width + 10) / screen_scale_factor;
++	const int n_thumbs_y = main_window_height / (option_thumbnails.height + 10) / screen_scale_factor;
+ 	const ptrdiff_t number_of_images = (ptrdiff_t)bostree_node_count(file_tree);
+ 	const int n_rows_total       = (number_of_images + n_thumbs_x - 1) / n_thumbs_x;
+ 	const int last_row_n_thumbs  = (number_of_images % n_thumbs_x == 0) ? n_thumbs_x : number_of_images % n_thumbs_x;
+@@ -4806,8 +4806,8 @@ gboolean window_draw_thumbnail_montage(cairo_t *cr_arg) {/*{{{*/
+ 	cairo_restore(cr_arg);
+ 
+ 	// Calculate how many thumbnails to draw
+-	const unsigned n_thumbs_x = main_window_width / (option_thumbnails.width + 10);
+-	const unsigned n_thumbs_y = main_window_height / (option_thumbnails.height + 10);
++	const unsigned n_thumbs_x = main_window_width / (option_thumbnails.width + 10) / screen_scale_factor;
++	const unsigned n_thumbs_y = main_window_height / (option_thumbnails.height + 10) / screen_scale_factor;
+ 	size_t top_left_id = montage_window_control.scroll_y * n_thumbs_x;
+ 
+ 	BOSNode *selected_node = bostree_node_weak_unref(file_tree, bostree_node_weak_ref(montage_window_control.selected_node));
+@@ -4851,8 +4851,8 @@ gboolean window_draw_thumbnail_montage(cairo_t *cr_arg) {/*{{{*/
+ 		if(thumb_file->thumbnail) {
+ 			cairo_save(cr_arg);
+ 			cairo_translate(cr_arg,
+-				(main_window_width - n_thumbs_x * (option_thumbnails.width + 10)) / 2   + (draw_now % n_thumbs_x) * (option_thumbnails.width + 10)  + (option_thumbnails.width + 10 - cairo_image_surface_get_width(thumb_file->thumbnail))/2,
+-				(main_window_height - n_thumbs_y * (option_thumbnails.height + 10)) / 2 + (draw_now / n_thumbs_x) * (option_thumbnails.height + 10) + (option_thumbnails.height + 10 - cairo_image_surface_get_height(thumb_file->thumbnail))/2
++				(main_window_width / screen_scale_factor - n_thumbs_x * (option_thumbnails.width + 10)) / 2   + (draw_now % n_thumbs_x) * (option_thumbnails.width + 10)  + (option_thumbnails.width + 10 - cairo_image_surface_get_width(thumb_file->thumbnail))/2,
++				(main_window_height / screen_scale_factor - n_thumbs_y * (option_thumbnails.height + 10)) / 2 + (draw_now / n_thumbs_x) * (option_thumbnails.height + 10) + (option_thumbnails.height + 10 - cairo_image_surface_get_height(thumb_file->thumbnail))/2
+ 			);
+ 			cairo_set_source_surface(cr_arg, thumb_file->thumbnail, 0, 0);
+ 			cairo_new_path(cr_arg);
+@@ -4888,8 +4888,8 @@ gboolean window_draw_thumbnail_montage(cairo_t *cr_arg) {/*{{{*/
+ 		else if(top_left_id + draw_now == selection_rank) {
+ 			cairo_save(cr_arg);
+ 			cairo_translate(cr_arg,
+-				(main_window_width - n_thumbs_x * (option_thumbnails.width + 10)) / 2   + (draw_now % n_thumbs_x) * (option_thumbnails.width + 10) + (option_thumbnails.width - 5)/2,
+-				(main_window_height - n_thumbs_y * (option_thumbnails.height + 10)) / 2 + (draw_now / n_thumbs_x) * (option_thumbnails.height + 10) + (option_thumbnails.height - 5)/2
++				(main_window_width / screen_scale_factor - n_thumbs_x * (option_thumbnails.width + 10)) / 2   + (draw_now % n_thumbs_x) * (option_thumbnails.width + 10) + (option_thumbnails.width - 5)/2,
++				(main_window_height / screen_scale_factor - n_thumbs_y * (option_thumbnails.height + 10)) / 2 + (draw_now / n_thumbs_x) * (option_thumbnails.height + 10) + (option_thumbnails.height - 5)/2
+ 			);
+ 			cairo_rectangle(cr_arg, 0, 0, 5, 5);
+ 			cairo_set_source_rgb(cr_arg, option_box_colors.bg_red, option_box_colors.bg_green, option_box_colors.bg_blue);

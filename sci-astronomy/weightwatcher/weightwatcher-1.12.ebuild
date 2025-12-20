@@ -8,7 +8,7 @@ inherit autotools
 DESCRIPTION="Combine weight maps and polygon for astronomical images weighting"
 HOMEPAGE="http://www.astromatic.net/software/weightwatcher/"
 SRC_URI="http://www.astromatic.net/download/${PN}/${P}.tar.gz"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 
 LICENSE="GPL-3"
 SLOT="0"

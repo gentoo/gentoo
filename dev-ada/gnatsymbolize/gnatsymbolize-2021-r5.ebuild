@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-ADA_COMPAT=( gcc_{12..15} )
+ADA_COMPAT=( gcc_{12..16} )
 inherit ada
 
 MYP=${P}-${PV}0518-19D3B-src
@@ -22,6 +22,16 @@ KEYWORDS="amd64 ~arm64 x86"
 RDEPEND="${ADA_DEPS}"
 DEPEND="${RDEPEND}"
 REQUIRED_USE="${ADA_REQUIRED_USE}"
+
+src_prepare () {
+	if use ada_target_gcc_16; then
+		sed -i \
+			-e "s:Success,:Full, Success,:" \
+			gnatsymbolize.adb \
+			|| die
+	fi
+	default
+}
 
 src_compile() {
 	gnatmake -v gnatsymbolize -cargs ${ADAFLAGS} -largs ${LDFLAGS} || die

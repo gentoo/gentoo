@@ -12,7 +12,7 @@ DESCRIPTION="Lightweight interface to the SOAP protocol both on client and serve
 
 IUSE="ssl test xmpp"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv x86"
 
 myconf="${myconf} --noprompt"
 

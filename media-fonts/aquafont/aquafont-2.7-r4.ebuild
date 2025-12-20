@@ -13,7 +13,7 @@ SRC_URI="http://www.geocities.jp/teardrops_in_aquablue/fnt/${MY_P}.zip"
 
 LICENSE="aquafont"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~loong ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 arm ~loong ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="X"
 # Only installs fonts
 RESTRICT="strip binchecks"

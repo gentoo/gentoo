@@ -17,7 +17,7 @@ SRC_URI="
 LICENSE="ISC"
 # The subslot matches the SONAME
 SLOT="0/${PV}"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
 
 BDEPEND="${PYTHON_DEPS}"
 RDEPEND="sys-libs/readline:="

@@ -1,0 +1,121 @@
+https://github.com/qutebrowser/qutebrowser/issues/8785
+https://github.com/qutebrowser/qutebrowser/commit/0c34bf2f791b1
+--- a/qutebrowser/browser/webengine/webenginesettings.py
++++ b/qutebrowser/browser/webengine/webenginesettings.py
+@@ -459,12 +459,16 @@
+ 
+ 
++def default_qt_profile() -> QWebEngineProfile:
++    """Get the default profile from Qt."""
++    if machinery.IS_QT6:
++        return QWebEngineProfile("Default")
++    else:
++        return QWebEngineProfile.defaultProfile()
++
++
+ def _init_default_profile():
+     """Init the default QWebEngineProfile."""
+     global default_profile
+-
+-    if machinery.IS_QT6:
+-        default_profile = QWebEngineProfile("Default")
+-    else:
+-        default_profile = QWebEngineProfile.defaultProfile()
++    default_profile = default_qt_profile()
+     assert not default_profile.isOffTheRecord()
+ 
+--- a/qutebrowser/utils/version.py
++++ b/qutebrowser/utils/version.py
+@@ -931,10 +931,16 @@
+     if (
+         objects.backend == usertypes.Backend.QtWebEngine
+-        and "avoid-chromium-init" not in objects.debug_flags
+         and machinery.IS_QT6  # mypy; TODO early return once Qt 5 is dropped
+     ):
+-        from qutebrowser.qt.webenginecore import QWebEngineProfile
+-        profile = QWebEngineProfile.defaultProfile()
+-        assert profile is not None  # mypy
++        from qutebrowser.browser.webengine import webenginesettings
++        lines.append("WebExtensions:")
++
++        if webenginesettings.default_profile:
++            profile = webenginesettings.default_profile
++        elif "avoid-chromium-init" in objects.debug_flags:
++            lines[0] += " unknown (avoiding init)"
++            return lines
++        else:
++            profile = webenginesettings.default_qt_profile()
+ 
+         try:
+@@ -945,5 +951,4 @@
+         assert ext_manager is not None  # mypy
+ 
+-        lines.append("WebExtensions:")
+         if not ext_manager.extensions():
+             lines[0] += " none"
+--- a/tests/unit/utils/test_version.py
++++ b/tests/unit/utils/test_version.py
+@@ -1450,9 +1450,7 @@
+         if machinery.IS_QT6:
+             monkeypatch.setattr(
+-                QWebEngineProfile,
+-                "defaultProfile",
+-                lambda: FakeExtensionProfile(
+-                    FakeExtensionManager([FakeExtensionInfo("ext1")])
+-                ),
++                webenginesettings,
++                "default_profile",
++                FakeExtensionProfile(FakeExtensionManager([FakeExtensionInfo("ext1")])),
+             )
+             substitutions['webextensions'] = (
+@@ -1593,18 +1591,33 @@
+ 
+     def test_qtwebkit(self, monkeypatch: pytest.MonkeyPatch) -> None:
++        assert webenginesettings.default_profile is None  # -> default_qt_profile() used
+         monkeypatch.setattr(version.objects, "backend", usertypes.Backend.QtWebKit)
+-        monkeypatch.setattr(QWebEngineProfile, "defaultProfile", lambda: 1/0)
++        monkeypatch.setattr(webenginesettings, "default_qt_profile", lambda: 1 / 0)
+         assert not version._webengine_extensions()
+ 
+     def test_avoid_chromium_init(self, monkeypatch: pytest.MonkeyPatch) -> None:
++        assert webenginesettings.default_profile is None  # -> default_qt_profile() used
+         monkeypatch.setattr(version.objects, "backend", usertypes.Backend.QtWebEngine)
+         monkeypatch.setattr(objects, "debug_flags", {"avoid-chromium-init"})
+-        monkeypatch.setattr(QWebEngineProfile, "defaultProfile", lambda: 1/0)
+-        assert not version._webengine_extensions()
++        monkeypatch.setattr(webenginesettings, "default_qt_profile", lambda: 1 / 0)
++        assert version._webengine_extensions() == [
++            "WebExtensions: unknown (avoiding init)"
++        ]
+ 
+     def test_no_extension_manager(self, monkeypatch: pytest.MonkeyPatch) -> None:
+-        monkeypatch.setattr(QWebEngineProfile, "defaultProfile", object)
++        assert webenginesettings.default_profile is None  # -> default_qt_profile() used
++        monkeypatch.setattr(webenginesettings, "default_qt_profile", object)
+         assert not version._webengine_extensions()
+ 
++    @pytest.mark.parametrize("avoid_init", [True, False])
++    def test_preexisting_profile(self, monkeypatch: pytest.MonkeyPatch, avoid_init: bool) -> None:
++        """Test that we use the pre-existing profile if available."""
++        monkeypatch.setattr(webenginesettings, "default_profile", FakeExtensionProfile(FakeExtensionManager([])))
++        if avoid_init:
++            monkeypatch.setattr(objects, "debug_flags", {"avoid-chromium-init"})
++
++        result = version._webengine_extensions()
++        assert result == ["WebExtensions: none"]
++
+     @pytest.mark.parametrize(
+         "extensions, expected",
+@@ -1667,9 +1680,7 @@
+     ) -> None:
+         monkeypatch.setattr(
+-            QWebEngineProfile,
+-            "defaultProfile",
+-            lambda: FakeExtensionProfile(
+-                FakeExtensionManager(extensions)
+-            ),
++            webenginesettings,
++            "default_profile",
++            FakeExtensionProfile(FakeExtensionManager(extensions)),
+         )
+         assert version._webengine_extensions() == expected

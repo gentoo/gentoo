@@ -14,7 +14,7 @@ S="${WORKDIR}/${P/_/-}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~sparc ~x86"
 
 DEPEND="
 	>=net-libs/libpcap-0.8.3-r1

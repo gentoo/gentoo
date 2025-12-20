@@ -8,7 +8,7 @@ inherit toolchain-funcs flag-o-matic multilib
 DESCRIPTION="The extensible self-documenting text editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 SRC_URI="https://ftp.gnu.org/old-gnu/emacs/${P}.tar.gz
-	https://dev.gentoo.org/~ulm/emacs/${P}-patches-15.tar.xz"
+	https://dev.gentoo.org/~ulm/emacs/${P}-patches-16.tar.xz"
 
 LICENSE="GPL-1+ GPL-2+ BSD HPND"
 SLOT="18"
@@ -89,7 +89,7 @@ src_configure() {
 src_compile() {
 	addpredict /var/lib/emacs/lock		#nowarn
 	emake --jobs=1 \
-		CC="$(tc-getCC)" CFLAGS="${CFLAGS} -Demacs" \
+		CC="$(tc-getCC)" CFLAGS="${CFLAGS} -Demacs -I." \
 		LD="$(tc-getCC) -nostdlib" LDFLAGS="${LDFLAGS}"
 }
 

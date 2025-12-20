@@ -11,7 +11,7 @@ SRC_URI="https://www.kokkonen.net/tjko/src/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ppc ppc64 ~sparc x86"
 
 RDEPEND="media-libs/libjpeg-turbo:="
 DEPEND="${RDEPEND}"

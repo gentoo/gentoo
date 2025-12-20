@@ -1,0 +1,68 @@
+From 16b2913ada2929608b6a1ad4b75a9be036cf506e Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Thu, 30 Oct 2025 12:05:29 +0100
+Subject: [PATCH 1/3] build_files: allow cmake policy 3.10
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/build_files/build_environment/CMakeLists.txt b/build_files/build_environment/CMakeLists.txt
+index af93de4..94fbca8 100644
+--- a/build_files/build_environment/CMakeLists.txt
++++ b/build_files/build_environment/CMakeLists.txt
+@@ -14,7 +14,7 @@
+ #
+ ##################################################################################################
+ 
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.5...3.10)
+ project("BlenderDependencies")
+ if(POLICY CMP0135)
+   cmake_policy(SET CMP0135 NEW) # CMake 3.24+ Set the date/time for extracted files to time of extraction
+-- 
+2.51.2
+
+
+From 756762326790f95bff3fb1f9c92805be92029fcb Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Thu, 30 Oct 2025 12:05:49 +0100
+Subject: [PATCH 2/3] extern/quadriflow/lemon: allow cmake policy 3.10
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/extern/quadriflow/3rd/lemon-1.3.1/CMakeLists.txt b/extern/quadriflow/3rd/lemon-1.3.1/CMakeLists.txt
+index a56dbc5..459aff4 100644
+--- a/extern/quadriflow/3rd/lemon-1.3.1/CMakeLists.txt
++++ b/extern/quadriflow/3rd/lemon-1.3.1/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 3.1)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.1...3.10)
+ 
+ SET(PROJECT_NAME "LEMON")
+ PROJECT(${PROJECT_NAME})
+-- 
+2.51.2
+
+
+From 6512020264db7523123aa26dabba621783484815 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Thu, 30 Oct 2025 12:05:56 +0100
+Subject: [PATCH 3/3] intern/ghost: allow cmake policy 3.10
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/intern/ghost/test/CMakeLists.txt b/intern/ghost/test/CMakeLists.txt
+index 60fab05..ff95da2 100644
+--- a/intern/ghost/test/CMakeLists.txt
++++ b/intern/ghost/test/CMakeLists.txt
+@@ -15,7 +15,7 @@ cmake_policy(SET CMP0010 NEW)
+ # Input directories must have `CMakeLists.txt`.
+ cmake_policy(SET CMP0014 NEW)
+ 
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.5...3.10)
+ 
+ project(GhostMultiTest)
+ 
+-- 
+2.51.2
+

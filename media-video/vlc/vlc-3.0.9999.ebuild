@@ -23,7 +23,7 @@ else
 		if [[ ${MY_P} == ${P} ]] ; then
 			SRC_URI="https://download.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.xz"
 		else
-			SRC_URI="https://download.videolan.org/pub/videolan/testing/${MY_P}/${MY_P}.tar.xz"
+			SRC_URI="https://download.videolan.org/videolan/testing/${MY_PV}/${MY_P}.tar.xz"
 		fi
 		S="${WORKDIR}/${MY_P}"
 	fi
@@ -70,7 +70,6 @@ BDEPEND="
 	wayland? ( dev-util/wayland-scanner )
 	x86? ( dev-lang/yasm )
 "
-# <media-plugins/live-2024.11.28: https://github.com/gentoo/gentoo/pull/40610#issuecomment-2664870395
 # depends on abseil-cpp via protobuf targets
 RDEPEND="
 	media-libs/libvorbis

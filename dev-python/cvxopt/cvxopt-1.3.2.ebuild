@@ -23,7 +23,7 @@ SRC_URI="
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~riscv ~x86"
 IUSE="+dsdp examples fftw +glpk gsl"
 
 DEPEND="

@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0/3.2"
-KEYWORDS="amd64 arm64 ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 arm64 ppc ppc64 ~riscv x86"
 IUSE="examples java static-libs"
 
 COMMON_DEPEND="

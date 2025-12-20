@@ -3,40 +3,39 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic toolchain-funcs
+inherit autotools toolchain-funcs
 
 MY_PN="${PN/-/_}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Similar to dd but can copy from source with errors"
-HOMEPAGE="http://www.garloff.de/kurt/linux/ddrescue/"
+HOMEPAGE="https://www.garloff.de/kurt/linux/ddrescue/"
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.code.sf.net/p/ddrescue/code"
 	EGIT_BRANCH=DD_RESCUE_1_99_BRANCH
 	inherit git-r3
 else
-	SRC_URI="http://www.garloff.de/kurt/linux/ddrescue/${MY_P}.tar.bz2"
+	SRC_URI="https://www.garloff.de/kurt/linux/ddrescue/${MY_P}.tar.bz2"
 	S="${WORKDIR}/${MY_P}"
-
-	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="0"
-IUSE="cpu_flags_x86_avx2 lzo lzma cpu_flags_x86_sse4_2 static test xattr"
+IUSE="cpu_flags_x86_avx2 cpu_flags_x86_sse4_2 lzo lzma static test xattr"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	lzo? ( dev-libs/lzo )
-	xattr? ( sys-apps/attr )
+	!static? (
+		lzma? ( app-arch/xz-utils )
+		lzo? ( dev-libs/lzo:2 )
+	)
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
 	test? (
-		lzo? (
-			app-arch/lzop
-		)
+		lzo? ( app-arch/lzop )
 	)
 "
 
@@ -64,10 +63,10 @@ src_prepare() {
 }
 
 src_configure() {
-	use static && append-ldflags -static
-
 	# OpenSSL is only used by a random helper tool we don't install.
-	export ac_cv_header_attr_xattr_h=$(usex xattr)
+	# sys_xattr is preferred over attr_xattr, disable attr_xattr assuming glibc/musl
+	export ac_cv_header_attr_xattr_h=no
+	export ac_cv_header_sys_xattr_h=$(usex xattr)
 	export ac_cv_header_openssl_evp_h=no
 	export ac_cv_lib_crypto_EVP_aes_192_ctr=no
 	export ac_cv_lib_lzo2_lzo1x_1_compress=$(usex lzo)
@@ -91,23 +90,24 @@ _emake() {
 	# HAVE_LZO is special as it's checked for emptiness in test_crypt.sh.
 	# We could try make RDRND and friends controlled via USE but it's too brittle,
 	# see bug #947105.
-	emake \
-		MACH="${arch}" \
-		OS="${os}" \
-		HAVE_SSE42=$(usex cpu_flags_x86_sse4_2 1 0) \
-		HAVE_AVX2=$(usex cpu_flags_x86_avx2 1 0) \
-		HAVE_LZMA=$(usex lzma 1 0) \
-		HAVE_LZO=$(usev lzo 1) \
-		HAVE_OPENSSL=0 \
-		RPM_OPT_FLAGS="${CFLAGS} ${CPPFLAGS}" \
-		CFLAGS_OPT='$(CFLAGS)' \
-		LDFLAGS="${LDFLAGS} -Wl,-rpath,${EPREFIX}/usr/$(get_libdir)/${PN}" \
-		CC="$(tc-getCC)" \
-		"$@"
+	local myemakeargs=(
+		MACH="${arch}"
+		OS="${os}"
+		HAVE_SSE42=$(usex cpu_flags_x86_sse4_2 1 0)
+		HAVE_AVX2=$(usex cpu_flags_x86_avx2 1 0)
+		HAVE_LZMA=$(usex lzma 1 0)
+		HAVE_LZO=$(usev lzo 1)
+		HAVE_OPENSSL=0
+		RPM_OPT_FLAGS="${CFLAGS} ${CPPFLAGS}"
+		CFLAGS_OPT='$(CFLAGS)'
+		LDFLAGS="${LDFLAGS} -Wl,-rpath,${EPREFIX}/usr/$(get_libdir)/${PN}"
+		CC="$(tc-getCC)"
+	)
+	emake "${myemakeargs[@]}" "$@"
 }
 
 src_compile() {
-	_emake
+	_emake $(usev static)
 }
 
 src_test() {
@@ -118,14 +118,18 @@ src_test() {
 			test_lzo.sh || die
 	fi
 
-	_emake check
+	# make only basic tests for static
+	_emake $(usex static check_fault check)
 }
 
 src_install() {
 	# easier to install by hand than trying to make sense of the Makefile.
 	dobin dd_rescue
-	dodir /usr/$(get_libdir)/${PN}
-	cp -pPR libddr_*.so "${ED}"/usr/$(get_libdir)/${PN}/ || die
+	if ! use static; then
+		insinto /usr/$(get_libdir)/${PN}
+		insopts -m 0755
+		doins libddr_*.so
+	fi
 	dodoc README.dd_rescue
 	doman dd_rescue.1
 	use lzo && doman ddr_lzo.1

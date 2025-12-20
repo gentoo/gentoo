@@ -11,7 +11,7 @@ SRC_URI="https://github.com/adulau/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="openssl"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~arm ppc ~sparc x86"
 
 RDEPEND="dev-libs/json-c:=
 	dev-libs/openssl:=

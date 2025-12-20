@@ -13,7 +13,7 @@ HOMEPAGE="https://gitlab.com/sashahart/cookies"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~m68k ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~m68k ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 PATCHES=(
 	# https://gitlab.com/sashahart/cookies/merge_requests/2

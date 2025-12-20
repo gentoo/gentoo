@@ -8,7 +8,7 @@ DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit distutils-r1 multilib-minimal
+inherit distutils-r1 multilib-minimal multiprocessing
 
 DESCRIPTION="High level interface to Linux seccomp filter"
 HOMEPAGE="https://github.com/seccomp/libseccomp"
@@ -19,7 +19,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit autotools git-r3
 else
 	SRC_URI="https://github.com/seccomp/libseccomp/releases/download/v${PV}/${P}.tar.gz"
-	KEYWORDS="-* ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="-* ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86"
 fi
 
 LICENSE="LGPL-2.1"
@@ -28,13 +28,14 @@ IUSE="python static-libs test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-# We need newer kernel headers; we don't keep strict control of the exact
-# version here, just be safe and pull in the latest stable ones. bug #551248
-DEPEND="
-	>=sys-kernel/linux-headers-5.15
+RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 "
-RDEPEND="${DEPEND}"
+# We need newer kernel headers; we don't keep strict control of the exact
+# version here, just be safe and pull in the latest stable ones. bug #551248
+DEPEND="${RDEPEND}
+	>=sys-kernel/linux-headers-5.15
+"
 BDEPEND="
 	${DEPEND}
 	dev-util/gperf
@@ -57,6 +58,9 @@ src_prepare() {
 
 		eautoreconf
 	fi
+
+	# Silence noise when running Python tests
+	sed -i -e 's:$(pwd)/../src/python/build/lib\.\*:$(pwd):' tests/regression || die
 }
 
 multilib_src_configure() {
@@ -88,6 +92,17 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
+	local -x LIBSECCOMP_TSTCFG_JOBS="$(makeopts_jobs)"
+	emake -Onone check
+
+	if multilib_is_native_abi && use python ; then
+		distutils-r1_src_test
+	fi
+}
+
+python_test() {
+	local -x LIBSECCOMP_TSTCFG_MODE_LIST="python"
+
 	emake -Onone check
 }
 

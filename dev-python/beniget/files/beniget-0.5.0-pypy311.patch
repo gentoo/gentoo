@@ -1,0 +1,46 @@
+From 8234baaaa433a8d23445be1ac48e20f63e96d0e8 Mon Sep 17 00:00:00 2001
+From: serge-sans-paille <sergesanspaille@free.fr>
+Date: Sun, 30 Nov 2025 19:52:42 +0100
+Subject: [PATCH] Improve test portability with PyPy
+
+Fix #150
+---
+ tests/test_chains.py | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/tests/test_chains.py b/tests/test_chains.py
+index 1be68dd..d26e312 100644
+--- a/tests/test_chains.py
++++ b/tests/test_chains.py
+@@ -35,6 +35,12 @@ def captured_output():
+     finally:
+         sys.stdout, sys.stderr = old_out, old_err
+ 
++if sys.implementation.name == 'pypy':
++    def normalize_chain(chain):
++        return chain.replace('<builtin_function>', '<builtin_function_or_method>')
++else:
++    def normalize_chain(chain):
++        return chain
+ 
+ class StrictDefUseChains(beniget.DefUseChains):
+         def warn(self, msg, node):
+@@ -54,7 +60,8 @@ def checkChains(self, code, ref, strict=True):
+             c = beniget.DefUseChains()
+ 
+         c.visit(node)
+-        self.assertEqual(c.dump_chains(node), ref)
++        out = list(map(normalize_chain, c.dump_chains(node)))
++        self.assertEqual(ref, out)
+         return node, c
+ 
+     def test_simple_expression(self):
+@@ -1669,6 +1676,8 @@ def checkChains(self, code, ref):
+             # 3.6 or 3.7
+             actual = replace_deprecated_names(actual)
+ 
++        actual = normalize_chain(actual)
++
+         self.assertEqual(actual, ref)
+ 
+     def test_simple_expression(self):

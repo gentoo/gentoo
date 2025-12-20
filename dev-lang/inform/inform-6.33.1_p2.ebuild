@@ -12,7 +12,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="Artistic-2 Inform"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 IUSE="emacs"
 
 PDEPEND="emacs? ( app-emacs/inform-mode )"

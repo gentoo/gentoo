@@ -9,6 +9,10 @@
 		TLP is a command line utility for Linux to optimize laptop battery life. Primarily by tweaking
 		kernel settings that affect power consumption.
 	</longdescription>
+	<use>
+		<flag name="ppd">TLP Profiles Daemon that replaces power-profiles-daemon by using the same D-Bus API.</flag>
+		<flag name="rdw">Enables TLP Radio Device Wizard feature</flag> 
+	</use>
 	<upstream>
 		<remote-id type="github">linrunner/TLP</remote-id>
 	</upstream>

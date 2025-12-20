@@ -14,7 +14,7 @@ S="${WORKDIR}"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~hppa ~ppc ~ppc64 ~riscv ~sparc x86"
 
 BDEPEND="app-arch/unzip"
 RDEPEND="media-sound/mpg123"

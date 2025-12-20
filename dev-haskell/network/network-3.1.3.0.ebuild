@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/haskell/network"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="devel"
 
 RDEPEND=">=dev-lang/ghc-8.8.1:=

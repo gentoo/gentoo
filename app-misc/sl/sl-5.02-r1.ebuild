@@ -11,7 +11,7 @@ SRC_URI="https://github.com/mtoyoda/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Toyoda"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~arm ~hppa ppc ppc64 ~riscv ~sparc x86"
 IUSE="l10n_ja"
 
 RDEPEND="sys-libs/ncurses:="

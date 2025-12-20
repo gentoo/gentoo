@@ -11,7 +11,7 @@ SRC_URI="http://www.padl.com/download/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="LGPL-2"
-KEYWORDS="~alpha amd64 arm ~hppa ~mips ~ppc ppc64 ~sparc x86 ~amd64-linux"
+KEYWORDS="~alpha amd64 arm ~hppa ~mips ~ppc ppc64 ~sparc x86"
 IUSE="debug kerberos ssl sasl split-usr"
 
 DEPEND="

@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="PerlIO layer for normalizing line endings"
 
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~ppc ~riscv ~sparc x86"
 
 RDEPEND="
 	virtual/perl-Exporter

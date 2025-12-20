@@ -14,7 +14,7 @@ SRC_URI="https://github.com/${PN}/${PN}-c/releases/download/c-${PV}/${MY_P}.tar.
 
 LICENSE="Boost-1.0"
 SLOT="0/2"
-KEYWORDS="amd64 ~arm arm64 ~riscv x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="amd64 ~arm arm64 ~riscv x86 ~x64-macos"
 IUSE="doc examples test"
 
 RESTRICT="!test? ( test )"

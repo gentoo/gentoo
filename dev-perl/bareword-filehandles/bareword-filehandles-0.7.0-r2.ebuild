@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Disables bareword filehandles"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos ~x64-solaris"
 
 # Lexical::SealRequireHints only required with Perl < 5.12
 # We could add alternation here, but it would be work without benefit

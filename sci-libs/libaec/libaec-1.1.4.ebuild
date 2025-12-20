@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD-2"
 SLOT="0/2"
-KEYWORDS="amd64 arm arm64 ~loong ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="+szip test"
 RESTRICT="!test? ( test )"
 

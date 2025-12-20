@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="LaTeX support for the Template Toolkit"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 ~loong ppc ppc64 ~riscv x86"
 
 RDEPEND="
 	>=dev-perl/LaTeX-Driver-0.70.0

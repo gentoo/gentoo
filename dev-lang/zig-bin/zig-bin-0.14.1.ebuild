@@ -8,7 +8,7 @@ VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/minisig-keys/zig-software-foundation.pub
 inherit verify-sig
 
 DESCRIPTION="A robust, optimal, and maintainable programming language"
-HOMEPAGE="https://ziglang.org/"
+HOMEPAGE="https://ziglang.org/ https://codeberg.org/ziglang/zig/"
 SRC_URI="
 	amd64? ( https://ziglang.org/download/${PV}/zig-x86_64-linux-${PV}.tar.xz )
 	arm? ( https://ziglang.org/download/${PV}/zig-armv7a-linux-${PV}.tar.xz )

@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}/${PN}-$PV/${P}.ta
 
 LICENSE="GPL-2+ FDL-1.2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ppc ppc64 ~riscv ~x86"
 IUSE="kde policykit wayland"
 
 DEPEND="
@@ -39,6 +39,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.0-handle-failing-pixbuf.patch
+	"${FILESDIR}"/${PN}-1.7.0-gtest-gcc-15.patch
 )
 
 src_configure() {

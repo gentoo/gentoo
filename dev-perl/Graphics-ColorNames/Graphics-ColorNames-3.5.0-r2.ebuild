@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Defines RGB values for common color names"
 
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	>=virtual/perl-Module-Load-0.100.0

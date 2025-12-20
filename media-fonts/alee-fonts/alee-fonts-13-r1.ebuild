@@ -12,7 +12,7 @@ S="${WORKDIR}/ttf-alee-${PV}"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~loong ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 arm ~loong ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE=""
 
 FONT_SUFFIX="ttf"

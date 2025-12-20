@@ -12,7 +12,7 @@ S="${WORKDIR}/${P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~hppa ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~arm arm64 ~hppa ~ppc x86"
 IUSE="nls test"
 
 DEPEND="nls? ( sys-devel/gettext )

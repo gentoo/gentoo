@@ -9,7 +9,7 @@ DESCRIPTION="vim plugin: library for simplifying indent files"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=678"
 
 LICENSE="vim"
-KEYWORDS="~alpha amd64 arm ~hppa ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm ~hppa ~mips ppc ppc64 ~riscv ~sparc x86"
 
 VIM_PLUGIN_HELPTEXT=\
 "This plugin provides library functions and is not intended to be used

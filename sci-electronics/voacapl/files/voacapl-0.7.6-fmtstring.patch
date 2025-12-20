@@ -1,0 +1,94 @@
+commit 12d0101c8faad3adac5bf55356ba328c4af65bd3
+Author: Mario Haustein <mario.haustein@hrz.tu-chemnitz.de>
+Date:   Sun Nov 16 10:21:18 2025 +0100
+Upstream: https://github.com/jawatson/voacapl/pull/10
+
+    Fix format strings
+
+--- a/src/voacapw/areamap.for
++++ b/src/voacapw/areamap.for
+@@ -92,22 +92,22 @@ c          read COLOR & CITYNAME whether OLD or NEW format
+       ! The following inputs have been modified to work with a larger
+       ! number of area plots
+       else if(card(1:10).eq.'Months   :') then
+-         write (fmt_str, "(AI0A)") "(10x,", MAX_AREA_MONTHS,"f7.2)"
++         write (fmt_str, "(A,I0,A)") "(10x,", MAX_AREA_MONTHS,"f7.2)"
+          read(card, fmt_str) montha
+          do 305 i=1,MAX_AREA_MONTHS     !  fix old integer months (before MONTH.DAY)
+            if(montha(i).gt.0. .and. montha(i).lt.1.) montha(i)=montha(i)*100.
+ 305      continue
+       else if(card(1:10).eq.'Ssns     :') then
+-         write (fmt_str, "(AI0A)") "(10x,", MAX_AREA_MONTHS,"I7)"
++         write (fmt_str, "(A,I0,A)") "(10x,", MAX_AREA_MONTHS,"I7)"
+          read(card, fmt_str) ssna
+       else if(card(1:10).eq.'Qindexs  :') then
+-         write (fmt_str, "(AI0A)") "(10x,", MAX_AREA_MONTHS,"I7)"
++         write (fmt_str, "(A,I0,A)") "(10x,", MAX_AREA_MONTHS,"I7)"
+          read(card,fmt_str) qindexa
+       else if(card(1:10).eq.'Hours    :') then
+-         write (fmt_str, "(AI0A)") "(10x,", MAX_AREA_MONTHS,"I7)"
++         write (fmt_str, "(A,I0,A)") "(10x,", MAX_AREA_MONTHS,"I7)"
+          read(card, fmt_str) ihour
+       else if(card(1:10).eq.'Freqs    :') then
+-         write (fmt_str, "(AI0A)") "(10x,", MAX_AREA_MONTHS,"f7.3)"
++         write (fmt_str, "(A,I0,A)") "(10x,", MAX_AREA_MONTHS,"f7.3)"
+          read(card, fmt_str) Freq
+       else if(card(1:10).eq.'System   :') then
+          if(model.eq.'ICEPAC' .or. model.eq.'VOACAP') then
+--- a/src/voacapw/hfarea.for
++++ b/src/voacapw/hfarea.for
+@@ -123,8 +123,8 @@ c jw         end if
+ c jw       end if
+       if(iquiet.eq.0) then
+          if(iy.eq.1) then
+-             write(unit=*,fmt='(i3'' rows '')') ny !jw
+-             write(unit=*,fmt='(''[''i4)', advance='no') iy !jw
++             write(unit=*,fmt='(i3, '' rows '')') ny !jw
++             write(unit=*,fmt='(''['', i4)', advance='no') iy !jw
+          else
+              write(unit=*,fmt='(i4)', advance='no') iy !jw
+          end if
+--- a/src/voacapw/voacapw.for
++++ b/src/voacapw/voacapw.for
+@@ -540,11 +540,11 @@ c**************************************************************
+             go to 950
+          else                    !  process next file in order
+             if (fileNumCtr <= 9) then
+-                write (filein,'(A11I1)') "voaareax.da", fileNumCtr
+-                write (fileout, '(AI1)') fileout(1:index(fileout, '.vg')+2),fileNumCtr
++                write (filein,'(A11, I1)') "voaareax.da", fileNumCtr
++                write (fileout, '(A, I1)') fileout(1:index(fileout, '.vg')+2),fileNumCtr
+             else
+-                write (filein,'(A11I2)') "voaareax.da", fileNumCtr
+-                write (fileout, '(AI2)') fileout(1:index(fileout, '.vg')+2),fileNumCtr
++                write (filein,'(A11, I2)') "voaareax.da", fileNumCtr
++                write (fileout, '(A, I2)') fileout(1:index(fileout, '.vg')+2),fileNumCtr
+             endif
+             filein = trim(filein)
+             fileout = trim(fileout)
+From 50b1115a6daedecaf56b373467d67360d4687ed6 Mon Sep 17 00:00:00 2001
+From: Mario Haustein <mario.haustein@hrz.tu-chemnitz.de>
+Date: Tue, 18 Nov 2025 22:40:52 +0100
+Subject: [PATCH] Fix format strings
+Upstream: https://github.com/jawatson/voacapl/pull/11
+
+--- a/src/voacapw/voacapw.for
++++ b/src/voacapw/voacapw.for
+@@ -202,7 +202,7 @@ c******************************************************************
+            if (scan("WIAa", c_arg(19:19))>0) then
+                ABSORPTION_MODE=c_arg(19:19)
+            else
+-               write(*, '(AA)') "Invalid absorption mode: ", c_arg(19:19)
++               write(*, '(A, A)') "Invalid absorption mode: ", c_arg(19:19)
+            end if
+         else if (c_arg(1:10).eq.'--run-dir=') then
+             run_directory = c_arg(11:len(trim(c_arg)))
+@@ -211,7 +211,7 @@ c******************************************************************
+ c        else if (c_arg(1:11).eq.'--area-dir=') then
+ c            area_directory = c_arg(12:len(trim(c_arg)))
+         else
+-           write(*, '(AA)') "Option not recognised: ", c_arg
++           write(*, '(A, A)') "Option not recognised: ", c_arg
+         end if
+ 
+         call get_command_argument(argCtr, c_arg)

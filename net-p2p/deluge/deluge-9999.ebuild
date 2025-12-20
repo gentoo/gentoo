@@ -30,11 +30,6 @@ REQUIRED_USE="
 
 BDEPEND="
 	dev-util/intltool
-	test? (
-		$(python_gen_cond_dep '
-			>=dev-python/pytest-twisted-1.13.4-r1[${PYTHON_USEDEP}]
-		')
-	)
 "
 
 RDEPEND="
@@ -64,6 +59,7 @@ RDEPEND="
 	)
 "
 
+EPYTEST_PLUGINS=( pytest-twisted )
 distutils_enable_tests pytest
 
 python_prepare_all() {
@@ -105,8 +101,7 @@ python_test() {
 		'deluge/tests/test_core.py::TestCore::test_pause_torrent'
 	)
 
-	# dev-python/pytest-twisted has disabled autoloading
-	epytest -m "not (todo or gtkui)" -p pytest_twisted -v
+	epytest -m "not (todo or gtkui)" -v
 }
 
 python_install_all() {

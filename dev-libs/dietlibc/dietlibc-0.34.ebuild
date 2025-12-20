@@ -11,7 +11,7 @@ SRC_URI="https://www.fefe.de/dietlibc/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~mips ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~mips ~sparc x86"
 IUSE=""
 
 DEPEND=">=sys-devel/binutils-2.31.1-r4"

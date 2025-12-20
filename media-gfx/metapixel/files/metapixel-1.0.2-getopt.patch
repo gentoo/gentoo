@@ -1,0 +1,16 @@
+Use system getopt instead of custom one
+https://bugs.gentoo.org/944937
+
+--- a/Makefile
++++ b/Makefile
+@@ -24,8 +24,8 @@ CC = gcc
+ export CCOPTS CC FORMATDEFS
+ 
+ LISPREADER_OBJS = lispreader.o pools.o allocator.o
+-OBJS = metapixel.o vector.o zoom.o $(LISPREADER_OBJS) getopt.o getopt1.o
+-CONVERT_OBJS = convert.o $(LISPREADER_OBJS) getopt.o getopt1.o
++OBJS = metapixel.o vector.o zoom.o $(LISPREADER_OBJS)
++CONVERT_OBJS = convert.o $(LISPREADER_OBJS)
+ IMAGESIZE_OBJS = imagesize.o
+ 
+ all : metapixel metapixel.1 convert metapixel-imagesize

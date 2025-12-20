@@ -16,7 +16,7 @@ S="${WORKDIR}"/${PN}-${P}
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~amd64 ~arm ~ppc ~x86 ~x64-macos"
 IUSE="cairo test"
 RESTRICT="!test? ( test )"
 

@@ -14,14 +14,6 @@ sparc
 x86
 
 # Prefix keywords
-amd64-linux
-arm-linux
-arm64-linux
-ppc64-linux
-riscv-linux
-x86-linux
 arm64-macos
-ppc-macos
-x86-macos
 x64-macos
 x64-solaris

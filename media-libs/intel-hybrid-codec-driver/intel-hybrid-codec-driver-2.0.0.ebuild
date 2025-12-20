@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/intel/intel-hybrid-driver"
 SRC_URI="https://github.com/intel/intel-hybrid-driver/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/intel-hybrid-driver-${EGIT_COMMIT}"
 
-KEYWORDS="amd64 ~amd64-linux"
+KEYWORDS="amd64"
 LICENSE="MIT"
 SLOT="0"
 IUSE="wayland X"

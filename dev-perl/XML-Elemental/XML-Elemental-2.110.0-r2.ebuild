@@ -11,7 +11,7 @@ DESCRIPTION="XML::Parser style and generic classes for handling of XML data"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~hppa ~sparc x86"
 
 RDEPEND="
 	dev-perl/XML-Parser

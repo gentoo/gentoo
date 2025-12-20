@@ -13,7 +13,7 @@ SRC_URI="https://github.com/Unidata/netcdf-fortran/archive/v${PV}.tar.gz -> ${P}
 
 LICENSE="UCAR-Unidata"
 SLOT="0/7"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc examples static-libs"
 
 RDEPEND="sci-libs/netcdf"

@@ -11,7 +11,7 @@
 			<email>hawkowl@twistedmatrix.com</email>
 			<name>Amber Brown</name>
 		</maintainer>
-		<remote-id type="pypi">incremental</remote-id>
+		<remote-id type="pypi">Incremental</remote-id>
 		<remote-id type="github">twisted/incremental</remote-id>
 	</upstream>
 </pkgmetadata>

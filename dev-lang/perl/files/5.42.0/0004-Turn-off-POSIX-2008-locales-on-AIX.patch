@@ -1,0 +1,33 @@
+From 8c90537ed9c2dcac79bac7b3f9b457f1ad3abfa3 Mon Sep 17 00:00:00 2001
+Message-ID: <8c90537ed9c2dcac79bac7b3f9b457f1ad3abfa3.1763833678.git.sam@gentoo.org>
+In-Reply-To: <7dbc795b44eb54d41e1c6b30d8796525d65d52b5.1763833678.git.sam@gentoo.org>
+References: <7dbc795b44eb54d41e1c6b30d8796525d65d52b5.1763833678.git.sam@gentoo.org>
+From: Karl Williamson <khw@cpan.org>
+Date: Thu, 9 Oct 2025 17:27:31 -0600
+Subject: [PATCH 4/4] Turn off POSIX 2008 locales on AIX
+
+Fixes #23825
+
+From the discussion in that ticket, it appears that the problem is the
+OS.
+
+(cherry picked from commit 1f9d9f8d5ef1241dab5c762f1d6569567377cf87)
+---
+ hints/aix.sh | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/hints/aix.sh b/hints/aix.sh
+index 279365c85b..3e54e450fb 100644
+--- a/hints/aix.sh
++++ b/hints/aix.sh
+@@ -700,4 +700,7 @@ case "$osvers" in
+     ;;
+ esac
+ 
++# GH #23825
++d_duplocale='undef'
++
+ # EOF
+-- 
+2.52.0
+

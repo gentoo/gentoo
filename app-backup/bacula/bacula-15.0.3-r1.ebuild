@@ -88,7 +88,7 @@ pkg_setup() {
 
 	if use bacula-clientonly && use static && use qt5; then
 		ewarn
-		ewarn "Building statically linked 'bat' is not supported. Ignorig 'qt5' useflag."
+		ewarn "Building statically linked 'bat' is not supported. Ignoring 'qt5' useflag."
 		ewarn
 	fi
 }

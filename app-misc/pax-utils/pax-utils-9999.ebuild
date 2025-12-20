@@ -12,21 +12,23 @@ inherit meson python-single-r1
 
 DESCRIPTION="ELF utils that can check files for security relevant properties"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Hardened/PaX_Utilities"
+LICENSE="GPL-2"
+SLOT="0"
+IUSE="caps python seccomp test"
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/pax-utils.git"
 	inherit git-r3
+	IUSE+=" +man"
 else
 	SRC_URI="
 		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}.tar.xz
 		https://dev.gentoo.org/~vapier/dist/${P}.tar.xz
 	"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
+	IUSE+=" man"
 fi
 
-LICENSE="GPL-2"
-SLOT="0"
-IUSE="caps +man python seccomp test"
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 	test? ( python )

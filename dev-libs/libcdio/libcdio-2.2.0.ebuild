@@ -11,7 +11,7 @@ SRC_URI="https://github.com/libcdio/libcdio/releases/download/${PV}/${P}.tar.bz2
 
 LICENSE="FDL-1.2+ GPL-2+ GPL-3+ LGPL-2.1+"
 SLOT="0/19" # subslot is based on SONAME
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~x64-macos"
 IUSE="cddb +cxx minimal static-libs test"
 RESTRICT="!test? ( test )"
 

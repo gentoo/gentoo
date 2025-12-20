@@ -1,6 +1,18 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mike Gilbert <floppym@gentoo.org> (2025-12-15)
+# arch-specific platform values
+sys-boot/grub -grub_platforms_pc
+
+# Nowa Ammerlaan <nowa@gentoo.org> (2025-12-03)
+# media-video/ffmpeg-chromium is not available here
+dev-libs/nwjs ffmpeg-chromium
+
+# Alfred Wingate <parona@protonmail.com> (2025-11-23)
+# Requires dev-qt/qtwebengine
+media-sound/easyeffects webengine
+
 # Ionen Wolkens <ionen@gentoo.org> (2025-11-13)
 # media-libs/libvmaf is keyworded here
 media-libs/x265 -vmaf

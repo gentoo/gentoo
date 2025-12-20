@@ -17,6 +17,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-13)
+# media-gfx/asymptote is not stable here, bug #961740
+dev-tex/rubber test
+
+# Sam James <sam@gentoo.org> (2025-11-30)
+# sci-libs/blis does not have stable keywords
+sci-libs/flexiblas blis
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
 # dev-perl/Template-GD is not stable here. Bug #962143
 dev-perl/Template-Toolkit gd
@@ -78,7 +86,6 @@ app-emulation/libvirt nbd
 # Arthur Zamarin <arthurzam@gentoo.org> (2023-06-03)
 # Destabilizing x86 keywords on sci-*/* packages
 app-metrics/collectd collectd_plugins_gps
-dev-games/openscenegraph las
 dev-libs/efl physics
 media-libs/a52dec djbfft
 dev-python/graphviz test

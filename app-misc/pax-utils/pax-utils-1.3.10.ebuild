@@ -1,0 +1,78 @@
+# Copyright 2022-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+# Note: if bumping pax-utils because of syscall changes in glibc, please
+# revbump glibc and update the dependency in its ebuild for the affected
+# versions.
+PYTHON_COMPAT=( python3_{11..14} )
+
+inherit meson python-single-r1
+
+DESCRIPTION="ELF utils that can check files for security relevant properties"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Hardened/PaX_Utilities"
+LICENSE="GPL-2"
+SLOT="0"
+IUSE="caps python seccomp test"
+
+if [[ ${PV} == 9999 ]]; then
+	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/pax-utils.git"
+	inherit git-r3
+	IUSE+=" +man"
+else
+	SRC_URI="
+		https://dev.gentoo.org/~floppym/dist/${P}.tar.xz
+	"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
+	IUSE+=" man"
+fi
+
+REQUIRED_USE="
+	python? ( ${PYTHON_REQUIRED_USE} )
+	test? ( python )
+"
+RESTRICT="!test? ( test )"
+
+MY_PYTHON_DEPS="
+	${PYTHON_DEPS}
+	$(python_gen_cond_dep '
+		dev-python/pyelftools[${PYTHON_USEDEP}]
+	')
+"
+RDEPEND="
+	caps? ( >=sys-libs/libcap-2.24 )
+	python? ( ${MY_PYTHON_DEPS} )
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	caps? ( virtual/pkgconfig )
+	man? ( app-text/xmlto )
+	python? ( ${MY_PYTHON_DEPS} )
+"
+
+pkg_setup() {
+	if use test || use python; then
+		python-single-r1_pkg_setup
+	fi
+}
+
+src_configure() {
+	local emesonargs=(
+		"-Dlddtree_implementation=$(usex python python sh)"
+		$(meson_feature caps use_libcap)
+		$(meson_feature man build_manpages)
+		$(meson_use seccomp use_seccomp)
+		$(meson_use test tests)
+
+		# fuzzing is currently broken
+		-Duse_fuzzing=false
+	)
+	meson_src_configure
+}
+
+src_install() {
+	meson_src_install
+
+	use python && python_fix_shebang "${ED}"/usr/bin/lddtree
+}

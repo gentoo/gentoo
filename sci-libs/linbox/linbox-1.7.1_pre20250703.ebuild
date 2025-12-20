@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}-${GH_COMMIT}"
 # headers all say LGPL-2.1
 LICENSE="GPL-2+ LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~amd64 ~riscv ~x86 ~x64-macos"
 IUSE="doc opencl openmp"
 
 BDEPEND="doc? ( app-text/doxygen )"

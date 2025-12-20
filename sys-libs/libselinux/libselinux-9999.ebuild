@@ -68,35 +68,33 @@ multilib_src_compile() {
 		FTS_LDLIBS="$(usex elibc_musl '-lfts' '')" \
 		all
 
-	if multilib_is_native_abi && use ruby; then
-		building() {
-			einfo "Calling rubywrap for ${1}"
-			# Clean up .lo file to force rebuild
-			rm -f src/selinuxswig_ruby_wrap.lo || die
-			emake \
-				RUBY=${1} \
-				LDFLAGS="-fPIC ${LDFLAGS} -lpthread" \
-				LIBDIR="\$(PREFIX)/$(get_libdir)" \
-				SHLIBDIR="/$(get_libdir)" \
-				USE_LFS=y \
-				USE_PCRE2=y \
-				FTS_LDLIBS="$(usex elibc_musl '-lfts' '')" \
-				rubywrap
-		}
-		for RUBYTARGET in ${USE_RUBY}; do
-			use ruby_targets_${RUBYTARGET} || continue
+	if multilib_is_native_abi; then
+		if use python; then
+			pushd src >/dev/null || die
+			distutils-r1_src_compile
+			popd >/dev/null || die
+		fi
+		if use ruby; then
+			building() {
+				einfo "Calling rubywrap for ${1}"
+				# Clean up .lo file to force rebuild
+				rm -f src/selinuxswig_ruby_wrap.lo || die
+				emake \
+					RUBY=${1} \
+					LDFLAGS="-fPIC ${LDFLAGS} -lpthread" \
+					LIBDIR="\$(PREFIX)/$(get_libdir)" \
+					SHLIBDIR="/$(get_libdir)" \
+					USE_LFS=y \
+					USE_PCRE2=y \
+					FTS_LDLIBS="$(usex elibc_musl '-lfts' '')" \
+					rubywrap
+			}
+			for RUBYTARGET in ${USE_RUBY}; do
+				use ruby_targets_${RUBYTARGET} || continue
 
-			building ${RUBYTARGET}
-		done
-	fi
-}
-
-src_compile() {
-	multilib-minimal_src_compile
-
-	if use python; then
-		cd src || die
-		distutils-r1_src_compile
+				building ${RUBYTARGET}
+			done
+		fi
 	fi
 }
 
@@ -108,35 +106,35 @@ multilib_src_install() {
 		USE_PCRE2=y \
 		install
 
-	if multilib_is_native_abi && use ruby; then
-		installation() {
-			einfo "Calling install-rubywrap for ${1}"
-			# Forcing (re)build here as otherwise the resulting SO file is used for all ruby versions
-			rm src/selinuxswig_ruby_wrap.lo
-			emake DESTDIR="${D}" \
-				LIBDIR="\$(PREFIX)/$(get_libdir)" \
-				SHLIBDIR="/$(get_libdir)" \
-				RUBY=${1} \
-				USE_LFS=y \
-				USE_PCRE2=y \
-				install-rubywrap
-		}
-		for RUBYTARGET in ${USE_RUBY}; do
-			use ruby_targets_${RUBYTARGET} || continue
+	if multilib_is_native_abi; then
+		if use python; then
+			pushd src >/dev/null || die
+			mv selinux.py __init__.py || die
+			distutils-r1_src_install
+			popd >/dev/null || die
+		fi
+		if use ruby; then
+			installation() {
+				einfo "Calling install-rubywrap for ${1}"
+				# Forcing (re)build here as otherwise the resulting SO file is used for all ruby versions
+				rm src/selinuxswig_ruby_wrap.lo
+				emake DESTDIR="${D}" \
+					LIBDIR="\$(PREFIX)/$(get_libdir)" \
+					SHLIBDIR="/$(get_libdir)" \
+					RUBY=${1} \
+					USE_LFS=y \
+					USE_PCRE2=y \
+					install-rubywrap
+			}
+			for RUBYTARGET in ${USE_RUBY}; do
+				use ruby_targets_${RUBYTARGET} || continue
 
-			installation ${RUBYTARGET}
-		done
+				installation ${RUBYTARGET}
+			done
+		fi
 	fi
 
 	use static-libs || rm "${ED}"/usr/$(get_libdir)/*.a || die
-}
-
-multilib_src_install_all() {
-	if use python; then
-		cd src || die
-		mv selinux.py __init__.py || die
-		distutils-r1_src_install
-	fi
 }
 
 python_install() {

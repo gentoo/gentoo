@@ -15,7 +15,7 @@ SRC_URI="https://github.com/xroche/httrack/archive/refs/tags/${PV}.tar.gz -> ${P
 
 LICENSE="BSD GPL-3 public-domain"  # BSD and public-domain is from bundled Coucal
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 ppc x86"
 IUSE="static-libs"
 
 RDEPEND=">=virtual/zlib-1.2.5.1-r1:=

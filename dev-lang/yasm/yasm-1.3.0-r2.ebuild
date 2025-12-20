@@ -10,7 +10,7 @@ if [[ ${PV} == 9999* ]] ; then
 	inherit autotools git-r3
 else
 	SRC_URI="https://www.tortall.net/projects/yasm/releases/${P}.tar.gz"
-	KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~arm64-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86 ~arm64-macos ~x64-macos ~x64-solaris"
 fi
 
 DESCRIPTION="An assembler for x86 and x86_64 instruction sets"

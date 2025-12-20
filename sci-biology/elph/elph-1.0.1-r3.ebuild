@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN^^}/sources"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~amd64 ~x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.1-fix-build-system.patch

@@ -9,7 +9,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/metacity/"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 ~riscv"
 IUSE="+libcanberra vulkan xinerama"
 
 # TODO: libgtop could be optional, but no knob

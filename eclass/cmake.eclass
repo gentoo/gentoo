@@ -528,8 +528,8 @@ cmake_src_prepare() {
 	cmake_prepare
 }
 
-# @VARIABLE: MYCMAKEARGS
-# @DEFAULT_UNSET
+# @ECLASS_VARIABLE: MYCMAKEARGS
+# @USER_VARIABLE
 # @DESCRIPTION:
 # User-controlled environment variable containing arguments to be passed to
 # cmake in cmake_src_configure.
