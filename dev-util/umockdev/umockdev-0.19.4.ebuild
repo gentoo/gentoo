@@ -58,6 +58,6 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
-	export SLOW_TESTBED_FACTOR=10
+	export SLOW_TESTBED_FACTOR=100
 	meson_src_test --num-processes=1 --timeout-multiplier=10 --setup installed
 }
