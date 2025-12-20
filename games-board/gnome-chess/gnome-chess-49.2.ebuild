@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit gnome.org gnome2-utils meson readme.gentoo-r1 vala xdg
+inherit gnome.org gnome2-utils meson optfeature vala xdg
 
 DESCRIPTION="Play the classic two-player boardgame of chess"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-chess"
@@ -31,24 +31,16 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-DOC_CONTENTS="To be able to play against a computer you will need
-to install a chess engine package, for example games-board/gnuchess"
-
 src_prepare() {
 	default
 	vala_setup
 	xdg_environment_reset
 }
 
-src_install() {
-	meson_src_install
-	readme.gentoo_create_doc
-}
-
 pkg_postinst() {
 	xdg_pkg_postinst
 	gnome2_schemas_update
-	readme.gentoo_print_elog
+	optfeature "playing against the computer" games-board/gnuchess
 }
 
 pkg_postrm() {
