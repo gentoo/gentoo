@@ -23,9 +23,14 @@ RESTRICT="!test? ( test )"
 # 547922) has been dropped in v3.8.0 due to popular demand. With any
 # luck, enough time has passed that these segfaults no longer occur.
 RDEPEND="media-gfx/imagemagick:="
+
+# While it does support skipping tests, the test suite for pecl-imagick
+# doesn't accomodate many imagemagick build options. We could curate a
+# list of tests to remove in src_prepare() based on what USE flags are
+# set, but in my opinion, it would break too frequently.
 DEPEND="
 	${RDEPEND}
-	test? ( media-gfx/imagemagick:=[hdri,jpeg,png,svg,truetype,xml] )
+	test? ( media-gfx/imagemagick:=[fontconfig,-hardened,hdri,jpeg,png,svg,truetype,xml] )
 "
 
 PHP_EXT_ECONF_ARGS="--with-imagick=${EPREFIX}/usr"
