@@ -16,7 +16,7 @@ DESCRIPTION="PHP extension for interfacing with Redis"
 S="${WORKDIR}/${MY_P}"
 LICENSE="PHP-3.01"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv"
 IUSE="igbinary +json lz4 +session zstd"
 
 DEPEND="
