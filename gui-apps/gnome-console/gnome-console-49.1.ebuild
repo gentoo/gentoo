@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit gnome.org gnome2-utils meson xdg
+inherit gnome.org gnome2-utils meson virtualx xdg
 
 DESCRIPTION="A simple user-friendly terminal emulator for the GNOME desktop"
 HOMEPAGE="https://apps.gnome.org/Console/ https://gitlab.gnome.org/GNOME/console"
@@ -42,6 +42,10 @@ src_configure() {
 		$(meson_use test tests)
 	)
 	meson_src_configure
+}
+
+src_test() {
+	virtx meson_src_test
 }
 
 pkg_postinst() {
