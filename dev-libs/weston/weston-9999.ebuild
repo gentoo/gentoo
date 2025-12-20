@@ -96,7 +96,7 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}
-	>=dev-libs/wayland-protocols-1.33
+	>=dev-libs/wayland-protocols-1.46
 "
 BDEPEND="
 	${PYTHON_DEPS}
