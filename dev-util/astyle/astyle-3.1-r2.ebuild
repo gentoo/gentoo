@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/astyle/astyle_${PV}_linux.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/3.1"
-KEYWORDS="amd64 arm64 ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 arm64 ppc ppc64 ~riscv x86"
 IUSE="examples java static-libs"
 
 DEPEND="app-arch/xz-utils

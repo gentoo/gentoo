@@ -59,6 +59,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	local mycmakeargs=(
+		-DCMAKE_CXX_STANDARD=17
 		-DABSL_ENABLE_INSTALL="yes"
 		-DABSL_USE_EXTERNAL_GOOGLETEST="yes"
 		-DABSL_PROPAGATE_CXX_STD="yes"

@@ -14,7 +14,7 @@ HOMEPAGE="https://capturer.readthedocs.io/en/latest/
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~x86"
 
 RDEPEND="dev-python/humanfriendly[${PYTHON_USEDEP}]"
 

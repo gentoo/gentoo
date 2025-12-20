@@ -1,7 +1,6 @@
 #!/bin/bash
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
 source tests-common.sh || exit
 
 EAPI=7
@@ -153,25 +152,25 @@ out=$(test-flags-CC -finvalid-flag)
 ftend
 
 if type -P clang >/dev/null ; then
-tbegin "test-flags-CC (valid flags w/clang)"
-out=$(CC=clang test-flags-CC -O3)
-[[ $? -eq 0 && ${out} == "-O3" ]]
-ftend
+	tbegin "test-flags-CC (valid flags w/clang)"
+	out=$(CC=clang test-flags-CC -O3)
+	[[ $? -eq 0 && ${out} == "-O3" ]]
+	ftend
 
-tbegin "test-flags-CC (invalid flags w/clang)"
-out=$(CC=clang test-flags-CC -finvalid-flag)
-[[ $? -ne 0 && -z ${out} ]]
-ftend
+	tbegin "test-flags-CC (invalid flags w/clang)"
+	out=$(CC=clang test-flags-CC -finvalid-flag)
+	[[ $? -ne 0 && -z ${out} ]]
+	ftend
 
-tbegin "test-flags-CC (gcc-valid but clang-invalid flags)"
-out=$(CC=clang test-flags-CC -finline-limit=1200)
-[[ $? -ne 0 && -z ${out} ]]
-ftend
+	tbegin "test-flags-CC (gcc-valid but clang-invalid flags)"
+	out=$(CC=clang test-flags-CC -finline-limit=1200)
+	[[ $? -ne 0 && -z ${out} ]]
+	ftend
 
-tbegin "test-flags-CC (unused flags w/clang)"
-out=$(CC=clang test-flags-CC -Wl,-O1)
-[[ $? -eq 0 && ${out} == "-Wl,-O1" ]]
-ftend
+	tbegin "test-flags-CC (unused flags w/clang)"
+	out=$(CC=clang test-flags-CC -Wl,-O1)
+	[[ $? -ne 0 && -z ${out} ]]
+	ftend
 fi
 
 texit

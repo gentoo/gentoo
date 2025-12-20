@@ -26,4 +26,7 @@ via outlets (as traditionally in OpenStep); a new quick and intuitive
 syntax has been developed to make creating outlets as easy as
 possible.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">gnustep/libs-renaissance</remote-id>
+	</upstream>
 </pkgmetadata>

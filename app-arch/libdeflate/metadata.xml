@@ -11,7 +11,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag name="test">Build the test programs (requires <pkg>sys-libs/zlib</pkg>)</flag>
+		<flag name="test">Build the test programs (requires <pkg>virtual/zlib</pkg>)</flag>
 		<flag name="utils">Build the libdeflate-gzip program</flag>
 	</use>
 	<upstream>

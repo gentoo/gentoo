@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ IUSE="zlib bzip2"
 
 RDEPEND="
 	dev-libs/openssl:=
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib:= )
 	bzip2? ( app-arch/bzip2 )
 "
 

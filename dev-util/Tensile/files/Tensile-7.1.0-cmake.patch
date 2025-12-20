@@ -1,0 +1,10 @@
+--- a/Tensile/Source/CMakeLists.txt	2025-11-09 14:45:24.206159874 -0000
++++ b/Tensile/Source/CMakeLists.txt	2025-11-09 14:47:23.555541567 -0000
+@@ -50,6 +50,7 @@
+     endif()
+ endif()
+ 
++list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+ include(TensileSupportedArchitectures)
+ set(GPU_TARGETS "" CACHE STRING "AMD GFX targets to cross-compile")
+ 

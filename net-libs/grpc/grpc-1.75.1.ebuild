@@ -50,7 +50,7 @@ RDEPEND="
 	>=dev-libs/protobuf-31.1:=
 	dev-libs/xxhash
 	>=net-dns/c-ares-1.19.1:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	systemd? ( sys-apps/systemd:= )
 "
 DEPEND="

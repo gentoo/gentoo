@@ -11,7 +11,7 @@ SRC_URI="https://download.osgeo.org/geotiff/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/5"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86 ~x64-macos"
 # TODO: add tiff when resolved: https://github.com/OSGeo/libgeotiff/issues/125
 IUSE="doc jpeg zlib"
 
@@ -19,7 +19,7 @@ DEPEND="
 	>=sci-libs/proj-6.0.0:=
 	>=media-libs/tiff-3.9.1:=
 	jpeg? ( media-libs/libjpeg-turbo:= )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib:= )
 "
 RDEPEND="${DEPEND}"
 BDEPEND="

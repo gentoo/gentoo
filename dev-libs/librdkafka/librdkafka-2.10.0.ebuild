@@ -31,7 +31,7 @@ LIB_DEPEND="
 	sasl? ( dev-libs/cyrus-sasl:=[static-libs(+)] )
 	ssl? ( dev-libs/openssl:0=[static-libs(+)] )
 	zstd? ( app-arch/zstd:=[static-libs(+)] )
-	sys-libs/zlib:=[static-libs(+)]
+	virtual/zlib:=[static-libs(+)]
 "
 # which: https://github.com/confluentinc/librdkafka/pull/4353
 BDEPEND="

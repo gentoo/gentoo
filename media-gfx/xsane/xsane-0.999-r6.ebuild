@@ -9,19 +9,19 @@ DESCRIPTION="Graphical scanning frontend"
 HOMEPAGE="http://www.xsane.org/"
 SRC_URI="
 	http://www.xsane.org/download/${P}.tar.gz
-	https://dev.gentoo.org/~soap/distfiles/${PN}-0.998-patches-3.tar.xz
+	https://dev.gentoo.org/~soap/distfiles/${PN}-0.999-patches-4.tar.xz
 	https://dev.gentoo.org/~pacho/${PN}/${PN}-256x256.png
 "
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm ~arm64 ppc ppc64 ~sparc x86"
 IUSE="nls jpeg png tiff gimp lcms"
 
 DEPEND="
 	dev-libs/glib:2
 	media-gfx/sane-backends
-	sys-libs/zlib
+	virtual/zlib:=
 	x11-libs/gtk+:2
 	x11-misc/xdg-utils
 	jpeg? ( media-libs/libjpeg-turbo:= )
@@ -34,12 +34,8 @@ RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	# Apply multiple fixes from different distributions
-	"${WORKDIR}"/${PN}-0.998-patches-3
-	# Add support for lcms-2 (from Fedora)
-	"${FILESDIR}"/${PN}-0.999-lcms2.patch
-	# See bug #885311 and bug #899806
-	"${FILESDIR}"/${PN}-0.999-configure-clang16.patch
+	# Apply multiple fixes from different distributions, incl. Gentoo
+	"${WORKDIR}"/${PN}-0.999-patches-4
 )
 
 src_prepare() {

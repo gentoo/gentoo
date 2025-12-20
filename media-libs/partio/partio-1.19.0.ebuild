@@ -27,7 +27,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="${PYTHON_DEPS}
 	media-libs/freeglut
 	media-libs/glu
-	sys-libs/zlib
+	virtual/zlib:=
 	virtual/opengl
 "
 

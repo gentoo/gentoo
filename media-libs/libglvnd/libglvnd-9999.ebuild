@@ -1,12 +1,12 @@
-# Copyright 2018-2024 Gentoo Authors
+# Copyright 2018-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..14} )
 VIRTUALX_REQUIRED=manual
 
-inherit meson-multilib python-any-r1 virtualx
+inherit meson-multilib flag-o-matic python-any-r1 toolchain-funcs virtualx
 
 DESCRIPTION="The GL Vendor-Neutral Dispatch library"
 HOMEPAGE="https://gitlab.freedesktop.org/glvnd/libglvnd"
@@ -39,6 +39,12 @@ src_prepare() {
 	default
 	sed -i -e "/^PLATFORM_SYMBOLS/a '__gentoo_check_ldflags__'," \
 		bin/symbols-check.py || die
+}
+
+src_configure() {
+	# Workaround for bug #965545
+	tc-is-gcc && [[ $(gcc-major-version) -eq 16 ]] && filter-lto
+	meson-multilib_src_configure
 }
 
 multilib_src_configure() {

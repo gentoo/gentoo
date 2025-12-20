@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit cmake java-pkg-opt-2 python-single-r1
 
 DESCRIPTION="Translator library for raster geospatial data formats (includes OGR support)"
@@ -13,7 +13,7 @@ SRC_URI+=" test? ( https://download.osgeo.org/${PN}/${PV}/${PN}autotest-${PV}.ta
 
 LICENSE="BSD Info-ZIP MIT"
 SLOT="0/35" # subslot is libgdal.so.<SONAME>
-KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 ~riscv x86"
 IUSE="armadillo +curl cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 cpu_flags_x86_ssse3 doc fits geos gif gml hdf5 heif java jpeg jpeg2k lerc lzma mysql netcdf odbc ogdi opencl oracle parquet pdf png postgres python spatialite sqlite test webp xls zstd"
 RESTRICT="!test? ( test )"
 
@@ -50,7 +50,7 @@ DEPEND="
 	media-libs/tiff
 	>=sci-libs/libgeotiff-1.5.1-r1:=
 	>=sci-libs/proj-6.0.0:=
-	sys-libs/zlib[minizip(+)]
+	virtual/minizip:=
 	armadillo? ( sci-libs/armadillo:=[lapack] )
 	curl? ( net-misc/curl )
 	fits? ( sci-libs/cfitsio:= )
@@ -105,6 +105,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.9.1-poppler-24.12.patch
 	"${FILESDIR}"/${P}-poppler-25.0{2,5}.patch
 	"${FILESDIR}"/gdal-3.11.3-java-no-strict-aliasing.patch
+	"${FILESDIR}"/gdal-3.11.4-poppler-25.10.patch
 )
 
 pkg_setup() {

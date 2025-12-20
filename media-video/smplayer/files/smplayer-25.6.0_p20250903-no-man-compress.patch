@@ -1,0 +1,39 @@
+From ebaa8b67199e7510fd3722b922fd019b20a7b320 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 2 Nov 2025 19:43:16 +0100
+Subject: [PATCH 2/2] Do not compress man page
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ Makefile      | 1 -
+ smplayer.spec | 2 +-
+ 2 files changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 571e611..7970607 100644
+--- a/Makefile
++++ b/Makefile
+@@ -85,7 +85,6 @@ install: all
+ 
+ 	-install -d $(DESTDIR)$(PREFIX)/share/man/man1/
+ 	install -m 644 man/smplayer.1 $(DESTDIR)$(PREFIX)/share/man/man1/
+-	gzip -9 -f $(DESTDIR)$(PREFIX)/share/man/man1/smplayer.1
+ 
+ uninstall:
+ 	-rm -f $(PREFIX)/bin/smplayer
+diff --git a/smplayer.spec b/smplayer.spec
+index d5e9e56..26daa38 100644
+--- a/smplayer.spec
++++ b/smplayer.spec
+@@ -118,7 +118,7 @@ update-desktop-database &> /dev/null || :
+ %dir %{_datadir}/icons/hicolor/*/apps/
+ %{_datadir}/icons/hicolor/*/apps/%{name}.*
+ %{_datadir}/smplayer/
+-%{_mandir}/man1/smplayer.1.gz
++%{_mandir}/man1/smplayer.1
+ %{_docdir}/%{name}/
+ %{_bindir}/simple_web_server
+ %dir %{_datadir}/metainfo
+-- 
+2.51.2
+

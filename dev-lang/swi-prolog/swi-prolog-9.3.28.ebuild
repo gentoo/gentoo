@@ -20,7 +20,7 @@ else
 	SRC_URI="https://www.swi-prolog.org/download/devel/src/${REAL_P}.tar.gz"
 	S="${WORKDIR}/${REAL_P}"
 
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 ~ppc ~x86"
 fi
 
 LICENSE="BSD-2"
@@ -36,7 +36,7 @@ REQUIRED_USE="
 
 COMMON_DEPEND="
 	sys-libs/ncurses:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	virtual/libcrypt:=
 	!minimal? (
 		dev-libs/ossp-uuid

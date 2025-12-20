@@ -11,7 +11,7 @@ S=${WORKDIR}
 
 LICENSE="public-domain"
 SLOT="${PV}"
-KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~arm64-macos ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86 ~arm64-macos ~x64-macos"
 
 RDEPEND="
 	llvm-core/clang:${SLOT}

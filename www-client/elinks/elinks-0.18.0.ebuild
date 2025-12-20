@@ -5,7 +5,7 @@ EAPI=8
 
 GUILE_REQ_USE="deprecated"
 GUILE_COMPAT=( 2-2 3-0 )
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 LUA_COMPAT=( lua5-{1,2,3,4} luajit )
 
 inherit flag-o-matic guile-single meson lua-single python-single-r1
@@ -19,7 +19,7 @@ if [[ ${PV} == *9999 ]] ; then
 else
 	SRC_URI="https://github.com/rkd77/elinks/releases/download/v${PV}/${P}.tar.xz"
 
-	KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~mips ppc ppc64 ~riscv ~sparc x86 ~x64-macos ~x64-solaris"
 fi
 
 LICENSE="GPL-2"
@@ -68,7 +68,7 @@ RDEPEND="
 		x11-libs/libXt
 	)
 	xml? ( >=dev-libs/expat-1.95.4 )
-	zlib? ( >=sys-libs/zlib-1.1.4 )
+	zlib? ( >=virtual/zlib-1.1.4:= )
 	zstd? ( app-arch/zstd:= )
 "
 DEPEND="${RDEPEND}
@@ -85,6 +85,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${P}-sftp.patch
 	"${FILESDIR}"/${P}-build.patch
+	"${FILESDIR}"/${PN}-0.18.0-guile.patch
 )
 
 pkg_setup() {

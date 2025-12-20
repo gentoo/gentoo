@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{11..13} )
 
-inherit autotools python-single-r1 xdg
+inherit autotools flag-o-matic python-single-r1 xdg
 
 DESCRIPTION="Fully featured yet light and fast cross platform word processor"
 HOMEPAGE="http://www.abisource.com/"
@@ -16,7 +16,7 @@ S="${WORKDIR}/AbiWord-release-${PV}"
 
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ppc ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ppc ppc64 ~riscv ~x86"
 IUSE="calendar collab cups debug eds +goffice grammar +introspection latex map math +plugins readline redland spell wordperfect wmf thesaurus"
 # You need 'plugins' enabled if want to enable the extra plugins
 REQUIRED_USE="
@@ -91,6 +91,14 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/940907
+	#
+	# Upstream closed as wontfix. The bug is gone due to refactoring (?) in the
+	# unreleased 4.x branch. "The stable branch (3.0.x) will not get any
+	# significant changes."
+	filter-lto
+
 	local plugins=()
 
 	if use plugins; then

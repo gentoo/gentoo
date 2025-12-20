@@ -13,7 +13,7 @@ SRC_URI="http://antigrain.com/${P}.tar.gz"
 
 LICENSE="GPL-2 gpc? ( free-noncomm )"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~hppa ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 ~hppa ppc ~ppc64 ~sparc x86"
 IUSE="+gpc sdl static-libs +truetype +X"
 
 # preffer X with enabled xcb, really

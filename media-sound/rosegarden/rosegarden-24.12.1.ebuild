@@ -28,7 +28,7 @@ RDEPEND="
 	media-libs/libsamplerate:=
 	media-libs/libsndfile:=
 	sci-libs/fftw:3.0
-	sys-libs/zlib:=
+	virtual/zlib:=
 	virtual/jack
 	x11-libs/libSM:=
 	lirc? ( app-misc/lirc:= )

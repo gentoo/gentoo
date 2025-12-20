@@ -14,7 +14,7 @@ SLOT="4"
 IUSE="glade gtk-doc +introspection +vala"
 REQUIRED_USE="vala? ( introspection )"
 
-KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 
 RDEPEND="
 	>=dev-libs/glib-2.48:2

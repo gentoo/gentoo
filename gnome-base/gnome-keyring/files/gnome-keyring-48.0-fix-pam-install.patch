@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/964367
+
+From a2ca65d362e33a23ac8439bd3222cde90c4703a2 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Tue, 4 Nov 2025 13:48:11 +0200
+Subject: [PATCH] meson: install pam plugin to /lib64
+
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/pam/meson.build
++++ b/pam/meson.build
+@@ -33,7 +33,7 @@ libpam_gkr = shared_library('pam_gnome_keyring',
+   link_depends: pam_gkr_symbolmap,
+   include_directories: config_h_inc,
+   install: true,
+-  install_dir: get_option('libdir') / 'security',
++  install_dir: '/' / get_option('libdir') / 'security',
+ )
+ 
+ libpam_gkr_dep = declare_dependency(
+-- 
+2.51.2
+

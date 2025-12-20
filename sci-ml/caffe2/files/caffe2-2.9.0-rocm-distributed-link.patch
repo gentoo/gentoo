@@ -1,0 +1,28 @@
+USE_ROCM=ON USE_DISTRIBUTED=ON: fix *runtime* error: undefined symbol: rsmi_init
+
+Upstream bug: https://github.com/pytorch/pytorch/issues/158725
+--- a/cmake/Dependencies.cmake
++++ b/cmake/Dependencies.cmake
+@@ -1058,6 +1058,12 @@ if(USE_ROCM)
+       )
+     endif()
+ 
++    if(USE_DISTRIBUTED)
++      list(APPEND Caffe2_PUBLIC_HIP_DEPENDENCY_LIBS
++        rocm_smi64
++      )
++    endif()
++
+     # ---[ Kernel asserts
+     # Kernel asserts is disabled for ROCm by default.
+     # It can be turned on by turning on the env USE_ROCM_KERNEL_ASSERT to the build system.
+--- a/cmake/public/LoadHIP.cmake
++++ b/cmake/public/LoadHIP.cmake
+@@ -170,6 +170,7 @@ if(HIP_FOUND)
+   find_package_and_print_version(rocthrust REQUIRED)
+   find_package_and_print_version(hipsolver REQUIRED)
+   find_package_and_print_version(rocsolver REQUIRED)
++  find_package_and_print_version(rocm_smi REQUIRED)
+   # workaround cmake 4 build issue
+   if(CMAKE_VERSION VERSION_GREATER_EQUAL "4.0.0")
+     message(WARNING "Work around hiprtc cmake failure for cmake >= 4")

@@ -1,0 +1,43 @@
+From 3b0bab987d0e90f7481aed77affb6b3863d1e369 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Tue, 9 Sep 2025 15:42:18 +0200
+Subject: [PATCH] Only build collada test when importer/exporter is build
+
+See-also: https://bugs.gentoo.org/962559
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+index 74a00fd..a3ef574 100644
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -143,8 +143,6 @@ SET( IMPORTERS
+   unit/utBlendImportMaterials.cpp
+   unit/utBlenderWork.cpp
+   unit/utBVHImportExport.cpp
+-  unit/utColladaExport.cpp
+-  unit/utColladaImportExport.cpp
+   unit/utCSMImportExport.cpp
+   unit/utB3DImportExport.cpp
+   #unit/utM3DImportExport.cpp
+@@ -176,6 +174,18 @@ if(ASSIMP_BUILD_USD_IMPORTER)
+   )
+ endif()
+ 
++if(ASSIMP_BUILD_COLLADA_EXPORTER)
++  list( APPEND IMPORTERS
++    unit/utColladaExport.cpp
++  )
++endif()
++
++if(ASSIMP_BUILD_COLLADA_IMPORTER)
++  list( APPEND IMPORTERS
++    unit/utColladaImportExport.cpp
++  )
++endif()
++
+ SET( MATERIAL
+   unit/utMaterialSystem.cpp
+ )
+-- 
+2.51.0
+

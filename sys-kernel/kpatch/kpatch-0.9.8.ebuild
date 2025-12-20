@@ -23,7 +23,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	app-crypt/pesign
-	sys-libs/zlib
+	virtual/zlib:=
 	sys-apps/pciutils
 "
 

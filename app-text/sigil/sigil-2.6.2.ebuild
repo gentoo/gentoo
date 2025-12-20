@@ -18,7 +18,7 @@ S=${WORKDIR}/${P^}
 
 LICENSE="GPL-3+ Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="doc +plugins +system-mathjax"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -29,7 +29,7 @@ RDEPEND="
 	dev-qt/qtbase:6[concurrent,gui,network,widgets,xml]
 	dev-qt/qtwebengine:6[widgets]
 	dev-qt/qtsvg:6
-	sys-libs/zlib[minizip]
+	virtual/minizip:=
 	$(python_gen_cond_dep '
 		dev-python/css-parser[${PYTHON_USEDEP}]
 		dev-python/dulwich[${PYTHON_USEDEP}]

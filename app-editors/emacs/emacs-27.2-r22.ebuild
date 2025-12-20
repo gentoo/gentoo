@@ -36,7 +36,7 @@ else
 	PATCHES=("${WORKDIR}/patch")
 	SLOT="${PV%%.*}"
 	[[ ${PV} == *.*.* ]] && SLOT+="-vcs"
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~m68k ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~m68k ~mips ppc ppc64 ~riscv ~sparc x86 ~x64-macos"
 fi
 
 DESCRIPTION="The advanced, extensible, customizable, self-documenting editor"
@@ -65,7 +65,7 @@ RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui?]
 	ssl? ( net-libs/gnutls:0= )
 	systemd? ( sys-apps/systemd )
 	valgrind? ( dev-debug/valgrind )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib:= )
 	gui? ( !aqua? (
 		x11-libs/libICE
 		x11-libs/libSM

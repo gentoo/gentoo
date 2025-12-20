@@ -10,19 +10,12 @@
 	<name>Gentoo Base System</name>
 </maintainer>
 <use>
-	<flag name="device-mapper">
-		Enable support for devmapper. Required for LUKS or LVM volume detection.
-	</flag>
-	<flag name="efiemu">
-		Build and install the efiemu runtimes
-	</flag>
+	<flag name="device-mapper">Enable support for devmapper; required for LUKS or LVM volume detection</flag>
+	<flag name="efiemu">Build and install the efiemu runtimes</flag>
 	<flag name="fonts">Build and install fonts for the gfxterm module</flag>
-	<flag name="mount">
-		Build and install the grub-mount utility
-	</flag>
-	<flag name="libzfs">
-		Enable support for <pkg>sys-fs/zfs</pkg>
-	</flag>
+	<flag name="mount">Build and install the grub-mount utility</flag>
+	<flag name="libzfs">Enable support for <pkg>sys-fs/zfs</pkg></flag>
+	<flag name="protect">Build and install the grub-protect utility</flag>
 	<flag name="themes">Build and install GRUB themes (starfield)</flag>
 	<flag name="truetype">Build and install grub-mkfont conversion utility</flag>
 </use>

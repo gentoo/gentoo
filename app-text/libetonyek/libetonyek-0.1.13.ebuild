@@ -3,12 +3,14 @@
 
 EAPI=8
 
+inherit autotools
+
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://git.libreoffice.org/libetonyek.git"
-	inherit autotools git-r3
+	inherit git-r3
 else
 	SRC_URI="https://dev-www.libreoffice.org/src/libetonyek/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv x86"
 fi
 
 DESCRIPTION="Library parsing Apple Keynote presentations"
@@ -24,7 +26,7 @@ RDEPEND="
 	dev-libs/librevenge
 	dev-libs/libxml2:=
 	>=dev-util/mdds-2.1:1=
-	sys-libs/zlib
+	virtual/zlib:=
 "
 DEPEND="${RDEPEND}
 	dev-libs/boost
@@ -40,7 +42,7 @@ BDEPEND="
 src_prepare() {
 	default
 	[[ -d m4 ]] || mkdir "m4" || die
-	[[ ${PV} == *9999* ]] && eautoreconf
+	eautoreconf
 }
 
 src_configure() {
@@ -50,7 +52,6 @@ src_configure() {
 		$(use_with doc docs)
 		$(use_enable test tests)
 	)
-
 	econf "${myeconfargs[@]}"
 }
 

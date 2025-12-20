@@ -117,7 +117,7 @@ RDEPEND="
 	yajl? ( >=dev-libs/yajl-2:= )
 	zeroconf? ( net-dns/avahi[dbus] )
 	zip? ( dev-libs/zziplib:= )
-	zlib? ( sys-libs/zlib:= )
+	zlib? ( virtual/zlib:= )
 "
 
 DEPEND="

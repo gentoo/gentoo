@@ -13,7 +13,7 @@ else
 	MY_P="${MY_PN}-${PV}"
 	S="${WORKDIR}/${MY_P}"
 	SRC_URI="https://github.com/VirtualGL/${PN}/releases/download/${PV}/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="Run OpenGL applications remotely with full 3D hardware acceleration"

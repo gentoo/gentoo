@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ S="${WORKDIR}"/${PN}-${P}
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~amd64 ~arm ~ppc ~x86 ~x64-macos"
 IUSE="cairo test"
 RESTRICT="!test? ( test )"
 
@@ -26,7 +26,7 @@ RDEPEND="dev-db/sqlite
 	net-libs/http-parser:=
 	net-libs/libpcap
 	sys-libs/libcap-ng
-	sys-libs/zlib:=
+	virtual/zlib:=
 	cairo? (
 		x11-libs/cairo
 	)"

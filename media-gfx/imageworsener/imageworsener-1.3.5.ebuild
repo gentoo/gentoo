@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ IUSE="jpeg png static-libs test webp zlib"
 DEPEND="png? ( media-libs/libpng:0 )
 	jpeg? ( media-libs/libjpeg-turbo )
 	webp? ( >=media-libs/libwebp-0.1.3 )
-	zlib? ( sys-libs/zlib )"
+	zlib? ( virtual/zlib:= )"
 RDEPEND="${DEPEND}"
 
 REQUIRED_USE="test? ( jpeg png webp zlib )"

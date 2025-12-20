@@ -21,7 +21,7 @@ DEPEND="
 	media-libs/sdl-mixer[vorbis]
 	media-libs/sdl-sound[vorbis,mikmod]
 	media-libs/smpeg
-	sys-libs/zlib
+	virtual/zlib:=
 	virtual/opengl
 	virtual/glu"
 RDEPEND="${DEPEND}"

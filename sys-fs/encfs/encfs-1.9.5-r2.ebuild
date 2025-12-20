@@ -17,7 +17,7 @@ IUSE="nls"
 RDEPEND="dev-libs/openssl:=
 	dev-libs/tinyxml2:=
 	sys-fs/fuse:0=
-	sys-libs/zlib"
+	virtual/zlib:="
 DEPEND="${RDEPEND}"
 BDEPEND="dev-lang/perl
 	sys-devel/gettext

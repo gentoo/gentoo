@@ -9,7 +9,7 @@ DESCRIPTION="Advanced Internet Whois client capable of recursive queries"
 HOMEPAGE="https://github.com/jonasob/jwhois/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-3+"
+LICENSE="GPL-3+ LGPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~hppa ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="idn nls"
@@ -22,7 +22,13 @@ PATCHES=(
 	"${FILESDIR}"/${P}-connect-logic.patch
 	"${FILESDIR}"/${P}-avoid-implicit-declarations.patch
 	"${FILESDIR}"/${P}-add-timeout_init-prototype.patch
+	"${FILESDIR}"/${P}-c23.patch
 )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	econf \
@@ -30,7 +36,6 @@ src_configure() {
 		--without-cache \
 		$(use_enable nls) \
 		$(use_with idn libidn)
-	eautoreconf
 }
 
 src_compile(){

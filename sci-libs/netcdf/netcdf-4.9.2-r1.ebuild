@@ -13,14 +13,14 @@ S="${WORKDIR}"/${PN}-c-${PV}
 LICENSE="UCAR-Unidata"
 # SONAME of libnetcdf.so
 SLOT="0/19"
-KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 ~riscv ~x86"
 IUSE="blosc bzip2 +dap doc examples hdf +hdf5 mpi szip test zstd"
 RESTRICT="!test? ( test )"
 
 # NOTE OPTION(ENABLE_HDF4 "Build netCDF-4 with HDF4 read capability(HDF4, HDF5 and Zlib required)." OFF)
 RDEPEND="
 	dev-libs/libxml2:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	blosc? ( dev-libs/c-blosc:= )
 	bzip2? ( app-arch/bzip2:= )
 	dap? ( net-misc/curl:= )

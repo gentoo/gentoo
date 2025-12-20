@@ -49,7 +49,7 @@ else
 			https://github.com/Kitware/CMake/releases/download/v$(ver_cut 1-3)/${MY_P}-SHA-256.txt.asc
 		)"
 
-		KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+		KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 
 		BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-bradking-20240902 )"
 	fi
@@ -72,7 +72,7 @@ RDEPEND="
 	>=dev-libs/jsoncpp-1.9.2-r2:0=
 	>=dev-libs/libuv-1.51.0-r1:=
 	>=net-misc/curl-7.21.5[ssl]
-	sys-libs/zlib
+	virtual/zlib:=
 	virtual/pkgconfig
 	dap? ( dev-cpp/cppdap )
 	gui? ( dev-qt/qtbase:6[gui,widgets] )

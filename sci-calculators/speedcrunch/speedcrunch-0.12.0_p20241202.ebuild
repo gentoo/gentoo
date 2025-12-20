@@ -14,7 +14,7 @@ CMAKE_USE_DIR="${S}/src"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 DEPEND="
 	dev-qt/qtbase:6[gui,widgets]

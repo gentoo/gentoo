@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/knu/ruby-unf"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="test"
 
 ruby_add_rdepend "dev-ruby/unf_ext"

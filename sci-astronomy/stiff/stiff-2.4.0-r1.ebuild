@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,13 +11,13 @@ SRC_URI="http://www.astromatic.net/download/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc threads"
 
 RDEPEND="
 	media-libs/tiff:=
 	media-libs/libjpeg-turbo:=
-	sys-libs/zlib:0="
+	virtual/zlib:="
 DEPEND="${RDEPEND}"
 
 PATCHES=(

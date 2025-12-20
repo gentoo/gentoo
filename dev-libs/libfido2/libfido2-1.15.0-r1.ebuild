@@ -18,7 +18,7 @@ RESTRICT="!test? ( test )"
 DEPEND="
 	dev-libs/libcbor:=
 	dev-libs/openssl:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	virtual/libudev:=
 	hidapi? ( dev-libs/hidapi )
 	smartcard? ( sys-apps/pcsc-lite )

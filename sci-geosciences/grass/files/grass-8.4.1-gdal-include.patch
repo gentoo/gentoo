@@ -1,0 +1,30 @@
+https://bugs.gentoo.org/831600
+https://github.com/OSGeo/grass/issues/4258
+https://github.com/OSGeo/grass/pull/6631
+
+From 06ccd10965b6fbc7f7fd0675bf01fe881619f075 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Mon, 17 Nov 2025 04:13:58 +0200
+Subject: [PATCH] make: pass GDAL include dirs to proj
+
+vector_inc and vedit_inc don't need this treatment as VECT_CFLAGS has it
+added already. This would conform to how its done in the CMakeLists.txt
+as well.
+
+Oddly enough this isn't a fatal error though. So if anyone hit a build
+failure and thought this was the issue should look further into their
+builds logs for the actual cause.
+
+Bug: https://github.com/OSGeo/grass/issues/4258
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/python/libgrass_interface_generator/Makefile
++++ b/python/libgrass_interface_generator/Makefile
+@@ -52,7 +52,7 @@ segment_HDRS    = segment.h defs/segment.h
+ rowio_HDRS      = rowio.h defs/rowio.h
+ temporal_HDRS   = temporal.h
+ 
+-proj_INC        = $(PROJINC)
++proj_INC        = $(PROJINC) $(GDALCFLAGS)
+ vector_INC      = $(VECT_INC) $(VECT_CFLAGS)
+ vedit_INC       = $(VECT_INC) $(VECT_CFLAGS)
+ 

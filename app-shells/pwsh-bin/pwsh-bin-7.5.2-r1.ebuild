@@ -31,7 +31,7 @@ RDEPEND="
 		dev-util/lttng-ust:0/2.12
 	)
 	sys-libs/pam:0/0
-	sys-libs/zlib:0/1
+	virtual/zlib:0/1
 	|| (
 		dev-libs/openssl-compat:1.0.0
 		=dev-libs/openssl-1.0*:0/0

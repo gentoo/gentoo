@@ -13,7 +13,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~hppa ppc ppc64 ~sparc x86"
 IUSE="doc examples"
 # tests need X display
 # and are interactive so virtualx will not help

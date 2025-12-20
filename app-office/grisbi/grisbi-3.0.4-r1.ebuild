@@ -8,17 +8,17 @@ inherit gnome2
 DESCRIPTION="Grisbi is a personal accounting application for Linux"
 HOMEPAGE="http://www.grisbi.org https://github.com/grisbi/grisbi"
 SRC_URI="https://downloads.sourceforge.net/${PN}/grisbi%20stable/$(ver_cut 1-2).x/${P}.tar.bz2"
-IUSE="goffice nls ofx ssl"
-
 LICENSE="GPL-2+"
+
 SLOT="0"
 KEYWORDS="amd64 ~ppc ~x86"
+IUSE="goffice nls ofx ssl"
 
 RDEPEND="
 	dev-libs/glib:2
 	dev-libs/libxml2:2=
 	gnome-extra/libgsf
-	sys-libs/zlib
+	virtual/zlib:=
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3

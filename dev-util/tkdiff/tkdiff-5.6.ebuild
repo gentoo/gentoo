@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${PV}/${MYP}.zip"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~ppc ~x86"
 
 RDEPEND="dev-lang/tk"
 DEPEND="${RDEPEND}"

@@ -10,31 +10,9 @@ inherit eapi9-ver flag-o-matic meson-multilib toolchain-funcs
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/HansKristian-Work/vkd3d-proton.git"
-	EGIT_SUBMODULES=(
-		# uses hacks / recent features and easily breaks, keep bundled headers
-		# (also cross-compiled and -I/usr/include is troublesome)
-		khronos/{SPIRV,Vulkan}-Headers
-		subprojects/dxil-spirv
-		subprojects/dxil-spirv/third_party/spirv-headers # skip cross/tools
-	)
 else
-	HASH_VKD3D= # match tag on bumps
-	HASH_DXIL=
-	HASH_SPIRV=
-	HASH_SPIRV_DXIL=
-	HASH_VULKAN=
-	SRC_URI="
-		https://github.com/HansKristian-Work/vkd3d-proton/archive/refs/tags/v${PV}.tar.gz
-			-> ${P}.tar.gz
-		https://github.com/HansKristian-Work/dxil-spirv/archive/${HASH_DXIL}.tar.gz
-			-> dxil-spirv-${HASH_DXIL}.tar.gz
-		https://github.com/KhronosGroup/SPIRV-Headers/archive/${HASH_SPIRV}.tar.gz
-			-> spirv-headers-${HASH_SPIRV}.tar.gz
-		https://github.com/KhronosGroup/SPIRV-Headers/archive/${HASH_SPIRV_DXIL}.tar.gz
-			-> spirv-headers-${HASH_SPIRV_DXIL}.tar.gz
-		https://github.com/KhronosGroup/Vulkan-Headers/archive/${HASH_VULKAN}.tar.gz
-			-> vulkan-headers-${HASH_VULKAN}.tar.gz
-	"
+	# tarball is same as upstream except for including git submodules
+	SRC_URI="https://dev.gentoo.org/~ionen/distfiles/${P}.tar.xz"
 	KEYWORDS="-* ~amd64 ~x86"
 fi
 
@@ -83,31 +61,19 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	if [[ ${PV} != 9999 ]]; then
-		rmdir khronos/{SPIRV,Vulkan}-Headers subprojects/dxil-spirv || die
-		mv ../dxil-spirv-${HASH_DXIL} subprojects/dxil-spirv || die
-		mv ../SPIRV-Headers-${HASH_SPIRV} khronos/SPIRV-Headers || die
-		mv ../Vulkan-Headers-${HASH_VULKAN} khronos/Vulkan-Headers || die
-
-		rmdir subprojects/dxil-spirv/third_party/spirv-headers || die
-		# dxil and vkd3d's spirv headers sometime mismatch and are incompatible
-		if [[ ${HASH_SPIRV} == "${HASH_SPIRV_DXIL}" ]]; then
-			ln -s ../../../khronos/SPIRV-Headers \
-				subprojects/dxil-spirv/third_party/spirv-headers || die
-		else
-			mv ../SPIRV-Headers-${HASH_SPIRV_DXIL} \
-				subprojects/dxil-spirv/third_party/spirv-headers || die
-		fi
-	fi
-
 	default
 
 	sed -i "/^basedir=/s|=.*|=${EPREFIX}/usr/lib/${PN}|" setup_vkd3d_proton.sh || die
 
 	if [[ ${PV} != 9999 ]]; then
+		# update to match version+hash of release tag on bump
+		local tag_ver=
+		local tag_hash=
+		[[ ${PV} == ${tag_ver} ]] || die "hash has not been updated"
+
 		# without .git, meson sets vkd3d_build as 0x${PV} leading to failure
-		sed -i "s/@VCS_TAG@/${HASH_VKD3D::15}/" vkd3d_build.h.in || die
-		sed -i "s/@VCS_TAG@/${HASH_VKD3D::7}/" vkd3d_version.h.in || die
+		sed -i "s/@VCS_TAG@/${tag_hash::15}/" vkd3d_build.h.in || die
+		sed -i "s/@VCS_TAG@/${tag_hash::7}/" vkd3d_version.h.in || die
 	fi
 }
 

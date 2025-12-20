@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="cpu_flags_x86_fma3 cpu_flags_x86_fma4 doc fortran qd static-libs"
 
 DEPEND="qd? ( sci-libs/qd[fortran=] )"

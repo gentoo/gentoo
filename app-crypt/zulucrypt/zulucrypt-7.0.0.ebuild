@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,6 +28,11 @@ DEPEND="
 RDEPEND="${DEPEND}
 	udev? ( virtual/udev )"
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	# PR pending https://github.com/mhogomchungu/zuluCrypt/pull/241.patch
+	"${FILESDIR}"/${PN}-7.0.0-fix_linking.patch
+)
 
 src_configure() {
 	local mycmakeargs=(

@@ -1,6 +1,22 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mike Gilbert <floppym@gentoo.org> (2025-12-15)
+# arch-specific platform values
+sys-boot/grub -grub_platforms_pc
+
+# Nowa Ammerlaan <nowa@gentoo.org> (2025-12-03)
+# media-video/ffmpeg-chromium is not available here
+dev-libs/nwjs ffmpeg-chromium
+
+# Alfred Wingate <parona@protonmail.com> (2025-11-23)
+# Requires dev-qt/qtwebengine
+media-sound/easyeffects webengine
+
+# Ionen Wolkens <ionen@gentoo.org> (2025-11-13)
+# media-libs/libvmaf is keyworded here
+media-libs/x265 -vmaf
+
 # Michał Górny <mgorny@gentoo.org> (2025-10-03)
 # Now keyworded on x86 too.
 sci-libs/flexiblas -system-blas
@@ -230,11 +246,6 @@ app-vim/jedi test
 # Ben Kohler <bkohler@gentoo.org> (2022-06-07)
 # Disable 64bit builds on x86
 sys-apps/memtest86+ bios64 uefi64 iso64
-
-# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
-# Untested useflag on other arches, needs keywording
-media-video/ffmpeg vmaf
-media-video/ffmpeg-compat vmaf
 
 # Sam James <sam@gentoo.org> (2022-03-10)
 # dev-util/hip and its rocm dependencies not keyworded here
@@ -478,10 +489,6 @@ sys-kernel/installkernel -systemd-boot -ukify -uki
 # Ben de Groot <yngwin@gentoo.org> (2015-03-15)
 # media-libs/libbdplus is keyworded on x86, so unmask the useflag
 media-libs/libbluray -bdplus
-
-# Lars Wendler <polynomial-c@gentoo.org> (2014-04-23)
-# Works on 32bit x86
-media-sound/lmms -vst
 
 # Samuli Suominen <ssuominen@gentoo.org> (2014-02-16)
 # Still considered experimental by upstream:

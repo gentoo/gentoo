@@ -11,13 +11,13 @@ HOMEPAGE="http://spruce.sourceforge.net/gmime/"
 
 LICENSE="LGPL-2.1"
 SLOT="2.6"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ppc ppc64 ~sparc x86 ~x64-solaris"
 IUSE="doc smime test vala"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/glib:2
-	sys-libs/zlib
+	virtual/zlib:=
 	smime? ( >=app-crypt/gpgme-1.1.6:= )
 	vala? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "

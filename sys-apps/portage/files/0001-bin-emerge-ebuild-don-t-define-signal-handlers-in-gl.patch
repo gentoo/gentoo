@@ -1,0 +1,77 @@
+From d7d6fd54f1c936e89c5e4467c6c1f33b217325ca Mon Sep 17 00:00:00 2001
+Message-ID: <d7d6fd54f1c936e89c5e4467c6c1f33b217325ca.1766045192.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Tue, 16 Dec 2025 09:36:27 +0000
+Subject: [PATCH] bin: emerge, ebuild: don't define signal handlers in global
+ scope
+
+This breaks when `emerge` is frozen. Do what we do in `egencache`. We
+do need to use the same boilerplate in all bin/* though...
+
+Bug: https://bugs.gentoo.org/941956
+Bug: https://bugs.gentoo.org/967199
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ bin/ebuild | 10 +++++-----
+ bin/emerge | 10 +++++-----
+ 2 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/bin/ebuild b/bin/ebuild
+index 0c6369e016..3fc6e334cb 100755
+--- a/bin/ebuild
++++ b/bin/ebuild
+@@ -22,11 +22,6 @@ def debug_signal(_signum, _frame):
+     pdb.set_trace()
+ 
+ 
+-# Prevent "[Errno 32] Broken pipe" exceptions when writing to a pipe.
+-signal.signal(signal.SIGPIPE, signal.SIG_DFL)
+-signal.signal(signal.SIGTERM, signal_interrupt)
+-signal.signal(signal.SIGUSR1, debug_signal)
+-
+ import argparse
+ from os import path as osp
+ import shlex
+@@ -61,6 +56,11 @@ from _emerge.RootConfig import RootConfig
+ 
+ 
+ def main():
++    # Prevent "[Errno 32] Broken pipe" exceptions when writing to a pipe.
++    signal.signal(signal.SIGPIPE, signal.SIG_DFL)
++    signal.signal(signal.SIGTERM, signal_interrupt)
++    signal.signal(signal.SIGUSR1, debug_signal)
++
+     portage.process.sanitize_fds()
+     description = "See the ebuild(1) man page for more info"
+     usage = "Usage: ebuild <ebuild file> <command> [command] ..."
+diff --git a/bin/emerge b/bin/emerge
+index 9e5d59cb04..d4f50fa9a3 100755
+--- a/bin/emerge
++++ b/bin/emerge
+@@ -22,11 +22,6 @@ def debug_signal(_signum, _frame):
+     pdb.set_trace()
+ 
+ 
+-# Prevent "[Errno 32] Broken pipe" exceptions when writing to a pipe.
+-signal.signal(signal.SIGPIPE, signal.SIG_DFL)
+-signal.signal(signal.SIGTERM, signal_interrupt)
+-signal.signal(signal.SIGUSR1, debug_signal)
+-
+ from os import path as osp
+ 
+ if osp.isfile(
+@@ -46,6 +41,11 @@ from _emerge.main import emerge_main
+ 
+ 
+ def main():
++    # Prevent "[Errno 32] Broken pipe" exceptions when writing to a pipe.
++    signal.signal(signal.SIGPIPE, signal.SIG_DFL)
++    signal.signal(signal.SIGTERM, signal_interrupt)
++    signal.signal(signal.SIGUSR1, debug_signal)
++
+     portage.process.sanitize_fds()
+     try:
+         retval = emerge_main()
+-- 
+2.52.0
+

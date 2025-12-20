@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Hashes (and objects based on hashes) with encrypting fields"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~mips ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~hppa ~mips ~ppc x86"
 
 RDEPEND="dev-perl/Crypt-Blowfish
 	dev-perl/Crypt-DES

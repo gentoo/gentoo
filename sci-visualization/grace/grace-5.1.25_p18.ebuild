@@ -15,13 +15,13 @@ SRC_URI="
 
 SLOT="0"
 LICENSE="GPL-2 LGPL-2"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="fftw fortran jpeg netcdf png"
 
 DEPEND="
 	media-libs/t1lib
 	media-libs/tiff:=
-	sys-libs/zlib
+	virtual/zlib:=
 	>=x11-libs/motif-2.3:0
 	x11-libs/xbae
 	fftw? ( sci-libs/fftw:3.0= )

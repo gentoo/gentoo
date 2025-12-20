@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="sqlite"  # bug 572440
 
 inherit desktop flag-o-matic python-single-r1 toolchain-funcs xdg
@@ -54,17 +54,28 @@ RDEPEND="
 	sys-libs/gdbm:=
 	sys-libs/ncurses:=
 	sci-libs/proj:=
-	sys-libs/zlib
+	virtual/zlib:=
 	media-libs/libglvnd
 	media-libs/glu
 	blas? (
-		virtual/cblas[eselect-ldso(+)]
-		virtual/blas[eselect-ldso(+)]
+		|| (
+			virtual/cblas[eselect-ldso(+)]
+			virtual/cblas[flexiblas(-)]
+		)
+		|| (
+			virtual/blas[eselect-ldso(+)]
+			virtual/blas[flexiblas(-)]
+		)
 	)
 	bzip2? ( app-arch/bzip2:= )
 	fftw? ( sci-libs/fftw:3.0= )
 	geos? ( sci-libs/geos:= )
-	lapack? ( virtual/lapack[eselect-ldso(+)] )
+	lapack? (
+		|| (
+			virtual/lapack[eselect-ldso(+)]
+			virtual/lapack[flexiblas(-)]
+		)
+	)
 	mysql? ( dev-db/mysql-connector-c:= )
 	netcdf? ( sci-libs/netcdf:= )
 	odbc? ( dev-db/unixODBC )
@@ -108,7 +119,7 @@ pkg_pretend() {
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 
-	if use lapack; then
+	if use lapack && has_version "virtual/lapack[eselect-ldso(+)]"; then
 		local mylapack=$(eselect lapack show)
 		if [[ -z "${mylapack/.*reference.*/}" ]] && \
 			[[ -z "${mylapack/.*atlas.*/}" ]]; then
@@ -119,7 +130,7 @@ pkg_setup() {
 		fi
 	fi
 
-	if use blas; then
+	if use blas && has_version "virtual/blas[eselect-ldso(+)]"; then
 		local myblas=$(eselect blas show)
 		if [[ -z "${myblas/.*reference.*/}" ]] && \
 			[[ -z "${myblas/.*atlas.*/}" ]]; then
@@ -266,8 +277,7 @@ os.environ\[\"GRASS_PYTHON\"\] = \"${EPYTHON}\":" \
 		-i "${ED}"/usr/bin/grass || die
 
 	if use X; then
-		local GUI="--gui"
-		make_desktop_entry "/usr/bin/grass ${GUI}" "${PN}" "${PN}-48x48" "Science;Education"
+		make_desktop_entry --eapi9 grass -a "--gui" -n "${PN}" -i "${PN}-48x48" -c "Science;Education"
 		doicon -s 48 gui/icons/${PN}-48x48.png
 	fi
 

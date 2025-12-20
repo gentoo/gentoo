@@ -14,3 +14,4 @@ sys-libs/libunwind abi_x86_32 abi_x86_64
 llvm-runtimes/libunwind abi_x86_32 abi_x86_64
 sys-libs/ncurses abi_x86_32 abi_x86_64
 sys-libs/zlib abi_x86_32 abi_x86_64
+virtual/zlib abi_x86_32 abi_x86_64

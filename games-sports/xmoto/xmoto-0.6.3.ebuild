@@ -33,7 +33,7 @@ RDEPEND="
 	media-libs/sdl2-net
 	media-libs/sdl2-ttf
 	net-misc/curl
-	sys-libs/zlib:=
+	virtual/zlib:=
 	nls? ( virtual/libintl )
 	system-ode? ( <dev-games/ode-0.16[double-precision=] )
 "

@@ -3,6 +3,7 @@
 
 EAPI=8
 
+VALA_USE_DEPEND=vapigen
 inherit gnome.org meson vala virtualx
 
 DESCRIPTION="Shumate is a GTK toolkit providing widgets for embedded maps"
@@ -29,11 +30,15 @@ DEPEND="${RDEPEND}
 	sysprof? ( dev-util/sysprof-capture:4 )
 "
 BDEPEND="
+	dev-util/glib-utils
+	dev-util/gperf
 	gtk-doc? ( >=dev-util/gi-docgen-2021.1 )
 	vala? ( $(vala_depend) )
 "
 
 src_configure() {
+	use vala && vala_setup
+
 	local emesonargs=(
 		$(meson_use introspection gir)
 		$(meson_use vala vapi)

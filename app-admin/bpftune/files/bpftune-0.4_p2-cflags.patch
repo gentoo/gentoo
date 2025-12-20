@@ -1,0 +1,13 @@
+diff --git a/src/Makefile b/src/Makefile
+index b42f945..c703321 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -57,7 +57,7 @@ endif
+ VERSION = 0.4.2
+ VERSION_SCRIPT  := libbpftune.map
+ 
+-CFLAGS = -fPIC -Wall -Wextra -g -I../include -std=c99
++CFLAGS += -fPIC -Wall -Wextra -g -I../include -std=c99
+ 
+ CFLAGS += -DBPFTUNE_VERSION='"$(BPFTUNE_VERSION)"' \
+ 	  -DBPFTUNER_PREFIX_DIR='"$(prefix)"' \

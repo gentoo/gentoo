@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-flashback/"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 ~riscv"
 IUSE="elogind systemd"
 REQUIRED_USE="^^ ( elogind systemd )"
 

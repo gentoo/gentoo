@@ -11,7 +11,7 @@ SRC_URI="https://github.com/lxde/lxsession/archive/refs/tags/${PV}.tar.gz -> ${P
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~riscv ~x86 ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~riscv ~x86"
 IUSE="nls upower"
 # No real tests and as of 0.5.6, fails on an nls linting issue.
 RESTRICT="test"

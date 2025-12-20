@@ -42,7 +42,7 @@ COMMON_DEPEND="
 	>=dev-libs/libpcre2-10.34:=
 	>=sys-apps/texinfo-4.7-r1
 	sys-libs/ncurses:0=
-	>=sys-libs/zlib-1.2.3:0=
+	>=virtual/zlib-1.2.3:=
 	virtual/libcrypt:=
 	!bindist? (
 		sys-libs/binutils-libs:0=
@@ -228,6 +228,7 @@ src_prepare() {
 	eapply "${FILESDIR}"/${PN}-10.6.12-gcc-13.patch
 	eapply "${WORKDIR}"/${PN}-10.6-columnstore-with-boost-1.85.patch
 	eapply "${FILESDIR}"/${PN}-10.6.21-debug.patch
+	eapply "${FILESDIR}"/${PN}-wsrep-gcc-15.patch
 
 	eapply_user
 

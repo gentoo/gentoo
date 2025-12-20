@@ -38,7 +38,7 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 	sqlite? ( dev-db/sqlite:3 )
 	swig? ( dev-lang/swig:= )
-	zlib? ( sys-libs/zlib:= )
+	zlib? ( virtual/zlib:= )
 "
 DEPEND="
 	${RDEPEND}

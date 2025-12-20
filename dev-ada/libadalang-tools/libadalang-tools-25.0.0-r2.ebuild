@@ -3,7 +3,7 @@
 
 EAPI=8
 
-ADA_COMPAT=( gcc_{14..15} )
+ADA_COMPAT=( gcc_{14..16} )
 inherit ada multiprocessing
 
 DESCRIPTION="Libadalang-based tools: gnatpp, gnatmetric and gnatstub"
@@ -33,6 +33,7 @@ src_prepare() {
 	default
 	rm -r testsuite/tests/metric/agg.RC12-009 || die
 	rm -r testsuite/tests/test/tc_json_dump_with_gen || die
+	rm -r testsuite/tests/test/136_tgen_generics || die
 	rm -r testsuite/tests/pp/agg.P510-022 || die
 	rm -r testsuite/tests/stub/agg.S410-054 || die
 }

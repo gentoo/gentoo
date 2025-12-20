@@ -1,0 +1,66 @@
+https://lore.kernel.org/linux-xfs/20251205143154.366055-2-aalbersh@kernel.org/
+https://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git/commit/?h=for-next&id=3147d1d643c8278f1b75dedf3a64037bece7da53
+
+From 3147d1d643c8278f1b75dedf3a64037bece7da53 Mon Sep 17 00:00:00 2001
+From: Arkadiusz Miśkiewicz <arekm@maven.pl>
+Date: Fri, 5 Dec 2025 15:31:48 +0100
+Subject: libfrog: fix incorrect FS_IOC_FSSETXATTR argument to ioctl()
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+xfsprogs 6.17.0 has broken project quota due to incorrect argument
+passed to FS_IOC_FSSETXATTR ioctl(). Instead of passing struct fsxattr,
+struct file_attr was passed.
+
+# LC_ALL=C /usr/sbin/xfs_quota -x -c "project -s -p /home/xxx 389701" /home
+Setting up project 389701 (path /home/xxx)...
+xfs_quota: cannot set project on /home/xxx: Invalid argument
+Processed 1 (/etc/projects and cmdline) paths for project 389701 with
+recursion depth infinite (-1).
+
+ioctl(5, FS_IOC_FSSETXATTR, {fsx_xflags=FS_XFLAG_PROJINHERIT|FS_XFLAG_HASATTR, fsx_extsize=0, fsx_projid=0, fsx_cowextsize=389701}) = -1 EINVAL (Invalid argument)
+
+There seems to be a double mistake which hides the original ioctl()
+argument bug on old kernel with xfsprogs built against it. The size of
+fa_xflags was also wrong in xfsprogs's linux.h header. This way when
+xfsprogs is compiled on newer kernel but used with older kernel this bug
+uncovers.
+
+Reviewed-by: Darrick J. Wong <djwong@kernel.org>
+Reviewed-by: Christoph Hellwig <hch@lst.de>
+Signed-off-by: Arkadiusz Miśkiewicz <arekm@maven.pl>
+Signed-off-by: Andrey Albershteyn <aalbersh@kernel.org>
+---
+ include/linux.h     | 2 +-
+ libfrog/file_attr.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/include/linux.h b/include/linux.h
+index cea468d2b9..3ea9016272 100644
+--- a/include/linux.h
++++ b/include/linux.h
+@@ -214,7 +214,7 @@ struct fsxattr {
+  * fsxattr
+  */
+ struct file_attr {
+-	__u32	fa_xflags;
++	__u64	fa_xflags;
+ 	__u32	fa_extsize;
+ 	__u32	fa_nextents;
+ 	__u32	fa_projid;
+diff --git a/libfrog/file_attr.c b/libfrog/file_attr.c
+index c2cbcb4e14..6801c54588 100644
+--- a/libfrog/file_attr.c
++++ b/libfrog/file_attr.c
+@@ -114,7 +114,7 @@ xfrog_file_setattr(
+ 
+ 	file_attr_to_fsxattr(fa, &fsxa);
+ 
+-	error = ioctl(fd, FS_IOC_FSSETXATTR, fa);
++	error = ioctl(fd, FS_IOC_FSSETXATTR, &fsxa);
+ 	close(fd);
+ 
+ 	return error;
+-- 
+cgit 1.2.3-korg

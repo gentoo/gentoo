@@ -18,7 +18,7 @@ S="${WORKDIR}/${MY_PN}-releases-${PV}/${MY_PN}"
 
 LICENSE="EPL-1.0"
 SLOT="0/1" # major soname component
-KEYWORDS="~amd64 ~loong ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~loong ~riscv ~x86"
 IUSE="examples glpk metis mpi mumps sparse static-libs test"
 REQUIRED_USE="mpi? ( mumps )"
 RESTRICT="!test? ( test )"

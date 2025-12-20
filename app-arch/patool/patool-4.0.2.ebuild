@@ -14,7 +14,7 @@ HOMEPAGE="https://wummel.github.io/patool/"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 BDEPEND="
 	test? (
@@ -103,6 +103,15 @@ python_prepare_all() {
 	sed -e 's/setuptools-reproducible/setuptools/' \
 		-e 's/setuptools_reproducible/setuptools.build_meta/' \
 		-i pyproject.toml || die
+
+	# Workaround setuptools-reproducible setting file stamps to invalid dates.
+	# bug #958470
+	#
+	# Test fails because the timestamp of the zip archive is before 1980.
+	# This is due to the timestamps getting reset to the unix epoch in
+	# the unpacked tar archive.
+	# ValueError: ZIP does not support timestamps before 1980
+	find tests/data/ -exec touch {} + || die
 }
 
 python_install_all() {
@@ -121,14 +130,6 @@ python_test() {
 		"tests/archives/test_arc.py"
 		# Error: 1002 (invalid input file)
 		"tests/archives/test_mac.py"
-	)
-	local EPYTEST_DESELECT=(
-		# Something changed in the upstream sdist creation between 4.0.0 and 4.0.1
-		# Test fails because the timestamp of the zip arhive is before 1980.
-		# This is due to the timestamps getting reset to the unix epoch in
-		# the unpacked tar archive.
-		# ValueError: ZIP does not support timestamps before 1980
-		"tests/archives/test_pyzipfile.py::TestPyzipfile::test_py_zipfile"
 	)
 
 	if use elibc_musl; then

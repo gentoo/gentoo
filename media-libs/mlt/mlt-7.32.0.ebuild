@@ -12,7 +12,7 @@ SRC_URI="https://github.com/mltframework/${PN}/releases/download/v${PV}/${P}.tar
 
 LICENSE="GPL-3"
 SLOT="0/7"
-KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="debug ffmpeg frei0r gtk jack libsamplerate opencv opengl python qt6 rtaudio rubberband sdl test vdpau vidstab xine xml"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"

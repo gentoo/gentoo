@@ -1,0 +1,27 @@
+https://github.com/pahaz/sshtunnel/issues/302
+https://github.com/pahaz/sshtunnel/pull/300
+
+From 7030d0c76c679c2934bdc27adc48ff5a84d1ae9a Mon Sep 17 00:00:00 2001
+From: lglines <lglines@fleetio.com>
+Date: Mon, 4 Aug 2025 08:58:11 -0600
+Subject: [PATCH] remove DSSKey, which is no longer supported by paramiko
+
+--- a/sshtunnel.py
++++ b/sshtunnel.py
+@@ -1090,7 +1090,6 @@ def get_keys(logger=None, host_pkey_directories=None, allow_agent=False):
+             host_pkey_directories = [DEFAULT_SSH_DIRECTORY]
+ 
+         paramiko_key_types = {'rsa': paramiko.RSAKey,
+-                              'dsa': paramiko.DSSKey,
+                               'ecdsa': paramiko.ECDSAKey}
+         if hasattr(paramiko, 'Ed25519Key'):
+             # NOQA: new in paramiko>=2.2: http://docs.paramiko.org/en/stable/api/keys.html#module-paramiko.ed25519key
+@@ -1295,7 +1294,7 @@ def read_private_key_file(pkey_file,
+             paramiko.Pkey
+         """
+         ssh_pkey = None
+-        key_types = (paramiko.RSAKey, paramiko.DSSKey, paramiko.ECDSAKey)
++        key_types = (paramiko.RSAKey, paramiko.ECDSAKey)
+         if hasattr(paramiko, 'Ed25519Key'):
+             # NOQA: new in paramiko>=2.2: http://docs.paramiko.org/en/stable/api/keys.html#module-paramiko.ed25519key
+             key_types += (paramiko.Ed25519Key, )

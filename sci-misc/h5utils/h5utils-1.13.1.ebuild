@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,13 +11,13 @@ SRC_URI="https://github.com/NanoComp/h5utils/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE="hdf octave"
 
 DEPEND="
 	media-libs/libpng:0=
 	sci-libs/hdf5:0=
-	sys-libs/zlib
+	virtual/zlib:=
 	hdf? (
 		sci-libs/hdf:0=
 		virtual/jpeg:0

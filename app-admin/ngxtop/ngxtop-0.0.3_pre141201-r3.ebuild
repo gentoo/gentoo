@@ -16,7 +16,7 @@ SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-python/docopt[${PYTHON_USEDEP}]
 	dev-python/pyparsing[${PYTHON_USEDEP}]

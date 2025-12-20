@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Allow subroutines in the PGPLOT graphics library to be called from Perl"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~ppc ~x86"
 
 RDEPEND="
 	sci-libs/pgplot

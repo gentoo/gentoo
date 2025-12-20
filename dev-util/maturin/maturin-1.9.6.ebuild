@@ -24,7 +24,7 @@ LICENSE+="
 	MPL-2.0 Unicode-3.0 Unicode-DFS-2016
 " # crates
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="doc +ssl test"
 RESTRICT="!test? ( test )"
 
@@ -36,7 +36,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
-	doc? ( app-text/mdbook )
+	doc? ( <app-text/mdbook-0.5 )
 	test? (
 		$(python_gen_cond_dep 'dev-python/cffi[${PYTHON_USEDEP}]' 'python*')
 		dev-python/boltons[${PYTHON_USEDEP}]

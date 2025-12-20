@@ -1,0 +1,18 @@
+https://github.com/gcla/termshark/pull/155
+
+From: guoguangwu <guoguangwu@magic-shield.com>
+Date: Wed, 5 Jul 2023 21:31:15 +0800
+Subject: [PATCH] chore: use sort.Strings(...) instead of sort.Sort(sort.StringSlice(...))
+
+Signed-off-by: guoguangwu <guoguangwu@magic-shield.com>
+--- a/utils.go
++++ b/utils.go
+@@ -693,7 +693,7 @@ func KeyValueErrorString(err gowid.KeyValueError) string {
+ 	for k := range err.KeyVals {
+ 		ks = append(ks, k)
+ 	}
+-	sort.Sort(sort.StringSlice(ks))
++	sort.Strings(ks)
+ 	for _, k := range ks {
+ 		kvs = append(kvs, fmt.Sprintf("%v: %v", k, err.KeyVals[k]))
+ 	}

@@ -415,6 +415,28 @@ unset -f _distutils_set_globals
 # }
 # @CODE
 
+# @ECLASS_VARIABLE: DISTUTILS_CONFIG_SETTINGS_JSON
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# The JSON object deserialized into config_settings dictionary passed
+# to the build backend.
+#
+# Allowed only for DISTUTILS_USE_PEP517=standalone.  Use DISTUTILS_ARGS
+# for other backends.
+#
+# Example:
+# @CODE
+# python_configure_all() {
+# 	DISTUTILS_CONFIG_SETTINGS_JSON='
+# 		{
+# 			"verbose": true,
+# 			"targets": ["foo", "bar"],
+# 			"build-type": "release"
+# 		}
+# 	'
+# }
+# @CODE
+
 # @FUNCTION: distutils_enable_sphinx
 # @USAGE: <subdir> [--no-autodoc | <plugin-pkgs>...]
 # @DESCRIPTION:
@@ -1197,6 +1219,12 @@ distutils_pep517_install() {
 			;;
 	esac
 
+	if [[ ${DISTUTILS_USE_PEP517} == standalone ]]; then
+		config_settings=${DISTUTILS_CONFIG_SETTINGS_JSON}
+	elif [[ -n ${DISTUTILS_CONFIG_SETTINGS_JSON} ]]; then
+		die "DISTUTILS_CONFIG_SETTINGS_JSON supported only for standalone backends"
+	fi
+
 	# https://pyo3.rs/latest/building-and-distribution.html#cross-compiling
 	if tc-is-cross-compiler; then
 		local -x PYO3_CROSS_LIB_DIR=${SYSROOT}/$(python_get_stdlib)
@@ -1486,8 +1514,8 @@ distutils-r1_run_phase() {
 
 	local -x PATH=${BUILD_DIR}/install${EPREFIX}/usr/bin:${PATH}
 	# Set up build environment, bug #513664.
-	local -x AR=${AR} CC=${CC} CPP=${CPP} CXX=${CXX}
-	tc-export AR CC CPP CXX
+	local -x AR=${AR} CC=${CC} CPP=${CPP} CXX=${CXX} PKG_CONFIG=${PKG_CONFIG}
+	tc-export AR CC CPP CXX PKG_CONFIG
 
 	# Perform additional environment modifications only for python_compile
 	# phase.  This is the only phase where we expect to be calling the Python

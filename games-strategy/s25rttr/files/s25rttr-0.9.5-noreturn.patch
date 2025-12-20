@@ -1,0 +1,33 @@
+https://github.com/Return-To-The-Roots/s25client/issues/1812
+
+From 7198609c21eae58c31cee5e88c76dc3eddea603f Mon Sep 17 00:00:00 2001
+From: Alexander Grund <Flamefire@users.noreply.github.com>
+Date: Sun, 26 Oct 2025 18:11:57 +0100
+Subject: [PATCH] Add noreturn attributes to Singleton policies
+
+---
+ external/libutil/libs/common/include/s25util/SingletonPolicies.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/external/libutil/libs/common/include/s25util/SingletonPolicies.h b/external/libutil/libs/common/include/s25util/SingletonPolicies.h
+index fa2f40b..5ff9e2f 100644
+--- a/external/libutil/libs/common/include/s25util/SingletonPolicies.h
++++ b/external/libutil/libs/common/include/s25util/SingletonPolicies.h
+@@ -16,7 +16,7 @@ using DestructionFunPtr = void (*)();
+ template<typename T>
+ struct DefaultLifetime
+ {
+-    static void OnDeadReference() { throw std::runtime_error("Access to dead singleton detected!"); }
++    [[noreturn]] static void OnDeadReference() { throw std::runtime_error("Access to dead singleton detected!"); }
+ 
+     static void ScheduleDestruction(T*, DestructionFunPtr pFun) { std::atexit(pFun); }
+ };
+@@ -55,7 +55,7 @@ unsigned GetLongevity(T*)
+ template<typename T>
+ struct WithLongevity
+ {
+-    static void OnDeadReference() { throw std::runtime_error("Access to dead singleton detected!"); }
++    [[noreturn]] static void OnDeadReference() { throw std::runtime_error("Access to dead singleton detected!"); }
+ 
+     static void ScheduleDestruction(T* inst, DestructionFunPtr pFun) { SetLongevity(GetLongevity(inst), pFun); }
+ };

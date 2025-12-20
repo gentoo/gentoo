@@ -18,7 +18,7 @@ S="${WORKDIR}/xalan-j_${PV//./_}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 arm64 ppc64 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 arm64 ppc64 ~x64-macos ~x64-solaris"
 
 # https://bugs.gentoo.org/936274 - for x86 we provide the precompiled java-cup
 COMMON_DEPEND="

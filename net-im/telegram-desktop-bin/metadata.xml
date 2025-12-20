@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person" proxied="yes">
-    <email>henning@hennsch.de</email>
-    <name>Henning Schild</name>
+    <email>peeweep@0x0.ee</email>
+    <name>jinqiang zhang</name>
   </maintainer>
   <maintainer type="project" proxied="proxy">
     <email>proxy-maint@gentoo.org</email>

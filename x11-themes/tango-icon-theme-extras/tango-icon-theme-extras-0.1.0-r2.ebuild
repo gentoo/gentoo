@@ -11,7 +11,7 @@ SRC_URI="http://tango.freedesktop.org/releases/${P}.tar.gz"
 
 LICENSE="CC-BY-SA-2.5"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x64-solaris"
+KEYWORDS="amd64 ppc ppc64 ~sparc x86 ~x64-solaris"
 IUSE="png"
 RESTRICT="binchecks strip"
 

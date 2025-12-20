@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
-inherit desktop dot-a edo elisp-common multiprocessing python-any-r1 savedconfig toolchain-funcs xdg
+inherit desktop dot-a edo elisp-common flag-o-matic multiprocessing python-any-r1 savedconfig toolchain-funcs xdg
 
 # USE_BAZEL_VERSION in .bazeliskrc
 BAZEL_VER="8.1.1"
@@ -87,7 +87,7 @@ S="${WORKDIR}/${P}/src"
 # japanese-usage-dictionary: BSD-2
 LICENSE="BSD BSD-2 ipadic public-domain unicode"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 IUSE="debug emacs fcitx5 +gui +ibus renderer test"
 REQUIRED_USE="|| ( emacs fcitx5 ibus )"
 RESTRICT="!test? ( test )"
@@ -235,6 +235,9 @@ src_configure() {
 	# https://bazel.build/reference/be/make-variables
 	tc-export CC AR
 
+	# fix external/zlib+ w/ clang-21
+	append-cppflags -DHAVE_UNISTD_H=1
+
 	MYEBAZELARGS=(
 		--compilation_mode="$(usex debug dbg opt)"
 		--config="oss_linux"
@@ -267,6 +270,11 @@ src_configure() {
 		! use renderer && SKIP_TESTS+=( -renderer/... )
 		use fcitx5 && SKIP_TESTS+=( -unix/fcitx/... )
 	fi
+
+	local cppflags
+	for cppflags in ${CPPFLAGS}; do
+		MYEBAZELARGS+=( --copt="${cppflags}" )
+	done
 
 	local cflags
 	for cflags in ${CFLAGS}; do

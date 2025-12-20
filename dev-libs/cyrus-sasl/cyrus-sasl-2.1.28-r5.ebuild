@@ -14,7 +14,7 @@ SRC_URI+=" https://dev.gentoo.org/~grobian/distfiles/${MY_PATCH_VER}.tar.xz"
 
 LICENSE="BSD-with-attribution"
 SLOT="2"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 IUSE="authdaemond berkdb gdbm kerberos ldapdb openldap mysql pam postgres sample selinux sqlite srp ssl static-libs urandom"
 REQUIRED_USE="ldapdb? ( openldap )"
 

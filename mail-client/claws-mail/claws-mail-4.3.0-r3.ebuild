@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..12} )
 
 inherit desktop python-single-r1 xdg
 
@@ -35,7 +35,7 @@ COMMONDEPEND="
 	>=dev-libs/glib-2.50:2
 	dev-libs/nettle:=
 	net-mail/ytnef
-	sys-libs/zlib:=
+	virtual/zlib:=
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2[jpeg]
 	x11-libs/gtk+:3

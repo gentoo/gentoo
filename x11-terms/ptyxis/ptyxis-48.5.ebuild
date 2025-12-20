@@ -35,6 +35,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}/make-libc-compat-builds-optional.patch"
+)
+
 src_configure() {
 	use X || append-cflags -DGENTOO_GTK_HIDE_X11
 	local emesonargs=(

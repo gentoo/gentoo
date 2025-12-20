@@ -12,9 +12,9 @@ ZIG_OPTIONAL=1
 inherit check-reqs cmake flag-o-matic edo llvm-r2 toolchain-funcs zig
 
 DESCRIPTION="A robust, optimal, and maintainable programming language"
-HOMEPAGE="https://ziglang.org/ https://github.com/ziglang/zig/"
+HOMEPAGE="https://ziglang.org/ https://codeberg.org/ziglang/zig/"
 if [[ ${PV} == 9999 ]]; then
-	EGIT_REPO_URI="https://github.com/ziglang/zig.git"
+	EGIT_REPO_URI="https://codeberg.org/ziglang/zig.git"
 	inherit git-r3
 else
 	VERIFY_SIG_METHOD=minisig
@@ -56,7 +56,7 @@ BUILD_DIR="${WORKDIR}/${P}_build"
 # Zig requires zstd and zlib compression support in LLVM, if using LLVM backend.
 # (non-LLVM backends don't require these)
 # They are not required "on their own", so please don't add them here.
-# You can check https://github.com/ziglang/zig-bootstrap in future, to see
+# You can check https://codeberg.org/ziglang/zig-bootstrap in future, to see
 # options that are passed to LLVM CMake building (excluding "static" ofc).
 LLVM_DEPEND="$(llvm_gen_dep '
 	llvm-core/clang:${LLVM_SLOT}
@@ -74,7 +74,7 @@ DOCS=( "README.md" "doc/build.zig.zon.md" )
 # zig.eclass does not set this for us since we use ZIG_OPTIONAL=1
 QA_FLAGS_IGNORED="usr/.*/zig/${PV}/bin/zig"
 
-# Since commit https://github.com/ziglang/zig/commit/e7d28344fa3ee81d6ad7ca5ce1f83d50d8502118
+# Since commit https://codeberg.org/ziglang/zig/commit/e7d28344fa3ee81d6ad7ca5ce1f83d50d8502118
 # Zig uses self-hosted compiler only
 CHECKREQS_MEMORY="4G"
 

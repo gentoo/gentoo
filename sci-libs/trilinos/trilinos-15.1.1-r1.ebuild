@@ -16,7 +16,7 @@ S="${WORKDIR}/Trilinos-${PN}-release-${MY_PV}"
 
 LICENSE="BSD LGPL-2.1"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 
 IUSE="
 	adolc all-packages arprec clp cuda eigen glpk gtest hdf5 hwloc hypre
@@ -59,7 +59,7 @@ RDEPEND="
 	tbb? ( dev-cpp/tbb:= )
 	tvmet? ( dev-libs/tvmet )
 	yaml? ( dev-cpp/yaml-cpp:= )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib:= )
 	X? ( x11-libs/libX11 )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"

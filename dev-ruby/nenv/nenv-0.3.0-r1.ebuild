@@ -18,7 +18,7 @@ SRC_URI="https://github.com/e2/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x64-macos ~x64-solaris"
 
 all_ruby_prepare() {
 	sed -i -e 's/git ls-files -z/find * -print0/' ${RUBY_FAKEGEM_GEMSPEC} || die

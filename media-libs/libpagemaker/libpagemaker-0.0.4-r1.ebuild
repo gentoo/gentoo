@@ -8,7 +8,7 @@ if [[ ${PV} == *9999 ]]; then
 	inherit autotools git-r3
 else
 	SRC_URI="http://dev-www.libreoffice.org/src/${PN}/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86"
 fi
 DESCRIPTION="C++ Library that parses the file format of Aldus/Adobe PageMaker documents"
 HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libpagemaker"

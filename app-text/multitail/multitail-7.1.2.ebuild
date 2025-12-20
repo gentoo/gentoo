@@ -11,7 +11,7 @@ SRC_URI="https://github.com/folkertvanheusden/${PN}/archive/${PV}.tar.gz -> ${P}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~hppa ppc ~ppc64 ~sparc x86"
 IUSE="debug examples unicode"
 
 RDEPEND="sys-libs/ncurses:=[unicode(+)?]"

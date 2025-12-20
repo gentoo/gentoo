@@ -18,7 +18,7 @@
 		</flag>
 		<flag name="zlib">
 			Add support for pcregrep command to search within
-			gzip-compressed files (via <pkg>sys-libs/zlib</pkg>).
+			gzip-compressed files (via <pkg>virtual/zlib</pkg>).
 		</flag>
 	</use>
 	<slots>

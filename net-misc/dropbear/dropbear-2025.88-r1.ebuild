@@ -18,13 +18,13 @@ SRC_URI+=" verify-sig? (
 
 LICENSE="MIT GPL-2" # (init script is GPL-2 #426056)
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc x86 ~x64-macos"
 IUSE="bsdpty legacy-ciphers minimal multicall pam +shadow static +syslog test +test-async zlib"
 RESTRICT="!test? ( test )"
 
 LIB_DEPEND="
 	virtual/libcrypt:=[static-libs(+)]
-	zlib? ( sys-libs/zlib[static-libs(+)] )
+	zlib? ( virtual/zlib:=[static-libs(+)] )
 "
 RDEPEND="
 	acct-group/sshd

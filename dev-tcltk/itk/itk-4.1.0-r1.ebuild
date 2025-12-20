@@ -13,7 +13,7 @@ SRC_URI="https://downloads.sourceforge.net/project/incrtcl/%5Bincr%20Tcl_Tk%5D-4
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="amd64 ~arm64 ppc ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 ppc ~riscv ~sparc x86"
 RESTRICT="!test? ( test )"
 
 DEPEND="

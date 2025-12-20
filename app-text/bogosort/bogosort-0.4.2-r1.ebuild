@@ -11,7 +11,7 @@ SRC_URI="ftp://ulrik.haugen.se/pub/unix/bogosort/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~mips ppc ~sparc x86 ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~hppa ~mips ppc ~sparc x86"
 
 PATCHES=(
 	"${FILESDIR}"/xmalloc.patch

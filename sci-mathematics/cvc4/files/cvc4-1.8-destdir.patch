@@ -1,0 +1,26 @@
+Source: https://github.com/cvc5/cvc5/pull/4978
+
+From f1e97b1db6bc38a54d80c60e9dc968a3415fc624 Mon Sep 17 00:00:00 2001
+From: Fabian Wolff <fabi.wolff@arcor.de>
+Date: Mon, 31 Aug 2020 15:55:42 +0200
+Subject: [PATCH] 'fix-install-headers.sh' should respect DESTDIR environment
+ variable
+
+Signed-off-by: Fabian Wolff <fabi.wolff@arcor.de>
+---
+ src/fix-install-headers.sh | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/fix-install-headers.sh b/src/fix-install-headers.sh
+index 39d8bc663a6..7f9fa5d5bc2 100755
+--- a/src/fix-install-headers.sh
++++ b/src/fix-install-headers.sh
+@@ -2,6 +2,7 @@
+ 
+ set -e -o pipefail
+ 
+-dir=$1
++dir="$DESTDIR$1"
++
+ find "$dir/include/cvc4/" -type f \
+   -exec sed -i'' -e 's/include.*"\(.*\)"/include <cvc4\/\1>/' {} +

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,7 +32,7 @@ RDEPEND="
 	kde-frameworks/karchive:6
 	kde-frameworks/kguiaddons:6
 	net-libs/libcloudproviders
-	sys-libs/zlib
+	virtual/zlib:=
 	dolphin? (
 		kde-frameworks/kcoreaddons:6
 		kde-frameworks/kio:6

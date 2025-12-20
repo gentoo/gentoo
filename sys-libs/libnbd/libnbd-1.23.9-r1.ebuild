@@ -17,7 +17,7 @@ SRC_URI="https://download.libguestfs.org/libnbd/${MY_PV_1}-${SD}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~loong ~ppc64 ~sparc ~x86"
 IUSE="examples fuse gnutls go ocaml python test"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"

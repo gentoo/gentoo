@@ -11,7 +11,7 @@ SRC_URI="https://github.com/LibVNC/x11vnc/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-solaris"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-solaris"
 IUSE="crypt drm fbcon ssl +xcomposite +xdamage +xfixes xinerama +xrandr zeroconf"
 
 COMMON_DEPEND="

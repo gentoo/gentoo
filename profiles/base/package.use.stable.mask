@@ -8,10 +8,6 @@
 # Need non-yet-stable caffe2
 sci-chemistry/gromacs nnpot
 
-# Sam James <sam@gentoo.org> (2025-10-10)
-# Needs not-yet-stable GCC 15.
-dev-lang/python tail-call-interp
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-06)
 # USE=experimental is not stable by definition
 media-libs/zxing-cpp experimental
@@ -72,11 +68,6 @@ app-text/nuspell doc
 # due to network access issues #829430
 net-libs/grpc test
 
-# Sergey Popov <pinkbyte@gentoo.org> (2021-10-14)
-# net-libs/grpc is not yet stabilized,
-# so mask optional use flag on net-misc/frr
-net-misc/frr grpc
-
 # Joonas Niilola <juippis@gentoo.org> (2021-08-13)
 # dev-libs/efl is only stabilized on two arches.
 app-crypt/pinentry efl
@@ -134,10 +125,6 @@ app-emulation/winetricks test
 # for stable systems
 dev-lang/rust nightly
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-12-09)
-# Declared experimental, and dev-cpp/websocketpp not stable yet
-sci-libs/indilib websocket
-
 # Mart Raudsepp <leio@gentoo.org> (2019-04-14)
 # Needs media-plugins/gst-plugins-chromaprint, which is not stable
 # anywhere yet.
@@ -166,10 +153,6 @@ app-backup/backup-manager s3
 # Requires unmaintained unstable dependency net-libs/gloox.
 # The go flag requires stable masked dev-lang/go[gccgo].
 www-servers/uwsgi go uwsgi_plugins_alarm_xmpp
-
-# Tim Harder <radhermit@gentoo.org> (2017-09-11)
-# Requires guile-2 which is still unstable.
->=net-irc/weechat-1.7 guile
 
 # Michael Palimaka <kensington@gentoo.org> (2017-08-11)
 # Unstable dependencies.

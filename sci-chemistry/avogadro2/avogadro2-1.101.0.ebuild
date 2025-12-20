@@ -16,12 +16,12 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="BSD GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc vtk"
 
 RDEPEND="
 	dev-qt/qtbase:6[concurrent,gui,network,opengl,ssl,widgets]
-	>=sci-libs/avogadrolibs-${PV}[qt6,vtk?]
+	~sci-libs/avogadrolibs-${PV}[qt6,vtk?]
 	vtk? ( sci-libs/vtk:= )
 "
 DEPEND="${RDEPEND}

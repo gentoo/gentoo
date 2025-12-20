@@ -20,7 +20,7 @@ else
 		-> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${COMMIT_SHA}"
 
-	KEYWORDS="amd64 arm ~arm64 ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos"
+	KEYWORDS="amd64 arm ~arm64 ppc ppc64 ~riscv x86"
 fi
 
 LICENSE="GPL-3+ FDL-1.3+"

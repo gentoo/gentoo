@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit autotools python-single-r1
 
 MY_PN=AFFLIBv3
@@ -24,7 +24,7 @@ RESTRICT="test"
 
 RDEPEND="
 	dev-libs/expat
-	sys-libs/zlib:=
+	virtual/zlib:=
 	fuse? ( sys-fs/fuse:0 )
 	dev-libs/openssl:=
 	ncurses? ( sys-libs/ncurses:= )

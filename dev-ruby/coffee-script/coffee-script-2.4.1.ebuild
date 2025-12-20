@@ -15,6 +15,6 @@ HOMEPAGE="https://github.com/rails/ruby-coffee-script https://github.com/rails/c
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x64-macos"
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~sparc x86 ~x64-macos"
 
 ruby_add_rdepend "dev-ruby/coffee-script-source dev-ruby/execjs:*"

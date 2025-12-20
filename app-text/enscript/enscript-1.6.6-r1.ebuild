@@ -9,7 +9,7 @@ DESCRIPTION="Powerful text-to-postscript converter"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 HOMEPAGE="https://www.gnu.org/software/enscript/enscript.html"
 
-KEYWORDS="~alpha amd64 ~arm64 ~hppa ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 ~arm64 ~hppa ~mips ppc ppc64 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 SLOT="0"
 LICENSE="GPL-3"
 IUSE="nls ruby"

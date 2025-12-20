@@ -45,7 +45,7 @@ DEPEND="
 	media-libs/libepoxy
 	media-libs/libjpeg-turbo:0=
 	media-libs/libpng:0=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	virtual/glu
 	virtual/opengl
 	gtk? ( x11-libs/gtk+:3 )

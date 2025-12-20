@@ -44,7 +44,7 @@ DEPEND="
 	dev-libs/libpcre2:0[pcre32]
 	net-libs/rpcsvc-proto
 	sys-libs/libcap
-	sys-libs/zlib:=
+	virtual/zlib:=
 	virtual/libcrypt:=
 	virtual/libiconv
 	argon2? ( dev-libs/libsodium:= )

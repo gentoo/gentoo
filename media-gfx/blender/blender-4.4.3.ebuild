@@ -117,7 +117,7 @@ RDEPEND="${PYTHON_DEPS}
 	media-libs/libpng:=
 	media-libs/libsamplerate
 	>=media-libs/openimageio-2.5.6.0:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	virtual/glu
 	virtual/libintl
 	virtual/opengl[X?]
@@ -132,7 +132,7 @@ RDEPEND="${PYTHON_DEPS}
 	gmp? ( dev-libs/gmp[cxx] )
 	gnome? ( gui-libs/libdecor )
 	hip? (
-		>=dev-util/hip-5.7:=
+		>=dev-util/hip-5.7:= <dev-util/hip-7:=
 		hiprt? (
 			dev-libs/hiprt:2.5=
 		)

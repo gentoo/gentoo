@@ -12,7 +12,7 @@ SRC_URI="https://downloads.sourceforge.net/sevenzip/${MY_P}.7z -> ${P}.7z"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~sparc x86"
 IUSE="doc"
 
 BDEPEND="$(unpacker_src_uri_depends)"

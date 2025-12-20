@@ -1,0 +1,54 @@
+Source: https://github.com/ksnip/kImageAnnotator/pull/344
+
+From 357c66330ac99fbfd3a1aa884a318750e7774237 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 23 Oct 2025 10:28:26 +0200
+Subject: [PATCH] Cleanup related conditionals
+
+CMake 3.16 minimum allows to clean up existing CMAKE_VERSION conditionals.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt       | 7 +------
+ tests/CMakeLists.txt | 7 +------
+ 2 files changed, 2 insertions(+), 12 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 24dd825..360b555 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -79,12 +79,7 @@ target_include_directories(kImageAnnotator
+ target_link_libraries(kImageAnnotator PUBLIC Qt${QT_MAJOR_VERSION}::Widgets Qt${QT_MAJOR_VERSION}::Svg PRIVATE kColorPicker::kColorPicker)
+ 
+ if (UNIX AND NOT APPLE)
+-	# X11::X11 imported target only available with sufficiently new CMake
+-	if (CMAKE_VERSION VERSION_GREATER_EQUAL 3.14.0)
+-		target_link_libraries(kImageAnnotator PRIVATE X11::X11)
+-	else()
+-		target_link_libraries(kImageAnnotator PRIVATE X11)
+-	endif()
++	target_link_libraries(kImageAnnotator PRIVATE X11::X11)
+ endif ()
+ 
+ target_compile_definitions(kImageAnnotator PRIVATE KIMAGEANNOTATOR_LIB)
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index fe2d1da..4dcddb1 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -75,12 +75,7 @@ target_link_libraries(KIMAGEANNOTATOR_STATIC
+ 		Qt${QT_MAJOR_VERSION}::Svg)
+ 
+ if (UNIX AND NOT APPLE)
+-	# X11::X11 imported target only available with sufficiently new CMake
+-	if (CMAKE_VERSION VERSION_GREATER_EQUAL 3.14.0)
+-		target_link_libraries(KIMAGEANNOTATOR_STATIC X11::X11)
+-	else()
+-		target_link_libraries(KIMAGEANNOTATOR_STATIC X11)
+-	endif()
++	target_link_libraries(KIMAGEANNOTATOR_STATIC X11::X11)
+ endif ()
+ 
+ target_compile_definitions(KIMAGEANNOTATOR_STATIC PRIVATE KIMAGEANNOTATOR_LANG_INSTALL_DIR="${KIMAGEANNOTATOR_LANG_INSTALL_DIR}")
+-- 
+2.51.1
+

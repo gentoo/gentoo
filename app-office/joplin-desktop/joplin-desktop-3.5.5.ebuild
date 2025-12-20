@@ -16,7 +16,7 @@ SRC_URI="https://github.com/laurent22/joplin/releases/download/v${PV}/${APPIMAGE
 
 LICENSE="AGPL-3+"
 SLOT="0"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 RESTRICT="bindist splitdebug"
 
 RDEPEND="
@@ -37,7 +37,7 @@ RDEPEND="
 	net-misc/curl
 	net-print/cups
 	sys-apps/dbus
-	sys-libs/zlib
+	virtual/zlib:=
 	sys-process/lsof
 	x11-libs/cairo
 	x11-libs/gtk+:3

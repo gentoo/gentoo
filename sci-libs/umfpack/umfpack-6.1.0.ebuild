@@ -13,7 +13,7 @@ SRC_URI="https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/refs/tags/v$
 
 LICENSE="GPL-2+"
 SLOT="0/6"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="doc openmp test"
 RESTRICT="!test? ( test )"
 

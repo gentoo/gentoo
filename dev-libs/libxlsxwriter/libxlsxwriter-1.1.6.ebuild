@@ -17,7 +17,7 @@ IUSE="openssl test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	sys-libs/zlib[minizip]
+	virtual/minizip:=
 	openssl? ( dev-libs/openssl:= )
 "
 RDEPEND="${DEPEND}"

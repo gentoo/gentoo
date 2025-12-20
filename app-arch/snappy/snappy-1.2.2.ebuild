@@ -12,7 +12,7 @@ SRC_URI="https://github.com/google/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 # ABI may be broken without a new SONAME. Please use abidiff on bumps.
 SLOT="0/1.1"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
 IUSE="cpu_flags_x86_avx cpu_flags_x86_avx2 test"
 RESTRICT="!test? ( test )"
 

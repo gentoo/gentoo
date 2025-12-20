@@ -1,4 +1,4 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2024-02-17)
@@ -7,3 +7,4 @@ dev-libs/libpcre2 jit
 dev-lang/php jit
 net-proxy/haproxy pcre-jit
 www-servers/varnish jit
+www-apache/mod_security jit

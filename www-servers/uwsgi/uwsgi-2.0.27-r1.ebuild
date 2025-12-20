@@ -31,7 +31,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 x86 ~amd64-linux"
+KEYWORDS="amd64 arm arm64 ~loong ~ppc ~ppc64 x86"
 
 UWSGI_PLUGINS_STD=(
 	ping cache carbon nagios rpc rrdtool
@@ -96,7 +96,7 @@ REQUIRED_USE="
 # 3. Plugins
 # 4. Language/app support
 CDEPEND="
-	sys-libs/zlib
+	virtual/zlib:=
 	virtual/libcrypt:=
 	caps? ( sys-libs/libcap )
 	json? (

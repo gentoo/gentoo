@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="A Path::Class type library for Moose"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~amd64 ~x86 ~x64-macos"
 IUSE="minimal"
 
 RDEPEND="

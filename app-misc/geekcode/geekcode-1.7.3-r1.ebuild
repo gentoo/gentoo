@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~mips ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 arm ~mips ppc ppc64 x86"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-exit.patch

@@ -12,7 +12,7 @@ S="${WORKDIR}"/${PN}_src
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="examples"
 
 RDEPEND="

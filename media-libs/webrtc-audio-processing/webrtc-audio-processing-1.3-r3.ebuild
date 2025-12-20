@@ -11,7 +11,7 @@ SRC_URI="https://freedesktop.org/software/pulseaudio/${PN}/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="1"
-KEYWORDS="amd64 ~arm64 ~ppc64 x86 ~amd64-linux"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 IUSE="cpu_flags_arm_neon"
 
 RDEPEND="dev-cpp/abseil-cpp:=[${MULTILIB_USEDEP}]"

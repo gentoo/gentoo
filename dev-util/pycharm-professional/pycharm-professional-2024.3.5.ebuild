@@ -38,7 +38,7 @@ else
 fi
 
 SLOT="0/2024"
-KEYWORDS="-* ~amd64 ~arm64 ~x86"
+KEYWORDS="-* amd64 ~arm64 ~x86"
 IUSE="+bundled-jdk"
 
 if [[ ${PN} == *-professional ]]; then
@@ -69,7 +69,7 @@ RDEPEND="
 		media-libs/mesa
 		net-print/cups
 		sys-apps/dbus
-		sys-libs/zlib
+		virtual/zlib:=
 		x11-libs/cairo
 		x11-libs/libX11
 		x11-libs/libXcomposite

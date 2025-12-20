@@ -18,7 +18,7 @@ SRC_URI="https://polymake.org/lib/exe/fetch.php/download/${P}-minimal.tar.bz2"
 # closer look at how (or even if) the corresponding code is being used.
 LICENSE="BSD GPL-2 GPL-2+ MIT WTFPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~riscv ~amd64-linux"
+KEYWORDS="amd64 ~riscv"
 IUSE="bliss +cdd +flint +normaliz libpolymake lrs nauty ppl singular"
 
 REQUIRED_USE="^^ ( bliss nauty )"

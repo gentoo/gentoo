@@ -21,7 +21,7 @@ RDEPEND="
 	app-arch/bzip2
 	~dev-games/irrlicht-headers-${PV}
 	media-libs/libpng:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	media-libs/libjpeg-turbo:=
 	virtual/opengl
 	x11-libs/libX11

@@ -12,7 +12,7 @@ if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/linux/kernel/git/colyli/bcache-tools.git https://kernel.googlesource.com/pub/scm/linux/kernel/git/colyli/bcache-tools.git"
 else
 	SRC_URI="https://git.kernel.org/pub/scm/linux/kernel/git/colyli/${PN}.git/snapshot/${P}.tar.gz"
-	KEYWORDS="amd64 arm64 ~loong ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 arm64 ~loong ppc ppc64 ~riscv x86"
 fi
 
 DESCRIPTION="Tools for bcache"

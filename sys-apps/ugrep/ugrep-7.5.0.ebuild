@@ -20,7 +20,7 @@ DEPEND="
 	app-arch/lz4:=
 	app-arch/xz-utils:=
 	app-arch/zstd:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	brotli? ( app-arch/brotli:= )
 	bzip3? ( app-arch/bzip3:= )
 	pcre? ( dev-libs/libpcre2 )

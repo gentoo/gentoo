@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}/servletapi"
 
 LICENSE="Apache-2.0"
 SLOT="2.3"
-KEYWORDS="amd64 arm64 ppc64 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 arm64 ppc64 ~x64-macos ~x64-solaris"
 
 DEPEND=">=virtual/jdk-1.8"
 RDEPEND=">=virtual/jre-1.8"

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ IUSE="debug dedicated server"
 
 DEPEND="
 	>=net-libs/enet-1.3.6:1.3
-	sys-libs/zlib
+	virtual/zlib:=
 	!dedicated? (
 		media-libs/libsdl2[X,opengl]
 		media-libs/sdl2-image

@@ -10,7 +10,7 @@ S="${WORKDIR}/CoinMP-releases-${PV}/CoinMP"
 
 LICENSE="CPL-1.0"
 SLOT="0/1"
-KEYWORDS="~amd64 ~loong ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~loong ~riscv ~x86"
 
 RDEPEND="
 	sci-libs/coinor-cbc:=

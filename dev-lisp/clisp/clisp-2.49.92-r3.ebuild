@@ -11,7 +11,7 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="2/8"
-KEYWORDS="~alpha ~amd64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~mips ppc ppc64 ~riscv ~sparc x86"
 # "jit" disabled ATM
 IUSE="hyperspec X berkdb dbus fastcgi gdbm gtk +pcre postgres +readline svm threads +unicode +zlib"
 # Needs work still
@@ -34,7 +34,7 @@ RDEPEND="
 	readline? ( >=sys-libs/readline-7.0:= )
 	pcre? ( dev-libs/libpcre:3 )
 	svm? ( sci-libs/libsvm )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib:= )
 	X? ( x11-libs/libXpm )
 	hyperspec? ( dev-lisp/hyperspec )
 	berkdb? ( sys-libs/db:5.3 )

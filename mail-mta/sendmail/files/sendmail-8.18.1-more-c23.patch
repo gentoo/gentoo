@@ -1,0 +1,24 @@
+Backport from 8.18.1.16 snapshot
+
+--- a/sendmail/arpadate.c
++++ b/sendmail/arpadate.c
+@@ -167,7 +167,7 @@
+ #endif /* TZ_TYPE == TZ_TZNAME */
+ #if TZ_TYPE == TZ_TIMEZONE
+ 		{
+-			extern char *timezone();
++			extern char *timezone __P((int, int));
+ 
+ 			tz = timezone(off, lt->tm_isdst);
+ 		}
+--- a/sendmail/envelope.c
++++ b/sendmail/envelope.c
+@@ -762,7 +762,7 @@
+ #ifdef TTYNAME
+ 	static char ybuf[60];			/* holds tty id */
+ 	register char *p;
+-	extern char *ttyname();
++	extern char *ttyname __P((int));
+ #endif /* TTYNAME */
+ 
+ 	/*

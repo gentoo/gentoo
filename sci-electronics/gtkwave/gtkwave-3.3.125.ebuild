@@ -13,13 +13,13 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2+ MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE="fasttree judy lzma tcl wayland X"
 
 RDEPEND="
 	app-arch/bzip2
 	dev-libs/glib:2
-	sys-libs/zlib
+	virtual/zlib:=
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/pango

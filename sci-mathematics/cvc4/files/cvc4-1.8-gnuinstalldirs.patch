@@ -1,0 +1,211 @@
+Source: https://github.com/cvc5/cvc5/pull/4979
+
+From 4744019a72b14ed79602e3d03ce2c5d6412b3163 Mon Sep 17 00:00:00 2001
+From: Fabian Wolff <fabi.wolff@arcor.de>
+Date: Mon, 31 Aug 2020 16:38:20 +0200
+Subject: [PATCH] Drop {INCLUDE,LIBRARY,RUNTIME}_INSTALL_DIR variables in
+ CMakeLists.txt
+
+Signed-off-by: Fabian Wolff <fabi.wolff@arcor.de>
+---
+ CMakeLists.txt            | 18 +++++++-----------
+ src/CMakeLists.txt        | 28 ++++++++++++++--------------
+ src/main/CMakeLists.txt   |  4 ++--
+ src/parser/CMakeLists.txt |  2 +-
+ 4 files changed, 24 insertions(+), 28 deletions(-)
+
+index 5b1d1e29210..12ccf433acd 100644
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -5,6 +5,8 @@ cmake_minimum_required(VERSION 3.4)
+ 
+ project(cvc4)
+ 
++include(GNUInstallDirs)
++
+ set(CVC4_MAJOR   1) # Major component of the version of CVC4.
+ set(CVC4_MINOR   9) # Minor component of the version of CVC4.
+ set(CVC4_RELEASE 0) # Release component of the version of CVC4.
+@@ -85,12 +87,6 @@ list(APPEND CMAKE_PREFIX_PATH "${PROJECT_SOURCE_DIR}/deps/install")
+ 
+ #-----------------------------------------------------------------------------#
+ 
+-set(INCLUDE_INSTALL_DIR include)
+-set(LIBRARY_INSTALL_DIR lib)
+-set(RUNTIME_INSTALL_DIR bin)
+-
+-#-----------------------------------------------------------------------------#
+-
+ include(Helpers)
+ 
+ #-----------------------------------------------------------------------------#
+@@ -315,7 +311,7 @@ if(ENABLE_SHARED)
+   #
+   # More information on RPATH in CMake:
+   # https://gitlab.kitware.com/cmake/community/wikis/doc/cmake/RPATH-handling
+-  set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/${LIBRARY_INSTALL_DIR}")
++  set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}")
+ else()
+   # When building statically, we *only* want static archives/libraries
+   if (WIN32)
+@@ -635,13 +631,13 @@ endif()
+ install(EXPORT cvc4-targets
+   FILE CVC4Targets.cmake
+   NAMESPACE CVC4::
+-  DESTINATION ${LIBRARY_INSTALL_DIR}/cmake/CVC4)
++  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/CVC4)
+ 
+ configure_package_config_file(
+   ${CMAKE_SOURCE_DIR}/cmake/CVC4Config.cmake.in
+   ${CMAKE_BINARY_DIR}/cmake/CVC4Config.cmake
+-  INSTALL_DESTINATION ${LIBRARY_INSTALL_DIR}/cmake/CVC4
+-  PATH_VARS LIBRARY_INSTALL_DIR
++  INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/CVC4
++  PATH_VARS CMAKE_INSTALL_LIBDIR
+ )
+ 
+ write_basic_package_version_file(
+@@ -653,7 +649,7 @@ write_basic_package_version_file(
+ install(FILES
+   ${CMAKE_BINARY_DIR}/cmake/CVC4Config.cmake
+   ${CMAKE_BINARY_DIR}/CVC4ConfigVersion.cmake
+-  DESTINATION ${LIBRARY_INSTALL_DIR}/cmake/CVC4
++  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/CVC4
+ )
+ 
+ 
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -922,8 +922,8 @@ target_include_directories(cvc4
+ 
+ install(TARGETS cvc4
+   EXPORT cvc4-targets
+-  LIBRARY DESTINATION ${LIBRARY_INSTALL_DIR}
+-  ARCHIVE DESTINATION ${LIBRARY_INSTALL_DIR})
++  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ set_target_properties(cvc4 PROPERTIES SOVERSION ${CVC4_SOVERSION})
+ target_compile_definitions(cvc4
+@@ -1013,27 +1013,27 @@ install(FILES
+           api/cvc4cpp.h
+           api/cvc4cppkind.h
+         DESTINATION
+-          ${INCLUDE_INSTALL_DIR}/cvc4/api)
++          ${CMAKE_INSTALL_INCLUDEDIR}/cvc4/api)
+ install(FILES
+           base/configuration.h
+           base/exception.h
+           base/listener.h
+           base/modal_exception.h
+         DESTINATION
+-          ${INCLUDE_INSTALL_DIR}/cvc4/base)
++          ${CMAKE_INSTALL_INCLUDEDIR}/cvc4/base)
+ install(FILES
+           context/cdhashmap_forward.h
+           context/cdhashset_forward.h
+           context/cdinsert_hashmap_forward.h
+           context/cdlist_forward.h
+         DESTINATION
+-          ${INCLUDE_INSTALL_DIR}/cvc4/context)
++          ${CMAKE_INSTALL_INCLUDEDIR}/cvc4/context)
+ install(FILES
+           include/cvc4.h
+           include/cvc4_public.h
+           include/cvc4parser_public.h
+         DESTINATION
+-          ${INCLUDE_INSTALL_DIR}/cvc4)
++          ${CMAKE_INSTALL_INCLUDEDIR}/cvc4)
+ install(FILES
+           expr/array.h
+           expr/array_store_all.h
+@@ -1050,7 +1050,7 @@ install(FILES
+           ${CMAKE_CURRENT_BINARY_DIR}/expr/kind.h
+           ${CMAKE_CURRENT_BINARY_DIR}/expr/expr_manager.h
+         DESTINATION
+-          ${INCLUDE_INSTALL_DIR}/cvc4/expr)
++          ${CMAKE_INSTALL_INCLUDEDIR}/cvc4/expr)
+ install(FILES
+           options/language.h
+           options/option_exception.h
+@@ -1058,7 +1058,7 @@ install(FILES
+           options/printer_modes.h
+           options/set_language.h
+         DESTINATION
+-          ${INCLUDE_INSTALL_DIR}/cvc4/options)
++          ${CMAKE_INSTALL_INCLUDEDIR}/cvc4/options)
+ install(FILES
+           parser/input.h
+           parser/parser.h
+@@ -1066,26 +1066,26 @@ install(FILES
+           parser/parser_exception.h
+           parser/parse_op.h
+         DESTINATION
+-          ${INCLUDE_INSTALL_DIR}/cvc4/parser)
++          ${CMAKE_INSTALL_INCLUDEDIR}/cvc4/parser)
+ install(FILES
+           printer/sygus_print_callback.h
+         DESTINATION
+-          ${INCLUDE_INSTALL_DIR}/cvc4/printer)
++          ${CMAKE_INSTALL_INCLUDEDIR}/cvc4/printer)
+ install(FILES
+           proof/unsat_core.h
+         DESTINATION
+-          ${INCLUDE_INSTALL_DIR}/cvc4/proof)
++          ${CMAKE_INSTALL_INCLUDEDIR}/cvc4/proof)
+ install(FILES
+           smt/command.h
+           smt/logic_exception.h
+           smt/smt_engine.h
+         DESTINATION
+-          ${INCLUDE_INSTALL_DIR}/cvc4/smt)
++          ${CMAKE_INSTALL_INCLUDEDIR}/cvc4/smt)
+ install(FILES
+           theory/logic_info.h
+           theory/theory_id.h
+         DESTINATION
+-          ${INCLUDE_INSTALL_DIR}/cvc4/theory)
++          ${CMAKE_INSTALL_INCLUDEDIR}/cvc4/theory)
+ install(FILES
+           util/abstract_value.h
+           util/bitvector.h
+@@ -1115,7 +1115,7 @@ install(FILES
+           ${CMAKE_CURRENT_BINARY_DIR}/util/rational.h
+           ${CMAKE_CURRENT_BINARY_DIR}/util/real_algebraic_number.h
+         DESTINATION
+-          ${INCLUDE_INSTALL_DIR}/cvc4/util)
++          ${CMAKE_INSTALL_INCLUDEDIR}/cvc4/util)
+ 
+ # Fix include paths for all public headers.
+ # Note: This is a temporary fix until the new C++ API is in place.
+diff --git a/src/main/CMakeLists.txt b/src/main/CMakeLists.txt
+--- a/src/main/CMakeLists.txt
++++ b/src/main/CMakeLists.txt
+@@ -51,11 +51,11 @@ target_link_libraries(cvc4-bin cvc4 cvc4parser)
+ if(PROGRAM_PREFIX)
+   install(PROGRAMS
+     $<TARGET_FILE:cvc4-bin>
+-    DESTINATION ${RUNTIME_INSTALL_DIR}
++    DESTINATION ${CMAKE_INSTALL_BINDIR}
+     RENAME ${PROGRAM_PREFIX}cvc4)
+ else()
+   install(TARGETS cvc4-bin
+-    DESTINATION ${RUNTIME_INSTALL_DIR})
++    DESTINATION ${CMAKE_INSTALL_BINDIR})
+ endif()
+ 
+ # In order to get a fully static executable we have to make sure that we also
+diff --git a/src/parser/CMakeLists.txt b/src/parser/CMakeLists.txt
+--- a/src/parser/CMakeLists.txt
++++ b/src/parser/CMakeLists.txt
+@@ -99,7 +99,7 @@ target_link_libraries(cvc4parser cvc4 ${ANTLR_LIBRARIES})
+ target_include_directories(cvc4parser PRIVATE ${ANTLR_INCLUDE_DIR})
+ install(TARGETS cvc4parser
+   EXPORT cvc4-targets
+-  DESTINATION ${LIBRARY_INSTALL_DIR})
++  DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ # The generated lexer/parser files define some functions as
+ # __declspec(dllexport) via the ANTLR3_API macro, which leads to lots of

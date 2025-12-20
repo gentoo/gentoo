@@ -15,7 +15,7 @@ SRC_URI="https://files.inria.fr/pastix/releases/v$(ver_cut 1)/${P}.tar.gz"
 
 LICENSE="CeCILL-C"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="cuda examples +fortran int64 metis mpi +python +scotch starpu test"
 
 RESTRICT="!test? ( test )"

@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
+  <maintainer type="person" proxied="yes">
+    <email>jy6x2b32pie9@yahoo.com</email>
+    <name>NHOrus</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>
+     Powerful quick image viewer is a GTK-3 based command-line
+     image viewer with minimal UI. It's highly customizable,
+     can be controlled from scripts and has support for various
+     formats, including archives, video files, PDF and postscript
+  </longdescription>
   <upstream>
     <maintainer>
       <email>phillip.berndt@googlemail.com</email>

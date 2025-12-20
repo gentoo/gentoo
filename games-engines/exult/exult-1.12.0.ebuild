@@ -19,7 +19,7 @@ RDEPEND="
 	media-libs/libpng:=
 	media-libs/libsdl2[X,joystick,sound,video]
 	media-libs/libvorbis
-	sys-libs/zlib:=
+	virtual/zlib:=
 	alsa? ( media-libs/alsa-lib )
 	fluidsynth? ( media-sound/fluidsynth:= )
 	timidity? ( media-sound/timidity++ )"

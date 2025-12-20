@@ -12,7 +12,7 @@ S=${WORKDIR}/3v-${PV}/src
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 
 PDEPEND="sci-chemistry/msms-bin"
 #	sci-chemistry/usf-rave"

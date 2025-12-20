@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
 
 LICENSE="VTK"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="doc test"
 
 RESTRICT="!test? ( test )"

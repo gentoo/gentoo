@@ -22,6 +22,10 @@ SLOT="0"
 
 CONFIG_CHECK="INPUT_FF_MEMLESS"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-kernel6.18.patch
+)
+
 src_compile() {
 	local modlist=( hid-${PN}=kernel/drivers/hid:hid-${PN}:hid-${PN}/src )
 	local modargs=( KERNEL_SOURCE_DIR="${KV_OUT_DIR}" )

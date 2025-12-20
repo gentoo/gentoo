@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>eras@gentoo.org</email>
+		<name>Eray Aslan</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>mjo@gentoo.org</email>
+		<name>Michael Orlitzky</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">sdgathman/pymilter</remote-id>
+		<remote-id type="pypi">pymilter</remote-id>
+	</upstream>
+</pkgmetadata>

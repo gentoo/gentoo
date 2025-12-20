@@ -17,14 +17,14 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0/6"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ~ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="test +zlib +zstd"
 REQUIRED_USE="test? ( zlib zstd )"
 RESTRICT="!test? ( test )"
 
 DEPEND="
 	>=app-arch/lz4-1.7.5:=
-	zlib? ( sys-libs/zlib:= )
+	zlib? ( virtual/zlib:= )
 	zstd? ( app-arch/zstd:= )
 "
 RDEPEND="

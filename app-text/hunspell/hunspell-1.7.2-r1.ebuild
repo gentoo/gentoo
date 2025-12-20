@@ -14,7 +14,7 @@ SRC_URI="https://github.com/hunspell/hunspell/releases/download/v${PV}/${P}.tar.
 LICENSE="|| ( MPL-1.1 GPL-2+ LGPL-2.1+ )"
 SLOT="0/$(ver_cut 1-2)"
 IUSE="ncurses nls readline static-libs"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~x64-macos ~x64-solaris"
 
 RDEPEND="
 	virtual/libiconv

@@ -1,0 +1,94 @@
+From 7a6e3f07acfd822aa1d62f1c715125e30d67d089 Mon Sep 17 00:00:00 2001
+From: Ian Lance Taylor <iant@golang.org>
+Date: Mon, 03 Nov 2025 15:54:39 -0800
+Subject: [PATCH] cmd/cgo: strip top-level const qualifier from argument frame struct
+
+Otherwise we can't assign to it.
+
+Fixes #75751
+
+Change-Id: Iba680db672297bca1a1d1a33912b80863da66a08
+---
+
+diff --git a/src/cmd/cgo/internal/test/test.go b/src/cmd/cgo/internal/test/test.go
+index 9626407..e83e367 100644
+--- a/src/cmd/cgo/internal/test/test.go
++++ b/src/cmd/cgo/internal/test/test.go
+@@ -953,6 +953,12 @@
+ } issue69086struct;
+ static int issue690861(issue69086struct* p) { p->b = 1234; return p->c; }
+ static int issue690862(unsigned long ul1, unsigned long ul2, unsigned int u, issue69086struct s) { return (int)(s.b); }
++
++char issue75751v = 1;
++char * const issue75751p = &issue75751v;
++#define issue75751m issue75751p
++char * const volatile issue75751p2 = &issue75751v;
++#define issue75751m2 issue75751p2
+ */
+ import "C"
+ 
+@@ -2396,3 +2402,8 @@
+ 		t.Errorf("call: got %d, want 1234", got)
+ 	}
+ }
++
++// Issue 75751: no runtime test, just make sure it compiles.
++func test75751() int {
++	return int(*C.issue75751m) + int(*C.issue75751m2)
++}
+diff --git a/src/cmd/cgo/out.go b/src/cmd/cgo/out.go
+index 394e766..05d9dcf 100644
+--- a/src/cmd/cgo/out.go
++++ b/src/cmd/cgo/out.go
+@@ -457,6 +457,33 @@
+ // Also assumes that gc convention is to word-align the
+ // input and output parameters.
+ func (p *Package) structType(n *Name) (string, int64) {
++	// It's possible for us to see a type with a top-level const here,
++	// which will give us an unusable struct type. See #75751.
++	// The top-level const will always appear as a final qualifier,
++	// constructed by typeConv.loadType in the dwarf.QualType case.
++	// The top-level const is meaningless here and can simply be removed.
++	stripConst := func(s string) string {
++		i := strings.LastIndex(s, "const")
++		if i == -1 {
++			return s
++		}
++
++		// A top-level const can only be followed by other qualifiers.
++		if r, ok := strings.CutSuffix(s, "const"); ok {
++			return r
++		}
++
++		for _, f := range strings.Fields(s[i:]) {
++			switch f {
++			case "const", "restrict", "volatile":
++			default:
++				return s
++			}
++		}
++
++		return strings.TrimSpace(s[:i]) + strings.TrimSpace(s[i+len("const"):])
++	}
++
+ 	var buf strings.Builder
+ 	fmt.Fprint(&buf, "struct {\n")
+ 	off := int64(0)
+@@ -468,7 +495,7 @@
+ 		}
+ 		c := t.Typedef
+ 		if c == "" {
+-			c = t.C.String()
++			c = stripConst(t.C.String())
+ 		}
+ 		fmt.Fprintf(&buf, "\t\t%s p%d;\n", c, i)
+ 		off += t.Size
+@@ -484,7 +511,7 @@
+ 			fmt.Fprintf(&buf, "\t\tchar __pad%d[%d];\n", off, pad)
+ 			off += pad
+ 		}
+-		fmt.Fprintf(&buf, "\t\t%s r;\n", t.C)
++		fmt.Fprintf(&buf, "\t\t%s r;\n", stripConst(t.C.String()))
+ 		off += t.Size
+ 	}
+ 	if off%p.PtrSize != 0 {

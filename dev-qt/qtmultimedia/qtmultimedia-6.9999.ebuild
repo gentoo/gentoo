@@ -94,7 +94,6 @@ CMAKE_SKIP_TESTS=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.7.3-eigen-ppc-no-vsx.patch
-	"${FILESDIR}"/${PN}-6.8.1-qversionnumber.patch
 )
 
 src_configure() {

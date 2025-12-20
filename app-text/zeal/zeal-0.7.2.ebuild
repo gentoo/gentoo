@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,6 +34,8 @@ BDEPEND="kde-frameworks/extra-cmake-modules"
 
 PATCHES=(
 	"${FILESDIR}/disable-werror-0.7.2.patch"
+	"${FILESDIR}/0001-Use-the-return-value-of-QTemporaryFile-open.patch"
+	"${FILESDIR}/0002-Fix-linking-with-Qt-GuiPrivate-on-Qt-6.10.patch"
 )
 
 src_configure() {

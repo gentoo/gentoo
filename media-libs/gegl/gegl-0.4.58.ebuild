@@ -14,7 +14,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/gegl.git"
 else
 	SRC_URI="https://download.gimp.org/pub/${PN}/${PV:0:3}/${P}.tar.xz"
-	KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~loong ~mips ~ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~loong ~mips ~ppc ppc64 ~riscv x86"
 fi
 
 DESCRIPTION="A graph based image processing framework"
@@ -42,7 +42,7 @@ RDEPEND="
 	media-libs/libjpeg-turbo
 	media-libs/libnsgif
 	>=media-libs/libpng-1.6.0:0=
-	>=sys-libs/zlib-1.2.0
+	>=virtual/zlib-1.2.0:=
 	>=x11-libs/gdk-pixbuf-2.32:2
 	>=x11-libs/pango-1.38.0
 	cairo? ( >=x11-libs/cairo-1.12.2 )

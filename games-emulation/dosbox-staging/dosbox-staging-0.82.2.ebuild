@@ -30,7 +30,7 @@ RDEPEND="alsa? ( media-libs/alsa-lib )
 	media-libs/libsdl2[joystick,opengl?,video,X]
 	media-libs/opusfile
 	media-libs/speexdsp
-	sys-libs/zlib
+	virtual/zlib:=
 	!games-emulation/dosbox"
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-cpp/gtest )"

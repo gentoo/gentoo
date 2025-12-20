@@ -1,0 +1,17 @@
+--- a/CMakeLists.txt	2025-11-08 12:37:29.125543387 -0000
++++ b/CMakeLists.txt	2025-11-08 13:11:13.173013729 -0000
+@@ -25,14 +25,6 @@
+ #
+ cmake_minimum_required(VERSION 3.20)
+ 
+-# Find git and set the GIT_EXECUTABLE variable (good practice, used by submodules)
+-find_package(Git QUIET)
+-if(NOT GIT_FOUND)
+-    message(FATAL_ERROR ">> Git is required to build this project. 'git' not found! ")
+-endif()
+-set(CMAKE_GIT_EXECUTABLE ${GIT_EXECUTABLE} CACHE FILEPATH "Path to the Git executable.")
+-
+-
+ # Build is not supported on Windows plaform
+ if(WIN32)
+     message(FATAL_ERROR "Windows platform is not supported!")

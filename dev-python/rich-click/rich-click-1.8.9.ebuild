@@ -17,7 +17,7 @@ SRC_URI="https://github.com/ewels/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 x86 ~amd64-linux"
+KEYWORDS="amd64 ~arm arm64 x86"
 
 RDEPEND="
 	>=dev-python/click-7[${PYTHON_USEDEP}]

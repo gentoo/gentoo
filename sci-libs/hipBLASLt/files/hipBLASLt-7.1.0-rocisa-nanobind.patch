@@ -1,0 +1,18 @@
+--- a/tensilelite/rocisa/CMakeLists.txt	2025-11-09 09:49:11.051195769 -0000
++++ b/tensilelite/rocisa/CMakeLists.txt	2025-11-09 09:50:56.393579853 -0000
+@@ -17,14 +17,7 @@
+ )
+ 
+ if(HIPBLASLT_BUNDLE_PYTHON_DEPS)
+-    include(FetchContent)
+-    FetchContent_Declare(
+-      nanobind
+-      GIT_REPOSITORY https://github.com/wjakob/nanobind.git
+-      GIT_TAG        9b3afa9dbdc23641daf26fadef7743e7127ff92f # v2.6.1
+-    )
+-    FetchContent_MakeAvailable(nanobind)
+-
++    find_package(nanobind CONFIG REQUIRED)
+     set(ROCISAINST_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/rocisa/src/instruction/instruction.cpp"
+                           "${CMAKE_CURRENT_SOURCE_DIR}/rocisa/src/instruction/common.cpp"
+                           "${CMAKE_CURRENT_SOURCE_DIR}/rocisa/src/instruction/branch.cpp"

@@ -34,7 +34,7 @@ RESTRICT="test"
 RDEPEND="
 	app-arch/lz4:=
 	sys-apps/util-linux
-	sys-libs/zlib:=
+	virtual/zlib:=
 	X? (
 		x11-libs/libX11
 	)

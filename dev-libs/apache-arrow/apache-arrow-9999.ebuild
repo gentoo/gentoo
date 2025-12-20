@@ -47,7 +47,7 @@ RDEPEND="
 	)
 	re2? ( dev-libs/re2:= )
 	snappy? ( app-arch/snappy:= )
-	zlib? ( sys-libs/zlib:= )
+	zlib? ( virtual/zlib:= )
 	zstd? ( app-arch/zstd:= )
 "
 DEPEND="

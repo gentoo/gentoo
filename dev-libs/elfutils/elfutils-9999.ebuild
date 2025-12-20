@@ -21,7 +21,7 @@ else
 	SRC_URI="https://sourceware.org/elfutils/ftp/${PV}/${P}.tar.bz2"
 	SRC_URI+=" verify-sig? ( https://sourceware.org/elfutils/ftp/${PV}/${P}.tar.bz2.sig )"
 
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 	BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-elfutils-20240301 )"
 fi
@@ -34,7 +34,7 @@ REQUIRED_USE="debuginfod? ( libarchive )"
 
 RDEPEND="
 	!dev-libs/libelf
-	>=sys-libs/zlib-1.2.8-r1[static-libs?,${MULTILIB_USEDEP}]
+	>=virtual/zlib-1.2.8-r1:=[static-libs?,${MULTILIB_USEDEP}]
 	bzip2? ( >=app-arch/bzip2-1.0.6-r4[static-libs?,${MULTILIB_USEDEP}] )
 	debuginfod? (
 		dev-db/sqlite:3=

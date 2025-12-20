@@ -34,7 +34,7 @@ RDEPEND="
 	net-libs/libwebsockets
 	net-misc/curl
 	sys-devel/gettext
-	sys-libs/zlib
+	virtual/zlib:=
 	acct-group/audio
 	acct-user/owntone
 	alsa? ( media-libs/alsa-lib )

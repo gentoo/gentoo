@@ -11,13 +11,13 @@ SRC_URI="https://infraroot.at/pub/mtd/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv x86"
 IUSE="+lzo +ssl test xattr +zstd"
 RESTRICT="!test? ( test )"
 
 DEPEND="
 	sys-apps/util-linux:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	lzo? ( dev-libs/lzo:= )
 	ssl? ( dev-libs/openssl:0= )
 	xattr? ( sys-apps/acl )

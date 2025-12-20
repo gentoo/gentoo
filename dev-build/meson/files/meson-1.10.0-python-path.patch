@@ -1,0 +1,39 @@
+From fbe4477ac8937253fe027486a28700f4f035b42b Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sat, 12 Aug 2023 09:56:44 +0100
+Subject: [PATCH 2/2] python module: Respect PATH when python is not given in
+ machine file
+
+We should only fall back to the Python interpreter running Meson itself
+if `python3` is not found in the PATH.
+
+A couple of tests relied on the old behaviour. Under Arch/PyPy, the
+PATH's `python3` does not point to PyPy. Unfortunately, other
+Python-based tools like g-ir-scanner are installed with a shebang of
+`/usr/bin/env python3` on Arch, so adjusting the PATH to point to a
+different Python breaks such tools. We must therefore specify `python`
+in a machine file instead.
+
+We also have to now exclude "test cases/frameworks/1 boost" on Arch/PyPy
+because it cannot work against PyPy. It was previously using CPython,
+despite Meson itself running under PyPy, but the machine file has
+changed that.
+---
+ mesonbuild/modules/python.py              |  4 +++-
+ 6 files changed, 18 insertions(+), 9 deletions(-)
+
+diff --git a/mesonbuild/modules/python.py b/mesonbuild/modules/python.py
+index 9c1ad86cb170..ad1260ca5015 100644
+--- a/mesonbuild/modules/python.py
++++ b/mesonbuild/modules/python.py
+@@ -460,7 +460,9 @@ def _find_installation_impl(self, state: 'ModuleState', display_name: str, name_
+         build_config = self.interpreter.environment.coredata.optstore.get_value_for(OptionKey('python.build_config'))
+ 
+         if not name_or_path:
+-            python = PythonExternalProgram('python3', mesonlib.python_command, build_config_path=build_config)
++            python = PythonExternalProgram('python3', build_config_path=build_config)
++            if not python.found():
++                python = PythonExternalProgram('python3', mesonlib.python_command, build_config_path=build_config)
+         else:
+             tmp_python = ExternalProgram.from_entry(display_name, name_or_path)
+             python = PythonExternalProgram(display_name, ext_prog=tmp_python, build_config_path=build_config)

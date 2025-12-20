@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt	2025-11-15 21:37:39.359617528 +0100
++++ b/CMakeLists.txt	2025-11-15 21:37:57.835681898 +0100
+@@ -4,7 +4,7 @@
+ # This source code is licensed under the BSD-style license found in the
+ # LICENSE file in the root directory of this source tree.
+ 
+-cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
+ 
+ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules")
+ 

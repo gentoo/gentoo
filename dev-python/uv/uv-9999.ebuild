@@ -3,7 +3,7 @@
 
 EAPI=8
 
-RUST_MIN_VER="1.88.0"
+RUST_MIN_VER="1.89.0"
 
 inherit cargo check-reqs git-r3
 
@@ -29,6 +29,7 @@ RDEPEND="
 	${DEPEND}
 "
 BDEPEND="
+	virtual/pkgconfig
 	test? (
 		dev-lang/python:3.9
 		dev-lang/python:3.10

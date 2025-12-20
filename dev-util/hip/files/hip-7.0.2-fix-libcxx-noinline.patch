@@ -1,4 +1,6 @@
 Unsetting __noinline__ before inclusion of libc++ __config breaks libc++ headers.
+
+Upstream PR: https://github.com/ROCm/rocm-systems/pull/1875
 --- a/hipamd/include/hip/amd_detail/host_defines.h
 +++ b/hipamd/include/hip/amd_detail/host_defines.h
 @@ -257,6 +257,13 @@ typedef __hip_internal::int64_t __hip_int64_t;

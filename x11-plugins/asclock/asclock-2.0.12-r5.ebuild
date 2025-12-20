@@ -12,7 +12,7 @@ S="${WORKDIR}/asclock-xlib"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~mips ppc ~sparc x86 ~amd64-linux ~x86-linux ~x64-solaris"
+KEYWORDS="amd64 ~mips ppc ~sparc x86 ~x64-solaris"
 
 DEPEND="
 	x11-libs/libX11

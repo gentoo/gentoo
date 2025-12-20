@@ -17,7 +17,7 @@ IUSE="+json pdc"
 RDEPEND="
 	>=sys-libs/libnvme-1.13:=[json?]
 	json? ( dev-libs/json-c:= )
-	sys-libs/zlib:=
+	virtual/zlib:=
 "
 DEPEND="
 	${RDEPEND}

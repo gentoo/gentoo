@@ -11,7 +11,7 @@ SRC_URI="https://dasher.wustl.edu/${PN}/downloads/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="Tinker"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="examples"
 RESTRICT="mirror"
 

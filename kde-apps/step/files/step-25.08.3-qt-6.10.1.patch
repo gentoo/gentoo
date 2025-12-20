@@ -1,0 +1,25 @@
+From 0d41eaae3820d1a7c346f6ce81b940f199229eba Mon Sep 17 00:00:00 2001
+From: Albert Astals Cid <aacid@kde.org>
+Date: Fri, 14 Nov 2025 15:54:02 +0100
+Subject: [PATCH] Fix compile with Qt 6.11
+
+---
+ stepcore/types.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/stepcore/types.h b/stepcore/types.h
+index afc3dcf1..7b3c23b6 100644
+--- a/stepcore/types.h
++++ b/stepcore/types.h
+@@ -38,7 +38,7 @@ struct Color
+ 
+ template<> inline QString typeToString(const Color& v)
+ {
+-    return QStringLiteral("#%1").arg(v, 8, 16, QLatin1Char('0'));
++    return QStringLiteral("#%1").arg(v.value, 8, 16, QLatin1Char('0'));
+ }
+ 
+ template<> inline Color stringToType(const QString& s, bool *ok)
+-- 
+GitLab
+

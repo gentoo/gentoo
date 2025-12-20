@@ -20,7 +20,7 @@ RDEPEND="
 	sys-apps/sg3_utils:0=
 	sys-libs/librtas
 	>=sys-libs/libvpd-2.2.9:=
-	sys-libs/zlib
+	virtual/zlib:=
 "
 
 DEPEND="${RDEPEND}

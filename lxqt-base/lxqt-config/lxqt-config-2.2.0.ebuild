@@ -32,7 +32,7 @@ DEPEND="
 	>=dev-qt/qtsvg-6.6:6
 	=lxqt-base/liblxqt-${MY_PV}*:=
 	=lxqt-base/lxqt-menu-data-${MY_PV}*
-	sys-libs/zlib:=
+	virtual/zlib:=
 	x11-apps/setxkbmap
 	x11-libs/libxcb:=
 	x11-libs/libX11

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="http://202.36.178.9/sage/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~loong ~ppc ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ~ppc ppc64 ~riscv ~sparc ~x86"
 IUSE="doc partition tbb"
 
 BDEPEND="virtual/pkgconfig
@@ -30,6 +30,11 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	default
 	elibtoolize
+
+	# Should be able to drop this workaround with newer versions.
+	# upstream fix it by replace \htmladdnormallink{...} with \url{}
+	sed -e '/^\\usepackage{hyperref}$/i \\\\usepackage{html}' \
+		-i Doc/spqr_user_guide.tex || die
 }
 
 src_configure() {

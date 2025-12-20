@@ -23,7 +23,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~hppa ~ppc ppc64 ~sparc x86"
 IUSE="doc gdbm mysql pyzord redis selinux test"
 RESTRICT="!test? ( test )"
 

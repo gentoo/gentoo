@@ -14,7 +14,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64-linux"
+KEYWORDS=""
 
 src_configure() {
 	: # Don't bother with the custom configure script.

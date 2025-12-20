@@ -1,0 +1,13 @@
+add missing $(OBJECTS2) for static
+see https://sourceforge.net/p/ddrescue/tickets/10
+--- a/Makefile
++++ b/Makefile
+@@ -481,7 +481,7 @@ nolib: $(SRCDIR)/dd_rescue.c $(DDR_HEADERS) $(OBJECTS) $(OBJECTS2)
+ nocolor: $(SRCDIR)/dd_rescue.c $(DDR_HEADERS) $(OBJECTS) $(OBJECTS2)
+ 	$(CC) $(CFLAGS) -DNO_COLORS=1 $(DEFINES) $< $(OUT) $(OBJECTS) $(OBJECTS2) $(EXTRA_LDFLAGS) $(RDYNAMIC)
+ 
+-static: $(SRCDIR)/dd_rescue.c $(DDR_HEADERS) $(OBJECTS)
++static: $(SRCDIR)/dd_rescue.c $(DDR_HEADERS) $(OBJECTS) $(OBJECTS2)
+ 	$(CC) $(CFLAGS) -DNO_LIBDL -DNO_LIBFALLOCATE -static $(DEFINES) $< $(OUT) $(OBJECTS) $(OBJECTS2) $(EXTRA_LDFLAGS)
+ 
+ # Special pseudo targets

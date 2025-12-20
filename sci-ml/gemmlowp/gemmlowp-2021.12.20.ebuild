@@ -20,6 +20,8 @@ IUSE="test"
 BDEPEND="test? ( dev-cpp/gtest )"
 RESTRICT="!test? ( test )"
 
+PATCHES=( "${FILESDIR}"/${P}-cmake.patch )
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test ON OFF)

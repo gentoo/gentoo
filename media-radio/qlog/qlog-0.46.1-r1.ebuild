@@ -13,7 +13,7 @@ S="${WORKDIR}/QLog-${PV}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
 	dev-db/sqlite:3

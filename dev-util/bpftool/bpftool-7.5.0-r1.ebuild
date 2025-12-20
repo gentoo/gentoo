@@ -48,7 +48,7 @@ RDEPEND="
 	caps? ( sys-libs/libcap:= )
 	llvm? ( $(llvm_gen_dep 'llvm-core/llvm:${LLVM_SLOT}') )
 	!llvm? ( sys-libs/binutils-libs:= )
-	sys-libs/zlib:=
+	virtual/zlib:=
 	virtual/libelf:=
 "
 DEPEND="

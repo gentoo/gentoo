@@ -66,7 +66,7 @@ DEPEND="
 	sasl? ( >=dev-libs/cyrus-sasl-2 )
 	ssl? ( dev-libs/openssl:0= )
 	tcl? ( dev-lang/tcl:0= )
-	zlib? ( sys-libs/zlib:0= )
+	zlib? ( virtual/zlib:= )
 "
 RDEPEND="
 	${DEPEND}

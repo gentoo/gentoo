@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -45,7 +45,7 @@ RDEPEND="!bundled-jdk? ( >=virtual/jre-1.8 )
 	net-print/cups
 	sys-apps/dbus
 	sys-libs/libcap
-	sys-libs/zlib
+	virtual/zlib:=
 	x11-libs/libX11
 	x11-libs/libxcb
 	x11-libs/libXext

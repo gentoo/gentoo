@@ -47,7 +47,7 @@ RDEPEND="
 	dev-libs/libffi:=
 	dev-libs/mpdecimal:=
 	dev-python/gentoo-common
-	>=sys-libs/zlib-1.1.3:=
+	>=virtual/zlib-1.1.3:=
 	virtual/libintl
 	gdbm? ( sys-libs/gdbm:=[berkdb] )
 	kernel_linux? ( sys-apps/util-linux:= )
@@ -88,7 +88,7 @@ BDEPEND="
 	)
 	tail-call-interp? (
 		|| (
-			>=sys-devel/gcc-15:*
+			>=sys-devel/gcc-16:*
 			>=llvm-core/clang-19:*
 		)
 	)
@@ -141,7 +141,7 @@ pkg_setup() {
 			linux-info_pkg_setup
 		fi
 		if use tail-call-interp; then
-			tc-check-min_ver gcc 15
+			tc-check-min_ver gcc 16
 			tc-check-min_ver clang 19
 		fi
 	fi

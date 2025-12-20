@@ -17,6 +17,7 @@ pidfile="/run/${RC_SVCNAME}/${RC_SVCNAME}.pid"
 user=${NGINX_USER:-nginx}
 group=${NGINX_GROUP:-nginx}
 retry=${NGINX_TERMTIMEOUT:-"TERM/60/KILL/5"}
+command_args="-c \"${NGINX_CONFIGFILE}\" -g 'pid ${pidfile};'"
 
 extra_commands="configtest"
 extra_started_commands="upgrade reload"

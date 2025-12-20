@@ -20,7 +20,7 @@ REQUIRED_USE="test? ( jpeg png )"
 
 RDEPEND="
 	>=media-libs/libsdl2-2.30.0[${MULTILIB_USEDEP}]
-	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
+	>=virtual/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}]
 	avif? ( >=media-libs/libavif-1.0.0:=[${MULTILIB_USEDEP}] )
 	png? ( >=media-libs/libpng-1.6.10:0=[${MULTILIB_USEDEP}] )
 	jpeg? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
@@ -107,7 +107,8 @@ src_test() {
 	# Match same order as src_configure. The intent is to catch build system
 	# bugs, so it may need updating sometimes for legitimate changes in
 	# sdl2-image support.
-	local -x SDL_IMAGE_TEST_REQUIRE_{LOAD,SAVE}_AVIF=$(usex avif 1 0)
+	local -x SDL_IMAGE_TEST_REQUIRE_LOAD_AVIF=$(usex avif 1 0)
+	local -x SDL_IMAGE_TEST_REQUIRE_SAVE_AVIF=0
 	local -x SDL_IMAGE_TEST_REQUIRE_LOAD_BMP=1
 	local -x SDL_IMAGE_TEST_REQUIRE_LOAD_GIF=$(usex gif 1 0)
 	local -x SDL_IMAGE_TEST_REQUIRE_{LOAD,SAVE}_JPG=$(usex jpeg 1 0)

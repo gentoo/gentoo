@@ -22,7 +22,7 @@ RDEPEND="
 	~dev-qt/qtquicktimeline-${PV}:6
 	~dev-qt/qtshadertools-${PV}:6
 	media-libs/assimp:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 "
 DEPEND="
 	${RDEPEND}

@@ -11,7 +11,7 @@ SRC_URI="http://nco.sf.net/src/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86"
 IUSE="dap gsl hdf5 ncap2 openmp test udunits"
 RESTRICT="!test? ( test )"
 

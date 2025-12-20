@@ -4,7 +4,7 @@
 EAPI=8
 
 WX_GTK_VER="3.2-gtk3"
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..12} )
 
 inherit cmake flag-o-matic python-single-r1 toolchain-funcs virtualx wxwidgets
 
@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}-v${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="
 	+eigen fftw glpk graphicsmagick gshhs hdf hdf5 +imagemagick netcdf
 	openmp png proj postscript python shapelib tiff udunits wxwidgets
@@ -31,7 +31,7 @@ RDEPEND="
 	sci-libs/plplot:=[X,cxx,-dynamic,wxwidgets?]
 	sys-libs/ncurses:=
 	sys-libs/readline:=
-	sys-libs/zlib
+	virtual/zlib:=
 	x11-libs/libX11
 	fftw? ( sci-libs/fftw:3.0= )
 	glpk? ( sci-mathematics/glpk:= )

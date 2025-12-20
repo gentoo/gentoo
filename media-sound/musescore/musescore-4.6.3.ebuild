@@ -17,7 +17,7 @@ else
 	SRC_URI="
 		https://github.com/musescore/MuseScore/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 ~x86"
 	S="${WORKDIR}/MuseScore-${PV}"
 fi
 
@@ -53,7 +53,7 @@ RDEPEND="
 	media-libs/libsndfile
 	media-libs/opus
 	media-sound/lame
-	sys-libs/zlib:=
+	virtual/zlib:=
 	jack? ( virtual/jack )
 	pipewire? ( media-video/pipewire:= )
 	video? ( media-video/ffmpeg:= )
@@ -70,6 +70,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.6.3-rm_tinyxml.patch"
 	"${FILESDIR}/${PN}-4.6.3-missing_includes.patch"
 	"${FILESDIR}/${PN}-4.6.3-fix_qt610.patch"
+	"${FILESDIR}/${PN}-4.6.3-fix_noqtdebug.patch"
 	# unbundle 3rd libs
 	"${FILESDIR}/${PN}-4.6.3-unbundle-lame.patch"
 	"${FILESDIR}/${PN}-4.6.3-unbundle-pugixml.patch"

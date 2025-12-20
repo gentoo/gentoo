@@ -1,0 +1,32 @@
+From 11e0a257960a1448491795fe1d2b5eea322b6028 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 20 Nov 2025 23:43:19 +0100
+Subject: [PATCH] Raise CMake minimum to 3.10...3.16 range
+
+CMake >=3.31 warns about compat. for <3.10 being removed in the future.
+
+Make 3.10 was released in 2017 and is available in Ubuntu Bionic, which is
+referenced in the root CMakeLists.txt. The version range upper limit lets
+others at least test at the same policy level as the 3.16 minimum from ECM.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e6b33cf..98172b0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ # SPDX-FileCopyrightText: 2020 Volker Krause <vkrause@kde.org>
+ # SPDX-License-Identifier: BSD-3-Clause
+ 
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.10...3.16)
+ 
+ # KDE Application Version, managed by release script
+ set (RELEASE_SERVICE_VERSION_MAJOR "26")
+-- 
+GitLab
+

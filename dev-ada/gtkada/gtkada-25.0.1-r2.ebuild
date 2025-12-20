@@ -3,7 +3,7 @@
 
 EAPI=8
 
-ADA_COMPAT=( gcc_{12..15} )
+ADA_COMPAT=( gcc_{12..16} )
 inherit ada autotools multiprocessing
 
 DESCRIPTION="A complete Ada graphical toolkit"
@@ -30,7 +30,10 @@ DEPEND="${RDEPEND}
 
 REQUIRED_USE="${ADA_REQUIRED_USE}"
 
-PATCHES=( "${FILESDIR}"/${PN}-23.0.0-gentoo.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-23.0.0-gentoo.patch
+	"${FILESDIR}"/${P}-gcc16.patch
+)
 
 src_prepare() {
 	default

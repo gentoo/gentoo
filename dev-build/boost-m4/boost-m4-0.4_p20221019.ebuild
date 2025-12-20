@@ -12,7 +12,7 @@ S="${WORKDIR}"/${PN/-/.}-${BOOST_COMMIT}
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm ~hppa ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos"
 
 # boost.m4 has a buildsystem, but the distributer didn't use make dist
 # so we'd have to eautoreconf to use it. Also, its ./configure script

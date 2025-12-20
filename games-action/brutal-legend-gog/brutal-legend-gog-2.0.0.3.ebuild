@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,7 +26,7 @@ RDEPEND="
 	media-libs/libsdl2[abi_x86_32,joystick,opengl,sound,video]
 	>=sys-devel/gcc-3.4[cxx]
 	>=sys-libs/glibc-2.7[stack-realign(-)]
-	sys-libs/zlib[abi_x86_32]
+	virtual/zlib:=[abi_x86_32]
 	virtual/opengl[abi_x86_32]
 	!${CATEGORY}/${MY_PN}-hb
 "

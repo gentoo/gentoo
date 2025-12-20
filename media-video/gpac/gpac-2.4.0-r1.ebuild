@@ -18,7 +18,7 @@ IUSE="
 "
 
 RDEPEND="
-	sys-libs/zlib:=
+	virtual/zlib:=
 	X? (
 		x11-libs/libX11
 		x11-libs/libXv

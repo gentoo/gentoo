@@ -23,7 +23,7 @@ S=${WORKDIR}/${P/_/}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86 ~x64-macos"
 IUSE="imaging ipython latex mathml pdf png pyglet symengine"
 
 RDEPEND="
@@ -68,6 +68,12 @@ python_test() {
 		# https://github.com/sympy/sympy/issues/27026
 		sympy/parsing/tests/test_autolev.py
 		sympy/parsing/tests/test_latex.py
+
+		# Deprecation warnings turned failures
+		# https://github.com/sympy/sympy/pull/28158
+		sympy/geometry/tests/test_polygon.py::test_do_poly_distance
+		sympy/plotting/tests/test_plot.py::test_plot_and_save_6
+		sympy/integrals/tests/test_integrals.py::test_integrate_poly_definite
 	)
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1

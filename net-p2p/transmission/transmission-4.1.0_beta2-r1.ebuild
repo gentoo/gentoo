@@ -48,7 +48,7 @@ COMMON_DEPEND="
 	>=net-libs/libpsl-0.21.1
 	>=net-libs/miniupnpc-1.7:=
 	>=net-misc/curl-7.28.0[ssl]
-	sys-libs/zlib:=
+	virtual/zlib:=
 	nls? ( virtual/libintl )
 	gtk? (
 		>=dev-cpp/gtkmm-4.11.1:4.0

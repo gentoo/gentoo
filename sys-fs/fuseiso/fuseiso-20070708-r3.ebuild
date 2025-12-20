@@ -12,7 +12,7 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc ~ppc64 x86"
 
 RDEPEND="sys-fs/fuse:0=
-	sys-libs/zlib
+	virtual/zlib:=
 	dev-libs/glib:2"
 
 DEPEND="${RDEPEND}"

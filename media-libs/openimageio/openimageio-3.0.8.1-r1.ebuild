@@ -93,7 +93,7 @@ RDEPEND="
 	media-libs/opencolorio:=
 	media-libs/openexr:=
 	media-libs/tiff:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	dicom? ( sci-libs/dcmtk )
 	ffmpeg? ( media-video/ffmpeg:= )
 	fits? ( sci-libs/cfitsio:= )

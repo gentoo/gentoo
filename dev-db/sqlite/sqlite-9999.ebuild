@@ -24,7 +24,7 @@ else
 	"
 	S="${WORKDIR}/${PN}-src-${SRC_PV}"
 
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
 fi
 
 LICENSE="public-domain"
@@ -33,7 +33,7 @@ IUSE="debug doc icu +readline secure-delete static-libs tcl test tools"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	sys-libs/zlib:=[${MULTILIB_USEDEP}]
+	virtual/zlib:=[${MULTILIB_USEDEP}]
 	icu? ( dev-libs/icu:=[${MULTILIB_USEDEP}] )
 	readline? ( sys-libs/readline:=[${MULTILIB_USEDEP}] )
 	tcl? ( dev-lang/tcl:=[${MULTILIB_USEDEP}] )

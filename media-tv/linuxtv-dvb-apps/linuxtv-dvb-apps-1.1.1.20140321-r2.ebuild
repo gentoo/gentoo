@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ RDEPEND="
 		!media-video/alevt
 		media-libs/libpng:0=
 		media-libs/zvbi[v4l]
-		sys-libs/zlib
+		virtual/zlib:=
 		x11-libs/libX11
 	)
 	usb? ( virtual/libusb:0 )

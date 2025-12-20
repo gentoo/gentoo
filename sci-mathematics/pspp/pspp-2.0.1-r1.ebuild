@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit python-any-r1 xdg
 
@@ -13,14 +13,14 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3+ FDL-1.3+"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc examples gui ncurses nls perl postgres"
 
 RDEPEND="
 	dev-libs/libxml2:2=
 	>=sci-libs/gsl-1.13:0=
 	sys-libs/readline:0=
-	sys-libs/zlib
+	virtual/zlib:=
 	virtual/libiconv
 	x11-libs/cairo[svg(+)]
 	x11-libs/pango

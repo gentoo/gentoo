@@ -21,7 +21,7 @@ SRC_URI="https://github.com/ruby/debug/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD-2"
 
 SLOT="$(ver_cut 1)"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 
 # Avoid tests for now since the results in a very deep dependency list for ruby32
 #ruby_add_depend "test? ( dev-ruby/rr )"

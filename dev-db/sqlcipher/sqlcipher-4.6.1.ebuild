@@ -25,7 +25,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/openssl:=[${MULTILIB_USEDEP}]
-	sys-libs/zlib[${MULTILIB_USEDEP}]
+	virtual/zlib:=[${MULTILIB_USEDEP}]
 	libedit? ( dev-libs/libedit[${MULTILIB_USEDEP}] )
 	readline? ( sys-libs/readline:=[${MULTILIB_USEDEP}] )
 	tcl? ( dev-lang/tcl:=[${MULTILIB_USEDEP}] )

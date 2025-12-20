@@ -9,7 +9,7 @@ SRC_URI="http://www.libee.org/files/download/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~hppa x86 ~amd64-linux"
+KEYWORDS="amd64 arm ~arm64 ~hppa x86"
 IUSE="debug test"
 RESTRICT="!test? ( test )"
 

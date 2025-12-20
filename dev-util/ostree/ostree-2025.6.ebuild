@@ -15,7 +15,7 @@ S="${WORKDIR}/lib${P}"
 
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="archive +curl doc dracut gnutls +gpg grub +http2 introspection libmount selinux sodium ssl +soup systemd zeroconf"
 RESTRICT="test"
 REQUIRED_USE="
@@ -27,7 +27,7 @@ RDEPEND="
 	app-arch/xz-utils
 	dev-libs/glib:2
 	sys-fs/fuse:3=
-	sys-libs/zlib
+	virtual/zlib:=
 	archive? ( app-arch/libarchive:= )
 	curl? ( net-misc/curl )
 	dracut? ( sys-kernel/dracut )
@@ -69,6 +69,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-2023.3-dont-force-clang-introspection.patch
 	"${FILESDIR}"/${PN}-2024.8-Werror.patch
+	"${FILESDIR}"/${PN}-2025.6-include-stdint-musl.patch
 )
 
 src_prepare() {
@@ -112,6 +113,7 @@ src_configure() {
 
 src_install() {
 	default
+	dotmpfiles src/boot/ostree-tmpfiles.conf #901797
 	find "${D}" -name '*.la' -type f -delete || die
 }
 

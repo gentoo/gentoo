@@ -3,6 +3,9 @@
 
 EAPI=8
 
+# bug #964273
+RUST_MAX_VER=1.88.0
+
 CRATES="
 	adler@1.0.2
 	aho-corasick@1.1.3
@@ -163,7 +166,7 @@ else
 		https://github.com/jthornber/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		${CARGO_CRATE_URIS}
 	"
-	KEYWORDS="amd64 arm arm64 ~loong ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 arm arm64 ~loong ppc64 ~riscv ~sparc x86"
 fi
 
 LICENSE="GPL-3"

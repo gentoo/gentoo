@@ -66,7 +66,7 @@ DEPEND="
 		media-libs/libvorbis
 	)
 	vpx? ( media-libs/libvpx:= )
-	zlib? ( sys-libs/zlib:= )
+	zlib? ( virtual/zlib:= )
 "
 RDEPEND="
 	${DEPEND}

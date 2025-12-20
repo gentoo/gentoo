@@ -1,0 +1,12 @@
+Find SDL2 only if enabled
+--- a/avidemux/qt4/CMakeLists.txt
++++ b/avidemux/qt4/CMakeLists.txt
+@@ -102,7 +102,7 @@ ENDIF()
+ 
+ # Qt4 openGL
+ INCLUDE(admCheckOpenGl)
+-IF(NOT APPLE)
++IF(SDL AND NOT APPLE)
+   INCLUDE(FindSDL2)
+ ENDIF()
+ #

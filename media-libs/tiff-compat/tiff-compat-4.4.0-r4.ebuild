@@ -23,7 +23,7 @@ S="${WORKDIR}/${PN/-compat}-$(ver_cut 1-3)"
 LICENSE="libtiff"
 SLOT="4"
 if [[ ${PV} != *_rc* ]] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos ~x64-solaris"
 fi
 IUSE="+cxx jbig jpeg lerc lzma test webp zlib zstd"
 RESTRICT="!test? ( test )"
@@ -38,7 +38,7 @@ RDEPEND="
 	lerc? ( media-libs/lerc:=[${MULTILIB_USEDEP}] )
 	lzma? ( >=app-arch/xz-utils-5.0.5-r1[${MULTILIB_USEDEP}] )
 	webp? ( media-libs/libwebp:=[${MULTILIB_USEDEP}] )
-	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
+	zlib? ( >=virtual/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}] )
 	zstd? ( >=app-arch/zstd-1.3.7-r1:=[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}"

@@ -12,14 +12,14 @@ SRC_URI="https://github.com/ggreer/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ~mips ppc ~ppc64 ~riscv x86 ~amd64-linux ~x64-macos"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ~mips ppc ~ppc64 ~riscv x86 ~x64-macos"
 IUSE="lzma test zlib"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/libpcre
 	lzma? ( app-arch/xz-utils )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

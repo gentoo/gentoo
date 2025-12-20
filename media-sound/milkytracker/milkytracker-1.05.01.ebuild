@@ -18,7 +18,7 @@ IUSE="alsa jack"
 RDEPEND="
 	dev-libs/zziplib
 	media-libs/libsdl2[X]
-	sys-libs/zlib
+	virtual/zlib:=
 	alsa? (
 		media-libs/alsa-lib
 		media-libs/rtmidi
@@ -52,6 +52,6 @@ src_install() {
 	cmake_src_install
 
 	newicon resources/pictures/carton.png ${PN}.png
-	make_desktop_entry ${PN} MilkyTracker ${PN} \
-		"AudioVideo;Audio;Sequencer"
+	make_desktop_entry --eapi9 ${PN} -n MilkyTracker -i ${PN} \
+		-c "AudioVideo;Audio;Sequencer"
 }

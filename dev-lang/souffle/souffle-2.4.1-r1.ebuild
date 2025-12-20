@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,7 +38,7 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 	sqlite? ( dev-db/sqlite:3 )
 	swig? ( dev-lang/swig:= )
-	zlib? ( sys-libs/zlib:= )
+	zlib? ( virtual/zlib:= )
 "
 DEPEND="
 	${RDEPEND}

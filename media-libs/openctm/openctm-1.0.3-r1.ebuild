@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ DEPEND="
 	media-libs/freeglut
 	media-libs/glew:0=
 	media-libs/pnglite
-	sys-libs/zlib
+	virtual/zlib:=
 	virtual/jpeg:0
 	virtual/opengl
 	x11-libs/gtk+:2

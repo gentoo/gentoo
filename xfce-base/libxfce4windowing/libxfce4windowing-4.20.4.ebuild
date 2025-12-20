@@ -36,6 +36,7 @@ DEPEND="
 BDEPEND="
 	>=dev-build/xfce4-dev-tools-4.19.2
 	dev-lang/perl
+	dev-util/glib-utils
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	wayland? (

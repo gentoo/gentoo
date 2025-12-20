@@ -23,7 +23,7 @@ DEPEND="
 	app-arch/zstd:=
 	dev-cpp/gflags:=
 	sys-libs/liburing:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	sys-process/numactl
 	jemalloc? ( dev-libs/jemalloc:= )
 	tbb? ( dev-cpp/tbb:= )

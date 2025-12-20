@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="gnutls ldap mysql postgres +ssl +xml"
 
 RDEPEND="
-	sys-libs/zlib
+	virtual/zlib:=
 	ldap? ( net-nds/openldap:= )
 	gnutls? ( net-libs/gnutls:= )
 	!gnutls? (

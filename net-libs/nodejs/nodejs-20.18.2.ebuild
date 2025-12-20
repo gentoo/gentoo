@@ -4,7 +4,7 @@
 EAPI=8
 
 CONFIG_CHECK="~ADVISE_SYSCALLS"
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..12} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit bash-completion-r1 check-reqs flag-o-matic linux-info ninja-utils pax-utils python-any-r1 toolchain-funcs xdg-utils
@@ -20,7 +20,7 @@ if [[ ${PV} == *9999 ]]; then
 else
 	SRC_URI="https://nodejs.org/dist/v${PV}/node-v${PV}.tar.xz"
 	SLOT="0/$(ver_cut 1)"
-	KEYWORDS="amd64 arm arm64 ~loong ppc64 ~riscv x86 ~amd64-linux ~x64-macos"
+	KEYWORDS="amd64 arm arm64 ~loong ppc64 ~riscv x86 ~x64-macos"
 	S="${WORKDIR}/node-v${PV}"
 fi
 
@@ -38,7 +38,7 @@ RDEPEND=">=app-arch/brotli-1.0.9:=
 	>=net-dns/c-ares-1.18.1:=
 	>=net-libs/nghttp2-1.41.0:=
 	>=net-libs/ngtcp2-1.1.0:=
-	sys-libs/zlib
+	virtual/zlib:=
 	corepack? ( !sys-apps/yarn )
 	system-icu? ( >=dev-libs/icu-73:= )
 	system-ssl? ( >=dev-libs/openssl-1.1.1:0= )
@@ -169,8 +169,7 @@ src_configure() {
 }
 
 src_compile() {
-	export NINJA_ARGS=" $(get_NINJAOPTS) "
-	emake -Onone
+	eninja -C out/Release
 }
 
 src_install() {

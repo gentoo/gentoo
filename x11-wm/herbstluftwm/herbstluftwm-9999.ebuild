@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..13} )
+PYTHON_COMPAT=( python3_{10..14} )
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_OPTIONAL=1
 
@@ -132,8 +132,9 @@ src_install() {
 			herbstclient.1
 			herbstluftwm-tutorial.7
 		)
+		local man_page
 		for man_page in "${man_pages[@]}"; do
-			doman "doc/${man_page}"
+			doman "${BUILD_DIR}/doc/${man_page}"
 		done
 	fi
 

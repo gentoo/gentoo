@@ -13,7 +13,7 @@ if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://mesa.freedesktop.org/archive/glu/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-solaris"
 fi
 
 LICENSE="SGI-B-2.0"

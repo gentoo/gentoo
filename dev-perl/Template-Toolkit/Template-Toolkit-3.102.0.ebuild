@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="The Template Toolkit"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 x86 ~x64-macos ~x64-solaris"
 IUSE="gd mysql postgres latex vim-syntax test xml"
 
 RDEPEND="

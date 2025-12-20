@@ -99,7 +99,7 @@ BDEPEND="${PYTHON_DEPS}
 DEPEND="
 	>=app-arch/xz-utils-5.2
 	net-misc/curl:=[http2,ssl]
-	sys-libs/zlib:=
+	virtual/zlib:=
 	dev-libs/openssl:0=
 	system-llvm? (
 		${LLVM_DEPEND[*]}

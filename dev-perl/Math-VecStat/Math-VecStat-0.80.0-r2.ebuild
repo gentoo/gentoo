@@ -10,4 +10,4 @@ inherit perl-module
 DESCRIPTION="Some basic numeric stats on vectors"
 
 SLOT="0"
-KEYWORDS="amd64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~sparc x86"

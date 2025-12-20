@@ -18,7 +18,7 @@ done
 S="${WORKDIR}"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~mips ~ppc ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~mips ~ppc ppc64 ~riscv ~sparc ~x86"
 
 src_install() {
 	insinto /usr/share/pari

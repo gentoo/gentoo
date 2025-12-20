@@ -1,0 +1,48 @@
+Don't automagically enable LTO. Users can enable that if they want via
+*FLAGS.
+--- a/configure.ac
++++ b/configure.ac
+@@ -46,43 +46,6 @@ dnl Checks for typedefs, structures, and compiler characteristics.
+ AC_STRUCT_TM
+ U="`uname -s`"
+ 
+-# LTO fails on Solaris for some reason
+-if test "$U" != "SunOS" -a "$GCC" = yes; then
+-   	CFLAGS="$CFLAGS -Wall -Wextra -Wstrict-prototypes"
+-        # Check for link-time optimization support
+-        OLDCFLAGS="$CFLAGS"
+-        CFLAGS="$CFLAGS -flto=auto"
+-        AC_MSG_CHECKING([whether $CC supports -flto=auto])
+-        AC_LINK_IFELSE(
+-            [AC_LANG_PROGRAM(
+-               [[int x = 1;]],
+-               [[]])],
+-               [lto=yes],
+-               [lto=no]
+-               )
+-        AC_MSG_RESULT([$lto])
+-        if test "x$lto" != "xyes" ; then
+-	    CFLAGS="$OLDCFLAGS"
+-        else
+-            AC_MSG_CHECKING([whether $CC supports -ffat-lto-object])
+-            OLDCFLAGS="$CFLAGS"
+-            CFLAGS="$CFLAGS -Werror -ffat-lto-objects"
+-            AC_LINK_IFELSE(
+-                [AC_LANG_PROGRAM(
+-                    [[int x = 1;]],
+-                    [[]])],
+-                [lto=yes],
+-                [lto=no]
+-                )
+-            AC_MSG_RESULT([$lto])
+-            if test "x$lto" != "xyes" ; then
+-                CFLAGS="$OLDCFLAGS"
+-            else
+-                CFLAGS="$OLDCFLAGS -ffat-lto-objects"
+-            fi
+-        fi
+-fi
+-
+ dnl If sizeof(time_t) is 4, try to get 64-bit time_t
+ if test "$ac_cv_sizeof_time_t" = "4" ; then
+     AC_MSG_NOTICE([time_t is 32-bits on this system; attempting to use 64-bit time_t])

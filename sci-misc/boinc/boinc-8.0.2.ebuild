@@ -42,7 +42,7 @@ DEPEND="
 	app-misc/ca-certificates
 	dev-libs/openssl:=
 	net-misc/curl[ssl]
-	sys-libs/zlib:=
+	virtual/zlib:=
 	X? (
 		media-libs/freeglut
 		media-libs/libjpeg-turbo:=

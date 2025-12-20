@@ -37,7 +37,7 @@ else
 	#VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/jpakkane.gpg
 
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+		KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 	fi
 fi
 
@@ -56,7 +56,7 @@ DEPEND="
 		>=dev-libs/gobject-introspection-1.82.0-r2
 		app-alternatives/ninja
 		dev-vcs/git
-		sys-libs/zlib[static-libs(+)]
+		virtual/zlib:=[static-libs(+)]
 		virtual/pkgconfig
 		dev-build/cmake
 	)
@@ -79,7 +79,7 @@ DEPEND="
 		media-libs/libsdl2
 		media-libs/libwmf
 		net-libs/libpcap
-		sci-libs/hdf5[fortran]
+		sci-libs/hdf5[cxx,fortran]
 		sci-libs/netcdf
 		sys-cluster/openmpi[fortran]
 		sys-devel/bison

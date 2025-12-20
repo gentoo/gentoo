@@ -35,7 +35,7 @@ RDEPEND="
 	media-libs/libpng:=
 	media-libs/libsdl2[joystick]
 	media-video/ffmpeg-compat:6=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	virtual/opengl
 	qt5? (
 		dev-qt/qtcore:5

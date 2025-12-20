@@ -12,7 +12,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/alacarte"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~ppc ~ppc64 ~sparc x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="

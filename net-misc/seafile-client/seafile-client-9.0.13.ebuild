@@ -27,7 +27,7 @@ RDEPEND="dev-db/sqlite:3
 	dev-qt/qt5compat:6
 	>=net-libs/libsearpc-3.2.0_p1
 	~net-misc/seafile-${PV}
-	sys-libs/zlib
+	virtual/zlib:=
 	virtual/opengl
 	elibc_musl? ( sys-libs/fts-standalone )"
 DEPEND="${RDEPEND}"

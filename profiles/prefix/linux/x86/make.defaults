@@ -1,10 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # The base profile sets ACCEPT_KEYWORDS=x86, add unstable on top of
-# that, and retain historical prefix-only x86-linux keyword for
-# transition period, bug #473598
-ACCEPT_KEYWORDS="~x86 ~x86-linux"
+# that to stay in line with the rest of Prefix
+ACCEPT_KEYWORDS="~x86"
 
 # in case we are bootstrapping with the host compiler on an amd64 linux host:
 CFLAGS="${CFLAGS} -m32"

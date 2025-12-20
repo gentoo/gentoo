@@ -43,7 +43,7 @@ RDEPEND="
 	app-arch/bzip2:=
 	app-misc/mime-types
 	dev-libs/libffi:=
-	>=sys-libs/zlib-1.1.3:=
+	>=virtual/zlib-1.1.3:=
 	virtual/libcrypt:=
 	virtual/libintl
 	berkdb? ( || (

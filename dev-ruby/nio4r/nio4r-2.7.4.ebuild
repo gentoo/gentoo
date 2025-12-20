@@ -21,7 +21,7 @@ SRC_URI="https://github.com/socketry/nio4r/archive/refs/tags/v${PV}.tar.gz -> ${
 
 LICENSE="MIT || ( BSD GPL-2 )"
 SLOT="$(ver_cut 1)"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc x86 ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc x86 ~x64-macos ~x64-solaris"
 
 # Note that nio4r bundles a patched copy of libev, and without these
 # patches the tests fail: https://github.com/celluloid/nio4r/issues/15

@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="AGPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 
 # Uses custom Python-based testing framework.
 RESTRICT="test"
@@ -25,7 +25,7 @@ DEPEND="
 	dev-libs/openssl:=
 	dev-libs/libxml2
 	media-video/ffmpeg:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	virtual/libiconv
 "
 RDEPEND="${DEPEND}"
@@ -33,4 +33,5 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}/${PN}-1.33-fix-clock-gettime-config-check.patch"
 	"${FILESDIR}/${PN}-1.33-use-prototyped-declaration.patch"
+	"${FILESDIR}/${PN}-1.33-fix-ffmpeg-7-avcodec_close.patch" # Bug 965416
 )

@@ -13,6 +13,9 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<use>
+		<flag name="magic">Use libmagic from <pkg>sys-apps/file </pkg> to filter unsupported file formats</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">derf/feh</remote-id>
 	</upstream>

@@ -14,7 +14,7 @@ SRC_URI="https://download.tuxera.com/opensource/${MY_P}.tgz"
 LICENSE="GPL-2"
 # The subslot matches the SONAME major #.
 SLOT="0/89"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86"
 IUSE="acl debug +fuse +mount-ntfs ntfsdecrypt +ntfsprogs static-libs suid xattr"
 
 RDEPEND="

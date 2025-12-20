@@ -13,7 +13,7 @@ SRC_URI="https://github.com/twaugh/patchutils/releases/download/${PV}/${P}.tar.x
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="pcre"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

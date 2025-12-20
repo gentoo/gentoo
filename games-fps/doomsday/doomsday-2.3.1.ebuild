@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit cmake flag-o-matic python-any-r1 qmake-utils readme.gentoo-r1 xdg
 
 DESCRIPTION="A modern gaming engine for Doom, Heretic, and Hexen"
@@ -24,7 +24,7 @@ RDEPEND="
 	dev-qt/qtx11extras:5=
 	media-libs/assimp:=
 	net-misc/curl
-	sys-libs/zlib
+	virtual/zlib:=
 	x11-libs/libX11
 	display-mode? (
 		x11-libs/libXrandr

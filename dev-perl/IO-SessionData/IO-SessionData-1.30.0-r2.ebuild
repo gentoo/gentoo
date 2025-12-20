@@ -10,4 +10,4 @@ inherit perl-module
 DESCRIPTION="Session data support module for SOAP::Lite"
 
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv x86"

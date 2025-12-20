@@ -1,0 +1,32 @@
+From b0e233b6b20134177af40e8904b593b8dbc18ada Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Thu, 9 Oct 2025 12:33:38 +0200
+Subject: [PATCH] Fix build with Qt 6.10
+
+The private API has been moved into a separate CMake package
+
+See https://bugreports.qt.io/browse/QTBUG-87776
+---
+ CMakeLists.txt | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e6a6d81796..e1fc6a4c30 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -53,7 +53,11 @@ find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} NO_MODULE REQUIRED COMPONEN
+ )
+ 
+ # building QADS or Xlsx requires Qt${QT_VERSION_MAJOR}GuiPrivate (QADS is required, Xlsx is optional)
+-find_package(Qt${QT_MAJOR_VERSION}Gui ${QT_MIN_VERSION} CONFIG REQUIRED Private)
++if (Qt6Gui_VERSION VERSION_GREATER_EQUAL 6.10.0)
++    find_package(Qt6GuiPrivate ${QT_MIN_VERSION} CONFIG REQUIRED)
++else()
++    find_package(Qt${QT_MAJOR_VERSION}Gui ${QT_MIN_VERSION} CONFIG REQUIRED Private)
++endif()
+ 
+ find_package(KF${KF_MAJOR_VERSION} ${KF_MIN_VERSION} REQUIRED COMPONENTS
+     Archive
+-- 
+GitLab
+

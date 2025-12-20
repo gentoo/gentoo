@@ -17,7 +17,7 @@ S="${WORKDIR}"/${PN}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ppc ~sparc x86"
 
 PATCHES=(
 	"${WORKDIR}"/${PN}_${MY_PV}-${DEB_PR}.diff

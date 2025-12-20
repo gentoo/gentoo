@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ppc ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ppc ppc64 ~riscv ~sparc ~x86"
 
 RDEPEND="virtual/lapack"
 DEPEND="${RDEPEND}"

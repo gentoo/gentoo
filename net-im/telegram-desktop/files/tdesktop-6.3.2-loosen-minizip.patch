@@ -1,0 +1,20 @@
+Loosen minizip requirement
+
+The new minizip-ng reports itself as version 4, but should be compatible with
+the old one. I doubt there will ever be much breakage here, so completely
+removing the version requirement makes sense.
+
+Warning! I have not tested minizip-ng at runtime. All my systems are stable,
+I'll just see the bug reports arrive if anything's up.
+
+--- tdesktop-6.3.2-full.orig/cmake/external/minizip/CMakeLists.txt
++++ tdesktop-6.3.2-full/cmake/external/minizip/CMakeLists.txt
+@@ -10,7 +10,7 @@
+ if (DESKTOP_APP_USE_PACKAGED)
+     find_package(PkgConfig REQUIRED)
+     if (PkgConfig_FOUND)
+-        pkg_check_modules(DESKTOP_APP_MINIZIP IMPORTED_TARGET REQUIRED minizip<2.0.0)
++        pkg_check_modules(DESKTOP_APP_MINIZIP IMPORTED_TARGET REQUIRED minizip)
+     endif()
+ 
+     if (DESKTOP_APP_MINIZIP_FOUND)

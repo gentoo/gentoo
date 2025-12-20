@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ RDEPEND="
 	dev-libs/expat:=
 	dev-libs/openssl:0=
 	net-misc/curl:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	x11-libs/wxGTK:${WX_GTK_VER}="
 DEPEND="${RDEPEND}"
 

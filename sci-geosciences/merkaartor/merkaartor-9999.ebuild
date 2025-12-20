@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,7 +29,7 @@ DEPEND="
 	dev-qt/qtsvg:6
 	sci-libs/gdal:=
 	sci-libs/proj:=
-	sys-libs/zlib
+	virtual/zlib:=
 	exif? ( media-gfx/exiv2:= )
 	gps? ( >=sci-geosciences/gpsd-3.17-r2:= )
 	libproxy? ( >=net-libs/libproxy-0.5 )

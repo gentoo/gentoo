@@ -22,7 +22,7 @@ DEPEND=">=dev-libs/boehm-gc-7.2
 	dev-libs/libmoe
 	dev-lang/perl
 	sys-libs/ncurses:0=
-	sys-libs/zlib
+	virtual/zlib:=
 	gpm? ( sys-libs/gpm )
 	nls? ( sys-devel/gettext )
 	ssl? (

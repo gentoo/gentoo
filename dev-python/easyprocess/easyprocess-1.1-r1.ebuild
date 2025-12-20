@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1
@@ -25,13 +25,13 @@ KEYWORDS="amd64 ~arm arm64 ~riscv x86"
 
 BDEPEND="
 	test? (
-		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 		dev-python/pyvirtualdisplay[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
 		x11-base/xorg-server[xvfb]
 	)
 "
 
+EPYTEST_PLUGINS=( pytest-timeout )
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(

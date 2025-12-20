@@ -12,6 +12,8 @@ SRC_URI="
 		-> ${P}.tar.gz
 	https://github.com/cvut/qtrvsim/commit/ce63bb060fa8adb2215547da8a12d4e8d5a8f87e.patch
 		-> ${PN}-0.9.8-svgscene-fix-build-when-qt6-is-specified.patch
+	https://github.com/Flowdalic/qtrvsim/commit/33c9fc538c950da2ebad2cd7bfee28d4a37fd586.patch
+		-> ${PN}-0.9.8-fix-compilation-with-qt-6.10.patch
 "
 
 LICENSE="GPL-3+"
@@ -26,6 +28,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${DISTDIR}"/${PN}-0.9.8-svgscene-fix-build-when-qt6-is-specified.patch
+	"${DISTDIR}"/${PN}-0.9.8-fix-compilation-with-qt-6.10.patch
 )
 
 src_configure() {

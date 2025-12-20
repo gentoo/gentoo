@@ -28,7 +28,7 @@ DEPEND="
 	>=dev-libs/trio-1.17
 	media-libs/flac
 	media-libs/jg:1=
-	sys-libs/zlib:=[minizip]
+	virtual/minizip:=
 	virtual/libiconv
 "
 RDEPEND="

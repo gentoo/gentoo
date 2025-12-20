@@ -11,7 +11,7 @@ SRC_URI="https://github.com/jjwhitney/BDelta/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86 ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-soname.patch

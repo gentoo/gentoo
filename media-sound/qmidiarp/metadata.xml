@@ -6,6 +6,7 @@
 		<name>Gentoo Sound project</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">emuse/qmidiarp</remote-id>
 		<remote-id type="sourceforge">qmidiarp</remote-id>
 	</upstream>
 	<use>

@@ -20,7 +20,7 @@ else
 	SRC_URI="https://github.com/systemd/${PN}/archive/refs/tags/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
 
 	if [[ ${PV} != *rc* ]] ; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+		KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 	fi
 fi
 
@@ -70,7 +70,7 @@ COMMON_DEPEND="
 	idn? ( net-dns/libidn2:= )
 	importd? (
 		app-arch/bzip2:0=
-		sys-libs/zlib:0=
+		virtual/zlib:=
 	)
 	kmod? ( >=sys-apps/kmod-15:0= )
 	lz4? ( >=app-arch/lz4-0_p131:0=[${MULTILIB_USEDEP}] )

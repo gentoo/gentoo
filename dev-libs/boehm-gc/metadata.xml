@@ -9,6 +9,6 @@
 		<flag name="large">optimize for large heap size (also increases max root sets)</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">ivmai/bdwgc</remote-id>
+		<remote-id type="github">bdwgc/bdwgc</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -9,7 +9,7 @@ SRC_URI="mirror://gentoo/molprobity-${PV}.tgz"
 
 LICENSE="richardson"
 SLOT="0"
-KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	>=sci-chemistry/cluster-1.3.081231-r1

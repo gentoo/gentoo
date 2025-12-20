@@ -19,7 +19,7 @@ BDEPEND="
 	virtual/pkgconfig"
 RDEPEND="
 	media-libs/libpng:0=
-	sys-libs/zlib:="
+	virtual/zlib:="
 DEPEND="${RDEPEND}"
 
 PATCHES=(

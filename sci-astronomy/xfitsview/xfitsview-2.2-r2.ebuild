@@ -15,7 +15,7 @@ S="${WORKDIR}/${MY_PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 
 DEPEND=">=x11-libs/motif-2.3:0"
 RDEPEND="${DEPEND}"

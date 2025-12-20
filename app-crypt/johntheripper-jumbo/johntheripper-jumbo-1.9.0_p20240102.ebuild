@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ else
 	HASH_COMMIT="9daf16b5743b2c521d23c281e13ae8cdbd37b1eb"
 	SRC_URI="https://github.com/openwall/john/archive/${HASH_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/john-${HASH_COMMIT}"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 LICENSE="GPL-2"
@@ -30,7 +30,7 @@ DEPEND=">=dev-libs/openssl-1.0.1:=
 	kerberos? ( virtual/krb5 )
 	pcap? ( net-libs/libpcap )
 	dev-libs/gmp:=
-	sys-libs/zlib
+	virtual/zlib:=
 	app-arch/bzip2"
 # Missing (unpackaged):
 # - Digest::Haval256

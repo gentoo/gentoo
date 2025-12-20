@@ -11,7 +11,7 @@ SRC_URI="https://ftp.ebi.ac.uk/pub/software/vertebrategenomics/exonerate/${P}.ta
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~ppc-macos ~x64-macos"
+KEYWORDS="~amd64 ~x86 ~x64-macos"
 IUSE="test utils"
 REQUIRED_USE="test? ( utils )"
 RESTRICT="!test? ( test )"

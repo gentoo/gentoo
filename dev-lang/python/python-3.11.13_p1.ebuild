@@ -49,7 +49,7 @@ RDEPEND="
 	dev-libs/libffi:=
 	dev-libs/mpdecimal:=
 	dev-python/gentoo-common
-	>=sys-libs/zlib-1.1.3:=
+	>=virtual/zlib-1.1.3:=
 	virtual/libcrypt:=
 	virtual/libintl
 	gdbm? ( sys-libs/gdbm:=[berkdb] )

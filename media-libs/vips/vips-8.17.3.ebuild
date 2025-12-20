@@ -12,7 +12,7 @@ SRC_URI="https://github.com/libvips/libvips/releases/download/v${PV}/${P}.tar.xz
 
 LICENSE="LGPL-2.1+ MIT"
 SLOT="0/42" # soname
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="
 	archive deprecated doc exif fftw fits fontconfig graphicsmagick
 	heif +highway imagemagick imagequant +introspection +jpeg jpeg2k
@@ -65,7 +65,7 @@ RDEPEND="
 	png? ( media-libs/libpng:= )
 	svg? (
 		gnome-base/librsvg:2
-		sys-libs/zlib:=
+		virtual/zlib:=
 		x11-libs/cairo
 	)
 	tiff? ( media-libs/tiff:= )

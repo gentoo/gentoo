@@ -30,7 +30,7 @@ RDEPEND="
 		dev-lang/php[sockets]
 	)
 	enigma? (
-		app-crypt/gnupg
+		app-alternatives/gpg
 	)
 	mysql? (
 		|| (

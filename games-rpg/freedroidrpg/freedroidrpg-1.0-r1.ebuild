@@ -4,7 +4,7 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-3 )
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit autotools lua-single python-any-r1 xdg
 
 DESCRIPTION="Modification of the classical Freedroid engine into an RPG"
@@ -23,7 +23,7 @@ RDEPEND="
 	media-libs/libsdl[opengl?,sound?,video]
 	media-libs/sdl-gfx:=
 	media-libs/sdl-image[jpeg,png]
-	sys-libs/zlib:=
+	virtual/zlib:=
 	virtual/libintl
 	devtools? ( media-libs/sdl-ttf )
 	opengl? (

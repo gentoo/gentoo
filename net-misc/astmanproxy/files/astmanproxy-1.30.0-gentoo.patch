@@ -1,0 +1,53 @@
+--- astmanproxy-1.30.0/Makefile.o	2025-12-02 17:39:00.416571795 +0200
++++ astmanproxy-1.30.0/Makefile	2025-12-02 17:40:52.127684407 +0200
+@@ -15,9 +15,8 @@
+ CONFFILE := astmanproxy.conf
+ PERMFILE := astmanproxy.users
+ 
+-CC := gcc
+ INCLUDES :=
+-PREFIX:= /usr/local
++PREFIX:= /usr
+ BINDIR := $(DESTDIR)$(PREFIX)/sbin
+ 
+ # For compilation dependencies
+@@ -27,7 +26,8 @@
+ LIBS := -lssl
+ 
+ # Add -g below for debug/GDB symbols
+-CFLAGS:=-Wall -O2 -D_REENTRANT -D_GNU_SOURCE -fPIC
++CFLAGS += -Wall -fPIC
++CPPFLAGS += -D_REENTRANT -D_GNU_SOURCE -Isrc/include -I/usr/include/openssl
+ 
+ ifeq (${OSARCH},Darwin)  
+   LIBS+=-lresolv
+@@ -65,7 +65,7 @@
+ DEFINES+='-DMDIR="$(MODDIR)"' '-DPDIR="$(PERMDIR)"' '-DPFILE="$(PERMFILE)"'
+ 
+ PROXYCERT := $(CERTDIR)/proxy-server.pem
+-PROXYSSLCONF := $(CONFDIR)/proxy-ssl.conf
++PROXYSSLCONF := $(DESTDIR)$(CONFDIR)/proxy-ssl.conf
+ 
+ CFLAGS += $(DEFINES)
+ 
+@@ -79,16 +79,16 @@
+ SRCS := $(MODS:%=%.c)
+ HDRS := astmanproxy.h
+ 
+-all: astmanproxy cert
++all: astmanproxy
+ 
+ astmanproxy: $(OBJS) $(SOBJS)
+-	$(CC) $(CFLAGS) -o $@ $(ASTLINK) $(OBJS) $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(ASTLINK) $(OBJS) $(LIBS)
+ 
+ $(OBJS): %.o: %.c
+-	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $<
+ 
+ $(SOBJS): %.so: %.o
+-	$(CC) $(SOLINK) $< -o $@
++	$(CC) $(LDFLAGS) $(SOLINK) $< -o $@
+ 
+ SERIAL=`date "+%Y%m%d%H%M%S"`
+ 

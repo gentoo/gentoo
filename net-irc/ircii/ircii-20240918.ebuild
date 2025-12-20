@@ -13,7 +13,7 @@ SRC_URI="https://ircii.warped.com/${P}.tar.bz2
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~ppc ~riscv x86"
 
 DEPEND="dev-libs/openssl:0=
 	sys-libs/ncurses:0=

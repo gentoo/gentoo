@@ -4,7 +4,7 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-{1..2} luajit )
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit lua-single python-any-r1 scons-utils toolchain-funcs
 
@@ -31,7 +31,7 @@ RDEPEND="
 	dev-libs/openssl:0=
 	net-libs/libnatpmp
 	net-libs/miniupnpc:=
-	sys-libs/zlib
+	virtual/zlib:=
 	expat? ( dev-libs/expat )
 	!expat? ( dev-libs/libxml2:2= )
 	icu? ( dev-libs/icu:= )

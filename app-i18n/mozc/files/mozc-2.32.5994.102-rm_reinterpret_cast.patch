@@ -1,0 +1,362 @@
+backport https://github.com/google/mozc/commit/7118076.patch
+Burn down unsafe `reinterpret_cast`s.
+--- a/config/BUILD.bazel
++++ b/config/BUILD.bazel
+@@ -137,6 +137,7 @@ mozc_cc_test(
+             "//protocol:config_cc_proto",
+         ],
+         windows = [
++            "//base:bits",
+             "//base/win32:win_api_test_helper",
+             "@com_google_absl//absl/base",
+             "@com_google_absl//absl/container:flat_hash_map",
+@@ -164,6 +165,7 @@ mozc_cc_library(
+     ],
+     deps = [
+         ":config_handler",
++        "//base:bits",
+         "//base:config_file_stream",
+         "//base:number_util",
+         "//base:singleton",
+--- a/config/character_form_manager.cc
++++ b/config/character_form_manager.cc
+@@ -44,6 +44,7 @@
+ #include "absl/strings/str_cat.h"
+ #include "absl/strings/string_view.h"
+ #include "absl/types/span.h"
++#include "base/bits.h"
+ #include "base/config_file_stream.h"
+ #include "base/number_util.h"
+ #include "base/singleton.h"
+@@ -379,7 +380,7 @@ Config::CharacterForm CharacterFormManagerImpl::GetCharacterFormFromStorage(
+   if (value == nullptr) {
+     return Config::FULL_WIDTH;  // Return default setting
+   }
+-  const uint32_t ivalue = *reinterpret_cast<const uint32_t*>(value);
++  const uint32_t ivalue = LoadUnaligned<uint32_t>(value);
+   return static_cast<Config::CharacterForm>(ivalue);
+ }
+ 
+--- a/config/stats_config_util_test.cc
++++ b/config/stats_config_util_test.cc
+@@ -42,6 +42,7 @@
+ #include <bit>
+ 
+ #include "absl/container/flat_hash_map.h"
++#include "base/bits.h"
+ #include "base/singleton.h"
+ #include "base/win32/win_api_test_helper.h"
+ #endif  // _WIN32
+@@ -228,7 +229,7 @@ class RegistryEmulator {
+     if (!CheckWritable(key)) {
+       return ERROR_ACCESS_DENIED;
+     }
+-    SetUsagestatsValue(key, *reinterpret_cast<const DWORD*>(data));
++    SetUsagestatsValue(key, LoadUnaligned<DWORD>(data));
+     return ERROR_SUCCESS;
+   }
+   static LSTATUS WINAPI TestRegCloseKey(HKEY key) { return ERROR_SUCCESS; }
+--- a/converter/BUILD.bazel
++++ b/converter/BUILD.bazel
+@@ -222,6 +222,7 @@ mozc_cc_library(
+         "//prediction:__pkg__",
+     ],
+     deps = [
++        "//base:bits",
+         "//data_manager",
+         "//storage/louds:simple_succinct_bit_vector_index",
+         "@com_google_absl//absl/status",
+@@ -241,6 +242,7 @@ mozc_cc_test(
+     ],
+     deps = [
+         ":connector",
++        "//base:bits",
+         "//base:mmap",
+         "//base:vlog",
+         "//data_manager:connection_file_reader",
+--- a/converter/connector.cc
++++ b/converter/connector.cc
+@@ -45,6 +45,7 @@
+ #include "absl/strings/escaping.h"
+ #include "absl/strings/str_cat.h"
+ #include "absl/strings/string_view.h"
++#include "base/bits.h"
+ #include "data_manager/data_manager.h"
+ #include "storage/louds/simple_succinct_bit_vector_index.h"
+ 
+@@ -245,11 +246,11 @@ absl::Status Connector::Init(absl::string_view connection_data) {
+     // |ptr| points to here now.  Every uint8_t[] block needs to be aligned at
+     // 32-bit boundary.
+     VALIDATE_SIZE(ptr, 2, "Compact bits size of row ", i, "/", rsize);
+-    const uint16_t compact_bits_size = *reinterpret_cast<const uint16_t*>(ptr);
++    const uint16_t compact_bits_size = LoadUnaligned<uint16_t>(ptr);
+     ptr += 2;
+ 
+     VALIDATE_SIZE(ptr, 2, "Values size of row ", i, "/", rsize);
+-    const uint16_t values_size = *reinterpret_cast<const uint16_t*>(ptr);
++    const uint16_t values_size = LoadUnaligned<uint16_t>(ptr);
+     ptr += 2;
+ 
+     VALIDATE_SIZE(ptr, chunk_bits_size, "Chunk bits of row ", i, "/", rsize);
+--- a/converter/connector_test.cc
++++ b/converter/connector_test.cc
+@@ -39,6 +39,7 @@
+ #include "absl/random/random.h"
+ #include "absl/status/statusor.h"
+ #include "absl/strings/string_view.h"
++#include "base/bits.h"
+ #include "base/mmap.h"
+ #include "base/vlog.h"
+ #include "data_manager/connection_file_reader.h"
+@@ -102,7 +103,7 @@ TEST(ConnectorTest, BrokenData) {
+   // Invalid magic number.
+   {
+     data.assign(cmmap->begin(), cmmap->size());
+-    *reinterpret_cast<uint16_t*>(&data[0]) = 0;
++    StoreUnaligned<uint16_t>(0, &data[0]);
+     const auto status = Connector::Create(data).status();
+     MOZC_VLOG(1) << status;
+     EXPECT_FALSE(status.ok());
+--- a/converter/inner_segment.h
++++ b/converter/inner_segment.h
+@@ -31,6 +31,7 @@
+ #define MOZC_CONVERTER_INNER_SEGMENT_H_
+ 
+ #include <algorithm>
++#include <bit>
+ #include <cstddef>
+ #include <cstdint>
+ #include <iterator>
+@@ -94,11 +95,11 @@ inline std::optional<uint32_t> EncodeLengths(uint32_t key_len,
+ 
+   const internal::LengthData data{key_len, value_len, content_key_len,
+                                   content_value_len};
+-  return *reinterpret_cast<const uint32_t*>(&data);
++  return std::bit_cast<uint32_t>(data);
+ }
+ 
+ inline internal::LengthData DecodeLengths(uint32_t encoded) {
+-  return *reinterpret_cast<const struct internal::LengthData*>(&encoded);
++  return std::bit_cast<internal::LengthData>(encoded);
+ }
+ 
+ // Iterator class to access inner segments.
+--- a/data_manager/BUILD.bazel
++++ b/data_manager/BUILD.bazel
+@@ -317,4 +317,5 @@ mozc_cc_library(
+     name = "emoji_data",
+     hdrs = ["emoji_data.h"],
+     visibility = ["//rewriter:__pkg__"],
++    deps = ["//base:bits"],
+ )
+--- a/data_manager/emoji_data.h
++++ b/data_manager/emoji_data.h
+@@ -35,6 +35,8 @@
+ #include <iterator>
+ #include <utility>
+ 
++#include "base/bits.h"
++
+ namespace mozc {
+ 
+ // Emoji Version Data, in Unicode.
+@@ -99,17 +101,13 @@ class EmojiDataIterator {
+   EmojiDataIterator() : ptr_(nullptr) {}
+   explicit EmojiDataIterator(const char* ptr) : ptr_(ptr) {}
+ 
+-  uint32_t key_index() const {
+-    return *reinterpret_cast<const uint32_t*>(ptr_);
+-  }
+-  uint32_t emoji_index() const {
+-    return *reinterpret_cast<const uint32_t*>(ptr_ + 4);
+-  }
++  uint32_t key_index() const { return LoadUnaligned<uint32_t>(ptr_); }
++  uint32_t emoji_index() const { return LoadUnaligned<uint32_t>(ptr_ + 4); }
+   uint32_t unicode_version_index() const {
+-    return *reinterpret_cast<const uint32_t*>(ptr_ + 8);
++    return LoadUnaligned<uint32_t>(ptr_ + 8);
+   }
+   uint32_t description_utf8_index() const {
+-    return *reinterpret_cast<const uint32_t*>(ptr_ + 12);
++    return LoadUnaligned<uint32_t>(ptr_ + 12);
+   }
+ 
+   // Returns key index as token array is searched by key.
+--- a/data_manager/serialized_dictionary.h
++++ b/data_manager/serialized_dictionary.h
+@@ -42,6 +42,7 @@
+ 
+ #include "absl/log/check.h"
+ #include "absl/strings/string_view.h"
++#include "base/bits.h"
+ #include "base/container/serialized_string_array.h"
+ 
+ namespace mozc {
+@@ -137,72 +138,35 @@ class SerializedDictionary {
+         : token_ptr_(token_ptr), string_array_(string_array) {}
+     iterator(const iterator& x) = default;
+ 
+-    uint32_t key_index() {
+-      return *reinterpret_cast<const uint32_t*>(token_ptr_);
+-    }
+-    uint32_t key_index() const {
+-      return *reinterpret_cast<const uint32_t*>(token_ptr_);
+-    }
+-    absl::string_view key() { return (*string_array_)[key_index()]; }
++    uint32_t key_index() const { return LoadUnaligned<uint32_t>(token_ptr_); }
+     absl::string_view key() const { return (*string_array_)[key_index()]; }
+ 
+-    uint32_t value_index() {
+-      return *reinterpret_cast<const uint32_t*>(token_ptr_ + 4);
+-    }
+     uint32_t value_index() const {
+-      return *reinterpret_cast<const uint32_t*>(token_ptr_ + 4);
++      return LoadUnaligned<uint32_t>(token_ptr_ + 4);
+     }
+-    absl::string_view value() { return (*string_array_)[value_index()]; }
+     absl::string_view value() const { return (*string_array_)[value_index()]; }
+ 
+-    uint32_t description_index() {
+-      return *reinterpret_cast<const uint32_t*>(token_ptr_ + 8);
+-    }
+     uint32_t description_index() const {
+-      return *reinterpret_cast<const uint32_t*>(token_ptr_ + 8);
++      return LoadUnaligned<uint32_t>(token_ptr_ + 8);
+     }
+ 
+-    absl::string_view description() {
+-      return (*string_array_)[description_index()];
+-    }
+     absl::string_view description() const {
+       return (*string_array_)[description_index()];
+     }
+ 
+-    uint32_t additional_description_index() {
+-      return *reinterpret_cast<const uint32_t*>(token_ptr_ + 12);
+-    }
+     uint32_t additional_description_index() const {
+-      return *reinterpret_cast<const uint32_t*>(token_ptr_ + 12);
+-    }
+-    absl::string_view additional_description() {
+-      return (*string_array_)[additional_description_index()];
++      return LoadUnaligned<uint32_t>(token_ptr_ + 12);
+     }
+ 
+     absl::string_view additional_description() const {
+       return (*string_array_)[additional_description_index()];
+     }
+ 
+-    uint16_t lid() {
+-      return *reinterpret_cast<const uint16_t*>(token_ptr_ + 16);
+-    }
+-    uint16_t lid() const {
+-      return *reinterpret_cast<const uint16_t*>(token_ptr_ + 16);
+-    }
++    uint16_t lid() const { return LoadUnaligned<uint16_t>(token_ptr_ + 16); }
+ 
+-    uint16_t rid() {
+-      return *reinterpret_cast<const uint16_t*>(token_ptr_ + 18);
+-    }
+-    uint16_t rid() const {
+-      return *reinterpret_cast<const uint16_t*>(token_ptr_ + 18);
+-    }
++    uint16_t rid() const { return LoadUnaligned<uint16_t>(token_ptr_ + 18); }
+ 
+-    int16_t cost() {
+-      return *reinterpret_cast<const uint16_t*>(token_ptr_ + 20);
+-    }
+-    int16_t cost() const {
+-      return *reinterpret_cast<const uint16_t*>(token_ptr_ + 20);
+-    }
++    int16_t cost() const { return LoadUnaligned<int16_t>(token_ptr_ + 20); }
+ 
+     absl::string_view operator*() { return key(); }
+     absl::string_view operator*() const { return key(); }
+--- a/dictionary/BUILD.bazel
++++ b/dictionary/BUILD.bazel
+@@ -546,6 +546,7 @@ mozc_cc_library(
+         "//rewriter:__pkg__",
+     ],
+     deps = [
++        "//base:bits",
+         "//base/container:serialized_string_array",
+         "//base/strings:assign",
+         "//data_manager",
+--- a/dictionary/user_pos.h
++++ b/dictionary/user_pos.h
+@@ -40,6 +40,7 @@
+ #include <vector>
+ 
+ #include "absl/strings/string_view.h"
++#include "base/bits.h"
+ #include "base/container/serialized_string_array.h"
+ #include "data_manager/data_manager.h"
+ 
+@@ -132,17 +133,15 @@ class UserPos {
+     explicit iterator(const char* ptr) : ptr_(ptr) {}
+     iterator(const iterator& x) = default;
+ 
+-    uint16_t pos_index() const {
+-      return *reinterpret_cast<const uint16_t*>(ptr_);
+-    }
++    uint16_t pos_index() const { return LoadUnaligned<uint16_t>(ptr_); }
+     uint16_t value_suffix_index() const {
+-      return *reinterpret_cast<const uint16_t*>(ptr_ + 2);
++      return LoadUnaligned<uint16_t>(ptr_ + 2);
+     }
+     uint16_t key_suffix_index() const {
+-      return *reinterpret_cast<const uint16_t*>(ptr_ + 4);
++      return LoadUnaligned<uint16_t>(ptr_ + 4);
+     }
+     uint16_t conjugation_id() const {
+-      return *reinterpret_cast<const uint16_t*>(ptr_ + 6);
++      return LoadUnaligned<uint16_t>(ptr_ + 6);
+     }
+ 
+     uint16_t operator*() const { return pos_index(); }
+--- a/prediction/BUILD.bazel
++++ b/prediction/BUILD.bazel
+@@ -512,6 +512,7 @@ mozc_cc_library(
+         "//engine:__pkg__",
+     ],
+     deps = [
++        "//base:bits",
+         "//base/container:serialized_string_array",
+         "@com_google_absl//absl/strings",
+     ],
+--- a/prediction/zero_query_dict.h
++++ b/prediction/zero_query_dict.h
+@@ -37,6 +37,7 @@
+ #include <utility>
+ 
+ #include "absl/strings/string_view.h"
++#include "base/bits.h"
+ #include "base/container/serialized_string_array.h"
+ 
+ namespace mozc {
+@@ -98,21 +99,17 @@ class ZeroQueryDict {
+     uint32_t operator*() const { return key_index(); }
+ 
+     uint32_t operator[](ptrdiff_t n) const {
+-      return *reinterpret_cast<const uint32_t*>(ptr_ + n * kTokenByteSize);
++      return LoadUnaligned<uint32_t>(ptr_ + n * kTokenByteSize);
+     }
+ 
+     const iterator* operator->() const { return this; }
+ 
+-    uint32_t key_index() const {
+-      return *reinterpret_cast<const uint32_t*>(ptr_);
+-    }
++    uint32_t key_index() const { return LoadUnaligned<uint32_t>(ptr_); }
+ 
+-    uint32_t value_index() const {
+-      return *reinterpret_cast<const uint32_t*>(ptr_ + 4);
+-    }
++    uint32_t value_index() const { return LoadUnaligned<uint32_t>(ptr_ + 4); }
+ 
+     ZeroQueryType type() const {
+-      const uint16_t val = *reinterpret_cast<const uint16_t*>(ptr_ + 8);
++      const uint16_t val = LoadUnaligned<uint16_t>(ptr_ + 8);
+       return static_cast<ZeroQueryType>(val);
+     }
+ 

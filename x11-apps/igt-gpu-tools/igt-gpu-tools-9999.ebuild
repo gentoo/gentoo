@@ -34,7 +34,7 @@ RDEPEND="
 	dev-libs/elfutils
 	dev-libs/glib:2
 	sys-apps/kmod
-	sys-libs/zlib:=
+	virtual/zlib:=
 	sys-process/procps:=
 	virtual/libudev:=
 	>=x11-libs/cairo-1.12.0[X?]

@@ -7,7 +7,7 @@ EBO_DESCRIPTION="MSE - Multiple Sequence Screen Editor"
 
 inherit autotools emboss-r3 flag-o-matic
 
-KEYWORDS="~amd64 ~x86 ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="sys-libs/ncurses:="
 DEPEND="${RDEPEND}"

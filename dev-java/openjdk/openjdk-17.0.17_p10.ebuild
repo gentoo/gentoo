@@ -53,7 +53,7 @@ S="${WORKDIR}/jdk${SLOT}u-jdk-${MY_PV//+/-}"
 
 LICENSE="GPL-2-with-classpath-exception"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 ~riscv x86"
 
 IUSE="alsa big-endian cups debug doc examples headless-awt javafx +jbootstrap selinux source system-bootstrap systemtap"
 
@@ -68,7 +68,7 @@ COMMON_DEPEND="
 	media-libs/harfbuzz:=
 	media-libs/libpng:0=
 	media-libs/lcms:2=
-	sys-libs/zlib
+	virtual/zlib:=
 	media-libs/libjpeg-turbo:0=
 	systemtap? ( dev-debug/systemtap )
 "

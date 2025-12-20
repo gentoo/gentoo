@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="sys-libs/zlib"
+RDEPEND="virtual/zlib:="
 DEPEND="${RDEPEND}
 	test? ( dev-libs/check )"
 

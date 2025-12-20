@@ -19,7 +19,7 @@ SRC_URI="
 
 LICENSE="BSD Info-ZIP MIT"
 SLOT="0/37" # subslot is libgdal.so.<SONAME> (and GDAL_SOVERSION in gdal.cmake)
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="
 	archive armadillo avif blosc cryptopp +curl cpu_flags_arm_neon cpu_flags_x86_avx
 	cpu_flags_x86_avx2 cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse4_1
@@ -45,7 +45,7 @@ COMMON_DEPEND="
 	>=sci-libs/libgeotiff-1.5.1-r1:=
 	media-libs/libjpeg-turbo:=
 	>=sci-libs/proj-6.0.0:=[tiff]
-	sys-libs/zlib[minizip(+)]
+	virtual/minizip:=
 	archive? ( app-arch/libarchive:= )
 	armadillo? ( sci-libs/armadillo:=[lapack] )
 	avif? ( media-libs/libavif:= )

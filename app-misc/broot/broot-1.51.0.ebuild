@@ -18,13 +18,13 @@ LICENSE+="
 	LGPL-3+ MIT MPL-2.0 UoI-NCSA Unicode-3.0 ZLIB
 "
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="X"
 
 DEPEND="
 	dev-db/sqlite:3
 	dev-libs/libgit2:=
-	sys-libs/zlib
+	virtual/zlib:=
 	X? ( x11-libs/libxcb:= )
 "
 RDEPEND="${DEPEND}"

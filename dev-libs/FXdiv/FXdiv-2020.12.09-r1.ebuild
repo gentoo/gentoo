@@ -22,6 +22,7 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-cmake.patch
 )
 
 src_prepare() {

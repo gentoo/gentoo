@@ -17,7 +17,7 @@ SRC_URI="${BASE_URI}/ArgoUML-${PV}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 x86"
 IUSE="doc"
 
 RDEPEND=">=virtual/jre-1.8:*"

@@ -28,7 +28,7 @@ RDEPEND="
 	dev-libs/crypto++:=
 	sys-libs/binutils-libs:0=
 	sys-libs/readline:0=
-	sys-libs/zlib
+	virtual/zlib:=
 	x11-libs/wxGTK:${WX_GTK_VER}=[X?]
 	daemon? ( acct-user/amule )
 	geoip? ( dev-libs/geoip )

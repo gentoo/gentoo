@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,10 @@ IUSE="autocrypt berkdb doc gdbm gnutls gpgme idn kerberos kyotocabinet lmdb lz4
 	nls notmuch pgp-classic qdbm sasl selinux smime-classic ssl tokyocabinet
 	test zlib zstd"
 REQUIRED_USE="
-	autocrypt? ( gpgme )"
+	autocrypt? ( gpgme )
+	gnutls? ( !ssl )
+	ssl? ( !gnutls )
+"
 
 CDEPEND="
 	app-misc/mime-types
@@ -52,7 +55,7 @@ CDEPEND="
 	sasl? ( >=dev-libs/cyrus-sasl-2 )
 	ssl? ( >=dev-libs/openssl-1.0.2u:0= )
 	lz4? ( app-arch/lz4 )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib:= )
 	zstd? ( app-arch/zstd )
 "
 DEPEND="${CDEPEND}

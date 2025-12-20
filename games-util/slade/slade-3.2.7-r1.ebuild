@@ -31,7 +31,7 @@ DEPEND="
 	media-libs/ftgl
 	media-libs/libsfml:=
 	media-sound/mpg123
-	sys-libs/zlib
+	virtual/zlib:=
 	x11-libs/wxGTK:${WX_GTK_VER}=[curl(+),opengl,webkit?,X]
 	virtual/glu
 	fluidsynth? ( media-sound/fluidsynth:= )

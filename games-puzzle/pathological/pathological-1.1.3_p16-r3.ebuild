@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit desktop optfeature python-single-r1
 
 MY_P=${PN}-$(ver_cut 1-3)

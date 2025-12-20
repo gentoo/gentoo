@@ -11,7 +11,7 @@ SRC_URI="https://github.com/dharple/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~hppa ~mips ~ppc ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm64 ~hppa ~mips ~ppc ~riscv ~x86"
 
 BDEPEND="
 	app-alternatives/yacc

@@ -1,0 +1,31 @@
+https://github.com/ostreedev/ostree/pull/3541
+
+From: Michal R <vad.sol@proton.me>
+Date: Thu, 23 Oct 2025 11:10:41 +0200
+Subject: [PATCH 1/2] aboot: Add missing `stdint.h` include
+
+Without this include, builds on musl systems end up with the following
+error:
+
+```
+src/libostree/ostree-bootloader-aboot.c:136:18: error: 'uintptr_t'
+    undeclared (first use in this function)
+  136 |   int fd = (int)(uintptr_t)data;
+      |                  ~~~~~~~~
+```
+---
+ src/libostree/ostree-bootloader-aboot.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/libostree/ostree-bootloader-aboot.c b/src/libostree/ostree-bootloader-aboot.c
+index 1a207e8d5f..06ec6cc757 100644
+--- a/src/libostree/ostree-bootloader-aboot.c
++++ b/src/libostree/ostree-bootloader-aboot.c
+@@ -24,6 +24,7 @@
+ #include "otutil.h"
+ #include <sys/mount.h>
+ 
++#include <stdint.h>
+ #include <string.h>
+ 
+ /* This is specific to aboot and zipl today, but in the future we could also

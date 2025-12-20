@@ -11,7 +11,7 @@ SRC_URI="http://www.cl.cam.ac.uk/~mgk25/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}" # Since we install unversioned libraries, use ${PV} subslots.
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 IUSE="static-libs"
 
 DOCS="ANNOUNCE CHANGES TODO libjbig/*.txt pbmtools/*.txt"

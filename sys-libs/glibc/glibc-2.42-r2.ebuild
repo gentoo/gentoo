@@ -6,7 +6,7 @@ EAPI=8
 # Bumping notes: https://wiki.gentoo.org/wiki/Project:Toolchain/sys-libs/glibc
 # Please read & adapt the page as necessary if obsolete.
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..14} )
 TMPFILES_OPTIONAL=1
 
 EMULTILIB_PKG="true"
@@ -295,7 +295,7 @@ do_run_test() {
 
 	if [[ ${MERGE_TYPE} == "binary" ]] ; then
 		# ignore build failures when installing a binary package #324685
-		do_compile_test "" "$@" 2>/dev/null || return 0
+		CFLAGS="-O2" LDFLAGS="" do_compile_test "" "$@" 2>/dev/null || return 0
 	else
 		ebegin "Performing simple compile test for ABI=${ABI}"
 		if ! do_compile_test "" "$@" ; then

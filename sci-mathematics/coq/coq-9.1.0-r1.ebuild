@@ -18,7 +18,7 @@ else
 		-> ${P}.tar.gz"
 	S="${WORKDIR}/rocq-${PV}"
 
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="amd64 ~arm64"
 fi
 
 LICENSE="LGPL-2.1"

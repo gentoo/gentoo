@@ -1,0 +1,113 @@
+# Gentoo Bug: https://bugs.gentoo.org/966051
+# Upstream Pull Request: https://github.com/obsproject/obs-studio/pull/12328
+
+From 26dfacbd4f5217258a2f1c5472a544c65a182d10 Mon Sep 17 00:00:00 2001
+From: tytan652 <tytan652@tytanium.xyz>
+Date: Tue, 1 Jul 2025 20:53:48 +0200
+Subject: [PATCH] frontend: Cleanup Qt GuiPrivate linkage
+
+Remove unneeded linkages and guard needed ones for Qt versions earlier
+than 6.9.0.
+---
+ frontend/cmake/os-freebsd.cmake                    | 6 +++++-
+ frontend/cmake/os-linux.cmake                      | 6 +++++-
+ frontend/plugins/aja-output-ui/CMakeLists.txt      | 3 ---
+ frontend/plugins/decklink-output-ui/CMakeLists.txt | 3 ---
+ frontend/plugins/frontend-tools/CMakeLists.txt     | 2 --
+ 5 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/frontend/cmake/os-freebsd.cmake b/frontend/cmake/os-freebsd.cmake
+index cb62e95199f57c..761cc985afda08 100644
+--- a/frontend/cmake/os-freebsd.cmake
++++ b/frontend/cmake/os-freebsd.cmake
+@@ -1,6 +1,10 @@
+ target_sources(obs-studio PRIVATE utility/platform-x11.cpp utility/system-info-posix.cpp)
+ target_compile_definitions(obs-studio PRIVATE OBS_INSTALL_PREFIX="${OBS_INSTALL_PREFIX}")
+-target_link_libraries(obs-studio PRIVATE Qt::GuiPrivate Qt::DBus procstat)
++target_link_libraries(obs-studio PRIVATE Qt::DBus procstat)
++
++if(Qt6_VERSION AND Qt6_VERSION VERSION_LESS "6.9.0")
++  target_link_libraries(obs-studio PRIVATE Qt::GuiPrivate)
++endif()
+ 
+ find_package(Libpci REQUIRED)
+ target_link_libraries(obs-studio PRIVATE Libpci::pci)
+diff --git a/frontend/cmake/os-linux.cmake b/frontend/cmake/os-linux.cmake
+index 91e8bbad2fd771..1663b0bf6088ec 100644
+--- a/frontend/cmake/os-linux.cmake
++++ b/frontend/cmake/os-linux.cmake
+@@ -3,7 +3,11 @@ target_compile_definitions(
+   obs-studio
+   PRIVATE OBS_INSTALL_PREFIX="${OBS_INSTALL_PREFIX}" $<$<BOOL:${ENABLE_PORTABLE_CONFIG}>:ENABLE_PORTABLE_CONFIG>
+ )
+-target_link_libraries(obs-studio PRIVATE Qt::GuiPrivate Qt::DBus)
++target_link_libraries(obs-studio PRIVATE Qt::DBus)
++
++if(Qt6_VERSION AND Qt6_VERSION VERSION_LESS "6.9.0")
++  target_link_libraries(obs-studio PRIVATE Qt::GuiPrivate)
++endif()
+ 
+ find_package(Libpci REQUIRED)
+ target_link_libraries(obs-studio PRIVATE Libpci::pci)
+diff --git a/frontend/plugins/aja-output-ui/CMakeLists.txt b/frontend/plugins/aja-output-ui/CMakeLists.txt
+index 37e4ba04de05a7..57f956e07e5cd3 100644
+--- a/frontend/plugins/aja-output-ui/CMakeLists.txt
++++ b/frontend/plugins/aja-output-ui/CMakeLists.txt
+@@ -10,8 +10,6 @@ find_package(LibAJANTV2 REQUIRED)
+ find_package(Qt6 REQUIRED Widgets)
+ 
+ if(OS_LINUX OR OS_FREEBSD OR OS_OPENBSD)
+-  find_package(Qt6 REQUIRED Gui)
+-
+   find_package(X11 REQUIRED)
+ endif()
+ 
+@@ -47,7 +45,6 @@ target_link_libraries(
+     Qt::Widgets
+     AJA::LibAJANTV2
+     $<$<PLATFORM_ID:Linux,FreeBSD,OpenBSD>:X11::X11>
+-    $<$<PLATFORM_ID:Linux,FreeBSD,OpenBSD>:Qt::GuiPrivate>
+ )
+ 
+ target_link_options(aja-output-ui PRIVATE $<$<PLATFORM_ID:Windows>:/IGNORE:4099>)
+diff --git a/frontend/plugins/decklink-output-ui/CMakeLists.txt b/frontend/plugins/decklink-output-ui/CMakeLists.txt
+index d72dac269ff5c5..99beb5668d33ec 100644
+--- a/frontend/plugins/decklink-output-ui/CMakeLists.txt
++++ b/frontend/plugins/decklink-output-ui/CMakeLists.txt
+@@ -8,8 +8,6 @@ endif()
+ find_package(Qt6 REQUIRED Widgets)
+ 
+ if(OS_LINUX OR OS_FREEBSD OR OS_OPENBSD)
+-  find_package(Qt6 REQUIRED Gui)
+-
+   find_package(X11 REQUIRED)
+ endif()
+ 
+@@ -38,7 +36,6 @@ target_link_libraries(
+     Qt::Widgets
+     "$<$<PLATFORM_ID:Darwin>:$<LINK_LIBRARY:FRAMEWORK,Cocoa.framework>>"
+     $<$<PLATFORM_ID:Linux,FreeBSD,OpenBSD>:X11::X11>
+-    $<$<PLATFORM_ID:Linux,FreeBSD,OpenBSD>:Qt::GuiPrivate>
+ )
+ 
+ if(OS_WINDOWS)
+diff --git a/frontend/plugins/frontend-tools/CMakeLists.txt b/frontend/plugins/frontend-tools/CMakeLists.txt
+index f7ffa4ae34acc3..b8afa7719e90ea 100644
+--- a/frontend/plugins/frontend-tools/CMakeLists.txt
++++ b/frontend/plugins/frontend-tools/CMakeLists.txt
+@@ -3,7 +3,6 @@ cmake_minimum_required(VERSION 3.28...3.30)
+ find_package(Qt6 REQUIRED Widgets)
+ 
+ if(OS_LINUX OR OS_FREEBSD OR OS_OPENBSD)
+-  find_package(Qt6 REQUIRED Gui)
+   find_package(X11 REQUIRED)
+ endif()
+ 
+@@ -65,7 +64,6 @@ target_link_libraries(
+     Qt::Widgets
+     "$<$<PLATFORM_ID:Darwin>:$<LINK_LIBRARY:FRAMEWORK,Cocoa>>"
+     $<$<PLATFORM_ID:Linux,FreeBSD,OpenBSD>:X11::X11>
+-    $<$<PLATFORM_ID:Linux,FreeBSD,OpenBSD>:Qt::GuiPrivate>
+ )
+ 
+ add_subdirectory("${CMAKE_SOURCE_DIR}/shared/obs-scripting" "${CMAKE_BINARY_DIR}/shared/obs-scripting")

@@ -48,7 +48,7 @@ LIB_DEPEND="aio? ( dev-libs/libaio[static-libs(+)] )
 	rdma? ( sys-cluster/rdma-core[static-libs(+)] )
 	tcmalloc? ( dev-util/google-perftools:=[static-libs(+)] )
 	zbc? ( >=sys-block/libzbc-5 )
-	zlib? ( sys-libs/zlib[static-libs(+)] )"
+	zlib? ( virtual/zlib:=[static-libs(+)] )"
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
 	gtk? ( x11-libs/gtk+:2 )"
 DEPEND="${RDEPEND}

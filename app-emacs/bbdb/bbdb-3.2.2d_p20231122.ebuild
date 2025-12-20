@@ -18,7 +18,7 @@ else
 		-> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${COMMIT}"
 
-	KEYWORDS="~alpha amd64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
+	KEYWORDS="~alpha amd64 ppc ~ppc64 x86"
 fi
 
 LICENSE="GPL-3+ FDL-1.3"

@@ -198,7 +198,7 @@ RESTRICT="!test? ( test )"
 # dev-libs/flatbuffers is header only, but we still want to rebuild on sub-slot changes
 COMMON_DEPEND="
 	dev-libs/protobuf:=[protoc(+),protobuf(+),${MULTILIB_USEDEP}]
-	sys-libs/zlib[${MULTILIB_USEDEP}]
+	virtual/zlib:=[${MULTILIB_USEDEP}]
 	avif? ( media-libs/libavif:=[${MULTILIB_USEDEP}] )
 	cuda? ( dev-util/nvidia-cuda-toolkit:= )
 	cudnn? (
@@ -281,7 +281,7 @@ COMMON_DEPEND="
 		dev-qt/qt5compat:6
 		dev-qt/qtbase:6[gui,widgets,concurrent,opengl?]
 	)
-	quirc? ( media-libs/quirc )
+	quirc? ( media-libs/quirc:=[${MULTILIB_USEDEP}] )
 	tbb? ( >=dev-cpp/tbb-2022.1.0:=[${MULTILIB_USEDEP}] )
 	tesseract? ( app-text/tesseract[${MULTILIB_USEDEP}] )
 	tiff? ( media-libs/tiff:=[${MULTILIB_USEDEP}] )

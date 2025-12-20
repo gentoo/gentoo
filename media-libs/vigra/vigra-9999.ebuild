@@ -30,7 +30,7 @@ else
 		S="${WORKDIR}/${PN}-Version-$(ver_rs 1- -)"
 	fi
 
-	KEYWORDS="~amd64 ~arm64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-solaris"
+	KEYWORDS="~amd64 ~arm64 ~sparc ~x86 ~x64-solaris"
 fi
 
 LICENSE="MIT"
@@ -53,7 +53,7 @@ DEPEND="
 	)
 	png? ( media-libs/libpng:0= )
 	tiff? ( media-libs/tiff:= )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib:= )
 "
 # Python is needed as a runtime dep of installed vigra-config
 RDEPEND="

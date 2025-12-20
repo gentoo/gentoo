@@ -32,7 +32,6 @@ sys-devel/gcc vanilla
 
 # Rafael Goncalves Martins <rafaelmartins@gentoo.org> (2010-09-29)
 # dev-libs/judy without prefix keywords
-# (amd64-linux and x86-linux)
 sci-electronics/gtkwave judy
 
 # Christian Faulhammer <fauli@gentoo.org> (2010-01-09)

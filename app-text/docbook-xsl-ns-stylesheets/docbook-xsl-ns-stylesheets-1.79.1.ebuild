@@ -73,10 +73,10 @@ EOF
 
 pkg_postinst() {
 	# See bug #816303 for rationale behind die
-	build-docbook-catalog || die "Failed to regenerate docbook catalog. Is /run mounted?"
+	"${EROOT}"/usr/sbin/build-docbook-catalog || die "Failed to regenerate docbook catalog. Is /run mounted?"
 }
 
 pkg_postrm() {
 	# See bug #816303 for rationale behind die
-	build-docbook-catalog || die "Failed to regenerate docbook catalog. Is /run mounted?"
+	"${EROOT}"/usr/sbin/build-docbook-catalog || die "Failed to regenerate docbook catalog. Is /run mounted?"
 }

@@ -11,11 +11,11 @@ SRC_URI="https://github.com/samtools/${PN}/releases/download/${PV}/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0/3"
-KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86"
 IUSE="+bzip2 curl +lzma"
 
 RDEPEND="
-	sys-libs/zlib
+	virtual/zlib:=
 	bzip2? ( app-arch/bzip2 )
 	curl? ( net-misc/curl )
 	lzma? ( app-arch/xz-utils )"

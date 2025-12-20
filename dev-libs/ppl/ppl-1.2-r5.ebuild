@@ -12,7 +12,7 @@ SRC_URI="http://bugseng.com/products/ppl/download/ftp/releases/${PV}/${P}.tar.xz
 
 LICENSE="GPL-3"
 SLOT="0/4.14" # SONAMEs
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~m68k ~ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~m68k ~ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="cdd +cxx doc lpsol pch test"
 
 RDEPEND=">=dev-libs/gmp-6[cxx(+)]

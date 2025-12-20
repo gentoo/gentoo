@@ -713,7 +713,7 @@ kernel-build_merge_configs() {
 	local shopt_save=$(shopt -p nullglob)
 	shopt -s nullglob
 	local user_configs=( "${BROOT}"/etc/kernel/config.d/*.config )
-	shopt -u nullglob
+	eval "${shopt_save}"
 
 	local merge_configs=( "${@}" )
 

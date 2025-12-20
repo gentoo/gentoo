@@ -17,7 +17,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2+ BSD"
 SLOT="4.1/0" # soname version of libwebkit2gtk-4.1
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~sparc ~x86"
 
 IUSE="aqua avif examples gamepad keyring +gstreamer +introspection pdf jpegxl +jumbo-build lcms seccomp spell systemd wayland X"
 REQUIRED_USE="|| ( aqua wayland X )"
@@ -67,7 +67,7 @@ RDEPEND="
 	media-libs/svt-av1
 	media-libs/woff2
 	net-libs/libsoup:3.0[introspection?]
-	sys-libs/zlib:0
+	virtual/zlib:=
 	x11-libs/cairo[X?]
 	x11-libs/gtk+:3[aqua?,introspection?,wayland?,X?]
 	x11-libs/libdrm

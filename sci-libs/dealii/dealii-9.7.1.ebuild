@@ -18,7 +18,7 @@ else
 		doc? (
 			https://github.com/${PN}/${PN}/releases/download/v${DOC_PV}/${PN}-${DOC_PV}-offline_documentation.tar.gz
 			)"
-	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="LGPL-2.1+"
@@ -39,7 +39,7 @@ REQUIRED_USE="
 
 RDEPEND="dev-libs/boost:=
 	app-arch/bzip2
-	sys-libs/zlib
+	virtual/zlib:=
 	dev-cpp/magic_enum:=
 	dev-cpp/taskflow:=
 	arborx? ( sci-libs/arborx[mpi=] )

@@ -1,7 +1,7 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 export CTARGET=hppa64-${CHOST#*-}
 
@@ -22,7 +22,7 @@ IUSE="cet debuginfod doc gprofng hardened multitarget +nls pgo +plugins static-l
 #                      for the patchsets
 
 PATCH_VER=1
-PATCH_DEV=dilfridge
+PATCH_DEV=sam
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -56,7 +56,7 @@ is_cross() { [[ ${CHOST} != ${CTARGET} ]] ; }
 #
 RDEPEND="
 	>=sys-devel/binutils-config-3
-	sys-libs/zlib
+	virtual/zlib:=
 	debuginfod? (
 		dev-libs/elfutils[debuginfod(-)]
 	)

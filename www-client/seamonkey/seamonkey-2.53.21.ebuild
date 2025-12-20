@@ -5,7 +5,7 @@ EAPI=8
 
 WANT_AUTOCONF="2.1"
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_11 )
 PYTHON_REQ_USE='ncurses,sqlite,ssl,threads(+)'
 
 LLVM_COMPAT=( {18..20} )
@@ -74,7 +74,7 @@ COMMON_DEPEND="
 	media-libs/fontconfig
 	>=media-libs/freetype-2.4.10
 	>=media-libs/mesa-10.2:=
-	>=sys-libs/zlib-1.2.3
+	>=virtual/zlib-1.2.3:=
 	>=x11-libs/cairo-1.10[X]
 	x11-libs/gdk-pixbuf
 	x11-libs/gtk+:3[X]

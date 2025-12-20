@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ else
 	SDLAUDIO_COMMIT="b66a66fedf8f65cacc5ce2ff8ed8d10649c6de31"
 	SRC_URI="https://github.com/realnc/SDL_audiolib/archive/${SDLAUDIO_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN/sdl/SDL}-${SDLAUDIO_COMMIT}"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~ppc64 ~x86"
 fi
 
 DESCRIPTION="Audio decoding, resampling and mixing library for SDL"

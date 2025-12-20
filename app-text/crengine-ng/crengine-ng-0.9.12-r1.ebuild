@@ -16,7 +16,7 @@ IUSE="+png +jpeg +gif +svg +chm +harfbuzz +fontconfig +libunibreak +fribidi +zst
 
 RESTRICT="!test? ( test )"
 
-CDEPEND="sys-libs/zlib
+CDEPEND="virtual/zlib:=
 	png? ( media-libs/libpng:0 )
 	jpeg? ( media-libs/libjpeg-turbo )
 	>=media-libs/freetype-2.10.0

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ S="${WORKDIR}/seqan3-${PV}-Source"
 
 LICENSE="BSD GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="cpu_flags_x86_sse4_2"
 REQUIRED_USE="cpu_flags_x86_sse4_2"
 
@@ -21,7 +21,7 @@ RDEPEND="
 	dev-cpp/range-v3
 	dev-libs/cereal
 	sci-libs/lemon
-	sys-libs/zlib:=
+	virtual/zlib:=
 "
 DEPEND="${RDEPEND}"
 

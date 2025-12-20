@@ -21,7 +21,7 @@ else
 		https://znc.in/releases/archive/${MY_P}.tar.gz
 		test? ( ${GTEST_URL} )
 	"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 ~ppc64 ~riscv x86"
 	S=${WORKDIR}/${MY_P}
 fi
 
@@ -66,7 +66,7 @@ DEPEND="
 	sasl? ( >=dev-libs/cyrus-sasl-2 )
 	ssl? ( dev-libs/openssl:0= )
 	tcl? ( dev-lang/tcl:0= )
-	zlib? ( sys-libs/zlib:0= )
+	zlib? ( virtual/zlib:= )
 "
 RDEPEND="
 	${DEPEND}

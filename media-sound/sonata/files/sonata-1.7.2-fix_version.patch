@@ -1,0 +1,11 @@
+--- a/sonata/version.py
++++ b/sonata/version.py
+@@ -26,7 +26,7 @@ except ImportError:
+     build_ver = None
+ 
+ # Should be the most recent release
+-default_version = "v1.7.3"
++default_version = "v1.7.2"
+ 
+ def _version():
+     '''Get the version number of the sources

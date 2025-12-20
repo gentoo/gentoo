@@ -6,7 +6,7 @@
 		<name>Louis Sautier</name>
 	</maintainer>
 	<use>
-		<flag name="zlib">Enable mod_deflate-like gzip support for znc's web interface using <pkg>sys-libs/zlib</pkg>.</flag>
+		<flag name="zlib">Enable mod_deflate-like gzip support for znc's web interface using <pkg>virtual/zlib</pkg>.</flag>
 		<flag name="argon2">Store password hashes using Argon2id instead of SHA-256</flag>
 	</use>
 	<upstream>

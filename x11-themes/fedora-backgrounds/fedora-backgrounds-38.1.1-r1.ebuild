@@ -16,6 +16,6 @@ LICENSE="CC-BY-SA-4.0"
 
 SLOT="$(ver_cut 1)"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 BDEPEND="media-gfx/pngquant"

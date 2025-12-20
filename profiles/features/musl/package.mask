@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Jaco Kroon <jkroon@gentoo.org> (2025-12-06)
+# anydesk is pre-build with glibc, will not work on MUSL.
+net-misc/anydesk
+
 # Z. Liu <zhixu.liu@gmail.com> (2025-10-18)
 # nvidia-drivers only works against glibc.
 dev-python/nvidia-ml-py
@@ -76,7 +80,6 @@ net-nds/nsscache
 
 # Sam James <sam@gentoo.org> (2024-09-30)
 # Needs porting to musl (bug #940130)
-~sys-auth/elogind-255.5
 ~sys-auth/elogind-255.17
 
 # Sam James <sam@gentoo.org> (2024-08-31)
@@ -152,6 +155,7 @@ dev-ada/AdaSAT
 dev-ada/lal-refactor
 dev-ada/prettier-ada
 dev-ada/gnatformat
+dev-ada/adareducer
 
 # Sergey Popov <pinkbyte@gentoo.org> (2024-03-05)
 # games-strategy/seven-kingdoms does not build on musl,
@@ -162,14 +166,6 @@ games-strategy/seven-kingdoms
 # app-arch/lrzip-next cannot work w/ musl's pthreads at
 # this time. (#925547)
 app-arch/lrzip-next
-
-# Christopher Fore <csfore@posteo.net> (2024-01-24)
-# >=sys-fs/bcachefs-tools-1.4.1 uses functions currently not in Musl
-# https://github.com/koverstreet/bcachefs-tools/issues/213
-# The above was fixed in musl 1.2.5, which bcachefs-tools 1.11.0
-# will now depend on.
-# https://www.openwall.com/lists/musl/2024/03/01/2
-<sys-fs/bcachefs-tools-1.11.0
 
 # Conrad Kostecki <conikost@gentoo.org> (2024-01-23)
 # Uses glibc function getsourcefilter(),
@@ -217,7 +213,6 @@ net-analyzer/gvmd
 net-analyzer/gvm-libs
 net-analyzer/openvas-scanner
 net-analyzer/ospd-openvas
-net-misc/grive
 net-print/pnm2ppa
 sys-apps/noexec
 
@@ -420,7 +415,6 @@ sys-block/arcconf
 sys-block/hpssacli
 sys-block/megacli
 www-apps/chromedriver-bin
-<www-apps/grafana-bin-11.2
 www-apps/jellyfin-bin
 www-apps/kibana-bin
 www-client/firefox-bin

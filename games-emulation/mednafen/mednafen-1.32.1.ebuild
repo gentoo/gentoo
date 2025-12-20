@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,7 @@ RDEPEND="
 	media-libs/libsdl2[joystick,opengl,video]
 	media-libs/tremor
 	media-sound/musepack-tools
-	sys-libs/zlib:=[minizip]
+	virtual/minizip:=
 	virtual/libintl
 	alsa? ( media-libs/alsa-lib )
 	flac? ( media-libs/flac:= )

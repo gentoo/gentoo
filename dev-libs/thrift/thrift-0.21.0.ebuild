@@ -25,7 +25,7 @@ RESTRICT="!test? ( test )"
 DEPEND="
 	dev-libs/boost:=[nls(+)]
 	dev-libs/openssl:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	libevent? ( dev-libs/libevent:= )
 "
 RDEPEND="${DEPEND}"

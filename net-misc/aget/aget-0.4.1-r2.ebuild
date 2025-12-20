@@ -11,7 +11,7 @@ SRC_URI="http://www.enderunix.org/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~mips ~ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~mips ~ppc ppc64 ~sparc x86"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-overflow.patch

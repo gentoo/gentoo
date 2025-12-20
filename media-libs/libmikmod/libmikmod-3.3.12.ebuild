@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/mikmod/${P}.tar.gz"
 
 LICENSE="LGPL-2+ LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~sparc x86"
 IUSE="+alsa coreaudio cpu_flags_ppc_altivec debug nas openal oss pulseaudio cpu_flags_x86_sse2 static-libs +threads"
 
 REQUIRED_USE="|| ( alsa coreaudio nas openal oss pulseaudio )"
@@ -43,10 +43,10 @@ src_prepare() {
 
 multilib_src_configure() {
 	local mysimd="--disable-simd"
-	if use ppc || use ppc64 || use ppc-macos; then
+	if use ppc || use ppc64; then
 		mysimd="$(use_enable cpu_flags_ppc_altivec simd)"
 	fi
-	if use amd64 || use x86 || use amd64-linux || use x86-linux || use x64-macos; then
+	if use amd64 || use x86 || use x64-macos; then
 		mysimd="$(use_enable cpu_flags_x86_sse2 simd)"
 	fi
 

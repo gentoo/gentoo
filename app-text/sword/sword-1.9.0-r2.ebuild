@@ -11,7 +11,7 @@ SRC_URI="https://www.crosswire.org/ftpmirror/pub/${PN}/source/v${PV%.*}/${P}.tar
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~ppc-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="clucene curl icu test utils"
 REQUIRED_USE="test? ( curl icu utils )"
 RESTRICT="!test? ( test )"
@@ -19,7 +19,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	app-arch/bzip2
 	app-arch/xz-utils
-	sys-libs/zlib
+	virtual/zlib:=
 	curl? ( net-misc/curl )
 	icu? ( dev-libs/icu:= )
 	clucene? ( dev-cpp/clucene:1 )

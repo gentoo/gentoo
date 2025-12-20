@@ -1,0 +1,66 @@
+From c35d5cd4b8fee1d1edf1577b7abc04976a77cc5d Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 25 Nov 2025 23:28:09 +0100
+Subject: [PATCH] Allow build with CMake-4, use GNUInstallDirs instead of
+ KDEInstallDirs
+
+Also port to CMakePackageConfigHelpers
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 19 +++++++++----------
+ 1 file changed, 9 insertions(+), 10 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 499c0cad..22b7e2d2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,28 +1,27 @@
++cmake_minimum_required(VERSION 3.16...3.31)
++
+ project(OxygenFont)
+ set(PROJECT_VERSION "5.4.3")
+-cmake_minimum_required(VERSION 2.8.12)
+ 
+ find_package(ECM 1.2.0 REQUIRED NO_MODULE)
+ 
+-set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
++set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
+ 
+-include(KDEInstallDirs)
+-include(ECMPackageConfigHelpers)
++include(CMakePackageConfigHelpers)
++include(GNUInstallDirs)
+ include(ECMSetupVersion)
+ include(FeatureSummary)
+ 
+ # create a Config.cmake and a ConfigVersion.cmake file and install them
+-set(CMAKECONFIG_INSTALL_DIR "${CMAKECONFIG_INSTALL_PREFIX}/OxygenFont")
+-
+-include(ECMPackageConfigHelpers)
++set(CMAKECONFIG_INSTALL_DIR "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}")
+ 
+ ecm_setup_version(${PROJECT_VERSION} VARIABLE_PREFIX OXYGENFONT
+                   PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/OxygenFontConfigVersion.cmake"
+ )
+ 
+-ecm_configure_package_config_file("${CMAKE_CURRENT_SOURCE_DIR}/OxygenFontConfig.cmake.in"
++configure_package_config_file("${CMAKE_CURRENT_SOURCE_DIR}/OxygenFontConfig.cmake.in"
+                                   "${CMAKE_CURRENT_BINARY_DIR}/OxygenFontConfig.cmake"
+-                                  INSTALL_DESTINATION  ${CMAKECONFIG_INSTALL_DIR}
++                                  INSTALL_DESTINATION ${CMAKECONFIG_INSTALL_DIR}
+ )
+ 
+ install(FILES
+@@ -32,7 +31,7 @@ install(FILES
+         COMPONENT Devel)
+ 
+ if(NOT DEFINED OXYGEN_FONT_INSTALL_DIR)
+-  set(OXYGEN_FONT_INSTALL_DIR  ${CMAKE_INSTALL_PREFIX}/${SHARE_INSTALL_PREFIX}/fonts/truetype/oxygen)
++  set(OXYGEN_FONT_INSTALL_DIR  ${CMAKE_INSTALL_DATAROOTDIR}/fonts/truetype/oxygen)
+ endif()
+ 
+ find_program(FONTFORGE_EXECUTABLE NAMES fontforge)
+-- 
+2.52.0
+

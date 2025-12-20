@@ -26,7 +26,7 @@ else
 		SRC_URI="https://github.com/${PN}/${PN}/archive/${MY_P}.tar.gz -> ${P}.tar.gz"
 		S="${WORKDIR}/${PN}-${MY_P}"
 	fi
-	KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
 LICENSE="GPL-2"
@@ -41,7 +41,7 @@ REQUIRED_USE="
 
 RDEPEND="
 	dev-cpp/eigen:3
-	sys-libs/zlib:=
+	virtual/zlib:=
 	inchi? ( sci-libs/inchi )
 	json? ( >=dev-libs/rapidjson-1.1.0 )
 	!minimal? (

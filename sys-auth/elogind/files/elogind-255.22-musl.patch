@@ -1,0 +1,86 @@
+https://github.com/elogind/elogind/commit/c09b9caece0459ec56b234a87583e1bfac3c3271
+
+From c09b9caece0459ec56b234a87583e1bfac3c3271 Mon Sep 17 00:00:00 2001
+From: Sven Eden <sven@eden-worx.com>
+Date: Thu, 20 Nov 2025 08:12:12 +0100
+Subject: [PATCH] journal-send.c, bus-error.c: Fix strerror_r handling for
+ non-GLIBC systems
+
+Fix the handling of `strerror_r` in non-GLIBC systems to ensure compatibility.
+
+- Handle `strerror_r` differently for non-GLIBC systems in `journal-send.c`.
+- Handle `strerror_r` differently for non-GLIBC systems in `bus-error.c`.
+- Remove redundant definition of `strerror_r` from `musl_missing.h`.
+
+This change ensures that the `strerror_r` function behaves correctly across different environments, particularly on systems using the musl C library.
+
+Bug: #320
+Closes: #320
+Signed-off-by: Sven Eden <sven@eden-worx.com>
+---
+ src/basic/musl_missing.h                 |  2 --
+ src/libelogind/sd-bus/bus-error.c        | 10 ++++++++++
+ src/libelogind/sd-journal/journal-send.c |  5 +++++
+ 3 files changed, 15 insertions(+), 2 deletions(-)
+
+diff --git a/src/basic/musl_missing.h b/src/basic/musl_missing.h
+index d8a5bff222..3f592f1c6f 100644
+--- a/src/basic/musl_missing.h
++++ b/src/basic/musl_missing.h
+@@ -26,8 +26,6 @@ void elogind_set_program_name(const char* pcall);
+ #include <unistd.h>
+ #include <pthread.h> /* for pthread_atfork */
+ 
+-#define strerror_r(e, m, k) (strerror_r(e, m, k) < 0 ? strdup("strerror_r() failed") : m);
+-
+ /*
+  * Possibly TODO according to http://man7.org/linux/man-pages/man3/getenv.3.html
+  * + test if the process's effective user ID does not match its real user ID or
+diff --git a/src/libelogind/sd-bus/bus-error.c b/src/libelogind/sd-bus/bus-error.c
+index 58c24d25c0..4895bd3c66 100644
+--- a/src/libelogind/sd-bus/bus-error.c
++++ b/src/libelogind/sd-bus/bus-error.c
+@@ -405,7 +405,12 @@ static void bus_error_strerror(sd_bus_error *e, int error) {
+                         return;
+ 
+                 errno = 0;
++#ifndef __GLIBC__
++                strerror_r(error, m, k);
++                x = m;
++#else // __GLIBC__
+                 x = strerror_r(error, m, k);
++#endif // __GLIBC__
+                 if (errno == ERANGE || strlen(x) >= k - 1) {
+                         free(m);
+                         k *= 2;
+@@ -591,7 +596,12 @@ const char* _bus_error_message(const sd_bus_error *e, int error, char buf[static
+         if (e && e->message)
+                 return e->message;
+ 
++#ifndef __GLIBC__
++        strerror_r(abs(error), buf, ERRNO_BUF_LEN);
++        return buf;
++#else // __GLIBC__
+         return strerror_r(abs(error), buf, ERRNO_BUF_LEN);
++#endif // __GLIBC__
+ }
+ 
+ static bool map_ok(const sd_bus_error_map *map) {
+diff --git a/src/libelogind/sd-journal/journal-send.c b/src/libelogind/sd-journal/journal-send.c
+index f0a0190a5b..6bfa2211f3 100644
+--- a/src/libelogind/sd-journal/journal-send.c
++++ b/src/libelogind/sd-journal/journal-send.c
+@@ -424,7 +424,12 @@ static int fill_iovec_perror_and_send(const char *message, int skip, struct iove
+                 char* j;
+ 
+                 errno = 0;
++#ifndef __GLIBC__
++                strerror_r(_saved_errno_, buffer + 8 + k, n - 8 - k);
++                j = buffer + 8 + k;
++#else // __GLIBC__
+                 j = strerror_r(_saved_errno_, buffer + 8 + k, n - 8 - k);
++#endif // __GLIBC__
+                 if (errno == 0) {
+                         char error[STRLEN("ERRNO=") + DECIMAL_STR_MAX(int) + 1];
+ 
+

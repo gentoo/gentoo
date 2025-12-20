@@ -37,7 +37,7 @@ DEPEND="
 	static? (
 		dev-libs/lzo[static-libs]
 		sys-libs/ncurses:=[static-libs]
-		sys-libs/zlib[static-libs]
+		virtual/zlib:=[static-libs]
 		acl? ( virtual/acl[static-libs(+)] )
 		ssl? (
 			dev-libs/openssl:0=[static-libs]
@@ -46,7 +46,7 @@ DEPEND="
 	!static? (
 		dev-libs/lzo
 		sys-libs/ncurses:=
-		sys-libs/zlib
+		virtual/zlib:=
 		acl? ( virtual/acl )
 		ssl? (
 			dev-libs/openssl:0=
@@ -88,7 +88,7 @@ pkg_setup() {
 
 	if use bacula-clientonly && use static && use qt5; then
 		ewarn
-		ewarn "Building statically linked 'bat' is not supported. Ignorig 'qt5' useflag."
+		ewarn "Building statically linked 'bat' is not supported. Ignoring 'qt5' useflag."
 		ewarn
 	fi
 }

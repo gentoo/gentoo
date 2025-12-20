@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ~arm64 ~hppa ppc ppc64 ~sparc x86"
 
 RDEPEND=">=dev-libs/glib-2
-	>=sys-libs/zlib-1.1.4:="
+	>=virtual/zlib-1.1.4:="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 

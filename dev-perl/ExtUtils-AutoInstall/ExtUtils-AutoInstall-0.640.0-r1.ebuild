@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Automatic installation of dependencies via CPAN from within Makefile.PL"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~mips ppc ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~hppa ~mips ppc ~sparc x86"
 
 RDEPEND="
 	dev-perl/Sort-Versions

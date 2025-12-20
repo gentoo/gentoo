@@ -41,6 +41,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.16.0-tests-ignorecase.patch
+)
+
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 

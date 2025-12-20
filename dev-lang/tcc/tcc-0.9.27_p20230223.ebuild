@@ -22,7 +22,7 @@ fi
 LICENSE="LGPL-2.1"
 SLOT="0"
 if [[ ${PV} != *9999* ]] ; then
-	KEYWORDS="~amd64 ~arm64 ~riscv ~x86 ~amd64-linux"
+	KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 fi
 
 BDEPEND="dev-lang/perl" # doc generation

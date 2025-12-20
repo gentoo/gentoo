@@ -15,12 +15,17 @@ S=${WORKDIR}
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
-	test? ( app-crypt/gnupg )
+	test? (
+		|| (
+			app-crypt/gnupg[alternatives(-)]
+			>=app-crypt/freepg-2.5.12_p1-r1
+		)
+	)
 "
 
 # Keys included:
@@ -36,12 +41,12 @@ src_test() {
 	local -x GNUPGHOME=${T}/.gnupg
 	mkdir "${GNUPGHOME}" || die
 	einfo "Importing keys ..."
-	gpg --import "gentoo-release.asc.${PV}" || die "Key import failed"
+	gpg-reference --import "gentoo-release.asc.${PV}" || die "Key import failed"
 
 	local f
 	for f in gentoo-release-test-sigs*/*.asc; do
 		einfo "Testing ${f##*/} ..."
-		gpg -q --trust-model always --verify "${f}" || die "Verification failed on ${f}"
+		gpg-reference -q --trust-model always --verify "${f}" || die "Verification failed on ${f}"
 	done
 
 	umask "${old_umask}"

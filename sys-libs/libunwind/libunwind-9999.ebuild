@@ -31,7 +31,7 @@ else
 	S="${WORKDIR}"/${P/_rc/-rc}
 
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 -sparc ~x86 ~amd64-linux ~x86-linux"
+		KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 -sparc ~x86"
 	fi
 fi
 
@@ -49,7 +49,7 @@ BDEPEND="
 "
 RDEPEND="
 	lzma? ( app-arch/xz-utils[static-libs?,${MULTILIB_USEDEP}] )
-	zlib? ( sys-libs/zlib[static-libs?,${MULTILIB_USEDEP}] )
+	zlib? ( virtual/zlib:=[static-libs?,${MULTILIB_USEDEP}] )
 "
 # We just use the header from libatomic.
 DEPEND="

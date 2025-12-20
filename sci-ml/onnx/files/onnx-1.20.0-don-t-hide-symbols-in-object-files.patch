@@ -1,0 +1,16 @@
+From: Pavel Sobolev <contact@paveloom.dev>
+Subject: [PATCH] Don't hide symbols in object files.
+
+Signed-off-by: Pavel Sobolev <contact@paveloom.dev>
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -443,7 +443,6 @@ add_library(onnx_object OBJECT ${ONNX_SRCS})
+ add_dependencies(onnx_object onnx_proto_object)
+ target_include_directories(onnx_object PUBLIC
+   $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>)
+-set_target_properties(onnx_object PROPERTIES CXX_VISIBILITY_PRESET hidden)
+ set_target_properties(onnx_object PROPERTIES VISIBILITY_INLINES_HIDDEN ON)
+ target_include_directories(onnx_object PUBLIC $<BUILD_INTERFACE:${ONNX_ROOT}>)
+ add_onnx_global_defines(onnx_object)
+

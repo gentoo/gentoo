@@ -19,7 +19,7 @@ SLOT="5"
 KEYWORDS="~amd64 ~x86"
 IUSE="multilib nls"
 
-RDEPEND="sys-libs/zlib"
+RDEPEND="virtual/zlib:="
 DEPEND="
 	${RDEPEND}
 	app-alternatives/yacc"

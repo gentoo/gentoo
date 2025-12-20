@@ -1,0 +1,65 @@
+diff --git a/Benchmarks/Benchmarks.fsproj b/Benchmarks/Benchmarks.fsproj
+index 2d70f83..4c5ab31 100644
+--- a/Benchmarks/Benchmarks.fsproj
++++ b/Benchmarks/Benchmarks.fsproj
+@@ -2,7 +2,7 @@
+ 
+     <PropertyGroup>
+         <OutputType>Exe</OutputType>
+-        <TargetFramework>net9.0</TargetFramework>
++        <TargetFramework>net10.0</TargetFramework>
+     </PropertyGroup>
+ 
+     <ItemGroup>
+diff --git a/LanguageServerProtocol/LanguageServerProtocol.fsproj b/LanguageServerProtocol/LanguageServerProtocol.fsproj
+index dcd9923..b8ea4fd 100644
+--- a/LanguageServerProtocol/LanguageServerProtocol.fsproj
++++ b/LanguageServerProtocol/LanguageServerProtocol.fsproj
+@@ -9,7 +9,7 @@
+     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+     <PackageReadmeFile>README.md</PackageReadmeFile>
+     <PackageProjectUrl>https://github.com/ionide/LanguageServerProtocol</PackageProjectUrl>
+-    <TargetFramework>net9.0</TargetFramework>
++    <TargetFramework>net10.0</TargetFramework>
+   </PropertyGroup>
+   <ItemGroup>
+     <!-- FsLibLog.fs comes verbatim from
+diff --git a/MarkdigPatches/MarkdigPatches.csproj b/MarkdigPatches/MarkdigPatches.csproj
+index 9f36e07..20bb6df 100644
+--- a/MarkdigPatches/MarkdigPatches.csproj
++++ b/MarkdigPatches/MarkdigPatches.csproj
+@@ -3,7 +3,7 @@
+     <PropertyGroup>
+         <ImplicitUsings>enable</ImplicitUsings>
+         <Nullable>enable</Nullable>
+-        <TargetFramework>net9.0</TargetFramework>
++        <TargetFramework>net10.0</TargetFramework>
+     </PropertyGroup>
+ 
+     <ItemGroup>
+diff --git a/Marksman/Marksman.fsproj b/Marksman/Marksman.fsproj
+index f867ac9..1d0ad35 100644
+--- a/Marksman/Marksman.fsproj
++++ b/Marksman/Marksman.fsproj
+@@ -4,7 +4,7 @@
+         <OutputType>Exe</OutputType>
+         <AssemblyName>marksman</AssemblyName>
+         <VersionPrefix>1.0.0</VersionPrefix>
+-        <TargetFramework>net9.0</TargetFramework>
++        <TargetFramework>net10.0</TargetFramework>
+     </PropertyGroup>
+     <Target Name="Version" BeforeTargets="BeforeBuild">
+         <Exec Command="git describe --always --dirty" ConsoleToMSBuild="true" Condition="'$(VersionString)'==''">
+diff --git a/Tests/Tests.fsproj b/Tests/Tests.fsproj
+index c461365..302dd74 100644
+--- a/Tests/Tests.fsproj
++++ b/Tests/Tests.fsproj
+@@ -4,7 +4,7 @@
+ 
+         <IsPackable>false</IsPackable>
+         <GenerateProgramFile>false</GenerateProgramFile>
+-        <TargetFramework>net9.0</TargetFramework>
++        <TargetFramework>net10.0</TargetFramework>
+     </PropertyGroup>
+ 
+     <ItemGroup>

@@ -6,7 +6,7 @@ EAPI=8
 inherit xorg-3
 
 DESCRIPTION="X.Org Xaw3d library"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~sparc x86 ~x64-macos ~x64-solaris"
 IUSE="xpm"
 
 RDEPEND="

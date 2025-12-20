@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..14} )
 
 inherit cmake-multilib flag-o-matic python-any-r1
 
@@ -66,6 +66,7 @@ multilib_src_configure() {
 	append-cxxflags $(usex debug '-DDEBUG' '-DNDEBUG')
 
 	local mycmakeargs=(
+		-DCMAKE_CXX_STANDARD=17
 		-DABSL_ENABLE_INSTALL="yes"
 		-DABSL_USE_EXTERNAL_GOOGLETEST="yes"
 		-DABSL_PROPAGATE_CXX_STD="yes"

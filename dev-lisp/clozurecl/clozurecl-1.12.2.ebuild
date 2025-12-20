@@ -18,7 +18,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="-* amd64 x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="-* amd64 x86 ~x64-macos"
 IUSE="doc"
 
 RDEPEND=">=dev-lisp/asdf-2.33-r3:="

@@ -16,7 +16,7 @@ else
 	HASH_COMMIT="8a72b12fe6e1626ef6014e5a190b9d1f69a9edde"
 	SRC_URI="https://github.com/openwall/john/archive/${HASH_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/john-${HASH_COMMIT}"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 LICENSE="GPL-2"
@@ -30,7 +30,7 @@ DEPEND=">=dev-libs/openssl-1.0.1:=
 	kerberos? ( virtual/krb5 )
 	pcap? ( net-libs/libpcap )
 	dev-libs/gmp:=
-	sys-libs/zlib
+	virtual/zlib:=
 	app-arch/bzip2"
 # Missing (unpackaged):
 # - Digest::Haval256

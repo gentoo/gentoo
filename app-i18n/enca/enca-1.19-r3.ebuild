@@ -11,7 +11,7 @@ SRC_URI="https://dl.cihar.com/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~mips ppc ppc64 ~riscv ~sparc x86 ~x64-macos"
 IUSE="doc +iconv recode"
 
 BDEPEND="doc? ( dev-util/gtk-doc )"

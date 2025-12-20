@@ -12,7 +12,7 @@ SRC_URI="https://downloads.sourceforge.net/xml-copy-editor/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 -ppc ~x86 ~amd64-linux ~x86-linux"  # -ppc due SSE2 requirement
+KEYWORDS="~amd64 -ppc ~x86"  # -ppc due SSE2 requirement
 IUSE="aqua nls"
 
 RDEPEND="

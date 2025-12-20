@@ -3,7 +3,7 @@
 
 EAPI=8
 
-ADA_COMPAT=( gcc_{12..15} )
+ADA_COMPAT=( gcc_{12..16} )
 inherit ada multiprocessing
 
 MYPN=gprbuild
@@ -26,7 +26,10 @@ DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
 REQUIRED_USE="${ADA_REQUIRED_USE}"
 
-PATCHES=( "${FILESDIR}"/${PN}-2020-gentoo.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-2020-gentoo.patch
+	"${FILESDIR}"/${P}-gcc16.patch
+)
 
 src_prepare() {
 	default

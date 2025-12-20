@@ -34,6 +34,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${P}-musl.patch
 	"${FILESDIR}"/${P}-gcc15.patch
+	"${FILESDIR}"/${P}-cmake.patch
 )
 
 src_configure() {

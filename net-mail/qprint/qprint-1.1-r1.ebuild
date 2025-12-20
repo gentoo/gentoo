@@ -9,7 +9,7 @@ SRC_URI="https://www.fourmilab.ch/webtools/${PN}/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc x86 ~ppc-macos"
+KEYWORDS="amd64 ~arm ppc x86"
 
 src_install() {
 	dodir /usr/bin

@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit gnustep-2
+
+inherit flag-o-matic gnustep-2
 
 DESCRIPTION="A clone of the NeXTstep Interface Builder application for GNUstep"
 HOMEPAGE="https://www.gnustep.org/experience/Gorm.html"
@@ -25,4 +26,13 @@ src_prepare() {
 		Documentation/GNUmakefile
 
 	default
+}
+
+src_configure() {
+	# bug #946603
+	if has_version gnustep-base/gnustep-make[libobjc2]; then
+		append-ldflags $(no-as-needed)
+	fi
+
+	gnustep-base_src_configure
 }

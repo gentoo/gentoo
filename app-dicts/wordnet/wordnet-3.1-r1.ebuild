@@ -15,7 +15,7 @@ S="${WORKDIR}/WordNet-3.0"
 
 LICENSE="Princeton"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~ppc ~riscv ~x86"
 
 # In contrast to what the configure script seems to imply, Tcl/Tk is NOT
 # optional. cf. bug 163478 for details. (Yes, it's about 2.1 but it's

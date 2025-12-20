@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+# Copyright 2016-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="cAdvisor - Analyzes resource usage and performance characteristics of running containers"
+pidfile=${pidfile:-"/run/${RC_SVCNAME}.pid"}
+command_user=${user:-${RC_SVCNAME}}:${group:-${RC_SVCNAME}}
+output_log=/var/log/${RC_SVCNAME}/${RC_SVCNAME}.log
+error_log=/var/log/${RC_SVCNAME}/${RC_SVCNAME}.log
+
+command="/usr/bin/cadvisor"
+command_background="true"
+
+depend() {
+	after net
+	use docker
+}

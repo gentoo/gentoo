@@ -18,7 +18,7 @@ SRC_URI="
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+KEYWORDS="amd64 arm ~arm64 ~ppc x86"
 IUSE="ncurses +parcheck ssl test zlib"
 RESTRICT="!test? ( test )"
 
@@ -27,7 +27,7 @@ DEPEND="
 	dev-libs/libxml2:=
 	ncurses? ( sys-libs/ncurses:0= )
 	ssl? ( dev-libs/openssl:0=[-bindist(-)] )
-	zlib? ( sys-libs/zlib:= )"
+	zlib? ( virtual/zlib:= )"
 RDEPEND="
 	${DEPEND}
 	acct-user/nzbget

@@ -16,7 +16,7 @@ if [[ ${PV} == *_rc* ]]; then
 	SRC_URI="https://download.samba.org/pub/samba/rc/${MY_P}.tar.gz"
 else
 	SRC_URI="https://download.samba.org/pub/samba/stable/${MY_P}.tar.gz"
-	KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 fi
 S="${WORKDIR}/${MY_P}"
 
@@ -79,7 +79,7 @@ COMMON_DEPEND="
 	>=sys-libs/talloc-${TALLOC_VERSION}[${MULTILIB_USEDEP}]
 	>=sys-libs/tdb-${TDB_VERSION}[${MULTILIB_USEDEP}]
 	>=sys-libs/tevent-${TEVENT_VERSION}[${MULTILIB_USEDEP}]
-	sys-libs/zlib[${MULTILIB_USEDEP}]
+	virtual/zlib:=[${MULTILIB_USEDEP}]
 	virtual/libcrypt:=[${MULTILIB_USEDEP}]
 	virtual/libiconv
 	$(python_gen_cond_dep '
@@ -307,6 +307,8 @@ multilib_src_configure() {
 	else
 		myconf+=( --with-shared-modules=DEFAULT,!vfs_snapper )
 	fi
+
+	append-ldflags $(test-flags-CCLD -Wl,--undefined-version) # bug 914898
 
 	append-cppflags "-I${ESYSROOT}/usr/include/et"
 

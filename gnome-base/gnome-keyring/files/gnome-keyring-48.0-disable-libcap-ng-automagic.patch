@@ -1,0 +1,36 @@
+https://bugs.gentoo.org/964549
+https://gitlab.gnome.org/GNOME/gnome-keyring/-/merge_requests/101
+
+From 5ebf419ce10d100049d961c13fd5e63d0a62fcfe Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Tue, 4 Nov 2025 13:33:31 +0200
+Subject: [PATCH] meson: allow disabling libcap-ng explicitly
+
+Bug: https://bugs.gentoo.org/964549
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/meson.build
++++ b/meson.build
+@@ -37,7 +37,7 @@ threads_dep = dependency('threads')
+ gck_dep = dependency('gck-1', version: '>= 3.3.4')
+ gcr_base_dep = dependency('gcr-base-3', version: '>= 3.27.90')
+ libgcrypt_dep = dependency('libgcrypt', version: '>= 1.2.2')
+-libcap_ng_dep = dependency('libcap-ng', required: false)
++libcap_ng_dep = dependency('libcap-ng', required: get_option('libcap-ng'))
+ p11_kit_dep = dependency('p11-kit-1')
+ 
+ libselinux_dep = dependency('libselinux', required: get_option('selinux'))
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -1,3 +1,9 @@
++option('libcap-ng',
++  type: 'feature',
++  value: 'auto',
++  description: 'Add support for Linux capabilities',
++)
++
+ option('ssh-agent',
+   type: 'boolean',
+   value: false,
+-- 
+2.51.2
+

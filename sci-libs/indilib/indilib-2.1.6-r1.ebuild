@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake udev
+inherit cmake dot-a udev
 
 DESCRIPTION="INDI Astronomical Control Protocol library"
 HOMEPAGE="https://www.indilib.org/"
@@ -12,7 +12,7 @@ S="${WORKDIR}/${P/lib/}"
 
 LICENSE="BSD GPL-2+ LGPL-2+ LGPL-2.1+"
 SLOT="0/1"
-KEYWORDS="~amd64 ~ppc ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~ppc ppc64 ~riscv ~x86"
 IUSE="ogg rtlsdr test"
 
 RESTRICT="!test? ( test )"
@@ -28,7 +28,7 @@ RDEPEND="
 	sci-libs/fftw:3.0=
 	sci-libs/gsl:=
 	sci-libs/libnova:=
-	sys-libs/zlib
+	virtual/zlib:=
 	virtual/libusb:1
 	ogg? (
 		media-libs/libogg
@@ -44,6 +44,8 @@ DEPEND="${RDEPEND}
 PATCHES=( "${FILESDIR}/${P}-system-hidapi.patch" ) # git master
 
 src_configure() {
+	lto-guarantee-fat
+
 	local mycmakeargs=(
 		-DINDI_SYSTEM_HIDAPILIB=ON
 		-DINDI_SYSTEM_HTTPLIB=ON
@@ -71,6 +73,11 @@ src_test() {
 	# They fail in parallel because they try to bind to the same port more
 	# than once.
 	BUILD_DIR="${BUILD_DIR}"/integs cmake_src_test -j1
+}
+
+src_install() {
+	cmake_src_install
+	strip-lto-bytecode
 }
 
 pkg_postinst() {

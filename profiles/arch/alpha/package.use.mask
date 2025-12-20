@@ -1,6 +1,14 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Eli Schwartz <eschwartz@gentoo.org> (2025-11-27)
+# Needs dev-python/mypy for mypyc, not keyworded here
+dev-python/charset-normalizer native-extensions
+
+# Viorel Munteanu <ceamac@gentoo.org> (2025-11-09)
+# Needs media-video/pipewire, not keyworded here
+net-misc/tigervnc wayland
+
 # PPN-SD <nicolas.parlant@parhuet.fr> (2025-10-04)
 # media-libs/libemf is not keyworded here
 app-office/dia wmf
@@ -416,15 +424,11 @@ net-libs/gnome-online-accounts gnome
 # Requires media-libs/mesa[llvm], which is masked.
 dev-python/pyopengl test
 
-# Matt Turner <mattst88@gentoo.org> (2020-03-17)
-# Requires an insane (and always growing) number of ruby deps
-sys-block/thin-provisioning-tools test
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-03-15)
 # Mask USE=dav1d, media-libs/dav1d is not keyworded
 # Mask USE=libaribb24, media-libs/aribb24 is not keyworded
-media-video/ffmpeg dav1d libaribb24 libtesseract
-media-video/ffmpeg-compat dav1d libaribb24 libtesseract
+media-video/ffmpeg dav1d libaribb24 ocr
+media-video/ffmpeg-compat dav1d libaribb24 ocr
 
 # Andrey Utkin <andrey_utkin@gentoo.org> (2020-03-11)
 # USE=bpf depends on llvm-core/clang which is not keyworded on alpha.

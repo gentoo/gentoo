@@ -11,6 +11,9 @@
     Sysprof handles shared libraries and applications do not need to be
     recompiled. In fact they don't even have to be restarted.
   </longdescription>
+  <use>
+    <flag name="debuginfod">Enable debuginfod support via <pkg>dev-libs/elfutils</pkg> libdebuginfod</flag>
+  </use>
   <slots>
     <subslots>sysprof and sysprof-ui API version</subslots>
   </slots>

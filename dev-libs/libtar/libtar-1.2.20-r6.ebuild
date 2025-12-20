@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
 IUSE="zlib"
 # There is no test and 'check' target errors out due to mixing of automake &
 # non-automake makefiles.
@@ -20,7 +20,7 @@ IUSE="zlib"
 RESTRICT="test"
 
 RDEPEND="
-	zlib? ( sys-libs/zlib:= )
+	zlib? ( virtual/zlib:= )
 	!zlib? ( app-arch/gzip )"
 DEPEND="${RDEPEND}"
 

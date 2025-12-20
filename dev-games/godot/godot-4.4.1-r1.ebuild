@@ -47,7 +47,7 @@ RDEPEND="
 	media-libs/libvorbis
 	>=net-libs/mbedtls-3.6.2-r101:3=
 	net-libs/wslay
-	sys-libs/zlib:=
+	virtual/zlib:=
 	alsa? ( media-libs/alsa-lib )
 	dbus? ( sys-apps/dbus )
 	fontconfig? ( media-libs/fontconfig )

@@ -30,7 +30,7 @@ DEPEND="
 	media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}]
 	media-libs/libpng:=[${MULTILIB_USEDEP}]
 	media-libs/tiff:=[${MULTILIB_USEDEP}]
-	sys-libs/zlib:=[${MULTILIB_USEDEP}]
+	virtual/zlib:=[${MULTILIB_USEDEP}]
 	aom? ( >=media-libs/libaom-2.0.0:=[${MULTILIB_USEDEP}] )
 	gdk-pixbuf? ( x11-libs/gdk-pixbuf[${MULTILIB_USEDEP}] )
 	openh264? ( media-libs/openh264:=[${MULTILIB_USEDEP}] )

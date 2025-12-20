@@ -11,7 +11,7 @@ if [[ ${PV} == *9999 ]]; then
 else
 	SRC_URI="https://www.zsh.org/pub/${P}.tar.xz
 		doc? ( https://www.zsh.org/pub/${P}-doc.tar.xz )"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
 fi
 
 DESCRIPTION="UNIX Shell similar to the Korn shell"

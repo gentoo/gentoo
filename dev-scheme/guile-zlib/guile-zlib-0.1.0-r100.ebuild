@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,7 +28,7 @@ REQUIRED_USE="${GUILE_REQUIRED_USE}"
 
 RDEPEND="
 	${GUILE_DEPS}
-	>=sys-libs/zlib-1.3-r4
+	>=virtual/zlib-1.3-r4:=
 "
 DEPEND="
 	${RDEPEND}

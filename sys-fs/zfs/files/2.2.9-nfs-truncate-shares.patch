@@ -1,0 +1,74 @@
+From 41e55b476bcfc90f1ad81c02c5375367fdace9e9 Mon Sep 17 00:00:00 2001
+From: siv0 <github@nomore.at>
+Date: Tue, 31 Oct 2023 21:57:54 +0100
+Subject: [PATCH] Fix nfs_truncate_shares without /etc/exports.d
+
+Calling nfs_reset_shares on Linux prints a warning:
+`failed to lock /etc/exports.d/zfs.exports.lock: No such file or
+directory`
+when /etc/exports.d does not exist. The directory gets created, when a
+filesystem is actually exported through nfs_toggle_share and
+nfs_init_share. The truncation of /etc/exports.d/zfs.exports happens
+unconditionally when calling `zfs mount -a` (via zfs_do_mount and
+share_mount in `cmd/zfs/zfs_main.c`).
+
+Fixing the issue only in the Linux part, since the exports file on
+freebsd is in `/etc/zfs/`, which seems present on 2 FreeBSD systems I
+have access to (through `/etc/zfs/compatibility.d/`), while a Debian
+box does not have the directory even if `/usr/sbin/exportfs` is
+present through the `nfs-kernel-server` package.
+
+The code for exports_available is copied from nfs_available above.
+
+Fixes: ede037cda73675f42b1452187e8dd3438fafc220
+("Make zfs-share service resilient to stale exports")
+
+Reviewed-by: Brian Atkinson <batkinson@lanl.gov>
+Reviewed-by: Brian Behlendorf <behlendorf1@llnl.gov>
+Signed-off-by: Stoiko Ivanov <s.ivanov@proxmox.com>
+Closes #15369
+Closes #15468
+---
+ lib/libshare/os/linux/nfs.c | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+
+diff --git a/lib/libshare/os/linux/nfs.c b/lib/libshare/os/linux/nfs.c
+index 004946b0cfe4..3dce818400fc 100644
+--- a/lib/libshare/os/linux/nfs.c
++++ b/lib/libshare/os/linux/nfs.c
+@@ -47,6 +47,7 @@
+ 
+ 
+ static boolean_t nfs_available(void);
++static boolean_t exports_available(void);
+ 
+ typedef int (*nfs_shareopt_callback_t)(const char *opt, const char *value,
+     void *cookie);
+@@ -539,6 +540,8 @@ nfs_commit_shares(void)
+ static void
+ nfs_truncate_shares(void)
+ {
++	if (!exports_available())
++		return;
+ 	nfs_reset_shares(ZFS_EXPORTS_LOCK, ZFS_EXPORTS_FILE);
+ }
+ 
+@@ -566,3 +569,18 @@ nfs_available(void)
+ 
+ 	return (avail == 1);
+ }
++
++static boolean_t
++exports_available(void)
++{
++	static int avail;
++
++	if (!avail) {
++		if (access(ZFS_EXPORTS_DIR, F_OK) != 0)
++			avail = -1;
++		else
++			avail = 1;
++	}
++
++	return (avail == 1);
++}

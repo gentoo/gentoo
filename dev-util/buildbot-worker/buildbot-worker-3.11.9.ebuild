@@ -16,7 +16,7 @@ HOMEPAGE="https://buildbot.net/
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~sparc ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm64 ~riscv ~sparc"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

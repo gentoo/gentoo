@@ -10,14 +10,14 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${P/-/_}.orig.tar.gz -> ${P}.ta
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~mips ppc ppc64 ~riscv ~sparc x86"
 IUSE="alsa"
 
 RDEPEND="app-eselect/eselect-mpg123
 	>=media-libs/libao-1:=
 	media-libs/libid3tag:=
 	media-libs/libmad
-	sys-libs/zlib
+	virtual/zlib:=
 	alsa? ( media-libs/alsa-lib )"
 DEPEND="${RDEPEND}"
 

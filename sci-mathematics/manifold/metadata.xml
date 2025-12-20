@@ -13,6 +13,7 @@
 		<remote-id type="github">elalish/manifold</remote-id>
 	</upstream>
 	<use>
+		<flag name="assimp">Build mesh export (via <pkg>media-libs/assimp</pkg>) utility library</flag>
 		<flag name="tbb">Enable Parallel backend with <pkg>dev-cpp/tbb</pkg></flag>
 	</use>
 </pkgmetadata>

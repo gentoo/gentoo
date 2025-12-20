@@ -69,6 +69,13 @@ src_unpack() {
 }
 
 src_configure() {
+	# https://gitlab.freedesktop.org/3v1n0/libfprint/-/issues/10
+	# Untill upstream have analysed it we are doing this as a workaround
+	# https://github.com/gentoo/gentoo/pull/43857#discussion_r2400425455
+	if use tod && tc-ld-is-lld; then
+		append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
+	fi
+
 	# TODO: wire up test deps (cairo, pygobject, etc) for extra tests
 	# currently skipped.
 	local emesonargs=(

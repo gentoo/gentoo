@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge.jp/x-tt/7862/${MY_P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~loong ~ppc ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 arm ~hppa ~loong ~ppc ~riscv ~s390 ~sparc x86"
 # Only installs fonts
 RESTRICT="strip binchecks"
 

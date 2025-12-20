@@ -1,0 +1,12 @@
+Gentoo-bug: https://bugs.gentoo.org/965843
+
+--- a/m4/ax_have_qt.m4
++++ b/m4/ax_have_qt.m4
+@@ -146,7 +146,7 @@
+     if test "$ver" = "2.0"; then
+       # Add QT_HOST_BINS and QT_HOST_LIBEXECS paths to PATH
+       for var in QT_HOST_BINS QT_HOST_LIBEXECS; do
+-        PATH=$PATH:`$QTPATHS --query $var`
++        PATH=`$QTPATHS --query $var`:$PATH
+       done
+     fi

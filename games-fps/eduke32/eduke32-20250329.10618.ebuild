@@ -53,7 +53,7 @@ RDEPEND="
 	media-libs/libsdl2[alsa,joystick,opengl?,sound,video]
 	media-libs/libvorbis
 	media-libs/sdl2-mixer[flac,fluidsynth?,timidity?,vorbis]
-	sys-libs/zlib
+	virtual/zlib:=
 	gtk? ( x11-libs/gtk+:2 )
 	opengl? (
 		virtual/glu

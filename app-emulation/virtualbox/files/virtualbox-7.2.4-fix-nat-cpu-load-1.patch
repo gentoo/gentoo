@@ -1,0 +1,79 @@
+https://github.com/VirtualBox/virtualbox/commit/efa378dadd192af8fbce331e9ec66fb36d65ad3d
+https://bugs.gentoo.org/967656
+
+From efa378dadd192af8fbce331e9ec66fb36d65ad3d Mon Sep 17 00:00:00 2001
+From: Jack Doherty <jack.doherty@oracle.com>
+Date: Mon, 10 Nov 2025 21:28:06 +0000
+Subject: [PATCH] Network/NAT: Fix high CPU usage when using NAT. github:gh-356
+
+svn:sync-xref-src-repo-rev: r171190
+--- a/src/VBox/Devices/Network/DrvNAT.cpp
++++ b/src/VBox/Devices/Network/DrvNAT.cpp
+@@ -302,7 +302,6 @@ static DECLCALLBACK(void) drvNATRecvWorker(PDRVNAT pThis, void *pBuf, size_t cb)
+     rc = RTCritSectLeave(&pThis->DevAccessLock);
+     AssertRC(rc);
+     ASMAtomicDecU32(&pThis->cPkts);
+-    drvNATNotifyNATThread(pThis, "drvNATRecvWorker");
+     STAM_PROFILE_STOP(&pThis->StatNATRecv, a);
+ }
+ 
+@@ -562,7 +561,7 @@ static DECLCALLBACK(void) drvNATNetworkUp_EndXmit(PPDMINETWORKUP pInterface)
+  */
+ static void drvNATNotifyNATThread(PDRVNAT pThis, const char *pszWho)
+ {
+-    RT_NOREF(pszWho);
++    Log3(("Notifying NAT Thread. Culprit: %s\n", pszWho));
+ #ifdef RT_OS_WINDOWS
+     int cbWritten = send(pThis->ahWakeupSockPair[0], "", 1, NULL);
+     if (RT_LIKELY(cbWritten != SOCKET_ERROR))
+@@ -713,6 +712,7 @@ static DECLCALLBACK(int) drvNATAsyncIoThread(PPDMDRVINS pDrvIns, PPDMTHREAD pThr
+         uint32_t cMsTimeout = DRVNAT_DEFAULT_TIMEOUT;
+         slirp_pollfds_fill_socket(pThis->pSlirp, &cMsTimeout, drvNAT_AddPollCb /* SlirpAddPollCb */, pThis /* opaque */);
+         cMsTimeout = drvNATTimersAdjustTimeoutDown(pThis, cMsTimeout);
++        Log4Func(("Timeout adjust to: %d\n", cMsTimeout));
+ 
+ #ifdef RT_OS_WINDOWS
+         int cChangedFDs = WSAPoll(pThis->aPolls, pThis->cSockets, cMsTimeout);
+@@ -721,6 +721,7 @@ static DECLCALLBACK(int) drvNATAsyncIoThread(PPDMDRVINS pDrvIns, PPDMTHREAD pThr
+ #endif
+         if (RT_LIKELY(!(cChangedFDs >= 0)))
+         {
++            Log4Func(("Poll error\n"));
+ #ifdef RT_OS_WINDOWS
+             int const iLastErr = WSAGetLastError(); /* (In debug builds LogRel translates to two RTLogLoggerExWeak calls.) */
+             LogRel(("NAT: RTWinPoll returned error=%Rrc (cChangedFDs=%d)\n", iLastErr, cChangedFDs));
+@@ -737,6 +738,7 @@ static DECLCALLBACK(int) drvNATAsyncIoThread(PPDMDRVINS pDrvIns, PPDMTHREAD pThr
+ 
+         Log4Func(("poll\n"));
+         slirp_pollfds_poll(pThis->pSlirp, cChangedFDs < 0, drvNAT_GetREventsCb, pThis /* opaque */);
++        Log4Func(("management pipe revents = %d\n", pThis->aPolls[0].revents));
+ 
+         /*
+          * Drain the control pipe if necessary.
+@@ -747,8 +749,9 @@ static DECLCALLBACK(int) drvNATAsyncIoThread(PPDMDRVINS pDrvIns, PPDMTHREAD pThr
+          *       control pipe of all the notifications. If there is an error
+          *       on reading the pipe, we try again next time around.
+          */
+-        if (pThis->aPolls[0].revents & (POLLRDNORM|POLLPRI|POLLRDBAND))   /* POLLPRI won't be seen with WSAPoll. */
++        if (pThis->aPolls[0].revents & (POLLIN|POLLRDNORM|POLLPRI|POLLRDBAND))   /* POLLPRI won't be seen with WSAPoll. */
+         {
++            Log4(("Draining control pipe.\n"));
+             char achBuf[1024];
+             size_t cbRead = 0;
+             uint64_t cbWakeupNotifs = ASMAtomicReadU64(&pThis->cbWakeupNotifs);
+@@ -791,6 +794,7 @@ static DECLCALLBACK(int) drvNATAsyncIoThread(PPDMDRVINS pDrvIns, PPDMTHREAD pThr
+  */
+ static DECLCALLBACK(int) drvNATAsyncIoWakeup(PPDMDRVINS pDrvIns, PPDMTHREAD pThread)
+ {
++    LogFlowFuncEnter();
+     RT_NOREF(pThread);
+     PDRVNAT pThis = PDMINS_2_DATA(pDrvIns, PDRVNAT);
+ 
+@@ -1387,6 +1391,7 @@ static void drvNAT_TimerModCb(void *pvTimer, int64_t msNewDeadlineTs, void *pvUs
+  */
+ static void drvNAT_NotifyCb(void *opaque)
+ {
++    LogFlowFuncEnter();
+     PDRVNAT pThis = (PDRVNAT)opaque;
+     drvNATNotifyNATThread(pThis, "drvNAT_NotifyCb");
+ }

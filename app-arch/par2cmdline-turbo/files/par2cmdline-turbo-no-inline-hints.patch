@@ -1,0 +1,42 @@
+From 933d9984842605f5778768a388b25c53758b1d17 Mon Sep 17 00:00:00 2001
+From: Joe Kappus <joe@wt.gd>
+Date: Mon, 10 Nov 2025 01:52:45 -0500
+Subject: [PATCH] Add a PAR2_NO_INLINE_HINTS macro to control disabling
+ inlining hints.
+
+Needed for compiling with -Og. I followed the general idea xxHash did:
+https://github.com/Cyan4973/xxHash/commit/b8dfa44bbcce9d8c36c52996ec7073242e2aa04b
+
+Bug: https://bugs.gentoo.org/961901
+Signed-off-by: Joe Kappus <joe@wt.gd>
+---
+ parpar/src/hedley.h | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/parpar/src/hedley.h b/parpar/src/hedley.h
+index 8a713e6..f7dd2b4 100644
+--- a/parpar/src/hedley.h
++++ b/parpar/src/hedley.h
+@@ -1575,11 +1575,19 @@ HEDLEY_DIAGNOSTIC_POP
+   HEDLEY_TI_CLPRU_VERSION_CHECK(2,1,0) || \
+   HEDLEY_MCST_LCC_VERSION_CHECK(1,25,10) || \
+   HEDLEY_IAR_VERSION_CHECK(8,10,0)
++#ifdef PAR2_NO_INLINE_HINTS
++#  define HEDLEY_ALWAYS_INLINE HEDLEY_INLINE
++#else
+ #  define HEDLEY_ALWAYS_INLINE __attribute__((__always_inline__)) HEDLEY_INLINE
++#endif
+ #elif \
+   HEDLEY_MSVC_VERSION_CHECK(12,0,0) || \
+   HEDLEY_INTEL_CL_VERSION_CHECK(2021,1,0)
++#ifdef PAR2_NO_INLINE_HINTS
++#  define HEDLEY_ALWAYS_INLINE
++#else
+ #  define HEDLEY_ALWAYS_INLINE __forceinline
++#endif
+ #elif defined(__cplusplus) && \
+     ( \
+       HEDLEY_TI_ARMCL_VERSION_CHECK(5,2,0) || \
+-- 
+2.51.2
+

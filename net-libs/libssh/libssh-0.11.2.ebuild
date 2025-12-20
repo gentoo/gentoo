@@ -13,7 +13,7 @@ if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://git.libssh.org/projects/libssh.git"
 else
 	SRC_URI="https://www.libssh.org/files/$(ver_cut 1-2)/${P}.tar.xz"
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 fi
 
 LICENSE="LGPL-2.1"
@@ -26,7 +26,7 @@ RDEPEND="
 	!mbedtls? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
 	gssapi? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
 	mbedtls? ( net-libs/mbedtls:3=[${MULTILIB_USEDEP},threads] )
-	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
+	zlib? ( >=virtual/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}] )
 "
 DEPEND="
 	${RDEPEND}

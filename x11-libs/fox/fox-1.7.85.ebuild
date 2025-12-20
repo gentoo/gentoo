@@ -33,7 +33,7 @@ COMMON_DEPEND="
 		media-libs/freetype:2
 		x11-libs/libXft
 	)
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib:= )
 "
 RDEPEND="
 	${COMMON_DEPEND}

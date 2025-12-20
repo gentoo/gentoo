@@ -10,7 +10,7 @@ SRC_URI="https://github.com/mct/${PN}/archive/${P/_}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~loong ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~loong ppc ppc64 ~riscv ~sparc x86"
 
 DEPEND="
 	net-libs/libnet:1.1

@@ -17,7 +17,7 @@ REQUIRED_USE="|| ( alsa jack nas oss )"
 
 RDEPEND="
 	media-libs/libsndfile:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	alsa? ( media-libs/alsa-lib )
 	flac? ( media-libs/flac:= )
 	gtk? ( >=x11-libs/gtk+-2.10:2 )

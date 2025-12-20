@@ -1,0 +1,24 @@
+#!/sbin/openrc-run
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License, v2 or later
+
+SYNCTHING_LOGFILE=${SYNCTHING_LOGFILE:-$HOME/.config/syncthing/syncthing.log}
+SYNCTHING_GUI_ADDRESS=${SYNCTHING_GUI_ADDRESS:-http://127.0.0.1:8384}
+
+description="Open Source Continuous File Synchronization"
+command="/usr/bin/syncthing"
+supervisor=supervise-daemon
+
+command_args="serve --no-browser --no-restart \
+	--log-file=\"${SYNCTHING_LOGFILE}\"
+	--no-log-format-level-string --log-format-level-syslog \
+	--gui-address=${SYNCTHING_GUI_ADDRESS} \
+	${SYNCTHING_OPTS}"
+
+depend() {
+	after net
+}
+
+start_pre() {
+	checkpath -q -f -o "${command_user}" "${SYNCTHING_LOGFILE}"
+}

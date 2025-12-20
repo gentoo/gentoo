@@ -28,7 +28,7 @@ else
 	S="${WORKDIR}/${MY_PF}"
 
 	if [[ ${PV} != *_alpha* && ${PV} != *_beta* && ${PV} != *_rc* ]]; then
-		KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~ppc-macos"
+		KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 	fi
 
 	BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-tor-20250713 )"
@@ -45,7 +45,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-libs/libevent-2.1.12-r1:=[ssl]
 	dev-libs/openssl:=[-bindist(-)]
-	sys-libs/zlib
+	virtual/zlib:=
 	caps? ( sys-libs/libcap )
 	man? ( app-text/asciidoc )
 	lzma? ( app-arch/xz-utils )
@@ -119,6 +119,9 @@ src_configure() {
 
 	export ac_cv_lib_cap_cap_init=$(usex caps)
 	export tor_cv_PYTHON="${EPYTHON}"
+	# Already set by default in profiles for our toolchain
+	export tor_cv_cflags__fcf_protection_full=no
+	export tor_cv_cflags__mbranch_protection_standard=no
 
 	local myeconfargs=(
 		--localstatedir="${EPREFIX}/var"

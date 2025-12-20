@@ -1,0 +1,18 @@
+PR pending https://github.com/mean00/avidemux2/pull/548.patch
+Fix build with clang
+>avidemux_plugins/ADM_audioEncoders/dcaenc/audioencoder_dcaenc.cpp:229:39: error:
+>      invalid suffix on literal; C++11 requires a space between literal and identifier [-Wreserved-user-defined-literal]
+>  229 |       printf ("[dcaenc] Error !!! : %"PRIi32"\n", nbout);
+>      |                                       ^
+>      |
+--- a/avidemux_plugins/ADM_audioEncoders/dcaenc/audioencoder_dcaenc.cpp
++++ b/avidemux_plugins/ADM_audioEncoders/dcaenc/audioencoder_dcaenc.cpp
+@@ -226,7 +226,7 @@ bool AUDMEncoder_DcaEnc::encode(uint8_t *dest, uint32_t *len, uint32_t *samples)
+ cont:
+   if (nbout < 0)
+     {
+-      printf ("[dcaenc] Error !!! : %"PRIi32"\n", nbout);
++      printf ("[dcaenc] Error !!! : %" PRIi32"\n", nbout);
+       return false;
+     }
+   *len = nbout;

@@ -10,6 +10,6 @@ inherit perl-module
 DESCRIPTION="Perl extension for merging IPv4 or IPv6 CIDR addresses"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 PERL_RM_FILES=( "t/podcov.t" "t/pod.t" )

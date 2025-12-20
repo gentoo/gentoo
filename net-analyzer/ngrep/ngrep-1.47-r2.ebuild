@@ -12,7 +12,7 @@ S="${WORKDIR}/${P/./_}"
 
 LICENSE="ngrep"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ppc ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 arm ~hppa ppc ppc64 ~s390 ~sparc x86"
 IUSE="ipv6"
 
 DEPEND="

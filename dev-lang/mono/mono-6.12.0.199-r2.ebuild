@@ -12,14 +12,14 @@ SRC_URI="https://download.mono-project.com/sources/mono/${P}.tar.xz"
 
 LICENSE="MIT LGPL-2.1 GPL-2 BSD-4 NPL-1.1 Ms-PL GPL-2-with-linking-exception IDPL"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 -riscv x86 ~amd64-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 -riscv x86"
 IUSE="doc minimal nls pax-kernel selinux xen"
 
 # Note: mono works incorrect with older versions of libgdiplus
 # Details on dotnet overlay issue: https://github.com/gentoo/dotnet/issues/429
 DEPEND="
 	app-crypt/mit-krb5[${MULTILIB_USEDEP}]
-	sys-libs/zlib[${MULTILIB_USEDEP}]
+	virtual/zlib:=[${MULTILIB_USEDEP}]
 	!minimal? ( >=dev-dotnet/libgdiplus-6.0.2 )
 	nls? ( sys-devel/gettext )
 "

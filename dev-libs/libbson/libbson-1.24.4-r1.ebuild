@@ -14,7 +14,7 @@ S="${WORKDIR}/mongo-c-driver-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm64 ~hppa ~loong ~ppc ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 arm64 ~hppa ~loong ~mips ~ppc ~riscv ~s390 ~sparc x86"
 IUSE="examples static-libs"
 
 # tests are covered in mongo-c-driver and are not easily runnable in here

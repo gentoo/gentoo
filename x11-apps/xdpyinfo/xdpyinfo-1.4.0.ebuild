@@ -6,7 +6,7 @@ EAPI=8
 inherit xorg-meson
 
 DESCRIPTION="Display information utility for X"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 IUSE="dga xinerama"
 
 RDEPEND="

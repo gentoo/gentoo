@@ -28,7 +28,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="PSF-2"
 SLOT="${PYVER}"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="
 	bluetooth debug +ensurepip examples gdbm libedit +ncurses pgo
 	+readline +sqlite +ssl test tk valgrind
@@ -49,7 +49,7 @@ RDEPEND="
 	dev-libs/libffi:=
 	dev-libs/mpdecimal:=
 	dev-python/gentoo-common
-	>=sys-libs/zlib-1.1.3:=
+	>=virtual/zlib-1.1.3:=
 	virtual/libcrypt:=
 	virtual/libintl
 	gdbm? ( sys-libs/gdbm:=[berkdb] )

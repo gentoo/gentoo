@@ -15,7 +15,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	SRC_URI="https://github.com/LibreCAD/LibreCAD/archive/v${PV/_/}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/LibreCAD-${PV}"
-	KEYWORDS="~amd64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~ppc64 ~riscv ~x86"
 fi
 
 LICENSE="GPL-2"

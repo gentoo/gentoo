@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -10,7 +10,7 @@ SRC_URI="https://github.com/zeromq/${PN}/releases/download/v${PV}/${P}.tar.gz"
 LICENSE="MPL-2.0"
 SLOT="0/4"
 KEYWORDS="amd64 arm arm64 ~hppa ~ppc64 ~riscv x86"
-IUSE="curl drafts http-client http-server lz4 nss static-libs systemd test +uuid"
+IUSE="curl drafts http-client http-server lz4 nss systemd test +uuid"
 RESTRICT="!test? ( test )"
 
 BDEPEND="app-text/asciidoc
@@ -54,7 +54,5 @@ src_configure() {
 src_install() {
 	default
 
-	if ! use static-libs ; then
-		find "${ED}" -type f \( -name "*.a" -o -name "*.la" \) -delete || die
-	fi
+	find "${ED}" -type f -name "*.la" -delete || die
 }

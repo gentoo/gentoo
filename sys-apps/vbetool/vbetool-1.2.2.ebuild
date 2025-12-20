@@ -16,7 +16,7 @@ IUSE="selinux"
 
 DEPEND="
 	dev-libs/libx86
-	sys-libs/zlib:=
+	virtual/zlib:=
 	x11-libs/libpciaccess
 "
 RDEPEND="

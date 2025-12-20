@@ -12,7 +12,7 @@ SRC_URI="mirror://gentoo/${P}.src.tgz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~mips ppc ppc64 ~riscv ~sparc x86"
 IUSE=""
 
 RDEPEND="

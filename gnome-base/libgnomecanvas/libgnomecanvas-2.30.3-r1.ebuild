@@ -11,7 +11,7 @@ HOMEPAGE="https://library.gnome.org/devel/libgnomecanvas/stable/"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~sparc x86 ~x64-macos ~x64-solaris"
 IUSE="glade"
 
 RDEPEND=">=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}]

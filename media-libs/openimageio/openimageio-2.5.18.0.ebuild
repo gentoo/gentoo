@@ -77,7 +77,7 @@ RDEPEND="
 	>=media-libs/opencolorio-2.1.1-r4:=
 	>=media-libs/openexr-3:0=
 	media-libs/tiff:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	dicom? ( sci-libs/dcmtk )
 	ffmpeg? ( media-video/ffmpeg:= )
 	fits? ( sci-libs/cfitsio:= )

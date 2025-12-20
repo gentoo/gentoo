@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,14 +12,14 @@ S="${WORKDIR}"/${P/_rc/.rc.}
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ppc x86"
 IUSE="debug sasl tcpd"
 
 DEPEND="
 	net-libs/libnsl:=
 	net-libs/libpcap
 	net-libs/libtirpc
-	sys-libs/zlib
+	virtual/zlib:=
 	sasl? ( dev-libs/cyrus-sasl )
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
 "

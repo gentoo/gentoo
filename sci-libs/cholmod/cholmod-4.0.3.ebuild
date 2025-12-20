@@ -13,7 +13,7 @@ SRC_URI="https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/refs/tags/v$
 
 LICENSE="LGPL-2.1+ modify? ( GPL-2+ ) matrixops? ( GPL-2+ )"
 SLOT="0/4"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="+cholesky cuda doc openmp +matrixops +modify +partition +supernodal test"
 RESTRICT="!test? ( test )"
 

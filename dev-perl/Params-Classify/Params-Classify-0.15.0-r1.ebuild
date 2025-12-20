@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Argument type classification"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~riscv ~s390 ~sparc ~x86 ~x64-macos ~x64-solaris"
 
 RDEPEND="
 	>=dev-perl/Devel-CallChecker-0.3.0

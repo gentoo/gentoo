@@ -13,7 +13,7 @@ S="${WORKDIR}"/${PN}-${PN}$(ver_rs 0-1 '')
 
 LICENSE="QPL-1.0 LGPL-2"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~ppc ~x86"
 
 DEPEND="dev-lang/ocaml:=[ocamlopt]"
 RDEPEND="${DEPEND}"

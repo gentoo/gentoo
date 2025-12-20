@@ -56,7 +56,7 @@ COMMON_DEPEND="
 	media-libs/libpng:0=
 	media-libs/libvpx:0=
 	net-misc/curl
-	sys-libs/zlib
+	virtual/zlib:=
 	dbus? ( sys-apps/dbus )
 	gui? (
 		dev-qt/qtbase:6[X,wayland,widgets]
@@ -344,7 +344,7 @@ src_prepare() {
 		's/&apos;[^&]*\(vboxdrv setup\|vboxconfig\)&apos;/\&apos;emerge -1 virtualbox-modules\&apos;/' {} \+ || die
 	sed -i "s:'/sbin/vboxconfig':'emerge -1 virtualbox-modules':" \
 		src/VBox/Frontends/VirtualBox/src/main.cpp \
-		src/VBox/VMM/VMMR3/VM.cpp || die
+		src/VBox/VMM/VMMR3/VMR3.cpp || die
 
 	# 890561
 	echo -e "\nVBOX_GTAR=gtar" >> LocalConfig.kmk || die

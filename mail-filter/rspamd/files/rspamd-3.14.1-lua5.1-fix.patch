@@ -1,0 +1,37 @@
+From 73f7b82ab3507049a752ffc15a0615cd9d7a10df Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20Van=C4=9Bk?= <arkamar@atlas.cz>
+Date: Tue, 2 Dec 2025 22:06:16 +0100
+Subject: [PATCH 1/1] [Fix] Use 0 instead of LUA_OK for lua_pcall result
+ comparison
+
+Lua 5.1 does not define LUA_OK, so the result of lua_pcall is compared
+to 0 instead, which is consistent with the rest of the codebase.
+
+Bug: https://bugs.gentoo.org/967009
+Upstream-PR: https://github.com/rspamd/rspamd/pull/5774
+
+diff --git a/src/rspamadm/confighelp.c b/src/rspamadm/confighelp.c
+index 04c8845a1..68617f86d 100644
+--- a/src/rspamadm/confighelp.c
++++ b/src/rspamadm/confighelp.c
+@@ -207,7 +207,7 @@ rspamadm_confighelp_load_plugins_doc(struct rspamd_config *cfg)
+ 	lua_getglobal(L, "require");
+ 	lua_pushstring(L, "rspamadm.confighelp_plugins");
+ 
+-	if (lua_pcall(L, 1, 1, 0) != LUA_OK) {
++	if (lua_pcall(L, 1, 1, 0) != 0) {
+ 		rspamd_fprintf(stderr, "cannot load confighelp_plugins module: %s\n",
+ 					   lua_tostring(L, -1));
+ 		lua_pop(L, 1);
+@@ -221,7 +221,7 @@ rspamadm_confighelp_load_plugins_doc(struct rspamd_config *cfg)
+ 		return NULL;
+ 	}
+ 
+-	if (lua_pcall(L, 0, 1, 0) != LUA_OK) {
++	if (lua_pcall(L, 0, 1, 0) != 0) {
+ 		rspamd_fprintf(stderr, "cannot execute confighelp_plugins function: %s\n",
+ 					   lua_tostring(L, -1));
+ 		lua_pop(L, 1);
+-- 
+2.51.0
+

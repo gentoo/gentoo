@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ SRC_URI="https://pythia.org/download/${PN}${MV}/${MY_P}.tgz
 
 SLOT="8"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc examples fastjet +hepmc lhapdf root test zlib"
 RESTRICT="!test? ( test )"
 
@@ -32,7 +32,7 @@ RDEPEND="
 	fastjet? ( sci-physics/fastjet )
 	hepmc? ( sci-physics/hepmc:2= )
 	lhapdf? ( sci-physics/lhapdf:= )
-	zlib? ( sys-libs/zlib )"
+	zlib? ( virtual/zlib:= )"
 # ROOT is used only when building related tests
 DEPEND="${RDEPEND}
 	test? (

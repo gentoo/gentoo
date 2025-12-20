@@ -1,0 +1,5 @@
+--- openmittsu-0.10.3.0/CMakeLists.txt
++++ openmittsu-0.10.3.0/CMakeLists.txt
+@@ -108 +108 @@
+-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Gui Widgets Network Multimedia MultimediaWidgets Sql)
++find_package(QT NAMES Qt6 REQUIRED COMPONENTS Core Gui Widgets Network Multimedia MultimediaWidgets Sql)

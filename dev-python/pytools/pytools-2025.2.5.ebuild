@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv"
 
 # NB: numpy are an "extra" (optional) deps
 RDEPEND="

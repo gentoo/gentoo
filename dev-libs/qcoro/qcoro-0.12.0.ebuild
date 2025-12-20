@@ -36,6 +36,8 @@ DEPEND="${RDEPEND}
 	test? ( dev-qt/qtbase:6[concurrent] )
 "
 
+PATCHES=( "${FILESDIR}/${P}-qt-6.10-testfix.patch" ) # bug 966347
+
 src_configure() {
 	local mycmakeargs=(
 		-DUSE_QT_VERSION=6

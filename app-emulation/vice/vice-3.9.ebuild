@@ -19,7 +19,7 @@ IUSE="
 REQUIRED_USE="|| ( gtk headless sdl )"
 
 RDEPEND="
-	sys-libs/zlib:=
+	virtual/zlib:=
 	virtual/libintl
 	alsa? ( media-libs/alsa-lib )
 	curl? ( net-misc/curl )

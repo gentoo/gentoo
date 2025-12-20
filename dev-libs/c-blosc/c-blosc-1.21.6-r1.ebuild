@@ -17,14 +17,14 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0/1"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="+lz4 +snappy test zlib zstd"
 RESTRICT="!test? ( test )"
 
 DEPEND="
 	lz4? ( >=app-arch/lz4-1.7.5:= )
 	snappy? ( app-arch/snappy:= )
-	zlib? ( sys-libs/zlib:= )
+	zlib? ( virtual/zlib:= )
 	zstd? ( app-arch/zstd:= )
 "
 RDEPEND="

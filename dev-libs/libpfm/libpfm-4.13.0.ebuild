@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/perfmon2/${PN}4/${P}.tar.gz"
 
 LICENSE="GPL-2 MIT"
 SLOT="0/4"
-KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="static-libs"
 
 PATCHES=(

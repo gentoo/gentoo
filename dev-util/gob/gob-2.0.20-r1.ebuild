@@ -12,7 +12,7 @@ HOMEPAGE="https://www.jirka.org/gob.html"
 
 LICENSE="GPL-2+"
 SLOT="2"
-KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~m68k ppc ~ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~m68k ppc ~ppc64 ~s390 ~sparc x86"
 
 RDEPEND=">=dev-libs/glib-2.4:2"
 DEPEND="${RDEPEND}"

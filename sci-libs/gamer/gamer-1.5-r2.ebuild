@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86"
 IUSE="doc"
 
 RDEPEND=">=dev-libs/maloc-1.4"

@@ -10,6 +10,6 @@
     <flag name="moar">Build the MoarVM backend (experimental/broken)</flag>
   </use>
   <upstream>
-    <remote-id type="github">perl6/nqp</remote-id>
+    <remote-id type="github">Raku/nqp</remote-id>
   </upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ninja-utils.eclass
@@ -29,9 +29,14 @@ _NINJA_UTILS_ECLASS=1
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Specify a compatible ninja implementation to be used by eninja().
-# At this point only "ninja" and "samu" are explicitly supported,
-# but other values can be set where NINJA_DEPEND will then be set
-# to a blank variable.
+# Accepts the following values:
+#
+# - ninja -- use the "ninja" symlink per app-alternatives/ninja
+#
+# - ninja-reference -- use "ninja-reference" for dev-build/ninja
+#
+# - samu -- use "samu" for dev-build/samurai
+#
 # The default is set to "ninja".
 : "${NINJA:=ninja}"
 
@@ -55,14 +60,65 @@ _NINJA_UTILS_ECLASS=1
 
 inherit multiprocessing
 
-NINJA_DEPEND="app-alternatives/ninja"
+case ${NINJA} in
+	ninja)
+		NINJA_DEPEND="app-alternatives/ninja"
+		;;
+	ninja-reference)
+		NINJA_DEPEND="dev-build/ninja"
+		;;
+	samu)
+		NINJA_DEPEND="dev-build/samurai"
+		;;
+esac
+
+# @FUNCTION: _ninja_uses_jobserver
+# @DESCRIPTION:
+# Return true if current ${NINJA} has jobserver support and we have one
+# running (via MAKEFLAGS).
+_ninja_uses_jobserver() {
+	# ninja supports jobserver via FIFO only
+	[[ ${MAKEFLAGS} == *--jobserver-auth=fifo:* ]] || return 1
+
+	case ${NINJA} in
+		# if using "ninja", make sure its a symlink to real ninja
+		# samu: https://github.com/michaelforney/samurai/issues/71
+		ninja)
+			if ! has_version -b "app-alternatives/ninja[reference]"; then
+				einfo "ninja != ninja-reference, no jobserver support"
+				return 1
+			fi
+			;&
+		# plus, it must be at least 1.13.0
+		ninja-reference)
+			if ! has_version -b ">=dev-build/ninja-1.13"; then
+				einfo "ninja >= 1.13 required for jobserver support"
+				return 1
+			fi
+			;;
+		*)
+			einfo "NINJA=${NINJA}, no jobserver support"
+			return 1
+			;;
+	esac
+
+	einfo "ninja will use the jobserver"
+	return 0
+}
 
 # @FUNCTION: get_NINJAOPTS
 # @DESCRIPTION:
 # Get the value of NINJAOPTS, inferring them from MAKEOPTS if unset.
 get_NINJAOPTS() {
 	if [[ -z ${NINJAOPTS+set} ]]; then
-		NINJAOPTS="-j$(get_makeopts_jobs 999) -l$(get_makeopts_loadavg 0)"
+		NINJAOPTS="-l$(get_makeopts_loadavg 0)"
+		if ! _ninja_uses_jobserver; then
+			# ninja only uses jobserver if -j is not passed
+			NINJAOPTS+=" -j$(get_makeopts_jobs 999)"
+		fi
+	elif _ninja_uses_jobserver && [[ ${NINJAOPTS} == *-j* ]]; then
+		ewarn "Jobserver detected, but NINJAOPTS specifies -j option."
+		ewarn "To enable ninja jobserver support, remove -j from NINJAOPTS."
 	fi
 	echo "${NINJAOPTS}"
 }
@@ -75,7 +131,7 @@ get_NINJAOPTS() {
 # also supports being called via 'nonfatal'.
 eninja() {
 	case "${NINJA}" in
-		ninja|samu)
+		ninja|ninja-reference|samu)
 			;;
 		*)
 			ewarn "Unknown value '${NINJA}' for \${NINJA}"

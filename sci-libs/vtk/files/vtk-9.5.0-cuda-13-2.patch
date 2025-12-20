@@ -1,0 +1,94 @@
+From 5a12651b95801fce812b02bf8f854e9f5a332f6e Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Tue, 5 Aug 2025 15:17:29 +0200
+Subject: [PATCH] vtk-9.5.0 cuda-13
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/Examples/Emscripten/Cxx/WrappedAsyncClipper/CMakeLists.txt b/Examples/Emscripten/Cxx/WrappedAsyncClipper/CMakeLists.txt
+index c7762f3..fbf67a2 100644
+--- a/Examples/Emscripten/Cxx/WrappedAsyncClipper/CMakeLists.txt
++++ b/Examples/Emscripten/Cxx/WrappedAsyncClipper/CMakeLists.txt
+@@ -26,7 +26,7 @@ find_package(VTK
+ # Compile example code
+ # -----------------------------------------------------------------------------
+ add_executable(WrappedAsyncClipper WrappedAsyncClipper.cxx WrappedAsyncClipper.h)
+-target_compile_features(WrappedAsyncClipper PRIVATE cxx_std_14) # for initialized lambda captures
++target_compile_features(WrappedAsyncClipper PRIVATE cxx_std_17) # for initialized lambda captures
+ target_link_libraries(WrappedAsyncClipper PRIVATE ${VTK_LIBRARIES})
+ 
+ # -----------------------------------------------------------------------------
+diff --git a/ThirdParty/viskores/vtkviskores/viskores/CMake/ViskoresCompilerFlags.cmake b/ThirdParty/viskores/vtkviskores/viskores/CMake/ViskoresCompilerFlags.cmake
+index 246b587..5dd37c2 100644
+--- a/ThirdParty/viskores/vtkviskores/viskores/CMake/ViskoresCompilerFlags.cmake
++++ b/ThirdParty/viskores/vtkviskores/viskores/CMake/ViskoresCompilerFlags.cmake
+@@ -54,7 +54,7 @@ target_link_libraries(viskores_compiler_flags
+   INTERFACE $<BUILD_INTERFACE:viskores_vectorization_flags>)
+ 
+ # setup that we need C++14 support
+-target_compile_features(viskores_compiler_flags INTERFACE cxx_std_14)
++target_compile_features(viskores_compiler_flags INTERFACE cxx_std_17)
+ 
+ # setup our static libraries so that a separate ELF section
+ # is generated for each function. This allows for the linker to
+diff --git a/ThirdParty/viskores/vtkviskores/viskores/CMake/ViskoresDeviceAdapters.cmake b/ThirdParty/viskores/vtkviskores/viskores/CMake/ViskoresDeviceAdapters.cmake
+index d1df6aa..232df64 100644
+--- a/ThirdParty/viskores/vtkviskores/viskores/CMake/ViskoresDeviceAdapters.cmake
++++ b/ThirdParty/viskores/vtkviskores/viskores/CMake/ViskoresDeviceAdapters.cmake
+@@ -106,10 +106,14 @@ if(Viskores_ENABLE_CUDA)
+ 
+     target_compile_options(viskores_cuda INTERFACE $<$<COMPILE_LANGUAGE:CUDA>:--expt-relaxed-constexpr>)
+ 
+-    if(CMAKE_CUDA_COMPILER_ID STREQUAL "NVIDIA" AND
+-      CMAKE_CUDA_COMPILER_VERSION VERSION_GREATER_EQUAL 11.0)
+-      # CUDA 11+ deprecated C++11 support
+-      target_compile_features(viskores_cuda INTERFACE cxx_std_14)
++    if(CMAKE_CUDA_COMPILER_ID STREQUAL "NVIDIA")
++      if(CMAKE_CUDA_COMPILER_VERSION VERSION_GREATER_EQUAL 13.0)
++        # CUDA 13+ deprecated C++14 support
++        target_compile_features(viskores_cuda INTERFACE cxx_std_17)
++      elseif(CMAKE_CUDA_COMPILER_VERSION VERSION_GREATER_EQUAL 11.0)
++        # CUDA 11+ deprecated C++11 support
++        target_compile_features(viskores_cuda INTERFACE cxx_std_17)
++      endif()
+     endif()
+ 
+     # If we have specified CMAKE_CUDA_ARCHITECTURES and CMake >= 3.18 we are
+diff --git a/ThirdParty/viskores/vtkviskores/viskores/CMakeLists.txt b/ThirdParty/viskores/vtkviskores/viskores/CMakeLists.txt
+index 40289e1..5f4ca11 100644
+--- a/ThirdParty/viskores/vtkviskores/viskores/CMakeLists.txt
++++ b/ThirdParty/viskores/vtkviskores/viskores/CMakeLists.txt
+@@ -20,7 +20,7 @@ cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
+ project (Viskores)
+ 
+ # We only allow c++14
+-set(CMAKE_CXX_STANDARD 14)
++set(CMAKE_CXX_STANDARD 17)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ 
+ # When using C++14 support make sure you use the standard C++ extensions rather
+diff --git a/ThirdParty/viskores/vtkviskores/viskores/viskores/thirdparty/diy/viskoresdiy/CMakeLists.txt b/ThirdParty/viskores/vtkviskores/viskores/viskores/thirdparty/diy/viskoresdiy/CMakeLists.txt
+index d7aee18..86b592d 100644
+--- a/ThirdParty/viskores/vtkviskores/viskores/viskores/thirdparty/diy/viskoresdiy/CMakeLists.txt
++++ b/ThirdParty/viskores/vtkviskores/viskores/viskores/thirdparty/diy/viskoresdiy/CMakeLists.txt
+@@ -161,7 +161,7 @@ function(add_diy_mpi_library use_mpi)
+ 
+     add_library(${lib_name} ${sources})
+     set_target_properties(${lib_name} PROPERTIES POSITION_INDEPENDENT_CODE ON)
+-    target_compile_features(${lib_name} PRIVATE cxx_std_14)
++    target_compile_features(${lib_name} PRIVATE cxx_std_17)
+     target_compile_definitions(${lib_name}
+         PRIVATE -DVISKORESDIY_HAS_MPI=${has_mpi_val}
+         PRIVATE -Ddiy=${diy_prefix}         # mangle diy namespace
+@@ -207,7 +207,7 @@ if (build_diy_mpi_lib)
+ endif() # build_diy_mpi_lib
+ 
+ add_library(${diy_prefix} INTERFACE)
+-target_compile_features(${diy_prefix} INTERFACE cxx_std_14)
++target_compile_features(${diy_prefix} INTERFACE cxx_std_17)
+ target_compile_definitions(${diy_prefix} INTERFACE ${diy_definitions})
+ target_include_directories(${diy_prefix} SYSTEM INTERFACE
+     "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>"
+-- 
+2.50.1
+

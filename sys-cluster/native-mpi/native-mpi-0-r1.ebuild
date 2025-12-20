@@ -11,7 +11,7 @@ S="${WORKDIR}"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64-linux ~x86-linux"
+KEYWORDS=""
 
 src_install() {
 	newenvd - 99mpi <<-_EOF_

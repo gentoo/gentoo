@@ -10,7 +10,7 @@ HOMEPAGE="https://gtkmm.gnome.org/en/index.html"
 
 LICENSE="LGPL-2.1+"
 SLOT="2.68"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 IUSE="gtk-doc debug test"
 RESTRICT="!test? ( test )"
 

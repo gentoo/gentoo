@@ -1,0 +1,99 @@
+https://bugs.gentoo.org/965293
+https://github.com/OSGeo/grass/issues/3731
+https://github.com/OSGeo/grass/pull/6632
+https://github.com/OSGeo/grass/commit/66c1733a055484761c1c25bdec937ebf0b31f00e
+
+From 66c1733a055484761c1c25bdec937ebf0b31f00e Mon Sep 17 00:00:00 2001
+From: Nicklas Larsson <n_larsson@yahoo.com>
+Date: Mon, 17 Nov 2025 13:07:11 +0100
+Subject: [PATCH] r.geomorphon: rename variable 'dirname' (#6632)
+
+The name is conflicting with the namesake of POSIX's function,
+causing segmentation fault on some systems.
+
+Closes #3731
+--- a/raster/r.geomorphon/local_proto.h
++++ b/raster/r.geomorphon/local_proto.h
+@@ -86,7 +86,7 @@ const char *form_long_name(const FORMS);
+ 
+ /* pattern */
+ int calc_pattern(PATTERN *pattern, int row, int cur_row, int col, const int);
+-extern const char *dirname[];
++extern const char *direction_name[];
+ 
+ /* geom */
+ void generate_ternary_codes(void);
+--- a/raster/r.geomorphon/pattern.c
++++ b/raster/r.geomorphon/pattern.c
+@@ -6,7 +6,8 @@
+  * 5|6|7 */
+ static int nextr[NUM_DIRS] = {-1, -1, -1, 0, 1, 1, 1, 0};
+ static int nextc[NUM_DIRS] = {1, 0, -1, -1, -1, 0, 1, 1};
+-const char *dirname[NUM_DIRS] = {"NE", "N", "NW", "W", "SW", "S", "SE", "E"};
++const char *direction_name[NUM_DIRS] = {"NE", "N", "NW", "W",
++                                        "SW", "S", "SE", "E"};
+ 
+ /*
+  * A more thorough comparison using a few factors of different priority
+@@ -125,7 +126,7 @@ int calc_pattern(PATTERN *pattern, int row, int cur_row, int col,
+             zenith_easting = nadir_easting = target_easting;
+             pattern->e[i] = cur_easting;
+             pattern->n[i] = cur_northing;
+-            prof_sso(dirname[i]);
++            prof_sso(direction_name[i]);
+         }
+         while (cur_distance < search_distance) {
+             if (cur_row + j * nextr[i] < 0 ||
+--- a/raster/r.geomorphon/profile.c
++++ b/raster/r.geomorphon/profile.c
+@@ -145,42 +145,42 @@ void prof_pattern(const double o_elevation, const PATTERN *p)
+ 
+     prof_sso("pattern");
+     for (i = 0; i < NUM_DIRS; i++)
+-        prof_int(dirname[i], p->pattern[i]);
++        prof_int(direction_name[i], p->pattern[i]);
+     prof_eso();
+ 
+     prof_sso("rel_elevation_m");
+     for (i = 0; i < NUM_DIRS; i++)
+-        prof_mtr(dirname[i], p->elevation[i]);
++        prof_mtr(direction_name[i], p->elevation[i]);
+     prof_eso();
+ 
+     prof_sso("abs_elevation_m");
+     for (i = 0; i < NUM_DIRS; i++)
+-        prof_mtr(dirname[i], o_elevation + p->elevation[i]);
++        prof_mtr(direction_name[i], o_elevation + p->elevation[i]);
+     prof_eso();
+ 
+     prof_sso("distance_m");
+     for (i = 0; i < NUM_DIRS; i++)
+-        prof_mtr(dirname[i], p->distance[i]);
++        prof_mtr(direction_name[i], p->distance[i]);
+     prof_eso();
+ 
+     prof_sso("offset_easting_m");
+     for (i = 0; i < NUM_DIRS; i++)
+-        prof_mtr(dirname[i], p->x[i]);
++        prof_mtr(direction_name[i], p->x[i]);
+     prof_eso();
+ 
+     prof_sso("offset_northing_m");
+     for (i = 0; i < NUM_DIRS; i++)
+-        prof_mtr(dirname[i], p->y[i]);
++        prof_mtr(direction_name[i], p->y[i]);
+     prof_eso();
+ 
+     prof_sso("easting");
+     for (i = 0; i < NUM_DIRS; i++)
+-        prof_dbl(dirname[i], p->e[i]);
++        prof_dbl(direction_name[i], p->e[i]);
+     prof_eso();
+ 
+     prof_sso("northing");
+     for (i = 0; i < NUM_DIRS; i++)
+-        prof_dbl(dirname[i], p->n[i]);
++        prof_dbl(direction_name[i], p->n[i]);
+     prof_eso();
+ }
+ 

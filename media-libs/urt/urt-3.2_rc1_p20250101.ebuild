@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}-${COMMIT_ID}"
 
 LICENSE="GPL-2 gif? ( free-noncomm )"
 SLOT="0/3.1.0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-solaris"
 IUSE="gif postscript static-libs tiff tools X"
 
 RDEPEND="

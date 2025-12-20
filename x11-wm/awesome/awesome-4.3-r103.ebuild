@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -77,6 +77,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-xsession.patch          # bug #408025
 	"${FILESDIR}"/${PN}-4.0-cflag-cleanup.patch # bug #509658
 	"${FILESDIR}"/${PN}-4.3-fno-common.patch    # bug #707262
+	"${FILESDIR}"/${PN}-4.3-fix_target.patch    # bug #962597
 )
 
 src_configure() {

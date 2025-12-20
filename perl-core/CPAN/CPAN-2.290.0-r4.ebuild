@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Query, download and build perl modules from CPAN sites"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos ~x64-solaris"
 
 # parallel testing fails, run tests sequentially #827014
 DIST_TEST=do

@@ -10,7 +10,7 @@ GIT_COMMIT=3d8990f0836691f0229297773f3524598f46bda6
 DESCRIPTION="Kubernetes Package Manager"
 HOMEPAGE="https://helm.sh https://github.com/helm/helm"
 SRC_URI="https://github.com/helm/helm/archive/v${PV}.tar.gz -> k8s-${P}.tar.gz"
-SRC_URI+=" https://github.com/gentoo-golang-dist/${PN}/releases/download/v${PV}/${P}-vendor.tar.xz"
+SRC_URI+=" https://github.com/gentoo-golang-dist/${PN}/releases/download/v${PV}/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0"
 # Dependent licenses

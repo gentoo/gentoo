@@ -17,7 +17,7 @@ S="${WORKDIR}/JavaHamcrest-${MY_PN}-java-${PV}"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 arm64 ppc64 ~amd64-linux ~x64-solaris"
+KEYWORDS="amd64 arm64 ppc64 ~x64-solaris"
 
 DEPEND="
 	>=virtual/jdk-1.8:*

@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/haskell/primitive"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RESTRICT=test # circular depends: primitive[test]->tasty->wcwidth->attoparsec->scientific->primitive
 

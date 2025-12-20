@@ -17,7 +17,7 @@ SRC_URI="https://github.com/rails/sass-rails/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
 IUSE="test"
 

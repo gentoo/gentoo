@@ -47,6 +47,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.5-boost.patch
 	"${FILESDIR}"/${PN}-0.9.5-miniupnpc.patch
 	"${FILESDIR}"/${PN}-0.9.5-gcc15.patch
+	"${FILESDIR}"/${PN}-0.9.5-boost-1.89.patch
+	"${FILESDIR}"/${PN}-0.9.5-noreturn.patch
 )
 
 # Build type is checked but blank is valid.

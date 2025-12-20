@@ -12,6 +12,6 @@
 		There is also an internal RADIUS server, which can be used for WPA2-Enterprise.
 	</longdescription>
 	<use>
-		<flag name="system-mongodb">Using <pkg>dev-db/mongodb</pkg> systemd service instead of the bundled one</flag>
+		<flag name="system-mongodb">Start <pkg>dev-db/mongodb</pkg> by its own init scripts instead of managed by UniFi.</flag>
 	</use>
 </pkgmetadata>

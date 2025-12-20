@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools fcaps
 
 DESCRIPTION="A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6"
-HOMEPAGE="https://bird.network.cz"
+HOMEPAGE="https://bird.nic.cz/"
 SRC_URI="https://bird.nic.cz/download/${P}.tar.gz"
 LICENSE="GPL-2"
 

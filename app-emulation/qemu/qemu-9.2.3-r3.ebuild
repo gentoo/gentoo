@@ -155,7 +155,7 @@ done
 # when available rather than always using the external library.
 ALL_DEPEND="
 	dev-libs/glib:2[static-libs(+)]
-	sys-libs/zlib[static-libs(+)]
+	virtual/zlib:=[static-libs(+)]
 	python? ( ${PYTHON_DEPS} )
 	systemtap? ( dev-debug/systemtap )
 	xattr? ( sys-apps/attr[static-libs(+)] )
@@ -407,7 +407,7 @@ pkg_pretend() {
 			use test && CONFIG_CHECK+=" IP_MULTICAST"
 			ERROR_IP_MULTICAST="Test suite requires IP_MULTICAST"
 
-			if use amd64 || use x86 || use amd64-linux || use x86-linux; then
+			if use amd64 || use x86; then
 				if grep -q AuthenticAMD /proc/cpuinfo; then
 					CONFIG_CHECK+=" ~KVM_AMD"
 				elif grep -q GenuineIntel /proc/cpuinfo; then

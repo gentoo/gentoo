@@ -23,7 +23,7 @@ DEPEND="
 	dev-libs/libbsd
 	dev-libs/libevent:=
 	dev-libs/openssl:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	virtual/libcrypt:=
 	berkdb? ( sys-libs/db:= )
 	elibc_musl? ( sys-libs/fts-standalone )

@@ -31,13 +31,6 @@ RDEPEND="
 	)
 "
 
-_gui_cache_update() {
-	if use gui ; then
-		xdg_icon_cache_update
-		xdg_desktop_database_update
-	fi
-}
-
 src_install() {
 	sh ./install --prefix "${ED}/usr" || die "${PN} install script failed"
 
@@ -51,9 +44,15 @@ src_install() {
 }
 
 pkg_postinst() {
-	_gui_cache_update
+	if use gui ; then
+		xdg_icon_cache_update
+		xdg_desktop_database_update
+	fi
 }
 
 pkg_postrm() {
-	_gui_cache_update
+	if use gui ; then
+		xdg_icon_cache_update
+		xdg_desktop_database_update
+	fi
 }

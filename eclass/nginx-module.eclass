@@ -24,7 +24,7 @@
 # libraries/APIs.  In the example HMAC case, the module actually requires
 # libcrypto, not the http_ssl module, so the ebuild code reflects this by
 # patching the module's 'config' file and depending on dev-libs/openssl directly
-# using the ngx_mod_append_libs() function.
+# using the ngx_mod_link_lib() function.
 #
 # If the module makes use of the ngx_devel_kit (NDK) or any other NGINX
 # module, there are two approaches.
@@ -72,7 +72,7 @@
 # RDEPEND="${DEPEND}"
 #
 # src_configure() {
-#     if use iconv; Then
+#     if use iconv; then
 #         ngx_mod_link_module "www-nginx/ngx-iconv"
 #         ...
 #     fi
@@ -349,14 +349,43 @@ ngx_mod_link_module() {
 	ngx_mod_append_libs "${sonames[@]/#/-l:}"
 }
 
+# @FUNCTION: ngx_mod_link_lib
+# @USAGE: <pkgconfig module name>
+# @DESCRIPTION:
+# Adds the necessary CFLAGS and LDFLAGS to link the NGINX module with the
+# library specified by its <pkgconfig module name>.  The {C,LD}FLAGS are
+# obtained using pkgconfig.  The caller must ensure that pkgconfig has been
+# added to BDEPEND.
+ngx_mod_link_lib() {
+	debug-print-function "${FUNCNAME[0]}" "$@"
+	[[ $# -ne 1 ]] && die "${FUNCNAME[0]} must receive exactly one argument"
+	local pkgconf
+	pkgconf="$(tc-getPKG_CONFIG)"
+
+	"${pkgconf}" --exists "$1" || die "The pkgconfig library $1 does not exist"
+
+	append-cflags "$("${pkgconf}" --cflags "$1")"
+	ngx_mod_append_libs "$("${pkgconf}" --libs "$1")"
+}
+
 #-----> ebuild-defined variables <-----
 
 # @ECLASS_VARIABLE: NGINX_MOD_S
 # @DESCRIPTION:
-# Holds the path to the module sources directory, used in the
-# nginx-module_src_configure() phase function.  If unset at the time of inherit,
-# defaults to ${S}.
+# Holds the path to the module source directory, used in various phase
+# functions.  If unset at the time of inherit, defaults to ${S}.
 : "${NGINX_MOD_S=${S}}"
+
+# @ECLASS_VARIABLE: NGINX_MOD_CONFIG_DIR
+# @DESCRIPTION:
+# Holds the path of the directory containing the config script relative to the
+# module source directory specified by the ${NGINX_MOD_S} variable.  If unset at
+# the time of inherit, defaults to "" (an empty string, meaning the config
+# script is located at the root of the module source directory).
+#
+# For example, in www-nginx/njs, NGINX_MOD_S="${WORKDIR}/${P}" and
+# NGINX_MOD_CONFIG_DIR="nginx".
+: "${NGINX_MOD_CONFIG_DIR=""}"
 
 # The ${S} variable is set to the path of the directory where the actual build
 # will be performed. In this directory, symbolic links to NGINX's build system
@@ -371,8 +400,8 @@ S="${WORKDIR}/nginx"
 # extension ".so").  For some modules, may consist of more than one shared
 # object.
 #
-# This variable is set in the nginx-module_src_compile() function.  Its contents
-# are undefined before that.
+# This variable is set by the nginx-module_src_compile() phase function.  Its
+# contents are undefined before the function has been called.
 #
 # Example value:
 # @CODE
@@ -519,7 +548,8 @@ fi
 # @FUNCTION: _ngx_mod_set_test_env
 # @INTERNAL
 # @DESCRIPTION:
-# Sets global variables like IUSE and BDEPEND for tests.
+# Sets global variables like IUSE and BDEPEND for OpenResty Test::Nginx-based
+# tests.
 _ngx_mod_set_test_env() {
 	IUSE="test"
 	RESTRICT="!test? ( test )"
@@ -583,7 +613,10 @@ nginx-module_src_unpack() {
 # Then, default_src_prepare() is called.
 nginx-module_src_prepare() {
 	debug-print-function "${FUNCNAME[0]}" "$@"
-	pushd "${NGINX_MOD_S}" >/dev/null || die "pushd failed"
+	pushd "${NGINX_MOD_S}/${NGINX_MOD_CONFIG_DIR}" >/dev/null ||
+		die "pushd failed"
+
+	ebegin "Patching module's config"
 	# Since NGINX does not guarantee ABI or API stability, we utilise
 	# preprocessor macros that were used to compile NGINX itself, to build third
 	# party modules. As such, we do not want for the dummy preprocessor macros
@@ -607,10 +640,19 @@ nginx-module_src_prepare() {
 	# header after the whole configuration, as it may contain other preprocessor
 	# macros than only the module's ones.
 	sed -i -e '1i\' -e ': > build/ngx_auto_config.h' config ||
-		die "sed failed"
+		{ eend $? || die "sed failed"; }
+
 	echo 'mv build/ngx_auto_config.h build/__ngx_gentoo_mod_config.h' \
-		>> config || die "echo failed"
+		>> config
+	# We specifically need the $? of echo.
+	# shellcheck disable=SC2320
+	eend $? || die "echo failed"
+
+	# cd into module root and apply patches.
+	pushd "${NGINX_MOD_S}" >/dev/null || die "pushd failed"
 	default_src_prepare
+	popd >/dev/null || die "popd failed"
+
 	popd >/dev/null || die "popd failed"
 }
 
@@ -637,7 +679,7 @@ nginx-module_src_configure() {
 		--with-cc-opt="-isystem src/modules"
 		--with-ld-opt="${LDFLAGS}"
 		--builddir=build
-		--add-dynamic-module="${NGINX_MOD_S}"
+		--add-dynamic-module="${NGINX_MOD_S}/${NGINX_MOD_CONFIG_DIR}"
 	)
 
 	# NGINX build system adds directories under src/ to the include path based

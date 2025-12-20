@@ -16,7 +16,7 @@ RDEPEND="app-arch/bzip2
 	>=sys-apps/file-5.04
 	sys-apps/util-linux
 	>=sys-fs/e2fsprogs-1.41.9
-	sys-libs/zlib"
+	virtual/zlib:="
 DEPEND="${RDEPEND}"
 
 DOCS="AUTHORS ChangeLog NEWS README TODO"

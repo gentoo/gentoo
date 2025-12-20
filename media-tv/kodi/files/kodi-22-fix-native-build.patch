@@ -1,0 +1,49 @@
+https://github.com/xbmc/xbmc/pull/27545
+
+From bb864e739bb7c9746ea6555858ad525c02e453d3 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sun, 30 Nov 2025 22:10:11 +0000
+Subject: [PATCH] [cmake] Fix double installation of TexturePacker
+
+TexturePacker is being installed twice, but this is only noticeable when
+installing Kodi with DESTDIR, which is common in distributions. The copy
+installed by FindTexturePacker.cmake normally gets reinstalled in place,
+but with DESTDIR applied, it lands under /path/to/destdir/path/to/build.
+
+There is no need for FindTexturePacker.cmake to install it anyway. This
+change stubs the install command, runs TexturePacker from its build
+location, and the wider Kodi installation sources it from there.
+--- a/cmake/modules/buildtools/FindTexturePacker.cmake
++++ b/cmake/modules/buildtools/FindTexturePacker.cmake
+@@ -82,8 +82,7 @@ if(NOT TARGET TexturePacker::TexturePacker::Executable)
+                      "-DCMAKE_OBJDUMP=${CMAKE_OBJDUMP}"
+                      "-DCMAKE_RANLIB=${CMAKE_RANLIB}"
+                      "-DDEPENDS_PATH=${DEPENDS_PATH}"
+-                     -DKODI_SOURCE_DIR=${CMAKE_SOURCE_DIR}
+-                     -DCMAKE_INSTALL_PREFIX=${CMAKE_BINARY_DIR}/build)
++                     -DKODI_SOURCE_DIR=${CMAKE_SOURCE_DIR})
+ 
+       # Create a list with an alternate separator e.g. pipe symbol
+       string(REPLACE ";" "|" string_ARCH_DEFINES "${ARCH_DEFINES}")
+@@ -110,15 +109,14 @@ if(NOT TARGET TexturePacker::TexturePacker::Executable)
+                           SOURCE_DIR ${CMAKE_SOURCE_DIR}/tools/depends/native/TexturePacker/src
+                           PREFIX ${CORE_BUILD_DIR}/build-texturepacker
+                           LIST_SEPARATOR |
+-                          INSTALL_DIR ${CMAKE_BINARY_DIR}/build
++                          INSTALL_COMMAND ""
+                           CMAKE_ARGS ${CMAKE_ARGS}
+                           BUILD_ALWAYS ON
+-                          BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/build/bin/TexturePacker)
++                          BUILD_BYPRODUCTS ${CMAKE_BINARY_DIR}/${CORE_BUILD_DIR}/build-texturepacker/src/buildtexturepacker-build/TexturePacker)
+ 
+-      ExternalProject_Get_Property(buildtexturepacker INSTALL_DIR)
+       add_executable(TexturePacker IMPORTED)
+       set_target_properties(TexturePacker PROPERTIES
+-                                          IMPORTED_LOCATION "${INSTALL_DIR}/bin/TexturePacker")
++                                          IMPORTED_LOCATION "${CMAKE_BINARY_DIR}/${CORE_BUILD_DIR}/build-texturepacker/src/buildtexturepacker-build/TexturePacker")
+ 
+       add_dependencies(TexturePacker buildtexturepacker)
+ 
+-- 
+2.52.0
+

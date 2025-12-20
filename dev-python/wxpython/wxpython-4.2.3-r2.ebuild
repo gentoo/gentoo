@@ -36,8 +36,6 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
-# sip-6.11.0-r0 blocked wrt bug #956566, can replace by just >=6.8.5
-# on bump or so as the version was short lived and never stable
 BDEPEND="
 	app-text/doxygen
 	dev-python/cython[${PYTHON_USEDEP}]

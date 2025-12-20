@@ -11,7 +11,7 @@ SRC_URI="https://docbook.org/xml/${PV}/${MY_P}.zip"
 
 LICENSE="docbook"
 SLOT="${PV}"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 IUSE=""
 
 RDEPEND=">=app-text/docbook-xsl-stylesheets-1.65
@@ -57,12 +57,12 @@ pkg_postinst() {
 	fi
 
 	# See bug #816303 for rationale behind die
-	build-docbook-catalog || die "Failed to regenerate docbook catalog. Is /run mounted?"
+	"${EROOT}"/usr/sbin/build-docbook-catalog || die "Failed to regenerate docbook catalog. Is /run mounted?"
 	sgml-catalog-r1_pkg_postinst
 }
 
 pkg_postrm() {
 	# See bug #816303 for rationale behind die
-	build-docbook-catalog || die "Failed to regenerate docbook catalog. Is /run mounted?"
+	"${EROOT}"/usr/sbin/build-docbook-catalog || die "Failed to regenerate docbook catalog. Is /run mounted?"
 	sgml-catalog-r1_pkg_postrm
 }

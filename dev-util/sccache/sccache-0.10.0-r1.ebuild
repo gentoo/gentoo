@@ -424,7 +424,7 @@ IUSE="azure dist-client dist-server gcs memcached redis s3 webdav"
 BDEPEND="virtual/pkgconfig"
 DEPEND="
 	app-arch/zstd
-	sys-libs/zlib:=
+	virtual/zlib:=
 	dist-server? ( dev-libs/openssl:= )
 	gcs? ( dev-libs/openssl:= )
 "

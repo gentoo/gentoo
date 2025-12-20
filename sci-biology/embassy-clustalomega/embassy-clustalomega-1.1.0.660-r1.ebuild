@@ -7,7 +7,7 @@ EBO_DESCRIPTION="Clustal Omega - Multiple Sequence Alignment"
 
 inherit autotools emboss-r3
 
-KEYWORDS="~amd64 ~x86 ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="sci-biology/clustal-omega"
 

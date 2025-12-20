@@ -1,0 +1,5 @@
+--- a/meson.build
++++ b/meson.build
+@@ -140 +140 @@
+-  ['libnsgif', 'dependency', 'libnsgif', '1.0.0', ['image/gif']],
++  ['libnsgif', 'dependency', 'libnsgif', '>= 1.0.0', ['image/gif']],

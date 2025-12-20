@@ -23,7 +23,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 -arm arm64 -ppc ppc64 -x86 ~amd64-linux"
+KEYWORDS="amd64 -arm arm64 -ppc ppc64 -x86"
 IUSE="cma cuda fortran ipv6 peruse romio valgrind
 	${IUSE_OPENMPI_FABRICS} ${IUSE_OPENMPI_RM}"
 
@@ -42,7 +42,7 @@ RDEPEND="
 	>=sys-apps/hwloc-2.0.2:=
 	sys-cluster/pmix:=
 	sys-cluster/prrte:=
-	>=sys-libs/zlib-1.2.8-r1
+	>=virtual/zlib-1.2.8-r1:=
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-6.5.19-r1:= )
 	openmpi_fabrics_ofed? ( sys-cluster/rdma-core )
 	openmpi_fabrics_knem? ( sys-cluster/knem )

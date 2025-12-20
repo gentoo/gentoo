@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -37,7 +37,7 @@ RDEPEND="
 	libssh? ( >=net-libs/libssh-0.4.0 )
 	samba? ( net-fs/samba )
 	subversion? ( dev-vcs/subversion )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"

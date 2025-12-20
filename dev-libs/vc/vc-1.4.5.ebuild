@@ -12,7 +12,7 @@ S="${WORKDIR}"/Vc-${PV}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~x86 ~x64-macos"
 
 src_configure() {
 	lto-guarantee-fat

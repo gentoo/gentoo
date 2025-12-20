@@ -5,7 +5,7 @@ EAPI=8
 
 if [[ ${PV} != 99999999 ]]; then
 	SRC_URI="http://www.idlcoyote.com/programs/zip_files/coyoteprograms.zip -> ${P}.zip"
-	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/coyote"
 	BDEPEND="app-arch/unzip"
 else

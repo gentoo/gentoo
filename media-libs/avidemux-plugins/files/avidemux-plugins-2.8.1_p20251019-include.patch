@@ -1,0 +1,18 @@
+From 9813c56c6b90de85dda29a83b94aba02a6e1c819 Mon Sep 17 00:00:00 2001
+From: Poncho <poncho@spahan.ch>
+Date: Sun, 26 Oct 2025 09:15:35 +0100
+Subject: [PATCH 3/3] avidemux_plugins/CMakeLists.txt: add missing includ
+
+--- a/avidemux_plugins/CMakeLists.txt
++++ b/avidemux_plugins/CMakeLists.txt
+@@ -20,6 +20,7 @@ MESSAGE("")
+ MESSAGE(STATUS "Checking for avidemux development files ..")
+ 
+ LIST(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
++LIST(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../avidemux/qt4/cmake)
+ IF(NOT FAKEROOT)
+   SET(AVIDEMUX_FAKEROOT "")
+ ELSE()
+-- 
+2.51.0
+

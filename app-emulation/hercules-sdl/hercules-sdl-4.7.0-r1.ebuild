@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,7 +28,7 @@ FILECAPS=(
 COMMON_DEPEND="
 	dev-libs/libltdl
 	net-libs/libnsl:0
-	sys-libs/zlib
+	virtual/zlib:=
 	bzip2? ( app-arch/bzip2 )
 	object-rexx? ( dev-lang/oorexx )
 	regina-rexx? ( dev-lang/regina-rexx )"

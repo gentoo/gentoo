@@ -11,7 +11,7 @@ SRC_URI="https://sourceforge.net/projects/bsd${PN}/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc64 ~riscv ~s390 ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
 
 RDEPEND="!<=games-misc/bsd-games-3"
 

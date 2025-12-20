@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+curl debug dedicated mumble openal server theora voice vorbis"
 
 RDEPEND="
-	sys-libs/zlib:=[minizip]
+	virtual/minizip:=
 	!dedicated? (
 		media-libs/freetype:2
 		media-libs/libsdl[X,joystick,opengl,sound,video]

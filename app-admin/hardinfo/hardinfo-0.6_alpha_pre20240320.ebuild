@@ -20,7 +20,7 @@ IUSE="debug"
 
 RDEPEND="dev-libs/glib:2
 	dev-libs/json-glib
-	sys-libs/zlib
+	virtual/zlib:=
 	x11-libs/cairo
 	>=x11-libs/gtk+-3.0:3"
 DEPEND="${RDEPEND}"

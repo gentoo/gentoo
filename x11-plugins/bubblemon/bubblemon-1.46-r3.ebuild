@@ -12,7 +12,7 @@ S="${WORKDIR}"/${PN}-dockapp-${PV}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc ~sparc x86 ~amd64-linux ~x86-linux ~x64-solaris"
+KEYWORDS="~alpha amd64 ppc ~sparc x86 ~x64-solaris"
 
 RDEPEND="x11-libs/gtk+:2"
 DEPEND="${RDEPEND}"

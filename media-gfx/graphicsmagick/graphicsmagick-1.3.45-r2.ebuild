@@ -20,7 +20,7 @@ else
 	SRC_URI+=" verify-sig? ( https://downloads.sourceforge.net/project/${PN}/${PN}-history/$(ver_cut 1-2)/${MY_P}.tar.xz.asc )"
 	S="${WORKDIR}/${MY_P}"
 
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ppc ppc64 ~riscv ~sparc x86 ~x64-macos"
 
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-bobfriesenhahn )"
 fi
@@ -61,7 +61,7 @@ RDEPEND="
 		x11-libs/libXext
 	)
 	zip? ( dev-libs/libzip:= )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib:= )
 	zstd? ( app-arch/zstd:= )
 "
 DEPEND="${RDEPEND}"

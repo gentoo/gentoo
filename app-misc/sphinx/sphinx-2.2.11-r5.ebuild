@@ -14,7 +14,7 @@ SRC_URI="https://sphinxsearch.com/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 ~s390 ~sparc x86 ~amd64-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 ~s390 ~sparc x86 ~x64-macos"
 IUSE="debug +id64 mariadb mysql odbc postgres stemmer syslog xml"
 
 REQUIRED_USE="mysql? ( !mariadb ) mariadb? ( !mysql )"

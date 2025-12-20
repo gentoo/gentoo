@@ -1,0 +1,15 @@
+--- a/sdext/source/pdfimport/xpdfwrapper/wrapper_gpl.cxx
++++ b/sdext/source/pdfimport/xpdfwrapper/wrapper_gpl.cxx
+@@ -181,7 +181,11 @@
+     _setmode( _fileno( g_binary_out ), _O_BINARY );
+ #endif
+ 
+-#if POPPLER_CHECK_VERSION(22, 6, 0)
++#if POPPLER_CHECK_VERSION(25, 10, 0)
++    PDFDoc aDoc( pFileName->copy(),
++                 pOwnerPasswordStr ? std::optional<GooString>(pOwnerPasswordStr->toStr()) : std::nullopt,
++                 pUserPasswordStr ? std::optional<GooString>(pUserPasswordStr->toStr()) : std::nullopt );
++#elif POPPLER_CHECK_VERSION(22, 6, 0)
+     PDFDoc aDoc( std::make_unique<GooString>(pFileName),
+                  std::optional<GooString>(pOwnerPasswordStr),
+                  std::optional<GooString>(pUserPasswordStr) );

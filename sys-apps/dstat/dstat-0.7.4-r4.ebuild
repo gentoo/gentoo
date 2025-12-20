@@ -13,7 +13,7 @@ SRC_URI="https://github.com/dagwieers/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm64 ~hppa ~mips ppc ppc64 ~sparc x86 ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm64 ~hppa ~mips ppc ppc64 ~sparc x86"
 IUSE="doc examples"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

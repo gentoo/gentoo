@@ -1,0 +1,28 @@
+https://gitlab.com/NTPsec/ntpsec/-/issues/846
+https://sources.debian.org/patches/ntpsec/1.2.3+dfsg1-8/disable-libaes-siv-malloc-test.patch/
+
+Bug: https://github.com/dfoxfranke/libaes_siv/issues/17
+Bug-Debian: https://bugs.debian.org/1102745
+Bug-NTPsec: https://gitlab.com/NTPsec/ntpsec/-/issues/846
+Origin: vendor
+Author: Richard Laager <rlaager@debian.org>
+Last-Update: 2025-04-14
+--- a/libaes_siv/tests.c
++++ b/libaes_siv/tests.c
+@@ -572,7 +572,16 @@
+ }
+ 
+ int main(void) {
++/* This is disabled, because on some platforms, OpenSSL presumably makes an
++ * allocation right away, so CRYPTO_set_mem_functions() fails.
++ *
++ * https://bugs.debian.org/1102745
++ * https://gitlab.com/NTPsec/ntpsec/-/issues/846
++ * https://github.com/dfoxfranke/libaes_siv/issues/17
++ */
++#if 0
+         test_malloc_failure();
++#endif
+ 	test_cleanup_before_free();
+         test_vector_1();
+         test_vector_2();

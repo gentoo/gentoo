@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,7 +27,7 @@ RDEPEND="
 	gsm? ( media-sound/gsm )
 	speex? ( media-libs/speex )
 	ssl? ( dev-libs/openssl:0= )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib:= )
 	ilbc? ( media-libs/libilbc:= )
 	spandsp? ( >=media-libs/spandsp-0.0.3 )
 	dahdi? ( net-misc/dahdi )

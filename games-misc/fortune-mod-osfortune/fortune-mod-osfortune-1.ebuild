@@ -10,7 +10,7 @@ S="${WORKDIR}"
 
 LICENSE="GPL-1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc64 ~riscv ~x86"
 
 DEPEND="games-misc/fortune-mod"
 RDEPEND="${DEPEND}"

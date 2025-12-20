@@ -17,7 +17,7 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
-RDEPEND="sys-libs/zlib:="
+RDEPEND="virtual/zlib:="
 DEPEND="${RDEPEND}"
 
 PATCHES=(

@@ -1,0 +1,17 @@
+diff '--color=auto' -r -U3 maxima-5.48.1.orig/src/init-cl.lisp maxima-5.48.1/src/init-cl.lisp
+--- maxima-5.48.1.orig/src/init-cl.lisp	2025-08-03 12:30:20.000000000 +0700
++++ maxima-5.48.1/src/init-cl.lisp	2025-10-10 23:25:15.816941666 +0700
+@@ -587,8 +587,13 @@
+ 			 (delete-file file)))))
+ 	   *temp-files-list*))
+ 
++#+sbcl
++(eval-when (:compile-toplevel :load-toplevel :execute)
++  (require 'sb-gmp))
++
+ (defun cl-user::run ()
+   "Run Maxima in its own package."
++  #+sbcl (sb-gmp:install-gmp-funs)
+   (in-package :maxima)
+   (initialize-runtime-globals)
+   (let ((input-stream *standard-input*)

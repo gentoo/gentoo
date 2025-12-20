@@ -1,0 +1,145 @@
+Source:
+https://salsa.debian.org/debian-astro-team/cfitsio/-/blob/master/debian/patches/02-system-cfortran.patch
+
+Use system cfortran header.
+
+--- a/f77_wrap.h
++++ b/f77_wrap.h
+@@ -1,6 +1,6 @@
+ #define UNSIGNED_BYTE
+ 
+-#include "cfortran.h"
++#include <cfortran/cfortran.h>
+ 
+ /************************************************************************
+    Some platforms creates longs as 8-byte integers.  On other machines, ints
+@@ -29,16 +29,16 @@
+ #undef LONGV_cfT
+ #undef PLONG_cfT
+ 
+-#define    LONGV_cfSTR(N,T,A,B,C,D,E) _(CFARGS,N)(T,LONGV,A,B,C,D,E)
+-#define    PLONG_cfSTR(N,T,A,B,C,D,E) _(CFARGS,N)(T,PLONG,A,B,C,D,E)
++#define    LONGV_cfSTR(N,T,A,B,C,D,E) CFORTRAN_XCAT_(CFARGS,N)(T,LONGV,A,B,C,D,E)
++#define    PLONG_cfSTR(N,T,A,B,C,D,E) CFORTRAN_XCAT_(CFARGS,N)(T,PLONG,A,B,C,D,E)
+ #define    LONGVVVVVVV_cfTYPE    int
+ #define    PLONG_cfTYPE          int
+-#define    LONGV_cfQ(B)          long *B, _(B,N);
++#define    LONGV_cfQ(B)          long *B, CFORTRAN_XCAT_(B,N);
+ #define    PLONG_cfQ(B)          long B;
+-#define    LONGV_cfT(M,I,A,B,D)  ( (_(B,N) = * _3(M,_LONGV_A,I)), \
+-				    B = F2Clongv(_(B,N),A) )
++#define    LONGV_cfT(M,I,A,B,D)  ( (CFORTRAN_XCAT_(B,N) = * CFORTRAN_XCAT_3(M,_LONGV_A,I)), \
++				    B = F2Clongv(CFORTRAN_XCAT_(B,N),A) )
+ #define    PLONG_cfT(M,I,A,B,D)  ((B=*A),&B)
+-#define    LONGV_cfR(A,B,D)      C2Flongv(_(B,N),A,B);
++#define    LONGV_cfR(A,B,D)      C2Flongv(CFORTRAN_XCAT_(B,N),A,B);
+ #define    PLONG_cfR(A,B,D)      *A=B;
+ #define    LONGV_cfH(S,U,B)
+ #define    PLONG_cfH(S,U,B)
+@@ -93,7 +93,7 @@ extern unsigned long gMinStrLen;
+                                          A->dsc$w_length, \
+                                          num_elem(A->dsc$a_pointer, \
+                                                   A->dsc$w_length, \
+-                                                  _3(M,_STRV_A,I) ) )
++                                                  CFORTRAN_XCAT_3(M,_STRV_A,I) ) )
+ #else
+ #ifdef CRAYFortran
+ #define       PPSTRING_cfT(M,I,A,B,D)     (unsigned char*)_fcdtocp(A)
+@@ -103,20 +103,20 @@ extern unsigned long gMinStrLen;
+ #endif
+ 
+ #define _cfMAX(A,B)  ( (A>B) ? A : B )
+-#define  STRINGV_cfQ(B)      char **B; unsigned int _(B,N), _(B,M);
++#define  STRINGV_cfQ(B)      char **B; unsigned int CFORTRAN_XCAT_(B,N), CFORTRAN_XCAT_(B,M);
+ #define  STRINGV_cfR(A,B,D)  free(B[0]); free(B);
+ #define  TTSTR(    A,B,D)  \
+             ((B=(char*)malloc(_cfMAX(D,gMinStrLen)+1))[D]='\0',memcpy(B,A,D), \
+                kill_trailing(B,' '))
+ #define  TTTTSTRV( A,B,D,E)  ( \
+-            _(B,N)=_cfMAX(E,1), \
+-            _(B,M)=_cfMAX(D,gMinStrLen)+1, \
+-            B=(char**)malloc(_(B,N)*sizeof(char*)), \
+-            B[0]=(char*)malloc(_(B,N)*_(B,M)), \
+-            vindex(B,_(B,M),_(B,N),f2cstrv2(A,B[0],D,_(B,M),_(B,N))) \
++            CFORTRAN_XCAT_(B,N)=_cfMAX(E,1), \
++            CFORTRAN_XCAT_(B,M)=_cfMAX(D,gMinStrLen)+1, \
++            B=(char**)malloc(CFORTRAN_XCAT_(B,N)*sizeof(char*)), \
++            B[0]=(char*)malloc(CFORTRAN_XCAT_(B,N)*CFORTRAN_XCAT_(B,M)), \
++            vindex(B,CFORTRAN_XCAT_(B,M),CFORTRAN_XCAT_(B,N),f2cstrv2(A,B[0],D,CFORTRAN_XCAT_(B,M),CFORTRAN_XCAT_(B,N))) \
+             )
+ #define  RRRRPSTRV(A,B,D)    \
+-            c2fstrv2(B[0],A,_(B,M),D,_(B,N)), \
++            c2fstrv2(B[0],A,CFORTRAN_XCAT_(B,M),D,CFORTRAN_XCAT_(B,N)), \
+             free(B[0]), \
+             free(B);
+ 
+@@ -169,10 +169,10 @@ static char *f2cstrv2(char *fstr, char*
+ #undef   BYTE_cfSTR
+ #undef   BYTEV_cfSTR
+ 
+-#define   BYTE_cfINT(N,A,B,X,Y,Z)      _(CFARGS,N)(A,BYTE,B,X,Y,Z,0)
+-#define   BYTEV_cfINT(N,A,B,X,Y,Z)     _(CFARGS,N)(A,BYTEV,B,X,Y,Z,0)
+-#define   BYTE_cfSTR(N,T,A,B,C,D,E)    _(CFARGS,N)(T,BYTE,A,B,C,D,E)
+-#define   BYTEV_cfSTR(N,T,A,B,C,D,E)   _(CFARGS,N)(T,BYTEV,A,B,C,D,E)
++#define   BYTE_cfINT(N,A,B,X,Y,Z)      CFORTRAN_XCAT_(CFARGS,N)(A,BYTE,B,X,Y,Z,0)
++#define   BYTEV_cfINT(N,A,B,X,Y,Z)     CFORTRAN_XCAT_(CFARGS,N)(A,BYTEV,B,X,Y,Z,0)
++#define   BYTE_cfSTR(N,T,A,B,C,D,E)    CFORTRAN_XCAT_(CFARGS,N)(T,BYTE,A,B,C,D,E)
++#define   BYTEV_cfSTR(N,T,A,B,C,D,E)   CFORTRAN_XCAT_(CFARGS,N)(T,BYTEV,A,B,C,D,E)
+ #define   BYTE_cfSEP(T,B)              INT_cfSEP(T,B)
+ #define   BYTEV_cfSEP(T,B)             INT_cfSEP(T,B)
+ #define   BYTE_cfH(S,U,B)              STRING_cfH(S,U,B)
+@@ -211,11 +211,11 @@ static char *f2cstrv2(char *fstr, char*
+ 
+ #undef  LOGICALV_cfSTR
+ #undef  LOGICALV_cfT
+-#define LOGICALV_cfSTR(N,T,A,B,C,D,E) _(CFARGS,N)(T,LOGICALV,A,B,C,D,E)
+-#define LOGICALV_cfQ(B)               char *B; unsigned int _(B,N);
+-#define LOGICALV_cfT(M,I,A,B,D)       (_(B,N)= * _3(M,_LOGV_A,I), \
+-                                            B=F2CcopyLogVect(_(B,N),A))
+-#define LOGICALV_cfR(A,B,D)           C2FcopyLogVect(_(B,N),A,B);
++#define LOGICALV_cfSTR(N,T,A,B,C,D,E) CFORTRAN_XCAT_(CFARGS,N)(T,LOGICALV,A,B,C,D,E)
++#define LOGICALV_cfQ(B)               char *B; unsigned int CFORTRAN_XCAT_(B,N);
++#define LOGICALV_cfT(M,I,A,B,D)       (CFORTRAN_XCAT_(B,N)= * CFORTRAN_XCAT_3(M,_LOGV_A,I), \
++                                            B=F2CcopyLogVect(CFORTRAN_XCAT_(B,N),A))
++#define LOGICALV_cfR(A,B,D)           C2FcopyLogVect(CFORTRAN_XCAT_(B,N),A,B);
+ #define LOGICALV_cfH(S,U,B)
+ 
+ static char *F2CcopyLogVect(long size, int *A)
+@@ -268,20 +268,20 @@ extern fitsfile *gFitsFiles[];       /*
+                              memchr(A,'\0',D) ? A : TTSTR(A,B,D)
+ 
+ #define FCALLSCFUN0(T0,CN,UN,LN) \
+-  CFextern _(T0,_cfFZ)(UN,LN) void ABSOFT_cf2(T0)); \
+-  CFextern _(T0,_cfFZ)(UN,LN) void ABSOFT_cf2(T0))  \
+-  {_Icf(2,UU,T0,A0,0); _Icf(0,L,T0,0,0) CN(); _Icf(0,K,T0,0,0) _(T0,_cfI)}
++  CFextern CFORTRAN_XCAT_(T0,_cfFZ)(UN,LN) void ABSOFT_cf2(T0)); \
++  CFextern CFORTRAN_XCAT_(T0,_cfFZ)(UN,LN) void ABSOFT_cf2(T0))  \
++  {_Icf(2,UU,T0,A0,0); _Icf(0,L,T0,0,0) CN(); _Icf(0,K,T0,0,0) CFORTRAN_XCAT_(T0,_cfI)}
+ 
+ #define FCALLSCFUN14(T0,CN,UN,LN,T1,T2,T3,T4,T5,T6,T7,T8,T9,TA,TB,TC,TD,TE)    \
+-  CFextern _(T0,_cfF)(UN,LN)                                                   \
++  CFextern CFORTRAN_XCAT_(T0,_cfF)(UN,LN)                                                   \
+   CFARGT14(NCF,DCF,ABSOFT_cf2(T0),T1,T2,T3,T4,T5,T6,T7,T8,T9,TA,TB,TC,TD,TE)); \
+-  CFextern _(T0,_cfF)(UN,LN)                                                   \
++  CFextern CFORTRAN_XCAT_(T0,_cfF)(UN,LN)                                                   \
+   CFARGT14(NCF,DCF,ABSOFT_cf2(T0),T1,T2,T3,T4,T5,T6,T7,T8,T9,TA,TB,TC,TD,TE))  \
+   {                 CFARGT14S(QCF,T1,T2,T3,T4,T5,T6,T7,T8,T9,TA,TB,TC,TD,TE)   \
+   _Icf(2,UU,T0,A0,0); _Icf(0,L,T0,0,0)      CN(  TCF(LN,T1,1,0) TCF(LN,T2,2,1) \
+     TCF(LN,T3,3,1) TCF(LN,T4,4,1) TCF(LN,T5,5,1) TCF(LN,T6,6,1) TCF(LN,T7,7,1) \
+     TCF(LN,T8,8,1) TCF(LN,T9,9,1) TCF(LN,TA,10,1) TCF(LN,TB,11,1) TCF(LN,TC,12,1) \
+     TCF(LN,TD,13,1) TCF(LN,TE,14,1) );                          _Icf(0,K,T0,0,0) \
+-    CFARGT14S(RCF,T1,T2,T3,T4,T5,T6,T7,T8,T9,TA,TB,TC,TD,TE)        _(T0,_cfI) \
++    CFARGT14S(RCF,T1,T2,T3,T4,T5,T6,T7,T8,T9,TA,TB,TC,TD,TE)        CFORTRAN_XCAT_(T0,_cfI) \
+   }
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -12,7 +12,7 @@ soname_version = @version_info@
+ soname_version_lnx = ${soname_version}.0.0
+ 
+ include_HEADERS = fitsio.h fitsio2.h longnam.h drvrsmem.h \
+-	cfortran.h f77_wrap.h region.h
++	f77_wrap.h region.h
+ 
+ F77_WRAPPERS = f77_wrap1.c f77_wrap2.c f77_wrap3.c f77_wrap4.c
+ 

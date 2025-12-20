@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..12} )
 DOCS_BUILDER="doxygen"
 inherit cmake flag-o-matic desktop docs python-single-r1 qmake-utils toolchain-funcs xdg
 
@@ -47,7 +47,7 @@ RDEPEND="
 	sci-libs/hdf5:=[mpi=]
 	>=sci-libs/netcdf-4.2[hdf5]
 	>=sci-libs/netcdf-cxx-4.2:3
-	sys-libs/zlib
+	virtual/zlib:=
 	virtual/glu
 	media-libs/libjpeg-turbo:=
 	x11-libs/libX11
@@ -82,7 +82,8 @@ RDEPEND="
 	)
 	sqlite? ( dev-db/sqlite:3 )
 	tk? ( dev-lang/tk:0= )
-	webengine? ( dev-qt/qtwebengine:6[widgets] )"
+	webengine? ( dev-qt/qtwebengine:6[widgets] )
+"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	boost? (
@@ -91,7 +92,6 @@ DEPEND="${RDEPEND}
 		')
 	)
 "
-
 BDEPEND="
 	openmp? ( virtual/fortran )
 "
@@ -102,6 +102,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.13.0-fix_compilation.patch
 	"${FILESDIR}"/${PN}-5.13.0-fix_compilation-2.patch
 	"${FILESDIR}"/${PN}-5.13.0-avoid_file_collisions.patch
+	"${FILESDIR}"/${P}-qt-6.10{,-1}.patch # bug #967029
 )
 
 # false positive when checking for available HDF5 interface, bug #904731

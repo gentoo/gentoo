@@ -1,0 +1,30 @@
+Source: https://github.com/ksnip/kImageAnnotator/pull/344
+
+From 357c66330ac99fbfd3a1aa884a318750e7774237 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 23 Oct 2025 10:28:26 +0200
+Subject: [PATCH] Raise minimum CMake version to 3.16
+
+CMake 3.31 warns about compat. for <3.10 being removed in the future.
+Qt6 CMake modules already require 3.16 though.
+
+CMake 3.16 was released in 2019.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt       | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 24dd825..360b555 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.16)
+ project(kImageAnnotator LANGUAGES CXX VERSION 0.7.2)
+ 
+ set(CMAKE_CXX_STANDARD 17)
+-- 
+2.51.1
+

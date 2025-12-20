@@ -62,7 +62,7 @@ DEPEND="
 	pipewire? ( media-video/pipewire:= )
 	vorbis? ( media-libs/libvorbis )
 	wavpack? ( media-sound/wavpack )
-	zip? ( sys-libs/zlib )
+	zip? ( virtual/zlib:= )
 "
 
 RDEPEND="${DEPEND}"

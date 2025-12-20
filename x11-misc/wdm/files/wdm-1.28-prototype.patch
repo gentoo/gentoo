@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/944013
+
+--- a/src/wdm/Greet.c 2005-03-26 15:57:04.000000000 +0200
++++ b/src/wdm/Greet.c 2025-10-29 20:04:54.770324319 +0200
+@@ -139,7 +139,7 @@
+ 
+ struct display *Save_d=NULL;
+ 
+-extern  char    **systemEnv();
++extern  char    **systemEnv(struct display *d, char *user, char *home);
+ 
+ /****  pipe I/O routines ****/
+ 
+

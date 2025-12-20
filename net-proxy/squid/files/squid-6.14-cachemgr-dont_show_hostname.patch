@@ -1,0 +1,17 @@
+https://github.com/squid-cache/squid/commit/d94dbed6c700faeded8c4175f2a8d0f71c15755b.patch
+From d94dbed6c700faeded8c4175f2a8d0f71c15755b Mon Sep 17 00:00:00 2001
+From: Amos Jeffries <amosjeffries@squid-cache.org>
+Date: Wed, 5 Nov 2025 10:23:34 +1300
+Subject: [PATCH] Do not show arbitrary hostname in cachemgr.cgi output
+
+--- a/tools/cachemgr.cc
++++ b/tools/cachemgr.cc
+@@ -819,7 +819,7 @@ process_request(cachemgr_request * req)
+     }
+ 
+     if (!check_target_acl(req->hostname, req->port)) {
+-        snprintf(buf, sizeof(buf), "target %s:%d not allowed in cachemgr.conf\n", req->hostname, req->port);
++        snprintf(buf, sizeof(buf), "target host not allowed in cachemgr.conf\n");
+         error_html(buf);
+         return 1;
+     }

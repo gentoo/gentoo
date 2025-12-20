@@ -10,7 +10,7 @@ DESCRIPTION="Basepack of plugins for gstreamer"
 HOMEPAGE="https://gstreamer.freedesktop.org/"
 
 LICENSE="GPL-2+ LGPL-2+"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~x64-macos ~x64-solaris"
 
 # For OpenGL we have three separate concepts, with a list of possibilities in each:
 #  * opengl APIs - opengl and/or gles2; USE=opengl and USE=gles2 enable these accordingly; if neither is enabled, OpenGL helper library and elements are not built at all and all the other options aren't relevant
@@ -67,7 +67,7 @@ GL_DEPS="
 
 RDEPEND="
 	app-text/iso-codes
-	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
+	>=virtual/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}]
 	alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] )
 	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	ivorbis? ( >=media-libs/tremor-0_pre20130223[${MULTILIB_USEDEP}] )

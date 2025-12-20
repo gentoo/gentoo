@@ -9,7 +9,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/zenity"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv x86"
 IUSE="man webkit"
 
 # TODO: X11 dependency is automagically enabled

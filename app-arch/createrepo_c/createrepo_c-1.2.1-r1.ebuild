@@ -38,7 +38,7 @@ DEPEND="
 	net-misc/curl
 	sys-apps/file
 	sys-libs/libmodulemd
-	sys-libs/zlib:=
+	virtual/zlib:=
 "
 
 RDEPEND="${DEPEND}"

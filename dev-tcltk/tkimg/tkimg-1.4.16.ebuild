@@ -14,7 +14,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${PN}/$(ver_cut 1-2)/${PN}%20${
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm64 ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm64 ppc x86"
 IUSE="doc test static-libs"
 
 RDEPEND="
@@ -22,7 +22,7 @@ RDEPEND="
 	dev-tcltk/tcllib
 	media-libs/tiff:=
 	media-libs/libpng:0=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	x11-libs/libX11
 	media-libs/libjpeg-turbo:="
 DEPEND="${RDEPEND}

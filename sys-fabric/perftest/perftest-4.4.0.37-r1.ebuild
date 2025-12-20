@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="|| ( GPL-2 BSD-2 )"
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-linux"
+KEYWORDS="amd64 x86"
 
 DEPEND="
 	sys-apps/pciutils

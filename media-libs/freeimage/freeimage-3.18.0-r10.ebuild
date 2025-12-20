@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,13 +17,13 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${MY_P}.zip
 
 LICENSE="|| ( GPL-2 FIPL-1.0 )"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
 IUSE="jpeg jpeg2k mng openexr png raw static-libs tiff webp"
 
 # The tiff/imath+openexr isn't a typo. The TIFF plugin cheats and
 # uses code from it to handle 16bit<->float conversions.
 RDEPEND="
-	sys-libs/zlib
+	virtual/zlib:=
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	jpeg2k? ( media-libs/openjpeg:2= )
 	mng? ( media-libs/libmng:= )

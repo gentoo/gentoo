@@ -32,7 +32,7 @@ COMMON_DEPEND="
 	portmidi? ( media-libs/portmidi )
 	readline? ( sys-libs/readline:= )
 	udev? ( virtual/udev )
-	zlib? ( sys-libs/zlib:= )
+	zlib? ( virtual/zlib:= )
 "
 RDEPEND="
 	${PYTHON_DEPS}

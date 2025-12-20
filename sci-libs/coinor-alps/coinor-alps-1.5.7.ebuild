@@ -10,7 +10,7 @@ S="${WORKDIR}/CHiPPS-ALPS-releases-${PV}/Alps"
 
 LICENSE="EPL-1.0"
 SLOT="0" # formerly 0/3, upstream went from so.3 to so.0
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 

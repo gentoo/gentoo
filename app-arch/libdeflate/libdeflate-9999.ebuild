@@ -1,4 +1,4 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ fi
 LICENSE="MIT"
 SLOT="0"
 # the zlib USE-flag enables support for zlib
-# the test USE-flag programs depend on sys-libs/zlib for comparison tests
+# the test USE-flag programs depend on virtual/zlib for comparison tests
 IUSE="+utils test"
 
 RESTRICT="
@@ -27,7 +27,7 @@ RESTRICT="
 "
 
 DEPEND="
-	test? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
+	test? ( virtual/zlib[${MULTILIB_USEDEP}] )
 "
 
 PATCHES=(

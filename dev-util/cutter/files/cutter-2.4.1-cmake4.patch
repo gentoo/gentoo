@@ -1,0 +1,82 @@
+From https://github.com/rizinorg/cutter/pull/3525
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Mon, 10 Nov 2025 16:45:48 +0300
+Subject: [PATCH] Update cmake_minimum_required to 3.12
+
+Recent CMake-4 threats projects with cmake_minimum_required < 3.10 failure and refuses to configure them. Updating minimal requirement to 3.12 and simplify some parts of project that depends on older version compatibility.
+
+Signed-off-by: Azamat H. Hackimov <azamat.hackimov@gmail.com>
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,8 +1,4 @@
+-cmake_minimum_required(VERSION 3.5)
+-
+-if(POLICY CMP0074)
+-    cmake_policy(SET CMP0074 NEW)
+-endif()
++cmake_minimum_required(VERSION 3.12)
+ 
+ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+ include(DisallowInSource)
+@@ -97,14 +93,8 @@ set(QT_PREFIX "Qt${CUTTER_QT}")
+ find_package(${QT_PREFIX} REQUIRED COMPONENTS ${QT_COMPONENTS})
+ 
+ if(CUTTER_ENABLE_PYTHON)
+-    if(CMAKE_VERSION VERSION_LESS "3.12.0") 
+-        find_package(PythonInterp REQUIRED)
+-        find_package(PythonLibs ${CUTTER_PYTHON_MIN} REQUIRED)
+-        include_directories(${PYTHON_INCLUDE_DIRS})
+-    else()
+-        find_package (Python3 ${CUTTER_PYTHON_MIN} REQUIRED COMPONENTS Interpreter Development)
+-        set (PYTHON_EXECUTABLE ${Python3_EXECUTABLE})
+-    endif()
++    find_package (Python3 ${CUTTER_PYTHON_MIN} REQUIRED COMPONENTS Interpreter Development)
++    set (PYTHON_EXECUTABLE ${Python3_EXECUTABLE})
+ 
+     add_definitions(-DCUTTER_ENABLE_PYTHON)
+ 
+--- a/dist/CMakeLists.txt
++++ b/dist/CMakeLists.txt
+@@ -14,13 +14,8 @@ if(WIN32)
+ 			if (CUTTER_ENABLE_DEPENDENCY_DOWNLOADS)
+ 				set(CPACK_INSTALL_SCRIPTS ${CMAKE_CURRENT_SOURCE_DIR}/WindowsBundlePython.cmake)
+ 			endif()
+-			if(CMAKE_VERSION VERSION_LESS "3.12.0") 
+-				find_package(PythonInterp REQUIRED)
+-				install(DIRECTORY ${CUTTER_DEPS}/pyside/lib/site-packages DESTINATION "python${PYTHON_VERSION_MAJOR}${PYTHON_VERSION_MINOR}")
+-			else()
+-				find_package (Python3 ${CUTTER_PYTHON_MIN} REQUIRED COMPONENTS)
+-				install(DIRECTORY ${CUTTER_DEPS}/pyside/lib/site-packages DESTINATION "python${Python3_VERSION_MAJOR}${Python3_VERSION_MINOR}")
+-			endif()
++			find_package (Python3 ${CUTTER_PYTHON_MIN} REQUIRED COMPONENTS)
++			install(DIRECTORY ${CUTTER_DEPS}/pyside/lib/site-packages DESTINATION "python${Python3_VERSION_MAJOR}${Python3_VERSION_MINOR}")
+ 			install(FILES ${CUTTER_DEPS}/pyside/bin/shiboken6.abi3.dll ${CUTTER_DEPS}/pyside/bin/pyside6.abi3.dll DESTINATION .)
+ 		endif()
+ 		install(SCRIPT WindowsBundleQt.cmake)
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -510,23 +510,7 @@ endif()
+ 
+ target_link_libraries(Cutter PUBLIC ${RIZIN_TARGET})
+ if(CUTTER_ENABLE_PYTHON)
+-    if(CMAKE_VERSION VERSION_LESS "3.12.0") 
+-        # On windows some of the Python STABLE API functions are in seperate library
+-        # which isn't added by CMake.
+-        if (WIN32)
+-            foreach(_PYTHON_LIBRARY ${PYTHON_LIBRARIES})
+-                # Skip extra "optimized" and "debug" values that are only meant for passing to target_link_libraries()
+-                if((NOT _PYTHON_LIBRARY STREQUAL "optimized") AND (NOT _PYTHON_LIBRARY STREQUAL "debug"))
+-                    get_filename_component(_PYTHON_LIB_DIR ${_PYTHON_LIBRARY} DIRECTORY)
+-                    message(STATUS "Add extra library dir for Python: ${_PYTHON_LIB_DIR}")
+-                    target_link_directories(Cutter PRIVATE ${_PYTHON_LIB_DIR})
+-                endif()
+-            endforeach()
+-        endif()
+-        target_link_libraries(Cutter PRIVATE ${PYTHON_LIBRARIES})
+-    else()
+-        target_link_libraries(Cutter PRIVATE Python3::Python)
+-    endif()
++    target_link_libraries(Cutter PRIVATE Python3::Python)
+ 
+     if(CUTTER_ENABLE_PYTHON_BINDINGS)
+         target_link_libraries(Cutter PRIVATE ${CUTTER_PYSIDE_LIBS})

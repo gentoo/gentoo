@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -18,7 +18,7 @@ IUSE="alsa gnutls migemo oniguruma"
 
 RDEPEND="dev-cpp/gtkmm:2.4
 	dev-libs/glib:2
-	sys-libs/zlib
+	virtual/zlib:=
 	virtual/libcrypt:=
 	x11-libs/libICE
 	x11-libs/libSM

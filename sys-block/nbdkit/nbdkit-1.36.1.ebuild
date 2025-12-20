@@ -24,7 +24,7 @@ RDEPEND="
 	curl? ( net-misc/curl )
 	libssh? ( net-libs/libssh:= )
 	libvirt? ( app-emulation/libvirt:= )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib:= )
 	zlib-ng? ( sys-libs/zlib-ng )
 	nbd? ( sys-libs/libnbd )
 	lzma? ( app-arch/xz-utils )

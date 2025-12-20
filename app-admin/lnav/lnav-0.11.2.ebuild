@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ RDEPEND="
 	>=net-misc/curl-7.23.0
 	sys-libs/ncurses:=
 	sys-libs/readline:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	pcap? ( net-analyzer/wireshark[tshark] )"
 # The tests use ssh-keygen and use dsa and rsa keys (which is why ssl is required)
 DEPEND="${RDEPEND}

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ RDEPEND="
 	dev-lang/perl
 	dev-perl/Jcode
 	sys-libs/readline:0
-	sys-libs/zlib
+	virtual/zlib:=
 	alsa? ( media-libs/alsa-lib )
 	portaudio? ( media-libs/portaudio )
 	pulseaudio? ( media-libs/libpulse )

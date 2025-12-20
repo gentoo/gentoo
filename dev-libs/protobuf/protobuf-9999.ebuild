@@ -16,7 +16,7 @@ if [[ "${PV}" == *9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/protocolbuffers/protobuf/releases/download/v${PV}/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~x64-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos"
 	SLOT="0/$(ver_cut 1-2).0"
 fi
 
@@ -44,7 +44,7 @@ BDEPEND="
 
 COMMON_DEPEND="
 	>=dev-cpp/abseil-cpp-${ABSEIL_MIN_VER}:=[${MULTILIB_USEDEP}]
-	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
+	zlib? ( virtual/zlib:=[${MULTILIB_USEDEP}] )
 "
 
 DEPEND="
@@ -65,7 +65,6 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-23.3-static_assert-failure.patch"
-	# "${FILESDIR}/${PN}-28.0-disable-test_upb-lto.patch" # applied manually
 	"${FILESDIR}/${PN}-30.0-findJsonCpp.patch"
 )
 
@@ -73,10 +72,6 @@ DOCS=( CONTRIBUTORS.txt README.md )
 
 src_prepare() {
 	cmake_src_prepare
-
-# 	if tc-is-lto; then
-# 		eapply "${FILESDIR}/${PN}-28.0-disable-test_upb-lto.patch"
-# 	fi
 
 	cp "${FILESDIR}/FindJsonCpp.cmake" "${S}/cmake" || die
 }
@@ -160,20 +155,16 @@ src_test() {
 	if [[ ! -v GTEST_FILTER ]]; then
 		local -x GTEST_FILTER
 	fi
+
 	[[ -n ${GTEST_RUN_TESTS[*]} ]] && GTEST_FILTER+="$(IFS=':' ; echo "${GTEST_SKIP_TESTS[*]}")"
 	[[ -n ${GTEST_SKIP_TESTS[*]} ]] && GTEST_FILTER+="${GTEST_FILTER+:}-$(IFS=':' ; echo "${GTEST_SKIP_TESTS[*]}")"
 
 	cmake-multilib_src_test
-
-# 	if tc-is-lto; then
-# 		GTEST_FILTER="${GTEST_FILTER//-/}"
-#
-# 		cmake-multilib_src_test
-# 	fi
 }
 
 multilib_src_install_all() {
 	use libupb && strip-lto-bytecode
+
 	find "${ED}" -name "*.la" -delete || die
 
 	if [[ ! -f "${ED}/usr/$(get_libdir)/libprotobuf$(get_libname "${SLOT#*/}")" ]]; then

@@ -12,7 +12,7 @@ HOMEPAGE="https://tracker.debian.org/pkg/gtk2-engines-murrine"
 
 LICENSE="LGPL-2.1 LGPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ppc ppc64 ~riscv x86"
 IUSE="+themes animation-rtl"
 
 RDEPEND=">=x11-libs/gtk+-2.24.23:2[${MULTILIB_USEDEP}]

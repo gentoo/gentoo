@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0/1"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 
 IUSE="static-libs threads"
 
@@ -27,7 +27,7 @@ RDEPEND="
 	sci-astronomy/wcslib:0=
 	sci-libs/cfitsio:0=
 	sci-libs/gsl:0=
-	sys-libs/zlib:=
+	virtual/zlib:=
 "
 DEPEND="${RDEPEND}"
 

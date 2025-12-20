@@ -19,7 +19,7 @@ BDEPEND="
 DEPEND="
 	>=sys-apps/pcsc-lite-1.6.2
 	>=sys-libs/gwenhywfar-4.99.22_rc6:=
-	sys-libs/zlib
+	virtual/zlib:=
 	virtual/libintl
 "
 RDEPEND="${DEPEND}"

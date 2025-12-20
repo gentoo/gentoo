@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/mojombo/chronic"
 LICENSE="MIT"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~hppa ppc ppc64 ~sparc x86 ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 ~arm64 ~hppa ppc ppc64 ~sparc x86 ~x64-macos ~x64-solaris"
 IUSE="test"
 
 ruby_add_bdepend "test? ( >=dev-ruby/minitest-5 )"

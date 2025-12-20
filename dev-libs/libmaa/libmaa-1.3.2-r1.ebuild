@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/dict/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~mips ppc ppc64 ~riscv ~sparc x86"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-libtool.patch # 778464

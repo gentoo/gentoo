@@ -1,0 +1,63 @@
+From 1747a59aa5d44f4d7b74e1f1fee1d48174a1ce5a Mon Sep 17 00:00:00 2001
+From: Adrian Vovk <adrianvovk@gmail.com>
+Date: Tue, 27 May 2025 17:03:34 -0400
+Subject: [PATCH] main: Notify gnome-session when we're ready
+
+Basically, we recently[1] removed XSMP from gnome-session because it's
+been disabled for a while. Mutter also[2] removed its XSMP integration
+shortly after.
+
+However, it turns out that gnome-session's builtin service manager was
+relying on Mutter's XSMP integration to know when gnome-shell is done
+starting up. No more XSMP = no more notification = gnome-session decides
+that gnome-shell is dead even though it's not = fail whale
+
+This is a temporary measure. GDM will soon switch[3] to an architecture
+that will allow us to completely drop gnome-session's builtin service
+manager, and this workaround will go away
+
+[1]: https://gitlab.gnome.org/GNOME/gnome-session/-/merge_requests/139
+[2]: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/4438
+[3]: https://gitlab.gnome.org/GNOME/gdm/-/merge_requests/289
+
+Part-of: <https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/3730>
+---
+ js/ui/main.js | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/js/ui/main.js b/js/ui/main.js
+index 76b917f48c..1fc75e130f 100644
+--- a/js/ui/main.js
++++ b/js/ui/main.js
+@@ -319,6 +319,7 @@ async function _initializeUI() {
+     GLib.idle_add(GLib.PRIORITY_DEFAULT, () => {
+         Shell.util_sd_notify();
+         global.context.notify_ready();
++        _notifyGnomeSessionReady();
+         return GLib.SOURCE_REMOVE;
+     });
+ 
+@@ -383,6 +384,20 @@ async function _initializeUI() {
+     });
+ }
+ 
++async function _notifyGnomeSessionReady() {
++    try {
++        let params = GLib.Variant.new('(ss)', ['org.gnome.Shell.desktop', '']);
++        await Gio.DBus.session.call(
++            'org.gnome.SessionManager',
++            '/org/gnome/SessionManager',
++            'org.gnome.SessionManager',
++            'RegisterClient', params, null,
++            Gio.DBusCallFlags.NONE, -1, null);
++    } catch (e) {
++        log(`Error notifying gnome-session that we're ready: ${e.message}`);
++    }
++}
++
+ function _handleShowWelcomeScreen() {
+     const lastShownVersion = global.settings.get_string(WELCOME_DIALOG_LAST_SHOWN_VERSION);
+     if (Util.GNOMEversionCompare(WELCOME_DIALOG_LAST_TOUR_CHANGE, lastShownVersion) > 0) {
+-- 
+GitLab
+

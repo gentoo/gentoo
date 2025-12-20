@@ -13,6 +13,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="pypi">gmpy2</remote-id>
-		<remote-id type="github">aleaxit/gmpy</remote-id>
+		<remote-id type="github">gmpy2/gmpy2</remote-id>
 	</upstream>
 </pkgmetadata>

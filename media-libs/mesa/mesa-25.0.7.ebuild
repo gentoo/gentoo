@@ -36,7 +36,7 @@ else
 	SRC_URI="
 		https://archive.mesa3d.org/${MY_P}.tar.xz
 	"
-	KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-solaris"
 fi
 
 # This should be {CARGO_CRATE_URIS//.crate/.tar.gz} to correspond to the wrap files,
@@ -95,7 +95,7 @@ RDEPEND="
 	>=dev-libs/expat-2.1.0-r3[${MULTILIB_USEDEP}]
 	>=dev-util/spirv-tools-1.3.231.0[${MULTILIB_USEDEP}]
 	>=media-libs/libglvnd-1.3.2[X?,${MULTILIB_USEDEP}]
-	>=sys-libs/zlib-1.2.9[${MULTILIB_USEDEP}]
+	>=virtual/zlib-1.2.9:=[${MULTILIB_USEDEP}]
 	unwind? ( sys-libs/libunwind[${MULTILIB_USEDEP}] )
 	llvm? (
 		$(llvm_gen_dep "

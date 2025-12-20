@@ -22,7 +22,7 @@ KEYWORDS="-* ~amd64"
 IUSE="module"
 
 RDEPEND="
-	sys-libs/zlib
+	virtual/zlib:=
 	sys-power/iasl
 "
 

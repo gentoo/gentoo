@@ -1,0 +1,40 @@
+# Force to use system Catch2 (dev-cpp/catch) and supress QA cmake4 warning
+# "Policy CMP0167 is not set: The FindBoost module is removed".
+
+diff '--color=auto' -Naur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -180,8 +180,7 @@
+ endif()
+ 
+ if(HIGHFIVE_UNIT_TESTS)
+-  add_subdirectory(deps/catch2 EXCLUDE_FROM_ALL)
+-  list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/deps/catch2/contrib)
++  find_package(Catch2)
+   enable_testing()
+   add_subdirectory(tests/unit)
+ endif()
+diff '--color=auto' -Naur a/cmake/HighFiveOptionalDependencies.cmake b/cmake/HighFiveOptionalDependencies.cmake
+--- a/cmake/HighFiveOptionalDependencies.cmake
++++ b/cmake/HighFiveOptionalDependencies.cmake
+@@ -1,7 +1,7 @@
+ if(NOT TARGET HighFiveBoostDependency)
+   add_library(HighFiveBoostDependency INTERFACE)
+   if(HIGHFIVE_TEST_BOOST)
+-    find_package(Boost REQUIRED)
++    find_package(Boost CONFIG REQUIRED)
+     target_link_libraries(HighFiveBoostDependency INTERFACE Boost::headers)
+     # TODO check if we need Boost::disable_autolinking to cause:
+     # -DBOOST_ALL_NO_LIB (does something on MSVC).
+diff '--color=auto' -Naur a/tests/unit/CMakeLists.txt b/tests/unit/CMakeLists.txt
+--- a/tests/unit/CMakeLists.txt
++++ b/tests/unit/CMakeLists.txt
+@@ -6,7 +6,7 @@
+ endif()
+ 
+ ## Base tests
+-foreach(test_name tests_high_five_base tests_high_five_easy test_all_types test_high_five_selection tests_high_five_data_type test_boost test_empty_arrays test_legacy test_nothrow_movable test_opencv test_string test_stl test_xtensor)
++foreach(test_name tests_high_five_base tests_high_five_easy test_all_types test_high_five_selection tests_high_five_data_type test_boost test_empty_arrays test_legacy test_nothrow_movable test_opencv test_string test_stl)
+   add_executable(${test_name} "${test_name}.cpp")
+   target_link_libraries(${test_name} HighFive HighFiveWarnings HighFiveFlags Catch2::Catch2WithMain)
+   target_link_libraries(${test_name} HighFiveOptionalDependencies)

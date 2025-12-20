@@ -13,14 +13,14 @@ SRC_URI="https://www.bennewitz.com/bluefish/stable/source/${P}.tar.bz2"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm64 ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="gucharmap nls python spell"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	dev-libs/glib:2
 	dev-libs/libxml2:=
-	sys-libs/zlib
+	virtual/zlib:=
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3

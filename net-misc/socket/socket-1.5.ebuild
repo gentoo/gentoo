@@ -11,7 +11,7 @@ SRC_URI="https://w21.org/jnickelsen/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="examples"
 
 PATCHES=(

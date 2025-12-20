@@ -22,7 +22,7 @@ RDEPEND="
 	media-libs/libepoxy
 	media-libs/libsamplerate
 	media-libs/libsdl2[joystick,sound]
-	sys-libs/zlib:=
+	virtual/zlib:=
 	>=x11-libs/fltk-1.4:1=[opengl]
 "
 DEPEND="${RDEPEND}"

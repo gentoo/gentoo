@@ -10,4 +10,4 @@ inherit perl-module
 DESCRIPTION="Parse text and return a set of tokens using the same rules as the Unix shell"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ppc ~sparc x86"

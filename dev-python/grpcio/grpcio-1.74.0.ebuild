@@ -33,7 +33,7 @@ KEYWORDS="amd64 arm64 x86"
 DEPEND="
 	dev-libs/openssl:=
 	net-dns/c-ares:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 "
 RDEPEND="
 	${DEPEND}

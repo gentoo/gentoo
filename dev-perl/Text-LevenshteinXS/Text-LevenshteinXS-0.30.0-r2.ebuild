@@ -10,4 +10,4 @@ inherit perl-module
 DESCRIPTION="An XS implementation of the Levenshtein edit distance"
 
 SLOT="0"
-KEYWORDS="amd64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~sparc x86"

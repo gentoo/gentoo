@@ -23,7 +23,7 @@ S="${WORKDIR}/${PARCH}"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 # Probably want to drop ssl defaulting to on in a future version.
 IUSE="abi_mips_n32 audit debug kerberos ldns libedit livecd pam security-key selinux +ssl static test"
 
@@ -46,7 +46,7 @@ LIB_DEPEND="
 	selinux? ( >=sys-libs/libselinux-1.28[static-libs(+)] )
 	ssl? ( >=dev-libs/openssl-1.1.1l-r1:0=[static-libs(+)] )
 	virtual/libcrypt:=[static-libs(+)]
-	>=sys-libs/zlib-1.2.3:=[static-libs(+)]
+	>=virtual/zlib-1.2.3:=[static-libs(+)]
 "
 RDEPEND="
 	acct-group/sshd

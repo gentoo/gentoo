@@ -12,10 +12,7 @@ HOMEPAGE="https://prismlauncher.org/ https://github.com/PrismLauncher/PrismLaunc
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/PrismLauncher/PrismLauncher"
-	EGIT_SUBMODULES=(
-		'*' '-libraries/cmark' '-libraries/extra-cmake-modules' '-libraries/filesystem' '-libraries/quazip'
-		'-libraries/tomlplusplus' '-libraries/zlib'
-	)
+	EGIT_SUBMODULES=( '*' '-libraries/filesystem' )
 else
 	MY_PN="PrismLauncher"
 	# use vendored tarball to avoid dealing with submodules directly
@@ -38,13 +35,14 @@ RESTRICT="!test? ( test )"
 
 # Required at both build time and runtime
 COMMON_DEPEND="
+	app-arch/libarchive:=
 	app-text/cmark:=
 	dev-cpp/tomlplusplus
-	>=dev-libs/quazip-1.3-r2:=[qt6(+)]
 	>=dev-qt/qtbase-${QTMIN}:6[concurrent,gui,network,widgets,xml(+)]
-	>=dev-qt/qt5compat-${QTMIN}:6
 	>=dev-qt/qtnetworkauth-${QTMIN}:6
-	sys-libs/zlib
+	games-util/gamemode
+	media-gfx/qrencode:=
+	virtual/zlib:=
 "
 # gulrak-filesystem dependency is only needed at build time, because we don't
 # actually use it on Linux, only on legacy macOS. Still, we need it present at

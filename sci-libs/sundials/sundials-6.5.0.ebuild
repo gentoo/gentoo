@@ -16,7 +16,7 @@ SRC_URI="https://github.com/LLNL/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/$(ver_cut 1)"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="doc examples fortran hypre +int64 lapack mpi openmp sparse +static-libs superlumt threads"
 REQUIRED_USE="
 	fortran? ( static-libs )

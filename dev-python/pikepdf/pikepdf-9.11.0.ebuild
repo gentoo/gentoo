@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="big-endian"
 
 # Check QPDF_MIN_VERSION in pyproject.toml on bumps, as well as
@@ -51,6 +51,11 @@ BDEPEND="
 
 EPYTEST_PLUGINS=( hypothesis pytest-timeout )
 distutils_enable_tests pytest
+
+EPYTEST_DESELECT=(
+	# https://github.com/pypy/pypy/issues/5351
+	tests/test_metadata.py::test_truncated_xml
+)
 
 src_prepare() {
 	distutils-r1_src_prepare

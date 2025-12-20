@@ -11,14 +11,14 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ~hppa ~mips ppc ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm ~hppa ~mips ppc ~sparc x86"
 IUSE="vorbis"
 
 RDEPEND="
 	media-libs/libid3tag:=
 	net-dns/avahi[dbus]
 	sys-libs/gdbm:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	vorbis? (
 		media-libs/libvorbis
 		media-libs/libogg

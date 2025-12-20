@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,7 +33,7 @@ RDEPEND="
 	>=media-libs/openal-1.15[abi_x86_32]
 	>=sys-devel/gcc-4.6[cxx]
 	>=sys-libs/glibc-2.15[stack-realign(-)]
-	sys-libs/zlib[abi_x86_32]
+	virtual/zlib:=[abi_x86_32]
 	virtual/glu[abi_x86_32]
 	virtual/opengl[abi_x86_32]
 	launcher? (

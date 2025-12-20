@@ -12,7 +12,7 @@ SRC_URI+=" https://dev.gentoo.org/~arthurzam/distfiles/dev-go/${PN}/${P}-deps.ta
 
 LICENSE="BSD-2 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv ~x86"
 
 src_compile() {
 	emake build

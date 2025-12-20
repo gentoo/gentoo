@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,13 +15,13 @@ SRC_URI+=" https://dev.gentoo.org/~dlan/distfiles/${CATEGORY}/${PN}/${PN}-4.2.15
 
 LICENSE="NCSA-HDF"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc ~riscv x86"
 IUSE="examples fortran szip static-libs test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( szip )"
 
 RDEPEND="net-libs/libtirpc:=
-	sys-libs/zlib
+	virtual/zlib:=
 	virtual/jpeg:0
 	szip? ( virtual/szip )"
 DEPEND="${RDEPEND}

@@ -31,7 +31,3 @@ dev-embedded/urjtag ftd2xx
 # Yixun Lan <dlan@gentoo.org> (2017-07-12)
 # GLEP 73 Immutability, USE=ovmf requires hvm
 app-emulation/xen-tools ovmf
-
-# Alexis Ballier <aballier@gentoo.org> (2009-08-13)
-# Requires wine
-media-sound/lmms vst

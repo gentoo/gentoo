@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ RDEPEND="
 	app-arch/bzip2:0=
 	dev-libs/openssl:=
 	fuse? ( sys-fs/fuse:0= )
-	zlib? ( sys-libs/zlib:0= )"
+	zlib? ( virtual/zlib:= )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 

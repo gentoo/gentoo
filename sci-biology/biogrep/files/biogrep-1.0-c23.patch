@@ -1,0 +1,35 @@
+--- a/src/main.c
++++ b/src/main.c
+@@ -198,8 +198,8 @@
+ 	int i;
+ 	int regExsPerThread;
+ 	int completedRegExs;
+-	int (*parseFunct) () = &ParseTxtLine;
+-	fSeq_t *(*seqReadFunct) () = &ReadTxtSeqs;
++	int (*parseFunct) (char*, int,  tPat_t*) = &ParseTxtLine;
++	fSeq_t *(*seqReadFunct) (FILE*, int*) = &ReadTxtSeqs;
+ 	printFormat_t myFormat;
+ 	int ignoreCase = 0;
+ 
+--- a/src/patternFunctions.c
++++ b/src/patternFunctions.c
+@@ -39,7 +39,7 @@
+ // output file from Teiresias, which may or may not have logOdds values
+ // 
+ tPat_t *
+-ReadTPats(FILE * INPUT, int getOffsets, int *numberOfPatterns, int (*parseFunct) ())
++ReadTPats(FILE * INPUT, int getOffsets, int *numberOfPatterns, int (*parseFunct) (char*, int,  tPat_t*))
+ {
+ 	int i;
+ 	int countedPatterns;
+--- a/src/patternFunctions.h
++++ b/src/patternFunctions.h
+@@ -33,7 +33,7 @@
+ int MeasurePattern(char *pattern);
+ int ParseTPatLine(char *buffer, int getOffsets, tPat_t * myTeiresiasPattern);
+ int ParseTxtLine(char *buffer, int getOffsets, tPat_t * myTeiresiasPattern);
+-tPat_t *ReadTPats(FILE * INPUT, int getOffsets, int *numberOfPatterns, int (*parseFunct)() );
++tPat_t *ReadTPats(FILE * INPUT, int getOffsets, int *numberOfPatterns, int (*parseFunct)(char*, int,  tPat_t*) );
+ int printTPat(FILE * OUTPUT, tPat_t * myTeiresiasPattern, int hasOffsets);
+ int FreeTPatA(tPat_t * arrayOfTeiresiasPatterns, int numberOfPatterns);
+ 

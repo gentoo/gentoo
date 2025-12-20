@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 280d64f..931b216 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -753,8 +753,4 @@ if(NOT TARGET uninstall)
+     COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake)
+ endif()
+ 
+-# Run ldconfig for certain Unix systems
+-if(UNIX AND NOT APPLE)
+-  install(CODE "exec_program(ldconfig)")
+-endif()
+ 

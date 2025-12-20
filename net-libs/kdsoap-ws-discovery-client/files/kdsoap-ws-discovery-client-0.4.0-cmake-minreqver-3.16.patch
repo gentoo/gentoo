@@ -1,35 +1,38 @@
-From 00a206f2cab6feedaab4017d36ccb8ee465a307b Mon Sep 17 00:00:00 2001
+From 9944c6061852438d50411fdc6be4dffbe6bc93f3 Mon Sep 17 00:00:00 2001
 From: Andreas Sturmlechner <asturm@gentoo.org>
 Date: Fri, 17 Oct 2025 22:22:07 +0200
-Subject: [PATCH] Raise CMake minimum to 3.10...3.31 range
+Subject: [PATCH] Raise CMake minimum to 3.16...3.30 range, cleanup lower
+ minimums in subdirs
+
+ECM Find* and Qt6 CMake modules already require 3.16, so it is a good
+base line. CMake 3.16 was released in 2019. At the same time, defining
+the range to 3.30 means the build system is already being tested with
+all of the Policy changes up to build time CMake version <=3.30 enacted.
+3.30 is picked as CMP0175 (in 3.31) introduced an error in <ECM-6.20
+KDEClangFormat, and ECM commit 24fa7e53b054f81f44b5b00257bd97631200503d
+is not backported in kf5 branch.
 
 Successfully tested with CMake 4.1.2.
 
 Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
 ---
- CMakeLists.txt                         | 8 +++++++-
+ CMakeLists.txt                         | 2 +-
  autotests/CMakeLists.txt               | 2 --
  docs/CMakeLists.txt                    | 2 --
  examples/onvif-discover/CMakeLists.txt | 2 --
  src/CMakeLists.txt                     | 2 --
- 5 files changed, 7 insertions(+), 9 deletions(-)
+ 5 files changed, 1 insertion(+), 9 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 56361f6..6432baf 100644
+index 56361f6..2ccedf6 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -1,7 +1,13 @@
+@@ -1,7 +1,7 @@
  # SPDX-FileCopyrightText: 2019 Casper Meijn <casper@meijn.net>
  # SPDX-License-Identifier: GPL-3.0-or-later
  
 -cmake_minimum_required(VERSION 3.7)
-+cmake_minimum_required(VERSION 3.16...3.31)
-+
-+# TODO: Drop w/ Qt5 cleanup
-+# ^ ECM commit 24fa7e53b054f81f44b5b00257bd97631200503d not in kf5 branch
-+if(POLICY CMP0175)
-+    cmake_policy(SET CMP0175 OLD)
-+endif()
++cmake_minimum_required(VERSION 3.16...3.30)
  
  project(kdsoap-ws-discovery-client VERSION 0.4.0)
  
@@ -86,5 +89,5 @@ index 177b304..33b4473 100644
  get_filename_component(KDWSDL_IMPORT_PATH ../wsdl/ ABSOLUTE)
  set(GLOBAL_KSWSDL2CPP_OPTION -import-path ${KDWSDL_IMPORT_PATH} -use-local-files-only)
 -- 
-2.51.1
+2.51.2
 

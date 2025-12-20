@@ -13,7 +13,7 @@ SRC_URI="https://download.libguestfs.org/nbdkit/$(ver_cut 1-2)-stable/${P}.tar.g
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~loong ~ppc64 ~sparc ~x86"
 IUSE="
 	curl ext2 nbd gnutls libguestfs libssh libvirt lzma selinux python
 	torrent valgrind zlib zlib-ng zstd
@@ -26,7 +26,7 @@ RDEPEND="
 	curl? ( net-misc/curl )
 	libssh? ( net-libs/libssh:= )
 	libvirt? ( app-emulation/libvirt:= )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib:= )
 	zlib-ng? ( sys-libs/zlib-ng )
 	nbd? ( sys-libs/libnbd )
 	lzma? ( app-arch/xz-utils )

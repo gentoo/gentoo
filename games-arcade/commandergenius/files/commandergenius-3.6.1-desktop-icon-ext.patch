@@ -1,0 +1,20 @@
+From 9bb4a985b2d66952789b10302b6848279817c2d5 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Mon, 24 Nov 2025 11:42:47 +0000
+Subject: [PATCH] The Icon Theme Specification says Icon should not have an
+ extension
+
+--- a/share/cgenius.desktop
++++ b/share/cgenius.desktop
+@@ -2,7 +2,7 @@
+ Name=Commander Genius
+ Comment=Play natively Commander Keen Games
+ Exec=CGeniusExe
+-Icon=cg.svg
++Icon=cg
+ Terminal=false
+ Type=Application
+ StartupNotify=true
+-- 
+2.52.0
+

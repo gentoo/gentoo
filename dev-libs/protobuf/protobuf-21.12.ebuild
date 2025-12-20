@@ -12,7 +12,7 @@ if [[ "${PV}" == *9999 ]]; then
 	EGIT_SUBMODULES=()
 else
 	SRC_URI="https://github.com/protocolbuffers/protobuf/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~x64-macos"
+	KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc64 ~riscv x86 ~x64-macos"
 fi
 
 DESCRIPTION="Google's Protocol Buffers - Extensible mechanism for serializing structured data"
@@ -25,12 +25,12 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="emacs? ( app-editors/emacs:* )"
 DEPEND="
-	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
+	zlib? ( virtual/zlib:=[${MULTILIB_USEDEP}] )
 	test? ( >=dev-cpp/gtest-1.9[${MULTILIB_USEDEP}] )
 "
 RDEPEND="
 	emacs? ( app-editors/emacs:* )
-	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
+	zlib? ( virtual/zlib:=[${MULTILIB_USEDEP}] )
 "
 
 PATCHES=(

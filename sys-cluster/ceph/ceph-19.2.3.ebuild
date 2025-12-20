@@ -53,7 +53,6 @@ DEPEND="
 	dev-lang/jsonnet:=
 	dev-libs/libaio:=
 	dev-libs/libnl:3=
-	dev-libs/libxml2:=
 	dev-libs/libevent:=
 	dev-libs/libutf8proc:=
 	dev-libs/nss:=
@@ -75,7 +74,7 @@ DEPEND="
 	sys-libs/libcap-ng:=
 	sys-libs/libnbd
 	sys-libs/ncurses:0=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	sys-process/numactl:=
 	virtual/libcrypt:=
 	x11-libs/libpciaccess:=

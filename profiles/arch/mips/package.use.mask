@@ -1,6 +1,22 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ulrich Müller <ulm@gentoo.org> (2025-12-15)
+# app-text/texlive[xetex] not keyworded, #967505.
+app-text/pdfjam test
+
+# Eli Schwartz <eschwartz@gentoo.org> (2025-11-27)
+# Needs dev-python/mypy for mypyc, not keyworded here
+dev-python/charset-normalizer native-extensions
+
+# Sam James <sam@gentoo.org> (2025-11-15)
+# sys-block/thin-provisioning-tools not keyworded here
+sys-fs/lvm2 thin
+
+# Sam James <sam@gentoo.org> (2025-11-15)
+# gnuplot not keyworded here
+net-misc/ntpsec ntpviz
+
 # Sam James <sam@gentoo.org> (2025-10-31)
 # Needs asciidoctor (ruby)
 net-misc/chrony html

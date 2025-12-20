@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Wrapper Class for the various JSON classes (DEPRECATED)"
 
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~amd64 ~mips ~x86 ~x64-macos"
 
 RDEPEND="
 	virtual/perl-Carp

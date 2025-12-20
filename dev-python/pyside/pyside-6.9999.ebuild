@@ -146,7 +146,12 @@ QT_PV="$(ver_cut 1-3)*:6"
 
 # WebEngine needs sound support, so enable either pulseaudio or alsa
 RDEPEND="
+	dev-libs/libxml2:=
+	dev-libs/libxslt
 	=dev-qt/qtbase-${QT_PV}[concurrent?,dbus?,gles2-only=,network?,opengl?,sql?,widgets?,xml?]
+	$(llvm_gen_dep '
+		llvm-core/clang:${LLVM_SLOT}
+	')
 	3d? ( =dev-qt/qt3d-${QT_PV}[qml?,gles2-only=] )
 	bluetooth? ( =dev-qt/qtconnectivity-${QT_PV}[bluetooth] )
 	charts? ( =dev-qt/qtcharts-${QT_PV} )
@@ -223,6 +228,7 @@ BDEPEND="
 PATCHES=(
 	# Needs porting to newer wheel and setuptools
 	"${FILESDIR}/${PN}-6.8.2-quick-fix-build-wheel.patch"
+	"${FILESDIR}/${PN}-6.10.0-dont-vendor-ffmpeg.patch"
 )
 
 # Build system duplicates system libraries. TODO: fix
@@ -291,6 +297,8 @@ python_prepare_all() {
 		[sample::nontypetemplate]
 			linux
 		[QtGui::qpainter_test]
+			linux
+		[QtCore::qrangemodel_test]
 			linux
 		EOF
 	fi
@@ -409,6 +417,7 @@ python_compile() {
 		DISTUTILS_ARGS=(
 			"${MAIN_DISTUTILS_ARGS[@]}"
 			--reuse-build
+			--shiboken-host-path=="${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/install"
 			--shiboken-target-path="${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/install"
 			--build-type=pyside6
 		)
@@ -453,7 +462,7 @@ python_compile() {
 		popd >/dev/null || die
 	fi
 	mkdir -p "${BUILD_DIR}/install/usr/include"
-	for dir in PySide6 shiboken6_generator; do
+	for dir in PySide6 shiboken6 shiboken6_generator; do
 		if [[ -d ${BUILD_DIR}/install/$(python_get_sitedir)/${dir}/include ]]
 		then
 			ln -s "../../$(python_get_sitedir)/${dir}/include" \
@@ -512,6 +521,9 @@ python_compile() {
 		-e "s~libshiboken6\.cpython.*\.so\.$(ver_cut 1-2)~libshiboken6\${PYTHON_CONFIG_SUFFIX}\.so\.$(ver_cut 1-2)~g" \
 		-e "s~libpyside6\.cpython.*\.so\.$(ver_cut 1-2)~libpyside6\${PYTHON_CONFIG_SUFFIX}\.so\.$(ver_cut 1-2)~g" \
 		-e "s~libpyside6qml\.cpython.*\.so\.$(ver_cut 1-2)~libpyside6qml\${PYTHON_CONFIG_SUFFIX}\.so\.$(ver_cut 1-2)~g" \
+		-e "s~\${PACKAGE_PREFIX_DIR}/~$(python_get_sitedir)/PySide6/~g" \
+		-e "s~\${_IMPORT_PREFIX}/shiboken6/include~$(python_get_sitedir)/shiboken6/include~g" \
+		-e "s~\${_IMPORT_PREFIX}/PySide6/include~$(python_get_sitedir)/PySide6/include~g" \
 		-i 	"${BUILD_DIR}/install/usr/lib/cmake/"*/*.cmake || die
 	local file
 	for file in "${BUILD_DIR}/install/usr/lib/cmake/"*/*.cpython-*.cmake

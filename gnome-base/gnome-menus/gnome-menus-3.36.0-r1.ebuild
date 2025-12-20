@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-menus"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="3"
-KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="+introspection test"
 RESTRICT="!test? ( test )"
 

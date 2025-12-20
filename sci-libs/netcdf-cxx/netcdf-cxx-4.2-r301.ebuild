@@ -11,7 +11,7 @@ SRC_URI="https://www.unidata.ucar.edu/downloads/netcdf/ftp/${P}.tar.gz"
 
 LICENSE="UCAR-Unidata"
 SLOT="3"
-KEYWORDS="amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 IUSE="examples"
 
 RDEPEND=">=sci-libs/netcdf-4.2:0="

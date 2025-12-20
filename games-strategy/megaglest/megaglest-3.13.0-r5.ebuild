@@ -19,11 +19,7 @@ inherit cmake desktop flag-o-matic lua-single readme.gentoo-r1 virtualx wxwidget
 DESCRIPTION="Cross-platform 3D realtime strategy game"
 HOMEPAGE="https://megaglest.org/ https://github.com/MegaGlest/megaglest-source"
 SRC_URI="https://github.com/MegaGlest/megaglest-source/releases/download/${PV}/megaglest-source-${PV}.tar.xz
-	https://github.com/MegaGlest/megaglest-source/commit/789e1cdf.patch -> ${P}-789e1cdf.patch
-	https://github.com/MegaGlest/megaglest-source/commit/5801b1fa.patch -> ${P}-5801b1fa.patch
-	https://github.com/MegaGlest/megaglest-source/commit/412b37d0.patch -> ${P}-412b37d0.patch
-	https://github.com/MegaGlest/megaglest-source/commit/e09ba53c.patch -> ${P}-e09ba53c.patch
-	https://github.com/MegaGlest/megaglest-source/commit/fbd0cfb1.patch -> ${P}-fbd0cfb1.patch
+	https://dev.gentoo.org/~asturm/distfiles/${P}-wxWidgets-3.2.tar.xz
 "
 
 LICENSE="GPL-3 BitstreamVera"
@@ -33,8 +29,7 @@ IUSE="debug +editor fribidi cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_s
 
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
-COMMON_DEPEND="
-	${LUA_DEPS}
+DEPEND="${LUA_DEPS}
 	dev-libs/libxml2:=
 	dev-libs/xerces-c:=[icu]
 	media-libs/fontconfig
@@ -49,7 +44,7 @@ COMMON_DEPEND="
 	net-libs/gnutls:=
 	net-libs/miniupnpc:=
 	net-misc/curl
-	sys-libs/zlib
+	virtual/zlib:=
 	virtual/opengl
 	virtual/glu
 	media-libs/libjpeg-turbo:0=
@@ -60,19 +55,19 @@ COMMON_DEPEND="
 	model-viewer? ( x11-libs/wxGTK:${WX_GTK_VER}=[X] )
 	videos? ( media-video/vlc )
 "
-DEPEND="${COMMON_DEPEND}"
-RDEPEND="
-	${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	~games-strategy/${PN}-data-${PV}
 "
-
-BDEPEND="sys-apps/help2man
+BDEPEND="
+	sys-apps/help2man
 	virtual/pkgconfig
 	editor? ( ${VIRTUALX_DEPEND} )
-	model-viewer? ( ${VIRTUALX_DEPEND} )"
+	model-viewer? ( ${VIRTUALX_DEPEND} )
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.11.1-cmake-lua.patch"
+	"${FILESDIR}/${P}-cmake4.patch" # bug 964656
 
 	# From Fedora and Arch
 	"${FILESDIR}/${P}-underlink.patch"
@@ -81,12 +76,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-GLEW_ERROR_NO_GLX_DISPLAY.patch"
 	"${FILESDIR}/${P}-help2man.patch"
 
-	# Fix build with wxWidgets 3.2
-	"${DISTDIR}/${P}-789e1cdf.patch"
-	"${DISTDIR}/${P}-5801b1fa.patch"
-	"${DISTDIR}/${P}-412b37d0.patch"
-	"${DISTDIR}/${P}-e09ba53c.patch"
-	"${FILESDIR}/${P}-fbd0cfb1.patch"
+	"${WORKDIR}/${P}-wxWidgets-3.2" # upstream git master
 )
 
 DISABLE_AUTOFORMATTING="yes"

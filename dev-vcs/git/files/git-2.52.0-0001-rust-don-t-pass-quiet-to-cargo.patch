@@ -1,0 +1,32 @@
+From 35f637fbabb3b8181a29ba7d96a505b49ea0ba0d Mon Sep 17 00:00:00 2001
+Message-ID: <35f637fbabb3b8181a29ba7d96a505b49ea0ba0d.1763489487.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Tue, 18 Nov 2025 18:10:03 +0000
+Subject: [PATCH 1/2] rust: don't pass --quiet to cargo
+
+This obscures that cargo is being invoked at all and it means even
+ninja --verbose has no mention of it other than invoking the target.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ src/cargo-meson.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/cargo-meson.sh b/src/cargo-meson.sh
+index 3998db0435..63a5e7c6ac 100755
+--- a/src/cargo-meson.sh
++++ b/src/cargo-meson.sh
+@@ -19,7 +19,7 @@ do
+ 	esac
+ done
+ 
+-cargo build --lib --quiet --manifest-path="$SOURCE_DIR/Cargo.toml" --target-dir="$BUILD_DIR" "$@"
++cargo build --lib --manifest-path="$SOURCE_DIR/Cargo.toml" --target-dir="$BUILD_DIR" "$@"
+ RET=$?
+ if test $RET -ne 0
+ then
+
+base-commit: 9a2fb147f2c61d0cab52c883e7e26f5b7948e3ed
+-- 
+2.51.2
+

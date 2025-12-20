@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}-${PV/0}"
 
 LICENSE="BSD"
 SLOT="0/2"
-KEYWORDS="amd64 ~ppc ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc ppc64 ~x86"
 IUSE="java openmp python tools"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 

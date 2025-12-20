@@ -26,7 +26,7 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	app-arch/zstd:=[${MULTILIB_USEDEP}]
-	sys-libs/zlib:=[${MULTILIB_USEDEP}]
+	virtual/zlib:=[${MULTILIB_USEDEP}]
 	virtual/libiconv:=[${MULTILIB_USEDEP}]
 	curl? ( net-misc/curl[${MULTILIB_USEDEP}] )
 	kerberos? (

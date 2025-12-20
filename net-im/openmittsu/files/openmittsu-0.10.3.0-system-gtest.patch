@@ -1,0 +1,29 @@
+commit 512e9dea0ee1106a9f5babd3188ba170360bfaa1
+Author: Andreas Sturmlechner <asturm@gentoo.org>
+Date:   Sun Nov 2 14:52:35 2025 +0100
+
+    Drop CMAKE_BUILD_TYPE Gentoo-ism and provide OPENMITTSU_SYSTEM_GTEST option instead
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -45,4 +45,5 @@
+ option(OPENMITTSU_DISABLE_VERSION_UPDATE_CHECK "Disables the version check on start-up. Useful for custom builds or added privacy." OFF)
+ option(OPENMITTSU_ENABLE_TESTS "Enables tests." ON)
++option(OPENMITTSU_SYSTEM_GTEST "Use system provided googletest libs instead of bundled" OFF)
+ option(OPENMITTSU_USE_NSIS "Use NSIS generator to produce a Windows installer." OFF)
+ option(OPENMITTSU_WITH_APP_BUNDLE "Enable Application Bundle for macOS" ON)
+@@ -317,6 +318,5 @@
+ #
+ ##########################################################
+-# In Gentoo Linux, googletest libs are installed as dependency (dev-cpp/gtest)
+-if (OPENMITTSU_ENABLE_TESTS AND NOT CMAKE_BUILD_TYPE MATCHES "^Gentoo")
++if (OPENMITTSU_ENABLE_TESTS AND NOT OPENMITTSU_SYSTEM_GTEST)
+ 	# Download and unpack googletest at configure time
+ 	configure_file("${PROJECT_SOURCE_DIR}/cmake/GoogleTest.cmake.in" googletest-download/CMakeLists.txt)
+@@ -598,5 +598,5 @@
+ endif()
+ 
+-if (OPENMITTSU_ENABLE_TESTS AND NOT CMAKE_BUILD_TYPE MATCHES "^Gentoo")
++if (OPENMITTSU_ENABLE_TESTS AND NOT OPENMITTSU_SYSTEM_GTEST)
+ 	add_dependencies(openMittsuTests gmock gtest)
+ endif()

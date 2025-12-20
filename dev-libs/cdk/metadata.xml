@@ -10,7 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<changelog>https://dickey.his.com/cdk/CHANGES.html</changelog>
+		<changelog>https://invisible-island.net/cdk/CHANGES.html</changelog>
 		<remote-id type="github">ThomasDickey/cdk-snapshots</remote-id>
 	</upstream>
 </pkgmetadata>

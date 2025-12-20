@@ -26,7 +26,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390
 IUSE="+client ipv6 ldap selinux +server ssl vim-syntax"
 
 DEPEND="
-	sys-libs/zlib:=
+	virtual/zlib:=
 	client? (
 		kernel_linux? (
 			ipv6? ( sys-apps/iproute2 )

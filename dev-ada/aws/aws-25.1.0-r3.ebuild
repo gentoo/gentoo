@@ -3,7 +3,7 @@
 
 EAPI=8
 
-ADA_COMPAT=( gcc_{13..15} )
+ADA_COMPAT=( gcc_{13..16} )
 PYTHON_COMPAT=( python3_{10..13} )
 inherit ada python-any-r1 multiprocessing
 
@@ -51,6 +51,11 @@ REQUIRED_USE="${ADA_REQUIRED_USE}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-2020-gentoo.patch
 )
+
+pkg_setup() {
+	ada_pkg_setup
+	python-any-r1_pkg_setup
+}
 
 src_prepare() {
 	default

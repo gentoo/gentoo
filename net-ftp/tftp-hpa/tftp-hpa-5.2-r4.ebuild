@@ -11,7 +11,7 @@ SRC_URI="https://www.kernel.org/pub/software/network/tftp/${PN}/${P}.tar.xz"
 
 LICENSE="BSD-4"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~s390 ~sparc x86 ~ppc-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~s390 ~sparc x86"
 IUSE="ipv6 readline selinux tcpd +client +server"
 
 DEPEND="

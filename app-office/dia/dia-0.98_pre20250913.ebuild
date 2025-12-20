@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}-${COMMIT_HASH}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~loong ~ppc ppc64 ~riscv ~sparc x86"
 IUSE="doc pdf python wmf xslt X"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -53,6 +53,7 @@ PATCHES=(
 	"${WORKDIR}"/dia-0.98-patches/${PN}-0.98-revert_xpm_replacement.patch
 	"${WORKDIR}"/dia-0.98-patches/${PN}-0.98-use_gtkfontbutton.patch
 	"${WORKDIR}"/dia-0.98-patches/${PN}-0.98-deps_optional.patch
+	"${FILESDIR}"/${PN}-0.98-fix_poppler_2510.patch #965768
 )
 
 pkg_setup() {

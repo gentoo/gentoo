@@ -16,7 +16,7 @@ HOMEPAGE="https://capistranorb.com/"
 
 LICENSE="MIT"
 SLOT="2"
-KEYWORDS="amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris"
+KEYWORDS="amd64 ~ppc ~ppc64 ~x86 ~x64-solaris"
 IUSE="test"
 
 ruby_add_rdepend "

@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=pdm-backend
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 pypi
 
@@ -47,8 +47,20 @@ EPYTEST_IGNORE=(
 	# pytest_plugins at non-top-level.
 	test/integration
 )
+
 EPYTEST_PLUGINS=( pytest-{lazy-fixtures,mock,timeout} )
 
 export PDM_BUILD_SCM_VERSION=${PV}
 
 distutils_enable_tests pytest
+
+python_test() {
+	if [[ ${EPYTHON} == python3.14 ]] ; then
+		local EPYTEST_DESELECT=(
+			# Error message differs w/ 3.14
+			test/unit/scan/test_folder_traversal.py::TestFolderTraversal::test_dir_without_exec_permission
+		)
+	fi
+
+	epytest
+}

@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Dia"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~loong ~ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~loong ~ppc ppc64 ~riscv ~sparc x86"
 # the doc USE flag doesn't seem to do anything without docbook2html
 # cairo support is preferred as explained by upstream at:
 # https://bugzilla.gnome.org/show_bug.cgi?id=729668#c6
@@ -25,7 +25,7 @@ RDEPEND="
 	>=media-libs/freetype-2
 	>=media-libs/libart_lgpl-2
 	media-libs/libpng:=
-	sys-libs/zlib
+	virtual/zlib:=
 	x11-libs/gtk+:2
 	x11-libs/pango
 	cairo? ( x11-libs/cairo )

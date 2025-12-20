@@ -20,7 +20,7 @@ DEPEND="
 	dev-libs/libzip:=
 	media-libs/libsdl2[opengl,joystick,sound,video]
 	media-libs/sdl2-mixer[midi]
-	sys-libs/zlib:=
+	virtual/zlib:=
 	virtual/glu
 	virtual/opengl
 	fluidsynth? ( media-sound/fluidsynth:= )

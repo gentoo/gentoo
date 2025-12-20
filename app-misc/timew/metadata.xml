@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person" proxied="yes">
-		<email>gentoo@denoncin.fr</email>
-		<name>David Denoncin</name>
-	</maintainer>
-	<maintainer type="project" proxied="proxy">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 		Timewarrior is a time tracking utility that offers simple 
 		stopwatch features as well as sophisticated calendar-based 

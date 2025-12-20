@@ -24,7 +24,7 @@ else
 		"}
 	"
 	S=${WORKDIR}/ffmpeg-${PV} # avoid ${P} for ffmpeg-compat
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~x64-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~arm64-macos ~x64-macos"
 fi
 
 DESCRIPTION="Complete solution to record/convert/stream audio and video"
@@ -85,11 +85,11 @@ FFMPEG_IUSE_MAP=(
 	libplacebo
 	librtmp:librtmp
 	libsoxr
-	libtesseract
 	lv2
 	lzma
 	modplug:libmodplug
 	nvenc:cuvid,ffnvcodec,nvdec,nvenc
+	ocr:libtesseract
 	openal
 	opencl
 	opengl
@@ -233,13 +233,13 @@ COMMON_DEPEND="
 	libplacebo? ( media-libs/libplacebo:=[vulkan,${MULTILIB_USEDEP}] )
 	librtmp? ( media-video/rtmpdump[${MULTILIB_USEDEP}] )
 	libsoxr? ( media-libs/soxr[${MULTILIB_USEDEP}] )
-	libtesseract? ( app-text/tesseract:=[${MULTILIB_USEDEP}] )
 	lv2? (
 		media-libs/lilv[${MULTILIB_USEDEP}]
 		media-libs/lv2[${MULTILIB_USEDEP}]
 	)
 	lzma? ( app-arch/xz-utils[${MULTILIB_USEDEP}] )
 	modplug? ( media-libs/libmodplug[${MULTILIB_USEDEP}] )
+	ocr? ( app-text/tesseract:=[${MULTILIB_USEDEP}] )
 	openal? ( media-libs/openal[${MULTILIB_USEDEP}] )
 	opencl? ( virtual/opencl[${MULTILIB_USEDEP}] )
 	opengl? ( media-libs/libglvnd[X,${MULTILIB_USEDEP}] )
@@ -295,7 +295,7 @@ COMMON_DEPEND="
 	xvid? ( media-libs/xvid[${MULTILIB_USEDEP}] )
 	zeromq? ( net-libs/zeromq:= )
 	zimg? ( media-libs/zimg[${MULTILIB_USEDEP}] )
-	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
+	zlib? ( virtual/zlib:=[${MULTILIB_USEDEP}] )
 	zvbi? ( media-libs/zvbi[${MULTILIB_USEDEP}] )
 	${FFMPEG_SOC_PATCH:+"
 		soc? ( virtual/libudev:=[${MULTILIB_USEDEP}] )
@@ -447,10 +447,12 @@ multilib_src_configure() {
 		--disable-libdavs2
 		--disable-libklvanc
 		--disable-liblcevc-dec
+		--disable-libmpeghdec
 		--disable-libmysofa
 		--disable-liboapv
 		--disable-libopenvino
 		--disable-libshine
+		--disable-libsvtjpegxs
 		--disable-libtls
 		--disable-libuavs3d
 		--disable-libvvenc
@@ -461,7 +463,6 @@ multilib_src_configure() {
 		--disable-libxeve
 		--disable-libxeveb
 		--disable-ohcodec
-		--disable-libmpeghdec
 		--disable-pocketsphinx
 		--disable-rkmpp
 		--disable-vapoursynth
@@ -520,6 +521,20 @@ multilib_src_configure() {
 		esac
 	fi
 
+	# skipping tests is handled at configure-time
+	local skip_tests=()
+
+	# zlib-ng is not bitexact w/ zlib producing mismatching md5sum (bug #965737)
+	has_version 'sys-libs/zlib-ng[compat]' &&
+		skip_tests+=(
+			lavf-{apng{,.png},gray16be.png,png,rgb48be.png}
+			mov-mp4-frag-flush
+			vsynth{1,2,3}-{flashsv,mpng,zlib}
+		)
+
+	(( ${#skip_tests[@]} )) &&
+		conf+=( --ignore-tests=$(IFS=,; echo "${skip_tests[*]}") )
+
 	# import options from FFMPEG_IUSE_MAP
 	local flag license mod v
 	local -A optmap=() licensemap=()
@@ -563,6 +578,7 @@ multilib_src_configure() {
 }
 
 multilib_src_compile() {
+	mkdir -p fftools/resources/ || die #965687
 	emake V=1
 	in_iuse chromium && use chromium && multilib_is_native_abi &&
 		emake V=1 libffmpeg

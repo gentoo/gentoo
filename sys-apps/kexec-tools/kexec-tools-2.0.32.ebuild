@@ -11,7 +11,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	SRC_URI="https://www.kernel.org/pub/linux/utils/kernel/kexec/${P/_/-}.tar.xz"
 	[[ "${PV}" == *_rc* ]] || \
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 arm64 ~ppc64 x86"
 fi
 
 DESCRIPTION="Load another kernel from the currently executing Linux kernel"
@@ -27,7 +27,7 @@ REQUIRED_USE="lzma? ( zlib )"
 
 DEPEND="
 	lzma? ( app-arch/xz-utils )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib:= )
 	zstd? ( app-arch/zstd:= )
 "
 RDEPEND="

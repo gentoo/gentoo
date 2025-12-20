@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit desktop python-any-r1 flag-o-matic scons-utils
 inherit shell-completion toolchain-funcs xdg
 
@@ -52,7 +52,7 @@ RDEPEND="
 	media-libs/libvorbis
 	net-libs/mbedtls:0=
 	net-libs/wslay
-	sys-libs/zlib:=
+	virtual/zlib:=
 	alsa? ( media-libs/alsa-lib )
 	dbus? ( sys-apps/dbus )
 	fontconfig? ( media-libs/fontconfig )

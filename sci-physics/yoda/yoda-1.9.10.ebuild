@@ -1,9 +1,9 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit bash-completion-r1 autotools python-single-r1 optfeature
 
@@ -28,7 +28,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} ) root? ( python )"
 RDEPEND="
 	root? ( sci-physics/root:=[${PYTHON_SINGLE_USEDEP}] )
 	python? ( ${PYTHON_DEPS} )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

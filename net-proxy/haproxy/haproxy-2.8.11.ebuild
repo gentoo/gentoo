@@ -29,6 +29,8 @@ else
 	EGIT_BRANCH=master
 fi
 
+S="${WORKDIR}/${MY_P}"
+
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/$(ver_cut 1-2)"
 IUSE="+crypt doc examples +slz +net_ns +pcre pcre-jit prometheus-exporter
@@ -49,17 +51,15 @@ DEPEND="
 		dev-libs/openssl:0=
 	)
 	systemd? ( sys-apps/systemd )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib:= )
 	lua? ( ${LUA_DEPS} )
 	test? (
 		dev-libs/libpcre2
-		sys-libs/zlib
+		virtual/zlib:=
 	)"
 RDEPEND="${DEPEND}
 	acct-group/haproxy
 	acct-user/haproxy"
-
-S="${WORKDIR}/${MY_P}"
 
 DOCS=( CHANGELOG CONTRIBUTING MAINTAINERS README )
 EXTRAS=( admin/halog admin/iprange dev/tcploop dev/hpack )

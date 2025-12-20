@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..14} )
 PYTHON_REQ_USE='xml(+)'
 inherit meson-multilib python-any-r1 virtualx
 
@@ -37,7 +37,10 @@ BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}"/libepoxy-1.5.10-libopengl-fallback.patch )
+PATCHES=(
+	"${FILESDIR}"/libepoxy-1.5.10-libopengl-fallback.patch
+	"${FILESDIR}"/libepoxy-1.5.10-riscv.patch
+)
 
 multilib_src_configure() {
 	local emesonargs=(

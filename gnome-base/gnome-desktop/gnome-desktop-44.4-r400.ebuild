@@ -9,7 +9,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-desktop/"
 
 LICENSE="GPL-2+ LGPL-2+ FDL-1.1+"
 SLOT="4/2" # subslot = libgnome-desktop-4 soname version
-KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="debug gtk-doc seccomp systemd udev"
 
 COMMON_DEPEND="

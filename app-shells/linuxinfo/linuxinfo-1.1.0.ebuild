@@ -11,7 +11,7 @@ S="${WORKDIR}"
 
 LICENSE="MIT"
 SLOT="${PV}"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
 	virtual/pwsh:*

@@ -8,7 +8,8 @@ inherit cmake
 DESCRIPTION="Excel file(*.xlsx) reader/writer library using Qt"
 HOMEPAGE="https://github.com/QtExcel/QXlsx"
 SRC_URI="https://github.com/QtExcel/QXlsx/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/QXlsx-${PV}/QXlsx"
+S="${WORKDIR}/QXlsx-${PV}"
+CMAKE_USE_DIR="${S}/QXlsx"
 
 LICENSE="MIT"
 # soversion
@@ -20,9 +21,11 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-qt6.10.patch" ) # bug 966279
+
 src_prepare() {
 	# https://github.com/QtExcel/QXlsx/issues/375#issuecomment-2565987610
-	sed -i -e "s/SOVERSION.*/SOVERSION 0.${PV}/" CMakeLists.txt || die
+	sed -i -e "s/SOVERSION.*/SOVERSION 0.${PV}/" QXlsx/CMakeLists.txt || die
 
 	cmake_src_prepare
 }

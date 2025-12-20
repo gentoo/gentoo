@@ -1,0 +1,2 @@
+# Give write access to the PC speaker only to the "beep" group
+ACTION=="add", SUBSYSTEM=="input", ATTRS{name}=="PC Speaker", ENV{DEVNAME}!="", GROUP="beep", MODE="0620"

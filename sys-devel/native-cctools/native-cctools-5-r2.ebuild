@@ -8,7 +8,7 @@ HOMEPAGE="https://prefix.gentoo.org/"
 
 LICENSE="GPL-2" # actually, we don't know, the wrapper is
 SLOT="0"
-KEYWORDS="~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~arm64-macos ~x64-macos ~x64-solaris"
 
 DEPEND="sys-devel/binutils-config"
 RDEPEND="${DEPEND}"

@@ -13,7 +13,7 @@ HOMEPAGE="https://www.nongnu.org/xbindkeys/xbindkeys.html"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~arm ppc ppc64 ~riscv ~sparc x86"
 IUSE="guile tk"
 
 REQUIRED_USE="guile? ( ${GUILE_REQUIRED_USE} )"

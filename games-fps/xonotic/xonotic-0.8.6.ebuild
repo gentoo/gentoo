@@ -26,7 +26,7 @@ RDEPEND="
 	media-libs/libpng
 	media-libs/freetype:2
 	net-misc/curl
-	sys-libs/zlib:=
+	virtual/zlib:=
 	X? (
 		${COMMON_UIDEPEND}
 		media-libs/libglvnd[X]

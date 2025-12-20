@@ -35,7 +35,7 @@ RDEPEND="
 	>=dev-libs/openssl-3.0.2:=
 	>=dev-qt/qtbase-6.5:6[network,ssl,sql,sqlite,xml]
 	>=net-libs/libtorrent-rasterbar-2.0.10:=
-	>=sys-libs/zlib-1.2.11
+	>=virtual/zlib-1.2.11:=
 	gui? (
 		>=dev-qt/qtbase-6.5:6[dbus?,gui,widgets]
 		>=dev-qt/qtsvg-6.5:6

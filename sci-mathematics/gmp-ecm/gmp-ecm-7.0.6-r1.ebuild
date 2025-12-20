@@ -15,7 +15,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86 ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86 ~x64-macos"
 IUSE="+custom-tune openmp cpu_flags_x86_sse2"
 
 DEPEND="dev-libs/gmp:="

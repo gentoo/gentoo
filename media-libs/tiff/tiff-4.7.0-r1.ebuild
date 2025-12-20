@@ -21,7 +21,7 @@ S="${WORKDIR}/${PN}-$(ver_cut 1-3)"
 LICENSE="libtiff"
 SLOT="0/6"
 if [[ ${PV} != *_rc* ]] ; then
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 fi
 IUSE="+cxx jbig jpeg lerc libdeflate lzma opengl static-libs test webp zlib zstd"
 RESTRICT="!test? ( test )"
@@ -40,7 +40,7 @@ RDEPEND="
 	lzma? ( >=app-arch/xz-utils-5.0.5-r1[${MULTILIB_USEDEP}] )
 	opengl? ( media-libs/freeglut )
 	webp? ( media-libs/libwebp:=[${MULTILIB_USEDEP}] )
-	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
+	zlib? ( >=virtual/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}] )
 	zstd? ( >=app-arch/zstd-1.3.7-r1:=[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}"

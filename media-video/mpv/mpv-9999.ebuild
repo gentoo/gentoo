@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/mpv-player/mpv.git"
 else
 	SRC_URI="https://github.com/mpv-player/mpv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 DESCRIPTION="Media player for the command line"
@@ -102,7 +102,7 @@ COMMON_DEPEND="
 		x11-libs/libxkbcommon
 	)
 	zimg? ( media-libs/zimg )
-	zlib? ( sys-libs/zlib:= )
+	zlib? ( virtual/zlib:= )
 "
 RDEPEND="
 	${COMMON_DEPEND}

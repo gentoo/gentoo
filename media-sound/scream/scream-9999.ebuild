@@ -1,4 +1,4 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Plays sound received from network or from a QEMU Windows VM"
 HOMEPAGE="https://github.com/duncanthrax/scream"
-S="${WORKDIR}/${P}/Receivers/unix"
+CMAKE_USE_DIR="${S}/Receivers/unix"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3

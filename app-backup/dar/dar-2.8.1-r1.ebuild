@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/project/dar/dar/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ppc ~sparc x86 ~amd64-linux"
+KEYWORDS="amd64 ppc ~sparc x86"
 IUSE="argon2 curl dar32 dar64 doc gcrypt gpg lz4 lzo nls rsync sftp whirlpool xattr"
 
 REQUIRED_USE="
@@ -27,7 +27,7 @@ RDEPEND="
 	app-arch/zstd:=
 	>=dev-libs/libthreadar-1.5.0
 	sys-libs/libcap
-	>=sys-libs/zlib-1.2.3:=
+	>=virtual/zlib-1.2.3:=
 	argon2? ( app-crypt/argon2:= )
 	curl? ( net-misc/curl )
 	gcrypt? (

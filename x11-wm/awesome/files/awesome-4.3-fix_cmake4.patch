@@ -1,0 +1,45 @@
+upstream is only 3.5 w/ https://github.com/awesomeWM/awesome/pull/4012.patch
+see https://bugs.gentoo.org/953942
+fix compat for cmake-4 and update to 3.10
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0.0)
++cmake_minimum_required(VERSION 3.10)
+ project(awesome C)
+ 
+ # Require an out-of-source build. We generate an awesomerc.lua in the build dir
+--- a/tests/examples/CMakeLists.txt
++++ b/tests/examples/CMakeLists.txt
+@@ -14,7 +14,7 @@ if(NOT DEFINED PROJECT_NAME)
+     project(awesome-tests-examples NONE)
+ endif()
+ 
+-cmake_minimum_required(VERSION 3.0.0)
++cmake_minimum_required(VERSION 3.10)
+ 
+ # Get and update the LUA_PATH so the scripts can be executed without awesome.
+ execute_process(COMMAND ${LUA_EXECUTABLE} -e "p = package.path:gsub(';', '\\\\;'); io.stdout:write(p)"
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -17,10 +17,6 @@ endif()
+ 
+ set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS  TRUE)
+ 
+-if(COMMAND cmake_policy)
+-    cmake_policy(VERSION 2.6)
+-endif()
+-
+ set(SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+ set(BUILD_DIR ${CMAKE_CURRENT_BINARY_DIR})
+ 
+--- a/awesomeConfig.cmake
++++ b/awesomeConfig.cmake
+@@ -357,6 +357,7 @@ add_custom_target(lgi-check-run ALL
+ add_custom_target(setup_directories DEPENDS lgi-check-run)
+ 
+ add_custom_command(TARGET setup_directories
++	POST_BUILD
+         COMMAND ${CMAKE_COMMAND} -E make_directory ${BUILD_DIR}/script_files/
+         COMMAND ${CMAKE_COMMAND} -E make_directory ${BUILD_DIR}/docs/common/
+         COMMAND ${CMAKE_COMMAND} -E make_directory ${BUILD_DIR}/doc/images/

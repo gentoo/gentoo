@@ -10,7 +10,7 @@ SRC_URI="https://ftp.gnustep.org/pub/gnustep/core/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+gnutls +iconv +icu +libffi zeroconf"
 
 RDEPEND="${GNUSTEP_CORE_DEPEND}
@@ -24,7 +24,7 @@ RDEPEND="${GNUSTEP_CORE_DEPEND}
 	>=dev-libs/libxml2-2.6:=
 	>=dev-libs/libxslt-1.1
 	>=dev-libs/gmp-4.1:=
-	>=sys-libs/zlib-1.2
+	>=virtual/zlib-1.2:=
 	zeroconf? ( net-dns/avahi )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"

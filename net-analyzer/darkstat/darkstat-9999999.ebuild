@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ SLOT="0"
 DEPEND="acct-user/darkstat
 	dev-libs/libbsd
 	net-libs/libpcap
-	sys-libs/zlib"
+	virtual/zlib:="
 RDEPEND="${DEPEND}"
 
 DARKSTAT_CHROOT_DIR=${DARKSTAT_CHROOT_DIR:-/var/lib/darkstat}

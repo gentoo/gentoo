@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="The Perl Table-Extract Module"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm64 ppc ppc64 ~riscv x86 ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm64 ppc ppc64 ~riscv x86"
 
 RDEPEND="
 	>=dev-perl/HTML-Element-Extended-1.160.0

@@ -42,7 +42,7 @@ RDEPEND="gnome-extra/zenity
 	zip? ( >=app-arch/libarchive-3.4.0 )"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	|| ( dev-util/xxdi app-editors/vim-core )
+	|| ( dev-util/xxd dev-util/xxdi app-editors/vim-core )
 	dev-util/glib-utils
 	sys-devel/gettext
 	virtual/pkgconfig"

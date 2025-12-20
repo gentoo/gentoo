@@ -1,0 +1,32 @@
+--- a/sem.c
++++ b/sem.c
+@@ -35,28 +35,12 @@
+ #include <errno.h>
+ #include "sem.h"
+ 
+-/* If we've got a version of glibc that doesn't define union semun, we do
+- * it ourseleves like in semctl(2). Otherwise, fall back to the original
+- * buffer behaviour of defining it (differetly!) only on some systems.
+- *
+- * mbuck@debian.org, 1999/08/29
+- */
+-#if defined(__GNU_LIBRARY__) && defined(_SEM_SEMUN_UNDEFINED)
++// modern POSIX requires the user to provide this definition
+ union semun {
+ 	int val;			/* value for SETVAL              */
+ 	struct semid_ds *buf;		/* buffer for IPC_STAT & IPC_SET */
+ 	unsigned short int *array;	/* array for GETALL & SETALL     */
+-	struct seminfo *__buf;		/* buffer for IPC_INFO           */
+ };
+-#else
+-#if defined(SYS5) || defined(ultrix) || defined(_AIX)
+-union semun {
+-	int val;
+-	struct semid_ds *buf;
+-	ushort *array;
+-};
+-#endif
+-#endif
+ 
+ /* IMPORTS */
+ 

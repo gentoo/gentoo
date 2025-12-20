@@ -87,17 +87,12 @@ RDEPEND="
 	wavpack? ( media-sound/wavpack )
 	X? ( x11-libs/libX11 )
 "
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	dev-cpp/gtest
 	dev-cpp/ms-gsl
 "
 BDEPEND="virtual/pkgconfig"
-
-PATCHES=(
-	# Fix strict-aliasing violations in vendored katai_cpp_stl_runtime
-	# https://github.com/kaitai-io/kaitai_struct_cpp_stl_runtime/commit/c01f530.patch
-	"${FILESDIR}"/${PN}-2.5.0-fix-strict-aliasing-kaitai.patch
-)
 
 CMAKE_SKIP_TESTS=(
 	# need HID controller

@@ -24,7 +24,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="AGPL-3 CPL-1.0"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 IUSE="cups cpu_flags_arm_neon dbus gtk l10n_de static-libs unicode X"
 
 LANGS="ja ko zh-CN zh-TW"
@@ -42,7 +42,7 @@ DEPEND="
 	media-libs/libjpeg-turbo:=
 	>=media-libs/openjpeg-2.1.0:2=
 	>=media-libs/tiff-4.0.1:=
-	>=sys-libs/zlib-1.2.7
+	>=virtual/zlib-1.2.7:=
 	cups? ( >=net-print/cups-1.3.8 )
 	dbus? ( sys-apps/dbus )
 	gtk? ( x11-libs/gtk+:3 )
@@ -65,6 +65,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-10.03.1-arm64-neon-tesseract.patch
 	"${FILESDIR}"/${PN}-10.06.0-tesseract-fPIC.patch
 	"${FILESDIR}"/${PN}-10.06.0-32-bit.patch
+	"${FILESDIR}"/${PN}-10.06.0-arm-brotli.patch
 )
 
 src_prepare() {
@@ -152,8 +153,9 @@ src_configure() {
 	# leptonica and tesseract are bundled but modified upstream, like in
 	# mujs/mupdf.
 	#
-	# There is --without-local-brotli but it wants a non-existent -lbrotli
-	# and it's not clear what that corresponds do, as we have split libs.
+	# There is --without-local-brotli but it wants a non-existent -lbrotli.
+	# Fixed in https://bugs.ghostscript.com/show_bug.cgi?id=708832 for next
+	# release.
 	PKGCONFIG=$(type -P $(tc-getPKG_CONFIG)) econf \
 		--enable-freetype \
 		--enable-fontconfig \

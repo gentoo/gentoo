@@ -18,7 +18,7 @@ RESTRICT="test"
 
 RDEPEND="
 	net-misc/curl
-	sys-libs/zlib
+	virtual/zlib:=
 	virtual/libcrypt:=
 	X? (
 		x11-libs/libXaw

@@ -15,7 +15,7 @@ KEYWORDS="~alpha amd64 ~arm arm64 ppc64 ~sparc x86"
 
 RDEPEND="
 	!app-office/unoconv
-	sys-libs/zlib
+	virtual/zlib:=
 	virtual/libiconv"
 DEPEND="${RDEPEND}"
 BDEPEND="sys-apps/groff"
