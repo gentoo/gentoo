@@ -21,7 +21,7 @@ if [[ ${PV} == *_p* ]] ; then
 	"
 	S="${WORKDIR}"/linux-${PN}-${PAM_COMMIT}
 else
-	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/strace.asc
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/pam.asc
 	inherit verify-sig
 
 	SRC_URI="
@@ -30,7 +30,7 @@ else
 	"
 	S="${WORKDIR}/${MY_P}"
 
-	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-strace )"
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-pam )"
 fi
 
 LICENSE="|| ( BSD GPL-2 )"
