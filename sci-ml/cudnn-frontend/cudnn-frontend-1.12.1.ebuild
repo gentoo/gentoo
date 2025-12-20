@@ -22,7 +22,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-cpp/nlohmann_json
 	test? (
-		>dev-cpp/catch-3
+		>=dev-cpp/catch-3
 	)
 "
 
