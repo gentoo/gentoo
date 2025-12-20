@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit gnome2 meson
+inherit meson
 
 DESCRIPTION="Actions, Menus and Toolbars Kit for GTK applications"
 HOMEPAGE="https://gitlab.gnome.org/World/gedit/libgedit-amtk"
