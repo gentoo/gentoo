@@ -14,7 +14,7 @@ DESCRIPTION="YAML 1.1 (YAML Ain't Markup Language) serialization for PHP"
 
 LICENSE="MIT"
 SLOT="7"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 
 DEPEND="dev-libs/libyaml"
 RDEPEND="${DEPEND}"
