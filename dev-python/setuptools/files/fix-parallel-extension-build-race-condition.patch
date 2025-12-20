@@ -1,0 +1,45 @@
+From dcfabbcbab03eaf03a31b75de610088973f9473d Mon Sep 17 00:00:00 2001
+From: Lukas Schmelting <lschmelting@posteo.com>
+Date: Sat, 20 Dec 2025 00:34:29 +0100
+Subject: [PATCH] Prevent object file collisions in parallel extension builds
+
+Parallel builds of extensions that share source files may write to the same
+object file paths under a common build directory, resulting in race conditions
+and non-deterministic build outputs.
+
+Use a per-extension build directory to isolate object files and ensure
+deterministic, parallel-safe builds.
+---
+setuptools/_distutils/command/build_ext.py | 7 +++++-- 1 file changed, 5
+insertions(+), 2 deletions(-)
+
+diff --git a/setuptools/_distutils/command/build_ext.py b/setuptools/_distutils/command/build_ext.py
+index ec45b44..f82fb5f 100644
+--- a/setuptools/_distutils/command/build_ext.py
++++ b/setuptools/_distutils/command/build_ext.py
+@@ -562,9 +562,12 @@ class build_ext(Command):
+         for undef in ext.undef_macros:
+             macros.append((undef,))
+
++        # Per-extension build dir to avoid conflicts in parallel builds.
++        ext_build_temp = os.path.join(self.build_temp, ext.name.replace(".", "_"))
++
+         objects = self.compiler.compile(
+             sources,
+-            output_dir=self.build_temp,
++            output_dir=ext_build_temp,
+             macros=macros,
+             include_dirs=ext.include_dirs,
+             debug=self.debug,
+@@ -595,7 +598,7 @@ class build_ext(Command):
+             extra_postargs=extra_args,
+             export_symbols=self.get_export_symbols(ext),
+             debug=self.debug,
+-            build_temp=self.build_temp,
++            build_temp=ext_build_temp,
+             target_lang=language,
+         )
+
+--
+2.52.0
+
