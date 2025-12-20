@@ -182,6 +182,14 @@ src_compile() {
 	fi
 }
 
+src_test() {
+	if use static; then
+		ewarn "Cannot run tests with USE=static"
+	else
+		default
+	fi
+}
+
 src_install() {
 	set_options
 	emake "${makeopts[@]}" PROGRAMS="${progs[*]}" DESTDIR="${D}" install
