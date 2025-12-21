@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DESCRIPTION="osinfo database files"
+DESCRIPTION="Osinfo database for virtualization provisioning tools"
 HOMEPAGE="https://libosinfo.org/ https://gitlab.com/libosinfo/osinfo-db"
 SRC_URI="https://releases.pagure.org/libosinfo/${P}.tar.xz"
 S="${WORKDIR}"
@@ -11,7 +11,7 @@ S="${WORKDIR}"
 LICENSE="GPL-2+"
 SLOT="0"
 
-KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 BDEPEND="sys-apps/osinfo-db-tools"
 
