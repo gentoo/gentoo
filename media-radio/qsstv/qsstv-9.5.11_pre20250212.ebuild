@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit qmake-utils
+inherit flag-o-matic qmake-utils
 
 DESCRIPTION="Amateur radio SSTV software"
 HOMEPAGE="https://www.qsl.net/o/on4qz/"
@@ -41,6 +41,7 @@ src_prepare() {
 }
 
 src_configure() {
+	filter-lto
 	eqmake6 PREFIX="/usr"
 }
 
