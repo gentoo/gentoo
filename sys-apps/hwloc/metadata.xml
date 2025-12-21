@@ -24,6 +24,7 @@
 		<flag name="pci">Enable PCI device discovery using libpci</flag>
 		<flag name="plugins">Build hwloc components as plugins so that the hwloc core library does not directly depend on their dependencies (for instance the libpci library)</flag>
 		<flag name="rocm">Enable AMD RSMI device discovery</flag>
+		<flag name="video_cards_nvidia">Enable GL display device discovery (NVCtrl)</flag>
 		<flag name="xml">use libxml2 for XML support, instead of a custom minimalistic support</flag>
 		<flag name="X">use the X Window System</flag>
 	</use>
