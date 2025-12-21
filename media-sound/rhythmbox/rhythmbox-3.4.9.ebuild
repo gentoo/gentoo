@@ -91,10 +91,6 @@ BDEPEND="
 	test? ( dev-libs/check )
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-3.4.7-skip-broken-test.patch
-)
-
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
