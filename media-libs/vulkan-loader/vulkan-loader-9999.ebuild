@@ -49,7 +49,14 @@ multilib_src_configure() {
 		-DBUILD_WSI_XCB_SUPPORT=$(usex X)
 		-DBUILD_WSI_XLIB_SUPPORT=$(usex X)
 		-DVULKAN_HEADERS_INSTALL_DIR="${ESYSROOT}/usr"
+		-DGIT_EXECUTABLE="${BROOT}/usr/bin/git"
 	)
+
+	if tc-is-cross-compiler; then
+		# Python only needed when cross-compiling so don't bother with eclass.
+		mycmakeargs+=( -DPython3_EXECUTABLE="${BROOT}/usr/bin/python3" )
+	fi
+
 	cmake_src_configure
 }
 
