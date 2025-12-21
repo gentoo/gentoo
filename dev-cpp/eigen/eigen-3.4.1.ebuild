@@ -24,8 +24,11 @@ if [[ ${PV} = *9999* ]] ; then
 		EGIT_BRANCH="$(ver_cut 1-2)"
 	fi
 else
+	# we backport two patches from the 3.4 branch
 	SRC_URI="
 		https://gitlab.com/lib${PN}/${PN}/-/archive/${PV}/${P}.tar.bz2
+		https://gitlab.com/libeigen/eigen/-/commit/0295f81a835ef69e2bacd9e75ab5782eca398720.patch -> ${P}_p1.patch
+		https://gitlab.com/libeigen/eigen/-/commit/28ded8800c26864e537852658428ab44c8399e87.patch -> ${P}_p2.patch
 	"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos"
 fi
@@ -225,6 +228,9 @@ PATCHES=(
 
 	"${FILESDIR}/${PN}-5.0.1-cmake-GNUInstallDirs.patch"
 	"${FILESDIR}/${PN}-5.0.1-Do-not-show-deprecated-CUDA-device-properties-for-CU.patch"
+
+	"${DISTDIR}/${P}_p1.patch"
+	"${DISTDIR}/${P}_p2.patch"
 )
 
 # TODO should be in cuda.eclass
