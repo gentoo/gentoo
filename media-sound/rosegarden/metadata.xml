@@ -5,6 +5,9 @@
     <email>proaudio@gentoo.org</email>
     <name>Gentoo ProAudio Project</name>
   </maintainer>
+  <use>
+    <flag name="lv2">Add support for Ladspa V2 plugins</flag>
+  </use>
   <upstream>
     <remote-id type="sourceforge">rosegarden</remote-id>
   </upstream>

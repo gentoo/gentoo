@@ -1,0 +1,13 @@
+not merged for now by upstream (was for Pitch.h) but definitely required
+see https://sourceforge.net/p/rosegarden/bugs/1746/#a512
+--- a/src/base/Pitch.cpp
++++ b/src/base/Pitch.cpp
+@@ -28,6 +28,8 @@
+ 
+ #include <vector>
+ 
++#include <QObject>
++
+ //dmm This will make everything excruciatingly slow if defined:
+ //#define DEBUG_PITCH
+ 

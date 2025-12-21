@@ -1,0 +1,12 @@
+update cmake_min, see https://bugs.gentoo.org/964467
+from upstream https://sourceforge.net/p/rosegarden/git/ci/667697c99ed8808d40d3dea1e1b138c425e729bb
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ # CMake version required. This must be the very first line, because it sets
+ # default policies affecting everything else.
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.10)
+ 
+ # Project name
+ project(rosegarden)

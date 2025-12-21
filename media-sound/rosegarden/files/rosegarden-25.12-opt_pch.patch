@@ -1,0 +1,12 @@
+avoid precompiled-headers by default
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -853,7 +853,7 @@ add_library(rosegardenprivate ${RG_LIBRARY_TYPE}
+ 
+ # If we've got cmake 3.16.0 or greater, use precompiled headers.
+ # Cuts build time almost in half.
+-if(NOT ${CMAKE_VERSION} VERSION_LESS "3.16.0")
++if(NOT ${CMAKE_VERSION} VERSION_LESS "3.16.0" AND NOT DISABLE_PCH)
+   target_precompile_headers(rosegardenprivate
+     PRIVATE
+       # There's definitely a point where gcc slows down with too many
