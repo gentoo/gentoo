@@ -246,11 +246,6 @@ x11-wm/lumina
 # Removal on 2025-12-27.
 media-gfx/meshlab
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-11-27)
-# Depends on Qt5, no reply or activity upstream. Bug #961793
-# Removal on 2025-12-27.
-app-i18n/tagainijisho
-
 # Sam James <sam@gentoo.org> (2025-11-25)
 # Generates session keys with weak (no) randomness. Please re-encrypt
 # any data/messages using this librnp version. <0.18 is fine as is >=0.18.1.
