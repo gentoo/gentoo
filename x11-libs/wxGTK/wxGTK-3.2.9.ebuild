@@ -58,7 +58,10 @@ RDEPEND="
 	dev-libs/libpcre2[pcre16,pcre32,unicode]
 	virtual/zlib:=[${MULTILIB_USEDEP}]
 	curl? ( net-misc/curl )
-	keyring? ( app-crypt/libsecret )
+	keyring? (
+		app-crypt/libsecret
+		>=dev-libs/glib-2.22:2[${MULTILIB_USEDEP}]
+	)
 	lzma? ( app-arch/xz-utils )
 	X? ( ${COMMON_GUI_RDEPEND}
 		x11-libs/libSM[${MULTILIB_USEDEP}]
@@ -164,6 +167,7 @@ multilib_src_configure() {
 		-DwxDEFAULT_TOOLKIT=gtk3
 		-DwxUSE_LIBPNG=sys
 		-DwxUSE_LIBJPEG=sys
+		-DwxUSE_LIBTIFF="$(usex tiff sys OFF)"
 		-DwxUSE_LIBMSPACK=ON
 		-DwxUSE_NANOSVG=builtin
 
@@ -174,6 +178,7 @@ multilib_src_configure() {
 		-DwxUSE_LIBNOTIFY="$(usex libnotify)"
 		-DwxUSE_OPENGL="$(usex opengl)"
 		-DwxUSE_SPELLCHECK="$(usex spell)"
+		-DwxUSE_DETECT_SM="$(usex X)"
 		# TODO: test_gui too with xvfb-run, as Fedora does?
 		-DwxBUILD_TESTS="$(usex test CONSOLE_ONLY OFF)"
 		-DwxUSE_UIACTIONSIMULATOR="$(usex X)"
