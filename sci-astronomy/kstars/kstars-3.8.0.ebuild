@@ -75,7 +75,8 @@ CMAKE_SKIP_TESTS=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.7.4-cmake.patch # bug 895892, downstream patch
-	"${FILESDIR}"/${P}-gcc15.patch
+	"${FILESDIR}"/${P}-cmake.patch # MR #1610 pending upstream
+	"${FILESDIR}"/${P}-gcc15.patch # fixed in 3.8.1
 )
 
 src_configure() {

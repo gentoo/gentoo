@@ -5,31 +5,13 @@ Subject: [PATCH] Thanks, but no thanks
 
 Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
 ---
- CMakeLists.txt | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ CMakeLists.txt | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 index a3b591512..31071aeef 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -345,7 +345,7 @@ add_definitions(-DQT_NO_CAST_TO_ASCII)
- # Needed for htmesh, and libraw
- kde_enable_exceptions()
- 
--if (UNIX)
-+if (0)
- 
-   # TEMPORARY: To disable QCustomPlot warning until 2.0.0 is released which fixes these warnings
-   SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-non-virtual-dtor")
-@@ -355,7 +355,7 @@ if (UNIX)
-     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fdata-sections -ffunction-sections")
-     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,--gc-sections")
-   endif()
--endif(UNIX)
-+endif()
- 
- # Optimize binary size by dropping unneeded symbols at linking stage
- if (ANDROID)
 @@ -364,7 +364,7 @@ if (ANDROID)
  endif ()
  
