@@ -65,7 +65,6 @@ pkg_setup() {
 src_configure() {
 	local mycmakeargs=(
 		-DOMIT_EXAMPLES=ON
-		-DBUILD_TERMINALTOOL=ON
 	)
 
 	ecm_src_configure
