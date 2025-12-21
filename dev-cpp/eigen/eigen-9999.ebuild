@@ -88,7 +88,7 @@ REQUIRED_USE="
 "
 
 # Tests failing again because of compiler issues; bugs #932646, #943401
-RESTRICT="test !test? ( test )"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	doc? (
@@ -254,6 +254,8 @@ src_configure() {
 
 			-DCMAKE_DISABLE_FIND_PACKAGE_MPREAL=ON
 
+			-DEIGEN_TEST_CXX11=yes
+
 			# -DEIGEN_TEST_CUSTOM_CXX_FLAGS= # Additional compiler flags when compiling unit tests.
 			# -DEIGEN_TEST_CUSTOM_LINKER_FLAGS= # Additional linker flags when linking unit tests.
 			# -DEIGEN_TEST_BUILD_FLAGS= # Options passed to the build command of unit tests
@@ -407,9 +409,9 @@ src_compile() {
 	fi
 	if use test; then
 		targets+=( buildtests )
-		# if ! use lapack; then
-		# 	targets+=( blas )
-		# fi
+		if ! use lapack; then
+			targets+=( blas )
+		fi
 		# tests generate random data, which
 		# obviously fails for some seeds
 		export EIGEN_SEED=712808
