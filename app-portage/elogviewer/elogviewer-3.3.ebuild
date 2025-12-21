@@ -4,7 +4,7 @@
 EAPI=8
 
 DISABLE_AUTOFORMATTING=true
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..13} )
 inherit desktop python-single-r1 readme.gentoo-r1
 
 DESCRIPTION="Elog viewer for Gentoo"
