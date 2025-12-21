@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} pypy3_11 )
+PYTHON_COMPAT=( python3_{12..13} )
 DISTUTILS_USE_PEP517=pdm-backend
 
 inherit distutils-r1 pypi
