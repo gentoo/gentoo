@@ -4,7 +4,7 @@
 EAPI=8
 
 MODULES_OPTIONAL_USE="modules"
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..13} )
 
 inherit autotools dot-a flag-o-matic linux-mod-r1 multiprocessing
 inherit python-single-r1 systemd tmpfiles
