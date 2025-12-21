@@ -1,12 +1,21 @@
-https://github.com/iputils/iputils/pull/601
+https://github.com/iputils/iputils/commit/35ed506fe4bfc393284138915017d4b7da1a6f3e
 From: Brahmajit Das <listout@listout.xyz>
 Date: Sun, 22 Jun 2025 07:30:38 +0530
-Subject: [PATCH] meson.build: strict check for error function
+Subject: [PATCH] meson.build: Enhance check for error() function
 
-Along with checking for presense of error.h we should also check if we
-can use the error function and it's getting properly linked.
+Along with checking for presence of <error.h> some toolchains also
+require to check for error() function to avoid linking error, e.g.
+powerpc64-unknown-linux-musl-gcc from Gentoo:
 
-Dowstream-bug: https://bugs.gentoo.org/947680
+    [17/18] powerpc64-unknown-linux-musl-gcc  -o ping/ping ping/ping.p/ping.c.o ping/ping.p/ping_common.c.o ping/ping.p/ping6_common.c.o ping/ping.p/node_info.c.o -Wl,--as-needed -Wl,--no-undefined -Os -pipe -mcpu=970 -mtune=970 -maltivec -mabi=altivec -Wl,-O1 -Wl,--as-needed -Wl,-z,pack-relative-relocs -Wl,--start-group libcommon.a -lm -lresolv -Wl,--end-group
+    FAILED: ping/ping
+    powerpc64-unknown-linux-musl-gcc  -o ping/ping ping/ping.p/ping.c.o ping/ping.p/ping_common.c.o ping/ping.p/ping6_common.c.o ping/ping.p/node_info.c.o -Wl,--as-needed -Wl,--no-undefined -Os -pipe -mcpu=970 -mtune=970 -maltivec -mabi=altivec -Wl,-O1 -Wl,--as-needed -Wl,-z,pack-relative-relocs -Wl,--start-group libcommon.a -lm -lresolv -Wl,--end-group
+    /usr/lib/gcc/powerpc64-unknown-linux-musl/14/../../../../powerpc64-unknown-linux-musl/bin/ld: ping/ping.p/ping.c.o: in function `ping_strtod':
+    ping.c:(.text+0x1c8): undefined reference to `error'
+
+Closes: https://github.com/iputils/iputils/pull/601
+Dowstream-bug: https://bugs.gentoo.org/951050
+Reviewed-by: Petr Vorel <pvorel@suse.cz>
 Signed-off-by: Brahmajit Das <listout@listout.xyz>
 --- a/meson.build
 +++ b/meson.build
@@ -19,6 +28,3 @@ Signed-off-by: Brahmajit Das <listout@listout.xyz>
  		conf.set('HAVE_' + h.to_upper().underscorify(), 1,
  			description : 'Define if ' + h + ' can be included.')
  	endif
--- 
-2.50.0
-
