@@ -43,6 +43,7 @@
 dev-lang/julia
 dev-libs/redland-bindings
 dev-python/happybase
+games-engines/scrap-engine
 games-rpg/pokete
 net-misc/pulseaudio-dlna
 www-client/seamonkey
