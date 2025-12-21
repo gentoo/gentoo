@@ -2336,9 +2336,6 @@ gcc_do_make() {
 			STAGE1_CFLAGS="-O0"
 			STAGE1_CXXFLAGS="-O0"
 			STAGE1_GDCFLAGS="-O0"
-
-			# ICEs w/ checking with < GCC 10
-			filter-flags -mtls-dialect=gnu2
 		# We have a very good host compiler but it may be a bit too good, and
 		# know about flags that the version we are compiling does not know
 		# about. In principle we could check e.g. which gnat1 we are using as
