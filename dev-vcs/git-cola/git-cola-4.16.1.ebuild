@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 DISTUTILS_SINGLE_IMPL=true
 DISTUTILS_USE_PEP517=setuptools
 inherit desktop distutils-r1 optfeature readme.gentoo-r1 virtualx xdg
