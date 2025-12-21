@@ -230,11 +230,6 @@ sci-libs/djbfft
 # Removal on 2025-12-30.  Bugs #966396, #963998.
 dev-python/readthedocs-sphinx-ext
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-11-27)
-# Depends on Qt5, upstream needs help with porting. Bug #956453
-# Removal on 2025-12-27.
-media-gfx/panini
-
 # Sam James <sam@gentoo.org> (2025-11-25)
 # Generates session keys with weak (no) randomness. Please re-encrypt
 # any data/messages using this librnp version. <0.18 is fine as is >=0.18.1.
