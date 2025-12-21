@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 PYTHON_REQ_USE='sqlite?,threads(+)'
 
 inherit bash-completion-r1 distutils-r1 multiprocessing optfeature verify-sig
