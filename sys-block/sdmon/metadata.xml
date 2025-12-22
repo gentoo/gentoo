@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>flow@gentoo.org</email>
+		<name>Florian Schmaus</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">Ognian/sdmon</remote-id>
+		<bugs-to>https://github.com/Ognian/sdmon/issues</bugs-to>
+	</upstream>
+</pkgmetadata>
