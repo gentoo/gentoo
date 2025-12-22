@@ -59,6 +59,10 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "
+PATCHES=(
+	# https://gitlab.gnome.org/GNOME/gthumb/-/issues/376
+	"${FILESDIR}/${P}-disabled-lcms2.patch"
+)
 
 src_configure() {
 	use X || append-cflags -DGENTOO_GTK_HIDE_X11
