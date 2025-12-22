@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools toolchain-funcs
 
 DESCRIPTION="Foreign function interface for bash"
-HOMEPAGE="http://ctypes.sh/"
+HOMEPAGE="https://github.com/taviso/ctypes.sh"
 SRC_URI="https://github.com/taviso/${PN/-/.}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="MIT"
