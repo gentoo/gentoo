@@ -141,7 +141,7 @@ dev-ada/libadalang
 dev-ada/spawn
 dev-ada/gtkada
 dev-ada/markdown
-dev-ada/VSS
+dev-ada/vss-text
 dev-ada/aws
 dev-ada/aunit
 dev-ada/ada_language_server

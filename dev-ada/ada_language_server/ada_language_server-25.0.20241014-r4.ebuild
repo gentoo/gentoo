@@ -33,7 +33,7 @@ RDEPEND="${ADA_DEPS}
 	dev-ada/prettier-ada:=[${ADA_USEDEP}]
 	dev-ada/spawn:=[${ADA_USEDEP},gtk?]
 	dev-ada/templates-parser:=[${ADA_USEDEP},shared(+)]
-	>=dev-ada/VSS-25.0.0:=[${ADA_USEDEP},shared]
+	dev-ada/vss-text:=[${ADA_USEDEP},shared]
 	dev-ada/xmlada:=[${ADA_USEDEP},shared]
 	dev-libs/gmp
 	sys-fs/fswatch:="

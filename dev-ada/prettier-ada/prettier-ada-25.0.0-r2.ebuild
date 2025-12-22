@@ -18,7 +18,7 @@ KEYWORDS="amd64 ~arm64 x86"
 IUSE="+shared static-libs static-pic test"
 
 RDEPEND="${ADA_DEPS}
-	dev-ada/VSS:${SLOT}[${ADA_USEDEP},shared?,static-libs?,static-pic?]
+	dev-ada/vss-text:${SLOT}[${ADA_USEDEP},shared?,static-libs?,static-pic?]
 	dev-ada/gnatcoll-core:${SLOT}[${ADA_USEDEP},shared?,static-libs?,static-pic?]"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
