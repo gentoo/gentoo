@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation.
+# Copyright 1999-2025 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
 
 # Base SELinux packages
@@ -8,3 +8,9 @@
 *sys-apps/checkpolicy
 *sys-apps/policycoreutils
 *sec-policy/selinux-base-policy
+
+# Rahul Sandhu <nvraxn@gmail.com> (2025-12-22)
+# SELinux base policy seems to hard depend on both the dbus and
+# policykit modules at the moment. Bug #891963
+*sec-policy/selinux-dbus
+*sec-policy/selinux-policykit
