@@ -1,5 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Fabian Groffen <grobian@gentoo.org> (2025-12-22)
+# Fails to compile in gnulib on invalid decls for memset, memmove,
+# strncpy, etc. probably incompatibility with system headers
+# same as for macOS, not on RAP, so probably caused by libc (version)
+=sys-devel/m4-1.4.20
 
 # Michael Haubenwallner <haubi@gentoo.org> (2019-01-08)
 # Prefix Guest does use host libc and host kernel's headers,
