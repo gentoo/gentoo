@@ -23,7 +23,7 @@ RDEPEND="
 	>=app-misc/tinysparql-3.8:3
 	>=sys-apps/dbus-1.3.1
 	xmp? ( >=media-libs/exempi-2.1.0:= )
-	raw? ( media-libs/gexiv2 )
+	raw? ( media-libs/gexiv2:= )
 	>=dev-libs/glib-2.76:2
 	dev-libs/libgudev
 	>=dev-libs/gobject-introspection-1.82.0-r2
