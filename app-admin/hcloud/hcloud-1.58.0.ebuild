@@ -13,6 +13,8 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
+BDEPEND=">=dev-lang/go-1.25.5"
+
 src_compile() {
 	ego build -o ${PN} -ldflags "-w -X github.com/hetznercloud/cli/internal/version.versionPrerelease=gentoo" ./cmd/${PN}
 }
