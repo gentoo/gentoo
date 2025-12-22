@@ -7,9 +7,10 @@ ADA_COMPAT=( gcc_{13..16} )
 inherit ada multiprocessing
 
 DESCRIPTION="A high level string and text processing library"
-HOMEPAGE="https://github.com/AdaCore/VSS"
-SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
-	-> ${P}.tar.gz"
+HOMEPAGE="https://github.com/AdaCore/vss-text"
+SRC_URI="https://github.com/AdaCore/VSS/archive/refs/tags/v${PV}.tar.gz
+	-> VSS-${PV}.tar.gz"
+S="${WORKDIR}"/VSS-${PV}
 
 LICENSE="GPL-3 gcc-runtime-library-exception-3.1"
 SLOT="0/${PV}"
