@@ -359,11 +359,8 @@ selinux-policy-2_pkg_postinst() {
 		if [[ $? -ne 0 ]]; then
 			ewarn "SELinux module load failed. Trying full reload...";
 
-			if [[ "${1}" == "targeted" ]]; then
-				semodule ${root_opts} -s ${1} -i *.pp
-			else
-				semodule ${root_opts} -s ${1} -i $(ls *.pp | grep -v unconfined.pp);
-			fi
+			semodule ${root_opts} -s ${1} -i *.pp
+
 			if [[ $? -ne 0 ]]; then
 				ewarn "Failed to reload SELinux policies."
 				ewarn ""
@@ -376,11 +373,8 @@ selinux-policy-2_pkg_postinst() {
 				ewarn "action since the new SELinux policies are not loaded until the"
 				ewarn "command finished successfully."
 				ewarn ""
-				ewarn "To reload, run the following command from within /usr/share/selinux/${1}:"
-				ewarn "  semodule -i *.pp"
-				ewarn "or"
-				ewarn "  semodule -i \$(ls *.pp | grep -v unconfined.pp)"
-				ewarn "depending on if you need the unconfined domain loaded as well or not."
+				ewarn "To reload, run the following command:"
+				ewarn "  semodule -i /usr/share/selinux/${1}/*.pp"
 			else
 				einfo "SELinux modules reloaded successfully."
 			fi
