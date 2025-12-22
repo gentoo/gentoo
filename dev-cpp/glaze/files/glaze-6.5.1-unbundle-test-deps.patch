@@ -1,0 +1,41 @@
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index ade41281..63fed1c7 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -1,17 +1,9 @@
+ include(FetchContent)
+ 
+-FetchContent_Declare(
+-  ut
+-  GIT_REPOSITORY https://github.com/openalgz/ut
+-  GIT_TAG v1.1.0
+-  GIT_SHALLOW TRUE
+-)
++find_package(ut2-glaze REQUIRED)
+ 
+ message(STATUS "Fetching dependencies...")
+ set_directory_properties(PROPERTIES EXCLUDE_FROM_ALL TRUE)
+-set(CMAKE_SKIP_INSTALL_RULES ON CACHE BOOL "" FORCE)
+-FetchContent_MakeAvailable(ut)
+-set(CMAKE_SKIP_INSTALL_RULES OFF CACHE BOOL "" FORCE)
+ set_directory_properties(PROPERTIES EXCLUDE_FROM_ALL FALSE)
+ message(STATUS "...finished fetching dependencies.")
+ 
+@@ -76,7 +68,7 @@ add_code_coverage_all_targets()
+ 
+ add_library(glz_test_common INTERFACE)
+ target_compile_features(glz_test_common INTERFACE cxx_std_23)
+-target_link_libraries(glz_test_common INTERFACE ut::ut glaze::glaze glz_asio)
++target_link_libraries(glz_test_common INTERFACE ut2-glaze::ut2-glaze glaze::glaze glz_asio)
+ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+     target_compile_options(glz_test_common INTERFACE -fno-exceptions -fno-rtti)
+     if(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+@@ -102,7 +94,7 @@ endif()
+ 
+ add_library(glz_test_exceptions INTERFACE)
+ target_compile_features(glz_test_exceptions INTERFACE cxx_std_23)
+-target_link_libraries(glz_test_exceptions INTERFACE ut::ut glaze::glaze glz_asio)
++target_link_libraries(glz_test_exceptions INTERFACE ut2-glaze::ut2-glaze glaze::glaze glz_asio)
+ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+     target_compile_options(glz_test_exceptions INTERFACE)
+     target_compile_options(glz_test_exceptions INTERFACE -Wall -Wextra -pedantic)
