@@ -19,9 +19,6 @@ RESTRICT="!test? ( test )"
 
 # tracker-2.1.7 currently always depends on ICU (theoretically could be libunistring instead);
 # so choose ICU over enca always here for the time being (ICU is preferred)
-#
-# FIXME: Depend on media-libs/gexiv2-0.16 ASAP, which is listed as a
-# dependency since localsearch-3.10.2
 RDEPEND="
 	>=app-misc/tinysparql-3.8:3
 	>=sys-apps/dbus-1.3.1
