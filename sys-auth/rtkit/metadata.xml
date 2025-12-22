@@ -8,6 +8,6 @@
 	rlimits, etc.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">heftig/rtkit</remote-id>
+		<remote-id type="freedesktop-gitlab">pipewire/rtkit</remote-id>
 	</upstream>
 </pkgmetadata>
