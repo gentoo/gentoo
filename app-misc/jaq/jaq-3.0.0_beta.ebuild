@@ -118,7 +118,6 @@ CRATES="
 	winnow@0.7.13
 	wit-bindgen-rt@0.39.0
 	xmlparser@0.13.6
-	yansi@1.0.1
 "
 
 #RUST_MIN_VER="1.70.0"
@@ -134,10 +133,7 @@ S="${WORKDIR}/${PN}-${PV/_/-}"
 
 LICENSE="MIT"
 # Dependent crate licenses
-LICENSE+="
-	MIT Unicode-3.0 ZLIB
-	|| ( Apache-2.0 Boost-1.0 )
-"
+LICENSE+=" Apache-2.0 Boost-1.0 MIT MPL-2.0 Unicode-3.0 ZLIB"
 SLOT="0"
 KEYWORDS="~amd64"
 
