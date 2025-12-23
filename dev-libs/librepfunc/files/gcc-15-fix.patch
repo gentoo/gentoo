@@ -1,0 +1,36 @@
+commit 90c9c9ba279fcd1e6a3b68a1620de76e7634f885
+Author: wirbel <womp@herr-der-mails.de>
+Date:   Wed Dec 10 13:57:42 2025 +0100
+
+    gcc-15 fix
+
+diff --git a/StrToInt.cpp b/StrToInt.cpp
+index a38192d..fb8f1a0 100644
+--- a/StrToInt.cpp
++++ b/StrToInt.cpp
+@@ -31,10 +31,8 @@ std::intmax_t StrToIntT(const std::basic_string<T>& s, size_t* pos, size_t base,
+         }
+      catch(const std::exception& e) {
+         std::cerr << f
+-               << ": ERROR: cannot convert '"
+-               << (const T*)s.c_str()
+-               << "' to integer: "
+-               << (const T*)e.what() << std::endl;
++               << ": ERROR: cannot convert to integer: "
++               << e.what() << std::endl;
+         return err;
+         }
+      }
+diff --git a/StrToWstr.cpp b/StrToWstr.cpp
+index 3493335..026439e 100644
+--- a/StrToWstr.cpp
++++ b/StrToWstr.cpp
+@@ -9,6 +9,8 @@
+ 
+ /* NOTE: this code needs to be modified in future,
+  *       as C++17 deprecated std::codecvt_utf8
++ *
++ * https://www.geeksforgeeks.org/cpp/wcstombs-function-in-c-stl/
+  */
+ 
+ std::string WStrToStr(std::wstring ws) {
