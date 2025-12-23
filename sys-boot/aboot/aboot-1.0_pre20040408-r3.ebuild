@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,11 +8,10 @@ inherit toolchain-funcs
 KERN_VER="2.6.22"
 
 DESCRIPTION="Alpha Linux boot loader for SRM"
-HOMEPAGE="http://aboot.sourceforge.net/"
-SRC_URI="http://aboot.sourceforge.net/tarballs/${P}.tar.bz2
+HOMEPAGE="https://sourceforge.net/projects/aboot/"
+SRC_URI="https://aboot.sourceforge.net/tarballs/${P}.tar.bz2
 	mirror://gentoo/gentoo-headers-base-${KERN_VER}.tar.bz2
-	mirror://gentoo/${PN}_gentoo.diff.bz2
-	https://dev.gentoo.org/~armin76/dist/${PN}_gentoo.diff.bz2"
+	mirror://gentoo/${PN}_gentoo.diff.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
