@@ -34,7 +34,7 @@ S="${WORKDIR}"/vim-${PV}
 
 LICENSE="vim"
 SLOT="0"
-IUSE="acl crypt cscope debug lua minimal motif netbeans nls perl python racket ruby selinux session sound tcl wayland X ${GENTOO_PERL_USESTRING}"
+IUSE="acl crypt cscope debug lua minimal motif netbeans nls perl python racket ruby selinux session sound tcl wayland ${GENTOO_PERL_USESTRING}"
 REQUIRED_USE="
 	lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -51,7 +51,7 @@ RDEPEND="
 	acl? ( kernel_linux? ( sys-apps/acl ) )
 	motif? ( >=x11-libs/motif-2.3:0 )
 	!motif? (
-		x11-libs/gtk+:3[X?]
+		x11-libs/gtk+:3[X]
 		x11-libs/libXft
 	)
 	crypt? ( dev-libs/libsodium:= )
@@ -232,8 +232,6 @@ src_configure() {
 		myconf+=( --enable-gtk3-check )
 		einfo "Building gvim with the gtk+-3 GUI"
 		myconf+=( --enable-gui=gtk3 )
-
-		use X || append-flags -DGENTOO_GTK_HIDE_X11
 	fi
 	echo ; echo
 
