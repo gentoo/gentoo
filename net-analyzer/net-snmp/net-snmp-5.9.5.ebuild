@@ -45,7 +45,7 @@ COMMON_DEPEND="
 	mysql? ( dev-db/mysql-connector-c:0= )
 	pcap? ( net-libs/libpcap )
 	pci? ( sys-apps/pciutils )
-	pcre? ( dev-libs/libpcre2 )
+	pcre? ( dev-libs/libpcre )
 	perl? (
 		${GENTOO_PERL_DEPSTRING}
 		dev-lang/perl:=
@@ -88,6 +88,11 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.8-pcap.patch
 	"${FILESDIR}"/${PN}-5.8.1-mysqlclient.patch
 	"${FILESDIR}"/${PN}-5.9-MakeMaker.patch
+	# https://github.com/net-snmp/net-snmp/pull/493
+	"${FILESDIR}"/${PN}-5.9.3-0001-Fix-LDFLAGS-vs-LIBS-ordering.patch
+	"${FILESDIR}"/${PN}-5.9.3-0002-Tidy-up-net-snmp-config-output.patch
+	"${FILESDIR}"/${PN}-5.9.3-0003-Prune-Libs.private-entries-in-netsnmp-.pc.in.patch
+	"${FILESDIR}"/${PN}-5.9.3-0004-Search-for-ltinfo-in-configure-if-needed.patch
 )
 
 pkg_setup() {
@@ -143,8 +148,7 @@ src_configure() {
 		--with-nl \
 		$(use_with pcap) \
 		$(use_with pci) \
-		$(use_with pcre pcre2-8) \
-		--without-pcre \
+		$(use_with pcre) \
 		$(use_with perl perl-modules INSTALLDIRS=vendor) \
 		$(use_with python python-modules) \
 		$(use_with rpm) \
