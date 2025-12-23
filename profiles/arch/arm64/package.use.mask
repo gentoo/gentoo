@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2025-12-23)
+# sys-process/numactl is available here
+sys-fs/fuse -io-uring
+
 # Michał Górny <mgorny@gentoo.org> (2025-11-01)
 # app-crypt/sequoia-chameleon-gnupg is keyworded here.
 app-alternatives/gpg -sequoia
