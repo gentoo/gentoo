@@ -142,6 +142,7 @@ dev-ada/spawn
 dev-ada/gtkada
 dev-ada/markdown
 dev-ada/vss-text
+dev-ada/vss-extra
 dev-ada/aws
 dev-ada/aunit
 dev-ada/ada_language_server
