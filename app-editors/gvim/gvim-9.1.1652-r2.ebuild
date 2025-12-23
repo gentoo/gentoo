@@ -21,9 +21,10 @@ if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/vim/vim.git"
 	EGIT_CHECKOUT_DIR=${WORKDIR}/vim-${PV}
 else
-	SRC_URI="https://github.com/vim/vim/archive/v${PV}.tar.gz -> vim-${PV}.tar.gz
-		https://gitweb.gentoo.org/proj/vim-patches.git/snapshot/vim-patches-vim-${VIM_PATCHES_VERSION}-patches.tar.bz2"
-		# https://github.com/douglarek/gentoo-vim-patches/releases/download/vim-${VIM_PATCHES_VERSION}-patches/vim-${VIM_PATCHES_VERSION}-patches.tar.gz"
+	SRC_URI="
+		https://github.com/vim/vim/archive/v${PV}.tar.gz -> vim-${PV}.tar.gz
+		https://gitweb.gentoo.org/proj/vim-patches.git/snapshot/vim-patches-vim-${VIM_PATCHES_VERSION}-patches.tar.bz2
+	"
 	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 fi
 
