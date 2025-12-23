@@ -108,6 +108,9 @@ python_install() {
 	python_scriptinto /usr/sbin
 	python_doscript "${S}"/semanage/semanage
 
+	# set _PYTHON_SCRIPTROOT to the implicit default for the next python target, bug #967869
+	python_scriptinto /usr/bin
+
 	python_optimize
 }
 
