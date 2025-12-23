@@ -319,11 +319,6 @@ games-emulation/gngeo
 # Removal on 2025-12-16.  Bug #960358.
 sys-fs/encfs
 
-# Michał Górny <mgorny@gentoo.org> (2025-09-15)
-# Masking due to regressions.
-# https://github.com/pyparsing/pyparsing/issues/618
-=dev-python/pyparsing-3.2.4
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
 # Obsolete transitional meta package. Bug #961795. Removal on 2025-09-28.
 media-sound/pulseaudio
