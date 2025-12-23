@@ -113,12 +113,6 @@ LICENSE="GPL-2"
 SLOT="0"
 S="${WORKDIR}/"
 
-# @ECLASS_VARIABLE: PATCHBUNDLE
-# @INTERNAL
-# @DESCRIPTION:
-# Path to Gentoo Hardened Refpol patch to apply on top of upstream
-PATCHBUNDLE="${DISTDIR}/patchbundle-selinux-base-policy-${BASEPOL}.tar.bz2"
-
 # Modules should always depend on at least the first release of the
 # selinux-base-policy for which they are generated.
 if [[ -n ${BASEPOL} ]]; then
