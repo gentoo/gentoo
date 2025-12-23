@@ -474,7 +474,7 @@ tc-ld-is-bfd() {
 	EOF
 	out=$($(tc-getCC "$@") ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} -Wl,--version "${base}.c" -o "${base}" 2>&1)
 	rm -f "${base}"*
-	if [[ ! ${out} =~ .*^"GNU ld".* ]] ; then
+	if [[ ! ${out} =~ (^|$'\n')"GNU ld".* ]] ; then
 		return 1
 	fi
 
