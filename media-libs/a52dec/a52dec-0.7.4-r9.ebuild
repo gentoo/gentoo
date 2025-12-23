@@ -5,9 +5,17 @@ EAPI=8
 
 inherit autotools flag-o-matic multilib-minimal
 
+MY_PV="v${PV}"
+MY_P="${PN}-${MY_PV}"
+
 DESCRIPTION="Library for decoding ATSC A/52 streams used in DVD"
-HOMEPAGE="https://liba52.sourceforge.net/"
-SRC_URI="https://liba52.sourceforge.net/files/${P}.tar.gz"
+HOMEPAGE="
+	https://git.adelielinux.org/community/a52dec
+	https://liba52.sourceforge.net/
+"
+SRC_URI="https://git.adelielinux.org/community/a52dec/-/archive/${MY_PV}/${MY_P}.tar.gz"
+
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2+"
 SLOT="0"
