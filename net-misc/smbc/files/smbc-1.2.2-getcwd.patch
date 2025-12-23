@@ -1,0 +1,19 @@
+fix error on musl:
+
+> dcigettext.c:154:7: error: conflicting types for 'getcwd'; have 'char *(void)'
+>   154 | char *getcwd ();
+>       |       ^~~~~~
+
+diff --git a/intl/dcigettext.c b/intl/dcigettext.c
+index 35238e2..1d027bb 100644
+--- a/intl/dcigettext.c
++++ b/intl/dcigettext.c
+@@ -151,7 +151,7 @@ char *getwd ();
+ #  if VMS
+ #   define getcwd(buf, max) (getcwd) (buf, max, 0)
+ #  else
+-char *getcwd ();
++char *getcwd (char *, size_t);
+ #  endif
+ # endif
+ # ifndef HAVE_STPCPY
