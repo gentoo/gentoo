@@ -1,0 +1,27 @@
+https://savannah.gnu.org/patch/?10554
+diff --git a/gtk/xboard.c b/gtk/xboard.c
+index 485e9425..c53de93f 100644
+--- a/gtk/xboard.c
++++ b/gtk/xboard.c
+@@ -2086,7 +2086,7 @@ DisplayIcsInteractionTitle (String message)
+       Window win = (Window) atoi(wina);
+       Window root, parent, *children;
+       unsigned int nchildren;
+-      int (*oldHandler)() = XSetErrorHandler(NullXErrorCheck);
++      int (*oldHandler)(Display *, XErrorEvent *) = XSetErrorHandler(NullXErrorCheck);
+       for (;;) {
+ 	if (XFetchName(xDisplay, win, &oldICSInteractionTitle)) break;
+ 	if (!XQueryTree(xDisplay, win, &root, &parent,
+diff --git a/xaw/xboard.c b/xaw/xboard.c
+index 1c3ffc76..6af432ab 100644
+--- a/xaw/xboard.c
++++ b/xaw/xboard.c
+@@ -2171,7 +2171,7 @@ DisplayIcsInteractionTitle (String message)
+       Window win = (Window) atoi(wina);
+       Window root, parent, *children;
+       unsigned int nchildren;
+-      int (*oldHandler)() = XSetErrorHandler(NullXErrorCheck);
++      int (*oldHandler)(Display *, XErrorEvent *) = XSetErrorHandler(NullXErrorCheck);
+       for (;;) {
+ 	if (XFetchName(xDisplay, win, &oldICSInteractionTitle)) break;
+ 	if (!XQueryTree(xDisplay, win, &root, &parent,
