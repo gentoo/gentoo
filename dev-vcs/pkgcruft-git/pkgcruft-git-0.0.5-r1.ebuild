@@ -35,7 +35,6 @@ IUSE="test"
 RESTRICT="!test? ( test ) test"
 
 DEPEND="
-	dev-libs/libgit2:=
 	dev-libs/openssl:=
 "
 RDEPEND="${DEPEND}"
