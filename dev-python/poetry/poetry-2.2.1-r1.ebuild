@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 
 RDEPEND="
 	>=dev-python/poetry-core-${PV}[${PYTHON_USEDEP}]
@@ -25,7 +25,7 @@ RDEPEND="
 	>=dev-python/build-1.2.1[${PYTHON_USEDEP}]
 	>=dev-python/cachecontrol-0.14.0[${PYTHON_USEDEP}]
 	>=dev-python/cleo-2.1.0[${PYTHON_USEDEP}]
-	>=dev-python/dulwich-0.24.0[${PYTHON_USEDEP}]
+	<dev-python/dulwich-0.25.0[${PYTHON_USEDEP}]
 	>=dev-python/fastjsonschema-2.18.0[${PYTHON_USEDEP}]
 	>=dev-python/findpython-0.6.2[${PYTHON_USEDEP}]
 	>=dev-python/installer-0.7.0[${PYTHON_USEDEP}]

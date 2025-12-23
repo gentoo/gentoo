@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 RDEPEND="
 	>=dev-python/poetry-core-${PV}[${PYTHON_USEDEP}]
@@ -25,12 +25,12 @@ RDEPEND="
 	>=dev-python/build-1.2.1[${PYTHON_USEDEP}]
 	>=dev-python/cachecontrol-0.14.0[${PYTHON_USEDEP}]
 	>=dev-python/cleo-2.1.0[${PYTHON_USEDEP}]
-	>=dev-python/dulwich-0.22.6[${PYTHON_USEDEP}]
+	<dev-python/dulwich-0.25.0[${PYTHON_USEDEP}]
 	>=dev-python/fastjsonschema-2.18.0[${PYTHON_USEDEP}]
 	>=dev-python/findpython-0.6.2[${PYTHON_USEDEP}]
 	>=dev-python/installer-0.7.0[${PYTHON_USEDEP}]
 	>=dev-python/keyring-25.1.0[${PYTHON_USEDEP}]
-	>=dev-python/packaging-24.0[${PYTHON_USEDEP}]
+	>=dev-python/packaging-24.2[${PYTHON_USEDEP}]
 	>=dev-python/pbs-installer-2025.01.06[${PYTHON_USEDEP}]
 	>=dev-python/pkginfo-1.12[${PYTHON_USEDEP}]
 	>=dev-python/platformdirs-3.0.0[${PYTHON_USEDEP}]
@@ -39,7 +39,7 @@ RDEPEND="
 	>=dev-python/shellingham-1.5.0[${PYTHON_USEDEP}]
 	>=dev-python/tomlkit-0.11.6[${PYTHON_USEDEP}]
 	>=dev-python/trove-classifiers-2022.5.19[${PYTHON_USEDEP}]
-	>=dev-python/virtualenv-20.26.0[${PYTHON_USEDEP}]
+	>=dev-python/virtualenv-20.26.6[${PYTHON_USEDEP}]
 "
 
 BDEPEND="
@@ -52,12 +52,10 @@ BDEPEND="
 	)
 "
 
-src_prepare() {
-	# unpin
-	sed -e 's:,<[0-9.]*::' -e 's:==\([0-9]\):>=\1:' -i pyproject.toml || die
-
-	distutils-r1_src_prepare
-}
+EPYTEST_PLUGINS=( pytest-mock )
+EPYTEST_RERUNS=5
+EPYTEST_XDIST=1
+distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
 	# Internal test for lockfile being up-to-date
@@ -76,10 +74,13 @@ EPYTEST_DESELECT=(
 	'tests/inspection/test_info.py::test_info_setup_missing_mandatory_should_trigger_pep517[name]'
 )
 
-EPYTEST_XDIST=1
-distutils_enable_tests pytest
+src_prepare() {
+	# unpin
+	sed -e 's:,<[0-9.]*::' -e 's:==\([0-9]\):>=\1:' -i pyproject.toml || die
+
+	distutils-r1_src_prepare
+}
 
 python_test() {
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -m "not network" -p pytest_mock -p rerunfailures --reruns=5
+	epytest -m "not network"
 }
