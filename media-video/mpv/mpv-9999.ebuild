@@ -98,7 +98,7 @@ COMMON_DEPEND="
 	)
 	vulkan? ( media-libs/vulkan-loader[X?,wayland?] )
 	wayland? (
-		dev-libs/wayland
+		>=dev-libs/wayland-1.23
 		x11-libs/libxkbcommon
 	)
 	zimg? ( media-libs/zimg )
@@ -125,7 +125,7 @@ BDEPEND="
 	>=dev-build/meson-1.3.0
 	virtual/pkgconfig
 	cli? ( dev-python/docutils )
-	wayland? ( dev-util/wayland-scanner )
+	wayland? ( >=dev-util/wayland-scanner-1.23 )
 "
 
 pkg_setup() {
