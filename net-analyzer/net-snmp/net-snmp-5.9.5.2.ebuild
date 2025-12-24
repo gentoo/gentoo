@@ -181,6 +181,9 @@ src_test() {
 }
 
 src_install() {
+	# https://github.com/net-snmp/net-snmp/issues/1035 (bug #967912)
+	sed -i -e 's:-Werror=declaration-after-statement ::' net-snmp-config || die
+
 	# bug #317965
 	emake -j1 DESTDIR="${D}" install
 
