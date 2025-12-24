@@ -21,7 +21,8 @@ REQUIRED_USE="${ADA_REQUIRED_USE}
 	test? ( static-libs )"
 
 RDEPEND="${ADA_DEPS}
-	dev-ada/xmlada:=[shared?,static-libs?,static-pic?,${ADA_USEDEP}]"
+	dev-ada/xmlada:=[shared?,static-libs?,static-pic?,${ADA_USEDEP}]
+	!dev-ada/vss-extra"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-ada/gprbuild[${ADA_USEDEP}]
 	test? (
