@@ -5,14 +5,17 @@ EAPI=8
 
 inherit autotools flag-o-matic
 
+MY_PV="${PV}-2"
+MY_P="${PN}-${MY_PV}"
+
 DESCRIPTION="Ethernet/PPP IP Packet Monitor"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
-SRC_URI="mirror://gentoo/${PN}-$(ver_rs 3 -).tgz"
-S="${WORKDIR}/${PN}-$(ver_cut 1-3)"
+SRC_URI="https://p5n.pp.ru/~sergej/dl/2023/${MY_P}.tar.xz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="sys-libs/ncurses:="
 DEPEND="
@@ -21,19 +24,15 @@ DEPEND="
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-append_ldflags.patch
-	"${FILESDIR}"/${P}-open.patch
-	"${FILESDIR}"/${P}-fix-fortify.patch
-	"${FILESDIR}"/${P}-do-not-call.patch
-	"${FILESDIR}"/${P}-includes.patch
-	"${FILESDIR}"/${P}-tinfo.patch
-	"${FILESDIR}"/${P}-fno-common.patch
-	"${FILESDIR}"/${P}-lto-mismatch.patch
+	"${FILESDIR}"/${PN}-1.3.0.1-append_ldflags.patch
+	"${FILESDIR}"/${PN}-1.3.0.1-do-not-call.patch
+	"${FILESDIR}"/${PN}-1.3.0.1-includes.patch
+	"${FILESDIR}"/${PN}-1.3.0.1-tinfo.patch
+	"${FILESDIR}"/${PN}-1.3.0.1-fno-common.patch
 	"${FILESDIR}"/${P}-clang16.patch
-	"${FILESDIR}"/${P}-bug897826.patch
-	"${FILESDIR}"/${PN}-1.3.1-format-security.patch
-	"${FILESDIR}"/${P}-sprintf.patch
-	"${FILESDIR}"/${P}-gcc15.patch
+	"${FILESDIR}"/${P}-clang16_part2.patch
+	"${FILESDIR}"/${P}-format-security.patch
+	"${FILESDIR}"/${PN}-1.3.0.1-gcc15.patch
 )
 
 src_prepare() {
