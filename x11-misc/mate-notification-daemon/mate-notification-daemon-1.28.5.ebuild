@@ -34,7 +34,7 @@ COMMON_DEPEND=">=app-accessibility/at-spi2-core-2.46.0
 	)
 	X? (
 		x11-libs/libX11
-		>=x11-libs/libwnck-3:3
+		>=x11-libs/libwnck-43.0:3
 	)
 	wayland? ( gui-libs/gtk-layer-shell )
 "
