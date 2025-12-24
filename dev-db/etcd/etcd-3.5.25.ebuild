@@ -1,19 +1,19 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 inherit go-module systemd tmpfiles
-GIT_COMMIT=9a5533382
+GIT_COMMIT=e2eff772e
 
 DESCRIPTION="Highly-available key value store for shared configuration and service discovery"
 HOMEPAGE="https://github.com/etcd-io/etcd"
 SRC_URI="https://github.com/etcd-io/etcd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-SRC_URI+=" https://dev.gentoo.org/~zmedico/dist/${P}-deps.tar.xz"
+SRC_URI+=" https://dev.gentoo.org/~chewi/distfiles/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0"
 LICENSE+=" BSD BSD-2 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~loong ~riscv"
+KEYWORDS="~amd64 ~arm64 ~loong ~riscv"
 IUSE="doc +server"
 
 COMMON_DEPEND="server? (
@@ -24,23 +24,19 @@ DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
 
 # Unit tests attempt to download go modules.
+PROPERTIES="test_network"
 RESTRICT="test"
 
 src_prepare() {
-	export FORCE_HOST_GO=1 GO_BUILD_FLAGS="-v -x"
 	default
-	sed -e "s|GIT_SHA=.*|GIT_SHA=${GIT_COMMIT}|" \
-		-i "${S}"/build.sh || die
-	sed -e 's:\(for p in \)shellcheck :\1 :' \
-		-e 's:^      goword \\$:\\:' \
-		-e 's:^      gofmt \\$:\\:' \
-		-e 's:^      govet \\$:\\:' \
-		-e 's:^      revive \\$:\\:' \
-		-e 's:^      mod_tidy \\$:\\:' \
-		-e "s|GO_BUILD_FLAGS=\"[^\"]*\"|GO_BUILD_FLAGS=\"${GO_BUILD_FLAGS}\"|" \
-		-e "s|go test |go test ${GO_BUILD_FLAGS} |" \
-		-e 's|PASSES=${PASSES:-"fmt bom dep build unit"}|PASSES=${PASSES:-"fmt dep unit"}|' \
-		-i ./test.sh || die
+	sed -i "s|GIT_SHA=.*|GIT_SHA=${GIT_COMMIT}|" build.sh || die
+
+	# Don't test these as they are not built.
+	find tools/ -name "*_test.go" -delete || die
+}
+
+src_configure() {
+	export FORCE_HOST_GO=1 GO_BUILD_FLAGS="-v -x"
 }
 
 src_compile() {
@@ -48,11 +44,12 @@ src_compile() {
 }
 
 src_test() {
-	./test || die
+	PASSES="unit" ./test.sh -v || die
 }
 
 src_install() {
 	dobin bin/etcdctl
+	dobin bin/etcdutl
 	use doc && dodoc -r Documentation
 	if use server; then
 		insinto /etc/${PN}
