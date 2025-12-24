@@ -24,7 +24,7 @@ else
 	# sed -rn "/^PACKAGE_VERSION=/ s/^.*='(.*)'/\1/p" **/scallop/bash/configure
 	SCALLOP_VERSION="5.3.9.20251212"
 	SRC_URI="https://github.com/pkgcraft/pkgcraft/releases/download/${P}/${P}.tar.xz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm64"
 fi
 
 LICENSE="MIT"
