@@ -1,4 +1,6 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,10 +14,10 @@ DESCRIPTION="VirtIO drivers for Windows virtual machines running on KVM"
 HOMEPAGE="https://docs.fedoraproject.org/en-US/quick-docs/creating-windows-virtual-machines-using-virtio-drivers/index.html"
 SRC_URI="https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/${PN}-${MY_DW}/${PN}-${MY_PV}.iso"
 
+S="${WORKDIR}"
 LICENSE="BSD Apache-2.0 GPL-2 GPL-2+ GPL-3+ LGPL-2+ Ms-RL"
 SLOT="0"
-KEYWORDS="amd64"
-S="${WORKDIR}"
+KEYWORDS="~amd64 ~arm64"
 INSTALL_PATH=/usr/share/drivers/windows
 
 src_install() {
