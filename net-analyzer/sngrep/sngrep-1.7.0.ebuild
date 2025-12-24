@@ -26,6 +26,13 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.6.0-CVE-2023-31981.patch"
+	"${FILESDIR}/${PN}-1.6.0-CVE-2023-31982.patch"
+	"${FILESDIR}/${PN}-1.6.0-CVE-2023-36192.patch"
+	"${FILESDIR}/${PN}-1.6.0-capture_launch_thread.patch"
+	)
+
 src_prepare() {
 	default
 
