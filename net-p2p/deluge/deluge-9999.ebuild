@@ -31,7 +31,6 @@ REQUIRED_USE="
 BDEPEND="
 	dev-util/intltool
 "
-
 RDEPEND="
 	acct-group/deluge
 	acct-user/deluge
@@ -109,7 +108,7 @@ python_install_all() {
 	if ! use console ; then
 		rm -r "${D}/$(python_get_sitedir)/deluge/ui/console/" || die
 		rm "${ED}/usr/bin/deluge-console" || die
-		rm "${ED}/usr/share/man/man1/deluge-console.1" ||die
+		rm "${ED}/usr/share/man/man1/deluge-console.1" || die
 	fi
 	if ! use gui ; then
 		rm -r "${D}/$(python_get_sitedir)/deluge/ui/gtk3/" || die
