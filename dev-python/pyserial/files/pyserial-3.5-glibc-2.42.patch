@@ -1,0 +1,39 @@
+https://github.com/pyserial/pyserial/issues/805
+https://github.com/pyserial/pyserial/pull/808
+
+From 152f2639c630141b9d23f023178b619751e624a0 Mon Sep 17 00:00:00 2001
+From: Alexander von Gluck IV <alex@terarocket.io>
+Date: Sun, 24 Aug 2025 20:17:51 -0500
+Subject: [PATCH] serial_posix: Fix custom baud rates for glibc >=2.42; solves
+ #805
+
+* https://sourceware.org/pipermail/libc-alpha/2025-July/168553.html
+* Based on changes recommended by JoaoBarioni in #805
+* Reverts 0085e1e1d (#519)
+---
+ serial/serialposix.py | 11 ++---------
+ 1 file changed, 2 insertions(+), 9 deletions(-)
+
+diff --git a/serial/serialposix.py b/serial/serialposix.py
+index 0464075b..6f843918 100644
+--- a/serial/serialposix.py
++++ b/serial/serialposix.py
+@@ -430,15 +430,8 @@ def _reconfigure_port(self, force_update=False):
+                 ispeed = ospeed = self.BAUDRATE_CONSTANTS[self._baudrate]
+             except KeyError:
+                 #~ raise ValueError('Invalid baud rate: %r' % self._baudrate)
+-
+-                # See if BOTHER is defined for this platform; if it is, use
+-                # this for a speed not defined in the baudrate constants list.
+-                try:
+-                    ispeed = ospeed = BOTHER
+-                except NameError:
+-                    # may need custom baud rate, it isn't in our list.
+-                    ispeed = ospeed = getattr(termios, 'B38400')
+-
++                # Use safe placeholder for tcsetattr(), try to set special baudrate later
++                ispeed = ospeed = termios.B38400
+                 try:
+                     custom_baud = int(self._baudrate)  # store for later
+                 except ValueError:
+
