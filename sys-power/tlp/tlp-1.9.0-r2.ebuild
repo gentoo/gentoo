@@ -24,6 +24,11 @@ IUSE="
 
 # NOTE(JayF): Upstream dep list in human-readable format:
 #             https://linrunner.de/tlp/developers/dependencies.html
+# NOTE(JayF): Blockers for these are not ideal, however all three
+#             of these packages implement the same service on dbus
+#             and have conflicting files as a result. Long-term
+#             there likely needs to be a better solution. See
+#             https://bugs.gentoo.org/967823.
 RDEPEND="
 	dev-lang/perl
 	net-wireless/iw
@@ -32,6 +37,8 @@ RDEPEND="
 	sys-apps/usbutils
 	virtual/udev
 	ppd? (
+		!sys-apps/tuned[ppd]
+		!sys-power/power-profiles-daemon
 		$(python_gen_cond_dep 'dev-python/dbus-python[${PYTHON_USEDEP}]')
 		$(python_gen_cond_dep 'dev-python/pygobject[${PYTHON_USEDEP}]')
 		${PYTHON_DEPS}
@@ -39,6 +46,7 @@ RDEPEND="
 	rdw? ( net-misc/networkmanager )
 "
 DEPEND="${RDEPEND}"
+DOCS=( changelog README.rst )
 
 src_install() {
 	# NOTE(JayF): TLP_WITH_ELOGIND/TLP_WITH_SYSTEMD are both only installing
@@ -67,6 +75,7 @@ src_install() {
 	newinitd "${FILESDIR}/tlp.init" tlp
 	newinitd "${FILESDIR}/tlp-pd.init" tlp-pd
 	keepdir /var/lib/tlp # created by Makefile, probably important
+	einstalldocs
 }
 
 pkg_postinst() {
@@ -76,14 +85,6 @@ pkg_postinst() {
 	optfeature "see disk drive health info in tlp-stat" sys-apps/smartmontools
 	optfeature "Sleep hooks" sys-auth/elogind sys-apps/systemd
 	optfeature "Battery functions for ThinkPads prior to the Sandy Bridge generation (2011)" app-laptop/tp_smapi
-
-	if has_version "sys-power/power-profiles-daemon" && use ppd; then
-		ewarn
-		ewarn "sys-power/power-profiles-daemon is installed, but is "
-		ewarn "incompatible with tlp-pd daemon. For best results, "
-		ewarn "uninstall one of these packages or set use tlp[-ppd]."
-		ewarn
-	fi
 
 	if has_version "sys-apps/tuned"; then
 		ewarn
