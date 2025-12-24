@@ -14,18 +14,23 @@ S="${WORKDIR}/${PN}-ce-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 DEPEND="
-	>=dev-libs/libpcre-3.4
+	app-arch/bzip2
+	dev-libs/libpcre2
 	>=media-libs/gd-1.8.4-r2[jpeg,png]
-	virtual/zlib:="
+	virtual/zlib:=
+"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.1-gentoo.diff
-	"${FILESDIR}"/${PN}-6.0-bzip2.patch
 	"${FILESDIR}"/${PN}-6.0-undefined-macro.patch
+	"${FILESDIR}"/${PN}-6.0.18-posix-makefiles.patch
+	"${FILESDIR}"/${PN}-6.0.18-src-Makefile.patch
+	"${FILESDIR}"/${PN}-6.0.18-c23.patch
+	"${FILESDIR}"/${PN}-6.0.18-xml.patch
 )
 
 src_prepare() {
@@ -37,9 +42,7 @@ src_prepare() {
 
 src_compile() {
 	tc-export CC
-	# emake in main dir just executes "cd src && make",
-	# i.e. MAKEOPTS are ignored
-	emake -C src
+	emake
 }
 
 src_install() {
@@ -56,7 +59,7 @@ src_install() {
 	insinto /usr/share/analog/images ; doins images/*
 	insinto /usr/share/analog/lang ; doins lang/*
 	dodir /var/log/analog
-	dosym ../../../usr/share/analog/images /var/log/analog/images
+	dosym -r /usr/share/analog/images /var/log/analog/images
 	insinto /etc/analog ; doins "${FILESDIR}/analog.cfg"
 	dobin analog
 }
