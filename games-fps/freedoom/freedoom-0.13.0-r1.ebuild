@@ -13,11 +13,10 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 RDEPEND="
 	~games-fps/freedoom-data-${PV}
 	|| (
-		games-fps/gzdoom[nonfree(+)]
+		games-engines/uzdoom
 		games-engines/odamex
 		games-fps/chocolate-doom
-		games-fps/doomsday
-		games-fps/prboom-plus
+		games-fps/dsda-doom
 	)
 "
 
