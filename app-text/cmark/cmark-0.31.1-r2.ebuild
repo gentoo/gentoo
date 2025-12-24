@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..14} )
 
 inherit cmake python-any-r1
 
@@ -11,7 +11,7 @@ DESCRIPTION="CommonMark parsing and rendering library and program in C"
 HOMEPAGE="https://github.com/commonmark/cmark"
 SRC_URI="https://github.com/commonmark/cmark/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="BSD-2"
+LICENSE="BSD-2 MIT"
 SLOT="0/0.31.1"
 KEYWORDS="amd64 ~arm arm64 ~loong ppc ppc64 ~riscv x86"
 IUSE="test"
@@ -21,6 +21,7 @@ BDEPEND="test? ( ${PYTHON_DEPS} )"
 
 PATCHES=(
 	"${FILESDIR}/cmark-0.31.0_fix_api_test.patch"
+	"${FILESDIR}/cmark-0.31.1_cmake4.patch"
 )
 
 pkg_setup() {
