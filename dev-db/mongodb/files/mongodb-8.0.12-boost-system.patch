@@ -1,0 +1,23 @@
+diff '--color=auto' -dupr mongo-r8.0.12.orig/SConstruct mongo-r8.0.12/SConstruct
+--- mongo-r8.0.12.orig/SConstruct	2025-12-24 07:40:37.384561186 +0100
++++ mongo-r8.0.12/SConstruct	2025-12-24 07:40:53.107849946 +0100
+@@ -1683,7 +1683,7 @@ def printLocalInfo():
+ 
+ printLocalInfo()
+ 
+-boostLibs = ["filesystem", "program_options", "system", "iostreams", "thread", "log"]
++boostLibs = ["filesystem", "program_options", "iostreams", "thread", "log"]
+ 
+ onlyServer = len(COMMAND_LINE_TARGETS) == 0 or (len(COMMAND_LINE_TARGETS) == 1 and str(
+     COMMAND_LINE_TARGETS[0]) in ["mongod", "mongos", "test"])
+diff '--color=auto' -dupr mongo-r8.0.12.orig/src/third_party/SConscript mongo-r8.0.12/src/third_party/SConscript
+--- mongo-r8.0.12.orig/src/third_party/SConscript	2025-12-24 07:40:37.718019419 +0100
++++ mongo-r8.0.12/src/third_party/SConscript	2025-12-24 07:41:15.134959202 +0100
+@@ -436,7 +436,6 @@ if use_system_version_of_library("boost"
+         boostEnv = boostEnv.Clone(SYSLIBDEPS=[
+             env['LIBDEPS_BOOST_PROGRAM_OPTIONS_SYSLIBDEP'],
+             env['LIBDEPS_BOOST_FILESYSTEM_SYSLIBDEP'],
+-            env['LIBDEPS_BOOST_SYSTEM_SYSLIBDEP'],
+             env['LIBDEPS_BOOST_IOSTREAMS_SYSLIBDEP'],
+             env['LIBDEPS_BOOST_THREAD_SYSLIBDEP'],
+             env['LIBDEPS_BOOST_LOG_SYSLIBDEP'],
