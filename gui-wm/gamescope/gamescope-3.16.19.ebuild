@@ -61,6 +61,8 @@ RDEPEND="
 	x11-libs/libXres
 	x11-libs/libXtst
 	x11-libs/libXxf86vm
+	>=x11-libs/pixman-0.43.0
+	virtual/libudev
 	avif? ( >=media-libs/libavif-1.0.0:= )
 	libei? ( dev-libs/libei )
 	pipewire? ( >=media-video/pipewire-0.3:= )
@@ -73,10 +75,8 @@ RDEPEND+="
 	media-libs/libglvnd
 	>=media-libs/mesa-24.1.0_rc1[opengl]
 	sys-auth/seatd:=
-	virtual/libudev
 	x11-base/xwayland
 	x11-libs/libxcb:=
-	>=x11-libs/pixman-0.43.0
 	x11-libs/xcb-util-wm
 "
 DEPEND="
@@ -97,7 +97,6 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-deprecated-stb.patch
 	"${FILESDIR}"/${PN}-subprojects.patch
-	"${FILESDIR}"/${PN}-libdisplay-info-0.3.0.patch
 )
 
 FILECAPS=(
