@@ -24,8 +24,8 @@ IUSE="
 	+X +alsa aqua archive bluray cdda +cli coreaudio debug +drm dvb
 	dvd +egl gamepad +iconv jack javascript jpeg lcms libcaca +libmpv
 	+lua nvenc openal pipewire pulseaudio rubberband sdl selinux sixel
-	sndio soc test tools +uchardet vaapi vdpau +vulkan wayland xv zimg
-	zlib
+	sndio soc subrandr test tools +uchardet vaapi vdpau +vulkan wayland
+	xv zimg zlib
 "
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -91,6 +91,7 @@ COMMON_DEPEND="
 	sdl? ( media-libs/libsdl2[sound,threads(+),video] )
 	sixel? ( media-libs/libsixel )
 	sndio? ( media-sound/sndio:= )
+	subrandr? ( media-libs/subrandr )
 	vaapi? ( media-libs/libva:=[X?,drm(+)?,wayland?] )
 	vdpau? (
 		media-libs/libglvnd[X]
@@ -168,6 +169,7 @@ src_configure() {
 		$(meson_feature lcms lcms2)
 		-Dlua=$(usex lua "${ELUA}" disabled)
 		$(meson_feature rubberband)
+		$(meson_feature subrandr)
 		$(meson_feature uchardet)
 		-Dvapoursynth=disabled # only available in overlays
 		$(meson_feature zimg)
