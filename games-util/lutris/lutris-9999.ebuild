@@ -147,7 +147,7 @@ pkg_postinst() {
 	# TODO: Package runner for HTML5 web games
 	# TODO: Package Xbox emulator
 	optfeature "playing Nintendo Switch games through an emulator (available in GURU overlay)" games-emulation/yuzu
-	optfeature "playing DOOM games" games-fps/gzdoom
+	optfeature "playing DOOM games" games-engines/uzdoom
 
 	# Quote README.rst
 	elog
