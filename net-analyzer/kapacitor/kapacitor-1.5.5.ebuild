@@ -1,8 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit golang-build golang-vcs-snapshot systemd
+# WARN: EAPI 8 does not support goloang-ebuild as of 2024.08.07
 EGO_PN=github.com/influxdata/kapacitor
 
 DESCRIPTION="Monitoring, processing and alerting on time series data"
@@ -12,12 +14,10 @@ SRC_URI="https://github.com/influxdata/kapacitor/archive/v${PV}.tar.gz -> ${P}.t
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 
-COMMON_DEPEND="acct-group/kapacitor
+DEPEND="acct-group/kapacitor
 	acct-user/kapacitor"
-	DEPEND="${COMMON_DEPEND}"
-	RDEPEND="${COMMON_DEPEND}"
+RDEPEND="${DEPEND}"
 
 src_compile() {
 	pushd "src/${EGO_PN}" > /dev/null || die
@@ -34,8 +34,8 @@ src_install() {
 	"$@" || die
 	dobin "${S}"/bin/kapacitor{,d}
 	insinto /etc/kapacitor
-doins etc/kapacitor/kapacitor.conf
-keepdir /etc/kapacitor/load
+	doins etc/kapacitor/kapacitor.conf
+	keepdir /etc/kapacitor/load
 	insinto /etc/logrotate.d
 	doins etc/logrotate.d/kapacitor
 	systemd_dounit scripts/kapacitor.service
