@@ -1,0 +1,58 @@
+From 622b98934153cc655e95626ffbbc7de53f0de890 Mon Sep 17 00:00:00 2001
+From: Victor Kareh <vkareh@redhat.com>
+Date: Thu, 25 Sep 2025 13:10:59 -0400
+Subject: [PATCH] metar: Support SPECI report data
+
+Since AviationWeather updated their API, they now return two report
+types: METAR (standard hourly repors) and SPECI (special intermediate
+reports). We can parse those out from the response since the format is
+similar, and the only thing that changes is the prefix.
+
+Signed-off-by: Thibaud CANALE <thican@thican.net>
+---
+ libmateweather/weather-metar.c | 16 ++++++++++++----
+ 1 file changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/libmateweather/weather-metar.c b/libmateweather/weather-metar.c
+index dabca3a2..d25a4323 100644
+--- a/libmateweather/weather-metar.c
++++ b/libmateweather/weather-metar.c
+@@ -523,15 +523,20 @@ metar_finish (GObject *source, GAsyncResult *result, gpointer data)
+ 
+     loc = info->location;
+ 
+-    searchkey = g_strdup_printf ("<raw_text>METAR %s", loc->code);
+-
+     response_body = g_bytes_get_data (bytes, &len);
+     end = response_body + len;
+ 
++    /* Try METAR first, then SPECI */
++    searchkey = g_strdup_printf ("<raw_text>METAR %s", loc->code);
+     p = xstrnstr (response_body, len, searchkey);
++    if (!p) {
++        g_free (searchkey);
++        searchkey = g_strdup_printf ("<raw_text>SPECI %s", loc->code);
++        p = xstrnstr (response_body, len, searchkey);
++    }
++
+     if (p) {
+         p += WEATHER_LOCATION_CODE_LEN + 11;
+-        endtag = strstr (p, "</raw_text>");
+         endtag = xstrnstr (p, end - p, "</raw_text>");
+         if (endtag)
+             metar = g_strndup (p, endtag - p);
+@@ -539,7 +544,10 @@ metar_finish (GObject *source, GAsyncResult *result, gpointer data)
+             metar = g_strndup (p, end - p);
+         success = metar_parse (metar, info);
+         g_free (metar);
+-    } else if (!xstrnstr (response_body, len, "aviationweather.gov")) {
++    }
++    g_free (searchkey);
++
++    if (!success && !xstrnstr (response_body, len, "aviationweather.gov")) {
+         /* The response doesn't even seem to have come from NOAA...
+          * most likely it is a wifi hotspot login page. Call that a
+          * network error.
+-- 
+2.51.2
+
