@@ -417,6 +417,7 @@ gnome-extra/sushi
 >=media-gfx/libimagequant-4
 <media-gfx/gimp-3.0.6
 >=media-libs/libopenraw-0.3.2
+media-libs/subrandr
 media-plugins/gimp-lqr
 media-video/rav1e
 net-analyzer/wtfis
