@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (2025-12-24)
+# The upstream community has forked with the vast majority going to UZDoom, now
+# packaged as games-engines/uzdoom in Gentoo. https://zdoom.org now follows this
+# new fork. Bug #967252. Removal on 2026-01-24.
+games-fps/gzdoom
+
 # Eray Aslan <eras@gentoo.org> (2025-12-24)
 # Mask experimental software
 =mail-mta/postfix-3.12*
