@@ -1,0 +1,116 @@
+Ported standard previous build fixes to new version.
+Previous fixes remove stripping and add correct paths to gentoo
+programs, made build system respect LDFLAGS.
+And weird disablement of va randomization in kernel is also removed
+Newly introduced fix to correct ordering of generated include file
+https://bugs.gentoo.org/557322
+https://bugs.gentoo.org/883129
+--- a/build.scm
++++ b/build.scm
+@@ -550,7 +550,7 @@
+      (graphics *unknown* "-I/usr/X11/include -DX11" "-lX11"
+ 	       "/usr/X11/lib/libX11.sa" () ())
+      (editline *unknown* "" "-lreadline" "/usr/lib/libreadline.a" () ())
+-     (termcap *unknown* "" "-ltermcap" "/usr/lib/libtermcap.a" () ())
++     (termcap *unknown* "" "-lncurses" "/usr/lib/libncurses.a" () ())
+      (debug *unknown* "-g" "-g" #f () ())
+      (socket *unknown* "" "" #f () ())
+      (lib *unknown* "" "" #f () ("scmmain.c"))
+@@ -576,7 +576,7 @@
+      (regex linux "" "" #f () ())
+      (graphics linux "-I/usr/include/X11 -DX11" "-L/usr/X11R6/lib -lX11"
+ 	       "/usr/X11R6/lib/libX11.so" () ())
+-     (curses linux "" "-lcurses" "/lib/libncurses.so" () ())
++     (curses linux "" "-lncurses" "/lib/libncurses.so" () ())
+      (nostart linux "" "" #f () ())
+      (dump linux "" "" #f ("unexelf.c" "gmalloc.c") ())
+ 
+--- a/Makefile
++++ b/Makefile
+@@ -34,7 +34,7 @@
+ SCMEXE = ./scm$(EXE)
+ BUILD = ./build$(BAT) -hsystem
+ 
+-TEXI2HTML = /usr/local/bin/texi2html -split -verbose
++TEXI2HTML = /usr/bin/texi2html -split -verbose
+ TEXI2PDF = texi2pdf
+ VIEWPDF = evince
+ MAKEDEV = $(MAKE) -f $(HOME)/makefile.dev
+@@ -305,7 +305,7 @@
+ 
+ # SCMLIT -- Make this first!
+ $(SCMLIT):	$(ofiles) scmmain.o require.scm Makefile
+-	$(LD) -o scmlit $(ofiles) scmmain.o $(LIBS)
++	$(LD) $(LDFLAGS) -o scmlit $(ofiles) scmmain.o $(LIBS)
+ 	$(MAKE) checklit
+ scmflags.h:	scmflags
+ scmflags:
+Generate header before everything else.
+@@ -316,7 +316,8 @@
+ 	echo "#define CAUTIOUS" >> newflags.h
+ 	-if (cmp -s newflags.h scmflags.h) then rm newflags.h; \
+ 		 else mv newflags.h scmflags.h; fi
++$(cfiles): $(hfiles) scmflags.h
+ .c.o:
+ 	$(CC) -c $(CFLAGS) $< -o $@
+ scm.o:	scm.c scm.h scmfig.h scmflags.h patchlvl.h
+ scmmain.o:	scmmain.c scm.h scmfig.h scmflags.h patchlvl.h
+@@ -378,18 +378,9 @@
+ 	-rm $(ofiles) scmmain.o
+ 	strip udscm4
+ dscm4:	udscm4 $(ifiles) require.scm
+-	if [ -f /proc/sys/kernel/randomize_va_space -a\
+-	     "`cat /proc/sys/kernel/randomize_va_space`" != "0" ]; then {\
+-	   cat /proc/sys/kernel/randomize_va_space > randomize_va_space.tmp;\
+-	   echo 0 > /proc/sys/kernel/randomize_va_space;\
+-	} fi
+ 	-rm -f slibcat implcat scm~
+ 	-mv scm scm~
+ 	echo "(quit)" | $(SETARCH) ./udscm4 -no-init-file -o scm
+-	if [ -f randomize_va_space.tmp ]; then {\
+-	   cat randomize_va_space.tmp > /proc/sys/kernel/randomize_va_space;\
+-	   rm randomize_va_space.tmp;\
+-	} fi
+ 
+ # dumpable R5RS interpreter
+ udscm5.opt:
+@@ -401,18 +392,9 @@
+ 	-rm $(ofiles) scmmain.o
+ 	strip udscm5
+ dscm5:	udscm5 $(ifiles) require.scm
+-	if [ -f /proc/sys/kernel/randomize_va_space -a\
+-	     "`cat /proc/sys/kernel/randomize_va_space`" != "0" ]; then {\
+-	   cat /proc/sys/kernel/randomize_va_space > randomize_va_space.tmp;\
+-	   echo 0 > /proc/sys/kernel/randomize_va_space;\
+-	} fi
+ 	-rm -f slibcat implcat scm~
+ 	-mv scm scm~
+ 	echo "(quit)" | $(SETARCH) ./udscm5 -no-init-file -r5 -o scm
+-	if [ -f randomize_va_space.tmp ]; then {\
+-	   cat randomize_va_space.tmp > /proc/sys/kernel/randomize_va_space;\
+-	   rm randomize_va_space.tmp;\
+-	} fi
+ 	$(MAKE) checkmacro
+ 
+ # R5RS interpreter for debugging with GDB.
+@@ -447,7 +429,7 @@
+ libscm.a:	libscm.opt scm.h scmfig.h
+ 	$(BUILD) -t lib -f libscm.opt
+ libtest:	libscm.a libtest.c
+-	$(LD) -o libtest libtest.c libscm.a -ldl -lm -lc
++	$(LD) $(LDFLAGS) -o libtest libtest.c libscm.a -ldl -lm -lc
+ 	./libtest
+ 
+ # DLLs for dynamic linking
+@@ -558,12 +558,10 @@
+ 
+ install-for-rpm: install-man install-lib install-infoz installdirs
+ 	$(INSTALL_PROGRAM) scm scmlit $(DESTDIR)$(bindir)
+-	-strip $(DESTDIR)$(bindir)scmlit
+ 	$(INSTALL_DATA) scm.h scmfig.h scmflags.h $(DESTDIR)$(includedir)
+ 
+ install: install-man install-lib install-infoz installdirs
+ 	$(INSTALL_PROGRAM) scm scmlit $(DESTDIR)$(bindir)
+-	-strip $(DESTDIR)$(bindir)scmlit
+ 	$(INSTALL_DATA) scm.h scmfig.h scmflags.h $(DESTDIR)$(includedir)
+ 
