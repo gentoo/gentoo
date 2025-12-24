@@ -114,6 +114,10 @@ check_distribution_components() {
 					docs-clang-html|docs-clang-tools-html)
 						use doc || continue
 						;;
+					# built only with tests
+					c-index-test)
+						continue
+						;;
 				esac
 
 				all_targets+=( "${l}" )
@@ -190,7 +194,6 @@ get_distribution_components() {
 			libclang-python-bindings
 
 			# tools
-			c-index-test
 			clang
 			clang-format
 			clang-installapi
