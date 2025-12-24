@@ -1,0 +1,48 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -59,11 +59,6 @@
+ fi
+ AC_SUBST(DEBUG_CFLAGS)
+ 
+-if test "x$GCC" = "xyes"; then
+-	CFLAGS="$CFLAGS -Wall -g3"
+-fi
+-AC_SUBST(CFLAGS)
+-
+ #
+ # Check for libnotify
+ #
+@@ -82,6 +82,11 @@
+ AC_SUBST(GTK_LIBS)
+ 
+ #
++# Check for pkg-config before using it
++#
++PKG_PROG_PKG_CONFIG
++
++#
+ # Check for libpurple
+ #
+ 
+@@ -91,8 +96,8 @@
+ ])
+ 
+ AC_SUBST(LIBPURPLE_CFLAGS)
+-LIBPURPLE_LIBDIR=`pkg-config --variable=libdir purple`
+-LIBPURPLE_DATADIR=`pkg-config --variable=datadir purple`
++LIBPURPLE_LIBDIR=`$PKG_CONFIG --variable=libdir purple`
++LIBPURPLE_DATADIR=`$PKG_CONFIG --variable=datadir purple`
+ AC_SUBST(LIBPURPLE_LIBDIR)
+ AC_SUBST(LIBPURPLE_DATADIR)
+ 
+@@ -106,8 +111,8 @@
+ ])
+ 
+ AC_SUBST(PIDGIN_CFLAGS)
+-PIDGIN_LIBDIR=`pkg-config --variable=libdir pidgin`
+-PIDGIN_DATADIR=`pkg-config --variable=datadir pidgin`
++PIDGIN_LIBDIR=`$PKG_CONFIG --variable=libdir pidgin`
++PIDGIN_DATADIR=`$PKG_CONFIG --variable=datadir pidgin`
+ AC_SUBST(PIDGIN_LIBDIR)
+ AC_SUBST(PIDGIN_DATADIR)
+ 
