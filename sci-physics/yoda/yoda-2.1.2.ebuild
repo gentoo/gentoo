@@ -17,7 +17,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	SRC_URI="https://yoda.hepforge.org/downloads?f=${P^^}.tar.bz2 -> ${P^^}.tar.bz2"
 	S="${WORKDIR}/${P^^}"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-3"
@@ -49,6 +49,10 @@ BDEPEND="
 		)
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/${P}-testbinestimate.patch
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
