@@ -6,6 +6,12 @@
 
 # New entries go on top.
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-12-24)
+# cargo.eclass' IUSE=debug cannot currently be easily supported by
+# the custom builder the package uses, mask to avoid no-op rebuilds
+# (use RUSTFLAGS if need debug symbols, see also bug #967921)
+media-libs/subrandr debug
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-12-21)
 # gui-libs/hyprland-qtutils fails to build against Qt 6.10, upstream
 # repository was archived.
