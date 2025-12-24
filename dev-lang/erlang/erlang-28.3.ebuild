@@ -101,6 +101,12 @@ src_compile() {
 	use doc && emake docs DOC_TARGETS=chunks
 }
 
+src_test() {
+	# Only run a subset of tests to test that everything was built
+	# successfully, otherwise we will be here for a long time.
+	emake kernel_test ARGS="-suite os_SUITE"
+}
+
 extract_version() {
 	local path="$1"
 	local var_name="$2"
@@ -158,10 +164,4 @@ src_install() {
 
 	newinitd "${FILESDIR}"/epmd.init-r3 epmd
 	use systemd && systemd_newunit "${FILESDIR}"/epmd.service-r1 epmd.service
-}
-
-src_test() {
-	# Only run a subset of tests to test that everything was built
-	# successfully, otherwise we will be here for a long time.
-	emake kernel_test ARGS="-suite os_SUITE"
 }
