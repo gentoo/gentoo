@@ -1,0 +1,43 @@
+# https://bugs.gentoo.org/955791
+# https://bugs.gentoo.org/717422
+# From: Bill Prendergast <dek.devel@baisenvar.info>
+
+--- a/meson.build
++++ b/meson.build
+@@ -23,7 +23,6 @@
+ add_project_arguments(
+     '-fvisibility=hidden',
+     '-Wno-unused-parameter',
+-    '-fcommon',
+     language: 'c'
+ )
+ 
+--- a/src/purple-libnotify+-common.h
++++ b/src/purple-libnotify+-common.h
+@@ -27,13 +27,14 @@
+ 
+ extern PurplePlugin *notify_plus;
+ 
+-struct
++struct notify_plus_data_
+ {
+ 	gboolean modify_notification;
+ 	gboolean use_svg;
+ 	gboolean overlay_icon;
+ 	gboolean set_transient;
+ 	gboolean actions;
+-} notify_plus_data;
++};
++extern struct notify_plus_data_ notify_plus_data;
+ 
+ #endif /* __PURPLE_LIBNOTIFY_PLUS_COMMON_H__ */
+--- a/src/purple-libnotify+.c
++++ b/src/purple-libnotify+.c
+@@ -31,6 +31,7 @@
+ #include "purple-libnotify+-frames.h"
+ 
+ PurplePlugin *notify_plus = NULL;
++struct notify_plus_data_ notify_plus_data;
+ 
+ static void
+ _purple_notify_plus_signed_on(PurpleBuddy *buddy, PurplePlugin *plugin)
