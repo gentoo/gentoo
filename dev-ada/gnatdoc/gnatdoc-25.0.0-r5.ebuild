@@ -24,7 +24,7 @@ RDEPEND="${ADA_DEPS}
 	${PYTHON_DEPS}
 	dev-ada/gpr:${SLOT}[${ADA_USEDEP},shared(+),static-libs?]
 	dev-ada/markdown:=[${ADA_USEDEP}]
-	dev-ada/vss-text:=[${ADA_USEDEP},static-libs?]
+	=dev-ada/vss-text-25*:=[${ADA_USEDEP},static-libs?]
 	dev-ada/libadalang:=[${ADA_USEDEP},static-libs?,static-pic?]
 	dev-ada/libadalang:=[${PYTHON_SINGLE_USEDEP}]
 "
