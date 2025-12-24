@@ -1,0 +1,30 @@
+https://gitlab.com/hepcedar/yoda/-/merge_requests/387
+From 12c3786635875ebf3e7c969248654191736b660a Mon Sep 17 00:00:00 2001
+From: Alexander Puck Neuwirth <alexander@neuwirth-informatik.de>
+Date: Sat, 20 Dec 2025 19:46:34 +0100
+Subject: [PATCH] fix rounding uncertainty on bin edge in tests
+
+Closes: https://gitlab.com/hepcedar/yoda/-/issues/151
+---
+ tests/TestBinEstimators.cc | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/tests/TestBinEstimators.cc b/tests/TestBinEstimators.cc
+index 14fb9f5e..e89cccf3 100644
+--- a/tests/TestBinEstimators.cc
++++ b/tests/TestBinEstimators.cc
+@@ -40,7 +40,10 @@ auto testLogEst() {
+                         est2.estindex(  0.) == 0 &&
+                         est2.estindex(  1.) == 1 &&
+                         est2.estindex(  5.) == 1 &&
+-                        est2.estindex( 10.) == 2 &&
++                        est2.estindex( 9.9) == 1 &&
++                        // amd64 vs x86 rounding can give different results here
++                        (est2.estindex(10.) == 1 || est2.estindex( 10.) == 2) &&
++                        est2.estindex(10.1) == 2 &&
+                         est2.estindex(100.) == 2);
+ }
+ 
+-- 
+GitLab
+
