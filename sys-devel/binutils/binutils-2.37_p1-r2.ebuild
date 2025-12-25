@@ -1,7 +1,7 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit libtool flag-o-matic gnuconfig strip-linguas toolchain-funcs
 
@@ -330,6 +330,16 @@ src_install() {
 		mv ${d}/* . || die
 		rmdir ${d} || die
 	done
+
+	# Create relative symlinks for cross-compilation
+        if [[ ${CBUILD} != ${CTARGET} ]] ; then
+                cd ${ED}/${BINPATH}
+                for x in * ; do
+                        dosym -r /usr/${CTARGET}/binutils-bin/${PV}/${x}  /usr/${CTARGET}/bin/${x}
+                        dosym -r /usr/${CTARGET}/bin/${x} /usr/bin/${CTARGET}-${x}
+                        dosym ${CTARGET}-${x} /usr/bin/${x}
+                done
+        fi
 
 	# Now we collect everything intp the proper SLOT-ed dirs
 	# When something is built to cross-compile, it installs into
