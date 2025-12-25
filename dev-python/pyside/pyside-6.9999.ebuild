@@ -8,7 +8,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 LLVM_COMPAT=( {16..20} )
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
