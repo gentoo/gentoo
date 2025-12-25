@@ -546,6 +546,12 @@ get_version() {
 	KV_MINOR=$(getfilevar PATCHLEVEL "${KERNEL_MAKEFILE}")
 	KV_PATCH=$(getfilevar SUBLEVEL "${KERNEL_MAKEFILE}")
 	KV_EXTRA=$(getfilevar EXTRAVERSION "${KERNEL_MAKEFILE}")
+	if [[ -z "${KV_MAJOR}" || -z "${KV_MINOR}" || -z "${KV_PATCH}" ]]; then
+		KV_MAJOR=$(getfilevar_noexec VERSION "${KERNEL_MAKEFILE}")
+		KV_MINOR=$(getfilevar_noexec PATCHLEVEL "${KERNEL_MAKEFILE}")
+		KV_PATCH=$(getfilevar_noexec SUBLEVEL "${KERNEL_MAKEFILE}")
+		KV_EXTRA=$(getfilevar_noexec EXTRAVERSION "${KERNEL_MAKEFILE}")
+	fi
 
 	if [[ -z "${KV_MAJOR}" || -z "${KV_MINOR}" || -z "${KV_PATCH}" ]]; then
 		if [[ -z "${get_version_warning_done}" ]]; then
