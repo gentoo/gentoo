@@ -1,0 +1,18 @@
+Fix implicit function definitions etc. for clang16. 
+Clang16 will not work with such things by default. 
+
+Bug: https://bugs.gentoo.org/874732
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+
+--- a/biewlib/sysdep/x86_64/aclib_template.c
++++ b/biewlib/sysdep/x86_64/aclib_template.c
+@@ -440,7 +440,7 @@ static void __FASTCALL__ RENAME(ShortsToChars)(tUInt32 limit,
+ 	 __asm __volatile("movdqu	(%0), %%xmm0\n\t"
+ 	       ::"r"(srcptr):"memory");
+ 	 nlimit--;
+-	 __asm __volatile("packuswb (%0), %%xmm0\n\t"
++	 __asm __volatile("packuswb %0, %%xmm0\n\t"
+ 	       ::"g"(&srcptr[REGMM_SIZE]):"memory");
+ 	 srcptr+=step*2;
+ 	 __asm __volatile("movdqa	%%xmm0, (%0)\n\t"
