@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>krsloco@gmail.com</email>
+    <name>Kellerman Rivero</name>
+  </maintainer>
+  <use>
+    <flag name="drm">Build with drm support for cam tool</flag>
+    <flag name="elfutils">Build with improved debugging using <pkg>dev-libs/elfutils</pkg></flag>
+    <flag name="gui">Build QCam extra tool</flag>
+    <flag name="openssl">Build with IPA module signing using <pkg>dev-libs/openssl</pkg></flag>
+    <flag name="sdl">Build Cam extra tool with SDL sink support (requires USE=gui)</flag>
+    <flag name="tools">Build extra tools (including cam, qcam and lc-compliance). Note: 'qcam' requires also USE="gui"</flag>
+    <flag name="trace">Build with tracing capabilities</flag>
+    <flag name="unwind">Build with improved debugging using <pkg>sys-libs/libunwind</pkg> (has no effect if USE=elfutils is set)</flag>
+  </use>
+  <upstream>
+    <remote-id type="freedesktop-gitlab">camera/libcamera.git</remote-id>
+  </upstream>
+</pkgmetadata>
