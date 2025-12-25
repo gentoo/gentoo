@@ -6,8 +6,8 @@ EAPI=7
 DESCRIPTION="An in-depth exploration of the art of shell scripting"
 HOMEPAGE="https://www.tldp.org/LDP/abs/html"
 
-SRC_URI="http://bash.deta.in/abs-guide-final.tar.bz2
-	pdf? ( http://bash.deta.in/abs-guide.pdf )"
+SRC_URI="https://tldp.org/LDP/abs/abs-guide.html.tar.gz
+	pdf? ( https://tldp.org/LDP/abs/abs-guide.pdf )"
 S="${WORKDIR}"/abs
 
 LICENSE="public-domain"
@@ -16,7 +16,7 @@ KEYWORDS="~alpha amd64 ~arm64 ~hppa ~mips ppc ~riscv ~sparc x86"
 IUSE="pdf"
 
 src_unpack() {
-	unpack abs-guide-final.tar.bz2
+	unpack abs-guide.html.tar.gz
 
 	if use pdf ; then
 		cp "${DISTDIR}"/abs-guide.pdf "${S}" || die
