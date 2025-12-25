@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Apple Cinema Display Control"
 HOMEPAGE="https://web.archive.org/web/20090725222711/http://technocage.com:80/~caskey/acdctl/"
-SRC_URI="http://www.technocage.com/~caskey/acdctl/download/${P}.tar.bz2"
+SRC_URI="https://web.archive.org/web/20090721002746/http://technocage.com/~caskey/acdctl/download/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
