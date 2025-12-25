@@ -1,0 +1,40 @@
+Bug: https://bugs.gentoo.org/883463
+--- a/main.c
++++ b/main.c
+@@ -48,6 +48,7 @@
+ #include "common.h"
+ #include "packet.h"
+ #include "sound.h"
++#include "main.h"
+ 
+ extern unsigned char saved_level;
+ extern unsigned char level;
+@@ -74,9 +75,6 @@ static struct option long_options[] =
+ 
+ extern void play_single_player();
+ 
+-#ifndef swprintf
+-int swprintf(wchar_t *wcs, size_t maxlen, const wchar_t *format, ...);
+-#endif
+ #endif
+ 
+ int hwalpha;
+--- /dev/null
++++ b/main.h
+@@ -0,0 +1,6 @@
++#include <stdio.h>
++#include <wchar.h>
++#ifndef swprintf
++int swprintf(wchar_t *wcs, size_t maxlen, const wchar_t *format, ...);
++#endif
++void remove_bubble(struct player_state* p, int x, int y, int evil);
+--- a/singleplayer.c
++++ b/singleplayer.c
+@@ -24,6 +24,7 @@
+ 
+ #include "common.h"
+ #include "sound.h"
++#include "main.h"
+ 
+ #ifndef WIN32
+ #include <unistd.h>
