@@ -3,16 +3,15 @@
 
 EAPI=8
 
-
 DESCRIPTION="A small conversion and check utility for ADIF files"
 HOMEPAGE="https://github.com/oh7bf/adifmerg"
-SRC_URI="https://github.com/oh7bf/adifmerg/archive/refs/heads/master.zip -> ${P}.zip"
+SRC_URI="https://github.com/oh7bf/adifmerg/archive/refs/heads/master.tar.gz -> ${P}.tar.gz"
 
 S=${WORKDIR}/adifmerg-master
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="examples"
 
 RDEPEND="dev-lang/perl"
