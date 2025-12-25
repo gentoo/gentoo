@@ -1,0 +1,32 @@
+From: Patrizio Tufarolo <patriziotufarolo@gmail.com>
+Date: Wed, 25 May 2022 08:11:36 +0200
+Subject: fix_segfault_on_DNS_entries
+
+Slightly edited by Wolfram Sang <wsa@kernel.org>
+---
+ src/modules/nm09.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/modules/nm09.c b/src/modules/nm09.c
+index 2b3098b..02d0e20 100644
+--- a/src/modules/nm09.c
++++ b/src/modules/nm09.c
+@@ -529,7 +529,7 @@ static mmguiconn_t mmgui_module_connection_get_params(mmguicore_t mmguicore, con
+ 	GVariant *connconsec, *connipv4sec, *conntechsec;
+ 	GVariant *conndnsvar;
+ 	gchar *conntypestr, *connparamstr;
+-	gint i, addrint;
++	gint i, addrint, n_dns_entries;
+ 	GVariant *addrvar;
+ 	gchar *techstr;
+ 	mmguiconn_t connection;
+@@ -630,7 +630,8 @@ static mmguiconn_t mmgui_module_connection_get_params(mmguicore_t mmguicore, con
+ 					if (connipv4sec != NULL) {
+ 						/*DNS*/
+ 						conndnsvar = g_variant_lookup_value(connipv4sec, "dns", G_VARIANT_TYPE_ARRAY);
+-						for (i = 0; i < g_variant_n_children(conndnsvar); i++) {
++						n_dns_entries = conndnsvar ? g_variant_n_children(conndnsvar) : 0;
++						for (i = 0; i < n_dns_entries; i++) {
+ 							addrvar = g_variant_get_child_value(conndnsvar, i);
+ 							addrint = ntohl(g_variant_get_uint32(addrvar));
+ 							if (connection->dns1 == NULL) {
