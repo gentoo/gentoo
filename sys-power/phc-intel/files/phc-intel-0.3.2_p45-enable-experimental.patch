@@ -1,0 +1,14 @@
+diff --git a/Makefile b/Makefile
+index af1a161..f029626 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,7 @@
+ MODULE = phc-intel
+-VERSION = 0.3.2
++#VERSION = 0.3.2
+ # If you are brave enough to use a test release, uncomment the next line.
+-#VERSION = 0.4.0
++VERSION = 0.4.0
+ 
+ # change KERNELSRC to the location of your kernel build tree only if
+ # autodetection does not work, e.g.:
