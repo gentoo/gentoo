@@ -1,0 +1,20 @@
+--- a/thread_pthread.c	2023-02-08 05:02:20.000000000 +0100
++++ b/thread_pthread.c	2023-03-10 17:46:25.694739053 +0100
+@@ -1033,7 +1033,7 @@
+ {
+     native_main_thread.id = pthread_self();
+ 
+-#if MAINSTACKADDR_AVAILABLE
++#if MAINSTACKADDR_AVAILABLE && !(defined(__linux__) && !defined(__GLIBC__))
+     if (native_main_thread.stack_maxsize) return;
+     {
+         void* stackaddr;
+@@ -2090,7 +2090,7 @@
+ 
+ #ifdef STACKADDR_AVAILABLE
+     if (get_stack(&base, &size) == 0) {
+-# ifdef __APPLE__
++# if defined(__APPLE__) || (defined(__linux__) && !defined(__GLIBC__))
+         if (pthread_equal(th->nt->thread_id, native_main_thread.id)) {
+             struct rlimit rlim;
+             if (getrlimit(RLIMIT_STACK, &rlim) == 0 && rlim.rlim_cur > size) {
