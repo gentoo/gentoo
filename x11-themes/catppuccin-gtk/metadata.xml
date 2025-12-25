@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>strdenis02@gmail.com</email>
+		<name>Denis Strizhkin</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="frappe">Install Frappe-Standard-Dark flavor.</flag>
+		<flag name="latte">Install Latte-Standard-Light flavor.</flag>
+		<flag name="macchiato">Install Macchiato-Standard-Dark flavor.</flag>
+		<flag name="mocha">Install Mocha-Standard-Dark flavor.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">catppuccin/gtk</remote-id>
+	</upstream>
+</pkgmetadata>
