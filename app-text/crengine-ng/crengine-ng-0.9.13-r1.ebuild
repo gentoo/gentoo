@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.com/coolreader-ng/${PN}/-/archive/${PV}/${P}.tar.bz2
 
 LICENSE="GPL-2+"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="+png +jpeg webp +gif +svg +chm +harfbuzz +fontconfig +libunibreak +fribidi +zstd +libutf8proc static-libs test"
 
 RESTRICT="!test? ( test )"
