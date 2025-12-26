@@ -50,3 +50,14 @@ src_configure() {
 	[[ $(tc-get-cxx-stdlib) == 'libc++' ]] && append-cxxflags -fexperimental-library
 	ecm_src_configure
 }
+
+src_install() {
+	ecm_src_install
+
+	# OpenRC user service, bug #936123
+	exeinto /etc/user/init.d
+	newexe "${FILESDIR}/krdpserver.user.initd" krdpserver
+
+	insinto /etc/user/conf.d
+	newins "${FILESDIR}/krdpserver.user.confd" krdpserver
+}
