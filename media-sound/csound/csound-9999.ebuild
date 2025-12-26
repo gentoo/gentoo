@@ -55,7 +55,7 @@ BDEPEND="
 	)
 "
 CDEPEND="
-	dev-cpp/eigen:3
+	dev-cpp/eigen:=
 	media-libs/libsndfile
 	media-libs/libsamplerate
 	virtual/zlib:=

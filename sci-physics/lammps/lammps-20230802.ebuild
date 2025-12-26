@@ -38,6 +38,7 @@ RESTRICT="test"
 
 RDEPEND="
 	app-arch/gzip
+	dev-cpp/eigen:=
 	media-libs/libpng:0
 	virtual/zlib:=
 	mpi? (
@@ -53,8 +54,7 @@ RDEPEND="
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-4.2.9-r1:= )
 	opencl? ( virtual/opencl )
 	hip? ( dev-util/hip:= )
-	dev-cpp/eigen:3
-	"
+"
 	# Kokkos-3.5 not in tree atm
 	# kokkos? ( dev-cpp/kokkos-3.5.* )
 BDEPEND="${DISTUTILS_DEPS}"

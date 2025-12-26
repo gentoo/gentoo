@@ -20,7 +20,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	>=dev-cpp/eigen-3.4.0:3
+	>=dev-cpp/eigen-3.4.0:=
 	dev-libs/boost:=
 	dev-libs/libpcre2
 	virtual/zlib:=

@@ -36,7 +36,7 @@ REQUIRED_USE="|| ( gtk qt6 sdl )
 	lua? ( ${LUA_REQUIRED_USE} )"
 
 BDEPEND="
-	dev-cpp/eigen
+	dev-cpp/eigen:=
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 "

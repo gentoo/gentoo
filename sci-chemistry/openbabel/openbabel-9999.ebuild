@@ -40,7 +40,7 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	dev-cpp/eigen:3
+	dev-cpp/eigen:=
 	virtual/zlib:=
 	inchi? ( sci-libs/inchi )
 	json? ( >=dev-libs/rapidjson-1.1.0 )

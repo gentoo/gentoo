@@ -20,7 +20,7 @@ IUSE="cpu_flags_x86_popcnt eigen"
 #  * dev-cpp/magic_enum
 #
 # Eigen is a set of headers, not a shared library.
-BDEPEND="eigen? ( dev-cpp/eigen )"
+BDEPEND="eigen? ( dev-cpp/eigen:= )"
 DEPEND="dev-libs/libfmt"
 RDEPEND="${DEPEND}"
 

@@ -20,12 +20,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 RDEPEND="
+	dev-cpp/eigen:=
 	dev-qt/qtbase:6[concurrent,gui,network,opengl,ssl,widgets]
 	~sci-libs/avogadrolibs-${PV}[archive,qt6]
 "
 DEPEND="
 	${RDEPEND}
-	dev-cpp/eigen:3
 	sci-libs/jkqtplotter
 "
 BDEPEND="doc? ( app-text/doxygen )"

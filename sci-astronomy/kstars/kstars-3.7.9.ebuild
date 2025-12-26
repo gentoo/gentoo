@@ -25,6 +25,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 # https://wiki.gentoo.org/wiki/Project:Qt/Qt6_migration_notes#Still_unpackaged
 # >=dev-qt/qtdatavis3d-${QTMIN}:6
 COMMON_DEPEND="
+	dev-cpp/eigen:=
 	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui,network,sql,widgets]
 	>=dev-qt/qtdeclarative-${QTMIN}:6
 	>=dev-qt/qtsvg-${QTMIN}:6
@@ -54,7 +55,6 @@ COMMON_DEPEND="
 "
 # TODO: what about virtual/opengl?
 DEPEND="${COMMON_DEPEND}
-	dev-cpp/eigen:3
 	>=dev-qt/qtbase-${QTMIN}:6[concurrent]
 	test? ( sci-astronomy/erfa )
 "

@@ -26,7 +26,7 @@ IUSE="bluetooth debug lv2 nls nsm +standalone zeroconf"
 REQUIRED_USE="|| ( lv2 standalone )"
 
 DEPEND="
-	dev-cpp/eigen:3
+	dev-cpp/eigen:=
 	dev-libs/libsigc++:2
 	media-libs/libsndfile
 	media-libs/zita-convolver:=

@@ -20,6 +20,8 @@ if [[ ${PV} = *9999* ]] ; then
 else
 	SRC_URI="
 		https://gitlab.com/lib${PN}/${PN}/-/archive/${PV}/${P}.tar.bz2
+		https://gitlab.com/libeigen/eigen/-/commit/0295f81a835ef69e2bacd9e75ab5782eca398720.patch -> ${P}_p1.patch
+		https://gitlab.com/libeigen/eigen/-/commit/28ded8800c26864e537852658428ab44c8399e87.patch -> ${P}_p2.patch
 		test? ( lapack? ( https://downloads.tuxfamily.org/${PN}/lapack_addons_3.4.1.tgz -> ${PN}-lapack_addons-3.4.1.tgz ) )
 	"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos"
@@ -82,7 +84,7 @@ IUSE_TEST_BACKENDS=(
 	"umfpack"
 )
 
-IUSE="benchmark ${CPU_FEATURES_MAP[*]%:*} clang-cuda cuda hip debug doc lapack mathjax test ${IUSE_TEST_BACKENDS[*]}" #zvector
+IUSE="${CPU_FEATURES_MAP[*]%:*} clang-cuda cuda hip debug doc lapack mathjax test ${IUSE_TEST_BACKENDS[*]}" #zvector
 
 REQUIRED_USE="
 	test? (
@@ -157,7 +159,12 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-3.4.0-doc-nocompress.patch" # bug 830064
 	"${FILESDIR}/${PN}-3.4.0-buildstring.patch"
-	"${FILESDIR}/${PN}-5.0.0-please_protect_your_min_with_parentheses.patch"
+	"${FILESDIR}/${PN}-3.4.1-cxxstandard-17.patch"
+
+	"${FILESDIR}/${PN}-3.4.0-c++-20.patch"
+
+	"${DISTDIR}/${P}_p1.patch"
+	"${DISTDIR}/${P}_p2.patch"
 )
 
 # TODO should be in cuda.eclass
@@ -208,21 +215,14 @@ src_unpack() {
 
 src_prepare() {
 	sed \
+		-e "/add_subdirectory(bench\/spbench/s/^/#DONOTCOMPILE /g" \
 		-e "/add_subdirectory(demos/s/^/#DONOTCOMPILE /g" \
 		-i CMakeLists.txt || die
 
-	rm -r demos || die
+	rm -r bench demos || die
 
 	# run patches here as we patch in test/
 	cmake_src_prepare
-
-	if ! use bench; then
-		sed \
-			-e "/add_subdirectory(bench\/spbench/s/^/#DONOTCOMPILE /g" \
-			-i CMakeLists.txt || die
-
-		rm -r bench || die
-	fi
 
 	if ! use test; then
 		sed \
@@ -240,22 +240,20 @@ src_prepare() {
 }
 
 src_configure() {
-	# TODO BUG TEST
-	# fixed via "${FILESDIR}/${PN}-3.4.0-c++-20.patch"
-	# test/product_threaded.cpp unconditionally sets EIGEN_GEMM_THREADPOOL which
-	# causes the following build failure when openmp is also set
-	#
-	#     EIGEN_HAS_OPENMP and EIGEN_GEMM_THREADPOOL may not both be defined.
-	#
-	use openmp && use test && die "Cannot run test suite with openmp set"
-
+	# EIGEN_BUILD_TESTING # "Enable creation of Eigen tests." ${BUILD_TESTING})
+	# EIGEN_LEAVE_TEST_IN_ALL_TARGET # "Leaves tests in the all target, needed by ctest for automatic building." OFF)
+	# EIGEN_BUILD_BLAS # "Toggles the building of the Eigen Blas library" ${PROJECT_IS_TOP_LEVEL})
+	# EIGEN_BUILD_LAPACK # "Toggles the building of the included Eigen LAPACK library" ${PROJECT_IS_TOP_LEVEL})
+	# EIGEN_BUILD_BTL # "Build benchmark suite" OFF)
+	# EIGEN_BUILD_SPBENCH # "Build sparse benchmark suite" OFF)
+	# EIGEN_BUILD_DOC # "Enable creation of Eigen documentation" ${EIGEN_BUILD_DOC_DEFAULT})
+	# EIGEN_BUILD_DEMOS # "Toggles the building of the Eigen demos" ${PROJECT_IS_TOP_LEVEL})
+	# EIGEN_BUILD_PKGCONFIG # "Build pkg-config .pc file for Eigen" ${PROJECT_IS_TOP_LEVEL})
+	# EIGEN_BUILD_CMAKE_PACKAGE # "Enables the creation of EigenConfig.cmake and related files" ${PROJECT_IS_TOP_LEVEL})
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS="yes"
 		-DBUILD_TESTING="$(usex test)"
 
-		-DCMAKE_CXX_STANDARD="17"
-
-		-DEIGEN_BUILD_BTL="$(usex benchmark)" # Build benchmark suite
 		-DEIGEN_BUILD_DOC="$(usex doc)" # Enable creation of Eigen documentation
 		-DEIGEN_BUILD_PKGCONFIG="yes" # Build pkg-config .pc file for Eigen
 	)

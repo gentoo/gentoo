@@ -1,0 +1,33 @@
+From: Nicholas Vinson <nvinson234@gmail.com>
+Date: Mon, 15 Dec 2025 20:37:04 -0500
+
+diff --git a/Eigen/src/Eigenvalues/ComplexSchur.h b/Eigen/src/Eigenvalues/ComplexSchur.h
+index 22433f2bd..086977c42 100644
+--- a/Eigen/src/Eigenvalues/ComplexSchur.h
++++ b/Eigen/src/Eigenvalues/ComplexSchur.h
+@@ -277,7 +277,8 @@ typename ComplexSchur<MatrixType>::ComplexScalar ComplexSchur<MatrixType>::compu
+   using std::abs;
+   if ((iter == 10 || iter == 20) && iu > 1) {
+     // exceptional shift, taken from http://www.netlib.org/eispack/comqr.f
+-    return abs(numext::real(m_matT.coeff(iu, iu - 1))) + abs(numext::real(m_matT.coeff(iu - 1, iu - 2)));
++    return ComplexSchur<MatrixType>::ComplexScalar(
++        abs(numext::real(m_matT.coeff(iu, iu - 1))) + abs(numext::real(m_matT.coeff(iu - 1, iu - 2))));
+   }
+ 
+   // compute the shift as one of the eigenvalues of t, the 2x2
+diff --git a/unsupported/Eigen/src/MatrixFunctions/MatrixFunction.h b/unsupported/Eigen/src/MatrixFunctions/MatrixFunction.h
+index 0c18ad66a..001470032 100644
+--- a/unsupported/Eigen/src/MatrixFunctions/MatrixFunction.h
++++ b/unsupported/Eigen/src/MatrixFunctions/MatrixFunction.h
+@@ -86,7 +86,7 @@ MatrixType MatrixFunctionAtomic<MatrixType>::compute(const MatrixType& A) {
+         for (Index i = 0; i < rows; i++)
+           mx = (std::max)(mx, std::abs(m_f(Ashifted(i, i) + avgEival, static_cast<int>(s + r))));
+         if (r != 0) rfactorial *= RealScalar(r);
+-        delta = (std::max)(delta, mx / rfactorial);
++        delta = (std::max)(delta, RealScalar(mx / rfactorial));
+       }
+       const RealScalar P_norm = P.cwiseAbs().rowwise().sum().maxCoeff();
+       if (mu * delta * P_norm < NumTraits<Scalar>::epsilon() * F_norm)  // series converged
+-- 
+2.52.0
+

@@ -16,6 +16,7 @@ IUSE="fits openmp test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	dev-cpp/eigen:=
 	dev-libs/boost:=
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
@@ -39,7 +40,6 @@ RDEPEND="
 	fits? ( sci-libs/cfitsio:= )
 "
 DEPEND="${RDEPEND}
-	dev-cpp/eigen:3
 	test? ( dev-cpp/gtest )
 "
 BDEPEND="dev-qt/linguist-tools:5"

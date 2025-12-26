@@ -19,6 +19,7 @@
 	<use>
 		<flag name="benchmark">Build benchmark suite</flag>
 		<flag name="clang">Use clang for cuda units compilation</flag>
+		<flag name="clang-cuda">Use clang for cuda units compilation</flag>
 		<flag name="hip">Enable HIP GPU computing support</flag>
 		<flag name="adolc">Add test support for Adolc (<pkg>sci-libs/adolc</pkg>)</flag>
 		<flag name="boost">Add test support for Boost.Multiprecision (<pkg>dev-libs/boost</pkg>)</flag>

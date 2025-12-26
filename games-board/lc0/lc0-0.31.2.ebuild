@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="blas dnnl ispc onnx opencl test"
 
-RDEPEND="dev-cpp/eigen
+RDEPEND="dev-cpp/eigen:=
 	dev-cpp/gtest
 	blas? ( sci-libs/openblas )
 	opencl? ( virtual/opencl )

@@ -45,7 +45,7 @@ RDEPEND="
 		sci-libs/cgnslib
 		sci-libs/hdf5:=[mpi=]
 	)
-	eigen? ( dev-cpp/eigen )
+	eigen? ( dev-cpp/eigen:= )
 	gmm? ( sci-mathematics/gmm )
 	jpeg? ( media-libs/libjpeg-turbo )
 	med? (

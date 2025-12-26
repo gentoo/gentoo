@@ -29,6 +29,7 @@ RESTRICT="test"
 
 # slot op: Uses Qt::GuiPrivate for qtx11extras_p.h
 COMMON_DEPEND="
+	dev-cpp/eigen:=
 	dev-libs/expat
 	>=dev-qt/qtbase-${QTMIN}:6=[concurrent,dbus,-gles2-only,gui,mysql?,network,opengl,sql,widgets,X,xml]
 	>=dev-qt/qtnetworkauth-${QTMIN}:6
@@ -77,7 +78,6 @@ COMMON_DEPEND="
 	video? ( >=dev-qt/qtmultimedia-${QTMIN}:6 )
 "
 DEPEND="${COMMON_DEPEND}
-	dev-cpp/eigen:3
 	dev-libs/boost
 	addressbook? ( >=kde-apps/akonadi-24.05.2:6 )
 "

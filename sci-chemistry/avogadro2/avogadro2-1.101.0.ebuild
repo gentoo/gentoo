@@ -20,12 +20,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc vtk"
 
 RDEPEND="
+	dev-cpp/eigen:=
 	dev-qt/qtbase:6[concurrent,gui,network,opengl,ssl,widgets]
 	~sci-libs/avogadrolibs-${PV}[qt6,vtk?]
 	vtk? ( sci-libs/vtk:= )
 "
 DEPEND="${RDEPEND}
-	dev-cpp/eigen:3
 	vtk? ( dev-libs/pegtl )
 "
 BDEPEND="doc? ( app-text/doxygen )"
