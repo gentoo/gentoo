@@ -202,11 +202,6 @@ app-emacs/twittering-mode
 # Removal on 2026-01-02.
 net-proxy/sqtop
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-01)
-# Depends on PyQt5, no signs of upstream porting/activity.
-# Bugs #965505, 962256. Removal on 2025-12-31.
-media-video/vidcutter
-
 # David Seifert <soap@gentoo.org> (2025-12-01)
 # Last release over 20 years ago, ancient codebase, lots of QA warnings, no
 # other distro packages this anymore. Removal on 2025-12-31. Bug #944877.
