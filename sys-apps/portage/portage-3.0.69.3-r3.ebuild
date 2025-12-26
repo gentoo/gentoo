@@ -92,6 +92,7 @@ PDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/0001-emerge-webrsync-restore-the-missing-option-arg-for-c.patch
+	"${FILESDIR}"/0001-bin-emerge-ebuild-don-t-define-signal-handlers-in-gl.patch
 )
 
 pkg_pretend() {
