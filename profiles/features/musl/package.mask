@@ -311,7 +311,6 @@ dev-libs/nwjs
 dev-perl/Lab-Zhinst
 dev-python/pyzotero
 dev-util/azuredatastudio
-dev-util/idea-community
 dev-util/intellij-idea
 games-action/a-story-about-my-uncle
 games-action/badland
