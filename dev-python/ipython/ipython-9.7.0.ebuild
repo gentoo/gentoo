@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=standalone
 PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 PYTHON_REQ_USE='readline(+),sqlite,threads(+)'
 
-inherit distutils-r1 optfeature pypi virtualx
+inherit distutils-r1 optfeature toolchain-funcs pypi virtualx
 
 DESCRIPTION="Advanced interactive shell for Python"
 HOMEPAGE="
@@ -106,6 +106,15 @@ python_test() {
 			)
 			;;
 	esac
+
+	if [[ $(tc-get-ptr-size) == 4 ]] ; then
+		EPYTEST_DESELECT+=(
+			# https://github.com/ipython/ipython/issues/15107
+			IPython/extensions/ipython_tests/test_deduperreload.py::DecoratorPatchingSuite::test_function_decorator_from_other_module
+			IPython/extensions/ipython_tests/test_deduperreload.py::DecoratorPatchingSuite::test_function_decorators
+			IPython/extensions/tests/test_deduperreload.py::DecoratorPatchingSuite::test_method_decorator
+		)
+	fi
 
 	# nonfatal implied by virtx
 	nonfatal epytest || die "Tests failed on ${EPYTHON}"
