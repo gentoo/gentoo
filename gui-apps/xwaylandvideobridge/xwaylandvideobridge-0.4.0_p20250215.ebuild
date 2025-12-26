@@ -17,7 +17,7 @@ S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
 
 DEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui,widgets,X]
