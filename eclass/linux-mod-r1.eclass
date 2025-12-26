@@ -7,7 +7,7 @@
 # Gentoo Kernel project <kernel@gentoo.org>
 # @AUTHOR:
 # Ionen Wolkens <ionen@gentoo.org>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @PROVIDES: linux-info
 # @BLURB: Functions for installing out-of-tree Linux kernel modules
 # @DESCRIPTION:
@@ -101,13 +101,13 @@
 #
 # (remember to ensure that linux-mod-r1_pkg_postinst is ran for depmod)
 
-case ${EAPI} in
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_LINUX_MOD_R1_ECLASS} ]]; then
 _LINUX_MOD_R1_ECLASS=1
+
+case ${EAPI} in
+	8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 inherit dist-kernel-utils edo linux-info multiprocessing toolchain-funcs
 

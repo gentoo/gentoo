@@ -13,7 +13,7 @@
 # foser <foser@gentoo.org>
 # zaheerm <zaheerm@gentoo.org>
 # Steven Newbury
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @PROVIDES: meson multilib-minimal
 # @BLURB: Helps building core & split gstreamer plugins
 # @DESCRIPTION:
@@ -28,15 +28,12 @@
 # also list any packages that provide explicitly requested plugins.
 
 case "${EAPI:-0}" in
-	7|8)
-		;;
-	*)
-		die "EAPI=\"${EAPI}\" is not supported"
-		;;
+	7|8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 PYTHON_COMPAT=( python3_{10..13} )
-[[ ${EAPI} == 8 ]] && inherit python-any-r1
+[[ ${EAPI} != 7 ]] && inherit python-any-r1
 
 # multilib-minimal goes last
 inherit meson multilib toolchain-funcs xdg-utils multilib-minimal
@@ -211,7 +208,7 @@ RDEPEND="
 BDEPEND="
 	virtual/pkgconfig
 "
-[[ ${EAPI} == 8 ]] && BDEPEND="${BDEPEND} ${PYTHON_DEPS}"
+[[ ${EAPI} != 7 ]] && BDEPEND="${BDEPEND} ${PYTHON_DEPS}"
 # gst-plugins-{base,good} splits all require glib-utils due to gnome.mkenums_simple meson calls in gst-libs
 # The alternative would be to patch out the subdir calls, but some packages need it themselves too anyways, thus
 # something in a full upgrade path will require it anyways at build time, so not worth the risk.
@@ -457,7 +454,7 @@ gstreamer_multilib_src_compile() {
 # @FUNCTION: gstreamer-meson_pkg_setup
 # @DESCRIPTION:
 # Proxies python-any-r1_pkg_setup for forward-proofing any future pkg_setup needs.
-# Only exported for EAPI-8.
+# Only exported for EAPI 8 or later.
 gstreamer-meson_pkg_setup() {
 	python-any-r1_pkg_setup
 }
@@ -498,7 +495,7 @@ gstreamer_multilib_src_install_all() {
 	for plugin_dir in ${GST_PLUGINS_BUILD_DIR} ; do
 		local dir=$(gstreamer_get_plugin_dir ${plugin_dir})
 		[[ -e ${dir}/README ]] && dodoc "${dir}"/README
-		if [[ ${EAPI} == 8 ]]; then
+		if [[ ${EAPI} != 7 ]]; then
 			local presets=( "${dir}"/*.prs )
 			if [[ -e ${presets[0]} ]]; then
 				insinto /usr/share/gstreamer-${SLOT}/presets
@@ -508,6 +505,6 @@ gstreamer_multilib_src_install_all() {
 	done
 }
 
-if [[ ${EAPI} == 8 ]]; then
+if [[ ${EAPI} != 7 ]]; then
 	EXPORT_FUNCTIONS pkg_setup
 fi

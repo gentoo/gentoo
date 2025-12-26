@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: rebar-utils.eclass
@@ -6,19 +6,19 @@
 # Florian Schmaus <flow@gentoo.org>
 # @AUTHOR:
 # Amadeusz Żołnowski <aidecoe@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: Auxiliary functions for using dev-util/rebar.
 # @DESCRIPTION:
 # This eclass provides a set of axiliary functions commonly needed
 # when building Erlang/OTP packages with rebar.
 
-case ${EAPI} in
-	7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_REBAR_UTILS_ECLASS} ]]; then
 _REBAR_UTILS_ECLASS=1
+
+case ${EAPI} in
+	7|8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # @ECLASS_VARIABLE: REBAR_APP_SRC
 # @DESCRIPTION:

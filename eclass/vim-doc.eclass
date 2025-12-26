@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: vim-doc.eclass
 # @MAINTAINER:
 # vim@gentoo.org
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: Eclass for vim{,-plugin}.eclass to update documentation tags.
 # @DESCRIPTION:
 # This eclass is used by vim.eclass and vim-plugin.eclass to update
@@ -20,7 +20,7 @@ if [[ -z ${_VIM_DOC_ECLASS} ]]; then
 _VIM_DOC_ECLASS=1
 
 case ${EAPI} in
-	7|8) ;;
+	7|8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 

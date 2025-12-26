@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: shell-completion.eclass
@@ -7,7 +7,7 @@
 # Florian Schmaus <flow@gentoo.org>
 # @AUTHOR:
 # Alfred Wingate <parona@protonmail.com>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @PROVIDES: bash-completion-r1
 # @BLURB: a few quick functions to install various shell completion files
 # @DESCRIPTION:
@@ -15,13 +15,13 @@
 # for popular shells.  It inherits the already widely adopted
 # 'bash-completion-r1', thus extending on its functionality.
 
-case ${EAPI} in
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported"
-esac
-
 if [[ -z ${_SHELL_COMPLETION_ECLASS} ]]; then
 _SHELL_COMPLETION_ECLASS=1
+
+case ${EAPI} in
+	8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported"
+esac
 
 # Extend bash-completion-r1
 inherit bash-completion-r1

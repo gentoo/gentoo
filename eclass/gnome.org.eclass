@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gnome.org.eclass
@@ -7,18 +7,18 @@
 # @AUTHOR:
 # Authors: Spidler <spidler@gentoo.org> with help of carparski.
 # eclass variable additions and documentation: Gilles Dartiguelongue <eva@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: Helper eclass for gnome.org hosted archives
 # @DESCRIPTION:
 # Provide a default SRC_URI for tarball hosted on gnome.org mirrors.
 
-case ${EAPI} in
-	7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_GNOME_ORG_ECLASS} ]] ; then
 _GNOME_ORG_ECLASS=1
+
+case ${EAPI} in
+	7|8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # @ECLASS_VARIABLE: GNOME_TARBALL_SUFFIX
 # @PRE_INHERIT
