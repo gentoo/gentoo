@@ -161,11 +161,6 @@ games-engines/qtads
 # Removal on 2026-01-15
 games-strategy/hedgewars
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-05)
-# Broken w/ CMake4, IUSE python stuck on py3.12, Gui stuck on Qt5.
-# Bugs #929093, #952086, #952528, #955277. Removal on 2026-01-04.
-media-gfx/yafaray
-
 # Nowa Ammerlaan <nowa@gentoo.org> (2025-12-05)
 # Stuck on Qt5, no upstream action.
 # Please use the games-action/prismlauncher fork instead.
