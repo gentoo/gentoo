@@ -21,6 +21,7 @@ IUSE="apparmor btrfs +container-init cuda +overlay2 seccomp selinux systemd"
 DEPEND="
 	acct-group/docker
 	>=dev-db/sqlite-3.7.9:3
+	net-firewall/nftables:=
 	apparmor? ( sys-libs/libapparmor )
 	btrfs? ( >=sys-fs/btrfs-progs-3.16.1 )
 	seccomp? ( >=sys-libs/libseccomp-2.2.1 )
@@ -31,7 +32,6 @@ DEPEND="
 # https://github.com/moby/moby/blob/master/project/PACKAGERS.md#optional-dependencies
 RDEPEND="
 	${DEPEND}
-	>=net-firewall/iptables-1.4
 	sys-process/procps
 	>=dev-vcs/git-1.7
 	>=app-arch/xz-utils-4.9
