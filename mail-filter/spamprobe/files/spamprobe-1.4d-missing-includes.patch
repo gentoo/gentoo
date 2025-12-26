@@ -1,0 +1,65 @@
+https://bugs.gentoo.org/580940
+Missing includes for USE="jpeg -gif -png"
+--- a/src/parser/JpegParser.h
++++ b/src/parser/JpegParser.h
+@@ -35,6 +35,8 @@
+ 
+ extern "C" {
+ #include <setjmp.h>
++#include <cstdio>
++#include <cstddef>
+ #include <jpeglib.h>
+ #include "jerror.h"
+ }
+https://bugs.gentoo.org/929015
+additional safety with -std=cxx1
+--- a/src/includes/LRUCache.h
++++ b/src/includes/LRUCache.h
+@@ -33,6 +33,7 @@
+ 
+ #include <map>
+ #include <list>
++#include <functional>
+ #include "util.h"
+ 
+ template<class KeyType, class ValueType> class LRUCache
+missing includes in configure, cause compilation failures for exit
+and configure.ac is bad, produces bad configure
+--- a/configure
++++ b/configure
+@@ -2629,6 +2629,7 @@
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+ $ac_declaration
++#include <stdlib.h>
+ int
+ main ()
+ {
+@@ -3164,6 +3165,7 @@
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+ $ac_declaration
++#include <stdlib.h>
+ int
+ main ()
+ {
+@@ -3777,6 +3779,7 @@
+ #endif
+ 
+ #define XOR(e, f) (((e) && !(f)) || (!(e) && (f)))
++#include <stdlib.h>
+ int
+ main ()
+ {
+Clang warning that's obviously a bug and is easy to fix
+--- a/src/database/HashDataFile.h
++++ b/src/database/HashDataFile.h
+@@ -93,7 +93,7 @@
+ 
+   bool isReadOnly() const
+   {
+-    m_isReadOnly;
++    return m_isReadOnly;
+   }
+ 
+   int createMode() const
