@@ -166,6 +166,7 @@ src_install() {
 		rm xasy1 xasy.py
 		mv xasy xasy.py
 		cd .. || die
+		python_moduleinto ${PN}
 		python_domodule GUI
 		chmod 755 "${D}/$(python_get_sitedir)/${PN}/GUI/xasy.py"
 		dosym "$(python_get_sitedir)/${PN}/GUI/xasy.py" /usr/bin/xasy
