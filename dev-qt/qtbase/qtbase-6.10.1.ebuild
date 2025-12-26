@@ -9,7 +9,7 @@ inherit flag-o-matic qt6-build toolchain-funcs
 DESCRIPTION="Cross-platform application development framework"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv x86"
 fi
 
 declare -A QT6_IUSE=(
