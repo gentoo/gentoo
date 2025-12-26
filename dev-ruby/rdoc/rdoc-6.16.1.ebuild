@@ -35,7 +35,7 @@ ruby_add_rdepend "
 
 ruby_add_bdepend "
 	>=dev-ruby/kpeg-1.1.0-r1
-	>dev-ruby/racc-1.4.10
+	>=dev-ruby/racc-1.4.10
 	dev-ruby/rake
 	test? (
 		dev-ruby/bundler
