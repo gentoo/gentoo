@@ -10,7 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag name="radv">Pull media-libs/amdgpu-pro-vulkan as dependency</flag>
-		<flag name="pro">Pull media-libs/mesa as dependency</flag>
+		<flag name="radv">Pull media-libs/mesa as dependency</flag>
+		<flag name="pro">Pull media-libs/amdgpu-pro-vulkan as dependency</flag>
 	</use>
 </pkgmetadata>
