@@ -1,2 +1,3 @@
 slotmove media-fonts/oxygen-fonts 5 0
 move dev-ada/VSS dev-ada/vss-text
+move dev-util/idea-community dev-util/intellij-idea
