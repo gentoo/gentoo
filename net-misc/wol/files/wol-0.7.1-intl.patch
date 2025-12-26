@@ -1,0 +1,44 @@
+Don't bundle outdated parts of glibc
+https://bugs.gentoo.org/945522
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -3,7 +3,7 @@ ACLOCAL_AMFLAGS = -I m4
+ 
+ EXTRA_DIST = config.rpath mkinstalldirs autogen.sh debian wol.spec
+ 
+-SUBDIRS = intl demo doc include lib src m4 po
++SUBDIRS = demo doc include lib src m4 po
+ 
+ MAINTAINERCLEANFILES = Makefile.in aclocal.m4 config.h.in config.h.in~ \
+ config.log config.status configure depcomp install-sh ltconfig ltmain.sh \
+--- a/configure.ac
++++ b/configure.ac
+@@ -115,7 +115,7 @@ fi
+ dnl i18n
+ ALL_LINGUAS="de fr it es sv"
+ dnl don't pass symbol [external] since it will disable local intl directory
+-AM_GNU_GETTEXT
++AM_GNU_GETTEXT([external])
+ 
+ 
+ dnl
+@@ -253,7 +253,7 @@ CFLAGS="$CFLAGS -W -Wall -Wpointer-arith -Wimplicit-function-declaration"
+ 
+ 
+ dnl create the Makefiles
+-AC_OUTPUT([intl/Makefile po/Makefile.in
++AC_OUTPUT([po/Makefile.in
+ Makefile
+ demo/Makefile
+ doc/Makefile
+--- a/lib/Makefile.am
++++ b/lib/Makefile.am
+@@ -1,7 +1,6 @@
+ noinst_LIBRARIES = libwrappers.a
+ 
+ libwrappers_a_SOURCES = wrappers.h \
+-getopt_int.h getopt.h getopt1.c getopt.c \
+ usleep.c usleep.h \
+ xmalloc.c xalloc.h \
+ getstr.c getstr.h getline.c getline.h \
