@@ -178,14 +178,14 @@ src_install() {
 	newicon $pngfile "${PN}.png" || die "we died"
 
 	if use experimental; then
-		make_desktop_entry "/opt/idea-community/bin/idea -Dawt.toolkit.name=WLToolkit" \
-			"IntelliJ Idea Community Edition" "${PN}" "Development;IDE;"
+		make_desktop_entry "/opt/intellij-idea/bin/idea -Dawt.toolkit.name=WLToolkit" \
+			"IntelliJ IDEA Community Edition" "${PN}" "Development;IDE;"
 
 		ewarn "You have enabled the experimental USE flag."
 		ewarn "This is a Wayland support preview. Expect instability."
 	else
-		make_desktop_entry "/opt/idea-community/bin/idea" \
-			"IntelliJ Idea Community Edition" "${PN}" "Development;IDE;"
+		make_desktop_entry "/opt/intellij-idea/bin/idea" \
+			"IntelliJ IDEA" "${PN}" "Development;IDE;"
 	fi
 
 	# recommended by: https://confluence.jetbrains.com/display/IDEADEV/Inotify+Watches+Limit
