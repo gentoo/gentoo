@@ -98,8 +98,7 @@ src_compile() {
 
 		# pinky, uptime, users, and who require utmpx (not available on musl)
 		# bug #832868
-		# runcon chcon require selinux, but upstream broke the SELINUX_ENABLED logic
-		SKIP_UTILS="$(usev elibc_musl "pinky uptime users who") $(usev !selinux "runcon chcon")"
+		SKIP_UTILS="$(usev elibc_musl "pinky uptime users who")"
 
 		# bug #963516
 		LIBSTDBUF_DIR="${EPREFIX}/usr/libexec/${PN}"
