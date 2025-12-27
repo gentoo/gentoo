@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=( {19..20} )
+LLVM_COMPAT=( {19..21} )
 inherit llvm-r1
 
 DESCRIPTION="Limine is a modern, advanced, and portable BIOS/UEFI multiprotocol bootloader"
