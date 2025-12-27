@@ -7,17 +7,17 @@ inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="A UNIX init scheme with service supervision"
 HOMEPAGE="https://smarden.org/runit/"
-PATCH_VER=20240905
+PATCH_VER=20250506
 SRC_URI="
 	https://smarden.org/runit/${P}.tar.gz
-	https://github.com/clan/runit/releases/download/${PV}-r5/${P}-patches-${PATCH_VER}.tar.xz
+	https://github.com/clan/runit/releases/download/${PF}/${P}-patches-${PATCH_VER}.tar.xz
 "
 S=${WORKDIR}/admin/${P}/src
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~m68k ~mips ppc ppc64 ~s390 ~sparc x86"
-IUSE="+scripts split-usr static"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+IUSE="+scripts split-usr system-init static"
 
 src_unpack() {
 	unpack ${P}.tar.gz
@@ -27,9 +27,9 @@ src_unpack() {
 src_prepare() {
 	default
 
-	cd "${S}"/.. || die
-	eapply -p3 "${WORKDIR}"/patches
 	cd "${S}" || die
+
+	eapply -p2 "${WORKDIR}"/patches
 
 	# We either build everything or nothing static
 	sed -i -e 's:-static: :' Makefile || die
@@ -43,7 +43,6 @@ src_prepare() {
 src_configure() {
 	use static && append-ldflags -static
 
-	append-flags -std=gnu17  # XXX https://bugs.gentoo.org/946137, workaround for gcc15
 	echo "$(tc-getCC) ${CFLAGS}"  > conf-cc || die
 	echo "$(tc-getCC) ${LDFLAGS}" > conf-ld || die
 	sed -i -e "s:ar cr:$(tc-getAR) cr:" print-ar.sh || die
@@ -60,7 +59,7 @@ src_install() {
 		dosym ../../etc/runit/2 /sbin/runsvdir-start
 	fi
 
-	DOCS=( ../package/{CHANGES,README,THANKS,TODO} )
+	DOCS=( ../package/{CHANGES,README,THANKS} )
 	HTML_DOCS=( ../doc/*.html )
 	einstalldocs
 	doman ../man/*.[18]
