@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>celeste@router.sex</email>
+		<name>Celeste Hickenlooper</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		mommy is a script that provides encouragement and compliments to users
+		when they run commands. It can be configured to provide various messages
+		and supports shell completions for bash, fish, and zsh.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">fwdekker/mommy</remote-id>
+		<bugs-to>https://github.com/fwdekker/mommy/issues</bugs-to>
+	</upstream>
+	<use>
+		<flag name="bash-completion">Install bash completion files</flag>
+		<flag name="fish-completion">Install fish completion files</flag>
+		<flag name="zsh-completion">Install zsh completion files</flag>
+	</use>
+</pkgmetadata>
