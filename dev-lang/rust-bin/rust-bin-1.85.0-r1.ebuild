@@ -27,7 +27,7 @@ else
 			$(rust_arch_uri powerpc64le-unknown-linux-musl rust-${PV})
 		) ) )
 	"
-	KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 fi
 
 DESCRIPTION="Systems programming language from Mozilla"
