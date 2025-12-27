@@ -1,0 +1,18 @@
+--- a/src/native/unix/native/jsvc.h
++++ b/src/native/unix/native/jsvc.h
+@@ -25,15 +25,7 @@
+ #include <sys/stat.h>
+ 
+ /* Definitions for booleans */
+-#ifdef OS_DARWIN
+ #include <stdbool.h>
+-#else
+-typedef enum {
+-    false,
+-    true
+-} bool;
+-#endif
+-
+ #include "version.h"
+ #include "debug.h"
+ #include "arguments.h"
