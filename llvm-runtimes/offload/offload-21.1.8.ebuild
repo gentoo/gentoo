@@ -12,7 +12,7 @@ HOMEPAGE="https://openmp.llvm.org"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0/${LLVM_SOABI}"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 ~arm64 ~ppc64"
 IUSE="+clang debug ompt test llvm_targets_AMDGPU llvm_targets_NVPTX"
 REQUIRED_USE="
 	llvm_targets_AMDGPU? ( clang )
