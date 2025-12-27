@@ -15,7 +15,7 @@ S="${WORKDIR}/pwsafe-${MY_PV}"
 
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="qr test +xml yubikey"
 RESTRICT="!test? ( test )"
 
@@ -39,7 +39,7 @@ BDEPEND="
 	virtual/pkgconfig
 	test? ( dev-cpp/gtest )"
 
-PATCHES=( "${FILESDIR}/${P}-CMake.patch" )
+PATCHES=( "${FILESDIR}/passwordsafe-1.20.0-CMake.patch" )
 
 src_configure() {
 	setup-wxwidgets
