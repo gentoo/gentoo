@@ -6,16 +6,15 @@ EAPI=8
 inherit cmake
 
 MY_PN="JKQtPlotter"
-HASH_COMMIT="d243218119b1632987df26baea0d4bc6ccdee533"
 DESCRIPTION="Extensive Qt Plotter framework"
 HOMEPAGE="https://jkriege2.github.io/JKQtPlotter/"
 if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/jkriege2/${MY_PN}.git"
 else
-	SRC_URI="https://github.com/jkriege2/JKQtPlotter/archive/${HASH_COMMIT}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/jkriege2/JKQtPlotter/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
-	S="${WORKDIR}/${MY_PN}-${HASH_COMMIT}"
+	S="${WORKDIR}/${MY_PN}-${PV/_/-}"
 fi
 
 LICENSE="LGPL-2.1+"
@@ -39,13 +38,10 @@ BDEPEND="
 	)
 "
 
-src_prepare() {
-	# avoid Qt5 automagic, https://bugs.gentoo.org/966047
-	sed -e "/^ *find_package.*QT NAMES/s/Qt5 //" \
-		-i cmake/jkqtplotter_common_qtsettings.cmake || die
-
-	cmake_src_prepare
-}
+PATCHES=(
+	# bug #966047, https://github.com/jkriege2/JKQtPlotter/pull/156.patch
+	"${FILESDIR}"/${PN}-5.0.0_beta1-qt6.patch
+)
 
 src_configure() {
 	local mycmakeargs=(
