@@ -107,7 +107,7 @@ src_install() {
 
 	if ! use doc; then
 		einfo "Removing documentation"
-		rm -r "${S}/usr/share/Wolfram/Documentation/${MPV}/en-us" || die
+		rm -r "${S}/opt/Wolfram/Mathematica/${MPV}/Documentation/English" || die
 	fi
 
 	# fix world writable file QA problem for files
