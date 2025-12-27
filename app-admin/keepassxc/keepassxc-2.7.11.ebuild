@@ -23,7 +23,7 @@ else
 			-> ${P}.gh.tar.gz"
 	fi
 
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv x86"
 fi
 
 # COPYING order
