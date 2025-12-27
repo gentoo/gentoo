@@ -32,6 +32,10 @@ DOCS=( NOTICE README.rst )
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+# Configure check, only recent (not yet released) dev-libs/boehm-gc carry this function
+# in non-threaded mode, see #968001.
+QA_CONFIG_IMPL_DECL_SKIP=( GC_set_markers_count )
+
 DEPEND="elibc_musl? ( sys-libs/argp-standalone )"
 COMMON_DEPEND="
 	ch-image? (
