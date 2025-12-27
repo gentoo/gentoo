@@ -6,7 +6,10 @@
 		<name>Mike Pagano</name>
 	</maintainer>
 	<use>
+		<flag name="bundled-xvfb">Utilize the built in xvfb server. Requires purchased license from upstream.</flag>
 		<flag name="experimental">Enables Wayland support preview.</flag>
+		<flag name="professional">Enable the Professional version which requires a license purchased from Jetbrains.</flag>
+		<flag name="wayland">Enables support for the Wayland display server protocol.</flag>
 	</use>
 	<longdescription lang="en">
 	Excel at enterprise, mobile and web development with Java, Scala and Groovy, with all the latest modern technologies and frameworks available out of the box.
