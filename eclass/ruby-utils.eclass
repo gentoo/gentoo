@@ -33,10 +33,10 @@ esac
 # provide for a better first installation experience.
 
 # All stable RUBY_TARGETS
-RUBY_TARGETS_PREFERENCE="ruby32 "
+RUBY_TARGETS_PREFERENCE="ruby32 ruby33 "
 
 # All other active ruby targets
-RUBY_TARGETS_PREFERENCE+="ruby33 ruby34"
+RUBY_TARGETS_PREFERENCE+="ruby34"
 
 _ruby_implementation_depend() {
 	local rubypn=
