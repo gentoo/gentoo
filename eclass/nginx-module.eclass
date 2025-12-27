@@ -393,6 +393,18 @@ ngx_mod_link_lib() {
 # function.
 S="${WORKDIR}/nginx"
 
+# If EGIT_REPO_URI is set, we are cloning a Git repo.
+if [[ -n "${EGIT_REPO_URI}" ]]; then
+	readonly _NGX_MOD_USE_GIT=1
+	inherit git-r3
+fi
+
+# Likewise for Mercurial.
+if [[ -n "${EHG_REPO_URI}" ]]; then
+	readonly _NGX_MOD_USE_MERCURIAL=1
+	inherit mercurial
+fi
+
 # @ECLASS_VARIABLE: NGINX_MOD_SHARED_OBJECTS
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
@@ -602,6 +614,15 @@ nginx-module_src_unpack() {
 	ln -s "${BROOT}/usr/src/nginx/configure" nginx/configure || die "ln failed"
 	ln -s "${BROOT}/usr/src/nginx/auto" nginx/auto || die "ln failed"
 	ln -s "${ESYSROOT}/usr/include/nginx" nginx/src || die "ln failed"
+
+	# Pull a Git repository, if Git is used.
+	if [[ _NGX_MOD_USE_GIT -eq 1 ]]; then
+		EGIT_CHECKOUT_DIR="${NGINX_MOD_S}" git-r3_src_unpack
+	fi
+	# Likewise for Mercurial.
+	if [[ _NGX_MOD_USE_MERCURIAL -eq 1 ]]; then
+		EHG_CHECKOUT_DIR="${NGINX_MOD_S}" mercurial_src_unpack
+	fi
 }
 
 # @FUNCTION: nginx-module_src_prepare
