@@ -21,9 +21,9 @@ S="${WORKDIR}"
 LICENSE="EPL-2.0"
 SLOT="0"
 
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 
-MY_JAVA_DEPEND="|| ( virtual/jre:17 virtual/jre:21 )"
+MY_JAVA_DEPEND="virtual/jre:21"
 
 # app-arch/zip: used by "openhab-cli backup"
 RDEPEND="
