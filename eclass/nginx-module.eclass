@@ -642,11 +642,13 @@ nginx-module_src_prepare() {
 	sed -i -e '1i\' -e ': > build/ngx_auto_config.h' config ||
 		{ eend $? || die "sed failed"; }
 
-	echo 'mv build/ngx_auto_config.h build/__ngx_gentoo_mod_config.h' \
+	# Add one extra LF before the command in case the 'config' script does not
+	# have a trailing newline already.
+	printf "\n%s\n" 'mv build/ngx_auto_config.h build/__ngx_gentoo_mod_config.h' \
 		>> config
-	# We specifically need the $? of echo.
+	# We specifically need the $? of printf.
 	# shellcheck disable=SC2320
-	eend $? || die "echo failed"
+	eend $? || die "printf failed"
 
 	# cd into module root and apply patches.
 	pushd "${NGINX_MOD_S}" >/dev/null || die "pushd failed"
