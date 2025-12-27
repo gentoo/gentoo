@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{11..13} )
 inherit autotools flag-o-matic python-single-r1 xdg
 
 DESCRIPTION="Fully featured yet light and fast cross platform word processor"
-HOMEPAGE="http://www.abisource.com/"
+HOMEPAGE="https://gitlab.gnome.org/World/AbiWord"
 SRC_URI="
 	https://gitlab.gnome.org/World/AbiWord/-/archive/release-${PV}/AbiWord-release-${PV}.tar.bz2
 	https://dev.gentoo.org/~soap/distfiles/${PN}-3.0.6-patches-r1.tar.xz"
