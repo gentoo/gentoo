@@ -50,8 +50,18 @@ RDEPEND="
 	dnet? ( dev-libs/libdnet )
 	icu? ( dev-libs/icu:= )
 	resolutionkms? (
-		x11-libs/libdrm[video_cards_vmware]
 		virtual/libudev
+		|| (
+			(
+				>=media-libs/mesa-25.2[-video_cards_vmware]
+				x11-base/xorg-server[xorg]
+				x11-libs/libdrm[-video_cards_vmware]
+			)
+			(
+				<media-libs/mesa-25.2[video_cards_vmware,xa]
+				x11-libs/libdrm[video_cards_vmware]
+			)
+		)
 	)"
 DEPEND="${RDEPEND}
 	net-libs/rpcsvc-proto"
@@ -150,6 +160,10 @@ src_install() {
 
 pkg_postinst() {
 	udev_reload
+
+	if has_version ">=media-libs/mesa-25.2" && has_version "x11-drivers/xf86-video-vmare"; then
+		elog "You need to remove x11-drivers/xf86-video-vmware to use the modesetting video driver."
+	fi
 }
 
 pkg_postrm() {
