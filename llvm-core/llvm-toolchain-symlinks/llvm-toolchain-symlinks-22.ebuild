@@ -11,7 +11,7 @@ S=${WORKDIR}
 
 LICENSE="public-domain"
 SLOT="${PV}"
-IUSE="multilib-symlinks +native-symlinks"
+IUSE="multilib-symlinks native-symlinks"
 
 RDEPEND="
 	llvm-core/llvm:${SLOT}
