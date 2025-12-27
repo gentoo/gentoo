@@ -1,0 +1,114 @@
+From a262101b0468452b4fff25bf19bcd992f21bd1d8 Mon Sep 17 00:00:00 2001
+From: https://github.com/mate-desktop/libmateweather/pull/143
+From: Thibaud CANALE <thican@thican.net>
+Date: Mon, 10 Nov 2025 02:06:20 +0100
+Subject: [PATCH] location: provide extra checks to avoid SEGFAULT
+
+Bug report in Gentoo: https://bugs.gentoo.org/965885
+
+Signed-off-by: Thibaud CANALE <thican@thican.net>
+---
+ libmateweather/location-entry.c       | 66 ++++++++++++++-------------
+ libmateweather/mateweather-location.c |  2 +-
+ 2 files changed, 35 insertions(+), 33 deletions(-)
+
+diff --git a/libmateweather/location-entry.c b/libmateweather/location-entry.c
+index 7b922b0e..f88cbbbd 100644
+--- a/libmateweather/location-entry.c
++++ b/libmateweather/location-entry.c
+@@ -223,16 +223,17 @@ mateweather_location_entry_set_location (MateWeatherLocationEntry *entry,
+     completion = gtk_entry_get_completion (GTK_ENTRY (entry));
+     model = gtk_entry_completion_get_model (completion);
+ 
+-    gtk_tree_model_get_iter_first (model, &iter);
+-    do {
+-	gtk_tree_model_get (model, &iter,
+-			    MATEWEATHER_LOCATION_ENTRY_COL_LOCATION, &cmploc,
+-			    -1);
+-	if (loc == cmploc) {
+-	    set_location_internal (entry, model, &iter);
+-	    return;
+-	}
+-    } while (gtk_tree_model_iter_next (model, &iter));
++    if (gtk_tree_model_get_iter_first (model, &iter)) {
++        do {
++            gtk_tree_model_get (model, &iter,
++                                MATEWEATHER_LOCATION_ENTRY_COL_LOCATION, &cmploc,
++                                -1);
++            if (loc == cmploc) {
++                set_location_internal (entry, model, &iter);
++                return;
++            }
++        } while (gtk_tree_model_iter_next (model, &iter));
++    }
+ 
+     set_location_internal (entry, model, NULL);
+ }
+@@ -309,28 +310,29 @@ mateweather_location_entry_set_city (MateWeatherLocationEntry *entry,
+     completion = gtk_entry_get_completion (GTK_ENTRY (entry));
+     model = gtk_entry_completion_get_model (completion);
+ 
+-    gtk_tree_model_get_iter_first (model, &iter);
+-    do {
+-	gtk_tree_model_get (model, &iter,
+-			    MATEWEATHER_LOCATION_ENTRY_COL_LOCATION, &cmploc,
+-			    -1);
+-
+-	cmpcode = mateweather_location_get_code (cmploc);
+-	if (!cmpcode || strcmp (cmpcode, code) != 0)
+-	    continue;
+-
+-	if (city_name) {
+-	    cmpname = mateweather_location_get_city_name (cmploc);
+-	    if (!cmpname || strcmp (cmpname, city_name) != 0) {
+-		g_free (cmpname);
+-		continue;
+-	    }
+-	    g_free (cmpname);
+-	}
+-
+-	set_location_internal (entry, model, &iter);
+-	return TRUE;
+-    } while (gtk_tree_model_iter_next (model, &iter));
++    if (gtk_tree_model_get_iter_first (model, &iter)) {
++        do {
++            gtk_tree_model_get (model, &iter,
++                                MATEWEATHER_LOCATION_ENTRY_COL_LOCATION, &cmploc,
++                                -1);
++
++            cmpcode = mateweather_location_get_code (cmploc);
++            if (!cmpcode || strcmp (cmpcode, code) != 0)
++                continue;
++
++            if (city_name) {
++                cmpname = mateweather_location_get_city_name (cmploc);
++                if (!cmpname || strcmp (cmpname, city_name) != 0) {
++                    g_free (cmpname);
++                    continue;
++                }
++                g_free (cmpname);
++            }
++
++            set_location_internal (entry, model, &iter);
++            return TRUE;
++        } while (gtk_tree_model_iter_next (model, &iter));
++    }
+ 
+     set_location_internal (entry, model, NULL);
+ 
+diff --git a/libmateweather/mateweather-location.c b/libmateweather/mateweather-location.c
+index 9c13c130..e5fd5114 100644
+--- a/libmateweather/mateweather-location.c
++++ b/libmateweather/mateweather-location.c
+@@ -494,7 +494,7 @@ mateweather_location_get_children (MateWeatherLocation *loc)
+ {
+     static MateWeatherLocation *no_children = NULL;
+ 
+-    g_return_val_if_fail (loc != NULL, NULL);
++    g_return_val_if_fail (loc != NULL, &no_children);
+ 
+     if (loc->children)
+ 	return loc->children;
+-- 
+2.51.2
+
