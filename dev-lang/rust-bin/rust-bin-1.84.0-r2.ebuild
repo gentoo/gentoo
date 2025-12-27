@@ -40,7 +40,7 @@ SRC_URI+=" ppc64? ( elibc_musl? (
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD BSD-1 BSD-2 BSD-4"
 SLOT="${PV}"
-KEYWORDS="amd64 arm arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="big-endian clippy cpu_flags_x86_sse2 doc prefix rust-analyzer rust-src rustfmt"
 
 RDEPEND="
