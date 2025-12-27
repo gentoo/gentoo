@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=( {18..19} )
+LLVM_COMPAT=( {19..20} )
 
 inherit autotools bash-completion-r1 llvm-r1
 
