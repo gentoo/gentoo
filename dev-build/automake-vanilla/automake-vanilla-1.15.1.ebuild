@@ -6,9 +6,7 @@ EAPI=8
 # Please do not apply any patches which affect the generated output from
 # `automake`, as this package is used to submit patches upstream.
 
-PYTHON_COMPAT=( python3_{11..14} )
-
-inherit flag-o-matic python-any-r1 toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/r/${MY_PN}.git"
@@ -45,15 +43,9 @@ BDEPEND="
 	dev-build/autoconf-vanilla:2.69
 	sys-apps/help2man
 	test? (
-		${PYTHON_DEPS}
 		dev-util/dejagnu
 	)
 "
-
-pkg_setup() {
-	# Avoid python-any-r1_pkg_setup
-	:
-}
 
 src_prepare() {
 	default
@@ -74,7 +66,6 @@ src_configure() {
 	# Old lex tests fail w/ modern C
 	export CC="$(tc-getCC) $(test-flags-CC -fpermissive)"
 
-	use test && python_setup
 	# Also used in install.
 	MY_INFODIR="${EPREFIX}/usr/share/${P}/info"
 	econf \

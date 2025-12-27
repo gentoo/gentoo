@@ -6,10 +6,6 @@ EAPI=8
 # Please do not apply any patches which affect the generated output from
 # `automake`, as this package is used to submit patches upstream.
 
-PYTHON_COMPAT=( python3_{11..14} )
-
-inherit python-any-r1
-
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/r/${MY_PN}.git"
 	inherit git-r3
@@ -47,7 +43,6 @@ BDEPEND="
 	app-alternatives/gzip
 	sys-apps/help2man
 	test? (
-		${PYTHON_DEPS}
 		dev-util/dejagnu
 		sys-devel/bison
 		sys-devel/flex
@@ -62,11 +57,6 @@ PATCHES=(
 	"${FILESDIR}"/${MY_PN}-1.16.5-apostrophe-in-tests.patch
 	"${WORKDIR}"/${PN/-vanilla}-1.16.5-tests-c99.patch
 )
-
-pkg_setup() {
-	# Avoid python-any-r1_pkg_setup
-	:
-}
 
 src_prepare() {
 	default
@@ -84,7 +74,6 @@ src_prepare() {
 }
 
 src_configure() {
-	use test && python_setup
 	# Also used in install.
 	MY_INFODIR="${EPREFIX}/usr/share/${P}/info"
 	econf \
