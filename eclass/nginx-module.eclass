@@ -35,11 +35,11 @@
 # linked to shared objects of the specified dependencies.  See the variable
 # description for details.
 #
-# If the dependencies are USE-conditional, they should be specified as
-# usual in the relevant *DEPEND variable(s).  Then, before
-# nginx-module_src_configure() is called, the dependencies should be linked to by
-# calling the ngx_mod_link_module() function.  See the function description for
-# more information.
+# If the dependencies are USE-conditional, they should be specified as usual in
+# the relevant *DEPEND variable(s).  Then, before nginx-module_src_compile() is
+# called, the dependencies should be linked to by calling the
+# ngx_mod_link_module() function.  See the function description for more
+# information.
 #
 # nginx-module.eclass also supports tests provided by the Test::Nginx Perl
 # module.  To enable them, set NGINX_MOD_OPENRESTY_TESTS to a non-empty value
@@ -183,9 +183,6 @@ ngx_mod_pkg_to_sonames() {
 # module's shared objects.  Flags may be of any form accepted by linker.
 # See the nginx_src_install() function in nginx.eclass for more details.
 #
-# This function has no effect after nginx-module_src_configure() has been
-# called.
-#
 # Example usage:
 # @CODE
 # ngx_mod_append_libs "-L/usr/$(get_libdir)/nginx/modules" \
@@ -195,7 +192,18 @@ ngx_mod_append_libs() {
 	debug-print-function "${FUNCNAME[0]}" "$@"
 	[[ $# -eq 0 ]] && return 0
 
-	export _NGINX_GENTOO_MOD_LIBS="${_NGINX_GENTOO_MOD_LIBS} $*"
+	local resp_file="${T}/append-libs-resp-file"
+
+	# Setup the response file. Make sure to do it only once.
+	if [[ -z ${_NGX_MOD_RESP_FILE_SET_UP} ]]; then
+		touch "${resp_file}" || die "touch failed"
+		export _NGINX_GENTOO_MOD_LIBS+=" @${resp_file}"
+		declare -g -r _NGX_MOD_RESP_FILE_SET_UP=1
+	fi
+
+	# If multiple arguments are passed, expand them as separate words so that
+	# printf prints separate arguments on separate lines.
+	printf '%s\n' "$@" >> "${resp_file}" || die "printf failed"
 }
 
 # @FUNCTION: ngx_mod_setup_link_modules
@@ -216,78 +224,9 @@ ngx_mod_setup_link_modules() {
 
 	local moddir
 	moddir="${EPREFIX}/usr/$(get_libdir)/nginx/modules"
-	# Add 'moddir' to the list of directories search by linker.
-	ngx_mod_append_libs "-L${moddir}"
-
-	# The string passed to ngx_mod_append_libs undergoes the following
-	# transformations by NGINX build system (the str variable denotes the
-	# original string and 'modname' represents the name of the current module):
-	#         0. Given the value of 'str':
-	#             $ echo "${str}"
-	#             -Wl,-rpath,'\''\$\${ORIGIN}'\''
-	#
-	#         1. In auto/module, line 93:
-	#             eval ${modname}_libs=\'$str\'.
-	#         yields
-	#             modname_libs='-Wl,-rpath,'\''\$\${ORIGIN}'\'''
-	#         which can be logically separated into
-	#             (a) '-Wl,-rpath,'
-	#                 ^
-	#                 |
-	#       The first original single quote (\'$str\')
-	#                                         ^
-	#                                         |
-	#                                       This one
-	#             (b) \' (backslash-escaped semicolon)
-	#             (c) '\$\${ORIGIN}'
-	#             (d) \'
-	#             (e) ''
-	#				   ^
-	#				   |
-	#		The last original single quote (\'$str\')
-	#		                                       ^
-	#		                                       |
-	#		                                   This one
-	#         To preserve the string we add literal ' and \' so that the
-	#         ORIGIN part does not get expanded.
-	#           - (a) expands to
-	#               -Wl,-rpath
-	#           - (b) expands to
-	#               '
-	#           - (c) expands to
-	#               \$\${ORIGIN}
-	#           - (d) expands to
-	#               '
-	#           - (e) expands to nothing
-	#         Thus, after evaluating, the value of modname_libs is the
-	#         following.
-	#             $ echo "${modname_libs}"
-	#             -Wl,-rpath,'\$\${ORIGIN}'
-	#
-	#         2. In auto/make, line 507:
-	#             eval eval ngx_module_libs="\\\"\$${modname}_libs\\\"".
-	#         The expansion of parameters and double quotes produces the
-	#         following.
-	#             \"$modname_libs\"
-	#         The first outermost eval obtains the contents of the
-	#         ${modname}_libs variable and encloses them in double quotes,
-	#         yielding:
-	#		      eval ngx_module_libs="-Wl,-rpath,'\$\${ORIGIN}'"
-	#         The second innermost eval expands the double-quoted string,
-	#         produced by the first eval, stripping backslashes from '$'. The
-	#         value of 'ngx_module_libs' is therefore:
-	#             $ echo "${ngx_module_libs}"
-	#             -Wl,-rpath,'$${ORIGIN}'
-	#
-	#         3. ngx_module_libs's contents are added to the Makefile. make
-	#         expands $var variable references, double dollar is used to
-	#         suppress the expanding. Thus, the following is passed to the
-	#         shell:
-	#             -Wl,-rpath,'${ORIGIN}'
-	#
-	#         4. Finally, shell expands the single quotes, yielding literal:
-	#             -Wl,-rpath,${ORIGIN}
-	ngx_mod_append_libs "-Wl,-rpath,'\''"'\$\${ORIGIN}'"'\''"
+	# Add 'moddir' to the list of directories search by linker and add 'moddir'
+	# to the module's RUNPATH.
+	ngx_mod_append_libs "-L${moddir}" "-Wl,-rpath,\${ORIGIN}"
 }
 
 # @FUNCTION: ngx_mod_link_module
@@ -297,8 +236,7 @@ ngx_mod_setup_link_modules() {
 # package passed as the argument.  This function automatically calls
 # ngx_mod_setup_link_modules(), if it has not been called.  If the specified
 # package provides more than one shared object, all of the shared objects are
-# linked to.  As ngx_mod_append_libs(), this function has no effect after
-# nginx-module_src_configure has been called.
+# linked to.
 #
 # This function uses the ngx_mod_pkg_to_sonames() function under the hood to map
 # package names to shared objects.  If there are no predefined mappings for the
