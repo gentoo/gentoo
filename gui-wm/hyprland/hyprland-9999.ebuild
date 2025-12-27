@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit meson toolchain-funcs
+inherit cmake toolchain-funcs
 
 DESCRIPTION="A dynamic tiling Wayland compositor that doesn't sacrifice on its looks"
 HOMEPAGE="https://github.com/hyprwm/Hyprland"
@@ -20,14 +20,13 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="X +qtutils systemd"
+IUSE="X hyprpm +qtutils systemd +uwsm"
 
 # hyprpm (hyprland plugin manager) requires the dependencies at runtime
 # so that it can clone, compile and install plugins.
 HYPRPM_RDEPEND="
 	app-alternatives/ninja
 	>=dev-build/cmake-3.30
-	dev-build/meson
 	dev-vcs/git
 	virtual/pkgconfig
 "
@@ -39,6 +38,7 @@ RDEPEND="
 	dev-libs/libinput:=
 	dev-libs/hyprgraphics:=
 	dev-libs/re2:=
+	dev-cpp/muParser:=
 	>=dev-libs/udis86-1.7.2
 	>=dev-libs/wayland-1.22.90
 	>=gui-libs/aquamarine-0.9.0:=
@@ -90,9 +90,13 @@ pkg_setup() {
 }
 
 src_configure() {
-	local emesonargs=(
-		$(meson_feature systemd)
-		$(meson_feature X xwayland)
+	local mycmakeargs=(
+		"-DBUILD_TESTING=OFF" # if enabled, creates a file inside /lib
+							  # causing an error with multilib
+		"$(usex systemd '' '-DNO_SYSTEMD=ON')"
+		"$(usex X '' '-DNO_XWAYLAND=ON')"
+		"$(usex hyprpm '' '-DNO_HYPRPM=ON')"
+		"$(usex uwsm '' '-DNO_UWSM=ON')"
 	)
-	meson_src_configure
+	cmake_src_configure
 }
