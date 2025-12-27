@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ S=${WORKDIR}
 LICENSE="public-domain"
 SLOT="${PV}"
 KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv x86"
-IUSE="multilib-symlinks +native-symlinks"
+IUSE="multilib-symlinks native-symlinks"
 
 RDEPEND="
 	llvm-core/lld:${SLOT}
