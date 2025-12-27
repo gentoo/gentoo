@@ -11,7 +11,7 @@ S=${WORKDIR}
 
 LICENSE="public-domain"
 SLOT="${PV}"
-IUSE="gcc-symlinks multilib-symlinks +native-symlinks"
+IUSE="gcc-symlinks multilib-symlinks native-symlinks"
 
 # Blocker for bug #872416
 RDEPEND="
