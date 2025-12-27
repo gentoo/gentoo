@@ -156,11 +156,6 @@ games-engines/qtads
 # Removal on 2026-01-15
 games-strategy/hedgewars
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-05)
-# Broken w/ CMake4, IUSE python stuck on py3.12, Gui stuck on Qt5.
-# Bugs #929093, #952086, #952528, #955277. Removal on 2026-01-04.
-media-gfx/yafaray
-
 # Nowa Ammerlaan <nowa@gentoo.org> (2025-12-05)
 # Stuck on Qt5, no upstream action.
 # Please use the games-action/prismlauncher fork instead.
@@ -196,11 +191,6 @@ app-emacs/twittering-mode
 # Open bugs: #929259
 # Removal on 2026-01-02.
 net-proxy/sqtop
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-01)
-# Depends on PyQt5, no signs of upstream porting/activity.
-# Bugs #965505, 962256. Removal on 2025-12-31.
-media-video/vidcutter
 
 # David Seifert <soap@gentoo.org> (2025-12-01)
 # Last release over 20 years ago, ancient codebase, lots of QA warnings, no
