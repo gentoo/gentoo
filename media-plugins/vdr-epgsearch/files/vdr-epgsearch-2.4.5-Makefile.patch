@@ -1,0 +1,40 @@
+--- a/Makefile	2025-12-22 21:58:13.105756657 +0100
++++ b/Makefile	2025-12-22 22:01:21.853375821 +0100
+@@ -287,10 +287,6 @@
+ 
+ $(DEPFILE_stmp):
+ 	$(Q)./docsrc2man.sh && ./docsrc2html.sh
+-	$(Q)ln -sf ./doc/en/epgsearch.4.txt MANUAL
+-	$(Q)ln -sf ./doc/de/epgsearch.4.txt MANUAL.DE
+-	$(Q)ln -sf ./doc/en/epgsearch.1.txt README
+-	$(Q)ln -sf ./doc/de/epgsearch.1.txt README.DE
+ 	@rm -f $(DEPFILE_stmp)
+ 	@date > $(DEPFILE_stmp)
+ 
+@@ -313,8 +309,8 @@
+ 	$(Q)install -D libvdr-$(PLUGIN4).so $(DESTDIR)$(LIBDIR)/libvdr-$(PLUGIN4).so.$(APIVERSION)
+ 
+ install-conf:
+-	@echo IN $(DESTDIR)$(CONFDIR)/plugins/$(PLUGIN)/conf.d
+-	$(Q)mkdir -p $(DESTDIR)$(CONFDIR)/plugins/$(PLUGIN)/conf.d
++	@echo IN $(DESTDIR)$(CONFDIR)/plugins/$(PLUGIN)
++	$(Q)mkdir -p $(DESTDIR)$(CONFDIR)/plugins/$(PLUGIN)
+ 	$(Q)for file in `cd conf; ls -1`; do\
+ 	    if ! [ -e $(DESTDIR)$(CONFDIR)/plugins/$(PLUGIN)/$$file ] ; then\
+ 	        cp -p conf/$$file $(DESTDIR)$(CONFDIR)/plugins/$(PLUGIN);\
+@@ -341,7 +337,7 @@
+ 	$(Q)mkdir -p $(DESTDIR)$(BINDIR)
+ 	$(Q)cp createcats $(DESTDIR)$(BINDIR)
+ 
+-install: install-lib install-i18n install-conf install-doc install-bin
++install: install-lib install-i18n install-conf install-bin
+ 
+ install-lib: $(INSTALL-LIB)
+ 
+@@ -374,3 +370,6 @@
+ 	@-rm -rf doc html man
+ 	@-rm -f MANUAL MANUAL.DE README README.DE
+ 	@-rm -f $(DEPFILE_stmp) $(DEPFILE_DOC)
++
++# make detection in vdr-plugin-2.eclass for new Makefile handling happy
++# SOFILE
