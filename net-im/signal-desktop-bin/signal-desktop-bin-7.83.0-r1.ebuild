@@ -15,7 +15,7 @@ S="${WORKDIR}"
 
 LICENSE="GPL-3 MIT MIT-with-advertising BSD-1 BSD-2 BSD Apache-2.0 ISC openssl ZLIB APSL-2 icu Artistic-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="-* amd64"
+KEYWORDS="-* ~amd64"
 RESTRICT="splitdebug"
 
 RDEPEND="
@@ -26,11 +26,8 @@ RDEPEND="
 	dev-libs/nss
 	>=media-fonts/noto-emoji-20231130
 	media-libs/alsa-lib
-	|| (
-		media-libs/libpulse
-		media-sound/apulse
-	)
-	media-libs/mesa[X(+)]
+	media-libs/libpulse
+	media-libs/mesa[opengl]
 	net-print/cups
 	sys-apps/dbus
 	virtual/udev
@@ -67,6 +64,13 @@ src_prepare() {
 	sed -e "s|^Exec=/opt/Signal/signal-desktop|Exec=${MY_PN}|" \
 		-i usr/share/applications/signal-desktop.desktop || die
 	unpack usr/share/doc/signal-desktop/changelog.gz
+
+	# https://github.com/signalapp/Signal-Desktop/issues/6239
+	# https://github.com/signalapp/Signal-Desktop/issues/6122
+	# fixes app icon issues on wayland because "app-id" is "signal"
+	# and desktop file needs to match
+	mv usr/share/applications/signal-desktop.desktop \
+		usr/share/applications/signal.desktop || die
 }
 
 src_install() {
@@ -83,7 +87,7 @@ src_install() {
 
 	newbin - signal-desktop <<- _EOF_
 		#!/bin/sh
-		exec \$(command -pv apulse) ${EPREFIX}/opt/Signal/signal-desktop --ozone-platform-hint=auto "\${@}"
+		exec ${EPREFIX}/opt/Signal/signal-desktop --ozone-platform-hint=auto "\${@}"
 	_EOF_
 }
 
