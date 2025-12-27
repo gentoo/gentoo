@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
 inherit distutils-r1
@@ -16,9 +16,9 @@ SRC_URI="https://github.com/dimpase/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P
 # LICENSE clarification in README.md
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 ~riscv"
 
-DEPEND="sci-mathematics/primecount:=
+DEPEND="<sci-mathematics/primecount-8.0:=
 	dev-python/cysignals[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
 BDEPEND="dev-python/cython[${PYTHON_USEDEP}]"
