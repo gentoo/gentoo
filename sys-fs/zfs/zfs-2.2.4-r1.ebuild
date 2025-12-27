@@ -1,28 +1,16 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-# Maintainers should consider lurking in the ZFS IRC channels (there's several)
-# and regularly checking ZFS GitHub issues and PRs. Look out for the 'zfs-*'
-# stable backport PRs when they're opened and subscribe to them for any important
-# cherry-picks that may be needed in advance.
-
 DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{10..12} )
 
-MODULES_INITRAMFS_IUSE=+initramfs
-MODULES_OPTIONAL_IUSE=+modules
+inherit autotools bash-completion-r1 dist-kernel-utils distutils-r1 flag-o-matic linux-info pam systemd udev usr-ldscript
 
-inherit autotools bash-completion-r1 distutils-r1 flag-o-matic linux-info
-inherit linux-mod-r1 multiprocessing pam systemd udev usr-ldscript
-
-DESCRIPTION="Linux kernel module and userland utilities for ZFS"
+DESCRIPTION="Userland utilities for ZFS Linux kernel module"
 HOMEPAGE="https://github.com/openzfs/zfs"
-
-MODULES_KERNEL_MAX=6.18
-MODULES_KERNEL_MIN=4.18
 
 if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
@@ -36,41 +24,34 @@ else
 	SRC_URI+=" verify-sig? ( https://github.com/openzfs/${PN}/releases/download/${MY_P}/${MY_P}.tar.gz.asc )"
 	S="${WORKDIR}/${MY_P}"
 
-	ZFS_KERNEL_COMPAT="${MODULES_KERNEL_MAX}"
-	# Increments minor eg 5.14 -> 5.15, and still supports override.
-	ZFS_KERNEL_DEP="${ZFS_KERNEL_COMPAT_OVERRIDE:-${ZFS_KERNEL_COMPAT}}"
-	ZFS_KERNEL_DEP="${ZFS_KERNEL_DEP%%.*}.$(( ${ZFS_KERNEL_DEP##*.} + 1))"
-
 	if [[ ${PV} != *_rc* ]]; then
 		KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~sparc"
 	fi
 fi
 
-LICENSE="BSD-2 CDDL MIT modules? ( debug? ( GPL-2+ ) )"
+LICENSE="BSD-2 CDDL MIT"
 # just libzfs soname major for now.
-# possible candidates are libzpool and libnvpair. Those do not provide stable abi, but are considered.
+# possible candidates: libuutil, libzpool, libnvpair. Those do not provide stable abi, but are considered.
 # see libsoversion_check() below as well
-SLOT="0/7"
-IUSE="custom-cflags debug dist-kernel minimal nls pam python +rootfs selinux test-suite unwind"
+SLOT="0/5"
+IUSE="custom-cflags debug dist-kernel kernel-builtin minimal nls pam python +rootfs selinux test-suite"
 
 DEPEND="
 	dev-libs/openssl:=
 	net-libs/libtirpc:=
 	sys-apps/util-linux
-	virtual/zlib:=
+	sys-libs/zlib
 	virtual/libudev:=
 	!minimal? ( ${PYTHON_DEPS} )
 	pam? ( sys-libs/pam )
 	python? (
 		$(python_gen_cond_dep 'dev-python/cffi[${PYTHON_USEDEP}]' 'python*')
 	)
-	unwind? ( sys-libs/libunwind:= )
 "
 
 BDEPEND="
 	app-alternatives/awk
 	virtual/pkgconfig
-	modules? ( dev-lang/perl )
 	nls? ( sys-devel/gettext )
 	python? (
 		${DISTUTILS_DEPS}
@@ -83,18 +64,12 @@ BDEPEND="
 
 if [[ ${PV} != "9999" ]] ; then
 	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-openzfs )"
-
-	IUSE+=" +dist-kernel-cap"
-	RDEPEND="
-		dist-kernel-cap? ( dist-kernel? (
-			<virtual/dist-kernel-${ZFS_KERNEL_DEP}
-		) )
-	"
 fi
 
 # awk is used for some scripts, completions, and the Dracut module
 RDEPEND="
 	${DEPEND}
+	!kernel-builtin? ( ~sys-fs/zfs-kmod-${PV}:= )
 	!prefix? ( virtual/udev )
 	app-alternatives/awk
 	sys-fs/udev-init-scripts
@@ -114,8 +89,11 @@ RDEPEND="
 		sys-fs/mdadm
 		sys-process/procps
 	)
-	!<sys-fs/zfs-kmod-2.4.0_rc2-r1
 "
+
+# PDEPEND in this form is needed to trick portage suggest
+# enabling dist-kernel if only 1 package have it set, without suggesting to disable
+PDEPEND="dist-kernel? ( ~sys-fs/zfs-kmod-${PV}[dist-kernel] )"
 
 REQUIRED_USE="
 	!minimal? ( ${PYTHON_REQUIRED_USE} )
@@ -126,7 +104,9 @@ REQUIRED_USE="
 RESTRICT="test"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.1.11-gentoo.patch
+	"${FILESDIR}"/2.1.5-dracut-zfs-missing.patch
+	"${FILESDIR}"/2.2.2-no-USER_NS.patch
+	"${FILESDIR}"/2.2.3-musl.patch
 )
 
 pkg_pretend() {
@@ -142,40 +122,7 @@ pkg_pretend() {
 
 pkg_setup() {
 	if use kernel_linux; then
-		if use modules; then
-			local CONFIG_CHECK="
-				EFI_PARTITION
-				ZLIB_DEFLATE
-				ZLIB_INFLATE
-				!DEBUG_LOCK_ALLOC
-				!PAX_KERNEXEC_PLUGIN_METHOD_OR
-			"
-			use debug && CONFIG_CHECK+="
-				DEBUG_INFO
-				FRAME_POINTER
-				!DEBUG_INFO_REDUCED
-			"
-			use rootfs && CONFIG_CHECK+="
-				BLK_DEV_INITRD
-				DEVTMPFS
-			"
-
-			kernel_is -lt 5 && CONFIG_CHECK+=" IOSCHED_NOOP"
-
-			if [[ ${PV} != 9999 ]] ; then
-				local kv_major_max kv_minor_max zcompat
-				zcompat="${ZFS_KERNEL_COMPAT_OVERRIDE:-${ZFS_KERNEL_COMPAT}}"
-				kv_major_max="${zcompat%%.*}"
-				zcompat="${zcompat#*.}"
-				kv_minor_max="${zcompat%%.*}"
-				kernel_is -le "${kv_major_max}" "${kv_minor_max}" || die \
-					"Linux ${kv_major_max}.${kv_minor_max} is the latest supported version"
-			fi
-
-			linux-mod-r1_pkg_setup
-		else
-			linux-info_pkg_setup
-		fi
+		linux-info_pkg_setup
 
 		if ! linux_config_exists; then
 			ewarn "Cannot check the linux kernel configuration."
@@ -250,12 +197,11 @@ src_configure() {
 
 	local myconf=(
 		--bindir="${EPREFIX}/bin"
-		--sbindir="${EPREFIX}/sbin"
 		--enable-shared
 		--enable-sysvinit
 		--localstatedir="${EPREFIX}/var"
 		--sbindir="${EPREFIX}/sbin"
-		--with-config="$(usex modules all user)"
+		--with-config=user
 		--with-dracutdir="${EPREFIX}/usr/lib/dracut"
 		--with-linux="${KV_DIR}"
 		--with-linux-obj="${KV_OUT_DIR}"
@@ -276,25 +222,15 @@ src_configure() {
 		$(use_enable nls)
 		$(use_enable pam)
 		$(use_enable python pyzfs)
-		$(use_with unwind libunwind)
 		--disable-static
 		$(usex minimal --without-python --with-python="${EPYTHON}")
-
-		# See gentoo.patch
-		GENTOO_MAKEARGS_EVAL="${MODULES_MAKEARGS[*]@Q}"
-		TEST_JOBS="$(makeopts_jobs)"
 	)
 
 	econf "${myconf[@]}"
 }
 
 src_compile() {
-	if use modules; then
-		emake "${MODULES_MAKEARGS[@]}"
-	else
-		default
-	fi
-
+	default
 	if use python; then
 		pushd contrib/pyzfs >/dev/null || die
 		distutils-r1_src_compile
@@ -303,20 +239,9 @@ src_compile() {
 }
 
 src_install() {
-	DOCS=( AUTHORS COPYRIGHT META README.md )
+	default
 
-	if use modules; then
-		emake "${MODULES_MAKEARGS[@]}" DESTDIR="${ED}" install
-		modules_post_process
-		einstalldocs
-	else
-		default
-	fi
-	# distutils-r1_src_install tries to run einstalldocs as well
-	# bug #965156
-	unset DOCS
-
-	gen_usr_ldscript -a nvpair zfsbootenv zfs zfs_core zpool
+	gen_usr_ldscript -a nvpair uutil zfsbootenv zfs zfs_core zpool
 
 	use pam && { rm -rv "${ED}/unwanted_files" || die ; }
 
@@ -343,70 +268,16 @@ src_install() {
 	doexe "${FILESDIR}/scrub-gentoo"
 }
 
-_old_layout_cleanup() {
-	# new files are just extra/{spl,zfs}.ko with no subdirs.
-	local olddir=(
-		avl/zavl
-		icp/icp
-		lua/zlua
-		nvpair/znvpair
-		spl/spl
-		unicode/zunicode
-		zcommon/zcommon
-		zfs/zfs
-		zstd/zzstd
-	)
-
-	# kernel/module/Kconfig contains possible compressed extentions.
-	local kext kextfiles
-		for kext in .ko{,.{gz,xz,zst}}; do
-		kextfiles+=( "${olddir[@]/%/${kext}}" )
-	done
-
-	local oldfile oldpath
-	for oldfile in "${kextfiles[@]}"; do
-		oldpath="${EROOT}/lib/modules/${KV_FULL}/extra/${oldfile}"
-		if [[ -f "${oldpath}" ]]; then
-			ewarn "Found obsolete zfs module ${oldfile} for current kernel ${KV_FULL}, removing."
-			rm -rv "${oldpath}" || die
-			# we do not remove non-empty directories just for safety in case there's something else.
-			# also it may fail if there are both compressed and uncompressed modules installed.
-			rmdir -v --ignore-fail-on-non-empty "${oldpath%/*.*}" || die
-		fi
-	done
-}
-
 pkg_postinst() {
 	udev_reload
 
-	if use modules; then
-		# Check for old module layout before doing anything else.
-		# only attempt layout cleanup if new .ko location is used.
-		local newko=( "${EROOT}/lib/modules/${KV_FULL}/extra"/{zfs,spl}.ko* )
-		# We check first array member, if glob above did not exand, it will be "zfs.ko*" and -f will return false.
-		# if glob expanded -f will do correct file precense check.
-		[[ -f ${newko[0]} ]] && _old_layout_cleanup
-
-		linux-mod-r1_pkg_postinst
-
-		if use x86 || use arm ; then
-			ewarn "32-bit kernels will likely require increasing vmalloc to"
-			ewarn "at least 256M and decreasing zfs_arc_max to some value less than that."
-		fi
-
-		if has_version sys-boot/grub ; then
-			ewarn "This version of OpenZFS includes support for new feature flags"
-			ewarn "that are incompatible with previous versions. GRUB2 support for"
-			ewarn "/boot with the new feature flags is not yet available."
-			ewarn "Do *NOT* upgrade root pools to use the new feature flags."
-			ewarn "Any new pools will be created with the new feature flags by default"
-			ewarn "and will not be compatible with older versions of OpenZFS. To"
-			ewarn "create a new pool that is backward compatible wih GRUB2, use "
-			ewarn
-			ewarn "zpool create -o compatibility=grub2 ..."
-			ewarn
-			ewarn "Refer to /usr/share/zfs/compatibility.d/grub2 for list of features."
-		fi
+	# we always need userspace utils in sync with zfs-kmod
+	# so force initrd update for userspace as well, to avoid
+	# situation when zfs-kmod trigger initrd rebuild before
+	# userspace component is rebuilt
+	# KV_* variables are provided by linux-info.eclass
+	if [[ -z ${ROOT} ]] && use dist-kernel; then
+		dist-kernel_reinstall_initramfs "${KV_DIR}" "${KV_FULL}"
 	fi
 
 	if use rootfs; then
@@ -419,7 +290,7 @@ pkg_postinst() {
 	fi
 
 	if systemd_is_booted || has_version sys-apps/systemd; then
-		einfo "Please refer to $(systemd_get_systempresetdir)/50-zfs.preset"
+		einfo "Please refer to ${EROOT}/$(systemd_get_systempresetdir)/50-zfs.preset"
 		einfo "for default zfs systemd service configuration"
 	else
 		[[ -e "${EROOT}/etc/runlevels/boot/zfs-import" ]] || \
