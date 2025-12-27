@@ -13,14 +13,14 @@ if [[ "${PV}" == *9999 ]] ; then
 else
 	SRC_URI="https://codeberg.org/jbruchon/jdupes/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/${PN}
-	KEYWORDS="~amd64 ~arm64 ~riscv"
+	KEYWORDS="amd64 ~arm64 ~riscv"
 fi
 LICENSE="MIT"
 SLOT="0"
 
 # Please keep a careful eye on the minimum libjoycode version! (Just pick
 # latest released at the time if necessary.)
-DEPEND=">=dev-libs/libjodycode-3.1"
+DEPEND=">=dev-libs/libjodycode-3.1.2"
 RDEPEND="${DEPEND}"
 
 IUSE="+dedupe hardened"
