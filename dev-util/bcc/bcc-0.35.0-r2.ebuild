@@ -6,7 +6,7 @@ EAPI=8
 LUA_COMPAT=( luajit )
 DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{{10..14},{13..14}t}  )
+PYTHON_COMPAT=( python3_{{11..14},{13..14}t}  )
 LLVM_COMPAT=( {15..21} )
 
 inherit cmake linux-info llvm-r1 lua-single distutils-r1 toolchain-funcs
