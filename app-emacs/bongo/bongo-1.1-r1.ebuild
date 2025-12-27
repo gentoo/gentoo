@@ -1,35 +1,53 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit elisp
 
 DESCRIPTION="Buffer-oriented media player for Emacs"
 HOMEPAGE="https://www.emacswiki.org/emacs/Bongo"
-SRC_URI="https://github.com/dbrock/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
-	mplayer? ( mirror://gentoo/${PN}-mplayer-20070204.tar.bz2 )"
+
+if [[ "${PV}" == *9999* ]] ; then
+	inherit git-r3
+
+	EGIT_REPO_URI="https://github.com/dbrock/${PN}"
+else
+	SRC_URI="https://github.com/dbrock/${PN}/archive/${PV}.tar.gz
+		-> ${P}.tar.gz"
+
+	KEYWORDS="~amd64 ~x86"
+fi
+
+SRC_URI+="
+	mplayer? (
+		mirror://gentoo/${PN}-mplayer-20070204.tar.bz2
+	)
+"
 
 LICENSE="GPL-2+ FDL-1.2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 IUSE="mplayer"
 
 # NOTE: Bongo can use almost anything for playing media files, therefore
 # the dependency possibilities are so broad that we refrain from including
 # any media players explicitly in DEPEND/RDEPEND.
+RDEPEND="
+	app-emacs/volume
+"
+BDEPEND="
+	${RDEPEND}
+	sys-apps/texinfo
+"
 
-RDEPEND="app-emacs/volume"
-BDEPEND="${RDEPEND}
-	sys-apps/texinfo"
-
-SITEFILE="50${PN}-gentoo.el"
+DOCS=( NEWS README TODO tree-from-tags.rb )
 ELISP_TEXINFO="${PN}.texi"
-DOCS="NEWS README TODO tree-from-tags.rb"
+SITEFILE="50${PN}-gentoo.el"
 
 src_unpack() {
 	elisp_src_unpack
-	if use mplayer; then
+
+	if use mplayer ; then
 		mv ${PN}/bongo-mplayer.el "${S}"/ || die
 	fi
 }
