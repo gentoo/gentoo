@@ -23,6 +23,7 @@ DEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui,widgets,X]
 	>=dev-qt/qtdeclarative-${QTMIN}:6
 	>=kde-frameworks/kcoreaddons-${KFMIN}:6
+	>=kde-frameworks/kcrash-${KFMIN}:6
 	>=kde-frameworks/ki18n-${KFMIN}:6
 	>=kde-frameworks/kwindowsystem-${KFMIN}:6[X]
 	kde-plasma/kpipewire:6
