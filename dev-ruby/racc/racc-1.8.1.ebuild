@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_RECIPE_DOC="none"
 RUBY_FAKEGEM_EXTRADOC="README.rdoc README.ja.rdoc TODO ChangeLog"
@@ -28,7 +28,7 @@ IUSE="doc test"
 ruby_add_rdepend "virtual/ruby-ssl"
 
 ruby_add_bdepend "dev-ruby/rake
-	test? ( dev-ruby/minitest dev-ruby/test-unit-ruby-core )"
+	test? ( dev-ruby/test-unit dev-ruby/test-unit-ruby-core )"
 
 all_ruby_prepare() {
 	sed -i -e 's/, :isolate//' Rakefile || die
