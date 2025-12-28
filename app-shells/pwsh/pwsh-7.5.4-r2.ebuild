@@ -174,7 +174,6 @@ LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm ~arm64"
 IUSE="gui vanilla"
-RESTRICT="test"
 
 RDEPEND="
 	>=dev-libs/libpsl-native-7.4.0:=
@@ -200,8 +199,13 @@ DOTNET_PKG_PROJECTS=(
 	src/powershell-unix/powershell-unix.csproj
 	src/Modules/PSGalleryModules.csproj
 )
-DOTNET_PKG_BAD_PROJECTS=(
-	test/xUnit/xUnit.tests.csproj  # Fails to restore.
+DOTNET_PKG_RESTORE_EXTRA_ARGS=(
+	-p:"RollForward=Major"
+	-p:"RuntimeIdentifiers="
+	-p:"TreatWarningsAsErrors=false"
+)
+DOTNET_PKG_BUILD_EXTRA_ARGS=(
+	"${DOTNET_PKG_RESTORE_EXTRA_ARGS[@]}"
 )
 PATCHES=(
 	"${FILESDIR}/pwsh-7.3.3-disable-update-check.patch"
@@ -214,9 +218,9 @@ check_requirements_locale() {
 			local locales="$(locale -a)"
 
 			if has en_US.utf8 ${locales} ; then
-				LC_ALL=en_US.utf8
+				LC_ALL="en_US.utf8"
 			elif has en_US.UTF-8 ${locales} ; then
-				LC_ALL=en_US.UTF-8
+				LC_ALL="en_US.UTF-8"
 			else
 				eerror "The locale en_US.utf8 or en_US.UTF-8 is not available."
 				eerror "Please generate en_US.UTF-8 before building ${CATEGORY}/${P}."
@@ -224,18 +228,11 @@ check_requirements_locale() {
 				die "Could not switch to the en_US.UTF-8 locale."
 			fi
 		else
-			LC_ALL=en_US.UTF-8
+			LC_ALL="en_US.UTF-8"
 		fi
 
 		export LC_ALL
 		einfo "Successfully switched to the ${LC_ALL} locale."
-	fi
-}
-
-gui_cache_update() {
-	if use gui ; then
-		xdg_icon_cache_update
-		xdg_desktop_database_update
 	fi
 }
 
@@ -276,6 +273,16 @@ src_compile() {
 	dotnet-pkg_src_compile
 }
 
+src_test() {
+	local -a test_args=(
+		"${DOTNET_PKG_RESTORE_EXTRA_ARGS[@]}"
+		-p:"RuntimeIdentifier=${DOTNET_PKG_RUNTIME}"
+		"${S}/test/xUnit/xUnit.tests.csproj"
+	)
+	dotnet-pkg-base_restore "${test_args[@]}"
+	dotnet-pkg-base_test "${test_args[@]}"
+}
+
 src_install() {
 	local dest_root="/usr/share/${PN}-${SLOT}"
 
@@ -294,13 +301,18 @@ src_install() {
 		doins -r "${NUGET_PACKAGES}/${psg_module,,}"/*
 	done
 
-	dotnet-pkg-base_append_launchervar \
-		'PSModulePath="${PSModulePath}:${EPREFIX}/usr/share/GentooPowerShell/Modules:"'
+	dotnet-pkg-base_append_launchervar 'DOTNET_ROLL_FORWARD="Major"'
+	dotnet-pkg-base_append_launchervar 'PSModulePath="${PSModulePath}:${EPREFIX}/usr/share/GentooPowerShell/Modules:"'
 	dotnet-pkg-base_install "${dest_root}"
-	dotnet-pkg-base_dolauncher "${dest_root}/pwsh" "pwsh-${SLOT}"
+	dotnet-pkg-base_dolauncher-portable "${dest_root}/pwsh.dll" "pwsh-${SLOT}"
 
 	insinto "${dest_root}/ref"
 	doins "${WORKDIR}/${P}_ref"/*
+
+	# Fix runtime config because we roll forward from .NET 9.0 into .NET >-10.0.
+	sed -i "${ED}/${dest_root}/pwsh.runtimeconfig.json" \
+		-e "s|.*rollForwardOnNoCandidateFx.*||g" \
+		|| die "sed failed"
 
 	# Replace "libpsl-native.so" provided by "microsoft.powershell.native".
 	rm "${ED}/${dest_root}/libpsl-native.so" || die
@@ -323,13 +335,19 @@ src_install() {
 }
 
 pkg_postinst() {
-	gui_cache_update
+	if use gui ; then
+		xdg_icon_cache_update
+		xdg_desktop_database_update
+	fi
 
 	eselect pwsh update ifunset
 }
 
 pkg_postrm() {
-	gui_cache_update
+	if use gui ; then
+		xdg_icon_cache_update
+		xdg_desktop_database_update
+	fi
 
 	eselect pwsh update ifunset
 }
