@@ -20,7 +20,7 @@ SLOT="0"
 
 # Please keep a careful eye on the minimum libjoycode version! (Just pick
 # latest released at the time if necessary.)
-DEPEND=">=dev-libs/libjodycode-3.1.2"
+DEPEND=">=dev-libs/libjodycode-4.0.1"
 RDEPEND="${DEPEND}"
 
 IUSE="+dedupe hardened"
