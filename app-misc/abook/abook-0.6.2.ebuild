@@ -1,19 +1,18 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools flag-o-matic
 
-MY_P="${P/_/}"
 DESCRIPTION="Abook is a text-based addressbook program designed to use with mutt mail client"
 HOMEPAGE="https://abook.sourceforge.io/"
-SRC_URI="https://abook.sourceforge.io/devel/${MY_P}.tar.gz"
+SRC_URI="https://sourceforge.net/code-snapshots/git/a/ab/abook/git.git/abook-git-a243d4a18a64f4ee188191a797b34f60d4ff852f.zip"
 
-S="${WORKDIR}/${MY_P}"
+S="${WORKDIR}/abook-git-a243d4a18a64f4ee188191a797b34f60d4ff852f"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="nls"
 
 RDEPEND="
@@ -24,6 +23,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 BDEPEND="
+	app-arch/unzip
 	dev-build/autoconf-archive
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
