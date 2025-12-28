@@ -37,7 +37,7 @@ SRC_URI="
 S="${WORKDIR}/${MY_PN}"
 
 LICENSE="MIT"
-SLOT="0/$(ver_cut 1-2)"
+SLOT="0/${PV%b}"
 
 KEYWORDS="-* ~amd64"
 
