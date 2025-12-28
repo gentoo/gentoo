@@ -287,6 +287,8 @@ src_configure() {
 }
 
 src_compile() {
+	# fix sandbox violation bug #965866
+	addwrite /proc/mtrr
 	for x in ${GMX_DIRS}; do
 		einfo "Compiling for ${x} precision"
 		BUILD_DIR="${WORKDIR}/${P}_${x}"\
