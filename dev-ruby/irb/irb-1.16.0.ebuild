@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_BINDIR="exe"
 RUBY_FAKEGEM_EXTRADOC="README.md"
@@ -52,6 +52,10 @@ all_ruby_prepare() {
 
 	# Skip tests confused by our test path
 	sed -e '/test_backtrace_filtering/aomit "Fails due to unexpected paths"' \
+		-i test/irb/test_irb.rb || die
+
+	# Skip a Ruby::Box test (still experimental)
+	sed -e '/test_context_mode_ruby_box/aomit "Ruby::Box is experimental"' \
 		-i test/irb/test_irb.rb || die
 }
 
