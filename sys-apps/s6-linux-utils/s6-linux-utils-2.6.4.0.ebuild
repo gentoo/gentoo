@@ -14,7 +14,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 RDEPEND=">=dev-libs/skalibs-2.14.5.0:="
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	>=dev-lang/execline-2.9.8.0
+"
 
 HTML_DOCS=( doc/. )
 
