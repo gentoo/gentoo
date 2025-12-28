@@ -8,6 +8,7 @@ inherit cmake xdg
 DESCRIPTION="Arpeggiator, sequencer and MIDI LFO for ALSA"
 HOMEPAGE="https://qmidiarp.sourceforge.net/"
 SRC_URI="https://github.com/emuse/${PN}/archive/refs/tags/${P}.tar.gz"
+S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="GPL-2+"
 SLOT="0"
