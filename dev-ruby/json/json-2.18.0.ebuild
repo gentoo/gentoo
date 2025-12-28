@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGES.md README.md"
 RUBY_FAKEGEM_DOCDIR="doc"
@@ -50,4 +50,8 @@ all_ruby_prepare() {
 
 	# Avoid setting gem since it will not be available yet when installing
 	sed -i -e '/gem/ s:^:#:' test/json/test_helper.rb || die
+
+	# Avoid coverage dependencies
+	sed -e 's/JSON_COVERAGE/NO_JSON_COVERAGE/' \
+		-i test/json/test_helper.rb || die
 }
