@@ -89,7 +89,7 @@ RDEPEND="
 	numpy? ( $(python_gen_cond_dep '
 		dev-python/numpy[${PYTHON_USEDEP}]
 	') )
-	onednn? ( =sci-ml/oneDNN-3.5* )
+	onednn? ( sci-ml/oneDNN )
 	opencl? ( virtual/opencl )
 	qnnpack? (
 		!sci-libs/QNNPACK
@@ -110,7 +110,7 @@ RDEPEND="
 		>=sci-libs/rocBLAS-6.3:=   <sci-libs/rocBLAS-7.2:=
 		>=sci-libs/rocRAND-6.3:=   <sci-libs/rocRAND-7.2:=
 		>=sci-libs/rocSOLVER-6.3:= <sci-libs/rocSOLVER-7.2:=
-		memefficient? ( sci-libs/aotriton-bin:0/0.11 )
+		memefficient? ( =sci-libs/aotriton-bin-0.11*:= )
 		distributed? ( >=dev-util/rocm-smi-6.3:= <dev-util/rocm-smi-7.2:= )
 	)
 	distributed? (
