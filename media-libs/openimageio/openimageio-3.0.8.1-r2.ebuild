@@ -48,7 +48,7 @@ S="${WORKDIR}/OpenImageIO-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv"
 
 X86_CPU_FEATURES=(
 	aes:aes
