@@ -23,7 +23,8 @@ HOMEPAGE="https://github.com/KhronosGroup/Vulkan-Tools"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="cube wayland test X"
-RESTRICT="!test? ( test )"
+# bug #964032 for test restriction, drop w/ newer versions
+RESTRICT="test !test? ( test )"
 
 BDEPEND="${PYTHON_DEPS}
 	cube? ( ~dev-util/glslang-${PV}:=[${MULTILIB_USEDEP}] )
