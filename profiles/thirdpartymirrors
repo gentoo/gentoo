@@ -6,7 +6,7 @@ gcc		https://gcc.gnu.org/pub/gcc/ http://mirrors.concertpass.com/gcc/ https://mi
 gimp		https://ftp.fau.de/gimp/gimp/ ftp://ftp.fau.de/gimp/gimp/ https://artfiles.org/gimp.org/pub/gimp/ https://www.mirrorservice.org/sites/ftp.gimp.org/pub/gimp/ ftp://ftp.mirrorservice.org/sites/ftp.gimp.org/pub/gimp/
 gnome		https://download.gnome.org/
 gnu		https://ftp.gnu.org/gnu/ https://artfiles.org/gnu.org/ https://www.mirrorservice.org/sites/ftp.gnu.org/gnu/
-gnupg		https://www.mirrorservice.org/sites/ftp.gnupg.org/gcrypt/ https://mirrors.dotsrc.org/gcrypt/ https://gnupg.org/ftp/gcrypt/ ftp://ftp.gnupg.org/gcrypt/
+gnupg		https://www.mirrorservice.org/sites/ftp.gnupg.org/gcrypt/ https://mirrors.dotsrc.org/gcrypt/ https://gnupg.org/ftp/gcrypt/
 goproxy https://proxy.golang.org/ https://goproxy.io/
 idsoftware	ftp://ftp.fu-berlin.de/pc/games/idgames/idstuff ftp://ftp.gamers.org/pub/idgames/idstuff
 imagemagick	https://imagemagick.org/archive/releases/ https://mirror.checkdomain.de/imagemagick/releases/ https://ftp.acc.umu.se/mirror/imagemagick.org/ftp/releases/ ftp://ftp.fifi.org/pub/ImageMagick/releases/
