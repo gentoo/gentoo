@@ -59,6 +59,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-8.3.15-ar.patch
+)
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
