@@ -3,16 +3,66 @@
 
 EAPI=8
 
-inherit pax-utils toolchain-funcs
+CRATES="
+	aho-corasick@1.1.3
+	bindgen@0.72.0
+	bitflags@2.9.2
+	block-buffer@0.10.4
+	cexpr@0.6.0
+	cfg-if@1.0.1
+	clang-sys@1.8.1
+	cpufeatures@0.2.17
+	crypto-common@0.1.6
+	digest@0.10.7
+	either@1.15.0
+	generic-array@0.14.7
+	glob@0.3.3
+	hex@0.4.3
+	itertools@0.13.0
+	libc@0.2.175
+	libloading@0.8.8
+	log@0.4.27
+	memchr@2.7.5
+	minimal-lexical@0.2.1
+	nom@7.1.3
+	prettyplease@0.2.37
+	proc-macro2@1.0.101
+	quote@1.0.40
+	regex-automata@0.4.9
+	regex-syntax@0.8.5
+	regex@1.11.1
+	rustc-hash@2.1.1
+	sha2@0.10.9
+	shlex@1.3.0
+	syn@2.0.106
+	typenum@1.18.0
+	unicode-ident@1.0.18
+	version_check@0.9.5
+	windows-link@0.1.3
+	windows-targets@0.53.3
+	windows_aarch64_gnullvm@0.53.0
+	windows_aarch64_msvc@0.53.0
+	windows_i686_gnu@0.53.0
+	windows_i686_gnullvm@0.53.0
+	windows_i686_msvc@0.53.0
+	windows_x86_64_gnu@0.53.0
+	windows_x86_64_gnullvm@0.53.0
+	windows_x86_64_msvc@0.53.0
+"
+
+inherit pax-utils toolchain-funcs cargo
 
 DESCRIPTION="World's fastest and most advanced password recovery utility"
 HOMEPAGE="https://github.com/hashcat/hashcat"
 if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/hashcat/hashcat.git"
+	SRC_URI="${CARGO_CRATE_URIS}"
+
 else
 	KEYWORDS="~amd64"
-	SRC_URI="https://github.com/hashcat/hashcat/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/hashcat/hashcat/archive/v${PV}.tar.gz -> ${P}.tar.gz
+		${CARGO_CRATE_URIS}"
 fi
 
 LICENSE="MIT"
@@ -21,7 +71,7 @@ IUSE="brain video_cards_nvidia"
 RESTRICT=test
 
 DEPEND="app-arch/lzma
-	>=app-arch/unrar-7
+	app-arch/unrar
 	virtual/minizip:=
 	brain? ( dev-libs/xxhash )
 	video_cards_nvidia? (
@@ -31,13 +81,24 @@ DEPEND="app-arch/lzma
 			virtual/opencl
 		)
 	)
-	!video_cards_nvidia? (
-		virtual/opencl
-		dev-util/opencl-headers
-	)"
+	!video_cards_nvidia? ( virtual/opencl )"
 RDEPEND="${DEPEND}"
 
+src_unpack() {
+	if [[ ${PV} == "9999" ]]; then
+		git-r3_src_unpack
+	else
+		default
+	fi
+	cargo_src_unpack
+}
+
 src_prepare() {
+	# MAINTAINER NOTE: Hashcat's build system (src/bridges/*.mk) uses '|| true'
+	# for Cargo calls. We strip these to make failures visible to emake.
+	einfo "Forcing Cargo errors to be fatal..."
+	sed -i 's/|| true//g' src/bridges/*.mk || die
+
 	# Remove bundled stuff
 	rm -r deps/OpenCL-Headers || die "Failed to remove bundled OpenCL Headers"
 	rm -r deps/xxHash || die "Failed to remove bundled xxHash"
@@ -66,6 +127,29 @@ src_prepare() {
 	export DOCUMENT_FOLDER="/usr/share/doc/${PF}"
 
 	default
+
+	if [[ ${PV} == "9999" ]]; then
+		local rust_projects=(
+			"Rust/hashcat-sys"
+			"Rust/bridges/dynamic_hash"
+			"Rust/bridges/generic_hash"
+		)
+	else
+		local rust_projects=(
+			"Rust/generic_hash"
+		)
+
+	fi
+
+	local proj
+	for proj in "${rust_projects[@]}"; do
+		if [[ -d "${S}/${proj}" ]]; then
+			einfo "Configuring offline Cargo for: ${proj}"
+			pushd "${S}/${proj}" > /dev/null || die
+			cargo_gen_config
+			popd > /dev/null || die
+		fi
+	done
 }
 
 src_compile() {
@@ -83,7 +167,7 @@ src_compile() {
 		USE_SYSTEM_XXHASH=1 \
 		VERSION_PURE="${PV}"
 
-	pax-mark -mr hashcat
+	pax-mark -mr hashcat || die "Failed to apply PaX markings"
 }
 
 src_test() {
