@@ -8,7 +8,7 @@ inherit autotools eapi9-pipestatus elisp-common flag-o-matic readme.gentoo-r1 to
 if [[ ${PV##*.} = 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/emacs.git"
-	EGIT_BRANCH="emacs-28"
+	EGIT_BRANCH="emacs-29"
 	EGIT_CHECKOUT_DIR="${WORKDIR}/emacs"
 	S="${EGIT_CHECKOUT_DIR}"
 	SLOT="${PV%%.*}-vcs"
@@ -32,18 +32,65 @@ else
 		SRC_URI="https://alpha.gnu.org/gnu/emacs/pretest/${PN}-${PV/_/-}.tar.xz"
 	fi
 	# Patchset from proj/emacs-patches.git
-	SRC_URI+=" https://dev.gentoo.org/~ulm/emacs/${P}-patches-11.tar.xz"
+	SRC_URI+=" https://dev.gentoo.org/~ulm/emacs/${P}-patches-4.tar.xz"
 	PATCHES=("${WORKDIR}/patch")
 	SLOT="${PV%%.*}"
 	[[ ${PV} == *.*.* ]] && SLOT+="-vcs"
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~m68k ~mips ppc ppc64 ~riscv ~sparc x86 ~x64-macos"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~sparc x86 ~x64-macos"
 fi
 
 DESCRIPTION="The advanced, extensible, customizable, self-documenting editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars valgrind wide-int Xaw3d xft +xpm zlib"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source sqlite ssl svg systemd +threads tiff toolkit-scroll-bars tree-sitter valgrind webp wide-int +X Xaw3d xft +xpm zlib"
+
+X_DEPEND="x11-libs/libICE
+	x11-libs/libSM
+	x11-libs/libX11
+	x11-libs/libXcomposite
+	x11-libs/libXext
+	x11-libs/libXfixes
+	x11-libs/libXi
+	x11-libs/libXinerama
+	x11-libs/libXrandr
+	x11-libs/libxcb
+	x11-libs/xcb-util
+	x11-misc/xbitmaps
+	xpm? ( x11-libs/libXpm )
+	xft? (
+		media-libs/fontconfig
+		media-libs/freetype
+		x11-libs/libXrender
+		cairo? ( >=x11-libs/cairo-1.12.18[X] )
+		!cairo? ( x11-libs/libXft )
+		harfbuzz? ( media-libs/harfbuzz:0= )
+		m17n-lib? (
+			>=dev-libs/libotf-0.9.4
+			>=dev-libs/m17n-lib-1.5.1
+		)
+	)
+	gtk? ( x11-libs/gtk+:3[X] )
+	!gtk? (
+		motif? (
+			>=x11-libs/motif-2.3:0=
+			x11-libs/libXpm
+			x11-libs/libXmu
+			x11-libs/libXt
+		)
+		!motif? (
+			Xaw3d? (
+				x11-libs/libXaw3d
+				x11-libs/libXmu
+				x11-libs/libXt
+			)
+			!Xaw3d? ( athena? (
+				x11-libs/libXaw
+				x11-libs/libXmu
+				x11-libs/libXt
+			) )
+		)
+	)"
 
 RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui?]
 	sys-libs/ncurses:0=
@@ -65,65 +112,46 @@ RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui?]
 	mailutils? ( net-mail/mailutils[clients] )
 	!mailutils? ( acct-group/mail net-libs/liblockfile )
 	selinux? ( sys-libs/libselinux )
+	sqlite? ( dev-db/sqlite:3 )
 	ssl? ( net-libs/gnutls:0= )
 	systemd? ( sys-apps/systemd )
+	tree-sitter? ( dev-libs/tree-sitter:= )
 	valgrind? ( dev-debug/valgrind )
 	zlib? ( virtual/zlib:= )
-	gui? ( !aqua? (
-		x11-libs/libICE
-		x11-libs/libSM
-		x11-libs/libX11
-		x11-libs/libXext
-		x11-libs/libXfixes
-		x11-libs/libXinerama
-		x11-libs/libXrandr
-		x11-libs/libxcb
-		x11-misc/xbitmaps
-		gsettings? ( >=dev-libs/glib-2.28.6 )
+	gui? (
 		gif? ( media-libs/giflib:0= )
 		jpeg? ( media-libs/libjpeg-turbo:0= )
 		png? ( >=media-libs/libpng-1.4:0= )
 		svg? ( >=gnome-base/librsvg-2.0 )
 		tiff? ( media-libs/tiff:= )
-		xpm? ( x11-libs/libXpm )
+		webp? ( media-libs/libwebp:0= )
 		imagemagick? ( media-gfx/imagemagick:0=[jpeg?,png?,svg?,tiff?] )
-		xft? (
-			media-libs/fontconfig
-			media-libs/freetype
-			x11-libs/libXrender
-			cairo? ( >=x11-libs/cairo-1.12.18[X] )
-			!cairo? ( x11-libs/libXft )
-			harfbuzz? ( media-libs/harfbuzz:0= )
-			m17n-lib? (
-				>=dev-libs/libotf-0.9.4
-				>=dev-libs/m17n-lib-1.5.1
+		!aqua? (
+			gsettings? (
+				>=app-emacs/emacs-common-1.11[gsettings]
+				>=dev-libs/glib-2.28.6
 			)
-		)
-		gtk? ( x11-libs/gtk+:3[X] )
-		!gtk? (
-			motif? (
-				>=x11-libs/motif-2.3:0
-				x11-libs/libXpm
-				x11-libs/libXmu
-				x11-libs/libXt
-			)
-			!motif? (
-				Xaw3d? (
-					x11-libs/libXaw3d
-					x11-libs/libXmu
-					x11-libs/libXt
+			gtk? ( !X? (
+				media-libs/fontconfig
+				media-libs/freetype
+				>=x11-libs/cairo-1.12.18
+				x11-libs/gtk+:3
+				harfbuzz? ( media-libs/harfbuzz:0= )
+				m17n-lib? (
+					>=dev-libs/libotf-0.9.4
+					>=dev-libs/m17n-lib-1.5.1
 				)
-				!Xaw3d? ( athena? (
-					x11-libs/libXaw
-					x11-libs/libXmu
-					x11-libs/libXt
-				) )
-			)
+			) )
+			!gtk? ( ${X_DEPEND} )
+			X? ( ${X_DEPEND} )
 		)
-	) )"
+	)"
 
 DEPEND="${RDEPEND}
-	gui? ( !aqua? ( x11-base/xorg-proto ) )"
+	gui? ( !aqua? (
+		!gtk? ( x11-base/xorg-proto )
+		X? ( x11-base/xorg-proto )
+	) )"
 
 BDEPEND="sys-apps/texinfo
 	virtual/pkgconfig
@@ -136,7 +164,7 @@ RDEPEND+=" ${IDEPEND}"
 EMACS_SUFFIX="emacs-${SLOT}"
 SITEFILE="20${EMACS_SUFFIX}-gentoo.el"
 
-# Suppress false positive QA warnings #898304 #925449
+# Suppress false positive QA warnings #898304 #925091
 QA_CONFIG_IMPL_DECL_SKIP=( malloc_{get,set}_state statvfs64 )
 
 src_prepare() {
@@ -151,8 +179,9 @@ src_prepare() {
 			|| die "Upstream version number changed to ${FULL_VERSION}"
 	fi
 
+	default
+
 	if use jit; then
-		export NATIVE_FULL_AOT=1
 		find lisp -type f -name "*.elc" -delete || die
 
 		# These files ignore LDFLAGS. We assign the variable here, because
@@ -176,10 +205,13 @@ src_prepare() {
 		fi
 	fi
 
-	default
-
 	# Fix filename reference in redirected man page
 	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 || die
+
+	# libseccomp is detected by configure but doesn't appear to have any
+	# effect on the installed image. Suppress it by supplying pkg-config
+	# with a wrong library name.
+	sed -i -e "/CHECK_MODULES/s/libseccomp/DiSaBlE&/" configure.ac || die
 
 	# Tests that use bubblewrap don't work in the sandbox:
 	# "bwrap: setting up uid map: Permission denied"
@@ -220,16 +252,18 @@ src_configure() {
 		$(use_with games gameuser ":gamestat")
 		$(use_with gmp libgmp)
 		$(use_with gpm)
-		$(use_with jit native-compilation)
+		$(use_with jit native-compilation aot)
 		$(use_with json)
 		$(use_with kerberos) $(use_with kerberos kerberos5)
 		$(use_with lcms lcms2)
 		$(use_with libxml2 xml2)
 		$(use_with mailutils)
 		$(use_with selinux)
+		$(use_with sqlite sqlite3)
 		$(use_with ssl gnutls)
 		$(use_with systemd libsystemd)
 		$(use_with threads)
+		$(use_with tree-sitter)
 		$(use_with wide-int)
 	)
 
@@ -249,30 +283,48 @@ src_configure() {
 		myconf+=( $(use_with zlib) )
 	fi
 
+	# Emacs supports these window systems:
+	# X11, pure GTK (without X11), or Nextstep (Aqua/Cocoa).
+	# General GUI support is enabled by the "gui" USE flag, then
+	# the window system is selected as follows:
+	#   "aqua" -> Nextstep
+	#   "gtk -X" -> pure GTK
+	#   otherwise -> X11
+	# For X11 there is the further choice of toolkits GTK, Motif,
+	# Athena (Lucid), or no toolkit. They are enabled (in order of
+	# preference) with the "gtk", "motif", "Xaw3d", and "athena" flags.
+
 	if ! use gui; then
 		einfo "Configuring to build without window system support"
 		myconf+=(
-			--without-x --without-ns
+			--without-x --without-pgtk --without-ns
 		)
 	elif use aqua; then
 		einfo "Configuring to build with Nextstep (Macintosh Cocoa) support"
 		myconf+=(
 			--with-ns --disable-ns-self-contained
-			--without-x
+			--without-x --without-pgtk
+		)
+	elif use gtk && ! use X; then
+		einfo "Configuring to build with pure GTK (without X11) support"
+		myconf+=(
+			--with-pgtk --without-x --without-ns
+			--with-toolkit-scroll-bars #836392
+			--without-gconf
+			--without-xwidgets
+			$(use_with gsettings)
+			$(use_with harfbuzz)
+			$(use_with m17n-lib libotf)
+			$(use_with m17n-lib m17n-flt)
 		)
 	else
+		# X11
 		myconf+=(
-			--with-x --without-ns
+			--with-x --without-pgtk --without-ns
 			--without-gconf
 			$(use_with gsettings)
 			$(use_with toolkit-scroll-bars)
-			$(use_with gif)
-			$(use_with jpeg)
-			$(use_with png)
-			$(use_with svg rsvg)
-			$(use_with tiff)
 			$(use_with xpm)
-			$(use_with imagemagick)
 		)
 
 		if use xft; then
@@ -329,6 +381,19 @@ src_configure() {
 		fi
 	fi
 
+	if use gui; then
+		# Common flags recognised for all GUIs
+		myconf+=(
+			$(use_with gif)
+			$(use_with jpeg)
+			$(use_with png)
+			$(use_with svg rsvg)
+			$(use_with tiff)
+			$(use_with webp)
+			$(use_with imagemagick)
+		)
+	fi
+
 	if tc-is-cross-compiler; then
 		# Configure a CBUILD directory when cross-compiling to make tools
 		mkdir -p "${S}-build" && pushd "${S}-build" >/dev/null || die
@@ -354,10 +419,12 @@ src_compile() {
 		# Save native build tools in the cross-directory
 		cp "${S}-build"/lib-src/make-{docfile,fingerprint} lib-src || die
 		# Specify the native Emacs to compile lisp
-		emake -C lisp all EMACS="${S}-build/src/emacs"
+		EMACS_EMAKE_ARGS=( EMACS="${S}-build/src/emacs" )
+		emake "${EMACS_EMAKE_ARGS[@]}" actual-all
+	else
+		EMACS_EMAKE_ARGS=()
+		emake
 	fi
-
-	emake
 }
 
 src_test() {
@@ -366,18 +433,8 @@ src_test() {
 	# e.g. %lisp/gnus/mml-sec-tests.el.
 	local exclude_tests=(
 		# Reason: not yet known
-		# mml-secure-en-decrypt-{1,2,3,4}
-		# mml-secure-find-usable-keys-{1,2}
-		# mml-secure-key-checks
-		# mml-secure-select-preferred-keys-4
-		# mml-secure-sign-verify-1
+		# mml-secure-sign-verify-1 #967849
 		%lisp/gnus/mml-sec-tests.el
-
-		# Reason: race condition
-		# Looks like it should be fixed in 29.x at least:
-		# https://debbugs.gnu.org/cgi/bugreport.cgi?bug=55706
-		# files-tests-file-name-non-special-file-in-directory-p
-		%lisp/files-tests.el
 
 		# Reason: permission denied on /nonexistent
 		# (vc-*-bzr only fails if breezy is installed, as they
@@ -395,15 +452,17 @@ src_test() {
 		%lisp/vc/vc-tests.el
 		%lisp/vc/vc-bzr-tests.el
 
-		# Reason: some copyright years differ
-		%lisp/emacs-lisp/copyright-tests.el
-
-		# Reason: quoting issues (fixed in Emacs 29)
-		%lib-src/emacsclient-tests.el
-
 		# Reason: tries to access network
 		# internet-is-working
 		%src/process-tests.el
+
+		# Reason: fails with stable version of tree-sitter-json due to
+		# ast changes. Bug #922525
+		%src/treesit-tests.log
+
+		# Reason: test is not skipped if tree-sitter-tsx is not installed
+		# Bug #922525
+		%lisp/progmodes/typescript-ts-mode-tests.el
 	)
 	use elibc_musl && exclude_tests+=(
 			# Reason: newlocale(3) lenient locale validation #906012
@@ -411,10 +470,30 @@ src_test() {
 			%src/fns-tests.el
 		)
 	use threads || exclude_tests+=(
+			%lisp/server-tests.el
+			%lisp/progmodes/eglot-tests.el
 			%src/emacs-module-tests.el
 			%src/keyboard-tests.el
-			%src/thread-tests.el
 		)
+	use xpm || exclude_tests+=( %src/image-tests.el )
+
+	# Some tests hang with gnupg-2.2.42
+	local gpgver=$(best_version app-crypt/gnupg)
+	gpgver=${gpgver#*gnupg-}
+	[[ -n ${gpgver} ]] \
+		&& ver_test "${gpgver}" -ge 2.2.42 && ver_test "${gpgver}" -lt 2.3 \
+		&& exclude_tests+=(
+			%lisp/epg-tests.el
+		)
+
+	# Redirect GnuPG's sockets, in order not to exceed the 108 char limit
+	# for socket paths on Linux.
+	mkdir -p "${T}"/gpg || die
+	local f
+	for f in browser extra ssh; do
+		printf "%%Assuan%%\nsocket=%s\n" "${T}/gpg/S.${f}" \
+			> "test/lisp/gnus/mml-sec-resources/S.gpg-agent.${f}" || die
+	done
 
 	# See test/README for possible options
 	emake \
@@ -426,7 +505,12 @@ src_test() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" NO_BIN_LINK=t BLESSMAIL_TARGET= install
+	emake \
+		"${EMACS_EMAKE_ARGS[@]}" \
+		DESTDIR="${D}" \
+		NO_BIN_LINK=t \
+		BLESSMAIL_TARGET="" \
+		install
 
 	mv "${ED}"/usr/bin/{emacs-${FULL_VERSION}-,}${EMACS_SUFFIX} || die
 	mv "${ED}"/usr/share/man/man1/{emacs-,}${EMACS_SUFFIX}.1 || die
@@ -445,6 +529,7 @@ src_install() {
 	# avoid collision between slots, see bug #169033 e.g.
 	rm "${ED}"/usr/share/emacs/site-lisp/subdirs.el || die
 	rm -rf "${ED}"/usr/share/{applications,icons} || die
+	rm -rf "${ED}"/usr/share/glib-2.0 || die #911117
 	rm -rf "${ED}/usr/$(get_libdir)/systemd" || die
 	rm -rf "${ED}"/var || die
 
@@ -517,6 +602,14 @@ src_install() {
 		use aqua && DOC_CONTENTS+="\\n\\n${EMACS_SUFFIX^}.app is in
 			\"${EPREFIX}/Applications/Gentoo\". You may want to copy or
 			symlink it into /Applications by yourself."
+	fi
+	if ! use mailutils; then
+		DOC_CONTENTS+="\\n\\nThe mailutils USE flag is disabled. If Emacs'
+		own e-mail features are going to be used as an e-mail client
+		(e.g. Rmail), you are strongly encouraged to enable it. If not,
+		Emacs will use its own implementation of movemail; which has
+		fewer features and is less secure. For more information see:
+		https://www.gnu.org/software/emacs/manual/html_node/emacs/Movemail.html"
 	fi
 	tc-is-cross-compiler && DOC_CONTENTS+="\\n\\nEmacs did not write
 		a portable dump file due to being cross-compiled.
