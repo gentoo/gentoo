@@ -9,7 +9,7 @@ SRC_URI="https://github.com/oleg-derevenetz/bwping/releases/download/RELEASE_${P
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~sparc ~x86"
+KEYWORDS="amd64 ~sparc ~x86"
 
 src_test() {
 	[[ ${UID} = 0 ]] && default
