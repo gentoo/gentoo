@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cmake.eclass
@@ -250,7 +250,7 @@ cmake_comment_add_subdirectory() {
 
 	for d in "$@"; do
 		d=${d//\//\\/}
-		sed -e "/add_subdirectory[[:space:]]*([[:space:]]*${d}[[:space:]]*)/I s/^/#DONOTBUILD /" \
+		sed -e "/add_subdirectory[[:space:]]*([[:space:]]*${d}\([[:space:]][a-Z_ ]*\|[[:space:]]*\))/I s/^/#DONOTBUILD /" \
 			-i ${filename} || die "failed to comment add_subdirectory(${d})"
 	done
 }
