@@ -9,7 +9,7 @@ inherit meson python-any-r1
 
 DESCRIPTION="Complex camera support library"
 HOMEPAGE="https://libcamera.org"
-SRC_URI="https://gitlab.freedesktop.org/camera/libcamera/-/archive/v${PV}/libcamera-v${PV}.tar.bz2 -> ${P}.tar.bz2"
+SRC_URI="https://gitlab.freedesktop.org/camera/libcamera/-/archive/v${PV}/libcamera-v${PV}.tar.bz2"
 S="${WORKDIR}/libcamera-v${PV}"
 
 LICENSE="Apache-2.0 CC0-1.0 BSD BSD-2 CC-BY-4.0 CC-BY-SA-4.0 GPL-2+ GPL-2 LGPL-2.1+ MIT"
