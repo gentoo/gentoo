@@ -18,7 +18,7 @@ if [[ "${PV}" == *9999 ]] ; then
 else
 	inherit gnome.org
 
-	KEYWORDS="amd64 ~arm arm64 ~loong ~riscv x86"
+	KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 fi
 
 LICENSE="LGPL-3+"
