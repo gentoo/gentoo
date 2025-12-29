@@ -5,7 +5,7 @@ EAPI=8
 
 CRATES="
 	aho-corasick@1.1.3
-	bindgen@0.72.1
+	bindgen@0.72.0
 	bitflags@2.9.2
 	block-buffer@0.10.4
 	cexpr@0.6.0
@@ -48,71 +48,6 @@ CRATES="
 	windows_x86_64_gnu@0.53.0
 	windows_x86_64_gnullvm@0.53.0
 	windows_x86_64_msvc@0.53.0
-	aho-corasick@1.1.3
-	base64@0.22.1
-	bcrypt@0.17.1
-	bindgen@0.72.1
-	bitflags@2.9.3
-	block-buffer@0.10.4
-	blowfish@0.9.1
-	byteorder@1.5.0
-	cexpr@0.6.0
-	cfg-if@1.0.3
-	cipher@0.4.4
-	clang-sys@1.8.1
-	cpufeatures@0.2.17
-	crypto-common@0.1.6
-	digest@0.10.7
-	either@1.15.0
-	generic-array@0.14.7
-	getrandom@0.3.3
-	glob@0.3.3
-	hex@0.4.3
-	hmac@0.12.1
-	inout@0.1.4
-	itertools@0.13.0
-	keccak@0.1.5
-	libc@0.2.175
-	libloading@0.8.8
-	log@0.4.27
-	md-5@0.10.6
-	md2@0.10.2
-	md4@0.10.2
-	memchr@2.7.5
-	minimal-lexical@0.2.1
-	nom@7.1.3
-	pbkdf2@0.12.2
-	prettyplease@0.2.37
-	proc-macro2@1.0.101
-	quote@1.0.40
-	r-efi@5.3.0
-	regex-automata@0.4.10
-	regex-syntax@0.8.6
-	regex@1.11.2
-	rustc-hash@2.1.1
-	sha1@0.10.6
-	sha2@0.10.9
-	sha3@0.10.8
-	shlex@1.3.0
-	subtle@2.6.1
-	syn@2.0.106
-	thread_local@1.1.9
-	typenum@1.18.0
-	unicode-ident@1.0.18
-	version_check@0.9.5
-	wasi@0.14.2+wasi-0.2.4
-	windows-link@0.1.3
-	windows-targets@0.53.3
-	windows_aarch64_gnullvm@0.53.0
-	windows_aarch64_msvc@0.53.0
-	windows_i686_gnu@0.53.0
-	windows_i686_gnullvm@0.53.0
-	windows_i686_msvc@0.53.0
-	windows_x86_64_gnu@0.53.0
-	windows_x86_64_gnullvm@0.53.0
-	windows_x86_64_msvc@0.53.0
-	wit-bindgen-rt@0.39.0
-	zeroize@1.8.1
 "
 
 inherit pax-utils toolchain-funcs cargo
@@ -159,6 +94,11 @@ src_unpack() {
 }
 
 src_prepare() {
+	# MAINTAINER NOTE: Hashcat's build system (src/bridges/*.mk) uses '|| true'
+	# for Cargo calls. We strip these to make failures visible to emake.
+	einfo "Forcing Cargo errors to be fatal..."
+	sed -i 's/|| true//g' src/bridges/*.mk || die
+
 	# Remove bundled stuff
 	rm -r deps/OpenCL-Headers || die "Failed to remove bundled OpenCL Headers"
 	rm -r deps/xxHash || die "Failed to remove bundled xxHash"
@@ -222,7 +162,7 @@ src_compile() {
 		ENABLE_BRAIN=$(usex brain 1 0) \
 		USE_SYSTEM_LZMA=0 \
 		USE_SYSTEM_OPENCL=1 \
-		USE_SYSTEM_UNRAR=0 \
+		USE_SYSTEM_UNRAR=1 \
 		USE_SYSTEM_ZLIB=1 \
 		USE_SYSTEM_XXHASH=1 \
 		VERSION_PURE="${PV}"
