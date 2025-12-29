@@ -17,7 +17,7 @@ SRC_URI="
 LICENSE="MPL-2.0"
 LICENSE+=" MIT Unicode-3.0 Unicode-DFS-2016 ZLIB" # crates
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 
 RDEPEND="
 	media-libs/fontconfig
