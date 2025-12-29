@@ -14,7 +14,7 @@ SRC_URI="https://github.com/dasbus-project/${PN}/archive/refs/tags/v${PV}.tar.gz
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
 
 RDEPEND="dev-python/pygobject:3[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
