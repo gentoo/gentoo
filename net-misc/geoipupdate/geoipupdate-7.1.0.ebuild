@@ -14,7 +14,7 @@ LICENSE="ISC BSD BSD-2 MIT Apache-2.0"
 # Dependent licenses
 LICENSE+="  Apache-2.0 BSD MIT"
 SLOT="0"
-KEYWORDS="~amd64 arm ~ppc64 ~s390 x86"
+KEYWORDS="amd64 arm ~ppc64 ~s390 x86"
 
 DOCS=( README.md CHANGELOG.md doc/GeoIP.conf.md doc/geoipupdate.md )
 
