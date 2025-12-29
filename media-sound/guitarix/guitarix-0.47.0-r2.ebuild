@@ -80,6 +80,10 @@ BDEPEND="
 
 DOCS=( changelog README )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-boost-1.89.patch
+)
+
 src_configure() {
 	export -n {CXX,LD}FLAGS
 	export STRIP="true"
