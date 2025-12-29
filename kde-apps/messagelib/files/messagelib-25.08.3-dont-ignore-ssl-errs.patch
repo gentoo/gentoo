@@ -1,0 +1,123 @@
+From df525dc91498423f3c45e143efab1c7102776652 Mon Sep 17 00:00:00 2001
+From: Volker Krause <vkrause@kde.org>
+Date: Sun, 23 Nov 2025 11:30:04 +0100
+Subject: [PATCH] Don't unconditionally ignore SSL errors from Google's
+ phishing API
+
+Google generally has a working SSL setup, so encountering SSL errors
+actually means we are probably not talking to Google's API, and as such
+we shouldn't continue here.
+---
+ .../src/checkphishingurl/checkphishingurljob.cpp           | 7 -------
+ webengineviewer/src/checkphishingurl/checkphishingurljob.h | 1 -
+ .../src/checkphishingurl/createphishingurldatabasejob.cpp  | 7 -------
+ .../src/checkphishingurl/createphishingurldatabasejob.h    | 1 -
+ webengineviewer/src/checkphishingurl/searchfullhashjob.cpp | 7 -------
+ webengineviewer/src/checkphishingurl/searchfullhashjob.h   | 1 -
+ 6 files changed, 24 deletions(-)
+
+diff --git a/webengineviewer/src/checkphishingurl/checkphishingurljob.cpp b/webengineviewer/src/checkphishingurl/checkphishingurljob.cpp
+index 25c675f524..d05c5b68be 100644
+--- a/webengineviewer/src/checkphishingurl/checkphishingurljob.cpp
++++ b/webengineviewer/src/checkphishingurl/checkphishingurljob.cpp
+@@ -37,17 +37,10 @@ CheckPhishingUrlJob::CheckPhishingUrlJob(QObject *parent)
+     d->mNetworkAccessManager->enableStrictTransportSecurityStore(true);
+ 
+     connect(d->mNetworkAccessManager, &QNetworkAccessManager::finished, this, &CheckPhishingUrlJob::slotCheckUrlFinished);
+-    connect(d->mNetworkAccessManager, &QNetworkAccessManager::sslErrors, this, &CheckPhishingUrlJob::slotSslErrors);
+ }
+ 
+ CheckPhishingUrlJob::~CheckPhishingUrlJob() = default;
+ 
+-void CheckPhishingUrlJob::slotSslErrors(QNetworkReply *reply, const QList<QSslError> &error)
+-{
+-    qCDebug(WEBENGINEVIEWER_LOG) << " void CheckPhishingUrlJob::slotSslErrors(QNetworkReply *reply, const QList<QSslError> &error)" << error.count();
+-    reply->ignoreSslErrors(error);
+-}
+-
+ void CheckPhishingUrlJob::parse(const QByteArray &replyStr)
+ {
+     QJsonDocument document = QJsonDocument::fromJson(replyStr);
+diff --git a/webengineviewer/src/checkphishingurl/checkphishingurljob.h b/webengineviewer/src/checkphishingurl/checkphishingurljob.h
+index e370005283..67ca355a65 100644
+--- a/webengineviewer/src/checkphishingurl/checkphishingurljob.h
++++ b/webengineviewer/src/checkphishingurl/checkphishingurljob.h
+@@ -40,7 +40,6 @@ Q_SIGNALS:
+     void debugJson(const QByteArray &ba);
+ 
+ private:
+-    WEBENGINEVIEWER_NO_EXPORT void slotSslErrors(QNetworkReply *reply, const QList<QSslError> &error);
+     WEBENGINEVIEWER_NO_EXPORT void slotError(QNetworkReply::NetworkError error);
+     WEBENGINEVIEWER_NO_EXPORT void slotCheckUrlFinished(QNetworkReply *reply);
+     std::unique_ptr<CheckPhishingUrlJobPrivate> const d;
+diff --git a/webengineviewer/src/checkphishingurl/createphishingurldatabasejob.cpp b/webengineviewer/src/checkphishingurl/createphishingurldatabasejob.cpp
+index 1da04a452c..b34be279d8 100644
+--- a/webengineviewer/src/checkphishingurl/createphishingurldatabasejob.cpp
++++ b/webengineviewer/src/checkphishingurl/createphishingurldatabasejob.cpp
+@@ -42,17 +42,10 @@ CreatePhishingUrlDataBaseJob::CreatePhishingUrlDataBaseJob(QObject *parent)
+     d->mNetworkAccessManager->enableStrictTransportSecurityStore(true);
+ 
+     connect(d->mNetworkAccessManager, &QNetworkAccessManager::finished, this, &CreatePhishingUrlDataBaseJob::slotDownloadDataBaseFinished);
+-    connect(d->mNetworkAccessManager, &QNetworkAccessManager::sslErrors, this, &CreatePhishingUrlDataBaseJob::slotSslErrors);
+ }
+ 
+ CreatePhishingUrlDataBaseJob::~CreatePhishingUrlDataBaseJob() = default;
+ 
+-void CreatePhishingUrlDataBaseJob::slotSslErrors(QNetworkReply *reply, const QList<QSslError> &error)
+-{
+-    qCDebug(WEBENGINEVIEWER_LOG) << " void CreatePhishingUrlDataBaseJob::slotSslErrors(QNetworkReply *reply, const QList<QSslError> &error)" << error.count();
+-    reply->ignoreSslErrors(error);
+-}
+-
+ void CreatePhishingUrlDataBaseJob::start()
+ {
+     if (!PimCommon::NetworkManager::self()->isOnline()) {
+diff --git a/webengineviewer/src/checkphishingurl/createphishingurldatabasejob.h b/webengineviewer/src/checkphishingurl/createphishingurldatabasejob.h
+index d576877186..9651279423 100644
+--- a/webengineviewer/src/checkphishingurl/createphishingurldatabasejob.h
++++ b/webengineviewer/src/checkphishingurl/createphishingurldatabasejob.h
+@@ -63,7 +63,6 @@ Q_SIGNALS:
+ 
+ private:
+     WEBENGINEVIEWER_NO_EXPORT void slotDownloadDataBaseFinished(QNetworkReply *reply);
+-    WEBENGINEVIEWER_NO_EXPORT void slotSslErrors(QNetworkReply *reply, const QList<QSslError> &error);
+     WEBENGINEVIEWER_NO_EXPORT void slotError(QNetworkReply::NetworkError error);
+ 
+     std::unique_ptr<CreatePhishingUrlDataBaseJobPrivate> const d;
+diff --git a/webengineviewer/src/checkphishingurl/searchfullhashjob.cpp b/webengineviewer/src/checkphishingurl/searchfullhashjob.cpp
+index 129cad9207..70f148fa76 100644
+--- a/webengineviewer/src/checkphishingurl/searchfullhashjob.cpp
++++ b/webengineviewer/src/checkphishingurl/searchfullhashjob.cpp
+@@ -39,17 +39,10 @@ SearchFullHashJob::SearchFullHashJob(QObject *parent)
+     d->mNetworkAccessManager->enableStrictTransportSecurityStore(true);
+ 
+     connect(d->mNetworkAccessManager, &QNetworkAccessManager::finished, this, &SearchFullHashJob::slotCheckUrlFinished);
+-    connect(d->mNetworkAccessManager, &QNetworkAccessManager::sslErrors, this, &SearchFullHashJob::slotSslErrors);
+ }
+ 
+ SearchFullHashJob::~SearchFullHashJob() = default;
+ 
+-void SearchFullHashJob::slotSslErrors(QNetworkReply *reply, const QList<QSslError> &error)
+-{
+-    qCDebug(WEBENGINEVIEWER_LOG) << " void SearchFullHashJob::slotSslErrors(QNetworkReply *reply, const QList<QSslError> &error)" << error.count();
+-    reply->ignoreSslErrors(error);
+-}
+-
+ void SearchFullHashJob::parse(const QByteArray &replyStr)
+ {
+     /*
+diff --git a/webengineviewer/src/checkphishingurl/searchfullhashjob.h b/webengineviewer/src/checkphishingurl/searchfullhashjob.h
+index 67e8ebe56a..5c80ec2caa 100644
+--- a/webengineviewer/src/checkphishingurl/searchfullhashjob.h
++++ b/webengineviewer/src/checkphishingurl/searchfullhashjob.h
+@@ -41,7 +41,6 @@ Q_SIGNALS:
+     void debugJson(const QByteArray &ba);
+ 
+ private:
+-    WEBENGINEVIEWER_NO_EXPORT void slotSslErrors(QNetworkReply *reply, const QList<QSslError> &error);
+     WEBENGINEVIEWER_NO_EXPORT void slotError(QNetworkReply::NetworkError error);
+     WEBENGINEVIEWER_NO_EXPORT void slotCheckUrlFinished(QNetworkReply *reply);
+ 
+-- 
+GitLab
+
