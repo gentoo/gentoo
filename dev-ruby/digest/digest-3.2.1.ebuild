@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_BINWRAP=""
 RUBY_FAKEGEM_EXTENSIONS=(ext/digest/extconf.rb ext/digest/bubblebabble/extconf.rb ext/digest/md5/extconf.rb
