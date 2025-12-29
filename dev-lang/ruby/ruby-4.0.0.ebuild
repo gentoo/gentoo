@@ -80,17 +80,14 @@ BUNDLED_GEMS="
 	>=dev-ruby/syslog-0.3.0[ruby_targets_ruby40(-)]
 	>=dev-ruby/csv-3.3.5[ruby_targets_ruby40(-)]
 	>=dev-ruby/repl_type_completor-0.1.12[ruby_targets_ruby40(-)]
+	>=dev-ruby/ostruct-0.6.3[ruby_targets_ruby40(-)]
+	>=dev-ruby/pstore-0.2.0[ruby_targets_ruby40(-)]
+	>=dev-ruby/benchmark-0.5.0[ruby_targets_ruby40(-)]
+	>=dev-ruby/logger-1.7.0[ruby_targets_ruby40(-)]
+	>=dev-ruby/reline-0.6.3[ruby_targets_ruby40(-)]
+	>=dev-ruby/readline-0.0.4[ruby_targets_ruby40(-)]
+	>=dev-ruby/fiddle-1.1.8[ruby_targets_ruby40(-)]
 "
-# ostruct             0.6.3   https://github.com/ruby/ostruct
-# pstore              0.2.0   https://github.com/ruby/pstore
-# benchmark           0.5.0   https://github.com/ruby/benchmark
-# logger              1.7.0   https://github.com/ruby/logger
-# rdoc                7.0.3   https://github.com/ruby/rdoc
-# win32ole            1.9.2   https://github.com/ruby/win32ole
-# irb                 1.16.0  https://github.com/ruby/irb
-# reline              0.6.3   https://github.com/ruby/reline
-# readline            0.0.4   https://github.com/ruby/readline
-# fiddle              1.1.8   https://github.com/ruby/fiddle
 
 PDEPEND="
 	${BUNDLED_GEMS}
