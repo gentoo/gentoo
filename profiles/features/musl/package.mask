@@ -446,20 +446,6 @@ dev-libs/level-zero
 # No musl patches in ebuild
 <sys-devel/gcc-9
 
-# Sam James <sam@gentoo.org> (2021-11-20)
-# Wants /usr/bin/locale
-# Fails to build with errors like:
-# ```
-# Use of uninitialized value $Text::WrapI18N::charmap in pattern match (m//) at /usr/lib/perl5/vendor_perl/5.34/Text/WrapI18N.pm line 155.
-# Can't exec "/usr/bin/locale": No such file or directory at /usr/lib/perl5/vendor_perl/5.34/Text/WrapI18N.pm line 134.
-# ```
-app-doc/kicad-doc
-app-i18n/man-pages-l10n
-app-text/po4a
-dev-vcs/git-annex
-games-strategy/colobot
-www-apps/ikiwiki
-
 # Hank Leininger <hlein@korelogic.com> (2021-07-14)
 # Uses glibc-specific rexec(3) function, bug #715898
 net-misc/netkit-rsh
