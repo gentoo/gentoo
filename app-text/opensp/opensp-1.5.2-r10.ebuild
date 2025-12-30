@@ -35,6 +35,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-c11-using.patch
 	"${FILESDIR}"/${P}-configure-clang16.patch
 	"${FILESDIR}"/${P}-fix-ar-intl.patch
+	"${FILESDIR}"/${P}-gcc15-musl.patch
 )
 
 src_prepare() {
