@@ -50,7 +50,7 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
-PATCHES=( "${FILESDIR}"/${P}-ffmpeg8.patch )
+PATCHES=( "${FILESDIR}"/${PN}-0.24.0-ffmpeg8.patch )
 
 src_prepare() {
 	# multilib fixes
@@ -68,8 +68,6 @@ src_configure() {
 
 python_compile() {
 	addpredict /dev/kfd
-	# bug #968112
-	addpredict /dev/random
 
 	export FORCE_CUDA=0
 	if use cuda || use rocm ; then
