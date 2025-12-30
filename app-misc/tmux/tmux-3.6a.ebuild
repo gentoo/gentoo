@@ -53,6 +53,9 @@ DOCS=( CHANGES README )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.4-flags.patch
+	"${FILESDIR}"/${PN}-3.6a-race-fork.patch
+	"${FILESDIR}"/${PN}-3.6a-pane-color.patch
+	"${FILESDIR}"/${PN}-3.6a-sixel.patch
 )
 
 src_prepare() {
