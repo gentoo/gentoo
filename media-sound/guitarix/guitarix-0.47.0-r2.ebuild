@@ -39,7 +39,7 @@ DEPEND="
 	)
 	standalone? (
 		dev-libs/boost:=
-		dev-cpp/atkmm
+		dev-cpp/atkmm:0
 		dev-cpp/cairomm:0
 		dev-cpp/glibmm:2
 		dev-cpp/gtkmm:3.0
