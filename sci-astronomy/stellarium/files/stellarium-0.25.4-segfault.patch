@@ -1,0 +1,29 @@
+https://github.com/Stellarium/stellarium/commit/5023376c32668771db8757c3fae61289efd26cc3
+
+From 5023376c32668771db8757c3fae61289efd26cc3 Mon Sep 17 00:00:00 2001
+From: "Alexander V. Wolf" <alex.v.wolf@gmail.com>
+Date: Mon, 29 Dec 2025 21:59:39 +0700
+Subject: [PATCH] Fixed crash at exit from Stellarium in macOS
+
+---
+ plugins/Calendars/src/Calendars.cpp | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/plugins/Calendars/src/Calendars.cpp b/plugins/Calendars/src/Calendars.cpp
+index d33eb31902349..882358dcc7ea4 100644
+--- a/plugins/Calendars/src/Calendars.cpp
++++ b/plugins/Calendars/src/Calendars.cpp
+@@ -170,9 +170,11 @@ Calendars::Calendars():
+ Calendars::~Calendars()
+ {
+ 	delete configDialog; configDialog=nullptr;
+-	for (auto c = calendars.cbegin(), end = calendars.cend(); c != end; ++c)
++	QMapIterator<QString, Calendar*> i(calendars);
++	while (i.hasNext())
+ 	{
+-		Calendar *cal = calendars.take(c.key());
++		i.next();
++		Calendar *cal = calendars.take(i.key());
+ 		delete cal;
+ 	}
+ 	if (infoPanel) delete infoPanel;
