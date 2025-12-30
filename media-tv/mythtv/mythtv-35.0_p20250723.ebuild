@@ -149,6 +149,17 @@ python_check_deps() {
 	python_has_version "dev-python/requests-cache[${PYTHON_USEDEP}]"
 }
 
+pkg_pretend() {
+	if use autostart; then
+		local HOME_MYTHTV=$(egethome mythtv)
+		if [[ ! -z "${HOME_MYTHTV}" && ! -d "${HOME_MYTHTV}" ]] ; then
+			eerror "Home path '${HOME_MYTHTV}' for user 'mythtv' exists" \
+				"but is not a directory"
+			die
+		fi
+	fi
+}
+
 pkg_setup() {
 	use python && python-any-r1_pkg_setup
 }
