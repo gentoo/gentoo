@@ -39,7 +39,7 @@ ruby_add_bdepend "
 	dev-ruby/mini_portile2:2.8
 	>=dev-ruby/rexical-1.0.7
 	dev-ruby/rdoc
-	test? ( dev-ruby/minitest dev-ruby/rubyzip )"
+	test? ( dev-ruby/minitest:5 dev-ruby/rubyzip )"
 
 all_ruby_prepare() {
 	sed -i \
@@ -53,6 +53,7 @@ all_ruby_prepare() {
 	sed -i -e '/cross_config_options/d' Rakefile || die
 
 	sed -e '/reporters/I s:^:#:' \
+		-e '1igem "minitest", "~> 5.0"' \
 		-i test/helper.rb || die
 
 	# There is no need for mini_portile2 to be a runtime dependency on Gentoo
