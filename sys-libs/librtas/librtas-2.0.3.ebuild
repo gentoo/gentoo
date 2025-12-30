@@ -1,8 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit autotools
+
+inherit autotools flag-o-matic
 
 DESCRIPTION="A set of libraries for userspace access to RTAS on the PowerPC platform(s)"
 HOMEPAGE="https://github.com/ibm-power-utilities/librtas"
@@ -19,6 +20,8 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #955091
+	append-cflags -std=gnu17
 	econf $(use_enable static-libs static)
 }
 
