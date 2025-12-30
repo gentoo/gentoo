@@ -1,0 +1,47 @@
+From 13eca720efeb7b3288aa3ff7436732da90f602f1 Mon Sep 17 00:00:00 2001
+From: Oz Tiram <oz.tiram@gmail.com>
+Date: Tue, 30 Dec 2025 16:28:32 +0100
+Subject: [PATCH 2/2] Inject system packages
+
+Signed-off-by: Oz Tiram <oz.tiram@gmail.com>
+---
+ pipenv/patched/pip/__main__.py | 6 ++++++
+ pipenv/resolver.py             | 5 +++++
+ 2 files changed, 11 insertions(+)
+
+diff --git a/pipenv/patched/pip/__main__.py b/pipenv/patched/pip/__main__.py
+index e76aed6e..5e62c70b 100644
+--- a/pipenv/patched/pip/__main__.py
++++ b/pipenv/patched/pip/__main__.py
+@@ -21,6 +21,12 @@ if __package__ == "":
+ if __name__ == "__main__":
+     import importlib.util
+     import sys
++
++    SITE_PACKAGES_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
++
++    # Inject site directory into system path.
++    sys.path.insert(-1, SITE_PACKAGES_ROOT)
++
+     spec = importlib.util.spec_from_file_location(
+         "pipenv",
+         location=os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "__init__.py"))
+diff --git a/pipenv/resolver.py b/pipenv/resolver.py
+index b050d842..746a17d6 100644
+--- a/pipenv/resolver.py
++++ b/pipenv/resolver.py
+@@ -7,6 +7,11 @@ from dataclasses import dataclass, field
+ from pathlib import Path
+ from typing import Any, Dict, List, Optional, Set
+ 
++SITE_PACKAGES_ROOT = os.path.dirname(os.path.dirname(__file__))
++
++# Inject site directory into system path.
++sys.path.insert(-1, SITE_PACKAGES_ROOT)
++
+ 
+ def _ensure_modules():
+     # Try to ensure typing_extensions is available in sys.modules
+-- 
+2.51.2
+
