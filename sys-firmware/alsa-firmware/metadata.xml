@@ -5,4 +5,9 @@
 	<upstream>
 		<remote-id type="github">alsa-project/alsa-firmware</remote-id>
 	</upstream>
+	<use>
+		<flag name="compress-xz">Compress firmware using xz (<pkg>app-arch/xz-utils</pkg>) before installation</flag>
+		<flag name="compress-zstd">Compress firmware using zstd (<pkg>app-arch/zstd</pkg>) before installation</flag>
+		<flag name="deduplicate">Remove firmware that is also provided by <pkg>sys-kernel/linux-firmware</pkg></flag>
+	</use>
 </pkgmetadata>
