@@ -5,9 +5,9 @@ EAPI=8
 
 DESCRIPTION="A small conversion and check utility for ADIF files"
 HOMEPAGE="https://github.com/oh7bf/adifmerg"
-SRC_URI="https://github.com/oh7bf/adifmerg/archive/refs/heads/master.tar.gz -> ${P}.tar.gz"
 
-S=${WORKDIR}/adifmerg-master
+inherit git-r3 
+EGIT_REPO_URI="https://github.com/oh7bf/adifmerg.git"
 
 LICENSE="GPL-2"
 SLOT="0"
