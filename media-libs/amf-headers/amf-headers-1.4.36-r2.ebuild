@@ -19,6 +19,10 @@ S="${WORKDIR}/AMF-${PV}"
 LICENSE="MIT"
 SLOT="0"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.4.36-static-inline.patch
+)
+
 src_unpack() {
 	default
 
