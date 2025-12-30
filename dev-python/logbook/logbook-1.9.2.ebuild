@@ -50,7 +50,7 @@ LICENSE="BSD"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0-with-LLVM-exceptions MIT Unicode-3.0"
 SLOT="0"
-KEYWORDS="amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 IUSE="+native-extensions"
 
 RDEPEND="
