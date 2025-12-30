@@ -1,0 +1,25 @@
+Relax the version restriction of libdeflate.
+https://bugs.gentoo.org/944285
+
+Any API/ABI-compatible versions would be ok for app-arch/libdeflate, but
+in such case the build script of libdeflate_sys should be patched to pick
+even if the system library is newer.
+https://github.com/adamkewley/libdeflater/pull/32#issuecomment-1971198374
+
+Also, don't forget updating `DEPEND` and `RDEPEND` in sync, or libdeflater
+crate will fail to pick the system library and silently use the bundled
+version of libdeflate.
+
+This patch should be applied from ${WORKDIR}.
+
+--- a/cargo_home/gentoo/libdeflate-sys-1.25.0/build.rs
++++ b/cargo_home/gentoo/libdeflate-sys-1.25.0/build.rs
+@@ -9,7 +9,7 @@ fn main() {
+     if pkg_config::Config::new()
+         .print_system_libs(false)
+         .cargo_metadata(true)
+-        .exactly_version("1.24")
++        .atleast_version("1.23")
+         .probe("libdeflate")
+         .is_ok()
+     {
