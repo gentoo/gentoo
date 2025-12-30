@@ -6,7 +6,7 @@ inherit dist-kernel-utils eapi9-ver linux-info mount-boot savedconfig
 
 # In case this is a real snapshot, fill in commit below.
 # For normal, tagged releases, leave blank
-MY_COMMIT=""
+MY_COMMIT="154800e885413bdf90b80b94e2e12f441be79fde"
 
 if [[ ${PV} == 99999999* ]]; then
 	inherit git-r3
