@@ -838,6 +838,11 @@ mail-client/claws-mail litehtml
 # terms. Masked to prevent accidental installation of these files,
 # bug #318841#c20.
 sys-kernel/linux-firmware unknown-license
+sys-firmware/alsa-firmware alsa_cards_korg1212
+sys-firmware/alsa-firmware alsa_cards_maestro3
+sys-firmware/alsa-firmware alsa_cards_sb16
+sys-firmware/alsa-firmware alsa_cards_wavefront
+sys-firmware/alsa-firmware alsa_cards_ymfpci
 
 # Ulrich Müller <ulm@gentoo.org> (2019-04-25)
 # Pulls in media-fonts/kochi-substitute as dependency, which allows
