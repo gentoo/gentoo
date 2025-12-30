@@ -1,0 +1,290 @@
+no update release from upstream since 1998
+
+From 4d97f022968867b7d44c1a28df4ac209378f5914 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Tue, 30 Dec 2025 22:43:12 +0800
+Subject: [PATCH] fix build for clang21 & gcc15 on both glibc & musl
+
+1. --std=gnu17, too many errors otherwise
+2. lto build issue in bug 968145
+3. remove the redirection to /dev/null, so we can see unexpected result from
+   feature tests
+
+diff --git a/Makefile b/Makefile
+index c9baad6..aa95f0f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -139,22 +139,19 @@ makelib fmt_str.o fmt_uint.o fmt_uint0.o fmt_ulong.o scan_ulong.o
+ 
+ hasgethr.h: \
+ trygethr.c compile load
+-	( ( ./compile trygethr.c && ./load trygethr ) >/dev/null \
+-	2>&1 \
++	( ( ./compile trygethr.c && ./load trygethr ) \
+ 	&& echo \#define HASGETHRTIME 1 || exit 0 ) > hasgethr.h
+ 	rm -f trygethr.o
+ 
+ hasmkffo.h: \
+ trymkffo.c compile load
+-	( ( ./compile trymkffo.c && ./load trymkffo ) >/dev/null \
+-	2>&1 \
++	( ( ./compile trymkffo.c && ./load trymkffo ) \
+ 	&& echo \#define HASMKFIFO 1 || exit 0 ) > hasmkffo.h
+ 	rm -f trymkffo.o trymkffo
+ 
+ hasrdtsc.h: \
+ tryrdtsc.c compile load
+-	( ( ./compile tryrdtsc.c && ./load tryrdtsc && ./tryrdtsc \
+-	) >/dev/null 2>&1 \
++	( ( ./compile tryrdtsc.c && ./load tryrdtsc && ./tryrdtsc ) \
+ 	&& echo \#define HASRDTSC 1 || exit 0 ) > hasrdtsc.h
+ 	rm -f tryrdtsc.o tryrdtsc
+ 
+@@ -262,7 +259,7 @@ compile scan_ulong.c scan.h
+ 
+ select.h: \
+ compile trysysel.c select.h1 select.h2
+-	( ./compile trysysel.c >/dev/null 2>&1 \
++	( ./compile trysysel.c \
+ 	&& cat select.h2 || cat select.h1 ) > select.h
+ 	rm -f trysysel.o trysysel
+ 
+@@ -310,7 +307,7 @@ select.h scan.h leapsecs.h tai.h uint64.h taia.h
+ socket.lib: \
+ trylsock.c compile load
+ 	( ( ./compile trylsock.c && \
+-	./load trylsock -lsocket -lnsl ) >/dev/null 2>&1 \
++	./load trylsock -lsocket -lnsl ) \
+ 	&& echo -lsocket -lnsl || exit 0 ) > socket.lib
+ 	rm -f trylsock.o trylsock
+ 
+@@ -437,6 +434,6 @@ compile taiclockd.c taia.h tai.h uint64.h byte.h strerr.h
+ uint64.h: \
+ tryulong64.c compile load uint64.h1 uint64.h2
+ 	( ( ./compile tryulong64.c && ./load tryulong64 && \
+-	./tryulong64 ) >/dev/null 2>&1 \
++	./tryulong64 ) \
+ 	&& cat uint64.h1 || cat uint64.h2 ) > uint64.h
+ 	rm -f tryulong64.o tryulong64
+diff --git a/auto-str.c b/auto-str.c
+index acc3d60..4406caf 100644
+--- a/auto-str.c
++++ b/auto-str.c
+@@ -5,7 +5,7 @@
+ char buf1[256];
+ substdio ss1 = SUBSTDIO_FDBUF(write,1,buf1,sizeof(buf1));
+ 
+-void puts(s)
++void myputs(s)
+ char *s;
+ {
+   if (substdio_puts(&ss1,s) == -1) _exit(111);
+@@ -25,20 +25,20 @@ char **argv;
+   value = argv[2];
+   if (!value) _exit(100);
+ 
+-  puts("char ");
+-  puts(name);
+-  puts("[] = \"\\\n");
++  myputs("char ");
++  myputs(name);
++  myputs("[] = \"\\\n");
+ 
+-  while (ch = *value++) {
+-    puts("\\");
++  while ((ch = *value++)) {
++    myputs("\\");
+     octal[3] = 0;
+     octal[2] = '0' + (ch & 7); ch >>= 3;
+     octal[1] = '0' + (ch & 7); ch >>= 3;
+     octal[0] = '0' + (ch & 7);
+-    puts(octal);
++    myputs(octal);
+   }
+ 
+-  puts("\\\n\";\n");
++  myputs("\\\n\";\n");
+   if (substdio_flush(&ss1) == -1) _exit(111);
+   _exit(0);
+ }
+diff --git a/clockspeed.c b/clockspeed.c
+index 700ec88..27293ff 100644
+--- a/clockspeed.c
++++ b/clockspeed.c
+@@ -1,3 +1,5 @@
++#include <stdio.h>
++#include <sys/stat.h>
+ #include <sys/types.h>
+ #include <sys/time.h>
+ #include "readwrite.h"
+@@ -15,7 +17,7 @@
+ #ifndef HASRDTSC
+ #ifndef HASGETHRTIME
+ 
+-  Error! Need an unadjusted hardware clock.
++#error Need an unadjusted hardware clock.
+ 
+ #endif
+ #endif
+diff --git a/clockview.c b/clockview.c
+index 6440d2e..ff1dd57 100644
+--- a/clockview.c
++++ b/clockview.c
+@@ -1,3 +1,4 @@
++#include <sys/time.h>
+ #include <sys/types.h>
+ #include <time.h>
+ #include "substdio.h"
+diff --git a/hier.c b/hier.c
+index 1c9a28b..48a53d1 100644
+--- a/hier.c
++++ b/hier.c
+@@ -1,5 +1,9 @@
+ #include "auto_home.h"
+ 
++extern void h(char *home, int uid, int gid, int mode);
++extern void d(char *home, char *subdir, int uid, int gid, int mode);
++extern void c(char *home, char *subdir, char *file, int uid, int gid, int mode);
++
+ void hier()
+ {
+   d("/var/lib","clockspeed",-1,-1,0755);
+diff --git a/install.c b/install.c
+index bf8afb6..656b71b 100644
+--- a/install.c
++++ b/install.c
+@@ -1,3 +1,4 @@
++#include <sys/stat.h>
+ #include "substdio.h"
+ #include "strerr.h"
+ #include "error.h"
+diff --git a/leapsecs_read.c b/leapsecs_read.c
+index ba2dbfa..13562d9 100644
+--- a/leapsecs_read.c
++++ b/leapsecs_read.c
+@@ -1,3 +1,5 @@
++#include <stdlib.h>
++#include <unistd.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
+diff --git a/readwrite.h b/readwrite.h
+index 2a64968..9423ad6 100644
+--- a/readwrite.h
++++ b/readwrite.h
+@@ -1,7 +1,6 @@
+ #ifndef READWRITE_H
+ #define READWRITE_H
+ 
+-extern int read();
+-extern int write();
++#include <unistd.h>
+ 
+ #endif
+diff --git a/substdi.c b/substdi.c
+index 42407a1..ce73144 100644
+--- a/substdi.c
++++ b/substdi.c
+@@ -3,7 +3,7 @@
+ #include "error.h"
+ 
+ static int oneread(op,fd,buf,len)
+-register int (*op)();
++register ssize_t (*op)(int, const void *, size_t);
+ register int fd;
+ register char *buf;
+ register int len;
+diff --git a/substdio.c b/substdio.c
+index d03dff2..866ab80 100644
+--- a/substdio.c
++++ b/substdio.c
+@@ -2,7 +2,7 @@
+ 
+ void substdio_fdbuf(s,op,fd,buf,len)
+ register substdio *s;
+-register int (*op)();
++register ssize_t (*op)(int, const void *, size_t);
+ register int fd;
+ register char *buf;
+ register int len;
+diff --git a/substdio.h b/substdio.h
+index c3f7f7d..baa4a6c 100644
+--- a/substdio.h
++++ b/substdio.h
+@@ -1,12 +1,14 @@
+ #ifndef SUBSTDIO_H
+ #define SUBSTDIO_H
+ 
++#include <unistd.h>
++
+ typedef struct substdio {
+   char *x;
+   int p;
+   int n;
+   int fd;
+-  int (*op)();
++  ssize_t (*op)(int, const void *, size_t);
+ } substdio;
+ 
+ #define SUBSTDIO_FDBUF(op,fd,buf,len) { (buf), 0, (len), (fd), (op) }
+diff --git a/substdo.c b/substdo.c
+index fb616f7..82a00c9 100644
+--- a/substdo.c
++++ b/substdo.c
+@@ -4,7 +4,7 @@
+ #include "error.h"
+ 
+ static int allwrite(op,fd,buf,len)
+-register int (*op)();
++register ssize_t (*op)(int, const void *, size_t);
+ register int fd;
+ register char *buf;
+ register int len;
+diff --git a/trygethr.c b/trygethr.c
+index aa8ccf5..b311b3d 100644
+--- a/trygethr.c
++++ b/trygethr.c
+@@ -1,7 +1,7 @@
+ #include <sys/types.h>
+ #include <sys/time.h>
+ 
+-main()
++void main()
+ {
+   hrtime_t t;
+ 
+diff --git a/trylsock.c b/trylsock.c
+index fbce408..c32bd40 100644
+--- a/trylsock.c
++++ b/trylsock.c
+@@ -1,4 +1,4 @@
+-main()
++int main()
+ {
+   ;
+ }
+diff --git a/tryrdtsc.c b/tryrdtsc.c
+index aca3387..0dffa8b 100644
+--- a/tryrdtsc.c
++++ b/tryrdtsc.c
+@@ -1,4 +1,6 @@
+-main()
++#include <unistd.h>
++
++void main()
+ {
+   unsigned long x[2];
+   unsigned long y[2];
+diff --git a/tryulong64.c b/tryulong64.c
+index fda6d77..496b817 100644
+--- a/tryulong64.c
++++ b/tryulong64.c
+@@ -1,3 +1,5 @@
++#include <unistd.h>
++
+ void main()
+ {
+   unsigned long u;
+-- 
+2.49.1
+
