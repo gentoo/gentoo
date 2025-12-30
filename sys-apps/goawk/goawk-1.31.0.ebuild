@@ -13,7 +13,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 
-BDEPEND=">=dev-lang/go-1.20"
+BDEPEND=">=dev-lang/go-1.18"
 
 src_compile() {
 	ego build
