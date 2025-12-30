@@ -8,7 +8,7 @@ inherit flag-o-matic multilib toolchain-funcs
 # Upstream has 3 flavors of netpbm: super stable, stable and advanced.
 # They only provide a tarball for super stable, but super stable is a bit lagging.
 # So we package the stable branch of their svn (currently versions 11.2.xx) on SLOT "0/stable"
-# and the advanced branch of their svn (currently versions 11.13.yy) on SLOT "0/advanced".
+# and the advanced branch of their svn (currently versions 11.12.yy) on SLOT "0/advanced".
 # The stable branch is stabilized according to usual Gentoo rules, while the
 # advanced branch will not be stabilized.
 # A detailed explanation is here https://netpbm.sourceforge.net/release.html
@@ -18,9 +18,10 @@ HOMEPAGE="https://netpbm.sourceforge.net/"
 SRC_URI="https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/${P}.tar.xz"
 
 LICENSE="Artistic BSD GPL-2 IJG LGPL-2.1 MIT public-domain"
-SLOT="0/stable"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
-IUSE="jbig jpeg png postscript rle cpu_flags_x86_sse2 static-libs tiff X xml"
+SLOT="0/advanced"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+IUSE="jbig jpeg png postscript rle cpu_flags_x86_sse2 static-libs test tiff X xml"
+RESTRICT="!test? ( test )"
 
 # app-text/ghostscript-gpl is really needed for postscript
 # some utilities execute /usr/bin/gs
@@ -50,16 +51,16 @@ BDEPEND="
 	app-arch/xz-utils
 	app-alternatives/lex
 	virtual/pkgconfig
+	test? (
+		dev-lang/perl
+	)
 "
 
 PATCHES=(
-	"${FILESDIR}"/netpbm-10.86.21-build.patch
+	"${FILESDIR}"/netpbm-11.9.0-build.patch
 	"${FILESDIR}"/netpbm-11.0.0-misc-deps.patch
 	"${FILESDIR}"/netpbm-11.1.0-fix-clang-O2.patch
-	"${FILESDIR}"/netpbm-11.2.7-fix-pnmcolormap2-test.patch
 	"${FILESDIR}"/netpbm-11.6.1-incompatible-pointer-types.patch
-	"${FILESDIR}"/netpbm-11.7.2-lto.patch
-	"${FILESDIR}"/netpbm-11.2.11-fix-C23.patch
 )
 
 netpbm_libtype() {
@@ -96,86 +97,76 @@ src_prepare() {
 	default
 
 	# make sure we use system libs
-	sed -i '/SUPPORT_SUBDIRS/s:urt::' GNUmakefile || die
+	sed '/SUPPORT_SUBDIRS/s:urt::' -i GNUmakefile || die
 	rm -r urt converter/other/jbig/libjbig converter/other/jpeg2000/libjasper || die
 
 	# take care of the importinc stuff ourselves by only doing it once
 	# at the top level and having all subdirs use that one set #149843
-	sed -i \
+	sed \
 		-e '/^importinc:/s|^|importinc:\nmanual_|' \
 		-e '/-Iimportinc/s|-Iimp|-I"$(BUILDDIR)"/imp|g'\
-		common.mk || die
-	sed -i \
+		-i common.mk || die
+	sed \
 		-e '/%.c/s: importinc$::' \
-		common.mk lib/Makefile lib/util/Makefile || die
-	sed -i \
+		-i common.mk lib/Makefile lib/util/Makefile || die
+	sed \
 		-e 's:pkg-config:$(PKG_CONFIG):' \
-		GNUmakefile converter/other/Makefile other/pamx/Makefile || die
+		-i GNUmakefile converter/other/Makefile other/pamx/Makefile || die
 
 	# The postscript knob is currently bound up with a fork test.
 	if ! use postscript ; then
-		sed -i \
+		sed \
 			-e 's:$(DONT_HAVE_PROCESS_MGMT):Y:' \
-			converter/other/Makefile generator/Makefile || die
-		sed -i -r \
+			-i converter/other/Makefile generator/Makefile || die
+		sed -r \
 			-e 's:(pbmtextps|pnmtops|pstopnm).*::' \
-			test/all-in-place.{ok,test} || die
-		sed -i \
+			-i test/all-in-place.{ok,test} || die
+		sed \
 			-e 's:lps-roundtrip.*::' \
 			-e 's:pbmtextps-dump.*::' \
 			-e 's:pbmtextps.*::' \
-			test/Test-Order || die
-		sed -i \
+			-i test/Test-Order || die
+		sed \
 			-e '/^$/d' \
-			test/all-in-place.ok || die
-		sed -i \
+			-i test/all-in-place.ok || die
+		sed \
 			'2iexit 80' \
-			test/ps-{alt-,flate-,}roundtrip.test || die
+			-i test/ps-{alt-,flate-,}roundtrip.test || die
 	fi
-
-	# the new postscript test needs +x
-	chmod +x test/lps-roundtrip.test || die
 
 	# Do not test png if not built
 	if ! use png ; then
-		sed -i -E \
+		sed -E \
 			-e 's:(pamtopng|pngtopam|pnmtopng).*::' \
-			test/all-in-place.{ok,test} || die
-		sed -i \
+			-i test/all-in-place.{ok,test} || die
+		sed \
 			-e '/^$/d' \
-			test/all-in-place.ok || die
+			-i test/all-in-place.ok || die
 
-		sed -i -E \
+		sed -E \
 			-e 's:(pamrgbatopng|pngtopnm).*::' \
-			test/legacy-names.{ok,test} || die
-		sed -i \
+			-i test/legacy-names.{ok,test} || die
+		sed \
 			-e '/^$/d' \
-			test/legacy-names.ok || die
-		sed -i \
+			-i test/legacy-names.ok || die
+		sed \
 			-e 's:png-roundtrip.*::' \
 			-e 's:winicon-roundtrip.*::' \
-			test/Test-Order || die
+			-i test/Test-Order || die
 	fi
 
 	# pbmtext-iso88591 requires LC_ALL=en_US.iso88591, not available on musl
 	# pbmtext-utf8 requires locale, not available on musl
+	# ppmpat-random and pnmindex are broken on musl
 	# bug #907295
 	if use elibc_musl; then
 		sed \
 			-e 's:pbmtext-iso88591.*::' \
 			-e 's:pbmtext-utf8.*::' \
+			-e 's:ppmpat-random.*::' \
+			-e 's:pnmindex.*::' \
 			-i test/Test-Order || die
 	fi
-
-	# ppmpat-random is highly dependent on random number generator
-	sed \
-		-e 's:ppmpat-random.*::' \
-		-i test/Test-Order || die
-
-	# fix typo
-	sed -i \
-		-e 's/^o#!/#!/' \
-		-i test/stdin-ppm3.test || die
 }
 
 src_configure() {
@@ -263,7 +254,7 @@ src_install() {
 	dodoc README
 
 	cd doc || die
-	dodoc HISTORY Netpbm.programming USERDOC
+	dodoc HISTORY USERDOC
 	docinto html
 	dodoc -r ../userguide/*.html
 }
