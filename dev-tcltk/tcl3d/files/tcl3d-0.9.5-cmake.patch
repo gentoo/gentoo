@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt	2025-12-31 00:04:23.252992166 +0100
++++ b/CMakeLists.txt	2025-12-31 00:04:42.950768139 +0100
+@@ -15,7 +15,7 @@
+ #
+ #******************************************************************************
+ 
+-CMAKE_MINIMUM_REQUIRED( VERSION 3.0 )
++CMAKE_MINIMUM_REQUIRED( VERSION 3.10 )
+ 
+ CMAKE_POLICY(SET CMP0078 NEW)
+ CMAKE_POLICY(SET CMP0086 NEW)
