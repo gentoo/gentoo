@@ -31,7 +31,7 @@ RDEPEND="
 	x11-libs/libxkbcommon
 	x11-libs/libxkbfile
 	dev-qt/qtbase:6[gui,widgets]
-        x11-libs/libICE
+	x11-libs/libICE
 	x11-libs/libSM
 	x11-libs/libX11
 	x11-libs/libXext
