@@ -1,0 +1,29 @@
+https://github.com/GPUOpen-LibrariesAndSDKs/AMF/pull/582
+
+From 23529a75168248b93c46b25adac1e61bb1f7ab75 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Tue, 30 Dec 2025 23:44:12 +0800
+Subject: [PATCH] add `static` to fix errors when an inline function is used in
+ multiple files
+
+see https://bugs.gentoo.org/834761, build is failed for media-tv/mythtv
+due to multiple definitions of 'GetDefaultChannelLayout'
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/amf/public/include/core/AudioBuffer.h b/amf/public/include/core/AudioBuffer.h
+index 7382fc0..34f8adc 100644
+--- a/amf/public/include/core/AudioBuffer.h
++++ b/amf/public/include/core/AudioBuffer.h
+@@ -85,7 +85,7 @@ namespace amf
+     } AMF_AUDIO_CHANNEL_LAYOUT;
+ 
+     // get the most common layout for a given number of speakers
+-    inline int GetDefaultChannelLayout(int channels)
++    static inline int GetDefaultChannelLayout(int channels)
+     {
+         switch (channels)
+         {
+-- 
+2.49.1
+
