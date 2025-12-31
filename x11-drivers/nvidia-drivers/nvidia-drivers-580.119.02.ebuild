@@ -3,6 +3,11 @@
 
 EAPI=8
 
+# note: while this 580.119.02 version is not as broken as 580.105.08
+# was (no need to mask), it still seem to be affected by notable
+# regressions compared to 580.95.05 and it should not be considered
+# for stable (e.g. https://forums.developer.nvidia.com/t/355216)
+
 MODULES_OPTIONAL_IUSE=+modules
 inherit desktop dot-a eapi9-pipestatus flag-o-matic linux-mod-r1
 inherit readme.gentoo-r1 systemd toolchain-funcs unpacker user-info
