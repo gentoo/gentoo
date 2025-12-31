@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_EXTENSION_LIBDIR="clonefile"
 RUBY_FAKEGEM_EXTENSIONS=(ext/clonefile/extconf.rb)
