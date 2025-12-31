@@ -33,7 +33,7 @@ REQUIRED_USE="test? ( tofu )"
 DEPEND="
 	>=dev-libs/libassuan-2.5.0:=
 	>=dev-libs/libgcrypt-1.9.1:=
-	>=dev-libs/libgpg-error-1.46
+	>=dev-libs/libgpg-error-1.48
 	>=dev-libs/libksba-1.6.3
 	>=dev-libs/npth-1.2
 	virtual/zlib:=
