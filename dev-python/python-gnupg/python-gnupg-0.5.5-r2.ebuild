@@ -45,7 +45,6 @@ distutils_enable_tests unittest
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/vinaysajip.asc
 
 python_test() {
-	# NO_EXTERNAL_TESTS must be enabled,
-	# to disable tests needing Internet access.
+	# NO_EXTERNAL_TESTS must be enabled to disable network tests.
 	NO_EXTERNAL_TESTS=1 eunittest
 }
