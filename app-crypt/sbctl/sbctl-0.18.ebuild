@@ -9,9 +9,13 @@ DESCRIPTION="Secure Boot key manager"
 HOMEPAGE="https://github.com/Foxboron/sbctl"
 SRC_URI="https://github.com/Foxboron/${PN}/releases/download/${PV}/${P}.tar.gz
 	verify-sig? ( https://github.com/Foxboron/${PN}/releases/download/${PV}/${P}.tar.gz.sig )"
-SRC_URI+=" https://gentoo.m68k.io/distfiles/${P}-deps.tar.xz"
+SRC_URI+=" https://dev.gentoo.org/~ajak/distfiles/${CATEGORY}/${PN}/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT"
+# Dependent licenses
+LICENSE+="  Apache-2.0 BSD BSD-2 GPL-2 MIT"
+# Dependent licenses
+LICENSE+="  "
 SLOT="0"
 KEYWORDS="~amd64"
 
