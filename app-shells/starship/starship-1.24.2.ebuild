@@ -4,7 +4,7 @@
 EAPI=8
 
 CRATES=""
-RUST_MIN_VER="1.89.0"
+RUST_MIN_VER="1.91.0"
 inherit cargo optfeature shell-completion
 
 DESCRIPTION="The minimal, blazing-fast, and infinitely customizable prompt for any shell"
