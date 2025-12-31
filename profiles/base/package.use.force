@@ -10,8 +10,8 @@
 =net-libs/webkit-gtk-2.50.4-r600 jumbo-build
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-06-22)
-# This is currently more footgun than real option. Bug #958638
-<kde-plasma/kwin-6.5.0 X
+# This is currently more footgun than real option. Bugs #958638, #968227
+<kde-plasma/kwin-6.6.0 X
 
 # Ionen Wolkens <ionen@gentoo.org> (2025-06-17)
 # Build system currently does not allow static libs to be optional, and
