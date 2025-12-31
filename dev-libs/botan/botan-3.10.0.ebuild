@@ -192,6 +192,11 @@ src_install() {
 		mv "${ED}"/usr/share/doc/${P} "${ED}"/usr/share/doc/${PF} || die
 	fi
 
+	if [[ -d "${ED}"/usr/share/man/man1 ]] ; then
+		# --program-suffix doesn't apply to the man page
+		mv "${ED}"/usr/share/man/man1/botan{,$(ver_cut 1)}.1 || die
+	fi
+
 	# Manually install the Python bindings (bug #723096)
 	if use python ; then
 		python_foreach_impl python_domodule src/python/botan$(ver_cut 1).py
