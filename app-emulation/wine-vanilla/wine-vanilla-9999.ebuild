@@ -6,7 +6,7 @@ EAPI=8
 inherit optfeature wine
 
 WINE_GECKO=2.47.4
-WINE_MONO=10.4.0
+WINE_MONO=10.4.1
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
