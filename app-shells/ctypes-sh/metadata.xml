@@ -5,6 +5,10 @@
 		<email>chutzpah@gentoo.org</email>
 		<name>Patrick McLean</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>flow@gentoo.org</email>
+		<name>Florian Schmaus</name>
+	</maintainer>
 	<longdescription lang="en">
 ctypes.sh is a bash plugin that provides a foreign function interface directly
 in your shell. In other words, it allows you to call routines in shared
