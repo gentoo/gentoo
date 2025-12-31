@@ -29,8 +29,8 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~spar
 # w/ e.g. sec-keys/openpgp-keys-gentoo-developers but other pkgs too.
 DEPEND="
 	|| (
-		app-alternatives/gpg[reference]
-		app-alternatives/gpg[freepg(-)]
+		app-alternatives/gpg[nls,reference]
+		app-alternatives/gpg[nls,freepg(-)]
 	)
 "
 RDEPEND="
