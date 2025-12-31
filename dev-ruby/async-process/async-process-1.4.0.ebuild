@@ -23,7 +23,7 @@ IUSE="test"
 ruby_add_rdepend "dev-ruby/async:2"
 
 ruby_add_bdepend "test? (
-	>=dev-ruby/async-rspec-1.1:1
+	dev-ruby/sus-fixtures-async
 )"
 
 all_ruby_prepare() {
