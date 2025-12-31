@@ -39,7 +39,10 @@ BDEPEND="
 	${PYTHON_DEPS}
 	${NINJA_DEPEND}
 	$(python_gen_any_dep '
-		doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+		doc? (
+			dev-python/sphinx[${PYTHON_USEDEP}]
+			dev-python/furo[${PYTHON_USEDEP}]
+		)
 	')
 	|| ( >=sys-devel/gcc-11:* >=llvm-core/clang-14:* )
 	verify-sig? ( sec-keys/openpgp-keys-botan )
@@ -51,7 +54,8 @@ BDEPEND="
 
 python_check_deps() {
 	use doc || return 0
-	python_has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/sphinx[${PYTHON_USEDEP}]" &&
+	python_has_version "dev-python/furo[${PYTHON_USEDEP}]"
 }
 
 pkg_pretend() {
