@@ -99,6 +99,9 @@ src_prepare() {
 	einfo "Forcing Cargo errors to be fatal..."
 	sed -i 's/|| true//g' src/bridges/*.mk || die
 
+	# upstream missed commit 96caad2 this before shipping 7.1.2 -- resolved in master
+	sed -i 's|inc_checksum_crc\.cl|inc_checksum_crc32.cl|' OpenCL/m17220_a3-pure.cl || die
+
 	# Remove bundled stuff
 	rm -r deps/OpenCL-Headers || die "Failed to remove bundled OpenCL Headers"
 	rm -r deps/xxHash || die "Failed to remove bundled xxHash"
