@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_EXTENSIONS=(ext/cgi/escape/extconf.rb)
 RUBY_FAKEGEM_EXTENSION_LIBDIR=lib/cgi
