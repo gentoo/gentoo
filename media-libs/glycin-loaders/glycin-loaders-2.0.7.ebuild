@@ -1,4 +1,4 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,7 +36,7 @@ LICENSE+="
 "
 SLOT="2"
 KEYWORDS="amd64 arm64"
-IUSE="heif jpeg2k jpegxl svg test"
+IUSE="heif jpeg2k jpegxl libs svg test"
 REQUIRED_USE="test? ( heif jpegxl )"
 RESTRICT="!test? ( test )"
 
@@ -46,6 +46,11 @@ RDEPEND="
 	>=sys-libs/libseccomp-2.5.0
 	heif? ( >=media-libs/libheif-1.17.0:= )
 	jpegxl? ( >=media-libs/libjxl-0.11.0:= )
+	libs? (
+		>=gui-libs/gtk-4.16.0:4
+		media-libs/fontconfig
+		>=media-libs/lcms-2.14:2
+	)
 	svg? (
 		>=gnome-base/librsvg-2.52.0:2
 		>=x11-libs/cairo-1.17.0
@@ -59,6 +64,7 @@ DEPEND="
 	)
 "
 BDEPEND="
+	sys-devel/gettext
 	test? (
 		sys-apps/bubblewrap
 		sys-apps/dbus
@@ -90,8 +96,9 @@ src_configure() {
 		-Dglycin-loaders=true
 		-Dloaders="${formats_s// /,}"
 		-Dtests=$(usex test true false)
-		-Dlibglycin=false
-		-Dlibglycin-gtk4=false
+		-Dlibglycin=$(usex libs true false)
+		-Dlibglycin-gtk4=$(usex libs true false)
+		-Dvapi=false
 		-Dglycin-thumbnailer=false
 
 		# TODO: figure out why it fails

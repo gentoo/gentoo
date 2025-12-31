@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="gnome-gitlab">GNOME/glycin</remote-id>
 	</upstream>
+	<use>
+		<flag name="libs">Build libglycin and libglycin-gtk4</flag>
+	</use>
 </pkgmetadata>
