@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,7 +33,8 @@ COMMON_DEPENDS="
 	)
 "
 DEPEND="${COMMON_DEPENDS}
-	>=media-libs/vulkan-loader-1.3[X=,layers,wayland=,${MULTILIB_USEDEP}]
+	>=media-libs/vulkan-loader-1.3[X=,wayland=,${MULTILIB_USEDEP}]
+	media-libs/vulkan-layers[X=,wayland=,${MULTILIB_USEDEP}]
 	dev-util/vulkan-headers
 	wayland? (
 		>=dev-util/wayland-scanner-1.22.0
