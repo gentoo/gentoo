@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,10 +19,12 @@ RESTRICT="
 	x86? ( test )
 "
 
+DEPEND="
+	>=dev-cpp/tlfloat-1.15.0
+"
 BDEPEND="
 	test? (
 		>=dev-libs/mpfr-4.2
-		dev-cpp/tlfloat
 	)
 "
 
