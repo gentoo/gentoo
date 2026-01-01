@@ -190,7 +190,7 @@ multilib_src_install() {
 	# since we've replaced libc++.{a,so} with ldscripts, now we have to
 	# install the extra symlinks
 	if [[ ${CHOST} != *-darwin* ]] ; then
-		is_crosspkg && into /usr/${CTARGET}
+		is_crosspkg && into /usr/${CTARGET}/usr
 		dolib.so lib/libc++_shared.so
 		use static-libs && dolib.a lib/libc++_static.a
 	fi

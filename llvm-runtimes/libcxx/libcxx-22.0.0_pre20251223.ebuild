@@ -196,7 +196,7 @@ multilib_src_install() {
 	# install the extra symlinks
 	if [[ ${CHOST} != *-darwin* ]] ; then
 		local libdir=$(get_libdir)
-		is_crosspkg && into /usr/${CTARGET}
+		is_crosspkg && into /usr/${CTARGET}/usr
 		dolib.so "${libdir}"/libc++_shared.so
 		use static-libs && dolib.a "${libdir}"/libc++_static.a
 	fi
