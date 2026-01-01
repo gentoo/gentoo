@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/deskflow/deskflow"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="test"
+IUSE="test X"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -29,21 +29,23 @@ RDEPEND="
 	dev-libs/openssl:0=
 	dev-qt/qtbase:6[dbus,gui,network,widgets,xml]
 	x11-libs/libxkbcommon
-	x11-libs/libxkbfile
-	x11-libs/libICE
-	x11-libs/libSM
-	x11-libs/libX11
-	x11-libs/libXext
-	x11-libs/libXi
-	x11-libs/libXinerama
-	x11-libs/libXrandr
-	x11-libs/libXtst
+	X? (
+		x11-libs/libxkbfile
+		x11-libs/libICE
+		x11-libs/libSM
+		x11-libs/libX11
+		x11-libs/libXext
+		x11-libs/libXi
+		x11-libs/libXinerama
+		x11-libs/libXrandr
+		x11-libs/libXtst
+	)
 "
 DEPEND="
 	${RDEPEND}
 	dev-cpp/cli11
-	x11-base/xorg-proto
 	test? ( dev-cpp/gtest )
+	X? ( x11-base/xorg-proto )
 "
 BDEPEND="
 	virtual/pkgconfig
@@ -58,6 +60,7 @@ DOCS=(
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTS=$(usex test)
+		-DBUILD_X11_SUPPORT=$(usex X)
 		$(usex test -DSKIP_BUILD_TESTS=ON "")
 	)
 	cmake_src_configure
