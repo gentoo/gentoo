@@ -22,7 +22,6 @@ IUSE="test X"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-cpp/tomlplusplus
 	dev-libs/glib:2
 	>=dev-libs/libei-0.99.1
 	dev-libs/libportal:=
@@ -43,7 +42,6 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	dev-cpp/cli11
 	test? ( dev-cpp/gtest )
 	X? ( x11-base/xorg-proto )
 "
