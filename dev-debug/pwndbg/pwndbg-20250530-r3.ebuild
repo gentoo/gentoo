@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=hatchling
 DISTUTILS_SINGLE_IMPL=1
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit distutils-r1
+inherit distutils-r1 wrapper
 
 DESCRIPTION="A GDB plug-in that makes debugging with GDB suck less"
 HOMEPAGE="https://github.com/pwndbg/pwndbg"
@@ -25,27 +25,23 @@ fi
 LICENSE="MIT"
 SLOT="0"
 
-# Dropped >=dev-util/ROPgadget-7.3[${PYTHON_USEDEP}]. It is incompatible with
-# Capstone 6, but pwndbg requires at least Capstone 6. Readd the dependency as
-# soon as it is compatible with Capstone 6. Although it is flagged as optional
-# in `pyproject.toml`, dropping it renders the `ropgadget`-command useless.
-# See bug #967775.
 RDEPEND="
 	dev-debug/gdb[python,${PYTHON_SINGLE_USEDEP}]
 	~dev-python/gdb-pt-dump-0.0.0_p20240401[${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
-		>=dev-libs/capstone-6.0.0_alpha5[python,${PYTHON_USEDEP}]
-		>=dev-python/psutil-7.0.0[${PYTHON_USEDEP}]
-		>=dev-python/pycparser-2.23[${PYTHON_USEDEP}]
-		>=dev-python/pyelftools-0.32[${PYTHON_USEDEP}]
-		>=dev-python/pygments-2.19.2[${PYTHON_USEDEP}]
-		>=dev-python/requests-2.32.5[${PYTHON_USEDEP}]
-		>=dev-python/rich-14.1.0[${PYTHON_USEDEP}]
+		~dev-libs/capstone-6.0.0_alpha4[python,${PYTHON_USEDEP}]
+		>=dev-python/psutil-6.1.1[${PYTHON_USEDEP}]
+		>=dev-python/pycparser-2.22[${PYTHON_USEDEP}]
+		>=dev-python/pyelftools-0.29[${PYTHON_USEDEP}]
+		>=dev-python/pygments-2.18.0[${PYTHON_USEDEP}]
+		>=dev-python/requests-2.32.3[${PYTHON_USEDEP}]
+		>=dev-python/rich-13.7.1[${PYTHON_USEDEP}]
 		>=dev-python/sortedcontainers-2.4.0[${PYTHON_USEDEP}]
 		>=dev-python/tabulate-0.9.0[${PYTHON_USEDEP}]
-		>=dev-python/typing-extensions-4.15.0[${PYTHON_USEDEP}]
-		>=dev-util/pwntools-4.14.1[${PYTHON_USEDEP}]
-		>=dev-util/unicorn-2.1.4[python,${PYTHON_USEDEP}]
+		>=dev-python/typing-extensions-4.12.0[${PYTHON_USEDEP}]
+		>=dev-util/pwntools-4.14.0[${PYTHON_USEDEP}]
+		>=dev-util/ROPgadget-7.3[${PYTHON_USEDEP}]
+		>=dev-util/unicorn-2.1.3[python,${PYTHON_USEDEP}]
 	')
 "
 
@@ -58,7 +54,14 @@ src_install() {
 	insinto /usr/share/${PN}
 	doins gdbinit.py
 
+	# Signal pwndbg not to create it's own python venv (Bug #918705).
+	# See: https://github.com/pwndbg/pwndbg/commit/139b7542cd9567eaff32bd713df971b6ac5b81de
+	touch "${ED}/usr/share/${PN}/.skip-venv" || die
+
 	python_optimize "${ED}"/usr/share/${PN}
+
+	make_wrapper "pwndbg" \
+		"gdb -x \"${EPREFIX}/usr/share/${PN}/gdbinit.py\"" || die
 
 	dodoc README.md
 	dodoc -r docs

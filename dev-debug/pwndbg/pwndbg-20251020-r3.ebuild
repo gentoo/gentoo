@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,11 +25,6 @@ fi
 LICENSE="MIT"
 SLOT="0"
 
-# Dropped >=dev-util/ROPgadget-7.3[${PYTHON_USEDEP}]. It is incompatible with
-# Capstone 6, but pwndbg requires at least Capstone 6. Readd the dependency as
-# soon as it is compatible with Capstone 6. Although it is flagged as optional
-# in `pyproject.toml`, dropping it renders the `ropgadget`-command useless.
-# See bug #967775.
 RDEPEND="
 	dev-debug/gdb[python,${PYTHON_SINGLE_USEDEP}]
 	~dev-python/gdb-pt-dump-0.0.0_p20240401[${PYTHON_SINGLE_USEDEP}]
@@ -45,6 +40,7 @@ RDEPEND="
 		>=dev-python/tabulate-0.9.0[${PYTHON_USEDEP}]
 		>=dev-python/typing-extensions-4.15.0[${PYTHON_USEDEP}]
 		>=dev-util/pwntools-4.14.1[${PYTHON_USEDEP}]
+		>=dev-util/ROPgadget-7.6[${PYTHON_USEDEP}]
 		>=dev-util/unicorn-2.1.4[python,${PYTHON_USEDEP}]
 	')
 "
