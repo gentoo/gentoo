@@ -1,4 +1,4 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
 DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python3_{10..13} )
-RUST_MIN_VER="1.87.0"
+RUST_MIN_VER="1.88.0"
 
 CRATES=""
 
