@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,6 +33,9 @@ ruby_add_bdepend "dev-ruby/rake"
 all_ruby_prepare() {
 	sed -i -e '/tasks/ s:^:#:' \
 		-e '/Gem::Tasks/,/end/ s:^:#:' Rakefile || die
+
+	sed -e 's:require "ffi/tools/types_generator":require_relative "../rakelib/types_generator":' \
+		-i gen/Rakefile || die
 
 	sed -e '/require/c\require "./lib/ffi/version"' \
 		-e 's/git ls-files -z/find * -print0/' \
