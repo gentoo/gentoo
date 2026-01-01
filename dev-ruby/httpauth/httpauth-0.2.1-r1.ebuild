@@ -1,8 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby31 ruby32 ruby33 ruby34"
+
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_EXTRADOC="README.md TODO"
 RUBY_FAKEGEM_GEMSPEC="httpauth.gemspec"
@@ -18,8 +19,10 @@ RUBY_S=HTTPauth-${PV}
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 all_ruby_prepare() {
+	sed -e '/has_rdoc/ s:^:#:' \
+		-i ${RUBY_FAKEGEM_GEMSPEC} || die
+
 	sed -i -e "/[Bb]undler/d" Rakefile || die
 }
