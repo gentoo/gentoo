@@ -1,4 +1,4 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,6 +20,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="${ADA_DEPS}
 	dev-ada/AdaSAT:=[${ADA_USEDEP},shared,static-libs?,static-pic?]
+	>=dev-ada/gnatcoll-bindings-26:=[${ADA_USEDEP},static-libs?,static-pic?]
 	>=dev-ada/gpr-26:=[${ADA_USEDEP},static-libs?,static-pic?]
 	>=dev-ada/libadalang-26:=[${ADA_USEDEP},static-libs?,static-pic?]
 	dev-ada/vss-extra:=[${ADA_USEDEP},static-libs?,static-pic?]"
