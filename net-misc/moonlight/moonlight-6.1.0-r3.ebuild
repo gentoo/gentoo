@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,28 +20,25 @@ HOMEPAGE="https://github.com/moonlight-stream/moonlight-qt"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="cuda +libdrm embedded glslow soundio +vaapi vdpau vkslow wayland X"
+IUSE="cuda +drm embedded glslow soundio +vaapi vdpau vkslow vulkan wayland X"
 
 RDEPEND="
 	dev-libs/openssl:=
 	dev-qt/qtbase:6[gui,network]
 	dev-qt/qtdeclarative:6[svg]
 	media-libs/libglvnd
-	media-libs/libplacebo:=
 	media-libs/libsdl2[gles2,haptic,joystick,kms,sound,video]
 	media-libs/opus
 	media-libs/sdl2-ttf
-	>=media-video/ffmpeg-6:=[cuda?]
-	libdrm? (
-		media-video/ffmpeg[drm(-)]
-		x11-libs/libdrm
-	)
+	>=media-video/ffmpeg-6:=[cuda?,drm?,vaapi?,vdpau?,vulkan?]
+	drm? ( x11-libs/libdrm )
 	soundio? ( media-libs/libsoundio:= )
 	vaapi? ( media-libs/libva:=[wayland?,X?] )
 	vdpau? (
 		x11-libs/libvdpau
 		media-libs/libsdl2[X]
 	)
+	vulkan? ( media-libs/libplacebo:= )
 	wayland? ( dev-libs/wayland )
 	X? ( x11-libs/libX11 )
 "
@@ -64,9 +61,10 @@ src_configure() {
 		CONFIG+="
 			disable-mmal
 			$(usex cuda "" disable-cuda)
-			$(usex libdrm "" disable-libdrm)
+			$(usex drm "" disable-libdrm)
 			$(usex vaapi "" disable-libva)
 			$(usex vdpau "" disable-libvdpau)
+			$(usex vulkan "" disable-libplacebo)
 			$(usex wayland "" disable-wayland)
 			$(usex X "" disable-x11)
 			$(usev embedded)
