@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,13 +24,15 @@ else
 	MY_PV="${MY_PV/_rc/-rc}"
 	SRC_URI="https://github.com/capstone-engine/capstone/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${MY_PV}"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+	if [[ ${PV} != *_alpha* && ${PV} != *_beta* && ${PV} != *_rc* ]] ; then
+		KEYWORDS="~alpha amd64 ~arm arm64 ~loong ppc ppc64 ~riscv x86"
+	fi
 fi
 
 LICENSE="BSD"
-SLOT="0/6" # libcapstone.so.6
+SLOT="0/5" # libcapstone.so.5
 
-IUSE="python static-libs"
+IUSE="python static-libs test"
 RDEPEND="python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}
 	python? ( dev-python/setuptools[${PYTHON_USEDEP}] )
@@ -38,11 +40,10 @@ DEPEND="${RDEPEND}
 BDEPEND="${DISTUTILS_DEPS}"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
+RESTRICT="!test? ( test )"
+
 PATCHES=(
-	# Currently "-Werror" is only added in the `next`-development branch, but
-	# not merged into 5.* releases. Eventually this patch may be needed in the
-	# version 5 release line. See bug #911481.
-	"${FILESDIR}/${PN}-werror.patch"
+	"${FILESDIR}/${PN}-5.0.2-tests.patch"
 )
 
 if [[ ${PV} == *_rc* ]]; then
@@ -70,8 +71,9 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DCAPSTONE_BUILD_SHARED_LIBS=true
-		-DCAPSTONE_BUILD_STATIC_LIBS=false
+		-DBUILD_SHARED_LIBS=true
+		-DBUILD_STATIC_LIBS="$(usex static-libs)"
+		-DCAPSTONE_BUILD_TESTS="$(usex test)"
 	)
 	cmake_src_configure
 
@@ -97,6 +99,5 @@ src_install() {
 }
 
 python_test() {
-	./tests/test_all.py || die
-	./tests/test_iter.py || die
+	emake check
 }
