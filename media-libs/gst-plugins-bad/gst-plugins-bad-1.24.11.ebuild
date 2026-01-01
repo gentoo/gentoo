@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -39,7 +39,10 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}"
-BDEPEND="dev-util/glib-utils"
+BDEPEND="
+	dev-util/glib-utils
+	wayland? ( dev-util/wayland-scanner )
+"
 
 DOCS=( AUTHORS ChangeLog NEWS README.md RELEASE )
 
