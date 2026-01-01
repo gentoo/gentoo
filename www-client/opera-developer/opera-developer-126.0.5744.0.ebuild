@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,9 +29,8 @@ else
 fi
 
 # Commit ref from `strings libffmpeg.so | grep -F "FFmpeg version"` matches this Chromium version
-# or use the Chromicler opera version mapping output. TODO: Teach Chromicler to update and commit
-# used to select the correct ffmpeg-chromium version (corresponds to a major version of Chromium)
-# Does not need to be updated for every new version of Opera, only when it breaks
+# or use Chromicler to handle bumps.
+# Does not _need_ to be updated for every new version of Opera, only when it breaks.
 CHROMIUM_VERSION="140"
 SRC_URI="${SRC_URI_BASE[*]/%//${PV}/linux/${MY_PN}_${PV}_amd64.deb}"
 S=${WORKDIR}
@@ -104,7 +103,6 @@ src_install() {
 
 	# disable auto update
 	rm "${OPERA_HOME}/${PN%-*}_autoupdate"{,.licenses,.version} || die
-
 
 	rm -r "usr/share/lintian" || die
 
