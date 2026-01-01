@@ -1,4 +1,4 @@
-# Copyright 2019-2025 Gentoo Authors
+# Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -52,6 +52,8 @@ BDEPEND="
 		kde-frameworks/extra-cmake-modules:0
 	)
 "
+
+PATCHES=( "${FILESDIR}/${PN}-1.1-no-wayland-build.patch" )
 
 # Used for JIT recompiler.
 QA_EXECSTACK="usr/bin/melonDS"
