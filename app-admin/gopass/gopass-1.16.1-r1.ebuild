@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,8 +17,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND="
+	app-alternatives/gpg
 	dev-vcs/git
-	>=app-crypt/gnupg-2
 "
 BDEPEND="
 	>=dev-lang/go-1.24.1
