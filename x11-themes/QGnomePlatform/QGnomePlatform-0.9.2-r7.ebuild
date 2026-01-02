@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -43,7 +43,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${P}-cmake4.patch" # bugs #958301, #965856
-	"${FILESDIR}/${P}-qt-6.10.patch" # bug #966354
+	"${FILESDIR}/${P}-qt-6.10.patch" # bug #966354, #968100
 )
 
 src_configure() {

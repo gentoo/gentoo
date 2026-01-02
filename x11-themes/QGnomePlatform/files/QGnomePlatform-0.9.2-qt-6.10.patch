@@ -128,3 +128,18 @@ index bb32acf..810279e 100644
 -- 
 2.52.0
 
+--- a/src/theme/qgnomeplatformtheme.cpp	2026-01-02 11:30:30.137441528 +0100
++++ b/src/theme/qgnomeplatformtheme.cpp	2026-01-02 11:35:54.092764699 +0100
+@@ -42,8 +42,12 @@
+ #endif
+ 
+ #if QT_VERSION > 0x060000
++#if (QT_VERSION >= QT_VERSION_CHECK(6, 10, 0))
++#include <QtGui/private/qgenericunixtheme_p.h>
++#else
+ #include <QtGui/private/qgenericunixthemes_p.h>
+ #endif
++#endif
+ 
+ Q_LOGGING_CATEGORY(QGnomePlatformThemeLog, "qt.qpa.qgnomeplatform.theme")
+ 
