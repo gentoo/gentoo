@@ -18,7 +18,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+gpkg +gtree openmp +qmanifest static"
+IUSE="+gpkg gtree openmp +qmanifest static"
 
 RDEPEND="
 	gpkg? (
