@@ -57,6 +57,11 @@ BDEPEND="${RDEPEND}
 	)
 "
 
+PATCHES=(
+	# https://github.com/pkgcore/pkgcheck/issues/765
+	"${FILESDIR}"/${P}-branding.patch
+)
+
 SITEFILE="50${PN}-gentoo.el"
 
 EPYTEST_PLUGINS=( pkgcore )
