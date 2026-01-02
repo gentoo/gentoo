@@ -10,7 +10,7 @@ else
 	MY_PV="${PV/_pre/-}"
 fi
 MY_SRC="${PN}-${MY_PV}"
-MY_URI="http://ftp.porcupine.org/mirrors/postfix-release/experimental"
+MY_URI="http://ftp.porcupine.org/mirrors/postfix-release/official"
 RC_VER="2.7"
 
 DESCRIPTION="A fast and secure drop-in replacement for sendmail"
@@ -22,7 +22,7 @@ LICENSE="|| ( IBM EPL-2.0 )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
-IUSE="berkdb cdb dovecot-sasl +eai ldap ldap-bind +lmdb mbox memcached mongodb mysql nis pam postgres sasl selinux sqlite ssl tlsrpt"
+IUSE="+berkdb cdb dovecot-sasl +eai ldap ldap-bind +lmdb mbox memcached mongodb mysql nis pam postgres sasl selinux sqlite ssl tlsrpt"
 
 DEPEND="
 	acct-group/postfix
@@ -107,7 +107,8 @@ src_configure() {
 	fi
 
 	if use lmdb; then
-		mycc="${mycc} -DHAS_LMDB"
+		# default is lmdb
+		mycc="${mycc} -DHAS_LMDB -DDEF_DB_TYPE=\\\"lmdb\\\" -DDEF_CACHE_DB_TYPE=\\\"lmdb\\\""
 		AUXLIBS_LMDB="-llmdb -lpthread"
 	fi
 
@@ -156,10 +157,7 @@ src_configure() {
 
 	if ! use berkdb; then
 		mycc="${mycc} -DNO_DB"
-		# change default database type
-		if use lmdb; then
-			mycc="${mycc} -DDEF_DB_TYPE=\\\"lmdb\\\" -DDEF_CACHE_DB_TYPE=\\\"lmdb\\\""
-		elif use cdb; then
+		if use cdb && ! use lmdb; then
 			mycc="${mycc} -DDEF_DB_TYPE=\\\"cdb\\\""
 			ewarn
 			ewarn "cdb USE flag is on but lmdb USE flag is not. Local database files"
