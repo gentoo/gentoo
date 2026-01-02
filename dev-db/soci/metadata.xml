@@ -13,9 +13,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<use>
-		<flag name="cxx11">Enable c++11 support</flag>
-	</use>
 	<upstream>
 		<remote-id type="sourceforge">soci</remote-id>
 	</upstream>
