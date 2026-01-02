@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -311,6 +311,7 @@ src_test() {
 		-overwrite
 	)
 
+	local test_name
 	for test_name in "${test_names[@]}"; do
 		mkdir -vp "$(dirname "${BUILD_DIR}/test_results/${test_name// /\/}.html")" || die
 		cat >> "${test_file}" <<- _EOF_ || die
@@ -386,6 +387,7 @@ src_test() {
 		testgrid_opts+=( -exclude "$(IFS=',' ; echo "${SKIP_TESTS[*]}")" )
 	fi
 
+	local test
 	for test in "${DEL_TESTS[@]}"; do
 		rm -r "${CMAKE_USE_DIR}/tests/${test}" || die
 	done
@@ -410,7 +412,7 @@ src_test() {
 	local -x CASROOT="${BUILD_DIR}"
 
 	virtx \
-	"${BUILD_DIR}/draw.sh" \
+		"${BUILD_DIR}/draw.sh" \
 		"${draw_opts[@]}" \
 		-f "${test_file}"
 
