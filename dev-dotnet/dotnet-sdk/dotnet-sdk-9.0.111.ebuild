@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Pre-build (and distribution preparation)
@@ -9,8 +9,8 @@
 #  bash ./prep-source-build.sh
 #  rm -f -r ./.git
 #  cd ..
-#  tar -acf dotnet-sdk-9.0.108-prepared-gentoo-amd64.tar.xz dotnet-sdk-9.0.0
-# Upload "dotnet-sdk-9.0.108-prepared-gentoo-amd64.tar.xz".
+#  tar -acf dotnet-sdk-9.0.111-prepared-gentoo-amd64.tar.xz dotnet-sdk-9.0.0
+# Upload "dotnet-sdk-9.0.111-prepared-gentoo-amd64.tar.xz".
 #
 # Build ("src_compile"):
 # To learn about arguments that are passed to the "build.sh" script see:
@@ -199,13 +199,18 @@ src_prepare() {
 	export MSBUILDDISABLENODEREUSE="1"
 	export MSBUILDTERMINALLOGGER="off"
 	export UseSharedCompilation="false"
+	export TreatWarningsAsErrors="false"
+	export WarningsNotAsErrors="CS7035"
 
 	local dotnet_sdk_tmp_directory="${WORKDIR}/dotnet-sdk-tmp"
 	mkdir -p "${dotnet_sdk_tmp_directory}" || die
 
-	# This should fix the "PackageVersions.props" problem,
-	# see below, in src_compile.
-	sed -e "s|/tmp|${dotnet_sdk_tmp_directory}|g" -i build.sh || die
+	# This should fix the "PackageVersions.props" problem, see "src_compile".
+	sed -i build.sh -e "s|/tmp|${dotnet_sdk_tmp_directory}|g" || die
+
+	# This script using comm + sort is broken with newest coreutils >=9.9.
+	sed -i ./src/*/eng/build.sh \
+		-e "s|actInt=.*|actInt=(-build -pack -publish -restore)|" || die
 
 	# Some .NET SDK build scripts use "nproc" to determine
 	# a number of processors. So, we create fake "nproc" command that in fact
@@ -268,6 +273,8 @@ src_compile() {
 		-maxCpuCount:"$(makeopts_jobs)"
 		-p:MaxCpuCount="$(makeopts_jobs)"
 		-p:ContinueOnPrebuiltBaselineError="true"
+		-p:TreatWarningsAsErrors="false"
+		-p:WarningsNotAsErrors="CS7035"
 
 		# Verbosity settings.
 		-verbosity:"${verbosity}"
