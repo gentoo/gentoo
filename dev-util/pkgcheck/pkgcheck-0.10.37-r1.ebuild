@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,7 +30,8 @@ if [[ ${PV} == *9999 ]]; then
 else
 	RDEPEND="
 		>=dev-python/snakeoil-0.10.11[${PYTHON_USEDEP}]
-		>=sys-apps/pkgcore-0.12.30[${PYTHON_USEDEP}]"
+		<dev-python/snakeoil-0.11.0[${PYTHON_USEDEP}]
+		~sys-apps/pkgcore-0.12.30[${PYTHON_USEDEP}]"
 fi
 RDEPEND+="
 	app-arch/zstd
@@ -49,6 +50,7 @@ RDEPEND+="
 BDEPEND="${RDEPEND}
 	>=dev-python/flit-core-3.8[${PYTHON_USEDEP}]
 	test? (
+		<app-shells/bash-5.3
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-vcs/git
