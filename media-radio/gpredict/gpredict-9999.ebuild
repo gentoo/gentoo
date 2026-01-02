@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools
+inherit autotools xdg
 
 DESCRIPTION="Real-time satellite tracking and orbit prediction application"
 HOMEPAGE="http://gpredict.oz9aec.net"
@@ -12,24 +12,26 @@ if [[ ${PV} = "9999" ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/csete/gpredict.git"
 else
-	COMMIT="098e3768240c7f5a169930a2660a23c9f42b37d6"
-	SRC_URI="https://github.com/csete/gpredict/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/${PN}-${COMMIT}"
+	SRC_URI="https://github.com/csete/gpredict/releases/download/v${PV}/${P}.tar.bz2"
 	KEYWORDS="~amd64 ~ppc ~x86"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
 
-RDEPEND="dev-libs/glib:2
+RDEPEND="
+	dev-libs/glib:2
 	x11-libs/gdk-pixbuf[jpeg]
 	x11-libs/gtk+:3
-	x11-libs/goocanvas:2.0
-	net-misc/curl"
+	x11-libs/goocanvas:3.0
+	net-misc/curl
+"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-util/intltool
+BDEPEND="
+	dev-util/intltool
 	sys-devel/gettext
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 DOCS=( AUTHORS NEWS README )
 
