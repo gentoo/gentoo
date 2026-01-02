@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,18 +23,16 @@ LICENSE="BSD MIT"
 SLOT="0"
 
 if [[ ${PV} == *9999 ]]; then
-	COMMON_DEPEND="~dev-python/snakeoil-9999[${PYTHON_USEDEP}]"
+	RDEPEND="~dev-python/snakeoil-9999[${PYTHON_USEDEP}]"
 else
-	COMMON_DEPEND=">=dev-python/snakeoil-0.10.11[${PYTHON_USEDEP}]"
+	RDEPEND=">=dev-python/snakeoil-0.11.0[${PYTHON_USEDEP}]"
 fi
 
-RDEPEND="
-	${COMMON_DEPEND}
-	>=app-shells/bash-5.2[readline]
+RDEPEND+="
+	>=app-shells/bash-5.3[readline]
 	dev-python/lxml[${PYTHON_USEDEP}]
 "
-BDEPEND="
-	${COMMON_DEPEND}
+BDEPEND="${RDEPEND}
 	>=dev-python/flit-core-3.8[${PYTHON_USEDEP}]
 	test? (
 		dev-vcs/git
