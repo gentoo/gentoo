@@ -1,4 +1,4 @@
-# Copyright 2021-2025 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,7 +33,7 @@ BDEPEND="
 src_prepare() {
 	local PATCHES=(
 		# use system pypiserver instead of bundled one
-		"${FILESDIR}/distlib-0.3.9-system-pypiserver.py"
+		"${FILESDIR}/distlib-0.3.9-system-pypiserver.patch"
 		# https://github.com/pypa/distlib/commit/6286442857de9f734686d08f0e59ca8048ee357a
 		"${FILESDIR}/${P}-py314-test.patch"
 	)
