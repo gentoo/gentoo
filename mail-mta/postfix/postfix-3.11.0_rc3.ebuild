@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -158,9 +158,13 @@ src_configure() {
 		mycc="${mycc} -DNO_DB"
 		# change default database type
 		if use lmdb; then
-			mycc="${mycc} -DDEF_DB_TYPE=\\\"lmdb\\\""
+			mycc="${mycc} -DDEF_DB_TYPE=\\\"lmdb\\\" -DDEF_CACHE_DB_TYPE=\\\"lmdb\\\""
 		elif use cdb; then
 			mycc="${mycc} -DDEF_DB_TYPE=\\\"cdb\\\""
+			ewarn
+			ewarn "cdb USE flag is on but lmdb USE flag is not. Local database files"
+			ewarn "for caches will not work. Consider turning lmdb USE flag on."
+			ewarn
 		fi
 	fi
 
