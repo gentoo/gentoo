@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,8 @@ SLOT="0"
 if [[ ${PV} == *9999 ]]; then
 	COMMON_DEPEND="~dev-python/snakeoil-9999[${PYTHON_USEDEP}]"
 else
-	COMMON_DEPEND=">=dev-python/snakeoil-0.10.11[${PYTHON_USEDEP}]"
+	COMMON_DEPEND=">=dev-python/snakeoil-0.10.11[${PYTHON_USEDEP}]
+		<dev-python/snakeoil-0.11.0[${PYTHON_USEDEP}]"
 fi
 
 RDEPEND="
