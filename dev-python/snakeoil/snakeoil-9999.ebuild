@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,8 +23,5 @@ HOMEPAGE="https://github.com/pkgcore/snakeoil"
 LICENSE="BSD BSD-2 MIT"
 SLOT="0"
 
-RDEPEND="
-	dev-python/lazy-object-proxy[${PYTHON_USEDEP}]
-"
-
+EPYTEST_PLUGINS=( pytest-subtests )
 distutils_enable_tests pytest
