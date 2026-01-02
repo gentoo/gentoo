@@ -36,10 +36,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Fabian Groffen <grobian@gentoo.org> (2026-01-01)
-# multiple (build and gpkg) issues, better wait for next release
-=app-portage/portage-utils-0.98
-
 # Ionen Wolkens <ionen@gentoo.org> (2025-12-30)
 # This release has been yanked upstream, do the same in case.
 # https://github.com/PyO3/maturin/issues/2909
