@@ -172,12 +172,6 @@ media-gfx/yafaray
 # Removal on 2026-01-05. Bug 967108.
 games-action/multimc-bin
 
-# Ulrich Müller <ulm@gentoo.org> (2025-12-04)
-# No longer functional because the Twitter API has been axed.
-# Last release in 2015, last commit to upstream repository in 2018.
-# Removal on 2026-01-03. Bug #965998.
-app-emacs/twittering-mode
-
 # Michał Górny <mgorny@gentoo.org> (2025-12-03)
 # Upstream changed how multiprocessing shares data between processes,
 # which means the upgrade randomly breaks some currently running Python
