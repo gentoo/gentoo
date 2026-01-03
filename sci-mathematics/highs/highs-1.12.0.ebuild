@@ -85,7 +85,6 @@ src_configure() {
 		-DHIGHS_NO_DEFAULT_THREADS=$(usex threads OFF ON)
 		-DHIGHSINT64=$(usex index64)
 		-DHIPO=$(usex hipo)
-		-DMETIS_ROOT="${EPREFIX}/usr"
 		-DPYTHON_BUILD_SETUP=OFF
 		-DUSE_DOTNET_STD_21=OFF
 		-DZLIB=$(usex zlib)
