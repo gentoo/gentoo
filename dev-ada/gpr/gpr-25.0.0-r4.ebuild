@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="${ADA_DEPS}
 	dev-ada/xmlada[${ADA_USEDEP},shared?,static-libs?,static-pic?]
-	>=dev-ada/gnatcoll-core-25[${ADA_USEDEP},shared?,static-libs?,static-pic?]
+	=dev-ada/gnatcoll-core-25*[${ADA_USEDEP},shared?,static-libs?,static-pic?]
 	dev-ada/gnatcoll-bindings[${ADA_USEDEP},shared?,static-libs?,static-pic?,iconv(+),gmp]
 "
 
