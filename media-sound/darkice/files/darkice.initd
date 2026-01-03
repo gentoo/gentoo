@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Copyright 2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+: ${DARKICE_USER:=root}
+: ${DARKICE_GROUP:=root}
+: ${DARKICE_LOGFILE:=/var/log/${RC_SVCNAME}.log}
+
+name="darkice"
+description="live audio streamer"
+command=/usr/bin/darkice
+command_args="${DARKICE_OPTS}"
+command_user="${DARKICE_USER}:${DARKICE_GROUP}"
+command_background=true
+output_log="${DARKICE_LOGFILE}"
+error_log="${DARKICE_LOGFILE}"
+pidfile="/run/${RC_SVCNAME}.pid"
+
+depend() {
+	need net
+	after icecast
+	after jackd
+}
