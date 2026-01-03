@@ -23,7 +23,7 @@ KEYWORDS="~amd64 ~riscv ~x86"
 BDEPEND="
 	media-gfx/optipng
 	x11-libs/gdk-pixbuf:2
-	x11-libs/gtk+:3"
+	gnome-base/librsvg"
 
 src_prepare() {
 	sed -i -e 's:-Werror -O0 -pipe:${CFLAGS} ${CPPFLAGS} ${LDFLAGS}:' \
