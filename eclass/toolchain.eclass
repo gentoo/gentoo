@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: toolchain.eclass
@@ -1504,7 +1504,7 @@ toolchain_src_configure() {
 			# requires libc
 			confgcc_no_libc+=( --disable-libatomic )
 
-			if ! has_version ${CATEGORY#accel-}/${needed_libc} ; then
+			if ! has_version ${CATEGORY}/${needed_libc} ; then
 				confgcc+=(
 					"${confgcc_no_libc[@]}"
 					--disable-threads
@@ -1519,7 +1519,7 @@ toolchain_src_configure() {
 					# The option appeared in gcc-4.2.
 					confgcc+=( --with-long-double-128 )
 				fi
-			elif has_version "${CATEGORY#accel-}/${needed_libc}[headers-only(-)]" ; then
+			elif has_version "${CATEGORY}/${needed_libc}[headers-only(-)]" ; then
 				confgcc+=(
 					"${confgcc_no_libc[@]}"
 					--with-sysroot="${PREFIX}"/${CTARGET#accel-}
