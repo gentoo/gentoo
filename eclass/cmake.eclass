@@ -77,10 +77,6 @@ inherit flag-o-matic multiprocessing ninja-utils toolchain-funcs xdg-utils
 if [[ ${CMAKE_REMOVE_MODULES_LIST} ]]; then
 	[[ ${CMAKE_REMOVE_MODULES_LIST@a} == *a* ]] ||
 		die "CMAKE_REMOVE_MODULES_LIST must be an array"
-else
-	if ! [[ ${CMAKE_REMOVE_MODULES_LIST@a} == *a* && ${#CMAKE_REMOVE_MODULES_LIST[@]} -eq 0 ]]; then
-		CMAKE_REMOVE_MODULES_LIST=( FindBLAS FindLAPACK )
-	fi
 fi
 
 # @ECLASS_VARIABLE: CMAKE_USE_DIR
@@ -497,6 +493,11 @@ cmake_prepare() {
 		die "FATAL: Unable to find CMakeLists.txt"
 	fi
 
+	if ! [[ ${CMAKE_REMOVE_MODULES_LIST@a} == *a* && ${#CMAKE_REMOVE_MODULES_LIST[@]} -eq 0 ]]; then
+		if has_version -b "<dev-build/cmake-4.2.1"; then
+			CMAKE_REMOVE_MODULES_LIST=( FindBLAS FindLAPACK )
+		fi
+	fi
 	local modules_list=( "${CMAKE_REMOVE_MODULES_LIST[@]}" )
 
 	local name
