@@ -1,0 +1,25 @@
+Shim can have more names, shim 15.8 comes as BOOT*.EFI
+
+https://bugs.gentoo.org/968277
+
+--- a/refind-install
++++ b/refind-install
+@@ -385,7 +385,8 @@
+    echo "ShimSource is $ShimSource"
+    if [[ "$ShimSource" != "none" ]] ; then
+       if [[ -f "$ShimSource" ]] ; then
+-         if [[ $ShimType == "shimx64.efi" || $ShimType == "shim.efi" || $ShimType == "shimx64.efi.signed" ]] ; then
++         if [[ $ShimType == "shimx64.efi" || $ShimType == "shim.efi" || $ShimType == "shimx64.efi.signed" ||
++		 $ShimType == "BOOTX64.EFI" || $ShimType == "BOOTIA32.EFI" ]] ; then
+             TargetX64="grubx64.efi"
+             TargetAARCH64="grubaa64.efi"
+             MokManagerSource=$(dirname "$ShimSource")/mm$Platform.efi.signed
+@@ -400,7 +401,7 @@
+             MokManagerSource=$(dirname "$ShimSource")/HashTool.efi
+          else
+             echo "Unknown shim/PreBootloader filename: $ShimType!"
+-            echo "Known filenames are shimx64.efi, shim.efi, and PreLoader.efi. Aborting!"
++            echo "Known filenames are shimx64.efi, shim.efi, BOOTX64.EFI, BOOTIA32.EFI, and PreLoader.efi. Aborting!"
+             exit 1
+          fi
+       else
