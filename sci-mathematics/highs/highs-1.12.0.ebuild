@@ -13,7 +13,7 @@ SRC_URI="https://github.com/ERGO-Code/HiGHS/releases/download/v${PV}/source-arch
 S="${WORKDIR}/HiGHS"
 LICENSE="MIT"
 SLOT="0/1"  # soname major
-KEYWORDS="~riscv"
+KEYWORDS="~amd64 ~riscv"
 IUSE="examples hipo index64 test +threads zlib"
 
 # The tests fail for me due to precision issues (gcc) and something
