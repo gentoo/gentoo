@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,7 @@ RDEPEND="${ADA_DEPS}
 	dev-ada/gpr:${SLOT}[${ADA_USEDEP},shared(+),static-libs?]
 	dev-ada/markdown:=[${ADA_USEDEP}]
 	=dev-ada/vss-text-25*:=[${ADA_USEDEP},static-libs?]
-	dev-ada/libadalang:=[${ADA_USEDEP},static-libs?,static-pic?]
+	<dev-ada/libadalang-26:=[${ADA_USEDEP},static-libs?,static-pic?]
 	dev-ada/libadalang:=[${PYTHON_SINGLE_USEDEP}]
 "
 BDEPEND="dev-ada/gprbuild[${ADA_USEDEP}]"
