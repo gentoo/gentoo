@@ -49,7 +49,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${P}-use-cargo-eclass-for-build.patch"
+	"${FILESDIR}/${PN}-4.3.0-use-cargo-eclass-for-build.patch"
 )
 
 QA_FLAGS_IGNORED="usr/bin/.*"
