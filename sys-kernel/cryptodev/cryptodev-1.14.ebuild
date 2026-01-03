@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,6 +25,10 @@ DEPEND="virtual/linux-sources"
 
 #test requires that the module is already loaded
 RESTRICT="test"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-linux-6.18.patch
+)
 
 pkg_pretend() {
 	use kernel_linux || die "cryptodev ebuild only support linux"
