@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NOTE: We combine here several PyPI packages, we do this because
@@ -411,6 +411,7 @@ python_compile() {
 			-maxdepth 1 -type d -name 'qfp*-py*-qt*-*' -printf "%f\n"
 	)
 	export pyside_build_id="${pyside_build_dir#"qfp$(usev debug d)-py${EPYTHON#python}-qt$(ver_cut 1-3)-"}"
+	export PYTHONPATH="${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/install/lib/${EPYTHON}/site-packages:${PYTHONPATH}"
 
 	DISTUTILS_ARGS=(
 		"${MAIN_DISTUTILS_ARGS[@]}"
@@ -419,16 +420,18 @@ python_compile() {
 		--build-type=shiboken6-generator
 	)
 	distutils-r1_python_compile
+	export PYTHONPATH="${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/install/lib/${EPYTHON}/site-packages:${PYTHONPATH}"
+
 	# If no pyside modules enabled, build just shiboken
 	if [[ ${#ENABLED_QT_MODULES[@]} -gt 0 ]]; then
 		DISTUTILS_ARGS=(
 			"${MAIN_DISTUTILS_ARGS[@]}"
 			--reuse-build
-			--shiboken-host-path=="${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/install"
 			--shiboken-target-path="${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/install"
 			--build-type=pyside6
 		)
 		distutils-r1_python_compile
+		export PYTHONPATH="${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/install/lib/${EPYTHON}/site-packages:${PYTHONPATH}"
 	fi
 
 	# Link libraries to the usual location for backwards compatibility
@@ -528,9 +531,9 @@ python_compile() {
 		-e "s~libshiboken6\.cpython.*\.so\.$(ver_cut 1-2)~libshiboken6\${PYTHON_CONFIG_SUFFIX}\.so\.$(ver_cut 1-2)~g" \
 		-e "s~libpyside6\.cpython.*\.so\.$(ver_cut 1-2)~libpyside6\${PYTHON_CONFIG_SUFFIX}\.so\.$(ver_cut 1-2)~g" \
 		-e "s~libpyside6qml\.cpython.*\.so\.$(ver_cut 1-2)~libpyside6qml\${PYTHON_CONFIG_SUFFIX}\.so\.$(ver_cut 1-2)~g" \
-		-e "s~\${PACKAGE_PREFIX_DIR}/~$(python_get_sitedir)/PySide6/~g" \
-		-e "s~\${_IMPORT_PREFIX}/shiboken6~$(python_get_sitedir)/shiboken6~g" \
-		-e "s~\${_IMPORT_PREFIX}/PySide6~$(python_get_sitedir)/PySide6~g" \
+		-e "s~\${PACKAGE_PREFIX_DIR}/~\${PACKAGE_PREFIX_DIR}/share/PySide6/~g" \
+		-e "s~\${_IMPORT_PREFIX}/shiboken6/include~/usr/include/shiboken6~g" \
+		-e "s~\${_IMPORT_PREFIX}/PySide6/include~/usr/include/PySide6~g" \
 		-i 	"${BUILD_DIR}/install/usr/lib/cmake/"*/*.cmake || die
 	local file
 	for file in "${BUILD_DIR}/install/usr/lib/cmake/"*/*.cpython-*.cmake
