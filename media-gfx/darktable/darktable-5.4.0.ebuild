@@ -38,7 +38,7 @@ else
 	LANGS=" cs de es fi fr hu it ja nl pl pt-BR sl sq sv uk zh-CN zh-TW"
 fi
 
-IUSE="avif colord cpu_flags_x86_avx cpu_flags_x86_sse3 cups doc gamepad geolocation keyring gphoto2 graphicsmagick heif jpeg2k jpegxl kwallet lto lua midi opencl openmp openexr test tools webp
+IUSE="X avif colord cpu_flags_x86_avx cpu_flags_x86_sse3 cups doc gamepad geolocation keyring gphoto2 graphicsmagick heif jpeg2k jpegxl kwallet lto lua midi opencl openmp openexr test tools wayland webp
 	${LANGS// / l10n_}"
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
@@ -73,7 +73,7 @@ DEPEND="dev-db/sqlite:3
 	net-misc/curl
 	virtual/zlib:=
 	x11-libs/cairo
-	>=x11-libs/gtk+-3.22:3
+	>=x11-libs/gtk+-3.22:3[X?,wayland?]
 	x11-libs/pango
 	avif? ( >=media-libs/libavif-0.8.2:= )
 	colord? ( x11-libs/colord-gtk:= )
@@ -125,6 +125,9 @@ pkg_setup() {
 src_prepare() {
 	use cpu_flags_x86_avx && append-flags -mavx
 	use cpu_flags_x86_sse3 && append-flags -msse3
+
+	use X || append-flags -DGENTOO_GTK_HIDE_X11
+	use wayland || append-flags -DGENTOO_GTK_HIDE_WAYLAND
 
 	sed -i -e 's:/appdata:/metainfo:g' data/CMakeLists.txt || die
 
