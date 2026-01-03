@@ -1,4 +1,4 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -68,6 +68,8 @@ src_configure() {
 
 python_compile() {
 	addpredict /dev/kfd
+	# bug #968112
+	addpredict /dev/random
 
 	export FORCE_CUDA=0
 	if use cuda || use rocm ; then
