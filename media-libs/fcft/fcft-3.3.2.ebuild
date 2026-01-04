@@ -17,7 +17,7 @@ SRC_URI="
 # ZLIB for nanosvg
 LICENSE="MIT ZLIB"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ppc64 ~riscv ~x86"
 IUSE="examples +harfbuzz +libutf8proc test"
 REQUIRED_USE="
 	libutf8proc? ( harfbuzz )
