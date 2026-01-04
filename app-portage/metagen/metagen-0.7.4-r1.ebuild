@@ -5,15 +5,14 @@ EAPI="8"
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{12..14} )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1 pypi
 
 DESCRIPTION="metadata.xml generator for ebuilds"
 HOMEPAGE="https://cgit.gentoo.org/proj/metagen.git"
-EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/metagen.git"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~riscv ~x86"
 
 DEPEND="dev-python/lxml[${PYTHON_USEDEP}]
 	sys-apps/portage[${PYTHON_USEDEP}]"
@@ -24,8 +23,4 @@ distutils_enable_tests pytest
 python_install_all() {
 	distutils-r1_python_install_all
 	doman docs/metagen.1
-
-	# Address expected path warning for /usr/share/doc/metagen-<not-9999>
-	mv "${ED}"/usr/share/doc/metagen-{*.*.*/*,${PV}/} || die
-	rmdir "${ED}"/usr/share/doc/metagen-*.*.*/ || die
 }
