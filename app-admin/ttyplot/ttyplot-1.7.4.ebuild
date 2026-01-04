@@ -11,7 +11,7 @@ SRC_URI="https://github.com/tenox7/ttyplot/archive/refs/tags/${PV}.tar.gz -> ${P
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="virtual/pkgconfig"
 DEPEND="${RDEPEND}
