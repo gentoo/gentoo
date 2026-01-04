@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -88,6 +88,10 @@ PDEPEND="
 		>=sys-apps/file-5.44-r3
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/0001-bin-emerge-ebuild-don-t-define-signal-handlers-in-gl.patch
+)
 
 pkg_pretend() {
 	local CONFIG_CHECK="~IPC_NS ~PID_NS ~NET_NS ~UTS_NS"
