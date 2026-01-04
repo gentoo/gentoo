@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,7 +26,6 @@ RESTRICT="!test? ( test )"
 BDEPEND="
 	dev-python/hatch-vcs[${PYTHON_USEDEP}]
 	test? (
-		app-shells/fish
 		app-shells/tcsh
 		~app-shells/zsh-5.9
 		dev-python/pexpect[${PYTHON_USEDEP}]
