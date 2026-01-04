@@ -25,6 +25,6 @@
     <flag name="unwind">Build with improved debugging using <pkg>sys-libs/libunwind</pkg> (has no effect if USE=elfutils is set)</flag>
   </use>
   <upstream>
-    <remote-id type="freedesktop-gitlab">camera/libcamera.git</remote-id>
+    <remote-id type="freedesktop-gitlab">camera/libcamera</remote-id>
   </upstream>
 </pkgmetadata>
