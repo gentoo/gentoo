@@ -32,6 +32,7 @@ src_prepare() {
 	local -x MY_EPREFIX=${EPREFIX}
 
 	eapply "${FILESDIR}/${PV}-suppress-bash-setlocale-warnings.patch"
+	eapply "${FILESDIR}/${PV}-avoid-chcon-execution-if-missing.patch"
 	eapply_user
 
 	perl -pi -e '$f //= ($. == 1 && s/^#!\h*\K/$ENV{MY_EPREFIX}/); END { exit !$f }' "${PN}" \

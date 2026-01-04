@@ -1,0 +1,43 @@
+From ae0a37058a89a9ce9a99562931777f0636108c50 Mon Sep 17 00:00:00 2001
+From: Kerin Millar <kfm@plushkava.net>
+Date: Sun, 4 Jan 2026 04:49:31 +0000
+Subject: [PATCH] Refrain from trying to execute chcon(1), if missing
+
+As of coreutils 9.9, the --with-selinux option is required for the
+chcon(1) utility to be installed. Consider a scenario in which a Gentoo
+Linux installation is being performed from an SELinux-enabled operating
+environment. In that case, locale-gen(8) will detect that security
+labels are supported and attempt to execute the chcon(1) utility. Given
+that there is no longer any guarantee of the utility being available,
+locale-gen(8) may raise the following error.
+
+sh: line 1: chcon: command not found
+locale-gen: Aborting because the execution of 'chcon' was unsuccessful
+
+Address this issue by requiring for "chcon" to exist as an executable in
+PATH as an additional condition for its execution, as is already the
+case for "restorecon".
+
+Closes: https://bugs.gentoo.org/968318
+Link: https://cgit.git.savannah.gnu.org/cgit/coreutils.git/commit/?id=8ba47d09a33f0740e071a8394f3504e0fb57948e
+Signed-off-by: Kerin Millar <kfm@plushkava.net>
+---
+ locale-gen | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/locale-gen b/locale-gen
+index a65b99a..d39519f 100644
+--- a/locale-gen
++++ b/locale-gen
+@@ -573,7 +573,7 @@ sub install_archive ($src_path, $dst_path, $may_reset_labels) {
+ 	run('mv', '--', $src_path, $interim_path);
+ 
+ 	# If a prior archive exists, attempt to preserve its SELinux label.
+-	if ($has_seclabels && $has_archive) {
++	if ($has_seclabels && $has_archive && can_run('chcon')) {
+ 		copy_security_context($dst_path, $interim_path);
+ 	}
+ 
+-- 
+2.52.0
+
