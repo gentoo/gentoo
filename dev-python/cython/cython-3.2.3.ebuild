@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -68,6 +68,10 @@ python_test() {
 
 	# Needed to avoid confusing cache tests
 	unset CYTHON_FORCE_REGEN
+
+	# uses $(nproc) to additionally parallelize many OpenMP-based jobs,
+	# leading to overcommitting
+	local -x OMP_NUM_THREADS=1
 
 	tc-export CC
 

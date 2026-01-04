@@ -69,6 +69,10 @@ python_test() {
 	# Needed to avoid confusing cache tests
 	unset CYTHON_FORCE_REGEN
 
+	# uses $(nproc) to additionally parallelize many OpenMP-based jobs,
+	# leading to overcommitting
+	local -x OMP_NUM_THREADS=1
+
 	tc-export CC
 
 	local testargs=(
