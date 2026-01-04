@@ -1,0 +1,34 @@
+PR pending https://github.com/rafael2k/darkice/pull/208.patch
+fix compiler warning and buffer overflow with strcat and strncpy
+> In function ‘strcat’,
+>     inlined from ‘main’ at darksnow.c:227:3:
+> /usr/include/bits/string_fortified.h:140:10: warning: ‘__builtin___strcat_chk’ forming offset [16, 17] 
+> is out of the bounds [0, 16] of object ‘locale’ with type ‘char[16]’ [-Warray-bounds=]
+
+> interface.c: In function ‘status_loop’:
+> interface.c:280:5: warning: ‘__builtin_strncpy’ output truncated before terminating nul copying 1 byte 
+> from a string of the same length [-Wstringop-truncation]
+>   280 |     strncpy((char *) shared_area+1, "0", 1);
+>       |     ^
+--- a/darksnow.c
++++ b/darksnow.c
+@@ -170,7 +170,7 @@ int main( int  argc, char *argv[], char *envp[]) {
+   DIR *directory;
+   char *foo;
+   char bar[256];
+-  char locale[16];
++  char locale[128];
+   int i = 0, j = 0, fd;
+ 
+   if (!gtk_init_check (&argc, &argv)) {
+--- a/interface.c
++++ b/interface.c
+@@ -277,7 +277,7 @@ gboolean status_loop (gboolean foo) {
+       alarm_id = g_timeout_add (4000, (GSourceFunc) text_box_loop, 0);
+     }
+ 
+-    strncpy((char *) shared_area+1, "0", 1);  
++    memcpy(shared_area+1, "0", 1);  
+   }
+ 
+   /* I need nothing from child, just do this to prevent <defunct> processes */
