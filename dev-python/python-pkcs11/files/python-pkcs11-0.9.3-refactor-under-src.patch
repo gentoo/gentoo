@@ -1,0 +1,116 @@
+diff --git a/MANIFEST.in b/MANIFEST.in
+index c426022..1bd1806 100644
+--- a/MANIFEST.in
++++ b/MANIFEST.in
+@@ -1,2 +1,2 @@
+ graft extern/
+-include pkcs11/*.pxd
+\ No newline at end of file
++include src/pkcs11/*.pxd
+diff --git a/pyproject.toml b/pyproject.toml
+index 79b3e86..b119388 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -53,7 +53,7 @@ combine-as-imports = true
+ 
+ [tool.setuptools]
+ ext-modules = [
+-    {name = "pkcs11._pkcs11", sources = ["pkcs11/_pkcs11.pyx"]}
++    {name = "pkcs11._pkcs11", sources = ["src/pkcs11/_pkcs11.pyx"]}
+ ]
+ 
+ [tool.cibuildwheel]
+@@ -68,9 +68,6 @@ archs = ["AMD64"]
+ [tool.cibuildwheel.macos]
+ archs = ["universal2"]
+ 
+-[tool.setuptools.packages.find]
+-include = ["pkcs11*"]
+-
+ [tool.coverage.run]
+ plugins = ["Cython.Coverage"]
+ 
+diff --git a/pkcs11/__init__.py b/src/pkcs11/__init__.py
+similarity index 100%
+rename from pkcs11/__init__.py
+rename to src/pkcs11/__init__.py
+diff --git a/pkcs11/_pkcs11.pxd b/src/pkcs11/_pkcs11.pxd
+similarity index 99%
+rename from pkcs11/_pkcs11.pxd
+rename to src/pkcs11/_pkcs11.pxd
+index ba1903d..03f094a 100644
+--- a/pkcs11/_pkcs11.pxd
++++ b/src/pkcs11/_pkcs11.pxd
+@@ -6,7 +6,7 @@ from cython.view cimport array
+ 
+ from pkcs11.exceptions import *
+ 
+-cdef extern from '../extern/cryptoki.h':
++cdef extern from '../../extern/cryptoki.h':
+ 
+     ctypedef unsigned char CK_BYTE
+     ctypedef CK_BYTE CK_BBOOL
+diff --git a/pkcs11/_pkcs11.pyx b/src/pkcs11/_pkcs11.pyx
+similarity index 99%
+rename from pkcs11/_pkcs11.pyx
+rename to src/pkcs11/_pkcs11.pyx
+index 27f692e..6a33094 100644
+--- a/pkcs11/_pkcs11.pyx
++++ b/src/pkcs11/_pkcs11.pyx
+@@ -1946,7 +1946,7 @@ _CLASS_MAP = {
+     ObjectClass.CERTIFICATE: Certificate,
+ }
+ 
+-cdef extern from "../extern/load_module.c":
++cdef extern from "../../extern/load_module.c":
+     ctypedef struct P11_HANDLE:
+         void *get_function_list_ptr
+ 
+diff --git a/pkcs11/attributes.py b/src/pkcs11/attributes.py
+similarity index 100%
+rename from pkcs11/attributes.py
+rename to src/pkcs11/attributes.py
+diff --git a/pkcs11/constants.py b/src/pkcs11/constants.py
+similarity index 100%
+rename from pkcs11/constants.py
+rename to src/pkcs11/constants.py
+diff --git a/pkcs11/defaults.py b/src/pkcs11/defaults.py
+similarity index 100%
+rename from pkcs11/defaults.py
+rename to src/pkcs11/defaults.py
+diff --git a/pkcs11/exceptions.py b/src/pkcs11/exceptions.py
+similarity index 100%
+rename from pkcs11/exceptions.py
+rename to src/pkcs11/exceptions.py
+diff --git a/pkcs11/mechanisms.py b/src/pkcs11/mechanisms.py
+similarity index 100%
+rename from pkcs11/mechanisms.py
+rename to src/pkcs11/mechanisms.py
+diff --git a/pkcs11/types.py b/src/pkcs11/types.py
+similarity index 100%
+rename from pkcs11/types.py
+rename to src/pkcs11/types.py
+diff --git a/pkcs11/util/__init__.py b/src/pkcs11/util/__init__.py
+similarity index 100%
+rename from pkcs11/util/__init__.py
+rename to src/pkcs11/util/__init__.py
+diff --git a/pkcs11/util/dh.py b/src/pkcs11/util/dh.py
+similarity index 100%
+rename from pkcs11/util/dh.py
+rename to src/pkcs11/util/dh.py
+diff --git a/pkcs11/util/dsa.py b/src/pkcs11/util/dsa.py
+similarity index 100%
+rename from pkcs11/util/dsa.py
+rename to src/pkcs11/util/dsa.py
+diff --git a/pkcs11/util/ec.py b/src/pkcs11/util/ec.py
+similarity index 100%
+rename from pkcs11/util/ec.py
+rename to src/pkcs11/util/ec.py
+diff --git a/pkcs11/util/rsa.py b/src/pkcs11/util/rsa.py
+similarity index 100%
+rename from pkcs11/util/rsa.py
+rename to src/pkcs11/util/rsa.py
+diff --git a/pkcs11/util/x509.py b/src/pkcs11/util/x509.py
+similarity index 100%
+rename from pkcs11/util/x509.py
+rename to src/pkcs11/util/x509.py

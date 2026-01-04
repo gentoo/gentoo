@@ -1,0 +1,14 @@
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>salah.coronya@gmail.com</email>
+    <name>Christopher Byrne</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">pyauth/python-pkcs11</remote-id>
+    <remote-id type="pypi">python-pkcs11</remote-id>
+  </upstream>
+</pkgmetadata>
