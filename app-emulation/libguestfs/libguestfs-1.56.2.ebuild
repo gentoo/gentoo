@@ -21,7 +21,7 @@ SRC_URI="https://download.libguestfs.org/${MY_PV_1}-${SD}/${P}.tar.gz"
 LICENSE="GPL-2 LGPL-2"
 SLOT="0/${MY_PV_1}"
 if [[ ${SD} == "stable" ]] ; then
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 IUSE="doc erlang +fuse libvirt lua +ocaml +perl python readline ruby selinux static-libs test"
