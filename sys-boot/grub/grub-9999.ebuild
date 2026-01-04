@@ -26,7 +26,6 @@ WANT_LIBTOOL=none
 
 if [[ -n ${GRUB_AUTORECONF} ]]; then
 	inherit autotools
-	BDEPEND+=" dev-build/autoconf-archive"
 fi
 
 inherit bash-completion-r1 eapi9-ver flag-o-matic multibuild optfeature
@@ -36,7 +35,6 @@ DESCRIPTION="GNU GRUB boot loader"
 HOMEPAGE="https://www.gnu.org/software/grub/"
 
 MY_P=${P}
-
 if [[ ${PV} != 9999 ]]; then
 	if [[ ${PV} == *_alpha* || ${PV} == *_beta* || ${PV} == *_rc* ]]; then
 		# The quote style is to work with <=bash-4.2 and >=bash-4.3 #503860
@@ -53,7 +51,7 @@ if [[ ${PV} != 9999 ]]; then
 		"
 		S=${WORKDIR}/${P%_*}
 	fi
-	BDEPEND+="
+	BDEPEND="
 		verify-sig? (
 			sec-keys/openpgp-keys-grub
 			sec-keys/openpgp-keys-unifont

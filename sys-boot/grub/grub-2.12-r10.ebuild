@@ -1,4 +1,4 @@
-# Copyright 1999-2026 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,7 +24,6 @@ VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/grub.asc
 
 if [[ -n ${GRUB_AUTORECONF} ]]; then
 	inherit autotools
-	BDEPEND+=" dev-build/autoconf-archive"
 fi
 
 inherit bash-completion-r1 eapi9-ver flag-o-matic multibuild optfeature
@@ -34,7 +33,6 @@ DESCRIPTION="GNU GRUB boot loader"
 HOMEPAGE="https://www.gnu.org/software/grub/"
 
 MY_P=${P}
-
 if [[ ${PV} != 9999 ]]; then
 	inherit verify-sig
 
@@ -54,7 +52,7 @@ if [[ ${PV} != 9999 ]]; then
 		"
 		S=${WORKDIR}/${P%_*}
 	fi
-	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-grub )"
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-grub )"
 	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
 else
 	inherit git-r3
@@ -69,7 +67,6 @@ PATCHES=(
 	"${WORKDIR}"/grub-2.12-bash-completion.patch
 	"${FILESDIR}"/grub-2.12-zfs-zstd-compression-support.patch
 	"${FILESDIR}"/grub-2.12-fix-for-bash-completion-_split_longopt.patch
-	"${FILESDIR}"/grub-2.12-image-base.patch
 )
 
 DEJAVU=dejavu-sans-ttf-2.37
