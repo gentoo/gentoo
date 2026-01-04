@@ -17,7 +17,7 @@ SRC_URI="https://github.com/ruby/mutex_m/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ~ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos ~x64-solaris"
 
 all_ruby_prepare() {
 	sed -e 's:_relative ": "./:' \
