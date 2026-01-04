@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -175,17 +175,6 @@ src_configure() {
 	econf "${myconf[@]}"
 }
 
-src_install() {
-	emake INSTALLDIRS=vendor DESTDIR="${D}" install "LINGUAS=""${LINGUAS}"""
-	# ocaml always installs a static lib even without USE=static-libs
-	strip-lto-bytecode "${ED}"
-
-	find "${ED}" -name '*.la' -delete || die
-
-	use perl && perl_delete_localpod
-	use python && python_optimize
-}
-
 src_test() {
 	# app-shells/bash-completion may not be installed
 	# Bug #794874
@@ -207,4 +196,15 @@ src_test() {
 	local -x LIBGUESTFS_TRACE=1
 
 	default
+}
+
+src_install() {
+	emake INSTALLDIRS=vendor DESTDIR="${D}" install "LINGUAS=""${LINGUAS}"""
+	# ocaml always installs a static lib even without USE=static-libs
+	strip-lto-bytecode "${ED}"
+
+	find "${ED}" -name '*.la' -delete || die
+
+	use perl && perl_delete_localpod
+	use python && python_optimize
 }
