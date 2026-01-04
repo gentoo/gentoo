@@ -1,0 +1,43 @@
+From fc5873ee760c333738c9e8e8d8c2eb906f0c40f5 Mon Sep 17 00:00:00 2001
+From: Ben Ashbaugh <ben.ashbaugh@intel.com>
+Date: Fri, 8 Aug 2025 08:56:05 -0700
+Subject: [PATCH] fixes a new validation failure in a UniformId test (#3301)
+
+A recent spirv-val change requires that OpDecorateId IDs are
+well-ordered, which means that the decoration operand ID cannot be the
+same as the decoration target ID. See:
+https://github.com/KhronosGroup/SPIRV-Tools/pull/6227
+
+This leads to the failure:
+
+```
+error: line 6: Parameter <ID> '2[%uint_0]' must appear earlier in the binary than the target
+  OpDecorateId %uint_0 UniformId %uint_0
+```
+
+The fix is to use a different ID for the decoration operand and the
+decoration target.
+---
+ test/DecorateUniformId.spvasm | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git ./test/DecorateUniformId.spvasm ./test/DecorateUniformId.spvasm
+index b50c6b50..d22bf6bd 100644
+--- ./test/DecorateUniformId.spvasm
++++ ./test/DecorateUniformId.spvasm
+@@ -15,9 +15,10 @@
+                OpCapability UniformDecoration
+                OpMemoryModel Physical64 OpenCL
+                OpEntryPoint Kernel %2 "test"
+-               OpDecorateId %uint_0 UniformId %uint_0
++               OpDecorateId %tgt_uint_0 UniformId %op_uint_0
+        %uint = OpTypeInt 32 0
+-     %uint_0 = OpConstant %uint 0
++  %op_uint_0 = OpConstant %uint 0
++ %tgt_uint_0 = OpConstant %uint 0
+        %void = OpTypeVoid
+           %1 = OpTypeFunction %void
+           %2 = OpFunction %void None %1
+-- 
+2.51.2
+

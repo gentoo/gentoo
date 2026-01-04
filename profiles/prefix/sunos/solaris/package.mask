@@ -1,5 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Fabian Groffen <grobian@gentoo.org> (2025-12-31)
+# Fails when setting breakpoints, cannot access memory at address
+=dev-debug/gdb-17.1
 
 # Benda Xu <heroxbd@gentoo.org> (2023-07-09)
 # Requires Glibc <sys/xattr.h> to work properly.

@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby31 ruby32 ruby33 ruby34"
+
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 inherit ruby-fakegem
 
@@ -18,5 +19,7 @@ ruby_add_bdepend "test? ( dev-ruby/minitest:5 )"
 
 all_ruby_prepare() {
 	sed -i -e '/[Bb]undler/d' Rakefile || die
-	sed -i -e '/simplecov/,/^end/ s:^:#:' test/test_helper.rb || die
+	sed -e '/simplecov/,/^end/ s:^:#:' \
+		-e '1igem "minitest", "~> 5.0"' \
+		-i test/test_helper.rb || die
 }

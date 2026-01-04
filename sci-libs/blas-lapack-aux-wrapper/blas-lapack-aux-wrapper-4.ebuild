@@ -55,7 +55,7 @@ src_configure() {
 check_result() {
 	local f=${1}
 
-	if ! grep -q "flexiblas.*TRIGGER-WARNING" "${f}.out"; then
+	if ! grep -q "<flexiblas> Check if shared library exist" "${f}.out"; then
 		die "No FlexiBLAS output found in ${f}.out"
 	fi
 	if grep -q -i "FAIL" "${f}.out"; then
@@ -72,10 +72,11 @@ run_test() {
 }
 
 src_test() {
-	# Force a nonexisting provider to:
 	# a. get indication that FlexiBLAS is actually used on stderr.
+	local -x FLEXIBLAS_VERBOSE=1
 	# b. force fallback to Netlib LAPACK.
-	local -x FLEXIBLAS=trigger-warning
+	local -x FLEXIBLAS=libflexiblas_netlib.so
+
 	tc-export CC FC AR RANLIB
 
 	cd "${WORKDIR}/lapack-${LAPACK_VER}" || die

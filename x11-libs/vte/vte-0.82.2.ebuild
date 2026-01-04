@@ -13,7 +13,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/vte"
 LICENSE="LGPL-3+ GPL-3+"
 
 SLOT="2.91"      # vte_api_version in meson.build
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 IUSE="X +crypt debug gtk-doc +icu +introspection systemd +vala wayland"
 REQUIRED_USE="
 	gtk-doc? ( introspection )

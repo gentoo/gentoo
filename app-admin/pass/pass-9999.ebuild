@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,6 +11,7 @@ if [[ ${PV} = 9999* ]]; then
 else
 	SRC_URI="https://git.zx2c4.com/password-store/snapshot/password-store-${PV}.tar.xz"
 	S="${WORKDIR}/password-store-${PV}"
+
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~x64-macos"
 fi
 

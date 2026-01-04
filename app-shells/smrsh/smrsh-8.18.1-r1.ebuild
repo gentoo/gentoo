@@ -29,7 +29,7 @@ S="${WORKDIR}/sendmail-${PV}"
 
 LICENSE="Sendmail"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~s390 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~s390 ~x86"
 
 RDEPEND="!mail-mta/sendmail"
 DEPEND="${RDEPEND}"

@@ -13,7 +13,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/KhronosGroup/${MY_PN}/archive/vulkan-sdk-${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 arm arm64 ~loong ~ppc ~ppc64 ~riscv"
+	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv"
 	S="${WORKDIR}"/${MY_PN}-vulkan-sdk-${PV}
 fi
 
@@ -23,7 +23,8 @@ HOMEPAGE="https://github.com/KhronosGroup/Vulkan-Tools"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="cube wayland test X"
-RESTRICT="!test? ( test )"
+# bug #964032 for test restriction, drop w/ newer versions
+RESTRICT="test !test? ( test )"
 
 BDEPEND="${PYTHON_DEPS}
 	cube? ( ~dev-util/glslang-${PV}:=[${MULTILIB_USEDEP}] )

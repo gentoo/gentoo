@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DESCRIPTION="Bootstrap package for dev-lang/go"
+DESCRIPTION="Binary bootstrap package for dev-lang/go"
 HOMEPAGE="https://golang.org"
 BOOTSTRAP_DIST="https://dev.gentoo.org/~williamh/dist"
 SRC_URI="

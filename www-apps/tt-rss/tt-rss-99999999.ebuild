@@ -21,7 +21,7 @@ HOMEPAGE="https://github.com/tt-rss/"
 LICENSE="GPL-3"
 IUSE="+acl daemon gd"
 
-PHP_SLOTS="8.4 8.3 8.2" # Check with: grep PHP_VERSION classes/Config.php
+PHP_SLOTS="8.5 8.4 8.3 8.2" # min_ver: PHP_VERSION classes/Config.php / current_ver: PHP_SUFFIX .docker/app/Dockerfile
 PHP_USE="gd?,postgres,ctype,curl,fileinfo,filter,intl,pdo,tokenizer,unicode,xml"
 
 php_rdepend() {

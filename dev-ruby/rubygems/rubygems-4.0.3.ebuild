@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 inherit ruby-ng prefix
 
@@ -79,7 +79,7 @@ each_ruby_test() {
 
 	if [[ "${EUID}" -ne "0" ]]; then
 		RUBYLIB="$(pwd)/lib${RUBYLIB+:${RUBYLIB}}" ${RUBY} --disable-gems -I.:lib:test:bundler/lib \
-			-e 'require "rubygems"; gem "minitest", "~>5.0"; Dir["test/**/test_*.rb"].each { require _1 }' || die "tests failed"
+			-e 'require "rubygems"; Dir["test/**/test_*.rb"].each { require _1 }' || die "tests failed"
 	else
 		ewarn "The userpriv feature must be enabled to run tests, bug 408951."
 		eerror "Testsuite will not be run."

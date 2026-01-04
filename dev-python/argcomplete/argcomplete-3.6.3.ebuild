@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -26,7 +26,6 @@ RESTRICT="!test? ( test )"
 BDEPEND="
 	dev-python/hatch-vcs[${PYTHON_USEDEP}]
 	test? (
-		app-shells/fish
 		app-shells/tcsh
 		~app-shells/zsh-5.9
 		dev-python/pexpect[${PYTHON_USEDEP}]

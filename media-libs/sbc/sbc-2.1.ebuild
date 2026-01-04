@@ -20,7 +20,10 @@ RESTRICT="test"
 
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}/${PN}-1.5-ifdef-builtin.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-1.5-ifdef-builtin.patch"
+	"${FILESDIR}/${PN}-2.1-arm-c23.patch"
+)
 
 multilib_src_configure() {
 	ECONF_SOURCE=${S} \

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -90,4 +90,9 @@ multilib_src_install_all() {
 	for page in constants decode encode types ; do
 		newman docs/${page}.h.3 ${PN}_${page}.h.3
 	done
+
+	dosym -r /usr/bin/brotli /usr/bin/brcat
+	dosym -r /usr/bin/brotli /usr/bin/unbrotli
+	dosym -r /usr/share/man/man1/brotli.1 /usr/share/man/man1/brcat.1
+	dosym -r /usr/share/man/man1/brotli.1 /usr/share/man/man1/unbrotli.1
 }

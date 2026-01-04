@@ -13,7 +13,7 @@ index cdaa439ff..3e088961e 100644
 -        if OPTION["JOBS"]:
 -            cmd_make.append(OPTION["JOBS"])
 +        if self.make_generator == "Ninja":
-+            cmd_make.extend(os.getenv("NINJAOPTS").split(' '))
++            cmd_make.extend(os.getenv("NINJAOPTS").split())
          if OPTION["LOG_LEVEL"] == LogLevel.VERBOSE and self.make_generator == "Ninja":
              cmd_make.append("-v")
          if run_process(cmd_make) != 0:

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ SRC_URI="https://download.libguestfs.org/nbdkit/$(ver_cut 1-2)-stable/${P}.tar.g
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~loong ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~loong ~ppc64 ~sparc ~x86"
 IUSE="
 	curl ext2 nbd gnutls libguestfs libssh libvirt lzma selinux python
 	torrent valgrind zlib zlib-ng zstd

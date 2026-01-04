@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/firewalld/firewalld/releases/download/v${PV}/${P}.ta
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="gui selinux test"
 # Tests are too unreliable in sandbox environment
 RESTRICT="!test? ( test ) test"

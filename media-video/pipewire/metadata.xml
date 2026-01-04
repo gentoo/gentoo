@@ -22,6 +22,7 @@
 		<flag name="gsettings">Use gsettings (<pkg>dev-libs/glib</pkg>) to read/save used modules (useful for e.g. <pkg>media-sound/paprefs</pkg></flag>
 		<flag name="jack-client">Install a plugin for running PipeWire as a JACK client</flag>
 		<flag name="jack-sdk">Use PipeWire as JACK replacement</flag>
+		<flag name="libcamera">Enable libcamera plugin via <pkg>media-libs/libcamera</pkg></flag>
 		<flag name="liblc3">Allow loading LC3 plugins via <pkg>media-sound/liblc3</pkg></flag>
 		<flag name="loudness">Enable loudness normalisation according to the EBU R128 standard using <pkg>media-libs/libebur128</pkg></flag>
 		<flag name="lv2">Allow loading LV2 plugins via <pkg>media-libs/lv2</pkg></flag>

@@ -44,6 +44,8 @@ BDEPEND="
 
 DOCS=( README.md CONTRIBUTING.md )
 
+PATCHES=( "${FILESDIR}/${PV}-fix-loong-build.patch" )
+
 src_prepare() {
 	cmake_src_prepare
 	use python && distutils-r1_src_prepare

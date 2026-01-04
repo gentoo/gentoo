@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ DIST_AUTHOR=ILYAZ
 DIST_SECTION=modules
 DIST_VERSION=2.01080900
 DIST_A_EXT=zip
-inherit perl-module toolchain-funcs
+inherit flag-o-matic perl-module toolchain-funcs
 
 PARI_VER=2.3.5
 
@@ -60,6 +60,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing in bundled sci-mathematics/pari code copy
+	# https://bugs.gentoo.org/856112
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	# Unfortunately the assembly routines math-pari has for SPARC do not appear
 	# to be working at current.  Perl cannot test math-pari or anything that
 	# pulls in the math-pari module as DynaLoader cannot load the resulting

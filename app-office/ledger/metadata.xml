@@ -4,6 +4,9 @@
   <maintainer type="person">
     <email>stasibear@gentoo.org</email>
   </maintainer>
+  <use>
+    <flag name="gpg">Enable support for encrypted journals</flag>
+  </use>
   <upstream>
     <remote-id type="github">ledger/ledger</remote-id>
   </upstream>

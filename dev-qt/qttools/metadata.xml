@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="assistant">Build Qt Assistant and the QtHelp module</flag>
-		<flag name="clang">Enable using libclang for code parsing (linguist/qdoc)</flag>
 		<flag name="designer">Build Qt Designer</flag>
 		<flag name="distancefieldgenerator">Build Qt Distance Field Generator</flag>
 		<flag name="kmap2qmap">Build tool to generate keymaps for use on Embedded Linux</flag>

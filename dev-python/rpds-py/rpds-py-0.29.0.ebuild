@@ -52,7 +52,7 @@ LICENSE="MIT"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0-with-LLVM-exceptions MIT Unicode-3.0"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 QA_FLAGS_IGNORED="usr/lib.*/py.*/site-packages/rpds/rpds.*.so"
 

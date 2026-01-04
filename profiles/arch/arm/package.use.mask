@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Alfred Wingate <parona@protonmail.com> (2025-11-23)
@@ -458,6 +458,7 @@ net-print/hplip -scanner kde
 # Alexis Ballier <aballier@gentoo.org> (2015-04-02)
 # Needs ilmbase (openexr), which does not build and is masked on arm.
 media-libs/freeimage tiff
+sci-libs/opencascade freeimage
 
 # Jason A. Donenfeld <zx2c4@gentoo.org> (2015-02-09)
 # Google does not distribute the widevine plugin for ARM. It must be extracted from a Chromebook,

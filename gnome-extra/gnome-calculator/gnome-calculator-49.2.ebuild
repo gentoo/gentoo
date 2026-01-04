@@ -10,7 +10,7 @@ HOMEPAGE="https://apps.gnome.org/Calculator/"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="+introspection test"
 
 # gtksourceview vapi definitions in dev-lang/vala itself are too old, and newer vala removes them

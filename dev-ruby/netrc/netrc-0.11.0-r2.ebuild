@@ -1,8 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby31 ruby32 ruby33 ruby34"
+
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_EXTRADOC="changelog.txt Readme.md"
 
@@ -14,6 +15,9 @@ LICENSE="MIT"
 
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ~riscv x86"
+IUSE="test"
+
+ruby_add_bdepend "test? ( dev-ruby/minitest:5 )"
 
 all_ruby_prepare() {
 	# Avoid broken test that wrongly tests ruby internal code, bug 643922
@@ -24,5 +28,5 @@ all_ruby_prepare() {
 }
 
 each_ruby_test() {
-	${RUBY} -Ilib:. -e "Dir['test/test_*.rb'].each{|f| require f}" || die
+	${RUBY} -Ilib:. -e "gem 'minitest', '~> 5.0'; Dir['test/test_*.rb'].each{|f| require f}" || die
 }

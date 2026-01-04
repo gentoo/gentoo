@@ -21,3 +21,9 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc
 distutils_enable_sphinx docs/source
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
+
+EPYTEST_DESELECT=(
+	# more likely to fail because emerging in parallel than because DoS
+	# prevention is in fact broken
+	tests/test_dos_prevention.py
+)

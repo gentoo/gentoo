@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ HOMEPAGE="https://libcxx.llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv ~sparc x86 ~arm64-macos ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~loong ~riscv ~sparc x86 ~arm64-macos ~x64-macos"
 IUSE="+clang +libcxxabi +static-libs test"
 REQUIRED_USE="test? ( clang )"
 RESTRICT="!test? ( test )"
@@ -190,7 +190,7 @@ multilib_src_install() {
 	# since we've replaced libc++.{a,so} with ldscripts, now we have to
 	# install the extra symlinks
 	if [[ ${CHOST} != *-darwin* ]] ; then
-		is_crosspkg && into /usr/${CTARGET}
+		is_crosspkg && into /usr/${CTARGET}/usr
 		dolib.so lib/libc++_shared.so
 		use static-libs && dolib.a lib/libc++_static.a
 	fi

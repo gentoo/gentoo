@@ -1,0 +1,45 @@
+From 0092ce15de3efac108b961882f870a8c05e8c38f Mon Sep 17 00:00:00 2001
+From: OBattler <oubattler@gmail.com>
+Date: Mon, 22 Dec 2025 22:56:10 +0100
+Subject: [PATCH] Only make the fallthrough define available in C code, fixes
+ #6607.
+
+---
+ src/include/86box/plat.h | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/src/include/86box/plat.h b/src/include/86box/plat.h
+index dcf7e4d5306..cbc348709ec 100644
+--- a/src/include/86box/plat.h
++++ b/src/include/86box/plat.h
+@@ -90,16 +90,12 @@ extern int strnicmp(const char *s1, const char *s2, size_t n);
+ #    include <atomic>
+ #    define atomic_flag_t std::atomic_flag
+ #    define atomic_bool_t std::atomic_bool
++
+ extern "C" {
+ #else
+ #    include <stdatomic.h>
+ #    define atomic_flag_t atomic_flag
+ #    define atomic_bool_t atomic_bool
+-#endif
+-
+-#if defined(_MSC_VER)
+-#    define ssize_t intptr_t
+-#endif
+ 
+ #ifdef _MSC_VER
+ # define fallthrough do {} while (0) /* fallthrough */
+@@ -114,6 +110,12 @@ extern "C" {
+ # endif
+ #endif
+ 
++#endif
++
++#if defined(_MSC_VER)
++#    define ssize_t intptr_t
++#endif
++
+ /* Global variables residing in the platform module. */
+ extern int          dopause;       /* system is paused */
+ extern int          mouse_capture; /* mouse is captured in app */

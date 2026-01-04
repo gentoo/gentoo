@@ -1,0 +1,16 @@
+#!/sbin/openrc-run
+# Copyright 2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="owntone-server"
+description="DAAP/DACP (iTunes), RSP and MPD server"
+command=/usr/sbin/owntone
+command_args="-f -c ${CONFFILE:-/etc/${RC_SVCNAME}.conf} ${EXTRA_OPTS}"
+command_user="${USER:-owntone}:${GROUP:-audio}"
+command_background=true
+pidfile="/run/${RC_SVCNAME}.pid"
+
+depend() {
+	need net avahi-daemon
+	use dns
+}

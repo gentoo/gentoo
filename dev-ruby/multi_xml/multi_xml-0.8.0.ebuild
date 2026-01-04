@@ -27,7 +27,7 @@ IUSE="doc test"
 ruby_add_rdepend "|| ( dev-ruby/bigdecimal:4 >=dev-ruby/bigdecimal-3.1:0 )"
 
 ruby_add_bdepend "doc? ( dev-ruby/yard )"
-ruby_add_bdepend "test? ( >=dev-ruby/minitest-5.27 dev-ruby/ox )"
+ruby_add_bdepend "test? ( >=dev-ruby/minitest-5.27:5 dev-ruby/ox )"
 
 all_ruby_prepare() {
 	sed -e 's:_relative ": "./:' \
@@ -42,6 +42,7 @@ all_ruby_prepare() {
 	# Avoid coverage dependencies
 	sed -e '/simplecov/,/^end/ s:^:#:' \
 		-e '/mutant/ s:^:#:' \
+		-e '1igem "minitest", "~> 5.0"' \
 		-i test/test_helper.rb || die
 	sed -e '/cover/ s:^:#:' \
 		-e '/Mutant/ s:^:#:' \

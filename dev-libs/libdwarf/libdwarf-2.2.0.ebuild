@@ -14,7 +14,7 @@ SRC_URI="https://www.prevanders.net/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1 BSD"
 SLOT="0/$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="test dwarfexample dwarfgen"
 RESTRICT="!test? ( test )"
 

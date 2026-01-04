@@ -15,4 +15,7 @@
 		<changelog>https://gitlab.com/sequoia-pgp/sequoia-sop/-/tags</changelog>
 		<bugs-to>https://gitlab.com/sequoia-pgp/sequoia-sop/-/issues</bugs-to>
 	</upstream>
+	<use>
+		<flag name="botan">Use <pkg>dev-libs/botan</pkg> as crypto provider.</flag>
+	</use>
 </pkgmetadata>

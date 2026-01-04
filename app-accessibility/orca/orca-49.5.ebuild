@@ -11,7 +11,7 @@ HOMEPAGE="https://orca.gnome.org/"
 
 LICENSE="LGPL-2.1+ CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv"
 
 IUSE="+braille test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

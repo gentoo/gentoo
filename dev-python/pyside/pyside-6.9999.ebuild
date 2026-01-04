@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NOTE: We combine here several PyPI packages, we do this because
@@ -8,12 +8,12 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
-LLVM_COMPAT=( {16..20} )
+PYTHON_COMPAT=( python3_{11..14} )
+LLVM_COMPAT=( {16..21} )
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
 
-inherit distutils-r1 llvm-r2 multiprocessing qmake-utils virtualx
+inherit distutils-r1 llvm-r2 multiprocessing ninja-utils qmake-utils virtualx
 
 MY_PN=${PN}-setup-everywhere-src
 MY_P=${MY_PN}-${PV}
@@ -229,6 +229,7 @@ PATCHES=(
 	# Needs porting to newer wheel and setuptools
 	"${FILESDIR}/${PN}-6.8.2-quick-fix-build-wheel.patch"
 	"${FILESDIR}/${PN}-6.10.0-dont-vendor-ffmpeg.patch"
+	"${FILESDIR}/${PN}-6.10.1-pass-ninja-opts.patch"
 )
 
 # Build system duplicates system libraries. TODO: fix
@@ -287,6 +288,9 @@ python_prepare_all() {
 	# Doesn't appear to play well with virtualx as it tries to use wayland
 	[QtUiTools::loadUiType_test]
 		linux
+	# py3.14?
+	[sample::multiple_derived]
+		linux
 	EOF
 
 	if ! use numpy; then
@@ -306,6 +310,9 @@ python_prepare_all() {
 
 python_configure_all() {
 	export LLVM_INSTALL_DIR="$(get_llvm_prefix)"
+
+	# see pyside-6.10.1-pass-ninja-opts.patch
+	export NINJAOPTS="$(get_NINJAOPTS)"
 
 	ENABLED_QT_MODULES=()
 
@@ -404,6 +411,7 @@ python_compile() {
 			-maxdepth 1 -type d -name 'qfp*-py*-qt*-*' -printf "%f\n"
 	)
 	export pyside_build_id="${pyside_build_dir#"qfp$(usev debug d)-py${EPYTHON#python}-qt$(ver_cut 1-3)-"}"
+	export PYTHONPATH="${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/install/lib/${EPYTHON}/site-packages:${PYTHONPATH}"
 
 	DISTUTILS_ARGS=(
 		"${MAIN_DISTUTILS_ARGS[@]}"
@@ -412,16 +420,18 @@ python_compile() {
 		--build-type=shiboken6-generator
 	)
 	distutils-r1_python_compile
+	export PYTHONPATH="${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/install/lib/${EPYTHON}/site-packages:${PYTHONPATH}"
+
 	# If no pyside modules enabled, build just shiboken
 	if [[ ${#ENABLED_QT_MODULES[@]} -gt 0 ]]; then
 		DISTUTILS_ARGS=(
 			"${MAIN_DISTUTILS_ARGS[@]}"
 			--reuse-build
-			--shiboken-host-path=="${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/install"
 			--shiboken-target-path="${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/install"
 			--build-type=pyside6
 		)
 		distutils-r1_python_compile
+		export PYTHONPATH="${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/install/lib/${EPYTHON}/site-packages:${PYTHONPATH}"
 	fi
 
 	# Link libraries to the usual location for backwards compatibility
@@ -521,9 +531,9 @@ python_compile() {
 		-e "s~libshiboken6\.cpython.*\.so\.$(ver_cut 1-2)~libshiboken6\${PYTHON_CONFIG_SUFFIX}\.so\.$(ver_cut 1-2)~g" \
 		-e "s~libpyside6\.cpython.*\.so\.$(ver_cut 1-2)~libpyside6\${PYTHON_CONFIG_SUFFIX}\.so\.$(ver_cut 1-2)~g" \
 		-e "s~libpyside6qml\.cpython.*\.so\.$(ver_cut 1-2)~libpyside6qml\${PYTHON_CONFIG_SUFFIX}\.so\.$(ver_cut 1-2)~g" \
-		-e "s~\${PACKAGE_PREFIX_DIR}/~$(python_get_sitedir)/PySide6/~g" \
-		-e "s~\${_IMPORT_PREFIX}/shiboken6/include~$(python_get_sitedir)/shiboken6/include~g" \
-		-e "s~\${_IMPORT_PREFIX}/PySide6/include~$(python_get_sitedir)/PySide6/include~g" \
+		-e "s~\${PACKAGE_PREFIX_DIR}/~\${PACKAGE_PREFIX_DIR}/share/PySide6/~g" \
+		-e "s~\${_IMPORT_PREFIX}/shiboken6/include~/usr/include/shiboken6~g" \
+		-e "s~\${_IMPORT_PREFIX}/PySide6/include~/usr/include/PySide6~g" \
 		-i 	"${BUILD_DIR}/install/usr/lib/cmake/"*/*.cmake || die
 	local file
 	for file in "${BUILD_DIR}/install/usr/lib/cmake/"*/*.cpython-*.cmake

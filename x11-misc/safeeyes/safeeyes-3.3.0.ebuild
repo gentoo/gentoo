@@ -10,7 +10,7 @@ DISTUTILS_USE_PEP517=setuptools
 inherit desktop xdg distutils-r1 pypi
 
 DESCRIPTION="Linux alternative to EyeLeo"
-HOMEPAGE="https://github.com/slgobinath/SafeEyes"
+HOMEPAGE="https://github.com/slgobinath/safeeyes"
 
 LICENSE="GPL-3"
 SLOT="0"

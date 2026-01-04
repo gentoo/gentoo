@@ -8,14 +8,14 @@ ECM_HANDBOOK="optional"
 ECM_TEST="true"
 KFMIN=6.18.0
 QTMIN=6.9.1
-inherit ecm fcaps plasma.kde.org xdg
+inherit ecm fcaps plasma.kde.org toolchain-funcs xdg
 
 DESCRIPTION="Flexible, composited Window Manager for windowing systems on Linux"
 SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${P}-patchset.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="accessibility gles2-only lock screencast +shortcuts systemd X"
 
 RESTRICT="test"
@@ -112,6 +112,14 @@ BDEPEND+=" || ( >=dev-qt/qtbase-6.10:6[wayland] <dev-qt/qtwayland-6.10:6 )"
 FILECAPS=( -m 0755 cap_sys_nice=ep usr/bin/kwin_wayland )
 
 PATCHES=( "${WORKDIR}/${P}-patchset" )
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && tc-check-min_ver gcc 14
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && tc-check-min_ver gcc 14
+}
 
 src_prepare() {
 	ecm_src_prepare

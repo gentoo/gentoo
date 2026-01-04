@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -126,7 +126,7 @@ src_prepare() {
 
 	#(( PLEVEL < 0 )) && eautoreconf
 
-	if use prefix && [[ ! -x "${BROOT}"/usr/bin/pkg-config ]] ; then
+	if use prefix && [[ -n ${STAGE} ]] ; then
 		# If we're bootstrapping, make a guess. We don't have pkg-config
 		# around yet. bug #818103.
 		# Incorrectly populating this leads to underlinked libreadline.

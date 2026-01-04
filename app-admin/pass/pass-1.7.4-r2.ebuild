@@ -5,14 +5,21 @@ EAPI=7
 
 inherit bash-completion-r1 elisp-common
 
+if [[ ${PV} = 9999* ]]; then
+	EGIT_REPO_URI="https://git.zx2c4.com/password-store"
+	inherit git-r3
+else
+	SRC_URI="https://git.zx2c4.com/password-store/snapshot/password-store-${PV}.tar.xz"
+	S="${WORKDIR}/password-store-${PV}"
+
+	KEYWORDS="amd64 arm arm64 ppc64 ~riscv x86 ~arm64-macos ~x64-macos"
+fi
+
 DESCRIPTION="Stores, retrieves, generates, and synchronizes passwords securely"
 HOMEPAGE="https://www.passwordstore.org/"
-SRC_URI="https://git.zx2c4.com/password-store/snapshot/password-store-${PV}.tar.xz"
-S="${WORKDIR}/password-store-${PV}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc64 ~riscv x86 ~arm64-macos ~x64-macos"
 IUSE="+git wayland X emacs dmenu importers"
 
 RDEPEND="
@@ -31,7 +38,6 @@ src_prepare() {
 	default
 
 	use elibc_Darwin || return
-
 	# use coreutils'
 	sed -i -e 's/openssl base64/base64/g' src/platform/darwin.sh || die
 	# host getopt isn't cool, and we aren't brew (rip out brew reference)

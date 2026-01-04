@@ -6,6 +6,10 @@
 
 # New entries go on top.
 
+# Paul Zander <negril.nx+gentoo@gmail.com> (2025-12-27)
+# breaks with old in-tree sys-cluster/ampi bug #586746 #830093 #815007
+sci-libs/adolc mpi
+
 # Ionen Wolkens <ionen@gentoo.org> (2025-12-24)
 # cargo.eclass' IUSE=debug cannot currently be easily supported by
 # the custom builder the package uses, mask to avoid no-op rebuilds

@@ -1,0 +1,45 @@
+From d34138bc63f0eb18cda841778c75436cdf34adbd Mon Sep 17 00:00:00 2001
+Message-ID: <d34138bc63f0eb18cda841778c75436cdf34adbd.1767124892.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Tue, 30 Dec 2025 20:00:31 +0000
+Subject: [PATCH] sbc: fix armv6 build w/ C23
+
+C23 makes () mean 'no arguments', not 'unspecified'.
+
+Even though the function is naked and doesn't use the args as explicit inputs
+to the inline asm block, we can't get away with none, and ... would be wrong as
+it's not variadic. So just fill them in.
+
+Bug: https://bugs.gentoo.org/968161
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ sbc/sbc_primitives_armv6.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/sbc/sbc_primitives_armv6.c b/sbc/sbc_primitives_armv6.c
+index bf97610..871f942 100644
+--- a/sbc/sbc_primitives_armv6.c
++++ b/sbc/sbc_primitives_armv6.c
+@@ -22,7 +22,8 @@
+ 
+ #ifdef SBC_BUILD_WITH_ARMV6_SUPPORT
+ 
+-static void __attribute__((naked)) sbc_analyze_four_armv6()
++static void __attribute__((naked)) sbc_analyze_four_armv6(int16_t *in, int32_t *out,
++								const FIXED_T *consts)
+ {
+ 	/* r0 = in, r1 = out, r2 = consts */
+ 	__asm__ volatile (
+@@ -93,7 +94,8 @@ static void __attribute__((naked)) sbc_analyze_four_armv6()
+ 	((void (*)(int16_t *, int32_t *, const FIXED_T*)) \
+ 		sbc_analyze_four_armv6)((in), (out), (consts))
+ 
+-static void __attribute__((naked)) sbc_analyze_eight_armv6()
++static void __attribute__((naked)) sbc_analyze_eight_armv6(int16_t *in, int32_t *out,
++							const FIXED_T *consts)
+ {
+ 	/* r0 = in, r1 = out, r2 = consts */
+ 	__asm__ volatile (
+-- 
+2.52.0
+

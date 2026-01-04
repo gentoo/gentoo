@@ -27,6 +27,8 @@ BDEPEND="
 	$(unpacker_src_uri_depends)
 "
 
+PATCHES=( "${FILESDIR}"/${P}-cmake.patch )
+
 src_prepare() {
 	sed -i \
 		-e "s|FTGLGlyph|FTGlyph|" \

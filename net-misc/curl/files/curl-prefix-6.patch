@@ -1,0 +1,35 @@
+From 57297a390f0f4b90ed3c68f56180b3481d0b54af Mon Sep 17 00:00:00 2001
+From: Matt Jolly <kangie@gentoo.org>
+Date: Sun, 28 Dec 2025 08:57:50 +1000
+Subject: [PATCH] Update prefix patch for 8.18
+
+Signed-off-by: Matt Jolly <kangie@gentoo.org>
+---
+ curl-config.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/curl-config.in b/curl-config.in
+index a1c8185..107d629 100644
+--- a/curl-config.in
++++ b/curl-config.in
+@@ -141,7 +141,7 @@ while test "$#" -gt 0; do
+     ;;
+ 
+   --cflags)
+-    if test "@includedir@" = '/usr/include'; then
++    if test "@includedir@" = "GENTOO_PORTAGE_EPREFIX@/usr/include"; then
+       echo '@LIBCURL_PC_CFLAGS@'
+     else
+       echo "@LIBCURL_PC_CFLAGS@ -I@includedir@"
+@@ -149,7 +149,7 @@ while test "$#" -gt 0; do
+     ;;
+ 
+   --libs)
+-    if test "@libdir@" != '/usr/lib' && test "@libdir@" != '/usr/lib64'; then
++    if test "@libdir@" != "@GENTOO_PORTAGE_EPREFIX@/usr/lib" -a "@libdir@" != "@GENTOO_PORTAGE_EPREFIX@/usr/lib64"; then
+       curllibdir="-L@libdir@ "
+     else
+       curllibdir=''
+-- 
+2.51.0
+

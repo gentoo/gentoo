@@ -26,7 +26,7 @@ RDEPEND="net-dns/djbdns"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
-	"${FILESDIR}"/${P}-fix-clang16-build.patch
+	"${FILESDIR}"/${P}-fix-build-for-clang21-gcc15.patch
 )
 
 src_configure() {

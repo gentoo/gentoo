@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 
@@ -23,11 +23,14 @@ ruby_add_bdepend "test? ( dev-ruby/minitest:5 virtual/ruby-ssl )"
 
 all_ruby_prepare() {
 	# Don't use a ruby-bundled version of libsodium
-	sed -i -e '/rbnacl\/libsodium/ s:^:#:' test/bcrypt_pnkdf/engine_test.rb || die
+	sed -e '/rbnacl\/libsodium/ s:^:#:' \
+		-e '1igem "minitest", "~> 5.0"' \
+		-i test/bcrypt_pnkdf/engine_test.rb || die
 
 	# Avoid unneeded rake-compiler dependency
 	sed -e '/extensiontask/ s:^:#:' -e '/ExtensionTask/,/^end/ s:^:#:' \
 		-e '/bundler/ s:^:#:' \
+		-e '/benchmark/ s:^:#:' \
 		-e '/rake_compiler_dock/ s:^:#:' \
 		-i Rakefile || die
 

@@ -1,0 +1,363 @@
+From 43bb629645c3f558bbba5e3cf4b5902dddae3a6a Mon Sep 17 00:00:00 2001
+From: Gary Dismukes <dismukes@adacore.com>
+Date: Tue, 21 Oct 2025 00:28:41 +0000
+Subject: [PATCH] Updates to gpr2 sources to accommodate limited predefined
+ reference types
+
+Various reference types declared in gpr2 sources must be changed to be
+limited types due to their full types having components of reference types
+coming from the predefined container packages, which are now declared as
+limited types (as required by AI22-0082). Also, the associated reference
+functions's bodies are revised to avoid copying limited references within
+return statements.
+
+Note that these changes are being made in advance of merging the changes
+to the reference types in the predefined container generics in the GNAT
+library, but are believed to be compatible with the nonlimited reference
+types in the current library.
+
+Issue: eng/toolchain/gnat#1098
+---
+ src/build/gpr2-build-tree_db.adb        | 24 ++++++++++++++++++++----
+ src/build/gpr2-build-tree_db.ads        | 20 +++++++++++---------
+ src/build/gpr2-build-unit_info-list.adb |  5 +++--
+ src/build/gpr2-build-unit_info-list.ads |  5 +++--
+ src/lib/gpr2-log.adb                    |  4 ++--
+ src/lib/gpr2-log.ads                    |  9 +++++----
+ src/lib/gpr2-project-attribute-set.adb  |  6 ++++--
+ src/lib/gpr2-project-attribute-set.ads  | 12 +++++++-----
+ src/lib/gpr2-project-import-set.adb     |  3 ++-
+ src/lib/gpr2-project-import-set.ads     |  6 ++++--
+ 10 files changed, 61 insertions(+), 33 deletions(-)
+
+diff --git a/src/build/gpr2-build-tree_db.adb b/src/build/gpr2-build-tree_db.adb
+index 2cb71c052..dca5fa4b7 100644
+--- a/src/build/gpr2-build-tree_db.adb
++++ b/src/build/gpr2-build-tree_db.adb
+@@ -90,7 +90,8 @@ package body GPR2.Build.Tree_Db is
+    is
+       Ref : constant Action_Maps.Reference_Type := Self.Actions.Reference (Id);
+    begin
+-      return (Element => Ref.Element.all'Unchecked_Access, Ref => Ref);
++      return (Element => Ref.Element.all'Unchecked_Access,
++              Ref     => Self.Actions.Reference (Id));
+    end Action_Id_To_Reference;
+ 
+    ----------------------
+@@ -104,7 +105,8 @@ package body GPR2.Build.Tree_Db is
+       Ref : constant Action_Maps.Reference_Type :=
+               Iterator.Db.Actions.Reference (Pos.Pos);
+    begin
+-      return (Element => Ref.Element.all'Unchecked_Access, Ref => Ref);
++      return (Element => Ref.Element.all'Unchecked_Access,
++              Ref     => Iterator.Db.Actions.Reference (Pos.Pos));
+    end Action_Reference;
+ 
+    ----------------
+@@ -343,7 +345,8 @@ package body GPR2.Build.Tree_Db is
+       Ref : constant Action_Maps.Constant_Reference_Type :=
+               Iterator.Db.Actions.Constant_Reference (Pos.Pos);
+    begin
+-      return (Element => Ref.Element.all'Unchecked_Access, Ref => Ref);
++      return (Element => Ref.Element.all'Unchecked_Access,
++              Ref     => Iterator.Db.Actions.Constant_Reference (Pos.Pos));
+    end Constant_Action_Reference;
+ 
+    ---------------------------------
+@@ -368,7 +371,20 @@ package body GPR2.Build.Tree_Db is
+                when others          =>
+                   raise Internal_Error with "Wrong kind of cursor");
+    begin
+-      return (Element => Ref.Element.all'Unchecked_Access, Ref => Ref);
++      return (Element => Ref.Element.all'Unchecked_Access,
++              Ref     =>
++                (case Pos.Current is
++                 when Implicit_Inputs =>
++                    Iterator.Db.Implicit_Inputs.Constant_Reference
++                      (Pos.Map_Pos).Constant_Reference (Pos.Pos),
++                 when Explicit_Inputs =>
++                    Iterator.Db.Inputs.Constant_Reference
++                      (Pos.Map_Pos).Constant_Reference (Pos.Pos),
++                 when Outputs         =>
++                    Iterator.Db.Outputs.Constant_Reference
++                      (Pos.Map_Pos).Constant_Reference (Pos.Pos),
++                 when others          =>
++                    raise Program_Error with "Wrong kind of cursor"));
+    end Constant_Artifact_Reference;
+ 
+    ------------
+diff --git a/src/build/gpr2-build-tree_db.ads b/src/build/gpr2-build-tree_db.ads
+index 00a5da22a..3e9fe6dcb 100644
+--- a/src/build/gpr2-build-tree_db.ads
++++ b/src/build/gpr2-build-tree_db.ads
+@@ -166,8 +166,9 @@ package GPR2.Build.Tree_Db is
+      (List : Artifacts_List) return Artifact_Iterators.Forward_Iterator'Class;
+ 
+    type Constant_Artifact_Reference_Type
+-     (Element : not null access constant Artifacts.Object'Class) is private
+-     with Implicit_Dereference => Element;
++     (Element : not null access constant Artifacts.Object'Class) is
++     limited private
++       with Implicit_Dereference => Element;
+ 
+    function Constant_Artifact_Reference
+      (Iterator : aliased Artifacts_List;
+@@ -199,8 +200,8 @@ package GPR2.Build.Tree_Db is
+      (List : Actions_List) return Action_Iterators.Forward_Iterator'Class;
+ 
+    type Action_Reference_Type
+-     (Element : not null access Actions.Object'Class) is private
+-     with Implicit_Dereference => Element;
++     (Element : not null access Actions.Object'Class) is limited private
++       with Implicit_Dereference => Element;
+ 
+    function Action_Id_To_Reference
+      (Self : in out Object;
+@@ -212,8 +213,9 @@ package GPR2.Build.Tree_Db is
+       Pos      : Action_Cursor) return Action_Reference_Type;
+ 
+    type Constant_Action_Reference_Type
+-     (Element : not null access constant Actions.Object'Class) is private
+-     with Implicit_Dereference => Element;
++     (Element : not null access constant Actions.Object'Class) is
++     limited private
++       with Implicit_Dereference => Element;
+ 
+    function Constant_Action_Reference
+      (Iterator : aliased Actions_List;
+@@ -438,7 +440,7 @@ private
+ 
+    type Constant_Artifact_Reference_Type
+      (Element : not null access constant Artifacts.Object'Class)
+-   is record
++   is limited record
+       Ref : Artifact_Vectors.Constant_Reference_Type (Element);
+    end record;
+ 
+@@ -463,13 +465,13 @@ private
+ 
+    type Action_Reference_Type
+      (Element : not null access Actions.Object'Class)
+-   is record
++   is limited record
+       Ref : Action_Maps.Reference_Type (Element);
+    end record;
+ 
+    type Constant_Action_Reference_Type
+      (Element : not null access constant Actions.Object'Class)
+-   is record
++   is limited record
+       Ref : Action_Maps.Constant_Reference_Type (Element);
+    end record;
+ 
+diff --git a/src/build/gpr2-build-unit_info-list.adb b/src/build/gpr2-build-unit_info-list.adb
+index 69213b9bb..549523efa 100644
+--- a/src/build/gpr2-build-unit_info-list.adb
++++ b/src/build/gpr2-build-unit_info-list.adb
+@@ -29,7 +29,8 @@ package body GPR2.Build.Unit_Info.List is
+               Self.Units.Constant_Reference (Unit_Map.Cursor (Position));
+    begin
+       return (Element => Ref.Element.all'Unchecked_Access,
+-              Ref     => Ref);
++              Ref     => Self.Units.Constant_Reference
++                           (Unit_Map.Cursor (Position)));
+    end Constant_Reference;
+ 
+    function Constant_Reference
+@@ -140,7 +141,7 @@ package body GPR2.Build.Unit_Info.List is
+               Self.Units.Reference (Unit_Map.Cursor (Position));
+    begin
+       return (Element => Ref.Element.all'Unchecked_Access,
+-              Ref     => Ref);
++              Ref     => Self.Units.Reference (Unit_Map.Cursor (Position)));
+    end Reference;
+ 
+ end GPR2.Build.Unit_Info.List;
+diff --git a/src/build/gpr2-build-unit_info-list.ads b/src/build/gpr2-build-unit_info-list.ads
+index 210ad9dc5..8d0bc027a 100644
+--- a/src/build/gpr2-build-unit_info-list.ads
++++ b/src/build/gpr2-build-unit_info-list.ads
+@@ -56,7 +56,8 @@ package GPR2.Build.Unit_Info.List is
+       Index : Unit_Index) return Unit_Info.Object;
+    --  Get a single unit
+ 
+-   type Reference_Type (Element : not null access Unit_Info.Object) is private
++   type Reference_Type
++     (Element : not null access Unit_Info.Object) is limited private
+      with Implicit_Dereference => Element;
+ 
+    function Reference
+@@ -64,7 +65,7 @@ package GPR2.Build.Unit_Info.List is
+       Position : Cursor) return Reference_Type;
+ 
+    type Constant_Reference_Type
+-     (Element : not null access constant Unit_Info.Object) is private
++     (Element : not null access constant Unit_Info.Object) is limited private
+      with Implicit_Dereference => Element;
+ 
+    function Constant_Reference
+diff --git a/src/lib/gpr2-log.adb b/src/lib/gpr2-log.adb
+index 9711f6048..e66eafef6 100644
+--- a/src/lib/gpr2-log.adb
++++ b/src/lib/gpr2-log.adb
+@@ -93,7 +93,7 @@ package body GPR2.Log is
+    begin
+       return Constant_Reference_Type'
+         (Message => Ref.Element.all'Unrestricted_Access,
+-         Ref     => Ref);
++         Ref     => Message_Set.Constant_Reference (Self.Store, Position.P));
+    end Constant_Reference;
+ 
+    -----------
+@@ -256,7 +256,7 @@ package body GPR2.Log is
+    begin
+       return Reference_Type'
+         (Message => Ref.Element.all'Unrestricted_Access,
+-         Ref     => Ref);
++         Ref     => Message_Set.Reference (Self.Store, Position.P));
+    end Reference;
+ 
+    --------------
+diff --git a/src/lib/gpr2-log.ads b/src/lib/gpr2-log.ads
+index e4616aa55..63bed5c54 100644
+--- a/src/lib/gpr2-log.ads
++++ b/src/lib/gpr2-log.ads
+@@ -82,7 +82,8 @@ package GPR2.Log is
+    package Log_Iterator is new Ada.Iterator_Interfaces (Cursor, Has_Element);
+ 
+    type Constant_Reference_Type
+-     (Message : not null access constant GPR2.Message.Object) is private
++     (Message : not null access constant GPR2.Message.Object)
++   is limited private
+      with Implicit_Dereference => Message;
+ 
+    function Constant_Reference
+@@ -90,7 +91,7 @@ package GPR2.Log is
+       Position : Cursor) return Constant_Reference_Type;
+ 
+    type Reference_Type
+-     (Message : not null access GPR2.Message.Object) is private
++     (Message : not null access GPR2.Message.Object) is limited private
+      with Implicit_Dereference => Message;
+ 
+    function Reference
+@@ -130,7 +131,7 @@ private
+    end record;
+ 
+    type Constant_Reference_Type
+-     (Message : not null access constant GPR2.Message.Object) is record
++     (Message : not null access constant GPR2.Message.Object) is limited record
+       --  We need to keep the underlying reference so that it is not cleared
+       --  upon return of the getter, and so that the container has the proper
+       --  busy state
+@@ -138,7 +139,7 @@ private
+    end record;
+ 
+    type Reference_Type
+-     (Message : not null access GPR2.Message.Object) is record
++     (Message : not null access GPR2.Message.Object) is limited record
+       --  We need to keep the underlying reference so that it is not cleared
+       --  upon return of the getter, and so that the container has the proper
+       --  busy state
+diff --git a/src/lib/gpr2-project-attribute-set.adb b/src/lib/gpr2-project-attribute-set.adb
+index ca316eb4c..26b4b16bf 100644
+--- a/src/lib/gpr2-project-attribute-set.adb
++++ b/src/lib/gpr2-project-attribute-set.adb
+@@ -49,7 +49,8 @@ package body GPR2.Project.Attribute.Set is
+    begin
+       return Constant_Reference_Type'
+         (Attribute => Ref.Element.all'Unrestricted_Access,
+-         Ref       => Ref);
++         Ref       => Self.Attributes.Constant_Reference
++                        (Position.CM).Constant_Reference (Position.CA));
+    end Constant_Reference;
+ 
+    --------------
+@@ -419,7 +420,8 @@ package body GPR2.Project.Attribute.Set is
+    begin
+       return Reference_Type'
+         (Attribute => Ref.Element.all'Unrestricted_Access,
+-         Ref       => Ref);
++         Ref       => Self.Attributes.Reference (Position.CM).Reference
++                        (Position.CA));
+    end Reference;
+ 
+ end GPR2.Project.Attribute.Set;
+diff --git a/src/lib/gpr2-project-attribute-set.ads b/src/lib/gpr2-project-attribute-set.ads
+index bc22704db..28c5186df 100644
+--- a/src/lib/gpr2-project-attribute-set.ads
++++ b/src/lib/gpr2-project-attribute-set.ads
+@@ -92,12 +92,14 @@ package GPR2.Project.Attribute.Set is
+      new Ada.Iterator_Interfaces (Cursor, Has_Element);
+ 
+    type Constant_Reference_Type
+-     (Attribute : not null access constant Project.Attribute.Object) is private
++     (Attribute : not null access constant Project.Attribute.Object)
++   is limited private
+      with Implicit_Dereference => Attribute;
+ 
+    type Reference_Type
+-     (Attribute : not null access Project.Attribute.Object) is private
+-   with Implicit_Dereference => Attribute;
++     (Attribute : not null access Project.Attribute.Object)
++   is limited private
++     with Implicit_Dereference => Attribute;
+ 
+    function Constant_Reference
+      (Self     : aliased Object;
+@@ -160,7 +162,7 @@ private
+ 
+    type Constant_Reference_Type
+      (Attribute : not null access constant Project.Attribute.Object)
+-   is record
++   is limited record
+       --  We need to keep the underlying reference so that it is not cleared
+       --  upon return of the getter, and so that the container has the proper
+       --  busy state
+@@ -169,7 +171,7 @@ private
+ 
+    type Reference_Type
+      (Attribute : not null access Project.Attribute.Object)
+-   is record
++   is limited record
+       --  We need to keep the underlying reference so that it is not cleared
+       --  upon return of the getter, and so that the container has the proper
+       --  busy state
+diff --git a/src/lib/gpr2-project-import-set.adb b/src/lib/gpr2-project-import-set.adb
+index 55748c2b3..dc76b24c7 100644
+--- a/src/lib/gpr2-project-import-set.adb
++++ b/src/lib/gpr2-project-import-set.adb
+@@ -38,7 +38,8 @@ package body GPR2.Project.Import.Set is
+    begin
+       return Constant_Reference_Type'
+         (Import => Ref.Element.all'Unrestricted_Access,
+-         Ref    => Ref);
++         Ref    => Base_Name_Set.Constant_Reference
++                     (Self.Set, Position.Current));
+    end Constant_Reference;
+ 
+    --------------
+diff --git a/src/lib/gpr2-project-import-set.ads b/src/lib/gpr2-project-import-set.ads
+index 67dae8e03..978f74686 100644
+--- a/src/lib/gpr2-project-import-set.ads
++++ b/src/lib/gpr2-project-import-set.ads
+@@ -66,7 +66,8 @@ package GPR2.Project.Import.Set is
+      new Ada.Iterator_Interfaces (Cursor, Has_Element);
+ 
+    type Constant_Reference_Type
+-     (Import : not null access constant Project.Import.Object) is private
++     (Import : not null access constant Project.Import.Object)
++   is limited private
+      with Implicit_Dereference => Import;
+ 
+    function Constant_Reference
+@@ -93,7 +94,8 @@ private
+                   Cursor'(Current => Base_Name_Set.No_Element);
+ 
+    type Constant_Reference_Type
+-     (Import : not null access constant Project.Import.Object) is record
++     (Import : not null access constant Project.Import.Object)
++   is limited record
+       --  We need to keep the underlying reference so that it is not cleared
+       --  upon return of the getter, and so that the container has the proper
+       --  busy state
