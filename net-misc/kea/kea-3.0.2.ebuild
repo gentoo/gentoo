@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -233,6 +233,7 @@ src_install() {
 	fperms -R 0755 /usr/sbin
 	fperms -R 0755 /usr/bin
 	fperms -R 0755 /usr/$(get_libdir)
+	fperms -R 0755 /usr/include
 
 	if use shell; then
 		python_moduleinto ${PN}
