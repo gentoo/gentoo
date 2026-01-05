@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,8 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~x64-macos"
 
 RDEPEND="app-emacs/tty-format"
-BDEPEND="sys-apps/texinfo"
+BDEPEND="${RDEPEND}
+	sys-apps/texinfo"
 
 DOCS="ChangeLog keyword-generation.sh"
 ELISP_TEXINFO="${PN}.texi"
