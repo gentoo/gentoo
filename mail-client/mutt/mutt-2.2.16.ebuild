@@ -16,7 +16,7 @@ SRC_URI="http://ftp.mutt.org/pub/mutt/${P}.tar.gz
 	https://dev.gentoo.org/~grobian/distfiles/${MUTT_G_PATCHES}"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
 IUSE="autocrypt berkdb debug doc gdbm gnutls gpgme gsasl +hcache idn +imap kerberos +lmdb mbox nls pop qdbm +sasl selinux slang +smtp +ssl tokyocabinet vanilla prefix"
 # hcache: allow multiple, bug #607360
 REQUIRED_USE="
