@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
 
-inherit autotools
+inherit autotools branding
 
 PATCHREV="r0"
 PATCHSET="gentoo-${PVR}/${PATCHREV}"
@@ -91,7 +91,7 @@ src_prepare() {
 		done
 		# add some explanation as to why not to go upstream
 		sed -i \
-			-e '/ReachingUs = N_(/aThis release of Mutt is heavily enriched with patches.\\nFor this reason, any bugs are better reported at https://bugs.gentoo.org/\\nor re-emerge with USE=vanilla and try to reproduce your problem.\\n\\' \
+			-e '/ReachingUs = N_(/aThis release of Mutt is heavily enriched with patches.\\nFor this reason, any bugs are better reported at '"${BRANDING_OS_BUG_REPORT_URL}"'\\nor re-emerge with USE=vanilla and try to reproduce your problem.\\n\\' \
 			main.c || die "Failed to add bug instructions"
 	fi
 
