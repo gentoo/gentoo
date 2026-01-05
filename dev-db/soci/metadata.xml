@@ -16,4 +16,7 @@
 	<upstream>
 		<remote-id type="sourceforge">soci</remote-id>
 	</upstream>
+	<use>
+		<flag name="mariadb">Enable mysql plugin with <pkg>dev-db/mariadb-connector-c</pkg> as the client library</flag>
+	</use>
 </pkgmetadata>
