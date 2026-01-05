@@ -36,11 +36,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Ionen Wolkens <ionen@gentoo.org> (2025-12-30)
-# This release has been yanked upstream, do the same in case.
-# https://github.com/PyO3/maturin/issues/2909
-~dev-util/maturin-1.11.0
-
 # James Le Cuirot <chewi@gentoo.org> (2025-12-24)
 # The upstream community has forked with the vast majority going to UZDoom, now
 # packaged as games-engines/uzdoom in Gentoo. https://zdoom.org now follows this
