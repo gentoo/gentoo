@@ -22,7 +22,7 @@ else
 		https://netfilter.org/projects/nftables/files/${P}.tar.xz
 		verify-sig? ( https://netfilter.org/projects/nftables/files/${P}.tar.xz.sig )
 	"
-	KEYWORDS="amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
+	KEYWORDS="amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 	BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-netfilter-20240415 )"
 fi
 
