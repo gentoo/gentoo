@@ -132,8 +132,7 @@ DEPEND="
 	fuse? ( >=sys-fs/fuse-3.7.0 )
 "
 
-RDEPEND="${DEPEND}
-	modules? ( !sys-fs/bcachefs-kmod )"
+RDEPEND="${DEPEND}"
 
 # Clang is required for bindgen
 BDEPEND="
