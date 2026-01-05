@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]] ; then
 	DEPEND="~app-emulation/spice-protocol-9999"
 else
 	SRC_URI="https://www.spice-space.org/download/releases/spice-server/${P}.tar.bz2"
-	KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv x86"
+	KEYWORDS="amd64 arm64 ~loong ppc64 ~riscv x86"
 fi
 
 LICENSE="LGPL-2.1"
