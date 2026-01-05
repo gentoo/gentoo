@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -52,7 +52,9 @@ PATCHES=(
 )
 
 src_prepare() {
-	use gsl || sed -i /pkg.check.modules.GSL/d gview_render/CMakeLists.txt || die
+	if ! use gsl ; then
+		sed -i -e '/pkg.check.modules.GSL/d' gview_render/CMakeLists.txt || die
+	fi
 
 	cmake_src_prepare
 }
