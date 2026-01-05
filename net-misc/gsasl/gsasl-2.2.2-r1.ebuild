@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit multilib-minimal
+inherit branding multilib-minimal
 
 DESCRIPTION="The GNU SASL client, server, and library"
 HOMEPAGE="https://www.gnu.org/software/gsasl/"
@@ -54,10 +54,6 @@ multilib_src_configure() {
 		--disable-gcc-warnings
 		--disable-valgrind-tests
 		--disable-rpath
-
-		--with-packager="Gentoo Linux"
-		--with-packager-bug-reports="https://bugs.gentoo.org"
-		--with-packager-version="r${PR}"
 
 		# Even with multilib we need at least one of these enabled
 		# so rely on REQUIRED_USE to enforce that and purge the non-native
