@@ -1,0 +1,32 @@
+From 3c5a0e5a389c71645b94a8a9e8f78e448e3150d4 Mon Sep 17 00:00:00 2001
+From: Pierre-Marie de Rodat <derodat@adacore.com>
+Date: Mon, 14 Apr 2025 13:01:41 +0000
+Subject: [PATCH] lsp-utils.adb: update after recent internal API changes in
+ Langkit
+
+(cherry picked from commit 879c4216922414105ae747f9ab7fa02f3b302ab2)
+---
+ source/ada/lsp-utils.adb | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/source/ada/lsp-utils.adb b/source/ada/lsp-utils.adb
+index f257d7327..8af9e71c6 100644
+--- a/source/ada/lsp-utils.adb
++++ b/source/ada/lsp-utils.adb
+@@ -24,6 +24,7 @@ with Libadalang.Sources;
+ with Langkit_Support.Diagnostics;
+ with Langkit_Support.Symbols;
+ with Langkit_Support.Token_Data_Handlers;
++with Langkit_Support.Types;
+ with Pp.Actions;
+ 
+ with VSS.Strings.Character_Iterators;
+@@ -202,7 +203,7 @@ package body LSP.Utils is
+ 
+       procedure Tokenize_Output is
+          Input : constant Libadalang.Lexer.Lexer_Input :=
+-           (Kind     => Libadalang.Common.Bytes_Buffer,
++           (Kind     => Langkit_Support.Types.Bytes_Buffer,
+             Charset  => Ada.Strings.Unbounded.To_Unbounded_String ("utf-8"),
+             Read_BOM => False,
+             Bytes    => To_Unbounded_String (Output));

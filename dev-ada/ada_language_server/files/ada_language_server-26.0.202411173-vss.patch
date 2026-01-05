@@ -1,0 +1,32 @@
+From 7b030ed859fa2a97aebfae3c52edf5735466827d Mon Sep 17 00:00:00 2001
+From: Vadim Godunko <godunko@adacore.com>
+Date: Tue, 29 Jul 2025 15:19:04 +0400
+Subject: [PATCH] Add dependency from `vss_os.gpr`
+
+(cherry picked from commit 163e295cfaf46efb4c8d2d0956398ad710e570ba)
+---
+ gnat/lsp_server.gpr | 3 ++-
+ gnat/tester.gpr     | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/gnat/tester.gpr b/gnat/tester.gpr
+index 5693dc003..007990f15 100644
+--- a/gnat/tester.gpr
++++ b/gnat/tester.gpr
+@@ -1,7 +1,7 @@
+ ------------------------------------------------------------------------------
+ --                         Language Server Protocol                         --
+ --                                                                          --
+---                        Copyright (C) 2018, AdaCore                       --
++--                     Copyright (C) 2018-2025, AdaCore                     --
+ --                                                                          --
+ -- This is free software;  you can redistribute it  and/or modify it  under --
+ -- terms of the  GNU General Public License as published  by the Free Soft- --
+@@ -17,6 +17,7 @@
+ 
+ with "lsp_client";
+ with "gnatcoll";
++with "vss_os.gpr";
+ 
+ project Tester is
+ 

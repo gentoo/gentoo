@@ -1,0 +1,51 @@
+From a04d8733651cf784e88d310a440f8bfa8773f64f Mon Sep 17 00:00:00 2001
+From: Joao Azevedo <azevedo@adacore.com>
+Date: Wed, 12 Mar 2025 16:22:39 +0000
+Subject: [PATCH] Update to latest GNATformat API
+
+---
+ source/ada/lsp-ada_documents.adb | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/source/ada/lsp-ada_documents.adb b/source/ada/lsp-ada_documents.adb
+index a56072213..ca39160e0 100644
+--- a/source/ada/lsp-ada_documents.adb
++++ b/source/ada/lsp-ada_documents.adb
+@@ -1,7 +1,7 @@
+ ------------------------------------------------------------------------------
+ --                         Language Server Protocol                         --
+ --                                                                          --
+---                     Copyright (C) 2018-2023, AdaCore                     --
++--                     Copyright (C) 2018-2025, AdaCore                     --
+ --                                                                          --
+ -- This is free software;  you can redistribute it  and/or modify it  under --
+ -- terms of the  GNU General Public License as published  by the Free Soft- --
+@@ -21,6 +21,7 @@ with GNAT.Strings;
+ with GNATCOLL.Traces;
+ with GNATCOLL.VFS;
+ with Gnatformat.Configuration;
++with Gnatformat.Edits;
+ with Gnatformat.Formatting;
+ 
+ with Langkit_Support.Symbols;
+@@ -1450,7 +1451,7 @@ package body LSP.Ada_Documents is
+ 
+       declare
+          Range_Formatted_Document :
+-           constant Gnatformat.Formatting.Formatted_Edits :=
++           constant Gnatformat.Edits.Formatting_Edit_Type :=
+              Gnatformat.Formatting.Range_Format
+                (Self.Unit (Context),
+                 Self.To_Source_Location_Range (Span),
+@@ -1458,9 +1459,9 @@ package body LSP.Ada_Documents is
+ 
+       begin
+          return
+-           (Self.To_A_Range (Range_Formatted_Document.Edit.Location),
++           (Self.To_A_Range (Range_Formatted_Document.Text_Edit.Location),
+             VSS.Strings.Conversions.To_Virtual_String
+-              (Range_Formatted_Document.Edit.Text));
++              (Range_Formatted_Document.Text_Edit.Text));
+       end;
+    end Range_Format;
+ 

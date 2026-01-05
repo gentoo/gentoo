@@ -1,0 +1,34 @@
+From 3de3b12c288a47009c836b67f7bcd9fcfd4d438b Mon Sep 17 00:00:00 2001
+From: Romain Beguet <beguet@adacore.com>
+Date: Tue, 2 Sep 2025 15:50:52 +0200
+Subject: [PATCH] Update due to recent LAL API change.
+
+(cherry picked from commit 9a3378a9ab645737177e1b9236cc288f88f975ab)
+---
+ source/ada/lsp-ada_highlighters.adb | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/source/ada/lsp-ada_highlighters.adb b/source/ada/lsp-ada_highlighters.adb
+index 6abe568aa..16db6036f 100644
+--- a/source/ada/lsp-ada_highlighters.adb
++++ b/source/ada/lsp-ada_highlighters.adb
+@@ -741,7 +741,7 @@ package body LSP.Ada_Highlighters is
+          end case;
+       end To_Kind;
+ 
+-      Failsafe_Def : Libadalang.Analysis.Refd_Def;
++      Failsafe_Decl : Libadalang.Analysis.Refd_Decl;
+       Def  : Libadalang.Analysis.Defining_Name;
+       Decl : Libadalang.Analysis.Basic_Decl;
+       Kind : LSP.Enumerations.SemanticTokenTypes;
+@@ -772,8 +772,8 @@ package body LSP.Ada_Highlighters is
+                Highlight_Token (Node.Token_Start, declaration);
+          end;
+       else
+-         Failsafe_Def := Node.P_Failsafe_Referenced_Def_Name (True);
+-         Def :=  Libadalang.Analysis.Defining_Name (Failsafe_Def.Def_Name);
++         Failsafe_Decl := Node.P_Failsafe_Referenced_Decl (True);
++         Def :=  Libadalang.Analysis.Defining_Name (Failsafe_Decl.Def_Name);
+       end if;
+ 
+       if Node.Kind in Libadalang.Common.Ada_Name then
