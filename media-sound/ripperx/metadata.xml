@@ -8,5 +8,6 @@
 	<upstream>
 		<remote-id type="sourceforge">ripperx</remote-id>
 		<remote-id type="gitlab">tiagobar/ripperx</remote-id>
+		<remote-id type="codeberg">thothix/ripperx</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,0 +1,31 @@
+Remove CXXFLAGS override
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -62,12 +62,12 @@ AC_ARG_ENABLE(deprecated, [  --disable-deprecated  Disable deprecated GTK functi
+ AC_ARG_ENABLE([debug],
+               [AS_HELP_STRING([--enable-debug], [Enable debugging (default is yes)])],
+               [case "${enable_debug}" in
+-                 yes) CXXFLAGS="$CXXFLAGS -g -O0"
++                 yes)
+                       AC_DEFINE([DEBUG], [1], [Enable DEBUG code])
+                       ;;
+-                 no) CXXFLAGS="$CXXFLAGS -O2";;
++                 no) ;;
+                  *) AC_MSG_ERROR([bad value ${enable_debug} for --enable-debug]) ;;
+-               esac], CXXFLAGS="$CXXFLAGS -O2")
++               esac], [])
+ 
+ 
+ AC_CONFIG_FILES([Makefile
+--- a/configure.ac
++++ b/configure.ac
+@@ -9,8 +9,6 @@ AM_INIT_AUTOMAKE([foreign])
+ AC_CONFIG_HEADERS([config.h])
+ 
+ # DON'T REMOVE - Fix the flags defaults
+-# ${CFLAGS=""}
+-${CXXFLAGS=""}
+ 
+ # Checks for programs.
+ AC_PROG_CC
