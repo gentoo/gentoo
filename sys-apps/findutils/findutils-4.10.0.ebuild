@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..13} )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/findutils.asc
-inherit flag-o-matic python-any-r1 verify-sig
+inherit branding flag-o-matic python-any-r1 verify-sig
 
 DESCRIPTION="GNU utilities for finding files"
 HOMEPAGE="https://www.gnu.org/software/findutils/"
@@ -64,9 +64,6 @@ src_configure() {
 	fi
 
 	local myeconfargs=(
-		--with-packager="Gentoo"
-		--with-packager-version="${PVR}"
-		--with-packager-bug-reports="https://bugs.gentoo.org/"
 		$(use_enable nls)
 		$(use_with selinux)
 		--libexecdir='$(libdir)'/find
