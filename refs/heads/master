@@ -1,15 +1,14 @@
 certificate version 0.1
-pusher Eli Schwartz <eschwartz@gentoo.org> 1767587235 -0500
-pushee git+ssh://git.gentoo.org/repo/gentoo.git
-nonce 1767587234-4df23074a3dd9b3e4a27e7c406dd33dde8a83e2e
+pusher DF84256885283521 1767588894 +0100
+pushee git.gentoo.org:repo/gentoo.git
+nonce 1767588893-8a135f295f99f297aa2f1594fbe3cb8693a15292
 
-0eb6b33d770b24878955f355ee4c57f5117d9a8d 15a4f3b43ce18c24bcae220ab0b03071502d7040 refs/heads/master
+15a4f3b43ce18c24bcae220ab0b03071502d7040 9307b8fad3c77ec54692689539b3c1a1f29e93e8 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iOsEABYKAJMWIQTnFNnmK0TPZHnXm3qEp9ErcA0vVwUCaVs9o18UgAAAAAAuAChp
-c3N1ZXItZnByQG5vdGF0aW9ucy5vcGVucGdwLmZpZnRoaG9yc2VtYW4ubmV0RTcx
-NEQ5RTYyQjQ0Q0Y2NDc5RDc5QjdBODRBN0QxMkI3MDBEMkY1NxUcZXNjaHdhcnR6
-QGdlbnRvby5vcmcACgkQhKfRK3ANL1c/NgD/SbMl9q4vLrbrzCwZWLh6kiJ/hkcU
-pWdhDkyyuK9cPg0A/0Ekt/JBsbXlEmjuiteRd/hkAWWCZ4+X+nPZpRf+bcAL
-=ak8G
+iJEEABYKADkWIQQcFD0bEK7NPNmWHtiOMjR69AVa6AUCaVtEHhsUgAAAAAAEAA5t
+YW51MiwyLjUrMS4xMSwyLDIACgkQjjI0evQFWuipSwD/XM0V65t+G/O9jis6IkS3
+WK5yxxftNgnUJQuszC1xYCoA/0GCQQrriuARdw5a5IjcuOLks49ZUsW2YW0wha9L
+ZCsM
+=226r
 -----END PGP SIGNATURE-----
