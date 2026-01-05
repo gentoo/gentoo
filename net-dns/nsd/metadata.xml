@@ -23,6 +23,7 @@
 		<flag name="recvmmsg">Enable recvmmsg and sendmmsg compilation, faster but some kernel versions may have implementation problems for IPv6</flag>
 		<flag name="simdzone">Leverage SIMD instructions in modern CPUs to improve throughput</flag>
 		<flag name="tfo">Enable TCP Fast Open</flag>
+		<flag name="xdp">Enable support for XDP through <pkg>net-libs/xdp-tools</pkg></flag>
 		<flag name="year2038">Enables support for 64-bit 'time_t' (sets D_TIME_BITS=64; glibc only)</flag>
 	</use>
 </pkgmetadata>
