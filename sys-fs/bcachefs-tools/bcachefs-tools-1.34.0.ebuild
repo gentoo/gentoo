@@ -87,12 +87,16 @@ CRATES="
 	zeroize_derive@1.4.2
 "
 
+MODULES_KERNEL_MIN=6.16
+MODULES_INITRAMFS_IUSE=+initramfs
+MODULES_OPTIONAL_IUSE="modules"
+MODULE_S="module/src/${PN%-*}-${PV}"
 LLVM_COMPAT=( {17..21} )
 PYTHON_COMPAT=( python3_{11..14} )
 RUST_MIN_VER="1.77.0"
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/kentoverstreet.asc
 
-inherit cargo flag-o-matic llvm-r1 python-any-r1 shell-completion toolchain-funcs unpacker verify-sig
+inherit cargo flag-o-matic linux-mod-r1 llvm-r1 python-any-r1 shell-completion toolchain-funcs udev unpacker verify-sig
 
 DESCRIPTION="Tools for bcachefs"
 HOMEPAGE="https://bcachefs.org/"
@@ -123,12 +127,13 @@ DEPEND="
 	dev-libs/userspace-rcu:=
 	sys-apps/keyutils:=
 	sys-apps/util-linux
-	virtual/zlib:=
+	virtual/zlib
 	virtual/udev
-	fuse? ( >=sys-fs/fuse-3.7.0:3= )
+	fuse? ( >=sys-fs/fuse-3.7.0 )
 "
 
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	modules? ( !sys-fs/bcachefs-kmod )"
 
 # Clang is required for bindgen
 BDEPEND="
@@ -155,6 +160,41 @@ pkg_setup() {
 	rust_pkg_setup
 	llvm-r1_pkg_setup
 	python-any-r1_pkg_setup
+
+	if use modules ; then
+		local CONFIG_CHECK="
+		        BLOCK
+		        CRC_OPTIMIZATIONS
+		        EXPORTFS
+		        CLOSURES
+		        CRC32
+		        CRC64
+		        FS_POSIX_ACL
+		        LZ4_COMPRESS
+		        LZ4_DECOMPRESS
+		        LZ4HC_COMPRESS
+		        ZLIB_DEFLATE
+		        ZLIB_INFLATE
+		        ZSTD_COMPRESS
+		        ZSTD_DECOMPRESS
+		        CRYPTO_LIB_SHA256
+		        CRYPTO_LIB_CHACHA
+		        CRYPTO_LIB_POLY1305
+		        KEYS
+		        RAID6_PQ
+		        XOR_BLOCKS
+		        XXHASH
+		        SYMBOLIC_ERRNAME
+		        MIN_HEAP
+		        XARRAY_MULTI
+		"
+		use debug && CONFIG_CHECK+="
+		        DEBUG_INFO
+		        FRAME_POINTER
+		        !DEBUG_INFO_REDUCED
+		"
+		linux-mod-r1_pkg_setup
+	fi
 }
 
 src_unpack() {
@@ -186,6 +226,12 @@ src_prepare() {
 		-e '/^CFLAGS/s:-g::' \
 		-i Makefile || die
 	append-lfs-flags
+
+	if use modules ; then
+		emake DESTDIR="${WORKDIR}" PREFIX="/module" install_dkms && \
+		sed -i 's@CONFIG_BCACHEFS_FS := m@CONFIG_BCACHEFS_FS := m\n        CONFIG_BCACHEFS_ERASURE_CODING := y\n        CONFIG_BCACHEFS_QUOTA := y\n        CONFIG_BCACHEFS_LOCK_TIME_STATS := y\n        CONFIG_BCACHEFS_SIX_OPTIMISTIC_SPIN := y@' \
+		"${WORKDIR}/${MODULE_S}/src/fs/bcachefs/Makefile" || die
+	fi
 }
 
 src_compile() {
@@ -204,6 +250,15 @@ src_compile() {
 	for shell in bash fish zsh; do
 		./bcachefs completions ${shell} > ${shell}.completion || die
 	done
+
+	if use modules ; then
+		local modlist=( "bcachefs=:../${MODULE_S}:../${MODULE_S}/src/fs/bcachefs" )
+		local modargs=(
+			KDIR=${KV_OUT_DIR}
+		)
+
+		linux-mod-r1_src_compile
+	fi
 }
 
 src_install() {
@@ -214,10 +269,16 @@ src_install() {
 	dosym bcachefs /sbin/mkfs.bcachefs
 	dosym bcachefs /sbin/mount.bcachefs
 
+	udev_dorules "udev/64-bcachefs.rules"
+
 	if use fuse; then
 		dosym bcachefs /sbin/fsck.fuse.bcachefs
 		dosym bcachefs /sbin/mkfs.fuse.bcachefs
 		dosym bcachefs /sbin/mount.fuse.bcachefs
+	fi
+
+	if use modules ; then
+		linux-mod-r1_src_install
 	fi
 
 	newbashcomp bash.completion bcachefs
@@ -228,9 +289,19 @@ src_install() {
 }
 
 pkg_postinst() {
+	udev_reload
+
+	if use modules ; then
+		linux-mod-r1_pkg_postinst
+	fi
+
 	if use fuse; then
 		ewarn "FUSE support is experimental."
 		ewarn "Please only use it for development purposes at the risk of losing your data."
 		ewarn "You have been warned."
 	fi
+}
+
+pkg_postrm() {
+	udev_reload
 }
