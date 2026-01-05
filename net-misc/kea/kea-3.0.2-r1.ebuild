@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,13 +13,16 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.isc.org/isc-projects/kea.git"
 else
-	SRC_URI="https://downloads.isc.org/isc/kea/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	SRC_URI="
+		https://downloads.isc.org/isc/kea/${PV}/${P}.tar.xz
+		!doc? ( https://codeberg.org/peter1010/kea-manpages/archive/kea-manpages-${PV}.tar.gz )
+	"
+	KEYWORDS="amd64 arm arm64 ~x86"
 fi
 
 LICENSE="MPL-2.0"
 SLOT="0"
-IUSE="debug doc mysql +openssl postgres shell test"
+IUSE="debug doc kerberos mysql +openssl postgres shell test"
 
 REQUIRED_USE="shell? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
@@ -27,6 +30,7 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="
 	>=dev-libs/boost-1.66:=
 	dev-libs/log4cplus:=
+	kerberos? ( virtual/krb5 )
 	mysql? (
 		app-arch/zstd:=
 		dev-db/mysql-connector-c:=
@@ -56,6 +60,10 @@ BDEPEND="
 	virtual/pkgconfig
 	${PYTHON_DEPS}
 "
+
+PATCHES=(
+	"${FILESDIR}"/kea-3.0.1-boost-1.89.patch
+)
 
 python_check_deps() {
 	use doc || return 0;
@@ -112,7 +120,7 @@ src_configure() {
 	local emesonargs=(
 		--localstatedir="${EPREFIX}/var"
 		-Drunstatedir="${EPREFIX}/run"
-		-Dkrb5=disabled
+		$(meson_feature kerberos krb5)
 		-Dnetconf=disabled
 		-Dcrypto=$(usex openssl openssl botan)
 		$(meson_feature mysql)
@@ -131,8 +139,6 @@ src_configure() {
 src_compile() {
 	meson_src_compile
 
-	# Note: If you want man pages doc use has to be set. This may change
-	# in the future and be like 2.6.3 where man pages were part of the release tarball
 	use doc && meson_src_compile doc
 }
 
@@ -159,6 +165,7 @@ src_test() {
 		kea-log-console_test.sh
 		dhcp-lease-query-tests
 		kea-dhcp6-tests
+		kea-dhcp4-tests
 		kea-dhcp-tests
 	)
 
@@ -168,7 +175,6 @@ src_test() {
 			kea-mysql-tests
 			dhcp-mysql-lib-tests
 			dhcp-forensic-log-libloadtests
-			kea-dhcp4-tests
 		)
 	fi
 
@@ -178,7 +184,12 @@ src_test() {
 			kea-pgsql-tests
 			dhcp-pgsql-lib-tests
 			dhcp-forensic-log-libloadtests
-			kea-dhcp4-tests
+		)
+	fi
+
+	if use kerberos; then
+		SKIP_TESTS+=(
+			ddns-gss-tsig-tests
 		)
 	fi
 
@@ -186,7 +197,6 @@ src_test() {
 		# see https://bugs.gentoo.org/958171 for reason for skipping these tests
 		SKIP_TESTS+=(
 			kea-util-tests
-			kea-dhcp4-tests
 			kea-dhcpsrv-tests
 			dhcp-ha-lib-tests
 			kea-d2-tests
@@ -252,6 +262,10 @@ src_install() {
 		dosym kea "${EPREFIX}"/etc/init.d/kea-${svc}
 	done
 
+	if use !doc; then
+		doman "${WORKDIR}"/kea-manpages/man/*
+	fi
+
 	systemd_newunit "${FILESDIR}"/${PN}-ctrl-agent.service-r2 ${PN}-ctrl-agent.service
 	systemd_newunit "${FILESDIR}"/${PN}-dhcp-ddns.service-r2 ${PN}-dhcp-ddns.service
 	systemd_newunit "${FILESDIR}"/${PN}-dhcp4.service-r2 ${PN}-dhcp4.service
@@ -282,6 +296,9 @@ pkg_postinst() {
 	fi
 
 	if ver_replacing -lt 3.0; then
+		ewarn "Make sure that ${EPREFIX}/var/lib/kea and all the files in it are owned by dhcp:"
+		ewarn "chown -R dhcp:dhcp ${EPREFIX}/var/lib/kea"
+		ewarn
 		ewarn "If using openrc;"
 		ewarn "  There are now separate conf.d scripts and associated init.d per daemon!"
 		ewarn "    Each Daemon needs to be launched separately, i.e. the daemons are"
