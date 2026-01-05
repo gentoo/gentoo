@@ -87,10 +87,6 @@ src_unpack() {
 }
 
 src_configure() {
-	# fix typo found right after release:
-	# https://github.com/neomutt/neomutt/commit/cddbd189aab68f1978ef0e361217514ec94321b3
-	sed -i 's/-smine/-smime/' "${S}"/smime/Makefile.autosetup
-
 	local myconf=(
 		"$(usex doc --full-doc --disable-doc)"
 		"$(use_enable nls)"
