@@ -18,7 +18,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv x86"
+KEYWORDS="amd64 ~riscv x86"
 IUSE="gnutls nettle nss"
 REQUIRED_USE="nettle? ( gnutls !nss )"
 
