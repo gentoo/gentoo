@@ -13,7 +13,7 @@ SRC_URI="https://www.recoll.org/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 IUSE="camelcase chm +inotify qt6 session +spell systemd webengine"
 REQUIRED_USE="
