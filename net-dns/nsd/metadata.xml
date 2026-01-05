@@ -7,10 +7,8 @@
 	</upstream>
 	<use>
 		<flag name="bind8-stats">Enables BIND8 like NSTATS and XSTATS and statistics in nsd-control</flag>
-		<flag name="default-znow">Enable full relocation binding at load-time (RELRO NOW, to protect GOT and .dtor areas)</flag>
 		<flag name="dnstap">Enable the structured binary log format</flag>
 		<flag name="ipv6">Enable IPv6 support</flag>
-		<flag name="largefile">Enables support for large files</flag>
 		<flag name="libevent">Use libevent or libev, useful when zone count is high</flag>
 		<flag name="mmap">Use mmap(2) instead of malloc(3); currently experimental</flag>
 		<flag name="memclean">Cleanup memory (at exit) for eg. valgrind, memcheck</flag>
@@ -24,6 +22,5 @@
 		<flag name="simdzone">Leverage SIMD instructions in modern CPUs to improve throughput</flag>
 		<flag name="tfo">Enable TCP Fast Open</flag>
 		<flag name="xdp">Enable support for XDP through <pkg>net-libs/xdp-tools</pkg></flag>
-		<flag name="year2038">Enables support for 64-bit 'time_t' (sets D_TIME_BITS=64; glibc only)</flag>
 	</use>
 </pkgmetadata>
