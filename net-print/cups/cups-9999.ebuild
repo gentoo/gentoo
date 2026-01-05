@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -230,6 +230,11 @@ multilib_src_install() {
 		emake BUILDROOT="${D}" install
 	else
 		emake BUILDROOT="${D}" install-libs install-headers
+
+		# Manually install pkgconfig file to avoid tangling with duplicate file behavior
+		insinto /usr/$(get_libdir)/pkgconfig
+		doins cups.pc
+
 		dobin cups-config
 	fi
 }
