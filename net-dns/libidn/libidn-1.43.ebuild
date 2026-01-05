@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libidn.asc
-inherit elisp-common libtool multilib-minimal verify-sig
+inherit branding elisp-common libtool multilib-minimal verify-sig
 
 DESCRIPTION="Internationalized Domain Names (IDN) implementation"
 HOMEPAGE="https://www.gnu.org/software/libidn/"
@@ -57,9 +57,6 @@ multilib_src_configure() {
 		--disable-java
 		--disable-valgrind-tests
 		--with-lispdir="${EPREFIX}${SITELISP}/${PN}"
-		--with-packager-bug-reports="https://bugs.gentoo.org"
-		--with-packager-version="r${PR}"
-		--with-packager="Gentoo Linux"
 	)
 
 	ECONF_SOURCE="${S}" econf "${args[@]}"
