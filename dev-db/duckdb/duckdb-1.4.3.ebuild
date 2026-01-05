@@ -27,7 +27,7 @@ src_prepare() {
 
 src_configure() {
 	lto-guarantee-fat
-	mycmakeargs=( "-DINSTALL_LIB_DIR=/usr/$(get_libdir)/"
+	mycmakeargs=( "-DINSTALL_LIB_DIR=${EPREFIX}/usr/$(get_libdir)/"
 		"-DOVERRIDE_GIT_DESCRIBE=v${PV}"
 		"-DBUILD_EXTENSIONS='autocomplete;icu;tpch;tpcds;json;jemalloc'"
 		"-DCXX_EXTRA=${CXXFLAGS}"
