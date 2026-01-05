@@ -20,7 +20,7 @@ else
 		https://github.com/xiph/rav1e/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		${CARGO_CRATE_URIS}
 	"
-	KEYWORDS="amd64 arm arm64 ~loong ~ppc64 ~riscv x86"
+	KEYWORDS="amd64 arm arm64 ~loong ppc64 ~riscv x86"
 fi
 
 SRC_URI+="
