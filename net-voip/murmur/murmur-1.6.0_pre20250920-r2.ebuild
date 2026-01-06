@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -53,7 +53,7 @@ RDEPEND="
 	>=dev-libs/openssl-1.0.0b:0=
 	>=dev-libs/protobuf-2.2.0:=
 	dev-libs/spdlog:=
-	dev-libs/utfcpp
+	>=dev-libs/utfcpp-4.0.0
 	dev-qt/qtbase:6[dbus,network,sqlite?,xml]
 	sys-apps/lsb-release
 	>=sys-libs/libcap-2.15
