@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -44,7 +44,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-cpp/cli11
-	>=dev-db/soci-4.1.0[sqlite]
+	>=dev-db/soci-4.1.2-r2[sqlite]
 	>=dev-libs/openssl-1.0.0b:0=
 	dev-libs/poco:=[util,xml,zip]
 	>=dev-libs/protobuf-2.2.0:=
