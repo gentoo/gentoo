@@ -1,0 +1,17 @@
+Avoid building one test with LTO because it doesn't play well with -Wl,--wrap. To
+do this, we also have to build with -ffat-lto-objects in the ebuild.
+
+See https://bugs.gentoo.org/877741#c9 specifically.
+--- a/tests/unit_tests/openvpn/Makefile.am
++++ b/tests/unit_tests/openvpn/Makefile.am
+@@ -97,8 +97,9 @@ pkt_testdriver_SOURCES = test_pkt.c mock_msg.c mock_msg.h mock_win32_execve.c \
+ 
+ if !WIN32
+ tls_crypt_testdriver_CFLAGS  = @TEST_CFLAGS@ \
+-	-I$(top_srcdir)/include -I$(top_srcdir)/src/compat -I$(top_srcdir)/src/openvpn
++	-I$(top_srcdir)/include -I$(top_srcdir)/src/compat -I$(top_srcdir)/src/openvpn -fno-lto
+ tls_crypt_testdriver_LDFLAGS = @TEST_LDFLAGS@ \
++	-fno-lto \
+ 	-Wl,--wrap=buffer_read_from_file \
+ 	-Wl,--wrap=buffer_write_file \
+ 	-Wl,--wrap=parse_line \
