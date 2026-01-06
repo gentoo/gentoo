@@ -49,7 +49,7 @@ RDEPEND="
 	acct-user/murmur
 	dev-cpp/cli11
 	dev-cpp/nlohmann_json
-	>=dev-db/soci-4.1.0[mysql?,postgres?,sqlite?]
+	>=dev-db/soci-4.1.2-r2[mysql?,postgres?,sqlite?]
 	>=dev-libs/openssl-1.0.0b:0=
 	>=dev-libs/protobuf-2.2.0:=
 	dev-libs/spdlog:=
