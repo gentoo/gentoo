@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,8 +11,8 @@ SRC_URI="https://github.com/storaged-project/udisks/releases/download/${P}/${P}.
 
 LICENSE="LGPL-2+ GPL-2+"
 SLOT="2"
-KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
-IUSE="acl +daemon debug elogind +introspection lvm nls selinux systemd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+IUSE="acl +daemon debug elogind +introspection lvm nls selinux smart systemd"
 
 REQUIRED_USE="
 	?? ( elogind systemd )
@@ -22,12 +22,11 @@ REQUIRED_USE="
 
 COMMON_DEPEND="
 	>=sys-auth/polkit-0.114[daemon(+)]
-	>=sys-libs/libblockdev-3.3.0:=[cryptsetup,lvm?,nvme]
+	>=sys-libs/libblockdev-3.4.0:=[cryptsetup,lvm?,nvme,smart?]
 	virtual/udev
 	acl? ( virtual/acl )
 	daemon? (
 		>=dev-libs/glib-2.68:2
-		>=dev-libs/libatasmart-0.19
 		>=dev-libs/libgudev-165:=
 	)
 	elogind? ( >=sys-auth/elogind-219 )
@@ -36,12 +35,14 @@ COMMON_DEPEND="
 	systemd? ( >=sys-apps/systemd-209 )
 "
 # util-linux -> mount, umount, swapon, swapoff (see also #403073)
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="
+	${COMMON_DEPEND}
 	>=sys-block/parted-3
 	>=sys-apps/util-linux-2.30
 	selinux? ( sec-policy/selinux-devicekit )
 "
-DEPEND="${COMMON_DEPEND}
+DEPEND="
+	${COMMON_DEPEND}
 	>=sys-kernel/linux-headers-3.1
 "
 BDEPEND="
@@ -58,10 +59,6 @@ BDEPEND="
 # dev-build/autoconf-archive
 
 DOCS=( AUTHORS HACKING NEWS README.md )
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.10.1-slibtool-export-dynamic.patch
-)
 
 pkg_setup() {
 	# Listing only major arch's here to avoid tracking kernel's defconfig
@@ -82,7 +79,7 @@ src_prepare() {
 		sed -i -e 's:libsystemd-login:&disable:' configure || die
 	fi
 
-	# Added for bug # 782061
+	# bug #782061
 	eautoreconf
 }
 
@@ -103,6 +100,7 @@ src_configure() {
 		$(use_enable introspection)
 		$(use_enable lvm lvm2)
 		$(use_enable nls)
+		$(use_enable smart)
 	)
 	econf "${myeconfargs[@]}"
 }
@@ -114,6 +112,9 @@ src_install() {
 
 	rm -rf "${ED}"/usr/share/bash-completion
 	dobashcomp data/completions/udisksctl
+
+	# bug #865663
+	dotmpfiles data/tmpfiles.d/udisks2.conf
 }
 
 pkg_preinst() {
@@ -125,9 +126,6 @@ pkg_preinst() {
 
 pkg_postinst() {
 	udev_reload
-
-	# TODO: obsolete with tmpfiles_process?
-	# mkdir -p "${EROOT}"/run #415987
 
 	tmpfiles_process udisks2.conf
 
