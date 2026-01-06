@@ -523,8 +523,11 @@ python_compile() {
 
 	sed \
 		-e "s~/lib/libshiboken6\.cpython~/$(get_libdir)/libshiboken6\.cpython~g" \
+		-e "s~/shiboken6/libshiboken6\.cpython~/$(get_libdir)/libshiboken6\.cpython~g" \
 		-e "s~/lib/libpyside6\.cpython~/$(get_libdir)/libpyside6\.cpython~g" \
+		-e "s~/PySide6/libpyside6\.cpython~/$(get_libdir)/libpyside6\.cpython~g" \
 		-e "s~/lib/libpyside6qml\.cpython~/$(get_libdir)/libpyside6qml\.cpython~g" \
+		-e "s~/PySide6/libpyside6qml\.cpython~/$(get_libdir)/libpyside6qml\.cpython~g" \
 		-e "s~libshiboken6\.cpython.*\.so\.$(ver_cut 1-3)~libshiboken6\${PYTHON_CONFIG_SUFFIX}\.so\.$(ver_cut 1-2)~g" \
 		-e "s~libpyside6\.cpython.*\.so\.$(ver_cut 1-3)~libpyside6\${PYTHON_CONFIG_SUFFIX}\.so\.$(ver_cut 1-2)~g" \
 		-e "s~libpyside6qml\.cpython.*\.so\.$(ver_cut 1-3)~libpyside6qml\${PYTHON_CONFIG_SUFFIX}\.so\.$(ver_cut 1-2)~g" \
