@@ -5,7 +5,7 @@ EAPI="8"
 SSL_DEPS_SKIP=1
 USE_RUBY="ruby31 ruby32 ruby33"
 
-inherit cmake flag-o-matic git-r3 ruby-single ssl-cert systemd toolchain-funcs
+inherit cmake git-r3 ruby-single ssl-cert systemd toolchain-funcs
 
 DESCRIPTION="H2O - the optimized HTTP/1, HTTP/2 server"
 HOMEPAGE="https://h2o.examp1e.net/"
@@ -66,14 +66,6 @@ src_prepare() {
 }
 
 src_configure() {
-	if use libh2o; then
-		# -Werror=strict-aliasing
-		# https://bugs.gentoo.org/967654
-		# https://github.com/h2o/h2o/issues/3541
-		append-flags -fno-strict-aliasing
-		filter-lto
-	fi
-
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}"/etc/${PN}
 		-DWITH_CCACHE=OFF

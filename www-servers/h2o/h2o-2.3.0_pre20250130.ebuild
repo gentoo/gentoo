@@ -72,6 +72,8 @@ src_configure() {
 		# -Werror=strict-aliasing
 		# https://bugs.gentoo.org/967654
 		# https://github.com/h2o/h2o/issues/3541
+		#
+		# Fixed upstream in git, post 2.3.0-beta2
 		append-flags -fno-strict-aliasing
 		filter-lto
 	fi
