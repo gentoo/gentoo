@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -50,10 +50,11 @@ COMMON_DEPEND="
 # actually use it on Linux, only on legacy macOS. Still, we need it present at
 # build time to appease CMake, and having it like this makes it easier to
 # maintain than patching the CMakeLists file directly.
+# max jdk-25 for bug #968411
 DEPEND="${COMMON_DEPEND}
 	dev-cpp/gulrak-filesystem
 	media-libs/libglvnd
-	>=virtual/jdk-1.8.0:*
+	<virtual/jdk-26:*
 "
 # QtSvg imageplugin needed at runtime for svg icons, via QIcon.
 # At runtime we don't depend on JDK, only JRE
