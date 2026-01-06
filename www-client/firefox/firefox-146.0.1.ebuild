@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -655,6 +655,10 @@ src_prepare() {
 	fi
 
 	eapply "${WORKDIR}/firefox-patches"
+
+	if use system-icu && has_version ">=dev-libs/icu-78.1"; then
+		eapply "${FILESDIR}/${P}-icu78.patch" # in 147, bug #967261
+	fi
 
 	# Allow user to apply any additional patches without modifing ebuild
 	eapply_user
