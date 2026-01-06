@@ -1,0 +1,37 @@
+https://bugs.gentoo.org/968414
+https://cgit.git.savannah.gnu.org/cgit/coreutils.git/commit/?id=bd528f923482223649aa84be7d131e69356149da
+
+From bd528f923482223649aa84be7d131e69356149da Mon Sep 17 00:00:00 2001
+From: Pádraig Brady <P@draigBrady.com>
+Date: Sun, 4 Jan 2026 12:45:46 +0000
+Subject: copy: fix possible infinite loop with SEEK_HOLE
+
+Commit v9.8-95-g4c0cf3864 intended to initialize
+ext_start to src_pos, as was described at:
+https://lists.gnu.org/r/coreutils/2025-11/msg00035.html
+However ipos was inadvertently used, which is only
+valid the first time through the loop.
+
+* src/copy-file-data.c (lseek_copy): Use scan_inference->hole_start
+only with the initial offset passed to lseek_copy().
+* NEWS: Mention the bug fix.
+Reported at https://github.com/coreutils/coreutils/issues/159
+---
+ src/copy-file-data.c | 2 +-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+--- a/src/copy-file-data.c
++++ b/src/copy-file-data.c
+@@ -338,7 +338,7 @@ lseek_copy (int src_fd, int dest_fd, char **abuf, idx_t buf_size,
+   for (off_t ext_start = scan_inference->ext_start;
+        0 <= ext_start && ext_start < max_ipos; )
+     {
+-      off_t ext_end = (ext_start == ipos
++      off_t ext_end = (ext_start == src_pos
+                        ? scan_inference->hole_start
+                        : lseek (src_fd, ext_start, SEEK_HOLE));
+       if (0 <= ext_end)
+-- 
+cgit v1.2.3
+
+
