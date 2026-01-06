@@ -14,7 +14,8 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
 
-RDEPEND=">=app-editors/xemacs-21.5.35"
+RDEPEND=">=app-editors/xemacs-21.5.35
+	app-xemacs/text-modes"
 BDEPEND="${RDEPEND}"
 
 EMACS="${EPREFIX}/usr/bin/xemacs"
