@@ -18,6 +18,8 @@ fi
 
 LICENSE="LGPL-2.1"
 SLOT="0"
+# bug #968421
+RESTRICT="test"
 
 # Please double check the minimum libtraceevent version!
 RDEPEND="
