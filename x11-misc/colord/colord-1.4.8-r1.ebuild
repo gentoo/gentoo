@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -104,6 +104,13 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	newbashcomp data/colormgr colormgr
+
+	# bug #857579
+	newtmpfiles - colord.conf <<-EOF
+	d /var/lib/colord 0755 colord colord
+	d /var/lib/colord/icc 0755 colord colord
+	Z /var/lib/colord - colord colord
+	EOF
 
 	# Ensure config and profile directories exist and /var/lib/colord/*
 	# is writable by colord user
