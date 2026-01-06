@@ -1,0 +1,25 @@
+From 2d4d2426fb2e30f860ec662498e0592acb59b553 Mon Sep 17 00:00:00 2001
+From: Mickael Sergent <miko53@free.fr>
+Date: Tue, 6 Jan 2026 14:18:00 +0100
+Subject: [PATCH] create Release 4.0.0
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f9d577fc..8822f746 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -7,7 +7,7 @@ endif ()
+ # Alpha x.x.89
+ # Beta: x.x.90 upwards. (Beta 1 = 90, Beta 2 = 91 ...)
+ # Stable x.x.0 upwards
+-project(calligraplan VERSION 4.4.0)
++project(calligraplan VERSION 4.0.0)
+ set(PLAN_YEAR 2026) # update every year
+ 
+ cmake_minimum_required(VERSION 3.16)
+-- 
+GitLab
+
