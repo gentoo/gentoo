@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -296,7 +296,9 @@ PATCHES=(
 	"${FILESDIR}/${PN}-25.2-unused-qt6network.patch"
 	"${FILESDIR}/${PN}-25.2.4.3-gcc16.patch"
 	"${FILESDIR}/${PN}-25.2.6.2-poppler-25.09.patch"
-	"${FILESDIR}/${PN}-25.2.7.2-poppler-25.10.patch"
+	"${FILESDIR}/${P}-poppler-25.10.patch"
+	"${FILESDIR}/${P}-icu-77.1.patch"
+	"${FILESDIR}/${P}-icu-78.1.patch"
 
 	# add qt6 backend as possible fallback for gtk-based desktop environments:
 	# https://bugs.gentoo.org/950170

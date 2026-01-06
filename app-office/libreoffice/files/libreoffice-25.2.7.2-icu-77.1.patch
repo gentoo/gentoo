@@ -1,0 +1,113 @@
+From 5d09908418767a541977acae348654af8239e9db Mon Sep 17 00:00:00 2001
+From: Taichi Haradaguchi <20001722@protonmail.com>
+Date: Wed, 30 Oct 2024 14:47:03 +0200
+Subject: Update ICU to 77.1
+
+* asturm: stripped of all the upstream bundling stuff and fixed their version check ...
+
+---
+ i18nutil/source/utility/unicode.cxx         | 23 +++++++++++++++++++
+ include/svx/strings.hrc                     | 10 +++++++++
+ svx/source/dialog/charmap.cxx               | 32 +++++++++++++++++++++++++++
+ 3 files changed, 65 insertions(+)
+
+diff --git a/i18nutil/source/utility/unicode.cxx b/i18nutil/source/utility/unicode.cxx
+index c9bfbeeb0a80..e8476dd8bbe6 100644
+--- a/i18nutil/source/utility/unicode.cxx
++++ b/i18nutil/source/utility/unicode.cxx
+@@ -1005,6 +1005,29 @@ OString unicode::getExemplarLanguageForUScriptCode(UScriptCode eScript)
+         case USCRIPT_ARABIC_NASTALIQ:
+             sRet = "fa-Aran"_ostr;
+             break;
++#endif
++#if (U_ICU_VERSION_MAJOR_NUM >= 77)
++        case USCRIPT_GARAY:
++            sRet = "wo-Gara"_ostr;
++            break;
++        case USCRIPT_GURUNG_KHEMA:
++            sRet = "gvr-Gukh"_ostr;
++            break;
++        case USCRIPT_KIRAT_RAI:
++            sRet = "bap-Krai"_ostr;
++            break;
++        case USCRIPT_OL_ONAL:
++            sRet = "unr-Onao"_ostr;
++            break;
++        case USCRIPT_SUNUWAR:
++            sRet = "suz-Sunu"_ostr;
++            break;
++        case USCRIPT_TODHRI:
++            sRet = "sq-Todr"_ostr;
++            break;
++        case USCRIPT_TULU_TIGALARI:
++            sRet = "sa-Tutg"_ostr;
++            break;
+ #endif
+     }
+     return sRet;
+diff --git a/include/svx/strings.hrc b/include/svx/strings.hrc
+index 04ce906e7222..90d5f3ebab79 100644
+--- a/include/svx/strings.hrc
++++ b/include/svx/strings.hrc
+@@ -1801,6 +1801,16 @@
+ #define RID_SUBSETSTR_KAWI                                  NC_("RID_SUBSETMAP", "Kawi")
+ #define RID_SUBSETSTR_NAG_MUNDARI                           NC_("RID_SUBSETMAP", "Nag Mundari")
+ #define RID_SUBSETSTR_CJK_UNIFIED_IDEOGRAPHS_EXTENSION_I    NC_("RID_SUBSETMAP", "CJK Unified Ideographs Extension I")
++#define RID_SUBSETSTR_EGYPTIAN_HIEROGLYPHS_EXTENDED_A  NC_("RID_SUBSETMAP", "Egyptian Hieroglyphs Extended-A")
++#define RID_SUBSETSTR_GARAY                                 NC_("RID_SUBSETMAP", "Garay")
++#define RID_SUBSETSTR_GURUNG_KHEMA                          NC_("RID_SUBSETMAP", "Gurung Khema")
++#define RID_SUBSETSTR_KIRAT_RAI                             NC_("RID_SUBSETMAP", "Kirat Rai")
++#define RID_SUBSETSTR_MYANMAR_EXTENDED_C                    NC_("RID_SUBSETMAP", "Myanmar Extended-C")
++#define RID_SUBSETSTR_OL_ONAL                               NC_("RID_SUBSETMAP", "Ol Onal")
++#define RID_SUBSETSTR_SUNUWAR                               NC_("RID_SUBSETMAP", "Sunuwar")
++#define RID_SUBSETSTR_SYMBOLS_FOR_LEGACY_COMPUTING_SUPPLEMENT  NC_("RID_SUBSETMAP", "Symbols for Legacy Computing Supplement")
++#define RID_SUBSETSTR_TODHRI                                NC_("RID_SUBSETMAP", "Todhri")
++#define RID_SUBSETSTR_TULU_TIGALARI                         NC_("RID_SUBSETMAP", "Tulu-Tigalari")
+ 
+ #define RID_SVXSTR_FRAMEDIR_LTR                             NC_("RID_SVXSTR_FRAMEDIR_LTR", "Left-to-right (LTR)")
+ #define RID_SVXSTR_FRAMEDIR_RTL                             NC_("RID_SVXSTR_FRAMEDIR_RTL", "Right-to-left (RTL)")
+diff --git a/svx/source/dialog/charmap.cxx b/svx/source/dialog/charmap.cxx
+index adb2749b11f8..acdfbf9f490f 100644
+--- a/svx/source/dialog/charmap.cxx
++++ b/svx/source/dialog/charmap.cxx
+@@ -1928,6 +1928,38 @@ void SubsetMap::InitList()
+                 case UBLOCK_CJK_UNIFIED_IDEOGRAPHS_EXTENSION_I:
+                     aAllSubsets.emplace_back( 0x2EBF0, 0x2EE5F, SvxResId(RID_SUBSETSTR_CJK_UNIFIED_IDEOGRAPHS_EXTENSION_I) );
+                     break;
++#endif
++#if (U_ICU_VERSION_MAJOR_NUM >= 77)
++                case UBLOCK_EGYPTIAN_HIEROGLYPHS_EXTENDED_A:
++                    aAllSubsets.emplace_back( 0x13460, 0x1355F, SvxResId(RID_SUBSETSTR_EGYPTIAN_HIEROGLYPHS_EXTENDED_A) );
++                    break;
++                case UBLOCK_GARAY:
++                    aAllSubsets.emplace_back( 0x10D40, 0x10D8F, SvxResId(RID_SUBSETSTR_GARAY) );
++                    break;
++                case UBLOCK_GURUNG_KHEMA:
++                    aAllSubsets.emplace_back( 0x16100, 0x1613F, SvxResId(RID_SUBSETSTR_GURUNG_KHEMA) );
++                    break;
++                case UBLOCK_KIRAT_RAI:
++                    aAllSubsets.emplace_back( 0x16D40, 0x16D7F, SvxResId(RID_SUBSETSTR_KIRAT_RAI) );
++                    break;
++                case UBLOCK_MYANMAR_EXTENDED_C:
++                    aAllSubsets.emplace_back( 0x116D0, 0x116FF, SvxResId(RID_SUBSETSTR_MYANMAR_EXTENDED_C) );
++                    break;
++                case UBLOCK_OL_ONAL:
++                    aAllSubsets.emplace_back( 0x1E5D0, 0x1E5FF, SvxResId(RID_SUBSETSTR_OL_ONAL) );
++                    break;
++                case UBLOCK_SUNUWAR:
++                    aAllSubsets.emplace_back( 0x11BC0, 0x11BFF, SvxResId(RID_SUBSETSTR_SUNUWAR) );
++                    break;
++                case UBLOCK_SYMBOLS_FOR_LEGACY_COMPUTING_SUPPLEMENT:
++                    aAllSubsets.emplace_back( 0x1CC00, 0x1CEBF, SvxResId(RID_SUBSETSTR_SYMBOLS_FOR_LEGACY_COMPUTING_SUPPLEMENT) );
++                    break;
++                case UBLOCK_TODHRI:
++                    aAllSubsets.emplace_back( 0x105C0, 0x105FF, SvxResId(RID_SUBSETSTR_TODHRI) );
++                    break;
++                case UBLOCK_TULU_TIGALARI:
++                    aAllSubsets.emplace_back( 0x11380, 0x113FF, SvxResId(RID_SUBSETSTR_TULU_TIGALARI) );
++                    break;
+ #endif
+             }
+ 
+-- 
+cgit v1.2.3
