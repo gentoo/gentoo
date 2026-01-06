@@ -105,7 +105,7 @@ pkg_postinst() {
 		ewarn "Please restart all running tmux sessions (client+server)."
 		ewarn "3.6a has an incompatible protocol change, so it is especially important:"
 		ewarn " https://github.com/tmux/tmux/issues/4699#issue-3666479306"
-	elif [[ ! ${REPLACING_VERSIONS} ]]; then
+	elif ver_replacing -lt ${PV} ; then
 		# https://github.com/tmux/tmux/issues/4699#issue-3666479306
 		# > Note that it is very important to restart tmux entirely after upgrading.
 		# > This is particularly important with this release because one of the libraries
