@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -110,6 +110,6 @@ pkg_postinst() {
 		# > Note that it is very important to restart tmux entirely after upgrading.
 		# > This is particularly important with this release because one of the libraries
 		# > that tmux uses changed its protocol.
-		ewarn "Please restart all running tmux clients+servers after upgrading tumx."
+		ewarn "Please restart all running tmux clients+servers after upgrading tmux."
 	fi
 }
