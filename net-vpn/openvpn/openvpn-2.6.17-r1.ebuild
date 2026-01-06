@@ -152,6 +152,9 @@ src_install() {
 
 	# https://bugs.gentoo.org/755680#c3
 	doman doc/openvpn.8
+
+	# https://github.com/OpenVPN/openvpn/issues/482 (bug #857648)
+	newtmpfiles distro/systemd/tmpfiles-openvpn.conf openvpn.conf
 }
 
 pkg_postinst() {
