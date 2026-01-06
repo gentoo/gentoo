@@ -1,4 +1,5 @@
 avoid deps for both X11 and Wayland
+force xcb platform if wayland is not enabled, see https://bugs.gentoo.org/935624
 --- a/avidemux/qt4/ADM_qt/src/ADM_qtx.cpp
 +++ b/avidemux/qt4/ADM_qt/src/ADM_qtx.cpp
 @@ -24,21 +24,29 @@ QT_LINUX_WINDOW_ENGINE admDetectQtEngine()
@@ -58,3 +59,16 @@ avoid deps for both X11 and Wayland
          default:
              ADM_warning("Cannot get qt engine infos\n");
              myDisplay = NULL;
+--- a/avidemux/common/main.cpp
++++ b/avidemux/common/main.cpp
+@@ -151,6 +151,10 @@ int main(int _argc, char *_argv[])
+     }
+ #endif
+ 
++#if ADM_UI_TYPE_BUILD == ADM_UI_QT4 && defined USE_X11 && !defined USE_WAYLAND
++    qputenv("QT_QPA_PLATFORM", "xcb");
++#endif
++
+     installSigHandler();
+ 
+     char **argv;
