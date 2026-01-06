@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ SRC_URI="https://dl.winehq.org/mono/sources/mono/${P}.tar.xz"
 
 LICENSE="MIT LGPL-2.1 GPL-2 BSD-4 NPL-1.1 Ms-PL GPL-2-with-linking-exception IDPL"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 -riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 -riscv ~x86"
 IUSE="doc minimal nls pax-kernel selinux xen"
 
 # Note: mono works incorrect with older versions of libgdiplus
