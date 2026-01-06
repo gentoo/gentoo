@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ else
 		SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}-devel/${PV}/${P}.tar.xz"
 		S="${WORKDIR}/${P}"
 	fi
-	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
 fi
 
 LICENSE="GPL-2"
