@@ -19,7 +19,10 @@ LICENSE="Apache-2.0 EPL-1.0 BSD"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~arm64"
 
-RDEPEND=">=virtual/jre-21:*"
+RDEPEND="
+	>=virtual/jre-21:*
+	x11-libs/gtk+:3[wayland]
+"
 
 QA_PREBUILT="
 	opt/${MY_PN}-ce.*
