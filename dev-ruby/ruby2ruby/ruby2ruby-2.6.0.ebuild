@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ IUSE="test"
 ruby_add_rdepend "
 	>=dev-ruby/sexp_processor-4.6.0:4
 "
-ruby_add_bdepend "test? ( >=dev-ruby/minitest-5.3:5 >=dev-ruby/sexp_processor-4.10.0:4 )"
+ruby_add_bdepend "test? ( >=dev-ruby/minitest-5.3:5 dev-ruby/ruby_parser >=dev-ruby/sexp_processor-4.10.0:4 )"
 
 all_ruby_prepare() {
 	sed -i -e '/plugin :isolate/ s:^:#:' Rakefile || die
