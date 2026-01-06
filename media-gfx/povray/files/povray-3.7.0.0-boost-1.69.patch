@@ -1,10 +1,13 @@
-Remove bundled m4 macros, instead use system ones from
-dev-build/autoconf-archive. Use AX_BOOST_SYSTEM to prevent
-underlinking issues with more recent boost versions.
-See also: https://bugs.gentoo.org/show_bug.cgi?id=550018
+Remove bundled m4 macros, use system's instead from dev-build/autoconf-archive.
+The previous version of this patch required linking to boost::system to prevent
+underlinking issues, but that is header-only since 1.69 with boost::system only
+remaining as a stub library, and became fatal with Boost 1.89.
+See also:
+https://bugs.gentoo.org/550018
+https://bugs.gentoo.org/963412
 
---- povray-3.7.0.0/unix/configure.ac
-+++ povray-3.7.0.0/unix/configure.ac
+--- a/unix/configure.ac
++++ b/unix/configure.ac
 @@ -54,23 +54,7 @@
  AC_CONFIG_SRCDIR([unix/disp_text.cpp])
  
@@ -47,7 +50,7 @@ See also: https://bugs.gentoo.org/show_bug.cgi?id=550018
  
  # Force checking essential (ANSI-compliant) headers.
  AC_CHECK_HEADERS([stdlib.h])
-@@ -292,13 +277,14 @@
+@@ -292,7 +277,7 @@
  fi
  
  # Posix threads
@@ -56,14 +59,7 @@ See also: https://bugs.gentoo.org/show_bug.cgi?id=550018
  CXXFLAGS="$CXXFLAGS $PTHREAD_CFLAGS"  # append
  LIBS="$LIBS $PTHREAD_CFLAGS $PTHREAD_LIBS"  # append
  
- # Boost; required library
- # the following macro stops with error when boost is not found
- AX_BOOST_BASE([$required_libboost_version])
-+AX_BOOST_SYSTEM
- AX_BOOST_THREAD
- if test x"$ax_cv_boost_thread" != x"yes"; then
-   AC_MSG_ERROR([cannot find a suitable boost thread library])
-@@ -307,19 +293,6 @@
+@@ -307,19 +292,6 @@
    LDFLAGS="$LDFLAGS $BOOST_LDFLAGS"     # append
    LIBS="$BOOST_THREAD_LIB $LIBS"
  fi
@@ -83,20 +79,8 @@ See also: https://bugs.gentoo.org/show_bug.cgi?id=550018
  AC_DEFINE([USE_OFFICIAL_BOOST], [], [Use the official Boost libraries.])
  
  # Intel Math Kernel library
---- povray-3.7.0.0/unix/prebuild.sh
-+++ povray-3.7.0.0/unix/prebuild.sh
-@@ -439,7 +439,8 @@
- # Beware: order does matter!
- LDADD = \\
-   \$(top_builddir)/vfe/libvfe.a \\
--  \$(top_builddir)/source/libpovray.a
-+  \$(top_builddir)/source/libpovray.a \\
-+  @BOOST_SYSTEM_LIB@
- pbEOF
-   ;;
- esac
---- povray-3.7.0.0/vfe/unix/platformbase.cpp
-+++ povray-3.7.0.0/vfe/unix/platformbase.cpp
+--- a/vfe/unix/platformbase.cpp
++++ b/vfe/unix/platformbase.cpp
 @@ -68,7 +68,7 @@
  #else
  		// taken from source/base/timer.cpp
