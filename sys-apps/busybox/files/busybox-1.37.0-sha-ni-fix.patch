@@ -1,0 +1,29 @@
+https://lists.busybox.net/pipermail/busybox/2024-September/090899.html
+[PATCH] libbb/sha: add missing sha-NI guard
+Andre Przywara andre.przywara at arm.com
+Tue Sep 10 13:32:46 UTC 2024
+
+    Previous message (by thread): Bug report: menuconfig cannot compile with gcc 14
+    Next message (by thread): cp does not appear to respect file permissions
+    Messages sorted by: [ date ] [ thread ] [ subject ] [ author ]
+
+The ENABLE_SHA1_HWACCEL Kconfig symbol is meant to be archicture
+agnostic, so can be enabled regardless of whether your build
+architecture provides hardware acceleration or not. At the moment only
+x86 implements this, so every piece of optimised code should be guarded
+by both ENABLE_SHA1_HWACCEL and (__x86_64__ || __i386__). This is missing
+at one place, so compiling for arm64 breaks when ENABLE_SHA1_HWACCEL is
+enabled.
+
+--- a/libbb/hash_md5_sha.c
++++ b/libbb/hash_md5_sha.c
+@@ -1313,7 +1313,9 @@ unsigned FAST_FUNC sha1_end(sha1_ctx_t *ctx, void *resbuf)
+ 	hash_size = 8;
+ 	if (ctx->process_block == sha1_process_block64
+ #if ENABLE_SHA1_HWACCEL
++# if defined(__GNUC__) && defined(__x86_64__)
+ 	 || ctx->process_block == sha1_process_block64_shaNI
++# endif
+ #endif
+ 	) {
+ 		hash_size = 5;
