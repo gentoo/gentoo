@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ LLVM_OPTIONAL=1
 CARGO_OPTIONAL=1
 PYTHON_COMPAT=( python3_{11..14} )
 
-inherit flag-o-matic llvm-r1 meson-multilib python-any-r1 linux-info rust-toolchain
+inherit flag-o-matic llvm-r1 meson-multilib python-any-r1 linux-info
 
 MY_P="${P/_/-}"
 
@@ -344,21 +344,12 @@ multilib_src_configure() {
 		vulkan_enable video_cards_imagination imagination
 		vulkan_enable video_cards_intel intel intel_hasvk
 		vulkan_enable video_cards_lavapipe swrast
+		vulkan_enable video_cards_nvk nouveau
 		vulkan_enable video_cards_panfrost panfrost
 		vulkan_enable video_cards_radeonsi amd
 		vulkan_enable video_cards_v3d broadcom
 		vulkan_enable video_cards_vc4 broadcom
 		vulkan_enable video_cards_virgl virtio
-		if use video_cards_nvk; then
-			vulkan_enable video_cards_nvk nouveau
-			if ! multilib_is_native_abi; then
-				echo -e "[binaries]\nrust = ['rustc', '--target=$(rust_abi $CBUILD)']" > "${T}/rust_fix.ini"
-				emesonargs+=(
-					--native-file "${T}"/rust_fix.ini
-				)
-			fi
-		fi
-
 		emesonargs+=(-Dvulkan-layers=anti-lag,device-select,overlay)
 	fi
 
@@ -415,19 +406,6 @@ multilib_src_configure() {
 		-Db_ndebug=$(usex debug false true)
 	)
 	meson_src_configure
-
-	if ! multilib_is_native_abi && use video_cards_nvk; then
-		sed -i -E '{N; s/(rule rust_COMPILER_FOR_BUILD\n command = rustc) --target=[a-zA-Z0-9=:-]+ (.*) -C link-arg=-m[[:digit:]]+/\1 \2/g}' build.ninja || die
-	fi
-}
-
-multilib_src_compile() {
-	if [[ ${ABI} == x86 ]]; then
-		# Bug 939803
-		BINDGEN_EXTRA_CLANG_ARGS="-m32" meson_src_compile
-	else
-		meson_src_compile
-	fi
 }
 
 multilib_src_test() {
