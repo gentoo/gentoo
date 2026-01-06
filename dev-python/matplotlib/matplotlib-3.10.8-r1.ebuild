@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -286,6 +286,17 @@ python_test() {
 			EPYTEST_DESELECT+=(
 				tests/test_backend_pgf.py::test_pdf_pages_metadata_check
 				tests/test_backend_pgf.py::test_minus_signs_with_tex
+			)
+			;;
+		x86)
+			EPYTEST_DESELECT+=(
+				'tests/test_tightlayout.py::test_tight_layout2[png]'
+				'tests/test_patches.py::test_wedge_range[pdf]'
+				'tests/test_tightlayout.py::test_tight_layout3[png]'
+				'tests/test_quiver.py::test_barbs[png]'
+				'tests/test_axes.py::test_fill_between_interpolate_decreasing[png]'
+				# too large for 32-bit platforms
+				'tests/test_axes.py::test_psd_csd[png]'
 			)
 			;;
 		alpha|arm|m68k|o32|ppc|s390|sh|sparc|x86)
