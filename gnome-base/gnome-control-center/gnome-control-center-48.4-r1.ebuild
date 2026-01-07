@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -134,6 +134,7 @@ BDEPEND="${PYTHON_DEPS}
 		')
 		x11-apps/setxkbmap
 	)
+	wayland? ( dev-util/wayland-scanner )
 "
 
 PATCHES=(
