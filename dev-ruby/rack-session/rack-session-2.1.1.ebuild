@@ -1,8 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby32 ruby33 ruby34"
+
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_EXTRADOC="readme.md"
 RUBY_FAKEGEM_GEMSPEC="rack-session.gemspec"
@@ -34,5 +35,6 @@ all_ruby_prepare() {
 		-i ${RUBY_FAKEGEM_GEMSPEC} || die
 
 	sed -e '2igem "rack", "~> 3.1.0"' \
+		-e '2igem "minitest", "~> 5.0"' \
 		-i test/helper.rb || die
 }
