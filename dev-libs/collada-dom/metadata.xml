@@ -7,6 +7,7 @@
   </maintainer>
   <upstream>
     <remote-id type="github">rdiankov/collada-dom</remote-id>
+    <remote-id type="github">gepetto/collada-dom</remote-id>
     <remote-id type="sourceforge">collada-dom</remote-id>
   </upstream>
 </pkgmetadata>
