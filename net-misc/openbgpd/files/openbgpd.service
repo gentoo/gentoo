@@ -1,0 +1,12 @@
+[Unit]
+Description=OpenBGPD Routing Daemon
+Documentation=man:bgpd.conf(5) man:bgpctl(8) man:bgpd(8)
+After=syslog.target network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/bgpd -f /etc/bgpd.conf
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,12 @@
+--- a/src/bgpd/config.c	2020-03-20 17:55:04.089577745 +0100
++++ b/src/bgpd/config.c	2020-03-20 17:56:01.480205070 +0100
+@@ -343,7 +343,8 @@
+ 		fatal("getifaddrs");
+ 
+ 	for (ifa = ifap; ifa; ifa = ifa->ifa_next) {
+-		if (ifa->ifa_addr->sa_family != AF_INET)
++		if (ifa->ifa_addr == NULL ||
++		    ifa->ifa_addr->sa_family != AF_INET)
+ 			continue;
+ 		cur = ((struct sockaddr_in *)ifa->ifa_addr)->sin_addr.s_addr;
+ 		if ((cur & localnet) == localnet)	/* skip 127/8 */
