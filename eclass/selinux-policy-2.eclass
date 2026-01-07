@@ -353,7 +353,7 @@ selinux-policy-2_pkg_postinst() {
 		if [[ $? -ne 0 ]]; then
 			ewarn "SELinux module load failed. Trying full reload...";
 
-			semodule ${root_opts} -s ${1} -i *.pp
+			semodule ${root_opts} -s ${1} -i ./*.pp
 
 			if [[ $? -ne 0 ]]; then
 				ewarn "Failed to reload SELinux policies."
