@@ -6,6 +6,13 @@
 
 # New entries go on top.
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2026-01-07)
+# Building glibc with clang is highly experimental and only possible and
+# tested in few configurations. Enabling the useflag clang allows free
+# choice of the compiler. By masking this useflag, the ebuild
+# forcibly resets the compiler to gcc.
+sys-libs/glibc clang
+
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-12-27)
 # breaks with old in-tree sys-cluster/ampi bug #586746 #830093 #815007
 sci-libs/adolc mpi
