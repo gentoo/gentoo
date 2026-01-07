@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,16 +6,18 @@ EAPI=8
 inherit elisp-common toolchain-funcs
 
 DESCRIPTION="Lisp-flavoured Erlang, a lisp syntax front-end to the Erlang compiler"
-HOMEPAGE="http://lfe.github.io/
+HOMEPAGE="https://lfe.io/
 	https://github.com/rvirding/lfe/"
 
 if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
+
 	EGIT_BRANCH="develop"
-	EGIT_REPO_URI="https://github.com/rvirding/${PN}.git"
+	EGIT_REPO_URI="https://github.com/rvirding/${PN}"
 else
 	SRC_URI="https://github.com/rvirding/${PN}/archive/${PV}.tar.gz
 		-> ${P}.tar.gz"
+
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -31,12 +33,16 @@ BDEPEND="
 	${RDEPEND}
 "
 
-SITEFILE="70${PN}-gentoo.el"
+SITEFILE="70${PN}-gentoo-r1.el"
 
 src_compile() {
 	emake HOSTCC="$(tc-getCC) ${CFLAGS} ${LDFLAGS}" compile
 
-	use emacs && emake emacs
+	if use emacs ; then
+		cd emacs || die
+		elisp-compile ./*.el
+		elisp-make-autoload-file
+	fi
 }
 
 src_install() {
