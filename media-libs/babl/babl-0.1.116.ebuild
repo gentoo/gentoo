@@ -20,7 +20,7 @@ HOMEPAGE="https://gegl.org/babl/"
 
 LICENSE="LGPL-3"
 SLOT="0"
-IUSE="introspection lcms vala cpu_flags_x86_avx2 cpu_flags_x86_f16c cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse4_1"
+IUSE="+introspection lcms vala cpu_flags_x86_avx2 cpu_flags_x86_f16c cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse4_1"
 REQUIRED_USE="vala? ( introspection )"
 
 BDEPEND="
