@@ -1,0 +1,47 @@
+https://github.com/libofx/libofx/commit/601fda2b62eaad918acf1e64cef76d05c106657f
+
+From 601fda2b62eaad918acf1e64cef76d05c106657f Mon Sep 17 00:00:00 2001
+From: David Ward <david.ward@gatech.edu>
+Date: Mon, 16 Jan 2023 09:23:04 -0500
+Subject: [PATCH] Define HAVE_LIBCURL when using Autoconf
+
+Even if libcurl was available, the conditional code for ofxconnect
+that uses libcurl was not compiled, so that it was not possible to
+connect to an OFX server. (Also, correct a misspelling of "libofx"
+in the error message that was returned instead.)
+
+Fixes: 1b9e698000a2 ("Remove hand-written libcurl configure check,
+                      use pkg-config instead.")
+---
+ configure.ac              | 3 ++-
+ ofxconnect/ofxconnect.cpp | 2 +-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 167efaae..a449fcc3 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -292,7 +292,8 @@ AM_CONDITIONAL(HAVE_HELP2MAN, test "x$HELP2MAN" != "xno")
+ # ----------------------------------------------------------------------------
+ 
+ PKG_CHECK_MODULES(LIBCURL, libcurl >= 7.9.7,
+-        [libcurl_available=yes],
++        [libcurl_available=yes
++         AC_DEFINE(HAVE_LIBCURL, 1, [Defined if libcurl is available])],
+         [libcurl_available=no
+          AC_MSG_WARN([libcurl is not available. ofxconnect (Direct connect samples) will NOT be built.])
+         ])
+diff --git a/ofxconnect/ofxconnect.cpp b/ofxconnect/ofxconnect.cpp
+index 47cc926b..1438548c 100644
+--- a/ofxconnect/ofxconnect.cpp
++++ b/ofxconnect/ofxconnect.cpp
+@@ -85,7 +85,7 @@ bool post(const char* request, const char* url, const char* filename)
+ #else
+ bool post(const char*, const char*, const char*)
+ {
+-  std::cerr << "ERROR: libox must be configured with libcurl to post this request directly" << std::endl;
++  std::cerr << "ERROR: libofx must be configured with libcurl to post this request directly" << std::endl;
+   return false;
+ }
+ #endif
+
