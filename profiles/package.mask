@@ -70,8 +70,16 @@ kde-frameworks/kxmlgui:5
 kde-frameworks/solid:5
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-02-08)
+# All remaining KF5-based applications have been masked.
+# Removal on 2026-02-28.
+kde-plasma/kwayland-integration:5
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-08)
 # KF5/Qt5 integration is no longer worth it.
-# Bug #955168. Removal some time after 2026-02-15.
+# Removal some time after 2026-02-15.
+kde-plasma/kwayland:5
+kde-plasma/breeze:5
+kde-plasma/plasma-integration:5
 kde-plasma/oxygen:5
 kde-frameworks/frameworkintegration:5
 kde-frameworks/knewstuff:5
