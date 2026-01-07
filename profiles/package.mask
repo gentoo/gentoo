@@ -72,6 +72,14 @@ kde-frameworks/solid:5
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-01-07)
 # KF5/Qt5 integration is no longer worth it.
 # Removal some time after 2026-01-30.
+kde-plasma/kwayland:5
+kde-plasma/kwayland-integration:5
+kde-plasma/breeze:5
+kde-plasma/plasma-integration:5
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-01-07)
+# KF5/Qt5 integration is no longer worth it.
+# Removal some time after 2026-01-30.
 kde-plasma/oxygen:5
 kde-frameworks/frameworkintegration:5
 kde-frameworks/knewstuff:5
