@@ -3,6 +3,7 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
+		<remote-id type="github">Sonderstorch/sfftools</remote-id>
 		<remote-id type="sourceforge">sfftools</remote-id>
 	</upstream>
 </pkgmetadata>
