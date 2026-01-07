@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -47,7 +47,10 @@ BDEPEND="
 
 DOCS=( HACKING NEWS README )
 
-PATCHES=( "${FILESDIR}/${PN}-0.5.0-glibmm-2.68-required.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-0.5.0-glibmm-2.68-required.patch"
+	"${FILESDIR}/${P}-boost-1.89.patch" # bug 963489
+)
 
 src_prepare() {
 	cmake_src_prepare
