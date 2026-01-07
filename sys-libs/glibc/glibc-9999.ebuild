@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -54,7 +54,7 @@ SRC_URI+=" systemd? ( https://gitweb.gentoo.org/proj/toolchain/glibc-systemd.git
 
 LICENSE="LGPL-2.1+ BSD HPND ISC inner-net rc PCRE"
 SLOT="2.2"
-IUSE="audit caps cet compile-locales custom-cflags doc gd hash-sysv-compat headers-only +multiarch multilib multilib-bootstrap nscd perl profile selinux sframe +ssp stack-realign +static-libs suid systemd systemtap test vanilla"
+IUSE="audit caps cet clang compile-locales custom-cflags doc gd hash-sysv-compat headers-only +multiarch multilib multilib-bootstrap nscd perl profile selinux sframe +ssp stack-realign +static-libs suid systemd systemtap test vanilla"
 
 # Here's how the cross-compile logic breaks down ...
 #  CTARGET - machine that will target the binaries
@@ -155,9 +155,10 @@ if [[ ${CATEGORY} == cross-* ]] ; then
 else
 	BDEPEND+="
 		>=sys-devel/binutils-2.27
-		|| ( ( >=sys-devel/gcc-6.2 )
-		     ( >=sys-devel/gcc-6.2 >=llvm-core/clang-18 )
-		     ( >=llvm-core/clang-18 >=llvm-runtimes/libgcc-18 ) )
+		clang? ( || ( ( >=sys-devel/gcc-6.2 )
+			( >=sys-devel/gcc-6.2 >=llvm-core/clang-18 )
+			( >=llvm-core/clang-18 >=llvm-runtimes/libgcc-18 ) ) )
+		!clang? ( >=sys-devel/gcc-6.2 )
 	"
 	DEPEND+=" virtual/os-headers "
 	RDEPEND+="
@@ -607,14 +608,59 @@ setup_env() {
 	export glibc__ORIG_CXX=${CXX}
 	export glibc__ORIG_CPP=${CPP}
 
-	# Always use tuple-prefixed toolchain. For non-native ABI glibc's configure
-	# can't detect them automatically due to ${CHOST} mismatch and fallbacks
-	# to unprefixed tools. Similar to multilib.eclass:multilib_toolchain_setup().
-	export CC="$(tc-getCC ${CTARGET})"
-	export CXX="$(tc-getCXX ${CTARGET})"
-	export CPP="$(tc-getCPP ${CTARGET})"
-	export NM="$(tc-getNM ${CTARGET})"
-	export READELF="$(tc-getREADELF ${CTARGET})"
+	if tc-is-clang && ! ( use clang || use custom-cflags ) && ! is_crosscompile ; then
+		export glibc__force_gcc=yes
+		# once this is toggled on, it needs to stay on, since with CPP manipulated
+		# tc-is-clang does not work correctly anymore...
+	fi
+
+	if [[ ${glibc__force_gcc} == "yes" ]] ; then
+		# If we are running in an otherwise clang/llvm environment, we need to
+		# recover the proper gcc and binutils settings here, at least until glibc
+		# is finally building with clang. So let's override everything that is
+		# set in the clang profiles.
+		# Want to shoot yourself into the foot? Set USE="clang" or USE="custom-cflags".
+		# Also, if you are crosscompiling, let's assume you know what you are doing.
+		# Hopefully.
+		# Last, we need the settings of the *build* environment, not of the
+		# target environment...
+
+		local current_binutils_path=$(env CHOST="${CBUILD}" ROOT="${BROOT}" binutils-config -B "${CTARGET}")
+		local current_gcc_path=$(env ROOT="${BROOT}" gcc-config -B)
+		einfo "Overriding clang configuration, since it won't work here"
+
+		export CC="${current_gcc_path}/${CTARGET}-gcc"
+		export CPP="${current_gcc_path}/${CTARGET}-cpp"
+		export CXX="${current_gcc_path}/${CTARGET}-g++"
+		export LD="${current_binutils_path}/ld.bfd"
+		export AR="${current_binutils_path}/ar"
+		export AS="${current_binutils_path}/as"
+		export NM="${current_binutils_path}/nm"
+		export STRIP="${current_binutils_path}/strip"
+		export RANLIB="${current_binutils_path}/ranlib"
+		export OBJCOPY="${current_binutils_path}/objcopy"
+		export STRINGS="${current_binutils_path}/strings"
+		export OBJDUMP="${current_binutils_path}/objdump"
+		export READELF="${current_binutils_path}/readelf"
+		export ADDR2LINE="${current_binutils_path}/addr2line"
+
+		# do we need to also do flags munging here? yes! at least...
+		filter-flags '-fuse-ld=*'
+		filter-flags '-D_FORTIFY_SOURCE=*'
+
+	else
+		# this is the "normal" case
+
+		# Always use tuple-prefixed toolchain. For non-native ABI glibc's configure
+		# can't detect them automatically due to ${CHOST} mismatch and fallbacks
+		# to unprefixed tools. Similar to multilib.eclass:multilib_toolchain_setup().
+		export CC="$(tc-getCC ${CTARGET})"
+		export CXX="$(tc-getCXX ${CTARGET})"
+		export CPP="$(tc-getCPP ${CTARGET})"
+		export NM="$(tc-getNM ${CTARGET})"
+		export READELF="$(tc-getREADELF ${CTARGET})"
+
+	fi
 
 	# We need to move CFLAGS with abi information into CC etc per glibc upstream
 	# requirement. Keep around the original clean value to avoid appending
