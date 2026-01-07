@@ -1,0 +1,11 @@
+diff --color -Naru a/src/providers/oracle/ocispatial/CMakeLists.txt b/src/providers/oracle/ocispatial/CMakeLists.txt
+--- a/src/providers/oracle/ocispatial/CMakeLists.txt	2026-01-07 09:20:54.863975065 +0100
++++ b/src/providers/oracle/ocispatial/CMakeLists.txt	2026-01-07 09:22:21.900468735 +0100
+@@ -20,6 +20,7 @@
+ target_link_libraries(qsqlocispatial
+   ${QT_VERSION_BASE}::Core
+   ${QT_VERSION_BASE}::Sql
++  ${QT_VERSION_BASE}::SqlPrivate
+   ${OCI_LIBRARY}
+ )
+ 

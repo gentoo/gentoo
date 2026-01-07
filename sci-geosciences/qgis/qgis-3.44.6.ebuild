@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -134,6 +134,7 @@ BDEPEND="${PYTHON_DEPS}
 PATCHES=(
 	"${FILESDIR}/${PN}-3.44.3-testReportDir.patch"
 	"${FILESDIR}/${PN}-3.44.5-qt-6.10.patch" # bug 966729
+	"${FILESDIR}/${PN}-3.44.6-qt-6.10.patch" # TODO: upstream; bug 968477
 )
 
 src_prepare() {
