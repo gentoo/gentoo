@@ -1,0 +1,71 @@
+Source: https://gitlab.freedesktop.org/poppler/poppler/-/merge_requests/2013
+
+From 1fccd6fefd96b2934a886ebd12bc27da0afc70bc Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 9 Dec 2020 01:28:25 +0100
+Subject: [PATCH] Move Qt test dependencies into test dir
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ CMakeLists.txt     | 8 ++++----
+ qt5/CMakeLists.txt | 7 +++++--
+ qt6/CMakeLists.txt | 6 ++++--
+ 3 files changed, 13 insertions(+), 8 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 48033dce..4785f2b2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -216,15 +216,15 @@ set(QT5_VERSION "5.15")
+ find_soft_mandatory_package(ENABLE_QT5 Qt5Core ${QT5_VERSION})
+ find_soft_mandatory_package(ENABLE_QT5 Qt5Gui ${QT5_VERSION})
+ find_soft_mandatory_package(ENABLE_QT5 Qt5Xml ${QT5_VERSION})
+-find_soft_mandatory_package(ENABLE_QT5 Qt5Widgets ${QT5_VERSION})
+-find_soft_mandatory_package(ENABLE_QT5 Qt5Test ${QT5_VERSION})
++find_soft_mandatory_package(BUILD_QT5_TESTS Qt5Widgets ${QT5_VERSION})
++find_soft_mandatory_package(BUILD_QT5_TESTS Qt5Test ${QT5_VERSION})
+ 
+ set(QT6_VERSION "6.2")
+ SET(QT_NO_CREATE_VERSIONLESS_TARGETS ON)
+ find_soft_mandatory_package(ENABLE_QT6 Qt6Core ${QT6_VERSION})
+ find_soft_mandatory_package(ENABLE_QT6 Qt6Gui ${QT6_VERSION})
+-find_soft_mandatory_package(ENABLE_QT6 Qt6Widgets ${QT6_VERSION})
+-find_soft_mandatory_package(ENABLE_QT6 Qt6Test ${QT6_VERSION})
++find_soft_mandatory_package(BUILD_QT6_TESTS Qt6Widgets ${QT6_VERSION})
++find_soft_mandatory_package(BUILD_QT6_TESTS Qt6Test ${QT6_VERSION})
+ 
+ add_definitions(-DQT_NO_CAST_FROM_ASCII)
+ add_definitions(-DQT_NO_CAST_FROM_BYTEARRAY)
+diff --git a/qt5/CMakeLists.txt b/qt5/CMakeLists.txt
+index 431d2d35..bd4194e5 100644
+--- a/qt5/CMakeLists.txt
++++ b/qt5/CMakeLists.txt
+@@ -9,5 +9,8 @@ add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050E00)
+ add_definitions(-DQT_NO_DEPRECATED_WARNINGS)
+ 
+ add_subdirectory(src)
+-add_subdirectory(tests)
+-add_subdirectory(demos)
++
++if(BUILD_QT5_TESTS)
++  add_subdirectory(tests)
++  add_subdirectory(demos)
++endif()
+diff --git a/qt6/CMakeLists.txt b/qt6/CMakeLists.txt
+index 89e612d1..23b39d72 100644
+--- a/qt6/CMakeLists.txt
++++ b/qt6/CMakeLists.txt
+@@ -7,5 +7,7 @@ endif()
+ 
+ add_subdirectory(src)
+ 
+-add_subdirectory(tests)
+-add_subdirectory(demos)
++if(BUILD_QT6_TESTS)
++  add_subdirectory(tests)
++  add_subdirectory(demos)
++endif()
+-- 
+2.52.0
+
