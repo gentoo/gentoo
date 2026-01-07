@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file is only for generic masks. For arch-specific masks (i.e.
@@ -12,6 +12,11 @@
 # choice of the compiler. By masking this useflag, the ebuild
 # forcibly resets the compiler to gcc.
 sys-libs/glibc clang
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2026-01-07)
+# openjfx for OpenJDK 26 and 27 is not yet available.
+dev-java/openjdk:26 javafx
+dev-java/openjdk:27 javafx
 
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-12-27)
 # breaks with old in-tree sys-cluster/ampi bug #586746 #830093 #815007
