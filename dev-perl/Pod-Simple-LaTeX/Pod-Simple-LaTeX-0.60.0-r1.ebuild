@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="format Pod as LaTeX"
 SLOT="0"
-KEYWORDS="amd64 ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 ~riscv x86 ~x64-macos ~x64-solaris"
 
 RDEPEND="
 	>=virtual/perl-Pod-Simple-0.10.0

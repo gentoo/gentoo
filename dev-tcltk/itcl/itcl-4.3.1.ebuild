@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}-${MYP}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm64 ppc ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm64 ppc ~riscv ~sparc x86"
 
 RDEPEND=">=dev-lang/tcl-8.6:0="
 DEPEND="${RDEPEND}"

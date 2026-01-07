@@ -9,7 +9,7 @@ SRC_URI="https://sites.math.rutgers.edu/~asbuch/lrcalc/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0/2"
-KEYWORDS="amd64 ~riscv ~x86 ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 ~riscv ~x86 ~x64-macos"
 IUSE="static-libs test"
 RESTRICT="!test? ( test )"
 

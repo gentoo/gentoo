@@ -11,7 +11,7 @@ SRC_URI="https://github.com/zmedico/tarsync/archive/refs/tags/v${PV}.tar.gz -> $
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-linux"
+KEYWORDS="amd64 x86"
 
 DEPEND=">=dev-util/diffball-0.7"
 RDEPEND="${DEPEND}"

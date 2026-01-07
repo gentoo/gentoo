@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="|| ( MIT par )"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~amd64 ~mips ~sparc ~x86 ~x64-macos"
 
 src_compile() {
 	emake -f protoMakefile CC="$(tc-getCC) ${CFLAGS} -c" \

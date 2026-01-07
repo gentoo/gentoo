@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge.jp/mplus-fonts/62344/${MY_P}.tar.xz"
 
 LICENSE="mplus-fonts ipafont? ( IPAfont )"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~loong ppc ~ppc64 x86 ~ppc-macos"
+KEYWORDS="amd64 ~hppa ~loong ppc ~ppc64 x86"
 IUSE="ipafont"
 RESTRICT="binchecks strip"
 

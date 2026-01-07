@@ -453,13 +453,22 @@ _cargo_gen_git_config() {
 	fi
 }
 
+# @FUNCTION: _cargo_needs_target
+# @INTERNAL
+# @DESCRIPTION:
+# Cargo does not apply flags to the build host when --target is given, even if
+# it is the native target, so only pass it when actually needed.
+_cargo_needs_target() {
+	tc-is-cross-compiler || { has multilib-build ${INHERITED} && ! multilib_is_native_abi; }
+}
+
 # @FUNCTION: cargo_target_dir
 # @DESCRIPTION:
 # Return the directory within target that contains the build, e.g.
 # target/aarch64-unknown-linux-gnu/release.
 cargo_target_dir() {
 	local abi
-	tc-is-cross-compiler && abi=/$(rust_abi)
+	_cargo_needs_target && abi=/$(rust_abi)
 	echo "${CARGO_TARGET_DIR:-target}${abi}/$(usex debug debug release)"
 }
 
@@ -776,7 +785,7 @@ cargo_env() {
 
 		# Only tell Cargo to cross-compile when actually needed to avoid the
 		# aforementioned build host vs target flag separation issue.
-		tc-is-cross-compiler || unset CARGO_BUILD_TARGET
+		_cargo_needs_target || unset CARGO_BUILD_TARGET
 
 		"${@}"
 	)

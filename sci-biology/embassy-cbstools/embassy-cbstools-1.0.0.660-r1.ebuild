@@ -7,7 +7,7 @@ EBO_DESCRIPTION="Applications from the CBS group"
 
 inherit autotools emboss-r3
 
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 
 S="${WORKDIR}/CBSTOOLS-1.0.0.650"
 PATCHES=( "${FILESDIR}"/${PN}-1.0.0.650_fix-build-system.patch )

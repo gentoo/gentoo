@@ -1,6 +1,12 @@
 # Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2025-12-27)
+# Provide familiar symlinks on LLVM profiles
+llvm-core/clang-toolchain-symlinks native-symlinks
+llvm-core/lld-toolchain-symlinks native-symlinks
+llvm-core/llvm-toolchain-symlinks native-symlinks
+
 # Sam James <sam@gentoo.org> (2025-07-19)
 # Gradually unforce targets for LLVM profiles as clang temporarily
 # breaking isn't okay there (as it can't then build itself). This means

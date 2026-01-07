@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -196,7 +196,7 @@ multilib_src_install() {
 	# install the extra symlinks
 	if [[ ${CHOST} != *-darwin* ]] ; then
 		local libdir=$(get_libdir)
-		is_crosspkg && into /usr/${CTARGET}
+		is_crosspkg && into /usr/${CTARGET}/usr
 		dolib.so "${libdir}"/libc++_shared.so
 		use static-libs && dolib.a "${libdir}"/libc++_static.a
 	fi

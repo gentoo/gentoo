@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/935367
+--- a/gnulib-tests/test-readutmp.c
++++ b/gnulib-tests/test-readutmp.c
+@@ -43,6 +43,9 @@ main (int argc, char *argv[])
+   STRUCT_UTMP *entries;
+   idx_t num_entries;
+ 
++  fprintf (stderr, "Skipping test: Gentoo: examines host entries, so unreliable in ebuild\n");
++  return 77;
++
+   if (read_utmp (UTMP_FILE, &num_entries, &entries, 0) < 0)
+     {
+       #if READ_UTMP_SUPPORTED

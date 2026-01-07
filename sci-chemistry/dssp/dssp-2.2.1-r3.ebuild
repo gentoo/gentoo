@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.cmbi.ru.nl/pub/molbio/software/dssp-2/${P}.tgz"
 
 LICENSE="Boost-1.0"
 SLOT="0"
-KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="dev-libs/boost:=[bzip2,zlib]"
 DEPEND="${RDEPEND}"

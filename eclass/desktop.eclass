@@ -50,6 +50,7 @@ _DESKTOP_IDS=()
 #             defined in code (including reverse qualified domain if set);
 #             defaults to <command>
 # comment:    Comment (menu entry tooltip), defaults to DESCRIPTION
+# force:      Force-write resulting desktop file (overwrite existing)
 # @CODE
 #
 # Example usage:
@@ -82,7 +83,7 @@ make_desktop_entry() {
 	[[ -z ${1} ]] && die "make_desktop_entry: You must specify at least a command"
 
 	if [[ ${eapi9} ]]; then
-		local args cats cmd comment desktopid entries icon name
+		local args cats cmd comment desktopid entries force icon name
 		while [[ $# -gt 0 ]] ; do
 			case "${1}" in
 			-a|--args)
@@ -95,6 +96,8 @@ make_desktop_entry() {
 				desktopid="${2}";    shift 2 ;;
 			-e|--entry)
 				entries+=( "${2}" ); shift 2 ;;
+			-f|--force)
+				force=1;             shift 1 ;;
 			-i|--icon)
 				icon="${2}";         shift 2 ;;
 			-n|--name)
@@ -259,6 +262,9 @@ make_desktop_entry() {
 			_DESKTOP_IDS+=( "${desktopid}" )
 		fi
 		local desktop="${T}/${desktopid}.desktop"
+		if [[ ! ${force} && -e ${ED}/usr/share/applications/${desktopid}.desktop ]]; then
+			die "make_desktop_entry: desktopid \"${desktopid}\" already exists, must be unique"
+		fi
 	else
 		local desktop_exec="${cmd%%[[:space:]]*}"
 		desktop_exec="${desktop_exec##*/}"

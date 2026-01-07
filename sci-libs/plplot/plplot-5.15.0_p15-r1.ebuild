@@ -20,7 +20,7 @@ S="${WORKDIR}/${P/_p*}"
 
 LICENSE="LGPL-2"
 SLOT="0/14" # SONAME of libplplot.so
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 
 IUSE="cairo cxx doc +dynamic examples fortran gd java jpeg latex lua ocaml octave pdf
 	png python qhull shapefile svg tcl test threads tk truetype wxwidgets X"

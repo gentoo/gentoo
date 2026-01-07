@@ -12,7 +12,7 @@ SRC_URI="https://github.com/wojdyr/xylib/releases/download/v${PV}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="bzip2 gui zlib"
 
 RDEPEND="

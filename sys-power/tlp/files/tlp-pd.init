@@ -1,0 +1,9 @@
+#!/sbin/openrc-run
+command=/usr/sbin/tlp-pd
+name="TLP Profile Daemon"
+command_background=true
+pidfile="/run/tlp-pd.pid"
+
+depend() {
+	need udev
+}

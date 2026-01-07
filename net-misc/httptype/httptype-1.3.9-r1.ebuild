@@ -9,7 +9,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-1"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 x86 ~amd64-linux"
+KEYWORDS="amd64 ppc ppc64 x86"
 
 RDEPEND="dev-lang/perl"
 

@@ -1,0 +1,56 @@
+From a871dd868dce5204e19602263fbf89311c16a54b Mon Sep 17 00:00:00 2001
+From: Paolo Bacchilega <paobac@src.gnome.org>
+Date: Sun, 21 Dec 2025 08:14:15 +0100
+Subject: [PATCH] Fixed compilation when lcms2 is disabled
+
+Fixes https://gitlab.gnome.org/GNOME/gthumb/-/issues/376
+---
+ extensions/cairo_io/cairo-image-surface-tiff.c | 2 ++
+ gthumb/gth-image.c                             | 4 ++++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/extensions/cairo_io/cairo-image-surface-tiff.c b/extensions/cairo_io/cairo-image-surface-tiff.c
+index d948ff6d..60c7fdf8 100644
+--- a/extensions/cairo_io/cairo-image-surface-tiff.c
++++ b/extensions/cairo_io/cairo-image-surface-tiff.c
+@@ -259,6 +259,7 @@ _cairo_image_surface_create_from_tiff (GInputStream  *istream,
+ 				orientation = exif_orientation;
+ 			}
+ 
++#if HAVE_LCMS2
+ 			uint16_t colorspace;
+ 			if ((profile == NULL) && (TIFFGetField (tif, EXIFTAG_COLORSPACE, &colorspace) == 1)) {
+ 				//g_print ("> colorspace: %u\n", colorspace);
+@@ -266,6 +267,7 @@ _cairo_image_surface_create_from_tiff (GInputStream  *istream,
+ 					profile = gth_icc_profile_new_srgb ();
+ 				}
+ 			}
++#endif
+ 		}
+ 	}
+ 
+diff --git a/gthumb/gth-image.c b/gthumb/gth-image.c
+index 49e3a7fe..860f0991 100644
+--- a/gthumb/gth-image.c
++++ b/gthumb/gth-image.c
+@@ -481,6 +481,8 @@ gth_image_get_original_profile_name (GthImage *image)
+ /* -- gth_image_apply_icc_profile -- */
+ 
+ 
++#if HAVE_LCMS2
++
+ static gboolean
+ gth_image_apply_tranform (GthImage *image,
+ 			  GthICCTransform *transform,
+@@ -513,6 +515,8 @@ gth_image_apply_tranform (GthImage *image,
+ 	return applied;
+ }
+ 
++#endif
++
+ 
+ gboolean
+ gth_image_apply_icc_profile (GthImage      *image,
+-- 
+GitLab
+

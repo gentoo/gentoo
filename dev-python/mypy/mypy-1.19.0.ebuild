@@ -22,7 +22,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc ~ppc64 ~riscv"
 IUSE="native-extensions"
 
 # stubgen collides with this package: https://bugs.gentoo.org/585594

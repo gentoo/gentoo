@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..13} )
-inherit cmake desktop flag-o-matic python-single-r1 xdg
+inherit cmake desktop dot-a flag-o-matic python-single-r1 xdg
 
 DESCRIPTION="Automatic 3d tetrahedral mesh generator"
 HOMEPAGE="https://ngsolve.org/ https://github.com/NGSolve/netgen"
@@ -115,6 +115,8 @@ src_prepare() {
 }
 
 src_configure() {
+	use gui && lto-guarantee-fat
+
 	local mycmakeargs=(
 		# currently not working in a sandbox, expects netgen to be installed
 		# see https://github.com/NGSolve/netgen/issues/132
@@ -188,6 +190,7 @@ src_test() {
 
 src_install() {
 	cmake_src_install
+	strip-lto-bytecode
 
 	use python && python_optimize
 

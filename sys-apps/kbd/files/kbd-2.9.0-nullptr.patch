@@ -1,0 +1,45 @@
+https://github.com/legionus/kbd/commit/c5473634bbb653f0b61bd237d0e4bdfc9cfe3650
+
+From c5473634bbb653f0b61bd237d0e4bdfc9cfe3650 Mon Sep 17 00:00:00 2001
+From: Bohai Li <lbhlbhlbh2002@icloud.com>
+Date: Wed, 19 Nov 2025 00:31:52 +0800
+Subject: [PATCH] Fix NULL reference in option parser
+
+If an option that needs an argument is given, but the argument is
+actually missing, the optind will increase by 1 and return, and if
+the option is the last option, a NULL reference occurs at
+setfont.c:290. This bug is fixed by returning '!' instead of '?' to
+main and process this condition separately.
+
+Signed-off-by: Bohai Li <lbhlbhlbh2002@icloud.com>
+---
+ src/setfont.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/src/setfont.c b/src/setfont.c
+index 18eb6386..dc336c18 100644
+--- a/src/setfont.c
++++ b/src/setfont.c
+@@ -158,8 +158,8 @@ kbd_getopt(int argc, char **argv, const struct kbd_option *opts)
+ 	return '?';
+ 
+ required_argument:
+-	kbd_warning(0, "option '%s' requires an argument", name);
+-	return '?';
++	optind--;
++	return '!';
+ }
+ 
+ int main(int argc, char *argv[])
+@@ -296,6 +296,10 @@ int main(int argc, char *argv[])
+ 					kbd_error(EX_USAGE, 0, _("Too many input files."));
+ 				ifiles[ifilct++] = argv[optind++];
+ 				break;
++			case '!':
++				kbd_warning(0, "option '%s' requires an argument", argv[optind]);
++				usage(EX_USAGE, opthelp);
++				break;
+ 		}
+ 	}
+ 
+

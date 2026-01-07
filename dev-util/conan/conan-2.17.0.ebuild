@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{12..13} )
 PYTHON_REQ_USE="sqlite"
 
 inherit distutils-r1
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/conan-io/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.g
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	>=dev-python/bottle-0.12.8[${PYTHON_USEDEP}]

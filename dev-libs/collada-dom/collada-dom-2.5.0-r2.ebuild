@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,7 +27,9 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}/${PN}-2.5.0-boost-1.85.patch" )
+PATCHES=(
+	"${FILESDIR}"/${P}-boost-1.{85,89}.patch # bugs 932316, 968458
+)
 
 src_configure() {
 	# bug 618960

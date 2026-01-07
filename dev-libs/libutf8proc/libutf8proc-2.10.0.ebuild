@@ -14,7 +14,7 @@ SRC_URI="https://github.com/JuliaStrings/${PN#lib}/archive/v${PV}/${P#lib}.tar.g
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos"
 IUSE="cjk static-libs test"
 RESTRICT="!test? ( test )"
 

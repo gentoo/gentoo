@@ -1,0 +1,20 @@
+--- a/source/ada/lsp-ada_contexts.adb	2025-12-25 21:37:25.412257712 +0100
++++ b/source/ada/lsp-ada_contexts.adb	2025-12-25 21:39:02.018150826 +0100
+@@ -27,7 +27,7 @@
+ with GPR2.Path_Name;
+ with GPR2.Project.Attribute;
+ with GPR2.Project.Attribute_Index;
+-with GPR2.Project.View.Set;
++with GPR2.Project.View.Vector;
+ with GPR2.Build.Source;
+ with GPR2.Build.Source.Sets;
+ 
+@@ -640,7 +640,7 @@
+          Self.External_Source_Dirs.Clear;
+ 
+          declare
+-            Views : constant GPR2.Project.View.Set.Object :=
++            Views : constant GPR2.Project.View.Vector.Object :=
+                Root.Closure (Include_Self => True);
+          begin
+             for View of Views

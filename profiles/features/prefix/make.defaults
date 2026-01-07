@@ -1,5 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Override the branding.eclass defaults.
+BRANDING_OS_NAME="Gentoo Prefix"
+BRANDING_OS_PRETTY_NAME="${BRANDING_OS_NAME}"
 
 # Michael Haubenwallner <haubi@gentoo.org> (2016-04-19)
 # We can not use xattrs by default in Prefix.

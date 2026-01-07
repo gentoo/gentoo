@@ -16,7 +16,7 @@ if [[ "${PV}" = 9999* ]] ; then
 else
 	[[ "${PV}" == *_pre* ]] && inherit autotools
 	SRC_URI="https://download.geany.org/${P}.tar.bz2"
-	KEYWORDS="amd64 arm ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 arm ppc ppc64 ~riscv ~sparc x86"
 fi
 LICENSE="GPL-2+ HPND LGPL-2+ LGPL-2.1+"
 SLOT="0"

@@ -13,7 +13,7 @@ SRC_URI="https://dev.gentoo.org/~monsieurp/packages/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 x86"
 IUSE="doc opengl"
 
 RDEPEND="

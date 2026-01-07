@@ -1,0 +1,31 @@
+From 3a3388c4c50e8735af125c1af4d89e457f5e9035 Mon Sep 17 00:00:00 2001
+From: plenfulcleadent <plenful.cleadent@proton.me>
+Date: Sun, 21 Dec 2025 23:33:02 +0100
+Subject: [PATCH] fix building with disable wayland (#2513)
+
+QWaylandApplication definition doesn't exist on wayland disabled qt
+binaries
+---
+ src/frontend/qt_sdl/Screen.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/frontend/qt_sdl/Screen.cpp b/src/frontend/qt_sdl/Screen.cpp
+index 6d58fff981..3126ea8fde 100755
+--- a/src/frontend/qt_sdl/Screen.cpp
++++ b/src/frontend/qt_sdl/Screen.cpp
+@@ -1299,6 +1299,7 @@ std::optional<WindowInfo> ScreenPanelGL::getWindowInfo()
+         wi.display_connection = x11->display();
+         wi.window_handle = reinterpret_cast<void*>(winId());
+     }
++    #if defined(WAYLAND_ENABLED)
+     else if (platform_name == QStringLiteral("wayland"))
+     {
+         wi.type = WindowInfo::Type::Wayland;
+@@ -1306,6 +1307,7 @@ std::optional<WindowInfo> ScreenPanelGL::getWindowInfo()
+         wi.display_connection = wl->display();
+         wi.window_handle = reinterpret_cast<void*>(winId());
+     }
++    #endif
+     #else
+     QPlatformNativeInterface* pni = QGuiApplication::platformNativeInterface();
+     if (platform_name == QStringLiteral("xcb"))

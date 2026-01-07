@@ -13,7 +13,7 @@ DESCRIPTION="Flexible, composited X window manager"
 
 LICENSE="GPL-2+"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="accessibility gles2-only lock +shortcuts systemd"
 
 RESTRICT="test"
@@ -99,6 +99,8 @@ BDEPEND="
 	>=kde-frameworks/kcmutils-${KFMIN}:6
 "
 BDEPEND+=" || ( >=dev-qt/qtbase-6.10:6[wayland] <dev-qt/qtwayland-6.10:6 )"
+
+PATCHES=( "${FILESDIR}/${P}-fix-qt-6.10.2.patch" )
 
 src_prepare() {
 	ecm_src_prepare

@@ -1,0 +1,26 @@
+From: Soeren Apel <redacted>
+Date: Mon, 10 Nov 2025 00:27:51 +0000 (+0100)
+Subject: CMakeLists.txt: Remove dependency on system
+X-Git-Url: https://sigrok.org/gitweb/?p=pulseview.git;a=commitdiff_plain;h=af02198741b4e57c9f9b796bd5e6c0f2ae9f2f2b
+
+CMakeLists.txt: Remove dependency on system
+
+See
+https://bbs.archlinux.org/viewtopic.php?id=309669
+and
+https://github.com/boostorg/system/commit/7a495bb46d7ccd808e4be2a6589260839b0fd3a3
+---
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8580fa8e..e0520e0f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -183,7 +183,7 @@ else()
+ 	set(QT_LIBRARIES Qt6::Gui Qt6::Widgets Qt6::Svg)
+ endif()
+ 
+-set(BOOSTCOMPS filesystem serialization system)
++set(BOOSTCOMPS filesystem serialization)
+ if(ENABLE_TESTS)
+ 	list(APPEND BOOSTCOMPS unit_test_framework)
+ endif()

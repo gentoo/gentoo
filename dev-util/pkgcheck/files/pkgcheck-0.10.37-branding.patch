@@ -1,0 +1,44 @@
+From efa950dc665e998e7fb31c41678579d52ee2e657 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Mon, 22 Dec 2025 18:16:30 +0000
+Subject: [PATCH] InheritsCheck: Whitelist branding.eclass from UnusedInherits
+
+It can be used purely for variables recognised by external build tools
+rather than the ebuild itself.
+
+Resolves: https://github.com/pkgcore/pkgcheck/issues/765
+Signed-off-by: James Le Cuirot <chewi@gentoo.org>
+Closes: https://github.com/pkgcore/pkgcheck/pull/766
+Signed-off-by: Arthur Zamarin <arthurzam@gentoo.org>
+---
+ src/pkgcheck/checks/codingstyle.py | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/src/pkgcheck/checks/codingstyle.py b/src/pkgcheck/checks/codingstyle.py
+index b2126429b..6cd07148d 100644
+--- a/src/pkgcheck/checks/codingstyle.py
++++ b/src/pkgcheck/checks/codingstyle.py
+@@ -817,6 +817,10 @@ class InheritsCheck(Check):
+     )
+     required_addons = (addons.eclass.EclassAddon,)
+ 
++    # branding.eclass can be used purely for variables recognised by external
++    # build tools rather than the ebuild itself.
++    unused_whitelist = frozenset({"branding"})
++
+     def __init__(self, *args, eclass_addon):
+         super().__init__(*args)
+         self.eclass_cache = eclass_addon.eclasses
+@@ -961,7 +965,11 @@ def feed(self, pkg):
+                 )
+                 if exported_eclass_keys.intersection(self.unused_eclass_skiplist):
+                     unused.discard(eclass)
+-                elif not self.eclass_cache[eclass].exported_function_names and exported_eclass_keys:
++                elif (
++                    not self.eclass_cache[eclass].exported_function_names
++                    and exported_eclass_keys
++                    or eclass in self.unused_whitelist
++                ):
+                     # ignore eclasses that export ebuild metadata (e.g.
+                     # SRC_URI, S, ...) and no functions
+                     unused.discard(eclass)

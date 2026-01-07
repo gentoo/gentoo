@@ -51,7 +51,7 @@ pkg_pretend() {
 			ERROR_BRIDGE="You will also need support for 802.1d"
 			ERROR_BRIDGE+=" Ethernet Bridging for some network configurations."
 
-			if use amd64 || use amd64-linux; then
+			if use amd64; then
 				if grep -q AuthenticAMD /proc/cpuinfo; then
 					CONFIG_CHECK+=" ~KVM_AMD"
 				elif grep -q GenuineIntel /proc/cpuinfo; then

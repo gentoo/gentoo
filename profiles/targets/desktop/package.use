@@ -1,6 +1,18 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-16)
+# Enable IUSE qt5 for current stable pkgs with USE-revdeps before dropping
+# it from make.defaults. # Bug #948836
+<app-text/poppler-25.12.0 qt5
+<dev-libs/quazip-1.5 qt5
+<kde-plasma/breeze-6.5.0:6 qt5
+<kde-plasma/oxygen-6.5.0:6 qt5
+<kde-plasma/plasma-integration-6.5.0:6 qt5
+<kde-plasma/plasma-meta-6.5.5 qt5
+<sys-auth/polkit-qt-0.200.0-r1 qt5
+<x11-libs/qwt-6.3.0 qt5
+
 # Sam James <sam@gentoo.org> (2025-10-18)
 # media-libs/freetype works better with media-libs/harfbuzz support.
 media-libs/freetype harfbuzz

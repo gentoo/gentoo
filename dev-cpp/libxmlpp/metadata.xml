@@ -7,5 +7,6 @@
   </maintainer>
   <upstream>
     <remote-id type="github">libxmlplusplus/libxmlplusplus</remote-id>
+    <remote-id type="sourceforge">libxmlplusplus</remote-id>
   </upstream>
 </pkgmetadata>

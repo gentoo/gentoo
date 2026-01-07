@@ -1,4 +1,4 @@
-# Copyright 2020-2025 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ HOMEPAGE="https://www.sysprof.com/"
 
 LICENSE="GPL-3+ GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~x86"
+KEYWORDS="amd64 ~arm64 ~loong x86"
 
 src_install() {
 	insinto /usr/share/dbus-1/interfaces/

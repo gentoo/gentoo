@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/panotools/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/3"
-KEYWORDS="amd64 arm64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 arm64 x86"
 IUSE="java static-libs suitesparse"
 
 DEPEND="media-libs/libpng:=

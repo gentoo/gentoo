@@ -20,7 +20,7 @@ SRC_URI="https://github.com/rails/spring/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="1.1"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x64-macos ~x64-solaris"
 
 IUSE="test"
 

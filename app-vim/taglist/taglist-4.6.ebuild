@@ -9,7 +9,7 @@ DESCRIPTION="vim plugin: ctags-based source code browser"
 HOMEPAGE="https://vim-taglist.sourceforge.net/"
 
 LICENSE="vim"
-KEYWORDS="~alpha amd64 ~hppa ~mips ppc ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~hppa ~mips ppc ~sparc x86"
 
 RDEPEND="dev-util/ctags"
 

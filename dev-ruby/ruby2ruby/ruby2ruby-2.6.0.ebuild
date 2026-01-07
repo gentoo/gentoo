@@ -1,0 +1,31 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+USE_RUBY="ruby32 ruby33 ruby34"
+
+RUBY_FAKEGEM_EXTRADOC="README.rdoc History.rdoc"
+
+inherit ruby-fakegem
+
+DESCRIPTION="Generates readable ruby from ParseTree"
+HOMEPAGE="https://github.com/seattlerb/ruby2ruby"
+
+LICENSE="GPL-2"
+SLOT="2"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x64-macos ~x64-solaris"
+IUSE="test"
+
+ruby_add_rdepend "
+	>=dev-ruby/sexp_processor-4.6.0:4
+"
+ruby_add_bdepend "test? ( >=dev-ruby/minitest-5.3:5 dev-ruby/ruby_parser >=dev-ruby/sexp_processor-4.10.0:4 )"
+
+all_ruby_prepare() {
+	sed -i -e '/plugin :isolate/ s:^:#:' Rakefile || die
+}
+
+each_ruby_test() {
+	${RUBY} -Ilib:. -e 'Dir["test/test_*.rb"].each{|f| require f}' || die
+}

@@ -13,7 +13,7 @@ SRC_URI="https://webclu.bio.wzw.tum.de/stride/${PN}.tar.gz -> ${PN}-${UPSTREAM_V
 
 LICENSE="STRIDE"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc ~x86"
 RESTRICT="mirror bindist"
 
 S="${WORKDIR}"

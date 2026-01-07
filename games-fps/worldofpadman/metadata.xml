@@ -5,9 +5,6 @@
     <email>games@gentoo.org</email>
     <name>Gentoo Games Project</name>
   </maintainer>
-  <use>
-    <flag name="maps">Install extra maps (PadPack)</flag>
-  </use>
   <upstream>
     <remote-id type="github">PadWorld-Entertainment/worldofpadman</remote-id>
     <remote-id type="sourceforge">worldofpadman</remote-id>

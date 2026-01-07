@@ -10,7 +10,7 @@ SRC_URI="https://downloads.sourceforge.net/enlightenment/${P}.tar.xz"
 
 LICENSE="|| ( BSD GPL-2 )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~x64-solaris"
 IUSE="xcf"
 
 RDEPEND=">=media-libs/imlib2-${PV}"

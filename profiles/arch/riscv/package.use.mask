@@ -1,6 +1,14 @@
 # Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alfred Wingate <parona@protonmail.com> (2025-12-24)
+# media-libs/jasper is not keyworded here
+media-libs/gegl jpeg2k
+
+# Sam James <sam@gentoo.org> (2025-12-18)
+# dev-lang/ada-bootstrap exists here
+>=sys-devel/gcc-11 -ada
+
 # Sam James <sam@gentoo.org> (2025-10-28)
 # Portability issues with dev-libs/apache-arrow (bug #923968).
 sci-libs/gdal parquet

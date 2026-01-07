@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]]; then
 	LIVE_DEPEND=">=x11-misc/util-macros-1.18"
 else
 	SRC_URI="https://gitlab.com/kicad/services/${PN}/-/archive/${PV}/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~riscv"
+	KEYWORDS="amd64 ~riscv"
 fi
 
 LICENSE="|| ( GPL-3+ CC-BY-3.0 ) GPL-2"

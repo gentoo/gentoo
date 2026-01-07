@@ -11,7 +11,7 @@ SRC_URI="https://github.com/agl/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~loong x86 ~ppc-macos"
+KEYWORDS="amd64 ~loong x86"
 IUSE="gif jpeg png tiff webp"
 
 RDEPEND="media-libs/leptonica[gif?,jpeg?,png?,tiff?,webp?]"

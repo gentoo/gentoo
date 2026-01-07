@@ -15,7 +15,7 @@ SRC_URI="https://downloads.sourceforge.net/project/pysvn/pysvn/V${PV}/${P}.tar.g
 
 LICENSE="Apache-1.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~arm ppc x86"
 IUSE="doc examples"
 
 DEPEND="

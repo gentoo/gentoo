@@ -7,7 +7,6 @@
   </maintainer>
   <use>
     <flag name="localsearch">Install the <pkg>app-misc/localsearch</pkg> package for actual data mining support for tinysparql</flag>
-    <flag name="miners">Install the <pkg>app-misc/localsearch</pkg> package for actual data mining support for tracker</flag>
     <flag name="stemmer">Add word stemming via <pkg>dev-libs/snowball-stemmer</pkg>.</flag>
   </use>
   <upstream>

@@ -12,7 +12,7 @@ DESCRIPTION="Interface between RELAX NG validators and datatype libraries"
 HOMEPAGE="https://relaxng.org/"
 SRC_URI="https://repo1.maven.org/maven2/relaxngDatatype/relaxngDatatype/${PV}/relaxngDatatype-${PV}-sources.jar"
 
-KEYWORDS="amd64 arm64 ppc64 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 arm64 ppc64 ~x64-macos ~x64-solaris"
 LICENSE="BSD"
 SLOT="0"
 

@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_EXTRADOC="FAQ.txt CHANGELOG.md README.md"
 
@@ -14,7 +14,7 @@ HOMEPAGE="https://www.manageiq.org/optimist/"
 LICENSE="MIT"
 
 SLOT="3"
-KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x64-macos ~x64-solaris"
 IUSE="test"
 
 ruby_add_bdepend "test? ( dev-ruby/chronic )"

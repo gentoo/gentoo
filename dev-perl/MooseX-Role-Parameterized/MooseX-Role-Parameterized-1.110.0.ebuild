@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Roles with composition parameters"
 
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ppc ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 arm ~arm64 ppc ~riscv x86 ~x64-macos"
 
 RDEPEND="
 	!<=dev-perl/MooseX-Storage-0.460.0

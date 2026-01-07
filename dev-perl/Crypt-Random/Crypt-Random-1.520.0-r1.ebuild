@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Cryptographically Secure, True Random Number Generator"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~hppa ~sparc x86"
 IUSE=""
 
 RDEPEND="

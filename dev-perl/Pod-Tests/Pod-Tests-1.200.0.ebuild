@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Extracts embedded tests and code examples from POD"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~hppa ppc x86"
 
 RDEPEND="virtual/perl-File-Spec
 "

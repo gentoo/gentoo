@@ -11,7 +11,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/libgsf"
 
 LICENSE="LGPL-2.1"
 SLOT="0/114" # libgsf-1.so version
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~x64-solaris"
 IUSE="bzip2 gtk +introspection test"
 RESTRICT="!test? ( test )"
 

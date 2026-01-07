@@ -79,6 +79,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-8.0.8-fix-compile-error-due-to-deleted-constructor.patch"
 	"${FILESDIR}/boost_issue_402.patch"
 	"${FILESDIR}/${PN}-8.0.12-sconstruct.patch"
+	# removed in boost-1.89.0, unnecessary earlier
+	"${FILESDIR}/${PN}-8.0.12-boost-system.patch"
 )
 
 python_check_deps() {

@@ -1,0 +1,19 @@
+it fails to build with shared libs, force static for now
+see https://bugs.gentoo.org/957755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -237,14 +237,8 @@ feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
+ 
+ # Unit tests disabled: use a static lib
+ # Unit tests enabled: use shared libs, to speed up linking
+-if(BUILD_TESTING)
+-    set(RG_LIBRARY_TYPE SHARED)
+-    message(STATUS "Building unit tests, using shared libraries")
+-else()
+     set(RG_LIBRARY_TYPE STATIC)
+     set(ROSEGARDENPRIVATE_STATIC_BUILD TRUE) # for generating rosegardenprivate-export.h
+-    message(STATUS "Not building unit tests, using a static library for rosegarden")
+-endif()
+ 
+ #########################
+ # target for cppcheck

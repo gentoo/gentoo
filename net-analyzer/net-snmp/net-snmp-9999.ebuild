@@ -28,7 +28,7 @@ LICENSE="HPND BSD GPL-2"
 SLOT="0/40"
 IUSE="
 	X bzip2 doc elf kmem ipv6 lm-sensors mfd-rewrites minimal mysql
-	netlink pcap pci pcre perl python rpm selinux smux ssl tcpd ucd-compat valgrind zlib
+	pcap pci pcre perl python rpm selinux smux ssl tcpd ucd-compat valgrind zlib
 	${GENTOO_PERL_USESTRING}
 "
 REQUIRED_USE="
@@ -37,12 +37,12 @@ REQUIRED_USE="
 "
 
 COMMON_DEPEND="
+	dev-libs/libnl:3
 	virtual/libcrypt:=
 	bzip2? ( app-arch/bzip2 )
 	elf? ( dev-libs/elfutils )
 	lm-sensors? ( sys-apps/lm-sensors )
 	mysql? ( dev-db/mysql-connector-c:0= )
-	netlink? ( dev-libs/libnl:3 )
 	pcap? ( net-libs/libpcap )
 	pci? ( sys-apps/pciutils )
 	pcre? ( dev-libs/libpcre2 )
@@ -140,7 +140,7 @@ src_configure() {
 		$(use_with elf) \
 		$(use_with kmem kmem-usage) \
 		$(use_with mysql) \
-		$(use_with netlink nl) \
+		--with-nl \
 		$(use_with pcap) \
 		$(use_with pci) \
 		$(use_with pcre pcre2-8) \
@@ -177,6 +177,9 @@ src_test() {
 }
 
 src_install() {
+	# https://github.com/net-snmp/net-snmp/issues/1035 (bug #967912)
+	sed -i -e 's:-Werror=declaration-after-statement ::' net-snmp-config || die
+
 	# bug #317965
 	emake -j1 DESTDIR="${D}" install
 

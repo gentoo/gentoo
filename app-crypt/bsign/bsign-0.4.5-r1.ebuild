@@ -11,7 +11,7 @@ SRC_URI="mirror://debian/pool/main/b/${PN}/${PN}_${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc ~x86 ~x86-linux ~ppc-macos"
+KEYWORDS="~amd64 ppc ~x86"
 IUSE="static-libs"
 
 PATCHES=(

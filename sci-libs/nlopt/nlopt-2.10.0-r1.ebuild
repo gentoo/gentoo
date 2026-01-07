@@ -15,7 +15,7 @@ SRC_URI="https://github.com/stevengj/nlopt/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1 MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 ~ppc ppc64 ~riscv ~x86"
 IUSE="guile octave python test"
 REQUIRED_USE="guile? ( ${GUILE_REQUIRED_USE} ) python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"

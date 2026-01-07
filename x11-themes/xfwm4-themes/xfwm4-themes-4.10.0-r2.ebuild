@@ -9,7 +9,7 @@ SRC_URI="https://archive.xfce.org/src/art/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 arm ~hppa ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm ~hppa ppc ppc64 ~sparc x86"
 RESTRICT="binchecks strip"
 
 RDEPEND=">=xfce-base/xfwm4-4.10"

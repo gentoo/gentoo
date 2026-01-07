@@ -1,0 +1,11 @@
+--- a/src/tlfloat/CMakeLists.txt	2025-12-28 17:16:56.947900808 +0100
++++ b/src/tlfloat/CMakeLists.txt	2025-12-28 17:28:35.570496939 +0100
+@@ -1,5 +1,8 @@
+ if (BUILD_LIBS)
+   add_library(tlfloat_inline OBJECT arith.cpp misc.cpp trig.cpp logexp.cpp invtrig.cpp hyp.cpp erfgamma.cpp)
++  set_target_properties(tlfloat_inline PROPERTIES
++    POSITION_INDEPENDENT_CODE ON
++  )
+   target_compile_options(tlfloat_inline PRIVATE ${NOEXCEPT_CXX_FLAGS})
+   if (ENABLE_INLINING AND "${LC_CMAKE_BUILD_TYPE}" STREQUAL "release")
+     target_compile_options(tlfloat_inline PRIVATE ${INLINE_CXX_FLAGS})

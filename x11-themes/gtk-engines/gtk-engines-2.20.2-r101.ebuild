@@ -15,7 +15,7 @@ HOMEPAGE="https://www.gtk.org/"
 
 LICENSE="LGPL-2.1"
 SLOT="2"
-KEYWORDS="amd64 arm ~arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~x64-solaris"
+KEYWORDS="amd64 arm ~arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~x64-solaris"
 IUSE="accessibility lua"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 

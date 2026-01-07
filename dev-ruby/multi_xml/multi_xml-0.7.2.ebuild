@@ -22,7 +22,7 @@ SRC_URI="https://github.com/sferik/multi_xml/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="doc test"
 
 ruby_add_rdepend ">=dev-ruby/bigdecimal-3.1:0"

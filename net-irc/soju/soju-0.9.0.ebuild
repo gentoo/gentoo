@@ -1,5 +1,6 @@
 # Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
 EAPI=8
 
 inherit go-module systemd tmpfiles
@@ -12,7 +13,7 @@ S="${WORKDIR}/soju"
 
 LICENSE="AGPL-3 Apache-2.0 MIT BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv"
+KEYWORDS="amd64 ~arm arm64 ~riscv"
 IUSE="moderncsqlite +sqlite pam"
 REQUIRED_USE="?? ( moderncsqlite sqlite )"
 

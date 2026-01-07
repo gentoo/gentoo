@@ -23,7 +23,7 @@ else
 		SRC_URI="https://github.com/ukoethe/${PN}/releases/download/Version-${PV//\./-}/${P}-src.tar.gz"
 	fi
 
-	KEYWORDS="amd64 arm64 ~sparc x86 ~amd64-linux ~x86-linux ~x64-solaris"
+	KEYWORDS="amd64 arm64 ~sparc x86 ~x64-solaris"
 fi
 
 LICENSE="MIT"

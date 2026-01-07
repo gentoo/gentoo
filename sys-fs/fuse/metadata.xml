@@ -4,6 +4,9 @@
 	<maintainer type="project">
 		<email>base-system@gentoo.org</email>
 	</maintainer>
+	<use>
+		<flag name="systemtap">Enable SystemTap/DTrace tracing</flag>
+	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:fuse:fuse</remote-id>
 		<remote-id type="github">libfuse/libfuse</remote-id>

@@ -26,6 +26,10 @@ BDEPEND="${PYTHON_DEPS}
 	dev-util/gperf
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-fix_lld.patch #918937
+)
+
 src_configure() {
 	local emesonargs=(
 		$(meson_feature audit)

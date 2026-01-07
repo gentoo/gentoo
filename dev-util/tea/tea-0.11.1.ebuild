@@ -16,7 +16,7 @@ S="${WORKDIR}/tea"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 DOCS=( CHANGELOG.md README.md )
 

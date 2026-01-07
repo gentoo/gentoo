@@ -9,7 +9,7 @@ DESCRIPTION="vim plugin: eselect syntax highlighting, filetype and indent settin
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 
 LICENSE="vim"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos"
 
 VIM_PLUGIN_HELPFILES="${PN}"
 VIM_PLUGIN_MESSAGES="filetype"

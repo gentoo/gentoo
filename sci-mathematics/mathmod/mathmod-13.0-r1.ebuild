@@ -22,8 +22,9 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	# https://github.com/parisolab/mathmod/pull/288.patch
+	# both merged
 	"${FILESDIR}"/${PN}-13.0-missing_include.patch
+	"${FILESDIR}"/${PN}-13.0-fix_cxx20.patch
 )
 
 src_configure() {

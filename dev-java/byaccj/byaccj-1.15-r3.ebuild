@@ -12,7 +12,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${MY_P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="amd64 arm64 ppc64 ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 arm64 ppc64 ~x64-macos"
 
 S="${WORKDIR}/${PN}${PV}"
 

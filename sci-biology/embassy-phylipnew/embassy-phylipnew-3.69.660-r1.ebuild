@@ -9,7 +9,7 @@ inherit autotools emboss-r3 flag-o-matic
 
 LICENSE+=" free-noncomm"
 
-KEYWORDS="~amd64 ~x86 ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 
 S="${WORKDIR}/PHYLIPNEW-3.69.650"
 PATCHES=(

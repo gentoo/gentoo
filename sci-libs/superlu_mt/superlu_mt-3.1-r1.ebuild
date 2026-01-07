@@ -14,7 +14,7 @@ SRC_URI="https://portal.nersc.gov/project/sparse/superlu/${PN}_${PV}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${SOVERSION}"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="doc examples int64 openmp static-libs test threads"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="|| ( openmp threads )"

@@ -16,7 +16,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tgz"
 
 LICENSE="BSD"
 SLOT="0/4.54"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-solaris"
 IUSE="abyss +cgi +curl +cxx +libxml2 threads test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( abyss curl cxx )"

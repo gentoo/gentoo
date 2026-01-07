@@ -13,7 +13,7 @@ SRC_URI="https://github.com/mongodb/mongo-c-driver/releases/download/${PV}/${P}.
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm64 ~hppa ~ppc ~riscv x86"
+KEYWORDS="~alpha amd64 arm64 ~hppa ~mips ~ppc ~riscv ~s390 x86"
 IUSE="debug examples icu sasl ssl static-libs test +test-full"
 REQUIRED_USE="test? ( static-libs )"
 

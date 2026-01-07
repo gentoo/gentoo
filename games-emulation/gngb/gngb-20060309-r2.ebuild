@@ -11,7 +11,7 @@ SRC_URI="http://m.peponas.free.fr/gngb/download/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~amd64 ~x86"
 IUSE="opengl"
 
 RDEPEND="

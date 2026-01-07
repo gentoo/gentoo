@@ -19,7 +19,7 @@ else
 	   -> ${P}.gh.tar.gz"
 	S="${WORKDIR}/Emacs-MATLAB-Mode-${COMMIT}"
 
-	KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 ~ppc x86"
 fi
 
 LICENSE="GPL-2+"

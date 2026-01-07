@@ -1,6 +1,0 @@
-# Copyright 1999-2025 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
-
-# Fabian Groffen <grobian@gentoo.org> (2024-03-08)
-# un-force pie, won't work on this arch
-sys-devel/gcc -pie

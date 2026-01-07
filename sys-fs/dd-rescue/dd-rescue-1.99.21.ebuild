@@ -19,7 +19,7 @@ else
 	SRC_URI="http://www.garloff.de/kurt/linux/ddrescue/${MY_P}.tar.bz2"
 	S="${WORKDIR}/${MY_P}"
 
-	KEYWORDS="amd64 ~arm ~arm64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+	KEYWORDS="amd64 ~arm ~arm64 ~mips ppc ppc64 ~sparc x86"
 fi
 
 LICENSE="|| ( GPL-2 GPL-3 )"

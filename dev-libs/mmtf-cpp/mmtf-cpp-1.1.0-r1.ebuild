@@ -11,7 +11,7 @@ SRC_URI="https://github.com/rcsb/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~amd64 ~x86 ~x64-macos"
 
 DEPEND="|| ( dev-cpp/msgpack-cxx dev-libs/msgpack[cxx(-)] )"
 RDEPEND="${DEPEND}"

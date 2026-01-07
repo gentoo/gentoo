@@ -13,7 +13,7 @@ SRC_URI="
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 arm ~hppa ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm ~hppa ~ppc ~ppc64 ~riscv ~sparc x86"
 
 DEPEND="
 	>=dev-libs/glib-2.50.0

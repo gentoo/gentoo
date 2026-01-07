@@ -11,7 +11,7 @@ SRC_URI="http://www.ghostgum.com.au/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv x86"
 
 DEPEND="app-text/ghostscript-gpl"
 RDEPEND="${DEPEND}"

@@ -11,7 +11,7 @@ SRC_URI="http://he.fi/bchunk/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 ~arm64 ppc ppc64 ~sparc x86 ~x64-macos"
 
 src_compile() {
 	emake \

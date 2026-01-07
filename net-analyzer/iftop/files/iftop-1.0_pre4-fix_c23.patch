@@ -1,0 +1,13 @@
+fix c23 unprototyped function, patch from upstream
+https://code.blinkace.com/pdw/iftop/-/commit/67b685c8442528bb30485f6efa212f599ef19baf.patch
+--- a/cfgfile.h
++++ b/cfgfile.h
+@@ -13,7 +13,7 @@ typedef struct {
+     int value;
+ } config_enumeration_type;
+ 
+-int read_config();
++int read_config(char *file, int whinge_on_error);
+ 
+ char *config_get_string(const char *directive);
+ int config_get_bool(const char *directive);

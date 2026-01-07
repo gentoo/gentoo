@@ -20,7 +20,7 @@ S="${WORKDIR}/${PN}3-${MY_COMMIT}"
 
 LICENSE="BSD-1"
 SLOT="0"
-KEYWORDS="amd64 arm64 ppc64 ~amd64-linux ~x86-linux ~x64-solaris"
+KEYWORDS="amd64 arm64 ppc64 ~x64-solaris"
 
 CP_DEPEND="dev-java/antlr:0"
 DEPEND="${CP_DEPEND}

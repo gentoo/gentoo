@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=standalone
 PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 PYTHON_REQ_USE='readline(+),sqlite,threads(+)'
 
-inherit distutils-r1 optfeature pypi virtualx
+inherit distutils-r1 optfeature toolchain-funcs pypi virtualx
 
 DESCRIPTION="Advanced interactive shell for Python"
 HOMEPAGE="
@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="examples gui notebook nbconvert +smp test"
 RESTRICT="!test? ( test )"
 
@@ -106,6 +106,15 @@ python_test() {
 			)
 			;;
 	esac
+
+	if [[ $(tc-get-ptr-size) == 4 ]] ; then
+		EPYTEST_DESELECT+=(
+			# https://github.com/ipython/ipython/issues/15107
+			IPython/extensions/ipython_tests/test_deduperreload.py::DecoratorPatchingSuite::test_function_decorator_from_other_module
+			IPython/extensions/ipython_tests/test_deduperreload.py::DecoratorPatchingSuite::test_function_decorators
+			IPython/extensions/tests/test_deduperreload.py::DecoratorPatchingSuite::test_method_decorator
+		)
+	fi
 
 	# nonfatal implied by virtx
 	nonfatal epytest || die "Tests failed on ${EPYTHON}"

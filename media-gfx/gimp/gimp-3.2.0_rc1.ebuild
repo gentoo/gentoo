@@ -71,6 +71,7 @@ COMMON_DEPEND="
 	media-gfx/mypaint-brushes:2.0=
 	>=media-libs/fontconfig-2.12.4
 	>=media-libs/freetype-2.1.7
+	<media-libs/gexiv2-0.15.0
 	>=media-libs/gexiv2-0.14.0
 	>=media-libs/harfbuzz-2.8.2:=
 	>=media-libs/lcms-2.8:2

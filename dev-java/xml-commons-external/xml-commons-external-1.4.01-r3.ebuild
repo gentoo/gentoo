@@ -17,7 +17,7 @@ SRC_URI="https://repo1.maven.org/maven2/${MY_PN}/${MY_PN}/${PV}/${MY_P}-sources.
 
 LICENSE="Apache-2.0"
 SLOT="1.4"
-KEYWORDS="amd64 arm64 ppc64 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 arm64 ppc64 ~x64-macos ~x64-solaris"
 
 BDEPEND="source? ( app-arch/zip )"
 DEPEND=">=virtual/jdk-1.8:*"

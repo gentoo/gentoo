@@ -24,7 +24,7 @@ else
 	SRC_URI="https://github.com/seccomp/libseccomp/releases/download/v${PV}/${P}.tar.gz
 		experimental-loong? ( https://github.com/matoro/libseccomp/compare/v${PV}..loongarch-r1.patch
 			-> ${P}-loongarch-r1.patch )"
-	KEYWORDS="-* amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="-* amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 x86"
 fi
 
 LICENSE="LGPL-2.1"

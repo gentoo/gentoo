@@ -4,7 +4,6 @@
 # New entries go on top.
 # Please use the same syntax as in use.mask.
 
-
 # Patrick Lauer <patrick@gentoo.org> (2025-10-07)
 # Postgres:18 is not stable yet
 postgres_targets_postgres18
@@ -12,11 +11,11 @@ postgres_targets_postgres18
 # Michał Górny <mgorny@gentoo.org> (2024-12-31)
 # LLVM slots with no stable releases yet.
 llvm_slot_22
-llvm_slot_21
 
 # Hans de Graaff <graaff@gentoo.org> (2024-12-26)
 # Currently in testing and not ready to go stable yet.
 ruby_targets_ruby34
+ruby_targets_ruby40
 
 # Michał Górny <mgorny@gentoo.org> (2024-05-08)
 # Python implementations without stable keywords.

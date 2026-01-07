@@ -12,7 +12,7 @@ S="${WORKDIR}/hashdeep-release-${PV}"
 
 LICENSE="public-domain GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~mips ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 arm arm64 ~mips ppc ~ppc64 x86"
 
 PATCHES=( "${FILESDIR}"/${PN}-4.4-pointer-comparison.patch )
 

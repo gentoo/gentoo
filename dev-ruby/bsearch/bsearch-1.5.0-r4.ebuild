@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 RUBY_FAKEGEM_RECIPE_DOC="none"
 RUBY_FAKEGEM_EXTRADOC="doc/*"
 
-USE_RUBY="ruby31 ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 inherit ruby-fakegem
 DESCRIPTION="A binary search library for Ruby"
@@ -14,7 +14,7 @@ HOMEPAGE="http://0xcc.net/ruby-bsearch/"
 
 LICENSE="Ruby-BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~mips ppc ppc64 ~sparc x86"
 
 all_ruby_prepare() {
 	sed -i 's/ruby/\$\{RUBY\}/' test/test.sh || die

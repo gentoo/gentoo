@@ -53,6 +53,7 @@ python_compile() {
 		"${mycmakeargs[@]}"
 		-Dnanobind_DIR="$(python_get_sitedir)/nanobind/cmake"
 	)
+	rm -rf .setuptools-cmake-build || die
 	CMAKE_ARGS="${mycmakeargs[@]}" distutils-r1_python_compile
 }
 

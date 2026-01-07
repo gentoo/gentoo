@@ -11,7 +11,7 @@ SRC_URI="https://github.com/msharov/snownews/archive/refs/tags/v${PV}.tar.gz -> 
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="debug"
 
 RDEPEND="

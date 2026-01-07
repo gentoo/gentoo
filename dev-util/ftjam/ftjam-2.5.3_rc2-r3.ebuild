@@ -13,7 +13,7 @@ SRC_URI="http://david.freetype.org/jam/ftjam-${MY_PV}.tar.bz2"
 
 LICENSE="perforce GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 
 BDEPEND="app-alternatives/yacc"
 

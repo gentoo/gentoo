@@ -27,7 +27,7 @@ LICENSE="GPL-2 LGPL-2.1"
 # Please check ABI on each bump, even if SONAMEs didn't change: bug #833355
 # Subslot: SONAME of each: <libgpgme.FUDGE>
 SLOT="1/45.0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 IUSE="common-lisp static-libs test"
 RESTRICT="!test? ( test )"
 

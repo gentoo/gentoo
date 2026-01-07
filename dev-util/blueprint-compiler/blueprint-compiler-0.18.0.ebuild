@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..13} )
 
 inherit edo meson python-single-r1 virtualx
 
@@ -18,7 +18,7 @@ if [[ "${PV}" == *9999 ]] ; then
 else
 	inherit gnome.org
 
-	KEYWORDS="amd64 ~arm arm64 ~loong ~riscv x86"
+	KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 fi
 
 LICENSE="LGPL-3+"

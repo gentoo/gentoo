@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/arborx/ArborX"
 
 SRC_URI="https://github.com/${PN}/ArborX/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"

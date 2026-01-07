@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}-v${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="
 	+eigen fftw glpk graphicsmagick gshhs hdf hdf5 +imagemagick netcdf
 	openmp png proj postscript python shapelib tiff udunits wxwidgets

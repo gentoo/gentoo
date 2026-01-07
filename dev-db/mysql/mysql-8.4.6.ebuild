@@ -41,9 +41,9 @@ LICENSE="GPL-2"
 SLOT="$(ver_cut 1-2)"
 # 64-bit only since 8.2.0
 # https://github.com/mysql/mysql-server/commit/07bf1bdb620daf62c02ead0d5439d65c7c34aa00
-# -arm -hppa -mips -ppc -x86 -x86-linux
+# -arm -hppa -mips -ppc -x86
 # -ppc for bug #761715
-KEYWORDS="~amd64 -arm ~arm64 -hppa -mips -ppc ~ppc64 ~riscv ~s390 ~sparc -x86 ~amd64-linux -x86-linux ~x64-macos ~x64-solaris"
+KEYWORDS="~amd64 -arm ~arm64 -hppa -mips -ppc ~ppc64 ~riscv ~s390 ~sparc -x86 ~x64-macos ~x64-solaris"
 IUSE="cjk cracklib debug jemalloc numa +perl profiling router selinux +server tcmalloc test test-install"
 RESTRICT="!test? ( test )"
 

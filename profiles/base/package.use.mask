@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file is only for generic masks. For arch-specific masks (i.e.
@@ -6,9 +6,48 @@
 
 # New entries go on top.
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2026-01-07)
+# Building glibc with clang is highly experimental and only possible and
+# tested in few configurations. Enabling the useflag clang allows free
+# choice of the compiler. By masking this useflag, the ebuild
+# forcibly resets the compiler to gcc.
+sys-libs/glibc clang
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2026-01-07)
+# openjfx for OpenJDK 26 and 27 is not yet available.
+dev-java/openjdk:26 javafx
+dev-java/openjdk:27 javafx
+
+# Paul Zander <negril.nx+gentoo@gmail.com> (2025-12-27)
+# breaks with old in-tree sys-cluster/ampi bug #586746 #830093 #815007
+sci-libs/adolc mpi
+
+# Ionen Wolkens <ionen@gentoo.org> (2025-12-24)
+# cargo.eclass' IUSE=debug cannot currently be easily supported by
+# the custom builder the package uses, mask to avoid no-op rebuilds
+# (use RUSTFLAGS if need debug symbols, see also bug #967921)
+media-libs/subrandr debug
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-21)
+# gui-libs/hyprland-qtutils fails to build against Qt 6.10, upstream
+# repository was archived.
+gui-wm/hyprland qtutils
+
+# Michał Górny <mgorny@gentoo.org> (2025-12-20)
+# Needs last-rited dev-lang/julia.
+kde-apps/cantor julia
+
 # Sam James <sam@gentoo.org> (2025-12-07)
 # Needs not-yet-released GCC 16.
 dev-lang/python tail-call-interp
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2025-12-06)
+# No suitable versions of dev-libs/protobuf available.
+~dev-java/protobuf-java-4.33.2 system-protoc
+
+# Lukas Schmelting <lschmelting@posteo.com (2025-11-06)
+# https://bugs.gentoo.org/933164
+app-misc/localsearch gif
 
 # Sam James <sam@gentoo.org> (2025-10-29)
 # Help Portage resolve app-crypt/gnupg[verify-sig] with the app-alternatives/gpg
@@ -52,11 +91,6 @@ dev-games/ogre vulkan
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2025-08-06)
 # General mask, to be unmasked on arches where glibc supports this
 >=sys-libs/glibc-2.42 sframe
-
-# Ionen Wolkens <ionen@gentoo.org> (2025-08-02)
-# Fails to build, needs looking into but isn't currently needed
-# by anything and can leave it masked for now.
->=media-libs/vips-8.17 vala
 
 # Alfred Wingate (2025-07-31)
 # Missing dependency

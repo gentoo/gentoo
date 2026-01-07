@@ -38,6 +38,7 @@ src_configure() {
 	filter-lto # bug #931082
 	strip-flags
 	append-cflags -std=gnu17 # bug #947758
+	append-cppflags -std=gnu17 # ditto
 	filter-flags -fstack-protector -fstack-protector-all
 
 	local tcl=""

@@ -14,7 +14,7 @@ S="${WORKDIR}"/${MY_P}/${PN}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm ~hppa ppc ~ppc64 ~sparc x86 ~x64-macos ~x64-solaris"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-libtool.patch # 780018

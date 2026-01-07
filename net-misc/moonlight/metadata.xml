@@ -10,9 +10,9 @@
 	</upstream>
 	<use>
 		<flag name="cuda">Enable accelerated video rendering on NVIDIA hardware</flag>
+		<flag name="drm">Enable video rendering via <pkg>x11-libs/libdrm</pkg></flag>
 		<flag name="embedded">Optimize UI for fullscreen non-desktop usage</flag>
 		<flag name="glslow">Prefer direct KMS/DRM rendering over EGL/GLES rendering for better performance on some weaker GPUs</flag>
-		<flag name="libdrm">Enable video rendering via <pkg>x11-libs/libdrm</pkg></flag>
 		<flag name="soundio">Enable sound output via <pkg>media-libs/libsoundio</pkg> instead of <pkg>media-libs/libsdl2</pkg></flag>
 		<flag name="vkslow">Prefer hardware YUV-RGB conversion and scaling over Vulkan for better performance on some weaker GPUs</flag>
 	</use>

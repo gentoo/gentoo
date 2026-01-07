@@ -1,4 +1,4 @@
-PR pending https://github.com/parisolab/mathmod/pull/288.patch
+PR merged https://github.com/parisolab/mathmod/pull/288.patch
 fix compile w/ qt-6.10.0
 move <QElapsedTimer> in header
 --- a/pariso/isosurface/Iso3D.cpp

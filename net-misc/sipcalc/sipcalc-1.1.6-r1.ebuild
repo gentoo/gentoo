@@ -10,4 +10,4 @@ SRC_URI="http://www.routemeister.net/projects/${PN}/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 ~sparc x86"

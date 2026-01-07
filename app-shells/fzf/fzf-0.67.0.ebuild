@@ -16,7 +16,7 @@ SRC_URI+=" https://github.com/gentoo-golang-dist/${PN}/releases/download/v${PV}/
 LICENSE="MIT BSD-with-disclosure"
 # Dependent licenses
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 
 src_compile() {
 	local go_ldflags=(

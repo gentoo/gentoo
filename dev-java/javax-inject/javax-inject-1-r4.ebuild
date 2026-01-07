@@ -17,7 +17,7 @@ SRC_URI="http://central.maven.org/maven2/javax/inject/${MY_PN}/${PV}/${MY_P}-sou
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 arm64 ppc64 ~amd64-linux"
+KEYWORDS="amd64 arm64 ppc64"
 
 RDEPEND=">=virtual/jre-1.8:*"
 DEPEND=">=virtual/jdk-1.8:*"

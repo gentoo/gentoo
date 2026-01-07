@@ -1,14 +1,17 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 CRATES=""
+RUST_MIN_VER="1.85.0"
 
-declare -A GIT_CRATES=(
-	[pcre2-sys]='https://github.com/fish-shell/rust-pcre2;85b7afba1a9d9bd445779800e5bcafeb732e4421;rust-pcre2-%commit%/pcre2-sys'
-	[pcre2]='https://github.com/fish-shell/rust-pcre2;85b7afba1a9d9bd445779800e5bcafeb732e4421;rust-pcre2-%commit%'
-)
+if [[ ${PV} != 9999 ]]; then
+	declare -A GIT_CRATES=(
+		[pcre2-sys]='https://github.com/fish-shell/rust-pcre2;85b7afba1a9d9bd445779800e5bcafeb732e4421;rust-pcre2-%commit%/pcre2-sys'
+		[pcre2]='https://github.com/fish-shell/rust-pcre2;85b7afba1a9d9bd445779800e5bcafeb732e4421;rust-pcre2-%commit%'
+	)
+fi
 
 inherit cargo cmake readme.gentoo-r1 xdg
 
@@ -27,25 +30,26 @@ else
 		https://github.com/gentoo-crate-dist/fish-shell/releases/download/${MY_PV}/fish-shell-${MY_PV}-crates.tar.xz
 		${CARGO_CRATE_URIS}
 	"
-	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x64-macos"
 fi
 
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2 BSD BSD-2 CC0-1.0 GPL-2+ ISC LGPL-2+ MIT PSF-2 ZLIB"
 # Dependent crate licenses
-LICENSE+=" MIT Unicode-DFS-2016 WTFPL-2 ZLIB"
+LICENSE+=" Apache-2.0 MIT MPL-2.0 Unicode-3.0 WTFPL-2 ZLIB"
 SLOT="0"
 IUSE="+doc nls test"
 
 RESTRICT="!test? ( test )"
 
-BDEPEND="nls? ( sys-devel/gettext )"
-# Release tarballs contain prebuilt documentation.
-[[ ${PV} == 9999 ]] && BDEPEND+=" doc? ( dev-python/sphinx )"
+BDEPEND="
+	doc? ( dev-python/sphinx )
+	nls? ( sys-devel/gettext )
+"
 
 PATCHES=(
-	"${FILESDIR}/${P}-use-cargo-eclass-for-build.patch"
+	"${FILESDIR}/${PN}-4.3.0-use-cargo-eclass-for-build.patch"
 )
 
 QA_FLAGS_IGNORED="usr/bin/.*"
@@ -62,8 +66,8 @@ src_unpack() {
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}/etc"
-		-DINSTALL_DOCS="$(usex doc)"
-		-DWITH_GETTEXT="$(usex nls 1 0)"
+		-DWITH_DOCS="$(usex doc)"
+		-DWITH_MESSAGE_LOCALIZATION="$(usex nls 1 0)"
 	)
 	cargo_src_configure --no-default-features \
 		--bin fish \
@@ -74,18 +78,14 @@ src_configure() {
 
 src_compile() {
 	local -x PREFIX="${EPREFIX}/usr"
+	local -x DATADIR="${EPREFIX}/usr/share"
 	local -x DOCDIR="${EPREFIX}/usr/share/doc/${PF}"
 
 	# Bug: https://bugs.gentoo.org/950699
 	local -x SYSCONFDIR="${EPREFIX}/etc"
 
-	# Release tarballs contain prebuilt documentation.
 	local -x FISH_BUILD_DOCS
-	if [[ ${PV} == 9999 ]]; then
-		FISH_BUILD_DOCS="$(usex doc 1 0)"
-	else
-		FISH_BUILD_DOCS=0
-	fi
+	FISH_BUILD_DOCS="$(usex doc 1 0)"
 
 	cargo_src_compile
 }

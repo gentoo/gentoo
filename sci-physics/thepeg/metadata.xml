@@ -18,7 +18,6 @@
 	</longdescription>
 	<use>
 		<flag name="fastjet">Adds support for <pkg>sci-physics/fastjet</pkg></flag>
-		<flag name="hepmc">Adds support for High Energy Physics Monte Carlo Generators<pkg>sci-physics/hepmc</pkg></flag>
 		<flag name="hepmc3">Adds support for High Energy Physics Monte Carlo Generators 3<pkg>sci-physics/hepmc</pkg></flag>
 		<flag name="lhapdf">Adds support for <pkg>sci-physics/lhapdf</pkg></flag>
 		<flag name="rivet">Adds support for <pkg>sci-physics/rivet</pkg></flag>

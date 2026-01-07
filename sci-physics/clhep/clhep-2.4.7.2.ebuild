@@ -19,7 +19,7 @@ S="${WORKDIR}/CLHEP-${MY_P}"
 
 LICENSE="GPL-3 LGPL-3"
 SLOT="2/${PV}"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~amd64 ~x86 ~x64-macos"
 
 IUSE="doc static-libs test threads"
 RESTRICT="!test? ( test )"

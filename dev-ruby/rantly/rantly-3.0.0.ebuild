@@ -1,8 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby31 ruby32 ruby33 ruby34"
+
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
@@ -14,9 +15,14 @@ HOMEPAGE="https://github.com/rantly-rb/rantly"
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64 ~riscv ~x86"
+IUSE="test"
+
+ruby_add_bdepend "test? ( dev-ruby/minitest:5 )"
 
 all_ruby_prepare() {
-	sed -i -e '/simplecov/,/^end/ s:^:#:' test/test_helper.rb || die
+	sed -e '/simplecov/,/^end/ s:^:#:' \
+		-e '1igem "minitest", "~> 5.0"' \
+		-i test/test_helper.rb || die
 }
 
 each_ruby_test() {

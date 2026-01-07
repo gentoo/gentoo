@@ -82,6 +82,7 @@ media-gfx/alembic
 # Tested on LE only (#849866)
 games-fps/freedoom
 games-engines/odamex
+games-engines/uzdoom
 games-fps/chocolate-doom
 games-fps/doomsday
 games-fps/gzdoom

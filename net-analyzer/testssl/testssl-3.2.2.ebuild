@@ -15,7 +15,7 @@ S=${WORKDIR}/${MY_PN}-${MY_PV}
 
 LICENSE="GPL-2 bundled-openssl? ( openssl )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="bundled-openssl"
 
 RDEPEND="

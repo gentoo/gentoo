@@ -1,0 +1,31 @@
+From 19127672cd812d177192cf84da4107f9abed2934 Mon Sep 17 00:00:00 2001
+From: Akseli Lahtinen <akselmo@akselmo.dev>
+Date: Fri, 12 Dec 2025 13:18:48 +0200
+Subject: [PATCH] SwipeListItem: Add back checking for parent width and
+ implicitWidth
+
+This adds back implicitWidth that was removed and also sets the width of
+the item to parent.width if there is a parent to be found.
+
+Without this, some applications relying on this behavior to happen
+automatically would look broken, such as Discover settings.
+---
+ src/controls/SwipeListItem.qml | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/controls/SwipeListItem.qml b/src/controls/SwipeListItem.qml
+index 441d80712..208b047bd 100644
+--- a/src/controls/SwipeListItem.qml
++++ b/src/controls/SwipeListItem.qml
+@@ -191,6 +191,8 @@ QQC2.SwipeDelegate {
+ 
+     hoverEnabled: true
+     implicitHeight: Math.max(actionsLayout.implicitHeight, contentItem.implicitHeight) + topPadding + bottomPadding
++    implicitWidth: Math.max(actionsLayout.implicitWidth, contentItem.implicitWidth) + leftPadding + rightPadding
++    width: parent ? parent.width : implicitWidth
+ 
+     Keys.onTabPressed: (event) => {
+         if (actionsLayout.hasVisibleActions) {
+-- 
+GitLab
+

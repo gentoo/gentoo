@@ -31,6 +31,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-tinfo.patch
 	"${FILESDIR}"/0001-Fix-signal-handlers.patch
 	"${FILESDIR}"/0002-Fix-Wformat-security.patch
+	"${FILESDIR}"/${P}-getcwd.patch
 )
 
 src_prepare() {

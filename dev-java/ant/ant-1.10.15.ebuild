@@ -20,7 +20,7 @@ S="${WORKDIR}/apache-${P}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 arm64 ppc64 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 arm64 ppc64 ~x64-macos ~x64-solaris"
 IUSE="antlr bcel bsf commonslogging commonsnet imageio jai jakartamail javamail jdepend
 	jmf jsch junit junit4 junitlauncher log4j oro regexp resolver swing testutil xalan xz"
 

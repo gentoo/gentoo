@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Lightweight regexp-based XML parser"
 
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv x86"
 IUSE="minimal"
 
 # Note: Don't try to depend on XMLRPC-Lite or SOAP-Lite with tests,

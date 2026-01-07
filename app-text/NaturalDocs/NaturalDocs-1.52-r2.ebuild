@@ -25,10 +25,10 @@ src_install() {
 	dosym ../../../etc/${PN} /usr/share/${PN}/Config
 
 	perl_set_version
-	insinto ${VENDOR_LIB}
+	insinto ${VENDOR_LIB#${EPREFIX}}
 	doins -r Modules/NaturalDocs
 	dodir /usr/share/${PN}/Modules
-	dosym ../../../..${VENDOR_LIB}/NaturalDocs /usr/share/${PN}/Modules/NaturalDocs
+	dosym ../../../..${VENDOR_LIB#${EPREFIX}}/NaturalDocs /usr/share/${PN}/Modules/NaturalDocs
 
 	exeinto /usr/share/${PN}
 	doexe ${PN}
@@ -43,9 +43,9 @@ src_install() {
 }
 
 pkg_preinst() {
-	if [[ -e /usr/share/${PN}/Config && ! -L /usr/share/${PN}/Config ]] ; then
-		mkdir -p /etc/${PN}
-		mv /usr/share/${PN}/Config/* /etc/${PN}/
-		rm -rf /usr/share/${PN}/Config
+	if [[ -e "${EROOT}"/usr/share/${PN}/Config && ! -L "${EROOT}"/usr/share/${PN}/Config ]] ; then
+		mkdir -p "${EROOT}"/etc/${PN}
+		mv "${EROOT}"/usr/share/${PN}/Config/* "${EROOT}"/etc/${PN}/
+		rm -rf "${EROOT}"/usr/share/${PN}/Config
 	fi
 }

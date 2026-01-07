@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl interface to the GNU Aspell Library"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~mips ppc ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~hppa ~mips ppc ~sparc x86"
 
 RDEPEND="app-text/aspell"
 BDEPEND="${RDEPEND}"

@@ -11,7 +11,7 @@ SRC_URI="https://github.com/exzombie/prll/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86"
 RESTRICT="test"
 
 DOC_CONTENTS="

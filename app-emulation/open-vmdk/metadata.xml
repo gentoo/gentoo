@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chewi@gentoo.org</email>
+		<name>James Le Cuirot</name>
+	</maintainer>
+	<use>
+		<flag name="python">Install Python-based tools</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">vmware/open-vmdk</remote-id>
+	</upstream>
+</pkgmetadata>

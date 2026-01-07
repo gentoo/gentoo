@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{11..14} )
 inherit optfeature python-any-r1 readme.gentoo-r1 toolchain-funcs wine
 
 WINE_GECKO=2.47.4
-WINE_MONO=10.4.0
+WINE_MONO=10.4.1
 WINE_PV=$(ver_rs 2 -)
 
 if [[ ${PV} == 9999 ]]; then
@@ -31,7 +31,7 @@ SLOT="${PV}"
 IUSE="
 	+X +alsa crossdev-mingw +dbus ffmpeg +fontconfig +gecko +gstreamer
 	llvm-libunwind +mono nls perl pulseaudio +sdl selinux +ssl udev
-	+unwind usb v4l wayland video_cards_amdgpu +xcomposite xinerama
+	+unwind usb v4l wayland video_cards_amdgpu xinerama
 "
 # headless is not really supported here, and udev needs sdl due to Valve's
 # changes (bug #959263), use normal wine instead if need to avoid these
@@ -51,13 +51,13 @@ WINE_DLOPEN_DEPEND="
 	media-libs/libglvnd[X?,${WINE_USEDEP}]
 	media-libs/vulkan-loader[X?,wayland?,${WINE_USEDEP}]
 	X? (
+		x11-libs/libXcomposite[${WINE_USEDEP}]
 		x11-libs/libXcursor[${WINE_USEDEP}]
 		x11-libs/libXfixes[${WINE_USEDEP}]
 		x11-libs/libXi[${WINE_USEDEP}]
 		x11-libs/libXrandr[${WINE_USEDEP}]
 		x11-libs/libXrender[${WINE_USEDEP}]
 		x11-libs/libXxf86vm[${WINE_USEDEP}]
-		xcomposite? ( x11-libs/libXcomposite[${WINE_USEDEP}] )
 		xinerama? ( x11-libs/libXinerama[${WINE_USEDEP}] )
 	)
 	dbus? ( sys-apps/dbus[${WINE_USEDEP}] )
@@ -214,7 +214,6 @@ src_configure() {
 		$(use_with usb)
 		$(use_with v4l v4l2)
 		$(use_with wayland)
-		$(use_with xcomposite)
 		$(use_with xinerama)
 
 		--without-piper # unpackaged, for tts but unusable without steam

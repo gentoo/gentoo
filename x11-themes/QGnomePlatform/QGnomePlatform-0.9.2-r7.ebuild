@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -42,14 +42,9 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/qt6_10.patch" #966354
+	"${FILESDIR}/${P}-cmake4.patch" # bugs #958301, #965856
+	"${FILESDIR}/${P}-qt-6.10.patch" # bug #966354, #968100
 )
-
-src_prepare() {
-	# Fix cmake4 compatibility, bug #958301, #965856
-	sed -i -e 's/VERSION 3.0/VERSION 3.10/' CMakeLists.txt || die
-	cmake_src_prepare
-}
 
 src_configure() {
 	# avoid automagic dep on src/theme/qgtk3dialoghelpers.cpp

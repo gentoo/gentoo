@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Convert POD to Markdown"
 
 SLOT="0"
-KEYWORDS="amd64 ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 ~riscv x86 ~x64-macos ~x64-solaris"
 IUSE="minimal"
 
 RDEPEND="

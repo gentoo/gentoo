@@ -11,7 +11,7 @@ SRC_URI="https://freedesktop.org/software/pulseaudio/${PN}/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 x86 ~amd64-linux"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 IUSE="static-libs"
 
 DOCS=( AUTHORS NEWS README.md )

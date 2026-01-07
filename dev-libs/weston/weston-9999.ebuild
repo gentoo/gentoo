@@ -74,7 +74,8 @@ RDEPEND="
 	systemd? ( sys-apps/systemd )
 	vnc? (
 		=dev-libs/aml-0.3*
-		=gui-libs/neatvnc-0.8*
+		>=gui-libs/neatvnc-0.8.1
+		<gui-libs/neatvnc-0.10.0
 		sys-libs/pam
 	)
 	vulkan? (
@@ -95,7 +96,7 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}
-	>=dev-libs/wayland-protocols-1.33
+	>=dev-libs/wayland-protocols-1.46
 "
 BDEPEND="
 	${PYTHON_DEPS}
@@ -112,7 +113,6 @@ pkg_setup() {
 src_configure() {
 	local emesonargs=(
 		$(meson_use drm backend-drm)
-		-Dbackend-drm-screencast-vaapi=false
 		$(meson_use headless backend-headless)
 		$(meson_use pipewire backend-pipewire)
 		$(meson_use rdp backend-rdp)

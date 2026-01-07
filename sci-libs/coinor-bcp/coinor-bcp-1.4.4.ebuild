@@ -10,7 +10,7 @@ S="${WORKDIR}/Bcp-releases-${PV}/Bcp"
 
 LICENSE="CPL-1.0"
 SLOT="0/1"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 

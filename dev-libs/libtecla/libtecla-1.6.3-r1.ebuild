@@ -12,7 +12,7 @@ S="${WORKDIR}/libtecla"
 
 LICENSE="icu"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ppc ~riscv x86"
 
 DEPEND="sys-libs/ncurses:="
 RDEPEND="${DEPEND}"

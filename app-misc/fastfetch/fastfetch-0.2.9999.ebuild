@@ -67,13 +67,6 @@ REQUIRED_USE="
 	chafa? ( imagemagick )
 "
 
-pkg_pretend() {
-	if use X && ! use opengl; then
-		einfo 'USE="X" adds GLX support for USE="opengl"'
-		einfo 'This build with USE="X -opengl" will not include any extra X support.'
-	fi
-}
-
 src_configure() {
 	local fastfetch_enable_imagemagick7=no
 	local fastfetch_enable_imagemagick6=no
@@ -83,8 +76,13 @@ src_configure() {
 	fi
 
 	local glx=no
-	if use opengl && use X; then
-		glx=yes
+	if use X; then
+		if use opengl; then
+			glx=yes
+		else
+			ewarn 'USE="X" adds GLX support for USE="opengl"'
+			ewarn 'This build with USE="X -opengl" will not include any extra X support.'
+		fi
 	fi
 
 	local mycmakeargs=(

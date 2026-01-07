@@ -333,7 +333,28 @@ _check-reqs_memory() {
 	if [[ -r /proc/meminfo ]] ; then
 		actual_memory=$(awk '/MemTotal/ { print $2 }' /proc/meminfo)
 		actual_swap=$(awk '/SwapTotal/ { print $2 }' /proc/meminfo)
+	elif [[ ${CBUILD:-${CHOST}} == *-darwin* ]] ; then
+		# bug #404207
+		actual_memory=$(sysctl -n hw.memsize 2>/dev/null)
+		[[ $? -eq 0 ]] && actual_memory=$((actual_memory / 1024))
+		actual_swap=$(sysctl -n vm.swapusage 2>/dev/null)
+		if [[ $? -eq 0 ]] ; then
+			actual_swap=$(awk '{
+				split($3, v, 'M', s); print int(v[0] * 1024)
+			}' <<<"${actual_swap}")
+		fi
+	elif [[ ${CBUILD:-${CHOST}} == *-solaris* ]] ; then
+		actual_memory=$(prtconf 2>/dev/null | grep Memory)
+		if [[ $? -eq 0 ]] ; then
+			actual_memory=$(awk '{
+				print int($3 * 1024)
+			}' <<<"${actual_memory}")
+		fi
+		actual_swap=$(swap -s 2>/dev/null)
+		[[ $? -eq 0 ]] && actual_swap=$(
+			sed -n 's/^.*, \([0-9]\+\)k available.*$/\1/p' <<<"${actual_swap}")
 	else
+		# FreeBSD
 		actual_memory=$(sysctl hw.physmem 2>/dev/null)
 		[[ $? -eq 0 ]] && actual_memory=$(echo "${actual_memory}" \
 			| sed -e 's/^[^:=]*[:=][[:space:]]*//')

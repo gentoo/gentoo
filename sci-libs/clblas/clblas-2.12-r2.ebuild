@@ -20,7 +20,7 @@ S="${WORKDIR}/${MYPN}-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0/2" # soname version
-KEYWORDS="~amd64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~riscv ~x86"
 IUSE="+client examples ktest performance test"
 # the testsuite is hopelessly broken and upstream is pretty much dead
 RESTRICT="test"

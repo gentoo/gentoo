@@ -13,7 +13,7 @@ SRC_URI="https://www2.cs.tum.edu/projects/cup/releases/java-cup-src-${PV/_p/-}.t
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm64 ppc64 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 arm64 ppc64 ~x64-macos ~x64-solaris"
 IUSE="ant-task"
 
 DEPEND="

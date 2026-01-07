@@ -1,0 +1,37 @@
+From 1f01737845d2fcfcc3238988fea2c7e1fc2703b4 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Sat, 13 Dec 2025 15:07:02 -0500
+Subject: [PATCH] lib/xgetXXbyYY.c: include stdint.h for SIZE_MAX
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Fixes build failure:
+```
+In file included from xgetgrnam.c:40:
+xgetXXbyYY.c: In function ‘xgetgrnam’:
+xgetXXbyYY.c:83:31: error: ‘SIZE_MAX’ undeclared (first use in this function)
+   83 |                 if (length == SIZE_MAX) {
+      |                               ^~~~~~~~
+```
+
+Signed-off-by: Mike Gilbert <floppym@gentoo.org>
+---
+ lib/xgetXXbyYY.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lib/xgetXXbyYY.c b/lib/xgetXXbyYY.c
+index 2c9dbda5..58902120 100644
+--- a/lib/xgetXXbyYY.c
++++ b/lib/xgetXXbyYY.c
+@@ -29,6 +29,7 @@
+ #include <unistd.h>
+ #include <stdlib.h>
+ #include <stdio.h>
++#include <stdint.h>
+ #include <errno.h>
+ 
+ #include "alloc/malloc.h"
+-- 
+2.52.0
+

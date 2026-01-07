@@ -17,7 +17,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="BSD-2"
 # New major versions are parallel-installable
 SLOT="$(ver_cut 1)/$(ver_cut 1-2)" # soname version
-KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86 ~ppc-macos"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86"
 IUSE="doc boost bzip2 lzma python static-libs sqlite test tools zlib"
 CPU_USE=(
 	cpu_flags_arm_{aes,neon}
@@ -198,6 +198,11 @@ src_install() {
 	if [[ -d "${ED}"/usr/share/doc/${P} && ${P} != ${PF} ]] ; then
 		# --docdir in configure controls the parent directory unfortunately
 		mv "${ED}"/usr/share/doc/${P} "${ED}"/usr/share/doc/${PF} || die
+	fi
+
+	if [[ -d "${ED}"/usr/share/man/man1 ]] ; then
+		# --program-suffix doesn't apply to the man page
+		mv "${ED}"/usr/share/man/man1/botan{,$(ver_cut 1)}.1 || die
 	fi
 
 	# Manually install the Python bindings (bug #723096)

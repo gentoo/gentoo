@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~mips ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~mips ~sparc ~x86"
 
 DEPEND=">=sys-devel/binutils-2.31.1-r4"
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-fefe )"

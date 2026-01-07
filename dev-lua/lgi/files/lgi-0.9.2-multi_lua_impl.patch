@@ -1,0 +1,32 @@
+allow lua multi-implementation
+@GENTOO_LUA_VERSION@ will be replaced after sources copied for each lua implementation
+--- a/lgi/core.c
++++ b/lgi/core.c
+@@ -697,7 +697,7 @@ set_resident (lua_State *L)
+ }
+ 
+ G_MODULE_EXPORT int
+-luaopen_lgi_corelgilua51 (lua_State* L)
++luaopen_lgi_corelgi@GENTOO_LUA_VERSION@ (lua_State* L)
+ {
+   LgiStateMutex *mutex;
+   gint state_id;
+--- a/lgi/core.lua
++++ b/lgi/core.lua
+@@ -11,7 +11,7 @@
+ -- This module decides what kind of core routines should be loaded.
+ -- Currently only one implementation exists, standard-Lua C-side
+ -- implementation, LuaJIT-FFI-based one is planned.
+-local core = require 'lgi.corelgilua51'
++local core = require 'lgi.corelgi@GENTOO_LUA_VERSION@'
+ 
+ -- Helper methods for converting between CamelCase and uscore_delim
+ -- names.
+--- a/lgi/meson.build
++++ b/lgi/meson.build
+@@ -1,4 +1,4 @@
+-liblgi = shared_module('corelgilua51',
++liblgi = shared_module('corelgi@GENTOO_LUA_VERSION@',
+   sources: [
+     'buffer.c',
+     'callable.c',

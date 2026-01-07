@@ -12,7 +12,7 @@ S="${WORKDIR}/top-${PV/_/}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64-linux ~x64-solaris"
+KEYWORDS="~x64-solaris"
 
 DEPEND="sys-libs/ncurses:="
 RDEPEND="

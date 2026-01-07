@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,7 +30,7 @@ S="${WORKDIR}/${P}/cpp"
 
 LICENSE="Apache-2.0"
 SLOT="0/$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~riscv ~s390 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ~riscv ~s390 x86"
 IUSE="
 	+brotli bzip2 +compute +dataset +json lz4 +parquet +re2 +snappy ssl
 	test zlib zstd

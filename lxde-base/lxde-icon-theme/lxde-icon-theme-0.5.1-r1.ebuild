@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/lxde/LXDE%20Icon%20Theme/${P}/${P}.ta
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~riscv ~x86 ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~riscv ~x86"
 IUSE=""
 
 BDEPEND="

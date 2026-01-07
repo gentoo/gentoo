@@ -1,0 +1,99 @@
+From a02e38567e1d5414a253e04a81b67ccfa25ed8f4 Mon Sep 17 00:00:00 2001
+From: Xisco Fauli <xiscofauli@libreoffice.org>
+Date: Fri, 31 Oct 2025 14:40:11 +0100
+Subject: ICU: upgrade to 78.1
+
+* asturm: stripped of all the upstream bundling stuff ...
+
+---
+ i18nutil/source/utility/unicode.cxx                |  17 +
+ include/svx/strings.hrc                            |   8 +
+ svx/source/dialog/charmap.cxx                      |  26 +
+ 3 files changed, 51 insertions(+)
+
+diff --git a/i18nutil/source/utility/unicode.cxx b/i18nutil/source/utility/unicode.cxx
+index ff7d6a649136..7030e72b331e 100644
+--- a/i18nutil/source/utility/unicode.cxx
++++ b/i18nutil/source/utility/unicode.cxx
+@@ -1025,6 +1025,23 @@ OString unicode::getExemplarLanguageForUScriptCode(UScriptCode eScript)
+         case USCRIPT_TULU_TIGALARI:
+             sRet = "sa-Tutg"_ostr;
+             break;
++#endif
++#if (U_ICU_VERSION_MAJOR_NUM >= 78)
++        case USCRIPT_BERIA_ERFE:
++            sRet = "zag-Berf"_ostr;
++            break;
++        case USCRIPT_SIDETIC:
++            sRet = "xsd-Sidt"_ostr;
++            break;
++        case USCRIPT_TAI_YO:
++            sRet = "tyj-Tayo"_ostr;
++            break;
++        case USCRIPT_TOLONG_SIKI:
++            sRet = "kru-Tols"_ostr;
++            break;
++        case USCRIPT_TRADITIONAL_HAN_WITH_LATIN:
++            sRet = "zh-Hntl"_ostr;
++            break;
+ #endif
+     }
+     return sRet;
+diff --git a/include/svx/strings.hrc b/include/svx/strings.hrc
+index 011092678295..48f5b89f0d54 100644
+--- a/include/svx/strings.hrc
++++ b/include/svx/strings.hrc
+@@ -1818,6 +1818,14 @@
+ #define RID_SUBSETSTR_SYMBOLS_FOR_LEGACY_COMPUTING_SUPPLEMENT  NC_("RID_SUBSETMAP", "Symbols for Legacy Computing Supplement")
+ #define RID_SUBSETSTR_TODHRI                                NC_("RID_SUBSETMAP", "Todhri")
+ #define RID_SUBSETSTR_TULU_TIGALARI                         NC_("RID_SUBSETMAP", "Tulu-Tigalari")
++#define RID_SUBSETSTR_BERIA_ERFE                            NC_("RID_SUBSETMAP", "Beria Erfe")
++#define RID_SUBSETSTR_CJK_UNIFIED_IDEOGRAPHS_EXTENSION_J    NC_("RID_SUBSETMAP", "CJK Unified Ideographs Extension J")
++#define RID_SUBSETSTR_MISCELLANEOUS_SYMBOLS_SUPPLEMENT      NC_("RID_SUBSETMAP", "Miscellaneous Symbols Supplement")
++#define RID_SUBSETSTR_SHARADA_SUPPLEMENT                    NC_("RID_SUBSETMAP", "Sharada Supplement")
++#define RID_SUBSETSTR_SIDETIC                               NC_("RID_SUBSETMAP", "Sidetic")
++#define RID_SUBSETSTR_TAI_YO                                NC_("RID_SUBSETMAP", "Tai Yo")
++#define RID_SUBSETSTR_TANGUT_COMPONENTS_SUPPLEMENT          NC_("RID_SUBSETMAP", "Tangut Components Supplement")
++#define RID_SUBSETSTR_TOLONG_SIKI                           NC_("RID_SUBSETMAP", "Tolong Siki")
+ 
+ #define RID_SVXSTR_FRAMEDIR_LTR                             NC_("RID_SVXSTR_FRAMEDIR_LTR", "Left-to-right (LTR)")
+ #define RID_SVXSTR_FRAMEDIR_RTL                             NC_("RID_SVXSTR_FRAMEDIR_RTL", "Right-to-left (RTL)")
+diff --git a/svx/source/dialog/charmap.cxx b/svx/source/dialog/charmap.cxx
+index 71c81261350d..32999d6e63fe 100644
+--- a/svx/source/dialog/charmap.cxx
++++ b/svx/source/dialog/charmap.cxx
+@@ -1959,6 +1959,32 @@ void SubsetMap::InitList()
+                 case UBLOCK_TULU_TIGALARI:
+                     aAllSubsets.emplace_back( 0x11380, 0x113FF, SvxResId(RID_SUBSETSTR_TULU_TIGALARI) );
+                     break;
++#endif
++#if (U_ICU_VERSION_MAJOR_NUM >= 78)
++                case UBLOCK_BERIA_ERFE:
++                    aAllSubsets.emplace_back( 0x16EA0, 0x16EDF, SvxResId(RID_SUBSETSTR_BERIA_ERFE) );
++                    break;
++                case UBLOCK_CJK_UNIFIED_IDEOGRAPHS_EXTENSION_J:
++                    aAllSubsets.emplace_back( 0x323B0, 0x3347F, SvxResId(RID_SUBSETSTR_CJK_UNIFIED_IDEOGRAPHS_EXTENSION_J) );
++                    break;
++                case UBLOCK_MISCELLANEOUS_SYMBOLS_SUPPLEMENT:
++                    aAllSubsets.emplace_back( 0x1CEC0, 0x1CEFF, SvxResId(RID_SUBSETSTR_MISCELLANEOUS_SYMBOLS_SUPPLEMENT) );
++                    break;
++                case UBLOCK_SHARADA_SUPPLEMENT:
++                    aAllSubsets.emplace_back( 0x11B60, 0x11B7F, SvxResId(RID_SUBSETSTR_SHARADA_SUPPLEMENT) );
++                    break;
++                case UBLOCK_SIDETIC:
++                    aAllSubsets.emplace_back( 0x10940, 0x1095F, SvxResId(RID_SUBSETSTR_SIDETIC) );
++                    break;
++                case UBLOCK_TAI_YO:
++                    aAllSubsets.emplace_back( 0x1E6C0, 0x1E6FF, SvxResId(RID_SUBSETSTR_TAI_YO) );
++                    break;
++                case UBLOCK_TANGUT_COMPONENTS_SUPPLEMENT:
++                    aAllSubsets.emplace_back( 0x18D80, 0x18DFF, SvxResId(RID_SUBSETSTR_TANGUT_COMPONENTS_SUPPLEMENT) );
++                    break;
++                case UBLOCK_TOLONG_SIKI:
++                    aAllSubsets.emplace_back( 0x11DB0, 0x11DEF, SvxResId(RID_SUBSETSTR_TOLONG_SIKI) );
++                    break;
+ #endif
+             }
+ 
+-- 
+cgit v1.2.3

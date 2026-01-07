@@ -1,6 +1,15 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2025-12-23)
+# sys-process/numactl is not available everywhere
+sys-fs/fuse io-uring
+
+# Mike Gilbert <floppym@gentoo.org (2025-12-15)
+# arch-specific platform values
+sys-boot/grub grub_platforms_loongson grub_platforms_qemu-mips
+sys-boot/grub grub_platforms_pc grub_platforms_xen-32
+
 # Michał Górny <mgorny@gentoo.org> (2025-11-01)
 # app-crypt/sequoia-chameleon-gnupg is not keyworded everywhere.
 app-alternatives/gpg sequoia
@@ -266,10 +275,6 @@ media-libs/libva-intel-driver hybrid
 <sys-libs/glibc-2.36 experimental-loong
 sys-libs/libseccomp experimental-loong
 
-# James Le Cuirot <chewi@gentoo.org> (2022-02-24)
-# These GRUB platforms are only for MIPS.
-sys-boot/grub grub_platforms_loongson grub_platforms_qemu-mips
-
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-02-17)
 # Mask AMF keyword on non-amd64 arches
 # It is unusable, for now, in other arches
@@ -437,10 +442,6 @@ dev-db/mysql numa
 # Brian Evans <grknight@gentoo.org> (2016-08-18)
 # Mask jdbc as most arches don't support java
 dev-db/mariadb jdbc
-
-# Mike Gilbert <floppym@gentoo.org> (2016-06-23)
-# This flag only has meaning on amd64
-sys-boot/grub:2 grub_platforms_xen-32
 
 # Alexis Ballier <aballier@gentoo.org> (2015-11-14)
 # MMAL is only available on the Raspberry Pi:

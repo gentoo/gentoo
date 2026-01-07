@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -52,6 +52,7 @@ BDEPEND="
 distutils_enable_sphinx doc \
 	">=dev-python/snakeoil-0.10.11" \
 	dev-python/tomli
+EPYTEST_PLUGINS=( pkgcore )
 distutils_enable_tests pytest
 
 python_compile_all() {

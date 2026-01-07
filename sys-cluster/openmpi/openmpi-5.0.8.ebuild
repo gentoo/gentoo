@@ -23,7 +23,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 -arm ~arm64 -ppc ~ppc64 -x86 ~amd64-linux"
+KEYWORDS="~amd64 -arm ~arm64 -ppc ~ppc64 -x86"
 IUSE="cma cuda fortran peruse romio valgrind
 	${IUSE_OPENMPI_FABRICS} ${IUSE_OPENMPI_RM}"
 

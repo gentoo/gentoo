@@ -15,7 +15,7 @@ S="${WORKDIR}/${MY_PN}"
 LICENSE="LGPL-2.1"
 # subslot = libSoundTouch.so soname
 SLOT="0/1"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv x86"
 IUSE="cpu_flags_x86_sse openmp static-libs"
 
 BDEPEND="virtual/pkgconfig"

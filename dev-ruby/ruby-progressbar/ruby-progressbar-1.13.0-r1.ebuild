@@ -18,7 +18,7 @@ RUBY_S="ruby-progressbar-releases-v${PV}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 ~hppa ~ppc ~ppc64 ~riscv ~x86 ~x64-macos ~x64-solaris"
 
 ruby_add_bdepend "test? ( dev-ruby/timecop )"
 

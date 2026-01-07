@@ -106,7 +106,7 @@ BDEPEND="
 	gtk-doc? ( dev-util/gi-docgen )
 	vulkan? ( media-libs/shaderc )
 	wayland? (
-		dev-util/wayland-scanner
+		>=dev-util/wayland-scanner-1.24.0
 	)
 	test? (
 		dev-libs/glib:2

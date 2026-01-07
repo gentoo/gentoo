@@ -1,0 +1,38 @@
+https://github.com/wch/r-source/commit/489a6b8d330bb30da82329f1949f44a0f633f1e8
+
+From 489a6b8d330bb30da82329f1949f44a0f633f1e8 Mon Sep 17 00:00:00 2001
+From: ripley <ripley@00db46b3-68df-0310-9c12-caf00c1e9a41>
+Date: Thu, 10 Apr 2025 05:13:13 +0000
+Subject: [PATCH] workaround for building standalone nmath with recent
+ compilers
+
+git-svn-id: https://svn.r-project.org/R/trunk@88128 00db46b3-68df-0310-9c12-caf00c1e9a41
+
+diff --git a/src/nmath/mlutils.c b/src/nmath/mlutils.c
+index 1b590f860a..8269e7d7f9 100644
+--- a/src/nmath/mlutils.c
++++ b/src/nmath/mlutils.c
+@@ -105,7 +105,20 @@ double R_pow_di(double x, int n)
+     return pow;
+ }
+ 
++/* It is not clear why these are being defined in standalone nmath:
++ * but that they are is stated in the R-admin manual.
++ *
++ * In R NA_AREAL is a specific NaN computed during initialization.
++ */
++#if defined(__clang__) && defined(NAN)
++// C99 (optionally) has NAN, which is a float but will coerce to double.
++double NA_REAL = NAN;
++#else
++// ML_NAN is defined as (0.0/0.0) in nmath.h
++// Fails to compile in Intel ics 2025.0, Apple clang 17, LLVM clang 20
+ double NA_REAL = ML_NAN;
++#endif
++
+ double R_PosInf = ML_POSINF, R_NegInf = ML_NEGINF;
+ 
+ #include <stdio.h>
+-- 
+2.49.1
+

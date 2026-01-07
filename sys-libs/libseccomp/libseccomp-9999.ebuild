@@ -19,7 +19,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit autotools git-r3
 else
 	SRC_URI="https://github.com/seccomp/libseccomp/releases/download/v${PV}/${P}.tar.gz"
-	KEYWORDS="-* ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="-* ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86"
 fi
 
 LICENSE="LGPL-2.1"
@@ -28,13 +28,14 @@ IUSE="python static-libs test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-# We need newer kernel headers; we don't keep strict control of the exact
-# version here, just be safe and pull in the latest stable ones. bug #551248
-DEPEND="
-	>=sys-kernel/linux-headers-5.15
+RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 "
-RDEPEND="${DEPEND}"
+# We need newer kernel headers; we don't keep strict control of the exact
+# version here, just be safe and pull in the latest stable ones. bug #551248
+DEPEND="${RDEPEND}
+	>=sys-kernel/linux-headers-5.15
+"
 BDEPEND="
 	${DEPEND}
 	dev-util/gperf
@@ -47,9 +48,6 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/libseccomp-2.6.0-python-shared.patch
 	"${FILESDIR}"/libseccomp-2.5.3-skip-valgrind.patch
-	"${FILESDIR}"/${P}-drop-bogus-test.patch
-	"${FILESDIR}"/${P}-aliasing.patch
-	"${FILESDIR}"/${P}-bounds.patch
 )
 
 src_prepare() {

@@ -1,0 +1,87 @@
+From b71143738516017f0e0d347a4025301c06c40254 Mon Sep 17 00:00:00 2001
+From: Paul Eggert <eggert@cs.ucla.edu>
+Date: Wed, 24 Apr 2024 14:47:56 -0700
+Subject: Port AC_SYS_LARGEFILE to C++
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Problem reported by Zack Weinberg
+<https://savannah.gnu.org/support/?110983>.
+* lib/autoconf/specific.m4 (_AC_SYS_YEAR2038_PROBE)
+(_AC_SYS_LARGEFILE_PROBE):
+In chatter, say it’s a CPPFLAGS option, not a CC option.
+(_AC_SYS_LARGEFILE_OPTIONS): Omit -n32, as we no longer
+need to worry about IRIX.
+(_AC_SYS_LARGEFILE_PROBE): Fiddle with CPPFLAGS, not CC,
+and don’t worry about -n32.
+---
+ lib/autoconf/specific.m4 | 18 +++++++-----------
+ 1 file changed, 7 insertions(+), 11 deletions(-)
+
+diff --git a/lib/autoconf/specific.m4 b/lib/autoconf/specific.m4
+index a0e1fa8d..0d0191a8 100644
+--- a/lib/autoconf/specific.m4
++++ b/lib/autoconf/specific.m4
+@@ -132,7 +132,7 @@ m4_define([_AC_SYS_YEAR2038_OPTIONS], m4_normalize(
+ # If you change this macro you may also need to change
+ # _AC_SYS_YEAR2038_OPTIONS.
+ AC_DEFUN([_AC_SYS_YEAR2038_PROBE],
+-[AC_CACHE_CHECK([for $CC option for timestamps after 2038],
++[AC_CACHE_CHECK([for $CPPFLAGS option for timestamps after 2038],
+   [ac_cv_sys_year2038_opts],
+   [ac_save_CPPFLAGS="$CPPFLAGS"
+   ac_opt_found=no
+@@ -262,7 +262,6 @@ m4_define([_AC_SYS_LARGEFILE_OPTIONS], m4_normalize(
+     ["none needed"]                   dnl Most current systems
+     ["-D_FILE_OFFSET_BITS=64"]        dnl X/Open LFS spec
+     ["-D_LARGE_FILES=1"]              dnl 32-bit AIX 4.2.1+, 32-bit z/OS
+-    ["-n32"]                          dnl 32-bit IRIX 6, SGI cc (obsolete)
+ ))
+ 
+ # _AC_SYS_LARGEFILE_PROBE
+@@ -279,25 +278,25 @@ m4_define([_AC_SYS_LARGEFILE_OPTIONS], m4_normalize(
+ # If you change this macro you may also need to change
+ # _AC_SYS_LARGEFILE_OPTIONS.
+ AC_DEFUN([_AC_SYS_LARGEFILE_PROBE],
+-[AC_CACHE_CHECK([for $CC option to enable large file support],
++[AC_CACHE_CHECK([for $CPPFLAGS option for large files],
+   [ac_cv_sys_largefile_opts],
+-  [ac_save_CC="$CC"
++  [ac_save_CPPFLAGS=$CPPFLAGS
+   ac_opt_found=no
+   for ac_opt in _AC_SYS_LARGEFILE_OPTIONS; do
+     AS_IF([test x"$ac_opt" != x"none needed"],
+-      [CC="$ac_save_CC $ac_opt"])
++      [CPPFLAGS="$ac_save_CPPFLAGS $ac_opt"])
+     AC_COMPILE_IFELSE([AC_LANG_PROGRAM([_AC_SYS_LARGEFILE_TEST_CODE])],
+      [AS_IF([test x"$ac_opt" = x"none needed"],
+ 	[# GNU/Linux s390x and alpha need _FILE_OFFSET_BITS=64 for wide ino_t.
+-	 CC="$CC -DFTYPE=ino_t"
++	 CPPFLAGS="$CPPFLAGS -DFTYPE=ino_t"
+ 	 AC_COMPILE_IFELSE([], [],
+-	   [CC="$CC -D_FILE_OFFSET_BITS=64"
++	   [CPPFLAGS="$CPPFLAGS -D_FILE_OFFSET_BITS=64"
+ 	    AC_COMPILE_IFELSE([], [ac_opt='-D_FILE_OFFSET_BITS=64'])])])
+       ac_cv_sys_largefile_opts=$ac_opt
+       ac_opt_found=yes])
+     test $ac_opt_found = no || break
+   done
+-  CC="$ac_save_CC"
++  CPPFLAGS=$ac_save_CPPFLAGS
+   dnl Gnulib implements large file support for native Windows, based on the
+   dnl variables WINDOWS_64_BIT_OFF_T, WINDOWS_64_BIT_ST_SIZE.
+   m4_ifdef([gl_LARGEFILE], [
+@@ -327,9 +326,6 @@ AS_CASE([$ac_cv_sys_largefile_opts],
+     [AC_DEFINE([_LARGE_FILES], [1],
+       [Define to 1 on platforms where this makes off_t a 64-bit type.])],
+ 
+-  ["-n32"],
+-    [CC="$CC -n32"],
+-
+   [AC_MSG_ERROR(
+     [internal error: bad value for \$ac_cv_sys_largefile_opts])])
+ 
+-- 
+cgit v1.2.3
+

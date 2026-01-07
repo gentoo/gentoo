@@ -10,7 +10,7 @@ S="${WORKDIR}"
 
 LICENSE="metapackage"
 SLOT="3.0"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 
 IUSE="cups python"
 

@@ -14,7 +14,7 @@ S="${WORKDIR}/ParMETIS-${COMMIT}"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~loong ~riscv ~x86 ~amd64-linux"
+KEYWORDS="amd64 arm64 ~loong ~riscv ~x86"
 IUSE="examples openmp pcre"
 RESTRICT="mirror bindist"
 

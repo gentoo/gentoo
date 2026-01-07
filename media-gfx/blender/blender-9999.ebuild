@@ -119,7 +119,7 @@ RDEPEND="${PYTHON_DEPS}
 	media-libs/libjpeg-turbo:=
 	>=media-libs/libpng-1.6.50:=
 	media-libs/libsamplerate
-	>=media-libs/openimageio-3.0.9.1:=
+	>=media-libs/openimageio-3.0.9.1:=[python,${PYTHON_SINGLE_USEDEP}]
 	virtual/glu
 	virtual/libintl
 	virtual/opengl[X?]
@@ -132,7 +132,6 @@ RDEPEND="${PYTHON_DEPS}
 	ffmpeg? ( media-video/ffmpeg:=[encode(+),lame(-),jpeg2k?,opus,theora,vorbis,vpx,x264,xvid] )
 	fftw? ( sci-libs/fftw:3.0=[threads] )
 	gmp? ( dev-libs/gmp:=[cxx] )
-	gnome? ( gui-libs/libdecor )
 	hip? (
 		>=dev-util/hip-6.0:=
 		hiprt? (
@@ -214,7 +213,7 @@ DEPEND="${RDEPEND}
 	dev-cpp/eigen:=
 	test? (
 		$(python_gen_cond_dep '
-			media-libs/openimageio[jpeg2k,python,${PYTHON_SINGLE_USEDEP},tools]
+			media-libs/openimageio[jpeg2k,tools]
 		')
 	)
 "
@@ -466,6 +465,7 @@ src_configure() {
 
 		# Compiler Options:
 		# -DWITH_BUILDINFO="yes"
+		-DWITH_COMPILER_SIMD="no" # This makes it so Blender doesn't append their own -march flags
 
 		# System Options:
 		-DWITH_INSTALL_PORTABLE="no"
@@ -606,17 +606,13 @@ src_configure() {
 	if use hip; then
 		mycmakeargs+=(
 			-DHIP_ROOT_DIR="$(hipconfig -p)"
-
-			-DHIP_HIPCC_FLAGS="-fcf-protection=none"
-
-			-DCMAKE_HIP_LINK_EXECUTABLE="$(get_llvm_prefix)/bin/clang++"
-
 			-DCYCLES_HIP_BINARIES_ARCH="$(get_amdgpu_flags)"
 		)
 
 		if use hiprt; then
 			mycmakeargs+=(
 				-DHIPRT_ROOT_DIR="${ESYSROOT}/usr/lib/hiprt/2.5"
+				-DHIP_HIPCC_FLAGS="-fcf-protection=none"
 				-DHIPRT_COMPILER_PARALLEL_JOBS="$(makeopts_jobs)"
 			)
 		fi
@@ -632,7 +628,7 @@ src_configure() {
 	if use wayland; then
 		mycmakeargs+=(
 			-DWITH_GHOST_WAYLAND_APP_ID="blender-${BV}"
-			-DWITH_GHOST_WAYLAND_LIBDECOR="$(usex gnome)"
+			-DWITH_GHOST_CSD="$(usex gnome)"
 		)
 	fi
 
@@ -748,14 +744,6 @@ src_test() {
 	local -x CMAKE_SKIP_TESTS=(
 		"^script_pyapi_bpy_driver_secure_eval$"
 	)
-
-	if [[ "${RUN_FAILING_TESTS:-0}" -eq 0 ]]; then
-		einfo "not running failing tests RUN_FAILING_TESTS=${RUN_FAILING_TESTS}"
-		CMAKE_SKIP_TESTS+=(
-			# Does try to import from weird paths
-			"^io_fbx_import$"
-		)
-	fi
 
 	if ! has_version "media-libs/openusd"; then
 		CMAKE_SKIP_TESTS+=(

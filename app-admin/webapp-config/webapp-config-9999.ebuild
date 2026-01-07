@@ -4,13 +4,14 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1 prefix
 
 if [[ ${PV} = 9999* ]]
 then
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/${PN}.git"
+	EGIT_BRANCH="fixes"
 	inherit git-r3
 else
 	SRC_URI="https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/${P}.tar.bz2"
@@ -18,7 +19,7 @@ else
 fi
 
 DESCRIPTION="Gentoo's installer for web-based applications"
-HOMEPAGE="https://sourceforge.net/projects/webapp-config/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Webapp-config"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -29,23 +30,7 @@ DEPEND="app-text/xmlto
 RDEPEND="
 	portage? ( sys-apps/portage[${PYTHON_USEDEP}] )"
 
-PATCHES=(
-	"${FILESDIR}"/webapp-config-1.55-py3.122-invalid-escape-sequence.patch
-)
-
 python_prepare_all() {
-	# make the source from svn mirror the one in the tarball
-	if [[ ${PV} == 9999* ]]; then
-		mkdir ../webapp-config || die "Cannot create temp directory."
-		cp -r * ../webapp-config || die "Cannot copy all into the temp directory."
-		mv ../webapp-config . || die "Cannot move temp directory to its final position."
-
-		# Installation fails if version is 1.55-git
-		sed -e 's/-git//' \
-			-i webapp-config/WebappConfig/version.py \
-			-i WebappConfig/version.py || die "Cannot fix version."
-	fi
-
 	distutils-r1_python_prepare_all
 	eprefixify WebappConfig/eprefix.py config/webapp-config
 }
@@ -57,15 +42,6 @@ python_compile_all() {
 python_test() {
 	PYTHONPATH="." "${EPYTHON}" WebappConfig/tests/external.py -v ||
 		die "Testing failed with ${EPYTHON}"
-}
-
-python_install() {
-	# According to this discussion:
-	# http://mail.python.org/pipermail/distutils-sig/2004-February/003713.html
-	# distutils does not provide for specifying two different script install
-	# locations. Since we only install one script here the following should
-	# be ok
-	distutils-r1_python_install --install-scripts="${EPREFIX}/usr/sbin"
 }
 
 python_install_all() {

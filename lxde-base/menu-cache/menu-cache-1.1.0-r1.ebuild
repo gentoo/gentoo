@@ -9,7 +9,7 @@ SRC_URI="https://downloads.sourceforge.net/lxde/${P}.tar.xz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/2" # ABI is v2. See Makefile.am
-KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ~ppc64 ~riscv x86"
 IUSE=""
 
 RDEPEND="

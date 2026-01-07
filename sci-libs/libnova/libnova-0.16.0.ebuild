@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~asturm/distfiles/${P}.tar.xz"
 
 LICENSE="LGPL-2"
 SLOT="0/0.16"
-KEYWORDS="amd64 ~hppa ~ppc ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~hppa ~ppc ppc64 ~riscv ~x86"
 IUSE="doc examples"
 
 BDEPEND="doc? ( app-text/doxygen )"

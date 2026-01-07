@@ -1,0 +1,13 @@
+diff --git a/Plugins/ScriptingPython/ScriptingPython.pro b/Plugins/ScriptingPython/ScriptingPython.pro
+index 75375da..614cfe8 100644
+--- a/Plugins/ScriptingPython/ScriptingPython.pro
++++ b/Plugins/ScriptingPython/ScriptingPython.pro
+@@ -22,7 +22,7 @@ isEmpty(PYTHON_VERSION) {
+         PYTHON_VERSION = 3.9
+     }
+     linux: {
+-        LIBS += -lpython$$PYTHON_VERSION
++        #LIBS += -lpython$$PYTHON_VERSION
+     }
+ 
+     macx: {

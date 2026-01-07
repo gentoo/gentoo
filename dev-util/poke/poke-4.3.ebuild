@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,7 @@ elif [[ $(ver_cut 2) -ge 90 || $(ver_cut 3) -ge 90 ]]; then
 	REGEN_BDEPEND=""
 else
 	SRC_URI="mirror://gnu/poke/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 	REGEN_BDEPEND=""
 fi
 

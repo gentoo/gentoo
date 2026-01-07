@@ -12,7 +12,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-3+"
 SLOT="0/7.5.0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc fltk gif glut gsl hdf hdf5 jpeg mpi octave opengl openmp pdf
 	png qt6 threads wxwidgets zlib"
 

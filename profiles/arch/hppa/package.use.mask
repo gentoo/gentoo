@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Alfred Wingate <parona@protonmail.com> (2025-12-24)
+# media-libs/jasper is not keyworded here
+media-libs/gegl jpeg2k
+
 # Eli Schwartz <eschwartz@gentoo.org> (2025-11-27)
 # Needs dev-python/mypy for mypyc, not keyworded here
 dev-python/charset-normalizer native-extensions

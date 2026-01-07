@@ -1,9 +1,9 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_RECIPE_TEST="sus"
 RUBY_FAKEGEM_EXTRADOC="readme.md"
@@ -17,13 +17,13 @@ SRC_URI="https://github.com/socketry/async-process/archive/v${PV}.tar.gz -> ${P}
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="test"
 
 ruby_add_rdepend "dev-ruby/async:2"
 
 ruby_add_bdepend "test? (
-	>=dev-ruby/async-rspec-1.1:1
+	dev-ruby/sus-fixtures-async
 )"
 
 all_ruby_prepare() {

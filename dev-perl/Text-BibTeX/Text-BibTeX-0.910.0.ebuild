@@ -12,7 +12,7 @@ inherit flag-o-matic perl-module
 DESCRIPTION="A Perl library for reading, parsing, and processing BibTeX files"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 BDEPEND="
 	>=dev-perl/Config-AutoConf-0.320

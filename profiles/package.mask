@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Uses GLEP 84 format
@@ -35,6 +35,86 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# James Le Cuirot <chewi@gentoo.org> (2025-12-24)
+# The upstream community has forked with the vast majority going to UZDoom, now
+# packaged as games-engines/uzdoom in Gentoo. https://zdoom.org now follows this
+# new fork. Bug #967252. Removal on 2026-01-24.
+games-fps/gzdoom
+
+# Eray Aslan <eras@gentoo.org> (2025-12-24)
+# Mask experimental software
+=mail-mta/postfix-3.12*
+
+# Eli Schwartz <eschwartz@gentoo.org> (2025-12-15)
+# This version has lit a firecracker under the community and attracted
+# some ire. The situation is in a state of mild flux, and more generally
+# requires further consideration to determine the correct course of
+# action. Use at your own risk.
+>=app-text/calibre-8.11.0
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-21)
+# Fails to build against Qt 6.10, upstream repository was archived.
+# Bug #966389. Removal on 2026-01-15
+gui-libs/hyprland-qtutils
+
+# Michał Górny <mgorny@gentoo.org> (2025-12-20)
+# Packages that are missing Python 3.12+ support (or in case
+# of dev-lang/julia, all versions are unkeyworded).
+# Bug #921826.  Removal on 2026-01-20.
+dev-lang/julia
+dev-libs/redland-bindings
+dev-python/happybase
+games-engines/scrap-engine
+games-rpg/pokete
+net-misc/pulseaudio-dlna
+www-client/seamonkey
+
+# Sam James <sam@gentoo.org> (2025-12-18)
+# Another change to multiprocessing broke Portage. >=sys-apps/portage-3.0.73-r2
+# is fixed, but a fixed version of Portage must be running in order to safely
+# upgrade or re-emerge Portage with >= Python 3.14.2. Mask until more users
+# have had a chance to upgrade Portage.
+#
+# This only affects users with non-default PYTHON_TARGETS (3.14) set.
+#
+# If you are unable to upgrade Portage, please manually edit
+# /usr/lib/python-exec/python3.14/emerge and /usr/lib/python-exec/python3.14/ebuild
+# by deleting the first 3 lines beginning with 'signal.signal(' (bug #967199).
+~app-doc/python-docs-3.14.2
+~dev-lang/python-3.14.2
+~dev-lang/python-0.3.14.2
+~dev-python/python-tests-3.14.2
+~dev-python/python-tests-0.3.14.2
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-15)
+# Last release depends on Qt5, upstream appears dormant. Bug #959826
+# Removal on 2026-01-15
+net-misc/electrum-ltc
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-14)
+# Still depends on Qt5 with no upstream activity in years. Bug #960814
+# Removal on 2026-01-15
+media-sound/qmidiroute
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-14)
+# Still depends on Qt5 with no upstream porting activity. Bug #960220
+# Removal on 2026-01-15
+media-sound/mp3diags
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-14)
+# Last release depends on Qt5, upstream appears dormant. Bug #950474
+# Removal on 2026-01-15
+media-gfx/luminance-hdr
+
+# Michał Górny <mgorny@gentoo.org> (2025-12-12)
+# Upstream has switched to LLM-first coding which has already caused
+# a number of suspicious bugs.  At this point, new versions
+# of the packages cannot be trusted to be safe to use.  Furthermore,
+# the maintenance cost of dealing with packaging bugs alone
+# is overwhelming to human maintainers of this package.
+>=dev-python/autobahn-25.10
+>=dev-python/txaio-25.10
 
 # Hans de Graaff <graaff@gentoo.org> (2025-12-11)
 # The twitter API is no longer available making this package
@@ -76,22 +156,11 @@ games-engines/qtads
 # Removal on 2026-01-15
 games-strategy/hedgewars
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-05)
-# Broken w/ CMake4, IUSE python stuck on py3.12, Gui stuck on Qt5.
-# Bugs #929093, #952086, #952528, #955277. Removal on 2026-01-04.
-media-gfx/yafaray
-
-# Nowa Ammerlaan <nowa@gentoo.org (2025-12-05)
+# Nowa Ammerlaan <nowa@gentoo.org> (2025-12-05)
 # Stuck on Qt5, no upstream action.
 # Please use the games-action/prismlauncher fork instead.
 # Removal on 2026-01-05. Bug 967108.
 games-action/multimc-bin
-
-# Ulrich Müller <ulm@gentoo.org> (2025-12-04)
-# No longer functional because the Twitter API has been axed.
-# Last release in 2015, last commit to upstream repository in 2018.
-# Removal on 2026-01-03. Bug #965998.
-app-emacs/twittering-mode
 
 # Michał Górny <mgorny@gentoo.org> (2025-12-03)
 # Upstream changed how multiprocessing shares data between processes,
@@ -116,11 +185,6 @@ app-emacs/twittering-mode
 # Open bugs: #929259
 # Removal on 2026-01-02.
 net-proxy/sqtop
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-01)
-# Depends on PyQt5, no signs of upstream porting/activity.
-# Bugs #965505, 962256. Removal on 2025-12-31.
-media-video/vidcutter
 
 # David Seifert <soap@gentoo.org> (2025-12-01)
 # Last release over 20 years ago, ancient codebase, lots of QA warnings, no
@@ -150,32 +214,6 @@ sci-libs/djbfft
 # Removal on 2025-12-30.  Bugs #966396, #963998.
 dev-python/readthedocs-sphinx-ext
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-11-27)
-# Depends on Qt5, upstream needs help with porting. Bug #956453
-# Removal on 2025-12-27.
-media-gfx/panini
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-11-27)
-# Dead upstream, depends on Qt5, so it has no future in ::gentoo.
-# Qt6-based alternatives: KDE Plasma, LXQt, liquidshell.
-# Bug #961737. Removal on 2025-12-27.
-x11-wm/lumina
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-11-27)
-# Depends on Qt5, no upstream hopes of porting. Bug #955682
-# Removal on 2025-12-27.
-media-gfx/meshlab
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-11-27)
-# Depends on Qt5, no reply or activity upstream. Bug #961793
-# Removal on 2025-12-27.
-app-i18n/tagainijisho
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-11-27)
-# Unmaintained upstream, depends on Qt5. Bug #953263
-# Removal on 2025-12-27.
-x11-misc/fraqtive
-
 # Sam James <sam@gentoo.org> (2025-11-25)
 # Generates session keys with weak (no) randomness. Please re-encrypt
 # any data/messages using this librnp version. <0.18 is fine as is >=0.18.1.
@@ -187,22 +225,6 @@ x11-misc/fraqtive
 # No reverse dependencies left.
 # Removal on 2025-12-22.  Bug #966327.
 dev-python/fake-py
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-11-21)
-# Declared obsolete upstream, fails to build against Qt 6.10.
-# Bug #966307; Removal on 2025-12-20.
-gui-apps/xwaylandvideobridge
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-11-20)
-# Unmaintained in Gentoo for 2.5 years, still PyQt5 based upstream.
-# Potential replacements: RazerGenie + libopenrazer
-# Bug #965508; Removal on 2025-12-20.
-sys-apps/razercfg
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-11-19)
-# No more revdeps, no longer developed upstream, Phonon revdep.
-# Removal on 2025-12-19.
-kde-apps/libkcompactdisc
 
 # orbea <orbea@riseup.net> (2025-11-16)
 # Dead upstream, non-free licenses, depends on libsdl, no revdeps.
@@ -244,24 +266,6 @@ games-emulation/gngeo
 # by dev-lang/rust-bin.  Also needs net-proxy/mitmproxy-linux updates.
 >=dev-util/bpf-linker-0.9.15-r1
 
-# Hans de Graaff <graaff@gentoo.org> (2025-10-10)
-# No longer supported upstream since 2025-04-01. Use Rails 7.2 or newer
-# instead. Masked for removal on 2025-11-10).
-dev-ruby/activerecord:7.0
-dev-ruby/actioncable:7.0
-dev-ruby/actionview:7.0
-dev-ruby/activejob:7.0
-dev-ruby/activesupport:7.0
-dev-ruby/activestorage:7.0
-dev-ruby/actionpack:7.0
-dev-ruby/activemodel:7.0
-dev-ruby/actionmailer:7.0
-dev-ruby/actionmailbox:7.0
-dev-ruby/actiontext:7.0
-dev-ruby/rails:7.0
-dev-ruby/railties:7.0
-dev-ruby/haml:5
-
 # Lukas Schmelting <lschmelting@posteo.com> (2025-10-03)
 # Breaks e.g. in combination with gnome-shell-48.4, gettext/gjs (bug #963815)
 >=dev-libs/glib-2.86.0
@@ -282,11 +286,6 @@ dev-ruby/haml:5
 # Alternatives: sys-fs/gocryptfs or rclone crypt.
 # Removal on 2025-12-16.  Bug #960358.
 sys-fs/encfs
-
-# Michał Górny <mgorny@gentoo.org> (2025-09-15)
-# Masking due to regressions.
-# https://github.com/pyparsing/pyparsing/issues/618
-=dev-python/pyparsing-3.2.4
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
 # Obsolete transitional meta package. Bug #961795. Removal on 2025-09-28.

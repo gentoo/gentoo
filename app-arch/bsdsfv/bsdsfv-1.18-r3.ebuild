@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm ~hppa ~m68k ppc ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 arm ~hppa ~m68k ppc ~s390 ~sparc x86"
 
 PATCHES=( "${FILESDIR}"/${P}-64bit.patch )
 

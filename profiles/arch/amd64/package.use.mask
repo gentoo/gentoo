@@ -17,6 +17,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2025-12-23)
+# sys-process/numactl is available here
+sys-fs/fuse -io-uring
+
+# Mike Gilbert <floppym@gentoo.org> (2025-12-15)
+# arch-specific platform values
+sys-boot/grub -grub_platforms_pc -grub_platforms_xen-32
+
 # Michał Górny <mgorny@gentoo.org> (2025-11-01)
 # app-crypt/sequoia-chameleon-gnupg is keyworded here.
 app-alternatives/gpg -sequoia
@@ -491,10 +499,6 @@ dev-db/mariadb -jdbc
 # Andrew Savchenko <bircoph@gentoo.org> (2016-08-11)
 # PGO is fixed on amd64
 >=www-client/firefox-48 -pgo
-
-# Mike Gilbert <floppym@gentoo.org> (2016-06-23)
-# This flag only has meaning on amd64
-sys-boot/grub:2 -grub_platforms_xen-32
 
 # Brian Evans <grknight@gentoo.org> (2015-09-14)
 # Unmask new USE flags for mariadb on supported arches

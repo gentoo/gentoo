@@ -3,7 +3,9 @@
 
 EAPI=8
 
-inherit git-r3 linux-info meson systemd udev
+PYTHON_COMPAT=( python3_{11..14} )
+
+inherit git-r3 linux-info meson python-any-r1 systemd udev
 
 DESCRIPTION="A load-balancing jobserver for Gentoo"
 HOMEPAGE="https://gitweb.gentoo.org/proj/steve.git/"
@@ -11,7 +13,9 @@ EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/steve.git"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="debug"
+IUSE="debug test"
+RESTRICT="test"
+PROPERTIES="test? ( test_privileged )"
 
 DEPEND="
 	dev-libs/libevent:=
@@ -19,22 +23,53 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
+	acct-group/jobserver
+	acct-user/steve
+	>=sys-fs/fuse-common-3.10.4-r2
 "
 BDEPEND="
 	virtual/pkgconfig
+	test? (
+		$(python_gen_any_dep '
+			dev-python/pytest[${PYTHON_USEDEP}]
+			dev-python/pytest-timeout[${PYTHON_USEDEP}]
+		')
+	)
 "
+
+python_check_deps() {
+	python_has_version "dev-python/pytest[${PYTHON_USEDEP}]" &&
+		python_has_version "dev-python/pytest-timeout[${PYTHON_USEDEP}]"
+}
 
 pkg_pretend() {
 	local CONFIG_CHECK="~CUSE"
 	check_extra_config
 }
 
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
+
 src_configure() {
 	local emesonargs=(
 		$(meson_use !debug b_ndebug)
+		$(meson_use test)
 	)
 
 	meson_src_configure
+}
+
+src_test() {
+	addwrite /dev/cuse
+	addwrite /dev/steve.test
+	if [[ ! -w /dev/cuse ]]; then
+		die "Testing steve requires /dev/cuse"
+	fi
+
+	local -x STEVE=${BUILD_DIR}/steve
+	local EPYTEST_PLUGINS=( pytest-timeout )
+	epytest
 }
 
 src_install() {

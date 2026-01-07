@@ -11,10 +11,8 @@
 	</maintainer>
 	<use>
 		<flag name="angrylion-plugin">Enable the mupen64plus-video-angrylion-plus XMAME licensed plugin</flag>
-		<flag name="discord">Enable Discord RPC support</flag>
 		<flag name="dynarec">Enable the new dynarec for the mupen64plus-core plugin</flag>
 		<flag name="netplay">Enable Netplay</flag>
-		<flag name="rust-plugin">Enable the mupen64plus-input-gca rust plugin</flag>
 	</use>
 	<longdescription>
 		Rosalie's Mupen GUI is a free and open-source mupen64plus

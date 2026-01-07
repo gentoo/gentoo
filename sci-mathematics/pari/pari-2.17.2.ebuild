@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ LICENSE="GPL-2+"
 # The subslot is the value of $soname_num obtained from
 # upstream's config/version script.
 SLOT="0/9"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="data doc examples fltk gmp test threads X"
 REQUIRED_USE="fltk? ( !X )" # mutually exclusive plot implementations
 RESTRICT="!test? ( test )"
@@ -54,6 +54,9 @@ src_prepare() {
 
 src_configure() {
 	tc-export CC CXX PKG_CONFIG
+
+	# not strict-aliasing safe
+	filter-lto
 
 	# Workaraound to "asm operand has impossible constraints" as
 	# suggested in bug #499996.

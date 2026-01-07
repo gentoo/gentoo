@@ -27,7 +27,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-3+"
 SLOT="0.7"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~sparc x86"
 
 RDEPEND="
 	>=dev-python/deprecation-2.1.0[${PYTHON_USEDEP}]

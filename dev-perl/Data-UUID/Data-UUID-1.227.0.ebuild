@@ -11,7 +11,7 @@ DESCRIPTION="Generate Globally/Universally Unique Identifiers (GUIDs/UUIDs)"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~arm64 ppc ~ppc64 ~riscv x86"
 
 RDEPEND="
 	virtual/perl-Digest-MD5

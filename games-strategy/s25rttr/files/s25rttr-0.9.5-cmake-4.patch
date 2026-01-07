@@ -1,0 +1,156 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2534c9b..b1b7410 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2,12 +2,12 @@
+ #
+ # SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-cmake_minimum_required(VERSION 3.9)
+-if(POLICY CMP0093)
+-  cmake_policy(SET CMP0093 NEW) # Use Boost_VERSION x.y.z in CMake >= 3.15 or BoostConfig
++cmake_minimum_required(VERSION 3.16..3.25)
++if(POLICY CMP0177)
++  cmake_policy(SET CMP0177 NEW)  # Normalize install() DESTINATION paths
+ endif()
+-if (POLICY CMP0074)
+-  cmake_policy(SET CMP0074 NEW) # find_package uses <PackageName>_ROOT variables
++if(POLICY CMP0167)
++  cmake_policy(SET CMP0167 OLD)  # FindBoost is removed, keep for now
+ endif()
+ 
+ if(NOT RTTR_VERSION)
+diff --git a/external/kaguya/CMakeLists.txt b/external/kaguya/CMakeLists.txt
+index 694625f..a640a0c 100644
+--- a/external/kaguya/CMakeLists.txt
++++ b/external/kaguya/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ set(CMAKE_LEGACY_CYGWIN_WIN32 0)
+-cmake_minimum_required(VERSION 2.6)
++cmake_minimum_required(VERSION 3.16..3.20)
+ project(Kaguya)
+ 
+ include(cmake/FindLua.cmake)
+@@ -108,4 +108,4 @@ endif(EMSCRIPTEN)
+ 
+ 
+ enable_testing()
+-add_subdirectory(test)
+\ No newline at end of file
++add_subdirectory(test)
+diff --git a/external/libendian/CMakeLists.txt b/external/libendian/CMakeLists.txt
+index 701aeb7..77323b8 100644
+--- a/external/libendian/CMakeLists.txt
++++ b/external/libendian/CMakeLists.txt
+@@ -1,11 +1,8 @@
+-# Copyright (C) 2005 - 2021 Settlers Freaks <sf-team at siedler25.org>
++# Copyright (C) 2005 - 2025 Settlers Freaks <sf-team at siedler25.org>
+ #
+ # SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-cmake_minimum_required(VERSION 3.8)
+-if(POLICY CMP0074)
+-    cmake_policy(SET CMP0074 NEW)
+-endif()
++cmake_minimum_required(VERSION 3.16..3.20)
+ project(libendian)
+ 
+ include(RttrBoostCfg)
+diff --git a/external/liblobby/CMakeLists.txt b/external/liblobby/CMakeLists.txt
+index 83907e4..897fe32 100644
+--- a/external/liblobby/CMakeLists.txt
++++ b/external/liblobby/CMakeLists.txt
+@@ -1,8 +1,8 @@
+-# Copyright (C) 2005 - 2021 Settlers Freaks <sf-team at siedler25.org>
++# Copyright (C) 2005 - 2025 Settlers Freaks <sf-team at siedler25.org>
+ #
+ # SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-cmake_minimum_required(VERSION 3.8)
++cmake_minimum_required(VERSION 3.16..3.20)
+ project(liblobby)
+ 
+ set(SOURCES_LOBBY src/LobbyMessage.cpp    include/liblobby/LobbyMessage.h
+diff --git a/external/libsiedler2/CMakeLists.txt b/external/libsiedler2/CMakeLists.txt
+index 19ff79d..e76b6a3 100644
+--- a/external/libsiedler2/CMakeLists.txt
++++ b/external/libsiedler2/CMakeLists.txt
+@@ -3,10 +3,8 @@
+ # SPDX-License-Identifier: GPL-2.0-or-later
+ 
+ # Project meant to be used as part of a super project including libutil and libendian
+-cmake_minimum_required(VERSION 3.9)
+-if(POLICY CMP0074)
+-    cmake_policy(SET CMP0074 NEW)
+-endif()
++cmake_minimum_required(VERSION 3.16..3.20)
++
+ project(libsiedler2)
+ 
+ # If top-level project
+diff --git a/external/libutil/CMakeLists.txt b/external/libutil/CMakeLists.txt
+index 6d6e589..40789ab 100644
+--- a/external/libutil/CMakeLists.txt
++++ b/external/libutil/CMakeLists.txt
+@@ -1,11 +1,8 @@
+-# Copyright (C) 2005 - 2021 Settlers Freaks <sf-team at siedler25.org>
++# Copyright (C) 2005 - 2025 Settlers Freaks <sf-team at siedler25.org>
+ #
+ # SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-cmake_minimum_required(VERSION 3.8)
+-if(POLICY CMP0074)
+-    cmake_policy(SET CMP0074 NEW)
+-endif()
++cmake_minimum_required(VERSION 3.16..3.20)
+ project(s25util)
+ 
+ list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+diff --git a/external/s25edit/CMakeLists.txt b/external/s25edit/CMakeLists.txt
+index 9add4b0..df5ffb0 100644
+--- a/external/s25edit/CMakeLists.txt
++++ b/external/s25edit/CMakeLists.txt
+@@ -1,9 +1,9 @@
+ # Copyright (C) 2009 - 2021 Marc Vester (XaserLE)
+-# Copyright (C) 2009 - 2021 Settlers Freaks <sf-team at siedler25.org>
++# Copyright (C) 2009 - 2025 Settlers Freaks <sf-team at siedler25.org>
+ #
+ # SPDX-License-Identifier: GPL-3.0-or-later
+ 
+-cmake_minimum_required(VERSION 3.8)
++cmake_minimum_required(VERSION 3.16..3.20)
+ 
+ project(s25edit)
+ 
+diff --git a/external/turtle/CMakeLists.txt b/external/turtle/CMakeLists.txt
+index 5ddc100..02f5c9e 100644
+--- a/external/turtle/CMakeLists.txt
++++ b/external/turtle/CMakeLists.txt
+@@ -1,8 +1,8 @@
+-# Copyright 2019 Alexander Grund
++# Copyright 2019-2025 Alexander Grund
+ # Distributed under the Boost Software License, Version 1.0.
+ # See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt
+ 
+-cmake_minimum_required(VERSION 3.8)
++cmake_minimum_required(VERSION 3.16..3.20)
+ project(turtle VERSION 1.3.2 LANGUAGES CXX)
+ 
+ if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+@@ -67,15 +67,7 @@ if(TURTLE_INSTALL)
+     INSTALL_DESTINATION ${configInstallDestination}
+   )
+ 
+-  if(NOT CMAKE_VERSION VERSION_LESS 3.14)
+-    write_basic_package_version_file(${versionFile} COMPATIBILITY SameMajorVersion ARCH_INDEPENDENT)
+-  else()
+-    set(OLD_CMAKE_SIZEOF_VOID_P ${CMAKE_SIZEOF_VOID_P})
+-    set(CMAKE_SIZEOF_VOID_P "")
+-    write_basic_package_version_file(${versionFile} COMPATIBILITY SameMajorVersion)
+-    set(CMAKE_SIZEOF_VOID_P ${OLD_CMAKE_SIZEOF_VOID_P})
+-  endif()
+-
++  write_basic_package_version_file(${versionFile} COMPATIBILITY SameMajorVersion ARCH_INDEPENDENT)
+   install(FILES ${configFile} ${versionFile} DESTINATION ${configInstallDestination})
+ 
+   install(

@@ -1,0 +1,27 @@
+From d4549d672f7a76e21f7781049541e2bf84e267fa Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Sun, 14 Dec 2025 15:44:16 -0500
+Subject: [PATCH] Build project_version as a static library
+
+Gentoo's default CMake rules enable shared libraries, which this library
+is not intended to be.
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git ./CMakeLists.txt ./CMakeLists.txt
+index 0574f9a5..6300d7da 100644
+--- ./CMakeLists.txt
++++ ./CMakeLists.txt
+@@ -122,7 +122,7 @@ add_definitions(-DPROJECT_VERSION_HEADER_FILE="project_version_$<CONFIG>.h")
+ # Isolate the repo SHA in a library to reduce the amount of recompilation on git commit, checkout, etc.
+ # Clients should #include PROJECT_VERSION_HEADER_FILE and call GetProjectVersionString()
+ configure_file("${PROJECT_SOURCE_DIR}/project_version_string.h.in" "${CMAKE_BINARY_DIR}/project_version_string.h")
+-add_library(project_version "${PROJECT_SOURCE_DIR}/project_version.cpp")
++add_library(project_version STATIC "${PROJECT_SOURCE_DIR}/project_version.cpp")
+ target_include_directories(project_version PUBLIC "${CMAKE_BINARY_DIR}")
+ 
+ option(BUILD_WERROR "Build with warnings as errors" ON)
+-- 
+2.51.2
+

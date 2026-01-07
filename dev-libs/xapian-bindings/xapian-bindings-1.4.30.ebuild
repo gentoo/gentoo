@@ -7,7 +7,7 @@ GENTOO_DEPEND_ON_PERL=no
 
 LUA_COMPAT=( lua5-{1,3,4} luajit )
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 PYTHON_REQ_USE="threads(+)"
 
 USE_PHP="php8-2 php8-3"

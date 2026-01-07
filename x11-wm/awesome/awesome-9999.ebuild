@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,8 +10,14 @@ if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/awesomeWM/${PN}.git"
 else
-	SRC_URI="https://github.com/awesomeWM/awesome-releases/raw/master/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~riscv ~x86"
+	if [[ ${PV} == *_p* ]] ; then
+		HASH_COMMIT=
+		SRC_URI="https://github.com/awesomeWM/awesome/archive/${HASH_COMMIT}.tar.gz -> ${P}.tar.gz"
+		S="${WORKDIR}/${PN}-${HASH_COMMIT}"
+	else
+		SRC_URI="https://github.com/awesomeWM/awesome-releases/raw/master/${P}.tar.xz"
+	fi
 fi
 
 DESCRIPTION="Dynamic floating and tiling window manager"
@@ -28,7 +34,7 @@ RESTRICT="test"
 
 RDEPEND="
 	${LUA_DEPS}
-	dev-libs/glib:2
+	>=dev-libs/glib-2.79.2:2
 	dev-libs/libxdg-basedir
 	$(lua_gen_cond_dep 'dev-lua/lgi[${LUA_USEDEP}]')
 	gnome-base/librsvg[introspection]
@@ -60,10 +66,12 @@ DEPEND="
 "
 # graphicsmagick's 'convert -channel' has no Alpha support, bug #352282
 BDEPEND="
-	dev-ruby/asciidoctor
 	media-gfx/imagemagick[png]
 	virtual/pkgconfig
-	doc? ( dev-lua/ldoc )
+	doc? (
+		dev-lua/ldoc
+		dev-ruby/asciidoctor
+	)
 	test? (
 		app-shells/zsh
 		x11-apps/xeyes
@@ -79,16 +87,22 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.3-cflag-cleanup.patch # bug #509658
 )
 
+src_prepare() {
+	cmake_src_prepare
+	if ! use doc; then
+		cp "${FILESDIR}"/awesome{.1,-client.1,rc.5} "${S}"/manpages/ || die
+	fi
+}
+
 src_configure() {
 	# Compression of manpages is handled by portage.
-	# WITH_DBUS uses AutoOption.cmake which currently does not
-	# understand yes/no (or indeed any values other than ON, OFF
-	# or AUTO).
+	# AutoOption.cmake requires ON, OFF or AUTO
 	local mycmakeargs=(
 		-DSYSCONFDIR="${EPREFIX}"/etc
 		-DCOMPRESS_MANPAGES=OFF
 		-DWITH_DBUS=$(usex dbus ON OFF)
 		-DGENERATE_DOC=$(usex doc)
+		-DGENERATE_MANPAGES=$(usex doc ON OFF)
 		-DAWESOME_DOC_PATH="${EPREFIX}"/usr/share/doc/${PF}
 		-DLUA_INCLUDE_DIR="$(lua_get_include_dir)"
 		-DLUA_LIBRARY="$(lua_get_shared_lib)"
@@ -127,9 +141,12 @@ src_install() {
 		doins "${FILESDIR}"/${PN}-gnome-xsession.desktop
 	fi
 
-	# use html subdir
+	# use html subdir and precompiled manpages w/o doc enabled
 	if use doc; then
 		mv "${ED}"/usr/share/doc/${PF}/{doc,html} || die
+	else
+		doman "${S}"/manpages/awesome{.1,rc.5}
+		use dbus && doman "${S}"/manpages/awesome-client.1
 	fi
 }
 

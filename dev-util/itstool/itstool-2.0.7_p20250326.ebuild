@@ -20,7 +20,7 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 # files in /usr/share/itstool/its are under a special exception || GPL-3+
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos ~x64-solaris"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

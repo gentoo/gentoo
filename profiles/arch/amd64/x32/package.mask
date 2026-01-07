@@ -102,6 +102,7 @@ dev-python/spyder
 dev-python/spyder-unittest
 dev-python/spyder-line-profiler
 dev-python/spyder-notebook
+dev-python/spyder-terminal
 dev-util/kdevelop
 dev-util/kdevelop-php
 dev-util/kdevelop-python
@@ -159,6 +160,7 @@ www-client/qutebrowser
 # Requires net-libs/nodejs
 dev-lang/typescript
 gnome-extra/gnome-shell-extension-pop-shell
+>=gnome-extra/gnome-weather-49
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2020-09-20)
 # Binary-only with no x32 support

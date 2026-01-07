@@ -13,7 +13,7 @@ S="${WORKDIR}/${MYP}"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 RESTRICT="mirror bindist"
 
 RDEPEND="app-shells/tcsh"

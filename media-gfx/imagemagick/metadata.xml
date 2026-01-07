@@ -19,6 +19,8 @@
 		<flag name="q8">Set quantum depth value to 8</flag>
 	</use>
 	<upstream>
+		<changelog>https://github.com/ImageMagick/Website/blob/main/ChangeLog.md</changelog>
+		<bugs-to>https://github.com/ImageMagick/ImageMagick/issues</bugs-to>
 		<remote-id type="cpe">cpe:/a:imagemagick:imagemagick</remote-id>
 		<remote-id type="github">ImageMagick/ImageMagick</remote-id>
 		<remote-id type="github">ImageMagick/ImageMagick6</remote-id>

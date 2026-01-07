@@ -1,4 +1,4 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ SLOT="0"
 
 # Please keep a careful eye on the minimum libjoycode version! (Just pick
 # latest released at the time if necessary.)
-DEPEND=">=dev-libs/libjodycode-3.0"
+DEPEND=">=dev-libs/libjodycode-4.0.1"
 RDEPEND="${DEPEND}"
 
 IUSE="+dedupe hardened"

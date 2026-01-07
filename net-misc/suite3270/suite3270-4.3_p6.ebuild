@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ FONT_S="${S}"/${FONT_PN}
 inherit autotools font
 
 DESCRIPTION="Complete 3270 (S390) access package"
-HOMEPAGE="http://x3270.bgp.nu/"
+HOMEPAGE="https://x3270.bgp.nu/"
 SRC_URI="https://downloads.sourceforge.net/x3270/${MY_P}-src.tgz"
 
 LICENSE="GPL-2"

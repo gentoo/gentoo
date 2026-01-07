@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_REQ_USE="sqlite"
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_12 )
 inherit readme.gentoo-r1 systemd distutils-r1 pypi
 
 DESCRIPTION="BuildBot build automation system"
@@ -15,7 +15,7 @@ HOMEPAGE="https://buildbot.net/
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm64"
 
 IUSE="crypt docker examples irc test"
 RESTRICT="!test? ( test )"

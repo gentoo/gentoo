@@ -11,7 +11,7 @@ SRC_URI="https://notroj.github.io/neon/${P}.tar.gz"
 
 LICENSE="GPL-2+ LGPL-2+" # manpages+tests, core project
 SLOT="0/27"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos ~x64-solaris"
 IUSE="+expat gnutls kerberos libproxy nls pkcs11 ssl test zlib"
 RESTRICT="!test? ( test )"
 

@@ -74,6 +74,20 @@ python_test() {
 		# multiple extra deps (meson, openblas)
 		# also broken on pypy3*
 		pythran/tests/test_distutils.py::TestMeson::test_meson_build
+
+		# newer numpy version?
+		pythran/tests/test_numpy_func0.py::TestNumpyFunc0::test_fromstring0
+		pythran/tests/test_numpy_func0.py::TestNumpyFunc0::test_fromstring1
+		pythran/tests/test_numpy_func0.py::TestNumpyFunc0::test_ndindex1
+		pythran/tests/test_numpy_func0.py::TestNumpyFunc0::test_ndindex2
+		pythran/tests/test_ndarray.py::TestNdarray::test_ndarray_bool
+		pythran/tests/test_xdoc.py::TestDoctest::test_tutorial
+		pythran/tests/test_xdoc.py::TestDoctest::test_utils
+		pythran/tests/test_numpy_random.py::TestNumpyRandom::test_numpy_random_bytes1
+
+		# newer gcc?
+		pythran/tests/test_numpy_func0.py::TestNumpyFunc0::test_ndenumerate0
+		pythran/tests/test_numpy_func0.py::TestNumpyFunc0::test_ndenumerate1
 	)
 
 	case ${ARCH} in

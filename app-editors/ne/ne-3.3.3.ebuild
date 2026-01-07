@@ -11,7 +11,7 @@ SRC_URI="https://ne.di.unimi.it/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~x86"
 
 DEPEND="sys-libs/ncurses:="
 RDEPEND="

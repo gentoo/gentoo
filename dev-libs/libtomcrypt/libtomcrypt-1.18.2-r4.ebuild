@@ -19,7 +19,7 @@ LICENSE="|| ( WTFPL-2 public-domain )"
 # SONAME -- Please bump when the ABI changes upstream
 # https://abi-laboratory.pro/index.php?view=timeline&l=libtomcrypt
 SLOT="0/1"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 IUSE="+gmp +libtommath tomsfastmath"
 # Enforce at least one math provider, bug #772935
 REQUIRED_USE="|| ( gmp libtommath tomsfastmath )"

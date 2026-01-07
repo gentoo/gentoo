@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,46 +13,36 @@ SRC_URI="https://lemon.cs.elte.hu/pub/sources/${P}.tar.gz"
 
 LICENSE="Boost-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="+coin doc glpk static-libs test"
-RESTRICT="!test? ( test )"
 
 REQUIRED_USE="|| ( coin glpk )"
+RESTRICT="!test? ( test )"
 
-RDEPEND="coin? (
+RDEPEND="
+	coin? (
 		sci-libs/coinor-cbc:=
 		sci-libs/coinor-clp:=
 	)
-	glpk? ( sci-mathematics/glpk:= )"
+	glpk? ( sci-mathematics/glpk:= )
+"
 DEPEND="${RDEPEND}"
-BDEPEND="doc? (
+BDEPEND="
+	doc? (
 		app-text/doxygen
 		app-text/ghostscript-gpl
 		<dev-libs/mathjax-3
-	)"
+	)
+"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-multilib.patch
 	"${FILESDIR}"/${PN}-1.3-as-needed.patch
+	"${FILESDIR}"/${P}-cmake4.patch # bug 967729
+	"${FILESDIR}"/${P}-disable-broken-tests.patch
 )
 
 src_prepare() {
-	local t
-	for t in \
-		max_clique \
-		max_flow \
-		graph_utils \
-		random \
-		time_measure \
-		tsp; do
-		sed -i -e "/${t}_test/d" test/CMakeLists.txt || die
-	done
-
-	sed -i \
-		-e '/ADD_TEST(lp_test lp_test)/d' \
-		-e '/ADD_DEPENDENCIES(check lp_test)/d' \
-		test/CMakeLists.txt || die
-
 	cmake_comment_add_subdirectory demo
 
 	use doc || cmake_comment_add_subdirectory doc
@@ -81,8 +71,9 @@ src_configure() {
 }
 
 src_test() {
-	cd "${S}" || die
-	emake -C "${BUILD_DIR}" check
+	pushd "${S}" > /dev/null || die
+		emake -C "${BUILD_DIR}" check
+	popd > /dev/null || die
 }
 
 src_install() {

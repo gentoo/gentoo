@@ -11,7 +11,7 @@ SRC_URI="https://rzip.samba.org/ftp/rzip/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~hppa ~ppc ~ppc64 ~sparc x86"
 
 RDEPEND="app-arch/bzip2:="
 DEPEND="${RDEPEND}"

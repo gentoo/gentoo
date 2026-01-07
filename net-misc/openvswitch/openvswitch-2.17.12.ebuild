@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-MODULES_OPTIONAL_USE="modules"
-PYTHON_COMPAT=( python3_{11..13} )
+MODULES_OPTIONAL_IUSE="modules"
+PYTHON_COMPAT=( python3_{12..13} )
 
 inherit autotools dot-a flag-o-matic linux-mod-r1 multiprocessing
 inherit python-single-r1 systemd tmpfiles

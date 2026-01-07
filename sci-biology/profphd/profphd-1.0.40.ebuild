@@ -9,7 +9,7 @@ SRC_URI="ftp://rostlab.org/profphd/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 
 DEPEND="dev-lang/perl"
 RDEPEND="

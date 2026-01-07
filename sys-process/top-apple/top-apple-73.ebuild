@@ -14,7 +14,7 @@ S="${WORKDIR}/top-${PV}"
 
 LICENSE="APSL-2 BSD"
 SLOT="0"
-KEYWORDS="~ppc-macos ~x64-macos"
+KEYWORDS="~x64-macos"
 
 src_prepare() {
 	# libutil.h header is missing at least on Leopard (10.5), the dylib just

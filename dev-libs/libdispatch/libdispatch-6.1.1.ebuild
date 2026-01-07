@@ -8,9 +8,9 @@ inherit flag-o-matic cmake toolchain-funcs
 MY_PN="swift-corelibs-${PN}"
 MY_PV="swift-${PV}-RELEASE"
 
-DESCRIPTION="A library for concurrent code execution on multicore hardware"
-HOMEPAGE="https://github.com/apple/swift-corelibs-libdispatch"
-SRC_URI="https://github.com/apple/${MY_PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+DESCRIPTION="Library for concurrent code execution on multicore hardware"
+HOMEPAGE="https://github.com/swiftlang/swift-corelibs-libdispatch"
+SRC_URI="https://github.com/swiftlang/${MY_PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${MY_PV}"
 
 LICENSE="Apache-2.0"
@@ -51,6 +51,7 @@ src_configure () {
 	tc-export CC CXX LD AR NM OBJDUMP RANLIB PKG_CONFIG
 
 	local mycmakeargs=(
+		-D_GNU_SOURCE=ON # fix musl bug #967741
 		-DINSTALL_PRIVATE_HEADERS=ON # private headers needed by gnustep-base/libobjc2[libdispatch]
 		-DBUILD_TESTING=$(usex test)
 	)

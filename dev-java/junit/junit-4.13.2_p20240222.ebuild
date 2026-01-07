@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}4-${MY_COMMIT}"
 
 LICENSE="EPL-1.0"
 SLOT="4"
-KEYWORDS="amd64 arm64 ppc64 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 arm64 ppc64 ~x64-macos ~x64-solaris"
 
 CP_DEPEND="dev-java/hamcrest-core:1.3"
 DEPEND="${CP_DEPEND}

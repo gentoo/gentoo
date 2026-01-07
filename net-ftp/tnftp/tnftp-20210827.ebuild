@@ -9,7 +9,7 @@ HOMEPAGE="ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/"
 
 SLOT="0"
 LICENSE="BSD-4 BSD ISC"
-KEYWORDS="amd64 ~arm64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~arm64 ppc x86"
 IUSE="ipv6 socks5 ssl"
 REQUIRED_USE="socks5? ( !ipv6 )"
 

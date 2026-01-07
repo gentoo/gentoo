@@ -118,7 +118,9 @@ efimake() {
 src_compile() {
 	tc-export BUILD_CC AR AS CC LD OBJCOPY
 
-	if ! use custom-cflags; then
+	if use custom-cflags; then
+		LDFLAGS="$(raw-ldflags)"
+	else
 		unset CFLAGS CPPFLAGS LDFLAGS
 	fi
 

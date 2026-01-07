@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_RECIPE_DOC="none"
 RUBY_FAKEGEM_EXTRADOC="README.rdoc README.ja.rdoc TODO ChangeLog"
@@ -22,13 +22,13 @@ SRC_URI="https://github.com/ruby/racc/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 IUSE="doc test"
 
 ruby_add_rdepend "virtual/ruby-ssl"
 
 ruby_add_bdepend "dev-ruby/rake
-	test? ( dev-ruby/minitest dev-ruby/test-unit-ruby-core )"
+	test? ( dev-ruby/test-unit dev-ruby/test-unit-ruby-core )"
 
 all_ruby_prepare() {
 	sed -i -e 's/, :isolate//' Rakefile || die

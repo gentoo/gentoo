@@ -1,0 +1,92 @@
+--- a/gview_audio/gviewaudio.h
++++ b/gview_audio/gviewaudio.h
+@@ -39,7 +39,9 @@
+ #include <sys/types.h>
+ 
+ /*make sure we support c++*/
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ 
+ /*Audio API*/
+ #define AUDIO_NONE (0)
+@@ -369,6 +371,8 @@ int audio_stop(audio_context_t *audio_ctx);
+  */
+ void audio_close(audio_context_t *audio_ctx);
+ 
+-__END_DECLS
++#ifdef __cplusplus
++}
++#endif
+ 
+ #endif
+--- a/gview_encoder/gviewencoder.h
++++ b/gview_encoder/gviewencoder.h
+@@ -38,7 +38,9 @@
+ #include <sys/types.h>
+ 
+ /*make sure we support c++*/
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ 
+ /*encoder modes*/
+ #define ENCODER_MODE_NONE   (0)
+@@ -717,6 +719,8 @@ int encoder_write_audio_data(encoder_context_t *encoder_ctx);
+  */
+ int encoder_disk_supervisor(int treshold, const char *path);
+ 
+-__END_DECLS
++#ifdef __cplusplus
++}
++#endif
+ 
+ #endif
+--- a/gview_render/gviewrender.h
++++ b/gview_render/gviewrender.h
+@@ -38,7 +38,9 @@
+ #include <sys/types.h>
+ 
+ /*make sure we support c++*/
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ 
+ #define RENDER_NONE     (0)
+ #define RENDER_SDL      (1)
+@@ -361,6 +363,8 @@ void render_clean_fx();
+  */
+ void render_close();
+ 
+-__END_DECLS
++#ifdef __cplusplus
++}
++#endif
+ 
+ #endif
+--- a/gview_v4l2core/gviewv4l2core.h
++++ b/gview_v4l2core/gviewv4l2core.h
+@@ -33,7 +33,9 @@
+ #include <sys/types.h>
+ 
+ /*make sure we support c++*/
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ 
+ /*
+  * LOGITECH Dynamic controls defs
+@@ -1416,6 +1418,8 @@ int v4l2core_save_image(v4l2_frame_buff_t *frame, const char *filename,
+  */
+ uint64_t v4l2core_time_get_timestamp();
+ 
+-__END_DECLS
++#ifdef __cplusplus
++}
++#endif
+ 
+ #endif

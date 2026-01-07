@@ -3,6 +3,11 @@
 
 EAPI=8
 
+# note: while this 580.119.02 version is not as broken as 580.105.08
+# was (no need to mask), it still seem to be affected by notable
+# regressions compared to 580.95.05 and it should not be considered
+# for stable (e.g. https://forums.developer.nvidia.com/t/355216)
+
 MODULES_OPTIONAL_IUSE=+modules
 inherit desktop dot-a eapi9-pipestatus flag-o-matic linux-mod-r1
 inherit readme.gentoo-r1 systemd toolchain-funcs unpacker user-info
@@ -143,7 +148,8 @@ pkg_setup() {
 	be ignored, but note that is due to change in the future."
 	local ERROR_MMU_NOTIFIER="CONFIG_MMU_NOTIFIER: is not set but needed to build with USE=kernel-open.
 	Cannot be directly selected in the kernel's menuconfig, and may need
-	selection of another option that requires it such as CONFIG_KVM."
+	selection of another option that requires it such as CONFIG_AMD_IOMMU=y,
+	or DRM_I915=m (among others, consult the kernel config's help)."
 	local ERROR_PREEMPT_RT="CONFIG_PREEMPT_RT: is set but is unsupported by NVIDIA upstream and
 	will fail to build unless the env var IGNORE_PREEMPT_RT_PRESENCE=1 is
 	set. Please do not report issues if run into e.g. kernel panics while

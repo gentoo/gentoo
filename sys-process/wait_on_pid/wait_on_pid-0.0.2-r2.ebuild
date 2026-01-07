@@ -11,7 +11,7 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2 https://dev.gentoo.org/~zzam/${PN}/${P}.ta
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~riscv x86"
 
 src_prepare() {
 	default

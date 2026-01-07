@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..13} )
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
 
@@ -16,7 +16,7 @@ S="${WORKDIR}"/${PN}-rel.${PV}
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="amd64 ~arm64 x86 ~x64-macos"
 IUSE="s3 test"
 
 COMMON_DEPEND="

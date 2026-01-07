@@ -1,0 +1,278 @@
+https://github.com/libofx/libofx/commit/ea5d1cb71a6319b689a87249d53c96f719821113
+
+From ea5d1cb71a6319b689a87249d53c96f719821113 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Benoit=20Gr=C3=A9goire?= <benoitg@coeus.ca>
+Date: Sun, 17 Dec 2023 10:47:36 -0500
+Subject: [PATCH] Revert "Fix typos in *.dtd files".  It changed some of the
+ enums.  Typos or not, it's part of the standard, and will break stuff that
+ use it.  The dtd files are suppoesed to be those published with the standard,
+ unmodified.
+
+This reverts commit 3d50f6bd70b29b049997d41471751f334109868a.
+---
+ dtd/ofc.dtd    | 36 ++++++++++++++++++------------------
+ dtd/ofx160.dtd | 14 +++++++-------
+ dtd/ofx201.dtd | 10 +++++-----
+ 3 files changed, 30 insertions(+), 30 deletions(-)
+
+diff --git a/dtd/ofc.dtd b/dtd/ofc.dtd
+index 58249fd8..0c9dfdb5 100644
+--- a/dtd/ofc.dtd
++++ b/dtd/ofc.dtd
+@@ -27,7 +27,7 @@
+ 	model. These entity tags will never occur 
+ 	in the OFC document instance itself.
+ 
+-	The formatting rules are described in the 
++	The formating rules are described in the 
+ 	OFC Build & Parse Specification, which
+ 	can be obtained from Microsoft.   
+ -->
+@@ -45,7 +45,7 @@
+ <!ENTITY % NUMSTR 	"(#PCDATA)">
+ 
+ <!--  ID: Used for specifying a unique id.
+-	Must be composed of alphanumeric
++	Must be composed of alpha-numeric
+ 	characters. It may contain the 
+ 	following delimiters: ()-,.;:/\#
+ 	as well as spaces.
+@@ -110,7 +110,7 @@
+ 	If the user is new to the system, the response must 
+ 	contain values for OFC services available on this server, 
+ 	as well as the default days to pay and the default days 
+-	before withdrawal on new payees, when using the 
++	before withdrawl on new payees, when using the 
+ 	U.S. payment service model. The server returns 
+ 	the SESSKEY to be used during the next OFC HTTP session.
+ -->
+@@ -143,7 +143,7 @@
+ <!ELEMENT TRNRS		- o	(CLTID, STATUS, ERROR?,
+ 	(STMTRS | INTRARS | INTERRS | PAYMTRS | PAYIQRS)?)>
+ 
+-<!--  Account Statement: This is used for statement
++<!--  Account Statement: This is used for statment
+ 	downloads and file exchange. 
+ -->
+ <!ELEMENT ACCTSTMT	- o	(ACCTFROM, STMTRS)>
+@@ -153,7 +153,7 @@
+ <!--  ***************************************************************  -->
+ 
+ <!--  Account Transaction: Sent to enable or change services
+-	for a particular account belonging to a user.
++	for a paticular account belonging to a user.
+ -->
+ <!ELEMENT ACCTRQ	- o	(ACCTFROM, (SERVRQST+))>
+ <!ELEMENT ACCTRS	- o	(SERVAUTH+)>
+@@ -166,7 +166,7 @@
+ <!ELEMENT PAYEERS	- o	(PAYEEID, PAYEE?, DAYSREQD, DAYSWITH)>
+ 
+ <!--  Mail Transaction: Sent to inquire about 
+-	services for a particular account belonging to
++	services for a paticular account belonging to
+ 	a user.  
+ -->
+ <!ELEMENT MAILRQ	- o	(SERVICE, ACCTFROM?, (MEMO+))>
+@@ -191,7 +191,7 @@
+ 	an intra-bank transfer. If the server returns
+ 	a status indicating success, and no date/time
+ 	is specified, it will be assumed the funds are 
+-	immediately available. The user's account
++	immeadiately available. The user's account
+ 	must have been previously enabled for banking 
+ 	services using the ACCTRQ/ACCTRS transactions. 
+ -->
+@@ -204,7 +204,7 @@
+ 	an inter-bank transfer. If the server returns
+ 	a status indicating success, and no date/time
+ 	is specified, it will be assumed the funds are 
+-	immediately available. The user's account
++	immeadiately available. The user's account
+ 	must have been previously enabled for bill payment 
+ 	services using the ACCTRQ/ACCTRS transactions. 
+ 	The NAME and PAYACCT fields are for the "payee" 
+@@ -341,7 +341,7 @@
+ 	should verify that this is a crash recovery by
+ 	comparing the session key against the key of the
+ 	previous session. If the keys match, then it can be 
+-	assumed that the client did not receive the 
++	assumed that the client did not recieve the 
+ 	transaction response of the previous session, 
+ 	and return the response transactions of the previous
+ 	session. This key is always assigned by the
+@@ -395,7 +395,7 @@
+ 	1, request rejected 
+ 	2, account pending
+ 	3, account closed
+-	4, no CLTID (unsolicited transaction)
++	4, no CLTID (unsolicitied transaction)
+ 	5, password change required
+ 	
+ 	error status
+@@ -463,7 +463,7 @@
+ 	3, Money Market
+ 	4, Credit Line
+ 	5, Loan
+-	6, Inter-bank transfer payee
++	6, Inter-bank tranfer payee
+ 	7, Other
+ -->
+ <!ELEMENT ACCTTYPE	- o	%NUMSTR>
+@@ -477,11 +477,11 @@
+ 	3, Dividend
+ 	4, Service Charge
+ 	5, Deposit
+-	6, ATM Withdrawal
++	6, ATM Withdrawl
+ 	7, Transfer
+ 	8, Check
+ 	9, Electronic Payment
+-	10, Cash Withdrawal
++	10, Cash Withdrawl
+ 	11, Electronic Payroll Deposit
+ 	12, Other
+ -->
+@@ -509,7 +509,7 @@
+ -->
+ <!ELEMENT DAYSREQD	- o	%NUMSTR>
+ 
+-<!--  Withdrawal date: Used for specifying the number of 
++<!--  Withdrawl date: Used for specifying the number of 
+ 	days before funds will be withdarwn from a user's 
+ 	account prior to the due date of the payment.
+ -->
+@@ -550,13 +550,13 @@
+ 
+ <!--  Service: Used for specifying a service.
+ 	These services are either banking services,
+-	or billpayment services.
++	or billpayment services.  
+ 
+ 	0, Banking Services
+ 	1, Billpay Services (Service Model)
+-	2. Payee Id/Acct Info (Interbank Transfer Model)
+-	3. Payee Id Only (Interbank Transfer Model)
+-	4. Acct Info Only (Interbank Transfer Model)
++	2. Payee Id/Acct Info (Interbank Tranfer Model)  
++	3. Payee Id Only (Interbank Tranfer Model)  
++	4. Acct Info Only (Interbank Tranfer Model)  
+ -->
+ <!ELEMENT SERVICE	- o	%NUMSTR>
+ 
+diff --git a/dtd/ofx160.dtd b/dtd/ofx160.dtd
+index 5d9dda3a..331d3749 100644
+--- a/dtd/ofx160.dtd
++++ b/dtd/ofx160.dtd
+@@ -265,7 +265,7 @@
+ <!ENTITY % EXTDPMTFORENUM "(#PCDATA)">
+ <!--#ENTITY % EXTDPMTFORENUM		#Enum("INDIVIDUAL","BUSINESS")-->
+ <!ENTITY % COUPONFREQENUM "(#PCDATA)">
+-<!--#ENTITY % COUPONFREQENUM		#Enum("MONTHLY","QUARTERLY","SEMIANNUALLY","ANNUALLY","OTHER")-->
++<!--#ENTITY % COUPONFREQENUM		#Enum("MONTHLY","QUARTERLY","SEMIANNUALLY","ANUALLY","OTHER")-->
+ <!ENTITY % CHARTYPEENUM "(#PCDATA)">
+ <!--#ENTITY % CHARTYPEENUM		#Enum("ALPHAONLY","NUMERICONLY","ALPHAORNUMERIC","ALPHAANDNUMERIC")-->
+ <!ENTITY % BALANCEENUM "(#PCDATA)">
+@@ -276,7 +276,7 @@
+ <!--#ENTITY % ACCOUNTENUM2		#Enum("CHECKING","SAVINGS","MONEYMRKT","CREDITLINE","CMA")-->
+ <!ENTITY % FREQENUM "(#PCDATA)">
+ <!--#ENTITY % FREQENUM			#Enum("WEEKLY","BIWEEKLY","TWICEMONTHLY","MONTHLY","FOURWEEKS","BIMONTHLY",
+-							"QUARTERLY","SEMIANNUALLY","TRIANNUALLY","ANNUALLY")-->
++							"QUARTERLY","SEMIANNUALLY","TRIANNUALLY","ANUALLY")-->
+ <!ENTITY % DAYSENUM "(#PCDATA)">
+ <!--#ENTITY % DAYSENUM			#Enum("MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY",
+ 							"SATURDAY","SUNDAY")-->
+@@ -859,7 +859,7 @@
+ <!--#ELEMENT STPCHKSYNCRQ #Link(TOKEN2,BANKMSGSRQV2)-->
+ 
+ 
+-<!-- intrabank transfer synchronization request, v2 adds ccacctfrom -->
++<!-- intrabank transfer sychronization request, v2 adds ccacctfrom -->
+ <!-- OFX 1.5 -->
+ <!-- FROM BANKACCTFROM to (BANKACCTFROM | CCACCTFROM) -->
+ <!ELEMENT INTRASYNCRQ - - (%SYNCRQMACRO , (BANKACCTFROM | CCACCTFROM), INTRATRNRQ*)>
+@@ -1398,7 +1398,7 @@
+ <!ELEMENT DFLTDAYSTOPAY - o %DAYSPANTYPE> 		  <!--  the default number of days to pay -->
+ <!ELEMENT XFERDAYSWITH          - o     %DAYSPANTYPE>       <!--  number of days before the processing date that funds are withdrawn for xfers-->
+ <!ELEMENT XFERDFLTDAYSTOPAY     - o %DAYSPANTYPE>   <!--  the default number of days to pay for transfers-->
+-<!ELEMENT POSTPROCWND   - o     %DAYSPANTYPE>       <!--  the number of days after a transaction is processed that it is accessible
++<!ELEMENT POSTPROCWND   - o     %DAYSPANTYPE>       <!--  the number of days after a transaction is processed that it is acessible
+                                                                                           for status inquiries -->
+ <!ELEMENT STSVIAMODS    - o     %BOOLTYPE>      <!--  server supports communication of server-initiated payment status changes
+                                                                                           via the PMTMODRS -->
+@@ -2288,7 +2288,7 @@
+ <!ELEMENT INVSTMTRS  - - (DTASOF , CURDEF , INVACCTFROM , INVTRANLIST? ,
+                INVPOSLIST? , INVBAL? , INVOOLIST? ,  MKTGINFO?) >
+ 
+-<!-- Marketing Message -->
++<!-- Marketing Mesage -->
+ <!ELEMENT MKTVAL  - O %AMTTYPE >
+ 
+ <!-- ** Transaction List ** -->
+@@ -2493,7 +2493,7 @@
+ 
+ <!ELEMENT DENOMINATOR  - O %AMTTYPE >
+ 
+-<!-- Amount of cash received from fractional shares -->
++<!-- Amount of cash recieved from fractional shares -->
+ <!ELEMENT FRACCASH  - O %AMTTYPE >
+ 
+ <!-- ** Transfer Transaction ** -->
+@@ -3045,7 +3045,7 @@
+ 		     )">
+ 
+ <!-- OFX 1.6 correction: Disallow an empty <MSGSETLIST> by requiring one or
+-     more occurrences of the %MSGSETMACRO contents.
++     more occurances of the %MSGSETMACRO contents.
+      Also, make <SIGNONMSGSET> and <PROFMSGSET> required. -->
+ <!ELEMENT MSGSETLIST    - - (
+     ((( SIGNONMSGSET, (%MSGSETMACRO)+, PROFMSGSET ) |
+diff --git a/dtd/ofx201.dtd b/dtd/ofx201.dtd
+index 4ab38319..01e34620 100644
+--- a/dtd/ofx201.dtd
++++ b/dtd/ofx201.dtd
+@@ -581,7 +581,7 @@ Revisions 031000 Tom Lebhar
+ 
+ <!ENTITY % COUPONFREQENUM "(#PCDATA)">
+ 
+-<!--#ENTITY % COUPONFREQENUM		#Enum("MONTHLY","QUARTERLY","SEMIANNUALLY","ANNUALLY","OTHER")-->
++<!--#ENTITY % COUPONFREQENUM		#Enum("MONTHLY","QUARTERLY","SEMIANNUALLY","ANUALLY","OTHER")-->
+ 
+ <!ENTITY % CHARTYPEENUM "(#PCDATA)">
+ 
+@@ -605,7 +605,7 @@ Revisions 031000 Tom Lebhar
+ 
+ <!--#ENTITY % FREQENUM			#Enum("WEEKLY","BIWEEKLY","TWICEMONTHLY","MONTHLY","FOURWEEKS","BIMONTHLY",
+ 
+-							"QUARTERLY","SEMIANNUALLY","TRIANNUALLY","ANNUALLY")-->
++							"QUARTERLY","SEMIANNUALLY","TRIANNUALLY","ANUALLY")-->
+ 
+ <!ENTITY % DAYSENUM "(#PCDATA)">
+ 
+@@ -1771,7 +1771,7 @@ Revisions 031000 Tom Lebhar
+ <!-- The default njumber of days to pay for transfers -->
+ <!ELEMENT XFERDFLTDAYSTOPAY          %DAYSPANTYPE;>
+ 
+-<!--  The number of days after a transaction is processed that it is accessible for status inquiries -->
++<!--  The number of days after a transaction is processed that it is acessible for status inquiries -->
+ <!ELEMENT POSTPROCWND                %DAYSPANTYPE;>       
+ 
+ <!--  server supports communication of server-initiated payment status changes via the PMTMODRS -->
+@@ -2810,7 +2810,7 @@ Revisions 031000 Tom Lebhar
+ 
+ <!ELEMENT DENOMINATOR   %AMTTYPE; >
+ 
+-<!-- Amount of cash received from fractional shares -->
++<!-- Amount of cash recieved from fractional shares -->
+ 
+ <!ELEMENT FRACCASH   %AMTTYPE; >
+ 
+@@ -4545,7 +4545,7 @@ Revisions 031000 Tom Lebhar
+ 
+ <!ELEMENT INTINCOME	      %AMTTYPE;>
+ 
+-<!-- Early withdrawal penalty, amount                                          -->	
++<!-- Early withdrawl penalty, amount                                          -->	
+ 
+ <!ELEMENT ERLWITHPEN          %AMTTYPE;>
+ 
+

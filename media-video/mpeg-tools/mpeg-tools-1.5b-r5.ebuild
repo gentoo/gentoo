@@ -13,7 +13,7 @@ S="${WORKDIR}"/${MY_PN}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 ppc ppc64 x86 ~x64-macos"
 
 RDEPEND="x11-libs/libX11
 	virtual/jpeg:0"

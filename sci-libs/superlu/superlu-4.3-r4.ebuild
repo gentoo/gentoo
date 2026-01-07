@@ -15,7 +15,7 @@ S="${WORKDIR}/${MY_PN}_${PV}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
 IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 

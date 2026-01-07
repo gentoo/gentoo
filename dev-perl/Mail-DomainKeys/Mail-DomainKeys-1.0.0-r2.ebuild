@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="A perl implementation of DomainKeys"
 
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 
 RDEPEND="
 	>=dev-perl/Net-DNS-0.34

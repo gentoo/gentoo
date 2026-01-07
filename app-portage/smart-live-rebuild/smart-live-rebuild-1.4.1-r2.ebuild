@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1
 
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/gentoo/smart-live-rebuild/archive/v${PV}.tar.gz -> $
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~hppa ~mips ~ppc ppc64 ~riscv ~sparc x86 ~x64-macos"
 
 RDEPEND="
 	>=app-portage/gentoopm-0.2.1[${PYTHON_USEDEP}]

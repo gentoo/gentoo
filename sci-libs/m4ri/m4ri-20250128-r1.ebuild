@@ -11,7 +11,7 @@ SRC_URI="https://github.com/malb/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0/1" # libm4ri.so major version
-KEYWORDS="~amd64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~amd64 ~ppc64 ~riscv ~x86 ~x64-macos"
 IUSE="debug openmp cpu_flags_x86_sse2 png"
 
 BDEPEND="virtual/pkgconfig"

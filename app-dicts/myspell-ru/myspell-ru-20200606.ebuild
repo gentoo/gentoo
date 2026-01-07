@@ -20,7 +20,7 @@ SRC_URI="https://extensions.libreoffice.org/assets/downloads/48/${MY_PN}-${MY_PV
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 
 src_prepare() {
 	default

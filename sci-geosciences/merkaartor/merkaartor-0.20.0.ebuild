@@ -48,6 +48,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.20.0-disable-git.patch # downstream patch
 	# pending upstream PR: https://github.com/openstreetmap/merkaartor/pull/291
 	"${FILESDIR}"/${PN}-0.20.0-GNUInstallDirs.patch
+	"${FILESDIR}"/${PN}-0.20.0-gdal-3.12-fix.patch # backport from master
 )
 
 src_prepare() {
@@ -68,4 +69,9 @@ src_configure() {
 	)
 
 	cmake_src_configure
+}
+
+src_test() {
+	local -x QT_QPA_PLATFORM=offscreen
+	cmake_src_test
 }

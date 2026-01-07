@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Write a CHECKSUMS file for a directory as on CPAN"
 
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	dev-perl/Compress-Bzip2

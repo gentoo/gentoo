@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm64 ~riscv x86"
 
 RDEPEND="
 	dev-python/wcwidth[${PYTHON_USEDEP}]

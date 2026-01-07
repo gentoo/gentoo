@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Check validity of Internet email addresses"
 
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv x86 ~x64-macos ~x64-solaris"
 
 RDEPEND="
 	dev-perl/Capture-Tiny

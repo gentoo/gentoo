@@ -2,10 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
-PYTHON_COMPAT=( python3_{10..13} )
+
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{11..13} )
 PYTHON_REQ_USE="xml(+)"
 
-inherit python-r1 toolchain-funcs
+inherit distutils-r1 toolchain-funcs
 
 MY_PV="${PV//_/-}"
 MY_P="${PN}-${MY_PV}"
@@ -27,75 +29,92 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND=">=sys-libs/libselinux-${PV}:=[python]
 	>=sys-libs/libsemanage-${PV}:=[python(+)]
 	>=sys-libs/libsepol-${PV}:=[static-libs(+)]
 	>=app-admin/setools-4.2.0[${PYTHON_USEDEP}]
-	>=sys-process/audit-1.5.1[python,${PYTHON_USEDEP}]
-	${PYTHON_DEPS}"
+	>=sys-process/audit-1.5.1[python,${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	test? (
 		${RDEPEND}
+		sec-policy/selinux-base
 		>=sys-apps/secilc-${PV}
 	)"
 
+PATCHES=(
+	"${FILESDIR}"/selinux-python-3.8.1-no-pip.patch
+)
+
 src_prepare() {
 	default
-	sed -i 's/-Werror//g' "${S}"/*/Makefile || die "Failed to remove Werror"
 
-	python_copy_sources
+	sed -e 's/-Werror//g' -i "${S}"/*/Makefile || die "Failed to remove Werror"
+
+	pushd sepolicy >/dev/null || die
+	# To avoid default
+	DISTUTILS_OPTIONAL=1 distutils-r1_src_prepare
+	popd >/dev/null || die
+}
+
+python_compile() {
+	distutils-r1_python_compile
+	emake -C "${S}" \
+		CC="$(tc-getCC)" \
+		LIBDIR="\$(PREFIX)/$(get_libdir)"
 }
 
 src_compile() {
-	building() {
-		emake -C "${BUILD_DIR}" \
-			CC="$(tc-getCC)" \
-			LIBDIR="\$(PREFIX)/$(get_libdir)"
-	}
-	python_foreach_impl building
+	pushd sepolicy >/dev/null || die
+	distutils-r1_src_compile
+	popd >/dev/null || die
+}
+
+python_test() {
+	# The different subprojects have some interproject dependencies:
+	# - audit2allow depens on sepolgen
+	# - chcat depends on semanage
+	# and maybe others.
+	# Add all the modules of the individual subprojects to the
+	# PYTHONPATH, so they get actually found and used. In
+	# particular, already installed versions on the system are not
+	# used.
+	for dir in audit2allow chcat semanage sepolgen/src sepolicy ; do
+		PYTHONPATH="${S}/${dir}:${PYTHONPATH}"
+	done
+	PYTHONPATH=${PYTHONPATH} emake -C "${S}" test
 }
 
 src_test() {
-	testing() {
-		# The different subprojects have some interproject dependencies:
-		# - audit2allow depens on sepolgen
-		# - chcat depends on semanage
-		# and maybe others.
-		# Add all the modules of the individual subprojects to the
-		# PYTHONPATH, so they get actually found and used. In
-		# particular, already installed versions on the system are not
-		# used.
-		for dir in audit2allow chcat semanage sepolgen/src sepolicy ; do
-			PYTHONPATH="${BUILD_DIR}/${dir}:${PYTHONPATH}"
-		done
-		PYTHONPATH=${PYTHONPATH} \
-			emake -C "${BUILD_DIR}" \
-				test
-	}
-	python_foreach_impl testing
+	pushd sepolicy >/dev/null || die
+	distutils-r1_src_test
+	popd >/dev/null || die
 }
 
-src_install() {
-	installation() {
-		emake -C "${BUILD_DIR}" \
-			DESTDIR="${D}" \
-			LIBDIR="\$(PREFIX)/$(get_libdir)" \
-			install
-		python_optimize
-	}
-	python_foreach_impl installation
+python_install() {
+	distutils-r1_python_install
+	emake -C "${S}" \
+		DESTDIR="${D}" \
+		LIBDIR="\$(PREFIX)/$(get_libdir)" \
+		install
 
-	# Set version-specific scripts
-	for pyscript in audit2allow sepolgen-ifgen sepolicy chcat; do
-		python_replicate_script "${ED}/usr/bin/${pyscript}"
-	done
-	for pyscript in semanage; do
-		python_replicate_script "${ED}/usr/sbin/${pyscript}"
-	done
+	# Install over previously installed scripts to ensure proper python support
+	python_doscript "${S}"/audit2allow/audit2allow
+	python_doscript "${S}"/audit2allow/sepolgen-ifgen
+	python_doscript "${S}"/chcat/chcat
+	python_newscript "${S}"/sepolicy/sepolicy.py sepolicy
 
+	python_scriptinto /usr/sbin
+	python_doscript "${S}"/semanage/semanage
+
+	# set _PYTHON_SCRIPTROOT to the implicit default for the next python target, bug #967869
+	python_scriptinto /usr/bin
+
+	python_optimize
+}
+
+python_install_all() {
 	# Create sepolgen.conf with different devel location definition
 	mkdir -p "${D}"/etc/selinux || die "Failed to create selinux directory";
 	if [[ -f /etc/selinux/config ]];
@@ -114,4 +133,10 @@ src_install() {
 				> "${D}"/etc/selinux/sepolgen.conf || die "Failed to generate sepolgen"
 		fi
 	fi
+}
+
+src_install() {
+	pushd sepolicy >/dev/null || die
+	distutils-r1_src_install
+	popd >/dev/null || die
 }

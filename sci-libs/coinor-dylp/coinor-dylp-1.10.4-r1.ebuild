@@ -16,7 +16,7 @@ LICENSE="EPL-1.0"
 # major soname component
 SLOT="0/1"
 
-KEYWORDS="~amd64 ~loong ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~loong ~riscv ~x86"
 IUSE="doc examples static-libs test"
 RESTRICT="!test? ( test )"
 

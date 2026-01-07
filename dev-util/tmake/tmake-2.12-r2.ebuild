@@ -9,7 +9,7 @@ SRC_URI="https://downloads.sourceforge.net/tmake/${P}.tar.bz2"
 
 LICENSE="HPND"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ppc x86"
 
 RDEPEND=">=dev-lang/perl-5"
 

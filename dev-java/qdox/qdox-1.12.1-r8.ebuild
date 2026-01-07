@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="Apache-2.0"
 SLOT="1.12"
-KEYWORDS="amd64 arm64 ppc64 ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 arm64 ppc64 ~x64-macos"
 IUSE="ant-task"
 REQUIRED_USE="test? ( ant-task )"
 

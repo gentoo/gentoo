@@ -21,8 +21,6 @@ SRC_URI="
 	doc? (
 		https://www.scons.org/doc/${PV}/PDF/${PN}-user.pdf
 			-> ${P}-user.pdf
-		https://www.scons.org/doc/${PV}/HTML/${PN}-user.html
-			-> ${P}-user.html
 	)
 	test? (
 		https://github.com/SCons/scons/archive/${PV}.tar.gz
@@ -32,7 +30,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos ~x64-solaris"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
@@ -157,5 +155,5 @@ python_install_all() {
 	distutils-r1_python_install_all
 
 	doman *.1
-	use doc && dodoc "${DISTDIR}/${P}"-user.{pdf,html}
+	use doc && dodoc "${DISTDIR}/${P}"-user.pdf
 }

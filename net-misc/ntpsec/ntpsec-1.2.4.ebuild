@@ -20,7 +20,7 @@ else
 		https://ftp.ntpsec.org/pub/releases/${P}.tar.gz
 		verify-sig? ( https://ftp.ntpsec.org/pub/releases/${P}.tar.gz.asc )
 	"
-	KEYWORDS="amd64 arm arm64 ~m68k ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 ~loong ~m68k ~ppc ~ppc64 ~riscv ~s390 ~x86"
 
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-ntpsec )"
 fi
@@ -73,6 +73,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.1.9-remove-asciidoctor-from-config.patch"
 	"${FILESDIR}/${PN}-1.2.2-logrotate.patch"
 	"${FILESDIR}/${PN}-1.2.4-pep517-no-egg.patch"
+	"${FILESDIR}/${PN}-1.2.4-s390x-tests.patch"
 )
 
 WAF_BINARY="${S}/waf"

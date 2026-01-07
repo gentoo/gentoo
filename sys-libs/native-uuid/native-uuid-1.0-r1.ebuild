@@ -8,7 +8,7 @@ HOMEPAGE="https://prefix.gentoo.org/"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~arm64-macos ~ppc-macos ~x64-macos"
+KEYWORDS="~arm64-macos ~x64-macos"
 
 DEPEND="!!sys-libs/libuuid
 	!!sys-apps/util-linux"

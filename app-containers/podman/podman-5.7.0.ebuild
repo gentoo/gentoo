@@ -17,7 +17,7 @@ else
 	SRC_URI="https://github.com/containers/podman/archive/v${PV/_rc/-rc}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${P/_rc/-rc}"
 	[[ ${PV} != *rc* ]] && \
-		KEYWORDS="~amd64 ~arm64 ~loong ~riscv"
+		KEYWORDS="amd64 arm64 ~loong ~riscv"
 fi
 
 # main pkg

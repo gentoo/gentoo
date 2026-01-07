@@ -39,6 +39,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	test? (
 		${RDEPEND}
+		sec-policy/selinux-base
 		>=sys-apps/secilc-${PV}
 	)"
 

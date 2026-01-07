@@ -15,7 +15,7 @@ S="${WORKDIR}/${P}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm64 ppc64 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 arm64 ppc64 ~x64-macos ~x64-solaris"
 RESTRICT="test" #921147
 
 DEPEND=">=virtual/jdk-1.8:*"

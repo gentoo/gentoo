@@ -1,0 +1,186 @@
+From d3a16bc03c58a4f7c3222462110509e39c209ebf Mon Sep 17 00:00:00 2001
+From: Jehan <jehan@girinstud.io>
+Date: Fri, 7 Nov 2025 12:09:43 +0100
+Subject: [PATCH] Issue #3819: G_FILE_MONITOR_WATCH_HARD_LINK does not monitor
+ files on Windows.
+
+Current code was clearly considering the case of having only a filename
+as a directory monitoring, instead of a hard-link monitoring. As I
+assume that hard links don't exist on Windows, this case should simply
+revert back to the basic file monitoring code path.
+---
+ gio/win32/gwin32fsmonitorutils.c | 121 ++++++++++++++++---------------
+ 1 file changed, 63 insertions(+), 58 deletions(-)
+
+diff --git a/gio/win32/gwin32fsmonitorutils.c b/gio/win32/gwin32fsmonitorutils.c
+index d06dc458a0..cc2a60b116 100644
+--- a/gio/win32/gwin32fsmonitorutils.c
++++ b/gio/win32/gwin32fsmonitorutils.c
+@@ -245,9 +245,9 @@ g_win32_fs_monitor_init (GWin32FSMonitorPrivate *monitor,
+                          const gchar *filename,
+                          gboolean isfile)
+ {
+-  wchar_t *wdirname_with_long_prefix = NULL;
++  gchar   *dirname_with_long_prefix;
++  wchar_t *wdirname_with_long_prefix;
+   const gchar LONGPFX[] = "\\\\?\\";
+-  gchar *fullpath_with_long_prefix, *dirname_with_long_prefix;
+   DWORD notify_filter = isfile ?
+                         (FILE_NOTIFY_CHANGE_FILE_NAME |
+                          FILE_NOTIFY_CHANGE_ATTRIBUTES |
+@@ -260,83 +260,88 @@ g_win32_fs_monitor_init (GWin32FSMonitorPrivate *monitor,
+   gboolean success_attribs;
+   WIN32_FILE_ATTRIBUTE_DATA attrib_data = {0, };
+ 
++  g_return_if_fail ((filename && isfile) || (dirname && ! isfile));
+ 
+   if (dirname != NULL)
+     {
+       dirname_with_long_prefix = g_strconcat (LONGPFX, dirname, NULL);
+-      wdirname_with_long_prefix = g_utf8_to_utf16 (dirname_with_long_prefix, -1, NULL, NULL, NULL);
+-
+-      if (isfile)
+-        {
+-          gchar *fullpath;
+-          wchar_t wlongname[MAX_PATH_LONG];
+-          wchar_t wshortname[MAX_PATH_LONG];
+-          wchar_t *wfullpath, *wbasename_long, *wbasename_short;
++    }
++  else
++    {
++      gchar *tmp_dirname = g_path_get_dirname (filename);
++      dirname_with_long_prefix = g_strconcat (LONGPFX, tmp_dirname, NULL);
++      g_free (tmp_dirname);
++    }
++  wdirname_with_long_prefix = g_utf8_to_utf16 (dirname_with_long_prefix, -1, NULL, NULL, NULL);
+ 
+-          fullpath = g_build_filename (dirname, filename, NULL);
+-          fullpath_with_long_prefix = g_strconcat (LONGPFX, fullpath, NULL);
++  if (isfile)
++    {
++      gchar *fullpath;
++      gchar *fullpath_with_long_prefix;
++      wchar_t wlongname[MAX_PATH_LONG];
++      wchar_t wshortname[MAX_PATH_LONG];
++      wchar_t *wfullpath, *wbasename_long, *wbasename_short;
++
++      if (dirname)
++        fullpath = g_build_filename (dirname, filename, NULL);
++      else
++        fullpath = g_strdup (filename);
+ 
+-          wfullpath = g_utf8_to_utf16 (fullpath, -1, NULL, NULL, NULL);
++      fullpath_with_long_prefix = g_strconcat (LONGPFX, fullpath, NULL);
+ 
+-          monitor->wfullpath_with_long_prefix =
+-            g_utf8_to_utf16 (fullpath_with_long_prefix, -1, NULL, NULL, NULL);
++      wfullpath = g_utf8_to_utf16 (fullpath, -1, NULL, NULL, NULL);
+ 
+-          /* ReadDirectoryChangesW() can return the normal filename or the
+-           * "8.3" format filename, so we need to keep track of both these names
+-           * so that we can check against them later when it returns
+-           */
+-          if (GetLongPathNameW (monitor->wfullpath_with_long_prefix, wlongname, MAX_PATH_LONG) == 0)
+-            {
+-              wbasename_long = wcsrchr (monitor->wfullpath_with_long_prefix, L'\\');
+-              monitor->wfilename_long = wbasename_long != NULL ?
+-                                        wcsdup (wbasename_long + 1) :
+-                                        wcsdup (wfullpath);
+-            }
+-          else
+-            {
+-              wbasename_long = wcsrchr (wlongname, L'\\');
+-              monitor->wfilename_long = wbasename_long != NULL ?
+-                                        wcsdup (wbasename_long + 1) :
+-                                        wcsdup (wlongname);
++      monitor->wfullpath_with_long_prefix =
++        g_utf8_to_utf16 (fullpath_with_long_prefix, -1, NULL, NULL, NULL);
+ 
+-            }
++      /* ReadDirectoryChangesW() can return the normal filename or the
++       * "8.3" format filename, so we need to keep track of both these names
++       * so that we can check against them later when it returns
++       */
++      if (GetLongPathNameW (monitor->wfullpath_with_long_prefix, wlongname, MAX_PATH_LONG) == 0)
++        {
++          wbasename_long = wcsrchr (monitor->wfullpath_with_long_prefix, L'\\');
++          monitor->wfilename_long = wbasename_long != NULL ?
++            wcsdup (wbasename_long + 1) :
++            wcsdup (wfullpath);
++        }
++      else
++        {
++          wbasename_long = wcsrchr (wlongname, L'\\');
++          monitor->wfilename_long = wbasename_long != NULL ?
++            wcsdup (wbasename_long + 1) :
++            wcsdup (wlongname);
+ 
+-          if (GetShortPathNameW (monitor->wfullpath_with_long_prefix, wshortname, MAX_PATH_LONG) == 0)
+-            {
+-              wbasename_short = wcsrchr (monitor->wfullpath_with_long_prefix, L'\\');
+-              monitor->wfilename_short = wbasename_short != NULL ?
+-                                         wcsdup (wbasename_short + 1) :
+-                                         wcsdup (wfullpath);
+-            }
+-          else
+-            {
+-              wbasename_short = wcsrchr (wshortname, L'\\');
+-              monitor->wfilename_short = wbasename_short != NULL ?
+-                                         wcsdup (wbasename_short + 1) :
+-                                         wcsdup (wshortname);
+-            }
++        }
+ 
+-          g_free (wfullpath);
+-          g_free (fullpath);
++      if (GetShortPathNameW (monitor->wfullpath_with_long_prefix, wshortname, MAX_PATH_LONG) == 0)
++        {
++          wbasename_short = wcsrchr (monitor->wfullpath_with_long_prefix, L'\\');
++          monitor->wfilename_short = wbasename_short != NULL ?
++            wcsdup (wbasename_short + 1) :
++            wcsdup (wfullpath);
+         }
+       else
+         {
+-          monitor->wfilename_short = NULL;
+-          monitor->wfilename_long = NULL;
+-          monitor->wfullpath_with_long_prefix = g_utf8_to_utf16 (dirname_with_long_prefix, -1, NULL, NULL, NULL);
++          wbasename_short = wcsrchr (wshortname, L'\\');
++          monitor->wfilename_short = wbasename_short != NULL ?
++            wcsdup (wbasename_short + 1) :
++            wcsdup (wshortname);
+         }
+ 
+-      monitor->isfile = isfile;
++      g_free (wfullpath);
++      g_free (fullpath);
++      g_free (fullpath_with_long_prefix);
+     }
+   else
+     {
+-      dirname_with_long_prefix = g_strconcat (LONGPFX, filename, NULL);
+-      monitor->wfullpath_with_long_prefix = g_utf8_to_utf16 (dirname_with_long_prefix, -1, NULL, NULL, NULL);
+-      monitor->wfilename_long = NULL;
+       monitor->wfilename_short = NULL;
+-      monitor->isfile = FALSE;
++      monitor->wfilename_long = NULL;
++      monitor->wfullpath_with_long_prefix = g_utf8_to_utf16 (dirname_with_long_prefix, -1, NULL, NULL, NULL);
+     }
+ 
++  monitor->isfile = isfile;
++
+   success_attribs = GetFileAttributesExW (monitor->wfullpath_with_long_prefix,
+                                           GetFileExInfoStandard,
+                                           &attrib_data);
+@@ -345,7 +350,7 @@ g_win32_fs_monitor_init (GWin32FSMonitorPrivate *monitor,
+   else
+     monitor->file_attribs = INVALID_FILE_ATTRIBUTES;
+   monitor->pfni_prev = NULL;
+-  monitor->hDirectory = CreateFileW (wdirname_with_long_prefix != NULL ? wdirname_with_long_prefix : monitor->wfullpath_with_long_prefix,
++  monitor->hDirectory = CreateFileW (wdirname_with_long_prefix,
+                                      FILE_LIST_DIRECTORY,
+                                      FILE_SHARE_DELETE | FILE_SHARE_READ | FILE_SHARE_WRITE,
+                                      NULL,
+-- 
+GitLab
+

@@ -9,7 +9,7 @@ SRC_URI="https://www.w3.org/Tools/HTML-XML-utils/${P}.tar.gz"
 
 LICENSE="W3C"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 x86 ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ppc ppc64 x86"
 
 RDEPEND="
 	net-dns/libidn2:=

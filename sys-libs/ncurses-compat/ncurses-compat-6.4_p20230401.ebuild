@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This version is just for the ABI .5 library.
@@ -20,8 +20,8 @@ HOMEPAGE="https://www.gnu.org/software/ncurses/ https://invisible-island.net/ncu
 # Keep invisible-mirror.net here as some users reported 403 forbidden with invisible-island.net
 SRC_URI="
 	mirror://gnu/ncurses/${MY_P}.tar.gz
-	https://invisible-island.net/archives/${PN}/${MY_P}.tar.gz
-	https://invisible-mirror.net/archives/${PN}/${MY_P}.tar.gz
+	https://invisible-island.net/archives/${MY_PN}/${MY_P}.tar.gz
+	https://invisible-mirror.net/archives/${MY_PN}/${MY_P}.tar.gz
 	verify-sig? ( mirror://gnu/ncurses/${MY_P}.tar.gz.sig )
 "
 
@@ -61,17 +61,17 @@ if [[ ${PV} == *_p* ]] ; then
 	)
 
 	if [[ -z ${PATCH_DATES[@]} ]] ; then
-		SRC_URI+=" https://invisible-island.net/archives/${PN}/${PV/_p*}/${MY_P/_p/-}.patch.sh.gz"
-		SRC_URI+=" verify-sig? ( https://invisible-island.net/archives/${PN}/${PV/_p*}/${MY_P/_p/-}.patch.sh.gz.asc"
+		SRC_URI+=" https://invisible-island.net/archives/${MY_PN}/${PV/_p*}/${MY_P/_p/-}.patch.sh.gz"
+		SRC_URI+=" verify-sig? ( https://invisible-island.net/archives/${MY_PN}/${PV/_p*}/${MY_P/_p/-}.patch.sh.gz.asc"
 
 		# If we have a rollup patch, use that instead of the individual ones.
 		UPSTREAM_PATCHES+=( patch.sh )
 	else
 		# We use a mirror as well because we've had reports of 403 forbidden for some users.
-		upstream_url_base="https://invisible-island.net/archives/${PN}/${PV/_p*}/${MY_P}-"
-		upstream_m_url_base="https://invisible-mirror.net/archives/${PN}/${PV/_p*}/${MY_P}-"
+		upstream_url_base="https://invisible-island.net/archives/${MY_PN}/${PV/_p*}/${MY_P}-"
+		upstream_m_url_base="https://invisible-mirror.net/archives/${MY_PN}/${PV/_p*}/${MY_P}-"
 
-		# Prefix each date with the upstream location (https://invisible-island.net/archives/${PN}/${PV/_p*}/${MY_P})
+		# Prefix each date with the upstream location (https://invisible-island.net/archives/${MY_PN}/${PV/_p*}/${MY_P})
 		mangled_patches=( "${PATCH_DATES[@]/#/${upstream_url_base}}" )
 		# Suffix each with .patch.gz
 		mangled_patches=( "${mangled_patches[@]/%/.patch.gz}" )
@@ -90,7 +90,7 @@ if [[ ${PV} == *_p* ]] ; then
 	fi
 fi
 
-SRC_URI+=" https://dev.gentoo.org/~${GENTOO_PATCH_DEV}/distfiles/${CATEGORY}/${PN}/${GENTOO_PATCH_NAME}.tar.xz"
+SRC_URI+=" https://dev.gentoo.org/~${GENTOO_PATCH_DEV}/distfiles/${CATEGORY}/${MY_PN}/${GENTOO_PATCH_NAME}.tar.xz"
 
 LICENSE="MIT"
 # The subslot reflects the SONAME.

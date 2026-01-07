@@ -19,7 +19,7 @@ LICENSE="GPL-2"
 
 SLOT="0"
 
-KEYWORDS="~amd64 ~amd64-linux"
+KEYWORDS="~amd64"
 
 # TODO: fix this
 # ImportError: MDAnalysis not installed properly. This can happen if your C extensions have not been built.

@@ -32,7 +32,8 @@ dev-ada/markdown
 dev-ada/prettier-ada
 dev-ada/spawn
 dev-ada/templates-parser
-dev-ada/VSS
+dev-ada/vss-text
+dev-ada/vss-extra
 dev-ada/xmlada
 
 # Michał Górny <mgorny@gentoo.org> (2024-11-06)

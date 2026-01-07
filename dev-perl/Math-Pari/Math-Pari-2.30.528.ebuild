@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ SRC_URI="
 S_PARI="${WORKDIR}"/pari-${PARI_VER}
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~hppa ~sparc x86"
 
 # Math::Pari requires that a copy of the pari source in a parallel
 # directory to where you build it. It does not need to compile it, but
@@ -57,6 +57,11 @@ src_prepare() {
 src_configure() {
 	# bug #1234
 	append-cflags -std=gnu17
+
+	# -Werror=strict-aliasing in bundled sci-mathematics/pari code copy
+	# https://bugs.gentoo.org/856112
+	append-flags -fno-strict-aliasing
+	filter-lto
 
 	# Unfortunately the assembly routines math-pari has for SPARC do not appear
 	# to be working at current.  Perl cannot test math-pari or anything that

@@ -1,0 +1,45 @@
+From 8a38018889873055e26490e77975f151e5f4137f Mon Sep 17 00:00:00 2001
+From: Cyril Richard <cyril.richard42@gmail.com>
+Date: Sun, 7 Dec 2025 21:20:27 +0100
+Subject: [PATCH] Closes #1889
+Upstream: https://gitlab.com/free-astro/siril/-/issues/1889
+
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -1,7 +1,7 @@
+ siril-1.4.1
+ --/--/--
+ **Fixes**
+-* Fixes build error when compiled without libgit2 (#1886)
++* Fixes build error when compiled without libgit2, libjpeg (#1886, #1889)
+ 
+ siril-1.4.0
+ 12/05/25
+--- a/src/gui/save_dialog.c
++++ b/src/gui/save_dialog.c
+@@ -532,6 +532,7 @@ static void initialize_data(gpointer p) {
+ 	args->checksum = gtk_toggle_button_get_active(checksum);
+ }
+ 
++#ifdef HAVE_JPEG
+ static long calculate_jpeg_size(struct savedial_data *args) {
+ 	char const *tmp_dir = g_get_tmp_dir();
+ 	gchar *tmp_filename;
+@@ -596,6 +597,14 @@ static gpointer calculate_jpeg_size_thread(gpointer p) {
+ 	return NULL;
+ }
+ 
++#else
++static gpointer calculate_jpeg_size_thread(gpointer p) {
++	printf("Should not happen\n");
++	return NULL;
++}
++
++#endif
++
+ static gpointer mini_save_dialog(gpointer p) {
+ 	struct savedial_data *args = (struct savedial_data *) p;
+ #ifdef HAVE_LIBPNG
+-- 
+GitLab
+

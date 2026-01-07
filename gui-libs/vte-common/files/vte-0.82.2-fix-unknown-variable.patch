@@ -1,0 +1,44 @@
+From f672ed15a88dd3e25c33aa0a5ef6f6d291a6d5c7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Sandro=20J=C3=A4ckel?= <sandro.jaeckel@gmail.com>
+Date: Thu, 20 Nov 2025 18:21:20 +0100
+Subject: [PATCH] Fix undefined variable when building with no gtk
+
+src/meson.build:728:16: ERROR: Unknown variable "test_color_lightness_deps".
+---
+ src/meson.build | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/src/meson.build b/src/meson.build
+index 3320ca0e9..623c68987 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -756,17 +756,17 @@ if get_option('gtk3') or get_option('gtk4')
+   elif get_option('gtk4')
+     test_color_lightness_deps += [gtk4_dep,]
+   endif
+-endif
+ 
+-test_color_lightness = executable(
+-  'test-color-lightness',
+-  dependencies: test_color_lightness_deps,
+-  include_directories: top_inc,
+-  install: false,
+-  sources: test_color_lightness_sources,
+-)
++  test_color_lightness = executable(
++    'test-color-lightness',
++    dependencies: test_color_lightness_deps,
++    include_directories: top_inc,
++    install: false,
++    sources: test_color_lightness_sources,
++  )
+ 
+-test_units += [test_color_lightness,]
++  test_units += [test_color_lightness,]
++endif
+ 
+ test_minifont_common_sources = config_sources + files(
+   'minifont-test.cc'
+-- 
+GitLab
+

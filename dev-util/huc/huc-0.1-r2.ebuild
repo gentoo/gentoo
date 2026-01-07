@@ -11,7 +11,7 @@ HOMEPAGE="https://www.int21.de/huc"
 
 SLOT="0"
 LICENSE="GPL-2+"
-KEYWORDS="amd64 ppc ~sparc x86 ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ppc ~sparc x86"
 
 src_compile() {
 	$(tc-getCXX) \

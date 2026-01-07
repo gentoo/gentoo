@@ -18,7 +18,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="l10n_fr l10n_it"
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos"
 
 BDEPEND="${DISTUTILS_DEPS}"
 DEPEND="sys-apps/portage"

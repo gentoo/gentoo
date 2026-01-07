@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..13} )
 
 inherit autotools optfeature python-single-r1
 
@@ -12,7 +12,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://gitlab.com/${PN}/${PN}.git"
 else
 	SRC_URI="https://gitlab.com/${PN}/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.bz2"
-	KEYWORDS="~amd64 ~x86 ~x86-linux"
+	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${PN}-v${PV}"
 fi
 

@@ -15,7 +15,7 @@ SRC_URI="
 LICENSE="BSD IJG ZLIB java? ( GPL-2-with-classpath-exception )"
 SLOT="0/0.2"
 if [[ $(ver_cut 3) -lt 90 ]] ; then
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 fi
 IUSE="cpu_flags_arm_neon java static-libs test"
 RESTRICT="!test? ( test )"
@@ -36,8 +36,6 @@ RDEPEND="
 BDEPEND="
 	amd64? ( ${ASM_DEPEND} )
 	x86? ( ${ASM_DEPEND} )
-	amd64-linux? ( ${ASM_DEPEND} )
-	x86-linux? ( ${ASM_DEPEND} )
 	x64-macos? ( ${ASM_DEPEND} )
 "
 

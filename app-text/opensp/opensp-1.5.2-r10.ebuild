@@ -13,7 +13,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 IUSE="doc nls static-libs test"
 RESTRICT="!test? ( test )"
 
@@ -35,6 +35,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-c11-using.patch
 	"${FILESDIR}"/${P}-configure-clang16.patch
 	"${FILESDIR}"/${P}-fix-ar-intl.patch
+	"${FILESDIR}"/${P}-gcc15-musl.patch
 )
 
 src_prepare() {

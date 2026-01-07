@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~loong ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 ~loong ppc64 ~riscv x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.10.4-remove-osx-fix.patch

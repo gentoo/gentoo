@@ -1,0 +1,75 @@
+https://github.com/jstedfast/gmime/commit/2413846d8d3447b711192687c8087ae10d04a7b5
+https://github.com/jstedfast/gmime/commit/df535cd503aaa3f590aac36a3462576a1c9ec320
+https://github.com/jstedfast/gmime/commit/5bccdea2a2f8e7188f14a12a5e9bae42c898aebc
+
+From 2413846d8d3447b711192687c8087ae10d04a7b5 Mon Sep 17 00:00:00 2001
+From: Jeffrey Stedfast <jestedfa@microsoft.com>
+Date: Thu, 18 Sep 2025 15:00:55 -0400
+Subject: [PATCH] Fix macro definition for GMIME_TYPE_PARSER_OPTIONS
+
+Fixes issue #178
+---
+ gmime/gmime-parser-options.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gmime/gmime-parser-options.h b/gmime/gmime-parser-options.h
+index b26160cf..9a84416b 100644
+--- a/gmime/gmime-parser-options.h
++++ b/gmime/gmime-parser-options.h
+@@ -27,7 +27,7 @@
+ 
+ G_BEGIN_DECLS
+ 
+-#define GMIME_TYPE_PARSER_OPTIONS (gmime_parser_options_get_type ())
++#define GMIME_TYPE_PARSER_OPTIONS (g_mime_parser_options_get_type ())
+ 
+ /**
+  * GMimeRfcComplianceMode:
+
+From df535cd503aaa3f590aac36a3462576a1c9ec320 Mon Sep 17 00:00:00 2001
+From: Jeffrey Stedfast <jestedfa@microsoft.com>
+Date: Sat, 20 Sep 2025 15:50:36 -0400
+Subject: [PATCH] Fix macro definition for GMIME_TYPE_FORMAT_OPTIONS
+
+Fixes issue #179
+---
+ gmime/gmime-format-options.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gmime/gmime-format-options.h b/gmime/gmime-format-options.h
+index d21eb149..b9288fad 100644
+--- a/gmime/gmime-format-options.h
++++ b/gmime/gmime-format-options.h
+@@ -26,7 +26,7 @@
+ 
+ G_BEGIN_DECLS
+ 
+-#define GMIME_TYPE_FORMAT_OPTIONS (gmime_format_options_get_type ())
++#define GMIME_TYPE_FORMAT_OPTIONS (g_mime_format_options_get_type ())
+ 
+ /**
+  * GMimeNewLineFormat:
+
+From 5bccdea2a2f8e7188f14a12a5e9bae42c898aebc Mon Sep 17 00:00:00 2001
+From: Jeffrey Stedfast <jestedfa@microsoft.com>
+Date: Sat, 20 Sep 2025 15:51:45 -0400
+Subject: [PATCH] Fix macro definition for GMIME_TYPE_REFERENCES
+
+Fixes issue #179
+---
+ gmime/gmime-references.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gmime/gmime-references.h b/gmime/gmime-references.h
+index 0f789ce9..2ebfc8f4 100644
+--- a/gmime/gmime-references.h
++++ b/gmime/gmime-references.h
+@@ -26,7 +26,7 @@
+ 
+ G_BEGIN_DECLS
+ 
+-#define GMIME_TYPE_REFERENCES (gmime_references_get_type ())
++#define GMIME_TYPE_REFERENCES (g_mime_references_get_type ())
+ 
+ typedef struct _GMimeReferences GMimeReferences;
+ 

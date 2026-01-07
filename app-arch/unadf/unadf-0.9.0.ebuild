@@ -19,7 +19,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="|| ( GPL-2+ LGPL-2.1+ )"
 SLOT="0/2" # see adflib_lt_version from configure.ac and util/bump_project_version for more details
-KEYWORDS="amd64 ~hppa ppc x86 ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~hppa ppc x86"
 
 IUSE="test"
 RESTRICT="!test? ( test )"

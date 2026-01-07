@@ -15,7 +15,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="libpng"
 SLOT="1.2"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc64 ~s390 ~sparc x86"
 
 RDEPEND="
 	>=virtual/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}]

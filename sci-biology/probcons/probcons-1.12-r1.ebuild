@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86"
 
 # Gnuplot is explicitly runtime-only, it's run using system()
 RDEPEND="

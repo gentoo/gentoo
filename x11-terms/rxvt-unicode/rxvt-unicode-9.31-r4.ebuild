@@ -48,6 +48,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-9.31-enable-wide-glyphs.patch
 	"${FILESDIR}"/${PN}-9.31-perl5.38.patch
 	"${FILESDIR}"/${PN}-9.31-osc-colour-command-termination.patch
+	"${FILESDIR}"/${PN}-9.31-cxx20.patch
 )
 DOCS=(
 	Changes

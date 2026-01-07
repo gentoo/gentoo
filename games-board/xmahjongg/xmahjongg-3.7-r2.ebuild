@@ -11,7 +11,7 @@ SRC_URI="https://www.lcdf.org/xmahjongg/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~amd64 ~mips ~x86"
 
 RDEPEND="x11-libs/libX11"
 DEPEND="${RDEPEND}

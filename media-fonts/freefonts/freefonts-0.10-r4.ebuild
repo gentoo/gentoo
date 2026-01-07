@@ -11,7 +11,7 @@ SRC_URI="mirror://gimp/fonts/${P}.tar.gz"
 
 LICENSE="freedist free-noncomm all-rights-reserved"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~loong ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm ~loong ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="X"
 RESTRICT="mirror bindist"
 

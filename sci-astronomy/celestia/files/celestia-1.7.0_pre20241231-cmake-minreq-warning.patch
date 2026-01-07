@@ -1,0 +1,42 @@
+Source: https://github.com/CelestiaProject/Celestia/pull/2437
+
+From 129e9254d7a50f453d98951a5b8db12b9ca7e0f7 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 7 Jan 2026 18:47:09 +0100
+Subject: [PATCH] CMake: Set CMake to 3.10...3.19 range for !WIN32
+
+Raise !WIN32 minimum mildly from 3.9 to 3.10, which was released in 2017.
+If Windows build can deal with 3.19, so should others. This enables policy
+level up to 3.19 when using modern versions of CMake.
+
+Fixes CMake 3.31 warning:
+
+> CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
+>   Compatibility with CMake < 3.10 will be removed from a future version of
+>   CMake.
+>
+>   Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+>   to tell CMake that the project requires at least <min> but has been updated
+>   to work with policies introduced by <max> or earlier.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 033747df..adf2ce7e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2,7 +2,7 @@ if(WIN32)
+   # Require more recent CMake on Windows because DLLs are a pain
+   cmake_minimum_required(VERSION 3.19)
+ else()
+-  cmake_minimum_required(VERSION 3.9)
++  cmake_minimum_required(VERSION 3.10...3.19)
+ endif()
+ 
+ # Plain and keyword target_link_libraries() signatures cannot be mixed
+-- 
+2.52.0
+

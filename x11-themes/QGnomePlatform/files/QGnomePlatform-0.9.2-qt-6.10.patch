@@ -1,0 +1,145 @@
+Fix build w/ Qt 6.10
+
+Thanks-to: Pacho Ramos <pacho@gentoo.org>
+---
+ CMakeLists.txt                              |  9 ++++--
+ src/decoration/qgnomeplatformdecoration.cpp | 32 +++++++++++++++++++++
+ 2 files changed, 38 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b3cc3b3..7dbd3b3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -39,9 +39,9 @@ find_package(Qt${QT_VERSION_MAJOR} ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
+     QuickControls2
+ )
+ 
+-find_package(Qt${QT_VERSION_MAJOR}Gui ${QT_MIN_VERSION} CONFIG REQUIRED Private)
+-
+-if (NOT USE_QT6)
++if (USE_QT6)
++    find_package(Qt${QT_VERSION_MAJOR}GuiPrivate ${QT_MIN_VERSION} CONFIG REQUIRED)
++else()
+     find_package(Qt${QT_VERSION_MAJOR}ThemeSupport REQUIRED)
+ endif()
+ 
+@@ -72,6 +72,9 @@ if (DISABLE_DECORATION_SUPPORT)
+     message(STATUS "Disabling Qt Wayland decoration support")
+ else()
+     find_package(Qt${QT_VERSION_MAJOR}WaylandClient ${QT_MIN_VERSION} CONFIG REQUIRED)
++    if (USE_QT6)
++        find_package(Qt${QT_VERSION_MAJOR}WaylandClientPrivate ${QT_MIN_VERSION} CONFIG REQUIRED)
++    endif()
+     set_package_properties(Qt${QT_VERSION_MAJOR}WaylandClient PROPERTIES
+         DESCRIPTION "Qt Wayland decoration support"
+         PURPOSE "Required for QGnomePlatform decoration plugin"
+diff --git a/src/decoration/qgnomeplatformdecoration.cpp b/src/decoration/qgnomeplatformdecoration.cpp
+index bb32acf..810279e 100644
+--- a/src/decoration/qgnomeplatformdecoration.cpp
++++ b/src/decoration/qgnomeplatformdecoration.cpp
+@@ -689,19 +689,31 @@ void QGnomePlatformDecoration::processMouseTop(QWaylandInputDevice *inputDevice,
+         if (local.x() <= margins().left()) {
+             // top left bit
+ #if QT_CONFIG(cursor)
++#if (QT_VERSION >= QT_VERSION_CHECK(6, 10, 0))
++            waylandWindow()->applyCursor(inputDevice, Qt::SizeBDiagCursor);
++#else
+             waylandWindow()->setMouseCursor(inputDevice, Qt::SizeFDiagCursor);
++#endif
+ #endif
+             startResize(inputDevice, Qt::TopEdge | Qt::LeftEdge, b);
+         } else if (local.x() > surfaceRect.right() - margins().left()) {
+             // top right bit
+ #if QT_CONFIG(cursor)
++#if (QT_VERSION >= QT_VERSION_CHECK(6, 10, 0))
++            waylandWindow()->applyCursor(inputDevice, Qt::SplitVCursor);
++#else
+             waylandWindow()->setMouseCursor(inputDevice, Qt::SizeBDiagCursor);
++#endif
+ #endif
+             startResize(inputDevice, Qt::TopEdge | Qt::RightEdge, b);
+         } else {
+             // top resize bit
+ #if QT_CONFIG(cursor)
++#if (QT_VERSION >= QT_VERSION_CHECK(6, 10, 0))
++            waylandWindow()->applyCursor(inputDevice, Qt::SplitVCursor);
++#else
+             waylandWindow()->setMouseCursor(inputDevice, Qt::SplitVCursor);
++#endif
+ #endif
+             startResize(inputDevice, Qt::TopEdge, b);
+         }
+@@ -747,19 +759,31 @@ void QGnomePlatformDecoration::processMouseBottom(QWaylandInputDevice *inputDevi
+     if (local.x() <= margins().left()) {
+         // bottom left bit
+ #if QT_CONFIG(cursor)
++#if (QT_VERSION >= QT_VERSION_CHECK(6, 10, 0))
++            waylandWindow()->applyCursor(inputDevice, Qt::SplitVCursor);
++#else
+         waylandWindow()->setMouseCursor(inputDevice, Qt::SizeBDiagCursor);
++#endif
+ #endif
+         startResize(inputDevice, Qt::BottomEdge | Qt::LeftEdge, b);
+     } else if (local.x() > window()->width() + margins().right()) {
+         // bottom right bit
+ #if QT_CONFIG(cursor)
++#if (QT_VERSION >= QT_VERSION_CHECK(6, 10, 0))
++            waylandWindow()->applyCursor(inputDevice, Qt::SplitVCursor);
++#else
+         waylandWindow()->setMouseCursor(inputDevice, Qt::SizeFDiagCursor);
++#endif
+ #endif
+         startResize(inputDevice, Qt::BottomEdge | Qt::RightEdge, b);
+     } else {
+         // bottom bit
+ #if QT_CONFIG(cursor)
++#if (QT_VERSION >= QT_VERSION_CHECK(6, 10, 0))
++            waylandWindow()->applyCursor(inputDevice, Qt::SplitVCursor);
++#else
+         waylandWindow()->setMouseCursor(inputDevice, Qt::SplitVCursor);
++#endif
+ #endif
+         startResize(inputDevice, Qt::BottomEdge, b);
+     }
+@@ -770,7 +794,11 @@ void QGnomePlatformDecoration::processMouseLeft(QWaylandInputDevice *inputDevice
+     Q_UNUSED(local)
+     Q_UNUSED(mods)
+ #if QT_CONFIG(cursor)
++#if (QT_VERSION >= QT_VERSION_CHECK(6, 10, 0))
++            waylandWindow()->applyCursor(inputDevice, Qt::SplitVCursor);
++#else
+     waylandWindow()->setMouseCursor(inputDevice, Qt::SplitHCursor);
++#endif
+ #endif
+     startResize(inputDevice, Qt::LeftEdge, b);
+ }
+@@ -780,7 +808,11 @@ void QGnomePlatformDecoration::processMouseRight(QWaylandInputDevice *inputDevic
+     Q_UNUSED(local)
+     Q_UNUSED(mods)
+ #if QT_CONFIG(cursor)
++#if (QT_VERSION >= QT_VERSION_CHECK(6, 10, 0))
++            waylandWindow()->applyCursor(inputDevice, Qt::SplitVCursor);
++#else
+     waylandWindow()->setMouseCursor(inputDevice, Qt::SplitHCursor);
++#endif
+ #endif
+     startResize(inputDevice, Qt::RightEdge, b);
+ }
+-- 
+2.52.0
+
+--- a/src/theme/qgnomeplatformtheme.cpp	2026-01-02 11:30:30.137441528 +0100
++++ b/src/theme/qgnomeplatformtheme.cpp	2026-01-02 11:35:54.092764699 +0100
+@@ -42,8 +42,12 @@
+ #endif
+ 
+ #if QT_VERSION > 0x060000
++#if (QT_VERSION >= QT_VERSION_CHECK(6, 10, 0))
++#include <QtGui/private/qgenericunixtheme_p.h>
++#else
+ #include <QtGui/private/qgenericunixthemes_p.h>
+ #endif
++#endif
+ 
+ Q_LOGGING_CATEGORY(QGnomePlatformThemeLog, "qt.qpa.qgnomeplatform.theme")
+ 

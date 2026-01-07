@@ -12,7 +12,7 @@ SRC_URI="https://github.com/NVIDIA/cudnn-frontend/archive/refs/tags/v${PV}.tar.g
 
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~amd64-linux"
+KEYWORDS="~amd64"
 IUSE="samples test"
 RESTRICT="!test? ( test )"
 
@@ -22,7 +22,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-cpp/nlohmann_json
 	test? (
-		>dev-cpp/catch-3
+		>=dev-cpp/catch-3
 	)
 "
 

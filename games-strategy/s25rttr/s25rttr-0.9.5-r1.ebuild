@@ -49,6 +49,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.5-gcc15.patch
 	"${FILESDIR}"/${PN}-0.9.5-boost-1.89.patch
 	"${FILESDIR}"/${PN}-0.9.5-noreturn.patch
+	"${FILESDIR}"/${PN}-0.9.5-cmake-4.patch
+	"${FILESDIR}"/${PN}-0.9.5-gcc16.patch
 )
 
 # Build type is checked but blank is valid.
@@ -67,6 +69,9 @@ src_configure() {
 	else
 		die "Could not determine RTTR_REVISION."
 	fi
+
+	# char8_t
+	append-cxxflags -std=gnu++17
 
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test)

@@ -11,7 +11,7 @@ S="${WORKDIR}/gnustep-back-${PV}"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="amd64 ppc ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ppc ~sparc x86"
 IUSE="opengl xim"
 
 RDEPEND="${GNUSTEP_CORE_DEPEND}

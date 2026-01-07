@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0/${PV}"
-KEYWORDS="amd64 arm arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
 
 IUSE="curl doc fftw +glpk gnuplot gui hdf5 imagemagick java json klu portaudio postscript +qhull +qrupdate readline sndfile +sparse spqr ssl sundials zlib"
 

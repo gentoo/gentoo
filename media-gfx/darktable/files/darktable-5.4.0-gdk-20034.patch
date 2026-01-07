@@ -1,0 +1,34 @@
+From da91b66678b6b5e2c7656d842bb57da1137ffd27 Mon Sep 17 00:00:00 2001
+From: yuri1969 <1969yuri1969@gmail.com>
+Date: Tue, 30 Dec 2025 11:34:47 +0100
+Subject: [PATCH] fix(gtk): amend build against X11-enabled GTK
+
+* Build failed at missing `GDK_TYPE_X11_DISPLAY`
+* Corrected a typo
+---
+ src/gui/gtk.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/gui/gtk.c b/src/gui/gtk.c
+index 398bf0e82918..7816660a01d8 100644
+--- a/src/gui/gtk.c
++++ b/src/gui/gtk.c
+@@ -51,6 +51,9 @@
+ #ifdef GDK_WINDOWING_WAYLAND
+ #include <gdk/gdkwayland.h>
+ #endif
++#ifdef GDK_WINDOWING_X11
++#include <gdk/gdkx.h>
++#endif
+ #include <gtk/gtk.h>
+ #include <math.h>
+ #include <stdlib.h>
+@@ -995,7 +998,7 @@ dt_gui_session_type_t dt_gui_get_session_type(void)
+     : DT_GUI_SESSION_X11;
+ #elif defined(GDK_WINDOWING_X11)
+   GdkDisplay* disp = gdk_display_get_default();
+-  retun G_TYPE_CHECK_INSTANCE_TYPE(disp, GDK_TYPE_X11_DISPLAY)
++  return G_TYPE_CHECK_INSTANCE_TYPE(disp, GDK_TYPE_X11_DISPLAY)
+     ? DT_GUI_SESSION_X11
+     : DT_GUI_SESSION_WAYLAND;
+ #else

@@ -1,0 +1,28 @@
+From 8d11e4630c1e92437636d016f35ad48395b62b4f Mon Sep 17 00:00:00 2001
+From: Sertonix <sertonix@posteo.net>
+Date: Sun, 6 Jul 2025 23:48:10 +0200
+Subject: [PATCH] Fix cpuid.S on arm
+
+The ARM assembly syntax differs a bit
+
+Fixes 61b9339d3a1f getarch/cpuid.S: Fix warning about executable stack
+
+Signed-off-by: Sertonix <sertonix@posteo.net>
+---
+ cpuid.S | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/cpuid.S b/cpuid.S
+index 295917bdbe..a8f5f8b573 100644
+--- a/cpuid.S
++++ b/cpuid.S
+@@ -66,5 +66,9 @@ _cpuid:
+ 
+ #endif
+ #if defined(__ELF__) && defined(__linux__)
++#if defined(__arm__)
++        .section        .note.GNU-stack,"",%progbits
++#else
+         .section        .note.GNU-stack,"",@progbits
+ #endif
++#endif

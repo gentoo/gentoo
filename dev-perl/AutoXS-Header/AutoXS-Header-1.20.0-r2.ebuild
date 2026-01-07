@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Container for the AutoXS header files"
 
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~ppc-macos"
+KEYWORDS="amd64 ppc x86"
 
 BDEPEND="
 	virtual/perl-ExtUtils-MakeMaker

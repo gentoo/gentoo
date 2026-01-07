@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>krsloco@gmail.com</email>
+    <name>Kellerman Rivero</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <!-- Video Project because of wireplumber dependency on libcamera: https://bugs.gentoo.org/867670 -->
+  <maintainer type="project" proxied="proxy">
+    <email>media-video@gentoo.org</email>
+    <name>Gentoo Video Project</name>
+  </maintainer>
+  <use>
+    <flag name="drm">Build with drm support for cam tool</flag>
+    <flag name="elfutils">Build with improved debugging using <pkg>dev-libs/elfutils</pkg></flag>
+    <flag name="gui">Build QCam extra tool</flag>
+    <flag name="openssl">Verify IPA modules signatures using <pkg>dev-libs/openssl</pkg>. Note:<pkg>dev-libs/openssl</pkg> is also required at build time to sign IPA modules.</flag>
+    <flag name="sdl">Build Cam extra tool with SDL sink support (requires USE=gui)</flag>
+    <flag name="tools">Build extra tools (including cam, qcam and lc-compliance). Note: 'qcam' requires also USE="gui"</flag>
+    <flag name="trace">Build with tracing capabilities</flag>
+    <flag name="unwind">Build with improved debugging using <pkg>sys-libs/libunwind</pkg> (has no effect if USE=elfutils is set)</flag>
+  </use>
+  <upstream>
+    <remote-id type="freedesktop-gitlab">camera/libcamera</remote-id>
+  </upstream>
+</pkgmetadata>

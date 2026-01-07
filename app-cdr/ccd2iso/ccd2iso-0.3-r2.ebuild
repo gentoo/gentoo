@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/ccd2iso/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 ppc x86 ~x64-macos"
 
 PATCHES=( "${FILESDIR}"/${P}-headers.patch )
 

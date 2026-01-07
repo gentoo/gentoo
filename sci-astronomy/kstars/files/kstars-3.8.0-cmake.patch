@@ -1,0 +1,31 @@
+Pending upstream: https://invent.kde.org/education/kstars/-/merge_requests/1610
+
+From d97b3acbf4fe055aad628a8f11002ad6d0bdb655 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 21 Dec 2025 18:57:49 +0100
+Subject: [PATCH] CMake: Drop obsolete silencing of warnings
+
+Should be unnecessary since at least ddd9f67a36f53852f31b465f707d4072e0a55e14.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8b5bd9ed8..316711d65 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -358,10 +358,6 @@ add_definitions(-DQT_NO_CAST_TO_ASCII)
+ kde_enable_exceptions()
+ 
+ if (UNIX)
+-
+-  # TEMPORARY: To disable QCustomPlot warning until 2.0.0 is released which fixes these warnings
+-  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-non-virtual-dtor")
+-
+   # Optimize binary size by dropping unneeded symbols at linking stage
+   if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fdata-sections -ffunction-sections")
+-- 
+2.52.0

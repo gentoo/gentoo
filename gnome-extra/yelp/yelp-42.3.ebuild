@@ -9,7 +9,7 @@ HOMEPAGE="https://apps.gnome.org/Yelp/"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 # Removed upstream in 49.beta
 IUSE="X"
 

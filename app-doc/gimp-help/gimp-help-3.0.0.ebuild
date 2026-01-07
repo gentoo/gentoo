@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit python-any-r1
 
 DESCRIPTION="GNU Image Manipulation Program help files"
@@ -17,7 +17,7 @@ IUSE="nls"
 
 BDEPEND="
 	${PYTHON_DEPS}
-	$(python_gen_any_dep 'dev-libs/libxml2[python,${PYTHON_USEDEP}]')
+	$(python_gen_any_dep 'dev-libs/libxml2[python(-),${PYTHON_USEDEP}]')
 	app-text/docbook-xml-dtd
 	dev-lang/perl
 	dev-libs/libxslt
@@ -28,7 +28,7 @@ BDEPEND="
 DOCS=( AUTHORS COPYING NEWS README.md )
 
 python_check_deps() {
-	python_has_version "dev-libs/libxml2[python,${PYTHON_USEDEP}]"
+	python_has_version "dev-libs/libxml2[python(-),${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {

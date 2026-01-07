@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="GPL-2+ test? ( GPL-2 )"
 SLOT="0/7"
-KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv x86 ~arm64-macos ~x64-macos ~x64-solaris"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

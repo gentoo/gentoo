@@ -8,7 +8,7 @@ inherit autotools flag-o-matic
 DESCRIPTION="Extracts models of the Point Spread Function from FITS images"
 HOMEPAGE="http://www.astromatic.net/software/psfex"
 SRC_URI="http://www.astromatic.net/download/${PN}/${P}.tar.gz"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 
 LICENSE="GPL-3"
 SLOT="0"

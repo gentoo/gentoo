@@ -1,0 +1,33 @@
+https://github.com/legionus/kbd/commit/7aa15f4c44b570a667b4911a2b6db0e6b9145da5
+
+From 7aa15f4c44b570a667b4911a2b6db0e6b9145da5 Mon Sep 17 00:00:00 2001
+From: Tommy-Zhang3759 <tommyzhang4707@outlook.com>
+Date: Sat, 6 Dec 2025 05:18:43 +1100
+Subject: [PATCH] setfont: Initialize data pointer when resetting font
+
+When resetting the font to default, the `data` field in the
+`console_font_op` structure must be explicitly set to NULL.
+
+Previously, this field was left uninitialized. The kernel treats a
+non-NULL `data` pointer as a pointer to a font name string. This caused
+the ioctl to fail with -EFAULT (Bad address) because it attempted to
+read from a garbage address.
+
+Signed-off-by: Yutao Zhang <tommyzhang4707@outlook.com>
+---
+ src/libkfont/kdfontop.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/libkfont/kdfontop.c b/src/libkfont/kdfontop.c
+index 8f132ff5..4f1f0d2a 100644
+--- a/src/libkfont/kdfontop.c
++++ b/src/libkfont/kdfontop.c
+@@ -46,6 +46,7 @@ kfont_restore_font(struct kfont_context *ctx, int fd)
+ 		return -1;
+ 
+ 	cfo.op = KD_FONT_OP_SET_DEFAULT;
++	cfo.data = NULL;
+ 
+ 	if (ioctl(fd, KDFONTOP, &cfo)) {
+ 		KFONT_ERR(ctx, "ioctl(KD_FONT_OP_SET_DEFAULT): %m");
+

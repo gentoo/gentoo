@@ -1,0 +1,10 @@
+--- a/libs/s25main/notifications/NotificationManager.h
++++ b/libs/s25main/notifications/NotificationManager.h
+@@ -5,6 +5,7 @@
+ #pragma once
+ 
+ #include "notifications/Subscription.h"
++#include <cstdint>
+ #include <deque>
+ #include <functional>
+ #include <unordered_map>

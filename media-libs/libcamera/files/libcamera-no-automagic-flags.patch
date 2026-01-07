@@ -1,0 +1,111 @@
+diff --git a/meson_options.txt b/meson_options.txt
+index c052e85aa..e1adc4ff9 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -16,6 +16,21 @@ option('cam',
+         value : 'auto',
+         description : 'Compile the cam test application')
+ 
++option('cam-drm-sink',
++        type : 'feature',
++        value : 'disabled',
++        description : 'Compile the cam test application with DRM KMS sink support')
++
++option('cam-sdl-sink',
++        type : 'feature',
++        value : 'disabled',
++        description : 'Compile the cam test application with SDL sink support')
++
++option('cam-sdl-jpeg',
++        type : 'feature',
++        value : 'disabled',
++        description : 'Compile the cam test application with MJPEG on SDL sink support')
++
+ option('documentation',
+         type : 'feature',
+         value : 'auto',
+@@ -31,6 +46,16 @@ option('gstreamer',
+         value : 'auto',
+         description : 'Compile libcamera GStreamer plugin')
+ 
++option('tiff',
++        type : 'feature',
++        value : 'disabled',
++        description : 'compile libcamera with tiff support')
++
++option('gnutls',
++        type : 'feature',
++        value : 'disabled',
++        description : 'compile libcamera with IPA module signing support using GNU TLS library')
++
+ option('ipas',
+         type : 'array',
+         choices : ['ipu3', 'mali-c55', 'rkisp1', 'rpi/pisp', 'rpi/vc4', 'simple',
+@@ -47,6 +72,11 @@ option('libunwind',
+         value : 'auto',
+         description : 'Enable libunwind integration for backtrace generation')
+ 
++option('libdw',
++        type : 'feature',
++        value : 'disabled',
++        description : 'Enable libdw integration for backtrace generation')
++
+ option('pipelines',
+         type : 'array',
+         value : ['auto'],
+diff --git a/src/apps/cam/meson.build b/src/apps/cam/meson.build
+index cd7f120f9..1711630b3 100644
+--- a/src/apps/cam/meson.build
++++ b/src/apps/cam/meson.build
+@@ -17,9 +17,9 @@ cam_sources = files([
+ 
+ cam_cpp_args = [apps_cpp_args]
+ 
+-libdrm = dependency('libdrm', required : false)
+-libjpeg = dependency('libjpeg', required : false)
+-libsdl2 = dependency('SDL2', required : false)
++libdrm = dependency('libdrm', required : get_option('cam-drm-sink'))
++libjpeg = dependency('libjpeg', required : get_option('cam-sdl-jpeg'))
++libsdl2 = dependency('SDL2', required : get_option('cam-sdl-sink'))
+ 
+ if libdrm.found()
+     cam_cpp_args += [ '-DHAVE_KMS' ]
+diff --git a/src/apps/meson.build b/src/apps/meson.build
+index af632b9a7..ad36f85c7 100644
+--- a/src/apps/meson.build
++++ b/src/apps/meson.build
+@@ -10,7 +10,7 @@ if not libevent.found()
+     libevent = dependency('libevent_pthreads', required : opt_lc_compliance)
+ endif
+ 
+-libtiff = dependency('libtiff-4', required : false)
++libtiff = dependency('libtiff-4', required : get_option('tiff'))
+ 
+ subdir('common')
+ 
+diff --git a/src/libcamera/base/meson.build b/src/libcamera/base/meson.build
+index bcf37f71c..b57774f49 100644
+--- a/src/libcamera/base/meson.build
++++ b/src/libcamera/base/meson.build
+@@ -26,7 +26,7 @@ libcamera_base_internal_sources = files([
+     'utils.cpp',
+ ])
+ 
+-libdw = dependency('libdw', required : false)
++libdw = dependency('libdw', required : get_option('libdw'))
+ libunwind = dependency('libunwind', required : get_option('libunwind'))
+ 
+ if cc.has_header_symbol('execinfo.h', 'backtrace')
+diff --git a/src/libcamera/meson.build b/src/libcamera/meson.build
+index 575408b2c..3ccb234f1 100644
+--- a/src/libcamera/meson.build
++++ b/src/libcamera/meson.build
+@@ -87,7 +87,7 @@ libyaml = dependency('yaml-0.1', default_options : [
+ ])
+ 
+ # Use one of gnutls or libcrypto (provided by OpenSSL), trying gnutls first.
+-libcrypto = dependency('gnutls', required : false)
++libcrypto = dependency('gnutls', required : get_option('gnutls'))
+ if libcrypto.found()
+     config_h.set('HAVE_GNUTLS', 1)
+ else

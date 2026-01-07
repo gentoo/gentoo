@@ -26,7 +26,7 @@ else
 		https://github.com/mcfletch/pyopengl/archive/release-${PV}.tar.gz
 			-> ${MY_P}.gh.tar.gz
 	"
-	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~x86"
 	S=${WORKDIR}/${MY_P}/accelerate
 fi
 

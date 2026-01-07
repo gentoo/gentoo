@@ -30,7 +30,7 @@ else
 		S="${WORKDIR}/${PN}-Version-$(ver_rs 1- -)"
 	fi
 
-	KEYWORDS="~amd64 ~arm64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-solaris"
+	KEYWORDS="~amd64 ~arm64 ~sparc ~x86 ~x64-solaris"
 fi
 
 LICENSE="MIT"

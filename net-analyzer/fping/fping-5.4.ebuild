@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="fping"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="debug suid"
 # There are some tests in ci/* but they don't seem to be for packaging
 # (they want to modify the live FS by e.g. copying to /tmp.)

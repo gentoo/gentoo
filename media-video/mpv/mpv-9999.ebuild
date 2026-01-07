@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/mpv-player/mpv.git"
 else
 	SRC_URI="https://github.com/mpv-player/mpv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 DESCRIPTION="Media player for the command line"
@@ -24,8 +24,8 @@ IUSE="
 	+X +alsa aqua archive bluray cdda +cli coreaudio debug +drm dvb
 	dvd +egl gamepad +iconv jack javascript jpeg lcms libcaca +libmpv
 	+lua nvenc openal pipewire pulseaudio rubberband sdl selinux sixel
-	sndio soc test tools +uchardet vaapi vdpau +vulkan wayland xv zimg
-	zlib
+	sndio soc subrandr test tools +uchardet vaapi vdpau +vulkan wayland
+	xv zimg zlib
 "
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -91,6 +91,7 @@ COMMON_DEPEND="
 	sdl? ( media-libs/libsdl2[sound,threads(+),video] )
 	sixel? ( media-libs/libsixel )
 	sndio? ( media-sound/sndio:= )
+	subrandr? ( media-libs/subrandr )
 	vaapi? ( media-libs/libva:=[X?,drm(+)?,wayland?] )
 	vdpau? (
 		media-libs/libglvnd[X]
@@ -98,7 +99,7 @@ COMMON_DEPEND="
 	)
 	vulkan? ( media-libs/vulkan-loader[X?,wayland?] )
 	wayland? (
-		dev-libs/wayland
+		>=dev-libs/wayland-1.23
 		x11-libs/libxkbcommon
 	)
 	zimg? ( media-libs/zimg )
@@ -125,7 +126,7 @@ BDEPEND="
 	>=dev-build/meson-1.3.0
 	virtual/pkgconfig
 	cli? ( dev-python/docutils )
-	wayland? ( dev-util/wayland-scanner )
+	wayland? ( >=dev-util/wayland-scanner-1.23 )
 "
 
 pkg_setup() {
@@ -168,6 +169,7 @@ src_configure() {
 		$(meson_feature lcms lcms2)
 		-Dlua=$(usex lua "${ELUA}" disabled)
 		$(meson_feature rubberband)
+		$(meson_feature subrandr)
 		$(meson_feature uchardet)
 		-Dvapoursynth=disabled # only available in overlays
 		$(meson_feature zimg)

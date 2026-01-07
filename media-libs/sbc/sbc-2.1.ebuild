@@ -11,7 +11,7 @@ SRC_URI="https://www.kernel.org/pub/linux/bluetooth/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 IUSE="static-libs"
 
 # --enable-tester is building src/sbctester but the tarball is missing required
@@ -20,7 +20,10 @@ RESTRICT="test"
 
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}/${PN}-1.5-ifdef-builtin.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-1.5-ifdef-builtin.patch"
+	"${FILESDIR}/${PN}-2.1-arm-c23.patch"
+)
 
 multilib_src_configure() {
 	ECONF_SOURCE=${S} \

@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge.jp/${PN}/37536/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86"
 IUSE="emacs static-libs"
 
 BDEPEND="emacs? ( >=app-editors/emacs-23.1:* )"

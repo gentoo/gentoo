@@ -6,7 +6,7 @@ EAPI=8
 # False positives because of REQUIRE vs BACKEND options() (conditionally set)
 # See bug #809314
 CMAKE_WARN_UNUSED_CLI=no
-inherit cmake-multilib
+inherit cmake-multilib prefix
 
 MY_P="${PN}-soft-${PV}"
 
@@ -19,7 +19,7 @@ S="${WORKDIR}"/${MY_P}
 # Some components are under BSD
 LICENSE="LGPL-2+ BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 IUSE="
 	alsa coreaudio debug jack oss pipewire portaudio pulseaudio sdl sndio gui
 	cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse4_1
@@ -52,6 +52,12 @@ PATCHES=(
 	# backport of https://github.com/fmtlib/fmt/commit/f4345467fce7edbc6b36c3fa1cf197a67be617e2 for bundled libfmt
 	"${FILESDIR}/${PN}-1.24.3-libfmt-libcxx-21.patch"
 )
+
+src_prepare() {
+	cmake_src_prepare
+	# bug #883407
+	hprefixify alc/alconfig.cpp || die
+}
 
 multilib_src_configure() {
 	local mycmakeargs=(

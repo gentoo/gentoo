@@ -1,0 +1,196 @@
+respect userflags for optimizations
+files for test are patched, even if it's broken for now
+--- a/wscript
++++ b/wscript
+@@ -553,8 +553,7 @@ int main() { return 0; }''',
+                            execute   = False,
+                            msg       = 'Checking compiler for AVX512F intrinsics',
+                            okmsg     = 'Found',
+-                           errmsg    = 'Not supported',
+-                           define_name = 'FPU_AVX512F_SUPPORT')
++                           errmsg    = 'Not supported')
+ 
+             conf.check_cxx(fragment = "#include <immintrin.h>\nint main(void) { __m128 a; _mm_fmadd_ss(a, a, a); return 0; }\n",
+                            features  = ['cxx'],
+@@ -563,8 +562,7 @@ int main() { return 0; }''',
+                            execute   = False,
+                            msg       = 'Checking compiler for AVX/FMA intrinsics',
+                            okmsg     = 'Found',
+-                           errmsg    = 'Not supported',
+-                           define_name = 'FPU_AVX_FMA_SUPPORT')
++                           errmsg    = 'Not supported')
+ 
+     if opt.use_libcpp or conf.env['build_host'] in [ 'yosemite', 'el_capitan', 'sierra', 'high_sierra', 'mojave', 'catalina' ]:
+         cxx_flags.append('--stdlib=libc++')
+@@ -636,11 +634,12 @@ int main() { return 0; }''',
+                     build_host_supports_sse = True
+                 if "3dnow" in x86_flags:
+                     compiler_flags.append ("-m3dnow")
+-
+-            if cpu == "i586":
+-                compiler_flags.append ("-march=i586")
+-            elif cpu == "i686":
+-                compiler_flags.append ("-march=i686")
++                if "avx" in x86_flags:
++                    conf.define ('FPU_AVX_SUPPORT', 1)
++                if "fma" in x86_flags:
++                    conf.define ('FPU_AVX_FMA_SUPPORT', 1)
++                if "avx512f" in x86_flags:
++                    conf.define ('FPU_AVX512F_SUPPORT', 1)
+ 
+         if not is_clang and ((conf.env['build_target'] == 'i686') or (conf.env['build_target'] == 'x86_64')) and build_host_supports_sse:
+             compiler_flags.extend ([ flags_dict['sse'], flags_dict['fpmath-sse'], flags_dict['xmmintrinsics'] ])
+@@ -762,9 +761,6 @@ int main() { return 0; }''',
+             prepend_opt_flags = False
+             break
+ 
+-    if prepend_opt_flags:
+-        optimization_flags[:0] = flags_dict['full-optimization']
+-
+     if opt.debug_symbols:
+         optimization_flags += flags_dict['debuggable']
+ 
+--- a/libs/ardour/wscript
++++ b/libs/ardour/wscript
+@@ -495,14 +495,8 @@ def build(bld):
+     if not Options.options.no_fpu_optimization:
+         if (bld.env['build_target'] == 'i386' or bld.env['build_target'] == 'i686'):
+             obj.source += [ 'sse_functions_xmm.cc', 'sse_functions.s', ]
+-            avx_sources = [ 'sse_functions_avx_linux.cc' ]
+-            fma_sources = [ 'x86_functions_fma.cc' ]
+-            avx512f_sources = [ 'x86_functions_avx512f.cc' ]
+         elif bld.env['build_target'] == 'x86_64':
+             obj.source += [ 'sse_functions_xmm.cc', 'sse_functions_64bit.s', ]
+-            avx_sources = [ 'sse_functions_avx_linux.cc' ]
+-            fma_sources = [ 'x86_functions_fma.cc' ]
+-            avx512f_sources = [ 'x86_functions_avx512f.cc' ]
+         elif bld.env['build_target'] == 'mingw':
+             # usability of the 64 bit windows assembler depends on the compiler target,
+             # not the build host, which in turn can only be inferred from the name
+@@ -533,7 +527,8 @@ def build(bld):
+             obj.use += ['arm_neon_functions' ]
+             obj.defines += [ 'ARM_NEON_SUPPORT' ]
+ 
+-        if avx_sources:
++        if bld.is_defined('FPU_AVX_SUPPORT'):
++            avx_sources = [ 'sse_functions_avx_linux.cc' ]
+             # as long as we want to use AVX intrinsics in this file,
+             # compile it with -mavx flag - append avx flag to the existing
+             avx_cxxflags = list(bld.env['CXXFLAGS'])
+@@ -549,7 +544,8 @@ def build(bld):
+ 
+             obj.use += ['sse_avx_functions' ]
+ 
+-        if bld.is_defined('FPU_AVX_FMA_SUPPORT') and fma_sources:
++        if bld.is_defined('FPU_AVX_FMA_SUPPORT'):
++            fma_sources = [ 'x86_functions_fma.cc' ]
+             fma_cxxflags = list(bld.env['CXXFLAGS'])
+             fma_cxxflags.append (bld.env['compiler_flags_dict']['avx'])
+             fma_cxxflags.append (bld.env['compiler_flags_dict']['pic'])
+@@ -566,7 +562,8 @@ def build(bld):
+             obj.use += ['sse_fma_functions' ]
+             obj.defines += [ 'FPU_AVX_FMA_SUPPORT' ]
+ 
+-        if bld.is_defined('FPU_AVX512F_SUPPORT') and avx512f_sources:
++        if bld.is_defined('FPU_AVX512F_SUPPORT'):
++            avx512f_sources = [ 'x86_functions_avx512f.cc' ]
+             avx512f_cxxflags = list(bld.env['CXXFLAGS'])
+             avx512f_cxxflags.append (bld.env['compiler_flags_dict']['avx512f'])
+             avx512f_cxxflags.append (bld.env['compiler_flags_dict']['avx'])
+--- a/libs/ardour/globals.cc
++++ b/libs/ardour/globals.cc
+@@ -228,6 +228,8 @@ setup_hardware_optimization (bool try_optimization)
+ 
+ 		} else
+ #endif
++
++#ifdef FPU_AVX_SUPPORT
+ 		if (fpu->has_avx ()) {
+ 			info << "Using AVX optimized routines" << endmsg;
+ 
+@@ -241,7 +243,10 @@ setup_hardware_optimization (bool try_optimization)
+ 
+ 			generic_mix_functions = false;
+ 
+-		} else if (fpu->has_sse ()) {
++		} else
++#endif
++
++		if (fpu->has_sse ()) {
+ 			info << "Using SSE optimized routines" << endmsg;
+ 
+ 			// SSE SET
+--- a/libs/ardour/ardour/mix.h
++++ b/libs/ardour/ardour/mix.h
+@@ -37,6 +37,7 @@ LIBARDOUR_API void x86_sse_find_peaks              (float const* buf, uint32_t n
+ 
+ extern "C" {
+ /* AVX functions */
++#ifdef FPU_AVX_SUPPORT
+ 	LIBARDOUR_API float x86_sse_avx_compute_peak          (float const* buf, uint32_t nsamples, float current);
+ 	LIBARDOUR_API void  x86_sse_avx_apply_gain_to_buffer  (float* buf, uint32_t nframes, float gain);
+ 	LIBARDOUR_API void  x86_sse_avx_mix_buffers_with_gain (float* dst, float const* src, uint32_t nframes, float gain);
+@@ -45,6 +46,7 @@ extern "C" {
+ #ifndef PLATFORM_WINDOWS
+ 	LIBARDOUR_API void  x86_sse_avx_find_peaks            (float const* buf, uint32_t nsamples, float* min, float* max);
+ #endif
++#endif
+ }
+ #ifdef PLATFORM_WINDOWS
+ LIBARDOUR_API void x86_sse_avx_find_peaks               (float const* buf, uint32_t nsamples, float* min, float* max);
+--- a/libs/ardour/test/fpu_test.cc
++++ b/libs/ardour/test/fpu_test.cc
+@@ -99,6 +99,7 @@ FPUTest::compare (std::string msg, size_t cnt, float max_diff)
+ 
+ #if defined(ARCH_X86) && defined(BUILD_SSE_OPTIMIZATIONS)
+ 
++#if defined FPU_AVX_SUPPORT
+ void
+ FPUTest::avxFmaTest ()
+ {
+@@ -125,7 +126,9 @@ FPUTest::avxFmaTest ()
+ 
+ 	run (align_max, FLT_EPSILON);
+ }
++#endif
+ 
++#if defined FPU_AVX_SUPPORT
+ void
+ FPUTest::avxTest ()
+ {
+@@ -152,7 +155,9 @@ FPUTest::avxTest ()
+ 
+ 	run (align_max);
+ }
++#endif
+ 
++#if defined FPU_AVX512F_SUPPORT
+ void
+ FPUTest::avx512fTest ()
+ {
+@@ -179,6 +184,7 @@ FPUTest::avx512fTest ()
+ 
+ 	run (align_max, FLT_EPSILON);
+ }
++#endif
+ 
+ void
+ FPUTest::sseTest ()
+--- a/libs/ardour/test/fpu_test.h
++++ b/libs/ardour/test/fpu_test.h
+@@ -8,9 +8,15 @@ class FPUTest : public CppUnit::TestFixture
+ 	CPPUNIT_TEST_SUITE (FPUTest);
+ #if defined(ARCH_X86) && defined(BUILD_SSE_OPTIMIZATIONS)
+ 	CPPUNIT_TEST (sseTest);
++#if defined FPU_AVX_SUPPORT
+ 	CPPUNIT_TEST (avxTest);
++#endif
++#if defined FPU_AVX_FMA_SUPPORT
+ 	CPPUNIT_TEST (avxFmaTest);
++#endif
++#if defined FPU_AVX512F_SUPPORT
+ 	CPPUNIT_TEST (avx512fTest);
++#endif
+ #elif defined ARM_NEON_SUPPORT
+ 	CPPUNIT_TEST (neonTest);
+ #elif defined(__APPLE__) && defined(BUILD_VECLIB_OPTIMIZATIONS)

@@ -16,7 +16,7 @@ HOMEPAGE="https://pypi.org/project/Pmw/"
 
 LICENSE="BSD"
 SLOT="py3"
-KEYWORDS="~alpha amd64 ppc ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~alpha amd64 ppc ~sparc x86 ~x64-macos"
 IUSE="doc test"
 # https://sourceforge.net/p/pmw/bugs/39/
 RESTRICT="test"

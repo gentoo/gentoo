@@ -1,0 +1,21 @@
+Source: https://salsa.debian.org/med-team/liblemon/-/raw/master/debian/patches/cmake-4.patch
+
+Description: bump cmake minimum required to 3.10.
+ Portability to cmake 4 and beyond also required dropping the CMP0048
+ enforcement to the OLD behavior.
+Author: Étienne Mollier <emollier@debian.org>
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1113170
+Forwarded: no
+Last-Update: 2025-10-02
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- liblemon.orig/CMakeLists.txt
++++ liblemon/CMakeLists.txt
+@@ -1,6 +1,4 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+-
+-CMAKE_POLICY(SET CMP0048 OLD)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.10)
+ 
+ SET(PROJECT_NAME "LEMON")
+ PROJECT(${PROJECT_NAME})

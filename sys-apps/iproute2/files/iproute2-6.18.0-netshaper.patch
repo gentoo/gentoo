@@ -1,0 +1,10 @@
+diff '--color=auto' -Naur iproute2-6.18.0/netshaper/Makefile iproute2-6.18.0-fix/netshaper/Makefile
+--- iproute2-6.18.0/netshaper/Makefile	2025-12-01 19:47:16.000000000 +0300
++++ iproute2-6.18.0-fix/netshaper/Makefile	2025-12-18 11:26:23.091330554 +0300
+@@ -1,5 +1,6 @@
+ # SPDX-License-Identifier: GPL-2.0
+ include ../config.mk
++include ../config.include
+ 
+ NSOBJ = netshaper.o
+ TARGETS += netshaper

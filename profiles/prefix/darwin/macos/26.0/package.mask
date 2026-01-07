@@ -1,7 +1,0 @@
-# Copyright 1999-2025 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
-
-# Fabian Groffen <grobian@gentoo.org> (2025-12-09)
-# Fails to compile in gnulib on invalid decls for memset, memmove,
-# strncpy, etc. probably incompatibility with system headers
-=sys-devel/m4-1.4.20

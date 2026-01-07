@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-13)
+# media-gfx/asymptote is not stable here, bug #961740
+dev-tex/rubber test
+
 # Sam James <sam@gentoo.org> (2025-11-30)
 # sci-libs/blis does not have stable keywords
 sci-libs/flexiblas blis

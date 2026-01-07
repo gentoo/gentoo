@@ -17,7 +17,7 @@ S="${WORKDIR}/${P}"
 
 LICENSE="Apache-2.0"
 SLOT="3"
-KEYWORDS="amd64 arm64 ppc64 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm64 ppc64"
 
 # Tests run: 2036,  Failures: 91
 RESTRICT="test"

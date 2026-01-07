@@ -81,7 +81,7 @@ DESCRIPTION="TeXLive Essential programs and files"
 
 LICENSE="GPL-1+ GPL-2+ LPPL-1.3 LPPL-1.3c MIT OFL-1.1 TeX TeX-other-free public-domain"
 SLOT="0"
-KEYWORDS="amd64 arm ppc ppc64 x86"
+KEYWORDS="~alpha amd64 arm arm64 ppc ppc64 ~riscv x86"
 COMMON_DEPEND="
 	>=app-text/texlive-core-2024[luajittex?]
 "

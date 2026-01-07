@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}-$(ver_cut 1-3)"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="sys-libs/ncurses:="
 DEPEND="

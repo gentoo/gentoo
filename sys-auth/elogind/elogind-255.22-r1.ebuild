@@ -60,6 +60,7 @@ PATCHES=(
 	# https://github.com/elogind/elogind/issues/285
 	"${FILESDIR}/${PN}-255.17-revert-s2idle.patch" # bug 939042
 	"${FILESDIR}/${PN}-255.22-revert-openrc-user.patch" # bug 966481
+	"${FILESDIR}/${PN}-255.22-musl.patch" # bug 967191
 )
 
 python_check_deps() {

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_1{1..2} )
+PYTHON_COMPAT=( python3_12 )
 
 DISTUTILS_USE_PEP517=setuptools
 inherit systemd distutils-r1

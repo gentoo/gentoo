@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ppc ppc64 x86 ~ppc-macos"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ppc ppc64 x86"
 IUSE="doc ipv6 static-libs test"
 RESTRICT="!test? ( test )"
 

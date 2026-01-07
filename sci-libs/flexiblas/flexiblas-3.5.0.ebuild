@@ -19,7 +19,7 @@ S=${WORKDIR}/${MY_P}
 # BSD for vendored cblas/lapacke
 LICENSE="LGPL-3+ BSD"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 x86"
 IUSE="blis index64 mkl openblas openmp system-blas tbb test"
 RESTRICT="!test? ( test )"
 

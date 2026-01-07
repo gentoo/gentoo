@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -45,16 +45,14 @@ src_install() {
 	# depending on useflags
 	rm "${D}/usr/share/applications/org.rncbc.qsynth.desktop" || die
 
-	local cmd
-	if use jack; then
-		cmd="qsynth"
-	elif use pulseaudio; then
-		cmd="qsynth -a pulseaudio"
+	local args
+	if use pulseaudio; then
+		args="-a pulseaudio"
 	elif use alsa; then
-		cmd="qsynth -a alsa"
+		args="-a alsa"
 	else
-		cmd="qsynth -a oss"
+		args="-a oss"
 	fi
 
-	make_desktop_entry "${cmd}" Qsynth org.rncbc.qsynth
+	make_desktop_entry --eapi9 qsynth -a "${args}" -n Qsynth -i org.rncbc.qsynth
 }

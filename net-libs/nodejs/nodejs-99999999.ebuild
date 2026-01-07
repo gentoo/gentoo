@@ -20,7 +20,7 @@ if [[ ${PV} == *9999 ]]; then
 else
 	SRC_URI="https://nodejs.org/dist/v${PV}/node-v${PV}.tar.xz"
 	SLOT="0/$(ver_cut 1)"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86 ~amd64-linux ~x64-macos"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86 ~x64-macos"
 	S="${WORKDIR}/node-v${PV}"
 fi
 
@@ -34,6 +34,8 @@ REQUIRED_USE="inspector? ( icu ssl )
 RESTRICT="!test? ( test )"
 
 RDEPEND=">=app-arch/brotli-1.1.0:=
+	>=dev-cpp/ada-3.3.0:=
+	>=dev-cpp/simdutf-7.3.4:=
 	dev-db/sqlite:3
 	>=dev-libs/libuv-1.51.0:=
 	>=dev-libs/simdjson-3.10.1:=
@@ -127,9 +129,7 @@ src_configure() {
 
 	local myconf=(
 		--ninja
-		# ada is not packaged yet
-		# https://github.com/ada-url/ada
-		# --shared-ada
+		--shared-ada
 		--shared-brotli
 		--shared-cares
 		--shared-libuv
@@ -137,9 +137,7 @@ src_configure() {
 		--shared-nghttp3
 		--shared-ngtcp2
 		--shared-simdjson
-		# sindutf is not packaged yet
-		# https://github.com/simdutf/simdutf
-		# --shared-simdutf
+		--shared-simdutf
 		--shared-sqlite
 		--shared-zlib
 	)

@@ -1,0 +1,27 @@
+diff --git a/test/meson.build b/test/meson.build
+index 52f04364e..633bd6704 100644
+--- a/test/meson.build
++++ b/test/meson.build
+@@ -27,16 +27,19 @@ subdir('libtest')
+ 
+ subdir('camera')
+ subdir('controls')
+-subdir('gstreamer')
++# TODO: Those tests fails on Gentoo due to portage user does not belong to video group
++#subdir('gstreamer')
+ subdir('ipa')
+ subdir('ipc')
+ subdir('log')
+-subdir('media_device')
++# TODO: Those tests fails on Gentoo due to portage user does not belong to video group
++#subdir('media_device')
+ subdir('process')
+ subdir('py')
+ subdir('serialization')
+ subdir('stream')
+-subdir('v4l2_compat')
++# TODO: Those tests fails on Gentoo due to portage user does not belong to video group
++#subdir('v4l2_compat')
+ subdir('v4l2_subdevice')
+ subdir('v4l2_videodevice')
+ 

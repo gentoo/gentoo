@@ -14,7 +14,7 @@ SRC_URI+=" verify-sig? ( https://www.unrealircd.org/downloads/${P}.tar.gz.asc )"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc ~ppc64 ~riscv x86 ~amd64-linux"
+KEYWORDS="amd64 arm arm64 ppc ~ppc64 ~riscv x86"
 IUSE="class-nofakelag curl geoip +operoverride operoverride-verify"
 
 RDEPEND="

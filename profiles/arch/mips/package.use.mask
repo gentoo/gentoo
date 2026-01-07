@@ -1,6 +1,14 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alfred Wingate <parona@protonmail.com> (2025-12-24)
+# media-libs/jasper are not keyworded here
+media-libs/gegl jpeg2k
+
+# Ulrich Müller <ulm@gentoo.org> (2025-12-15)
+# app-text/texlive[xetex] not keyworded, #967505.
+app-text/pdfjam test
+
 # Eli Schwartz <eschwartz@gentoo.org> (2025-11-27)
 # Needs dev-python/mypy for mypyc, not keyworded here
 dev-python/charset-normalizer native-extensions
@@ -521,3 +529,7 @@ dev-vcs/git cgi
 # Matt Turner <mattst88@gentoo.org> (2012-02-09)
 # mips only use flags
 >=sci-libs/fftw-3 -zbus
+
+# Lukas Schmelting <lschmelting@posteo.com>
+# Depends on unkeyworded x11-misc/xvfb-run
+>=x11-libs/libnotify-0.8.7 test

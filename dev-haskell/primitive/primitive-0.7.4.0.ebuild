@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/haskell/primitive"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 CABAL_CHDEPS=(
 	'tasty ^>= 1.2 || ^>= 1.3 || ^>= 1.4' 'tasty >= 1.2'

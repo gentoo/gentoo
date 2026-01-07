@@ -20,7 +20,7 @@ else
 			https://github.com/${PN}/${PN}/releases/download/v${DOC_PV}/${PN}-${DOC_PV}-offline_documentation.tar.gz
 			verify-sig? ( https://github.com/${PN}/${PN}/releases/download/v${DOC_PV}/${PN}-${DOC_PV}-offline_documentation.tar.gz.asc )
 			)"
-	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="LGPL-2.1+"

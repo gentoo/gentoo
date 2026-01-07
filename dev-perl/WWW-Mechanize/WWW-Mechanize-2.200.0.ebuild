@@ -10,7 +10,7 @@ inherit bash-completion-r1 perl-module
 DESCRIPTION="Handy web browsing in a Perl object"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm ppc ~riscv x86"
 
 RDEPEND="
 	>=dev-perl/HTML-Form-6.80.0

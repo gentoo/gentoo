@@ -4,9 +4,6 @@
 	<maintainer type="project">
 		<email>freedesktop-bugs@gentoo.org</email>
 	</maintainer>
-	<use>
-		<flag name="systemd">Build with <pkg>sys-apps/systemd</pkg> at_console support</flag>
-	</use>
 	<upstream>
 		<bugs-to>https://gitlab.freedesktop.org/dbus/dbus/-/issues</bugs-to>
 		<changelog>https://gitlab.freedesktop.org/dbus/dbus/-/tags</changelog>

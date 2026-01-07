@@ -9,7 +9,6 @@
 		<flag name="gpkg">Build GLEP-78 gpkg support in qpkg</flag>
 		<flag name="gtree">Build gtree repository cache support</flag>
 		<flag name="qmanifest">Build qmanifest applet, this adds additional dependencies for GPG, OpenSSL and BLAKE2B hashing</flag>
-		<flag name="qtegrity">Build qtegrity applet, this adds additional dependencies for OpenSSL</flag>
 	</use>
 	<upstream>
 		<remote-id type="gentoo">proj/portage-utils</remote-id>

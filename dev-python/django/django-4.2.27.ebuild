@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..13} )
 PYTHON_REQ_USE='sqlite?,threads(+)'
 
 inherit bash-completion-r1 distutils-r1 multiprocessing optfeature verify-sig
@@ -17,7 +17,6 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://media.djangoproject.com/releases/$(ver_cut 1-2)/${P}.tar.gz
-	https://dev.gentoo.org/~mgorny/dist/python/django-4.2.17-pypy3.patch.xz
 	verify-sig? ( https://media.djangoproject.com/pgp/${P^}.checksum.txt )
 "
 
@@ -55,9 +54,6 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/django-4.0-bashcomp.patch
-	"${WORKDIR}"/django-4.2.17-pypy3.patch
-	# https://code.djangoproject.com/ticket/35661
-	"${FILESDIR}"/django-5.1-more-pypy3.patch
 	# https://code.djangoproject.com/ticket/34900
 	"${FILESDIR}"/django-4.2.21-py313.patch
 	# upstream hardcodes fixed versions, we backported the fixes

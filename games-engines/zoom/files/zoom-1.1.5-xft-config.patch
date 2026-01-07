@@ -1,0 +1,15 @@
+--- a/configure.in
++++ b/configure.in
+@@ -356,10 +356,10 @@
+       
+     # If Xft is installed, then there will be a xft-config file on the current path
+     AC_MSG_CHECKING([for xft-config])
+-    XFTCONFIG=`which xft-config`
++    XFTCONFIG="${PKG_CONFIG:-pkg-config} xft"
+     XFT_CFLAGS=""
+     XFT_LIBS=""
+-    if test -x ${XFTCONFIG}; then
++    if ${XFTCONFIG} --exists; then
+     	AC_MSG_RESULT([$XFTCONFIG])
+     	XFT_CFLAGS=`${XFTCONFIG} --cflags`
+     	XFT_LIBS=`${XFTCONFIG} --libs`

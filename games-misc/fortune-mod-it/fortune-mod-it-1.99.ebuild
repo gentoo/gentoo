@@ -10,7 +10,7 @@ S="${WORKDIR}"/fortune-it-${PVR}
 
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc64 ~riscv ~x86"
 IUSE="offensive"
 
 DEPEND="games-misc/fortune-mod"

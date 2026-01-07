@@ -10,6 +10,6 @@ S="${WORKDIR}/${PN}-${PN^^}_V${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm64 ~mips ppc ppc64 ~sparc x86"
 
 RDEPEND="!<=games-misc/bsd-games-3"

@@ -12,7 +12,7 @@ SRC_URI="https://github.com/flightaware/tclreadline/archive/v${PV}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ppc ~sparc x86"
 IUSE="tk"
 
 DEPEND="

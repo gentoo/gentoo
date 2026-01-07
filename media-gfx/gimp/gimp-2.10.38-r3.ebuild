@@ -32,6 +32,7 @@ COMMON_DEPEND="
 	>=media-libs/fontconfig-2.12.4
 	>=media-libs/freetype-2.1.7
 	>=media-libs/gegl-0.4.40:0.4[cairo]
+	<media-libs/gexiv2-0.15.0
 	>=media-libs/gexiv2-0.10.6
 	>=media-libs/harfbuzz-0.9.19:=
 	>=media-libs/lcms-2.8:2

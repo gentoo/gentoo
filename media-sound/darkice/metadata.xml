@@ -6,11 +6,10 @@
 		<name>Gentoo Sound project</name>
 	</maintainer>
 	<use>
-		<flag name="twolame">Build with twolame support</flag>
+		<flag name="fdk">Build with HE-AAC support using <pkg>media-libs/fdk-aac</pkg></flag>
+		<flag name="twolame">Build with twolame support using <pkg>media-sound/twolame</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="github">rafael2k/darkice</remote-id>
-		<remote-id type="google-code">darkice</remote-id>
-		<remote-id type="sourceforge">darkice</remote-id>
 	</upstream>
 </pkgmetadata>

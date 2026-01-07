@@ -12,7 +12,7 @@ SRC_URI="http://cgm.cs.mcgill.ca/~avis/C/lrslib/archive/${P}.tar.gz"
 # COPYING is GPL-2, but e.g. lrslib.h says "or ... any later version."
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~riscv ~amd64-linux"
+KEYWORDS="amd64 ~arm ~riscv"
 IUSE="gmp mpi"
 
 BDEPEND=""

@@ -22,7 +22,7 @@ else
 		https://download.osgeo.org/proj/${P}.tar.gz
 		https://download.osgeo.org/proj/${PN}-data-${PROJ_DATA_PV}.tar.gz
 	"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
 LICENSE="MIT"

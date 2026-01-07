@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cmake.eclass
@@ -77,10 +77,6 @@ inherit flag-o-matic multiprocessing ninja-utils toolchain-funcs xdg-utils
 if [[ ${CMAKE_REMOVE_MODULES_LIST} ]]; then
 	[[ ${CMAKE_REMOVE_MODULES_LIST@a} == *a* ]] ||
 		die "CMAKE_REMOVE_MODULES_LIST must be an array"
-else
-	if ! [[ ${CMAKE_REMOVE_MODULES_LIST@a} == *a* && ${#CMAKE_REMOVE_MODULES_LIST[@]} -eq 0 ]]; then
-		CMAKE_REMOVE_MODULES_LIST=( FindBLAS FindLAPACK )
-	fi
 fi
 
 # @ECLASS_VARIABLE: CMAKE_USE_DIR
@@ -250,7 +246,7 @@ cmake_comment_add_subdirectory() {
 
 	for d in "$@"; do
 		d=${d//\//\\/}
-		sed -e "/add_subdirectory[[:space:]]*([[:space:]]*${d}[[:space:]]*)/I s/^/#DONOTBUILD /" \
+		sed -e "/add_subdirectory[[:space:]]*([[:space:]]*${d}\([[:space:]][a-Z_ ]*\|[[:space:]]*\))/I s/^/#DONOTBUILD /" \
 			-i ${filename} || die "failed to comment add_subdirectory(${d})"
 	done
 }
@@ -497,6 +493,11 @@ cmake_prepare() {
 		die "FATAL: Unable to find CMakeLists.txt"
 	fi
 
+	if ! [[ ${CMAKE_REMOVE_MODULES_LIST@a} == *a* && ${#CMAKE_REMOVE_MODULES_LIST[@]} -eq 0 ]]; then
+		if has_version -b "<dev-build/cmake-4.2.1"; then
+			CMAKE_REMOVE_MODULES_LIST=( FindBLAS FindLAPACK )
+		fi
+	fi
 	local modules_list=( "${CMAKE_REMOVE_MODULES_LIST[@]}" )
 
 	local name

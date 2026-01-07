@@ -14,7 +14,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ppc x86 ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~hppa ppc x86"
 
 PATCHES=( "${FILESDIR}"/${PN}-0.7.12-CVE-2016-1243_CVE-2016-1244.patch )
 

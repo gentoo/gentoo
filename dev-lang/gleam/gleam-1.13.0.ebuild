@@ -443,7 +443,7 @@ LICENSE="
 	Unicode-DFS-2016
 "
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="dev-lang/erlang:*"
 

@@ -13,7 +13,7 @@ DESCRIPTION="KDE Plasma workspace"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="appstream +fontconfig +ksysguard networkmanager +policykit
 screencast +semantic-desktop systemd telemetry +wallpaper-metadata +X"
 
@@ -154,7 +154,10 @@ BDEPEND="
 	>=dev-util/wayland-scanner-1.19.0
 	>=kde-frameworks/kcmutils-${KFMIN}:6
 	virtual/pkgconfig
-	test? ( >=dev-qt/qtwayland-${QTMIN}:6[compositor(+)] )
+	test? (
+		>=dev-qt/qtwayland-${QTMIN}:6[compositor(+)]
+		X? ( x11-misc/xdotool )
+	)
 "
 BDEPEND+=" || ( >=dev-qt/qtbase-6.10:6[wayland] <dev-qt/qtwayland-6.10:6 )"
 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>arthurzam@gentoo.org</email>
+		<name>Arthur Zamarin</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="codeberg">mergiraf/mergiraf</remote-id>
+		<bugs-to>https://codeberg.org/mergiraf/mergiraf/issues</bugs-to>
+		<changelog>https://codeberg.org/mergiraf/mergiraf/releases</changelog>
+	</upstream>
+</pkgmetadata>

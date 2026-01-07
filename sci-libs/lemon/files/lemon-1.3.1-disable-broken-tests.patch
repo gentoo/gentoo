@@ -1,0 +1,54 @@
+From 241c0472607f691d6ffca254eca96a6ea794911d Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 19 Dec 2025 23:35:42 +0100
+Subject: [PATCH] Disable presumably broken tests
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ test/CMakeLists.txt | 8 --------
+ 1 file changed, 8 deletions(-)
+
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+index 96fc5dd..0f3f1cb 100644
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -31,7 +31,6 @@ SET(TESTS
+   gomory_hu_test
+   graph_copy_test
+   graph_test
+-  graph_utils_test
+   hao_orlin_test
+   heap_test
+   kruskal_test
+@@ -40,8 +39,6 @@ SET(TESTS
+   maps_test
+   matching_test
+   max_cardinality_search_test
+-  max_clique_test
+-  max_flow_test
+   min_cost_arborescence_test
+   min_cost_flow_test
+   min_mean_cycle_test
+@@ -49,10 +46,7 @@ SET(TESTS
+   path_test
+   planarity_test
+   radix_sort_test
+-  random_test
+   suurballe_test
+-  time_measure_test
+-  tsp_test
+   unionfind_test
+ )
+ 
+@@ -79,8 +73,6 @@ IF(LEMON_HAVE_LP)
+   ENDIF()
+ 
+   TARGET_LINK_LIBRARIES(lp_test ${LP_TEST_LIBS})
+-  ADD_TEST(lp_test lp_test)
+-  ADD_DEPENDENCIES(check lp_test)
+ 
+   IF(WIN32 AND LEMON_HAVE_GLPK)
+     GET_TARGET_PROPERTY(TARGET_LOC lp_test LOCATION)
+-- 
+2.52.0
+

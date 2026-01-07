@@ -7,7 +7,7 @@ EBO_DESCRIPTION="HMMER wrapper - sequence analysis with profile HMMs"
 
 inherit autotools emboss-r3
 
-KEYWORDS="~amd64 ~x86 ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="sci-biology/hmmer:2"
 

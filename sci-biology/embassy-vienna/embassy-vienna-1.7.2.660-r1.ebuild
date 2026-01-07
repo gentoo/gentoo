@@ -7,7 +7,7 @@ EBO_DESCRIPTION="Vienna RNA package - RNA folding"
 
 inherit autotools emboss-r3
 
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 
 S="${WORKDIR}/VIENNA-1.7.2.650"
 PATCHES=(

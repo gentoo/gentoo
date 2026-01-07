@@ -1,0 +1,23 @@
+From 5bd157c3bf6127f33c4c8a16c28140b6cd171ed1 Mon Sep 17 00:00:00 2001
+From: "Jason E. Hale" <jhale@FreeBSD.org>
+Date: Mon, 1 Dec 2025 04:43:23 -0500
+Subject: [PATCH] Fix typo. QT_VERSION is undefined.
+
+We must test for Qt6_VERSION here.
+---
+ src/platform/x11/x11platform.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/platform/x11/x11platform.cmake b/src/platform/x11/x11platform.cmake
+index c23f172dae..4c824d07bf 100644
+--- a/src/platform/x11/x11platform.cmake
++++ b/src/platform/x11/x11platform.cmake
+@@ -39,7 +39,7 @@ if (WITH_X11)
+     set(copyq_LIBRARIES ${copyq_LIBRARIES} ${X11_LIBRARIES} ${X11_Xfixes_LIB})
+ 
+     if(WITH_QT6)
+-        if (QT_VERSION VERSION_GREATER_EQUAL "6.10.0")
++        if (Qt6_VERSION VERSION_GREATER_EQUAL "6.10.0")
+             find_package(${copyq_qt} ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS GuiPrivate)
+         endif()
+         list(APPEND copyq_LIBRARIES Qt::GuiPrivate)

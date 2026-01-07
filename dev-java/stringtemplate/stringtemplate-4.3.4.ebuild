@@ -23,7 +23,7 @@ TARBALL_S="${S}/${PN}4-ST4-${PV}"
 
 LICENSE="BSD"
 SLOT="4"
-KEYWORDS="amd64 arm64 ppc64 ~amd64-linux ~x86-linux ~x64-solaris"
+KEYWORDS="amd64 arm64 ppc64 ~x64-solaris"
 
 CP_DEPEND="
 	dev-java/antlr-runtime:3.5

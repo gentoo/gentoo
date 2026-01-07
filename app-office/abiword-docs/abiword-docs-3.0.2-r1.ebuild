@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,8 +6,8 @@ EAPI=8
 inherit gnome2
 
 DESCRIPTION="Fully featured yet light and fast cross platform word processor documentation"
-HOMEPAGE="http://www.abisource.com/"
-SRC_URI="http://www.abisource.com/downloads/abiword/${PV}/source/${P}.tar.gz"
+HOMEPAGE="https://gitlab.gnome.org/World/AbiWord"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 # Upstream tarball is wrongly prepared, drop in the next version
 S="${WORKDIR}/${PN}-3.0.1"
 

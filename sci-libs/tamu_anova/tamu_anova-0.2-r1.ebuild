@@ -11,7 +11,7 @@ SRC_URI="http://cdn-fastly.deb.debian.org/debian/pool/main/t/tamuanova/tamuanova
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="sci-libs/gsl:0="
 DEPEND="${RDEPEND}"

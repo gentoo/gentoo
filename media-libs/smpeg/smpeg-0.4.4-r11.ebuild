@@ -12,7 +12,7 @@ SRC_URI="https://mirrors.dotsrc.org/lokigames/open-source/smpeg/${P}.tar.gz
 
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~sparc x86"
 IUSE="cpu_flags_x86_mmx opengl"
 
 RDEPEND="

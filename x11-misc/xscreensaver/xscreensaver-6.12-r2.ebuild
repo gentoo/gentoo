@@ -28,7 +28,7 @@ S="${WORKDIR}/${PN}-$(ver_cut 1-2)"
 #   SpecialElite.ttf -- Apache-2.0
 LICENSE="BSD fonts? ( MIT Apache-2.0 ) systemd? ( ISC )"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 IUSE="elogind ffmpeg fonts +gdk-pixbuf gdm gles glx +gtk jpeg +locking logind-idle-hint new-login offensive pam +perl +png selinux suid systemd xinerama wayland"
 REQUIRED_USE="
 	gles? ( !glx )

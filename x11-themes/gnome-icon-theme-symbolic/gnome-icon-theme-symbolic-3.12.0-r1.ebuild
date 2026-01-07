@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/Archive/gnome-icon-theme-symbolic"
 
 LICENSE="CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~mips ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~mips ~ppc ~ppc64 ~riscv ~sparc x86"
 # This ebuild does not install any binaries
 RESTRICT="binchecks strip"
 

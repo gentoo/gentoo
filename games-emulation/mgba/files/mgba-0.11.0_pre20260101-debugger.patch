@@ -1,0 +1,12 @@
+Just a quick fix for USE="gui -debug", haven't spent time on this.
+--- a/src/platform/qt/scripting/ScriptingController.cpp
++++ b/src/platform/qt/scripting/ScriptingController.cpp
+@@ -87,6 +87,8 @@
+ 	if (m_controller->hasStarted()) {
+ 		attach();
++#ifdef ENABLE_DEBUGGERS
+ 	} else {
+ 		m_controller->attachDebugger(false);
++#endif
+ 	}
+ 	updateVideoScale();

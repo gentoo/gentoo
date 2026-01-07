@@ -1,0 +1,13 @@
+diff --git a/tests/utils_tests/test_html.py b/tests/utils_tests/test_html.py
+index 89c97cee03..776409fac8 100644
+--- a/tests/utils_tests/test_html.py
++++ b/tests/utils_tests/test_html.py
+@@ -155,6 +155,8 @@ class TestUtilsHtml(SimpleTestCase):
+             sys.version_info
+             >= min_fixed_incomplete_entities.get(major_version, major_version)
+         )
++        # Gentoo: patches backported
++        htmlparser_fixed = True
+         items = (
+             (
+                 "<p>See: &#39;&eacute; is an apostrophe followed by e acute</p>",

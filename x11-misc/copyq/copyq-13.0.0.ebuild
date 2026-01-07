@@ -12,7 +12,7 @@ S="${WORKDIR}/CopyQ-${PV}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="notification test X"
 
 RESTRICT="!test? ( test )"
@@ -51,6 +51,7 @@ BDEPEND="
 PATCHES=(
 	# used in tests
 	"${FILESDIR}/${PN}-7.1.0-support-plugin-dir-envvar-r1.patch"
+	"${FILESDIR}/${P}-fix-cmake-qt-6.10.patch" # bug #966739
 )
 
 src_configure() {

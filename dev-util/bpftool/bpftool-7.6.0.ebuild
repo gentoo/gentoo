@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=( {15..20} )
+LLVM_COMPAT=( {15..21} )
 LLVM_OPTIONAL=1
 PYTHON_COMPAT=( python3_{11..14} )
 
@@ -86,7 +86,10 @@ src_prepare() {
 	sed -i -e 's/-Werror//g' src/Makefile.feature || die
 
 	# remove hardcoded/unhelpful flags from bpftool
-	sed -i -e '/CFLAGS += -O2/d' -e 's/-W //g' -e 's/-Wextra //g' src/Makefile || die
+	sed -e '/CFLAGS += -O2$/d' \
+		-e '/CFLAGS += -W$/d' \
+		-e '/CFLAGS += -Wextra$/d' \
+		-i src/Makefile || die
 
 	# always build bpf bits with std=gnu11 for kernel compatibility (bug 955156)
 	sed -i 's/-fno-stack-protector/& -std=gnu11/g' src/Makefile || die

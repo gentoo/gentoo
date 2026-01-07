@@ -14,7 +14,7 @@ S="${WORKDIR}/${P}/core"
 
 LICENSE="Apache-2.0"
 SLOT="2"
-KEYWORDS="amd64 ppc64 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ppc64"
 
 CP_DEPEND="
 	>=dev-java/ant-1.10.14-r3:0

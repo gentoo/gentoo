@@ -11,7 +11,7 @@ SRC_URI="http://www.linalco.com/ragnar/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ppc x86"
 
 BDEPEND="virtual/pkgconfig"
 DEPEND="sys-libs/ncurses:="

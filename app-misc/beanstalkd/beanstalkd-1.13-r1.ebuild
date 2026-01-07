@@ -11,7 +11,7 @@ SRC_URI="https://github.com/beanstalkd/beanstalkd/archive/v${PV}.tar.gz -> ${P}.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~mips x86 ~amd64-linux ~x64-macos"
+KEYWORDS="amd64 ~arm64 ~mips x86 ~x64-macos"
 
 RDEPEND="
 	acct-group/beanstalk

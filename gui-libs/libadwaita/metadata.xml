@@ -8,4 +8,7 @@
   <upstream>
     <remote-id type="gnome-gitlab">GNOME/libadwaita</remote-id>
   </upstream>
+  <use>
+  <flag name="examples">Build and install the examples and demo applications</flag>
+  </use>
 </pkgmetadata>

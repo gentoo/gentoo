@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/adwaita-icon-theme-legacy"
 
 LICENSE="LGPL-3 CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 # gtk+:3 is needed for build for the gtk-encode-symbolic-svg utility
 # librsvg is needed for gtk-encode-symbolic-svg to be able to read the source SVG via

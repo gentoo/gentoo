@@ -1,0 +1,30 @@
+commit 1e589290311a82fc1d5e78a63003fcb8ac134b03
+Author: Michael Orlitzky <michael@orlitzky.com>
+Date:   Tue Dec 16 12:21:31 2025 -0500
+
+    cmake/FindHipoDeps.cmake: fix metis search path
+
+diff --git a/cmake/FindHipoDeps.cmake b/cmake/FindHipoDeps.cmake
+index 881b987..51c7a9e 100644
+--- a/cmake/FindHipoDeps.cmake
++++ b/cmake/FindHipoDeps.cmake
+@@ -153,17 +153,13 @@ if(metis_FOUND)
+ else()
+     find_path(METIS_PATH
+         NAMES "metis.h"
+-        REQUIRED
+-        PATHS "${METIS_ROOT}/include"
+-        NO_DEFAULT_PATH)
++        REQUIRED)
+ 
+     message(STATUS "Found Metis header at ${METIS_PATH}")
+ 
+     find_library(METIS_LIB
+         NAMES metis libmetis
+-        REQUIRED
+-        PATHS "${METIS_ROOT}/lib" "${METIS_ROOT}/bin"
+-        NO_DEFAULT_PATH)
++        REQUIRED)
+ 
+     if(METIS_LIB)
+         message(STATUS "Found Metis library at ${METIS_LIB}")

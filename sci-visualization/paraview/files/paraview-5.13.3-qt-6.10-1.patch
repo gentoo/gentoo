@@ -1,0 +1,60 @@
+From cd7e633df299c29e8e76c34df83d8c67dfb386a1 Mon Sep 17 00:00:00 2001
+From: Louis Gombert <louis.gombert@kitware.com>
+Date: Tue, 2 Dec 2025 14:22:32 +0100
+Subject: [PATCH] Fix for Qt6.10.1: Explicitly cast unscoped enums to int
+
+---
+ Qt/Core/pqFlatTreeViewEventTranslator.cxx |  4 ++--
+ Qt/Core/pqQVTKWidgetEventTranslator.cxx   | 12 ++++++------
+ 2 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/Qt/Core/pqFlatTreeViewEventTranslator.cxx b/Qt/Core/pqFlatTreeViewEventTranslator.cxx
+index 52775c6f0f0..3a62c534b94 100644
+--- a/Qt/Core/pqFlatTreeViewEventTranslator.cxx
++++ b/Qt/Core/pqFlatTreeViewEventTranslator.cxx
+@@ -73,8 +73,8 @@ bool pqFlatTreeViewEventTranslator::translateEvent(QObject* Object, QEvent* Even
+ 
+       QString info = QString("%1,%2,%3,%4,%5,%6")
+                        .arg(mouseEvent->button())
+-                       .arg(mouseEvent->buttons())
+-                       .arg(mouseEvent->modifiers())
++                       .arg(static_cast<int>(mouseEvent->buttons()))
++                       .arg(static_cast<int>(mouseEvent->modifiers()))
+                        .arg(relPt.x())
+                        .arg(relPt.y())
+                        .arg(idxStr);
+diff --git a/Qt/Core/pqQVTKWidgetEventTranslator.cxx b/Qt/Core/pqQVTKWidgetEventTranslator.cxx
+index dfc9522729e..d2b64267499 100644
+--- a/Qt/Core/pqQVTKWidgetEventTranslator.cxx
++++ b/Qt/Core/pqQVTKWidgetEventTranslator.cxx
+@@ -90,8 +90,8 @@ bool pqQVTKWidgetEventTranslator::translateEvent(
+               .arg(normalized_x)
+               .arg(normalized_y)
+               .arg(mouseEvent->button())
+-              .arg(mouseEvent->buttons())
+-              .arg(mouseEvent->modifiers()));
++              .arg(static_cast<int>(mouseEvent->buttons()))
++              .arg(static_cast<int>(mouseEvent->modifiers())));
+         }
+         return true;
+         break;
+@@ -118,15 +118,15 @@ bool pqQVTKWidgetEventTranslator::translateEvent(
+               .arg(normalized_x)
+               .arg(normalized_y)
+               .arg(mouseEvent->button())
+-              .arg(mouseEvent->buttons())
+-              .arg(mouseEvent->modifiers()));
++              .arg(static_cast<int>(mouseEvent->buttons()))
++              .arg(static_cast<int>(mouseEvent->modifiers())));
+           Q_EMIT recordEvent(widget, "mouseRelease",
+             QString("(%1,%2,%3,%4,%5)")
+               .arg(normalized_x)
+               .arg(normalized_y)
+               .arg(mouseEvent->button())
+-              .arg(mouseEvent->buttons())
+-              .arg(mouseEvent->modifiers()));
++              .arg(static_cast<int>(mouseEvent->buttons()))
++              .arg(static_cast<int>(mouseEvent->modifiers())));
+         }
+         return true;
+         break;

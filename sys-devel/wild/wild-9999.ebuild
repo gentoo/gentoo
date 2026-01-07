@@ -234,7 +234,7 @@ CRATES="
 "
 
 LLVM_COMPAT=( {20..21} )
-RUST_MIN_VER="1.89"
+RUST_MIN_VER="1.90"
 inherit cargo llvm-r2 unpacker
 
 DESCRIPTION="A very fast linker for Linux"

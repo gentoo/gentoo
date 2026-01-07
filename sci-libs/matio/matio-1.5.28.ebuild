@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0/13" # subslot = soname version
-KEYWORDS="amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="doc examples hdf5 sparse"
 
 RDEPEND="

@@ -20,7 +20,7 @@ SRC_URI="https://github.com/lostisland/faraday-net_http/archive/v${PV}.tar.gz ->
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="test"
 
 ruby_add_rdepend ">=dev-ruby/net-http-0.5.0"

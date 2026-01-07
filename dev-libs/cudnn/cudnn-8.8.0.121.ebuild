@@ -16,7 +16,7 @@ S="${WORKDIR}/cudnn-linux-x86_64-${PV}_cuda${CUDA_MA}-archive"
 
 LICENSE="NVIDIA-cuDNN"
 SLOT="0/8"
-KEYWORDS="~amd64 ~amd64-linux"
+KEYWORDS="~amd64"
 RESTRICT="mirror"
 
 RDEPEND="=dev-util/nvidia-cuda-toolkit-12*"

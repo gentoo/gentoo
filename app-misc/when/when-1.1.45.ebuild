@@ -11,7 +11,7 @@ SRC_URI="https://bitbucket.org/ben-crowell/${PN}/get/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ppc x86"
 
 DEPEND="dev-lang/perl"
 RDEPEND="${DEPEND}"

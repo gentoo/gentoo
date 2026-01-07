@@ -1,7 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+inherit autotools
 
 DESCRIPTION="Fast, clean, modern Z-code interpreter for X"
 HOMEPAGE="https://www.logicalshift.co.uk/unix/zoom/"
@@ -20,8 +22,19 @@ RDEPEND="!net-im/zoom[zoom-symlink(+)]
 DEPEND="${RDEPEND}
 	dev-lang/perl
 	x11-base/xorg-proto"
+BDEPEND="
+	virtual/pkgconfig
+"
 
-PATCHES=( "${FILESDIR}"/${P}-gcc7.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc7.patch
+	"${FILESDIR}"/${P}-xft-config.patch
+)
+
+src_prepare() {
+	default
+	AT_M4DIR="m4" eautoreconf
+}
 
 src_install() {
 	default

@@ -10,6 +10,7 @@
 		<name>Rust project</name>
 	</maintainer>
 	<upstream>
+		<changelog>https://nexte.st/changelog/</changelog>
 		<remote-id type="github">nextest-rs/nextest</remote-id>
 	</upstream>
 </pkgmetadata>

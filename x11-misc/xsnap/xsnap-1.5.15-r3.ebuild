@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.ac-grenoble.fr/ge/Xutils/${P}.tar.bz2"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-linux"
+KEYWORDS="amd64 ppc x86"
 
 COMMON_DEPEND="
 	media-libs/libjpeg-turbo:=

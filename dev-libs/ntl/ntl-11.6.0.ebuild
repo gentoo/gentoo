@@ -12,7 +12,7 @@ S="${WORKDIR}/${P}/src"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/45"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86 ~x64-macos"
 IUSE="doc threads"
 
 BDEPEND="dev-lang/perl"

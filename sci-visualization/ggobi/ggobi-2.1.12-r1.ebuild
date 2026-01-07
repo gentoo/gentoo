@@ -13,7 +13,7 @@ SRC_URI="https://github.com/ggobi/ggobi/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="CPL-1.0"
 SLOT="0"
-KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86"
 IUSE="doc minimal nls"
 
 RDEPEND="

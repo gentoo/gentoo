@@ -10,7 +10,7 @@ HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=3574 https://github.c
 SRC_URI="https://github.com/gregsexton/gitv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="vim"
-KEYWORDS="amd64 x86 ~ppc-macos"
+KEYWORDS="amd64 x86"
 
 VIM_PLUGIN_HELPFILES="gitv"
 

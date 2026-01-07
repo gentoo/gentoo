@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{11..14} )
 inherit edo optfeature python-any-r1 wine
 
 WINE_GECKO=2.47.4
-WINE_MONO=10.4.0
+WINE_MONO=10.4.1
 WINE_P=wine-$(ver_cut 1-2)
 
 if [[ ${PV} == 9999 ]]; then
@@ -41,7 +41,7 @@ IUSE="
 	+fontconfig +gecko gphoto2 +gstreamer kerberos +mono netapi
 	nls odbc opencl +opengl pcap perl pulseaudio samba scanner
 	+sdl selinux smartcard +ssl +truetype udev +unwind usb v4l
-	+vulkan wayland +xcomposite xinerama
+	+vulkan wayland xinerama
 "
 REQUIRED_USE="
 	X? ( truetype )
@@ -56,13 +56,13 @@ RESTRICT="test"
 # `grep WINE_CHECK_SONAME configure.ac` + if not directly linked
 WINE_DLOPEN_DEPEND="
 	X? (
+		x11-libs/libXcomposite[${WINE_USEDEP}]
 		x11-libs/libXcursor[${WINE_USEDEP}]
 		x11-libs/libXfixes[${WINE_USEDEP}]
 		x11-libs/libXi[${WINE_USEDEP}]
 		x11-libs/libXrandr[${WINE_USEDEP}]
 		x11-libs/libXrender[${WINE_USEDEP}]
 		x11-libs/libXxf86vm[${WINE_USEDEP}]
-		xcomposite? ( x11-libs/libXcomposite[${WINE_USEDEP}] )
 		xinerama? ( x11-libs/libXinerama[${WINE_USEDEP}] )
 	)
 	cups? ( net-print/cups[${WINE_USEDEP}] )
@@ -228,7 +228,6 @@ src_configure() {
 		$(use_with v4l v4l2)
 		$(use_with vulkan)
 		$(use_with wayland)
-		$(use_with xcomposite)
 		$(use_with xinerama)
 
 		$(usev !bluetooth '

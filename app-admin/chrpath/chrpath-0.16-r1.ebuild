@@ -11,7 +11,7 @@ SRC_URI="https://alioth-archive.debian.org/releases/${PN}/${PN}/${PV}/${P}.tar.g
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~x64-solaris"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv x86 ~x64-solaris"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-multilib.patch

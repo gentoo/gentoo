@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}-${MY_P}"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc ~x86"
 
 RDEPEND="
 	media-libs/libsndfile:=

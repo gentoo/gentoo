@@ -12,7 +12,7 @@ SRC_URI="https://www.cs.uwaterloo.ca/~astorjoh/${P}.tar.bz2"
 # COPYING is GPL-2, but the files under src/ all have a BSD header
 LICENSE="GPL-2 BSD"
 SLOT="0"
-KEYWORDS="amd64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~riscv ~x86"
 
 DEPEND="virtual/cblas"
 RDEPEND="${DEPEND}"

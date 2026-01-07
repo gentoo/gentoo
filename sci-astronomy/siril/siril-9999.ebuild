@@ -1,9 +1,12 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit meson toolchain-funcs xdg
+PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_REQ_USE="tk"
+
+inherit meson python-r1 toolchain-funcs xdg
 
 DESCRIPTION="A free astronomical image processing software"
 HOMEPAGE="https://siril.org/"
@@ -21,8 +24,6 @@ LICENSE="GPL-3+ Boost-1.0"
 SLOT="0"
 IUSE="curl exif ffmpeg git heif jpeg jpegxl openmp png raw tiff"
 
-# TODO: Siril depends optionally on gtksourceview-4, which is deprecated. Add
-#   gui-libs/gtksourceview if version 5 is supported by upstream.
 DEPEND="
 	>=dev-libs/glib-2.56.0:2
 	>=dev-libs/yyjson-0.10.0:=
@@ -33,10 +34,12 @@ DEPEND="
 	sci-libs/cfitsio:=
 	sci-libs/fftw:3.0=
 	sci-libs/gsl:=
-	x11-libs/gdk-pixbuf:2
 	x11-libs/cairo
-	x11-libs/pango
+	x11-libs/gdk-pixbuf:2
 	>=x11-libs/gtk+-3.22.0:3
+	x11-libs/gtksourceview:4
+	x11-libs/pango
+	virtual/zlib:=
 	curl? ( net-misc/curl )
 	exif? ( >=media-gfx/exiv2-0.25:= )
 	ffmpeg? ( media-video/ffmpeg:= )
@@ -48,14 +51,22 @@ DEPEND="
 	raw? ( media-libs/libraw:= )
 	tiff? ( media-libs/tiff:= )
 "
+
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
 RDEPEND="
 	${DEPEND}
+	${PYTHON_DEPS}
+	dev-python/pip[${PYTHON_USEDEP}]
+	dev-python/virtualenv[${PYTHON_USEDEP}]
 "
-BDEPEND="dev-build/cmake
-	x11-base/xorg-proto"
+BDEPEND="
+	dev-build/cmake
+	x11-base/xorg-proto
+"
 
 PATCHES=(
-	"${FILESDIR}/${P}-docfiles.patch"
+	"${FILESDIR}/${PN}-1.4-docfiles.patch"
 )
 
 DOCS=( README.md ChangeLog AUTHORS )

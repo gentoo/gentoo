@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Rounded or exact English expression of durations"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x86-linux ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos"
 
 RDEPEND="
 	virtual/perl-Exporter

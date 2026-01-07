@@ -8,8 +8,8 @@ inherit dot-a multilib-minimal libtool
 MY_P="gc-${PV}"
 
 DESCRIPTION="The Boehm-Demers-Weiser conservative garbage collector"
-HOMEPAGE="https://www.hboehm.info/gc/ https://github.com/ivmai/bdwgc/"
-SRC_URI="https://github.com/ivmai/bdwgc/releases/download/v${PV}/${MY_P}.tar.gz"
+HOMEPAGE="https://www.hboehm.info/gc/ https://github.com/bdwgc/bdwgc/"
+SRC_URI="https://github.com/bdwgc/bdwgc/releases/download/v${PV}/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="boehm-gc"
@@ -17,7 +17,7 @@ LICENSE="boehm-gc"
 # We've been using subslot 0 for these instead of "1.1".
 SLOT="0"
 # Don't keyword versions if upstream mark them as pre-release.
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
 IUSE="cxx +large static-libs +threads"
 
 RDEPEND=">=dev-libs/libatomic_ops-7.4[${MULTILIB_USEDEP}]"

@@ -1,0 +1,36 @@
+#1 PR pending https://github.com/lgi-devs/lgi/pull/342.patch
+fix test with pango >= 1.56.2
+--- a/tests/pango.lua
++++ b/tests/pango.lua
+@@ -35,8 +35,7 @@ function pango.glyphstring()
+       local offset = items[i].offset
+       local length = items[i].length
+       local analysis = items[i].analysis
+-      local pgs = Pango.GlyphString()
+-      Pango.shape(string.sub(s,1+offset), length, analysis, pgs)
++      pgs = Pango.shape(string.sub(s,1+offset), length, analysis)
+       -- Pull out individual glyphs with pgs.glyphs
+       local glyphs = pgs.glyphs
+       check(type(glyphs) == 'table')
+
+#2 failing progress.lua, see https://github.com/lgi-devs/lgi/issues/348
+fixed by a fork https://github.com/vtrlx/LuaGObject/commit/cd261460f275ea07a4b47cc0c9d0113e17f98b11.patch
+--- a/tests/progress.lua
++++ b/tests/progress.lua
+@@ -11,6 +11,7 @@
+ local lgi = require 'lgi'
+ local Gio = lgi.Gio
+ local GLib = lgi.GLib
++local GObject = lgi.GObject
+ 
+ local check = testsuite.check
+ 
+@@ -46,6 +47,7 @@ function progress.file_copy()
+     end
+ 
+     src:copy_async(dst, flags, priority, cancellable,
+-		   progress_callback, finish_callback)
++		   GObject.Closure (progress_callback),
++		   GObject.Closure (finish_callback))
+     loop:run()
+ end

@@ -11,7 +11,7 @@ SRC_URI="https://www.tangentsoft.net/mysqlpp/releases/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0/3"
-KEYWORDS="~alpha amd64 ~hppa ~mips ppc ~sparc x86 ~amd64-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha amd64 ~hppa ~mips ppc ~sparc x86 ~x64-macos"
 IUSE="doc"
 
 RDEPEND="|| ( dev-db/mysql-connector-c dev-db/mariadb-connector-c )"

@@ -10,7 +10,7 @@ S="${WORKDIR}/lib${P}"
 
 LICENSE="BSD MIT"
 SLOT="0/3"
-KEYWORDS="amd64 arm ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm ppc x86"
 IUSE="header-parser +legacy"
 
 BDEPEND="
