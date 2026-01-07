@@ -2,10 +2,13 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="project">
- <email>embedded@gentoo.org</email>
- <name>Embedded Gentoo</name>
+	<email>embedded@gentoo.org</email>
+	<name>Embedded Gentoo</name>
 </maintainer>
+<upstream>
+	<remote-id type="github">sigrokproject/pulseview</remote-id>
+</upstream>
 <use>
- <flag name="decode">Enable decoding of protocols while capturing</flag>
+	<flag name="decode">Enable decoding of protocols while capturing</flag>
 </use>
 </pkgmetadata>
