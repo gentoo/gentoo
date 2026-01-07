@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{10..14} )
 inherit distutils-r1 pypi
 
 DESCRIPTION="A simple library to add cryptographic attestation to patches sent via email"
-HOMEPAGE="https://pypi.org/project/patatt/"
+HOMEPAGE="https://patatt.docs.kernel.org/en/latest/ https://pypi.org/project/patatt/"
 
 LICENSE="GPL-2+"
 SLOT="0"
