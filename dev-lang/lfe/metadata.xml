@@ -5,6 +5,10 @@
     <email>patrick@gentoo.org</email>
     <name>Patrick Lauer</name>
   </maintainer>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
   <longdescription lang="en">
     LFE, Lisp Flavoured Erlang, is a lisp syntax front-end
     to the Erlang compiler. Code produced with it is compatible
