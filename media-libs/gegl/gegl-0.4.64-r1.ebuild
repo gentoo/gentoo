@@ -23,7 +23,7 @@ HOMEPAGE="https://gegl.org/"
 LICENSE="|| ( GPL-3+ LGPL-3 )"
 SLOT="0.4"
 
-IUSE="cairo debug ffmpeg gtk-doc introspection lcms lensfun openexr openmp pdf raw sdl sdl2 svg test tiff umfpack vala v4l webp"
+IUSE="cairo debug ffmpeg gtk-doc +introspection lcms lensfun openexr openmp pdf raw sdl sdl2 svg test tiff umfpack vala v4l webp"
 REQUIRED_USE="
 	gtk-doc? ( introspection )
 	svg? ( cairo )

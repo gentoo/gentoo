@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ HOMEPAGE="https://gegl.org/"
 LICENSE="|| ( GPL-3+ LGPL-3 )"
 SLOT="0.4"
 
-IUSE="cairo debug ffmpeg gtk-doc introspection jpeg2k lcms openexr openmp pdf raw sdl sdl2 svg test tiff umfpack vala v4l webp"
+IUSE="cairo debug ffmpeg gtk-doc +introspection jpeg2k lcms openexr openmp pdf raw sdl sdl2 svg test tiff umfpack vala v4l webp"
 REQUIRED_USE="
 	gtk-doc? ( introspection )
 	svg? ( cairo )
