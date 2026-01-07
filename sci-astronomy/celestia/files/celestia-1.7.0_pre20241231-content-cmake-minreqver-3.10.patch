@@ -1,0 +1,40 @@
+Source: https://github.com/CelestiaProject/CelestiaContent/pull/294
+
+From ca0fe5ab2be77c7ad641548b7e5769ad6b4cee0e Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 7 Jan 2026 19:09:47 +0100
+Subject: [PATCH] CMake: Set CMake minimum to 3.10
+
+Raise minimum version from 3.8 to 3.10, which was released in 2017.
+
+Fixes CMake 3.31 warning:
+
+> CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
+>   Compatibility with CMake < 3.10 will be removed from a future version of
+>   CMake.
+>
+>   Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+>   to tell CMake that the project requires at least <min> but has been updated
+>   to work with policies introduced by <max> or earlier.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f15eec4..e44a08d 100644
+--- a/content/CMakeLists.txt
++++ b/content/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ # SPDX-FileCopyrightText: Celestia Development Team
+ # SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-cmake_minimum_required(VERSION 3.8)
++cmake_minimum_required(VERSION 3.10)
+ 
+ # Normalize install(DESTINATION) paths
+ if(POLICY CMP0177)
+-- 
+2.52.0
+
