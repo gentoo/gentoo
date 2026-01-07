@@ -34,6 +34,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${P}-curl.patch
 	"${FILESDIR}"/${P}-dtd.patch
+	"${FILESDIR}"/${PN}-0.10.9-parallel-build-help2man.patch
 )
 
 src_prepare() {

@@ -1,0 +1,37 @@
+https://github.com/libofx/libofx/pull/103
+
+From c2d19682ff482a6fa2ab98a88ccc0dfa91800cad Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 7 Jan 2026 21:45:32 +0000
+Subject: [PATCH] ofxdump: fix parallel build issue with man page generation
+
+Fixes the following:
+```
+/usr/bin/help2man -n 'Dump content of OFX files as human-readable text' -N --output=ofxdump.1 ./ofxdump
+help2man: can't get `--help' info from ./ofxdump
+Try `--no-discard-stderr' if option outputs to stderr
+make[2]: *** [Makefile:1253: ofxdump.1] Error 127
+make[2]: Leaving directory '/var/tmp/portage/dev-libs/libofx-0.10.9-r1/work/libofx-0.10.9/ofxdump'
+make[1]: *** [Makefile:551: all-recursive] Error 1
+```
+
+We need to make sure that ofxdump has been built before trying to run
+help2man which will execute it.
+---
+ ofxdump/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ofxdump/Makefile.am b/ofxdump/Makefile.am
+index 0c9eefbe..3b8cbe0b 100644
+--- a/ofxdump/Makefile.am
++++ b/ofxdump/Makefile.am
+@@ -15,7 +15,7 @@ cmdline.c cmdline.h: cmdline.ggo Makefile
+ 
+ endif
+ 
+-ofxdump.1: $(top_srcdir)/configure.ac
++ofxdump.1: $(top_srcdir)/configure.ac ofxdump
+ if HAVE_HELP2MAN
+ 	$(HELP2MAN) -n 'Dump content of OFX files as human-readable text' -N --output=ofxdump.1 ./ofxdump$(EXEEXT)
+ else
+
