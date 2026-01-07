@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
 <pkgmetadata>
   <maintainer type="person">
     <email>patrick@gentoo.org</email>
@@ -16,6 +17,9 @@
     An LFE evaluator and shell is also included.
   </longdescription>
   <upstream>
-    <remote-id type="github">rvirding/lfe</remote-id>
+    <bugs-to>https://github.com/lfe/lfe/issues/</bugs-to>
+    <changelog>https://github.com/lfe/lfe/releases/</changelog>
+    <doc>https://lfe.io/use/</doc>
+    <remote-id type="github">lfe/lfe</remote-id>
   </upstream>
 </pkgmetadata>
