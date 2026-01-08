@@ -15,7 +15,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~
 IUSE="unicode zlib"
 
 RDEPEND="
-	dev-libs/libpcre2
+	dev-libs/libpcre2:=
+	virtual/zlib:=
 "
 DEPEND="
 	${RDEPEND}
