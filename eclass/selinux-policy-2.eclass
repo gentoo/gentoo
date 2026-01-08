@@ -64,7 +64,7 @@ fi
 # (space-separated) or a bash array.
 : "${POLICY_FILES:=""}"
 
-if [[ ${EAPI} = 7 ]]; then
+if [[ "${EAPI}" = 7 ]]; then
 	# @ECLASS_VARIABLE: POLICY_TYPES
 	# @DESCRIPTION:
 	# This variable informs the eclass for which SELinux policies the module should
@@ -114,7 +114,7 @@ case ${BASEPOL} in
 		;;
 esac
 
-if [[ ${EAPI} != 7 ]]; then
+if [[ "${EAPI}" != 7 ]]; then
 	# Build all policy types by default
 	IUSE="+selinux_policy_types_targeted +selinux_policy_types_strict +selinux_policy_types_mcs +selinux_policy_types_mls"
 	REQUIRED_USE="|| ( selinux_policy_types_targeted selinux_policy_types_strict selinux_policy_types_mcs selinux_policy_types_mls )"
@@ -227,31 +227,31 @@ selinux-policy-2_src_prepare() {
 
 	# Collect only those files needed for this particular module
 	for i in ${MODS}; do
-		modfiles="$(find "${S}/refpolicy/policy/modules" -iname $i.te) $modfiles"
-		modfiles="$(find "${S}/refpolicy/policy/modules" -iname $i.fc) $modfiles"
-		modfiles="$(find "${S}/refpolicy/policy/modules" -iname $i.cil) $modfiles"
-		if [[ ${add_interfaces} -eq 1 ]]; then
-			modfiles="$(find "${S}/refpolicy/policy/modules" -iname $i.if) $modfiles"
+		modfiles="$(find "${S}/refpolicy/policy/modules" -iname "${i}.te") ${modfiles}"
+		modfiles="$(find "${S}/refpolicy/policy/modules" -iname "${i}.fc") ${modfiles}"
+		modfiles="$(find "${S}/refpolicy/policy/modules" -iname "${i}.cil") ${modfiles}"
+		if [[ "${add_interfaces}" -eq 1 ]]; then
+			modfiles="$(find "${S}/refpolicy/policy/modules" -iname "${i}.if") ${modfiles}"
 		fi
 	done
 
 	_selinux_prepare_modules() {
-		mkdir "${S}"/${1} || die "Failed to create directory ${S}/${1}"
-		cp "${S}"/refpolicy/doc/Makefile.example "${S}"/${1}/Makefile \
+		mkdir "${S}/${1}" || die "Failed to create directory ${S}/${1}"
+		cp "${S}/refpolicy/doc/Makefile.example" "${S}/${1}/Makefile" \
 			|| die "Failed to copy Makefile.example to ${S}/${1}/Makefile"
 
-		cp ${modfiles} "${S}"/${1} \
+		cp ${modfiles} "${S}/${1}" \
 			|| die "Failed to copy the module files to ${S}/${1}"
 	}
 
-	if [[ ${EAPI} = 7 ]]; then
+	if [[ "${EAPI}" = 7 ]]; then
 		for i in ${POLICY_TYPES}; do
-			_selinux_prepare_modules $i
+			_selinux_prepare_modules "${i}"
 		done
 	else
 		for i in targeted strict mcs mls; do
-			if use selinux_policy_types_${i}; then
-				_selinux_prepare_modules $i
+			if use "selinux_policy_types_${i}"; then
+				_selinux_prepare_modules "${i}"
 			fi
 		done
 	fi
@@ -275,13 +275,13 @@ selinux-policy-2_src_compile() {
 		# build system.
 		[[ "${useflag}" = selinux_policy_types_* ]] && continue
 
-		use ${useflag} && makeuse="${makeuse} -D use_${useflag}"
+		use "${useflag}" && makeuse="${makeuse} -D use_${useflag}"
 	done
 
 	_selinux_compile_modules() {
 		# Support USE flags in builds
 		export M4PARAM="${makeuse}"
-		emake NAME=$1 SHAREDIR="${ESYSROOT}"/usr/share/selinux -C "${S}"/${1}
+		emake NAME="${1}" SHAREDIR="${EPREFIX}/usr/share/selinux" -C "${S}/${1}"
 	}
 
 	if [[ ${EAPI} = 7 ]]; then
@@ -307,28 +307,28 @@ selinux-policy-2_src_install() {
 	_selinux_install_modules() {
 		for i in ${MODS}; do
 			einfo "Installing ${1} ${i} policy package"
-			insinto ${BASEDIR}/${1}
+			insinto "${BASEDIR}/${1}"
 			if [[ -f "${S}/${1}/${i}.pp" ]]; then
-				doins "${S}"/${1}/${i}.pp || die "Failed to add ${i}.pp to ${1}"
+				doins "${S}/${1}/${i}.pp" || die "Failed to add ${i}.pp to ${1}"
 			elif [[ -f "${S}/${1}/${i}.cil" ]]; then
-				doins "${S}"/${1}/${i}.cil || die "Failed to add ${i}.cil to ${1}"
+				doins "${S}/${1}/${i}.cil" || die "Failed to add ${i}.cil to ${1}"
 			fi
 
 			if [[ "${POLICY_FILES[@]}" = *"${i}.if"* ]]; then
-				insinto ${BASEDIR}/${1}/include/3rd_party
-				doins "${S}"/${1}/${i}.if || die "Failed to add ${i}.if to ${1}"
+				insinto "${BASEDIR}/${1}/include/3rd_party"
+				doins "${S}/${1}/${i}.if" || die "Failed to add ${i}.if to ${1}"
 			fi
 		done
 	}
 
-	if [[ ${EAPI} = 7 ]]; then
+	if [[ "${EAPI}" = 7 ]]; then
 		for i in ${POLICY_TYPES}; do
-			_selinux_install_modules $i
+			_selinux_install_modules "${i}"
 		done
 	else
 		for i in targeted strict mcs mls; do
-			if use selinux_policy_types_${i}; then
-				_selinux_install_modules $i
+			if use "selinux_policy_types_${i}"; then
+				_selinux_install_modules "${i}"
 			fi
 		done
 	fi
@@ -354,7 +354,7 @@ selinux-policy-2_pkg_postinst() {
 			return
 		fi
 
-		einfo "Inserting the following modules into the $i module store: ${MODS}"
+		einfo "Inserting the following modules into the ${i} module store: ${MODS}"
 
 		cd "${ROOT}/usr/share/selinux/${1}" || die "Could not enter /usr/share/selinux/${1}"
 		for i in ${MODS}; do
@@ -365,11 +365,11 @@ selinux-policy-2_pkg_postinst() {
 			fi
 		done
 
-		semodule ${root_opts} -s ${1} -i ${COMMAND}
+		semodule ${root_opts} -s "${1}" -i ${COMMAND}
 		if [[ $? -ne 0 ]]; then
 			ewarn "SELinux module load failed. Trying full reload..."
 
-			semodule ${root_opts} -s ${1} -i ./*.pp
+			semodule ${root_opts} -s "${1}" -i ./*.pp
 
 			if [[ $? -ne 0 ]]; then
 				ewarn "Failed to reload SELinux policies."
@@ -394,14 +394,14 @@ selinux-policy-2_pkg_postinst() {
 		COMMAND=""
 	}
 
-	if [[ ${EAPI} = 7 ]]; then
+	if [[ "${EAPI}" = 7 ]]; then
 		for i in ${POLICY_TYPES}; do
-			_selinux_postinst $i
+			_selinux_postinst "${i}"
 		done
 	else
 		for i in targeted strict mcs mls; do
-			if use selinux_policy_types_${i}; then
-				_selinux_postinst $i
+			if use "selinux_policy_types_${i}"; then
+				_selinux_postinst "${i}"
 			fi
 		done
 	fi
@@ -464,9 +464,9 @@ selinux-policy-2_pkg_postrm() {
 		done
 
 		_selinux_postrm() {
-			einfo "Removing the following modules from the $1 module store: ${MODS}"
+			einfo "Removing the following modules from the ${1} module store: ${MODS}"
 
-			semodule ${root_opts} -s ${1} ${COMMAND}
+			semodule ${root_opts} -s "${1}" ${COMMAND}
 			if [[ $? -ne 0 ]]; then
 				ewarn "SELinux module unload failed."
 			else
@@ -474,14 +474,14 @@ selinux-policy-2_pkg_postrm() {
 			fi
 		}
 
-		if [[ ${EAPI} = 7 ]]; then
+		if [[ "${EAPI}" = 7 ]]; then
 			for i in ${POLICY_TYPES}; do
-				_selinux_postrm $i
+				_selinux_postrm "${i}"
 			done
 		else
 			for i in targeted strict mcs mls; do
-				if use selinux_policy_types_${i}; then
-					_selinux_postrm $i
+				if use "selinux_policy_types_${i}"; then
+					_selinux_postrm "${i}"
 				fi
 			done
 		fi
