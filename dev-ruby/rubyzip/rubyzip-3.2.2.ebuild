@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_RECIPE_DOC="none"
 RUBY_FAKEGEM_EXTRADOC="Changelog.md README.md"
@@ -37,11 +37,14 @@ all_ruby_install() {
 
 all_ruby_prepare() {
 	# Avoid dependencies on simplecov and coveralls
-	sed -i -e '/simplecov/ s:^:#:' test/test_helper.rb || die
+	sed -e '/simplecov/ s:^:#:' \
+		-e '1igem "minitest", "~> 5.0"' \
+		-i test/test_helper.rb || die
 
 	# Avoid dependency on bundler
-	sed -e '/bundler/ s:^:#: ; /rubocop/I s:^:#:' \
-		-e '2irequire "zip/version"' \
+	sed -e '/\bundler/ s:^:#: ; /rubocop/I s:^:#:' \
+		-e '2irequire_relative "lib/zip/version"' \
+		-e "s:framework = .*:framework = 'gem \"minitest\", \"~> 5.0\"; require \"minitest/autorun\"':" \
 		-i Rakefile || die
 
 	# Fix hardcoded path to /tmp
