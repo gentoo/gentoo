@@ -351,7 +351,7 @@ selinux-policy-2_pkg_postinst() {
 	_selinux_postinst() {
 		if [[ "${1}" = "strict" && "${MODS}" = "unconfined" ]]; then
 			einfo "Ignoring loading of unconfined module in strict module store."
-			continue
+			return
 		fi
 
 		einfo "Inserting the following modules into the $i module store: ${MODS}"
