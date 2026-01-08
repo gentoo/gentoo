@@ -6,6 +6,10 @@
 
 # New entries go on top.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-01-07)
+# KF5/Qt5 integration is no longer worth it.
+kde-plasma/plasma-meta qt5
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2026-01-07)
 # Building glibc with clang is highly experimental and only possible and
 # tested in few configurations. Enabling the useflag clang allows free
