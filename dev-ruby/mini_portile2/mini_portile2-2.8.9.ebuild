@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,6 +19,7 @@ BDEPEND="test? ( app-crypt/gnupg dev-build/cmake )"
 
 ruby_add_bdepend "test? (
 	dev-ruby/minitar:0
+	dev-ruby/minitest:5
 	dev-ruby/minitest-hooks
 	dev-ruby/net-ftp
 	dev-ruby/webrick
@@ -36,5 +37,5 @@ all_ruby_prepare() {
 }
 
 each_ruby_test() {
-	${RUBY} -w -W2 -I. -Ilib -e 'Dir["test/test_*.rb"].map{|f| require f}' || die
+	${RUBY} -w -W2 -I. -Ilib -e 'gem "minitest", "~> 5.0"; Dir["test/test_*.rb"].map{|f| require f}' || die
 }
