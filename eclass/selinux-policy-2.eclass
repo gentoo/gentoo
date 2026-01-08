@@ -387,16 +387,39 @@ selinux-policy-2_pkg_postinst() {
 
 	# Don't relabel when cross compiling
 	if [[ -z ${ROOT} ]]; then
-		# Relabel depending packages
-		local PKGSET=""
-		if [[ -x /usr/bin/qdepends ]]; then
-			PKGSET=$(/usr/bin/qdepends -Cq -r -Q ${CATEGORY}/${PN} | grep -v "sec-policy/selinux-")
-		elif [[ -x /usr/bin/equery ]]; then
-			PKGSET=$(/usr/bin/equery -Cq depends ${CATEGORY}/${PN} | grep -v "sec-policy/selinux-")
+		# Relabel depending packages. This entire section is a hack, and a violation of tree policy;
+		# it relies on PM specific functionality (qdepends and equery, which are portage specific) and
+		# hence is not PMS compliant. This should be remove and replaced with a more robust, PMS-compliant
+		# implementation as soon as possible.
+		local PKGSET=()
+		local out
+		local status
+		local cmd
+
+		if command -v qdepends &>/dev/null; then
+			out=$(qdepends -CiqqrF '%[CATEGORY]%[PN]%[SLOT]' -Q "${CATEGORY}/${PN}")
+			status=$?
+			cmd='qdepends'
+		elif command -v equery &>/dev/null; then
+			out=$(equery -Cq depends "${CATEGORY}/${PN}")
+			status=$?
+			cmd='equery'
+		else
+			ewarn "Unable to calculate reverse dependencies for policy: both qdepends and equery were not found."
+			ewarn "Skipping package file relabelling..."
+			return
 		fi
-		if [[ -n "${PKGSET}" ]]; then
-			rlpkg ${PKGSET}
+
+		if [[ "${status}" -ne 0 ]]; then
+			ewarn "Failed to calculate reverse dependencies for policy: ${cmd} returned ${status}."
+			ewarn "Skipping package file relabelling..."
+			return
 		fi
+
+		# Policy packages may pull in other policy packages, filter those out.
+		readarray -t PKGSET <<<"$(echo "${out}" | grep -v 'sec-policy/selinux-')"
+
+		[[ "${#PKGSET[@]}" -ne 0 ]] && rlpkg "${PKGSET[@]}"
 	fi
 }
 
