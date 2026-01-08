@@ -1,0 +1,109 @@
+Index: Scribus/scribus/plugins/import/pdf/slaoutput.cpp
+===================================================================
+--- Scribus/scribus/plugins/import/pdf/slaoutput.cpp	(revision 27296)
++++ Scribus/scribus/plugins/import/pdf/slaoutput.cpp	(revision 27298)
+@@ -7,6 +7,7 @@
+ 
+ #include "slaoutput.h"
+ 
++#include <array>
+ #include <memory>
+ #include <optional>
+ 
+@@ -2372,7 +2373,11 @@
+ {
+ //	qDebug() << "Draw Image Mask";
+ 	auto imgStr = std::make_unique<ImageStream>(str, width, 1, 1);
+-#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(25, 02, 0)
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(26, 1, 0)
++	bool rewindDone = imgStr->rewind();
++	if (!rewindDone)
++		return;
++#elif POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(25, 02, 0)
+ 	bool resetDone = imgStr->reset();
+ 	if (!resetDone)
+ 		return;
+@@ -2453,7 +2458,11 @@
+ {
+ //	qDebug() << "SlaOutputDev::drawSoftMaskedImage Masked Image Components" << colorMap->getNumPixelComps();
+ 	auto imgStr = std::make_unique<ImageStream>(str, width, colorMap->getNumPixelComps(), colorMap->getBits());
+-#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(25, 02, 0)
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(26, 1, 0)
++	bool rewindDone = imgStr->rewind();
++	if (!rewindDone)
++		return;
++#elif POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(25, 02, 0)
+ 	bool resetDone = imgStr->reset();
+ 	if (!resetDone)
+ 		return;
+@@ -2475,7 +2484,11 @@
+ 		return;
+ 
+ 	auto mskStr = std::make_unique<ImageStream>(maskStr, maskWidth, maskColorMap->getNumPixelComps(), maskColorMap->getBits());
+-#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(25, 02, 0)
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(26, 1, 0)
++	bool mskRewindDone = mskStr->rewind();
++	if (!mskRewindDone)
++		return;
++#elif POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(25, 02, 0)
+ 	bool mskResetDone = mskStr->reset();
+ 	if (!mskResetDone)
+ 		return;
+@@ -2537,7 +2550,11 @@
+ {
+ //	qDebug() << "SlaOutputDev::drawMaskedImage";
+ 	auto imgStr = std::make_unique<ImageStream>(str, width, colorMap->getNumPixelComps(), colorMap->getBits());
+-#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(25, 02, 0)
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(26, 1, 0)
++	bool rewindDone = imgStr->rewind();
++	if (!rewindDone)
++		return;
++#elif POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(25, 02, 0)
+ 	bool resetDone = imgStr->reset();
+ 	if (resetDone)
+ 		return;
+@@ -2559,7 +2576,11 @@
+ 		return;
+ 
+ 	auto mskStr = std::make_unique<ImageStream>(maskStr, maskWidth, 1, 1);
+-#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(25, 02, 0)
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(26, 1, 0)
++	bool mskRewindDone = mskStr->rewind();
++	if (!mskRewindDone)
++		return;
++#elif POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(25, 02, 0)
+ 	bool mskResetDone = mskStr->reset();
+ 	if (!mskResetDone)
+ 		return;
+@@ -2609,7 +2630,11 @@
+ void SlaOutputDev::drawImage(GfxState *state, Object *ref, Stream *str, int width, int height, GfxImageColorMap *colorMap, bool interpolate, const int* maskColors, bool inlineImg)
+ {
+ 	auto imgStr = std::make_unique<ImageStream>(str, width, colorMap->getNumPixelComps(), colorMap->getBits());
+-#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(25, 02, 0)
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(26, 1, 0)
++	bool rewindDone = imgStr->rewind();
++	if (!rewindDone)
++		return;
++#elif POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(25, 02, 0)
+ 	bool resetDone = imgStr->reset();
+ 	if (!resetDone)
+ 		return;
+@@ -2987,10 +3012,18 @@
+ #endif
+ 	const double *textMat = nullptr;
+ 	double m11, m12, m21, m22, fontSize;
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(26, 1, 0)
++	std::array<SplashCoord, 4> mat = { 1.0, 0.0, 0.0, 1.0 };
++#else
+ 	SplashCoord mat[4] = { 1.0, 0.0, 0.0, 1.0 };
++#endif
+ 	int n = 0;
+ 	int faceIndex = 0;
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(26, 1, 0)
++	std::array<SplashCoord, 6> matrix = { 1.0, 0.0, 0.0, 1.0, 0.0, 0.0 };
++#else
+ 	SplashCoord matrix[6] = { 1.0, 0.0, 0.0, 1.0, 0.0, 0.0 };
++#endif
+ 
+ 	m_font = nullptr;
+ 
