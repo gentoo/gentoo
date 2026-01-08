@@ -9,7 +9,7 @@
 # @SUPPORTED_EAPIS: 8 9
 # @BLURB: Branding variables with Gentoo defaults
 # @DESCRIPTION:
-# This defines a set of variables for appling branding to various packages. The
+# This defines a set of variables for applying branding to various packages. The
 # variables default to Gentoo values. These can be overridden by downstream
 # distributions.
 
