@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>ultrabug@gentoo.org</email>
-		<name>Alexys Jacob</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="test-full">
 			Run test suite in full, including tests that run a local

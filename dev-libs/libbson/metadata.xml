@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>ultrabug@gentoo.org</email>
-    <name>Ultrabug</name>
-  </maintainer>
+  <!-- maintainer-needed -->
   <upstream>
     <remote-id type="cpe">cpe:/a:mongodb:libbson</remote-id>
     <remote-id type="github">mongodb/mongo-c-driver</remote-id>

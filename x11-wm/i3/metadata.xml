@@ -5,10 +5,6 @@
 		<email>jsmolic@gentoo.org</email>
 		<name>Jakov Smolić</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>ultrabug@gentoo.org</email>
-		<name>Alexys Jacob</name>
-	</maintainer>
 	<use>
 		<flag name="doc">Build and install the HTML documentation and regenerate the man pages</flag>
 	</use>

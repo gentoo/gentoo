@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>ultrabug@gentoo.org</email>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="embedded">Embed plugins instead of building them as real plugins. When disabling this USE flag make sure you specify all used plugins in your uWSGI configuration. Note: Language plugins will always be built as real plugins.</flag>
 		<flag name="go">Build the gccgo plugin to run Go applications.</flag>

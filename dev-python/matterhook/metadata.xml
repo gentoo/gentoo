@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>ultrabug@gentoo.org</email>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">numberly/matterhook</remote-id>
