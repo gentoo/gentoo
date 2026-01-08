@@ -37,7 +37,7 @@ _SELINUX_POLICY_2_ECLASS=1
 # This variable contains the version string of the selinux-base-policy package
 # that this module build depends on. It is used to patch with the appropriate
 # patch bundle(s) that are part of selinux-base-policy.
-: "${BASEPOL:=${PVR}}"
+: "${BASEPOL:="${PVR}"}"
 
 # @ECLASS_VARIABLE: POLICY_PATCH
 # @DESCRIPTION:
@@ -85,33 +85,33 @@ fi
 : "${SELINUX_GIT_BRANCH:="master"}"
 
 case ${BASEPOL} in
-	9999)	inherit git-r3
-			EGIT_REPO_URI="${SELINUX_GIT_REPO}";
-			EGIT_BRANCH="${SELINUX_GIT_BRANCH}";
-			EGIT_CHECKOUT_DIR="${WORKDIR}/refpolicy";;
+	9999)
+		inherit git-r3
+		EGIT_REPO_URI="${SELINUX_GIT_REPO}"
+		EGIT_BRANCH="${SELINUX_GIT_BRANCH}"
+		EGIT_CHECKOUT_DIR="${WORKDIR}/refpolicy"
+		;;
 esac
 
-if [[ ${EAPI} = 7 ]]; then
-	IUSE=""
-else
+if [[ ${EAPI} != 7 ]]; then
 	# Build all policy types by default
 	IUSE="+selinux_policy_types_targeted +selinux_policy_types_strict +selinux_policy_types_mcs +selinux_policy_types_mls"
 	REQUIRED_USE="|| ( selinux_policy_types_targeted selinux_policy_types_strict selinux_policy_types_mcs selinux_policy_types_mls )"
 fi
 
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:SELinux"
-if [[ -n ${BASEPOL} ]] && [[ "${BASEPOL}" != "9999" ]]; then
-	SRC_URI="https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_${PV/./_}/refpolicy-${PV}.tar.bz2
-		https://dev.gentoo.org/~perfinion/patches/selinux-base-policy/patchbundle-selinux-base-policy-${BASEPOL}.tar.bz2"
+if [[ -n ${BASEPOL} && "${BASEPOL}" != "9999" ]]; then
+	SRC_URI="
+		https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_${PV/./_}/refpolicy-${PV}.tar.bz2
+		https://dev.gentoo.org/~perfinion/patches/selinux-base-policy/patchbundle-selinux-base-policy-${BASEPOL}.tar.bz2
+	"
 elif [[ "${BASEPOL}" != "9999" ]]; then
 	SRC_URI="https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_${PV/./_}/refpolicy-${PV}.tar.bz2"
-else
-	SRC_URI=""
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
-S="${WORKDIR}/"
+S="${WORKDIR}"
 
 # Modules should always depend on at least the first release of the
 # selinux-base-policy for which they are generated.
@@ -122,22 +122,20 @@ else
 fi
 
 if [[ ${EAPI} = 7 ]]; then
-	RDEPEND=">=sys-apps/policycoreutils-2.5
-		>=sec-policy/selinux-base-policy-${_BASE_POLICY_VERSION}"
+	RDEPEND="
+		>=sys-apps/policycoreutils-2.5
+		>=sec-policy/selinux-base-policy-${_BASE_POLICY_VERSION}
+	"
 else
-	RDEPEND=">=sys-apps/policycoreutils-2.5
-		selinux_policy_types_targeted? (
-			>=sec-policy/selinux-base-policy-${_BASE_POLICY_VERSION}[selinux_policy_types_targeted]
-		)
-		selinux_policy_types_strict? (
-			>=sec-policy/selinux-base-policy-${_BASE_POLICY_VERSION}[selinux_policy_types_strict]
-		)
-		selinux_policy_types_mcs? (
-			>=sec-policy/selinux-base-policy-${_BASE_POLICY_VERSION}[selinux_policy_types_mcs]
-		)
-		selinux_policy_types_mls? (
-			>=sec-policy/selinux-base-policy-${_BASE_POLICY_VERSION}[selinux_policy_types_mls]
-		)"
+	RDEPEND=">=sys-apps/policycoreutils-2.5"
+	for _poltype in selinux_policy_types_{targeted,strict,mcs,mls}; do
+		RDEPEND+="
+			${_poltype}? (
+				>=sec-policy/selinux-base-policy-${_BASE_POLICY_VERSION}[${_poltype}]
+			)
+		"
+	done
+	unset _poltype
 fi
 
 unset _BASE_POLICY_VERSION
