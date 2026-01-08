@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # genkernel-9999        -> latest Git branch "master"
@@ -23,7 +23,7 @@ VERSION_DMRAID="1.0.0.rc16-3"
 VERSION_DROPBEAR="2022.83"
 VERSION_EUDEV="3.2.14"
 VERSION_EXPAT="2.5.0"
-VERSION_E2FSPROGS="1.47.0"
+VERSION_E2FSPROGS="1.47.3"
 VERSION_FUSE="2.9.9"
 # gnupg-2.x needs several new deps packaged
 VERSION_GPG="1.4.23"
