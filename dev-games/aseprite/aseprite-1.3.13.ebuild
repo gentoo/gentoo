@@ -74,7 +74,6 @@ PATCHES=(
 	"${FILESDIR}/aseprite-1.2.35_laf_fixes.patch"
 	"${FILESDIR}/aseprite-1.3.8.1_shared_fmt.patch"
 	"${FILESDIR}/aseprite-1.3.13_shared_tinyxml2.patch"
-	"${FILESDIR}/aseprite-1.3.13_strict-aliasing.patch"
 )
 
 src_unpack() {
