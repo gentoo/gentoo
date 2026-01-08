@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -141,6 +141,10 @@ EPYTEST_PLUGINS=( pytest-env )
 EPYTEST_RERUNS=5
 EPYTEST_XDIST=1
 # distutils_enable_tests unconditionally touches BDEPEND
+
+PATCHES=(
+	"${FILESDIR}"/${P}-poppler-26.01.patch # pending upstream
+)
 
 pkg_setup() {
 	use java && java-pkg-opt-2_pkg_setup

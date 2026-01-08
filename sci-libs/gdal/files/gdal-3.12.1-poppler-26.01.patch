@@ -1,0 +1,113 @@
+Source: https://github.com/OSGeo/gdal/pull/13664
+
+From 28a15cb76d26a27be96ab8b8bc8fcb52c153c3a9 Mon Sep 17 00:00:00 2001
+From: Daeho Ro <40587651+daeho-ro@users.noreply.github.com>
+Date: Thu, 8 Jan 2026 22:17:30 +0900
+Subject: [PATCH] Backport for poppler 26
+
+---
+ frmts/pdf/pdfio.cpp     | 13 +++++++++----
+ frmts/pdf/pdfio.h       | 15 +++++++++------
+ frmts/pdf/pdfobject.cpp | 12 ++++++++----
+ 3 files changed, 26 insertions(+), 14 deletions(-)
+
+diff --git a/frmts/pdf/pdfio.cpp b/frmts/pdf/pdfio.cpp
+index 39cb1285ef40..32c3263e9219 100644
+--- a/frmts/pdf/pdfio.cpp
++++ b/frmts/pdf/pdfio.cpp
+@@ -250,8 +250,9 @@ int VSIPDFFileStream::lookChar()
+ /*                                reset()                               */
+ /************************************************************************/
+ 
+-#if POPPLER_MAJOR_VERSION > 25 ||                                              \
+-    (POPPLER_MAJOR_VERSION == 25 && POPPLER_MINOR_VERSION >= 2)
++#if POPPLER_MAJOR_VERSION > 25
++bool VSIPDFFileStream::rewind()
++#elif POPPLER_MAJOR_VERSION == 25 && POPPLER_MINOR_VERSION >= 2
+ bool VSIPDFFileStream::reset()
+ #else
+ void VSIPDFFileStream::reset()
+@@ -272,8 +273,12 @@ void VSIPDFFileStream::reset()
+ /*                         unfilteredReset()                            */
+ /************************************************************************/
+ 
+-#if POPPLER_MAJOR_VERSION > 25 ||                                              \
+-    (POPPLER_MAJOR_VERSION == 25 && POPPLER_MINOR_VERSION >= 3)
++#if POPPLER_MAJOR_VERSION > 25
++bool VSIPDFFileStream::unfilteredRewind()
++{
++    return rewind();
++}
++#elif POPPLER_MAJOR_VERSION == 25 && POPPLER_MINOR_VERSION >= 3
+ bool VSIPDFFileStream::unfilteredReset()
+ {
+     return reset();
+diff --git a/frmts/pdf/pdfio.h b/frmts/pdf/pdfio.h
+index 5fbe3a9dc2ae..1fe289211769 100644
+--- a/frmts/pdf/pdfio.h
++++ b/frmts/pdf/pdfio.h
+@@ -55,8 +55,9 @@ class VSIPDFFileStream final : public BaseStream
+     int getUnfilteredChar() override;
+     int lookChar() override;
+ 
+-#if POPPLER_MAJOR_VERSION > 25 ||                                              \
+-    (POPPLER_MAJOR_VERSION == 25 && POPPLER_MINOR_VERSION >= 2)
++#if POPPLER_MAJOR_VERSION > 25
++    bool rewind() override;
++#elif POPPLER_MAJOR_VERSION == 25 && POPPLER_MINOR_VERSION >= 2
+     bool reset() override;
+ #else
+     void reset() override;
+@@ -64,16 +65,18 @@ class VSIPDFFileStream final : public BaseStream
+ 
+     static void resetNoCheckReturnValue(Stream *str)
+     {
+-#if POPPLER_MAJOR_VERSION > 25 ||                                              \
+-    (POPPLER_MAJOR_VERSION == 25 && POPPLER_MINOR_VERSION >= 2)
++#if POPPLER_MAJOR_VERSION > 25
++        CPL_IGNORE_RET_VAL(str->rewind());
++#elif POPPLER_MAJOR_VERSION == 25 && POPPLER_MINOR_VERSION >= 2
+         CPL_IGNORE_RET_VAL(str->reset());
+ #else
+         str->reset();
+ #endif
+     }
+ 
+-#if POPPLER_MAJOR_VERSION > 25 ||                                              \
+-    (POPPLER_MAJOR_VERSION == 25 && POPPLER_MINOR_VERSION >= 3)
++#if POPPLER_MAJOR_VERSION > 25
++    bool unfilteredRewind() override;
++#elif POPPLER_MAJOR_VERSION == 25 && POPPLER_MINOR_VERSION >= 2
+     bool unfilteredReset() override;
+ #else
+     void unfilteredReset() override;
+diff --git a/frmts/pdf/pdfobject.cpp b/frmts/pdf/pdfobject.cpp
+index bcd48c016cd8..3fa9f8ca232e 100644
+--- a/frmts/pdf/pdfobject.cpp
++++ b/frmts/pdf/pdfobject.cpp
+@@ -1409,8 +1409,10 @@ int64_t GDALPDFStreamPoppler::GetLength(int64_t nMaxSize)
+     if (m_nLength >= 0)
+         return m_nLength;
+ 
+-#if POPPLER_MAJOR_VERSION > 25 ||                                              \
+-    (POPPLER_MAJOR_VERSION == 25 && POPPLER_MINOR_VERSION >= 2)
++#if POPPLER_MAJOR_VERSION > 25
++    if (!m_poStream->rewind())
++        return 0;
++#elif POPPLER_MAJOR_VERSION == 25 && POPPLER_MINOR_VERSION >= 2
+     if (!m_poStream->reset())
+         return 0;
+ #else
+@@ -1488,8 +1490,10 @@ int64_t GDALPDFStreamPoppler::GetRawLength()
+         return m_nRawLength;
+ 
+     auto undecodeStream = m_poStream->getUndecodedStream();
+-#if POPPLER_MAJOR_VERSION > 25 ||                                              \
+-    (POPPLER_MAJOR_VERSION == 25 && POPPLER_MINOR_VERSION >= 2)
++#if POPPLER_MAJOR_VERSION > 25
++    if (!undecodeStream->rewind())
++        return 0;
++#elif POPPLER_MAJOR_VERSION == 25 && POPPLER_MINOR_VERSION >= 2
+     if (!undecodeStream->reset())
+         return 0;
+ #else
