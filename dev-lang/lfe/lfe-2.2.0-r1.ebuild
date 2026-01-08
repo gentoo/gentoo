@@ -33,6 +33,8 @@ BDEPEND="
 	${RDEPEND}
 "
 
+PATCHES=( "${FILESDIR}/lfe-2.2.0-which.patch" )
+
 SITEFILE="70${PN}-gentoo-r1.el"
 
 src_compile() {
