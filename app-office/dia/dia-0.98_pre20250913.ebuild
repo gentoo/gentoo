@@ -1,4 +1,4 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -54,6 +54,7 @@ PATCHES=(
 	"${WORKDIR}"/dia-0.98-patches/${PN}-0.98-use_gtkfontbutton.patch
 	"${WORKDIR}"/dia-0.98-patches/${PN}-0.98-deps_optional.patch
 	"${FILESDIR}"/${PN}-0.98-fix_poppler_2510.patch #965768
+	"${FILESDIR}"/${PN}-0.98-fix_poppler_2601.patch
 )
 
 pkg_setup() {

@@ -1,0 +1,19 @@
+PR merged https://gitlab.gnome.org/GNOME/dia/-/merge_requests/142.patch
+fix compile with >=poppler-26.01
+--- a/plug-ins/pdf/pdf-import.cpp
++++ b/plug-ins/pdf/pdf-import.cpp
+@@ -904,7 +904,11 @@ DiaOutputDev::drawImage (GfxState         *state,
+       unsigned char *pixels = gdk_pixbuf_get_pixels (pixbuf);
+       int y;
+ 
++#if POPPLER_VERSION_MAJOR > 25
++      imgStr.rewind(); // otherwise getLine() is crashing right away
++#else
+       imgStr.reset(); // otherwise getLine() is crashing right away
++#endif
+       line = imgStr.getLine ();
+       for (y = 0; y < height && line; ++y) {
+ 	unsigned char *dest = pixels + y * rowstride;
+-- 
+GitLab
+
