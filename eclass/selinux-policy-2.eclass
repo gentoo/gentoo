@@ -438,7 +438,7 @@ selinux-policy-2_pkg_postinst() {
 		fi
 
 		# Policy packages may pull in other policy packages, filter those out.
-		readarray -t PKGSET <<<"$(echo "${out}" | grep -v 'sec-policy/selinux-')"
+		readarray -t PKGSET < <(echo "${out}" | grep -v 'sec-policy/selinux-')
 
 		[[ "${#PKGSET[@]}" -ne 0 ]] && rlpkg "${PKGSET[@]}"
 	fi
