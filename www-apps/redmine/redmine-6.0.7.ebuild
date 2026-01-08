@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -65,6 +65,7 @@ RDEPEND="
 	)
 	standalone? ( www-servers/puma )
 "
+want_apache2 passenger
 
 REDMINE_DIR="/var/lib/${PN}"
 
@@ -141,7 +142,6 @@ all_ruby_install() {
 		/var/log/${PN}
 
 	if use passenger; then
-		has_apache
 		insinto "${APACHE_VHOSTS_CONFDIR}"
 		doins "${FILESDIR}/10_redmine_vhost.conf"
 	fi
@@ -177,6 +177,10 @@ pkg_postinst() {
 		elog "Installation notes are at official site"
 		elog "http://www.redmine.org/wiki/redmine/RedmineInstall"
 	fi
+}
+
+pkg_setup() {
+	depend.apache_pkg_setup passenger
 }
 
 pkg_config() {
