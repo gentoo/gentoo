@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_GEMSPEC="minitest-hooks.gemspec"
@@ -21,8 +21,17 @@ IUSE="test"
 
 ruby_add_rdepend ">=dev-ruby/minitest-5.3"
 
-ruby_add_depend "test? ( >=dev-ruby/sequel-4 dev-ruby/sqlite3  dev-ruby/minitest-global_expectations )"
+USE_RUBY="ruby32 ruby33 ruby34" ruby_add_depend "
+	test? ( >=dev-ruby/sequel-4 dev-ruby/sqlite3  dev-ruby/minitest-global_expectations )
+"
 
 each_ruby_test() {
-	${RUBY} spec/all.rb || die
+	case ${RUBY} in
+		*ruby40)
+			einfo "Skipping tests to avoid a large circular dependency"
+			;;
+		*)
+			${RUBY} spec/all.rb || die
+			;;
+	esac
 }
