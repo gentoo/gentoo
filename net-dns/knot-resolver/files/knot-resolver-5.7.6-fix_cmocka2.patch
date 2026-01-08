@@ -1,0 +1,224 @@
+backport https://gitlab.nic.cz/knot/knot-resolver/-/merge_requests/1772.patch
+fix tests with cmocka-2
+--- a/lib/generic/test_array.c
++++ b/lib/generic/test_array.c
+@@ -90,10 +90,10 @@ int main(void)
+ {
+ 	test_mm_ctx_init(&global_mm);
+ 
+-	const UnitTest tests[] = {
+-		unit_test(test_array),
+-		unit_test(test_array_mm)
++	const struct CMUnitTest tests[] = {
++		cmocka_unit_test(test_array),
++		cmocka_unit_test(test_array_mm)
+ 	};
+ 
+-	return run_tests(tests);
++	return cmocka_run_group_tests(tests, NULL, NULL);
+ }
+--- a/lib/generic/test_lru.c
++++ b/lib/generic/test_lru.c
+@@ -82,30 +82,30 @@ static void test_eviction(void **state)
+ 	}
+ }
+ 
+-static void test_init(void **state)
++static int test_init(void **state)
+ {
+ 	lru_int_t *lru;
+ 	lru_create(&lru, HASH_SIZE, NULL, NULL);
+ 	assert_non_null(lru);
+ 	*state = lru;
++	return 0;
+ }
+ 
+-static void test_deinit(void **state)
++static int test_deinit(void **state)
+ {
+ 	lru_int_t *lru = *state;
+ 	lru_free(lru);
++	return 0;
+ }
+ 
+ /* Program entry point */
+ int main(int argc, char **argv)
+ {
+-	const UnitTest tests[] = {
+-	        group_test_setup(test_init),
+-	        unit_test(test_insert),
+-		unit_test(test_missing),
+-		unit_test(test_eviction),
+-	        group_test_teardown(test_deinit)
++	const struct CMUnitTest tests[] = {
++	        cmocka_unit_test(test_insert),
++		cmocka_unit_test(test_missing),
++		cmocka_unit_test(test_eviction),
+ 	};
+ 
+-	return run_group_tests(tests);
++	return cmocka_run_group_tests(tests, test_init, test_deinit);
+ }
+--- a/lib/generic/test_pack.c
++++ b/lib/generic/test_pack.c
+@@ -60,9 +60,9 @@ int main(void)
+ {
+ 	test_mm_ctx_init(&global_mm);
+ 
+-	const UnitTest tests[] = {
+-		unit_test(test_pack_std),
++	const struct CMUnitTest tests[] = {
++		cmocka_unit_test(test_pack_std),
+ 	};
+ 
+-	return run_tests(tests);
++	return cmocka_run_group_tests(tests, NULL, NULL);
+ }
+--- a/lib/generic/test_queue.c
++++ b/lib/generic/test_queue.c
+@@ -62,10 +62,10 @@ static void test_int(void **state_)
+ 
+ int main(void)
+ {
+-	const UnitTest tests[] = {
+-		unit_test(test_int),
++	const struct CMUnitTest tests[] = {
++		cmocka_unit_test(test_int),
+ 	};
+ 
+-	return run_tests(tests);
++	return cmocka_run_group_tests(tests, NULL, NULL);
+ }
+ 
+--- a/lib/generic/test_trie.c
++++ b/lib/generic/test_trie.c
+@@ -33,11 +33,12 @@ static const char *dict[] = {
+ #define KEY_LEN(x) (strlen(x) + 1)
+ static const int dict_size = sizeof(dict) / sizeof(const char *);
+ 
+-static void test_init(void **state)
++static int test_init(void **state)
+ {
+ 	trie_t *t = trie_create(NULL);
+ 	assert_non_null(t);
+ 	*state = t;
++	return 0;
+ }
+ 
+ static void test_insert(void **state)
+@@ -129,26 +130,25 @@ static void test_leq_bug(void **state)
+ 	trie_free(t);
+ }
+ 
+-static void test_deinit(void **state)
++static int test_deinit(void **state)
+ {
+ 	trie_t *t = *state;
+ 	trie_free(t);
+ 	*state = NULL;
++	return 0;
+ }
+ 
+ /* Program entry point */
+ int main(int argc, char **argv)
+ {
+-	const UnitTest tests[] = {
+-	        group_test_setup(test_init),
+-	        unit_test(test_insert),
+-		unit_test(test_leq_bug),
+-		unit_test(test_missing),
+-		unit_test(test_iter),
+-		unit_test(test_queue),
+-	        group_test_teardown(test_deinit)
++	const struct CMUnitTest tests[] = {
++	        cmocka_unit_test(test_insert),
++		cmocka_unit_test(test_leq_bug),
++		cmocka_unit_test(test_missing),
++		cmocka_unit_test(test_iter),
++		cmocka_unit_test(test_queue),
+ 	};
+ 
+-	return run_group_tests(tests);
++	return cmocka_run_group_tests(tests, test_init, test_deinit);
+ }
+ 
+--- a/lib/test_module.c
++++ b/lib/test_module.c
+@@ -29,11 +29,11 @@ static void test_module_c(void **state)
+ 
+ int main(void)
+ {
+-	const UnitTest tests[] = {
+-		unit_test(test_module_params),
+-		unit_test(test_module_builtin),
+-		unit_test(test_module_c),
++	const struct CMUnitTest tests[] = {
++		cmocka_unit_test(test_module_params),
++		cmocka_unit_test(test_module_builtin),
++		cmocka_unit_test(test_module_c),
+ 	};
+ 
+-	return run_tests(tests);
++	return cmocka_run_group_tests(tests, NULL, NULL);
+ }
+--- a/lib/test_rplan.c
++++ b/lib/test_rplan.c
+@@ -65,11 +65,11 @@ static void test_rplan_flags(void **state)
+ 
+ int main(void)
+ {
+-	const UnitTest tests[] = {
+-	        unit_test(test_rplan_params),
+-	        unit_test(test_rplan_push),
+-	        unit_test(test_rplan_flags)
++	const struct CMUnitTest tests[] = {
++	        cmocka_unit_test(test_rplan_params),
++	        cmocka_unit_test(test_rplan_push),
++	        cmocka_unit_test(test_rplan_flags)
+ 	};
+ 
+-	return run_tests(tests);
++	return cmocka_run_group_tests(tests, NULL, NULL);
+ }
+--- a/lib/test_utils.c
++++ b/lib/test_utils.c
+@@ -136,12 +136,12 @@ static void test_strptime_diff(void **state)
+ 
+ int main(void)
+ {
+-	const UnitTest tests[] = {
+-		unit_test(test_strcatdup),
+-		unit_test(test_straddr),
+-		unit_test(test_bitmask),
+-		unit_test(test_strptime_diff)
++	const struct CMUnitTest tests[] = {
++		cmocka_unit_test(test_strcatdup),
++		cmocka_unit_test(test_straddr),
++		cmocka_unit_test(test_bitmask),
++		cmocka_unit_test(test_strptime_diff)
+ 	};
+ 
+-	return run_tests(tests);
++	return cmocka_run_group_tests(tests, NULL, NULL);
+ }
+--- a/lib/test_zonecut.c
++++ b/lib/test_zonecut.c
+@@ -49,10 +49,10 @@ static void test_zonecut_copy(void **state)
+ 
+ int main(void)
+ {
+-	const UnitTest tests[] = {
+-	        unit_test(test_zonecut_params),
+-	        unit_test(test_zonecut_copy)
++	const struct CMUnitTest tests[] = {
++	        cmocka_unit_test(test_zonecut_params),
++	        cmocka_unit_test(test_zonecut_copy)
+ 	};
+ 
+-	return run_tests(tests);
++	return cmocka_run_group_tests(tests, NULL, NULL);
+ }
+-- 
+GitLab
+
+

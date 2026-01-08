@@ -1,4 +1,4 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -56,11 +56,12 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.5.3-docdir.patch
 	"${FILESDIR}"/${PN}-5.5.3-nghttp-openssl.patch
 	"${FILESDIR}"/${PN}-5.7.4-libsystemd.patch
+	"${FILESDIR}"/${PN}-5.7.6-fix_cmocka2.patch
 )
 
 src_configure() {
 	local emesonargs=(
-		--localstatedir "${EPREFIX}"/var # double lib
+		--localstatedir="${EPREFIX}"/var # double lib
 		# https://bugs.gentoo.org/870019
 		-Dauto_features=disabled
 		-Ddoc=disabled
