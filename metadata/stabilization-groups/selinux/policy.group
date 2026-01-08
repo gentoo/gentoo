@@ -84,7 +84,6 @@ sec-policy/selinux-git
 sec-policy/selinux-gitosis
 sec-policy/selinux-glusterfs
 sec-policy/selinux-gnome
-sec-policy/selinux-gorg
 sec-policy/selinux-gpg
 sec-policy/selinux-gpm
 sec-policy/selinux-gpsd
