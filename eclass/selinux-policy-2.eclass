@@ -174,11 +174,11 @@ selinux-policy-2_src_prepare() {
 	local add_interfaces=0
 
 	# Create 3rd_party location for user-contributed policies
-	cd "${S}/refpolicy/policy/modules" && mkdir 3rd_party
+	cd "${S}/refpolicy/policy/modules" && mkdir 3rd_party || die "Could not enter ${S}/refpolicy/policy/modules"
 
 	# Patch the sources with the base patchbundle
 	if [[ -n ${BASEPOL} ]] && [[ "${BASEPOL}" != "9999" ]]; then
-		cd "${S}"
+		cd "${S}" || die "Could not enter ${S}"
 		einfo "Applying SELinux policy updates ... "
 		eapply -p0 -- "${WORKDIR}/0001-full-patch-against-stable-release.patch"
 	fi
@@ -191,7 +191,7 @@ selinux-policy-2_src_prepare() {
 	if [[ "$(declare -p POLICY_FILES 2>/dev/null 2>&1)" = "declare -a"* ]] ||
 	   [[ -n ${POLICY_FILES} ]]; then
 		add_interfaces=1
-		cd "${S}/refpolicy/policy/modules"
+		cd "${S}/refpolicy/policy/modules" || die "Could not enter ${S}/refpolicy/policy/modules"
 		for POLFILE in ${POLICY_FILES[@]}; do
 			cp "${FILESDIR}/${POLFILE}" 3rd_party/ || die "Could not copy ${POLFILE} to 3rd_party/ location"
 		done
