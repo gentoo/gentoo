@@ -1,4 +1,4 @@
-# Copyright 2017-2025 Gentoo Authors
+# Copyright 2017-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: meson.eclass
@@ -42,6 +42,7 @@ if [[ -z ${_MESON_ECLASS} ]]; then
 _MESON_ECLASS=1
 
 inherit flag-o-matic multiprocessing ninja-utils python-utils-r1 sysroot toolchain-funcs
+[[ ${EAPI} != 7 ]] && inherit rust-toolchain
 
 BDEPEND=">=dev-build/meson-1.2.3
 	${NINJA_DEPEND}
@@ -149,6 +150,16 @@ _meson_create_cross_file() {
 	_meson_get_machine_info "${CHOST}"
 
 	local fn=${T}/meson.${CHOST}.${ABI}.ini
+	local CFLAGS_ABI=CFLAGS_${ABI:-${DEFAULT_ABI}}
+
+	if has rust-toolchain ${INHERITED}; then
+		local LD_A=( $(tc-getCC) ${LDFLAGS} )
+		local RUSTC=( rustc --target="$(rust_abi)" --codegen=linker="${LD_A[0]}" )
+		LD_A=( "${LD_A[@]:1}" )
+		[[ ${LD_A[@]} ]] && RUSTC+=( "${LD_A[@]/#/--codegen=link-arg=}" )
+	else
+		unset RUSTC
+	fi
 
 	cat > "${fn}" <<-EOF || die "failed to create cross file"
 	[binaries]
@@ -166,6 +177,7 @@ _meson_create_cross_file() {
 	# >=1.3.0.
 	pkgconfig = '$(tc-getPKG_CONFIG)'
 	pkg-config = '$(tc-getPKG_CONFIG)'
+	rust = $(_meson_env_array "${RUSTC[@]@Q}")
 	strip = $(_meson_env_array "$(tc-getSTRIP)")
 	windres = $(_meson_env_array "$(tc-getRC)")
 
@@ -183,8 +195,9 @@ _meson_create_cross_file() {
 
 	[properties]
 	needs_exe_wrapper = $(tc-is-cross-compiler && echo true || echo false)
-	sys_root = '${SYSROOT}'
 	pkg_config_libdir = '${PKG_CONFIG_LIBDIR:-${EPREFIX}/usr/$(get_libdir)/pkgconfig}'
+	bindgen_clang_arguments = $(_meson_env_array "${!CFLAGS_ABI}")
+	sys_root = '${SYSROOT}'
 
 	[host_machine]
 	system = '${system}'
@@ -208,6 +221,11 @@ _meson_create_native_file() {
 
 	local fn=${T}/meson.${CBUILD}.ini
 
+	local LD_A=( $(tc-getBUILD_CC) ${BUILD_LDFLAGS} )
+	local RUSTC=( rustc --codegen=linker="${LD_A[0]}" )
+	LD_A=( "${LD_A[@]:1}" )
+	[[ ${LD_A[@]} ]] && RUSTC+=( "${LD_A[@]/#/--codegen=link-arg=}" )
+
 	cat > "${fn}" <<-EOF || die "failed to create native file"
 	[binaries]
 	ar = $(_meson_env_array "$(tc-getBUILD_AR)")
@@ -223,6 +241,7 @@ _meson_create_native_file() {
 	# >=1.3.0.
 	pkgconfig = '$(tc-getBUILD_PKG_CONFIG)'
 	pkg-config = '$(tc-getBUILD_PKG_CONFIG)'
+	rust = $(_meson_env_array "${RUSTC[@]@Q}")
 	strip = $(_meson_env_array "$(tc-getBUILD_STRIP)")
 	windres = $(_meson_env_array "$(tc-getBUILD_PROG RC windres)")
 
