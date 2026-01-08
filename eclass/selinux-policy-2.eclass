@@ -177,7 +177,7 @@ selinux-policy-2_src_prepare() {
 	cd "${S}/refpolicy/policy/modules" && mkdir 3rd_party || die "Could not enter ${S}/refpolicy/policy/modules"
 
 	# Patch the sources with the base patchbundle
-	if [[ -n ${BASEPOL} ]] && [[ "${BASEPOL}" != "9999" ]]; then
+	if [[ -n ${BASEPOL} && "${BASEPOL}" != "9999" ]]; then
 		cd "${S}" || die "Could not enter ${S}"
 		einfo "Applying SELinux policy updates ... "
 		eapply -p0 -- "${WORKDIR}/0001-full-patch-against-stable-release.patch"
@@ -188,8 +188,7 @@ selinux-policy-2_src_prepare() {
 	eapply_user
 
 	# Copy additional files to the 3rd_party/ location
-	if [[ "$(declare -p POLICY_FILES 2>/dev/null 2>&1)" = "declare -a"* ]] ||
-	   [[ -n ${POLICY_FILES} ]]; then
+	if [[ "$(declare -p POLICY_FILES 2>/dev/null 2>&1)" = "declare -a"* || -n ${POLICY_FILES} ]]; then
 		add_interfaces=1
 		cd "${S}/refpolicy/policy/modules" || die "Could not enter ${S}/refpolicy/policy/modules"
 		for POLFILE in ${POLICY_FILES[@]}; do
@@ -289,9 +288,9 @@ selinux-policy-2_src_install() {
 			einfo "Installing ${1} ${i} policy package"
 			insinto ${BASEDIR}/${1}
 			if [[ -f "${S}/${1}/${i}.pp" ]]; then
-			  doins "${S}"/${1}/${i}.pp || die "Failed to add ${i}.pp to ${1}"
+				doins "${S}"/${1}/${i}.pp || die "Failed to add ${i}.pp to ${1}"
 			elif [[ -f "${S}/${1}/${i}.cil" ]]; then
-			  doins "${S}"/${1}/${i}.cil || die "Failed to add ${i}.cil to ${1}"
+				doins "${S}"/${1}/${i}.cil || die "Failed to add ${i}.cil to ${1}"
 			fi
 
 			if [[ "${POLICY_FILES[@]}" = *"${i}.if"* ]]; then
