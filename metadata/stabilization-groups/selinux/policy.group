@@ -76,7 +76,6 @@ sec-policy/selinux-fail2ban
 sec-policy/selinux-fetchmail
 sec-policy/selinux-finger
 sec-policy/selinux-firewalld
-sec-policy/selinux-flash
 sec-policy/selinux-fprintd
 sec-policy/selinux-ftp
 sec-policy/selinux-games
