@@ -1,0 +1,116 @@
+From b307d254a88a87fe59f9c041346657790c75ac16 Mon Sep 17 00:00:00 2001
+From: Xisco Fauli <xiscofauli@libreoffice.org>
+Date: Wed, 7 Jan 2026 14:06:55 +0100
+Subject: [PATCH] poppler: upgrade to 26.01.0
+
+stripped of all the bundled update stuff ...
+
+---
+ .../pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx  |  15 +-
+ .../pdfimport/xpdfwrapper/pnghelper.cxx       |  25 +-
+ 2 files changed, 32 insertions(+), 8 deletions(-)
+
+diff --git a/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx b/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx
+index a3b34db15464d..6b9184809803d 100644
+--- a/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx
++++ b/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx
+@@ -231,7 +231,10 @@ static void writeJpeg_( OutputBuffer& o_rOutputBuf, Stream* str )
+ #else
+     str = ((DCTStream *)str)->getRawStream();
+ #endif
+-#if POPPLER_CHECK_VERSION(25, 2, 0)
++#if POPPLER_CHECK_VERSION(26, 1, 0)
++    if (!str->rewind())
++        return;
++#elif POPPLER_CHECK_VERSION(25, 2, 0)
+     if (!str->reset())
+         return;
+ #else
+@@ -272,7 +275,10 @@ static void writePbm_(OutputBuffer& o_rOutputBuf, Stream* str, int width, int he
+     o_rOutputBuf.resize(header_size);
+ 
+     // initialize stream
+-#if POPPLER_CHECK_VERSION(25, 2, 0)
++#if POPPLER_CHECK_VERSION(26, 1, 0)
++    if (!str->rewind())
++        return;
++#elif POPPLER_CHECK_VERSION(25, 2, 0)
+     if (!str->reset())
+         return;
+ #else
+@@ -334,7 +340,10 @@ static void writePpm_( OutputBuffer&     o_rOutputBuf,
+                         width,
+                         colorMap->getNumPixelComps(),
+                         colorMap->getBits()));
+-#if POPPLER_CHECK_VERSION(25, 2, 0)
++#if POPPLER_CHECK_VERSION(26, 1, 0)
++    if (!imgStr->rewind())
++        return;
++#elif POPPLER_CHECK_VERSION(25, 2, 0)
+     if (!imgStr->reset())
+         return;
+ #else
+diff --git a/sdext/source/pdfimport/xpdfwrapper/pnghelper.cxx b/sdext/source/pdfimport/xpdfwrapper/pnghelper.cxx
+index e21d9192f563e..6e9784d4aa6bb 100644
+--- a/sdext/source/pdfimport/xpdfwrapper/pnghelper.cxx
++++ b/sdext/source/pdfimport/xpdfwrapper/pnghelper.cxx
+@@ -214,7 +214,10 @@ void PngHelper::createPng( OutputBuffer&     o_rOutputBuf,
+     int nLineSize = (width + 7)/8;
+     aScanlines.reserve( nLineSize * height + height );
+ 
+-#if POPPLER_CHECK_VERSION(25, 2, 0)
++#if POPPLER_CHECK_VERSION(26, 1, 0)
++    if (!str->rewind())
++        return;
++#elif POPPLER_CHECK_VERSION(25, 2, 0)
+     if (!str->reset())
+         return;
+ #else
+@@ -257,7 +260,10 @@ void PngHelper::createPng( OutputBuffer& o_rOutputBuf,
+                         width,
+                         colorMap->getNumPixelComps(),
+                         colorMap->getBits()));
+-#if POPPLER_CHECK_VERSION(25, 2, 0)
++#if POPPLER_CHECK_VERSION(26, 1, 0)
++    if (!imgStr->rewind())
++        return;
++#elif POPPLER_CHECK_VERSION(25, 2, 0)
+     if (!imgStr->reset())
+         return;
+ #else
+@@ -299,7 +305,10 @@ void PngHelper::createPng( OutputBuffer& o_rOutputBuf,
+                         maskColorMap->getNumPixelComps(),
+                         maskColorMap->getBits()));
+ 
+-#if POPPLER_CHECK_VERSION(25, 2, 0)
++#if POPPLER_CHECK_VERSION(26, 1, 0)
++    if (!imgStrMask->rewind())
++        return;
++#elif POPPLER_CHECK_VERSION(25, 2, 0)
+     if (!imgStrMask->reset())
+         return;
+ #else
+@@ -353,7 +362,10 @@ void PngHelper::createPng( OutputBuffer& o_rOutputBuf,
+                         width,
+                         colorMap->getNumPixelComps(),
+                         colorMap->getBits()));
+-#if POPPLER_CHECK_VERSION(25, 2, 0)
++#if POPPLER_CHECK_VERSION(26, 1, 0)
++    if (!imgStr->rewind())
++        return;
++#elif POPPLER_CHECK_VERSION(25, 2, 0)
+     if (!imgStr->reset())
+         return;
+ #else
+@@ -392,7 +404,10 @@ void PngHelper::createPng( OutputBuffer& o_rOutputBuf,
+     std::unique_ptr<ImageStream> imgStrMask(
+         new ImageStream(maskStr, maskWidth, 1, 1));
+ 
+-#if POPPLER_CHECK_VERSION(25, 2, 0)
++#if POPPLER_CHECK_VERSION(26, 1, 0)
++    if (!imgStrMask->rewind())
++        return;
++#elif POPPLER_CHECK_VERSION(25, 2, 0)
+     if (!imgStrMask->reset())
+         return;
+ #else
