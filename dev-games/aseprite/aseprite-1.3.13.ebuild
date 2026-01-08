@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -37,7 +37,7 @@ COMMON_DEPEND="
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	net-misc/curl
-	sys-libs/zlib:=
+	virtual/zlib:=
 	virtual/opengl
 	x11-libs/libX11
 	x11-libs/libXcursor
