@@ -1,4 +1,4 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -118,7 +118,6 @@ FFMPEG_IUSE_MAP=(
 	vaapi
 	vdpau
 	vidstab:libvidstab
-	vmaf:libvmaf
 	vorbis:libvorbis
 	vpx:libvpx
 	vulkan
@@ -273,7 +272,6 @@ COMMON_DEPEND="
 		x11-libs/libvdpau[${MULTILIB_USEDEP}]
 	)
 	vidstab? ( media-libs/vidstab[${MULTILIB_USEDEP}] )
-	vmaf? ( media-libs/libvmaf:=[${MULTILIB_USEDEP}] )
 	vorbis? ( media-libs/libvorbis[${MULTILIB_USEDEP}] )
 	vpx? ( media-libs/libvpx:=[${MULTILIB_USEDEP}] )
 	vulkan? ( media-libs/vulkan-loader[${MULTILIB_USEDEP}] )
@@ -463,6 +461,7 @@ multilib_src_configure() {
 		--disable-libopencv # leaving for later due to circular opencv[ffmpeg]
 		--disable-librist # librist itself needs attention first (bug #822012)
 		--disable-libtensorflow # causes headaches, and is gone
+		--disable-libvmaf # use ffmpeg-8+ instead, needs old vmaf (bug #968554)
 		--disable-mbedtls # messy with slots, tests underlinking issues
 		--disable-mmal # prefer USE=soc
 		--disable-omx # unsupported (bug #653386)

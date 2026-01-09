@@ -99,7 +99,6 @@
 			in addition to FFmpeg's own implementation
 		</flag>
 		<flag name="vidstab">Enable video stabilization filter support via <pkg>media-libs/vidstab</pkg></flag>
-		<flag name="vmaf">Enable Netflix's perceptual video quality assessment filter support via <pkg>media-libs/libvmaf</pkg></flag>
 		<flag name="vpx">
 			Enable VP8 and VP9 de/encoding support via <pkg>media-libs/libvpx</pkg>
 			in addition to FFmpeg's own implementation (for decoding only)
