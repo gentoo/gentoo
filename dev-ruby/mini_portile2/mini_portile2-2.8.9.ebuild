@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/flavorjones/mini_portile"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos"
+KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~loong ~mips ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos"
 IUSE="test"
 
 BDEPEND="test? ( app-crypt/gnupg dev-build/cmake )"
