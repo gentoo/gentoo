@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: pypi.eclass
@@ -76,10 +76,13 @@ _PYPI_ECLASS=1
 # @DEFAULT_UNSET
 # @PRE_INHERIT
 # @DESCRIPTION:
-# The repository to verify provenance against.  If set to a non-empty
+# The publisher to verify provenance against.  If set to a non-empty
 # value, the eclass will add a "verify-provenance" flag that can be used
-# to download the provenance for the distribution, and verify it
-# against the provenance and the specified repository.
+# to download and verify the provenance for the distribution.
+#
+# This can be:
+# - the repository URL when the provenance was signed by a repository
+# - gcp:<email address> when it was signed by a Google Cloud account
 
 # @FUNCTION: _pypi_normalize_name
 # @INTERNAL
@@ -310,23 +313,33 @@ pypi_provenance_url() {
 # to the artifact to verify, while <provenance> is the provenance file.
 #
 # The function defaults to using PYPI_VERIFY_REPO as the expected
-# repository URL.  This can be overridden by specfying <repo>.
+# provider info.  This can be overridden by specfying <provider>.
 #
 # The function dies on verification failure.
 pypi_verify_provenance() {
 	if [[ ${#} -lt 2 || ${#} -gt 3 ]]; then
-		die "Usage: ${FUNCNAME} <dist> <provenance> [<repo>]"
+		die "Usage: ${FUNCNAME} <dist> <provenance> [<provider>]"
 	fi
 
 	local dist=${1}
 	local provenance=${2}
-	local repo=${3-"${PYPI_VERIFY_REPO}"}
+	local provider=${3-"${PYPI_VERIFY_REPO}"}
+	local args=(
+		--offline
+		--provenance-file "${provenance}"
+		"${dist}"
+	)
+
+	case ${provider} in
+		gcp:*)
+			args+=( --gcp-service-account "${provider#gcp:}" )
+			;;
+		*)
+			args+=( --repository "${provider}" )
+	esac
 
 	einfo "Verifying ${dist##*/} ..."
-	pypi-attestations verify pypi --offline \
-		--repository "${repo}" \
-		--provenance-file "${provenance}" \
-		"${dist}" ||
+	pypi-attestations verify pypi "${args[@]}" ||
 		die "Provenance verification failed for ${dist##*/}"
 }
 
