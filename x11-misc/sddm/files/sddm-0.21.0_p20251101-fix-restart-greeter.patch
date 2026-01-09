@@ -1,0 +1,457 @@
+From 4d06b6f77024d3ecaa458f0474691bf8b5f1306e Mon Sep 17 00:00:00 2001
+From: "tsrk." <tsrk@tsrk.me>
+Date: Sun, 13 Jul 2025 19:42:40 +0200
+Subject: [PATCH 1/9] fix(helper): do not badly exit on SIGHUP
+
+Signed-off-by: tsrk. <tsrk@tsrk.me>
+---
+ src/helper/HelperApp.cpp | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/src/helper/HelperApp.cpp b/src/helper/HelperApp.cpp
+index 32da42df3..49b7e1d79 100644
+--- a/src/helper/HelperApp.cpp
++++ b/src/helper/HelperApp.cpp
+@@ -53,8 +53,13 @@ namespace SDDM {
+             , m_socket(new QLocalSocket(this)) {
+         qInstallMessageHandler(HelperMessageHandler);
+         SignalHandler *s = new SignalHandler(this);
++        s->addCustomSignal(SIGHUP);
+         QObject::connect(s, &SignalHandler::sigtermReceived, m_session, [] {
+-            QCoreApplication::instance()->exit(-1);
++            QCoreApplication::instance()->exit(Auth::HELPER_OTHER_ERROR);
++        });
++
++        QObject::connect(s, &SignalHandler::customSignalReceived, m_session, [](int) {
++            QCoreApplication::instance()->exit(Auth::HELPER_OTHER_ERROR);
+         });
+ 
+         QTimer::singleShot(0, this, SLOT(setUp()));
+
+From 2eba0aa7e32da2becfb2e48327b7f4e94cdd0275 Mon Sep 17 00:00:00 2001
+From: "tsrk." <tsrk@tsrk.me>
+Date: Sun, 20 Jul 2025 17:15:54 +0200
+Subject: [PATCH 2/9] fix(helper): avoid exiting 1 at all costs when session
+ finishes
+
+Signed-off-by: tsrk. <tsrk@tsrk.me>
+---
+ src/helper/HelperApp.cpp | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/src/helper/HelperApp.cpp b/src/helper/HelperApp.cpp
+index 49b7e1d79..7e8cd6d10 100644
+--- a/src/helper/HelperApp.cpp
++++ b/src/helper/HelperApp.cpp
+@@ -199,7 +199,12 @@ namespace SDDM {
+     }
+ 
+     void HelperApp::sessionFinished(int status) {
+-        exit(status);
++        if (status != 0) {
++            qWarning("Session crashed (exit code %d).", status);
++            exit(Auth::HELPER_SESSION_ERROR);
++        }
++        else
++            exit(Auth::HELPER_SUCCESS);
+     }
+ 
+     void HelperApp::info(const QString& message, Auth::Info type) {
+
+From ff0a330ada7062094fc2360e0432c92063f3ec2d Mon Sep 17 00:00:00 2001
+From: "tsrk." <tsrk@tsrk.me>
+Date: Tue, 29 Jul 2025 22:18:34 +0200
+Subject: [PATCH 3/9] fix(auth): do not cast exit status if `QProcess` is not
+ exited normally
+
+A QProcess::CrashExit happen in most cases when a signal killed it. And
+returning from a signal-killed process on Linux makes QProcess:finished
+return the signal, which is a really bad idea to cast into a random
+enum.
+
+Qt also mentions that `exitCode` is only valid for QProcess::NormalExit
+invocations
+
+Signed-off-by: tsrk. <tsrk@tsrk.me>
+---
+ src/auth/Auth.cpp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/auth/Auth.cpp b/src/auth/Auth.cpp
+index 6c9b5c6b4..6ff38ef1f 100644
+--- a/src/auth/Auth.cpp
++++ b/src/auth/Auth.cpp
+@@ -230,7 +230,10 @@ namespace SDDM {
+         else
+             qWarning("Auth: sddm-helper exited with %d", exitCode);
+ 
+-        Q_EMIT qobject_cast<Auth*>(parent())->finished((Auth::HelperExitStatus)exitCode);
++        if (exitStatus == QProcess::NormalExit)
++            Q_EMIT qobject_cast<Auth*>(parent())->finished((Auth::HelperExitStatus)exitCode);
++        else
++            Q_EMIT qobject_cast<Auth*>(parent())->finished(Auth::HELPER_OTHER_ERROR);
+     }
+ 
+     void Auth::Private::childError(QProcess::ProcessError error) {
+
+From 97e918b17a5ebc6cb8629cde3a6bc8b5bf44cacc Mon Sep 17 00:00:00 2001
+From: "tsrk." <tsrk@tsrk.me>
+Date: Wed, 30 Jul 2025 12:24:17 +0200
+Subject: [PATCH 4/9] fix(helper): remove overload of `QProcess::finished` in
+ UserSession
+
+This will allow HelperApp to dinstinguish between a crash (most likely
+by a signal) from a normal exit.
+
+Signed-off-by: tsrk. <tsrk@tsrk.me>
+---
+ src/helper/HelperApp.cpp   | 12 ++++++++----
+ src/helper/HelperApp.h     |  2 +-
+ src/helper/UserSession.cpp |  3 +--
+ src/helper/UserSession.h   |  4 ----
+ 4 files changed, 10 insertions(+), 11 deletions(-)
+
+diff --git a/src/helper/HelperApp.cpp b/src/helper/HelperApp.cpp
+index 7e8cd6d10..e0141bb7c 100644
+--- a/src/helper/HelperApp.cpp
++++ b/src/helper/HelperApp.cpp
+@@ -131,7 +131,7 @@ namespace SDDM {
+         }
+ 
+         connect(m_socket, &QLocalSocket::connected, this, &HelperApp::doAuth);
+-        connect(m_session, &UserSession::finished, this, &HelperApp::sessionFinished);
++        connect(m_session, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, &HelperApp::sessionFinished);
+         m_socket->connectToServer(server, QIODevice::ReadWrite | QIODevice::Unbuffered);
+     }
+ 
+@@ -198,9 +198,13 @@ namespace SDDM {
+         return;
+     }
+ 
+-    void HelperApp::sessionFinished(int status) {
+-        if (status != 0) {
+-            qWarning("Session crashed (exit code %d).", status);
++    void HelperApp::sessionFinished(int exitCode, QProcess::ExitStatus exitStatus) {
++        if (exitStatus == QProcess::CrashExit) {
++            qWarning("Session crashed (killed by signal %d).", exitCode);
++            exit(Auth::HELPER_SESSION_ERROR);
++        }
++        else if (exitCode != 0) {
++            qWarning("Session crashed (exit code %d).", exitCode);
+             exit(Auth::HELPER_SESSION_ERROR);
+         }
+         else
+diff --git a/src/helper/HelperApp.h b/src/helper/HelperApp.h
+index 64ea0e1c8..9874ab8eb 100644
+--- a/src/helper/HelperApp.h
++++ b/src/helper/HelperApp.h
+@@ -54,7 +54,7 @@ namespace SDDM {
+         void setUp();
+         void doAuth();
+ 
+-        void sessionFinished(int status);
++        void sessionFinished(int exitCode, QProcess::ExitStatus exitStatus);
+ 
+     private:
+         qint64 m_id { -1 };
+diff --git a/src/helper/UserSession.cpp b/src/helper/UserSession.cpp
+index 03fd396ee..5fd378a6e 100644
+--- a/src/helper/UserSession.cpp
++++ b/src/helper/UserSession.cpp
+@@ -47,7 +47,6 @@ namespace SDDM {
+     UserSession::UserSession(HelperApp *parent)
+         : QProcess(parent)
+     {
+-        connect(this, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, &UserSession::finished);
+ #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+         setChildProcessModifier(std::bind(&UserSession::childModifier, this));
+ #endif
+@@ -157,7 +156,7 @@ namespace SDDM {
+                 }
+             }
+         } else {
+-            Q_EMIT finished(Auth::HELPER_OTHER_ERROR);
++            Q_EMIT finished(Auth::HELPER_OTHER_ERROR, QProcess::NormalExit);
+         }
+     }
+ 
+diff --git a/src/helper/UserSession.h b/src/helper/UserSession.h
+index ecaef8679..78cd994a7 100644
+--- a/src/helper/UserSession.h
++++ b/src/helper/UserSession.h
+@@ -51,10 +51,6 @@ namespace SDDM {
+         */
+         qint64 cachedProcessId();
+ 
+-
+-    Q_SIGNALS:
+-        void finished(int exitCode);
+-
+ #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+     protected:
+         void setupChildProcess() override;
+
+From 7052ba863174faa05fed8cbbdc7c71cf202e6cfd Mon Sep 17 00:00:00 2001
+From: "tsrk." <tsrk@tsrk.me>
+Date: Wed, 30 Jul 2025 13:37:14 +0200
+Subject: [PATCH 5/9] style(helper): rearrange if conditions to explicitly
+ check for normal exit
+
+Signed-off-by: tsrk. <tsrk@tsrk.me>
+---
+ src/helper/HelperApp.cpp | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/src/helper/HelperApp.cpp b/src/helper/HelperApp.cpp
+index e0141bb7c..fa1167c9f 100644
+--- a/src/helper/HelperApp.cpp
++++ b/src/helper/HelperApp.cpp
+@@ -199,16 +199,16 @@ namespace SDDM {
+     }
+ 
+     void HelperApp::sessionFinished(int exitCode, QProcess::ExitStatus exitStatus) {
+-        if (exitStatus == QProcess::CrashExit) {
+-            qWarning("Session crashed (killed by signal %d).", exitCode);
+-            exit(Auth::HELPER_SESSION_ERROR);
+-        }
+-        else if (exitCode != 0) {
+-            qWarning("Session crashed (exit code %d).", exitCode);
+-            exit(Auth::HELPER_SESSION_ERROR);
++        if (exitStatus == QProcess::NormalExit) {
++            if (exitCode != 0) {
++                qWarning("Session crashed (exit code %d).", exitCode);
++                exit(Auth::HELPER_SESSION_ERROR);
++            }
++            else
++                exit(Auth::HELPER_SUCCESS);
+         }
+-        else
+-            exit(Auth::HELPER_SUCCESS);
++        qWarning("Session crashed (killed by signal %d).", exitCode);
++        exit(Auth::HELPER_SESSION_ERROR);
+     }
+ 
+     void HelperApp::info(const QString& message, Auth::Info type) {
+
+From f886081f98f02ed42e517be6949e1a22971b3e1e Mon Sep 17 00:00:00 2001
+From: "tsrk." <tsrk@tsrk.me>
+Date: Fri, 1 Aug 2025 01:26:48 +0200
+Subject: [PATCH 6/9] fix(helper): return after exits and check for session
+ state in destructor
+
+This avoids calling exit an unnecessary number of times, which can
+potentially falsify the real return code, and cause restrat loops
+
+Signed-off-by: tsrk. <tsrk@tsrk.me>
+---
+ src/helper/HelperApp.cpp | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/src/helper/HelperApp.cpp b/src/helper/HelperApp.cpp
+index fa1167c9f..6a39ac00b 100644
+--- a/src/helper/HelperApp.cpp
++++ b/src/helper/HelperApp.cpp
+@@ -206,7 +206,11 @@ namespace SDDM {
+             }
+             else
+                 exit(Auth::HELPER_SUCCESS);
++            return;
+         }
++
++        Q_ASSERT_X(exitCode != 0, "HelperApp::sessionFinished", "Crashing with 0 is impossible");
++
+         qWarning("Session crashed (killed by signal %d).", exitCode);
+         exit(Auth::HELPER_SESSION_ERROR);
+     }
+@@ -298,7 +302,9 @@ namespace SDDM {
+     HelperApp::~HelperApp() {
+         Q_ASSERT(getuid() == 0);
+ 
+-        m_session->stop();
++        // Avoid re-emitting QProcess::finished if session is not running
++        if (m_session->state() != QProcess::NotRunning)
++            m_session->stop();
+         m_backend->closeSession();
+ 
+         // write logout to utmp/wtmp
+
+From 72db1388b931858af3d0f066ed5c3a1948979422 Mon Sep 17 00:00:00 2001
+From: "tsrk." <tsrk@tsrk.me>
+Date: Fri, 1 Aug 2025 11:42:46 +0200
+Subject: [PATCH 7/9] fix(helper): do not emit finish when stopping already
+ stopped session
+
+Signed-off-by: tsrk. <tsrk@tsrk.me>
+---
+ src/helper/UserSession.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/helper/UserSession.cpp b/src/helper/UserSession.cpp
+index 5fd378a6e..3e0a5afb4 100644
+--- a/src/helper/UserSession.cpp
++++ b/src/helper/UserSession.cpp
+@@ -156,7 +156,7 @@ namespace SDDM {
+                 }
+             }
+         } else {
+-            Q_EMIT finished(Auth::HELPER_OTHER_ERROR, QProcess::NormalExit);
++            qInfo() << "Attempted to stop session, but was already not running";
+         }
+     }
+ 
+
+From 7aa2576b1a916796b1700a426bd9df1b368007b7 Mon Sep 17 00:00:00 2001
+From: "tsrk." <tsrk@tsrk.me>
+Date: Fri, 1 Aug 2025 11:43:58 +0200
+Subject: [PATCH 8/9] style(helper): explicit usage of `QCoreApplication::exit`
+
+Signed-off-by: tsrk. <tsrk@tsrk.me>
+---
+ src/helper/HelperApp.cpp | 26 +++++++++++++-------------
+ 1 file changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/src/helper/HelperApp.cpp b/src/helper/HelperApp.cpp
+index 6a39ac00b..f7958e9be 100644
+--- a/src/helper/HelperApp.cpp
++++ b/src/helper/HelperApp.cpp
+@@ -73,7 +73,7 @@ namespace SDDM {
+         if ((pos = args.indexOf(QStringLiteral("--socket"))) >= 0) {
+             if (pos >= args.length() - 1) {
+                 qCritical() << "This application is not supposed to be executed manually";
+-                exit(Auth::HELPER_OTHER_ERROR);
++                QCoreApplication::exit(Auth::HELPER_OTHER_ERROR);
+                 return;
+             }
+             server = args[pos + 1];
+@@ -82,7 +82,7 @@ namespace SDDM {
+         if ((pos = args.indexOf(QStringLiteral("--id"))) >= 0) {
+             if (pos >= args.length() - 1) {
+                 qCritical() << "This application is not supposed to be executed manually";
+-                exit(Auth::HELPER_OTHER_ERROR);
++                QCoreApplication::exit(Auth::HELPER_OTHER_ERROR);
+                 return;
+             }
+             m_id = QString(args[pos + 1]).toLongLong();
+@@ -91,7 +91,7 @@ namespace SDDM {
+         if ((pos = args.indexOf(QStringLiteral("--start"))) >= 0) {
+             if (pos >= args.length() - 1) {
+                 qCritical() << "This application is not supposed to be executed manually";
+-                exit(Auth::HELPER_OTHER_ERROR);
++                QCoreApplication::exit(Auth::HELPER_OTHER_ERROR);
+                 return;
+             }
+             m_session->setPath(args[pos + 1]);
+@@ -100,7 +100,7 @@ namespace SDDM {
+         if ((pos = args.indexOf(QStringLiteral("--user"))) >= 0) {
+             if (pos >= args.length() - 1) {
+                 qCritical() << "This application is not supposed to be executed manually";
+-                exit(Auth::HELPER_OTHER_ERROR);
++                QCoreApplication::exit(Auth::HELPER_OTHER_ERROR);
+                 return;
+             }
+             m_user = args[pos + 1];
+@@ -109,7 +109,7 @@ namespace SDDM {
+         if ((pos = args.indexOf(QStringLiteral("--display-server"))) >= 0) {
+             if (pos >= args.length() - 1) {
+                 qCritical() << "This application is not supposed to be executed manually";
+-                exit(Auth::HELPER_OTHER_ERROR);
++                QCoreApplication::exit(Auth::HELPER_OTHER_ERROR);
+                 return;
+             }
+             m_session->setDisplayServerCommand(args[pos + 1]);
+@@ -126,7 +126,7 @@ namespace SDDM {
+ 
+         if (server.isEmpty() || m_id <= 0) {
+             qCritical() << "This application is not supposed to be executed manually";
+-            exit(Auth::HELPER_OTHER_ERROR);
++            QCoreApplication::exit(Auth::HELPER_OTHER_ERROR);
+             return;
+         }
+ 
+@@ -151,7 +151,7 @@ namespace SDDM {
+             const QString vt = env.value(QStringLiteral("XDG_VTNR"));
+             utmpLogin(vt, displayId, m_user, 0, false);
+ 
+-            exit(Auth::HELPER_AUTH_ERROR);
++            QCoreApplication::exit(Auth::HELPER_AUTH_ERROR);
+             return;
+         }
+ 
+@@ -165,7 +165,7 @@ namespace SDDM {
+             const QString vt = env.value(QStringLiteral("XDG_VTNR"));
+             utmpLogin(vt, displayId, m_user, 0, false);
+ 
+-            exit(Auth::HELPER_AUTH_ERROR);
++            QCoreApplication::exit(Auth::HELPER_AUTH_ERROR);
+             return;
+         }
+ 
+@@ -178,7 +178,7 @@ namespace SDDM {
+ 
+             if (!m_backend->openSession()) {
+                 sessionOpened(false);
+-                exit(Auth::HELPER_SESSION_ERROR);
++                QCoreApplication::exit(Auth::HELPER_SESSION_ERROR);
+                 return;
+             }
+ 
+@@ -194,7 +194,7 @@ namespace SDDM {
+             }
+         }
+         else
+-            exit(Auth::HELPER_SUCCESS);
++            QCoreApplication::exit(Auth::HELPER_SUCCESS);
+         return;
+     }
+ 
+@@ -202,17 +202,17 @@ namespace SDDM {
+         if (exitStatus == QProcess::NormalExit) {
+             if (exitCode != 0) {
+                 qWarning("Session crashed (exit code %d).", exitCode);
+-                exit(Auth::HELPER_SESSION_ERROR);
++                QCoreApplication::exit(Auth::HELPER_SESSION_ERROR);
+             }
+             else
+-                exit(Auth::HELPER_SUCCESS);
++                QCoreApplication::exit(Auth::HELPER_SUCCESS);
+             return;
+         }
+ 
+         Q_ASSERT_X(exitCode != 0, "HelperApp::sessionFinished", "Crashing with 0 is impossible");
+ 
+         qWarning("Session crashed (killed by signal %d).", exitCode);
+-        exit(Auth::HELPER_SESSION_ERROR);
++        QCoreApplication::exit(Auth::HELPER_SESSION_ERROR);
+     }
+ 
+     void HelperApp::info(const QString& message, Auth::Info type) {
+
+From 4978251750021d5686f5837dffd12a5e99b7ada6 Mon Sep 17 00:00:00 2001
+From: "tsrk." <tsrk@tsrk.me>
+Date: Fri, 1 Aug 2025 12:13:12 +0200
+Subject: [PATCH 9/9] fix(helper): disconnect `sessionFinished` when exiting
+
+Calling `UserSession::stop` results in a call to `QProcess::terminate`,
+which sends a SIGTERM to the session. `QProcess` will catch that and
+emit an excess `QProcess::finished(15, 1)` which we don't want to handle
+since we are in the process of exiting.
+
+Signed-off-by: tsrk. <tsrk@tsrk.me>
+---
+ src/helper/HelperApp.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/helper/HelperApp.cpp b/src/helper/HelperApp.cpp
+index f7958e9be..744a4ef01 100644
+--- a/src/helper/HelperApp.cpp
++++ b/src/helper/HelperApp.cpp
+@@ -302,7 +302,8 @@ namespace SDDM {
+     HelperApp::~HelperApp() {
+         Q_ASSERT(getuid() == 0);
+ 
+-        // Avoid re-emitting QProcess::finished if session is not running
++        // Avoid calls to sessionFinished when exiting
++        disconnect(m_session, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, &HelperApp::sessionFinished);
+         if (m_session->state() != QProcess::NotRunning)
+             m_session->stop();
+         m_backend->closeSession();
