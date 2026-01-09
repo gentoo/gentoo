@@ -231,6 +231,7 @@ pkg_setup() {
 }
 
 src_unpack() {
+	go-module_setup_env
 	default
 	go-module_src_unpack
 	cd "${S}"
