@@ -24,23 +24,19 @@ DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
 
 # Unit tests attempt to download go modules.
+PROPERTIES="test_network"
 RESTRICT="test"
 
 src_prepare() {
-	export FORCE_HOST_GO=1 GO_BUILD_FLAGS="-v -x"
 	default
-	sed -e "s|GIT_SHA=.*|GIT_SHA=${GIT_COMMIT}|" \
-		-i "${S}"/build.sh || die
-	sed -e 's:\(for p in \)shellcheck :\1 :' \
-		-e 's:^      goword \\$:\\:' \
-		-e 's:^      gofmt \\$:\\:' \
-		-e 's:^      govet \\$:\\:' \
-		-e 's:^      revive \\$:\\:' \
-		-e 's:^      mod_tidy \\$:\\:' \
-		-e "s|GO_BUILD_FLAGS=\"[^\"]*\"|GO_BUILD_FLAGS=\"${GO_BUILD_FLAGS}\"|" \
-		-e "s|go test |go test ${GO_BUILD_FLAGS} |" \
-		-e 's|PASSES=${PASSES:-"fmt bom dep build unit"}|PASSES=${PASSES:-"fmt dep unit"}|' \
-		-i ./test.sh || die
+	sed -i "s|GIT_SHA=.*|GIT_SHA=${GIT_COMMIT}|" build.sh || die
+
+	# Don't test these as they are not built.
+	find tools/ -name "*_test.go" -delete || die
+}
+
+src_configure() {
+	export FORCE_HOST_GO=1 GO_BUILD_FLAGS="-v -x"
 }
 
 src_compile() {
@@ -48,7 +44,7 @@ src_compile() {
 }
 
 src_test() {
-	./test || die
+	PASSES="unit" ./test.sh -v || die
 }
 
 src_install() {
