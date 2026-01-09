@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ LICENSE="BSD-2"
 # packaged as x11-wm/e16, but the slot is kept because it's more complicated to
 # reset it rather than just to keep it.
 SLOT="0.17/${PV%%_*}"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv x86"
 IUSE="bluetooth connman doc exif geolocation nls pam policykit systemd udisks wayland xwayland"
 
 REQUIRED_USE="xwayland? ( wayland )"
