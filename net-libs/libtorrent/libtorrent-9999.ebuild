@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools
 
 DESCRIPTION="BitTorrent library written in C++ for *nix"
-HOMEPAGE="https://rakshasa.github.io/rtorrent/"
+HOMEPAGE="https://rtorrent.net"
 if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/rakshasa/${PN}.git"
