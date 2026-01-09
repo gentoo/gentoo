@@ -11,7 +11,7 @@ SRC_URI="https://github.com/bulletphysics/bullet3/archive/${PV}.tar.gz -> ${P}.t
 
 LICENSE="ZLIB"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 IUSE="doc double-precision examples extras openmp tbb test +threads"
 
 REQUIRED_USE="
