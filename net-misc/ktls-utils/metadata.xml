@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>zoltan@sinustrom.info</email>
+		<name>Zoltan Puskas</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		Handshake service for kernel TLS consumers. The TLS handshake user agent
+		that listens for kernel requests and then materializes a user space socket
+		endpoint on which to perform these handshakes.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">oracle/ktls-utils</remote-id>
+	</upstream>
+</pkgmetadata>
