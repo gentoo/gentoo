@@ -61,6 +61,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-fix-restart-greeter.patch" # pending upstream
 	# thx opensuse
 	"${FILESDIR}/${PN}-0.21.0_p20250310-set-XAUTHLOCALHOSTNAME.patch" # bug 913862
+	"${FILESDIR}/${P}-fix-terminal-clearing.patch"
 )
 
 pkg_setup() {

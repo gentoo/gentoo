@@ -1,0 +1,29 @@
+Source: https://build.opensuse.org/projects/openSUSE:Factory/packages/sddm/files/0001-Fix-terminal-clearing.patch
+
+From d021e6d191a388b0dae8b1e0eea675423b86099d Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Sun, 17 Mar 2024 19:00:20 +0100
+Subject: [PATCH] Fix terminal clearing
+
+sizeof(char *) wasn't the intention there.
+---
+ src/common/VirtualTerminal.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/common/VirtualTerminal.cpp b/src/common/VirtualTerminal.cpp
+index 9c0261e..020405a 100644
+--- a/src/common/VirtualTerminal.cpp
++++ b/src/common/VirtualTerminal.cpp
+@@ -209,8 +209,8 @@ out:
+                 fd = vtFd;
+ 
+                 // Clear VT
+-                static const char *clearEscapeSequence = "\33[H\33[2J";
+-                if (write(vtFd, clearEscapeSequence, sizeof(clearEscapeSequence)) == -1) {
++                static const char clearEscapeSequence[] = "\33[H\33[2J";
++                if (write(vtFd, clearEscapeSequence, sizeof(clearEscapeSequence) - 1) == -1) {
+                     qWarning("Failed to clear VT %d: %s", vt, strerror(errno));
+                 }
+ 
+-- 
+2.44.0
