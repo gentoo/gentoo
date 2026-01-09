@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ LUA_COMPAT=( lua5-{3,4} )
 inherit autotools lua-single systemd toolchain-funcs
 
 DESCRIPTION="BitTorrent Client using libtorrent"
-HOMEPAGE="https://rakshasa.github.io/rtorrent/"
+HOMEPAGE="https://rtorrent.net"
 if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/rakshasa/${PN}.git"
