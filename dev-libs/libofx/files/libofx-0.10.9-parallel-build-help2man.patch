@@ -1,9 +1,11 @@
 https://github.com/libofx/libofx/pull/103
 
-From c2d19682ff482a6fa2ab98a88ccc0dfa91800cad Mon Sep 17 00:00:00 2001
+From bcc0f7bf903e798672e21756908d060f77d6f8c5 Mon Sep 17 00:00:00 2001
+Message-ID: <bcc0f7bf903e798672e21756908d060f77d6f8c5.1767970048.git.sam@gentoo.org>
 From: Sam James <sam@gentoo.org>
 Date: Wed, 7 Jan 2026 21:45:32 +0000
-Subject: [PATCH] ofxdump: fix parallel build issue with man page generation
+Subject: [PATCH] ofxconnect, ofxdump: fix parallel build issue with man page
+ generation
 
 Fixes the following:
 ```
@@ -18,14 +20,52 @@ make[1]: *** [Makefile:551: all-recursive] Error 1
 We need to make sure that ofxdump has been built before trying to run
 help2man which will execute it.
 ---
- ofxdump/Makefile.am | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ ofxconnect/Makefile.am | 7 ++++---
+ ofxdump/Makefile.am    | 6 +++---
+ 2 files changed, 7 insertions(+), 6 deletions(-)
 
+diff --git a/ofxconnect/Makefile.am b/ofxconnect/Makefile.am
+index e3a58a7..2b3f1f1 100644
+--- a/ofxconnect/Makefile.am
++++ b/ofxconnect/Makefile.am
+@@ -11,13 +11,14 @@ AM_CPPFLAGS = \
+ 
+ 
+ if USE_GENGETOPT 
+-CLEANFILES = cmdline.c cmdline.h
+ 
+ cmdline.c cmdline.h: cmdline.ggo Makefile
+ 	gengetopt --unamed-opts < $<
+ 
+ endif
+-MAINTAINERCLEANFILES  = cmdline.c cmdline.h
++
++CLEANFILES = cmdline.c cmdline.h ofxconnect.1
++MAINTAINERCLEANFILES  = cmdline.c cmdline.h ofxconnect.1
+ 
+ EXTRA_DIST = cmdline.ggo test-privateserver.sh CMakeLists.txt
+ 
+@@ -25,7 +26,7 @@ EXTRA_DIST = cmdline.ggo test-privateserver.sh CMakeLists.txt
+ # the key needed to run this test.
+ TESTS = test-privateserver.sh 
+ 
+-ofxconnect.1: $(top_srcdir)/configure.ac
++ofxconnect.1: $(top_srcdir)/configure.ac ofxconnect
+ if HAVE_HELP2MAN
+ 	$(HELP2MAN)  -n 'Create a statement request file' -N --output=ofxconnect.1 ./ofxconnect$(EXEEXT)
+ else
 diff --git a/ofxdump/Makefile.am b/ofxdump/Makefile.am
-index 0c9eefbe..3b8cbe0b 100644
+index 0c9eefb..fdacd1c 100644
 --- a/ofxdump/Makefile.am
 +++ b/ofxdump/Makefile.am
-@@ -15,7 +15,7 @@ cmdline.c cmdline.h: cmdline.ggo Makefile
+@@ -8,21 +8,21 @@ AM_CPPFLAGS = \
+ 	'-DCMDLINE_PARSER_PACKAGE="ofxdump"'
+ 
+ if USE_GENGETOPT 
+-CLEANFILES = cmdline.c cmdline.h
+ 
+ cmdline.c cmdline.h: cmdline.ggo Makefile
+ 	gengetopt --unamed-opts < $<
  
  endif
  
@@ -34,4 +74,15 @@ index 0c9eefbe..3b8cbe0b 100644
  if HAVE_HELP2MAN
  	$(HELP2MAN) -n 'Dump content of OFX files as human-readable text' -N --output=ofxdump.1 ./ofxdump$(EXEEXT)
  else
+ 	echo "*** No man page available because of missing help2man tool" > $@
+ endif
+ 
+-MAINTAINERCLEANFILES  = cmdline.c cmdline.h
++CLEANFILES = cmdline.c cmdline.h ofxdump.1
++MAINTAINERCLEANFILES  = cmdline.c cmdline.h ofxdump.1
+ EXTRA_DIST = cmdline.ggo CMakeLists.txt
+ 
+ # Run all our example files through ofxdump to verify we can parse
+-- 
+2.52.0
 
