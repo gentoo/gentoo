@@ -467,6 +467,9 @@ src_configure() {
 		strip-flags
 	fi
 
+	# Workaround for bug #967047
+	tc-is-gcc && [[ $(gcc-major-version) -eq 16 ]] && append-cxxflags -fno-devirtualize-speculatively
+
 	# Show flags set at the end
 	einfo "  Used CFLAGS:    ${CFLAGS}"
 	einfo "  Used LDFLAGS:   ${LDFLAGS}"
