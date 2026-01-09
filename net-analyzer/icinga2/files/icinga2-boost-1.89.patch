@@ -1,0 +1,23 @@
+From 76fa0d9e8054f405dc3d1e39a4b48f21e86afdf0 Mon Sep 17 00:00:00 2001
+From: "Alexander A. Klimov" <alexander.klimov@icinga.com>
+Date: Thu, 14 Aug 2025 11:05:37 +0200
+Subject: [PATCH] Boost: don't require "system" component
+
+It's vanished in v1.89.
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 86abc77d661..1a087b8ed2f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -172,7 +172,7 @@ else()
+   set(LOGROTATE_CREATE "\n\tcreate 644 ${ICINGA2_USER} ${ICINGA2_GROUP}")
+ endif()
+ 
+-find_package(Boost ${BOOST_MIN_VERSION} COMPONENTS coroutine context date_time filesystem iostreams thread system program_options regex REQUIRED)
++find_package(Boost ${BOOST_MIN_VERSION} COMPONENTS coroutine context date_time filesystem iostreams thread program_options regex REQUIRED)
+ 
+ # Boost.Coroutine2 (the successor of Boost.Coroutine)
+ # (1) doesn't even exist in old Boost versions and
