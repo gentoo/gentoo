@@ -1,0 +1,6 @@
+# Location of the configuration file for the gonic service
+GONIC_CONFIGFILE=/etc/gonic/gonic.conf
+
+# User and group to run gonic binary under
+GONIC_USER=gonic
+GONIC_GROUP=gonic
