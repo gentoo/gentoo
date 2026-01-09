@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,9 +24,10 @@ CP_DEPEND="
 	>=dev-java/poi-5.2.5:0
 "
 
+# max jdk-25 for bug #968556
 DEPEND="
 	${CP_DEPEND}
-	>=virtual/jdk-1.8:*
+	<virtual/jdk-26:*
 "
 
 RDEPEND="
