@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,6 +16,7 @@ IUSE="doc double-precision examples extras openmp tbb test +threads"
 
 REQUIRED_USE="
 	openmp? ( threads )
+	test? ( extras )
 	tbb? ( threads )
 "
 
@@ -31,7 +32,9 @@ PATCHES=( "${FILESDIR}"/${PN}-2.85-soversion.patch )
 
 DOCS=( AUTHORS.txt LICENSE.txt README.md )
 
-# Building / linking of third Party library BussIK does not work out of the box
+# Building / linking of third Party library BussIK depends on demos being built,
+# which in turn fails due to
+#   OpenGLExampleBrowser.cpp:928:17: error: 'simpleApp' was not declared in this scope
 RESTRICT="test"
 
 S="${WORKDIR}/${PN}3-${PV}"
