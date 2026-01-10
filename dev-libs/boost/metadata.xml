@@ -105,6 +105,8 @@
 		<remote-id type="github">boostorg/multiprecision</remote-id>
 		<remote-id type="github">boostorg/mysql</remote-id>
 		<remote-id type="github">boostorg/nowide</remote-id>
+		<remote-id type="github">boostorg/numeric_conversion</remote-id>
+		<remote-id type="github">boostorg/openmethod</remote-id>
 		<remote-id type="github">boostorg/optional</remote-id>
 		<remote-id type="github">boostorg/outcome</remote-id>
 		<remote-id type="github">boostorg/parameter</remote-id>
