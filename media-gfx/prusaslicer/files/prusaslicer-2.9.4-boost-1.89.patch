@@ -1,0 +1,38 @@
+From ec56226d71a345c01c4ae668a78003e0e893ee7d Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Fri, 9 Jan 2026 14:54:28 +0100
+Subject: [PATCH] boost 1.89
+
+`Boost::system` is not valid since Boost 1.89.0.
+
+PrusaSlicer requires a minimum of Boost 1.83.0 so Boost.System is guaranteed to
+be header-only (since 1.69[^1]) and the component can be removed.
+
+[^1]:
+https://www.boost.org/doc/libs/1_69_0/libs/system/doc/html/system.html#changes_in_boost_1_69
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -370,7 +370,7 @@ endif()
+ # boost::process was introduced first in version 1.64.0,
+ # boost::beast::detail::base64 was introduced first in version 1.66.0
+ set(MINIMUM_BOOST_VERSION "1.83.0")
+-set(_boost_components "system;filesystem;thread;log;locale;regex;chrono;atomic;date_time;iostreams;nowide")
++set(_boost_components "filesystem;thread;log;locale;regex;chrono;atomic;date_time;iostreams;nowide")
+ find_package(Boost ${MINIMUM_BOOST_VERSION} REQUIRED COMPONENTS ${_boost_components})
+ 
+ find_package(Eigen3 3.3.7 REQUIRED)
+--- a/src/slic3r/Utils/Bonjour.cpp
++++ b/src/slic3r/Utils/Bonjour.cpp
+@@ -11,6 +11,7 @@
+ #include <string>
+ #include <map>
+ #include <thread>
++#include <boost/asio/deadline_timer.hpp>
+ #include <boost/endian/conversion.hpp>
+ #include <boost/date_time/posix_time/posix_time_duration.hpp>
+ #include <boost/format.hpp>
+-- 
+2.52.0
