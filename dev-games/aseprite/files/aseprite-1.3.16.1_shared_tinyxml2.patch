@@ -1,0 +1,18 @@
+From https://github.com/winterheart/aseprite/tree/v1.3.16.1-unbundle
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Sat, 29 Mar 2025 02:36:18 +0300
+Subject: [PATCH 5/7] Fix linking with third_party library
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -282,6 +282,7 @@ add_definitions(-DPNG_NO_MMX_CODE) # Do not use MMX optimizations in PNG code
+ if(USE_SHARED_TINYXML)
+   find_library(TINYXML_LIBRARY NAMES tinyxml2)
+   find_path(TINYXML_INCLUDE_DIR NAMES tinyxml2.h)
++  find_package(tinyxml2 REQUIRED)
+ else()
+   set(TINYXML_LIBRARY tinyxml2)
+   set(TINYXML_INCLUDE_DIR ${TINYXML_DIR})
+-- 
+2.51.2
+
