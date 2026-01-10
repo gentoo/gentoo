@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,7 +33,10 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	gtk? ( app-crypt/gcr:4[gtk] )
+	gtk? (
+		app-crypt/gcr:4
+		gnome-base/gnome-keyring
+	)
 "
 BDEPEND="
 	sys-devel/gettext
