@@ -1,7 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+# Bundled sources without direct including as cmake sub-project, #957577
+CMAKE_QA_COMPAT_SKIP=1
 
 inherit cmake xdg
 
