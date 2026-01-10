@@ -234,8 +234,8 @@ pkg_postinst() {
 	fi
 
 	# Let's not make a new certificate if we already have one
-	if ! [[ -e "${ROOT}"/etc/ssl/dovecot/server.pem && \
-		-e "${ROOT}"/etc/ssl/dovecot/server.key ]];	then
+	if ! [[ -e "${ROOT}"/etc/dovecot/server.pem && \
+		-e "${ROOT}"/etc/dovecot/server.key ]];	then
 		einfo "Creating SSL	certificate"
 		SSL_ORGANIZATION="${SSL_ORGANIZATION:-Dovecot IMAP Server}"
 		install_cert /etc/dovecot/server
