@@ -1,0 +1,35 @@
+From bd15be38e91ebaa3e0bebb1e320255bde4ccf059 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jaroslav=20=C5=A0karvada?= <zbox@atlas.cz>
+Date: Sun, 26 Jan 2025 10:17:42 +0100
+Subject: [PATCH 04/12] Fixed bool conflict in C23 (#98)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+https://bugzilla.redhat.com/show_bug.cgi?id=2336033
+
+Signed-off-by: Jaroslav Škarvada <jskarvad@redhat.com>
+---
+ CMakeLists.txt | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f03fa6d..0e80c43 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -8,6 +8,12 @@ if(MSVC11)
+     add_definitions(-Dstrtoull=_strtoui64)
+ endif(MSVC11)
+ 
++if (MSVC)
++    add_compile_options(/std:c17)
++else()
++    add_compile_options(-std=gnu17)
++endif()
++
+ add_subdirectory(libairspy)
+ add_subdirectory(airspy-tools)
+ 
+-- 
+2.51.1
+
