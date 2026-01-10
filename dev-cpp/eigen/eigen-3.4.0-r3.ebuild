@@ -4,7 +4,7 @@
 EAPI=8
 
 FORTRAN_NEEDED="test"
-inherit cmake cuda fortran-2 llvm toolchain-funcs
+inherit cmake cuda flag-o-matic fortran-2 llvm toolchain-funcs
 
 DESCRIPTION="C++ template library for linear algebra"
 HOMEPAGE="https://eigen.tuxfamily.org/index.php?title=Main_Page"
@@ -154,6 +154,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.4.0-noansi.patch"
 	"${FILESDIR}/${PN}-3.4.0-cxxstandard.patch"
 	"${FILESDIR}/${PN}-3.4.0-ppc-no-vsx.patch" # bug 936107
+	"${FILESDIR}/${PN}-3.4.0-c++-20.patch"
 )
 
 # TODO should be in cuda.eclass
@@ -247,6 +248,9 @@ src_configure() {
 	fi
 
 	if use test; then
+		# bug 878987
+		filter-lto
+
 		mycmakeargs+=(
 			# the OpenGL testsuite is extremely brittle, bug #712808
 			-DOpenGL_GL_PREFERENCE="GLVND"
