@@ -10,6 +10,6 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">libimobiledevice/libimobiledevice</remote-id>
+		<remote-id type="github">libimobiledevice/libtatsu</remote-id>
 	</upstream>
 </pkgmetadata>
