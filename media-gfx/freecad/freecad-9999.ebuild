@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -93,7 +93,7 @@ RDEPEND="
 		$(python_gen_cond_dep '
 			dev-python/matplotlib[${PYTHON_USEDEP}]
 			>=dev-python/pivy-0.6.5[${PYTHON_USEDEP}]
-			dev-python/pyside:6=[uitools(-),gui,svg,${PYTHON_USEDEP}]
+			>=dev-python/pyside-6.10.1-r5:6=[uitools(-),gui,svg,${PYTHON_USEDEP}]
 		' )
 		virtual/opengl
 		spacenav? ( dev-libs/libspnav[X?] )
