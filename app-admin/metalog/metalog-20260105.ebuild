@@ -16,7 +16,7 @@ IUSE="unicode zlib"
 
 RDEPEND="
 	dev-libs/libpcre2:=
-	virtual/zlib:=
+	zlib? ( virtual/zlib:= )
 "
 DEPEND="
 	${RDEPEND}
