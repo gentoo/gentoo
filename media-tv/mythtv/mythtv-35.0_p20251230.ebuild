@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISABLE_AUTOFORMATTING="yes"
-PYTHON_COMPAT=( python3_{11..12} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit edo flag-o-matic python-any-r1
 inherit qmake-utils readme.gentoo-r1 systemd toolchain-funcs user-info
@@ -13,7 +13,7 @@ DESCRIPTION="Open Source DVR and media center hub"
 HOMEPAGE="https://www.mythtv.org https://github.com/MythTV/mythtv"
 if [[ ${PV} == *_p* ]] ; then
 	# https://github.com/MythTV/mythtv/tree/fixes/35
-	MY_COMMIT="0a868b015e7346a9156a389acbbe395ec2e1aa24"
+	MY_COMMIT="805e05b76a9ab760169f901fd1149276fa17ccfb"
 	SRC_URI="https://github.com/MythTV/mythtv/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
 	# mythtv and mythplugins are separate builds in the github MythTV project
 	S="${WORKDIR}/mythtv-${MY_COMMIT}/mythtv"
@@ -130,7 +130,9 @@ BDEPEND="
 			dev-python/python-dateutil[${PYTHON_USEDEP}]
 			dev-python/lxml[${PYTHON_USEDEP}]
 			dev-python/mysqlclient[${PYTHON_USEDEP}]
+			dev-python/pip[${PYTHON_USEDEP}]
 			dev-python/requests-cache[${PYTHON_USEDEP}]
+			dev-python/wheel[${PYTHON_USEDEP}]
 		')
 	)
 "
@@ -149,6 +151,17 @@ python_check_deps() {
 	python_has_version "dev-python/requests-cache[${PYTHON_USEDEP}]"
 }
 
+pkg_pretend() {
+	if use autostart; then
+		local HOME_MYTHTV=$(egethome mythtv)
+		if [[ ! -z "${HOME_MYTHTV}" && ! -d "${HOME_MYTHTV}" ]] ; then
+			eerror "Home path '${HOME_MYTHTV}' for user 'mythtv' exists" \
+				"but is not a directory"
+			die
+		fi
+	fi
+}
+
 pkg_setup() {
 	use python && python-any-r1_pkg_setup
 }
@@ -162,6 +175,8 @@ src_prepare() {
 }
 
 src_configure() {
+	use elibc_musl && append-flags -D_LARGEFILE64_SOURCE  # 924347
+
 	local -a myconf=()
 
 	# Setup paths
