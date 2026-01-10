@@ -53,7 +53,7 @@ multilib_src_configure() {
 		-DBUILD_DOC=$(multilib_native_usex doc ON OFF)
 		-DBUILD_CODEC=$(multilib_is_native_abi && echo ON || echo OFF)
 		-DBUILD_STATIC_LIBS=OFF
-		-DBUILD_THIRDPARTY=OFF
+		$(multilib_is_native_abi && echo -DBUILD_THIRDPARTY=OFF)
 	)
 
 	# Cheat a little bit and force disabling fixed point magic
