@@ -13,7 +13,7 @@ HOMEPAGE="https://apps.kde.org/dragonplayer/"
 
 LICENSE="GPL-2+ || ( GPL-2 GPL-3 ) handbook? ( FDL-1.2 )"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE=""
 
 # Upstream only supports the ffmpeg backend https://bugs.kde.org/show_bug.cgi?id=506940
