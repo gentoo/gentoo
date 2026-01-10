@@ -183,9 +183,6 @@ ngx_mod_pkg_to_sonames() {
 # module's shared objects.  Flags may be of any form accepted by linker.
 # See the nginx_src_install() function in nginx.eclass for more details.
 #
-# This function has no effect after nginx-module_src_configure() has been
-# called.
-#
 # Example usage:
 # @CODE
 # ngx_mod_append_libs "-L/usr/$(get_libdir)/nginx/modules" \
@@ -195,7 +192,18 @@ ngx_mod_append_libs() {
 	debug-print-function "${FUNCNAME[0]}" "$@"
 	[[ $# -eq 0 ]] && return 0
 
-	export _NGINX_GENTOO_MOD_LIBS="${_NGINX_GENTOO_MOD_LIBS} $*"
+	local resp_file="${T}/append-libs-resp-file"
+
+	# Setup the response file. Make sure to do it only once.
+	if [[ -z "${_NGX_MOD_RESP_FILE_SET_UP}" ]]; then
+		touch "${resp_file}" || die "touch failed"
+		export _NGINX_GENTOO_MOD_LIBS+=" @${resp_file}"
+		declare -g -r _NGX_MOD_RESP_FILE_SET_UP=1
+	fi
+
+	# If multiple arguments are passed, expand them as separate words so that
+	# printf prints separate arguments on separate lines.
+	printf '%s\n' "$@" >> "${resp_file}" || die "printf failed"
 }
 
 # @FUNCTION: ngx_mod_setup_link_modules
@@ -216,78 +224,9 @@ ngx_mod_setup_link_modules() {
 
 	local moddir
 	moddir="${EPREFIX}/usr/$(get_libdir)/nginx/modules"
-	# Add 'moddir' to the list of directories search by linker.
-	ngx_mod_append_libs "-L${moddir}"
-
-	# The string passed to ngx_mod_append_libs undergoes the following
-	# transformations by NGINX build system (the str variable denotes the
-	# original string and 'modname' represents the name of the current module):
-	#         0. Given the value of 'str':
-	#             $ echo "${str}"
-	#             -Wl,-rpath,'\''\$\${ORIGIN}'\''
-	#
-	#         1. In auto/module, line 93:
-	#             eval ${modname}_libs=\'$str\'.
-	#         yields
-	#             modname_libs='-Wl,-rpath,'\''\$\${ORIGIN}'\'''
-	#         which can be logically separated into
-	#             (a) '-Wl,-rpath,'
-	#                 ^
-	#                 |
-	#       The first original single quote (\'$str\')
-	#                                         ^
-	#                                         |
-	#                                       This one
-	#             (b) \' (backslash-escaped semicolon)
-	#             (c) '\$\${ORIGIN}'
-	#             (d) \'
-	#             (e) ''
-	#				   ^
-	#				   |
-	#		The last original single quote (\'$str\')
-	#		                                       ^
-	#		                                       |
-	#		                                   This one
-	#         To preserve the string we add literal ' and \' so that the
-	#         ORIGIN part does not get expanded.
-	#           - (a) expands to
-	#               -Wl,-rpath
-	#           - (b) expands to
-	#               '
-	#           - (c) expands to
-	#               \$\${ORIGIN}
-	#           - (d) expands to
-	#               '
-	#           - (e) expands to nothing
-	#         Thus, after evaluating, the value of modname_libs is the
-	#         following.
-	#             $ echo "${modname_libs}"
-	#             -Wl,-rpath,'\$\${ORIGIN}'
-	#
-	#         2. In auto/make, line 507:
-	#             eval eval ngx_module_libs="\\\"\$${modname}_libs\\\"".
-	#         The expansion of parameters and double quotes produces the
-	#         following.
-	#             \"$modname_libs\"
-	#         The first outermost eval obtains the contents of the
-	#         ${modname}_libs variable and encloses them in double quotes,
-	#         yielding:
-	#		      eval ngx_module_libs="-Wl,-rpath,'\$\${ORIGIN}'"
-	#         The second innermost eval expands the double-quoted string,
-	#         produced by the first eval, stripping backslashes from '$'. The
-	#         value of 'ngx_module_libs' is therefore:
-	#             $ echo "${ngx_module_libs}"
-	#             -Wl,-rpath,'$${ORIGIN}'
-	#
-	#         3. ngx_module_libs's contents are added to the Makefile. make
-	#         expands $var variable references, double dollar is used to
-	#         suppress the expanding. Thus, the following is passed to the
-	#         shell:
-	#             -Wl,-rpath,'${ORIGIN}'
-	#
-	#         4. Finally, shell expands the single quotes, yielding literal:
-	#             -Wl,-rpath,${ORIGIN}
-	ngx_mod_append_libs "-Wl,-rpath,'\''"'\$\${ORIGIN}'"'\''"
+	# Add 'moddir' to the list of directories search by linker and add 'moddir'
+	# to the module's RUNPATH.
+	ngx_mod_append_libs "-L${moddir}" "-Wl,-rpath,\${ORIGIN}"
 }
 
 # @FUNCTION: ngx_mod_link_module
@@ -392,6 +331,18 @@ ngx_mod_link_lib() {
 # and NGINX's headers are created by the nginx-module_src_unpack() phase
 # function.
 S="${WORKDIR}/nginx"
+
+# If EGIT_REPO_URI is set, we are cloning a Git repo.
+if [[ -n "${EGIT_REPO_URI}" ]]; then
+	readonly _NGX_MOD_USE_GIT=1
+	inherit git-r3
+fi
+
+# Likewise for Mercurial.
+if [[ -n "${EHG_REPO_URI}" ]]; then
+	readonly _NGX_MOD_USE_MERCURIAL=1
+	inherit mercurial
+fi
 
 # @ECLASS_VARIABLE: NGINX_MOD_SHARED_OBJECTS
 # @OUTPUT_VARIABLE
@@ -602,6 +553,15 @@ nginx-module_src_unpack() {
 	ln -s "${BROOT}/usr/src/nginx/configure" nginx/configure || die "ln failed"
 	ln -s "${BROOT}/usr/src/nginx/auto" nginx/auto || die "ln failed"
 	ln -s "${ESYSROOT}/usr/include/nginx" nginx/src || die "ln failed"
+
+	# Pull a Git repository, if Git is used.
+	if [[ _NGX_MOD_USE_GIT -eq 1 ]]; then
+		EGIT_CHECKOUT_DIR="${NGINX_MOD_S}" git-r3_src_unpack
+	fi
+	# Likewise for Mercurial.
+	if [[ _NGX_MOD_USE_MERCURIAL -eq 1 ]]; then
+		EHG_CHECKOUT_DIR="${NGINX_MOD_S}" mercurial_src_unpack
+	fi
 }
 
 # @FUNCTION: nginx-module_src_prepare
@@ -642,11 +602,13 @@ nginx-module_src_prepare() {
 	sed -i -e '1i\' -e ': > build/ngx_auto_config.h' config ||
 		{ eend $? || die "sed failed"; }
 
-	echo 'mv build/ngx_auto_config.h build/__ngx_gentoo_mod_config.h' \
+	# Add one extra LF before the command in case the 'config' script does not
+	# have a trailing newline already.
+	printf "\n%s\n" 'mv build/ngx_auto_config.h build/__ngx_gentoo_mod_config.h' \
 		>> config
-	# We specifically need the $? of echo.
+	# We specifically need the $? of printf.
 	# shellcheck disable=SC2320
-	eend $? || die "echo failed"
+	eend $? || die "printf failed"
 
 	# cd into module root and apply patches.
 	pushd "${NGINX_MOD_S}" >/dev/null || die "pushd failed"
