@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -237,8 +237,8 @@ pkg_postinst() {
 	fi
 
 	# Let's not make a new certificate if we already have one
-	if ! [[ -e "${ROOT}"/etc/ssl/dovecot/server.pem && \
-		-e "${ROOT}"/etc/ssl/dovecot/server.key ]];	then
+	if ! [[ -e "${ROOT}"/etc/dovecot/server.pem && \
+		-e "${ROOT}"/etc/dovecot/server.key ]];	then
 		einfo "Creating SSL	certificate"
 		SSL_ORGANIZATION="${SSL_ORGANIZATION:-Dovecot IMAP Server}"
 		install_cert /etc/dovecot/server
