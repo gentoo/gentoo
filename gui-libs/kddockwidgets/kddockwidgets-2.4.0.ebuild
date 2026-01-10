@@ -1,4 +1,4 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ S=${WORKDIR}/KDDockWidgets-${PV}
 
 LICENSE="|| ( GPL-2 GPL-3 ) BSD MIT"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="qml"
 # building tests require developer mode which is messy to enable here
 RESTRICT="test"
