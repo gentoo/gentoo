@@ -45,6 +45,7 @@ src_configure() {
 	use video_cards_nvidia && libclc_targets+=(
 		"nvptx64--"
 		"nvptx64--nvidiacl"
+		"nvptx64-nvidia-cuda"
 	)
 	use video_cards_r600 && libclc_targets+=(
 		"r600--"
