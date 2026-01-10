@@ -493,7 +493,7 @@ cmake_prepare() {
 		die "FATAL: Unable to find CMakeLists.txt"
 	fi
 
-	if ! [[ ${CMAKE_REMOVE_MODULES_LIST@a} == *a* && ${#CMAKE_REMOVE_MODULES_LIST[@]} -eq 0 ]]; then
+	if [[ ${CMAKE_REMOVE_MODULES_LIST@a} != *a* ]]; then
 		if has_version -b "<dev-build/cmake-4.2.1"; then
 			CMAKE_REMOVE_MODULES_LIST=( FindBLAS FindLAPACK )
 		fi
