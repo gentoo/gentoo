@@ -1,0 +1,46 @@
+https://github.com/stamatak/standard-RAxML/pull/77
+https://bugs.gentoo.org/944195
+
+From f3214e02747a4d464b6e751d08759575bfe6114f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=89tienne=20Mollier?= <emollier@debian.org>
+Date: Sun, 2 Mar 2025 12:53:25 +0100
+Subject: [PATCH] Fix build failure with standard C 2023.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+As initially identified in [Debian bug #1097774], raxml fails to build
+with gcc 15, now defaulting on standard C 2023.  The error is:
+
+	rmq.h:13:13: error: ‘bool’ cannot be defined via ‘typedef’
+	   13 | typedef int bool;
+	      |             ^~~~
+	rmq.h:13:13: note: ‘bool’ is a keyword with ‘-std=c23’ onwards
+	rmq.h:13:1: warning: useless type name in empty declaration
+	   13 | typedef int bool;
+	      | ^~~~~~~
+
+The type bool is already defined starting with standard C 2023, so it
+is necessary to check for the standard level before defining the type.
+
+[Debian bug #1097774]: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1097774
+
+Signed-Off-By: Étienne Mollier <emollier@debian.org>
+---
+ rmq.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/rmq.h b/rmq.h
+index 6f61274..fb6a891 100644
+--- a/rmq.h
++++ b/rmq.h
+@@ -10,7 +10,9 @@ typedef int DT;                 // use long for 64bit-version (but take care of
+ typedef unsigned int DTidx;     // for indexing in arrays
+ typedef unsigned char DTsucc;
+ typedef unsigned short DTsucc2;
++#if !defined(__STDC_VERSION__) || __STDC_VERSION__ < 202311L
+ typedef int bool;
++#endif
+ DTidx query(DTidx, DTidx);
+ void RMQ_succinct(DT* a, DTidx n);
+ void RMQ_succinct_destroy(void);
