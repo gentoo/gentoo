@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,8 +17,6 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 fi
 
 IUSE="flite qml +speechd"
-# can build with neither, but then it is just mock tts and may be confusing
-REQUIRED_USE="|| ( flite speechd )"
 
 RDEPEND="
 	~dev-qt/qtbase-${PV}:6
