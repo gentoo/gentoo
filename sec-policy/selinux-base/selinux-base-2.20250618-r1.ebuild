@@ -1,7 +1,7 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="xml(+)"
@@ -20,7 +20,14 @@ else
 	KEYWORDS="amd64 arm arm64 ~riscv x86"
 fi
 
-IUSE="doc +unknown-perms systemd +ubac +unconfined"
+# Build all policy types by default
+IUSE="
+	doc +unknown-perms systemd +ubac +unconfined
+	+selinux_policy_types_targeted +selinux_policy_types_strict +selinux_policy_types_mcs +selinux_policy_types_mls
+"
+REQUIRED_USE="
+	|| ( selinux_policy_types_targeted selinux_policy_types_strict selinux_policy_types_mcs selinux_policy_types_mls )
+"
 
 DESCRIPTION="Gentoo base policy for SELinux"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:SELinux"
@@ -49,8 +56,6 @@ src_prepare() {
 }
 
 src_configure() {
-	[ -z "${POLICY_TYPES}" ] && local POLICY_TYPES="targeted strict mls mcs"
-
 	# Update the SELinux refpolicy capabilities based on the users' USE flags.
 	if use unknown-perms; then
 		sed -i -e '/^UNK_PERMS/s/deny/allow/' "${S}/refpolicy/build.conf" \
@@ -77,72 +82,73 @@ src_configure() {
 
 	# Setup the policies based on the types delivered by the end user.
 	# These types can be "targeted", "strict", "mcs" and "mls".
-	for i in ${POLICY_TYPES}; do
-		cp -a "${S}/refpolicy" "${S}/${i}" || die
-		cd "${S}/${i}" || die
+	for i in targeted strict mcs mls; do
+		if use selinux_policy_types_${i}; then
+			cp -a "${S}/refpolicy" "${S}/${i}" || die
+			cd "${S}/${i}" || die
 
-		sed -i -e "/= module/d" "${S}/${i}/policy/modules.conf" || die
+			sed -i -e "/= module/d" "${S}/${i}/policy/modules.conf" || die
 
-		sed -i -e '/^QUIET/s/n/y/' -e "/^NAME/s/refpolicy/$i/" \
-			"${S}/${i}/build.conf" || die "build.conf setup failed."
+			sed -i -e '/^QUIET/s/n/y/' -e "/^NAME/s/refpolicy/$i/" \
+				"${S}/${i}/build.conf" || die "build.conf setup failed."
 
-		if [[ "${i}" == "mls" ]] || [[ "${i}" == "mcs" ]];
-		then
-			# MCS/MLS require additional settings
-			sed -i -e "/^TYPE/s/standard/${i}/" "${S}/${i}/build.conf" \
-				|| die "failed to set type to mls"
-		fi
+			if [[ "${i}" == "mls" ]] || [[ "${i}" == "mcs" ]];
+			then
+				# MCS/MLS require additional settings
+				sed -i -e "/^TYPE/s/standard/${i}/" "${S}/${i}/build.conf" \
+					|| die "failed to set type to mls"
+			fi
 
-		if [ "${i}" == "targeted" ]; then
-			sed -i -e '/root/d' -e 's/user_u/unconfined_u/' \
-			"${S}/${i}/config/appconfig-standard/seusers" \
-			|| die "targeted seusers setup failed."
-		fi
+			if [ "${i}" == "targeted" ]; then
+				sed -i -e '/root/d' -e 's/user_u/unconfined_u/' \
+				"${S}/${i}/config/appconfig-standard/seusers" \
+				|| die "targeted seusers setup failed."
+			fi
 
-		if [ "${i}" != "targeted" ] && [ "${i}" != "strict" ] && use unconfined; then
-			sed -i -e '/root/d' -e 's/user_u/unconfined_u/' \
-			"${S}/${i}/config/appconfig-${i}/seusers" \
-			|| die "policy seusers setup failed."
+			if [ "${i}" != "targeted" ] && [ "${i}" != "strict" ] && use unconfined; then
+				sed -i -e '/root/d' -e 's/user_u/unconfined_u/' \
+				"${S}/${i}/config/appconfig-${i}/seusers" \
+				|| die "policy seusers setup failed."
+			fi
 		fi
 	done
 }
 
 src_compile() {
-	[ -z "${POLICY_TYPES}" ] && local POLICY_TYPES="targeted strict mls mcs"
-
-	for i in ${POLICY_TYPES}; do
-		cd "${S}/${i}" || die
-		emake base
-		if use doc; then
-			emake html
+	for i in targeted strict mcs mls; do
+		if use selinux_policy_types_${i}; then
+			cd "${S}/${i}" || die
+			emake base
+			if use doc; then
+				emake html
+			fi
 		fi
 	done
 }
 
 src_install() {
-	[ -z "${POLICY_TYPES}" ] && local POLICY_TYPES="targeted strict mls mcs"
+	for i in targeted strict mcs mls; do
+		if use selinux_policy_types_${i}; then
+			cd "${S}/${i}" || die
 
-	for i in ${POLICY_TYPES}; do
-		cd "${S}/${i}" || die
+			emake DESTDIR="${D}" install
+			emake DESTDIR="${D}" install-headers
 
-		emake DESTDIR="${D}" install
-		emake DESTDIR="${D}" install-headers
+			echo "run_init_t" > "${D}/etc/selinux/${i}/contexts/run_init_type" || die
 
-		echo "run_init_t" > "${D}/etc/selinux/${i}/contexts/run_init_type" || die
+			echo "textrel_shlib_t" >> "${D}/etc/selinux/${i}/contexts/customizable_types" || die
 
-		echo "textrel_shlib_t" >> "${D}/etc/selinux/${i}/contexts/customizable_types" || die
+			# libsemanage won't make this on its own
+			keepdir "/etc/selinux/${i}/policy"
 
-		# libsemanage won't make this on its own
-		keepdir "/etc/selinux/${i}/policy"
+			if use doc; then
+				docinto ${i}/html
+				dodoc -r doc/html/*;
+			fi
 
-		if use doc; then
-			docinto ${i}/html
-			dodoc -r doc/html/*;
+			insinto /usr/share/selinux/devel;
+			doins doc/policy.xml;
 		fi
-
-		insinto /usr/share/selinux/devel;
-		doins doc/policy.xml;
-
 	done
 
 	docinto /
