@@ -1,0 +1,43 @@
+From https://github.com/winterheart/aseprite/tree/v1.3.16.1-unbundle
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Tue, 2 Jan 2024 20:00:12 +0300
+Subject: [PATCH 4/7] Use shared fmt library
+
+Added option -DUSE_SHARED_FMT
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -66,6 +66,7 @@ enable_testing()
+ 
+ option(USE_SHARED_CMARK   "Use your installed copy of cmark" off)
+ option(USE_SHARED_CURL    "Use your installed copy of curl" off)
++option(USE_SHARED_FMT     "Use your installed copy of libfmt" off)
+ option(USE_SHARED_GIFLIB  "Use your installed copy of giflib" off)
+ option(USE_SHARED_JSON11  "Use your installed copy of json11" off)
+ option(USE_SHARED_ZLIB    "Use your installed copy of zlib" off)
+@@ -226,6 +227,10 @@ if(NOT USE_SHARED_CURL)
+   set(CURL_STATICLIB ON BOOL)
+ endif()
+ 
++if(USE_SHARED_FMT)
++  find_package(fmt REQUIRED)
++endif()
++
+ # zlib
+ if(USE_SHARED_ZLIB)
+   find_package(ZLIB REQUIRED)
+--- a/third_party/CMakeLists.txt
++++ b/third_party/CMakeLists.txt
+@@ -115,7 +115,9 @@ if(NOT USE_SHARED_HARFBUZZ AND NOT LAF_BACKEND STREQUAL "skia")
+ endif()
+ 
+ add_subdirectory(simpleini)
+-add_subdirectory(fmt)
++if(NOT USE_SHARED_FMT)
++  add_subdirectory(fmt)
++endif()
+ 
+ # Add cmark without tests
+ if(NOT USE_SHARED_CMARK)
+-- 
+2.51.2
+

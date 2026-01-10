@@ -1,0 +1,35 @@
+From https://github.com/winterheart/aseprite/tree/v1.3.16.1-unbundle
+--- a/laf/cmake/FindSkia.cmake
++++ b/laf/cmake/FindSkia.cmake
+@@ -172,18 +172,13 @@ if(NOT PNG_LIBRARIES)
+   set(PNG_INCLUDE_DIRS "${SKIA_DIR}/third_party/externals/libpng")
+ endif()
+ 
+-set(FREETYPE_FOUND ON)
+-find_library(FREETYPE_LIBRARY freetype2 PATH "${SKIA_LIBRARY_DIR}" NO_DEFAULT_PATH)
+-set(FREETYPE_LIBRARIES ${FREETYPE_LIBRARY})
+-set(FREETYPE_INCLUDE_DIRS "${SKIA_DIR}/third_party/externals/freetype/include")
+-
+-find_library(HARFBUZZ_LIBRARY harfbuzz PATH "${SKIA_LIBRARY_DIR}" NO_DEFAULT_PATH)
+-set(HARFBUZZ_LIBRARIES ${HARFBUZZ_LIBRARY})
+-set(HARFBUZZ_INCLUDE_DIRS "${SKIA_DIR}/third_party/externals/harfbuzz/src")
+-
+ set(SKIA_LIBRARIES
+   ${SKIA_LIBRARY}
+   ${SKIA_OPENGL_LIBRARY}
++  ${FREETYPE_LIBRARIES}
++  ${HARFBUZZ_LIBRARIES}
++  ${PNG_LIBRARIES}
++  ${WEBP_LIBRARIES}
+   CACHE INTERNAL "Skia libraries")
+ 
+ add_library(skia INTERFACE)
+@@ -191,6 +186,8 @@ target_include_directories(skia INTERFACE
+   ${SKIA_DIR}
+   ${FREETYPE_INCLUDE_DIRS}
+   ${HARFBUZZ_INCLUDE_DIRS}
++  ${PNG_INCLUDE_DIRS}
++  ${WEBP_INCLUDE_DIRS}
+   ${PNG_INCLUDE_DIRS})
+ target_link_libraries(skia INTERFACE ${SKIA_LIBRARIES})
+ target_compile_definitions(skia INTERFACE
