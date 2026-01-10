@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -59,7 +59,7 @@ SRC_URI="mirror://apache/${PN}/${PV}/${P}-src.zip
 S="${WORKDIR}/${P}"
 
 LICENSE="Apache-2.0"
-SLOT="0"
+SLOT="2"
 KEYWORDS="amd64 arm64 ppc64"
 IUSE="+tools"
 
@@ -77,7 +77,7 @@ CP_DEPEND="
 	dev-java/bcprov:0
 	dev-java/bcutil:0
 	dev-java/commons-logging:0
-	~dev-java/fontbox-${PV}:0
+	~dev-java/fontbox-${PV}:2
 "
 DEPEND="
 	${CP_DEPEND}
@@ -251,7 +251,7 @@ src_install() {
 	if use tools; then
 		java-pkg_dojar "pdfbox-debugger.jar"
 		java-pkg_dojar "pdfbox-tools.jar"
-		java-pkg_dolauncher ${PN} --main org.apache.pdfbox.tools.PDFBox
+		java-pkg_dolauncher ${PN}-${SLOT} --main org.apache.pdfbox.tools.PDFBox
 	fi
 
 	if use doc; then
