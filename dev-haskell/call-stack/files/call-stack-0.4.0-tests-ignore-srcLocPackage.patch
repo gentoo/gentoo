@@ -1,0 +1,25 @@
+From 3df9eb420b742a1bbe5f7cb6202701663c057e6f Mon Sep 17 00:00:00 2001
+From: hololeap <hololeap@protonmail.com>
+Date: Wed, 29 Jan 2025 16:24:43 -0700
+Subject: [PATCH 1/1] Reset srcLocPackage in test
+
+The original returned value may include a ABI hash (when using newer
+Cabal), which would be difficult to reliably test against. Reset it to
+"main", which is expected by the test.
+
+Signed-off-by: hololeap <hololeap@protonmail.com>
+--- a/test/Data/CallStackSpec.hs
++++ b/test/Data/CallStackSpec.hs
+@@ -9,7 +9,8 @@ spec :: Spec
+ spec = do
+   describe "callStack" $ do
+     it "returns the call stack" $ do
+-      mapLocations test `shouldBe` [
++      let test' = map (\(x,y) -> (x,y { srcLocPackage = "main" })) test
++      mapLocations test' `shouldBe` [
+ #if MIN_VERSION_base(4,8,1)
+           ("bar"
+           , SrcLoc {
+-- 
+2.45.3
+
