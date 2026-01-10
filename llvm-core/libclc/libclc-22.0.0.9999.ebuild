@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -43,9 +43,7 @@ src_configure() {
 		"spirv64-mesa3d-"
 	)
 	use video_cards_nvidia && libclc_targets+=(
-		"nvptx--"
 		"nvptx64--"
-		"nvptx--nvidiacl"
 		"nvptx64--nvidiacl"
 	)
 	use video_cards_r600 && libclc_targets+=(
@@ -53,8 +51,8 @@ src_configure() {
 	)
 	use video_cards_radeonsi && libclc_targets+=(
 		"amdgcn--"
+		"amdgcn-amd-amdhsa"
 		"amdgcn-mesa-mesa3d"
-		"amdgcn--amdhsa"
 	)
 
 	libclc_targets=${libclc_targets[*]}
