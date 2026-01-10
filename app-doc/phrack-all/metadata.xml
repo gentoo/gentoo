@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<stabilize-allarches/>
-<longdescription>
-"...those who know us know what we do, others do not have to...."
+	<maintainer type="person" proxied="yes">
+		<email>mario.haustein@hrz.tu-chemnitz.de</email>
+		<name>Mario Haustein</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<longdescription>
+		"...those who know us know what we do, others do not have to...."
 
-
-Phrack Magazine is made available to the public, as often as possible, free of 
-charge.
-New issues are announced on the mailinglist (see below), various forums and are 
-made available on the website (http://www.phrack.org).
-</longdescription>
+		Phrack Magazine is made available to the public, as often as possible,
+		free of charge. New issues are announced on the mailinglist (see
+		below), various forums and are made available on the website
+		(https://www.phrack.org).
+	</longdescription>
 </pkgmetadata>
