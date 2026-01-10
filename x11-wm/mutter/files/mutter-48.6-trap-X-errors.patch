@@ -1,0 +1,55 @@
+From df48348452407c58e4681c23c91fc174efbf4fed Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michel=20D=C3=A4nzer?= <mdaenzer@redhat.com>
+Date: Tue, 2 Dec 2025 16:57:14 +0100
+Subject: [PATCH] x11: Trap X errors for a couple more XSendEvent calls
+
+These may generate errors e.g. if the target window was destroyed.
+
+Closes: https://gitlab.gnome.org/GNOME/mutter/-/issues/4489
+Part-of: <https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/4801>
+---
+ src/x11/events.c             | 2 ++
+ src/x11/meta-x11-selection.c | 3 +++
+ 2 files changed, 5 insertions(+)
+ 
+diff --git a/src/x11/events.c b/src/x11/events.c
+index 4a9a43cbd..08c8a794e 100644
+--- a/src/x11/events.c
++++ b/src/x11/events.c
+@@ -1190,9 +1190,11 @@ process_selection_request (MetaX11Display *x11_display,
+         reply.property = event->xselectionrequest.property;
+     }
+ 
++  mtk_x11_error_trap_push (x11_display->xdisplay);
+   XSendEvent (x11_display->xdisplay,
+               event->xselectionrequest.requestor,
+               False, 0L, (XEvent*)&reply);
++  mtk_x11_error_trap_pop (x11_display->xdisplay);
+ 
+   meta_topic (META_DEBUG_X11, "Handled selection request");
+ }
+diff --git a/src/x11/meta-x11-selection.c b/src/x11/meta-x11-selection.c
+index 79592b854..0354cfe99 100644
+--- a/src/x11/meta-x11-selection.c
++++ b/src/x11/meta-x11-selection.c
+@@ -21,6 +21,7 @@
+ 
+ #include "core/meta-selection-private.h"
+ #include "meta/meta-selection-source-memory.h"
++#include "mtk/mtk-x11.h"
+ #include "x11/meta-selection-source-x11-private.h"
+ #include "x11/meta-x11-selection-output-stream-private.h"
+ #include "x11/meta-x11-selection-private.h"
+@@ -136,8 +137,10 @@ send_selection_notify (MetaX11Display         *x11_display,
+   event.target = request_event->target;
+   event.property = accepted ? request_event->property : None;
+ 
++  mtk_x11_error_trap_push (xdisplay);
+   XSendEvent (xdisplay, request_event->requestor,
+               False, NoEventMask, (XEvent *) &event);
++  mtk_x11_error_trap_pop (xdisplay);
+ }
+ 
+ static void
+-- 
+GitLab
