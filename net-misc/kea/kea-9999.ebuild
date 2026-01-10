@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ fi
 
 LICENSE="MPL-2.0"
 SLOT="0"
-IUSE="debug doc mysql +openssl postgres shell test"
+IUSE="debug doc kerberos mysql +openssl postgres shell test"
 
 REQUIRED_USE="shell? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
@@ -27,6 +27,7 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="
 	>=dev-libs/boost-1.66:=
 	dev-libs/log4cplus:=
+	kerberos? ( virtual/krb5 )
 	mysql? (
 		app-arch/zstd:=
 		dev-db/mysql-connector-c:=
@@ -112,7 +113,7 @@ src_configure() {
 	local emesonargs=(
 		--localstatedir="${EPREFIX}/var"
 		-Drunstatedir="${EPREFIX}/run"
-		-Dkrb5=disabled
+		$(meson_feature kerberos krb5)
 		-Dnetconf=disabled
 		-Dcrypto=$(usex openssl openssl botan)
 		$(meson_feature mysql)
@@ -159,6 +160,7 @@ src_test() {
 		kea-log-console_test.sh
 		dhcp-lease-query-tests
 		kea-dhcp6-tests
+		kea-dhcp4-tests
 		kea-dhcp-tests
 	)
 
@@ -168,7 +170,6 @@ src_test() {
 			kea-mysql-tests
 			dhcp-mysql-lib-tests
 			dhcp-forensic-log-libloadtests
-			kea-dhcp4-tests
 		)
 	fi
 
@@ -178,7 +179,12 @@ src_test() {
 			kea-pgsql-tests
 			dhcp-pgsql-lib-tests
 			dhcp-forensic-log-libloadtests
-			kea-dhcp4-tests
+		)
+	fi
+
+	if use kerberos; then
+		SKIP_TESTS+=(
+			ddns-gss-tsig-tests
 		)
 	fi
 
@@ -186,7 +192,6 @@ src_test() {
 		# see https://bugs.gentoo.org/958171 for reason for skipping these tests
 		SKIP_TESTS+=(
 			kea-util-tests
-			kea-dhcp4-tests
 			kea-dhcpsrv-tests
 			dhcp-ha-lib-tests
 			kea-d2-tests
@@ -282,6 +287,9 @@ pkg_postinst() {
 	fi
 
 	if ver_replacing -lt 3.0; then
+		ewarn "Make sure that ${EPREFIX}/var/lib/kea and all the files in it are owned by dhcp:"
+		ewarn "chown -R dhcp:dhcp ${EPREFIX}/var/lib/kea"
+		ewarn
 		ewarn "If using openrc;"
 		ewarn "  There are now separate conf.d scripts and associated init.d per daemon!"
 		ewarn "    Each Daemon needs to be launched separately, i.e. the daemons are"
