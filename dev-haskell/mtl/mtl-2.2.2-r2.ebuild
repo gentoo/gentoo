@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,8 +20,9 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND="
-	>=dev-lang/ghc-8.10.6:=
+	>=dev-lang/ghc-8.10.6:= <dev-lang/ghc-9.5
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+"
 
-CABAL_CORE_LIB_GHC_PV="8.10.6 8.10.7 9.0.2 9.2.4 9.2.5 9.2.6 9.2.7 9.2.8 9.4.4 9.4.5"
+CABAL_CORE_LIB_GHC_PV="8.10.6 8.10.7 9.0.2 9.2.4 9.2.5 9.2.6 9.2.7 9.2.8 9.4.4 9.4.5 9.4.7 9.4.8"
