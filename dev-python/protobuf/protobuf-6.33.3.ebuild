@@ -8,9 +8,12 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 pypi
+
+GH_PV=$(ver_cut 2-3)
+GH_P=${PN}-${GH_PV}
 
 DESCRIPTION="Google's Protocol Buffers - Python bindings"
 HOMEPAGE="
@@ -21,14 +24,14 @@ HOMEPAGE="
 SRC_URI="
 	$(pypi_sdist_url) -> ${P}.py.tar.gz
 	test? (
-		https://github.com/protocolbuffers/protobuf/archive/v${PV}.tar.gz
-			-> ${P}.gh.tar.gz
+		https://github.com/protocolbuffers/protobuf/archive/v${GH_PV}.tar.gz
+			-> ${GH_P}.gh.tar.gz
 	)
 "
 
 LICENSE="BSD"
 SLOT="0/$(ver_cut 1-3)"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~x64-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 # need protobuf compiler
 BDEPEND="
@@ -39,6 +42,8 @@ BDEPEND="
 	)
 "
 
+EPYTEST_PLUGINS=()
+EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 src_unpack() {
@@ -47,7 +52,7 @@ src_unpack() {
 	if use test; then
 		mkdir "${WORKDIR}/test" || die
 		cd "${WORKDIR}/test" || die
-		unpack "${P}.gh.tar.gz"
+		unpack "${GH_P}.gh.tar.gz"
 	fi
 }
 
@@ -59,6 +64,7 @@ src_prepare() {
 }
 
 python_test() {
+	local EPYTEST_DESELECT=()
 	local EPYTEST_IGNORE=(
 		# TODO: figure out how to build the pybind11 test extension
 		google/protobuf/internal/recursive_message_pybind11_test.py
@@ -71,9 +77,12 @@ python_test() {
 				google/protobuf/internal/json_format_test.py
 			)
 			;;
-		python3.13)
-			# TODO: segfaults on exit
-			return
+		python3.14*)
+			EPYTEST_DESELECT+=(
+				# exception message mismatch
+				google/protobuf/internal/json_format_test.py::JsonFormatTest::testInvalidTimestamp
+				google/protobuf/internal/well_known_types_test.py::TimeUtilTest::testInvalidTimestamp
+			)
 			;;
 	esac
 
@@ -82,11 +91,11 @@ python_test() {
 	cd "${BUILD_DIR}/test$(python_get_sitedir)" || die
 
 	# copy test files from the source tree
-	cp -r "${WORKDIR}/test/${P}/python/google/protobuf/internal/." \
+	cp -r "${WORKDIR}/test/${GH_P}/python/google/protobuf/internal/." \
 		google/protobuf/internal/ || die
 	# link the test data for text_format_test.py
 	# (it traverses directories upwards until to finds src/google...)
-	ln -s "${WORKDIR}/test/${P}/src" ../src || die
+	ln -s "${WORKDIR}/test/${GH_P}/src" ../src || die
 
 	# compile test-related protobufs
 	local test_protos=(
@@ -100,6 +109,7 @@ python_test() {
 		unittest_delimited_import.proto
 		unittest_features.proto
 		unittest_import.proto
+		unittest_import_option.proto
 		unittest_import_public.proto
 		unittest_legacy_features.proto
 		unittest_mset.proto
@@ -136,10 +146,9 @@ python_test() {
 	)
 	local proto
 	for proto in "${test_protos[@]}"; do
-		protoc --python_out=. -I"${WORKDIR}/test/${P}/src" -I. \
+		protoc --python_out=. -I"${WORKDIR}/test/${GH_P}/src" -I. \
 			"google/protobuf/${proto}" || die
 	done
 
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -s
+	epytest
 }
