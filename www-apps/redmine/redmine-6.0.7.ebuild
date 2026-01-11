@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby32 ruby33"
 inherit depend.apache ruby-ng
 
 DESCRIPTION="Flexible project management web application using the Ruby on Rails framework"
@@ -36,14 +36,14 @@ ruby_add_bdepend "
 	>=dev-ruby/mail-2.8.1
 	dev-ruby/marcel
 	>=dev-ruby/mini_mime-1.1.0
-	>=dev-ruby/net-imap-0.4.8
+	>=dev-ruby/net-imap-0.5.7
 	>=dev-ruby/net-pop-0.1.2
 	>=dev-ruby/net-smtp-0.4.0
-	>=dev-ruby/nokogiri-1.16.0
+	>=dev-ruby/nokogiri-1.18.3
 	>=dev-ruby/propshaft-1.1.0:1
 	>=dev-ruby/rack-3.1.3:3.1
-	>=dev-ruby/rails-7.2.2.1:7.2
-	>=dev-ruby/rbpdf-1.21.3
+	>=dev-ruby/rails-7.2.2.2:7.2
+	>=dev-ruby/rbpdf-1.21.4
 	>=dev-ruby/redcarpet-3.6.0
 	>=dev-ruby/request_store-1.5.0:0
 	dev-ruby/rexml
@@ -65,6 +65,7 @@ RDEPEND="
 	)
 	standalone? ( www-servers/puma )
 "
+want_apache2 passenger
 
 REDMINE_DIR="/var/lib/${PN}"
 
@@ -141,7 +142,6 @@ all_ruby_install() {
 		/var/log/${PN}
 
 	if use passenger; then
-		has_apache
 		insinto "${APACHE_VHOSTS_CONFDIR}"
 		doins "${FILESDIR}/10_redmine_vhost.conf"
 	fi
@@ -177,6 +177,10 @@ pkg_postinst() {
 		elog "Installation notes are at official site"
 		elog "http://www.redmine.org/wiki/redmine/RedmineInstall"
 	fi
+}
+
+pkg_setup() {
+	depend.apache_pkg_setup passenger
 }
 
 pkg_config() {
