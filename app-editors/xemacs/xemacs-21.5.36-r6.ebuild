@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -65,6 +65,7 @@ src_prepare() {
 	eapply "${FILESDIR}/${P}-configure-postgresql.patch"
 	eapply "${FILESDIR}/${P}-berkdb-5.3.patch"
 	eapply "${FILESDIR}/${P}-cus-dep.patch"
+	eapply "${FILESDIR}/${P}-xaw3d.patch"
 	eapply_user
 
 	eautoconf

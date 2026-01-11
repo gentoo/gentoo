@@ -1,0 +1,13 @@
+diff --git a/src/config.h.in b/src/config.h.in
+--- a/src/config.h.in
++++ b/src/config.h.in
+@@ -826,6 +826,9 @@
+ #undef LWLIB_WIDGETS_ATHENA
+ #undef HAVE_ATHENA_3D
+ #undef HAVE_ATHENA_I18N
++#ifdef HAVE_ATHENA_I18N
++#define XAW_INTERNATIONALIZATION 1
++#endif
+ 
+ /* Other things that can be disabled by configure. */
+ #undef HAVE_MENUBARS
