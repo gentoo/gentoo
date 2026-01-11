@@ -1,0 +1,37 @@
+From 364ca1d1cd7c61c0381574435f3c193a74db4056 Mon Sep 17 00:00:00 2001
+From: Thibaud CANALE <thican@thican.net>
+Date: Sun, 11 Jan 2026 11:45:54 +0100
+Subject: [PATCH] configure: fix faulty disable behavior
+
+Original author: Sam James from Gentoo.
+
+Bugs: https://bugs.gentoo.org/968600
+Signed-off-by: Thibaud CANALE <thican@thican.net>
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 777b9bdb..9d7de3b4 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -41,14 +41,14 @@ GLIB_GSETTINGS
+ AC_ARG_ENABLE(all-translations-in-one-xml,
+         [AS_HELP_STRING([--enable-all-translations-in-one-xml],
+                         [Put all translations in a big Locations.xml file (slow to parse)])],
+-        [enable_big_xml=yes],
++        [enable_big_xml=$enableval],
+         [enable_big_xml=no])
+ AM_CONDITIONAL(USE_ONE_BIG_XML, test "x$enable_big_xml" = "xyes")
+ 
+ AC_ARG_ENABLE(locations-compression,
+         [AS_HELP_STRING([--enable-locations-compression],
+                         [Compress Locations.xml files])],
+-        [enable_locations_compression=yes],
++        [enable_locations_compression=$enableval],
+         [enable_locations_compression=no])
+ if test "x$enable_locations_compression" = "xyes"; then
+     COMPRESS_EXT=.gz
+-- 
+2.52.0
+

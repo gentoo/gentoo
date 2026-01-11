@@ -46,6 +46,7 @@ BDEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}"/${P}-fix_disable_configure.patch
 	"${FILESDIR}"/${P}-libsoup3.patch
 	"${FILESDIR}"/${P}-location.patch # in upstream’s branch 1.28, not in tag yet
 	"${FILESDIR}"/${P}-SPECI_report_data.patch
