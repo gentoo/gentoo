@@ -1,0 +1,1273 @@
+From openeuler's patchset:
+https://gitee.com/src-openeuler/libxcrypt/blob/master/add-sm3-crypt-support.patch
+
+From e71596d521a17e875864bee8d7c25da71d83ba72 Mon Sep 17 00:00:00 2001
+From: houmingyong <houmingyong@huawei.com>
+Date: Wed, 1 Jan 2025 00:10:24 +0800
+Subject: [PATCH] add sm3 crypt support
+
+---
+ Makefile.am              |   7 +
+ README                   |   4 +-
+ doc/crypt.5              |   8 +
+ lib/alg-sm3.c            | 419 +++++++++++++++++++++++++++++++++++++++
+ lib/alg-sm3.h            |  62 ++++++
+ lib/crypt-port.h         |   9 +-
+ lib/crypt-sm3.c          | 358 +++++++++++++++++++++++++++++++++
+ lib/hashes.conf          |   1 +
+ test/alg-sm3.c           | 124 ++++++++++++
+ test/badsetting.c        |   9 +
+ test/checksalt.c         |   5 +
+ test/crypt-badargs.c     |   4 +
+ test/gensalt-extradata.c |   3 +
+ test/gensalt.c           |  38 +++-
+ 14 files changed, 1047 insertions(+), 4 deletions(-)
+ create mode 100644 lib/alg-sm3.c
+ create mode 100644 lib/alg-sm3.h
+ create mode 100644 lib/crypt-sm3.c
+ create mode 100644 test/alg-sm3.c
+
+diff --git a/Makefile.am b/Makefile.am
+index 32e526f..3267cbd 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -79,6 +79,7 @@ noinst_HEADERS = \
+ 	lib/alg-md5.h \
+ 	lib/alg-sha1.h \
+ 	lib/alg-sha256.h \
++	lib/alg-sm3.h \
+ 	lib/alg-sha512.h \
+ 	lib/alg-yescrypt.h \
+ 	lib/byteorder.h \
+@@ -107,6 +108,7 @@ libcrypt_la_SOURCES = \
+ 	lib/alg-md5.c \
+ 	lib/alg-sha1.c \
+ 	lib/alg-sha256.c \
++	lib/alg-sm3.c \
+ 	lib/alg-sha512.c \
+ 	lib/alg-yescrypt-common.c \
+ 	lib/alg-yescrypt-opt.c \
+@@ -119,6 +121,7 @@ libcrypt_la_SOURCES = \
+ 	lib/crypt-pbkdf1-sha1.c \
+ 	lib/crypt-scrypt.c \
+ 	lib/crypt-sha256.c \
++	lib/crypt-sm3.c \
+ 	lib/crypt-sha512.c \
+ 	lib/crypt-static.c \
+ 	lib/crypt-sunmd5.c \
+@@ -366,6 +369,7 @@ check_PROGRAMS = \
+ 	test/alg-pbkdf-hmac-sha256 \
+ 	test/alg-sha1 \
+ 	test/alg-sha256 \
++	test/alg-sm3 \
+ 	test/alg-sha512 \
+ 	test/alg-yescrypt \
+ 	test/badsalt \
+@@ -578,6 +582,9 @@ test_crypt_gost_yescrypt_LDADD = \
+ 	lib/libcrypt_la-util-xbzero.lo \
+ 	lib/libcrypt_la-util-xstrcpy.lo \
+ 	$(COMMON_TEST_OBJECTS)
++test_alg_sm3_LDADD = \
++	lib/libcrypt_la-alg-sm3.lo \
++	$(COMMON_TEST_OBJECTS)
+ 
+ test_explicit_bzero_LDADD = \
+ 	lib/libcrypt_la-util-xbzero.lo
+diff --git a/README b/README
+index 45b7f02..8a9abfd 100644
+--- a/README
++++ b/README
+@@ -11,7 +11,7 @@ README for libxcrypt
+ 
+ libxcrypt is a modern library for one-way hashing of passwords.  It
+ supports a wide variety of both modern and historical hashing methods:
+-yescrypt, gost-yescrypt, scrypt, bcrypt, sha512crypt, sha256crypt,
++yescrypt, gost-yescrypt, scrypt, bcrypt, sha512crypt, sha256crypt, sm3crypt,
+ md5crypt, SunMD5, sha1crypt, NT, bsdicrypt, bigcrypt, and descrypt.
+ It provides the traditional Unix `crypt` and `crypt_r` interfaces, as
+ well as a set of extended interfaces pioneered by Openwall Linux,
+@@ -164,7 +164,7 @@ returns `$3$`.
+ 
+ glibc’s libcrypt could optionally be configured to use Mozilla’s NSS
+ library’s implementations of the cryptographic primitives md5crypt,
+-sha256crypt, and sha512crypt.  This option is not available in
++sha256crypt, sm3crypt and sha512crypt.  This option is not available in
+ libxcrypt, because we do not currently believe it is a desirable
+ option.  The stated rationale for the option was to source all
+ cryptographic primitives from a library that has undergone FIPS
+diff --git a/doc/crypt.5 b/doc/crypt.5
+index 637741d..8575820 100644
+--- a/doc/crypt.5
++++ b/doc/crypt.5
+@@ -227,6 +227,14 @@ Acceptable for new hashes.
+ The default processing cost parameter is 5000,
+ which is too low for modern hardware.
+ .hash "$5$" "\e$5\e$(rounds=[1-9][0-9]+\e$)?[^$:\(rsn]{1,16}\e$[./0-9A-Za-z]{43}" unlimited 8 256 256 "6 to 96" "1000 to 999,999,999"
++.Ss sm3crypt
++A hash based on SM3 with 256-bit output,
++originally developed by Ribose for OpenSSL.
++Supported on Linux but not common elsewhere.
++Acceptable for new hashes.
++The default CPU time cost parameter is 5000,
++which is too low for modern hardware.
++.hash "$sm3$" "\e$sm3\e$(rounds=[1-9][0-9]+\e$)?[./0-9A-Za-z]{1,16}\e$[./0-9A-Za-z]{43}" unlimited 8 256 256 "6 to 96" "1000 to 999,999,999"
+ .Ss sha1crypt
+ A hash based on HMAC-SHA1.
+ Originally developed by Simon Gerraty for NetBSD.
+diff --git a/lib/alg-sm3.c b/lib/alg-sm3.c
+new file mode 100644
+index 0000000..5347e11
+--- /dev/null
++++ b/lib/alg-sm3.c
+@@ -0,0 +1,419 @@
++/*-
++ * Copyright(C) 2017-2021. Huawei Technologies Co.,Ltd. All Rights Reserved.
++ * Copyright 2017-2021 The OpenSSL Project Authors. All Rights Reserved.
++ * Copyright 2017 Ribose Inc. All Rights Reserved.
++ * Ported from Ribose contributions from Botan.
++ *
++ * Licensed under the Apache License 2.0 (the "License").  You may not use
++ * this file except in compliance with the License.  You can obtain a copy
++ * in the file LICENSE in the source distribution or at
++ * https://www.openssl.org/source/license.html
++ */
++
++#include "crypt-port.h"
++
++#if INCLUDE_sm3crypt
++
++#define insecure_memzero explicit_bzero
++
++#include "alg-sm3.h"
++#include "byteorder.h"
++
++#define ROTATE(a,n)     (((a)<<(n))|(((a)&0xffffffff)>>(32-(n))))
++
++#define P0(X) (X ^ ROTATE(X, 9) ^ ROTATE(X, 17))
++#define P1(X) (X ^ ROTATE(X, 15) ^ ROTATE(X, 23))
++
++#define FF0(X,Y,Z) (X ^ Y ^ Z)
++#define GG0(X,Y,Z) (X ^ Y ^ Z)
++
++#define FF1(X,Y,Z) ((X & Y) | ((X | Y) & Z))
++#define GG1(X,Y,Z) ((Z ^ (X & (Y ^ Z))))
++
++#define EXPAND(W0,W7,W13,W3,W10) \
++   (P1(W0 ^ W7 ^ ROTATE(W13, 15)) ^ ROTATE(W3, 7) ^ W10)
++
++#define RND(A, B, C, D, E, F, G, H, TJ, Wi, Wj, FF, GG)           \
++     do {                                                         \
++       const uint32_t A12 = ROTATE(A, 12);                        \
++       const uint32_t A12_SM = A12 + E + TJ;                      \
++       const uint32_t SS1 = ROTATE(A12_SM, 7);                    \
++       const uint32_t TT1 = FF(A, B, C) + D + (SS1 ^ A12) + (Wj); \
++       const uint32_t TT2 = GG(E, F, G) + H + SS1 + Wi;           \
++       B = ROTATE(B, 9);                                          \
++       D = TT1;                                                   \
++       F = ROTATE(F, 19);                                         \
++       H = P0(TT2);                                               \
++     } while(0)
++
++#define R1(A,B,C,D,E,F,G,H,TJ,Wi,Wj) \
++   RND(A,B,C,D,E,F,G,H,TJ,Wi,Wj,FF0,GG0)
++
++#define R2(A,B,C,D,E,F,G,H,TJ,Wi,Wj) \
++   RND(A,B,C,D,E,F,G,H,TJ,Wi,Wj,FF1,GG1)
++
++/*
++ * Encode a length len*2 vector of (uint32_t) into a length len*8 vector of
++ * (uint8_t) in big-endian form.
++ */
++static void
++sm3_be32enc_vect(uint8_t * dst, const uint32_t * src, size_t len)
++{
++
++	/* Encode vector, two words at a time. */
++	do {
++		be32enc(&dst[0], src[0]);
++		be32enc(&dst[4], src[1]);
++		src += 2;
++		dst += 8;
++	} while (--len);
++}
++
++/*
++ * Decode a big-endian length len*8 vector of (uint8_t) into a length
++ * len*2 vector of (uint32_t).
++ */
++static void
++sm3_be32dec_vect(uint32_t * dst, const uint8_t * src, size_t len)
++{
++
++	/* Decode vector, two words at a time. */
++	do {
++		dst[0] = be32dec(&src[0]);
++		dst[1] = be32dec(&src[4]);
++		src += 8;
++		dst += 2;
++	} while (--len);
++}
++
++static void
++SM3_Transform(uint32_t state[static restrict 8],
++    const uint8_t block[static restrict 64],
++    uint32_t W[static restrict 64])
++{
++	register uint32_t A, B, C, D, E, F, G, H;
++	uint32_t W00, W01, W02, W03, W04, W05, W06, W07,
++		 W08, W09, W10, W11, W12, W13, W14, W15;
++
++	/* 1. Prepare the first part of the message schedule W. */
++	sm3_be32dec_vect(W, block, 8);
++
++	A = state[0];
++	B = state[1];
++	C = state[2];
++	D = state[3];
++	E = state[4];
++	F = state[5];
++	G = state[6];
++	H = state[7];
++
++	W00 = W[0];
++	W01 = W[1];
++	W02 = W[2];
++	W03 = W[3];
++	W04 = W[4];
++	W05 = W[5];
++	W06 = W[6];
++	W07 = W[7];
++	W08 = W[8];
++	W09 = W[9];
++	W10 = W[10];
++	W11 = W[11];
++	W12 = W[12];
++	W13 = W[13];
++	W14 = W[14];
++	W15 = W[15];
++
++        R1(A, B, C, D, E, F, G, H, 0x79CC4519, W00, W00 ^ W04);
++        W00 = EXPAND(W00, W07, W13, W03, W10);
++        R1(D, A, B, C, H, E, F, G, 0xF3988A32, W01, W01 ^ W05);
++        W01 = EXPAND(W01, W08, W14, W04, W11);
++        R1(C, D, A, B, G, H, E, F, 0xE7311465, W02, W02 ^ W06);
++        W02 = EXPAND(W02, W09, W15, W05, W12);
++        R1(B, C, D, A, F, G, H, E, 0xCE6228CB, W03, W03 ^ W07);
++        W03 = EXPAND(W03, W10, W00, W06, W13);
++        R1(A, B, C, D, E, F, G, H, 0x9CC45197, W04, W04 ^ W08);
++        W04 = EXPAND(W04, W11, W01, W07, W14);
++        R1(D, A, B, C, H, E, F, G, 0x3988A32F, W05, W05 ^ W09);
++        W05 = EXPAND(W05, W12, W02, W08, W15);
++        R1(C, D, A, B, G, H, E, F, 0x7311465E, W06, W06 ^ W10);
++        W06 = EXPAND(W06, W13, W03, W09, W00);
++        R1(B, C, D, A, F, G, H, E, 0xE6228CBC, W07, W07 ^ W11);
++        W07 = EXPAND(W07, W14, W04, W10, W01);
++        R1(A, B, C, D, E, F, G, H, 0xCC451979, W08, W08 ^ W12);
++        W08 = EXPAND(W08, W15, W05, W11, W02);
++        R1(D, A, B, C, H, E, F, G, 0x988A32F3, W09, W09 ^ W13);
++        W09 = EXPAND(W09, W00, W06, W12, W03);
++        R1(C, D, A, B, G, H, E, F, 0x311465E7, W10, W10 ^ W14);
++        W10 = EXPAND(W10, W01, W07, W13, W04);
++        R1(B, C, D, A, F, G, H, E, 0x6228CBCE, W11, W11 ^ W15);
++        W11 = EXPAND(W11, W02, W08, W14, W05);
++        R1(A, B, C, D, E, F, G, H, 0xC451979C, W12, W12 ^ W00);
++        W12 = EXPAND(W12, W03, W09, W15, W06);
++        R1(D, A, B, C, H, E, F, G, 0x88A32F39, W13, W13 ^ W01);
++        W13 = EXPAND(W13, W04, W10, W00, W07);
++        R1(C, D, A, B, G, H, E, F, 0x11465E73, W14, W14 ^ W02);
++        W14 = EXPAND(W14, W05, W11, W01, W08);
++        R1(B, C, D, A, F, G, H, E, 0x228CBCE6, W15, W15 ^ W03);
++        W15 = EXPAND(W15, W06, W12, W02, W09);
++        R2(A, B, C, D, E, F, G, H, 0x9D8A7A87, W00, W00 ^ W04);
++        W00 = EXPAND(W00, W07, W13, W03, W10);
++        R2(D, A, B, C, H, E, F, G, 0x3B14F50F, W01, W01 ^ W05);
++        W01 = EXPAND(W01, W08, W14, W04, W11);
++        R2(C, D, A, B, G, H, E, F, 0x7629EA1E, W02, W02 ^ W06);
++        W02 = EXPAND(W02, W09, W15, W05, W12);
++        R2(B, C, D, A, F, G, H, E, 0xEC53D43C, W03, W03 ^ W07);
++        W03 = EXPAND(W03, W10, W00, W06, W13);
++        R2(A, B, C, D, E, F, G, H, 0xD8A7A879, W04, W04 ^ W08);
++        W04 = EXPAND(W04, W11, W01, W07, W14);
++        R2(D, A, B, C, H, E, F, G, 0xB14F50F3, W05, W05 ^ W09);
++        W05 = EXPAND(W05, W12, W02, W08, W15);
++        R2(C, D, A, B, G, H, E, F, 0x629EA1E7, W06, W06 ^ W10);
++        W06 = EXPAND(W06, W13, W03, W09, W00);
++        R2(B, C, D, A, F, G, H, E, 0xC53D43CE, W07, W07 ^ W11);
++        W07 = EXPAND(W07, W14, W04, W10, W01);
++        R2(A, B, C, D, E, F, G, H, 0x8A7A879D, W08, W08 ^ W12);
++        W08 = EXPAND(W08, W15, W05, W11, W02);
++        R2(D, A, B, C, H, E, F, G, 0x14F50F3B, W09, W09 ^ W13);
++        W09 = EXPAND(W09, W00, W06, W12, W03);
++        R2(C, D, A, B, G, H, E, F, 0x29EA1E76, W10, W10 ^ W14);
++        W10 = EXPAND(W10, W01, W07, W13, W04);
++        R2(B, C, D, A, F, G, H, E, 0x53D43CEC, W11, W11 ^ W15);
++        W11 = EXPAND(W11, W02, W08, W14, W05);
++        R2(A, B, C, D, E, F, G, H, 0xA7A879D8, W12, W12 ^ W00);
++        W12 = EXPAND(W12, W03, W09, W15, W06);
++        R2(D, A, B, C, H, E, F, G, 0x4F50F3B1, W13, W13 ^ W01);
++        W13 = EXPAND(W13, W04, W10, W00, W07);
++        R2(C, D, A, B, G, H, E, F, 0x9EA1E762, W14, W14 ^ W02);
++        W14 = EXPAND(W14, W05, W11, W01, W08);
++        R2(B, C, D, A, F, G, H, E, 0x3D43CEC5, W15, W15 ^ W03);
++        W15 = EXPAND(W15, W06, W12, W02, W09);
++        R2(A, B, C, D, E, F, G, H, 0x7A879D8A, W00, W00 ^ W04);
++        W00 = EXPAND(W00, W07, W13, W03, W10);
++        R2(D, A, B, C, H, E, F, G, 0xF50F3B14, W01, W01 ^ W05);
++        W01 = EXPAND(W01, W08, W14, W04, W11);
++        R2(C, D, A, B, G, H, E, F, 0xEA1E7629, W02, W02 ^ W06);
++        W02 = EXPAND(W02, W09, W15, W05, W12);
++        R2(B, C, D, A, F, G, H, E, 0xD43CEC53, W03, W03 ^ W07);
++        W03 = EXPAND(W03, W10, W00, W06, W13);
++        R2(A, B, C, D, E, F, G, H, 0xA879D8A7, W04, W04 ^ W08);
++        W04 = EXPAND(W04, W11, W01, W07, W14);
++        R2(D, A, B, C, H, E, F, G, 0x50F3B14F, W05, W05 ^ W09);
++        W05 = EXPAND(W05, W12, W02, W08, W15);
++        R2(C, D, A, B, G, H, E, F, 0xA1E7629E, W06, W06 ^ W10);
++        W06 = EXPAND(W06, W13, W03, W09, W00);
++        R2(B, C, D, A, F, G, H, E, 0x43CEC53D, W07, W07 ^ W11);
++        W07 = EXPAND(W07, W14, W04, W10, W01);
++        R2(A, B, C, D, E, F, G, H, 0x879D8A7A, W08, W08 ^ W12);
++        W08 = EXPAND(W08, W15, W05, W11, W02);
++        R2(D, A, B, C, H, E, F, G, 0x0F3B14F5, W09, W09 ^ W13);
++        W09 = EXPAND(W09, W00, W06, W12, W03);
++        R2(C, D, A, B, G, H, E, F, 0x1E7629EA, W10, W10 ^ W14);
++        W10 = EXPAND(W10, W01, W07, W13, W04);
++        R2(B, C, D, A, F, G, H, E, 0x3CEC53D4, W11, W11 ^ W15);
++        W11 = EXPAND(W11, W02, W08, W14, W05);
++        R2(A, B, C, D, E, F, G, H, 0x79D8A7A8, W12, W12 ^ W00);
++        W12 = EXPAND(W12, W03, W09, W15, W06);
++        R2(D, A, B, C, H, E, F, G, 0xF3B14F50, W13, W13 ^ W01);
++        W13 = EXPAND(W13, W04, W10, W00, W07);
++        R2(C, D, A, B, G, H, E, F, 0xE7629EA1, W14, W14 ^ W02);
++        W14 = EXPAND(W14, W05, W11, W01, W08);
++        R2(B, C, D, A, F, G, H, E, 0xCEC53D43, W15, W15 ^ W03);
++        W15 = EXPAND(W15, W06, W12, W02, W09);
++        R2(A, B, C, D, E, F, G, H, 0x9D8A7A87, W00, W00 ^ W04);
++        W00 = EXPAND(W00, W07, W13, W03, W10);
++        R2(D, A, B, C, H, E, F, G, 0x3B14F50F, W01, W01 ^ W05);
++        W01 = EXPAND(W01, W08, W14, W04, W11);
++        R2(C, D, A, B, G, H, E, F, 0x7629EA1E, W02, W02 ^ W06);
++        W02 = EXPAND(W02, W09, W15, W05, W12);
++        R2(B, C, D, A, F, G, H, E, 0xEC53D43C, W03, W03 ^ W07);
++        W03 = EXPAND(W03, W10, W00, W06, W13);
++        R2(A, B, C, D, E, F, G, H, 0xD8A7A879, W04, W04 ^ W08);
++        R2(D, A, B, C, H, E, F, G, 0xB14F50F3, W05, W05 ^ W09);
++        R2(C, D, A, B, G, H, E, F, 0x629EA1E7, W06, W06 ^ W10);
++        R2(B, C, D, A, F, G, H, E, 0xC53D43CE, W07, W07 ^ W11);
++        R2(A, B, C, D, E, F, G, H, 0x8A7A879D, W08, W08 ^ W12);
++        R2(D, A, B, C, H, E, F, G, 0x14F50F3B, W09, W09 ^ W13);
++        R2(C, D, A, B, G, H, E, F, 0x29EA1E76, W10, W10 ^ W14);
++        R2(B, C, D, A, F, G, H, E, 0x53D43CEC, W11, W11 ^ W15);
++        R2(A, B, C, D, E, F, G, H, 0xA7A879D8, W12, W12 ^ W00);
++        R2(D, A, B, C, H, E, F, G, 0x4F50F3B1, W13, W13 ^ W01);
++        R2(C, D, A, B, G, H, E, F, 0x9EA1E762, W14, W14 ^ W02);
++        R2(B, C, D, A, F, G, H, E, 0x3D43CEC5, W15, W15 ^ W03);
++
++	state[0] ^= A;
++	state[1] ^= B;
++	state[2] ^= C;
++	state[3] ^= D;
++	state[4] ^= E;
++	state[5] ^= F;
++	state[6] ^= G;
++	state[7] ^= H;
++}
++
++/* Magic initialization constants. */
++static const uint32_t initial_state[8] = {
++	0x7380166f, 0x4914b2b9, 0x172442d7, 0xda8a0600,
++	0xa96f30bc, 0x163138aa, 0xe38dee4d, 0xb0fb0e4e
++};
++
++/**
++ * SM3_Init(ctx):
++ * Initialize the SM3 context ${ctx}.
++ */
++void
++SM3_Init(SM3_CTX * ctx)
++{
++
++	/* Zero bits processed so far. */
++	ctx->count = 0;
++
++	/* Initialize state. */
++	memcpy(ctx->state, initial_state, sizeof(initial_state));
++}
++
++
++/**
++ * SM3_Update(ctx, in, len):
++ * Input ${len} bytes from ${in} into the SM3 context ${ctx}.
++ */
++static void
++_SM3_Update(SM3_CTX * ctx, const void * in, size_t len,
++    uint32_t tmp32[static restrict 72])
++{
++	uint32_t r;
++	const uint8_t * src = in;
++
++	/* Return immediately if we have nothing to do. */
++	if (len == 0)
++		return;
++
++	/* Number of bytes left in the buffer from previous updates. */
++	r = (ctx->count >> 3) & 0x3f;
++
++	/* Update number of bits. */
++	ctx->count += (uint64_t)(len) << 3;
++
++	/* Handle the case where we don't need to perform any transforms. */
++	if (len < 64 - r) {
++		memcpy(&ctx->buf[r], src, len);
++		return;
++	}
++
++	/* Finish the current block. */
++	memcpy(&ctx->buf[r], src, 64 - r);
++	SM3_Transform(ctx->state, ctx->buf, &tmp32[0]);
++	src += 64 - r;
++	len -= 64 - r;
++
++	/* Perform complete blocks. */
++	while (len >= 64) {
++		SM3_Transform(ctx->state, src, &tmp32[0]);
++		src += 64;
++		len -= 64;
++	}
++
++	/* Copy left over data into buffer. */
++	memcpy(ctx->buf, src, len);
++}
++
++/* Wrapper function for intermediate-values sanitization. */
++void
++SM3_Update(SM3_CTX * ctx, const void * in, size_t len)
++{
++	uint32_t tmp32[72];
++
++	/* Call the real function. */
++	_SM3_Update(ctx, in, len, tmp32);
++
++	/* Clean the stack. */
++	insecure_memzero(tmp32, 288);
++}
++
++static const uint8_t PAD[64] = {
++	0x80, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
++	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
++	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
++	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
++};
++
++/* Add padding and terminating bit-count. */
++static void
++SM3_Pad(SM3_CTX * ctx, uint32_t tmp32[static restrict 72])
++{
++	size_t r;
++
++	/* Figure out how many bytes we have buffered. */
++	r = (ctx->count >> 3) & 0x3f;
++
++	/* Pad to 56 mod 64, transforming if we finish a block en route. */
++	if (r < 56) {
++		/* Pad to 56 mod 64. */
++		memcpy(&ctx->buf[r], PAD, 56 - r);
++	} else {
++		/* Finish the current block and mix. */
++		memcpy(&ctx->buf[r], PAD, 64 - r);
++		SM3_Transform(ctx->state, ctx->buf, &tmp32[0]);
++
++		/* The start of the final block is all zeroes. */
++		memset(&ctx->buf[0], 0, 56);
++	}
++
++	/* Add the terminating bit-count. */
++	be64enc(&ctx->buf[56], ctx->count);
++
++	/* Mix in the final block. */
++	SM3_Transform(ctx->state, ctx->buf, &tmp32[0]);
++}
++/**
++ * SM3_Final(digest, ctx):
++ * Output the SM3 hash of the data input to the context ${ctx} into the
++ * buffer ${digest}.
++ */
++static void
++_SM3_Final(uint8_t digest[32], SM3_CTX * ctx,
++    uint32_t tmp32[static restrict 72])
++{
++
++	/* Add padding. */
++	SM3_Pad(ctx, tmp32);
++
++	/* Write the hash. */
++	sm3_be32enc_vect(digest, ctx->state, 4);
++}
++
++/* Wrapper function for intermediate-values sanitization. */
++void
++SM3_Final(uint8_t digest[32], SM3_CTX * ctx)
++{
++	uint32_t tmp32[72];
++
++	/* Call the real function. */
++	_SM3_Final(digest, ctx, tmp32);
++
++	/* Clear the context state. */
++	insecure_memzero(ctx, sizeof(SM3_CTX));
++
++	/* Clean the stack. */
++	insecure_memzero(tmp32, 288);
++}
++
++/**
++ * SM3_Buf(in, len, digest):
++ * Compute the SM3 hash of ${len} bytes from ${in} and write it to ${digest}.
++ */
++void
++SM3_Buf(const void * in, size_t len, uint8_t digest[32])
++{
++	SM3_CTX ctx;
++	uint32_t tmp32[72];
++
++	SM3_Init(&ctx);
++	_SM3_Update(&ctx, in, len, tmp32);
++	_SM3_Final(digest, &ctx, tmp32);
++
++	/* Clean the stack. */
++	insecure_memzero(&ctx, sizeof(SM3_CTX));
++	insecure_memzero(tmp32, 288);
++}
++#endif /* INCLUDE_sm3crypt */
+diff --git a/lib/alg-sm3.h b/lib/alg-sm3.h
+new file mode 100644
+index 0000000..5c76e6b
+--- /dev/null
++++ b/lib/alg-sm3.h
+@@ -0,0 +1,62 @@
++/*-
++ * Copyright(C) 2017-2021. Huawei Technologies Co.,Ltd. All Rights Reserved.
++ * Copyright 2017-2021 The OpenSSL Project Authors. All Rights Reserved.
++ * Copyright 2017 Ribose Inc. All Rights Reserved.
++ *
++ * Licensed under the Apache License 2.0 (the "License").  You may not use
++ * this file except in compliance with the License.  You can obtain a copy
++ * in the file LICENSE in the source distribution or at
++ * https://www.openssl.org/source/license.html
++ */
++
++#ifndef _SM3_H_
++#define _SM3_H_
++
++#include "crypt-port.h"
++
++#include <stddef.h>
++#include <stdint.h>
++
++/*
++ * Use #defines in order to avoid namespace collisions with anyone else's
++ * SM3 code (e.g., the code in OpenSSL).
++ */
++#define SM3_Init libcperciva_SM3_Init
++#define SM3_Update libcperciva_SM3_Update
++#define SM3_Final libcperciva_SM3_Final
++#define SM3_Buf libcperciva_SM3_Buf
++#define SM3_CTX libcperciva_SM3_CTX
++
++/* Context structure for SM3 operations. */
++typedef struct {
++	uint32_t state[8];
++	uint64_t count;
++	uint8_t buf[64];
++} SM3_CTX;
++
++/**
++ * SM3_Init(ctx):
++ * Initialize the SM3 context ${ctx}.
++ */
++void SM3_Init(SM3_CTX *);
++
++/**
++ * SM3_Update(ctx, in, len):
++ * Input ${len} bytes from ${in} into the SM3 context ${ctx}.
++ */
++void SM3_Update(SM3_CTX *, const void *, size_t);
++
++/**
++ * SM3_Final(digest, ctx):
++ * Output the SM3 hash of the data input to the context ${ctx} into the
++ * buffer ${digest}.
++ */
++void SM3_Final(uint8_t[32], SM3_CTX *);
++
++/**
++ * SM3_Buf(in, len, digest):
++ * Compute the SM3 hash of ${len} bytes from ${in} and write it to ${digest}.
++ */
++void SM3_Buf(const void *, size_t, uint8_t[32]);
++
++#endif /* !_SM3_H_ */
+diff --git a/lib/crypt-port.h b/lib/crypt-port.h
+index a707939..4c72623 100644
+--- a/lib/crypt-port.h
++++ b/lib/crypt-port.h
+@@ -362,7 +362,7 @@ extern size_t strcpy_or_abort (void *dst, size_t d_size, const void *src);
+ #define libcperciva_SHA512_Buf    _crypt_SHA512_Buf
+ #endif
+ 
+-#if INCLUDE_md5crypt || INCLUDE_sha256crypt || INCLUDE_sha512crypt
++#if INCLUDE_md5crypt || INCLUDE_sha256crypt || INCLUDE_sha512crypt || INCLUDE_sm3crypt
+ #define gensalt_sha_rn           _crypt_gensalt_sha_rn
+ #endif
+ 
+@@ -397,6 +397,13 @@ extern size_t strcpy_or_abort (void *dst, size_t d_size, const void *src);
+ #define libcperciva_SHA256_Buf   _crypt_SHA256_Buf
+ #endif
+ 
++#if INCLUDE_sm3crypt
++#define libcperciva_SM3_Init  _crypt_SM3_Init
++#define libcperciva_SM3_Update _crypt_SM3_Update
++#define libcperciva_SM3_Final _crypt_SM3_Final
++#define libcperciva_SM3_Buf   _crypt_SM3_Buf
++#endif
++
+ #if INCLUDE_gost_yescrypt
+ #define GOST34112012Init       _crypt_GOST34112012_Init
+ #define GOST34112012Update     _crypt_GOST34112012_Update
+diff --git a/lib/crypt-sm3.c b/lib/crypt-sm3.c
+new file mode 100644
+index 0000000..1a817cd
+--- /dev/null
++++ b/lib/crypt-sm3.c
+@@ -0,0 +1,358 @@
++/* One way encryption based on the SM3-based Unix crypt implementation.
++ *
++ * Written by Ulrich Drepper <drepper at redhat.com> in 2007 [1].
++ * Modified by Zack Weinberg <zackw at panix.com> in 2017, 2018.
++ * Composed by Björn Esser <besser82 at fedoraproject.org> in 2018.
++ * To the extent possible under law, the named authors have waived all
++ * copyright and related or neighboring rights to this work.
++ *
++ * See https://creativecommons.org/publicdomain/zero/1.0/ for further
++ * details.
++ *
++ * This file is a modified except from [2], lines 648 up to 909.
++ *
++ * [1]  https://www.akkadia.org/drepper/sha-crypt.html
++ * [2]  https://www.akkadia.org/drepper/SHA-crypt.txt
++ */
++
++#include "crypt-port.h"
++#include "alg-sm3.h"
++
++#include <errno.h>
++#include <stdio.h>
++#include <stdlib.h>
++
++#if INCLUDE_sm3crypt
++
++/* Define our magic string to mark salt for SM3 "encryption"
++   replacement.  */
++static const char sm3_salt_prefix[] = "$sm3$";
++
++/* Prefix for optional rounds specification.  */
++static const char sm3_rounds_prefix[] = "rounds=";
++
++/* Maximum salt string length.  */
++#define SALT_LEN_MAX 16
++/* Default number of rounds if not explicitly specified.  */
++#define ROUNDS_DEFAULT 5000
++/* Minimum number of rounds.  */
++#define ROUNDS_MIN 1000
++/* Maximum number of rounds.  */
++#define ROUNDS_MAX 999999999
++
++/* The maximum possible length of a SM3-hashed password string,
++   including the terminating NUL character.  Prefix (including its NUL)
++   + rounds tag ("rounds=$" = "rounds=\0") + strlen(ROUNDS_MAX)
++   + salt (up to SALT_LEN_MAX chars) + '$' + hash (43 chars).  */
++
++#define LENGTH_OF_NUMBER(n) (sizeof #n - 1)
++
++#define SM3_HASH_LENGTH \
++  (sizeof (sm3_salt_prefix) + sizeof (sm3_rounds_prefix) + \
++   LENGTH_OF_NUMBER (ROUNDS_MAX) + SALT_LEN_MAX + 1 + 43)
++
++static_assert (SM3_HASH_LENGTH <= CRYPT_OUTPUT_SIZE,
++               "CRYPT_OUTPUT_SIZE is too small for SM3");
++
++/* A SM3_buffer holds all of the sensitive intermediate data.  */
++struct SM3_buffer
++{
++  SM3_CTX ctx;
++  uint8_t result[32];
++  uint8_t p_bytes[32];
++  uint8_t s_bytes[32];
++};
++
++static_assert (sizeof (struct SM3_buffer) <= ALG_SPECIFIC_SIZE,
++               "ALG_SPECIFIC_SIZE is too small for SM3");
++
++
++/* Feed CTX with LEN bytes of a virtual byte sequence consisting of
++   BLOCK repeated over and over indefinitely.  */
++static void
++SM3_Update_recycled (SM3_CTX *ctx,
++                        unsigned char block[32], size_t len)
++{
++  size_t cnt;
++  for (cnt = len; cnt >= 32; cnt -= 32)
++    SM3_Update (ctx, block, 32);
++  SM3_Update (ctx, block, cnt);
++}
++
++void
++crypt_sm3crypt_rn (const char *phrase, size_t phr_size,
++                      const char *setting, size_t ARG_UNUSED (set_size),
++                      uint8_t *output, size_t out_size,
++                      void *scratch, size_t scr_size)
++{
++  /* This shouldn't ever happen, but...  */
++  if (out_size < SM3_HASH_LENGTH
++      || scr_size < sizeof (struct SM3_buffer))
++    {
++      errno = ERANGE;
++      return;
++    }
++
++  struct SM3_buffer *buf = scratch;
++  SM3_CTX *ctx = &buf->ctx;
++  uint8_t *result = buf->result;
++  uint8_t *p_bytes = buf->p_bytes;
++  uint8_t *s_bytes = buf->s_bytes;
++  char *cp = (char *)output;
++  const char *salt = setting;
++
++  size_t salt_size;
++  size_t cnt;
++  /* Default number of rounds.  */
++  size_t rounds = ROUNDS_DEFAULT;
++  bool rounds_custom = false;
++
++  /* Find beginning of salt string.  The prefix should normally always
++     be present.  Just in case it is not.  */
++  if (strncmp (sm3_salt_prefix, salt, sizeof (sm3_salt_prefix) - 1) == 0)
++    /* Skip salt prefix.  */
++    salt += sizeof (sm3_salt_prefix) - 1;
++
++  if (strncmp (salt, sm3_rounds_prefix, sizeof (sm3_rounds_prefix) - 1)
++      == 0)
++    {
++      const char *num = salt + sizeof (sm3_rounds_prefix) - 1;
++      /* Do not allow an explicit setting of zero rounds, nor of the
++         default number of rounds, nor leading zeroes on the rounds.  */
++      if (!(*num >= '1' && *num <= '9'))
++        {
++          errno = EINVAL;
++          return;
++        }
++
++      errno = 0;
++      char *endp;
++      rounds = strtoul (num, &endp, 10);
++      if (endp == num || *endp != '$'
++          || rounds < ROUNDS_MIN
++          || rounds > ROUNDS_MAX
++          || errno)
++        {
++          errno = EINVAL;
++          return;
++        }
++      salt = endp + 1;
++      rounds_custom = true;
++    }
++
++  salt_size = strspn (salt, b64t);
++  if (salt[salt_size] && salt[salt_size] != '$')
++    {
++      errno = EINVAL;
++      return;
++    }
++  if (salt_size > SALT_LEN_MAX)
++    salt_size = SALT_LEN_MAX;
++
++  /* Compute alternate SM3 sum with input PHRASE, SALT, and PHRASE.  The
++     final result will be added to the first context.  */
++  SM3_Init (ctx);
++
++  /* Add phrase.  */
++  SM3_Update (ctx, phrase, phr_size);
++
++  /* Add salt.  */
++  SM3_Update (ctx, salt, salt_size);
++
++  /* Add phrase again.  */
++  SM3_Update (ctx, phrase, phr_size);
++
++  /* Now get result of this (32 bytes).  */
++  SM3_Final (result, ctx);
++
++  /* Prepare for the real work.  */
++  SM3_Init (ctx);
++
++  /* Add the phrase string.  */
++  SM3_Update (ctx, phrase, phr_size);
++
++  /* The last part is the salt string.  This must be at most 8
++     characters and it ends at the first `$' character (for
++     compatibility with existing implementations).  */
++  SM3_Update (ctx, salt, salt_size);
++
++  /* Add for any character in the phrase one byte of the alternate sum.  */
++  for (cnt = phr_size; cnt > 32; cnt -= 32)
++    SM3_Update (ctx, result, 32);
++  SM3_Update (ctx, result, cnt);
++
++  /* Take the binary representation of the length of the phrase and for every
++     1 add the alternate sum, for every 0 the phrase.  */
++  for (cnt = phr_size; cnt > 0; cnt >>= 1)
++    if ((cnt & 1) != 0)
++      SM3_Update (ctx, result, 32);
++    else
++      SM3_Update (ctx, phrase, phr_size);
++
++  /* Create intermediate result.  */
++  SM3_Final (result, ctx);
++
++  /* Start computation of P byte sequence.  */
++  SM3_Init (ctx);
++
++  /* For every character in the password add the entire password.  */
++  for (cnt = 0; cnt < phr_size; ++cnt)
++    SM3_Update (ctx, phrase, phr_size);
++
++  /* Finish the digest.  */
++  SM3_Final (p_bytes, ctx);
++
++  /* Start computation of S byte sequence.  */
++  SM3_Init (ctx);
++
++  /* For every character in the password add the entire password.  */
++  for (cnt = 0; cnt < (size_t) 16 + (size_t) result[0]; ++cnt)
++    SM3_Update (ctx, salt, salt_size);
++
++  /* Finish the digest.  */
++  SM3_Final (s_bytes, ctx);
++
++  /* Repeatedly run the collected hash value through SM3 to burn
++     CPU cycles.  */
++  for (cnt = 0; cnt < rounds; ++cnt)
++    {
++      /* New context.  */
++      SM3_Init (ctx);
++
++      /* Add phrase or last result.  */
++      if ((cnt & 1) != 0)
++        SM3_Update_recycled (ctx, p_bytes, phr_size);
++      else
++        SM3_Update (ctx, result, 32);
++
++      /* Add salt for numbers not divisible by 3.  */
++      if (cnt % 3 != 0)
++        SM3_Update_recycled (ctx, s_bytes, salt_size);
++
++      /* Add phrase for numbers not divisible by 7.  */
++      if (cnt % 7 != 0)
++        SM3_Update_recycled (ctx, p_bytes, phr_size);
++
++      /* Add phrase or last result.  */
++      if ((cnt & 1) != 0)
++        SM3_Update (ctx, result, 32);
++      else
++        SM3_Update_recycled (ctx, p_bytes, phr_size);
++
++      /* Create intermediate result.  */
++      SM3_Final (result, ctx);
++    }
++
++  /* Now we can construct the result string.  It consists of four
++     parts, one of which is optional.  We already know that there
++     is sufficient space at CP for the longest possible result string.  */
++  memcpy (cp, sm3_salt_prefix, sizeof (sm3_salt_prefix) - 1);
++  cp += sizeof (sm3_salt_prefix) - 1;
++
++  if (rounds_custom)
++    {
++      int n = snprintf (cp,
++                        SM3_HASH_LENGTH - (sizeof (sm3_salt_prefix) - 1),
++                        "%s%zu$", sm3_rounds_prefix, rounds);
++      cp += n;
++    }
++
++  memcpy (cp, salt, salt_size);
++  cp += salt_size;
++  *cp++ = '$';
++
++#define b64_from_24bit(B2, B1, B0, N)                   \
++  do {                                                  \
++    unsigned int w = ((((unsigned int)(B2)) << 16) |    \
++                      (((unsigned int)(B1)) << 8) |     \
++                      ((unsigned int)(B0)));            \
++    int n = (N);                                        \
++    while (n-- > 0)                                     \
++      {                                                 \
++        *cp++ = b64t[w & 0x3f];                         \
++        w >>= 6;                                        \
++      }                                                 \
++  } while (0)
++
++  b64_from_24bit (result[0], result[10], result[20], 4);
++  b64_from_24bit (result[21], result[1], result[11], 4);
++  b64_from_24bit (result[12], result[22], result[2], 4);
++  b64_from_24bit (result[3], result[13], result[23], 4);
++  b64_from_24bit (result[24], result[4], result[14], 4);
++  b64_from_24bit (result[15], result[25], result[5], 4);
++  b64_from_24bit (result[6], result[16], result[26], 4);
++  b64_from_24bit (result[27], result[7], result[17], 4);
++  b64_from_24bit (result[18], result[28], result[8], 4);
++  b64_from_24bit (result[9], result[19], result[29], 4);
++  b64_from_24bit (0, result[31], result[30], 3);
++
++  *cp = '\0';
++}
++
++void
++gensalt_sm3crypt_rn (unsigned long count,
++                        const uint8_t *rbytes, size_t nrbytes,
++                        uint8_t *output, size_t output_size)
++{
++  /* We will use more rbytes if available, but at least this much is
++     required.  */
++  if (nrbytes < 5)
++    {
++      errno = EINVAL;
++      return;
++    }
++
++  if (count == 0)
++    count = ROUNDS_DEFAULT;
++  if (count < ROUNDS_MIN)
++    count = ROUNDS_MIN;
++  if (count > ROUNDS_MAX)
++    count = ROUNDS_MAX;
++
++  /* Compute how much space we need.  */
++  size_t output_len = 10; /* $sm3$ssss\0 */
++  if (count != ROUNDS_DEFAULT)
++    {
++      output_len += 9; /* rounds=1$ */
++      for (unsigned long ceiling = 10; ceiling < count; ceiling *= 10)
++        output_len += 1;
++    }
++  if (output_size < output_len)
++    {
++      errno = ERANGE;
++      return;
++    }
++
++  size_t written;
++  if (count == ROUNDS_DEFAULT)
++    written = (size_t) snprintf ((char *)output, output_size, "$%s$", "sm3");
++  else
++    written = (size_t) snprintf ((char *)output, output_size,
++                                 "$%s$rounds=%lu$", "sm3", count);
++
++  /* The length calculation above should ensure that this is always true.  */
++  assert (written + 5 < output_size);
++
++  size_t used_rbytes = 0;
++  while (written + 5 < output_size &&
++         used_rbytes + 3 < nrbytes &&
++         (used_rbytes * 4 / 3) < SALT_LEN_MAX)
++    {
++      unsigned long value =
++        ((unsigned long) (unsigned char) rbytes[used_rbytes + 0] <<  0) |
++        ((unsigned long) (unsigned char) rbytes[used_rbytes + 1] <<  8) |
++        ((unsigned long) (unsigned char) rbytes[used_rbytes + 2] << 16);
++
++      output[written + 0] = ascii64[value & 0x3f];
++      output[written + 1] = ascii64[(value >> 6) & 0x3f];
++      output[written + 2] = ascii64[(value >> 12) & 0x3f];
++      output[written + 3] = ascii64[(value >> 18) & 0x3f];
++
++      written += 4;
++      used_rbytes += 3;
++    }
++
++  output[written] = '\0';
++}
++
++#endif
+diff --git a/lib/hashes.conf b/lib/hashes.conf
+index 094f7cc..2676c24 100644
+--- a/lib/hashes.conf
++++ b/lib/hashes.conf
+@@ -48,6 +48,7 @@ bcrypt_a       $2a$      16       STRONG,ALT,FREEBSD,NETBSD,OPENBSD,OWL,SOLARIS,
+ bcrypt_x       $2x$      16       ALT,OWL,SUSE
+ sha512crypt    $6$       15       STRONG,DEFAULT,GLIBC,FREEBSD,SOLARIS
+ sha256crypt    $5$       15       GLIBC,FREEBSD,SOLARIS
++sm3crypt       $sm3$     15       STRONG
+ sha1crypt      $sha1     20       NETBSD
+ sunmd5         $md5      8        SOLARIS
+ md5crypt       $1$       9        GLIBC,FREEBSD,NETBSD,OPENBSD,SOLARIS
+diff --git a/test/alg-sm3.c b/test/alg-sm3.c
+new file mode 100644
+index 0000000..910a7dd
+--- /dev/null
++++ b/test/alg-sm3.c
+@@ -0,0 +1,124 @@
++#include "crypt-port.h"
++#include "alg-sm3.h"
++
++#include <stdio.h>
++
++#if INCLUDE_sm3crypt
++
++static const struct
++{
++  const char *input;
++  const char result[32];
++} tests[] =
++{
++  /* Test vectors from FIPS 180-2: appendix B.1.  */
++  {
++    "abc",
++    "\x66\xc7\xf0\xf4\x62\xee\xed\xd9\xd1\xf2\xd4\x6b\xdc\x10\xe4\xe2"
++    "\x41\x67\xc4\x87\x5c\xf2\xf7\xa2\x29\x7d\xa0\x2b\x8f\x4b\xa8\xe0"
++  },
++  /* Test vectors from FIPS 180-2: appendix B.2.  */
++  {
++    "abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq",
++    "\x63\x9b\x6c\xc5\xe6\x4d\x9e\x37\xa3\x90\xb1\x92\xdf\x4f\xa1\xea"
++    "\x07\x20\xab\x74\x7f\xf6\x92\xb9\xf3\x8c\x4e\x66\xad\x7b\x8c\x05"
++  },
++  /* Test vectors from the NESSIE project.  */
++  {
++    "",
++    "\x1a\xb2\x1d\x83\x55\xcf\xa1\x7f\x8e\x61\x19\x48\x31\xe8\x1a\x8f"
++    "\x22\xbe\xc8\xc7\x28\xfe\xfb\x74\x7e\xd0\x35\xeb\x50\x82\xaa\x2b"
++  },
++  {
++    "a",
++    "\x62\x34\x76\xac\x18\xf6\x5a\x29\x09\xe4\x3c\x7f\xec\x61\xb4\x9c"
++    "\x7e\x76\x4a\x91\xa1\x8c\xcb\x82\xf1\x91\x7a\x29\xc8\x6c\x5e\x88"
++  },
++  {
++    "message digest",
++    "\xc5\x22\xa9\x42\xe8\x9b\xd8\x0d\x97\xdd\x66\x6e\x7a\x55\x31\xb3"
++    "\x61\x88\xc9\x81\x71\x49\xe9\xb2\x58\xdf\xe5\x1e\xce\x98\xed\x77"
++  },
++  {
++    "abcdefghijklmnopqrstuvwxyz",
++    "\xb8\x0f\xe9\x7a\x4d\xa2\x4a\xfc\x27\x75\x64\xf6\x6a\x35\x9e\xf4"
++    "\x40\x46\x2a\xd2\x8d\xcc\x6d\x63\xad\xb2\x4d\x5c\x20\xa6\x15\x95"
++  },
++  {
++    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
++    "\x29\x71\xd1\x0c\x88\x42\xb7\x0c\x97\x9e\x55\x06\x34\x80\xc5\x0b"
++    "\xac\xff\xd9\x0e\x98\xe2\xe6\x0d\x25\x12\xab\x8a\xbf\xdf\xce\xc5"
++  },
++  {
++    "123456789012345678901234567890123456789012345678901234567890"
++    "12345678901234567890",
++    "\xad\x81\x80\x53\x21\xf3\xe6\x9d\x25\x12\x35\xbf\x88\x6a\x56\x48"
++    "\x44\x87\x3b\x56\xdd\x7d\xde\x40\x0f\x05\x5b\x7d\xde\x39\x30\x7a"
++  }
++};
++
++
++static void
++report_failure(int n, const char *tag,
++               const char expected[32], uint8_t actual[32])
++{
++  int i;
++  printf ("FAIL: test %d (%s):\n  exp:", n, tag);
++  for (i = 0; i < 32; i++)
++    {
++      if (i % 4 == 0)
++        putchar (' ');
++      printf ("%02x", (unsigned int)(unsigned char)expected[i]);
++    }
++  printf ("\n  got:");
++  for (i = 0; i < 32; i++)
++    {
++      if (i % 4 == 0)
++        putchar (' ');
++      printf ("%02x", (unsigned int)(unsigned char)actual[i]);
++    }
++  putchar ('\n');
++  putchar ('\n');
++}
++
++int
++main (void)
++{
++  SM3_CTX ctx;
++  uint8_t sum[32];
++  int result = 0;
++  int cnt;
++  int i;
++
++  for (cnt = 0; cnt < (int) ARRAY_SIZE (tests); ++cnt)
++    {
++      SM3_Buf (tests[cnt].input, strlen (tests[cnt].input), sum);
++      if (memcmp (tests[cnt].result, sum, 32) != 0)
++        {
++          report_failure (cnt, "all at once", tests[cnt].result, sum);
++          result = 1;
++        }
++
++      SM3_Init (&ctx);
++      for (i = 0; tests[cnt].input[i] != '\0'; ++i)
++        SM3_Update (&ctx, &tests[cnt].input[i], 1);
++      SM3_Final (sum, &ctx);
++      if (memcmp (tests[cnt].result, sum, 32) != 0)
++        {
++          report_failure (cnt, "byte by byte", tests[cnt].result, sum);
++          result = 1;
++        }
++    }
++
++  return result;
++}
++
++#else
++
++int
++main (void)
++{
++  return 77; /* UNSUPPORTED */
++}
++
++#endif
+diff --git a/test/badsetting.c b/test/badsetting.c
+index 4af151a..0cfc6c5 100644
+--- a/test/badsetting.c
++++ b/test/badsetting.c
+@@ -101,6 +101,15 @@ static const struct testcase testcases[] =
+   { "$5$", 0, 0, 0 },
+ #endif
+ 
++  /* SM3 */
++#if INCLUDE_sm3crypt
++  { "$sm3",  0,          0, 0 },  // truncated prefix
++  { "$sm3$", 0,          2, 0 },  // inadequate rbytes
++  { "$sm3$", 0,          0, 4 },  // inadequate osize
++#else
++  { "$sm3$", 0, 0, 0 },
++#endif
++
+   /* SHA512 */
+ #if INCLUDE_sha512crypt
+   { "$6",  0,          0, 0 },  // truncated prefix
+diff --git a/test/checksalt.c b/test/checksalt.c
+index e220bb3..f97296c 100644
+--- a/test/checksalt.c
++++ b/test/checksalt.c
+@@ -68,6 +68,11 @@ static const struct testcase testcases[] =
+ #else
+   { "$5$",   CRYPT_SALT_INVALID,       CRYPT_SALT_INVALID,       CRYPT_SALT_INVALID       },
+ #endif
++#if INCLUDE_sm3crypt
++  { "$sm3$",   CRYPT_SALT_OK,      CRYPT_SALT_OK,      CRYPT_SALT_OK      },
++#else
++  { "$sm3$",   CRYPT_SALT_INVALID, CRYPT_SALT_INVALID, CRYPT_SALT_INVALID },
++#endif
+ #if INCLUDE_sha512crypt
+   { "$6$",   CRYPT_SALT_OK,            CRYPT_SALT_OK,            CRYPT_SALT_OK            },
+ #else
+diff --git a/test/crypt-badargs.c b/test/crypt-badargs.c
+index 8b743f6..3d081b7 100644
+--- a/test/crypt-badargs.c
++++ b/test/crypt-badargs.c
+@@ -50,6 +50,10 @@ static const char *settings[] =
+   "$5$MJHnaAkegEVYHsFK",
+   "$5$rounds=10191$MJHnaAkegEVYHsFK",
+ #endif
++#if INCLUDE_sm3crypt
++  "$sm3$MJHnaAkegEVYHsFK",
++  "$sm3$rounds=10191$MJHnaAkegEVYHsFK",
++#endif
+ #if INCLUDE_sha512crypt
+   "$6$MJHnaAkegEVYHsFK",
+   "$6$rounds=10191$MJHnaAkegEVYHsFK",
+diff --git a/test/gensalt-extradata.c b/test/gensalt-extradata.c
+index 9df2e9f..3e492e5 100644
+--- a/test/gensalt-extradata.c
++++ b/test/gensalt-extradata.c
+@@ -61,6 +61,9 @@ static const struct testcase testcases[] =
+ #if INCLUDE_sha256crypt
+   { "$5$", 7019, 1120211 },
+ #endif
++#if INCLUDE_sm3crypt
++  { "$sm3$", 7019, 1120211 },
++#endif
+ #if INCLUDE_sha512crypt
+   { "$6$", 7019, 1120211 },
+ #endif
+diff --git a/test/gensalt.c b/test/gensalt.c
+index 834ccf5..e4c9624 100644
+--- a/test/gensalt.c
++++ b/test/gensalt.c
+@@ -140,6 +140,36 @@ static const char *const sha256_expected_output_h[] =
+   "$5$rounds=999999999$UqGBkVu01rurVZqg"
+ };
+ #endif
++#if INCLUDE_sm3crypt
++static const char *const sm3_expected_output[] =
++{
++  "$sm3$MJHnaAkegEVYHsFK",
++  "$sm3$PKXc3hCOSyMqdaEQ",
++  "$sm3$ZAFlICwYRETzIzIj",
++  "$sm3$UqGBkVu01rurVZqg"
++};
++static const char *const sm3_expected_output_r[] =
++{
++  "$sm3$rounds=10191$MJHnaAkegEVYHsFK",
++  "$sm3$rounds=10191$PKXc3hCOSyMqdaEQ",
++  "$sm3$rounds=10191$ZAFlICwYRETzIzIj",
++  "$sm3$rounds=10191$UqGBkVu01rurVZqg"
++};
++static const char *const sm3_expected_output_l[] =
++{
++  "$sm3$rounds=1000$MJHnaAkegEVYHsFK",
++  "$sm3$rounds=1000$PKXc3hCOSyMqdaEQ",
++  "$sm3$rounds=1000$ZAFlICwYRETzIzIj",
++  "$sm3$rounds=1000$UqGBkVu01rurVZqg"
++};
++static const char *const sm3_expected_output_h[] =
++{
++  "$sm3$rounds=999999999$MJHnaAkegEVYHsFK",
++  "$sm3$rounds=999999999$PKXc3hCOSyMqdaEQ",
++  "$sm3$rounds=999999999$ZAFlICwYRETzIzIj",
++  "$sm3$rounds=999999999$UqGBkVu01rurVZqg"
++};
++#endif
+ #if INCLUDE_sha512crypt
+ static const char *const sha512_expected_output[] =
+ {
+@@ -291,7 +321,7 @@ struct testcase
+ };
+ 
+ // For all hashing methods with a linear cost parameter (that is,
+-// DES/BSD, MD5/Sun, SHA1, SHA256, and SHA512), crypt_gensalt will
++// DES/BSD, MD5/Sun, SHA1, SHA256, SM3 and SHA512), crypt_gensalt will
+ // accept any value in the range of 'unsigned long' and clip it to the
+ // actual valid range.
+ #define MIN_LINEAR_COST 1
+@@ -338,6 +368,12 @@ static const struct testcase testcases[] =
+   { "$5$",   sha256_expected_output_l, 31,  0, MIN_LINEAR_COST },
+   { "$5$",   sha256_expected_output_h, 36,  0, MAX_LINEAR_COST },
+ #endif
++#if INCLUDE_sm3crypt
++  { "$sm3$",   sm3_expected_output,   21,  0, 0 },
++  { "$sm3$",   sm3_expected_output_r, 34,  0, 10191 },
++  { "$sm3$",   sm3_expected_output_l, 33,  0, MIN_LINEAR_COST },
++  { "$sm3$",   sm3_expected_output_h, 38,  0, MAX_LINEAR_COST },
++#endif
+ #if INCLUDE_sha512crypt
+   { "$6$",   sha512_expected_output,   19,  0, 0 },
+   { "$6$",   sha512_expected_output_r, 32,  0, 10191 },
+-- 
+2.46.0
+
