@@ -1,0 +1,27 @@
+it's easier to install manually manpages and doc (html)
+targets in ./font are handled by the ebuild
+--- a/Makefile
++++ b/Makefile
+@@ -140,21 +140,11 @@ lib/wchardata.c: $(HEXWIDTH) $(ZEROWIDTH) bin
+ 	\rm -f unifonttemp.hex combiningtemp.txt
+ #	(cd lib && $(CC) $(CFLAGS) -c wchardata.c && chmod 644 wchardata.o )
+ 
+-install: bindir libdir docdir doxdir
++install: bindir libdir
+ 	$(MAKE) -C src  install PREFIX=$(PREFIX)
+-	$(MAKE) -C man  install PREFIX=$(PREFIX) COMPRESS=$(COMPRESS)
+-	$(MAKE) -C doc  install PREFIX=$(PREFIX) COMPRESS=$(COMPRESS)
+-	$(MAKE) -C font install PREFIX=$(PREFIX) DESTDIR=$(DESTDIR)
+ 	install -m0755 -d $(PKGDEST)
+-	install -m0644 -p $(TEXTFILES) doc/unifont.txt doc/unifont.pdf \
+-	        $(PKGDEST)
+-	for i in $(TEXTFILES) unifont.txt ; do \
+-	    gzip $(GZFLAGS) $(PKGDEST)/$$i ; \
+-	done
+ 	install -m0644 -p lib/wchardata.c $(PKGDEST)
+ 	install -m0644 -p font/plane00/plane00-combining.txt $(PKGDEST)
+-	(cd doxygen ; tar chf - html unifont-doxy.pdf) | \
+-	   (cd $(PKGDEST) ; tar xpf -)
+ 	# If "make" wasn't run before, font/compiled won't exist.
+ 	if [ ! -d font/compiled ] ; then \
+ 	   install -m0644 -p font/precompiled/unifont-$(VERSION).hex     $(PKGDEST)/unifont.hex     && \
