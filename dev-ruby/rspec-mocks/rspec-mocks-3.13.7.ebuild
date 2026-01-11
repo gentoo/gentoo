@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -49,4 +49,8 @@ all_ruby_prepare() {
 	sed -i -e '1irequire "spec_helper"' spec/rspec/mocks/any_instance_spec.rb || die
 
 	sed -i -e 's/git ls-files --/find */' ${RUBY_FAKEGEM_GEMSPEC} || die
+
+	# Avoid spec failing due to different but (also) correct exception in ruby40
+	sed -e '/does not result in infinite recursion when `respond_to?` is stubbed/ s/it/xit/' \
+		-i spec/rspec/mocks/matchers/receive_spec.rb || die
 }
