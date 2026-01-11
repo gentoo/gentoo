@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ S="${WORKDIR}/${P}/core"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ppc64"
 
 DEPEND=">=virtual/jdk-1.8:*"
 RDEPEND=">=virtual/jre-1.8:*"
