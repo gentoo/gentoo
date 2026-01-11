@@ -1,0 +1,11 @@
+https://github.com/pvanek/qlipper/pull/164
+
+From: Lucio Sauer <watermanpaint@posteo.net>
+--- a/lxqt-autostart/CMakeLists.txt
++++ b/lxqt-autostart/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0.2 FATAL_ERROR)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.11 FATAL_ERROR)
+ 
+ file(GLOB DESKTOP_FILES_IN *.desktop.in)
+ 
