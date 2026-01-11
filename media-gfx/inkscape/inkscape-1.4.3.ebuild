@@ -112,6 +112,11 @@ DEPEND="${COMMON_DEPEND}
 	test? ( dev-cpp/gtest )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-poppler-26.01.patch # in git master
+	"${FILESDIR}"/${P}-libcroco-cmake-minreqver-3.12.patch # bug 965915
+)
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
