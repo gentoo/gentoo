@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic libtool xdg
+inherit autotools flag-o-matic libtool linux-info xdg
 
 DESCRIPTION="Advanced Linux Sound Architecture tools"
 HOMEPAGE="https://alsa-project.org/wiki/Main_Page"
@@ -43,7 +43,11 @@ PATCHES=(
 	"${FILESDIR}"/envy24control-config-dir.patch
 )
 
+CONFIG_CHECK="~CONFIG_SND_HDA_RECONFIG"
+
 pkg_setup() {
+	linux-info_pkg_setup
+
 	ALSA_TOOLS=(
 		seq/sbiload
 		us428control
@@ -60,6 +64,7 @@ pkg_setup() {
 		ALSA_TOOLS+=(
 			echomixer
 			hdajackretask
+			hdajacksensetest
 			$(usev alsa_cards_ice1712 envy24control)
 		)
 		# Perhaps a typo the following && logic?
