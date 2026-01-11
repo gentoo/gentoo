@@ -1,0 +1,36 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+DISTUTILS_USE_PEP517=poetry
+PYPI_VERIFY_REPO=https://github.com/flexmock/flexmock
+PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
+
+inherit distutils-r1 pypi
+
+DESCRIPTION="Testing library to create mocks, stubs and fakes"
+HOMEPAGE="
+	https://flexmock.readthedocs.io/
+	https://github.com/flexmock/flexmock/
+	https://pypi.org/project/flexmock/
+"
+
+LICENSE="BSD"
+SLOT="0"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+
+EPYTEST_PLUGIN_LOAD_VIA_ENV=1
+EPYTEST_PLUGINS=( "${PN}" )
+distutils_enable_tests pytest
+
+EPYTEST_IGNORE=(
+	tests/test_teamcity.py
+	tests/test_testtools.py
+	tests/test_unittest.py
+)
+
+python_install_all() {
+	distutils-r1_python_install_all
+	dodoc -r docs
+}
