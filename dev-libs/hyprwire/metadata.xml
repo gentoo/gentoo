@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>brettalcox@proton.me</email>
+		<name>Brett Alcox</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/hyprwm/hyprwire/issues</bugs-to>
+		<changelog>https://github.com/hyprwm/hyprwire/releases</changelog>
+		<remote-id type="github">hyprwm/hyprwire</remote-id>
+	</upstream>
+</pkgmetadata>
