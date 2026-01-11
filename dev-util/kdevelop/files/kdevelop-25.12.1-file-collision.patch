@@ -1,0 +1,40 @@
+From db8009842bd13233ff1324c393469a6ce6af1528 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 9 Jan 2026 22:29:06 +0100
+Subject: [PATCH] Avoid file collision with other applications by too general
+ icon names
+
+At least with thunar-vcs-plugin a known collision exists.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ plugins/subversion/icons/CMakeLists.txt             |   2 +-
+ plugins/subversion/kdevsubversion.json              |   2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/plugins/subversion/icons/CMakeLists.txt b/plugins/subversion/icons/CMakeLists.txt
+index 92d6b6bdff..ac57bd0633 100644
+--- a/plugins/subversion/icons/CMakeLists.txt
++++ b/plugins/subversion/icons/CMakeLists.txt
+@@ -1,4 +1,4 @@
+ 
+-ecm_install_icons(ICONS 16-apps-subversion.png 32-apps-subversion.png 64-apps-subversion.png sc-apps-subversion.svg
++ecm_install_icons(ICONS 16-apps-kdevsubversion.png 32-apps-kdevsubversion.png 64-apps-kdevsubversion.png sc-apps-kdevsubversion.svg
+                   DESTINATION ${KDE_INSTALL_ICONDIR}
+                   THEME hicolor)
+diff --git a/plugins/subversion/kdevsubversion.json b/plugins/subversion/kdevsubversion.json
+index 9a8650b93f..3c5d9df512 100644
+--- a/plugins/subversion/kdevsubversion.json
++++ b/plugins/subversion/kdevsubversion.json
+@@ -71,7 +71,7 @@
+         "Description[uk]": "Цей додаток інтегрує Subversion із KDevelop.",
+         "Description[zh_CN]": "此插件将 Subversion 整合到 KDevelop。",
+         "Description[zh_TW]": "此外掛程式將 Subversion 整合進 KDevelop 內",
+-        "Icon": "subversion",
++        "Icon": "kdevsubversion",
+         "License": "GPL",
+         "Name": "Subversion Support",
+         "Name[ar]": "دعم Subversion",
+-- 
+2.52.0
+
