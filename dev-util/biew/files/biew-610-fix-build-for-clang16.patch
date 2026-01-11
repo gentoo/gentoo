@@ -1,0 +1,135 @@
+Fix implicit function definitions etc. for clang16. 
+Clang16 will not work with such things by default. 
+
+Bug: https://bugs.gentoo.org/874732
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+
+--- a/biewlib/sysdep/generic/linux/vio.c
++++ b/biewlib/sysdep/generic/linux/vio.c
+@@ -44,6 +44,7 @@ static const char rcs_id[] = "$Id: vio.c,v 1.18 2009/09/03 16:57:40 nickols_k Ex
+ #include <sys/vt.h>
+ #include "biewlib/biewlib.h"
+ #include "console.h"
++#include <strings.h>
+ 
+ #if (__GLIBC__ >= 2) && (__GLIBC_MINOR__ >= 1)
+ #define	PWRITE pwrite
+--- a/biewlib/sysdep/generic/posix/fileio.c
++++ b/biewlib/sysdep/generic/posix/fileio.c
+@@ -33,7 +33,7 @@
+ 
+ bhandle_t __FASTCALL__ __OsCreate(const char *name)
+ {
+-  return open(name,O_RDWR | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE);
++  return (bhandle_t)open(name,O_RDWR | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE);
+ }
+ 
+ int __FASTCALL__ __OsDelete(const char *name)
+@@ -48,12 +48,12 @@ int __FASTCALL__ __OsRename(const char *oldname,const char *newname)
+ 
+ void __FASTCALL__ __OsClose(bhandle_t handle)
+ {
+-  close(handle);
++  close((int)handle);
+ }
+ 
+ bhandle_t __FASTCALL__ __OsDupHandle(bhandle_t handle)
+ {
+-  return dup(handle);
++  return (void*)dup((int)handle);
+ }
+ 
+ bhandle_t __FASTCALL__ __OsOpen(const char *fname,int mode)
+@@ -76,28 +76,28 @@ bhandle_t __FASTCALL__ __OsOpen(const char *fname,int mode)
+ /* check for directory (KB) */
+ 
+   if (stat(fname,&st)) return NULL_HANDLE;
+-  if (S_ISDIR(st.st_mode)) { errno = EISDIR; return -1; }
+-  return open(fname,flags);
++  if (S_ISDIR(st.st_mode)) { errno = EISDIR; return (bhandle_t)-1; }
++  return (bhandle_t)open(fname,flags);
+ }
+ 
+ __fileoff_t __FASTCALL__ __OsSeek(bhandle_t handle,__fileoff_t offset,int origin)
+ {
+-  return lseek(handle,offset,origin);
++  return lseek((int)handle,offset,origin);
+ }
+ 
+ int __FASTCALL__ __OsTruncFile(bhandle_t handle, __filesize_t newsize)
+ {
+-  return ftruncate(handle,newsize);
++  return ftruncate((int)handle,newsize);
+ }
+ 
+ int __FASTCALL__ __OsRead(bhandle_t handle, void *buff, unsigned count)
+ {
+-  return read(handle,buff,count);
++  return read((int)handle,buff,count);
+ }
+ 
+ int __FASTCALL__ __OsWrite(bhandle_t handle,const void *buffer, unsigned count)
+ {
+-  return write(handle,buffer,count);
++  return write((int)handle,buffer,count);
+ }
+ 
+ #define BLKSIZE 32767
+@@ -140,7 +140,7 @@ __fileoff_t __FASTCALL__ __FileLength(bhandle_t handle)
+   int stat_ret;
+   __fileoff_t retval;
+   memset(&statbuf,0,sizeof(struct stat));
+-  stat_ret = fstat(handle,&statbuf);
++  stat_ret = fstat((int)handle,&statbuf);
+   retval = 0;
+   if(stat_ret == 0)
+   {
+@@ -158,19 +158,19 @@ __fileoff_t __FASTCALL__ __FileLength(bhandle_t handle)
+ 	while(1)
+ 	{
+ 	   off = min + ((max - min) / 2);
+-	   if (lseek(handle,off,SEEK_SET) == -1)
++	   if (lseek((int)handle,off,SEEK_SET) == -1)
+ 	   	max=off;
+ 	   else {
+-	   if(read(handle,&ch,1) == 1) min = off;
++	   if(read((int)handle,&ch,1) == 1) min = off;
+ 	   else                        max = off;
+ 	   }
+ 	   if(max - min < 5)
+ 	   {
+ 	     retval = min;
+-	     lseek(handle,retval,SEEK_SET);
++	     lseek((int)handle,retval,SEEK_SET);
+              for(i=0;i < 5;i++)
+ 	     {
+-	        if(read(handle,&ch,1) == 1) retval++;
++	        if(read((int)handle,&ch,1) == 1) retval++;
+ 		else goto loop_end;
+ 		if(retval > FILEOFF_MAX-2) break;
+ 	     }
+--- a/biewlib/sysdep/x86_64/cpu_info.c
++++ b/biewlib/sysdep/x86_64/cpu_info.c
+@@ -394,8 +394,8 @@ static unsigned long __NEAR__ __FASTCALL__ __FOPS_nowait(volatile unsigned *coun
+       "	fstp	%%st(1)\n"
+       "	fbld	8(%1)\n"
+       "	fbstp	8(%1)\n"
+-      "	fild	(%1)\n"
+-      "	fistp	(%1)\n"
++      "	fildl	(%1)\n"
++      "	fistpl	(%1)\n"
+       "	fldt	4(%1)\n"
+       "	fstpt	4(%1)\n"
+       "	fstp	%%st(1)\n"
+@@ -434,8 +434,8 @@ static unsigned long __NEAR__ __FASTCALL__ __FOPS_nowait(volatile unsigned *coun
+       "	fstp	%%st(1)\n"
+       "	fyl2xp1\n"
+       "	fstp	%%st(1)\n"
+-      "	fild	(%1)\n"
+-      "	fistp	(%1)"
++      "	fildl	(%1)\n"
++      "	fistpl	(%1)"
+      ::"r"(counter),"r"(arr18bytes)
+      :"st","st(1)","st(2)","st(3)");
+      retval++;
