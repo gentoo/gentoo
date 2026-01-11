@@ -1,4 +1,4 @@
-# Copyright 2003-2025 Gentoo Authors
+# Copyright 2003-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,7 +34,8 @@ src_compile() {
 	buildargs=(
 		BUILDFONT=$(usex fontforge 1 '')
 		CC="$(tc-getCC)"
-		CFLAGS="${CFLAGS}"
+		# see bug #946003 for gnu17
+		CFLAGS="${CFLAGS} -std=gnu17"
 		INSTALL="${INSTALL-install}"
 	)
 
