@@ -1587,7 +1587,7 @@ java-pkg_ensure-vm-version-sufficient() {
 java-pkg_is-vm-version-sufficient() {
 	debug-print-function ${FUNCNAME} $*
 
-	depend-java-query --is-sufficient "${DEPEND}" > /dev/null
+	depend-java-query --is-sufficient "${DEPEND} ${RDEPEND} ${BDEPEND}" > /dev/null
 	return $?
 }
 
@@ -1698,7 +1698,7 @@ java-pkg_current-vm-matches() {
 #
 # @RETURN: string - Either the lowest possible source, or JAVA_PKG_WANT_SOURCE
 java-pkg_get-source() {
-	echo ${JAVA_PKG_WANT_SOURCE:-$(depend-java-query --get-lowest "${DEPEND} ${RDEPEND}")}
+	echo ${JAVA_PKG_WANT_SOURCE:-$(depend-java-query --get-lowest "${DEPEND} ${RDEPEND} ${BDEPEND}")}
 }
 
 # @FUNCTION: java-pkg_get-target
@@ -2511,7 +2511,7 @@ java-pkg_do_write_() {
 			&& echo "DEPEND=\"$(sort -u "${JAVA_PKG_DEPEND_FILE}" | tr '\n' ':')\""
 		[[ -f "${JAVA_PKG_OPTIONAL_DEPEND_FILE}" ]] \
 			&& echo "OPTIONAL_DEPEND=\"$(sort -u "${JAVA_PKG_OPTIONAL_DEPEND_FILE}" | tr '\n' ':')\""
-		echo "VM=\"$(echo ${RDEPEND} ${DEPEND} | sed -e 's/ /\n/g' | sed -n -e '/virtual\/\(jre\|jdk\)/ { p;q }')\"" # TODO cleanup !
+		echo "VM=\">=virtual/jre-$(java-pkg_get-source):*\""
 		[[ -f "${JAVA_PKG_BUILD_DEPEND_FILE}" ]] \
 			&& echo "BUILD_DEPEND=\"$(sort -u "${JAVA_PKG_BUILD_DEPEND_FILE}" | tr '\n' ':')\""
 	) > "${JAVA_PKG_ENV}"
@@ -2660,9 +2660,7 @@ java-pkg_setup-vm() {
 java-pkg_needs-vm() {
 	debug-print-function ${FUNCNAME} $*
 
-	if [[ -n "$(echo ${JAVA_PKG_NV_DEPEND:-${DEPEND}} | sed -e '\:virtual/jdk:!d')" ]]; then
-		return 0
-	fi
+	java-pkg_get-source &>/dev/null && return 0
 
 	[[ -n "${JAVA_PKG_WANT_BUILD_VM}" ]] && return 0
 
@@ -2694,6 +2692,24 @@ java-pkg_get-vm-version() {
 	debug-print-function ${FUNCNAME} $*
 
 	java-config -g PROVIDES_VERSION
+}
+
+# @FUNCTION: java-pkg_determine-vm-version
+# @INTERNAL
+# @RETURN: Returns the highest supported version
+java-pkg_determine-vm-version() {
+	debug-print-function ${FUNCNAME} $*
+
+	local dep val min_val
+
+	for dep in "${DEPEND}" "${RDEPEND}" "${BDEPEND}"; do
+			val="$(depend-java-query --get-vm "$dep" 2>/dev/null)"
+			if [[ -n "$val" ]] && [[ ! "$min_val" || "$val" < "$min_val" ]]; then
+					min_val="$val"
+			fi
+	done
+
+	echo "$min_val"
 }
 
 # @FUNCTION: java-pkg_build-vm-from-handle
@@ -2770,11 +2786,11 @@ java-pkg_switch-vm() {
 				fi
 			# otherwise determine a vm from dep string
 			else
-				debug-print "depend-java-query:  NV_DEPEND:	${JAVA_PKG_NV_DEPEND:-${DEPEND}}"
-				GENTOO_VM="$(depend-java-query --get-vm "${JAVA_PKG_NV_DEPEND:-${DEPEND}}")"
+				debug-print "depend-java-query:  NV_DEPEND:	${DEPEND} ${RDEPEND} ${BDEPEND}"
+				GENTOO_VM="$(java-pkg_determine-vm-version)"
 				if [[ -z "${GENTOO_VM}" || "${GENTOO_VM}" == "None" ]]; then
 					eerror "Unable to determine VM for building from dependencies:"
-					echo "NV_DEPEND: ${JAVA_PKG_NV_DEPEND:-${DEPEND}}"
+					echo "NV_DEPEND: ${DEPEND} ${RDEPEND} ${BDEPEND}"
 					die "Failed to determine VM for building."
 				fi
 			fi
