@@ -1,30 +1,31 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..14} )
 
-inherit flag-o-matic gnome2-utils meson python-any-r1 vala xdg
+inherit flag-o-matic gnome.org gnome2-utils meson python-any-r1 vala xdg
 
 DESCRIPTION="Unicode character map viewer and library"
-HOMEPAGE="https://wiki.gnome.org/Apps/Gucharmap"
-SRC_URI="https://gitlab.gnome.org/GNOME/${PN}/-/archive/${PV}/${P}.tar.bz2"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gucharmap"
 
 LICENSE="GPL-3+"
 SLOT="2.90"
-KEYWORDS="~alpha amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
-UNICODE_VERSION="15.1.0"
+UNICODE_VERSION="17.0.0"
 
 IUSE="+introspection gtk-doc vala"
 REQUIRED_USE="vala? ( introspection )"
 
 RDEPEND="media-libs/freetype:2
-	>=dev-libs/glib-2.32:2
+	>=dev-libs/glib-2.32:2[introspection?]
 	>=x11-libs/gtk+-3.22:3[introspection?]
 	>=dev-libs/libpcre2-10.21:=
 	=app-i18n/unicode-data-${UNICODE_VERSION}*
 	>=x11-libs/pango-1.42.4-r2[introspection?]
+	>=x11-libs/cairo-1.16
+	>=app-accessibility/at-spi2-core-2.56.5:2[introspection?]
 
 	!gnome-extra/gucharmap:0
 "
@@ -33,6 +34,7 @@ BDEPEND="
 	${PYTHON_DEPS}
 	app-text/docbook-xml-dtd:4.1.2
 	dev-libs/glib:2
+	dev-util/glib-utils
 	dev-util/itstool
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
