@@ -39,11 +39,13 @@ PATCHES=(
 )
 
 src_prepare() {
+	append-cflags -Wno-incompatible-pointer-types
 	default
 	eautoreconf
 }
 
 src_install() {
+	append-cflags -Wno-incompatible-pointer-types
 	emboss-r3_src_install
 
 	readme.gentoo_create_doc
