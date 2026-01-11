@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -52,8 +52,11 @@ PATCHES=(
 )
 
 src_configure() {
+	# --disable-locations-compression for https://github.com/mate-desktop/libmateweather/issues/144
+	# libxml2 dropped support for automatic decompression. If MATE
+	# switches to invoking zlib themselves, we can bring this back.
 	mate_src_configure \
-		--enable-locations-compression \
+		--disable-locations-compression \
 		--disable-all-translations-in-one-xml \
 		--disable-icon-update
 }
