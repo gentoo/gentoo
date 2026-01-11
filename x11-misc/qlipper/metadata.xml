@@ -3,6 +3,7 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
+		<changelog>https://github.com/pvanek/qlipper/blob/master/CHANGELOG</changelog>
 		<remote-id type="github">pvanek/qlipper</remote-id>
 	</upstream>
 </pkgmetadata>
