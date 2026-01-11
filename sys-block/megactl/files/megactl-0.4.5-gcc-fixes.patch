@@ -1,0 +1,16 @@
+diff -Nuar --exclude '*.swp' --exclude '*.o' megactl-0.4.5.orig/callinfo.c megactl-0.4.5/callinfo.c
+--- megactl-0.4.5.orig/callinfo.c
++++ megactl-0.4.5/callinfo.c
+@@ -255,7 +255,12 @@
+     { SYS_setfsgid32,		0,	"setfsgid32" },
+     { SYS_pivot_root,		0,	"pivot_root" },
+     { SYS_mincore,		0,	"mincore" },
++#ifdef SYS_madvise
++    { SYS_madvise,		0,	"madvise" },
++#endif
++#ifdef SYS_madvise1
+     { SYS_madvise1,		0,	"madvise1" },
++#endif
+     { SYS_getdents64,		0,	"getdents64" },
+     { SYS_fcntl64,		0,	"fcntl64" },
+     { 222,			0,	NULL },

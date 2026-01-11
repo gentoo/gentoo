@@ -11,6 +11,10 @@
 	status of LSI megaraid adapters, especially Dell PERC RAID adapters, and
 	attached storage devices.
 	</longdescription>
+	<use>
+		<flag name="scsi">Build megactl to support legacy parallel SCSI RAID adapters</flag>
+		<flag name="sas">Build megasasctl to support SAS RAID adapters</flag>
+	</use>
 	<upstream>
 		<remote-id type="sourceforge">megactl</remote-id>
 	</upstream>
