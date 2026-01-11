@@ -37,8 +37,7 @@ else
 		)
 	"
 
-	# boost-1.89.0 is not keyworded
-	if [[ ${PV} != *rc* ]] && false; then
+	if [[ ${PV} != *rc* ]]; then
 		KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 	fi
 fi
