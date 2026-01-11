@@ -1,0 +1,22 @@
+From https://github.com/commonmark/cmark/pull/588
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Thu, 23 Oct 2025 15:30:57 +0300
+Subject: [PATCH] Update cmake_minimum_required to 3.14
+
+Recent CMake 4.1 warns that <3.10 support will be deprecated. Update minimum version and simplify some parts of project.
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,11 +1,4 @@
+-cmake_minimum_required(VERSION 3.7)
+-
+-if(POLICY CMP0063)
+-  cmake_policy(SET CMP0063 NEW)
+-endif()
+-if(POLICY CMP0092)
+-  cmake_policy(SET CMP0092 NEW)
+-endif()
++cmake_minimum_required(VERSION 3.14)
+ 
+ project(cmark
+   LANGUAGES C CXX
+ 
