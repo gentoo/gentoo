@@ -1,0 +1,21 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a3816f7..12aaed7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,3 +1,6 @@
++cmake_minimum_required(VERSION 3.16)
++cmake_policy(VERSION 3.16)
++
+ # 64 bits Intel binary with 10.13 compatibility (these variables should be set before any project command)
+ if(APPLE)
+ 	set(CMAKE_OSX_ARCHITECTURES "${ARCHS_STANDARD_64_BIT}")
+@@ -19,9 +22,6 @@ set(VERSION 1.2.2)
+ set(QTVERSION 5.12)
+ set(CMAKE_AUTOMOC ON)
+ 
+-cmake_minimum_required(VERSION 2.8.12)
+-cmake_policy(VERSION 2.8.12)
+-
+ find_package(Qt5 ${QTVERSION} REQUIRED COMPONENTS Core Widgets PrintSupport Network LinguistTools)
+ 
+ # FIXME only required when CMake downloads dictionary files. Not necessary for building from source package.
