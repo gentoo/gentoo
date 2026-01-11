@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE="cpu_flags_x86_sse3 +threads"
 
 # mpi is not supported in version 7.2.2. mpi is enabled by adding -DPARALLEL to CFLAGS
-PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-makefile.patch
+	"${FILESDIR}"/${P}-bool.patch
+)
 
 src_configure() {
 	use cpu_flags_x86_sse3 &&
