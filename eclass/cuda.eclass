@@ -4,7 +4,7 @@
 # @ECLASS: cuda.eclass
 # @MAINTAINER:
 # Gentoo Science Project <sci@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: Common functions for cuda packages
 # @DESCRIPTION:
 # This eclass contains functions to be used with cuda package. Currently it is
@@ -14,13 +14,13 @@
 # @EXAMPLE:
 # inherit cuda
 
-case ${EAPI} in
-	7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_CUDA_ECLASS} ]]; then
 _CUDA_ECLASS=1
+
+case ${EAPI} in
+	7|8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 inherit flag-o-matic toolchain-funcs
 

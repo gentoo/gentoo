@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: scons-utils.eclass
 # @MAINTAINER:
 # mgorny@gentoo.org
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: helper functions to deal with SCons buildsystem
 # @DESCRIPTION:
 # This eclass provides a set of function to help developers sanely call
@@ -85,7 +85,7 @@
 # -- EAPI support check --
 
 case ${EAPI:-0} in
-	7|8) ;;
+	7|8|9) ;;
 	*) die "EAPI ${EAPI} unsupported."
 esac
 

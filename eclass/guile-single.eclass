@@ -1,4 +1,4 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: guile-single.eclass
@@ -6,7 +6,7 @@
 # Gentoo Scheme project <scheme@gentoo.org>
 # @AUTHOR:
 # Author: Arsen Arsenović <arsen@gentoo.org>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @PROVIDES: guile-utils
 # @BLURB: Utilities for packages that build against a single Guile.
 # @DESCRIPTION:
@@ -104,13 +104,13 @@
 # }
 # @CODE
 
-case "${EAPI}" in
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ ! "${_GUILE_SINGLE_ECLASS}" ]]; then
 _GUILE_SINGLE_ECLASS=1
+
+case "${EAPI}" in
+	8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 inherit guile-utils
 
