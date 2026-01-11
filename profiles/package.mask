@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2026-01-11)
+# Boost 1.89 and its reverse dependencies.  Masked for testing.
+# Tracker bug #961524.
+>=dev-libs/boost-1.89
+>=dev-python/scipy-1.17
+
 # Fabian Groffen <grobian@gentoo.org> (2026-01-08)
 # Too many issues already.  Further testing is appreciated, but expect
 # breakage.
