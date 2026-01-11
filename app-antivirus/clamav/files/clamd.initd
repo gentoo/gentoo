@@ -2,6 +2,7 @@
 
 # Note: the "Foreground" option in clamd.conf must be set to "no"
 command="/usr/sbin/clamd"
+command_args="-c /etc/clamd.conf"
 extra_started_commands="reload"
 
 # For now, must be manually synchronized with the PidFile variable
