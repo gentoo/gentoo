@@ -8,7 +8,4 @@
   <use>
     <flag name="systemd">Use the versions of dbus and polkit files provided by <pkg>sys-apps/systemd</pkg></flag>
   </use>
-  <upstream>
-    <remote-id type="gitlab">postmarketOS/openrc-settingsd</remote-id>
-  </upstream>
 </pkgmetadata>
