@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit flag-o-matic multilib-minimal toolchain-funcs
+inherit dot-a flag-o-matic multilib-minimal toolchain-funcs
 
 DESCRIPTION="Extremely fast non-cryptographic hash algorithm"
 HOMEPAGE="https://xxhash.com/"
@@ -13,6 +13,7 @@ S=${WORKDIR}/xxHash-${PV}
 LICENSE="BSD-2 GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
+IUSE="static-libs"
 
 src_prepare() {
 	default
@@ -25,6 +26,8 @@ src_configure() {
 	# https://github.com/Cyan4973/xxHash?tab=readme-ov-file#binary-size-control
 	is-flagq '-Og' && append-cppflags -DXXH_NO_INLINE_HINTS
 	multilib-minimal_src_configure
+
+	use static-libs && lto-guarantee-fat
 }
 
 myemake() {
@@ -51,5 +54,9 @@ multilib_src_install() {
 	myemake DESTDIR="${D}" install
 	einstalldocs
 
-	rm "${ED}"/usr/$(get_libdir)/libxxhash.a || die
+	if ! use static-libs; then
+		rm "${ED}"/usr/$(get_libdir)/libxxhash.a || die
+	else
+		strip-lto-bytecode
+	fi
 }
