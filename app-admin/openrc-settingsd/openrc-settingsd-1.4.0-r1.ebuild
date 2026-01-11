@@ -6,8 +6,8 @@ EAPI=8
 inherit meson
 
 DESCRIPTION="System settings D-Bus service for OpenRC"
-HOMEPAGE="https://gitlab.com/postmarketOS/openrc-settingsd/"
-SRC_URI="https://gitlab.com/postmarketOS/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.bz2"
+HOMEPAGE="https://gitlab.postmarketos.org/postmarketOS/openrc-settingsd"
+SRC_URI="https://gitlab.postmarketos.org/postmarketOS/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
