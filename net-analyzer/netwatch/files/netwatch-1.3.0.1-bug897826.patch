@@ -1,0 +1,13 @@
+Fix MUSL related bug 897826 (see https://bugs.gentoo.org/897826)
+
+--- a/netresolv.h
++++ b/netresolv.h
+@@ -5,7 +5,7 @@
+ struct resolvaddr 
+ {
+ 	pid_t pid;
+-	u_int32_t inetaddr;
++	uint32_t inetaddr;
+ 	char *where;
+ };
+ 
