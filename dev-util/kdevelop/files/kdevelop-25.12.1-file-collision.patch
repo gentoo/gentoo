@@ -1,4 +1,4 @@
-From db8009842bd13233ff1324c393469a6ce6af1528 Mon Sep 17 00:00:00 2001
+From e6ddd0d04ed7ae94224f2345ee5e49e7b9b5f93f Mon Sep 17 00:00:00 2001
 From: Andreas Sturmlechner <asturm@gentoo.org>
 Date: Fri, 9 Jan 2026 22:29:06 +0100
 Subject: [PATCH] Avoid file collision with other applications by too general

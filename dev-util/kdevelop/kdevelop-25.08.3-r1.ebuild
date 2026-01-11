@@ -1,4 +1,4 @@
-# Copyright 1999-2026 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ CMAKE_QA_COMPAT_SKIP=1 # bug 964762
 ECM_HANDBOOK="optional"
 ECM_TEST="true"
 KDE_ORG_CATEGORY="kdevelop"
-KFMIN=6.19.0
+KFMIN=6.16.0
 LLVM_COMPAT=( 15 16 17 18 19 20 21 )
 QTMIN=6.9.1
 inherit ecm gear.kde.org llvm-r2 optfeature xdg
@@ -17,7 +17,7 @@ HOMEPAGE="https://kdevelop.org/"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="6/$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 IUSE="gdbui plasma +qmake +share subversion"
 
 # UPSTREAM: not ported yet, check plugins/CMakeLists.txt
@@ -97,7 +97,8 @@ CMAKE_SKIP_TESTS=(
 )
 
 PATCHES=(
-	"${FILESDIR}/${P}-file-collision.patch" # bug #963324 pt.1, git master
+	# bug #963324 pt.1, git master
+	"${FILESDIR}/${PN}-25.12.1-file-collision.patch"
 )
 
 src_prepare() {
