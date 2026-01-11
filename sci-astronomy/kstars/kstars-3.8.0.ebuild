@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -77,6 +77,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.7.4-cmake.patch # bug 895892, downstream patch
 	"${FILESDIR}"/${P}-cmake.patch # MR #1610 pending upstream
 	"${FILESDIR}"/${P}-gcc15.patch # fixed in 3.8.1
+	"${FILESDIR}"/${P}-qt-6.10.patch # fixed in 3.8.1
 )
 
 src_configure() {
