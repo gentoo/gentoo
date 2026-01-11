@@ -1,0 +1,32 @@
+diff --git a/Makefile b/Makefile
+index 811ade9..d57a631 100644
+--- a/Makefile
++++ b/Makefile
+@@ -342,13 +342,12 @@ ifeq ($(shared),yes)
+     endif
+   endif
+ else
+-  MUPDF_LIB = $(OUT)/libmupdf.a
+-  ifneq ($(THIRD_OBJ),)
+-    # omit libmupdf-third if there is nothing in it
+-    THIRD_LIB = $(OUT)/libmupdf-third.a
+-  endif
+-  $(MUPDF_LIB) : $(MUPDF_OBJ)
+-  $(THIRD_LIB) : $(THIRD_OBJ)
++  MUPDF_LIB = libmupdf.so.$(GENTOO_PV)
++  THIRD_LIB =
++  MUPDF_STATIC = $(OUT)/libmupdf.a
++  $(MUPDF_LIB) : $(MUPDF_OBJ) $(THIRD_OBJ)
++	$(QUIET_LINK) $(CC) $(LDFLAGS) --shared -Wl,-soname -Wl,$(MUPDF_LIB) -o $@ $^ $(THIRD_LIBS) $(LIBS)
++  $(MUPDF_STATIC): $(MUPDF_OBJ) $(THIRD_OBJ)
+ endif
+ 
+ ifneq ($(USE_SYSTEM_GLUT),yes)
+@@ -496,7 +495,6 @@ ifeq ($(shared),yes)
+   endif
+ else
+ 	install -m 644 $(MUPDF_LIB) $(DESTDIR)$(libdir)
+-	install -m 644 $(THIRD_LIB) $(DESTDIR)$(libdir)
+ endif
+ 
+ install-tools: tools
