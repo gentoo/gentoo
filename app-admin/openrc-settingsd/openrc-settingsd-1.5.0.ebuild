@@ -9,29 +9,33 @@ DESCRIPTION="System settings D-Bus service for OpenRC"
 HOMEPAGE="https://gitlab.postmarketos.org/postmarketOS/openrc-settingsd"
 SRC_URI="https://gitlab.postmarketos.org/postmarketOS/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.bz2"
 
+S="${WORKDIR}/${PN}-v${PV}"
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="systemd"
 
-DEPEND="
+COMMON_DEPEND="
 	>=dev-libs/glib-2.30:2
-	sys-apps/dbus
 	sys-auth/polkit
 	dev-libs/libdaemon:0=
-	sys-apps/openrc
 "
-RDEPEND="
-	${DEPEND}
-	systemd? ( >=sys-apps/systemd-197 )
+
+# MisplacedWeakBlocker: version 1.5.0: DEPEND: misplaced weak blocker: !sys-apps/systemd
+RDEPEND="${COMMON_DEPEND}
+	sys-apps/dbus
+	sys-apps/openrc
 	elibc_glibc? ( !systemd? ( sys-auth/nss-myhostname !sys-apps/systemd ) )
 "
+
+DEPEND="${COMMON_DEPEND}
+	systemd? ( >=sys-apps/systemd-197 )
+"
+
 BDEPEND="
 	dev-util/gdbus-codegen
 	virtual/pkgconfig
 "
-
-S="${WORKDIR}/${PN}-v${PV}"
 
 src_configure() {
 	local emesonargs=(
