@@ -1,4 +1,4 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,6 +28,11 @@ BDEPEND="
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
+
+python_compile() {
+	# setuptools is broken for C extensions, bug #907718, bug #967476 etc.
+	distutils-r1_python_compile -j1
+}
 
 python_test() {
 	rm -rf librt || die
