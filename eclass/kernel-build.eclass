@@ -149,6 +149,12 @@ REQUIRED_USE="secureboot? ( modules-sign )"
 # - emergency
 # - rescue
 
+# @ECLASS_VARIABLE: KERNEL_VERBOSE
+# @USER_VARIABLE
+# @DESCRIPTION:
+# Set to 0 to disable verbose messages during compilation.
+: "${KERNEL_VERBOSE:=1}"
+
 if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
 	BDEPEND+="
 		generic-uki? ( ${!INITRD_PACKAGES[@]} )
@@ -253,8 +259,11 @@ kernel-build_src_configure() {
 	fi
 
 	tc-export_build_env
+	local v
+	[[ ${KERNEL_VERBOSE} != 0 ]] && v=1
+
 	MAKEARGS=(
-		V=1
+		${v+V=1}
 		WERROR=0
 
 		HOSTCC="$(tc-getBUILD_CC)"
