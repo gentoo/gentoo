@@ -12,7 +12,7 @@ else
 	SRC_URI="https://git.zx2c4.com/password-store/snapshot/password-store-${PV}.tar.xz"
 	S="${WORKDIR}/password-store-${PV}"
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~x64-macos"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86 ~arm64-macos ~x64-macos"
 fi
 
 DESCRIPTION="Stores, retrieves, generates, and synchronizes passwords securely"
