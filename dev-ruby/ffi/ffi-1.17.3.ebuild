@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -34,7 +34,7 @@ all_ruby_prepare() {
 	sed -i -e '/tasks/ s:^:#:' \
 		-e '/Gem::Tasks/,/end/ s:^:#:' Rakefile || die
 
-	sed -e 's:require "ffi/tools/types_generator":require_relative "../rakelib/types_generator":' \
+	sed -e "s:require 'ffi/tools/types_generator':require_relative '../rakelib/types_generator':" \
 		-i gen/Rakefile || die
 
 	sed -e '/require/c\require "./lib/ffi/version"' \
