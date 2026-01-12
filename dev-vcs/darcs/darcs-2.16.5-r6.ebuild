@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,6 +30,8 @@ CABAL_CHDEPS=(
 	'bytestring        >= 0.10.6 && < 0.11' 'bytestring >= 0.10.6'
 	'time              >= 1.5.0.1 && < 1.10' 'time >= 1.5.0.1'
 	'unix-compat       >= 0.5 && < 0.6' 'unix-compat >= 0.5'
+	'leancheck    >= 0.9 && < 0.10' 'leancheck    >= 0.9 && < 1.1'
+	'vector            >= 0.11 && < 0.13' 'vector            >= 0.11 && < 0.14'
 )
 
 RDEPEND="
@@ -60,7 +62,7 @@ RDEPEND="
 	>=dev-haskell/text-1.2.1.3:=[profile?] <dev-haskell/text-1.3:=[profile?]
 	>=dev-haskell/unix-compat-0.5:=[profile?]
 	>=dev-haskell/utf8-string-1:=[profile?] <dev-haskell/utf8-string-1.1:=[profile?]
-	>=dev-haskell/vector-0.11:=[profile?] <dev-haskell/vector-0.13:=[profile?]
+	>=dev-haskell/vector-0.11:=[profile?] <dev-haskell/vector-0.14:=[profile?]
 	>=dev-haskell/zip-archive-0.3:=[profile?] <dev-haskell/zip-archive-0.5:=[profile?]
 	>=dev-haskell/zlib-0.6.1.2:=[profile?] <dev-haskell/zlib-0.7.0.0:=[profile?]
 	>=dev-lang/ghc-8.10.6:=
@@ -74,7 +76,7 @@ DEPEND="${RDEPEND}
 		>=dev-haskell/cmdargs-0.10.10 <dev-haskell/cmdargs-0.11
 		>=dev-haskell/findbin-0.0.5 <dev-haskell/findbin-0.1
 		>=dev-haskell/hunit-1.3 <dev-haskell/hunit-1.7
-		>=dev-haskell/leancheck-0.9 <dev-haskell/leancheck-0.10
+		>=dev-haskell/leancheck-0.9 <dev-haskell/leancheck-1.1
 		>=dev-haskell/monad-control-0.3.2 <dev-haskell/monad-control-1.1
 		>=dev-haskell/quickcheck-2.13 <dev-haskell/quickcheck-2.15
 		<dev-haskell/system-fileio-0.4
