@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -43,7 +43,7 @@ PATCHES=(
 	"${FILESDIR}"/envy24control-config-dir.patch
 )
 
-CONFIG_CHECK="~CONFIG_SND_HDA_RECONFIG"
+CONFIG_CHECK="~SND_HDA_RECONFIG"
 
 pkg_setup() {
 	linux-info_pkg_setup
