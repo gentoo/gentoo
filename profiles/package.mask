@@ -36,6 +36,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Conrad Kostecki <conikost@gentoo.org> (2026-01-12)
+# Mask legacy intel-compute-runtime because it depends on legacy
+# intel-graphics-compiler, which no longer receives updates,
+# and only supports up to LLVM 15.
+# Bug #920541. Removal on 2026-01-31.
+=dev-libs/intel-compute-runtime-24.35.30872.32-r2
+=dev-libs/intel-compute-runtime-24.35.30872.36
+=dev-util/intel-graphics-compiler-1.0.17791.18-r1
+
 # Michał Górny <mgorny@gentoo.org> (2026-01-11)
 # Boost 1.89 and its reverse dependencies.  Masked for testing.
 # Tracker bug #961524.
