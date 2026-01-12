@@ -9,6 +9,7 @@
   <flag name="api">build brltty's application program interface</flag>
   <flag name="beeper">support the console tone generator</flag>
   <flag name="fm">support for the sound card synthesizer</flag>
+  <flag name="hid">support for opening and closing a HID device</flag>
   <flag name="louis">Use braille translator <pkg>dev-libs/liblouis</pkg></flag>
   <flag name="midi">support the musical instrument digital interface</flag>
   <flag name="pcm">support for sound card digital audio</flag>
