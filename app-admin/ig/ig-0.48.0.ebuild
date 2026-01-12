@@ -1,4 +1,4 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,6 +16,10 @@ LICENSE="Apache-2.0 GPL-2 MIT BSD-2 MPL-2.0 ISC imagemagick CC-BY-SA-4.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 RESTRICT="test" # Not safe to run outside a container.
+
+BDEPEND="
+	>=dev-lang/go-1.25:=
+"
 
 src_compile() {
 	ego build \
