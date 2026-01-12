@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ LICENSE="GPL-3+ LGPL-2.1+"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
 
-CONFIG_CHECK="~CONFIG_GPIO_SYSFS"
+CONFIG_CHECK="~GPIO_SYSFS"
 
 src_configure() {
 	local myeconfargs=(
