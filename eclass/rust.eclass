@@ -1,4 +1,4 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: rust.eclass
@@ -556,6 +556,9 @@ rust_pkg_setup() {
 		local prefix=$(get_rust_path "${BROOT}" "${RUST_SLOT}" "${RUST_TYPE}")
 		CARGO="${prefix}bin/cargo"
 		RUSTC="${prefix}bin/rustc"
+		if [[ -n "${RUSTC_WRAPPER}" ]]; then
+			RUSTC="${RUSTC_WRAPPER} ${RUSTC}"
+		fi
 		export CARGO RUSTC
 		einfo "Using Rust ${RUST_SLOT} (${RUST_TYPE})"
 	fi
