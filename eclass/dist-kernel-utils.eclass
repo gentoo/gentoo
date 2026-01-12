@@ -1,4 +1,4 @@
-# Copyright 2020-2025 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: dist-kernel-utils.eclass
@@ -18,6 +18,12 @@
 # If set to a non-null value, it is assumed the kernel was built with
 # CONFIG_EFI_ZBOOT enabled. This effects the name of the kernel image on
 # arm64 and riscv. Mainly useful for sys-kernel/gentoo-kernel-bin.
+
+# @ECLASS_VARIABLE: KERNEL_VERBOSE
+# @USER_VARIABLE
+# @DESCRIPTION:
+# Controls kernel output verbosity. Default value is ON, set to OFF to disable verbose messages
+: "${KERNEL_VERBOSE:=ON}"
 
 if [[ ! ${_DIST_KERNEL_UTILS} ]]; then
 
@@ -95,7 +101,10 @@ dist-kernel_install_kernel() {
 		"${version}" "${image}" "${map}" "${dir}"
 	)
 	if has_version ">=sys-kernel/installkernel-56"; then
-		installkernel_args+=( "${@:5}" --verbose )
+		installkernel_args+=( "${@:5}" )
+		if [[ ${KERNEL_VERBOSE} == "ON" ]]; then
+			installkernel_args+=( --verbose )
+		fi
 	fi
 
 	local success=
