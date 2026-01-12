@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
-		<email>brettalcox@gmail.com</email>
+		<email>brettalcox@proton.me</email>
 		<name>Brett Alcox</name>
 	</maintainer>
 	<maintainer type="project" proxied="proxy">
