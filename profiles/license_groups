@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Please report bugs or other requests at bugs.gentoo.org and assign to
@@ -73,8 +73,8 @@ BINARY-REDISTRIBUTABLE @FREE Atmel AVASYS bh-luxi bonnie Broadcom freedist intel
 
 ######################################################################
 
-# Licenses approved by the Open Source Initiative that are nonfree
-# (see comment about OSI-APPROVED-FREE)
+# Licenses approved by the Open Source Initiative that we consider
+# nonfree (see comment about OSI-APPROVED-FREE)
 OSI-APPROVED-NONFREE NOSA Watcom-1.0
 
 OSI-APPROVED @OSI-APPROVED-FREE @OSI-APPROVED-NONFREE
