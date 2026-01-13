@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,6 +21,7 @@ IUSE="envtools"
 RDEPEND="
 	dev-libs/openssl:=
 	net-libs/gnutls:=
+	sys-apps/dtc[python]
 	sys-apps/util-linux:=
 "
 DEPEND="${RDEPEND}"
