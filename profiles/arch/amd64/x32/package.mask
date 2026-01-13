@@ -8,6 +8,7 @@ media-radio/qlog
 # Jay Faulkner <jayf@gentoo.org> (2025-06-01)
 # Requires >=net-libs/nodejs-18[npm]
 dev-util/claude-code
+dev-util/cursor-agent
 
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-04-04)
 # Requires dev-qt/qtwebengine
