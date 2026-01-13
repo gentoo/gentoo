@@ -3,8 +3,6 @@
 
 EAPI=8
 
-KERNEL_IUSE_MODULES_SIGN=1
-
 inherit kernel-install toolchain-funcs unpacker verify-sig
 
 BASE_P=linux-${PV%.*}
