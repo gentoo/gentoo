@@ -1809,7 +1809,7 @@ toolchain_src_configure() {
 		# We patch this in w/ PR66487-object-lifetime-instrumentation-for-Valgrind.patch,
 		# so it may not always be available.
 		if grep -q -- '--enable-valgrind-interop' "${S}"/libgcc/configure.ac ; then
-			if ! is_crosscompile || $(unset CC; unset CPP; tc-getCPP ${CTARGET#accel-}) -E - <<<"#include <valgrind/memcheck.h>" >& /dev/null ; then
+			if ! is_crosscompile && $(unset CC; unset CPP; tc-getCPP ${CTARGET#accel-}) -E - <<<"#include <valgrind/memcheck.h>" >& /dev/null ; then
 				confgcc+=( $(use_enable valgrind valgrind-interop) )
 			else
 				confgcc+=( --disable-valgrind-interop )
