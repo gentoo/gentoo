@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ NGINX_MODULES=(
 	stream_{ssl,realip,geoip,ssl_preread}
 )
 NGINX_UPDATE_STREAM=mainline
-NGINX_TESTS_COMMIT=06a36245e134eac985cdfc5fac982cb149f61412
+NGINX_TESTS_COMMIT=51e17e709ede6d4a75737e98d12e775fb4fc424a
 NGINX_MISC_FILES=(
 	nginx-{r2.logrotate,r2.service,r4.conf,r6.initd,r1.confd,r1.tmpfiles}
 )
