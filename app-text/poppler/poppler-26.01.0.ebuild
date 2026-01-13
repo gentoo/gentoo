@@ -69,6 +69,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-qt-deps.patch"
 	"${FILESDIR}/${P}-respect-cflags.patch"
 	"${FILESDIR}/${PN}-0.57.0-disable-internal-jpx.patch"
+	"${FILESDIR}/${PN}-26.01.0-gcc16-include-climits.patch"
 )
 
 src_unpack() {
