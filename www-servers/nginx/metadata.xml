@@ -21,6 +21,7 @@
 			Use <pkg>dev-libs/libatomic_ops</pkg> instead of builtin atomic operations
 		</flag>
 		<flag name="mail">Enable POP3/IMAP4/SMTP mail proxy server</flag>
+		<flag name="modules">Enable loadable module support</flag>
 		<flag name="stream">
 			Enable generic TCP/UDP proxying and load balancing
 		</flag>
