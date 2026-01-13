@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: nginx.eclass
@@ -288,8 +288,9 @@ _ngx_populate_iuse() {
 	local mod state
 	IUSE+=" ${_NGX_SUBSYSTEMS[*]}"
 	for mod in "${_NGX_MODULES[@]}"; do
-		# SSL should be enabled by default in 2025.
-		if [[ ${mod:0:1} == + || ${mod} == *_ssl ]]; then
+		# SSL should be enabled by default in 2025. http_v2 is enabled because
+		# bug 968056.
+		if [[ ${mod:0:1} == + || ${mod} == *_ssl || ${mod#+} == http_v2 ]]; then
 			state=+
 		else
 			state=''
@@ -370,6 +371,7 @@ _ngx_set_blocks "${NGINX_UPDATE_STREAM}" "${NGX_UPDATE_STREAMS_LIST[@]}" 0
 _ngx_set_mod_required_use() {
 	local -A _NGX_DEP_TABLE=(
 		[http_v3]=http_ssl
+		[http_grpc]=http_v2
 	)
 
 	local mod dep_list dep result
@@ -519,23 +521,6 @@ unset -f _ngx_set_blocks _ngx_set_mod_required_use _ngx_set_mod_depend \
 	_ngx_set_mod_test_depend
 
 #-----> Phase functions <-----
-
-# @FUNCTION: nginx_pkg_setup
-# @DESCRIPTION:
-# Shows important information that a user should pay attention to.
-nginx_pkg_setup() {
-	debug-print-function "${FUNCNAME[0]}" "$@"
-	local prefix="nginx_modules_http"
-	if in_iuse "${prefix}_grpc" && in_iuse "${prefix}_v2" &&
-		use "${prefix}_grpc" && ! use "${prefix}_v2";
-	then
-		ewarn "http_grpc is enabled when http_v2 is disabled."
-		ewarn "The http_grpc module will not be built if http_v2 is not enabled."
-		ewarn "Please enable the ${prefix}_v2 USE flag on ${CATEGORY}/${PN}"
-		ewarn "to use the http_grpc NGINX module. Refer to the Gentoo Handbook for"
-		ewarn "instructions on how to change USE flags."
-	fi
-}
 
 # @FUNCTION: nginx_src_unpack
 # @DESCRIPTION:
@@ -951,5 +936,5 @@ nginx_pkg_postinst() {
 
 fi
 
-EXPORT_FUNCTIONS pkg_setup src_unpack src_prepare src_configure src_compile \
-	src_test src_install pkg_postinst
+EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_test \
+	src_install pkg_postinst
