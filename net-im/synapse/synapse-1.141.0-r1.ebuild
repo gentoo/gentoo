@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -236,6 +236,8 @@ KEYWORDS="amd64 ~arm64 ~ppc64"
 IUSE="postgres selinux systemd test"
 RESTRICT="!test? ( test )"
 
+# Fails to run with =prometheus-client-0.24, see upstream issue
+# https://github.com/element-hq/synapse/issues/19375
 RDEPEND="
 	acct-user/synapse
 	acct-group/synapse
@@ -254,7 +256,7 @@ RDEPEND="
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/phonenumbers[${PYTHON_USEDEP}]
 	>=dev-python/pillow-10.0.1[${PYTHON_USEDEP},webp]
-	dev-python/prometheus-client[${PYTHON_USEDEP}]
+	<dev-python/prometheus-client-0.24[${PYTHON_USEDEP}]
 	dev-python/pyasn1-modules[${PYTHON_USEDEP}]
 	dev-python/pyasn1[${PYTHON_USEDEP}]
 	dev-python/pydantic[${PYTHON_USEDEP}]

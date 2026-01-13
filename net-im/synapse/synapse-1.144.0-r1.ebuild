@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ CRATES="
 	blake2@0.10.6
 	block-buffer@0.10.4
 	bumpalo@3.19.0
-	bytes@1.10.1
+	bytes@1.11.0
 	cc@1.2.30
 	cfg-if@1.0.1
 	cfg_aliases@0.2.1
@@ -53,7 +53,7 @@ CRATES="
 	hex@0.4.3
 	http-body-util@0.1.3
 	http-body@1.0.1
-	http@1.3.1
+	http@1.4.0
 	httparse@1.10.1
 	httpdate@1.0.3
 	hyper-rustls@0.27.7
@@ -99,7 +99,7 @@ CRATES="
 	proc-macro2@1.0.95
 	pyo3-build-config@0.26.0
 	pyo3-ffi@0.26.0
-	pyo3-log@0.13.1
+	pyo3-log@0.13.2
 	pyo3-macros-backend@0.26.0
 	pyo3-macros@0.26.0
 	pyo3@0.26.0
@@ -230,6 +230,8 @@ KEYWORDS="~amd64 ~arm64 ~ppc64"
 IUSE="postgres selinux systemd test"
 RESTRICT="!test? ( test )"
 
+# Fails to run with =prometheus-client-0.24, see upstream issue
+# https://github.com/element-hq/synapse/issues/19375
 RDEPEND="
 	acct-user/synapse
 	acct-group/synapse
@@ -248,7 +250,7 @@ RDEPEND="
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/phonenumbers[${PYTHON_USEDEP}]
 	>=dev-python/pillow-10.0.1[${PYTHON_USEDEP},webp]
-	dev-python/prometheus-client[${PYTHON_USEDEP}]
+	<dev-python/prometheus-client-0.24[${PYTHON_USEDEP}]
 	dev-python/pyasn1-modules[${PYTHON_USEDEP}]
 	dev-python/pyasn1[${PYTHON_USEDEP}]
 	dev-python/pydantic[${PYTHON_USEDEP}]
