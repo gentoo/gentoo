@@ -1,0 +1,60 @@
+#!/sbin/openrc-run
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License, v2 or later
+
+description="krdpserver - An RDP server that exposes the current desktop session over the RDP protocol"
+
+supervisor=supervise-daemon
+command="/usr/bin/krdpserver"
+RUN_PATH="${XDG_RUNTIME_DIR}/krdp"
+pidfile="${RUN_PATH}/${RC_SVCNAME}.pid"
+output_log="${RUN_PATH}/${RC_SVCNAME}.log"
+error_log="${RUN_PATH}/${RC_SVCNAME}.log"
+
+depend() {
+	need dbus
+}
+
+start_pre() {
+	# Try to get environment from running plasmashell.
+	# Plasma session (via /usr/share/wayland-sessions/plasma.desktop) may use
+	# /usr/libexec/plasma-dbus-run-session-if-needed which can start an additional
+	# D-Bus session. We must get the environment directly from plasmashell to obtain
+	# the correct DBUS_SESSION_BUS_ADDRESS. Without this, krdpserver can start but
+	# RDP clients will fail to connect.
+	# Configurable via PLASMA_WAIT_RETRIES and PLASMA_WAIT_INTERVAL
+	plasma_pid=""
+	retry_count=0
+	max_retries="${PLASMA_WAIT_RETRIES:-150}"
+	wait_interval="${PLASMA_WAIT_INTERVAL:-2}"
+
+	ebegin "Waiting for plasmashell"
+	while [ $retry_count -lt $max_retries ]; do
+		plasma_pid=$(pgrep -u $(id -u) plasmashell | head -1)
+		if [ -n "$plasma_pid" ] && [ -r "/proc/$plasma_pid/environ" ]; then
+			break
+		fi
+		retry_count=$((retry_count + 1))
+		sleep "$wait_interval"
+	done
+
+	if [ -n "$plasma_pid" ] && [ -r "/proc/$plasma_pid/environ" ]; then
+		export "$(grep -z '^XDG_RUNTIME_DIR=' /proc/$plasma_pid/environ | tr '\0' '\n')"
+		export "$(grep -z '^DBUS_SESSION_BUS_ADDRESS=' /proc/$plasma_pid/environ | tr '\0' '\n')"
+		export "$(grep -z '^WAYLAND_DISPLAY=' /proc/$plasma_pid/environ | tr '\0' '\n')"
+		export "$(grep -z '^XDG_SESSION_TYPE=' /proc/$plasma_pid/environ | tr '\0' '\n')"
+		export "$(grep -z '^DISPLAY=' /proc/$plasma_pid/environ | tr '\0' '\n')"
+	else
+		# Fallback to defaults if plasmashell not found
+		export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"
+		export DBUS_SESSION_BUS_ADDRESS="unix:path=${XDG_RUNTIME_DIR}/bus"
+		export WAYLAND_DISPLAY="${WAYLAND_DISPLAY:-wayland-0}"
+		export XDG_SESSION_TYPE="wayland"
+		export DISPLAY="${DISPLAY:-:0}"
+	fi
+}
+
+start() {
+	checkpath -o $USER -d "${RUN_PATH}"
+	default_start
+}
