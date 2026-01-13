@@ -4,18 +4,16 @@
 EAPI=8
 inherit autotools flag-o-matic
 
+SERIAL="508f73a"
+
 DESCRIPTION="A Tool for analyzing network packet dumps"
 HOMEPAGE="http://www.tcptrace.org/"
-SRC_URI="
-	http://www.tcptrace.org/download/${P/_p*}.tar.gz
-	http://www.tcptrace.org/download/old/$(ver_cut 1-2)/${P/_p*}.tar.gz
-	mirror://debian/pool/main/t/${PN}/${PN}_${PV/_p*}-${PV/*_p}.debian.tar.xz
-"
-S=${WORKDIR}/${P/_p*}
+SRC_URI="https://codeload.github.com/blitz/tcptrace/tar.gz/508f73a?dummy=/ -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${SERIAL}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ppc64 x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
 DEPEND="
 	net-libs/libpcap
@@ -25,19 +23,18 @@ RDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${P/_p*}-cross-compile.patch"
-	"${FILESDIR}/${P/_p*}-_DEFAULT_SOURCE.patch"
-	"${FILESDIR}/${P/_p*}-fix-build-clang16.patch"
-	"${FILESDIR}/0001-configure.in-fix-implicit-function-declaration-causi.patch"
-	"${FILESDIR}/${P/_p*}-gcc15.patch"
+	# FreeBSD patches (see https://www.freshports.org/net/tcptrace/?9kacyG=zRwZH1DfaB)
+	"${FILESDIR}"/freebsd-accumulated.patch
+	"${FILESDIR}"/fix-warnings.patch
+	"${FILESDIR}"/${PN}-6.6.7-cross-compile.patch
+	"${FILESDIR}"/${PN}-6.6.7-_DEFAULT_SOURCE.patch
+	"${FILESDIR}"/${PN}-6.6.7-fix-build-clang16.patch
+	"${FILESDIR}"/0001-configure.in-fix-implicit-function-declaration-causi.patch
+	"${FILESDIR}/${P}-gcc15.patch"
 )
 
 src_prepare() {
 	default
-
-	eapply \
-		$(awk '{ print "'"${WORKDIR}"'/debian/patches/" $0; }' < "${WORKDIR}"/debian/patches/series)
-
 	eautoreconf
 }
 

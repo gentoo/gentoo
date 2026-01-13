@@ -1,0 +1,181 @@
+Fix build with GCC 15.x and higher.
+
+diff '--color=auto' -urw a/filt_parser.y b/filt_parser.y
+--- a/filt_parser.y	2013-07-01 22:43:14.000000000 +0400
++++ b/filt_parser.y	2025-11-19 20:33:39.071016902 +0300
+@@ -72,7 +72,7 @@
+     long signed_long;
+     u_long unsigned_long;
+     ipaddr *pipaddr;
+-    Bool bool;
++    Bool boolean;
+     enum optype op;
+     struct filter_node *pf;
+ }
+@@ -99,7 +99,7 @@
+ %token <string> VARIABLE STRING
+ %token <signed_long> SIGNED
+ %token <unsigned_long> UNSIGNED
+-%token <bool> BOOL
++%token <boolean> BOOL
+ %token <pipaddr> IPADDR
+ %type <op> relop
+ %type <pf> expr leaf number
+diff '--color=auto' -urw a/filter.c b/filter.c
+--- a/filter.c	2013-07-01 22:43:14.000000000 +0400
++++ b/filter.c	2025-11-19 20:38:18.843573754 +0300
+@@ -534,7 +534,7 @@
+     pf = MallocZ(sizeof(struct filter_node));
+ 
+     pf->vartype = V_BOOL;
+-    pf->un.constant.bool = val;
++    pf->un.constant.boolean = val;
+ 
+     return(pf);
+ }
+@@ -624,9 +624,9 @@
+ 	break;
+       case V_BOOL:
+ 	if (debug)
+-	    snprintf(buf,sizeof(buf),"BOOL(%s)",  BOOL2STR(pf->un.constant.bool));
++	    snprintf(buf,sizeof(buf),"BOOL(%s)",  BOOL2STR(pf->un.constant.boolean));
+ 	else
+-	    snprintf(buf,sizeof(buf),"%s", BOOL2STR(pf->un.constant.bool));
++	    snprintf(buf,sizeof(buf),"%s", BOOL2STR(pf->un.constant.boolean));
+ 	break;
+       case V_IPADDR:
+ 	if (debug)
+@@ -716,7 +716,7 @@
+       case V_ULLONG:	snprintf(buf,sizeof(buf),"ULLONG(%" FS_ULL ")",pres->val.u_longint); break;
+       case V_LLONG:	snprintf(buf,sizeof(buf),"LLONG(%"  FS_LL  ")",pres->val.longint); break;
+       case V_STRING:	snprintf(buf,sizeof(buf),"STRING(%s)",pres->val.string); break;
+-      case V_BOOL:	snprintf(buf,sizeof(buf),"BOOL(%s)",  BOOL2STR(pres->val.bool)); break;
++      case V_BOOL:	snprintf(buf,sizeof(buf),"BOOL(%s)",  BOOL2STR(pres->val.boolean)); break;
+       default: {
+ 	  fprintf(stderr,"Res2Str: unknown constant type %d (%s)\n",
+ 		  pres->vartype, Vartype2Str(pres->vartype));
+@@ -1219,7 +1219,7 @@
+ 
+     /* fill in the answer */
+     pres->vartype = V_BOOL;
+-    pres->val.bool = ret;
++    pres->val.boolean = ret;
+ 
+     if (debug)
+ 	printf("EvalUnsigned %" FS_ULL " %s %" FS_ULL " returns %s\n",
+@@ -1267,7 +1267,7 @@
+ 
+     /* fill in the answer */
+     pres->vartype = V_BOOL;
+-    pres->val.bool = ret;
++    pres->val.boolean = ret;
+ 
+     if (debug)
+ 	printf("EvalSigned %" FS_LL " %s %" FS_LL " returns %s\n",
+@@ -1329,7 +1329,7 @@
+ 
+      /* fill in the answer */
+      pres->vartype = V_BOOL;
+-     pres->val.bool = ret;
++     pres->val.boolean = ret;
+ 
+      if (debug) {
+ 	 printf("EvalIpaddr %s %s", HostAddr(*varl), Op2Str(pf->op));
+@@ -1382,7 +1382,7 @@
+ 
+     /* fill in the answer */
+     pres->vartype = V_BOOL;
+-    pres->val.bool = ret;
++    pres->val.boolean = ret;
+ 
+     if (debug)
+ 	printf("EvalString '%s' %s '%s' returns %s\n",
+@@ -1425,7 +1425,7 @@
+ 
+       case V_BOOL:
+ 	pres->vartype = V_BOOL;
+-	pres->val.bool = (Var2Unsigned(ptp,pf) != 0);
++	pres->val.boolean = (Var2Unsigned(ptp,pf) != 0);
+ 	break;
+ 
+       case V_IPADDR:
+@@ -1475,7 +1475,7 @@
+ 
+       case V_BOOL:
+ 	pres->vartype = V_BOOL;
+-	pres->val.bool = (Var2Unsigned(ptp,pf) != 0);
++	pres->val.boolean = (Var2Unsigned(ptp,pf) != 0);
+ 	break;
+ 
+       case V_IPADDR:
+@@ -1528,11 +1528,11 @@
+ 	if (pf->un.binary.left->vartype == V_ULLONG) {
+ 	    EvalRelopUnsigned(ptp,&res,pf);
+ 	    pres->vartype = V_BOOL;
+-	    pres->val.bool = res.val.bool;
++	    pres->val.boolean = res.val.boolean;
+ 	} else if (pf->un.binary.left->vartype == V_LLONG) {
+ 	    EvalRelopSigned(ptp,&res,pf);
+ 	    pres->vartype = V_BOOL;
+-	    pres->val.bool = res.val.bool;
++	    pres->val.boolean = res.val.boolean;
+ 	} else if (pf->un.binary.left->vartype == V_STRING) {
+ 	    EvalRelopString(ptp,&res,pf);
+ 	    pres->vartype = V_LLONG;
+@@ -1540,7 +1540,7 @@
+ 	} else if (pf->un.binary.left->vartype == V_IPADDR) {
+ 	    EvalRelopIpaddr(ptp,&res,pf);
+ 	    pres->vartype = V_BOOL;
+-	    pres->val.bool = res.val.bool;
++	    pres->val.boolean = res.val.boolean;
+ 	} else {
+ 	    fprintf(stderr,
+ 		    "EvalFilter: binary op %d (%s) not supported on data type %d (%s)\n",
+@@ -1583,14 +1583,14 @@
+ 	    if (pf->op == OP_OR) {
+ 		EvalFilter(ptp,&res1,pf->un.binary.left);
+ 		EvalFilter(ptp,&res2,pf->un.binary.right);
+-		ret = res1.val.bool || res2.val.bool;
++		ret = res1.val.boolean || res2.val.boolean;
+ 	    } else {
+ 		EvalFilter(ptp,&res1,pf->un.binary.left);
+ 		EvalFilter(ptp,&res2,pf->un.binary.right);
+-		ret = res1.val.bool &&  res2.val.bool;
++		ret = res1.val.boolean &&  res2.val.boolean;
+ 	    }
+ 	    pres->vartype = V_BOOL;
+-	    pres->val.bool = ret;
++	    pres->val.boolean = ret;
+ 	} else {
+ 	    fprintf(stderr,
+ 		    "EvalFilter: binary op %d (%s) not supported on data type %d (%s)\n",
+@@ -1604,7 +1604,7 @@
+ 	if (pf->vartype == V_BOOL) {
+ 	    EvalFilter(ptp,&res,pf->un.unary.pf);
+ 	    pres->vartype = V_BOOL;
+-	    pres->val.bool = !res.val.bool;
++	    pres->val.boolean = !res.val.boolean;
+ 	} else {
+ 	    fprintf(stderr,
+ 		    "EvalFilter: unary operation %d (%s) not supported on data type %d (%s)\n",
+@@ -1641,7 +1641,7 @@
+ 
+     /* recurse down the tree */
+     EvalFilter(ptp,&res,filter_root);
+-    ret = res.val.bool;
++    ret = res.val.boolean;
+ 
+     if (debug)
+ 	printf("PassesFilter('%s<->%s') returns %s\n",
+diff '--color=auto' -urw a/filter.h b/filter.h
+--- a/filter.h	2013-07-01 22:43:14.000000000 +0400
++++ b/filter.h	2025-11-19 20:31:59.675393820 +0300
+@@ -118,7 +118,7 @@
+ union Constant {
+     u_llong	u_longint;
+     llong	longint;
+-    Bool	bool;
++    Bool	boolean;
+     char	*string;
+     ipaddr	*pipaddr;
+ };

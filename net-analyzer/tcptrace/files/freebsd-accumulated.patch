@@ -1,0 +1,94 @@
+--- a/mod_traffic.c
++++ b/mod_traffic.c
+@@ -291,7 +291,7 @@ IncludePorts(
+ 
+ 
+ 
+-static int
++static void
+ traffic_init_files(void)
+ {
+     static int created = 0;
+--- a/tcpdump.c
++++ b/tcpdump.c
+@@ -68,9 +68,6 @@ static char const GCC_UNUSED rcsid[] =
+ 
+ 
+ 
+-/* external ref, in case missing in older version */
+-extern int pcap_offline_read(void *, int, pcap_handler, u_char *);
+-
+ /* global pointer, the pcap info header */
+ static pcap_t *pcap;
+ 
+@@ -114,10 +111,13 @@ static int callback(
+ 	/* for some reason, the windows version of tcpdump is using */
+ 	/* this.  It looks just like ethernet to me */
+       case PCAP_DLT_EN10MB:
+-	offset = find_ip_eth(buf); /* Here we check if we are dealing with Straight Ethernet encapsulation or PPPoE */
++	offset = find_ip_eth(buf); /* Here we check if we are dealing with Straight Ethernet encapsulation, PPPoE or .1q VLAN encapsulation */
+ 	memcpy(&eth_header, buf, EH_SIZE); /* save ether header */
+ 	switch (offset)
+ 	{
++		case EH_SIZE + ETHER_VLAN_ENCAP_LEN:
++			memcpy(&eth_header.ether_type, buf+EH_SIZE+2, 2);
++			/* FALLTHROUGH */
+ 		case EH_SIZE: /* straight Ethernet encapsulation */
+ 			memcpy((char *)ip_buf,buf+offset,iplen-offset);
+ 			callback_plast = ip_buf+iplen-offset-1;
+@@ -250,7 +250,7 @@ pread_tcpdump(
+     int ret;
+ 
+     while (1) {
+-	if ((ret = pcap_offline_read(pcap,1,(pcap_handler)callback,0)) != 1) {
++	if ((ret = pcap_dispatch(pcap,1,(pcap_handler)callback,0)) != 1) {
+ 	    /* prob EOF */
+ 
+ 	    if (ret == -1) {
+--- a/tcpdump.h
++++ b/tcpdump.h
+@@ -179,7 +179,7 @@ static int find_ip_fddi(char* buf, int iplen) {
+ }
+ 
+ /* This function determine the offset for the IP packet in an Ethernet frame */
+-/* We handle two cases : straight Ethernet encapsulation or PPPoE encapsulation */
++/* We handle three cases : straight Ethernet, PPPoE, or .1q VLAN encapsulation */
+ /* Written by Yann Samama (ysamama@nortelnetworks.com) on july 18th, 2003 */
+ static int find_ip_eth(char* buf)
+ {
+@@ -192,16 +192,19 @@ static int find_ip_eth(char* buf)
+ 	switch (eth_proto_type)
+ 	{
+ 		case ETHERTYPE_IPV6: /* it's pure IPv6 over ethernet */
+-			offset = 14;
+-			break;
++			/* FALLTHROUGH */
+ 		case ETHERTYPE_IP: /* it's pure IPv4 over ethernet */
+-			offset = 14;
++			offset = sizeof(struct ether_header);
+ 			break;
+ 		case ETHERTYPE_PPPOE_SESSION: /* it's a PPPoE session */
+ 			memcpy(&ppp_proto_type, buf+20, 2);
+ 			ppp_proto_type = ntohs(ppp_proto_type);
+ 			if (ppp_proto_type == 0x0021) /* it's IP over PPPoE */
+ 				offset = PPPOE_SIZE;
++			break;
++		case ETHERTYPE_VLAN:
++			offset = sizeof(struct ether_header) +
++			    ETHER_VLAN_ENCAP_LEN;
+ 			break;
+ 		default: /* well, this is not an IP packet */
+ 			offset = -1;
+--- a/tcptrace.h
++++ b/tcptrace.h
+@@ -1188,6 +1188,10 @@ struct ipaddr *IPV6ADDR2ADDR(struct in6_addr *addr6);
+ #define ETHERTYPE_VLAN		0x8100
+ #endif	/* 802.1Q Virtual LAN */
+ 
++#ifndef ETHER_VLAN_ENCAP_LEN
++#define ETHER_VLAN_ENCAP_LEN	4
++#endif /* 802.1Q tag header length */
++
+ /* support for PPPoE encapsulation added by Yann Samama (ysamama@nortelnetworks.com)*/
+ #ifndef ETHERTYPE_PPPOE_SESSION
+ #define ETHERTYPE_PPPOE_SESSION	0x8864
