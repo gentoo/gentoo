@@ -98,6 +98,7 @@ BDEPEND="
 PATCHES=(
 	"${WORKDIR}"/${PATCHSET}/${PN}-3.1.89-no-arch-detection.patch # downstream
 	"${FILESDIR}"/${PN}-25.08.2-cmake4.patch # pending MR
+	"${FILESDIR}"/${P}-poppler-26.01.patch # in 25.12.2
 )
 
 src_configure() {
