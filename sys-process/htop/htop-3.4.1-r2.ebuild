@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -100,6 +100,7 @@ pkg_postinst() {
 	fcaps -m '' cap_sys_ptrace usr/bin/htop
 
 	optfeature "Viewing processes accessing certain files" sys-process/lsof
+	optfeature "Tracing system calls and signals of processes" dev-debug/strace
 }
 
 pkg_postrm() {
