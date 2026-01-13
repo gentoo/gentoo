@@ -1,0 +1,51 @@
+From 03b69f0f78363899fdc40d19487641d743b52f65 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 12 Jan 2026 22:25:42 +0100
+Subject: [PATCH] Drop unused Freetype and Fontconfig dependencies
+
+Thanks-to: Steffen Hau
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt                 | 13 -------------
+ src/plugins/qpa/CMakeLists.txt |  2 --
+ 2 files changed, 15 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8395f10c40c..e869884ce3d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -343,19 +343,6 @@ set_package_properties(lcms2 PROPERTIES
+     PURPOSE "Required for the color management system"
+ )
+ 
+-find_package(Freetype)
+-set_package_properties(Freetype PROPERTIES
+-    DESCRIPTION "A font rendering engine"
+-    URL "https://www.freetype.org"
+-    TYPE REQUIRED
+-    PURPOSE "Needed for KWin's QPA plugin."
+-)
+-find_package(Fontconfig)
+-set_package_properties(Fontconfig PROPERTIES
+-    TYPE REQUIRED
+-    PURPOSE "Needed for KWin's QPA plugin."
+-)
+-
+ find_package(hwdata)
+ set_package_properties(hwdata PROPERTIES
+     TYPE RUNTIME
+diff --git a/src/plugins/qpa/CMakeLists.txt b/src/plugins/qpa/CMakeLists.txt
+index 62b7a12a380..dc96a5adf2e 100644
+--- a/src/plugins/qpa/CMakeLists.txt
++++ b/src/plugins/qpa/CMakeLists.txt
+@@ -26,7 +26,5 @@ target_link_libraries(KWinQpaPlugin PRIVATE
+     Qt::Concurrent
+     Qt::CorePrivate
+     Qt::GuiPrivate
+-    Freetype::Freetype # Must be after Qt6 platform support libs
+-    Fontconfig::Fontconfig
+     kwin
+ )
+-- 
+GitLab
+
