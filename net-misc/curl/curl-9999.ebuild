@@ -8,7 +8,7 @@ EAPI=8
 # https://lists.haxx.se/listinfo/curl-distros
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/danielstenberg.asc
-inherit autotools multilib-minimal multiprocessing prefix toolchain-funcs verify-sig
+inherit dot-a autotools multilib-minimal multiprocessing prefix toolchain-funcs verify-sig
 
 DESCRIPTION="A Client that groks URLs"
 HOMEPAGE="https://curl.se/"
@@ -238,6 +238,7 @@ _get_curl_tls_configure_opts() {
 }
 
 multilib_src_configure() {
+	use static-libs && lto-guarantee-fat
 	# We make use of the fact that later flags override earlier ones
 	# So start with all ssl providers off until proven otherwise
 	# TODO: in the future, we may want to add wolfssl (https://www.wolfssl.com/)
@@ -430,6 +431,9 @@ multilib_src_install() {
 multilib_src_install_all() {
 	einstalldocs
 	find "${ED}" -type f -name '*.la' -delete || die
+
+	use static-libs && strip-lto-bytecode
+
 	rm -rf "${ED}"/etc/ || die
 }
 
