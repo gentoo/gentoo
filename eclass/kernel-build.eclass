@@ -1,4 +1,4 @@
-# Copyright 2020-2025 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kernel-build.eclass
@@ -113,10 +113,12 @@ IUSE="+strip"
 # empty, then the contents are used as the first kernel cmdline
 # option of the multi-profile generic UKI. Supplementing the four
 # standard options of:
-# - ro
-# - ro quiet splash
-# - ro lockdown=integrity
-# - ro quiet splash lockdown=integrity
+# - quiet
+# - quiet splash
+# - quiet lockdown=integrity
+# - quiet splash lockdown=integrity
+# - emergency
+# - rescue
 
 if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
 	IUSE+=" modules-sign"
@@ -528,9 +530,10 @@ kernel-build_src_install() {
 				mdraid modsign network network-manager nfs nvdimm nvmf pcsc
 				pkcs11 plymouth qemu qemu-net resume rngd rootfs-block shutdown
 				systemd systemd-ac-power systemd-ask-password systemd-cryptsetup
-				systemd-initrd systemd-integritysetup systemd-pcrphase
-				systemd-sysusers systemd-udevd systemd-veritysetup terminfo
-				tpm2-tss udev-rules uefi-lib usrmount virtiofs
+				systemd-emergency systemd-initrd systemd-integritysetup
+				systemd-pcrphase systemd-sysusers systemd-udevd
+				systemd-veritysetup terminfo tpm2-tss udev-rules uefi-lib
+				usrmount virtiofs
 			)
 
 			local dracut_args=(
@@ -578,13 +581,17 @@ kernel-build_src_install() {
 				$'TITLE=Default with splash\nID=splash'
 				$'TITLE=Default with lockdown\nID=lockdown'
 				$'TITLE=Default with splash and lockdown\nID=splash-lockdown'
+				$'TITLE=Emergency\nID=emergency'
+				$'TITLE=Rescue\nID=rescue'
 			)
 
 			cmdlines+=(
-				"ro"
-				"ro quiet splash"
-				"ro lockdown=integrity"
-				"ro quiet splash lockdown=integrity"
+				"quiet"
+				"quiet splash"
+				"quiet lockdown=integrity"
+				"quiet splash lockdown=integrity"
+				"emergency"
+				"rescue"
 			)
 
 			local ukify_args=(
