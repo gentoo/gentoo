@@ -36,6 +36,35 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2026-01-13)
+# LLVM 15 is only required by masked packages.  It will be removed when
+# the reverse dependencies are gone.  Bug #920536.
+<dev-libs/opencl-clang-16
+<dev-ml/llvm-16
+<dev-python/clang-16
+<dev-python/lit-16
+<dev-util/intel-graphics-compiler-2.20
+<dev-util/spirv-llvm-translator-16
+<llvm-core/clang-16
+<llvm-core/clang-common-16
+<llvm-core/clang-toolchain-symlinks-16
+<llvm-core/libclc-16
+<llvm-core/lld-16
+<llvm-core/lld-toolchain-symlinks-16
+<llvm-core/lldb-16
+<llvm-core/llvm-16
+<llvm-core/llvm-common-16
+<llvm-core/llvm-toolchain-symlinks-16
+<llvm-core/llvmgold-16
+<llvm-runtimes/clang-runtime-16
+<llvm-runtimes/compiler-rt-16
+<llvm-runtimes/compiler-rt-sanitizers-16
+<llvm-runtimes/libatomic-stub-16
+<llvm-runtimes/libcxx-16
+<llvm-runtimes/libcxxabi-16
+<llvm-runtimes/libunwind-16
+<llvm-runtimes/openmp-16
+
 # Conrad Kostecki <conikost@gentoo.org> (2026-01-12)
 # Mask legacy intel-compute-runtime because it depends on legacy
 # intel-graphics-compiler, which no longer receives updates,

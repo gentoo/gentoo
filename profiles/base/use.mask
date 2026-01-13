@@ -4,6 +4,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2026-01-13)
+# LLVM 15 is only required by masked packages.  It will be removed when
+# the reverse dependencies are gone.  Bug #920536.
+llvm_slot_15
+
 # Sam James <sam@entoo.org> (2025-12-02)
 # GCC 16 is not yet released
 ada_target_gcc_16
