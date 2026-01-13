@@ -21,6 +21,7 @@ LICENSE="GPL-2 LGPL-2.1 BSD-2"
 SLOT="0/$(ver_cut 1-2)"
 IUSE="static-libs"
 
+# libbpf headers referenece linux-headers, so we keep it in RDEPEND
 DEPEND="
 	sys-kernel/linux-headers
 	>=virtual/libelf-3:=
