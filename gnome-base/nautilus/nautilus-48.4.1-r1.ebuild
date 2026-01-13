@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,7 +38,7 @@ RDEPEND="${DEPEND}
 	>=app-misc/localsearch-3.0:3=
 "
 BDEPEND="
-	>=dev-util/gdbus-codegen-2.51.2
+	>=dev-util/gdbus-codegen-2.80.5-r1
 	dev-util/glib-utils
 	doc? (
 		app-text/docbook-xml-dtd:4.1.2

@@ -22,7 +22,7 @@ RDEPEND="dev-libs/glib:2
 	x11-libs/gtk+:3
 	x11-libs/pango"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-util/gdbus-codegen
+BDEPEND=">=dev-util/gdbus-codegen-2.80.5-r1
 	dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig"

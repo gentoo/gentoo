@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -92,7 +92,7 @@ RESTRICT="!test? ( test )"
 BDEPEND="
 	>=dev-build/meson-0.59
 	virtual/pkgconfig
-	dbus? ( dev-util/gdbus-codegen )
+	dbus? ( >=dev-util/gdbus-codegen-2.80.5-r1 )
 	doc? (
 		${PYTHON_DEPS}
 		>=app-text/doxygen-1.9.8

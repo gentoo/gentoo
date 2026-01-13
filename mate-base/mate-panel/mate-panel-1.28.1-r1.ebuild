@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -57,7 +57,7 @@ BDEPEND="
 	app-text/yelp-tools
 	>=dev-lang/perl-5:=
 	dev-util/glib-utils
-	dev-util/gdbus-codegen
+	>=dev-util/gdbus-codegen-2.80.5-r1
 	dev-util/gtk-doc
 	dev-build/gtk-doc-am
 	>=sys-devel/gettext-0.19.8

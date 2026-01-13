@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -86,7 +86,7 @@ DEPEND="${COMMON_DEPEND}
 	x11-base/xorg-proto
 "
 BDEPEND="
-	dev-util/gdbus-codegen
+	>=dev-util/gdbus-codegen-2.80.5-r1
 	dev-util/glib-utils
 	dev-util/itstool
 	>=gnome-base/dconf-0.20

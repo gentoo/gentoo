@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -117,7 +117,7 @@ PDEPEND="
 BDEPEND="
 	>=dev-build/meson-1.3.0
 	dev-libs/libxslt
-	>=dev-util/gdbus-codegen-2.45.3
+	>=dev-util/gdbus-codegen-2.80.5-r1
 	dev-util/glib-utils
 	gtk-doc? ( >=dev-util/gtk-doc-1.17
 		>=dev-util/gi-docgen-2021.1

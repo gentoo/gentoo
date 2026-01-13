@@ -16,7 +16,7 @@ KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv x86"
 # RDEPEND=""
 # DEPEND=""
 BDEPEND="
-	dev-util/gdbus-codegen
+	>=dev-util/gdbus-codegen-2.80.5-r1
 	>=sys-kernel/linux-headers-2.6.32
 	virtual/pkgconfig
 "

@@ -121,7 +121,7 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="
 	dev-util/wayland-scanner
-	dev-util/gdbus-codegen
+	>=dev-util/gdbus-codegen-2.80.5-r1
 	dev-util/glib-utils
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig

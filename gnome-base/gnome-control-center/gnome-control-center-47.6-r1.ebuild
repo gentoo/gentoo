@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -124,7 +124,7 @@ BDEPEND="${PYTHON_DEPS}
 	app-text/docbook-xml-dtd:4.2
 	x11-base/xorg-proto
 	dev-libs/libxml2:2
-	dev-util/gdbus-codegen
+	>=dev-util/gdbus-codegen-2.80.5-r1
 	dev-util/glib-utils
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig

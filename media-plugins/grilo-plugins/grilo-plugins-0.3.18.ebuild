@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -53,7 +53,7 @@ BDEPEND="
 	app-text/docbook-xml-dtd:4.5
 	dev-util/itstool
 	>=sys-devel/gettext-0.19.8
-	upnp-av? ( >=dev-util/gdbus-codegen-2.44 )
+	upnp-av? ( >=dev-util/gdbus-codegen-2.80.5-r1 )
 	virtual/pkgconfig
 	lua? ( dev-util/gperf )
 "

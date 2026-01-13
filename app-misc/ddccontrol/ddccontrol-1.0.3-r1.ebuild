@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -40,7 +40,7 @@ DEPEND="
 	sys-kernel/linux-headers
 "
 BDEPEND="
-	dev-util/gdbus-codegen
+	>=dev-util/gdbus-codegen-2.80.5-r1
 	dev-util/intltool
 	doc? (
 		>=app-text/docbook-xsl-stylesheets-1.65.1

@@ -39,7 +39,7 @@ DEPEND="
 "
 BDEPEND="
 	dev-libs/appstream-glib
-	dev-util/gdbus-codegen
+	>=dev-util/gdbus-codegen-2.80.5-r1
 	dev-util/itstool
 	>=sys-devel/gettext-0.19.8
 	>=sys-kernel/linux-headers-2.6.32

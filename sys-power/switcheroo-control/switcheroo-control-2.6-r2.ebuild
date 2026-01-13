@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,7 +26,7 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}"
 BDEPEND="
 	$(python_gen_cond_dep 'dev-python/pygobject:3[${PYTHON_USEDEP}]')
-	dev-util/gdbus-codegen
+	>=dev-util/gdbus-codegen-2.80.5-r1
 	gtk-doc? ( dev-util/gtk-doc )
 	test? (
 		$(python_gen_cond_dep 'dev-python/python-dbusmock[${PYTHON_USEDEP}]')

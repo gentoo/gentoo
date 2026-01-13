@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -45,7 +45,7 @@ RDEPEND="
 	)"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	dev-util/gdbus-codegen
+	>=dev-util/gdbus-codegen-2.80.5-r1
 	sys-apps/file
 	sys-devel/gettext
 	virtual/pkgconfig

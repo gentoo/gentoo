@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -41,7 +41,7 @@ RESTRICT="!test? ( test )"
 # introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 ) is valid but likely only used for doc building
 BDEPEND="
 	dev-libs/glib
-	dev-util/gdbus-codegen
+	>=dev-util/gdbus-codegen-2.80.5-r1
 	dev-util/glib-utils
 	sys-devel/gettext
 	test? ( sys-apps/dbus )
