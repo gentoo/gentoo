@@ -1,0 +1,13 @@
+diff --git a/perl/Build.PL.in b/perl/Build.PL.in
+index abec96591..7da7606df 100755
+--- a/perl/Build.PL.in
++++ b/perl/Build.PL.in
+@@ -66,7 +66,7 @@ my $build = Module::Build->new (
+     ],
+     extra_linker_flags => [
+         '-DGUESTFS_PRIVATE=1',
+-        split (' ', '@CFLAGS@'),
++        split (' ', '@LDFLAGS@'),
+         '-L@top_builddir@/lib/.libs',
+         '-lguestfs',
+     ],
