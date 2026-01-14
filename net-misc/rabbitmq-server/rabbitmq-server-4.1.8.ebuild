@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,7 +38,7 @@ DEPEND="
 	app-arch/unzip
 	app-text/docbook-xml-dtd:4.5
 	app-text/xmlto
-	>=dev-lang/elixir-1.13.4 <dev-lang/elixir-1.19.0
+	>=dev-lang/elixir-1.13.4 <dev-lang/elixir-1.20.0
 	dev-libs/libxslt
 "
 BDEPEND="
