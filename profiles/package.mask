@@ -141,11 +141,6 @@ www-client/seamonkey
 net-misc/electrum-ltc
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-12-14)
-# Still depends on Qt5 with no upstream activity in years. Bug #960814
-# Removal on 2026-01-15
-media-sound/qmidiroute
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-14)
 # Still depends on Qt5 with no upstream porting activity. Bug #960220
 # Removal on 2026-01-15
 media-sound/mp3diags
