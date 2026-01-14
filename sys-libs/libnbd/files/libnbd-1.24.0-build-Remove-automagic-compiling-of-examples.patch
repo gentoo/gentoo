@@ -1,0 +1,136 @@
+diff --git a/Makefile.am b/Makefile.am
+index 32213efa..d587a092 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -65,6 +65,10 @@ SUBDIRS = \
+ 	bash-completion \
+ 	$(NULL)
+ 
++if BUILD_EXAMPLES
++SUBDIRS += examples
++endif
++
+ noinst_SCRIPTS = run
+ 
+ # Check no files are missing from EXTRA_DIST rules, and that all
+diff --git a/configure.ac b/configure.ac
+index 6c7cae8a..920625d6 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -327,57 +327,67 @@ AS_IF([test "$with_libxml2" != "no"],[
+ ])
+ AM_CONDITIONAL([HAVE_LIBXML2], [test "x$LIBXML2_LIBS" != "x"])
+ 
++dnl Examples
++AC_ARG_ENABLE([examples],
++    [AS_HELP_STRING([--disable-examples],
++                    [disable building of glib and libev examples @<:@default=check@:>@])],
++    [],
++    [with_examples=check])
++
++AS_IF([test "$enable_examples" != "no"],[
+ dnl glib2 main loop for examples that interoperate with the glib main loop.
+-PKG_CHECK_MODULES([GLIB], [glib-2.0], [
+-    PRINT_PKG_VERSION([glib-2.0])
+-    AC_SUBST([GLIB_CFLAGS])
+-    AC_SUBST([GLIB_LIBS])
+-],[
+-    AC_MSG_WARN([glib2 not found, some examples will not be compiled])
+-])
+-AM_CONDITIONAL([HAVE_GLIB], [test "x$GLIB_LIBS" != "x"])
++    PKG_CHECK_MODULES([GLIB], [glib-2.0], [
++         PRINT_PKG_VERSION([glib-2.0])
++         AC_SUBST([GLIB_CFLAGS])
++         AC_SUBST([GLIB_LIBS])
++    ], [
++        AC_MSG_WARN([glib2 not found, some examples will not be compiled])
++    ])
+ 
+ dnl libev support for examples that interoperate with libev event loop.
+-PKG_CHECK_MODULES([LIBEV], [libev], [
+-    PRINT_PKG_VERSION(libev)
+-    AC_SUBST([LIBEV_CFLAGS])
+-    AC_SUBST([LIBEV_LIBS])
+-],[
+-    dnl no pkg-config for libev, searching manually:
+-    AC_CHECK_HEADERS([ev.h], [
+-        AC_CHECK_LIB([ev], [ev_time], [
+-            AC_SUBST([LIBEV_LIBS], ["-lev"])
+-        ],
+-        [
+-            AC_MSG_WARN([libev not found, some examples will not be compiled])
+-        ])
+-    ],[
+-        AC_MSG_WARN([ev.h not found, some examples will not be compiled])
++    PKG_CHECK_MODULES([LIBEV], [libev], [
++         PRINT_PKG_VERSION(libev)
++         AC_SUBST([LIBEV_CFLAGS])
++         AC_SUBST([LIBEV_LIBS])
++         ],[
++dnl no pkg-config for libev, searching manually:
++         AC_CHECK_HEADERS([ev.h], [
++             AC_CHECK_LIB([ev], [ev_time], [
++                 AC_SUBST([LIBEV_LIBS], ["-lev"])
++             ],
++             [
++                 AC_MSG_WARN([libev not found, some examples will not be compiled])
++             ])
++         ],[
++              AC_MSG_WARN([ev.h not found, some examples will not be compiled])
++         ])
+     ])
+-])
+ 
+-AS_IF([test "x$LIBEV_LIBS" != "x"], [
+-    old_CFLAGS="$CFLAGS"
+-    CFLAGS="$CFLAGS $LIBEV_CFLAGS -Werror=strict-aliasing -O2"
+-    AC_MSG_CHECKING([if the compiler is new enough for good aliasing rules])
+-    AC_COMPILE_IFELSE([
+-        AC_LANG_PROGRAM([
+-            #include <ev.h>
+-
+-            static void cb (struct ev_loop *l, ev_timer *t, int e) { }
+-            static ev_timer timer;
++    AS_IF([test "x$LIBEV_LIBS" != "x"], [
++        old_CFLAGS="$CFLAGS"
++        CFLAGS="$CFLAGS $LIBEV_CFLAGS -Werror=strict-aliasing -O2"
++        AC_MSG_CHECKING([if the compiler is new enough for good aliasing rules])
++        AC_COMPILE_IFELSE([
++            AC_LANG_PROGRAM([
++                #include <ev.h>
++
++                static void cb (struct ev_loop *l, ev_timer *t, int e) { }
++                static ev_timer timer;
++            ], [
++                ev_timer_init (&timer, cb, 0, .1);
++            ])
+         ], [
+-            ev_timer_init (&timer, cb, 0, .1);
++            AC_MSG_RESULT([yes])
++        ], [
++            AC_MSG_RESULT([no])
++            LIBEV_CFLAGS="$LIBEV_CFLAGS -Wno-strict-aliasing"
+         ])
+-    ], [
+-        AC_MSG_RESULT([yes])
+-    ], [
+-        AC_MSG_RESULT([no])
+-        LIBEV_CFLAGS="$LIBEV_CFLAGS -Wno-strict-aliasing"
++        CFLAGS="$old_CFLAGS"
+     ])
+-    CFLAGS="$old_CFLAGS"
+ ])
++AM_CONDITIONAL([HAVE_GLIB], [test "x$GLIB_LIBS" != "x"]) 
+ AM_CONDITIONAL([HAVE_LIBEV], [test "x$LIBEV_LIBS" != "x"])
++AM_CONDITIONAL([BUILD_EXAMPLES], [test "x$enable_examples" != "xno" ])
+ 
+ dnl FUSE 3 is optional to build the nbdfuse program.
+ AC_ARG_ENABLE([fuse],
+@@ -397,6 +407,7 @@ AS_IF([test "x$enable_fuse" != "xno"],[
+ ])
+ AM_CONDITIONAL([HAVE_FUSE],[test "x$enable_fuse" != "xno"])
+ 
++
+ dnl libublksrv is optional to build the nbdublk program.
+ AC_ARG_ENABLE([ublk],
+     AS_HELP_STRING([--disable-ublk], [disable ublk (nbdublk) support]),
