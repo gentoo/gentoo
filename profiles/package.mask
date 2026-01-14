@@ -59,7 +59,6 @@
 <llvm-runtimes/clang-runtime-16
 <llvm-runtimes/compiler-rt-16
 <llvm-runtimes/compiler-rt-sanitizers-16
-<llvm-runtimes/libatomic-stub-16
 <llvm-runtimes/libcxx-16
 <llvm-runtimes/libcxxabi-16
 <llvm-runtimes/libunwind-16
