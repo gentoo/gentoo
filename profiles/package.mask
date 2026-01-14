@@ -177,12 +177,6 @@ dev-ruby/twitter
 media-libs/libsvgtiny-pixbuf
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-12-07)
-# Last release depends on Qt5, upstream appears dormant. Several
-# alternatives are available in ::gentoo. Bug #967107
-# Removal on 2026-01-15
-games-fps/doomsday
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-07)
 # IUSE qt5 feature sees no porting effort upstream. 2.4.9-r1 remains
 # available with IUSE qt5 removed. Bug #965503
 # Removal on 2026-01-15
