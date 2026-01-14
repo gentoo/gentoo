@@ -1,4 +1,4 @@
-# Copyright 2004-2024 Gentoo Authors
+# Copyright 2004-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: strip-linguas.eclass
@@ -17,7 +17,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-# FUNCTION: strip-linguas
+# @FUNCTION: strip-linguas
 # @USAGE: [<allow LINGUAS>|<-i|-u> <directories of .po files>]
 # @DESCRIPTION:
 # Make sure that LINGUAS only contains languages that a package can
