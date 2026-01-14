@@ -1,7 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+inherit autotools
 
 DESCRIPTION="Programs for elliptic curves defined over the rational numbers"
 HOMEPAGE="https://github.com/JohnCremona/eclib"
@@ -21,6 +23,13 @@ RDEPEND="sci-mathematics/pari:=
 	boost? ( dev-libs/boost:= )
 	flint? ( sci-mathematics/flint:= )"
 DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}-boost-1.89.patch" ) # bug 964383
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	econf \
