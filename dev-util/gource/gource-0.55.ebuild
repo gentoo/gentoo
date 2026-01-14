@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,6 +32,8 @@ DEPEND="${COMMON_DEPEND}
 	>=media-libs/glm-0.9.3
 "
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}/${P}-boost-1.89.patch" ) # bug 964602
 
 src_prepare() {
 	default
