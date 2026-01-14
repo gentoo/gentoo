@@ -5,13 +5,13 @@ EAPI=8
 
 inherit flag-o-matic toolchain-funcs
 
-DESCRIPTION="A suite of algorithms for ecological bioinformatics"
+DESCRIPTION="Suite of algorithms for ecological bioinformatics"
 HOMEPAGE="https://mothur.org/"
 SRC_URI="https://github.com/mothur/mothur/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="boost gsl hdf5 mpi +readline"
 
 RDEPEND="
