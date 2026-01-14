@@ -42,7 +42,7 @@ multilib_src_configure() {
 		$(use_enable static-libs static)
 	)
 
-	# bug #968661
+	# https://gitlab.com/gnutls/libtasn1/-/issues/57 (bug #968661)
 	export MAKEINFO=:
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
