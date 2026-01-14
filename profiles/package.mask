@@ -150,11 +150,6 @@ media-sound/qmidiroute
 # Removal on 2026-01-15
 media-sound/mp3diags
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-14)
-# Last release depends on Qt5, upstream appears dormant. Bug #950474
-# Removal on 2026-01-15
-media-gfx/luminance-hdr
-
 # Michał Górny <mgorny@gentoo.org> (2025-12-12)
 # Upstream has switched to LLM-first coding which has already caused
 # a number of suspicious bugs.  At this point, new versions
