@@ -38,7 +38,7 @@ _KERNEL_BUILD_ECLASS=1
 
 PYTHON_COMPAT=( python3_{11..14} )
 
-inherit multiprocessing python-any-r1 savedconfig secureboot
+inherit branding multiprocessing python-any-r1 savedconfig secureboot
 inherit toolchain-funcs kernel-install
 
 BDEPEND="
@@ -575,6 +575,18 @@ kernel-build_src_install() {
 				"rescue"
 			)
 
+			local os_release=(
+				${BRANDING_OS_NAME+"NAME='${BRANDING_OS_NAME}'"}
+				${BRANDING_OS_ID+"ID='${BRANDING_OS_ID}'"}
+				${BRANDING_OS_ID_LIKE+"ID_LIKE='${BRANDING_OS_ID_LIKE}'"}
+				${BRANDING_OS_HOME_URL+"HOME_URL='${BRANDING_OS_HOME_URL}'"}
+				${BRANDING_OS_SUPPORT_URL+"SUPPORT_URL='${BRANDING_OS_SUPPORT_URL}'"}
+				${BRANDING_OS_BUG_REPORT_URL+"BUG_REPORT_URL='${BRANDING_OS_BUG_REPORT_URL}'"}
+				${BRANDING_OS_VERSION+"VERSION='${BRANDING_OS_VERSION}'"}
+				${BRANDING_OS_VERSION_ID+"VERSION_ID='${BRANDING_OS_VERSION_ID}'"}
+				${BRANDING_OS_PRETTY_NAME+"PRETTY_NAME='${BRANDING_OS_PRETTY_NAME}'"}
+			)
+
 			local ukify_args=(
 				--linux="${image}"
 				--initrd="${image%/*}/initrd"
@@ -582,6 +594,7 @@ kernel-build_src_install() {
 				--output="${image%/*}/uki.efi"
 				--profile="${profiles[0]}"
 				--cmdline="${cmdlines[0]}"
+				--os-release="$(printf '%s\n' "${os_release[@]}")"
 			) # 0th profile is default
 
 			# Additional profiles have to be added with --join-profile
