@@ -1,4 +1,4 @@
-# Copyright 2002-2025 Gentoo Authors
+# Copyright 2002-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: elisp.eclass
@@ -204,6 +204,10 @@ elisp_pkg_postinst() {
 elisp_pkg_postrm() {
 	elisp-site-regen
 }
+
+# @FUNCTION: elisp_pkg_info
+# @DESCRIPTION:
+# Display the Emacs version that was used to build an installed package.
 
 elisp_pkg_info() {
 	if [[ -n ${_ELISP_EMACS_VERSION} ]]; then
