@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: linux-mod-r1.eclass
@@ -100,6 +100,12 @@
 # linux_domodule can alternatively be used to install a single module.
 #
 # (remember to ensure that linux-mod-r1_pkg_postinst is ran for depmod)
+
+# @ECLASS_VARIABLE: KERNEL_VERBOSE
+# @USER_VARIABLE
+# @DESCRIPTION:
+# Controls kernel output verbosity. Default value is ON, set to OFF to disable verbose messages
+: "${KERNEL_VERBOSE:=ON}"
 
 case ${EAPI} in
 	8) ;;
@@ -1284,12 +1290,17 @@ _modules_sanity_modversion() {
 # @DESCRIPTION:
 # Sets the MODULES_MAKEARGS global array.
 _modules_set_makeargs() {
+	local v
+	case "${KERNEL_VERBOSE}" in
+		OFF) v=0;;
+		*) v=1
+	esac
 	MODULES_MAKEARGS=(
 		ARCH="$(tc-arch-kernel)"
 
-		V=1
+		V="${v}"
 		# normally redundant with V, but some custom Makefiles override it
-		KBUILD_VERBOSE=1
+		KBUILD_VERBOSE="${v}"
 
 		# unrealistic when building modules that often have slow releases,
 		# but note that the kernel will still pass some -Werror=bad-thing

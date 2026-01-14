@@ -1,4 +1,4 @@
-# Copyright 2020-2025 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kernel-build.eclass
@@ -118,6 +118,12 @@ IUSE="+strip"
 # - ro lockdown=integrity
 # - ro quiet splash lockdown=integrity
 
+# @ECLASS_VARIABLE: KERNEL_VERBOSE
+# @USER_VARIABLE
+# @DESCRIPTION:
+# Controls kernel output verbosity. Default value is ON, set to OFF to disable verbose messages
+: "${KERNEL_VERBOSE:=ON}"
+
 if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
 	IUSE+=" modules-sign"
 	REQUIRED_USE="secureboot? ( modules-sign )"
@@ -206,8 +212,13 @@ kernel-build_src_configure() {
 	fi
 
 	tc-export_build_env
+	local v
+    case "${KERNEL_VERBOSE}" in
+		OFF) v=0;;
+       	*) v=1
+	esac
 	MAKEARGS=(
-		V=1
+		V="${v}"
 		WERROR=0
 
 		HOSTCC="$(tc-getBUILD_CC)"
