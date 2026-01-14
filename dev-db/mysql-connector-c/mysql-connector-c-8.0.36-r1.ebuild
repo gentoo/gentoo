@@ -27,6 +27,7 @@ RDEPEND="
 	>=app-arch/lz4-1.9.4:=[${MULTILIB_USEDEP}]
 	app-arch/zstd:=[${MULTILIB_USEDEP}]
 	dev-libs/openssl:=[${MULTILIB_USEDEP}]
+	net-libs/libtirpc:=[${MULTILIB_USEDEP}]
 	>=virtual/zlib-1.2.13:=[${MULTILIB_USEDEP}]
 	ldap? ( dev-libs/cyrus-sasl:=[${MULTILIB_USEDEP}] )
 "
