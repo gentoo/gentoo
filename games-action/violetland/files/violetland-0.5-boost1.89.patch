@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -8,7 +8,7 @@
+ find_package(SDL_mixer REQUIRED)
+ find_package(OpenGL REQUIRED)
+ find_package(Gettext REQUIRED)
+-find_package(Boost COMPONENTS filesystem system REQUIRED)
++find_package(Boost COMPONENTS filesystem REQUIRED)
+ add_definitions(-DBOOST_FILESYSTEM_VERSION=3)
+ 
+ # Searching for libintl using bundled CMake script
