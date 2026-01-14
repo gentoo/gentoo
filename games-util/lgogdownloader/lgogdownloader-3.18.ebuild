@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,15 +32,13 @@ RDEPEND="
 		dev-qt/qtwebengine:6[widgets]
 	)
 "
-
-DEPEND="
-	${RDEPEND}
-"
-
+DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	gui? ( dev-qt/qtbase:6 )
 "
+
+PATCHES=( "${FILESDIR}/${P}-boost-1.89.patch" ) # bug 963665
 
 src_configure() {
 	local mycmakeargs=(
