@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -78,7 +78,7 @@
+ 
+     LDFLAGS += -L ${BOOST_LIBRARY_DIR}
+ 
+-    LIBS += -lboost_iostreams -lboost_system -lboost_filesystem -lz
++    LIBS += -lboost_iostreams -lboost_filesystem -lz
+     CXXFLAGS += -DUSE_BOOST -I ${BOOST_INCLUDE_DIR}
+ endif
+ 
