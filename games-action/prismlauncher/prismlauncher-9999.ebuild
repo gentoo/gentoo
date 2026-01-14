@@ -12,7 +12,7 @@ HOMEPAGE="https://prismlauncher.org/ https://github.com/PrismLauncher/PrismLaunc
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/PrismLauncher/PrismLauncher"
-	EGIT_SUBMODULES=( '*' '-libraries/filesystem' )
+	EGIT_SUBMODULES=( 'libraries/libnbtplusplus' )
 else
 	MY_PN="PrismLauncher"
 	# use vendored tarball to avoid dealing with submodules directly
@@ -44,13 +44,8 @@ COMMON_DEPEND="
 	media-gfx/qrencode:=
 	virtual/zlib:=
 "
-# gulrak-filesystem dependency is only needed at build time, because we don't
-# actually use it on Linux, only on legacy macOS. Still, we need it present at
-# build time to appease CMake, and having it like this makes it easier to
-# maintain than patching the CMakeLists file directly.
 # max jdk-25 for bug #968411
 DEPEND="${COMMON_DEPEND}
-	dev-cpp/gulrak-filesystem
 	media-libs/libglvnd
 	<virtual/jdk-26:*
 "
