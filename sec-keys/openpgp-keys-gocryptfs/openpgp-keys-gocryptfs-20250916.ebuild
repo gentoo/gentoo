@@ -1,4 +1,4 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,4 +13,4 @@ DESCRIPTION="OpenPGP keys used to sign gocryptfs"
 HOMEPAGE="https://nuetzlich.net/"
 SRC_URI+="https://nuetzlich.net/gocryptfs-signing-key.pub -> ${PN}-nuetzlich-gocryptfs-signing-key-${PV}.pub"
 
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
