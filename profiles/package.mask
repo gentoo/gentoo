@@ -135,11 +135,6 @@ www-client/seamonkey
 ~dev-python/python-tests-3.14.2
 ~dev-python/python-tests-0.3.14.2
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-15)
-# Last release depends on Qt5, upstream appears dormant. Bug #959826
-# Removal on 2026-01-15
-net-misc/electrum-ltc
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-12-14)
 # Still depends on Qt5 with no upstream porting activity. Bug #960220
 # Removal on 2026-01-15
