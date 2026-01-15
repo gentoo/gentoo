@@ -269,8 +269,15 @@ SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+# TODO: blake3 still bundled?
+# https://github.com/BLAKE3-team/BLAKE3/issues/130
+# https://github.com/BLAKE3-team/BLAKE3/issues/425
+RDEPEND="app-arch/zstd:="
+DEPEND="${RDEPEND}"
+
 # Upstream uses LLD and Clang for running some of their tests
 BDEPEND="
+	virtual/pkgconfig
 	test? ( $(llvm_gen_dep '
 			llvm-core/clang:${LLVM_SLOT}=
 			llvm-core/lld:${LLVM_SLOT}=
@@ -279,6 +286,8 @@ BDEPEND="
 "
 
 pkg_setup() {
+	# zstd-sys https://wiki.gentoo.org/wiki/Project:Rust/sys_crates#zstd-sys
+	export ZSTD_SYS_USE_PKG_CONFIG=1
 	rust_pkg_setup
 	use test && llvm-r2_pkg_setup
 }
