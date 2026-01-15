@@ -63,9 +63,7 @@
 		<flag name="strongswan_plugins_md4">Enable support for the md4 plugin</flag>
 		<flag name="strongswan_plugins_md5">Enable support for the md5 plugin</flag>
 		<flag name="strongswan_plugins_mgf1">Enable support for the mgf1 plugin</flag>
-		<flag name="strongswan_plugins_newhope">Enable plugin that allows key exchange based on post-quantum computer New Hope algorithm</flag>
 		<flag name="strongswan_plugins_nonce">Enable support the nonce plugin</flag>
-		<flag name="strongswan_plugins_ntru">Enable support for the ntru plugin</flag>
 		<flag name="strongswan_plugins_openxpki">Enable OCSP responder accessing OpenXPKI MySQL/MariaDB certificate database</flag>
 		<flag name="strongswan_plugins_padlock">Enable support for the padlock plugin</flag>
 		<flag name="strongswan_plugins_pem">Enable support for the pem plugin</flag>
