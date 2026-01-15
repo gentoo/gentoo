@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,10 +11,17 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://sourceware.org/git/dwz.git"
 	inherit git-r3
 else
-	SRC_URI="https://sourceware.org/ftp/dwz/releases/${P}.tar.xz"
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/dwz.asc
+	inherit verify-sig
+
+	SRC_URI="
+		https://sourceware.org/ftp/dwz/releases/${P}.tar.xz
+		verify-sig? ( https://sourceware.org/ftp/dwz/releases/${P}.tar.xz.asc )
+	"
 	S="${WORKDIR}/${PN}"
 
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-dwz )"
 fi
 
 LICENSE="GPL-2+ GPL-3+"
@@ -31,7 +38,7 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}"
-BDEPEND="
+BDEPEND+="
 	test? (
 		dev-debug/gdb
 		dev-libs/elfutils[utils]
