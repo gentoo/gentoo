@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -114,12 +114,9 @@ src_unpack() {
 		return
 	fi
 
-	# Upstream sign the decompressed .tar
 	if use verify-sig; then
-		einfo "Unpacking ${MY_P}.tar.xz ..."
-		verify-sig_verify_detached - "${DISTDIR}"/${MY_P}.tar.sign \
-			< <(xz -cd "${DISTDIR}"/${MY_P}.tar.xz | tee >(tar -xf -))
-		assert "Unpack failed"
+		verify-sig_uncompress_verify_unpack "${DISTDIR}"/${MY_P}.tar.xz \
+			"${DISTDIR}"/${MY_P}.tar.sign
 	else
 		default
 	fi
