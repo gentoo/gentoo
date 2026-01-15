@@ -1,0 +1,55 @@
+https://github.com/yo8192/fcron/issues/43
+
+Reorder seteuid() and setegid()
+
+I don't know why it broke for Tim. Probably somehow after changing euid
+(from user which has permission to some other user?) changing egid isn't
+allowed anymore. For me fcrontab works both without and with this patch.
+
+--- a/fcrontab.c
++++ b/fcrontab.c
+@@ -174,10 +174,10 @@ xexit(int exit_val)
+ 
+ #ifdef HAVE_LIBPAM
+     /* we need those rights for pam to close properly */
+-    if (geteuid() != fcrontab_uid && seteuid(fcrontab_uid) != 0)
+-        die_e("could not change euid to %d", fcrontab_uid);
+     if (getegid() != fcrontab_gid && setegid(fcrontab_gid) != 0)
+         die_e("could not change egid to %d", fcrontab_gid);
++    if (geteuid() != fcrontab_uid && seteuid(fcrontab_uid) != 0)
++        die_e("could not change euid to %d", fcrontab_uid);
+     pam_setcred(pamh, PAM_DELETE_CRED | PAM_SILENT);
+     pam_end(pamh, pam_close_session(pamh, PAM_SILENT));
+ #endif
+@@ -1032,8 +1032,8 @@ main(int argc, char **argv)
+ #ifdef USE_SETE_ID
+     /* drop any privilege we may have: we will only get them back
+      * temporarily every time we need it. */
+-    seteuid_safe(useruid);
+     setegid_safe(usergid);
++    seteuid_safe(useruid);
+ #endif
+ 
+ #ifdef HAVE_LIBPAM
+--- a/subs.c
++++ b/subs.c
+@@ -110,8 +110,8 @@ open_as_user(const char *pathname, uid_t openuid, gid_t opengid, int flags, ...)
+         va_end(ap);
+     }
+ 
+-    seteuid_safe(openuid);
+     setegid_safe(opengid);
++    seteuid_safe(openuid);
+ 
+     if (flags & O_CREAT) {
+         fd = open(pathname, flags, mode);
+@@ -122,8 +122,8 @@ open_as_user(const char *pathname, uid_t openuid, gid_t opengid, int flags, ...)
+     saved_errno = errno;
+ 
+     /* change the effective uid/gid back to original values */
+-    seteuid_safe(orig_euid);
+     setegid_safe(orig_egid);
++    seteuid_safe(orig_euid);
+ 
+     /* if open() didn't fail make sure we opened a 'normal' file */
+     if (fd >= 0) {
