@@ -1,0 +1,25 @@
+https://bugs.gentoo.org/968162
+
+diff --git a/tools/defcheck.py b/tools/defcheck.py
+index 3103481..30d875f 100644
+--- a/tools/defcheck.py
++++ b/tools/defcheck.py
+@@ -31,7 +31,7 @@ Needs the tool "nm" to work
+ 
+ import sys, subprocess
+ 
+-from os import path
++from os import getenv, path
+ 
+ def_files = sys.argv[1:]
+ 
+@@ -65,7 +65,7 @@ for df in def_files:
+    #      unsortindex = i+1
+    #      break;
+ 
+-   status, nm = subprocess.getstatusoutput ("nm --defined-only --extern-only " +
++   status, nm = subprocess.getstatusoutput (getenv("NM", default="nm") + " --defined-only --extern-only " +
+                                             libname)
+    if status != 0:
+       print("trouble reading {} - has it been compiled?".format(libname))
+

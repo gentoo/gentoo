@@ -155,6 +155,7 @@ DOCS=( "AUTHORS" "NEWS" "README" "README.i18n" )
 
 PATCHES=(
 	"${FILESDIR}"/gimp-3.0.6-fix-tests.patch
+	"${FILESDIR}"/gimp-3.0.6-respect-NM.patch
 )
 
 pkg_pretend() {
