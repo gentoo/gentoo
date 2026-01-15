@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index 4d548de1..38531960 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -205,7 +205,7 @@ AC_PROG_RANLIB
+ dnl Bash must be at least version 4.  If it is too old, fail hard
+ dnl with a good diagnostic.  Note macOS ships an ancient version
+ dnl of bash (https://gitlab.com/nbdkit/nbdkit/-/issues/21)
+-bash=`which bash`
++bash=$(command -v bash)
+ AC_MSG_CHECKING([for the major version of $bash])
+ bash_major=`bash -c 'echo ${BASH_VERSINFO:-0}'`
+ AC_MSG_RESULT([$bash_major])
