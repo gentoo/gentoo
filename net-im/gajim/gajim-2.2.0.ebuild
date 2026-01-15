@@ -1,8 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+# does not work with py3.14
+# https://dev.gajim.org/gajim/gajim/-/commit/89272f260c318389be10855c42ad0b82de385c77
 PYTHON_COMPAT=( python3_{11..13} )
 PYTHON_REQ_USE="sqlite,xml(+)"
 DISTUTILS_USE_PEP517=setuptools
