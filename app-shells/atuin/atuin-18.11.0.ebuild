@@ -3,7 +3,7 @@
 
 EAPI=8
 
-RUST_MIN_VER="1.90"
+RUST_MIN_VER="1.91"
 
 inherit cargo greadme shell-completion systemd
 
