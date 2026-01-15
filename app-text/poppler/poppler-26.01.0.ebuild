@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit cmake flag-o-matic toolchain-funcs xdg-utils
+PYTHON_COMPAT=( python3_{11..14} )
+inherit cmake flag-o-matic python-any-r1 toolchain-funcs xdg-utils
 
 if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
@@ -55,6 +56,7 @@ DEPEND="${COMMON_DEPEND}
 	test? ( qt6? ( dev-qt/qtbase:6[widgets] ) )
 "
 BDEPEND="
+	${PYTHON_DEPS}
 	>=dev-util/glib-utils-2.64
 	virtual/pkgconfig
 "
