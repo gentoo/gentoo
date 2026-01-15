@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -50,10 +50,6 @@ media-libs/mesa video_cards_zink vulkan vulkan-overlay
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-12-12)
 # Needs stable net-libs/webkit-gtk, bug #684702
 dev-util/geany-plugins markdown
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-09-17)
-# media-video/pipewire is not stable yet
-x11-wm/mutter screencast
 
 # Michał Górny <mgorny@gentoo.org> (2018-08-26)
 # Non-stable dependency.  Used to be masked completely.
