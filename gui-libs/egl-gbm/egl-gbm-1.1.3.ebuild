@@ -1,4 +1,4 @@
-# Copyright 2021-2025 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/NVIDIA/egl-gbm/"
 if [[ ${PV} == *_pre* ]]; then
 	# happens often that nvidia-drivers ships with a (yet) unreleased
 	# version and we need to ship a snapshot to provide the same fixes
-	HASH_EGLGBM=a73cbcec5e3911ea6b075df63f6f4e559392926c
+	HASH_EGLGBM=
 	SRC_URI="
 		https://github.com/NVIDIA/egl-gbm/archive/${HASH_EGLGBM}.tar.gz
 			-> ${P}.tar.gz
