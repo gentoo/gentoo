@@ -1,0 +1,15 @@
+https://github.com/amule-project/amule/issues/416
+
+diff --git a/src/LibSocketAsio.cpp b/src/LibSocketAsio.cpp
+index 8e15c8635..d36db0f85 100644
+--- a/src/LibSocketAsio.cpp
++++ b/src/LibSocketAsio.cpp
+@@ -43,6 +43,8 @@
+ #include <algorithm>	// Needed for std::min - Boost up to 1.54 fails to compile with MSVC 2013 otherwise
+ 
+ #include <boost/asio.hpp>
++#include <boost/asio/deadline_timer.hpp>
++#include <boost/date_time/posix_time/posix_time.hpp>
+ #include <boost/bind.hpp>
+ #include <boost/version.hpp>
+ 
