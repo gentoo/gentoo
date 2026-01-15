@@ -58,6 +58,10 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 	static_assert
 )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-write-error-test.patch
+)
+
 src_prepare() {
 	default
 
