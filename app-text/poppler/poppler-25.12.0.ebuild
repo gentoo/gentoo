@@ -1,9 +1,10 @@
-# Copyright 2005-2025 Gentoo Authors
+# Copyright 2005-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake flag-o-matic toolchain-funcs xdg-utils
+PYTHON_COMPAT=( python3_{11..14} )
+inherit cmake flag-o-matic python-any-r1 toolchain-funcs xdg-utils
 
 if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
@@ -66,6 +67,7 @@ DEPEND="${COMMON_DEPEND}
 	)
 "
 BDEPEND="
+	${PYTHON_DEPS}
 	>=dev-util/glib-utils-2.64
 	virtual/pkgconfig
 "
