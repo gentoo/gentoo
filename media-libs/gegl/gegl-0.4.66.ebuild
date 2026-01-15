@@ -73,6 +73,10 @@ BDEPEND="
 
 DOCS=( AUTHORS docs/ChangeLog docs/NEWS.adoc )
 
+PATCHES=(
+	"${FILESDIR}"/gegl-0.4.66-respect-NM.patch
+)
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
