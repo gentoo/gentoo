@@ -1,4 +1,4 @@
-# Copyright 2021-2025 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -90,10 +90,6 @@ CMAKE_SKIP_TESTS=(
 	# fails with offscreen rendering
 	tst_qvideoframecolormanagement
 	tst_qwindowcapturebackend
-)
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-6.7.3-eigen-ppc-no-vsx.patch
 )
 
 src_configure() {
