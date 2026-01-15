@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -44,6 +44,9 @@ RDEPEND="
 "
 DEPEND+="
 	test? ( dev-cpp/gtest[${MULTILIB_USEDEP}] )
+"
+BDEPEND="
+	test? ( x11-misc/xdg-utils )
 "
 
 multilib_src_configure() {
