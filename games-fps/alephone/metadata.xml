@@ -14,4 +14,7 @@
 		<remote-id type="sourceforge">marathon</remote-id>
 		<bugs-to>https://github.com/Aleph-One-Marathon/alephone/issues</bugs-to>
 	</upstream>
+	<use>
+		<flag name="video-export">Enable film export support</flag>
+	</use>
 </pkgmetadata>
