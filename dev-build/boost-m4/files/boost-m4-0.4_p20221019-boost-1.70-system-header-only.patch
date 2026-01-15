@@ -1,0 +1,26 @@
+Combination of:
+https://github.com/tsuna/boost.m4/commit/8d9ceb2dc54587aa1cace4bc0932a804b0538d36
+https://github.com/tsuna/boost.m4/commit/c88f9d1d27707d85ba39fbaeedddddd505e76e6c
+
+diff -u a/build-aux/boost.m4 b/build-aux/boost.m4
+--- a/build-aux/boost.m4
++++ b/build-aux/boost.m4
+@@ -1332,11 +1332,16 @@
+ # --------------------------------
+ # Look for Boost.System.  For the documentation of PREFERRED-RT-OPT, see the
+ # documentation of BOOST_FIND_LIB above.  This library was introduced in Boost
+-# 1.35.0.
++# 1.35.0 and is header only since 1.70.
+ BOOST_DEFUN([System],
+-[BOOST_FIND_LIB([system], [$1],
++[
++if test $boost_major_version -ge 170; then
++  BOOST_FIND_HEADER([boost/system/error_code.hpp])
++else
++  BOOST_FIND_LIB([system], [$1],
+                 [boost/system/error_code.hpp],
+                 [boost::system::error_code e; e.clear();], [], [], [$2])
++fi
+ ])# BOOST_SYSTEM
+ 
+ 
