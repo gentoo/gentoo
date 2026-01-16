@@ -3,11 +3,15 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic libtool linux-info xdg
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/alsa.asc
+inherit autotools flag-o-matic libtool linux-info verify-sig xdg
 
 DESCRIPTION="Advanced Linux Sound Architecture tools"
 HOMEPAGE="https://alsa-project.org/wiki/Main_Page"
-SRC_URI="https://www.alsa-project.org/files/pub/tools/${P}.tar.bz2"
+SRC_URI="
+	https://www.alsa-project.org/files/pub/tools/${P}.tar.bz2
+	verify-sig? ( https://www.alsa-project.org/files/pub/tools/${P}.tar.bz2.sig )
+"
 
 LICENSE="GPL-2"
 SLOT="0.9"
@@ -37,6 +41,7 @@ RDEPEND="
 "
 BDEPEND="
 	virtual/pkgconfig
+	verify-sig? ( sec-keys/openpgp-keys-alsa )
 "
 
 PATCHES=(
