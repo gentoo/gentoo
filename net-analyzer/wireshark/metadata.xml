@@ -46,7 +46,6 @@
 		<flag name="editcap">Install editcap, to edit and/or translate the format of capture files</flag>
 		<flag name="http3">Install <pkg>net-libs/nghttp3</pkg> for enhanced HTTP3 analysis</flag>
 		<flag name="ilbc">Build with iLBC support in RTP Player using <pkg>media-libs/libilbc</pkg></flag>
-		<flag name="libxml2">Use <pkg>dev-libs/libxml2</pkg> for handling XML configuration in dissectors</flag>
 		<flag name="maxminddb">Use <pkg>dev-libs/libmaxminddb</pkg> for IP address geolocation</flag>
 		<flag name="mergecap">Install mergecap, to merge two or more capture files into one</flag>
 		<flag name="minizip">Build with zip file compression support</flag>
