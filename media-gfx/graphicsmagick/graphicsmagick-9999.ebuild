@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -37,7 +37,7 @@ RDEPEND="
 	dev-libs/libxml2:=
 	bzip2? ( app-arch/bzip2 )
 	fpx? ( media-libs/libfpx )
-	heif? ( media-libs/libheif:= )
+	heif? ( >=media-libs/libheif-1.20:= )
 	imagemagick? ( !media-gfx/imagemagick )
 	jbig? ( media-libs/jbigkit )
 	jpeg? ( media-libs/libjpeg-turbo:= )
