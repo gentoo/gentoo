@@ -1,5 +1,9 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2026-01-16)
+# Unkeyworded dependencies (bug #968238)
+media-video/pipewire libcamera
 
 # WANG Xuerui <xen0n@gentoo.org> (2025-12-11)
 # Mysterious segfault at build time (building splash image), during exiv2
