@@ -1,0 +1,24 @@
+Properly use an injected LD for linking. This is necessary for kernels
+built with clang & LTO, otherwise the configuration tests fall back to
+using ld.bfd and fail to build with: "ld: unrecognised emulation mode: llvm".
+Bug: https://bugs.gentoo.org/968857
+
+--- libs-0.20.0/driver/configure/Makefile.inc.in
++++ libs-0.20.0/driver/configure/Makefile.inc.in
+@@ -3,7 +3,7 @@ MODULE_MAKEFILE_DIR := $(shell dirname $
+ # Run the module build.sh (wrapper for make) script with an empty environment,
+ # but pass PATH, KERNELDIR and eventually (if set) CC and KBUILD_MODPOST_WARN.
+ # The latter ones are used by driverkit build templates.
+-HAS_@CONFIGURE_MODULE@ := $(shell env -i CC="$(CC)" KBUILD_MODPOST_WARN="$(KBUILD_MODPOST_WARN)" PATH="$(PATH)" KERNELDIR="$(KERNELDIR)" sh $(MODULE_MAKEFILE_DIR)/build.sh ; echo $$?)
++HAS_@CONFIGURE_MODULE@ := $(shell env -i CC="$(CC)" LD="$(LD)" KBUILD_MODPOST_WARN="$(KBUILD_MODPOST_WARN)" PATH="$(PATH)" KERNELDIR="$(KERNELDIR)" sh $(MODULE_MAKEFILE_DIR)/build.sh ; echo $$?)
+ 
+ ifeq ($(HAS_@CONFIGURE_MODULE@),0)
+ $(info [configure-kmod] Setting HAS_@CONFIGURE_MODULE@ flag)
+--- libs-0.20.0/driver/configure/build.sh
++++ libs-0.20.0/driver/configure/build.sh
+@@ -10,4 +10,4 @@
+ SCRIPT=$(readlink -f "$0")
+ SCRIPT_DIR=$(dirname ${SCRIPT})
+ 
+-make CC="${CC}" -C ${SCRIPT_DIR} > ${SCRIPT_DIR}/build.log 2>&1
++make CC="${CC}" "${LD}" -C ${SCRIPT_DIR} > ${SCRIPT_DIR}/build.log 2>&1
