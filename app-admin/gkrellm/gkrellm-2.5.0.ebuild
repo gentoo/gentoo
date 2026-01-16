@@ -87,7 +87,7 @@ src_compile() {
 	tc-export PKG_CONFIG
 
 	export TARGET=$(usex X . server)
-	local emakeargs=(
+	GKRELLM_MAKE_ARGS=(
 		CC=$(tc-getCC)
 		AR=$(tc-getAR)
 
@@ -101,17 +101,17 @@ src_compile() {
 		without-ssl=$(usex ssl $(usex gnutls) yes)
 		without-gnutls=$(usex !gnutls)
 	)
-	emake "${emakeargs[@]}" -C ${TARGET}
+	emake "${GKRELLM_MAKE_ARGS[@]}" -C ${TARGET}
 }
 
 src_install() {
-	local emakeargs=(
+	GKRELLM_MAKE_ARGS+=(
 		STRIP=
 		DESTDIR="${D}"
-		PKGCONFIGDIR="${ED}/usr/$(get_libdir)/pkgconfig"
-		CFGDIR="${ED}/etc"
+		PKGCONFIGDIR="${EPREFIX}/usr/$(get_libdir)/pkgconfig"
+		CFGDIR="${EPREFIX}/etc"
 	)
-	emake "${emakeargs[@]}" install -C ${TARGET}
+	emake "${GKRELLM_MAKE_ARGS[@]}" install -C ${TARGET}
 
 	newinitd "${FILESDIR}"/gkrellmd.initd gkrellmd
 	newconfd "${FILESDIR}"/gkrellmd.conf gkrellmd
