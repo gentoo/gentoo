@@ -5,8 +5,9 @@ EAPI=8
 PYTHON_COMPAT=( python3_{11..14} )
 QA_PKGCONFIG_VERSION=$(ver_cut 1)
 
-# Avoid QA warning about skipping tmpfiles.eclass
+# Avoid QA warnings about these eclasses
 TMPFILES_OPTIONAL=1
+UDEV_OPTIONAL=1
 
 inherit linux-info meson-multilib
 inherit python-single-r1 secureboot shell-completion udev
