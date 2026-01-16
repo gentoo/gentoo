@@ -1,0 +1,11 @@
+[Unit]
+Description=Icecast OGG streaming client
+After=network.target icecast.target
+ 
+[Service]
+User=ices
+Group=ices
+ExecStart=/usr/bin/ices /etc/ices2/ices.xml
+
+[Install]
+WantedBy=multi-user.target

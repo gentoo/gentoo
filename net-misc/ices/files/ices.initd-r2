@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+# Copyright 1999-2026 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+: ${CONFIGFILE:=/etc/ices2/${RC_SVCNAME}.xml}
+
+description="Icecast OGG streaming client"
+pidfile="/run/${RC_SVCNAME}.pid"
+command="/usr/bin/ices"
+command_args="${CONFIGFILE}"
+command_user="${USER:-ices}:${GROUP:-ices}"
+command_background="true"
+required_files="${CONFIGFILE}"
+
+depend() {
+	need net
+	use icecast
+}
