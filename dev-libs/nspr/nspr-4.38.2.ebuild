@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -96,25 +96,9 @@ multilib_src_configure() {
 	# that trigger some code conditional to platform & arch. This really
 	# matters for the few common arches (x86, ppc) but we pass a little
 	# more of them to be future-proof.
-
-	# use ABI first, this will work for most cases
-	case "${ABI}" in
-		alpha|arm|hppa|m68k|o32|ppc|s390|sh|sparc|x86) ;;
-		n32) myconf+=( --enable-n32 );;
-		x32) myconf+=( --enable-x32 );;
-		s390x|*64) myconf+=( --enable-64bit );;
-		default) # no abi actually set, fall back to old check
-			einfo "Running a short build test to determine 64bit'ness"
-			# TODO: Port this to toolchain-funcs tc-get-ptr-size/tc-get-build-ptr-size
-			echo > "${T}"/test.c || die
-			${CC} ${CFLAGS} ${CPPFLAGS} -fno-lto -c "${T}"/test.c -o "${T}"/test.o || die
-			case $(file -S "${T}"/test.o) in
-				*32-bit*x86-64*) myconf+=( --enable-x32 );;
-				*64-bit*|*ppc64*|*x86_64*) myconf+=( --enable-64bit );;
-				*32-bit*|*ppc*|*i386*) ;;
-				*) die "Failed to detect whether your arch is 64bits or 32bits, disable distcc if you're using it, please";;
-			esac ;;
-		*) ;;
+	case $(tc-get-ptr-size) in
+		4) use abi_x86_x32 && myconf+=( --enable-x32 );;
+		8) myconf+=( --enable-64bit );;
 	esac
 
 	# Ancient autoconf needs help finding the right tools.
