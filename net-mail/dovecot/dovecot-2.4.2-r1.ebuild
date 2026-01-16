@@ -90,6 +90,7 @@ BDEPEND="virtual/pkgconfig
 
 PATCHES=(
 	"${FILESDIR}/${PN}-autoconf-lua-version-v3.patch"
+	"${FILESDIR}/${PN}-2.4.2-tests.patch"
 )
 
 pkg_setup() {

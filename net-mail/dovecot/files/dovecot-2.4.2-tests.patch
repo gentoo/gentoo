@@ -1,0 +1,70 @@
+https://bugs.gentoo.org/968559
+https://github.com/dovecot/core/commit/2b3ed7030c3c5a969d862d3faac5ec2357608138
+https://github.com/dovecot/core/commit/04eff0c501595912191945d7021ca67c46f7bd27
+
+From 2b3ed7030c3c5a969d862d3faac5ec2357608138 Mon Sep 17 00:00:00 2001
+From: Aki Tuomi <aki.tuomi@open-xchange.com>
+Date: Wed, 12 Nov 2025 08:54:38 +0200
+Subject: [PATCH] m4: Set DOVECONF_PATH
+
+If dovecot is not installed, it points to dovecot build location.
+---
+ m4/dovecot.m4 | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/m4/dovecot.m4 b/m4/dovecot.m4
+index 1b45bc9a4f..829b2f122f 100644
+--- a/m4/dovecot.m4
++++ b/m4/dovecot.m4
+@@ -6,7 +6,7 @@ dnl This file is free software; the authors give
+ dnl unlimited permission to copy and/or distribute it, with or without
+ dnl modifications, as long as this notice is preserved.
+ 
+-# serial 45
++# serial 46
+ 
+ dnl
+ dnl Check for support for D_FORTIFY_SOURCE=2
+@@ -425,6 +425,10 @@ AC_DEFUN([DC_DOVECOT],[
+ 	AS_IF([test x$DOVECOT_HAVE_MAIL_UTF8 = xyes], [
+ 		AC_DEFINE([DOVECOT_HAVE_MAIL_UTF8],,"Define if Dovecot has mail UTF-8 support")
+ 	])
++        AS_IF([test "$DOVECOT_INSTALLED" != "yes"],
++          AC_SUBST([DOVECONF_PATH], [$dovecotdir/src/config/doveconf]),
++          AC_SUBST([DOVECONF_PATH], []))
++
+ 	AM_CONDITIONAL(DOVECOT_INSTALLED, test "$DOVECOT_INSTALLED" = "yes")
+ 
+ 	DC_PLUGIN_DEPS
+
+From 04eff0c501595912191945d7021ca67c46f7bd27 Mon Sep 17 00:00:00 2001
+From: Aki Tuomi <aki.tuomi@open-xchange.com>
+Date: Wed, 12 Nov 2025 08:58:08 +0200
+Subject: [PATCH] build-aux/run-test.sh.in: Export DOVECONF_PATH if it's set
+
+---
+ build-aux/run-test.sh.in | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/build-aux/run-test.sh.in b/build-aux/run-test.sh.in
+index 325bb48..f0c7011 100644
+--- a/build-aux/run-test.sh.in
++++ b/build-aux/run-test.sh.in
+@@ -1,12 +1,16 @@
+ #!/bin/sh
+ 
+-## serial 2
++## serial 3
+ 
+ set -eu
+ 
+ top_srcdir="@abs_top_srcdir@"
+ VALGRIND="@VALGRIND@"
+ 
++if [ "@DOVECONF_PATH@" != "" ]; then
++  export DOVECONF_PATH="@DOVECONF_PATH@"
++fi
++
+ if test $# -eq 0 || test "$1" = ""; then
+   echo "Missing target binary" >&2
+   exit 1
