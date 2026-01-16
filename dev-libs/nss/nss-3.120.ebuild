@@ -12,6 +12,7 @@ DESCRIPTION="Mozilla's Network Security Services library that implements PKI sup
 HOMEPAGE="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
 SRC_URI="https://archive.mozilla.org/pub/security/nss/releases/${RTM_NAME}/src/${P}.tar.gz
 	cacert? ( https://dev.gentoo.org/~juippis/mozilla/patchsets/nss-3.104-cacert-class1-class3.patch )"
+S="${WORKDIR}/${P}/${PN}"
 
 LICENSE="|| ( MPL-2.0 GPL-2 LGPL-2.1 )"
 SLOT="0"
@@ -32,8 +33,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="dev-lang/perl"
-
-S="${WORKDIR}/${P}/${PN}"
 
 MULTILIB_CHOST_TOOLS=(
 	/usr/bin/nss-config
@@ -109,40 +108,16 @@ nssarch() {
 	esac
 }
 
+# @USAGE: <pointer bytes> <tuple>
 nssbits() {
-	local cc cppflags="${1}CPPFLAGS" cflags="${1}CFLAGS"
-	if [[ ${1} == BUILD_ ]]; then
-		cc=$(tc-getBUILD_CC)
-	else
-		cc=$(tc-getCC)
-	fi
-	# TODO: Port this to toolchain-funcs tc-get-ptr-size/tc-get-build-ptr-size
-	echo > "${T}"/test.c || die
-	${cc} ${!cppflags} ${!cflags} -fno-lto -c "${T}"/test.c -o "${T}/${1}test.o" || die
-	case $(file -S "${T}/${1}test.o") in
-		*32-bit*x86-64*) echo USE_X32=1;;
-		*64-bit*|*ppc64*|*x86_64*) echo USE_64=1;;
-		*32-bit*|*ppc*|*i386*) ;;
-		*) die "Failed to detect whether ${cc} builds 64bits or 32bits, disable distcc if you're using it, please";;
+	case $1 in
+		4) [[ $2 == x86_64* ]] && echo USE_X32=1 ;;
+		8) echo USE_64=1 ;;
 	esac
 }
 
 multilib_src_compile() {
-	# use ABI to determine bit'ness, or fallback if unset
-	local buildbits mybits
-	case "${ABI}" in
-		n32) mybits="USE_N32=1";;
-		x32) mybits="USE_X32=1";;
-		s390x|*64) mybits="USE_64=1";;
-		${DEFAULT_ABI})
-			einfo "Running compilation test to determine bit'ness"
-			mybits=$(nssbits)
-			;;
-	esac
-	# bitness of host may differ from target
-	if tc-is-cross-compiler; then
-		buildbits=$(nssbits BUILD_)
-	fi
+	tc-export_build_env
 
 	local makeargs=(
 		CC="$(tc-getCC)"
@@ -150,8 +125,8 @@ multilib_src_compile() {
 		AR="$(tc-getAR) rc \$@"
 		RANLIB="$(tc-getRANLIB)"
 		OPTIMIZER=
-		${mybits}
 		disable_ckbi=0
+		$(nssbits "$(tc-get-ptr-size)" "${CHOST}")
 	)
 
 	# Take care of nspr settings #436216
@@ -222,7 +197,7 @@ multilib_src_compile() {
 	NSPR_LIB_DIR="${T}/fakedir" \
 	emake -C coreconf \
 		CC="$(tc-getBUILD_CC)" \
-		${buildbits-${mybits}}
+		$(nssbits "$(tc-get-build-ptr-size)" "${CBUILD}")
 	makeargs+=( NSINSTALL="${PWD}/$(find -type f -name nsinstall)" )
 
 	# Then build the target tools.
