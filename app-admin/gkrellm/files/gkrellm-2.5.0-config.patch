@@ -1,0 +1,28 @@
+Avoid all hosts allowed to connect
+Drop privileges after startup
+diff --git a/data/gkrellmd.conf b/data/gkrellmd.conf
+index dd8bac3..aa9500d 100644
+--- a/data/gkrellmd.conf
++++ b/data/gkrellmd.conf
+@@ -22,16 +22,17 @@
+ # List of hosts allowed to connect.  If no hosts are specified in a
+ # gkrellmd.conf file or on the command line, all hosts will be allowed.
+ #
+-#allow-host	localhost
+-#allow-host	127.0.0.1
++allow-host	localhost
++allow-host	127.0.0.1
++allow-host	::ffff:127.0.0.1
+ #allow-host	::1
+ #allow-host	192.168.0.*
+ 
+ # Drop privileges after startup (you must start gkrellmd as root to do it).
+ # NOTE: Option ignored on Windows
+ #
+-#user	nobody
+-#group	proc
++user	gkrellmd
++group	gkrellmd
+ 
+ # Create a PID file for the running gkrellmd.  Default is no PID file.
+ # NOTE: Option ignored on Windows
