@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,7 +29,10 @@ LICENSE="
 SLOT="0/${PV%%.*}"
 # kept unkeyworded due to being a beta, users are free to opt-in for testing
 KEYWORDS="-* ~amd64 ~arm64"
-IUSE="+X abi_x86_32 abi_x86_64 persistenced powerd +static-libs +tools wayland"
+IUSE="
+	+X abi_x86_32 abi_x86_64 +kernel-open persistenced powerd
+	+static-libs +tools wayland
+"
 
 COMMON_DEPEND="
 	acct-group/video
@@ -111,7 +114,6 @@ pkg_setup() {
 	require_configured_kernel
 
 	local CONFIG_CHECK="
-		MMU_NOTIFIER
 		PROC_FS
 		~DRM_KMS_HELPER
 		~DRM_FBDEV_EMULATION
@@ -128,6 +130,8 @@ pkg_setup() {
 
 	use amd64 && kernel_is -ge 5 8 && CONFIG_CHECK+=" X86_PAT" #817764
 
+	use kernel-open && CONFIG_CHECK+=" MMU_NOTIFIER" #843827
+
 	local drm_helper_msg="Cannot be directly selected in the kernel's config menus, and may need
 	selection of a DRM device even if unused, e.g. CONFIG_DRM_QXL=m or
 	DRM_AMDGPU=m (among others, consult the kernel config's help), can
@@ -142,7 +146,7 @@ pkg_setup() {
 	local ERROR_DRM_FBDEV_EMULATION="CONFIG_DRM_FBDEV_EMULATION: is not set but is needed for
 	nvidia-drm.fbdev=1 support (see ${EPREFIX}/etc/modprobe.d/nvidia.conf), may
 	result in a blank console/tty."
-	local ERROR_MMU_NOTIFIER="CONFIG_MMU_NOTIFIER: is not set but is required for compilation.
+	local ERROR_MMU_NOTIFIER="CONFIG_MMU_NOTIFIER: is not set but needed to build with USE=kernel-open.
 	Cannot be directly selected in the kernel's menuconfig, and may need
 	selection of another option that requires it such as CONFIG_AMD_IOMMU=y,
 	or DRM_I915=m (among others, consult the kernel config's help)."
@@ -197,15 +201,20 @@ src_compile() {
 	if use modules; then
 		local o_cflags=${CFLAGS} o_cxxflags=${CXXFLAGS} o_ldflags=${LDFLAGS}
 
-		# environment flags are normally unused for modules, but nvidia uses
-		# them for building the formerly closed "blob" and it is a bit fragile
-		filter-flags -fno-plt #912949
-		filter-lto
-		CC=${KERNEL_CC} CXX=${KERNEL_CXX} strip-unsupported-flags
-		LDFLAGS=$(raw-ldflags)
+		local modlistargs=video:kernel
+		if use kernel-open; then
+			modlistargs+=-module-source:kernel-module-source/kernel-open
 
-		: video:kernel-module-source:kernel-module-source/kernel-open
-		local modlist=( nvidia{,-drm,-modeset,-peermem,-uvm}=${_} )
+			# environment flags are normally unused for modules, but nvidia
+			# uses it for building the "blob" and it is a bit fragile
+			filter-flags -fno-plt #912949
+			filter-lto
+			CC=${KERNEL_CC} CXX=${KERNEL_CXX} strip-unsupported-flags
+
+			LDFLAGS=$(raw-ldflags)
+		fi
+
+		local modlist=( nvidia{,-drm,-modeset,-peermem,-uvm}=${modlistargs} )
 		local modargs=(
 			IGNORE_CC_MISMATCH=yes NV_VERBOSE=1
 			SYSOUT="${KV_OUT_DIR}" SYSSRC="${KV_DIR}"
@@ -557,8 +566,8 @@ pkg_postinst() {
 		elog "\n>=${PN}-590 has changes that may or may not need attention:"
 		elog "1. support for Pascal, Maxwell, and Volta cards has been dropped"
 		elog "  (if affected, there should be a another message about this above)"
-		elog "2. kernel-open USE is gone and the open source variant is *always* used"
-		elog "  (no longer possible to disable GSP with NVreg_EnableGpuFirmware=0)"
+		elog "2. USE=kernel-open is now enabled by default"
+		elog "  (generally safe and recommended, but some setups may hit regressions)"
 		elog "3. nvidia-drm.modeset=1 is now default regardless of USE=wayland"
 		elog "4. nvidia-drm.fbdev=1 is now also tentatively default to match upstream"
 		elog "See ${EROOT}/etc/modprobe.d/nvidia.conf to modify settings if needed,"
