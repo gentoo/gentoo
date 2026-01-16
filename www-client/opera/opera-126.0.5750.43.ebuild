@@ -37,7 +37,7 @@ S=${WORKDIR}
 
 LICENSE="OPERA-2018"
 SLOT="0"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 IUSE="+ffmpeg-chromium +proprietary-codecs +suid qt6"
 RESTRICT="bindist mirror strip"
 
