@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -51,13 +51,10 @@ PATCHES=(
 )
 
 src_unpack() {
-
-	# Upstream sign the decompressed .tar
 	if use verify-sig ; then
-		einfo "Unpacking ${MY_P}.tar.xz ..."
-		verify-sig_verify_detached - "${DISTDIR}"/${MY_P}.tar.sign "${UTIL_LINUX_VERIFY_SIG_OPENPGP_KEY_PATH}" \
-			< <(xz -cd "${DISTDIR}"/${MY_P}.tar.xz | tee >(tar -xf -))
-		assert "Unpack failed"
+		verify-sig_uncompress_verify_unpack "${DISTDIR}"/${MY_P}.tar.xz \
+			"${DISTDIR}"/${MY_P}.tar.sign "${UTIL_LINUX_VERIFY_SIG_OPENPGP_KEY_PATH}"
+
 		verify-sig_verify_detached "${DISTDIR}"/${LOOPAES_P}.tar.bz2{,.sign}
 		unpack ${LOOPAES_P}.tar.bz2
 	else
