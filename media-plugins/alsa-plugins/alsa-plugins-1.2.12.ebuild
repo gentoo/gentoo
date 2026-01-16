@@ -1,13 +1,17 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools flag-o-matic multilib-minimal
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/alsa.asc
+inherit autotools flag-o-matic multilib-minimal verify-sig
 
 DESCRIPTION="ALSA extra plugins"
 HOMEPAGE="https://alsa-project.org/wiki/Main_Page"
-SRC_URI="https://www.alsa-project.org/files/pub/plugins/${P}.tar.bz2"
+SRC_URI="
+	https://www.alsa-project.org/files/pub/plugins/${P}.tar.bz2
+	verify-sig? ( https://www.alsa-project.org/files/pub/plugins/${P}.tar.bz2.sig )
+"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
@@ -26,7 +30,10 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	virtual/pkgconfig
+	verify-sig? ( sec-keys/openpgp-keys-alsa )
+"
 
 src_prepare() {
 	default
