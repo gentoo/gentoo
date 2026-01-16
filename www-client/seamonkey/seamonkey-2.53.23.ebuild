@@ -1,4 +1,4 @@
-# Copyright 1999-2026 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ WANT_AUTOCONF="2.1"
 PYTHON_COMPAT=( python3_{12..14} )
 PYTHON_REQ_USE='ncurses,sqlite,ssl,threads(+)'
 
-LLVM_COMPAT=( {18..20} )
+LLVM_COMPAT=( {18..21} )
 
 # This list can be updated with scripts/get_langs.sh from the mozilla overlay
 # note - could not roll langpacks for: ca fi
