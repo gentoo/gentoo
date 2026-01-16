@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -44,6 +44,10 @@ BDEPEND="
 		dev-python/botocore[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
 	)"
+
+PATCHES=(
+	"${FILESDIR}/os-release-fix.patch"
+)
 
 distutils_enable_tests pytest
 
