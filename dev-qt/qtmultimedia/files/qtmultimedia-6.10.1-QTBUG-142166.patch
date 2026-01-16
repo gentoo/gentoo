@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/968832
+https://qt-project.atlassian.net/browse/QTBUG-142166
+https://codereview.qt-project.org/c/qt/qtmultimedia/+/693529
+--- a/src/multimedia/audio/qaudio.h
++++ b/src/multimedia/audio/qaudio.h
+@@ -77,5 +77,5 @@
+ namespace QAudio
+ {
+-#if QT_CORE_REMOVED_SINCE(6, 10)
++#if QT_MULTIMEDIA_REMOVED_SINCE(6, 10)
+ Q_MULTIMEDIA_EXPORT float convertVolume(float volume, VolumeScale from, VolumeScale to);
+ #elif !defined(QT_MULTIMEDIA_BUILD_REMOVED_API)
