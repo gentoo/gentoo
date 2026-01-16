@@ -3,11 +3,15 @@
 
 EAPI=8
 
-inherit systemd udev
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/alsa.asc
+inherit systemd udev verify-sig
 
 DESCRIPTION="Advanced Linux Sound Architecture Utils (alsactl, alsamixer, etc.)"
 HOMEPAGE="https://alsa-project.org/wiki/Main_Page"
-SRC_URI="https://www.alsa-project.org/files/pub/utils/${P}.tar.bz2"
+SRC_URI="
+	https://www.alsa-project.org/files/pub/utils/${P}.tar.bz2
+	verify-sig? ( https://www.alsa-project.org/files/pub/utils/${P}.tar.bz2.sig )
+"
 
 LICENSE="GPL-2"
 SLOT="0.9"
@@ -28,6 +32,7 @@ RDEPEND="
 BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-text/xmlto )
+	verify-sig? ( sec-keys/openpgp-keys-alsa )
 "
 
 PATCHES=(
