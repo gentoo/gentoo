@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_EXTRADOC="CONTRIBUTING.md README.md"
 
@@ -25,7 +25,7 @@ IUSE="doc test"
 
 PATCHES=( "${FILESDIR}/${P}-file-exists.patch" )
 
-ruby_add_bdepend "test? ( dev-ruby/test-unit:2
+ruby_add_bdepend "test? ( dev-ruby/minitest:5
 	>=dev-ruby/mocha-1.0 )"
 
 all_ruby_prepare() {
@@ -33,6 +33,7 @@ all_ruby_prepare() {
 		-e '/pry-byebug/ s:^:#:' \
 		-e '/warnings_logger/ s:^:#: ; /WarningsLogger/,/^)/ s:^:#:' \
 		-e '/rails_application_with_shoulda_context/ s:^:#:' \
+		-e '2igem "minitest", "~> 5.0"' \
 		-i test/test_helper.rb || die
 	rm -f test/shoulda/{railtie,rerun_snippet,test_framework_detection}_test.rb || die
 }
