@@ -336,6 +336,9 @@ multilib_src_install_all() {
 	if use kernel-install; then
 		dobashcomp shell-completion/bash/kernel-install
 		dozshcomp shell-completion/zsh/_kernel-install
+
+		# Dummy config, remove to make room for sys-kernel/installkernel
+		rm "${ED}/usr/lib/kernel/install.conf" || die
 	fi
 
 	if use tmpfiles; then
