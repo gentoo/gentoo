@@ -290,7 +290,7 @@ multilib_src_install() {
 
 	if use tmpfiles; then
 		installx usr/bin/systemd-tmpfiles
-		installx usr/lib/tmpfiles.d
+		installx usr/lib/tmpfiles.d/{etc,home,static-nodes-permissions,var}.conf
 		installx usr/share/man/{man5/tmpfiles.d.5,man8/systemd-tmpfiles.8}
 	fi
 
