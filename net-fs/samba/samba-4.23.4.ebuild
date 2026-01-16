@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="threads(+),xml(+)"
-inherit python-single-r1 flag-o-matic waf-utils multilib-minimal linux-info systemd pam tmpfiles
+inherit python-single-r1 flag-o-matic waf-utils multilib-minimal linux-info optfeature systemd pam tmpfiles
 
 DESCRIPTION="Samba Suite Version 4"
 HOMEPAGE="https://samba.org/"
@@ -393,4 +393,8 @@ multilib_src_install() {
 
 pkg_postinst() {
 	tmpfiles_process samba.conf
+
+	if use addc || use ads ; then
+		optfeature "Hide passwords from command line when using samba-tool or samba-gpupdate" dev-python/setproctitle
+	fi
 }
