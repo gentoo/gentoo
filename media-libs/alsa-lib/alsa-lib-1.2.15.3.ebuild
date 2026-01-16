@@ -14,8 +14,15 @@ if [[ ${PV} == *_p* ]] ; then
 	SRC_URI="https://git.alsa-project.org/?p=${PN}.git;a=snapshot;h=${COMMIT};sf=tgz -> ${P}.tar.gz"
 	S="${WORKDIR}"/${PN}-${COMMIT:0:7}
 else
-	# TODO: Upstream does publish .sig files, so someone could implement verify-sig ;)
-	SRC_URI="https://www.alsa-project.org/files/pub/lib/${P}.tar.bz2"
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/alsa.asc
+	inherit verify-sig
+
+	SRC_URI="
+		https://www.alsa-project.org/files/pub/lib/${P}.tar.bz2
+		verify-sig? ( https://www.alsa-project.org/files/pub/lib/${P}.tar.bz2.sig )
+	"
+
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-alsa )"
 fi
 
 LICENSE="LGPL-2.1"
@@ -30,7 +37,7 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="doc? ( >=app-text/doxygen-1.2.6 )"
+BDEPEND+=" doc? ( >=app-text/doxygen-1.2.6 )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.1.6-missing_files.patch" # bug #652422
