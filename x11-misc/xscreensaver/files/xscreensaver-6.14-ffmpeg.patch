@@ -1,0 +1,91 @@
+Since version 6.07, xscreensaver could save videos, using ffmpeg,
+but the configure flag --with-record-animation doesn't work to
+deactivate this feature.
+
+Signed-off-by: Cristian Othón Martínez Vera <cfuga@cfuga.mx>
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -3801,6 +3801,28 @@
+   XFT_OBJS='$(UTILS_BIN)/xft.o'
+ fi
+ 
++###############################################################################
++#
++#       Check for --with-record-animation
++#
++###############################################################################
++
++record_anim_default=no
++record_anim="$record_anim_default"
++AC_ARG_WITH(record-animation,
++[  --with-record-animation Include code for generating MP4 videos.],
++  [record_anim="$withval"], [record_anim="$record_anim_default"])
++
++HANDLE_X_PATH_ARG(record_anim, --with-record-animation, record animation)
++
++if test "$record_anim" = yes; then
++  true
++elif test "$record_anim" != no; then
++  echo "error: must be yes or no: --with-record-animation=$record_anim"
++  exit 1
++fi
++
++if test "$record_anim" = yes; then
+ 
+ ###############################################################################
+ #
+@@ -3958,6 +3980,15 @@
+   FFMPEG_LIBS="$FFMPEG_LIBS $extra_ffmpeg_bs"
+ fi
+ 
++  if test "$have_ffmpeg" != yes; then
++    AC_MSG_WARN(--with-record-animation requires the ffmpeg libraries)
++  else
++    AC_MSG_RESULT(enabling --record-animation)
++    AC_DEFINE(HAVE_RECORD_ANIM)
++    ANIM_OBJS='$(ANIM_OBJS)'
++    ANIM_LIBS='$(ANIM_LIBS)'
++  fi
++fi
+ 
+ ###############################################################################
+ #
+@@ -4050,37 +4081,7 @@
+ fi
+ 
+ 
+-###############################################################################
+-#
+-#       Check for --with-record-animation
+-#
+-###############################################################################
+-
+-record_anim_default=no
+-record_anim="$record_anim_default"
+-AC_ARG_WITH(record-animation,
+-[  --with-record-animation Include code for generating MP4 videos.],
+-  [record_anim="$withval"], [record_anim="$record_anim_default"])
+-
+-HANDLE_X_PATH_ARG(record_anim, --with-record-animation, record animation)
+-
+-if test "$record_anim" = yes; then
+-  true
+-elif test "$record_anim" != no; then
+-  echo "error: must be yes or no: --with-record-animation=$record_anim"
+-  exit 1
+-fi
+ 
+-if test "$record_anim" = yes; then
+-  if test "$have_ffmpeg" != yes; then
+-    AC_MSG_WARN(--with-record-animation requires the ffmpeg libraries)
+-  else
+-    AC_MSG_RESULT(enabling --record-animation)
+-    AC_DEFINE(HAVE_RECORD_ANIM)
+-    ANIM_OBJS='$(ANIM_OBJS)'
+-    ANIM_LIBS='$(ANIM_LIBS)'
+-  fi
+-fi
+ 
+ 
+ ###############################################################################
