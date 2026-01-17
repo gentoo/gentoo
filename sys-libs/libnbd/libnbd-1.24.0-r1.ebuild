@@ -92,7 +92,7 @@ src_configure() {
 		$(use_enable ocaml)
 		$(use_enable python)
 		$(use_with gnutls)
-		$(use_with !gnutls with-tls-priority NORMAL)
+		--with-bash-completions
 		--disable-rust
 		--disable-ublk # Not in portage
 		--with-libxml2
@@ -100,6 +100,7 @@ src_configure() {
 
 	export bashcompdir="$(get_bashcompdir)"
 
+	BASH_COMPLETION_CFLAGS=" " BASH_COMPLETION_LIBS=" "\
 	econf "${myeconfargs[@]}"
 }
 
@@ -108,6 +109,7 @@ src_install() {
 
 	use fuse || bashcomp_alias nbdsh nbdfuse
 	bashcomp_alias nbdsh nbdublk
+	use python || bashcomp_alias nbdsh nbddiscard nbdzero
 
 	use ocaml && strip-lto-bytecode
 
