@@ -5,6 +5,22 @@
 		<email>jkroon@gentoo.org</email>
 		<name>Jaco Kroon</name>
 	</maintainer>
+	<use>
+		<flag name="storage">Adds access to services related to object, block, and file storage.</flag>
+		<flag name="compute">Adds access to Compute and Auto Scaling related services.</flag>
+		<flag name="networking">Adds access to network and CDN related services.</flag>
+		<flag name="database">Adds access functionality to RDB, NoSQL, TimeStream, and Ledger related services.</flag>
+		<flag name="analytics">Adds access to big data and analysis related services.</flag>
+		<flag name="messaging">Adds access to messaging and notification services.</flag>
+		<flag name="monitor">Adds access to monitoring and operation related services.</flag>
+		<flag name="security">Adds access to services related to ID management and security auditing.</flag>
+		<flag name="ml">Adds access to machine learning and AI related services.</flag>
+		<flag name="iot">Adds access to IoT and edge services.</flag>
+		<flag name="media">Adds access to media processing related services.</flag>
+		<flag name="devops">Adds access to CI/CD and developer related services.</flag>
+		<flag name="management">Adds access to operational management related services.</flag>
+		<flag name="uncategorized">Add access to services that do not easily fit into existing groups.</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">aws/aws-sdk-cpp</remote-id>
 	</upstream>
