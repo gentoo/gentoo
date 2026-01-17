@@ -76,8 +76,8 @@ BDEPEND=">=dev-build/meson-1.2.3
 # @VARIABLE: emesonargs
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Optional meson arguments as Bash array; this should be defined before
-# calling meson_src_configure.
+# Optional meson arguments as Bash array; this should be defined before calling
+# meson_src_configure, meson_add_machine_file, or meson_add_native_file.
 
 # @VARIABLE: MYMESONARGS
 # @DEFAULT_UNSET
@@ -269,6 +269,33 @@ _meson_create_native_file() {
 	EOF
 
 	echo "${fn}"
+}
+
+# @FUNCTION: meson_add_machine_file
+# @USAGE: <name> < <data>
+# @DESCRIPTION:
+# Appends --native-file or --cross-file to emesonargs with the data given via
+# standard input. Assumes emesonargs has already been defined as an array.
+meson_add_machine_file() {
+	local file=${T}/meson.${CHOST}.${ABI}.${1}.ini
+	cat > "${file}" || die
+
+	if tc-is-cross-compiler || [[ ${ABI} != "${DEFAULT_ABI}" ]]; then
+		emesonargs+=( --cross-file "${file}" )
+	else
+		emesonargs+=( --native-file "${file}" )
+	fi
+}
+
+# @FUNCTION: meson_add_native_file
+# @USAGE: <name> < <data>
+# @DESCRIPTION:
+# Appends --native-file (never --cross-file) to emesonargs with the data given
+# via standard input. Assumes emesonargs has already been defined as an array.
+meson_add_native_file() {
+	# Ensure the filename is unique by including the target tuple and ABI.
+	local name=${CHOST}.${ABI}.${1} CHOST=${CBUILD} ABI=${DEFAULT_ABI}
+	meson_add_machine_file "${name}"
 }
 
 # @FUNCTION: meson_use
