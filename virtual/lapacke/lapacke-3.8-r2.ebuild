@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -15,11 +15,11 @@ RDEPEND="
 		sci-libs/blas-lapack-aux-wrapper[index64?]
 	)
 	!flexiblas? (
-		>=sci-libs/lapack-3.8.0[lapacke,eselect-ldso?,-flexiblas(-),index64(-)?]
+		>=sci-libs/lapack-3.8.0[lapacke,eselect-ldso(-)?,-flexiblas(-),index64(-)?]
 		eselect-ldso? (
 			|| (
-				>=sci-libs/lapack-3.8.0[lapacke,eselect-ldso]
-				>=sci-libs/openblas-0.3.10[eselect-ldso]
+				>=sci-libs/lapack-3.8.0[lapacke,eselect-ldso(-)]
+				>=sci-libs/openblas-0.3.10[eselect-ldso(-)]
 			)
 		)
 	)
