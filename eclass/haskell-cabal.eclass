@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: haskell-cabal.eclass
@@ -342,7 +342,7 @@ cabal-bootstrap() {
 	elif [[ -f "${S}/Setup.hs" ]]; then
 		setupmodule="${S}/Setup.hs"
 	else
-		eqawarn "QA Notice: No Setup.lhs or Setup.hs found. Either add Setup.hs to package or call cabal-mksetup from ebuild"
+		ewarn "No Setup.lhs or Setup.hs found"
 		cabal-mksetup
 		setupmodule="${S}/Setup.hs"
 	fi
