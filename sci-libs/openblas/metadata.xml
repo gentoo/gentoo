@@ -24,9 +24,6 @@
 		<flag name="cpudetection">
 			Build dynamic architecture detection at run time (for multi targets)
 		</flag>
-		<flag name="dynamic">
-			Build dynamic architecture detection at run time (for multi targets)
-		</flag>
 		<flag name="eselect-ldso">
 			Enable BLAS/LAPACK runtime switching
 		</flag>
