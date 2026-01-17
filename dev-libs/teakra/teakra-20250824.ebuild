@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-[[ ${PV} == 20220224 ]] && COMMIT=01db7cdd00aabcce559a8dddce8798dabb71949b
+[[ ${PV} == 20250824 ]] && COMMIT=3d697a18df504f4677b65129d9ab14c7c597e3eb
 
 inherit cmake
 
@@ -45,14 +45,4 @@ src_test() {
 	local -x LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${BUILD_DIR}/src/"
 
 	cmake_src_test
-}
-
-src_install() {
-	dolib.so "${BUILD_DIR}/src/lib${PN}.so"
-	dolib.so "${BUILD_DIR}/src/lib${PN}_c.so"
-
-	insinto /usr/include
-	doins -r "./include/${PN}"
-
-	einstalldocs
 }
