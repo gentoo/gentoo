@@ -1,0 +1,4 @@
+dev-util/intel-graphics-compiler
+dev-util/intel-graphics-system-controller
+dev-libs/intel-vc-intrinsics
+dev-libs/level-zero
