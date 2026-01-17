@@ -1,4 +1,4 @@
-# Copyright 2011-2025 Gentoo Authors
+# Copyright 2011-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,8 +24,8 @@ else
 	fi
 fi
 
-inherit bash-completion-r1 linux-info meson-multilib optfeature pam python-single-r1
-inherit secureboot systemd toolchain-funcs udev
+inherit branding linux-info meson-multilib optfeature pam python-single-r1
+inherit secureboot shell-completion systemd toolchain-funcs udev
 
 DESCRIPTION="System and service manager for Linux"
 HOMEPAGE="https://systemd.io/"
@@ -304,10 +304,11 @@ multilib_src_configure() {
 		-Ddocdir="share/doc/${PF}"
 		# default is developer, bug 918671
 		-Dmode=release
-		-Dsupport-url="https://gentoo.org/support/"
+		-Dsupport-url="${BRANDING_OS_SUPPORT_URL}"
 		-Dpamlibdir="$(getpam_mod_dir)"
 		# avoid bash-completion dep
 		-Dbashcompletiondir="$(get_bashcompdir)"
+		-Dzshcompletiondir="$(get_zshcompdir)"
 		-Dsplit-bin=false
 		# Disable compatibility with sysvinit
 		-Dsysvinit-path=

@@ -1,12 +1,14 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
+
 RUBY_FAKEGEM_EXTRADOC="README.md"
 RUBY_FAKEGEM_RECIPE_TEST="none"
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
+
 inherit ruby-fakegem
 
 DESCRIPTION="Ruby FFI Rakefile generator"

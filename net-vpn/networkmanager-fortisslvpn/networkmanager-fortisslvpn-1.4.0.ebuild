@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,7 +33,7 @@ DEPEND="
 RDEPEND="${RDEPEND}
 	net-dialup/ppp
 	>=net-vpn/openfortivpn-1.2.0"
-BDEPEND="dev-util/gdbus-codegen
+BDEPEND=">=dev-util/gdbus-codegen-2.80.5-r1
 	>=sys-devel/gettext-0.19
 	virtual/pkgconfig"
 

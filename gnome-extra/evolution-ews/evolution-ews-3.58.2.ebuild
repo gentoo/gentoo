@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,7 +29,7 @@ DEPEND="${RDEPEND}
 	test? ( >=net-libs/uhttpmock-0.9:1.0 )
 "
 BDEPEND="
-	dev-util/gdbus-codegen
+	>=dev-util/gdbus-codegen-2.80.5-r1
 	dev-util/glib-utils
 	>=dev-util/intltool-0.35.5
 	>=sys-devel/gettext-0.18.3

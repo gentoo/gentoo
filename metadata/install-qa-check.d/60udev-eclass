@@ -1,4 +1,4 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # QA check: ensure that packages installing udev rules inherit the eclass
@@ -36,7 +36,7 @@ udev_rules_check() {
 		return
 	fi
 
-	if [[ -d "${ED}"/lib/udev/rules.d/ ]] ; then
+	if [[ -d "${ED}"/lib/udev/rules.d  || -d "${ED}"/usr/lib/udev/rules.d ]] ; then
 		if ! has udev ${INHERITED} ; then
 			eqawarn "QA Notice: package is installing udev rules without inheriting udev.eclass!"
 			eqawarn "Packages must inherit udev.eclass then call udev_reload in pkg_postinst."

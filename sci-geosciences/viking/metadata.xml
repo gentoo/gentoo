@@ -15,6 +15,9 @@
     <flag name="libexif">
       Use <pkg>media-libs/libexif</pkg> for EXIF support
     </flag>
+    <flag name="nova">
+      Enable celestial mechanics and astronomical calculations with <pkg>sci-libs/libnova</pkg>
+    </flag>
     <flag name="oauth">
       Enable OAuth authentication for OSM
     </flag>

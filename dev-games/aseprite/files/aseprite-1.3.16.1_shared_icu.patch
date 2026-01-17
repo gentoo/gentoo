@@ -1,0 +1,29 @@
+From https://github.com/winterheart/aseprite/tree/v1.3.16.1-unbundle
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Sat, 10 Jan 2026 04:58:38 +0300
+Subject: [PATCH 7/7] Use shared ICU library (required for skia)
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -370,6 +370,8 @@ if(REQUIRE_CURL)
+   include_directories(${CURL_INCLUDE_DIRS})
+ endif()
+ 
++find_package(ICU COMPONENTS uc)
++
+ # simpleini
+ include_directories(${SIMPLEINI_DIR})
+ 
+--- a/src/app/CMakeLists.txt
++++ b/src/app/CMakeLists.txt
+@@ -788,6 +788,7 @@ target_link_libraries(app-lib
+   ${ZLIB_LIBRARIES}
+   libjpeg-turbo::jpeg
+   ${LibArchive_LIBRARIES}
++  ICU::uc
+   json11
+   fmt
+   tinyexpr
+-- 
+2.51.2
+

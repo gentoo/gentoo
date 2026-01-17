@@ -1,4 +1,4 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/jeremy-rifkin/cpptrace"
 SRC_URI="https://github.com/jeremy-rifkin/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

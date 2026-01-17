@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -68,7 +68,7 @@ DEPEND="
 	x11-base/xorg-proto
 "
 BDEPEND="
-	>=dev-util/gdbus-codegen-2.31.0
+	>=dev-util/gdbus-codegen-2.80.5-r1
 	>=dev-util/intltool-0.40.1
 	sys-devel/gettext
 	virtual/pkgconfig

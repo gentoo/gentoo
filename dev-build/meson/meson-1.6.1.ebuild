@@ -1,4 +1,4 @@
-# Copyright 2016-2025 Gentoo Authors
+# Copyright 2016-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -85,7 +85,7 @@ DEPEND="
 		dev-qt/qtwidgets:5
 		dev-qt/qtbase:6[gui,widgets]
 		dev-qt/qttools:6
-		dev-util/gdbus-codegen
+		>=dev-util/gdbus-codegen-2.80.5-r1
 		x11-libs/gtk+:3
 
 		dev-libs/wayland

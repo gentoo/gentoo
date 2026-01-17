@@ -1,6 +1,11 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ian Jordan <immoloism@gmail.com> (2026-01-14)
+# Use PipeWire sound server. It also acts as PulseAudio implementation for
+# packages using media-libs/libpulse (e.g. via USE="pulseaudio").
+media-video/pipewire sound-server
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-12-16)
 # Enable IUSE qt5 for current stable pkgs with USE-revdeps before dropping
 # it from make.defaults. # Bug #948836

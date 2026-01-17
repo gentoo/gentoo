@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv x86"
 RDEPEND=""
 DEPEND="${RDEPEND}"
 BDEPEND="
-	dev-util/gdbus-codegen
+	>=dev-util/gdbus-codegen-2.80.5-r1
 	>=sys-kernel/linux-headers-2.6.32
 	virtual/pkgconfig
 "

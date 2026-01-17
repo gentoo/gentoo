@@ -1,0 +1,31 @@
+https://gitlab.gnome.org/GNOME/babl/-/issues/114
+https://gitlab.gnome.org/GNOME/babl/-/commit/4efc8b827e008417c4995a93ae3310697318cfab
+
+From 4efc8b827e008417c4995a93ae3310697318cfab Mon Sep 17 00:00:00 2001
+From: Bruno Lopes <brunvonlope@outlook.com>
+Date: Thu, 11 Dec 2025 10:48:39 -0300
+Subject: [PATCH] meson: Check for repository with python (not git executable)
+
+Closes: #114
+
+As per line 415 of the Meson file, git is not a mandatory dep.
+--- a/meson.build
++++ b/meson.build
+@@ -497,11 +497,9 @@ configure_file(
+ # updated. If git is not available, don't do anything if git-version.h
+ # already exists because then we are probably working with a tarball
+ # in which case the git-version.h we ship is correct.
+-is_git_repository = run_command(
+-    git_bin,
+-    'rev-parse',
+-    '--is-inside-work-tree',
+-    check: false,
++is_git_repository = run_command(python, '-c',
++  'import sys,os; sys.exit(0 if os.path.exists(".git") else 1)',
++  check: false
+ ).returncode() == 0
+ 
+ has_version_h = run_command(python, '-c',
+-- 
+GitLab
+

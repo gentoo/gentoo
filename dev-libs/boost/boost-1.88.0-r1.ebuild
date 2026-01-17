@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -274,6 +274,8 @@ multilib_src_test() {
 		"config"
 		# "C++03 support was deprecated in Boost.Chrono 1.82" ??
 		"contract"
+		# fails with >=icu-78.1 (#968535); works in newer versions
+		"locale"
 		# undefined reference to `boost::math::concepts::real_concept boost::math::bernoulli_b2n<boost::math::concepts::real_concept>(int)
 		"math"
 		# assignment of read-only member 'gauss::laguerre::detail::laguerre_l_object<T>::order'

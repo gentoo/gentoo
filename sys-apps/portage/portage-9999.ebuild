@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -53,7 +53,7 @@ BDEPEND="
 # For whirlpool hash, require python[ssl] (bug #425046).
 RDEPEND="
 	${PYTHON_DEPS}
-	acct-user/portage
+	>=acct-user/portage-0-r4
 	>=app-arch/tar-1.27
 	app-arch/zstd
 	>=app-misc/pax-utils-0.1.17

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,7 +26,6 @@ LICENSE="NVIDIA-2023 Apache-2.0 BSD BSD-2 GPL-2 MIT ZLIB curl openssl"
 SLOT="0/${PV%%.*}"
 KEYWORDS="-* amd64 ~arm64"
 IUSE="+X abi_x86_32 abi_x86_64 kernel-open persistenced powerd +static-libs +tools wayland"
-REQUIRED_USE="kernel-open? ( modules )"
 
 COMMON_DEPEND="
 	acct-group/video
@@ -555,7 +554,7 @@ pkg_postinst() {
 		ewarn "[2] https://wiki.gentoo.org/wiki/Nouveau"
 	fi
 
-	if use kernel-open; then
+	if use kernel-open && use modules; then
 		ewarn "\nOpen source variant of ${PN} was selected, be warned it is experimental"
 		ewarn "and only for modern GPUs (e.g. GTX 1650+). Try to disable if run into issues."
 		ewarn "Please also see: ${EROOT}/usr/share/doc/${PF}/html/kernel_open.html"

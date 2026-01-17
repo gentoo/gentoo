@@ -1,15 +1,16 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_DOCDIR="doc"
 RUBY_FAKEGEM_EXTRADOC="README.rdoc"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
-USE_RUBY="ruby31 ruby32 ruby33 ruby34"
-
 inherit ruby-fakegem
+
 DESCRIPTION="Gem provides enforced-type functionality to Arrays"
 HOMEPAGE="https://github.com/yaauie/typed-array"
 

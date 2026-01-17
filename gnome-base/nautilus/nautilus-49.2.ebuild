@@ -40,7 +40,7 @@ RDEPEND="${DEPEND}
 	>=app-misc/localsearch-3.0:3=
 "
 BDEPEND="
-	>=dev-util/gdbus-codegen-2.51.2
+	>=dev-util/gdbus-codegen-2.80.5-r1
 	dev-util/glib-utils
 	dev-util/wayland-scanner
 	doc? (

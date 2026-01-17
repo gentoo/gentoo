@@ -1,8 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby31 ruby32 ruby33 ruby34"
+
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -21,5 +22,8 @@ SLOT="2"
 KEYWORDS="~amd64 ~riscv"
 
 all_ruby_prepare() {
+	sed -e '/has_rdoc/ s:^:#:' \
+		-i ${RUBY_FAKEGEM_GEMSPEC} || die
+
 	sed -i -e '/simplecov/,/^end/ s:^:#:' spec/spec_helper.rb || die
 }

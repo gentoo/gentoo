@@ -10,6 +10,7 @@
 		Parsers can be built using Applicative interface.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">UnkindPartition/regex-applicative</remote-id>
+		<remote-id type="hackage">regex-applicative</remote-id>
+		<remote-id type="github">feuerbach/regex-applicative</remote-id>
 	</upstream>
 </pkgmetadata>

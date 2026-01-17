@@ -1,0 +1,83 @@
+From 6f343c854d9f19d9fb625456e87da01a760d80fe Mon Sep 17 00:00:00 2001
+From: Wolfgang Reissenberger <wreissen@gmx.de>
+Date: Mon, 5 Jan 2026 09:53:04 +0000
+Subject: [PATCH] Bugfix for OpenSuSE build
+
+Weakness in Eigen call fixed
+---
+ Tests/kstars_ui/test_ekos_helper.h                 | 14 +++++++++++++-
+ datahandlers/ksparser.cpp                          |  4 ++--
+ .../MPI_IS_gaussian_process/src/math_tools.cpp     |  2 +-
+ 3 files changed, 16 insertions(+), 4 deletions(-)
+
+diff --git a/Tests/kstars_ui/test_ekos_helper.h b/Tests/kstars_ui/test_ekos_helper.h
+index 4a041ad53f..ab7d35eb2a 100644
+--- a/Tests/kstars_ui/test_ekos_helper.h
++++ b/Tests/kstars_ui/test_ekos_helper.h
+@@ -71,15 +71,27 @@ do {\
+   * @brief Subroutine version of QTRY_TIMEOUT_DEBUG_IMPL
+   * @return false if expression equals false, otherwise continuing
+   */
++#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+ #define KTRY_TIMEOUT_DEBUG_IMPL_SUB(expr, timeoutValue, step)\
+     if (!(expr)) { \
+         QTRY_LOOP_IMPL((expr), (2 * timeoutValue), step);\
+         if (expr) { \
+             QString msg = QString::fromUtf8("QTestLib: This test case check (\"%1\") failed because the requested timeout (%2 ms) was too short, %3 ms would have been sufficient this time."); \
+-            msg = msg.arg(QString::fromUtf8(#expr)).arg(timeoutValue).arg(timeoutValue + qt_test_i); \
++            msg = msg.arg(QString::fromUtf8(#expr)).arg(timeoutValue + qt_test_i); \
+             KVERIFY2_SUB(false, qPrintable(msg)); \
+         } \
+     }
++#else
++#define KTRY_TIMEOUT_DEBUG_IMPL_SUB(expr, timeoutValue, step)\
++    if (!(expr)) { \
++        QTRY_LOOP_IMPL((expr), (2 * timeoutValue), step);\
++        if (expr) { \
++            QString msg = QString::fromUtf8("QTestLib: This test case check (\"%1\") failed because the requested timeout (%2 ms) was too short, %3 ms would have been sufficient this time."); \
++            msg = msg.arg(QString::fromUtf8(#expr)).arg(timeoutValue + static_cast<int>(qt_test_i.count())); \
++            KVERIFY2_SUB(false, qPrintable(msg)); \
++        } \
++    }
++#endif
+ 
+ /**
+   * @brief Subroutine version of QTRY_IMPL
+diff --git a/datahandlers/ksparser.cpp b/datahandlers/ksparser.cpp
+index 0cce622101..e44c14cb05 100644
+--- a/datahandlers/ksparser.cpp
++++ b/datahandlers/ksparser.cpp
+@@ -66,7 +66,7 @@ QHash<QString, QVariant> KSParser::ReadCSVRow()
+     while (file_reader_.hasMoreLines() && read_success == false)
+     {
+         next_line = file_reader_.readLine();
+-        if (next_line.mid(0, 1)[0] == comment_char_)
++        if (next_line.isEmpty() || next_line.mid(0, 1)[0] == comment_char_)
+             continue;
+         separated = next_line.split(delimiter_);
+         /*
+@@ -155,7 +155,7 @@ QHash<QString, QVariant> KSParser::ReadFixedWidthRow()
+          *             conversion
+         */
+         next_line = file_reader_.readLine();
+-        if (next_line.mid(0, 1)[0] == comment_char_)
++        if (next_line.isEmpty() || next_line.mid(0, 1)[0] == comment_char_)
+             continue;
+         if (next_line.length() < total_min_length)
+             continue;
+diff --git a/kstars/ekos/guide/internalguide/MPI_IS_gaussian_process/src/math_tools.cpp b/kstars/ekos/guide/internalguide/MPI_IS_gaussian_process/src/math_tools.cpp
+index 9f8b2b7be2..82cfb327ba 100644
+--- a/kstars/ekos/guide/internalguide/MPI_IS_gaussian_process/src/math_tools.cpp
++++ b/kstars/ekos/guide/internalguide/MPI_IS_gaussian_process/src/math_tools.cpp
+@@ -72,7 +72,7 @@ Eigen::MatrixXd squareDistance(const Eigen::MatrixXd &a, const Eigen::MatrixXd &
+     return
+         ((am.array().square().colwise().sum().transpose().rowwise().replicate(bCols).matrix()
+           + bm.array().square().colwise().sum().colwise().replicate(aCols).matrix())
+-         - 2 * (am.transpose()) * bm).array().max(0);
++         - 2 * (am.transpose()) * bm).array().max(0.0);
+ 
+     /* // verbose version
+     Eigen::MatrixXd a_square =
+-- 
+GitLab
+

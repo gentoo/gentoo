@@ -22,7 +22,7 @@ CMAKE_QA_COMPAT_SKIP=1 # bug #964514; cmake itself is the last pkg we worry abou
 # ... but seems fine as of 3.22.3?
 # TODO ... but bootstrap sometimes(?) fails with ninja now. bug #834759.
 CMAKE_MAKEFILE_GENERATOR="emake"
-CMAKE_REMOVE_MODULES_LIST=( none )
+CMAKE_REMOVE_MODULES_LIST=()
 inherit bash-completion-r1 cmake flag-o-matic multiprocessing \
 	toolchain-funcs xdg-utils
 

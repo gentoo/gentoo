@@ -1,4 +1,4 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -320,6 +320,7 @@ BDEPEND="
 	virtual/pkgconfig
 	amd64? ( dev-lang/nasm )
 	cuda? ( llvm-core/clang:*[llvm_targets_NVPTX] )
+	vulkan? ( media-libs/shaderc )
 	${FFMPEG_UNSLOTTED:+"
 		dev-lang/perl
 		doc? ( sys-apps/texinfo )

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -256,6 +256,8 @@ src_install() {
 	${BRANDING_OS_NAME} Base System release ${PV}
 	EOF
 
+	# warning: changes to os-release may require updating the Gentoo
+	# wiki captcha that uses a sha256sum of the 6th line (bug #968834)
 	insinto /usr/lib
 	grep . <<-EOF | newins - os-release
 	${BRANDING_OS_NAME:+NAME=${BRANDING_OS_NAME@Q}}

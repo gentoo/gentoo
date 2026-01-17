@@ -1,4 +1,4 @@
-# Copyright 2007-2024 Gentoo Authors
+# Copyright 2007-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-osgi.eclass
@@ -108,7 +108,7 @@ _java-osgi_makejar() {
 	rm -rf "${_OSGI_T}/tmp_jar"
 }
 
-# @FUNCTION: @java-osgi_dojar
+# @FUNCTION: java-osgi_dojar
 # @USAGE: <jar name> <symbolic name> <bundle name> <header name>
 # @DESCRIPTION:
 # Rewrites a jar, and produce an OSGi compliant jar from arguments given on the command line.

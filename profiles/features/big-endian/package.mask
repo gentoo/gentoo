@@ -84,7 +84,6 @@ games-fps/freedoom
 games-engines/odamex
 games-engines/uzdoom
 games-fps/chocolate-doom
-games-fps/doomsday
 games-fps/gzdoom
 games-fps/freedoom-data
 media-libs/zmusic

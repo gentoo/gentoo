@@ -1,4 +1,4 @@
-# Copyright 2020-2025 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kernel-build.eclass
@@ -37,11 +37,9 @@ if [[ -z ${_KERNEL_BUILD_ECLASS} ]]; then
 _KERNEL_BUILD_ECLASS=1
 
 PYTHON_COMPAT=( python3_{11..14} )
-if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
-	inherit secureboot
-fi
 
-inherit multiprocessing python-any-r1 savedconfig toolchain-funcs kernel-install
+inherit branding multiprocessing python-any-r1 savedconfig secureboot
+inherit toolchain-funcs kernel-install
 
 BDEPEND="
 	${PYTHON_DEPS}
@@ -54,19 +52,12 @@ BDEPEND="
 	virtual/libelf
 	arm? ( sys-apps/dtc )
 	arm64? ( sys-apps/dtc )
+	modules-sign? ( dev-libs/openssl )
 	riscv? ( sys-apps/dtc )
 "
 
-IUSE="+strip"
-
-# @ECLASS_VARIABLE: KERNEL_IUSE_MODULES_SIGN
-# @PRE_INHERIT
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# If set to a non-null value, inherits secureboot.eclass, adds
-# IUSE=modules-sign and required logic to manipulate the kernel
-# config while respecting the MODULES_SIGN_HASH, MODULES_SIGN_CERT,
-# and MODULES_SIGN_KEY  user variables.
+IUSE="+strip modules-sign"
+REQUIRED_USE="secureboot? ( modules-sign )"
 
 # @ECLASS_VARIABLE: MODULES_SIGN_HASH
 # @USER_VARIABLE
@@ -113,18 +104,12 @@ IUSE="+strip"
 # empty, then the contents are used as the first kernel cmdline
 # option of the multi-profile generic UKI. Supplementing the four
 # standard options of:
-# - ro
-# - ro quiet splash
-# - ro lockdown=integrity
-# - ro quiet splash lockdown=integrity
-
-if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
-	IUSE+=" modules-sign"
-	REQUIRED_USE="secureboot? ( modules-sign )"
-	BDEPEND+="
-		modules-sign? ( dev-libs/openssl )
-	"
-fi
+# - quiet
+# - quiet splash
+# - quiet lockdown=integrity
+# - quiet splash lockdown=integrity
+# - emergency
+# - rescue
 
 if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
 	BDEPEND+="
@@ -137,7 +122,7 @@ fi
 # Call python-any-r1 and secureboot pkg_setup
 kernel-build_pkg_setup() {
 	python-any-r1_pkg_setup
-	if [[ ${KERNEL_IUSE_MODULES_SIGN} && ${MERGE_TYPE} != binary ]]; then
+	if [[ ${MERGE_TYPE} != binary ]]; then
 		# inherits linux-info to check config values for keys
 		# ensure KV_FULL will not be set globally, that breaks configure
 		local KV_FULL
@@ -501,16 +486,14 @@ kernel-build_src_install() {
 		dosym "../../../${kernel_dir}/${image_path}" "/lib/modules/${KV_FULL}/vmlinuz"
 	fi
 
-	if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
-		if [[ ${image} == *.gz ]]; then
-			# Backwards compatibility with pre-zboot images
-			gunzip "${image}" || die
-			secureboot_sign_efi_file "${image%.gz}"
-			# Use same gzip options as the kernel Makefile
-			gzip -n -f -9 "${image%.gz}" || die
-		else
-			secureboot_sign_efi_file "${image}"
-		fi
+	if [[ ${image} == *.gz ]]; then
+		# Backwards compatibility with pre-zboot images
+		gunzip "${image}" || die
+		secureboot_sign_efi_file "${image%.gz}"
+		# Use same gzip options as the kernel Makefile
+		gzip -n -f -9 "${image%.gz}" || die
+	else
+		secureboot_sign_efi_file "${image}"
 	fi
 
 	if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
@@ -528,9 +511,10 @@ kernel-build_src_install() {
 				mdraid modsign network network-manager nfs nvdimm nvmf pcsc
 				pkcs11 plymouth qemu qemu-net resume rngd rootfs-block shutdown
 				systemd systemd-ac-power systemd-ask-password systemd-cryptsetup
-				systemd-initrd systemd-integritysetup systemd-pcrphase
-				systemd-sysusers systemd-udevd systemd-veritysetup terminfo
-				tpm2-tss udev-rules uefi-lib usrmount virtiofs
+				systemd-emergency systemd-initrd systemd-integritysetup
+				systemd-pcrphase systemd-sysusers systemd-udevd
+				systemd-veritysetup terminfo tpm2-tss udev-rules uefi-lib
+				usrmount virtiofs
 			)
 
 			local dracut_args=(
@@ -578,13 +562,29 @@ kernel-build_src_install() {
 				$'TITLE=Default with splash\nID=splash'
 				$'TITLE=Default with lockdown\nID=lockdown'
 				$'TITLE=Default with splash and lockdown\nID=splash-lockdown'
+				$'TITLE=Emergency\nID=emergency'
+				$'TITLE=Rescue\nID=rescue'
 			)
 
 			cmdlines+=(
-				"ro"
-				"ro quiet splash"
-				"ro lockdown=integrity"
-				"ro quiet splash lockdown=integrity"
+				"quiet"
+				"quiet splash"
+				"quiet lockdown=integrity"
+				"quiet splash lockdown=integrity"
+				"emergency"
+				"rescue"
+			)
+
+			local os_release=(
+				${BRANDING_OS_NAME+"NAME='${BRANDING_OS_NAME}'"}
+				${BRANDING_OS_ID+"ID='${BRANDING_OS_ID}'"}
+				${BRANDING_OS_ID_LIKE+"ID_LIKE='${BRANDING_OS_ID_LIKE}'"}
+				${BRANDING_OS_HOME_URL+"HOME_URL='${BRANDING_OS_HOME_URL}'"}
+				${BRANDING_OS_SUPPORT_URL+"SUPPORT_URL='${BRANDING_OS_SUPPORT_URL}'"}
+				${BRANDING_OS_BUG_REPORT_URL+"BUG_REPORT_URL='${BRANDING_OS_BUG_REPORT_URL}'"}
+				${BRANDING_OS_VERSION+"VERSION='${BRANDING_OS_VERSION}'"}
+				${BRANDING_OS_VERSION_ID+"VERSION_ID='${BRANDING_OS_VERSION_ID}'"}
+				${BRANDING_OS_PRETTY_NAME+"PRETTY_NAME='${BRANDING_OS_PRETTY_NAME}'"}
 			)
 
 			local ukify_args=(
@@ -594,6 +594,7 @@ kernel-build_src_install() {
 				--output="${image%/*}/uki.efi"
 				--profile="${profiles[0]}"
 				--cmdline="${cmdlines[0]}"
+				--os-release="$(printf '%s\n' "${os_release[@]}")"
 			) # 0th profile is default
 
 			# Additional profiles have to be added with --join-profile
@@ -608,7 +609,7 @@ kernel-build_src_install() {
 				ukify_args+=( --join-profile="${T}/profile${i}.efi" )
 			done
 
-			if [[ ${KERNEL_IUSE_MODULES_SIGN} ]] && use secureboot; then
+			if use secureboot; then
 				# The PCR public key option should contain *only* the
 				# public key, not the full certificate containing the
 				# public key. Bug #960276
@@ -668,23 +669,21 @@ kernel-build_pkg_postinst() {
 	kernel-install_pkg_postinst
 	savedconfig_pkg_postinst
 
-	if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
-		if use modules-sign && [[ -z ${MODULES_SIGN_KEY} ]]; then
-			ewarn
-			ewarn "MODULES_SIGN_KEY was not set, this means the kernel build system"
-			ewarn "automatically generated the signing key. This key was installed"
-			ewarn "in ${EROOT}/usr/src/linux-${KV_FULL}/certs"
-			ewarn "Please take appropriate action to protect the key!"
-			ewarn
-			ewarn "Recompiling this package causes a new key to be generated. As"
-			ewarn "a result any external kernel modules will need to be resigned."
-			ewarn "Use emerge @module-rebuild, or manually sign the modules as"
-			ewarn "described on the wiki [1]"
-			ewarn
-			ewarn "Consider using the MODULES_SIGN_KEY variable to use an external key."
-			ewarn
-			ewarn "[1]: https://wiki.gentoo.org/wiki/Signed_kernel_module_support"
-		fi
+	if use modules-sign && [[ -z ${MODULES_SIGN_KEY} ]]; then
+		ewarn
+		ewarn "MODULES_SIGN_KEY was not set, this means the kernel build system"
+		ewarn "automatically generated the signing key. This key was installed"
+		ewarn "in ${EROOT}/usr/src/linux-${KV_FULL}/certs"
+		ewarn "Please take appropriate action to protect the key!"
+		ewarn
+		ewarn "Recompiling this package causes a new key to be generated. As"
+		ewarn "a result any external kernel modules will need to be resigned."
+		ewarn "Use emerge @module-rebuild, or manually sign the modules as"
+		ewarn "described on the wiki [1]"
+		ewarn
+		ewarn "Consider using the MODULES_SIGN_KEY variable to use an external key."
+		ewarn
+		ewarn "[1]: https://wiki.gentoo.org/wiki/Signed_kernel_module_support"
 	fi
 }
 
@@ -717,7 +716,7 @@ kernel-build_merge_configs() {
 
 	local merge_configs=( "${@}" )
 
-	if [[ ${KERNEL_IUSE_MODULES_SIGN} ]] && use modules-sign; then
+	if use modules-sign; then
 		: "${MODULES_SIGN_HASH:=sha512}"
 		cat <<-EOF > "${WORKDIR}/modules-sign.config" || die
 			## Enable module signing
@@ -755,7 +754,7 @@ kernel-build_merge_configs() {
 		merge_configs+=( "${WORKDIR}/savedconfig.config" )
 	fi
 
-	if [[ ${KERNEL_IUSE_MODULES_SIGN} ]] && use modules-sign; then
+	if use modules-sign; then
 		local modules_sign_key=${MODULES_SIGN_KEY}
 		if [[ -n ${MODULES_SIGN_KEY_CONTENTS} ]]; then
 			modules_sign_key="${T}/kernel_key.pem"

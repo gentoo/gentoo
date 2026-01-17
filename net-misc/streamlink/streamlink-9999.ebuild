@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,7 +38,7 @@ RDEPEND="
 			dev-python/chardet[${PYTHON_USEDEP}]
 			dev-python/charset-normalizer[${PYTHON_USEDEP}]
 		)
-		>=dev-python/requests-2.26.0[${PYTHON_USEDEP}]
+		>=dev-python/requests-2.30.0[${PYTHON_USEDEP}]
 		dev-python/isodate[${PYTHON_USEDEP}]
 		>=dev-python/lxml-4.6.4[${PYTHON_USEDEP}]
 		>=dev-python/websocket-client-1.2.1[${PYTHON_USEDEP}]
@@ -47,7 +47,7 @@ RDEPEND="
 		>dev-python/pysocks-1.5.7-r9999[${PYTHON_USEDEP}]
 		>=dev-python/trio-0.22.0[${PYTHON_USEDEP}]
 		>=dev-python/trio-websocket-0.9.0[${PYTHON_USEDEP}]
-		>=dev-python/urllib3-1.26.0[${PYTHON_USEDEP}]
+		>=dev-python/urllib3-2.0.0[${PYTHON_USEDEP}]
 	')
 "
 BDEPEND="

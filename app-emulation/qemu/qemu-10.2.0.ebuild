@@ -295,6 +295,7 @@ BDEPEND="
 	dev-python/distlib[${PYTHON_USEDEP}]
 	dev-lang/perl
 	>=dev-build/meson-0.63.0
+	>=dev-util/gdbus-codegen-2.80.5-r1
 	app-alternatives/ninja
 	virtual/pkgconfig
 	doc? (

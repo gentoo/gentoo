@@ -1,0 +1,25 @@
+diff --git a/configure.ac b/configure.ac
+index 6c7cae8a..dafcf606 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -275,8 +275,6 @@ AS_IF([test "$GNUTLS_LIBS" != ""],[
+         [tls_priority=$withval],
+         [tls_priority=NORMAL])
+     AC_MSG_RESULT([$tls_priority])
+-    AC_DEFINE_UNQUOTED([TLS_PRIORITY],["$tls_priority"],
+-                       [Default TLS session priority string])
+ 
+     # Check for working <gnutls/socket.h>.  This is only needed for
+     # gnutls 3.7.9 and no other version (unfortunately used by Debian
+@@ -299,6 +297,11 @@ AS_IF([test "$GNUTLS_LIBS" != ""],[
+     LIBS="$old_LIBS"
+ ])
+ 
++dnl Define unconditionally because TLS_PRIORITY must be defined to
++dnl compile, even if GNUTLS support isn't enabled
++AC_DEFINE_UNQUOTED([TLS_PRIORITY],["$tls_priority"],
++                   [Default TLS session priority string])
++
+ dnl certtool (part of GnuTLS) for testing TLS with certificates.
+ dnl macOS has its own program called certtool and packages the
+ dnl GnuTLS tool as "gnutls-certtool".

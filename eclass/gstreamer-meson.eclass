@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gstreamer-meson.eclass
@@ -13,7 +13,7 @@
 # foser <foser@gentoo.org>
 # zaheerm <zaheerm@gentoo.org>
 # Steven Newbury
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 8
 # @PROVIDES: meson multilib-minimal
 # @BLURB: Helps building core & split gstreamer plugins
 # @DESCRIPTION:
@@ -28,18 +28,16 @@
 # also list any packages that provide explicitly requested plugins.
 
 case "${EAPI:-0}" in
-	7|8)
+	8)
 		;;
 	*)
 		die "EAPI=\"${EAPI}\" is not supported"
 		;;
 esac
 
-PYTHON_COMPAT=( python3_{10..13} )
-[[ ${EAPI} == 8 ]] && inherit python-any-r1
-
 # multilib-minimal goes last
-inherit meson multilib toolchain-funcs xdg-utils multilib-minimal
+PYTHON_COMPAT=( python3_{11..14} )
+inherit python-any-r1 meson multilib toolchain-funcs xdg-utils multilib-minimal
 
 # @ECLASS_VARIABLE: GST_PLUGINS_ENABLED
 # @DESCRIPTION:
@@ -199,19 +197,13 @@ S="${WORKDIR}/${GST_ORG_MODULE}-${PV}"
 LICENSE="GPL-2"
 SLOT="1.0"
 
-if ver_test ${GST_ORG_PVP} -ge 1.24 ; then
-	GLIB_VERSION=2.64.0
-else
-	GLIB_VERSION=2.62.0
-fi
-
 RDEPEND="
-	>=dev-libs/glib-${GLIB_VERSION}:2[${MULTILIB_USEDEP}]
+	>=dev-libs/glib-2.64.0:2[${MULTILIB_USEDEP}]
 "
 BDEPEND="
+	${PYTHON_DEPS}
 	virtual/pkgconfig
 "
-[[ ${EAPI} == 8 ]] && BDEPEND="${BDEPEND} ${PYTHON_DEPS}"
 # gst-plugins-{base,good} splits all require glib-utils due to gnome.mkenums_simple meson calls in gst-libs
 # The alternative would be to patch out the subdir calls, but some packages need it themselves too anyways, thus
 # something in a full upgrade path will require it anyways at build time, so not worth the risk.
@@ -457,7 +449,6 @@ gstreamer_multilib_src_compile() {
 # @FUNCTION: gstreamer-meson_pkg_setup
 # @DESCRIPTION:
 # Proxies python-any-r1_pkg_setup for forward-proofing any future pkg_setup needs.
-# Only exported for EAPI-8.
 gstreamer-meson_pkg_setup() {
 	python-any-r1_pkg_setup
 }
@@ -498,16 +489,12 @@ gstreamer_multilib_src_install_all() {
 	for plugin_dir in ${GST_PLUGINS_BUILD_DIR} ; do
 		local dir=$(gstreamer_get_plugin_dir ${plugin_dir})
 		[[ -e ${dir}/README ]] && dodoc "${dir}"/README
-		if [[ ${EAPI} == 8 ]]; then
-			local presets=( "${dir}"/*.prs )
-			if [[ -e ${presets[0]} ]]; then
-				insinto /usr/share/gstreamer-${SLOT}/presets
-				doins "${presets[@]}"
-			fi
+		local presets=( "${dir}"/*.prs )
+		if [[ -e ${presets[0]} ]]; then
+			insinto /usr/share/gstreamer-${SLOT}/presets
+			doins "${presets[@]}"
 		fi
 	done
 }
 
-if [[ ${EAPI} == 8 ]]; then
-	EXPORT_FUNCTIONS pkg_setup
-fi
+EXPORT_FUNCTIONS pkg_setup

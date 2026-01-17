@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit cmake flag-o-matic toolchain-funcs xdg-utils
+PYTHON_COMPAT=( python3_{11..14} )
+inherit cmake flag-o-matic python-any-r1 toolchain-funcs xdg-utils
 
 if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
@@ -17,7 +18,7 @@ else
 	SRC_URI="https://poppler.freedesktop.org/${P}.tar.xz"
 	SRC_URI+=" test? ( https://gitlab.freedesktop.org/poppler/test/-/archive/${TEST_COMMIT}/test-${TEST_COMMIT}.tar.bz2 -> ${PN}-test-${TEST_COMMIT}.tar.bz2 )"
 	SRC_URI+=" verify-sig? ( https://poppler.freedesktop.org/${P}.tar.xz.sig )"
-	# KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
 	SLOT="0/156"   # CHECK THIS WHEN BUMPING!!! SUBSLOT IS libpoppler.so SOVERSION
 fi
 
@@ -55,6 +56,7 @@ DEPEND="${COMMON_DEPEND}
 	test? ( qt6? ( dev-qt/qtbase:6[widgets] ) )
 "
 BDEPEND="
+	${PYTHON_DEPS}
 	>=dev-util/glib-utils-2.64
 	virtual/pkgconfig
 "
@@ -69,6 +71,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-qt-deps.patch"
 	"${FILESDIR}/${P}-respect-cflags.patch"
 	"${FILESDIR}/${PN}-0.57.0-disable-internal-jpx.patch"
+	"${FILESDIR}/${PN}-26.01.0-gcc16-include-climits.patch"
 )
 
 src_unpack() {

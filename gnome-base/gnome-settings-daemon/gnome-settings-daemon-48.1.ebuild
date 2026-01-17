@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -70,7 +70,7 @@ RDEPEND="${COMMON_DEPEND}
 BDEPEND="
 	sys-kernel/linux-headers
 	dev-util/glib-utils
-	dev-util/gdbus-codegen
+	>=dev-util/gdbus-codegen-2.80.5-r1
 	${PYTHON_DEPS}
 	test? (
 		dev-util/umockdev

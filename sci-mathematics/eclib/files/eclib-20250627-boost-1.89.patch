@@ -1,0 +1,60 @@
+From 26a999f39b21f644c6a458cfa51a4786596e760f Mon Sep 17 00:00:00 2001
+From: John Cremona <john.cremona@gmail.com>
+Date: Wed, 22 Oct 2025 14:42:50 +0100
+Subject: [PATCH] Fix build w/ boost-1.89
+
+asturm 2026-01-14:
+This is a combination of upstream git master commits, disregarding changes
+in .gitignore and removal of then unused m4/ax_boost_system.m4:
+
+updated boost configuration
+5918854e6a2d7ad9abfa671034b0ea0ebf7515f0
+
+updated boost configuration again
+0f44970b8cee023ad8f53663c97660e0c3b039ef
+
+updated boost configuration again
+31cb6092cde97a18c9517e5b65ff96ebdf942543
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ configure.ac | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 5b77908..20dd090 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -67,13 +67,17 @@ AX_CXX_COMPILE_STDCXX([17],,mandatory)
+ #
+ # Boost 1.35.0+ required for Asio (1.25.0 for Thread)
+ AX_BOOST_BASE([1.35.0], [
+-AX_BOOST_SYSTEM
++#AX_BOOST_SYSTEM
+ AX_BOOST_ASIO
+ AX_BOOST_THREAD
+ ])
+ 
+-if [test "$ax_cv_boost_system" = "yes"] &&
+-   [test "$ax_cv_boost_asio"   = "yes"] &&
++#BOOST_REQUIRE([1.35.0])
++
++#if [test "$boost" = "yes"]; then
++#   AC_DEFINE([ECLIB_MULTITHREAD],[1],[Define if multithreading available and requested])
++#fi
++if [test "$ax_cv_boost_asio"   = "yes"] &&
+    [test "$ax_cv_boost_thread" = "yes"]; then
+    AC_DEFINE([ECLIB_MULTITHREAD],[1],[Define if multithreading available and requested])
+ fi
+@@ -81,7 +85,7 @@ fi
+ AX_PTHREAD
+ 
+ # Check for libraries
+-# The following AC_ARG_WITH section were written by Volker Braun
++# The following AC_ARG_WITH section were originally written by Volker Braun
+ 
+ dnl Find PARI
+ AC_ARG_WITH(pari,
+-- 
+2.52.0
+

@@ -1,0 +1,117 @@
+From cfccbc11a92103f5983c8742f797aad100449152 Mon Sep 17 00:00:00 2001
+From: Matt Jolly <kangie@gentoo.org>
+Date: Fri, 16 Jan 2026 19:06:45 +1000
+Subject: [PATCH] update bindgen patch for 144
+
+Signed-off-by: Matt Jolly <kangie@gentoo.org>
+---
+ build/config/rust.gni                 | 11 +++++++++++
+ build/rust/rust_bindgen.gni           | 15 ++++++---------
+ build/rust/rust_bindgen_generator.gni | 22 ++++++++++++++++++----
+ 3 files changed, 35 insertions(+), 13 deletions(-)
+
+diff --git a/build/config/rust.gni b/build/config/rust.gni
+index ef45a4a9a6..31f7b2a753 100644
+--- a/build/config/rust.gni
++++ b/build/config/rust.gni
+@@ -63,6 +63,17 @@ declare_args() {
+   # the bindgen exectuable).
+   rust_bindgen_root = "//third_party/rust-toolchain"
+ 
++  # Directory under which to find one of `libclang.{dll,so}` (a `lib[64]` or
++  # `bin` directory containing the libclang shared library).
++  # We don't need to worry about multlib, but specify the full path here
++  # in case a distribution does.
++  if (host_os == "win") {
++    bindgen_libclang_path = "//third_party/rust-toolchain/bin"
++  } else {
++    bindgen_libclang_path = "//third_party/rust-toolchain/lib"
++  }
++
++
+   # If you're using a Rust toolchain as specified by rust_sysroot_absolute,
+   # set this to the output of `rustc -V`. Changing this string will cause all
+   # Rust targets to be rebuilt, which allows you to update your toolchain and
+diff --git a/build/rust/rust_bindgen.gni b/build/rust/rust_bindgen.gni
+index 05a660ddfc..06b50a53ff 100644
+--- a/build/rust/rust_bindgen.gni
++++ b/build/rust/rust_bindgen.gni
+@@ -17,16 +17,13 @@ if (host_os == "win") {
+   _bindgen_path = "${_bindgen_path}.exe"
+ }
+ 
+-# On Windows, the libclang.dll is beside the bindgen.exe, otherwise it is in
+-# ../lib.
+-_libclang_path = rust_bindgen_root
+-if (!use_chromium_rust_toolchain &&
+-    (current_cpu == "ppc64" || current_cpu == "s390x")) {
+-  _libclang_path = rust_sysroot_absolute + "/lib64"
+-} else if (host_os == "win") {
+-  _libclang_path += "/bin"
++if (clang_base_path != default_clang_base_path && custom_toolchain == "//build/toolchain/linux/unbundle:default") {
++  # Assume that the user has set this up properly, including handling multilib
++  _clang_libpath = clang_base_path + "/include"
++  _clang_ld_libpath  = bindgen_libclang_path
+ } else {
+-  _libclang_path += "/lib"
++  _clang_libpath = clang_base_path + "/lib/clang/" + clang_version
++  _clang_ld_libpath = clang_base_path + "/lib"
+ }
+ 
+ # Template to build Rust/C bindings with bindgen.
+diff --git a/build/rust/rust_bindgen_generator.gni b/build/rust/rust_bindgen_generator.gni
+index 0ddb769276..698cbdcf6a 100644
+--- a/build/rust/rust_bindgen_generator.gni
++++ b/build/rust/rust_bindgen_generator.gni
+@@ -169,7 +169,7 @@ template("rust_bindgen_generator") {
+       "--output",
+       rebase_path(output_file, root_build_dir),
+       "--libclang-path",
+-      rebase_path(_libclang_path, root_build_dir),
++      rebase_path(bindgen_libclang_path, root_build_dir),
+     ]
+ 
+     if (_wrap_static_fns) {
+@@ -190,7 +190,7 @@ template("rust_bindgen_generator") {
+       # point to.
+       args += [
+         "--ld-library-path",
+-        rebase_path(clang_base_path + "/lib", root_build_dir),
++        rebase_path(bindgen_libclang_path, root_build_dir),
+       ]
+     }
+ 
+@@ -233,14 +233,28 @@ template("rust_bindgen_generator") {
+     # says the wrong thing. We point it to our clang's resource dir which will
+     # make it behave consistently with our other command line flags and allows
+     # system headers to be found.
+-    clang_resource_dir =
+-        rebase_path(clang_base_path + "/lib/clang/" + clang_version,
++    if (clang_base_path != default_clang_base_path && custom_toolchain == "//build/toolchain/linux/unbundle:default") {
++      clang_resource_dir =
++            rebase_path(clang_base_path + "/include", root_build_dir)
++    } else {
++       clang_resource_dir =
++            rebase_path(clang_base_path + "/lib/clang/" + clang_version,
+                     root_build_dir)
++    }
+     args += [
+       "-resource-dir",
+       clang_resource_dir,
+     ]
+ 
++    if (custom_toolchain == "//build/toolchain/linux/unbundle:default") {
++      # We need to pass the path to the libstdc++ headers to bindgen so that it
++      # can find them when parsing C++ headers.
++      args += [
++        "-I",
++        rebase_path(clang_base_path + "/include/", root_build_dir),
++      ]
++    }
++
+     if (is_win) {
+       # On Windows we fall back to using system headers from a sysroot from
+       # depot_tools. This is negotiated by python scripts and the result is
+-- 
+2.52.0
+

@@ -1,0 +1,20 @@
+Source: https://gitlab.com/inkscape/libcroco/-/commit/2fb152e7
+
+From 2fb152e7d9928256b75d51a8a139d02186245d34 Mon Sep 17 00:00:00 2001
+From: PBS <pbs3141@googlemail.com>
+Date: Fri, 26 Dec 2025 19:54:03 +0100
+Subject: [PATCH] Fix cmake deprecation warning
+
+---
+ src/3rdparty/libcroco/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/src/3rdparty/libcroco/CMakeLists.txt
++++ b/src/3rdparty/libcroco/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.6)
++cmake_minimum_required(VERSION 3.12)
+ 
+ project(libcroco LANGUAGES C)
+ 
+-- 

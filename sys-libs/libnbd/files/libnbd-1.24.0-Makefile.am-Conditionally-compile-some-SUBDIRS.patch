@@ -1,0 +1,66 @@
+diff --git a/Makefile.am b/Makefile.am
+index d587a092..18df2ad1 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -42,31 +42,50 @@ SUBDIRS = \
+ 	common/utils \
+ 	lib \
+ 	docs \
+-	examples \
+ 	valgrind \
+ 	. \
+ 	tests \
+-	python \
+-	sh \
+ 	info \
+ 	copy \
+ 	dump \
+-	fuse \
+ 	misc \
+-	ublk \
+-	ocaml \
+-	ocaml/examples \
+-	ocaml/tests \
+-	golang \
+-	golang/examples \
+-	rust \
+ 	interop \
+ 	fuzzing \
+ 	bash-completion \
+ 	$(NULL)
+ 
++if HAVE_FUSE
++SUBDIRS += fuse
++endif
++
++if HAVE_UBLK
++SUBDIRS += ublk
++endif
++
++if HAVE_GOLANG
++SUBDIRS += golang
++endif
++
++if HAVE_OCAML
++SUBDIRS += ocaml ocaml/tests
++endif
++
++if HAVE_PYTHON
++SUBDIRS += python sh
++endif
++
++if HAVE_RUST
++SUBDIRS += rust
++endif
++
+ if BUILD_EXAMPLES
+ SUBDIRS += examples
++if HAVE_OCAML
++SUBDIRS += ocaml/examples
++endif
++if HAVE_GOLANG
++SUBDIRS += golang/examples
++endif
+ endif
+ 
+ noinst_SCRIPTS = run

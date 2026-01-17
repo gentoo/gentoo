@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..14} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit autotools bash-completion-r1 dot-a python-single-r1
 
@@ -47,6 +47,7 @@ BDEPEND="dev-lang/perl"
 PATCHES=(
 	"${FILESDIR}/${PN}-1.22.2-build-Remove-automagic-compiling-of-examples.patch"
 	"${FILESDIR}/${PN}-1.22.2-Makefile.am-Conditionally-compile-some-SUBDIRS.patch"
+	"${FILESDIR}/${PN}-1.22.5-which-hunt.patch"
 )
 
 pkg_setup() {
@@ -102,6 +103,9 @@ src_configure() {
 
 src_install() {
 	default
+
+	use fuse || bashcomp_alias nbdsh nbdfuse
+	bashcomp_alias nbdsh nbdublk
 
 	use ocaml && strip-lto-bytecode
 

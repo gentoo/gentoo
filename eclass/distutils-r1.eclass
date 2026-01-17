@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: distutils-r1.eclass
@@ -1288,14 +1288,15 @@ distutils-r1_python_compile() {
 	# we are appending a dynamic component so that
 	# distutils-r1_python_compile can be called multiple
 	# times and don't end up combining resulting packages
+	#
+	# we are no longer adding "parallel" since it is causing too many
+	# issues, including silent miscompilations, and upstream doesn't
+	# address any bugs
 	mkdir -p "${BUILD_DIR}" || die
 	local -x DIST_EXTRA_CONFIG="${BUILD_DIR}/extra-setup.cfg"
 	cat > "${DIST_EXTRA_CONFIG}" <<-EOF || die
 		[build]
 		build_base = ${BUILD_DIR}/build${#DISTUTILS_WHEELS[@]}
-
-		[build_ext]
-		parallel = $(makeopts_jobs "${MAKEOPTS} ${*}")
 	EOF
 
 	if [[ ${DISTUTILS_ALLOW_WHEEL_REUSE} ]]; then

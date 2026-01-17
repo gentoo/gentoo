@@ -1,4 +1,4 @@
-# Copyright 2020-2025 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -53,7 +53,7 @@ BDEPEND="
 	>=dev-build/automake-1.13.4
 	>=sys-devel/gettext-0.18.2
 	virtual/pkgconfig
-	dev-util/gdbus-codegen
+	>=dev-util/gdbus-codegen-2.80.5-r1
 	dev-util/glib-utils
 	dev-util/gtk-doc
 	app-alternatives/yacc

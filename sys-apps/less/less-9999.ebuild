@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,17 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/gwsw/less"
 	inherit git-r3
 else
-	SRC_URI="https://www.greenwoodsoftware.com/less/${MY_P}.tar.gz"
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/less.asc
+	inherit verify-sig
+
+	SRC_URI="
+		https://www.greenwoodsoftware.com/less/${MY_P}.tar.gz
+		verify-sig? (
+			https://www.greenwoodsoftware.com/less/${MY_P}.sig -> ${MY_P}.tar.gz.sig
+		)
+	"
+
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-less )"
 
 	if [[ ${PV} != *_beta* ]] ; then
 		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
@@ -42,7 +52,7 @@ DEPEND="
 	pcre? ( dev-libs/libpcre2 )
 "
 RDEPEND="${DEPEND}"
-BDEPEND="test? ( virtual/pkgconfig )"
+BDEPEND+=" test? ( virtual/pkgconfig )"
 
 src_prepare() {
 	default

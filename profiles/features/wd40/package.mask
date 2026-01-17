@@ -426,7 +426,6 @@ net-dns/pdns-recursor
 net-im/gajim
 >=net-irc/polari-3.37
 net-libs/quiche
-net-misc/electrum-ltc
 net-misc/streamlink
 net-news/newsboat
 net-p2p/deluge

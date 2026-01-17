@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,7 +22,7 @@ BDEPEND="
 	app-text/docbook-xml-dtd:4.2
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
-	dev-util/gdbus-codegen
+	>=dev-util/gdbus-codegen-2.80.5-r1
 	gtk-doc? ( >=dev-util/gtk-doc-1.15 )
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig

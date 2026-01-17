@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>douglarek@gmail.com</email>
+		<name>Leo Douglas</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>soap@gentoo.org</email>
+		<name>David Seifert</name>
+	</maintainer>
+	<use>
+		<flag name="egl">Use EGL for smooth rendering on high refresh rate monitors</flag>
+		<flag name="wayland">Run in wayland mode under wayland sessions, xwayland otherwise. This flag doesn't affect x11 sessions.</flag>
+	</use>
+</pkgmetadata>

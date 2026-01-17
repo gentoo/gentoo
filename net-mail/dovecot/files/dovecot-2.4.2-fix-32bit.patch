@@ -1,0 +1,28 @@
+https://bugs.gentoo.org/967978#c20
+https://github.com/dovecot/pigeonhole/commit/82e3d905d68723f6477619ebb0a642ffe7f126bc
+
+From 82e3d905d68723f6477619ebb0a642ffe7f126bc Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <timo.sirainen@open-xchange.com>
+Date: Wed, 29 Oct 2025 13:27:21 +0200
+Subject: [PATCH] lib-sieve: plugins: extlists: Fix max_lookup_size setting
+ type
+
+It failed with compiler error on 32bit systems.
+---
+ src/lib-sieve/plugins/extlists/ext-extlists-settings.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/lib-sieve/plugins/extlists/ext-extlists-settings.h b/src/lib-sieve/plugins/extlists/ext-extlists-settings.h
+index 142598a6..82ab593c 100644
+--- a/src/lib-sieve/plugins/extlists/ext-extlists-settings.h
++++ b/src/lib-sieve/plugins/extlists/ext-extlists-settings.h
+@@ -12,7 +12,7 @@ struct ext_extlists_list_settings {
+ 
+ 	const char *name;
+ 	/* Maximum size of lookup value */
+-	size_t max_lookup_size;
++	uoff_t max_lookup_size;
+ 
+ 	struct {
+ 		const char *name;
+

@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -20,7 +20,7 @@ RUBY_S="rspec-${PN}-v${PV}/${PN}"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos ~x64-solaris"
 IUSE="test"
 
 SUBVERSION="$(ver_cut 1-2)"
@@ -49,4 +49,8 @@ all_ruby_prepare() {
 	sed -i -e '1irequire "spec_helper"' spec/rspec/mocks/any_instance_spec.rb || die
 
 	sed -i -e 's/git ls-files --/find */' ${RUBY_FAKEGEM_GEMSPEC} || die
+
+	# Avoid spec failing due to different but (also) correct exception in ruby40
+	sed -e '/does not result in infinite recursion when `respond_to?` is stubbed/ s/it/xit/' \
+		-i spec/rspec/mocks/matchers/receive_spec.rb || die
 }

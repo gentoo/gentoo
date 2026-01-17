@@ -1,0 +1,74 @@
+From dd22b357e8f5a6c70d4a96e122e333058268a293 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Mon, 12 Jan 2026 22:14:33 +0100
+Subject: [PATCH] gcc16 include climits
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+poppler-26.01.0/poppler/SplashOutputDev.cc: In constructor
+‘T3FontCache::T3FontCache(const Ref*, double, double, double, double, int, int,
+int, int, bool, bool)’:
+poppler-26.01.0/poppler/SplashOutputDev.cc:1129:18: error: ‘INT_MAX’ was not
+declared in this scope
+1129 |     if (glyphW > INT_MAX / glyphH || glyphW <= 0 || glyphH <= 0 ||
+glyphW * glyphH > 100000) {
+      |                  ^~~~~~~
+poppler-26.01.0/poppler/SplashOutputDev.cc:84:1: note: ‘INT_MAX’ is defined in
+header ‘<climits>’; this is probably fixable by adding ‘#include <climits>’
+   83 | #include "SplashOutputDev.h"
+  +++ |+#include <climits>
+   84 | #include <algorithm>
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/poppler/Function.cc b/poppler/Function.cc
+index 313b58d..60d535e 100644
+--- a/poppler/Function.cc
++++ b/poppler/Function.cc
+@@ -30,6 +30,7 @@
+ 
+ #include <config.h>
+ 
++#include <climits>
+ #include <cstdlib>
+ #include <cstring>
+ #include <cctype>
+diff --git a/poppler/Gfx.cc b/poppler/Gfx.cc
+index 2436159..e24f414 100644
+--- a/poppler/Gfx.cc
++++ b/poppler/Gfx.cc
+@@ -60,6 +60,7 @@
+ 
+ #include <config.h>
+ 
++#include <climits>
+ #include <cstdlib>
+ #include <cstdio>
+ #include <cstring>
+diff --git a/poppler/Parser.cc b/poppler/Parser.cc
+index 415fa5e..cf23d77 100644
+--- a/poppler/Parser.cc
++++ b/poppler/Parser.cc
+@@ -33,6 +33,7 @@
+ 
+ #include <config.h>
+ 
++#include <climits>
+ #include "Object.h"
+ #include "Array.h"
+ #include "Dict.h"
+diff --git a/poppler/SplashOutputDev.cc b/poppler/SplashOutputDev.cc
+index 356c4dd..332afc2 100644
+--- a/poppler/SplashOutputDev.cc
++++ b/poppler/SplashOutputDev.cc
+@@ -53,6 +53,7 @@
+ 
+ #include <config.h>
+ 
++#include <climits>
+ #include <cstring>
+ #include <cmath>
+ #include <vector>
+-- 
+2.52.0

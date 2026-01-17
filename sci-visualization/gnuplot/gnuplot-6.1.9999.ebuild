@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -123,32 +123,37 @@ src_configure() {
 	tc-export_build_env BUILD_CC
 	export CC_FOR_BUILD=${BUILD_CC}
 
-	econf \
-		--with-texdir="${TEXMF}/tex/latex/${PN}" \
-		--with-readline=$(usex readline gnu builtin) \
-		$(use_with amos) \
-		$(use_with bitmap bitmap-terminals) \
-		$(use_with cairo) \
-		$(use_with gd) \
-		$(use_with gpic) \
-		"$(use_with libcaca caca "${EPREFIX}/usr/$(get_libdir)")" \
-		$(use_with libcerf) \
-		$(use_with lua) \
-		$(use_with metafont) \
-		$(use_with metapost) \
-		$(use_with qt6 qt qt6) \
-		$(use_with regis) \
-		$(use_with tgif) \
-		$(use_with X x) \
-		--enable-stats \
-		$(use_enable wxwidgets) \
-		DIST_CONTACT="https://bugs.gentoo.org/" \
+	local myconf=(
+		--with-texdir="${TEXMF}/tex/latex/${PN}"
+		--with-readline=$(usex readline gnu builtin)
+		$(use_with amos)
+		$(use_with bitmap bitmap-terminals)
+		$(use_with cairo)
+		$(use_with gd)
+		$(use_with gpic)
+		"$(use_with libcaca caca "${EPREFIX}/usr/$(get_libdir)")"
+		$(use_with libcerf)
+		$(use_with lua)
+		$(use_with metafont)
+		$(use_with metapost)
+		$(use_with qt6 qt qt6)
+		$(use_with regis)
+		$(use_with tgif)
+		$(use_with X x)
+		--enable-stats
+		$(use_enable wxwidgets)
+		DIST_CONTACT="https://bugs.gentoo.org/"
 		EMACS=no
+	)
+
+	econf "${myconf[@]}"
 }
 
 src_compile() {
-	# Prevent access violations, see bug 201871
-	local -x TEXMFVAR="${T}" TEXMFCACHE="${T}" VARTEXFONTS="${T}/fonts"
+	# Prevent access violations #201871
+	local -x VARTEXFONTS="${T}/fonts"
+	# Work around luatex braindamage #950021
+	local -x TEXMFCACHE="${T}/texmf-var" TEXMFVAR="${T}/texmf-var"
 
 	emake all
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -97,11 +97,8 @@ src_unpack() {
 	fi
 
 	if [[ ${PV} != *_rc* ]] && ! [[ ${MAN_PAGES_GENTOO_DIST} -eq 1 ]] && use verify-sig ; then
-		# Upstream sign the decompressed .tar
-		einfo "Unpacking ${P}.tar.xz ..."
-		verify-sig_verify_detached - "${DISTDIR}"/${P}.tar.sign \
-			< <(xz -cd "${DISTDIR}"/${P}.tar.xz | tee >(tar -xf -))
-		assert "Unpack failed"
+		verify-sig_uncompress_verify_unpack "${DISTDIR}"/${P}.tar.xz \
+			"${DISTDIR}"/${P}.tar.sign
 
 		unpack man-pages-gentoo-${GENTOO_PATCH}.tar.bz2
 	else

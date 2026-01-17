@@ -1,8 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby31 ruby32 ruby33 ruby34"
+
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -27,5 +28,7 @@ IUSE="test"
 ruby_add_bdepend "test? ( dev-ruby/rspec-its )"
 
 all_ruby_prepare() {
-	sed -i -e 's/git ls-files/find */' ${RUBY_FAKEGEM_GEMSPEC} || die
+	sed -e 's/git ls-files/find */' \
+		-e '/has_rdoc/ s:^:#:' \
+		-i ${RUBY_FAKEGEM_GEMSPEC} || die
 }

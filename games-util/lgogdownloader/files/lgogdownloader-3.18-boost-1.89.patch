@@ -1,0 +1,19 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -10,7 +10,7 @@
+   set(CMAKE_AUTOUIC ON)
+ endif(USE_QT_GUI)
+ 
+-find_package(Boost
++find_package(Boost 1.69.0
+   CONFIG
+   REQUIRED
+   filesystem
+@@ -19,7 +19,6 @@
+   date_time
+   iostreams
+   OPTIONAL_COMPONENTS
+-  system
+   )
+ find_package(CURL 7.55.0 REQUIRED)
+ find_package(Jsoncpp REQUIRED)

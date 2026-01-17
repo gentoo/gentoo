@@ -33,6 +33,11 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/babl-0.1.118-respect-NM.patch
+	"${FILESDIR}"/babl-0.1.118-no-git.patch
+)
+
 src_prepare() {
 	default
 	gnome2_environment_reset

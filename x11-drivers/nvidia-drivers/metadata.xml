@@ -12,10 +12,8 @@
 	<use>
 		<flag name="kernel-open">
 			Use the open source variant of the drivers (only
-			works for Turing/Ampere or newer GPUs, aka GTX 1650+
-			-- recommended with >=560.xx drivers if usable and
-			is *required* for 50xx Blackwell or newer GPUs --
-			always-enabled regardless of USE in >=590.xx)
+			usable with Turing/Ampere or newer GPUs, aka GTX 1650+
+			-- note 50xx Blackwell or newer cards *require* this)
 		</flag>
 		<flag name="persistenced">Install the persistence daemon for keeping devices state when unused (e.g. for headless)</flag>
 		<flag name="powerd">Install the NVIDIA dynamic boost support daemon (only useful with specific laptops, ignore if unsure)</flag>

@@ -6,9 +6,8 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<use>
-		<flag name="gmp">Link against the GMP library for the ultimate performance of
-`zipBits`, `invertBits` and `countBits`. Users are strongly encouraged
-to enable this flag whenever possible.</flag>
+		<flag name="simd">Use a C SIMD implementation for the ultimate performance of `zipBits`, `invertBits` and `countBits`.
+Disable this flag if there are problems with the C FFI.</flag>
 	</use>
 	<upstream>
 		<remote-id type="hackage">bitvec</remote-id>

@@ -1,7 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+inherit autotools
 
 DESCRIPTION="Replays or streams an access_log as a retro arcade game-like simulation"
 HOMEPAGE="https://logstalgia.io/"
@@ -22,12 +24,16 @@ RDEPEND="
 	media-libs/sdl2-image[jpeg,png]
 	virtual/glu
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}
 	media-libs/glm
 "
-BDEPEND="
-	virtual/pkgconfig
-"
+BDEPEND="virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}/${P}-boost-1.89.patch" ) # bug 964296
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 DOCS=( ChangeLog INSTALL README THANKS )

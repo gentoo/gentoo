@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -44,7 +44,7 @@ multilib_src_configure() {
 multilib_src_install() {
 	emake DESTDIR="${D}" install
 	# always strip due to libbsd-ctor.a
-	strip-lto-bytecode #"${ED}"
+	strip-lto-bytecode "${ED}"
 
 	find "${ED}" -type f -name "*.la" -delete || die
 

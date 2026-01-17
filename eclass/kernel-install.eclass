@@ -1,4 +1,4 @@
-# Copyright 2020-2025 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kernel-install.eclass
@@ -482,12 +482,10 @@ kernel-install_test() {
 			;;
 	esac
 
-	if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
-		# If KERNEL_IUSE_MODULES_SIGN, but no IUSE=modules-sign,
-		# then this is gentoo-kernel-bin test phase with signed mods.
-		if ! in_iuse modules-sign || use modules-sign; then
-			qemu_extra_append+=" module.sig_enforce=1"
-		fi
+	# If no IUSE=modules-sign, then this is gentoo-kernel-bin test
+	# phase with signed mods.
+	if ! in_iuse modules-sign || use modules-sign; then
+		qemu_extra_append+=" module.sig_enforce=1"
 	fi
 
 	cat > run.sh <<-EOF || die
@@ -692,7 +690,9 @@ kernel-install_extract_from_uki() {
 		)
 
 		# Check if there was a padding warning
-		if [[ ${sbverify_err} == "warning: data remaining"*": gaps between PE/COFF sections?"* ]]
+		if [[ ${?} -eq 0 ]]; then
+			sbverify_err=
+		elif [[ ${sbverify_err} == "warning: data remaining"*": gaps between PE/COFF sections?"* ]]
 		then
 			# https://github.com/systemd/systemd/issues/35851
 			local proper_size=${sbverify_err#"warning: data remaining["}

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ SRC_URI+=" https://gentoo.kropotkin.rocks/go-pkgs/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD BSD-2 LGPL-3-with-linking-exception MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 arm ~arm64 ~ppc64 ~riscv x86"
 
 RDEPEND="sys-fs/fuse:0"
 DEPEND="${RDEPEND}"

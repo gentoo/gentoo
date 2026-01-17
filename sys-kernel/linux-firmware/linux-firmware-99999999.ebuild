@@ -47,15 +47,15 @@ BDEPEND="initramfs? ( app-alternatives/cpio )
 #add anything else that collides to this
 RDEPEND="!savedconfig? (
 		redistributable? (
-			!sys-firmware/alsa-firmware[alsa_cards_ca0132]
+			!sys-firmware/alsa-firmware[alsa_cards_ca0132,-deduplicate(-)]
 			!sys-block/qla-fc-firmware
 			!sys-firmware/raspberrypi-wifi-ucode
 		)
 		unknown-license? (
-			!sys-firmware/alsa-firmware[alsa_cards_korg1212]
-			!sys-firmware/alsa-firmware[alsa_cards_maestro3]
-			!sys-firmware/alsa-firmware[alsa_cards_sb16]
-			!sys-firmware/alsa-firmware[alsa_cards_ymfpci]
+			!sys-firmware/alsa-firmware[alsa_cards_korg1212,-deduplicate(-)]
+			!sys-firmware/alsa-firmware[alsa_cards_maestro3,-deduplicate(-)]
+			!sys-firmware/alsa-firmware[alsa_cards_sb16,-deduplicate(-)]
+			!sys-firmware/alsa-firmware[alsa_cards_ymfpci,-deduplicate(-)]
 		)
 	)
 	dist-kernel? (
@@ -289,7 +289,6 @@ src_prepare() {
 }
 
 src_install() {
-
 	local FW_OPTIONS=( "-v" "-j1" )
 	local files_to_keep=
 
@@ -317,8 +316,9 @@ src_install() {
 	einfo "Removing broken symlinks ..."
 	find * -xtype l -print -delete || die
 
-	# remove empty directories, bug #396073
-	find -type d -empty -delete || die
+	# remove empty files and directories, bug #396073
+	# Copy-firmware.sh may have made empty copies of files we removed
+	find -empty -delete || die
 
 	# sanity check
 	if ! ( shopt -s failglob; : * ) 2>/dev/null; then

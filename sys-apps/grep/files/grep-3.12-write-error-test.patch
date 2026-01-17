@@ -1,0 +1,43 @@
+https://cgit.git.savannah.gnu.org/cgit/grep.git/commit/?id=682f7f693d77352e9495978c92037ef28377a024
+
+From 682f7f693d77352e9495978c92037ef28377a024 Mon Sep 17 00:00:00 2001
+From: Jim Meyering <meyering@meta.com>
+Date: Wed, 14 May 2025 10:56:16 -0700
+Subject: tests: write-error-msg: avoid false-failure
+
+* tests/write-error-msg: Do not require that a disk full
+diagnostic include additional information. In some cases, there
+is no valid errno value, so we cannot provide more information.
+This was exposed by a patch that coincidentally caused the length
+of grep's help output to be precisely 4096 bytes long.
+Reported in https://bugs.gnu.org/77800
+---
+ tests/write-error-msg | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
+
+diff --git a/tests/write-error-msg b/tests/write-error-msg
+index 38c4fa0..deb6d09 100755
+--- a/tests/write-error-msg
++++ b/tests/write-error-msg
+@@ -43,7 +43,7 @@ returns_ 2 grep -q --help >/dev/full 2>err3 || fail=1
+ # ensure each error message file contains a 'write error' with additional text
+ for f in err1 err2 err3 ;
+ do
+-    grep -Eiq '^[^:]*: write error: [a-z]+' $f \
++    grep -Eiq '^[^:]*: write error' $f \
+         || {
+              warn_ "incorrect/missing error message in file $f"
+              compare /dev/null $f   # print the content in the logs
+@@ -51,10 +51,4 @@ do
+            }
+ done
+ 
+-# These messages should be identical
+-for f in err2 err3; do
+-  compare err1 $f \
+-    || { warn_ "err1,$f contain different error messages" ; fail=1 ; }
+-done
+-
+ Exit $fail
+-- 
+cgit v1.2.3

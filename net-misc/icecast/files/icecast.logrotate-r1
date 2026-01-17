@@ -1,0 +1,10 @@
+/var/log/icecast/*log {
+	su icecast icecast
+	missingok
+	notifempty
+	sharedscripts
+	postrotate
+	test -e /run/openrc/softlevel && /etc/init.d/icecast reload > /dev/null 2>&1 || true
+	test -e /run/systemd/system && systemctl reload icecast.service > /dev/null 2>&1 || true
+	endscript
+}

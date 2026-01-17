@@ -1,16 +1,26 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit flag-o-matic systemd
+
 if [[ ${PV} == 9999 ]] ; then
 	ESVN_REPO_URI="https://svn.code.sf.net/p/smartmontools/code/trunk/smartmontools"
 	ESVN_PROJECT="smartmontools"
 	inherit autotools subversion
 else
-	SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/smartmontools.asc
+	inherit verify-sig
+
+	SRC_URI="
+		https://downloads.sourceforge.net/${PN}/${P}.tar.gz
+		verify-sig? ( https://downloads.sourceforge.net/${PN}/${P}.tar.gz.asc )
+	"
+
 	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~x64-macos"
+
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-smartmontools )"
 fi
 
 DESCRIPTION="Tools to monitor storage systems to provide advanced warning of disk degradation"
@@ -62,7 +72,7 @@ src_configure() {
 	use static && append-ldflags -static
 	# The build installs /etc/init.d/smartd, but we clobber it
 	# in our src_install, so no need to manually delete it.
-	myeconfargs=(
+	local myeconfargs=(
 		--with-drivedbdir="${EPREFIX}/var/db/${PN}" #575292
 		--with-initscriptdir="${EPREFIX}/etc/init.d"
 		#--with-smartdscriptdir="${EPREFIX}/usr/share/${PN}"

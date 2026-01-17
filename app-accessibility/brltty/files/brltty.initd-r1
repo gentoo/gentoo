@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command=/bin/brltty
+command_args="--no-daemon --quiet ${EXTRA_OPTS}"
+command_background=true
+pidfile="/run/${RC_SVCNAME}.pid"
+retry="TERM/60/KILL/5"
+
+depend() {
+	after dbus localmount udev
+}

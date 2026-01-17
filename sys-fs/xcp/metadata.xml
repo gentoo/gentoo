@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<name>Florian Schmaus</name>
+		<email>flow@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">tarka/xcp</remote-id>
+	</upstream>
+</pkgmetadata>

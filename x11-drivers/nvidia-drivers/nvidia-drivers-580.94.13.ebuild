@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,7 +30,6 @@ LICENSE="
 SLOT="0/vulkan"
 KEYWORDS="-* ~amd64"
 IUSE="+X abi_x86_32 abi_x86_64 kernel-open persistenced powerd +static-libs +tools wayland"
-REQUIRED_USE="kernel-open? ( modules )"
 
 COMMON_DEPEND="
 	acct-group/video
@@ -574,7 +573,7 @@ pkg_postinst() {
 		ewarn "[2] https://wiki.gentoo.org/wiki/Nouveau"
 	fi
 
-	if use kernel-open && [[ ! -v NV_HAD_KERNEL_OPEN ]]; then
+	if use kernel-open && use modules && [[ ! -v NV_HAD_KERNEL_OPEN ]]; then
 		ewarn "\nOpen source variant of ${PN} was selected, note that it requires"
 		ewarn "Turing/Ampere+ GPUs (aka GTX 1650+). Try disabling if run into issues."
 		ewarn "Also see: ${EROOT}/usr/share/doc/${PF}/html/kernel_open.html"

@@ -1,0 +1,42 @@
+From 3972ac2d1773087fa9cebafebbb94e8e781481ea Mon Sep 17 00:00:00 2001
+From: Oliver Freyermuth <o.freyermuth@googlemail.com>
+Date: Sat, 25 Oct 2025 02:43:17 +0200
+Subject: [PATCH] CMake: synchronize cmake_minimum_required from main
+ CMakeLists.txt (#398)
+
+The examples have been using older cmake_minimum_required,
+given support for versions <3.10 is deprecated since 3.31,
+synchronize the minimum required version from the main CMakeLists.txt
+(version 3.14) into examples and tests.
+
+closes #397
+---
+ example/CMakeLists.txt        | 2 +-
+ example/traits/CMakeLists.txt | 2 +-
+ tests/cmake/CMakeLists.txt    | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+--- a/example/CMakeLists.txt
++++ b/example/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.8)
++cmake_minimum_required(VERSION 3.14)
+ project(jwt-cpp-examples)
+ 
+ if(NOT TARGET jwt-cpp)
+--- a/example/traits/CMakeLists.txt
++++ b/example/traits/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.8)
++cmake_minimum_required(VERSION 3.14)
+ project(jwt-cpp-traits)
+ 
+ if(NOT TARGET jwt-cpp)
+--- a/tests/cmake/CMakeLists.txt
++++ b/tests/cmake/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.8)
++cmake_minimum_required(VERSION 3.14)
+ project(jwt-cpp-installation-tests)
+ 
+ set(TEST CACHE STRING "The test source file to be used")

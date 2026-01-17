@@ -36,6 +36,49 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2026-01-13)
+# LLVM 15 is only required by masked packages.  It will be removed when
+# the reverse dependencies are gone.  Bug #920536.
+<dev-libs/opencl-clang-16
+<dev-ml/llvm-16
+<dev-python/clang-16
+<dev-python/lit-16
+<dev-util/intel-graphics-compiler-2.20
+<dev-util/spirv-llvm-translator-16
+<llvm-core/clang-16
+<llvm-core/clang-common-16
+<llvm-core/clang-toolchain-symlinks-16
+<llvm-core/libclc-16
+<llvm-core/lld-16
+<llvm-core/lld-toolchain-symlinks-16
+<llvm-core/lldb-16
+<llvm-core/llvm-16
+<llvm-core/llvm-common-16
+<llvm-core/llvm-toolchain-symlinks-16
+<llvm-core/llvmgold-16
+<llvm-runtimes/clang-runtime-16
+<llvm-runtimes/compiler-rt-16
+<llvm-runtimes/compiler-rt-sanitizers-16
+<llvm-runtimes/libcxx-16
+<llvm-runtimes/libcxxabi-16
+<llvm-runtimes/libunwind-16
+<llvm-runtimes/openmp-16
+
+# Conrad Kostecki <conikost@gentoo.org> (2026-01-12)
+# Mask legacy intel-compute-runtime because it depends on legacy
+# intel-graphics-compiler, which no longer receives updates,
+# and only supports up to LLVM 15.
+# Bug #920541. Removal on 2026-01-31.
+=dev-libs/intel-compute-runtime-24.35.30872.32-r2
+=dev-libs/intel-compute-runtime-24.35.30872.36
+=dev-util/intel-graphics-compiler-1.0.17791.18-r1
+
+# Michał Górny <mgorny@gentoo.org> (2026-01-11)
+# Boost 1.89 and its reverse dependencies.  Masked for testing.
+# Tracker bug #961524.
+>=dev-libs/boost-1.89
+>=dev-python/scipy-1.17
+
 # Fabian Groffen <grobian@gentoo.org> (2026-01-08)
 # Too many issues already.  Further testing is appreciated, but expect
 # breakage.
@@ -57,11 +100,6 @@ games-fps/gzdoom
 # requires further consideration to determine the correct course of
 # action. Use at your own risk.
 >=app-text/calibre-8.11.0
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-21)
-# Fails to build against Qt 6.10, upstream repository was archived.
-# Bug #966389. Removal on 2026-01-15
-gui-libs/hyprland-qtutils
 
 # Michał Górny <mgorny@gentoo.org> (2025-12-20)
 # Packages that are missing Python 3.12+ support (or in case
@@ -92,25 +130,10 @@ www-client/seamonkey
 ~dev-python/python-tests-3.14.2
 ~dev-python/python-tests-0.3.14.2
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-15)
-# Last release depends on Qt5, upstream appears dormant. Bug #959826
-# Removal on 2026-01-15
-net-misc/electrum-ltc
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-14)
-# Still depends on Qt5 with no upstream activity in years. Bug #960814
-# Removal on 2026-01-15
-media-sound/qmidiroute
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-12-14)
 # Still depends on Qt5 with no upstream porting activity. Bug #960220
 # Removal on 2026-01-15
 media-sound/mp3diags
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-14)
-# Last release depends on Qt5, upstream appears dormant. Bug #950474
-# Removal on 2026-01-15
-media-gfx/luminance-hdr
 
 # Michał Górny <mgorny@gentoo.org> (2025-12-12)
 # Upstream has switched to LLM-first coding which has already caused
@@ -134,27 +157,10 @@ dev-ruby/twitter
 media-libs/libsvgtiny-pixbuf
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-12-07)
-# Last release depends on Qt5, upstream appears dormant. Several
-# alternatives are available in ::gentoo. Bug #967107
-# Removal on 2026-01-15
-games-fps/doomsday
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-07)
-# Depends on PyQt5, stalled porting effort upstream.
-# Needs porting to Python 3.13, but 0.6.5 requires unpackaged dependency.
-# Bugs #948094, #952551. Removal on 2026-01-15
-media-sound/linux-show-player
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-07)
 # IUSE qt5 feature sees no porting effort upstream. 2.4.9-r1 remains
 # available with IUSE qt5 removed. Bug #965503
 # Removal on 2026-01-15
 =media-libs/libffado-2.4.9
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-05)
-# Depends on Qt5, stalled porting effort upstream. Bug #955277
-# Removal on 2026-01-15
-games-engines/qtads
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-12-05)
 # Depends on Qt5, no signs of porting work upstream. Bug #949881

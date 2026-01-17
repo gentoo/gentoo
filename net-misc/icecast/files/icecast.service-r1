@@ -1,0 +1,13 @@
+[Unit]
+Description=An opensource alternative to shoutcast
+After=network.target
+ 
+[Service]
+User=icecast
+Group=icecast
+ExecStart=/usr/bin/icecast -c /etc/icecast2/icecast.xml
+ExecReload=/usr/bin/kill -HUP $MAINPID
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

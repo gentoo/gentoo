@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -44,7 +44,7 @@ else
 		WIREPLUMBER_DOCS_USEFLAG="doc"
 	fi
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 LICENSE="MIT"
@@ -63,7 +63,7 @@ RESTRICT="!test? ( test )"
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-libs/glib
-	dev-util/gdbus-codegen
+	>=dev-util/gdbus-codegen-2.80.5-r1
 	dev-util/glib-utils
 	sys-devel/gettext
 	doc? (

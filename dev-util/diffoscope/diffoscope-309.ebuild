@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ SRC_URI="https://diffoscope.org/archive/${P}.tar.bz2"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~x86"
 IUSE="acl binutils bzip2 libcaca colord cpio +diff docx dtc e2fsprogs file
 find gettext gif gpg haskell hdf5 hex imagemagick iso java llvm lzma
 mono opendocument pascal pdf postscript R rpm sqlite squashfs
