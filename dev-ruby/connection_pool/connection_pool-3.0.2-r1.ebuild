@@ -1,0 +1,30 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+USE_RUBY="ruby32 ruby33 ruby34"
+
+RUBY_FAKEGEM_GEMSPEC="connection_pool.gemspec"
+RUBY_FAKEGEM_RECIPE_TEST="rake"
+RUBY_FAKEGEM_RECIPE_DOC="none"
+RUBY_FAKEGEM_EXTRADOC="Changes.md README.md"
+
+inherit ruby-fakegem
+
+DESCRIPTION="Generic connection pooling for Ruby"
+HOMEPAGE="https://github.com/mperham/connection_pool"
+SRC_URI="https://github.com/mperham/connection_pool/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+
+LICENSE="MIT"
+SLOT="$(ver_cut 1)"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+IUSE="test"
+
+ruby_add_bdepend "test? ( dev-ruby/maxitest >=dev-ruby/minitest-5 )"
+
+all_ruby_prepare() {
+	sed -i -e '/git ls-files/d' connection_pool.gemspec || die
+	sed -i -e '/\(bundler\|standard\|benchmark-ips\)/ s:^:#:' Gemfile Rakefile || die
+	sed -i -e "s/gem 'minitest'/gem 'minitest', '~> 5.0'/" test/helper.rb || die
+}
