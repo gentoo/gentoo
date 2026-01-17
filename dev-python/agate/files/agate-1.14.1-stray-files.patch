@@ -1,0 +1,34 @@
+From d45b6fbd0aa54f433b28119368c990b56d121cb6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 17 Jan 2026 07:56:57 +0100
+Subject: [PATCH] build: Use automatic package discovery to fix stray files
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Switch to using the setuptools automatic package discovery [1] over the
+legacy `find_packages()` logic, in order to avoid installing stray files
+into `site-packages`.  This fixes a regression whereas `agate` started
+installing `docs` and `examples` as top-level Python packages.
+
+Alternative, this could be fixed via extending the `exclude` list to
+include all variations of `docs` and `examples`, but it seems
+unnecessary given that the automatic discovery logic already covers
+excluding these directories and raises an exception if more than one
+top-level package is included in the wheel, therefore reducing the risk
+of future regressions.
+
+[1] https://setuptools.pypa.io/en/latest/userguide/package_discovery.html#automatic-discovery
+
+Signed-off-by: Michał Górny <mgorny@gentoo.org>
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -51,8 +51,5 @@ test = [
+     "pytest-cov",
+ ]
+ 
+-[tool.setuptools.packages.find]
+-exclude = ["benchmarks", "tests", "tests.*"]
+-
+ [tool.isort]
+ line_length = 119
