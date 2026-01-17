@@ -3,5 +3,6 @@ dev-libs/intel-metrics-discovery
 dev-libs/intel-metrics-library
 dev-libs/intel-vc-intrinsics
 dev-libs/level-zero
+dev-libs/metee
 dev-util/intel-graphics-compiler
 dev-util/intel-graphics-system-controller
