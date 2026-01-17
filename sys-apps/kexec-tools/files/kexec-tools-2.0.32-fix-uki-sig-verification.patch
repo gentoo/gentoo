@@ -1,0 +1,55 @@
+From e18a71faae081d075c8d3ec559aa68a59295c739 Mon Sep 17 00:00:00 2001
+From: Pingfan Liu <piliu@redhat.com>
+Date: Fri, 5 Dec 2025 10:05:36 +0800
+Subject: [PATCH] UKI: Fix the size of real payload
+
+According to the PE file specification, each section's SizeOfRawData
+must be a multiple of FileAlignment (usually 512). So when ukify builds
+a UKI image, it pads the kernel image, initrd, etc. with zeros aligned
+to 512 bytes. The actual payload size is recorded in VirtualSize.
+
+Since the checksum includes the trailing zeros, this causes issues when
+loading a signed x86 bzImage, which is stored in the UKI's .linux
+section.
+
+Credit goes to Philipp, who analysed and pointed out this issue to me.
+
+Signed-off-by: Pingfan Liu <piliu@redhat.com>
+Cc: Philipp Rudo <prudo@redhat.com>
+Signed-off-by: Simon Horman <horms@kernel.org>
+---
+ include/pe.h      | 2 +-
+ kexec/kexec-uki.c | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/include/pe.h b/include/pe.h
+index 9ab3e79a..3fb923f1 100644
+--- a/include/pe.h
++++ b/include/pe.h
+@@ -116,7 +116,7 @@ struct section_header {
+ 	char name[8];			/* name or "/12\0" string tbl offset */
+ 	uint32_t virtual_size;		/* size of loaded section in ram */
+ 	uint32_t virtual_address;	/* relative virtual address */
+-	uint32_t raw_data_size;		/* size of the section */
++	uint32_t raw_data_size;		/* size of the section, padding to be multiple of FileAlignment */
+ 	uint32_t data_addr;		/* file pointer to first page of sec */
+ 	uint32_t relocs;		/* file pointer to relocation entries */
+ 	uint32_t line_numbers;		/* line numbers! */
+diff --git a/kexec/kexec-uki.c b/kexec/kexec-uki.c
+index 9888d7ea..fe86d613 100644
+--- a/kexec/kexec-uki.c
++++ b/kexec/kexec-uki.c
+@@ -71,11 +71,11 @@ int uki_image_probe(const char *file_buf, off_t buf_sz)
+ 		if (!strcmp(sect_hdr->name, UKI_LINUX_SECTION)) {
+ 			/* data_addr is relative to the whole file */
+ 			linux_src = (char *)file_buf + sect_hdr->data_addr;
+-			linux_sz = sect_hdr->raw_data_size;
++			linux_sz = sect_hdr->virtual_size;
+ 
+ 		} else if (!strcmp(sect_hdr->name, UKI_INITRD_SECTION)) {
+ 			create_tmpfd(FILENAME_UKI_INITRD, (char *)file_buf + sect_hdr->data_addr,
+-					sect_hdr->raw_data_size, &implicit_initrd_fd);
++					sect_hdr->virtual_size, &implicit_initrd_fd);
+ 		}
+ 		sect_hdr++;
+ 	}
