@@ -1,0 +1,9 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project"><email>ruby@gentoo.org</email></maintainer>
+  <upstream>
+    <remote-id type="github">minitest/minitest-mock</remote-id>
+    <remote-id type="rubygems">minitest-mock</remote-id>
+  </upstream>
+</pkgmetadata>
