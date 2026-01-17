@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,6 @@ DEPEND="!prefix? ( >=sys-kernel/linux-headers-2.6.11 )"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.6-makefile-fixup.patch
 	"${FILESDIR}"/${PN}-1.5.10-disable-tests.patch #519062 #522050
-	"${FILESDIR}"/${PN}-1.5.9-header-extern-c.patch
 	"${FILESDIR}"/${PN}-1.6.3-fix-rpmspec-check.patch
 	"${FILESDIR}"/${PN}-1.6.3-symbols.patch
 	"${FILESDIR}"/${P}-tests.patch
