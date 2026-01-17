@@ -1,10 +1,6 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2024-03-07)
 # This doesn't work yet with musl-1.2.4, bug 906603
 llvm-runtimes/compiler-rt-sanitizers msan
-
-# Sam James <sam@gentoo.org> (2022-10-04)
-# libxcrypt migration isn't yet stable on musl.
-sys-auth/pambase yescrypt
