@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~m68k ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~m68k ppc64 x86"
 IUSE="debug +iconv +lzma test"
 RESTRICT="!test? ( test )"
 
