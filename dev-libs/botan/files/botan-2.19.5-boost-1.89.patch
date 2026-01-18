@@ -1,0 +1,42 @@
+From 7ba456b8eef5e7f43047ebe856357c0fa7629491 Mon Sep 17 00:00:00 2001
+From: Rene Meusel <rene.meusel@rohde-schwarz.com>
+Date: Tue, 19 Jul 2022 15:08:04 +0200
+Subject: [PATCH] stop linking against legacy boost-system library
+
+From Boost 1.69 (released end 2018) libboost_system was just an empty
+stub added for backward compatibility reasons. The actual code is
+header-only since then.
+
+This removes the explicit linkage of libboost_system, effectively
+making Botan incompatible with Boost < 1.69.
+
+asturm 2026-01-18: Reduced to the bits we really need.
+---
+ configure.py                 | 31 +------------------------------
+ doc/building.rst             |  8 --------
+ src/lib/utils/boost/info.txt |  7 ++++++-
+ src/scripts/ci_build.py      | 16 +++++++---------
+ 4 files changed, 14 insertions(+), 48 deletions(-)
+
+diff --git a/configure.py b/configure.py
+index beed9bbc6ff..7a38ae89977 100755
+--- a/configure.py
++++ b/configure.py
+@@ -509,8 +509,6 @@ def process_command_line(args): # pylint: disable=too-many-locals,too-many-state
+                            help=optparse.SUPPRESS_HELP)
+     build_group.add_option('--without-pkg-config', dest='with_pkg_config', action='store_false',
+                            help=optparse.SUPPRESS_HELP)
+-    build_group.add_option('--boost-library-name', dest='boost_libnames', default=[],
+-                           help="file name of some boost library to link", action='append')
+ 
+     docs_group = optparse.OptionGroup(parser, 'Documentation Options')
+ 
+@@ -1926,7 +1897,7 @@ def link_to(module_member_name):
+                         if osinfo.basename not in exceptions:
+                             libs |= set(module_link_to)
+ 
+-        return sorted([adjust_library_name(lib) for lib in libs])
++        return sorted(libs)
+ 
+     def choose_mp_bits():
+         mp_bits = arch.wordsize # allow command line override?

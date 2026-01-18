@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -58,6 +58,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-boost-1.87.patch
 	"${FILESDIR}"/${P}-cloudflare.patch
 	"${FILESDIR}"/${P}-include.patch
+	"${FILESDIR}"/${P}-boost-1.89.patch # bug 964322
 )
 
 python_check_deps() {
