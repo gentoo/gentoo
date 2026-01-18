@@ -1,0 +1,15 @@
+--- ./build.gradle	2024-05-28 12:03:58.076178446 +0200
++++ ./build.gradle.new	2024-05-28 12:04:19.758176406 +0200
+@@ -2112,7 +2112,11 @@
+     dependencies {
+         stubImplementation group: "junit", name: "junit", version: "4.8.2"
+ 
+-        antlr group: "org.antlr", name: "antlr4", version: "4.7.2", classifier: "complete"
++        antlr group: "org.antlr", name: "antlr-tool"
++        antlr group: "org.antlr", name: "antlr-runtime"
++        antlr group: "org.antlr", name: "antlr-runtime-3.5"
++        antlr group: "org.antlr", name: "stringtemplate"
++
+         testImplementation project(":base").sourceSets.test.output
+         implementation project(':base')
+     }
