@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,7 +29,7 @@ else
 	# (normally this would use the same upstream filename)
 	SRC_URI="https://github.com/raspberrypi/firmware/archive/${COMMIT}.tar.gz -> raspberrypi-image-${MY_PV}.tar.gz"
 	S="${WORKDIR}/firmware-${COMMIT}"
-	KEYWORDS="-* ~arm ~arm64"
+	KEYWORDS="-* arm ~arm64"
 fi
 
 LICENSE="GPL-2 raspberrypi-videocore-bin"
