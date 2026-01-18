@@ -1,13 +1,17 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools xdg
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/gnupg.asc
+inherit autotools verify-sig xdg
 
 DESCRIPTION="GNU Privacy Assistant (GPA): a graphical user interface for GnuPG"
 HOMEPAGE="https://gnupg.org/software/gpa/"
-SRC_URI="mirror://gnupg/${PN}/${P}.tar.bz2"
+SRC_URI="
+	mirror://gnupg/${PN}/${P}.tar.bz2
+	verify-sig? ( mirror://gnupg/${PN}/${P}.tar.bz2.sig )
+"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -25,6 +29,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
+	verify-sig? ( sec-keys/openpgp-keys-gnupg )
 "
 
 PATCHES=(
