@@ -9,7 +9,7 @@ SEC_KEYS_VALIDPGPKEYS=(
 
 inherit sec-keys
 
-DESCRIPTION="OpenPGP keys used by Andreas Enge (to sign MPC releases)"
+DESCRIPTION="OpenPGP keys used to sign colordiff releases"
 # https://www.colordiff.org/ -> https://www.sungate.co.uk/?page_id=203
 HOMEPAGE="https://www.sungate.co.uk/?page_id=203"
 SRC_URI="https://www.sungate.co.uk/gpgkey_2013.txt -> ${P}.gpg"
