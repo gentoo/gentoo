@@ -597,12 +597,12 @@ LICENSE+="
 "
 SLOT="0"
 KEYWORDS="~amd64 ~riscv"
-IUSE="man"
+IUSE="man system-sqlite"
 
 # libnghttp2 still bundled
 # https://github.com/alexcrichton/nghttp2-rs/pull/5
 RDEPEND="
-	>=dev-db/sqlite-3.45.3:3
+	system-sqlite? ( >=dev-db/sqlite-3.45.3:3 )
 	net-misc/curl
 "
 DEPEND="${RDEPEND}"
@@ -627,7 +627,7 @@ DOCS=(
 
 pkg_setup() {
 	# libsqlite3-sys https://wiki.gentoo.org/wiki/Project:Rust/sys_crates
-	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+	use system-sqlite && export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 	rust_pkg_setup
 }
 
