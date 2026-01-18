@@ -10,7 +10,7 @@ HOMEPAGE="https://apps.gnome.org/Epiphany/"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -42,6 +42,7 @@ RDEPEND="${DEPEND}
 # appstream-glib needed for appdata.xml gettext translation
 BDEPEND="
 	dev-libs/appstream-glib
+	dev-util/blueprint-compiler
 	dev-python/docutils
 	>=dev-util/gdbus-codegen-2.80.5-r1
 	dev-util/glib-utils
