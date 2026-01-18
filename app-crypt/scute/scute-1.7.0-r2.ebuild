@@ -1,13 +1,18 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/gnupg.asc
+inherit verify-sig
 
 DESCRIPTION="A PKCS #11 module for OpenPGP smartcards"
 HOMEPAGE="http://www.scute.org/"
 SRC_URI="
 	mirror://gnupg/scute/${P}.tar.bz2
-	https://dev.gentoo.org/~soap/distfiles/${P}-manual-eps-images.tar.xz"
+	https://dev.gentoo.org/~soap/distfiles/${P}-manual-eps-images.tar.xz
+	verify-sig? ( mirror://gnupg/scute/${P}.tar.bz2.sig )
+"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -19,19 +24,26 @@ KEYWORDS="~amd64"
 # gpgsm-gencert.sh working (as that's what the documentation describe).
 BDEPEND="
 	>=app-crypt/pinentry-0.7.0
-	>=app-crypt/gnupg-2.0.17-r1[smartcard]"
+	>=app-crypt/gnupg-2.0.17-r1[smartcard]
+"
 DEPEND="
 	>=dev-libs/libgpg-error-1.4
-	>=dev-libs/libassuan-2.0.0:="
+	>=dev-libs/libassuan-2.0.0:=
+"
 RDEPEND="
 	${DEPEND}
-	${BDEPEND}"
+	${BDEPEND}
+"
 BDEPEND+="
-	sys-apps/texinfo"
+	sys-apps/texinfo
+	verify-sig? ( sec-keys/openpgp-keys-gnupg )
+"
 
 PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 
 src_unpack() {
+	use verify-sig && verify-sig_verify_detached "${DISTDIR}"/${P}.tar.bz2{,.sig}
+
 	default
 
 	# have to use pregenerated EPS files required for the texinfo documentation,
