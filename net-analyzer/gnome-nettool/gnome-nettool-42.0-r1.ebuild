@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{10..13} )
 inherit gnome.org gnome2-utils meson python-any-r1 xdg
 
 DESCRIPTION="Graphical front-ends to various networking command-line"
-HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-nettool"
+HOMEPAGE="https://gitlab.gnome.org/Archive/gnome-nettool"
 
 LICENSE="GPL-2"
 SLOT="0"
