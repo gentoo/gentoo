@@ -50,7 +50,7 @@ inherit python-any-r1 readme.gentoo-r1 rust systemd toolchain-funcs virtualx xdg
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://www.chromium.org/"
 PPC64_HASH="a85b64f07b489b8c6fdb13ecf79c16c56c560fc6"
-PATCH_V="${PV%%\.*}"
+PATCH_V="${PV%%\.*}-1"
 COPIUM_COMMIT="bd8cca0b09a9316960853a3150c26e18ed59afd9"
 SRC_URI="https://github.com/chromium-linux-tarballs/chromium-tarballs/releases/download/${PV}/chromium-${PV}-linux.tar.xz
 	!bundled-toolchain? (
@@ -477,7 +477,6 @@ src_prepare() {
 		"${FILESDIR}/${PN}-131-unbundle-icu-target.patch"
 		"${FILESDIR}/${PN}-135-oauth2-client-switches.patch"
 		"${FILESDIR}/${PN}-138-nodejs-version-check.patch"
-		"${FILESDIR}/${PN}-144-bindgen-custom-toolchain.patch"
 		"${FILESDIR}/${PN}-cross-compile.patch"
 	)
 
@@ -549,10 +548,8 @@ src_prepare() {
 		fi
 
 		# Oxidised hacks, let's keep 'em all in one place
-		# Fixes a nightly rust "feature"
-		if [[ ${RUST_SLOT} != 9999 ]]; then
-			PATCHES+=( "${WORKDIR}/copium/cr144-rust-1.86-is-not-nightly--adler2.patch" )
-		fi
+		# "Adler2" is part of the stdlib since Rust 1.86, but it's behind a nightly-only feature flag in GN.
+		PATCHES+=( "${WORKDIR}/copium/cr144-rust-1.86-is-not-nightly--adler2.patch" )
 	fi
 
 	default
