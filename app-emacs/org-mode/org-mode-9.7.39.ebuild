@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ if [[ "${PV}" == 9999 ]] ; then
 else
 	# git archive --prefix=${P}/ release_${PV} | xz > ${P}.tar.xz
 	SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~riscv ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ppc ~riscv x86"
 fi
 
 LICENSE="GPL-3+ FDL-1.3+ CC-BY-SA-3.0 odt-schema? ( OASIS-Open )"
