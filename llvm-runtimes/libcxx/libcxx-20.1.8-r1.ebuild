@@ -145,6 +145,12 @@ multilib_src_configure() {
 		# this is broken with standalone builds, and also meaningless
 		-DLIBCXXABI_USE_LLVM_UNWINDER=OFF
 	)
+	if ! has_version -b sys-devel/gcc; then
+		# Since this package is merged before llvm-runtimes/clang-stdlib-config,
+		# clang will attempt to use libstdc++ for the C++ compiler check, and will
+		# fail if it is missing.
+		mycmakeargs+=( -DCMAKE_CXX_COMPILER_WORKS=1 )
+	fi
 	if is_crosspkg; then
 		# Needed to target built libc headers
 		local -x CFLAGS="${CFLAGS} -isystem ${ESYSROOT}/usr/${CTARGET}/usr/include"
