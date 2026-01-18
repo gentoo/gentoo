@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: vala.eclass
@@ -145,6 +145,7 @@ vala_setup() {
 	fi
 
 	export VALAC=$(type -P valac-${version})
+	export VALAC_FOR_BUILD="${VALAC}" # For Meson.
 
 	valafoo=$(type -P vala-gen-introspect-${version})
 	[[ ${valafoo} ]] && export VALA_GEN_INTROSPECT="${valafoo}"
