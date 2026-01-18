@@ -9,6 +9,9 @@
 		<email>dlan@gentoo.org</email>
 		<name>Yixun Lan</name>
 	</maintainer>
+	<use>
+		<flag name="system-sqlite">Use the system SQLite instead of the bundled one[bug#959120]</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">zellij-org/zellij</remote-id>
 	</upstream>
