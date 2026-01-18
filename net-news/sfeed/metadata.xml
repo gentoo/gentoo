@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>cedk@gentoo.org</email>
-		<name>Cédric Krier</name>
-	</maintainer>
 	<maintainer type="person" proxied="yes">
 		<email>nrk@disroot.org</email>
 		<name>NRK</name>
