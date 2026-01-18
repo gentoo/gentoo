@@ -1,0 +1,23 @@
+Source: https://github.com/mogaal/cclive/blob/master/debian/patches/fix-rpath.diff
+
+Description: Do not set rpath
+Author: Ansgar Burchardt <ansgar@debian.org>
+Origin: vendor
+Last-Update: 2013-09-20
+
+Do not set rpath for Boost libraries.  While at it, also disable silent rules
+to make finding problems easier.
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -17,8 +17,8 @@
+ AC_DEFINE_UNQUOTED([CANONICAL_TARGET], "$target", [...])
+ AC_DEFINE_UNQUOTED([CANONICAL_HOST], "$host", [...])
+ 
+-AM_INIT_AUTOMAKE([1.11.1 -Wall -Werror dist-xz no-dist-gzip tar-ustar])
+-AM_SILENT_RULES([yes])
++AM_INIT_AUTOMAKE([1.11.1 -Wall -Werror dist-xz no-dist-gzip tar-ustar subdir-objects])
++AM_SILENT_RULES([no])
+ 
+ # GNU Automake 1.12 requires this macro. Earlier versions do not
+ # recognize this macro. Work around this.

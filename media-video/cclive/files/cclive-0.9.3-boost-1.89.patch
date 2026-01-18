@@ -1,0 +1,10 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -73,7 +73,6 @@
+ BOOST_PROGRAM_OPTIONS
+ BOOST_IOSTREAMS
+ BOOST_FILESYSTEM
+-BOOST_SYSTEM
+ 
+ # Checks for header files.
+ AC_CHECK_HEADERS([sys/ioctl.h unistd.h sys/types.h sys/stat.h signal.h])
