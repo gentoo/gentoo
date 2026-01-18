@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,11 +28,16 @@ RDEPEND="
 	visualizer? ( sci-libs/fftw:3.0= )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	>=dev-build/boost-m4-0.4_p20221019
+	virtual/pkgconfig
+"
 
 DOCS=( CHANGELOG.md README.md )
 
 src_prepare() {
+	rm m4/boost.m4 || die # bug 963730
+
 	default
 	eautoreconf
 
