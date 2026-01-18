@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2026-01-18)
+# Obsolete since Emacs 29, per upstream README.md. Use the "docker"
+# method from the integrated tramp-container package as replacement.
+# Removal on 2026-02-17. Bug #968938.
+app-emacs/docker-tramp
+
 # Michał Górny <mgorny@gentoo.org> (2026-01-13)
 # LLVM 15 is only required by masked packages.  It will be removed when
 # the reverse dependencies are gone.  Bug #920536.
