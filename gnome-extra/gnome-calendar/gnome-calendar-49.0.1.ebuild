@@ -26,6 +26,7 @@ RDEPEND="${DEPEND}"
 BDEPEND="
 	dev-libs/appstream-glib
 	dev-libs/libxml2:2
+	dev-util/blueprint-compiler
 	>=dev-util/gdbus-codegen-2.80.5-r1
 	dev-util/glib-utils
 	>=sys-devel/gettext-0.19.8
