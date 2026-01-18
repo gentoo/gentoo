@@ -1,0 +1,23 @@
+# /etc/conf.d/irkerd: config file for /etc/init.d/irkerd
+
+# Nick-Serv login
+# IRKERD_NICK=""
+
+# Nick-Server password (deprecated in favor of IRKERD_PASSWORD_FILE)
+# IRKERD_PASSWORD=""
+
+# Nick-Server password file (preferred)
+# IRKERD_PASSWORD_FILE=""
+
+# Log file, if none syslog is used (facility daemon)
+# IRKERD_LOGFILE=""
+
+# Debug Level (critical, error, warning, info, debug)
+# IRKERD_LOGLEVEL=""
+
+# To run an anonymous irkerd safely. It should not be able to write to anywhere
+# on your system. If the user is undefined or empty, it defaults to "nobody".
+# IRKERD_USER=""
+
+# see man pages for irkerd for valid cmdline options
+# IRKERD_OPTS=""

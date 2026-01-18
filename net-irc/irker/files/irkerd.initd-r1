@@ -1,0 +1,49 @@
+#!/sbin/openrc-run
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+: "${pidfile:=/run/${RC_SVCNAME}.pid}"
+: "${IRKERD_USER:=nobody}"
+
+depend() {
+        use net
+}
+
+start_pre() {
+	# If the user has specified IRKERD_PASSWORD, let's mask it from
+	# the process table by stashing it in a file and using -P ...
+	# instead.
+	if [ -z "${IRKERD_PASSWORD_FILE}" ] && [ -n "${IRKERD_PASSWORD}" ] ; then
+		checkpath -F -m 0700 -o "${IRKERD_USER}" /run/irkerd.pw || return 1
+		printf "%s" "${IRKERD_PASSWORD}" > /run/irkerd.pw || return 1
+	fi
+}
+
+start() (
+	if [ -n "${IRKERD_LOGFILE}" ] ; then
+		checkpath -f \
+			-o "${IRKERD_USER}" \
+			"${IRKERD_LOGFILE}" \
+			|| return 1
+	fi
+
+	set -f
+	set -- ${IRKERD_OPTS}
+	[ -n "${IRKERD_LOGLEVEL}" ] && set -- "$@" -d "${IRKERD_LOGLEVEL}"
+	[ -n "${IRKERD_LOGFILE}"  ] && set -- "$@" -l "${IRKERD_LOGFILE}"
+	[ -n "${IRKERD_NICK}"     ] && set -- "$@" -n "${IRKERD_NICK}"
+	if [ -n "${IRKERD_PASSWORD_FILE}" ] ; then
+		set -- "$@" -P "${IRKERD_PASSWORD_FILE}"
+	elif [ -n "${IRKERD_PASSWORD}" ] ; then
+		set -- "$@" -P "/run/irkerd.pw"
+	fi
+
+        ebegin "Starting ${RC_SVCNAME}"
+        start-stop-daemon --start \
+                --quiet --background \
+                --user "${IRKERD_USER}" \
+                --make-pidfile --pidfile "${pidfile}" \
+                --exec /usr/bin/irkerd \
+                -- "$@" < /dev/null
+        eend $?
+)
