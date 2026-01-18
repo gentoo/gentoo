@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_GEMSPEC="connection_pool.gemspec"
 RUBY_FAKEGEM_RECIPE_TEST="rake"
@@ -25,6 +25,6 @@ ruby_add_bdepend "test? ( dev-ruby/maxitest >=dev-ruby/minitest-5 )"
 
 all_ruby_prepare() {
 	sed -i -e '/git ls-files/d' connection_pool.gemspec || die
-	sed -i -e '/\(bundler\|standard\|benchmark-ips\)/ s:^:#:' Gemfile Rakefile || die
+	sed -i -e '/\(bundler\|standard\|simplecov\|benchmark-ips\)/ s:^:#:' Gemfile Rakefile || die
 	sed -i -e "s/gem 'minitest'/gem 'minitest', '~> 5.0'/" test/helper.rb || die
 }
