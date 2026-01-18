@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ S="${WORKDIR}"
 
 LICENSE="BSD rpi-eeprom"
 SLOT="0"
-KEYWORDS="-* ~arm ~arm64"
+KEYWORDS="-* arm ~arm64"
 IUSE="pi4 pi5"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
