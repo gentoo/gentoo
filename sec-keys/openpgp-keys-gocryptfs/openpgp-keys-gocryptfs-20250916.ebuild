@@ -13,4 +13,4 @@ DESCRIPTION="OpenPGP keys used to sign gocryptfs"
 HOMEPAGE="https://nuetzlich.net/"
 SRC_URI+="https://nuetzlich.net/gocryptfs-signing-key.pub -> ${PN}-nuetzlich-gocryptfs-signing-key-${PV}.pub"
 
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 ~x86"
