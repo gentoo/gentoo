@@ -19,7 +19,7 @@ else
 	SRC_URI="https://gitlab.com/duplicity/duplicity/-/archive/rel.${PV}/${PN}-rel.${PV}.tar.bz2"
 	S="${WORKDIR}"/${PN}-rel.${PV}
 
-	KEYWORDS="amd64 ~arm64 ~x86 ~x64-macos"
+	KEYWORDS="amd64 ~arm64 x86 ~x64-macos"
 fi
 
 LICENSE="GPL-3"
