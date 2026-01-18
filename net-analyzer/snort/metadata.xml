@@ -22,7 +22,7 @@
 			<email>snort-team@sourcefire.com</email>
 			<name>Snort Team</name>
 		</maintainer>
-		<changelog>http://www.snort.org/snort-downloads</changelog>
+		<changelog>https://www.snort.org/downloads</changelog>
 		<doc>https://snort.org/documents#OfficialDocumentation</doc>
 		<bugs-to>https://snort.org/community#bugs</bugs-to>
 	</upstream>
