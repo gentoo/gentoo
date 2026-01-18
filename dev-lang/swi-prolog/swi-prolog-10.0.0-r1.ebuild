@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ else
 	SRC_URI="https://www.swi-prolog.org/download/stable/src/${REAL_P}.tar.gz"
 	S="${WORKDIR}/${REAL_P}"
 
-	KEYWORDS="~amd64 ~ppc ~x86"
+	KEYWORDS="amd64 ~ppc ~x86"
 fi
 
 LICENSE="BSD-2"
