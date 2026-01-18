@@ -39,7 +39,7 @@ BDEPEND="
 "
 DEPEND="
 	>=dev-libs/glib-2.36:2[${MULTILIB_USEDEP}]
-	>=sys-apps/dbus-1.6:=
+	>=sys-apps/dbus-1.6:=[${MULTILIB_USEDEP}]
 	btpclient? ( >=dev-libs/ell-0.39 )
 	cups? ( net-print/cups:= )
 	mesh? (
