@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ if [[ "${PV}" == *9999* ]] ; then
 else
 	SRC_URI="https://git.savannah.gnu.org/cgit/emms.git/snapshot/${P}.tar.gz"
 
-	KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+	KEYWORDS="amd64 ~ppc ~sparc ~x86"
 fi
 
 LICENSE="GPL-3+ FDL-1.1+"
