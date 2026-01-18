@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -273,7 +273,7 @@ BDEPEND="
 	rust? ( ${RUST_DEPEND} )"
 RDEPEND="
 	app-misc/ca-certificates
-	gpg? ( app-crypt/gnupg )
+	gpg? ( app-alternatives/gpg )
 	tk? ( dev-lang/tk )"
 
 DEPEND="emacs? ( >=app-editors/emacs-23.1:* )
