@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ else
 	# https://community.ardour.org/download?architecture=x86_64&type=source
 	SRC_URI="https://dev.gentoo.org/~fordfrog/distfiles/Ardour-${PV}.0.tar.bz2"
 	S="${WORKDIR}/Ardour-${PV}.0"
-	KEYWORDS="~amd64 ~loong ~x86"
+	KEYWORDS="amd64 ~loong ~x86"
 fi
 
 LICENSE="GPL-2"
