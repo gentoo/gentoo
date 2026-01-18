@@ -1,0 +1,39 @@
+Fixes LTO build
+https://github.com/eggheads/eggdrop/commit/e826fffc93e1dcfaa0e7d23c2a6c8e8c036f0f4b
+
+From e826fffc93e1dcfaa0e7d23c2a6c8e8c036f0f4b Mon Sep 17 00:00:00 2001
+From: Michael Ortmann <41313082+michaelortmann@users.noreply.github.com>
+Date: Thu, 27 Nov 2025 18:56:55 +0100
+Subject: [PATCH] Fix type mismatch
+
+--- a/src/main.c
++++ b/src/main.c
+@@ -83,7 +83,7 @@ extern sigjmp_buf alarmret;
+ time_t now;
+ static int argc;
+ static char **argv;
+-char *argv0;
++const char *argv0;
+ 
+ /*
+  * Please use the PATCH macro instead of directly altering the version
+@@ -471,7 +471,7 @@ static void show_help() {
+          "-t  Don't background; use terminal to simulate DCC chat.\n"
+          "-m  Create userfile.\n"
+          "-h  Show this help and exit.\n"
+-         "-v  Show version info and exit.\n\n", argv[0]);
++         "-v  Show version info and exit.\n\n", argv0);
+   bg_send_quit(BG_ABORT);
+ }
+ 
+--- a/src/modules.c
++++ b/src/modules.c
+@@ -95,7 +95,7 @@ extern time_t now, online_since;
+ extern tand_t *tandbot;
+ extern Tcl_Interp *interp;
+ extern sock_list *socklist;
+-extern char argv0;
++extern const char *argv0;
+ 
+ 
+ int xtra_kill();
