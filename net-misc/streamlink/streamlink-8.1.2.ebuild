@@ -3,11 +3,6 @@
 
 EAPI=8
 
-if [[ ${PV} = 9999* ]]; then
-	EGIT_REPO_URI="https://github.com/streamlink/${PN}.git"
-	inherit git-r3
-fi
-
 DISTUTILS_SINGLE_IMPL=1
 # >= 6.2.1 uses a bunch of setuptools hooks instead of vanilla setuptools
 # https://github.com/streamlink/streamlink/commit/194d9bc193f5285bc1ba33af5fd89209a96ad3a7
@@ -19,15 +14,31 @@ inherit distutils-r1
 DESCRIPTION="CLI for extracting streams from websites to a video player of your choice"
 HOMEPAGE="https://streamlink.github.io/"
 
-if [[ ${PV} != 9999* ]]; then
-	SRC_URI="https://github.com/streamlink/${PN}/releases/download/${PV}/${P}.tar.gz"
+if [[ ${PV} == 9999 ]]; then
+	EGIT_REPO_URI="https://github.com/streamlink/${PN}.git"
+	inherit git-r3
+
+	BDEPEND+="
+		$(python_gen_cond_dep '
+			>=dev-python/versioningit-2.0.0[${PYTHON_USEDEP}]
+		')
+	"
+else
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/streamlink.asc
+	inherit verify-sig
+
+	SRC_URI="
+		https://github.com/streamlink/${PN}/releases/download/${PV}/${P}.tar.gz
+		verify-sig? ( https://github.com/streamlink/${PN}/releases/download/${PV}/${P}.tar.gz.asc )
+	"
+
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+
+	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-streamlink )"
 fi
 
 LICENSE="BSD-2 Apache-2.0"
 SLOT="0"
-if [[ ${PV} != 9999* ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-fi
 
 # See https://github.com/streamlink/streamlink/commit/9d8156dd794ee0919297cd90d85bcc11b8a28358 for chardet/charset-normalizer dep
 RDEPEND="
@@ -50,7 +61,7 @@ RDEPEND="
 		>=dev-python/urllib3-2.0.0[${PYTHON_USEDEP}]
 	')
 "
-BDEPEND="
+BDEPEND+="
 	$(python_gen_cond_dep '
 		>=dev-python/setuptools-77[${PYTHON_USEDEP}]
 		test? (
@@ -60,13 +71,6 @@ BDEPEND="
 		)
 	')
 "
-if [[ ${PV} == 9999* ]]; then
-	BDEPEND+="
-		$(python_gen_cond_dep '
-			>=dev-python/versioningit-2.0.0[${PYTHON_USEDEP}]
-		')
-	"
-fi
 
 EPYTEST_PLUGINS=( pytest-trio freezegun requests-mock )
 
