@@ -33,7 +33,7 @@ BDEPEND="
 	)
 "
 
-LLVM_COMPONENTS=( compiler-rt cmake llvm/cmake llvm-libgcc )
+LLVM_COMPONENTS=( compiler-rt cmake llvm/cmake llvm-libgcc third-party/siphash )
 LLVM_TEST_COMPONENTS=( llvm/include/llvm/TargetParser )
 llvm.org_set_globals
 
