@@ -4,7 +4,9 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
-inherit eapi9-ver flag-o-matic meson python-r1 systemd tmpfiles toolchain-funcs
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/isc.asc
+inherit eapi9-ver flag-o-matic meson python-r1 systemd tmpfiles
+inherit toolchain-funcs verify-sig
 
 DESCRIPTION="High-performance production grade DHCPv4 & DHCPv6 server"
 HOMEPAGE="https://www.isc.org/kea/"
@@ -16,6 +18,7 @@ else
 	SRC_URI="
 		https://downloads.isc.org/isc/kea/${PV}/${P}.tar.xz
 		!doc? ( https://codeberg.org/peter1010/kea-manpages/archive/kea-manpages-${PV}.tar.gz )
+		verify-sig? ( https://downloads.isc.org/isc/kea/${PV}/${P}.tar.xz.asc )
 	"
 	KEYWORDS="amd64 arm arm64 ~x86"
 fi
@@ -50,15 +53,16 @@ RDEPEND="${COMMON_DEPEND}
 	acct-user/dhcp
 "
 BDEPEND="
+	${PYTHON_DEPS}
 	>=dev-build/meson-1.8
+	virtual/pkgconfig
 	doc? (
 		$(python_gen_any_dep '
 			dev-python/sphinx[${PYTHON_USEDEP}]
 			dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]
 		')
 	)
-	virtual/pkgconfig
-	${PYTHON_DEPS}
+	verify-sig? ( sec-keys/openpgp-keys-isc )
 "
 
 PATCHES=(
@@ -73,6 +77,12 @@ python_check_deps() {
 
 pkg_setup() {
 	python_setup
+}
+
+src_unpack() {
+	use verify-sig && verify-sig_verify_detached "${DISTDIR}"/${P}.tar.xz{,.asc}
+
+	default
 }
 
 src_prepare() {
