@@ -3,14 +3,18 @@
 
 EAPI=8
 
-inherit autotools
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/networkmanager-strongswan.asc
+inherit autotools verify-sig
 
 MY_PN="NetworkManager"
 MY_P="${P/networkmanager/"${MY_PN}"}"
 
 DESCRIPTION="NetworkManager StrongSwan plugin"
 HOMEPAGE="https://www.strongswan.org/"
-SRC_URI="https://download.strongswan.org/${MY_PN}/${MY_P}.tar.bz2"
+SRC_URI="
+	https://download.strongswan.org/${MY_PN}/${MY_P}.tar.bz2
+	verify-sig? ( https://download.strongswan.org/${MY_PN}/${MY_P}.tar.bz2.sig )
+"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2+"
@@ -35,6 +39,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-util/intltool
 	virtual/pkgconfig
+	verify-sig? ( sec-keys/openpgp-keys-networkmanager-strongswan )
 "
 
 src_prepare() {
