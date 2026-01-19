@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools systemd linux-info tmpfiles
 
 DESCRIPTION="Robust and highly flexible tunneling application compatible with many OSes"
-HOMEPAGE="https://openvpn.net"
+HOMEPAGE="https://community.openvpn.net/ https://openvpn.net"
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/OpenVPN/${PN}.git"

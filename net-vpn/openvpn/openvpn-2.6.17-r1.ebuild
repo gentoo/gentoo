@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools dot-a systemd linux-info tmpfiles
 
 DESCRIPTION="Robust and highly flexible tunneling application compatible with many OSes"
-HOMEPAGE="https://openvpn.net"
+HOMEPAGE="https://community.openvpn.net/ https://openvpn.net"
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/OpenVPN/${PN}.git"
