@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 GUILE_COMPAT=( 2-2 )
-inherit autotools font guile-single xdg
+inherit autotools flag-o-matic font guile-single xdg
 
 DESCRIPTION="A music notation editor"
 HOMEPAGE="http://www.denemo.org/"
@@ -84,6 +84,7 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cflags -std=gnu17 #967617
 	myeconfargs=(
 		--disable-gtk-doc-pdf
 		--disable-gtk2
