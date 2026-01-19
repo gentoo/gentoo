@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/release-${PV}/${P}.tar
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="ipv6 ldap mysql nagios-dns nagios-ping nagios-game nls postgres radius samba selinux snmp ssh +ssl rpc"
+IUSE="ipv6 ldap mysql nagios-dns nagios-ping nagios-game nls postgres samba selinux snmp ssh +ssl rpc"
 
 # Most of the plugins use automagic dependencies, i.e. the plugin will
 # get built if the binary it uses is installed. For example, check_snmp
@@ -39,8 +39,7 @@ DEPEND="
 	postgres? ( dev-db/postgresql:* )
 	ssl? (
 		dev-libs/openssl:0=
-	)
-	radius? ( net-dialup/freeradius-client )"
+	)"
 
 # Basically everything in net-analyzer/monitoring-plugins collides with
 # nagios-plugins. Perl (from BDEPEND) is needed at runtime, too.
@@ -117,13 +116,16 @@ src_configure() {
 		myconf+=( --with-ping6-command="$(command -v ping6) -n -U -w %d -c %d %s" )
 	fi
 
+	# Radius support has been broken for a long time and causes the build
+	# to fail (bug 957000, but before that too). I would recommend using
+	# net-analyzer/monitoring-plugins if you need check_radius.
 	econf \
 		$(use_with ipv6) \
 		$(use_with ldap) \
 		$(use_with mysql) \
 		$(use_enable nls) \
 		$(use_with postgres pgsql /usr) \
-		$(use_with radius) \
+		--without-radius \
 		"${myconf[@]}" \
 		--libexecdir="/usr/$(get_libdir)/nagios/plugins" \
 		--sysconfdir="/etc/nagios"
