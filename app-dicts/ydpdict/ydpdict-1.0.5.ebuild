@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit autotools
 
-DESCRIPTION="Interface for the Collins Dictionary"
+DESCRIPTION="Translator between english, polish, and german using Collins dictionary"
 HOMEPAGE="https://github.com/wojtekka/ydpdict"
 SRC_URI="https://github.com/wojtekka/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
