@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>kernlpanic@dennis-eisele.de</email>
+		<name>Dennis Eisele</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>rndxelement@protonmail.com</email>
+		<name>Philipp Rösner</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+</pkgmetadata>
