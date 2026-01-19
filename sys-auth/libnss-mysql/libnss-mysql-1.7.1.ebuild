@@ -9,7 +9,7 @@ SRC_URI="https://github.com/saknopper/libnss-mysql/releases/download/v${PV}/libn
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 IUSE="debug"
 
 DEPEND="dev-db/mysql-connector-c:="
