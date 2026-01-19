@@ -9,8 +9,8 @@ SEC_KEYS_VALIDPGPKEYS=(
 
 inherit sec-keys
 
-DESCRIPTION="OpenPGP keys used for OpenVPN releases"
-HOMEPAGE="https://community.openvpn.net/Downloads/Verify%20signature"
+DESCRIPTION="OpenPGP keys used for vsftpd releases"
+HOMEPAGE="https://security.appspot.com/vsftpd.html"
 SRC_URI="https://security.appspot.com/downloads/scarybeasts_gmail_pubkey.gpg -> ${P}-scarybeasts_gmail_pubkey.gpg"
 
 SLOT="0"
