@@ -5,7 +5,7 @@ EAPI="8"
 
 PHP_EXT_S="${S}/extension"
 PHP_EXT_ECONF_ARGS=""
-USE_PHP="php8-2 php8-3 php8-4"
+USE_PHP="php8-2 php8-3 php8-4 php8-5"
 
 inherit php-ext-pecl-r3
 
