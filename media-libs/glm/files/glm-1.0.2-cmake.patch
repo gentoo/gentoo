@@ -1,0 +1,10 @@
+--- a/test/cmake/CMakeLists.txt	2025-12-01 08:31:48.322634537 +0100
++++ b/test/cmake/CMakeLists.txt	2025-12-01 08:32:11.520350583 +0100
+@@ -1,5 +1,5 @@
+-cmake_minimum_required(VERSION 3.6 FATAL_ERROR)
+-cmake_policy(VERSION 3.6)
++cmake_minimum_required(VERSION 3.6...3.14 FATAL_ERROR)
++cmake_policy(VERSION 3.6...3.14)
+ project(test_find_glm)
+ 
+ find_package(glm REQUIRED)
