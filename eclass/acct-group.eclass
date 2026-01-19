@@ -32,6 +32,14 @@
 # time (e.g. 'fowners' uses it in src_install), IDEPEND if it must be
 # resolvable at install time (e.g. 'fowners' uses it in pkg_preinst),
 # and RDEPEND in every case.
+#
+# Additionally, users can be assigned to the group by manually specifying
+# them in ACCT_GROUP_<UPPERCASE_GROUPNAME>_USERS_ADD variable in make.conf.
+# This variable is a space-separated list of usernames to be added to the
+# group.  The eclass will take care of adding the group to the users'
+# supplementary groups during their pkg_postinst phase.  This feature is
+# optional and primarily intended for managing users outside of package
+# manager.
 
 if [[ -z ${_ACCT_GROUP_ECLASS} ]]; then
 _ACCT_GROUP_ECLASS=1
@@ -165,23 +173,38 @@ acct-group_pkg_preinst() {
 
 	if egetent group "${ACCT_GROUP_NAME}" >/dev/null; then
 		elog "Group ${ACCT_GROUP_NAME} already exists"
-		return
+	else
+		local opts=( --system )
+
+		if [[ ${_ACCT_GROUP_ID} -ne -1 ]] &&
+			! egetent group "${_ACCT_GROUP_ID}" >/dev/null
+		then
+			opts+=( --gid "${_ACCT_GROUP_ID}" )
+		fi
+
+		if [[ -n ${ROOT} ]]; then
+			opts+=( --prefix "${ROOT}" )
+		fi
+
+		elog "Adding group ${ACCT_GROUP_NAME}"
+		groupadd "${opts[@]}" "${ACCT_GROUP_NAME}" || die "groupadd failed with status $?"
 	fi
 
-	local opts=( --system )
-
-	if [[ ${_ACCT_GROUP_ID} -ne -1 ]] &&
-		! egetent group "${_ACCT_GROUP_ID}" >/dev/null
-	then
-		opts+=( --gid "${_ACCT_GROUP_ID}" )
+	local override_name=${PN^^}
+	override_name=${override_name//-/_}
+	local var_name=ACCT_GROUP_${override_name}_USERS_ADD
+	if [[ -n ${!var_name} ]]; then
+		ewarn "${var_name}=${!var_name} override in effect, support will not be provided."
+		for user in ${!var_name}; do
+			if ! egetent passwd "${user}" >/dev/null; then
+				ewarn "User ${user} does not exist, cannot add to group ${ACCT_GROUP_NAME}"
+				continue
+			fi
+			elog "Adding group ${ACCT_GROUP_NAME} to user ${user}'s supplementary groups"
+			usermod --append --groups "${ACCT_GROUP_NAME}" "${user}" || \
+				die "usermod failed with status $?"
+		done
 	fi
-
-	if [[ -n ${ROOT} ]]; then
-		opts+=( --prefix "${ROOT}" )
-	fi
-
-	elog "Adding group ${ACCT_GROUP_NAME}"
-	groupadd "${opts[@]}" "${ACCT_GROUP_NAME}" || die "groupadd failed with status $?"
 }
 
 fi
