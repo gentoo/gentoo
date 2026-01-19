@@ -18,7 +18,8 @@ LICENSE="GPL-3 LGPL-2.1+"
 # <libgnutls.so number>.<libgnutlsxx.so number>
 SLOT="0/30.30"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ~ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
-IUSE="brotli +cxx dane doc examples +idn nls +openssl pkcs11 sslv2 sslv3 static-libs test test-full +tls-heartbeat tools zlib zstd"
+IUSE="brotli +cxx dane doc examples +idn nls +openssl pkcs11 sslv2 sslv3"
+IUSE+=" systemtap static-libs test test-full +tls-heartbeat tools zlib zstd"
 REQUIRED_USE="test-full? ( cxx dane doc examples idn nls openssl pkcs11 tls-heartbeat tools )"
 RESTRICT="!test? ( test )"
 
@@ -38,6 +39,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	test-full? ( sys-libs/libseccomp )
+	systemtap? ( dev-debug/systemtap )
 "
 BDEPEND="
 	dev-build/gtk-doc-am
@@ -128,6 +130,7 @@ multilib_src_configure() {
 		$(use_enable sslv2 ssl2-support)
 		$(use_enable sslv3 ssl3-support)
 		$(use_enable static-libs static)
+		$(use_enable systemtap crypto-auditing)
 		$(use_enable tls-heartbeat heartbeat-support)
 		$(use_with brotli '' link)
 		$(use_with idn)

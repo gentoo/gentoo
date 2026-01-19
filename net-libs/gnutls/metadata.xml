@@ -27,6 +27,9 @@
 		<flag name="sslv3">
 			Support for the old/insecure SSLv3 protocol
 		</flag>
+		<flag name="systemtap">
+			Support crypto-auditing probes via <pkg>dev-debug/systemtap</pkg>
+		</flag>
 		<flag name="test-full">
 			Enable full test mode
 		</flag>
