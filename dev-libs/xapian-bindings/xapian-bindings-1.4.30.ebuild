@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,11 +19,16 @@ PHP_EXT_OPTIONAL_USE="php"
 USE_RUBY="ruby31 ruby32"
 RUBY_OPTIONAL="yes"
 
-inherit autotools java-pkg-opt-2 lua multibuild perl-module php-ext-source-r3 python-r1 ruby-ng
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/ollybetts.asc
+inherit autotools java-pkg-opt-2 lua multibuild perl-module php-ext-source-r3
+inherit python-r1 ruby-ng verify-sig
 
 DESCRIPTION="SWIG and JNI bindings for Xapian"
 HOMEPAGE="https://xapian.org/"
-SRC_URI="https://oligarchy.co.uk/xapian/${PV}/${P}.tar.xz"
+SRC_URI="
+	https://oligarchy.co.uk/xapian/${PV}/${P}.tar.xz
+	verify-sig? ( https://oligarchy.co.uk/xapian/${PV}/${P}.tar.xz.asc )
+"
 S="${WORKDIR}/${P}" # need this here, some inherited eclasses change it
 
 LICENSE="GPL-2"
@@ -61,6 +66,7 @@ RDEPEND="
 	${COMMON_DEPEND}
 	java? ( >=virtual/jre-1.8:* )
 "
+BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-ollybetts )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.22-remove-precompiled-python.patch
@@ -98,6 +104,7 @@ pkg_setup() {
 }
 
 src_unpack() {
+	use verify-sig && verify-sig_verify_detached "${DISTDIR}"/${P}.tar.xz{,.asc}
 	default
 
 	if use php; then
