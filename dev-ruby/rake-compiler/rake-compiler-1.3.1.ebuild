@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_RECIPE_TEST="none"
 
@@ -28,7 +28,7 @@ ruby_add_rdepend "dev-ruby/rake"
 
 ruby_add_bdepend "test? ( dev-ruby/rspec:3 )"
 
-USE_RUBY="ruby31 ruby32 ruby33" ruby_add_bdepend "test? ( dev-util/cucumber )"
+USE_RUBY="ruby32 ruby33 ruby34" ruby_add_bdepend "test? ( dev-util/cucumber )"
 
 all_ruby_prepare() {
 	# Avoid failing features for native gems, this also fails with rubygems
@@ -43,9 +43,9 @@ all_ruby_prepare() {
 }
 
 each_ruby_test() {
-	# Skip cucumber for new ruby versions (not ready yet due to rspec 2 usage)
+	# Skip cucumber for new ruby versions (not ready yet due to circular dependencies)
 	case ${RUBY} in
-		*ruby31|*ruby32|*ruby33)
+		*ruby32|*ruby33|*ruby34)
 			RSPEC_VERSION=3 ruby-ng_rspec
 			ruby-ng_cucumber
 			;;
