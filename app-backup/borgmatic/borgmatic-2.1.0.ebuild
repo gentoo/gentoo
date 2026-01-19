@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -78,11 +78,11 @@ pkg_postinst() {
 		elog "    ${PN} config generate"
 		elog
 		elog "Systemd users wishing to periodically run ${PN} can use the provided timer and service units."
-	elif ver_replacing -lt 2.0.0; then
-		ewarn "Please be warned that ${PN}-2.0.0 has introduced several breaking changes."
+	elif ver_replacing -lt 2.1.0; then
+		ewarn "Please be warned that ${PN}-2.1.0 has introduced several breaking changes."
 		ewarn "For details, please see"
 		ewarn
-		ewarn "	https://github.com/borgmatic-collective/borgmatic/releases/tag/2.0.0"
+		ewarn "	https://github.com/borgmatic-collective/borgmatic/releases/tag/2.1.0"
 		ewarn
 	fi
 }
