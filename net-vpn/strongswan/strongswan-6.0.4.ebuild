@@ -2,11 +2,16 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
-inherit systemd
+
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/strongswan.asc
+inherit systemd verify-sig
 
 DESCRIPTION="IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE"
 HOMEPAGE="https://www.strongswan.org/"
-SRC_URI="https://download.strongswan.org/${P}.tar.bz2"
+SRC_URI="
+	https://download.strongswan.org/${P}.tar.bz2
+	verify-sig? ( https://download.strongswan.org/${P}.tar.bz2.sig )
+"
 
 LICENSE="GPL-2 RSA DES"
 SLOT="0"
@@ -69,6 +74,9 @@ RDEPEND="
 	sys-apps/iproute2
 	!net-vpn/libreswan
 	selinux? ( sec-policy/selinux-ipsec )
+"
+BDEPEND="
+	verify-sig? ( sec-keys/openpgp-keys-strongswan )
 "
 
 UGID="ipsec"
