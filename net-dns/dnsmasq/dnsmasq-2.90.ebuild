@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 IUSE="auth-dns conntrack dbus +dhcp dhcp-tools dnssec +dumpfile id idn libidn2"
-IUSE+=" +loop +inotify ipv6 lua nettlehash nls script selinux static tftp"
+IUSE+=" +loop +inotify ipv6 lua nettlehash nls script selinux static tftp nftset"
 
 DM_LINGUAS=(de es fi fr id it no pl pt_BR ro)
 
@@ -24,6 +24,7 @@ BDEPEND="
 	app-arch/xz-utils
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
+	nftset? ( net-firewall/nftables )
 "
 
 COMMON_DEPEND="
@@ -135,6 +136,7 @@ src_configure() {
 		$(use_have nettlehash)
 		$(use_have static dnssec_static)
 		$(use_have -n dumpfile)
+		$(use_have nftset)
 	)
 }
 
