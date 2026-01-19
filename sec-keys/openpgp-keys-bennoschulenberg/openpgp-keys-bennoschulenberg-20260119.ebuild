@@ -9,8 +9,8 @@ SEC_KEYS_VALIDPGPKEYS=(
 
 inherit sec-keys
 
-DESCRIPTION="OpenPGP key used by Frank Ch. Eigler (fche)"
-HOMEPAGE="https://web.elastic.org/~fche/index.shtml"
+DESCRIPTION="OpenPGP key used by Benno Schulenberg"
+HOMEPAGE="https://www.nano-editor.org/who.php"
 
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
