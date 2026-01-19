@@ -1,0 +1,22 @@
+when using clang with the linker set to ld.bfd, the build fails with:
+
+> /usr/bin/x86_64-pc-linux-gnu-ld.bfd: host/obj/third_party/protobuf/libprotoc_lib.a: error adding symbols: archive has no index; run ranlib to add one
+> clang++: error: linker command failed with exit code 1 (use -v to see invocation)
+
+The reason is that the build script only add "-s" on Linux when not using clang.
+
+https://qt-project.atlassian.net/browse/QTBUG-141153.
+Upstream knows the issue and is still working on it.
+diff --git a/src/3rdparty/chromium/build/config/compiler/BUILD.gn b/src/3rdparty/chromium/build/config/compiler/BUILD.gn
+index da6aeee..8996998 100644
+--- a/src/3rdparty/chromium/build/config/compiler/BUILD.gn
++++ b/src/3rdparty/chromium/build/config/compiler/BUILD.gn
+@@ -2526,7 +2526,7 @@ config("thin_archive") {
+     # archives.
+     arflags = [
+       "-T",
+-      "-S",
++      "-s",
+     ]
+   } else if (is_win && use_lld) {
+     arflags = [ "/llvmlibthin" ]

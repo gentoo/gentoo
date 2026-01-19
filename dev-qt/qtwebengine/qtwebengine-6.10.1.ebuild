@@ -152,6 +152,10 @@ pkg_setup() {
 src_prepare() {
 	qt6-build_src_prepare
 
+	if tc-ld-is-bfd ; then
+		eapply --directory="${S}" "${FILESDIR}/qtwebengine-6.10.1-add-index-for-archive-if-bfd.patch"
+	fi
+
 	# for www-plugins/chrome-binary-plugins (widevine) search paths on prefix
 	hprefixify -w /Gentoo/ src/core/content_client_qt.cpp
 
