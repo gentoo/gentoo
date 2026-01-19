@@ -7,10 +7,10 @@ VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/openwall.asc
 inherit pam toolchain-funcs verify-sig
 
 DESCRIPTION="Password strength checking library (and PAM module)"
-HOMEPAGE="http://www.openwall.com/passwdqc/"
+HOMEPAGE="https://www.openwall.com/passwdqc/"
 SRC_URI="
-	http://www.openwall.com/${PN}/${P}.tar.gz
-	verify-sig? ( http://www.openwall.com/${PN}/${P}.tar.gz.sign -> ${P}.tar.gz.asc )
+	https://www.openwall.com/${PN}/${P}.tar.gz
+	verify-sig? ( https://www.openwall.com/${PN}/${P}.tar.gz.sign -> ${P}.tar.gz.asc )
 "
 
 LICENSE="Openwall BSD public-domain"
