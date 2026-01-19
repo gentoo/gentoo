@@ -4,7 +4,7 @@
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/gnutls.asc
-inherit libtool multilib-minimal verify-sig
+inherit dot-a libtool multilib-minimal verify-sig
 
 DESCRIPTION="Secure communications library implementing the SSL, TLS and DTLS protocols"
 HOMEPAGE="https://www.gnutls.org/"
@@ -93,6 +93,8 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	use static-libs && lto-guarantee-fat
+
 	LINGUAS="${LINGUAS//en/en@boldquot en@quot}"
 
 	local libconf=()
@@ -156,6 +158,8 @@ multilib_src_configure() {
 multilib_src_install_all() {
 	einstalldocs
 	find "${ED}" -type f -name '*.la' -delete || die
+
+	use static-libs && strip-lto-bytecode
 
 	if use examples; then
 		docinto examples
