@@ -241,13 +241,6 @@ dev-python/readthedocs-sphinx-ext
 # Removal on 2025-12-22.  Bug #966327.
 dev-python/fake-py
 
-# orbea <orbea@riseup.net> (2025-11-16)
-# Dead upstream, non-free licenses, depends on libsdl, no revdeps.
-# Use games-emulation/geolith-jg instead.
-# Bugs #744043, #896336, #926370.
-# Removal on 2025-12-16.
-games-emulation/gngeo
-
 # Petr Vaněk <arkamar@gentoo.org> (2025-11-13)
 # The MDEV-38068 issue has been discovered with MariaDB 11.8.4. The issue
 # caused a partial data deletion when using the DELETE statement on MyISAM or
