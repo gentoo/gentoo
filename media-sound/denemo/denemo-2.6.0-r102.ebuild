@@ -7,7 +7,7 @@ GUILE_COMPAT=( 2-2 )
 inherit autotools flag-o-matic font guile-single xdg
 
 DESCRIPTION="A music notation editor"
-HOMEPAGE="http://www.denemo.org/"
+HOMEPAGE="https://www.denemo.org/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3+ OFL-1.1"
