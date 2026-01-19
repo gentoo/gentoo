@@ -56,6 +56,12 @@ pkg_pretend() {
 	fi
 }
 
+src_unpack() {
+	use verify-sig && verify-sig_verify_detached "${DISTDIR}"/${MY_P}.tar.xz{,.sig}
+
+	default
+}
+
 src_prepare() {
 	default
 
