@@ -1,16 +1,20 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit eapi9-ver systemd tmpfiles toolchain-funcs
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/isc.asc
+inherit eapi9-ver systemd tmpfiles toolchain-funcs verify-sig
 
 MY_PV="${PV/_p/-P}"
 MY_PV="${MY_PV/_rc/rc}"
 
 DESCRIPTION="Berkeley Internet Name Domain - Name Server"
 HOMEPAGE="https://www.isc.org/bind/"
-SRC_URI="https://downloads.isc.org/isc/bind9/${PV}/${P}.tar.xz"
+SRC_URI="
+	https://downloads.isc.org/isc/bind9/${PV}/${P}.tar.xz
+	verify-sig? ( https://downloads.isc.org/isc/bind9/${PV}/${P}.tar.xz.asc )
+"
 S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="MPL-2.0"
@@ -51,12 +55,9 @@ BDEPEND="
 	dev-lang/perl
 	virtual/pkgconfig
 	doc? ( dev-python/sphinx )
-	test? (
-		dev-util/cmocka
-	)
-	systemtap? (
-		dev-debug/systemtap
-	)
+	test? ( dev-util/cmocka )
+	systemtap? ( dev-debug/systemtap )
+	verify-sig? ( sec-keys/openpgp-keys-isc )
 "
 
 src_prepare() {
