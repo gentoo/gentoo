@@ -1,13 +1,17 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit savedconfig toolchain-funcs
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/openwall.asc
+inherit savedconfig toolchain-funcs verify-sig
 
 DESCRIPTION="A port scan detection tool"
-SRC_URI="https://www.openwall.com/scanlogd/${P}.tar.gz"
 HOMEPAGE="https://www.openwall.com/scanlogd/"
+SRC_URI="
+	https://www.openwall.com/scanlogd/${P}.tar.gz
+	verify-sig? ( https://www.openwall.com/scanlogd/${P}.tar.gz.sign -> ${P}.tar.gz.sig )
+"
 
 LICENSE="scanlogd GPL-2" # GPL-2 for initscript
 SLOT="0"
@@ -24,6 +28,7 @@ RDEPEND="
 	acct-group/scanlogd
 	acct-user/scanlogd
 "
+BDEPEND="sec-keys/openpgp-keys-openwall"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.7-gentoo.patch
