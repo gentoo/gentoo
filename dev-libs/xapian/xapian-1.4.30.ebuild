@@ -1,14 +1,18 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit toolchain-funcs
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/ollybetts.asc
+inherit toolchain-funcs verify-sig
 
 MY_P="${PN}-core-${PV}"
 DESCRIPTION="Xapian Probabilistic Information Retrieval library"
 HOMEPAGE="https://xapian.org/"
-SRC_URI="https://oligarchy.co.uk/xapian/${PV}/${MY_P}.tar.xz"
+SRC_URI="
+	https://oligarchy.co.uk/xapian/${PV}/${MY_P}.tar.xz
+	verify-sig? ( https://oligarchy.co.uk/xapian/${PV}/${MY_P}.tar.xz.asc )
+"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
@@ -22,6 +26,7 @@ DEPEND="
 	elibc_SunOS? ( sys-libs/libuuid )
 "
 RDEPEND="${DEPEND}"
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-ollybetts )"
 
 DOCS=( AUTHORS HACKING PLATFORMS README NEWS )
 
