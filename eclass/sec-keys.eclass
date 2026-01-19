@@ -1,4 +1,4 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: sec-keys.eclass
@@ -117,7 +117,11 @@ BDEPEND="
 sec-keys_src_compile() {
 	local -x GNUPGHOME=${WORKDIR}/gnupg
 	local fingerprint
-	local gpg_command=(gpg --export-options export-minimal)
+	if has_version -b ">=app-crypt/gnupg-2.5.17"; then
+		local gpg_command=(gpg --export-options export-minimal,keep-expired-subkeys)
+	else
+		local gpg_command=(gpg --export-options export-minimal)
+	fi
 
 	mkdir -m700 -p "${GNUPGHOME}" || die
 	cat <<- EOF > "${GNUPGHOME}"/gpg.conf || die
