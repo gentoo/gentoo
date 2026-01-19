@@ -49,7 +49,7 @@ REQUIRED_USE="
 	guile? ( ${GUILE_REQUIRED_USE} )
 	lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )
-	test? ( nls )
+	test? ( nls python )
 	relay-api? ( relay )
 "
 
