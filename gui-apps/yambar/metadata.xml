@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>leohdz172@proton.me</email>
+		<name>Leonardo Hernández Hernández</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="codeberg">dnkl/yambar</remote-id>
+	</upstream>
+	<use>
+		<flag name="mpd">Enable support for the Music Player Daemon</flag>
+		<flag name="pipewire">Build plugin to support PipeWire</flag>
+	</use>
+</pkgmetadata>
