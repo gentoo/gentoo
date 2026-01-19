@@ -1,0 +1,147 @@
+From https://github.com/irssi/irssi/releases/tag/1.4.5
+> Note. Apply perl-again.patch when building Irssi with Perl 5.37 or later.
+> Otherwise Irssi's locale/unicode handling may break due to a bug in Perl.
+> See Perl/perl5#21366. The fix given in #1498 was unfortunately not sufficient.
+
+Also:
+* https://github.com/irssi/irssi/commit/9fd6df2a15bf5ddc794b47042fb312d77941ad5a
+* https://github.com/irssi/irssi/commit/838f8d179e58edc5c0963f789ad8bd27192a022d
+
+From b6507ad5ee6a813efa1698b7383db2f5e720ca2f Mon Sep 17 00:00:00 2001
+From: ailin-nemui <ailin-nemui@users.noreply.github.com>
+Date: Sat, 27 Jan 2024 17:42:42 +0000
+Subject: [PATCH] Merge pull request #1510 from ailin-nemui/perl-again
+
+restore locale if perl breaks it
+
+(cherry picked from commit 504fd7bc609dfd9daee49f4eb9634338bdba1d81)
+---
+ src/perl/irssi-core.pl |  7 -------
+ src/perl/perl-core.c   | 25 +++++++++++++++++++++----
+ 2 files changed, 21 insertions(+), 11 deletions(-)
+
+diff --git a/src/perl/irssi-core.pl b/src/perl/irssi-core.pl
+index 0999de9e..46066a38 100644
+--- a/src/perl/irssi-core.pl
++++ b/src/perl/irssi-core.pl
+@@ -52,10 +52,3 @@ sub eval_file {
+     die "cap_sasl has been unloaded from Irssi ".Irssi::version()." because it conflicts with the built-in SASL support. See /help network for configuring SASL or read the ChangeLog for more information.";
+   }
+ }
+-
+-if ( $] >= 5.037005 && $] <= 5.038000 ) {
+-  # https://github.com/Perl/perl5/issues/21366
+-  print STDERR "\e7 \e[A Irssi: applying locale workaround for Perl 5.38.0 \e8";
+-  require POSIX;
+-  POSIX::setlocale(&POSIX::LC_ALL, "");
+-}
+diff --git a/src/perl/perl-core.c b/src/perl/perl-core.c
+index 24f0218c..c0130612 100644
+--- a/src/perl/perl-core.c
++++ b/src/perl/perl-core.c
+@@ -111,27 +111,44 @@ static void xs_init(pTHX)
+ void perl_scripts_init(void)
+ {
+ 	char *code, *use_code;
++	int broken_perl;
+ 
+ 	perl_scripts = NULL;
+         perl_sources_start();
+ 	perl_signals_start();
+ 
+ 	my_perl = perl_alloc();
++	broken_perl = wcwidth(160);
+ 	perl_construct(my_perl);
++	broken_perl = broken_perl != wcwidth(160);
+ 
+-	perl_parse(my_perl, xs_init, G_N_ELEMENTS(perl_args)-1, perl_args, NULL);
++	perl_parse(my_perl, xs_init, G_N_ELEMENTS(perl_args) - 1, perl_args, NULL);
+ #if PERL_STATIC_LIBS == 1
+ 	perl_eval_pv("Irssi::Core::->boot_Irssi_Core(0.9);", TRUE);
+ #endif
+ 
+-        perl_common_start();
++	perl_common_start();
+ 
+ 	use_code = perl_get_use_list();
+         code = g_strdup_printf(irssi_core_code, PERL_STATIC_LIBS, use_code);
+ 	perl_eval_pv(code, TRUE);
++	if (broken_perl) {
++		g_warning("applying locale workaround for Perl %d.%d, see "
++		          "https://github.com/Perl/perl5/issues/21366",
++		          PERL_REVISION, PERL_VERSION);
++		perl_eval_pv("package Irssi::Core;"
++		             /* https://github.com/Perl/perl5/issues/21746 */
++		             "if ( $] == $] )"
++		             "{"
++		             "require POSIX;"
++		             "POSIX::setlocale(&POSIX::LC_ALL, \"\");"
++		             "}"
++		             "1;",
++		             TRUE);
++	}
+ 
+ 	g_free(code);
+-        g_free(use_code);
++	g_free(use_code);
+ }
+ 
+ /* Destroy all perl scripts and deinitialize perl interpreter */
+@@ -476,7 +493,7 @@ void perl_core_init(void)
+ 	char **argv = perl_args;
+ 
+ 	PERL_SYS_INIT3(&argc, &argv, &environ);
+-        print_script_errors = 1;
++	print_script_errors = 1;
+ 	settings_add_str("perl", "perl_use_lib", PERL_USE_LIB);
+ 
+ 	/*PL_perl_destruct_level = 1; - this crashes with some people.. */
+-- 
+2.43.0
+
+From 9fd6df2a15bf5ddc794b47042fb312d77941ad5a Mon Sep 17 00:00:00 2001
+From: Ailin Nemui <ailin@d5421s.localdomain>
+Date: Sun, 27 Apr 2025 12:09:17 +0200
+Subject: [PATCH] add missing include for wcwidth thread test
+
+---
+ src/perl/perl-core.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/perl/perl-core.c b/src/perl/perl-core.c
+index fe52874a6..59ca58fea 100644
+--- a/src/perl/perl-core.c
++++ b/src/perl/perl-core.c
+@@ -18,6 +18,9 @@
+     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ */
+ 
++#define _GNU_SOURCE
++#include <wchar.h>
++
+ #define NEED_PERL_H
+ #define PERL_NO_GET_CONTEXT
+ #include "module.h"
+From 838f8d179e58edc5c0963f789ad8bd27192a022d Mon Sep 17 00:00:00 2001
+From: Ailin Nemui <ailin@d5421s.localdomain>
+Date: Sun, 13 Jul 2025 19:33:52 +0200
+Subject: [PATCH] fix _GNU_SOURCE redefined warning due to perl ccflags
+
+---
+ src/perl/perl-core.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/perl/perl-core.c b/src/perl/perl-core.c
+index 59ca58fea..67fff2920 100644
+--- a/src/perl/perl-core.c
++++ b/src/perl/perl-core.c
+@@ -18,7 +18,9 @@
+     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ */
+ 
++#ifndef _GNU_SOURCE
+ #define _GNU_SOURCE
++#endif
+ #include <wchar.h>
+ 
+ #define NEED_PERL_H
