@@ -16,6 +16,8 @@ else
 		verify-sig? ( https://www.nano-editor.org/dist/v${PV:0:1}/${MY_P}.tar.xz.asc )
 	"
 	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
+
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-bennoschulenberg )"
 fi
 
 DESCRIPTION="GNU GPL'd Pico clone with more functionality"
@@ -31,10 +33,9 @@ RDEPEND="
 	nls? ( virtual/libintl )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="
+BDEPEND+="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
-	verify-sig? ( sec-keys/openpgp-keys-bennoschulenberg )
 "
 
 REQUIRED_USE="
