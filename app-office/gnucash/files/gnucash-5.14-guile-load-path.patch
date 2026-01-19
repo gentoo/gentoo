@@ -1,0 +1,97 @@
+Updated Sam's patch to patch cleanly for gnucash-5.14, otherwise same logic.
+
+Signed-off-by: Joe Kappus <joe@wt.gd>
+
+From 59c0a848aeab5a600f40962b359395e4dca57537 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 26 Dec 2024 09:55:15 +0000
+Subject: [PATCH] Don't use installed copy of gnucash for build or tests
+
+Per https://www.gnu.org/software/guile/manual/html_node/Foreign-Libraries.html,
+newer guile (>= 3.0.6) will respect GUILE_EXTENSIONS_PATH when looking up paths for
+`dlopen` for `load-extension` -> `load-foreign-library`. Older guiles will use
+`LTDL_LIBRARY_PATH` instead.
+
+Without this set, the system paths are checked instead (maybe falling back
+to another variable if not found on the system, unclear), and we end up
+with build failures when we try to mix system and just-built gnucash (this
+is also obviously a problem for testing as well).
+
+For tests, we additionally have to do a "fake install" in ${BUILD_DIR}/whatever
+and we set the path to that in the ebuild with GENTOO_TEMPORARY_TEST_INSTALLDIR.
+
+https://www.gnu.org/software/guile/manual/html_node/Load-Paths.html and
+https://www.gnu.org/software/guile/manual/html_node/Environment-Variables.html were
+also a lot of help.
+
+(When testing w/ guile-2.2 briefly, it didn't seem that we needed
+to set LTDL_LIBRARY_PATH, but someone can add that if it turns out to be
+needed, or I may later.)
+
+(With regard to GUILE_AUTO_COMPILE=0, dropped that as it doesn't seem
+necessary. Plan is to also add GUILE_AUTO_COMPILE=fresh to the eclass,
+am discussing it w/ Arsen.)
+
+Bug: https://bugs.gnucash.org/show_bug.cgi?id=799159
+Bug: https://bugs.gentoo.org/359033
+Bug: https://bugs.gentoo.org/371264
+Bug: https://bugs.gentoo.org/734286
+Bug: https://bugs.gentoo.org/946927
+Closes: https://bugs.gentoo.org/941426
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ common/cmake_modules/GncAddSchemeTargets.cmake | 2 ++
+ common/cmake_modules/GncAddTest.cmake          | 6 ++++++
+ 2 files changed, 8 insertions(+)
+
+diff --git a/common/cmake_modules/GncAddSchemeTargets.cmake b/common/cmake_modules/GncAddSchemeTargets.cmake
+index 8e1e361548..c4d977d1d5 100644
+--- a/common/cmake_modules/GncAddSchemeTargets.cmake
++++ b/common/cmake_modules/GncAddSchemeTargets.cmake
+@@ -253,6 +253,7 @@ function(gnc_add_scheme_targets _TARGET)
+         make_win32_path_list(LIBRARY_PATH)
+       else()
+         set (LIBRARY_PATH "LD_LIBRARY_PATH=${LIBDIR_BUILD}:${LIBDIR_BUILD}/gnucash:$ENV{LD_LIBRARY_PATH}")
++        set (GUILE_EXTENSIONS_PATH "GUILE_EXTENSIONS_PATH=${LIBDIR_BUILD}:${LIBDIR_BUILD}/gnucash:$ENV{GUILE_EXTENSIONS_PATH}")
+       endif()
+       if (APPLE)
+         set (LIBRARY_PATH "DYLD_LIBRARY_PATH=${LIBDIR_BUILD}:${LIBDIR_BUILD}/gnucash:$ENV{DYLD_LIBRARY_PATH}")
+@@ -281,6 +282,7 @@ function(gnc_add_scheme_targets _TARGET)
+       #We quote the arguments to stop CMake stripping the path separators.
+       set (GUILE_ENV
+         "${LIBRARY_PATH}"
++        "${GUILE_EXTENSIONS_PATH}"
+         "GNC_UNINSTALLED=YES"
+         "GNC_BUILDDIR=${CMAKE_BINARY_DIR}"
+         "GUILE_LOAD_PATH=${_GUILE_LOAD_PATH}"
+diff --git a/common/cmake_modules/GncAddTest.cmake b/common/cmake_modules/GncAddTest.cmake
+index 707e46deeb..1e219b1fbb 100644
+--- a/common/cmake_modules/GncAddTest.cmake
++++ b/common/cmake_modules/GncAddTest.cmake
+@@ -26,6 +26,8 @@ function(get_guile_env)
+ 
+   set(guile_load_paths "$ENV{GUILE_LOAD_PATH}")
+   list(APPEND guile_load_paths
++    "$ENV{GENTOO_TEMPORARY_TEST_INSTALLDIR}/${GUILE_REL_SITEDIR}"
++    "$ENV{GENTOO_TEMPORARY_TEST_INSTALLDIR}/${GUILE_REL_SITEDIR}/gnucash/deprecated"
+     "${_relative_site_dir}"
+     "${_relative_site_dir}/gnucash/deprecated" 
+     )
+@@ -44,6 +46,9 @@ function(get_guile_env)
+ 
+   set(guile_load_compiled_paths "$ENV{GUILE_LOAD_COMPILED_PATH}")
+   list(APPEND guile_load_compiled_paths
++    "$ENV{GENTOO_TEMPORARY_TEST_INSTALLDIR}/${GUILE_REL_SITECCACHEDIR}"
++    "$ENV{GENTOO_TEMPORARY_TEST_INSTALLDIR}/${GUILE_REL_SITECCACHEDIR}/gnucash/deprecated"
++    "$ENV{GENTOO_TEMPORARY_TEST_INSTALLDIR}/${GUILE_REL_SITECCACHEDIR}/tests"
+     "${_relative_cache_dir}"
+     "${_relative_cache_dir}/gnucash/deprecated"
+     "${_relative_cache_dir}/tests"
+@@ -87,6 +92,7 @@ function(get_guile_env)
+     list(APPEND _guile_env "DYLD_LIBRARY_PATH=${_gnc_module_path}:$ENV{DYLD_LIBRARY_PATH}")
+   elseif (UNIX)
+     list(APPEND _guile_env "LD_LIBRARY_PATH=${_gnc_module_path}:$ENV{LD_LIBRARY_PATH}")
++    list(APPEND env "GUILE_EXTENSIONS_PATH=${LIBDIR_BUILD}:${LIBDIR_BUILD}/gnucash:$ENV{GUILE_EXTENSIONS_PATH}")
+   endif()
+   set(GUILE_ENV "${_guile_env}" PARENT_SCOPE)
+ endfunction()
