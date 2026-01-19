@@ -1,9 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit systemd tmpfiles toolchain-funcs
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/proftpd.asc
+inherit systemd tmpfiles toolchain-funcs verify-sig
 
 MOD_CASE="0.9.1"
 MOD_CLAMAV="0.14rc2"
@@ -27,6 +28,7 @@ SRC_URI="
 	kerberos? ( https://downloads.sourceforge.net/gssmod/mod_gss-${MOD_GSS}.tar.gz )
 	msg? ( https://github.com/Castaglia/${PN}-mod_msg/archive/v${MOD_MSG}.tar.gz -> mod_msg-${MOD_MSG}.tar.gz )
 	vroot? ( https://github.com/Castaglia/${PN}-mod_vroot/archive/v${MOD_VROOT}.tar.gz -> mod_vroot-${MOD_VROOT}.tar.gz )
+	verify-sig? ( ftp://ftp.proftpd.org/distrib/source/${P/_/}.tar.gz.asc )
 "
 S="${WORKDIR}/${P/_/}"
 
@@ -83,6 +85,9 @@ RDEPEND="
 	net-ftp/ftpbase
 	selinux? ( sec-policy/selinux-ftp )
 "
+BDEPEND="
+	verify-sig? ( sec-keys/openpgp-keys-proftpd )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.6-use-trace.patch
@@ -107,6 +112,11 @@ in_dir() {
 	shift
 	"$@"
 	popd
+}
+
+src_unpack() {
+	use verify-sig && verify-sig_verify_detached "${DISTDIR}"/${P/_/}.tar.gz{,.asc}
+	default
 }
 
 src_prepare() {
