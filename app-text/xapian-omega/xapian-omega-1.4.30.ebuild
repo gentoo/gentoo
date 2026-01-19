@@ -1,11 +1,17 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/ollybetts.asc
+inherit verify-sig
+
 DESCRIPTION="An application built on Xapian, consisting of indexers and a CGI search frontend"
 HOMEPAGE="https://xapian.org/"
-SRC_URI="https://oligarchy.co.uk/xapian/${PV}/${P}.tar.xz"
+SRC_URI="
+	https://oligarchy.co.uk/xapian/${PV}/${P}.tar.xz
+	verify-sig? ( https://oligarchy.co.uk/xapian/${PV}/${P}.tar.xz.asc )
+"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -19,6 +25,7 @@ DEPEND="
 	virtual/zlib:=
 "
 RDEPEND="${DEPEND}"
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-ollybetts )"
 
 src_install() {
 	emake DESTDIR="${D}" PREFIX="${EPREFIX}" install
