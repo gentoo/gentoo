@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,13 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit autotools git-r3
 else
 	MY_P="${PN}-${PV/_}"
-	SRC_URI="https://www.nano-editor.org/dist/v${PV:0:1}/${MY_P}.tar.xz"
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/bennoschulenberg.asc
+	inherit verify-sig
+
+	SRC_URI="
+		https://www.nano-editor.org/dist/v${PV:0:1}/${MY_P}.tar.xz
+		verify-sig? ( https://www.nano-editor.org/dist/v${PV:0:1}/${MY_P}.tar.xz.asc )
+	"
 	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 fi
 
@@ -26,8 +32,9 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	nls? ( sys-devel/gettext )
 	virtual/pkgconfig
+	nls? ( sys-devel/gettext )
+	verify-sig? ( sec-keys/openpgp-keys-bennoschulenberg )
 "
 
 REQUIRED_USE="
