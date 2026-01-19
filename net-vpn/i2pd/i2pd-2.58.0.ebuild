@@ -35,6 +35,8 @@ CMAKE_USE_DIR="${WORKDIR}/${P}/build"
 
 DOCS=( ../README.md ../contrib/i2pd.conf ../contrib/tunnels.conf )
 
+PATCHES=( "${FILESDIR}"/i2pd-2.58.0-boost-1.89.patch )
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test ON OFF)

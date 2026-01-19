@@ -1,0 +1,32 @@
+From: https://github.com/PurpleI2P/i2pd/commit/06a86f31a12815fbd16615cc9fa17199bac1ac17
+Bug: https://bugs.gentoo.org/969018
+
+From: orignal <i2porignal@yandex.ru>
+Date: Tue, 28 Oct 2025 17:24:48 -0400
+Subject: [PATCH] exclude boost_system
+
+---
+ build/CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/build/CMakeLists.txt b/build/CMakeLists.txt
+index bc936e18846..c7389d467b3 100644
+--- a/build/CMakeLists.txt
++++ b/build/CMakeLists.txt
+@@ -256,14 +256,14 @@ else()
+   if(NOT MSVC)
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
+   endif()
+-  add_definitions(-DBOOST_ATOMIC_DYN_LINK -DBOOST_SYSTEM_DYN_LINK -DBOOST_FILESYSTEM_DYN_LINK -DBOOST_PROGRAM_OPTIONS_DYN_LINK)
++  add_definitions(-DBOOST_ATOMIC_DYN_LINK -DBOOST_FILESYSTEM_DYN_LINK -DBOOST_PROGRAM_OPTIONS_DYN_LINK)
+   if(WIN32)
+     set(Boost_USE_STATIC_LIBS OFF)
+     set(Boost_USE_STATIC_RUNTIME OFF)
+   endif()
+ endif()
+ 
+-find_package(Boost REQUIRED COMPONENTS system filesystem program_options)
++find_package(Boost REQUIRED COMPONENTS filesystem program_options)
+ if(NOT DEFINED Boost_FOUND)
+   message(SEND_ERROR "Boost is not found, or your boost version was below 1.46. Please download Boost!")
+ endif()
