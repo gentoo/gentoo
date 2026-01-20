@@ -1,0 +1,26 @@
+Based on [1] which got reverted[2] because it failed for gold, however
+we do not support the gold linker either way anymore and can use this
+method until upstream finds their own solution.
+
+Note that !use_bfd is not a thing, so we need to check other linkers.
+Reported to work fine for mold, while it is unknown for the new'ish
+wild. At worst using the bfd path will just be slightly slower assuming
+the linker is even remotely compatible.
+
+As a precaution, keeping the previous !is_clang albeit it should not
+matter.
+
+https://qt-project.atlassian.net/browse/QTBUG-141153
+https://github.com/gentoo/gentoo/pull/45441
+
+[1] https://codereview.qt-project.org/c/qt/qtwebengine-chromium/+/684653
+[2] https://codereview.qt-project.org/c/qt/qtwebengine-chromium/+/690328
+--- a/src/3rdparty/chromium/build/config/compiler/BUILD.gn
++++ b/src/3rdparty/chromium/build/config/compiler/BUILD.gn
+@@ -2532,5 +2532,5 @@
+ #    .o files, instead of just references to .o files in the build directoy
+ config("thin_archive") {
+-  if ((is_apple && use_lld) || (is_linux && !is_clang)) {
++  if ((is_apple && use_lld) || (is_linux && (!is_clang || (!use_lld && !use_mold)))) {
+     # The macOS and iOS linker ld64.ldd doesn't support thin archive without
+     # symbol table, gcc on linux also throws the error `archive has no index`.
