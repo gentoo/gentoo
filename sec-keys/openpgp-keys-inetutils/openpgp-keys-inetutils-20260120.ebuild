@@ -11,4 +11,4 @@ inherit sec-keys
 
 DESCRIPTION="OpenPGP keys used for net-misc/inetutils"
 HOMEPAGE="https://savannah.gnu.org/projects/inetutils/"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
