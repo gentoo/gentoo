@@ -1,0 +1,51 @@
+https://github.com/ceph/ceph/pull/66928
+
+From 4965dbac4bd17973eb15fe09d2a046a509b4a65a Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Wed, 14 Jan 2026 22:46:39 +0800
+Subject: [PATCH] rgw: remove FMT_STRING to fix clang 20+ build failure
+
+Fix a build failure with Clang 20+ using -std=c++20, where fmt
+(v9.1.0, v11.0.0, and possibly other versions) fails to parse
+format strings at compile-time in a consteval context. This is
+a known issue in fmt, fixed in fmt v11.1.0 (see
+https://github.com/fmtlib/fmt/commit/6797f0c39a4ef13061cbc3bb850c35af7428fdc4).
+
+The following error occurs when building rgw_auth_s3.cc:
+
+  src/rgw/rgw_auth_s3.cc:600:22: error: call to consteval function
+  'fmt::basic_format_string<...>' is not a constant expression
+
+Removing FMT_STRING avoids compile-time format string parsing
+and restores buildability across different toolchains.
+
+Test case:
+
+  #include <fmt/format.h>
+
+  std::string gen_v4_scope(const std::string& region)
+  {
+    return fmt::format(FMT_STRING("{:s}"), region);
+  }
+
+Compile with:
+
+  clang -isystem fmt/include -std=c++20 -c test.cc
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/src/rgw/rgw_auth_s3.cc b/src/rgw/rgw_auth_s3.cc
+index c14a937685a..b31b0279d8e 100644
+--- a/src/rgw/rgw_auth_s3.cc
++++ b/src/rgw/rgw_auth_s3.cc
+@@ -605,7 +605,7 @@ string gen_v4_scope(const ceph::real_time& timestamp,
+   auto mon = bt.tm_mon + 1;
+   auto day = bt.tm_mday;
+ 
+-  return fmt::format(FMT_STRING("{:d}{:02d}{:02d}/{:s}/{:s}/aws4_request"),
++  return fmt::format("{:d}{:02d}{:02d}/{:s}/{:s}/aws4_request",
+                      year, mon, day, region, service);
+ }
+ 
+-- 
+2.49.1

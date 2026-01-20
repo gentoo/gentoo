@@ -219,6 +219,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-18.2.4-spdk.patch"
 	"${FILESDIR}/ceph-19.2.1-isa-l.patch"
 	"${FILESDIR}/ceph-19.2.2-add-option-to-build-agains-system-opentelemetry.patch"
+	"${FILESDIR}/ceph-19.2.2-rgw-remove-FMT_STRING-to-fix-clang-20-build-failure.patch"
 	"${FILESDIR}/ceph-20.1.0-nvmeof.patch"
 )
 
@@ -343,8 +344,7 @@ ceph_src_configure() {
 		-DWITH_SYSTEM_UTF8PROC:BOOL=ON
 		-DCMAKE_INSTALL_DOCDIR:PATH="${EPREFIX}/usr/share/doc/${PN}-${PVR}"
 		-DCMAKE_INSTALL_SYSCONFDIR:PATH="${EPREFIX}/etc"
-		# use the bundled libfmt for now since they seem to constantly break their API
-		-DCMAKE_DISABLE_FIND_PACKAGE_fmt=ON
+		-DWITH_SYSTEM_FMT=ON
 		-Wno-dev
 		-DCEPHADM_BUNDLED_DEPENDENCIES=none
 		-DWITH_NVMEOF_GATEWAY_MONITOR_CLIENT:BOOL=$(usex nvmeof)
