@@ -106,7 +106,6 @@ FFMPEG_IUSE_MAP=(
 	rubberband:librubberband
 	samba:libsmbclient@v3 # GPL-3+ only
 	sdl:sdl2
-	shaderc:libshaderc
 	snappy:libsnappy
 	sndio
 	speex:libspeex
@@ -124,7 +123,10 @@ FFMPEG_IUSE_MAP=(
 	vmaf:libvmaf
 	vorbis:libvorbis
 	vpx:libvpx
-	vulkan:vulkan,vulkan-static # still uses shared, only means no dlopen()
+	# libshaderc: merged here given shaderc is needed at build-time
+	# either way and many vulkan features depend on spirv_library
+	# vulkan-static: it still uses shared, only means no dlopen()
+	vulkan:libshaderc,vulkan,vulkan-static
 	webp:libwebp
 	x264:libx264
 	x265:libx265
@@ -163,7 +165,6 @@ REQUIRED_USE="
 	fribidi? ( truetype )
 	gmp? ( !librtmp )
 	libplacebo? ( vulkan )
-	shaderc? ( vulkan )
 	libaribb24? ( gpl ) cdio? ( gpl ) dvd? ( gpl ) frei0r? ( gpl )
 	rubberband? ( gpl ) samba? ( gpl ) vidstab? ( gpl ) x264? ( gpl )
 	x265? ( gpl ) xvid? ( gpl )
@@ -259,7 +260,6 @@ COMMON_DEPEND="
 		media-libs/libsdl2[sound(+),video(+),${MULTILIB_USEDEP}]
 		libplacebo? ( media-libs/libsdl2[vulkan] )
 	)
-	shaderc? ( media-libs/shaderc[${MULTILIB_USEDEP}] )
 	snappy? ( app-arch/snappy:=[${MULTILIB_USEDEP}] )
 	sndio? ( media-sound/sndio:=[${MULTILIB_USEDEP}] )
 	speex? ( media-libs/speex[${MULTILIB_USEDEP}] )
@@ -287,7 +287,10 @@ COMMON_DEPEND="
 	vmaf? ( media-libs/libvmaf:=[${MULTILIB_USEDEP}] )
 	vorbis? ( media-libs/libvorbis[${MULTILIB_USEDEP}] )
 	vpx? ( media-libs/libvpx:=[${MULTILIB_USEDEP}] )
-	vulkan? ( media-libs/vulkan-loader[${MULTILIB_USEDEP}] )
+	vulkan? (
+		media-libs/shaderc[${MULTILIB_USEDEP}]
+		media-libs/vulkan-loader[${MULTILIB_USEDEP}]
+	)
 	webp? ( media-libs/libwebp:=[${MULTILIB_USEDEP}] )
 	x264? ( media-libs/x264:=[${MULTILIB_USEDEP}] )
 	x265? ( media-libs/x265:=[${MULTILIB_USEDEP}] )
@@ -472,7 +475,7 @@ multilib_src_configure() {
 		# disabled for other or additional reasons
 		--disable-cuda-nvcc # prefer cuda-llvm for less issues
 		--disable-libcelt # obsolete (bug #664158)
-		--disable-libglslang # prefer USE=shaderc (bug #918989,#920283,#922333)
+		--disable-libglslang # prefer shaderc (bug #918989,#920283,#922333)
 		--disable-liblensfun # https://trac.ffmpeg.org/ticket/9112 (abandoned?)
 		--disable-libmfx # prefer libvpl for USE=qsv
 		--disable-libnpp # deprecated and not supported for cuda 13.0+
