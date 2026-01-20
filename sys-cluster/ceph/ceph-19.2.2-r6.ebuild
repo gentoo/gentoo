@@ -213,7 +213,6 @@ PATCHES=(
 	"${FILESDIR}/ceph-17.2.0-findre2.patch"
 	"${FILESDIR}/ceph-18.2.0-system-opentelemetry.patch"
 	"${FILESDIR}/ceph-17.2.0-osd_class_dir.patch"
-	"${FILESDIR}/ceph-17.2.0-gcc12-header.patch"
 	"${FILESDIR}/ceph-17.2.3-flags.patch"
 	# https://bugs.gentoo.org/866165
 	"${FILESDIR}/ceph-17.2.5-suppress-cmake-warning.patch"
