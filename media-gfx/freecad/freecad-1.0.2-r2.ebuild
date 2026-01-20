@@ -142,6 +142,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.0.2-pybind11-latent-slots-macro-conflicts-with-Qt.patch" # fixed in pybind-3.0.1
 	"${DISTDIR}/${PN}-20710.patch" # DESTDIR in env
 	"${DISTDIR}/${PN}-21433.patch" # FindHDF5 fails to find HDF5 after a failing pkg_search_module
+	"${FILESDIR}"/${P}-boost-1.89.patch # bug 969041
 )
 
 DOCS=( CODE_OF_CONDUCT.md README.md )

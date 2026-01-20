@@ -1,0 +1,23 @@
+From 0f6d00d2a547df0f5c2ba5ef0f79044a49b0a2da Mon Sep 17 00:00:00 2001
+From: chris <chris.r.jones.1983@gmail.com>
+Date: Sat, 20 Sep 2025 16:08:34 -0500
+Subject: [PATCH] fix issue #23829 build with boost v1.89 and greater
+
+* asturm 2026-01-20: backported to 1.0.2
+---
+ cMake/FreeCAD_Helpers/SetupBoost.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cMake/FreeCAD_Helpers/SetupBoost.cmake b/cMake/FreeCAD_Helpers/SetupBoost.cmake
+index 4e07e2e7c04c..45538b676231 100644
+--- a/cMake/FreeCAD_Helpers/SetupBoost.cmake
++++ b/cMake/FreeCAD_Helpers/SetupBoost.cmake
+@@ -3,7 +3,7 @@ macro(SetupBoost)
+ 
+     set(_boost_TEST_VERSIONS ${Boost_ADDITIONAL_VERSIONS})
+ 
+-    set (BOOST_COMPONENTS filesystem program_options regex system thread date_time)
++    set (BOOST_COMPONENTS filesystem program_options regex thread date_time)
+     find_package(Boost ${BOOST_MIN_VERSION}
+         COMPONENTS ${BOOST_COMPONENTS} REQUIRED)
+ 
