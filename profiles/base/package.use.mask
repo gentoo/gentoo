@@ -6,6 +6,10 @@
 
 # New entries go on top.
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2026-01-30)
+# No suitable versions of dev-libs/protobuf available.
+~dev-java/protobuf-java-4.33.5 system-protoc
+
 # Eli Schwartz <eschwartz@gentoo.org> (2026-01-09)
 # tests fail to build during src_compile:
 # - needs demos to be built
