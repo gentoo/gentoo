@@ -241,6 +241,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-19.2.2-py313-3.patch"
 	"${FILESDIR}/ceph-19.2.2-gcc15.patch"
 	"${FILESDIR}/ceph-19.2.2-add-option-to-build-agains-system-opentelemetry.patch"
+	"${FILESDIR}/ceph-19.2.2-rgw-remove-FMT_STRING-to-fix-clang-20-build-failure.patch"
 )
 
 check-reqs_export_vars() {
