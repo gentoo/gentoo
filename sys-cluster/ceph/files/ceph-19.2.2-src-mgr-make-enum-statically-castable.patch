@@ -1,0 +1,30 @@
+https://github.com/ceph/ceph/commit/856e550b37a0899e2fdda6b1f027093b6e205889
+
+From 856e550b37a0899e2fdda6b1f027093b6e205889 Mon Sep 17 00:00:00 2001
+From: Dmitrii Sharshakov <d3dx12.xx@gmail.com>
+Date: Thu, 1 Jan 2026 13:33:41 +0100
+Subject: [PATCH] src/mgr: make enum statically castable
+
+Fix the following compiler error:
+
+in-class initializer for static data member is not a constant expression
+
+Co-authored-by: Ilya Dryomov <idryomov@gmail.com>
+Signed-off-by: Dmitrii Sharshakov <d3dx12.xx@gmail.com>
+
+diff --git a/src/mgr/MetricTypes.h b/src/mgr/MetricTypes.h
+index 0f8ae16990f..37cafa2b92a 100644
+--- a/src/mgr/MetricTypes.h
++++ b/src/mgr/MetricTypes.h
+@@ -193,7 +193,7 @@ WRITE_CLASS_ENCODER(MetricReportMessage);
+ 
+ // variant for sending configure message to mgr clients
+ 
+-enum MetricConfigType {
++enum MetricConfigType : uint32_t {
+   METRIC_CONFIG_TYPE_OSD = 0,
+   METRIC_CONFIG_TYPE_MDS = 1,
+ };
+-- 
+2.49.1
+
