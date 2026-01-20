@@ -1,0 +1,15 @@
+--- a/caffe2/CMakeLists.txt	2026-01-19 20:28:45.127614622 +0100
++++ b/caffe2/CMakeLists.txt	2026-01-19 20:32:04.509213652 +0100
+@@ -1495,6 +1495,12 @@
+   endif()
+ endif()
+ 
++if(USE_DISTRIBUTED)
++  if(USE_MPI)
++    find_package(httplib REQUIRED)
++    target_link_libraries(torch_cpu PRIVATE httplib::httplib)
++  endif()
++endif()
+ if(NOT INTERN_BUILD_MOBILE)
+   if(${CAFFE2_LINK_LOCAL_PROTOBUF})
+     target_link_libraries(torch_cpu INTERFACE protobuf::libprotobuf)

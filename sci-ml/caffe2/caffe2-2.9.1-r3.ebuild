@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -164,6 +164,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.9.0-cmake.patch
 	"${FILESDIR}"/${PN}-2.9.0-rocm-distributed-link.patch
 	"${FILESDIR}"/${P}-CCCL31.patch
+	"${FILESDIR}"/${P}-torch_cpu.patch
 )
 
 src_prepare() {
