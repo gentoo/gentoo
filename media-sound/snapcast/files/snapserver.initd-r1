@@ -1,0 +1,14 @@
+#!/sbin/openrc-run
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name=snapserver
+command="/usr/bin/snapserver"
+command_args="${SNAPSERVER_OPTS}"
+command_user="${SNAPSERVER_USER:-snapserver:snapserver}"
+command_background=true
+pidfile="/run/${RC_SVCNAME}.pid"
+
+depend() {
+	use avahi-daemon
+}

@@ -1,0 +1,5 @@
+# conf.d file for snapserver
+SNAPSERVER_USER="snapserver:snapserver"
+
+# For all command line options, please see `snapserver -hh`
+SNAPSERVER_OPTS="--logging.sink=system --server.datadir=/var/lib/snapserver"
