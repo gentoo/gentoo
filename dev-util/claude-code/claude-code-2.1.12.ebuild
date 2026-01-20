@@ -70,8 +70,3 @@ pkg_preinst() {
 		mv "${ROOT}/etc/${PN}/policies.json" "${ROOT}/etc/${PN}/managed-settings.json"
 	fi
 }
-
-pkg_postinst() {
-	elog "As of claude-code 2.0.61, the jetbrains plugin is no longer bundled."
-	elog "Users of the jetbrains IDE plugin should source it elsewhere."
-}
