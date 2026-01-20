@@ -92,7 +92,7 @@ src_install() {
 
 	fperms 4711 /opt/cursor/chrome-sandbox
 	pax-mark m /opt/cursor/cursor
-	dosym ../cursor/cursor /opt/bin/cursor
+	dosym ../cursor/bin/cursor /opt/bin/cursor
 
 	local EXEC_EXTRA_FLAGS=()
 	if use wayland; then
