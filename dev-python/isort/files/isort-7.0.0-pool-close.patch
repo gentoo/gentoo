@@ -1,0 +1,29 @@
+From efe21278fbef3ace7d677d17f6ae5213c927a1db Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Tue, 20 Jan 2026 09:03:13 +0100
+Subject: [PATCH] Fix closing multiprocessing.Pool()
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This is simpler equivalent to https://github.com/PyCQA/isort/pull/2442.
+
+Signed-off-by: Michał Górny <mgorny@gentoo.org>
+---
+ isort/main.py | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/isort/main.py b/isort/main.py
+index f5408f69..cdd45b1a 100644
+--- a/isort/main.py
++++ b/isort/main.py
+@@ -1246,6 +1246,9 @@ def main(argv: Sequence[str] | None = None, stdin: TextIOWrapper | None = None)
+ 
+             is_no_attempt = False
+ 
++        if jobs:
++            executor.close()
++
+         num_skipped += len(skipped)
+         if num_skipped and not config.quiet:
+             if config.verbose:
