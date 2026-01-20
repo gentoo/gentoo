@@ -3,11 +3,15 @@
 
 EAPI=8
 
-inherit fcaps
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/martinlambers.asc
+inherit fcaps verify-sig
 
 DESCRIPTION="An SMTP client and SMTP plugin for mail user agents such as Mutt"
 HOMEPAGE="https://marlam.de/msmtp/"
-SRC_URI="https://marlam.de/msmtp/releases/${P}.tar.xz"
+SRC_URI="
+	https://marlam.de/msmtp/releases/${P}.tar.xz
+	verify-sig? ( https://marlam.de/msmtp/releases/${P}.tar.xz.sig )
+"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -53,6 +57,7 @@ RDEPEND="${DEPEND}
 BDEPEND="
 	doc? ( virtual/texi2dvi )
 	nls? ( sys-devel/gettext )
+	verify-sig? ( sec-keys/openpgp-keys-martinlambers )
 	virtual/pkgconfig
 "
 
