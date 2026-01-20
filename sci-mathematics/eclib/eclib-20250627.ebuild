@@ -14,7 +14,7 @@ SRC_URI="https://github.com/JohnCremona/${PN}/releases/download/${PV}/${P}.tar.b
 LICENSE="GPL-2+ LGPL-2.1+"
 
 SLOT="0/14"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv ~x86"
 IUSE="boost flint minimal test"
 RESTRICT="!test? ( test )"
 
