@@ -117,23 +117,6 @@ games-rpg/pokete
 net-misc/pulseaudio-dlna
 <www-client/seamonkey-2.53.23
 
-# Sam James <sam@gentoo.org> (2025-12-18)
-# Another change to multiprocessing broke Portage. >=sys-apps/portage-3.0.73-r2
-# is fixed, but a fixed version of Portage must be running in order to safely
-# upgrade or re-emerge Portage with >= Python 3.14.2. Mask until more users
-# have had a chance to upgrade Portage.
-#
-# This only affects users with non-default PYTHON_TARGETS (3.14) set.
-#
-# If you are unable to upgrade Portage, please manually edit
-# /usr/lib/python-exec/python3.14/emerge and /usr/lib/python-exec/python3.14/ebuild
-# by deleting the first 3 lines beginning with 'signal.signal(' (bug #967199).
-~app-doc/python-docs-3.14.2
-~dev-lang/python-3.14.2
-~dev-lang/python-0.3.14.2
-~dev-python/python-tests-3.14.2
-~dev-python/python-tests-0.3.14.2
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-12-14)
 # Still depends on Qt5 with no upstream porting activity. Bug #960220
 # Removal on 2026-01-15
@@ -176,21 +159,6 @@ games-strategy/hedgewars
 # Please use the games-action/prismlauncher fork instead.
 # Removal on 2026-01-05. Bug 967108.
 games-action/multimc-bin
-
-# Michał Górny <mgorny@gentoo.org> (2025-12-03)
-# Upstream changed how multiprocessing shares data between processes,
-# which means the upgrade randomly breaks some currently running Python
-# applications, notably Portage.
-~app-doc/python-docs-3.13.10
-~app-doc/python-docs-3.14.1
-~dev-lang/python-3.13.10
-~dev-lang/python-0.3.13.10
-~dev-lang/python-3.14.1
-~dev-lang/python-0.3.14.1
-~dev-python/python-tests-3.13.10
-~dev-python/python-tests-0.3.13.10
-~dev-python/python-tests-3.14.1
-~dev-python/python-tests-0.3.14.1
 
 # Jaco Kroon <jkroon@gentoo.org> (2025-12-02)
 # Dead upstream, limited usefulness.  If you're still using it please reach out
