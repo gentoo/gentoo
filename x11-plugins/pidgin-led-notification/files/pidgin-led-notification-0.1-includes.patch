@@ -1,0 +1,33 @@
+Bug: https://bugs.gentoo.org/952077
+
+--- a/led-notification.c
++++ b/led-notification.c
+@@ -29,17 +29,17 @@
+ #include <string.h>
+ #include <stdio.h>
+ 
+-#include "notify.h"
+-#include "plugin.h"
+-#include "version.h"
+-#include "debug.h"
+-#include "cmds.h"
+-#include "gtkconv.h"
+-#include "prefs.h"
+-#include "gtkprefs.h"
+-#include "gtkutils.h"
+-#include "gtkplugin.h"
+-#include "gtkblist.h"
++#include <libpurple/notify.h>
++#include <libpurple/plugin.h>
++#include <libpurple/version.h>
++#include <libpurple/debug.h>
++#include <libpurple/cmds.h>
++#include <pidgin/gtkconv.h>
++#include <libpurple/prefs.h>
++#include <pidgin/gtkprefs.h>
++#include <pidgin/gtkutils.h>
++#include <pidgin/gtkplugin.h>
++#include <pidgin/gtkblist.h>
+ 
+ void led_set(gboolean state) {
+ 	const char *filename=purple_prefs_get_string(
