@@ -1,0 +1,67 @@
+From 8f97a5c0324dad2da7752b8676f931ff9b582435 Mon Sep 17 00:00:00 2001
+From: serge-sans-paille <serge.guelton@telecom-bretagne.eu>
+Date: Wed, 19 Nov 2025 10:18:09 +0100
+Subject: [PATCH] Don't test float128 when it does not exist in numpy
+
+---
+ pythran/tests/test_conversion.py | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/pythran/tests/test_conversion.py b/pythran/tests/test_conversion.py
+index 6aa0a829b76da0f2b36ffd66efd9f8389e666444..76dae7c4ec7693459e4679db35b7cb26575c2cf3 100644
+--- a/pythran/tests/test_conversion.py
++++ b/pythran/tests/test_conversion.py
+@@ -257,12 +257,14 @@ def test_builtin_type9(self):
+ 
+     def test_simple_meta_types(self):
+         types = (complex, float, int, bool, str,
+-                 np.float128, np.float64, np.float32,
+-                 np.complex256, np.complex128, np.complex64,
++                 np.float64, np.float32,
++                 np.complex128, np.complex64,
+                  np.uint64, np.uint32, np.uint16, np.uint8,
+                  np.int64, np.int32, np.int16, np.int8,
+                  np.int64, np.int32, np.int16, np.int8,
+                  )
++        if has_float128:
++            types += np.float128, np.complex256
+         for i, ty in enumerate(types):
+             kwargs= {f"simple_meta_types_{i}": [Type[ty]]}
+             self.run_test(f"def simple_meta_types_{i}(obj): return obj()",
+
+From 6fb0815667cacb13c146f856666757d53f55fb14 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz@gentoo.org>
+Date: Sun, 18 Jan 2026 20:07:00 -0500
+Subject: [PATCH] mark numpy float128 tests as skippable when numpy lacks
+ float128 support
+
+Signed-off-by: Eli Schwartz <eschwartz@gentoo.org>
+---
+ pythran/tests/test_numpy_func2.py | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/pythran/tests/test_numpy_func2.py b/pythran/tests/test_numpy_func2.py
+index 2b1f31bef..ce29bb92d 100644
+--- a/pythran/tests/test_numpy_func2.py
++++ b/pythran/tests/test_numpy_func2.py
+@@ -5,6 +5,12 @@
+ 
+ from pythran.typing import NDArray, List, Tuple
+ 
++try:
++    numpy.float128
++    has_float128 = True
++except AttributeError:
++    has_float128 = False
++
+ 
+ np_version = version.parse(numpy.version.version)
+ 
+@@ -206,6 +212,7 @@ def test_convolve_2(self):
+                   numpy.arange(10,dtype=float),
+                   np_convolve_2=[NDArray[float,:],NDArray[float,:]])
+ 
++    @unittest.skipIf(not has_float128, 'not float128')
+     def test_convolve_2b(self):
+         self.run_test("def np_convolve_2b(a,b):\n from numpy import convolve\n return convolve(a,b)",
+                   numpy.arange(12,dtype=numpy.float128),

@@ -55,6 +55,10 @@ EPYTEST_PLUGINS=()
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
+PATCHES=(
+	"${FILESDIR}"/${P}-numpy-float128-tests.patch
+)
+
 src_configure() {
 	# vendored C++ headers -- use system copies
 	rm -r pythran/{boost,xsimd} || die
