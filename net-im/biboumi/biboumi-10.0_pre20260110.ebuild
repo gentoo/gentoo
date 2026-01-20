@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}"
 LICENSE="ZLIB"
 SLOT="0"
 
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 
 IUSE="+idn postgres +sqlite +ssl systemd test udns"
 
