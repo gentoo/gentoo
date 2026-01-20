@@ -75,7 +75,14 @@ pkg_setup() {
 }
 
 src_unpack() {
-	use verify-sig && verify-sig_verify_detached "${DISTDIR}"/${P}.tar.xz{,.asc}
+	if [[ ${PV} == 9999 ]] ; then
+		git-r3_src_unpack
+		return
+	fi
+
+	if use verify-sig; then
+		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.xz{,.asc}
+	fi
 
 	default
 }
