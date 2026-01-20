@@ -207,7 +207,6 @@ PATCHES=(
 	"${FILESDIR}/ceph-16.2.0-jaeger-system-boost.patch"
 	"${FILESDIR}/ceph-17.2.0-pybind-boost-1.74.patch"
 	"${FILESDIR}/ceph-17.2.0-findre2.patch"
-	"${FILESDIR}/ceph-18.2.0-system-opentelemetry.patch"
 	"${FILESDIR}/ceph-17.2.0-osd_class_dir.patch"
 	# https://bugs.gentoo.org/866165
 	"${FILESDIR}/ceph-17.2.5-suppress-cmake-warning.patch"
@@ -219,8 +218,8 @@ PATCHES=(
 	"${FILESDIR}/ceph-18.2.4-liburing.patch"
 	"${FILESDIR}/ceph-18.2.4-spdk.patch"
 	"${FILESDIR}/ceph-19.2.1-isa-l.patch"
+	"${FILESDIR}/ceph-19.2.2-add-option-to-build-agains-system-opentelemetry.patch"
 	"${FILESDIR}/ceph-20.1.0-nvmeof.patch"
-	"${FILESDIR}/ceph-20.1.0-opentelemetry.patch"
 )
 
 check-reqs_export_vars() {
@@ -357,6 +356,9 @@ ceph_src_configure() {
 			-DWITH_JAEGER:BOOL=$(usex jaeger)
 			-DWITH_RADOSGW_SELECT_PARQUET:BOOL=$(usex parquet)
 		)
+		if use jaeger; then
+			mycmakeargs+=( -DWITH_SYSTEM_OPENTELEMETRY:BOOL=ON )
+		fi
 	else
 		mycmakeargs+=(
 			-DWITH_RADOSGW_SELECT_PARQUET:BOOL=OFF

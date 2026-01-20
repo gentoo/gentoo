@@ -1,0 +1,56 @@
+https://github.com/ceph/ceph/pull/66924
+
+From 8cf106cc799e641d51ab56cbf23903d9c994f924 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Wed, 14 Jan 2026 12:08:53 +0800
+Subject: [PATCH] CMakeLists.txt: add option to build agains system
+ opentelemetry
+
+In Gentoo, if build against system opentelemetry, cmake failed with:
+
+> CMake Error at src/CMakeLists.txt:443 (target_link_libraries):
+>   The link interface of target "jaeger_base" contains:
+>
+>     opentelemetry::libopentelemetry
+>
+>   but the target was not found.  Possible reasons include:
+>
+>     * There is a typo in the target name.
+>     * A find_package call is missing for an IMPORTED target.
+>     * An ALIAS target is missing.
+
+See also: https://bugs.gentoo.org/930064
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 51842026837..19dbba5e16d 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -384,13 +384,19 @@ if(WITH_BREAKPAD)
+     IMPORTED_LINK_INTERFACE_LANGUAGES "CXX")
+ endif(WITH_BREAKPAD)
+ 
++option(WITH_SYSTEM_OPENTELEMETRY "build against system opentelemetry" OFF)
+ if(WITH_JAEGER)
+   find_package(thrift 0.13.0 REQUIRED)
+-  include(BuildOpentelemetry)
+-  build_opentelemetry()
+   add_library(jaeger_base INTERFACE)
+-  target_link_libraries(jaeger_base INTERFACE opentelemetry::libopentelemetry
+-    thrift::libthrift)
++  if(WITH_SYSTEM_OPENTELEMETRY)
++    find_package(opentelemetry-cpp REQUIRED)
++    target_link_libraries(jaeger_base INTERFACE ${OPENTELEMETRY_CPP_LIBRARIES})
++  else()
++    include(BuildOpentelemetry)
++    build_opentelemetry()
++    target_link_libraries(jaeger_base INTERFACE opentelemetry::libopentelemetry)
++  endif()
++  target_link_libraries(jaeger_base INTERFACE thrift::libthrift)
+ endif()
+ 
+ set(mds_files)
+-- 
+2.49.1
+
