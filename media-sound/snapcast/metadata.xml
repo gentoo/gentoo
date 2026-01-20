@@ -4,7 +4,9 @@
 	<!-- maintainer-needed -->
 	<use>
 		<flag name="client">Build and install Snapcast client component</flag>
+		<flag name="pipewire">Build with PipeWire support</flag>
 		<flag name="server">Build and install Snapcast server component</flag>
+		<flag name="soxr">Build with audio resampler support with <pkg>media-libs/soxr</pkg></flag>
 		<flag name="tremor">Build with TREMOR version of vorbis</flag>
 	</use>
 	<upstream>
@@ -12,8 +14,8 @@
 			<name>Johannes Pohl</name>
 			<email>github@badaix.de</email>
 		</maintainer>
-		<bugs-to>https://github.com/badaix/snapcast/issues</bugs-to>
-		<remote-id type="github">badaix/snapcast</remote-id>
+		<bugs-to>https://github.com/snapcast/snapcast/issues</bugs-to>
+		<remote-id type="github">snapcast/snapcast</remote-id>
 	</upstream>
 	<longdescription lang="en">
 		Snapcast plays audio streams time sychronized on multiple devices over 

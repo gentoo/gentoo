@@ -1,0 +1,13 @@
+We don't want any automagic lint probing.
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -98,9 +98,6 @@ else()
+ endif()
+ 
+ include(GNUInstallDirs)
+-include(${CMAKE_SOURCE_DIR}/cmake/clang-tidy.cmake)
+-include(${CMAKE_SOURCE_DIR}/cmake/cppcheck.cmake)
+-include(${CMAKE_SOURCE_DIR}/cmake/reformat.cmake)
+ 
+ if(NOT WIN32)
+   option(BUILD_SERVER "Build Snapserver" ON) # no Windows server for now

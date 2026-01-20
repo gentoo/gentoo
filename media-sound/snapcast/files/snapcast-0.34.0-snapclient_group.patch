@@ -1,0 +1,11 @@
+--- a/extras/package/rpm/snapclient.service
++++ b/extras/package/rpm/snapclient.service
+@@ -8,7 +8,7 @@ After=network-online.target time-sync.target sound.target avahi-daemon.service
+ EnvironmentFile=-/etc/default/snapclient
+ ExecStart=/usr/bin/snapclient --logsink=system $SNAPCLIENT_OPTS
+ User=snapclient
+-Group=snapclient
++Group=audio
+ Restart=on-failure
+ 
+ [Install]

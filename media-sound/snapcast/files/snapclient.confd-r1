@@ -1,0 +1,7 @@
+# conf.d file for snapclient
+SNAPCLIENT_USER="snapclient:audio"
+
+# snapclient [options...] [url]
+# For all command line options, please see `man snapclient.1`
+# if ’url’ is not configured, snapclient defaults to ’tcp://_snapcast._tcp’
+SNAPCLIENT_OPTS="--logsink=system"

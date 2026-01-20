@@ -1,0 +1,19 @@
+avoid automagic for soxr
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -256,12 +256,10 @@ if(NOT WIN32 AND NOT ANDROID)
+     endif()
+   endif()
+ 
+-  pkg_search_module(SOXR soxr)
+-  if(SOXR_FOUND)
++  if(BUILD_WITH_SOXR)
++    pkg_search_module(SOXR REQUIRED soxr)
+     add_compile_definitions(HAS_SOXR)
+-  else()
+-    message(STATUS "soxr not found")
+-  endif(SOXR_FOUND)
++  endif()
+ 
+   if(BUILD_WITH_FLAC)
+     pkg_search_module(FLAC REQUIRED flac)
