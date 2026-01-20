@@ -1,0 +1,28 @@
+From 3390feb63569bb37dd38f78adf2de470000cb6c8 Mon Sep 17 00:00:00 2001
+From: Carl Schwan <carlschwan@kde.org>
+Date: Wed, 21 Jan 2026 10:18:34 +0100
+Subject: [PATCH] Fix build with older kmime version
+
+---
+ src/maildirimport.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/maildirimport.cpp b/src/maildirimport.cpp
+index efdbf86b..aa60fee5 100644
+--- a/src/maildirimport.cpp
++++ b/src/maildirimport.cpp
+@@ -83,7 +83,11 @@ void MaildirImport::import(const QUrl &maildir, const QUrl &destinationDir)
+                 msg->setContent(mailData);
+                 msg->parse();
+ 
++#if KMIME_VERSION >= QT_VERSION_CHECK(6, 6, 44)
+                 const auto subject = msg->subject(KMime::CreatePolicy::Create)->asUnicodeString();
++#else
++                const auto subject = msg->subject(true)->asUnicodeString();
++#endif
+                 const auto content = msg->decodedBody();
+ 
+                 QFile markdownFile(destinationDir.toLocalFile() + u'/' + cleanFileName(subject) + u".md"_s);
+-- 
+GitLab
+
