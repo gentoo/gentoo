@@ -1,4 +1,4 @@
-# Copyright 2009-2025 Gentoo Authors
+# Copyright 2009-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -483,9 +483,11 @@ src_prepare() {
 		"${FILESDIR}/${PN}-138-nodejs-version-check.patch"
 	)
 
-	PATCHES+=(
-		"${WORKDIR}/copium/cr143-libsync-__BEGIN_DECLS.patch"
-	)
+	if use !bundled-toolchain; then
+		PATCHES+=(
+			"${WORKDIR}/copium/cr143-libsync-__BEGIN_DECLS.patch"
+		)
+	fi
 
 	# https://issues.chromium.org/issues/442698344
 	# Unreleased fontconfig changed magic numbers and google have rolled to this version
