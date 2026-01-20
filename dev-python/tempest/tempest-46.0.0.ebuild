@@ -1,4 +1,4 @@
-# Copyright 2021-2025 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -46,6 +46,7 @@ RDEPEND="
 BDEPEND="
 	>=dev-python/pbr-2.1.0[${PYTHON_USEDEP}]
 	test? (
+		${RDEPEND}
 		>=dev-python/oslotest-3.2.0[${PYTHON_USEDEP}]
 		dev-python/stestr[${PYTHON_USEDEP}]
 		<dev-python/testtools-2.8.0[${PYTHON_USEDEP}]
