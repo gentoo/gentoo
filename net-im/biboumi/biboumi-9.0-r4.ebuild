@@ -1,4 +1,4 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit cmake
 MY_PV="${PV/_/-}"
 
 DESCRIPTION="XMPP gateway to IRC"
-HOMEPAGE="https://biboumi.louiz.org/"
+HOMEPAGE="https://biboumi.codeberg.page"
 SRC_URI="
 	https://git.louiz.org/biboumi/snapshot/biboumi-${MY_PV}.tar.xz
 	https://lab.louiz.org/flow/biboumi/-/commit/f9d58a44871931ef9b60354fade6f8d7b24cc668.patch ->
