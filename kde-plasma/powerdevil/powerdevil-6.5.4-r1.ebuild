@@ -66,6 +66,7 @@ RDEPEND="${COMMON_DEPEND}
 "
 BDEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[wayland]
+	dev-util/wayland-scanner
 	>=kde-frameworks/kcmutils-${KFMIN}:6
 "
 
