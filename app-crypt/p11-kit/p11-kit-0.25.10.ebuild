@@ -1,14 +1,18 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
-inherit shell-completion meson-multilib python-any-r1
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/p11-kit.asc
+inherit shell-completion meson-multilib python-any-r1 verify-sig
 
 DESCRIPTION="Provides a standard configuration setup for installing PKCS#11"
 HOMEPAGE="https://p11-glue.github.io/p11-glue/p11-kit.html"
-SRC_URI="https://github.com/p11-glue/p11-kit/releases/download/${PV}/${P}.tar.xz"
+SRC_URI="
+	https://github.com/p11-glue/p11-kit/releases/download/${PV}/${P}.tar.xz
+	verify-sig? ( https://github.com/p11-glue/p11-kit/releases/download/${PV}/${P}.tar.xz.sig )
+"
 
 LICENSE="MIT"
 SLOT="0"
@@ -30,6 +34,7 @@ BDEPEND="
 	virtual/pkgconfig
 	gtk-doc? ( dev-util/gtk-doc )
 	nls? ( sys-devel/gettext )
+	verify-sig? ( sec-keys/openpgp-keys-p11-kit )
 "
 
 src_prepare() {
