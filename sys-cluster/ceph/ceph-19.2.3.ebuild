@@ -217,7 +217,6 @@ PATCHES=(
 	"${FILESDIR}/ceph-17.2.3-flags.patch"
 	# https://bugs.gentoo.org/866165
 	"${FILESDIR}/ceph-17.2.5-suppress-cmake-warning.patch"
-	"${FILESDIR}/ceph-17.2.5-gcc13-deux.patch"
 	# https://bugs.gentoo.org/905626
 	"${FILESDIR}/ceph-17.2.6-arrow-flatbuffers-c++14.patch"
 	# https://bugs.gentoo.org/868891

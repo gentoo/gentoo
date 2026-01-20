@@ -211,7 +211,6 @@ PATCHES=(
 	"${FILESDIR}/ceph-17.2.0-osd_class_dir.patch"
 	# https://bugs.gentoo.org/866165
 	"${FILESDIR}/ceph-17.2.5-suppress-cmake-warning.patch"
-	"${FILESDIR}/ceph-17.2.5-gcc13-deux.patch"
 	# https://bugs.gentoo.org/868891
 	"${FILESDIR}/ceph-18.2.0-cyclic-deps.patch"
 	# https://bugs.gentoo.org/907739
