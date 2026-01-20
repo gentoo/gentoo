@@ -1,0 +1,15 @@
+Fixes:
+
+src/cpp/flann/mpi/flann_mpi_client.cpp:21:5: error: ‘gettimeofday’ was not declared in this scope
+   21 |     gettimeofday(&start_time_,NULL);
+      |     ^~~~~~~~~~~~
+
+--- a/src/cpp/flann/mpi/flann_mpi_client.cpp
++++ b/src/cpp/flann/mpi/flann_mpi_client.cpp
+@@ -1,5 +1,5 @@
+ #include <stdio.h>
+-#include <time.h>
++#include <sys/time.h>
+ 
+ #include <cstdlib>
+ #include <iostream>
