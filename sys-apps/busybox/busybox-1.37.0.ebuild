@@ -17,7 +17,7 @@ else
 	MY_P="${PN}-${PV/_/-}"
 	SRC_URI="https://www.busybox.net/downloads/${MY_P}.tar.bz2"
 	# unstable release - no keywords
-	# KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+	# KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 S="${WORKDIR}/${MY_P}"
 
@@ -42,7 +42,10 @@ DEPEND="${RDEPEND}
 		selinux? ( sys-libs/libselinux[static-libs(+)] )
 	)
 	sys-kernel/linux-headers"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	virtual/pkgconfig
+	make-symlinks? ( >=sys-apps/coreutils-9.2 )
+"
 
 DISABLE_AUTOFORMATTING=yes
 DOC_CONTENTS='
@@ -87,8 +90,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.37.0-skip-dynamic-relocations.patch
 
 	"${FILESDIR}"/${PN}-1.37.0-sha-ni-fix.patch
-
-	# "${FILESDIR}"/${P}-*.patch
 )
 
 src_prepare() {
@@ -135,7 +136,6 @@ src_configure() {
 
 	# check for a busybox config before making one of our own.
 	# if one exist lets return and use it.
-
 	restore_config .config
 	if [ -f .config ]; then
 		yes "" | bbmake -j1 oldconfig
@@ -147,8 +147,8 @@ src_configure() {
 	# setting SKIP_SELINUX skips searching for selinux at this stage. We don't
 	# need to search now in case we end up not needing it after all.
 	# setup the config file
-	bbmake -j1 allyesconfig SKIP_SELINUX=$(usex selinux n y) #620918
-	# nommu forces a bunch of things off which we want on #387555
+	bbmake -j1 allyesconfig SKIP_SELINUX=$(usex selinux n y) # bug #620918
+	# nommu forces a bunch of things off which we want on bug #387555
 	busybox_config_option n NOMMU
 	sed -i '/^#/d' .config
 	yes "" | bbmake -j1 oldconfig SKIP_SELINUX=$(usex selinux n y) #620918
@@ -166,7 +166,7 @@ src_configure() {
 	# CONFIG_MODPROBE_SMALL=y disables depmod.c and uses a smaller one that
 	# does not support -b. Setting this to no creates slightly larger and
 	# slightly more useful modutils
-	busybox_config_option n MODPROBE_SMALL #472464
+	busybox_config_option n MODPROBE_SMALL # bug #472464
 	# triming the BSS size may be dangerous
 	busybox_config_option n FEATURE_USE_BSS_TAIL
 
@@ -252,7 +252,7 @@ src_compile() {
 }
 
 src_install() {
-	unset KBUILD_OUTPUT #88088
+	unset KBUILD_OUTPUT # bug #88088
 	save_config .config
 
 	into /
@@ -272,7 +272,7 @@ src_install() {
 		use make-symlinks || dosym /bin/bb /sbin/mdev
 		cp "${S}"/examples/mdev_fat.conf "${ED}"/etc/mdev.conf || die
 		if [[ ! "$(get_libdir)" == "lib" ]]; then
-			#831251 - replace lib with lib64 where appropriate
+			# bug #831251 - replace lib with lib64 where appropriate
 			sed -i -e "s:/lib/:/$(get_libdir)/:g" "${ED}"/etc/mdev.conf || die
 		fi
 
@@ -356,6 +356,7 @@ src_install() {
 pkg_preinst() {
 	if use make-symlinks ; then
 		mv "${ED}"/usr/share/${PN}/busybox-links.tar "${T}"/ || die
+		rmdir "${ED}"/usr/share/${PN} || die
 	fi
 }
 
@@ -364,11 +365,13 @@ pkg_postinst() {
 
 	if use make-symlinks ; then
 		cd "${T}" || die
-		mkdir _install
+		mkdir -p _install || die
 		tar xf busybox-links.tar -C _install || die
-		# 907432: cp -n returns error if it skips any file, but that is expected here
-		# TODO: check if a new coreutils release has a replacement option
-		cp -nvpPR _install/* "${ROOT}"/
+		# Use --update=none from coreutils-9.2 instead of -n, add || die
+		# Skip legacy linuxrc link, if anyone really needs it they can create it manually
+		cp -vpP --update=none _install/bin/* "${ROOT}"/bin/ || die
+		cp -vpP --update=none _install/sbin/* "${ROOT}"/sbin/ || die
+		cp -vpP --update=none _install/usr/bin/* "${ROOT}"/usr/bin/ || die
 	fi
 
 	if use sep-usr ; then
