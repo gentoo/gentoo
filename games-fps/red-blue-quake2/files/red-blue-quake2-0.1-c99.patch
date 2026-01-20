@@ -1,0 +1,138 @@
+Bug: https://bugs.gentoo.org/926464
+
+--- a/client/menu.c
++++ b/client/menu.c
+@@ -1402,8 +1402,8 @@
+ */
+ static int credits_start_time;
+ static const char **credits;
+-static char *creditsIndex[256];
+-static char *creditsBuffer;
++static const char *creditsIndex[256];
++static void *creditsBuffer;
+ static const char *idcredits[] =
+ {
+ 	"+QUAKE II BY ID SOFTWARE",
+@@ -2603,7 +2603,7 @@
+ 	s_startmap_list.generic.x	= 0;
+ 	s_startmap_list.generic.y	= 0;
+ 	s_startmap_list.generic.name	= "initial map";
+-	s_startmap_list.itemnames = mapnames;
++	s_startmap_list.itemnames = (const char **) mapnames;
+ 
+ 	s_rules_box.generic.type = MTYPE_SPINCONTROL;
+ 	s_rules_box.generic.x	= 0;
+@@ -3395,7 +3395,7 @@
+ 
+ static void ModelCallback( void *unused )
+ {
+-	s_player_skin_box.itemnames = s_pmi[s_player_model_box.curvalue].skindisplaynames;
++	s_player_skin_box.itemnames = (const char **) s_pmi[s_player_model_box.curvalue].skindisplaynames;
+ 	s_player_skin_box.curvalue = 0;
+ }
+ 
+@@ -3684,7 +3684,7 @@
+ 	s_player_model_box.generic.callback = ModelCallback;
+ 	s_player_model_box.generic.cursor_offset = -48;
+ 	s_player_model_box.curvalue = currentdirectoryindex;
+-	s_player_model_box.itemnames = s_pmnames;
++	s_player_model_box.itemnames = (const char **) s_pmnames;
+ 
+ 	s_player_skin_title.generic.type = MTYPE_SEPARATOR;
+ 	s_player_skin_title.generic.name = "skin";
+@@ -3698,7 +3698,7 @@
+ 	s_player_skin_box.generic.callback = 0;
+ 	s_player_skin_box.generic.cursor_offset = -48;
+ 	s_player_skin_box.curvalue = currentskinindex;
+-	s_player_skin_box.itemnames = s_pmi[currentdirectoryindex].skindisplaynames;
++	s_player_skin_box.itemnames = (const char **) s_pmi[currentdirectoryindex].skindisplaynames;
+ 
+ 	s_player_hand_title.generic.type = MTYPE_SEPARATOR;
+ 	s_player_hand_title.generic.name = "handedness";
+--- a/ctf/g_items.c
++++ b/ctf/g_items.c
+@@ -2211,7 +2211,7 @@
+ 		"item_flag_team1",
+ 		CTFPickup_Flag,
+ 		NULL,
+-		CTFDrop_Flag, //Should this be null if we don't want players to drop it manually?
++		NULL,
+ 		NULL,
+ 		"ctf/flagtk.wav",
+ 		"players/male/flag1.md2", EF_FLAG1,
+@@ -2234,7 +2234,7 @@
+ 		"item_flag_team2",
+ 		CTFPickup_Flag,
+ 		NULL,
+-		CTFDrop_Flag, //Should this be null if we don't want players to drop it manually?
++		NULL,
+ 		NULL,
+ 		"ctf/flagtk.wav",
+ 		"players/male/flag2.md2", EF_FLAG2,
+--- a/game/m_boss31.c
++++ b/game/m_boss31.c
+@@ -28,7 +28,7 @@
+ #include "g_local.h"
+ #include "m_boss31.h"
+ 
+-extern SP_monster_makron (edict_t *self);
++extern void SP_monster_makron (edict_t *self);
+ qboolean visible (edict_t *self, edict_t *other);
+ 
+ static int	sound_pain1;
+--- a/game/q_shared.h
++++ b/game/q_shared.h
+@@ -32,6 +32,7 @@
+ #endif
+ 
+ #include <assert.h>
++#include <ctype.h>
+ #include <math.h>
+ #include <stdio.h>
+ #include <stdarg.h>
+--- a/linux/net_udp.c
++++ b/linux/net_udp.c
+@@ -25,6 +25,7 @@
+ #include <sys/socket.h>
+ #include <sys/time.h>
+ #include <netinet/in.h>
++#include <arpa/inet.h>
+ #include <netdb.h>
+ #include <sys/param.h>
+ #include <sys/ioctl.h>
+--- a/linux/q_shlinux.c
++++ b/linux/q_shlinux.c
+@@ -23,6 +23,12 @@
+ #include <stdio.h>
+ #include <dirent.h>
+ #include <unistd.h>
++#ifndef __USE_GNU /* mremap(2) + glibc */
++#define __USE_GNU
++#endif
++#ifndef _GNU_SOURCE /* mremap(2) + musl */
++#define _GNU_SOURCE
++#endif
+ #include <sys/mman.h>
+ #include <sys/time.h>
+ 
+--- a/linux/snd_linux.c
++++ b/linux/snd_linux.c
+@@ -54,7 +54,7 @@
+ 	extern uid_t saved_euid;
+ 
+ 	if (snd_inited)
+-		return;
++		return 0;
+ 
+ 	if (!snddevice) {
+ 		sndbits = Cvar_Get("sndbits", "16", CVAR_ARCHIVE);
+--- a/linux/rw_x11.c
++++ b/linux/rw_x11.c
+@@ -33,6 +33,7 @@
+ */
+ 
+ #include <ctype.h>
++#include <sys/mman.h>
+ #include <sys/time.h>
+ #include <sys/types.h>
+ #include <unistd.h>

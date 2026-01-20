@@ -1,0 +1,24 @@
+Bug: https://bugs.gentoo.org/948964
+
+--- a/ctf/q_shared.h
++++ b/ctf/q_shared.h
+@@ -52,7 +52,7 @@
+ #endif
+ 
+ typedef unsigned char 		byte;
+-typedef enum {false, true}	qboolean;
++typedef int			qboolean;
+ 
+ 
+ #ifndef NULL
+--- a/game/q_shared.h
++++ b/game/q_shared.h
+@@ -52,7 +52,7 @@
+ #endif
+ 
+ typedef unsigned char 		byte;
+-typedef enum {false, true}	qboolean;
++typedef int			qboolean;
+ 
+ 
+ #ifndef NULL
