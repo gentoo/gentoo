@@ -1,0 +1,43 @@
+From a166bdf73d3e3bfd362c239bbd58852faaad39c4 Mon Sep 17 00:00:00 2001
+From: Michael Cho <michael@michaelcho.dev>
+Date: Mon, 11 Aug 2025 22:04:59 -0400
+Subject: [PATCH] cmake: fix build with Boost 1.89.0
+
+Boost.System has been header-only since Boost 1.69 and will be dropping
+the compatibility stub library in Boost 1.89 (boostorg/system@7a495bb).
+Since GNU Radio uses Boost >= 1.69, the easy fix is to drop `system`
+from the `COMPONENTS` as recommended by upstream:
+`https://github.com/boostorg/system/issues/132#issuecomment-3146378680`
+
+Signed-off-by: Michael Cho <michael@michaelcho.dev>
+---
+ cmake/Modules/GnuradioConfig.cmake.in | 2 +-
+ cmake/Modules/GrBoost.cmake           | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/cmake/Modules/GnuradioConfig.cmake.in b/cmake/Modules/GnuradioConfig.cmake.in
+index 35042b74e95..91018562d57 100644
+--- a/cmake/Modules/GnuradioConfig.cmake.in
++++ b/cmake/Modules/GnuradioConfig.cmake.in
+@@ -13,7 +13,7 @@ list(INSERT CMAKE_MODULE_PATH 0 "${CMAKE_CURRENT_LIST_DIR}")
+ find_dependency(spdlog)
+ find_dependency(MPLIB)
+ 
+-set(BOOST_REQUIRED_COMPONENTS date_time program_options system regex thread)
++set(BOOST_REQUIRED_COMPONENTS date_time program_options regex thread)
+ 
+ if(NOT ENABLE_TESTING)
+     set(ENABLE_TESTING
+diff --git a/cmake/Modules/GrBoost.cmake b/cmake/Modules/GrBoost.cmake
+index 580d7100621..c7d85355284 100644
+--- a/cmake/Modules/GrBoost.cmake
++++ b/cmake/Modules/GrBoost.cmake
+@@ -14,7 +14,7 @@ set(__INCLUDED_GR_BOOST_CMAKE TRUE)
+ # Setup Boost and handle some system specific things
+ ########################################################################
+ 
+-set(BOOST_REQUIRED_COMPONENTS date_time program_options system regex thread)
++set(BOOST_REQUIRED_COMPONENTS date_time program_options regex thread)
+ 
+ if(UNIX
+    AND NOT BOOST_ROOT

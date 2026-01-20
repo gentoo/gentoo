@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -132,6 +132,8 @@ DEPEND="${RDEPEND}
 	)
 	zeromq? ( net-libs/cppzmq )
 "
+
+PATCHES=( "${FILESDIR}/${P}-boost-1.89.patch" ) # bug 969063
 
 src_prepare() {
 	xdg_environment_reset #534582
