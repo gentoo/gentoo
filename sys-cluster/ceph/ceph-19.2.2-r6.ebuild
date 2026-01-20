@@ -250,6 +250,7 @@ PATCHES=(
 	# https://bugs.gentoo.org/960812
 	"${FILESDIR}/ceph-19.2.2-silent-unused-variable-warning.patch"
 	"${FILESDIR}/ceph-19.2.2-src-mgr-make-enum-statically-castable.patch"
+	"${FILESDIR}/ceph-19.2.2-drop-export-dynamic.patch"
 )
 
 check-reqs_export_vars() {
