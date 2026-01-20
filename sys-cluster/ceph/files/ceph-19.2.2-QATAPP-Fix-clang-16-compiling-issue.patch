@@ -1,0 +1,175 @@
+https://github.com/intel/QATzip/commit/a71a7f210d4329582c95dbe859c46ddff1690f25
+
+patch on 'include/qz_utils.h' is removed because of not appliable to ceph
+
+From a71a7f210d4329582c95dbe859c46ddff1690f25 Mon Sep 17 00:00:00 2001
+From: Zhu Chengfei <chengfeix.zhu@intel.com>
+Date: Fri, 23 Aug 2024 06:34:26 -0400
+Subject: [PATCH] QATAPP-31772: Fix clang-16 compiling issue
+
+* Fix function declaration without a prototype
+* Fix no newline at end of file src/qatzip_sw.c
+* Fix compiling issue [-Wgnu-zero-variadic-macro-arguments]
+
+Signed-off-by: Zhu Chengfei <chengfeix.zhu@intel.com>
+Signed-off-by: David Qian <david.qian@intel.com>
+
+diff --git a/src/qatzip/src/qatzip_internal.h b/src/qatzip/src/qatzip_internal.h
+index 882c798..a784d53 100755
+--- a/src/qatzip/src/qatzip_internal.h
++++ b/src/qatzip/src/qatzip_internal.h
+@@ -448,7 +448,7 @@ void cleanUpInstMem(int i);
+ 
+ void qzMemDestory(void);
+ 
+-void streamBufferCleanup();
++void streamBufferCleanup(void);
+ 
+ //lz4 functions
+ unsigned long qzLZ4HeaderSz(void);
+diff --git a/src/qatzip/src/qatzip_lz4.c b/src/qatzip/src/qatzip_lz4.c
+index 8fd19ab..8ccd277 100644
+--- a/src/qatzip/src/qatzip_lz4.c
++++ b/src/qatzip/src/qatzip_lz4.c
+@@ -49,12 +49,12 @@
+ #include "qatzip_internal.h"
+ #include "qz_utils.h"
+ 
+-inline unsigned long qzLZ4HeaderSz()
++inline unsigned long qzLZ4HeaderSz(void)
+ {
+     return QZ_LZ4_HEADER_SIZE;
+ }
+ 
+-inline unsigned long qzLZ4FooterSz()
++inline unsigned long qzLZ4FooterSz(void)
+ {
+     return QZ_LZ4_FOOTER_SIZE;
+ }
+diff --git a/src/qatzip/src/qatzip_stream.c b/src/qatzip/src/qatzip_stream.c
+index 307e7db..418daf3 100644
+--- a/src/qatzip/src/qatzip_stream.c
++++ b/src/qatzip/src/qatzip_stream.c
+@@ -125,7 +125,7 @@ static inline int removeNodeFromList(StreamBuffNode_T *node,
+     return SUCCESS;
+ }
+ 
+-void streamBufferCleanup()
++void streamBufferCleanup(void)
+ {
+     StreamBuffNode_T *node;
+     StreamBuffNode_T *next;
+diff --git a/src/qatzip/test/bt.c b/src/qatzip/test/bt.c
+index 8382a2b..7f788cc 100755
+--- a/src/qatzip/test/bt.c
++++ b/src/qatzip/test/bt.c
+@@ -42,7 +42,7 @@
+ 
+ #define DEFAULT_BUF_LEN (256*1024)
+ 
+-void usage()
++void usage(void)
+ {
+     printf("-f fit decompress buffers to size (default full buffers)\n");
+     printf("-s skip specific number of bytes\n");
+diff --git a/src/qatzip/test/main.c b/src/qatzip/test/main.c
+index 9329142..b43de11 100755
+--- a/src/qatzip/test/main.c
++++ b/src/qatzip/test/main.c
+@@ -196,10 +196,9 @@ static bool g_perf_svm = false;
+ 
+ static struct timeval g_timers[100][100];
+ static struct timeval g_timer_start;
+-extern void dumpAllCounters();
++extern void dumpAllCounters(void);
+ static int test_thread_safe_flag = 0;
+ extern processData_T g_process;
+-extern int errno;
+ 
+ QzBlock_T *parseFormatOption(char *buf)
+ {
+diff --git a/src/qatzip/utils/qzip.c b/src/qatzip/utils/qzip.c
+index 9abf7cf..1a23535 100644
+--- a/src/qatzip/utils/qzip.c
++++ b/src/qatzip/utils/qzip.c
+@@ -754,7 +754,7 @@ void processFile(QzSession_T *sess, const char *in_name,
+     }
+ }
+ 
+-void version()
++void version(void)
+ {
+     char const *const *p = g_license_msg;
+ 
+diff --git a/src/qatzip/utils/qzip.h b/src/qatzip/utils/qzip.h
+index aebaf83..f60af04 100644
+--- a/src/qatzip/utils/qzip.h
++++ b/src/qatzip/utils/qzip.h
+@@ -655,7 +655,7 @@ Qz7zStreamsInfo_T *resolveMainStreamsInfo(FILE *fp);
+ Qz7zEndHeader_T *resolveEndHeader(FILE *fp, Qz7zSignatureHeader_T *sheader);
+ 
+ /* create catagory list */
+-QzCatagoryTable_T *createCatagoryList();
++QzCatagoryTable_T *createCatagoryList(void);
+ int scanFilesIntoCatagory(Qz7zItemList_T *the_list);
+ /*
+  * generate functions
+@@ -743,7 +743,7 @@ void displayStats(RunTimeList_T *time_list,
+ 
+ void tryHelp(void);
+ void help(void);
+-void version();
++void version(void);
+ char *qzipBaseName(char *fname);
+ QzSuffix_T getSuffix(const char *filename);
+ bool hasSuffix(const char *fname);
+@@ -801,6 +801,5 @@ extern const unsigned int g_bufsz_expansion_ratio[4];
+ extern char const g_short_opts[];
+ extern const struct option g_long_opts[];
+ extern const unsigned int USDM_ALLOC_MAX_SZ;
+-extern int errno;
+ 
+ #endif
+diff --git a/src/qatzip/utils/qzip_7z.c b/src/qatzip/utils/qzip_7z.c
+index 102440b..525e05e 100644
+--- a/src/qatzip/utils/qzip_7z.c
++++ b/src/qatzip/utils/qzip_7z.c
+@@ -2406,7 +2406,7 @@ QzListHead_T *qzListCreate(int num_per_node)
+     return p;
+ }
+ 
+-Qz7zSignatureHeader_T *generateSignatureHeader()
++Qz7zSignatureHeader_T *generateSignatureHeader(void)
+ {
+     Qz7zSignatureHeader_T  *header = qzMalloc(sizeof(Qz7zSignatureHeader_T), 0,
+                                      PINNED_MEM);
+@@ -2450,7 +2450,7 @@ Qz7zPackInfo_T *generatePackInfo(Qz7zItemList_T *the_list,
+     return pack;
+ }
+ 
+-static Qz7zCoder_T *generateCoder()
++static Qz7zCoder_T *generateCoder(void)
+ {
+ 
+     Qz7zCoder_T *coder = qzMalloc(sizeof(Qz7zCoder_T), 0, PINNED_MEM);
+@@ -2666,7 +2666,7 @@ Qz7zStreamsInfo_T *generateStreamsInfo(Qz7zItemList_T *the_list,
+     return streams;
+ }
+ 
+-Qz7zArchiveProperty_T *generatePropertyInfo()
++Qz7zArchiveProperty_T *generatePropertyInfo(void)
+ {
+     Qz7zArchiveProperty_T *property = qzMalloc(sizeof(Qz7zArchiveProperty_T), 0,
+                                       PINNED_MEM);
+@@ -2696,7 +2696,7 @@ Qz7zEndHeader_T *generateEndHeader(Qz7zItemList_T *the_list,
+     return header;
+ }
+ 
+-QzCatagoryTable_T *createCatagoryList()
++QzCatagoryTable_T *createCatagoryList(void)
+ {
+     QzCatagoryTable_T  *cat_tbl;
+     cat_tbl = malloc(sizeof(QzCatagoryTable_T));
+-- 
+2.49.1
+

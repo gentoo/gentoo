@@ -1,0 +1,130 @@
+https://github.com/ceph/ceph/commit/a4b9bf76a2c04daf25799ae2785a700d204ce20c
+
+From a4b9bf76a2c04daf25799ae2785a700d204ce20c Mon Sep 17 00:00:00 2001
+From: Dmitrii Sharshakov <d3dx12.xx@gmail.com>
+Date: Thu, 1 Jan 2026 13:32:07 +0100
+Subject: [PATCH] rbd: make enums statically castable
+
+Fix the following compiler error:
+
+in-class initializer for static data member is not a constant expression
+
+Co-authored-by: Ilya Dryomov <idryomov@gmail.com>
+Signed-off-by: Dmitrii Sharshakov <d3dx12.xx@gmail.com>
+
+diff --git a/src/cls/rbd/cls_rbd_types.h b/src/cls/rbd/cls_rbd_types.h
+index cd7cad2e88d..c81d49bb6b3 100644
+--- a/src/cls/rbd/cls_rbd_types.h
++++ b/src/cls/rbd/cls_rbd_types.h
+@@ -423,7 +423,7 @@ struct GroupSpec {
+ 
+ WRITE_CLASS_ENCODER(GroupSpec);
+ 
+-enum SnapshotNamespaceType {
++enum SnapshotNamespaceType : uint32_t {
+   SNAPSHOT_NAMESPACE_TYPE_USER   = 0,
+   SNAPSHOT_NAMESPACE_TYPE_GROUP  = 1,
+   SNAPSHOT_NAMESPACE_TYPE_TRASH  = 2,
+diff --git a/src/librbd/journal/Types.h b/src/librbd/journal/Types.h
+index a7d2f4ef446..544a1aca7bd 100644
+--- a/src/librbd/journal/Types.h
++++ b/src/librbd/journal/Types.h
+@@ -25,7 +25,7 @@ class Formatter;
+ namespace librbd {
+ namespace journal {
+ 
+-enum EventType {
++enum EventType : uint32_t {
+   EVENT_TYPE_AIO_DISCARD           = 0,
+   EVENT_TYPE_AIO_WRITE             = 1,
+   EVENT_TYPE_AIO_FLUSH             = 2,
+@@ -464,7 +464,7 @@ private:
+ 
+ // Journal Client data structures
+ 
+-enum ClientMetaType {
++enum ClientMetaType : uint32_t {
+   IMAGE_CLIENT_META_TYPE       = 0,
+   MIRROR_PEER_CLIENT_META_TYPE = 1,
+   CLI_CLIENT_META_TYPE         = 2
+diff --git a/src/librbd/mirroring_watcher/Types.h b/src/librbd/mirroring_watcher/Types.h
+index c837e208d3e..1d0c6b8b46b 100644
+--- a/src/librbd/mirroring_watcher/Types.h
++++ b/src/librbd/mirroring_watcher/Types.h
+@@ -18,7 +18,7 @@ namespace ceph { class Formatter; }
+ namespace librbd {
+ namespace mirroring_watcher {
+ 
+-enum NotifyOp {
++enum NotifyOp : uint32_t {
+   NOTIFY_OP_MODE_UPDATED  = 0,
+   NOTIFY_OP_IMAGE_UPDATED = 1
+ };
+diff --git a/src/librbd/trash_watcher/Types.h b/src/librbd/trash_watcher/Types.h
+index ba6cd9ff2f8..b3b42ba2163 100644
+--- a/src/librbd/trash_watcher/Types.h
++++ b/src/librbd/trash_watcher/Types.h
+@@ -17,7 +17,7 @@
+ namespace librbd {
+ namespace trash_watcher {
+ 
+-enum NotifyOp {
++enum NotifyOp : uint32_t {
+   NOTIFY_OP_IMAGE_ADDED = 0,
+   NOTIFY_OP_IMAGE_REMOVED = 1
+ };
+diff --git a/src/rbd_replay/ActionTypes.h b/src/rbd_replay/ActionTypes.h
+index 585d756ea9d..e4103d1dcde 100644
+--- a/src/rbd_replay/ActionTypes.h
++++ b/src/rbd_replay/ActionTypes.h
+@@ -61,7 +61,7 @@ WRITE_CLASS_ENCODER(Dependency);
+ 
+ typedef std::vector<Dependency> Dependencies;
+ 
+-enum ActionType {
++enum ActionType : uint8_t {
+   ACTION_TYPE_START_THREAD    = 0,
+   ACTION_TYPE_STOP_THREAD     = 1,
+   ACTION_TYPE_READ            = 2,
+diff --git a/src/tools/rbd_mirror/image_map/Types.h b/src/tools/rbd_mirror/image_map/Types.h
+index 871bc5ffffa..77efda17dc3 100644
+--- a/src/tools/rbd_mirror/image_map/Types.h
++++ b/src/tools/rbd_mirror/image_map/Types.h
+@@ -60,7 +60,7 @@ typedef std::vector<std::string> InstanceIds;
+ typedef std::set<std::string> GlobalImageIds;
+ typedef std::map<std::string, ActionType> ImageActionTypes;
+ 
+-enum PolicyMetaType {
++enum PolicyMetaType : uint32_t {
+   POLICY_META_TYPE_NONE = 0,
+ };
+ 
+diff --git a/src/tools/rbd_mirror/instance_watcher/Types.h b/src/tools/rbd_mirror/instance_watcher/Types.h
+index 6bb430d36aa..549113a2853 100644
+--- a/src/tools/rbd_mirror/instance_watcher/Types.h
++++ b/src/tools/rbd_mirror/instance_watcher/Types.h
+@@ -18,7 +18,7 @@ namespace rbd {
+ namespace mirror {
+ namespace instance_watcher {
+ 
+-enum NotifyOp {
++enum NotifyOp : uint32_t {
+   NOTIFY_OP_IMAGE_ACQUIRE      = 0,
+   NOTIFY_OP_IMAGE_RELEASE      = 1,
+   NOTIFY_OP_PEER_IMAGE_REMOVED = 2,
+diff --git a/src/tools/rbd_mirror/leader_watcher/Types.h b/src/tools/rbd_mirror/leader_watcher/Types.h
+index 0e987c4eb04..2f20e451843 100644
+--- a/src/tools/rbd_mirror/leader_watcher/Types.h
++++ b/src/tools/rbd_mirror/leader_watcher/Types.h
+@@ -35,7 +35,7 @@ struct Listener {
+   virtual void handle_instances_removed(const InstanceIds& instance_ids) = 0;
+ };
+ 
+-enum NotifyOp {
++enum NotifyOp : uint32_t {
+   NOTIFY_OP_HEARTBEAT        = 0,
+   NOTIFY_OP_LOCK_ACQUIRED    = 1,
+   NOTIFY_OP_LOCK_RELEASED    = 2,
+-- 
+2.49.1
+

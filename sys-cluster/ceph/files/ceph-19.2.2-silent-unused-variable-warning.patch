@@ -1,0 +1,48 @@
+https://github.com/intel/QATzip/pull/131 but the patch below is not merged
+https://github.com/intel/QATzip/pull/119 using __attribute__((unused))
+
+From d2a9a7694b4785f67d6f95b49c20f6b3984ffe99 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Fri, 21 Mar 2025 03:01:53 +0000
+Subject: [PATCH] silent unused variable warning
+
+such as:
+> error: variable 'sleep_cnt' set but not used [-Werror,-Wunused-but-set-variable]
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/src/qatzip/src/qatzip.c b/src/qatzip/src/qatzip.c
+index 1a12973..ac73dcd 100755
+--- a/src/qatzip/src/qatzip.c
++++ b/src/qatzip/src/qatzip.c
+@@ -1495,6 +1495,7 @@ static void *doCompressOut(void *in)
+     CpaDcRqResults *resl;
+     CpaStatus sts;
+     unsigned int sleep_cnt = 0;
++    (void)sleep_cnt;
+     QzSession_T *sess = (QzSession_T *) in;
+     QzSess_T *qz_sess = (QzSess_T *) sess->internal;
+     long dest_avail_len = (long)(*qz_sess->dest_sz - qz_sess->qz_out_len);
+@@ -2124,6 +2125,7 @@ static void *__attribute__((cold)) doDecompressOut(void *in)
+     CpaDcRqResults *resl;
+     CpaStatus sts;
+     unsigned int sleep_cnt = 0;
++    (void)sleep_cnt;
+     unsigned int done = 0;
+     unsigned int src_send_sz;
+     unsigned int dest_avail_len;
+diff --git a/src/qatzip/test/main.c b/src/qatzip/test/main.c
+index 8ba3384..19ecacb 100755
+--- a/src/qatzip/test/main.c
++++ b/src/qatzip/test/main.c
+@@ -209,6 +209,7 @@ QzBlock_T *parseFormatOption(char *buf)
+     char *saveptr, *sub_saveptr;
+ 
+     int i, j, fmt_idx;
++    (void)j;
+     unsigned int fmt_found = 0;
+     QzBlock_T *blk = NULL;
+     QzBlock_T *head, *prev, *r;
+-- 
+2.49.1
+

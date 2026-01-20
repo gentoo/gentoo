@@ -218,8 +218,13 @@ PATCHES=(
 	"${FILESDIR}/ceph-18.2.4-liburing.patch"
 	"${FILESDIR}/ceph-18.2.4-spdk.patch"
 	"${FILESDIR}/ceph-19.2.1-isa-l.patch"
+	"${FILESDIR}/ceph-19.2.2-QATAPP-Fix-clang-16-compiling-issue.patch"
 	"${FILESDIR}/ceph-19.2.2-add-option-to-build-agains-system-opentelemetry.patch"
+	"${FILESDIR}/ceph-19.2.2-rbd-make-enums-statically-castable.patch"
 	"${FILESDIR}/ceph-19.2.2-rgw-remove-FMT_STRING-to-fix-clang-20-build-failure.patch"
+	# https://bugs.gentoo.org/960812
+	"${FILESDIR}/ceph-19.2.2-silent-unused-variable-warning.patch"
+	"${FILESDIR}/ceph-19.2.2-src-mgr-make-enum-statically-castable.patch"
 	"${FILESDIR}/ceph-20.1.0-nvmeof.patch"
 )
 

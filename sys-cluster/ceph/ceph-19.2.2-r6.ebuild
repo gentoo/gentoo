@@ -241,8 +241,14 @@ PATCHES=(
 	"${FILESDIR}/ceph-19.2.2-py313-3.patch"
 	"${FILESDIR}/ceph-19.2.2-gcc15.patch"
 	"${FILESDIR}/ceph-19.2.2-ipv6.patch"
+	"${FILESDIR}/ceph-19.2.2-QATAPP-Fix-clang-16-compiling-issue.patch"
 	"${FILESDIR}/ceph-19.2.2-add-option-to-build-agains-system-opentelemetry.patch"
+	"${FILESDIR}/ceph-19.2.2-rbd-make-enums-statically-castable.patch"
 	"${FILESDIR}/ceph-19.2.2-rgw-remove-FMT_STRING-to-fix-clang-20-build-failure.patch"
+	"${FILESDIR}/ceph-19.2.2-rgw-update-to-latest-zpp_bits.h.patch"
+	# https://bugs.gentoo.org/960812
+	"${FILESDIR}/ceph-19.2.2-silent-unused-variable-warning.patch"
+	"${FILESDIR}/ceph-19.2.2-src-mgr-make-enum-statically-castable.patch"
 )
 
 check-reqs_export_vars() {
