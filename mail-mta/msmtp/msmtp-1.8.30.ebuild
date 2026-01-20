@@ -1,4 +1,4 @@
-# Copyright 2004-2025 Gentoo Authors
+# Copyright 2004-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ DESCRIPTION="An SMTP client and SMTP plugin for mail user agents such as Mutt"
 HOMEPAGE="https://marlam.de/msmtp/"
 SRC_URI="https://marlam.de/msmtp/releases/${P}.tar.xz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ppc ppc64 ~riscv ~sparc x86"
 IUSE="daemon doc keyring +gnutls idn +mta nls sasl ssl"
