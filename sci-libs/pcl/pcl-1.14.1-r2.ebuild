@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -72,7 +72,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.14.1-gcc15.patch
 	"${FILESDIR}"/${PN}-1.14.1-tests.patch
 	"${FILESDIR}"/${PN}-1.14.1-boost.patch
-	"${FILESDIR}"/${PN}-1.14.1-boost-1.87.patch
+	"${FILESDIR}"/${PN}-1.14.1-boost-1.{87,89}.patch
 )
 
 src_prepare() {
