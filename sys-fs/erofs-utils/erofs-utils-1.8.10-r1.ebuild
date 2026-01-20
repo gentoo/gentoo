@@ -12,7 +12,7 @@ SRC_URI="https://git.kernel.org/pub/scm/linux/kernel/git/xiang/${PN}.git/snapsho
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~loong"
+KEYWORDS="amd64 arm64 ~loong"
 
 IUSE="fuse libdeflate +lz4 +lzma selinux static-libs +threads +uuid +zlib +zstd"
 
