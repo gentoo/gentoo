@@ -3,11 +3,12 @@
 
 EAPI=8
 
-inherit branding pam systemd
+inherit branding pam systemd verify-sig
 
 DESCRIPTION="Collection of common network programs"
 HOMEPAGE="https://www.gnu.org/software/inetutils/"
-SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
+SRC_URI="mirror://gnu/${PN}/${P}.tar.gz
+	verify-sig? ( mirror://gnu/${PN}/${P}.tar.gz.sig )"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -53,6 +54,11 @@ RDEPEND="${DEPEND}
 	ifconfig? ( !sys-apps/net-tools )
 	traceroute? ( !net-analyzer/traceroute )
 "
+BDEPEND="
+	sec-keys/openpgp-keys-inetutils
+"
+
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/inetutils.asc"
 
 QA_CONFIG_IMPL_DECL_SKIP=( MIN static_assert alignof unreachable )
 
