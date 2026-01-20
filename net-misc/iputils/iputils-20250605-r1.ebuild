@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,8 +11,17 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/iputils/iputils.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/iputils/iputils/releases/download/${PV}/${P}.tar.xz"
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/pevik.asc
+	inherit verify-sig
+
+	SRC_URI="
+		https://github.com/iputils/iputils/releases/download/${PV}/${P}.tar.xz
+		verify-sig? ( https://github.com/iputils/iputils/releases/download/${PV}/${P}.tar.xz.asc )
+	"
+
 	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-pevik )"
 fi
 
 DESCRIPTION="Network monitoring tools including ping and ping6"
@@ -39,7 +48,7 @@ DEPEND="
 	${RDEPEND}
 	virtual/os-headers
 "
-BDEPEND="
+BDEPEND+="
 	virtual/pkgconfig
 	test? ( sys-apps/iproute2 )
 	nls? ( sys-devel/gettext )
