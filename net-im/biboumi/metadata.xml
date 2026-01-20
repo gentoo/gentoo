@@ -12,7 +12,7 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="codeberg">poezio/biboumi</remote-id>
-		<doc>https://doc.biboumi.louiz.org</doc>
+		<doc>https://biboumi.codeberg.page/doc/</doc>
 		<bugs-to>https://codeberg.org/poezio/biboumi/issues</bugs-to>
 	</upstream>
 	<use>
