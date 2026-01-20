@@ -22,7 +22,7 @@ EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 src_configure() {
-	local -x PYTOKENS_USE_MYPYC=0
+	export PYTOKENS_USE_MYPYC=0
 }
 
 python_test() {
