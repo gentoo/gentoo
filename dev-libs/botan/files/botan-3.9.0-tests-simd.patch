@@ -1,0 +1,15 @@
+Make sure to pass any flags for SIMD to test_simd.cpp if using the ninja
+generator.
+
+https://bugs.gentoo.org/969037
+https://bugs.gentoo.org/969038
+--- a/src/build-data/ninja.in
++++ b/src/build-data/ninja.in
+@@ -221,6 +221,7 @@ build %{obj}: compile_exe %{src}
+ 
+ %{for test_build_info}
+ build %{obj}: compile_exe %{src}
++  isa_flags = %{isa_flags}
+ %{endfor}
+ 
+ %{for fuzzer_build_info}

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -51,6 +51,10 @@ BDEPEND="
 # NOTE: Considering patching Botan?
 # Please see upstream's guidance:
 # https://botan.randombit.net/handbook/packaging.html#minimize-distribution-patches
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.9.0-tests-simd.patch
+)
 
 python_check_deps() {
 	use doc || return 0
