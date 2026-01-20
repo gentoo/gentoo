@@ -36,13 +36,15 @@ RESTRICT="
 DEPEND="
 	llvm-core/llvm:${LLVM_MAJOR}
 	virtual/libcrypt[abi_x86_32(-)?,abi_x86_64(-)?]
+	clang? (
+		llvm-core/clang-linker-config:${LLVM_MAJOR}
+		llvm-runtimes/clang-rtlib-config:${LLVM_MAJOR}
+		llvm-runtimes/clang-stdlib-config:${LLVM_MAJOR}
+	)
 "
 BDEPEND="
 	clang? (
 		llvm-core/clang:${LLVM_MAJOR}
-		llvm-core/clang-linker-config:${LLVM_MAJOR}
-		llvm-runtimes/clang-rtlib-config:${LLVM_MAJOR}
-		llvm-runtimes/clang-stdlib-config:${LLVM_MAJOR}
 		llvm-runtimes/compiler-rt:${LLVM_MAJOR}
 	)
 	elibc_glibc? ( net-libs/libtirpc )
