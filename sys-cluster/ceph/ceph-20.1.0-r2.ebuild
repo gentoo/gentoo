@@ -201,7 +201,6 @@ RDEPEND="
 PATCHES=(
 	"${FILESDIR}/ceph-12.2.0-use-provided-cpu-flag-values.patch"
 	"${FILESDIR}/ceph-17.2.1-no-virtualenvs.patch"
-	"${FILESDIR}/ceph-13.2.2-dont-install-sysvinit-script.patch"
 	"${FILESDIR}/ceph-14.2.0-dpdk-cflags.patch"
 	"${FILESDIR}/ceph-16.2.0-rocksdb-cmake.patch"
 	"${FILESDIR}/ceph-16.2.0-spdk-tinfo.patch"
@@ -441,6 +440,11 @@ src_install() {
 	python_optimize
 
 	find "${ED}" -name '*.la' -type f -delete || die
+
+	local bundled_init="${ED}/etc/init.d/ceph"
+	[[ -f "${bundled_init}" ]] && {
+		rm "${bundled_init}" || die
+	}
 
 	exeinto /usr/$(get_libdir)/ceph
 	newexe "${BUILD_DIR}/bin/init-ceph" init-ceph
