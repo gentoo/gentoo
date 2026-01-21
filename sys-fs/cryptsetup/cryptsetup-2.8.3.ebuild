@@ -4,11 +4,15 @@
 EAPI=8
 
 # TODO: meson (not just yet as of 2.8.0, see https://gitlab.com/cryptsetup/cryptsetup/-/issues/949#note_2585304492)
-inherit linux-info tmpfiles
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/milanbroz.asc
+inherit linux-info tmpfiles verify-sig
 
 DESCRIPTION="Tool to setup encrypted devices with dm-crypt"
 HOMEPAGE="https://gitlab.com/cryptsetup/cryptsetup"
-SRC_URI="https://www.kernel.org/pub/linux/utils/${PN}/v$(ver_cut 1-2)/${P/_/-}.tar.xz"
+SRC_URI="
+	https://www.kernel.org/pub/linux/utils/${PN}/v$(ver_cut 1-2)/${P/_/-}.tar.xz
+	verify-sig? ( https://www.kernel.org/pub/linux/utils/${PN}/v$(ver_cut 1-2)/${P/_/-}.tar.sign )
+"
 S="${WORKDIR}"/${P/_/-}
 
 LICENSE="GPL-2+"
@@ -63,6 +67,7 @@ DEPEND="
 BDEPEND="
 	virtual/pkgconfig
 	test? ( app-editors/vim-core )
+	verify-sig? ( sec-keys/openpgp-keys-milanbroz )
 "
 
 pkg_setup() {
@@ -72,6 +77,15 @@ pkg_setup() {
 	local WARNING_CRYPTO_CBC="CONFIG_CRYPTO_CBC:\tis not set (required for kernel 2.6.19)\n"
 	local WARNING_CRYPTO="CONFIG_CRYPTO:\tis not set (required for cryptsetup)\n"
 	check_extra_config
+}
+
+src_unpack() {
+	if use verify-sig; then
+		verify-sig_uncompress_verify_unpack "${DISTDIR}"/${P/_/-}.tar.xz \
+			"${DISTDIR}"/${P/_/-}.tar.sign
+	else
+		default
+	fi
 }
 
 src_prepare() {
