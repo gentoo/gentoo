@@ -52,6 +52,13 @@ app-emacs/use-package
 # eclean-dist -d needs fixing
 =app-portage/gentoolkit-0.7
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2026-01-22)
+# Requires ebuilds to be carry MAVEN_ID / MAVEN_PROVIDES information
+# which is time-consuming and error-prone to add manually.
+# Removal on 2026-02-22.
+# Bug #966194, #907208, #906665, #796242, #794028, #656354.
+app-portage/java-ebuilder
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-01-18)
 # Masked for testing.
 >=dev-libs/boost-1.90
