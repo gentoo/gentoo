@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<longdescription>
+  A major-mode to manage your password-store (<pkg>app-admin/pass</pkg>)
+  keychain. The keychain entries are displayed in a directory-like structure.
+</longdescription>
+<stabilize-allarches />
+<upstream>
+  <remote-id type="github">NicolasPetton/pass</remote-id>
+</upstream>
+</pkgmetadata>
