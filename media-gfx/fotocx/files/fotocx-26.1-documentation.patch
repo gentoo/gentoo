@@ -1,0 +1,25 @@
+diff '--color=auto' -ur fotocx/Makefile fotocx.new/Makefile
+--- fotocx/Makefile	2026-01-08 05:29:58.000000000 -0600
++++ fotocx.new/Makefile	2026-01-21 10:01:33.710433520 -0600
+@@ -132,8 +132,7 @@
+ 	cp -f fotocx $(DESTDIR)$(BINDIR)
+ 	cp -f fotocx.desktop $(DESTDIR)$(MENUDIR)
+ 	cp -f -R  doc/* $(DESTDIR)$(DOCDIR)
+-	gzip -fk -9 man/fotocx.man
+-	mv -f man/fotocx.man.gz $(DESTDIR)$(MANDIR)/fotocx.1.gz
++	cp man/fotocx.man $(DESTDIR)$(MANDIR)/fotocx.1
+ 	cp -f -R  data $(DESTDIR)$(DATADIR)
+ 	cp -f -R  images $(DESTDIR)$(DATADIR)
+ 	cp -f fotocx.png $(DESTDIR)$(ICONDIR)
+diff '--color=auto' -ur fotocx/zfuncs.cc fotocx.new/zfuncs.cc
+--- fotocx/zfuncs.cc	2026-01-08 05:29:58.000000000 -0600
++++ fotocx.new/zfuncs.cc	2026-01-21 10:02:21.427413533 -0600
+@@ -6128,7 +6128,7 @@
+ 
+    strncatv(zdatadir,199,zprefix,"/share/",zappname,"/data",null);                     //  /prefix/share/appname/data
+    strncatv(zimagedir,199,zprefix,"/share/",zappname,"/images",null);                  //  /prefix/share/appname/images
+-   strncatv(zdocdir,199,zprefix,"/share/doc/",zappname,null);                          //  /prefix/share/doc/appname
++   strncatv(zdocdir,199,zprefix,"/share/doc/",zappvers,null);                          //  /prefix/share/doc/appname-version
+ 
+    ch_time = zstrdup(build_date_time,"zinitapp");
+    if (ch_time[4] == ' ') ch_time[4] = '0';                                            //  replace month day ' d' with '0d'
