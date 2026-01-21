@@ -9,7 +9,11 @@ DESCRIPTION="Free cross-platform LaTeX editor (fork from texmakerX)"
 HOMEPAGE="https://www.texstudio.org https://github.com/texstudio-org/texstudio"
 SRC_URI="https://github.com/texstudio-org/texstudio/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2"
+# MIT: To Title Case
+# LGPL-2: Crystal Project
+# CC-BY-SA-3.0: Oxygen icon theme
+# CC0-1.0: Colibre icon theme
+LICENSE="GPL-3 MIT LGPL-2 CC-BY-SA-3.0 CC0-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="video"
