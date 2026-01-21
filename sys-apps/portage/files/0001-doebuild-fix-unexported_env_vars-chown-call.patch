@@ -1,0 +1,59 @@
+From cf604f442d2a2aebfbaab1c2d8419c7dada0de7a Mon Sep 17 00:00:00 2001
+Message-ID: <cf604f442d2a2aebfbaab1c2d8419c7dada0de7a.1769013270.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Wed, 21 Jan 2026 16:12:07 +0000
+Subject: [PATCH] doebuild: fix unexported_env_vars chown call
+
+With PORTAGE_USERNAME and PORTAGE_GRPNAME set, we try to chown a tmpdir
+in /tmp to portage and fail:
+```
+Exception in callback EbuildMetadataPhase._async_start_done(<Task finishe...t permitted')>)
+handle: <Handle EbuildMetadataPhase._async_start_done(<Task finishe...t permitted')>)>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/usr/lib/python3.12/site-packages/_emerge/EbuildMetadataPhase.py", line 162, in _async_start_done
+    future.cancelled() or future.result()
+                          ^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/site-packages/_emerge/EbuildMetadataPhase.py", line 129, in _async_start
+    retval = doebuild(
+             ^^^^^^^^^
+  File "/usr/lib/python3.12/site-packages/portage/package/ebuild/doebuild.py", line 1117, in doebuild
+    return _spawn_phase(
+           ^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/site-packages/portage/package/ebuild/doebuild.py", line 309, in _spawn_phase
+    return _doebuild_spawn(
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/site-packages/portage/package/ebuild/doebuild.py", line 292, in _doebuild_spawn
+    return spawn(cmd, settings, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/site-packages/portage/package/ebuild/doebuild.py", line 2251, in spawn
+    os.chown(_emerge_tmpdir, -1, int(portage_gid))
+PermissionError: [Errno 1] Operation not permitted: '/tmp/portage-tmpdir-717664-garvzxqz'
+Sandboxed process killed by signal: Broken pipe
+Sandboxed process killed by signal: Broken pipe
+```
+
+Use the Portage build gid instead.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ lib/portage/package/ebuild/doebuild.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/portage/package/ebuild/doebuild.py b/lib/portage/package/ebuild/doebuild.py
+index e55a56e7cb..c0c9f17db4 100644
+--- a/lib/portage/package/ebuild/doebuild.py
++++ b/lib/portage/package/ebuild/doebuild.py
+@@ -2248,7 +2248,7 @@ def spawn(
+                     prefix=f"portage-tmpdir-{portage.getpid()}-"
+                 )
+                 os.chmod(_emerge_tmpdir, 0o1775)
+-                os.chown(_emerge_tmpdir, -1, int(portage_gid))
++                os.chown(_emerge_tmpdir, -1, int(portage_build_gid))
+                 portage.process.atexit_register(shutil.rmtree, _emerge_tmpdir)
+             ebuild_extra_source_fd, ebuild_extra_source_path = tempfile.mkstemp(
+                 prefix=f"portage-ebuild-extra-source-{phase}-",
+-- 
+2.52.0
+
