@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,8 +12,14 @@ if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.libssh.org/projects/libssh.git"
 else
-	SRC_URI="https://www.libssh.org/files/$(ver_cut 1-2)/${P}.tar.xz"
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libssh.asc
+	inherit verify-sig
+	SRC_URI="
+		https://www.libssh.org/files/$(ver_cut 1-2)/${P}.tar.xz
+		verify-sig? ( https://www.libssh.org/files/$(ver_cut 1-2)/${P}.tar.xz.asc )
+	"
 	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-libssh )"
 fi
 
 LICENSE="LGPL-2.1"
@@ -35,9 +41,22 @@ DEPEND="
 		elibc_musl? ( sys-libs/argp-standalone )
 	)
 "
-BDEPEND="doc? ( app-text/doxygen[dot] )"
+BDEPEND+=" doc? ( app-text/doxygen[dot] )"
 
 DOCS=( AUTHORS CHANGELOG README )
+
+src_unpack() {
+	if [[ ${PV} == 9999 ]] ; then
+		git-r3_src_unpack
+		return
+	fi
+
+	if use verify-sig; then
+		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.xz{,.asc}
+	fi
+
+	default
+}
 
 src_prepare() {
 	# Remove custom find module to use system one
