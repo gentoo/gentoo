@@ -1,16 +1,21 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
-inherit autotools python-any-r1 ssl-cert systemd tmpfiles
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/stunnel.asc
+inherit autotools python-any-r1 ssl-cert systemd tmpfiles verify-sig
 
 DESCRIPTION="TLS/SSL - Port Wrapper"
 HOMEPAGE="https://www.stunnel.org/index.html"
 SRC_URI="
 	https://www.stunnel.org/downloads/${P}.tar.gz
 	https://www.stunnel.org/stunnel/archive/${PV%%.*}.x/${P}.tar.gz
+	verify-sig? (
+		https://www.stunnel.org/downloads/${P}.tar.gz.asc
+		https://www.stunnel.org/stunnel/archive/${PV%%.*}.x/${P}.tar.gz.asc
+	)
 "
 
 LICENSE="GPL-2"
@@ -38,6 +43,7 @@ BDEPEND="
 		${PYTHON_DEPS}
 		$(python_gen_any_dep 'dev-python/cryptography[${PYTHON_USEDEP}]')
 	)
+	verify-sig? ( sec-keys/openpgp-keys-stunnel )
 "
 
 PATCHES=(
