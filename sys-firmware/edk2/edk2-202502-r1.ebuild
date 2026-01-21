@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -55,7 +55,7 @@ BDEPEND="
 	app-emulation/qemu
 	app-emulation/virt-firmware
 	>=sys-power/iasl-20160729
-	amd64? ( <dev-lang/nasm-3 )
+	amd64? ( >=dev-lang/nasm-2.0.7 )
 "
 
 RDEPEND="
@@ -65,6 +65,7 @@ RDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-202411-werror.patch"
 	"${FILESDIR}/${PN}-202408-binutils-2.41-textrels.patch"
+	"${FILESDIR}/edk2-202502-nasm-3.patch"
 )
 
 DISABLE_AUTOFORMATTING="true"
