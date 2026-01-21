@@ -1,0 +1,65 @@
+# /etc/conf.d/nftables
+
+# Location in which nftables initscript will save set rules on
+# service shutdown
+NFTABLES_SAVE="/var/lib/nftables/rules-save"
+
+# Options to pass to nft on save
+SAVE_OPTIONS="-n"
+
+# Save state on stopping nftables
+SAVE_ON_STOP="yes"
+
+# Only for OpenRC systems.
+# Set to "hard" or "soft" to panic when stopping instead of
+# clearing the rules
+# Soft panic loads a ruleset dropping any new or invalid connections
+# Hard panic loads a ruleset dropping all traffic
+PANIC_ON_STOP=""
+
+# If you need to log nftables messages as soon as nftables starts,
+# AND your logger does NOT depend on the network, then you may wish
+# to uncomment the next line.
+# If your logger depends on the network, and you uncomment this line
+# you will create an unresolvable circular dependency during startup.
+# After commenting or uncommenting this line, you must run 'rc-update -u'.
+#rc_use="logger"
+
+# The settings below allow you to configure how nftables clears
+# (flushes) the ruleset. By default nftables will use a 
+# "flush ruleset" command explicitly on load and also prepend it
+# to the ruleset on save. In theory only one of the two flushes
+# are needed. So:
+# * If you can guarantee your saved rules will start with an
+#   explicit flush you can set NFTABLES_LOAD_FLUSH="NO"
+#   Doing so will make an empty rules file a no op instead of resulting
+#   in an empty ruleset as expected.
+# * If you do not plan on ever loading the ruleset directly from the
+#   file you can instead set NFTABLES_EXPLICIT_FLUSH="NO"
+#   There are very rare cases where you would actually want to do so.
+# Addittionally a way to explicitly state how the flush should be made 
+# is added.
+# The settings below currently work only on OpenRC systems.
+
+# Only for OpenRC systems.
+# Command used to clear the tables, will be used for the command clear,
+# when loading the rules and prepended to the rules on save to ensure
+# the tables are clean. When empty it will default to "flush ruleset"
+# Panic actions will still do a full flush to ensure their semantics
+# remain the same.
+# *CHANGE THIS ONLY IF YOU KNOW WHAT YOU ARE DOING*
+NFTABLES_FLUSH=""
+
+# Only for OpenRC systems.
+# Set this to "NO" to prevent prepending a flush when saving the rules
+# defaults to "YES"
+# *CHANGE THIS ONLY IF YOU KNOW WHAT YOU ARE DOING*
+NFTABLES_EXPLICIT_FLUSH="YES"
+
+# Only for OpenRC systems.
+# Set this to "NO" to prevent doing a explicit flush when loading 
+# defaults to "YES". It is safe to say "NO" if your ruleset
+# includes a explicit flush. This will also prevent reading from
+# stdin when loading rules.
+# *CHANGE THIS ONLY IF YOU KNOW WHAT YOU ARE DOING*
+NFTABLES_LOAD_FLUSH="YES"
