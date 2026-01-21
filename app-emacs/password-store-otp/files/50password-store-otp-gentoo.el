@@ -1,0 +1,6 @@
+(add-to-list 'load-path "@SITELISP@")
+(autoload 'password-store-otp-token-copy "password-store-otp" nil t)
+(autoload 'password-store-otp-uri-copy "password-store-otp" nil t)
+(autoload 'password-store-otp-insert "password-store-otp" nil t)
+(autoload 'password-store-otp-append "password-store-otp" nil t)
+(autoload 'password-store-otp-append-from-image "password-store-otp" nil t)
