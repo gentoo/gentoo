@@ -33,10 +33,12 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	amd64? ( >=app-crypt/gocryptfs-1.8 )
-	!amd64? ( || (
+	ppc64? ( >=app-crypt/gocryptfs-1.8 )
+	x86? ( >=app-crypt/gocryptfs-1.8 )
+	!amd64? ( !ppc64? ( !x86? ( || (
 		>=sys-fs/cryfs-0.9.9
 		>=sys-fs/encfs-1.9.2
-	) )
+	) ) ) )
 "
 
 pkg_pretend() {
