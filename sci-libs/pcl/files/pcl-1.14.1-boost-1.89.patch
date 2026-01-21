@@ -1,6 +1,26 @@
+From 99333442ac63971297b4cdd05fab9d2bd2ff57a4 Mon Sep 17 00:00:00 2001
+From: Michael Cho <michael@michaelcho.dev>
+Date: Wed, 27 Aug 2025 10:05:48 -0400
+Subject: [PATCH] Fix build with Boost 1.89.0
+
+This fixes a regression in 0404f7c382099e50196da6640c0ebba6d829392f
+/ 1.15.1 as `Boost::system` is not valid since Boost 1.89.0.
+
+PCL requires a minimum of Boost 1.71.0 so Boost.System is guaranteed to
+be header-only (since 1.69[^1]) and the component can be removed.
+
+* asturm 2026-01-21: Merge with backport of commit 0404f7c3 (Link
+  Boost::filesystem to pcl_outofcore) so it is equivalent to 99333442
+
+[^1]: https://www.boost.org/doc/libs/1_69_0/libs/system/doc/html/system.html#changes_in_boost_1_69
+---
+ cmake/pcl_find_boost.cmake | 4 ++--
+ outofcore/CMakeLists.txt   | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
 --- a/cmake/pcl_find_boost.cmake
 +++ b/cmake/pcl_find_boost.cmake
-@@ -19,16 +19,16 @@
+@@ -19,12 +19,12 @@
    # Optional boost modules
    set(BOOST_OPTIONAL_MODULES serialization mpi)
    # Required boost modules
@@ -14,10 +34,17 @@
 +  set(BOOST_REQUIRED_MODULES iostreams)
  endif()
  
--find_package(Boost 1.65.0 QUIET COMPONENTS ${BOOST_OPTIONAL_MODULES})
--find_package(Boost 1.65.0 REQUIRED COMPONENTS ${BOOST_REQUIRED_MODULES})
-+find_package(Boost 1.69.0 QUIET COMPONENTS ${BOOST_OPTIONAL_MODULES})
-+find_package(Boost 1.69.0 REQUIRED COMPONENTS ${BOOST_REQUIRED_MODULES})
+ find_package(Boost 1.65.0 QUIET COMPONENTS ${BOOST_OPTIONAL_MODULES})
+diff --git a/outofcore/CMakeLists.txt b/outofcore/CMakeLists.txt
+index 2d613c1ef25..1d668c5ea8e 100644
+--- a/outofcore/CMakeLists.txt
++++ b/outofcore/CMakeLists.txt
+@@ -69,7 +69,7 @@
  
- if(Boost_FOUND)
-   set(BOOST_FOUND TRUE)
+ PCL_ADD_LIBRARY(${LIB_NAME} COMPONENT ${SUBSYS_NAME} SOURCES ${srcs} ${incs} ${impl_incs} ${visualization_incs})
+ #PCL_ADD_SSE_FLAGS("${LIB_NAME}")
+-target_link_libraries("${LIB_NAME}" pcl_common pcl_visualization ${Boost_SYSTEM_LIBRARY})
++target_link_libraries("${LIB_NAME}" pcl_common pcl_visualization Boost::filesystem)
+ PCL_MAKE_PKGCONFIG(${LIB_NAME} COMPONENT ${SUBSYS_NAME} DESC ${SUBSYS_DESC} PCL_DEPS ${SUBSYS_DEPS})
+ 
+ # Install include files

@@ -30,7 +30,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/boost:=
-	dev-cpp/eigen:3
+	dev-cpp/eigen:=
 	>=sci-libs/flann-1.7.1
 	opengl? (
 		media-libs/freeglut

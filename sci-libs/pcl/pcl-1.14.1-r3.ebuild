@@ -30,7 +30,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/boost:=
-	dev-cpp/eigen:3
+	dev-cpp/eigen:=
 	>=sci-libs/flann-1.7.1
 	opengl? (
 		media-libs/freeglut
@@ -71,7 +71,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.12.1-fix-hardcoded-relative-directory-of-the-installed-cmake-files.patch
 	"${FILESDIR}"/${PN}-1.14.1-gcc15.patch
 	"${FILESDIR}"/${PN}-1.14.1-tests.patch
-	"${FILESDIR}"/${PN}-1.14.1-boost-1.{86,87,89}.patch
+	"${FILESDIR}"/${PN}-1.14.1-boostconfig.patch # bug 969095, in 1.15
+	"${FILESDIR}"/${PN}-1.14.1-boost-1.{86,87,89}.patch # in 1.15; 1.89 fix in git master
 )
 
 src_prepare() {
