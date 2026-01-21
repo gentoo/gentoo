@@ -130,7 +130,6 @@ src_configure() {
 		$(use_with python) \
 		$(use_with rivet) \
 		$(use_with mpich) \
-		$(use_with hepmc2) \
 		$(usex lhapdf "--with-lhapdf6
 			--with-lhapdf6-plugin=LHAPDF6.h
 			--with-lhapdf6-lib=${EPREFIX}/usr/$(get_libdir)" "") \
