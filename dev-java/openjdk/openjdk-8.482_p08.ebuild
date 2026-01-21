@@ -202,13 +202,13 @@ src_configure() {
 
 	myconf+=(
 			--disable-ccache
-			--disable-freetype-bundling
 			--disable-precompiled-headers
 			--enable-unlimited-crypto
 			--with-boot-jdk="${JDK_HOME}"
 			--with-extra-cflags="${CFLAGS}"
 			--with-extra-cxxflags="${CXXFLAGS}"
 			--with-extra-ldflags="${LDFLAGS}"
+			--with-freetype=system
 			--with-freetype-lib="$( $(tc-getPKG_CONFIG) --variable=libdir freetype2 )"
 			--with-freetype-include="$( $(tc-getPKG_CONFIG) --variable=includedir freetype2)/freetype2"
 			--with-giflib="${XPAK_BOOTSTRAP:-system}"
