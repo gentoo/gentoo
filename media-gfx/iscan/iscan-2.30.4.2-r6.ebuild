@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,7 +30,7 @@ S="${WORKDIR}/${PN}-$(ver_cut 1-3)"
 
 LICENSE="GPL-2 AVASYS"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="doc gimp l10n_ja nls X"
 
 REQUIRED_USE="gimp? ( X )"
