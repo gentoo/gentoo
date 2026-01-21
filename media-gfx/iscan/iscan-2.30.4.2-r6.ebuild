@@ -30,7 +30,7 @@ S="${WORKDIR}/${PN}-$(ver_cut 1-3)"
 
 LICENSE="GPL-2 AVASYS"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc gimp l10n_ja nls X"
 
 REQUIRED_USE="gimp? ( X )"
