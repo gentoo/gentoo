@@ -335,7 +335,6 @@ src_install() {
 
 	if use static-libs ; then
 		cd "${S}"/build/*-release/images/static-libs || die
-		dodir "${dest}"
 		cp -pPR * "${ddest}" || die
 		strip-lto-bytecode "${ddest}" || die
 	fi
