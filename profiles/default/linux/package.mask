@@ -1,6 +1,11 @@
 # Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Haelwenn (lanodan) Monnier <contact@hacktivis.me> (2025-12-01)
+# glibc binary compatibility layer, therefore only meant for
+# profiles without glibc
+sys-libs/gcompat
+
 # Sam James <sam@gentoo.org> (2025-11-05)
 # A libatomic drop-in replacement, which conflicts with sys-devel/gcc,
 # therefore meant only for profiles which can work without GCC being
