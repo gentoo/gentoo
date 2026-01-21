@@ -260,9 +260,6 @@ src_prepare() {
 		rm ext/dba/tests/gh19706.phpt
 	fi
 
-	# One-off, somebody forgot to update a version constant
-	rm ext/reflection/tests/ReflectionZendExtension.phpt || die
-
 	eautoconf --force
 }
 
