@@ -119,6 +119,8 @@ PATCHES=(
 	"${FILESDIR}"/mysql-8.0.37-fix-bundled-boost.patch
 	# Needed due to bundled abseil-cpp-20230802, this fix is included in abseil-cpp-20240722
 	"${FILESDIR}"/mysql-8.0.37-fix-bundled-abseil.patch
+	# for 8.0.43 only
+	"${FILESDIR}"/mysql-8.0.43-fix-clang-20-allocator.patch
 )
 
 mysql_init_vars() {

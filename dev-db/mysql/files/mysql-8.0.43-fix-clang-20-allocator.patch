@@ -1,0 +1,56 @@
+https://github.com/mysql/mysql-server/commit/f5b7993d23fe93dd417160d7bbc19c20050b2ffe
+
+From f5b7993d23fe93dd417160d7bbc19c20050b2ffe Mon Sep 17 00:00:00 2001
+From: Tor Didriksen <tor.didriksen@oracle.com>
+Date: Wed, 2 Jul 2025 12:15:06 +0200
+Subject: [PATCH] Bug#38142283 Compile MySQL with clang 20 [allocator noclose]
+
+Clang on Linux normally uses STL headers/libraries from gcc.  There is
+evidently some mismatch of template instantiations, and build break
+for the default CTOR ut::allocator::allocator().
+
+include/c++/15/bits/hashtable_policy.h:1475:76: error:
+chosen constructor is explicit in copy-initialization
+
+ut0new.h:2200:12: note: explicit constructor declared here
+ 2200 |   explicit allocator(PSI_memory_key key = mem_key_std) : Allocator_base(key) {}
+
+The actual problem is strict checking for explicit constructors during
+copy initializations. We have two choices to fix it:
+
+1- Make the allocator declarations explicit.
+2- Create another non-explicit default constructor.
+
+This patch implements alternative 2.
+
+Note: There is no build break for clang when using -stdlib=libc++
+but this is non-standard on Linux.
+
+Change-Id: I02d81329ad5a61309b09d8fc1230b2b7ade8c20c
+(cherry picked from commit f97007197c9f366136c2d27b093ee73fda0581e0)
+(cherry picked from commit 0e66e10f29aa6f328b790132b82e90f55bc764c4)
+
+diff --git a/storage/innobase/include/ut0new.h b/storage/innobase/include/ut0new.h
+index 859c556f73a..295067ede24 100644
+--- a/storage/innobase/include/ut0new.h
++++ b/storage/innobase/include/ut0new.h
+@@ -2193,10 +2193,14 @@ class allocator : public Allocator_base {
+                 "ut::allocator does not support over-aligned types. Use "
+                 "ut::aligned_* API to handle such types.");
+ 
+-  /** Default constructor.
++  /** Default constructor, use mem_key_std.
++   */
++  allocator() : Allocator_base(mem_key_std) {}
++
++  /** Explicit constructor.
+       @param[in] key  performance schema key.
+     */
+-  explicit allocator(PSI_memory_key key = mem_key_std) : Allocator_base(key) {}
++  explicit allocator(PSI_memory_key key) : Allocator_base(key) {}
+ 
+   /* Rule-of-five */
+   allocator(const allocator<T, Allocator_base> &) = default;
+-- 
+2.49.1
+
