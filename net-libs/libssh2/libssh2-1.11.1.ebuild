@@ -1,13 +1,19 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake-multilib
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/danielstenberg.asc
+inherit cmake-multilib verify-sig
 
 DESCRIPTION="Library implementing the SSH2 protocol"
 HOMEPAGE="https://libssh2.org"
-SRC_URI="https://libssh2.org/download/${P}.tar.xz"
+SRC_URI="
+	https://libssh2.org/download/${P}.tar.xz
+	verify-sig? (
+		https://libssh2.org/download/${P}.tar.xz.asc
+	)
+"
 
 LICENSE="BSD"
 SLOT="0"
@@ -28,6 +34,9 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+"
+BDEPEND="
+	verify-sig? ( sec-keys/openpgp-keys-danielstenberg )
 "
 
 PATCHES=(
