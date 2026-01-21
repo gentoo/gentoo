@@ -105,13 +105,9 @@ src_prepare() {
 
 	# patch the desktop file
 	sed -i \
-		-e '/#!/d' \
 		-e 's|${installer:dir.main}/||' \
 		-e 's|.svg||' \
 		"${ASSET_DIR}"/${PN}.desktop || die "patching desktop file failed"
-
-	# https://github.com/BiglySoftware/BiglyBT/pull/3523
-	sed -i 's/Application;//g' "${ASSET_DIR}"/${PN}.desktop || die
 }
 
 src_compile() {
