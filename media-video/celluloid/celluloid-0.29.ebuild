@@ -21,7 +21,7 @@ RDEPEND="
 	>=gui-libs/libadwaita-1.6.0:1
 	>=media-video/mpv-0.32:=[libmpv]
 	media-libs/libepoxy
-	x11-libs/gdk-pixbuf:2
+	>=x11-libs/gdk-pixbuf-2.30:2
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
