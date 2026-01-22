@@ -1,0 +1,26 @@
+https://github.com/tadfisher/pass-otp/issues/171
+https://github.com/tadfisher/pass-otp/pull/172
+
+From 0447ae4fa84def63d6ce97c251ea3fa5af0dcc07 Mon Sep 17 00:00:00 2001
+From: Juan Orti Alcaine <jortialc@redhat.com>
+Date: Sat, 5 Nov 2022 07:45:25 +0100
+Subject: [PATCH] Fix HOTP counter increases
+
+---
+ otp.bash | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/otp.bash b/otp.bash
+index a0688d2..a58a96c 100755
+--- a/otp.bash
++++ b/otp.bash
+@@ -370,7 +370,7 @@ cmd_otp_code() {
+ 
+   if [[ "$otp_type" == "hotp" ]]; then
+     # Increment HOTP counter in-place
+-    local line replaced uri=${otp_uri/&counter=$otp_counter/&counter=$counter}
++    local line replaced uri=${otp_uri/&counter=$otp_counter/"&counter=$counter"}
+     while IFS= read -r line; do
+       [[ "$line" == otpauth://* ]] && line="$uri"
+       [[ -n "$replaced" ]] && replaced+=$'\n'
+
