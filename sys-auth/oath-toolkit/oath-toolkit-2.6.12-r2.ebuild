@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -54,6 +54,7 @@ src_configure() {
 	local myeconfargs=(
 		--cache-file="${S}"/config.cache
 		--enable-pskc
+		--disable-valgrind-tests
 		$(use_enable test xmltest)
 		$(use_enable pam)
 		$(use_with pam pam-dir $(getpam_mod_dir))
