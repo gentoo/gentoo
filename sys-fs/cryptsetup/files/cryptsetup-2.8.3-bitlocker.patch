@@ -1,0 +1,45 @@
+https://bugs.gentoo.org/969153
+https://gitlab.com/cryptsetup/cryptsetup/-/issues/973
+https://gitlab.com/cryptsetup/cryptsetup/-/merge_requests/883
+
+From 4eb729da3f46642d6fe1fabbbedb127078eccb95 Mon Sep 17 00:00:00 2001
+From: Vojtech Trefny <vtrefny@redhat.com>
+Date: Sun, 11 Jan 2026 14:31:29 +0100
+Subject: [PATCH] bitlk: Do not try to use empty password for password keyslots
+
+Passing empty password means we want to try to open the device
+using the clear key so we can skip all other keyslots in this case.
+
+This also fixes unlocking a BitLocker device where recovery
+passphrase is in the first keyslot where we try to use the empty
+passhrase first, hoping for a clear key, and never actually prompt
+user for an actual (recovery) passphrase after.
+
+Fixes: #973
+---
+ lib/bitlk/bitlk.c         |  11 +++++++++++
+ tests/bitlk-images.tar.xz | Bin 355720 -> 376840 bytes
+ 2 files changed, 11 insertions(+)
+
+diff --git a/lib/bitlk/bitlk.c b/lib/bitlk/bitlk.c
+index 3b7b093d..0e8f9d1d 100644
+--- a/lib/bitlk/bitlk.c
++++ b/lib/bitlk/bitlk.c
+@@ -1300,6 +1300,17 @@ int BITLK_get_volume_key(struct crypt_device *cd,
+ 	next_vmk = params->vmks;
+ 	while (next_vmk) {
+ 		bool is_decrypted = false;
++
++		if (password == NULL && next_vmk->protection != BITLK_PROTECTION_CLEAR_KEY) {
++			/*
++			 * Clearkey is the only slot that doesn't require password so no password
++			 * means we are trying to use clearkey and we can skip all other key slots.
++			 */
++			r = -EPERM;
++			next_vmk = next_vmk->next;
++			continue;
++		}
++
+ 		if (next_vmk->protection == BITLK_PROTECTION_PASSPHRASE) {
+ 			r = bitlk_kdf(password, passwordLen, false, next_vmk->salt, &vmk_dec_key);
+ 			if (r) {

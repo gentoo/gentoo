@@ -70,6 +70,10 @@ BDEPEND="
 	verify-sig? ( sec-keys/openpgp-keys-milanbroz )
 "
 
+PATCHES=(
+	"${FILESDIR}/cryptsetup-2.8.3-bitlocker.patch"
+)
+
 pkg_setup() {
 	local CONFIG_CHECK="~DM_CRYPT ~CRYPTO ~CRYPTO_CBC ~CRYPTO_SHA256"
 	local WARNING_DM_CRYPT="CONFIG_DM_CRYPT:\tis not set (required for cryptsetup)\n"
