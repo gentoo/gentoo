@@ -1,4 +1,4 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: sysroot.eclass
@@ -83,7 +83,14 @@ sysroot_make_run_prefixed() {
 	if [[ ${QEMU_ARCH} == $(qemu_arch "${CBUILD}") ]]; then
 		# glibc: ld.so is a symlink, ldd is a binary.
 		# musl: ld.so doesn't exist, ldd is a symlink.
-		local DLINKER=$(find "${MYEROOT}"/usr/bin/{ld.so,ldd} -type l -print -quit 2>/dev/null || die "failed to find dynamic linker")
+		local DLINKER candidate
+		for candidate in "${MYEROOT}"/usr/bin/{ld.so,ldd}; do
+			if [[ -L ${candidate} ]]; then
+				DLINKER=${candidate}
+				break
+			fi
+		done
+		[[ -n ${DLINKER} ]] || die "failed to find dynamic linker"
 
 		# musl symlinks ldd to ld-musl.so to libc.so. We want the ld-musl.so
 		# path, not the libc.so path, so don't resolve the symlinks entirely.
