@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -136,10 +136,6 @@ src_prepare() {
 
 	if ! use jpeg2k; then
 		rm -r "src/jpeg2000.imageio" || die
-	fi
-
-	if ! use jpegxl; then
-		rm -r "src/jpegxl.imageio" || die
 	fi
 
 	if ! use raw; then
