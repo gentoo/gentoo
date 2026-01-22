@@ -11,7 +11,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND=">=app-editors/emacs-30.1:*
-	>=app-emacs/emacs-common-1.14"
+	>=app-emacs/emacs-common-1.14[gui]"
 
 pkg_postinst() {
 	ewarn "Desktop entries handling mailto URIs (with Emacs 30.1 or later)"
