@@ -6,6 +6,7 @@
 		<name>James Le Cuirot</name>
 	</maintainer>
 	<use>
+		<flag name="fuse">Install the vmdk-fuse tool</flag>
 		<flag name="python">Install Python-based tools</flag>
 	</use>
 	<upstream>
