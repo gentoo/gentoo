@@ -120,7 +120,7 @@ COMMON_SNAPSHOT_DEPEND="
 	system-zstd? ( >=app-arch/zstd-1.5.5:= )
 	>=media-libs/libwebp-0.4.0:=
 	media-libs/mesa:=[gbm(+)]
-	>=media-libs/openh264-1.6.0:=
+	>=media-libs/openh264-2.6.0:=
 	sys-libs/zlib:=
 	!headless? (
 		dev-libs/glib:2
@@ -209,7 +209,7 @@ BDEPEND="
 		>=dev-python/selenium-3.141.0
 		>=dev-util/web_page_replay_go-20220314
 	)
-	>=dev-util/bindgen-0.68.0
+	>=dev-util/bindgen-0.72.1
 	>=dev-build/gn-${GN_MIN_VER}
 	app-alternatives/ninja
 	dev-lang/perl
