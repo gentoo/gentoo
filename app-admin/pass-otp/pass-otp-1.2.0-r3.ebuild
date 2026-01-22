@@ -14,11 +14,12 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 DEPEND="test? ( dev-tcltk/expect:* )"
-
+# which dep can be dropped in >1.2.0
 RDEPEND="
 	>=app-admin/pass-1.7
-	sys-auth/oath-toolkit
 	media-gfx/qrencode
+	sys-auth/oath-toolkit
+	sys-apps/which
 "
 
 PATCHES=(
