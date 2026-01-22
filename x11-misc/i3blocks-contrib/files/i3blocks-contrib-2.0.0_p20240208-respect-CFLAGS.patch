@@ -1,0 +1,68 @@
+--- a/bandwidth2/Makefile
++++ b/bandwidth2/Makefile
+@@ -1,6 +1,6 @@
+ P=bandwidth2
+ OBJECTS=
+-CFLAGS=-g -Wall -Werror -O2 -std=c11 -Wno-format-truncation
++CFLAGS ?= -g -Wall -Werror -O2 -std=c11 -Wno-format-truncation
+ LDLIBS=
+ 
+ $(P): $(OBJECTS)
+--- a/brightness/Makefile
++++ b/brightness/Makefile
+@@ -1,6 +1,6 @@
+-CC=gcc
+-AS=as
+-LD=ld
++CC ?= gcc
++AS ?= as
++LD ?= ld
+ OBJDUMP=objdump
+ OBJCOPY=objcopy
+ SIZE=size
+@@ -16,14 +16,14 @@
+ 
+ PRG = brightness
+ INCLUDES := -Iinc
+-CFLAGS := $(INCLUDES) $(DEFS) $(WARN_LEVEL) -pipe -O0 -g3 -std=c11
++CFLAGS ?= -pipe -O0 -g3 -std=c11
+ 
+ debug: CFLAGS += -O0 -g3
+ debug: all
+ 
+ release: CFLAGS += -O2
+ release: all
+-LDFLAGS = $(LIBS) -ffunction-sections -Wl,--gc-sections
++LDFLAGS ?= -ffunction-sections -Wl,--gc-sections
+ 
+ SRC_C := $(wildcard *.c) $(wildcard src/*.c)
+ SRC_A := $(wildcard src/*.s)
+@@ -41,7 +41,7 @@
+ 
+ $(OBJ_DIR)/%.o: %.c
+ 	@mkdir -p $(@D)
+-	$(CC) $(CFLAGS) -o $@ -c $<
++	$(CC) $(CFLAGS) $(INCLUDES) $(DEFS) $(WARN_LEVEL) -o $@ -c $<
+ 
+ $(BIN_DIR)/$(PRG): $(OBJECTS)
+ 	@mkdir -p $(@D)
+--- a/cpu_usage2/Makefile
++++ b/cpu_usage2/Makefile
+@@ -1,6 +1,6 @@
+ P=cpu_usage2
+ OBJECTS=
+-CFLAGS=-g -Wall -Werror -O2 -std=gnu11
++CFLAGS ?= -g -Wall -Werror -O2 -std=gnu11
+ LDLIBS=
+ 
+ $(P): $(OBJECTS)
+--- a/memory2/Makefile
++++ b/memory2/Makefile
+@@ -1,6 +1,6 @@
+ P=memory2
+ OBJECTS=
+-CFLAGS=-g -Wall -Werror -O2 -std=c11
++CFLAGS ?= -g -Wall -Werror -O2 -std=c11
+ LDLIBS=
+ 
+ $(P): $(OBJECTS)
