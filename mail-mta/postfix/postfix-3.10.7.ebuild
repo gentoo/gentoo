@@ -1,8 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit pam systemd toolchain-funcs
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/postfix.asc
+inherit pam systemd toolchain-funcs verify-sig
 
 MY_PV="${PV/_pre/-}"
 MY_SRC="${PN}-${MY_PV}"
@@ -12,6 +13,7 @@ RC_VER="2.7"
 DESCRIPTION="A fast and secure drop-in replacement for sendmail"
 HOMEPAGE="https://www.postfix.org/"
 SRC_URI="${MY_URI}/${MY_SRC}.tar.gz"
+SRC_URI+=" verify-sig? ( ${MY_URI}/${MY_SRC}.tar.gz.gpg2 -> ${MY_SRC}.tar.gz.asc )"
 S="${WORKDIR}/${MY_SRC}"
 
 LICENSE="|| ( IBM EPL-2.0 )"
@@ -56,6 +58,8 @@ RDEPEND="${DEPEND}
 	!mail-mta/opensmtpd
 	!mail-mta/ssmtp[mta]
 	selinux? ( sec-policy/selinux-postfix )"
+
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-postfix )"
 
 REQUIRED_USE="
 	ldap-bind? ( ldap sasl )
