@@ -1,0 +1,11 @@
+https://github.com/eoyilmaz/displaycal-py3/issues/606
+--- a/DisplayCAL/display_cal.py
++++ b/DisplayCAL/display_cal.py
+@@ -151,6 +151,7 @@
+     TextType,
+     XYZType,
+     VideoCardGammaType,
++    VideoCardGammaTableType,
+ )
+ from DisplayCAL.log import log, logbuffer
+ from DisplayCAL.meta import (
