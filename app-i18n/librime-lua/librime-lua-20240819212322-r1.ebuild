@@ -1,4 +1,4 @@
-# Copyright 2020-2025 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -49,6 +49,8 @@ src_prepare() {
 }
 
 src_configure() {
+	# https://bugs.gentoo.org/966950
+	append-flags -std=gnu++17
 	# -Werror=strict-aliasing
 	# https://bugs.gentoo.org/940793
 	# https://github.com/hchunhui/librime-lua/issues/412
