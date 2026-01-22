@@ -36,6 +36,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2026-01-22)
+# eclean-dist -d needs fixing
+=app-portage/gentoolkit-0.7
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-01-18)
 # Masked for testing.
 >=dev-libs/boost-1.90
