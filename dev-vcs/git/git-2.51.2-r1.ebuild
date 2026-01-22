@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -473,4 +473,12 @@ pkg_postinst() {
 	optfeature_header "Some scripts require additional dependencies:"
 	optfeature git-quiltimport dev-util/quilt
 	optfeature git-instaweb www-servers/lighttpd www-servers/apache www-servers/nginx
+
+	if ! use perl ; then
+		ewarn " "
+		ewarn "Git was built without Perl support!"
+		ewarn " "
+		ewarn "  Tools such as git-send-email and"
+		ewarn "  git-instaweb won't available for use"
+	fi
 }
