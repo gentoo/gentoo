@@ -1,0 +1,695 @@
+https://bugs.gentoo.org/969070
+https://gitlab.isc.org/isc-projects/kea/-/issues/4266
+https://gitlab.isc.org/isc-projects/kea/-/merge_requests/2881
+https://gitlab.isc.org/isc-projects/kea/-/merge_requests/2882
+Fixes the build with boost 1.90
+--- a/src/hooks/d2/gss_tsig/gss_tsig_cfg.cc
++++ b/src/hooks/d2/gss_tsig/gss_tsig_cfg.cc
+@@ -59,8 +59,10 @@
+       rekey_interval_(DEFAULT_REKEY_INTERVAL),
+       retry_interval_(DEFAULT_RETRY_INTERVAL), tkey_proto_(IOFetch::TCP),
+       fallback_(false), exchange_timeout_(DEFAULT_EXCHANGE_TIMEOUT), timer_() {
+-    BOOST_STATIC_ASSERT(DEFAULT_REKEY_INTERVAL < DEFAULT_KEY_LIFETIME);
+-    BOOST_STATIC_ASSERT(DEFAULT_RETRY_INTERVAL < DEFAULT_REKEY_INTERVAL);
++    static_assert(DEFAULT_REKEY_INTERVAL < DEFAULT_KEY_LIFETIME,
++                  "DEFAULT_REKEY_INTERVAL < DEFAULT_KEY_LIFETIME");
++    static_assert(DEFAULT_RETRY_INTERVAL < DEFAULT_REKEY_INTERVAL,
++                  "DEFAULT_RETRY_INTERVAL < DEFAULT_REKEY_INTERVAL");
+     initStats();
+ }
+ 
+--- a/src/hooks/dhcp/mysql/mysql_host_data_source.cc
++++ b/src/hooks/dhcp/mysql/mysql_host_data_source.cc
+@@ -30,7 +30,6 @@
+ #include <boost/array.hpp>
+ #include <boost/foreach.hpp>
+ #include <boost/pointer_cast.hpp>
+-#include <boost/static_assert.hpp>
+ 
+ #include <mysql.h>
+ #include <mysqld_error.h>
+@@ -169,7 +168,7 @@
+         columns_[DHCP4_BOOT_FILE_NAME_COL] = "dhcp4_boot_file_name";
+         columns_[AUTH_KEY_COL] = "auth_key";
+ 
+-        BOOST_STATIC_ASSERT(13 < HOST_COLUMNS);
++	static_assert(13 < HOST_COLUMNS, "13 < HOST_COLUMNS");
+     }
+ 
+     /// @brief Virtual destructor.
+@@ -1722,7 +1721,7 @@
+         columns_[5] = "excluded_prefix";
+         columns_[6] = "excluded_prefix_len";
+ 
+-        BOOST_STATIC_ASSERT(6 < RESRV_COLUMNS);
++        static_assert(6 < RESRV_COLUMNS, "6 < RESRV_COLUMNS");
+     }
+ 
+     /// @brief Create MYSQL_BIND objects for IPv6 Reservation.
+@@ -1904,7 +1903,7 @@
+           user_context_(), user_context_len_(0), subnet_id_(SUBNET_ID_UNUSED),
+           host_id_(0), option_() {
+ 
+-        BOOST_STATIC_ASSERT(10 <= OPTION_COLUMNS);
++	static_assert(10 <= OPTION_COLUMNS, "10 <= OPTION_COLUMNS");
+     }
+ 
+     /// @brief Creates binding array to insert option data into database.
+--- a/src/hooks/dhcp/mysql/mysql_lease_mgr.cc
++++ b/src/hooks/dhcp/mysql/mysql_lease_mgr.cc
+@@ -22,7 +22,6 @@
+ 
+ #include <boost/array.hpp>
+ #include <boost/make_shared.hpp>
+-#include <boost/static_assert.hpp>
+ #include <mysqld_error.h>
+ 
+ #include <ctime>
+@@ -659,7 +658,7 @@
+         columns_[RELAY_ID_COL] = "relay_id";
+         columns_[REMOTE_ID_COL] = "remote_id";
+         columns_[POOL_ID_COL] = "pool_id";
+-        BOOST_STATIC_ASSERT(13 < LEASE_COLUMNS);
++        static_assert(13 < LEASE_COLUMNS, "13 < LEASE_COLUMNS");
+     }
+ 
+     /// @brief Create MYSQL_BIND objects for Lease4 Pointer
+@@ -882,8 +881,7 @@
+             setErrorIndicators(bind_, error_, LEASE_COLUMNS);
+ 
+             // .. and check that we have the numbers correct at compile time.
+-            BOOST_STATIC_ASSERT(13 < LEASE_COLUMNS);
+-
++            static_assert(13 < LEASE_COLUMNS, "13 < LEASE_COLUMNS");
+         } catch (const std::exception& ex) {
+             isc_throw(DbOperationError,
+                       "Could not create bind array from Lease4: "
+@@ -1025,7 +1023,7 @@
+         setErrorIndicators(bind_, error_, LEASE_COLUMNS);
+ 
+         // .. and check that we have the numbers correct at compile time.
+-        BOOST_STATIC_ASSERT(13 < LEASE_COLUMNS);
++	static_assert(13 < LEASE_COLUMNS, "13 < LEASE_COLUMNS");
+ 
+         // Add the data to the vector.  Note the end element is one after the
+         // end of the array.
+@@ -1252,7 +1250,7 @@
+         columns_[STATE_COL] = "state";
+         columns_[USER_CONTEXT_COL] = "user_context";
+         columns_[POOL_ID_COL] = "pool_id";
+-        BOOST_STATIC_ASSERT(17 < LEASE_COLUMNS);
++	static_assert(17 < LEASE_COLUMNS, "17 < LEASE_COLUMNS");
+     }
+ 
+     /// @brief Create MYSQL_BIND objects for Lease6 Pointer
+@@ -1496,7 +1494,7 @@
+             setErrorIndicators(bind_, error_, LEASE_COLUMNS);
+ 
+             // .. and check that we have the numbers correct at compile time.
+-            BOOST_STATIC_ASSERT(17 < LEASE_COLUMNS);
++            static_assert(17 < LEASE_COLUMNS, "17 < LEASE_COLUMNS");
+ 
+         } catch (const std::exception& ex) {
+             isc_throw(DbOperationError,
+@@ -1662,7 +1660,7 @@
+         setErrorIndicators(bind_, error_, LEASE_COLUMNS);
+ 
+         // .. and check that we have the numbers correct at compile time.
+-        BOOST_STATIC_ASSERT(17 < LEASE_COLUMNS);
++	static_assert(17 < LEASE_COLUMNS, "17 < LEASE_COLUMNS");
+ 
+         // Add the data to the vector.  Note the end element is one after the
+         // end of the array.
+--- a/src/hooks/dhcp/mysql/mysql_legal_log.cc
++++ b/src/hooks/dhcp/mysql/mysql_legal_log.cc
+@@ -15,7 +15,6 @@
+ #include <util/multi_threading_mgr.h>
+ 
+ #include <boost/array.hpp>
+-#include <boost/static_assert.hpp>
+ #include <mysqld_error.h>
+ 
+ #include <iomanip>
+@@ -62,7 +61,7 @@
+         // Set the column names (for error messages)
+         columns_[0] = "address";
+         columns_[1] = "log";
+-        BOOST_STATIC_ASSERT(1 < LOG_COLUMNS);
++        static_assert(1 < LOG_COLUMNS, "1 < LOG_COLUMNS");
+     }
+ 
+     /// @brief Destructor
+@@ -183,7 +182,7 @@
+             setErrorIndicators(bind_, error_, LOG_COLUMNS);
+ 
+             // .. and check that we have the numbers correct at compile time.
+-            BOOST_STATIC_ASSERT(1 < LOG_COLUMNS);
++	    static_assert(1 < LOG_COLUMNS, "1 < LOG_COLUMNS");
+ 
+         } catch (const std::exception& ex) {
+             isc_throw(DbOperationError,
+--- a/src/hooks/dhcp/pgsql/pgsql_host_data_source.cc
++++ b/src/hooks/dhcp/pgsql/pgsql_host_data_source.cc
+@@ -30,7 +30,6 @@
+ #include <boost/array.hpp>
+ #include <boost/foreach.hpp>
+ #include <boost/pointer_cast.hpp>
+-#include <boost/static_assert.hpp>
+ 
+ #include <stdint.h>
+ 
+@@ -140,7 +139,7 @@
+         columns_[DHCP4_BOOT_FILE_NAME_COL] = "dhcp4_boot_file_name";
+         columns_[AUTH_KEY_COL] = "auth_key";
+ 
+-        BOOST_STATIC_ASSERT(12 < HOST_COLUMNS);
++	static_assert(12 < HOST_COLUMNS, "12 < HOST_COLUMNS");
+     };
+ 
+     /// @brief Virtual destructor.
+@@ -942,7 +941,7 @@
+         columns_[excluded_prefix_index_] = "excluded_prefix";
+         columns_[excluded_prefix_len_index_] = "excluded_prefix_len";
+ 
+-        BOOST_STATIC_ASSERT(6 < RESERVATION_COLUMNS);
++	static_assert(6 < RESERVATION_COLUMNS, "6 < RESERVATION_COLUMNS");
+     }
+ 
+     /// @brief Reinitializes state information
+@@ -1126,7 +1125,7 @@
+         columns_[5] = "excluded_prefix";
+         columns_[6] = "excluded_prefix_len";
+ 
+-        BOOST_STATIC_ASSERT(7 < RESRV_COLUMNS);
++	static_assert(7 < RESRV_COLUMNS, "7 < RESRV_COLUMNS");
+     }
+ 
+     /// @brief Populate a bind array representing an IPv6 reservation
+@@ -1242,7 +1241,7 @@
+         columns_[DHCP_SUBNET_ID_COL] = "dhcp_subnet_id";
+         columns_[HOST_ID_COL] = "host_id";
+ 
+-        BOOST_STATIC_ASSERT(10 <= OPTION_COLUMNS);
++	static_assert(10 <= OPTION_COLUMNS, "10 <= OPTION_COLUMNS");
+     }
+ 
+     /// @brief Creates binding array to insert option data into database.
+--- a/src/hooks/dhcp/pgsql/pgsql_lease_mgr.cc
++++ b/src/hooks/dhcp/pgsql/pgsql_lease_mgr.cc
+@@ -21,7 +21,6 @@
+ #include <util/multi_threading_mgr.h>
+ 
+ #include <boost/make_shared.hpp>
+-#include <boost/static_assert.hpp>
+ 
+ #include <iomanip>
+ #include <limits>
+@@ -727,7 +726,7 @@
+         : lease_(), addr4_(0), client_id_length_(0),
+           relay_id_length_(0), remote_id_length_(0) {
+ 
+-        BOOST_STATIC_ASSERT(13 < LEASE_COLUMNS);
++	static_assert(13 < LEASE_COLUMNS, "13 < LEASE_COLUMNS");
+ 
+         memset(hwaddr_buffer_, 0, sizeof(hwaddr_buffer_));
+         memset(client_id_buffer_, 0, sizeof(client_id_buffer_));
+@@ -1029,7 +1028,7 @@
+           preferred_lifetime_str_(""), hwtype_(0), hwtype_str_(""),
+           hwaddr_source_(0), hwaddr_source_str_("") {
+ 
+-        BOOST_STATIC_ASSERT(17 < LEASE_COLUMNS);
++	static_assert(17 < LEASE_COLUMNS, "17 < LEASE_COLUMNS");
+ 
+         memset(duid_buffer_, 0, sizeof(duid_buffer_));
+ 
+--- a/src/hooks/dhcp/pgsql/pgsql_legal_log.cc
++++ b/src/hooks/dhcp/pgsql/pgsql_legal_log.cc
+@@ -14,8 +14,6 @@
+ #include <dhcpsrv/timer_mgr.h>
+ #include <util/multi_threading_mgr.h>
+ 
+-#include <boost/static_assert.hpp>
+-
+ #include <iomanip>
+ #include <limits>
+ #include <sstream>
+@@ -65,9 +63,10 @@
+     /// @brief Constructor
+     PgSqlLegLExchange() : address_(""), log_("") {
+ 
+-        BOOST_STATIC_ASSERT(0 < LOG_COLUMNS);
++	static_assert(0 < LOG_COLUMNS, "0 < LOG_COLUMNS");
+ 
+         // Set the column names (for error messages)
++	//
+         columns_.push_back("log");
+     }
+ 
+--- a/src/lib/asiodns/io_fetch.cc
++++ b/src/lib/asiodns/io_fetch.cc
+@@ -24,8 +24,9 @@
+ 
+ #include <boost/scoped_ptr.hpp>
+ #include <boost/date_time/posix_time/posix_time_types.hpp>
+-#include <boost/asio/deadline_timer.hpp>
++#include <boost/asio/system_timer.hpp>
+ 
++#include <chrono>
+ #include <functional>
+ #include <unistd.h>             // for some IPC/network system calls
+ #include <netinet/in.h>
+@@ -68,7 +69,7 @@
+     OutputBufferPtr               msgbuf;            // Wire buffer for question
+     OutputBufferPtr               received;          // Received data put here
+     IOFetch::Callback*            callback;          // Called on I/O Completion
+-    boost::asio::deadline_timer   timer;             // Timer to measure timeouts
++    boost::asio::system_timer     timer;             // Timer to measure timeouts
+     IOFetch::Protocol             protocol;          // Protocol being used
+     size_t                        cumulative;        // Cumulative received amount
+     size_t                        expected;          // Expected amount of data
+@@ -228,7 +229,7 @@
+         // If we timeout, we stop, which cancels outstanding I/O operations and
+         // shuts down everything.
+         if (data_->timeout != -1) {
+-            data_->timer.expires_from_now(boost::posix_time::milliseconds(
++            data_->timer.expires_after(std::chrono::milliseconds(
+                 data_->timeout));
+             data_->timer.async_wait(std::bind(&IOFetch::stop, *this,
+                 TIME_OUT));
+--- a/src/lib/asiodns/tests/io_fetch_unittest.cc
++++ b/src/lib/asiodns/tests/io_fetch_unittest.cc
+@@ -24,6 +24,7 @@
+ #include <boost/asio/deadline_timer.hpp>
+ 
+ #include <algorithm>
++#include <chrono>
+ #include <cstdlib>
+ #include <functional>
+ #include <string>
+@@ -67,7 +68,7 @@
+     IOFetch                          tcp_fetch_;                ///< For TCP query test
+     IOFetch::Protocol                protocol_;                 ///< Protocol being tested
+     size_t                           cumulative_;               ///< Cumulative data received by "server".
+-    deadline_timer                   timer_;                    ///< Timer to measure timeouts
++    system_timer                     timer_;                    ///< Timer to measure timeouts
+ 
+     // The next member is the buffer in which the "server" (implemented by the
+     // response handler methods in this class) receives the question sent by the
+@@ -432,7 +433,7 @@
+             // tcpSendData, which will then send the next chunk.  We pass the
+             // socket over which data should be sent as an argument to that
+             // function.
+-            timer_.expires_from_now(boost::posix_time::milliseconds(SEND_INTERVAL));
++            timer_.expires_after(std::chrono::milliseconds(SEND_INTERVAL));
+             timer_.async_wait(std::bind(&IOFetchTest::tcpSendData, this,
+                                         socket));
+         }
+--- a/src/lib/asiolink/interval_timer.cc
++++ b/src/lib/asiolink/interval_timer.cc
+@@ -12,11 +12,12 @@
+ #include <boost/enable_shared_from_this.hpp>
+ #include <boost/noncopyable.hpp>
+ #include <boost/shared_ptr.hpp>
+-#include <boost/asio/deadline_timer.hpp>
++#include <boost/asio/system_timer.hpp>
+ 
+ #include <exceptions/exceptions.h>
+ 
+ #include <atomic>
++#include <chrono>
+ #include <functional>
+ #include <mutex>
+ 
+@@ -89,7 +90,7 @@
+     IOServicePtr io_service_;
+ 
+     /// @brief The asio timer.
+-    boost::asio::deadline_timer timer_;
++    boost::asio::system_timer timer_;
+ 
+     /// @brief Controls how the timer behaves after expiration.
+     IntervalTimer::Mode mode_;
+@@ -142,7 +143,7 @@
+ IntervalTimerImpl::update() {
+     try {
+         // Update expire time to (current time + interval_).
+-        timer_.expires_from_now(boost::posix_time::millisec(long(interval_)));
++        timer_.expires_after(std::chrono::milliseconds(interval_));
+         // Reset timer.
+         // Pass a function bound with a shared_ptr to this.
+         timer_.async_wait(std::bind(&IntervalTimerImpl::callback,
+--- a/src/lib/asiolink/interval_timer.h
++++ b/src/lib/asiolink/interval_timer.h
+@@ -18,9 +18,9 @@
+ class IntervalTimerImpl;
+ 
+ /// \brief The \c IntervalTimer class is a wrapper for the ASIO
+-/// \c boost::asio::deadline_timer class.
++/// \c boost::asio::system_timer class.
+ ///
+-/// This class is implemented to use \c boost::asio::deadline_timer as interval
++/// This class is implemented to use \c boost::asio::system_timer as interval
+ /// timer.
+ ///
+ /// \c setup() sets a timer to expire on (now + interval), a call back
+@@ -87,7 +87,7 @@
+     /// This destructor never throws an exception.
+     ///
+     /// On the destruction of this class the timer will be canceled
+-    /// inside \c boost::asio::deadline_timer.
++    /// inside \c boost::asio::system_timer.
+     ~IntervalTimer();
+     //@}
+ 
+--- a/src/lib/asiolink/io_address.cc
++++ b/src/lib/asiolink/io_address.cc
+@@ -10,7 +10,6 @@
+ #include <asiolink/io_error.h>
+ #include <exceptions/exceptions.h>
+ 
+-#include <boost/static_assert.hpp>
+ // moved to container_hash on recent boost versions (backward compatible)
+ #include <boost/functional/hash.hpp>
+ 
+@@ -71,7 +70,9 @@
+                   << "are supported");
+     }
+ 
+-    BOOST_STATIC_ASSERT(INET6_ADDRSTRLEN >= INET_ADDRSTRLEN);
++    static_assert(INET6_ADDRSTRLEN >= INET_ADDRSTRLEN,
++                  "INET6_ADDRSTRLEN >= INET_ADDRSTRLEN");
++
+     char addr_str[INET6_ADDRSTRLEN];
+     inet_ntop(family, data, addr_str, INET6_ADDRSTRLEN);
+     return IOAddress(string(addr_str));
+--- a/src/lib/dhcp/iface_mgr_linux.cc
++++ b/src/lib/dhcp/iface_mgr_linux.cc
+@@ -32,7 +32,6 @@
+ #include <util/io/sockaddr_util.h>
+ 
+ #include <boost/array.hpp>
+-#include <boost/static_assert.hpp>
+ 
+ #include <fcntl.h>
+ #include <stdint.h>
+@@ -45,7 +44,7 @@
+ using namespace isc::dhcp;
+ using namespace isc::util::io::internal;
+ 
+-BOOST_STATIC_ASSERT(IFLA_MAX>=IFA_MAX);
++static_assert(IFLA_MAX>=IFA_MAX, "IFLA_MAX>=IFA_MAX");
+ 
+ namespace {
+ 
+@@ -180,7 +179,9 @@
+     struct sockaddr_nl nladdr;
+ 
+     // do a sanity check. Verify that Req structure is aligned properly
+-    BOOST_STATIC_ASSERT(sizeof(nlmsghdr) == offsetof(Req, generic));
++    static_assert(sizeof(nlmsghdr) == offsetof(Req, generic),
++                  "sizeof(nlmsghdr) == offsetof(Req, generic)");
++
+ 
+     memset(&nladdr, 0, sizeof(nladdr));
+     nladdr.nl_family = AF_NETLINK;
+--- a/src/lib/dhcp/protocol_util.cc
++++ b/src/lib/dhcp/protocol_util.cc
+@@ -8,7 +8,6 @@
+ #include <asiolink/io_address.h>
+ #include <dhcp/dhcp6.h>
+ #include <dhcp/protocol_util.h>
+-#include <boost/static_assert.hpp>
+ // in_systm.h is required on some some BSD systems
+ // complaining that n_time is undefined but used
+ // in ip.h.
+@@ -41,7 +40,9 @@
+     // The size of the single address is always lower then the size of
+     // the header that holds this address. Otherwise, it is a programming
+     // error that we want to detect in the compilation time.
+-    BOOST_STATIC_ASSERT(ETHERNET_HEADER_LEN > HWAddr::ETHERNET_HWADDR_LEN);
++    static_assert(ETHERNET_HEADER_LEN > HWAddr::ETHERNET_HWADDR_LEN,
++                  "ETHERNET_HEADER_LEN > HWAddr::ETHERNET_HWADDR_LEN");
++
+ 
+     // Remember initial position.
+     size_t start_pos = buf.getPosition();
+@@ -76,7 +77,9 @@
+                   " packet headers");
+     }
+ 
+-    BOOST_STATIC_ASSERT(IP_SRC_ADDR_OFFSET < MIN_IP_HEADER_LEN);
++    static_assert(IP_SRC_ADDR_OFFSET < MIN_IP_HEADER_LEN,
++                  "IP_SRC_ADDR_OFFSET < MIN_IP_HEADER_LEN");
++
+ 
+     // Remember initial position of the read pointer.
+     size_t start_pos = buf.getPosition();
+--- a/src/lib/dhcp/tests/pkt4_unittest.cc
++++ b/src/lib/dhcp/tests/pkt4_unittest.cc
+@@ -24,7 +24,6 @@
+ #include <boost/shared_array.hpp>
+ #include <boost/shared_ptr.hpp>
+ #include <boost/scoped_ptr.hpp>
+-#include <boost/static_assert.hpp>
+ #include <gtest/gtest.h>
+ 
+ #include <iostream>
+@@ -86,8 +85,10 @@
+ const uint8_t dummySname[] = "Lorem ipsum dolor sit amet, consectetur "
+     "adipiscing elit posuere.";
+ 
+-BOOST_STATIC_ASSERT(sizeof(dummyFile)  == Pkt4::MAX_FILE_LEN + 1);
+-BOOST_STATIC_ASSERT(sizeof(dummySname) == Pkt4::MAX_SNAME_LEN + 1);
++static_assert(sizeof(dummyFile)  == Pkt4::MAX_FILE_LEN + 1,
++              "sizeof(dummyFile)  == Pkt4::MAX_FILE_LEN + 1");
++static_assert(sizeof(dummySname) == Pkt4::MAX_SNAME_LEN + 1,
++              "sizeof(dummySname) == Pkt4::MAX_SNAME_LEN + 1");
+ 
+ 
+ class Pkt4Test : public ::testing::Test {
+--- a/src/lib/dhcpsrv/tests/alloc_engine_expiration_unittest.cc
++++ b/src/lib/dhcpsrv/tests/alloc_engine_expiration_unittest.cc
+@@ -13,7 +13,6 @@
+ #include <hooks/hooks_manager.h>
+ #include <stats/stats_mgr.h>
+ #include <gtest/gtest.h>
+-#include <boost/static_assert.hpp>
+ #include <functional>
+ #include <iomanip>
+ #include <sstream>
+@@ -691,7 +690,9 @@
+         // Hence, it is convenient if the number of test leases is a
+         // multiple of 10.
+         const size_t reclamation_group_size = 10;
+-        BOOST_STATIC_ASSERT(TEST_LEASES_NUM % reclamation_group_size == 0);
++	static_assert(TEST_LEASES_NUM % reclamation_group_size == 0,
++                      "TEST_LEASES_NUM % reclamation_group_size == 0");
++
+ 
+         // Leases will be reclaimed in groups of 10.
+         for (unsigned int i = reclamation_group_size; i < TEST_LEASES_NUM;
+@@ -760,7 +761,9 @@
+         }
+ 
+         const size_t reclamation_group_size = 10;
+-        BOOST_STATIC_ASSERT(TEST_LEASES_NUM % reclamation_group_size == 0);
++	static_assert(TEST_LEASES_NUM % reclamation_group_size == 0,
++                      "TEST_LEASES_NUM % reclamation_group_size == 0");
++
+ 
+         // Leases will be reclaimed in groups of 10
+         for (unsigned int i = 10; i < TEST_LEASES_NUM;  i += reclamation_group_size) {
+@@ -1438,7 +1441,7 @@
+ void
+ ExpirationAllocEngine6Test::testReclaimExpiredLeasesStats() {
+     // This test requires that the number of leases is an even number.
+-    BOOST_STATIC_ASSERT(TEST_LEASES_NUM % 2 == 0);
++    static_assert(TEST_LEASES_NUM % 2 == 0, "TEST_LEASES_NUM % 2 == 0");
+ 
+     for (unsigned int i = 0; i < TEST_LEASES_NUM; ++i) {
+         // Mark all leases as expired. The higher the index the less
+@@ -1477,7 +1480,7 @@
+ void
+ ExpirationAllocEngine6Test::testReclaimReusedLeases(const uint16_t msg_type,
+                                                     const bool use_reclaimed) {
+-    BOOST_STATIC_ASSERT(TEST_LEASES_NUM < 1000);
++    static_assert(TEST_LEASES_NUM < 1000, "TEST_LEASES_NUM < 1000");
+ 
+     for (unsigned int i = 0; i < TEST_LEASES_NUM; ++i) {
+         // Depending on the parameter, mark leases 'expired-reclaimed' or
+@@ -1580,7 +1583,7 @@
+ void
+ ExpirationAllocEngine6Test::testReclaimExpiredLeasesRegisteredStats() {
+     // This test requires that the number of leases is an even number.
+-    BOOST_STATIC_ASSERT(TEST_LEASES_NUM % 2 == 0);
++    static_assert(TEST_LEASES_NUM % 2 == 0, "TEST_LEASES_NUM % 2 == 0");
+ 
+     for (unsigned int i = 0; i < TEST_LEASES_NUM; ++i) {
+         // Mark all leases as expired. The higher the index the less
+@@ -1675,7 +1678,7 @@
+ // execution of the lease reclamation routine.
+ TEST_F(ExpirationAllocEngine6Test, reclaimExpiredLeasesTimeout) {
+     // This test needs at least 40 leases to make sense.
+-    BOOST_STATIC_ASSERT(TEST_LEASES_NUM >= 40);
++    static_assert(TEST_LEASES_NUM >= 40, "TEST_LEASES_NUM >= 40");
+     // Run with timeout of 1.2s.
+     testReclaimExpiredLeasesTimeout(1200);
+ }
+@@ -1687,7 +1690,7 @@
+ // reclamation.
+ TEST_F(ExpirationAllocEngine6Test, reclaimExpiredLeasesShortTimeout) {
+     // We will most likely reclaim just one lease, so 5 is more than enough.
+-    BOOST_STATIC_ASSERT(TEST_LEASES_NUM >= 5);
++    static_assert(TEST_LEASES_NUM >= 5, "TEST_LEASES_NUM >= 5");
+     // Reclaim leases with the 1ms timeout.
+     testReclaimExpiredLeasesTimeout(1);
+ }
+@@ -1695,7 +1698,7 @@
+ // This test verifies that expired-reclaimed leases are removed from the
+ // lease database.
+ TEST_F(ExpirationAllocEngine6Test, deleteExpiredReclaimedLeases) {
+-    BOOST_STATIC_ASSERT(TEST_LEASES_NUM >= 10);
++    static_assert(TEST_LEASES_NUM >= 10, "TEST_LEASES_NUM >= 10");
+     testDeleteExpiredReclaimedLeases();
+ }
+ 
+@@ -2152,7 +2155,7 @@
+ void
+ ExpirationAllocEngine4Test::testReclaimExpiredLeasesStats() {
+     // This test requires that the number of leases is an even number.
+-    BOOST_STATIC_ASSERT(TEST_LEASES_NUM % 2 == 0);
++    static_assert(TEST_LEASES_NUM % 2 == 0, "TEST_LEASES_NUM % 2 == 0");
+ 
+     for (unsigned int i = 0; i < TEST_LEASES_NUM; ++i) {
+         // Mark all leases as expired. The higher the index the less
+@@ -2192,7 +2195,7 @@
+                                                     const bool client_renews,
+                                                     const bool use_reclaimed) {
+     // Let's restrict the number of leases.
+-    BOOST_STATIC_ASSERT(TEST_LEASES_NUM < 1000);
++    static_assert(TEST_LEASES_NUM < 1000, "TEST_LEASES_NUM < 1000");
+ 
+     for (unsigned int i = 0; i < TEST_LEASES_NUM; ++i) {
+         // Depending on the parameter, mark leases 'expired-reclaimed' or
+@@ -2361,7 +2364,7 @@
+ // execution of the lease reclamation routine.
+ TEST_F(ExpirationAllocEngine4Test, reclaimExpiredLeasesTimeout) {
+     // This test needs at least 40 leases to make sense.
+-    BOOST_STATIC_ASSERT(TEST_LEASES_NUM >= 40);
++    static_assert(TEST_LEASES_NUM >= 40, "TEST_LEASES_NUM >= 40");
+     // Run with timeout of 1.2s.
+     testReclaimExpiredLeasesTimeout(1200);
+ }
+@@ -2373,7 +2376,7 @@
+ // reclamation.
+ TEST_F(ExpirationAllocEngine4Test, reclaimExpiredLeasesShortTimeout) {
+     // We will most likely reclaim just one lease, so 5 is more than enough.
+-    BOOST_STATIC_ASSERT(TEST_LEASES_NUM >= 5);
++    static_assert(TEST_LEASES_NUM >= 5, "TEST_LEASES_NUM >= 5");
+     // Reclaim leases with the 1ms timeout.
+     testReclaimExpiredLeasesTimeout(1);
+ }
+@@ -2381,7 +2384,7 @@
+ // This test verifies that expired-reclaimed leases are removed from the
+ // lease database.
+ TEST_F(ExpirationAllocEngine4Test, deleteExpiredReclaimedLeases) {
+-    BOOST_STATIC_ASSERT(TEST_LEASES_NUM >= 10);
++    static_assert(TEST_LEASES_NUM >= 10, "TEST_LEASES_NUM >= 10");
+     testDeleteExpiredReclaimedLeases();
+ }
+ 
+--- a/src/lib/dns/messagerenderer.cc
++++ b/src/lib/dns/messagerenderer.cc
+@@ -15,7 +15,6 @@
+ #include <util/buffer.h>
+ 
+ #include <boost/array.hpp>
+-#include <boost/static_assert.hpp>
+ #include <limits>
+ #include <cassert>
+ #include <vector>
+--- a/src/lib/dns/rdataclass.cc
++++ b/src/lib/dns/rdataclass.cc
+@@ -1398,8 +1398,10 @@
+ uint32_t
+ SOA::getMinimum() const {
+     // Make sure the buffer access is safe.
+-    BOOST_STATIC_ASSERT(sizeof(numdata_) ==
+-                        sizeof(uint32_t) * 4 + sizeof(uint32_t));
++    static_assert(
++        sizeof(numdata_) == sizeof(uint32_t) * 4 + sizeof(uint32_t),
++        "sizeof(numdata_) == sizeof(uint32_t) * 4 + sizeof(uint32_t)");
++
+ 
+     InputBuffer b(&numdata_[sizeof(uint32_t) * 4], sizeof(uint32_t));
+     return (b.readUint32());
+--- a/src/lib/hooks/callout_manager.cc
++++ b/src/lib/hooks/callout_manager.cc
+@@ -12,8 +12,6 @@
+ #include <hooks/pointer_converter.h>
+ #include <util/stopwatch.h>
+ 
+-#include <boost/static_assert.hpp>
+-
+ #include <algorithm>
+ #include <climits>
+ #include <functional>
+--- a/src/lib/log/logger_impl.cc
++++ b/src/lib/log/logger_impl.cc
+@@ -17,7 +17,6 @@
+ 
+ #include <boost/make_shared.hpp>
+ #include <boost/lexical_cast.hpp>
+-#include <boost/static_assert.hpp>
+ #include <boost/algorithm/string.hpp>
+ 
+ #include <log4cplus/configurator.h>
+--- a/src/lib/log/logger_level_impl.cc
++++ b/src/lib/log/logger_level_impl.cc
+@@ -44,13 +44,20 @@
+     };
+ 
+     // ... with compile-time checks to ensure that table indexes are correct.
+-    BOOST_STATIC_ASSERT(static_cast<int>(DEFAULT) == 0);
+-    BOOST_STATIC_ASSERT(static_cast<int>(DEBUG) == 1);
+-    BOOST_STATIC_ASSERT(static_cast<int>(INFO) == 2);
+-    BOOST_STATIC_ASSERT(static_cast<int>(WARN) == 3);
+-    BOOST_STATIC_ASSERT(static_cast<int>(ERROR) == 4);
+-    BOOST_STATIC_ASSERT(static_cast<int>(FATAL) == 5);
+-    BOOST_STATIC_ASSERT(static_cast<int>(NONE) == 6);
++    static_assert(static_cast<int>(DEFAULT) == 0,
++                  "static_cast<int>(DEFAULT) == 0");
++    static_assert(static_cast<int>(DEBUG) == 1,
++                  "static_cast<int>(DEBUG) == 1");
++    static_assert(static_cast<int>(INFO) == 2,
++                  "static_cast<int>(INFO) == 2");
++    static_assert(static_cast<int>(WARN) == 3,
++                  "static_cast<int>(WARN) == 3");
++    static_assert(static_cast<int>(ERROR) == 4,
++                  "static_cast<int>(ERROR) == 4");
++    static_assert(static_cast<int>(FATAL) == 5,
++                  "static_cast<int>(FATAL) == 5");
++    static_assert(static_cast<int>(NONE) == 6,
++                  "static_cast<int>(NONE) == 6");
+ 
+     // Do the conversion
+     if (level.severity == DEBUG) {
+--- a/src/lib/log/tests/logger_level_impl_unittest.cc
++++ b/src/lib/log/tests/logger_level_impl_unittest.cc
+@@ -10,7 +10,6 @@
+ #include <string>
+ 
+ #include <gtest/gtest.h>
+-#include <boost/static_assert.hpp>
+ #include <boost/lexical_cast.hpp>
+ 
+ #include <log/logger_level_impl.h>
+@@ -109,7 +108,7 @@
+     // ... and some invalid valid values
+     test_convert_to("DEBUG-1",  INFO, MIN_DEBUG_LEVEL,
+             (log4cplus::DEBUG_LOG_LEVEL + 1));
+-    BOOST_STATIC_ASSERT(MAX_DEBUG_LEVEL == 99);
++    static_assert(MAX_DEBUG_LEVEL == 99, "MAX_DEBUG_LEVEL == 99");
+     test_convert_to("DEBUG+100",  DEFAULT, 0,
+             (log4cplus::DEBUG_LOG_LEVEL - MAX_DEBUG_LEVEL - 1));
+ }
