@@ -110,7 +110,9 @@ src_prepare() {
 }
 
 src_configure() {
-	llvm_prepend_path "${LLVM_MAJOR}"
+	if use clang || use test; then
+		llvm_prepend_path -b "${LLVM_MAJOR}"
+	fi
 
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
 	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"
@@ -159,6 +161,8 @@ src_configure() {
 		-DCOMPILER_RT_BUILD_PROFILE=$(usex profile)
 		-DCOMPILER_RT_BUILD_SANITIZERS="${want_sanitizer}"
 		-DCOMPILER_RT_BUILD_XRAY=$(usex xray)
+
+		-DLLVM_ROOT="${ESYSROOT}/usr/lib/llvm/${LLVM_MAJOR}"
 
 		-DPython3_EXECUTABLE="${PYTHON}"
 	)
