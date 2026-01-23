@@ -89,13 +89,10 @@ unset lang
 src_unpack() {
 	if [[ ${PV} == 9999 ]] ; then
 		git-r3_src_unpack
-		return
-	fi
-
-	if [[ ${PV} != *_rc* ]] && ! [[ ${MAN_PAGES_GENTOO_DIST} -eq 1 ]] && use verify-sig ; then
+		unpack man-pages-gentoo-${GENTOO_PATCH}.tar.bz2
+	elif [[ ${PV} != *_rc* ]] && ! [[ ${MAN_PAGES_GENTOO_DIST} -eq 1 ]] && use verify-sig ; then
 		verify-sig_uncompress_verify_unpack "${DISTDIR}"/${P}.tar.xz \
 			"${DISTDIR}"/${P}.tar.sign
-
 		unpack man-pages-gentoo-${GENTOO_PATCH}.tar.bz2
 	else
 		default
