@@ -6,6 +6,7 @@
     <name>XFCE Team</name>
   </maintainer>
   <use>
+    <flag name="terminal">Enable integrated terminal support</flag>
     <flag name="trash-panel-plugin">Build the trash status indicator plugin for
       the XFCE panel</flag>
   </use>
