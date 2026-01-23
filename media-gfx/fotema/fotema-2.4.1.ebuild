@@ -10,7 +10,7 @@ declare -A GIT_CRATES=(
 	[rust-faces]='https://github.com/blissd/fotema-rust-faces;d1d1787344e5ce4252feaac7a75d83546dad482e;fotema-rust-faces-%commit%'
 )
 
-RUST_MIN_VER="1.87.0"
+RUST_MIN_VER="1.92.0"
 
 inherit cargo gnome2-utils meson xdg-utils
 
