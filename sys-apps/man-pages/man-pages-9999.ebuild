@@ -70,12 +70,8 @@ RESTRICT="binchecks"
 BDEPEND+="
 	app-alternatives/bc
 "
-# Block packages that used to install colliding man pages:
-# bug #341953, bug #548900, bug #612640, bug #617462
 RDEPEND="
 	virtual/man
-	!<sys-apps/keyutils-1.5.9-r4
-	!<dev-libs/libbsd-0.8.3-r1
 "
 PDEPEND="
 	l10n_ja? ( app-i18n/man-pages-ja )
