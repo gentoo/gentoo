@@ -50,7 +50,7 @@ src_prepare() {
 
 src_configure() {
 	# https://bugs.gentoo.org/966950
-	append-flags -std=gnu++17
+	append-cxxflags -std=gnu++17
 	# -Werror=strict-aliasing
 	# https://bugs.gentoo.org/940793
 	# https://github.com/hchunhui/librime-lua/issues/412
