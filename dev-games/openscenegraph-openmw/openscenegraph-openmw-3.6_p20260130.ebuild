@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="
 	+collada curl dicom debug doc egl examples fltk fox gdal
 	gif gstreamer +jpeg lua openexr openinventor osgapps pdf +png
-	+sdl sdl2 +svg tiff +truetype vnc wxwidgets xrandr +zlib
+	+sdl sdl2 +svg tiff +truetype vnc wxwidgets xrandr zlib
 "
 
 REQUIRED_USE="
@@ -104,6 +104,9 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DDYNAMIC_OPENSCENEGRAPH=ON
+		-DBUILD_OSG_PLUGINS_BY_DEFAULT=0
+		-DBUILD_OSG_PLUGIN_OSG=1
+		-DBUILD_OSG_DEPRECATED_SERIALIZERS=0
 		-DOPENGL_PROFILE=GL2 #GL1 GL2 GL3 GLES1 GLES3 GLES3
 		$(cmake_use_find_package collada COLLADA)
 		$(cmake_use_find_package curl CURL)
