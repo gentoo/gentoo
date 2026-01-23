@@ -1,0 +1,30 @@
+--- a/CMakeLists.txt	2022-05-24 11:16:18.537610972 +0200
++++ b/CMakeLists.txt	2022-05-24 11:19:15.011073535 +0200
+@@ -156,11 +156,10 @@
+   set(ROCM_INCLUDE_DIRS "${ROCM_SOURCE_DIR}/include")
+ endif()
+ 
+-set(DYNOLOG_INCLUDE_DIR "${LIBKINETO_THIRDPARTY_DIR}/dynolog/")
+-set(IPCFABRIC_INCLUDE_DIR "${DYNOLOG_INCLUDE_DIR}/dynolog/src/ipcfabric/")
+-add_subdirectory("${IPCFABRIC_INCLUDE_DIR}")
++set(DYNOLOG_INCLUDE_DIR "@GENTOO_PORTAGE_EPREFIX@/usr/include/dynolog/")
++set(IPCFABRIC_INCLUDE_DIR "@GENTOO_PORTAGE_EPREFIX@/usr/include/dynolog/src/ipcfabric/")
+ 
+-if(NOT TARGET fmt::fmt-header-only)
++if(FALSE)
+   if(NOT FMT_SOURCE_DIR)
+     set(FMT_SOURCE_DIR "${LIBKINETO_THIRDPARTY_DIR}/fmt"
+       CACHE STRING "fmt source directory from submodules")
+@@ -195,12 +194,10 @@
+ if(DEFINED LIBKINETO_NOAIUPTI AND NOT LIBKINETO_NOAIUPTI)
+   target_include_directories(kineto_base PUBLIC ${AIU_INCLUDE_DIR})
+ endif()
+-target_link_libraries(kineto_base PRIVATE $<BUILD_INTERFACE:fmt::fmt-header-only>)
+ 
+ target_include_directories(kineto_api PUBLIC
+       $<BUILD_INTERFACE:${LIBKINETO_DIR}>
+       $<BUILD_INTERFACE:${LIBKINETO_INCLUDE_DIR}>)
+-target_link_libraries(kineto_api PRIVATE $<BUILD_INTERFACE:fmt::fmt-header-only>)
+ 
+ if(KINETO_LIBRARY_TYPE STREQUAL "static")
+   set(BUILD_SHARED_LIBS OFF)
