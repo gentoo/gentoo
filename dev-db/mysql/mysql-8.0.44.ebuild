@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -500,6 +500,15 @@ src_test() {
 
 		"main.keyring_migration_password;0;Known test failure -- no upstream bug yet"
 		"innodb.upgrade_orphan;0;Known test failure -- no upstream bug yet"
+
+		# Updated in newer versions
+		# https://github.com/mysql/mysql-server/commit/269f4ef1e091c7a4404450f97c5ae1845443eb25
+		"auth_sec.admin_channel_tls;0;Certificate expired"
+		"auth_sec.admin_channel_tls_startup;0;Certificate expired"
+		"auth_sec.cert_verify;0;Certificate expired"
+		"auth_sec.cert_verify_openssl;0;Certificate expired"
+		"x.mysqlxtest_mode_ssl;0;Certificate expired"
+		"x.mysqlxtest_mode_ssl_unixsocket;0;Certificate expired"
 	)
 
 	if ! hash zip 1>/dev/null 2>&1 ; then
