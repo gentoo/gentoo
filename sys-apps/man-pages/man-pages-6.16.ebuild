@@ -106,16 +106,22 @@ src_prepare() {
 	rm man5/passwd.5 || die
 }
 
-src_compile() { :; }
+src_configure() {
+	export prefix="${EPREFIX}/usr"
+}
+
+src_compile() {
+	emake -R
+}
 
 src_test() {
 	# We don't use the 'check' target right now because of known errors
 	# https://lore.kernel.org/linux-man/0dfd5319-2d22-a8ad-f085-d635eb6d0678@gmail.com/T/#t
-	emake lint-man-tbl
+	emake -R lint-man-tbl
 }
 
 src_install() {
-	emake -R install prefix="${EPREFIX}"/usr DESTDIR="${D}"
+	emake -R DESTDIR="${D}" install
 	dodoc README Changes*
 
 	# Override with Gentoo specific or additional Gentoo pages
