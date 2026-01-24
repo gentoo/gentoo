@@ -10,6 +10,7 @@
 		<flag name="system-libyaml">Use the system-wide libyaml instead of the bundled copy</flag>
 	</use>
 	<upstream>
+		<remote-id type="hackage">libyaml</remote-id>
 		<remote-id type="github">snoyberg/yaml</remote-id>
 	</upstream>
 </pkgmetadata>
