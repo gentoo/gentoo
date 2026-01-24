@@ -1,13 +1,17 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit libtool multilib-minimal
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libusb.asc
+inherit libtool multilib-minimal verify-sig
 
 DESCRIPTION="Userspace access to USB devices"
 HOMEPAGE="https://libusb.info/ https://github.com/libusb/libusb"
-SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.bz2"
+SRC_URI="
+	https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.bz2
+	verify-sig? ( https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.bz2.asc )
+"
 
 LICENSE="LGPL-2.1"
 SLOT="1"
@@ -21,7 +25,10 @@ DEPEND="
 	${RDEPEND}
 	!udev? ( virtual/os-headers )
 "
-BDEPEND="doc? ( app-text/doxygen )"
+BDEPEND="
+	doc? ( app-text/doxygen )
+	verify-sig? ( sec-keys/openpgp-keys-libusb )
+"
 
 src_prepare() {
 	default
