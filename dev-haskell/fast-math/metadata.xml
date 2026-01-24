@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		The &quot;Numeric.FastMath&quot; module brings into scope many unsafe @RULES@ for
+		&#39;Float&#39;s and &#39;Double&#39;s that can greatly improve run time performance.
+		It is roughly equivalent to gcc\&#39;s @-ffast-math@ compiler flag.
+		Optimisation (at least @-O1@) must be enabled for any @RULES@ to take effect.
+		
+		These rules are unsafe because they don&#39;t strictly adhere to the
+		IEEE-754 regulations and may subtly change the results of your numeric computations.
+		See the &lt;http://github.com/liyang/fast-math/ README&gt; on github for more details.
+	</longdescription>
+	<upstream>
+		<remote-id type="hackage">fast-math</remote-id>
+		<remote-id type="github">liyang/fast-math</remote-id>
+	</upstream>
+</pkgmetadata>
