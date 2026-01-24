@@ -13,4 +13,8 @@
 	<use>
 		<flag name="buildexamples">Build example executables.</flag>
 	</use>
+	<upstream>
+		<remote-id type="hackage">httpd-shed</remote-id>
+		<remote-id type="github">hsenag/httpd-shed</remote-id>
+	</upstream>
 </pkgmetadata>
