@@ -1,0 +1,236 @@
+From https://github.com/gtk2hs/gtk2hs/pull/340
+From: GuillaumedeVolpiano <xavier@wheredoibegin.fr>
+Date: Sun, 16 Feb 2025 21:47:48 +0100
+Subject: [PATCH] Compatibility with Cabal 3.14
+
+--- a/src/Gtk2HsSetup.hs
++++ b/src/Gtk2HsSetup.hs
+@@ -10,8 +10,11 @@ module Gtk2HsSetup (
+   c2hsLocal
+   ) where
+ 
+-import Data.String (fromString)
++import Data.String(fromString)
+ import Data.Maybe (mapMaybe)
++#if MIN_VERSION_Cabal(3,14,0)
++import Data.Bifunctor (bimap)
++#endif
+ #if MIN_VERSION_Cabal(2,4,0)
+ import Distribution.Pretty (prettyShow)
+ #else
+@@ -53,14 +56,25 @@ import Distribution.Types.PkgconfigName
+ #endif
+ import Distribution.ModuleName ( ModuleName, components, toFilePath )
+ import Distribution.Simple.Utils hiding (die)
++#if MIN_VERSION_Cabal(3,14,0)
++import Distribution.Simple.Setup (CommonSetupFlags(..), CopyFlags(..), InstallFlags(..), 
++                                  CopyDest(..), defaultCommonSetupFlags, defaultCopyFlags, 
++                                  ConfigFlags(configVerbosity), fromFlag, toFlag, 
++                                  RegisterFlags(..), flagToMaybe, fromFlagOrDefault, 
++                                  defaultRegisterFlags)
++#else
+ import Distribution.Simple.Setup (CopyFlags(..), InstallFlags(..), CopyDest(..),
+                                   defaultCopyFlags, ConfigFlags(configVerbosity),
+                                   fromFlag, toFlag, RegisterFlags(..), flagToMaybe,
+                                   fromFlagOrDefault, defaultRegisterFlags)
++#endif
+ #if MIN_VERSION_Cabal(2,0,0)
+ import Distribution.Simple.BuildPaths ( autogenPackageModulesDir )
+ #endif
+ import Distribution.Simple.Install ( install )
++#if MIN_VERSION_Cabal(3,14,0)
++import Distribution.Utils.Path (getSymbolicPath, makeRelativePathEx)
++#endif
+ import Distribution.Simple.Register ( generateRegistrationInfo, registerPackage )
+ import Distribution.Text ( simpleParse, display )
+ import System.FilePath
+@@ -177,18 +191,39 @@ fixLibs dlls = concatMap $ \ lib ->
+ installHook :: PackageDescription -> LocalBuildInfo
+                    -> UserHooks -> InstallFlags -> IO ()
+ installHook pkg_descr localbuildinfo _ flags = do
++# if MIN_VERSION_Cabal(3,14,0)
++  let copyFlags = defaultCopyFlags { 
++                        copyCommonFlags = defaultCommonSetupFlags {
++                          setupDistPref = installDistPref flags,
++                          setupVerbosity = installVerbosity flags
++                        },
++                        copyDest = toFlag NoCopyDest 
++                   }
++#else
+   let copyFlags = defaultCopyFlags {
+                       copyDistPref   = installDistPref flags,
+                       copyDest       = toFlag NoCopyDest,
+                       copyVerbosity  = installVerbosity flags
+                   }
++#endif
+   install pkg_descr localbuildinfo copyFlags
++#if MIN_VERSION_Cabal(3,14,0)
+   let registerFlags = defaultRegisterFlags {
+-                          regDistPref  = installDistPref flags,
++                          registerCommonFlags  = defaultCommonSetupFlags {
++                             setupDistPref = installDistPref flags,
++                             setupVerbosity = installVerbosity flags
++                                                },
++                          regInPlace   = installInPlace flags,
++                          regPackageDB = installPackageDB flags
++                      }
++#else
++  let registerFlags = defaultRegisterFlags {
++                          regDistPref = installDistPref flags,
+                           regInPlace   = installInPlace flags,
+                           regPackageDB = installPackageDB flags,
+                           regVerbosity = installVerbosity flags
+                       }
++#endif
+   when (hasLibs pkg_descr) $ register pkg_descr localbuildinfo registerFlags
+ 
+ registerHook :: PackageDescription -> LocalBuildInfo
+@@ -198,8 +233,11 @@ registerHook pkg_descr localbuildinfo _ flags =
+     then register pkg_descr localbuildinfo flags
+     else setupMessage verbosity
+            "Package contains no library to register:" (packageId pkg_descr)
++#if MIN_VERSION_Cabal(3,14,0)
++  where verbosity = fromFlag (setupVerbosity . registerCommonFlags $ flags)
++#else
+   where verbosity = fromFlag (regVerbosity flags)
+-
++#endif
+ #if MIN_VERSION_Cabal(2,4,0)
+ getComponentLocalBuildInfo :: LocalBuildInfo -> LBI.ComponentName -> ComponentLocalBuildInfo
+ getComponentLocalBuildInfo lbi cname =
+@@ -226,7 +264,11 @@ register pkg@PackageDescription { library       = Just lib  } lbi regFlags
+                     LBI.CLibName
+ #endif
+ 
++#if MIN_VERSION_Cabal(3,14,0)
++    absPackageDBs       <- absolutePackageDBPaths Nothing packageDbs
++#else
+     absPackageDBs       <- absolutePackageDBPaths packageDbs
++#endif
+     installedPkgInfoRaw <- generateRegistrationInfo
+                            verbosity pkg lib lbi clbi inplace reloc distPref
+                            (registrationPackageDB absPackageDBs)
+@@ -245,7 +287,11 @@ register pkg@PackageDescription { library       = Just lib  } lbi regFlags
+        | modeGenerateRegScript -> die "Generate Reg Script not supported"
+        | otherwise             -> do
+            setupMessage verbosity "Registering" (packageId pkg)
++#if MIN_VERSION_Cabal(3,14,0)
++           registerPackage verbosity (compiler lbi) (withPrograms lbi) Nothing
++#else
+            registerPackage verbosity (compiler lbi) (withPrograms lbi)
++#endif
+ #if MIN_VERSION_Cabal(2,0,0)
+              packageDbs installedPkgInfo defaultRegisterOptions
+ #else
+@@ -254,24 +300,36 @@ register pkg@PackageDescription { library       = Just lib  } lbi regFlags
+ 
+   where
+     modeGenerateRegFile = isJust (flagToMaybe (regGenPkgConf regFlags))
++#if MIN_VERSION_Cabal(3,14,0)
++    regFile             = fromMaybe (display (packageId pkg) <.> "conf")
++                                    (getSymbolicPath <$> fromFlag (regGenPkgConf regFlags))
++#else
+     regFile             = fromMaybe (display (packageId pkg) <.> "conf")
+                                     (fromFlag (regGenPkgConf regFlags))
++#endif
+     modeGenerateRegScript = fromFlag (regGenScript regFlags)
+     inplace   = fromFlag (regInPlace regFlags)
+     reloc     = relocatable lbi
+     packageDbs = nub $ withPackageDB lbi
+                     ++ maybeToList (flagToMaybe  (regPackageDB regFlags))
++#if MIN_VERSION_Cabal(3,14,0)
++    distPref  = fromFlag (setupDistPref . registerCommonFlags $ regFlags)
++    verbosity = fromFlag (setupVerbosity . registerCommonFlags $ regFlags)
++#else
+     distPref  = fromFlag (regDistPref regFlags)
+     verbosity = fromFlag (regVerbosity regFlags)
+-
++#endif
+     writeRegistrationFile installedPkgInfo = do
+       notice verbosity ("Creating package registration file: " ++ regFile)
+       writeUTF8File regFile (showInstalledPackageInfo installedPkgInfo)
+ 
+ register _ _ regFlags = notice verbosity "No package to register"
+   where
++#if MIN_VERSION_Cabal(3,14,0)
++    verbosity = fromFlag (setupVerbosity . registerCommonFlags $ regFlags)
++#else
+     verbosity = fromFlag (regVerbosity regFlags)
+-
++#endif
+ 
+ ------------------------------------------------------------------------------
+ -- This is a hack for Cabal-1.8, It is not needed in Cabal-1.9.1 or later
+@@ -333,14 +391,22 @@ runC2HS bi lbi (inDir, inFile)  (outDir, outFile) verbosity = do
+     ++ ["--cppopts=" ++ opt | opt <- getCppOptions bi lbi]
+     ++ ["--output-dir=" ++ newOutDir,
+         "--output=" ++ newOutFile,
++#if MIN_VERSION_Cabal(3,14,0)
++        "--precomp=" ++ (getSymbolicPath . buildDir $ lbi) </> precompFile,
++#else
+         "--precomp=" ++ buildDir lbi </> precompFile,
++#endif
+         header, inDir </> inFile]
+   return ()
+ 
+ getCppOptions :: BuildInfo -> LocalBuildInfo -> [String]
+ getCppOptions bi lbi
+     = nub $
++#if MIN_VERSION_Cabal(3,14,0)
++      ["-I" ++ getSymbolicPath dir | dir <- PD.includeDirs bi]
++#else
+       ["-I" ++ dir | dir <- PD.includeDirs bi]
++#endif
+    ++ [opt | opt@('-':c:_) <- PD.cppOptions bi ++ PD.ccOptions bi, c `elem` "DIU"]
+ 
+ installCHI :: PackageDescription -- ^information from the .cabal file
+@@ -351,13 +417,21 @@ installCHI pkg@PD.PackageDescription { library = Just lib } lbi verbosity copyde
+   let InstallDirs { libdir = libPref } = absoluteInstallDirs pkg lbi copydest
+   -- cannot use the recommended 'findModuleFiles' since it fails if there exists
+   -- a modules that does not have a .chi file
++#if MIN_VERSION_Cabal(3,14,0)
++  mFiles <- mapM (findFileWithExtension' [fromString "chi"] [buildDir lbi] . makeRelativePathEx . toFilePath)
++                   (PD.explicitLibModules lib)
++#else
+   mFiles <- mapM (findFileWithExtension' [fromString "chi"] [buildDir lbi] . toFilePath)
+                    (PD.explicitLibModules lib)
++#endif
+ 
++#if MIN_VERSION_Cabal(3,14,0)
++  let files = [ bimap getSymbolicPath getSymbolicPath $ f | Just f <- mFiles ]
++#else
+   let files = [ f | Just f <- mFiles ]
++#endif
+   installOrdinaryFiles verbosity libPref files
+ 
+-
+ installCHI _ _ _ _ = return ()
+ 
+ ------------------------------------------------------------------------------
+@@ -479,15 +553,25 @@ fixDeps pd@PD.PackageDescription {
+ #else 
+         id 
+ #endif 
++#if MIN_VERSION_Cabal(3,14,0)
++  let findModule m = findFileWithExtension [fromString ".chs.pp", fromString ".chs"] srcDirs
++                       (makeRelativePathEx . toFilePath $ m)
++#else
+   let findModule m = findFileWithExtension [fromString ".chs.pp", fromString ".chs"] (map toPath srcDirs)
+                        (joinPath (components m))
++#endif
+   mExpFiles <- mapM findModule expMods
+   mOthFiles <- mapM findModule othMods
+ 
+   -- tag all exposed files with True so we throw an error if we need to build
+   -- an exposed module before an internal modules (we cannot express this)
+-  let modDeps = zipWith (ModDep True []) expMods mExpFiles++
++#if MIN_VERSION_Cabal(3,14,0)  
++  let modDeps = zipWith (ModDep True []) expMods (map (getSymbolicPath <$>) mExpFiles) ++
++                zipWith (ModDep False []) othMods (map (getSymbolicPath <$>) mOthFiles)
++#else
++  let modDeps = zipWith (ModDep True []) expMods mExpFiles ++
+                 zipWith (ModDep False []) othMods mOthFiles
++#endif
+   modDeps <- mapM extractDeps modDeps
+   let (othMods, expMods) = span (not . mdExposed) $ reverse $ sortTopological modDeps
+   return pd { PD.library = Just lib {
