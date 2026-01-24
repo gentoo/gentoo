@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -53,7 +53,6 @@ multilib_src_configure() {
 	# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=101270
 	filter-flags -fno-semantic-interposition
 
-	export VALAC="$(type -P valac-$(vala_best_api_version))"
 	meson_src_configure
 }
 
