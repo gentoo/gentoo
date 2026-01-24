@@ -55,6 +55,7 @@ python_check_deps() {
 }
 
 pkg_setup() {
+	python-any-r1_pkg_setup
 	use vala && vala_setup
 }
 
