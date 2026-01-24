@@ -9,6 +9,9 @@
 		The M17N engine for IBus. It allows input of many languages using the input
 		table maps from <pkg>dev-libs/m17n-lib</pkg>.
 	</longdescription>
+	<use>
+		<flag name="gtk3">Use <pkg>x11-libs/gtk+</pkg>:3 instead of <pkg>gui-libs/gtk</pkg>:4</flag>
+	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:ibus_project:ibus-m17n</remote-id>
 		<remote-id type="github">ibus/ibus-m17n</remote-id>
