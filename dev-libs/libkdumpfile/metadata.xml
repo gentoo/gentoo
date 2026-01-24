@@ -6,6 +6,6 @@
 		<name>Sam James</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">ptesarik/libkdumpfile</remote-id>
+		<remote-id type="codeberg">ptesarik/libkdumpfile</remote-id>
 	</upstream>
 </pkgmetadata>
