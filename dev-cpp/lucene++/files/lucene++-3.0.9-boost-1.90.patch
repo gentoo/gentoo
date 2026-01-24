@@ -1,0 +1,486 @@
+https://github.com/luceneplusplus/LucenePlusPlus/pull/222
+Bug: https://bugs.gentoo.org/969181
+
+From: =?UTF-8?q?=C4=90o=C3=A0n=20Tr=E1=BA=A7n=20C=C3=B4ng=20Danh?=
+ <congdanhqx@gmail.com>
+Date: Fri, 5 Dec 2025 10:37:48 +0700
+Subject: [PATCH 1/2] BitSet: Partial fix for Boost 1.90
+
+---
+ include/lucene++/BitSet.h |  8 ++++-
+ src/core/util/BitSet.cpp  | 72 ++++++++++++++++++++++++++++++++++++++-
+ 2 files changed, 78 insertions(+), 2 deletions(-)
+
+diff --git a/include/lucene++/BitSet.h b/include/lucene++/BitSet.h
+index e06e6c7b..d07f12c5 100644
+--- a/include/lucene++/BitSet.h
++++ b/include/lucene++/BitSet.h
+@@ -8,6 +8,7 @@
+ #define BITSET_H
+ 
+ #include <boost/dynamic_bitset.hpp>
++#include <boost/version.hpp>
+ #include "LuceneObject.h"
+ 
+ namespace Lucene {
+@@ -22,9 +23,14 @@ class LPPAPI BitSet : public LuceneObject {
+ protected:
+     typedef boost::dynamic_bitset<uint64_t> bitset_type;
+     bitset_type bitSet;
++#if BOOST_VERSION >= 109000
++    typedef const bitset_type& get_bits_result;
++#else
++    typedef const uint64_t* get_bits_result;
++#endif
+ 
+ public:
+-    const uint64_t* getBits();
++    get_bits_result getBits();
+     void clear();
+     void clear(uint32_t bitIndex);
+     void fastClear(uint32_t bitIndex);
+diff --git a/src/core/util/BitSet.cpp b/src/core/util/BitSet.cpp
+index 6eb9d943..bff757bb 100644
+--- a/src/core/util/BitSet.cpp
++++ b/src/core/util/BitSet.cpp
+@@ -7,6 +7,8 @@
+ #include "LuceneInc.h"
+ #include "BitSet.h"
+ #include "BitUtil.h"
++#include <boost/version.hpp>
++#include <boost/iterator/function_output_iterator.hpp>
+ 
+ namespace Lucene {
+ 
+@@ -16,8 +18,12 @@ BitSet::BitSet(uint32_t size) : bitSet(size) {
+ BitSet::~BitSet() {
+ }
+ 
+-const uint64_t* BitSet::getBits() {
++BitSet::get_bits_result BitSet::getBits() {
++#if BOOST_VERSION < 109000
+     return bitSet.empty() ? NULL : static_cast<const uint64_t*>(&bitSet.m_bits[0]);
++#else
++    return bitSet;
++#endif
+ }
+ 
+ void BitSet::clear() {
+@@ -151,6 +157,11 @@ int32_t BitSet::nextSetBit(uint32_t fromIndex) const {
+ }
+ 
+ void BitSet::_and(const BitSetPtr& set) {
++#if BOOST_VERSION >= 108900
++    bitset_type other = set->bitSet;
++    other.resize(bitSet.size());
++    bitSet &= other;
++#else
+     bitset_type::size_type minBlocks = std::min(bitSet.num_blocks(), set->bitSet.num_blocks());
+     for (bitset_type::size_type i = 0; i < minBlocks; ++i) {
+         bitSet.m_bits[i] &= set->bitSet.m_bits[i];
+@@ -158,9 +169,20 @@ void BitSet::_and(const BitSetPtr& set) {
+     if (bitSet.num_blocks() > minBlocks) {
+         std::fill(bitSet.m_bits.begin() + minBlocks, bitSet.m_bits.end(), bitset_type::block_type(0));
+     }
++#endif
+ }
+ 
+ void BitSet::_or(const BitSetPtr& set) {
++#if BOOST_VERSION >= 108900
++    if (set->bitSet.size() > bitSet.size()) {
++        resize(set->bitSet.size());
++        bitSet |= set->bitSet;
++    } else {
++        bitset_type other = set->bitSet;
++        other.resize(bitSet.size());
++        bitSet |= other;
++    }
++#else
+     bitset_type::size_type minBlocks = std::min(bitSet.num_blocks(), set->bitSet.num_blocks());
+     if (set->bitSet.size() > bitSet.size()) {
+         resize(set->bitSet.size());
+@@ -171,9 +193,20 @@ void BitSet::_or(const BitSetPtr& set) {
+     if (bitSet.num_blocks() > minBlocks) {
+         std::copy(set->bitSet.m_bits.begin() + minBlocks, set->bitSet.m_bits.end(), bitSet.m_bits.begin() + minBlocks);
+     }
++#endif
+ }
+ 
+ void BitSet::_xor(const BitSetPtr& set) {
++#if BOOST_VERSION >= 108900
++    if (set->bitSet.size() > bitSet.size()) {
++        resize(set->bitSet.size());
++        bitSet ^= set->bitSet;
++    } else {
++        bitset_type other = set->bitSet;
++        other.resize(bitSet.size());
++        bitSet ^= other;
++    }
++#else
+     bitset_type::size_type minBlocks = std::min(bitSet.num_blocks(), set->bitSet.num_blocks());
+     if (set->bitSet.size() > bitSet.size()) {
+         resize(set->bitSet.size());
+@@ -184,13 +217,20 @@ void BitSet::_xor(const BitSetPtr& set) {
+     if (bitSet.num_blocks() > minBlocks) {
+         std::copy(set->bitSet.m_bits.begin() + minBlocks, set->bitSet.m_bits.end(), bitSet.m_bits.begin() + minBlocks);
+     }
++#endif
+ }
+ 
+ void BitSet::andNot(const BitSetPtr& set) {
++#if BOOST_VERSION >= 108900
++    bitset_type other = set->bitSet;
++    other.resize(bitSet.size());
++    bitSet &= other.flip();
++#else
+     bitset_type::size_type minBlocks = std::min(bitSet.num_blocks(), set->bitSet.num_blocks());
+     for (bitset_type::size_type i = 0; i < minBlocks; ++i) {
+         bitSet.m_bits[i] &= ~set->bitSet.m_bits[i];
+     }
++#endif
+ }
+ 
+ bool BitSet::intersectsBitSet(const BitSetPtr& set) const {
+@@ -198,10 +238,17 @@ bool BitSet::intersectsBitSet(const BitSetPtr& set) const {
+ }
+ 
+ uint32_t BitSet::cardinality() {
++#if BOOST_VERSION >= 108900
++    return bitSet.count();
++#else
+     return bitSet.num_blocks() == 0 ? 0 : (uint32_t)BitUtil::pop_array((int64_t*)getBits(), 0, bitSet.num_blocks());
++#endif
+ }
+ 
+ void BitSet::resize(uint32_t size) {
++#if BOOST_VERSION >= 108900
++    bitSet.resize(size);
++#else
+     bitset_type::size_type old_num_blocks = bitSet.num_blocks();
+     bitset_type::size_type required_blocks = bitSet.calc_num_blocks(size);
+     if (required_blocks != old_num_blocks) {
+@@ -212,6 +259,7 @@ void BitSet::resize(uint32_t size) {
+     if (extra_bits != 0) {
+         bitSet.m_bits.back() &= ~(~static_cast<bitset_type::block_type>(0) << extra_bits);
+     }
++#endif
+ }
+ 
+ bool BitSet::equals(const LuceneObjectPtr& other) {
+@@ -224,6 +272,18 @@ bool BitSet::equals(const LuceneObjectPtr& other) {
+     }
+     BitSetPtr first = bitSet.num_blocks() < otherBitSet->bitSet.num_blocks() ? otherBitSet : shared_from_this();
+     BitSetPtr second = bitSet.num_blocks() < otherBitSet->bitSet.num_blocks() ? shared_from_this() : otherBitSet;
++#if BOOST_VERSION >= 108900
++    bitset_type::size_type f = first->bitSet.find_first();
++    bitset_type::size_type s = second->bitSet.find_first();
++    while (f == s) {
++        if (f == bitset_type::npos) {
++            return true;
++        }
++        f = first->bitSet.find_next(f);
++        s = second->bitSet.find_next(s);
++    }
++    return false;
++#else
+     bitset_type::size_type firstLength = first->bitSet.num_blocks();
+     bitset_type::size_type secondLength = second->bitSet.num_blocks();
+     for (bitset_type::size_type i = secondLength; i < firstLength; ++i) {
+@@ -237,18 +297,28 @@ bool BitSet::equals(const LuceneObjectPtr& other) {
+         }
+     }
+     return true;
++#endif
+ }
+ 
+ int32_t BitSet::hashCode() {
+     // Start with a zero hash and use a mix that results in zero if the input is zero.
+     // This effectively truncates trailing zeros without an explicit check.
+     int64_t hash = 0;
++#if BOOST_VERSION >= 108900
++    to_block_range(bitSet, boost::make_function_output_iterator(
++        [&hash](bitset_type::block_type block) {
++            hash ^= block;
++            hash = (hash << 1) | (hash >> 63); // rotate left
++        }
++    ));
++#else
+     uint32_t maxSize = bitSet.num_blocks();
+     const uint64_t* bits = getBits();
+     for (uint32_t bit = 0; bit < maxSize; ++bit) {
+         hash ^= bits[bit];
+         hash = (hash << 1) | (hash >> 63); // rotate left
+     }
++#endif
+     // Fold leftmost bits into right and add a constant to prevent empty sets from
+     // returning 0, which is too common.
+     return (int32_t)((hash >> 32) ^ hash) + 0x98761234;
+
+From 55a1238e23c0f98ff375acaf8bb4f6ebba9f2b72 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C4=90o=C3=A0n=20Tr=E1=BA=A7n=20C=C3=B4ng=20Danh?=
+ <congdanhqx@gmail.com>
+Date: Fri, 5 Dec 2025 11:19:08 +0700
+Subject: [PATCH 2/2] BitSet: prefer builtin boost function
+
+---
+ src/core/util/BitSet.cpp | 126 +++++++--------------------------------
+ 1 file changed, 23 insertions(+), 103 deletions(-)
+
+diff --git a/src/core/util/BitSet.cpp b/src/core/util/BitSet.cpp
+index bff757bb..c2fa941b 100644
+--- a/src/core/util/BitSet.cpp
++++ b/src/core/util/BitSet.cpp
+@@ -41,16 +41,20 @@ void BitSet::fastClear(uint32_t bitIndex) {
+ }
+ 
+ void BitSet::clear(uint32_t fromIndex, uint32_t toIndex) {
++#if BOOST_VERSION >= 106900
++    fromIndex = std::min<bitset_type::size_type>(fromIndex, bitSet.size());
++    toIndex = std::min<bitset_type::size_type>(toIndex, bitSet.size());
++    bitSet.reset(fromIndex, toIndex - fromIndex);
++#else
+     toIndex = std::min(toIndex, (uint32_t)bitSet.size());
+     for (bitset_type::size_type i = std::min(fromIndex, (uint32_t)bitSet.size()); i < toIndex; ++i) {
+         bitSet.set(i, false);
+     }
++#endif
+ }
+ 
+ void BitSet::fastClear(uint32_t fromIndex, uint32_t toIndex) {
+-    for (bitset_type::size_type i = fromIndex; i < toIndex; ++i) {
+-        bitSet.set(i, false);
+-    }
++    fastSet(fromIndex, toIndex, false);
+ }
+ 
+ void BitSet::set(uint32_t bitIndex) {
+@@ -76,33 +80,28 @@ void BitSet::fastSet(uint32_t bitIndex, bool value) {
+ }
+ 
+ void BitSet::set(uint32_t fromIndex, uint32_t toIndex) {
+-    if (toIndex >= bitSet.size()) {
+-        resize(toIndex + 1);
+-    }
+-    for (bitset_type::size_type i = fromIndex; i < toIndex; ++i) {
+-        bitSet.set(i, true);
+-    }
++    set(fromIndex, toIndex, true);
+ }
+ 
+ void BitSet::fastSet(uint32_t fromIndex, uint32_t toIndex) {
+-    for (bitset_type::size_type i = fromIndex; i < toIndex; ++i) {
+-        bitSet.set(i, true);
+-    }
++    fastSet(fromIndex, toIndex, true);
+ }
+ 
+ void BitSet::set(uint32_t fromIndex, uint32_t toIndex, bool value) {
+     if (toIndex >= bitSet.size()) {
+         resize(toIndex + 1);
+     }
+-    for (bitset_type::size_type i = fromIndex; i < toIndex; ++i) {
+-        bitSet.set(i, value);
+-    }
++    fastSet(fromIndex, toIndex, value);
+ }
+ 
+ void BitSet::fastSet(uint32_t fromIndex, uint32_t toIndex, bool value) {
++#if BOOST_VERSION >= 106900
++    bitSet.set(fromIndex, toIndex - fromIndex, value);
++#else
+     for (bitset_type::size_type i = fromIndex; i < toIndex; ++i) {
+         bitSet.set(i, value);
+     }
++#endif
+ }
+ 
+ void BitSet::flip(uint32_t bitIndex) {
+@@ -120,15 +119,17 @@ void BitSet::flip(uint32_t fromIndex, uint32_t toIndex) {
+     if (toIndex >= bitSet.size()) {
+         resize(toIndex + 1);
+     }
+-    for (bitset_type::size_type i = fromIndex; i < toIndex; ++i) {
+-        bitSet.flip(i);
+-    }
++    fastFlip(fromIndex, toIndex);
+ }
+ 
+ void BitSet::fastFlip(uint32_t fromIndex, uint32_t toIndex) {
++#if BOOST_VERSION >= 106900
++    bitSet.flip(fromIndex, toIndex - fromIndex);
++#else
+     for (bitset_type::size_type i = fromIndex; i < toIndex; ++i) {
+         bitSet.flip(i);
+     }
++#endif
+ }
+ 
+ uint32_t BitSet::size() const {
+@@ -152,28 +153,21 @@ bool BitSet::fastGet(uint32_t bitIndex) const {
+ }
+ 
+ int32_t BitSet::nextSetBit(uint32_t fromIndex) const {
++#if BOOST_VERSION >= 108800
++    return bitSet.find_first(fromIndex);
++#else
+     bitset_type::size_type next = fromIndex == 0 ? bitSet.find_first() : bitSet.find_next(fromIndex - 1);
+     return next == bitset_type::npos ? -1 : next;
++#endif
+ }
+ 
+ void BitSet::_and(const BitSetPtr& set) {
+-#if BOOST_VERSION >= 108900
+     bitset_type other = set->bitSet;
+     other.resize(bitSet.size());
+     bitSet &= other;
+-#else
+-    bitset_type::size_type minBlocks = std::min(bitSet.num_blocks(), set->bitSet.num_blocks());
+-    for (bitset_type::size_type i = 0; i < minBlocks; ++i) {
+-        bitSet.m_bits[i] &= set->bitSet.m_bits[i];
+-    }
+-    if (bitSet.num_blocks() > minBlocks) {
+-        std::fill(bitSet.m_bits.begin() + minBlocks, bitSet.m_bits.end(), bitset_type::block_type(0));
+-    }
+-#endif
+ }
+ 
+ void BitSet::_or(const BitSetPtr& set) {
+-#if BOOST_VERSION >= 108900
+     if (set->bitSet.size() > bitSet.size()) {
+         resize(set->bitSet.size());
+         bitSet |= set->bitSet;
+@@ -182,22 +176,9 @@ void BitSet::_or(const BitSetPtr& set) {
+         other.resize(bitSet.size());
+         bitSet |= other;
+     }
+-#else
+-    bitset_type::size_type minBlocks = std::min(bitSet.num_blocks(), set->bitSet.num_blocks());
+-    if (set->bitSet.size() > bitSet.size()) {
+-        resize(set->bitSet.size());
+-    }
+-    for (bitset_type::size_type i = 0; i < minBlocks; ++i) {
+-        bitSet.m_bits[i] |= set->bitSet.m_bits[i];
+-    }
+-    if (bitSet.num_blocks() > minBlocks) {
+-        std::copy(set->bitSet.m_bits.begin() + minBlocks, set->bitSet.m_bits.end(), bitSet.m_bits.begin() + minBlocks);
+-    }
+-#endif
+ }
+ 
+ void BitSet::_xor(const BitSetPtr& set) {
+-#if BOOST_VERSION >= 108900
+     if (set->bitSet.size() > bitSet.size()) {
+         resize(set->bitSet.size());
+         bitSet ^= set->bitSet;
+@@ -206,31 +187,12 @@ void BitSet::_xor(const BitSetPtr& set) {
+         other.resize(bitSet.size());
+         bitSet ^= other;
+     }
+-#else
+-    bitset_type::size_type minBlocks = std::min(bitSet.num_blocks(), set->bitSet.num_blocks());
+-    if (set->bitSet.size() > bitSet.size()) {
+-        resize(set->bitSet.size());
+-    }
+-    for (bitset_type::size_type i = 0; i < minBlocks; ++i) {
+-        bitSet.m_bits[i] ^= set->bitSet.m_bits[i];
+-    }
+-    if (bitSet.num_blocks() > minBlocks) {
+-        std::copy(set->bitSet.m_bits.begin() + minBlocks, set->bitSet.m_bits.end(), bitSet.m_bits.begin() + minBlocks);
+-    }
+-#endif
+ }
+ 
+ void BitSet::andNot(const BitSetPtr& set) {
+-#if BOOST_VERSION >= 108900
+     bitset_type other = set->bitSet;
+     other.resize(bitSet.size());
+     bitSet &= other.flip();
+-#else
+-    bitset_type::size_type minBlocks = std::min(bitSet.num_blocks(), set->bitSet.num_blocks());
+-    for (bitset_type::size_type i = 0; i < minBlocks; ++i) {
+-        bitSet.m_bits[i] &= ~set->bitSet.m_bits[i];
+-    }
+-#endif
+ }
+ 
+ bool BitSet::intersectsBitSet(const BitSetPtr& set) const {
+@@ -238,28 +200,11 @@ bool BitSet::intersectsBitSet(const BitSetPtr& set) const {
+ }
+ 
+ uint32_t BitSet::cardinality() {
+-#if BOOST_VERSION >= 108900
+     return bitSet.count();
+-#else
+-    return bitSet.num_blocks() == 0 ? 0 : (uint32_t)BitUtil::pop_array((int64_t*)getBits(), 0, bitSet.num_blocks());
+-#endif
+ }
+ 
+ void BitSet::resize(uint32_t size) {
+-#if BOOST_VERSION >= 108900
+     bitSet.resize(size);
+-#else
+-    bitset_type::size_type old_num_blocks = bitSet.num_blocks();
+-    bitset_type::size_type required_blocks = bitSet.calc_num_blocks(size);
+-    if (required_blocks != old_num_blocks) {
+-        bitSet.m_bits.resize(required_blocks, bitset_type::block_type(0));
+-    }
+-    bitSet.m_num_bits = size;
+-    uint64_t extra_bits = static_cast<uint64_t>(bitSet.size() % bitSet.bits_per_block);
+-    if (extra_bits != 0) {
+-        bitSet.m_bits.back() &= ~(~static_cast<bitset_type::block_type>(0) << extra_bits);
+-    }
+-#endif
+ }
+ 
+ bool BitSet::equals(const LuceneObjectPtr& other) {
+@@ -272,7 +217,6 @@ bool BitSet::equals(const LuceneObjectPtr& other) {
+     }
+     BitSetPtr first = bitSet.num_blocks() < otherBitSet->bitSet.num_blocks() ? otherBitSet : shared_from_this();
+     BitSetPtr second = bitSet.num_blocks() < otherBitSet->bitSet.num_blocks() ? shared_from_this() : otherBitSet;
+-#if BOOST_VERSION >= 108900
+     bitset_type::size_type f = first->bitSet.find_first();
+     bitset_type::size_type s = second->bitSet.find_first();
+     while (f == s) {
+@@ -283,42 +227,18 @@ bool BitSet::equals(const LuceneObjectPtr& other) {
+         s = second->bitSet.find_next(s);
+     }
+     return false;
+-#else
+-    bitset_type::size_type firstLength = first->bitSet.num_blocks();
+-    bitset_type::size_type secondLength = second->bitSet.num_blocks();
+-    for (bitset_type::size_type i = secondLength; i < firstLength; ++i) {
+-        if (first->bitSet.m_bits[i] != 0) {
+-            return false;
+-        }
+-    }
+-    for (bitset_type::size_type i = 0; i < secondLength; ++i) {
+-        if (first->bitSet.m_bits[i] != second->bitSet.m_bits[i]) {
+-            return false;
+-        }
+-    }
+-    return true;
+-#endif
+ }
+ 
+ int32_t BitSet::hashCode() {
+     // Start with a zero hash and use a mix that results in zero if the input is zero.
+     // This effectively truncates trailing zeros without an explicit check.
+     int64_t hash = 0;
+-#if BOOST_VERSION >= 108900
+     to_block_range(bitSet, boost::make_function_output_iterator(
+         [&hash](bitset_type::block_type block) {
+             hash ^= block;
+             hash = (hash << 1) | (hash >> 63); // rotate left
+         }
+     ));
+-#else
+-    uint32_t maxSize = bitSet.num_blocks();
+-    const uint64_t* bits = getBits();
+-    for (uint32_t bit = 0; bit < maxSize; ++bit) {
+-        hash ^= bits[bit];
+-        hash = (hash << 1) | (hash >> 63); // rotate left
+-    }
+-#endif
+     // Fold leftmost bits into right and add a constant to prevent empty sets from
+     // returning 0, which is too common.
+     return (int32_t)((hash >> 32) ^ hash) + 0x98761234;
