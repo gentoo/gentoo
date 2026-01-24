@@ -9,6 +9,7 @@ DISTUTILS_EXT=1
 DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{11..14} )
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/thomashaller.asc
 inherit autotools distutils-r1 multilib-minimal
 
 LIBNL_P=${P/_/-}
@@ -17,14 +18,21 @@ LIBNL_DIR=${LIBNL_DIR//./_}
 
 DESCRIPTION="Libraries providing APIs to netlink protocol based Linux kernel interfaces"
 HOMEPAGE="https://www.infradead.org/~tgr/libnl/ https://github.com/thom311/libnl"
+
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/thom311/libnl"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/thom311/${PN}/releases/download/${PN}${LIBNL_DIR}/${P/_rc/-rc}.tar.gz"
+	inherit verify-sig
+	SRC_URI="
+		https://github.com/thom311/${PN}/releases/download/${PN}${LIBNL_DIR}/${P/_rc/-rc}.tar.gz
+		verify-sig? ( https://github.com/thom311/${PN}/releases/download/${PN}${LIBNL_DIR}/${P/_rc/-rc}.tar.gz.sig )
+	"
+	S="${WORKDIR}/${LIBNL_P}"
+
 	KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc ~x86"
 
-	S="${WORKDIR}/${LIBNL_P}"
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-thomashaller )"
 fi
 
 LICENSE="LGPL-2.1 utils? ( GPL-2 )"
@@ -34,7 +42,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}"
-BDEPEND="
+BDEPEND+="
 	${RDEPEND}
 	sys-devel/bison
 	sys-devel/flex
