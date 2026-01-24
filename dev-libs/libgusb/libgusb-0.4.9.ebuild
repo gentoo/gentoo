@@ -1,16 +1,19 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="xml(+)"
-
-inherit meson-multilib python-any-r1 vala
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/hughsie.asc
+inherit meson-multilib python-any-r1 vala verify-sig
 
 DESCRIPTION="GObject wrapper for libusb"
 HOMEPAGE="https://github.com/hughsie/libgusb"
-SRC_URI="https://github.com/hughsie/libgusb/releases/download/${PV}/${P}.tar.xz"
+SRC_URI="
+	https://github.com/hughsie/libgusb/releases/download/${PV}/${P}.tar.xz
+	verify-sig? ( https://github.com/hughsie/libgusb/releases/download/${PV}/${P}.tar.xz.asc )
+"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
@@ -36,6 +39,7 @@ BDEPEND="
 	$(python_gen_any_dep 'dev-python/setuptools[${PYTHON_USEDEP}]')
 	gtk-doc? ( dev-util/gi-docgen )
 	vala? ( $(vala_depend) )
+	verify-sig? ( sec-keys/openpgp-keys-hughsie )
 	virtual/pkgconfig
 "
 
