@@ -1,0 +1,13 @@
+[Unit]
+Description=Redirects TCP connections from one IP address and port to another
+After=network.target network-online.target
+
+[Service]
+ExecStart=/usr/sbin/rinetd
+ExecReload=kill -HUP $MAINPID
+Type=forking
+PIDFile=/var/run/rinetd.pid
+Restart=always
+
+[Install]
+WantedBy=default.target
