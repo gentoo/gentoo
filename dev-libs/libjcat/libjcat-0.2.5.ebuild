@@ -5,11 +5,15 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="xml(+)"
-inherit meson python-any-r1 vala xdg-utils
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/hughsie.asc
+inherit meson python-any-r1 vala verify-sig xdg-utils
 
 DESCRIPTION="Library and tool for reading and writing Jcat files"
 HOMEPAGE="https://github.com/hughsie/libjcat"
-SRC_URI="https://github.com/hughsie/libjcat/releases/download/${PV}/${P}.tar.xz"
+SRC_URI="
+	https://github.com/hughsie/libjcat/releases/download/${PV}/${P}.tar.xz
+	verify-sig? ( https://github.com/hughsie/libjcat/releases/download/${PV}/${P}.tar.xz.asc )
+"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
@@ -38,6 +42,7 @@ BDEPEND="
 	gtk-doc? ( dev-util/gtk-doc )
 	man? ( sys-apps/help2man )
 	test? ( net-libs/gnutls[tools] )
+	verify-sig? ( sec-keys/openpgp-keys-hughsie )
 "
 
 PATCHES=(
