@@ -36,6 +36,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2026-01-24)
+# Needs porting to Python 3.13.  Requires old versions of multiple
+# dependencies, and reportedly is already broken with its current
+# dependencies.  The efforts to revive it do not progress.
+# Removal on 2026-02-23.  Bug #944883, #952290, #955765, #968383.
+dev-embedded/platformio
+
 # Maciej Barć <xgqt@gentoo.org> (2026-01-24)
 # Some app-emacs packages that are obsolete since Emacs 29 or much
 # older. They all are available in the main GNU Emacs distribution.
