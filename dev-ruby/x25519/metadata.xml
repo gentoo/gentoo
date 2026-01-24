@@ -6,6 +6,7 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">crypto-rb/x25519</remote-id>
+    <remote-id type="github">RubyCrypto/x25519</remote-id>
+    <remote-id type="rubygems">x25519</remote-id>
   </upstream>
 </pkgmetadata>
