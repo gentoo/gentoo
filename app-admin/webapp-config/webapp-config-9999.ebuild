@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,6 @@ inherit distutils-r1 prefix
 if [[ ${PV} = 9999* ]]
 then
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/${PN}.git"
-	EGIT_BRANCH="fixes"
 	inherit git-r3
 else
 	SRC_URI="https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/${P}.tar.bz2"
