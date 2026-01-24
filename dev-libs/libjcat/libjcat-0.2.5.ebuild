@@ -13,6 +13,7 @@ HOMEPAGE="https://github.com/hughsie/libjcat"
 SRC_URI="
 	https://github.com/hughsie/libjcat/releases/download/${PV}/${P}.tar.xz
 	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-skip-pq-gnutls.patch
+		-> ${P}-skip-pq-gnutls.patch.xz
 	verify-sig? ( https://github.com/hughsie/libjcat/releases/download/${PV}/${P}.tar.xz.asc )
 "
 
