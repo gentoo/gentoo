@@ -9,4 +9,8 @@
 		A Haskell-only implementation of the MD5 digest (hash) algorithm.  This now supports
 		the crypto-api class interface.
 	</longdescription>
+	<upstream>
+		<remote-id type="hackage">pureMD5</remote-id>
+		<remote-id type="github">TomMD/pureMD5</remote-id>
+	</upstream>
 </pkgmetadata>
