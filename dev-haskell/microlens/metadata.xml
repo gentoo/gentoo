@@ -7,6 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="hackage">microlens</remote-id>
-		<remote-id type="github">monadfix/microlens</remote-id>
+		<remote-id type="github">stevenfontanella/microlens</remote-id>
 	</upstream>
 </pkgmetadata>
