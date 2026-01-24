@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 # Avoid circular dependency
 JAVA_DISABLE_DEPEND_ON_JAVA_DEP_CHECK="true"
 
-inherit check-reqs flag-o-matic java-pkg-2 java-vm-2 multiprocessing toolchain-funcs
+inherit check-reqs dot-a flag-o-matic java-pkg-2 java-vm-2 multiprocessing toolchain-funcs
 
 # variable name format: <UPPERCASE_KEYWORD>_XPAK
 PPC64_XPAK="25_p36" # big-endian bootstrap tarball
@@ -73,7 +73,7 @@ LICENSE="GPL-2-with-classpath-exception"
 SLOT="$(ver_cut 1)"
 KEYWORDS="amd64 arm64 ppc64 ~riscv"
 
-IUSE="alsa big-endian cups debug doc examples headless-awt javafx +jbootstrap selinux source +system-bootstrap systemtap"
+IUSE="alsa big-endian cups debug doc examples headless-awt javafx +jbootstrap selinux source static-libs +system-bootstrap systemtap"
 
 REQUIRED_USE="
 	javafx? ( alsa !headless-awt )
@@ -272,6 +272,10 @@ src_configure() {
 		addpredict /proc/self/coredump_filter
 	fi
 
+	if use static-libs ; then
+		lto-guarantee-fat
+	fi
+
 	(
 		unset _JAVA_OPTIONS JAVA JAVA_TOOL_OPTIONS JAVAC XARGS
 		CFLAGS= CXXFLAGS= LDFLAGS= \
@@ -292,6 +296,7 @@ src_compile() {
 		NICE= # Use PORTAGE_NICENESS, don't adjust further down
 		$(usex doc docs '')
 		$(usex jbootstrap bootcycle-images product-images)
+		$(usex static-libs static-libs-image)
 	)
 	emake "${myemakeargs[@]}" -j1
 }
@@ -344,6 +349,12 @@ src_install() {
 	if use doc ; then
 		docinto html
 		dodoc -r "${S}"/build/*-release/images/docs/*
+	fi
+
+	if use static-libs ; then
+		cd "${S}"/build/*-release/images/static-libs || die
+		cp -pPR * "${ddest}" || die
+		strip-lto-bytecode "${ddest}" || die
 	fi
 }
 
