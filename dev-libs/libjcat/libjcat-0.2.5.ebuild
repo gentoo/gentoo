@@ -12,6 +12,7 @@ DESCRIPTION="Library and tool for reading and writing Jcat files"
 HOMEPAGE="https://github.com/hughsie/libjcat"
 SRC_URI="
 	https://github.com/hughsie/libjcat/releases/download/${PV}/${P}.tar.xz
+	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-skip-pq-gnutls.patch
 	verify-sig? ( https://github.com/hughsie/libjcat/releases/download/${PV}/${P}.tar.xz.asc )
 "
 
@@ -46,7 +47,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${P}-skip-pq-gnutls.patch
+	"${WORKDIR}"/${P}-skip-pq-gnutls.patch
 )
 
 python_check_deps() {
@@ -55,6 +56,14 @@ python_check_deps() {
 
 pkg_setup() {
 	use vala && vala_setup
+}
+
+src_unpack() {
+	if use verify-sig; then
+		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.xz{,.asc}
+	fi
+
+	default
 }
 
 src_prepare() {
