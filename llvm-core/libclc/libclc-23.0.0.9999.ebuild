@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=( {21..22} )
+LLVM_COMPAT=( 23 )
 PYTHON_COMPAT=( python3_{11..14} )
 inherit cmake llvm.org llvm-r1 python-any-r1
 
