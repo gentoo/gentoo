@@ -1,0 +1,728 @@
+https://github.com/hughsie/libjcat/commit/156f0101c88d4928f45ac95b0c3ab93dc964ba40
+https://github.com/hughsie/libjcat/commit/5de47e86be9cfb608fdb4f4925077174d89fe191
+https://github.com/hughsie/libjcat/commit/1952439e5235f7832c7ac694088ca497d1796262
+
+From 156f0101c88d4928f45ac95b0c3ab93dc964ba40 Mon Sep 17 00:00:00 2001
+From: Richard Hughes <richard@hughsie.com>
+Date: Mon, 17 Nov 2025 11:10:01 +0000
+Subject: [PATCH] Do not try to change the GnuTLS system-wide config
+
+To enable ML-DSA, either update your crypto-policy package or add
+`secure-sig = ML-DSA-87` to `/etc/crypto-policies/back-ends/gnutls.config`
+---
+ libjcat/jcat-gnutls-common.c | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/libjcat/jcat-gnutls-common.c b/libjcat/jcat-gnutls-common.c
+index 2a14b1f..e763767 100644
+--- a/libjcat/jcat-gnutls-common.c
++++ b/libjcat/jcat-gnutls-common.c
+@@ -460,9 +460,6 @@ jcat_gnutls_global_log_cb(int level, const char *msg)
+ void
+ jcat_gnutls_global_init(void)
+ {
+-#ifdef HAVE_GNUTLS_PQC
+-	gnutls_sign_set_secure(GNUTLS_SIGN_MLDSA87, GNUTLS_SIGN_FLAG_SECURE_FOR_CERTS);
+-#endif
+ 	gnutls_global_set_log_level(3);
+ 	gnutls_global_set_log_function(jcat_gnutls_global_log_cb);
+ }
+
+From 5de47e86be9cfb608fdb4f4925077174d89fe191 Mon Sep 17 00:00:00 2001
+From: Richard Hughes <richard@hughsie.com>
+Date: Mon, 17 Nov 2025 11:11:19 +0000
+Subject: [PATCH] Return the correct error code using the gnutls rc
+
+---
+ libjcat/jcat-gnutls-common.c       | 273 +++++++++++------------------
+ libjcat/jcat-gnutls-common.h       |   2 +
+ libjcat/jcat-gnutls-pkcs7-engine.c | 131 ++++----------
+ 3 files changed, 131 insertions(+), 275 deletions(-)
+
+diff --git a/libjcat/jcat-gnutls-common.c b/libjcat/jcat-gnutls-common.c
+index e763767..4bf8ebf 100644
+--- a/libjcat/jcat-gnutls-common.c
++++ b/libjcat/jcat-gnutls-common.c
+@@ -54,13 +54,8 @@ jcat_gnutls_pkcs7_load_crt_from_blob(GBytes *blob, gnutls_x509_crt_fmt_t format,
+ 
+ 	/* create certificate */
+ 	rc = gnutls_x509_crt_init(&crt);
+-	if (rc < 0) {
+-		g_set_error(error,
+-			    G_IO_ERROR,
+-			    G_IO_ERROR_INVALID_DATA,
+-			    "crt_init: %s [%i]",
+-			    gnutls_strerror(rc),
+-			    rc);
++	if (!jcat_gnutls_rc_to_error(rc, error)) {
++		g_prefix_error_literal(error, "failed to crt_init: ");
+ 		return NULL;
+ 	}
+ 
+@@ -68,13 +63,8 @@ jcat_gnutls_pkcs7_load_crt_from_blob(GBytes *blob, gnutls_x509_crt_fmt_t format,
+ 	d.size = g_bytes_get_size(blob);
+ 	d.data = (unsigned char *)g_bytes_get_data(blob, NULL);
+ 	rc = gnutls_x509_crt_import(crt, &d, format);
+-	if (rc < 0) {
+-		g_set_error(error,
+-			    G_IO_ERROR,
+-			    G_IO_ERROR_INVALID_DATA,
+-			    "crt_import: %s [%i]",
+-			    gnutls_strerror(rc),
+-			    rc);
++	if (!jcat_gnutls_rc_to_error(rc, error)) {
++		g_prefix_error_literal(error, "failed to crt_import: ");
+ 		return NULL;
+ 	}
+ 	return g_steal_pointer(&crt);
+@@ -89,25 +79,15 @@ jcat_gnutls_pkcs7_load_privkey_from_blob(GBytes *blob, GError **error)
+ 
+ 	/* load the private key */
+ 	rc = gnutls_privkey_init(&key);
+-	if (rc < 0) {
+-		g_set_error(error,
+-			    G_IO_ERROR,
+-			    G_IO_ERROR_INVALID_DATA,
+-			    "privkey_init: %s [%i]",
+-			    gnutls_strerror(rc),
+-			    rc);
++	if (!jcat_gnutls_rc_to_error(rc, error)) {
++		g_prefix_error_literal(error, "failed to privkey_init: ");
+ 		return NULL;
+ 	}
+ 	d.size = g_bytes_get_size(blob);
+ 	d.data = (unsigned char *)g_bytes_get_data(blob, NULL);
+ 	rc = gnutls_privkey_import_x509_raw(key, &d, GNUTLS_X509_FMT_PEM, NULL, 0);
+-	if (rc < 0) {
+-		g_set_error(error,
+-			    G_IO_ERROR,
+-			    G_IO_ERROR_INVALID_DATA,
+-			    "privkey_import_x509_raw: %s [%i]",
+-			    gnutls_strerror(rc),
+-			    rc);
++	if (!jcat_gnutls_rc_to_error(rc, error)) {
++		g_prefix_error_literal(error, "failed to privkey_import_x509_raw: ");
+ 		return NULL;
+ 	}
+ 	return g_steal_pointer(&key);
+@@ -121,23 +101,13 @@ jcat_gnutls_pkcs7_load_pubkey_from_privkey(gnutls_privkey_t privkey, GError **er
+ 
+ 	/* get the public key part of the private key */
+ 	rc = gnutls_pubkey_init(&pubkey);
+-	if (rc < 0) {
+-		g_set_error(error,
+-			    G_IO_ERROR,
+-			    G_IO_ERROR_INVALID_DATA,
+-			    "pubkey_init: %s [%i]",
+-			    gnutls_strerror(rc),
+-			    rc);
++	if (!jcat_gnutls_rc_to_error(rc, error)) {
++		g_prefix_error_literal(error, "failed to pubkey_init: ");
+ 		return NULL;
+ 	}
+ 	rc = gnutls_pubkey_import_privkey(pubkey, privkey, 0, 0);
+-	if (rc < 0) {
+-		g_set_error(error,
+-			    G_IO_ERROR,
+-			    G_IO_ERROR_INVALID_DATA,
+-			    "pubkey_import_privkey: %s [%i]",
+-			    gnutls_strerror(rc),
+-			    rc);
++	if (!jcat_gnutls_rc_to_error(rc, error)) {
++		g_prefix_error_literal(error, "failed to pubkey_import_privkey: ");
+ 		return NULL;
+ 	}
+ 
+@@ -178,23 +148,13 @@ jcat_gnutls_pkcs7_create_private_key(gnutls_pk_algorithm_t algo, GError **error)
+ 
+ 	/* initialize key and SPKI */
+ 	rc = gnutls_x509_privkey_init(&key);
+-	if (rc < 0) {
+-		g_set_error(error,
+-			    G_IO_ERROR,
+-			    G_IO_ERROR_INVALID_DATA,
+-			    "privkey_init: %s [%i]",
+-			    gnutls_strerror(rc),
+-			    rc);
++	if (!jcat_gnutls_rc_to_error(rc, error)) {
++		g_prefix_error_literal(error, "failed to privkey_init: ");
+ 		return NULL;
+ 	}
+ 	rc = gnutls_x509_spki_init(&spki);
+-	if (rc < 0) {
+-		g_set_error(error,
+-			    G_IO_ERROR,
+-			    G_IO_ERROR_INVALID_DATA,
+-			    "spki_init: %s [%i]",
+-			    gnutls_strerror(rc),
+-			    rc);
++	if (!jcat_gnutls_rc_to_error(rc, error)) {
++		g_prefix_error_literal(error, "failed to spki_init: ");
+ 		return NULL;
+ 	}
+ 
+@@ -202,35 +162,20 @@ jcat_gnutls_pkcs7_create_private_key(gnutls_pk_algorithm_t algo, GError **error)
+ 	bits = gnutls_sec_param_to_pk_bits(algo, GNUTLS_SEC_PARAM_HIGH);
+ 	g_debug("generating a %d bit %s private key...", bits, gnutls_pk_algorithm_get_name(algo));
+ 	rc = gnutls_x509_privkey_generate2(key, algo, bits, 0, NULL, 0);
+-	if (rc < 0) {
+-		g_set_error(error,
+-			    G_IO_ERROR,
+-			    G_IO_ERROR_INVALID_DATA,
+-			    "privkey_generate2: %s [%i]",
+-			    gnutls_strerror(rc),
+-			    rc);
++	if (!jcat_gnutls_rc_to_error(rc, error)) {
++		g_prefix_error_literal(error, "failed to privkey_generate2: ");
+ 		return NULL;
+ 	}
+ 	rc = gnutls_x509_privkey_verify_params(key);
+-	if (rc < 0) {
+-		g_set_error(error,
+-			    G_IO_ERROR,
+-			    G_IO_ERROR_INVALID_DATA,
+-			    "privkey_verify_params: %s [%i]",
+-			    gnutls_strerror(rc),
+-			    rc);
++	if (!jcat_gnutls_rc_to_error(rc, error)) {
++		g_prefix_error_literal(error, "failed to privkey_verify_params: ");
+ 		return NULL;
+ 	}
+ 
+ 	/* save to file */
+ 	rc = gnutls_x509_privkey_export2(key, GNUTLS_X509_FMT_PEM, &d);
+-	if (rc < 0) {
+-		g_set_error(error,
+-			    G_IO_ERROR,
+-			    G_IO_ERROR_INVALID_DATA,
+-			    "privkey_export2: %s [%i]",
+-			    gnutls_strerror(rc),
+-			    rc);
++	if (!jcat_gnutls_rc_to_error(rc, error)) {
++		g_prefix_error_literal(error, "failed to privkey_export2: ");
+ 		return NULL;
+ 	}
+ 	d_payload = d.data;
+@@ -279,167 +224,97 @@ jcat_gnutls_pkcs7_create_client_certificate(gnutls_privkey_t privkey, GError **e
+ 		return NULL;
+ 
+ 	rc = gnutls_pubkey_get_preferred_hash_algorithm(pubkey, &digest_alg, NULL);
+-	if (rc < 0) {
+-		g_set_error(error,
+-			    G_IO_ERROR,
+-			    G_IO_ERROR_INVALID_DATA,
+-			    "preferred_hash_algorithm: %s [%i]",
+-			    gnutls_strerror(rc),
+-			    rc);
++	if (!jcat_gnutls_rc_to_error(rc, error)) {
++		g_prefix_error_literal(error, "failed to get preferred hash algorithm: ");
+ 		return NULL;
+ 	}
+ 	g_debug("preferred_hash_algorithm=%s", gnutls_digest_get_name(digest_alg));
+ 
+ 	/* create certificate */
+ 	rc = gnutls_x509_crt_init(&crt);
+-	if (rc < 0) {
+-		g_set_error(error,
+-			    G_IO_ERROR,
+-			    G_IO_ERROR_INVALID_DATA,
+-			    "crt_init: %s [%i]",
+-			    gnutls_strerror(rc),
+-			    rc);
++	if (!jcat_gnutls_rc_to_error(rc, error)) {
++		g_prefix_error_literal(error, "failed to crt_init: ");
+ 		return NULL;
+ 	}
+ 
+ 	/* set public key */
+ 	rc = gnutls_x509_crt_set_pubkey(crt, pubkey);
+-	if (rc < 0) {
+-		g_set_error(error,
+-			    G_IO_ERROR,
+-			    G_IO_ERROR_INVALID_DATA,
+-			    "crt_set_pubkey: %s [%i]",
+-			    gnutls_strerror(rc),
+-			    rc);
++	if (!jcat_gnutls_rc_to_error(rc, error)) {
++		g_prefix_error_literal(error, "failed to crt_set_pubkey: ");
+ 		return NULL;
+ 	}
+ 
+ 	/* set positive random serial number */
+ 	rc = gnutls_rnd(GNUTLS_RND_NONCE, sha1buf, sizeof(sha1buf));
+-	if (rc < 0) {
+-		g_set_error(error,
+-			    G_IO_ERROR,
+-			    G_IO_ERROR_INVALID_DATA,
+-			    "gnutls_rnd: %s [%i]",
+-			    gnutls_strerror(rc),
+-			    rc);
++	if (!jcat_gnutls_rc_to_error(rc, error)) {
++		g_prefix_error_literal(error, "failed to gnutls_rnd: ");
+ 		return NULL;
+ 	}
+ 	sha1buf[0] &= 0x7f;
+ 	rc = gnutls_x509_crt_set_serial(crt, sha1buf, sizeof(sha1buf));
+-	if (rc < 0) {
+-		g_set_error(error,
+-			    G_IO_ERROR,
+-			    G_IO_ERROR_INVALID_DATA,
+-			    "crt_set_serial: %s [%i]",
+-			    gnutls_strerror(rc),
+-			    rc);
++	if (!jcat_gnutls_rc_to_error(rc, error)) {
++		g_prefix_error_literal(error, "failed to crt_set_serial: ");
+ 		return NULL;
+ 	}
+ 
+ 	/* set activation */
+ 	rc = gnutls_x509_crt_set_activation_time(crt, time(NULL));
+-	if (rc < 0) {
+-		g_set_error(error,
+-			    G_IO_ERROR,
+-			    G_IO_ERROR_INVALID_DATA,
+-			    "set_activation_time: %s [%i]",
+-			    gnutls_strerror(rc),
+-			    rc);
++	if (!jcat_gnutls_rc_to_error(rc, error)) {
++		g_prefix_error_literal(error, "failed to set activation time: ");
+ 		return NULL;
+ 	}
+ 
+ 	/* set expiration */
+ 	rc = gnutls_x509_crt_set_expiration_time(crt, (time_t)-1);
+-	if (rc < 0) {
+-		g_set_error(error,
+-			    G_IO_ERROR,
+-			    G_IO_ERROR_INVALID_DATA,
+-			    "set_expiration_time: %s [%i]",
+-			    gnutls_strerror(rc),
+-			    rc);
++	if (!jcat_gnutls_rc_to_error(rc, error)) {
++		g_prefix_error_literal(error, "failed to set expiration time: ");
+ 		return NULL;
+ 	}
+ 
+ 	/* set basic constraints */
+ 	rc = gnutls_x509_crt_set_basic_constraints(crt, 0, -1);
+-	if (rc < 0) {
+-		g_set_error(error,
+-			    G_IO_ERROR,
+-			    G_IO_ERROR_INVALID_DATA,
+-			    "set_basic_constraints: %s [%i]",
+-			    gnutls_strerror(rc),
+-			    rc);
++	if (!jcat_gnutls_rc_to_error(rc, error)) {
++		g_prefix_error_literal(error, "failed to set basic constraints: ");
+ 		return NULL;
+ 	}
+ 
+ 	/* set usage */
+ 	rc = gnutls_x509_crt_set_key_usage(crt, GNUTLS_KEY_DIGITAL_SIGNATURE);
+-	if (rc < 0) {
+-		g_set_error(error,
+-			    G_IO_ERROR,
+-			    G_IO_ERROR_INVALID_DATA,
+-			    "set_key_usage: %s [%i]",
+-			    gnutls_strerror(rc),
+-			    rc);
++	if (!jcat_gnutls_rc_to_error(rc, error)) {
++		g_prefix_error_literal(error, "failed to set key usage: ");
+ 		return NULL;
+ 	}
+ 
+ 	/* set subject key ID */
+ 	rc = gnutls_x509_crt_get_key_id(crt, GNUTLS_KEYID_USE_SHA1, sha1buf, &sha1bufsz);
+-	if (rc < 0) {
+-		g_set_error(error,
+-			    G_IO_ERROR,
+-			    G_IO_ERROR_INVALID_DATA,
+-			    "get_key_id: %s [%i]",
+-			    gnutls_strerror(rc),
+-			    rc);
++	if (!jcat_gnutls_rc_to_error(rc, error)) {
++		g_prefix_error_literal(error, "failed to get key id: ");
+ 		return NULL;
+ 	}
+ 	rc = gnutls_x509_crt_set_subject_key_id(crt, sha1buf, sha1bufsz);
+-	if (rc < 0) {
+-		g_set_error(error,
+-			    G_IO_ERROR,
+-			    G_IO_ERROR_INVALID_DATA,
+-			    "set_subject_key_id: %s [%i]",
+-			    gnutls_strerror(rc),
+-			    rc);
++	if (!jcat_gnutls_rc_to_error(rc, error)) {
++		g_prefix_error_literal(error, "failed to set subject key id: ");
+ 		return NULL;
+ 	}
+ 
+ 	/* set version */
+ 	rc = gnutls_x509_crt_set_version(crt, 3);
+-	if (rc < 0) {
+-		g_set_error(error,
+-			    G_IO_ERROR,
+-			    G_IO_ERROR_INVALID_DATA,
+-			    "error setting certificate version: %s [%i]",
+-			    gnutls_strerror(rc),
+-			    rc);
++	if (!jcat_gnutls_rc_to_error(rc, error)) {
++		g_prefix_error_literal(error, "failed to set certificate version: ");
+ 		return NULL;
+ 	}
+ 
+ 	/* self-sign certificate */
+ 	rc = gnutls_x509_crt_privkey_sign(crt, crt, privkey, digest_alg, 0);
+-	if (rc < 0) {
+-		g_set_error(error,
+-			    G_IO_ERROR,
+-			    G_IO_ERROR_INVALID_DATA,
+-			    "crt_privkey_sign: %s [%i]",
+-			    gnutls_strerror(rc),
+-			    rc);
++	if (!jcat_gnutls_rc_to_error(rc, error)) {
++		g_prefix_error_literal(error, "failed to crt_privkey_sign: ");
+ 		return NULL;
+ 	}
+ 
+ 	/* export to file */
+ 	rc = gnutls_x509_crt_export2(crt, GNUTLS_X509_FMT_PEM, &d);
+-	if (rc < 0) {
+-		g_set_error(error,
+-			    G_IO_ERROR,
+-			    G_IO_ERROR_INVALID_DATA,
+-			    "crt_export2: %s [%i]",
+-			    gnutls_strerror(rc),
+-			    rc);
++	if (!jcat_gnutls_rc_to_error(rc, error)) {
++		g_prefix_error_literal(error, "failed to crt_export2: ");
+ 		return NULL;
+ 	}
+ 	d_payload = d.data;
+@@ -463,3 +338,51 @@ jcat_gnutls_global_init(void)
+ 	gnutls_global_set_log_level(3);
+ 	gnutls_global_set_log_function(jcat_gnutls_global_log_cb);
+ }
++
++gboolean
++jcat_gnutls_rc_to_error(int rc, GError **error)
++{
++	guint error_code = G_IO_ERROR_FAILED;
++
++	if (rc >= GNUTLS_E_SUCCESS)
++		return TRUE;
++	switch (rc) {
++	case GNUTLS_E_ECC_UNSUPPORTED_CURVE:
++	case GNUTLS_E_INSUFFICIENT_CREDENTIALS:
++	case GNUTLS_E_INSUFFICIENT_SECURITY:
++	case GNUTLS_E_NO_CERTIFICATE_FOUND:
++	case GNUTLS_E_UNIMPLEMENTED_FEATURE:
++	case GNUTLS_E_UNKNOWN_ALGORITHM:
++	case GNUTLS_E_UNKNOWN_CIPHER_TYPE:
++	case GNUTLS_E_UNKNOWN_COMPRESSION_ALGORITHM:
++	case GNUTLS_E_UNKNOWN_HASH_ALGORITHM:
++	case GNUTLS_E_UNKNOWN_PK_ALGORITHM:
++	case GNUTLS_E_UNKNOWN_PKCS_CONTENT_TYPE:
++	case GNUTLS_E_UNSUPPORTED_CERTIFICATE_TYPE:
++	case GNUTLS_E_UNSUPPORTED_SIGNATURE_ALGORITHM:
++	case GNUTLS_E_UNWANTED_ALGORITHM:
++	case GNUTLS_E_X509_CERTIFICATE_ERROR:
++	case GNUTLS_E_X509_UNSUPPORTED_ATTRIBUTE:
++	case GNUTLS_E_X509_UNSUPPORTED_CRITICAL_EXTENSION:
++	case GNUTLS_E_X509_UNSUPPORTED_EXTENSION:
++		error_code = G_IO_ERROR_NOT_SUPPORTED;
++		break;
++	case GNUTLS_E_BASE64_DECODING_ERROR:
++	case GNUTLS_E_CERTIFICATE_KEY_MISMATCH:
++	case GNUTLS_E_DECRYPTION_FAILED:
++	case GNUTLS_E_KEY_USAGE_VIOLATION:
++	case GNUTLS_E_PK_DECRYPTION_FAILED:
++	case GNUTLS_E_PK_ENCRYPTION_FAILED:
++	case GNUTLS_E_PK_SIGN_FAILED:
++	case GNUTLS_E_PK_SIG_VERIFY_FAILED:
++	case GNUTLS_E_SHORT_MEMORY_BUFFER:
++	case GNUTLS_E_UNEXPECTED_PACKET_LENGTH:
++	case GNUTLS_E_UNKNOWN_CIPHER_SUITE:
++		error_code = G_IO_ERROR_INVALID_DATA;
++		break;
++	default:
++		break;
++	}
++	g_set_error(error, G_IO_ERROR, error_code, "%s [%i]", gnutls_strerror(rc), rc);
++	return FALSE;
++}
+diff --git a/libjcat/jcat-gnutls-common.h b/libjcat/jcat-gnutls-common.h
+index b89267c..cdcda22 100644
+--- a/libjcat/jcat-gnutls-common.h
++++ b/libjcat/jcat-gnutls-common.h
+@@ -54,6 +54,8 @@ G_DEFINE_AUTO_CLEANUP_FREE_FUNC(gnutls_x509_trust_list_iter_t,
+ 
+ void
+ jcat_gnutls_global_init(void);
++gboolean
++jcat_gnutls_rc_to_error(int rc, GError **error);
+ gchar *
+ jcat_gnutls_pkcs7_datum_to_dn_str(const gnutls_datum_t *raw) G_GNUC_NON_NULL(1);
+ gnutls_x509_crt_t
+diff --git a/libjcat/jcat-gnutls-pkcs7-engine.c b/libjcat/jcat-gnutls-pkcs7-engine.c
+index 3488d28..26d8e11 100644
+--- a/libjcat/jcat-gnutls-pkcs7-engine.c
++++ b/libjcat/jcat-gnutls-pkcs7-engine.c
+@@ -38,13 +38,8 @@ jcat_gnutls_pkcs7_engine_add_pubkey_blob_fmt(JcatGnutlsPkcs7Engine *self,
+ 	if (crt == NULL)
+ 		return FALSE;
+ 	rc = gnutls_x509_crt_get_key_usage(crt, &key_usage, NULL);
+-	if (rc < 0) {
+-		g_set_error(error,
+-			    G_IO_ERROR,
+-			    G_IO_ERROR_INVALID_DATA,
+-			    "failed to get key usage: %s [%i]",
+-			    gnutls_strerror(rc),
+-			    rc);
++	if (!jcat_gnutls_rc_to_error(rc, error)) {
++		g_prefix_error_literal(error, "failed to get key usage: ");
+ 		return FALSE;
+ 	}
+ 	if ((key_usage & GNUTLS_KEY_DIGITAL_SIGNATURE) == 0 &&
+@@ -119,14 +114,9 @@ jcat_gnutls_pkcs7_engine_build_trust_list(JcatGnutlsPkcs7Engine *self, GError **
+ 					    (const gnutls_x509_crt_t *)self->pubkeys_crts->pdata,
+ 					    self->pubkeys_crts->len,
+ 					    0);
+-	if (rc < 0) {
+-		g_set_error(error,
+-			    G_IO_ERROR,
+-			    G_IO_ERROR_INVALID_DATA,
+-			    "failed to add to trust list: %s [%i]",
+-			    gnutls_strerror(rc),
+-			    rc);
+-		return FALSE;
++	if (!jcat_gnutls_rc_to_error(rc, error)) {
++		g_prefix_error_literal(error, "failed to add to trust list: ");
++		return NULL;
+ 	}
+ 	g_debug("loaded %i certificates", rc);
+ 
+@@ -142,14 +132,9 @@ jcat_gnutls_pkcs7_engine_build_trust_list_only_pq(JcatGnutlsPkcs7Engine *self, G
+ 	g_auto(gnutls_x509_trust_list_t) tl = NULL;
+ 
+ 	rc = gnutls_x509_trust_list_init(&tl, 0);
+-	if (rc != GNUTLS_E_SUCCESS) {
+-		g_set_error(error,
+-			    G_IO_ERROR,
+-			    G_IO_ERROR_INVALID_DATA,
+-			    "failed to create trust list: %s [%i]",
+-			    gnutls_strerror(rc),
+-			    rc);
+-		return FALSE;
++	if (!jcat_gnutls_rc_to_error(rc, error)) {
++		g_prefix_error_literal(error, "failed to create trust list: ");
++		return NULL;
+ 	}
+ 	for (guint i = 0; i < self->pubkeys_crts->len; i++) {
+ 		gnutls_x509_crt_t crt = g_ptr_array_index(self->pubkeys_crts, i);
+@@ -159,14 +144,9 @@ jcat_gnutls_pkcs7_engine_build_trust_list_only_pq(JcatGnutlsPkcs7Engine *self, G
+ 		    algo != GNUTLS_SIGN_MLDSA87)
+ 			continue;
+ 		rc = gnutls_x509_trust_list_add_cas(tl, &crt, 1, 0);
+-		if (rc < 0) {
+-			g_set_error(error,
+-				    G_IO_ERROR,
+-				    G_IO_ERROR_INVALID_DATA,
+-				    "failed to add to trust list: %s [%i]",
+-				    gnutls_strerror(rc),
+-				    rc);
+-			return FALSE;
++		if (!jcat_gnutls_rc_to_error(rc, error)) {
++			g_prefix_error_literal(error, "failed to add to trust list: ");
++			return NULL;
+ 		}
+ 		g_debug("loaded %i certificates", rc);
+ 	}
+@@ -197,13 +177,8 @@ jcat_gnutls_pkcs7_engine_verify(JcatEngine *engine,
+ 
+ 	/* startup */
+ 	rc = gnutls_pkcs7_init(&pkcs7);
+-	if (rc != GNUTLS_E_SUCCESS) {
+-		g_set_error(error,
+-			    G_IO_ERROR,
+-			    G_IO_ERROR_INVALID_DATA,
+-			    "failed to init pkcs7: %s [%i]",
+-			    gnutls_strerror(rc),
+-			    rc);
++	if (!jcat_gnutls_rc_to_error(rc, error)) {
++		g_prefix_error_literal(error, "failed to init pkcs7: ");
+ 		return NULL;
+ 	}
+ 
+@@ -211,13 +186,8 @@ jcat_gnutls_pkcs7_engine_verify(JcatEngine *engine,
+ 	datum.data = (guchar *)g_bytes_get_data(blob_signature, NULL);
+ 	datum.size = g_bytes_get_size(blob_signature);
+ 	rc = gnutls_pkcs7_import(pkcs7, &datum, GNUTLS_X509_FMT_PEM);
+-	if (rc != GNUTLS_E_SUCCESS) {
+-		g_set_error(error,
+-			    G_IO_ERROR,
+-			    G_IO_ERROR_INVALID_DATA,
+-			    "failed to import the PKCS7 signature: %s [%i]",
+-			    gnutls_strerror(rc),
+-			    rc);
++	if (!jcat_gnutls_rc_to_error(rc, error)) {
++		g_prefix_error_literal(error, "failed to import the PKCS7 signature: ");
+ 		return NULL;
+ 	}
+ 
+@@ -248,13 +218,8 @@ jcat_gnutls_pkcs7_engine_verify(JcatEngine *engine,
+ 
+ 		/* always get issuer */
+ 		rc = gnutls_pkcs7_get_signature_info(pkcs7, i, &info_tmp);
+-		if (rc < 0) {
+-			g_set_error(error,
+-				    G_IO_ERROR,
+-				    G_IO_ERROR_INVALID_DATA,
+-				    "failed to get signature info: %s [%i]",
+-				    gnutls_strerror(rc),
+-				    rc);
++		if (!jcat_gnutls_rc_to_error(rc, error)) {
++			g_prefix_error_literal(error, "failed to get signature info: ");
+ 			return NULL;
+ 		}
+ 
+@@ -290,24 +255,13 @@ jcat_gnutls_pkcs7_engine_verify(JcatEngine *engine,
+ 						 &datum, /* data */
+ 						 verify_flags);
+ 		}
+-		if (rc < 0) {
++		if (!jcat_gnutls_rc_to_error(rc, error)) {
+ 			dn = jcat_gnutls_pkcs7_datum_to_dn_str(&info->issuer_dn);
+ 			if (dn != NULL) {
+-				g_set_error(error,
+-					    G_IO_ERROR,
+-					    G_IO_ERROR_INVALID_DATA,
+-					    "failed to verify data for %s: %s [%i]",
+-					    dn,
+-					    gnutls_strerror(rc),
+-					    rc);
+-				return NULL;
++				g_prefix_error(error, "failed to verify data for %s: ", dn);
++			} else {
++				g_prefix_error_literal(error, "failed to verify data: ");
+ 			}
+-			g_set_error(error,
+-				    G_IO_ERROR,
+-				    G_IO_ERROR_INVALID_DATA,
+-				    "failed to verify data: %s [%i]",
+-				    gnutls_strerror(rc),
+-				    rc);
+ 			return NULL;
+ 		}
+ 
+@@ -421,26 +375,16 @@ jcat_gnutls_pkcs7_engine_pubkey_sign(JcatEngine *engine,
+ 	if (pubkey == NULL)
+ 		return NULL;
+ 	rc = gnutls_pubkey_get_preferred_hash_algorithm(pubkey, &dig, NULL);
+-	if (rc < 0) {
+-		g_set_error(error,
+-			    G_IO_ERROR,
+-			    G_IO_ERROR_INVALID_DATA,
+-			    "preferred_hash_algorithm: %s [%i]",
+-			    gnutls_strerror(rc),
+-			    rc);
++	if (!jcat_gnutls_rc_to_error(rc, error)) {
++		g_prefix_error_literal(error, "failed to get preferred hash algorithm: ");
+ 		return NULL;
+ 	}
+ 	g_debug("preferred_hash_algorithm=%s", gnutls_digest_get_name(dig));
+ 
+ 	/* create container */
+ 	rc = gnutls_pkcs7_init(&pkcs7);
+-	if (rc < 0) {
+-		g_set_error(error,
+-			    G_IO_ERROR,
+-			    G_IO_ERROR_INVALID_DATA,
+-			    "pkcs7_init: %s [%i]",
+-			    gnutls_strerror(rc),
+-			    rc);
++	if (!jcat_gnutls_rc_to_error(rc, error)) {
++		g_prefix_error_literal(error, "failed to pkcs7_init: ");
+ 		return NULL;
+ 	}
+ 
+@@ -452,37 +396,24 @@ jcat_gnutls_pkcs7_engine_pubkey_sign(JcatEngine *engine,
+ 	if (flags & JCAT_SIGN_FLAG_ADD_CERT)
+ 		gnutls_flags |= GNUTLS_PKCS7_INCLUDE_CERT;
+ 	rc = gnutls_pkcs7_sign(pkcs7, crt, key, &d, NULL, NULL, dig, gnutls_flags);
+-	if (rc < 0) {
+-		g_set_error(error,
+-			    G_IO_ERROR,
+-			    G_IO_ERROR_INVALID_DATA,
+-			    "pkcs7_sign: %s [%i]",
+-			    gnutls_strerror(rc),
+-			    rc);
++	if (!jcat_gnutls_rc_to_error(rc, error)) {
++		g_prefix_error_literal(error, "failed to pkcs7_sign: ");
+ 		return NULL;
+ 	}
+ 
+ 	/* set certificate */
+ 	if (flags & JCAT_SIGN_FLAG_ADD_CERT) {
+ 		rc = gnutls_pkcs7_set_crt(pkcs7, crt);
+-		if (rc < 0) {
+-			g_set_error(error,
+-				    G_IO_ERROR,
+-				    G_IO_ERROR_INVALID_DATA,
+-				    "pkcs7_set_cr: %s",
+-				    gnutls_strerror(rc));
++		if (!jcat_gnutls_rc_to_error(rc, error)) {
++			g_prefix_error_literal(error, "failed to pkcs7_set_cr: ");
+ 			return NULL;
+ 		}
+ 	}
+ 
+ 	/* export */
+ 	rc = gnutls_pkcs7_export2(pkcs7, GNUTLS_X509_FMT_PEM, &d);
+-	if (rc < 0) {
+-		g_set_error(error,
+-			    G_IO_ERROR,
+-			    G_IO_ERROR_INVALID_DATA,
+-			    "pkcs7_export: %s",
+-			    gnutls_strerror(rc));
++	if (!jcat_gnutls_rc_to_error(rc, error)) {
++		g_prefix_error_literal(error, "failed to pkcs7_export: ");
+ 		return NULL;
+ 	}
+ 	d_payload = d.data;
+From 1952439e5235f7832c7ac694088ca497d1796262 Mon Sep 17 00:00:00 2001
+From: Richard Hughes <richard@hughsie.com>
+Date: Mon, 17 Nov 2025 11:14:50 +0000
+Subject: [PATCH] Skip the PQ tests if the GnuTLS config is not malleable
+
+Fixes https://github.com/hughsie/libjcat/issues/195
+---
+ libjcat/jcat-self-test.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/libjcat/jcat-self-test.c b/libjcat/jcat-self-test.c
+index ddccb3b..b89b67b 100644
+--- a/libjcat/jcat-self-test.c
++++ b/libjcat/jcat-self-test.c
+@@ -667,6 +667,10 @@ jcat_pkcs7_engine_self_signed_pq_func(gconstpointer test_data)
+ 					  payload,
+ 					  JCAT_SIGN_FLAG_ADD_TIMESTAMP | JCAT_SIGN_FLAG_USE_PQ,
+ 					  &error);
++	if (signature == NULL && g_error_matches(error, G_IO_ERROR, G_IO_ERROR_NOT_SUPPORTED)) {
++		g_test_skip("ML-MDA cannot be enabled at runtime, skipping");
++		return;
++	}
+ 	g_assert_no_error(error);
+ 	g_assert_nonnull(signature);
+ 	result = jcat_engine_self_verify(engine,
+@@ -674,6 +678,10 @@ jcat_pkcs7_engine_self_signed_pq_func(gconstpointer test_data)
+ 					 jcat_blob_get_data(signature),
+ 					 JCAT_VERIFY_FLAG_ONLY_PQ,
+ 					 &error);
++	if (result == NULL && g_error_matches(error, G_IO_ERROR, G_IO_ERROR_NOT_SUPPORTED)) {
++		g_test_skip("ML-MDA cannot be enabled at runtime, skipping");
++		return;
++	}
+ 	g_assert_no_error(error);
+ 	g_assert_nonnull(result);
+ 
