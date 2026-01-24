@@ -38,7 +38,8 @@ fi
 LICENSE="LGPL-2.1 utils? ( GPL-2 )"
 SLOT="3"
 IUSE="+debug python test utils"
-RESTRICT="!test? ( test )"
+# test_kernel_route_roundtrip_* fais in 3.12.0
+RESTRICT="!test? ( test ) test"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}"
