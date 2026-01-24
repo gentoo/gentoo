@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 CMAKE_IN_SOURCE_BUILD=1
 inherit autotools cmake eapi9-ver flag-o-matic java-pkg-opt-2 optfeature systemd xdg
 
-XSERVER_VERSION="21.1.20"
+XSERVER_VERSION="21.1.21"
 XSERVER_PATCH_VERSION="21"
 
 DESCRIPTION="Remote desktop viewer display system"
@@ -38,7 +38,7 @@ COMMON_DEPEND="
 	dev-libs/gmp:=
 	dev-libs/nettle:=
 	media-libs/libjpeg-turbo:=
-	virtual/zlib
+	virtual/zlib:=
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXrandr
@@ -79,7 +79,7 @@ COMMON_DEPEND="
 	)
 	viewer? (
 		media-video/ffmpeg:=
-		<x11-libs/fltk-1.4:1=
+		<x11-libs/fltk-1.4:1
 		x11-libs/libXi
 		x11-libs/libXrender
 		!net-misc/turbovnc[viewer]
