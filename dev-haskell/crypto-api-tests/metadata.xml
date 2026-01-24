@@ -5,4 +5,8 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="hackage">crypto-api-tests</remote-id>
+		<remote-id type="github">TomMD/crypto-api-tests</remote-id>
+	</upstream>
 </pkgmetadata>
