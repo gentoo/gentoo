@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,14 +7,21 @@ inherit systemd prefix tmpfiles
 
 DESCRIPTION="A man replacement that utilizes dbm instead of flat files"
 HOMEPAGE="https://gitlab.com/man-db/man-db https://www.nongnu.org/man-db/"
+
 if [[ ${PV} == *9999 ]] ; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://gitlab.com/man-db/man-db"
 else
-	inherit libtool
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/cjwatson.asc
+	inherit libtool verify-sig
 	# TODO: Change tarballs to gitlab too...?
-	SRC_URI="mirror://nongnu/${PN}/${P}.tar.xz"
+	SRC_URI="
+		mirror://nongnu/${PN}/${P}.tar.xz
+		verify-sig? ( mirror://nongnu/${PN}/${P}.tar.xz.asc )
+	"
 	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
+
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-cjwatson )"
 fi
 
 LICENSE="GPL-3"
@@ -29,7 +36,7 @@ CDEPEND="
 	zlib? ( virtual/zlib:= )
 "
 DEPEND="${CDEPEND}"
-BDEPEND="
+BDEPEND+="
 	app-arch/xz-utils
 	virtual/pkgconfig
 	nls? (
@@ -65,6 +72,10 @@ src_unpack() {
 		EGIT_CHECKOUT_DIR="${WORKDIR}/gnulib" \
 		git-r3_src_unpack
 	else
+		if use verify-sig ; then
+			verify-sig_verify_detached "${DISTDIR}"/${P}.tar.xz{,.asc}
+		fi
+
 		default
 	fi
 }
