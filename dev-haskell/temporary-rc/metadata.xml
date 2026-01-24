@@ -6,6 +6,7 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">UnkindPartition/temporary</remote-id>
+		<remote-id type="hackage">temporary-rc</remote-id>
+		<remote-id type="github">feuerbach/temporary</remote-id>
 	</upstream>
 </pkgmetadata>
