@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -81,7 +81,7 @@ EOF
 
 	eautoreconf
 	rm -r autom4te.cache || die
-	use vala && export VALAC="$(type -p valac-$(vala_best_api_version))"
+	vala_setup
 }
 
 src_configure() {
