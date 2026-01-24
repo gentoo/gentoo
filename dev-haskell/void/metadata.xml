@@ -6,9 +6,10 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<use>
-		<flag name="safe">dissable effective but unsafe coersions</flag>
+		<flag name="safe">Disable effective but unsafe coercions</flag>
 	</use>
 	<upstream>
+		<remote-id type="hackage">void</remote-id>
 		<remote-id type="github">ekmett/void</remote-id>
 	</upstream>
 </pkgmetadata>
