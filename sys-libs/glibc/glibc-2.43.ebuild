@@ -218,6 +218,9 @@ XFAIL_NSPAWN_TEST_LIST=(
 	# These fail if --suppress-sync and/or low priority is set
 	tst-sync_file_range
 	test-errno
+
+	# Fails only in portage. Needs investigation.
+	tst-setvbuf2
 )
 
 #
