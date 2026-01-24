@@ -72,7 +72,6 @@ BDEPEND+="
 "
 RDEPEND="
 	virtual/man
-	!<sys-libs/libxcrypt-4.4.38-r1
 "
 PDEPEND="
 	l10n_ja? ( app-i18n/man-pages-ja )
@@ -104,7 +103,7 @@ src_prepare() {
 	default
 
 	# installed by sys-libs/libxcrypt
-	rm man/man3/{crypt,crypt_r}.3 || die
+	rm man/man3/crypt{,_r}.3 || die
 
 	# passwd.5 installed by sys-apps/shadow, bug #776787
 	rm man/man5/passwd.5 || die
