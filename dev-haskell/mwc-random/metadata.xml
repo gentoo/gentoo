@@ -11,6 +11,6 @@ It requires libpapi and only works on Linux so it&#39;s protected by flag</flag>
 	</use>
 	<upstream>
 		<remote-id type="hackage">mwc-random</remote-id>
-		<remote-id type="github">bos/mwc-random</remote-id>
+		<remote-id type="github">haskell/mwc-random</remote-id>
 	</upstream>
 </pkgmetadata>
