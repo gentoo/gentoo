@@ -36,6 +36,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Maciej Barć <xgqt@gentoo.org> (2026-01-24)
+# Some app-emacs packages that are obsolete since Emacs 29 or much
+# older. They all are available in the main GNU Emacs distribution.
+# Removal on 2026-02-24. Bug #969199.
+app-emacs/bind-key
+app-emacs/csharp-mode
+app-emacs/css-mode
+app-emacs/eglot
+app-emacs/jsonrpc
+app-emacs/python-mode
+app-emacs/use-package
+
 # Sam James <sam@gentoo.org> (2026-01-22)
 # eclean-dist -d needs fixing
 =app-portage/gentoolkit-0.7
