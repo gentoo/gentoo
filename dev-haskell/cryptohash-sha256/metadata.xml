@@ -10,6 +10,6 @@
 	</use>
 	<upstream>
 		<remote-id type="hackage">cryptohash-sha256</remote-id>
-		<remote-id type="github">hvr/cryptohash-sha256</remote-id>
+		<remote-id type="github">haskell-hvr/cryptohash-sha256</remote-id>
 	</upstream>
 </pkgmetadata>
