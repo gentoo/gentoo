@@ -193,8 +193,8 @@ src_prepare() {
 
 src_configure() {
 	# defang automagic dependencies. Bug 943164
-	use wayland || append-cflags -DGENTOO_GTK_HIDE_WAYLAND
-	use X || append-cflags -DGENTOO_GTK_HIDE_X11
+	use wayland || append-cppflags -DGENTOO_GTK_HIDE_WAYLAND
+	use X || append-cppflags -DGENTOO_GTK_HIDE_X11
 
 	use vala && vala_setup
 
