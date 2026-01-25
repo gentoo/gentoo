@@ -20,7 +20,7 @@ case ${PV}  in
 *)
 	SRC_URI="https://go.dev/dl/go${MY_PV}.src.tar.gz "
 	S="${WORKDIR}"/go
-	KEYWORDS="-* ~amd64 ~arm ~arm64 ~loong ~mips ~ppc64 ~riscv ~s390 ~x86 ~x64-macos ~x64-solaris"
+	KEYWORDS="-* amd64 arm arm64 ~loong ~mips ppc64 ~riscv ~s390 x86 ~x64-macos ~x64-solaris"
 	;;
 esac
 
@@ -48,6 +48,10 @@ QA_MULTILIB_PATHS="usr/lib/go/pkg/tool/.*/.*"
 # https://bugs.gentoo.org/794046
 QA_PREBUILT="*"
 QA_PRESTRIPPED="*.syso"
+
+# The Go data race detector (go test -race) requires an unstripped Go toolchain.
+# https://bugs.gentoo.org/961618
+RESTRICT="strip"
 
 DOCS=(
 	CONTRIBUTING.md

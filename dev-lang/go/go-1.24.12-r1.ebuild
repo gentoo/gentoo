@@ -49,6 +49,10 @@ QA_MULTILIB_PATHS="usr/lib/go/pkg/tool/.*/.*"
 QA_PREBUILT="*"
 QA_PRESTRIPPED="*.syso"
 
+# The Go data race detector (go test -race) requires an unstripped Go toolchain.
+# https://bugs.gentoo.org/961618
+RESTRICT="strip"
+
 DOCS=(
 	CONTRIBUTING.md
 	PATENTS
@@ -67,8 +71,6 @@ go_cross_compile() {
 PATCHES=(
 	"${FILESDIR}"/go-1.24-skip-gdb-tests.patch
 	"${FILESDIR}"/go-1.24-dont-force-gold-arm.patch
-	"${FILESDIR}"/go-1.25-no-dwarf5.patch
-	"${FILESDIR}"/go-1.25-strip-top-level-const.patch
 	"${FILESDIR}"/go-never-download-newer-toolchains.patch
 )
 
