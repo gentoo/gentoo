@@ -148,7 +148,9 @@ python_check_deps() {
 	python_has_version "dev-python/python-dateutil[${PYTHON_USEDEP}]" &&
 	python_has_version "dev-python/lxml[${PYTHON_USEDEP}]" &&
 	python_has_version "dev-python/mysqlclient[${PYTHON_USEDEP}]" &&
-	python_has_version "dev-python/requests-cache[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/requests-cache[${PYTHON_USEDEP}]" &&
+	python_has_version "dev-python/pip[${PYTHON_USEDEP}]" &&
+	python_has_version "dev-python/wheel[${PYTHON_USEDEP}]"
 }
 
 pkg_pretend() {
