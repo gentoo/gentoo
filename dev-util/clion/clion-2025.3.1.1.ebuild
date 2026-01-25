@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -89,13 +89,16 @@ src_prepare() {
 		bin/lldb/linux
 		bin/ninja
 		plugins/remote-dev-server/selfcontained
+		plugins/nativeDebug-plugin/bin/lldb/linux/${my_arch_suffix}/bin/LLDBFrontend
 	)
 	remove_me+=(
 		lib/async-profiler/${other_arch_amd64_aarch64}
 		plugins/clion-radler/DotFiles/linux-${other_arch_radler}
 		plugins/clion-radler/dotCommon/DotFiles/linux-${other_arch_radler}
 		plugins/clion-radler/dotTrace.dotMemory/DotFiles/linux-${other_arch_radler}
+		plugins/nativeDebug-plugin/bin/lldb/linux/${other_arch_amd64_aarch64}
 		plugins/python-ce/helpers/pydev/pydevd_attach_to_process/attach_linux_${other_arch_amd64_aarch64}.so
+		plugins/serial-monitor/bin/Linux/$(usex amd64 armv8_64 x86_64)
 	)
 	use !amd64 && remove_me+=(
 		plugins/python-ce/helpers/coveragepy_old/coverage/tracer.cpython-310-x86_64-linux-gnu.so
@@ -159,4 +162,5 @@ src_install() {
 
 pkg_postinst() {
 	optfeature "Debugging support" dev-debug/gdb
+	optfeature "LLDB support" llvm-core/lldb
 }
