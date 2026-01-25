@@ -45,6 +45,7 @@ media-video/vlc aom
 media-libs/libheif aom
 media-libs/libavif aom
 mail-client/thunderbird system-av1
+>=kde-frameworks/kimageformats-6.22.0 avif
 
 # matoro <matoro_gentoo@matoro.tk> (2023-04-11)
 # dev-libs/weston casualties (#833010)
