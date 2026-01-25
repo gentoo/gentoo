@@ -39,7 +39,7 @@ src_prepare() {
 
 	sed -i \
 		-e 's/--netscape//' \
-		"${S}"/doc/Makefile.in || die
+		"${S}"/doc/Makefile.am || die
 
 	sed \
 		-e "s:@VERSION@:${PV}:" \
