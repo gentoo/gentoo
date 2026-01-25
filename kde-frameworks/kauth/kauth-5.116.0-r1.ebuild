@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ DEPEND="
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	=kde-frameworks/kcoreaddons-${PVCUT}*:5
-	policykit? ( >=sys-auth/polkit-qt-0.113.0[qt5(+)] )
+	policykit? ( >=sys-auth/polkit-qt-0.113.0[qt5(-)] )
 "
 RDEPEND="${DEPEND}"
 BDEPEND=">=dev-qt/linguist-tools-${QTMIN}:5"
