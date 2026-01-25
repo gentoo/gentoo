@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools flag-o-matic
 
 DESCRIPTION="A thesaurus lib, tool, and database"
-HOMEPAGE="https://sourceforge.net/projects/aiksaurus"
+HOMEPAGE="https://sourceforge.net/projects/aiksaurus/"
 SRC_URI="
 	https://downloads.sourceforge.net/${PN}/${P}.tar.gz
 	https://dev.gentoo.org/~soap/distfiles/${P}-patches.txz"
