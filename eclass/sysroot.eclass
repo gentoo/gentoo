@@ -80,7 +80,21 @@ sysroot_make_run_prefixed() {
 		fi
 	fi
 
-	if [[ ${QEMU_ARCH} == $(qemu_arch "${CBUILD}") ]]; then
+	if [[ ${CHOST} = *-mingw32 ]]; then
+		if ! type -P wine >/dev/null; then
+			einfo "Wine not found. Continuing without ${SCRIPT##*/} wrapper."
+			return 1
+		fi
+
+		# UNIX paths can work, but programs will not expect this in %PATH%.
+		local winepath="Z:${LIBGCC};Z:${MYEROOT}/bin;Z:${MYEROOT}/usr/bin;Z:${MYEROOT}/$(get_libdir);Z:${MYEROOT}/usr/$(get_libdir)"
+
+		# Assume that Wine can do its own CPU emulation.
+		install -m0755 /dev/stdin "${SCRIPT}" <<-EOF || die
+			#!/bin/sh
+			SANDBOX_ON=0 LD_PRELOAD= WINEPATH="\${WINEPATH}\${WINEPATH+;};${winepath//\//\\}" exec wine "\${@}"
+		EOF
+	elif [[ ${QEMU_ARCH} == $(qemu_arch "${CBUILD}") ]]; then
 		# glibc: ld.so is a symlink, ldd is a binary.
 		# musl: ld.so doesn't exist, ldd is a symlink.
 		local DLINKER candidate
