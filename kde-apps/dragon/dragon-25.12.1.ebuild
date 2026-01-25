@@ -3,7 +3,6 @@
 
 EAPI=8
 
-ECM_HANDBOOK="optional"
 KFMIN=6.19.0
 QTMIN=6.9.1
 inherit ecm gear.kde.org xdg
@@ -11,7 +10,7 @@ inherit ecm gear.kde.org xdg
 DESCRIPTION="Simple video player"
 HOMEPAGE="https://apps.kde.org/dragonplayer/"
 
-LICENSE="GPL-2+ || ( GPL-2 GPL-3 ) handbook? ( FDL-1.2 )"
+LICENSE="GPL-2+ || ( GPL-2 GPL-3 )"
 SLOT="6"
 KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE=""
