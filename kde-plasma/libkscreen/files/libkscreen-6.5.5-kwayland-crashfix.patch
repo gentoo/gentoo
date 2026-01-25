@@ -1,0 +1,36 @@
+From 4bb33417bd7657ba3f140048a7ab324e6d007dc2 Mon Sep 17 00:00:00 2001
+From: Vlad Zahorodnii <vlad.zahorodnii@kde.org>
+Date: Wed, 14 Jan 2026 21:17:12 +0000
+Subject: [PATCH] backends/kwayland: Clean up output devices in WaylandConfig
+ destructor
+
+CCBUG: 511757
+
+
+(cherry picked from commit 3f643425e767a8144c9bcb013d273b5ac1920691)
+
+Co-authored-by: Vlad Zahorodnii <vlad.zahorodnii@kde.org>
+---
+ backends/kwayland/waylandconfig.cpp | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/backends/kwayland/waylandconfig.cpp b/backends/kwayland/waylandconfig.cpp
+index edb6de57..37db551d 100644
+--- a/backends/kwayland/waylandconfig.cpp
++++ b/backends/kwayland/waylandconfig.cpp
+@@ -50,6 +50,12 @@ WaylandConfig::WaylandConfig(QObject *parent)
+ 
+ WaylandConfig::~WaylandConfig()
+ {
++    qDeleteAll(m_initializingOutputs);
++    m_initializingOutputs.clear();
++
++    qDeleteAll(m_outputMap);
++    m_outputMap.clear();
++
+     if (m_registry) {
+         wl_registry_destroy(m_registry);
+     }
+-- 
+GitLab
+
