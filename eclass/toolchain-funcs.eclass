@@ -402,6 +402,7 @@ tc-env_build() {
 	PKG_CONFIG=$(tc-getBUILD_PKG_CONFIG) \
 	RANLIB=$(tc-getBUILD_RANLIB) \
 	READELF=$(tc-getBUILD_READELF) \
+	CHOST=${CBUILD:-${CHOST}} \
 	"$@"
 }
 
@@ -445,8 +446,7 @@ tc-env_build() {
 # @CODE
 econf_build() {
 	local CBUILD=${CBUILD:-${CHOST}}
-	econf_env() { CHOST=${CBUILD} econf "$@"; }
-	tc-env_build econf_env "$@"
+	tc-env_build econf "$@"
 }
 
 # @FUNCTION: tc-ld-is-bfd
