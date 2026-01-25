@@ -136,10 +136,6 @@ dev-perl/Template-Toolkit gd latex vim-syntax
 # requires dev-libs/hidapi to be keyworded
 dev-libs/libfido2 hidapi
 
-# Matt Jolly <kangie@gentoo.org> (2024-11-03)
-# Requires llvm 16 which is not keyworded
-~dev-lang/rust-1.71.1 system-llvm
-
 # Felix Janda <felix.janda@posteo.de> (2024-10-20)
 # requires dev-libs/libcss and net-libs/libdom to be keyworded
 www-client/elinks libcss
