@@ -16,7 +16,7 @@ else
 		https://github.com/mgba-emu/mgba/archive/${MGBA_HASH}.tar.gz
 			-> ${P}.tar.gz
 	"
-	KEYWORDS="amd64 arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 arm64 ppc64 ~x86"
 	S=${WORKDIR}/${PN}-${MGBA_HASH}
 fi
 
