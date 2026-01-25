@@ -35,9 +35,9 @@ RDEPEND="
 	${HYPRPM_RDEPEND}
 	dev-cpp/tomlplusplus
 	dev-libs/glib:2
-	dev-libs/hyprlang
+	>=dev-libs/hyprlang-0.3.2
 	dev-libs/libinput:=
-	dev-libs/hyprgraphics:=
+	>=dev-libs/hyprgraphics-0.1.3:=
 	dev-libs/re2:=
 	>=dev-libs/udis86-1.7.2
 	>=dev-libs/wayland-1.22.90
@@ -82,15 +82,21 @@ FILECAPS=(
 pkg_setup() {
 	[[ ${MERGE_TYPE} == binary ]] && return
 
-	if tc-is-gcc && ver_test $(gcc-version) -lt 15; then
+	if tc-is-gcc && ver_test $(gcc-version) -lt 15 ; then
 		eerror "Hyprland requires >=sys-devel/gcc-15 to build"
 		eerror "Please upgrade GCC: emerge -v1 sys-devel/gcc"
 		die "GCC version is too old to compile Hyprland!"
-	elif tc-is-clang && ver_test $(clang-version) -lt 19; then
+	elif tc-is-clang && ver_test $(clang-version) -lt 19 ; then
 		eerror "Hyprland requires >=llvm-core/clang-19 to build"
 		eerror "Please upgrade Clang: emerge -v1 llvm-core/clang"
 		die "Clang version is too old to compile Hyprland!"
 	fi
+}
+
+src_prepare() {
+	# skip version.h
+	sed -i -e "s|scripts/generateVersion.sh|echo|g" meson.build || die
+	default
 }
 
 src_configure() {
