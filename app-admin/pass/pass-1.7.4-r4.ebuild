@@ -31,7 +31,7 @@ RDEPEND="
 	X? ( x11-misc/xclip )
 	elibc_Darwin? ( app-misc/getopt )
 	dmenu? ( x11-misc/dmenu x11-misc/xdotool )
-	emacs? ( >=app-editors/emacs-23.1:* >=app-emacs/s-1.9.0 >=app-emacs/with-editor-2.5.11 )
+	emacs? ( >=app-editors/emacs-25.1:* >=app-emacs/s-1.9.0 >=app-emacs/with-editor-2.5.11 )
 "
 
 src_prepare() {
