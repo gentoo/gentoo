@@ -1,4 +1,4 @@
-From 0454112942d8a4636c848cc92bde7b91ca3e369e Mon Sep 17 00:00:00 2001
+From 968152b81e71fdaf78301d999ef3c2954eba1564 Mon Sep 17 00:00:00 2001
 From: Andreas Sturmlechner <asturm@gentoo.org>
 Date: Sat, 11 Jul 2020 23:04:16 +0200
 Subject: [PATCH] ECMAddTests.cmake: Skip ecm_add_test early if Qt::Test is not
@@ -7,8 +7,8 @@ Subject: [PATCH] ECMAddTests.cmake: Skip ecm_add_test early if Qt::Test is not
 Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
 ---
  modules/ECMAddTests.cmake        | 10 ++++++++++
- tests/ECMAddTests/CMakeLists.txt |  4 ++++
- 2 files changed, 14 insertions(+)
+ tests/ECMAddTests/CMakeLists.txt |  5 +++++
+ 2 files changed, 15 insertions(+)
 
 diff --git a/modules/ECMAddTests.cmake b/modules/ECMAddTests.cmake
 index ce0586f0..e362d990 100644
@@ -39,20 +39,21 @@ index ce0586f0..e362d990 100644
      ecm_add_test(${_test_source}
        ${_name_prefix}
 diff --git a/tests/ECMAddTests/CMakeLists.txt b/tests/ECMAddTests/CMakeLists.txt
-index ca82c7e9..78527903 100644
+index ca82c7e9..48aa420e 100644
 --- a/tests/ECMAddTests/CMakeLists.txt
 +++ b/tests/ECMAddTests/CMakeLists.txt
-@@ -2,6 +2,10 @@ if (QT_MAJOR_VERSION EQUAL "6")
-     set(QT_VERSION_OPT "-DBUILD_WITH_QT6=ON")
- else()
+@@ -4,6 +4,11 @@ else()
      set(QT_VERSION_OPT "-DBUILD_WITH_QT6=OFF")
-+
+ endif()
+ 
 +if(NOT TARGET Qt::Test)
 +    message(STATUS "WARNING: skipping tests that require Qt::Test")
 +    return()
- endif()
- 
++endif()
++
  macro(add_check NAME)
+     string(REPLACE "." "/" dir "${NAME}")
+     string(REGEX REPLACE "[^.]*\\." "" proj "${NAME}")
 -- 
 2.52.0
 
