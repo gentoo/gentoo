@@ -3,6 +3,7 @@
 
 EAPI=8
 
+NEED_EMACS=26.1
 inherit bash-completion-r1 elisp-common
 
 if [[ ${PV} = 9999* ]]; then
