@@ -12,7 +12,7 @@ SRC_URI="https://github.com/shibatch/${PN}/archive/refs/tags/${PV}.tar.gz
 
 LICENSE="Boost-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 IUSE="test"
 RESTRICT="
 	!test? ( test )
