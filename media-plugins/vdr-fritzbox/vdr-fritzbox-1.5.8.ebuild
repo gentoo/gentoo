@@ -20,7 +20,7 @@ S="${WORKDIR}/vdr-fritz-${PV}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 DEPEND="dev-libs/libgcrypt:=
 	dev-libs/boost:=
