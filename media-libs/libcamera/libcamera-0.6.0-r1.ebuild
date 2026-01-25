@@ -17,7 +17,7 @@ LICENSE="Apache-2.0 CC0-1.0 BSD BSD-2 CC-BY-4.0 CC-BY-SA-4.0 GPL-2+ GPL-2 LGPL-2
 # libcamera uses the major and minor version components as the soname.
 # See: https://gitlab.freedesktop.org/camera/libcamera/-/blob/v0.6.0/meson.build?ref_type=tags#L59
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE="drm elfutils gstreamer gui jpeg openssl sdl test tiff tools trace +udev unwind v4l"
 RESTRICT="
 	!test? ( test )
