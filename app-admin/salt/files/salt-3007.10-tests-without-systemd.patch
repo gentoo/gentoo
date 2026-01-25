@@ -1,0 +1,140 @@
+diff --git a/tests/integration/modules/test_localemod.py b/tests/integration/modules/test_localemod.py
+index 5a59e84e49..680bceb698 100644
+--- a/tests/integration/modules/test_localemod.py
++++ b/tests/integration/modules/test_localemod.py
+@@ -11,8 +11,11 @@ def _check_systemctl():
+         if not salt.utils.platform.is_linux():
+             _check_systemctl.memo = False
+         else:
+-            proc = subprocess.run(["localectl"], capture_output=True, check=False)
+-            _check_systemctl.memo = b"No such file or directory" in proc.stderr
++            try:
++                proc = subprocess.run(["localectl"], capture_output=True, check=False)
++                _check_systemctl.memo = b"No such file or directory" in proc.stderr
++            except FileNotFoundError:
++                _check_systemctl.memo = False
+     return _check_systemctl.memo
+ 
+ 
+diff --git a/tests/integration/modules/test_timezone.py b/tests/integration/modules/test_timezone.py
+index c9894c6108..e4c37e8716 100644
+--- a/tests/integration/modules/test_timezone.py
++++ b/tests/integration/modules/test_timezone.py
+@@ -24,8 +24,11 @@ def _check_systemctl():
+         if not salt.utils.platform.is_linux():
+             _check_systemctl.memo = False
+         else:
+-            proc = subprocess.run(["timedatectl"], capture_output=True, check=False)
+-            _check_systemctl.memo = b"No such file or directory" in proc.stderr
++            try:
++                proc = subprocess.run(["timedatectl"], capture_output=True, check=False)
++                _check_systemctl.memo = b"No such file or directory" in proc.stderr
++            except FileNotFoundError:
++                _check_systemctl.memo = False
+     return _check_systemctl.memo
+ 
+ 
+diff --git a/tests/pytests/functional/modules/test_service.py b/tests/pytests/functional/modules/test_service.py
+index 8384c9c5b2..3f66e0de63 100644
+--- a/tests/pytests/functional/modules/test_service.py
++++ b/tests/pytests/functional/modules/test_service.py
+@@ -20,11 +20,14 @@ def _check_systemctl():
+         if not salt.utils.platform.is_linux():
+             _check_systemctl.memo = False
+         else:
+-            proc = subprocess.run(["systemctl"], capture_output=True, check=False)
+-            _check_systemctl.memo = (
+-                b"Failed to get D-Bus connection: No such file or directory"
+-                in proc.stderr
+-            )
++            try:
++                proc = subprocess.run(["systemctl"], capture_output=True, check=False)
++                _check_systemctl.memo = (
++                    b"Failed to get D-Bus connection: No such file or directory"
++                    in proc.stderr
++                )
++            except FileNotFoundError:
++                _check_systemctl.memo = False
+     return _check_systemctl.memo
+ 
+ 
+diff --git a/tests/pytests/functional/modules/test_system.py b/tests/pytests/functional/modules/test_system.py
+index 8ffb048fd5..8c165d9dae 100644
+--- a/tests/pytests/functional/modules/test_system.py
++++ b/tests/pytests/functional/modules/test_system.py
+@@ -25,13 +25,16 @@ def check_hostnamectl():
+         if not salt.utils.platform.is_linux():
+             check_hostnamectl.memo = False
+         else:
+-            proc = subprocess.run(["hostnamectl"], capture_output=True, check=False)
+-            check_hostnamectl.memo = (
+-                b"Failed to connect to bus: No such file or directory" in proc.stderr
+-                or b"Failed to create bus connection: No such file or directory"
+-                in proc.stderr
+-                or b"Failed to query system properties" in proc.stderr
+-            )
++            try:
++                proc = subprocess.run(["hostnamectl"], capture_output=True, check=False)
++                check_hostnamectl.memo = (
++                    b"Failed to connect to bus: No such file or directory" in proc.stderr
++                    or b"Failed to create bus connection: No such file or directory"
++                    in proc.stderr
++                    or b"Failed to query system properties" in proc.stderr
++                )
++            except FileNotFoundError:
++                check_hostnamectl.memo = False
+     return check_hostnamectl.memo
+ 
+ 
+diff --git a/tests/pytests/functional/states/test_service.py b/tests/pytests/functional/states/test_service.py
+index 671d56893d..2fd4e37fcf 100644
+--- a/tests/pytests/functional/states/test_service.py
++++ b/tests/pytests/functional/states/test_service.py
+@@ -28,12 +28,15 @@ def _check_systemctl():
+         if not salt.utils.platform.is_linux():
+             _check_systemctl.memo = False
+         else:
+-            proc = subprocess.run(["systemctl"], capture_output=True, check=False)
+-            _check_systemctl.memo = (
+-                b"Failed to get D-Bus connection: No such file or directory"
+-                in proc.stderr
+-                or b"Failed to connect to bus: No such file or directory" in proc.stderr
+-            )
++            try:
++                proc = subprocess.run(["systemctl"], capture_output=True, check=False)
++                _check_systemctl.memo = (
++                    b"Failed to get D-Bus connection: No such file or directory"
++                    in proc.stderr
++                    or b"Failed to connect to bus: No such file or directory" in proc.stderr
++                )
++            except FileNotFoundError:
++                _check_systemctl.memo = False
+     return _check_systemctl.memo
+ 
+ 
+diff --git a/tests/pytests/unit/states/test_service.py b/tests/pytests/unit/states/test_service.py
+index 04cdd9b059..1d82de78e2 100644
+--- a/tests/pytests/unit/states/test_service.py
++++ b/tests/pytests/unit/states/test_service.py
+@@ -22,12 +22,15 @@ def _check_systemctl():
+         if not salt.utils.platform.is_linux():
+             _check_systemctl.memo = False
+         else:
+-            proc = subprocess.run(["systemctl"], capture_output=True, check=False)
+-            _check_systemctl.memo = (
+-                b"Failed to get D-Bus connection: No such file or directory"
+-                in proc.stderr
+-                or b"Failed to connect to bus: No such file or directory" in proc.stderr
+-            )
++            try:
++                proc = subprocess.run(["systemctl"], capture_output=True, check=False)
++                _check_systemctl.memo = (
++                    b"Failed to get D-Bus connection: No such file or directory"
++                    in proc.stderr
++                    or b"Failed to connect to bus: No such file or directory" in proc.stderr
++                )
++            except FileNotFoundError:
++                _check_systemctl.memo = False
+     return _check_systemctl.memo
+ 
+ 
