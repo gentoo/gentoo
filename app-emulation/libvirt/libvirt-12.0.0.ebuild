@@ -12,7 +12,8 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libvirt.org.asc
-inherit meson linux-info python-any-r1 readme.gentoo-r1 tmpfiles verify-sig
+inherit meson flag-o-matic linux-info python-any-r1 readme.gentoo-r1
+inherit tmpfiles verify-sig
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
@@ -258,6 +259,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Breaks with always_inline
+	filter-flags -fno-semantic-interposition
+
 	local emesonargs=(
 		$(meson_feature apparmor)
 		$(meson_feature apparmor apparmor_profiles)
