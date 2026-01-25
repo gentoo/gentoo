@@ -1,0 +1,13 @@
+# https://gitlab.gnome.org/GNOME/gimp/-/issues/15750
+
+--- a/meson.build
++++ b/meson.build
+@@ -725,7 +725,7 @@ libunwind = ( get_option('libunwind')
+   ? dependency('libunwind', version: '>=1.1.0', required: false)
+   : no_dep
+ )
+-have_unwind = libunwind.found() or cc.has_header('libunwind.h', required: false)
++have_unwind = libunwind.found()
+ conf.set('HAVE_LIBUNWIND', have_unwind ? 1 : false)
+ 
+ ## Check for backtrace() API
