@@ -1,0 +1,16 @@
+PR merged https://github.com/uim/uim/pull/274.patch
+In file included from uim-libnotify.c:33:
+../uim/config.h:719:10: fatal error: os_dep.h: No such file or directory
+  719 | #include "os_dep.h"
+        |          ^~~~~~~~~~
+--- a/notify/Makefile.am
++++ b/notify/Makefile.am
+@@ -8,7 +8,7 @@ if LIBNOTIFY
+ CFLAGS+= -Wno-error
+ uimnotify_plugin_LTLIBRARIES += libuimnotify-libnotify.la
+ libuimnotify_libnotify_la_SOURCES = uim-libnotify.c
+-libuimnotify_libnotify_la_CFLAGS = @LIBNOTIFY_CFLAGS@
++libuimnotify_libnotify_la_CFLAGS = @LIBNOTIFY_CFLAGS@ -I$(top_srcdir)/replace
+ libuimnotify_libnotify_la_LDFLAGS  = -avoid-version -module
+ libuimnotify_libnotify_la_LIBADD = @LIBNOTIFY_LIBS@ $(top_builddir)/replace/libreplace.la
+ endif

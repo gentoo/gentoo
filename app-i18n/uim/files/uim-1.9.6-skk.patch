@@ -1,0 +1,18 @@
+PR merged https://github.com/uim/uim/pull/274.patch
+Missing condition
+--- a/uim/Makefile.am
++++ b/uim/Makefile.am
+@@ -202,11 +202,13 @@ libuim_osx_dcs_la_OBJCFLAGS = -x objective-c
+ libuim_osx_dcs_la_LDFLAGS = -avoid-version -module -framework Cocoa
+ endif
+ 
++if SKK
+ uim_plugin_LTLIBRARIES += libuim-skk.la
+ libuim_skk_la_SOURCES = skk.c bsdlook.h
+ libuim_skk_la_LIBADD = libuim-scm.la libuim.la libuim-bsdlook.la @NETLIBS@
+ libuim_skk_la_LDFLAGS = -rpath $(uim_plugindir) -avoid-version -module
+ libuim_skk_la_CPPFLAGS = $(AM_CPPFLAGS)
++endif
+ 
+ uim_plugin_LTLIBRARIES += libuim-look.la
+ libuim_look_la_SOURCES = look.c bsdlook.h

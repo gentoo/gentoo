@@ -1,0 +1,12 @@
+see PR merged https://github.com/uim/uim/pull/275.patch
+pkg-config is used without being defined
+--- a/configure.ac
++++ b/configure.ac
+@@ -56,6 +56,7 @@ AC_PATH_PROGS(SED, sed gsed)
+ AX_PATH_QMAKE4
+ AX_PATH_QMAKE5
+ AX_PATH_QMAKE6
++PKG_PROG_PKG_CONFIG
+ 
+ AM_MAINTAINER_MODE
+ 
