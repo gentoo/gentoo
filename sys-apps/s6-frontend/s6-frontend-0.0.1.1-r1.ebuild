@@ -15,9 +15,9 @@ KEYWORDS="~amd64"
 
 RDEPEND="
 	dev-lang/execline:=
-	dev-libs/skalibs:=
+	>=dev-libs/skalibs-2.14.5.0:=
 	sys-apps/s6:=[execline]
-	sys-apps/s6-rc:=
+	>=sys-apps/s6-rc-0.6.0.0:=
 "
 DEPEND="
 	${RDEPEND}
