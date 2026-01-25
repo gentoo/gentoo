@@ -12,6 +12,8 @@ LICENSE="LGPL-2+"
 KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE=""
 
+RESTRICT="test" # bug 969244
+
 DEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[gui]
 	>=dev-qt/qtdeclarative-${QTMIN}:6
