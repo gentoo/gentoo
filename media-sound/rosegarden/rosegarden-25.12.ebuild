@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/project/rosegarden/${PN}/${PV}/${P}.t
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="lirc lv2 test"
 RESTRICT="!test? ( test )"
 
