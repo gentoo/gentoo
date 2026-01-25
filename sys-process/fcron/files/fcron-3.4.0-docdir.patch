@@ -1,0 +1,80 @@
+https://github.com/yo8192/fcron/pull/45
+
+Use standard autoconf's --docdir
+
+--- a/configure.in
++++ b/configure.in
+@@ -398,26 +398,6 @@ PROC=$proc
+ AC_DEFINE_UNQUOTED(PROC, "$proc")
+ fi
+ 
+-docdir="${datadir}/doc"
+-AC_MSG_CHECKING(location of doc directory)
+-AC_ARG_WITH(docdir,
+-[  --with-docdir=PATH	Directory containing documentation.],
+-[ case "$withval" in
+-  no)
+-    AC_MSG_ERROR(Need DOCDIR.)
+-    ;;
+-  yes)
+-    ;;
+-  *)
+-    docdir="$withval"
+-    ;;
+-  esac ])
+-
+-AC_MSG_RESULT($docdir)
+-DOCDIR="$docdir"
+-AC_SUBST(DOCDIR)
+-
+-
+ dnl systemd init system
+ SYSTEMD_DIR="no"
+ 
+--- a/doc/Makefile.in
++++ b/doc/Makefile.in
+@@ -16,7 +16,7 @@ SRCDIR		= @srcdir@
+ prefix		= @prefix@
+ datarootdir	= @datarootdir@
+ DESTMAN		= @mandir@
+-DESTDOC		= @DOCDIR@
++DESTDOC		= @docdir@
+ 
+ INSTALL		= @INSTALL@
+ JADE 		= @JADE@
+@@ -134,11 +134,11 @@ install-staged: doc-if-none clean
+ 		done ; \
+ 	done )
+ 
+-	@(echo "Installing documentation files in $(DESTDIR)$(DESTDOC)/fcron-$(VERSION)...")
+-	@(if test ! -d $(DESTDIR)$(DESTDOC)/fcron-$(VERSION); then $(INSTALL) -m 755 -d $(DESTDIR)$(DESTDOC)/fcron-$(VERSION) ; fi)
++	@(echo "Installing documentation files in $(DESTDIR)$(DESTDOC)...")
++	@(if test ! -d $(DESTDIR)$(DESTDOC); then $(INSTALL) -m 755 -d $(DESTDIR)$(DESTDOC) ; fi)
+ 
+ 	@(for l in $(LANGUAGES); do \
+-		DIR=$(DESTDIR)$(DESTDOC)/fcron-$(VERSION) ; \
++		DIR=$(DESTDIR)$(DESTDOC) ; \
+ 		if test ! -d $$DIR/$$l; then \
+ 	$(INSTALL) -m 755 -d $$DIR/$$l ; \
+ 		fi ; \
+@@ -173,10 +173,8 @@ perms:
+ 	done
+ 	chown $(ROOTNAME) $(DESTDIR)$(DESTDOC)
+ 	chgrp $(ROOTGROUP) $(DESTDIR)$(DESTDOC)
+-	chown $(ROOTNAME) $(DESTDIR)$(DESTDOC)/fcron-$(VERSION) 
+-	chgrp $(ROOTGROUP) $(DESTDIR)$(DESTDOC)/fcron-$(VERSION) 
+ 	for l in $(LANGUAGES); do \
+-		DIR=$(DESTDIR)$(DESTDOC)/fcron-$(VERSION)/$$l ; \
++		DIR=$(DESTDIR)$(DESTDOC)/$$l ; \
+ 		chown $(ROOTNAME) $$DIR ; \
+ 		chgrp $(ROOTGROUP) $$DIR ; \
+ 		for i in txt HTML; do \
+@@ -189,7 +187,7 @@ perms:
+ 
+ 
+ uninstall:
+-	rm -fR $(DESTDOC)/fcron-$(VERSION)
++	rm -fR $(DESTDOC)
+ 	@(echo "Removing man pages ...")
+ 	@(for l in $(LANGUAGES); do \
+ 		if test "x$$l" = "xen"; then \
