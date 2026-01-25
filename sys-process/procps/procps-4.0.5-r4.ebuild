@@ -29,8 +29,6 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 	!<app-i18n/man-pages-l10n-4.2.0-r1
-	!<app-i18n/man-pages-de-2.12-r1
-	!<app-i18n/man-pages-pl-0.7-r1
 	!<app-i18n/man-pages-zh_CN-1.6.4.2
 	kill? (
 		!sys-apps/coreutils[kill]
