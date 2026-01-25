@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -48,6 +48,10 @@ QA_MULTILIB_PATHS="usr/lib/go/pkg/tool/.*/.*"
 # https://bugs.gentoo.org/794046
 QA_PREBUILT="*"
 QA_PRESTRIPPED="*.syso"
+
+# The Go data race detector (go test -race) requires an unstripped Go toolchain.
+# https://bugs.gentoo.org/961618
+RESTRICT="strip"
 
 DOCS=(
 	CONTRIBUTING.md
