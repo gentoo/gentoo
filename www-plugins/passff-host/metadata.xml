@@ -9,6 +9,6 @@
 		<flag name="vivaldi">Install plugin for vivaldi</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">passff/passff-host</remote-id>
+		<remote-id type="codeberg">PassFF/passff-host</remote-id>
 	</upstream>
 </pkgmetadata>
