@@ -1,0 +1,21 @@
+Don't error for close_stream failure if the config line begins with "-"
+https://bugs.gentoo.org/969014
+https://gitlab.com/procps-ng/procps/-/issues/410
+
+--- procps-ng-4.0.5/src/sysctl.c
++++ procps-ng-4.0.5/src/sysctl.c
+@@ -623,9 +623,12 @@ static int WriteSetting(
+             if (0 < fprintf(fp, "%s\n", value))
+                 rc = EXIT_SUCCESS;
+             if (close_stream(fp) != 0) {
+-                xwarn(_("setting key \"%s\""), dotted_key);
++                xwarn(_("setting key \"%s\"%s"),
++                      dotted_key, (ignore_failure?_(", ignoring"):""));
+ 		free(dotted_key);
+-                return EXIT_FAILURE;
++                if (!ignore_failure)
++                    rc = EXIT_FAILURE;
++                return rc;
+             }
+         }
+     }
