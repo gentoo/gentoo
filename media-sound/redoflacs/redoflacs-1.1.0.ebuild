@@ -31,5 +31,5 @@ src_install() {
 pkg_postinst() {
 	elog "Run 'redoflacs -o' to generate a new config-file (non-destructive) to take advantage of any new features."
 	optfeature "creating spectrograms" media-sound/sox[png]
-	optfeature "determining authenticity of FLAC files (CDDA)" media-sound/aucdtec
+	optfeature "determining authenticity of FLAC files (CDDA)" media-sound/aucdtect
 }
