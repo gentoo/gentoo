@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ LICENSE="CC-BY-SA-4.0"
 
 SLOT="$(ver_cut 1)"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 # Migrate to virtual/imagemagick-tools when it supports jpegxl:
 # https://bugs.gentoo.org/953960
