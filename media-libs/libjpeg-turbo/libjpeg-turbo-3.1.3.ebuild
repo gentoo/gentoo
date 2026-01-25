@@ -1,15 +1,17 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake-multilib java-pkg-opt-2
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libjpeg-turbo.asc
+inherit cmake-multilib java-pkg-opt-2 verify-sig
 
 DESCRIPTION="MMX, SSE, and SSE2 SIMD accelerated JPEG library"
 HOMEPAGE="https://libjpeg-turbo.org/ https://github.com/libjpeg-turbo/libjpeg-turbo"
 SRC_URI="
 	https://github.com/libjpeg-turbo/libjpeg-turbo/releases/download/${PV}/${P}.tar.gz
 	mirror://gentoo/libjpeg8_8d-2.debian.tar.gz
+	verify-sig? ( https://github.com/libjpeg-turbo/libjpeg-turbo/releases/download/${PV}/${P}.tar.gz.sig )
 "
 
 LICENSE="BSD IJG ZLIB java? ( GPL-2-with-classpath-exception )"
@@ -37,9 +39,18 @@ BDEPEND="
 	amd64? ( ${ASM_DEPEND} )
 	x86? ( ${ASM_DEPEND} )
 	x64-macos? ( ${ASM_DEPEND} )
+	verify-sig? ( sec-keys/openpgp-keys-libjpeg-turbo )
 "
 
 MULTILIB_WRAPPED_HEADERS=( /usr/include/jconfig.h )
+
+src_unpack() {
+	if use verify-sig; then
+		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.gz{,.sig}
+	fi
+
+	default
+}
 
 src_prepare() {
 	local FILE
