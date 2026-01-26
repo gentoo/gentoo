@@ -11,7 +11,7 @@ SRC_URI="https://github.com/mothur/mothur/archive/refs/tags/v${PV}.tar.gz -> ${P
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="boost gsl hdf5 mpi +readline"
 
 RDEPEND="
