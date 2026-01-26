@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cvs.eclass
@@ -14,7 +14,7 @@
 # directly, I'd be interested to hear about it.
 
 case ${EAPI} in
-	7|8) ;;
+	7|8) inherit eapi9-pipestatus ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -489,7 +489,7 @@ cvs_src_unpack() {
 			LC_ALL=C sort | \
 			sha1sum | \
 			awk '{print $1}'
-		assert
+		pipestatus || die
 	)
 
 	# If the directory is empty, remove it; empty directories cannot
