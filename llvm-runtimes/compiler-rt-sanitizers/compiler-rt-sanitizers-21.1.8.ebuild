@@ -37,13 +37,15 @@ RESTRICT="
 DEPEND="
 	llvm-core/llvm:${LLVM_MAJOR}
 	virtual/libcrypt[abi_x86_32(-)?,abi_x86_64(-)?]
+	clang? (
+		llvm-core/clang-linker-config:${LLVM_MAJOR}
+		llvm-runtimes/clang-rtlib-config:${LLVM_MAJOR}
+		llvm-runtimes/clang-stdlib-config:${LLVM_MAJOR}
+	)
 "
 BDEPEND="
 	clang? (
 		llvm-core/clang:${LLVM_MAJOR}
-		llvm-core/clang-linker-config:${LLVM_MAJOR}
-		llvm-runtimes/clang-rtlib-config:${LLVM_MAJOR}
-		llvm-runtimes/clang-stdlib-config:${LLVM_MAJOR}
 		llvm-runtimes/compiler-rt:${LLVM_MAJOR}
 	)
 	elibc_glibc? ( net-libs/libtirpc )
@@ -109,7 +111,9 @@ src_prepare() {
 }
 
 src_configure() {
-	llvm_prepend_path "${LLVM_MAJOR}"
+	if use clang || use test; then
+		llvm_prepend_path -b "${LLVM_MAJOR}"
+	fi
 
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
 	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"
@@ -158,6 +162,8 @@ src_configure() {
 		-DCOMPILER_RT_BUILD_PROFILE=$(usex profile)
 		-DCOMPILER_RT_BUILD_SANITIZERS="${want_sanitizer}"
 		-DCOMPILER_RT_BUILD_XRAY=$(usex xray)
+
+		-DLLVM_ROOT="${ESYSROOT}/usr/lib/llvm/${LLVM_MAJOR}"
 
 		-DPython3_EXECUTABLE="${PYTHON}"
 	)
