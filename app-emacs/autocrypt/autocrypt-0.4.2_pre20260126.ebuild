@@ -6,7 +6,7 @@ EAPI=9
 inherit elisp
 
 MY_PN="${PN}.el"
-COMMIT="08c1e2c9c2cfa00b16a05968cb553f19ec680330"
+COMMIT="e65fc01502e2c02914752c5b58c100d47db40b30"
 DESCRIPTION="Generic autocrypt implementation for Emacs"
 HOMEPAGE="https://codeberg.org/pkal/autocrypt.el"
 SRC_URI="https://codeberg.org/pkal/${MY_PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
