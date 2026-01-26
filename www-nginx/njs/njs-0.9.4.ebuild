@@ -36,10 +36,13 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	# Note: drop on the next upgrade, has been merged upstream as PR 989.
+	# Note: drop on the next upgrade: the patches have been merged upstream as
+	# PR 989 and 993 respectively.
 	"${FILESDIR}/${PN}-0.9.4-support-quickjs-ng.patch"
-
 	"${FILESDIR}/${PN}-0.9.4-do-not-add-opt-debug-cflags.patch"
+
+	# Bug 969288, upstream PR 1016.
+	"${FILESDIR}/${PN}-0.9.4-use-command-v-not-which.patch"
 )
 
 src_configure() {
