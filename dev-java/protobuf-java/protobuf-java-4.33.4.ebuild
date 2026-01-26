@@ -1,11 +1,10 @@
-# Copyright 2008-2025 Gentoo Authors
+# Copyright 2008-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 JAVA_PKG_IUSE="doc source test"
 JAVA_TESTING_FRAMEWORKS="junit-4"
-MAVEN_ID="com.google.protobuf:protobuf-java:${PV}"
 
 inherit cmake java-pkg-2 java-pkg-simple
 
@@ -19,7 +18,7 @@ S="${WORKDIR}/protobuf-${MY_PV}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 IUSE="system-protoc"
 
 BDEPEND="
@@ -27,14 +26,15 @@ BDEPEND="
 	!system-protoc? ( >=dev-cpp/abseil-cpp-20250512.1:= )
 "
 
+# restrict virtual/jdk because asm-jdk-bridge-0.0.13 is not ready for java 27.
 DEPEND="
-	>=virtual/jdk-1.8:*
+	<virtual/jdk-27
 	test? (
 		>=dev-java/guava-33.5.0:0
-		dev-java/mockito:4
+		>=dev-java/mockito-4.11.0:4
 		>=dev-java/snakeyaml-2.5:0
 		>=dev-java/testparameterinjector-1.19:0
-		dev-java/truth:0
+		>=dev-java/truth-1.4.5:0
 	)
 "
 
