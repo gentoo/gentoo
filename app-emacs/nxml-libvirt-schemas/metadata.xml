@@ -9,4 +9,5 @@
   <email>virtualization@gentoo.org</email>
   <name>Gentoo Virtualization Project</name>
 </maintainer>
+<stabilize-allarches/>
 </pkgmetadata>
