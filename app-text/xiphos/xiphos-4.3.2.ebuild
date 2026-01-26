@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -41,15 +41,17 @@ BDEPEND="
 "
 
 PATCHES=(
-	# both merged. to be removed at next version
+	# all merged. to be removed at next version
 	"${FILESDIR}"/${PN}-4.3.2-include_dbus.patch
 	"${FILESDIR}"/${PN}-4.3.2-fix_odr.patch
+	"${FILESDIR}"/${P}-fix_minizip-ng.patch #969182
 )
 
 src_prepare() {
 	cmake_src_prepare
 
 	# bug 964692, don't build translations for help-pages for now
+	# see https://github.com/crosswire/xiphos/issues/1253
 	echo "" > help/HELP_LINGUAS || die
 }
 
