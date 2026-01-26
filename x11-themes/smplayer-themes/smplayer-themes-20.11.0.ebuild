@@ -21,7 +21,7 @@ src_prepare() {
 	default
 
 	# bug 544108
-	sed -i -e "s|rcc -binary|$(qt6_get_bindir)/../libexec/&|" themes/Makefile || die
+	sed -i -e "s|rcc -binary|$(qt6_get_libexecdir)/&|" themes/Makefile || die
 
 	# bug 544160
 	sed -i -e 's/make/$(MAKE)/' Makefile || die

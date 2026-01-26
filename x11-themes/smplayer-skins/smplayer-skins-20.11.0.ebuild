@@ -20,7 +20,7 @@ src_prepare() {
 	default
 
 	sed -i -e 's/make/$(MAKE)/' Makefile || die
-	sed -i -e "s|rcc -binary|$(qt6_get_bindir)/../libexec/&|" themes/Makefile || die
+	sed -i -e "s|rcc -binary|$(qt6_get_libexecdir)/&|" themes/Makefile || die
 }
 
 src_install() {

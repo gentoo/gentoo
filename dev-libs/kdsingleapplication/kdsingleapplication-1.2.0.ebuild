@@ -1,4 +1,4 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,7 +36,7 @@ src_configure() {
 		-DKDSingleApplication_TESTS=$(usex test)
 	)
 	use doc && mycmakeargs+=(
-		-DQHELPGEN_EXECUTABLE="$(qt6_get_bindir)/../libexec/qhelpgenerator"
+		-DQHELPGEN_EXECUTABLE="$(qt6_get_libexecdir)/qhelpgenerator"
 	)
 	cmake_src_configure
 }
