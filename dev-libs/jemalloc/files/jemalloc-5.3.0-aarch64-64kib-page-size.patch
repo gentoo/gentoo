@@ -1,0 +1,38 @@
+https://github.com/facebook/jemalloc/commit/7dcdafea00a3a02cfbc84a798a0cc626515011eb
+From: lexprfuncall <5360361+lexprfuncall@users.noreply.github.com>
+Date: Mon, 25 Aug 2025 19:39:30 -0700
+Subject: [PATCH] Change the default page size to 64KiB on Aarch64 Linux
+
+This updates the configuration script to set the default page size to
+64KiB on Aarch64 Linux.  This is motivated by compatibility as a build
+configured for a 64KiB page will work on kernels that use the smaller
+4KiB or 16KiB pages, whereas the reverse is not true.
+
+To make the configured page size setting more visible, the script now
+displays the page size when printing the configuration results.
+
+Users that want to override the page size in to choose a smaller value
+can still do so with the --with-lg-pagesize configuration option.
+--- a/configure.ac
++++ b/configure.ac
+@@ -1990,6 +1990,11 @@ case "${host}" in
+         LG_PAGE=14
+       fi
+       ;;
++  aarch64-unknown-linux-*)
++      if test "x$LG_PAGE" = "xdetect"; then
++        LG_PAGE=16
++      fi
++      ;;
+ esac
+ if test "x$LG_PAGE" = "xdetect"; then
+   AC_CACHE_CHECK([LG_PAGE],
+@@ -3077,6 +3082,8 @@ AC_MSG_RESULT([INCLUDEDIR         : ${INCLUDEDIR}])
+ AC_MSG_RESULT([LIBDIR             : ${LIBDIR}])
+ AC_MSG_RESULT([MANDIR             : ${MANDIR}])
+ AC_MSG_RESULT([])
++AC_MSG_RESULT([LG_PAGE            : ${LG_PAGE}])
++AC_MSG_RESULT([])
+ AC_MSG_RESULT([srcroot            : ${srcroot}])
+ AC_MSG_RESULT([abs_srcroot        : ${abs_srcroot}])
+ AC_MSG_RESULT([objroot            : ${objroot}])
