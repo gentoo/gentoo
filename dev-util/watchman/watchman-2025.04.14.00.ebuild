@@ -1,4 +1,4 @@
-# Copyright 2020-2025 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -276,7 +276,7 @@ RDEPEND="
 # TODO: Make gtest test-only (needs a fair bit of patching)
 DEPEND="
 	${RDEPEND}
-	test? ( dev-cpp/gtest )
+	dev-cpp/gtest
 "
 
 PATCHES=(
