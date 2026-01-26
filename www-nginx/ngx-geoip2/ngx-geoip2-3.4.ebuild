@@ -1,10 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 MY_PN="ngx_http_geoip2_module"
-NGINX_MOD_S="${WORKDIR}/${MY_PN}-${PV}"
 
 inherit nginx-module
 
@@ -13,6 +12,8 @@ HOMEPAGE="https://github.com/leev/ngx_http_geoip2_module"
 SRC_URI="
 	https://github.com/leev/ngx_http_geoip2_module/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 "
+
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="BSD-2"
 SLOT="0"
