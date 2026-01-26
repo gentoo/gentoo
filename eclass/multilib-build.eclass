@@ -1,4 +1,4 @@
-# Copyright 2013-2024 Gentoo Authors
+# Copyright 2013-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: multilib-build.eclass
@@ -234,9 +234,11 @@ multilib_foreach_abi() {
 # is done.
 #
 # This function used to run multiple commands in parallel. Now it's just
-# a deprecated alias to multilib_foreach_abi.
+# a deprecated alias to multilib_foreach_abi. It is removed in EAPI 9.
 multilib_parallel_foreach_abi() {
 	debug-print-function ${FUNCNAME} "$@"
+
+	[[ ${EAPI} != [78] ]] && die "${FUNCNAME} is banned since EAPI 9"
 
 	local MULTIBUILD_VARIANTS=( $(multilib_get_enabled_abi_pairs) )
 	multibuild_foreach_variant _multilib_multibuild_wrapper "${@}"
