@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -49,6 +49,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-config.h-path.patch
+	"${FILESDIR}"/${P}-boost-1.89.patch # bug #969243, in 0.5.1.2
 )
 
 freeorion_check-reqs() {
