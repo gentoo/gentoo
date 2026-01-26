@@ -344,11 +344,10 @@ verify-sig_verify_unsigned_checksums() {
 				[[ -n ${junk} ]] && continue
 				;;
 			openssl-dgst)
-				[[ ${line} != *"("*")="* ]] && continue
-				checksum=${line##*)=}
-				algo=${line%%(*}
-				filename=${line#*(}
-				filename=${filename%)=*}
+				[[ ${line} =~ ^([[:alnum:]]+)[[:space:]]*[(](.*)[)][[:space:]]*=[[:space:]]*([0-9a-fA-F]+)$ ]] || continue
+				algo=${BASH_REMATCH[1]}
+				filename=${BASH_REMATCH[2]}
+				checksum=${BASH_REMATCH[3]}
 				;;
 		esac
 
