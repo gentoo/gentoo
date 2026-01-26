@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake flag-o-matic prefix
+inherit cmake flag-o-matic prefix toolchain-funcs
 
 DESCRIPTION="Software synthesizer capable of making a countless number of instruments"
 HOMEPAGE="https://zynaddsubfx.sourceforge.net/"
@@ -104,7 +104,9 @@ src_configure() {
 src_compile() {
 	cmake_src_compile
 	use doc && cmake_src_compile doc
-	emake -C ../zyn-fusion-ui-src-${PV}
+	emake \
+		LD="$(tc-getCC)" \
+		-C ../zyn-fusion-ui-src-${PV}
 }
 
 src_install() {
