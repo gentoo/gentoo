@@ -1,18 +1,19 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-GIT_TAG="5b92dd0a45c8d27f13a21076b57095ea5e220870"
+# commit as of $PV from stable-202601 branch
+GIT_TAG="2a288c048e2a23ea9cd8cbef9a60aa4ac82bdc3d"
 
 DESCRIPTION="Library of common routines intended to be shared"
 HOMEPAGE="https://www.gnu.org/software/gnulib"
-SRC_URI="https://git.savannah.gnu.org/cgit/${PN}.git/snapshot/${PN}-${GIT_TAG}.tar.xz"
-S="${WORKDIR}/${PN}-${GIT_TAG}"
+SRC_URI="https://codeberg.org/gnulib/gnulib/archive/${GIT_TAG}.tar.gz -> ${PN}-${GIT_TAG}.tar.gz"
+S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-3+ LGPL-2.1+ FDL-1.3+"
 SLOT="0"
-KEYWORDS="~arm64-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~amd64 ~arm64-macos ~x64-macos ~x64-solaris"
 IUSE="doc"
 
 src_compile() {
@@ -35,8 +36,12 @@ src_install() {
 
 	# install the real script
 	exeinto /usr/share/${PN}
-	doexe gnulib-tool
+	doexe gnulib-tool.sh
+
+	# we cannot use the .py impl because it python-exec badly interacts,
+	# so we drop it, and force the .sh version; it's not that it matters
+	# a whole lot, since this is supposed to be run occasionally
 
 	# create and install the wrapper
-	dosym ../share/${PN}/gnulib-tool /usr/bin/gnulib-tool
+	dosym ../share/${PN}/gnulib-tool.sh /usr/bin/gnulib-tool
 }
