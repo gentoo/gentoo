@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: desktop.eclass
@@ -314,7 +314,7 @@ make_desktop_entry() {
 
 	if [[ ${eapi9} && -n ${entries} ]]; then
 		local entry
-		for entry in ${entries[@]}; do
+		for entry in "${entries[@]}"; do
 			if [[ ${entry} =~ ^[A-Za-z0-9-]+=.* ]]; then
 				printf "%s\n" "${entry}" >> "${desktop}" || die
 			else
