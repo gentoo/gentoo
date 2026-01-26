@@ -141,6 +141,13 @@ qt6_get_libdir() {
 	echo /usr/$(get_libdir)
 }
 
+# @FUNCTION: qt6_get_libexecdir
+# @DESCRIPTION:
+# Echoes the directory where Qt6 libexec bins are installed.
+qt6_get_libexecdir() {
+	echo $(qt6_get_libdir)/qt6/libexec
+}
+
 # @FUNCTION: qt6_get_mkspecsdir
 # @DESCRIPTION:
 # Echoes the directory where Qt6 mkspecs are installed.
