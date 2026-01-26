@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -41,11 +41,11 @@ BDEPEND="
 	dev-util/patchelf
 "
 RDEPEND="
-	>=virtual/jre-17:*
 	dev-lang/go
 	dev-libs/wayland
 	sys-libs/pam
 	sys-process/audit
+	>=virtual/jre-17:*
 "
 
 src_prepare() {
