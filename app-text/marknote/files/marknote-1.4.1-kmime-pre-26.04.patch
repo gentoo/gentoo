@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/969201
+
+API change in kmime
+https://invent.kde.org/pim/kmime/-/commit/85384cfe2ff1881ed0e4cef578fb80522c0e0250
+
+Fixes
+https://invent.kde.org/office/marknote/-/commit/144241bef2a57c0edd4c614cfd52039abad5e7cb
+
+Previous upstream fix that didn't work
+https://invent.kde.org/office/marknote/-/commit/a9717cde83b59511f15bb6ca277a2447a6d89e16
+
+diff --git a/src/maildirimport.cpp b/src/maildirimport.cpp
+index aa60fee..e45c07f 100644
+--- a/src/maildirimport.cpp
++++ b/src/maildirimport.cpp
+@@ -85,10 +85,11 @@ void MaildirImport::import(const QUrl &maildir, const QUrl &destinationDir)
+ 
+ #if KMIME_VERSION >= QT_VERSION_CHECK(6, 6, 44)
+                 const auto subject = msg->subject(KMime::CreatePolicy::Create)->asUnicodeString();
++                const auto content = msg->decodedBody();
+ #else
+                 const auto subject = msg->subject(true)->asUnicodeString();
++                const auto content = msg->decodedContent();
+ #endif
+-                const auto content = msg->decodedBody();
+ 
+                 QFile markdownFile(destinationDir.toLocalFile() + u'/' + cleanFileName(subject) + u".md"_s);
+                 if (!markdownFile.open(QIODevice::WriteOnly)) {
+
