@@ -27,7 +27,7 @@ if [[ -z ${_PYTHON_UTILS_R1_ECLASS} ]]; then
 _PYTHON_UTILS_R1_ECLASS=1
 
 case ${EAPI} in
-	7|8) ;;
+	7|8) inherit eapi9-pipestatus ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -1231,12 +1231,12 @@ _python_check_occluded_packages() {
 				comm -1 -3 <(
 					find "${fn}" -type f -not -path '*/__pycache__/*' |
 						sort
-					assert
+					pipestatus || die
 				) <(
 					cd "${sitedir}" &&
 						find "${fn}" -type f -not -path '*/__pycache__/*' |
 						sort
-					assert
+					pipestatus || die
 				)
 			)
 
