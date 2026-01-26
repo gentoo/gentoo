@@ -1,0 +1,28 @@
+PEP517 wont correctly handle this
+diff --git a/setup.py b/setup.py
+index dc29840..697058c 100644
+--- a/setup.py
++++ b/setup.py
+@@ -26,20 +26,4 @@ if '--user' in sys.argv:
+     else:
+         share = Path.home() / '.local' / 'share'
+ 
+-setup(
+-    data_files=[
+-        (str(share / 'man' / 'man1'), [
+-            'share/man/man1/pass-import.1',
+-            'share/man/man1/pimport.1',
+-        ]),
+-        (str(share / 'bash-completion' / 'completions'), [
+-            'share/bash-completion/completions/pass-import',
+-            'share/bash-completion/completions/pimport',
+-        ]),
+-        (str(share / 'zsh' / 'site-functions'), [
+-            'share/zsh/site-functions/_pass-import',
+-            'share/zsh/site-functions/_pimport',
+-        ]),
+-        (str(lib), ["import.bash"]),
+-    ],
+-)
++setup()
+
