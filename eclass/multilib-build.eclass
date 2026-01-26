@@ -6,7 +6,7 @@
 # Michał Górny <mgorny@gentoo.org>
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: flags and utility functions for building multilib packages
 # @DESCRIPTION:
 # The multilib-build.eclass exports USE flags and utility functions
@@ -21,7 +21,7 @@ if [[ -z ${_MULTILIB_BUILD_ECLASS} ]]; then
 _MULTILIB_BUILD_ECLASS=1
 
 case ${EAPI} in
-	7|8) ;;
+	7|8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
