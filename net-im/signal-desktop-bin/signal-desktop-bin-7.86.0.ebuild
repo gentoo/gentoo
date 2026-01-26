@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,7 +27,7 @@ RDEPEND="
 	>=media-fonts/noto-emoji-20231130
 	media-libs/alsa-lib
 	media-libs/libpulse
-	media-libs/mesa[X(+)]
+	media-libs/mesa[opengl]
 	net-print/cups
 	sys-apps/dbus
 	virtual/udev
