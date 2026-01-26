@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -58,7 +58,7 @@ PATCHES=(
 src_prepare() {
 	default
 
-	sed -e "/QHG_LOCATION/s|qhelpgenerator|$(qt6_get_libdir)/qt6/libexec/&|" \
+	sed -e "/QHG_LOCATION/s|qhelpgenerator|$(qt6_get_libexecdir)/&|" \
 		-i {lib/plugins/,lib/SignOn/,}doc/doxy.conf || die
 
 	# install docs to correct location

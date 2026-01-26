@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -62,7 +62,7 @@ src_configure() {
 		$(usex pdf "CONFIG+=pdf PKGCONFIG+=poppler-qt6" "") \
 		engauge.pro
 	pushd help >/dev/null || die
-	$(qt6_get_libdir)/qt6/libexec/qhelpgenerator engauge.qhp || die
+	$(qt6_get_libexecdir)/qhelpgenerator engauge.qhp || die
 	popd >/dev/null || die
 }
 
