@@ -21,7 +21,7 @@ RESTRICT="test" # unlike upstream, tests hang for unknown reason.
 CP_DEPEND="
 	>=dev-java/bcprov-1.83:0
 	>=dev-java/commons-cli-1.10.0:0
-	dev-java/swt:0[cairo]
+	dev-java/swt:4.27[cairo]
 "
 
 # Due to removal of AENameServiceDescriptor it would fail to start under jdk:1.8
@@ -118,7 +118,7 @@ src_compile() {
 	# build core classes, needed for compiling uis
 	find core/src -type f -name '*.java' > sources.lst
 	ejavac -d target/classes @sources.lst \
-		-cp "$(java-pkg_getjars bcprov,commons-cli,swt)"
+		-cp "$(java-pkg_getjars bcprov,commons-cli,swt-4.27)"
 
 	java-pkg-simple_src_compile
 
