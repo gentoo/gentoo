@@ -168,9 +168,12 @@ multilib_get_enabled_abi_pairs() {
 			# paludis is broken (bug #486592), and switching it locally
 			# for the split is more complex than cheating like this
 			for m_abi in ${m_abis//,/ }; do
-				if [[ ${m_abi} == ${abi} ]] \
-					&& { [[ ! "${MULTILIB_COMPAT[@]}" ]] || has "${m_flag}" "${MULTILIB_COMPAT[@]}"; } \
-					&& use "${m_flag}"
+				if [[ ${m_abi} == ${abi} ]] &&
+					{
+						[[ ! "${MULTILIB_COMPAT[@]}" ]] ||
+						has "${m_flag}" "${MULTILIB_COMPAT[@]}"
+					} &&
+					use "${m_flag}"
 				then
 					echo "${m_flag}.${abi}"
 					found=1
