@@ -208,7 +208,7 @@ wine_src_configure() {
 	# wcc_* variables are used by _wine_flags(), see that
 	# function if need to adjust *FLAGS only for cross
 	local wcc_{amd64,x86,arm64}{,_testflags}
-	# TODO?: llvm-mingw support if ever packaged and wanted
+	# TODO?: llvm-mingw support if useful
 	if use mingw; then
 		conf+=( --with-mingw )
 
