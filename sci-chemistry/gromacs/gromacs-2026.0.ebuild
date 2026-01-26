@@ -47,8 +47,10 @@ CDEPEND="
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-11:=[profiler] )
 	opencl? ( virtual/opencl )
 	openmp? (
-		sys-devel/gcc[openmp]
-		llvm-runtimes/clang-runtime[openmp]
+		|| (
+			sys-devel/gcc[openmp]
+			llvm-runtimes/clang-runtime[openmp]
+		)
 	)
 	fftw? ( sci-libs/fftw:3.0= )
 	hdf5? ( sci-libs/hdf5 )
