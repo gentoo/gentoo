@@ -529,8 +529,7 @@ cargo_src_unpack() {
 		ebegin "Unpacking crates"
 		printf '%s\0' "${crates[@]}" |
 			xargs -0 -P "$(makeopts_jobs)" -n 1 -t -- \
-				tar -x -C "${ECARGO_VENDOR}" -f
-		assert
+				tar -x -C "${ECARGO_VENDOR}" -f || die
 		eend $?
 
 		while read -d '' -r shasum archive; do
@@ -556,6 +555,7 @@ cargo_src_unpack() {
 			eqawarn "a crate tarball instead and fetch it via SRC_URI.  You can use"
 			eqawarn "'pycargoebuild --crate-tarball' to create one."
 		fi
+		einfo "this package uses ${#crates[@]} number of crates: you are all good"
 	fi
 
 	cargo_gen_config
