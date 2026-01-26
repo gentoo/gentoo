@@ -1,15 +1,16 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit elisp
 
 DESCRIPTION="Extension for nxml-mode with SVG 1.1 schemas"
-HOMEPAGE="http://www.w3.org/TR/SVG11/"
+HOMEPAGE="https://www.w3.org/TR/SVG11/"
 # original SRC_URI is http://www.w3.org/Graphics/SVG/1.1/rng/rng.zip
 # but since it's unversioned, I versioned it and got it locally.
-SRC_URI="http://www.flameeyes.eu/gentoo-distfiles/w3c-svg-rng-${PV}.zip"
+SRC_URI="https://www.flameeyes.com/gentoo-distfiles/w3c-svg-rng-${PV}.zip"
+S="${WORKDIR}"
 
 LICENSE="HPND"
 # In a future we might have 1.2 schemas too, but for now we can only
@@ -23,7 +24,6 @@ KEYWORDS="amd64"
 BDEPEND="app-arch/unzip
 	app-text/trang"
 
-S="${WORKDIR}"
 SITEFILE="60${PN}-gentoo.el"
 
 src_prepare() {
