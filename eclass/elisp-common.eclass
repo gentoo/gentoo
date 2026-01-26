@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: elisp-common.eclass
@@ -25,21 +25,21 @@
 # When relying on the emacs USE flag, you need to add
 #
 # @CODE
-# emacs? ( >=app-editors/emacs-25.3:* )
+# emacs? ( >=app-editors/emacs-26.3:* )
 # @CODE
 #
 # to your DEPEND/RDEPEND line and use the functions provided here to
 # bring the files to the correct locations.
 #
-# If your package requires a minimum Emacs version, e.g. Emacs 26.1,
-# then the dependency should be on >=app-editors/emacs-26.1:* instead.
+# If your package requires a minimum Emacs version, e.g. Emacs 30.1,
+# then the dependency should be on >=app-editors/emacs-30.1:* instead.
 # Because the user can select the Emacs executable with eselect, you
 # should also make sure that the active Emacs version is sufficient.
 # The eclass will automatically ensure this if you assign variable
 # NEED_EMACS with the Emacs version, as in the following example:
 #
 # @CODE
-# NEED_EMACS=26.1
+# NEED_EMACS=30.1
 # @CODE
 #
 # Please note that this should be done only for packages that are known
@@ -206,7 +206,7 @@ EMACS=${EPREFIX}/usr/bin/emacs
 # @ECLASS_VARIABLE: EMACSFLAGS
 # @DESCRIPTION:
 # Flags for executing Emacs in batch mode.
-# These work for Emacs versions 18-24, so don't change them.
+# These work for Emacs versions 18 to 30, so don't change them.
 EMACSFLAGS="-batch -q --no-site-file"
 
 # @ECLASS_VARIABLE: BYTECOMPFLAGS
@@ -217,7 +217,7 @@ BYTECOMPFLAGS="-L ."
 # @ECLASS_VARIABLE: NEED_EMACS
 # @DESCRIPTION:
 # The minimum Emacs version required for the package.
-: "${NEED_EMACS:=25.3}"
+: "${NEED_EMACS:=26.3}"
 
 # @ECLASS_VARIABLE: _ELISP_EMACS_VERSION
 # @INTERNAL
@@ -234,7 +234,7 @@ elisp-emacs-version() {
 	local version ret tmout="timeout -k 5 55"
 	# Run without timeout if the command is not available
 	${tmout} true &>/dev/null || tmout=""
-	# The following will work for at least versions 18-24.
+	# The following will work for at least versions 18 to 30.
 	echo "(princ emacs-version)" >"${T}"/emacs-version.el
 	version=$(
 		# EMACS could be a microemacs variant that ignores the -batch
