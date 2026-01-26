@@ -5,9 +5,5 @@
 		<email>mgorny@gentoo.org</email>
 		<name>Michał Górny</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>infra-bugs@gentoo.org</email>
-		<name>Gentoo Infrastructure Team</name>
-	</maintainer>
 	<stabilize-allarches/>
 </pkgmetadata>
