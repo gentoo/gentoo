@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<longdescription>
+  Autocrypt is cryptography protocol, for distributing and automatically
+  encrypting emails. This package generically implements the protocol,
+  for various Emacs MUAs (Mail User Agent).
+</longdescription>
+<stabilize-allarches />
+<upstream>
+  <remote-id type="codeberg">pkal/autocrypt.el</remote-id>
+</upstream>
+</pkgmetadata>
