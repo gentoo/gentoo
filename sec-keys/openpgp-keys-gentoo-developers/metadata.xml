@@ -5,9 +5,5 @@
 		<email>sam@gentoo.org</email>
 		<name>Sam James</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>infra-bugs@gentoo.org</email>
-		<name>Gentoo Infrastructure Team</name>
-	</maintainer>
 	<stabilize-allarches/>
 </pkgmetadata>
