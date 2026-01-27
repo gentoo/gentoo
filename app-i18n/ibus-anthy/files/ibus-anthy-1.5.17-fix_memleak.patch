@@ -1,0 +1,158 @@
+see https://bugs.gentoo.org/953874
+From 646ea5d63852477bd902a971952cac777019da09 Mon Sep 17 00:00:00 2001
+From: fujiwarat <takao.fujiwara1@gmail.com>
+Date: Tue, 16 Dec 2025 17:41:21 +0900
+Subject: [PATCH] engine: Fix double IBus.init()
+
+Calling IBus.init() twice causes a big memory leaks in OpenIndiana
+2025.10 which uses IBus 1.5.29.
+I have no idea to check the parent Python stack and use inspect module
+to fix the double IBus.init().
+Also move ibus_check_version() from engin.py to main.py
+
+BUG=https://github.com/ibus/ibus-anthy/issues/44
+Fixes: https://github.com/ibus/ibus-anthy/commit/14b2759
+--- a/engine/python2/engine.py
++++ b/engine/python2/engine.py
+@@ -28,7 +28,7 @@
+ import sys
+ from gettext import dgettext
+ 
+-from main import get_userhome
++from main import get_userhome, ibus_check_version
+ 
+ try:
+     from locale import getpreferredencoding
+@@ -163,7 +163,7 @@ def __init__(self, bus, object_path):
+             self.__is_utf8 = False
+         self.__has_update_preedit_text_with_mode = True
+         try:
+-            self.__ibus_check_version('1.3')
++            ibus_check_version('1.3')
+         except ValueError as e:
+             printerr('Disable update_preedit_text_with_mode(): %s' % str(e))
+             self.__has_update_preedit_text_with_mode = False
+@@ -195,14 +195,6 @@ def __init__(self, bus, object_path):
+         self.__reset()
+ 
+ 
+-    def __ibus_check_version(self, v):
+-        major = IBus.MAJOR_VERSION
+-        minor = IBus.MINOR_VERSION
+-        micro = IBus.MICRO_VERSION
+-        if (major, minor, micro) < tuple(map(int, (v.split('.')))):
+-            raise ValueError('Required ibus %s but version of ibus is ' \
+-                             '%d.%d.%d' % (v, major, minor, micro))
+-
+     # http://en.sourceforge.jp/ticket/browse.php?group_id=14&tid=33075
+     def __verify_anthy_journal_file(self):
+         journal = ANTHY_CONFIG_PATH + '/last-record2_default.utf8'
+--- a/engine/python2/main.py
++++ b/engine/python2/main.py
+@@ -42,11 +42,33 @@
+ 
+ import _config as config
+ 
++
++def ibus_check_version(v):
++    major = IBus.MAJOR_VERSION
++    minor = IBus.MINOR_VERSION
++    micro = IBus.MICRO_VERSION
++    if (major, minor, micro) < tuple(map(int, (v.split('.')))):
++        raise ValueError('Required ibus %s but version of ibus is ' \
++                         '%d.%d.%d' % (v, major, minor, micro))
++
++
+ # Need to call IBus.init() before IBus.EngineSimple() is loaded.
+ # factory -> engine -> IBus.EngineSimple
+-IBus.init()
++try:
++    # IBus.init() has not been needed here since IBus 1.5.32
++    ibus_check_version("1.5.32")
++except ValueError:
++    import inspect
++    parent_frame = inspect.currentframe().f_back
++    # Call IBus.init() again from "from main import get_userhome" in engin.py.
++    # The twice IBus.init() issue has been fixed since IBus 1.5.31 by
++    # https://github.com/ibus/ibus/commit/9f50b46
++    if parent_frame == None:
++        IBus.init()
++
+ import factory
+ 
++
+ class IMApp:
+     def __init__(self, exec_by_ibus):
+         command_line = config.LIBEXECDIR + '/ibus-engine-anthy --ibus'
+--- a/engine/python3/engine.py
++++ b/engine/python3/engine.py
+@@ -29,7 +29,7 @@
+ import sys
+ from gettext import dgettext
+ 
+-from main import get_userhome
++from main import get_userhome, ibus_check_version
+ 
+ try:
+     from locale import getpreferredencoding
+@@ -166,7 +166,7 @@ def __init__(self, bus, object_path):
+             self.__is_utf8 = False
+         self.__has_update_preedit_text_with_mode = True
+         try:
+-            self.__ibus_check_version('1.3')
++            ibus_check_version('1.3')
+         except ValueError as e:
+             printerr('Disable update_preedit_text_with_mode(): %s' % str(e))
+             self.__has_update_preedit_text_with_mode = False
+@@ -205,14 +205,6 @@ def __init__(self, bus, object_path):
+         self.__reset()
+ 
+ 
+-    def __ibus_check_version(self, v):
+-        major = IBus.MAJOR_VERSION
+-        minor = IBus.MINOR_VERSION
+-        micro = IBus.MICRO_VERSION
+-        if (major, minor, micro) < tuple(map(int, (v.split('.')))):
+-            raise ValueError('Required ibus %s but version of ibus is ' \
+-                             '%d.%d.%d' % (v, major, minor, micro))
+-
+     # http://en.sourceforge.jp/ticket/browse.php?group_id=14&tid=33075
+     def __verify_anthy_journal_file(self):
+         journal = ANTHY_CONFIG_PATH + '/last-record2_default.utf8'
+--- a/engine/python3/main.py
++++ b/engine/python3/main.py
+@@ -42,11 +42,33 @@
+ 
+ import _config as config
+ 
++
++def ibus_check_version(v):
++    major = IBus.MAJOR_VERSION
++    minor = IBus.MINOR_VERSION
++    micro = IBus.MICRO_VERSION
++    if (major, minor, micro) < tuple(map(int, (v.split('.')))):
++        raise ValueError('Required ibus %s but version of ibus is ' \
++                         '%d.%d.%d' % (v, major, minor, micro))
++
++
+ # Need to call IBus.init() before IBus.EngineSimple() is loaded.
+ # factory -> engine -> IBus.EngineSimple
+-IBus.init()
++try:
++    # IBus.init() has not been needed here since IBus 1.5.32
++    ibus_check_version("1.5.32")
++except ValueError:
++    import inspect
++    parent_frame = inspect.currentframe().f_back
++    # Call IBus.init() again from "from main import get_userhome" in engin.py.
++    # The twice IBus.init() issue has been fixed since IBus 1.5.31 by
++    # https://github.com/ibus/ibus/commit/9f50b46
++    if parent_frame == None:
++        IBus.init()
++
+ import factory
+ 
++
+ class IMApp:
+     def __init__(self, exec_by_ibus):
+         command_line = config.LIBEXECDIR + '/ibus-engine-anthy --ibus'
