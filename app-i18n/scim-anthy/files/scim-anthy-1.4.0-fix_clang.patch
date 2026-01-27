@@ -1,0 +1,15 @@
+see PR pending https://github.com/scim-im/scim-anthy/pull/2.patch
+fix c++11 w/ clang
+--- a/src/scim_anthy_prefs.cpp
++++ b/src/scim_anthy_prefs.cpp
+@@ -242,8 +242,8 @@ BoolConfigData config_bool_common [] =
+     },
+     {
+         NULL,
+-        "",
+-        "",
++        false,
++        false,
+         NULL,
+         NULL,
+         NULL,
