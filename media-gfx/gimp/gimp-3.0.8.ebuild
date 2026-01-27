@@ -21,7 +21,6 @@ IUSE="X aalib alsa bash-completion doc fits gnome heif javascript jpeg2k jpegxl 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	lua? ( ${LUA_REQUIRED_USE} )
-	test? ( X )
 	xpm? ( X )
 "
 
@@ -115,10 +114,10 @@ BDEPEND="
 		>=dev-libs/gobject-introspection-1.82.0-r2[doctool]
 		dev-util/gi-docgen
 	)
-	test? ( x11-misc/xvfb-run )
 	vala? ( $(vala_depend) )
 	virtual/pkgconfig
 "
+#	X? ( test? ( x11-misc/xvfb-run ) )
 
 DOCS=( "AUTHORS" "NEWS" "README" "README.i18n" )
 
@@ -189,7 +188,7 @@ src_configure() {
 		$(meson_feature postscript ghostscript)
 		# https://gitlab.gnome.org/GNOME/gimp/-/issues/15763
 		-Dheadless-tests=disabled
-		#$(meson_feature test headless-tests)
+		#$(usex X $(meson_feature test headless-tests) -Dheadless-tests=disabled )
 		$(meson_feature udev gudev)
 		$(meson_feature vala)
 		$(meson_feature webp)
