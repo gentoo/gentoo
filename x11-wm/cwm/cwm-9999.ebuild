@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit desktop toolchain-funcs
 DESCRIPTION="OpenBSD fork of calmwm, a clean and lightweight window manager"
 HOMEPAGE="https://github.com/leahneukirchen/cwm"
 
-if [[ ${PV} == 9999 ]]; then
+if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/leahneukirchen/cwm.git"
 else
@@ -19,7 +19,8 @@ fi
 LICENSE="ISC"
 SLOT="0"
 
-DEPEND="x11-libs/libX11
+DEPEND="
+	x11-libs/libX11
 	x11-libs/libXft
 	x11-libs/libXrandr
 "
@@ -36,5 +37,5 @@ src_compile() {
 src_install() {
 	emake DESTDIR="${D}" PREFIX=/usr install
 	dodoc README
-	make_session_desktop ${PN} ${PN}
+	make_session_desktop --eapi9 ${PN} -X
 }
