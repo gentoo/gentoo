@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: office-ext-r1.eclass
@@ -108,8 +108,7 @@ office-ext-r1_src_unpack() {
 					mkdir -p "${WORKDIR}/${i}/" || die
 					pushd "${WORKDIR}/${i}/" > /dev/null || die
 					einfo "Unpacking "${OFFICE_EXTENSIONS_LOCATION}/${i}" to ${PWD}"
-					unzip -qo ${OFFICE_EXTENSIONS_LOCATION}/${i}
-					assert "failed unpacking ${OFFICE_EXTENSIONS_LOCATION}/${i}"
+					unzip -qo ${OFFICE_EXTENSIONS_LOCATION}/${i} || die "failed unpacking ${OFFICE_EXTENSIONS_LOCATION}/${i}"
 					popd > /dev/null || die
 					;;
 				*) unpack ${i} ;;
