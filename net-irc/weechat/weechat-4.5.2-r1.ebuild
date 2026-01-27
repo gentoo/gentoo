@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -66,7 +66,6 @@ RDEPEND="
 		|| (
 			dev-lang/ruby:3.3
 			dev-lang/ruby:3.2
-			dev-lang/ruby:3.1
 		)
 	)
 	selinux? ( sec-policy/selinux-irc )
