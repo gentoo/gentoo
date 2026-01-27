@@ -1,6 +1,14 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2025-01-27)
+# google-auth now unconditionally requires cryptography.
+dev-python/google-api-core
+dev-python/google-api-python-client
+dev-python/google-auth
+dev-python/google-auth-httplib2
+dev-python/proto-plus
+
 # Michał Górny <mgorny@gentoo.org> (2024-11-29)
 # dev-python/translate-toolkit has Rust deps now.
 dev-python/translate-toolkit
