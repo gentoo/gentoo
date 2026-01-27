@@ -16,7 +16,7 @@
 #  - support partial unpacks?
 
 case ${EAPI} in
-	7|8) ;;
+	7|8) inherit eapi9-pipestatus ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -281,7 +281,7 @@ unpack_makeself() {
 
 	[[ -z ${decomp} ]] && decomp=$(_unpacker_get_decompressor ".${suffix}")
 	"${exe[@]}" | ${decomp} | tar --no-same-owner -xf -
-	assert "failure unpacking (${filetype}) makeself ${src##*/} ('${ver}' +${skip})"
+	pipestatus || die "failure unpacking (${filetype}) makeself ${src##*/} ('${ver}' +${skip})"
 }
 
 # @FUNCTION: unpack_deb
@@ -310,7 +310,7 @@ unpack_deb() {
 					if [[ ${f} = "data.tar"* ]] ; then
 						local decomp=$(_unpacker_get_decompressor "${f}")
 						head -c "${size}" | ${decomp:-cat}
-						assert "unpacking ${f} from ${deb} failed"
+						pipestatus || die "unpacking ${f} from ${deb} failed"
 						break
 					else
 						head -c "${size}" > /dev/null # trash it
@@ -320,14 +320,14 @@ unpack_deb() {
 		else
 			local f=$(
 				$(tc-getBUILD_AR) t "${deb}" | grep ^data.tar
-				assert "data not found in ${deb}"
+				pipestatus || die "data not found in ${deb}"
 			)
 			local decomp=$(_unpacker_get_decompressor "${f}")
 			$(tc-getBUILD_AR) p "${deb}" "${f}" | ${decomp:-cat}
-			assert "unpacking ${f} from ${deb} failed"
+			pipestatus || die "unpacking ${f} from ${deb} failed"
 		fi
 	} | tar --no-same-owner -xf -
-	assert "unpacking ${deb} failed"
+	pipestatus || die "unpacking ${deb} failed"
 }
 
 # @FUNCTION: unpack_cpio
@@ -491,7 +491,7 @@ unpack_gpkg() {
 	mkdir -p "${dirname}" || die
 	tar -xOf "${gpkg}" "${images[0]}" | ${decomp:-cat} |
 		tar --no-same-owner -C "${dirname}" -xf -
-	assert "Unpacking ${gpkg} failed"
+	pipestatus || die "Unpacking ${gpkg} failed"
 }
 
 # @FUNCTION: _unpacker
@@ -569,7 +569,7 @@ _unpacker() {
 		${comp} < "${a}" | ${arch} -
 	fi
 
-	assert "unpacking ${a} failed (comp=${comp} arch=${arch})"
+	pipestatus || die "unpacking ${a} failed (comp=${comp} arch=${arch})"
 }
 
 # @FUNCTION: unpacker
