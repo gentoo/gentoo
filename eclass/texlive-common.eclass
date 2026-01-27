@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: texlive-common.eclass
@@ -15,10 +15,8 @@
 # Note that this eclass *must* not assume the presence of any standard tex too
 
 case ${EAPI} in
-	7)
-		inherit eapi8-dosym
-		;;
-	8) ;;
+	7) inherit eapi8-dosym eapi9-pipestatus ;;
+	8) inherit eapi9-pipestatus ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -293,7 +291,7 @@ texlive-common_update_tlpdb() {
 		find "${tlpobj}" -maxdepth 1 -type f -name "*.tlpobj" -print0 |
 			sort -z |
 			xargs -0 --no-run-if-empty sed -s '$G' >> "${new_tlpdb}"
-		assert "generating tlpdb failed"
+		pipestatus || die "generating tlpdb failed"
 	fi
 
 	if [[ -f ${tlpdb} ]]; then
