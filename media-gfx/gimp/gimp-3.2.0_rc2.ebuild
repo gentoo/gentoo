@@ -146,7 +146,10 @@ BDEPEND="
 		>=dev-libs/gobject-introspection-1.82.0-r2[doctool]
 		dev-util/gi-docgen
 	)
-	test? ( x11-misc/xvfb-run )
+	test? (
+		sys-apps/dbus
+		x11-misc/xvfb-run
+	)
 	vala? ( $(vala_depend) )
 	vector-icons? ( x11-misc/shared-mime-info )
 "

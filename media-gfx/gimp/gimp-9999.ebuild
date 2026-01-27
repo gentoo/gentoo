@@ -152,7 +152,10 @@ BDEPEND="
 	vala? ( $(vala_depend) )
 	vector-icons? ( x11-misc/shared-mime-info )
 "
-#	X? ( test? ( x11-misc/xvfb-run ) )
+#	X? ( test? (
+#		sys-apps/dbus
+#		x11-misc/xvfb-run
+#	) )
 
 DOCS=( "AUTHORS" "NEWS" "README" "README.i18n" )
 

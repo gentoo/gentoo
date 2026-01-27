@@ -102,7 +102,10 @@ RDEPEND="
 
 DEPEND="
 	${COMMON_DEPEND}
-	test? ( x11-misc/xvfb-run )
+	test? (
+		sys-apps/dbus
+		x11-misc/xvfb-run
+	)
 	vala? ( $(vala_depend) )
 "
 
