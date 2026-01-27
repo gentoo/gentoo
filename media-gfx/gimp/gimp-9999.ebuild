@@ -153,10 +153,6 @@ BDEPEND="
 
 DOCS=( "AUTHORS" "NEWS" "README" "README.i18n" )
 
-PATCHES=(
-	"${FILESDIR}"/gimp-3.0.6-fix-tests.patch
-)
-
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
