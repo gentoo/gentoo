@@ -17,7 +17,12 @@ _RPM_ECLASS=1
 
 inherit estack
 
-BDEPEND="app-arch/rpm2targz"
+BDEPEND="
+	|| (
+		app-arch/rpm2targz
+		>=app-arch/rpm-4.19.0
+	)
+"
 
 # @FUNCTION: rpm_unpack
 # @USAGE: <rpms>
@@ -37,7 +42,15 @@ rpm_unpack() {
 		else
 			a="${DISTDIR}/${a}"
 		fi
-		rpm2tar -O "${a}" | tar xf -
+
+		if command -v rpm2tar >/dev/null; then
+			local extracttool=(rpm2tar -O)
+		else
+			# app-arch/rpm fallback
+			local extracttool=(rpm2archive -n)
+		fi
+
+		"${extracttool[@]}" "${a}" | tar xf -
 		pipestatus || die "failure unpacking ${a}"
 	done
 }
