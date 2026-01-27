@@ -142,28 +142,23 @@ unpack_pdv() {
 	#	| dd ibs=${tailskip} skip=1 \
 	#	| gzip -dc \
 	#	> ${datafile}
+	local decompress=(cat)
 	if [ ${iscompressed} -eq 1 ] ; then
 		if [ ${istar} -eq 1 ] ; then
-			tail -c +$((${tailskip}+1)) "${src}" 2>/dev/null \
-				| head -c $((${metaskip}-${tailskip})) \
-				| tar -xzf -
+			decompress=(tar -xzf -)
 		else
-			tail -c +$((${tailskip}+1)) "${src}" 2>/dev/null \
-				| head -c $((${metaskip}-${tailskip})) \
-				| gzip -dc \
-				> ${datafile}
+			decompress=(gzip -dc)
 		fi
 	else
 		if [ ${istar} -eq 1 ] ; then
-			tail -c +$((${tailskip}+1)) "${src}" 2>/dev/null \
-				| head -c $((${metaskip}-${tailskip})) \
-				| tar --no-same-owner -xf -
-		else
-			tail -c +$((${tailskip}+1)) "${src}" 2>/dev/null \
-				| head -c $((${metaskip}-${tailskip})) \
-				> ${datafile}
+			decompress=(tar --no-same-owner -xf -)
 		fi
+
 	fi
+
+	tail -c +$((${tailskip}+1)) "${src}" 2>/dev/null \
+		| head -c $((${metaskip}-${tailskip})) \
+		"${decompress[@]}" > "${datafile}"
 	true
 	#[ -s "${datafile}" ] || die "failure unpacking pdv ('${metaskip}' '${tailskip}' '${datafile}')"
 	#assert "failure unpacking pdv ('${metaskip}' '${tailskip}' '${datafile}')"
