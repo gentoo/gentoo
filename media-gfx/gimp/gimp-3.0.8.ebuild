@@ -7,7 +7,7 @@ LUA_COMPAT=( luajit )
 PYTHON_COMPAT=( python3_{11..14} )
 VALA_USE_DEPEND=vapigen
 
-inherit bash-completion-r1 flag-o-matic lua-single meson python-single-r1 toolchain-funcs vala xdg
+inherit bash-completion-r1 branding flag-o-matic lua-single meson python-single-r1 toolchain-funcs vala xdg
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"
@@ -170,7 +170,7 @@ src_configure() {
 		-Ddebug-self-in-build=false
 		-Denable-multiproc=true
 		-Dappdata-test=disabled
-		-Dbug-report-url=https://bugs.gentoo.org/
+		-Dbug-report-url="${BRANDING_OS_BUG_REPORT_URL}"
 		-Dilbm=disabled
 		-Dlibbacktrace=false
 		-Dwebkit-unmaintained=false
