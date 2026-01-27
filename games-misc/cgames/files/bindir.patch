@@ -1,0 +1,27 @@
+diff --git a/configure.in b/configure.in
+index a6df0ce..f0154e2 100644
+--- a/configure.in
++++ b/configure.in
+@@ -4,7 +4,7 @@ dnl
+ 
+ AC_INIT(csokoban/csokoban.c)
+ 
+-bindir='${exec_prefix}/games'
++bindir='${exec_prefix}/bin'
+ 
+ test -z "$CC" && CC="gcc"
+ test -z "$CFLAGS" && CFLAGS=" -Wall -Wextra -Wno-missing-field-initializers -Wno-unused-result -O2"
+
+diff --git a/configure b/configure
+index 958361d..17000f4 100755
+--- a/configure
++++ b/configure
+@@ -1655,7 +1655,7 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
+
+
+
+-bindir='${exec_prefix}/games'
++bindir='${exec_prefix}/bin'
+
+ test -z "$CC" && CC="gcc"
+ test -z "$CFLAGS" && CFLAGS=" -Wall -Wextra -Wno-missing-field-initializers -Wno-unused-result -O2"
