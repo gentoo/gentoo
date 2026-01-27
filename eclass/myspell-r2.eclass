@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: myspell-r2.eclass
@@ -61,8 +61,7 @@ myspell-r2_src_unpack() {
 		case ${f} in
 			*.oxt)
 				echo ">>> Unpacking "${DISTDIR}/${f}" to ${PWD}"
-				unzip -qoj "${DISTDIR}"/${f}
-				assert "failed unpacking ${DISTDIR}/${f}"
+				unzip -qoj "${DISTDIR}"/${f} || die "failed unpacking ${DISTDIR}/${f}"
 				;;
 			*) unpack ${f} ;;
 		esac
