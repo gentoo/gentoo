@@ -117,7 +117,10 @@ BDEPEND="
 	vala? ( $(vala_depend) )
 	virtual/pkgconfig
 "
-#	X? ( test? ( x11-misc/xvfb-run ) )
+#	X? ( test? (
+#		sys-apps/dbus
+#		x11-misc/xvfb-run
+#	) )
 
 DOCS=( "AUTHORS" "NEWS" "README" "README.i18n" )
 
