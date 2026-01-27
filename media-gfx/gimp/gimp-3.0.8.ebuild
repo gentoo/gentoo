@@ -149,7 +149,7 @@ src_prepare() {
 	sed -i -e 's/@PYTHON_EXE@/'${EPYTHON}'/' plug-ins/python/pygimp.interp.in || die
 
 	# Set proper intallation path of documentation logo
-	sed -i -e "s/'gimp-@0@'.format(gimp_app_version)/'gimp-${PVR}'/" gimp-data/images/logo/meson.build || die
+	sed -i -e "s/'gimp-' + gimp_api_version/'gimp-${PVR}'/" gimp-data/images/logo/meson.build || die
 
 	# Force disable x11_target if USE="-X" is setup. See bug 943164 for additional info
 	use !X && { sed -i -e 's/x11_target = /x11_target = false #/' meson.build || die; }
