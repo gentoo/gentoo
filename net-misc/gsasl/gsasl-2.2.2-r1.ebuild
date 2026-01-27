@@ -3,11 +3,15 @@
 
 EAPI=8
 
-inherit branding multilib-minimal
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/gsasl.asc
+inherit branding multilib-minimal verify-sig
 
 DESCRIPTION="The GNU SASL client, server, and library"
 HOMEPAGE="https://www.gnu.org/software/gsasl/"
-SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
+SRC_URI="
+	mirror://gnu/${PN}/${P}.tar.gz
+	verify-sig? ( mirror://gnu/${PN}/${P}.tar.gz.sig )
+"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -28,6 +32,7 @@ DEPEND="
 	ntlm? ( >=net-libs/libntlm-0.3.5 )
 "
 RDEPEND="${DEPEND}"
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-gsasl )"
 
 QA_CONFIG_IMPL_DECL_SKIP=(
 	# gnulib FPs
