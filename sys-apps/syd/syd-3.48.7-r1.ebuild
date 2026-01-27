@@ -337,14 +337,15 @@ RDEPEND="sys-apps/pandora_box
 S="${WORKDIR}/syd-v${PV}"
 
 src_configure() {
-	local myfeatures=( "oci" )
-	if  use static; then
-		export RUSTFLAGS+="-Ctarget-feature=+crt-static --target=$(rustc --print=host-tuple)"
-	        export LIBSECCOMP_LINK_TYPE="static"
-	        export LIBSECCOMP_LIB_PATH=$(pkgconf --variable=libdir libseccomp)
+	if use static; then
+		export LIBSECCOMP_LINK_TYPE="static"
+		export LIBSECCOMP_LIB_PATH=$(pkgconf --variable=libdir libseccomp)
+		export RUSTFLAGS+="-Ctarget-feature=+crt-static"
+		cargo_src_configure
+	else
+		local myfeatures=( "oci" )
+		cargo_src_configure
 	fi
-	cargo_src_configure
-
 }
 
 src_compile() {
