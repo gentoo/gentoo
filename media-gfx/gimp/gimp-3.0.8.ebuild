@@ -7,7 +7,7 @@ LUA_COMPAT=( luajit )
 PYTHON_COMPAT=( python3_{11..14} )
 VALA_USE_DEPEND=vapigen
 
-inherit flag-o-matic lua-single meson python-single-r1 toolchain-funcs vala xdg
+inherit bash-completion-r1 flag-o-matic lua-single meson python-single-r1 toolchain-funcs vala xdg
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"
@@ -17,7 +17,7 @@ LICENSE="GPL-3+ LGPL-3+"
 SLOT="0/3"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~x86"
 
-IUSE="X aalib alsa doc fits gnome heif javascript jpeg2k jpegxl lua mng openexr openmp postscript test udev unwind vala vector-icons wayland webp wmf xpm"
+IUSE="X aalib alsa bash-completion doc fits gnome heif javascript jpeg2k jpegxl lua mng openexr openmp postscript test udev unwind vala vector-icons wayland webp wmf xpm"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	lua? ( ${LUA_REQUIRED_USE} )
@@ -100,22 +100,23 @@ RDEPEND="
 	gnome? ( gnome-base/gvfs )
 "
 
-DEPEND="
-	${COMMON_DEPEND}
-	test? ( x11-misc/xvfb-run )
-	vala? ( $(vala_depend) )
-"
+DEPEND="${COMMON_DEPEND}"
 
-# TODO: there are probably more atoms in DEPEND which should be in BDEPEND now
 BDEPEND="
 	>=dev-lang/perl-5.30.3
 	dev-libs/libxslt
 	>=dev-util/gdbus-codegen-2.80.5-r1
 	>=sys-devel/gettext-0.21
+	bash-completion? (
+		app-shells/bash-completion
+		app-shells/bash
+	)
 	doc? (
 		>=dev-libs/gobject-introspection-1.82.0-r2[doctool]
 		dev-util/gi-docgen
 	)
+	test? ( x11-misc/xvfb-run )
+	vala? ( $(vala_depend) )
 	virtual/pkgconfig
 "
 
@@ -175,6 +176,7 @@ src_configure() {
 		-Dwebkit-unmaintained=false
 		$(meson_feature aalib aa)
 		$(meson_feature alsa)
+		$(meson_feature bash-completion)
 		$(meson_feature doc gi-docgen)
 		$(meson_feature fits)
 		$(meson_feature heif)
@@ -249,6 +251,10 @@ src_install() {
 	dosym "${ESYSROOT}"/usr/bin/gimp-script-fu-interpreter-3.0 /usr/bin/gimp-script-fu-interpreter
 	dosym "${ESYSROOT}"/usr/bin/gimp-test-clipboard-3.0 /usr/bin/gimp-test-clipboard
 	dosym "${ESYSROOT}"/usr/bin/gimptool-3.0 /usr/bin/gimptool
+
+	if use bash-completion; then
+		bashcomp_alias gimp-3.0 gimp{,-3} gimp-console{,-3,-3.0}
+	fi
 
 	_rename_plugins || die
 }
