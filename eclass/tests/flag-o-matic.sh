@@ -151,6 +151,40 @@ out=$(test-flags-CC -finvalid-flag)
 [[ $? -ne 0 && -z ${out} ]]
 ftend
 
+tbegin "get-flag (EAPI 7 substring args)"
+CFLAGS="-frecord-gcc-switches -g"
+CXXFLAGS=""
+LDFLAGS=""
+out=$(get-flag -g)
+[[ ${out} = -frecord-gcc-switches ]]
+ftend
+
+tbegin "get-flag (EAPI 9 exact match)"
+CFLAGS="-frecord-gcc-switches -g"
+CXXFLAGS=""
+LDFLAGS=""
+out=$(_FLAG_O_MATIC_TESTS_FAKE_EAPI_NINE=1 get-flag -g)
+[[ ${out} = -g ]]
+ftend
+
+tbegin "get-flag (EAPI 7 values)"
+CFLAGS="-flto-incremental=/path -flto=4"
+CXXFLAGS=""
+LDFLAGS=""
+out=$(get-flag flto)
+[[ ${out} = -flto-incremental=/path ]]
+ftend
+
+tbegin "get-flag (EAPI 9 values)"
+CFLAGS="-flto-incremental=/path -flto=4"
+CXXFLAGS=""
+LDFLAGS=""
+out=$(_FLAG_O_MATIC_TESTS_FAKE_EAPI_NINE=1 get-flag flto)
+[[ ${out} = 4 ]]
+ftend
+
+
+
 if type -P clang >/dev/null ; then
 	tbegin "test-flags-CC (valid flags w/clang)"
 	out=$(CC=clang test-flags-CC -O3)

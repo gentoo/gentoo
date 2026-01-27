@@ -853,9 +853,24 @@ get-flag() {
 	# `get-flag march` == "i686"
 	for var in $(all-flag-vars) ; do
 		for f in ${!var} ; do
-			if [ "${f/${findflag}}" != "${f}" ] ; then
-				printf "%s\n" "${f/-${findflag}=}"
-				return 0
+			if [[ ${EAPI} = [78] && -z "${_FLAG_O_MATIC_TESTS_FAKE_EAPI_NINE}" ]]; then
+				if [[ "${f/${findflag}}" != "${f}" ]] ; then
+					printf "%s\n" "${f/-${findflag}=}"
+					return 0
+				fi
+			else
+				# Print RHS for "flag" (no leading "-")
+				if [[ "${f#-${findflag}=}" != "${f}" ]] ; then
+					printf "%s\n" "${f#-${findflag}=}"
+					return 0
+				fi
+				# Print full match for any of:
+				#   "-flag" with leading "-"
+				#   "flag" without leading "-" that has no unmatched succeeding =value
+				if [[ ${f} = -${findflag#-} || ${f%=*} = ${findflag} ]] ; then
+					printf "%s\n" "${f}"
+					return 0
+				fi
 			fi
 		done
 	done
