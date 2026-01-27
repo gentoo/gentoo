@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: rpm.eclass
@@ -8,7 +8,7 @@
 # @BLURB: convenience class for extracting RPMs
 
 case ${EAPI} in
-	7|8) ;;
+	7|8) inherit eapi9-pipestatus ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -38,7 +38,7 @@ rpm_unpack() {
 			a="${DISTDIR}/${a}"
 		fi
 		rpm2tar -O "${a}" | tar xf -
-		assert "failure unpacking ${a}"
+		pipestatus || die "failure unpacking ${a}"
 	done
 }
 
