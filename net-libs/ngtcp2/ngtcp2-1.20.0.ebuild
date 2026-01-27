@@ -23,7 +23,7 @@ else
 fi
 
 DESCRIPTION="Implementation of the IETF QUIC Protocol"
-HOMEPAGE="https://github.com/ngtcp2/ngtcp2"
+HOMEPAGE="https://nghttp2.org/ngtcp2/ https://github.com/ngtcp2/ngtcp2"
 
 LICENSE="MIT"
 SLOT="0/0"
