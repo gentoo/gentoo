@@ -100,6 +100,10 @@ DOCS="AUTHORS.md CHANGELOG.md CONTRIBUTING.md UPGRADING.md README.md"
 
 RESTRICT="!test? ( test )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-python-fix-broken-usage-of-FindPython.cmake-breaking.patch
+)
+
 maint_pkg_create() {
 	pushd "${S}" > /dev/null
 

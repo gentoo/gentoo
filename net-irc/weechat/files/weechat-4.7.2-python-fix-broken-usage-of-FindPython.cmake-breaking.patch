@@ -1,0 +1,59 @@
+From d03a7403b09b1027ffe132dc80f3a6707dc8164b Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz@gentoo.org>
+Date: Mon, 26 Jan 2026 22:22:12 -0500
+Subject: [PATCH] python: fix broken usage of FindPython.cmake breaking python
+ selection
+
+In commit 9a9a262ea171c1092fcab560db57bb8cc4e65ac9 we moved from
+pkg-config to find_package() to work around a deficiency in the pkgsrc
+package manager, which does not ship pkg-config files as intended by
+CPython. In the process, Gentoo and other platforms that, unlike pkgsrc,
+publicly support multiple versions of python installed in parallel, had
+python version selection broken. Consequently, weechat linked to the
+wrong python, which happened to be installed in build chroots but was
+not the versioned python package that the weechat package listed as a
+dependency. Attempting to install weechat then broke on some systems
+(which installed one version of python as a dependency but actually
+linked to a totally different one).
+
+This happens due to a design bug in upstream CMake. It is never
+conceptually reasonable to use
+
+```
+find_package(Python COMPONENTS ...)
+```
+
+and omit the "Interpreter" component; if you do, CMake will ignore its
+own documentation on how to control the build to use a specific python,
+and choose one randomly (== "latest version available"). If, and only
+if, the Interpreter component is checked, the development headers /
+libraries for python will be guaranteed consistent with the documented
+lookup variables from FindPython.cmake's documentation.
+
+Bug: https://bugs.gentoo.org/968814
+Fixes: 9a9a262ea171c1092fcab560db57bb8cc4e65ac9
+Fixes: https://github.com/weechat/weechat/pull/2251
+Signed-off-by: Eli Schwartz <eschwartz@gentoo.org>
+---
+ src/plugins/CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/plugins/CMakeLists.txt b/src/plugins/CMakeLists.txt
+index 252d026e2..87385f29b 100644
+--- a/src/plugins/CMakeLists.txt
++++ b/src/plugins/CMakeLists.txt
+@@ -125,9 +125,9 @@ endif()
+ 
+ if(ENABLE_SCRIPTS AND ENABLE_PYTHON)
+   if(CMAKE_VERSION VERSION_LESS "3.18.0")
+-    find_package(Python 3.0 COMPONENTS Development)
++    find_package(Python 3.0 COMPONENTS Interpreter Development)
+   else()
+-    find_package(Python 3.0 COMPONENTS Development.Embed)
++    find_package(Python 3.0 COMPONENTS Interpreter Development.Embed)
+   endif()
+   if(Python_FOUND)
+     add_subdirectory(python)
+-- 
+2.52.0
+
