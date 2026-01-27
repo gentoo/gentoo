@@ -1,0 +1,7 @@
+{
+  "env": {
+    "DISABLE_AUTOUPDATER": "1",
+    "DISABLE_INSTALLATION_CHECKS": "1"
+  },
+  "installMethod": "native"
+}
