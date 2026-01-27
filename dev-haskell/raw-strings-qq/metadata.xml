@@ -6,6 +6,7 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="hackage">raw-strings-qq</remote-id>
 		<remote-id type="github">23Skidoo/raw-strings-qq</remote-id>
 	</upstream>
 </pkgmetadata>
