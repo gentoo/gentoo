@@ -23,7 +23,7 @@ else
 fi
 
 DESCRIPTION="HTTP/3 library written in C"
-HOMEPAGE="https://github.com/ngtcp2/nghttp3"
+HOMEPAGE="https://nghttp2.org/nghttp3/ https://github.com/ngtcp2/nghttp3"
 
 LICENSE="MIT"
 SLOT="0/0"
