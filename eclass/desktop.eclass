@@ -4,14 +4,14 @@
 # @ECLASS: desktop.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: support for desktop files, menus, and icons
 
 if [[ -z ${_DESKTOP_ECLASS} ]]; then
 _DESKTOP_ECLASS=1
 
 case ${EAPI} in
-	7|8) ;;
+	7|8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -63,20 +63,14 @@ _DESKTOP_IDS=()
 # @CODE
 make_desktop_entry() {
 	local eapi9
-	if [[ -n ${1} ]]; then
+	if [[ ${1} == --eapi9 ]]; then
 		case ${EAPI} in
 			7|8)
-				if [[ ${1} == --eapi9 ]]; then
-					eapi9=1
-					shift
-				fi
+				eapi9=1
+				shift
 				;;
 			*)
-				if [[ ${1} == --eapi9 ]]; then
-					ewarn "make_desktop_entry: --eapi9 arg is obsolete in EAPI-${EAPI} and may be cleaned up now."
-					shift
-				fi
-				eapi9=1
+				die "make_desktop_entry: --eapi9 arg is obsolete in EAPI-${EAPI}!"
 				;;
 		esac
 	fi
