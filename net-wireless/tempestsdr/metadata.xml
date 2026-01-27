@@ -4,6 +4,9 @@
 	<maintainer type="person">
 		<email>zerochaos@gentoo.org</email>
 	</maintainer>
+	<use>
+		<flag name="airspy">Optional support for <pkg>net-wireless/airspy</pkg></flag>
+	</use>
 	<upstream>
 		<remote-id type="github">deltj/TempestSDR</remote-id>
 	</upstream>

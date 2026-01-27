@@ -1,4 +1,4 @@
-# Copyright 2020-2025 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,6 +10,7 @@ HOMEPAGE="https://github.com/deltj/TempestSDR.git"
 
 LICENSE="GPL-3"
 SLOT="0"
+IUSE="airspy"
 if [ "${PV}" = "9999" ]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/deltj/TempestSDR.git"
@@ -22,13 +23,18 @@ fi
 
 RDEPEND=">=virtual/jre-1.8:*
 	dev-libs/boost:=
-	net-wireless/airspy
+	airspy? ( net-wireless/airspy )
 	net-wireless/uhd:=
 	net-wireless/rtl-sdr:=
 	net-wireless/bladerf:=
 	net-wireless/hackrf-tools"
 DEPEND=">=virtual/jdk-1.8:*
 	${RDEPEND}"
+
+src_prepare() {
+	rm -r TSDRPlugin_Airspy
+	default
+}
 
 src_install() {
 	java-pkg_dojar JavaGUI/JTempestSDR.jar
