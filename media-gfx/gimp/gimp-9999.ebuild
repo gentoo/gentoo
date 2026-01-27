@@ -217,7 +217,9 @@ src_configure() {
 		$(meson_feature openexr)
 		$(meson_feature openmp)
 		$(meson_feature postscript ghostscript)
-		$(meson_feature test headless-tests)
+		# https://gitlab.gnome.org/GNOME/gimp/-/issues/15763
+		-Dheadless-tests=disabled
+		#$(meson_feature test headless-tests)
 		$(meson_feature udev gudev)
 		$(meson_feature vala)
 		$(meson_feature webp)
@@ -257,11 +259,14 @@ _rename_plugins() {
 
 src_test() {
 	local -x LD_LIBRARY_PATH="${BUILD_DIR}/libgimp:${LD_LIBRARY_PATH}"
+
 	# Try hard to avoid system installed gimp causing issues
 	local -x GIMP3_DIRECTORY="${BUILD_DIR}/"
 	local -x GIMP3_PLUGINDIR="${BUILD_DIR}/plug-ins/"
 	local -x GIMP3_SYSCONFDIR="${BUILD_DIR}/etc/"
-	meson_src_test
+
+	# Flakyness is possible
+	meson_src_test -j1
 }
 
 src_install() {
