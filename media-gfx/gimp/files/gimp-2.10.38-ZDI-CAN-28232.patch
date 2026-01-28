@@ -1,0 +1,34 @@
+https://bugs.gentoo.org/969287
+https://www.zerodayinitiative.com/advisories/ZDI-25-1196/
+https://gitlab.gnome.org/GNOME/gimp/-/issues/15284
+https://gitlab.gnome.org/GNOME/gimp/-/commit/03575ac8cbb0ef3103b0a15d6598475088dcc15e
+
+From 112f04950ff06a0ccf548f9a7fd49bd63aaf8b58 Mon Sep 17 00:00:00 2001
+From: Jacob Boerema <jgboerema@gmail.com>
+Date: Sat, 20 Dec 2025 10:10:48 -0500
+Subject: [PATCH] plug-ins: fix #15284 ZDI-CAN-28232 vulnerability in
+ file-psp
+
+We were not checking whether channel types were valid for grayscale
+images. Using a blue color channel caused an invalid computation of
+the offset which could cause us to access an invalid memory location.
+
+Now we separate RGB from non-RGB images when checking which channels
+are valid, and if not return with an error.
+
+Cherry-picked from 03575ac8cbb0ef3103b0a15d6598475088dcc15e
+--- a/plug-ins/common/file-psp.c
++++ b/plug-ins/common/file-psp.c
+@@ -2020,7 +2020,8 @@ read_layer_block (FILE      *f,
+                 }
+               else
+                 {
+-                  if (channel_type > PSP_CHANNEL_BLUE)
++                  if ((ia->base_type == GIMP_RGB && channel_type > PSP_CHANNEL_BLUE) ||
++                      (ia->base_type != GIMP_RGB && channel_type >= PSP_CHANNEL_RED))
+                     {
+                       g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_FAILED,
+                                   _("Invalid channel type %d in channel information chunk"),
+-- 
+2.52.0
+
