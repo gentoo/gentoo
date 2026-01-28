@@ -16,6 +16,7 @@ IUSE="debug"
 
 DEPEND="dev-db/mysql-connector-c:="
 RDEPEND="${DEPEND}"
+BDEPEND="sys-apps/which"
 
 DOCS=( AUTHORS DEBUGGING FAQ INSTALL NEWS README THANKS
 	UPGRADING ChangeLog
