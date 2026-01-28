@@ -4,7 +4,7 @@
 EAPI=8
 
 GST_ORG_MODULE=gst-plugins-good
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit meson python-any-r1 xdg-utils
 
 DESCRIPTION="Qt6 QML video sink plugin for GStreamer"
