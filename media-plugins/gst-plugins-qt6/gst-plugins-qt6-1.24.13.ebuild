@@ -31,9 +31,10 @@ RDEPEND="${DEPEND}
 "
 RDEPEND+=" || ( >=dev-qt/qtbase-6.10:6[wayland] <dev-qt/qtwayland-6.10:6 )"
 BDEPEND="${PYTHON_DEPS}
-	app-arch/xz-utils
 	dev-qt/qtbase:6
+	dev-qt/qtdeclarative:6
 	dev-qt/qtshadertools:6
+	sys-devel/gettext
 	virtual/perl-JSON-PP
 	virtual/pkgconfig
 "
