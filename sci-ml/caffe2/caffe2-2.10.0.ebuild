@@ -255,7 +255,7 @@ src_prepare() {
 		sed -e 's/gloo_hiop/gloo_hip/' -i cmake/Modules/FindGloo.cmake || die
 
 		ebegin "HIPifying cuda sources"
-		${EPYTHON} tools/amd_build/build_amd.py || die
+		FBCODE_BUILD_TOOL="buck" ${EPYTHON} tools/amd_build/build_amd.py || die
 		eend $?
 	fi
 }
