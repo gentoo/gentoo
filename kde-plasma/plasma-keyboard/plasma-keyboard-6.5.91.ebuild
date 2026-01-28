@@ -11,7 +11,7 @@ DESCRIPTION="Virtual keyboard based on Qt Virtual Keyboard"
 
 LICENSE="|| ( GPL-2 GPL-3 ) LGPL-2.1 LGPL-3"
 SLOT="6"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 # slot op: Uses Qt6::GuiPrivate for qxkbcommon_p.h
 COMMON_DEPEND="
