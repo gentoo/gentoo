@@ -314,7 +314,7 @@ src_configure() {
 		-DUSE_SYSTEM_PYBIND11=ON
 		-DUSE_SYSTEM_SLEEF=ON
 		-DUSE_SYSTEM_XNNPACK=$(usex xnnpack)
-		-DUSE_TENSORPIPE=$(use distributed && use !rocm && echo ON || echo OFF)
+		-DUSE_TENSORPIPE=$(usex distributed $(usex !rocm))
 		-DUSE_UCC=OFF
 		-DUSE_VALGRIND=OFF
 		-DUSE_XNNPACK=$(usex xnnpack)
