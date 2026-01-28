@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -108,6 +108,7 @@ REQUIRED_USE="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-21-cmake-gentoo.patch"
+	"${FILESDIR}/${PN}-25.0.1-no-xxhash-dispatch.patch"
 )
 
 pkg_pretend() {
@@ -190,6 +191,7 @@ src_configure() {
 		-DCPM_USE_LOCAL_PACKAGES=1
 		-DCPM_LOCAL_PACKAGES_ONLY=1
 		-DENABLE_WEBUI=0
+		-DENABLE_BARRI=0
 		-Darchivedir=/var/lib/bareos/storage
 		-Dbackenddir=/usr/$(get_libdir)/${PN}/backend
 		-Dbasename="`hostname -s`"
