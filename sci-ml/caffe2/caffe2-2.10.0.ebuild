@@ -353,7 +353,7 @@ src_configure() {
 			-DUSE_NCCL=$(usex nccl)
 			-DUSE_SYSTEM_NCCL=ON
 			-DCMAKE_REQUIRE_FIND_PACKAGE_HIP=ON
-	        -DUSE_ROCM_CK_SDPA=OFF # requires flash + aiter, works only on gfx90a/gfx942/gfx950
+			-DUSE_ROCM_CK_SDPA=OFF # requires flash + aiter, works only on gfx90a/gfx942/gfx950
 		)
 
 		# ROCm libraries produce too much warnings
