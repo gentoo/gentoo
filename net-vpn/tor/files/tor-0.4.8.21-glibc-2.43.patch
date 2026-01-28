@@ -1,0 +1,112 @@
+https://bugs.gentoo.org/969299
+https://gitlab.torproject.org/tpo/core/tor/-/commit/795ed4df0824349fc94a37efe36d2a1beb5146f7
+https://gitlab.torproject.org/tpo/core/tor/-/commit/1e372424921730a7ebd7d086fc7faa81878f3f51
+
+From 795ed4df0824349fc94a37efe36d2a1beb5146f7 Mon Sep 17 00:00:00 2001
+From: mh <mh+fedora@scrit.ch>
+Date: Thu, 27 Nov 2025 10:53:10 +0100
+Subject: [PATCH] Fix #41170 - include signal.h if enabling seccomp
+
+Newer glibcs (from 6f120faf649f03a261e3e64d5b5991030383c1b3 on) define
+`SYS_SECCOMP` to an enum.
+
+* https://gitlab.torproject.org/tpo/core/tor/-/issues/41170#note_3290238
+* https://github.com/bminor/glibc/commit/6f120faf649f03a261e3e64d5b5991030383c1b3
+---
+ src/lib/sandbox/sandbox.h | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/lib/sandbox/sandbox.h b/src/lib/sandbox/sandbox.h
+index 17d32d16de..a43eef12d2 100644
+--- a/src/lib/sandbox/sandbox.h
++++ b/src/lib/sandbox/sandbox.h
+@@ -16,6 +16,9 @@
+ #include "lib/cc/torint.h"
+ 
+ #ifndef SYS_SECCOMP
++#ifdef HAVE_SIGNAL_H
++#include <signal.h>
++#endif
+ 
+ /**
+  * Used by SIGSYS signal handler to check if the signal was issued due to a
+-- 
+GitLab
+
+From 1e372424921730a7ebd7d086fc7faa81878f3f51 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 27 Jan 2026 11:14:13 +0000
+Subject: [PATCH] Fix -Wdiscarded-qualifiers with glibc-2.43
+
+glibc-2.43 implements C23's const-preserving macros for stdlib functions,
+which exposes some -Wdiscarded-qualifiers (missing consts) for us to fix.
+
+Fixes https://gitlab.torproject.org/tpo/core/tor/-/issues/41198
+---
+ src/core/or/versions.c            | 2 +-
+ src/feature/dircommon/directory.c | 2 +-
+ src/lib/fs/path.c                 | 3 ++-
+ src/test/test_util.c              | 6 +++---
+ 4 files changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/src/core/or/versions.c b/src/core/or/versions.c
+index b1d31f8c6a..771b2604c8 100644
+--- a/src/core/or/versions.c
++++ b/src/core/or/versions.c
+@@ -286,7 +286,7 @@ tor_version_parse(const char *s, tor_version_t *out)
+     cp += 2;
+     out->svn_revision = (int) strtol(cp,&eos,10);
+   } else if (!strcmpstart(cp, "(git-")) {
+-    char *close_paren = strchr(cp, ')');
++    const char *close_paren = strchr(cp, ')');
+     int hexlen;
+     char digest[DIGEST_LEN];
+     if (! close_paren)
+diff --git a/src/feature/dircommon/directory.c b/src/feature/dircommon/directory.c
+index 06fbfd8d5d..6b5c38c7c1 100644
+--- a/src/feature/dircommon/directory.c
++++ b/src/feature/dircommon/directory.c
+@@ -360,7 +360,7 @@ http_get_header(const char *headers, const char *which)
+   const char *cp = headers;
+   while (cp) {
+     if (!strcasecmpstart(cp, which)) {
+-      char *eos;
++      const char *eos;
+       cp += strlen(which);
+       if ((eos = strchr(cp,'\r')))
+         return tor_strndup(cp, eos-cp);
+diff --git a/src/lib/fs/path.c b/src/lib/fs/path.c
+index 8194d920ab..223bca4d7f 100644
+--- a/src/lib/fs/path.c
++++ b/src/lib/fs/path.c
+@@ -108,7 +108,8 @@ expand_filename(const char *filename)
+       rest = strlen(filename)>=2?(filename+2):"";
+     } else {
+ #ifdef HAVE_PWD_H
+-      char *username, *slash;
++      char *username;
++      const char *slash;
+       slash = strchr(filename, '/');
+       if (slash)
+         username = tor_strndup(filename+1,slash-filename-1);
+diff --git a/src/test/test_util.c b/src/test/test_util.c
+index 391c3d07c1..b5452c2cd0 100644
+--- a/src/test/test_util.c
++++ b/src/test/test_util.c
+@@ -4173,11 +4173,11 @@ test_util_find_str_at_start_of_line(void *ptr)
+     "howdy world. how are you? i hope it's fine.\n"
+     "hello kitty\n"
+     "third line";
+-  char *line2 = strchr(long_string,'\n')+1;
+-  char *line3 = strchr(line2,'\n')+1;
++  const char *line2 = strchr(long_string,'\n')+1;
++  const char *line3 = strchr(line2,'\n')+1;
+   const char *short_string = "hello kitty\n"
+     "second line\n";
+-  char *short_line2 = strchr(short_string,'\n')+1;
++  const char *short_line2 = strchr(short_string,'\n')+1;
+ 
+   (void)ptr;
+ 
+-- 
+GitLab
