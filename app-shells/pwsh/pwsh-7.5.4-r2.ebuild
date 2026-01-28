@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NOTICE: Before packaging we have to run "ResGen" and "GetDependencies".
@@ -172,7 +172,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="amd64 ~arm ~arm64"
 IUSE="gui vanilla"
 
 RDEPEND="
