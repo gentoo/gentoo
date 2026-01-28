@@ -147,11 +147,6 @@ games-rpg/pokete
 net-misc/pulseaudio-dlna
 <www-client/seamonkey-2.53.23
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-14)
-# Still depends on Qt5 with no upstream porting activity. Bug #960220
-# Removal on 2026-01-15
-media-sound/mp3diags
-
 # Michał Górny <mgorny@gentoo.org> (2025-12-12)
 # Upstream has switched to LLM-first coding which has already caused
 # a number of suspicious bugs.  At this point, new versions
