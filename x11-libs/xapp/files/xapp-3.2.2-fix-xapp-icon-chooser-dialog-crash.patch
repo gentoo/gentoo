@@ -1,0 +1,22 @@
+From 2ab3aaf4a09d0be636430462c496affb49310aa4 Mon Sep 17 00:00:00 2001
+From: Rohan2460 <154054727+Rohan2460@users.noreply.github.com>
+Date: Wed, 28 Jan 2026 07:18:30 +0530
+Subject: [PATCH] Cancel tasks before closing xapp-icon-chooser-dialog (#193)
+
+---
+ libxapp/xapp-icon-chooser-dialog.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/libxapp/xapp-icon-chooser-dialog.c b/libxapp/xapp-icon-chooser-dialog.c
+index 13257e01..a9169aa7 100644
+--- a/libxapp/xapp-icon-chooser-dialog.c
++++ b/libxapp/xapp-icon-chooser-dialog.c
+@@ -935,6 +935,8 @@ xapp_icon_chooser_dialog_close (XAppIconChooserDialog *dialog,
+     priv = xapp_icon_chooser_dialog_get_instance_private (dialog);
+ 
+     priv->response = response;
++    g_cancellable_cancel (priv->cancellable);
++    
+     gtk_widget_hide (GTK_WIDGET (dialog));
+ 
+     gtk_main_quit ();
