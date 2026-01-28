@@ -6,7 +6,7 @@
 # Zurab Kvachadze <zurabid2016@gmail.com>
 # @AUTHOR:
 # Zurab Kvachadze <zurabid2016@gmail.com>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @BLURB: Provides a common set of functions for building NGINX's dynamic modules
 # @DESCRIPTION:
 # The nginx-module.eclass automates configuring, building and installing NGINX's
@@ -82,16 +82,22 @@
 #     nginx-module_src_configure
 # }
 # @CODE
-
-case ${EAPI} in
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
+#
+# EAPI porting notes:
+#   - 8 -> 9:
+#     * NGINX_MOD_S is removed completely. Eclass die's if its set.
+#     * NGINX_MOD_INSTALL_CONF_STUB is enabled unconditionally.
 
 if [[ -z ${_NGINX_MODULE_ECLASS} ]]; then
 _NGINX_MODULE_ECLASS=1
 
-inherit edo flag-o-matic toolchain-funcs
+case ${EAPI} in
+	8) inherit edo ;;
+	9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+inherit flag-o-matic toolchain-funcs
 
 #-----> Generic helper functions <-----
 
@@ -312,17 +318,25 @@ ngx_mod_link_lib() {
 # @ECLASS_VARIABLE: NGINX_MOD_S
 # @DEPRECATED: S
 # @DESCRIPTION:
-# This variable is deprecated.  ${S} must be used directly instead.
+# This variable is deprecated in EAPI 8 and banned in EAPI 9.  ${S} must be used
+# directly instead.
 #
 # Deprecated description:
 # Holds the path to the module source directory, used in various phase
 # functions.  If unset at the time of inherit, defaults to ${S}.
 if [[ -n ${NGINX_MOD_S} ]]; then
-	eqawarn "\${NGINX_MOD_S} will be removed in EAPI 9 and must not be used."
-	eqawarn "Use \${S} directly instead."
-	# Backwards compatibility stub for modules redefining module's source path
-	# via ${NGINX_MOD_S}.
-	S="${NGINX_MOD_S}"
+	case "${EAPI}" in
+		8)
+			eqawarn "\${NGINX_MOD_S} will be removed in EAPI 9 and must not be used."
+			eqawarn "Use \${S} directly instead."
+			# Backwards compatibility stub for modules redefining module's
+			# source path via ${NGINX_MOD_S}.
+			S="${NGINX_MOD_S}"
+			;;
+		*)
+			die "\${NGINX_MOD_S} has been removed in EAPI 9. Use \${S} directly instead."
+			;;
+	esac
 fi
 
 # @ECLASS_VARIABLE: NGINX_MOD_CONFIG_DIR
@@ -483,6 +497,10 @@ declare -g -A NGX_MOD_TO_SONAME+=(
 # Set to a non-empty value before calling nginx-module_src_install() to generate
 # and install load_module .conf stub(s) for the package.  See
 # nginx-module_src_install() for details.
+#
+# In EAPI 9, the functionality is enabled unconditionally, unless
+# NGINX_MOD_DONT_INSTALL_CONF_STUB is set to a non-empty value.
+[[ ${EAPI} != 8 ]] && readonly NGINX_MOD_INSTALL_CONF_STUB=1
 
 # @ECLASS_VARIABLE: NGINX_MOD_DONT_INSTALL_CONF_STUB
 # @DEFAULT_UNSET
@@ -812,8 +830,9 @@ nginx-module_src_install() {
 	doins "${NGINX_S}"/build/*.so
 
 	# Install stub configuration files only if NGINX_MOD_INSTALL_CONF_STUB is
-	# set and NGINX_MOD_DONT_INSTALL_CONF_STUB is not set. The latter is used by
-	# modules like ngx_devel_kit which are not meant to be enabled manually.
+	# set (or EAPI is 9) and NGINX_MOD_DONT_INSTALL_CONF_STUB is not set. The
+	# latter is used by modules like ngx_devel_kit which are not meant to be
+	# enabled manually.
 	if [[ -n ${NGINX_MOD_INSTALL_CONF_STUB} &&
 		-z ${NGINX_MOD_DONT_INSTALL_CONF_STUB} ]]; then
 		local mod
