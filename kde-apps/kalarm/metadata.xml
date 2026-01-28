@@ -10,7 +10,6 @@
 		<remote-id type="kde-invent">pim/kalarm</remote-id>
 	</upstream>
 	<use>
-		<flag name="mpv">Use <pkg>media-libs/mpvqt</pkg> instead of <pkg>media-video/vlc</pkg> audio alarms playback)</flag>
 		<flag name="pim">Enable birthday import, email functions etc. using <pkg>kde-apps/akonadi</pkg></flag>
 	</use>
 </pkgmetadata>
