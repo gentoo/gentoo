@@ -331,9 +331,9 @@ src_configure() {
 	fi
 
 	if use cuda; then
-		addpredict "/dev/nvidiactl" # bug 867706
-		addpredict "/dev/char"
-		addpredict "/proc/self/task" # bug 926116
+		# bug 867706 926116
+		cuda_add_sandbox
+		addpredict "/dev/char/"
 
 		mycmakeargs+=(
 			-DUSE_CUDNN=ON
