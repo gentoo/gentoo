@@ -115,7 +115,7 @@ econf_ngx() {
 		#
 		# Executing this without edo gets rid of the "Failed to run" message.
 		./configure "$@"
-		return
+		return 0
 	fi
 	edo ./configure "$@"
 }
