@@ -118,6 +118,9 @@ src_prepare() {
 		has_version -d ">=media-libs/libheif-1.18.0" && eapply "${FILESDIR}/${PN}-2.10_libheif-1.18_unconditional_compat.patch" # 940915
 	fi
 
+	# bug #910444
+	sed -e '/test-tools/d' -i app/tests/Makefile.am || die
+
 	gnome2_src_prepare  # calls eautoreconf
 
 	sed 's/-DGIMP_protect_DISABLE_DEPRECATED/-DGIMP_DISABLE_DEPRECATED/g' -i configure || die #615144
