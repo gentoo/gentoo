@@ -53,6 +53,7 @@ media-plugins/gst-plugins-openh264
 media-plugins/gst-plugins-opus
 media-plugins/gst-plugins-oss
 media-plugins/gst-plugins-pulse
+media-plugins/gst-plugins-qt6
 media-plugins/gst-plugins-raw1394
 media-plugins/gst-plugins-resindvd
 media-plugins/gst-plugins-rtmp
