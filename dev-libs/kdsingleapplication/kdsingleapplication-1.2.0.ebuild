@@ -12,7 +12,7 @@ S="${WORKDIR}"/KDSingleApplication-${PV}
 
 LICENSE="BSD MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 x86"
 
 IUSE="doc examples test"
 RESTRICT="!test? ( test )"
