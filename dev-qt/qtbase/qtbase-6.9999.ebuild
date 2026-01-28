@@ -1,4 +1,4 @@
-# Copyright 2021-2025 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -324,6 +324,13 @@ src_configure() {
 	)
 
 	qt6-build_src_configure
+}
+
+src_compile() {
+	# workaround missing qtest include race condition when building
+	# the new test from qtbase@b412e424b (needs more looking into)
+	cmake_build include/QtTest/QtTest
+	cmake_src_compile
 }
 
 src_test() {
