@@ -1,0 +1,27 @@
+--- bareos-Release-25.0.1/cmake/FindxxHash.cmake.orig	2026-01-28 22:34:15.925807414 +0100
++++ bareos-Release-25.0.1/cmake/FindxxHash.cmake	2026-01-28 22:34:51.718522587 +0100
+@@ -78,15 +78,15 @@
+   set(XXHASH_INCLUDE_DIRS ${XXHASH_INCLUDE_DIR})
+   set(HAVE_XXHASH 1)
+ 
+-  # check for dispatch-support
+-  if("${CMAKE_SYSTEM_PROCESSOR}" MATCHES "^(x86_64|amd64|AMD64)$")
+-    include(CMakePushCheckState)
+-    include(CheckIncludeFiles)
+-    cmake_push_check_state()
+-    set(CMAKE_REQUIRED_INCLUDES "${XXHASH_INCLUDE_DIRS}")
+-    check_include_files("xxh_x86dispatch.h" XXHASH_ENABLE_DISPATCH)
+-    cmake_pop_check_state()
+-  endif()
++# # check for dispatch-support
++# if("${CMAKE_SYSTEM_PROCESSOR}" MATCHES "^(x86_64|amd64|AMD64)$")
++#   include(CMakePushCheckState)
++#   include(CheckIncludeFiles)
++#   cmake_push_check_state()
++#   set(CMAKE_REQUIRED_INCLUDES "${XXHASH_INCLUDE_DIRS}")
++#   check_include_files("xxh_x86dispatch.h" XXHASH_ENABLE_DISPATCH)
++#   cmake_pop_check_state()
++# endif()
+ endif()
+ 
+ mark_as_advanced(XXHASH_INCLUDE_DIR XXHASH_LIBRARY)
