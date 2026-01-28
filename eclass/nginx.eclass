@@ -762,7 +762,7 @@ nginx_src_test() {
 # and NGINX headers into '/usr/include/nginx'.
 nginx_src_install() {
 	debug-print-function "${FUNCNAME[0]}" "$@"
-	emake DESTDIR="${ED}" install
+	emake DESTDIR="${D}" install
 	keepdir "/usr/$(get_libdir)/nginx/modules"
 
 	keepdir /var/log/nginx
