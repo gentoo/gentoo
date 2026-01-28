@@ -34,6 +34,7 @@ DEPEND="
 		>=dev-java/jna-5.18.1:0
 		>=dev-java/jsr305-3.0.2-r1:0
 		>=dev-java/junit-pioneer-1.9.1-r1:0
+		dev-java/junit:5[-vintage]
 		>=dev-java/mockito-5.20.0-r1:0
 		>=dev-java/objenesis-3.4:0
 		>=dev-java/opentest4j-1.3.0-r1:0
