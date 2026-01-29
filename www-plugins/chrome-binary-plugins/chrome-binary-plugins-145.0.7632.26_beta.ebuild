@@ -32,7 +32,7 @@ SRC_URI="https://dl.google.com/linux/chrome/deb/pool/main/g/${MY_PN}/${MY_P}_amd
 S="${WORKDIR}/${CHROMEDIR}"
 
 LICENSE="google-chrome"
-KEYWORDS="-* ~amd64"
+KEYWORDS="~amd64"
 RESTRICT="bindist mirror strip"
 
 RDEPEND="
