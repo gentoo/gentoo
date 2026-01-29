@@ -153,7 +153,7 @@ src_compile() {
 }
 
 src_test() {
-	JAVA_TEST_GENTOO_CLASSPATH="junit-4,mockito-2,pdfbox,xmlunit-1"
+	JAVA_TEST_GENTOO_CLASSPATH="junit-4,mockito-2,pdfbox-2,xmlunit-1"
 
 	einfo "Testing fop-events"
 	JAVA_TEST_EXCLUDES="org.apache.fop.events.TestEventProducer"
