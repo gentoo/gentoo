@@ -1,0 +1,38 @@
+From ef0e9271bbddf27abc520baf8ab9ecef6aa8813b Mon Sep 17 00:00:00 2001
+From: Zurab Kvachadze <zurabid2016@gmail.com>
+Date: Mon, 26 Jan 2026 15:54:51 +0100
+Subject: [PATCH] auto/cc: Use portable/POSIX 'command -v' instead of 'which'
+
+Submitted upstream at https://github.com/nginx/njs/pull/1016.
+
+'which' is not a portable utility as it is not specified by POSIX. Since
+auto/cc is already a shell script, use the more direct and portable
+'command' builtin to detect $CC.
+
+There are two bugs linked here. The first one is a downstream report of
+this issue. The second one is more general information on why 'which'
+usage is an issue and should be avoided.
+
+Bug: https://bugs.gentoo.org/969288
+Bug: https://bugs.gentoo.org/646588
+Signed-off-by: Zurab Kvachadze <zurabid2016@gmail.com>
+---
+ auto/cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/auto/cc b/auto/cc
+index 8a615ec4..5b21e17e 100644
+--- a/auto/cc
++++ b/auto/cc
+@@ -13,7 +13,7 @@ END
+ # Allow error exit status.
+ set +e
+ 
+-if [ -z "$(which $CC)" ]; then
++if ! command -v "${CC}" >/dev/null; then
+     echo
+     echo $0: error: $CC not found.
+     echo
+-- 
+2.52.0
+
