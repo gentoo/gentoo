@@ -1,0 +1,25 @@
+https://github.com/basvandijk/lifted-base/pull/35
+From: Rebecca Turner <rbt@sent.as>
+Date: Thu, 16 Mar 2023 14:12:35 -0700
+Subject: [PATCH] Remove `Control.Monad.Trans.List` test
+
+The transformer is invalid on most monads (deprecated) and has been
+removed from `transformers` 0.6
+--- a/test/test.hs
++++ b/test/test.hs
+@@ -13,7 +13,6 @@ import Control.Monad.Base (liftBase)
+ 
+ -- from transformers:
+ import Control.Monad.Trans.Identity
+-import Control.Monad.Trans.List
+ import Control.Monad.Trans.Maybe
+ import Control.Monad.Trans.Reader
+ import Control.Monad.Trans.Writer
+@@ -41,7 +40,6 @@ import Test.HUnit hiding (Test)
+ main :: IO ()
+ main = defaultMain
+     [ testSuite "IdentityT" runIdentityT
+-    , testSuite "ListT" $ fmap head . runListT
+     , testSuite "MaybeT" $ fmap fromJust . runMaybeT
+     , testSuite "ReaderT" $ flip runReaderT "reader state"
+     , testSuite "WriterT" runWriterT'

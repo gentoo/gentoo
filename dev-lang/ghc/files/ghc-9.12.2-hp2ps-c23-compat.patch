@@ -1,0 +1,93 @@
+From: https://gitlab.haskell.org/ghc/ghc/-/commit/f83cfc08cfe8e5a7dbda894a1e8f84a94491b104
+From: Jens Petersen <juhpetersen@gmail.com>
+Date: Tue, 21 Jan 2025 13:04:52 +0000
+Subject: [PATCH] hp2ps/Utilities.c: add extern parameter types for malloc and
+ realloc for C23
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Fix build with gcc-15 which defaults to C23 standard (-std=gnu23)
+Fixes #25662
+```
+utils/hp2ps/Utilities.c:6:14: error:
+     warning: conflicting types for built-in function ‘malloc’; expected ‘void *(long unsigned int)’ [-Wbuiltin-declaration-mismatch]
+        6 | extern void* malloc();
+          |              ^~~~~~
+  |
+6 | extern void* malloc();
+  |              ^
+utils/hp2ps/Utilities.c:5:1: error:
+     note: ‘malloc’ is declared in header ‘<stdlib.h>’
+        4 | #include "Error.h"
+      +++ |+#include <stdlib.h>
+        5 |
+  |
+5 |
+  | ^
+utils/hp2ps/Utilities.c: In function ‘xmalloc’:
+utils/hp2ps/Utilities.c:80:17: error:
+     error: too many arguments to function ‘malloc’; expected 0, have 1
+       80 |     r = (void*) malloc(n);
+          |                 ^~~~~~ ~
+   |
+80 |     r = (void*) malloc(n);
+   |                 ^
+utils/hp2ps/Utilities.c:6:14: error:
+     note: declared here
+        6 | extern void* malloc();
+          |              ^~~~~~
+  |
+6 | extern void* malloc();
+  |              ^
+utils/hp2ps/Utilities.c: In function ‘xrealloc’:
+utils/hp2ps/Utilities.c:92:18: error:
+     warning: conflicting types for built-in function ‘realloc’; expected ‘void *(void *, long unsigned int)’ [-Wbuiltin-declaration-mismatch]
+       92 |     extern void *realloc();
+          |                  ^~~~~~~
+   |
+92 |     extern void *realloc();
+   |                  ^
+utils/hp2ps/Utilities.c:92:18: error:
+     note: ‘realloc’ is declared in header ‘<stdlib.h>’
+   |
+92 |     extern void *realloc();
+   |                  ^
+utils/hp2ps/Utilities.c:94:9: error:
+     error: too many arguments to function ‘realloc’; expected 0, have 2
+       94 |     r = realloc(p, n);
+          |         ^~~~~~~ ~
+   |
+94 |     r = realloc(p, n);
+   |         ^
+utils/hp2ps/Utilities.c:92:18: error:
+     note: declared here
+       92 |     extern void *realloc();
+          |                  ^~~~~~~
+   |
+92 |     extern void *realloc();
+   |                  ^
+```
+--- a/utils/hp2ps/Utilities.c
++++ b/utils/hp2ps/Utilities.c
+@@ -3,7 +3,7 @@
+ #include <string.h>
+ #include "Error.h"
+ 
+-extern void* malloc();
++extern void* malloc(long unsigned int);
+ 
+ char*
+ Basename(char *name)
+@@ -89,7 +89,7 @@ void *
+ xrealloc(void *p, size_t n)
+ {
+     void *r;
+-    extern void *realloc();
++    extern void *realloc(void *, long unsigned int);
+ 
+     r = realloc(p, n);
+     if (!r) {
+-- 
+GitLab
+

@@ -1,0 +1,24 @@
+From 6b5f632881b3e0a9ee39a692aaad56af185ce6fc Mon Sep 17 00:00:00 2001
+From: hololeap <hololeap@protonmail.com>
+Date: Tue, 20 Jan 2026 18:11:51 -0700
+Subject: [PATCH 1/1] Add missing Semigroup instance to ttrender
+
+Signed-off-by: hololeap <hololeap@protonmail.com>
+--- a/ttrender/Debug/Trace/Tree/Render/Edged.hs
++++ b/ttrender/Debug/Trace/Tree/Render/Edged.hs
+@@ -105,9 +105,11 @@ renderCoords Coords{..} =
+ 
+ newtype Arrows = Arrows { addArrows :: Diagram B -> Diagram B }
+ 
++instance Semigroup Arrows where
++  Arrows f <> Arrows g = Arrows (f . g)
++
+ instance Monoid Arrows where
+   mempty = Arrows id
+-  Arrows f `mappend` Arrows g = Arrows (f . g)
+ 
+ -- based on 'connectOutside'
+ connectLabelled :: ArrowOpts Double -> Diagram B -> Bool -> Int -> Int -> Arrows
+-- 
+2.52.0
+

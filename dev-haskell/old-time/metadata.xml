@@ -12,4 +12,8 @@
 		&lt;http://hackage.haskell.org/package/time time library&gt;
 		is recommended.
 	</longdescription>
+	<upstream>
+		<remote-id type="hackage">old-time</remote-id>
+		<remote-id type="github">haskell/old-time</remote-id>
+	</upstream>
 </pkgmetadata>

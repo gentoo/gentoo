@@ -6,6 +6,7 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="hackage">semigroupoids</remote-id>
 		<remote-id type="github">ekmett/semigroupoids</remote-id>
 	</upstream>
 </pkgmetadata>
