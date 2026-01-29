@@ -6,7 +6,9 @@ EAPI=8
 LUA_COMPAT=( lua5-{3..4} )
 # do not add a ssl USE flag.  ssl is mandatory
 SSL_DEPS_SKIP=1
-inherit autotools dot-a eapi9-ver flag-o-matic lua-single ssl-cert systemd toolchain-funcs
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/dovecot.asc
+inherit autotools dot-a eapi9-ver flag-o-matic lua-single ssl-cert systemd
+inherit toolchain-funcs verify-sig
 
 MY_P="${P/_/.}"
 MY_PV="${PV}"
@@ -17,9 +19,18 @@ HOMEPAGE="https://www.dovecot.org/"
 SRC_URI="https://www.dovecot.org/releases/${major_minor}/${MY_P}.tar.gz
 	sieve? (
 	https://pigeonhole.dovecot.org/releases/${major_minor}/${PN}-pigeonhole-${MY_PV}.tar.gz
+		verify-sig? (
+		https://pigeonhole.dovecot.org/releases/${major_minor}/${PN}-pigeonhole-${MY_PV}.tar.gz.sig
+		)
 	)
 	managesieve? (
 	https://pigeonhole.dovecot.org/releases/${major_minor}/${PN}-pigeonhole-${MY_PV}.tar.gz
+		verify-sig? (
+		https://pigeonhole.dovecot.org/releases/${major_minor}/${PN}-pigeonhole-${MY_PV}.tar.gz.sig
+		)
+	)
+	verify-sig? (
+	https://www.dovecot.org/releases/${major_minor}/${MY_P}.tar.gz.sig
 	) "
 S="${WORKDIR}/${MY_P}"
 PIEGONHOLE_S="../dovecot-pigeonhole-${MY_PV}"
@@ -86,6 +97,7 @@ BDEPEND="virtual/pkgconfig
 			')
 		)
 	)
+	verify-sig? ( sec-keys/openpgp-keys-dovecot )
 	"
 
 PATCHES=(
@@ -99,6 +111,16 @@ pkg_setup() {
 		ewarn "managesieve USE flag selected but sieve USE flag unselected"
 		ewarn "sieve USE flag will be turned on"
 	fi
+}
+
+src_unpack() {
+	if use verify-sig; then
+		verify-sig_verify_detached "${DISTDIR}"/${MY_P}.tar.gz{,.sig}
+		use sieve && verify-sig_verify_detached "${DISTDIR}"/${PN}-pigeonhole-${MY_PV}.tar.gz{,.sig}
+		use managesieve && verify-sig_verify_detached "${DISTDIR}"/${PN}-pigeonhole-${MY_PV}.tar.gz{,.sig}
+	fi
+
+	default
 }
 
 src_prepare() {
