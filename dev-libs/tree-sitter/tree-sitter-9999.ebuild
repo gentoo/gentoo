@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ SLOT="0/${PV}"
 RESTRICT="test" # tests are for CLI and not the lib
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.22.2-no-static.patch"
+	"${FILESDIR}/${PN}-0.26.3-no-static.patch"
 )
 
 src_prepare() {
