@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -16,16 +16,26 @@ KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="nls"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="${PYTHON_DEPS}
-	app-i18n/anthy
+RDEPEND="
+	${PYTHON_DEPS}
+	app-i18n/anthy-unicode
+	dev-libs/glib:2
 	$(python_gen_cond_dep '
 		app-i18n/ibus[python(+),${PYTHON_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
-	nls? ( virtual/libintl )"
+	nls? ( virtual/libintl )
+"
 DEPEND="${RDEPEND}"
-BDEPEND="sys-devel/gettext
-	virtual/pkgconfig"
+BDEPEND="
+	sys-devel/gettext
+	virtual/pkgconfig
+"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.5.17-fix_pkgconfig.patch
+	"${FILESDIR}"/${PN}-1.5.17-fix_memleak.patch
+)
 
 src_prepare() {
 	default
@@ -34,11 +44,13 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		$(use_enable nls) \
-		--enable-private-png \
-		--with-layout=default \
+	local myeconfargs=(
+		$(use_enable nls)
+		--enable-private-png
+		--with-layout=default
 		--with-python=${EPYTHON}
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_test() {
