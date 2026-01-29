@@ -23,8 +23,11 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
 
+# defusedxml is optional, it falls back to builtin, but then it's
+# automagic, so just always depend on it.
 RDEPEND="
 	app-admin/pass
+	dev-python/defusedxml[${PYTHON_USEDEP}]
 	dev-python/pyaml[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/zxcvbn[${PYTHON_USEDEP}]
@@ -98,7 +101,6 @@ src_install() {
 
 pkg_postinst() {
 	#optfeature "Lastpass cli based import/export" app-admin/lpass
-	#optfeature "XML based import" dev-python/defusedxml # preferred upstream but uses built-in xml if missing
 	optfeature "Keepass import from KDBX file" dev-python/pykeepass
 	optfeature "Gnome Keyring import" dev-python/secretstorage
 	optfeature "AndOTP or Aegis encrypted import" dev-python/cryptography
