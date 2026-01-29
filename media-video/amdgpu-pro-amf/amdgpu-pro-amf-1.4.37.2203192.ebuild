@@ -16,7 +16,7 @@ MY_PV_FULL="${MY_PV}-${MY_PV_REV}"
 MY_PN="amf-amdgpu-pro"
 MY_PN_ENC="libamdenc-amdgpu-pro"
 
-INTERNAL_VER="6.4.3"
+INTERNAL_VER="6.4.4"
 EXTERNAL_VER="25.10"
 UBUNTU_VER="24.04"
 

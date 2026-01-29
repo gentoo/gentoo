@@ -11,7 +11,7 @@ MY_PV_REV=$(ver_cut 3)
 
 MY_PV="${MY_PV_HIGH}.${MY_PV_MIDDLE}"
 
-INTERNAL_VER="6.4.3"
+INTERNAL_VER="6.4.4"
 
 MY_PV_FULL="${MY_PV}-${MY_PV_REV}"
 
