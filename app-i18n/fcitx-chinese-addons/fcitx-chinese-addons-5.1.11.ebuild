@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~riscv x86"
 IUSE="+cloudpinyin +data +gui lua +opencc test webengine"
 REQUIRED_USE="webengine? ( gui )"
 RESTRICT="!test? ( test )"
