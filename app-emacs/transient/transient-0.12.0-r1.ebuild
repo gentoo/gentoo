@@ -1,7 +1,9 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
+
+NEED_EMACS="28.1"
 
 inherit elisp
 
@@ -25,6 +27,7 @@ SLOT="0"
 
 RDEPEND="
 	app-emacs/compat
+	app-emacs/cond-let
 "
 BDEPEND="
 	${RDEPEND}
@@ -34,6 +37,8 @@ BDEPEND="
 DOCS=( CHANGELOG README.org "docs/${PN}.org" )
 ELISP_TEXINFO="docs/${PN}.texi"
 SITEFILE="50${PN}-gentoo.el"
+
+elisp-enable-tests ert test -l "${PN}-tests"
 
 src_prepare() {
 	mv ./lisp/*.el . || die
