@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,9 +17,7 @@ DEPEND="sys-kernel/dracut"
 RDEPEND="${DEPEND}
 	|| (
 		net-misc/connman
-		net-misc/dhcp
-		net-misc/dhcpcd
-		net-misc/netifrc
+		net-misc/dhcp[client]
 		net-misc/networkmanager
 		sys-apps/systemd
 	)
