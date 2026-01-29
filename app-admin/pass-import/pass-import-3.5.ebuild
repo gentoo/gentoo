@@ -6,7 +6,8 @@ EAPI=8
 PYTHON_COMPAT=( python3_{11..14} )
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
-inherit distutils-r1 optfeature shell-completion xdg-utils
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/roddhjav.asc
+inherit distutils-r1 optfeature shell-completion verify-sig xdg-utils
 
 DESCRIPTION="pass extension for importing data from most existing password managers"
 HOMEPAGE="
@@ -16,7 +17,9 @@ HOMEPAGE="
 # lacking test files in sdist
 SRC_URI="
 	https://github.com/roddhjav/pass-import/releases/download/v${PV}/${P}.tar.gz
-		-> ${P}.gh.tar.gz
+	verify-sig? (
+		https://github.com/roddhjav/pass-import/releases/download/v${PV}/${P}.tar.gz.asc
+	)
 "
 
 LICENSE="GPL-3"
@@ -35,6 +38,9 @@ RDEPEND="
 BDEPEND="
 	test? (
 		sys-apps/dbus
+	)
+	verify-sig? (
+		sec-keys/openpgp-keys-roddhjav
 	)
 "
 
