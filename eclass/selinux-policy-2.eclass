@@ -7,7 +7,7 @@
 # @ECLASS: selinux-policy-2.eclass
 # @MAINTAINER:
 # selinux@gentoo.org
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: This eclass supports the deployment of the various SELinux modules in sec-policy
 # @DESCRIPTION:
 # The selinux-policy-2.eclass supports deployment of the various SELinux modules
@@ -18,13 +18,13 @@
 # Also, it supports for bundling patches to make the whole thing just a bit more
 # manageable.
 
-case ${EAPI} in
-	7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_SELINUX_POLICY_2_ECLASS} ]]; then
 _SELINUX_POLICY_2_ECLASS=1
+
+case ${EAPI} in
+	7|8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # @ECLASS_VARIABLE: MODS
 # @DESCRIPTION:

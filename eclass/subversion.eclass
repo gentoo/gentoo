@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: subversion.eclass
@@ -6,19 +6,21 @@
 # Akinori Hattori <hattya@gentoo.org>
 # @AUTHOR:
 # Original Author: Akinori Hattori <hattya@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: Fetch software sources from subversion repositories
 # @DESCRIPTION:
 # The subversion eclass provides functions to fetch software sources
 # from subversion repositories.
 
+if [[ -z ${_SUBVERSION_ECLASS} ]]; then
+_SUBVERSION_ECLASS=1
+
 case ${EAPI} in
-	7|8) inherit estack ;;
+	7|8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ -z ${_SUBVERSION_ECLASS} ]]; then
-_SUBVERSION_ECLASS=1
+inherit estack
 
 PROPERTIES+=" live"
 

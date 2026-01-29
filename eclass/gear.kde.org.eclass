@@ -4,7 +4,7 @@
 # @ECLASS: gear.kde.org.eclass
 # @MAINTAINER:
 # kde@gentoo.org
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @PROVIDES: kde.org
 # @BLURB: Support eclass for KDE Gear packages.
 # @DESCRIPTION:
@@ -17,13 +17,13 @@
 # variables and helper functions (not phase functions) may be considered as
 # part of this eclass's API.
 
-case ${EAPI} in
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_GEAR_KDE_ORG_ECLASS} ]]; then
 _GEAR_KDE_ORG_ECLASS=1
+
+case ${EAPI} in
+	8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # @ECLASS_VARIABLE: KDE_PV_UNRELEASED
 # @INTERNAL
