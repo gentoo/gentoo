@@ -7,7 +7,7 @@ LUA_COMPAT=( luajit )
 PYTHON_COMPAT=( python3_{11..14} )
 VALA_USE_DEPEND=vapigen
 
-inherit flag-o-matic lua-single meson python-single-r1 toolchain-funcs vala xdg
+inherit bash-completion-r1 branding flag-o-matic lua-single meson python-single-r1 toolchain-funcs vala xdg
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"
@@ -38,11 +38,10 @@ fi
 LICENSE="GPL-3+ LGPL-3+"
 SLOT="0/${MAJOR_VERSION}"
 
-IUSE="X aalib alsa doc fits gnome heif javascript jpeg2k jpegxl lua mng openexr openmp postscript test udev unwind vala vector-icons wayland webp wmf xpm"
+IUSE="X aalib alsa bash-completion doc fits gnome heif javascript jpeg2k jpegxl lua mng openexr openmp postscript test udev unwind vala vector-icons wayland webp wmf xpm"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	lua? ( ${LUA_REQUIRED_USE} )
-	test? ( X )
 	xpm? ( X )
 "
 
@@ -142,20 +141,23 @@ BDEPEND="
 	>=dev-util/gdbus-codegen-2.80.5-r1
 	>=sys-devel/gettext-0.21
 	virtual/pkgconfig
+	bash-completion? (
+		app-shells/bash-completion
+		app-shells/bash
+	)
 	doc? (
 		>=dev-libs/gobject-introspection-1.82.0-r2[doctool]
 		dev-util/gi-docgen
 	)
-	test? ( x11-misc/xvfb-run )
 	vala? ( $(vala_depend) )
 	vector-icons? ( x11-misc/shared-mime-info )
 "
+#	X? ( test? (
+#		sys-apps/dbus
+#		x11-misc/xvfb-run
+#	) )
 
 DOCS=( "AUTHORS" "NEWS" "README" "README.i18n" )
-
-PATCHES=(
-	"${FILESDIR}"/gimp-3.0.6-fix-tests.patch
-)
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
@@ -185,7 +187,7 @@ src_prepare() {
 	sed -i -e 's/@PYTHON_EXE@/'${EPYTHON}'/' plug-ins/python/pygimp.interp.in || die
 
 	# Set proper intallation path of documentation logo
-	sed -i -e "s/'gimp-@0@'.format(gimp_app_version)/'gimp-${PVR}'/" gimp-data/images/logo/meson.build || die
+	sed -i -e "s/'gimp-' + gimp_api_version/'gimp-${PVR}'/" gimp-data/images/logo/meson.build || die
 
 	# Force disable x11_target if USE="-X" is setup. See bug 943164 for additional info
 	use !X && { sed -i -e 's/x11_target = /x11_target = false #/' meson.build || die; }
@@ -193,8 +195,8 @@ src_prepare() {
 
 src_configure() {
 	# defang automagic dependencies. Bug 943164
-	use wayland || append-cflags -DGENTOO_GTK_HIDE_WAYLAND
-	use X || append-cflags -DGENTOO_GTK_HIDE_X11
+	use wayland || append-cppflags -DGENTOO_GTK_HIDE_WAYLAND
+	use X || append-cppflags -DGENTOO_GTK_HIDE_X11
 
 	use vala && vala_setup
 
@@ -205,12 +207,13 @@ src_configure() {
 		-Ddebug-self-in-build=false
 		-Denable-multiproc=true
 		-Dappdata-test=disabled
-		-Dbug-report-url=https://bugs.gentoo.org/
+		-Dbug-report-url="${BRANDING_OS_BUG_REPORT_URL}"
 		-Dilbm=disabled
 		-Dlibbacktrace=false
 		-Dwebkit-unmaintained=false
 		$(meson_feature aalib aa)
 		$(meson_feature alsa)
+		$(meson_feature bash-completion)
 		$(meson_feature doc gi-docgen)
 		$(meson_feature fits)
 		$(meson_feature heif)
@@ -221,7 +224,9 @@ src_configure() {
 		$(meson_feature openexr)
 		$(meson_feature openmp)
 		$(meson_feature postscript ghostscript)
-		$(meson_feature test headless-tests)
+		# https://gitlab.gnome.org/GNOME/gimp/-/issues/15763
+		-Dheadless-tests=disabled
+		#$(usex X $(meson_feature test headless-tests) -Dheadless-tests=disabled )
 		$(meson_feature udev gudev)
 		$(meson_feature vala)
 		$(meson_feature webp)
@@ -261,11 +266,14 @@ _rename_plugins() {
 
 src_test() {
 	local -x LD_LIBRARY_PATH="${BUILD_DIR}/libgimp:${LD_LIBRARY_PATH}"
+
 	# Try hard to avoid system installed gimp causing issues
 	local -x GIMP3_DIRECTORY="${BUILD_DIR}/"
 	local -x GIMP3_PLUGINDIR="${BUILD_DIR}/plug-ins/"
 	local -x GIMP3_SYSCONFDIR="${BUILD_DIR}/etc/"
-	meson_src_test
+
+	# Flakyness is possible
+	meson_src_test -j1
 }
 
 src_install() {
@@ -281,6 +289,10 @@ src_install() {
 	dosym "${ESYSROOT}"/usr/bin/gimp-script-fu-interpreter-${MAJOR_VERSION} /usr/bin/gimp-script-fu-interpreter
 	dosym "${ESYSROOT}"/usr/bin/gimp-test-clipboard-${MAJOR_VERSION} /usr/bin/gimp-test-clipboard
 	dosym "${ESYSROOT}"/usr/bin/gimptool-${MAJOR_VERSION} /usr/bin/gimptool
+
+	if use bash-completion; then
+		bashcomp_alias gimp-3.0 gimp{,-3} gimp-console{,-3,-3.0}
+	fi
 
 	_rename_plugins || die
 }

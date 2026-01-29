@@ -146,7 +146,10 @@ BDEPEND="
 		>=dev-libs/gobject-introspection-1.82.0-r2[doctool]
 		dev-util/gi-docgen
 	)
-	test? ( x11-misc/xvfb-run )
+	test? (
+		sys-apps/dbus
+		x11-misc/xvfb-run
+	)
 	vala? ( $(vala_depend) )
 	vector-icons? ( x11-misc/shared-mime-info )
 "
@@ -194,8 +197,8 @@ src_prepare() {
 
 src_configure() {
 	# defang automagic dependencies. Bug 943164
-	use wayland || append-cflags -DGENTOO_GTK_HIDE_WAYLAND
-	use X || append-cflags -DGENTOO_GTK_HIDE_X11
+	use wayland || append-cppflags -DGENTOO_GTK_HIDE_WAYLAND
+	use X || append-cppflags -DGENTOO_GTK_HIDE_X11
 
 	use vala && vala_setup
 
