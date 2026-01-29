@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: nginx-module.eclass
@@ -6,14 +6,16 @@
 # Zurab Kvachadze <zurabid2016@gmail.com>
 # @AUTHOR:
 # Zurab Kvachadze <zurabid2016@gmail.com>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @BLURB: Provides a common set of functions for building NGINX's dynamic modules
 # @DESCRIPTION:
 # The nginx-module.eclass automates configuring, building and installing NGINX's
 # dynamic modules.  Using this eclass is as simple as calling 'inherit nginx-module'.
-# This eclass automatically adds dependencies on www-servers/nginx.  Henceforth,
-# the terms 'package' and 'module' will be used interchangeably to refer to a
-# consumer of nginx-module.eclass.
+# This eclass automatically adds dependencies on www-servers/nginx.
+# Additionally, NGINX_MOD_INSTALL_CONF_STUB may be set to automatically generate
+# load_module .conf stubs for NGINX.  Henceforth, the terms 'package' and
+# 'module' will be used interchangeably to refer to a consumer of
+# nginx-module.eclass.
 #
 # If a part of package's functionality depends on NGINX configuration (e.g. HMAC
 # generation support depending on http_ssl module being present), the
@@ -35,11 +37,11 @@
 # linked to shared objects of the specified dependencies.  See the variable
 # description for details.
 #
-# If the dependencies are USE-conditional, they should be specified as
-# usual in the relevant *DEPEND variable(s).  Then, before
-# nginx-module_src_configure() is called, the dependencies should be linked to by
-# calling the ngx_mod_link_module() function.  See the function description for
-# more information.
+# If the dependencies are USE-conditional, they should be specified as usual in
+# the relevant *DEPEND variable(s).  Then, before nginx-module_src_compile() is
+# called, the dependencies should be linked to by calling the
+# ngx_mod_link_module() function.  See the function description for more
+# information.
 #
 # nginx-module.eclass also supports tests provided by the Test::Nginx Perl
 # module.  To enable them, set NGINX_MOD_OPENRESTY_TESTS to a non-empty value
@@ -80,16 +82,22 @@
 #     nginx-module_src_configure
 # }
 # @CODE
-
-case ${EAPI} in
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
+#
+# EAPI porting notes:
+#   - 8 -> 9:
+#     * NGINX_MOD_S is removed completely. Eclass die's if its set.
+#     * NGINX_MOD_INSTALL_CONF_STUB is enabled unconditionally.
 
 if [[ -z ${_NGINX_MODULE_ECLASS} ]]; then
 _NGINX_MODULE_ECLASS=1
 
-inherit edo flag-o-matic toolchain-funcs
+case ${EAPI} in
+	8) inherit edo ;;
+	9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+inherit flag-o-matic toolchain-funcs
 
 #-----> Generic helper functions <-----
 
@@ -115,7 +123,7 @@ econf_ngx() {
 		#
 		# Executing this without edo gets rid of the "Failed to run" message.
 		./configure "$@"
-		return
+		return 0
 	fi
 	edo ./configure "$@"
 }
@@ -183,9 +191,6 @@ ngx_mod_pkg_to_sonames() {
 # module's shared objects.  Flags may be of any form accepted by linker.
 # See the nginx_src_install() function in nginx.eclass for more details.
 #
-# This function has no effect after nginx-module_src_configure() has been
-# called.
-#
 # Example usage:
 # @CODE
 # ngx_mod_append_libs "-L/usr/$(get_libdir)/nginx/modules" \
@@ -195,7 +200,18 @@ ngx_mod_append_libs() {
 	debug-print-function "${FUNCNAME[0]}" "$@"
 	[[ $# -eq 0 ]] && return 0
 
-	export _NGINX_GENTOO_MOD_LIBS="${_NGINX_GENTOO_MOD_LIBS} $*"
+	local resp_file="${T}/append-libs-resp-file"
+
+	# Setup the response file. Make sure to do it only once.
+	if [[ -z ${_NGX_MOD_RESP_FILE_SET_UP} ]]; then
+		touch "${resp_file}" || die "touch failed"
+		export _NGINX_GENTOO_MOD_LIBS+=" @${resp_file}"
+		declare -g -r _NGX_MOD_RESP_FILE_SET_UP=1
+	fi
+
+	# If multiple arguments are passed, expand them as separate words so that
+	# printf prints separate arguments on separate lines.
+	printf '%s\n' "$@" >> "${resp_file}" || die "printf failed"
 }
 
 # @FUNCTION: ngx_mod_setup_link_modules
@@ -213,81 +229,11 @@ ngx_mod_setup_link_modules() {
 	# Check whether this function has already been called.
 	[[ -n ${_NGX_MOD_SETUP_LINK_CALLED} ]] && return 0
 	declare -g -r _NGX_MOD_SETUP_LINK_CALLED=1
-
 	local moddir
 	moddir="${EPREFIX}/usr/$(get_libdir)/nginx/modules"
-	# Add 'moddir' to the list of directories search by linker.
-	ngx_mod_append_libs "-L${moddir}"
-
-	# The string passed to ngx_mod_append_libs undergoes the following
-	# transformations by NGINX build system (the str variable denotes the
-	# original string and 'modname' represents the name of the current module):
-	#         0. Given the value of 'str':
-	#             $ echo "${str}"
-	#             -Wl,-rpath,'\''\$\${ORIGIN}'\''
-	#
-	#         1. In auto/module, line 93:
-	#             eval ${modname}_libs=\'$str\'.
-	#         yields
-	#             modname_libs='-Wl,-rpath,'\''\$\${ORIGIN}'\'''
-	#         which can be logically separated into
-	#             (a) '-Wl,-rpath,'
-	#                 ^
-	#                 |
-	#       The first original single quote (\'$str\')
-	#                                         ^
-	#                                         |
-	#                                       This one
-	#             (b) \' (backslash-escaped semicolon)
-	#             (c) '\$\${ORIGIN}'
-	#             (d) \'
-	#             (e) ''
-	#				   ^
-	#				   |
-	#		The last original single quote (\'$str\')
-	#		                                       ^
-	#		                                       |
-	#		                                   This one
-	#         To preserve the string we add literal ' and \' so that the
-	#         ORIGIN part does not get expanded.
-	#           - (a) expands to
-	#               -Wl,-rpath
-	#           - (b) expands to
-	#               '
-	#           - (c) expands to
-	#               \$\${ORIGIN}
-	#           - (d) expands to
-	#               '
-	#           - (e) expands to nothing
-	#         Thus, after evaluating, the value of modname_libs is the
-	#         following.
-	#             $ echo "${modname_libs}"
-	#             -Wl,-rpath,'\$\${ORIGIN}'
-	#
-	#         2. In auto/make, line 507:
-	#             eval eval ngx_module_libs="\\\"\$${modname}_libs\\\"".
-	#         The expansion of parameters and double quotes produces the
-	#         following.
-	#             \"$modname_libs\"
-	#         The first outermost eval obtains the contents of the
-	#         ${modname}_libs variable and encloses them in double quotes,
-	#         yielding:
-	#		      eval ngx_module_libs="-Wl,-rpath,'\$\${ORIGIN}'"
-	#         The second innermost eval expands the double-quoted string,
-	#         produced by the first eval, stripping backslashes from '$'. The
-	#         value of 'ngx_module_libs' is therefore:
-	#             $ echo "${ngx_module_libs}"
-	#             -Wl,-rpath,'$${ORIGIN}'
-	#
-	#         3. ngx_module_libs's contents are added to the Makefile. make
-	#         expands $var variable references, double dollar is used to
-	#         suppress the expanding. Thus, the following is passed to the
-	#         shell:
-	#             -Wl,-rpath,'${ORIGIN}'
-	#
-	#         4. Finally, shell expands the single quotes, yielding literal:
-	#             -Wl,-rpath,${ORIGIN}
-	ngx_mod_append_libs "-Wl,-rpath,'\''"'\$\${ORIGIN}'"'\''"
+	# Add 'moddir' to the list of directories search by linker and add 'moddir'
+	# to the module's RUNPATH.
+	ngx_mod_append_libs "-L${moddir}" "-Wl,-rpath,\${ORIGIN}"
 }
 
 # @FUNCTION: ngx_mod_link_module
@@ -297,8 +243,7 @@ ngx_mod_setup_link_modules() {
 # package passed as the argument.  This function automatically calls
 # ngx_mod_setup_link_modules(), if it has not been called.  If the specified
 # package provides more than one shared object, all of the shared objects are
-# linked to.  As ngx_mod_append_libs(), this function has no effect after
-# nginx-module_src_configure has been called.
+# linked to.
 #
 # This function uses the ngx_mod_pkg_to_sonames() function under the hood to map
 # package names to shared objects.  If there are no predefined mappings for the
@@ -371,27 +316,47 @@ ngx_mod_link_lib() {
 #-----> ebuild-defined variables <-----
 
 # @ECLASS_VARIABLE: NGINX_MOD_S
+# @DEPRECATED: S
 # @DESCRIPTION:
+# This variable is deprecated in EAPI 8 and banned in EAPI 9.  ${S} must be used
+# directly instead.
+#
+# Deprecated description:
 # Holds the path to the module source directory, used in various phase
 # functions.  If unset at the time of inherit, defaults to ${S}.
-: "${NGINX_MOD_S=${S}}"
+if [[ -n ${NGINX_MOD_S} ]]; then
+	case "${EAPI}" in
+		8)
+			eqawarn "\${NGINX_MOD_S} will be removed in EAPI 9 and must not be used."
+			eqawarn "Use \${S} directly instead."
+			# Backwards compatibility stub for modules redefining module's
+			# source path via ${NGINX_MOD_S}.
+			S="${NGINX_MOD_S}"
+			;;
+		*)
+			die "\${NGINX_MOD_S} has been removed in EAPI 9. Use \${S} directly instead."
+			;;
+	esac
+fi
 
 # @ECLASS_VARIABLE: NGINX_MOD_CONFIG_DIR
 # @DESCRIPTION:
 # Holds the path of the directory containing the config script relative to the
-# module source directory specified by the ${NGINX_MOD_S} variable.  If unset at
-# the time of inherit, defaults to "" (an empty string, meaning the config
-# script is located at the root of the module source directory).
+# module source directory specified by the ${S} variable.  If unset at the time
+# of inherit, defaults to "" (an empty string, meaning the config script is
+# located at the root of the module source directory).
 #
-# For example, in www-nginx/njs, NGINX_MOD_S="${WORKDIR}/${P}" and
+# For example, in www-nginx/njs, S="${WORKDIR}/${P}" and
 # NGINX_MOD_CONFIG_DIR="nginx".
 : "${NGINX_MOD_CONFIG_DIR=""}"
 
-# The ${S} variable is set to the path of the directory where the actual build
-# will be performed. In this directory, symbolic links to NGINX's build system
-# and NGINX's headers are created by the nginx-module_src_unpack() phase
-# function.
-S="${WORKDIR}/nginx"
+# @ECLASS_VARIABLE: NGINX_S
+# @INTERNAL
+# @DESCRIPTION:
+# Path of the fake NGINX build environment directory where the actual build will
+# be performed.  In this directory, symbolic links to NGINX's build system and
+# NGINX's headers are created in the nginx-module_src_prepare() phase function.
+NGINX_S="${WORKDIR}/nginx"
 
 # @ECLASS_VARIABLE: NGINX_MOD_SHARED_OBJECTS
 # @OUTPUT_VARIABLE
@@ -526,6 +491,29 @@ declare -g -A NGX_MOD_TO_SONAME+=(
 # Has no effect if either NGINX_MOD_OPENRESTY_TESTS or NGINX_MOD_TEST_LOAD_ORDER
 # are not set.
 
+# @ECLASS_VARIABLE: NGINX_MOD_INSTALL_CONF_STUB
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Set to a non-empty value before calling nginx-module_src_install() to generate
+# and install load_module .conf stub(s) for the package.  See
+# nginx-module_src_install() for details.
+#
+# In EAPI 9, the functionality is enabled unconditionally, unless
+# NGINX_MOD_DONT_INSTALL_CONF_STUB is set to a non-empty value.
+[[ ${EAPI} != 8 ]] && readonly NGINX_MOD_INSTALL_CONF_STUB=1
+
+# @ECLASS_VARIABLE: NGINX_MOD_DONT_INSTALL_CONF_STUB
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Set to a non-empty value before calling nginx-module_src_install() to NOT
+# generate load_module .conf stub(s) for the package.  Setting this variable
+# also disables displaying instructions on how to enable the module in
+# nginx-module_pkg_postinst().
+#
+# Setting this might be useful for modules that are not meant to be used
+# directly, for example ngx_devel_kit.  See nginx-module_src_install() for
+# details.
+
 #-----> *DEPEND stuff <-----
 
 # As per upstream documentation, modules must be rebuilt with each NGINX
@@ -586,34 +574,40 @@ unset -f _ngx_mod_set_test_env
 
 #-----> Phase functions <-----
 
-# @FUNCTION: nginx-module_src_unpack
-# @DESCRIPTION:
-# Unpacks the sources and sets up the build directory in S=${WORKDIR}/nginx.
-# Creates the following symbolic links (to not copy the files over):
-#  - '${S}/src' -> '/usr/include/nginx',
-#  - '${S}/auto' -> '/usr/src/nginx/auto',
-#  - '${S}/configure' -> '/usr/src/nginx/configure'.
-# For additional information, see the nginx.eclass source, namely the
-# nginx_src_install() function.
-nginx-module_src_unpack() {
-	debug-print-function "${FUNCNAME[0]}" "$@"
-	default_src_unpack
-	mkdir nginx || die "mkdir failed"
-	ln -s "${BROOT}/usr/src/nginx/configure" nginx/configure || die "ln failed"
-	ln -s "${BROOT}/usr/src/nginx/auto" nginx/auto || die "ln failed"
-	ln -s "${ESYSROOT}/usr/include/nginx" nginx/src || die "ln failed"
-}
-
 # @FUNCTION: nginx-module_src_prepare
 # @DESCRIPTION:
-# Patches module's initialisation code so that any module's preprocessor
-# definitions appear in the separate '__ngx_gentoo_mod_config.h' file inside the
-# 'build' directory.  This function also makes module's "config" script clear
-# whatever content build/ngx_auto_config.h may have at the time of invocation.
-# Then, default_src_prepare() is called.
+# Creates a fake build environment and patches the module's initialisation code
+# to play nicely with it.
+#
+# In the build environment initialisation part, the following symbolic links are
+# created (to not copy files over):
+#  - '${NGINX_S}/src' -> '/usr/include/nginx',
+#  - '${NGINX_S}/auto' -> '/usr/src/nginx/auto',
+#  - '${NGINX_S}/configure' -> '/usr/src/nginx/configure'.
+# For additional information of what resides under linked paths, see the
+# nginx.eclass source, namely the nginx_src_install() function.
+#
+# The second part of the function patches module's initialisation code so that
+# any module's preprocessor definitions appear in the separate
+# '__ngx_gentoo_mod_config.h' file inside the 'build' directory.  This function
+# also makes module's "config" script clear whatever content
+# build/ngx_auto_config.h may have at the time of invocation. Then,
+# default_src_prepare() is called.
 nginx-module_src_prepare() {
 	debug-print-function "${FUNCNAME[0]}" "$@"
-	pushd "${NGINX_MOD_S}/${NGINX_MOD_CONFIG_DIR}" >/dev/null ||
+
+	# Set up a fake build environment by creating symlinks to the build system
+	# and the headers.
+	ebegin "Setting up fake NGINX build environment"
+	mkdir "${NGINX_S}" || die "mkdir failed"
+	pushd "${NGINX_S}" >/dev/null || die "pushd failed"
+	ln -s "${BROOT}/usr/src/nginx/configure" configure || die "ln failed"
+	ln -s "${BROOT}/usr/src/nginx/auto" auto || die "ln failed"
+	ln -s "${ESYSROOT}/usr/include/nginx" src || die "ln failed"
+	popd >/dev/null || die "popd failed"
+	eend 0
+
+	pushd "${S}/${NGINX_MOD_CONFIG_DIR}" >/dev/null ||
 		die "pushd failed"
 
 	ebegin "Patching module's config"
@@ -642,18 +636,17 @@ nginx-module_src_prepare() {
 	sed -i -e '1i\' -e ': > build/ngx_auto_config.h' config ||
 		{ eend $? || die "sed failed"; }
 
-	echo 'mv build/ngx_auto_config.h build/__ngx_gentoo_mod_config.h' \
+	# Add one extra LF before the command in case the 'config' script does not
+	# have a trailing newline already.
+	printf "\n%s\n" 'mv build/ngx_auto_config.h build/__ngx_gentoo_mod_config.h' \
 		>> config
-	# We specifically need the $? of echo.
+	# We specifically need the $? of printf.
 	# shellcheck disable=SC2320
-	eend $? || die "echo failed"
+	eend $? || die "printf failed"
 
-	# cd into module root and apply patches.
-	pushd "${NGINX_MOD_S}" >/dev/null || die "pushd failed"
+	# Get back into the module root and apply patches.
+	popd >/dev/null || die "popd failed"
 	default_src_prepare
-	popd >/dev/null || die "popd failed"
-
-	popd >/dev/null || die "popd failed"
 }
 
 # @FUNCTION: nginx-module_src_configure
@@ -668,6 +661,8 @@ nginx-module_src_prepare() {
 # NGINX_MOD_LINK_MODULES is set.
 nginx-module_src_configure() {
 	debug-print-function "${FUNCNAME[0]}" "$@"
+	pushd "${NGINX_S}" >/dev/null || die "pushd failed"
+
 	local ngx_mod_flags
 	ngx_mod_flags=(
 		--with-cc="$(tc-getCC)"
@@ -679,7 +674,7 @@ nginx-module_src_configure() {
 		--with-cc-opt="-isystem src/modules"
 		--with-ld-opt="${LDFLAGS}"
 		--builddir=build
-		--add-dynamic-module="${NGINX_MOD_S}/${NGINX_MOD_CONFIG_DIR}"
+		--add-dynamic-module="${S}/${NGINX_MOD_CONFIG_DIR}"
 	)
 
 	# NGINX build system adds directories under src/ to the include path based
@@ -732,6 +727,8 @@ nginx-module_src_configure() {
 		die "cat failed"
 	cp "${ESYSROOT}/usr/include/nginx/ngx_auto_headers.h" build ||
 		die "cp failed"
+
+	popd >/dev/null || die "popd failed"
 }
 
 # @FUNCTION: nginx-module_src_compile
@@ -740,11 +737,15 @@ nginx-module_src_configure() {
 # NGINX_MOD_SHARED_OBJECTS array.
 nginx-module_src_compile() {
 	debug-print-function "${FUNCNAME[0]}" "$@"
+	pushd "${NGINX_S}" >/dev/null || die "pushd failed"
+
 	emake modules
 	# Save the basenames of all the compiled modules into the
 	# NGINX_MOD_SHARED_OBJECTS array.
 	mapfile -d '' NGINX_MOD_SHARED_OBJECTS < \
-		<(find -H "${S}/build" -maxdepth 1 -type f -name '*.so' -printf '%P\0')
+		<(find -H "${NGINX_S}/build" -maxdepth 1 -type f -name '*.so' -printf '%P\0')
+
+	popd >/dev/null || die "popd failed"
 }
 
 # @FUNCTION: nginx-module_src_test
@@ -803,8 +804,6 @@ nginx-module_src_test() {
 		TEST_NGINX_LOAD_MODULES="${pkg_sonames[*]} ${TEST_NGINX_LOAD_MODULES}"
 	fi
 
-	pushd "${NGINX_MOD_S}" >/dev/null || die "pushd failed"
-
 	# If NGINX_MOD_LINK_MODULES is non-empty, meaning the current module is
 	# linked to another module in moddir, set LD_LIBRARY_PATH to the module's
 	# directory so that the dynamic loader can find shared objects we depend on.
@@ -814,17 +813,40 @@ nginx-module_src_test() {
 	# Tests break when run in parallel.
 	TEST_NGINX_SERVROOT="${T}/servroot" \
 		edo prove -j1 -I. -r ./"${NGINX_MOD_TEST_DIR}"
-
-	popd >/dev/null || die "popd failed"
 }
 
 # @FUNCTION: nginx-module_src_install
 # @DESCRIPTION:
 # Installs the compiled module(s) into /usr/${libdir}/nginx/modules.
+#
+# Autogenerates load_module .conf stub(s) and installs them into
+# /etc/nginx/modules-available.  Afterwards, the installed modules can be
+# conveniently enabled or disabled by adding or removing symlinks to
+# modules-available from /etc/nginx/modules-enabled.  See nginx_src_install() in
+# nginx.eclass for more details on how NGINX loads these stubs.
 nginx-module_src_install() {
 	debug-print-function "${FUNCNAME[0]}" "$@"
 	insinto "/usr/$(get_libdir)/nginx/modules"
-	doins build/*.so
+	doins "${NGINX_S}"/build/*.so
+
+	# Install stub configuration files only if NGINX_MOD_INSTALL_CONF_STUB is
+	# set (or EAPI is 9) and NGINX_MOD_DONT_INSTALL_CONF_STUB is not set. The
+	# latter is used by modules like ngx_devel_kit which are not meant to be
+	# enabled manually.
+	if [[ -n ${NGINX_MOD_INSTALL_CONF_STUB} &&
+		-z ${NGINX_MOD_DONT_INSTALL_CONF_STUB} ]]; then
+		local mod
+		local destdir=etc/nginx/modules-available
+		insinto "${destdir}"
+		# Create configuration stub for every module in NGINX_MOD_SHARED_OBJECTS.
+		for mod in "${NGINX_MOD_SHARED_OBJECTS[@]}"; do
+			newins - "${mod%.so}.conf" <<- EOF
+			# Autogenerated configuration stub.
+
+			load_module modules/${mod};
+			EOF
+		done
+	fi
 }
 
 # @FUNCTION: nginx-module_pkg_postinst
@@ -833,21 +855,39 @@ nginx-module_src_install() {
 nginx-module_pkg_postinst() {
 	debug-print-function "${FUNCNAME[0]}" "$@"
 	# ngx_devel_kit is an SDK, it does not need to be enabled manually.
-	[[ ${PN} == ngx_devel_kit ]] && return 0
+	[[ -n ${NGINX_MOD_DONT_INSTALL_CONF_STUB} ]] && return 0
 
-	local mod
-
+	# We differentiate two situations: (1) autogenerated configuration stub is
+	# used, or (2) no configuration stub is generated.
+	#
+	# In the first case, we advise the user to symlink the configuration stub to
+	# /etc/nginx/modules-enabled to enable the module.
+	#
+	# In the second case, manual configuration change is needed, and we print
+	# the instructions on how to change the main NGINX configuration to use the
+	# module.
 	elog "${PN} has been compiled."
 	elog ""
-	elog "To utilise the module, add the following line(s) to your NGINX"
-	elog "configuration file, which by default is \"${EROOT}/etc/nginx/nginx.conf\"."
-	elog ""
-	for mod in "${NGINX_MOD_SHARED_OBJECTS[@]}"; do
-		elog "    load_module modules/${mod};"
-	done
+	if [[ -n ${NGINX_MOD_INSTALL_CONF_STUB} ]]; then
+		elog "To utilise the module(s), enable it/them by executing the following"
+		elog "command(s)"
+		elog ""
+		for mod in "${NGINX_MOD_SHARED_OBJECTS[@]}"; do
+			mod="${mod%.so}.conf"
+			elog "    ln -s ../modules-available/${mod} ${EROOT}/etc/nginx/modules-enabled/"
+		done
+	else
+		local mod
+		elog "To utilise the module(s), add the following line(s) to your NGINX"
+		elog "configuration file, which by default is \"${EROOT}/etc/nginx/nginx.conf\"."
+		elog ""
+		for mod in "${NGINX_MOD_SHARED_OBJECTS[@]}"; do
+			elog "    load_module modules/${mod};"
+		done
+	fi
 }
 
 fi
 
-EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_test \
-	src_install pkg_postinst
+EXPORT_FUNCTIONS src_prepare src_configure src_compile src_test src_install \
+	pkg_postinst

@@ -1,8 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+NGINX_MOD_DONT_INSTALL_CONF_STUB=1
 inherit flag-o-matic nginx-module
 
 DESCRIPTION="An NGINX module that adds generic tools for third-party modules"
@@ -35,12 +36,8 @@ src_configure() {
 src_install() {
 	nginx-module_src_install
 
-	pushd "${NGINX_MOD_S}" >/dev/null || die "pushd failed"
-
 	# Install ngx_devel_kit's headers for use by other modules.
 	insinto /usr/include/nginx/modules
 	find objs src -maxdepth 1 -type f -name '*.h' -print0 | xargs -0 doins
 	assert "find failed"
-
-	popd >/dev/null || die "popd failed"
 }
