@@ -3,11 +3,15 @@
 
 EAPI=8
 
-inherit desktop qmake-utils
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/annejan.asc
+inherit desktop qmake-utils verify-sig
 
 DESCRIPTION="Multi-platform GUI for pass, the standard unix password manager"
 HOMEPAGE="https://qtpass.org https://github.com/IJHack/qtpass"
-SRC_URI="https://github.com/IJHack/QtPass/releases/download/v${PV}/QtPass-${PV}.tar.gz"
+SRC_URI="
+	https://github.com/IJHack/QtPass/releases/download/v${PV}/QtPass-${PV}.tar.gz
+	verify-sig? ( https://github.com/IJHack/QtPass/releases/download/v${PV}/QtPass-${PV}.tar.gz.asc )
+"
 S="${WORKDIR}/QtPass-${PV}"
 
 LICENSE="GPL-3"
@@ -24,10 +28,14 @@ RDEPEND="
 	dev-qt/qtbase:6[gui,network,widgets]
 	net-misc/x11-ssh-askpass
 "
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	dev-qt/qtsvg:6
 "
-BDEPEND="dev-qt/qttools:6[linguist]"
+BDEPEND="
+	dev-qt/qttools:6[linguist]
+	verify-sig? ( sec-keys/openpgp-keys-annejan )
+"
 
 DOCS=( {CHANGELOG,CONTRIBUTING,FAQ,README}.md )
 
