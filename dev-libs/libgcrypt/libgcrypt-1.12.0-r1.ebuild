@@ -49,7 +49,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	#"${FILESDIR}"/${PN}-multilib-syspath.patch
+	"${FILESDIR}"/${PN}-1.12.0-multilib-syspath.patch
 	"${FILESDIR}"/${PN}-powerpc-darwin.patch
 )
 
