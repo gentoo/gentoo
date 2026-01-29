@@ -24,7 +24,7 @@ SRC_URI="
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 # defusedxml is optional, it falls back to builtin, but then it's
 # automagic, so just always depend on it.
