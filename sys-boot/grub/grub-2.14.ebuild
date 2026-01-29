@@ -150,7 +150,8 @@ PATCHES=(
 )
 
 pkg_setup() {
-	:
+	# skip python-any-r1_pkg_setup: python_setup is called in src_prepare
+	secureboot_pkg_setup
 }
 
 src_unpack() {
