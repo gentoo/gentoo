@@ -13,7 +13,7 @@ SRC_URI="
 	verify-sig? ( https://github.com/roddhjav/pass-update/releases/download/v${PV}/${P}.tar.gz.asc )
 "
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
 
