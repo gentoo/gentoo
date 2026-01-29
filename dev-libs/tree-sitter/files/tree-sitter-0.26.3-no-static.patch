@@ -1,0 +1,21 @@
+diff --git a/Makefile b/Makefile
+index 2098d27..0bbacaf 100644
+--- a/Makefile
++++ b/Makefile
+@@ -52,7 +52,7 @@ ifneq ($(filter $(shell uname),FreeBSD NetBSD DragonFly),)
+ endif
+ endif
+ 
+-all: libtree-sitter.a libtree-sitter.$(SOEXT) tree-sitter.pc
++all: libtree-sitter.$(SOEXT) tree-sitter.pc
+ 
+ libtree-sitter.a: $(OBJ)
+ 	$(AR) $(ARFLAGS) $@ $^
+@@ -86,7 +86,6 @@ install: all
+ 	install -d '$(DESTDIR)$(INCLUDEDIR)'/tree_sitter '$(DESTDIR)$(PCLIBDIR)' '$(DESTDIR)$(LIBDIR)'
+ 	install -m644 lib/include/tree_sitter/api.h '$(DESTDIR)$(INCLUDEDIR)'/tree_sitter/api.h
+ 	install -m644 tree-sitter.pc '$(DESTDIR)$(PCLIBDIR)'/tree-sitter.pc
+-	install -m644 libtree-sitter.a '$(DESTDIR)$(LIBDIR)'/libtree-sitter.a
+ ifneq ($(findstring mingw32,$(MACHINE)),)
+ 	install -d '$(DESTDIR)$(BINDIR)'
+ 	install -m755 libtree-sitter.dll '$(DESTDIR)$(BINDIR)'/libtree-sitter.dll
