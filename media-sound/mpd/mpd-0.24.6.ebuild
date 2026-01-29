@@ -7,45 +7,46 @@ inherit flag-o-matic linux-info meson systemd xdg
 
 DESCRIPTION="The Music Player Daemon (mpd)"
 HOMEPAGE="https://www.musicpd.org https://github.com/MusicPlayerDaemon/MPD"
-SRC_URI="https://www.musicpd.org/download/${PN}/${PV%.*}/${P}.tar.xz"
-SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/mpd-0.23.15.16-fix-libfmt-11.1.0.patch.xz"
+SRC_URI="https://www.musicpd.org/download/${PN}/$(ver_cut 1-2)/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 ~riscv x86"
-IUSE="+alsa ao +audiofile bzip2 cdio chromaprint +cue +curl doc +dbus
-	+eventfd expat faad +ffmpeg +fifo flac fluidsynth gme +icu +id3tag +inotify +io-uring
-	jack lame libmpdclient libsamplerate libsoxr +mad mikmod mms
-	modplug mpg123 musepack +network nfs openal openmpt opus oss pipe pipewire pulseaudio qobuz
-	recorder samba selinux sid signalfd snapcast sndfile sndio soundcloud sqlite systemd
-	test twolame udisks vorbis wavpack webdav wildmidi upnp
-	yajl zeroconf zip zlib"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+IUSE="+alsa ao +audiofile bzip2 cdio chromaprint +curl doc +dbus
+	+eventfd expat faad +ffmpeg flac fluidsynth gme httpd +icu +id3tag +inotify
+	+io-uring jack lame libmpdclient libsamplerate libsoxr +mad mikmod mms
+	modplug +mpg123 musepack nfs openal openmpt opus oss pipewire pulseaudio qobuz
+	recorder samba selinux shout sid signalfd snapcast sndfile sndio sqlite
+	systemd test tremor twolame upnp vorbis wavpack webdav wildmidi
+	zeroconf zip zlib"
 
-OUTPUT_PLUGINS="alsa ao fifo jack network openal oss pipe pipewire pulseaudio snapcast sndio recorder"
+OUTPUT_PLUGINS="alsa ao jack httpd openal oss pipewire pulseaudio shout snapcast sndio recorder"
 DECODER_PLUGINS="audiofile faad ffmpeg flac fluidsynth mad mikmod
-	modplug mpg123 musepack opus openmpt flac sid vorbis wavpack wildmidi"
+	modplug mpg123 musepack opus openmpt flac sid tremor vorbis wavpack wildmidi"
 ENCODER_PLUGINS="audiofile flac lame twolame vorbis"
 
 REQUIRED_USE="
 	|| ( ${OUTPUT_PLUGINS} )
 	|| ( ${DECODER_PLUGINS} )
-	network? ( || ( ${ENCODER_PLUGINS} ) )
+	?? ( tremor vorbis )
+	httpd? ( || ( ${ENCODER_PLUGINS} ) )
 	recorder? ( || ( ${ENCODER_PLUGINS} ) )
-	qobuz? ( curl soundcloud )
-	snapcast? ( yajl )
-	soundcloud? ( curl qobuz yajl )
-	udisks? ( dbus )
+	shout? ( || ( ${ENCODER_PLUGINS} ) )
+	qobuz? ( curl )
 	upnp? ( curl expat )
 	webdav? ( curl expat )
 "
 
 RESTRICT="!test? ( test )"
 
+COMMON_ENCODERS="
+	lame? ( media-sound/lame )
+	twolame? ( media-sound/twolame )
+"
 RDEPEND="
 	acct-user/mpd
 	dev-libs/libfmt:=
 	dev-libs/libpcre2:=
-	media-libs/libogg
 	alsa? (
 		media-libs/alsa-lib
 		media-sound/alsa-utils
@@ -60,21 +61,24 @@ RDEPEND="
 	chromaprint? ( media-libs/chromaprint:= )
 	curl? ( net-misc/curl )
 	dbus? ( sys-apps/dbus )
-	doc? ( dev-python/sphinx )
+	doc? (
+		dev-python/sphinx
+		dev-python/sphinx-rtd-theme
+	)
 	expat? ( dev-libs/expat )
 	faad? ( media-libs/faad2 )
 	ffmpeg? ( media-video/ffmpeg:= )
 	flac? ( media-libs/flac:= )
 	fluidsynth? ( media-sound/fluidsynth:= )
-	gme? ( >=media-libs/game-music-emu-0.6.0_pre20120802 )
+	gme? ( media-libs/game-music-emu )
+	httpd? ( ${COMMON_ENCODERS} )
 	icu? (
-		>=dev-libs/icu-50:=
+		dev-libs/icu:=
 		virtual/libiconv
 	)
 	id3tag? ( media-libs/libid3tag:= )
 	io-uring? ( sys-libs/liburing:= )
 	jack? ( virtual/jack )
-	lame? ( network? ( media-sound/lame ) )
 	libmpdclient? ( media-libs/libmpdclient )
 	libsamplerate? ( media-libs/libsamplerate )
 	libsoxr? ( media-libs/soxr )
@@ -84,53 +88,53 @@ RDEPEND="
 	modplug? ( media-libs/libmodplug )
 	mpg123? ( media-sound/mpg123-base )
 	musepack? ( media-sound/musepack-tools )
-	network? ( >=media-libs/libshout-2.4.0 )
 	nfs? ( net-fs/libnfs:= )
 	openal? ( media-libs/openal )
 	openmpt? ( media-libs/libopenmpt )
-	opus? ( media-libs/opus )
+	opus? (
+		media-libs/libogg
+		media-libs/opus
+	)
 	pulseaudio? ( media-libs/libpulse )
 	pipewire? ( media-video/pipewire:= )
 	qobuz? (
-		|| (
-			dev-libs/libgcrypt
-			media-video/ffmpeg
-		)
+		!ffmpeg? ( dev-libs/libgcrypt:= )
+		ffmpeg? ( media-video/ffmpeg )
 	)
+	recorder? ( ${COMMON_ENCODERS} )
 	samba? ( net-fs/samba:= )
 	selinux? ( sec-policy/selinux-mpd )
-	sid? ( || (
-		media-libs/libsidplay:2
-		media-libs/libsidplayfp
-	) )
-	snapcast? ( media-sound/snapcast )
+	shout? (
+		${COMMON_ENCODERS}
+		media-libs/libshout
+	)
+	sid? ( media-libs/libsidplayfp:= )
 	sndfile? ( media-libs/libsndfile )
 	sndio? ( media-sound/sndio:= )
 	sqlite? ( dev-db/sqlite:3 )
 	systemd? ( sys-apps/systemd:= )
-	twolame? ( media-sound/twolame )
-	udisks? ( sys-fs/udisks:2 )
+	tremor? (
+		media-libs/libogg
+		media-libs/tremor
+	)
 	upnp? ( net-libs/libupnp:= )
-	vorbis? ( media-libs/libvorbis )
+	vorbis? (
+		media-libs/libogg
+		media-libs/libvorbis
+	)
 	wavpack? ( media-sound/wavpack )
 	wildmidi? ( media-sound/wildmidi )
-	yajl? ( >=dev-libs/yajl-2:= )
 	zeroconf? ( net-dns/avahi[dbus] )
 	zip? ( dev-libs/zziplib:= )
 	zlib? ( virtual/zlib:= )
 "
-
 DEPEND="
 	${RDEPEND}
-	dev-libs/boost:=
+	qobuz? ( >=dev-cpp/nlohmann_json-3.11.3 )
+	snapcast? ( >=dev-cpp/nlohmann_json-3.11.3 )
 	test? ( dev-cpp/gtest )
 "
-
 BDEPEND="virtual/pkgconfig"
-
-PATCHES=(
-	"${WORKDIR}"/mpd-0.23.15.16-fix-libfmt-11.1.0.patch
-)
 
 pkg_setup() {
 	if use eventfd; then
@@ -168,17 +172,18 @@ src_configure() {
 		$(meson_feature bzip2)
 		$(meson_feature cdio cdio_paranoia)
 		$(meson_feature chromaprint)
-		$(meson_use cue)
+		-Dcue=true
 		$(meson_feature curl)
 		$(meson_feature dbus)
 		$(meson_use eventfd)
 		$(meson_feature expat)
 		$(meson_feature faad)
 		$(meson_feature ffmpeg)
-		$(meson_use fifo)
+		-Dfifo=true
 		$(meson_feature flac)
 		$(meson_feature fluidsynth)
 		$(meson_feature gme)
+		$(meson_use httpd )
 		$(meson_feature icu)
 		$(meson_feature id3tag)
 		$(meson_use inotify)
@@ -199,29 +204,29 @@ src_configure() {
 		$(meson_feature openmpt)
 		$(meson_feature opus)
 		$(meson_feature oss)
-		$(meson_use pipe)
+		-Dpipe=true
 		$(meson_feature pipewire)
 		$(meson_feature pulseaudio pulse)
 		$(meson_feature qobuz)
 		$(meson_use recorder)
+		$(meson_feature shout)
 		$(meson_use signalfd)
 		$(meson_feature samba smbclient)
 		$(meson_use snapcast)
 		$(meson_feature sid sidplay)
 		$(meson_feature sndfile)
 		$(meson_feature sndio)
-		$(meson_feature soundcloud)
 		$(meson_feature libsoxr soxr)
 		$(meson_feature sqlite)
 		$(meson_feature systemd)
 		$(meson_use test)
-		$(meson_feature udisks)
+		$(meson_feature dbus udisks)
 		-Dupnp=$(usex upnp pupnp disabled)
+		$(meson_feature tremor)
 		$(meson_feature vorbis)
 		$(meson_feature wavpack)
 		$(meson_feature wildmidi)
 		$(meson_feature webdav)
-		$(meson_feature yajl)
 		-Dzeroconf=$(usex zeroconf avahi disabled)
 		$(meson_feature zlib)
 		$(meson_feature zip zzip)
@@ -246,17 +251,29 @@ src_configure() {
 	fi
 
 	append-lfs-flags
-	append-ldflags "-L${ESYSROOT}/usr/$(get_libdir)/sidplay/builders"
 
-	if use network; then
+	# set useflag for encoders
+	if use httpd || use shout || use recorder; then
 		emesonargs+=(
+			# not in tree
 			-Dshine=disabled
-			-Dshout=enabled
-			$(meson_feature vorbis vorbisenc)
-			-Dhttpd=true
 			$(meson_feature lame)
 			$(meson_feature twolame)
+			$(meson_feature vorbis vorbisenc)
 			$(meson_use audiofile wave_encoder)
+		)
+	else
+		# avoid links even w/o encoder
+		emesonargs+=(
+			-Dlame=disabled
+			-Dtwolame=disabled
+		)
+	fi
+
+	# nlohmann_json is only required with these plugins enabled
+	if use qobuz || use snapcast; then
+		emesonargs+=(
+			-Dnlohmann_json=enabled
 		)
 	fi
 
@@ -264,6 +281,13 @@ src_configure() {
 }
 
 src_install() {
+	if use doc; then
+		local HTML_DOCS=( "${BUILD_DIR}"/doc/html/. )
+	else
+		newman "${FILESDIR}"/${PN}.1-0.24.2 ${PN}.1
+		newman "${FILESDIR}"/${PN}.conf.5-0.24.2 ${PN}.conf.5
+	fi
+
 	meson_src_install
 
 	insinto /etc
@@ -279,15 +303,15 @@ src_install() {
 		# Extra options for running MPD under OpenRC
 		# (options that should not be set when using systemd)
 		sed -i \
-			-e 's:^#log_file.*$:log_file "/var/log/mpd/mpd.log":' \
-			-e 's:^#pid_file.*$:pid_file "/run/mpd/mpd.pid":' \
+			-e '0,/^#log_file.*$/s::log_file "/var/log/mpd/mpd.log"\n&:' \
+			-e '0,/^#pid_file.*$/s::pid_file "/run/mpd/mpd.pid"\n&:' \
 			"${ED}/etc/mpd.conf" || die
 	fi
 
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/${PN}-0.23.15.logrotate" "${PN}"
 
-	newinitd "${FILESDIR}/${PN}-0.23.15.init-r1" "${PN}"
+	newinitd "${FILESDIR}/${PN}-0.24.2.init" "${PN}"
 
 	keepdir /var/lib/mpd
 	keepdir /var/lib/mpd/music
