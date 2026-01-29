@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~loong ~riscv x86"
+KEYWORDS="amd64 ~arm64 ~loong ~riscv x86"
 IUSE="+cloudpinyin +data +gui lua +opencc test webengine"
 REQUIRED_USE="webengine? ( gui )"
 RESTRICT="!test? ( test )"
