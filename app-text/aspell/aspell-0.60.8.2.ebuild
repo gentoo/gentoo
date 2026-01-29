@@ -66,7 +66,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.60.6-darwin-bundles.patch"
 	"${FILESDIR}/${PN}-0.60.6.1-clang.patch"
 	"${FILESDIR}/${PN}-0.60.6.1-unicode.patch"
-	"${FILESDIR}/${PN}-0.60.8.1-gcc-15-fix.patch"
 )
 
 src_prepare() {
