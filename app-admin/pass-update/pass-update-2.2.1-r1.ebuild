@@ -35,4 +35,9 @@ src_install() {
 		BASHCOMPDIR="$(get_bashcompdir)" \
 		ZSHCOMPDIR="$(get_zshcompdir)" \
 		install
+
+	# https://github.com/roddhjav/pass-update/issues/25
+	rm -r "${ED}"/usr/share/bash-completion || die
+	insinto /etc/bash_completion.d
+	doins share/bash-completion/completions/pass-update
 }
