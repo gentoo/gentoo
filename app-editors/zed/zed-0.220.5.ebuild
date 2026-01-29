@@ -106,7 +106,7 @@ LICENSE+="
 "
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
-CHECKREQS_DISK_BUILD="16G"
+CHECKREQS_DISK_BUILD="15G"
 CHECKREQS_MEMORY="8G"
 
 DEPEND="
@@ -205,10 +205,6 @@ src_prepare() {
 		-e "s#${NOTIFY_TYPES_GIT}#${NOTIFY_TYPES_PATH}#" \
 		-e "s#${WIN_CAP_GIT}#${WIN_CAP_PATH}#" \
 		-i "${S}/Cargo.toml" || die "Cargo fetch workaround failed"
-}
-
-src_configure() {
-	cargo_src_configure --all-features
 }
 
 src_compile() {
