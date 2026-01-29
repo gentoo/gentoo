@@ -22,7 +22,7 @@ SRC_URI="
 	)
 "
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
 
