@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ SRC_URI="https://download.fcitx-im.org/fcitx5/fcitx5/fcitx5-${PV}_dict.tar.zst -
 S="${WORKDIR}/${MY_PN}-${PV}"
 LICENSE="LGPL-2+ Unicode-DFS-2016"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc ~ppc64 ~riscv x86"
 IUSE="+autostart doc +emoji +enchant +keyboard presage +server systemd test wayland +X"
 REQUIRED_USE="
 	|| ( wayland X )
