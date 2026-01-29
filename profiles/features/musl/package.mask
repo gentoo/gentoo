@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Jaco Kroon <jkroon@gentoo.org> (2025-12-06)
@@ -386,6 +386,7 @@ net-im/gitter-bin
 net-im/mattermost-desktop-bin
 net-im/rocketchat-desktop-bin
 net-im/slack
+net-im/talk-desktop-bin
 net-im/telegram-desktop-bin
 net-im/whatsapp-desktop-bin
 net-im/zoom

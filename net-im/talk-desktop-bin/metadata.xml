@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<upstream>
+		<remote-id type="github">nextcloud/talk-desktop</remote-id>
+		<bugs-to>https://github.com/nextcloud/talk-desktop/issues</bugs-to>
+	</upstream>
+	<maintainer type="person">
+		<email>nowa@gentoo.org</email>
+		<name>Nowa Ammerlaan</name>
+	</maintainer>
+</pkgmetadata>
