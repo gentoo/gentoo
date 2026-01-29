@@ -1,4 +1,4 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ SRC_URI="https://download.fcitx-im.org/fcitx5/fcitx5-rime/fcitx5-rime-${PV}.tar.
 S="${WORKDIR}/${MY_PN}-${PV}"
 LICENSE="LGPL-2.1+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~riscv x86"
 
 DEPEND="
 	!app-i18n/fcitx-rime:4
