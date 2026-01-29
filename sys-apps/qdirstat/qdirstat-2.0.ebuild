@@ -8,7 +8,6 @@ inherit qmake-utils xdg-utils
 DESCRIPTION="Qt-based directory statistics"
 HOMEPAGE="https://github.com/shundhammer/qdirstat"
 SRC_URI="https://github.com/shundhammer/qdirstat/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="GPL-2"
 SLOT="0"
