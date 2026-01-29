@@ -4,5 +4,6 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="github">technomancy/leiningen</remote-id>
+		<remote-id type="codeberg">leiningen/leiningen</remote-id>
 	</upstream>
 </pkgmetadata>
