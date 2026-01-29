@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -39,8 +39,8 @@ IUSE="+deno"
 # (should "typically" be updated in Gentoo within 24h if willing to wait)
 RDEPEND="
 	dev-python/pycryptodome[${PYTHON_USEDEP}]
-	=dev-python/yt-dlp-ejs-0.3*[${PYTHON_USEDEP}]
-	deno? ( dev-lang/deno-bin )
+	=dev-python/yt-dlp-ejs-0.4*[${PYTHON_USEDEP}]
+	deno? ( >=dev-lang/deno-bin-2.6.6 )
 "
 BDEPEND="
 	test? ( media-video/ffmpeg[webp] )
