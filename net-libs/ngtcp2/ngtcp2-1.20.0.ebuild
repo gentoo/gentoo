@@ -11,13 +11,19 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/ngtcp2/ngtcp2.git"
 	inherit autotools git-r3
 else
-	SRC_URI="https://github.com/ngtcp2/ngtcp2/releases/download/v${PV}/${P}.tar.xz"
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/ngtcp2.asc
+	inherit verify-sig
+	SRC_URI="
+		https://github.com/ngtcp2/ngtcp2/releases/download/v${PV}/${P}.tar.xz
+		verify-sig? ( https://github.com/ngtcp2/ngtcp2/releases/download/v${PV}/${P}.tar.xz.asc )
+	"
 
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-ngtcp2 )"
 fi
 
 DESCRIPTION="Implementation of the IETF QUIC Protocol"
-HOMEPAGE="https://github.com/ngtcp2/ngtcp2"
+HOMEPAGE="https://nghttp2.org/ngtcp2/ https://github.com/ngtcp2/ngtcp2"
 
 LICENSE="MIT"
 SLOT="0/0"
@@ -31,7 +37,7 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig"
+BDEPEND+=" virtual/pkgconfig"
 
 src_prepare() {
 	default
