@@ -1,0 +1,46 @@
+https://gitlab.gnome.org/GNOME/gimp/-/issues/15732
+https://gitlab.gnome.org/GNOME/gimp/-/commit/d9d0f5b4e642dd5b101e70728042027d568bb01d
+
+From 12eb87a32d70556fb413c0741ed38fd89fc96447 Mon Sep 17 00:00:00 2001
+From: Jacob Boerema <jgboerema@gmail.com>
+Date: Fri, 23 Jan 2026 11:35:50 -0500
+Subject: [PATCH] plug-ins: Fix #15732 PSP File Parsing Integer
+ Overflow...
+
+Leading to Heap Corruption
+
+An integer overflow vulnerability has been identified in the PSP
+(Paint Shop Pro) file parser of GIMP. The issue occurs in the
+read_creator_block() function, where the Creator metadata block is
+processed. Specifically, a 32-bit length value read from the file is
+used directly for memory allocation without proper validation.
+Trigger -> when length is set to 0xFFFFFFFF
+
+To fix this, we check that using that length doesn't exceed the end
+of the creator block. If it does, we return with an error message.
+
+Cherry-picked from d9d0f5b4e642dd5b101e70728042027d568bb01d
+--- a/plug-ins/common/file-psp.c
++++ b/plug-ins/common/file-psp.c
+@@ -983,7 +983,17 @@ read_creator_block (FILE      *f,
+         }
+       keyword = GUINT16_FROM_LE (keyword);
+       length = GUINT32_FROM_LE (length);
+-      switch (keyword)
++
++      if ((goffset) ftell (f) + length > (goffset) data_start + total_len)
++        {
++          /* FIXME: After string freeze is over, we should consider changing
++           * this error message to be a bit more descriptive. */
++          g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_FAILED,
++                        _("Error reading creator keyword data"));
++          return -1;
++        }
++
++        switch (keyword)
+         {
+         case PSP_CRTR_FLD_TITLE:
+         case PSP_CRTR_FLD_ARTIST:
+-- 
+2.52.0
+

@@ -1,0 +1,88 @@
+https://bugs.gentoo.org/969287
+https://gitlab.gnome.org/GNOME/gimp/-/issues/15554
+https://gitlab.gnome.org/GNOME/gimp/-/merge_requests/2586
+https://gitlab.gnome.org/GNOME/gimp/-/commit/57712677007793118388c5be6fb8231f22a2b341
+
+From df7e93ad6223caa3d5d2d9cfc1a5019dcba3cde3 Mon Sep 17 00:00:00 2001
+From: Alx Sa <cmyk.student@gmail.com>
+Date: Wed, 31 Dec 2025 14:45:15 +0000
+Subject: [PATCH] plug-ins: Add OoB check for loading XWD
+
+Resolves #15554
+This patch adds a check for if our pointer arithmetic
+exceeds the memory allocated for the dest array. If so,
+we throw an error rather than access memory outside
+the bounds.
+
+Cherry-picked from 57712677007793118388c5be6fb8231f22a2b341
+--- a/plug-ins/common/file-xwd.c
++++ b/plug-ins/common/file-xwd.c
+@@ -2116,6 +2116,7 @@ load_xwd_f1_d24_b1 (const gchar      *filename,
+   gulong           redmask, greenmask, bluemask;
+   guint            redshift, greenshift, blueshift;
+   gulong           g;
++  guint32          maxval;
+   guchar           redmap[256], greenmap[256], bluemap[256];
+   guchar           bit_reverse[256];
+   guchar          *xwddata, *xwdin, *data;
+@@ -2206,7 +2207,8 @@ load_xwd_f1_d24_b1 (const gchar      *filename,
+                                &layer_ID, &buffer);
+ 
+   tile_height = gimp_tile_height ();
+-  data = g_malloc (tile_height * width * bytes_per_pixel);
++  data        = g_malloc (tile_height * width * bytes_per_pixel);
++  maxval      = tile_height * width * bytes_per_pixel;
+ 
+   ncols = xwdhdr->l_colormap_entries;
+   if (xwdhdr->l_ncolors < ncols)
+@@ -2231,6 +2233,8 @@ load_xwd_f1_d24_b1 (const gchar      *filename,
+ 
+   for (tile_start = 0; tile_start < height; tile_start += tile_height)
+     {
++      guint current_dest = 0;
++
+       memset (data, 0, width*tile_height*bytes_per_pixel);
+ 
+       tile_end = tile_start + tile_height - 1;
+@@ -2254,7 +2258,18 @@ load_xwd_f1_d24_b1 (const gchar      *filename,
+           else           /* 3 bytes per pixel */
+             {
+               fromright = xwdhdr->l_pixmap_depth-1-plane;
+-              dest += 2 - fromright/8;
++
++              current_dest += 2 - fromright / 8;
++              if (current_dest < maxval)
++                {
++                  dest += 2 - fromright / 8;
++                }
++              else
++                {
++                  err = 1;
++                  break;
++                }
++
+               outmask = (1 << (fromright % 8));
+             }
+ 
+@@ -2309,7 +2324,17 @@ load_xwd_f1_d24_b1 (const gchar      *filename,
+ 
+                   if (g & inmask)
+                     *dest |= outmask;
+-                  dest += bytes_per_pixel;
++
++                  current_dest += bytes_per_pixel;
++                  if (current_dest < maxval)
++                    {
++                      dest += bytes_per_pixel;
++                    }
++                  else
++                    {
++                      err = 1;
++                      break;
++                    }
+ 
+                   inmask >>= 1;
+                 }
+-- 
+2.52.0
+

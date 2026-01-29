@@ -1,0 +1,28 @@
+https://bugs.gentoo.org/969287
+https://gitlab.gnome.org/GNOME/gimp/-/issues/15287
+https://gitlab.gnome.org/GNOME/gimp/-/merge_requests/2569
+https://gitlab.gnome.org/GNOME/gimp/-/commit/112a5e038f0646eae5ae314988ec074433d2b365
+
+From 90716a8407adc9c4683b556422594d4590e83b69 Mon Sep 17 00:00:00 2001
+From: Gabriele Barbero <barbero.gabriele03@gmail.com>
+Date: Fri, 5 Dec 2025 19:13:01 +0100
+Subject: [PATCH] ZDI-CAN-28158: use g_malloc0 instead of g_malloc
+
+To avoid accessing uninitialized memory, replace calls to g_malloc with
+g_malloc0 which initializes the allocated memory to zero.
+
+Cherry-picked from 112a5e038f0646eae5ae314988ec074433d2b365
+--- a/plug-ins/common/file-pnm.c
++++ b/plug-ins/common/file-pnm.c
+@@ -571,7 +571,7 @@ load_image (GFile   *file,
+     return -1;
+ 
+   /* allocate the necessary structures */
+-  pnminfo = g_new (PNMInfo, 1);
++  pnminfo = g_new0 (PNMInfo, 1);
+ 
+   scan = NULL;
+   /* set error handling */
+-- 
+2.52.0
+
