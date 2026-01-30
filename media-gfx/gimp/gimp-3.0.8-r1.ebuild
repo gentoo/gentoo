@@ -26,8 +26,7 @@ REQUIRED_USE="
 
 RESTRICT="!test? ( test )"
 
-# media-libs/{babl,gegl} are required to be built with USE="introspection"
-# to fix the compilation checking of /usr/share/gir-1.0/{Babl-0.1gir,Gegl-0.4.gir}
+# See libgimp_deps_table in libgimp/meson.build for introspection dependencies, bug #969449
 COMMON_DEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
@@ -40,7 +39,7 @@ COMMON_DEPEND="
 	>=app-text/poppler-0.90.1[cairo]
 	>=app-text/poppler-data-0.4.9
 	>=dev-libs/appstream-0.16.1:=
-	>=dev-libs/glib-2.70.0:2
+	>=dev-libs/glib-2.70.0:2[introspection]
 	>=dev-libs/gobject-introspection-1.82.0-r2
 	>=dev-libs/json-glib-1.4.4
 	>=gnome-base/librsvg-2.40.6:2
@@ -49,8 +48,8 @@ COMMON_DEPEND="
 	>=media-libs/fontconfig-2.12.6
 	>=media-libs/freetype-2.10.2
 	>=media-libs/gegl-0.4.62:0.4[cairo,introspection,lcms,vala?]
-	<media-libs/gexiv2-0.15.0
-	>=media-libs/gexiv2-0.14.0
+	<media-libs/gexiv2-0.15.0[introspection]
+	>=media-libs/gexiv2-0.14.0[introspection]
 	>=media-libs/harfbuzz-2.6.5:=
 	>=media-libs/lcms-2.13.1:2
 	media-libs/libjpeg-turbo:=
@@ -59,10 +58,10 @@ COMMON_DEPEND="
 	>=media-libs/tiff-4.1.0:=
 	net-libs/glib-networking[ssl]
 	virtual/zlib:=
-	>=x11-libs/cairo-1.16.0[X?]
+	>=x11-libs/cairo-1.16.0[introspection(+),X?]
 	>=x11-libs/gdk-pixbuf-2.40.0:2[introspection]
 	>=x11-libs/gtk+-3.24.48:3[introspection,wayland?,X?]
-	>=x11-libs/pango-1.50.0[X?]
+	>=x11-libs/pango-1.50.0[introspection,X?]
 	aalib? ( media-libs/aalib )
 	alsa? ( >=media-libs/alsa-lib-1.0.0 )
 	fits? ( sci-libs/cfitsio:= )
