@@ -321,7 +321,7 @@ DEPEND+="
 	comics? ( >=app-arch/libarchive-3.6.0 )
 	djvu? ( >=app-text/djvu-3.5.22 )
 
-	>=app-text/poppler-25.01.0
+	>=app-text/poppler-25.01.0[cairo]
 	x11-libs/cairo
 
 	tiff? ( >=media-libs/tiff-4 )
