@@ -100,6 +100,11 @@ esac
 # php_targets_php7-0? ( dev-lang/php:7.0[mysql?,pdo,pcre(+)] )
 # @CODE
 
+# Whenever certain PHP USE flags change, we need to also rebuild all
+# extensions.
+IUSE+="threads debug"
+[ -n "${PHP_EXT_NEEDED_USE}" ] && PHP_EXT_NEEDED_USE+=,
+PHP_EXT_NEEDED_USE+=threads=,debug=
 
 # Make sure at least one target is installed. First, start a USE
 # conditional like "php?", but only when PHP_EXT_OPTIONAL_USE is
@@ -113,9 +118,7 @@ for _php_target in ${USE_PHP}; do
 	REQUIRED_USE+="php_targets_${_php_target} "
 	_php_slot=${_php_target/php}
 	_php_slot=${_php_slot/-/.}
-	if [[ ${PHP_EXT_NEEDED_USE} ]] ; then
-		_php_slot+=[${PHP_EXT_NEEDED_USE}]
-	fi
+	_php_slot+=[${PHP_EXT_NEEDED_USE}]
 	PHPDEPEND+=" php_targets_${_php_target}? ( dev-lang/php:${_php_slot} )"
 done
 
