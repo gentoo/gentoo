@@ -47,8 +47,6 @@ REQUIRED_USE="
 
 RESTRICT="!test? ( test )"
 
-# automagic dependency on bash to create bash-completions
-
 # See libgimp_deps_table in libgimp/meson.build for introspection dependencies, bug #969449
 COMMON_DEPEND="
 	${PYTHON_DEPS}
