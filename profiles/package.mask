@@ -98,10 +98,6 @@ app-emacs/use-package
 # Bug #966194, #907208, #906665, #796242, #794028, #656354.
 app-portage/java-ebuilder
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2026-01-18)
-# Masked for testing.
->=dev-libs/boost-1.90
-
 # Ulrich Müller <ulm@gentoo.org> (2026-01-18)
 # Obsolete since Emacs 29, per upstream README.md. Use the "docker"
 # method from the integrated tramp-container package as replacement.
