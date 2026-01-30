@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person">
+        <name>Matthias Coppens</name>
+        <email>coppens.matthias.abc@gmail.com</email>
+    </maintainer>
+    <maintainer type="project">
+        <name>Proxy Maintainers</name>
+        <email>proxy-maint@gentoo.org</email>
+    </maintainer>
+    <upstream>
+        <bugs-to>https://github.com/cyclopsian/wdisplays/issues</bugs-to>
+        <remote-id type="github">cyclopian/wdisplays</remote-id>
+    </upstream>
+</pkgmetadata>
