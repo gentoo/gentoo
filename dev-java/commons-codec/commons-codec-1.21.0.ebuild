@@ -20,13 +20,10 @@ KEYWORDS="~amd64 ~arm64 ~ppc64"
 
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-apache-commons )"
 
-# Restrict to max. jdk 25 because of 7 test failures with jdk-26:
-# caught: org.opentest4j.AssertionFailedError:
-# Expected java.lang.IllegalArgumentException to be thrown, but nothing was thrown.
 # [-vintage] because, if junit:5 compiled with 'USE=vintage':
 # Error: Module junit not found, required by org.junit.vintage.engine
 DEPEND="
-	|| ( virtual/jdk:25 virtual/jdk:21 virtual/jdk:17 virtual/jdk:11 )
+	>=virtual/jdk-11:*
 	test? (
 		>=dev-java/commons-io-2.21.0:0
 		>=dev-java/commons-lang-3.20.0:0
