@@ -1,0 +1,24 @@
+--- a/Testing/test.sh
++++ b/Testing/test.sh
+@@ -25,7 +25,7 @@ then
+ 	SIMP_PROG="../bin/simple_unittest$1"
+ 	echo "Scenario: $1	(c++ version)..."
+ else
+-	TLSH_PROG=../bin/tlsh
++	TLSH_PROG=../bin/tlsh_unittest
+ 	SIMP_PROG="../bin/simple_unittest"
+ 	echo "Scenario: tlsh	(c++ standard version)..."
+ fi
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -91,10 +91,3 @@ target_link_libraries(tlsh_parts PRIVATE)
+ set_target_properties(tlsh_parts PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
+ set_target_properties(tlsh_parts PROPERTIES OUTPUT_NAME tlsh_parts${BUILD_POSTFIX})
+ set_target_properties(tlsh_parts PROPERTIES SKIP_BUILD_RPATH TRUE)
+-
+-file(MAKE_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
+-# issue #115 - CREATE_LINK does not work on CENTOS 7
+-# file(CREATE_LINK tlsh_unittest ${CMAKE_SOURCE_DIR}/bin/tlsh SYMBOLIC)
+-
+-install(TARGETS tlsh_unittest DESTINATION bin)
+-install(CODE "file(CREATE_LINK tlsh_unittest \$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/tlsh SYMBOLIC)")
