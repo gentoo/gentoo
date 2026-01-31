@@ -1,4 +1,4 @@
-# Copyright 2011-2025 Gentoo Authors
+# Copyright 2011-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -120,22 +120,12 @@ option_client() {
 	fi
 }
 
-run_for_testing() {
-	if use test; then
-		local BUILD_DIR="${WORKDIR}/${P}_testing"
-		"$@"
-	fi
-}
-
 src_configure() {
 	use debug || append-cppflags -DNDEBUG
-	freerdp_configure -DBUILD_TESTING=OFF
-	run_for_testing freerdp_configure -DBUILD_TESTING=ON
-}
-
-freerdp_configure() {
 	local mycmakeargs=(
 		-Wno-dev
+
+		-DBUILD_TESTING=$(option test)
 
 		# https://bugs.gentoo.org/927037
 		-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF
@@ -179,15 +169,8 @@ freerdp_configure() {
 		-DWITH_WAYLAND=$(option_client wayland)
 		-DWITH_WEBVIEW=OFF
 		-DWITH_WINPR_TOOLS=$(option server)
-
-		"$@"
 	)
 	cmake_src_configure
-}
-
-src_compile() {
-	cmake_src_compile
-	run_for_testing cmake_src_compile
 }
 
 src_test() {
@@ -197,7 +180,7 @@ src_test() {
 	if has network-sandbox ${FEATURES}; then
 		CMAKE_SKIP_TESTS+=( TestConnect )
 	fi
-	run_for_testing cmake_src_test
+	cmake_src_test
 }
 
 src_install() {
