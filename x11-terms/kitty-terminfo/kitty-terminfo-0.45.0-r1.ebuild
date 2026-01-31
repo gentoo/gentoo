@@ -9,7 +9,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	SRC_URI="https://github.com/kovidgoyal/kitty/releases/download/v${PV}/kitty-${PV}.tar.xz"
 	# backport for less-691 search issue wrt bug #969467
-	# (not a patch due to binary files, albeit could've re-generated with tic)
+	# (not a patch due to binary files, and main package does not re-run tic)
 	SRC_URI+=" https://dev.gentoo.org/~ionen/distfiles/kitty-${PV}-less691-fix-backport.tar.xz"
 	S=${WORKDIR}/kitty-${PV}
 	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
