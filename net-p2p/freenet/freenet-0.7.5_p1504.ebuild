@@ -28,8 +28,7 @@ CP_DEPEND="
 	dev-java/bcprov:0
 	dev-java/commons-compress:0
 	>=dev-java/commons-io-2.19.0:0
-	dev-java/fec:0
-	dev-java/freenet-ext:29
+	>=dev-java/freenet-ext-29-r2:29
 	dev-java/java-service-wrapper:0
 	dev-java/jbitcollider-core:0
 	>=dev-java/jna-5.17.0:0
