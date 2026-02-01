@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,7 +29,7 @@ CP_DEPEND="
 	>=dev-java/rhino-1.8.0:0
 	dev-java/xalan:0
 	dev-java/xml-commons-external:1.4
-	dev-java/xmlgraphics-commons:0
+	~dev-java/xmlgraphics-commons-2.10:0
 "
 
 DEPEND="

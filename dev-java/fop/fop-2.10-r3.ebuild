@@ -32,7 +32,7 @@ BDEPEND="
 
 CP_DEPEND="
 	>=dev-java/ant-1.10.14-r3:0
-	dev-java/batik:0
+	~dev-java/batik-1.18:0
 	dev-java/bcprov:0
 	dev-java/bcpkix:0
 	dev-java/commons-io:1
@@ -41,7 +41,7 @@ CP_DEPEND="
 	dev-java/jakarta-servlet-api:6.1
 	dev-java/qdox:1.12
 	dev-java/sun-jai-bin:0
-	dev-java/xmlgraphics-commons:0
+	~dev-java/xmlgraphics-commons-${PV}:0
 "
 
 DEPEND="
