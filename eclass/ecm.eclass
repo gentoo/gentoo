@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ecm.eclass
@@ -335,6 +335,7 @@ RDEPEND+=" ${COMMONDEPEND}"
 unset COMMONDEPEND
 
 # @FUNCTION: _ecm_handbook_optional
+# @INTERNAL
 # @DESCRIPTION:
 # Use with ECM_HANDBOOK=optional; ticks either -DBUILD_DOC if available,
 # or -DCMAKE_DISABLE_FIND_PACKAGE_KF${_KFSLOT}DocTools
