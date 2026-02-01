@@ -82,6 +82,12 @@ BDEPEND="
 	)
 "
 
+#PATCHES=(
+#	"${FILESDIR}"/${P}-sftp.patch
+#	"${FILESDIR}"/${P}-build.patch
+#	"${FILESDIR}"/${PN}-0.18.0-guile.patch
+#)
+
 pkg_setup() {
 	use guile && guile-single_pkg_setup
 	use lua && lua-single_pkg_setup
