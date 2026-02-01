@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cargo.eclass
@@ -257,6 +257,7 @@ _cargo_check_initialized() {
 
 # @FUNCTION: _cargo_set_crate_uris
 # @USAGE: <crates>
+# @INTERNAL
 # @DESCRIPTION:
 # Generates the URIs to put in SRC_URI to help fetch dependencies.
 # Constructs a list of crates from its arguments.
