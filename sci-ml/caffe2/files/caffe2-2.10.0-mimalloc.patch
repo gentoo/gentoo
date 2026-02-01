@@ -1,0 +1,14 @@
+--- a/c10/CMakeLists.txt	2026-02-01 09:22:55.398151644 +0100
++++ b/c10/CMakeLists.txt	2026-02-01 09:30:46.720495230 +0100
+@@ -120,8 +120,9 @@
+   endif()
+ 
+   if(USE_MIMALLOC)
+-    target_link_libraries(c10 PRIVATE "mimalloc-static")
+-    add_dependencies(c10 mimalloc-static)
++    find_package(mimalloc REQUIRED)
++    target_link_libraries(c10 PRIVATE "mimalloc")
++    add_dependencies(c10 mimalloc)
+   endif()
+ 
+   if(LINUX)

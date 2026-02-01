@@ -44,8 +44,8 @@ S="${WORKDIR}"/${MYP}
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
-IUSE="cuda cusparselt distributed fbgemm flash gloo memefficient mkl mpi nccl nnpack +numpy
-	onednn openblas opencl openmp qnnpack rocm xnnpack"
+IUSE="cuda cusparselt distributed fbgemm flash gloo memefficient mimalloc mkl
+	mpi nccl nnpack +numpy onednn openblas opencl openmp qnnpack rocm xnnpack"
 RESTRICT="test"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -81,6 +81,7 @@ RDEPEND="
 	)
 	fbgemm? ( sci-ml/FBGEMM )
 	gloo? ( >=sci-ml/gloo-2025.06.04[cuda?,rocm?] )
+	mimalloc? ( dev-libs/mimalloc )
 	mpi? ( virtual/mpi )
 	nnpack? (
 		sci-ml/NNPACK
@@ -163,6 +164,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.9.0-rocm-distributed-link.patch
 	"${FILESDIR}"/${PN}-2.9.1-torch_cpu.patch
 	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-mimalloc.patch
 )
 
 src_prepare() {
@@ -291,6 +293,7 @@ src_configure() {
 		-DUSE_KLEIDIAI=OFF # TODO
 		-DUSE_MAGMA=OFF # TODO: In GURU as sci-libs/magma
 		-DUSE_MEM_EFF_ATTENTION=$(usex memefficient)
+		-DUSE_MIMALLOC=$(usex mimalloc)
 		-DUSE_MKLDNN=$(usex onednn)
 		-DUSE_MPI=$(usex mpi)
 		-DUSE_NCCL=OFF
