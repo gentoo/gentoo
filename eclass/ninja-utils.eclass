@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ninja-utils.eclass
@@ -73,6 +73,7 @@ case ${NINJA} in
 esac
 
 # @FUNCTION: _ninja_uses_jobserver
+# @INTERNAL
 # @DESCRIPTION:
 # Return true if current ${NINJA} has jobserver support and we have one
 # running (via MAKEFLAGS).
