@@ -34,7 +34,7 @@ CRATES="
 
 # Implied by crates above.
 RUST_MIN_VER=1.89.0
-RUST_MAX_VER=1.91.0
+RUST_MAX_VER=1.90.0
 
 declare -A GIT_CRATES=(
 	[boringtun]='https://github.com/cloudflare/boringtun;2f3c85f5c4a601018c10b464b1ca890d9504bf6e;boringtun-%commit%/boringtun'
