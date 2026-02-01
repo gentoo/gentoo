@@ -119,6 +119,7 @@ pypi_normalize_name() {
 
 # @FUNCTION: _pypi_translate_version
 # @USAGE: <version>
+# @INTERNAL
 # @DESCRIPTION:
 # Internal version translation function, returns the result
 # via _PYPI_TRANSLATED_VERSION variable.
