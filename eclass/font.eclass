@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: font.eclass
@@ -216,6 +216,7 @@ font_src_install() {
 }
 
 # @FUNCTION: _update_fontcache
+# @INTERNAL
 # @DESCRIPTION:
 # Updates fontcache if !prefix and media-libs/fontconfig installed
 _update_fontcache() {
