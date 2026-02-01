@@ -331,6 +331,7 @@ unset -f _rust_set_globals
 
 # @FUNCTION: _get_rust_slot
 # @USAGE: [-b|-d]
+# @INTERNAL
 # @DESCRIPTION:
 # Find the newest Rust install that is acceptable for the package,
 # and export its version (i.e. SLOT) and type (source or bin[ary])
