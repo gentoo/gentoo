@@ -4,7 +4,7 @@
 EAPI=8
 PYTHON_REQ_USE="xml(+)"
 PYTHON_COMPAT=( python3_{11..14} )
-USE_RUBY="ruby31 ruby32 ruby33 ruby34"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34 ruby40"
 
 inherit check-reqs flag-o-matic gnome2 optfeature python-any-r1 ruby-single toolchain-funcs cmake
 
