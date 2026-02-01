@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: rocm.eclass
@@ -142,6 +142,7 @@ inherit flag-o-matic
 # @CODE
 
 # @FUNCTION: _rocm_set_globals
+# @INTERNAL
 # @DESCRIPTION:
 # Set global variables useful to ebuilds: IUSE, ROCM_REQUIRED_USE, and
 # ROCM_USEDEP, unless ROCM_SKIP_GLOBALS is set.
