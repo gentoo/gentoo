@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,7 @@ S="${WORKDIR}"/${MY_P}
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
 VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/yubico.com.asc"
 
 # app-crypt/ccid required for
@@ -36,9 +36,10 @@ RDEPEND="
 	app-crypt/ccid
 	>=dev-python/click-8.0[${PYTHON_USEDEP}]
 	<dev-python/cryptography-48[${PYTHON_USEDEP}]
-	dev-python/fido2:0/1.0[${PYTHON_USEDEP}]
+	>=dev-python/fido2-2.0.0:0/1.0[${PYTHON_USEDEP}]
 	dev-python/keyring[${PYTHON_USEDEP}]
-	>=dev-python/pyscard-2.0[${PYTHON_USEDEP}]"
+	>=dev-python/pyscard-2.0[${PYTHON_USEDEP}]
+	>=dev-python/python-pskc-1.3[${PYTHON_USEDEP}]"
 BDEPEND="
 	test? ( dev-python/makefun[${PYTHON_USEDEP}] )
 	verify-sig? ( >=sec-keys/openpgp-keys-yubico-20250604 )"
