@@ -5,7 +5,7 @@
          handle = dlopen("libzest.so", RTLD_LAZY);
      if(!handle)
 -        handle = dlopen("/opt/zyn-fusion/libzest.so", RTLD_LAZY);
-+        handle = dlopen("/usr/lib64/zynaddsubfx/libzest.so", RTLD_LAZY);
++        handle = dlopen("@GENTOO_PORTAGE_EPREFIX@/usr/@GENTOO_LIBDIR@/zynaddsubfx/libzest.so", RTLD_LAZY);
  #endif
      if(!handle) {
          printf("[ERROR] Cannot Open libzest.so\n");

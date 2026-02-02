@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake flag-o-matic
+inherit cmake flag-o-matic prefix toolchain-funcs
 
 DESCRIPTION="Software synthesizer capable of making a countless number of instruments"
 HOMEPAGE="https://zynaddsubfx.sourceforge.net/"
@@ -77,6 +77,14 @@ src_prepare() {
 
 	cd ../zyn-fusion-ui-src-${PV}
 	eapply "${ZYN_FUSION_UI_PATCHES[@]}"
+
+	sed -i "s|@GENTOO_LIBDIR@|$(get_libdir)|" \
+		"${S}/src/Plugin/ZynAddSubFX/ZynAddSubFX-UI-Zest.cpp" \
+		test-libversion.c || die
+
+	eprefixify \
+		"${S}/src/Plugin/ZynAddSubFX/ZynAddSubFX-UI-Zest.cpp" \
+		test-libversion.c
 }
 
 src_configure() {
@@ -96,7 +104,9 @@ src_configure() {
 src_compile() {
 	cmake_src_compile
 	use doc && cmake_src_compile doc
-	emake -C ../zyn-fusion-ui-src-${PV}
+	emake \
+		LD="$(tc-getCC)" \
+		-C ../zyn-fusion-ui-src-${PV}
 }
 
 src_install() {
