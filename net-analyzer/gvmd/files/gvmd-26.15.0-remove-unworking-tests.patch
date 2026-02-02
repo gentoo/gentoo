@@ -1,0 +1,13 @@
+# Remove tests that don't work in the network sandbox
+
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -415,7 +415,7 @@ set(
+   $<TARGET_OBJECTS:all-misc-obj>
+   $<TARGET_OBJECTS:all-sql-obj>
+ )
+-add_unit_test(gmp-tickets "${ALL_OBJECTS}" "${ALL_GMP_SRC}")
++#add_unit_test(gmp-tickets "${ALL_OBJECTS}" "${ALL_GMP_SRC}")
+ 
+ set(
+   ALL_OBJECTS
