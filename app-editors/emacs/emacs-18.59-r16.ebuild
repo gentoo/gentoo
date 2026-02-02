@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,11 +16,17 @@ KEYWORDS="amd64 x86"
 IUSE="abi_x86_x32 gui"
 
 RDEPEND="sys-libs/ncurses:0=
+	gui? ( x11-libs/libX11 )
 	amd64? (
-		abi_x86_x32? ( >=sys-libs/ncurses-5.9-r3:0=[abi_x86_x32(-)] )
-		!abi_x86_x32? ( >=sys-libs/ncurses-5.9-r3:0=[abi_x86_32(-)] )
-	)
-	gui? ( x11-libs/libX11 )"
+		abi_x86_x32? (
+			sys-libs/ncurses:0=[abi_x86_x32(-)]
+			gui? ( x11-libs/libX11[abi_x86_x32(-)] )
+		)
+		!abi_x86_x32? (
+			sys-libs/ncurses:0=[abi_x86_32(-)]
+			gui? ( x11-libs/libX11[abi_x86_32(-)] )
+		)
+	)"
 
 DEPEND="${RDEPEND}
 	gui? (
