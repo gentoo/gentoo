@@ -29,7 +29,8 @@ RESTRICT="test"
 
 RDEPEND="${ADA_DEPS}
 	dev-ada/gprbuild[${ADA_USEDEP}]
-	dev-ada/vss-text[${ADA_USEDEP}]"
+	dev-ada/vss-text[${ADA_USEDEP}]
+	dev-ada/vss-extra[${ADA_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( ${PYTHON_DEPS} )"
 
