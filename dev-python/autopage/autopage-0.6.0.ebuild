@@ -6,16 +6,12 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{11..14} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="A library to provide automatic paging for console output"
 HOMEPAGE="
 	https://github.com/zaneb/autopage/
 	https://pypi.org/project/autopage/
-"
-SRC_URI="
-	https://github.com/zaneb/autopage/archive/v${PV}.tar.gz
-		-> ${P}.gh.tar.gz
 "
 
 LICENSE="Apache-2.0"
