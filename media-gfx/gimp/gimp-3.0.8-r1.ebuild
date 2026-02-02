@@ -26,6 +26,8 @@ REQUIRED_USE="
 
 RESTRICT="!test? ( test )"
 
+# TODO: next revbump add iso-codes as a build time dependency. It affects the end result whether its available
+
 # See libgimp_deps_table in libgimp/meson.build for introspection dependencies, bug #969449
 COMMON_DEPEND="
 	${PYTHON_DEPS}
@@ -126,6 +128,7 @@ DOCS=( "AUTHORS" "NEWS" "README" "README.i18n" )
 PATCHES=(
 	"${FILESDIR}"/gimp-3.0.6-respect-NM.patch
 	"${FILESDIR}"/gimp-3.0.8-no-libunwind.patch
+	"${FILESDIR}"/gimp-3.0.8-allow-user-locale.patch
 )
 
 pkg_pretend() {
@@ -133,7 +136,24 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		use openmp && tc-check-openmp
+
+		# bug #969468
+		local locales="$(locale -a)"
+		if ! has "en_US.utf8" ${locales} && ! has "en_US.UTF-8" ${locales}; then
+			# portage splits and unset LC_ALL. Cannot rely on that
+			if [[ ${LANG} != C ]] && [[ ${LANG} != POSIX ]] && ! [[ ${LANG} =~ C. ]]; then
+				# Set LC_ALL to avoid locales breaking due to the profile setting LC_MESSAGES=C and portage itself setting LC_COLLATE=C
+				einfo "Setting LC_ALL=${LANG} based on LANG because en_US.UTF-8 isn't available, bug #968468"
+				export LC_ALL="${LANG}"
+			else
+				eerror "Cannot use LANG=${LANG} as it cannot be C or POSIX"
+				die "en_US.UTF-8 isn't available and cannot fallback to user locale, bug #969468"
+			fi
+		fi
+	fi
+
 	python-single-r1_pkg_setup
 	use lua && lua-single_pkg_setup
 }
