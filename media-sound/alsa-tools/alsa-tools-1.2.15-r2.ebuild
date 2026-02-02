@@ -1,17 +1,21 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools flag-o-matic libtool xdg
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/alsa.asc
+inherit autotools flag-o-matic libtool linux-info verify-sig xdg
 
 DESCRIPTION="Advanced Linux Sound Architecture tools"
 HOMEPAGE="https://alsa-project.org/wiki/Main_Page"
-SRC_URI="https://www.alsa-project.org/files/pub/tools/${P}.tar.bz2"
+SRC_URI="
+	https://www.alsa-project.org/files/pub/tools/${P}.tar.bz2
+	verify-sig? ( https://www.alsa-project.org/files/pub/tools/${P}.tar.bz2.sig )
+"
 
 LICENSE="GPL-2"
 SLOT="0.9"
-KEYWORDS="~alpha amd64 ~arm64 ~hppa ~mips ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 IUSE="fltk gtk alsa_cards_hdsp alsa_cards_hdspm alsa_cards_mixart
 alsa_cards_vx222 alsa_cards_usb-usx2y alsa_cards_sb16 alsa_cards_sbawe
@@ -25,6 +29,7 @@ DEPEND="
 	fltk? ( x11-libs/fltk:1= )
 	gtk? (
 		>=dev-libs/gobject-introspection-1.82.0-r2
+		gui-libs/gtk:4
 		x11-libs/gtk+:2
 		x11-libs/gtk+:3
 	)
@@ -36,17 +41,21 @@ RDEPEND="
 "
 BDEPEND="
 	virtual/pkgconfig
+	verify-sig? ( sec-keys/openpgp-keys-alsa )
 "
 
 PATCHES=(
 	"${FILESDIR}"/envy24control-config-dir.patch
 )
 
+CONFIG_CHECK="~SND_HDA_RECONFIG"
+
 pkg_setup() {
+	linux-info_pkg_setup
+
 	ALSA_TOOLS=(
 		seq/sbiload
 		us428control
-		hwmixvolume
 		hda-verb
 		$(usev alsa_cards_mixart mixartloader)
 		$(usev alsa_cards_vx222 vxloader)
@@ -59,6 +68,8 @@ pkg_setup() {
 		ALSA_TOOLS+=(
 			echomixer
 			hdajackretask
+			hdajacksensetest
+			hwmixvolume
 			$(usev alsa_cards_ice1712 envy24control)
 		)
 		# Perhaps a typo the following && logic?
@@ -130,8 +141,7 @@ src_configure() {
 src_compile() {
 	local f
 	for f in ${ALSA_TOOLS[@]} ; do
-		cd "${S}/${f}" || die
-		emake
+		emake -C "${S}/${f}"
 	done
 }
 

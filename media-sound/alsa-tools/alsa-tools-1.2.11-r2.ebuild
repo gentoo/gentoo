@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -46,7 +46,6 @@ pkg_setup() {
 	ALSA_TOOLS=(
 		seq/sbiload
 		us428control
-		hwmixvolume
 		hda-verb
 		$(usev alsa_cards_mixart mixartloader)
 		$(usev alsa_cards_vx222 vxloader)
@@ -59,6 +58,7 @@ pkg_setup() {
 		ALSA_TOOLS+=(
 			echomixer
 			hdajackretask
+			hwmixvolume
 			$(usev alsa_cards_ice1712 envy24control)
 		)
 		# Perhaps a typo the following && logic?
@@ -130,7 +130,8 @@ src_configure() {
 src_compile() {
 	local f
 	for f in ${ALSA_TOOLS[@]} ; do
-		emake -C "${S}/${f}"
+		cd "${S}/${f}" || die
+		emake
 	done
 }
 
