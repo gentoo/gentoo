@@ -170,9 +170,11 @@ pkg_setup() {
 	python-single-r1_pkg_setup
 	use lua && lua-single_pkg_setup
 
-	if has_version ">=media-libs/babl-9999" || has_version ">=media-libs/gegl-9999"; then
-		ewarn "Please make sure to rebuild media-libs/babl-9999 and media-libs/gegl-9999 packages"
-		ewarn "before building media-gfx/gimp-9999 to have their latest master branch versions."
+	if [[ ${PV} == 9999 ]]; then
+		if has_version ">=media-libs/babl-9999" || has_version ">=media-libs/gegl-9999"; then
+			ewarn "Please make sure to rebuild media-libs/babl-9999 and media-libs/gegl-9999 packages"
+			ewarn "before building media-gfx/gimp-9999 to have their latest master branch versions."
+		fi
 	fi
 }
 
