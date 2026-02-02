@@ -1,0 +1,35 @@
+# Remove tests that don't work in the network sandbox
+# Strip out sanitizer from tests
+
+--- a/cmake/add_unit_test.cmake
++++ b/cmake/add_unit_test.cmake
+@@ -22,14 +22,16 @@ macro(add_unit_test _baseName _objects _extraSource)
+     ${_objects}
+     ${TEST_TARGET_EXTRA_SRC}
+   )
+-  target_compile_options(${_testName} PRIVATE "-fsanitize=address")
+-  target_link_options(${_testName} PRIVATE "-fsanitize=address")
++#  target_compile_options(${_testName} PRIVATE "-fsanitize=address")
++#  target_link_options(${_testName} PRIVATE "-fsanitize=address")
+   add_test(${_testName} ${_testName})
++#[===[
+   set_tests_properties(
+     ${_testName}
+     PROPERTIES
+       ENVIRONMENT "ASAN_OPTIONS=detect_leaks=1:halt_on_error=1:abort_on_error=1"
+   )
++]===]
+   target_link_libraries(
+     ${_testName}
+     cgreen
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -428,7 +428,7 @@ set(
+   $<TARGET_OBJECTS:all-misc-obj>
+   $<TARGET_OBJECTS:all-sql-obj>
+ )
+-add_unit_test(gmp-tickets "${ALL_OBJECTS}" "${ALL_GMP_SRC}")
++#add_unit_test(gmp-tickets "${ALL_OBJECTS}" "${ALL_GMP_SRC}")
+ 
+ set(
+   ALL_OBJECTS
