@@ -1,4 +1,4 @@
-# Copyright 2020-2025 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -118,6 +118,7 @@ src_configure() {
 		cargo = "${rust_root}/bin/cargo"
 		rustc = "${rust_root}/bin/rustc"
 		submodules = false
+		local-rebuild = true
 		python = "${EPYTHON}"
 		locked-deps = true
 		vendor = true
