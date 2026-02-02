@@ -10,9 +10,11 @@
     <name>Proxy Maintainers</name>
   </maintainer>
   <upstream>
+    <remote-id type="github">g-pape/runit</remote-id>
     <remote-id type="github">clan/runit</remote-id>
   </upstream>
   <use>
     <flag name="scripts">Install boot scripts into /etc/runit/.</flag>
+    <flag name="system-init">Installed as a provider of virtual/service-manager.</flag>
   </use>
 </pkgmetadata>
