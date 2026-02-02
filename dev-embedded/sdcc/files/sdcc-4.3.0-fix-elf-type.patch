@@ -1,0 +1,12 @@
+diff '--color=auto' -uprNb sdcc-4.3.0.orig/sdas/linksrc/aslink.h sdcc-4.3.0/sdas/linksrc/aslink.h
+--- sdcc-4.3.0.orig/sdas/linksrc/aslink.h	2025-05-07 15:07:20.854046196 +0300
++++ sdcc-4.3.0/sdas/linksrc/aslink.h	2025-05-07 15:08:22.095963883 +0300
+@@ -1312,7 +1312,7 @@ extern  VOID            s19(int i);
+ extern  VOID            sflush(void);
+ 
+ /* EEP: lkelf.c */
+-extern  VOID            elf();
++extern  VOID            elf(int i);
+ 
+ /* JCF: lkmem.c */
+ extern int summary(struct area * xp);
