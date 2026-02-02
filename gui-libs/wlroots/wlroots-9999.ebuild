@@ -33,7 +33,7 @@ DEPEND="
 	>=dev-libs/wayland-1.23.1
 	media-libs/libglvnd
 	>=media-libs/mesa-24.1.0_rc1[opengl]
-	>=x11-libs/libdrm-2.4.122
+	>=x11-libs/libdrm-2.4.129
 	>=x11-libs/libxkbcommon-1.8.0
 	>=x11-libs/pixman-0.43.0
 	drm? (
