@@ -27,7 +27,6 @@ LICENSE="
 	curl openssl public-domain
 "
 SLOT="0/${PV%%.*}"
-# kept unkeyworded due to being a beta, users are free to opt-in for testing
 KEYWORDS="-* ~amd64 ~arm64"
 IUSE="
 	+X abi_x86_32 abi_x86_64 +kernel-open persistenced powerd
