@@ -22,12 +22,12 @@ IUSE="doc static-libs static-pic"
 
 RDEPEND="${ADA_DEPS}
 	${PYTHON_DEPS}
-	>=dev-ada/gpr-26:=[${ADA_USEDEP},static-libs?,static-pic?]
-	>=dev-ada/markdown-26:=[${ADA_USEDEP}]
-	>=dev-ada/vss-text-26:=[${ADA_USEDEP},static-libs?,static-pic?]
-	dev-ada/vss-extra:=[${ADA_USEDEP},static-libs?,static-pic?]
-	>=dev-ada/libadalang-26:=[${ADA_USEDEP},static-libs?,static-pic?]
+	dev-ada/gnatcoll-core:=
+	dev-ada/gpr:${SLOT}[${ADA_USEDEP},shared(+),static-libs?]
+	dev-ada/markdown:=[${ADA_USEDEP}]
+	<dev-ada/libadalang-26:=[${ADA_USEDEP},static-libs?,static-pic?]
 	dev-ada/libadalang:=[${PYTHON_SINGLE_USEDEP}]
+	=dev-ada/vss-text-25*:=[${ADA_USEDEP},static-libs?]
 "
 BDEPEND="dev-ada/gprbuild[${ADA_USEDEP}]"
 
