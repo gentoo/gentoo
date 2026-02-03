@@ -1,4 +1,4 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,8 +20,10 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="${ADA_DEPS}
 	dev-ada/AdaSAT:=[${ADA_USEDEP},shared,static-libs?,static-pic?]
-	dev-ada/libadalang:=[${ADA_USEDEP},static-libs?,static-pic?]
-	<dev-ada/gpr-26:=[${ADA_USEDEP},shared(+),static-libs?,static-pic?]"
+	dev-ada/gnatcoll-bindings:=[${ADA_USEDEP},static-libs?,static-pic?]
+	dev-ada/gnatcoll-core:=[${ADA_USEDEP},static-libs?,static-pic?]
+	<dev-ada/gpr-26:=[${ADA_USEDEP},shared(+),static-libs?,static-pic?]
+	dev-ada/libadalang:=[${ADA_USEDEP},static-libs?,static-pic?]"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-ada/gprbuild[${ADA_USEDEP}]

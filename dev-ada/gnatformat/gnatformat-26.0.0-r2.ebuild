@@ -21,6 +21,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="${ADA_DEPS}
 	dev-ada/AdaSAT:=[${ADA_USEDEP},shared,static-libs?,static-pic?]
 	>=dev-ada/gnatcoll-bindings-26:=[${ADA_USEDEP},static-libs?,static-pic?]
+	dev-ada/gnatcoll-core:=[${ADA_USEDEP},static-libs?,static-pic?]
 	>=dev-ada/gpr-26:=[${ADA_USEDEP},static-libs?,static-pic?]
 	>=dev-ada/libadalang-26:=[${ADA_USEDEP},static-libs?,static-pic?]
 	dev-ada/vss-extra:=[${ADA_USEDEP},static-libs?,static-pic?]"
