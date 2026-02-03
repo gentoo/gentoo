@@ -1,9 +1,9 @@
-# Copyright 2021-2025 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit go-env go-module shell-completion toolchain-funcs
+inherit go-env go-module shell-completion sysroot
 
 DESCRIPTION="CLI and validation tools for Kubelet Container Runtime (CRI)"
 HOMEPAGE="https://github.com/kubernetes-sigs/cri-tools"
@@ -21,18 +21,14 @@ src_compile() {
 	CRICTL="build/bin/${GOOS}/${GOARCH}/crictl"
 	emake VERSION="${PV}"
 
-	if ! tc-is-cross-compiler; then
-		"${CRICTL}" completion bash > crictl.bash || die
-		"${CRICTL}" completion zsh > crictl.zsh || die
-	fi
+	sysroot_try_run_prefixed "${CRICTL}" completion bash > crictl.bash || die
+	sysroot_try_run_prefixed "${CRICTL}" completion zsh > crictl.zsh || die
 }
 
 src_install() {
 	einstalldocs
 	dobin "${CRICTL}"
 
-	if ! tc-is-cross-compiler; then
-		newbashcomp crictl.bash crictl
-		newzshcomp crictl.zsh _crictl
-	fi
+	[[ -s crictl.bash ]] && newbashcomp crictl.bash crictl
+	[[ -s crictl.zsh ]] && newzshcomp crictl.zsh _crictl
 }
