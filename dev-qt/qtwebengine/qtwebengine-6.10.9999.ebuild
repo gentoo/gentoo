@@ -108,7 +108,6 @@ PATCHES=( "${WORKDIR}"/patches/${PN} )
 
 PATCHES+=(
 	# add extras as needed here, may merge in set if carries across versions
-	"${FILESDIR}"/${PN}-6.10.1-clang-bfd.patch
 	"${FILESDIR}"/${PN}-6.10.2-glibc-2.43.patch
 )
 
