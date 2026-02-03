@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cvs.eclass
 # @MAINTAINER:
 # vapier@gentoo.org (and anyone who wants to help)
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: This eclass provides generic cvs fetching functions
 # @DESCRIPTION:
 # This eclass provides the generic cvs fetching functions. To use this from an
@@ -13,13 +13,14 @@
 # cvs_src_unpack. If you find that you need to call the cvs_* functions
 # directly, I'd be interested to hear about it.
 
-case ${EAPI} in
-	7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_CVS_ECLASS} ]]; then
 _CVS_ECLASS=1
+
+case ${EAPI} in
+	7|8) inherit eapi9-pipestatus ;;
+	9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # TODO:
 
@@ -489,7 +490,7 @@ cvs_src_unpack() {
 			LC_ALL=C sort | \
 			sha1sum | \
 			awk '{print $1}'
-		assert
+		pipestatus || die
 	)
 
 	# If the directory is empty, remove it; empty directories cannot
