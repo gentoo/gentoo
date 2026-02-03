@@ -73,6 +73,7 @@ DOCS=(
 
 PATCHES=( "${FILESDIR}/freenet-0.7.5_p1503-ignore-failing-tests.patch" )
 
+JAVADOC_ARGS="-source 8" # bug #967404
 JAVA_CLASSPATH_EXTRA="java-service-wrapper,unbescape"
 JAVA_RESOURCE_DIRS="res"
 JAVA_SRC_DIR="src"
