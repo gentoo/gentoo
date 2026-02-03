@@ -479,9 +479,10 @@ test_strip_lto() {
 		cp foo.a foo.a.bak || return 1
 		$(tc-getSTRIP) --enable-deterministic-archives -p -d foo.a || return 1
 
-		# They should NOT differ after stripping because it
-		# can't be safely stripped without special arguments.
-		cmp -s foo.a foo.a.bak || return 1
+		# The file may differ slightly with newer GNU Binutils (PR33801)
+		# so just make sure it's not totally corrupted.
+		$(tc-getCC) ${CFLAGS} ${LDFLAGS} main.c foo.a -o main || return 1
+		./main &>/dev/null || return 1
 
 		return 0
 	) || ret=1
@@ -669,9 +670,10 @@ test_strip_index() {
 		cp foo.a foo.a.bak || return 1
 		$(tc-getSTRIP) --enable-deterministic-archives -p --strip-unneeded foo.a || return 1
 
-		# They should NOT differ after stripping because it
-		# can't be safely stripped without special arguments.
-		cmp -s foo.a foo.a.bak || return 1
+		# The file may differ slightly with newer GNU Binutils (PR33801)
+		# so just make sure it's not totally corrupted.
+		$(tc-getCC) ${CFLAGS} ${LDFLAGS} main.c foo.a -o main || return 1
+		./main &>/dev/null || return 1
 
 		return 0
 	) || ret=1
