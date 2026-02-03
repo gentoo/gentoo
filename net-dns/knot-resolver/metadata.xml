@@ -22,6 +22,9 @@
 		<flag name="nghttp2">
 			DNS-over-HTTPS support
 		</flag>
+		<flag name="quic">
+			DNS-over-QUIC support
+		</flag>
 		<flag name="xdp">
 			Enable eXpress Data Path
 		</flag>
