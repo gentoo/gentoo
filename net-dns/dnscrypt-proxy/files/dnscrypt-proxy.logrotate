@@ -1,6 +1,9 @@
 /var/log/dnscrypt-proxy/*.log {
 	su dnscrypt-proxy dnscrypt-proxy
-	copytruncate
 	missingok
 	notifempty
+        sharedscripts
+        postrotate
+                /etc/init.d/dnscrypt-proxy restart > /dev/null
+        endscript
 }
