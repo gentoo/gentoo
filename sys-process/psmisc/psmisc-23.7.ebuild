@@ -1,13 +1,17 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit toolchain-funcs
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/craigsmall.asc
+inherit toolchain-funcs verify-sig
 
 DESCRIPTION="A set of tools that use the proc filesystem"
 HOMEPAGE="http://psmisc.sourceforge.net/"
-SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.xz"
+SRC_URI="
+	https://downloads.sourceforge.net/${PN}/${P}.tar.xz
+	verify-sig? ( https://downloads.sourceforge.net/${PN}/${P}.tar.xz.asc )
+"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -27,13 +31,14 @@ BDEPEND="
 	>=dev-build/libtool-2.2.6b
 	nls? ( sys-devel/gettext )
 	test? ( dev-util/dejagnu )
+	verify-sig? ( sec-keys/openpgp-keys-craigsmall )
 "
 
 DOCS=( AUTHORS ChangeLog NEWS README )
 
 src_configure() {
 	if tc-is-cross-compiler ; then
-		# This isn't ideal but upstream don't provide a placement
+		# This isn't ideal but upstream don't provide a replacement
 		# when malloc is missing anyway, leading to errors like:
 		# pslog.c:(.text.startup+0x108): undefined reference to `rpl_malloc'
 		# See https://sourceforge.net/p/psmisc/bugs/71/
