@@ -80,7 +80,9 @@ qemu_arch_if_needed() {
 # @DESCRIPTION:
 # Create a wrapper script for directly running executables within a (sys)root
 # without changing the root directory. The path to that script is returned. If
-# no sysroot has been set, then this function returns unsuccessfully.
+# no (sys)root has been set, then return status code 1. If the wrapper cannot be
+# created for a permissible reason like QEMU being missing or broken, then
+# return status code 2.
 #
 # The script explicitly uses QEMU if this is necessary and it is available in
 # this environment. It may otherwise implicitly use a QEMU outside this
@@ -118,7 +120,7 @@ sysroot_make_run_prefixed() {
 	if [[ ${CHOST} = *-mingw32 ]]; then
 		if ! type -P wine >/dev/null; then
 			einfo "Wine not found. Continuing without ${SCRIPT##*/} wrapper."
-			return 1
+			return 2
 		fi
 
 		# UNIX paths can work, but programs will not expect this in %PATH%.
@@ -169,7 +171,7 @@ sysroot_make_run_prefixed() {
 
 		if ! "${SCRIPT}" "${test}" &>/dev/null; then
 			einfo "Failed to run ${test##*/}. Continuing without ${SCRIPT##*/} wrapper."
-			return 1
+			return 2
 		fi
 	fi
 
@@ -180,11 +182,30 @@ sysroot_make_run_prefixed() {
 # @DESCRIPTION:
 # Create a wrapper script with sysroot_make_run_prefixed if necessary, and use
 # it to execute the given command, otherwise just execute the command directly.
+# Return unsuccessfully if the wrapper cannot be created.
 sysroot_run_prefixed() {
 	local script
-	if script=$(sysroot_make_run_prefixed); then
-		"${script}" "${@}"
-	else
-		"${@}"
-	fi
+	script=$(sysroot_make_run_prefixed)
+
+	case $? in
+		0) "${script}" "${@}" ;;
+		1) "${@}" ;;
+		*) return $? ;;
+	esac
+}
+
+# @FUNCTION: sysroot_try_run_prefixed
+# @DESCRIPTION:
+# Create a wrapper script with sysroot_make_run_prefixed if necessary, and use
+# it to execute the given command, otherwise just execute the command directly.
+# Print a warning and return successfully if the wrapper cannot be created.
+sysroot_try_run_prefixed() {
+	local script
+	script=$(sysroot_make_run_prefixed)
+
+	case $? in
+		0) "${script}" "${@}" ;;
+		1) "${@}" ;;
+		*) ewarn "Unable to run command under prefix: $*" ;;
+	esac
 }
