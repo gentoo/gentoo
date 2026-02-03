@@ -82,7 +82,7 @@ src_prepare() {
 		elog
 		elog "If you experience any problems, install an older java compiler"
 		elog "and select it with \"eselect java\", then recompile ${PN}."
-		eapply "${FILESDIR}/${PN}-9.1-openjdk21.patch"
+		eapply "${FILESDIR}/${PN}-10.0.3-openjdk21.patch"
 	fi
 }
 
