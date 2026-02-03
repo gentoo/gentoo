@@ -10,7 +10,7 @@ inherit python-r1
 DESCRIPTION="Enhanced df with colors"
 HOMEPAGE="https://github.com/garabik/pydf
 	http://kassiopeia.juls.savba.sk/~garabik/software/pydf/"
-SRC_URI="https://github.com/garabik/pydf/archive/refs/tags/v${PV}.tar.gz -> ${PV}.gh.tar.gz"
+SRC_URI="https://github.com/garabik/pydf/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
