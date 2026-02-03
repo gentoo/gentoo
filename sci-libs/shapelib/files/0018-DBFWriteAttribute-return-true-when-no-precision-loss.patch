@@ -1,0 +1,36 @@
+From 1a344bfec194b73139f0316167ba27f52ad5ce69 Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Thu, 17 Apr 2025 13:17:16 +0200
+Subject: [PATCH 18/19] DBFWriteAttribute(): return true when no precision loss
+ occured when writing a double
+
+Fixes https://github.com/OSGeo/gdal/issues/12154
+---
+ dbfopen.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/dbfopen.c b/dbfopen.c
+index 2486875..5b7ede3 100644
+--- a/dbfopen.c
++++ b/dbfopen.c
+@@ -1436,14 +1436,14 @@ static bool DBFWriteAttribute(DBFHandle psDBF, int hEntity, int iField,
+             char szFormat[20];
+             snprintf(szFormat, sizeof(szFormat), "%%%d.%df", nWidth,
+                      psDBF->panFieldDecimals[iField]);
+-            CPLsnprintf(szSField, sizeof(szSField), szFormat,
+-                        *STATIC_CAST(double *, pValue));
++            const double value = *STATIC_CAST(double *, pValue);
++            CPLsnprintf(szSField, sizeof(szSField), szFormat, value);
+             szSField[sizeof(szSField) - 1] = '\0';
+             if (STATIC_CAST(int, strlen(szSField)) >
+                 psDBF->panFieldSize[iField])
+             {
+                 szSField[psDBF->panFieldSize[iField]] = '\0';
+-                nRetResult = false;
++                nRetResult = psDBF->sHooks.Atof(szSField) == value;
+             }
+             memcpy(REINTERPRET_CAST(char *,
+                                     pabyRec + psDBF->panFieldOffset[iField]),
+-- 
+2.49.0
+
