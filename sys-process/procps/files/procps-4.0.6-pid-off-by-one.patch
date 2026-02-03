@@ -1,0 +1,50 @@
+https://bugs.gentoo.org/969469
+https://gitlab.com/procps-ng/procps/-/issues/412
+https://gitlab.com/procps-ng/procps/-/merge_requests/284
+
+From 5574f049830ec8f76b5042855b65b418a0b3e8f8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ulrich=20M=C3=BCller?= <ulm@gentoo.org>
+Date: Fri, 30 Jan 2026 13:05:18 +0100
+Subject: [PATCH] library: Fix off-by-one error in procps_pid_length
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Section "pid_max" in Linux admin-guide/sysctl/kernel.rst says:
+
+| PID allocation wrap value.  When the kernel's next PID value
+| reaches this value, it wraps back to a minimum PID value.
+| PIDs of value "pid_max" or larger are not allocated.
+
+In particular, when pid_max == 10**N exactly, then the largest
+possible PID is 10**N - 1, i.e. the length is N.
+
+Signed-off-by: Ulrich Müller <ulm@gentoo.org>
+---
+ library/sysinfo.c | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/library/sysinfo.c b/library/sysinfo.c
+index 35a99220..aad90f56 100644
+--- a/library/sysinfo.c
++++ b/library/sysinfo.c
+@@ -139,9 +139,14 @@ PROCPS_EXPORT unsigned int procps_pid_length(void)
+     pid_length = DEFAULT_PID_LENGTH;
+     if ((fp = fopen(PROCFS_PID_MAX, "r")) != NULL) {
+         if (fgets(pidbuf, sizeof(pidbuf), fp) != NULL) {
+-            pid_length = strlen(pidbuf);
+-            if (pidbuf[pid_length-1] == '\n')
+-                --pid_length;
++            errno = 0;
++            long pid_max = strtol(pidbuf, NULL, 10);
++            if (errno == 0 && pid_max > 0) {
++                pid_max--;
++                pid_length = 1;
++                while ((pid_max /= 10) > 0)
++                    pid_length++;
++            }
+         }
+         fclose(fp);
+     }
+-- 
+GitLab
