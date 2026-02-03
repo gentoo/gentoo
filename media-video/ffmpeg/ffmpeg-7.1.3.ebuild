@@ -516,6 +516,10 @@ multilib_src_configure() {
 			*mingw32*) conf+=( --target-os=mingw32 );;
 			*linux*) conf+=( --target-os=linux );;
 		esac
+	elif use arm; then
+		# TODO?: could *always* pass tc-arch-kernel, albeit that function
+		# is meant for the kernel and just mostly matches by accident
+		conf+=( --arch=arm ) #969514
 	fi
 
 	# skipping tests is handled at configure-time
