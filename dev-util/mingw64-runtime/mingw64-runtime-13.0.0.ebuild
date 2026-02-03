@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit crossdev flag-o-matic toolchain-funcs
+inherit crossdev dot-a flag-o-matic toolchain-funcs
 
 DESCRIPTION="Free Win64 runtime and import library definitions"
 HOMEPAGE="https://www.mingw-w64.org/"
@@ -46,6 +46,8 @@ mingw-foreach_tool() {
 }
 
 src_configure() {
+	lto-guarantee-fat
+
 	# native tools, see #644556
 	local toolsconf=()
 	# normally only widl is prefixed, but avoids clash with other targets
@@ -61,7 +63,7 @@ src_configure() {
 		filter-flags '-fuse-ld=*'
 		filter-flags '-mfunction-return=thunk*' #878849
 	fi
-	local CHOST=${CTARGET}
+	CHOST=${CTARGET} # also used by strip-lto-bytecode in src_install
 
 	# some bashrc-mv users tend to do CFLAGS="${LDFLAGS}" and then
 	# strip-unsupported-flags miss these during compile-only tests
@@ -147,4 +149,6 @@ src_install() {
 	fi
 
 	rm -r -- "${ED}"/usr/share || die
+
+	strip-lto-bytecode
 }
