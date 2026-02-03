@@ -41,6 +41,41 @@ qemu_arch() {
 	esac
 }
 
+# @FUNCTION: qemu_arch_if_needed
+# @DESCRIPTION:
+# If QEMU is needed to run binaries for the given target or CHOST on the build
+# system, return the QEMU architecture, otherwise return status code 1.
+qemu_arch_if_needed() {
+	local target=${1:-${CHOST}}
+	local qemu_arch=$(qemu_arch "${target}")
+
+	# We ideally compare CHOST against CBUILD, but binary packages cache the
+	# CBUILD value from the system that originally built them.
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		if [[ ${qemu_arch} == $(qemu_arch "${CBUILD}") ]]; then
+			return 1
+		else
+			echo "${qemu_arch}"
+			return 0
+		fi
+	fi
+
+	# So for binary packages, compare against the machine hardware name instead.
+	# Don't use uname because that may lie. /proc knows the real value.
+	case "${qemu_arch}/$(< /proc/sys/kernel/arch)" in
+		"${qemu_arch}/${qemu_arch}") return 1 ;;
+		arm/armv*) return 1 ;;
+		hppa/parisc*) return 1 ;;
+		i386/i?86) return 1 ;;
+		mips64*/mips64) return 1 ;;
+		mipsn32*/mips64) return 1 ;;
+		mips*/mips) return 1 ;;
+	esac
+
+	echo "${qemu_arch}"
+	return 0
+}
+
 # @FUNCTION: sysroot_make_run_prefixed
 # @DESCRIPTION:
 # Create a wrapper script for directly running executables within a (sys)root
@@ -52,7 +87,7 @@ qemu_arch() {
 # environment if binfmt_misc has been used with the F flag. It is not feasible
 # to add a conditional dependency on QEMU.
 sysroot_make_run_prefixed() {
-	local QEMU_ARCH=$(qemu_arch) SCRIPT MYROOT MYEROOT LIBGCC
+	local QEMU_ARCH SCRIPT MYROOT MYEROOT LIBGCC
 
 	if [[ ${EBUILD_PHASE_FUNC} == src_* ]]; then
 		[[ -z ${SYSROOT} ]] && return 1
@@ -94,7 +129,7 @@ sysroot_make_run_prefixed() {
 			#!/bin/sh
 			SANDBOX_ON=0 LD_PRELOAD= WINEPATH="\${WINEPATH}\${WINEPATH+;};${winepath//\//\\}" exec wine "\${@}"
 		EOF
-	elif [[ ${QEMU_ARCH} == $(qemu_arch "${CBUILD}") ]]; then
+	elif ! QEMU_ARCH=$(qemu_arch_if_needed); then
 		# glibc: ld.so is a symlink, ldd is a binary.
 		# musl: ld.so doesn't exist, ldd is a symlink.
 		local DLINKER candidate
