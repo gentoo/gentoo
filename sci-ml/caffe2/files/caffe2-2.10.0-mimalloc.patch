@@ -12,3 +12,13 @@
    endif()
  
    if(LINUX)
+--- a/CMakeLists.txt	2026-02-03 16:47:46.949580063 +0100
++++ b/CMakeLists.txt	2026-02-03 16:48:57.348716061 +0100
+@@ -404,7 +404,6 @@
+ # on Windows and AArch64.
+ option(USE_MIMALLOC_ON_MKL "Use mimalloc on MKL" OFF)
+ if(WIN32 OR (CPU_AARCH64 AND NOT APPLE))
+-  set(USE_MIMALLOC ON)
+ 
+   # Not enable USE_MIMALLOC_ON_MKL due to it caused issue:
+   # https://github.com/pytorch/pytorch/issues/138994
