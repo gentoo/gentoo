@@ -205,7 +205,7 @@ src_prepare() {
 
 	# bug #877765
 	restore_config mozcdic-ut.txt
-	if [[ -f /mozcdic-ut.txt && -s mozcdic-ut.txt ]]; then
+	if [[ -f mozcdic-ut.txt && -s mozcdic-ut.txt ]]; then
 		einfo "mozcdic-ut.txt found. Adding to mozc dictionary..."
 		cat mozcdic-ut.txt >> "${S}"/data/dictionary_oss/dictionary00.txt || die
 	fi
