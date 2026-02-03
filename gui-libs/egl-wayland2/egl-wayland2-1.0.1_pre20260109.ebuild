@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/NVIDIA/egl-wayland2/"
 if [[ ${PV} == *_pre* ]]; then
 	# happens often that nvidia-drivers ships with a (yet) unreleased
 	# version and we need to ship a snapshot to provide the same fixes
-	HASH_EGLWAYLAND2=6bbe588f21255222d8a149048a48f8b1091f12e5
+	HASH_EGLWAYLAND2=1893c371d074c5a648a65e198c4e0eee80d2d7f1
 	SRC_URI="
 		https://github.com/NVIDIA/egl-wayland2/archive/${HASH_EGLWAYLAND2}.tar.gz
 			-> ${P}.tar.gz
