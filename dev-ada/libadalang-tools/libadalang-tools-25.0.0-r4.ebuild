@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,9 +19,11 @@ IUSE="static-libs static-pic test"
 REQUIRED_USE="${ADA_REQUIRED_USE}"
 
 RDEPEND="${ADA_DEPS}
-	dev-ada/templates-parser[${ADA_USEDEP},shared(+),static-libs?]
-	dev-ada/vss-text[${ADA_USEDEP},shared(+),static-libs?,static-pic?]
-	dev-ada/libadalang:${SLOT}[${ADA_USEDEP},static-libs?,static-pic?]"
+	dev-ada/gnatcoll-bindings:=[${ADA_USEDEP},static-libs?,static-pic?]
+	dev-ada/gnatcoll-core:=[${ADA_USEDEP},static-libs?,static-pic?]
+	dev-ada/libadalang:${SLOT}[${ADA_USEDEP},static-libs?,static-pic?]
+	dev-ada/templates-parser:=[${ADA_USEDEP},shared(+),static-libs?]
+	dev-ada/vss-text[${ADA_USEDEP},shared(+),static-libs?,static-pic?]"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-ada/gprbuild[${ADA_USEDEP}]
