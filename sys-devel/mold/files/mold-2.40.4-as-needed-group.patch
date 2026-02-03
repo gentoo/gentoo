@@ -1,3 +1,7 @@
+https://bugs.gentoo.org/968893
+https://github.com/rui314/mold/issues/1545
+https://github.com/rui314/mold/pull/1546
+
 From df7b1433b9dab52f207975a90bcef068e3999047 Mon Sep 17 00:00:00 2001
 From: Jonathan Wakely <jwakely@redhat.com>
 Date: Wed, 21 Jan 2026 11:39:57 +0000
