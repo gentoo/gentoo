@@ -536,7 +536,7 @@ kernel-build_src_install() {
 				--ro-mnt
 				--modules "${dracut_modules[*]}"
 				# Pulls in huge firmware files
-				--omit-drivers "amdgpu i915 nfp nouveau nvidia xe"
+				--omit-drivers "amdgpu i915 nfp nova nova_core nouveau nvidia nvidia-drm nvidia-modeset nvidia-peermem nvidia-uvm radeon xe"
 			)
 
 			# Tries to update ld cache
