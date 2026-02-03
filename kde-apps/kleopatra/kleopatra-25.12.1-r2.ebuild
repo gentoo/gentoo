@@ -53,7 +53,7 @@ DEPEND="
 	)
 "
 RDEPEND="${DEPEND}
-	>=app-crypt/gnupg-2.1
+	|| ( >=app-crypt/gnupg-2.1 app-crypt/freepg )
 	app-crypt/paperkey
 "
 
