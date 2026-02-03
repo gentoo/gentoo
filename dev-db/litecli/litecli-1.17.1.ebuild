@@ -28,7 +28,7 @@ RDEPEND="
 	>=dev-python/configobj-5.0.5[${PYTHON_USEDEP}]
 	>=dev-python/prompt-toolkit-3.0.3[${PYTHON_USEDEP}]
 	<dev-python/prompt-toolkit-4.0.0[${PYTHON_USEDEP}]
-	>=dev-python/pygments-1.5[${PYTHON_USEDEP}]
+	>=dev-python/pygments-1.6[${PYTHON_USEDEP}]
 	>=dev-python/sqlparse-0.4.4[${PYTHON_USEDEP}]
 "
 BDEPEND="
