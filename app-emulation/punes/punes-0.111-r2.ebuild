@@ -45,6 +45,7 @@ PATCHES=(
 	"${FILESDIR}/punes-0.111-FULLSCREEN_RESFREQ-fix.patch"
 	"${FILESDIR}/punes-0.111-qt6.7_Q_OBJECT.patch"
 	"${FILESDIR}/punes-0.111-qt6.9-compatibility.patch"
+	"${FILESDIR}/punes-0.111-ffmpeg8.patch"
 )
 
 src_configure() {
