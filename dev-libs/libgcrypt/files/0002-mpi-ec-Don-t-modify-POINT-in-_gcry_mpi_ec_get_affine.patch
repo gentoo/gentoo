@@ -1,0 +1,52 @@
+From 949557945cf806dfbc646c8919a398ae637f7c25 Mon Sep 17 00:00:00 2001
+Message-ID: <949557945cf806dfbc646c8919a398ae637f7c25.1770174288.git.sam@gentoo.org>
+In-Reply-To: <927850875c6254282697dbbed8aff65275bdeff5.1770174288.git.sam@gentoo.org>
+References: <927850875c6254282697dbbed8aff65275bdeff5.1770174288.git.sam@gentoo.org>
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Tue, 3 Feb 2026 15:10:41 +0900
+Subject: [PATCH 2/2] mpi:ec: Don't modify POINT in _gcry_mpi_ec_get_affine.
+
+* mpi/ec.c (_gcry_mpi_ec_get_affine): Don't modify POINT.
+
+--
+
+GnuPG-bug-id: 8080
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+---
+ mpi/ec.c | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
+
+diff --git a/mpi/ec.c b/mpi/ec.c
+index d7bad4a6..b0b6f427 100644
+--- a/mpi/ec.c
++++ b/mpi/ec.c
+@@ -1220,18 +1220,20 @@ _gcry_mpi_ec_get_affine (gcry_mpi_t x, gcry_mpi_t y, mpi_point_t point,
+ 
+         if (x)
+           {
+-            mpi_resize (point->x, ctx->p->nlimbs);
+-            point->x->nlimbs = ctx->p->nlimbs;
+-            ec_mulm_lli (x, point->x, z2, ctx);
++            mpi_set (x, point->x);
++            mpi_resize (x, ctx->p->nlimbs);
++            x->nlimbs = ctx->p->nlimbs;
++            ec_mulm_lli (x, x, z2, ctx);
+           }
+ 
+         if (y)
+           {
+-            mpi_resize (point->y, ctx->p->nlimbs);
+-            point->y->nlimbs = ctx->p->nlimbs;
++            mpi_set (y, point->y);
++            mpi_resize (y, ctx->p->nlimbs);
++            y->nlimbs = ctx->p->nlimbs;
+             z3 = mpi_new (0);
+             ec_mulm_lli (z3, z2, z1, ctx); /* z3 = z^(-3) mod p  */
+-            ec_mulm_lli (y, point->y, z3, ctx);
++            ec_mulm_lli (y, y, z3, ctx);
+             mpi_free (z3);
+           }
+ 
+-- 
+2.53.0
+

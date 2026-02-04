@@ -1,0 +1,106 @@
+From 927850875c6254282697dbbed8aff65275bdeff5 Mon Sep 17 00:00:00 2001
+Message-ID: <927850875c6254282697dbbed8aff65275bdeff5.1770174288.git.sam@gentoo.org>
+From: Jussi Kivilinna <jussi.kivilinna@iki.fi>
+Date: Sun, 1 Feb 2026 09:50:50 +0200
+Subject: [PATCH 1/2] rijndael-vaes-avx512: add PIC @PLT for AVX2 function
+ jumps
+
+* cipher/asm-common-amd64.h (AT_PLT): New.
+* cipher/rijndael-vaes-avx512-amd64.S: Use AT_PLT for jumps to
+AVX2/VAES functions.
+--
+
+GnuPG-bug-id: 8071
+Signed-off-by: Jussi Kivilinna <jussi.kivilinna@iki.fi>
+---
+ cipher/asm-common-amd64.h           |  6 ++++++
+ cipher/rijndael-vaes-avx512-amd64.S | 14 +++++++-------
+ 2 files changed, 13 insertions(+), 7 deletions(-)
+
+diff --git a/cipher/asm-common-amd64.h b/cipher/asm-common-amd64.h
+index 465ef62b..d0cc6426 100644
+--- a/cipher/asm-common-amd64.h
++++ b/cipher/asm-common-amd64.h
+@@ -53,6 +53,12 @@
+ #  define ADD_RIP
+ #endif
+ 
++#ifdef __PIC__
++#  define AT_PLT ELF(@PLT)
++#else
++#  define AT_PLT
++#endif
++
+ #if defined(HAVE_COMPATIBLE_GCC_WIN64_PLATFORM_AS) || !defined(__PIC__)
+ #  define GET_EXTERN_POINTER(name, reg) movabsq $name, reg
+ #else
+diff --git a/cipher/rijndael-vaes-avx512-amd64.S b/cipher/rijndael-vaes-avx512-amd64.S
+index b7dba5e3..f20998b0 100644
+--- a/cipher/rijndael-vaes-avx512-amd64.S
++++ b/cipher/rijndael-vaes-avx512-amd64.S
+@@ -277,7 +277,7 @@ _gcry_vaes_avx512_cbc_dec_amd64:
+ .Lcbc_dec_skip_avx512:
+ 	/* Handle trailing blocks with AVX2 implementation. */
+ 	cmpq $0, %r8;
+-	ja _gcry_vaes_avx2_cbc_dec_amd64;
++	ja _gcry_vaes_avx2_cbc_dec_amd64 AT_PLT;
+ 
+ 	ret_spec_stop
+ 	CFI_ENDPROC();
+@@ -491,7 +491,7 @@ _gcry_vaes_avx512_cfb_dec_amd64:
+ .Lcfb_dec_skip_avx512:
+ 	/* Handle trailing blocks with AVX2 implementation. */
+ 	cmpq $0, %r8;
+-	ja _gcry_vaes_avx2_cfb_dec_amd64;
++	ja _gcry_vaes_avx2_cfb_dec_amd64 AT_PLT;
+ 
+ 	ret_spec_stop
+ 	CFI_ENDPROC();
+@@ -813,7 +813,7 @@ _gcry_vaes_avx512_ctr_enc_amd64:
+ .Lctr_enc_skip_avx512:
+ 	/* Handle trailing blocks with AVX2 implementation. */
+ 	cmpq $0, %r8;
+-	ja _gcry_vaes_avx2_ctr_enc_amd64;
++	ja _gcry_vaes_avx2_ctr_enc_amd64 AT_PLT;
+ 
+ 	ret_spec_stop
+ 	CFI_ENDPROC();
+@@ -1037,7 +1037,7 @@ _gcry_vaes_avx512_ctr32le_enc_amd64:
+ .Lctr32le_enc_skip_avx512:
+ 	/* Handle trailing blocks with AVX2 implementation. */
+ 	cmpq $0, %r8;
+-	ja _gcry_vaes_avx2_ctr32le_enc_amd64;
++	ja _gcry_vaes_avx2_ctr32le_enc_amd64 AT_PLT;
+ 
+ 	ret_spec_stop
+ 	CFI_ENDPROC();
+@@ -1721,7 +1721,7 @@ _gcry_vaes_avx512_ocb_aligned_crypt_amd64:
+ .Locb_skip_avx512:
+ 	/* Handle trailing blocks with AVX2 implementation. */
+ 	cmpq $0, %r8;
+-	ja _gcry_vaes_avx2_ocb_crypt_amd64;
++	ja _gcry_vaes_avx2_ocb_crypt_amd64 AT_PLT;
+ 
+ 	xorl %eax, %eax;
+ 	ret_spec_stop
+@@ -2084,7 +2084,7 @@ _gcry_vaes_avx512_xts_crypt_amd64:
+ .Lxts_crypt_skip_avx512:
+ 	/* Handle trailing blocks with AVX2 implementation. */
+ 	cmpq $0, %r8;
+-	ja _gcry_vaes_avx2_xts_crypt_amd64;
++	ja _gcry_vaes_avx2_xts_crypt_amd64 AT_PLT;
+ 
+ 	ret_spec_stop
+ 	CFI_ENDPROC();
+@@ -2347,7 +2347,7 @@ _gcry_vaes_avx512_ecb_crypt_amd64:
+ .Lecb_crypt_skip_avx512:
+ 	/* Handle trailing blocks with AVX2 implementation. */
+ 	cmpq $0, %r8;
+-	ja _gcry_vaes_avx2_ecb_crypt_amd64;
++	ja _gcry_vaes_avx2_ecb_crypt_amd64 AT_PLT;
+ 
+ 	ret_spec_stop
+ 	CFI_ENDPROC();
+-- 
+2.53.0
+
