@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit autotools emboss-r3 readme.gentoo-r1
 DESCRIPTION="The European Molecular Biology Open Software Suite - A sequence analysis package"
 SRC_URI="
 	ftp://emboss.open-bio.org/pub/${PN^^}/${P^^}.tar.gz
-	https://dev.gentoo.org/~soap/distfiles/${P}-patches-r1.tar.xz"
+	https://dev.gentoo.org/~soap/distfiles/${P}-patches-r2.tar.xz"
 S="${WORKDIR}/${P^^}"
 
 LICENSE+=" Apache-2.0 GPL-3+ CC-BY-3.0"
@@ -29,14 +29,7 @@ PDEPEND="
 		sci-biology/rebase
 	)"
 
-PATCHES=(
-	"${WORKDIR}"/patches/${P}-fix-build-system.patch
-	"${WORKDIR}"/patches/${P}-FORTIFY_SOURCE-fix.patch
-	"${WORKDIR}"/patches/${P}-plplot-declarations.patch
-	"${WORKDIR}"/patches/${P}-qa-implicit-declarations.patch
-	"${WORKDIR}"/patches/${P}-C99-bool.patch
-	"${WORKDIR}"/patches/${P}-Wimplicit-function-declaration.patch
-)
+PATCHES=( "${WORKDIR}"/patches/ )
 
 src_prepare() {
 	default
