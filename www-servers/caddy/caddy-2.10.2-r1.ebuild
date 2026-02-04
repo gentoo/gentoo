@@ -18,7 +18,7 @@ else
 		https://github.com/rahilarious/gentoo-distfiles/releases/download/${PF}/go-mod-sum.patch -> ${PF}-go-mod-sum.patch
 		https://github.com/caddyserver/dist/archive/refs/tags/v${PV}.tar.gz -> ${P}-docs.tar.gz
 "
-	KEYWORDS="amd64 ~arm64 ~loong ~riscv"
+	KEYWORDS="amd64 arm64 ~loong ~riscv"
 fi
 
 # MAIN
