@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,8 +26,6 @@ PATCHES=(
 	# disable tests that are timing sensitive
 	# https://bugzilla.redhat.com/show_bug.cgi?id=1461069
 	"${FILESDIR}"/${PN}-0.8.1-disable-test_transport-test_transport_asio_timers.patch
-	# https://github.com/zaphoyd/websocketpp/commit/36b73da8958927f975b3d01a062aa6c0e149d97f
-	"${FILESDIR}"/${P}-fix-boost_find_component.patch
 	# https://github.com/zaphoyd/websocketpp/commit/2c355d9ef0f3ed73fa96d0c6c31293086df36d74
 	"${FILESDIR}"/${P}-fix-clang.patch
 	# C++20 support from https://github.com/zaphoyd/websocketpp/commit/3197a520eb4c1e4754860441918a5930160373eb
@@ -37,6 +35,8 @@ PATCHES=(
 	"${WORKDIR}/${P}-boost-1.87-compat.patch"
 	# https://github.com/zaphoyd/websocketpp/commit/deb0a334471362608958ce59a6b0bcd3e5b73c24
 	"${FILESDIR}/${P}-cmake4.patch" # bug 953936
+	# PR pending https://github.com/zaphoyd/websocketpp/pull/1189.patch
+	"${FILESDIR}"/${P}-fix-boost1.89.patch
 )
 
 src_configure() {
