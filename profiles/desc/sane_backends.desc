@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of SANE_BACKENDS USE_EXPAND flags for media-gfx/sane-backends.
@@ -52,6 +52,7 @@ kvs20xx - SANE_BACKENDS setting for building the kvs20xx backend
 kvs40xx - SANE_BACKENDS setting for building the kvs20xx backend
 leo - SANE_BACKENDS setting for building the leo backend
 lexmark - SANE_BACKENDS setting for building the lexmark backend
+lexmark_x2600 - SANE_BACKENDS setting for building the lexmark_x2600 backend
 ma1509 - SANE_BACKENDS setting for building the ma1509 backend
 magicolor - SANE_BACKENDS setting for building the magicolor backend
 matsushita - SANE_BACKENDS setting for building the matsushita backend
