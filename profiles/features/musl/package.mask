@@ -502,20 +502,9 @@ sys-libs/glibc
 -sys-libs/musl
 -sys-libs/libucontext
 
-# systemd doesn't work on musl and upstream aren't interested
-# in supporting it.
-app-admin/mkosi
-app-admin/systemdgenie
-dev-python/python-systemd
-gnome-extra/office-runner
-gnome-extra/gnome-logs
-sys-apps/dbus-broker
-sys-apps/gentoo-systemd-integration
-sys-apps/systemd
-sys-apps/systemd-readahead
-sys-process/systemd-cron
->=www-misc/profile-sync-daemon-6
-sys-block/wait-for-dri-devices-rules
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2026-02-04)
+# New systemd now has experimental support for musl
+<sys-apps/systemd-259
 
 # rust-bin isn't available on all platforms
 dev-lang/rust-bin

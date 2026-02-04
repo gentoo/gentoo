@@ -114,12 +114,6 @@ sys-devel/binutils gprofng
 # this, however it seems to be unreliable, see bug #922897.
 gui-libs/gtk cpu_flags_x86_f16c
 
-# Nowa Ammerlaan <nowa@gentoo.org> (2024-01-12)
-# The systemd flag is globally masked on musl. But we need
-# systemd's kernel-install to use systemd-boot which is still
-# possible on musl via systemd-utils[boot].
-sys-kernel/installkernel -systemd
-
 # Michał Górny <mgorny@gentoo.org> (2023-12-31)
 # Requires dev-libs/level-zero.
 dev-lang/ispc gpu
@@ -178,13 +172,6 @@ net-fs/openafs tsm
 net-misc/yt-dlp deno
 sys-apps/hwloc gl
 www-client/qutebrowser widevine
-
-# Sam James <sam@gentoo.org> (2022-10-03)
-# Needs systemd which is masked on musl
-net-analyzer/wireshark sdjournal
-sys-apps/ipmitool openbmc
-sys-auth/pambase homed
-dev-qt/qtbase journald
 
 # Petr Vaněk <arkamar@atlas.cz> (2022-03-15)
 # musl package does not currently provide gencat binary, which is needed for
