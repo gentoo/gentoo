@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~hppa ppc ~riscv x86"
 
 RDEPEND="
-	>=app-crypt/gnupg-1.4
+	|| ( >=app-crypt/gnupg-1.4 app-crypt/freepg )
 	>=dev-perl/Moo-0.91.11
 	>=dev-perl/MooX-HandlesVia-0.1.4
 	>=dev-perl/MooX-late-0.14.0
