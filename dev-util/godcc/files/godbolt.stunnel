@@ -1,0 +1,7 @@
+sslVersion = all
+foreground = yes
+
+[remote]
+client = yes
+accept = 8888
+connect = godbolt.org:443
