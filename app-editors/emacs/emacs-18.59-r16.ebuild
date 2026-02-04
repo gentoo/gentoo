@@ -85,7 +85,7 @@ src_configure() {
 	# quieten newer versions of GCC; feel free to submit a patch adding
 	# all those missing prototypes.
 	strip-flags
-	filter-flags -finline-functions -fpie -flto
+	filter-flags -finline-functions -flto $(test-flags -pie)
 	append-flags -std=gnu17 -fno-strict-aliasing -Wno-implicit \
 		-Wno-return-type -Wno-return-mismatch
 	append-ldflags $(test-flags -no-pie)	#639562
