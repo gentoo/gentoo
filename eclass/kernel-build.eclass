@@ -518,6 +518,12 @@ kernel-build_src_install() {
 				usrmount virtiofs
 			)
 
+			# Pulls in huge firmware files
+			local omit_drivers=(
+				amdgpu i915 nfp nova nova_core nouveau nvidia nvidia-drm
+				nvidia-modeset nvidia-peermem nvidia-uvm radeon xe
+			)
+
 			local dracut_args=(
 				--conf "${T}/empty-file"
 				--confdir "${T}/empty-directory"
@@ -536,8 +542,7 @@ kernel-build_src_install() {
 				--reproducible
 				--ro-mnt
 				--modules "${dracut_modules[*]}"
-				# Pulls in huge firmware files
-				--omit-drivers "amdgpu i915 nfp nova nova_core nouveau nvidia nvidia-drm nvidia-modeset nvidia-peermem nvidia-uvm radeon xe"
+				--omit-drivers "${omit_drivers[*]}"
 			)
 
 			# Tries to update ld cache
