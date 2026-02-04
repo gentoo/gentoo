@@ -1,0 +1,21 @@
+From https://github.com/punesemu/puNES/commit/057f49044ec547de1ace03911a317a99e31f25cc
+From: Essem <smswessem@gmail.com>
+Date: Wed, 31 Dec 2025 03:05:30 -0600
+Subject: [PATCH] Fix build on FFmpeg 8.0 (#444)
+
+`FF_PROFILE_H264_HIGH` has been deprecated since FFmpeg 6.1, with
+`AV_PROFILE_H264_HIGH` acting as its replacement.
+--- a/src/core/recording.c
++++ b/src/core/recording.c
+@@ -1058,7 +1058,11 @@ static BYTE ffmpeg_video_add_stream_format_h264(void) {
+ 		if (vbr < 4000) {
+ 			vbr = 4000;
+ 		}
++#if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(60, 31, 102)
++		video->avcc->profile = AV_PROFILE_H264_HIGH;
++#else
+ 		video->avcc->profile = FF_PROFILE_H264_HIGH;
++#endif
+ 		video->avcc->bit_rate = (int64_t)vbr;
+ 	}
+ 	video->avcc->thread_count = FFMIN(8, gui_hardware_concurrency());
