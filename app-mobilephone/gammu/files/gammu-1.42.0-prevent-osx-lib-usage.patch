@@ -1,0 +1,28 @@
+From https://github.com/gammu/gammu/commit/6d0638c93a1a5e4f5e4cf35a81e40dd835a75be6
+From: Victor Kustov <ktrace@yandex.ru>
+Date: Mon, 2 Feb 2026 18:26:00 +0300
+Subject: [PATCH] Prevent find OSX libs with Linux env
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -282,12 +282,14 @@ if (WITH_BLUETOOTH)
+ 		set(BLUETOOTH_SEARCH TRUE)
+ 	    endif (HAVE_SDP_SERVICE_SEARCH_ATTRIBUTE AND HAVE_BT_DEVINQUIRY)
+         endif (BSD_BLUE_FOUND)
+-        find_package (OSXBluetooth)
+-        if (OSX_BLUE_FOUND)
+-            set(BLUETOOTH_FOUND ON)
+-            set(BLUETOOTH_SEARCH FALSE)
+-            message(STATUS "Using OSX Bluetooth stack")
+-        endif (OSX_BLUE_FOUND)
++        if (APPLE)
++            find_package (OSXBluetooth)
++            if (OSX_BLUE_FOUND)
++                set(BLUETOOTH_FOUND ON)
++                set(BLUETOOTH_SEARCH FALSE)
++                message(STATUS "Using OSX Bluetooth stack")
++            endif (OSX_BLUE_FOUND)
++        endif (APPLE)
+     endif (WIN32 AND NOT CYGWIN)
+ else (WITH_BLUETOOTH)
+     set(BLUETOOTH_FOUND FALSE)

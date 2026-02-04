@@ -1,0 +1,55 @@
+From https://github.com/gammu/gammu/commit/1a144c5549f3c39c2fa040e4acb1f0b3b187cac2
+From: Victor Kustov <ktrace@yandex.ru>
+Date: Mon, 2 Feb 2026 17:54:21 +0300
+Subject: [PATCH] Replace deprecated function
+
+--- a/smsd/CMakeTests.txt
++++ b/smsd/CMakeTests.txt
+@@ -48,9 +48,9 @@ if (WITH_BACKUP)
+                 add_test(NAME "smsd-daemon-${_driver}-pid" COMMAND gammu-smsd -c "${CMAKE_CURRENT_BINARY_DIR}/smsd-test-${_driver}/.smsdrc" -X 3 -p ${CMAKE_CURRENT_BINARY_DIR}/smsd-test-${_driver}/smsd.pid)
+             endif()
+             if (HAVE_ALARM AND HAVE_SETGID AND HAVE_GETPWNAM AND HAVE_GETGRNAM AND HAVE_SETUID AND HAVE_INITGROUPS)
+-                exec_program(id ARGS -g OUTPUT_VARIABLE MY_GROUP)
++                execute_process(COMMAND id -g OUTPUT_VARIABLE MY_GROUP OUTPUT_STRIP_TRAILING_WHITESPACE)
+                 add_test(NAME "smsd-daemon-${_driver}-gid" COMMAND gammu-smsd -c "${CMAKE_CURRENT_BINARY_DIR}/smsd-test-${_driver}/.smsdrc" -X 3 -G ${MY_GROUP})
+-                exec_program(id ARGS -gn OUTPUT_VARIABLE MY_GROUP_NAME)
++                execute_process(COMMAND id -gn OUTPUT_VARIABLE MY_GROUP_NAME OUTPUT_STRIP_TRAILING_WHITESPACE)
+                 add_test(NAME "smsd-daemon-${_driver}-gid-name" COMMAND gammu-smsd -c "${CMAKE_CURRENT_BINARY_DIR}/smsd-test-${_driver}/.smsdrc" -X 3 -G ${MY_GROUP_NAME})
+             endif()
+         endif()
+From https://github.com/gammu/gammu/commit/1d5a49dcade1a87722947137cdaf545e5f368ac6
+From: Victor Kustov <ktrace@yandex.ru>
+Date: Mon, 2 Feb 2026 19:09:09 +0300
+Subject: [PATCH] Drop unneeded in CMake 4.0
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2,7 +2,7 @@
+ # Copyright (c) 2007 - 2018 Michal Cihar
+ # vim: expandtab sw=4 ts=4 sts=4:
+ 
+-cmake_minimum_required (VERSION 3.0)
++cmake_minimum_required (VERSION 4.0)
+ INCLUDE (CMakeForceCompiler)
+ 
+ project (Gammu C)
+@@ -10,11 +10,6 @@ project (Gammu C)
+ # Where to lookup modules
+ set (CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+ 
+-# Silent some warnings from CMake 2.6
+-cmake_policy(SET CMP0003 NEW)
+-cmake_policy(SET CMP0009 NEW)
+-cmake_policy(SET CMP0110 NEW)
+-
+ option (COVERAGE "Add flags for Coverage analysis" OFF)
+ 
+ option (ONLINE_TESTING "Enable testing of parts which use remote servers" OFF)
+@@ -792,7 +787,6 @@ install (
+ # Testing and dashboard
+ include(CTest)
+ enable_testing()
+-include(Dart)
+ 
+ # Packaging support
+ set (CPACK_PACKAGE_NAME "Gammu")
