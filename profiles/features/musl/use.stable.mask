@@ -1,0 +1,6 @@
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2026-02-04)
+# >=sys-apps/systemd-259 does not yet have stable keywords
+systemd
