@@ -1,0 +1,315 @@
+From 1149f485e35ded31a3afa4d96046c2d22709102c Mon Sep 17 00:00:00 2001
+Upstream: https://github.com/dealii/dealii/pull/19269
+From: Matthias Maier <tamiko@43-1.org>
+Date: Wed, 4 Feb 2026 11:07:54 -0600
+Subject: [PATCH] cmake/configure: remove TestBoostBug files
+
+The corresponding test in our configure is long gone.
+
+Let's remove the files as well.
+---
+ cmake/configure/TestBoostBug/CMakeLists.txt   | 15 ---
+ .../TestBoostBug/polymorphic_base.hpp         | 38 -------
+ .../TestBoostBug/polymorphic_derived2.cpp     | 47 ---------
+ .../TestBoostBug/polymorphic_derived2.hpp     | 41 --------
+ .../TestBoostBug/test_dll_exported.cpp        | 98 -------------------
+ cmake/configure/TestBoostBug/text_archive.hpp | 13 ---
+ 6 files changed, 252 deletions(-)
+ delete mode 100644 cmake/configure/TestBoostBug/CMakeLists.txt
+ delete mode 100644 cmake/configure/TestBoostBug/polymorphic_base.hpp
+ delete mode 100644 cmake/configure/TestBoostBug/polymorphic_derived2.cpp
+ delete mode 100644 cmake/configure/TestBoostBug/polymorphic_derived2.hpp
+ delete mode 100644 cmake/configure/TestBoostBug/test_dll_exported.cpp
+ delete mode 100644 cmake/configure/TestBoostBug/text_archive.hpp
+
+diff --git a/cmake/configure/TestBoostBug/CMakeLists.txt b/cmake/configure/TestBoostBug/CMakeLists.txt
+deleted file mode 100644
+index 2ce762a065..0000000000
+--- a/cmake/configure/TestBoostBug/CMakeLists.txt
++++ /dev/null
+@@ -1,15 +0,0 @@
+-cmake_minimum_required(VERSION 3.1.0)
+-project(TestBoost)
+-
+-include_directories(${BOOST_INCLUDE_DIRS})
+-
+-add_library(derived SHARED polymorphic_derived2.cpp)
+-add_executable(test_boost test_dll_exported.cpp)
+-
+-target_link_libraries(derived ${BOOST_LIBRARIES})
+-target_link_libraries(test_boost derived ${BOOST_LIBRARIES})
+-
+-add_custom_target(run
+-                  COMMAND test_boost
+-                  DEPENDS test_boost
+-                  WORKING_DIRECTORY ${CMAKE_PROJECT_DIR})
+diff --git a/cmake/configure/TestBoostBug/polymorphic_base.hpp b/cmake/configure/TestBoostBug/polymorphic_base.hpp
+deleted file mode 100644
+index 7da4d43abd..0000000000
+--- a/cmake/configure/TestBoostBug/polymorphic_base.hpp
++++ /dev/null
+@@ -1,38 +0,0 @@
+-#ifndef POLYMORPHIC_BASE_HPP
+-#define POLYMORPHIC_BASE_HPP
+-
+-#include <boost/config.hpp>
+-
+-#include <boost/serialization/access.hpp>
+-#include <boost/serialization/assume_abstract.hpp>
+-#include <boost/serialization/export.hpp>
+-#include <boost/serialization/type_info_implementation.hpp>
+-#include <boost/serialization/extended_type_info_no_rtti.hpp>
+-
+-class BOOST_SYMBOL_VISIBLE polymorphic_base
+-{
+-    friend class boost::serialization::access;
+-    template<class Archive>
+-    void serialize(
+-        Archive & /* ar */, 
+-        const unsigned int /* file_version */
+-    ){}
+-public:
+-    // note that since this class uses the "no_rtti"
+-    // extended_type_info implementation, it MUST
+-    // implement this function
+-    virtual const char * get_key() const = 0;
+-    virtual ~polymorphic_base(){};
+-};
+-
+-BOOST_SERIALIZATION_ASSUME_ABSTRACT(polymorphic_base)
+-
+-// the no_rtti system requires this !!!
+-BOOST_CLASS_EXPORT_KEY(polymorphic_base)
+-
+-BOOST_CLASS_TYPE_INFO(
+-    polymorphic_base,
+-    boost::serialization::extended_type_info_no_rtti<polymorphic_base>
+-)
+-
+-#endif // POLYMORPHIC_BASE_HPP
+diff --git a/cmake/configure/TestBoostBug/polymorphic_derived2.cpp b/cmake/configure/TestBoostBug/polymorphic_derived2.cpp
+deleted file mode 100644
+index 9cc7780ed8..0000000000
+--- a/cmake/configure/TestBoostBug/polymorphic_derived2.cpp
++++ /dev/null
+@@ -1,47 +0,0 @@
+-#include <boost/serialization/type_info_implementation.hpp>
+-#include <boost/serialization/extended_type_info_no_rtti.hpp>
+-#include <boost/serialization/export.hpp>
+-
+-#include "polymorphic_derived2.hpp"
+-
+-template<class Archive>
+-void polymorphic_derived2::serialize(
+-    Archive &ar, 
+-    const unsigned int /* file_version */
+-){
+-    ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(polymorphic_base);
+-}
+-
+-// instantiate code for text archives
+-#include <boost/archive/text_oarchive.hpp>
+-#include <boost/archive/text_iarchive.hpp>
+-
+-template
+-void polymorphic_derived2::serialize(
+-    boost::archive::text_oarchive & ar,
+-    const unsigned int version
+-);
+-template
+-void polymorphic_derived2::serialize(
+-    boost::archive::text_iarchive & ar,
+-    const unsigned int version
+-);
+-
+-// instantiate code for polymorphic archives
+-#include <boost/archive/polymorphic_iarchive.hpp>
+-#include <boost/archive/polymorphic_oarchive.hpp>
+-
+-template
+-void polymorphic_derived2::serialize(
+-    boost::archive::polymorphic_oarchive & ar,
+-    const unsigned int version
+-);
+-template
+-/*POLYMORPHIC_DERIVED2_DLL_DECL*/
+-void polymorphic_derived2::serialize(
+-    boost::archive::polymorphic_iarchive & ar,
+-    const unsigned int version
+-);
+-
+-// note: export has to be AFTER #includes for all archive classes
+-BOOST_CLASS_EXPORT_IMPLEMENT(polymorphic_derived2)
+diff --git a/cmake/configure/TestBoostBug/polymorphic_derived2.hpp b/cmake/configure/TestBoostBug/polymorphic_derived2.hpp
+deleted file mode 100644
+index 5a5f5a3b37..0000000000
+--- a/cmake/configure/TestBoostBug/polymorphic_derived2.hpp
++++ /dev/null
+@@ -1,41 +0,0 @@
+-#ifndef POLYMORPHIC_DERIVED2_HPP
+-#define POLYMORPHIC_DERIVED2_HPP
+-
+-#include <boost/config.hpp>
+-
+-#include <boost/serialization/access.hpp>
+-#include <boost/serialization/nvp.hpp>
+-#include <boost/serialization/base_object.hpp>
+-#include <boost/serialization/type_info_implementation.hpp>
+-#include <boost/serialization/extended_type_info_typeid.hpp>
+-
+-#include "polymorphic_base.hpp"
+-
+-class polymorphic_derived2 :
+-    public polymorphic_base
+-{
+-    friend class boost::serialization::access;
+-    template<class Archive>
+-    void serialize(
+-        Archive &ar, 
+-        const unsigned int /* file_version */
+-    );
+-    virtual const char * get_key() const {
+-        return "polymorphic_derived2";
+-    }
+-};
+-
+-// we use this because we want to assign a key to this type
+-// but we don't want to explicitly instantiate code every time
+-// we do so!!! If we don't do this, we end up with the same
+-// code in BOTH the DLL which implements polymorphic_derived2
+-// as well as the main program.
+-BOOST_CLASS_EXPORT_KEY(polymorphic_derived2)
+-
+-// note the mixing of type_info systems is supported.
+-BOOST_CLASS_TYPE_INFO(
+-    polymorphic_derived2,
+-    boost::serialization::extended_type_info_typeid<polymorphic_derived2>
+-)
+-
+-#endif // POLYMORPHIC_DERIVED2_HPP
+diff --git a/cmake/configure/TestBoostBug/test_dll_exported.cpp b/cmake/configure/TestBoostBug/test_dll_exported.cpp
+deleted file mode 100644
+index c78b79bf02..0000000000
+--- a/cmake/configure/TestBoostBug/test_dll_exported.cpp
++++ /dev/null
+@@ -1,98 +0,0 @@
+-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
+-// test_dll_exported.cpp
+-
+-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com . 
+-// Use, modification and distribution is subject to the Boost Software
+-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+-// http://www.boost.org/LICENSE_1_0.txt)
+-
+-// should pass compilation and execution
+-
+-// This is an overly complex test.  The purpose of this test is to
+-// demonstrate and test the ability to serialize a hierarchy of class
+-// through a base class pointer even though that class might be
+-// implemented in different dlls and use different extended type info
+-// systems.
+-//
+-// polymorphic_ base is locally declared and defined.  It use the
+-// "no_rtti" extended type info system.
+-
+-// polymorphic_derived1 is locally declared and defined.  It uses
+-// the default "type_id" extended type info system
+-
+-// polymorphic_derived2 is declared in polymorphic_derived.hpp
+-// and defined in dll_polymorphic_derived2.  It uses the typeid
+-// system.
+-
+-#include <cstddef> // NULL
+-#include <fstream>
+-
+-#include <boost/config.hpp>
+-
+-#include <boost/archive/archive_exception.hpp>
+-
+-#include <boost/serialization/base_object.hpp>
+-#include <boost/serialization/export.hpp>
+-
+-#include <boost/archive/text_oarchive.hpp>
+-#include <boost/archive/text_iarchive.hpp>
+-
+-#include "polymorphic_base.hpp"
+-
+-#include "polymorphic_derived2.hpp"
+-
+-// save exported polymorphic class
+-void save_exported(const char *testfile)
+-{
+-    std::ofstream os(testfile);
+-    boost::archive::text_oarchive oa(os);
+-
+-    polymorphic_base *rb2 = new polymorphic_derived2;
+-    polymorphic_derived2 *rd21 = new polymorphic_derived2;
+-
+-    // export will permit correct serialization
+-    // through a pointer to a base class
+-    oa << BOOST_SERIALIZATION_NVP(rb2);
+-    oa << BOOST_SERIALIZATION_NVP(rd21);
+-
+-    delete rb2;
+-    delete rd21;
+-}
+-
+-// save exported polymorphic class
+-void load_exported(const char *testfile)
+-{
+-    std::ifstream is(testfile);
+-    boost::archive::text_iarchive ia(is);
+-
+-    polymorphic_base *rb2 = NULL;
+-    polymorphic_derived2 *rd21 = NULL;
+-
+-    // export will permit correct serialization
+-    // through a pointer to a base class
+-    ia >> BOOST_SERIALIZATION_NVP(rb2);
+-    assert(
+-        boost::serialization::type_info_implementation<polymorphic_derived2>
+-            ::type::get_const_instance()
+-        ==
+-        * boost::serialization::type_info_implementation<polymorphic_base>
+-            ::type::get_const_instance().get_derived_extended_type_info(*rb2));
+-    ia >> BOOST_SERIALIZATION_NVP(rd21);
+-    assert(
+-        boost::serialization::type_info_implementation<polymorphic_derived2>
+-            ::type::get_const_instance()
+-        ==
+-        * boost::serialization::type_info_implementation<polymorphic_derived2>
+-            ::type::get_const_instance().get_derived_extended_type_info(*rd21));
+-    delete rb2;
+-    delete rd21;
+-}
+-
+-int main( int /* argc */, char* /* argv */[] )
+-{
+-    save_exported("testfile");
+-    load_exported("testfile");
+-    return EXIT_SUCCESS;
+-}
+-
+-// EOF
+diff --git a/cmake/configure/TestBoostBug/text_archive.hpp b/cmake/configure/TestBoostBug/text_archive.hpp
+deleted file mode 100644
+index 65425ce5a1..0000000000
+--- a/cmake/configure/TestBoostBug/text_archive.hpp
++++ /dev/null
+@@ -1,13 +0,0 @@
+-// (C) Copyright 2002-4 Robert Ramey - http://www.rrsd.com . 
+-// Use, modification and distribution is subject to the Boost Software
+-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+-// http://www.boost.org/LICENSE_1_0.txt)
+-
+-//  See http://www.boost.org for updates, documentation, and revision history.
+-// text_archive
+-#include <boost/archive/text_oarchive.hpp>
+-typedef boost::archive::text_oarchive test_oarchive;
+-typedef std::ofstream test_ostream;
+-#include <boost/archive/text_iarchive.hpp>
+-typedef boost::archive::text_iarchive test_iarchive;
+-typedef std::ifstream test_istream;
+-- 
+2.52.0
+
