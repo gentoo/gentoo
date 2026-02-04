@@ -93,6 +93,10 @@ BDEPEND="
 	vala? ( $(vala_depend) )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-glibc2.43.patch
+)
+
 pkg_setup() {
 	use doc && python-any-r1_pkg_setup
 }
