@@ -4,7 +4,7 @@
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/craigsmall.asc
-inherit autotools flag-o-matic multilib-minimal verify-sig
+inherit autotools flag-o-matic multilib-minimal verify-sig toolchain-funcs
 
 DESCRIPTION="Standard informational utilities and process-handling tools"
 HOMEPAGE="https://gitlab.com/procps-ng/procps"
@@ -69,6 +69,12 @@ multilib_src_configure() {
 	# http://www.freelists.org/post/procps/PATCH-enable-transparent-large-file-support
 	# bug #471102
 	append-lfs-flags
+
+	# Workaround for bug 969592
+	if use elibc_musl ; then
+		append-cflags "$($(tc-getPKG_CONFIG) --cflags error-standalone)"
+		append-libs "$($(tc-getPKG_CONFIG) --libs error-standalone)"
+	fi
 
 	local myeconfargs=(
 		# No elogind multilib support
