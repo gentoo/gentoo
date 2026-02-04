@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ KEYWORDS="amd64 ~arm ppc x86"
 DEPEND="dev-lang/perl
 	app-crypt/libmd"
 RDEPEND="${DEPEND}
-	>=app-crypt/gnupg-1.3.92
+	|| ( >=app-crypt/gnupg-1.3.92 app-crypt/freepg )
 	dev-perl/GnuPG-Interface
 	dev-perl/Text-Template
 	dev-perl/MIME-tools
