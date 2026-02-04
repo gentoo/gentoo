@@ -154,7 +154,8 @@ src_configure() {
 src_test() {
 	kernel-install_test "${KV_FULL}" \
 		"${WORKDIR}/${BINPKG}/image/usr/src/linux-${KV_FULL}/$(dist-kernel_get_image_path)" \
-		"${BINPKG}/image/lib/modules/${KV_FULL}"
+		"${BINPKG}/image/lib/modules/${KV_FULL}" \
+		"${WORKDIR}/${BINPKG}/image/usr/src/linux-${KV_FULL}/.config"
 }
 
 src_install() {
