@@ -335,7 +335,8 @@ kernel-build_src_test() {
 
 	kernel-install_test "${KV_FULL}" \
 		"${WORKDIR}/build/$(dist-kernel_get_image_path)" \
-		"${T}/lib/modules/${KV_FULL}"
+		"${T}/lib/modules/${KV_FULL}" \
+		"${WORKDIR}/modprep/.config"
 }
 
 # @FUNCTION: kernel-build_src_install
@@ -524,7 +525,7 @@ kernel-build_src_install() {
 				--kmoddir "${ED}/lib/modules/${KV_FULL}"
 				--kver "${KV_FULL}"
 				--verbose
-				--compress="xz -9e --check=crc32"
+				--compress="$(dist-kernel_get_compressor "${ED}/usr/src/linux-${KV_FULL}/.config")"
 				--no-hostonly
 				--no-hostonly-cmdline
 				--no-hostonly-i18n
