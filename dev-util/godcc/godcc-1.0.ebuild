@@ -30,7 +30,7 @@ src_configure() {
 
 src_compile() {
 	# Workaround autoconf bug where configure-time A68FLAGS get
-	# clobbered to -O2 -g.
+	# clobbered to -O2 -g: https://savannah.gnu.org/support/index.php?111382
 	#
 	# -fno-lto because of -Wlto-type-mismatch with prelude (PR123982)
 	emake A68FLAGS="${A68FLAGS} -fno-lto"
