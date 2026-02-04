@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,8 +17,8 @@ IUSE="doc gnutls readline static-libs"
 
 RDEPEND="
 	>=app-pda/libimobiledevice-glue-1.3.0:=
-	>=app-pda/libplist-2.3:=
-	>=app-pda/libtatsu-1.0.5:=
+	>=app-pda/libplist-2.3.0:=
+	>=app-pda/libtatsu-1.0.3:=
 	>=app-pda/libusbmuxd-2.0.2:=
 	gnutls? (
 		dev-libs/libgcrypt:0
