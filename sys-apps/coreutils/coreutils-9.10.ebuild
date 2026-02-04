@@ -167,6 +167,7 @@ src_configure() {
 		$(use_enable xattr)
 		$(use_with gmp libgmp)
 		$(use_with openssl)
+		$(use_with selinux)
 	)
 
 	if use gmp ; then
@@ -187,11 +188,6 @@ src_configure() {
 		append-ldflags -static
 		# bug #321821
 		sed -i '/elf_sys=yes/s:yes:no:' configure || die
-	fi
-
-	if ! use selinux ; then
-		# bug #301782
-		export ac_cv_{header_selinux_{context,flash,selinux}_h,search_setfilecon}=no
 	fi
 
 	econf "${myconf[@]}"
