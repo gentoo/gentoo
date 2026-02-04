@@ -1,0 +1,20 @@
+--- a/Configure
++++ b/Configure
+@@ -910,17 +910,6 @@ else
+  ${msg} " ${irt_no}"
+ fi
+ 
+-${msg} -n "${irt_seeingif} $cctype ${irt_accepts} '-Werror'... "
+-echo "
+-#include <stdlib.h>
+-${main0}" > config.temp.c
+-if $cctype -o config.temp -Werror $CFLAGS config.temp.c $LDFLAGS $libs $LIBS; then
+- ${msg} "${irt_yes}"
+- WERROR="-Werror"
+-else
+- ${msg} " ${irt_no}"
+-fi
+-
+ ${msg} -n "${irt_seeingif} $cctype ${irt_accepts} '-Wno-unreachable-code'... "
+ echo "
+ #include <stdlib.h>
