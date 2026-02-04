@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,10 +30,10 @@ src_install() {
 		# to avoid file collision, we have to remove it
 		groups.1
 
-		# Avoid collisions with >=sys-process/procps-4.0.5
+		# Avoid collisions with >=sys-process/procps-4.0.6
 		pgrep.1 pidof.1 free.1 pmap.1 ps.1 pwdx.1 slabtop.1
 		tload.1 sysctl.8 vmstat.8 uptime.1 w.1 watch.1 top.1
-		procps.3 procps_misc.3 procps_pids.3 sysctl.conf.5
+		procps.3 procps_misc.3 procps_pids.3 sysctl.conf.5 kill.1
 	)
 	local man
 	for man in "${prune_manpages[@]}" ; do
