@@ -1,0 +1,25 @@
+See PR pending https://github.com/shlomif/perl-XML-LibXSLT/pull/9.patch
+fix hardcoded pkg-config
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -41,8 +41,10 @@ if ( delete $config{NO_THREADS} ) {
+ # https://rt.cpan.org/Public/Bug/Display.html?id=116461
+ my $HAVE_USER_DEFINED = (defined($config{LIBS}) or defined($config{INC}) );
+ 
++my $pkg_config = $ENV{PKG_CONFIG} || 'pkg-config';
++
+ unless ( $::is_Win32 ) { # cannot get config in W32
+-    my $xsltcfg = "pkg-config libxslt";
++    my $xsltcfg = "$pkg_config libxslt";
+     my $libprefix = $ENV{XSLTPREFIX} || $config{XSLTPREFIX};
+ 
+     delete $config{XSLTPREFIX}; # delete if exists, otherwise MakeMaker gets confused
+@@ -174,7 +176,7 @@ if (have_library($::is_Win32 ? "libexslt" : "exslt")) {
+         my $exslt_defaults = $::is_Win32 ?
+         ($ENV{ACTIVEPERL_MINGW} ? q/-llibexslt.lib/ : q/-llibexslt/) :
+         q/-lexslt/; # -lgcrypt -lgpg-error/;
+-        my $exsltcfg = 'pkg-config libexslt';
++        my $exsltcfg = "$pkg_config libexslt";
+         my ($exslt_libs,$exslt_inc);
+         eval {
+             print "running $exsltcfg... ";
