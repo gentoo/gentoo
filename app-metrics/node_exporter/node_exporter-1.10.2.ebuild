@@ -15,7 +15,7 @@ else
 	SRC_URI="https://github.com/prometheus/node_exporter/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	SRC_URI+=" https://github.com/gentoo-golang-dist/${PN}/releases/download/v${PV}/${P}-vendor.tar.xz"
 
-	KEYWORDS="~amd64 arm64 ~loong ~riscv ~x86"
+	KEYWORDS="amd64 arm64 ~loong ~riscv ~x86"
 fi
 
 # main pkg
