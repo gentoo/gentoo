@@ -1,0 +1,47 @@
+https://bugs.gentoo.org/854222
+
+From 40b28085f30f6031bd72ae24d736c9116d70f547 Mon Sep 17 00:00:00 2001
+Message-ID: <40b28085f30f6031bd72ae24d736c9116d70f547.1770174958.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Sun, 4 Jan 2026 02:04:39 +0000
+Subject: [PATCH GnuPG] Fix -Wlto-type-mismatch warnings [T4416]
+
+* agent/t-protect.c (convert_from_openpgp_native): Sync stub definition.
+
+--
+
+GnuPG-bug-id: 4416
+
+When building with GCC -flto, some warnings appear because of
+mismatched definitions in stubs (gpgv or tests). Sync them with the
+real definitions to fix the warnings, as they just drifted over time.
+
+Followup to 81760cc931d69f37cf2a8ad54616a1af590fd2cf.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ agent/t-protect.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/agent/t-protect.c b/agent/t-protect.c
+index e6edbffba..9508de36a 100644
+--- a/agent/t-protect.c
++++ b/agent/t-protect.c
+@@ -341,9 +341,12 @@ main (int argc, char **argv)
+ 
+ /* Stub function.  */
+ gpg_error_t
+-convert_from_openpgp_native (gcry_sexp_t s_pgp, const char *passphrase,
+-                             unsigned char **r_key)
++convert_from_openpgp_native (ctrl_t ctrl,
++			     gcry_sexp_t s_pgp,
++			     const char *passphrase,
++			     unsigned char **r_key)
+ {
++  (void)ctrl;
+   (void)s_pgp;
+   (void)passphrase;
+   (void)r_key;
+-- 
+2.53.0
+
