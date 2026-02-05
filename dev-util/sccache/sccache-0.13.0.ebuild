@@ -21,6 +21,7 @@ HOMEPAGE="https://github.com/mozilla/sccache"
 SRC_URI="
 	https://github.com/mozilla/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/gentoo-crate-dist/sccache/releases/download/v${PV}/sccache-${PV}-crates.tar.xz
+	${CARGO_CRATE_URIS}
 "
 
 LICENSE="Apache-2.0"
