@@ -1,0 +1,35 @@
+From 572a5b92079b563e08b488b22bffb24cd8e91f46 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Thu, 5 Feb 2026 18:10:54 -0500
+Subject: [PATCH] CMakeLists.txt: don't install docs to the wrong location
+
+We have these in DOCS anyway.
+
+Upstream-bug: https://github.com/ERGO-Code/HiGHS/issues/2811
+---
+ CMakeLists.txt | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a8545ec..c3d3956 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -562,8 +562,6 @@ if(ZLIB AND NOT TARGET ZLIB::ZLIB)
+   find_package(ZLIB 1.2.3)
+ endif()
+ 
+-install(FILES README.md LICENSE.txt THIRD_PARTY_NOTICES.md DESTINATION .)
+-
+ # Set default generator based on platform
+ if(WIN32)
+     set(CPACK_GENERATOR "ZIP")
+@@ -954,4 +952,4 @@ set(CPACK_COMPONENT_LIBS_DISPLAY_NAME "HiGHS Libraries")
+ 
+ if(NOT CPack_CMake_INCLUDED)
+   include(CPack)
+-endif()
+\ No newline at end of file
++endif()
+-- 
+2.52.0
+
