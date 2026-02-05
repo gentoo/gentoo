@@ -1,7 +1,7 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools prefix
 
@@ -13,8 +13,8 @@ DESCRIPTION="Console based chess interface"
 HOMEPAGE="http://sjeng.sourceforge.net/"
 SRC_URI="
 	https://downloads.sourceforge.net/sjeng/Sjeng-Free-${MY_PV}.tar.gz
-	mirror://debian/pool/main/s/sjeng/sjeng_${MY_DEB_PV}.diff.gz
-"
+	mirror://debian/pool/main/s/sjeng/sjeng_${MY_DEB_PV}.diff.gz"
+S="${WORKDIR}/Sjeng-Free-${MY_PV}"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
@@ -23,11 +23,10 @@ SLOT="0"
 RDEPEND="sys-libs/gdbm:0="
 DEPEND="${RDEPEND}"
 
-S="${WORKDIR}/Sjeng-Free-${MY_PV}"
-
 PATCHES=(
 	"${WORKDIR}/sjeng_${MY_DEB_PV}.diff"
 	"${S}/debian/patches"
+	"${FILESDIR}"/${P}-c23.patch
 )
 
 src_prepare() {
@@ -36,7 +35,6 @@ src_prepare() {
 	hprefixify book.c rcfile.c
 
 	# Files generated with ancient autotools, regenerate to respect CC.
-	mv configure.{in,ac} || die
 	eautoreconf
 }
 
