@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ else
 
 	SRC_URI="https://musl.libc.org/releases/${P}.tar.gz"
 	SRC_URI+=" verify-sig? ( https://musl.libc.org/releases/${P}.tar.gz.asc )"
-	KEYWORDS="-* ~amd64 ~arm ~arm64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="-* amd64 arm arm64 ~m68k ~mips ppc ppc64 ~riscv x86"
 
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-musl )"
 fi
