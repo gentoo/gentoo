@@ -11,6 +11,6 @@ SRC_URI="https://savannah.nongnu.org/download/gap/${P/a/A}.tar.gz"
 S="${WORKDIR}/${P/a/A}"
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 
 PATCHES=( "${FILESDIR}"/${PN}-0.4.7-as-needed.patch )
