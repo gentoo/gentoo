@@ -344,6 +344,9 @@ multilib_src_configure() {
 		)
 	fi
 
+	# Workaround for bug #968756 (gcc PR123588)
+	tc-is-gcc && [[ $(gcc-major-version) -eq 16 ]] && local -x CXXFLAGS="${CXXFLAGS} -fno-tree-vectorize"
+
 	# LLVM can have very high memory consumption while linking,
 	# exhausting the limit on 32-bit linker executable
 	use x86 && local -x LDFLAGS="${LDFLAGS} -Wl,--no-keep-memory"
