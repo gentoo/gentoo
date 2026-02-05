@@ -38,6 +38,7 @@ app-portage/emlop
 dev-python/gherkin-official
 dev-python/pytest-bdd
 dev-python/pytest-describe
+>=dev-python/sphinxcontrib-httpdomain-2.0
 dev-python/uv-build
 dev-python/zmq-anyio
 sys-auth/ssh-ldap-pubkey
