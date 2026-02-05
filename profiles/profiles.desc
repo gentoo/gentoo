@@ -504,11 +504,15 @@ ppc64		default/linux/ppc64le/23.0/musl/hardened			exp
 ppc64		default/linux/ppc64le/23.0/split-usr/musl			dev
 ppc64		default/linux/ppc64le/23.0/split-usr/musl/hardened		exp
 riscv		default/linux/riscv/23.0/rv64/lp64d/musl			dev
+riscv		default/linux/riscv/23.0/rv64/lp64d/musl/systemd		exp
 riscv		default/linux/riscv/23.0/rv64/lp64/musl				dev
+riscv		default/linux/riscv/23.0/rv64/lp64/musl/systemd			exp
 riscv		default/linux/riscv/23.0/rv64/split-usr/lp64d/musl		dev
 riscv		default/linux/riscv/23.0/rv64/split-usr/lp64/musl		dev
 riscv		default/linux/riscv/23.0/rv32/ilp32d/musl			exp
+riscv		default/linux/riscv/23.0/rv32/ilp32d/musl/systemd		exp
 riscv		default/linux/riscv/23.0/rv32/ilp32/musl			exp
+riscv		default/linux/riscv/23.0/rv32/ilp32/musl/systemd		exp
 riscv		default/linux/riscv/23.0/rv32/split-usr/ilp32d/musl		exp
 riscv		default/linux/riscv/23.0/rv32/split-usr/ilp32/musl		exp
 x86		default/linux/x86/23.0/i686/musl				dev
