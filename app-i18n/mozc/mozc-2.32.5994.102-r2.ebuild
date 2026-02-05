@@ -369,15 +369,15 @@ src_install() {
 		doins unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml
 
 		# see scripts/install_fcitx5_icons
-		local orgfcitx5="org.fcitx.Fcitx5.fcitx-mozc"
+		local orgfcitx5="org.fcitx.Fcitx5.fcitx_mozc"
 		newicon -s 128 data/images/product_icon_32bpp-128.png ${orgfcitx5}.png
-		newicon -s 128 data/images/product_icon_32bpp-128.png fcitx-mozc.png
+		newicon -s 128 data/images/product_icon_32bpp-128.png fcitx_mozc.png
 		newicon -s 32 data/images/unix/ime_product_icon_opensource-32.png ${orgfcitx5}.png
-		newicon -s 32 data/images/unix/ime_product_icon_opensource-32.png fcitx-mozc.png
+		newicon -s 32 data/images/unix/ime_product_icon_opensource-32.png fcitx_mozc.png
 		for uiimg in ../scripts/icons/ui-*.png; do
 			dimg="${uiimg#*ui-}"
-			newicon -s 48 "${uiimg}" "${orgfcitx5}-${dimg/_/-}"
-			newicon -s 48 "${uiimg}" "fcitx-mozc-${dimg/_/-}"
+			newicon -s 48 "${uiimg}" "${orgfcitx5}_${dimg}"
+			newicon -s 48 "${uiimg}" "fcitx_mozc_${dimg}"
 		done
 	fi
 
