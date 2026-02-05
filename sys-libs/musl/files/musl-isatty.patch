@@ -1,0 +1,40 @@
+https://git.musl-libc.org/cgit/musl/commit/?id=c94a0c16f08894ce3be6dafb0fe80baa77a6ff2a
+
+From c94a0c16f08894ce3be6dafb0fe80baa77a6ff2a Mon Sep 17 00:00:00 2001
+From: Rich Felker <dalias@aerifal.cx>
+Date: Tue, 20 Aug 2024 12:34:50 -0400
+Subject: isatty: don't collapse all non-EBADF errors to ENOTTY
+
+linux puts hung-up ttys in a state where ioctls produce EIO, and may
+do the same for other types of devices in error or shutdown states.
+such an error clearly does not mean the device is not a tty, but it
+also can't reliably establish that the device is a tty, so the only
+safe thing to do seems to be reporting the error. programs that don't
+check errno will conclude that the device is not a tty, which is no
+different from what happens now, but at least they gain the option to
+differentiate between the cases.
+
+commit c84971995b3a6d5118f9357c040572f4c78bcd55 introduced the errno
+collapsing behavior, but prior to that, errno was not set at all by
+isatty.
+---
+ src/unistd/isatty.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/src/unistd/isatty.c b/src/unistd/isatty.c
+index 75a9c186..21222eda 100644
+--- a/src/unistd/isatty.c
++++ b/src/unistd/isatty.c
+@@ -6,8 +6,6 @@
+ int isatty(int fd)
+ {
+ 	struct winsize wsz;
+-	unsigned long r = syscall(SYS_ioctl, fd, TIOCGWINSZ, &wsz);
+-	if (r == 0) return 1;
+-	if (errno != EBADF) errno = ENOTTY;
+-	return 0;
++	/* +1 converts from error status (0/-1) to boolean (1/0) */
++	return syscall(SYS_ioctl, fd, TIOCGWINSZ, &wsz) + 1;
+ }
+-- 
+cgit v1.2.1
