@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,4 +12,4 @@ inherit sec-keys
 DESCRIPTION="OpenPGP keys used by the GNUstep project"
 HOMEPAGE="https://www.gnustep.org/"
 
-KEYWORDS="~alpha amd64 ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ppc ppc64 ~sparc x86"
