@@ -16,6 +16,7 @@
 	<use>
 		<flag name="egl">Use EGL platform, enables smooth rendering in high refresh rate monitors on X11/Xwayland</flag>
 		<flag name="wayland">Run in wayland mode under wayland sessions, xwayland otherwise. This flag doesn't affect x11 sessions.</flag>
+		<flag name="webkit">Enable extensions that require WebKit (e.g., Microsoft authentication).</flag>
 	</use>
 	<longdescription>
 		Visual Studio Code is a lightweight but powerful source code editor which
