@@ -68,6 +68,8 @@ python_compile() {
 
 python_test() {
 	local EPYTEST_DESELECT=(
+		# fails with >=python-3.13.12, bug #969632
+		test/test_cookies.py::TestLenientSimpleCookie::test_parsing
 		# fails with FEATURES=network-sandbox
 		test/test_networking.py::TestHTTPRequestHandler::test_connect_timeout
 		# fails with FEATURES=distcc, bug #915614
