@@ -5,7 +5,6 @@
 : ${KNOT_RESOLVER_USER:=knot-resolver}
 : ${KNOT_RESOLVER_GROUP:=knot-resolver}
 : ${KNOT_RESOLVER_CONFIG:=/etc/knot-resolver/config.yaml}
-: ${KNOT_RESOLVER_PIDFILE:=/run/knot-resolver.pid}
 : ${KNOT_RESOLVER_LOG:=syslog}
 
 export KRES_LOGGING_TARGET="${KNOT_RESOLVER_LOG}"
@@ -13,7 +12,7 @@ export KRES_LOGGING_TARGET="${KNOT_RESOLVER_LOG}"
 command="/usr/bin/knot-resolver"
 command_args="-c ${KNOT_RESOLVER_CONFIG}"
 command_user="${KNOT_RESOLVER_USER}:${KNOT_RESOLVER_GROUP}"
-pidfile="${KNOT_RESOLVER_PIDFILE}"
+pidfile="/run/${RC_SVCNAME}.pid"
 command_background=true
 retry="TERM/60/KILL/5"
 
@@ -30,8 +29,39 @@ depend() {
     provide dns
 }
 
+checkconfig() {
+	# Filter the output to avoid a full traceback if the schema (JSON or YAML) is incorrect. Call 'su' to check permissions too.
+	errors=$(su ${KNOT_RESOLVER_USER} -s /bin/sh -c \
+		"/usr/bin/kresctl validate --strict ${KNOT_RESOLVER_CONFIG} 2>&1" )
+	[ -z "${errors}" ] && return 0
+
+	case "${errors}" in
+	  *"Error:"*)
+	    eerror "${KNOT_RESOLVER_CONFIG} can't be parsed!"
+	    eerror "Please verify the schema (JSON or YAML)."
+	    ;;
+	  *)
+	    eerror "${KNOT_RESOLVER_CONFIG} is invalid!"
+	    eerror "${errors}"
+	    ;;
+	esac
+	return 1
+}
+
+start_pre() {
+	if [ "${RC_CMD}" != "restart" ]; then
+		checkconfig || return 1
+	fi
+}
+
+stop_pre() {
+	if [ "${RC_CMD}" != "restart" ]; then
+		checkconfig || return 1
+	fi
+}
+
 reload() {
 	ebegin "Force-reloading ${SVCNAME}"
-	/usr/bin/kresctl --config=${KNOT_RESOLVER_CONFIG} reload --force
+	/usr/bin/kresctl --config="${KNOT_RESOLVER_CONFIG}" reload --force
 	eend $?
 }

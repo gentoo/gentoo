@@ -4,7 +4,6 @@
 #KNOT_RESOLVER_USER=knot-resolver
 #KNOT_RESOLVER_GROUP=knot-resolver
 #KNOT_RESOLVER_CONFIG="/etc/knot-resolver/config.yaml"
-#KNOT_RESOLVER_PIDFILE="/run/knot-resolver.pid"
 
 #LOG TARGET : syslog stdout stderr
 #KNOT_RESOLVER_LOG="syslog"
