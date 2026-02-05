@@ -12,7 +12,7 @@ SRC_URI="https://github.com/gnustep/apps-${PN}/archive/refs/tags/${P//./_}.tar.g
 S=${WORKDIR}/apps-${PN}-${PN}-${PV//./_}
 LICENSE="GPL-3+ LGPL-2.1+"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 
 DEPEND=">=gnustep-base/gnustep-gui-0.31.0"
 RDEPEND="${DEPEND}"
