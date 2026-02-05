@@ -1,0 +1,53 @@
+From 98c9e687ba0480cbec1df2b2a64817c0c08add7e Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 3 Dec 2024 19:46:01 +0100
+Subject: [PATCH] Thanks, but no thanks
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8e2153462..dd2d64788 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -363,7 +363,7 @@ if (UNIX)
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fdata-sections -ffunction-sections")
+     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,--gc-sections")
+   endif()
+-endif(UNIX)
++endif()
+ 
+ # Optimize binary size by dropping unneeded symbols at linking stage
+ if (ANDROID)
+@@ -372,7 +372,7 @@ if (ANDROID)
+ endif ()
+ 
+ # Add security (hardening flags)
+-IF (UNIX OR APPLE OR ANDROID)
++IF (0)
+     SET(SEC_COMP_FLAGS "${SEC_COMP_FLAGS} -fstack-protector-all -Wcast-align -fPIE")
+     # This is ill-defined, but I searched for a solution for quite a long time to no avail
+     # - FORTIFY_SOURCE generates a warning when there is no code optimization, and warnings will become errors at some point
+@@ -405,7 +405,7 @@ ENDIF ()
+ 
+ SET(FIX_WARNINGS OFF CACHE BOOL "Enable strict compilation mode to turn compiler warnings to errors")
+ # Warning, debug and linker flags
+-IF (UNIX OR APPLE)
++IF (0)
+     SET(COMP_FLAGS "")
+     SET(LINKER_FLAGS "")
+     # Verbose warnings and turns all to errors
+@@ -469,7 +469,7 @@ ENDIF ()
+ 
+ # Sanitizer support
+ SET(SANITIZERS OFF CACHE BOOL "Sanitizer support for gcc and Clang")
+-IF (SANITIZERS AND
++IF (0 AND
+     ((UNIX AND (CMAKE_CXX_COMPILER_ID STREQUAL "Clang") OR CMAKE_COMPILER_IS_GNUCXX) OR
+      (APPLE AND (CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang" OR CMAKE_COMPILER_IS_GNUCXX))))
+     SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address,undefined -fno-omit-frame-pointer")
+-- 
+2.53.0
+
