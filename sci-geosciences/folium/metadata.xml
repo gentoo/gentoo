@@ -5,6 +5,10 @@
 		<email>tupone@gentoo.org</email>
 		<name>Tupone Alfredo</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
 	<longdescription lang="en">
 		Python Data, Leaflet.js Maps
 		folium builds on the data wrangling strengths of the Python ecosystem
