@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ inherit lua-single meson python-any-r1 xdg
 
 DESCRIPTION="2D space trading and combat game, in a similar vein to Escape Velocity"
 HOMEPAGE="https://naev.org/"
-SRC_URI="https://github.com/naev/naev/releases/download/v${PV}/${P}-source.tar.xz"
+SRC_URI="https://codeberg.org/naev/naev/releases/download/v${PV}/${P}-source.tar.xz"
 
 LICENSE="
 	GPL-3+
