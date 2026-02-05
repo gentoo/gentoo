@@ -29,9 +29,9 @@ dev-java/openjdk:27 javafx
 sci-libs/adolc mpi
 
 # Ionen Wolkens <ionen@gentoo.org> (2025-12-24)
-# cargo.eclass' IUSE=debug cannot currently be easily supported by
-# the custom builder the package uses, mask to avoid no-op rebuilds
+# Packages where cargo.eclass' IUSE=debug cannot easily be supported
 # (use RUSTFLAGS if need debug symbols, see also bug #967921)
+games-strategy/naev debug
 media-libs/subrandr debug
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-12-21)
