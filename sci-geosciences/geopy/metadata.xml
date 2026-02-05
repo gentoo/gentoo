@@ -5,6 +5,10 @@
 		<email>tupone@gentoo.org</email>
 		<name>Tupone Alfredo</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
 	<longdescription lang="en">
 		geopy is a Python client for several popular geocoding web services.
 		geopy makes it easy for Python developers to locate the coordinates
