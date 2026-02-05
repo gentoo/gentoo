@@ -9,9 +9,6 @@
 		<email>sci@gentoo.org</email>
 		<name>Gentoo Science Project</name>
 	</maintainer>
-	<upstream>
-		<remote-id type="github">google/s2geometry</remote-id>
-	</upstream>
 	<longdescription lang="en">
 		This is a package for manipulating geometric shapes. Unlike many
 		geometry libraries, S2 is primarily designed to work with spherical
@@ -19,4 +16,7 @@
 		2D map. This makes it especially suitable for working with geographic
 		data.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">google/s2geometry</remote-id>
+	</upstream>
 </pkgmetadata>
