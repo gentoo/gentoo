@@ -1,0 +1,27 @@
+https://bugs.gentoo.org/967868
+
+From 5428f5818645a1181a61e37fbe753bf68dbd07af Mon Sep 17 00:00:00 2001
+From: Ted Rodgers <ted.d.rodgers@gmail.com>
+Date: Mon, 22 Dec 2025 23:16:12 -0500
+Subject: [PATCH] Bug 967868: jemalloc_cpp.cpp patch remove compiler internal
+ detail
+
+---
+ src/jemalloc_cpp.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/jemalloc_cpp.cpp b/src/jemalloc_cpp.cpp
+index 451655f..d90a9f5 100644
+--- a/src/jemalloc_cpp.cpp
++++ b/src/jemalloc_cpp.cpp
+@@ -87,7 +87,7 @@ handleOOM(std::size_t size, bool nothrow) {
+ 	}
+ 
+ 	if (ptr == nullptr && !nothrow)
+-		std::__throw_bad_alloc();
++		throw std::bad_alloc();
+ 	return ptr;
+ }
+ 
+-- 
+2.52.0
