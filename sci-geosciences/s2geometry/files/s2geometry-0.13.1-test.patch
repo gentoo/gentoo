@@ -1,0 +1,23 @@
+--- a/CMakeLists.txt	2026-02-04 19:24:26.620844118 +0100
++++ b/CMakeLists.txt	2026-02-04 20:09:05.404038948 +0100
+@@ -494,9 +494,6 @@
+   endif()
+   message("GOOGLETEST_ROOT: ${GOOGLETEST_ROOT}")
+ 
+-  add_subdirectory(${GOOGLETEST_ROOT}/googlemock build_gmock)
+-  include_directories(${GOOGLETEST_ROOT}/googlemock/include)
+-  include_directories(${GOOGLETEST_ROOT}/googletest/include)
+ 
+   set(S2TestFiles
+       src/s2/encoded_s2cell_id_vector_test.cc
+@@ -644,7 +641,9 @@
+         absl::status
+         absl::strings
+         absl::synchronization
+-        gmock_main)
++        gmock_main
++        gmock
++        gtest)
+     add_test(${test} ${test})
+   endforeach()
+ endif()

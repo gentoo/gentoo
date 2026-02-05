@@ -1,0 +1,33 @@
+# Copyright 2025-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+inherit cmake
+
+DESCRIPTION="Computational geometry and spatial indexing on the sphere"
+HOMEPAGE="http://s2geometry.io/"
+SRC_URI="https://github.com/google/${PN}/archive/refs/tags/v${PV}.tar.gz
+	-> ${P}.tar.gz"
+
+LICENSE="Apache-2.0"
+SLOT="0"
+KEYWORDS="~amd64"
+IUSE="test"
+RESTRICT="!test? ( test )"
+
+RDEPEND="
+	>=dev-cpp/abseil-cpp-20250814.1:=
+	dev-libs/openssl:=
+"
+DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}"/${P}-test.patch )
+
+src_configure() {
+	local mycmakeargs=(
+		-DBUILD_TESTS=$(usex test)
+		-DGOOGLETEST_ROOT=/usr/include
+	)
+	cmake_src_configure
+}
