@@ -4,6 +4,7 @@
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2026-02-04)
 # Some systemd features will never work on musl.
 sys-apps/systemd homed
+sys-auth/pambase homed
 
 # Sv. Lockal <lockalsash@gmail.com.com> (2025-07-07)
 # sci-libs/aotriton-bin is masked on musl
