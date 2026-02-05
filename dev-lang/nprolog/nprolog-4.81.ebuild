@@ -22,6 +22,7 @@ fi
 LICENSE="BSD-2"
 SLOT="0"
 IUSE="doc"
+RESTRICT="test"  # Tests run cppcheck, see #969634.
 
 DOCS=( README{,-ja}.md )
 
@@ -35,6 +36,11 @@ src_prepare() {
 
 src_compile() {
 	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS} ${LDFLAGS}"
+}
+
+src_test() {
+	# No real tests. See above.
+	:
 }
 
 src_install() {
