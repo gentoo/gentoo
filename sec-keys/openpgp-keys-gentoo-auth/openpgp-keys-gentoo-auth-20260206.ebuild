@@ -20,6 +20,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv 
 # 2. gpg --import-options no-import-clean,no-self-sigs-only --import /usr/share/openpgp-keys/gentoo-auth.asc
 # 3. Verify gpg --list-keys shows only expected L1 and L2 authority keys
 # 4. gpg --armor --export > gentoo-auth.asc.${PV}
+# 5. diff the existing version with the new version with pgpdump, make sure
+#    the changes look expected.
 # 5. gzip gentoo-auth.asc.${PV}
 #
 # Keys included:
