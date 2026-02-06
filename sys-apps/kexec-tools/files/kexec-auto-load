@@ -20,17 +20,12 @@ if [[ -s ${instkern_state} ]]; then
 	fi
 fi
 
-if [[ ${LAYOUT} == uki ]]; then
-	echo "WARNING: kexec currently does not support UKIs"
-	KPARAM=
+if [[ -f /etc/kernel/cmdline ]]; then
+	KPARAM="$(tr -s "${IFS}" ' ' </etc/kernel/cmdline)"
+elif [[ -f /usr/lib/kernel/cmdline ]]; then
+	KPARAM="$(tr -s "${IFS}" ' ' </usr/lib/kernel/cmdline)"
 else
-	if [[ -f /etc/kernel/cmdline ]]; then
-		KPARAM="$(tr -s "${IFS}" ' ' </etc/kernel/cmdline)"
-	elif [[ -f /usr/lib/kernel/cmdline ]]; then
-		KPARAM="$(tr -s "${IFS}" ' ' </usr/lib/kernel/cmdline)"
-	else
-		KPARAM=
-	fi
+	KPARAM=
 fi
 
 
