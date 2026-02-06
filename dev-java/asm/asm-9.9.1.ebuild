@@ -27,7 +27,7 @@ S="${WORKDIR}/asm-${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc64 ~x64-macos"
+KEYWORDS="amd64 arm64 ppc64 ~x64-macos"
 
 DEPEND=">=virtual/jdk-11:*"
 RDEPEND=">=virtual/jre-1.8:*"
