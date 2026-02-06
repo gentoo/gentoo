@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,12 +6,12 @@ EAPI=8
 inherit gnome.org meson vala virtualx xdg
 
 DESCRIPTION="A text widget implementing syntax highlighting and other features"
-HOMEPAGE="https://gitlab.gnome.org/GNOME/gtksourceview"
+HOMEPAGE="https://gnome.pages.gitlab.gnome.org/gtksourceview/gtksourceview5"
 
 LICENSE="LGPL-2.1+"
 SLOT="5"
 
-KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="gtk-doc +introspection sysprof +vala"
 REQUIRED_USE="
 	gtk-doc? ( introspection )
@@ -19,8 +19,11 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	>=dev-libs/glib-2.72:2
-	>=gui-libs/gtk-4.6:4[introspection?]
+	>=dev-libs/glib-2.76:2[introspection?]
+	>=gui-libs/gtk-4.17:4[introspection?]
+	>=x11-libs/gdk-pixbuf-2.30:2[introspection?]
+	>=x11-libs/cairo-1.16
+	>=media-libs/graphene-1.10.0[introspection?]
 	>=dev-libs/libxml2-2.6:2=
 	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	>=dev-libs/fribidi-0.19.7
@@ -64,11 +67,11 @@ src_test() {
 src_install() {
 	meson_src_install
 
-	insinto /usr/share/${PN}-5/language-specs
+	insinto /usr/share/"${PN}"-5/language-specs
 	newins "${FILESDIR}"/5-gentoo.lang gentoo.lang
 
 	if use gtk-doc ; then
 		mkdir -p "${ED}"/usr/share/gtk-doc/html/ || die
-		mv "${ED}"/usr/share/doc/${PN}${SLOT} "${ED}"/usr/share/gtk-doc/html/ || die
+		mv "${ED}/usr/share/doc/${PN}${SLOT}" "${ED}"/usr/share/gtk-doc/html/ || die
 	fi
 }
