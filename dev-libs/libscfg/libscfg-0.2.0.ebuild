@@ -6,7 +6,7 @@ EAPI=8
 inherit meson
 
 DESCRIPTION="C library for a simple configuration file format"
-HOMEPAGE="https://git.sr.ht/~emersion/scfg https://sr.ht/~emersion/libscfg/"
+HOMEPAGE="https://codeberg.org/emersion/libscfg"
 SRC_URI="
 	https://codeberg.org/emersion/libscfg/archive/v${PV}.tar.gz
 		-> ${P}.tar.gz
