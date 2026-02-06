@@ -36,6 +36,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2026-02-06)
+# Marked as pre-release post release itself. Released without
+# maintainer ACK.
+# See-Also: https://github.com/emersion/slurp/issues/187
+# Bug #969685
+=gui-apps/slurp-1.6.0
+
 # Michał Górny <mgorny@gentoo.org> (2026-01-24)
 # Needs porting to Python 3.13.  Requires old versions of multiple
 # dependencies, and reportedly is already broken with its current
