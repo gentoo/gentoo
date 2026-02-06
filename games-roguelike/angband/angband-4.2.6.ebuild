@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ inherit autotools desktop xdg-utils
 DESCRIPTION="Roguelike dungeon exploration game based on the books of J.R.R. Tolkien"
 HOMEPAGE="https://rephial.org/"
 SRC_URI="https://github.com/angband/angband/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
-	https://dev.gentoo.org/~chewi/distfiles/${P}-man.tar.gz"
+	https://dev.gentoo.org/~steils/distfiles/${P}-man.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
