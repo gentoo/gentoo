@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Jaco Kroon <jaco@uls.co.za> (2026-02-06)
+# Requires sys-auth/libyubikey
+net-dialup/freeradius yubikey
+
 # Alfred Wingate <parona@protonmail.com> (2025-11-23)
 # Requires dev-qt/qtwebengine
 media-sound/easyeffects webengine
