@@ -16,7 +16,7 @@ S="${WORKDIR}/rhino-Rhino${PV//./_}_Release"
 
 LICENSE="MPL-1.1 GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc64"
+KEYWORDS="amd64 arm64 ppc64"
 
 DEPEND="
 	>=virtual/jdk-11
