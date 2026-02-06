@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -71,10 +71,14 @@ src_compile() {
 
 	linux-mod-r1_src_compile
 }
+
 src_install() {
 	insinto /usr/lib/udev/hwdb.d
-	doins *.hwdb
-	udev_dorules *.rules
+	doins usr/lib/udev/hwdb.d/*.hwdb
+	udev_dorules usr/lib/udev/rules.d/*.rules
+
+	insinto /usr/lib/modprobe.d
+	doins usr/lib/modprobe.d/tuxedo-drivers-backlist-upstream-conflicts.conf
 	linux-mod-r1_src_install
 }
 
