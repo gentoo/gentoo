@@ -3,12 +3,12 @@
 
 EAPI=8
 
-inherit meson
+inherit meson verify-sig
 
 DESCRIPTION="dynamic display configuration (autorandr for wayland)"
 HOMEPAGE="https://gitlab.freedesktop.org/emersion/kanshi"
-SRC_URI="https://gitlab.freedesktop.org/emersion/kanshi/-/archive/v${PV}/kanshi-v${PV}.tar.bz2"
-S=${WORKDIR}/${PN}-v${PV}
+SRC_URI="https://gitlab.freedesktop.org/emersion/${PN}/-/releases/v${PV}/downloads/${P}.tar.gz
+	https://gitlab.freedesktop.org/emersion/${PN}/-/releases/v${PV}/downloads/${P}.tar.gz.sig"
 
 LICENSE="MIT"
 SLOT="0"
@@ -28,7 +28,10 @@ BDEPEND="
 	dev-util/wayland-scanner
 	man? ( >=app-text/scdoc-1.9.3 )
 	varlink? ( dev-libs/vali )
+	verify-sig? ( sec-keys/openpgp-keys-emersion )
 "
+
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/emersion.asc"
 
 src_configure() {
 	local emesonargs=(
