@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,9 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/emersion/${PN}.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/emersion/${PN}/releases/download/v${PV}/${P}.tar.gz"
+	inherit verify-sig
+	SRC_URI="https://github.com/emersion/${PN}/releases/download/v${PV}/${P}.tar.gz -> ${P}.gh.tar.gz
+		https://github.com/emersion/${PN}/releases/download/v${PV}/${P}.tar.gz.sig -> ${P}.gh.tar.gz.sig"
 	KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
 fi
 
@@ -42,6 +44,11 @@ BDEPEND="
 	>=dev-libs/wayland-protocols-1.24
 	virtual/pkgconfig
 "
+
+if [[ ${PV} != 9999 ]]; then
+	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-emersion )"
+	VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/emersion.asc"
+fi
 
 src_configure() {
 	local emesonargs=()
