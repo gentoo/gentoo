@@ -12,12 +12,13 @@ SRC_URI="https://iroffer.net/${P}.tar.gz"
 LICENSE="GPL-2+-with-openssl-exception MIT blowfish? ( LGPL-2.1+ ) upnp? ( BSD )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-MY_L10N=( de fr en it tr )
+MY_L10N=( de en fr it tr )
 IUSE="+admin +blowfish curl debug geoip gnutls +http +memsave ruby ssl +telnet upnp"
 IUSE+=" ${MY_L10N[@]/#/l10n_}"
 
 REQUIRED_USE="admin? ( http )"
 
+RUBY_DEP="dev-lang/ruby"
 RDEPEND="
 	acct-user/iroffer
 	virtual/libcrypt:=
@@ -29,7 +30,7 @@ RDEPEND="
 		)
 	)
 	geoip? ( dev-libs/libmaxminddb:= )
-	ruby? ( dev-lang/ruby:* )
+	ruby? ( ${RUBY_DEP}:* )
 	ssl? (
 		gnutls? ( net-libs/gnutls:= )
 		!gnutls? ( dev-libs/openssl:0= )
@@ -37,18 +38,24 @@ RDEPEND="
 	upnp? ( net-libs/miniupnpc:= )
 "
 DEPEND="${RDEPEND}"
+BDEPEND="
+	l10n_de? ( ${RUBY_DEP} )
+	l10n_fr? ( ${RUBY_DEP} )
+	l10n_it? ( ${RUBY_DEP} )
+	l10n_tr? ( ${RUBY_DEP} )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.31-config.patch
-	#"${FILESDIR}"/${PN}-3.34-fix_ssl.patch
 	"${FILESDIR}"/${PN}-3.34-rm_Werror.patch
 )
 
 src_configure() {
+	local lang
 	for lang in "${MY_L10N[@]}"; do
 		use "l10n_${lang}" && LANGS+=( "${lang}" )
 	done
-	export ${LANGS[@]:-en}
+	: ${LANGS:=en}
 
 	myconfargs=(
 		PREFIX="${EPREFIX}/usr"
