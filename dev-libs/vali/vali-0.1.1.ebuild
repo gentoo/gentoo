@@ -3,12 +3,12 @@
 
 EAPI=8
 
-inherit meson
+inherit meson verify-sig
 
 DESCRIPTION="C library and code generator for Varlink"
 HOMEPAGE="https://gitlab.freedesktop.org/emersion/vali"
-SRC_URI="https://gitlab.freedesktop.org/emersion/vali/-/archive/v${PV}/vali-v${PV}.tar.bz2"
-S=${WORKDIR}/${PN}-v${PV}
+SRC_URI="https://gitlab.freedesktop.org/emersion/vali/-/releases/v${PV}/downloads/${P}.tar.gz
+	https://gitlab.freedesktop.org/emersion/vali/-/releases/v${PV}/downloads/${P}.tar.gz.sig"
 
 LICENSE="MIT"
 SLOT="0"
@@ -19,4 +19,9 @@ DEPEND="
 	dev-libs/json-c:=
 "
 RDEPEND="${DEPEND}"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	virtual/pkgconfig
+	verify-sig? ( sec-keys/openpgp-keys-emersion )
+"
+
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/emersion.asc"
