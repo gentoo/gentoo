@@ -1,4 +1,4 @@
-# Copyright 2017-2025 Gentoo Authors
+# Copyright 2017-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -40,6 +40,10 @@ BDEPEND="
 	doc? ( dev-python/docutils )
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}"/dbus-broker-37-test-sockopt.patch
+)
 
 if [[ ${PV} == 9999 ]]; then
 src_unpack() {
