@@ -1,0 +1,51 @@
+https://bugs.gentoo.org/969528
+https://mail.kde.org/pipermail/distributions/2026-January/001671.html
+https://invent.kde.org/plasma/kwin/-/commit/f79af348ed9f18bc30417df4bfe539383fd9fa77
+
+From f79af348ed9f18bc30417df4bfe539383fd9fa77 Mon Sep 17 00:00:00 2001
+From: Xaver Hugl <xaver.hugl@kde.org>
+Date: Wed, 21 Jan 2026 23:52:12 +0100
+Subject: [PATCH] wayland/outputmanagement: re-allow negative positions for
+ disabled outputs
+
+KScreen normalizes output positions, so that one of the enabled outputs has
+x = 0 and one has y = 0.
+While doing that, it sometimes moves disabled outputs to negative positions, so
+they stay in the same spot relative to the enabled ones. Right now that means
+turning off an output with some setups leads to that configuration being
+rejected, for reasons the user can't follow.
+
+Ideally KScreen will be fixed so it doesn't ever move outputs around and just
+accepts that no output will be at position zero, but I'm a bit concerned about
+negatively affecting the X11 session.
+Until Xorg is dropped, this workaround should be fine.
+
+(cherry picked from commit aa1a44454b106be344466e10f972bcb97a846cad)
+---
+ src/wayland/outputmanagement_v2.cpp | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/src/wayland/outputmanagement_v2.cpp b/src/wayland/outputmanagement_v2.cpp
+index 85022a16ebb..2c579ee0219 100644
+--- a/src/wayland/outputmanagement_v2.cpp
++++ b/src/wayland/outputmanagement_v2.cpp
+@@ -524,8 +524,15 @@ void OutputConfigurationV2Interface::kde_output_configuration_v2_apply(Resource
+             continue;
+         }
+         if (changeset->pos.has_value()) {
+-            if (changeset->pos->x() < 0 || changeset->pos->y() < 0) {
+-                sendFailure(resource, QString("Position of output %1 is negative, that is not supported").arg(output->name()));
++            // KScreen in some cases moves disabled screens to negative positions, to preserve their
++            // relative position vs. the still enabled outputs. Until that's changed, we have to allow
++            // disabled outputs to be in negative positions
++            const bool enabled = changeset->enabled.value_or(output->isEnabled());
++            if (!enabled && (changeset->pos->x() < -1000000 || changeset->pos->y() < -1000000)) {
++                sendFailure(resource, QStringLiteral("Position of output %1 is way too negative (%2, %3)").arg(output->name()).arg(changeset->pos->x()).arg(changeset->pos->y()));
++                return;
++            } else if (enabled && (changeset->pos->x() < 0 || changeset->pos->y() < 0)) {
++                sendFailure(resource, QStringLiteral("Position of enabled output %1 is negative (%2, %3)").arg(output->name()).arg(changeset->pos->x()).arg(changeset->pos->y()));
+                 return;
+             }
+             if (changeset->pos->x() > 1000000 || changeset->pos->y() > 1000000) {
+-- 
+GitLab

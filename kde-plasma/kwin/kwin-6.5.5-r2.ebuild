@@ -111,6 +111,7 @@ FILECAPS=( -m 0755 cap_sys_nice=ep usr/bin/kwin_wayland )
 PATCHES=(
 	"${WORKDIR}/${P}-patchset"
 	"${FILESDIR}/${P}-unused-deps.patch" # bug #965053
+	"${FILESDIR}/${P}-screen-disable.patch" # bug #969528
 )
 
 pkg_pretend() {
