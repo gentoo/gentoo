@@ -1,4 +1,4 @@
-# Copyright 1999-2026 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,22 +24,21 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/libbsd
-	|| ( dev-libs/libpcre dev-libs/libpcre2 )
+	dev-libs/libpcre2
 	dev-libs/openssl:=
 	net-libs/libnet:1.1
 	>=net-libs/libpcap-0.8.1
 	virtual/zlib:=
-	geoip? ( dev-libs/libmaxminddb )
+	geoip? ( dev-libs/geoip )
 	gtk? (
 		>=app-accessibility/at-spi2-core-2.46.0
 		>=dev-libs/glib-2.2.2:2
 		media-libs/freetype
 		x11-libs/cairo
 		x11-libs/gdk-pixbuf:2
-		>=x11-libs/gtk+-3.12.0:3
+		>=x11-libs/gtk+-2.2.2:2
 		>=x11-libs/pango-1.2.3
 	)
-	ipv6? ( >=net-libs/libnet-1.1.5:1.1 )
 	ncurses? ( >=sys-libs/ncurses-5.3:= )
 	plugins? ( >=net-misc/curl-7.26.0 )
 "
@@ -74,8 +73,9 @@ src_configure() {
 		-DINSTALL_SYSCONFDIR="${EPREFIX}"/etc
 	)
 
+	# right now we only support gtk2, but ettercap also supports gtk3
+	# do we care? do we want to support both?
 	! use gtk && mycmakeargs+=(-DINSTALL_DESKTOP=OFF)
-	use gtk && mycmakeargs+=(-DGTK_BUILD_TYPE=GTK3)
 
 	cmake_src_configure
 }
