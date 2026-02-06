@@ -1,0 +1,15 @@
+see https://bugs.gentoo.org/969182
+PR merged https://github.com/crosswire/xiphos/pull/1264.patch
+fix conflicting types for ‘in_func’ between zlib.h and zlib-ng.h used by minizip-ng[compat]
+--- a/src/gtk/utilities.c
++++ b/src/gtk/utilities.c
+@@ -38,8 +38,8 @@
+ #include <gdk-pixbuf/gdk-pixbuf.h>
+ 
+ #include <gtk/gtk.h>
+-#include <minizip/zip.h>
+ #include <zlib.h>
++#include <minizip/zip.h>
+ 
+ #include "gui/utilities.h"
+ #include "gui/preferences_dialog.h"
