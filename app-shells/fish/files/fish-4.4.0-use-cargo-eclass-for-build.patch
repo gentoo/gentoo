@@ -1,0 +1,46 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9b45bad2d..de80ef00a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -60,18 +60,7 @@ add_custom_target(
+   fish ALL
+   COMMAND
+     "${CMAKE_COMMAND}" -E
+-      env ${VARS_FOR_CARGO}
+-        ${Rust_CARGO}
+-          build --bin fish
+-          $<$<CONFIG:Release>:--release>
+-          $<$<CONFIG:RelWithDebInfo>:--profile=release-with-debug>
+-          --target ${Rust_CARGO_TARGET}
+-          --no-default-features
+-          --features=${FISH_CARGO_FEATURES}
+-          ${CARGO_FLAGS}
+-    &&
+-    "${CMAKE_COMMAND}" -E
+-      copy "${rust_target_dir}/${rust_profile}/fish" "${CMAKE_CURRENT_BINARY_DIR}"
++      copy "${FISH_RUST_BUILD_DIR}/${rust_profile}/fish" "${CMAKE_CURRENT_BINARY_DIR}"
+   WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+   USES_TERMINAL
+ )
+diff --git a/cmake/Rust.cmake b/cmake/Rust.cmake
+index 0be10db9c..0ff089d60 100644
+--- a/cmake/Rust.cmake
++++ b/cmake/Rust.cmake
+@@ -2,7 +2,7 @@ include(FeatureSummary)
+ include(FindRust)
+ find_package(Rust REQUIRED)
+ 
+-set(FISH_RUST_BUILD_DIR "${CMAKE_BINARY_DIR}/cargo")
++set(FISH_RUST_BUILD_DIR "${CMAKE_SOURCE_DIR}/target")
+ 
+ if(DEFINED ASAN)
+     list(APPEND CARGO_FLAGS "-Z" "build-std")
+@@ -18,7 +18,7 @@ else()
+     set(rust_target_dir "${FISH_RUST_BUILD_DIR}/${Rust_CARGO_HOST_TARGET}")
+ endif()
+ 
+-set(rust_profile $<IF:$<CONFIG:Debug>,debug,$<IF:$<CONFIG:RelWithDebInfo>,release-with-debug,release>>)
++set(rust_profile $<IF:$<CONFIG:Debug>,debug,release>)
+ 
+ if (NOT DEFINED WITH_MESSAGE_LOCALIZATION) # Don't check for legacy options if the new one is defined, to help bisecting.
+     if(DEFINED WITH_GETTEXT)
