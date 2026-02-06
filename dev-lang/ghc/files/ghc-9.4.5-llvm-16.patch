@@ -1,0 +1,34 @@
+--- a/compiler/GHC/Driver/Pipeline/Execute.hs
++++ b/compiler/GHC/Driver/Pipeline/Execute.hs
+@@ -882,8 +882,7 @@ getOutputFilename logger tmpfs stop_phase output basename dflags next_phase mayb
+ llvmOptions :: DynFlags
+             -> [(String, String)]  -- ^ pairs of (opt, llc) arguments
+ llvmOptions dflags =
+-       [("-enable-tbaa -tbaa",  "-enable-tbaa") | gopt Opt_LlvmTBAA dflags ]
+-    ++ [("-relocation-model=" ++ rmodel
++       [("-relocation-model=" ++ rmodel
+         ,"-relocation-model=" ++ rmodel) | not (null rmodel)]
+     ++ [("-stack-alignment=" ++ (show align)
+         ,"-stack-alignment=" ++ (show align)) | align > 0 ]
+--- a/configure.ac
++++ b/configure.ac
+@@ -582,7 +582,7 @@ AC_SUBST(InstallNameToolCmd)
+ # versions of LLVM simultaneously, but that stopped working around
+ # 3.5/3.6 release of LLVM.
+ LlvmMinVersion=10  # inclusive
+-LlvmMaxVersion=15 # not inclusive
++LlvmMaxVersion=17 # not inclusive
+ AC_SUBST([LlvmMinVersion])
+ AC_SUBST([LlvmMaxVersion])
+ sUPPORTED_LLVM_VERSION_MIN=$(echo \($LlvmMinVersion\) | sed 's/\./,/')
+--- a/llvm-passes
++++ b/llvm-passes
+@@ -1,5 +1,5 @@
+ [
+-(0, "-mem2reg -globalopt -lower-expect"),
+-(1, "-O1 -globalopt"),
+-(2, "-O2")
++(0, "-passes=module(default<O0>,function(mem2reg),globalopt,function(lower-expect))"),
++(1, "-passes=module(default<O1>,globalopt)"),
++(2, "-passes=module(default<O2>)")
+ ]

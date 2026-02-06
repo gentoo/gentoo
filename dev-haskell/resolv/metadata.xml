@@ -28,4 +28,8 @@
 		- [RFC 6891](https://tools.ietf.org/html/rfc6891): Extension Mechanisms for DNS (EDNS(0))
 		- [RFC 7553](https://tools.ietf.org/html/rfc7553): The Uniform Resource Identifier (URI) DNS Resource Record
 	</longdescription>
+	<upstream>
+		<remote-id type="hackage">resolv</remote-id>
+		<remote-id type="github">hvr/resolv</remote-id>
+	</upstream>
 </pkgmetadata>

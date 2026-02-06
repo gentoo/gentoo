@@ -11,5 +11,6 @@
 	<upstream>
 		<remote-id type="hackage">JuicyPixels</remote-id>
 		<remote-id type="github">Twinside/Juicy.Pixels</remote-id>
+		<remote-id type="github">Twinside/Juicy.Pixels.git</remote-id>
 	</upstream>
 </pkgmetadata>
