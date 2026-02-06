@@ -6,7 +6,7 @@
 # Zurab Kvachadze <zurabid2016@gmail.com>
 # @AUTHOR:
 # Zurab Kvachadze <zurabid2016@gmail.com>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @BLURB: Provides a common set of functions for building the NGINX server
 # @DESCRIPTION:
 # This eclass automates building, testing and installation of the NGINX server.
@@ -21,14 +21,19 @@
 #  - NGINX_TESTS_COMMIT
 # And 1 optional variable (see description):
 #  - NGINX_MISC_FILES
-
-case ${EAPI} in
-	8) inherit eapi9-pipestatus ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
+#
+# EAPI porting notes:
+#  - 8 -> 9:
+#    * NGINX_SUPPORT_MODULE_STUBS is enabled unconditionally.
 
 if [[ -z ${_NGINX_ECLASS} ]]; then
 _NGINX_ECLASS=1
+
+case ${EAPI} in
+	8) inherit eapi9-pipestatus edo ;;
+	9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # The 60tmpfiles-paths install check produces QA warning if it does not detect
 # tmpfiles_process() in pkg_postinst(). Even though the tmpfiles_process() is
@@ -37,7 +42,7 @@ _NGINX_ECLASS=1
 # Nonetheless, it is possible to opt out from the QA check by setting the
 # TMPFILES_OPTIONAL variable.
 TMPFILES_OPTIONAL=1
-inherit edo multiprocessing perl-functions systemd toolchain-funcs tmpfiles
+inherit multiprocessing perl-functions systemd toolchain-funcs tmpfiles
 
 #-----> ebuild-defined variables <-----
 
@@ -221,6 +226,17 @@ has "${NGINX_UPDATE_STREAM}" "${NGX_UPDATE_STREAMS_LIST[@]}" ||
 # automatically fill the BDEPEND variable with module test dependencies.
 # For details, see _ngx_set_mod_test_depend() function description below.
 
+# @ECLASS_VARIABLE: NGINX_SUPPORT_MODULE_STUBS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Set this to a non-empty value before calling nginx_src_install() to create
+# /etc/nginx/modules-{available,enabled} and to make the default config load
+# .conf stubs from /etc/nginx/modules-enabled.  See nginx_src_install() for
+# details.
+#
+# In EAPI 9, the functionality is unconditionally enabled.
+[[ ${EAPI} != 8 ]] && readonly NGINX_SUPPORT_MODULE_STUBS=1
+
 #-----> ebuild setup <-----
 
 # NGINX does not guarantee ABI stability (required by dynamic modules), SLOT is
@@ -273,7 +289,7 @@ econf_ngx() {
 		#
 		# Executing this without edo gets rid of the "Failed to run" message.
 		./configure "$@"
-		return
+		return 0
 	fi
 	edo ./configure "$@"
 }
@@ -762,7 +778,7 @@ nginx_src_test() {
 # and NGINX headers into '/usr/include/nginx'.
 nginx_src_install() {
 	debug-print-function "${FUNCNAME[0]}" "$@"
-	emake DESTDIR="${ED}" install
+	emake DESTDIR="${D}" install
 	keepdir "/usr/$(get_libdir)/nginx/modules"
 
 	keepdir /var/log/nginx
@@ -850,6 +866,12 @@ nginx_src_install() {
 		perl_fix_packlist
 	fi
 
+	# If not using modules, do not 'include modules-enabled/*.conf;'. Also, just
+	# in case, remove the line if NGINX_SUPPORT_MODULE_STUBS is unset.
+	if use !modules || [[ -z ${NGINX_SUPPORT_MODULE_STUBS} ]]; then
+		sed -i '/^@GENTOO_MODULES_INCLUDE@$/d' "${ED}"/etc/nginx/nginx.conf
+	fi
+
 	# For the rationale of the following, see nginx-module.eclass.
 	if use modules; then
 		# Install the headers into /usr/include/nginx.
@@ -906,6 +928,13 @@ nginx_src_install() {
 			variable = BDEPEND
 			includes = ${CATEGORY}/${PN}
 		EOF
+
+		if [[ -n ${NGINX_SUPPORT_MODULE_STUBS} ]]; then
+			keepdir /etc/nginx/modules-{available,enabled}
+
+			sed -i 's|^@GENTOO_MODULES_INCLUDE@$|include modules-enabled/*.conf;|' \
+				"${ED}"/etc/nginx/nginx.conf
+		fi
 	fi
 }
 

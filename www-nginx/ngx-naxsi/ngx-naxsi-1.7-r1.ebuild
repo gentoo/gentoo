@@ -1,10 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 MY_PN="naxsi"
-NGINX_MOD_S="${WORKDIR}/${MY_PN}-${PV}"
 NGINX_MOD_CONFIG_DIR="naxsi_src"
 
 inherit nginx-module
@@ -16,6 +15,8 @@ HOMEPAGE="https://github.com/wargio/naxsi"
 SRC_URI="
 	https://github.com/wargio/naxsi/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 "
+
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="BSD-2"
 SLOT="0"
@@ -32,7 +33,7 @@ PATCHES=(
 src_install() {
 	nginx-module_src_install
 	insinto /etc/nginx/naxsi
-	doins -r "${NGINX_MOD_S}"/naxsi_rules/*
+	doins -r naxsi_rules/*
 	docompress -x "/usr/share/doc/${PF}"
-	dodoc -r "${NGINX_MOD_S}"/docs/*
+	dodoc -r docs/*
 }
