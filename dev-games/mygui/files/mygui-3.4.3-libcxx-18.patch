@@ -1,0 +1,21 @@
+From https://github.com/MyGUI/mygui/commit/0731785d83431bd17a0854f19bea9a7d687de5a7 Mon Sep 17 00:00:00 2001
+From: George Evmenov <altren@gmail.com>
+Date: Thu, 6 Mar 2025 03:06:03 +0300
+Subject: [PATCH] do not use std::basic_string with non-standard types
+ (deprecated in llvm-18)
+
+--- a/MyGUIEngine/include/MyGUI_UString.h
++++ b/MyGUIEngine/include/MyGUI_UString.h
+@@ -163,10 +163,10 @@ namespace MyGUI
+ 		static const size_type npos = std::numeric_limits<size_t>::max();
+ 
+ 		//! a single 32-bit Unicode character
+-		using unicode_char = uint32;
++		using unicode_char = char32_t;
+ 
+ 		//! a single UTF-16 code point
+-		using code_point = uint16;
++		using code_point = char16_t;
+ 
+ 		//! value type typedef for use in iterators
+ 		using value_type = code_point;
