@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="MIT PSF-2.4"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390"
+KEYWORDS="~amd64 ~arm64 ~loong ~m68k ~ppc ~ppc64 ~riscv ~s390"
 
 BDEPEND="
 	test? (
