@@ -857,7 +857,7 @@ mail-client/claws-mail litehtml
 # bug #318841#c20.
 sys-kernel/linux-firmware unknown-license
 # Updated: Nowa Ammerlaan <nowa@gentoo.org> (2025-12-30)
-# alsa-frimware distributes these same files, sync the behaviour of
+# alsa-firmware distributes these same files, sync the behaviour of
 # both packages. Bug #969656.
 sys-firmware/alsa-firmware alsa_cards_korg1212
 sys-firmware/alsa-firmware alsa_cards_maestro3
