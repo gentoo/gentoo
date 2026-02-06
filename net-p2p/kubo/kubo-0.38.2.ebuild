@@ -5,6 +5,10 @@ EAPI=8
 
 inherit go-module shell-completion systemd
 
+# Starting at v0.37.0 migrations are builtin. Older versions still needs
+# external programs to migrate so we should let the deprecated method for a 
+# couple of releases more.
+
 # Upstreams has a directory for each migration, for example fs-repo-15-to-16,
 # each directory is a program by itself. When an upstream tag is created,
 # they use they the name of the last migration program + version, for example
@@ -26,7 +30,7 @@ S="${WORKDIR}"
 
 LICENSE="Apache-2.0 BSD BSD-2 CC0-1.0 ISC MIT MPL-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	acct-group/ipfs
