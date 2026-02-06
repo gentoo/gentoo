@@ -31,3 +31,9 @@ src_configure() {
 	)
 	cmake_src_configure
 }
+
+src_install() {
+	cmake_src_install
+	rm -f "${D}"/usr/$(get_libdir)/libs2testing.a \
+		|| die
+}
