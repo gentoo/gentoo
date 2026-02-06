@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2026-02-06)
+# Upstream disappeared, no other distro packages this anymore, lots of QA and
+# build issues. Removal on 2026-03-08. Bug #680718.
+net-analyzer/arp-sk
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2026-02-06)
 # Marked as pre-release post release itself. Released without
 # maintainer ACK.
