@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ MY_PN="${PN/-bin/}"
 
 DESCRIPTION="Tool to control performance, energy, fan and comfort settings on TUXEDO laptops"
 HOMEPAGE="https://github.com/tuxedocomputers/tuxedo-control-center"
-SRC_URI="https://rpm.tuxedocomputers.com/opensuse/15.4/x86_64/${MY_PN}_${PV}.rpm"
+SRC_URI="https://rpm.tuxedocomputers.com/opensuse/16.0/x86_64/${MY_PN}_${PV}.rpm"
 
 S="${WORKDIR}"
 
@@ -28,6 +28,7 @@ RDEPEND="
 	media-libs/alsa-lib
 	media-libs/mesa[X(+)]
 	net-print/cups
+	x11-apps/xrandr
 	x11-libs/gdk-pixbuf
 	x11-libs/gtk+:3[X]
 	x11-libs/libXcomposite
