@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,10 @@ if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/scribusproject/scribus"
 	inherit git-r3
 else
-	SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}/${PV}/${P}.tar.xz"
+	SRC_URI="
+		https://downloads.sourceforge.net/project/${PN}/${PN}/${PV}/${P}.tar.xz
+		https://downloads.sourceforge.net/project/${PN}/${PN}-devel/${PV}/${P}.tar.xz
+	"
 	S="${WORKDIR}/${P}"
 	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 fi
