@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Holger Hoffstätte <holger@applied-asynchrony.com> (2026-02-03)
+# xxdi never worked as replacement and is now obsolete since the
+# real xxd is now in-tree and stable.
+# Removal on 2026-03-02.  Bug #962554
+dev-util/xxdi
+
 # Michał Górny <mgorny@gentoo.org> (2026-01-24)
 # Needs porting to Python 3.13.  Requires old versions of multiple
 # dependencies, and reportedly is already broken with its current

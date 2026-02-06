@@ -17,7 +17,7 @@ SRC_URI="https://github.com/BestImageViewer/${PN}/releases/download/v${PV}/${P}.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc x86"
 IUSE="debug djvu exif ffmpegthumbnailer heif jpeg jpeg2k jpegxl lcms lua map pdf raw spell tiff webp X xmp zip"
 
 RDEPEND="gnome-extra/zenity
@@ -42,17 +42,14 @@ RDEPEND="gnome-extra/zenity
 	zip? ( >=app-arch/libarchive-3.4.0 )"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	|| ( dev-util/xxd dev-util/xxdi app-editors/vim-core )
+	|| ( dev-util/xxd app-editors/vim-core )
 	dev-util/glib-utils
 	sys-devel/gettext
 	virtual/pkgconfig"
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 
-PATCHES=( "${FILESDIR}"/${PN}-2.5-test-ancillary.patch
-	"${FILESDIR}"/${P}-incorrect_init.patch
-	"${FILESDIR}"/${P}-start_thumbnail.patch
-	)
+PATCHES=( "${FILESDIR}"/${PN}-2.5-test-ancillary.patch )
 
 pkg_setup() {
 	# Do not require setting LUA_SINGLE_TARGET if lua is not used
