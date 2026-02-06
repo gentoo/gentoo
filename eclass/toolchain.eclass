@@ -900,6 +900,7 @@ setup_multilib_osdirnames() {
 
 # @FUNCTION: _get_bootstrap_gcc_info
 # @USAGE: [gcc_pkg|gcc_bin_base]...
+# @INTERNAL
 # @DESCRIPTION:
 # Get some information about the gcc that would be used to build this package.
 # All the variables that are passed as arguments will be set to their apropriate
