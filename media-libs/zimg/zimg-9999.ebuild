@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ if [[ ${PV} = *9999* ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/sekrit-twc/zimg/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 	S="${WORKDIR}/${PN}-release-${PV}/"
 fi
 inherit autotools multilib-minimal
@@ -18,7 +18,8 @@ HOMEPAGE="https://github.com/sekrit-twc/zimg"
 
 LICENSE="WTFPL-2"
 SLOT="0"
-IUSE="debug static-libs"
+IUSE="debug static-libs test"
+RESTRICT="!test? ( test )"
 
 src_prepare() {
 	default
@@ -28,7 +29,8 @@ src_prepare() {
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
 		$(use_enable debug) \
-		$(use_enable static-libs static)
+		$(use_enable static-libs static) \
+		$(use_enable test unit-test)
 }
 
 multilib_src_install_all() {
