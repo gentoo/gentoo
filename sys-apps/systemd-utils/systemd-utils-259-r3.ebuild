@@ -356,7 +356,9 @@ multilib_src_install_all() {
 		doheader src/libudev/libudev.h
 		dobashcomp shell-completion/bash/udevadm
 		dozshcomp shell-completion/zsh/_udevadm
-		udev_dorules "${FILESDIR}"/40-gentoo.rules
+		# Avoid udev_dorules to avoid picking up stale udevdir from pkg-config
+		insinto /usr/lib/udev/rules.d
+		doins "${FILESDIR}"/40-gentoo.rules
 	fi
 
 	use ukify && python_fix_shebang "${ED}"
