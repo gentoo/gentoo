@@ -1,0 +1,18 @@
+From 5d521981e39dcaeada6bbe7b15c5432d6de5d33c Mon Sep 17 00:00:00 2001
+From: "Richard W.M. Jones" <rjones@redhat.com>
+Date: Wed, 15 Oct 2025 09:24:18 +0100
+Subject: [PATCH] xgettext: Fix type for OCaml 5.4
+
+Fixes: https://github.com/gildor478/ocaml-gettext/issues/40
+Signed-off-by: Richard W.M. Jones <rjones@redhat.com>
+--- a/src/bin/ocaml-xgettext/xgettext.ml
++++ b/src/bin/ocaml-xgettext/xgettext.ml
+@@ -112,7 +112,7 @@ let rec is_like lid = function
+   | [] -> false
+   | func :: functions -> (
+       match lid with
+-      | (Lident f | Ldot (_, f)) when f = func -> true
++      | (Lident f | Ldot (_, {txt = f; _})) when f = func -> true
+       | _ -> is_like lid functions )
+ 
+ let visit_expr (iterator : Ast_iterator.iterator) expr =
