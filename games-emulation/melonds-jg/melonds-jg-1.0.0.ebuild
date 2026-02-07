@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ else
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
-LICENSE="BSD-1 BSD-2 GPL-3+ MIT Unlicense public-domain"
+LICENSE="BSD-2 FatFs GPL-3+ MIT Unlicense public-domain"
 SLOT="1"
 
 DEPEND="
