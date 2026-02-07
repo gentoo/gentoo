@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ibireme/yyjson/archive/refs/tags/${PV}.tar.gz -> ${P
 
 LICENSE="MIT test? ( BSD )"
 SLOT="0/0"
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~m68k ~ppc ppc64 ~riscv ~sparc x86"
 
 IUSE="doc test"
 
