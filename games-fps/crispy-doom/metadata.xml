@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription lang="en">
+		Crispy Doom is a friendly fork of Chocolate Doom that provides a higher display resolution, removes the static limits of the Doom engine and offers further optional visual, tactical and physical enhancements while remaining entirely config file, savegame, netplay and demo compatible with the original.
+	</longdescription>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
+	<use>
+		<flag name="fluidsynth">Use <pkg>media-sound/fluidsynth</pkg>
+			for MIDI support</flag>
+		<flag name="midi">Basic support for MIDI files</flag>
+		<flag name="truecolor">Enable true-color rendering (experimental)</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://github.com/fabiangreffrath/crispy-doom/issues</bugs-to>
+		<doc lang="en">https://github.com/fabiangreffrath/crispy-doom</doc>
+		<remote-id type="github">fabiangreffrath/crispy-doom</remote-id>
+	</upstream>
+</pkgmetadata>
