@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Thing with a message method"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm64 ppc ~ppc64 ~sparc x86"
 
 RDEPEND="
 	dev-perl/Moose
