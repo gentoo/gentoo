@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>vowstar@gmail.com</email>
+		<name>Huang Rui</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">tlwg/libthai</remote-id>
+	</upstream>
+	<longdescription lang="en">
+	LibThai is a set of Thai language support routines aimed to ease
+	developers' tasks to incorporate Thai language support in their
+	applications. It includes important Thai-specific functions e.g. word
+	breaking, input and output methods as well as basic character and
+	string supports. LibThai is an Open Source and collaborative effort
+	initiated by Thai Linux Working Group and opened for all contributors.
+	</longdescription>
+	<longdescription lang="zh">
+	LibThai 是一套泰语支持例程，旨在帮助开发人员在其应用程序中轻松集成泰语
+	支持。它包含重要的泰语特定功能，如分词、输入输出方法以及基本的字符和字符
+	串支持。LibThai 是由泰国 Linux 工作组发起的开源协作项目，欢迎所有贡献者
+	参与。
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>vowstar@gmail.com</email>
+		<name>Huang Rui</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">tlwg/libdatrie</remote-id>
+	</upstream>
+	<longdescription lang="en">
+	This is an implementation of double-array structure for representing trie,
+	as proposed by Junichi Aoe.
+	Trie is a kind of digital search tree, an efficient indexing method in which
+	search time is independent of database size. It only takes O(m) search time,
+	where m is the length of the search string. Comparably as efficient as hashing,
+	trie also provides flexibility on incremental matching and key spelling
+	manipulation. This makes it ideal for lexical analyzers, as well as spelling
+	dictionaries.
+	</longdescription>
+	<longdescription lang="zh">
+	这是由 Junichi Aoe 提出的用于表示 Trie（字典树）的双数组结构实现。
+	Trie 是一种数字搜索树，是一种高效的索引方法，其搜索时间与数据库大小无关。
+	它只需要 O(m) 的搜索时间，其中 m 是搜索字符串的长度。与哈希一样高效的同时，
+	Trie 还提供了增量匹配和键拼写操作的灵活性。这使其非常适合用于词法分析器和
+	拼写词典。
+	</longdescription>
+</pkgmetadata>
