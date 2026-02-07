@@ -11,7 +11,7 @@ SRC_URI="https://github.com/SpectrumIM/spectrum2/archive/${PV}.tar.gz -> ${P}.ta
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 IUSE="doc frotz irc mysql postgres purple sms +sqlite test twitter xmpp"
 REQUIRED_USE="
 	|| ( mysql postgres sqlite )
@@ -59,8 +59,12 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.1-boost-1.85.patch
+	"${FILESDIR}"/${PN}-2.2.1-boost-1.87.patch
+	"${FILESDIR}"/${PN}-2.2.1-boost-1.89.patch
 	"${FILESDIR}"/${PN}-2.2.1-use-c++17.patch
+	"${FILESDIR}"/${PN}-2.2.1-cmake.patch
 	"${FILESDIR}"/${PN}-2.2.1-cmake-ld-typo.patch
+	"${FILESDIR}"/${PN}-2.2.1-libcommuni-qt6.patch
 )
 
 src_prepare() {
