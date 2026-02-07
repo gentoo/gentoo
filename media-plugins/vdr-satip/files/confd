@@ -26,18 +26,33 @@
 #   vdr -P 'satip -s 192.168.0.1|DVBS2-2,DVBT2-2|EXIP414:0x40'
 
 # available quirks:
-#   eSatipQuirkSessionId  = 0x01   fix a session id bug
-#   eSatipQuirkPlayPids   = 0x02   fix a play (add/delpids) parameter bug
-#   eSatipQuirkForceLock  = 0x04   fix a frontend locking bug
-#   eSatipQuirkRtpOverTcp = 0x08   support for RTP over TCP
-#   eSatipQuirkCiXpmt     = 0x10   support the X_PMT protocol extension
-#   eSatipQuirkCiTnr      = 0x20   support the TNR protocol extension
-#   eSatipQuirkForcePilot = 0x40   fix not-supported auto-detection of pilot tones
+#   0x01: Fix session id bug
+#   0x02: Fix play parameter (addpids/delpids) bug
+#   0x04: Fix frontend locking bug
+#   0x08: Support for RTP over TCP
+#   0x10: Support the X_PMT protocol extension
+#   0x20: Support the CI TNR protocol extension
+#   0x40: Fix auto-detection of pilot tones bug
+#   0x80: Fix re-tuning bug by teardowning a session
 #
 # the quirks parameter must be the summary of the single quirks needed
 
 # Warning: specify <description> always without spaces - the gentoo vdr framework
-# will break parameters 
+# will break parameters
+
+# other parameters:
+#
+#  -c, --caids=<CAM1_ID1>[,<CAM1_ID2,...][;<CAM2_ID1>[,<CAM2_ID2>,...]]
+#                                set the CAIDs of up to 4 CAMs
+#  -d <num>, --devices=<number>  set number of devices to be created
+#  -t <mode>, --trace=<mode>     set the tracing mode
+#  -D, --detach                  set the detached mode on
+#  -S, --single                  set the single model server mode on
+#  -n, --noquirks                disable autodetection of the server quirks
+#  -N, --nodisconnect            disable disconnect for idle streams
+#  -p, --portrange=<start>-<end> set a range of ports used for the RT[C]P server
+#                                a minimum of 2 ports per device is required.
+#  -r, --rcvbuf                  override the size of the RTP receive buffer in bytes
 
 # no default parameters
 # uncomment the next line and add your personal settings,
