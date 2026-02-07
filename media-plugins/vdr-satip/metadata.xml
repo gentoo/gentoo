@@ -14,6 +14,7 @@
 		<name>Gentoo VDR Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github"> rofafor/vdr-plugin-satip</remote-id>
+		<remote-id type="github">rofafor/vdr-plugin-satip</remote-id>
+		<remote-id type="github">FireFlyVDR/vdr-plugin-satip</remote-id>
 	</upstream>
 </pkgmetadata>
