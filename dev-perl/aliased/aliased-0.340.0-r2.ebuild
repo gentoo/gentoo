@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Use shorter versions of class names"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 x86 ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 ~sparc x86 ~x64-macos ~x64-solaris"
 
 RDEPEND="
 	virtual/perl-Carp
