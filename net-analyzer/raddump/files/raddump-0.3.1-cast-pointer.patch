@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/968883
+Fix to permit compilation with GCC15/in C23 context.
+Code doesn't move `struct pktrecord p` around, and program is single-threaded
+so it is safe to cast referenced address to const.
+--- a/pktrecord.c
++++ b/pktrecord.c
+@@ -169,7 +169,7 @@
+   
+ #ifdef HAVE_PCAP_NEXT_EX
+   if (pcap_next_ex(ph->pcap_handle, &(ph->pcap_hdr),
+-		   &(p->pkt_data)) != 1) return 0;
++		   (const unsigned char **)&(p->pkt_data)) != 1) return 0;
+ #else
+   /* older version of libpcap */
+   p->pkt_data = (unsigned char *)pcap_next(ph->pcap_handle, ph->pcap_hdr);
+Only in raddump-0.3.1: pktrecord.o
+Only in raddump-0.3.1: raddump
