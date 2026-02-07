@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,22 +24,24 @@ IUSE="ssh"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		>=dev-python/cli-helpers-2.7.0[${PYTHON_USEDEP}]
+		>=dev-python/cli-helpers-2.9.0[${PYTHON_USEDEP}]
 		>=dev-python/click-8.3.1[${PYTHON_USEDEP}]
 		>=dev-python/configobj-5.0.5[${PYTHON_USEDEP}]
 		>=dev-python/cryptography-1.0.0[${PYTHON_USEDEP}]
+		>=dev-python/keyring-25.7.0[${PYTHON_USEDEP}]
 		>=dev-python/prompt-toolkit-3.0.6[${PYTHON_USEDEP}]
 		<dev-python/prompt-toolkit-4.0.0[${PYTHON_USEDEP}]
 		dev-python/pycryptodome[${PYTHON_USEDEP}]
 		>=dev-python/pyfzf-0.3.1[${PYTHON_USEDEP}]
-		>=dev-python/pygments-1.6[${PYTHON_USEDEP}]
+		>=dev-python/pygments-2.19.2[${PYTHON_USEDEP}]
 		>=dev-python/pymysql-0.9.2[${PYTHON_USEDEP}]
 		>=dev-python/pyperclip-1.8.1[${PYTHON_USEDEP}]
+		>=dev-python/rapidfuzz-3.14.3[${PYTHON_USEDEP}]
 		=dev-python/sqlglot-27*[${PYTHON_USEDEP}]
 		<dev-python/sqlparse-0.6.0[${PYTHON_USEDEP}]
 		>=dev-python/sqlparse-0.3.0[${PYTHON_USEDEP}]
 		ssh? (
-			dev-python/paramiko[${PYTHON_USEDEP}]
+			~dev-python/paramiko-3.5.1[${PYTHON_USEDEP}]
 			dev-python/sshtunnel[${PYTHON_USEDEP}]
 		)
 	')
@@ -49,7 +51,7 @@ BDEPEND="
 		dev-python/setuptools-scm[${PYTHON_USEDEP}]
 		test? (
 			dev-db/mysql[server]
-			dev-python/paramiko[${PYTHON_USEDEP}]
+			~dev-python/paramiko-3.5.1[${PYTHON_USEDEP}]
 			dev-python/sshtunnel[${PYTHON_USEDEP}]
 		)
 	')
@@ -64,6 +66,12 @@ python_prepare_all() {
 	# no coverage please
 	sed -e 's/import coverage ; coverage.process_startup(); //' \
 		-i test/features/environment.py test/features/steps/wrappers.py || die
+
+	# dont pin dependencies
+	sed -e 's/Pygments ~=/Pygments >=/' \
+		-e 's/rapidfuzz ~=/rapidfuzz >=/' \
+		-e 's/keyring ~=/keyring >=/' \
+		-i pyproject.toml || die
 
 	# convert from pycryptodomex to pycryptodome
 	sed -e 's/pycryptodomex/pycryptodome/' -i pyproject.toml || die
