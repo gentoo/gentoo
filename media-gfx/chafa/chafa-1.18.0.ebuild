@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="https://hpjansson.org/chafa/releases/${P}.tar.xz"
 
 LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ~mips ~ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~m68k ~mips ~ppc ppc64 ~riscv ~sparc x86"
 IUSE="avif heif jpegxl svg +tools webp"
 
 RDEPEND="
