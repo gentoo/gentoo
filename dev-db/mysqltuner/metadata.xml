@@ -12,6 +12,7 @@
 	</longdescription>
 	<upstream>
 		<bugs-to>https://github.com/major/MySQLTuner-perl/issues</bugs-to>
+		<remote-id type="github">jmrenouard/MySQLTuner-perl</remote-id>
 		<remote-id type="github">major/MySQLTuner-perl</remote-id>
 	</upstream>
 </pkgmetadata>
