@@ -1,0 +1,20 @@
+--- a/frontend-qt6/CMakeLists.txt
++++ b/frontend-qt6/CMakeLists.txt
+@@ -348,10 +348,10 @@ install(TARGETS hedgewars
+     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+ )
+ 
+-qt_generate_deploy_app_script(
+-    TARGET hedgewars
+-    OUTPUT_SCRIPT deploy_script
+-    NO_UNSUPPORTED_PLATFORM_ERROR
+-    NO_TRANSLATIONS
+-)
+-install(SCRIPT ${deploy_script})
++#qt_generate_deploy_app_script(
++#    TARGET hedgewars
++#    OUTPUT_SCRIPT deploy_script
++#    NO_UNSUPPORTED_PLATFORM_ERROR
++#    NO_TRANSLATIONS
++#)
++#install(SCRIPT ${deploy_script})
