@@ -16,7 +16,7 @@ else
 	inherit verify-sig
 	SRC_URI="https://github.com/swaywm/${PN}/releases/download/${PV}/${P}.tar.gz -> ${P}.gh.tar.gz
 		https://github.com/swaywm/${PN}/releases/download/${PV}/${P}.tar.gz.sig -> ${P}.gh.tar.gz.sig"
-	KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv x86"
+	KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv x86"
 	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 
