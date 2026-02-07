@@ -28,7 +28,7 @@ DEPEND="
 	dev-libs/wayland
 	>=gui-libs/libadwaita-1.6_beta:1
 	>=dev-libs/libportal-0.7:=[gtk]
-	>=dev-libs/icu-56
+	>=dev-libs/icu-56:=
 	>=x11-libs/pango-1.28.3
 	selinux? ( >=sys-libs/libselinux-2.0 )
 	>=app-misc/tinysparql-3.2:3
