@@ -1,16 +1,13 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-LLVM_COMPAT=( {16..20} )
+LLVM_COMPAT=( {16..21} )
 
-CRATES="
-"
+RUST_MIN_VER="1.86.0"
 
-RUST_MIN_VER="1.82.0"
-
-inherit llvm-r2 linux-info cargo rust-toolchain toolchain-funcs meson
+inherit cargo llvm-r2 linux-info
 
 DESCRIPTION="sched_ext schedulers and tools"
 HOMEPAGE="https://github.com/sched-ext/scx"
@@ -30,14 +27,13 @@ LICENSE+="
 	Apache-2.0 BSD-2 BSD CC0-1.0 ISC MIT MPL-2.0 Unicode-3.0 ZLIB
 "
 SLOT="0"
-KEYWORDS="amd64"
-IUSE="systemd"
+KEYWORDS="~amd64"
 
 DEPEND="
-	virtual/libelf:=
-	sys-libs/libseccomp
-	virtual/zlib:=
 	>=dev-libs/libbpf-1.6:=
+	sys-libs/libseccomp
+	virtual/libelf:=
+	virtual/zlib:=
 "
 RDEPEND="
 	${DEPEND}
@@ -50,6 +46,7 @@ BDEPEND="
 		llvm-core/clang:${LLVM_SLOT}=[llvm_targets_BPF(-)]
 	')
 "
+PDEPEND="~sys-kernel/scx-loader-${PV}"
 
 CONFIG_CHECK="
 	~BPF
@@ -61,11 +58,7 @@ CONFIG_CHECK="
 	~SCHED_CLASS_EXT
 "
 
-QA_PREBUILT="
-	/usr/bin/scx_loader
-	/usr/bin/vmlinux_docify
-	/usr/bin/scxctl
-"
+QA_PREBUILT="/usr/bin/vmlinux_docify"
 
 pkg_setup() {
 	linux-info_pkg_setup
@@ -73,48 +66,27 @@ pkg_setup() {
 	rust_pkg_setup
 }
 
-src_prepare() {
-	default
-
-	if tc-is-cross-compiler; then
-		# Inject the rust_abi value into install_rust_user_scheds
-		sed -i "s;\${MESON_BUILD_ROOT};\${MESON_BUILD_ROOT}/$(rust_abi);" \
-			meson-scripts/install_rust_user_scheds || die
-	fi
-
-	# bug #944832
-	sed -i 's;^#!/usr/bin/;#!/sbin/;' \
-		services/openrc/scx.initrd || die
-}
-
-src_configure() {
-	BUILD_DIR="${BUILD_DIR:-${WORKDIR}/${P}-build}"
-
-	local emesonargs=(
-		-Dbpf_clang="$(get_llvm_prefix)/bin/clang"
-		-Dbpftool=disabled
-		-Dlibbpf_a=disabled
-		-Dcargo="${EPREFIX}/usr/bin/cargo"
-		-Dcargo_home="${ECARGO_HOME}"
-		-Doffline=true
-		-Denable_rust=true
-		-Dopenrc=disabled
-		$(meson_feature systemd)
-	)
-
-	cargo_env meson_src_configure
-}
-
 src_compile() {
-	cargo_env meson_src_compile
-}
+	einfo "Building rust schedulers"
+	cargo_src_compile
 
-src_test() {
-	cargo_env meson_src_test
+	einfo "Building C schedulers"
+	emake BPF_CLANG="$(get_llvm_prefix)/bin/clang"
 }
 
 src_install() {
-	cargo_env meson_src_install
+	einfo "Installing rust schedulers"
+	local sched
+	for sched in scheds/rust/scx_*; do
+		einfo "Installing ${sched#scheds/rust/}"
+		dobin "target/$(usex debug debug release)/${sched#scheds/rust}"
+	done
+
+	einfo "Installing C schedulers"
+	emake INSTALL_DIR="${ED}/usr/bin" install
+
+	einfo "Installing tools"
+	dobin target/$(usex debug debug release)/{scx{cash,top},vmlinux_docify}
 
 	dodoc README.md
 
@@ -126,9 +98,4 @@ src_install() {
 		readme_name="${readme_name%/README.md}"
 		newdoc "${readme}" "${readme_name}.md"
 	done
-
-	newinitd services/openrc/scx.initrd scx
-	insinto /etc/default
-	doins services/scx
-	dosym ../default/scx /etc/conf.d/scx
 }
