@@ -1,6 +1,17 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mike Gilbert <floppym@gentoo.org> (2026-02-07)
+# Waiting for >=sys-apps/systemd-259 to be stable.
+dev-python/python-systemd
+gnome-extra/office-runner
+gnome-extra/gnome-logs
+sys-apps/dbus-broker
+sys-apps/systemd-readahead
+sys-block/wait-for-dri-devices-rules
+sys-process/systemd-cron
+>=www-misc/profile-sync-daemon-6
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2026-02-04)
 # New systemd now has experimental support for musl
 <sys-apps/systemd-259
