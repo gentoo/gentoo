@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2026-02-04)
+# New systemd now has experimental support for musl
+<sys-apps/systemd-259
+
 # Jaco Kroon <jkroon@gentoo.org> (2025-12-06)
 # anydesk is pre-build with glibc, will not work on MUSL.
 net-misc/anydesk
@@ -501,10 +505,6 @@ app-emulation/dosemu
 sys-libs/glibc
 -sys-libs/musl
 -sys-libs/libucontext
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2026-02-04)
-# New systemd now has experimental support for musl
-<sys-apps/systemd-259
 
 # rust-bin isn't available on all platforms
 dev-lang/rust-bin
