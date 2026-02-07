@@ -90,8 +90,12 @@ src_configure() {
 		-Wno-return-type -Wno-return-mismatch -Wno-pointer-sign \
 		-Wno-parentheses -Wno-dangling-else -Wno-comment \
 		$(test-flags -Wno-deprecated-non-prototype)
-	append-ldflags $(test-flags -no-pie)	#639562
-	replace-flags -O[3-9] -O2
+	append-ldflags $(test-flags-CCLD -no-pie)	#639562
+	if tc-is-clang; then
+		replace-flags "-O[1-9]" -O0
+	else
+		replace-flags "-O[3-9]" -O2
+	fi
 }
 
 src_compile() {
