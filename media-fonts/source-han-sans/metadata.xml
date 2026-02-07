@@ -9,4 +9,9 @@
 	<upstream>
 		<remote-id type="github">adobe-fonts/source-han-sans</remote-id>
 	</upstream>
+	<use>
+		<flag name="language">Select fonts with language</flag>
+		<flag name="half-width">Select fonts with half-width</flag>
+		<flag name="region">Select fonts with region</flag>
+	</use>
 </pkgmetadata>
