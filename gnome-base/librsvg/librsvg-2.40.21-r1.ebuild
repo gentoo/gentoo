@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -48,6 +48,7 @@ RESTRICT="test" # Lots of issues due to freetype changes and more; ever since ne
 PATCHES=(
 	# https://bugzilla.gnome.org/show_bug.cgi?id=653323
 	"${FILESDIR}/${PN}-2.40.12-gtk-optional.patch"
+	"${FILESDIR}/${P}-libxml-2.14.6.patch"
 )
 
 src_prepare() {

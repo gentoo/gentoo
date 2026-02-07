@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/965467
+
+--- a/rsvg-private.h
++++ b/rsvg-private.h
+@@ -31,7 +31,7 @@
+ 
+ #include "rsvg.h"
+ 
+-#include <libxml/SAX.h>
++#include <libxml/SAX2.h>
+ #include <libxml/xmlmemory.h>
+ #include <pango/pango.h>
+ #include <glib.h>
