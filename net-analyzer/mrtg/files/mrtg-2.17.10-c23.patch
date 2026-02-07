@@ -1,0 +1,87 @@
+From a64a83210643114b3a892e70ce07ded5bd5de054 Mon Sep 17 00:00:00 2001
+From: Joao Eriberto Mota Filho <eriberto@eriberto.pro.br>
+Date: Fri, 23 May 2025 11:45:16 -0300
+Subject: [PATCH] Fix function definitions to use modern ANSI C prototypes
+ (#119)
+
+* Fix function definitions to use modern ANSI C prototypes
+
+This commit solves GCC-15 warnings
+"old-style function definition [-Wold-style-definition]"
+
+Closes #115
+
+* Update CHANGES
+
+---------
+
+Co-authored-by: Tobias Oetiker <tobi@oetiker.ch>
+--- a/src/rateup.c
++++ b/src/rateup.c
+@@ -264,18 +264,11 @@ static double expscale(double y, double maxy)
+ }
+ 
+ static void
+-image (file, maxvi, maxvo, maxx, maxy, xscale, yscale, growright, step, bits,
+-       ytics, yticsf, peak, currdatetimeformat, currdatetimepos)
+-     char *file;
+-     long long maxvi, maxvo;
+-     long maxx;
+-     long maxy, growright, step, bits;
+-     double xscale, yscale;
+-     int ytics;			/* number of tics on the y axis */
+-     double yticsf;		/* scale everything on the y axis with this factor */
+-     int peak;
+-     char *currdatetimeformat;
+-     int currdatetimepos;
++image (char *file, long long maxvi, long long maxvo, long maxx, long maxy, double xscale, double yscale,
++       long growright, long step, long bits, int ytics, double yticsf, int peak, char *currdatetimeformat,
++       int currdatetimepos)
++     	/* ytics: number of tics on the y axis */
++     	/* yticsf: scale everything on the y axis with this factor */
+ {
+   FILE *fo;
+   char file_tmp[10240];
+@@ -1156,8 +1149,7 @@ image (file, maxvi, maxvo, maxx, maxy, xscale, yscale, growright, step, bits,
+ 
+ 
+ static double
+-diff (a, b)
+-     char *a, *b;
++diff (char *a, char *b)
+ {
+   char res[MAXL], *a1, *b1, *r1;
+   int c, x, m;
+@@ -1228,8 +1220,7 @@ diff (a, b)
+ }
+ 
+ static int
+-readhist (file)
+-     char *file;
++readhist (char *file)
+ {
+   FILE *fi;
+   int x, retcode = 0;
+@@ -1380,10 +1371,7 @@ readfile ()
+ }
+ 
+ static void
+-update (in, out, abs_max, absupdate)
+-     char *in, *out;
+-     long long abs_max;
+-     int absupdate;
++update (char *in, char *out, long long abs_max, int absupdate)
+ {
+   FILE *fo;
+   char buf[128], buf1[128], buf2[128];
+@@ -1824,9 +1812,7 @@ readparam (char const *file)
+ }
+ 
+ int
+-main (argc, argv)
+-     int argc;
+-     char **argv;
++main (int argc, char **argv)
+ {
+   int x, argi, used, initarg;
+ 

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,6 +24,7 @@ RDEPEND="${DEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.17.4-socket6.patch
 	"${FILESDIR}"/${PN}-2.17.10-implicit.patch
+	"${FILESDIR}"/${PN}-2.17.10-c23.patch
 )
 
 src_prepare() {
