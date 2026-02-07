@@ -1,0 +1,39 @@
+--- a/intl/dcigettext.c
++++ b/intl/dcigettext.c
+@@ -152,7 +152,7 @@
+ #  if VMS
+ #   define getcwd(buf, max) (getcwd) (buf, max, 0)
+ #  else
+-char *getcwd ();
++char *getcwd (char *buf, size_t size);
+ #  endif
+ # endif
+ # ifndef HAVE_STPCPY
+--- a/compat/getopt.c
++++ b/compat/getopt.c
+@@ -210,7 +210,7 @@
+ /* Avoid depending on library functions or files
+    whose names are inconsistent.  */
+ 
+-char *getenv ();
++char *getenv (const char *name);
+ 
+ static char *
+ my_index (str, chr)
+--- a/compat/getopt.h
++++ b/compat/getopt.h
+@@ -99,14 +99,7 @@
+ #define optional_argument	2
+ 
+ #if defined (__STDC__) && __STDC__
+-#ifdef __GNU_LIBRARY__
+-/* Many other libraries have conflicting prototypes for getopt, with
+-   differences in the consts, in stdlib.h.  To avoid compilation
+-   errors, only prototype getopt for the GNU C library.  */
+ extern int getopt (int argc, char *const *argv, const char *shortopts);
+-#else /* not __GNU_LIBRARY__ */
+-extern int getopt ();
+-#endif /* __GNU_LIBRARY__ */
+ extern int getopt_long (int argc, char *const *argv, const char *shortopts,
+ 		        const struct option *longopts, int *longind);
+ extern int getopt_long_only (int argc, char *const *argv,
