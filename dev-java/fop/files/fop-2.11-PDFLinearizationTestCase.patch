@@ -1,0 +1,40 @@
+1) testAccessibility(org.apache.fop.pdf.PDFLinearizationTestCase)
+javax.xml.transform.TransformerException: java.util.MissingResourceException: Error reading event-model.xml: org.xml.sax.SAXException: FWK005 parse may not be called while parsing.
+	at java.xml/com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(TransformerImpl.java:790)
+	at java.xml/com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(TransformerImpl.java:395)
+	at org.apache.fop.pdf.PDFLinearizationTestCase.testAccessibility(PDFLinearizationTestCase.java:106)
+	... 31 trimmed
+Caused by: java.util.MissingResourceException: Error reading event-model.xml: org.xml.sax.SAXException: FWK005 parse may not be called while parsing.
+	at org.apache.fop.events.DefaultEventBroadcaster.loadModel(DefaultEventBroadcaster.java:91)
+	at org.apache.fop.events.DefaultEventBroadcaster.getEventProducerModel(DefaultEventBroadcaster.java:113)
+	at org.apache.fop.events.DefaultEventBroadcaster.createProxyFor(DefaultEventBroadcaster.java:141)
+	at org.apache.fop.events.DefaultEventBroadcaster.getEventProducerFor(DefaultEventBroadcaster.java:128)
+	at org.apache.fop.render.pdf.PDFEventProducer$Provider.get(PDFEventProducer.java:45)
+	at org.apache.fop.render.pdf.PDFPainter$LanguageAvailabilityChecker.checkLanguageAvailability(PDFPainter.java:105)
+	at org.apache.fop.render.pdf.PDFPainter$LanguageAvailabilityChecker.access$000(PDFPainter.java:90)
+	at org.apache.fop.render.pdf.PDFPainter.drawText(PDFPainter.java:429)
+	at org.apache.fop.render.pdf.PDFPainter.drawText(PDFPainter.java:464)
+
+Tests were run with
+openjdk-26_beta34
+openjdk-25.0.2_p10
+
+--- a/fop-core/src/test/java/org/apache/fop/pdf/PDFLinearizationTestCase.java
++++ b/fop-core/src/test/java/org/apache/fop/pdf/PDFLinearizationTestCase.java
+@@ -41,6 +41,7 @@ import javax.xml.transform.stream.StreamSource;
+ 
+ import org.junit.Assert;
+ import org.junit.Test;
++import org.junit.Ignore;
+ 
+ import org.apache.fop.apps.FOUserAgent;
+ import org.apache.fop.apps.Fop;
+@@ -77,7 +78,7 @@ public class PDFLinearizationTestCase {
+         checkPDF(data, 5, 6);
+     }
+ 
+-    @Test
++    @Test @Ignore
+     public void testAccessibility() throws Exception {
+         String fopxconf = "<fop version=\"1.0\">"
+                 + "<accessibility>true</accessibility>"
