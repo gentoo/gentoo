@@ -1,0 +1,40 @@
+diff --git a/salt/serializers/tomlmod.py b/salt/serializers/tomlmod.py
+index 66a91b9277..4545fd2d5f 100644
+--- a/salt/serializers/tomlmod.py
++++ b/salt/serializers/tomlmod.py
+@@ -13,7 +13,8 @@ import logging
+ from salt.serializers import DeserializationError, SerializationError
+ 
+ try:
+-    import toml
++    import tomllib
++    import tomli_w
+ 
+     HAS_TOML = True
+ except ImportError:
+@@ -43,12 +44,12 @@ def deserialize(stream_or_string, **options):
+ 
+     try:
+         if not isinstance(stream_or_string, (bytes, str)):
+-            return toml.load(stream_or_string, **options)
++            return tomllib.load(stream_or_string, **options)
+ 
+         if isinstance(stream_or_string, bytes):
+             stream_or_string = stream_or_string.decode("utf-8")
+ 
+-        return toml.loads(stream_or_string)
++        return tomllib.loads(stream_or_string)
+     except Exception as error:  # pylint: disable=broad-except
+         raise DeserializationError(error)
+ 
+@@ -63,8 +64,8 @@ def serialize(obj, **options):
+ 
+     try:
+         if "file_out" in options:
+-            return toml.dump(obj, options["file_out"], **options)
++            return tomli_w.dump(obj, options["file_out"], **options)
+         else:
+-            return toml.dumps(obj, **options)
++            return tomli_w.dumps(obj, **options)
+     except Exception as error:  # pylint: disable=broad-except
+         raise SerializationError(error)
