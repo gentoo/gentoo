@@ -23,7 +23,7 @@ LICENSE="Apache-2.0 BSD CC0-1.0 GPL-3+ LGPL-2.1+ MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 
-IUSE="caps dnstap jemalloc +manager nghttp2 selinux systemd test xdp"
+IUSE="caps dnstap +manager nghttp2 quic selinux systemd test xdp"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	${LUA_REQUIRED_USE}
@@ -43,7 +43,6 @@ RDEPEND="
 		dev-libs/fstrm
 		dev-libs/protobuf-c:=
 	)
-	jemalloc? ( dev-libs/jemalloc:= )
 	manager? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
@@ -55,6 +54,7 @@ RDEPEND="
 		')
 	)
 	nghttp2? ( net-libs/nghttp2:= )
+	quic? ( >=net-libs/ngtcp2-1.11.0[gnutls] )
 	selinux? ( sec-policy/selinux-knot )
 	systemd? ( sys-apps/systemd:= )
 "
@@ -103,20 +103,28 @@ src_prepare() {
 src_configure() {
 	local emesonargs=(
 		--localstatedir="${EPREFIX}"/var # double lib
-		# https://bugs.gentoo.org/870019
+		# avoid automagic, see #870019
 		-Dauto_features=disabled
 		# post-install tests
 		-Dconfig_tests=disabled
+		# DISTUTILS_SINGLE_IMPL can't use python_gen_any_dep
+		# disable doc (html) to avoid relying on sphinx for PYTHON_COMPAT
 		-Ddoc=disabled
 		-Ddocdir="${EPREFIX}"/usr/share/doc/${PF}
+		# legacy sample config w/o manager
 		-Dinstall_kresd_conf=enabled
+		# disable jemalloc, see #969223
+		-Dmalloc=disabled
+		# disable debug for the deprecated module 'http'
 		-Dopenssl=disabled
-		-Dmalloc=$(usex jemalloc jemalloc disabled)
+		# always install tmpfiles
 		-Dsystemd_files=enabled
 		$(meson_feature caps capng)
 		$(meson_feature dnstap)
 		$(meson_feature nghttp2)
+		-Dquic=$(usex quic external disabled)
 		$(meson_feature systemd)
+		# legacy service w/o manager
 		$(meson_feature systemd systemd_legacy_units)
 		$(meson_feature test unit_tests)
 	)
