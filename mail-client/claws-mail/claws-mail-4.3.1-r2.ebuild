@@ -11,11 +11,18 @@ DESCRIPTION="An email client (and news reader) based on GTK+"
 HOMEPAGE="https://www.claws-mail.org/"
 
 if [[ "${PV}" == *9999 ]] ; then
-	inherit git-r3
+	inherit autotools git-r3
 	EGIT_REPO_URI="https://git.claws-mail.org/readonly/claws.git"
 else
-	SRC_URI="https://www.claws-mail.org/download.php?file=releases/${P}.tar.xz"
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/clawsmail.asc
+	inherit verify-sig
+	SRC_URI="
+		https://www.claws-mail.org/download.php?file=releases/${P}.tar.xz
+		verify-sig? ( https://www.claws-mail.org/download.php?file=releases/${P}.tar.xz.asc )
+	"
 	KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 ~riscv ~sparc x86"
+
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-clawsmail )"
 fi
 
 LICENSE="GPL-3"
@@ -106,7 +113,7 @@ COMMONDEPEND="${NOTIFICATIONDEPEND}
 DEPEND="${COMMONDEPEND}
 	xface? ( >=media-libs/compface-1.4 )
 "
-BDEPEND="
+BDEPEND+="
 	${PYTHON_DEPS}
 	app-arch/xz-utils
 	virtual/pkgconfig
