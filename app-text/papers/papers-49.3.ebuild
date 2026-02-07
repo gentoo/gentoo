@@ -268,7 +268,7 @@ inherit cargo gnome.org gnome2 meson xdg
 DESCRIPTION="A document viewer for the GNOME desktop"
 HOMEPAGE="https://apps.gnome.org/Papers"
 
-# SRC_URI for loupe is set by gnome.org eclass.
+# SRC_URI is set by gnome.org eclass.
 SRC_URI+=" ${CARGO_CRATE_URIS}"
 
 LICENSE="GPL-2+ MIT"
