@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="Computational geometry and spatial indexing on the sphere"
 HOMEPAGE="http://s2geometry.io/"
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/google/${PN}/archive/refs/tags/v${PV}.tar.gz
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="test"
+IUSE="debug test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -25,6 +25,8 @@ DEPEND="${RDEPEND}"
 PATCHES=( "${FILESDIR}"/${P}-test.patch )
 
 src_configure() {
+	append-cxxflags $(usex debug '-DDEBUG' '-DNDEBUG')
+
 	local mycmakeargs=(
 		-DBUILD_TESTS=$(usex test)
 		-DGOOGLETEST_ROOT=/usr/include
