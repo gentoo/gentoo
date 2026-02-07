@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Simple .ini-file format"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm64 ppc ~ppc64 ~sparc x86"
 IUSE="minimal"
 
 RDEPEND="
