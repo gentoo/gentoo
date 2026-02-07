@@ -46,7 +46,8 @@ src_unpack() {
 }
 
 src_compile() {
-	export GNUPGHOME="${T}"/.gnupg
+	export TMPDIR="$(mktemp -d --tmpdir=/tmp g-infra-XXX || die)"
+	export GNUPGHOME="${TMPDIR}"/.gnupg
 
 	get_gpg_keyring_dir() {
 		if [[ ${PV} == 9999* ]] ; then
@@ -84,7 +85,8 @@ src_compile() {
 }
 
 src_test() {
-	export GNUPGHOME="${T}"/tests/.gnupg
+	export TMPDIR="$(mktemp -d --tmpdir=/tmp g-infra-XXX || die)"
+	export GNUPGHOME="${TMPDIR}"/tests/.gnupg
 
 	local mygpgargs=(
 		# We don't have --no-autostart here because we need
@@ -103,7 +105,7 @@ src_test() {
 	# the L2 developer key.
 	mkdir -p "${GNUPGHOME}" || die
 	chmod 700 "${GNUPGHOME}" || die
-	cd "${T}"/tests || die
+	cd "${TMPDIR}"/tests || die
 
 	# First, grab the L1 key, and mark it as ultimately trusted.
 	edo gpg "${mygpgargs[@]}" --import "${BROOT}"/usr/share/openpgp-keys/gentoo-auth.asc
@@ -137,26 +139,26 @@ src_test() {
 	EOF
 
 	# Import the new injected key that shouldn't be signed by anything into a temporary testing keyring
-	edo gpg "${mygpgargs[@]}" --import "${T}"/tests/${P}-ebuild-test-key.asc
+	edo gpg "${mygpgargs[@]}" --import "${TMPDIR}"/tests/${P}-ebuild-test-key.asc
 
 	# Sign a tiny file with the to-be-injected key for testing rejection below
-	echo "Hello world!" > "${T}"/tests/signme || die
-	edo gpg "${mygpgargs[@]}" -u "Larry The Cow <larry@example.com>" --sign "${T}"/tests/signme || die
+	echo "Hello world!" > "${TMPDIR}"/tests/signme || die
+	edo gpg "${mygpgargs[@]}" -u "Larry The Cow <larry@example.com>" --sign "${TMPDIR}"/tests/signme || die
 
 	# keyring-mangler will fail with no valid keys so import the sanitised list from src_compile.
 	edo gpg "${mygpgargs[@]}" --import "${WORKDIR}"/gentoo-infrastructure-sanitised.asc
 
-	edo gpg "${mygpgargs[@]}" --export --armor > "${T}"/tests/tainted-keyring.asc
+	edo gpg "${mygpgargs[@]}" --export --armor > "${TMPDIR}"/tests/tainted-keyring.asc
 
 	# keyring-mangler.py should now produce a keyring *without* it
 	edo "${EPYTHON}" "${FILESDIR}"/keyring-mangler.py \
 			"${BROOT}"/usr/share/openpgp-keys/gentoo-auth.asc \
-			"${T}"/tests/tainted-keyring.asc \
-			"${T}"/tests/gentoo-infrastructure-sanitised.asc | tee "${T}"/tests/keyring-mangler.log
+			"${TMPDIR}"/tests/tainted-keyring.asc \
+			"${TMPDIR}"/tests/gentoo-infrastructure-sanitised.asc | tee "${TMPDIR}"/tests/keyring-mangler.log
 	assert "Key mangling in tests failed?"
 
 	# Check the log to verify the injected key got detected
-	grep -q "Dropping key.*Larry The Cow" "${T}"/tests/keyring-mangler.log || die "Did not remove injected key from test keyring!"
+	grep -q "Dropping key.*Larry The Cow" "${TMPDIR}"/tests/keyring-mangler.log || die "Did not remove injected key from test keyring!"
 
 	# gnupg doesn't have an easy way for us to actually just.. ask
 	# if a key is known via WoT. So, sign a file using the key
@@ -164,12 +166,12 @@ src_test() {
 	#
 	# Let's now double check by seeing if a file signed by the injected key
 	# is rejected.
-	if gpg "${mygpgargs[@]}" --keyring "${T}"/tests/gentoo-infrastructure-sanitised.asc --verify "${T}"/tests/signme.gpg ; then
+	if gpg "${mygpgargs[@]}" --keyring "${TMPDIR}"/tests/gentoo-infrastructure-sanitised.asc --verify "${TMPDIR}"/tests/signme.gpg ; then
 		die "'gpg --verify' using injected test key succeeded! This shouldn't happen!"
 	fi
 
 	# Bonus lame sanity check
-	edo gpg "${mygpgargs[@]}" --check-trustdb 2>&1 | tee "${T}"/tests/trustdb.log
+	edo gpg "${mygpgargs[@]}" --check-trustdb 2>&1 | tee "${TMPDIR}"/tests/trustdb.log
 	assert "trustdb call failed!"
 
 	check_trust_levels() {
@@ -202,7 +204,7 @@ src_test() {
 
 				echo "${trust_uncalculated}, ${trust_insufficient}"
 			fi
-		done < "${T}"/tests/trustdb.log
+		done < "${TMPDIR}"/tests/trustdb.log
 	}
 
 	# First, check with the bad key still in the test keyring.
