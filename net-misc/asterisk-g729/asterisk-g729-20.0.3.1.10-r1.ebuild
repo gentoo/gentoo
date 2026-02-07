@@ -26,7 +26,7 @@ S="${WORKDIR}"
 
 LICENSE="Digium"
 SLOT="0/${AST_PV}"
-KEYWORDS="-* ~amd64 x86"
+KEYWORDS="-* amd64 x86"
 RESTRICT="mirror strip"
 
 RDEPEND="=net-misc/asterisk-$(ver_cut 1)*"
