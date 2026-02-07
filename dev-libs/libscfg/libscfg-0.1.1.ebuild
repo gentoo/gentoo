@@ -9,7 +9,6 @@ DESCRIPTION="C library for a simple configuration file format"
 HOMEPAGE="https://codeberg.org/emersion/libscfg"
 SRC_URI="https://codeberg.org/emersion/${PN}/releases/download/v${PV}/${P}.tar.gz -> ${P}.cb.tar.gz
 	https://codeberg.org/emersion/${PN}/releases/download/v${PV}/${P}.tar.gz.sig -> ${P}.cb.tar.gz.sig"
-S=${WORKDIR}/${PN}-v${PV}
 
 LICENSE="MIT"
 SLOT="0"
