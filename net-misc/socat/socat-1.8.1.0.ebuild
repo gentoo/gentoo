@@ -28,6 +28,8 @@ RDEPEND="${DEPEND}"
 
 DOCS=( BUGREPORTS CHANGES DEVELOPMENT EXAMPLES FAQ FILES PORTING README SECURITY )
 
+PATCHES=( "${FILESDIR}"/1.8.1.0-const.patch )
+
 src_configure() {
 	# bug #293324
 	filter-flags '-Wno-error*'

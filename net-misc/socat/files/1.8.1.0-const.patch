@@ -1,0 +1,28 @@
+Bug: https://bugs.gentoo.org/969295
+
+diff --git a/filan.c b/filan.c
+index 101940a..85db9b4 100644
+--- a/filan.c
++++ b/filan.c
+@@ -1105,7 +1105,7 @@ const char *getfiletypestring(int st_mode) {
+ }
+ 
+ static int printtime(FILE *outfile, time_t time) {
+-   const char *s;
++   char *s;
+ 
+    if (filan_rawoutput) {
+       fprintf(outfile, "\t"F_time, time);
+diff --git a/xio-ip6.c b/xio-ip6.c
+index 7d7e286..e66a3e4 100644
+--- a/xio-ip6.c
++++ b/xio-ip6.c
+@@ -117,7 +117,7 @@ int xioparsenetwork_ip6(
+ 	struct xiorange *range,
+ 	const int ai_flags[2])
+ {
+-   char *delimpos;	/* absolute address of delimiter */
++   const char *delimpos;	/* absolute address of delimiter */
+    size_t delimind;	/* index of delimiter in string */
+    unsigned int bits;	/* netmask bits */
+    char *endptr;
