@@ -1,11 +1,11 @@
-# Copyright 2019-2025 Gentoo Authors
+# Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit optfeature python-r1
+inherit optfeature prefix python-r1
 
 DESCRIPTION="Command-not-found handler for Gentoo"
 HOMEPAGE="https://github.com/Nowa-Ammerlaan/command-not-found-gentoo"
@@ -20,6 +20,11 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}"
+
+src_prepare() {
+	default
+	hprefixify command-not-found.sh
+}
 
 src_install() {
 	python_foreach_impl python_doscript command-not-found
