@@ -202,7 +202,6 @@ dev-lang/julia
 dev-libs/redland-bindings
 dev-python/happybase
 games-engines/scrap-engine
-games-rpg/pokete
 
 # Michał Górny <mgorny@gentoo.org> (2025-12-12)
 # Upstream has switched to LLM-first coding which has already caused
