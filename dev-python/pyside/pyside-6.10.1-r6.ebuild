@@ -521,12 +521,17 @@ python_compile() {
 		cp "${BUILD_DIR}/install/usr/lib/pkgconfig/"pyside6{,-${EPYTHON}}.pc || die
 	fi
 
+	# _IMPORT_PREFIX breaks on split-usr/merged-usr plus weird random issues.
+	# These are not duplicates, the generated files are somehow different on
+	# different systems.
 	sed \
-		-e "s~/lib/libshiboken6\.cpython~/$(get_libdir)/libshiboken6\.cpython~g" \
+		-e "s~\${_IMPORT_PREFIX}/lib/libshiboken6\.cpython~/usr/$(get_libdir)/libshiboken6\.cpython~g" \
 		-e "s~\${_IMPORT_PREFIX}/shiboken6/libshiboken6\.cpython~/usr/$(get_libdir)/libshiboken6\.cpython~g" \
-		-e "s~/lib/libpyside6\.cpython~/$(get_libdir)/libpyside6\.cpython~g" \
+		-e "s~\${_IMPORT_PREFIX}/bin/shiboken6~/usr/bin/shiboken6~g" \
+		-e "s~\${_IMPORT_PREFIX}/shiboken6_generator/shiboken6~/usr/bin/shiboken6~g" \
+		-e "s~\${_IMPORT_PREFIX}/lib/libpyside6\.cpython~/usr/$(get_libdir)/libpyside6\.cpython~g" \
 		-e "s~\${_IMPORT_PREFIX}/PySide6/libpyside6\.cpython~/usr/$(get_libdir)/libpyside6\.cpython~g" \
-		-e "s~/lib/libpyside6qml\.cpython~/$(get_libdir)/libpyside6qml\.cpython~g" \
+		-e "s~\${_IMPORT_PREFIX}/lib/libpyside6qml\.cpython~/usr/$(get_libdir)/libpyside6qml\.cpython~g" \
 		-e "s~\${_IMPORT_PREFIX}/PySide6/libpyside6qml\.cpython~/usr/$(get_libdir)/libpyside6qml\.cpython~g" \
 		-e "s~libshiboken6\.cpython.*\.so\.$(ver_cut 1-3)~libshiboken6\${PYTHON_CONFIG_SUFFIX}\.so\.$(ver_cut 1-2)~g" \
 		-e "s~libpyside6\.cpython.*\.so\.$(ver_cut 1-3)~libpyside6\${PYTHON_CONFIG_SUFFIX}\.so\.$(ver_cut 1-2)~g" \
