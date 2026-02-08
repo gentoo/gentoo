@@ -203,11 +203,6 @@ app-emacs/docker-tramp
 >=dev-python/autobahn-25.10
 >=dev-python/txaio-25.10
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-05)
-# Depends on Qt5, no signs of porting work upstream. Bug #949881
-# Removal on 2026-01-15
-games-strategy/hedgewars
-
 # Jaco Kroon <jkroon@gentoo.org> (2025-12-02)
 # Dead upstream, limited usefulness.  If you're still using it please reach out
 # so we can discuss options.  Likely not worth the effort to fix the compiler
