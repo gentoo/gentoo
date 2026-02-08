@@ -1,0 +1,30 @@
+From b2b05e43e1fe90610dac66d2b46d6d2fbf8badf8 Mon Sep 17 00:00:00 2001
+From: Brett A C Sheffield <bacs@librecast.net>
+Date: Tue, 20 Jan 2026 11:27:13 +0000
+Subject: [PATCH] test-pseudotcp: fix socket close error (musl)
+
+Do not raise an error on socket closed if we closed it explicitly.
+
+On musl systems, test-pseudotcp was failing consistently due to the
+closing callback being triggered during the cleanup phase.
+---
+ tests/test-pseudotcp.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/tests/test-pseudotcp.c b/tests/test-pseudotcp.c
+index 0a5f1d1f..3f243120 100644
+--- a/tests/test-pseudotcp.c
++++ b/tests/test-pseudotcp.c
+@@ -161,7 +161,8 @@ static void writable (PseudoTcpSocket *sock, gpointer data)
+ 
+ static void closed (PseudoTcpSocket *sock, guint32 err, gpointer data)
+ {
+-  g_error ("Socket %p Closed : %d", sock, err);
++  if (left_closed == FALSE && right_closed == FALSE)
++    g_error ("Socket %p Closed : %d", sock, err);
+ }
+ 
+ struct notify_data {
+-- 
+2.52.0
+

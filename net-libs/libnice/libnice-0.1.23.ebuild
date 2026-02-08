@@ -35,6 +35,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-0.1.19-remove-graphviz-dependency.patch" # downstream; bugs 877451, 889820
 	"${FILESDIR}/${PN}-0.1.22-gupnp-igd-1.6.patch" # downstream; bugs 948374, 953635
+	"${FILESDIR}/${PN}-0.1.23-fix-test-pseudotcp.patch" # bug 836632
 )
 
 src_prepare() {
