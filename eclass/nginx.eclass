@@ -221,6 +221,14 @@ has "${NGINX_UPDATE_STREAM}" "${NGX_UPDATE_STREAMS_LIST[@]}" ||
 # automatically fill the BDEPEND variable with module test dependencies.
 # For details, see _ngx_set_mod_test_depend() function description below.
 
+# @ECLASS_VARIABLE: NGINX_SUPPORT_MODULE_STUBS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Set this to a non-empty value before calling nginx_src_install() to create
+# /etc/nginx/modules-{available,enabled} and to make the default config load
+# .conf stubs from /etc/nginx/modules-enabled.  See nginx_src_install() for
+# details.
+
 #-----> ebuild setup <-----
 
 # NGINX does not guarantee ABI stability (required by dynamic modules), SLOT is
@@ -850,6 +858,12 @@ nginx_src_install() {
 		perl_fix_packlist
 	fi
 
+	# If not using modules, do not 'include modules-enabled/*.conf;'. Also, just
+	# in case, remove the line if NGINX_SUPPORT_MODULE_STUBS is unset.
+	if use !modules || [[ -z ${NGINX_SUPPORT_MODULE_STUBS} ]]; then
+		sed -i '/^@GENTOO_MODULES_INCLUDE@$/d' "${ED}"/etc/nginx/nginx.conf
+	fi
+
 	# For the rationale of the following, see nginx-module.eclass.
 	if use modules; then
 		# Install the headers into /usr/include/nginx.
@@ -906,6 +920,13 @@ nginx_src_install() {
 			variable = BDEPEND
 			includes = ${CATEGORY}/${PN}
 		EOF
+
+		if [[ -n ${NGINX_SUPPORT_MODULE_STUBS} ]]; then
+			keepdir /etc/nginx/modules-{available,enabled}
+
+			sed -i 's|^@GENTOO_MODULES_INCLUDE@$|include modules-enabled/*.conf;|' \
+				"${ED}"/etc/nginx/nginx.conf
+		fi
 	fi
 }
 
