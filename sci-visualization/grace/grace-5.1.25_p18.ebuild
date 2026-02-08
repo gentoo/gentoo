@@ -12,9 +12,10 @@ SRC_URI="
 	ftp://plasma-gate.weizmann.ac.il/pub/${PN}/src/stable/${P/_p*}.tar.gz
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV/_p*}-${PV/*_p}.debian.tar.xz
 "
+S="${WORKDIR}/${P/_p*}"
 
-SLOT="0"
 LICENSE="GPL-2 LGPL-2"
+SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="fftw fortran jpeg netcdf png"
 
@@ -30,8 +31,6 @@ DEPEND="
 	png? ( media-libs/libpng:0= )"
 RDEPEND="${DEPEND}
 	x11-misc/xdg-utils"
-
-S="${WORKDIR}/${P/_p*}"
 
 PATCHES=(
 	# Fix for missing defines when fortran is disabled
