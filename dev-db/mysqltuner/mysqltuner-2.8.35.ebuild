@@ -14,9 +14,10 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="
-	dev-lang/perl
-"
+RDEPEND="dev-lang/perl"
+
+# Tests need internet access
+RESTRICT="test"
 
 src_compile() {
 	:;
