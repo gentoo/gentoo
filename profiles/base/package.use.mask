@@ -106,13 +106,6 @@ dev-games/ogre vulkan
 # Missing dependency
 sci-libs/gdal mongodb
 
-# Ivy <openrc@posteo.de> (2025-07-11)
-# app-editors/gnome-text-editor[spell] has been dropped upstream and
-# replaced with app-text/libspelling, but will likely be added back
-# in future releases.
-~app-editors/gnome-text-editor-47.2 spell
-~app-editors/gnome-text-editor-47.4 spell
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-06-26)
 # >=kde-plasma/drkonqi-6.3.90 requires systemd, so specifically
 # unmasked only in targets/systemd.
@@ -181,11 +174,6 @@ sys-cluster/drbd-utils pacemaker
 # restricted to ancient ffmpeg.
 sci-libs/opencascade ffmpeg
 
-# Sam James <sam@gentoo.org> (2025-02-21)
-# Mask for older GTK to phase in enabling Vulkan for users (and avoid a surprise
-# for stable users, as Vulkan is enabled by default on desktop profiles).
-<gui-libs/gtk-4.16 vulkan
-
 # Michał Górny <mgorny@gentoo.org> (2025-02-20)
 # Requires dev-python/recommonmark with Python 3.10
 <llvm-core/clang-18 doc
@@ -231,10 +219,6 @@ media-libs/opencv atlas
 # John M. Harris, Jr. <johnmh@johnmh.me> (2024-12-12)
 # seccomp is only supported with systemd
 sys-apps/fwupd seccomp
-
-# Sam James <sam@gentoo.org> (2024-11-17)
-# The example bindings fail to build.
-~sys-libs/ncurses-6.5_p20241109 cxx
 
 # Joonas Niilola <juippis@gentoo.org> (2024-11-16)
 # Wasm support is (currently) only available on amd64 and arm64.

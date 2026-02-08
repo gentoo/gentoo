@@ -275,12 +275,6 @@ media-libs/libsvgtiny-pixbuf
 # Removal on 2026-01-15
 games-strategy/hedgewars
 
-# Nowa Ammerlaan <nowa@gentoo.org> (2025-12-05)
-# Stuck on Qt5, no upstream action.
-# Please use the games-action/prismlauncher fork instead.
-# Removal on 2026-01-05. Bug 967108.
-games-action/multimc-bin
-
 # Jaco Kroon <jkroon@gentoo.org> (2025-12-02)
 # Dead upstream, limited usefulness.  If you're still using it please reach out
 # so we can discuss options.  Likely not worth the effort to fix the compiler
@@ -330,30 +324,6 @@ dev-python/readthedocs-sphinx-ext
 # Removal on 2025-12-22.  Bug #966327.
 dev-python/fake-py
 
-# Petr Vaněk <arkamar@gentoo.org> (2025-11-13)
-# The MDEV-38068 issue has been discovered with MariaDB 11.8.4. The issue
-# caused a partial data deletion when using the DELETE statement on MyISAM or
-# Aria tables under specific conditions. InnoDB tables are not affected by
-# this. See:
-# https://jira.mariadb.org/browse/MDEV-38068
-# https://lists.mariadb.org/hyperkitty/list/packagers@lists.mariadb.org/thread/IT3YIRPIS4ZVDZ5LBIDV7MPUDIL2VGIA/
-#
-# Affected package was removed from the tree, but this message shall be kept
-# untill 2025-12-15.
-~dev-db/mariadb-11.8.4
-
-# Sam James <sam@gentoo.org> (2025-11-13)
-# Reported crashes (https://bugs.gentoo.org/914256#c18)
-=sys-libs/musl-1.2.5-r6
-
-# Sam James <sam@gentoo.org> (2025-11-05)
-# re 8.3.0: Has regressions breaking media-video/subliminal and 8.3.1
-# which fixes some (but not all of those regressions) is semi-released only.
-# re 8.3.1: Release not on PyPI (yet?), causing regressions in dev-python/black.
-# https://github.com/pallets/click/issues/3087
-~dev-python/click-8.3.0
-=dev-python/click-8.3.1
-
 # Sam James <sam@gentoo.org> (2025-10-13)
 # Crashes in memtodest when handling PATH. Not yet reported upstream.
 =app-shells/dash-0.5.13.1
@@ -384,33 +354,6 @@ dev-python/fake-py
 # Removal on 2025-12-16.  Bug #960358.
 sys-fs/encfs
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
-# Obsolete transitional meta package. Bug #961795. Removal on 2025-09-28.
-media-sound/pulseaudio
-
-# Michał Górny <mgorny@gentoo.org> (2025-08-21)
-# Version yanked due to "unintended change in behavior".
-=dev-python/click-8.2.2
-
-# Eli Schwartz <eschwartz@gentoo.org> (2025-07-18)
-# End of life software. Relies on a commercial internet service which removed
-# suppor for the old APIs this package needs. Impossible to use anymore.
-# Removal on 2025-08-17.  Bug #927026.
-net-vpn/protonvpn-cli
-
-# Eli Schwartz <eschwartz@gentoo.org> (2025-07-08)
-# Unmaintained, out of date, QA issues, outstanding bugs for compilation
-# failure / test failure. Still uses python 3.11. No revdeps.
-# Removal on 2025-08-07.  Bug #725252, #873304, #731876, #929772
-sci-libs/eccodes
-
-# Eli Schwartz <eschwartz@gentoo.org> (2025-07-06)
-# Unmaintained, abandoned upstream since 2012, stuck on Python 3.11,
-# no revdeps since a year ago.
-# Removal on 2025-08-05.  Bug #928479, #929362.
-dev-libs/libindicate
-app-text/gnome-doc-utils
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2025-07-04)
 # Obsolete Perl virtuals that will be removed (the list is work in progress).
 # If you have any of these installed, just remove them; they should not be
@@ -436,11 +379,6 @@ virtual/perl-Unicode-Normalize
 # solution.  Bug #959274.
 =app-crypt/libsecret-0.21.7-r1
 
-# Michał Górny <mgorny@gentoo.org> (2025-06-28)
-# Rust/eBPF does not support 32-bit x86 host.  As such, mitmproxy can
-# no longer be used on this architecture.
-=net-proxy/mitmproxy-9.0.1
-
 # Sam James <sam@gentoo.org> (2025-06-12)
 # Breaks several applications (bug #957943)
 >=dev-python/pygobject-3.52
@@ -450,11 +388,6 @@ virtual/perl-Unicode-Normalize
 # Masked for testing (bug #957583).
 >=sys-devel/gettext-0.24
 >=dev-libs/libintl-0.24
-
-# Michał Górny <mgorny@gentoo.org> (2025-06-07)
-# Destabilized due to unresolved test failures.  If you need this
-# package, please use the ~arch version.
-=dev-python/lmdb-1.5.1
 
 # Sam James <sam@gentoo.org> (2025-06-03)
 # Fetching from GitHub seems broken with this:
@@ -475,17 +408,6 @@ virtual/perl-Unicode-Normalize
 # Alfred Wingate <parona@protonmail.com> (2025-05-17)
 # Masked for testing
 dev-db/mysql:8.4
-
-# Michał Górny <mgorny@gentoo.org> (2025-05-08)
-# Vulnerable, EOL branch of dev-python/django.  Bug #955606.
-# Pleas upgrade to 5.1, 5.2 LTS, or downgrade to 4.2 LTS.
-=dev-python/django-5.0*
-
-# Michał Górny <mgorny@gentoo.org> (2025-05-04)
-# New wave of breakage from random removals.
-# Bugs #955398, #955396, #955411.
-=dev-python/ensurepip-setuptools-80.3.0
-=dev-python/setuptools-80.3.0
 
 # Michał Górny <mgorny@gentoo.org> (2025-04-19)
 # This package will no longer feature stable keywords, due to unresolved
@@ -534,71 +456,6 @@ dev-db/mysql:8.4
 # Masked for testing. Fails to update from previous version. See bug #949626.
 >=x11-themes/fluent-icon-theme-2025.02.10
 
-# Matt Jolly <kangie@gentoo.org> (2025-02-10)
-# Rust ebuilds are migrating to use RPATH/RUNPATH to find their libraries.
-# New revisions for each Slot are already in-tree and should be used instead.
-# Bug 949374
-=dev-lang/rust-1.71.1-r100
-=dev-lang/rust-1.74.1-r100
-=dev-lang/rust-1.75.0-r100
-=dev-lang/rust-1.76.0-r100
-=dev-lang/rust-1.77.1-r100
-=dev-lang/rust-1.79.0-r100
-=dev-lang/rust-1.78.0-r100
-=dev-lang/rust-1.80.1-r100
-=dev-lang/rust-1.81.0-r100
-=dev-lang/rust-1.82.0-r100
-=dev-lang/rust-1.82.0-r101
-=dev-lang/rust-1.83.0-r1
-=dev-lang/rust-1.84.0
-=dev-lang/rust-1.84.1
-=dev-lang/rust-bin-1.71.1-r101
-=dev-lang/rust-bin-1.74.1-r101
-=dev-lang/rust-bin-1.75.0-r101
-=dev-lang/rust-bin-1.77.1-r101
-=dev-lang/rust-bin-1.79.0-r101
-=dev-lang/rust-bin-1.80.1-r101
-=dev-lang/rust-bin-1.81.0-r101
-=dev-lang/rust-bin-1.82.0-r101
-=dev-lang/rust-bin-1.83.0
-=dev-lang/rust-bin-1.84.0
-=dev-lang/rust-bin-1.84.1
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-01-23)
-# Qt5 tools without any revdeps. Removal on 2025-06-10.
-dev-qt/assistant
-dev-qt/linguist
-dev-qt/pixeltool
-dev-qt/qdbus
-dev-qt/qdbusviewer
-dev-qt/qdoc
-dev-qt/qtdiag
-dev-qt/qtpaths
-dev-qt/qtplugininfo
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-01-23)
-# Qt5 packages without any revdeps. Removal on 2025-06-01.
-dev-qt/qt3d:5
-dev-qt/qtdatavis3d:5
-dev-qt/qtgamepad:5
-dev-qt/qtlocation:5
-dev-qt/qtnetworkauth:5
-dev-qt/qtpositioning:5
-dev-qt/qtquicktimeline:5
-dev-qt/qtsensors:5
-dev-qt/qtserialbus:5
-dev-qt/qtserialport:5
-dev-qt/qtvirtualkeyboard:5
-dev-qt/qtwebchannel:5
-dev-qt/qtwebview:5
-
-# Michał Górny <mgorny@gentoo.org> (2024-12-05)
-# 6.12.2 does not boot for me.
-=sys-kernel/gentoo-kernel-6.12.2
-=sys-kernel/gentoo-kernel-bin-6.12.2
-=sys-kernel/vanilla-kernel-6.12.2
-=virtual/dist-kernel-6.12.2
-
 # Ionen Wolkens <ionen@gentoo.org> (2024-11-19)
 # NVIDIA dropped support for the 470.xx branch in September 2024[1].
 #
@@ -624,34 +481,6 @@ dev-qt/qtwebview:5
 # [3] https://wiki.gentoo.org/wiki/Nouveau
 x11-drivers/nvidia-drivers:0/470
 
-# Matt Jolly <kangie@gentoo.org> (2024-11-09)
-# The legacy Rust ebuilds are no longer maintained and have been
-# replaced by the new slotted Rust. Removal in 30 days.
-=dev-lang/rust-1.71.1
-=dev-lang/rust-1.74.1
-=dev-lang/rust-1.75.0-r1
-=dev-lang/rust-1.77.1
-=dev-lang/rust-1.79.0
-=dev-lang/rust-1.80.1
-=dev-lang/rust-1.81.0
-=dev-lang/rust-1.82.0
-=dev-lang/rust-bin-1.71.1
-=dev-lang/rust-bin-1.74.1
-=dev-lang/rust-bin-1.75.0
-=dev-lang/rust-bin-1.77.1
-=dev-lang/rust-bin-1.79.0
-=dev-lang/rust-bin-1.80.1
-=dev-lang/rust-bin-1.81.0
-=dev-lang/rust-bin-1.82.0
-=virtual/rust-1.71.1-r2
-=virtual/rust-1.74.1-r1
-=virtual/rust-1.75.0-r1
-=virtual/rust-1.77.1
-=virtual/rust-1.79.0
-=virtual/rust-1.80.1
-=virtual/rust-1.81.0-r1
-=virtual/rust-1.82.0
-
 # Viorel Munteanu <ceamac@gentoo.org> (2024-10-18)
 # Experimental version, for testing purposes only.
 # Bug #941566.
@@ -673,31 +502,9 @@ app-emulation/virtualbox-kvm
 <sys-devel/gcc-11
 <sys-devel/kgcc64-11
 
-# Fabian Groffen <grobian@gentoo.org> (2024-09-02)
-# exim_tinydb utility crashes due to invalid free() (used in startup script)
-=mail-mta/exim-4.98
-
 # Sam James <sam@gentoo.org> (2024-06-25)
 # The symbol versioning "fix" breaks anything built with 3.0.0.
 >=dev-libs/libassuan-3.0.1
-
-# Sam James <sam@gentoo.org> (2023-12-14)
-# Gentoo's kernel maintainers have decided to discontinue gentoo-sources and
-# gentoo-kernel for old kernel LTS branches because of the resources to require
-# testing and patching them, combined with changing kernel lifecycles.
-#
-# The new policy is to support kernels with genpatches for 3 years after their
-# release.
-#
-# Specifically, 4.14/4.19/5.4 have been dropped. See https://www.mpagano.com/blog/?p=315
-# and http://www.kroah.com/log/blog/2018/08/24/what-stable-kernel-should-i-use/.
-#
-# sys-kernel/vanilla-sources will continue to be provided for all branches
-# until they reach formal upstream EOL.
-#
-<sys-kernel/gentoo-sources-5.10
-<sys-kernel/gentoo-kernel-5.10
-<virtual/dist-kernel-5.10
 
 # Sam James <sam@gentoo.org> (2023-09-09)
 # OpenSSL 1.1.x is EOL on 2023-09-11. Please upgrade immediately to >= OpenSSL 3.
@@ -706,14 +513,6 @@ app-emulation/virtualbox-kvm
 # Please run a full world upgrade, especially checking /etc/portage and your world file
 # for old PHP or Ruby references.
 <dev-libs/openssl-3
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2023-07-12)
-# The catalyst-3 branch is outdated and not used by Gentoo
-# Release Engineering anymore. Please either use git master
-# (9999) as all Release Engineering build machines or wait
-# for catalyst-4. Questions or bug reports about catalyst-3
-# may or may not lead to useful results.
-<dev-util/catalyst-4
 
 # Michał Górny <mgorny@gentoo.org> (2023-06-21)
 # suitesparseconfig-7.0.0 fails to build with multilib enabled

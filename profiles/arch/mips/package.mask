@@ -1,11 +1,5 @@
-# Copyright 2006-2025 Gentoo Authors
+# Copyright 2006-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-09-08)
-# requires <llvm-18
-dev-lang/spidermonkey:102
-=dev-lang/rust-1.71.1
-=virtual/rust-1.71.1-r2
 
 # matoro <matoro_gentoo@matoro.tk> (2023-12-15)
 # Broken on BE and no way to test on LE, mask for now

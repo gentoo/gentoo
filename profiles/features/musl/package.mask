@@ -33,10 +33,6 @@ net-im/signal-desktop-bin
 # Binary bazel is compiled against glibc
 >=app-i18n/mozc-2.31.5851.102
 
-# Michał Górny <mgorny@gentoo.org> (2025-09-28)
-# Required DT_AUXILIARY support in the dynamic linker.
-=sci-libs/blas-lapack-aux-wrappers-0
-
 # PPN-SD <nicolas.parlant@parhuet.fr> (2025-07-28)
 # Bundled pcap-thread, not ported to musl
 # bug #713498, https://github.com/DNS-OARC/pcap-thread/issues/128
@@ -162,7 +158,6 @@ dev-ada/aws
 dev-ada/aunit
 dev-ada/ada_language_server
 dev-ada/gnatdoc
-dev-ada/gpr-unit-provider
 dev-ada/gpr
 dev-ada/gnatmem
 dev-ada/ada_libfswatch

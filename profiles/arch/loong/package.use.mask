@@ -172,10 +172,6 @@ dev-lang/python jit
 # loong yet.
 net-misc/chrony html
 
-# Sam James <sam@gentoo.org> (2024-03-27)
-# No rust-bin available for profiler
-<virtual/rust-1.73.0 profiler
-
 # Robin H. Johnson <robbat2@gentoo.org) (2024-03-13)
 # sys-cluster/corosync not yet keyworded, niche use case for mdadm
 sys-fs/mdadm corosync
@@ -233,7 +229,6 @@ dev-python/requests-cache test
 # WANG Xuerui <xen0n@gentoo.org> (2023-07-26)
 # no llvm:15 or lld:16 on loong
 <dev-db/postgresql-16 llvm
-<dev-lang/rust-1.73.0 wasm
 
 # Ionen Wolkens <ionen@gentoo.org> (2023-07-26)
 # MPV currently[1] has no plans to support >=lua5-3 making luajit
