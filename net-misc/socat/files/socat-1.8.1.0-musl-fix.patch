@@ -1,0 +1,19 @@
+From https://bugs.gentoo.org/968110
+From: Bobby Bingham <koorogi@koorogi.info>
+Date: Sun, 28 Dec 2025 11:03:28 -0600
+Subject: [PATCH] don't assume order of fields in struct msghdr
+
+Fixes compilation on musl.
+--- a/xio-netlink.c
++++ b/xio-netlink.c
+@@ -30,7 +30,7 @@ int xio_netlink_mtu(
+ 	struct nlmsghdr buf[8192/sizeof(struct nlmsghdr)];
+ 	struct iovec iov = { buf, sizeof(buf) };
+ 	struct sockaddr_nl sa;
+-	struct msghdr rtmsg = { &sa, sizeof(sa), &iov, 1, NULL, 0, 0 };
++	struct msghdr rtmsg = { .msg_name = &sa, .msg_namelen = sizeof(sa), .msg_iov = &iov, .msg_iovlen = 1 };
+ 	struct nlmsghdr *nh;
+ 
+ 	Info2("Setting interface %d MTU to %u using netlink", interface_index, mtu);
+-- 
+2.52.0
