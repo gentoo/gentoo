@@ -1,0 +1,18 @@
+https://bugs.gentoo.org/969792
+
+diff --git a/Makefile.PL b/Makefile.PL
+index ff8f585..67e7371 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -74,6 +74,10 @@ if ( $^O =~ /Win32/i ) {
+     push @check, '../lpng143';
+     push @check, '../giflib-4.1.6/lib';
+ }
++else {
++    # Needed to link math functions on POSIX
++    push @LIBS, '-lm';
++}
+ 
+ # Look for libjpeg
+ for my $incdir ( $jpeg_inc, @check ) {
+
