@@ -118,6 +118,7 @@ src_prepare() {
 	local PATCHES=(
 		"${FILESDIR}"/${PN}-9.5-skip-readutmp-test.patch
 		# Upstream patches
+		"${FILESDIR}"/${PN}-9.10-dash-tests.patch
 	)
 
 	if ! use vanilla && [[ -d "${WORKDIR}"/${MY_PATCH} ]] ; then
@@ -190,7 +191,9 @@ src_configure() {
 		sed -i '/elf_sys=yes/s:yes:no:' configure || die
 	fi
 
-	econf "${myconf[@]}"
+	# TODO: Drop CONFIG_SHELL for bash after 9.10
+	# https://cgit.git.savannah.gnu.org/cgit/coreutils.git/commit/?id=a72ad1216d8cf96be542e2e7a4dd1d6151d6087b
+	CONFIG_SHELL="${BROOT}"/bin/bash econf "${myconf[@]}"
 }
 
 src_test() {
