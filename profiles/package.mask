@@ -232,13 +232,6 @@ app-emacs/docker-tramp
 =sys-kernel/linux-firmware-20250917
 =sys-kernel/linux-firmware-20251011
 
-# Viorel Munteanu <ceamac@gentoo.org> (2025-09-16)
-# Unmaintained upstream, last release more than 7 years old.
-# Old data is getting harder to read.
-# Alternatives: sys-fs/gocryptfs or rclone crypt.
-# Removal on 2025-12-16.  Bug #960358.
-sys-fs/encfs
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2025-07-04)
 # Obsolete Perl virtuals that will be removed (the list is work in progress).
 # If you have any of these installed, just remove them; they should not be
