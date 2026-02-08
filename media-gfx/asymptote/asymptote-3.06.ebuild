@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 PYTHON_COMPAT=( python3_{11..13} )
 inherit autotools elisp-common latex-package python-r1
 
@@ -62,13 +63,10 @@ TEXMF=/usr/share/texmf-site
 
 PATCHES=(
 	# Changing pdf, ps, image viewers to xdg-open
-	"${FILESDIR}/${PN}-3.06-xdg-utils.patch"
+	"${FILESDIR}/${PN}-2.92-xdg-utils.patch"
 
 	# Bug #322473
 	"${FILESDIR}/${PN}-2.70-info.patch"
-
-	# Bug # 960289
-	"${FILESDIR}/${PN}-3.06-boost-1.88.patch"
 )
 
 src_prepare() {
