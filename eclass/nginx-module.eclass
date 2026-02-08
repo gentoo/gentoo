@@ -309,27 +309,39 @@ ngx_mod_link_lib() {
 #-----> ebuild-defined variables <-----
 
 # @ECLASS_VARIABLE: NGINX_MOD_S
+# @DEPRECATED: S
 # @DESCRIPTION:
+# This variable is deprecated.  ${S} must be used directly instead.
+#
+# Deprecated description:
 # Holds the path to the module source directory, used in various phase
 # functions.  If unset at the time of inherit, defaults to ${S}.
-: "${NGINX_MOD_S=${S}}"
+if [[ -n ${NGINX_MOD_S} ]]; then
+	eqawarn "\${NGINX_MOD_S} will be removed in EAPI 9 and must not be used."
+	eqawarn "Use \${S} directly instead."
+	# Backwards compatibility stub for modules redefining module's source path
+	# via ${NGINX_MOD_S}.
+	S="${NGINX_MOD_S}"
+fi
 
 # @ECLASS_VARIABLE: NGINX_MOD_CONFIG_DIR
 # @DESCRIPTION:
 # Holds the path of the directory containing the config script relative to the
-# module source directory specified by the ${NGINX_MOD_S} variable.  If unset at
-# the time of inherit, defaults to "" (an empty string, meaning the config
-# script is located at the root of the module source directory).
+# module source directory specified by the ${S} variable.  If unset at the time
+# of inherit, defaults to "" (an empty string, meaning the config script is
+# located at the root of the module source directory).
 #
-# For example, in www-nginx/njs, NGINX_MOD_S="${WORKDIR}/${P}" and
+# For example, in www-nginx/njs, S="${WORKDIR}/${P}" and
 # NGINX_MOD_CONFIG_DIR="nginx".
 : "${NGINX_MOD_CONFIG_DIR=""}"
 
-# The ${S} variable is set to the path of the directory where the actual build
-# will be performed. In this directory, symbolic links to NGINX's build system
-# and NGINX's headers are created by the nginx-module_src_unpack() phase
-# function.
-S="${WORKDIR}/nginx"
+# @ECLASS_VARIABLE: NGINX_S
+# @INTERNAL
+# @DESCRIPTION:
+# Path of the fake NGINX build environment directory where the actual build will
+# be performed.  In this directory, symbolic links to NGINX's build system and
+# NGINX's headers are created in the nginx-module_src_prepare() phase function.
+NGINX_S="${WORKDIR}/nginx"
 
 # @ECLASS_VARIABLE: NGINX_MOD_SHARED_OBJECTS
 # @OUTPUT_VARIABLE
@@ -524,34 +536,40 @@ unset -f _ngx_mod_set_test_env
 
 #-----> Phase functions <-----
 
-# @FUNCTION: nginx-module_src_unpack
-# @DESCRIPTION:
-# Unpacks the sources and sets up the build directory in S=${WORKDIR}/nginx.
-# Creates the following symbolic links (to not copy the files over):
-#  - '${S}/src' -> '/usr/include/nginx',
-#  - '${S}/auto' -> '/usr/src/nginx/auto',
-#  - '${S}/configure' -> '/usr/src/nginx/configure'.
-# For additional information, see the nginx.eclass source, namely the
-# nginx_src_install() function.
-nginx-module_src_unpack() {
-	debug-print-function "${FUNCNAME[0]}" "$@"
-	default_src_unpack
-	mkdir nginx || die "mkdir failed"
-	ln -s "${BROOT}/usr/src/nginx/configure" nginx/configure || die "ln failed"
-	ln -s "${BROOT}/usr/src/nginx/auto" nginx/auto || die "ln failed"
-	ln -s "${ESYSROOT}/usr/include/nginx" nginx/src || die "ln failed"
-}
-
 # @FUNCTION: nginx-module_src_prepare
 # @DESCRIPTION:
-# Patches module's initialisation code so that any module's preprocessor
-# definitions appear in the separate '__ngx_gentoo_mod_config.h' file inside the
-# 'build' directory.  This function also makes module's "config" script clear
-# whatever content build/ngx_auto_config.h may have at the time of invocation.
-# Then, default_src_prepare() is called.
+# Creates a fake build environment and patches the module's initialisation code
+# to play nicely with it.
+#
+# In the build environment initialisation part, the following symbolic links are
+# created (to not copy files over):
+#  - '${NGINX_S}/src' -> '/usr/include/nginx',
+#  - '${NGINX_S}/auto' -> '/usr/src/nginx/auto',
+#  - '${NGINX_S}/configure' -> '/usr/src/nginx/configure'.
+# For additional information of what resides under linked paths, see the
+# nginx.eclass source, namely the nginx_src_install() function.
+#
+# The second part of the function patches module's initialisation code so that
+# any module's preprocessor definitions appear in the separate
+# '__ngx_gentoo_mod_config.h' file inside the 'build' directory.  This function
+# also makes module's "config" script clear whatever content
+# build/ngx_auto_config.h may have at the time of invocation. Then,
+# default_src_prepare() is called.
 nginx-module_src_prepare() {
 	debug-print-function "${FUNCNAME[0]}" "$@"
-	pushd "${NGINX_MOD_S}/${NGINX_MOD_CONFIG_DIR}" >/dev/null ||
+
+	# Set up a fake build environment by creating symlinks to the build system
+	# and the headers.
+	ebegin "Setting up fake NGINX build environment"
+	mkdir "${NGINX_S}" || die "mkdir failed"
+	pushd "${NGINX_S}" >/dev/null || die "pushd failed"
+	ln -s "${BROOT}/usr/src/nginx/configure" configure || die "ln failed"
+	ln -s "${BROOT}/usr/src/nginx/auto" auto || die "ln failed"
+	ln -s "${ESYSROOT}/usr/include/nginx" src || die "ln failed"
+	popd >/dev/null || die "popd failed"
+	eend 0
+
+	pushd "${S}/${NGINX_MOD_CONFIG_DIR}" >/dev/null ||
 		die "pushd failed"
 
 	ebegin "Patching module's config"
@@ -588,12 +606,9 @@ nginx-module_src_prepare() {
 	# shellcheck disable=SC2320
 	eend $? || die "printf failed"
 
-	# cd into module root and apply patches.
-	pushd "${NGINX_MOD_S}" >/dev/null || die "pushd failed"
+	# Get back into the module root and apply patches.
+	popd >/dev/null || die "popd failed"
 	default_src_prepare
-	popd >/dev/null || die "popd failed"
-
-	popd >/dev/null || die "popd failed"
 }
 
 # @FUNCTION: nginx-module_src_configure
@@ -608,6 +623,8 @@ nginx-module_src_prepare() {
 # NGINX_MOD_LINK_MODULES is set.
 nginx-module_src_configure() {
 	debug-print-function "${FUNCNAME[0]}" "$@"
+	pushd "${NGINX_S}" >/dev/null || die "pushd failed"
+
 	local ngx_mod_flags
 	ngx_mod_flags=(
 		--with-cc="$(tc-getCC)"
@@ -619,7 +636,7 @@ nginx-module_src_configure() {
 		--with-cc-opt="-isystem src/modules"
 		--with-ld-opt="${LDFLAGS}"
 		--builddir=build
-		--add-dynamic-module="${NGINX_MOD_S}/${NGINX_MOD_CONFIG_DIR}"
+		--add-dynamic-module="${S}/${NGINX_MOD_CONFIG_DIR}"
 	)
 
 	# NGINX build system adds directories under src/ to the include path based
@@ -672,6 +689,8 @@ nginx-module_src_configure() {
 		die "cat failed"
 	cp "${ESYSROOT}/usr/include/nginx/ngx_auto_headers.h" build ||
 		die "cp failed"
+
+	popd >/dev/null || die "popd failed"
 }
 
 # @FUNCTION: nginx-module_src_compile
@@ -680,11 +699,15 @@ nginx-module_src_configure() {
 # NGINX_MOD_SHARED_OBJECTS array.
 nginx-module_src_compile() {
 	debug-print-function "${FUNCNAME[0]}" "$@"
+	pushd "${NGINX_S}" >/dev/null || die "pushd failed"
+
 	emake modules
 	# Save the basenames of all the compiled modules into the
 	# NGINX_MOD_SHARED_OBJECTS array.
 	mapfile -d '' NGINX_MOD_SHARED_OBJECTS < \
-		<(find -H "${S}/build" -maxdepth 1 -type f -name '*.so' -printf '%P\0')
+		<(find -H "${NGINX_S}/build" -maxdepth 1 -type f -name '*.so' -printf '%P\0')
+
+	popd >/dev/null || die "popd failed"
 }
 
 # @FUNCTION: nginx-module_src_test
@@ -743,8 +766,6 @@ nginx-module_src_test() {
 		TEST_NGINX_LOAD_MODULES="${pkg_sonames[*]} ${TEST_NGINX_LOAD_MODULES}"
 	fi
 
-	pushd "${NGINX_MOD_S}" >/dev/null || die "pushd failed"
-
 	# If NGINX_MOD_LINK_MODULES is non-empty, meaning the current module is
 	# linked to another module in moddir, set LD_LIBRARY_PATH to the module's
 	# directory so that the dynamic loader can find shared objects we depend on.
@@ -754,8 +775,6 @@ nginx-module_src_test() {
 	# Tests break when run in parallel.
 	TEST_NGINX_SERVROOT="${T}/servroot" \
 		edo prove -j1 -I. -r ./"${NGINX_MOD_TEST_DIR}"
-
-	popd >/dev/null || die "popd failed"
 }
 
 # @FUNCTION: nginx-module_src_install
@@ -764,7 +783,7 @@ nginx-module_src_test() {
 nginx-module_src_install() {
 	debug-print-function "${FUNCNAME[0]}" "$@"
 	insinto "/usr/$(get_libdir)/nginx/modules"
-	doins build/*.so
+	doins "${NGINX_S}"/build/*.so
 }
 
 # @FUNCTION: nginx-module_pkg_postinst
@@ -789,5 +808,5 @@ nginx-module_pkg_postinst() {
 
 fi
 
-EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_test \
-	src_install pkg_postinst
+EXPORT_FUNCTIONS src_prepare src_configure src_compile src_test src_install \
+	pkg_postinst

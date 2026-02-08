@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,6 @@ EAPI=8
 LUA_COMPAT=( luajit )
 
 MY_PN="lua-nginx-module"
-NGINX_MOD_S="${WORKDIR}/${MY_PN}-${PV}"
 
 NGINX_MOD_LINK_MODULES=( www-nginx/ngx_devel_kit )
 
@@ -18,6 +17,8 @@ HOMEPAGE="https://github.com/openresty/lua-nginx-module"
 SRC_URI="
 	https://github.com/openresty/lua-nginx-module/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 "
+
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="BSD-2"
 SLOT="0"
@@ -55,6 +56,6 @@ src_install() {
 
 	# Install headers from 'src/api' into '/usr/include/nginx/modules'.
 	insinto /usr/include/nginx/modules
-	find "${NGINX_MOD_S}/src/api" -type f -name '*.h' -print0 | xargs -0 doins
+	find src/api -type f -name '*.h' -print0 | xargs -0 doins
 	assert "find failed"
 }
