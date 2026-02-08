@@ -6,9 +6,10 @@ EAPI=8
 ECM_HANDBOOK="optional"
 # TODO: ECMGenerateQDoc
 ECM_TEST="true"
+PYTHON_COMPAT=( python3_{11..14} )
 KFMIN=6.22.0
 QTMIN=6.10.1
-inherit ecm fcaps plasma.kde.org toolchain-funcs xdg
+inherit ecm fcaps plasma.kde.org python-any-r1 toolchain-funcs xdg
 
 DESCRIPTION="Flexible, composited Window Manager for windowing systems on Linux"
 SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/kde/${P}-patchset.tar.xz"
@@ -99,6 +100,7 @@ DEPEND="${COMMON_DEPEND}
 	X? ( x11-base/xorg-proto )
 "
 BDEPEND="
+	${PYTHON_DEPS}
 	>=dev-qt/qtbase-${QTMIN}:6[wayland]
 	dev-util/wayland-scanner
 	>=kde-frameworks/kcmutils-${KFMIN}:6
