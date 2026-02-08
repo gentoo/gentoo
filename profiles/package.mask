@@ -194,12 +194,6 @@ app-emacs/docker-tramp
 # action. Use at your own risk.
 >=app-text/calibre-8.11.0
 
-# Michał Górny <mgorny@gentoo.org> (2025-12-20)
-# Packages that are missing Python 3.12+ support (or in case
-# of dev-lang/julia, all versions are unkeyworded).
-# Bug #921826.  Removal on 2026-01-20.
-dev-lang/julia
-
 # Michał Górny <mgorny@gentoo.org> (2025-12-12)
 # Upstream has switched to LLM-first coding which has already caused
 # a number of suspicious bugs.  At this point, new versions
