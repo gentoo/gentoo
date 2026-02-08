@@ -84,10 +84,6 @@ src_configure() {
 		"-DOPENVAS_RUN_DIR=/run/ospd"
 		"-DBUILD_WITH_NETSNMP=$(usex snmp)"
 	)
-	if use test && tc-is-gcc; then
-		# Work around libasan and libsandbox both wanting to be first.
-		append-ldflags -static-libasan
-	fi
 	cmake_src_configure
 }
 
