@@ -1,5 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Andrey Grozin <grozin@gentoo.org> (2026-01-08)
+# Needs dev-python/pyside[tools]
+>=media-gfx/asymptote-3.06 gui
 
 # Sam James <sam@gentoo.org> (2025-12-23)
 # sys-process/numactl is not available everywhere
