@@ -6,7 +6,7 @@ MY_PV=${PV/_/-}
 
 inherit go-module linux-info optfeature systemd toolchain-funcs udev
 
-GIT_COMMIT=6430e49a55babd9b8f4d08e70ecb2b68900770fe
+GIT_COMMIT=bbd0a17ccc67e48d4a69393287b7fcc4f0578683
 
 DESCRIPTION="The core functions you need to create Docker images and run Docker containers"
 HOMEPAGE="https://www.docker.com/"
@@ -15,7 +15,7 @@ S="${WORKDIR}/moby-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="apparmor btrfs +container-init cuda +overlay2 seccomp selinux systemd"
 
 DEPEND="
@@ -35,8 +35,8 @@ RDEPEND="
 	sys-process/procps
 	>=dev-vcs/git-1.7
 	>=app-arch/xz-utils-4.9
-	>=app-containers/containerd-2.0.4[apparmor?,btrfs?,seccomp?]
-	>=app-containers/runc-1.2.5[apparmor?,seccomp?]
+	>=app-containers/containerd-2.0.2[apparmor?,btrfs?,seccomp?]
+	>=app-containers/runc-1.2.3[apparmor?,seccomp?]
 	!app-containers/docker-proxy
 	!<app-containers/docker-cli-${PV}
 	container-init? ( >=sys-process/tini-0.19.0[static] )
@@ -113,7 +113,7 @@ pkg_setup() {
 	if kernel_is lt 6 1; then
 		CONFIG_CHECK+="
 			~MEMCG_SWAP
-		"
+			"
 	fi
 
 	if kernel_is le 5 8; then
@@ -124,15 +124,15 @@ pkg_setup() {
 
 	CONFIG_CHECK+="
 		~!LEGACY_VSYSCALL_NATIVE
-	"
+		"
 	if kernel_is lt 5 19; then
 		CONFIG_CHECK+="
 			~LEGACY_VSYSCALL_EMULATE
-		"
+			"
 	fi
 	CONFIG_CHECK+="
 		~!LEGACY_VSYSCALL_NONE
-	"
+		"
 	WARNING_LEGACY_VSYSCALL_NONE="CONFIG_LEGACY_VSYSCALL_NONE enabled: \
 		Containers with <=glibc-2.13 will not work"
 
@@ -160,18 +160,18 @@ pkg_setup() {
 		~IP_VS_PROTO_TCP
 		~IP_VS_PROTO_UDP
 		~IP_VS_RR
-	"
+		"
 
 	if use selinux; then
 		CONFIG_CHECK+="
 			~SECURITY_SELINUX
-		"
+			"
 	fi
 
 	if use apparmor; then
 		CONFIG_CHECK+="
 			~SECURITY_APPARMOR
-		"
+			"
 	fi
 
 	# if ! is_set EXT4_USE_FOR_EXT2; then
@@ -207,10 +207,10 @@ pkg_setup() {
 
 	CONFIG_CHECK+="
 		~IPVLAN
-	"
+		"
 	CONFIG_CHECK+="
 		~MACVLAN ~DUMMY
-	"
+		"
 	CONFIG_CHECK+="
 		~NF_NAT_FTP ~NF_CONNTRACK_FTP ~NF_NAT_TFTP ~NF_CONNTRACK_TFTP
 	"
@@ -233,7 +233,6 @@ pkg_setup() {
 src_unpack() {
 	go-module_setup_env
 	default
-	go-module_src_unpack
 	cd "${S}"
 	[[ -f go.mod ]] || ln -s vendor.mod go.mod || die
 	[[ -f go.sum ]] || ln -s vendor.sum go.sum || die
