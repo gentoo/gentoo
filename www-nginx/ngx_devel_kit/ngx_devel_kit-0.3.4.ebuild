@@ -3,6 +3,7 @@
 
 EAPI=8
 
+NGINX_MOD_DONT_INSTALL_CONF_STUB=1
 inherit flag-o-matic nginx-module
 
 DESCRIPTION="An NGINX module that adds generic tools for third-party modules"
