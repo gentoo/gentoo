@@ -190,7 +190,6 @@ app-emacs/docker-tramp
 <dev-ml/llvm-16
 <dev-python/clang-16
 <dev-python/lit-16
-<dev-util/intel-graphics-compiler-2.20
 <dev-util/spirv-llvm-translator-16
 <llvm-core/clang-16
 <llvm-core/clang-common-16
@@ -218,7 +217,6 @@ app-emacs/docker-tramp
 # Bug #920541. Removal on 2026-01-31.
 =dev-libs/intel-compute-runtime-24.35.30872.32-r2
 =dev-libs/intel-compute-runtime-24.35.30872.36
-=dev-util/intel-graphics-compiler-1.0.17791.18-r1
 
 # James Le Cuirot <chewi@gentoo.org> (2025-12-24)
 # The upstream community has forked with the vast majority going to UZDoom, now
