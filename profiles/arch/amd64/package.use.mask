@@ -467,11 +467,6 @@ media-libs/opencv -contribxfeatures2d
 # -mdblookup: dev-libs/libmaxminddb is keyworded on amd64
 app-admin/rsyslog -imhttp -mdblookup
 
-# Alexis Ballier <aballier@gentoo.org> (2017-02-21)
-# spacetime works on amd64
-# https://caml.inria.fr/pub/docs/manual-ocaml/spacetime.html
-dev-lang/ocaml -spacetime
-
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2017-01-04)
 # Matt Whitlock <gentoo@mattwhitlock.name> (2025-04-12)
 # Assembly optimisations are supported on amd64 for all versions

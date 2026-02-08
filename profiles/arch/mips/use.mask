@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-08-26)
@@ -206,7 +206,6 @@ smartcard
 ## architecture.
 #php
 #pike
-djbfft
 timidity
 
 # We don't use smartcards, afaik

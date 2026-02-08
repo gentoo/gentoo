@@ -389,7 +389,6 @@ net-libs/libssh mbedtls
 # WANG Xuerui <xen0n@gentoo.org> (2022-04-24)
 # Unmask experimental-loong on packages; we're loong.
 sys-libs/glibc -experimental-loong
-sys-libs/libseccomp -experimental-loong
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-04-18)
 # Mask io-uring & zbc pending keywording

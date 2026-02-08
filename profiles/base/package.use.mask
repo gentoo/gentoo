@@ -450,10 +450,6 @@ net-libs/nodejs lto
 net-libs/gnutls sslv2 sslv3
 dev-libs/openssl sslv2 sslv3
 
-# Sam James <sam@gentoo.org> (2023-06-29)
-# Needs <dev-libs/openssl-3 which is EOL beyond September 2023.
-net-misc/curl sslv3
-
 # Joonas Niilola <juippis@gentoo.org> (2023-06-06)
 # Runtime not tested, may require more configuration in the ebuild.
 # Bug: #906509.
@@ -879,10 +875,6 @@ sys-block/fio static
 # Lars Wendler <polynomial-c@gentoo.org> (2018-03-14)
 # sys-cluster/ceph is only available on amd64 & x86, unmask per arch
 net-fs/samba ceph
-
-# Jan Ziak <0xe2.0x9a.0x9b@gmail.com> (2018-03-14)
-# media-libs/svgalib is not keyworded everywhere
-app-emulation/fuse backend-svga
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2018-02-02)
 # This feature is not ready yet pre-2.29-r4, see bug #146882 comment 26

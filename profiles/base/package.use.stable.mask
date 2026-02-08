@@ -123,10 +123,6 @@ sys-apps/earlyoom man
 # app-text/pandoc (dev-lang/ghc) has no stable keywords.
 app-emulation/xen-tools doc
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-04-13)
-# dev-util/shellcheck (dev-lang/ghc) has no stable keywords.
-app-emulation/winetricks test
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-12-21)
 # For bleeding edge features and testing, not generally suitable
 # for stable systems
