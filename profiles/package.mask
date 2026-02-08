@@ -200,7 +200,6 @@ app-emacs/docker-tramp
 # Bug #921826.  Removal on 2026-01-20.
 dev-lang/julia
 dev-libs/redland-bindings
-dev-python/happybase
 
 # Michał Górny <mgorny@gentoo.org> (2025-12-12)
 # Upstream has switched to LLM-first coding which has already caused
