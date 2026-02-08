@@ -6,6 +6,36 @@
 
 # New entries go on top.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-28)
+# Preparing Qt5 last-rites. Bugs #954006, #957176, #961920, #969795
+# Removal some time after 2026-02-28.
+app-admin/testdisk gui
+<media-video/vlc-3.0.9999 gui
+net-print/hplip qt5
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-28)
+# net-wireless/gnuradio and dependencies. Preparing Qt5 last-rites.
+# Bugs #948049, #948051, #954887.  Removal some time after 2026-02-28.
+dev-python/pyqtgraph qt5
+net-wireless/gnuradio qt5
+x11-libs/qwt qt5
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-28)
+# Various integration packages. Preparing Qt5 last-rites.
+# Removal some time after 2026-02-28.
+app-i18n/fcitx-qt qt5
+app-i18n/uim qt5
+x11-themes/QGnomePlatform qt5
+x11-themes/adwaita-qt qt5
+x11-themes/kvantum qt5
+x11-themes/qtcurve qt5
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-28)
+# Already clear for removal after pending revbump stabilisations.
+# Preparing Qt5 last-rites.  Removal some time after 2026-02-28.
+app-text/poppler qt5
+sci-libs/opencascade examples inspector
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2026-01-30)
 # No suitable versions of dev-libs/protobuf available.
 ~dev-java/protobuf-java-4.33.5 system-protoc
