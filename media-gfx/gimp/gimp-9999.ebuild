@@ -168,7 +168,7 @@ pkg_setup() {
 		local locales="$(locale -a)"
 		if ! has "en_US.utf8" ${locales} && ! has "en_US.UTF-8" ${locales}; then
 			# portage splits and unset LC_ALL. Cannot rely on that
-			if [[ ${LANG} != C ]] && [[ ${LANG} != POSIX ]] && ! [[ ${LANG} =~ C. ]]; then
+			if [[ "${LANG}" != "C" ]] && [[ "${LANG}" != "POSIX" ]] && [[ "${LANG}" == "${LANG#C\.}" ]]; then
 				# Set LC_ALL to avoid locales breaking due to the profile setting LC_MESSAGES=C and portage itself setting LC_COLLATE=C
 				einfo "Setting LC_ALL=${LANG} based on LANG because en_US.UTF-8 isn't available, bug #968468"
 				export LC_ALL="${LANG}"
