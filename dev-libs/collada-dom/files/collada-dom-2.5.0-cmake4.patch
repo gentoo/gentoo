@@ -1,0 +1,20 @@
+https://github.com/Gepetto/collada-dom/commit/f6c6a2bea63c637937959e863673a89c91ffb629
+
+From: Guilhem Saurel <guilhem.saurel@laas.fr>
+Date: Wed, 8 Oct 2025 09:59:04 +0200
+Subject: [PATCH] CMake: bump cmake_minimum_required to 3.10, fix for CMake v4
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9764534..43601f6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required (VERSION 2.6.0)
++cmake_minimum_required (VERSION 3.10)
+ project (collada-dom)
+ set( CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS TRUE )
+ 
