@@ -1,0 +1,53 @@
+diff --git a/lib/GnuPG/Interface.pm b/lib/GnuPG/Interface.pm
+index c026bac..94ad08b 100644
+--- a/lib/GnuPG/Interface.pm
++++ b/lib/GnuPG/Interface.pm
+@@ -46,7 +46,7 @@ has call => (
+ 
+ # NB: GnuPG versions
+ #
+-# There are now three supported versions of GnuPG: legacy 1.4, 2.2, and 2.4.
++# There are now four supported versions of GnuPG: legacy 1.4, 2.2, 2.4, and 2.5.
+ # They are detected and each behave slightly differently.
+ #
+ # When using features specific to branches, check that the system's
+diff --git a/t/list_secret_keys.t b/t/list_secret_keys.t
+index 7c0b9cb..cfec68a 100644
+--- a/t/list_secret_keys.t
++++ b/t/list_secret_keys.t
+@@ -57,9 +57,12 @@ TEST
+     elsif ( $gnupg->cmp_version( $gnupg->version, '2.4.6' ) < 0 ) {
+         $keylist = '2.4.5';
+     }
+-    else {
++    elsif ( $gnupg->cmp_version( $gnupg->version, '2.5' ) < 0 ) {
+         $keylist = '2';
+     }
++    else {
++        $keylist = '2.5';
++    }
+ 
+ 
+     my @files_to_test = ( 'test/secret-keys/1.'.$keylist.'.test' );
+diff --git a/test/secret-keys/1.2.5.test b/test/secret-keys/1.2.5.test
+new file mode 100644
+index 0000000..0bf8ba4
+--- /dev/null
++++ b/test/secret-keys/1.2.5.test
+@@ -0,0 +1,16 @@
++test/gnupghome/pubring.kbx
++--------------------------
++sec   dsa1024 2000-02-06 [SCA]
++      93AFC4B1B0288A104996B44253AE596EF950DA9C
++      Revocable by: 4F863BBBA8166F0A340F600356FFD10A260C4FA3
++uid           [ unknown] GnuPG test key (for testing purposes only)
++uid           [ unknown] Foo Bar (1)
++ssb   elg768 2000-02-06 [E]
++      7466B7E98C4CCB64C2CE738BADB99D9C2E854A6B
++
++sec   rsa2048 2016-10-12 [SC]
++      278F850AA702911F1318F0A61B913CE9B6747DDC
++uid           [ unknown] GnuPG::Interface Test key <test@example.org>
++ssb   rsa2048 2016-10-12 [E]
++      5031BC730FCA29EDFB7032A00DCD4B62AE441D0F
++
