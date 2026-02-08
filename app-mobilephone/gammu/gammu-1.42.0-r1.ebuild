@@ -37,6 +37,7 @@ RDEPEND="
 "
 PATCHES=(
 	"${FILESDIR}/${P}-CMP0110-policy.patch"
+	"${FILESDIR}/${P}-up-cmake4.patch"
 	"${FILESDIR}/${P}-gammu-detect.patch"
 	"${FILESDIR}/${P}-fortify-source-3.patch"
 )
@@ -59,7 +60,7 @@ src_configure() {
 }
 
 src_test() {
-	addwrite "/var/lock/LCK..bar"
+	addwrite "/run/lock/LCK..bar"
 	LD_LIBRARY_PATH="${BUILD_DIR}/libgammu" cmake_src_test -j1
 }
 
