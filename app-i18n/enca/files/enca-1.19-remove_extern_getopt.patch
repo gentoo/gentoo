@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/969521
+Patch by Jonathan Lovelace
+Bug also happens on gcc-musl system, this fixes it.
+diff -ru a/src/getopt.h b/src/getopt.h
+--- a/src/getopt.h	2010-01-14 05:45:46.000000000 -0500
++++ b/src/getopt.h	2026-02-02 11:34:49.329689765 -0500
+@@ -144,7 +144,6 @@
+    errors, only prototype getopt for the GNU C library.  */
+ extern int getopt (int __argc, char *const *__argv, const char *__shortopts);
+ # else /* not __GNU_LIBRARY__ */
+-extern int getopt ();
+ # endif /* __GNU_LIBRARY__ */
+ 
+ # ifndef __need_getopt
