@@ -1,0 +1,168 @@
+diff '--color=auto' -ur gnome-control-center-48.3.orig/meson.build gnome-control-center-48.3/meson.build
+--- gnome-control-center-48.3.orig/meson.build	2025-08-15 18:39:04.172934500 +0200
++++ gnome-control-center-48.3/meson.build	2025-08-15 18:46:11.405683432 +0200
+@@ -310,7 +310,8 @@
+ # Snap support and wellbeing panel
+ json_glib_dep = dependency('json-glib-1.0')
+ 
+-if host_is_linux
++enable_network_manager = get_option('network_manager')
++if enable_network_manager
+   # ModemManager
+   mm_dep =  dependency('mm-glib', version: '>= 0.7')
+   # NetworkManager
+@@ -320,35 +321,42 @@
+     mm_dep,
+   ]
+ endif
+-config_h.set('BUILD_NETWORK', host_is_linux,
++config_h.set('BUILD_NETWORK', enable_network_manager,
+              description: 'Define to 1 to build the Network panel')
+-config_h.set('HAVE_NETWORK_MANAGER', host_is_linux,
++config_h.set('HAVE_NETWORK_MANAGER', enable_network_manager,
+              description: 'Define to 1 if NetworkManager is available')
+-config_h.set('BUILD_WWAN', host_is_linux,
++config_h.set('BUILD_WWAN', enable_network_manager,
+              description: 'Define to 1 to build the WWan panel')
+-config_h.set('HAVE_WWAN', host_is_linux,
++config_h.set('HAVE_WWAN', enable_network_manager,
+              description: 'Define to 1 if WWan is available')
+ 
+-if host_is_linux_not_s390
++enable_bluetooth = get_option('bluetooth')
++if enable_bluetooth
+   # gnome-bluetooth
+   gnome_bluetooth_dep = dependency('gnome-bluetooth-ui-3.0')
++endif
+ 
++enable_wacom = get_option('wacom')
++if enable_wacom
++  # Wacom
+   libwacom_dep = dependency('libwacom', version: '>= 1.4')
+ 
+   wacom_deps = [
+     libwacom_dep,
+   ]
+-else
+-  message('Bluetooth and Wacom panels will not be built (no USB support on this platform)')
++endif
++
++if not host_is_linux_not_s390
+   message('Thunderbolt panel will not be built (not supported on this platform)')
+ endif
+-config_h.set('BUILD_BLUETOOTH', host_is_linux_not_s390,
++
++config_h.set('BUILD_BLUETOOTH', enable_bluetooth,
+              description: 'Define to 1 to build the Bluetooth panel')
+-config_h.set('HAVE_BLUETOOTH', host_is_linux_not_s390,
++config_h.set('HAVE_BLUETOOTH', enable_bluetooth,
+              description: 'Define to 1 if bluetooth support is available')
+-config_h.set('BUILD_WACOM', host_is_linux_not_s390,
++config_h.set('BUILD_WACOM', enable_wacom,
+              description: 'Define to 1 to build the Wacom panel')
+-config_h.set('HAVE_WACOM', host_is_linux_not_s390,
++config_h.set('HAVE_WACOM', enable_wacom,
+              description: 'Define to 1 if Wacom is supportted')
+ config_h.set('BUILD_THUNDERBOLT', host_is_linux_not_s390,
+              description: 'Define to 1 to build the Thunderbolt panel')
+@@ -402,9 +410,9 @@
+ )
+ 
+ summary({
+-    'GNOME Bluetooth': host_is_linux_not_s390,
+-    'NetworkManager': host_is_linux,
+-    'Wacom': host_is_linux_not_s390,
++    'GNOME Bluetooth': enable_bluetooth,
++    'NetworkManager': enable_network_manager,
++    'Wacom': enable_wacom,
+   },
+   section: 'Dependencies',
+   bool_yn: true,
+diff '--color=auto' -ur gnome-control-center-48.3.orig/meson_options.txt gnome-control-center-48.3/meson_options.txt
+--- gnome-control-center-48.3.orig/meson_options.txt	2025-08-15 18:39:04.173934497 +0200
++++ gnome-control-center-48.3/meson_options.txt	2025-08-15 18:47:08.425532561 +0200
+@@ -1,12 +1,15 @@
++option('bluetooth', type: 'boolean', value: true, description: 'build with Bluetooth support')
+ option('deprecated-declarations', type: 'feature', value: 'disabled', description: 'build with deprecated declaration warnings')
+ option('cups', type: 'boolean', value: true, description: 'build with cups support')
+ option('documentation', type: 'boolean', value: false, description: 'build documentation')
+ option('location-services', type: 'feature', value: 'enabled', description: 'build with location services')
+ option('ibus', type: 'boolean', value: true, description: 'build with IBus support')
++option('network_manager', type: 'boolean', value: true, description: 'build with NetworkManager support')
+ option('kerberos', type: 'boolean', value: true, description: 'build with kerberos support')
+ option('privileged_group', type: 'string', value: 'wheel', description: 'name of group that has elevated permissions')
+ option('snap', type: 'boolean', value: true, description: 'build with Snap support')
+ option('tests', type: 'boolean', value: true, description: 'build tests')
++option('wacom', type: 'boolean', value: true, description: 'build with Wacom support')
+ option('wayland', type: 'boolean', value: true, description: 'build with Wayland support')
+ option('profile', type: 'combo', choices: ['default','development'], value: 'default')
+ option('malcontent', type: 'boolean', value: false, description: 'build with malcontent support')
+diff '--color=auto' -ur gnome-control-center-48.3.orig/panels/applications/meson.build gnome-control-center-48.3/panels/applications/meson.build
+--- gnome-control-center-48.3.orig/panels/applications/meson.build	2025-08-15 18:39:04.177934484 +0200
++++ gnome-control-center-48.3/panels/applications/meson.build	2025-08-15 18:47:49.686425029 +0200
+@@ -50,7 +50,7 @@
+ 
+ deps = common_deps + keyboard_shortcuts_dep
+ 
+-if host_is_linux
++if enable_network_manager
+   deps += mm_dep
+ endif
+ 
+diff '--color=auto' -ur gnome-control-center-48.3.orig/panels/meson.build gnome-control-center-48.3/panels/meson.build
+--- gnome-control-center-48.3.orig/panels/meson.build	2025-08-15 18:39:04.176934487 +0200
++++ gnome-control-center-48.3/panels/meson.build	2025-08-15 18:48:56.976252278 +0200
+@@ -21,22 +21,22 @@
+   'system',
+   'universal-access',
+   'wellbeing',
+-  'wwan',
+ ]
+ 
+ if enable_cups
+   panels += ['printers']
+ endif
+ 
+-if host_is_linux
+-  panels += ['network']
++if enable_network_manager
++  panels += ['network', 'wwan']
+ endif
+ 
+-if host_is_linux_not_s390
+-  panels += [
+-    'bluetooth',
+-    'wacom'
+-  ]
++if enable_bluetooth
++  panels += [ 'bluetooth' ]
++endif
++
++if enable_wacom
++  panels += [ 'wacom' ]
+ endif
+ 
+ panels_list = []
+diff '--color=auto' -ur gnome-control-center-48.3.orig/shell/meson.build gnome-control-center-48.3/shell/meson.build
+--- gnome-control-center-48.3.orig/shell/meson.build	2025-08-15 18:39:04.244934267 +0200
++++ gnome-control-center-48.3/shell/meson.build	2025-08-15 18:49:29.717169319 +0200
+@@ -105,7 +105,7 @@
+   libshell_dep,
+ ]
+ 
+-if host_is_linux_not_s390
++if enable_wacom
+   shell_deps += wacom_deps
+ endif
+ 
+diff '--color=auto' -ur gnome-control-center-48.3.orig/tests/meson.build gnome-control-center-48.3/tests/meson.build
+--- gnome-control-center-48.3.orig/tests/meson.build	2025-08-15 18:39:04.247934258 +0200
++++ gnome-control-center-48.3/tests/meson.build	2025-08-15 18:49:40.071143223 +0200
+@@ -3,7 +3,7 @@
+ 
+ subdir('common')
+ #subdir('datetime')
+-if host_is_linux
++if enable_network_manager
+   subdir('network')
+ endif

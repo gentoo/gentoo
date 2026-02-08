@@ -1,0 +1,108 @@
+diff '--color=auto' -ur gnome-control-center-48.3.orig/panels/printers/meson.build gnome-control-center-48.3/panels/printers/meson.build
+--- gnome-control-center-48.3.orig/panels/printers/meson.build	2025-08-15 18:59:06.729784761 +0200
++++ gnome-control-center-48.3/panels/printers/meson.build	2025-08-15 18:59:48.435688432 +0200
+@@ -46,6 +46,11 @@
+   dependency('smbclient')
+ ]
+ 
++cflags += [
++  '-DDATADIR="@0@"'.format(control_center_datadir),
++  '-DLIBEXECDIR="@0@"'.format(control_center_libexecdir)
++]
++
+ printers_panel_lib = static_library(
+   cappletname,
+   sources: sources,
+diff '--color=auto' -ur gnome-control-center-48.3.orig/panels/printers/pp-host.c gnome-control-center-48.3/panels/printers/pp-host.c
+--- gnome-control-center-48.3.orig/panels/printers/pp-host.c	2025-08-15 18:59:06.730784759 +0200
++++ gnome-control-center-48.3/panels/printers/pp-host.c	2025-08-15 19:00:38.314573639 +0200
+@@ -256,7 +256,7 @@
+   devices = g_ptr_array_new_with_free_func (g_object_unref);
+ 
+   argv = g_new0 (gchar *, 3);
+-  argv[0] = g_strdup ("/usr/lib/cups/backend/snmp");
++  argv[0] = g_strdup (LIBEXECDIR "/cups/backend/snmp");
+   argv[1] = g_strdup (priv->hostname);
+ 
+   /* Use SNMP to get printer's informations */
+diff '--color=auto' -ur gnome-control-center-48.3.orig/panels/printers/pp-options-dialog.c gnome-control-center-48.3/panels/printers/pp-options-dialog.c
+--- gnome-control-center-48.3.orig/panels/printers/pp-options-dialog.c	2025-08-15 18:59:06.730784759 +0200
++++ gnome-control-center-48.3/panels/printers/pp-options-dialog.c	2025-08-15 19:01:21.832473808 +0200
+@@ -805,7 +805,7 @@
+ 
+   if (self->printer_name)
+     {
+-      const gchar      *const dirs[] = { "/usr/share/cups",
++      const gchar      *const dirs[] = { DATADIR "/cups",
+                                          "/usr/local/share/cups",
+                                          NULL };
+       const gchar      *datadir = NULL;
+diff '--color=auto' -ur gnome-control-center-48.3.orig/panels/system/datetime/tz.h gnome-control-center-48.3/panels/system/datetime/tz.h
+--- gnome-control-center-48.3.orig/panels/system/datetime/tz.h	2025-08-15 18:59:06.744784727 +0200
++++ gnome-control-center-48.3/panels/system/datetime/tz.h	2025-08-15 19:02:13.506355622 +0200
+@@ -28,9 +28,9 @@
+ G_BEGIN_DECLS
+ 
+ #ifndef __sun
+-#  define TZ_DATA_FILE "/usr/share/zoneinfo/zone.tab"
++#  define TZ_DATA_FILE DATADIR "/zoneinfo/zone.tab"
+ #else
+-#  define TZ_DATA_FILE "/usr/share/lib/zoneinfo/tab/zone_sun.tab"
++#  define TZ_DATA_FILE DATADIR "/lib/zoneinfo/tab/zone_sun.tab"
+ #endif
+ 
+ typedef struct _TzDB TzDB;
+diff '--color=auto' -ur gnome-control-center-48.3.orig/panels/system/users/meson.build gnome-control-center-48.3/panels/system/users/meson.build
+--- gnome-control-center-48.3.orig/panels/system/users/meson.build	2025-08-15 18:59:06.746784722 +0200
++++ gnome-control-center-48.3/panels/system/users/meson.build	2025-08-15 19:02:59.024251824 +0200
+@@ -74,6 +74,7 @@
+ 
+ cflags += [
+   '-DGNOMELOCALEDIR="@0@"'.format(control_center_localedir),
++  '-DBINDIR="@0@"'.format(control_center_bindir),
+   '-DHAVE_LIBPWQUALITY',
+   '-DUM_PIXMAP_DIR="@0@"'.format(join_paths(control_center_pkgdatadir, 'pixmaps'))
+ ]
+diff '--color=auto' -ur gnome-control-center-48.3.orig/panels/system/users/run-passwd.c gnome-control-center-48.3/panels/system/users/run-passwd.c
+--- gnome-control-center-48.3.orig/panels/system/users/run-passwd.c	2025-08-15 18:59:06.750784713 +0200
++++ gnome-control-center-48.3/panels/system/users/run-passwd.c	2025-08-15 19:03:42.038154008 +0200
+@@ -152,7 +152,7 @@
+         gchar  **envp;
+         gint    my_stdin, my_stdout;
+ 
+-        argv[0] = "/usr/bin/passwd";    /* Is it safe to rely on a hard-coded path? */
++        argv[0] = BINDIR "/passwd";
+         argv[1] = NULL;
+ 
+         envp = g_get_environ ();
+diff '--color=auto' -ur gnome-control-center-48.3.orig/tests/datetime/meson.build gnome-control-center-48.3/tests/datetime/meson.build
+--- gnome-control-center-48.3.orig/tests/datetime/meson.build	2025-08-15 18:59:06.782784639 +0200
++++ gnome-control-center-48.3/tests/datetime/meson.build	2025-08-15 19:04:12.603084634 +0200
+@@ -13,8 +13,8 @@
+       'NO_AT_BRIDGE=1'
+ ]
+ cflags = [
+-  '-DTEST_SRCDIR="@0@"'.format(meson.current_source_dir()),
+-  '-DSRCDIR="@0@"'.format(meson.project_source_root() + '/panels/datetime')
++  '-DDATADIR="@0@"'.format(control_center_datadir),
++  '-DSRCDIR="@0@"'.format(meson.source_root() + '/panels/datetime')
+ ]
+ 
+ foreach unit: test_units
+diff '--color=auto' -ur gnome-control-center-48.3.orig/tests/datetime/test-endianess.c gnome-control-center-48.3/tests/datetime/test-endianess.c
+--- gnome-control-center-48.3.orig/tests/datetime/test-endianess.c	2025-08-15 18:59:06.782784639 +0200
++++ gnome-control-center-48.3/tests/datetime/test-endianess.c	2025-08-15 19:05:09.443955894 +0200
+@@ -26,11 +26,11 @@
+ 	g_autoptr(GDir) dir = NULL;
+ 	const char *name;
+ 
+-	dir = g_dir_open ("/usr/share/i18n/locales/", 0, NULL);
++	dir = g_dir_open (DATADIR "/i18n/locales/", 0, NULL);
+ 	if (dir == NULL) {
+ 		/* Try with /usr/share/locale/
+ 		 * https://bugzilla.gnome.org/show_bug.cgi?id=646780 */
+-		dir = g_dir_open ("/usr/share/locale/", 0, NULL);
++		dir = g_dir_open (DATADIR "/locale/", 0, NULL);
+ 		if (dir == NULL) {
+ 			g_assert_not_reached ();
+ 		}

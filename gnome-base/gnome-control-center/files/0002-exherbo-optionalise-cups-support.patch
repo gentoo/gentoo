@@ -1,0 +1,187 @@
+From a074bdfe7fe9a755a95f9661fbf19a1d53049c32 Mon Sep 17 00:00:00 2001
+From: Marc-Antoine Perennou <Marc-Antoine@Perennou.com>
+Date: Sun, 24 Mar 2024 16:11:01 +0000
+Subject: [PATCH 2/2] optionalise cups support
+
+---
+ meson.build                | 47 ++++++++++++++++++++++----------------
+ meson_options.txt          |  1 +
+ panels/meson.build         |  5 +++-
+ shell/cc-panel-loader.c    |  4 ++++
+ tests/printers/meson.build | 37 +++++++++++++++---------------
+ 5 files changed, 55 insertions(+), 39 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 3b6fda9d7..699e947e9 100644
+--- a/meson.build
++++ b/meson.build
+@@ -231,29 +231,35 @@ if cc.has_header_symbol('langinfo.h', '_NL_TIME_FIRST_WEEKDAY')
+                description: 'Define if langinfo.h supports _NL_TIME_FIRST_WEEKDAY')
+ endif
+ 
+-# Check for CUPS 1.4 or newer
+-cups_dep = dependency('cups', version : '>= 1.4', required: false)
+-assert(cups_dep.found(), 'CUPS 1.4 or newer not found')
+-
+-# https://bugzilla.gnome.org/show_bug.cgi?id=696766
+-cups_cflags = []
+-if cups_dep.version().version_compare('>= 1.6')
+-  cups_cflags += '-D_PPD_DEPRECATED='
+-endif
++# Optional dependency for the printers panel
++enable_cups = get_option('cups')
++if enable_cups
++  # Check for CUPS 1.4 or newer
++  cups_dep = dependency('cups', version : '>= 1.4', required: false)
++  assert(cups_dep.found(), 'CUPS 1.4 or newer not found')
++
++  # https://bugzilla.gnome.org/show_bug.cgi?id=696766
++  cups_cflags = []
++  if cups_dep.version().version_compare('>= 1.6')
++    cups_cflags += '-D_PPD_DEPRECATED='
++  endif
+ 
+-# cups headers
+-check_headers = [
+-  ['HAVE_CUPS_CUPS_H', 'cups/cups.h'],
+-  ['HAVE_CUPS_PPD_H', 'cups/ppd.h']
+-]
++  # cups headers
++  check_headers = [
++    ['HAVE_CUPS_CUPS_H', 'cups/cups.h'],
++    ['HAVE_CUPS_PPD_H', 'cups/ppd.h']
++  ]
+ 
+-foreach header: check_headers
+-  assert(cc.has_header(header[1], args: cups_cflags), 'CUPS headers not found: ' + header[1])
+-endforeach
++  foreach header: check_headers
++    assert(cc.has_header(header[1], args: cups_cflags), 'CUPS headers not found: ' + header[1])
++  endforeach
+ 
+-config_h.set10('HAVE_CUPS_HTTPCONNECT2',
+-               cc.has_function('httpConnect2', dependencies: cups_dep),
+-               description: 'Define if httpConnect2() is available in CUPS')
++  config_h.set10('HAVE_CUPS_HTTPCONNECT2',
++                 cc.has_function('httpConnect2', dependencies: cups_dep),
++                 description: 'Define if httpConnect2() is available in CUPS')
++endif
++config_h.set('HAVE_CUPS', enable_cups,
++             description: 'Defined if cups support is enabled')
+ 
+ # IBus support
+ enable_ibus = get_option('ibus')
+@@ -405,6 +411,7 @@ summary({
+ )
+ 
+ summary({
++    'Cups': enable_cups,
+     'IBus': enable_ibus,
+     'Kerberos': enable_kerberos,
+     'Snap': enable_snap,
+diff --git a/meson_options.txt b/meson_options.txt
+index 729ef2039..c7f465a3a 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -1,4 +1,5 @@
+ option('deprecated-declarations', type: 'feature', value: 'disabled', description: 'build with deprecated declaration warnings')
++option('cups', type: 'boolean', value: true, description: 'build with cups support')
+ option('documentation', type: 'boolean', value: false, description: 'build documentation')
+ option('location-services', type: 'feature', value: 'enabled', description: 'build with location services')
+ option('ibus', type: 'boolean', value: true, description: 'build with IBus support')
+diff --git a/panels/meson.build b/panels/meson.build
+index 07c7733bb..e854bee62 100644
+--- a/panels/meson.build
++++ b/panels/meson.build
+@@ -14,7 +14,6 @@ panels = [
+   'notifications',
+   'online-accounts',
+   'power',
+-  'printers',
+   'privacy',
+   'search',
+   'sharing',
+@@ -25,6 +24,10 @@ panels = [
+   'wwan',
+ ]
+ 
++if enable_cups
++  panels += ['printers']
++endif
++
+ if host_is_linux
+   panels += ['network']
+ endif
+diff --git a/shell/cc-panel-loader.c b/shell/cc-panel-loader.c
+index 28a1671d9..71dcf2bcb 100644
+--- a/shell/cc-panel-loader.c
++++ b/shell/cc-panel-loader.c
+@@ -49,7 +49,9 @@ extern GType cc_wifi_panel_get_type (void);
+ extern GType cc_notifications_panel_get_type (void);
+ extern GType cc_online_accounts_panel_get_type (void);
+ extern GType cc_power_panel_get_type (void);
++#ifdef HAVE_CUPS
+ extern GType cc_printers_panel_get_type (void);
++#endif /* HAVE_CUPS */
+ extern GType cc_privacy_panel_get_type (void);
+ extern GType cc_search_panel_get_type (void);
+ extern GType cc_sharing_panel_get_type (void);
+@@ -103,7 +105,9 @@ static CcPanelLoaderVtable default_panels[] =
+   PANEL_TYPE("notifications",    cc_notifications_panel_get_type,        NULL),
+   PANEL_TYPE("online-accounts",  cc_online_accounts_panel_get_type,      NULL),
+   PANEL_TYPE("power",            cc_power_panel_get_type,                NULL),
++#ifdef HAVE_CUPS
+   PANEL_TYPE("printers",         cc_printers_panel_get_type,             NULL),
++#endif
+   PANEL_TYPE("privacy",          cc_privacy_panel_get_type,              NULL),
+   PANEL_TYPE("search",           cc_search_panel_get_type,               NULL),
+   PANEL_TYPE("sharing",          cc_sharing_panel_get_type,              cc_sharing_panel_static_init_func),
+diff --git a/tests/printers/meson.build b/tests/printers/meson.build
+index 60f144fa6..f27e92190 100644
+--- a/tests/printers/meson.build
++++ b/tests/printers/meson.build
+@@ -1,22 +1,23 @@
+ 
+-test_units = [
+-  #'test-canonicalization',
+-  'test-shift'
+-]
++if enable_cups
++  test_units = [
++    #'test-canonicalization',
++    'test-shift'
++  ]
+ 
+-includes = [top_inc, include_directories('../../panels/printers')]
+-cflags = '-DTEST_SRCDIR="@0@"'.format(meson.current_source_dir())
++  includes = [top_inc, include_directories('../../panels/printers')]
++  cflags = '-DTEST_SRCDIR="@0@"'.format(meson.current_source_dir())
+ 
+-foreach unit: test_units
+-  exe = executable(
+-                    unit,
+-           [unit + '.c'],
+-    include_directories : includes,
+-           dependencies : common_deps,
+-              link_with : [printers_panel_lib],
+-                 c_args : cflags
+-  )
+-
+-  test(unit, exe)
+-endforeach
++  foreach unit: test_units
++    exe = executable(
++                      unit,
++             [unit + '.c'],
++      include_directories : includes,
++             dependencies : common_deps,
++                link_with : [printers_panel_lib],
++                   c_args : cflags
++    )
+ 
++    test(unit, exe)
++  endforeach
++endif
+-- 
+2.48.1
+

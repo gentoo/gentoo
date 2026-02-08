@@ -1,0 +1,79 @@
+diff '--color=auto' -ur gnome-control-center-48.3.orig/meson.build gnome-control-center-48.3/meson.build
+--- gnome-control-center-48.3.orig/meson.build	2025-08-15 18:51:22.551888139 +0200
++++ gnome-control-center-48.3/meson.build	2025-08-15 18:52:34.276712726 +0200
+@@ -191,7 +191,7 @@
+ gnome_bg_dep = dependency('gnome-bg-4')
+ gnome_rr_dep = dependency('gnome-rr-4')
+ gnome_settings_dep = dependency('gnome-settings-daemon', version: '>= 48.rc', fallback: 'gsd')
+-goa_dep = dependency('goa-1.0', version: goa_req_version, fallback: 'goa')
++goa_dep = dependency('goa-1.0', version: goa_req_version, required: get_option('goa'))
+ gsettings_desktop_dep = dependency('gsettings-desktop-schemas', version: '>= 48.alpha')  # actually requires commit 9d55553, just after alpha
+ libxml_dep = dependency('libxml-2.0')
+ pulse_dep = dependency('libpulse', version: pulse_req_version)
+@@ -206,6 +206,10 @@
+ 
+ m_dep = cc.find_library('m')
+ 
++enable_goa = goa_dep.found()
++config_h.set('BUILD_GOA', enable_goa,
++             description: 'Define to 1 to build the Online Accounts panel')
++
+ common_deps = [
+   gio_dep,
+   glib_dep,
+diff '--color=auto' -ur gnome-control-center-48.3.orig/meson_options.txt gnome-control-center-48.3/meson_options.txt
+--- gnome-control-center-48.3.orig/meson_options.txt	2025-08-15 18:51:22.552888137 +0200
++++ gnome-control-center-48.3/meson_options.txt	2025-08-15 18:52:48.083679218 +0200
+@@ -3,6 +3,7 @@
+ option('cups', type: 'boolean', value: true, description: 'build with cups support')
+ option('documentation', type: 'boolean', value: false, description: 'build documentation')
+ option('location-services', type: 'feature', value: 'enabled', description: 'build with location services')
++option('goa', type: 'feature', value: 'auto', description: 'build with gnome-online-accounts support')
+ option('ibus', type: 'boolean', value: true, description: 'build with IBus support')
+ option('network_manager', type: 'boolean', value: true, description: 'build with NetworkManager support')
+ option('kerberos', type: 'boolean', value: true, description: 'build with kerberos support')
+diff '--color=auto' -ur gnome-control-center-48.3.orig/panels/meson.build gnome-control-center-48.3/panels/meson.build
+--- gnome-control-center-48.3.orig/panels/meson.build	2025-08-15 18:51:22.554888132 +0200
++++ gnome-control-center-48.3/panels/meson.build	2025-08-15 18:53:23.749593015 +0200
+@@ -12,7 +12,6 @@
+   'mouse',
+   'multitasking',
+   'notifications',
+-  'online-accounts',
+   'power',
+   'privacy',
+   'search',
+@@ -27,6 +26,10 @@
+   panels += ['printers']
+ endif
+ 
++if enable_goa
++  panels += ['online-accounts']
++endif
++
+ if enable_network_manager
+   panels += ['network', 'wwan']
+ endif
+diff '--color=auto' -ur gnome-control-center-48.3.orig/shell/cc-panel-loader.c gnome-control-center-48.3/shell/cc-panel-loader.c
+--- gnome-control-center-48.3.orig/shell/cc-panel-loader.c	2025-08-15 18:51:22.614887984 +0200
++++ gnome-control-center-48.3/shell/cc-panel-loader.c	2025-08-15 18:54:31.880429661 +0200
+@@ -47,7 +47,9 @@
+ extern GType cc_wifi_panel_get_type (void);
+ #endif /* BUILD_NETWORK */
+ extern GType cc_notifications_panel_get_type (void);
++#ifdef BUILD_GOA
+ extern GType cc_online_accounts_panel_get_type (void);
++#endif /* BUILD_GOA */
+ extern GType cc_power_panel_get_type (void);
+ #ifdef HAVE_CUPS
+ extern GType cc_printers_panel_get_type (void);
+@@ -103,7 +105,9 @@
+   PANEL_TYPE("wifi",             cc_wifi_panel_get_type,                 cc_wifi_panel_static_init_func),
+ #endif
+   PANEL_TYPE("notifications",    cc_notifications_panel_get_type,        NULL),
++#ifdef BUILD_GOA
+   PANEL_TYPE("online-accounts",  cc_online_accounts_panel_get_type,      NULL),
++#endif
+   PANEL_TYPE("power",            cc_power_panel_get_type,                NULL),
+ #ifdef HAVE_CUPS
+   PANEL_TYPE("printers",         cc_printers_panel_get_type,             NULL),
