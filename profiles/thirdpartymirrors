@@ -7,7 +7,6 @@ gimp		https://download.gimp.org/ https://ftp.fau.de/gimp/gimp/ ftp://ftp.fau.de/
 gnome		https://download.gnome.org/
 gnu		https://ftp.gnu.org/gnu/ https://artfiles.org/gnu.org/ https://www.mirrorservice.org/sites/ftp.gnu.org/gnu/
 gnupg		https://www.mirrorservice.org/sites/ftp.gnupg.org/gcrypt/ https://mirrors.dotsrc.org/gcrypt/ https://gnupg.org/ftp/gcrypt/
-goproxy https://proxy.golang.org/ https://goproxy.io/
 idsoftware	ftp://ftp.fu-berlin.de/pc/games/idgames/idstuff ftp://ftp.gamers.org/pub/idgames/idstuff
 imagemagick	https://imagemagick.org/archive/releases/ https://mirror.checkdomain.de/imagemagick/releases/ https://ftp.acc.umu.se/mirror/imagemagick.org/ftp/releases/ ftp://ftp.fifi.org/pub/ImageMagick/releases/
 kde		https://download.kde.org https://mirror.csclub.uwaterloo.ca/kde ftp://mirrors.dotsrc.org/kde https://ftp.gwdg.de/pub/linux/kde https://ftp.mirrorservice.org/sites/ftp.kde.org/pub/kde
@@ -19,4 +18,3 @@ openbsd		https://cdn.openbsd.org/pub/OpenBSD https://fastly.cdn.openbsd.org/pub/
 openssl		https://www.openssl.org/ https://artfiles.org/openssl.org/ https://www.mirrorservice.org/sites/ftp.openssl.org/
 sourceforge.jp	http://iij.dl.sourceforge.jp https://osdn.dl.sourceforge.jp https://jaist.dl.sourceforge.jp
 ubuntu		http://mirror.internode.on.net/pub/ubuntu/ubuntu/ http://ubuntu.uni-klu.ac.at/ubuntu/ http://mirror.dhakacom.com/ubuntu-archive/ http://ubuntu.c3sl.ufpr.br/ubuntu/ http://hr.archive.ubuntu.com/ubuntu/ http://cz.archive.ubuntu.com/ubuntu/ https://mirror.dkm.cz/ubuntu http://ftp.cvut.cz/ubuntu/ http://ftp.stw-bonn.de/ubuntu/ https://ftp-stud.hs-esslingen.de/ubuntu/ https://mirror.netcologne.de/ubuntu/ https://mirror.unej.ac.id/ubuntu/ http://kr.archive.ubuntu.com/ubuntu/ https://mirror.nforce.com/pub/linux/ubuntu/ http://nl3.archive.ubuntu.com/ubuntu/ https://mirror.timeweb.ru/ubuntu/ http://ubuntu.mirror.su.se/ubuntu/ https://ubuntu.volia.net/ubuntu-archive/ https://mirror.pnl.gov/ubuntu/ https://mirrors.namecheap.com/ubuntu/
-vdr-developerorg http://projects.vdr-developer.org/attachments/download
