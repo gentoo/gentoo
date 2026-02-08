@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -71,11 +71,6 @@ src_prepare() {
 		-e 's:$(GRACE_HOME)/include:$(PREFIX)/include:g' \
 		-e 's:$(PREFIX)/man:$(PREFIX)/share/man:g' \
 		Makefile */Makefile || die "sed failed"
-
-	sed -i \
-		-e 's:bin/grconvert:grconvert:' \
-		-e 's:auxiliary/fdf2fit:fdf2fit:' \
-		gracerc || die
 }
 
 src_configure() {
