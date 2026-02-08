@@ -1,0 +1,50 @@
+https://bugs.gentoo.org/969771
+Use modern booleans instead of redefining them.
+Also do an boost api change for extensions as
+it was done in different patch.
+--- a/backends/frotz/dfrotz/common/frotz.h
++++ b/backends/frotz/dfrotz/common/frotz.h
+@@ -13,14 +13,14 @@
+ 
+ #ifndef __UNIX_PORT_FILE
+ #include <signal.h>
+-typedef int bool;
++#include <stdbool.h>
+ 
+ #ifndef TRUE
+-#define TRUE 1
++#define TRUE true
+ #endif
+ 
+ #ifndef FALSE
+-#define FALSE 0
++#define FALSE false
+ #endif
+ 
+ #endif /* __UNIX_PORT_FILE */
+@@ -594,12 +594,12 @@
+ void 	os_init_screen (void);
+ void 	os_more_prompt (void);
+ int  	os_peek_colour (void);
+-int  	os_picture_data (int, int *, int *);
++bool  	os_picture_data (int, int *, int *);
+ void 	os_prepare_sample (int);
+ void 	os_process_arguments (int, char *[]);
+ int	os_random_seed (void);
+ int  	os_read_file_name (char *, const char *, int);
+-zchar	os_read_key (int, int);
++zchar	os_read_key (int, bool);
+ zchar	os_read_line (int, zchar *, int, int, int);
+ void 	os_reset_screen (void);
+ void 	os_restart_game (int);
+--- a/backends/frotz/main.cpp
++++ b/backends/frotz/main.cpp
+@@ -234,7 +234,7 @@
+ 			path p(".");
+ 			directory_iterator end_itr;
+ 			for (directory_iterator itr(p); itr != end_itr; ++itr) {
+-				if (extension(itr->path()) == ".z5") {
++				if (itr->path().extension().string() == ".z5") {
+ #if BOOST_FILESYSTEM_VERSION == 3
+ 					games.push_back(itr->path().filename().string());
+ #else
