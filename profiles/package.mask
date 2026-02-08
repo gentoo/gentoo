@@ -37,6 +37,13 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-02-09)
+# Broken for ages with dev-libs/boost-1.85 but no one except tinderbox
+# complained, still needs porting to Python 3.13, no revdeps. Upstream
+# available 2025.1 claims to fix at least boost, but needs a maintainer.
+# Bugs #936978, #952658.  Removal on 2026-03-11.
+sci-chemistry/votca
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-09)
 # Broken for >1 year with dev-libs/boost-1.87 but no one except tinderbox
 # complained, no revdeps. Upstream disappeared, almost no one else is
 # packaging this.  Bug #946533.  Removal on 2026-03-11.
