@@ -209,12 +209,6 @@ app-emacs/docker-tramp
 # See bug #966299.
 =dev-util/librnp-0.18.0
 
-# Michał Górny <mgorny@gentoo.org> (2025-11-22)
-# A NIH replacement for dev-python/faker with a very slow test suite.
-# No reverse dependencies left.
-# Removal on 2025-12-22.  Bug #966327.
-dev-python/fake-py
-
 # Sam James <sam@gentoo.org> (2025-10-13)
 # Crashes in memtodest when handling PATH. Not yet reported upstream.
 =app-shells/dash-0.5.13.1
