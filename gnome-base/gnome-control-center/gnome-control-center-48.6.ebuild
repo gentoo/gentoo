@@ -134,6 +134,7 @@ BDEPEND="${PYTHON_DEPS}
 		')
 		x11-apps/setxkbmap
 	)
+	wayland? ( dev-util/wayland-scanner )
 "
 
 PATCHES=(
@@ -161,14 +162,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# -Werror=strict-aliasing
-	# https://bugs.gentoo.org/889008
-	# https://gitlab.gnome.org/GNOME/gnome-control-center/-/issues/2563
-	#
-	# Do not trust with LTO either
-	append-flags -fno-strict-aliasing
-	filter-lto
-
 	local emesonargs=(
 		$(meson_use bluetooth)
 		$(meson_use cups)

@@ -24,7 +24,7 @@ DEPEND="
 	>=app-crypt/gcr-3.90.0:4=[introspection]
 	>=dev-libs/glib-2.68:2
 	>=dev-libs/gobject-introspection-1.82.0-r2:=
-	>=dev-libs/gjs-1.73.1[cairo(+)]
+	>=dev-libs/gjs-1.81.2[cairo(+)]
 	>=gui-libs/gtk-4:4[X?,introspection,wayland?]
 	>=x11-wm/mutter-48.0:0/16[introspection,test?]
 	>=sys-auth/polkit-0.120_p20220509[introspection]
@@ -54,6 +54,7 @@ DEPEND="
 
 	>=media-libs/libpulse-2[glib]
 	dev-libs/libical:=
+	x11-libs/libXext
 	>=x11-libs/libXfixes-5.0
 
 	gui-libs/gtk:4[introspection]
@@ -93,7 +94,7 @@ RDEPEND="${DEPEND}
 	gnome-base/librsvg:2[introspection]
 	gui-libs/libadwaita:1[introspection]
 
-	>=gnome-base/gnome-session-2.91.91
+	>=gnome-base/gnome-session-48.0-r2
 	>=gnome-base/gnome-settings-daemon-3.8.3
 
 	x11-misc/xdg-utils
@@ -132,6 +133,11 @@ BDEPEND="
 # These are not needed from tarballs, unless stylesheets or manpage get patched with patchset:
 # dev-lang/sassc
 # app-text/asciidoc
+
+PATCHES=(
+	# https://bugs.gentoo.org/959295 gnome-session thinks gnome-shell died when built with USE="-X"
+	"${FILESDIR}"/notify-gnome-session-when-ready.patch
+)
 
 src_prepare() {
 	default

@@ -152,6 +152,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-43.0-Disable-anonymous-file-test.patch
+	"${FILESDIR}"/"${PN}"-48.6-trap-X-errors.patch
 )
 
 python_check_deps() {
