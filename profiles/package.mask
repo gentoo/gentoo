@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-09)
+# Broken for >1 year with dev-libs/boost-1.87 but no one except tinderbox
+# complained, no revdeps. Upstream disappeared, almost no one else is
+# packaging this.  Bug #946533.  Removal on 2026-03-11.
+net-analyzer/sinfo
+
 # Michał Górny <mgorny@gentoo.org> (2026-02-09)
 # setuptools-82 removes pkg_sources, inevitably leading to breakage.
 >=dev-python/ensurepip-setuptools-82
