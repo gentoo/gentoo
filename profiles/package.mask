@@ -210,14 +210,6 @@ app-emacs/docker-tramp
 <llvm-runtimes/libunwind-16
 <llvm-runtimes/openmp-16
 
-# Conrad Kostecki <conikost@gentoo.org> (2026-01-12)
-# Mask legacy intel-compute-runtime because it depends on legacy
-# intel-graphics-compiler, which no longer receives updates,
-# and only supports up to LLVM 15.
-# Bug #920541. Removal on 2026-01-31.
-=dev-libs/intel-compute-runtime-24.35.30872.32-r2
-=dev-libs/intel-compute-runtime-24.35.30872.36
-
 # James Le Cuirot <chewi@gentoo.org> (2025-12-24)
 # The upstream community has forked with the vast majority going to UZDoom, now
 # packaged as games-engines/uzdoom in Gentoo. https://zdoom.org now follows this
