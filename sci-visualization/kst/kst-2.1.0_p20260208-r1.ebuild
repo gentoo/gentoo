@@ -6,14 +6,12 @@ EAPI=8
 CMAKE_REMOVE_MODULES_LIST=( FindHDF5 )
 KDE_ORG_CATEGORY=graphics
 KDE_ORG_NAME=kst-plot
-KDE_ORG_COMMIT=bc8360064a4f6ac3b04e393fd502fef27e46b842
-PATCHSET=${P}-cmake-patchset
+KDE_ORG_COMMIT=e4dbcc472348100e040d464dd0cae52c337fafe6
 inherit cmake flag-o-matic kde.org xdg
 
 DESCRIPTION="Fast real-time large-dataset viewing and plotting tool"
 HOMEPAGE="https://kst-plot.kde.org/"
-SRC_URI="https://dev.gentoo.org/~asturm/distfiles/kde/${KDE_ORG_NAME}-${PV}-${KDE_ORG_COMMIT:0:8}.tar.gz
-https://dev.gentoo.org/~asturm/distfiles/kde/${PATCHSET}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~asturm/distfiles/kde/${KDE_ORG_NAME}-${PV}-${KDE_ORG_COMMIT:0:8}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2 FDL-1.2"
 SLOT="0"
@@ -40,8 +38,6 @@ BDEPEND="dev-qt/qttools:6[linguist]"
 DOCS=( AUTHORS README.kstScript )
 
 PATCHES=(
-	# pending upstream:
-	"${WORKDIR}"/${PATCHSET} # contains no-compress-man.patch for bug #812017
 	"${FILESDIR}"/${P}-cmake-findhdf5.patch # bug #954233; downstream patch
 )
 
