@@ -87,6 +87,11 @@ kde-frameworks/attica:5
 kde-frameworks/kirigami:5
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-02-08)
+# Deprecated since Qt 5.5, no more revdeps. Bug #915779
+# Removal on 2026-02-28.
+dev-qt/qtscript:5
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-08)
 # Stuck on Qt5Script in the foreseeable future.  Until a Qt6 release is
 # ready, app-editors/okteta-0.26.60_pre* snapshots will be provided for
 # ~arch, main limitation being the structures tool disabled from build
@@ -96,7 +101,6 @@ kde-frameworks/kirigami:5
 # our okteta snapshots, the alternative is using the Flatpak version.
 # Bug #962280. Removal some time after 2026-02-15.
 app-editors/okteta:5
-dev-qt/qtscript:5
 kde-frameworks/kitemmodels:5
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-02-08)
