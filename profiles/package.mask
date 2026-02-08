@@ -199,7 +199,6 @@ app-emacs/docker-tramp
 # of dev-lang/julia, all versions are unkeyworded).
 # Bug #921826.  Removal on 2026-01-20.
 dev-lang/julia
-dev-libs/redland-bindings
 
 # Michał Górny <mgorny@gentoo.org> (2025-12-12)
 # Upstream has switched to LLM-first coding which has already caused
