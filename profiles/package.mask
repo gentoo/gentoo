@@ -203,13 +203,6 @@ app-emacs/docker-tramp
 >=dev-python/autobahn-25.10
 >=dev-python/txaio-25.10
 
-# Eli Schwartz <eschwartz@gentoo.org> (2025-11-30)
-# Abandoned and unmaintained. It existed solely as a test dep for
-# dev-python/sphinx-rtd-theme, which no longer uses it, so nobody should
-# have it installed anyway.
-# Removal on 2025-12-30.  Bugs #966396, #963998.
-dev-python/readthedocs-sphinx-ext
-
 # Sam James <sam@gentoo.org> (2025-11-25)
 # Generates session keys with weak (no) randomness. Please re-encrypt
 # any data/messages using this librnp version. <0.18 is fine as is >=0.18.1.
