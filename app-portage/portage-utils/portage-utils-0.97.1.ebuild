@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,21 +18,9 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+gpkg gtree openmp +qmanifest static"
+IUSE="openmp +qmanifest static"
 
 RDEPEND="
-	gpkg? (
-		!static? (
-			app-crypt/gpgme:=
-			app-arch/libarchive:=
-		)
-	)
-	gtree? (
-		!static? (
-			app-crypt/gpgme:=
-			app-arch/libarchive:=[zstd]
-		)
-	)
 	openmp? ( || (
 		sys-devel/gcc:*[openmp]
 		llvm-runtimes/openmp
@@ -45,18 +33,6 @@ RDEPEND="
 		)
 	)"
 DEPEND="${RDEPEND}
-	gpkg? (
-		static? (
-			app-crypt/gpgme[static-libs]
-			app-arch/libarchive[static-libs]
-		)
-	)
-	gtree? (
-		static? (
-			app-crypt/gpgme[static-libs]
-			app-arch/libarchive[static-libs,zstd]
-		)
-	)
 	qmanifest? (
 		static? (
 			app-crypt/gpgme[static-libs]
@@ -89,8 +65,6 @@ src_configure() {
 	econf \
 		--disable-maintainer-mode \
 		--with-eprefix="${EPREFIX}" \
-		$(use_enable gpkg) \
-		$(use_enable gtree) \
 		$(use_enable qmanifest) \
 		$(use_enable openmp)
 }
