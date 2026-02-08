@@ -40,8 +40,11 @@ PATCHES=(
 src_prepare() {
 	default
 
-	# Broken w/ network-sandbox on (bug #847844)
-	sed -i -e '/test-set-port-range/d' tests/meson.build || die
+	# skip tests which break with network-sandbox enabled; bugs 847844
+	sed -i \
+		-e "/test-set-port-range/d" \
+		-e "/test-slow-resolving',/d" \
+		tests/meson.build || die
 }
 
 multilib_src_configure() {
