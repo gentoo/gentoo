@@ -26,8 +26,8 @@ KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 IUSE="test"
 
-PROPERTIES="test_privileged"
 RESTRICT="!test? ( test ) test"
+PROPERTIES="test_privileged"
 
 RDEPEND="dev-libs/openssl:="
 DEPEND="${RDEPEND}"
