@@ -21,8 +21,8 @@ if [[ ${KDE_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
 CAL_FTS=( karbon sheets stage words )
-IUSE="+charts +fontconfig gsl +import-filter +lcms okular +pdf phonon
-	+truetype webengine X $(printf 'calligra_features_%s ' ${CAL_FTS[@]})"
+IUSE="+charts +fontconfig gsl +import-filter +lcms okular +pdf +truetype
+	webengine X $(printf 'calligra_features_%s ' ${CAL_FTS[@]})"
 
 RESTRICT="test"
 
@@ -75,7 +75,6 @@ COMMON_DEPEND="
 	lcms? ( media-libs/lcms:2 )
 	okular? ( kde-apps/okular:6 )
 	pdf? ( app-text/poppler:=[qt6] )
-	phonon? ( >=media-libs/phonon-4.12.0[qt6(+)] )
 	truetype? ( media-libs/freetype:2 )
 	webengine? ( >=dev-qt/qtwebengine-${QTMIN}:6[widgets] )
 	calligra_features_sheets? ( dev-cpp/eigen:= )
@@ -118,6 +117,7 @@ src_configure() {
 		-DWITH_Iconv=ON
 		-DWITH_Imath=ON # w/ LCMS: 16 bit floating point Grayscale colorspace
 		-DCMAKE_DISABLE_FIND_PACKAGE_Cauchy=ON
+		-DCMAKE_DISABLE_FIND_PACKAGE_Phonon4Qt6=ON # really obsolete
 		-DPRODUCTSET="${myproducts[*]}"
 		$(cmake_use_find_package charts KChart6)
 		-DWITH_Fontconfig=$(usex fontconfig)
@@ -129,7 +129,6 @@ src_configure() {
 		-DWITH_LibWpd=$(usex import-filter)
 		-DWITH_LibWpg=$(usex import-filter)
 		-DWITH_LibWps=$(usex import-filter)
-		$(cmake_use_find_package phonon Phonon4Qt6)
 		-DWITH_LCMS2=$(usex lcms)
 		-DWITH_Okular6=$(usex okular)
 		-DWITH_Poppler=$(usex pdf)
