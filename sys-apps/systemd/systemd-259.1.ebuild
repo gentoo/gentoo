@@ -279,6 +279,7 @@ src_unpack() {
 
 src_prepare() {
 	local PATCHES=(
+		"${FILESDIR}/systemd-259-test-echo.patch"
 	)
 
 	if ! use vanilla; then
