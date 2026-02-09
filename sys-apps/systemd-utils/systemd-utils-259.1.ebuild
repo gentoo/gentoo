@@ -215,38 +215,22 @@ multilib_src_compile() {
 	if multilib_is_native_abi; then
 		meson_src_compile
 	elif use udev; then
-		local targets=( libudev src/libudev/libudev.pc )
-		if use test; then
-			targets+=( test-libudev test-libudev-sym test-udev-device-thread )
-		fi
-		meson_src_compile "${targets[@]}"
+		meson_src_compile libudev src/libudev/libudev.pc
 	fi
 }
 
 multilib_src_test() {
-	local tests=()
-	if use udev; then
-		tests+=( --suite libudev )
-	fi
+	local args=()
+	use udev && args+=( --suite libudev )
 	if multilib_is_native_abi; then
-		if use boot; then
-			tests+=( --suite boot )
-		fi
-		if use kernel-install; then
-			tests+=( --suite kernel-install )
-		fi
-		if use sysusers; then
-			tests+=( --suite sysusers )
-		fi
-		if use tmpfiles; then
-			tests+=( --suite tmpfiles )
-		fi
-		if use udev; then
-			tests+=( --suite udev )
-		fi
+		use boot && args+=( --suite boot )
+		use kernel-install && args+=( --suite kernel-install )
+		use sysusers && args+=( --suite sysusers )
+		use tmpfiles && args+=( --suite tmpfiles )
+		use udev && args+=( --suite udev )
 	fi
-	if [[ ${#tests[@]} -ne 0 ]]; then
-		meson_src_test --no-rebuild "${tests[@]}"
+	if [[ ${#args[@]} -gt 0 ]]; then
+		meson_src_test "${args[@]}"
 	fi
 }
 
