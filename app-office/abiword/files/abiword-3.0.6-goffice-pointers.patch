@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/965487
+Casting to GObject is valid, because GtkWidget embeds GObject.
+--- a/goffice-bits/goffice/gtk/go-combo-box.c
++++ b/goffice-bits/goffice/gtk/go-combo-box.c
+@@ -173,7 +173,7 @@
+ 	gdk_device_ungrab (gtk_get_current_event_device (),
+ 	                   GDK_CURRENT_TIME);
+ 
+-	pdc = g_object_ref (combo_box->priv->popdown_container);
++	pdc = G_OBJECT (g_object_ref (combo_box->priv->popdown_container));
+ 	g_signal_emit (combo_box,
+ 		       go_combo_box_signals [POP_DOWN_DONE], 0,
+ 		       pdc, &popup_info_destroyed);
