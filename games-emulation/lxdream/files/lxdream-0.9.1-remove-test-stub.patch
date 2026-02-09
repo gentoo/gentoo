@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/770484
+This is a stub definition, it broke linking and was unneeded
+--- a/src/test/testsh4x86.c
++++ b/src/test/testsh4x86.c
+@@ -113,7 +113,6 @@
+ gboolean FASTCALL mmu_update_icache( sh4vma_t addr ) { return TRUE; }
+ void MMU_ldtlb() { }
+ struct sh4_icache_struct sh4_icache;
+-struct mem_region_fn mem_region_unmapped;
+ 
+ void usage()
+ {
