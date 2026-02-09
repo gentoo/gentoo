@@ -123,7 +123,9 @@ pkg_setup() {
 }
 
 src_prepare() {
-	local PATCHES=()
+	local PATCHES=(
+		"${FILESDIR}/systemd-256-test-echo.patch"
+	)
 
 	if use elibc_musl; then
 		PATCHES+=(

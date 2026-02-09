@@ -1,0 +1,32 @@
+https://github.com/systemd/systemd/pull/40607
+
+From 1766be649f2c153dee6fe2c79c5aac3a21c73a7b Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Sun, 8 Feb 2026 19:12:30 -0500
+Subject: [PATCH] meson: use printf instead of echo
+
+The echo builtin provided by some shells (mksh) will interpret \x2d as
+an escape sequence. This causes meson to fail:
+
+```
+test/fuzz/meson.build:93:52: ERROR: File fuzz-unit-file/dm-back-slash.swap does not exist.
+```
+
+Bug: https://bugs.gentoo.org/969789
+---
+ test/fuzz/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/fuzz/meson.build b/test/fuzz/meson.build
+index d4cfc0a5b4816..6f9f43a4105f9 100644
+--- a/test/fuzz/meson.build
++++ b/test/fuzz/meson.build
+@@ -42,7 +42,7 @@ if git.found() and fs.is_dir(meson.project_source_root() / '.git')
+                           'ls-files', ':/@0@/*/*'.format(fuzz_testsdir),
+                           check: true)
+ else
+-        out = run_command(sh, '-c', 'cd "@0@"; echo @1@/*/*'.format(meson.project_source_root(), fuzz_testsdir), check: true)
++        out = run_command(sh, '-c', 'cd "@0@"; printf "%s " @1@/*/*'.format(meson.project_source_root(), fuzz_testsdir), check: true)
+ endif
+ 
+ # Add crafted fuzz inputs we have in the repo
