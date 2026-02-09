@@ -21,7 +21,7 @@ S="${WORKDIR}/freenet-build0${PV#*p}"
 
 LICENSE="GPL-2+ GPL-2 MIT BSD-2 Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE="+nss"
 
 CP_DEPEND="
