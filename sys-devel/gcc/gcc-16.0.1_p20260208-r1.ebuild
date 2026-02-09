@@ -52,5 +52,6 @@ src_prepare() {
 
 	toolchain_src_prepare
 	eapply "${FILESDIR}"/${PN}-13-fix-cross-fixincludes.patch
+	eapply "${FILESDIR}"/0001-tree-optimization-124034-remove-early-break-special-.patch
 	eapply_user
 }

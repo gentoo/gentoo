@@ -1,0 +1,79 @@
+From bbb15fd5c8a561075f4a6c71eb1f03ad6c08c5ea Mon Sep 17 00:00:00 2001
+Message-ID: <bbb15fd5c8a561075f4a6c71eb1f03ad6c08c5ea.1770651580.git.sam@gentoo.org>
+From: Richard Biener <rguenther@suse.de>
+Date: Mon, 9 Feb 2026 10:53:01 +0100
+Subject: [PATCH] tree-optimization/124034 - remove early-break special-casing
+ of inductions
+
+After recent improvements to how we deal with early-break requirements
+of induction variable updates we no longer need to force induction
+latch defs relevant.  This in turn makes only-live defs visible to
+SLP discovery, resolving the miscompilation in this PR.
+
+	PR tree-optimization/124034
+	* tree-vect-stmts.cc (process_use): Never force induction
+	latch defs relevant when doing early break vectorization.
+
+	* gcc.dg/vect/vect-early-break_142-pr124034.c: New testcase.
+---
+ .../vect/vect-early-break_142-pr124034.c      | 31 +++++++++++++++++++
+ gcc/tree-vect-stmts.cc                        |  5 +--
+ 2 files changed, 32 insertions(+), 4 deletions(-)
+ create mode 100644 gcc/testsuite/gcc.dg/vect/vect-early-break_142-pr124034.c
+
+diff --git a/gcc/testsuite/gcc.dg/vect/vect-early-break_142-pr124034.c b/gcc/testsuite/gcc.dg/vect/vect-early-break_142-pr124034.c
+new file mode 100644
+index 000000000000..4834544eeae7
+--- /dev/null
++++ b/gcc/testsuite/gcc.dg/vect/vect-early-break_142-pr124034.c
+@@ -0,0 +1,31 @@
++/* { dg-add-options vect_early_break } */
++
++#include "tree-vect.h"
++
++__attribute__((noipa))
++static 
++long
++memeqbyte (char byte, void *data, long length)
++{
++  char *p = data;
++  for (long i = 0; i < 16; i++, length--)
++    {
++      if (length == 0)
++        return 0;
++      if (p[i] != byte)
++        return 0;
++    }
++  return length;
++}
++
++#define n 16
++
++int
++main ()
++{
++  char iov[n];
++  check_vect ();
++  __builtin_memset (iov, 'x', n);
++  if (memeqbyte('x', iov, n))
++   __builtin_abort();
++}
+diff --git a/gcc/tree-vect-stmts.cc b/gcc/tree-vect-stmts.cc
+index e7d6b4c123af..77f6d7a639ae 100644
+--- a/gcc/tree-vect-stmts.cc
++++ b/gcc/tree-vect-stmts.cc
+@@ -644,10 +644,7 @@ process_use (stmt_vec_info stmt_vinfo, tree use, loop_vec_info loop_vinfo,
+ 	   && STMT_VINFO_DEF_TYPE (stmt_vinfo) == vect_induction_def
+ 	   && (PHI_ARG_DEF_FROM_EDGE (stmt_vinfo->stmt,
+ 				      loop_latch_edge (bb->loop_father))
+-	       == use)
+-	   && (!LOOP_VINFO_EARLY_BREAKS (loop_vinfo)
+-	       || (gimple_bb (stmt_vinfo->stmt)
+-		   != LOOP_VINFO_LOOP (loop_vinfo)->header)))
++	       == use))
+     {
+       if (dump_enabled_p ())
+ 	dump_printf_loc (MSG_NOTE, vect_location,
+-- 
+2.53.0
+
