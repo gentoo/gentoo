@@ -11,7 +11,7 @@ SRC_URI="https://github.com/d3adb5/${PN}/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug +graceful-exit kde xinerama +xpm"
 
 RDEPEND="x11-libs/libX11
