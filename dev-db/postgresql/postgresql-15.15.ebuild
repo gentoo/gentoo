@@ -1,26 +1,24 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
-LLVM_COMPAT=( {15..21} )
+LLVM_COMPAT=( {16..21} )
 LLVM_OPTIONAL=1
 
 inherit dot-a flag-o-matic linux-info llvm-r1 pam python-single-r1 systemd tmpfiles
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos ~x64-solaris"
-
-SLOT=$(ver_cut 1)
-
-MY_PV=${PV/_/}
-S="${WORKDIR}/${PN}-${MY_PV}"
-
-SRC_URI="https://ftp.postgresql.org/pub/source/v${MY_PV}/postgresql-${MY_PV}.tar.bz2"
-
-LICENSE="POSTGRESQL GPL-2"
 DESCRIPTION="PostgreSQL RDBMS"
 HOMEPAGE="https://www.postgresql.org/"
+
+MY_PV=${PV/_/}
+SRC_URI="https://ftp.postgresql.org/pub/source/v${MY_PV}/postgresql-${MY_PV}.tar.bz2"
+S="${WORKDIR}/${PN}-${MY_PV}"
+LICENSE="POSTGRESQL GPL-2"
+SLOT=$(ver_cut 1)
+
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos ~x64-solaris"
 
 IUSE="debug doc icu kerberos ldap llvm +lz4 nls pam perl python +readline
 	  selinux +server systemd ssl static-libs tcl uuid xml zlib +zstd"
