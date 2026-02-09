@@ -36,6 +36,37 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2026-02-09)
+# This suite of packages is currently best placed in an overlay/external
+# repository where users can more easily contribute. The ecosystem moves
+# quickly and users expect even the live ebuilds to be updated apace.
+#
+# The rate of change as well as new packages requiring review places a heavy
+# combined with users (not unreasonably) wanting fresh versions of the software
+# places strain on the proxy-maint team. Pressure being put on proxied maintainers
+# to create and quickly have PRs merged doesn't facilitate the level of
+# testing for ::gentoo either.
+#
+# An unofficial 'hyproverlay' repository has been created at
+#  https://codeberg.org/hyproverlay/hyproverlay.git
+# for communal maintenance of these packages as well as several new
+# (unpackaged in ::gentoo) dependencies. It can be enabled with:
+#  $ emerge -an app-eselect/eselect-repository
+#  $ eselect repository enable hyproverlay
+#  $ emerge --sync
+#
+# Quite out-of-date, many open bugs, and needs several new dependencies.
+# Removal on 2026-03-11.
+gui-libs/aquamarine
+gui-libs/hyprutils
+gui-libs/hyprland-qt-support
+gui-libs/hyprcursor
+dev-util/hyprwayland-scanner
+dev-libs/hyprlang
+dev-libs/hyprland-protocols
+dev-libs/hyprgraphics
+gui-wm/hyprland
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-02-09)
 # Broken for ages with dev-libs/boost-1.85 but no one except tinderbox
 # complained, still needs porting to Python 3.13, no revdeps. Upstream
