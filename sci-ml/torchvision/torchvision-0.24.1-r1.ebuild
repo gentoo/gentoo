@@ -36,7 +36,7 @@ RDEPEND="
 	webp? ( media-libs/libwebp )
 	ffmpeg? ( media-video/ffmpeg )
 	sci-ml/caffe2[cuda?,rocm?,${PYTHON_SINGLE_USEDEP}]
-	sci-ml/pytorch[${PYTHON_SINGLE_USEDEP}]
+	=sci-ml/pytorch-2.9*[${PYTHON_SINGLE_USEDEP}]
 "
 
 BDEPEND="
