@@ -37,6 +37,11 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2026-02-09)
+# Only needed by last-rited hyprland stack. Out-of-date by quite a few
+# versions. Removal on 2026-03-11.
+dev-cpp/glaze
+
+# Sam James <sam@gentoo.org> (2026-02-09)
 # This suite of packages is currently best placed in an overlay/external
 # repository where users can more easily contribute. The ecosystem moves
 # quickly and users expect even the live ebuilds to be updated apace.
