@@ -21,7 +21,7 @@ IUSE="envtools"
 RDEPEND="
 	dev-libs/openssl:=
 	net-libs/gnutls:=
-	sys-apps/dtc[python]
+	>=sys-apps/dtc-1.4.6
 	sys-apps/util-linux:=
 "
 DEPEND="${RDEPEND}"
@@ -56,10 +56,12 @@ src_compile() {
 		HOSTCC="${BUILD_CC}"
 		HOSTCFLAGS="${BUILD_CFLAGS} ${BUILD_CPPFLAGS}"' $(HOSTCPPFLAGS)'
 		HOSTLDFLAGS="${BUILD_LDFLAGS}"
+		DTC="dtc"
+		# Provided by sys-apps/dtc[python]
+		NO_PYTHON=1
 	)
 
 	emake "${myemakeargs[@]}" tools-only_defconfig
-
 	emake "${myemakeargs[@]}" \
 		NO_SDL=1 \
 		HOSTSTRIP=: \
