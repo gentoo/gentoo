@@ -9,4 +9,7 @@
 		<remote-id type="sourceforge">super-tux</remote-id>
 		<remote-id type="github">SuperTux/supertux</remote-id>
 	</upstream>
+	<use>
+		<flag name="network">Enable network support (e.g. for downloading add-ons)</flag>
+	</use>
 </pkgmetadata>
