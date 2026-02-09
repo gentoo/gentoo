@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -73,8 +73,10 @@ DEPEND="
 RDEPEND="
 	acct-group/tsm
 	dev-libs/expat
-	dev-libs/openssl:0/3
+	dev-libs/json-c:0/5.1
+	>=dev-libs/openssl-3.3.0:0/3
 	dev-libs/libxml2:2
+	net-misc/curl[openssl]
 	sys-apps/acl
 	sys-fs/fuse:0
 	virtual/zlib:0/1
@@ -304,6 +306,30 @@ src_install() {
 		dosym ../../../../opt/tivoli/tsm/client/ba/bin/tsmjbbd.service /usr/lib/systemd/system/tsmjbbd.service
 	else
 		rm -f "${ED}/usr/lib/systemd/system/tsmjbbd.service" || die
+	fi
+
+	# Unbundle ssl
+	rm "${ED}/opt/tivoli/tsm/client/api/bin64/libcrypto.so.3" || die
+	dosym ../../../../../../usr/$(get_libdir)/libcrypto.so.3 \
+		/opt/tivoli/tsm/client/api/bin64/libcrypto.so.3
+	rm "${ED}/opt/tivoli/tsm/client/api/bin64/libssl.so.3" || die
+	dosym ../../../../../../usr/$(get_libdir)/libssl.so.3 \
+		/opt/tivoli/tsm/client/api/bin64/libssl.so.3
+	if ! use gpfs; then
+		rm "${ED}/opt/tivoli/tsm/client/ba/bin/plugins/netappmgm/libcrypto.so.3" || die
+		dosym /../../../../../../../../usr/$(get_libdir)/libcrypto.so.3 \
+			/opt/tivoli/tsm/client/ba/bin/plugins/netappmgm/libcrypto.so.3
+		rm "${ED}/opt/tivoli/tsm/client/ba/bin/plugins/netappmgm/libssl.so.3" || die
+		dosym /../../../../../../../../usr/$(get_libdir)/libssl.so.3 \
+			/opt/tivoli/tsm/client/ba/bin/plugins/netappmgm/libssl.so.3
+		# Unbundle curl
+		rm "${ED}/opt/tivoli/tsm/client/ba/bin/plugins/netappmgm/libcurl.so" || die
+		dosym /../../../../../../../../usr/$(get_libdir)/libcurl.so \
+			/opt/tivoli/tsm/client/ba/bin/plugins/netappmgm/libcurl.so
+		# Unbundle json-c
+		rm "${ED}/opt/tivoli/tsm/client/ba/bin/plugins/netappmgm/libjson-c.so" || die
+		dosym /../../../../../../../../usr/$(get_libdir)/libjson-c.so \
+			/opt/tivoli/tsm/client/ba/bin/plugins/netappmgm/libjson-c.so
 	fi
 
 	linux-mod-r1_src_install
