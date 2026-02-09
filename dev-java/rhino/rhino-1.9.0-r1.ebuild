@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="amd64 arm64 ppc64"
 
 DEPEND="
-	>=virtual/jdk-11
+	>=virtual/jdk-17
 	test? (
 		dev-java/junit:4
 		dev-java/junit:5[vintage]
