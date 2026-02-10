@@ -37,6 +37,11 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2026-02-10)
+# Removed by most distros, last release over 20 years ago, C23 issues.
+# Removal on 2026-03-12. Bug #945193.
+net-analyzer/labrea
+
+# David Seifert <soap@gentoo.org> (2026-02-10)
 # Removed by most distros, upstream disappeared, lots of QA and packaging
 # issues. Removal on 2026-03-12. Bug #943786.
 net-analyzer/echoping
