@@ -1,0 +1,36 @@
+From 3d321c7d92bd1c42007b50929ccc9b492b921dec Mon Sep 17 00:00:00 2001
+From: Florian Schmaus <flo@geekplace.eu>
+Date: Tue, 10 Feb 2026 08:53:34 +0100
+Subject: [PATCH] cmake: Explicitly search for Catch2 version 3
+
+The current CMakeLists block
+
+find_package(Catch2)
+if(Catch2_FOUND)
+  target_link_libraries(test_suite Catch2::Catch2WithMain)
+  include(CTest)
+  include(Catch)
+  catch_discover_tests(test_suite)
+endif()
+
+would search for any Catch2 version, but later tries to link against
+Catch2 version 3 (Catch2WithMain). This means the block would fail on
+systems that have Catch2 version 2 installed, but not Catch2 version
+3. Fix that by requesting Catch2 version 3 when invoking
+find_package().
+
+Link: https://bugs.gentoo.org/969522
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -296,7 +296,7 @@ endforeach()
+ #
+ ## Catch unit test framework
+ #
+-find_package(Catch2)
++find_package(Catch2 3)
+ if(Catch2_FOUND)
+   target_link_libraries(test_suite Catch2::Catch2WithMain)
+   include(CTest)
+-- 
+2.52.0
+
