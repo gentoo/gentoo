@@ -1,5 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# James Le Cuirot <chewi@gentoo.org> (2026-02-09)
+# There is almost certainly no m68k hardware that supports DDC.
+app-misc/fastfetch ddcutil
 
 # James Le Cuirot <chewi@gentoo.org> (2025-11-22)
 # gnuplot is not keyworded or tested.
