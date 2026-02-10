@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{11..13} )
 
 QTMIN="6.7.1"
 KFMIN="6.9.0"
-LIVEPATCH="${P}c"
+LIVEPATCH="${P}d"
 
 inherit ecm python-single-r1 xdg
 
@@ -16,7 +16,7 @@ DESCRIPTION="Distribution-independent installer framework"
 HOMEPAGE="https://calamares.io https://github.com/tableflipper9/calamares"
 SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz
 	livecd? (
-		https://github.com/calamares/calamares/compare/95aa33f...TableFlipper9:calamares:gentoo-patches-3.3.14c.patch \
+		https://github.com/calamares/calamares/compare/95aa33f...TableFlipper9:calamares:gentoo-patches-3.3.14d.patch \
 		-> ${LIVEPATCH}-gentoo-patches.patch
 	)
 "
