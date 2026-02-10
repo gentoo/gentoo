@@ -1,18 +1,23 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-EGIT_REPO_URI="https://github.com/lathiat/nss-mdns"
-inherit autotools git-r3 multilib-minimal
+inherit autotools multilib-minimal
+
+if [[ ${PV} == *9999* ]]; then
+	EGIT_REPO_URI="https://github.com/lathiat/nss-mdns"
+	inherit git-r3
+else
+	SRC_URI="https://github.com/lathiat/nss-mdns/releases/download/v${PV}/${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~x86"
+fi
 
 DESCRIPTION="Name Service Switch module for Multicast DNS"
 HOMEPAGE="https://github.com/lathiat/nss-mdns"
-SRC_URI=""
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS=""
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -29,7 +34,6 @@ multilib_src_configure() {
 	local myconf=(
 		# $(localstatedir)/run/... is used to locate avahi-daemon socket
 		--localstatedir=/var
-
 		$(use_enable test tests)
 	)
 
