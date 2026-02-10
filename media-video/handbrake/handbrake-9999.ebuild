@@ -33,7 +33,7 @@ declare -A BUNDLED=(
 	# Heavily patched in an incompatible way.
 	# Issues related to using system ffmpeg historically.
 	# See bug #829595 and #922828
-	[ffmpeg]="https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs2/ffmpeg-8.0.tar.bz2;"
+	[ffmpeg]="https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs2/ffmpeg-8.0.1.tar.bz2;"
 	# Patched in an incompatible way
 	[x265]="https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs2/x265-snapshot-20250729-13276.tar.gz;x265"
 	[x265_8bit]="https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs2/x265-snapshot-20250729-13276.tar.gz;x265"
