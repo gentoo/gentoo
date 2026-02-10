@@ -37,6 +37,11 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2026-02-10)
+# Noone packages this anymore, dead upstream, lots of C23 and QA issues.
+# Removal on 2026-03-12. Bug #945187.
+net-analyzer/trafshow
+
+# David Seifert <soap@gentoo.org> (2026-02-10)
 # Removed by most distros, upstream disappeared, lots of QA and packaging
 # issues. Removal on 2026-03-12. Bug #945190.
 net-analyzer/tcptrace
