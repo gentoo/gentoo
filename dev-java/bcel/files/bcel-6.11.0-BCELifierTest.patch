@@ -1,0 +1,21 @@
+The presently stable version of ~dev-java/junit-5.10.3, according to
+'junit-jupiter-api/src/main/java/org/junit/jupiter/api/condition/JRE.java'
+does not support Java versions higher than 22:
+
+src/test/java/org/apache/bcel/util/BCELifierTest.java:255: error: cannot find symbol
+    @DisabledForJreRange(min = JRE.JAVA_25)
+                                  ^
+  symbol:   variable JAVA_25
+  location: class JRE
+
+--- a/src/test/java/org/apache/bcel/util/BCELifierTest.java
++++ b/src/test/java/org/apache/bcel/util/BCELifierTest.java
+@@ -252,7 +252,7 @@ class BCELifierTest extends AbstractTest {
+         "target/test-classes/Java8Example2.class",
+     // @formatter:on
+     })
+-    @DisabledForJreRange(min = JRE.JAVA_25)
++    @DisabledForJreRange(min = JRE.JAVA_22)
+     void testJavapCompareJava25KnownBroken(final String pathToClass) throws Exception {
+         testClassOnPath(pathToClass);
+     }
