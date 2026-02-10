@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}.el-${PV}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 BDEPEND="app-admin/pass[emacs]
 	app-emacs/s"
