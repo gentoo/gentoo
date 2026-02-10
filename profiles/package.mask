@@ -37,6 +37,11 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2026-02-10)
+# Noone packages this anymore, dead upstream, C23 and QA issues.
+# Removal on 2026-03-12. Bug #945039.
+net-misc/lanmap
+
+# David Seifert <soap@gentoo.org> (2026-02-10)
 # Noone packages this anymore, dead upstream, fails tests on newer GCC.
 # Removal on 2026-03-12. Bug #963013.
 net-libs/libpcapnav
