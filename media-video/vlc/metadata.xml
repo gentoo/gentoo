@@ -24,7 +24,7 @@
 		<flag name="gme">Enable support for <pkg>media-libs/game-music-emu</pkg> for playing various video game music formats</flag>
 		<flag name="gstreamer">Enable GStreamer based decoding support (currently supports only video decoding)</flag>
 		<flag name="kate">Adds support for Ogg Kate subtitles via libkate</flag>
-		<flag name="kms">Enable kernel mode setting video output plugin via <pkg>x11-libs/libdrm</pkg></flag>
+		<flag name="libdrm">Enable kernel mode setting video output plugin via <pkg>x11-libs/libdrm</pkg></flag>
 		<flag name="libplacebo">Enable support for GPU accelerated video rendering with <pkg>media-libs/libplacebo</pkg></flag>
 		<flag name="libtiger">Enable Ogg Kate subtitles rendering using libtiger</flag>
 		<flag name="linsys">Enable support for Linux Linear Systems Ltd. SDI and HD-SDI input cards</flag>
