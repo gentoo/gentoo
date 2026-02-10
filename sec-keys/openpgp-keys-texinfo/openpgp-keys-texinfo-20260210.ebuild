@@ -1,0 +1,27 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+SEC_KEYS_VALIDPGPKEYS=(
+	17D3311B14BC0F248267BF020716748A30D155AD::manual
+	17E90D521672C04631B1183EE78DAE0F3115E06B::manual
+	57BFCD364692123BD9E28A5476DB1462567FA8C0:arsen:manual,gentoo
+	58E0C111E39F5408C5D3EC76C1A60EACE707FDA5:werner:manual,ubuntu
+	7DF84374B1EE1F9764BBE25D0DDCAA3278D5264E:akim:manual,ubuntu
+	9804BBF566E198FCA15D5C215EC2A77F36ECC523::manual
+	CADB8A59CC58856BCB578CE14DB993BC6D083BB3::manual
+	D1967C63788713177D861ED7DF597815937EC0D2::manual
+	E6C9029C363AD41D787A8EBB91C1262F01EB8D39::manual
+	EAF669B31E31E1DECBD11513DDBC579DAB37FBA9::manual
+	F2A38D7EEB2B66405761070D0ADEE10094604D37:mathieu:manual,ubuntu
+)
+
+inherit sec-keys
+
+DESCRIPTION="OpenPGP keys used by GNU texinfo"
+HOMEPAGE="https://savannah.gnu.org/projects/texinfo/"
+SRC_URI+=" https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=texinfo&download=1 -> ${P}.asc"
+
+SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
