@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
-PYPI_VERIFY_REPO=https://github.com/tox-dev/pyproject-fmt
+PYPI_VERIFY_REPO=https://github.com/tox-dev/toml-fmt
 PYTHON_COMPAT=( python3_{11..14} )
 
 RUST_MIN_VER="1.87.0"
@@ -51,7 +51,7 @@ inherit cargo distutils-r1 pypi
 
 DESCRIPTION="Format your pyproject.toml file"
 HOMEPAGE="
-	https://github.com/tox-dev/pyproject-fmt/
+	https://github.com/tox-dev/toml-fmt/
 	https://pypi.org/project/pyproject-fmt/
 "
 SRC_URI+="
