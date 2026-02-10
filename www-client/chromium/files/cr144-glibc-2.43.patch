@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/969846
+https://bugs.gentoo.org/969495
+https://crbug.com/456218403
+--- a/sandbox/linux/system_headers/linux_seccomp.h
++++ b/sandbox/linux/system_headers/linux_seccomp.h
+@@ -7,4 +7,5 @@
+ 
+ #include <stdint.h>
++#include <signal.h>
+ #include <sys/ioctl.h>
+ 
