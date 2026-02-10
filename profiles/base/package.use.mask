@@ -805,11 +805,6 @@ dev-python/statsmodels doc
 # Here we are following that path too.
 >=sys-libs/glibc-2.33-r2 crypt
 
-# Craig Andrews <candrews@gentoo.org> (2019-09-12)
-# OpenSSL (as of version 1.1.1) doesn't have APIs for QUIC support
-# see https://github.com/openssl/openssl/pull/8797
-net-libs/ngtcp2 openssl
-
 # Thomas Deutschmann <whissi@gentoo.org> (2019-09-02)
 # PGO not yet supported for comm-central, bug #693160
 >=mail-client/thunderbird-68 pgo
