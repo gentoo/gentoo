@@ -40,7 +40,7 @@ RDEPEND="
 	${LUA_DEPS}
 	app-text/cmark:=
 	dev-games/physfs
-	=dev-libs/libgit2-1.9.2*:=
+	>=dev-libs/libgit2-1.9.2:0/1.9
 	dev-libs/libpcre2:=
 	dev-libs/libunibreak:=
 	dev-libs/libxml2:=
