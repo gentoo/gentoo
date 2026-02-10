@@ -83,6 +83,11 @@ distutils_enable_tests pytest
 
 QA_FLAGS_IGNORED="usr/lib/py.*/site-packages/pyproject_fmt/_lib.*.so"
 
+src_unpack() {
+	pypi_src_unpack
+	cargo_src_unpack
+}
+
 src_prepare() {
 	distutils-r1_src_prepare
 	sed -i -e '/strip/d' pyproject.toml || die
