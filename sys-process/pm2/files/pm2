@@ -1,0 +1,72 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="Production process manager for Node.js apps with a built-in load balancer."
+
+extra_started_commands="reload list update"
+
+PM2=/usr/bin/pm2
+user=${SVCNAME#*.}
+# Options for start-stop-daemon (default start function)
+command=${PM2}
+command_user=${user}
+pidfile=$(eval echo ~${user})/.pm2/pm2.pid
+
+run_pm2_as_user() {
+	einfo "${PM2} $@"
+	eval sudo -u ${user} ${PM2} $@
+}
+
+depend() {
+	need net
+}
+
+start_post() {
+	if [ "${user}" == "root" ]; then
+		ewarn "Better run this daemon as a non-root user. To set this user, create a symlink"
+		ewarn "to the pm2 init script from a link called pm2.apache - like so"
+		ewarn "	     cd /etc/init.d"
+		ewarn "	     ln -s pm2 pm2.user"
+		ewarn ""
+		ewarn "You can then treat pm2.user as any other service, so you can"
+		ewarn "stop one vpn and start another if you need to."
+	fi
+
+	einfo ""
+	einfo "PM2: Process Manager started. To start services run:"
+	einfo "PM2: # sudo -u ${user} $PM2 start /path/to/app"
+}
+
+start() {
+	ebegin "Starting PM2 process manager..."
+	start-stop-daemon --start --user ${user} --exec ${PM2} resurrect --background --pidfile ${pidfile}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping PM2 process manager..."
+	run_pm2_as_user dump
+	run_pm2_as_user kill
+	eend $?
+}
+
+reload() {
+	ebegin "Reloading pm2"
+	run_pm2_as_user reload all
+	eend $?
+}
+
+list() {
+	ebegin "List all processes"
+	run_pm2_as_user list
+	eend $?
+}
+
+update() {
+    ebegin "Updating process"
+    run_pm2_as_user update
+    eend $?
+}
+
+# vim: ts=4
