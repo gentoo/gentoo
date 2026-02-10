@@ -157,5 +157,5 @@ src_install() {
 
 	dofishcomp completions/xcp.fish
 	dozshcomp completions/xcp.zsh
-	dobashcomp completions/xcp.bash
+	newbashcomp completions/xcp.bash xcp
 }
