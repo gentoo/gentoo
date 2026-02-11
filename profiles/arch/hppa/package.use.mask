@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Sam James <sam@gentoo.org> (2026-02-11)
+# sys-libs/libnvme not keyworded here
+sys-fs/lvm2 nvme
+
 # Alfred Wingate <parona@protonmail.com> (2025-12-24)
 # media-libs/jasper is not keyworded here
 media-libs/gegl jpeg2k
