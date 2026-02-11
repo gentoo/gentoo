@@ -13,3 +13,14 @@
  
  set(ENABLE_TESTS OFF CACHE BOOL "Build test binaries, needs libsndfile")
  set(ENABLE_FUZZER OFF CACHE BOOL "Build fuzzer binary")
+@@ -10,8 +9,8 @@ if(ENABLE_TESTS)
+   include_directories(${EBUR128_INCLUDE_DIR})
+   include_directories(SYSTEM ${SNDFILE_INCLUDE_DIRS})
+ 
+-  add_executable(r128-test-library tests)
+-  add_executable(minimal-example minimal-example)
++  add_executable(r128-test-library tests.c)
++  add_executable(minimal-example minimal-example.c)
+   set_property(TARGET r128-test-library APPEND_STRING PROPERTY
+       COMPILE_FLAGS " ${SNDFILE_CFLAGS}")
+   set_property(TARGET minimal-example APPEND_STRING PROPERTY
