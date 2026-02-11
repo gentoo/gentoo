@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Conrad Kostecki <conikost@gentoo.org> (2026-02-11)
+# Release 1.14.26 breaks API, so masking for now.
+# Bug #969888.
+>=net-libs/libupnp-1.14.26
+
 # David Seifert <soap@gentoo.org> (2026-02-11)
 # No other distro packages this, last release over 12 years ago, C23 issues.
 # Removal on 2026-03-13. Bug #944878.
