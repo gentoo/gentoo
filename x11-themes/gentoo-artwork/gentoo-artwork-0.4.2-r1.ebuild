@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,25 +9,25 @@ DESCRIPTION="Collection of miscellaneous Gentoo Linux logos and artwork"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Artwork"
 SRC_URI="
 	pixmaps? (
-		mirror://gentoo/gentoo-artwork-0.2.tar.bz2
-		mirror://gentoo/gentoo-artwork-0.3.tar.bz2
-		mirror://gentoo/gentoo-artwork-0.4.tar.bz2
-		mirror://gentoo/gentoo-artwork-0.4.1.tar.bz2
-		mirror://gentoo/gentoo-artwork-${PV}.tar.bz2
-		icons? ( mirror://gentoo/gentoo-bubble-icons-${BI_VER}.tar.gz )
+		mirror://gentoo/c0/${PN}-0.2.tar.bz2
+		mirror://gentoo/8f/${PN}-0.3.tar.bz2
+		mirror://gentoo/18/${PN}-0.4.tar.bz2
+		mirror://gentoo/56/${PN}-0.4.1.tar.bz2
+		mirror://gentoo/89/${P}.tar.bz2
+		icons? ( mirror://gentoo/da/gentoo-bubble-icons-${BI_VER}.tar.gz )
 	)
 	!pixmaps? (
 		icons? (
-			mirror://gentoo/gentoo-artwork-0.2.tar.bz2
-			mirror://gentoo/gentoo-artwork-0.3.tar.bz2
-			mirror://gentoo/gentoo-artwork-0.4.tar.bz2
-			mirror://gentoo/gentoo-artwork-${PV}.tar.bz2
-			mirror://gentoo/gentoo-bubble-icons-${BI_VER}.tar.gz
+			mirror://gentoo/c0/${PN}-0.2.tar.bz2
+			mirror://gentoo/8f/${PN}-0.3.tar.bz2
+			mirror://gentoo/18/${PN}-0.4.tar.bz2
+			mirror://gentoo/89/${P}.tar.bz2
+			mirror://gentoo/da/gentoo-bubble-icons-${BI_VER}.tar.gz
 		)
 		!icons? (
-			kde? ( mirror://gentoo/gentoo-artwork-0.2.tar.bz2 )
-			!kde? ( grub? ( mirror://gentoo/gentoo-artwork-0.2.tar.bz2 ) )
-			lilo? ( mirror://gentoo/gentoo-artwork-0.4.tar.bz2 )
+			kde? ( mirror://gentoo/c0/${PN}-0.2.tar.bz2 )
+			!kde? ( grub? ( mirror://gentoo/c0/${PN}-0.2.tar.bz2 ) )
+			lilo? ( mirror://gentoo/18/${PN}-0.4.tar.bz2 )
 		)
 	)"
 
@@ -45,7 +45,7 @@ src_unpack() {
 	# rename unpacked dir so that updated files get overwritten
 	mv "${WORKDIR}"/${PN}-0.2 "${WORKDIR}"/${PN}-0.3 || die
 	if use pixmaps || use icons; then
-		unpack gentoo-artwork-0.3.tar.bz2
+		unpack ${PN}-0.3.tar.bz2
 	fi
 	mv "${WORKDIR}"/${PN}-0.3 "${WORKDIR}"/${PN}-0.4 || die
 	if use pixmaps || use icons || use lilo; then
