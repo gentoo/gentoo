@@ -30,6 +30,7 @@ src_configure() {
 	# https://bugs.gentoo.org/876421
 	# https://github.com/sshlien/abcmidi/issues/9
 	filter-lto
+	# https://github.com/sshlien/abcmidi/pull/15
 	append-cflags -std=gnu17
 
 	default
