@@ -1,18 +1,20 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+COMMIT=400e62395319ab1b0bd9dc260854e95eeb7710a5
+PYTHON_COMPAT=(python3_{11..14})
 inherit edo flag-o-matic multiprocessing python-single-r1 toolchain-funcs xdg
 
 DESCRIPTION="A general purpose tile map editor"
 HOMEPAGE="https://www.mapeditor.org/ https://github.com/mapeditor/tiled"
-SRC_URI="https://github.com/mapeditor/tiled/archive/v${PV}/${P}.tar.gz"
+SRC_URI="https://codeload.github.com/mapeditor/tiled/tar.gz/${COMMIT} -> ${P}.tar.gz"
+S="${WORKDIR}/tiled-${COMMIT}"
 
 LICENSE="BSD BSD-2 GPL-2+"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 IUSE="minimal python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -31,11 +33,7 @@ BDEPEND="
 	dev-qt/qttools:6[linguist]
 "
 
-QBS_PRODUCTS="tiled,csv,json"
-
-PATCHES=(
-	"${FILESDIR}/tiled-1.11-qt6.8.2.patch"
-)
+QBS_PRODUCTS="libtiled,libtilededitor,tiled,csv,json"
 
 pkg_setup() {
 	if use python; then
@@ -46,9 +44,12 @@ pkg_setup() {
 qbs_format_flags() {
 	local -a array
 	for flag in ${@}; do
-		array+=( "\"${flag}\"" )
+		array+=("\"${flag}\"")
 	done
-	echo "[$(IFS=","; echo "${array[*]}")]"
+	echo "[$(
+		IFS=","
+		echo "${array[*]}"
+	)]"
 }
 
 src_configure() {
