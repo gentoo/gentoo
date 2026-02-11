@@ -5,7 +5,7 @@ EAPI=8
 
 inherit autotools
 
-DESCRIPTION="A a set of Thai language support routines"
+DESCRIPTION="Set of Thai language support routines"
 HOMEPAGE="
 	https://linux.thai.net/projects/libthai
 	https://github.com/tlwg/libthai
