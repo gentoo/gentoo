@@ -1,0 +1,13 @@
+See PR pending https://github.com/performous/performous/pull/1105.patch
+fix boost_1.89
+--- a/testing/CMakeLists.txt
++++ b/testing/CMakeLists.txt
+@@ -50,7 +50,7 @@ if(GTest_FOUND)
+ 	
+ 	add_executable(performous_test ${SOURCES})
+ 
+-	find_package(Boost 1.55 REQUIRED COMPONENTS program_options iostreams system locale)
++	find_package(Boost 1.69 REQUIRED COMPONENTS program_options iostreams locale)
+ 	target_link_libraries(performous_test PRIVATE ${Boost_LIBRARIES})
+ 
+ 	find_package(fmt 8.1 REQUIRED CONFIG)

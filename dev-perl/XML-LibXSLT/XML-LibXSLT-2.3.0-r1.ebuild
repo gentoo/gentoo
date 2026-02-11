@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DIST_AUTHOR=SHLOMIF
 DIST_VERSION=2.003000
-inherit perl-module
+inherit perl-module toolchain-funcs
 
 DESCRIPTION="A Perl module to parse XSL Transformational sheets using GNOME's libxslt"
 
@@ -28,3 +28,15 @@ PERL_RM_FILES=(
 	"t/cpan-changes.t" "t/pod.t"
 	"t/style-trailing-space.t"
 )
+
+PATCHES=(
+	# PR pending https://github.com/shlomif/perl-XML-LibXSLT/pull/9.patch
+	"${FILESDIR}"/${PN}-2.3.0-fix_pkgconfig.patch
+)
+
+src_configure() {
+	# used to find libxslt
+	tc-export PKG_CONFIG
+
+	perl-module_src_configure
+}

@@ -44,7 +44,7 @@ else
 	fi
 
 	S="${WORKDIR}/${MY_P}"
-	[[ "${PV}" != *_rc* ]] && KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+	[[ "${PV}" != *_rc* ]] && KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ppc64 ~riscv x86"
 fi
 
 # this is still required to support glibc-2.42 in qemu-user, bug 961307

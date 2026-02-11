@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,6 +31,10 @@ BDEPEND="
 	>=dev-ml/cppo-1.8.0
 	test? ( dev-ml/ounit2[ocamlopt=] )
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-ocaml-5.4.patch
+)
 
 src_compile() {
 	dune-compile ${DUNE_PKG_NAME}

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: nuget.eclass
@@ -109,6 +109,7 @@ export NUGET_PACKAGES
 
 # @FUNCTION: _nuget_set_nuget_uris
 # @USAGE: <nugets>
+# @INTERNAL
 # @DESCRIPTION:
 # Generates the URIs to put in SRC_URI to help fetch dependencies.
 # Constructs a list of NuGets from its arguments.

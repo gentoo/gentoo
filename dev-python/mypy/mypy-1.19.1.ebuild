@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390"
+KEYWORDS="~amd64 ~arm64 ~loong ~m68k ~ppc ~ppc64 ~riscv ~s390"
 IUSE="native-extensions"
 
 # stubgen collides with this package: https://bugs.gentoo.org/585594

@@ -1,4 +1,4 @@
-# Copyright 2014-2025 Gentoo Authors
+# Copyright 2014-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/${PV}/${P}.tar.bz2
 LICENSE="MIT"
 SLOT="0/10"
 if [[ $(ver_cut 3) -lt 900 ]] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 fi
 IUSE="doc input_devices_wacom lua test"
 RESTRICT="!test? ( test )"

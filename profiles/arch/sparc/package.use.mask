@@ -1,6 +1,14 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Jaco Kroon <jaco@uls.co.za> (2026-02-06)
+# Requires sys-auth/libyubikey
+net-dialup/freeradius yubikey
+
+# Ian Jordan <immoloism@gmail.com> (2026-02-04)
+# Unkeyworded dependencies (bug #951360)
+app-accessibility/brltty ocaml ocamlopt
+
 # Sam James <sam@gentoo.org> (2026-01-16)
 # Unkeyworded dependencies (bug #968238)
 media-video/pipewire libcamera

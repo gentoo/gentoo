@@ -300,6 +300,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-icu-77.1.patch"
 	"${FILESDIR}/${P}-icu-78.1.patch"
 	"${FILESDIR}/${P}-poppler-26.01.patch"
+	"${FILESDIR}/${P}-poppler-26.02.patch"
 
 	# add qt6 backend as possible fallback for gtk-based desktop environments:
 	# https://bugs.gentoo.org/950170

@@ -14,7 +14,6 @@
   prevention systems (IDS and IPS).
   </longdescription>
   <use>
-    <flag name="pcapnav">Enable if you want the jump to byte offset feature via <pkg>net-libs/libpcapnav</pkg></flag>
     <flag name="tcpdump">Use <pkg>net-analyzer/tcpdump</pkg> for packet decoding feature </flag>
   </use>
   <upstream>

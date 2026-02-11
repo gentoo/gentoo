@@ -1,16 +1,20 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 # Upstream often give "recommended patches" at https://www.nongnu.org/dmidecode/
 # Check regularly after releases!
-inherit bash-completion-r1 flag-o-matic toolchain-funcs
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/khali.asc
+inherit bash-completion-r1 flag-o-matic toolchain-funcs verify-sig
 
 UPSTREAM_PATCH_COMMITS=()
 DESCRIPTION="DMI (Desktop Management Interface) table related utilities"
 HOMEPAGE="https://www.nongnu.org/dmidecode/"
-SRC_URI="mirror://nongnu/${PN}/${P}.tar.xz"
+SRC_URI="
+	mirror://nongnu/${PN}/${P}.tar.xz
+	verify-sig? ( mirror://nongnu/${PN}/${P}.tar.xz.sig )
+"
 for commit in "${UPSTREAM_PATCH_COMMITS[@]}" ; do
 	SRC_URI+=" https://git.savannah.gnu.org/cgit/dmidecode.git/patch/?id=${commit} -> ${P}-${commit}.patch"
 	UPSTREAM_PATCHES+=( "${DISTDIR}"/${P}-${commit}.patch )
@@ -19,15 +23,26 @@ unset commit
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~alpha ~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="-* ~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv x86"
 IUSE="selinux"
 
 RDEPEND="selinux? ( sec-policy/selinux-dmidecode )"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	virtual/pkgconfig
+	verify-sig? ( sec-keys/openpgp-keys-khali )
+"
 
 PATCHES=(
 	"${UPSTREAM_PATCHES[@]}"
 )
+
+src_unpack() {
+	if use verify-sig; then
+		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.xz{,.sig}
+	fi
+
+	default
+}
 
 src_prepare() {
 	default

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,8 +11,8 @@ inherit cmake-multilib prefix
 MY_P="${PN}-soft-${PV}"
 
 DESCRIPTION="Software implementation of the OpenAL 3D audio API"
-HOMEPAGE="https://www.openal-soft.org/"
-SRC_URI="https://www.openal-soft.org/openal-releases/${MY_P}.tar.bz2"
+HOMEPAGE="https://openal-soft.org/"
+SRC_URI="https://openal-soft.org/openal-releases/${MY_P}.tar.bz2"
 S="${WORKDIR}"/${MY_P}
 
 # See https://github.com/kcat/openal-soft/blob/e0097c18b82d5da37248c4823fde48b6e0002cdd/BSD-3Clause

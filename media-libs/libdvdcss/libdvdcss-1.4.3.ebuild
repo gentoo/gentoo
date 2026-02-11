@@ -1,7 +1,7 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI="8"
 
 inherit multilib-minimal
 
@@ -11,10 +11,18 @@ SRC_URI="https://download.videolan.org/pub/${PN}/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="1.2"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~arm64-macos ~x64-macos"
 IUSE="doc"
 
 BDEPEND="doc? ( app-text/doxygen )"
+
+src_prepare() {
+	default
+
+	# bug 969100 -no-cpp-precomp works with gcc-apple and probably
+	# AppleClang, neither of which we use on macOS systems in Gentoo Prefix
+	sed -i -e 's/-no-cpp-precomp//' configure || die
+}
 
 multilib_src_configure() {
 	ECONF_SOURCE=${S} econf \

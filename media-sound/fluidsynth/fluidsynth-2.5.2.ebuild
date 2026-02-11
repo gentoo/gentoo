@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ SRC_URI="
 # Apache-2.0 for gcem
 LICENSE="Apache-2.0 LGPL-2.1+"
 SLOT="0/3"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ~ppc ppc64 ~riscv ~sparc x86"
 IUSE="alsa dbus debug doc ipv6 jack ladspa openmp oss pipewire portaudio pulseaudio +readline sdl +sndfile systemd threads"
 
 BDEPEND="

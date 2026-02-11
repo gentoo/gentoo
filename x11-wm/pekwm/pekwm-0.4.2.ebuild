@@ -5,13 +5,9 @@ EAPI=8
 
 inherit cmake desktop optfeature
 
-DESCRIPTION="A lightweight window manager initially based on aewm++"
-HOMEPAGE="
-	https://www.pekwm.se/
-"
-SRC_URI="
-	https://www.pekwm.se/pekwm/uv/pekwm-${PV}.tar.gz
-"
+DESCRIPTION="Lightweight window manager initially based on aewm++"
+HOMEPAGE="https://www.pekwm.se/"
+SRC_URI="https://www.pekwm.se/pekwm/uv/pekwm-${PV}.tar.gz"
 S="${WORKDIR}/pekwm-${PV}"
 
 LICENSE="GPL-2"
@@ -26,7 +22,10 @@ RDEPEND="
 	x11-libs/libX11
 	x11-libs/libXext
 	jpeg? ( media-libs/libjpeg-turbo:= )
-	pango? ( x11-libs/pango x11-libs/cairo[X] )
+	pango? (
+		x11-libs/cairo[X]
+		x11-libs/pango
+	)
 	png? ( media-libs/libpng:0= )
 	truetype? ( x11-libs/libXft )
 	xinerama? ( x11-libs/libXinerama )
@@ -36,6 +35,8 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 src_configure() {
+	CMAKE_BUILD_TYPE=$(usex debug Debug)
+
 	local mycmakeargs=(
 		-DENABLE_IMAGE_JPEG=$(usex jpeg)
 		-DENABLE_IMAGE_PNG=$(usex png)
@@ -45,14 +46,10 @@ src_configure() {
 		-DENABLE_PANGO=$(usex pango)
 		-DTESTS=$(usex test)
 	)
-
-	CMAKE_BUILD_TYPE=$(usex debug Debug)
-
 	cmake_src_configure
 }
 
 src_install() {
-
 	cmake_src_install
 
 	# Install contributor scripts into doc folder
@@ -66,26 +63,18 @@ src_install() {
 		/usr/bin/pekwm
 	_EOF_
 
-	# Insert a GDM/KDM xsession file
-	make_session_desktop ${PN} ${PN}
+	make_session_desktop --eapi9 ${PN} -X
 }
 
 pkg_postinst() {
-
-	elog "Since pekwm 0.2.0 themes can be installed and maintained using "
+	elog "Since pekwm 0.2.0, themes can be installed and maintained using"
 	elog "pekwm_theme [install|uninstall|show|search|new|update]."
 	elog "Check https://www.pekwm.se/themes/ for details."
-
 	elog
-
-	optfeature "themes management (pekwm_theme) support" dev-vcs/git
-
-	elog
-
 	elog "User contributed scripts have been installed into:"
 	elog "${EROOT}/usr/share/doc/${PF}/contrib"
-
 	elog
-
 	elog "Pekwm supports Pango fonts since 0.3.0."
+	elog
+	optfeature "themes management (pekwm_theme) support" "dev-vcs/git"
 }

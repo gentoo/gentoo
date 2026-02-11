@@ -1,0 +1,49 @@
+https://gitlab.cern.ch/hepmc/HepMC/-/merge_requests/17
+From 3b1f6ebfa2af3e56013c8f9f771baa978bfe426d Mon Sep 17 00:00:00 2001
+From: Alexander Puck Neuwirth <alexander@neuwirth-informatik.de>
+Date: Thu, 22 Jan 2026 11:26:12 +0100
+Subject: [PATCH] fix: Policy CMP0153: The exec_program command should not be
+ called.
+
+---
+ cmake/Modules/HepMCUseCpack.cmake  | 5 +++--
+ cmake/Modules/HepMCVariables.cmake | 5 +++--
+ 2 files changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/cmake/Modules/HepMCUseCpack.cmake b/cmake/Modules/HepMCUseCpack.cmake
+index 49040b7..298cff0 100644
+--- a/cmake/Modules/HepMCUseCpack.cmake
++++ b/cmake/Modules/HepMCUseCpack.cmake
+@@ -8,9 +8,10 @@
+ #
+ FUNCTION(_My_COMPILER_DUMPVERSION _OUTPUT_VERSION)
+ 
+-  EXEC_PROGRAM(${CMAKE_CXX_COMPILER}
+-    ARGS ${CMAKE_CXX_COMPILER_ARG1} -dumpversion
++  execute_process(
++    COMMAND ${CMAKE_CXX_COMPILER} ${CMAKE_CXX_COMPILER_ARG1} -dumpversion
+     OUTPUT_VARIABLE _my_COMPILER_VERSION
++    OUTPUT_STRIP_TRAILING_WHITESPACE
+   )
+   set( COMPILER_VERSION ${_my_COMPILER_VERSION} PARENT_SCOPE)
+   STRING(REGEX REPLACE "([0-9])\\.([0-9])(\\.[0-9])?" "\\1\\2"
+diff --git a/cmake/Modules/HepMCVariables.cmake b/cmake/Modules/HepMCVariables.cmake
+index bd8b713..475310b 100644
+--- a/cmake/Modules/HepMCVariables.cmake
++++ b/cmake/Modules/HepMCVariables.cmake
+@@ -10,9 +10,10 @@
+ # so we need this for the example makefile
+ macro( _hepmc_fortran_compiler )
+ 
+-  EXEC_PROGRAM(${CMAKE_CXX_COMPILER}
+-    ARGS ${CMAKE_CXX_COMPILER_ARG1} -dumpversion
++  execute_process(
++    COMMAND ${CMAKE_CXX_COMPILER} ${CMAKE_CXX_COMPILER_ARG1} -dumpversion
+     OUTPUT_VARIABLE _my_COMPILER_VERSION
++    OUTPUT_STRIP_TRAILING_WHITESPACE
+   )
+   STRING(REGEX REPLACE "([0-9])\\.([0-9])(\\.[0-9])?" "\\1"
+     _my_COMPILER_BASE_VERSION ${_my_COMPILER_VERSION})
+-- 
+GitLab
+

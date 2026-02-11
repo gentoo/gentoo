@@ -1,0 +1,20 @@
+Description: Fix FTBFS on RISC-V by manually disabling native SIMD
+ Manually disable native SIMD on riscv64 to prevent FTBFS
+Author: Valentin Haudiquet <valentin.haudiquet@canonical.com>
+Last-Update: 2025-09-09
+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/webkit2gtk/+bug/2121516
+---
+
+--- webkit2gtk-2.48.6.orig/Source/WTF/wtf/simde/arm/neon.h
++++ webkit2gtk-2.48.6/Source/WTF/wtf/simde/arm/neon.h
+@@ -31,6 +31,10 @@
+ #if !defined(SIMDE_ARM_NEON_H)
+ #define SIMDE_ARM_NEON_H
+ 
++#ifndef SIMDE_RISCV_V_NO_NATIVE
++#define SIMDE_RISCV_V_NO_NATIVE 1
++#endif
++
+ /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
+ /* b8e468a68a879f51c694791e17a4bff175d7cd5e */
+ /* :: Begin simde/arm/neon/types.h :: */

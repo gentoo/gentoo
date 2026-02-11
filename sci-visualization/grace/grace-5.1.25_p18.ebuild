@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,9 +12,10 @@ SRC_URI="
 	ftp://plasma-gate.weizmann.ac.il/pub/${PN}/src/stable/${P/_p*}.tar.gz
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV/_p*}-${PV/*_p}.debian.tar.xz
 "
+S="${WORKDIR}/${P/_p*}"
 
-SLOT="0"
 LICENSE="GPL-2 LGPL-2"
+SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="fftw fortran jpeg netcdf png"
 
@@ -30,8 +31,6 @@ DEPEND="
 	png? ( media-libs/libpng:0= )"
 RDEPEND="${DEPEND}
 	x11-misc/xdg-utils"
-
-S="${WORKDIR}/${P/_p*}"
 
 PATCHES=(
 	# Fix for missing defines when fortran is disabled
@@ -71,11 +70,6 @@ src_prepare() {
 		-e 's:$(GRACE_HOME)/include:$(PREFIX)/include:g' \
 		-e 's:$(PREFIX)/man:$(PREFIX)/share/man:g' \
 		Makefile */Makefile || die "sed failed"
-
-	sed -i \
-		-e 's:bin/grconvert:grconvert:' \
-		-e 's:auxiliary/fdf2fit:fdf2fit:' \
-		gracerc || die
 }
 
 src_configure() {

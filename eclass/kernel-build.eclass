@@ -335,7 +335,8 @@ kernel-build_src_test() {
 
 	kernel-install_test "${KV_FULL}" \
 		"${WORKDIR}/build/$(dist-kernel_get_image_path)" \
-		"${T}/lib/modules/${KV_FULL}"
+		"${T}/lib/modules/${KV_FULL}" \
+		"${WORKDIR}/modprep/.config"
 }
 
 # @FUNCTION: kernel-build_src_install
@@ -367,7 +368,7 @@ kernel-build_src_install() {
 	dostrip -x /lib/modules
 
 	local compress=()
-	if [[ ${KERNEL_IUSE_GENERIC_UKI} ]] && ! use modules-compress; then
+	if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
 		compress+=(
 			# Workaround for <6.12, does not have CONFIG_MODULE_COMPRESS_ALL
 			suffix-y=
@@ -512,9 +513,15 @@ kernel-build_src_install() {
 				pkcs11 plymouth qemu qemu-net resume rngd rootfs-block shutdown
 				systemd systemd-ac-power systemd-ask-password systemd-cryptsetup
 				systemd-emergency systemd-initrd systemd-integritysetup
-				systemd-pcrphase systemd-sysusers systemd-udevd
+				systemd-pcrextend systemd-sysusers systemd-udevd
 				systemd-veritysetup terminfo tpm2-tss udev-rules uefi-lib
 				usrmount virtiofs
+			)
+
+			# Pulls in huge firmware files
+			local omit_drivers=(
+				amdgpu i915 nfp nova nova_core nouveau nvidia nvidia-drm
+				nvidia-modeset nvidia-peermem nvidia-uvm radeon xe
 			)
 
 			local dracut_args=(
@@ -524,7 +531,7 @@ kernel-build_src_install() {
 				--kmoddir "${ED}/lib/modules/${KV_FULL}"
 				--kver "${KV_FULL}"
 				--verbose
-				--compress="xz -9e --check=crc32"
+				--compress="$(dist-kernel_get_compressor "${ED}/usr/src/linux-${KV_FULL}/.config")"
 				--no-hostonly
 				--no-hostonly-cmdline
 				--no-hostonly-i18n
@@ -535,8 +542,7 @@ kernel-build_src_install() {
 				--reproducible
 				--ro-mnt
 				--modules "${dracut_modules[*]}"
-				# Pulls in huge firmware files
-				--omit-drivers "amdgpu i915 nfp nouveau nvidia xe"
+				--omit-drivers "${omit_drivers[*]}"
 			)
 
 			# Tries to update ld cache
@@ -654,6 +660,9 @@ kernel-build_src_install() {
 			> "${image%/*}/uki.efi" || die
 		fi
 		> "${image%/*}/initrd" || die
+
+		# If requested, compress modules *after* building generic initrd
+		kernel-install_compress_modules
 	fi
 
 	# unset to at least be out of the environment file in, e.g. shared binpkgs
@@ -736,16 +745,8 @@ kernel-build_merge_configs() {
 		cat <<-EOF > "${WORKDIR}/module-compress.config" || die
 			CONFIG_MODULE_COMPRESS=y
 			CONFIG_MODULE_COMPRESS_XZ=y
+			# CONFIG_MODULE_COMPRESS_ALL is not set
 		EOF
-		# CONFIG_MODULE_COMPRESS_ALL is supported only by >=6.12, for older
-		# versions we accomplish the same by overriding suffix-y=
-		if use modules-compress; then
-			echo "CONFIG_MODULE_COMPRESS_ALL=y" \
-				>> "${WORKDIR}/module-compress.config" || die
-		else
-			echo "# CONFIG_MODULE_COMPRESS_ALL is not set" \
-				>> "${WORKDIR}/module-compress.config" || die
-		fi
 		merge_configs+=( "${WORKDIR}/module-compress.config" )
 	fi
 

@@ -1,16 +1,20 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 # Please keep a version around that matches Debian/Ubuntu for compatibility.
-inherit systemd
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/tinc.asc
+inherit systemd verify-sig
 
 DESCRIPTION="tinc is an easy to configure VPN implementation"
 HOMEPAGE="https://www.tinc-vpn.org/"
-SRC_URI="https://www.tinc-vpn.org/packages/${P}.tar.gz"
+SRC_URI="
+	https://www.tinc-vpn.org/packages/${P}.tar.gz
+	verify-sig? ( https://www.tinc-vpn.org/packages/${P}.tar.gz.sig )
+"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="+lzo uml vde +zlib"
@@ -23,6 +27,9 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 	vde? ( net-misc/vde )
+"
+BDEPEND="
+	verify-sig? ( sec-keys/openpgp-keys-tinc )
 "
 
 src_configure() {

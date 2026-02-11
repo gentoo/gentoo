@@ -18,7 +18,7 @@ S="${WORKDIR}/xmlunit-${PV}/xmlunit-core"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ppc64"
+KEYWORDS="amd64 arm64 ppc64"
 
 DEPEND="
 	>=dev-java/jaxb-api-2.3.3-r2:2

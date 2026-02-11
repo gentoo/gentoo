@@ -1,0 +1,28 @@
+https://gitlab.com/amavis/amavis/-/commit/eb8c27eebe6bd7f64ca16a63fdd3c52d8c77c857
+
+From eb8c27eebe6bd7f64ca16a63fdd3c52d8c77c857 Mon Sep 17 00:00:00 2001
+From: Juliano Guidini <jguidini@gmail.com>
+Date: Mon, 29 Sep 2025 15:09:33 +0000
+Subject: [PATCH] Solve test errors
+
+---
+ t/Amavis/UnpackersTest.pm | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/t/Amavis/UnpackersTest.pm b/t/Amavis/UnpackersTest.pm
+index 34e12d2..69a056d 100644
+--- a/t/Amavis/UnpackersTest.pm
++++ b/t/Amavis/UnpackersTest.pm
+@@ -90,7 +90,7 @@ sub xz : Tests(3) {
+         skip ('xz not found', 1) unless $xz;
+         skip ('file not found', 1) unless $Amavis::Conf::file;
+ 
+-        local $ENV{PATH} = '';
++        local $ENV{PATH} = '/';
+         my $tempdir = File::Temp->newdir('test-directory-tmp-XXXXX', CLEANUP => 1, TMPDIR => 1);
+         mkdir (my $partsdir = File::Spec->join($tempdir->dirname, 'parts'));
+ 
+-- 
+GitLab
+
+

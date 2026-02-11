@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -26,7 +26,7 @@ S="${WORKDIR}"
 
 LICENSE="Digium"
 SLOT="0/${AST_PV}"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 RESTRICT="mirror strip"
 
 RDEPEND="=net-misc/asterisk-$(ver_cut 1)*"

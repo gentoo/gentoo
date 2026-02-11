@@ -5,6 +5,19 @@
 		<email>tupone@gentoo.org</email>
 		<name>Tupone Alfredo</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		xyzservices is a lightweight library providing a repository of
+		available XYZ services offering raster basemap tiles. The repository
+		is provided via Python API and as a compressed JSON file.
+		XYZ tiles can be used as background for your maps to provide necessary
+		spatial context. xyzservices offer specifications of many tile
+		services and provide an easy-to-use tools to plug them into your work,
+		no matter if interactive or static.
+	</longdescription>
 	<upstream>
 		<remote-id type="github">geopandas/xyzservices</remote-id>
 	</upstream>

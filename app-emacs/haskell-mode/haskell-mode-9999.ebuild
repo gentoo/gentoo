@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,27 +9,25 @@ DESCRIPTION="Mode for editing (and running) Haskell programs in Emacs"
 HOMEPAGE="https://haskell.github.io/haskell-mode/
 	https://www.haskell.org/haskellwiki/Emacs#Haskell-mode"
 
-if [[ ${PV} == *9999* ]] ; then
+if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/haskell/${PN}.git"
+
+	EGIT_REPO_URI="https://github.com/haskell/${PN}"
 else
 	SRC_URI="https://github.com/haskell/${PN}/archive/v${PV}.tar.gz
 		-> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+
+	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
 LICENSE="GPL-3+ FDL-1.2+"
 SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
-
-DEPEND="test? ( dev-lang/ghc )"
-BDEPEND="sys-apps/texinfo"
 
 ELISP_REMOVE="
-	tests/haskell-cabal-tests.el
 	tests/haskell-customize-tests.el
-	tests/haskell-lexeme-tests.el
+	tests/haskell-exec-tests.el
+	tests/haskell-mode-tests.el
+	tests/inferior-haskell-tests.el
 "
 
 DOCS=( NEWS README.md )
@@ -52,12 +50,15 @@ src_compile() {
 }
 
 src_test() {
-	emake check-ert
+	local test_file=""
+	for test_file in ./tests/?*-tests.el; do
+		elisp-test-ert tests -l haskell -l "${test_file}"
+	done
 }
 
 src_install() {
 	elisp_src_install
 
-	insinto "${SITEETC}"/${PN}
-	doins logo.svg
+	insinto "${SITEETC}/${PN}"
+	doins ./logo.svg
 }

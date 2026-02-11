@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -50,6 +50,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.63.0-autoconf-2.70.patch
 	"${FILESDIR}"/${PN}-3.65.0-sane-backends-1.1.patch
 	"${FILESDIR}"/${PN}-3.65.0-boost-1.84-headers.patch
+	"${FILESDIR}"/${PN}-3.65.0-boost-1.89.patch # bug 963413
 )
 
 src_prepare() {

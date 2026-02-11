@@ -14,7 +14,7 @@ S="${WORKDIR}/zstd-jni-$(ver_rs 3 -)"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc64"
+KEYWORDS="amd64 arm64 ppc64"
 
 RDEPEND=">=virtual/jre-1.8:*"
 DEPEND=">=virtual/jdk-1.8:*"

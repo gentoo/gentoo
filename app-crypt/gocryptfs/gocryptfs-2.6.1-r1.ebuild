@@ -22,12 +22,12 @@ LICENSE="MIT"
 # Vendored licenses
 LICENSE+=" Apache-2.0 BSD MIT"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 IUSE="test"
 
-PROPERTIES="test_privileged"
 RESTRICT="!test? ( test ) test"
+PROPERTIES="test_privileged"
 
 RDEPEND="dev-libs/openssl:="
 DEPEND="${RDEPEND}"

@@ -143,7 +143,7 @@ EPYTEST_XDIST=1
 # distutils_enable_tests unconditionally touches BDEPEND
 
 PATCHES=(
-	"${FILESDIR}"/${P}-poppler-26.01.patch # pending upstream
+	"${FILESDIR}"/${P}-poppler-26.0{1,2}.patch # in git master
 )
 
 pkg_setup() {

@@ -98,6 +98,10 @@ src_configure() {
 	xdg_environment_reset
 	append-lfs-flags # bug #898506
 
+	# giscanner is called if cairo and introspection are enabled.
+	# In that case, PKG_CONFIG must be defined.
+	tc-export PKG_CONFIG
+
 	local mycmakeargs=(
 		-DBUILD_GTK_TESTS=OFF
 		-DBUILD_QT5_TESTS=OFF

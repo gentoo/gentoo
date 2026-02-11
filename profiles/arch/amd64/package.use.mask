@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -16,6 +16,14 @@
 #
 
 #--- END OF EXAMPLES ---
+
+# Ionen Wolkens <ionen@gentoo.org> (2026-02-11)
+# net-libs/librist is available here
+media-video/ffmpeg -rist
+
+# Andrey Grozin <grozin@gentoo.org> (2026-01-08)
+# dev-python/pyside[tools] is available here
+>=media-gfx/asymptote-3.06 -gui
 
 # Sam James <sam@gentoo.org> (2025-12-23)
 # sys-process/numactl is available here
@@ -462,11 +470,6 @@ media-libs/opencv -contribxfeatures2d
 # -imhttp: www-servers/civetweb is keyworded on amd64
 # -mdblookup: dev-libs/libmaxminddb is keyworded on amd64
 app-admin/rsyslog -imhttp -mdblookup
-
-# Alexis Ballier <aballier@gentoo.org> (2017-02-21)
-# spacetime works on amd64
-# https://caml.inria.fr/pub/docs/manual-ocaml/spacetime.html
-dev-lang/ocaml -spacetime
 
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2017-01-04)
 # Matt Whitlock <gentoo@mattwhitlock.name> (2025-04-12)

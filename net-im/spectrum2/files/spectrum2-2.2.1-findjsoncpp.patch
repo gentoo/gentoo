@@ -1,0 +1,42 @@
+From: Bill Prendergast <dek.devel@baisenvar.info>
+
+* enable import of meson compiled jsoncpp cmake module
+
+--- a/cmake_modules/FindJsonCpp.cmake
++++ b/cmake_modules/FindJsonCpp.cmake
+@@ -35,6 +35,11 @@
+ # (See accompanying file LICENSE_1_0.txt or copy at
+ # http://www.boost.org/LICENSE_1_0.txt)
+ 
++# fail if IMPORTED_LOCATION not set, rather than setting to jsoncpp-NOTFOUND
++if(POLICY CMP0111)
++	cmake_policy(SET CMP0111 NEW)
++endif()
++
+ set(__jsoncpp_have_namespaced_targets OFF)
+ set(__jsoncpp_have_interface_support OFF)
+ if(NOT ("${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" LESS 3.0))
+@@ -169,6 +174,10 @@ if(jsoncpp_FOUND AND NOT __jsoncpp_info_string STREQUAL "${JSONCPP_CACHED_JSONCP
+ 		if(__jsoncpp_interface_include_dirs)
+ 			set(JSONCPP_IMPORTED_INCLUDE_DIRS "${__jsoncpp_interface_include_dirs}" CACHE INTERNAL "" FORCE)
+ 		endif()
++		get_property(__jsoncpp_imported_location TARGET jsoncpp_lib PROPERTY IMPORTED_LOCATION)
++		if(__jsoncpp_imported_location)
++			set(JSONCPP_IMPORTED_LOCATION "${__jsoncpp_imported_location}" CACHE INTERNAL "" FORCE)
++		endif()
+ 	endif()
+ 	if(TARGET jsoncpp_lib_static AND NOT JSONCPP_IMPORTED_INCLUDE_DIRS)
+ 		get_property(__jsoncpp_interface_include_dirs TARGET jsoncpp_lib_static PROPERTY INTERFACE_INCLUDE_DIRECTORIES)
+@@ -255,6 +264,12 @@ if(JSONCPP_FOUND)
+ 	endif()
+ 
+ 	set(JSONCPP_LIBRARY ${JSONCPP_IMPORTED_LIBRARY})
++	set_target_properties(jsoncpp_lib PROPERTIES
++		IMPORTED_LOCATION_RELEASE "${JSONCPP_IMPORTED_LOCATION}"
++		IMPORTED_LOCATION_RELWITHDEBINFO "${JSONCPP_IMPORTED_LOCATION}"
++		IMPORTED_LOCATION_MINSIZEREL "${JSONCPP_IMPORTED_LOCATION}"
++		IMPORTED_LOCATION_NONE "${JSONCPP_IMPORTED_LOCATION}"
++		IMPORTED_LOCATION_DEBUG "${JSONCPP_IMPORTED_LOCATION}")
+ 	set(JSONCPP_INCLUDE_DIRS ${JSONCPP_IMPORTED_INCLUDE_DIRS})
+ 	if(DEFINED JSONCPP_IMPORTED_LIBRARY_IS_SHARED)
+ 		set(JSONCPP_LIBRARY_IS_SHARED ${JSONCPP_IMPORTED_LIBRARY_IS_SHARED})

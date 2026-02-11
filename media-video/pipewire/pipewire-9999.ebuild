@@ -62,7 +62,7 @@ LICENSE="MIT LGPL-2.1+ GPL-2"
 # ABI was broken in 0.3.42 for https://gitlab.freedesktop.org/pipewire/wireplumber/-/issues/49
 SLOT="0/0.4"
 IUSE="${PIPEWIRE_DOCS_USEFLAG} bluetooth elogind dbus doc echo-cancel extra ffmpeg fftw flatpak gstreamer gsettings"
-IUSE+=" ieee1394 jack-client jack-sdk libcamera liblc3 loudness lv2 modemmanager pipewire-alsa readline roc selinux"
+IUSE+=" ieee1394 jack-client jack-sdk libcamera loudness lv2 modemmanager pipewire-alsa readline roc selinux"
 IUSE+=" pulseaudio sound-server ssl system-service systemd test v4l X zeroconf"
 
 # Once replacing system JACK libraries is possible, it's likely that
@@ -122,6 +122,7 @@ RDEPEND="
 	bluetooth? (
 		dev-libs/glib
 		media-libs/fdk-aac
+		media-sound/liblc3
 		media-libs/libldac
 		media-libs/libfreeaptx
 		media-libs/opus
@@ -155,7 +156,6 @@ RDEPEND="
 		!media-sound/jack2
 	)
 	libcamera? ( media-libs/libcamera:= )
-	liblc3? ( media-sound/liblc3 )
 	loudness? ( media-libs/libebur128:=[${MULTILIB_USEDEP}] )
 	lv2? ( media-libs/lilv )
 	modemmanager? ( >=net-misc/modemmanager-1.10.0 )
@@ -258,6 +258,7 @@ multilib_src_configure() {
 		$(meson_native_use_feature bluetooth bluez5-backend-hsphfpd)
 		$(meson_native_use_feature bluetooth bluez5-codec-aac)
 		$(meson_native_use_feature bluetooth bluez5-codec-aptx)
+		$(meson_native_use_feature bluetooth bluez5-codec-lc3)
 		$(meson_native_use_feature bluetooth bluez5-codec-ldac)
 		$(meson_native_use_feature bluetooth bluez5-codec-g722)
 		$(meson_native_use_feature bluetooth opus)
@@ -277,7 +278,6 @@ multilib_src_configure() {
 		-Devl=disabled # Matches upstream
 		-Dtest=disabled # fakesink and fakesource plugins
 		-Dbluez5-codec-lc3plus=disabled # unpackaged
-		$(meson_native_use_feature liblc3 bluez5-codec-lc3)
 		$(meson_feature loudness ebur128)
 		$(meson_feature fftw)
 		$(meson_native_use_feature lv2)

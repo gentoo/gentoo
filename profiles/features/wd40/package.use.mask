@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Ionen Wolkens <ionen@gentoo.org> (2025-12-24)
@@ -166,7 +166,6 @@ dev-debug/gef doc
 # Sam James <sam@gentoo.org> (2022-12-11)
 # net-libs/rustls-ffi needs Rust.
 net-misc/curl rustls curl_ssl_rustls
-www-servers/apache apache2_modules_tls
 
 # matoro <matoro_gentoo@matoro.tk> (2022-12-01)
 # tree-sitter-grammar.eclass adds dev-util/tree-sitter-cli as test dep
@@ -234,7 +233,7 @@ net-misc/stunnel test
 
 # Michał Górny <mgorny@gentoo.org> (2022-07-29)
 # More packages requiring dev-python/pyopenssl or its revdeps.
-app-admin/salt libcloud openssl test
+app-admin/salt libcloud test
 dev-python/aiohttp test
 dev-python/cheroot test
 dev-python/cherrypy ssl

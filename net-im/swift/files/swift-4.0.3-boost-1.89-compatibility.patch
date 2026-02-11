@@ -1,0 +1,11 @@
+--- a/BuildTools/SCons/SConstruct
++++ b/BuildTools/SCons/SConstruct
+@@ -211,7 +211,7 @@
+         boost_flags["CPPFLAGS"] = [("-isystem", env["boost_includedir"])]
+ boost_conf_env.MergeFlags(boost_flags)
+ conf = Configure(boost_conf_env)
+-boostLibs = [(None, "signals2.hpp"), ("system", "system/system_error.hpp"), ("thread", None), ("regex", None), ("program_options", None), ("filesystem", None), ("serialization", "archive/text_oarchive.hpp"), ("date_time", "date_time/date.hpp")]
++boostLibs = [(None, "signals2.hpp"), ("thread", None), ("regex", None), ("program_options", None), ("filesystem", None), ("serialization", "archive/text_oarchive.hpp"), ("date_time", "date_time/date.hpp")]
+ allLibsPresent = True
+ libNames = []
+ for (lib, header) in boostLibs :

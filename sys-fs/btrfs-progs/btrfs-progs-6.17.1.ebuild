@@ -149,8 +149,7 @@ src_configure() {
 		python_setup
 	fi
 
-	# bash as a temporary workaround for https://github.com/kdave/btrfs-progs/pull/721
-	CONFIG_SHELL="${BROOT}"/bin/bash econf "${myeconfargs[@]}"
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: toolchain-autoconf.eclass
@@ -102,8 +102,9 @@ toolchain-autoconf_src_install() {
 	else
 		rm -f dir || die
 
-		local major="$(ver_cut 1)"
-		local minor="$(ver_cut 2)"
+		local major="$(ver_cut 1 ${SLOT})"
+		local minor="$(ver_cut 2 ${SLOT})"
+
 		local idx="$((99999-(major*1000+minor)))"
 		newenvd - "${TC_AUTOCONF_ENVPREFIX}${PN}${idx}" <<-EOF
 		INFOPATH="${TC_AUTOCONF_INFOPATH}"

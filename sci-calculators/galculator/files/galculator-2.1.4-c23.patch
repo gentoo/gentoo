@@ -1,0 +1,106 @@
+From: "Henrique F. Simoes" <henriquesimoes@riseup.net>
+Date: Wed, 15 Oct 2025 21:17:51 -0300
+Subject: Declare function parameters as required by C23
+
+In C23, having no parameter in a function declaration no longer means an
+"unspecified" number of arguments [1]. Therefore, this code fails to
+build with this standard. Declare the missing function arguments, so
+that it compiles once again with the default standard from modern
+compilers, such as GCC 15.
+
+The exception here is the set_{basic,scientific}_object_data functions,
+which actually don't use their argument at all. Thus, their unique calls
+are changed instead.
+
+Because functions registered by set_disp_ctrl_object_data don't receive
+a button pointer as argument as the others, declare a new struct for
+holding the entries for that. It is named after "display" as it is only
+used for display control buttons.
+
+[1] https://gcc.gnu.org/gcc-15/porting_to.html
+
+Bug-Debian: https://bugs.debian.org/1096669
+---
+ src/callbacks.c  | 2 +-
+ src/galculator.h | 8 +++++++-
+ src/ui.c         | 6 +++---
+ src/ui.h         | 2 +-
+ 4 files changed, 12 insertions(+), 6 deletions(-)
+
+diff --git a/src/callbacks.c b/src/callbacks.c
+index 503fb13..7259afe 100644
+--- a/src/callbacks.c
++++ b/src/callbacks.c
+@@ -262,7 +262,7 @@ void
+ on_gfunc_button_clicked                (GtkToggleButton       *button,
+                                         gpointer         user_data)
+ {
+-    void    (*func)();
++    void    (*func)(GtkToggleButton *);
+     char     *display_string;
+ 
+     if (gtk_toggle_button_get_active(button) == FALSE) return;
+diff --git a/src/galculator.h b/src/galculator.h
+index 22a4060..bb2ff9f 100644
+--- a/src/galculator.h
++++ b/src/galculator.h
+@@ -180,9 +180,15 @@ typedef struct {
+ typedef struct {
+ 	char		*button_name;
+ 	char 		*display_string;
+-	void		(*func)();
++	void		(*func)(GtkToggleButton *button);
+ } s_gfunc_map;
+ 
++typedef struct {
++	char		*button_name;
++	char 		*display_string;
++	void		(*func)();
++} s_disp_func_map;
++
+ typedef struct {
+ 	char		*button_name;
+ 	/* display_string: what to display in history or formula entry. hasn't 
+diff --git a/src/ui.c b/src/ui.c
+index 6eaac7d..3ed50a5 100644
+--- a/src/ui.c
++++ b/src/ui.c
+@@ -244,7 +244,7 @@ static void set_disp_ctrl_object_data ()
+ {
+ 	int	counter=0;
+ 	
+-	s_gfunc_map map[] = {\
++	s_disp_func_map map[] = {\
+ 		{"button_clr", NULL, clear},\
+ 		{"button_backspace", NULL, backspace},\
+ 		{"button_allclr", NULL, all_clear},\
+@@ -433,14 +433,14 @@ void ui_main_window_buttons_create (int mode)
+ 		button_box_xml = gtk_builder_file_open (BASIC_GLADE_FILE, TRUE);
+         box = GTK_WIDGET(gtk_builder_get_object (view_xml, "classic_view_vbox"));
+ 		ui_pack_from_xml (box, 2, button_box_xml, "button_box", TRUE, TRUE);
+-		set_basic_object_data (button_box_xml);
++		set_basic_object_data ();
+ 		break;
+ 	case SCIENTIFIC_MODE:
+ 		if (button_box_xml) g_object_unref (G_OBJECT(button_box_xml));
+ 		button_box_xml = gtk_builder_file_open (SCIENTIFIC_GLADE_FILE, TRUE);
+         box = GTK_WIDGET(gtk_builder_get_object (view_xml, "classic_view_vbox"));
+ 		ui_pack_from_xml (box, 2, button_box_xml, "button_box", TRUE, TRUE);
+-		set_scientific_object_data (button_box_xml);
++		set_scientific_object_data ();
+ 		break;
+ 	case PAPER_MODE:
+ 		return;
+diff --git a/src/ui.h b/src/ui.h
+index 90992a2..a20ac3c 100644
+--- a/src/ui.h
++++ b/src/ui.h
+@@ -74,7 +74,7 @@ void ui_formula_entry_activate ();
+ void ui_formula_entry_set (G_CONST_RETURN gchar *text);
+ void ui_formula_entry_insert (G_CONST_RETURN gchar *text);
+ void ui_formula_entry_backspace ();
+-void ui_formula_entry_state ();
++void ui_formula_entry_state (gboolean error);
+ void ui_button_set_pan ();
+ void ui_button_set_rpn ();
+ void ui_relax_fmod_buttons ();

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of possible protocols for gpsd package.
@@ -19,14 +19,10 @@ isync - Isync protocol support
 itrax - iTrax protocol support
 navcom - Navcom protocol support
 nmea2000 - NMEA2000/CAN support
-oceanserver - OceanServer protocol support
 oncore - OnCore protocol support
-rtcm104v2 - RTCM104V2 protocol support
-rtcm104v3 - RTCM104V3 protocol support
 sirf - SiRF protocol support
 skytraq - Skytraq protocol support
 superstar2 - SuperStarII protocol support
 tnt - True North protocol support
 tripmate - Tripmate protocol support
 tsip - Trimble TSIP protocol support
-ublox - U-Blox Protocol support

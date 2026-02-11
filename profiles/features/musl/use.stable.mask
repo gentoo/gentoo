@@ -1,0 +1,8 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2026-02-05)
+# >=sys-apps/systemd-259 does not yet have stable keywords
+systemd
+generic-uki
+uwsgi_plugins_systemd_logger

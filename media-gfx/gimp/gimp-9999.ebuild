@@ -47,10 +47,7 @@ REQUIRED_USE="
 
 RESTRICT="!test? ( test )"
 
-# automagic dependency on bash to create bash-completions
-
-# media-libs/{babl,gegl} are required to be built with USE="introspection"
-# to fix the compilation checking of /usr/share/gir-1.0/{Babl-0.1gir,Gegl-0.4.gir}
+# See libgimp_deps_table in libgimp/meson.build for introspection dependencies, bug #969449
 COMMON_DEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
@@ -64,7 +61,7 @@ COMMON_DEPEND="
 	>=app-text/poppler-0.69.0[cairo]
 	>=app-text/poppler-data-0.4.9
 	>=dev-libs/appstream-0.16.1:=
-	>=dev-libs/glib-2.70.0:2
+	>=dev-libs/glib-2.70.0:2[introspection]
 	>=dev-libs/gobject-introspection-1.82.0-r2
 	>=dev-libs/json-glib-1.2.6
 	>=gnome-base/librsvg-2.40.6:2
@@ -72,8 +69,8 @@ COMMON_DEPEND="
 	media-gfx/mypaint-brushes:2.0=
 	>=media-libs/fontconfig-2.12.4
 	>=media-libs/freetype-2.1.7
-	<media-libs/gexiv2-0.15.0
-	>=media-libs/gexiv2-0.14.0
+	<media-libs/gexiv2-0.15.0[introspection]
+	>=media-libs/gexiv2-0.14.0[introspection]
 	>=media-libs/harfbuzz-2.8.2:=
 	>=media-libs/lcms-2.8:2
 	media-libs/libjpeg-turbo:=
@@ -82,10 +79,10 @@ COMMON_DEPEND="
 	>=media-libs/tiff-4.0.0:=
 	net-libs/glib-networking[ssl]
 	virtual/zlib:=
-	>=x11-libs/cairo-1.14.0[X?]
+	>=x11-libs/cairo-1.14.0[introspection(+),X?]
 	>=x11-libs/gdk-pixbuf-2.30.8:2[introspection]
 	>=x11-libs/gtk+-3.24.0:3[introspection,wayland?,X?]
-	>=x11-libs/pango-1.50.0[X?]
+	>=x11-libs/pango-1.50.0[introspection,X?]
 	aalib? ( media-libs/aalib )
 	alsa? ( >=media-libs/alsa-lib-1.0.0 )
 	fits? ( sci-libs/cfitsio:= )
@@ -164,13 +161,32 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		use openmp && tc-check-openmp
+
+		# bug #969468
+		local locales="$(locale -a)"
+		if ! has "en_US.utf8" ${locales} && ! has "en_US.UTF-8" ${locales}; then
+			# portage splits and unset LC_ALL. Cannot rely on that
+			if [[ "${LANG}" != "C" ]] && [[ "${LANG}" != "POSIX" ]] && [[ "${LANG}" == "${LANG#C\.}" ]]; then
+				# Set LC_ALL to avoid locales breaking due to the profile setting LC_MESSAGES=C and portage itself setting LC_COLLATE=C
+				einfo "Setting LC_ALL=${LANG} based on LANG because en_US.UTF-8 isn't available, bug #968468"
+				export LC_ALL="${LANG}"
+			else
+				eerror "Cannot use LANG=${LANG} as it cannot be C or POSIX"
+				die "en_US.UTF-8 isn't available and cannot fallback to user locale, bug #969468"
+			fi
+		fi
+	fi
+
 	python-single-r1_pkg_setup
 	use lua && lua-single_pkg_setup
 
-	if has_version ">=media-libs/babl-9999" || has_version ">=media-libs/gegl-9999"; then
-		ewarn "Please make sure to rebuild media-libs/babl-9999 and media-libs/gegl-9999 packages"
-		ewarn "before building media-gfx/gimp-9999 to have their latest master branch versions."
+	if [[ ${PV} == 9999 ]]; then
+		if has_version ">=media-libs/babl-9999" || has_version ">=media-libs/gegl-9999"; then
+			ewarn "Please make sure to rebuild media-libs/babl-9999 and media-libs/gegl-9999 packages"
+			ewarn "before building media-gfx/gimp-9999 to have their latest master branch versions."
+		fi
 	fi
 }
 

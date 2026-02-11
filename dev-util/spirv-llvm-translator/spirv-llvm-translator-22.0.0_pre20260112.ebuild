@@ -25,7 +25,12 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="UoI-NCSA"
 SLOT="$(ver_cut 1)"
 IUSE="test"
-RESTRICT="!test? ( test )"
+RESTRICT="!test? ( test )
+	arm? ( test )
+	arm64? ( test )
+	loong? ( test )
+	riscv? ( test )
+"
 
 RDEPEND="
 	dev-util/spirv-tools[${MULTILIB_USEDEP}]

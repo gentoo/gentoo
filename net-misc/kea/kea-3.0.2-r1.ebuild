@@ -3,6 +3,7 @@
 
 EAPI=8
 
+PATCHSET=${P}-patchset
 PYTHON_COMPAT=( python3_{11..14} )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/isc.asc
 inherit eapi9-ver flag-o-matic meson python-r1 systemd tmpfiles
@@ -19,6 +20,7 @@ else
 		https://downloads.isc.org/isc/kea/${PV}/${P}.tar.xz
 		!doc? ( https://codeberg.org/peter1010/kea-manpages/archive/kea-manpages-${PV}.tar.gz )
 		verify-sig? ( https://downloads.isc.org/isc/kea/${PV}/${P}.tar.xz.asc )
+		https://dev.gentoo.org/~asturm/distfiles/${PATCHSET}.tar.xz
 	"
 	KEYWORDS="amd64 arm arm64 ~x86"
 fi
@@ -65,9 +67,7 @@ BDEPEND="
 	verify-sig? ( sec-keys/openpgp-keys-isc )
 "
 
-PATCHES=(
-	"${FILESDIR}"/kea-3.0.1-boost-1.89.patch
-)
+PATCHES=( "${WORKDIR}"/${PATCHSET}/kea-3.0.1-boost-1.89.patch )
 
 python_check_deps() {
 	use doc || return 0;

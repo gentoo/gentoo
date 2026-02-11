@@ -36,7 +36,8 @@ LICENSE="
 	tracepath? ( GPL-2+ )
 "
 SLOT="0"
-IUSE="+arping caps clockdiff doc idn nls test tracepath"
+IUSE="+arping +caps clockdiff doc idn nls +suid test tracepath"
+REQUIRED_USE="filecaps? ( caps )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -112,9 +113,18 @@ src_test() {
 src_install() {
 	meson_src_install
 
-	FILECAPS=( cap_net_raw usr/bin/ping )
-	use arping && FILECAPS+=( usr/bin/arping )
-	use clockdiff && FILECAPS+=( usr/bin/clockdiff )
+	# See build-aux/setcap-setuid.sh
+	# For suidctl compat: enable suid in src_install and remove it if fcaps is successful
+	use suid && fperms u+s /usr/bin/ping
+	FILECAPS=( -M u-s cap_net_admin,cap_net_raw+p usr/bin/ping )
+	if use arping; then
+		use suid && fperms u+s /usr/bin/arping
+		FILECAPS+=( -- -M u-s cap_net_raw+p usr/bin/arping )
+	fi
+	if use clockdiff; then
+		use suid && fperms u+s /usr/bin/clockdiff
+		FILECAPS+=( -- -M u-s cap_net_raw,cap_sys_nice+ep usr/bin/clockdiff )
+	fi
 
 	dosym ping /usr/bin/ping4
 	dosym ping /usr/bin/ping6
