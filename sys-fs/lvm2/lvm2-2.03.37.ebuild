@@ -116,9 +116,6 @@ src_prepare() {
 src_configure() {
 	filter-lto
 
-	# Workaround for bug #822210
-	tc-ld-force-bfd
-
 	# Most of this package does weird stuff.
 	# The build options are tristate, and --without is NOT supported
 	# options: 'none', 'internal', 'shared'
