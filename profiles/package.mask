@@ -37,6 +37,11 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2026-02-11)
+# No other distro packages this, last release over 12 years ago, C23 issues.
+# Removal on 2026-03-13. Bug #944878.
+sci-biology/qrna
+
+# David Seifert <soap@gentoo.org> (2026-02-11)
 # Obscure package, no revdeps, unmaintained, EAPI 7, lots of build issues.
 # Removal on 2026-03-13. Bug #944918.
 sci-biology/mcl
