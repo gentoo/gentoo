@@ -1,5 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Ionen Wolkens <ionen@gentoo.org> (2026-02-11)
+# net-libs/librist is available here
+media-video/ffmpeg -rist
 
 # Sam James <sam@gentoo.org> (2025-12-23)
 # sys-process/numactl is available here

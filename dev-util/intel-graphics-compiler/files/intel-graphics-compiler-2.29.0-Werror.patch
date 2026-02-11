@@ -1,0 +1,66 @@
+--- a/IGC/CMakeLists.txt
++++ b/IGC/CMakeLists.txt
+@@ -562,7 +562,6 @@
+       GROUP NAME Exceptions         "-f(no-)?exceptions"
+       GROUP NAME Optimization       "-O[0-3sg]?"
+       GROUP NAME Rtti               "-f(no-)?rtti"
+-      GROUP NAME TreatWarnAsError   "-Werror"
+ 
+       ALIAS AdditionalOptions
+       ALIAS CallingConvCdecl
+@@ -591,7 +590,6 @@
+       ALIAS RttiDisabled               "-fno-rtti"
+       ALIAS RttiEnabled                "-frtti"
+       ALIAS TreatWarnAsErrorDisabled   TreatWarnAsError REMOVE_GROUP
+-      ALIAS TreatWarnAsErrorEnabled    "-Werror"
+       ALIAS UnreferencedVariable
+       ALIAS UninitializedVarWarning
+       ALIAS WholeProgramOptimization
+@@ -620,7 +618,6 @@
+       GROUP NAME Exceptions         "-f(no-)?exceptions"
+       GROUP NAME Optimization       "-O([0-3]?|fast|s|z)?"
+       GROUP NAME Rtti               "-f(no-)?rtti"
+-      GROUP NAME TreatWarnAsError   "-Werror"
+ 
+       ALIAS AdditionalOptions
+       ALIAS CallingConvCdecl
+@@ -649,7 +646,6 @@
+       ALIAS RttiDisabled               "-fno-rtti"
+       ALIAS RttiEnabled                Rtti REMOVE_GROUP
+       ALIAS TreatWarnAsErrorDisabled   TreatWarnAsError REMOVE_GROUP
+-      ALIAS TreatWarnAsErrorEnabled    "-Werror"
+       ALIAS UnreferencedVariable
+       ALIAS UninitializedVarWarning
+       ALIAS WholeProgramOptimization
+@@ -866,7 +862,6 @@
+           -mstackrealign
+           -fms-extensions
+           -fvisibility=hidden
+-          -Werror
+           -Wno-unused-parameter
+           -Wno-missing-field-initializers
+           -Wwrite-strings
+@@ -926,7 +921,6 @@
+             #-march=armv8.2-a+fp+simd+sve2
+             -march=armv8-a+fp+simd
+             -fms-extensions
+-            -Werror
+             -Wno-unused-parameter
+             -Wno-missing-field-initializers
+             -Wwrite-strings
+@@ -958,7 +952,6 @@
+             -fmessage-length=0
+             -march=rv64gc
+             -fms-extensions
+-            -Werror
+             -Wno-unused-parameter
+             -Wno-missing-field-initializers
+             -Wwrite-strings
+@@ -991,7 +984,6 @@
+             -march=corei7
+             -mstackrealign
+             -fms-extensions
+-            -Werror
+             -Wno-unused-parameter
+             -Wno-missing-field-initializers
+             -Wwrite-strings

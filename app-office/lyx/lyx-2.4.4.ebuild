@@ -1,17 +1,19 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
 
-inherit desktop font optfeature python-single-r1 cmake xdg
+inherit desktop font optfeature python-single-r1 cmake verify-sig xdg
 
 DESCRIPTION="WYSIWYM (What You See Is What You Mean) document processor based on LaTeX"
 HOMEPAGE="https://www.lyx.org/"
 SRC_URI="
 	http://ftp.lyx.org/pub/lyx/stable/$(ver_cut 1-2).x/${P}.tar.xz
 	http://ftp.lyx.org/pub/lyx/devel/lyx-$(ver_cut 1-2)/${P}.tar.xz
+	http://ftp.lyx.org/pub/lyx/stable/$(ver_cut 1-2).x/${P}.tar.xz.sig
+	http://ftp.lyx.org/pub/lyx/devel/lyx-$(ver_cut 1-2)/${P}.tar.xz.sig
 "
 
 LICENSE="GPL-2+"
@@ -79,7 +81,10 @@ BDEPEND="
 	virtual/pkgconfig
 	dev-qt/qttools:6[linguist]
 	nls? ( sys-devel/gettext )
+	verify-sig? ( sec-keys/openpgp-keys-lyx )
 "
+
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/lyx.asc"
 
 DOCS=( ANNOUNCE NEWS README RELEASE-NOTES UPGRADING )
 

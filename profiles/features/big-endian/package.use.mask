@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Nowa Ammerlaan <nowa@gentoo.org> (2025-02-03)
@@ -57,7 +57,6 @@ dev-libs/libportal wayland
 dev-util/glade wayland
 gnome-base/gnome-control-center wayland
 gnome-base/gnome-shell wayland
-gnome-base/nautilus wayland
 gnome-extra/tecla wayland
 gui-libs/gtk wayland
 gui-libs/vte wayland

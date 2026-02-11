@@ -513,7 +513,7 @@ kernel-build_src_install() {
 				pkcs11 plymouth qemu qemu-net resume rngd rootfs-block shutdown
 				systemd systemd-ac-power systemd-ask-password systemd-cryptsetup
 				systemd-emergency systemd-initrd systemd-integritysetup
-				systemd-pcrphase systemd-sysusers systemd-udevd
+				systemd-pcrextend systemd-sysusers systemd-udevd
 				systemd-veritysetup terminfo tpm2-tss udev-rules uefi-lib
 				usrmount virtiofs
 			)

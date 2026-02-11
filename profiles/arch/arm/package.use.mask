@@ -383,7 +383,7 @@ net-libs/gnutls test-full
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-03-02)
 # Requires unkeyworded deps
->=dev-python/ipython-5.4.1 gui qt5
+>=dev-python/ipython-5.4.1 gui
 
 # Michał Górny <mgorny@gentoo.org> (2017-12-30)
 # Moved from use.mask since they are flags local to one package.

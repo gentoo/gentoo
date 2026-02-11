@@ -17,7 +17,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2+ BSD"
 SLOT="4.1/0" # soname version of libwebkit2gtk-4.1
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 IUSE="aqua avif examples gamepad keyring +gstreamer +introspection pdf jpegxl +jumbo-build lcms seccomp spell systemd wayland X"
 REQUIRED_USE="|| ( aqua wayland X )"
@@ -146,6 +146,9 @@ src_prepare() {
 
 	# https://bugs.gentoo.org/938162, see also mycmakeargs
 	eapply "${FILESDIR}"/2.48.3-fix-ftbfs-riscv64.patch
+	eapply "${FILESDIR}"/2.50.4-disable-native-simd-on-riscv.patch
+	eapply "${FILESDIR}"/2.50.4-prefer-pthread.patch
+	eapply "${FILESDIR}"/2.50.4-fix-angle-include.patch
 
 	# We don't want -Werror for gobject-introspection (bug #947761)
 	sed -i -e "s:--warn-error::" Source/cmake/FindGI.cmake || die
@@ -238,14 +241,15 @@ src_configure() {
 		-DUSE_WOFF2=ON
 	)
 
-	# Temporary workaround for bug 938162 (upstream bug 271371)
-	# in concert with our Debian patch. The idea to enable C_LOOP
-	# is also stolen from Debian's build.
-	use riscv && mycmakeargs+=(
-		-DENABLE_WEBASSEMBLY=OFF
-		-DENABLE_JIT=OFF
-		-DENABLE_C_LOOP=ON
-	)
+	if use riscv; then
+		# https://bugs.webkit.org/show_bug.cgi?id=305745
+		append-cppflags -DSKCMS_HAS_MUSTTAIL=0
+
+		# Workaround for bug 938162 (upstream bug 271371).
+		mycmakeargs+=(
+			-DENABLE_WEBASSEMBLY=OFF
+		)
+	fi
 
 	# https://bugs.gentoo.org/761238
 	append-cppflags -DNDEBUG

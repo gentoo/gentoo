@@ -3,8 +3,9 @@
 
 # Sam James <sam@gentoo.org> (2026-02-05)
 # >=sys-apps/systemd-259 does not yet have stable keywords
-sys-kernel/installkernel -systemd
+dev-qt/qtbase journald
 net-analyzer/wireshark sdjournal
+sys-kernel/installkernel -systemd
 sys-apps/ipmitool openbmc
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2024-03-07)

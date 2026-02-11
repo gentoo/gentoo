@@ -1,0 +1,39 @@
+https://bugs.gentoo.org/969468
+https://gitlab.gnome.org/GNOME/gimp/-/merge_requests/2610
+https://gitlab.gnome.org/GNOME/gimp/-/commit/cae3be98df77b27ebaa6b9a07a5d64f375f18e28
+
+From cae3be98df77b27ebaa6b9a07a5d64f375f18e28 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Sat, 31 Jan 2026 20:21:27 +0200
+Subject: [PATCH] tools/gen-languages: query user locale before falling back to
+ en_US
+
+setlocale(LC_ALL, "") queries the user locale.
+
+setlocale(LC_ALL, NULL) also queries the locale, but not the user
+locale. It actually queries the programs locale, which by default is C.
+
+Otherwise the user would need to have en_US.UTF-8 available no matter
+what.
+
+Check that derivates UTF8 of C locale aren't used as well.
+
+Bug: https://bugs.gentoo.org/969468
+Fixes: 88261f8b4cab65350cd858e9221a91da4c7f86db
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/tools/gen-languages.c
++++ b/tools/gen-languages.c
+@@ -280,8 +280,8 @@ gimp_language_store_parser_init (GError **error)
+       goto cleanup;
+     }
+ 
+-  locale = setlocale (LC_ALL, NULL);
+-  if (g_strcmp0 (locale, "C") == 0 || g_strcmp0 (locale, "POSIX") == 0)
++  locale = setlocale (LC_ALL, "");
++  if (g_strcmp0 (locale, "C") == 0 || g_strcmp0 (locale, "POSIX") == 0 || g_str_has_prefix (locale, "C."))
+     {
+       /* Note: we do not care about what we set, except not C or POSIX.
+        * It may be any valid locale. This needs to be set so that this
+-- 
+GitLab
+

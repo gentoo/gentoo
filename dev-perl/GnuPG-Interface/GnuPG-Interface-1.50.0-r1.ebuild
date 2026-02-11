@@ -21,6 +21,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/GnuPG-Interface-1.30.0-which-hunt.patch
+	"${FILESDIR}"/GnuPG-Interface-1.50.0-gnupg-2.5.patch
 )
 
 src_test() {

@@ -7,6 +7,12 @@ MODULES_OPTIONAL_IUSE=+modules
 inherit desktop dot-a eapi9-pipestatus eapi9-ver flag-o-matic linux-mod-r1
 inherit readme.gentoo-r1 systemd toolchain-funcs unpacker user-info
 
+# note: *can* build with 6.19 but it depends on the kernel configs, notably
+# (at least) CONFIG_HMM_MIRROR needs to *not* be set -- recommend to stick to
+# <=6.18.x until the next version nonetheless as NVIDIA is aware and has a fix
+# pending (we do not intend to patch this downstream)
+# https://github.com/NVIDIA/open-gpu-kernel-modules/issues/1021
+# https://github.com/NVIDIA/open-gpu-kernel-modules/pull/1015
 MODULES_KERNEL_MAX=6.18
 NV_URI="https://download.nvidia.com/XFree86/"
 
@@ -579,6 +585,7 @@ pkg_postinst() {
 		elog "  (generally safe and recommended, but some setups may hit regressions)"
 		elog "3. nvidia-drm.modeset=1 is now default regardless of USE=wayland"
 		elog "4. nvidia-drm.fbdev=1 is now also tentatively default to match upstream"
+		elog "(3+4 were also later changed in >=580.126.09-r1, may already be in-use)"
 		elog "See ${EROOT}/etc/modprobe.d/nvidia.conf to modify settings if needed,"
 		elog "fbdev=1 *could* cause issues for the console display with some setups."
 	fi

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}-${HTTPERF_COMMIT}"
 
 LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~x86 ~x64-macos"
+KEYWORDS="amd64 ~mips x86 ~x64-macos"
 IUSE="debug idleconn"
 
 DEPEND="

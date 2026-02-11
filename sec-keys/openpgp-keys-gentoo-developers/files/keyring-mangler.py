@@ -21,13 +21,15 @@ import sys
 AUTHORITY_KEYS = [
     # Gentoo Authority Key L1
     "ABD00913019D6354BA1D9A132839FE0D796198B1",
-    # Gentoo Authority Key L2 for Services
-    "18F703D702B1B9591373148C55D3238EC050396E",
     # Gentoo Authority Key L2 for Developers
     "2C13823B8237310FA213034930D132FF0FF50EEB",
 ]
-
-L2_DEVELOPER_KEY = "30D132FF0FF50EEB"
+SKIP_KEYS = [
+    # Gentoo Authority Key L2 for Services
+    "18F703D702B1B9591373148C55D3238EC050396E",
+    # Gentoo Authority Key L2 for Infrastructure
+    "ABA5E4E7F4E407ABE9CA7EC7422C9066E21F705A"
+]
 
 # logging.basicConfig(level=os.environ.get("LOGLEVEL", "DEBUG"))
 
@@ -62,6 +64,10 @@ for key in gpg.list_keys(sigs=True):
     if key["fingerprint"] in AUTHORITY_KEYS:
         # Just add this in.
         good_keys.append(key["fingerprint"])
+        continue
+    if key["fingerprint"] in SKIP_KEYS:
+        # We don't want the other L2 keys (e.g. infra) in here as we're filtering
+        # for developers.
         continue
 
     # https://security.stackexchange.com/questions/41208/what-is-the-exact-meaning-of-this-gpg-output-regarding-trust

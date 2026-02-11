@@ -1,14 +1,2 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# Andreas K. Hüttel <dilfridge@gentoo.org>
-# Requires 32bit alignment, so we mask it for the moment
-# Possibly more is broken in qemu
-dev-lang/python:3.13
-dev-lang/python:3.14
-dev-lang/python:3.13t
-dev-lang/python:3.14t
-dev-python/python-tests:3.13
-dev-python/python-tests:3.13t
-dev-python/python-tests:3.14
-dev-python/python-tests:3.14t

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: flag-o-matic.eclass
@@ -84,7 +84,7 @@ _setup-allowed-flags() {
 		# Cosmetic/output related, see e.g. bug #830534
 		-fno-diagnostics-color '-fmessage-length=*'
 		-fno-ident -fpermissive -frecord-gcc-switches
-		-frecord-command-line
+		-frecord-command-line -freport-bug
 		'-fdiagnostics*' '-fplugin*'
 		'-W*' -w
 

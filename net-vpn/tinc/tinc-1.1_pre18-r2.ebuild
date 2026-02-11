@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,15 +7,18 @@ MY_PV=${PV/_/}
 MY_P=${PN}-${MY_PV}
 
 # Please keep a version around that matches Debian/Ubuntu for compatibility.
-inherit autotools bash-completion-r1 flag-o-matic systemd
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/tinc.asc
+inherit autotools bash-completion-r1 flag-o-matic systemd verify-sig
 
 DESCRIPTION="tinc is an easy to configure VPN implementation"
 HOMEPAGE="https://www.tinc-vpn.org/"
-
-SRC_URI="https://www.tinc-vpn.org/packages/${MY_P}.tar.gz"
+SRC_URI="
+	https://www.tinc-vpn.org/packages/${MY_P}.tar.gz
+	verify-sig? ( https://www.tinc-vpn.org/packages/${MY_P}.tar.gz.sig )
+"
 
 S="${WORKDIR}/${MY_P}"
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="+lzo +ncurses +readline +ssl uml vde upnp +zlib"
@@ -28,11 +31,17 @@ DEPEND="
 	ncurses? ( sys-libs/ncurses:= )
 	readline? ( sys-libs/readline:= )
 	upnp? ( net-libs/miniupnpc:= )
-	zlib? ( virtual/zlib:= )"
-RDEPEND="${DEPEND}
-	vde? ( net-misc/vde )"
+	zlib? ( virtual/zlib:= )
+"
+RDEPEND="
+	${DEPEND}
+	vde? ( net-misc/vde )
+"
+BDEPEND="
+	verify-sig? ( sec-keys/openpgp-keys-tinc )
+"
 
-PATCHES+=(
+PATCHES=(
 	"${FILESDIR}"/tinc-1.1_pre16-r1-fix-paths.patch #560528
 	"${FILESDIR}"/${PN}-1.1-tinfo.patch #621868
 	"${FILESDIR}"/${P}-fix-upnp.patch #935718

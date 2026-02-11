@@ -29,6 +29,16 @@ BDEPEND="
 	)
 "
 
+# Generated with:
+# 1. export GNUPGHOME=$(mktemp -d)
+# 2. gpg --import-options no-import-clean,no-self-sigs-only --import /usr/share/openpgp-keys/gentoo-auth.asc
+# 3. gpg --import-options no-import-clean,no-self-sigs-only --import /usr/share/openpgp-keys/gentoo-release.asc
+# 4. Verify gpg --list-keys shows only expected L1 and L2 authority keys
+# 5. gpg --armor --export > gentoo-release.asc.${PV}
+# 6. diff the existing version with the new version with pgpdump, make sure
+#    the changes look expected.
+# 7. gzip gentoo-release.asc.${PV}
+#
 # Keys included:
 # DCD05B71EAB94199527F44ACDB6B8C1F96D8BF6D
 # D99EAC7379A850BCE47DA5F29E6438C817072058

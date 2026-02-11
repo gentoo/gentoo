@@ -1,0 +1,42 @@
+From edf95af0ffcb3169d7c015d22f7a3036a645bb58 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Sat, 15 Nov 2025 13:20:06 +0200
+Subject: [PATCH] Avoid warnings over incompatible pointer types
+
+g_timeout_add expects a function prototype with gpointer for data. It
+isn't used here so its just NULL for all.
+
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/hydra-gtk/src/callbacks.c
++++ b/hydra-gtk/src/callbacks.c
+@@ -385,7 +385,7 @@ int hydra_get_options(char *options[]) {
+   return i;
+ }
+ 
+-int update_statusbar() {
++int update_statusbar(gpointer user_data) {
+   int i, j;
+   char *options[128];
+   guint context_id;
+@@ -544,7 +544,7 @@ int *popen_re_unbuffered(char *command) {
+ 
+   hydra_pid = 0;
+ 
+-  update_statusbar();
++  update_statusbar(NULL);
+ 
+   /* only allocate once */
+   if (NULL == pfd)
+--- a/hydra-gtk/src/callbacks.h
++++ b/hydra-gtk/src/callbacks.h
+@@ -1,6 +1,6 @@
+ #include <gtk/gtk.h>
+ 
+-int update_statusbar();
++int update_statusbar(gpointer user_data);
+ 
+ void on_quit1_activate(GtkMenuItem *menuitem, gpointer user_data);
+ 
+-- 
+2.51.2
+

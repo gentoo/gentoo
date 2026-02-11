@@ -1,0 +1,77 @@
+Fix GCC 15.x issues.
+
+--- a/ttcp.c
++++ b/ttcp.c
+@@ -157,16 +157,16 @@
+ unsigned long numCalls;		/* # of I/O system calls */
+ double cput, realt;		/* user, real time (seconds) */
+ 
+-void err();
+-void mes();
+-void pattern();
++void err(const char *);
++void mes(const char *);
++void pattern(register char *, register int);
+ void prep_timer();
+-double read_timer();
+-int Nread();
+-int Nwrite();
+-void delay();
+-int mread();
+-char *outfmt();
++double read_timer(char *, int);
++int Nread(int, void *, int);
++int Nwrite(int, void *, int);
++void delay(int);
++int mread(int, register char *, unsigned int);
++char *outfmt(const double);
+ 
+ int
+ main(int argc, char **argv)
+@@ -560,7 +560,7 @@
+ }
+ 
+ void
+-err(char *s)
++err(const char *s)
+ {
+ 	fprintf(stderr, "ttcp%s: ", trans ? "-t" : "-r");
+ 	perror(s);
+@@ -569,7 +569,7 @@
+ }
+ 
+ void
+-mes(char *s)
++mes(const char *s)
+ {
+ 	fprintf(stderr, "ttcp%s: %s\n", trans ? "-t" : "-r", s);
+ }
+@@ -586,7 +586,7 @@
+ }
+ 
+ char *
+-outfmt(double b)
++outfmt(const double b)
+ {
+     static char obuf[50];
+     switch (fmt) {
+@@ -616,10 +616,15 @@
+ static struct	timeval time0;	/* Time at which timing started */
+ static struct	rusage ru0;	/* Resource utilization at the start */
+ 
+-static void prusage();
+-static void tvadd();
+-static void tvsub();
+-static void psecs();
++static void prusage(
++	register struct rusage *,
++	register struct rusage *,
++	struct timeval *,
++	struct timeval *,
++	char *);
++static void tvadd(struct timeval *, struct timeval *, struct timeval *);
++static void tvsub(struct timeval *, struct timeval *, struct timeval *);
++static void psecs(long, register char *);
+ 
+ /*
+  *			P R E P _ T I M E R

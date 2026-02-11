@@ -93,7 +93,6 @@ BDEPEND="
 	virtual/pkgconfig
 	$(python_gen_cond_dep "
 		dev-python/jinja2[\${PYTHON_USEDEP}]
-		dev-python/lxml[\${PYTHON_USEDEP}]
 		boot? (
 			>=dev-python/pyelftools-0.30[\${PYTHON_USEDEP}]
 			test? ( ${PEFILE_DEPEND} )

@@ -1,0 +1,16 @@
+PR pending https://github.com/deanproxy/dlib/pull/8.patch
+see https://bugs.gentoo.org/944203 https://bugs.gentoo.org/969062
+don't use bolean' keywords with C23
+--- a/dlib/include/dlib.h
++++ b/dlib/include/dlib.h
+@@ -1,7 +1,9 @@
+ #ifndef __DLIB_H
+ #define __DLIB_H 1
+ 
+-typedef enum { false, true } bool;
++#if __STDC_VERSION__ < 202311L
++  typedef enum { false, true } bool;
++#endif
+ enum { ERROR, SUCCESS, DLIB_MAXBUF = 1024 };
+ 
+ #define DLIB_VERSION "0.1b"

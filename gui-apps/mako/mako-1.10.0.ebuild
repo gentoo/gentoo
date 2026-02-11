@@ -15,7 +15,7 @@ else
 	inherit verify-sig
 	SRC_URI="https://github.com/emersion/${PN}/releases/download/v${PV}/${P}.tar.gz -> ${P}.gh.tar.gz
 		https://github.com/emersion/${PN}/releases/download/v${PV}/${P}.tar.gz.sig -> ${P}.gh.tar.gz.sig"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 arm64 ~ppc64 x86"
 fi
 
 LICENSE="MIT"

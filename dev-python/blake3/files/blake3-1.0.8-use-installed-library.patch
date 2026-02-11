@@ -1,0 +1,49 @@
+# Link against shared blake3 library. Gentoo bug 943281.
+# Set FORCE_SYSTEM_BLAKE3=1 to force use of installed system library.
+
+diff --git a/c_impl/setup.py b/c_impl/setup.py
+index 417385b..2a664f0 100644
+--- a/c_impl/setup.py
++++ b/c_impl/setup.py
+@@ -69,6 +69,9 @@ def is_aarch64():
+ def force_intrinsics():
+     return os.environ.get("FORCE_INTRINSICS") == "1"
+ 
++def force_system_blake3():
++    # force use of system library for blake3
++    return os.environ.get("FORCE_SYSTEM_BLAKE3") == "1"
+ 
+ def compile_x86_intrinsics():
+     object_files = []
+@@ -203,9 +206,17 @@ def prepare_extension():
+         "vendor/blake3_dispatch.c",
+         "vendor/blake3_portable.c",
+     ]
++    include_dirs=[
++        "vendor",
++    ],
++    extra_link_args = [ "-lblake3" ]
+     target = platform.machine()
+     extra_objects = []
+-    if is_macos():
++    if force_system_blake3():
++        print("using installed system library")
++        sources = sources[:1]
++        include_dirs = []
++    elif is_macos():
+         # On macOS we build a "universal" binary containing both x86 and ARM
+         # code.
+         extra_objects = compile_macos_universal_staticlib()
+@@ -239,10 +250,9 @@ def prepare_extension():
+     return setuptools.Extension(
+         "blake3",
+         sources=sources,
+-        include_dirs=[
+-            "vendor",
+-        ],
++        include_dirs=include_dirs,
+         extra_objects=extra_objects,
++        extra_link_args=extra_link_args,
+         define_macros=[
+             ("SETUP_PY_VERSION", escape_preprocessor_string(VERSION)),
+             ("SETUP_PY_DESCRIPTION", escape_preprocessor_string(DESCRIPTION)),

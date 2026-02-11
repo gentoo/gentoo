@@ -1,8 +1,15 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # New entries go on top.
 # Please use the same syntax as in package.use.mask.
+
+# Alfred Wingate <parona@protonmail.com> (2026-01-31)
+# Experimental upstream.
+# lgi in a weird state where tests either fail for the last real release
+# or the plugin example doesn't work at all for the newer snapshot.
+# Bug #969479
+media-gfx/gimp lua
 
 # Alexey Shvetsov <alexxy@gentoo.org> (2025-10-29)
 # Need non-yet-stable caffe2
@@ -115,10 +122,6 @@ sys-apps/earlyoom man
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-04-13)
 # app-text/pandoc (dev-lang/ghc) has no stable keywords.
 app-emulation/xen-tools doc
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-04-13)
-# dev-util/shellcheck (dev-lang/ghc) has no stable keywords.
-app-emulation/winetricks test
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-12-21)
 # For bleeding edge features and testing, not generally suitable

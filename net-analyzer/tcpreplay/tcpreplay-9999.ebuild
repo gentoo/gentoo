@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,18 +19,15 @@ S="${WORKDIR}"/${P/_/-}
 
 LICENSE="BSD GPL-3"
 SLOT="0"
-IUSE="debug pcapnav +tcpdump"
+IUSE="debug +tcpdump"
 
-# libpcapnav for pcapnav-config
 BDEPEND="
-	net-libs/libpcapnav
 	>=sys-devel/autogen-5.18.4[libopts]
 "
 DEPEND="
 	dev-libs/libdnet
 	>=net-libs/libpcap-0.9
 	elibc_musl? ( sys-libs/fts-standalone )
-	pcapnav? ( net-libs/libpcapnav )
 	tcpdump? ( net-analyzer/tcpdump )
 "
 RDEPEND="${DEPEND}"
@@ -65,12 +62,12 @@ src_configure() {
 	# By default it uses static linking. Avoid that, bug #252940
 	local myeconfargs=(
 		$(use_enable debug)
-		$(use_with pcapnav pcapnav-config "${BROOT}"/usr/bin/pcapnav-config)
 		$(use_with tcpdump tcpdump "${ESYSROOT}"/usr/sbin/tcpdump)
 		--enable-dynamic-link
 		--enable-local-libopts
 		--enable-shared
 		--with-libdnet
+		--with-pcapnav-config=no
 		--with-testnic2=lo
 		--with-testnic=lo
 	)

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -49,7 +49,6 @@ dev-perl/PDL gsl
 dev-python/numpy lapack
 dev-python/pythran test
 media-gfx/graphviz gts
-media-libs/a52dec djbfft
 sci-libs/gsl cblas-external
 sci-libs/hdf5 szip
 

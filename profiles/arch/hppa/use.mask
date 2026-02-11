@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -262,7 +262,6 @@ pda
 # all of these are binary-only, and not presently available on this
 # architecture.
 ibm
-djbfft
 
 # Added because of xmms-plugin.eclass.  Please test out
 # media-sound/beep-media-player and remove if

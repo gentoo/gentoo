@@ -1,6 +1,11 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mike Gilbert <floppym@gentoo.org> (2026-02-07)
+# Requires dev-python/python-systemd.
+net-analyzer/fail2ban systemd
+net-im/synapse systemd
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2026-02-04)
 # Some systemd features will never work on musl.
 sys-apps/systemd homed
@@ -75,10 +80,6 @@ sys-apps/hwloc l0
 # Paul Zander <negril.nx+gentoo@gmail.com> (2024-04-20)
 # Renderdoc masked on musl, bug #853856
 media-gfx/blender renderdoc
-
-# Paul Zander <negril.nx+gentoo@gmail.com> (2024-04-20)
-# Support for L0 needs RTLD_DEEPBIND, which does not exist on musl.
-media-gfx/blender oneapi
 
 # Akinori Hattori <hattya@gentoo.org> (2024-04-15)
 # app-i18n/nkf is masked on musl
@@ -187,10 +188,6 @@ app-emacs/yatex l10n_ja
 # Conrad Kostecki <conikost@gentoo.org> (2021-12-15)
 # Support for L0 needs RTLD_DEEPBIND, which does not exist on musl.
 dev-libs/intel-compute-runtime l0
-
-# Stijn Tintel <stijn@linux-ipv6.be> (2021-12-02)
-# rarpd relies on ether_ntohost which is a stub in musl
-net-misc/iputils rarpd
 
 # Sam James <sam@gentoo.org> (2021-11-20)
 # Pulls in po4a which doesn't seem to work on musl (wants /usr/bin/locale)

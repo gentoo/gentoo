@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -110,7 +110,6 @@ dmi
 
 # Stuff that doesn't work on alpha, or not tested
 clang
-djbfft
 hardened
 mecab
 netbeans
