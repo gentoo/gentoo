@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 # Remember to check the release notes for a 'Important Changes for Packagers'
 # section, e.g. https://inkscape.org/doc/release_notes/1.4/Inkscape_1.4.html#Important_Changes_for_Packagers.
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit cmake flag-o-matic xdg toolchain-funcs python-single-r1
@@ -20,7 +20,7 @@ if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://gitlab.com/inkscape/inkscape.git"
 else
 	SRC_URI="https://media.inkscape.org/dl/resources/file/${MY_P}.tar.xz"
-	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 S="${WORKDIR}/${MY_P}"
@@ -39,7 +39,7 @@ BDEPEND="
 	test? ( virtual/imagemagick-tools )
 "
 COMMON_DEPEND="${PYTHON_DEPS}
-	>=app-text/poppler-0.57.0:=[cairo]
+	>=app-text/poppler-0.57.0:=[cairo,lcms]
 	>=dev-cpp/cairomm-1.12:0
 	>=dev-cpp/glibmm-2.58:2
 	dev-cpp/gtkmm:3.0
@@ -113,7 +113,8 @@ DEPEND="${COMMON_DEPEND}
 "
 
 PATCHES=(
-        "${FILESDIR}"/${P}-poppler-25.{06,07,09,10}.patch # bugs 949531, 957137, 962278
+	"${FILESDIR}"/${P}-poppler-26.01.patch # in git master
+	"${FILESDIR}"/${P}-libcroco-cmake-minreqver-3.12.patch # bug 965915
 )
 
 pkg_pretend() {
