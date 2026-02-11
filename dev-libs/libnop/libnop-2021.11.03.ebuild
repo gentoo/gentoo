@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,10 @@ IUSE="test"
 BDEPEND="test? ( dev-cpp/gtest )"
 RESTRICT="!test? ( test )"
 
-PATCHES=( "${FILESDIR}"/${P}-libstdc++.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-libstdc++.patch
+	"${FILESDIR}"/${P}-gtest.patch
+)
 
 src_compile() {
 	use test && default
