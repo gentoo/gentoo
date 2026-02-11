@@ -3,11 +3,18 @@
 
 EAPI=8
 
-inherit toolchain-funcs git-r3
+inherit toolchain-funcs
 
 DESCRIPTION="Modal editor inspired by vim"
 HOMEPAGE="https://kakoune.org/ https://github.com/mawww/kakoune"
-EGIT_REPO_URI="https://github.com/mawww/kakoune.git"
+
+if [[ ${PV} == *9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/mawww/kakoune.git"
+else
+	SRC_URI="https://github.com/mawww/kakoune/releases/download/v${PV}/${P}.tar.bz2"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+fi
 
 LICENSE="Unlicense"
 SLOT="0"
