@@ -40,8 +40,8 @@ src_prepare() {
 	java-pkg-2_src_prepare
 	mkdir -p "${JAVA_RESOURCE_DIRS}/META-INF" || die
 	sed -ne '/attribute name/s:^.*name="\(.*\)" value="\(.*\)".*$:\1\: \2:p' \
-		../build.xml \
-		| sed "s:\${version}:${PV}:" \
+		../build.xml |
+		sed "s:\${version}:${PV}:" \
 		> "${JAVA_RESOURCE_DIRS}/META-INF/MANIFEST.MF" || die
 }
 
