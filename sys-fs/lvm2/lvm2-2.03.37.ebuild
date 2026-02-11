@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,23 +13,25 @@ S="${WORKDIR}/${PN^^}.${PV}"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="lvm nvme readline sanlock selinux static static-libs systemd thin +udev valgrind"
 REQUIRED_USE="
-	static? ( !systemd !udev )
+	static? ( !systemd !udev !nvme )
 	static-libs? ( static !udev )
 	systemd? ( udev )
 	thin? ( lvm )
 "
 
+# Doesn't strictly need >=sanlock-4.0.0 but autodetects features, so pick
+# the best we have for predictability. Ditto systemd.
 DEPEND_COMMON="
 	udev? ( virtual/libudev:= )
 	lvm? (
 		dev-libs/libaio
-		sys-apps/util-linux
+		>=sys-apps/util-linux-2.24
 		readline? ( sys-libs/readline:= )
-		sanlock? ( sys-cluster/sanlock )
-		systemd? ( sys-apps/systemd:= )
+		sanlock? ( >=sys-cluster/sanlock-4.0.0 )
+		systemd? ( >=sys-apps/systemd-234:= )
 	)
 "
 # /run is now required for locking during early boot. /var cannot be assumed to
@@ -56,7 +58,6 @@ DEPEND="
 			dev-libs/libaio[static-libs]
 			readline? ( sys-libs/readline[static-libs] )
 		)
-		nvme? ( sys-libs/libnvme[static-libs] )
 		selinux? ( sys-libs/libselinux[static-libs] )
 	)
 	valgrind? ( >=dev-debug/valgrind-3.6 )
