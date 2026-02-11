@@ -1,0 +1,147 @@
+https://git.notmuchmail.org/git?p=notmuch;a=commit;h=2ddff9923e09e379bce30cdb0f620b56fa7cea5e
+use PKG_CONFIG from env
+--- a/configure
++++ b/configure
+@@ -95,6 +95,7 @@ CPPFLAGS=${CPPFLAGS:-}
+ CXXFLAGS_for_sh=${CXXFLAGS:-${CFLAGS}}
+ CXXFLAGS=${CXXFLAGS:-\$(CFLAGS)}
+ LDFLAGS=${LDFLAGS:-}
++PKG_CONFIG=${PKG_CONFIG:-pkg-config}
+ XAPIAN_CONFIG=${XAPIAN_CONFIG:-}
+ PYTHON=${PYTHON:-}
+ RUBY=${RUBY:-ruby}
+@@ -463,7 +464,7 @@ EOF
+     exit 1
+ fi
+ 
+-if pkg-config --version > /dev/null 2>&1; then
++if ${PKG_CONFIG} --version > /dev/null 2>&1; then
+     have_pkg_config=1
+ else
+     have_pkg_config=0
+@@ -496,11 +497,11 @@ fi
+ GMIME_MINVER=3.0.3
+ 
+ printf "Checking for GMime development files (>= $GMIME_MINVER)... "
+-if pkg-config --exists "gmime-3.0 >= $GMIME_MINVER"; then
++if ${PKG_CONFIG} --exists "gmime-3.0 >= $GMIME_MINVER"; then
+     printf "Yes.\n"
+     have_gmime=1
+-    gmime_cflags=$(pkg-config --cflags gmime-3.0)
+-    gmime_ldflags=$(pkg-config --libs gmime-3.0)
++    gmime_cflags=$(${PKG_CONFIG} --cflags gmime-3.0)
++    gmime_ldflags=$(${PKG_CONFIG} --libs gmime-3.0)
+ 
+     printf "Checking for GMime session key extraction support... "
+ 
+@@ -553,7 +554,7 @@ version of GPGME.
+ Please try to rebuild your version of GMime against a more recent
+ version of GPGME (at least GPGME 1.8.0).
+ EOF
+-	if GPGME_VERS="$(pkg-config --modversion gpgme || gpgme-config --version)"; then
++	if GPGME_VERS="$(${PKG_CONFIG} --modversion gpgme || gpgme-config --version)"; then
+ 	    printf 'Your current GPGME development version is: %s\n' "$GPGME_VERS"
+ 	else
+ 	    printf 'You do not have the GPGME development libraries installed.\n'
+@@ -627,7 +628,7 @@ EOF
+ 	else
+ 	    gmime_x509_cert_validity=0
+ 	    printf "No.\n"
+-	    if pkg-config --exists "gmime-3.0 >= 3.2.7"; then
++	    if ${PKG_CONFIG} --exists "gmime-3.0 >= 3.2.7"; then
+ 		cat <<EOF
+ *** Error: GMime fails to calculate X.509 certificate validity, and
+ is later than 3.2.7, which should have fixed this issue.
+@@ -736,7 +737,7 @@ fi
+ # function that only exists as of 2.22, (g_array_unref)
+ printf "Checking for Glib development files (>= 2.22)... "
+ have_glib=0
+-if pkg-config --exists 'glib-2.0 >= 2.22'; then
++if ${PKG_CONFIG} --exists 'glib-2.0 >= 2.22'; then
+     printf "Yes.\n"
+     have_glib=1
+     # these are included in gmime cflags and ldflags
+@@ -747,7 +748,7 @@ else
+     errors=$((errors + 1))
+ fi
+ 
+-if ! pkg-config --exists zlib; then
++if ! ${PKG_CONFIG} --exists zlib; then
+   ${CC} -o compat/gen_zlib_pc "$srcdir"/compat/gen_zlib_pc.c >/dev/null 2>&1 &&
+   compat/gen_zlib_pc > compat/zlib.pc &&
+   PKG_CONFIG_PATH=${PKG_CONFIG_PATH:+$PKG_CONFIG_PATH:}compat &&
+@@ -757,22 +758,22 @@ fi
+ 
+ printf "Checking for zlib (>= 1.2.5.2)... "
+ have_zlib=0
+-if pkg-config --atleast-version=1.2.5.2 zlib; then
++if ${PKG_CONFIG} --atleast-version=1.2.5.2 zlib; then
+     printf "Yes.\n"
+     have_zlib=1
+-    zlib_cflags=$(pkg-config --cflags zlib)
+-    zlib_ldflags=$(pkg-config --libs zlib)
++    zlib_cflags=$(${PKG_CONFIG} --cflags zlib)
++    zlib_ldflags=$(${PKG_CONFIG} --libs zlib)
+ else
+     printf "No.\n"
+     errors=$((errors + 1))
+ fi
+ 
+ printf "Checking for talloc development files... "
+-if pkg-config --exists talloc; then
++if ${PKG_CONFIG} --exists talloc; then
+     printf "Yes.\n"
+     have_talloc=1
+-    talloc_cflags=$(pkg-config --cflags talloc)
+-    talloc_ldflags=$(pkg-config --libs talloc)
++    talloc_cflags=$(${PKG_CONFIG} --cflags talloc)
++    talloc_ldflags=$(${PKG_CONFIG} --libs talloc)
+ else
+     printf "No.\n"
+     have_talloc=0
+@@ -837,7 +838,7 @@ if [ $have_python3 -eq 1 ]; then
+     printf "(%s)\n" $python3_version
+ 
+     printf "Checking for python $python3_version development files..."
+-    if pkg-config --exists "python-$python3_version"; then
++    if ${PKG_CONFIG} --exists "python-$python3_version"; then
+ 	have_python3_dev=1
+ 	printf "Yes.\n"
+     else
+@@ -873,10 +874,10 @@ if [ $have_python3_dev -eq 1 ]; then
+ fi
+ 
+ printf "Checking for valgrind development files... "
+-if pkg-config --exists valgrind; then
++if ${PKG_CONFIG} --exists valgrind; then
+     printf "Yes.\n"
+     have_valgrind=1
+-    valgrind_cflags=$(pkg-config --cflags valgrind)
++    valgrind_cflags=$(${PKG_CONFIG} --cflags valgrind)
+ else
+     printf "No (but that's fine).\n"
+     have_valgrind=0
+@@ -884,7 +885,7 @@ else
+ fi
+ 
+ printf "Checking for bash-completion (>= 1.90)... "
+-if pkg-config --atleast-version=1.90 bash-completion; then
++if ${PKG_CONFIG} --atleast-version=1.90 bash-completion; then
+     printf "Yes.\n"
+ else
+     printf "No (will not install bash completion).\n"
+@@ -892,11 +893,11 @@ else
+ fi
+ 
+ printf "Checking for sfsexp... "
+-if pkg-config --exists sfsexp; then
++if ${PKG_CONFIG} --exists sfsexp; then
+     printf "Yes.\n"
+     have_sfsexp=1
+-    sfsexp_cflags=$(pkg-config --cflags sfsexp)
+-    sfsexp_ldflags=$(pkg-config --libs sfsexp)
++    sfsexp_cflags=$(${PKG_CONFIG} --cflags sfsexp)
++    sfsexp_ldflags=$(${PKG_CONFIG} --libs sfsexp)
+ else
+     printf "No (will not enable s-expression queries).\n"
+     have_sfsexp=0

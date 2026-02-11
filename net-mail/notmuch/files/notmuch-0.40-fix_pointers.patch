@@ -1,0 +1,24 @@
+fix incompatible pointers (glibc-2.43 / musl)
+sent to ML
+--- a/notmuch-insert.c
++++ b/notmuch-insert.c
+@@ -115,7 +115,7 @@ mkdir_recursive (const void *ctx, const char *path, int mode)
+ {
+     struct stat st;
+     int r;
+-    char *parent = NULL, *slash;
++    const char *parent = NULL, *slash;
+ 
+     /* First check the common case: directory already exists. */
+     r = stat (path, &st);
+--- a/test/T560-lib-error.sh
++++ b/test/T560-lib-error.sh
+@@ -183,7 +183,7 @@ int main (int argc, char** argv)
+    }
+    stat = notmuch_database_index_file (db, "./nonexistent", NULL, NULL);
+    if (stat) {
+-       char *status_string = notmuch_database_status_string (db);
++       const char *status_string = notmuch_database_status_string (db);
+        if (status_string) fputs (status_string, stderr);
+    }
+ }
