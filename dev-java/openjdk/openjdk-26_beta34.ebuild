@@ -6,7 +6,7 @@ EAPI=8
 # Avoid circular dependency
 JAVA_DISABLE_DEPEND_ON_JAVA_DEP_CHECK="true"
 
-inherit check-reqs dot-a flag-o-matic java-pkg-2 java-vm-2 multiprocessing toolchain-funcs
+inherit check-reqs flag-o-matic java-pkg-2 java-vm-2 multiprocessing toolchain-funcs
 
 # variable name format: <UPPERCASE_KEYWORD>_XPAK
 PPC64_XPAK="25_p36" # big-endian bootstrap tarball
@@ -275,10 +275,6 @@ src_configure() {
 		addpredict /proc/self/coredump_filter
 	fi
 
-	if use static-libs ; then
-		lto-guarantee-flat
-	fi
-
 	(
 		unset _JAVA_OPTIONS JAVA JAVA_TOOL_OPTIONS JAVAC XARGS
 		CFLAGS= CXXFLAGS= LDFLAGS= \
@@ -356,8 +352,8 @@ src_install() {
 
 	if use static-libs ; then
 		cd "${S}"/build/*-release/images/static-libs || die
+		dodir "${dest}"
 		cp -pPR * "${ddest}" || die
-		strip-lto-bytecode "${ddest}" || die
 	fi
 }
 
