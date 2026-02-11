@@ -16,7 +16,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/tlwg/${PN}.git"
 else
 	SRC_URI="https://github.com/tlwg/${PN}/releases/download/v${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm"
 fi
 
 LICENSE="LGPL-2.1+"
