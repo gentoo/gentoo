@@ -201,6 +201,10 @@ src_configure() {
 	filter-lto
 	filter-flags -fdevirtualize-at-ltrans
 
+	if use static-libs ; then
+		lto-guarantee-fat
+	fi
+
 	# Enabling full docs appears to break doc building. If not
 	# explicitly disabled, the flag will get auto-enabled if pandoc and
 	# graphviz are detected. pandoc has loads of dependencies anyway.
@@ -254,10 +258,6 @@ src_configure() {
 		addpredict /proc/self/coredump_filter
 	fi
 
-	if use static-libs ; then
-		lto-guarantee-fat
-	fi
-
 	(
 		unset _JAVA_OPTIONS JAVA JAVA_TOOL_OPTIONS JAVAC XARGS
 		CFLAGS= CXXFLAGS= LDFLAGS= \
@@ -278,7 +278,7 @@ src_compile() {
 		NICE= # Use PORTAGE_NICENESS, don't adjust further down
 		$(usex doc docs '')
 		$(usex jbootstrap bootcycle-images product-images)
-		$(usex static-libs static-libs-image)
+		$(usev static-libs static-libs-image)
 	)
 	emake "${myemakeargs[@]}" -j1
 }
