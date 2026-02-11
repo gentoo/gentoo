@@ -5,10 +5,6 @@
 		<email>rust@gentoo.org</email>
 		<name>Rust Project</name>
 	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>navi@vlhl.dev</email>
-		<name>Anna Figueiredo Gomes</name>
-	</maintainer>
 	<use>
 		<flag name="clippy">Install clippy, Rust code linter</flag>
 		<flag name="rust-analyzer">Install rust-analyzer, A Rust compiler front-end for IDEs (language server)</flag>
