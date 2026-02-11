@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sound@gentoo.org</email>
+		<name>Gentoo Sound project</name>
+	</maintainer>
+	<longdescription>
+		libdolbyb treats audio recordings to apply or remove something
+		similar to what Dolby B noise reduction codecs in high-end
+		tape recorders do by emulating in software the electronics of
+		a real Dolby B unit.
+		It translates dolbybcsoftwaredecode.sf.net from Pascal into C giving
+		a generic C library and a command-line tool and is used as a new SoX effect
+		in sox_ng
+	</longdescription>
+	<upstream>
+		<remote-id type="codeberg">sox_ng/libdolbyb</remote-id>
+	</upstream>
+</pkgmetadata>
