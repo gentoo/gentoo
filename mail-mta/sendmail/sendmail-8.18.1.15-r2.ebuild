@@ -87,6 +87,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-8.16.1-build-system.patch
 	"${FILESDIR}"/${PN}-8.18.1-tcpwrappers.patch
 	"${FILESDIR}"/${PN}-8.18.1-more-c23.patch
+	"${FILESDIR}"/${PN}-8.18.1-cdb.patch
 )
 
 src_prepare() {

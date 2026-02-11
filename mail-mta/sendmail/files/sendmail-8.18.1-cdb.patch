@@ -1,0 +1,47 @@
+Link: https://narkive.com/tsmcN7nY.2 
+
+--- a/sendmail/map.c
++++ b/sendmail/map.c
+@@ -3042,7 +3042,7 @@
+ 	char **av;
+ 	int *statp;
+ {
+-	char *data;
++	char *data, *result;
+ 	struct cdb *cdbmap;
+ 	unsigned int klen, dlen;
+ 	int st, fd;
+@@ -3050,6 +3050,7 @@
+ 	char buf[MAXPATHLEN];
+ 
+ 	data = NULL;
++	result = NULL;
+ 	cdbmap = map->map_db1;
+ 	if (tTd(38, 20))
+ 		sm_dprintf("cdb_map_lookup(%s, %s)\n", map->map_mname, name);
+@@ -3136,14 +3137,22 @@
+ 	else
+ 	{
+ 		dlen = cdb_datalen(cdbmap);
+-		data = malloc(dlen + 1);
++		data = (char *) sm_malloc(dlen + 1);
++		if (NULL == data)
++		{
++			*statp = EX_TEMPFAIL;
++			return NULL;
++		}
+ 		cdb_read(cdbmap, data, dlen, cdb_datapos(cdbmap));
+ 		data[dlen] = '\0';
+ 	}
+ 	if (bitset(MF_MATCHONLY, map->map_mflags))
+-		return map_rewrite(map, name, strlen(name), NULL);
++		result = map_rewrite(map, name, strlen(name), NULL);
+ 	else
+-		return map_rewrite(map, data, dlen, av);
++		result = map_rewrite(map, data, dlen, av);
++
++	SM_FREE(data);
++	return result;
+ }
+ 
+ /*
