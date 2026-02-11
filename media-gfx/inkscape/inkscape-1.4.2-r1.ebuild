@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -113,7 +113,7 @@ DEPEND="${COMMON_DEPEND}
 "
 
 PATCHES=(
-        "${FILESDIR}"/${P}-poppler-25.{06,07,09,10}.patch # bugs 949531, 957137, 962278
+	"${FILESDIR}"/${P}-poppler-25.{06,07,09,10}.patch # bugs 949531, 957137, 962278
 )
 
 pkg_pretend() {
