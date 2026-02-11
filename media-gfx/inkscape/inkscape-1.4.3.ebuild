@@ -39,7 +39,7 @@ BDEPEND="
 	test? ( virtual/imagemagick-tools )
 "
 COMMON_DEPEND="${PYTHON_DEPS}
-	>=app-text/poppler-0.57.0:=[cairo]
+	>=app-text/poppler-0.57.0:=[cairo,lcms]
 	>=dev-cpp/cairomm-1.12:0
 	>=dev-cpp/glibmm-2.58:2
 	dev-cpp/gtkmm:3.0
