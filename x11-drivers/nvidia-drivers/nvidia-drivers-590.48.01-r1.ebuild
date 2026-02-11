@@ -585,6 +585,7 @@ pkg_postinst() {
 		elog "  (generally safe and recommended, but some setups may hit regressions)"
 		elog "3. nvidia-drm.modeset=1 is now default regardless of USE=wayland"
 		elog "4. nvidia-drm.fbdev=1 is now also tentatively default to match upstream"
+		elog "(3+4 were also later changed in >=580.126.09-r1, may already be in-use)"
 		elog "See ${EROOT}/etc/modprobe.d/nvidia.conf to modify settings if needed,"
 		elog "fbdev=1 *could* cause issues for the console display with some setups."
 	fi
