@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2026-02-11)
+# Obscure package, no revdeps, unmaintained, EAPI 7, lots of build issues.
+# Removal on 2026-03-13. Bug #944918.
+sci-biology/mcl
+
 # David Seifert <soap@gentoo.org> (2026-02-10)
 # Abandoned, sguil-sensor already removed, blocks bug #868468.
 # Removal on 2026-03-12.
