@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2026-02-11)
+# net-libs/librist currently has very few keywords
+media-video/ffmpeg rist
+
 # Andrey Grozin <grozin@gentoo.org> (2026-01-08)
 # Needs dev-python/pyside[tools]
 >=media-gfx/asymptote-3.06 gui

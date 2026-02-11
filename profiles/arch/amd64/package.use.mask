@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2026-02-11)
+# net-libs/librist is available here
+media-video/ffmpeg -rist
+
 # Andrey Grozin <grozin@gentoo.org> (2026-01-08)
 # dev-python/pyside[tools] is available here
 >=media-gfx/asymptote-3.06 -gui
