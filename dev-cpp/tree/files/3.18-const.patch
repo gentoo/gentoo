@@ -1,0 +1,23 @@
+https://github.com/kpeeters/tree.hh/commit/0ee8b5a4c3a93814bbf465ffc56c296cf84f1832
+
+From: Kasper Peeters <kasper.peeters@phi-sci.com>
+Date: Fri, 17 Nov 2023 11:27:13 +0000
+Subject: [PATCH] Fix const-correctness for comparison.
+
+---
+ src/tree.hh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/tree.hh b/src/tree.hh
+index d460165..be45f99 100644
+--- a/src/tree.hh
++++ b/src/tree.hh
+@@ -505,7 +505,7 @@ class tree {
+ 			public:
+ 				compare_nodes(StrictWeakOrdering comp) : comp_(comp) {}
+ 				
+-				bool operator()(const tree_node *a, const tree_node *b) 
++				bool operator()(const tree_node *a, const tree_node *b) const
+ 					{
+ 					return comp_(a->data, b->data);
+ 					}
