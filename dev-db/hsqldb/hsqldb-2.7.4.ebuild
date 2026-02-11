@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -81,8 +81,8 @@ src_compile() {
 		-Dservletapi.lib="$(java-pkg_getjars --build-only javax-servlet-api-3.1)" \
 		-Djavac.bootcp.override \
 		-Dant.java.iscjava11 \
-		-Dant.build.javac.source="11" \
-		-Dant.build.javac.target="11" \
+		-Dant.build.javac.source="$(java-pkg_get-source)" \
+		-Dant.build.javac.target="$(java-pkg_get-target)" \
 		"${targets[@]}"
 }
 
@@ -94,8 +94,8 @@ src_test() {
 		-Djunit.jar="$(java-pkg_getjars --build-only junit)" \
 		-Djavac.bootcp.override \
 		-Dant.java.iscjava11 \
-		-Dant.build.javac.source="11" \
-		-Dant.build.javac.target="11" \
+		-Dant.build.javac.source="$(java-pkg_get-source)" \
+		-Dant.build.javac.target="$(java-pkg_get-target)" \
 		make.test.suite run.test.suite
 }
 
