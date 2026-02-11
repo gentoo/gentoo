@@ -90,7 +90,6 @@ PDEPEND="
 "
 BDEPEND="
 	>=dev-build/meson-1.5.0
-	dev-libs/gobject-introspection-common
 	introspection? (
 		${PYTHON_DEPS}
 		$(python_gen_any_dep '

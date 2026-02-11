@@ -73,7 +73,6 @@ PDEPEND="
 BDEPEND="
 	app-text/docbook-xml-dtd:4.1.2
 	app-text/docbook-xsl-stylesheets
-	dev-libs/gobject-introspection-common
 	dev-libs/libxslt
 	>=dev-util/gdbus-codegen-2.80.5-r1
 	dev-util/glib-utils
