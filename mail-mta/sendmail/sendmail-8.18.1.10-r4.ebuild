@@ -72,7 +72,7 @@ RDEPEND="
 BDEPEND="
 	sys-devel/m4
 	virtual/pkgconfig
-	verify-sig? ( ~sec-keys/openpgp-keys-sendmail-20250220 )
+	verify-sig? ( >=sec-keys/openpgp-keys-sendmail-20250220 )
 "
 PDEPEND="
 	!mbox? (
