@@ -198,14 +198,25 @@ sb_build() {
 }
 
 # Add the MS and Red Hat Secure Boot certificates and update the revocation list
-# for the given architecture in the given raw variables image.
-mk_fw_vars() {
-	local input
+# in the given raw variable images.
+mk_fw_vars_raw() {
+	local input args=() dbx="${DISTDIR}/${ARCH}_DBXUpdate_v${SBO_VER}.bin"
+	[[ -e ${dbx} ]] && args+=( --set-dbx "${dbx}" )
+
 	for input; do
-		edo virt-fw-vars \
-			--set-dbx "${DISTDIR}/${ARCH}_DBXUpdate_v${SBO_VER}.bin" \
-			--secure-boot --enroll-redhat --inplace "${input}"
+		edo virt-fw-vars --secure-boot --enroll-redhat "${args[@]}" \
+			--inplace "${input}"
 	done
+}
+
+# Write the MS and Red Hat Secure Boot certificates and the revocation list to a
+# JSON file for QEMU.
+mk_fw_vars_json() {
+	local args=() dbx="${DISTDIR}/${ARCH}_DBXUpdate_v${SBO_VER}.bin"
+	[[ -e ${dbx} ]] && args+=( --set-dbx "${dbx}" )
+
+	edo virt-fw-vars --secure-boot --enroll-redhat "${args[@]}" \
+		--output-json "${S}/${ARCH}.qemuvars.json"
 }
 
 # Convert the given images from raw to QCOW2 and resize them to the amount given
@@ -258,23 +269,36 @@ src_compile() {
 
 			mv -T Build/OvmfX64{,${SIZE}} || die
 
-			mk_fw_vars Build/OvmfX64${SIZE}.secboot/"${BUILD_DIR}"/FV/OVMF_VARS.fd
+			mk_fw_vars_raw Build/OvmfX64${SIZE}.secboot/"${BUILD_DIR}"/FV/OVMF_VARS.fd
 		done
 
+		sb_build -p OvmfPkg/OvmfPkgX64.dsc \
+			-D FD_SIZE_4MB \
+			-D QEMU_PV_VARS
+
+		mv -T Build/OvmfX64{,.qemuvars} || die
+
 		# Fedora only converts newer images to QCOW2. 2MB images are raw.
-		raw_to_qcow2 0 Build/OvmfX64_4M*/"${BUILD_DIR}"/FV/OVMF_{CODE,VARS}.fd
+		raw_to_qcow2 0 Build/OvmfX64{_4M*,.qemuvars}/"${BUILD_DIR}"/FV/OVMF_{CODE,VARS}.fd
+		mk_fw_vars_json
 		;;
 	arm64)
 		sb_build -p ArmVirtPkg/ArmVirtQemu.dsc
 		mv -T Build/ArmVirtQemu-AArch64{,.secboot_INSECURE} || die
+
+		sb_build -p ArmVirtPkg/ArmVirtQemu.dsc \
+			-D QEMU_PV_VARS
+
+		mv -T Build/ArmVirtQemu-AArch64{,.qemuvars} || die
 
 		# shim.efi has broken MemAttr code
 		my_build -p ArmVirtPkg/ArmVirtQemu.dsc \
 			--pcd PcdDxeNxMemoryProtectionPolicy=0xC000000000007FD1 \
 			--pcd PcdUninstallMemAttrProtocol=TRUE
 
-		mk_fw_vars Build/ArmVirtQemu-AArch64.secboot_INSECURE/"${BUILD_DIR}"/FV/QEMU_VARS.fd
+		mk_fw_vars_raw Build/ArmVirtQemu-AArch64.secboot_INSECURE/"${BUILD_DIR}"/FV/QEMU_VARS.fd
 		raw_to_qcow2 64m Build/ArmVirtQemu-AArch64*/"${BUILD_DIR}"/FV/QEMU_{EFI,VARS}.fd
+		mk_fw_vars_json
 		;;
 	loong)
 		my_build -p OvmfPkg/LoongArchVirt/LoongArchVirtQemu.dsc
@@ -305,6 +329,9 @@ src_install() {
 			done
 		done
 
+		newins Build/OvmfX64.qemuvars/"${BUILD_DIR}"/FV/OVMF_CODE.qcow2 OVMF_CODE.qemuvars.qcow2
+		newins amd64.qemuvars.json OVMF_VARS.qemuvars.json
+
 		# Compatibility with older package versions.
 		dosym ${PN}/OvmfX64 /usr/share/edk2-ovmf
 		;;
@@ -315,6 +342,9 @@ src_install() {
 			newins Build/ArmVirtQemu-AArch64${TYPE}/"${BUILD_DIR}"/FV/QEMU_EFI.qcow2 QEMU_EFI${TYPE}.qcow2
 			newins Build/ArmVirtQemu-AArch64${TYPE}/"${BUILD_DIR}"/FV/QEMU_VARS.qcow2 QEMU_VARS${TYPE}.qcow2
 		done
+
+		newins Build/ArmVirtQemu-AArch64.qemuvars/"${BUILD_DIR}"/FV/QEMU_EFI.qcow2 QEMU_EFI.qemuvars.qcow2
+		newins arm64.qemuvars.json QEMU_VARS.qemuvars.json
 		;;
 	loong)
 		insinto ${DIR}/LoongArchVirtQemu
