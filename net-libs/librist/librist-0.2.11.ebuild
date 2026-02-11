@@ -1,4 +1,4 @@
-# Copyright 2018-2025 Gentoo Authors
+# Copyright 2018-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,15 +7,15 @@ inherit meson
 
 DESCRIPTION="Library for Reliable Internet Stream Transport (RIST) protocol"
 HOMEPAGE="https://code.videolan.org/rist/librist"
-
 SRC_URI="https://code.videolan.org/rist/librist/-/archive/v${PV}/librist-v${PV}.tar.bz2"
 S="${WORKDIR}/librist-v${PV}"
+
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
-
 IUSE="test tools"
 RESTRICT="!test? ( test )"
+REQUIRED_USE="test? ( tools )"
 
 RDEPEND="
 	tools? ( net-libs/libmicrohttpd )
