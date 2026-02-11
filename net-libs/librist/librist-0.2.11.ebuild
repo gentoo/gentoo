@@ -30,7 +30,8 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/librist-0.2.11-mbedtls-3.patch"
+	"${FILESDIR}/${PN}-0.2.11-mbedtls-3.patch"
+	"${FILESDIR}/${PN}-0.2.11-no-pedantic-errors.patch"
 )
 
 src_configure() {
