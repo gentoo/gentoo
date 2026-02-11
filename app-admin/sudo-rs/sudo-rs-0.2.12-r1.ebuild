@@ -10,6 +10,8 @@ CRATES="
 	libc@0.2.180
 "
 
+RUST_MIN_VER="1.85.0"
+
 inherit pam cargo
 
 DESCRIPTION="A memory safe implementation of sudo and su."
