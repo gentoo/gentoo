@@ -73,7 +73,7 @@ LICENSE="GPL-2-with-classpath-exception"
 SLOT="$(ver_cut 1)"
 #	KEYWORDS="" # Not an LTS candidate
 
-IUSE="alsa big-endian cups debug doc examples headless-awt javafx +jbootstrap selinux source static-libs +system-bootstrap systemtap"
+IUSE="alsa big-endian cups debug doc examples headless-awt javafx +jbootstrap selinux source +system-bootstrap systemtap"
 
 REQUIRED_USE="
 	javafx? ( alsa !headless-awt )
@@ -295,7 +295,6 @@ src_compile() {
 		NICE= # Use PORTAGE_NICENESS, don't adjust further down
 		$(usex doc docs '')
 		$(usex jbootstrap bootcycle-images product-images)
-		$(usex static-libs static-libs-image)
 	)
 	emake "${myemakeargs[@]}" -j1
 }
@@ -348,12 +347,6 @@ src_install() {
 	if use doc ; then
 		docinto html
 		dodoc -r "${S}"/build/*-release/images/docs/*
-	fi
-
-	if use static-libs ; then
-		cd "${S}"/build/*-release/images/static-libs || die
-		dodir "${dest}"
-		cp -pPR * "${ddest}" || die
 	fi
 }
 
