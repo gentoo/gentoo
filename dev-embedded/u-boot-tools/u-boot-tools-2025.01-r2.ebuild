@@ -32,6 +32,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2025.01-no-bundled-dtc.patch
+)
+
 src_prepare() {
 	default
 	sed -i 's:\bpkg-config\b:${PKG_CONFIG}:g' \

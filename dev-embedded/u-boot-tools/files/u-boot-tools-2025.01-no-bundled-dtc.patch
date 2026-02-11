@@ -1,0 +1,27 @@
+Don't attempt to build the bundled dtc as we're not going to use it,
+and it would require dtc[python] too anyway.
+--- a/Makefile
++++ b/Makefile
+@@ -594,7 +594,7 @@ else
+ # Carefully list dependencies so we do not try to build scripts twice
+ # in parallel
+ PHONY += scripts
+-scripts: scripts_basic scripts_dtc include/config/auto.conf
++scripts: scripts_basic include/config/auto.conf
+ 	$(Q)$(MAKE) $(build)=$(@)
+ 
+ ifeq ($(dot-config),1)
+@@ -2057,11 +2057,11 @@ endif
+ 
+ ifneq ($(dtstree),)
+ 
+-%.dtb: prepare3 scripts_dtc
++%.dtb: prepare3
+ 	$(Q)$(MAKE) $(build)=$(dtstree) $(dtstree)/$@
+ 
+ PHONY += dtbs dtbs_install
+-dtbs: prepare3 scripts_dtc
++dtbs: prepare3
+ 	$(Q)$(MAKE) $(build)=$(dtstree)
+ 
+ dtbs_install:
