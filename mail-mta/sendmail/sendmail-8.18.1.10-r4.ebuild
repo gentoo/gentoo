@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -101,9 +101,6 @@ src_prepare() {
 
 	# Always enable ipv6 and sockets
 	confENVDEF+=" -DNETINET6 -DSOCKETMAP"
-
-	# Enable experimental features
-	confENVDEV+=" -D_FFR_SAMEDOMAIN -D_FFR_MF_ONEDOMAIN"
 
 	if use berkdb; then
 		# See bug #808954 for FLOCK
@@ -215,7 +212,7 @@ src_install() {
 	fowners smmsp:smmsp /var/spool/clientmqueue
 	fperms 770 /var/spool/clientmqueue
 	fperms 700 /var/spool/mqueue
-	dodoc FAQ KNOWNBUGS README RELEASE_NOTES doc/op/op.ps SNAPSHOT_NOTES
+	dodoc FAQ KNOWNBUGS README RELEASE_NOTES doc/op/op.ps
 
 	dodoc sendmail/{SECURITY,TUNING}
 	newdoc sendmail/README README.sendmail
@@ -308,11 +305,4 @@ pkg_postinst() {
 		elog "configuration file:"
 		elog "\tFEATURE(\`local_procmail',\`/usr/bin/maildrop',\`maildrop -d $u')dnl"
 	fi
-
-	ewarn "This version has enabled experimental code. Please read the file"
-	ewarn ""
-	ewarn "\t${EPREFIX}/usr/share/doc/${PF}/SNAPSHOT_NOTES"
-	ewarn ""
-	ewarn "for enable testing, provide feedback and report potential problems"
-	ewarn "directly to upstream."
 }
