@@ -76,7 +76,7 @@ pkg_postinst() {
 
 	ewarn ""
 	ewarn "Since 3.5.0 the default [auth] type is \"denyall\". You need to"
-	ewarn "change your config if you used the deafult type so far!"
+	ewarn "change your config if you used the default type so far!"
 	ewarn ""
 	einfo "A sample WSGI script has been put into ${EROOT}/usr/share/${PN}."
 	einfo "You will also find there an example FastCGI script."
