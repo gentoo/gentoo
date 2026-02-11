@@ -1,0 +1,42 @@
+From 4e156dc64ddb4a6567ce0239296b2f5966312e22 Mon Sep 17 00:00:00 2001
+From: "Haelwenn (lanodan) Monnier" <contact@hacktivis.me>
+Date: Wed, 11 Feb 2026 14:13:45 +0100
+Subject: [PATCH cproc] cc.h: Remove const on *file entry of struct location
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Archived-At: https://lists.sr.ht/~mcf/cproc/patches/67569
+
+C23 changed the return type of functions like strchr() from `char*`
+to const-preserving macros (see [N3096] 7.26.5 Search functions).
+
+glibc 2.43+ implemented the change, which leads to this error:
+
+    pp.c: In function ‘directive’:
+    pp.c:345:51: error: assignment of read-only location ‘*(const char *)strchr(newloc.file, 34)’
+      345 |                         *strchr(newloc.file, '"') = '\0';
+          |                                                   ^
+
+Upstream bug: https://bugs.gentoo.org/969281
+---
+ cc.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cc.h b/cc.h
+index f67c33a..f1995fc 100644
+--- a/cc.h
++++ b/cc.h
+@@ -125,7 +125,7 @@ enum tokenkind {
+ };
+ 
+ struct location {
+-	const char *file;
++	char *file;
+ 	size_t line, col;
+ };
+ 
+
+base-commit: e963ced5c2b0a102778b19906eaef1af92ed7862
+-- 
+2.52.0
+
