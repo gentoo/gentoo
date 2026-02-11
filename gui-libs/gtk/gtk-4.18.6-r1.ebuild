@@ -85,7 +85,6 @@ PDEPEND="
 	>=x11-themes/adwaita-icon-theme-3.14
 "
 BDEPEND="
-	dev-libs/gobject-introspection-common
 	introspection? (
 		${PYTHON_DEPS}
 		$(python_gen_any_dep '

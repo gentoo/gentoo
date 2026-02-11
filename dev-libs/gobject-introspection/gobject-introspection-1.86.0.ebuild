@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # virtual/pkgconfig needed at runtime, bug #505408
 RDEPEND="
-	>=dev-libs/gobject-introspection-common-${PV}
 	>=dev-libs/glib-2.82.0:2[introspection]
 	dev-libs/libffi:=
 	$(python_gen_cond_dep '
