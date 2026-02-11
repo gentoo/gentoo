@@ -11,7 +11,7 @@ SRC_URI="https://github.com/dani-garcia/bw_web_builds/releases/download/v${PV}/b
 S="${WORKDIR}/web-vault"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 # this package is really useless without vaultwarden, it cannot be run
 # standalone, so pull in vaultwarden to run it
 PDEPEND="app-admin/vaultwarden[web]"
