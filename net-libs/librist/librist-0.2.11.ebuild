@@ -18,15 +18,15 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( tools )"
 
 RDEPEND="
-	tools? ( net-libs/libmicrohttpd )
 	dev-libs/cJSON
 	net-libs/mbedtls:3=
+	tools? ( net-libs/libmicrohttpd:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-build/cmake
-	dev-util/cmocka
 	virtual/pkgconfig
+	test? ( dev-util/cmocka )
 "
 
 PATCHES=(
