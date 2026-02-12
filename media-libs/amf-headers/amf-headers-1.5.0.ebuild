@@ -15,7 +15,7 @@ else
 	# - can only use the AMF features that it has explicit code for
 	# Given that amdgpu-pro-amf is on top of that a proprietary binary
 	# -> we straight to stable when ver-bumping 'amdgpu-pro-amf' and `amf-headers'
-	KEYWORDS="amd64 ~arm64"
+	KEYWORDS="amd64 arm64"
 fi
 
 DESCRIPTION="The Advanced Media Framework (AMF) SDK"
