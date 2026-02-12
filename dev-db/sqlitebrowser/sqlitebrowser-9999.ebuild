@@ -22,7 +22,7 @@ IUSE="sqlcipher test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=app-editors/qhexedit2-0.8.10
+	>=app-editors/qhexedit2-0.8.10:=
 	dev-db/sqlite:3
 	>=dev-libs/qcustomplot-2.1.1-r10
 	dev-qt/qtbase:6[gui,network,ssl,widgets,xml]
