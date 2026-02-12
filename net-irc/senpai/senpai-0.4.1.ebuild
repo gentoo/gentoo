@@ -8,7 +8,7 @@ inherit go-module
 DESCRIPTION="Modern terminal IRC client. NOTICE me :senpai!"
 HOMEPAGE="https://sr.ht/~delthas/senpai/"
 SRC_URI="https://git.sr.ht/~delthas/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-SRC_URI+=" https://github.com/alfredfo/${PN}-deps/raw/master/${P}-deps.tar.xz"
+SRC_URI+=" https://github.com/gentoo-golang-dist/senpai/releases/download/v${PV}/${P}-deps.tar.xz -> ${P}-deps.renamenextbump.tar.xz"
 
 S="${WORKDIR}/${PN}-v${PV}"
 

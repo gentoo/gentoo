@@ -10,6 +10,6 @@
       <name>Proxy Maintainers</name>
     </maintainer>
     <upstream>
-      <remote-id type="sourcehut">~taiite/senpai</remote-id>
+      <remote-id type="sourcehut">~delthas/senpai</remote-id>
     </upstream>
 </pkgmetadata>
