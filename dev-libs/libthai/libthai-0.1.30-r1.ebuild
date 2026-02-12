@@ -3,8 +3,6 @@
 
 EAPI=8
 
-inherit autotools
-
 DESCRIPTION="Set of Thai language support routines"
 HOMEPAGE="
 	https://linux.thai.net/projects/libthai
@@ -15,7 +13,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/tlwg/${PN}.git"
 else
-	SRC_URI="https://github.com/tlwg/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/tlwg/${PN}/releases/download/v${PV}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
@@ -27,13 +25,6 @@ IUSE="doc"
 RDEPEND="dev-libs/libdatrie:="
 DEPEND="${RDEPEND}"
 BDEPEND="doc? ( >=app-text/doxygen-1.15.0 )"
-
-src_prepare() {
-	default
-	# Fixed version if in non git project
-	echo ${PV} > VERSION
-	eautoreconf
-}
 
 src_configure() {
 	econf \

@@ -3,8 +3,6 @@
 
 EAPI=8
 
-inherit autotools
-
 DESCRIPTION="Double-Array Trie Library"
 HOMEPAGE="
 	https://linux.thai.net/projects/datrie
@@ -25,13 +23,6 @@ SLOT="0/1"
 IUSE="doc"
 
 BDEPEND="doc? ( >=app-text/doxygen-1.9.8 )"
-
-src_prepare() {
-	default
-	# Fixed version if in non git project
-	echo ${PV} > VERSION
-	eautoreconf
-}
 
 src_configure() {
 	econf \
