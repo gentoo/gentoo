@@ -1,8 +1,12 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-24)
+# media-libs/phonon is going to be last-rited.
+phonon
 
 # Michał Górny <mgorny@gentoo.org> (2026-01-13)
 # LLVM 15 is only required by masked packages.  It will be removed when
