@@ -43,7 +43,7 @@ src_install() {
 
 	newinitd "${FILESDIR}/${PN}.initd" ${PN}
 
-	dobin "${S}/${LIBDIR}/sdrplay_apiService"
+	dobin "${S}/amd64/sdrplay_apiService"
 
 	dolib.so "${S}/amd64/libsdrplay_api.so.${MY_PV_12}"
 	dosym libsdrplay_api.so.${MY_PV_12} "/usr/$(get_libdir)/libsdrplay_api.so.${MY_PV_1}"
