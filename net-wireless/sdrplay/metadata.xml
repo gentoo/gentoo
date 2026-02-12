@@ -2,7 +2,11 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>idl0r@gentoo.org</email>
-		<name>Christian Ruppert</name>
+		<email>tomjbe@gentoo.org</email>
+		<name>Thomas Beierlein</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>radio@gentoo.org</email>
+		<name>Radio</name>
 	</maintainer>
 </pkgmetadata>
