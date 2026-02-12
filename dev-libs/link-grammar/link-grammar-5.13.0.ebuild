@@ -13,7 +13,7 @@ SRC_URI="https://www.gnucash.org/link-grammar/downloads/${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/5"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ppc ppc64 ~riscv ~sparc ~x86"
 IUSE="aspell +hunspell python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
