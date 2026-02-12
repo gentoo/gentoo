@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -44,7 +44,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/libevent-2.1.12-r1:=[ssl]
-	dev-libs/openssl:=[-bindist(-)]
+	>=dev-libs/openssl-1.1.1:=[-bindist(-)]
 	virtual/zlib:=
 	caps? ( sys-libs/libcap )
 	man? ( app-text/asciidoc )
