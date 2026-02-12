@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/Simsys/qhexedit2/"
 SRC_URI="https://github.com/Simsys/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
-SLOT="0"
+SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~riscv ~x86"
 IUSE="doc +gui python"
 REQUIRED_USE="
