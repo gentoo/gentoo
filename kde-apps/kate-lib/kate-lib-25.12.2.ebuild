@@ -18,8 +18,10 @@ SLOT="6"
 KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="telemetry"
 
+# slot op: Uses Qt6::GuiPrivate for qtx11extras_p.h
+
 DEPEND="
-	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui,widgets,xml]
+	>=dev-qt/qtbase-${QTMIN}:6=[dbus,gui,widgets,xml]
 	>=kde-frameworks/kconfig-${KFMIN}:6
 	>=kde-frameworks/kconfigwidgets-${KFMIN}:6
 	>=kde-frameworks/kcoreaddons-${KFMIN}:6
