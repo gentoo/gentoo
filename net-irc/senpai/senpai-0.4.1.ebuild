@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}-v${PV}"
 
 LICENSE="Apache-2.0 BSD BSD-2 ISC MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 BDEPEND="
 	app-text/scdoc
