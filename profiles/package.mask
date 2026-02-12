@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-12)
+# Misc Qt5-based libraries without any revdeps left.
+# Removal on 2026-03-14.
+dev-qt/qtlockedfile
+dev-qt/qtsingleapplication
+
 # Conrad Kostecki <conikost@gentoo.org> (2026-02-11)
 # Release 1.14.26 breaks API, so masking for now.
 # Bug #969888.
