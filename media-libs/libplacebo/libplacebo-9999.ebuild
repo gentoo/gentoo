@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	GLAD_PV=2.0.8
-	FASTFLOAT_PV=8.0.1
+	FASTFLOAT_PV=8.2.2
 	SRC_URI="
 		https://code.videolan.org/videolan/libplacebo/-/archive/v${PV}/libplacebo-v${PV}.tar.bz2
 		https://github.com/fastfloat/fast_float/archive/refs/tags/v${FASTFLOAT_PV}.tar.gz
