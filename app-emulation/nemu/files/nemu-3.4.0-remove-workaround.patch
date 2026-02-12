@@ -1,0 +1,31 @@
+This workaroud turns on when compiled with LLVM and breaks compilation
+--- a/src/nm_network.c
++++ b/src/nm_network.c
+@@ -6,27 +6,8 @@
+ 
+ #if defined(NM_OS_LINUX)
+ 
+-#ifdef NM_NET_IF_FIX
+-/* Temporary work-around for broken glibc vs. linux kernel header definitions
+- * This is already fixed upstream, remove this when distributions have updated.
+- * net/if.h fuckup should be removed someday in future, when kernels <= 4.2
+- * will not be supported
+- * https://github.com/systemd/systemd/commit/ \
+- *   08ce521fb2546921f2642bef067d2cc02158b121
+- * https://github.com/systemd/systemd/commit/ \
+- *   6f270e6bd8b78aedf9f77534d6d11141ea0bf8ca
+- */
+-#define _NET_IF_H 1
+-#include <net/if.h>
+-#ifndef IFNAMSIZ
+-#define IFNAMSIZ 16
+-extern unsigned int if_nametoindex(const char *__ifname) __THROW;
+-#endif
+-#include <linux/if.h>
+-#else
+ #include <net/if.h>
+ #include <linux/if.h>
+-#endif
+ 
+ #include <time.h>
+ #include <sys/socket.h>

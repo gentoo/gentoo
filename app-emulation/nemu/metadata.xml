@@ -14,4 +14,7 @@
 		<flag name="network-map">Adds possibility of exporting network map to SVG</flag>
 		<flag name="remote-api">Adds API for remote control</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">nemuTUI/nemu</remote-id>
+	</upstream>
 </pkgmetadata>
