@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,7 +30,7 @@ RDEPEND="
 	>=dev-python/urwidtrees-1.0.3[${PYTHON_USEDEP}]
 	>=dev-python/twisted-18.4.0[${PYTHON_USEDEP}]
 	net-mail/mailbase
-	>=net-mail/notmuch-0.30[crypt,python,${PYTHON_USEDEP}]
+	>=net-mail/notmuch-0.34.2[crypt(+),python,${PYTHON_USEDEP}]
 "
 BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
