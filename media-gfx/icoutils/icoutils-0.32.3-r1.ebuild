@@ -6,8 +6,8 @@ EAPI=8
 inherit autotools flag-o-matic
 
 DESCRIPTION="Tools to extract and convert images in icon and cursor files (.ico, .cur)"
-HOMEPAGE="http://www.nongnu.org/icoutils/"
-SRC_URI="mirror://nongnu/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://www.nongnu.org/icoutils/"
+SRC_URI="https://savannah.c3sl.ufpr.br/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
