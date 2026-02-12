@@ -28,6 +28,7 @@ REQUIRED_USE="
 	dri3? ( drm )
 	java? ( viewer )
 	opengl? ( server )
+	wayland? ( server )
 	|| ( server viewer )
 "
 RESTRICT="!test? ( test )"
