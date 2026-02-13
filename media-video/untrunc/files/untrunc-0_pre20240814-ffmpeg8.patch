@@ -1,8 +1,0 @@
-https://bugs.gentoo.org/961982
---- a/src/codec.cpp
-+++ b/src/codec.cpp
-@@ -450,3 +450,3 @@
- 
--		self->was_keyframe_ = frame->key_frame;
-+		self->was_keyframe_ = (frame->flags & AV_FRAME_FLAG_KEY);
- 		self->was_bad_ = !got_frame;
