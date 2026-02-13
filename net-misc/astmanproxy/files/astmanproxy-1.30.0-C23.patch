@@ -1,6 +1,7 @@
 Forward-declare structs and use them in function pointer declarations.
 Fixes build with C23.
 https://bugs.gentoo.org/967014
+https://github.com/davies147/astmanproxy/pull/19
 --- a/src/include/astmanproxy.h
 +++ b/src/include/astmanproxy.h
 @@ -107,10 +107,13 @@
