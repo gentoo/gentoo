@@ -9,15 +9,13 @@ HOMEPAGE="https://apps.kde.org/"
 LICENSE="metapackage"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
-IUSE="+bittorrent dropbox samba +screencast +webengine"
+IUSE="+bittorrent dropbox samba +webengine +zeroconf"
 
 RDEPEND="
 	>=kde-apps/kget-${PV}:*
-	>=kde-apps/krdc-${PV}:*
 	>=kde-misc/kdeconnect-${PV}:*
 	>=net-im/tokodon-${PV}
 	>=net-irc/konversation-${PV}:*
-	>=net-misc/kio-zeroconf-${PV}:*
 	>=net-news/alligator-${PV}
 	bittorrent? (
 		>=net-libs/libktorrent-${PV}:*
@@ -25,12 +23,16 @@ RDEPEND="
 	)
 	dropbox? ( >=kde-apps/dolphin-plugins-dropbox-${PV}:* )
 	samba? ( >=kde-apps/kdenetwork-filesharing-${PV}:* )
-	screencast? ( >=kde-apps/krfb-${PV}:* )
 	webengine? (
 		>=kde-apps/kaccounts-integration-${PV}:*
 		>=kde-apps/kaccounts-providers-${PV}:*
 		>=kde-apps/signon-kwallet-extension-${PV}:*
 		>=kde-misc/kio-gdrive-${PV}:*
 		>=net-im/neochat-${PV}
+	)
+	zeroconf? (
+		>=kde-apps/krdc-${PV}:*
+		>=kde-apps/krfb-${PV}:*
+		>=net-misc/kio-zeroconf-${PV}:*
 	)
 "
