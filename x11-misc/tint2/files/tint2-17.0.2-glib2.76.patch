@@ -1,0 +1,19 @@
+https://bugs.gentoo.org/901775
+--- a/src/util/uevent.c
++++ b/src/util/uevent.c
+@@ -158,5 +158,8 @@
+     struct uevent *ev = uevent_new(buf, len);
+     if (ev) {
+-        for (GList *l = notifiers; l; l = l->next) {
++        /* we might remove elements in the callback so a copy is needed */
++        GList *list = g_list_copy(notifiers);
++
++        for (GList *l = list; l; l = l->next) {
+             struct uevent_notify *nb = l->data;
+ 
+@@ -170,4 +173,5 @@
+         }
+ 
++        g_list_free(list);
+         uevent_free(ev);
+     }
