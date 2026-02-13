@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
 
-inherit meson-multilib python-any-r1
+inherit cmake-multilib python-any-r1 toolchain-funcs
 
 DESCRIPTION="C++ HTTP/HTTPS server and client library"
 HOMEPAGE="https://github.com/yhirose/cpp-httplib/"
@@ -25,7 +25,7 @@ LICENSE="MIT"
 SLOT="0/$(ver_cut 0-2)"  # soversion
 
 IUSE="brotli mbedtls ssl test zlib zstd"
-REQUIRED_USE="test? ( ssl )"
+REQUIRED_USE="test? ( brotli zlib zstd )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -51,29 +51,32 @@ DEPEND="
 		net-misc/curl
 	)
 "
-BDEPEND="${PYTHON_DEPS}"
+BDEPEND="
+	${PYTHON_DEPS}
+	virtual/pkgconfig
+"
 
 PATCHES=(
-	"${FILESDIR}"/cpp-httplib-0.31.0-mbedtls.patch
-	"${FILESDIR}"/cpp-httplib-0.31.0-mbedtls-3.patch
+	"${FILESDIR}/cpp-httplib-0.32.0-cmake-mbedtls.patch"
 )
 
-src_prepare() {
-	default
-	rm -r test/gtest || die
-}
-
 src_configure() {
-	local emesonargs=(
-		-Dcompile=true
-		$(meson_feature zlib)
-		$(meson_feature zstd)
-		$(meson_feature brotli)
-		$(meson_feature ssl)
-		$(usex mbedtls -Dssl_backend=mbedtls -Dssl_backend=openssl)
-		$(meson_use test)
+	local -a mycmakeargs=(
+		-DHTTPLIB_COMPILE=yes
+		-DHTTPLIB_SHARED=yes
+		-DHTTPLIB_USE_BROTLI_IF_AVAILABLE=no
+		-DHTTPLIB_USE_OPENSSL_IF_AVAILABLE=no
+		-DHTTPLIB_USE_MBEDTLS_IF_AVAILABLE=no
+		-DHTTPLIB_USE_ZLIB_IF_AVAILABLE=no
+		-DHTTPLIB_USE_ZSTD_IF_AVAILABLE=no
+		-DHTTPLIB_REQUIRE_BROTLI=$(usex brotli)
+		-DHTTPLIB_REQUIRE_OPENSSL=$(usex ssl $(usex mbedtls no yes))
+		-DHTTPLIB_REQUIRE_MBEDTLS=$(usex ssl $(usex mbedtls))
+		-DHTTPLIB_REQUIRE_ZLIB=$(usex zlib)
+		-DHTTPLIB_REQUIRE_ZSTD=$(usex zstd)
+		-DPython3_EXECUTABLE="${PYTHON}"
 	)
-	meson-multilib_src_configure
+	cmake-multilib_src_configure
 }
 
 multilib_src_test() {
@@ -83,16 +86,18 @@ multilib_src_test() {
 		return
 	fi
 
+	cp -p -R --reflink=auto "${S}/test" ./test || die
+
 	local -a failing_tests=(
 		# Disable all online tests.
 		"*.*_Online"
-		# https://github.com/yhirose/cpp-httplib/issues/2351
-		SSLClientTest.UpdateCAStoreWithPem
 	)
 
 	# Little dance to please the GTEST filter (join array using ":").
-	local failing_tests_str="${failing_tests[@]}"
-	local failing_tests_filter="${failing_tests_str// /:}"
+	failing_tests_str="${failing_tests[@]}"
+	failing_tests_filter="${failing_tests_str// /:}"
 
-	GTEST_FILTER="-${failing_tests_filter}" meson_src_test
+	# PREFIX is . to avoid calling "brew" and relying on stuff in /opt
+	GTEST_FILTER="-${failing_tests_filter}" emake -C test \
+		CXX="$(tc-getCXX)" CXXFLAGS="${CXXFLAGS} -I." PREFIX=.
 }
