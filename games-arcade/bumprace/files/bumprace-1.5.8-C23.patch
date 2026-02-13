@@ -1,0 +1,13 @@
+StartText doesn't take an argument
+https://bugs.gentoo.org/966631
+--- a/src/bumprace.c	2026-02-13 16:02:19.108518662 +0300
++++ b/src/bumprace.c	2026-02-13 16:05:19.152697531 +0300
+@@ -1178,7 +1178,7 @@
+   sprintf(text,"%s/font.scl",DATAPATH);
+   Font=LoadImage("font.png",3);
+   InitFont(Font);
+-  if (final) StartText(i);
++  if (final) StartText();
+ //load data
+   printf("** Loading Data **\n");
+ #ifdef SOUND
