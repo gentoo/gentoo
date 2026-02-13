@@ -27,17 +27,6 @@ RESTRICT="test"
 # version of dev-cpp/catch (header only) is bundled for tests under
 # extern/catch.hpp, but we don't use the tests.
 
-PATCHES=( "${FILESDIR}/highs-1.13.0-docs.patch" )
-
-DOCS=(
-	AUTHORS
-	CITATION.cff
-	CODE_OF_CONDUCT.md
-	CONTRIBUTING.md
-	FEATURES.md
-	README.md
-)
-
 src_prepare() {
 	# Sometimes the .git directory makes it into the release tarballs
 	# and cmake will waste time computing the latest commit.
@@ -93,6 +82,8 @@ src_configure() {
 
 src_install() {
 	cmake_src_install
+
+	rm "${ED}/usr/share/doc/${PF}/LICENSE.txt" || die
 
 	docinto manual
 	dodoc -r docs/src/*
