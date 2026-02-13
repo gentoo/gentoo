@@ -1,4 +1,4 @@
-# Copyright 2014-2021 Gentoo Authors
+# Copyright 2014-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 PROFILE_ARCH="mipsel"
@@ -12,3 +12,7 @@ MULTILIB_ABIS="o32"
 
 ABI_MIPS="o32"
 IUSE_IMPLICIT="abi_mips_o32"
+
+# James Le Cuirot <chewi@gentoo.org> (2026-02-13)
+# Enable the native QEMU target for this architecture by default.
+QEMU_SOFTMMU_TARGETS="mipsel"

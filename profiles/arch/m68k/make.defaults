@@ -1,4 +1,4 @@
-# Copyright 1999-2026 Gentoo Foundation
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 ARCH="m68k"
@@ -18,3 +18,7 @@ DEFAULT_ABI="m68k"
 MULTILIB_ABIS="m68k"
 LIBDIR_m68k="lib"
 CHOST_m68k="${CHOST}"
+
+# James Le Cuirot <chewi@gentoo.org> (2026-02-13)
+# Enable the native QEMU target for this architecture by default.
+QEMU_SOFTMMU_TARGETS="m68k"

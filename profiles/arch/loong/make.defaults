@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Main LoongArch profile directory. Common settings for all loong profiles.
@@ -44,3 +44,7 @@ FEATURES="-pid-sandbox -network-sandbox -ipc-sandbox"
 # ABI
 # DEFAULT_ABI
 # MULTILIB_ABIS
+
+# James Le Cuirot <chewi@gentoo.org> (2026-02-13)
+# Enable the native QEMU target for this architecture by default.
+QEMU_SOFTMMU_TARGETS="loongarch64"

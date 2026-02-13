@@ -1,4 +1,4 @@
-# Copyright 2008-2025 Gentoo Authors
+# Copyright 2008-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Main ARM profile
@@ -25,3 +25,7 @@ VIDEO_CARDS="exynos fbdev omap"
 # Michał Górny <mgorny@gentoo.org> (2017-03-14)
 # Unhide the ARM-specific USE_EXPANDs.
 USE_EXPAND_HIDDEN="-CPU_FLAGS_ARM"
+
+# James Le Cuirot <chewi@gentoo.org> (2026-02-13)
+# Enable the native QEMU target for this architecture by default.
+QEMU_SOFTMMU_TARGETS="arm"
