@@ -3,6 +3,9 @@
 
 EAPI=8
 
+# note: this is the final "original" version, we opted to stop
+# using the 17.1.x (dead) fork wrt bug #970019
+
 inherit cmake xdg
 
 DESCRIPTION="Lightweight panel/taskbar for Linux"
