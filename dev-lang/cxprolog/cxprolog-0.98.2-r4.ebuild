@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ S="${WORKDIR}"/${P}
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="examples java +readline test wxwidgets"
+IUSE="examples +readline test wxwidgets"
 RESTRICT="!test? ( test )"
 
 COMMON_DEP="
@@ -39,6 +39,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-portage.patch
 	"${FILESDIR}"/${P}-printf-musl.patch
 	"${FILESDIR}"/${P}-test-io.patch
+	"${FILESDIR}"/${P}-drop-register.patch
 )
 
 src_prepare() {
