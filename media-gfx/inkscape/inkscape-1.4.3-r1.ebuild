@@ -113,7 +113,7 @@ DEPEND="${COMMON_DEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}"/${P}-poppler-26.01.patch # in git master
+	"${FILESDIR}"/${P}-poppler-26.0{1,1-warnings,2}.patch # in git master, pending MR
 	"${FILESDIR}"/${P}-libcroco-cmake-minreqver-3.12.patch # bug 965915
 )
 

@@ -1,0 +1,55 @@
+From 5d4310dd8a0e4ca83850789a083710f82fb4d9b3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ji=C5=99=C3=AD=20Faist?= <faist@rexcontrols.cz>
+Date: Mon, 2 Feb 2026 17:39:08 +0100
+Subject: [PATCH 2/3] Fix warning with poppler 26.x.x
+
+(cherry picked from commit ada064ea37f37a92bb1846a048a3da2c2185d3b2)
+---
+ .../internal/pdfinput/svg-builder.cpp         | 24 +++++++++++++++++--
+ 1 file changed, 22 insertions(+), 2 deletions(-)
+
+diff --git a/src/extension/internal/pdfinput/svg-builder.cpp b/src/extension/internal/pdfinput/svg-builder.cpp
+index 8b2e6f3d54..94d4342dc4 100644
+--- a/src/extension/internal/pdfinput/svg-builder.cpp
++++ b/src/extension/internal/pdfinput/svg-builder.cpp
+@@ -2095,7 +2095,17 @@ Inkscape::XML::Node *SvgBuilder::_createImage(Stream *str, int width, int height
+             image_stream = new ImageStream(str, width, 1, 1);
+         }
+ #if POPPLER_CHECK_VERSION(26, 0, 0)
+-        image_stream->rewind();
++        if(!image_stream->rewind())
++        {
++            g_warning("ImageStream: Failed to rewind image stream");
++            png_destroy_write_struct(&png_ptr, &info_ptr);
++            if (!_embed_images) {
++                fclose(fp);
++                g_free(file_name);
++            }
++            delete image_stream;
++            return nullptr;
++        }
+ #else
+         image_stream->reset();
+ #endif
+@@ -2125,7 +2135,17 @@ Inkscape::XML::Node *SvgBuilder::_createImage(Stream *str, int width, int height
+                                        color_map->getNumPixelComps(),
+                                        color_map->getBits());
+ #if POPPLER_CHECK_VERSION(26, 0, 0)
+-        image_stream->rewind();
++        if(!image_stream->rewind())
++        {
++            g_warning("ImageStream: Failed to rewind image stream");
++            png_destroy_write_struct(&png_ptr, &info_ptr);
++            if (!_embed_images) {
++                fclose(fp);
++                g_free(file_name);
++            }
++            delete image_stream;
++            return nullptr;
++        }
+ #else
+         image_stream->reset();
+ #endif
+-- 
+2.53.0
+
