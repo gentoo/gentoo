@@ -21,6 +21,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # virtual/pkgconfig needed at runtime, bug #505408
 RDEPEND="
+	>=dev-libs/gobject-introspection-common-${PV}
 	>=dev-libs/glib-2.82.0:2[introspection]
 	dev-libs/libffi:=
 	$(python_gen_cond_dep '
