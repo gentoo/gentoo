@@ -14,13 +14,15 @@ S="${WORKDIR}/${PN^^}.${PV}"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="lvm nvme readline sanlock selinux static static-libs systemd thin +udev valgrind xfs"
+IUSE="lvm nvme readline sanlock selinux static static-libs systemd test thin +udev valgrind xfs"
 REQUIRED_USE="
 	static? ( !systemd !udev !nvme )
 	static-libs? ( static !udev )
 	systemd? ( udev )
+	test? ( lvm )
 	thin? ( lvm )
 "
+RESTRICT="!test? ( test )"
 
 # Doesn't strictly need >=sanlock-4.0.0 but autodetects features, so pick
 # the best we have for predictability. Ditto systemd.
