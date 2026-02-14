@@ -1,0 +1,19 @@
+Backport the fix from gnu-efi 4.0.4 to build with binutils-2.46.
+
+https://bugs.gentoo.org/970040
+
+--- a/apps/Makefile
++++ b/apps/Makefile
+@@ -66,9 +66,9 @@
+ 
+ ifneq ($(HAVE_EFI_OBJCOPY),)
+ 
+-FORMAT		:= --target efi-app-$(ARCH)
+-$(TARGET_BSDRIVERS): FORMAT=--target efi-bsdrv-$(ARCH)
+-$(TARGET_RTDRIVERS): FORMAT=--target efi-rtdrv-$(ARCH)
++FORMAT		:= -O efi-app-$(ARCH)
++$(TARGET_BSDRIVERS): FORMAT=-O efi-bsdrv-$(ARCH)
++$(TARGET_RTDRIVERS): FORMAT=-O efi-rtdrv-$(ARCH)
+ 
+ else
+ 
