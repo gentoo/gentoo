@@ -24,10 +24,10 @@
 	</longdescription>
 	<use>
 		<flag name="btrfs">
-			Enables btrfs support (graph driver) in Podman
+			Enable btrfs support (graph driver) in Podman
 		</flag>
 		<flag name="wrapper">
-			Install wrapper which lets use podman for command `docker`
+			Install a wrapper to allow using `podman` as a drop-in replacement for `docker`
 		</flag>
 	</use>
 	<upstream>
