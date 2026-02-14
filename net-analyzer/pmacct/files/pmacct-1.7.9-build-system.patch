@@ -1,0 +1,27 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -1212,11 +1212,7 @@
+ dnl Git submodule Dependencies buid system
+ dnl --------------------------------------
+ 
+-dnl First check whether to build git submodule deps
+-WITH_EXTERNAL_DEPS_DEFAULT=yes
+-if [ test ! -f "$srcdir/src/external_libs/libcdada/include/cdada.h" ] && [ test -z `git rev-parse HEAD 2> /dev/null` ]; then
+-        WITH_EXTERNAL_DEPS_DEFAULT=no
+-fi
++WITH_EXTERNAL_DEPS_DEFAULT=no
+ 
+ AC_MSG_CHECKING([whether external dependencies (git submodules) should be compiled])
+ AC_ARG_WITH(external-deps,
+@@ -1263,9 +1259,9 @@
+                         AC_MSG_RESULT(yes)
+                         tmp_CFLAGS=`echo $CFLAGS | sed 's/O2/O0/g'`
+                         CFLAGS="$tmp_CFLAGS"
+-                        CFLAGS="$CFLAGS -g -Wall -Werror"
++                        CFLAGS="$CFLAGS -g -Wall"
+                 else
+-                        CFLAGS="$CFLAGS -Wall -Werror"
++                        CFLAGS="$CFLAGS -Wall"
+                         AC_MSG_RESULT(no)
+                 fi
+         ],
