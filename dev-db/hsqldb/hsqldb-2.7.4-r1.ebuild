@@ -30,9 +30,10 @@ COMMON_DEPEND="
 	acct-user/hsqldb
 "
 
+# max jdk 25 for bug #970088
 DEPEND="${COMMON_DEPEND}
 	dev-java/javax-servlet-api:3.1
-	>=virtual/jdk-11:*
+	|| ( virtual/jdk:25 virtual/jdk:21 virtual/jdk:17 virtual/jdk:11 )
 	test? (
 		>=dev-java/ant-1.10.14-r3:0[junit]
 		dev-java/junit:0
