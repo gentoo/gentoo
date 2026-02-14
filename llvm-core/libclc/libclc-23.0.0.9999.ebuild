@@ -52,7 +52,7 @@ src_configure() {
 	)
 	use video_cards_radeonsi && libclc_targets+=(
 		"amdgcn--"
-		"amdgcn-amd-amdhsa"
+		"amdgcn-amd-amdhsa-llvm"
 		"amdgcn-mesa-mesa3d"
 	)
 
