@@ -1,7 +1,7 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 JAVA_PKG_IUSE="doc source test"
 MAVEN_ID="org.hsqldb:hsqldb:${PV}"
@@ -53,7 +53,6 @@ HSQLDB_JAR=/usr/share/hsqldb/lib/hsqldb.jar
 HSQLDB_HOME=/var/lib/hsqldb
 
 src_prepare() {
-	default #780585
 	java-pkg-2_src_prepare
 	java-pkg_clean
 
