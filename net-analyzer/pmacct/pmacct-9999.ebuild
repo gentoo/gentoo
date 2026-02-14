@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,17 +21,15 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-IUSE="+bgp-bins +bmp-bins geoip geoipv2 jansson kafka +l2 mysql ndpi nflog postgres rabbitmq sqlite +st-bins +traffic-bins zmq"
+IUSE="+bgp-bins +bmp-bins geoipv2 jansson kafka +l2 mysql ndpi nflog postgres rabbitmq sqlite +st-bins +traffic-bins zmq"
 
 REQUIRED_USE="
-	?? ( geoip geoipv2 )
 	kafka? ( jansson )
 	rabbitmq? ( jansson )
 "
 
 RDEPEND="dev-libs/libcdada
 	net-libs/libpcap
-	geoip? ( dev-libs/geoip )
 	geoipv2? ( dev-libs/libmaxminddb )
 	jansson? ( dev-libs/jansson:= )
 	kafka? ( dev-libs/librdkafka )
@@ -49,8 +47,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.7.4--Werror.patch"
-	"${FILESDIR}/${PN}-1.7.6-nogit.patch"
+	"${FILESDIR}"/${PN}-1.7.9-build-system.patch
 )
 
 DOCS=(
@@ -69,7 +66,6 @@ src_configure() {
 	local myeconfargs=(
 		$(use_enable bgp-bins)
 		$(use_enable bmp-bins)
-		$(use_enable geoip)
 		$(use_enable geoipv2)
 		$(use_enable jansson)
 		$(use_enable kafka)
@@ -87,7 +83,6 @@ src_configure() {
 		--without-external-deps
 		--disable-ebpf
 		--disable-debug
-		--disable-mongodb
 	)
 
 	econf "${myeconfargs[@]}"
@@ -97,9 +92,8 @@ src_install() {
 	default
 
 	local dirname
-	for dirname in examples sql telemetry; do
-		docinto ${dirname}
-		dodoc -r ${dirname}/*
+	for dirname in examples sql; do
+		dodoc -r ${dirname}
 	done
 
 	newinitd "${FILESDIR}"/pmacctd-init.d pmacctd
