@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/966498
+Fixes compilation with C23 compilers
+--- a/include/bomberclone.h
++++ b/include/bomberclone.h
+@@ -123,8 +123,8 @@
+ extern void game_start();
+ extern void game_showresult ();
+ extern int game_check_endgame ();
+-extern void game_showresultnormal ();
+-extern void game_showresultteam ();
++extern void game_showresultnormal (int pos_x, int pos_y, int pos_w, int pos_h);
++extern void game_showresultteam (int pos_x, int pos_y, int pos_w, int pos_h);
+ extern void game_menu_create ();
+ extern void game_menu_loop (SDL_Event *event, int eventstate);
+ extern void game_resetdata ();
