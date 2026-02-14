@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Beierlein <tomjbe@gentoo.org> (2026-02-14)
+# Move ebuild versioning to classical x.y.z number scheme
+# Should be kept until net-wireless/sdrplay-3.15.2 (dep for coming
+# new version) gets stable.
+>=net-wireless/soapysdrplay-20000000
+
 # David Seifert <soap@gentoo.org> (2026-02-14)
 # Behemoth package, with a massive and brittle testsuite. No other major distro
 # packages this anymore. Lots of QA issues, broken tests and blocking cleanup
