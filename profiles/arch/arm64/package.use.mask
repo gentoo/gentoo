@@ -55,10 +55,6 @@ sci-libs/flexiblas -blis -openblas
 # dev-games/ogre is not keyworded here
 >=dev-games/mygui-3.4.1 ogre
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2025-08-06)
-# aarch64 supports sframe
->=sys-libs/glibc-2.42 -sframe
-
 # Ionen Wolkens <ionen@gentoo.org> (2025-08-01)
 # dev-qt/qtlanguageserver:6 is keyworded here
 dev-qt/qtdeclarative:6 -qmlls
