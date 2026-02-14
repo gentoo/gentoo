@@ -45,6 +45,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${P}-cmake4.patch
 	"${FILESDIR}"/${P}-glib2.76.patch
+	"${FILESDIR}"/${P}-math.patch
 )
 
 src_configure() {
