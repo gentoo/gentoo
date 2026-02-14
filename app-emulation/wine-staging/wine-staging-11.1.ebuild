@@ -133,7 +133,7 @@ RDEPEND="
 "
 DEPEND="
 	${WINE_COMMON_DEPEND}
-	sys-kernel/linux-headers
+	>=sys-kernel/linux-headers-6.14
 	X? ( x11-base/xorg-proto )
 	bluetooth? ( net-wireless/bluez )
 "
