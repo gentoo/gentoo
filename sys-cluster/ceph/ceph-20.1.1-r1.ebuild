@@ -3,6 +3,7 @@
 
 EAPI=8
 
+CMAKE_REMOVE_MODULES_LIST=( FindBoost )
 CMAKE_WARN_UNUSED_CLI=no # false positives unless all USE flags are on
 PYTHON_COMPAT=( python3_{10..13} )
 LUA_COMPAT=( lua5-{3..4} )
@@ -228,6 +229,8 @@ PATCHES=(
 	"${FILESDIR}/ceph-19.2.2-silent-unused-variable-warning.patch"
 	"${FILESDIR}/ceph-19.2.2-src-mgr-make-enum-statically-castable.patch"
 	"${FILESDIR}/ceph-20.1.0-nvmeof.patch"
+	# https://bugs.gentoo.org/969039
+	"${FILESDIR}"/ceph-20.1.1-boost-1.89-{1,2,3}.patch
 )
 
 check-reqs_export_vars() {
@@ -255,20 +258,11 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cmake_src_prepare
-
 	if use system-boost; then
-		if has_version '>=dev-libs/boost-1.88'; then
-			eapply "${FILESDIR}/ceph-19.2.2-boost188.patch"
-			eapply "${FILESDIR}/ceph-19.2.2-boost-linking.patch"
-		fi
-		find "${S}" -name '*.cmake' -or -name 'CMakeLists.txt' -print0 \
-			| xargs --null sed -r \
-			-e 's|Boost::|boost_|g' \
-			-e 's|Boost_|boost_|g' \
-			-e 's|[Bb]oost_boost|boost_system|g' \
-			-i || die
+		rm -r src/boost || die # ensure use system boost, reduce QA spam
 	fi
+
+	cmake_src_prepare
 
 	if ! use systemd; then
 		find "${S}"/src/ceph-volume/ceph_volume -name '*.py' -print0 \

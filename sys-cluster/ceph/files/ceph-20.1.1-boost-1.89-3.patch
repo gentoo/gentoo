@@ -1,0 +1,344 @@
+From eeed5bc3cd4224b995209f30c33d3afbb0e34364 Mon Sep 17 00:00:00 2001
+From: "Adam C. Emerson" <aemerson@redhat.com>
+Date: Wed, 14 Jan 2026 19:53:15 -0500
+Subject: [PATCH 1/5] dmclock: Integrate fully into Ceph project
+
+Setting the policy to allow it to use `BOOST_ROOT` causes a build
+failure in make check on github, so just have it be part of the Ceph
+project.
+
+* asturm 2026-02-14: Resolve simple conflict w/ 20.1.1 having lower minimum
+  required CMake version pre-469d82a1f387f342797636fdfff84f570b22f928
+
+Signed-off-by: Adam C. Emerson <aemerson@redhat.com>
+---
+ src/dmclock/CMakeLists.txt     | 22 ----------------------
+ src/dmclock/src/CMakeLists.txt |  4 ++--
+ 2 files changed, 2 insertions(+), 24 deletions(-)
+
+diff --git a/src/dmclock/CMakeLists.txt b/src/dmclock/CMakeLists.txt
+index 52742e846f8af..206e9e691fbc8 100644
+--- a/src/dmclock/CMakeLists.txt
++++ b/src/dmclock/CMakeLists.txt
+@@ -1,30 +1,8 @@
+-cmake_minimum_required(VERSION 3.5.1)
+-
+-project(dmclock CXX)
+-
+-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake/modules")
+-
+-if (NOT(BOOST_FOUND))
+-  find_package(Boost REQUIRED)
+-endif()
+-
+-find_package(Threads)
+-
+-if(CMAKE_CXX_STANDARD OR CMAKE_CXX_FLAGS MATCHES "-std=(c|gnu)\\+\\+")
+-  # use existing settings if available
+-else()
+-  set(CMAKE_CXX_STANDARD 11)
+-  set(CMAKE_CXX_STANDARD_REQUIRED ON)
+-endif()
+-
+ add_subdirectory(src)
+ 
+ # Determine if dmclock is built as a subproject (using add_subdirectory)
+ # or if it is the master project.
+ set(MASTER_PROJECT FALSE)
+-if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
+-  set(MASTER_PROJECT TRUE)
+-endif()
+ 
+ option(dmclock_TEST "Generate test targets" ${MASTER_PROJECT})
+ if(dmclock_TEST)
+diff --git a/src/dmclock/src/CMakeLists.txt b/src/dmclock/src/CMakeLists.txt
+index d13229e402845..4d490ced0d782 100644
+--- a/src/dmclock/src/CMakeLists.txt
++++ b/src/dmclock/src/CMakeLists.txt
+@@ -6,8 +6,8 @@ add_library(dmclock::dmclock ALIAS dmclock)
+ target_compile_options(dmclock PRIVATE
+   "-Wno-write-strings" "-Wall")
+ target_include_directories(dmclock PUBLIC
+-  $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src>
+-  $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/support/src>)
++  $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src/dmclock/src>
++  $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src/dmclock/support/src>)
+ 
+ target_link_libraries(dmclock
+   PUBLIC Boost::boost
+
+From 1dfe804c8410caf288e22b96e4e99c73869f21a0 Mon Sep 17 00:00:00 2001
+From: "Adam C. Emerson" <aemerson@redhat.com>
+Date: Wed, 14 Jan 2026 19:58:15 -0500
+Subject: [PATCH 2/5] build: Disable `FindBoost` for Boost's included cmake
+ config
+
+Boost has included this since 1.70 and CMake has deprecated the
+non-config version since 3.30.
+
+See also
+https://cmake.org/cmake/help/latest/policy/CMP0167.html#policy:CMP0167
+
+We enable CMP0167 (The `FindBoost` module is removed.) to force cmake
+to use the installed Boost configuration files rather than its own
+detection.
+
+We also enable CMP0144 (`find_package()` uses upper-case
+`<PACKAGENAME>_ROOT` variables.) to ensue that the `BOOST_ROOT`
+parameter continues to function in the config-style `find_package`.
+
+`BuildBoost.cmake` is updated to add the `Boost::headers` interface
+target to match configured system boost (retaining the Boost::boost
+alias).
+
+* asturm 2026-02-14: Drop huge file removal to be done manually in ebuild:
+    cmake/modules/FindBoost.cmake  | 2648 --------------------------------
+    delete mode 100644 cmake/modules/FindBoost.cmake
+
+Signed-off-by: Adam C. Emerson <aemerson@redhat.com>
+---
+ CMakeLists.txt                 |    6 +-
+ cmake/modules/BuildBoost.cmake |   16 +-
+ 3 files changed, 17 insertions(+), 2653 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0e0cb08a27a94..402b1d8cbb49b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -4,7 +4,11 @@ project(ceph
+   VERSION 20.0.0
+   LANGUAGES CXX C ASM)
+ 
+-foreach(policy CMP0127 CMP0135 CMP0175)
++foreach(policy CMP0127 CMP0135
++  CMP0144 # Ensure taking `BOOST_ROOT` keeps working. Otherwise,
++	  # config-based `find_package` will take `Boost_ROOT`.
++  CMP0167 # Use Boost's own CMake config files instead of FindBoost module.
++  CMP0175)
+   if(POLICY ${policy})
+     cmake_policy(SET ${policy} NEW)
+   endif()
+diff --git a/cmake/modules/BuildBoost.cmake b/cmake/modules/BuildBoost.cmake
+index 470dd20a36fa0..4b80296f9dff8 100644
+--- a/cmake/modules/BuildBoost.cmake
++++ b/cmake/modules/BuildBoost.cmake
+@@ -223,6 +223,9 @@ macro(build_boost version)
+     endif()
+   endforeach()
+   set(Boost_BUILD_COMPONENTS ${components})
++  # Remove the `headers` from the list of components to build as
++  # `headers` is an interface only target we add later.
++  list(REMOVE_ITEM Boost_BUILD_COMPONENTS headers)
+   unset(components)
+ 
+   foreach(c ${Boost_BUILD_COMPONENTS})
+@@ -278,13 +281,18 @@ macro(build_boost version)
+   endforeach()
+ 
+   # for header-only libraries
+-  add_library(Boost::boost INTERFACE IMPORTED)
+-  set_target_properties(Boost::boost PROPERTIES
++  add_library(Boost::headers INTERFACE IMPORTED)
++  set_target_properties(Boost::headers PROPERTIES
+     INTERFACE_INCLUDE_DIRECTORIES "${Boost_INCLUDE_DIRS}")
+-  add_dependencies(Boost::boost Boost)
++  add_dependencies(Boost::headers Boost)
+   find_package_handle_standard_args(Boost DEFAULT_MSG
+     Boost_INCLUDE_DIRS Boost_LIBRARIES)
+   mark_as_advanced(Boost_LIBRARIES BOOST_INCLUDE_DIRS)
++
++  add_library(Boost::boost INTERFACE IMPORTED)
++  set_property(TARGET Boost::boost APPEND PROPERTY INTERFACE_LINK_LIBRARIES
++    Boost::headers)
++ 
+ endmacro()
+ 
+ function(maybe_add_boost_dep target)
+@@ -298,7 +306,7 @@ function(maybe_add_boost_dep target)
+     get_filename_component(ext ${src} EXT)
+     # assuming all cxx source files include boost header(s)
+     if(ext MATCHES ".cc|.cpp|.cxx")
+-      add_dependencies(${target} Boost::boost)
++      add_dependencies(${target} Boost::headers)
+       return()
+     endif()
+   endforeach()
+
+   From dce2c80dbd500deaaa3846e865e7ae75eb85a35a Mon Sep 17 00:00:00 2001
+From: "Adam C. Emerson" <aemerson@redhat.com>
+Date: Thu, 8 May 2025 14:34:54 -0400
+Subject: [PATCH 3/5] {test,rgw,tools}: Explicitly use Boost.Process v1
+
+Boost 1.88 removed the default of using the v1 interface
+automatically. See https://github.com/boostorg/process/issues/480 for
+an example.
+
+https://www.boost.org/doc/libs/1_88_0/libs/process/doc/html/index.html#version_2
+describes the new, preferred version which we probably want to migrate
+to eventually.
+
+In this change we simply include the v1 files and change the namespace
+we alias.
+
+* asturm 2026-02-14: Fix conflict w/ nonexistent file in 20.1.1 (only introduced
+  in git master commit 119fe9149490701cca32a1f1d717d03b0f51d623) by dropping the
+  patch hunk:
+    src/tools/cephfs/ProgressTracker.cc    | 12 ++++++++++--
+
+Signed-off-by: Adam C. Emerson <aemerson@redhat.com>
+---
+ src/rgw/driver/rados/rgw_sal_rados.cc  |  1 -
+ src/rgw/rgw_lua.cc                     | 12 ++++++++----
+ src/test/mon/test_mon_memory_target.cc |  6 ++++--
+ 4 files changed, 22 insertions(+), 9 deletions(-)
+
+diff --git a/src/rgw/driver/rados/rgw_sal_rados.cc b/src/rgw/driver/rados/rgw_sal_rados.cc
+index 34c9f2e4eecb1..481822bb1cc2b 100644
+--- a/src/rgw/driver/rados/rgw_sal_rados.cc
++++ b/src/rgw/driver/rados/rgw_sal_rados.cc
+@@ -20,7 +20,6 @@
+ #include <unistd.h>
+ 
+ #include <boost/algorithm/string.hpp>
+-#include <boost/process.hpp>
+ 
+ #include <fmt/core.h>
+ 
+diff --git a/src/rgw/rgw_lua.cc b/src/rgw/rgw_lua.cc
+index a0f04f81d49e3..aacec7c7fe075 100644
+--- a/src/rgw/rgw_lua.cc
++++ b/src/rgw/rgw_lua.cc
+@@ -8,7 +8,13 @@
+ #include "rgw_lua.h"
+ #ifdef WITH_RADOSGW_LUA_PACKAGES
+ #include <filesystem>
+-#include <boost/process.hpp>
++#include <boost/process/v1/child.hpp>
++#include <boost/process/v1/env.hpp>
++#include <boost/process/v1/environment.hpp>
++#include <boost/process/v1/io.hpp>
++#include <boost/process/v1/pipe.hpp>
++#include <boost/process/v1/search_path.hpp>
++#include <boost/process/v1/start_dir.hpp>
+ #endif
+ 
+ #define dout_subsys ceph_subsys_rgw
+@@ -96,7 +102,7 @@ int delete_script(const DoutPrefixProvider *dpp, sal::LuaManager* manager, const
+ 
+ #ifdef WITH_RADOSGW_LUA_PACKAGES
+ 
+-namespace bp = boost::process;
++namespace bp = boost::process::v1;
+ 
+ int add_package(const DoutPrefixProvider* dpp, rgw::sal::Driver* driver, optional_yield y, const std::string& package_name, bool allow_compilation)
+ {
+@@ -142,8 +148,6 @@ int remove_package(const DoutPrefixProvider *dpp, rgw::sal::Driver* driver, opti
+   return driver->get_lua_manager("")->remove_package(dpp, y, package_name);
+ }
+ 
+-namespace bp = boost::process;
+-
+ int list_packages(const DoutPrefixProvider *dpp, rgw::sal::Driver* driver, optional_yield y, packages_t& packages)
+ {
+   return driver->get_lua_manager("")->list_packages(dpp, y, packages);
+diff --git a/src/test/mon/test_mon_memory_target.cc b/src/test/mon/test_mon_memory_target.cc
+index e8f975b47bb13..1c87dbbca425d 100644
+--- a/src/test/mon/test_mon_memory_target.cc
++++ b/src/test/mon/test_mon_memory_target.cc
+@@ -6,10 +6,12 @@
+ #include <regex>
+ #include <system_error>
+ 
+-#include <boost/process.hpp>
++#include <boost/process/v1/io.hpp>
++#include <boost/process/v1/child.hpp>
++#include <boost/process/v1/pipe.hpp>
+ #include <boost/tokenizer.hpp>
+ 
+-namespace bp = boost::process;
++namespace bp = boost::process::v1;
+ using namespace std;
+ 
+ int main(int argc, char** argv)
+
+From 53a9c9d788bba96a346c19d989679a73a40df9ce Mon Sep 17 00:00:00 2001
+From: "Adam C. Emerson" <aemerson@redhat.com>
+Date: Sat, 10 Jan 2026 03:44:47 -0500
+Subject: [PATCH 4/5] {osdc,test}: Supply missing executors to a couple calls
+ in post
+
+Likely due to the `inline_executor` changes, a couple places we
+weren't finding an executor were erroring.
+
+https://www.boost.org/doc/libs/latest/doc/html/boost_asio/history.html#boost_asio.history.asio_1_37_0
+
+Signed-off-by: Adam C. Emerson <aemerson@redhat.com>
+---
+ src/osdc/Objecter.h                        | 5 +++--
+ src/test/common/test_blocked_completion.cc | 7 ++++---
+ 2 files changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/src/osdc/Objecter.h b/src/osdc/Objecter.h
+index b98987d7e0ead..a40ba465fcc7a 100644
+--- a/src/osdc/Objecter.h
++++ b/src/osdc/Objecter.h
+@@ -2789,7 +2789,7 @@ class Objecter : public md_config_obs_t, public Dispatcher {
+ 	std::unique_lock l(rwlock);
+ 	if (osdmap->get_epoch()) {
+ 	  l.unlock();
+-	  boost::asio::post(std::move(handler));
++	  boost::asio::post(service.get_executor(), std::move(handler));
+ 	} else {
+ 	  auto e = boost::asio::get_associated_executor(
+ 	    handler, service.get_executor());
+@@ -2898,7 +2898,8 @@ class Objecter : public md_config_obs_t, public Dispatcher {
+     return boost::asio::async_initiate<decltype(consigned), OpSignature>(
+       [epoch, this](auto handler) {
+ 	if (osdmap->get_epoch() >= epoch) {
+-	  boost::asio::post(boost::asio::append(
++          boost::asio::post(service.get_executor(),
++                            boost::asio::append(
+ 			      std::move(handler),
+ 			      boost::system::error_code{}));
+ 	} else {
+diff --git a/src/test/common/test_blocked_completion.cc b/src/test/common/test_blocked_completion.cc
+index 18f716e13e33b..d5f0cbf9518e6 100644
+--- a/src/test/common/test_blocked_completion.cc
++++ b/src/test/common/test_blocked_completion.cc
+@@ -78,9 +78,10 @@ auto id(const Executor& executor, CompletionToken&& token,
+ 	Args&& ...args)
+ {
+   return asio::async_initiate<CompletionToken, void(Args...)>(
+-    []<typename ...Args2>(auto handler, Args2&& ...args2) mutable {
+-      asio::post(asio::append(std::move(handler),
+-			      std::forward<Args2>(args2)...));
++      [executor]<typename... Args2>(auto handler, Args2&&... args2) mutable {
++        asio::post(executor,
++                   asio::append(std::move(handler),
++                                std::forward<Args2>(args2)...));
+     }, token, std::forward<Args>(args)...);
+ }
+ 
+
+From 1bec1875c4d9fa05899b911eb2b70c17b64200f3 Mon Sep 17 00:00:00 2001
+From: "Adam C. Emerson" <aemerson@redhat.com>
+Date: Sat, 10 Jan 2026 03:47:19 -0500
+Subject: [PATCH 5/5] rgw/rgw_ssd_driver: Include `<asio/system_executor.hpp>`
+
+We were using it, but not including it. Boost.Asio 1.90 caused it to
+break.
+
+Signed-off-by: Adam C. Emerson <aemerson@redhat.com>
+---
+ src/rgw/rgw_ssd_driver.cc | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/rgw/rgw_ssd_driver.cc b/src/rgw/rgw_ssd_driver.cc
+index 7ec3d73ea3441..fc11f83021867 100644
+--- a/src/rgw/rgw_ssd_driver.cc
++++ b/src/rgw/rgw_ssd_driver.cc
+@@ -1,3 +1,4 @@
++#include <boost/asio/system_executor.hpp>
+ #include "common/async/completion.h"
+ #include "common/errno.h"
+ #include "common/async/blocked_completion.h"

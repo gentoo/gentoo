@@ -1,0 +1,82 @@
+From cbdd9c4b1f69d05e9b7fca903a5844b89bd44123 Mon Sep 17 00:00:00 2001
+From: Kefu Chai <tchaikov@gmail.com>
+Date: Tue, 23 Dec 2025 22:44:10 +0800
+Subject: [PATCH] common: fix TrackedOp intrusive_ptr compatibility with boost
+ 1.89+
+
+Boost 1.89+ includes a new header sp_cxx20_constexpr.hpp (Copyright 2025)
+that defines BOOST_SP_CXX20_CONSTEXPR macro. When building with C++20/23
+mode and a compiler supporting constexpr dynamic allocation, this macro
+expands to 'constexpr', making intrusive_ptr constructors and destructors
+constexpr.
+
+This change breaks builds that previously worked with boost 1.87 because:
+
+In boost 1.87, the copy constructor was NOT constexpr:
+  intrusive_ptr(intrusive_ptr const & rhs): px( rhs.px )
+  {
+      if( px != 0 ) intrusive_ptr_add_ref( px );
+  }
+
+In boost 1.89+ with C++20/23, it becomes constexpr:
+  BOOST_SP_CXX20_CONSTEXPR intrusive_ptr(intrusive_ptr const & rhs): px( rhs.px )
+  {
+      if( px != 0 ) intrusive_ptr_add_ref( px );
+  }
+
+With constexpr, name lookup for intrusive_ptr_add_ref happens at compile
+time during template instantiation, not at runtime. This changes the
+lookup behavior significantly.
+
+The issue is the "hidden friend" pattern: friend functions defined inside
+a class are in the enclosing (global) namespace, but per C++ standard
+[basic.lookup.argdep], they are ONLY visible via ADL (Argument-Dependent
+Lookup), not via ordinary unqualified lookup.
+
+When boost::intrusive_ptr's constexpr constructor tries to call
+intrusive_ptr_add_ref(px) during template instantiation:
+1. Ordinary unqualified lookup finds ceph::common::intrusive_ptr_add_ref
+2. Since ordinary lookup succeeded, ADL is not performed [basic.lookup.argdep]/1
+3. The friend functions in TrackedOp are never considered
+4. Compilation fails due to signature mismatch (TrackedOp* vs RefCountedObject*)
+
+In boost 1.87 (non-constexpr), ADL worked normally at runtime and found
+the hidden friend functions. With constexpr in 1.89+, compile-time lookup
+finds the wrong function before ADL can trigger.
+
+The fix adds forward declarations before boost::intrusive_ptr<TrackedOp>
+is first used. This makes the functions visible to ordinary lookup (not
+just ADL), allowing the compiler to find them instead of the ceph::common
+versions. The friend functions provide the actual definitions.
+
+Note: Friend functions defined inside a class are already implicitly
+inline per the C++ standard, so no explicit inline specifier is needed
+on the friend function definitions.
+
+This issue manifests when building with:
+- Boost 1.89+ (which introduced sp_cxx20_constexpr.hpp)
+- C++23 standard mode
+- Compiler with constexpr dynamic allocation support
+
+Fixes build errors like:
+  error: 'intrusive_ptr_add_ref' was not declared in this scope
+
+Signed-off-by: Kefu Chai <k.chai@proxmox.com>
+---
+ src/common/TrackedOp.h | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/common/TrackedOp.h b/src/common/TrackedOp.h
+index a38d4d294d451..25eedf46dfbb0 100644
+--- a/src/common/TrackedOp.h
++++ b/src/common/TrackedOp.h
+@@ -33,6 +33,9 @@
+ 
+ struct pow2_hist_t;
+ class TrackedOp;
++// Declare intrusive_ptr functions in global namespace for boost ADL
++inline void intrusive_ptr_add_ref(TrackedOp *o);
++inline void intrusive_ptr_release(TrackedOp *o);
+ class OpHistory;
+ 
+ typedef boost::intrusive_ptr<TrackedOp> TrackedOpRef;
