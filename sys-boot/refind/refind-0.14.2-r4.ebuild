@@ -28,6 +28,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fix-freestanding-on-musl.patch
 	"${FILESDIR}"/${P}-fix-btrfs-on-musl.patch
 	"${FILESDIR}"/${P}-fix-shim-name.patch
+	"${FILESDIR}"/${P}-fix-binutils-2.46.patch
 )
 
 checktools() {
