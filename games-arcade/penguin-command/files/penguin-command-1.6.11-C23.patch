@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/966225
+Porting to C23, lock and unlock are implicitly work on global Screen
+Used include with function declaration instead of re-declaring it for
+missing function.
+--- a/src/gfx.c
++++ b/src/gfx.c
+@@ -260,11 +260,11 @@
+ 
+ void LinePart(Sint32 X1, Sint32 Y1, Sint32 X2, Sint32 Y2, Sint32 lower, Sint32 upper, Uint32 Color)
+ {
+-   lock(Screen);
++   lock();
+ 
+    /* Draw the line */
+    DoLinePart(Screen, X1, Y1, X2, Y2, lower, upper, Color, &PutPixel);
+-   unlock(Screen);
++   unlock();
+ }
+ 
+ void Update()
+--- a/src/joystick.c
++++ b/src/joystick.c
+@@ -1,5 +1,6 @@
+ #include <SDL.h>
+ #include "joystick.h"
++#include "gfx.h" //for ComplainAndExit()
+ 
+ static SDL_Joystick *joy=NULL;
+ 
