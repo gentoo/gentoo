@@ -1,12 +1,5 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# Many profiles and stages override CFLAGS etc, and need then to eat their
-# own dogfood. For those who don't...
-CFLAGS="${CFLAGS} -D_FILE_OFFSET_BITS=64 -D_TIME_BITS=64 -Werror=implicit-function-declaration -Werror=implicit-int -Werror=incompatible-pointer-types -Werror=return-type -Werror=int-conversion"
-CXXFLAGS="${CXXFLAGS} -D_FILE_OFFSET_BITS=64 -D_TIME_BITS=64"
-FCFLAGS="${FCFLAGS} -D_FILE_OFFSET_BITS=64 -D_TIME_BITS=64"
-FFLAGS="${FFLAGS} -D_FILE_OFFSET_BITS=64 -D_TIME_BITS=64"
 
 # We need to switch this explicitly on since it's explicitly disabled
 # in profiles otherwise.
