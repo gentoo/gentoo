@@ -36,6 +36,14 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2026-02-14)
+# Behemoth package, with a massive and brittle testsuite. No other major distro
+# packages this anymore. Lots of QA issues, broken tests and blocking cleanup
+# efforts. This package will only be allowed back in ::gentoo after a sustained
+# demonstration of maintenance dedication. Removal on 2026-03-16. Bug #966712.
+dev-python/qiskit
+dev-python/qiskit-aer
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-02-12)
 # Misc Qt5-based libraries without any revdeps left.
 # Removal on 2026-03-14.
