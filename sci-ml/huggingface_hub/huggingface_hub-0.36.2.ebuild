@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,10 +32,14 @@ RDEPEND="
 	')
 "
 
-BDEPEND="test? (
+BDEPEND="
+	test? (
 		sci-ml/pytorch[${PYTHON_SINGLE_USEDEP}]
 		dev-vcs/git-lfs
-	)"
+	)
+"
+
+EPYTEST_PLUGINS=( pytest-asyncio )
 
 distutils_enable_tests pytest
 
