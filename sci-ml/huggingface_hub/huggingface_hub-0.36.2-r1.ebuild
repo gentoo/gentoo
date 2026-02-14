@@ -39,7 +39,7 @@ BDEPEND="
 	)
 "
 
-EPYTEST_PLUGINS=( pytest-asyncio )
+EPYTEST_PLUGINS=( pytest-asyncio pytest-mock )
 
 distutils_enable_tests pytest
 
