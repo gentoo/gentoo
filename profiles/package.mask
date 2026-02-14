@@ -46,6 +46,7 @@ dev-python/pylatexenc
 dev-python/python-constraint
 dev-python/qiskit
 dev-python/qiskit-aer
+dev-python/rustworkx
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-02-12)
 # Misc Qt5-based libraries without any revdeps left.
