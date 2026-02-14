@@ -41,6 +41,9 @@
 # packages this anymore. Lots of QA issues, broken tests and blocking cleanup
 # efforts. This package will only be allowed back in ::gentoo after a sustained
 # demonstration of maintenance dedication. Removal on 2026-03-16. Bug #966712.
+dev-cpp/muParserX
+dev-python/pylatexenc
+dev-python/python-constraint
 dev-python/qiskit
 dev-python/qiskit-aer
 
