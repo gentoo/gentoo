@@ -254,11 +254,11 @@ src_configure() {
 			ewarn "-g2+/-ggdb* *FLAGS replaced with -g1 (enable USE=custom-cflags to keep)"
 		fi
 
-		# Built helpers segfault when using (at least) -march=armv8-a+pauth
-		# (bug #920555, #920568 -- suspected gcc bug). For now, filter all
-		# for simplicity. Override with USE=custom-cflags if wanted, please
-		# report if above -march works again so can cleanup.
-		use arm64 && tc-is-gcc && filter-flags '-march=*' '-mcpu=*'
+		# Qt normally ignores users *FLAGS specifically for qtwebengine, and
+		# does not really support passing -march -- qt6-build.eclass has some
+		# checks to ensure working flags with amd64, but that does not exist
+		# for arm64 and can lead to problems (bug #920555,#920568,#970048)
+		use arm64 && filter-flags '-march=*' '-mcpu=*'
 	fi
 
 	# chromium passes this by default, but qtwebengine does not and it may
