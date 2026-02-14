@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Moose minus the antlers"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~hppa ~ppc ~ppc64 ~riscv x86"
 
 RDEPEND="
 	>=virtual/perl-Scalar-List-Utils-1.140.0
