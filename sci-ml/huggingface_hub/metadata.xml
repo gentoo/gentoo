@@ -5,6 +5,9 @@
 		<email>tupone@gentoo.org</email>
 		<name>Tupone Alfredo</name>
 	</maintainer>
+	<use>
+		<flag name="torch">Support pytorch</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">huggingface/huggingface_hub</remote-id>
 		<remote-id type="pypi">huggingface_hub</remote-id>
