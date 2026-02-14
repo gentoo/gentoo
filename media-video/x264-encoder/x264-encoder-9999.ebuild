@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,11 +22,11 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="avs custom-cflags ffmpeg ffmpegsource +interlaced mp4 +threads"
+IUSE="avs custom-cflags ffmpeg ffmpegsource +interlaced mp4"
 REQUIRED_USE="ffmpegsource? ( ffmpeg )"
 
 RDEPEND="
-	~media-libs/x264-${PV}[interlaced=,threads=]
+	~media-libs/x264-${PV}[interlaced=,threads(+)]
 	ffmpeg? ( media-video/ffmpeg:= )
 	ffmpegsource? ( media-libs/ffmpegsource )
 	mp4? ( >=media-video/gpac-0.5.2:= )
@@ -61,8 +61,7 @@ src_configure() {
 		$(usex ffmpeg "" "--disable-lavf --disable-swscale") \
 		$(usex ffmpegsource "" "--disable-ffms") \
 		$(usex interlaced "" "--disable-interlaced") \
-		$(usex mp4 "" "--disable-gpac") \
-		$(usex threads "" "--disable-thread") || die
+		$(usex mp4 "" "--disable-gpac") || die
 
 	# this is a nasty workaround for bug #376925 for x264 that also applies
 	# here, needed because as upstream doesn't like us fiddling with their CFLAGS
