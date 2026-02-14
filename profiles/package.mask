@@ -113,6 +113,7 @@ dev-cpp/glaze
 #  $ emerge -an app-eselect/eselect-repository
 #  $ eselect repository enable hyproverlay
 #  $ emerge --sync
+# See also https://wiki.gentoo.org/wiki/Hyprland#Emerge
 #
 # Quite out-of-date, many open bugs, and needs several new dependencies.
 # Removal on 2026-03-11.
