@@ -1,0 +1,48 @@
+https://bugs.gentoo.org/969300
+
+From 14c82dce8a7e9714d6f9cd03229e0fb55460aa25 Mon Sep 17 00:00:00 2001
+From: Zygo Blaxell <bees@furryterror.org>
+Date: Wed, 11 Feb 2026 22:23:35 -0500
+Subject: [PATCH] openat2: adjust prototype to match glibc declaration
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+glibc 2.43 has added a prototype for openat2 which conficts
+with the interim prototype from the kernel commits:
+
+Fix by adding the missing `const` on `open_how`.
+
+Fixes: https://github.com/Zygo/bees/issues/333
+Signed-off-by: Zygo Blaxell <bees@furryterror.org>
+---
+ include/crucible/openat2.h | 2 +-
+ lib/openat2.cc             | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/include/crucible/openat2.h b/include/crucible/openat2.h
+index c4081185..6ccb34ef 100644
+--- a/include/crucible/openat2.h
++++ b/include/crucible/openat2.h
+@@ -45,7 +45,7 @@ struct open_how {
+ extern "C" {
+ 
+ /// Weak symbol to support libc with no syscall wrapper
+-int openat2(int dirfd, const char *pathname, struct open_how *how, size_t size) throw();
++int openat2(int dirfd, const char *pathname, const struct open_how *how, size_t size) throw();
+ 
+ };
+ 
+diff --git a/lib/openat2.cc b/lib/openat2.cc
+index 5b76bb0f..2912f864 100644
+--- a/lib/openat2.cc
++++ b/lib/openat2.cc
+@@ -22,7 +22,7 @@ extern "C" {
+ 
+ int
+ __attribute__((weak))
+-openat2(int const dirfd, const char *const pathname, struct open_how *const how, size_t const size)
++openat2(int const dirfd, const char *const pathname, const struct open_how *const how, size_t const size)
+ throw()
+ {
+ 	return syscall(SYS_openat2, dirfd, pathname, how, size);
