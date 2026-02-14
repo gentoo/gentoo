@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,6 +31,10 @@ RDEPEND="${DEPEND}"
 
 CONFIG_CHECK="~BTRFS_FS"
 ERROR_BTRFS_FS="CONFIG_BTRFS_FS: bees does currently only work with btrfs"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-0.11-glibc2.43.patch"
+)
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != buildonly ]]; then
