@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,6 +33,7 @@ PATCHES=(
 	"${FILESDIR}"/1.9.2-clang16.patch
 	"${FILESDIR}"/1.9.2-Makefile.patch
 	"${FILESDIR}"/1.9.2-gcc15.patch
+	"${FILESDIR}"/1.9.2-fix-binutils-2.46.patch
 )
 
 check_and_set_objcopy() {

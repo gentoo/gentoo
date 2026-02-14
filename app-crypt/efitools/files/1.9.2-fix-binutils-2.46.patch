@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/970040
+
+--- a/Make.rules
++++ b/Make.rules
+@@ -25,7 +25,7 @@
+ LDSCRIPT	= elf_$(ARCH)_efi.lds
+ LIBS		+= -nostdlib -shared -Bsymbolic $(CRTOBJS) -L $(CRTPATH) -T $(LDSCRIPT)
+ LOADLIBES	= -lefi -lgnuefi $(shell $(CC) $(ARCH3264) -print-libgcc-file-name)
+-FORMAT		= --target=efi-app-$(ARCH)
++FORMAT		= --output-target=efi-app-$(ARCH)
+ MYGUID		= 11111111-2222-3333-4444-123456789abc
+ INSTALL		= install
+ BINDIR		= $(DESTDIR)/usr/bin
