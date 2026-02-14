@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
-LLVM_COMPAT=( {15..21} )
+LLVM_COMPAT=( {16..21} )
 LLVM_OPTIONAL=1
 
 inherit dot-a flag-o-matic linux-info llvm-r1 meson pam python-single-r1 \
@@ -101,10 +101,9 @@ RDEPEND="${CDEPEND}
 selinux? ( sec-policy/selinux-postgresql )
 "
 
-# Openjade, docbook, XML, and XSLT are needed to generate manpages and
+# Docbook, XML, and XSLT are needed to generate manpages and
 # any documentation that may be elected.
 BDEPEND="
-app-text/openjade
 app-text/docbook-dsssl-stylesheets
 app-text/docbook-sgml-dtd:4.5
 app-text/docbook-xml-dtd:4.5

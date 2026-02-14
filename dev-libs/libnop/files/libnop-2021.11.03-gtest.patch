@@ -1,0 +1,11 @@
+--- a/Makefile	2026-02-11 23:54:49.279169646 +0100
++++ b/Makefile	2026-02-11 23:55:01.243026080 +0100
+@@ -14,7 +14,7 @@
+ GTEST_INCLUDE ?= $(GTEST_INSTALL)/include
+ 
+ HOST_CFLAGS := -g -O2 -Wall -Werror -Wextra -Iinclude
+-HOST_CXXFLAGS := -std=c++14
++HOST_CXXFLAGS := -std=c++17
+ HOST_LDFLAGS :=
+ 
+ ifeq ($(HOST_OS),Linux)

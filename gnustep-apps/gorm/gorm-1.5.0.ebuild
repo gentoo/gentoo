@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/gnustep/apps-${PN}/archive/refs/tags/${P//./_}.tar.g
 S=${WORKDIR}/apps-${PN}-${PN}-${PV//./_}
 LICENSE="GPL-3+ LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 
 DEPEND=">=gnustep-base/gnustep-gui-0.31.0"
 RDEPEND="${DEPEND}"

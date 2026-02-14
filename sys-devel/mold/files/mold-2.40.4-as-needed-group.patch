@@ -1,0 +1,71 @@
+https://bugs.gentoo.org/968893
+https://github.com/rui314/mold/issues/1545
+https://github.com/rui314/mold/pull/1546
+
+From df7b1433b9dab52f207975a90bcef068e3999047 Mon Sep 17 00:00:00 2001
+From: Jonathan Wakely <jwakely@redhat.com>
+Date: Wed, 21 Jan 2026 11:39:57 +0000
+Subject: [PATCH] Fix getting output type from linker scripts that use
+ AS_NEEDED
+
+Make Script<E>::get_script_output_type support AS_NEEDED inside an INPUT
+or GROUP group, so that the libatomic_asneeded.so linker script used by
+GCC 16 works.
+
+Fixes #1545
+
+Signed-off-by: Jonathan Wakely <jwakely@redhat.com>
+---
+ src/linker-script.cc                  |  5 ++++-
+ test/linker-script-group-as-needed.sh | 24 ++++++++++++++++++++++++
+ 2 files changed, 28 insertions(+), 1 deletion(-)
+ create mode 100755 test/linker-script-group-as-needed.sh
+
+diff --git a/src/linker-script.cc b/src/linker-script.cc
+index 51144b3029..b40191887b 100644
+--- a/src/linker-script.cc
++++ b/src/linker-script.cc
+@@ -249,9 +249,12 @@ std::string_view Script<E>::get_script_output_type() {
+   }
+ 
+   if (tok.size() >= 3 && (tok[0] == "INPUT" || tok[0] == "GROUP") &&
+-      tok[1] == "(")
++      tok[1] == "(") {
++    if (tok[2] == "AS_NEEDED" && tok[3] == "(")
++      tok = tok.subspan(2);
+     if (MappedFile *mf = resolve_path(tok[2], false))
+       return get_machine_type(ctx, rctx, mf);
++  }
+   return "";
+ }
+ 
+diff --git a/test/linker-script-group-as-needed.sh b/test/linker-script-group-as-needed.sh
+new file mode 100755
+index 0000000000..61dcba76be
+--- /dev/null
++++ b/test/linker-script-group-as-needed.sh
+@@ -0,0 +1,24 @@
++#!/bin/bash
++. $(dirname $0)/common.inc
++
++cat <<EOF | $CC -o $t/a.o -c -xc -
++#include <stdio.h>
++int main() {
++  printf("Hello world\n");
++}
++EOF
++
++cat <<EOF | $CC -B. -shared -o $t/libB.so -c -xc -
++void not_needed() { }
++EOF
++$AR
++
++cat <<EOF > $t/libscript.a
++GROUP(AS_NEEDED("$t/libB.so"))
++EOF
++
++$CC -B. -o $t/exe -L$t -lscript $t/a.o
++$QEMU $t/exe | grep 'Hello world'
++
++$CC -B. -o $t/exe -L$t -l:libscript.a $t/a.o
++$QEMU $t/exe | grep 'Hello world'

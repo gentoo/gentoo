@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{11..14} )
 inherit edo optfeature python-any-r1 wine
 
 WINE_GECKO=2.47.4
-WINE_MONO=10.4.1
+WINE_MONO=11.0.0
 WINE_P=wine-$(ver_cut 1-2)
 
 if [[ ${PV} == 9999 ]]; then
@@ -133,7 +133,7 @@ RDEPEND="
 "
 DEPEND="
 	${WINE_COMMON_DEPEND}
-	sys-kernel/linux-headers
+	>=sys-kernel/linux-headers-6.14
 	X? ( x11-base/xorg-proto )
 	bluetooth? ( net-wireless/bluez )
 "

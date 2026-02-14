@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit flag-o-matic multilib-minimal
+inherit edo flag-o-matic multilib-minimal
 
 DESCRIPTION="Full Database Encryption for SQLite"
 HOMEPAGE="
@@ -21,7 +21,9 @@ REQUIRED_USE="
 	?? ( libedit readline )
 	test? ( tcl )
 "
-RESTRICT="!test? ( test )"
+# Extra flags are needed like -DSQLCIPHER_TEST which add undesirable
+# test-only code into the main binary. multibuild for tests?
+RESTRICT="!test? ( test ) test"
 
 RDEPEND="
 	dev-libs/openssl:=[${MULTILIB_USEDEP}]
@@ -57,6 +59,12 @@ multilib_src_configure() {
 	)
 	ECONF_SOURCE="${S}" \
 		econf "${myeconfargs[@]}"
+}
+
+multilib_src_test() {
+	# https://github.com/sqlcipher/sqlcipher#testing
+	emake testfixture
+	edo ./testfixture "${S}"/test/sqlcipher.test
 }
 
 multilib_src_install_all() {

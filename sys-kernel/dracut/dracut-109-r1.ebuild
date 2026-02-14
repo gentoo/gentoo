@@ -58,8 +58,8 @@ DEPEND="${COMMON_DEPEND}
 
 BDEPEND="
 	|| (
-		dev-ruby/asciidoctor
 		app-text/asciidoc
+		dev-ruby/asciidoctor
 	)
 	app-text/docbook-xml-dtd:4.5
 	>=app-text/docbook-xsl-stylesheets-1.75.2

@@ -1,0 +1,42 @@
+https://github.com/rdiankov/collada-dom/pull/40
+
+From: Atsushi Watanabe <atsushi.w@ieee.org>
+Date: Fri, 20 Jan 2023 14:59:45 +0900
+Subject: [PATCH] Fix int return type
+
+NULL is std::nullptr_t since gcc11 and not implicitly casted.
+---
+ dom/src/dae/daeDom.cpp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/dom/src/dae/daeDom.cpp b/dom/src/dae/daeDom.cpp
+index 916116e..c5312af 100644
+--- a/dom/src/dae/daeDom.cpp
++++ b/dom/src/dae/daeDom.cpp
+@@ -111,7 +111,7 @@ daeInt getDomAnyID(DAE& dae)
+         return ColladaDOM141::domAny::ID();
+     }
+ #endif
+-    return NULL;
++    return 0;
+ }
+ 
+ daeInt getDomSourceID(DAE& dae)
+@@ -126,7 +126,7 @@ daeInt getDomSourceID(DAE& dae)
+         return ColladaDOM141::domSource::ID();
+     }
+ #endif
+-    return NULL;
++    return 0;
+ }
+ 
+ daeInt getDomCOLLADAID(const char* specversion)
+@@ -141,7 +141,7 @@ daeInt getDomCOLLADAID(const char* specversion)
+         return ColladaDOM141::domCOLLADA::ID();
+     }
+ #endif
+-    return NULL;
++    return 0;
+ }
+ 
+ void copyElementAny(daeElementRef dstAny, daeElement* srcAny)

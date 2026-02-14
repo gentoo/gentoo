@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/959093
+Missing include for malloc and getenv
+--- a/src/rmd_jack.c
++++ b/src/rmd_jack.c
+@@ -31,6 +31,7 @@
+ #include <pthread.h>
+ 
+ #include <string.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_LIBJACK
+ 

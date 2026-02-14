@@ -28,12 +28,13 @@ REQUIRED_USE="
 	dri3? ( drm )
 	java? ( viewer )
 	opengl? ( server )
+	wayland? ( server )
 	|| ( server viewer )
 "
 RESTRICT="!test? ( test )"
 
 # TODO: sys-libs/libselinux
-# <fltk-1.4: https://github.com/TigerVNC/tigervnc/pull/1887#issuecomment-2545662546
+# <fltk-1.4: https://github.com/TigerVNC/tigervnc/issues/1949
 COMMON_DEPEND="
 	dev-libs/gmp:=
 	dev-libs/nettle:=

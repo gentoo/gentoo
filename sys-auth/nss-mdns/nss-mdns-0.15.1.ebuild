@@ -1,7 +1,8 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
 inherit autotools multilib-minimal
 
 DESCRIPTION="Name Service Switch module for Multicast DNS"
@@ -32,7 +33,6 @@ multilib_src_configure() {
 	local myconf=(
 		# $(localstatedir)/run/... is used to locate avahi-daemon socket
 		--localstatedir=/var
-
 		$(use_enable test tests)
 	)
 

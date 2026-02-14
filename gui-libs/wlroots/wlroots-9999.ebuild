@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,9 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	SLOT="0.20"
 else
-	SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/releases/${PV}/downloads/${P}.tar.gz"
+	inherit verify-sig
+	SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/releases/${PV}/downloads/${P}.tar.gz
+		https://gitlab.freedesktop.org/${PN}/${PN}/-/releases/${PV}/downloads/${P}.tar.gz.sig"
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 	SLOT="$(ver_cut 1-2)"
 fi
@@ -31,7 +33,7 @@ DEPEND="
 	>=dev-libs/wayland-1.23.1
 	media-libs/libglvnd
 	>=media-libs/mesa-24.1.0_rc1[opengl]
-	>=x11-libs/libdrm-2.4.122
+	>=x11-libs/libdrm-2.4.129
 	>=x11-libs/libxkbcommon-1.8.0
 	>=x11-libs/pixman-0.43.0
 	drm? (
@@ -69,6 +71,11 @@ BDEPEND="
 	dev-util/wayland-scanner
 	virtual/pkgconfig
 "
+
+if [[ ${PV} != 9999 ]]; then
+	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-emersion )"
+	VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/emersion.asc"
+fi
 
 src_configure() {
 	# assert SLOT matches the version

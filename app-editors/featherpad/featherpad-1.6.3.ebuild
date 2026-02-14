@@ -3,16 +3,17 @@
 
 EAPI=8
 
-inherit cmake xdg
+inherit cmake verify-sig xdg
 
 DESCRIPTION="Lightweight Qt5 Plain-Text Editor for Linux"
 HOMEPAGE="https://github.com/tsujan/FeatherPad"
-SRC_URI="https://github.com/tsujan/FeatherPad/archive/V${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/tsujan/FeatherPad/releases/download/V${PV}/FeatherPad-${PV}.tar.xz
+	https://github.com/tsujan/FeatherPad/releases/download/V${PV}/FeatherPad-${PV}.tar.xz.asc"
 S="${WORKDIR}/FeatherPad-${PV}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="+X"
 
 RDEPEND="
@@ -24,7 +25,12 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )
 "
-BDEPEND="dev-qt/qttools:6[linguist]"
+BDEPEND="
+	dev-qt/qttools:6[linguist]
+	verify-sig? ( sec-keys/openpgp-keys-tsujan )
+"
+
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/tsujan.asc"
 
 src_configure() {
 	local mycmakeargs=(

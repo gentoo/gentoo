@@ -1,5 +1,9 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Jaco Kroon <jaco@uls.co.za> (2026-02-06)
+# Requires sys-auth/libyubikey
+net-dialup/freeradius yubikey
 
 # Eli Schwartz <eschwartz@gentoo.org> (2025-12-09)
 # libyuv is Google code, fails on "fringe" arches.

@@ -16,7 +16,7 @@ S="${WORKDIR}/${P}/core"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ppc64"
+KEYWORDS="amd64 arm64 ppc64"
 
 DEPEND=">=virtual/jdk-1.8:*"
 RDEPEND=">=virtual/jre-1.8:*"

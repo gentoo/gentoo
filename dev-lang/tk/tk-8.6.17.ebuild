@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -41,6 +41,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-8.6.9-conf.patch # Bug 125971
 	"${FILESDIR}"/${PN}-8.6.12-test.patch
 	"${FILESDIR}"/${PN}-8.6.14-test.patch
+	"${FILESDIR}"/${PN}-8.6.17-glibc-2.43.patch
 )
 
 QA_CONFIG_IMPL_DECL_SKIP=(

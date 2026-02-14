@@ -74,6 +74,7 @@ PATCHES=(
 	"${WORKDIR}/mongodb-7.0.18-patches/extrapatch-sconstruct.patch"
 	"${WORKDIR}/mongodb-7.0.18-patches/mongodb-7.0.18-boost-1.85.patch"
 	"${FILESDIR}/mongodb-7.0.28-sconstruct.patch"
+	"${FILESDIR}/mongodb-8.0.12-boost-system.patch"
 )
 
 python_check_deps() {

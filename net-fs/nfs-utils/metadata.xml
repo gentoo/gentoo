@@ -9,6 +9,7 @@
 		<flag name="junction">Enable NFS junction support in nfsref</flag>
 		<flag name="ldap">Add ldap support</flag>
 		<flag name="libmount">Link mount.nfs with libmount</flag>
+		<flag name="nfsdctl">Build 'nfsdctl' utility to control nfsd.</flag>
 		<flag name="nfsv3">Enable support for NFSv2 and NFSv3</flag>
 		<flag name="nfsv4">Enable support for NFSv4 (includes NFSv4.1 and NFSv4.2)</flag>
 		<flag name="uuid">Support UUID lookups in rpc.mountd</flag>

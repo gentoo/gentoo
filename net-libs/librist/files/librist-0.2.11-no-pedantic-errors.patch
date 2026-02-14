@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/969868
+--- a/meson.build
++++ b/meson.build
+@@ -150,7 +150,7 @@ void test(void) {
+ 		endif
+ 		deps += [ lib_rt ]
+ 	endif
+-	add_project_arguments(['-Wshadow', '-pedantic-errors'], language: 'c')
++	add_project_arguments(['-Wshadow'], language: 'c')
+ 	add_project_arguments(cc.get_supported_arguments([
+ 		'-Wundef',
+ 		'-Werror=vla',

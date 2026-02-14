@@ -1,0 +1,26 @@
+From 55175db4fa62748524da5bf17eb1b806e8540988 Mon Sep 17 00:00:00 2001
+From: Ben Kohler <bkohler@gentoo.org>
+Date: Thu, 12 Feb 2026 11:40:23 -0600
+Subject: [PATCH] gkbuilds: fix libxcrypt build on newer gcc
+
+Bug: https://bugs.gentoo.org/969848
+Signed-off-by: Ben Kohler <bkohler@gentoo.org>
+---
+ gkbuilds/libxcrypt.gkbuild | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/gkbuilds/libxcrypt.gkbuild b/gkbuilds/libxcrypt.gkbuild
+index 1834e25..c4c84ee 100644
+--- a/gkbuilds/libxcrypt.gkbuild
++++ b/gkbuilds/libxcrypt.gkbuild
+@@ -11,6 +11,7 @@ src_configure() {
+ 	local myopts=(
+ 		--enable-shared
+ 		--enable-static
++		--disable-werror
+ 	)
+ 
+ 	gkconf "${myopts[@]}"
+-- 
+2.53.0
+

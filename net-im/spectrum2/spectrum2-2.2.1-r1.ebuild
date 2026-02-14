@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -59,8 +59,14 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.1-boost-1.85.patch
+	"${FILESDIR}"/${PN}-2.2.1-boost-1.87.patch
+	"${FILESDIR}"/${PN}-2.2.1-boost-1.89.patch
 	"${FILESDIR}"/${PN}-2.2.1-use-c++17.patch
+	"${FILESDIR}"/${PN}-2.2.1-cmake.patch
 	"${FILESDIR}"/${PN}-2.2.1-cmake-ld-typo.patch
+	"${FILESDIR}"/${PN}-2.2.1-libcommuni-qt6.patch
+	"${FILESDIR}"/${PN}-2.2.1-frotz-C23.patch
+	"${FILESDIR}"/${PN}-2.2.1-findjsoncpp.patch
 )
 
 src_prepare() {

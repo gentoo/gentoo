@@ -1,0 +1,79 @@
+From https://github.com/Mbed-TLS/mbedtls/pull/9876
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Sun, 1 Dec 2024 00:49:15 +0300
+Subject: [PATCH 2/5] Add version suffix for all installable targets
+
+Convert main library targets to slottable versions. This allows to
+install major versions of MbedTLS simultaneously.
+
+Dependent packages should use `find_package(MbedTLS 3 [REQUIRED])` and
+`MbedTLS::<component>` in order to use requested libraries.
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -481,7 +481,7 @@ if(NOT DISABLE_PACKAGE_CONFIG_AND_INSTALL)
+     install(
+         FILES "${CMAKE_CURRENT_BINARY_DIR}/cmake/MbedTLSConfig.cmake"
+               "${CMAKE_CURRENT_BINARY_DIR}/cmake/MbedTLSConfigVersion.cmake"
+-        DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/MbedTLS")
++        DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/MbedTLS-${PROJECT_VERSION_MAJOR}")
+ 
+     export(
+         EXPORT MbedTLSTargets
+@@ -491,7 +491,7 @@ if(NOT DISABLE_PACKAGE_CONFIG_AND_INSTALL)
+     install(
+         EXPORT MbedTLSTargets
+         NAMESPACE MbedTLS::
+-        DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/MbedTLS"
++        DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/MbedTLS-${PROJECT_VERSION_MAJOR}"
+         FILE "MbedTLSTargets.cmake")
+ 
+     if(CMAKE_VERSION VERSION_GREATER 3.15 OR CMAKE_VERSION VERSION_EQUAL 3.15)
+--- a/library/CMakeLists.txt
++++ b/library/CMakeLists.txt
+@@ -283,7 +283,7 @@ set(everest_target "${MBEDTLS_TARGET_PREFIX}everest")
+ 
+ if(USE_STATIC_MBEDTLS_LIBRARY)
+     add_library(${mbedcrypto_static_target} STATIC ${src_crypto})
+-    set_target_properties(${mbedcrypto_static_target} PROPERTIES OUTPUT_NAME mbedcrypto)
++    set_target_properties(${mbedcrypto_static_target} PROPERTIES OUTPUT_NAME mbedcrypto${PROJECT_VERSION_MAJOR})
+     target_link_libraries(${mbedcrypto_static_target} PUBLIC ${libs})
+ 
+     if(TARGET ${everest_target})
+@@ -295,11 +295,11 @@ if(USE_STATIC_MBEDTLS_LIBRARY)
+     endif()
+ 
+     add_library(${mbedx509_static_target} STATIC ${src_x509})
+-    set_target_properties(${mbedx509_static_target} PROPERTIES OUTPUT_NAME mbedx509)
++    set_target_properties(${mbedx509_static_target} PROPERTIES OUTPUT_NAME mbedx509${PROJECT_VERSION_MAJOR})
+     target_link_libraries(${mbedx509_static_target} PUBLIC ${libs} ${mbedcrypto_static_target})
+ 
+     add_library(${mbedtls_static_target} STATIC ${src_tls})
+-    set_target_properties(${mbedtls_static_target} PROPERTIES OUTPUT_NAME mbedtls)
++    set_target_properties(${mbedtls_static_target} PROPERTIES OUTPUT_NAME mbedtls${PROJECT_VERSION_MAJOR})
+     target_link_libraries(${mbedtls_static_target} PUBLIC ${libs} ${mbedx509_static_target})
+ 
+     if(GEN_FILES)
+@@ -314,6 +314,7 @@ if(USE_SHARED_MBEDTLS_LIBRARY)
+     set(CMAKE_LIBRARY_PATH ${CMAKE_CURRENT_BINARY_DIR})
+     add_library(${mbedcrypto_target} SHARED ${src_crypto})
+     set_target_properties(${mbedcrypto_target} PROPERTIES VERSION 3.6.5 SOVERSION 16)
++    set_target_properties(${mbedcrypto_target} PROPERTIES OUTPUT_NAME mbedcrypto${PROJECT_VERSION_MAJOR})
+     target_link_libraries(${mbedcrypto_target} PUBLIC ${libs})
+ 
+     if(TARGET ${everest_target})
+@@ -326,10 +327,12 @@ if(USE_SHARED_MBEDTLS_LIBRARY)
+ 
+     add_library(${mbedx509_target} SHARED ${src_x509})
+     set_target_properties(${mbedx509_target} PROPERTIES VERSION 3.6.5 SOVERSION 7)
++    set_target_properties(${mbedx509_target} PROPERTIES OUTPUT_NAME mbedx509${PROJECT_VERSION_MAJOR})
+     target_link_libraries(${mbedx509_target} PUBLIC ${libs} ${mbedcrypto_target})
+ 
+     add_library(${mbedtls_target} SHARED ${src_tls})
+     set_target_properties(${mbedtls_target} PROPERTIES VERSION 3.6.5 SOVERSION 21)
++    set_target_properties(${mbedtls_target} PROPERTIES OUTPUT_NAME mbedtls${PROJECT_VERSION_MAJOR})
+     target_link_libraries(${mbedtls_target} PUBLIC ${libs} ${mbedx509_target})
+ 
+     if(GEN_FILES)
+-- 
+2.52.0
+

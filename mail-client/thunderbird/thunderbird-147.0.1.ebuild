@@ -3,7 +3,7 @@
 
 EAPI=8
 
-FIREFOX_PATCHSET="firefox-147-patches-01t.tar.xz"
+FIREFOX_PATCHSET="firefox-147-patches-02t.tar.xz"
 
 LLVM_COMPAT=( 19 20 21 )
 
@@ -573,6 +573,12 @@ src_prepare() {
 
 	# Clear checksums from cargo crates we've manually patched.
 	# moz_clear_vendor_checksums xyz
+	# glslopt: bgo#969412, bgo#969871
+	moz_clear_vendor_checksums glslopt
+	# TB-specific
+	sed -i \
+		-e 's/\("files":{\)[^}]*/\1/' \
+		"${S}"/comm/third_party/rust/glslopt/.cargo-checksum.json || die
 
 	# Create build dir
 	BUILD_DIR="${WORKDIR}/${PN}_build"

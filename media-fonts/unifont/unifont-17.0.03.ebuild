@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/${PN}/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2+ || ( GPL-2+-with-font-exception OFL-1.1 ) public-domain utils? ( FDL-1.3+ )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~loong ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="fontforge ttf utils"
 REQUIRED_USE="ttf? ( fontforge )"
 

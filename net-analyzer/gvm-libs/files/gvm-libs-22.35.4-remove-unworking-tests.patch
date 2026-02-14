@@ -1,0 +1,202 @@
+# Remove tests that don't work in the network sandbox
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -231,27 +231,27 @@ if(BUILD_TESTS AND NOT SKIP_SRC)
+   set(
+     TESTS
+     array-test
+-    boreas-alivedetection-test
+-    boreas-cli-test
++    #boreas-alivedetection-test
++    #boreas-cli-test
+     boreas-error-test
+     boreas-io-test
+-    boreas-ping-test
+-    boreas-sniffer-test
++    #boreas-ping-test
++    #boreas-sniffer-test
+     compressutils-test
+     cpeutils-test
+     cvss-test
+     hosts-test
+     json-test
+     jsonpull-test
+-    logging-test
++    #logging-test
+     logging-domain-test
+-    networking-test
++    #networking-test
+     nvti-test
+     osp-test
+     passwordbasedauthentication-test
+     streamvalidator-test
+     test-hosts
+-    util-test
++    #util-test
+     version-test
+     versionutils-test
+     xmlutils-test
+@@ -267,11 +267,11 @@ if(BUILD_TESTS AND NOT SKIP_SRC)
+       vtparser-test
+     )
+   endif(ENABLE_OPENVASD)
+-
++#[===[
+   if(ENABLE_AGENTS)
+     list(APPEND TESTS agent-controller-test)
+   endif(ENABLE_AGENTS)
+-
++]===]
+   add_custom_target(tests DEPENDS ${TESTS})
+ 
+   # Code coverage
+--- a/agent_controller/CMakeLists.txt
++++ b/agent_controller/CMakeLists.txt
+@@ -58,6 +58,7 @@ endif()
+ ## Tests
+ 
+ if(BUILD_TESTS)
++#[===[
+   add_unit_test(
+     agent-controller-test
+     agent_controller_tests.c
+@@ -69,6 +70,7 @@ if(BUILD_TESTS)
+     ${CURL_LDFLAGS}
+     ${LINKER_HARDENING_FLAGS}
+   )
++]===]
+ endif()
+ 
+ ## Install
+--- a/base/CMakeLists.txt
++++ b/base/CMakeLists.txt
+@@ -134,6 +134,7 @@ if(BUILD_TESTS)
+     NETWORKING_TEST_LINKER_WRAP_OPTIONS
+     "-Wl,-wrap,g_io_channel_new_file,-wrap,g_io_channel_shutdown,-wrap,g_io_channel_unref"
+   )
++#[===[
+   add_unit_test(
+     networking-test
+     networking_tests.c
+@@ -143,6 +144,7 @@ if(BUILD_TESTS)
+     ${LINKER_HARDENING_FLAGS}
+     ${NETWORKING_TEST_LINKER_WRAP_OPTIONS}
+   )
++]===]
+   add_unit_test(
+     pidfile-test
+     pidfile_tests.c
+@@ -196,6 +198,7 @@ if(BUILD_TESTS)
+     ${GLIB_LDFLAGS}
+     ${LINKER_HARDENING_FLAGS}
+   )
++#[===[
+   add_unit_test(
+     logging-test
+     logging_tests.c
+@@ -203,6 +206,7 @@ if(BUILD_TESTS)
+     ${GLIB_LDFLAGS}
+     ${LINKER_HARDENING_FLAGS}
+   )
++]===]
+   add_unit_test(
+     strings-test
+     strings_tests.c
+--- a/boreas/CMakeLists.txt
++++ b/boreas/CMakeLists.txt
+@@ -136,6 +136,7 @@ set(LIBGVM_BOREAS_NAME ${LIBGVM_BOREAS_NAME} PARENT_SCOPE)
+ ## Tests
+ 
+ if(BUILD_TESTS)
++#[===[
+   add_unit_test(
+     boreas-alivedetection-test
+     alivedetection_tests.c
+@@ -148,6 +149,7 @@ if(BUILD_TESTS)
+     ${LINKER_HARDENING_FLAGS}
+     ${CMAKE_THREAD_LIBS_INIT}
+   )
++]===]
+   add_unit_test(
+     boreas-arp-test
+     arp_tests.c
+@@ -179,6 +181,7 @@ if(BUILD_TESTS)
+     ${LINKER_HARDENING_FLAGS}
+     ${CMAKE_THREAD_LIBS_INIT}
+   )
++#[===[
+   add_unit_test(
+     boreas-cli-test
+     cli_tests.c
+@@ -191,6 +194,7 @@ if(BUILD_TESTS)
+     ${LINKER_HARDENING_FLAGS}
+     ${CMAKE_THREAD_LIBS_INIT}
+   )
++]===]
+   add_unit_test(
+     boreas-ping-test
+     ping_tests.c
+@@ -216,6 +220,7 @@ if(BUILD_TESTS)
+   )
+ 
+   set(UTIL_TEST_LINKER_WRAP_OPTIONS "-Wl,-wrap,socket,-wrap,setsockopt")
++#[===[
+   add_unit_test(
+     util-test
+     util_tests.c
+@@ -225,6 +230,7 @@ if(BUILD_TESTS)
+     ${CMAKE_THREAD_LIBS_INIT}
+     ${UTIL_TEST_LINKER_WRAP_OPTIONS}
+   )
++]===]
+ endif(BUILD_TESTS)
+ 
+ ## Install
+--- a/cmake/MacroAddUnitTest.cmake
++++ b/cmake/MacroAddUnitTest.cmake
+@@ -3,8 +3,8 @@ macro(add_unit_test _testName _testSource)
+   target_link_libraries(${_testName} ${CGREEN_LIBRARIES} ${ARGN})
+   target_include_directories(${_testName} PRIVATE ${CGREEN_INCLUDE_DIRS})
+   if(ENABLE_ADDRESS_SANITIZER)
+-    target_compile_options(${_testName} PRIVATE "-fsanitize=address")
+-    target_link_options(${_testName} PRIVATE "-fsanitize=address")
++  #  target_compile_options(${_testName} PRIVATE "-fsanitize=address")
++  #  target_link_options(${_testName} PRIVATE "-fsanitize=address")
+   endif(ENABLE_ADDRESS_SANITIZER)
+   add_test(NAME ${_testName} COMMAND ${CMAKE_CURRENT_BINARY_DIR}/${_testName})
+ endmacro()
+--- a/util/CMakeLists.txt
++++ b/util/CMakeLists.txt
+@@ -294,6 +294,7 @@ if(BUILD_TESTS)
+     ${UUID_LDFLAGS}
+     ${LINKER_HARDENING_FLAGS}
+   )
++#[===[
+   add_unit_test(
+     mqtt-test
+     mqtt_tests.c
+@@ -304,6 +305,7 @@ if(BUILD_TESTS)
+     ${UUID_LDFLAGS}
+     ${LINKER_HARDENING_FLAGS}
+   )
++]===]
+   add_unit_test(
+     kb-test
+     kb_tests.c
+@@ -312,6 +314,7 @@ if(BUILD_TESTS)
+     ${REDIS_LDFLAGS}
+     ${LINKER_HARDENING_FLAGS}
+   )
++#[===[
+   add_unit_test(
+     sshutils-test
+     sshutils_tests.c
+@@ -342,6 +345,7 @@ if(BUILD_TESTS)
+     ${GNUTLS_LDFLAGS}
+     ${LINKER_HARDENING_FLAGS}
+   )
++]===]
+   add_unit_test(
+     streamvalidator-test
+     streamvalidator_tests.c

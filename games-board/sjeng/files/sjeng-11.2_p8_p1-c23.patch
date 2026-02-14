@@ -1,0 +1,20 @@
+--- a/sjeng.h
++++ b/sjeng.h
+@@ -30,6 +30,7 @@
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <string.h>
++#include <stdbool.h>
+ #include <time.h>
+ 
+ #ifdef HAVE_SYS_TIMEB_H
+@@ -100,7 +101,8 @@
+ #define diagr(square) (diagr[(square)])
+ 
+ #ifndef INPROBECODE
+-typedef enum {FALSE, TRUE} bool;
++#define FALSE false
++#define TRUE true
+ #endif
+ 
+ /* castle flags: */

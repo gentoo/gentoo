@@ -25,8 +25,9 @@
     <flag name="hepmc3">Adds support for High Energy Physics Monte Carlo Generators 3 <pkg>sci-physics/hepmc</pkg></flag>
     <flag name="lhapdf">Support the use of external PDF sets via <pkg>sci-physics/lhapdf</pkg></flag>
     <flag name="root">Use <pkg>sci-physics/root</pkg> trees and histograms (in examples only)</flag>
-    <flag name="highfive">Support hdf and highfive</flag>
-    <flag name="mpich">Support mpich</flag>
+    <flag name="highfive">Support <pkg>sci-libs/hdf5</pkg> and <pkg>sci-libs/highfive</pkg></flag>
+    <flag name="mg5mes">MadGraph matrix element plugins for parton showers</flag>
+    <flag name="mpich">Multi-threading support via <pkg>sys-cluster/mpich</pkg></flag>
     <flag name="rivet">Support <pkg>sci-physics/rivet</pkg></flag>
   </use>
   <upstream>

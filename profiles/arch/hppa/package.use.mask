@@ -1,8 +1,12 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
+
+# Sam James <sam@gentoo.org> (2026-02-11)
+# sys-libs/libnvme not keyworded here
+sys-fs/lvm2 nvme
 
 # Alfred Wingate <parona@protonmail.com> (2025-12-24)
 # media-libs/jasper is not keyworded here
@@ -300,7 +304,7 @@ sys-libs/libcap tools
 
 # Michał Górny <mgorny@gentoo.org> (2021-07-25)
 # PyQt5 and wxpython are not keyworded.
-dev-python/ipython gui qt5
+dev-python/ipython gui
 dev-python/matplotlib qt6 wxwidgets
 
 # Matt Turner <mattst88@gentoo.org> (2021-07-23)

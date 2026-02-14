@@ -15,7 +15,7 @@ S="${WORKDIR}/icu-release-${PV/_rc/rc}/icu4j/main"
 
 LICENSE="icu"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 ~arm64 ~ppc64"
 
 DEPEND="
 	>=virtual/jdk-11:*

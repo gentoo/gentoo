@@ -46,7 +46,6 @@ DEPEND="${RDEPEND}
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 
-	dev-libs/gobject-introspection-common
 	gnome-base/gnome-common
 "
 BDEPEND="doc? ( dev-util/gi-docgen )"

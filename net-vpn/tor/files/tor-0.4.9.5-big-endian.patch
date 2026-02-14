@@ -1,0 +1,97 @@
+https://gitlab.torproject.org/tpo/core/tor/-/merge_requests/990
+
+From 64b5638bf0d31e70f0832317fffc47c92b28e5ab Mon Sep 17 00:00:00 2001
+From: Nick Mathewson <nickm@torproject.org>
+Date: Thu, 12 Feb 2026 14:56:58 -0500
+Subject: [PATCH] Fix an absolutely silly pile-up of big-endian bugs in
+ polyval.c
+
+Only big-endian systems are affected.
+
+First off, the non-gcc fallback algorithm for byte swapping was wrong:
+We were OR-ing all the input bytes into the low 8 bits of the output.
+
+Secondly, the non-gcc fallback code was broken: it was referring to "value",
+when the input was called "v".
+
+Finally and more significantly, the big-endian detection was wrong:
+We were looking at WORDS_BIG_ENDIAN, when the actual autoconf macro
+is WORDS_BIGENDIAN.
+
+Closes bug #41215.
+---
+ changes/bug41215          |  3 +++
+ src/ext/polyval/polyval.c | 31 ++++++++++++++++---------------
+ 2 files changed, 19 insertions(+), 15 deletions(-)
+ create mode 100644 changes/bug41215
+
+diff --git a/changes/bug41215 b/changes/bug41215
+new file mode 100644
+index 0000000000..d2d715ba5a
+--- /dev/null
++++ b/changes/bug41215
+@@ -0,0 +1,3 @@
++  o Minor bugfixes (portability):
++    - (Hopefully) fix our polyval implementation on big-endian platforms.
++      Fixes bug 41215; bugfix on 0.4.9.3-alpha.
+diff --git a/src/ext/polyval/polyval.c b/src/ext/polyval/polyval.c
+index 9f64734e0f..157ba54044 100644
+--- a/src/ext/polyval/polyval.c
++++ b/src/ext/polyval/polyval.c
+@@ -84,38 +84,39 @@ static void pv_mul_y_h(polyval_t *);h
+ /* =====
+  * Endianness conversion for big-endian platforms
+  */
+-#ifdef WORDS_BIG_ENDIAN
++#ifdef WORDS_BIGENDIAN
+ #ifdef __GNUC__
+ #define bswap64(x) __builtin_bswap64(x)
+ #define bswap32(x) __builtin_bswap32(x)
+ #else
+ /* The (compiler should optimize these into a decent bswap instruction) */
+ static inline uint64_t
+-bswap64(uint64_t v)
++bswap64(uint64_t value)
+ {
+   return
+     ((value & 0xFF00000000000000) >> 56) |
+-    ((value & 0x00FF000000000000) >> 48) |
+-    ((value & 0x0000FF0000000000) >> 40) |
+-    ((value & 0x000000FF00000000) >> 32) |
+-    ((value & 0x00000000FF000000) >> 24) |
+-    ((value & 0x0000000000FF0000) >> 16) |
+-    ((value & 0x000000000000FF00) >> 8) |
+-    ((value & 0x00000000000000FF));
++    ((value & 0x00FF000000000000) >> 40) |
++    ((value & 0x0000FF0000000000) >> 24) |
++    ((value & 0x000000FF00000000) >> 8) |
++    ((value & 0x00000000FF000000) << 8) |
++    ((value & 0x0000000000FF0000) << 24) |
++    ((value & 0x000000000000FF00) << 40) |
++    ((value & 0x00000000000000FF) << 56);
+ }
+-static inline uint64_t
+-bswap32(uint64_t v)
++
++static inline uint32_t
++bswap32(uint32_t value)
+ {
+   return
+     ((value & 0xFF000000) >> 24) |
+-    ((value & 0x00FF0000) >> 16) |
+-    ((value & 0x0000FF00) >> 8) |
+-    ((value & 0x000000FF));
++    ((value & 0x00FF0000) >> 8) |
++    ((value & 0x0000FF00) << 8) |
++    ((value & 0x000000FF) << 24);
+ }
+ #endif
+ #endif
+ 
+-#ifdef WORDS_BIG_ENDIAN
++#ifdef WORDS_BIGENDIAN
+ #define convert_byte_order64(x) bswap64(x)
+ #define convert_byte_order32(x) bswap32(x)
+ #else
+-- 
+GitLab

@@ -1,0 +1,16 @@
+get correct getenv prototype instead of cooking one up that's not going
+to be useless with recent compilers
+
+--- a/getopt.c
++++ b/getopt.c
+@@ -143,9 +143,7 @@
+ /* Avoid depending on library functions or files
+    whose names are inconsistent.  */
+ 
+-#ifndef getenv
+-extern char *getenv ();
+-#endif
++#include <stdlib.h>
+ 
+ #endif /* not __GNU_LIBRARY__ */
+ 

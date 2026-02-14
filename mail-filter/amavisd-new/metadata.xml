@@ -3,9 +3,7 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<use>
-		<flag name="courier">Add courier support</flag>
 		<flag name="dkim">Add DomainKeys Identified Mail support</flag>
-		<flag name="qmail">Add qmail support</flag>
 		<flag name="razor">Add support for <pkg>mail-filter/razor</pkg></flag>
 		<flag name="rspamd">Add support for <pkg>mail-filter/rspamd</pkg> extension (HTTP only)</flag>
 		<flag name="rspamd-https">Add support for <pkg>mail-filter/rspamd</pkg> extension (both HTTP and HTTPS)</flag>

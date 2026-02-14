@@ -1,0 +1,59 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -192,7 +192,7 @@
+ 
+ if(ENABLE_IRC)
+ 	find_package(Communi)
+-	find_package(Qt5 COMPONENTS Core Network)
++	find_package(Qt6 COMPONENTS Core Network REQUIRED)
+ endif()
+ 
+ find_package(event)
+--- a/backends/libcommuni/CMakeLists.txt
++++ b/backends/libcommuni/CMakeLists.txt
+@@ -4,8 +4,8 @@
+ if(ENABLE_QT4)
+ 	QT4_WRAP_CPP(SRC ${HEADERS} OPTIONS -DBOOST_TT_HAS_OPERATOR_HPP_INCLUDED)
+ else()
+-	QT5_WRAP_CPP(SRC ${HEADERS} OPTIONS -DBOOST_TT_HAS_OPERATOR_HPP_INCLUDED)
+-	include_directories(${Qt5Core_INCLUDE_DIRS} ${Qt5Network_INCLUDE_DIRS})
++	qt6_wrap_cpp(SRC ${HEADERS} OPTIONS -DBOOST_TT_HAS_OPERATOR_HPP_INCLUDED)
++	include_directories(${Qt6Core_INCLUDE_DIRS} ${Qt6Network_INCLUDE_DIRS})
+ endif()
+ 
+ add_definitions(-DQT_NO_KEYWORDS)
+@@ -15,13 +15,13 @@
+ 	if(ENABLE_QT4)
+ 		target_link_libraries(spectrum2_libcommuni_backend ${IRC_LIBRARY} Qt4::QtNetwork Qt4::QtCore transport pthread)
+ 	else()
+-		target_link_libraries(spectrum2_libcommuni_backend ${IRC_LIBRARY} Qt5::Network Qt5::Core transport pthread)
++		target_link_libraries(spectrum2_libcommuni_backend ${IRC_LIBRARY} Qt6::Network Qt6::Core transport pthread)
+ 	endif()
+ else()
+ 	if(ENABLE_QT4)
+ 		target_link_libraries(spectrum2_libcommuni_backend ${IRC_LIBRARY} Qt4::QtNetwork Qt4::QtCore transport)
+ 	else()
+-		target_link_libraries(spectrum2_libcommuni_backend ${IRC_LIBRARY} Qt5::Network Qt5::Core transport)
++		target_link_libraries(spectrum2_libcommuni_backend ${IRC_LIBRARY} Qt6::Network Qt6::Core transport)
+ 	endif()
+ endif()
+ 
+--- a/cmake_modules/FindCommuni.cmake
++++ b/cmake_modules/FindCommuni.cmake
+@@ -2,14 +2,14 @@
+ 	find_package(Qt4)
+ 	include( ${QT_USE_FILE} )
+ else()
+-	find_package(Qt5Network)
++	find_package(Qt6 COMPONENTS Network REQUIRED)
+ endif()
+ 
+ FIND_LIBRARY(IRC_LIBRARY NAMES IrcCore PATHS ${QT_LIBRARY_DIR})
+ if( ENABLE_QT4 )
+ 	FIND_PATH(IRC_INCLUDE_DIR NAMES "IrcCore/ircglobal.h" PATHS ${QT_INCLUDE_DIR} PATH_SUFFIXES Communi)
+ else()
+-	FIND_PATH(IRC_INCLUDE_DIR NAMES "IrcCore/ircglobal.h" PATHS ${Qt5Core_INCLUDE_DIRS} ${Qt5Core_INCLUDE_DIRS}"/.." PATH_SUFFIXES Communi)
++	FIND_PATH(IRC_INCLUDE_DIR NAMES "IrcCore/ircglobal.h" PATHS ${Qt6Core_INCLUDE_DIRS} ${Qt6Core_INCLUDE_DIRS}"/.." PATH_SUFFIXES Communi)
+ endif()
+ 
+ # message( STATUS ${IRC_LIBRARY})

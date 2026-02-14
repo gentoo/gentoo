@@ -1,0 +1,31 @@
+https://gitlab.cern.ch/hepmc/HepMC/-/merge_requests/16
+From 1bb90ccda81187c71c1e234e3d55390684ce1041 Mon Sep 17 00:00:00 2001
+From: Giulio Eulisse <10544+ktf@users.noreply.github.com>
+Date: Tue, 6 Jan 2026 13:39:58 +0100
+Subject: [PATCH] Add support for CMake 4
+
+Upstream deprecated support for CMake <= 3.5.
+
+See https://cmake.org/cmake/help/latest/release/4.0.html#deprecated-and-removed-features
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7b2dd93..6d7e807 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -13,8 +13,8 @@
+ # which matches the default HepMC autoconf flags
+ #------------------------------------------------------------------------------
+ 
+-# use cmake 2.6 or later
+-cmake_minimum_required (VERSION 2.6)
++# use cmake 3.16 or later
++cmake_minimum_required (VERSION 3.16)
+
+ # project name and version
+ project(HepMC)
+-- 
+GitLab
+

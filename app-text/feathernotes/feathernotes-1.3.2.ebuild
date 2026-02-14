@@ -1,13 +1,14 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake xdg
+inherit cmake verify-sig xdg
 
 DESCRIPTION="Lightweight Qt Notes-Manager for Linux"
 HOMEPAGE="https://github.com/tsujan/FeatherNotes"
-SRC_URI="https://github.com/tsujan/FeatherNotes/archive/V${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/tsujan/FeatherNotes/releases/download/V${PV}/FeatherNotes-${PV}.tar.xz
+	https://github.com/tsujan/FeatherNotes/releases/download/V${PV}/FeatherNotes-${PV}.tar.xz.asc"
 S="${WORKDIR}/FeatherNotes-${PV}"
 
 LICENSE="GPL-3+"
@@ -24,7 +25,12 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )
 "
-BDEPEND="dev-qt/qttools:6[linguist]"
+BDEPEND="
+	dev-qt/qttools:6[linguist]
+	verify-sig? ( sec-keys/openpgp-keys-tsujan )
+"
+
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/tsujan.asc"
 
 src_configure() {
 	local mycmakeargs=(

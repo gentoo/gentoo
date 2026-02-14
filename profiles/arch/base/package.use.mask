@@ -1,5 +1,13 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Ionen Wolkens <ionen@gentoo.org> (2026-02-11)
+# net-libs/librist currently has very few keywords
+media-video/ffmpeg rist
+
+# Andrey Grozin <grozin@gentoo.org> (2026-01-08)
+# Needs dev-python/pyside[tools]
+>=media-gfx/asymptote-3.06 gui
 
 # Sam James <sam@gentoo.org> (2025-12-23)
 # sys-process/numactl is not available everywhere
@@ -57,10 +65,6 @@ sys-block/nbdkit libguestfs
 # Jimi Huotari <chiitoo@gentoo.org> (2025-04-24)
 # lxqt-base/lxqt-wayland-session is only keyworded for amd64 at this time.
 lxqt-base/lxqt-meta wayland
-
-# Paul Zander <negril.nx+gentoo@gmail.com> (2025-04-20)
-# requires SYCL/DCP++ from ::science
-media-gfx/blender oneapi
 
 # Sam James <sam@gentoo.org> (2025-03-11)
 # The COBOL frontend only allows building on a small number of platforms
@@ -273,7 +277,6 @@ media-libs/libva-intel-driver hybrid
 # This is not inside use.mask, because crossdev toolchain packages would
 # want to have the flag enabled without hassle.
 <sys-libs/glibc-2.36 experimental-loong
-sys-libs/libseccomp experimental-loong
 
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-02-17)
 # Mask AMF keyword on non-amd64 arches
@@ -416,11 +419,6 @@ media-libs/opencv contribxfeatures2d
 # mdblookup: dev-libs/libmaxminddb is only keyworded on amd64 and x86 at the moment
 app-admin/rsyslog imhttp mdblookup
 
-# Alexis Ballier <aballier@gentoo.org> (2017-02-21)
-# spacetime is only supported on amd64 at the moment.
-# https://caml.inria.fr/pub/docs/manual-ocaml/spacetime.html
-dev-lang/ocaml spacetime
-
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2017-01-04)
 # Matt Whitlock <gentoo@mattwhitlock.name> (2025-04-12)
 # Mask assembly optimisations that are platform-specific
@@ -442,11 +440,6 @@ dev-db/mysql numa
 # Brian Evans <grknight@gentoo.org> (2016-08-18)
 # Mask jdbc as most arches don't support java
 dev-db/mariadb jdbc
-
-# Alexis Ballier <aballier@gentoo.org> (2015-11-14)
-# MMAL is only available on the Raspberry Pi:
-# Mask it globally, unmask it on arm.
-media-video/motion mmal
 
 # Brian Evans <grknight@gentoo.org> (2015-09-14)
 # Mask new USE flags for mariadb which all arches do not yet have dependencies
@@ -483,10 +476,6 @@ sys-apps/hwloc gl nvml
 # Diego Elio Pettenò <flameeyes@gentoo.org> (2012-11-03)
 # Requires net-dns/unbound which is not keyworded by most arches
 net-libs/gnutls dane
-
-# Ben de Groot <yngwin@gentoo.org> (2012-07-30)
-# fontconfig-infinality dependency not yet keyworded on most arches
-media-libs/freetype infinality
 
 # Mike Gilbert <floppym@gentoo.org> (2012-06-29)
 # sys-fs/zfs is not available everywhere.

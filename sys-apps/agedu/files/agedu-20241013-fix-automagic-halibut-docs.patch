@@ -1,0 +1,48 @@
+From d4dd77f5ca2e0b3b53aaef59c7bb692517fc2848 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 14 Mar 2022 13:39:01 +0000
+Subject: [PATCH] Fix automagic halibut/docs
+
+---
+ CMakeLists.txt | 25 ++++++++++++++-----------
+ 1 file changed, 14 insertions(+), 11 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cdad437..11a05e7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -62,17 +62,20 @@ if(NOT CMAKE_SYSTEM_NAME MATCHES "Windows")
+   configure_file(cmake.h.in ${GENERATED_SOURCES_DIR}/cmake.h)
+ 
+   # If Halibut is available, build the docs too.
+-  find_program(HALIBUT halibut)
+-  if(HALIBUT)
+-    set(BUILD_MANPAGE ON)
+-    add_custom_command(OUTPUT agedu.1
+-      COMMAND ${HALIBUT} --man=agedu.1
+-        ${CMAKE_CURRENT_SOURCE_DIR}/agedu.but
+-      DEPENDS
+-        ${CMAKE_CURRENT_SOURCE_DIR}/agedu.but)
+-    add_custom_target(doc ALL DEPENDS agedu.1)
+-  else()
+-    set(BUILD_MANPAGE OFF)
++  option(BUILD_DOCS "Build man pages using halibut" ON)
++  if(BUILD_DOCS)
++    find_program(HALIBUT halibut REQUIRED)
++    if(HALIBUT)
++      set(BUILD_MANPAGE ON)
++      add_custom_command(OUTPUT agedu.1
++        COMMAND ${HALIBUT} --man=agedu.1
++          ${CMAKE_CURRENT_SOURCE_DIR}/agedu.but
++        DEPENDS
++          ${CMAKE_CURRENT_SOURCE_DIR}/agedu.but)
++      add_custom_target(doc ALL DEPENDS agedu.1)
++    else()
++      set(BUILD_MANPAGE OFF)
++    endif()
+   endif()
+ 
+   # Installation
+-- 
+2.35.1
+

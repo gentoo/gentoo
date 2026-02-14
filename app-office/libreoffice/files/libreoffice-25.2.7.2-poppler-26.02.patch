@@ -1,0 +1,143 @@
+From 3c29b709cd2b5b18776b3c15638b66bd8a7dcb07 Mon Sep 17 00:00:00 2001
+From: Xisco Fauli <xiscofauli@libreoffice.org>
+Date: Fri, 6 Feb 2026 00:53:12 +0100
+Subject: [PATCH] poppler: upgrade to 26.02.0
+
+stripped of all the bundled update stuff ...
+
+---
+ .../pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx  | 22 +++++++++-
+ .../pdfimport/xpdfwrapper/pdfioutdev_gpl.hxx  | 21 +++++++++-
+ 2 files changed, 41 insertions(+), 2 deletions(-)
+
+diff --git a/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx b/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx
+index 6b9184809803d..f1487453eb503 100644
+--- a/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx
++++ b/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx
+@@ -711,13 +711,17 @@ void PDFOutDev::restoreState(GfxState*)
+     printf( "restoreState\n" );
+ }
+ 
+-#if POPPLER_CHECK_VERSION(0, 71, 0)
++#if POPPLER_CHECK_VERSION(26, 2, 0)
++void PDFOutDev::setDefaultCTM(const std::array<double, 6> &pMat)
++#elif POPPLER_CHECK_VERSION(0, 71, 0)
+ void PDFOutDev::setDefaultCTM(const double *pMat)
+ #else
+ void PDFOutDev::setDefaultCTM(double *pMat)
+ #endif
+ {
++#if !POPPLER_CHECK_VERSION(26, 2, 0)
+     assert(pMat);
++#endif
+ 
+     OutputDev::setDefaultCTM(pMat);
+ 
+@@ -737,8 +741,12 @@ void PDFOutDev::updateCTM(GfxState* state,
+ {
+     assert(state);
+ 
++#if POPPLER_CHECK_VERSION(26, 2, 0)
++    const std::array<double, 6> pMat = state->getCTM();
++#else
+     const double* const pMat = state->getCTM();
+     assert(pMat);
++#endif
+ 
+     printf( "updateCtm %f %f %f %f %f %f\n",
+             normalize(pMat[0]),
+@@ -1044,7 +1052,11 @@ void PDFOutDev::drawChar(GfxState *state, double x, double y,
+ 
+     double csdx = 0.0;
+     double csdy = 0.0;
++#if POPPLER_CHECK_VERSION(26, 2, 0)
++    if (!state->getFont() || GfxFont::WritingMode::Horizontal == state->getFont()->getWMode())
++#else
+     if (!state->getFont() || !state->getFont()->getWMode())
++#endif
+     {
+         csdx = state->getCharSpace();
+         if (*u == ' ')
+@@ -1067,7 +1079,11 @@ void PDFOutDev::drawChar(GfxState *state, double x, double y,
+     const double aPositionX(x-originX);
+     const double aPositionY(y-originY);
+ 
++#if POPPLER_CHECK_VERSION(26, 2, 0)
++    const std::array<double, 6> pTextMat=state->getTextMat();
++#else
+     const double* pTextMat=state->getTextMat();
++#endif
+     printf( "drawChar %f %f %f %f %f %f %f %f %f ",
+             normalize(aPositionX),
+             normalize(aPositionY),
+@@ -1348,7 +1364,11 @@ poppler_bool PDFOutDev::tilingPatternFill(GfxState *state, Gfx *, Catalog *,
+ 
+     const int nDPI = 72; // GfxState seems to have 72.0 as magic for some reason
+     auto pSplashGfxState = new GfxState(nDPI, nDPI, &aBox, 0, false);
++#if POPPLER_CHECK_VERSION(26, 2, 0)
++    auto pSplashOut = new SplashOutputDev(splashModeRGB8, 1, nullptr);
++#else
+     auto pSplashOut = new SplashOutputDev(splashModeRGB8, 1, false, nullptr);
++#endif
+     pSplashOut->setEnableFreeType(false);
+     pSplashOut->startDoc(m_pDoc);
+     pSplashOut->startPage(0 /* pageNum */, pSplashGfxState, nullptr /* xref */);
+diff --git a/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.hxx b/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.hxx
+index b7bd912406b58..da587b1522d61 100644
+--- a/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.hxx
++++ b/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.hxx
+@@ -85,13 +85,21 @@ namespace pdfi
+             isUnderline(rSrc.isUnderline),
+             size(rSrc.size)
+         {
++#if POPPLER_CHECK_VERSION(26, 2, 0)
++            familyName.append(rSrc.getFamilyName());
++#else
+             familyName.append(&rSrc.getFamilyName());
++#endif
+         }
+ 
+         FontAttributes& operator=( const FontAttributes& rSrc )
+         {
+             familyName.clear();
++#if POPPLER_CHECK_VERSION(26, 2, 0)
++            familyName.append(rSrc.getFamilyName());
++#else
+             familyName.append(&rSrc.getFamilyName());
++#endif
+ 
+             isEmbedded  = rSrc.isEmbedded;
+             maFontWeight= rSrc.maFontWeight;
+@@ -104,12 +112,21 @@ namespace pdfi
+ 
+         bool operator==(const FontAttributes& rFont) const
+         {
++#if POPPLER_CHECK_VERSION(26, 2, 0)
++            return getFamilyName().compare(rFont.getFamilyName())==0 &&
++                isEmbedded == rFont.isEmbedded &&
++                maFontWeight == rFont.maFontWeight &&
++                isItalic == rFont.isItalic &&
++                isUnderline == rFont.isUnderline &&
++                size == rFont.size;
++#else
+             return getFamilyName().cmp(&rFont.getFamilyName())==0 &&
+                 isEmbedded == rFont.isEmbedded &&
+                 maFontWeight == rFont.maFontWeight &&
+                 isItalic == rFont.isItalic &&
+                 isUnderline == rFont.isUnderline &&
+                 size == rFont.size;
++#endif
+         }
+ 
+         GooString   familyName;
+@@ -172,7 +189,9 @@ namespace pdfi
+         //----- initialization and control
+ 
+         // Set default transform matrix.
+-#if POPPLER_CHECK_VERSION(0, 71, 0)
++#if POPPLER_CHECK_VERSION(26, 2, 0)
++void setDefaultCTM(const std::array<double, 6> &pMat) override;
++#elif POPPLER_CHECK_VERSION(0, 71, 0)
+         virtual void setDefaultCTM(const double *ctm) override;
+ #else
+         virtual void setDefaultCTM(double *ctm) override;

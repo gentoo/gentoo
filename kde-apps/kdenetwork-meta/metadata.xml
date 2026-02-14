@@ -14,5 +14,6 @@
 		<flag name="samba">Enable support for <pkg>net-fs/samba</pkg> file sharing plugin from within file properties</flag>
 		<flag name="screencast">Pull in <pkg>kde-apps/krfb</pkg> for Plasma desktop sharing support</flag>
 		<flag name="webengine">Enable support for Google Drive integration via <pkg>kde-misc/kio-gdrive</pkg></flag>
+		<flag name="zeroconf">Pull in packages using <pkg>kde-frameworks/kdnssd</pkg></flag>
 	</use>
 </pkgmetadata>

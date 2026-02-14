@@ -82,6 +82,7 @@ PATCHES=(
 	"${WORKDIR}/mongodb-5.0.30-patches/${PN}-5.0.30-gcc-15.patch"
 	"${WORKDIR}/mongodb-5.0.30-patches/${PN}-5.0.26-scons.patch"
 	"${WORKDIR}/mongodb-5.0.30-patches/${PN}-5.0.26-mozjs-remove-unused-constructor.patch"
+	"${FILESDIR}/mongodb-5.0.32-boost-system.patch"
 )
 
 python_check_deps() {

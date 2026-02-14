@@ -46,6 +46,11 @@ RDEPEND="
 
 DOCS=( README.rst CHANGELOG.rst doc/user.rst )
 
+PATCHES=(
+	# https://codeberg.org/poezio/biboumi/pulls/3540/
+	"${FILESDIR}"/biboumi-10-cmake-Explicitly-search-for-Catch2-version-3.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DSERVICE_USER="${PN}"

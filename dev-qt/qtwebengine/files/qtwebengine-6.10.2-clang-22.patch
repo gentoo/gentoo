@@ -1,0 +1,23 @@
+Patch status: fixed in >=chromium-141.0.7365.0
+
+https://bugs.gentoo.org/968956
+https://crbug.com/438445382
+https://crrev.com/820ca85d1e918a399abf471d97b37d99be892f1f
+https://skia.googlesource.com/skcms.git/+/135488419331
+https://skia.googlesource.com/skcms.git/+/02ca44da98eb
+https://skia.googlesource.com/skcms.git/+/238fd0489c04
+https://skia.googlesource.com/skcms.git/+/c602c137fb05
+--- a/src/3rdparty/chromium/third_party/skia/modules/skcms/src/Transform_inl.h
++++ b/src/3rdparty/chromium/third_party/skia/modules/skcms/src/Transform_inl.h
+@@ -162,6 +162,11 @@
+     return (F)_mm512_cvtph_ps((__m256i)half);
+ #elif defined(USING_AVX_F16C)
++#if defined(__clang__) && __clang_major__ >= 15 // for _Float16 support
++    typedef _Float16 __attribute__((vector_size(16))) F16;
++    return __builtin_convertvector((F16)half, F);
++#else
+     typedef int16_t __attribute__((vector_size(16))) I16;
+     return __builtin_ia32_vcvtph2ps256((I16)half);
++#endif // defined(__clang))
+ #else
+     U32 wide = cast<U32>(half);

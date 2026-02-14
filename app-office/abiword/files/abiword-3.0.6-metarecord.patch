@@ -1,0 +1,31 @@
+https://gitlab.gnome.org/World/AbiWord/-/merge_requests/5
+https://bugs.gentoo.org/717336
+corrected for actual code
+From 6579f1e6472e1c12e4aa17a85b61b8c2a1fe9390 Mon Sep 17 00:00:00 2001
+From: Chris Mayo <aklhfex@gmail.com>
+Date: Fri, 6 Mar 2020 19:31:35 +0000
+Subject: [PATCH] Install AppStream data into metainfo directory
+
+appdata directory is now deprecated [1].
+
+[1] https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#spec-component-location
+---
+ Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 0f6ab5e1e..d9131a790 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -26,7 +26,7 @@ desktop_DATA = com.abisource.AbiWord.desktop
+ mimedir = @ABIWORD_DATADIR@/mime-info
+ mime_DATA = abiword.keys
+ 
+-appdatadir = $(datarootdir)/appdata
++appdatadir = $(datarootdir)/metainfo
+ appdata_DATA = abiword.appdata.xml
+ 
+ pkgconfigdir = $(libdir)/pkgconfig
+-- 
+GitLab
+

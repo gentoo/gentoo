@@ -1,0 +1,48 @@
+bump cmake_min for bundled libs, use 3.26 as the main CMakeLists.txt
+--- a/external_libraries/tcplay/CMakeLists.txt
++++ b/external_libraries/tcplay/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ if(${CMAKE_VERSION} VERSION_GREATER "3.26")
+-    cmake_minimum_required(VERSION 3.5.0)
++    cmake_minimum_required(VERSION 3.26.0)
+ else()
+     cmake_minimum_required(VERSION 3.0.2)
+ endif()
+--- a/external_libraries/lxqt_wallet/CMakeLists.txt
++++ b/external_libraries/lxqt_wallet/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ if(${CMAKE_VERSION} VERSION_GREATER "3.26")
+-    cmake_minimum_required(VERSION 3.5.0)
++    cmake_minimum_required(VERSION 3.26.0)
+ else()
+     cmake_minimum_required(VERSION 3.0.2)
+ endif()
+--- a/external_libraries/lxqt_wallet/backend/CMakeLists.txt
++++ b/external_libraries/lxqt_wallet/backend/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ if(${CMAKE_VERSION} VERSION_GREATER "3.26")
+-    cmake_minimum_required(VERSION 3.5.0)
++    cmake_minimum_required(VERSION 3.26.0)
+ else()
+     cmake_minimum_required(VERSION 3.0.2)
+ endif()
+--- a/external_libraries/lxqt_wallet/frontend/CMakeLists.txt
++++ b/external_libraries/lxqt_wallet/frontend/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ if(${CMAKE_VERSION} VERSION_GREATER "3.26")
+-    cmake_minimum_required(VERSION 3.5.0)
++    cmake_minimum_required(VERSION 3.26.0)
+ else()
+     cmake_minimum_required(VERSION 3.0.2)
+ endif()
+diff --git a/external_libraries/lxqt_wallet/frontend/libsecret/CMakeLists.txt b/external_libraries/lxqt_wallet/frontend/libsecret/CMakeLists.txt
+index 3d2055b9..cb070209 100644
+--- a/external_libraries/lxqt_wallet/frontend/libsecret/CMakeLists.txt
++++ b/external_libraries/lxqt_wallet/frontend/libsecret/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ if(${CMAKE_VERSION} VERSION_GREATER "3.26")
+-    cmake_minimum_required(VERSION 3.5.0)
++    cmake_minimum_required(VERSION 3.26.0)
+ else()
+     cmake_minimum_required(VERSION 3.0.2)
+ endif()

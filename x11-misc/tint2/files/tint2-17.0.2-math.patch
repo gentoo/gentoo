@@ -1,0 +1,10 @@
+https://bugs.gentoo.org/961098
+https://bugs.gentoo.org/970043
+--- a/src/tint2conf/CMakeLists.txt
++++ b/src/tint2conf/CMakeLists.txt
+@@ -66,4 +66,5 @@
+                                  ${GTK3_LIBRARIES}
+                                  ${RSVG_LIBRARIES} )
++target_link_libraries( tint2conf m )
+ 
+ add_definitions( -DINSTALL_PREFIX=\"${CMAKE_INSTALL_PREFIX}\" )

@@ -1,0 +1,12 @@
+--- a/configure.ac	2020-12-22 07:44:15.000000000 +0100
++++ b/configure.ac	2026-01-21 07:38:30.094905287 +0100
+@@ -245,8 +245,7 @@
+                                 dnl  cross-platform C++ extensions
+ AS_IF([test xyes != x$with_included_boost],
+   [AX_BOOST_BASE([1.49.0],
+-     [AX_BOOST_SYSTEM
+-      AX_BOOST_FILESYSTEM
++     [AX_BOOST_FILESYSTEM
+       AX_BOOST_IOSTREAMS
+       AX_BOOST_PROGRAM_OPTIONS
+       AS_IF([test $__cplusplus -lt 201103], [AX_BOOST_REGEX])

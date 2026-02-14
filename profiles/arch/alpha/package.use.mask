@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2026-02-11)
+# sys-libs/libnvme not keyworded here
+sys-fs/lvm2 nvme
+
 # Eli Schwartz <eschwartz@gentoo.org> (2025-11-27)
 # Needs dev-python/mypy for mypyc, not keyworded here
 dev-python/charset-normalizer native-extensions

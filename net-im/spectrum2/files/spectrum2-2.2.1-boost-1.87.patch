@@ -1,0 +1,45 @@
+see: https://bugs.gentoo.org/946571
+
+From: Bill Prendergast <dek.devel@baisenvar.info>
+
+Fix build with >=dev-libs/boost-1.87
+ required for for net-im/swift boost-1.87 patch
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -109,6 +109,7 @@ if(${Boost_VERSION} GREATER 104999)
+ 	add_definitions(-DBOOST_FILESYSTEM_VERSION=3)
+ endif()
+ add_definitions(-DBOOST_BIND_GLOBAL_PLACEHOLDERS)
++add_definitions(-DBOOST_VERSION=${Boost_VERSION})
+ 
+ # FIND POPT
+ if(NOT WIN32)
+--- a/include/Swiften/Network/DummyConnectionServer.h
++++ b/include/Swiften/Network/DummyConnectionServer.h
+@@ -6,7 +6,11 @@
+ 
+ #pragma once
+ 
++#if BOOST_VERSION < 108600
+ #include <boost/asio/io_service.hpp>
++#else
++#include <boost/asio/io_context.hpp>
++#endif
+ #include <boost/asio/ip/tcp.hpp>
+ #include <boost/enable_shared_from_this.hpp>
+ #include <boost/signals2.hpp>
+--- a/include/Swiften/Network/DummyConnectionServerFactory.h
++++ b/include/Swiften/Network/DummyConnectionServerFactory.h
+@@ -6,7 +6,11 @@
+ 
+ #pragma once
+ 
++#if BOOST_VERSION < 108600
+ #include <boost/asio/io_service.hpp>
++#else
++#include <boost/asio/io_context.hpp>
++#endif
+ 
+ #include <Swiften/Network/ConnectionServerFactory.h>
+ #include <Swiften/Network/DummyConnectionServer.h>

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ SRC_URI="https://download.pear.php.net/package/${MY_P}.tgz"
 S="${WORKDIR}/${MY_P}"
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 arm ~hppa ppc64 ~sparc x86"
 
 RDEPEND="app-alternatives/gpg
 	dev-lang/php:*[posix(-),unicode(-)]

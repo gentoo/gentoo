@@ -1,0 +1,12 @@
+# PR merged https://github.com/mhogomchungu/zuluCrypt/pull/244.patch
+--- a/external_libraries/lxqt_wallet/frontend/CMakeLists.txt
++++ b/external_libraries/lxqt_wallet/frontend/CMakeLists.txt
+@@ -106,7 +106,7 @@ else()
+ 			find_package(KF6Wallet QUIET)
+ 			find_package(KF6Notifications QUIET)
+ 
+-			if(KF5Wallet_FOUND AND KF5Notifications_FOUND )
++			if(KF6Wallet_FOUND AND KF6Notifications_FOUND )
+ 				file(APPEND  ${PROJECT_BINARY_DIR}/storage_manager.h "\n#define HAS_KWALLET_SUPPORT 1\n")
+ 				SET(KDE_SUPPORT "true")
+ 				SET(KWALLET_SUPPORT "true")

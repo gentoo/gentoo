@@ -1,0 +1,41 @@
+https://bugs.gentoo.org/969014
+https://gitlab.com/procps-ng/procps/-/issues/410
+https://gitlab.com/procps-ng/procps/-/merge_requests/282
+
+From 98f60043abb4d45661b3adee261e4a14cf94c025 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ulrich=20M=C3=BCller?= <ulm@gentoo.org>
+Date: Sun, 25 Jan 2026 13:35:34 +0100
+Subject: [PATCH] sysctl: Respect ignore_failure also for close_stream
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+When the kernel rejects an unknown value for given a key, then output
+will be pending and close_stream will fail (typically with ENOENT).
+
+Signed-off-by: Ulrich Müller <ulm@gentoo.org>
+---
+ src/sysctl.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/src/sysctl.c b/src/sysctl.c
+index d04d5e36..b702fd9f 100644
+--- a/src/sysctl.c
++++ b/src/sysctl.c
+@@ -623,9 +623,12 @@ static int WriteSetting(
+             if (0 < fprintf(fp, "%s\n", value))
+                 rc = EXIT_SUCCESS;
+             if (close_stream(fp) != 0) {
+-                warn(_("setting key \"%s\""), dotted_key);
++                warn(_("setting key \"%s\"%s"),
++                     dotted_key, (ignore_failure?_(", ignoring"):""));
+ 		free(dotted_key);
+-                return EXIT_FAILURE;
++                if (!ignore_failure)
++                    rc = EXIT_FAILURE;
++                return rc;
+             }
+         }
+     }
+-- 
+GitLab

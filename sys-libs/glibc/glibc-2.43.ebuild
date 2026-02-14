@@ -43,7 +43,7 @@ HOMEPAGE="https://www.gnu.org/software/libc/"
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 else
-	#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 	SRC_URI="mirror://gnu/glibc/${P}.tar.xz"
 	SRC_URI+=" verify-sig? ( mirror://gnu/glibc/${P}.tar.xz.sig )"
 	SRC_URI+=" https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${P}-patches-${PATCH_VER}.tar.xz"
@@ -194,6 +194,16 @@ XFAIL_TEST_LIST=(
 
 	# https://sourceware.org/bugzilla/show_bug.cgi?id=31877 (bug #927973)
 	tst-shstk-legacy-1g
+
+	# https://sourceware.org/bugzilla/show_bug.cgi?id=33239
+	test-double-compoundn
+	test-float-compoundn
+	test-float32-compoundn
+	test-float32x-compoundn
+	test-float64-compoundn
+
+	# Fails only in portage. Needs investigation.
+	tst-setvbuf2
 )
 
 XFAIL_NSPAWN_TEST_LIST=(
@@ -218,9 +228,6 @@ XFAIL_NSPAWN_TEST_LIST=(
 	# These fail if --suppress-sync and/or low priority is set
 	tst-sync_file_range
 	test-errno
-
-	# Fails only in portage. Needs investigation.
-	tst-setvbuf2
 )
 
 #

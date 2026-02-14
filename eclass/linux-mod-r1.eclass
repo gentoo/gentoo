@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: linux-mod-r1.eclass
@@ -211,13 +211,11 @@ fi
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Used with USE=modules-sign.  Can be set to hash algorithm to use
-# during signature generation.
+# during signature generation (e.g. sha512).
 #
 # Rather than set this, it is recommended to select using the kernel's
 # configuration to ensure proper support (e.g. CONFIG_MODULE_SIG_SHA256),
 # and then it will be auto-detected here.
-#
-# Valid values: sha512,sha384,sha256,sha224,sha1
 #
 # Default if unset: kernel CONFIG_MODULE_SIG_HASH's value
 

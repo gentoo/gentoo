@@ -9,6 +9,10 @@
 		<email>ceamac@gentoo.org</email>
 		<name>Viorel Munteanu</name>
 	</maintainer>
+	<maintainer type="project" proxied="proxy">
+			<email>proxy-maint@gentoo.org</email>
+			<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription>
 		Calamares livecd Gentoo configuration provided for Calamares
 		installer. It comes with a set of branding, configuration files

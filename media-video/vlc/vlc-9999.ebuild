@@ -1,4 +1,4 @@
-# Copyright 2000-2025 Gentoo Authors
+# Copyright 2000-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -37,15 +37,15 @@ HOMEPAGE="https://www.videolan.org/vlc/"
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/12-9" # vlc - vlccore
 
-IUSE="a52 alsa aom archive aribsub bidi bluray cddb chromaprint chromecast dav1d dbus
-	dc1394 debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac fluidsynth
-	fontconfig +gcrypt gme keyring gstreamer +gui ieee1394 jack jpeg kate kms
-	libass libcaca libnotify libplacebo +libsamplerate libtiger linsys lirc live
-	loudness lua macosx-notifications mad matroska modplug mp3 mpeg mtp musepack ncurses
+IUSE="alsa aom archive aribsub bidi bluray chromaprint chromecast dav1d dbus
+	dc1394 debug directx +dvbpsi dvd +encode faad fdk +ffmpeg flac fluidsynth
+	fontconfig +gcrypt gme keyring gstreamer +gui ieee1394 jack jpeg kate libass
+	libcaca libdrm libnotify libplacebo +libsamplerate libtiger linsys lirc live
+	loudness lua macosx-notifications mad matroska modplug mp3 mtp musepack ncurses
 	nfs ogg omxil optimisememory opus png projectm pulseaudio run-as-root samba
-	sdl-image sftp shout sid skins soxr speex srt ssl svg taglib theora tremor truetype
+	sftp shout sid skins soxr speex srt ssl svg taglib theora tremor truetype
 	twolame udev upnp vaapi v4l vdpau vnc vpx wayland +X x264 x265 xml zeroconf
-	zvbi cpu_flags_arm_neon cpu_flags_ppc_altivec cpu_flags_x86_mmx cpu_flags_x86_sse
+	zvbi cpu_flags_arm_neon cpu_flags_ppc_altivec cpu_flags_x86_sse
 "
 REQUIRED_USE="
 	chromecast? ( encode )
@@ -71,13 +71,12 @@ BDEPEND="
 	x86? ( dev-lang/yasm )
 "
 # depends on abseil-cpp via protobuf targets
-RDEPEND="
+COMMON_DEPEND="
 	media-libs/libvorbis
 	net-dns/libidn:=
 	virtual/zlib:=
 	virtual/libintl
 	virtual/opengl
-	a52? ( media-libs/a52dec )
 	alsa? ( media-libs/alsa-lib )
 	aom? ( media-libs/libaom:= )
 	archive? ( app-arch/libarchive:= )
@@ -89,7 +88,6 @@ RDEPEND="
 		virtual/ttf-fonts
 	)
 	bluray? ( >=media-libs/libbluray-1.3.0:= )
-	cddb? ( media-libs/libcddb )
 	chromaprint? ( media-libs/chromaprint:= )
 	chromecast? (
 		dev-cpp/abseil-cpp:=
@@ -102,7 +100,6 @@ RDEPEND="
 		media-libs/libdc1394:2
 		sys-libs/libraw1394
 	)
-	dts? ( media-libs/libdca )
 	dvbpsi? ( >=media-libs/libdvbpsi-1.2.0:= )
 	dvd? (
 		>=media-libs/libdvdnav-6.1.1:=
@@ -130,7 +127,10 @@ RDEPEND="
 		dev-qt/qtdeclarative:6
 		dev-qt/qtsvg:6
 		kde-frameworks/kwindowsystem:6
-		X? ( x11-libs/libX11 )
+		X? (
+			dev-qt/qtbase:6[X]
+			x11-libs/libX11
+		)
 	)
 	ieee1394? (
 		sys-libs/libavc1394
@@ -139,12 +139,12 @@ RDEPEND="
 	jack? ( virtual/jack )
 	jpeg? ( media-libs/libjpeg-turbo:0 )
 	kate? ( media-libs/libkate )
-	kms? ( x11-libs/libdrm )
 	libass? (
 		media-libs/fontconfig:1.0
 		media-libs/libass:=
 	)
 	libcaca? ( media-libs/libcaca )
+	libdrm? ( x11-libs/libdrm )
 	libnotify? (
 		dev-libs/glib:2
 		x11-libs/gdk-pixbuf:2
@@ -165,7 +165,6 @@ RDEPEND="
 	)
 	modplug? ( >=media-libs/libmodplug-0.8.9.0 )
 	mp3? ( media-sound/mpg123-base )
-	mpeg? ( media-libs/libmpeg2 )
 	mtp? ( media-libs/libmtp:= )
 	musepack? ( media-sound/musepack-tools )
 	ncurses? ( sys-libs/ncurses:=[unicode(+)] )
@@ -179,7 +178,6 @@ RDEPEND="
 	)
 	pulseaudio? ( media-libs/libpulse )
 	samba? ( >=net-fs/samba-4.0.0:0[client,-debug(-)] )
-	sdl-image? ( media-libs/sdl-image )
 	sftp? ( net-libs/libssh2 )
 	shout? ( media-libs/libshout )
 	sid? ( media-libs/libsidplay:2 )
@@ -233,8 +231,11 @@ RDEPEND="
 	zeroconf? ( net-dns/avahi[dbus] )
 	zvbi? ( media-libs/zvbi )
 "
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	X? ( x11-base/xorg-proto )
+"
+RDEPEND="${COMMON_DEPEND}
+	kde-frameworks/qqc2-desktop-style:6
 "
 
 DOCS=( AUTHORS THANKS NEWS README.md doc/fortunes.txt )
@@ -295,7 +296,6 @@ src_configure() {
 		--enable-vcd
 		--enable-vlc
 		--enable-vorbis
-		$(use_enable a52) # not officially supported anymore (avcodec takes priority)
 		$(use_enable alsa)
 		$(use_enable aom)
 		$(use_enable archive)
@@ -303,13 +303,11 @@ src_configure() {
 		$(use_enable bidi fribidi)
 		$(use_enable bidi harfbuzz)
 		$(use_enable bluray)
-		$(use_enable cddb libcddb)
 		$(use_enable chromaprint)
 		$(use_enable chromecast)
 		$(use_enable chromecast microdns)
 		$(use_enable cpu_flags_arm_neon neon)
 		$(use_enable cpu_flags_ppc_altivec altivec)
-		$(use_enable cpu_flags_x86_mmx mmx)
 		$(use_enable cpu_flags_x86_sse sse)
 		$(use_enable dav1d)
 		$(use_enable dbus)
@@ -319,7 +317,6 @@ src_configure() {
 		$(use_enable directx)
 		$(use_enable directx d3d11va)
 		$(use_enable directx dxva2)
-		$(use_enable dts dca) # not officially supported anymore (avcodec takes priority)
 		$(use_enable dvbpsi)
 		$(use_enable dvd dvdnav)
 		$(use_enable dvd dvdread)
@@ -342,7 +339,7 @@ src_configure() {
 		$(use_enable jack)
 		$(use_enable jpeg)
 		$(use_enable kate)
-		$(use_enable kms)
+		$(use_enable libdrm)
 		$(use_enable libass)
 		$(use_enable libcaca caca)
 		$(use_enable libnotify notify)
@@ -359,7 +356,6 @@ src_configure() {
 		$(use_enable matroska)
 		$(use_enable modplug mod)
 		$(use_enable mp3 mpg123)
-		$(use_enable mpeg libmpeg2) # not officially supported anymore (avcodec takes priority)
 		$(use_enable mtp)
 		$(use_enable musepack mpc)
 		$(use_enable ncurses)
@@ -373,7 +369,6 @@ src_configure() {
 		$(use_enable pulseaudio pulse)
 		$(use_enable run-as-root)
 		$(use_enable samba smbclient)
-		$(use_enable sdl-image)
 		$(use_enable sftp)
 		$(use_enable shout)
 		$(use_enable sid)
@@ -416,13 +411,12 @@ src_configure() {
 		--disable-kva
 		--disable-maintainer-mode
 		--disable-merge-ffmpeg
-		--disable-mfx
+		--disable-vpl # TODO: packaged, only keyworded amd64
 		--disable-mmal
 		--disable-opencv
 		--disable-opensles
 		--disable-oss
 		--disable-rpi-omxil
-		--disable-schroedinger
 		--disable-shine
 		--disable-sndio
 		--disable-spatialaudio

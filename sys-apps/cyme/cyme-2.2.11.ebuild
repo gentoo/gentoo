@@ -3,7 +3,7 @@
 
 EAPI=8
 
-RUST_MIN_VER="1.82"
+RUST_MIN_VER="1.88.0"
 CRATES="
 	aho-corasick@1.1.4
 	android_system_properties@0.1.5

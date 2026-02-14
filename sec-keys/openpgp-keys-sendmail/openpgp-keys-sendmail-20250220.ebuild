@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,4 +33,4 @@ DESCRIPTION="OpenPGP keys used by Sendmail"
 HOMEPAGE="https://www.sendmail.org/"
 SRC_URI="https://ftp.sendmail.org/PGPKEYS -> ${P}.asc"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"

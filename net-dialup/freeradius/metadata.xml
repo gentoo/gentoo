@@ -9,11 +9,17 @@
 		<flag name="memcached">
 			Include <pkg>dev-libs/libmemcached</pkg> in caching drivers
 		</flag>
+		<flag name="kafka">
+			Include support for kafka
+		</flag>
 		<flag name="redis">
 			Include support for Redis database
 		</flag>
 		<flag name="mongodb">
 			Include support for MongoDB database
+		</flag>
+		<flag name="yubikey">
+			Include support for ubikey
 		</flag>
 	</use>
 	<upstream>

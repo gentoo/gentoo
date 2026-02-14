@@ -1,0 +1,93 @@
+https://github.com/Gepetto/collada-dom/commit/5adebc004f9ee7bb0fc1f498205cf5449812ced1
+
+From: Tan Li Boon <undisputed.seraphim@gmail.com>
+Date: Sat, 13 Nov 2021 10:06:46 +0900
+Subject: [PATCH] collada-dom: Replace deprecated auto_ptr with unique_ptr
+
+---
+ dom/include/dae.h                  | 2 +-
+ dom/include/dae/daeErrorHandler.h  | 2 +-
+ dom/include/dae/daeWin32Platform.h | 2 +-
+ dom/src/dae/daeErrorHandler.cpp    | 2 +-
+ dom/test/1.4/domTest.cpp           | 2 +-
+ dom/test/1.5/domTest.cpp           | 2 +-
+ 6 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/dom/include/dae.h b/dom/include/dae.h
+index e53388b..b041e55 100644
+--- a/dom/include/dae.h
++++ b/dom/include/dae.h
+@@ -290,7 +290,7 @@ class DLLSPEC DAE
+     daeSidRefCache sidRefCache;
+     daeString COLLADA_VERSION, COLLADA_NAMESPACE; // dynamic
+ 
+-    std::auto_ptr<charEncoding> localCharEncoding;
++    std::unique_ptr<charEncoding> localCharEncoding;
+     static charEncoding globalCharEncoding;
+ };
+ 
+diff --git a/dom/include/dae/daeErrorHandler.h b/dom/include/dae/daeErrorHandler.h
+index 6ffab01..8b02c15 100644
+--- a/dom/include/dae/daeErrorHandler.h
++++ b/dom/include/dae/daeErrorHandler.h
+@@ -55,7 +55,7 @@ class DLLSPEC daeErrorHandler {
+ 
+ private:
+ 	static daeErrorHandler *_instance;
+-	static std::auto_ptr<daeErrorHandler> _defaultInstance;
++	static std::unique_ptr<daeErrorHandler> _defaultInstance;
+ };
+ 
+ #endif
+diff --git a/dom/include/dae/daeWin32Platform.h b/dom/include/dae/daeWin32Platform.h
+index e501597..e97822c 100644
+--- a/dom/include/dae/daeWin32Platform.h
++++ b/dom/include/dae/daeWin32Platform.h
+@@ -38,7 +38,7 @@ typedef int intptr_t;
+ 
+ // GCC doesn't understand "#pragma warning"
+ #ifdef _MSC_VER
+-// class 'std::auto_ptr<_Ty>' needs to have dll-interface to be used by clients of class 'daeErrorHandler'
++// class 'std::unique_ptr<_Ty>' needs to have dll-interface to be used by clients of class 'daeErrorHandler'
+ #pragma warning(disable: 4251)
+ // warning C4100: 'profile' : unreferenced formal parameter
+ #pragma warning(disable: 4100)
+diff --git a/dom/src/dae/daeErrorHandler.cpp b/dom/src/dae/daeErrorHandler.cpp
+index 264c343..e38c9da 100644
+--- a/dom/src/dae/daeErrorHandler.cpp
++++ b/dom/src/dae/daeErrorHandler.cpp
+@@ -10,7 +10,7 @@
+ #include <modules/stdErrPlugin.h>
+ 
+ daeErrorHandler *daeErrorHandler::_instance = NULL;
+-std::auto_ptr<daeErrorHandler> daeErrorHandler::_defaultInstance(new stdErrPlugin);
++std::unique_ptr<daeErrorHandler> daeErrorHandler::_defaultInstance(new stdErrPlugin);
+ 
+ daeErrorHandler::daeErrorHandler() {
+ }
+diff --git a/dom/test/1.4/domTest.cpp b/dom/test/1.4/domTest.cpp
+index 28aefa5..5e38019 100644
+--- a/dom/test/1.4/domTest.cpp
++++ b/dom/test/1.4/domTest.cpp
+@@ -368,7 +368,7 @@ DefineTest(tinyXmlLoad) {
+     // saved document, and make sure the results are the same.
+     DAE dae;
+     CheckResult(dae.open(seymourOrig));
+-    auto_ptr<daeTinyXMLPlugin> tinyXmlPlugin(new daeTinyXMLPlugin);
++    unique_ptr<daeTinyXMLPlugin> tinyXmlPlugin(new daeTinyXMLPlugin);
+     dae.setIOPlugin(tinyXmlPlugin.get());
+     CheckResult(dae.writeTo(seymourOrig, seymourTinyXml));
+     CheckResult(dae.open(seymourTinyXml));
+diff --git a/dom/test/1.5/domTest.cpp b/dom/test/1.5/domTest.cpp
+index 0ba3449..1d4b7b5 100644
+--- a/dom/test/1.5/domTest.cpp
++++ b/dom/test/1.5/domTest.cpp
+@@ -371,7 +371,7 @@ DefineTest(tinyXmlLoad) {
+     // saved document, and make sure the results are the same.
+     DAE dae;
+     CheckResult(dae.open(seymourOrig));
+-    auto_ptr<daeTinyXMLPlugin> tinyXmlPlugin(new daeTinyXMLPlugin);
++    unique_ptr<daeTinyXMLPlugin> tinyXmlPlugin(new daeTinyXMLPlugin);
+     dae.setIOPlugin(tinyXmlPlugin.get());
+     CheckResult(dae.writeTo(seymourOrig, seymourTinyXml));
+     CheckResult(dae.open(seymourTinyXml));

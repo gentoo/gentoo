@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit optfeature wine
 
 WINE_GECKO=2.47.4
-WINE_MONO=10.4.1
+WINE_MONO=11.0.0
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -127,7 +127,7 @@ RDEPEND="
 "
 DEPEND="
 	${WINE_COMMON_DEPEND}
-	sys-kernel/linux-headers
+	>=sys-kernel/linux-headers-6.14
 	X? ( x11-base/xorg-proto )
 	bluetooth? ( net-wireless/bluez )
 "

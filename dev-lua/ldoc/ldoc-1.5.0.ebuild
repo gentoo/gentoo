@@ -12,7 +12,7 @@ SRC_URI="https://github.com/lunarmodules/LDoc/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm ppc ppc64 ~riscv x86"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
 RDEPEND="

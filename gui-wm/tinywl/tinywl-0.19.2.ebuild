@@ -12,7 +12,9 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/wlroots/wlroots.git"
 	inherit git-r3
 else
-	SRC_URI="https://gitlab.freedesktop.org/wlroots/wlroots/-/releases/${PV}/downloads/wlroots-${PV}.tar.gz"
+	inherit verify-sig
+	SRC_URI="https://gitlab.freedesktop.org/wlroots/wlroots/-/releases/${PV}/downloads/wlroots-${PV}.tar.gz
+		https://gitlab.freedesktop.org/wlroots/wlroots/-/releases/${PV}/downloads/wlroots-${PV}.tar.gz.sig"
 	KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv x86"
 	S="${WORKDIR}/wlroots-${PV}"
 fi
@@ -33,6 +35,11 @@ BDEPEND="
 	dev-util/wayland-scanner
 	virtual/pkgconfig
 "
+
+if [[ ${PV} != 9999 ]]; then
+	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-emersion )"
+	VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/emersion.asc"
+fi
 
 src_prepare() {
 	sed -i -e "s/-Werror //" tinywl/Makefile || die

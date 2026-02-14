@@ -7,7 +7,7 @@
 	</maintainer>
 	<upstream>
 		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=krita</bugs-to>
-		<remote-id type="kde-invent">graphics/krita</remote-id> 
+		<remote-id type="kde-invent">graphics/krita</remote-id>
 	</upstream>
 	<use>
 		<flag name="color-management">Enable color management via <pkg>media-libs/opencolorio</pkg></flag>

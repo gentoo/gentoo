@@ -1,0 +1,28 @@
+https://github.com/rdiankov/collada-dom/pull/44
+
+From: lenik terenin <lenik@lazydroid.com>
+Date: Thu, 14 Nov 2024 14:59:37 +0900
+Subject: [PATCH] enable "-fPIC" for CLANG toolchain
+
+---
+ CMakeLists.txt | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 20635b2..9764534 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -183,7 +183,12 @@ foreach(ldir ${Boost_LIBRARY_DIRS})
+   set(COLLADA_DOM_BOOST_LIB_DIRS "${COLLADA_DOM_BOOST_LIB_DIRS} -L${ldir}")
+ endforeach()
+ 
+-if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
++set(COMPILER_IS_CLANG FALSE)
++if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
++  set(COMPILER_IS_CLANG TRUE)
++endif()
++
++if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX OR COMPILER_IS_CLANG)
+   set(EXTRA_COMPILE_FLAGS "${COLLADA_DOM_EXTERNAL_FLAGS} -DCOLLADA_DOM_NAMESPACE -fPIC")
+ else()
+   set(EXTRA_COMPILE_FLAGS "${COLLADA_DOM_EXTERNAL_FLAGS} -DCOLLADA_DOM_NAMESPACE")

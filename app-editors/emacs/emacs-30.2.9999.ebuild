@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -584,8 +584,8 @@ src_install() {
 		own e-mail features are going to be used as an e-mail client
 		(e.g. Rmail), you are strongly encouraged to enable it. If not,
 		Emacs will use its own implementation of movemail; which has
-		fewer features and is less secure. For more information see:
-		https://www.gnu.org/software/emacs/manual/html_node/emacs/Movemail.html"
+		fewer features and is less secure. For more information see the
+		Info node '(emacs)Movemail' in the Emacs manual."
 	fi
 	tc-is-cross-compiler && DOC_CONTENTS+="\\n\\nEmacs did not write
 		a portable dump file due to being cross-compiled.

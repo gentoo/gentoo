@@ -5,6 +5,16 @@
 		<email>tupone@gentoo.org</email>
 		<name>Tupone Alfredo</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Pure Python 3-D geographic coordinate conversions and geodesy.
+		Function syntax is roughly similar to Matlab Mapping Toolbox.
+		PyMap3D is intended for non-interactive use on massively parallel
+		and embedded systems.
+	</longdescription>
 	<upstream>
 		<remote-id type="github">geospace-code/pymap3d</remote-id>
 	</upstream>

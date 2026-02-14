@@ -1,0 +1,47 @@
+https://gitlab.com/iucode-tool/iucode-tool/-/merge_requests/5
+
+From dd2511c343b4eb62a28edf330dfc9e2c2e750a88 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <jlecuirot@microsoft.com>
+Date: Mon, 2 Feb 2026 11:16:13 +0000
+Subject: [PATCH] iucode_tool: Allow building on non-x86 little endian
+ architectures
+
+This is obviously an Intel x86-specific tool, but that doesn't mean it
+cannot be used elsewhere to prepare x86 images. The code is still
+endian-sensitive though, so the configure check to disallow big endian
+remains.
+
+Signed-off-by: James Le Cuirot <jlecuirot@microsoft.com>
+--- a/iucode_tool.c
++++ b/iucode_tool.c
+@@ -30,7 +30,10 @@
+ #include <argp.h>
+ #include <dirent.h>
+ #include <time.h>
++
++#if defined(__x86_64__) || defined(__i386__)
+ #include <cpuid.h>
++#endif
+ 
+ #include "intel_microcode.h"
+ 
+@@ -2933,11 +2936,16 @@ static int scan_system_processors(unsigned int strategy,
+ 	assert(filter_list);
+ 
+ 	print_msg(3, "trying to get CPUID information directly");
++#if defined(__x86_64__) || defined(__i386__)
+ 	if (!(__get_cpuid(0, &id0, &id1, &id2, &id3) &&
+ 	      __get_cpuid(1, &sig, &idx, &idx, &idx))) {
+ 		print_msg(1, "microcode signature unavailable");
+ 		return 0;
+ 	}
++#else
++	print_msg(1, "CPUID instruction not available on this architecture");
++	return 0;
++#endif
+ 
+ 	/*
+ 	 * fail-safe: only change filter_list_allow (switch away from "select
+-- 
+2.51.2
+

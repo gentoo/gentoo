@@ -149,6 +149,7 @@ CRATES="
 	winsafe@0.0.19
 "
 
+RUST_MIN_VER="1.75.0"
 inherit cargo shell-completion optfeature
 
 DESCRIPTION="Neofetch with LGBTQ+ pride flags!"

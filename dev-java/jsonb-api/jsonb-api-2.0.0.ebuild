@@ -15,7 +15,7 @@ S="${WORKDIR}/${P}-RELEASE"
 
 LICENSE="EPL-2.0"
 SLOT="0"
-KEYWORDS="amd64 ppc64"
+KEYWORDS="amd64 arm64 ppc64"
 
 CP_DEPEND="~dev-java/jsonp-api-2.0.2:0"
 
