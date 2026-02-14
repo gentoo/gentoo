@@ -1,7 +1,7 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=9
 
 DESCRIPTION="Playlist handling library"
 HOMEPAGE="https://libspiff.sourceforge.net/"
@@ -20,10 +20,11 @@ DEPEND="${RDEPEND}
 	test? ( >=dev-util/cpptest-1.1 )"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}/${P}-uriparser-1.0.0.patch" ) # bug 967638
+
 src_configure() {
 	econf \
 		--disable-doc \
-		--disable-static \
 		$(use_enable test)
 }
 

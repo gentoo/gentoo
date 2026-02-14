@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,9 +34,8 @@ src_prepare() {
 	# fix missing prototype for malloc
 	sed -i -e "/^#include /i #include <stdlib.h>" ax25ipd/routing.c || die
 	eapply "${FILESDIR}"/${PN}-0.0.8_rc5-tinfo.patch
-	if use elibc_musl ; then
-		eapply -p1 "${FILESDIR}/${PN}-0.0.8-musl.patch"
-	fi
+	# use termios.h instead of termio.h (bug # 715802 + 968885)
+	eapply -p1 "${FILESDIR}/${PN}-0.0.8-musl.patch"
 	eapply_user
 	eautoreconf
 }

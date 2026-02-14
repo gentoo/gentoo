@@ -1,0 +1,35 @@
+From 8ace7878a12c1fb836c843180e55f0858e491ec9 Mon Sep 17 00:00:00 2001
+From: Samuel Tardieu <sam@rfc1149.net>
+Date: Sat, 3 Jan 2026 15:37:54 +0100
+Subject: [PATCH] fix misindented early return
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The wrong indentation could cause the mail hook to bail early without
+any logging when the end time of the event being added/modified happened
+later than the current boundary being checked (1 full minute before the
+current time).
+
+For example, this caused emails not to be sent in the following setup:
+Etar + DAVx⁵ on Android.
+---
+ radicale/hook/email/__init__.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/radicale/hook/email/__init__.py b/radicale/hook/email/__init__.py
+index 2defaa95ecc9..50778503fd3e 100644
+--- a/radicale/hook/email/__init__.py
++++ b/radicale/hook/email/__init__.py
+@@ -988,7 +988,7 @@ class Hook(BaseHook):
+                 if event_end < (now - timedelta(minutes=1)):
+                     logger.warning("Event end time is in the past, skipping notification for event: %s",
+                                    email_event_event.uid)
+-                return
++                    return
+ 
+             if not previous_item_str:
+                 # Dealing with a completely new event, no previous content to compare against.
+-- 
+2.52.0
+

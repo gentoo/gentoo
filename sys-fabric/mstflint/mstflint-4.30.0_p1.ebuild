@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 MY_PV="${PV/_p/-}"
 EGIT_COMMIT="37e382f8960a0cdf639dc9c55314a9b8d0733ead"
@@ -58,6 +58,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #945320
+	append-cflags -std=gnu17
+
 	econf $(use_enable inband) \
 		$(use_enable ssl openssl) \
 		$(use adb-generic-tools && printf -- '--enable-adb-generic-tools')

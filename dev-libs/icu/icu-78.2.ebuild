@@ -17,7 +17,7 @@ S="${WORKDIR}"/${PN}/source
 LICENSE="BSD"
 SLOT="0/${PV%.*}"
 if [[ ${PV} != *_rc* ]] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos ~x64-solaris"
 fi
 IUSE="debug doc examples static-libs test"
 RESTRICT="!test? ( test )"

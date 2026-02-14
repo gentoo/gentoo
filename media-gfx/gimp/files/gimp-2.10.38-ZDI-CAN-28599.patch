@@ -1,0 +1,89 @@
+https://gitlab.gnome.org/GNOME/gimp/-/issues/15555
+https://gitlab.gnome.org/GNOME/gimp/-/commit/c54bf22acb04b83ae38ed50add58f300e898dd81
+
+From e7d10ae2d8c2d96dd838fdec754eaf255e1d1d97 Mon Sep 17 00:00:00 2001
+From: Alx Sa <cmyk.student@gmail.com>
+Date: Fri, 26 Dec 2025 15:49:45 +0000
+Subject: [PATCH] plug-ins: Add more fread () checks in ICO loading
+
+Resolves #15555
+
+This patch adds some guards for ico_read_int8 (),
+which was used for loading palettes and maps
+without verifying that it returned the same number
+of bytes as what it tried to read in.
+
+Cherry-picked from c54bf22acb04b83ae38ed50add58f300e898dd81
+--- a/plug-ins/file-ico/ico-load.c
++++ b/plug-ins/file-ico/ico-load.c
+@@ -69,7 +69,9 @@ ico_read_int32 (FILE    *fp,
+   total = count;
+   if (count > 0)
+     {
+-      ico_read_int8 (fp, (guint8 *) data, count * 4);
++      if (ico_read_int8 (fp, (guint8 *) data, count * 4) != (count * 4))
++        return FALSE;
++
+       for (i = 0; i < count; i++)
+         data[i] = GUINT32_FROM_LE (data[i]);
+     }
+@@ -88,7 +90,9 @@ ico_read_int16 (FILE    *fp,
+   total = count;
+   if (count > 0)
+     {
+-      ico_read_int8 (fp, (guint8 *) data, count * 2);
++      if (ico_read_int8 (fp, (guint8 *) data, count * 2) != (count * 2))
++        return FALSE;
++
+       for (i = 0; i < count; i++)
+         data[i] = GUINT16_FROM_LE (data[i]);
+     }
+@@ -109,8 +113,8 @@ ico_read_int8 (FILE   *fp,
+   while (count > 0)
+     {
+       bytes = fread ((gchar *) data, sizeof (gchar), count, fp);
+-      if (bytes <= 0) /* something bad happened */
+-        break;
++      if (bytes != count) /* something bad happened */
++        return -1;
+ 
+       count -= bytes;
+       data += bytes;
+@@ -481,16 +485,31 @@ ico_read_icon (FILE    *fp,
+          data.used_clrs, data.bpp));
+ 
+       palette = g_new0 (guint32, data.used_clrs);
+-      ico_read_int8 (fp, (guint8 *) palette, data.used_clrs * 4);
++      if (ico_read_int8 (fp,
++                         (guint8 *) palette,
++                         data.used_clrs * 4) != (data.used_clrs * 4))
++        {
++          D(("skipping image: too large\n"));
++          return FALSE;
++        }
++
+     }
+ 
+   xor_map = ico_alloc_map (w, h, data.bpp, &length);
+-  ico_read_int8 (fp, xor_map, length);
++  if (ico_read_int8 (fp, xor_map, length) != length)
++    {
++      D(("skipping image: too large\n"));
++      return FALSE;
++    }
+   D(("  length of xor_map: %i\n", length));
+ 
+   /* Read in and_map. It's padded out to 32 bits per line: */
+   and_map = ico_alloc_map (w, h, 1, &length);
+-  ico_read_int8 (fp, and_map, length);
++  if (! ico_read_int8 (fp, and_map, length) != length)
++    {
++      D(("skipping image: too large\n"));
++      return FALSE;
++    }
+   D(("  length of and_map: %i\n", length));
+ 
+   dest_vec = (guint32 *) buf;
+-- 
+2.52.0
+

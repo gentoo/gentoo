@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,8 +12,9 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/emersion/grim.git"
 else
-	SRC_URI="https://gitlab.freedesktop.org/emersion/grim/-/archive/v${PV}/grim-v${PV}.tar.bz2"
-	S="${WORKDIR}/${PN}-v${PV}"
+	inherit verify-sig
+	SRC_URI="https://gitlab.freedesktop.org/emersion/grim/-/releases/v${PV}/downloads/${P}.tar.gz
+		https://gitlab.freedesktop.org/emersion/grim/-/releases/v${PV}/downloads/${P}.tar.gz.sig"
 	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 fi
 
@@ -34,6 +35,11 @@ BDEPEND="
 	dev-util/wayland-scanner
 	man? ( app-text/scdoc )
 "
+
+if [[ ${PV} != 9999 ]]; then
+	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-emersion )"
+	VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/emersion.asc"
+fi
 
 src_configure() {
 	local emesonargs=(

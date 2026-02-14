@@ -1,10 +1,10 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
-inherit desktop python-any-r1 flag-o-matic scons-utils
+PYTHON_COMPAT=( python3_{11..14} )
+inherit branding desktop python-any-r1 flag-o-matic scons-utils
 inherit shell-completion toolchain-funcs xdg
 
 DESCRIPTION="Multi-platform 2D and 3D game engine with a feature-rich editor"
@@ -112,7 +112,7 @@ src_prepare() {
 }
 
 src_compile() {
-	local -x BUILD_NAME=gentoo # replaces "custom_build" in version string
+	local -x BUILD_NAME=${BRANDING_OS_ID} # replaces "custom_build" in version
 
 	filter-lto #921017
 

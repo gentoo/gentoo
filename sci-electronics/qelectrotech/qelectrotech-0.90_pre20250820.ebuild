@@ -1,4 +1,4 @@
-# Copyright 2001-2025 Gentoo Authors
+# Copyright 2001-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -58,7 +58,7 @@ PATCHES=(
 
 src_prepare() {
 	cmake_src_prepare
-	sed -e "/QHG_LOCATION/s:\".*\":""$(qt6_get_bindir)/../libexec/qhelpgenerator"":" -i Doxyfile || die
+	sed -e "/QHG_LOCATION/s:\".*\":""$(qt6_get_libexecdir)/qhelpgenerator"":" -i Doxyfile || die
 }
 
 src_configure() {

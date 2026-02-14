@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Nowa Ammerlaan <nowa@gentoo.org> (2025-02-03)
@@ -45,6 +45,7 @@ media-video/vlc aom
 media-libs/libheif aom
 media-libs/libavif aom
 mail-client/thunderbird system-av1
+>=kde-frameworks/kimageformats-6.22.0 avif
 
 # matoro <matoro_gentoo@matoro.tk> (2023-04-11)
 # dev-libs/weston casualties (#833010)
@@ -56,7 +57,6 @@ dev-libs/libportal wayland
 dev-util/glade wayland
 gnome-base/gnome-control-center wayland
 gnome-base/gnome-shell wayland
-gnome-base/nautilus wayland
 gnome-extra/tecla wayland
 gui-libs/gtk wayland
 gui-libs/vte wayland

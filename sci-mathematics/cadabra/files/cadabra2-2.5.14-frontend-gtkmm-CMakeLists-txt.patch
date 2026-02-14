@@ -1,0 +1,12 @@
+--- a/frontend/gtkmm/CMakeLists.txt
++++ b/frontend/gtkmm/CMakeLists.txt
+@@ -329,9 +329,6 @@ if (NOT INSTALL_TARGETS_ONLY)
+   install(FILES    ${CADABRA_ROOT_DIR}/config/science.cadabra.cadabra2-gtk.desktop  DESTINATION ${ICON_PREFIX}/share/applications)
+   if(NOT WIN32)
+     # FIXME: Can this go on all platforms?
+-    install(CODE     "execute_process(COMMAND gtk-update-icon-cache --ignore-theme-index ${ICON_PREFIX_WITH_DESTDIR}/share/icons/hicolor)")
+-    install(CODE     "execute_process(COMMAND update-desktop-database ${ICON_PREFIX_WITH_DESTDIR}/share/applications)")
+-    install(CODE     "execute_process(COMMAND chmod go+r ${ICON_PREFIX_WITH_DESTDIR}/share/icons/hicolor/icon-theme.cache)")
+   endif()
+   # install(DIRECTORY cdb-icons  DESTINATION share/cadabra2/)
+   install(FILES     ${CMAKE_SOURCE_DIR}/config/cadabra2.ico  DESTINATION share/cadabra2/cdb-icons/)    

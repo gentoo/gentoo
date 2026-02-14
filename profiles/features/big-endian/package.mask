@@ -1,5 +1,9 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# James Le Cuirot <chewi@gentoo.org> (2026-02-02)
+# It works on non-x86 arches, but only little endian ones.
+sys-apps/iucode_tool
 
 # Michał Górny <mgorny@gentoo.org> (2024-06-07)
 # dev-python/tables is broken on big endian platforms.  Bug #922235.
@@ -84,7 +88,7 @@ games-fps/freedoom
 games-engines/odamex
 games-engines/uzdoom
 games-fps/chocolate-doom
-games-fps/gzdoom
+games-fps/crispy-doom
 games-fps/freedoom-data
 media-libs/zmusic
 games-util/deutex

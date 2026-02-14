@@ -1,0 +1,200 @@
+https://bugs.gentoo.org/854222
+
+From 81760cc931d69f37cf2a8ad54616a1af590fd2cf Mon Sep 17 00:00:00 2001
+Message-ID: <81760cc931d69f37cf2a8ad54616a1af590fd2cf.1770174575.git.sam@gentoo.org>
+From: Werner Koch <wk@gnupg.org>
+Date: Wed, 28 Jan 2026 13:45:00 +0100
+Subject: [PATCH GnuPG] Fix stub functions to avoid LTO linking bugs.
+
+--
+---
+ g10/gpgv.c       | 42 ++++++++++++++++++++++++++++--------------
+ g10/test-stubs.c | 36 +++++++++++++++++++++++-------------
+ 2 files changed, 51 insertions(+), 27 deletions(-)
+
+diff --git a/g10/gpgv.c b/g10/gpgv.c
+index b65dfa66b..23704e21c 100644
+--- a/g10/gpgv.c
++++ b/g10/gpgv.c
+@@ -462,10 +462,13 @@ keyserver_any_configured (ctrl_t ctrl)
+ }
+ 
+ int
+-keyserver_import_keyid (u32 *keyid, void *dummy, unsigned int flags)
++keyserver_import_keyid (ctrl_t ctrl,
++                        u32 *keyid,struct keyserver_spec *keyserver,
++                        unsigned int flags)
+ {
++  (void)ctrl;
+   (void)keyid;
+-  (void)dummy;
++  (void)keyserver;
+   (void)flags;
+   return -1;
+ }
+@@ -493,9 +496,14 @@ keyserver_import_fpr_ntds (ctrl_t ctrl,
+ }
+ 
+ int
+-keyserver_import_cert (const char *name)
++keyserver_import_cert (ctrl_t ctrl, const char *name, int dane_mode,
++                       unsigned char **fpr,size_t *fpr_len)
+ {
++  (void)ctrl;
+   (void)name;
++  (void)dane_mode;
++  (void)fpr;
++  (void)fpr_len;
+   return -1;
+ }
+ 
+@@ -511,11 +519,17 @@ keyserver_import_wkd (ctrl_t ctrl, const char *name, unsigned int flags,
+   return GPG_ERR_BUG;
+ }
+ 
+-int
+-keyserver_import_mbox (const char *name,struct keyserver_spec *spec)
++gpg_error_t
++keyserver_import_mbox (ctrl_t ctrl, const char *mbox,
++                       unsigned char **fpr, size_t *fprlen,
++                       struct keyserver_spec *keyserver, unsigned int flags)
+ {
+-  (void)name;
+-  (void)spec;
++  (void)ctrl;
++  (void)mbox;
++  (void)fpr;
++  (void)fprlen;
++  (void)keyserver;
++  (void)flags;
+   return -1;
+ }
+ 
+@@ -647,14 +661,11 @@ parse_preferred_keyserver(PKT_signature *sig)
+   return NULL;
+ }
+ 
+-struct keyserver_spec *
+-parse_keyserver_uri (const char *uri, int require_scheme,
+-                     const char *configname, unsigned int configlineno)
++keyserver_spec_t
++parse_keyserver_uri (const char *string, int require_scheme)
+ {
+-  (void)uri;
++  (void)string;
+   (void)require_scheme;
+-  (void)configname;
+-  (void)configlineno;
+   return NULL;
+ }
+ 
+@@ -666,11 +677,14 @@ free_keyserver_spec (struct keyserver_spec *keyserver)
+ 
+ /* Stubs to avoid linking to photoid.c */
+ void
+-show_photos (const struct user_attribute *attrs, int count, PKT_public_key *pk)
++show_photos (ctrl_t ctrl, const struct user_attribute *attrs, int count,
++             PKT_public_key *pk, PKT_user_id *uid)
+ {
++  (void)ctrl;
+   (void)attrs;
+   (void)count;
+   (void)pk;
++  (void)uid;
+ }
+ 
+ int
+diff --git a/g10/test-stubs.c b/g10/test-stubs.c
+index 9b41c8929..16d10972d 100644
+--- a/g10/test-stubs.c
++++ b/g10/test-stubs.c
+@@ -193,10 +193,13 @@ keyserver_any_configured (ctrl_t ctrl)
+ }
+ 
+ int
+-keyserver_import_keyid (u32 *keyid, void *dummy, unsigned int flags)
++keyserver_import_keyid (ctrl_t ctrl,
++                        u32 *keyid,struct keyserver_spec *keyserver,
++                        unsigned int flags)
+ {
++  (void)ctrl;
+   (void)keyid;
+-  (void)dummy;
++  (void)keyserver;
+   (void)flags;
+   return -1;
+ }
+@@ -224,9 +227,14 @@ keyserver_import_fpr_ntds (ctrl_t ctrl,
+ }
+ 
+ int
+-keyserver_import_cert (const char *name)
++keyserver_import_cert (ctrl_t ctrl, const char *name, int dane_mode,
++                       unsigned char **fpr,size_t *fpr_len)
+ {
++  (void)ctrl;
+   (void)name;
++  (void)dane_mode;
++  (void)fpr;
++  (void)fpr_len;
+   return -1;
+ }
+ 
+@@ -242,15 +250,17 @@ keyserver_import_wkd (ctrl_t ctrl, const char *name, unsigned int flags,
+   return GPG_ERR_BUG;
+ }
+ 
+-int
+-keyserver_import_mbox (ctrl_t ctrl, const char *mbox, unsigned char **fpr,
+-                       size_t *fprlen, struct keyserver_spec *keyserver)
++gpg_error_t
++keyserver_import_mbox (ctrl_t ctrl, const char *mbox,
++                       unsigned char **fpr, size_t *fprlen,
++                       struct keyserver_spec *keyserver, unsigned int flags)
+ {
+   (void)ctrl;
+   (void)mbox;
+   (void)fpr;
+   (void)fprlen;
+   (void)keyserver;
++  (void)flags;
+   return -1;
+ }
+ 
+@@ -381,14 +391,11 @@ parse_preferred_keyserver(PKT_signature *sig)
+   return NULL;
+ }
+ 
+-struct keyserver_spec *
+-parse_keyserver_uri (const char *uri, int require_scheme,
+-                     const char *configname, unsigned int configlineno)
++keyserver_spec_t
++parse_keyserver_uri (const char *string, int require_scheme)
+ {
+-  (void)uri;
++  (void)string;
+   (void)require_scheme;
+-  (void)configname;
+-  (void)configlineno;
+   return NULL;
+ }
+ 
+@@ -400,11 +407,14 @@ free_keyserver_spec (struct keyserver_spec *keyserver)
+ 
+ /* Stubs to avoid linking to photoid.c */
+ void
+-show_photos (const struct user_attribute *attrs, int count, PKT_public_key *pk)
++show_photos (ctrl_t ctrl, const struct user_attribute *attrs, int count,
++             PKT_public_key *pk, PKT_user_id *uid)
+ {
++  (void)ctrl;
+   (void)attrs;
+   (void)count;
+   (void)pk;
++  (void)uid;
+ }
+ 
+ int
+-- 
+2.53.0
+

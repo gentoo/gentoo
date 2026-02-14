@@ -1,0 +1,22 @@
+From 58d5848e2f00ac5188a3ca2f53da449034ffa54f Mon Sep 17 00:00:00 2001
+From: Sertonix <sertonix@posteo.net>
+Date: Sun, 25 Jan 2026 19:27:36 +0100
+Subject: [PATCH] Fix missing cstdint include
+
+Fixes compilation on musl libc
+---
+ src/game/audio/openalwavdata.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/game/audio/openalwavdata.cpp b/src/game/audio/openalwavdata.cpp
+index d08ea80c..0068e073 100644
+--- a/src/game/audio/openalwavdata.cpp
++++ b/src/game/audio/openalwavdata.cpp
+@@ -24,6 +24,7 @@
+ 
+ #include <AL/alc.h>
+ #include <cassert>
++#include <cstdint>
+ #include <cstdio>
+ #include <stdexcept>
+ 

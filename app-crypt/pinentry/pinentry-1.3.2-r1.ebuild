@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -87,7 +87,7 @@ src_configure() {
 	if use qt6 ; then
 		export PATH="$(qt6_get_bindir):${PATH}"
 		export QTLIB="$(qt6_get_libdir):${QTLIB}"
-		export MOC="$(qt6_get_libdir)/qt6/libexec/moc"
+		export MOC="$(qt6_get_libexecdir)/moc"
 
 		myeconfargs+=(
 			$(use_enable wayland kf6-wayland)

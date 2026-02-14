@@ -11,14 +11,19 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/ngtcp2/nghttp3.git"
 	inherit autotools git-r3
 else
-	SRC_URI="https://github.com/ngtcp2/nghttp3/releases/download/v${PV}/${P}.tar.xz"
-	inherit libtool
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/nghttp3.asc
+	inherit libtool verify-sig
+	SRC_URI="
+		https://github.com/ngtcp2/nghttp3/releases/download/v${PV}/${P}.tar.xz
+		verify-sig? ( https://github.com/ngtcp2/nghttp3/releases/download/v${PV}/${P}.tar.xz.asc )
+	"
 
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-nghttp3 )"
 fi
 
 DESCRIPTION="HTTP/3 library written in C"
-HOMEPAGE="https://github.com/ngtcp2/nghttp3"
+HOMEPAGE="https://nghttp2.org/nghttp3/ https://github.com/ngtcp2/nghttp3"
 
 LICENSE="MIT"
 SLOT="0/0"

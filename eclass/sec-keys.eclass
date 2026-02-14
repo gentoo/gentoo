@@ -168,7 +168,11 @@ sec-keys_src_compile() {
 sec-keys_src_test() {
 	local -x GNUPGHOME=${WORKDIR}/gnupg
 	local key fingerprint name server
-	local gpg_command=(gpg --export-options export-minimal)
+	if has_version -b ">=app-crypt/gnupg-2.5.17"; then
+		local gpg_command=(gpg --export-options export-minimal,keep-expired-subkeys)
+	else
+		local gpg_command=(gpg --export-options export-minimal)
+	fi
 
 	# Best-effort attempt to check for updates. keyservers can and usually
 	# do fail for weird reasons, (such as being unable to import a key

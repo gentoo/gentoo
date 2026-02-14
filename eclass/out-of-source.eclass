@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: out-of-source.eclass
 # @MAINTAINER:
 # Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: convenient wrapper to build autotools packages out-of-source
 # @DESCRIPTION:
 # This eclass provides a minimalistic wrapper interface to easily
@@ -32,13 +32,13 @@
 # }
 # @CODE
 
-case ${EAPI} in
-	7|8);;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_OUT_OF_SOURCE_ECLASS} ]]; then
 _OUT_OF_SOURCE_ECLASS=1
+
+case ${EAPI} in
+	7|8|9);;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # @ECLASS_VARIABLE: BUILD_DIR
 # @OUTPUT_VARIABLE

@@ -18,7 +18,7 @@ S="${WORKDIR}/bc-java-${MY_PV}/pkix"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc64"
+KEYWORDS="amd64 arm64 ppc64"
 
 CP_DEPEND="
 	~dev-java/bcprov-${PV}:0

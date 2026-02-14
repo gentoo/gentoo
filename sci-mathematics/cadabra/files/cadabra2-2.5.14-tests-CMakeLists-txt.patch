@@ -1,0 +1,49 @@
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -36,8 +36,6 @@ set(NBTESTS
+   gamma_matrix_algebra
+   poincare_algebra
+   string_states
+-  bianchi_identities
+-  schwarzschild
+   kaluza_klein
+   scalar_manipulations
+   )
+@@ -61,9 +59,6 @@ set(RTESTS
+   nevaluate
+   index_positions
+   forms
+-  packages
+-  manip
+-  modules
+   integrals
+   display
+   dummies
+@@ -71,7 +66,6 @@ set(RTESTS
+   trigonometric
+   noncovariant
+   algebra
+-  components
+   factor
+   field_theory
+   gamma_paper
+@@ -79,19 +73,15 @@ set(RTESTS
+   fierz
+   selecting
+   kaluza_klein
+-  paper
+   programming
+   basic
+-  meld
+   numerical
+   output
+-  substitute
+   canonicalise
+   derivative
+   properties
+   relativity
+   spinors
+-  sympy_cdb
+   symmetry
+   vary
+   young

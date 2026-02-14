@@ -1,4 +1,4 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: wine.eclass
@@ -35,15 +35,23 @@ inherit autotools flag-o-matic multilib prefix toolchain-funcs wrapper
 # abusing abi_x86_* with some specific requirements.
 #
 # TODO: when the *new* wow64 mode (aka USE=wow64) is mature enough to
-# be preferred over abi_x86_32, this should be removed and support for
-# 32bit-only-on-64bit be dropped matching how /no-multilib/ handles it
-# (USE=wow64 should be enabled by default on amd64 then, but not arm64)
+# be about always preferred over abi_x86_32, this should be removed and
+# support for 32bit-only-on-64bit be dropped matching how /no-multilib/
+# handles it
 readonly WINE_USEDEP="abi_x86_32(-)?,abi_x86_64(-)?"
 
-IUSE="
-	+abi_x86_32 +abi_x86_64 arm64ec crossdev-mingw custom-cflags
-	+mingw +strip wow64
-"
+IUSE="+abi_x86_64 arm64ec crossdev-mingw custom-cflags +mingw +strip"
+
+# enable wow64 in wine-11+ where it is no longer considered experimental
+# and provides a better UX for Gentoo users without USE=abi_x86_32
+# TODO: drop wine-proton exception here and in wine_pkg_preinst when
+# 9999 is based on wine-11.0
+if ver_test -ge 11 && [[ ${PN} != wine-proton ]]; then
+	IUSE+=" abi_x86_32 +wow64"
+else
+	IUSE+=" +abi_x86_32 wow64"
+fi
+
 REQUIRED_USE="
 	|| ( abi_x86_32 abi_x86_64 arm64 )
 	crossdev-mingw? ( mingw )
@@ -208,7 +216,7 @@ wine_src_configure() {
 	# wcc_* variables are used by _wine_flags(), see that
 	# function if need to adjust *FLAGS only for cross
 	local wcc_{amd64,x86,arm64}{,_testflags}
-	# TODO?: llvm-mingw support if ever packaged and wanted
+	# TODO?: llvm-mingw support if useful
 	if use mingw; then
 		conf+=( --with-mingw )
 
@@ -405,6 +413,22 @@ wine_src_install() {
 	fi
 }
 
+# @FUNCTION: wine_pkg_preinst
+# @DESCRIPTION:
+# This should *not* be called directly, if need to declare your own
+# pkg_preinst, then simply do not call this.
+#
+# This is a temporary helper to warn about a default USE change,
+# that should be removed after 6+ months of >=wine-11.0 being stable
+# (also remove the pkg_preinst EXPORT and warning in wine_pkg_postinst).
+wine_pkg_preinst() {
+	# if *any* slot has it set or it is a new install, then assume
+	# user does not need a warning
+	use wow64 && ver_test -ge 11 && [[ ${PN} != wine-proton ]] &&
+		has_version "${CATEGORY}/${PN}" &&
+		! has_version "${CATEGORY}/${PN}[wow64(-)]" && WINE_WARN_WOW64=
+}
+
 # @FUNCTION: wine_pkg_postinst
 # @DESCRIPTION:
 # Provide generic warnings about missing 32bit support,
@@ -436,6 +460,15 @@ wine_pkg_postinst() {
 			ewarn "USE=abi_x86_32 (ABI_X86=32), hardware acceleration with 32bit"
 			ewarn "applications under ${PN} will likely not be usable."
 		fi
+	fi
+
+	# see wine_pkg_preinst
+	if [[ -v WINE_WARN_WOW64 ]]; then
+		ewarn
+		ewarn "This version of Wine now enables USE=wow64 and disables USE=abi_x86_32"
+		ewarn "by default. This removes the need to set USE=abi_x86_32 on most of"
+		ewarn "Wine's dependencies while still being able to run 32bit applications."
+		ewarn "If experience issues, can be reverted with USE='abi_x86_32 -wow64'."
 	fi
 
 	eselect wine update --if-unset || die
@@ -509,4 +542,4 @@ _wine_flags() {
 
 fi
 
-EXPORT_FUNCTIONS pkg_pretend src_prepare src_configure src_compile src_install pkg_postinst pkg_postrm
+EXPORT_FUNCTIONS pkg_pretend src_prepare src_configure src_compile src_install pkg_preinst pkg_postinst pkg_postrm

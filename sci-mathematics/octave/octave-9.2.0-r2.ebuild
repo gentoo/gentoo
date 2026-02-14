@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -181,11 +181,11 @@ src_configure() {
 
 	# Tell autoconf where to find qt binaries, fix bug #837752
 	if use gui ; then
-		export MOC="$(qt6_get_bindir)/../libexec/moc" \
-			UIC="$(qt6_get_bindir)/../libexec/uic" \
-			RCC="$(qt6_get_bindir)/../libexec/rcc" \
+		export MOC="$(qt6_get_libexecdir)/moc" \
+			UIC="$(qt6_get_libexecdir)/uic" \
+			RCC="$(qt6_get_libexecdir)/rcc" \
 			LRELEASE="$(qt6_get_bindir)/lrelease" \
-			QHELPGENERATOR="$(qt6_get_bindir)/../libexec/qhelpgenerator"
+			QHELPGENERATOR="$(qt6_get_libexecdir)/qhelpgenerator"
 	fi
 
 	econf "${myeconfargs[@]}"

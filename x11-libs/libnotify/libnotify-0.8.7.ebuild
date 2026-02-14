@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	>=dev-libs/gobject-introspection-common-1.32
 	dev-util/glib-utils
 	virtual/pkgconfig
 	app-text/docbook-xsl-ns-stylesheets

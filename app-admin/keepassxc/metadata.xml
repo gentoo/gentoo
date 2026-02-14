@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>xgqt@gentoo.org</email>
-		<name>Maciej Barć</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="autotype">Add support to autotype the passwords into other applications</flag>
 		<flag name="browser">Enable communication with web browser plugins</flag>

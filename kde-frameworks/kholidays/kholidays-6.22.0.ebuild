@@ -11,7 +11,7 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Library to determine holidays and other special events for a geographical region"
 
 LICENSE="LGPL-2.1+"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE=""
 
 DEPEND=">=dev-qt/qtdeclarative-${QTMIN}:6"

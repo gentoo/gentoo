@@ -11,13 +11,14 @@ PLOCALE_BACKUP="sv"
 PYTHON_COMPAT=( python3_{11..14} )
 
 inherit autotools linux-info multilib-minimal optfeature plocale \
-	python-single-r1 pam systemd tmpfiles udev toolchain-funcs
+	python-single-r1 pam systemd tmpfiles udev toolchain-funcs verify-sig
 
 DESCRIPTION="System Security Services Daemon provides access to identity and authentication"
 HOMEPAGE="https://github.com/SSSD/sssd"
 if [[ ${PV} != 9999 ]]; then
-	SRC_URI="https://github.com/SSSD/sssd/releases/download/${PV}/${P}.tar.gz"
-	KEYWORDS=""
+	SRC_URI="https://github.com/SSSD/sssd/releases/download/${PV}/${P}.tar.gz
+		https://github.com/SSSD/sssd/releases/download/${PV}/${P}.tar.gz.asc"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/SSSD/sssd.git"
@@ -103,7 +104,10 @@ BDEPEND="
 	)
 	app-text/docbook-xml-dtd:4.4
 	>=dev-libs/libxslt-1.1.26
+	verify-sig? ( sec-keys/openpgp-keys-sssd )
 "
+
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/sssd.asc
 
 CONFIG_CHECK="~KEYS"
 

@@ -106,7 +106,6 @@ BDEPEND="
 	virtual/pkgconfig
 	$(python_gen_cond_dep "
 		dev-python/jinja2[\${PYTHON_USEDEP}]
-		dev-python/lxml[\${PYTHON_USEDEP}]
 		boot? (
 			>=dev-python/pyelftools-0.30[\${PYTHON_USEDEP}]
 			test? ( ${PEFILE_DEPEND} )
@@ -133,6 +132,7 @@ pkg_setup() {
 src_prepare() {
 	local PATCHES=(
 		"${FILESDIR}/systemd-utils-255-musl-fgetxxent.patch"
+		"${FILESDIR}/systemd-256-test-echo.patch"
 	)
 
 	if use elibc_musl; then

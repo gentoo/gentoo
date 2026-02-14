@@ -1,4 +1,4 @@
-# Copyright 2021-2025 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ CRATES="
 LLVM_COMPAT=( {16..20} )
 RUST_MIN_VER="1.79.0"
 
-inherit cargo llvm-r1 shell-completion
+inherit cargo llvm-r1 shell-completion check-reqs
 
 DESCRIPTION="CLI of the Sequoia OpenPGP implementation"
 HOMEPAGE="https://sequoia-pgp.org/ https://gitlab.com/sequoia-pgp/sequoia-sq"
@@ -27,6 +27,8 @@ LICENSE+="
 SLOT="0"
 KEYWORDS="amd64 arm64 ~ppc64"
 IUSE="botan"
+CHECKREQS_DISK_BUILD="4G"
+CHECKREQS_MEMORY="3G"
 
 COMMON_DEPEND="
 	app-arch/bzip2

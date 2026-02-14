@@ -1,5 +1,13 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Fabian Groffen <grobian@gentoo.org> (2026-02-11)
+# bitwarden-cli is not available for linux-arm64
+app-admin/vaultwarden cli
+
+# Ionen Wolkens <ionen@gentoo.org> (2026-02-11)
+# net-libs/librist is available here
+media-video/ffmpeg -rist
 
 # Sam James <sam@gentoo.org> (2025-12-23)
 # sys-process/numactl is available here
@@ -46,10 +54,6 @@ sci-libs/flexiblas -blis -openblas
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-08-16)
 # dev-games/ogre is not keyworded here
 >=dev-games/mygui-3.4.1 ogre
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2025-08-06)
-# aarch64 supports sframe
->=sys-libs/glibc-2.42 -sframe
 
 # Ionen Wolkens <ionen@gentoo.org> (2025-08-01)
 # dev-qt/qtlanguageserver:6 is keyworded here

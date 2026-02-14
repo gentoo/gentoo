@@ -1,0 +1,82 @@
+https://bugs.gentoo.org/969287
+https://www.zerodayinitiative.com/advisories/ZDI-25-1139/
+https://gitlab.gnome.org/GNOME/gimp/-/issues/15285
+https://gitlab.gnome.org/GNOME/gimp/-/commit/cd1c88a0364ad1444c06536731972a99bd8643fd
+
+From e337ed744103c424cc4a069769bcb6328742566d Mon Sep 17 00:00:00 2001
+From: Alx Sa <cmyk.student@gmail.com>
+Date: Wed, 12 Nov 2025 13:25:44 +0000
+Subject: [PATCH] plug-ins: Mitigate ZDI-CAN-28248 for JP2 images
+
+Resolves #15285
+Per the report, it's possible to exceed the size of the pixel buffer
+with a high precision_scaled value, as we size it to the width * bpp.
+This patch includes precision_scaled in the allocation calculation.
+It also adds a g_size_checked_mul () check to ensure there's no
+overflow, and moves the pixel and buffer memory freeing to occur
+in the out section so that it always runs even on failure.
+
+Cherry-picked from cd1c88a0364ad1444c06536731972a99bd8643fd
+
+Cherry-picked to 2.10 and modified to work correctly with this context
+6bca8c4f8970d976c731463f938ae39df3c3fd4c
+19c57a9765ac3451c9cde94ccb06bec5ae06fbd8
+--- a/plug-ins/common/file-jp2-load.c
++++ b/plug-ins/common/file-jp2-load.c
+@@ -1050,14 +1050,15 @@ load_image (const gchar       *filename,
+   GimpColorProfile  *profile;
+   gint32             image_ID;
+   gint32             layer_ID;
++  GeglBuffer        *buffer     = NULL;
++  guchar            *pixels     = NULL;
++  gsize              pixels_size;
+   GimpImageType      image_type;
+   GimpImageBaseType  base_type;
+   gint               width;
+   gint               height;
+   gint               num_components;
+-  GeglBuffer        *buffer;
+   gint               i, j, k, it;
+-  guchar            *pixels;
+   const Babl        *file_format;
+   gint               bpp;
+   GimpPrecision      image_precision;
+@@ -1298,7 +1299,16 @@ load_image (const gchar       *filename,
+   bpp = babl_format_get_bytes_per_pixel (file_format);
+ 
+   buffer = gimp_drawable_get_buffer (layer_ID);
+-  pixels = g_new0 (guchar, width * bpp);
++
++  if (! g_size_checked_mul (&pixels_size, width, (bpp * (precision_scaled / 8))))
++    {
++      g_set_error (error, GIMP_PLUG_IN_ERROR, 0,
++                   _("Defined row size is too large in JP2 image '%s'."),
++                   gimp_filename_to_utf8 (filename));
++      goto out;
++    }
++  pixels = g_new0 (guchar, pixels_size);
++
+ 
+   for (i = 0; i < height; i++)
+     {
+@@ -1324,13 +1334,13 @@ load_image (const gchar       *filename,
+         gegl_buffer_set (buffer, GEGL_RECTANGLE (0, i, width, 1), 0,
+                          file_format, pixels, GEGL_AUTO_ROWSTRIDE);
+     }
+-
+-  g_free (pixels);
+-
+-  g_object_unref (buffer);
+   gimp_progress_update (1.0);
+ 
+  out:
++  if (pixels)
++    g_free (pixels);
++  if (buffer)
++    g_object_unref (buffer);
+   if (profile)
+     g_object_unref (profile);
+   if (image)
+-- 
+2.52.0
+

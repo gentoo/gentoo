@@ -1,0 +1,64 @@
+https://bugs.gentoo.org/969287
+https://www.zerodayinitiative.com/advisories/ZDI-CAN-28273/
+https://gitlab.gnome.org/GNOME/gimp/-/issues/15286
+https://gitlab.gnome.org/GNOME/gimp/-/commit/4ff2d773d58064e6130495de498e440f4a6d5edb
+
+From 62389832a62f6df8a1fca9cbd197b5441b0e32f5 Mon Sep 17 00:00:00 2001
+From: Alx Sa <cmyk.student@gmail.com>
+Date: Sun, 23 Nov 2025 16:43:51 +0000
+Subject: [PATCH] plug-ins: Fix ZDI-CAN-28273
+
+Resolves #15286
+Adds a check to the memory allocation
+in pnm_load_raw () with g_size_checked_mul ()
+to see if the size would go out of bounds.
+If so, we don't try to allocate and load the
+image.
+
+Cherry-picked from 4ff2d773d58064e6130495de498e440f4a6d5edb
+--- a/plug-ins/common/file-pnm.c
++++ b/plug-ins/common/file-pnm.c
+@@ -554,7 +554,7 @@ load_image (GFile   *file,
+             GError **error)
+ {
+   GInputStream    *input;
+-  GeglBuffer      *buffer;
++  GeglBuffer      *buffer   = NULL;
+   gint32 volatile  image_ID = -1;
+   gint32           layer_ID;
+   char             buf[BUFLEN + 4];  /* buffer for random things like scanning */
+@@ -584,6 +584,9 @@ load_image (GFile   *file,
+       g_object_unref (input);
+       g_free (pnminfo);
+ 
++      if (buffer)
++        g_object_unref (buffer);
++
+       if (image_ID != -1)
+         gimp_image_delete (image_ID);
+ 
+@@ -819,6 +822,7 @@ pnm_load_raw (PNMScanner *scan,
+   GInputStream *input;
+   gint          bpc;
+   guchar       *data, *d;
++  gsize         data_size;
+   gushort      *s;
+   gint          x, y, i;
+   gint          start, end, scanlines;
+@@ -829,7 +833,12 @@ pnm_load_raw (PNMScanner *scan,
+     bpc = 1;
+ 
+   /* No overflow as long as gimp_tile_height() < 1365 = 2^(31 - 18) / 6 */
+-  data = g_new (guchar, gimp_tile_height () * info->xres * info->np * bpc);
++  if (! g_size_checked_mul (&data_size, gimp_tile_height (), info->xres) ||
++      ! g_size_checked_mul (&data_size, data_size, info->np)             ||
++      ! g_size_checked_mul (&data_size, data_size, bpc))
++    CHECK_FOR_ERROR (FALSE, info->jmpbuf, _("Unsupported maximum value."));
++
++  data = g_new (guchar, data_size);
+ 
+   input = pnmscanner_input (scan);
+ 
+-- 
+2.52.0
+

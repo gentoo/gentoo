@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourcehut">~sircmpwn/scdoc</remote-id>
+		<changelog>https://git.sr.ht/~sircmpwn/scdoc/refs</changelog>
 	</upstream>
 </pkgmetadata>

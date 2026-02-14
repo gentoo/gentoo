@@ -41,18 +41,55 @@ qemu_arch() {
 	esac
 }
 
+# @FUNCTION: qemu_arch_if_needed
+# @DESCRIPTION:
+# If QEMU is needed to run binaries for the given target or CHOST on the build
+# system, return the QEMU architecture, otherwise return status code 1.
+qemu_arch_if_needed() {
+	local target=${1:-${CHOST}}
+	local qemu_arch=$(qemu_arch "${target}")
+
+	# We ideally compare CHOST against CBUILD, but binary packages cache the
+	# CBUILD value from the system that originally built them.
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		if [[ ${qemu_arch} == $(qemu_arch "${CBUILD}") ]]; then
+			return 1
+		else
+			echo "${qemu_arch}"
+			return 0
+		fi
+	fi
+
+	# So for binary packages, compare against the machine hardware name instead.
+	# Don't use uname because that may lie. /proc knows the real value.
+	case "${qemu_arch}/$(< /proc/sys/kernel/arch)" in
+		"${qemu_arch}/${qemu_arch}") return 1 ;;
+		arm/armv*) return 1 ;;
+		hppa/parisc*) return 1 ;;
+		i386/i?86) return 1 ;;
+		mips64*/mips64) return 1 ;;
+		mipsn32*/mips64) return 1 ;;
+		mips*/mips) return 1 ;;
+	esac
+
+	echo "${qemu_arch}"
+	return 0
+}
+
 # @FUNCTION: sysroot_make_run_prefixed
 # @DESCRIPTION:
 # Create a wrapper script for directly running executables within a (sys)root
 # without changing the root directory. The path to that script is returned. If
-# no sysroot has been set, then this function returns unsuccessfully.
+# no (sys)root has been set, then return status code 1. If the wrapper cannot be
+# created for a permissible reason like QEMU being missing or broken, then
+# return status code 2.
 #
 # The script explicitly uses QEMU if this is necessary and it is available in
 # this environment. It may otherwise implicitly use a QEMU outside this
 # environment if binfmt_misc has been used with the F flag. It is not feasible
 # to add a conditional dependency on QEMU.
 sysroot_make_run_prefixed() {
-	local QEMU_ARCH=$(qemu_arch) SCRIPT MYROOT MYEROOT LIBGCC
+	local QEMU_ARCH SCRIPT MYROOT MYEROOT LIBGCC
 
 	if [[ ${EBUILD_PHASE_FUNC} == src_* ]]; then
 		[[ -z ${SYSROOT} ]] && return 1
@@ -80,7 +117,21 @@ sysroot_make_run_prefixed() {
 		fi
 	fi
 
-	if [[ ${QEMU_ARCH} == $(qemu_arch "${CBUILD}") ]]; then
+	if [[ ${CHOST} = *-mingw32 ]]; then
+		if ! type -P wine >/dev/null; then
+			einfo "Wine not found. Continuing without ${SCRIPT##*/} wrapper."
+			return 2
+		fi
+
+		# UNIX paths can work, but programs will not expect this in %PATH%.
+		local winepath="Z:${LIBGCC};Z:${MYEROOT}/bin;Z:${MYEROOT}/usr/bin;Z:${MYEROOT}/$(get_libdir);Z:${MYEROOT}/usr/$(get_libdir)"
+
+		# Assume that Wine can do its own CPU emulation.
+		install -m0755 /dev/stdin "${SCRIPT}" <<-EOF || die
+			#!/bin/sh
+			SANDBOX_ON=0 LD_PRELOAD= WINEPATH="\${WINEPATH}\${WINEPATH+;};${winepath//\//\\}" exec wine "\${@}"
+		EOF
+	elif ! QEMU_ARCH=$(qemu_arch_if_needed); then
 		# glibc: ld.so is a symlink, ldd is a binary.
 		# musl: ld.so doesn't exist, ldd is a symlink.
 		local DLINKER candidate
@@ -109,6 +160,19 @@ sysroot_make_run_prefixed() {
 			#!/bin/sh
 			QEMU_SET_ENV="\${QEMU_SET_ENV}\${QEMU_SET_ENV+,}LD_LIBRARY_PATH=\${LD_LIBRARY_PATH}\${LD_LIBRARY_PATH+:}${LIBGCC}" QEMU_LD_PREFIX="${MYROOT}" exec $(type -P "qemu-${QEMU_ARCH}") "\${@}"
 		EOF
+
+		# Meson will fail if the given exe_wrapper does not work, regardless of
+		# whether one is actually needed. This is bad if QEMU is not installed
+		# and worse if QEMU does not support the architecture. We therefore need
+		# to perform our own test up front.
+		local test="${SCRIPT}-test"
+		echo 'int main(void) { return 0; }' > "${test}.c" || die "failed to write ${test##*/}"
+		$(tc-getCC) ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} "${test}.c" -o "${test}" || die "failed to build ${test##*/}"
+
+		if ! "${SCRIPT}" "${test}" &>/dev/null; then
+			einfo "Failed to run ${test##*/}. Continuing without ${SCRIPT##*/} wrapper."
+			return 2
+		fi
 	fi
 
 	echo "${SCRIPT}"
@@ -118,11 +182,30 @@ sysroot_make_run_prefixed() {
 # @DESCRIPTION:
 # Create a wrapper script with sysroot_make_run_prefixed if necessary, and use
 # it to execute the given command, otherwise just execute the command directly.
+# Return unsuccessfully if the wrapper cannot be created.
 sysroot_run_prefixed() {
 	local script
-	if script=$(sysroot_make_run_prefixed); then
-		"${script}" "${@}"
-	else
-		"${@}"
-	fi
+	script=$(sysroot_make_run_prefixed)
+
+	case $? in
+		0) "${script}" "${@}" ;;
+		1) "${@}" ;;
+		*) return $? ;;
+	esac
+}
+
+# @FUNCTION: sysroot_try_run_prefixed
+# @DESCRIPTION:
+# Create a wrapper script with sysroot_make_run_prefixed if necessary, and use
+# it to execute the given command, otherwise just execute the command directly.
+# Print a warning and return successfully if the wrapper cannot be created.
+sysroot_try_run_prefixed() {
+	local script
+	script=$(sysroot_make_run_prefixed)
+
+	case $? in
+		0) "${script}" "${@}" ;;
+		1) "${@}" ;;
+		*) ewarn "Unable to run command under prefix: $*" ;;
+	esac
 }

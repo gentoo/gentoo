@@ -1,4 +1,4 @@
-# Copyright 2002-2025 Gentoo Authors
+# Copyright 2002-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: toolchain-funcs.eclass
@@ -1248,7 +1248,7 @@ tc-is-lto() {
 			;;
 		gcc)
 			$(tc-getCC) ${CFLAGS} -c -o "${f}" -x c - <<<"" || die
-			[[ $($(tc-getREADELF) -S "${f}") == *.gnu.lto* ]] && ret=0
+			[[ $($(tc-getOBJDUMP) -s "${f}") == *.gnu.lto* ]] && ret=0
 			;;
 	esac
 	rm -f "${f}" || die

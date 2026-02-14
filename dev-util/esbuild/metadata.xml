@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>kangie@gentoo.org</email>
+    <description>Primary maintainer</description>
+  </maintainer>
+  <maintainer type="project">
+    <email>chromium@gentoo.org</email>
+    <name>Gentoo Chromium Project</name>
+  </maintainer>
+  <longdescription>
+    The main goal of the esbuild bundler project is to bring about a
+    new era of build tool performance, and create an easy-to-use
+    modern bundler along the way.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">evanw/esbuild</remote-id>
+  </upstream>
+</pkgmetadata>

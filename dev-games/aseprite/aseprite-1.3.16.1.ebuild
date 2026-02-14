@@ -126,6 +126,7 @@ src_configure() {
 	#
 	# There are a lot of issues, so don't trust any fixes without thorough
 	# testing.
+	append-flags -fno-strict-aliasing
 	filter-lto
 
 	einfo "Skia configuration"

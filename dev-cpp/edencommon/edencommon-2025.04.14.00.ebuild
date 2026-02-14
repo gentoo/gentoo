@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,7 +36,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	test? ( dev-cpp/gtest )
+	dev-cpp/gtest
 "
 
 src_configure() {

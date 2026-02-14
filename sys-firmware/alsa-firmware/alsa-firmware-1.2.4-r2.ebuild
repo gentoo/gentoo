@@ -22,7 +22,7 @@ LICENSE="
 	alsa_cards_ymfpci? ( all-rights-reserved )
 "
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 
 ECHOAUDIO_CARDS="
 	alsa_cards_darla20 alsa_cards_gina20 alsa_cards_layla20

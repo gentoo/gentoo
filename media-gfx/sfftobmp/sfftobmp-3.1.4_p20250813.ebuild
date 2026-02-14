@@ -16,7 +16,7 @@ S="${WORKDIR}/sfftools-${COMMIT}/sfftobmp3/trunk"
 
 LICENSE="HPND MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~x86"
+KEYWORDS="amd64 ~hppa ppc x86"
 
 RDEPEND="
 	dev-libs/boost:=

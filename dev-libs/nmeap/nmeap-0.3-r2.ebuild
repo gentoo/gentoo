@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ PATCHES=(
 src_prepare() {
 	default
 
-	# Repsect users CFLAGS for the static lib archive
+	# Respect users CFLAGS for the static lib archive
 	sed -i -e 's/CFLAGS =/CFLAGS +=/' -e 's/-g -O0 -Werror//' src/Makefile || die
 
 	# Don't build test programs, as they are not needed

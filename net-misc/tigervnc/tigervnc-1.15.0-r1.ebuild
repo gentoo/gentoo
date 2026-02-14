@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,7 +32,7 @@ REQUIRED_USE="
 "
 
 # TODO: sys-libs/libselinux
-# <fltk-1.4: https://github.com/TigerVNC/tigervnc/pull/1887#issuecomment-2545662546
+# <fltk-1.4: https://github.com/TigerVNC/tigervnc/issues/1949
 COMMON_DEPEND="
 	dev-libs/gmp:=
 	dev-libs/nettle:=

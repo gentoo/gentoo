@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c1c083e..2969f3f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -197,6 +197,8 @@ configure_file(
+   "${CMAKE_CURRENT_BINARY_DIR}/wsjtx_config.h"
+ )
+ 
++add_definitions(-include ${CMAKE_CURRENT_BINARY_DIR}/wsjtx_config.h)
++
+ target_precompile_headers(
+   ${TARGET} PRIVATE
+   ${CMAKE_CURRENT_BINARY_DIR}/wsjtx_config.h

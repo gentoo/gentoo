@@ -12,6 +12,5 @@
 	<use>
 		<flag name="mpv">Enable <pkg>media-video/mpv</pkg> backend</flag>
 		<flag name="qtmedia">Enable playback via <pkg>dev-qt/qtmultimedia</pkg></flag>
-		<flag name="vlc">Enable <pkg>media-video/vlc</pkg> backend</flag>
 	</use>
 </pkgmetadata>

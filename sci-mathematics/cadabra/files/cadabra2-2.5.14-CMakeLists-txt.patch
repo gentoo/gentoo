@@ -1,0 +1,18 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -254,7 +254,6 @@ if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
+       set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-maybe-uninitialized")
+     endif()
+   endif()
+-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O2 -Wall -Wextra -Wunused -Wno-psabi -Wno-unknown-pragmas -Wno-misleading-indentation -fvisibility=hidden -Wno-unused-but-set-variable -Wno-unused-parameter")
+ endif()
+ 
+ # Clang
+@@ -263,7 +262,6 @@ if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+   if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS 3.5)
+     message(FATAL_ERROR "Clang version must be at least 3.5 to avoid known bugs.")
+   endif()
+-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O2 -fvisibility=hidden -Wall -Wextra -Wunused -Wno-unused-parameter -Wno-null-pointer-subtraction")
+ endif()
+ 
+ # Visual Studio

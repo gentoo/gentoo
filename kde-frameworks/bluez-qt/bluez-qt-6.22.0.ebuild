@@ -9,7 +9,7 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Qt wrapper for Bluez 5 DBus API"
 
 LICENSE="LGPL-2"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE=""
 
 RESTRICT="test" # bugs 668196, 924708; they all hang

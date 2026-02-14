@@ -6,20 +6,20 @@
 # Michał Górny <mgorny@gentoo.org>
 # @AUTHOR:
 # Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: Common utility functions for building against installed LLVM
 # @DESCRIPTION:
 # The utility eclass providing shared functions reused between
 # llvm.eclass and llvm-r1.eclass.  It may also be used directly
 # in ebuilds.
 
-case ${EAPI} in
-	7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_LLVM_UTILS_ECLASS} ]]; then
 _LLVM_UTILS_ECLASS=1
+
+case ${EAPI} in
+	7|8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # @FUNCTION: llvm_tuple_to_target
 # @USAGE: [<tuple>]

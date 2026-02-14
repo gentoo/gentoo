@@ -5,6 +5,10 @@
 		<email>soap@gentoo.org</email>
 		<name>David Seifert</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>toolchain@gentoo.org</email>
+		<name>Gentoo Toolchain Project</name>
+	</maintainer>
 	<use>
 		<flag name="btf">Handle reading kernel debug files in BTF format via <pkg>dev-libs/libbpf</pkg></flag>
 	</use>

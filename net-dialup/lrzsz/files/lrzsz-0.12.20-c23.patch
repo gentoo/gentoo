@@ -66,36 +66,6 @@ https://bugs.gentoo.org/943880
  {
    char *t_ptr;
    char **p;
---- a/src/lrz.c
-+++ b/src/lrz.c
-@@ -42,9 +42,9 @@
- #include "error.h"
- 
- #ifndef STRICT_PROTOTYPES
--extern time_t time();
--extern char *strerror();
--extern char *strstr();
-+extern time_t time(time_t*);
-+extern char *strerror(int);
-+extern char *strstr(const char* , const char*);
- #endif
- 
- #ifndef HAVE_ERRNO_DECLARATION
---- a/src/lsz.c
-+++ b/src/lsz.c
-@@ -51,9 +51,9 @@ void *mm_addr=NULL;
- #include "error.h"
- 
- #ifndef STRICT_PROTOTYPES
--extern time_t time();
--extern char *strerror();
--extern char *strstr();
-+extern time_t time(time_t*);
-+extern char *strerror(int);
-+extern char *strstr(const char*, const char*);
- #endif
- 
- #ifndef HAVE_ERRNO_DECLARATION
 --- a/lib/getopt.h
 +++ b/lib/getopt.h
 @@ -101,7 +101,7 @@ struct option

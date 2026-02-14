@@ -41,6 +41,7 @@ PATCHES=(
 	"${FILESDIR}"/fcron-3.1.1-noreadline.patch
 	"${FILESDIR}"/fcron-3.2.1-musl-getopt-order.patch
 	"${FILESDIR}"/fcron-3.4.0-order.patch
+	"${FILESDIR}"/fcron-3.4.0-docdir.patch
 )
 
 pkg_setup() {
@@ -183,11 +184,6 @@ src_install() {
 
 	local DOCS=( "${WORKDIR}/crontab" )
 	einstalldocs
-
-	if [[ ${PR} != r0 ]]; then
-		mv "${ED}"/usr/share/doc/{${P}/*,${PF}/} || die
-		rmdir "${ED}"/usr/share/doc/${P} || die
-	fi
 }
 
 pkg_postinst() {

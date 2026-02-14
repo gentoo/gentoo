@@ -11,7 +11,7 @@ DESCRIPTION="KDE contact person abstraction library"
 HOMEPAGE="https://invent.kde.org/frameworks/kpeople"
 
 LICENSE="LGPL-2.1"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv ~x86"
 IUSE=""
 
 DEPEND="

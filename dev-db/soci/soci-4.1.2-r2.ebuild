@@ -11,7 +11,7 @@ SRC_URI="https://sourceforge.net/projects/soci/files/soci/${P}/${P}.tar.gz/downl
 
 LICENSE="Boost-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 ~x86"
 IUSE="mariadb mysql odbc oracle postgres sqlite test"
 REQUIRED_USE="?? ( mysql mariadb )"
 RESTRICT="!test? ( test )"

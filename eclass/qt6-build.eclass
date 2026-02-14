@@ -1,4 +1,4 @@
-# Copyright 2021-2025 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: qt6-build.eclass
@@ -330,17 +330,16 @@ _qt6-build_sanitize_cpu_flags() {
 	# determine and the highest(known) usable x86-64 feature level
 	# so users will not lose *all* CPU-specific optimizations
 	local march=$(
-		$(tc-getCXX) -E -P ${CXXFLAGS} ${CPPFLAGS} - <<-EOF | tail -n 1
-			default
+		$(tc-getCXX) -E -P ${CXXFLAGS} ${CPPFLAGS} - <<-EOF | sed -n '/^-march=/p' | tail -n 1
+			#if !defined(__EVEX512__) && !defined(__clang__) && __GNUC__ >= 16
+			#  define __EVEX512__ 1 /* removed in gcc-16 (bug #956750,#969664) */
+			#endif
 			#if (__CRC32__ + __LAHF_SAHF__ + __POPCNT__ + __SSE3__ + __SSE4_1__ + __SSE4_2__ + __SSSE3__) == 7
-			x86-64-v2
+			-march=x86-64-v2
 			#  if (__AVX__ + __AVX2__ + __BMI__ + __BMI2__ + __F16C__ + __FMA__ + __LZCNT__ + __MOVBE__ + __XSAVE__) == 9
-			x86-64-v3
-			#    if !defined(__EVEX512__) && !defined(__clang__) && __GNUC__ >= 16
-			#      define __EVEX512__ 1 /* removed in gcc-16 (bug #956750) */
-			#    endif
+			-march=x86-64-v3
 			#    if (__AVX512BW__ + __AVX512CD__ + __AVX512DQ__ + __AVX512F__ + __AVX512VL__ + __EVEX256__ + __EVEX512__) == 7
-			x86-64-v4
+			-march=x86-64-v4
 			#    endif
 			#  endif
 			#endif
@@ -349,7 +348,7 @@ _qt6-build_sanitize_cpu_flags() {
 	)
 
 	filter-flags '-march=*' "${cpuflags[@]/#/-m}" "${cpuflags[@]/#/-mno-}"
-	[[ ${march} == x86-64* ]] && append-flags $(test-flags-CXX -march="${march}")
+	[[ -n ${march} ]] && append-flags $(test-flags-CXX "${march}")
 	einfo "C(XX)FLAGS adjusted due to frequent -march=*/-m* issues with Qt:"
 	einfo "    \"${CXXFLAGS}\""
 	einfo "(can override with USE=custom-cflags, but no support will be given)"

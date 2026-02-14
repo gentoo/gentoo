@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ if [[ ${PV} = *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/lib${PN}/${PN}.git"
 	if [[ ${PV} = 3.4.9999* ]] ; then
-		EGIT_COMMIT="3.4"
+		EGIT_BRANCH="3.4"
 	fi
 else
 	SRC_URI="

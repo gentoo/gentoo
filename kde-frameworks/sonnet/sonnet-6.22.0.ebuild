@@ -10,7 +10,7 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Framework for providing spell-checking through abstraction of popular backends"
 
 LICENSE="LGPL-2+ LGPL-2.1+"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ppc64 ~riscv ~x86"
 IUSE="aspell +hunspell qml"
 
 DEPEND="

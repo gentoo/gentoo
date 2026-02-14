@@ -1,18 +1,21 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit meson
+inherit meson verify-sig
 
 DESCRIPTION="C library for a simple configuration file format"
-HOMEPAGE="https://git.sr.ht/~emersion/scfg https://sr.ht/~emersion/libscfg/"
-SRC_URI="
-	https://git.sr.ht/~emersion/libscfg/archive/v${PV}.tar.gz
-		-> ${P}.tar.gz
-"
-S=${WORKDIR}/${PN}-v${PV}
+HOMEPAGE="https://codeberg.org/emersion/libscfg"
+SRC_URI="https://codeberg.org/emersion/${PN}/releases/download/v${PV}/${P}.tar.gz -> ${P}.cb.tar.gz
+	https://codeberg.org/emersion/${PN}/releases/download/v${PV}/${P}.tar.gz.sig -> ${P}.cb.tar.gz.sig"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
+
+BDEPEND="
+	verify-sig? ( sec-keys/openpgp-keys-emersion )
+"
+
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/emersion.asc"

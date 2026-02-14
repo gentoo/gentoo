@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: qmake-utils.eclass
@@ -6,7 +6,7 @@
 # qt@gentoo.org
 # @AUTHOR:
 # Davide Pesavento <pesa@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 8
 # @BLURB: Common functions for qmake-based packages.
 # @DESCRIPTION:
 # Utility eclass providing wrapper functions for Qt qmake.
@@ -15,7 +15,7 @@
 # functions. It can be inherited safely.
 
 case ${EAPI} in
-	7|8) ;;
+	8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -139,6 +139,13 @@ qt6_get_headerdir() {
 # Echoes the directory where Qt6 libraries are installed.
 qt6_get_libdir() {
 	echo /usr/$(get_libdir)
+}
+
+# @FUNCTION: qt6_get_libexecdir
+# @DESCRIPTION:
+# Echoes the directory where Qt6 libexec bins are installed.
+qt6_get_libexecdir() {
+	echo $(qt6_get_libdir)/qt6/libexec
 }
 
 # @FUNCTION: qt6_get_mkspecsdir

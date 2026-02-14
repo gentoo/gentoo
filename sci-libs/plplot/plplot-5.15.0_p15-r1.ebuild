@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -113,6 +113,7 @@ src_prepare() {
 		eapply -p1 "${WORKDIR}/debian/patches/${p}"
 	done
 	eapply "${FILESDIR}"/${PN}-5.15.0_p6-configure-c99.patch
+	eapply "${FILESDIR}"/${PN}-5.15.0_p15-sighandler_t.patch
 
 	# avoid installing license
 	sed -i -e '/COPYING.LIB/d' CMakeLists.txt || die

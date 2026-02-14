@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -67,6 +67,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fix-binutils-dependency.patch
 	"${FILESDIR}"/${P}-fix-mkdir-autoconf-test.patch
 	"${FILESDIR}"/${P}-autoreconf-libiberty.patch
+	"${FILESDIR}"/${P}-fix-elf-type.patch
 )
 
 src_prepare() {

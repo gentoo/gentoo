@@ -1,0 +1,16 @@
+Gentoo has byte-buddy with no shading.
+
+--- a/src/test/java/org/powermock/reflect/internal/proxy/ClassFactory.java
++++ b/src/test/java/org/powermock/reflect/internal/proxy/ClassFactory.java
+@@ -1,8 +1,8 @@
+ package org.powermock.reflect.internal.proxy;
+ 
+-import net.bytebuddy.jar.asm.ClassWriter;
+-import net.bytebuddy.jar.asm.MethodVisitor;
+-import net.bytebuddy.jar.asm.Opcodes;
++import org.objectweb.asm.ClassWriter;
++import org.objectweb.asm.MethodVisitor;
++import org.objectweb.asm.Opcodes;
+ 
+ class ClassFactory implements Opcodes {
+     

@@ -12,7 +12,7 @@ else
 	SRC_URI="https://git.zx2c4.com/password-store/snapshot/password-store-${PV}.tar.xz"
 	S="${WORKDIR}/password-store-${PV}"
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86 ~arm64-macos ~x64-macos"
+	KEYWORDS="amd64 arm arm64 ppc64 ~riscv x86 ~arm64-macos ~x64-macos"
 fi
 
 DESCRIPTION="Stores, retrieves, generates, and synchronizes passwords securely"
@@ -31,7 +31,7 @@ RDEPEND="
 	X? ( x11-misc/xclip )
 	elibc_Darwin? ( app-misc/getopt )
 	dmenu? ( x11-misc/dmenu x11-misc/xdotool )
-	emacs? ( >=app-editors/emacs-23.1:* >=app-emacs/s-1.9.0 >=app-emacs/with-editor-2.5.11 )
+	emacs? ( >=app-editors/emacs-25.1:* >=app-emacs/s-1.9.0 >=app-emacs/with-editor-2.5.11 )
 "
 
 src_prepare() {

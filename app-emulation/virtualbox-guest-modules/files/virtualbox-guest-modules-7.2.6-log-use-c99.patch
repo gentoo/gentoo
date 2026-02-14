@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/298988
+
+--- a/vboxguest/Makefile
++++ b/vboxguest/Makefile
+@@ -167,6 +167,7 @@ VBOXMOD_DEFS = \
+ 	IN_GUEST_R0 \
+ 	IN_MODULE \
+ 	RT_WITH_VBOX \
++	LOG_USE_C99 \
+ 	VBGL_VBOXGUEST \
+ 	VBOX_WITH_HGCM
+ ifeq ($(KERN_VERSION),24)

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/arma/${P}.tar.xz"
 
 LICENSE="Apache-2.0"
 SLOT="0/15"
-KEYWORDS="~amd64 ~arm ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ppc64 ~riscv ~x86"
 IUSE="arpack blas doc examples lapack mkl superlu test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( arpack lapack superlu )"

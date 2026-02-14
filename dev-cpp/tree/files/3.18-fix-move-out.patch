@@ -1,0 +1,46 @@
+https://github.com/kpeeters/tree.hh/commit/66f71a672698909e5b613a3c04a918bac3d4282f
+
+From: Kasper Peeters <kasper.peeters@phi-sci.com>
+Date: Fri, 17 Nov 2023 11:33:30 +0000
+Subject: [PATCH] Fix move_out for cases when the moved-out node was first or
+ last child of the old parent.
+
+---
+ src/tree.hh | 17 ++++++++++++++++-
+ 1 file changed, 16 insertions(+), 1 deletion(-)
+
+diff --git a/src/tree.hh b/src/tree.hh
+index be45f99..743a81b 100644
+--- a/src/tree.hh
++++ b/src/tree.hh
+@@ -1860,7 +1860,6 @@ tree<T, tree_node_allocator> tree<T, tree_node_allocator>::move_out(iterator sou
+ 	// Move source node into the 'ret' tree.
+ 	ret.head->next_sibling = source.node;
+ 	ret.feet->prev_sibling = source.node;
+-	source.node->parent=0;
+ 
+ 	// Close the links in the current tree.
+ 	if(source.node->prev_sibling!=0) 
+@@ -1869,6 +1868,22 @@ tree<T, tree_node_allocator> tree<T, tree_node_allocator>::move_out(iterator sou
+ 	if(source.node->next_sibling!=0) 
+ 		source.node->next_sibling->prev_sibling = source.node->prev_sibling;
+ 
++	// If the moved-out node was a first or last child of
++	// the parent, adjust those links.
++	if(source.node->parent->first_child==source.node) { 
++		if(source.node->next_sibling!=0)
++			source.node->parent->first_child=source.node->next_sibling;
++		else
++			source.node->parent->first_child=0;
++		}
++	if(source.node->parent->last_child==source.node) { 
++		if(source.node->prev_sibling!=0)
++			source.node->parent->last_child=source.node->prev_sibling;
++		else
++			source.node->parent->last_child=0;
++		}
++	source.node->parent=0;
++	
+ 	// Fix source prev/next links.
+ 	source.node->prev_sibling = ret.head;
+ 	source.node->next_sibling = ret.feet;

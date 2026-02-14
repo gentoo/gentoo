@@ -459,7 +459,7 @@ multilib_src_configure() {
 		--disable-libmfx # prefer libvpl for USE=qsv
 		--disable-libnpp # deprecated and not supported for cuda 13.0+
 		--disable-libopencv # leaving for later due to circular opencv[ffmpeg]
-		--disable-librist # librist itself needs attention first (bug #822012)
+		--disable-librist # currently only supported in >=ffmpeg-8 ebuilds
 		--disable-libtensorflow # causes headaches, and is gone
 		--disable-libvmaf # use ffmpeg-8+ instead, needs old vmaf (bug #968554)
 		--disable-mbedtls # messy with slots, tests underlinking issues
@@ -502,6 +502,10 @@ multilib_src_configure() {
 			*mingw32*) conf+=( --target-os=mingw32 );;
 			*linux*) conf+=( --target-os=linux );;
 		esac
+	elif use arm; then
+		# TODO?: could *always* pass tc-arch-kernel, albeit that function
+		# is meant for the kernel and just mostly matches by accident
+		conf+=( --arch=arm ) #969514
 	fi
 
 	# skipping tests is handled at configure-time

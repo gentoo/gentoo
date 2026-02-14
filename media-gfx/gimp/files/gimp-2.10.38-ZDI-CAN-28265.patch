@@ -1,0 +1,40 @@
+https://bugs.gentoo.org/969287
+https://gitlab.gnome.org/GNOME/gimp/-/issues/15293
+https://gitlab.gnome.org/GNOME/gimp/-/merge_requests/2597
+https://gitlab.gnome.org/GNOME/gimp/-/commit/68b27dfb1cbd9b3f22d7fa624dbab8647ee5f275
+
+From 8092982213651dcab8b6b76730d0d2a7c147a448 Mon Sep 17 00:00:00 2001
+From: Jacob Boerema <jgboerema@gmail.com>
+Date: Thu, 15 Jan 2026 10:12:07 -0500
+Subject: [PATCH] plug-ins: fix #15293 security issue ZDI-CAN-28265
+
+Just like we did in commit 4eb106f2bff2d9b8e518aa455a884c6f38d70c6a
+we need to make sure that the offset in the colormap is valid before
+using it, before using it to compute the RGB values.
+
+Cherry-picked from 68b27dfb1cbd9b3f22d7fa624dbab8647ee5f275
+
+Cherry-picked to 2.10 and modified to work correctly with this context:
+44ebcee901f25180b8b9b04f6d26474919557f0d
+--- a/plug-ins/common/file-xwd.c
++++ b/plug-ins/common/file-xwd.c
+@@ -1637,7 +1637,15 @@ load_xwd_f2_d16_b16 (const gchar     *filename,
+ 
+   for (j = 0; j < ncols; j++)
+     {
+-      cm = ColorMap + xwdcolmap[j].l_pixel * 3;
++      goffset offset = xwdcolmap[j].l_pixel * 3;
++
++      if (offset+2 >= maxval)
++        {
++          g_set_error (error, GIMP_PLUG_IN_ERROR, 0,
++                        _("Invalid colormap offset. Possibly corrupt image."));
++          return -1;
++        }
++      cm = ColorMap + offset;
+       *(cm++) = (xwdcolmap[j].l_red >> 8);
+       *(cm++) = (xwdcolmap[j].l_green >> 8);
+       *cm = (xwdcolmap[j].l_blue >> 8);
+-- 
+2.52.0
+

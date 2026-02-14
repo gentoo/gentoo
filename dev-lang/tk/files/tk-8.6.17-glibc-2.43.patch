@@ -1,0 +1,19 @@
+https://bugs.gentoo.org/969309
+https://gitlab.exherbo.org/exherbo/arbor/-/commit/a0a2deee48fa9377913aef8ddb2ee70f70b9e120
+https://core.tcl-lang.org/tk/info/c07d5817bada4c9b
+--- a/unix/tkUnixFont.c	
++++ b/unix/tkUnixFont.c	
+@@ -2142,11 +2142,11 @@
+      */
+ 
+     nameList = ListFonts(fontPtr->display, "*", &numNames);
+     for (i = 0; i < numNames; i++) {
+ 	fallback = strchr(nameList[i] + 1, '-') + 1;
+-	strchr(fallback, '-')[0] = '\0';
++	strchr((char *)fallback, '-')[0] = '\0';
+ 	if (SeenName(fallback, &ds) == 0) {
+ 	    subFontPtr = CanUseFallback(fontPtr, fallback, ch,
+ 		    fixSubFontPtrPtr);
+ 	    if (subFontPtr != NULL) {
+ 		XFreeFontNames(nameList);
+

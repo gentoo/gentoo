@@ -110,7 +110,11 @@ src_test() {
 	cmake_src_test
 
 	rm test/cli/other_test.py || die
-	use htmlreport && TEST_CPPCHECK_EXE_LOOKUP_PATH="${BUILD_DIR}/bin/" epytest test
+	rm test/cli/lookup_test.py || die
+	rm test/cli/premium_test.py || die
+	if use htmlreport; then
+		PYTHONPATH="${S}/tools" TEST_CPPCHECK_EXE_LOOKUP_PATH="${BUILD_DIR}/bin/" epytest test
+	fi
 }
 
 src_install() {

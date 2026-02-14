@@ -1,0 +1,24 @@
+Fix build with GCC 15
+
+https://bugs.gentoo.org/943982
+
+--- a/src/c-lex.c
++++ b/src/c-lex.c
+@@ -887,7 +887,7 @@ static inline int backslash(int c)
+         case 'x':
+             c1 = buffer_peek_char();
+             if (is_hex_digit_char(c1)) {
+-                return readx(c1);
++                return readx();
+             } else {
+                 Scm_Error("\\x must be followed by hex-digit, but got '%c'", c1);
+             }
+@@ -934,7 +934,7 @@ static inline int backslash(int c)
+                         SCM_LIST1(SCM_MAKE_CHAR(c)));
+                 return c;
+             } else {
+-                return buffer_read_char(c);
++                return buffer_read_char();
+             }
+         }
+     } else {

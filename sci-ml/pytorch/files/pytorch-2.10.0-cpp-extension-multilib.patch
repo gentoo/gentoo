@@ -1,0 +1,16 @@
+Fixes multilib (%LIB_DIR% should be replaced in ebuild)
+--- a/torch/utils/cpp_extension.py
++++ b/torch/utils/cpp_extension.py
+@@ -1478,10 +1477,10 @@ def library_paths(device_type: str = "cpu") -> list[str]:
+     paths = [TORCH_LIB_PATH]
+ 
+     if device_type == "cuda" and IS_HIP_EXTENSION:
+-        lib_dir = 'lib'
++        lib_dir = '%LIB_DIR%'
+         paths.append(_join_rocm_home(lib_dir))
+         if HIP_HOME is not None:
+-            paths.append(os.path.join(HIP_HOME, 'lib'))
++            paths.append(os.path.join(HIP_HOME, '%LIB_DIR%'))
+     elif device_type == "cuda":
+         if IS_WINDOWS:
+             lib_dir = os.path.join('lib', 'x64')

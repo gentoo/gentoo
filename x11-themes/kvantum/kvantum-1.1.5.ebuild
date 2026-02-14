@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,11 +7,12 @@ EAPI=8
 # increased downstream to ensure sane upgrades
 QTMIN="6.8.2"
 KFMIN="6.13.0"
-inherit cmake multibuild xdg
+inherit cmake multibuild verify-sig xdg
 
 DESCRIPTION="SVG-based theme engine for Qt, KDE Plasma and LXQt"
 HOMEPAGE="https://github.com/tsujan/Kvantum"
-SRC_URI="https://github.com/tsujan/${PN^}/archive/V${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/tsujan/${PN^}/releases/download/V${PV}/${P^}.tar.xz
+	https://github.com/tsujan/${PN^}/releases/download/V${PV}/${P^}.tar.xz.asc"
 S=${WORKDIR}/${PN^}-${PV}/${PN^}
 
 LICENSE="GPL-3"
@@ -40,7 +41,10 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	dev-qt/qttools:6[linguist]
 	qt5? ( dev-qt/linguist-tools:5 )
+	verify-sig? ( sec-keys/openpgp-keys-tsujan )
 "
+
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/tsujan.asc"
 
 pkg_setup() {
 	MULTIBUILD_VARIANTS=( $(usev qt5) qt6 )

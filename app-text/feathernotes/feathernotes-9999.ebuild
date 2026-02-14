@@ -1,4 +1,4 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,8 +14,8 @@ SLOT="0"
 IUSE="spell X"
 
 RDEPEND="
-	dev-qt/qtbase:6[dbus,gui,network,widgets,xml,X?]
-	dev-qt/qtsvg:6
+	>=dev-qt/qtbase-6.5.0:6[dbus,gui,network,widgets,xml,X?]
+	>=dev-qt/qtsvg-6.5.0:6
 	spell? ( app-text/hunspell:= )
 	X? ( x11-libs/libX11 )
 "

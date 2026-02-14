@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,7 +33,7 @@ if [[ "${PV}" == *9999* ]] ; then
 else
 	SRC_URI="https://gitlab.gentoo.org/dotnet/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
-	KEYWORDS="~amd64 ~arm ~arm64"
+	KEYWORDS="amd64 arm arm64"
 fi
 
 SRC_URI+=" ${NUGET_URIS} "

@@ -17,7 +17,7 @@ SRC_URI="https://brltty.app/archive/${P}.tar.xz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 BINDINGS="emacs java lua ocaml python tcl"
 IUSE="+api +beeper bluetooth caps +fm gpm +hid iconv icu louis +midi
 ncurses nls +pcm policykit +pcre usb systemd +speech xml X ${BINDINGS}"

@@ -8,8 +8,8 @@
 		Primarily for MIPS support, but other platform support coming soon.
 	</longdescription>
 	<upstream>
-		<changelog>https://gavare.se/gxemul/news.html</changelog>
-		<doc>https://gavare.se/gxemul/gxemul-stable/doc/index.html</doc>
+		<changelog>https://gavare.se/gxemul/gxemul-stable/doc/RELEASE.html</changelog>
+		<doc>https://gavare.se/gxemul/gxemul-stable/doc/</doc>
 		<remote-id type="sourceforge">gxemul</remote-id>
 	</upstream>
 </pkgmetadata>

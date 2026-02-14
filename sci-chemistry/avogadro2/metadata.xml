@@ -6,10 +6,9 @@
 		<name>Gentoo Chemistry Project</name>
 	</maintainer>
 	<use>
-		<flag name="vtk">include vtk support</flag>
+		<flag name="rpc">Enable communication between programs using the RPC protocol and standard JSON messages</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">OpenChemistry/avogadroapp</remote-id>
-		<remote-id type="sourceforge">avogadro</remote-id>
 	</upstream>
 </pkgmetadata>

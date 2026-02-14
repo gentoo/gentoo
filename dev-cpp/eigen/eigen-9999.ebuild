@@ -1,10 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+LLVM_COMPAT=( {19..21} )
 FORTRAN_NEEDED="test"
-inherit cmake cuda fortran-2 llvm toolchain-funcs
+inherit cmake cuda fortran-2 llvm-r2 toolchain-funcs
 
 DESCRIPTION="C++ template library for linear algebra"
 HOMEPAGE="https://eigen.tuxfamily.org/index.php?title=Main_Page"
@@ -13,7 +14,7 @@ if [[ ${PV} = *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/lib${PN}/${PN}.git"
 	if [[ ${PV} = 3.4.9999* ]] ; then
-		EGIT_COMMIT="3.4"
+		EGIT_BRANCH="3.4"
 	fi
 else
 	SRC_URI="
@@ -80,14 +81,14 @@ IUSE_TEST_BACKENDS=(
 	"umfpack"
 )
 
-IUSE="benchmark ${CPU_FEATURES_MAP[*]%:*} clang cuda hip debug doc lapack mathjax test ${IUSE_TEST_BACKENDS[*]}" #zvector
+IUSE="benchmark ${CPU_FEATURES_MAP[*]%:*} clang-cuda cuda hip debug doc lapack mathjax test ${IUSE_TEST_BACKENDS[*]}" #zvector
 
 REQUIRED_USE="
 	|| ( ${IUSE_TEST_BACKENDS[*]} )
 "
 
 # Tests failing again because of compiler issues; bugs #932646, #943401
-RESTRICT="test !test? ( test )"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	doc? (
@@ -132,12 +133,13 @@ TEST_BACKENDS="
 DEPEND="
 	test? (
 		cuda? (
-			!clang? (
+			!clang-cuda? (
 				dev-util/nvidia-cuda-toolkit
 			)
-			clang? (
-				llvm-core/clang[llvm_targets_NVPTX]
-				openmp? ( llvm-runtimes/openmp[llvm_targets_NVPTX,offload] )
+			clang-cuda? (
+				$(llvm_gen_dep '
+					llvm-core/clang:${LLVM_SLOT}[llvm_targets_NVPTX]
+				')
 			)
 		)
 		hip? ( dev-util/hip )
@@ -185,7 +187,7 @@ cuda_set_CUDAHOSTCXX() {
 }
 
 pkg_setup() {
-	use test && use cuda && use clang && llvm_pkg_setup
+	use test && use cuda && use clang-cuda && llvm-r2_pkg_setup
 }
 
 src_unpack() {
@@ -251,6 +253,8 @@ src_configure() {
 			-DEIGEN_TEST_OPENMP="$(usex openmp)" # Enable/Disable OpenMP in tests/examples
 
 			-DCMAKE_DISABLE_FIND_PACKAGE_MPREAL=ON
+
+			-DEIGEN_TEST_CXX11=yes
 
 			# -DEIGEN_TEST_CUSTOM_CXX_FLAGS= # Additional compiler flags when compiling unit tests.
 			# -DEIGEN_TEST_CUSTOM_LINKER_FLAGS= # Additional linker flags when linking unit tests.
@@ -350,7 +354,7 @@ src_configure() {
 
 		mycmakeargs+=(
 			-DEIGEN_TEST_CUDA="$(usex cuda)" # Enable CUDA support in unit tests
-			-DEIGEN_TEST_CUDA_CLANG="$(usex cuda "$(usex clang)")" # Use clang instead of nvcc to compile the CUDA tests
+			-DEIGEN_TEST_CUDA_CLANG="$(usex cuda "$(usex clang-cuda)")" # Use clang instead of nvcc to compile the CUDA tests
 
 			-DEIGEN_TEST_HIP="$(usex hip)" # Add HIP support.
 
@@ -360,12 +364,15 @@ src_configure() {
 
 		if use cuda; then
 			cuda_add_sandbox -w
-			if use clang; then
+			if use clang-cuda; then
 				local llvm_prefix
 				llvm_prefix="$(get_llvm_prefix -b)"
 				export CC="${llvm_prefix}/bin/clang"
 				export CXX="${llvm_prefix}/bin/clang++"
 				export LIBRARY_PATH="${ESYSROOT}/usr/$(get_libdir)"
+				mycmakeargs+=(
+					-DCUDA_HOST_COMPILER="${llvm_prefix}/bin/clang++"
+				)
 			else
 				cuda_set_CUDAHOSTCXX
 				mycmakeargs+=(
@@ -402,9 +409,9 @@ src_compile() {
 	fi
 	if use test; then
 		targets+=( buildtests )
-		# if ! use lapack; then
-		# 	targets+=( blas )
-		# fi
+		if ! use lapack; then
+			targets+=( blas )
+		fi
 		# tests generate random data, which
 		# obviously fails for some seeds
 		export EIGEN_SEED=712808

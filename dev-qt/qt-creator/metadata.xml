@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="clang">Build clang-based plugins for C/C++ development (code model, formatting, static analysis)</flag>
-		<flag name="cmdbridge-server">Build the cmdbridge server using <pkg>dev-lang/go</pkg></flag>
 		<flag name="designer">Enable designer for QtWidgets-based UIs</flag>
 		<flag name="help">Enable the integrated <pkg>dev-qt/qt-docs</pkg> viewer (also needed for examples)</flag>
 		<flag name="plugin-dev">Install the 'Devel' component needed to build external Qt Creator plugins</flag>

@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,6 +25,10 @@ SLOT="0"
 
 DEPEND="sys-devel/qbe"
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}/cproc-bug969281-const-strchr.patch"
+)
 
 src_configure() {
 	tc-export CC

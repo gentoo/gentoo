@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -53,8 +53,6 @@ inherit cmake fcaps flag-o-matic systemd toolchain-funcs udev xdg
 
 DESCRIPTION="Self-hosted game stream host for Moonlight"
 HOMEPAGE="https://github.com/LizardByte/Sunshine"
-BOOST_VERSION="1.87.0"
-SRC_URI+="https://github.com/boostorg/boost/releases/download/boost-${BOOST_VERSION}/boost-${BOOST_VERSION}-cmake.tar.xz"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="cuda debug libdrm svt-av1 systemd trayicon vaapi wayland X x264 x265"
@@ -131,6 +129,7 @@ REQUIRED_USE="
 "
 
 CDEPEND="
+	=dev-libs/boost-1.89*:=[nls]
 	dev-libs/libevdev
 	dev-libs/openssl:=
 	media-libs/opus
@@ -229,7 +228,6 @@ src_unpack() {
 		cd "${S}" || die
 		npm install || die
 	else
-		unpack ${A//boost-${BOOST_VERSION}-cmake.tar.xz}
 		find moonlight-common-c-${MOONLIGHT_COMMIT} "${S}"/third-party \
 			build-deps-${BUILD_DEPS_COMMIT}/third-party/FFmpeg -mindepth 1 -type d -empty -delete || die
 		mv enet-${ENET_COMMIT} moonlight-common-c-${MOONLIGHT_COMMIT}/enet || die
@@ -263,10 +261,10 @@ src_configure() {
 		-DBUILD_FFMPEG_ALL_PATCHES=yes
 		-DBUILD_FFMPEG_AMF=no
 		-DBUILD_FFMPEG_CBS=yes
+		-DBUILD_FFMPEG_LIBVA=no
 		-DBUILD_FFMPEG_MF=no
 		-DBUILD_FFMPEG_NV_CODEC_HEADERS=no
 		-DBUILD_FFMPEG_SVT_AV1=no
-		-DBUILD_FFMPEG_VAAPI=no
 		-DBUILD_FFMPEG_X264=no
 		-DBUILD_FFMPEG_X265=no
 		-DBUILD_SHARED_LIBS=no
@@ -350,17 +348,12 @@ src_configure() {
 	echo ./configure "${myconf[@]}"
 	./configure "${myconf[@]}" || die
 
-	# Symlink Boost tarball for CMake to find instead of fetching live.
-	mkdir -p "${S}"/_deps/boost-subbuild/boost-populate-prefix/src || die
-	ln -s "${DISTDIR}/boost-${BOOST_VERSION}-cmake.tar.xz" "${S}"/_deps/boost-subbuild/boost-populate-prefix/src/ || die
-
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=no
-		-DBOOST_USE_STATIC=yes
+		-DBOOST_USE_STATIC=no
 		-DBUILD_DOCS=no
 		-DBUILD_TESTS=no
 		-DCCACHE_FOUND=no
-		-DCMAKE_DISABLE_FIND_PACKAGE_Boost=yes
 		-DFFMPEG_PLATFORM_LIBRARIES="$(usex svt-av1 SvtAv1Enc '');$(usex vaapi 'va;va-drm' '');$(usev x264);$(usev x265)"
 		-DFFMPEG_PREPARED_BINARIES="${S}"/third-party/build-deps/dist
 		-DSUNSHINE_ASSETS_DIR=share/${PN}

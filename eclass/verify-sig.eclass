@@ -1,10 +1,10 @@
-# Copyright 2020-2025 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: verify-sig.eclass
 # @MAINTAINER:
 # Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: Eclass to verify upstream signatures on distfiles
 # @DESCRIPTION:
 # verify-sig eclass provides a streamlined approach to verifying
@@ -40,15 +40,14 @@
 # VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/example.asc
 # @CODE
 
-case ${EAPI} in
-	7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_VERIFY_SIG_ECLASS} ]]; then
 _VERIFY_SIG_ECLASS=1
 
-inherit eapi9-pipestatus
+case ${EAPI} in
+	7|8) inherit eapi9-pipestatus ;;
+	9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 IUSE="verify-sig"
 
@@ -345,11 +344,10 @@ verify-sig_verify_unsigned_checksums() {
 				[[ -n ${junk} ]] && continue
 				;;
 			openssl-dgst)
-				[[ ${line} != *"("*")="* ]] && continue
-				checksum=${line##*)=}
-				algo=${line%%(*}
-				filename=${line#*(}
-				filename=${filename%)=*}
+				[[ ${line} =~ ^([[:alnum:]]+)[[:space:]]*[(](.*)[)][[:space:]]*=[[:space:]]*([0-9a-fA-F]+)$ ]] || continue
+				algo=${BASH_REMATCH[1]}
+				filename=${BASH_REMATCH[2]}
+				checksum=${BASH_REMATCH[3]}
 				;;
 		esac
 

@@ -1,11 +1,12 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-12)
+# Fails to build without. Bug #968803
+=sci-libs/opencascade-7.8* opengl
+
 # Michael Orlitzky <mjo@gentoo.org> (2025-12-22)
-# James Le Cuirot <chewi@gentoo.org> (2025-11-18)
-# 2.50.1 fails with gstreamer disabled (bug #965971),
-# and its replacement fails to non-jumbo build.
-=net-libs/webkit-gtk-2.50.1*:4.1 gstreamer
+# 2.50.4 fails to non-jumbo build.
 =net-libs/webkit-gtk-2.50.4-r410 jumbo-build
 =net-libs/webkit-gtk-2.50.4-r600 jumbo-build
 
@@ -86,6 +87,12 @@ llvm-runtimes/libcxxabi clang
 #    echo "dev-lang/rust:${slot} llvm_slot_${_RUST_LLVM_MAP[${slot}]}"
 #    echo "dev-lang/rust-bin:${slot} llvm_slot_${_RUST_LLVM_MAP[${slot}]}"
 # done
+dev-lang/rust:1.94.0 llvm_slot_21
+dev-lang/rust-bin:1.94.0 llvm_slot_21
+dev-lang/rust:1.93.1 llvm_slot_21
+dev-lang/rust-bin:1.93.1 llvm_slot_21
+dev-lang/rust:1.93.0 llvm_slot_21
+dev-lang/rust-bin:1.93.0 llvm_slot_21
 dev-lang/rust:1.92.0 llvm_slot_21
 dev-lang/rust-bin:1.92.0 llvm_slot_21
 dev-lang/rust:1.91.0 llvm_slot_21

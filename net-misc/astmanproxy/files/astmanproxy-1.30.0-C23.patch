@@ -1,0 +1,23 @@
+Forward-declare structs and use them in function pointer declarations.
+Fixes build with C23.
+https://bugs.gentoo.org/967014
+https://github.com/davies147/astmanproxy/pull/19
+--- a/src/include/astmanproxy.h
++++ b/src/include/astmanproxy.h
+@@ -107,10 +107,13 @@
+ 	char forcebanner[80];			/* override banner output in 'standard' protocol */
+ };
+ 
++struct mansession;
++struct message;
++
+ struct iohandler {
+-	int (*read) ();
+-	int (*write) ();
+-	int (*onconnect) ();
++	int (*read) (struct mansession *s, struct message *m);
++	int (*write) (struct mansession *s, struct message *m);
++	int (*onconnect) (struct mansession *s, struct message *m);
+ 	char formatname[80];
+ 	void *dlhandle;
+ 	struct iohandler *next;

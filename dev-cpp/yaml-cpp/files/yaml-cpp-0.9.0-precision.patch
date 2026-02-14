@@ -1,0 +1,24 @@
+https://github.com/jbeder/yaml-cpp/pull/1401
+
+From 8d58b447fa7cafc3b9fdb5d4ca3e80239c111198 Mon Sep 17 00:00:00 2001
+From: Simon Gene Gottlieb <simon@gottliebtfreitag.de>
+Date: Wed, 11 Feb 2026 17:55:43 +0100
+Subject: [PATCH] fix: floating point conversion on x86 (32bit)
+
+---
+ src/fptostring.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/fptostring.cpp b/src/fptostring.cpp
+index e1722aeed..9176d73bd 100644
+--- a/src/fptostring.cpp
++++ b/src/fptostring.cpp
+@@ -28,7 +28,7 @@ namespace fp_formatting {
+  * assert(buffer[1] == '2');
+  * assert(buffer[2] == '3');
+  */
+-int ConvertToChars(char* begin, char* end, size_t value, int width=1) {
++int ConvertToChars(char* begin, char* end, uint64_t value, int width=1) {
+   // precondition of this function (will trigger in debug build)
+   assert(width >= 1);
+   assert(end >= begin);       // end must be after begin

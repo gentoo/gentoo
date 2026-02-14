@@ -146,7 +146,10 @@ BDEPEND="
 		>=dev-libs/gobject-introspection-1.82.0-r2[doctool]
 		dev-util/gi-docgen
 	)
-	test? ( x11-misc/xvfb-run )
+	test? (
+		sys-apps/dbus
+		x11-misc/xvfb-run
+	)
 	vala? ( $(vala_depend) )
 	vector-icons? ( x11-misc/shared-mime-info )
 "
@@ -167,9 +170,11 @@ pkg_setup() {
 	python-single-r1_pkg_setup
 	use lua && lua-single_pkg_setup
 
-	if has_version ">=media-libs/babl-9999" || has_version ">=media-libs/gegl-9999"; then
-		ewarn "Please make sure to rebuild media-libs/babl-9999 and media-libs/gegl-9999 packages"
-		ewarn "before building media-gfx/gimp-9999 to have their latest master branch versions."
+	if [[ ${PV} == 9999 ]]; then
+		if has_version ">=media-libs/babl-9999" || has_version ">=media-libs/gegl-9999"; then
+			ewarn "Please make sure to rebuild media-libs/babl-9999 and media-libs/gegl-9999 packages"
+			ewarn "before building media-gfx/gimp-9999 to have their latest master branch versions."
+		fi
 	fi
 }
 
@@ -194,8 +199,8 @@ src_prepare() {
 
 src_configure() {
 	# defang automagic dependencies. Bug 943164
-	use wayland || append-cflags -DGENTOO_GTK_HIDE_WAYLAND
-	use X || append-cflags -DGENTOO_GTK_HIDE_X11
+	use wayland || append-cppflags -DGENTOO_GTK_HIDE_WAYLAND
+	use X || append-cppflags -DGENTOO_GTK_HIDE_X11
 
 	use vala && vala_setup
 

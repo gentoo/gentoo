@@ -32,14 +32,15 @@ This variant of the Wine packaging includes the Wine-Staging patchset.
 		<flag name="wow64">
 			Enable the "new" wow64 mode that allows running 32bit
 			applications without 32bit ELF multilib by mapping to
-			64bit calls (experimental, *may* have worse performance
-			or other issues compared to USE=abi_x86_32 aka "old"
-			wow64) -- if USE=mingw is set, still need the default
-			abi_x86_32 set on <pkg>dev-util/mingw64-toolchain</pkg>
-			but that can be done even with /no-multilib/ profiles.
+			64bit calls. Generally works well with wine-11.0 or
+			newer, but may or may not have a small perforamce
+			impact or other issues. If USE=mingw is set, still need
+			the default abi_x86_32 set on
+			<pkg>dev-util/mingw64-toolchain</pkg> but that can be
+			done even with /no-multilib/ profiles.
 
-			This can also be enabled on arm64 to allow running
-			x86 applications via binary translation.
+			This can also be enabled on arm64 to allow running x86
+			applications via binary translation.
 		</flag>
 	</use>
 	<upstream>

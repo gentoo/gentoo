@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,9 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/swaywm/${PN}.git"
 else
 	MY_PV=${PV/_rc/-rc}
-	SRC_URI="https://github.com/swaywm/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+	inherit verify-sig
+	SRC_URI="https://github.com/swaywm/${PN}/releases/download/${PV}/${P}.tar.gz -> ${P}.gh.tar.gz
+		https://github.com/swaywm/${PN}/releases/download/${PV}/${P}.tar.gz.sig -> ${P}.gh.tar.gz.sig"
 	KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv x86"
 	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
@@ -68,7 +70,9 @@ BDEPEND="
 if [[ ${PV} == 9999 ]]; then
 	BDEPEND+="man? ( ~app-text/scdoc-9999 )"
 else
-	BDEPEND+="man? ( >=app-text/scdoc-1.9.3 )"
+	BDEPEND+="man? ( >=app-text/scdoc-1.9.3 )
+		verify-sig? ( sec-keys/openpgp-keys-emersion )"
+	VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/emersion.asc"
 fi
 
 FILECAPS=(

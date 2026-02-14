@@ -64,7 +64,8 @@ DEPEND="${RDEPEND}
 			virtual/zlib:=[static-libs]
 		)
 	)"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig
+	dev-python/pyyaml"
 
 # bug #898362, gnulib explicit checks
 QA_CONFIG_IMPL_DECL_SKIP=(

@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/969567
+https://github.com/libvips/libvips/pull/4836
+https://github.com/libvips/libvips/issues/4835
+--- a/libvips/include/vips/memory.h
++++ b/libvips/include/vips/memory.h
+@@ -42,5 +42,5 @@
+ 	{ \
+ 		if (S) { \
+-			(void) F((S)); \
++			(void) (F((S))); \
+ 			(S) = 0; \
+ 		} \

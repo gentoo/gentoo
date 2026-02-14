@@ -1,17 +1,17 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: desktop.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: support for desktop files, menus, and icons
 
 if [[ -z ${_DESKTOP_ECLASS} ]]; then
 _DESKTOP_ECLASS=1
 
 case ${EAPI} in
-	7|8) ;;
+	7|8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -63,20 +63,14 @@ _DESKTOP_IDS=()
 # @CODE
 make_desktop_entry() {
 	local eapi9
-	if [[ -n ${1} ]]; then
+	if [[ ${1} == --eapi9 ]]; then
 		case ${EAPI} in
 			7|8)
-				if [[ ${1} == --eapi9 ]]; then
-					eapi9=1
-					shift
-				fi
+				eapi9=1
+				shift
 				;;
 			*)
-				if [[ ${1} == --eapi9 ]]; then
-					ewarn "make_desktop_entry: --eapi9 arg is obsolete in EAPI-${EAPI} and may be cleaned up now."
-					shift
-				fi
-				eapi9=1
+				die "make_desktop_entry: --eapi9 arg is obsolete in EAPI-${EAPI}!"
 				;;
 		esac
 	fi
@@ -314,7 +308,7 @@ make_desktop_entry() {
 
 	if [[ ${eapi9} && -n ${entries} ]]; then
 		local entry
-		for entry in ${entries[@]}; do
+		for entry in "${entries[@]}"; do
 			if [[ ${entry} =~ ^[A-Za-z0-9-]+=.* ]]; then
 				printf "%s\n" "${entry}" >> "${desktop}" || die
 			else
@@ -342,35 +336,146 @@ make_desktop_entry() {
 }
 
 # @FUNCTION: make_session_desktop
-# @USAGE: <title> <command> [command args...]
+# @USAGE: [--eapi9] <command> [options]
 # @DESCRIPTION:
-# Make a GDM/KDM Session file.  The title is the file to execute to start the
-# Window Manager.  The command is the name of the Window Manager.
+# Make a session file to start a Wayland compositor or X window manager
+# and install it in the appropriate location.
 #
-# You can set the name of the file via the ${wm} variable.
+# @CODE
+# --eapi9:   Switch to getopts style arguments instead of order based
+#            As the naming implies, this is off by default for EAPI=[78],
+#            but mandated by future EAPI.
+# command:   Exec command the session is being started with, also base
+#            for TryExec
+#            with --eapi9: must not contain arguments, use --args for that
+# ---        Options:
+# name:      Name that will be displayed in login managers;
+#            with --eapi9: defaults to PN
+# ---        Additional parameters available using --eapi9:
+# args:      Arguments (binary params) to add to Exec value, separated by
+#            space if multiple
+# entry:     Key=Value entry to append to the session desktop file;
+#            multiple allowed
+# comment:   Comment, defaults to generic text
+# filename:  <filename>.desktop will be created. defaults to <command>
+# xsession:  Create an XSession file (Type=XSession) and install into
+#            /usr/share/xsessions/
+#            default is wayland session into /usr/share/wayland-sessions
+# @CODE
+#
+# Example usage:
+# @CODE
+# Deprecated, in order:
+#   <name> <command> [command args...]
+#   You can set the file name of the session via the ${wm} variable.
+# New style:
+#   --eapi9 <command> [-a args] [-f filename] [-C comment]
+#   --eapi9 <command> [-n name] [-e entry...] [-X]
+# @CODE
 make_session_desktop() {
-	[[ -z $1 ]] && eerror "$0: You must specify the title" && return 1
-	[[ -z $2 ]] && eerror "$0: You must specify the command" && return 1
+	local eapi9
+	if [[ ${1} == --eapi9 ]]; then
+		case ${EAPI} in
+			7|8)
+				eapi9=1
+				shift
+				;;
+			*)
+				die "make_session_desktop: --eapi9 arg is obsolete in EAPI-${EAPI}!"
+				;;
+		esac
+	fi
+	[[ -z ${1} ]] && die "make_session_desktop: You must specify at least a command"
 
-	local title=$1
-	local command=$2
-	local desktop=${T}/${wm:-${PN}}.desktop
-	shift 2
+	if [[ ${eapi9} ]]; then
+		local args cmd comment entries filename name xsession
+		while [[ $# -gt 0 ]] ; do
+			case "${1}" in
+			-a|--args)
+				args="${2}";         shift 2 ;;
+			-C|--comment)
+				comment="${2}";      shift 2 ;;
+			-e|--entry)
+				entries+=( "${2}" ); shift 2 ;;
+			-f|--filename)
+				filename="${2}";     shift 2 ;;
+			-n|--name)
+				name="${2}";         shift 2 ;;
+			-X|--xsession)
+				xsession=1;          shift 1 ;;
+			*)
+				if [[ -z ${cmd} ]] ; then
+					cmd="${1}"
+				else
+					die "make_session_desktop: Can only take one command! First got: ${cmd}; then got: ${1}"
+				fi
+				shift ;;
+			esac
+		done
+		[[ -z ${cmd} ]] && die "make_session_desktop: You must specify at least a command"
+		[[ -z ${name} ]] && name=${PN}
 
-	cat <<-EOF > "${desktop}" || die
-	[Desktop Entry]
-	Name=${title}
-	Comment=This session logs you into ${title}
-	Exec=${command} $*
-	TryExec=${command}
-	Type=XSession
-	EOF
+		if [[ -z ${filename} ]]; then
+			if [[ ${cmd} =~ .+[[:space:]].+ ]]; then
+				die "make_session_desktop: --filename must be provided when <command> contains a space"
+			fi
+			filename="${cmd##*/}"
+		fi
+		if [[ ! ${filename} =~ ^[A-Za-z0-9._-]+$ ]]; then
+			die "make_session_desktop: <filename> must only consist of ASCII letters, digits, dash, underscore and dots"
+		fi
+		local cmd_args="${cmd} ${args}"
+	else
+		local name=${1:-${PN}}
+		local cmd=${2}
+		local xsession=1
+		local filename=${wm:-${PN}}
+		shift 2
+		local cmd_args="${cmd} $*"
+	fi
+
+	[[ -z ${comment} ]] && comment="This session logs you into ${name}"
+
+	local desktop="${T}/${filename}.desktop"
+	if [[ ${xsession} ]]; then
+		local path="/usr/share/xsessions"
+	else
+		local path="/usr/share/wayland-sessions"
+	fi
+	if [[ -e ${ED}${path}/${filename}.desktop ]]; then
+		die "make_session_desktop: session \"${filename}\" already exists, must be unique"
+	fi
+
+	cat > "${desktop}" <<- _EOF_ || die
+		[Desktop Entry]
+		Name=${name}
+		Comment=${comment}
+		Exec=${cmd_args%[[:space:]]}
+		TryExec=${cmd}
+	_EOF_
+
+	if [[ ${xsession} ]]; then
+		cat >> "${desktop}" <<- _EOF_ || die
+			Type=XSession
+		_EOF_
+	fi
+
+	if [[ -n ${entries} ]]; then
+		local entry
+		for entry in "${entries[@]}"; do
+			if [[ ${entry} =~ ^[A-Za-z0-9-]+=.* ]]; then
+				printf "%s\n" "${entry}" >> "${desktop}" || die
+			else
+				die "make_session_desktop: <entry> \"${entry}\" rejected; must be passed a Key=Value pair"
+			fi
+		done
+	fi
 
 	(
 	# wrap the env here so that the 'insinto' call
 	# doesn't corrupt the env of the caller
 	insopts -m 0644
-	insinto /usr/share/xsessions
+	insinto "${path}"
 	doins "${desktop}"
 	)
 }

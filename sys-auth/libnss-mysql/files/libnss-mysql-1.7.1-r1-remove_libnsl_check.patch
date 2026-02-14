@@ -1,0 +1,12 @@
+https://github.com/saknopper/libnss-mysql/issues/9
+https://bugs.gentoo.org/969313
+--- a/configure.ac	2026-01-27 15:14:57.962563753 +0100
++++ b/configure.ac	2026-01-27 15:15:09.562705312 +0100
+@@ -73,7 +73,6 @@ AC_SUBST(LIBVER)
+ AC_SUBST(OS)
+ 
+ AC_CHECK_LIB(socket, getsockname)
+-AC_CHECK_LIB(nsl, gethostbyname)
+ AC_CHECK_LIB(m, floor)
+ AC_CHECK_LIB(z, compress)
+ 

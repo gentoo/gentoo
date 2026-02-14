@@ -10,7 +10,7 @@ if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/awesomeWM/${PN}.git"
 else
-	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm ppc ppc64 ~riscv x86"
 	if [[ ${PV} == *_p* ]] ; then
 		HASH_COMMIT="cab3e81dc6071e3c1c4bd15cf8fab91236c7f2bd"
 		SRC_URI="https://github.com/awesomeWM/awesome/archive/${HASH_COMMIT}.tar.gz -> ${P}.tar.gz"

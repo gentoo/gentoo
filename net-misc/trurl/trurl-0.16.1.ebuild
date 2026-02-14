@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,8 +13,16 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/curl/trurl"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/curl/trurl/releases/download/${P}/${P}.tar.gz"
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/danielstenberg.asc
+	inherit verify-sig
+
+	SRC_URI="
+		https://github.com/curl/trurl/releases/download/${P}/${P}.tar.gz
+		verify-sig? ( https://github.com/curl/trurl/releases/download/${P}/${P}.tar.gz.asc )
+	"
 	KEYWORDS="~amd64 ~arm ~arm64"
+
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-danielstenberg )"
 fi
 
 LICENSE="curl"
@@ -27,7 +35,7 @@ RESTRICT="!test? ( test ) test"
 # Older curls may work but not all features will be present
 DEPEND=">=net-misc/curl-7.81.0"
 RDEPEND="${DEPEND}"
-BDEPEND="test? ( ${PYTHON_DEPS} )"
+BDEPEND+=" test? ( ${PYTHON_DEPS} )"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-completions.patch

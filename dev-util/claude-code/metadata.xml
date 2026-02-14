@@ -10,7 +10,7 @@
   Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster through natural language commands.
   </longdescription>
   <upstream>
-    <doc>https://docs.anthropic.com/en/docs/claude-code/overview</doc>
+    <doc>https://code.claude.com/docs/en/overview</doc>
     <remote-id type="github">anthropics/claude-code</remote-id>
   </upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 2021-2025 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ CRATES="
 RUST_MIN_VER="1.85.0"
 LLVM_COMPAT=( {16..21} )
 
-inherit cargo llvm-r1 shell-completion
+inherit cargo llvm-r1 shell-completion check-reqs
 
 DESCRIPTION="Implementation of the Stateless OpenPGP Command Line Interface using Sequoia"
 HOMEPAGE="https://sequoia-pgp.org/ https://gitlab.com/sequoia-pgp/sequoia-sop"
@@ -25,8 +25,10 @@ LICENSE+="
 	|| ( GPL-2 GPL-3 LGPL-3 )
 "
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="botan"
+CHECKREQS_DISK_BUILD="2G"
+CHECKREQS_MEMORY="2G"
 
 QA_FLAGS_IGNORED="usr/bin/sqop"
 

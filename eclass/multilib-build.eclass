@@ -1,4 +1,4 @@
-# Copyright 2013-2024 Gentoo Authors
+# Copyright 2013-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: multilib-build.eclass
@@ -6,7 +6,7 @@
 # Michał Górny <mgorny@gentoo.org>
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: flags and utility functions for building multilib packages
 # @DESCRIPTION:
 # The multilib-build.eclass exports USE flags and utility functions
@@ -21,7 +21,7 @@ if [[ -z ${_MULTILIB_BUILD_ECLASS} ]]; then
 _MULTILIB_BUILD_ECLASS=1
 
 case ${EAPI} in
-	7|8) ;;
+	7|8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -168,9 +168,12 @@ multilib_get_enabled_abi_pairs() {
 			# paludis is broken (bug #486592), and switching it locally
 			# for the split is more complex than cheating like this
 			for m_abi in ${m_abis//,/ }; do
-				if [[ ${m_abi} == ${abi} ]] \
-					&& { [[ ! "${MULTILIB_COMPAT[@]}" ]] || has "${m_flag}" "${MULTILIB_COMPAT[@]}"; } \
-					&& use "${m_flag}"
+				if [[ ${m_abi} == ${abi} ]] &&
+					{
+						[[ ! "${MULTILIB_COMPAT[@]}" ]] ||
+						has "${m_flag}" "${MULTILIB_COMPAT[@]}"
+					} &&
+					use "${m_flag}"
 				then
 					echo "${m_flag}.${abi}"
 					found=1
@@ -234,9 +237,11 @@ multilib_foreach_abi() {
 # is done.
 #
 # This function used to run multiple commands in parallel. Now it's just
-# a deprecated alias to multilib_foreach_abi.
+# a deprecated alias to multilib_foreach_abi. It is removed in EAPI 9.
 multilib_parallel_foreach_abi() {
 	debug-print-function ${FUNCNAME} "$@"
+
+	[[ ${EAPI} != [78] ]] && die "${FUNCNAME} is banned since EAPI 9"
 
 	local MULTIBUILD_VARIANTS=( $(multilib_get_enabled_abi_pairs) )
 	multibuild_foreach_variant _multilib_multibuild_wrapper "${@}"

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -87,7 +87,6 @@ app-emulation/libvirt nbd
 # Destabilizing x86 keywords on sci-*/* packages
 app-metrics/collectd collectd_plugins_gps
 dev-libs/efl physics
-media-libs/a52dec djbfft
 dev-python/graphviz test
 dev-python/sympy symengine
 kde-apps/marble gps

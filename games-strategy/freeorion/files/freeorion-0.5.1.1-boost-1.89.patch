@@ -1,0 +1,62 @@
+From 7aa4a9acd04ed9b876bfe2cee1045ad98d03b991 Mon Sep 17 00:00:00 2001
+From: geoffthemedio <geoffthemedio@gmail.com>
+Date: Fri, 5 Sep 2025 08:12:11 +0200
+Subject: [PATCH] remove Boost system dependency. apparently only exists for
+ backwards compatibility in recent Boost versions.
+
+---
+ CMakeLists.txt              | 1 -
+ GG/CMakeLists.txt           | 2 +-
+ GG/test/unit/CMakeLists.txt | 1 -
+ test/UI/CMakeLists.txt      | 1 -
+ 4 files changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8a43f713dfb..1c269a219ed 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -286,7 +286,6 @@ find_package(Boost ${MINIMUM_BOOST_VERSION}
+         log_setup
+         random
+         serialization
+-        system
+         thread
+     REQUIRED)
+ 
+diff --git a/GG/CMakeLists.txt b/GG/CMakeLists.txt
+index 6c3b282d595..f386f207c2f 100644
+--- a/GG/CMakeLists.txt
++++ b/GG/CMakeLists.txt
+@@ -66,7 +66,7 @@ endif()
+ 
+ set(MINIMUM_BOOST_VERSION 1.69.0)
+ 
+-find_package(Boost ${MINIMUM_BOOST_VERSION} COMPONENTS filesystem regex system REQUIRED)
++find_package(Boost ${MINIMUM_BOOST_VERSION} COMPONENTS filesystem regex REQUIRED)
+ 
+ find_package(OpenGL REQUIRED)
+ find_package(GLEW REQUIRED)
+diff --git a/GG/test/unit/CMakeLists.txt b/GG/test/unit/CMakeLists.txt
+index c7585b029c6..be0877695fd 100644
+--- a/GG/test/unit/CMakeLists.txt
++++ b/GG/test/unit/CMakeLists.txt
+@@ -16,7 +16,6 @@ add_executable(gg_unittest
+ target_link_libraries(gg_unittest
+     GiGi
+     Boost::boost
+-    Boost::system
+     Boost::unit_test_framework
+ )
+ 
+diff --git a/test/UI/CMakeLists.txt b/test/UI/CMakeLists.txt
+index 80bf78860eb..4008fd5feac 100644
+--- a/test/UI/CMakeLists.txt
++++ b/test/UI/CMakeLists.txt
+@@ -23,7 +23,6 @@ add_library(fo_acceptance_runner STATIC
+ 
+ target_link_libraries(fo_acceptance_runner
+     PUBLIC
+-        Boost::system
+         GiGi::GiGi
+         GLEW::GLEW
+         ${SDL_LIBRARIES}

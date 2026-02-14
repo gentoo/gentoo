@@ -11,7 +11,7 @@ SRC_URI="https://downloads.xiph.org/releases/icecast/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="geoip +speex selinux +ssl test +theora +yp"
 # TODO: few tests fail
 RESTRICT="test"

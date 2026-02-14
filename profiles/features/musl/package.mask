@@ -1,5 +1,24 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2026-02-11)
+# Fails to build on musl (bug #968134, https://sourceware.org/PR33747)
+~dev-debug/gdb-17.1
+
+# Mike Gilbert <floppym@gentoo.org> (2026-02-07)
+# Waiting for >=sys-apps/systemd-259 to be stable.
+dev-python/python-systemd
+gnome-extra/office-runner
+gnome-extra/gnome-logs
+sys-apps/dbus-broker
+sys-apps/systemd-readahead
+sys-block/wait-for-dri-devices-rules
+sys-process/systemd-cron
+>=www-misc/profile-sync-daemon-6
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2026-02-04)
+# New systemd now has experimental support for musl
+<sys-apps/systemd-259
 
 # Jaco Kroon <jkroon@gentoo.org> (2025-12-06)
 # anydesk is pre-build with glibc, will not work on MUSL.
@@ -17,10 +36,6 @@ net-im/signal-desktop-bin
 # PPN-SD <nicolas.parlant@parhuet.fr> (2025-10-08)
 # Binary bazel is compiled against glibc
 >=app-i18n/mozc-2.31.5851.102
-
-# Michał Górny <mgorny@gentoo.org> (2025-09-28)
-# Required DT_AUXILIARY support in the dynamic linker.
-=sci-libs/blas-lapack-aux-wrappers-0
 
 # PPN-SD <nicolas.parlant@parhuet.fr> (2025-07-28)
 # Bundled pcap-thread, not ported to musl
@@ -147,7 +162,6 @@ dev-ada/aws
 dev-ada/aunit
 dev-ada/ada_language_server
 dev-ada/gnatdoc
-dev-ada/gpr-unit-provider
 dev-ada/gpr
 dev-ada/gnatmem
 dev-ada/ada_libfswatch
@@ -386,6 +400,7 @@ net-im/gitter-bin
 net-im/mattermost-desktop-bin
 net-im/rocketchat-desktop-bin
 net-im/slack
+net-im/talk-desktop-bin
 net-im/telegram-desktop-bin
 net-im/whatsapp-desktop-bin
 net-im/zoom
@@ -500,21 +515,6 @@ app-emulation/dosemu
 sys-libs/glibc
 -sys-libs/musl
 -sys-libs/libucontext
-
-# systemd doesn't work on musl and upstream aren't interested
-# in supporting it.
-app-admin/mkosi
-app-admin/systemdgenie
-dev-python/python-systemd
-gnome-extra/office-runner
-gnome-extra/gnome-logs
-sys-apps/dbus-broker
-sys-apps/gentoo-systemd-integration
-sys-apps/systemd
-sys-apps/systemd-readahead
-sys-process/systemd-cron
->=www-misc/profile-sync-daemon-6
-sys-block/wait-for-dri-devices-rules
 
 # rust-bin isn't available on all platforms
 dev-lang/rust-bin
