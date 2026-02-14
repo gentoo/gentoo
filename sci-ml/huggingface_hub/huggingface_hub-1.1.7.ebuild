@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,10 +33,14 @@ RDEPEND="
 	')
 "
 
-BDEPEND="test? (
+BDEPEND="
+	test? (
 		sci-ml/pytorch[${PYTHON_SINGLE_USEDEP}]
 		dev-vcs/git-lfs
-	)"
+	)
+"
+
+EPYTEST_PLUGINS=( pytest-asyncio pytest-mock )
 
 distutils_enable_tests pytest
 
@@ -44,35 +48,22 @@ src_test() {
 	local EPYTEST_IGNORE=(
 		contrib
 		tests/test_cache_layout.py
-		#tests/test_cache_no_symlinks.py
-		#tests/test_command_delete_cache.py
 		tests/test_commit_scheduler.py
 		tests/test_file_download.py
 		tests/test_hf_api.py
 		tests/test_hf_file_system.py
-		#tests/test_inference_api.py
-		#tests/test_inference_client.py
 		tests/test_oauth.py
 		tests/test_repocard.py
-		#tests/test_repository.py
 		tests/test_snapshot_download.py
 		tests/test_utils_telemetry.py
-		#tests/test_xet_download.py
 		tests/test_xet_upload.py
 		tests/test_utils_cache.py
-		#tests/test_utils_http.py
 		tests/test_webhooks_server.py
 	)
 
 	local EPYTEST_DESELECT=(
-		#tests/test_cli.py::TestJobsCommand::test_uv_local_script
 		tests/test_hub_mixin.py::HubMixinTest::test_push_to_hub
 		tests/test_hub_mixin_pytorch.py::PytorchHubMixinTest::test_push_to_hub
-		#tests/test_inference_async_client.py::test_async_generate_timeout_error
-		#tests/test_inference_providers.py::TestHFInferenceProvider::test_prepare_mapping_info_unknown_task
-		#tests/test_offline_utils.py::test_offline_with_timeout
-		#tests/test_utils_pagination.py::TestPagination::test_paginate_hf_api
-
 	)
 
 	distutils-r1_src_test
