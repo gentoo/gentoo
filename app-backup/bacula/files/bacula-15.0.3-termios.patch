@@ -1,0 +1,13 @@
+diff --git a/src/console/conio.c b/src/console/conio.c
+index 2bea887..e59e087 100755
+--- a/src/console/conio.c
++++ b/src/console/conio.c
+@@ -52,6 +52,8 @@
+ 
+ #endif
+ 
++#include <termios.h>
++
+ #ifdef HAVE_CONIO
+ 
+ #include <curses.h>
