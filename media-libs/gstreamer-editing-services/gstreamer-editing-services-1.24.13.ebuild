@@ -29,7 +29,10 @@ RDEPEND="
 	>=media-libs/gst-plugins-bad-${PV}:1.0[introspection?]
 	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
-DEPEND="${RDEPEND}"
+# gst-plugins-good needed for tests: assertion 'GST_IS_ELEMENT (element)' failed
+DEPEND="${RDEPEND}
+	test? ( >=media-libs/gst-plugins-good-${PV}:1.0 )
+"
 BDEPEND="virtual/pkgconfig"
 
 src_configure() {
