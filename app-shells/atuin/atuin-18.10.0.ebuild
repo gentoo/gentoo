@@ -114,7 +114,7 @@ src_install() {
 	dobin "${ATUIN_BIN}"
 
 	if use server; then
-		systemd_dounit "${FILESDIR}/atuin.service"
+		systemd_newunit "${FILESDIR}/atuin_old.service" "atuin.service"
 	fi
 
 	dodoc -r "${DOCS[@]}"
