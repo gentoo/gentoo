@@ -17,6 +17,8 @@ SRC_URI="
 	https://github.com/intel/${MY_PN_LONG}/releases/download/${MY_PN}-${PV}/intel-${MY_PN}-opencl-devel_${PV}_amd64.deb
 	"
 
+S="${WORKDIR}"
+
 LICENSE="MIT"
 SLOT="legacy/1.0.1"
 KEYWORDS="~amd64"
@@ -29,8 +31,6 @@ RDEPEND="
 	!dev-util/intel-graphics-compiler
 	${DEPEND}
 "
-
-S="${WORKDIR}"
 
 src_compile(){
 	sed -i "s#/usr/local#${EROOT}/usr#g" usr/local/lib/pkgconfig/igc-opencl.pc

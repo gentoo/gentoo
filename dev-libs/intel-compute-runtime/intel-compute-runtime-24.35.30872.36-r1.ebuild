@@ -39,10 +39,7 @@ DEPEND="
 		x11-libs/libdrm[video_cards_intel]
 		media-libs/libva
 	)
-	|| (
-		>=dev-util/intel-graphics-compiler-1.0.17791.18:legacy
-		dev-util/intel-graphics-compiler-bin:legacy
-	)
+	dev-util/intel-graphics-compiler-bin:legacy
 "
 
 BDEPEND="virtual/pkgconfig"
