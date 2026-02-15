@@ -22,7 +22,7 @@ else
 		verify-sig? ( https://downloads.isc.org/isc/kea/${PV}/${P}.tar.xz.asc )
 		https://dev.gentoo.org/~asturm/distfiles/${PATCHSET}.tar.xz
 	"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="~amd64 arm ~arm64 ~x86"
 fi
 
 LICENSE="MPL-2.0"
