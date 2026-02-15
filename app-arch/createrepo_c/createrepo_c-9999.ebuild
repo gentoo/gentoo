@@ -1,4 +1,4 @@
-# Copyright 2020-2025 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,8 +18,12 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-IUSE="legacy test zstd"
+IUSE="doc legacy test zstd"
 RESTRICT="!test? ( test )"
+
+BDEPEND="doc? (
+	app-text/doxygen
+)"
 
 DEPEND="
 	app-arch/bzip2:=
@@ -50,6 +54,7 @@ src_configure() {
 		-DWITH_LEGACY_HASHES=$(usex legacy ON OFF)
 		-DWITH_LIBMODULEMD=ON
 		-DWITH_ZCHUNK=ON
+		-DBUILD_DOC_C=$(usex doc ON OFF)
 	)
 
 	cmake_src_configure
@@ -59,8 +64,14 @@ src_compile() {
 	cmake_src_compile
 	# Tests have a magic target!
 	use test && cmake_src_compile tests
+	use doc && cmake_src_compile doc-c
 }
 
 src_test() {
 	"${S}"_build/tests/run_tests.sh || die "Failed to run C library tests"
+}
+
+src_install() {
+	cmake_src_install
+	use doc && dodoc -r "${BUILD_DIR}/doc/html"
 }
