@@ -15,7 +15,7 @@ if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://code.videolan.org/videolan/vlc.git"
 	inherit git-r3
 else
-	COMMIT=
+	COMMIT=50fca9d25c78dffc00cef24cae467fc202d19466
 	if [[ -n ${COMMIT} ]] ; then
 		SRC_URI="https://code.videolan.org/videolan/vlc/-/archive/${COMMIT}.tar.gz -> ${P}-${COMMIT:0:8}.tar.gz"
 		S="${WORKDIR}/${PN}-${COMMIT}"
@@ -245,6 +245,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-9999-no-vlc-cache-gen.patch # bugs 564842, 608256
 	"${FILESDIR}"/${PN}-9999-fix-libtremor-libs.patch # build system
 	"${FILESDIR}"/${PN}-9999-configure-lua-version.patch
+	"${FILESDIR}"/${P}-force-x11.patch # crashes w/ wayland platform plugin
 )
 
 pkg_setup() {
