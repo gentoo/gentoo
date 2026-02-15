@@ -1,0 +1,23 @@
+LLVM-22 compatibility fixes.
+Partially backports https://github.com/ROCm/llvm-project/commit/0216fcfc5d2a4f3384873f6e9ac70198760d5a52
+--- a/src/comgr-compiler.cpp
++++ b/src/comgr-compiler.cpp
+@@ -659,7 +659,7 @@ amd_comgr_status_t executeCommand(const Command &Job, raw_ostream &LogS,
+ 
+     std::unique_ptr<CompilerInstance> Clang(new CompilerInstance());
+     Clang->setVerboseOutputStream(LogS);
+-    Clang->setFileManager(new FileManager(Clang->getFileSystemOpts(), &FS));
++    Clang->setVirtualFileSystem(&FS);
+     if (!Argv.back()) {
+       Argv.pop_back();
+     }
+@@ -909,8 +909,7 @@ amd_comgr_status_t AMDGPUCompiler::processFile(DataObject *Input,
+   }
+ 
+   // By default clang driver will ask CC1 to leak memory.
+-  Argv.push_back("-Xclang");
+-  Argv.push_back("-no-disable-free");
++  Argv.push_back("-disable-free=false");
+ 
+   Argv.push_back(InputFilePath);
+ 
