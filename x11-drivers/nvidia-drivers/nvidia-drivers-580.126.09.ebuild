@@ -112,6 +112,8 @@ pkg_setup() {
 		~SYSVIPC
 		~!LOCKDEP
 		~!PREEMPT_RT
+		~!RANDSTRUCT_FULL
+		~!RANDSTRUCT_PERFORMANCE
 		~!SLUB_DEBUG_ON
 		!DEBUG_MUTEXES
 		$(usev powerd '~CPU_FREQ')
@@ -145,6 +147,13 @@ pkg_setup() {
 	will fail to build unless the env var IGNORE_PREEMPT_RT_PRESENCE=1 is
 	set. Please do not report issues if run into e.g. kernel panics while
 	ignoring this."
+	local randstruct_msg="is set but NVIDIA may be unstable with
+	it such as causing a kernel panic on shutdown, it is recommended to
+	disable with CONFIG_RANDSTRUCT_NONE=y (https://bugs.gentoo.org/969413
+	-- please report if this appears fixed on NVIDIA's side so can remove
+	this warning)."
+	local ERROR_RANDSTRUCT_FULL="CONFIG_RANDSTRUCT_FULL: ${randstruct_msg}"
+	local ERROR_RANDSTRUCT_PERFORMANCE="CONFIG_RANDSTRUCT_PERFORMANCE: ${randstruct_msg}"
 
 	linux-mod-r1_pkg_setup
 }
