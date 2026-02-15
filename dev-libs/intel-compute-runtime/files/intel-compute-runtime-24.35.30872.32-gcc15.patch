@@ -1,0 +1,198 @@
+From e0362a7c39ba7a3ead3cbb74146cb961176a1734 Mon Sep 17 00:00:00 2001
+From: Daniel Bermond <dbermond@archlinux.org>
+Date: Sat, 10 May 2025 13:04:47 -0300
+Subject: [PATCH] build: add missing headers for GCC 15
+
+For using fixed width integer types[1], the `<cstdint>`[2]
+C++ header needs to be explicitly included with GCC 15 due
+to changes[3] in libstdc++.
+
+For details, see the documentation[4] about porting to GCC 15.
+
+[1] https://en.cppreference.com/w/cpp/types/integer
+[2] https://en.cppreference.com/w/cpp/header/cstdint
+[3] https://gcc.gnu.org/git/?p=gcc.git;a=commit;h=3a817a4a5a6d94da9127af3be9f84
+[4] https://gcc.gnu.org/gcc-15/porting_to.html#cxx
+
+Signed-off-by: Daniel Bermond <dbermond@archlinux.org>
+---
+ shared/generate_cpp_array/source/generate_cpp_array.cpp | 3 ++-
+ shared/offline_compiler/source/decoder/iga_wrapper.h    | 1 +
+ shared/offline_compiler/source/ocloc_arg_helper.h       | 3 ++-
+ shared/source/debugger/debugger.h                       | 3 ++-
+ shared/source/gmm_helper/gmm_helper.h                   | 1 +
+ shared/source/os_interface/device_factory.h             | 3 ++-
+ shared/source/os_interface/os_memory.h                  | 3 ++-
+ shared/source/os_interface/os_time.h                    | 3 ++-
+ shared/source/program/program_info.h                    | 1 +
+ shared/source/utilities/software_tags.h                 | 1 +
+ 10 files changed, 16 insertions(+), 6 deletions(-)
+
+diff --git a/shared/generate_cpp_array/source/generate_cpp_array.cpp b/shared/generate_cpp_array/source/generate_cpp_array.cpp
+index a1dcde7d26ebd..8c08b32759dc7 100644
+--- a/shared/generate_cpp_array/source/generate_cpp_array.cpp
++++ b/shared/generate_cpp_array/source/generate_cpp_array.cpp
+@@ -1,10 +1,11 @@
+ /*
+- * Copyright (C) 2020-2024 Intel Corporation
++ * Copyright (C) 2020-2025 Intel Corporation
+  *
+  * SPDX-License-Identifier: MIT
+  *
+  */
+ 
++#include <cstdint>
+ #include <fstream>
+ #include <iomanip>
+ #include <iostream>
+diff --git a/shared/offline_compiler/source/decoder/iga_wrapper.h b/shared/offline_compiler/source/decoder/iga_wrapper.h
+index 82697e32cf6d4..e42bebca91b98 100644
+--- a/shared/offline_compiler/source/decoder/iga_wrapper.h
++++ b/shared/offline_compiler/source/decoder/iga_wrapper.h
+@@ -11,6 +11,7 @@
+ 
+ #include "igfxfmid.h"
+ 
++#include <cstdint>
+ #include <memory>
+ #include <string>
+ 
+diff --git a/shared/offline_compiler/source/ocloc_arg_helper.h b/shared/offline_compiler/source/ocloc_arg_helper.h
+index 3aca7258b03e0..b46ad5340b879 100644
+--- a/shared/offline_compiler/source/ocloc_arg_helper.h
++++ b/shared/offline_compiler/source/ocloc_arg_helper.h
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (C) 2020-2024 Intel Corporation
++ * Copyright (C) 2020-2025 Intel Corporation
+  *
+  * SPDX-License-Identifier: MIT
+  *
+@@ -11,6 +11,7 @@
+ #include "shared/source/utilities/const_stringref.h"
+ 
+ #include <algorithm>
++#include <cstdint>
+ #include <fstream>
+ #include <map>
+ #include <memory>
+diff --git a/shared/source/debugger/debugger.h b/shared/source/debugger/debugger.h
+index cfc1865808134..14f094cba6823 100644
+--- a/shared/source/debugger/debugger.h
++++ b/shared/source/debugger/debugger.h
+@@ -1,11 +1,12 @@
+ /*
+- * Copyright (C) 2020-2023 Intel Corporation
++ * Copyright (C) 2020-2025 Intel Corporation
+  *
+  * SPDX-License-Identifier: MIT
+  *
+  */
+ 
+ #pragma once
++#include <cstdint>
+ #include <memory>
+ namespace NEO {
+ struct HardwareInfo;
+diff --git a/shared/source/gmm_helper/gmm_helper.h b/shared/source/gmm_helper/gmm_helper.h
+index 63a28e1148447..f1c2a6f194b93 100644
+--- a/shared/source/gmm_helper/gmm_helper.h
++++ b/shared/source/gmm_helper/gmm_helper.h
+@@ -6,6 +6,7 @@
+  */
+ 
+ #pragma once
++#include <cstdint>
+ #include <memory>
+ 
+ namespace NEO {
+diff --git a/shared/source/os_interface/device_factory.h b/shared/source/os_interface/device_factory.h
+index 75dd491704224..02bac68e8fc36 100644
+--- a/shared/source/os_interface/device_factory.h
++++ b/shared/source/os_interface/device_factory.h
+@@ -1,11 +1,12 @@
+ /*
+- * Copyright (C) 2018-2023 Intel Corporation
++ * Copyright (C) 2018-2025 Intel Corporation
+  *
+  * SPDX-License-Identifier: MIT
+  *
+  */
+ 
+ #pragma once
++#include <cstdint>
+ #include <memory>
+ #include <string>
+ #include <vector>
+diff --git a/shared/source/os_interface/os_memory.h b/shared/source/os_interface/os_memory.h
+index 7c521b004d834..24ed117b6fb96 100644
+--- a/shared/source/os_interface/os_memory.h
++++ b/shared/source/os_interface/os_memory.h
+@@ -1,11 +1,12 @@
+ /*
+- * Copyright (C) 2019-2022 Intel Corporation
++ * Copyright (C) 2019-2025 Intel Corporation
+  *
+  * SPDX-License-Identifier: MIT
+  *
+  */
+ 
+ #pragma once
++#include <cstdint>
+ #include <memory>
+ #include <vector>
+ 
+diff --git a/shared/source/os_interface/os_time.h b/shared/source/os_interface/os_time.h
+index 9c838823fc9bc..bae7e5d435745 100644
+--- a/shared/source/os_interface/os_time.h
++++ b/shared/source/os_interface/os_time.h
+@@ -1,11 +1,12 @@
+ /*
+- * Copyright (C) 2018-2024 Intel Corporation
++ * Copyright (C) 2018-2025 Intel Corporation
+  *
+  * SPDX-License-Identifier: MIT
+  *
+  */
+ 
+ #pragma once
++#include <cstdint>
+ #include <memory>
+ #include <optional>
+ 
+diff --git a/shared/source/program/program_info.h b/shared/source/program/program_info.h
+index e3569a16bc1f0..b27cab27ecd97 100644
+--- a/shared/source/program/program_info.h
++++ b/shared/source/program/program_info.h
+@@ -10,6 +10,7 @@
+ #include "shared/source/utilities/arrayref.h"
+ 
+ #include <cstddef>
++#include <cstdint>
+ #include <memory>
+ #include <string>
+ #include <unordered_map>
+diff --git a/shared/source/utilities/software_tags.h b/shared/source/utilities/software_tags.h
+index 30406bbaafe1d..29a27c47fbedb 100644
+--- a/shared/source/utilities/software_tags.h
++++ b/shared/source/utilities/software_tags.h
+@@ -8,6 +8,7 @@
+ #pragma once
+ #include "shared/source/helpers/string.h"
+ 
++#include <cstdint>
+ #include <string>
+ 
+ namespace NEO {
+diff --git a/shared/source/os_interface/linux/local/dg1/drm_tip_helper.cpp b/shared/source/os_interface/linux/local/dg1/drm_tip_helper.cpp
+===================================================================
+--- a/shared/source/os_interface/linux/local/dg1/drm_tip_helper.cpp
++++ b/shared/source/os_interface/linux/local/dg1/drm_tip_helper.cpp
+@@ -7,6 +7,7 @@
+ 
+ #include "shared/source/os_interface/linux/i915.h"
+ 
++#include <cstdint>
+ #include <memory>
+ #include <vector>
+
