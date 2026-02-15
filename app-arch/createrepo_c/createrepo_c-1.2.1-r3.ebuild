@@ -22,7 +22,7 @@ else
 		https://github.com/rpm-software-management/createrepo_c/commit/e2ce40a8191b76165a68289bb3a9876171f42dea.patch
 			-> ${PN}-1.2.1-r3-docs-doxygen-optional.patch
 	"
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-2"
