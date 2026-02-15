@@ -15,5 +15,6 @@
 		<flag name="mtp">Enable support for libMTP (Plays4Sure) devices access through libmtp</flag>
 		<flag name="podcast">Enable gpodder.net podcast support via <pkg>media-libs/libmygpo-qt</pkg></flag>
 		<flag name="webengine">Enable wikipedia widget using <pkg>dev-qt/qtwebengine</pkg></flag>
+		<flag name="zeroconf">Enable DAAP collections support using <pkg>kde-frameworks/kdnssd</pkg></flag>
 	</use>
 </pkgmetadata>

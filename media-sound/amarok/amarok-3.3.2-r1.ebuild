@@ -19,7 +19,7 @@ HOMEPAGE="https://amarok.kde.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="ipod lastfm mariadb mtp podcast webengine X"
+IUSE="ipod lastfm mariadb mtp podcast webengine X zeroconf"
 
 # ipod requires gdk enabled and also gtk compiled in libgpod
 DEPEND="
@@ -40,7 +40,6 @@ DEPEND="
 	>=kde-frameworks/kcrash-${KFMIN}:6
 	>=kde-frameworks/kdbusaddons-${KFMIN}:6
 	>=kde-frameworks/kdeclarative-${KFMIN}:6
-	>=kde-frameworks/kdnssd-${KFMIN}:6
 	>=kde-frameworks/kglobalaccel-${KFMIN}:6
 	>=kde-frameworks/kguiaddons-${KFMIN}:6
 	>=kde-frameworks/ki18n-${KFMIN}:6
@@ -75,6 +74,7 @@ DEPEND="
 	mtp? ( media-libs/libmtp )
 	podcast? ( >=media-libs/libmygpo-qt-1.1.0_pre20240811 )
 	webengine? ( >=dev-qt/qtwebengine-${QTMIN}:6[widgets] )
+	zeroconf? ( >=kde-frameworks/kdnssd-${KFMIN}:6 )
 "
 RDEPEND="${DEPEND}
 	>=kde-frameworks/kirigami-${KFMIN}:6
@@ -85,6 +85,8 @@ BDEPEND="${PYTHON_DEPS}
 	>=dev-qt/qttools-${QTMIN}:6[linguist]
 	virtual/pkgconfig
 "
+
+PATCHES=( "${FILESDIR}/${P}-optional-zeroconf.patch" )
 
 src_configure() {
 	local mycmakeargs=(
@@ -100,6 +102,7 @@ src_configure() {
 		$(cmake_use_find_package podcast Mygpo-qt6)
 		$(cmake_use_find_package webengine Qt6WebEngineWidgets)
 		-DWITH_X11=$(usex X)
+		-DWITH_DAAP=$(usex zeroconf)
 	)
 	use ipod && mycmakeargs+=( $(cmake_use_find_package ipod GDKPixBuf) )
 
