@@ -62,6 +62,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.4.2-fix-arch-parse.patch
 	"${FILESDIR}"/${PN}-6.0.2-expand-isa-compatibility.patch
 	"${FILESDIR}"/${PN}-7.0.1-fix-install.patch
+	"${FILESDIR}"/${PN}-7.1.0-cmake.patch
 )
 
 CMAKE_USE_DIR="${S}/${PN}/Source"
@@ -89,6 +90,9 @@ src_prepare() {
 		-i ReplacementKernels.py Common.py "${PN}.py" || die
 
 	sed -e "s|os\.path\.dirname.*$|\"${EPREFIX}/usr/share/Tensile/Source\", end='')|" -i __init__.py || die
+
+	# bug 949817: fix v_dot4_i32_i8 syntax for clang-20
+	sed  's/ op_sel:\[0,0\] op_sel_hi:\[1,1\]//' -i Components/MAC_I8X4.py || die
 
 	# Fix compiler "validation"
 	rocm_use_clang
