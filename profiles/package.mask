@@ -36,6 +36,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-15)
+# Masked for testing and possible libvlc revdeps breakage.
+~media-video/vlc-4.0.0_pre20260215
+
 # Conrad Kostecki <conikost@gentoo.org> (2026-02-15)
 # Supports only Qt5 and upstream not making any progress towards Qt6.
 # Removal on 2026-03-01. Bug #953260.
