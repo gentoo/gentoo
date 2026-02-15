@@ -1,0 +1,89 @@
+diff --git a/cipher/ecc-ecdsa.c b/cipher/ecc-ecdsa.c
+index 34f2903b..d91922d0 100644
+--- a/cipher/ecc-ecdsa.c
++++ b/cipher/ecc-ecdsa.c
+@@ -85,10 +85,10 @@ _gcry_ecc_ecdsa_sign (gcry_mpi_t input, gcry_mpi_t k_supplied, mpi_ec_t ec,
+   while (!mpi_invm (bi, b, ec->n));
+ 
+   k = NULL;
+-  dr = mpi_alloc (0);
+-  sum = mpi_alloc (0);
+-  k_1 = mpi_alloc (0);
+-  x = mpi_alloc (0);
++  dr = mpi_new (ec->nbits);
++  sum = mpi_new (ec->nbits);
++  k_1 = mpi_new (ec->nbits);
++  x = mpi_new (ec->nbits);
+   point_init (&I, ec->nbits);
+ 
+   /* Two loops to avoid R or S are zero.  This is more of a joke than
+@@ -264,10 +264,10 @@ _gcry_ecc_ecdsa_verify (gcry_mpi_t input, mpi_ec_t ec,
+       return err;
+     }
+ 
+-  h  = mpi_alloc (0);
+-  h1 = mpi_alloc (0);
+-  h2 = mpi_alloc (0);
+-  x = mpi_alloc (0);
++  h  = mpi_new (ec->nbits);
++  h1 = mpi_new (ec->nbits);
++  h2 = mpi_new (ec->nbits);
++  x = mpi_new (ec->nbits);
+   point_init (&Q, ec->nbits);
+   point_init (&Q1, ec->nbits);
+   point_init (&Q2, ec->nbits);
+diff --git a/cipher/ecc-gost.c b/cipher/ecc-gost.c
+index 179660fa..455d529e 100644
+--- a/cipher/ecc-gost.c
++++ b/cipher/ecc-gost.c
+@@ -58,11 +58,11 @@ _gcry_ecc_gost_sign (gcry_mpi_t input, mpi_ec_t ec,
+     return rc;
+ 
+   k = NULL;
+-  dr = mpi_alloc (0);
+-  sum = mpi_alloc (0);
+-  ke = mpi_alloc (0);
+-  e = mpi_alloc (0);
+-  x = mpi_alloc (0);
++  dr = mpi_new (ec->nbits);
++  sum = mpi_new (ec->nbits);
++  ke = mpi_new (ec->nbits);
++  e = mpi_new (ec->nbits);
++  x = mpi_new (ec->nbits);
+   point_init (&I, ec->nbits);
+ 
+   mpi_mod (e, input, ec->n); /* e = hash mod n */
+@@ -140,13 +140,13 @@ _gcry_ecc_gost_verify (gcry_mpi_t input, mpi_ec_t ec,
+   if( !(mpi_cmp_ui (s, 0) > 0 && mpi_cmp (s, ec->n) < 0) )
+     return GPG_ERR_BAD_SIGNATURE; /* Assertion	0 < s < n  failed.  */
+ 
+-  x = mpi_alloc (0);
+-  e = mpi_alloc (0);
+-  z1 = mpi_alloc (0);
+-  z2 = mpi_alloc (0);
+-  v = mpi_alloc (0);
+-  rv = mpi_alloc (0);
+-  zero = mpi_alloc (0);
++  x = mpi_new (ec->nbits);
++  e = mpi_new (ec->nbits);
++  z1 = mpi_new (ec->nbits);
++  z2 = mpi_new (ec->nbits);
++  v = mpi_new (ec->nbits);
++  rv = mpi_new (ec->nbits);
++  zero = mpi_new (ec->nbits);
+ 
+   point_init (&Q, ec->nbits);
+   point_init (&Q1, ec->nbits);
+diff --git a/mpi/ec.c b/mpi/ec.c
+index 1ab45594..6f6a7f8d 100644
+--- a/mpi/ec.c
++++ b/mpi/ec.c
+@@ -827,7 +827,7 @@ ec_get_two_inv_p (mpi_ec_t ec)
+     {
+       ec->t.valid.two_inv_p = 1;
+       if (!ec->t.two_inv_p)
+-        ec->t.two_inv_p = mpi_alloc (0);
++        ec->t.two_inv_p = mpi_new (ec->nbits);
+       ec_invm (ec->t.two_inv_p, mpi_const (MPI_C_TWO), ec);
+     }
+   return ec->t.two_inv_p;

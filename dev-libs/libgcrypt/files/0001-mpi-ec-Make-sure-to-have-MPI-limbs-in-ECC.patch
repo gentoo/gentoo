@@ -1,0 +1,736 @@
+diff --git a/cipher/ecc-common.h b/cipher/ecc-common.h
+index 01fb9042..54270eab 100644
+--- a/cipher/ecc-common.h
++++ b/cipher/ecc-common.h
+@@ -47,7 +47,7 @@ point_set (mpi_point_t d, mpi_point_t s)
+   mpi_set (d->z, s->z);
+ }
+ 
+-#define point_init(a)  _gcry_mpi_point_init ((a))
++#define point_init(a,nbits)  _gcry_mpi_point_init ((a),(nbits))
+ #define point_free(a)  _gcry_mpi_point_free_parts ((a))
+ 
+ 
+diff --git a/cipher/ecc-curves.c b/cipher/ecc-curves.c
+index 975f6a07..5478e69d 100644
+--- a/cipher/ecc-curves.c
++++ b/cipher/ecc-curves.c
+@@ -863,7 +863,7 @@ _gcry_ecc_get_curve (gcry_sexp_t keyparms, int iterator, unsigned int *r_nbits)
+   if (rc)
+     goto leave;
+ 
+-  _gcry_mpi_point_init (&E.G);
++  _gcry_mpi_point_init (&E.G, 0);
+   _gcry_mpi_point_set (&E.G, G->x, G->y, G->z);
+ 
+   for (idx = 0; domain_parms[idx].desc; idx++)
+@@ -991,7 +991,7 @@ point_from_keyparam (gcry_mpi_point_t *r_a,
+       if (!a)
+         return GPG_ERR_INV_OBJ;
+ 
+-      point = mpi_point_new (0);
++      point = mpi_point_new (ec->nbits);
+       rc = _gcry_mpi_ec_decode_point (point, a, ec);
+       mpi_free (a);
+       if (rc)
+@@ -1120,7 +1120,7 @@ mpi_ec_get_elliptic_curve (elliptic_curve_t *E, int *r_flags,
+             goto leave;
+           if (G)
+             {
+-              _gcry_mpi_point_init (&E->G);
++              _gcry_mpi_point_init (&E->G, 0);
+               mpi_point_set (&E->G, G->x, G->y, G->z);
+               mpi_point_set (G, NULL, NULL, NULL);
+               mpi_point_release (G);
+@@ -1551,7 +1551,7 @@ _gcry_ecc_set_mpi (const char *name, gcry_mpi_t newvalue, mpi_ec_t ec)
+       if (newvalue)
+         {
+           if (!ec->Q)
+-            ec->Q = mpi_point_new (0);
++            ec->Q = mpi_point_new (ec->nbits);
+           rc = _gcry_mpi_ec_decode_point (ec->Q, newvalue, ec);
+         }
+       if (rc || !newvalue)
+diff --git a/cipher/ecc-ecdh.c b/cipher/ecc-ecdh.c
+index c690d221..385f5c2a 100644
+--- a/cipher/ecc-ecdh.c
++++ b/cipher/ecc-ecdh.c
+@@ -131,7 +131,7 @@ _gcry_ecc_curve_keypair (const char *curve,
+     return GPG_ERR_UNKNOWN_CURVE;
+ 
+   x = mpi_new (nbits);
+-  point_init (&Q);
++  point_init (&Q, ec->nbits);
+ 
+   _gcry_mpi_ec_mul_point (&Q, mpi_k, ec->G, ec);
+ 
+@@ -254,14 +254,14 @@ _gcry_ecc_curve_mul_point (const char *curve,
+       goto leave;
+     }
+ 
+-  point_init (&Q);
++  point_init (&Q, ec->nbits);
+ 
+   if (point)
+     {
+       gcry_mpi_t mpi_u = _gcry_mpi_set_opaque_copy (NULL, point, point_len*8);
+       mpi_point_struct P;
+ 
+-      point_init (&P);
++      point_init (&P, ec->nbits);
+       if (ec->model == MPI_EC_WEIERSTRASS)
+         err = _gcry_ecc_sec_decodepoint (mpi_u, ec, &P);
+       else /* MPI_EC_MONTGOMERY */
+diff --git a/cipher/ecc-ecdsa.c b/cipher/ecc-ecdsa.c
+index 6231ae0b..34f2903b 100644
+--- a/cipher/ecc-ecdsa.c
++++ b/cipher/ecc-ecdsa.c
+@@ -89,7 +89,7 @@ _gcry_ecc_ecdsa_sign (gcry_mpi_t input, gcry_mpi_t k_supplied, mpi_ec_t ec,
+   sum = mpi_alloc (0);
+   k_1 = mpi_alloc (0);
+   x = mpi_alloc (0);
+-  point_init (&I);
++  point_init (&I, ec->nbits);
+ 
+   /* Two loops to avoid R or S are zero.  This is more of a joke than
+      a real demand because the probability of them being zero is less
+@@ -268,9 +268,9 @@ _gcry_ecc_ecdsa_verify (gcry_mpi_t input, mpi_ec_t ec,
+   h1 = mpi_alloc (0);
+   h2 = mpi_alloc (0);
+   x = mpi_alloc (0);
+-  point_init (&Q);
+-  point_init (&Q1);
+-  point_init (&Q2);
++  point_init (&Q, ec->nbits);
++  point_init (&Q1, ec->nbits);
++  point_init (&Q2, ec->nbits);
+ 
+   /* h  = s^(-1) (mod n) */
+   mpi_invm (h, s, ec->n);
+diff --git a/cipher/ecc-eddsa.c b/cipher/ecc-eddsa.c
+index fb952baf..d3c6b6f2 100644
+--- a/cipher/ecc-eddsa.c
++++ b/cipher/ecc-eddsa.c
+@@ -126,8 +126,8 @@ _gcry_ecc_eddsa_encodepoint (mpi_point_t point, mpi_ec_t ec,
+   gpg_err_code_t rc;
+   gcry_mpi_t x, y;
+ 
+-  x = x_in? x_in : mpi_new (0);
+-  y = y_in? y_in : mpi_new (0);
++  x = x_in? x_in : mpi_new (ec->nbits);
++  y = y_in? y_in : mpi_new (ec->nbits);
+ 
+   if (_gcry_mpi_ec_get_affine (x, y, point, ec))
+     {
+@@ -219,11 +219,11 @@ ecc_ed448_recover_x (gcry_mpi_t x, gcry_mpi_t y, int x_0, mpi_ec_t ec)
+     p34 = scanval ("3FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+                    "BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
+ 
+-  u   = mpi_new (0);
+-  v   = mpi_new (0);
+-  u3  = mpi_new (0);
+-  v3  = mpi_new (0);
+-  t   = mpi_new (0);
++  u   = mpi_new (ec->nbits);
++  v   = mpi_new (ec->nbits);
++  u3  = mpi_new (ec->nbits);
++  v3  = mpi_new (ec->nbits);
++  t   = mpi_new (ec->nbits);
+ 
+   /* Compute u and v */
+   /* u = y^2    */
+@@ -300,10 +300,10 @@ _gcry_ecc_eddsa_recover_x (gcry_mpi_t x, gcry_mpi_t y, int sign, mpi_ec_t ec)
+   if (!seven)
+     seven = mpi_set_ui (NULL, 7);
+ 
+-  u   = mpi_new (0);
+-  v   = mpi_new (0);
+-  v3  = mpi_new (0);
+-  t   = mpi_new (0);
++  u   = mpi_new (ec->nbits);
++  v   = mpi_new (ec->nbits);
++  v3  = mpi_new (ec->nbits);
++  t   = mpi_new (ec->nbits);
+ 
+   /* Compute u and v */
+   /* u = y^2    */
+@@ -592,7 +592,7 @@ _gcry_ecc_eddsa_genkey (mpi_ec_t ec, int flags)
+ {
+   gpg_err_code_t rc;
+   int b;
+-  gcry_mpi_t a, x, y;
++  gcry_mpi_t a;
+   mpi_point_struct Q;
+   gcry_random_level_t random_level;
+   char *dbuf;
+@@ -616,8 +616,6 @@ _gcry_ecc_eddsa_genkey (mpi_ec_t ec, int flags)
+   dlen = b;
+ 
+   a = mpi_snew (0);
+-  x = mpi_new (0);
+-  y = mpi_new (0);
+ 
+   /* Generate a secret.  */
+   dbuf = _gcry_random_bytes_secure (dlen, random_level);
+@@ -631,7 +629,7 @@ _gcry_ecc_eddsa_genkey (mpi_ec_t ec, int flags)
+   /* log_printmpi ("ecgen         a", a); */
+ 
+   /* Compute Q.  */
+-  point_init (&Q);
++  point_init (&Q, ec->nbits);
+   _gcry_mpi_ec_mul_point (&Q, a, ec->G, ec);
+   if (DBG_CIPHER)
+     log_printpnt ("ecgen      pk", &Q, ec);
+@@ -643,8 +641,6 @@ _gcry_ecc_eddsa_genkey (mpi_ec_t ec, int flags)
+ 
+  leave:
+   _gcry_mpi_release (a);
+-  _gcry_mpi_release (x);
+-  _gcry_mpi_release (y);
+   return rc;
+ }
+ 
+@@ -716,11 +712,11 @@ _gcry_ecc_eddsa_sign (gcry_mpi_t input, mpi_ec_t ec,
+     return GPG_ERR_INV_DATA;
+ 
+   /* Initialize some helpers.  */
+-  point_init (&I);
++  point_init (&I, ec->nbits);
+   a = mpi_snew (0);
+-  x = mpi_new (0);
+-  y = mpi_new (0);
+-  r = mpi_snew (0);
++  x = mpi_new (ec->nbits);
++  y = mpi_new (ec->nbits);
++  r = mpi_snew (ec->nbits);
+ 
+   rc = _gcry_ecc_eddsa_compute_h_d (&digest, ec);
+   if (rc)
+@@ -732,7 +728,7 @@ _gcry_ecc_eddsa_sign (gcry_mpi_t input, mpi_ec_t ec,
+     {
+       mpi_point_struct Q;
+ 
+-      point_init (&Q);
++      point_init (&Q, ec->nbits);
+       _gcry_mpi_ec_mul_point (&Q, a, ec->G, ec);
+       ec->Q = mpi_point_snatch_set (NULL, Q.x, Q.y, Q.z);
+     }
+@@ -939,8 +935,8 @@ _gcry_ecc_eddsa_verify (gcry_mpi_t input, mpi_ec_t ec,
+   else
+     return GPG_ERR_NOT_IMPLEMENTED;
+ 
+-  point_init (&Ia);
+-  point_init (&Ib);
++  point_init (&Ia, ec->nbits);
++  point_init (&Ib, ec->nbits);
+   h = mpi_new (0);
+   s = mpi_new (0);
+ 
+diff --git a/cipher/ecc-gost.c b/cipher/ecc-gost.c
+index 36230f8a..179660fa 100644
+--- a/cipher/ecc-gost.c
++++ b/cipher/ecc-gost.c
+@@ -63,7 +63,7 @@ _gcry_ecc_gost_sign (gcry_mpi_t input, mpi_ec_t ec,
+   ke = mpi_alloc (0);
+   e = mpi_alloc (0);
+   x = mpi_alloc (0);
+-  point_init (&I);
++  point_init (&I, ec->nbits);
+ 
+   mpi_mod (e, input, ec->n); /* e = hash mod n */
+ 
+@@ -148,9 +148,9 @@ _gcry_ecc_gost_verify (gcry_mpi_t input, mpi_ec_t ec,
+   rv = mpi_alloc (0);
+   zero = mpi_alloc (0);
+ 
+-  point_init (&Q);
+-  point_init (&Q1);
+-  point_init (&Q2);
++  point_init (&Q, ec->nbits);
++  point_init (&Q1, ec->nbits);
++  point_init (&Q2, ec->nbits);
+ 
+   mpi_mod (e, input, ec->n); /* e = hash mod n */
+   if (!mpi_cmp_ui (e, 0))
+diff --git a/cipher/ecc-misc.c b/cipher/ecc-misc.c
+index 6796ba2c..40303ac4 100644
+--- a/cipher/ecc-misc.c
++++ b/cipher/ecc-misc.c
+@@ -60,7 +60,7 @@ _gcry_ecc_curve_copy (elliptic_curve_t E)
+   R.p = mpi_copy (E.p);
+   R.a = mpi_copy (E.a);
+   R.b = mpi_copy (E.b);
+-  _gcry_mpi_point_init (&R.G);
++  _gcry_mpi_point_init (&R.G, 0);
+   point_set (&R.G, &E.G);
+   R.n = mpi_copy (E.n);
+   R.h = E.h;
+@@ -159,8 +159,8 @@ _gcry_mpi_ec_ec2os (gcry_mpi_point_t point, mpi_ec_t ec)
+ {
+   gcry_mpi_t g_x, g_y, result;
+ 
+-  g_x = mpi_new (0);
+-  g_y = mpi_new (0);
++  g_x = mpi_new (ec->nbits);
++  g_y = mpi_new (ec->nbits);
+   if (_gcry_mpi_ec_get_affine (g_x, g_y, point, ec))
+     result = NULL;
+   else
+@@ -236,10 +236,10 @@ _gcry_ecc_sec_decodepoint  (gcry_mpi_t value, mpi_ec_t ec, mpi_point_t result)
+        * Recover Y.  The Weierstrass curve: y^2 = x^3 + a*x + b
+        */
+ 
+-      x3 = mpi_new (0);
+-      t = mpi_new (0);
+-      p1_4 = mpi_new (0);
+-      y = mpi_new (0);
++      x3 = mpi_new (ec->nbits);
++      t = mpi_new (ec->nbits);
++      p1_4 = mpi_new (ec->nbits);
++      y = mpi_new (ec->nbits);
+ 
+       /* Compute right hand side.  */
+       mpi_powm (x3, x, mpi_const (MPI_C_THREE), ec->p);
+@@ -344,7 +344,7 @@ _gcry_ecc_compute_public (mpi_point_t Q, mpi_ec_t ec)
+ 
+       /* And finally the public key.  */
+       if (!Q)
+-        Q = mpi_point_new (0);
++        Q = mpi_point_new (ec->nbits);
+       if (Q)
+         _gcry_mpi_ec_mul_point (Q, a, ec->G, ec);
+       mpi_free (a);
+@@ -352,7 +352,7 @@ _gcry_ecc_compute_public (mpi_point_t Q, mpi_ec_t ec)
+   else
+     {
+       if (!Q)
+-        Q = mpi_point_new (0);
++        Q = mpi_point_new (ec->nbits);
+       if (Q)
+         _gcry_mpi_ec_mul_point (Q, ec->d, ec->G, ec);
+     }
+diff --git a/cipher/ecc-sm2.c b/cipher/ecc-sm2.c
+index c52629fd..8c3241e4 100644
+--- a/cipher/ecc-sm2.c
++++ b/cipher/ecc-sm2.c
+@@ -114,12 +114,12 @@ _gcry_ecc_sm2_encrypt (gcry_sexp_t *r_ciph, gcry_mpi_t input, mpi_ec_t ec)
+   unsigned char *cipher = NULL;
+   int i;
+ 
+-  point_init (&kG);
+-  point_init (&kP);
+-  x1 = mpi_new (0);
+-  y1 = mpi_new (0);
+-  x2 = mpi_new (0);
+-  y2 = mpi_new (0);
++  point_init (&kG, ec->nbits);
++  point_init (&kP, ec->nbits);
++  x1 = mpi_new (ec->nbits);
++  y1 = mpi_new (ec->nbits);
++  x2 = mpi_new (ec->nbits);
++  y2 = mpi_new (ec->nbits);
+ 
+   in = _gcry_mpi_get_buffer (input, 0, &inlen, NULL);
+   if (!in)
+@@ -268,10 +268,10 @@ _gcry_ecc_sm2_decrypt (gcry_sexp_t *r_plain, gcry_sexp_t data_list, mpi_ec_t ec)
+     unsigned int c3_len;
+     int i;
+ 
+-    point_init (&c1);
+-    point_init (&kP);
+-    x2 = mpi_new (0);
+-    y2 = mpi_new (0);
++    point_init (&c1, ec->nbits);
++    point_init (&kP, ec->nbits);
++    x2 = mpi_new (ec->nbits);
++    y2 = mpi_new (ec->nbits);
+ 
+     in = mpi_get_opaque (data_c2, &inlen);
+     inlen = (inlen + 7) / 8;
+@@ -401,10 +401,10 @@ _gcry_ecc_sm2_sign (gcry_mpi_t input, mpi_ec_t ec,
+   if (rc)
+     return rc;
+ 
+-  point_init (&kG);
+-  x1 = mpi_new (0);
+-  rk = mpi_new (0);
+-  tmp = mpi_new (0);
++  point_init (&kG, ec->nbits);
++  x1 = mpi_new (ec->nbits);
++  rk = mpi_new (ec->nbits);
++  tmp = mpi_new (ec->nbits);
+ 
+   for (;;)
+     {
+@@ -514,11 +514,11 @@ _gcry_ecc_sm2_verify (gcry_mpi_t input, mpi_ec_t ec,
+   if (err)
+     return err;
+ 
+-  point_init (&sG);
+-  point_init (&tP);
+-  x1 = mpi_new (0);
+-  y1 = mpi_new (0);
+-  t = mpi_new (0);
++  point_init (&sG, ec->nbits);
++  point_init (&tP, ec->nbits);
++  x1 = mpi_new (ec->nbits);
++  y1 = mpi_new (ec->nbits);
++  t = mpi_new (ec->nbits);
+ 
+   /* t = (r + s) % n, t != 0 */
+   mpi_addm (t, r, s, ec->n);
+diff --git a/cipher/ecc.c b/cipher/ecc.c
+index 51364b64..95dc0535 100644
+--- a/cipher/ecc.c
++++ b/cipher/ecc.c
+@@ -256,7 +256,7 @@ nist_generate_key (mpi_ec_t ec, int flags,
+   gcry_mpi_t x, y;
+   const unsigned int pbits = ec->nbits;
+ 
+-  point_init (&Q);
++  point_init (&Q, ec->nbits);
+ 
+   if ((flags & PUBKEY_FLAG_TRANSIENT_KEY))
+     random_level = GCRY_STRONG_RANDOM;
+@@ -387,7 +387,7 @@ test_keys (mpi_ec_t ec, unsigned int nbits)
+   if (DBG_CIPHER)
+     log_debug ("Testing key.\n");
+ 
+-  point_init (&R_);
++  point_init (&R_, ec->nbits);
+ 
+   _gcry_mpi_randomize (test, nbits, GCRY_WEAK_RANDOM);
+ 
+@@ -544,7 +544,7 @@ test_ecdh_only_keys (mpi_ec_t ec, unsigned int nbits, int flags)
+   if (DBG_CIPHER)
+     log_debug ("Testing ECDH only key.\n");
+ 
+-  point_init (&R_);
++  point_init (&R_, ec->nbits);
+ 
+   if (ec->dialect == ECC_DIALECT_SAFECURVE || (flags & PUBKEY_FLAG_DJB_TWEAK))
+     {
+@@ -572,8 +572,8 @@ test_ecdh_only_keys (mpi_ec_t ec, unsigned int nbits, int flags)
+       _gcry_mpi_randomize (test, nbits, GCRY_WEAK_RANDOM);
+     }
+ 
+-  x0 = mpi_new (0);
+-  x1 = mpi_new (0);
++  x0 = mpi_new (ec->nbits);
++  x1 = mpi_new (ec->nbits);
+ 
+   /* R_ = hkQ  <=>  R_ = hkdG  */
+   _gcry_mpi_ec_mul_point (&R_, test, ec->Q, ec);
+@@ -617,12 +617,12 @@ check_secret_key (mpi_ec_t ec, int flags)
+   gcry_mpi_t x2 = NULL;
+   gcry_mpi_t y2 = NULL;
+ 
+-  point_init (&Q);
+-  x1 = mpi_new (0);
++  point_init (&Q, ec->nbits);
++  x1 = mpi_new (ec->nbits);
+   if (ec->model == MPI_EC_MONTGOMERY)
+     y1 = NULL;
+   else
+-    y1 = mpi_new (0);
++    y1 = mpi_new (ec->nbits);
+ 
+   /* G in E(F_p) */
+   if (!_gcry_mpi_ec_curve_point (ec->G, ec))
+@@ -687,8 +687,8 @@ check_secret_key (mpi_ec_t ec, int flags)
+     }
+   else
+     {
+-      x2 = mpi_new (0);
+-      y2 = mpi_new (0);
++      x2 = mpi_new (ec->nbits);
++      y2 = mpi_new (ec->nbits);
+       if (_gcry_mpi_ec_get_affine (x2, y2, ec->Q, ec))
+         {
+           if (DBG_CIPHER)
+@@ -751,8 +751,8 @@ ecc_generate (const gcry_sexp_t genparms, gcry_sexp_t *r_skey)
+     goto leave;
+ 
+   /* Copy data to the result.  */
+-  Gx = mpi_new (0);
+-  Gy = mpi_new (0);
++  Gx = mpi_new (ec->nbits);
++  Gy = mpi_new (ec->nbits);
+   if (ec->model != MPI_EC_MONTGOMERY)
+     {
+       if (_gcry_mpi_ec_get_affine (Gx, Gy, ec->G, ec))
+@@ -787,8 +787,8 @@ ecc_generate (const gcry_sexp_t genparms, gcry_sexp_t *r_skey)
+         {
+           /* This is the case for a key from _gcry_ecc_eddsa_generate
+              with no compression.  */
+-          Qx = mpi_new (0);
+-          Qy = mpi_new (0);
++          Qx = mpi_new (ec->nbits);
++          Qy = mpi_new (ec->nbits);
+           if (_gcry_mpi_ec_get_affine (Qx, Qy, ec->Q, ec))
+             log_fatal ("ecgen: Failed to get affine coordinates for %s\n", "Q");
+         }
+@@ -1369,13 +1369,13 @@ ecc_encrypt_raw (gcry_sexp_t *r_ciph, gcry_sexp_t s_data, gcry_sexp_t keyparms)
+     unsigned int rawmpilen;
+ 
+     rc = 0;
+-    x = mpi_new (0);
++    x = mpi_new (ec->nbits);
+     if (ec->model == MPI_EC_MONTGOMERY)
+       y = NULL;
+     else
+-      y = mpi_new (0);
++      y = mpi_new (ec->nbits);
+ 
+-    point_init (&R);
++    point_init (&R, ec->nbits);
+ 
+     /* R = kQ  <=>  R = kdG  */
+     _gcry_mpi_ec_mul_point (&R, data, ec->Q, ec);
+@@ -1478,11 +1478,12 @@ ecc_decrypt_raw (gcry_sexp_t *r_plain, gcry_sexp_t s_data, gcry_sexp_t keyparms)
+   int flags = GCRYECC_FLAG_LEAST_LEAK;
+   int enable_specific_point_validation;
+ 
+-  point_init (&kG);
+-  point_init (&R);
++  nbits = ecc_get_nbits (keyparms);
+ 
+-  _gcry_pk_util_init_encoding_ctx (&ctx, PUBKEY_OP_DECRYPT,
+-                                   (nbits = ecc_get_nbits (keyparms)));
++  point_init (&kG, nbits);
++  point_init (&R, nbits);
++
++  _gcry_pk_util_init_encoding_ctx (&ctx, PUBKEY_OP_DECRYPT, nbits);
+ 
+   /*
+    * Extract the key.
+@@ -1564,11 +1565,11 @@ ecc_decrypt_raw (gcry_sexp_t *r_plain, gcry_sexp_t s_data, gcry_sexp_t keyparms)
+   {
+     gcry_mpi_t x, y;
+ 
+-    x = mpi_new (0);
++    x = mpi_new (ec->nbits);
+     if (ec->model == MPI_EC_MONTGOMERY)
+       y = NULL;
+     else
+-      y = mpi_new (0);
++      y = mpi_new (ec->nbits);
+ 
+     if (_gcry_mpi_ec_get_affine (x, y, &R, ec))
+       {
+@@ -1887,10 +1888,10 @@ compute_keygrip (gcry_md_hd_t md, gcry_sexp_t keyparms)
+            * Recover Y.  The Weierstrass curve: y^2 = x^3 + a*x + b
+            */
+ 
+-          x3 = mpi_new (0);
+-          t = mpi_new (0);
+-          p1_4 = mpi_new (0);
+-          y = mpi_new (0);
++          x3 = mpi_new (ec->nbits);
++          t = mpi_new (ec->nbits);
++          p1_4 = mpi_new (ec->nbits);
++          y = mpi_new (ec->nbits);
+ 
+           /* Compute right hand side.  */
+           mpi_powm (x3, x, mpi_const (MPI_C_THREE), ec->p);
+diff --git a/mpi/ec-hw-s390x.c b/mpi/ec-hw-s390x.c
+index 149a061d..d5d72a9b 100644
+--- a/mpi/ec-hw-s390x.c
++++ b/mpi/ec-hw-s390x.c
+@@ -242,8 +242,8 @@ _gcry_s390x_ec_hw_mul_point (mpi_point_t result, gcry_mpi_t scalar,
+   if (!(pcc_query () & km_function_to_mask (pcc_func)))
+     return -1; /* HW does not support acceleration for this curve. */
+ 
+-  x = mpi_new (0);
+-  y = mpi_new (0);
++  x = mpi_new (ctx->nbits);
++  y = mpi_new (ctx->nbits);
+ 
+   if (_gcry_mpi_ec_get_affine (x, y, point, ctx) < 0)
+     {
+@@ -352,7 +352,7 @@ s390_mul_point_montgomery (mpi_point_t result, gcry_mpi_t scalar,
+   if (!(pcc_query () & km_function_to_mask (pcc_func)))
+     return -1; /* HW does not support acceleration for this curve. */
+ 
+-  x = mpi_new (0);
++  x = mpi_new (ctx->nbits);
+ 
+   if (mpi_is_opaque (scalar))
+     {
+diff --git a/mpi/ec.c b/mpi/ec.c
+index b0b6f427..1ab45594 100644
+--- a/mpi/ec.c
++++ b/mpi/ec.c
+@@ -33,7 +33,7 @@
+ 
+ extern void reverse_buffer (unsigned char *buffer, unsigned int length);
+ 
+-#define point_init(a)  _gcry_mpi_point_init ((a))
++#define point_init(a, nbits)  _gcry_mpi_point_init ((a), (nbits))
+ #define point_free(a)  _gcry_mpi_point_free_parts ((a))
+ 
+ 
+@@ -55,8 +55,8 @@ _gcry_mpi_point_log (const char *name, mpi_point_t point, mpi_ec_t ctx)
+ 
+   if (ctx)
+     {
+-      x = mpi_new (0);
+-      y = mpi_new (0);
++      x = mpi_new (ctx->nbits);
++      y = mpi_new (ctx->nbits);
+     }
+   if (!ctx || _gcry_mpi_ec_get_affine (x, y, point, ctx))
+     {
+@@ -90,10 +90,8 @@ _gcry_mpi_point_new (unsigned int nbits)
+ {
+   mpi_point_t p;
+ 
+-  (void)nbits;  /* Currently not used.  */
+-
+   p = xmalloc (sizeof *p);
+-  _gcry_mpi_point_init (p);
++  _gcry_mpi_point_init (p, nbits);
+   return p;
+ }
+ 
+@@ -113,11 +111,11 @@ _gcry_mpi_point_release (mpi_point_t p)
+ /* Initialize the fields of a point object.  gcry_mpi_point_free_parts
+    may be used to release the fields.  */
+ void
+-_gcry_mpi_point_init (mpi_point_t p)
++_gcry_mpi_point_init (mpi_point_t p, unsigned int nbits)
+ {
+-  p->x = mpi_new (0);
+-  p->y = mpi_new (0);
+-  p->z = mpi_new (0);
++  p->x = mpi_new (nbits);
++  p->y = mpi_new (nbits);
++  p->z = mpi_new (nbits);
+ }
+ 
+ 
+@@ -1213,8 +1211,8 @@ _gcry_mpi_ec_get_affine (gcry_mpi_t x, gcry_mpi_t y, mpi_point_t point,
+         saved_flags = ctx->flags;
+         ctx->flags |= GCRYECC_FLAG_LEAST_LEAK;
+ 
+-        z1 = mpi_new (0);
+-        z2 = mpi_new (0);
++        z1 = mpi_new (ctx->nbits);
++        z2 = mpi_new (ctx->nbits);
+         ec_invm (z1, point->z, ctx);   /* z1 = z^(-1) mod p  */
+         ec_mulm_lli (z2, z1, z1, ctx); /* z2 = z^(-2) mod p  */
+ 
+@@ -1231,7 +1229,7 @@ _gcry_mpi_ec_get_affine (gcry_mpi_t x, gcry_mpi_t y, mpi_point_t point,
+             mpi_set (y, point->y);
+             mpi_resize (y, ctx->p->nlimbs);
+             y->nlimbs = ctx->p->nlimbs;
+-            z3 = mpi_new (0);
++            z3 = mpi_new (ctx->nbits);
+             ec_mulm_lli (z3, z2, z1, ctx); /* z3 = z^(-3) mod p  */
+             ec_mulm_lli (y, y, z3, ctx);
+             mpi_free (z3);
+@@ -1271,7 +1269,7 @@ _gcry_mpi_ec_get_affine (gcry_mpi_t x, gcry_mpi_t y, mpi_point_t point,
+ 	    return 0;
+ 	  }
+ 
+-        z = mpi_new (0);
++        z = mpi_new (ctx->nbits);
+         ec_invm (z, point->z, ctx);
+ 
+         mpi_resize (z, ctx->p->nlimbs);
+@@ -2113,10 +2111,10 @@ montgomery_mul_point (mpi_point_t result,
+   int scalar_copied = 0;
+ 
+   nbits = mpi_get_nbits (scalar);
+-  point_init (&p1);
+-  point_init (&p2);
+-  point_init (&p1_);
+-  point_init (&p2_);
++  point_init (&p1, ctx->nbits);
++  point_init (&p2, ctx->nbits);
++  point_init (&p1_, ctx->nbits);
++  point_init (&p2_, ctx->nbits);
+   mpi_set_ui (p1.x, 1);
+   mpi_free (p2.x);
+   p2.x  = mpi_copy (point->x);
+@@ -2186,7 +2184,7 @@ montgomery_mul_point (mpi_point_t result,
+     }
+   else
+     {
+-      z1 = mpi_new (0);
++      z1 = mpi_new (ctx->nbits);
+       ec_invm (z1, p1.z, ctx);
+       ec_mulm (result->x, p1.x, z1, ctx);
+       mpi_set_ui (result->z, 1);
+@@ -2218,13 +2216,13 @@ mpi_ec_mul_point_lli (mpi_point_t result,
+ 
+   /* Convert POINT1 into affine coordinate, so that we can use
+      add_points_*_a routine with affine coordinate.  */
+-  point_init (point);
++  point_init (point, ctx->nbits);
+   if (_gcry_mpih_cmp_ui (point1->z->d, ctx->p->nlimbs, 1))
+     {
+       gcry_mpi_t x, y;
+ 
+-      x = mpi_new (0);
+-      y = mpi_new (0);
++      x = mpi_new (ctx->nbits);
++      y = mpi_new (ctx->nbits);
+ 
+       if (_gcry_mpi_ec_get_affine (x, y, point1, ctx))
+         {
+@@ -2263,7 +2261,7 @@ mpi_ec_mul_point_lli (mpi_point_t result,
+       mpi_set_ui (result->z, 1);
+     }
+ 
+-  point_init (&tmppnt);
++  point_init (&tmppnt, ctx->nbits);
+   mpi_point_resize (result, ctx);
+   mpi_point_resize (&tmppnt, ctx);
+   if (ctx->model == MPI_EC_WEIERSTRASS)
+@@ -2420,8 +2418,8 @@ _gcry_mpi_ec_mul_point (mpi_point_t result,
+   p1.x = x1; x1 = NULL;
+   p1.y = y1; y1 = NULL;
+   p1.z = z1; z1 = NULL;
+-  point_init (&p2);
+-  point_init (&p1inv);
++  point_init (&p2, ctx->nbits);
++  point_init (&p1inv, ctx->nbits);
+ 
+   /* Invert point: y = p - y mod p  */
+   point_set (&p1inv, &p1);
+@@ -2457,9 +2455,9 @@ _gcry_mpi_ec_curve_point (gcry_mpi_point_t point, mpi_ec_t ctx)
+   int res = 0;
+   gcry_mpi_t x, y, w;
+ 
+-  x = mpi_new (0);
+-  y = mpi_new (0);
+-  w = mpi_new (0);
++  x = mpi_new (ctx->nbits);
++  y = mpi_new (ctx->nbits);
++  w = mpi_new (ctx->nbits);
+ 
+   /* Check that the point is in range.  This needs to be done here and
+    * not after conversion to affine coordinates.  */
+@@ -2479,7 +2477,7 @@ _gcry_mpi_ec_curve_point (gcry_mpi_point_t point, mpi_ec_t ctx)
+         if (_gcry_mpi_ec_get_affine (x, y, point, ctx))
+           goto leave;
+ 
+-        xxx = mpi_new (0);
++        xxx = mpi_new (ctx->nbits);
+ 
+         /* y^2 == x^3 + a·x + b */
+         ec_pow2 (y, y, ctx);
+diff --git a/src/mpi.h b/src/mpi.h
+index 2a314a21..0edbda52 100644
+--- a/src/mpi.h
++++ b/src/mpi.h
+@@ -243,7 +243,7 @@ struct gcry_mpi_point
+ typedef struct gcry_mpi_point mpi_point_struct;
+ typedef struct gcry_mpi_point *mpi_point_t;
+ 
+-void _gcry_mpi_point_init (mpi_point_t p);
++void _gcry_mpi_point_init (mpi_point_t p, unsigned int nbits);
+ void _gcry_mpi_point_free_parts (mpi_point_t p);
+ void _gcry_mpi_get_point (gcry_mpi_t x, gcry_mpi_t y, gcry_mpi_t z,
+                           mpi_point_t point);
