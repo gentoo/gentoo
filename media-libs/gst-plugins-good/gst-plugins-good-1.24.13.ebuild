@@ -48,7 +48,7 @@ multilib_src_test() {
 	)
 
 	# Add suites which in this case are the project name
-	if has_version ">=dev-build/meson-1.10.0"; then
+	if has_version ">=dev-build/meson-1.9.2"; then
 		local -a skip_tests=()
 		for skip_test in ${_skip_tests[@]}; do
 			skip_tests+=( "${PN}:${skip_test}" )
