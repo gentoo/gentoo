@@ -12,7 +12,7 @@ DESCRIPTION="Set of facilities to extend Python with C++"
 HOMEPAGE="https://cxx.sourceforge.net"
 SRC_URI="https://dev.gentoo.org/~gienah/snapshots/${P}.zip"
 
-S="${WORKDIR}"/cxx-code-r465-trunk/CXX
+S="${WORKDIR}"/cxx-code-r474-trunk/CXX
 
 LICENSE="BSD"
 SLOT="0"
@@ -21,9 +21,7 @@ IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
-	$(python_gen_cond_dep '
-		dev-python/setuptools[${PYTHON_USEDEP}]
-	' 3.12)
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	app-arch/unzip
 "
 
