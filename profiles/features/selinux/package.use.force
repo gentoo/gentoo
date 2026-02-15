@@ -13,3 +13,7 @@ sys-libs/libselinux python
 
 # Required for semanage to run correctly.
 sys-process/audit python
+
+# Enforce SELinux for Xen
+app-emulation/xen flask
+app-emulation/xen-tools flask
