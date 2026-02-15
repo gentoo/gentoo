@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -114,7 +114,7 @@ src_install() {
 	dobin "${ATUIN_BIN}"
 
 	if use server; then
-		systemd_dounit "${FILESDIR}/atuin.service"
+		systemd_newunit "${FILESDIR}/atuin_old.service" "atuin.service"
 	fi
 
 	dodoc -r "${DOCS[@]}"
