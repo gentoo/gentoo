@@ -29,8 +29,7 @@ RDEPEND="virtual/latex-base"
 # - app-text/texlive-core for rubber's 'cweave' test
 # - dev-lang/R for rubber's 'knitr' test (requires knitr R library, currently disabled)
 # - dev-texlive/texlive-latexextra for rubber's 'combine' test (currently disabled)
-BDEPEND="
-	${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/texi2dvi
 	test? (
 		app-text/ghostscript-gpl
@@ -92,18 +91,12 @@ python_test() {
 	./run.sh * || die "Tests failed with ${EPYTHON}"
 }
 
-python_install() {
-	local my_install_args=(
-		--mandir="${EPREFIX}/usr/share/man"
-		--infodir="${EPREFIX}/usr/share/info"
-		--docdir="${EPREFIX}/usr/share/doc/${PF}"
-	)
-
-	distutils-r1_python_install "${my_install_args[@]}"
-}
-
 src_install() {
 	distutils-r1_src_install
 
-	mv "${D}"/usr/share/doc/{${PN},${PF}} || die
+	# Move misplaced files to correct location
+	doinfo doc/${PN}/${PN}.info
+	rm "${ED}"/usr/share/doc/${PN}/${PN}.{texi,info} || die
+	mv "${ED}"/usr/share/doc/{${PN}/*,${PF}/} || die
+	rmdir "${ED}"/usr/share/doc/${PN} || die
 }
