@@ -1,8 +1,0 @@
-# Copyright 2026 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2026-02-14)
-# Temporary workaround so we can start building systemd stages everywhere even
-# though there is no stable systemd version 259 yet ...
-# On existing openrc installations systemd is masked anyway.
-=sys-apps/systemd-259*
