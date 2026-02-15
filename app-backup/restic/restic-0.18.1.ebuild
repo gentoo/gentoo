@@ -28,7 +28,7 @@ src_unpack() {
 		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.gz "${DISTDIR}"/${P}.tar.gz.asc
 	fi
 
-	default
+	go-module_src_unpack
 }
 
 src_compile() {
