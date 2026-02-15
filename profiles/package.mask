@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Conrad Kostecki <conikost@gentoo.org> (2026-02-15)
+# Supports only Qt5 and upstream not making any progress towards Qt6.
+# Removal on 2026-03-01. Bug #953260.
+x11-misc/projecteur
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2026-02-10)
 # Unused Java library. Upstream is gone. SRC_URI points to
 # 'https://dev.gentoo.org/~monsieurp' which does not exist.
