@@ -104,6 +104,11 @@ EPYTEST_PLUGINS=( hypothesis pytest-subtests )
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
+PATCHES=(
+	# https://github.com/pyca/cryptography/pull/14319
+	"${FILESDIR}/${PN}-46.0.5-stray-files.patch"
+)
+
 src_unpack() {
 	if use verify-provenance; then
 		pypi_verify_provenance "${DISTDIR}/${P}.tar.gz"{,.provenance}
