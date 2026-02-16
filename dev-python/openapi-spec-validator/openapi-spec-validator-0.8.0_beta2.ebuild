@@ -46,5 +46,7 @@ EPYTEST_DESELECT=(
 
 src_prepare() {
 	sed -i -e '/--cov/d' pyproject.toml || die
+	# remove meaningless upper bounds
+	sed -i -e 's:,<[0-9.]*::' pyproject.toml || die
 	distutils-r1_src_prepare
 }
