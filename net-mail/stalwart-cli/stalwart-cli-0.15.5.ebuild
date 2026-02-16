@@ -18,7 +18,7 @@ SRC_URI="https://github.com/stalwartlabs/stalwart/archive/refs/tags/v${PV}.tar.g
 "
 if [[ ${PKGBUMPING} != ${PVR} ]]; then
 	SRC_URI+="
-		https://dev.gentoo.org/~lordvan/stalwart-0.15.4-crates.tar.xz
+		https://dev.gentoo.org/~lordvan/stalwart-0.15.5-crates.tar.xz
 	"
 fi
 
