@@ -267,7 +267,8 @@ LICENSE="|| ( Apache-2.0 MIT )"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0 BSD-2 BSD ISC MIT MPL-2.0 Unicode-3.0 ZLIB"
 SLOT="0"
-IUSE="test"
+# LTO disabled by default upstream
+IUSE="lto test"
 RESTRICT="!test? ( test )"
 
 # TODO: blake3 still bundled?
@@ -303,6 +304,13 @@ src_unpack() {
 		unpacker ${P}.tar.gz
 		cargo_src_unpack
 	fi
+}
+
+src_configure() {
+	# LTO linker plugin (experimental)
+	local myfeatures=( $(usev lto plugins) )
+
+	cargo_src_configure
 }
 
 src_install() {

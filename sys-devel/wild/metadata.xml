@@ -9,6 +9,9 @@
     <email>toolchain@gentoo.org</email>
     <name>Gentoo Toolchain Project</name>
   </maintainer>
+  <use>
+    <flag name="lto">Build with the experimental LTO plugin support</flag>
+  </use>
   <upstream>
     <remote-id type="github">davidlattimore/wild</remote-id>
   </upstream>
