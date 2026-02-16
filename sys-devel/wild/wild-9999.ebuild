@@ -16,7 +16,7 @@ CRATES="
 	anstyle-query@1.1.5
 	anstyle-wincon@3.0.11
 	anstyle@1.0.13
-	anyhow@1.0.100
+	anyhow@1.0.101
 	ar@0.9.0
 	arrayref@0.3.9
 	arrayvec@0.7.6
@@ -36,16 +36,17 @@ CRATES="
 	cc@1.2.52
 	cfg-if@1.0.4
 	cfg_aliases@0.2.1
-	clap@4.5.54
-	clap_builder@4.5.54
-	clap_derive@4.5.49
+	clap@4.5.57
+	clap_builder@4.5.57
+	clap_derive@4.5.55
 	clap_lex@0.7.7
 	cobs@0.3.0
 	colorchoice@1.0.4
-	colored@3.0.0
+	colored@3.1.1
 	colosseum@0.2.2
+	console@0.16.2
 	constant_time_eq@0.4.2
-	cpp_demangle@0.4.5
+	cpp_demangle@0.5.1
 	cpufeatures@0.2.17
 	crc32fast@1.5.0
 	critical-section@1.2.0
@@ -62,13 +63,13 @@ CRATES="
 	either@1.15.0
 	embedded-io@0.4.0
 	embedded-io@0.6.1
+	encode_unicode@1.0.0
 	env_home@0.1.0
 	equivalent@1.0.2
 	errno@0.3.14
-	fallible-iterator@0.3.0
 	fastrand@2.3.0
 	find-msvc-tools@0.1.7
-	flate2@1.1.8
+	flate2@1.1.9
 	fnv@1.0.7
 	foldhash@0.2.0
 	futures-core@0.3.31
@@ -78,6 +79,7 @@ CRATES="
 	futures-util@0.3.31
 	getrandom@0.3.4
 	gimli@0.32.3
+	gimli@0.33.0
 	git-version-macro@0.3.9
 	git-version@0.3.9
 	glob@0.3.3
@@ -88,6 +90,7 @@ CRATES="
 	hex@0.4.3
 	iced-x86@1.21.0
 	indexmap@2.13.0
+	indicatif@0.18.3
 	is_terminal_polyfill@1.70.2
 	itertools@0.14.0
 	itoa@1.0.17
@@ -96,12 +99,13 @@ CRATES="
 	lazy_static@1.5.0
 	leb128@0.2.5
 	libc@0.2.180
+	libloading@0.8.9
 	libmimalloc-sys@0.1.44
 	linux-raw-sys@0.11.0
 	lock_api@0.4.14
 	log@0.4.29
 	matchers@0.2.0
-	memchr@2.7.6
+	memchr@2.8.0
 	memmap2@0.9.9
 	mimalloc@0.1.48
 	minimal-lexical@0.2.1
@@ -135,10 +139,11 @@ CRATES="
 	paste@1.0.15
 	perf-event-open-sys@4.0.0
 	perf-event@0.4.8
-	perfetto-recorder@0.3.1
+	perfetto-recorder@0.3.2
 	pin-project-lite@0.2.16
 	pin-utils@0.1.0
 	pkg-config@0.3.32
+	portable-atomic@1.13.0
 	postcard@1.1.3
 	ppv-lite86@0.2.21
 	proc-macro-crate@3.4.0
@@ -157,7 +162,7 @@ CRATES="
 	redox_syscall@0.5.18
 	regex-automata@0.4.13
 	regex-syntax@0.8.8
-	regex@1.12.2
+	regex@1.12.3
 	relative-path@1.9.3
 	remain@0.2.15
 	rstest@0.26.1
@@ -188,12 +193,12 @@ CRATES="
 	strsim@0.11.1
 	strum@0.27.2
 	strum_macros@0.27.2
-	symbolic-common@12.17.1
-	symbolic-demangle@12.17.1
+	symbolic-common@12.17.2
+	symbolic-demangle@12.17.2
 	syn@2.0.114
 	tabled@0.20.0
 	tabled_derive@0.11.0
-	tempfile@3.24.0
+	tempfile@3.25.0
 	testing_table@0.3.0
 	thiserror-impl@1.0.69
 	thiserror-impl@2.0.17
@@ -213,33 +218,29 @@ CRATES="
 	unicode-ident@1.0.22
 	unicode-width@0.2.2
 	unicode-xid@0.2.6
+	unit-prefix@0.5.2
 	utf8parse@0.2.2
-	uuid@1.19.0
+	uuid@1.20.0
 	wait-timeout@0.2.1
+	wait4@0.1.3
 	wasip2@1.0.1+wasi-0.2.4
 	wasm-bindgen-macro-support@0.2.106
 	wasm-bindgen-macro@0.2.106
 	wasm-bindgen-shared@0.2.106
 	wasm-bindgen@0.2.106
+	web-time@1.1.0
 	which@8.0.0
+	winapi-i686-pc-windows-gnu@0.4.0
+	winapi-x86_64-pc-windows-gnu@0.4.0
+	winapi@0.3.9
 	windows-link@0.2.1
-	windows-sys@0.59.0
 	windows-sys@0.61.2
-	windows-targets@0.52.6
-	windows_aarch64_gnullvm@0.52.6
-	windows_aarch64_msvc@0.52.6
-	windows_i686_gnu@0.52.6
-	windows_i686_gnullvm@0.52.6
-	windows_i686_msvc@0.52.6
-	windows_x86_64_gnu@0.52.6
-	windows_x86_64_gnullvm@0.52.6
-	windows_x86_64_msvc@0.52.6
 	winnow@0.7.14
 	winsafe@0.0.19
 	wit-bindgen@0.46.0
-	zerocopy-derive@0.8.33
-	zerocopy@0.8.33
-	zlib-rs@0.5.5
+	zerocopy-derive@0.8.39
+	zerocopy@0.8.39
+	zlib-rs@0.6.0
 	zmij@1.0.14
 	zstd-safe@7.2.4
 	zstd-sys@2.0.16+zstd.1.5.7
@@ -247,7 +248,7 @@ CRATES="
 "
 
 LLVM_COMPAT=( {20..21} )
-RUST_MIN_VER="1.90"
+RUST_MIN_VER="1.92"
 inherit cargo llvm-r2 unpacker
 
 DESCRIPTION="A very fast linker for Linux"
