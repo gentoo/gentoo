@@ -286,6 +286,8 @@ BDEPEND="
 	)
 "
 
+QA_FLAGS_IGNORED="usr/bin/${PN}"
+
 pkg_setup() {
 	# zstd-sys https://wiki.gentoo.org/wiki/Project:Rust/sys_crates#zstd-sys
 	export ZSTD_SYS_USE_PKG_CONFIG=1
