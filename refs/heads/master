@@ -1,14 +1,16 @@
 certificate version 0.1
-pusher DF84256885283521 1771222240 +0100
-pushee git.gentoo.org:repo/gentoo.git
-nonce 1771222240-ba183e03bcbdf1f959280e78391ca5ed3881e2c9
+pusher Eli Schwartz <eschwartz@gentoo.org> 1771223571 -0500
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1771223571-360fd03eabd97da089afa8ec5057f91ef14716eb
 
-63eeccf12fd5688e83cf2b4433e3e5428434c4e3 b5536858da1ded63952f707b104890af0be0a1fd refs/heads/master
+b5536858da1ded63952f707b104890af0be0a1fd 526fc50a8e9c18030f29adb9b32b0c03e7d742b7 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iJEEABYKADkWIQQcFD0bEK7NPNmWHtiOMjR69AVa6AUCaZK04BsUgAAAAAAEAA5t
-YW51MiwyLjUrMS4xMiwyLDIACgkQjjI0evQFWuhnIwD/YFyxNlzfXoRDofXiP7ql
-P07Kr1SrkWP1z7isU3EhkggA/ioQZSWYRz/rbYkdYtqeXDraxzBvuWFeUEn+ou7y
-G48N
-=1irf
+iQEHBAAWCgCvFiEE5xTZ5itEz2R515t6hKfRK3ANL1cFAmmSuhMbFIAAAAAABAAO
+bWFudTIsMi41KzEuMTEsMiwyXxSAAAAAAC4AKGlzc3Vlci1mcHJAbm90YXRpb25z
+Lm9wZW5wZ3AuZmlmdGhob3JzZW1hbi5uZXRFNzE0RDlFNjJCNDRDRjY0NzlENzlC
+N0E4NEE3RDEyQjcwMEQyRjU3FRxlc2Nod2FydHpAZ2VudG9vLm9yZwAKCRCEp9Er
+cA0vV2EwAQC22lBSnx20gdId9SA0UPTm+m0fqpRggoZmroxokWP6RAEA4rRme1Of
+zwCo4hZI+TTgRjpp0VFjVXe+yFmAxaEssgg=
+=aN8f
 -----END PGP SIGNATURE-----
