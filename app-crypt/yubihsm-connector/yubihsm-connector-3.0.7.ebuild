@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,6 +34,7 @@ src_compile() {
 
 src_install() {
 	dobin yubihsm-connector
+	sed -i 's/ systemd-networkd-wait-online.service//' deb/yubihsm-connector.service
 	systemd_dounit deb/yubihsm-connector.service
 	udev_dorules deb/70-yubihsm-connector.rules
 	insinto /etc
