@@ -1,0 +1,23 @@
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+index 3361e20..5744779 100644
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -58,7 +58,6 @@ function(add_relative_test test_name test_target)
+         ENVIRONMENT "LLVM_PROFILE_FILE=${PROFILE_DIR}/profraw/hipcub-coverage_%m.profraw"
+       )
+     endif()
+-    rocm_install(TARGETS ${test_target} COMPONENT tests)
+     file(APPEND "${INSTALL_TEST_FILE}" "add_test(${test_name} \"../${EXE_NAME}\")\n")
+ endfunction()
+ 
+@@ -101,10 +100,3 @@ if(BUILD_CODE_COVERAGE)
+     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+   )
+ endif()
+-
+-rocm_install(
+-    FILES "${INSTALL_TEST_FILE}"
+-    DESTINATION "${CMAKE_INSTALL_BINDIR}/${PROJECT_NAME}"
+-    COMPONENT tests
+-    RENAME "CTestTestfile.cmake"
+-)
