@@ -44,6 +44,10 @@ DEPEND="
 
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/createrepo_c-1.2.1-r3-cmake-fixes.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_DRPM=ON
