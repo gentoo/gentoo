@@ -37,15 +37,12 @@ done quickly and working on the features that make their application unique.
 		<flag name="crypt">Encryption and digital signing classes (including SSL and JWT).</flag>
 		<flag name="data">Database abstraction layer to easily send/retrieve data to/from various databases</flag>
 		<flag name="file2pagecompiler">Utility to convert ordinary files to Page Compiler source files</flag>
-		<flag name="json">Add JSON support</flag>
-		<flag name="jwt">Add JSON Web Token support</flag>
 		<flag name="mariadb">Prefer <pkg>dev-db/mariadb-connector-c</pkg> over <pkg>dev-db/mysql-connector-c</pkg></flag>
 		<flag name="mongodb">Add <pkg>dev-db/mongodb</pkg> support</flag>
 		<flag name="net">Classes to write network clients &amp; servers</flag>
 		<flag name="pagecompiler">Simple compiler translating HTML pages containing embedded C++ code into HTTPRequestHandler classes</flag>
 		<flag name="pocodoc">POCO documentation generator</flag>
 		<flag name="prometheus">Add prometheus monitoring system support</flag>
-		<flag name="ssl">Encryption and digital signing classes</flag>
 		<flag name="util">Several utility classes (like logger, timer, config file parser). Also enables JSON</flag>
 		<flag name="zip">Add support for the zip &amp; gz archive formats</flag>
 	</use>
