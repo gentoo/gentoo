@@ -265,7 +265,7 @@ fi
 
 LICENSE="|| ( Apache-2.0 MIT )"
 # Dependent crate licenses
-LICENSE+=" Apache-2.0 BSD-2 BSD MIT MPL-2.0 Unicode-3.0 ZLIB"
+LICENSE+=" Apache-2.0 BSD-2 BSD ISC MIT MPL-2.0 Unicode-3.0 ZLIB"
 SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
