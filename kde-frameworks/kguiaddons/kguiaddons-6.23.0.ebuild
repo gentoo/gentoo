@@ -15,8 +15,9 @@ IUSE="dbus wayland X"
 
 # slot op: includes qpa/qplatformnativeinterface.h
 COMMON_DEPEND="
-	>=dev-qt/qtbase-${QTMIN}:6[dbus?,gui]
+	>=dev-qt/qtbase-${QTMIN}:6[gui]
 	>=dev-qt/qtdeclarative-${QTMIN}:6
+	dbus? ( >=dev-qt/qtbase-${QTMIN}:6=[dbus] )
 	wayland? (
 		dev-libs/wayland
 		>=dev-qt/qtbase-${QTMIN}:6=[wayland]
@@ -45,6 +46,8 @@ BDEPEND="
 		dev-util/wayland-scanner
 	)
 "
+
+PATCHES=( "${FILESDIR}/${P}-missing-guiprivate.patch" ) # bug 970127
 
 src_configure() {
 	local mycmakeargs=(
