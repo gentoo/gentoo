@@ -42,7 +42,10 @@ DEPEND="
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-PATCHES=( "${FILESDIR}/${PN}-7.1.2-disable-tests.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-7.1.2-disable-tests.patch"
+	"${FILESDIR}/${PN}-8.0.0-configure-make-python-output-match-autotools.patch" # Bug: 882725
+)
 
 src_prepare() {
 	default
