@@ -1,0 +1,51 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+ROCM_VERSION=${PV}
+
+inherit cmake rocm
+
+DESCRIPTION="CU / ROCM agnostic marshalling library for LAPACK routines on the GPU"
+HOMEPAGE="https://github.com/ROCm/rocm-libraries/tree/develop/projects/hipsolver"
+SRC_URI="https://github.com/ROCm/rocm-libraries/releases/download/rocm-${PV}/hipsolver.tar.gz -> hipsolver-${PV}.tar.gz"
+S="${WORKDIR}/hipsolver"
+
+REQUIRED_USE="${ROCM_REQUIRED_USE}"
+
+LICENSE="MIT"
+SLOT="0/$(ver_cut 1-2)"
+KEYWORDS="~amd64"
+IUSE="sparse"
+
+RESTRICT="test"
+
+RDEPEND="
+	dev-util/hip:${SLOT}
+	sci-libs/rocSOLVER:${SLOT}
+	sci-libs/rocBLAS:${SLOT}
+	sparse? (
+		sci-libs/suitesparseconfig
+		sci-libs/rocSPARSE:${SLOT}
+		sci-libs/cholmod:=
+	)
+"
+DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-7.0.1-find-cholmod.patch
+)
+
+src_configure() {
+	rocm_use_clang
+
+	local mycmakeargs=(
+		-DGPU_TARGETS="$(get_amdgpu_flags)"
+		-DBUILD_FILE_REORG_BACKWARD_COMPATIBILITY=OFF
+		-DROCM_SYMLINK_LIBS=OFF
+		-DBUILD_WITH_SPARSE=$(usex sparse ON OFF)
+	)
+
+	cmake_src_configure
+}
