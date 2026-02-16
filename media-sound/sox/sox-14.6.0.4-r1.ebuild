@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -101,7 +101,6 @@ src_configure() {
 		$(use_with twolame)
 		$(use_with wavpack)
 
-		--with-dyn-default
 		--enable-replace # bug #960558
 		--disable-debug # user cflags
 		--with-distro="Gentoo"

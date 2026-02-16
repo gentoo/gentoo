@@ -93,7 +93,6 @@ src_configure() {
 		$(use_with twolame)
 		$(use_with wavpack)
 
-		--with-dyn-default
 		--enable-replace # bug #960558
 		--disable-debug # user cflags
 		--with-distro="Gentoo"
