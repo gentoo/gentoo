@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="designer">Build plugins for dev-qt/designer</flag>
+	</use>
+	<upstream>
+		<doc>https://mattbas.gitlab.io/Qt-Color-Widgets/</doc>
+		<remote-id type="gitlab">mattbas/Qt-Color-Widgets</remote-id>
+	</upstream>
+</pkgmetadata>
