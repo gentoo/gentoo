@@ -4,7 +4,6 @@
 EAPI=8
 
 CRATES=""
-RUST_MIN_VER="1.85.0"
 
 if [[ ${PV} != 9999 ]]; then
 	declare -A GIT_CRATES=(
@@ -12,6 +11,8 @@ if [[ ${PV} != 9999 ]]; then
 		[pcre2]='https://github.com/fish-shell/rust-pcre2;85b7afba1a9d9bd445779800e5bcafeb732e4421;rust-pcre2-%commit%'
 	)
 fi
+
+RUST_MIN_VER="1.85.0"
 
 inherit cargo cmake readme.gentoo-r1 xdg
 
@@ -37,16 +38,19 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2 BSD BSD-2 CC0-1.0 GPL-2+ ISC LGPL-2+ MIT PSF-2 ZLIB"
 # Dependent crate licenses
-LICENSE+=" Apache-2.0 MIT MPL-2.0 Unicode-3.0 WTFPL-2 ZLIB"
+LICENSE+=" Apache-2.0 MIT MPL-2.0 Unicode-3.0 ZLIB"
 SLOT="0"
 IUSE="+doc nls test"
 
 RESTRICT="!test? ( test )"
 
 BDEPEND="
+	virtual/pkgconfig
 	doc? ( dev-python/sphinx )
 	nls? ( sys-devel/gettext )
 "
+DEPEND="dev-libs/libpcre2[pcre32]"
+RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.4.0-use-cargo-eclass-for-build.patch"
