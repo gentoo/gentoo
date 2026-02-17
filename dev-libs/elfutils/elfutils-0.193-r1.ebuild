@@ -1,4 +1,4 @@
-# Copyright 2003-2025 Gentoo Authors
+# Copyright 2003-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,7 +28,7 @@ fi
 
 LICENSE="|| ( GPL-2+ LGPL-3+ ) utils? ( GPL-3+ )"
 SLOT="0"
-IUSE="bzip2 debuginfod +lzma nls static-libs stacktrace test +utils valgrind zstd"
+IUSE="bzip2 +debuginfod +lzma nls static-libs stacktrace test +utils valgrind zstd"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
