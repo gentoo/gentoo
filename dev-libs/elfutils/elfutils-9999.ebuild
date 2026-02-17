@@ -108,7 +108,8 @@ multilib_src_configure() {
 	local myeconfargs=(
 		$(use_enable nls)
 		$(multilib_native_use_enable debuginfod)
-		# Could do dummy if needed?
+		# Could do dummy if needed? We could also split libdebuginfod
+		# (client support) into its own USE if required.
 		$(use_enable debuginfod libdebuginfod)
 		$(multilib_native_use_enable stacktrace)
 		$(use_enable valgrind valgrind-annotations)
