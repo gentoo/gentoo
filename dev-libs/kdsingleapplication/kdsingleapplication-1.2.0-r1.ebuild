@@ -11,7 +11,7 @@ SRC_URI="https://github.com/KDAB/KDSingleApplication/releases/download/v${PV}/kd
 S="${WORKDIR}"/KDSingleApplication-${PV}
 
 LICENSE="BSD MIT"
-SLOT="0"
+SLOT="0/$(ver_cut 1-2)" # ${PROJECT_NAME}_SOVERSION
 KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 
 IUSE="doc examples test"
