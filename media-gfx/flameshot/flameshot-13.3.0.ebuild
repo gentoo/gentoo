@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0 Free-Art-1.3 GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="imgur wayland"
 
 DEPEND="
