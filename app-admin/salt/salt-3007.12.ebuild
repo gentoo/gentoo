@@ -8,7 +8,7 @@ DISTUTILS_USE_PEP517=setuptools
 inherit systemd distutils-r1
 
 DESCRIPTION="Salt is a remote execution and configuration manager"
-HOMEPAGE="https://www.saltstack.com/resources/community/
+HOMEPAGE="https://saltproject.io/
 	https://github.com/saltstack"
 
 if [[ ${PV} == 9999* ]]; then
