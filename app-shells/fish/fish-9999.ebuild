@@ -69,10 +69,8 @@ src_configure() {
 		-DWITH_DOCS="$(usex doc)"
 		-DWITH_MESSAGE_LOCALIZATION="$(usex nls 1 0)"
 	)
-	cargo_src_configure --no-default-features \
-		--bin fish \
-		--bin fish_indent \
-		--bin fish_key_reader
+
+	cargo_src_configure --no-default-features
 	cmake_src_configure
 }
 
@@ -86,6 +84,10 @@ src_compile() {
 
 	local -x FISH_BUILD_DOCS
 	FISH_BUILD_DOCS="$(usex doc 1 0)"
+
+	# HACK: Let the rust build script know we are using CMake.
+	# Bug: https://bugs.gentoo.org/970077
+	local -x FISH_CMAKE_BINARY_DIR="${BUILD_DIR}"
 
 	cargo_src_compile
 }
