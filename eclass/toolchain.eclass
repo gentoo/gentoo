@@ -1450,11 +1450,15 @@ toolchain_src_configure() {
 				;;
 			*-elf|*-eabi)
 				needed_libc=newlib
-				# Bare-metal targets don't have access to clock_gettime()
-				# arm-none-eabi example: bug #589672
-				# But we explicitly do --enable-libstdcxx-time above.
-				# Undoing it here.
-				confgcc+=( --disable-libstdcxx-time )
+				confgcc+=(
+					# Bare-metal targets don't have access to clock_gettime()
+					# arm-none-eabi example: bug #589672
+					# But we explicitly do --enable-libstdcxx-time above.
+					# Undoing it here.
+					--disable-libstdcxx-time
+					# bug #970098
+					--disable-libada
+				)
 				;;
 			*-gnu*)
 				needed_libc=glibc
