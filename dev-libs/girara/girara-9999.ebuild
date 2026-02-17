@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,7 +26,6 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	app-accessibility/at-spi2-core
 	>=dev-libs/glib-2.72:2
-	dev-libs/json-glib:=
 	media-libs/harfbuzz:=
 	x11-libs/cairo[glib]
 	x11-libs/gdk-pixbuf
@@ -55,7 +54,6 @@ src_configure() {
 	use X || append-flags -DGENTOO_GTK_HIDE_X11
 
 	local emesonargs=(
-		-Djson=enabled
 		$(meson_feature doc docs)
 		$(meson_feature test tests)
 	)
