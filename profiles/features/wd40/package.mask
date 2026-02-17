@@ -35,12 +35,38 @@ app-portage/emlop
 # Michał Górny <mgorny@gentoo.org> (2024-05-08)
 # Pure Python packages using dev-python/uv-build, and therefore
 # requiring Rust to install, and their reverse dependencies.
+dev-python/aiosmtpd
+dev-python/atpublic
+dev-python/crispy-bootstrap3
+dev-python/crispy-bootstrap4
+dev-python/crispy-bootstrap5
+dev-python/dj-database-url
+dev-python/django-configurations
+dev-python/django-crispy-forms
+dev-python/django-filter
+dev-python/django-polymorphic
+dev-python/django-tables2
+dev-python/djangorestframework
+dev-python/easy-thumbnails
+dev-python/flufl-lock
 dev-python/gherkin-official
+dev-python/logfury
+dev-python/mkdocs-gen-files
+dev-python/pykwalify
 dev-python/pytest-bdd
 dev-python/pytest-describe
+dev-python/pytest-django
+dev-python/pytest-golden
+dev-python/sphinxcontrib-doxylink
 >=dev-python/sphinxcontrib-httpdomain-2.0
+dev-python/sybil
+dev-python/testfixtures
 dev-python/uv-build
 dev-python/zmq-anyio
+net-analyzer/fail2ban
+sci-libs/cartopy
+sci-libs/pcl
+sci-visualization/pythonprop
 sys-auth/ssh-ldap-pubkey
 
 # Sebastian Pipping <sping@gentoo.org> (2025-06-20)
