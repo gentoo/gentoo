@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,6 +20,5 @@ DEPEND="
 	dev-ml/core:${SLOT}[ocamlopt?]
 	dev-ml/ppx_jane:${SLOT}[ocamlopt?]
 	>=dev-ml/uutf-1.0.2:=[ocamlopt?]
-	>=dev-ml/dune-3.11
 "
 RDEPEND="${DEPEND}"
