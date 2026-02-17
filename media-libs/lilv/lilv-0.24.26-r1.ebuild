@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 IUSE="doc python test tools"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
@@ -30,7 +30,7 @@ BDEPEND="
 "
 # Take care on bumps to check minimum versions!
 RDEPEND="
-	${PYTHON_DEPS}
+	python? ( ${PYTHON_DEPS} )
 	>=dev-libs/serd-0.30.10[${MULTILIB_USEDEP}]
 	>=dev-libs/sord-0.16.16[${MULTILIB_USEDEP}]
 	>=dev-libs/zix-0.6.0[${MULTILIB_USEDEP}]
@@ -41,7 +41,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 pkg_setup() {
-	python_setup
+	use python && python-single-r1_python_setup
 }
 
 src_prepare() {
@@ -64,7 +64,7 @@ multilib_src_configure() {
 
 multilib_src_install() {
 	meson_src_install
-	python_optimize
+	use python && python_optimize
 }
 
 multilib_src_install_all() {
