@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ IUSE="+ocamlopt"
 RESTRICT="test"
 
 RDEPEND="
-	>=dev-ml/dune-3.12
+	>=dev-ml/dune-3.18
 	dev-ml/csexp:=[ocamlopt?]
 	!dev-ml/dune-private-libs
 	!dev-ml/stdune
