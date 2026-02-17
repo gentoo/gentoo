@@ -18,7 +18,7 @@ else
 		https://www.libssh.org/files/$(ver_cut 1-2)/${P}.tar.xz
 		verify-sig? ( https://www.libssh.org/files/$(ver_cut 1-2)/${P}.tar.xz.asc )
 	"
-	KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~loong ~mips ~ppc ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc ~x86"
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-libssh )"
 fi
 
