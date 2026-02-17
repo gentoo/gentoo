@@ -1,0 +1,18 @@
+https://bugs.gentoo.org/970010
+--- a/kernel-module-source/kernel-open/nvidia-uvm/uvm_hmm.c
++++ b/kernel-module-source/kernel-open/nvidia-uvm/uvm_hmm.c
+@@ -22,4 +22,5 @@
+ *******************************************************************************/
+ 
++#include <linux/version.h>
+ #include "uvm_hmm.h"
+ 
+@@ -79,5 +80,7 @@
+ // function will need to be revisited
+ //
+-#if defined(NV_ZONE_DEVICE_PAGE_INIT_HAS_ORDER_ARG)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 19, 0)
++#define ZONE_DEVICE_PAGE_INIT(page)   zone_device_page_init(page, page_pgmap(page), 0);
++#elif defined(NV_ZONE_DEVICE_PAGE_INIT_HAS_ORDER_ARG)
+ #define ZONE_DEVICE_PAGE_INIT(page)   zone_device_page_init(page, 0)
+ #else
