@@ -83,10 +83,6 @@ RDEPEND="
 	keyring? ( >=dev-python/keyring-5.7.1[${PYTHON_USEDEP}] )
 	redis? ( >=dev-python/redis-3.5.3[${PYTHON_USEDEP}] )
 	selinux? ( sec-policy/selinux-salt )
-	nova? (
-		>=dev-python/python-novaclient-2.6.1[${PYTHON_USEDEP}]
-		<=dev-python/python-novaclient-6.0.1[${PYTHON_USEDEP}]
-	)
 	profile? ( dev-python/yappi[${PYTHON_USEDEP}] )
 	vim-syntax? ( app-vim/salt-vim )
 	zeromq? ( >=dev-python/pyzmq-25.1.2[${PYTHON_USEDEP}] )
@@ -146,6 +142,15 @@ PATCHES=(
 	"${FILESDIR}/salt-3007.10-tests-without-systemd.patch"
 	"${FILESDIR}/salt-3007.10-use-tomllib-and-tomli_w.patch"
 )
+
+pkg_pretend() {
+	if use nova ; then
+		ewarn " "
+		ewarn "OpenStack Nova support requested but is currently not available."
+		ewarn "If you require it, please file a bug at https://bugs.gentoo.org/"
+		ewarn " "
+	fi
+}
 
 python_prepare_all() {
 	local -a remove_test_files=(
