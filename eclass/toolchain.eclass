@@ -1779,6 +1779,10 @@ toolchain_src_configure() {
 		fi
 	fi
 
+	if in_iuse ada ; then
+		confgcc+=( $(use_enable ada libada) )
+	fi
+
 	if in_iuse cet ; then
 		# Usage: triple_arch triple_env cet_name
 		enable_cet_for() {
