@@ -1,0 +1,79 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+inherit autotools flag-o-matic
+
+DESCRIPTION="GNU Linear Programming Kit"
+HOMEPAGE="https://www.gnu.org/software/glpk/"
+SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
+
+LICENSE="GPL-3"
+SLOT="0/40"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+IUSE="doc examples gmp mysql"
+
+BDEPEND="virtual/pkgconfig"
+DEPEND="
+	sci-libs/amd:0=
+	sci-libs/colamd:=
+	virtual/zlib:=
+	gmp? ( dev-libs/gmp:0= )
+	mysql? (
+		dev-db/mysql-connector-c
+		dev-libs/libltdl
+	)"
+RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.65-fix-mysql-include-prefix.patch
+	"${FILESDIR}"/${PN}-4.65-debundle-system-libs.patch
+	"${FILESDIR}"/${PN}-5.0-aliasing.patch
+)
+
+src_prepare() {
+	# Newer GNU standards fail to compile thanks to "bool", while using
+	# ISO C17 breaks thread safety... and also fails to compile.
+	append-cflags -std=gnu17
+
+	default
+
+	eautoreconf
+}
+
+src_configure() {
+	econf --disable-static \
+		--disable-odbc \
+		$(use_enable mysql dl) \
+		$(use_enable mysql) \
+		$(use_with gmp)
+}
+
+src_install() {
+	default
+
+	if use examples; then
+		# The top-level Makefile descends into the "examples" directory
+		# unconditionally, building a program and excreting build
+		# artifacts that we don't want to install. Note: this still
+		# leaves the example program /usr/bin/glpsol installed. An
+		# additional "emake ... uninstall" could probably take care
+		# of that if desired.
+		emake -C examples clean
+
+		# Installing the Makefiles for the examples does the user no
+		# good without the top-level Makefile.
+		rm examples/Makefile{.in,.am,} \
+			|| die "failed to remove example Makefiles"
+
+		insinto "/usr/share/doc/${PF}"
+		doins -r examples
+		docompress -x "/usr/share/doc/${PF}/examples"
+	fi
+
+	use doc && dodoc doc/*.pdf doc/notes/*.pdf doc/*.txt
+
+	# no static archives
+	find "${D}" -name '*.la' -delete || die
+}
