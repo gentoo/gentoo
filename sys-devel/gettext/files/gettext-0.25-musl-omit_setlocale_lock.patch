@@ -1,0 +1,37 @@
+OMIT_SETLOCALE_LOCK should be true when gl_get_setlocale_null_lock is provided by a dependency library, like GNU libintl.
+On Gentoo musl we use musl's libintl and gl_get_setlocale_null_lock is not provided by it, therefore we set OMIT_SETLOCALE_LOCK to 0.
+
+To properly fix this we should do AC_SEARCH_LIBS([gl_get_setlocale_null_lock], [intl], ...) in automake, but instead we do this 
+hack to not get complacent. This should be fixed upstream.
+
+https://savannah.gnu.org/bugs/index.php?62659#comment7
+https://bugs.gentoo.org/830590
+diff --git a/gettext-tools/libgettextpo/Makefile.am b/gettext-tools/libgettextpo/Makefile.am
+index 971d136..740c455 100644
+--- a/gettext-tools/libgettextpo/Makefile.am
++++ b/gettext-tools/libgettextpo/Makefile.am
+@@ -42,7 +42,7 @@ AM_CPPFLAGS = \
+   -I../src -I$(top_srcdir)/src \
+   -I../../gettext-runtime/intl -I$(top_srcdir)/../gettext-runtime/intl
+
+-DEFS = -DIN_LIBGETTEXTPO=1 -DOMIT_SETLOCALE_LOCK=1 @DEFS@
++DEFS = -DIN_LIBGETTEXTPO=1 -DOMIT_SETLOCALE_LOCK=0 @DEFS@
+
+ # Enable more warning options in this directory.
+ AM_CFLAGS = @WARN_CFLAGS@
+diff --git a/gettext-tools/libgettextpo/Makefile.in b/gettext-tools/libgettextpo/Makefile.in
+index 0e655ea..57bb2c5 100644
+--- a/gettext-tools/libgettextpo/Makefile.in
++++ b/gettext-tools/libgettextpo/Makefile.in
+@@ -1376,7 +1376,7 @@ CXX_HAS_CHAR8_TYPE = @CXX_HAS_CHAR8_TYPE@
+ CXX_HAS_UCHAR_TYPES = @CXX_HAS_UCHAR_TYPES@
+ CYGPATH_W = @CYGPATH_W@
+ DC = @DC@
+-DEFS = -DIN_LIBGETTEXTPO=1 -DOMIT_SETLOCALE_LOCK=1 @DEFS@
++DEFS = -DIN_LIBGETTEXTPO=1 -DOMIT_SETLOCALE_LOCK=0 @DEFS@
+ DEPDIR = @DEPDIR@
+ DESIRED_LINGUAS = @DESIRED_LINGUAS@
+ DFLAGS = @DFLAGS@
+-- 
+2.35.1
+
