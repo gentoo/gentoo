@@ -23,15 +23,13 @@ RDEPEND="
 	>=dev-python/atpublic-4.0[${PYTHON_USEDEP}]
 	>=dev-python/attrs-23.2.0[${PYTHON_USEDEP}]
 "
-BDEPEND="
-	test? ( >=dev-python/pytest-mock-3.12.0[${PYTHON_USEDEP}] )
-"
 
 EPYTEST_DESELECT=(
 	# Needs dev-vcs/git
 	aiosmtpd/qa/test_0packaging.py::TestVersion
 )
 
+EPYTEST_PLUGINS=( pytest-mock )
 distutils_enable_tests pytest
 
 python_prepare_all() {
@@ -51,6 +49,5 @@ python_test() {
 			;;
 	esac
 
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -p pytest_mock
+	epytest
 }
