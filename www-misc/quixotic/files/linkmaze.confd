@@ -1,0 +1,10 @@
+# May wish to run it as the same user as your webserver so it has access
+# to training data.
+#LINKMAZE_USER="nginx"
+LINKMAZE_USER="nobody"
+
+# --linkpath controls which paths belong to linkmaze
+# e.g. if webserver proxies /foo/ to linkmaze, then --linkpath should be foo.
+#
+# --train is for training data, point it to a collection of HTML files
+LINKMAZE_ARGS="--linkpath linkmaze --train /path/to/training/data --listen-addr 127.0.0.1 --listen-port 3005"

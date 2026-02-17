@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+# Copyright 2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name=linkmaze
+pidfile=/run/linkmaze.pid
+command=/usr/bin/linkmaze
+command_background=true
+command_user="${LINKMAZE_USER}"
+retry="TERM/10/KILL/5"
+command_args="${LINKMAZE_ARGS}"
+
+start_stop_daemon_args="--wait 300"

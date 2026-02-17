@@ -255,4 +255,6 @@ src_install() {
 	cargo_src_install
 
 	systemd_dounit linkmaze.service
+	newinitd "${FILESDIR}"/linkmaze.initd linkmaze
+	newconfd "${FILESDIR}"/linkmaze.confd linkmaze
 }
