@@ -20,7 +20,7 @@ else
 	"
 	S="${WORKDIR}/${PN}"
 
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-dwz )"
 fi
 
