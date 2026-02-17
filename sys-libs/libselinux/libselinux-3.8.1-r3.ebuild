@@ -168,8 +168,10 @@ python_install() {
 
 multilib_src_test() {
 	default
-	if use python; then
-		distutils-r1_src_test
+	if multilib_is_native_abi; then
+		if use python; then
+			distutils-r1_src_test
+		fi
 	fi
 }
 
