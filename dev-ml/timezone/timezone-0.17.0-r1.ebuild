@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,4 +20,3 @@ RDEPEND="
 	dev-ml/ppx_jane:${SLOT}[ocamlopt?]
 "
 DEPEND="${RDEPEND}"
-BDEPEND=">=dev-ml/dune-3.11"
