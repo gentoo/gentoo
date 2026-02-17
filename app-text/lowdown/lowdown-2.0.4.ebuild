@@ -60,6 +60,7 @@ src_configure() {
 	unset MAKEFLAGS
 
 	export MAKEOPTS="-j${jobs}"
+	export MAKEFLAGS= #966238
 	export MAKE=bmake
 
 	./configure \
