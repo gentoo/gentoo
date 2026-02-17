@@ -157,8 +157,8 @@ PDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-11.0.0-Fix-paths-in-libvirt-guests.sh.in.patch
-	"${FILESDIR}"/${PN}-11.3.0-do-not-use-sysconfig.patch
 	"${FILESDIR}"/${PN}-11.3.0-fix-paths-for-apparmor.patch
+	"${FILESDIR}"/${PN}-12.1.0-do-not-use-sysconfig.patch
 )
 
 python_check_deps() {
