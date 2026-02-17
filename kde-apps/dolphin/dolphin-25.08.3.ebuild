@@ -8,7 +8,7 @@ ECM_TEST="true"
 PVCUT=$(ver_cut 1-3)
 KFMIN=6.16.0
 QTMIN=6.9.1
-inherit ecm gear.kde.org optfeature xdg
+inherit ecm flag-o-matic gear.kde.org optfeature xdg
 
 DESCRIPTION="Plasma filemanager focusing on usability"
 HOMEPAGE="https://apps.kde.org/dolphin/ https://userbase.kde.org/Dolphin"
@@ -68,6 +68,8 @@ CMAKE_SKIP_TESTS=(
 )
 
 src_configure() {
+	use elibc_musl && append-ldflags -Wl,-z,stack-size=0x100000 # upstream bug 470763
+
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_PackageKitQt6=ON
 		$(cmake_use_find_package semantic-desktop KF6Baloo)
