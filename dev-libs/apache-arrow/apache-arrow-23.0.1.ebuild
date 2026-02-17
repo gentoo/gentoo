@@ -5,19 +5,32 @@ EAPI=8
 
 # Note: upstream meson port is incomplete.
 # https://github.com/apache/arrow/issues/45778
-inherit cmake git-r3
+inherit cmake
+
+# arrow.git: testing
+ARROW_DATA_GIT_HASH=725fd4a4b12d01c53c98e80274c0b23aa8397082
+# arrow.git: cpp/submodules/parquet-testing
+PARQUET_DATA_GIT_HASH=a3d96a65e11e2bbca7d22a894e8313ede90a33a3
 
 DESCRIPTION="A cross-language development platform for in-memory data"
 HOMEPAGE="
 	https://arrow.apache.org/
 	https://github.com/apache/arrow/
 "
-EGIT_REPO_URI="https://github.com/apache/arrow.git"
-EGIT_SUBMODULES=( '*' )
+SRC_URI="
+	mirror://apache/arrow/arrow-${PV}/${P}.tar.gz
+	test? (
+		https://github.com/apache/parquet-testing/archive/${PARQUET_DATA_GIT_HASH}.tar.gz
+			-> parquet-testing-${PARQUET_DATA_GIT_HASH}.tar.gz
+		https://github.com/apache/arrow-testing/archive/${ARROW_DATA_GIT_HASH}.tar.gz
+			-> arrow-testing-${ARROW_DATA_GIT_HASH}.tar.gz
+	)
+"
 S="${WORKDIR}/${P}/cpp"
 
 LICENSE="Apache-2.0"
 SLOT="0/$(ver_cut 1)"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~riscv ~s390 ~x86"
 IUSE="
 	+brotli bzip2 +compute +dataset +json lz4 +parquet +re2 +snappy ssl
 	test zlib zstd
@@ -103,8 +116,8 @@ src_configure() {
 }
 
 src_test() {
-	local -x PARQUET_TEST_DATA="${WORKDIR}/${P}/cpp/submodules/parquet-testing/data"
-	local -x ARROW_TEST_DATA="${WORKDIR}/${P}/testing/data"
+	local -x PARQUET_TEST_DATA="${WORKDIR}/parquet-testing-${PARQUET_DATA_GIT_HASH}/data"
+	local -x ARROW_TEST_DATA="${WORKDIR}/arrow-testing-${ARROW_DATA_GIT_HASH}/data"
 	cmake_src_test
 }
 
