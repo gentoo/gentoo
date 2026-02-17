@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}-core-${MY_PV}"
 
 LICENSE="BSD"
 SLOT="5"
-KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm64 ppc ~ppc64 x86"
 
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 RDEPEND="
