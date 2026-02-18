@@ -8,7 +8,7 @@ LLVM_OPTIONAL=1
 CARGO_OPTIONAL=1
 PYTHON_COMPAT=( python3_{11..14} )
 
-inherit flag-o-matic llvm-r1 meson-multilib python-any-r1 linux-info
+inherit flag-o-matic llvm-r2 meson-multilib python-any-r1 linux-info
 
 MY_P="${P/_/-}"
 
@@ -263,7 +263,7 @@ pkg_setup() {
 		linux-info_pkg_setup
 	fi
 
-	use llvm && llvm-r1_pkg_setup
+	use llvm && llvm-r2_pkg_setup
 	python-any-r1_pkg_setup
 
 	if use opencl || (use vulkan && use video_cards_nvk); then
