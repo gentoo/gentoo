@@ -1,0 +1,34 @@
+https://github.com/libunwind/libunwind/commit/bfc0d618f72ba4b725c3735188e0a6d8c710411c
+
+From bfc0d618f72ba4b725c3735188e0a6d8c710411c Mon Sep 17 00:00:00 2001
+From: Stephen Webb <stephen.webb@bregmasoft.ca>
+Date: Tue, 9 Sep 2025 10:18:21 -0400
+Subject: [PATCH] Fix stray `-lc` in configure
+
+When configure is run with --enable-cxx-exceptions a stray `-lc` has
+wandered into the execution path. While it doesn't hurt anything if
+gives a disturbing error message.
+---
+ configure.ac | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 63d12ac02..9e79558ca 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -306,10 +306,12 @@ AM_CONDITIONAL([SUPPORT_CXX_EXCEPTIONS], [test x$enable_cxx_exceptions = xyes])
+ AM_COND_IF([SUPPORT_CXX_EXCEPTIONS],
+            [save_LDFLAGS="$LDFLAGS"
+             LDFLAGS="${LDFLAGS} -nostdlib"
+-            AC_SEARCH_LIBS([_Unwind_Resume], [gcc_s gcc],
++            AC_SEARCH_LIBS([_Unwind_Resume],
++                           [gcc_s gcc],
+                            [AS_IF([test "$ac_cv_search__Unwind_Resume" != "none required"],
+                                   [AC_SUBST([UNW_CRT_LIBADD],  ["-lc $ac_cv_search__Unwind_Resume"])
+-                                   AC_SUBST([UNW_CRT_LDFLAGS], ["-WCClinker -nostdlib"])])]
++                                   AC_SUBST([UNW_CRT_LDFLAGS], ["-WCClinker -nostdlib"])])
++                           ],,
+                            [-lc])
+             LDFLAGS="$save_LDFLAGS"]
+ )
+
