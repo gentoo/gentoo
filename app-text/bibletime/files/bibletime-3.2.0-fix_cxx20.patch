@@ -1,0 +1,38 @@
+Fix c++20 (gcc-16/qt6.10)
+See https://github.com/bibletime/bibletime/issues/539
+and https://github.com/bibletime/bibletime/commit/13ed64c.patch
+--- a/src/backend/keys/cswordtreekey.h
++++ b/src/backend/keys/cswordtreekey.h
+@@ -50,11 +50,12 @@ class CSwordTreeKey final : public CSwordKey {
+     public:
+ 
+         #define BibleTime_CSwordTreeKey_DEFINE_COMP(op) \
+-            friend bool operator op(CSwordTreeKey const & lhs, \
++            friend auto operator op(CSwordTreeKey const & lhs, \
+                                     CSwordTreeKey const & rhs) \
+             { return lhs.offset() op rhs.offset(); }
+         #if __cpp_impl_three_way_comparison >= 201907L
+         BibleTime_CSwordTreeKey_DEFINE_COMP(<=>)
++        BibleTime_CSwordTreeKey_DEFINE_COMP(==)
+         #else
+         BibleTime_CSwordTreeKey_DEFINE_COMP(<)
+         BibleTime_CSwordTreeKey_DEFINE_COMP(<=)
+--- a/src/backend/keys/cswordversekey.h
++++ b/src/backend/keys/cswordversekey.h
+@@ -71,7 +71,7 @@ class CSwordVerseKey final : public CSwordKey {
+     public: // methods:
+ 
+         #define BibleTime_CSwordVerseKey_DEFINE_COMP(op) \
+-            friend bool operator op(CSwordVerseKey const & lhs, \
++            friend auto operator op(CSwordVerseKey const & lhs, \
+                                     CSwordVerseKey const & rhs) \
+             { \
+                 return std::tuple(lhs.testament(), lhs.book(), lhs.chapter(), \
+@@ -81,6 +81,7 @@ class CSwordVerseKey final : public CSwordKey {
+             }
+         #if __cpp_impl_three_way_comparison >= 201907L
+         BibleTime_CSwordVerseKey_DEFINE_COMP(<=>)
++        BibleTime_CSwordVerseKey_DEFINE_COMP(==)
+         #else
+         BibleTime_CSwordVerseKey_DEFINE_COMP(<)
+         BibleTime_CSwordVerseKey_DEFINE_COMP(<=)

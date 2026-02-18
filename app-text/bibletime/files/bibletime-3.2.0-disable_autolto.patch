@@ -1,0 +1,19 @@
+Respect user-flags for LTO
+--- a/cmake/BTApplication.cmake
++++ b/cmake/BTApplication.cmake
+@@ -110,15 +110,6 @@ IF(BUILD_TEXT_TO_SPEECH)
+ ENDIF()
+ SET_TARGET_PROPERTIES("bibletime" PROPERTIES CXX_EXTENSIONS NO)
+ 
+-SET(CMAKE_REQUIRED_QUIET TRUE)
+-INCLUDE(CheckIPOSupported)
+-CHECK_IPO_SUPPORTED(RESULT HAVE_IPO)
+-MESSAGE(STATUS "Using interprocedural optimization: ${HAVE_IPO}")
+-IF(HAVE_IPO)
+-    SET_TARGET_PROPERTIES("bibletime" PROPERTIES
+-        INTERPROCEDURAL_OPTIMIZATION TRUE)
+-ENDIF()
+-
+ INCLUDE(CheckCXXCompilerFlag)
+ FOREACH(flag IN ITEMS
+     "-Walloca"
