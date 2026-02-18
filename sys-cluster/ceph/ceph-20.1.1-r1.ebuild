@@ -227,6 +227,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-19.2.2-silent-unused-variable-warning.patch"
 	"${FILESDIR}/ceph-19.2.2-src-mgr-make-enum-statically-castable.patch"
 	"${FILESDIR}/ceph-20.1.0-nvmeof.patch"
+	"${FILESDIR}/ceph-20.1.1-always-lua.patch" # bug 934599
 	"${FILESDIR}/ceph-20.1.1-boost-url-linking.patch"
 	# https://bugs.gentoo.org/969039
 	"${FILESDIR}"/ceph-20.1.1-boost-1.89-{1,2,3}.patch

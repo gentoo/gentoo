@@ -1,0 +1,11 @@
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -628,7 +628,7 @@
+ add_subdirectory(global)
+ 
+ # RGW also support Lua scripting
+-if(WITH_CEPHFS OR WITH_RADOSGW)
++if(1)
+   find_package(Lua 5.3 REQUIRED)
+ endif()
+ 
