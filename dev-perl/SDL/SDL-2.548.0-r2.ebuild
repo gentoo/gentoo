@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ HOMEPAGE="http://sdl.perl.org/ https://search.cpan.org/dist/SDL/ https://github.
 
 LICENSE="GPL-2 OFL-1.1"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~x86"
+KEYWORDS="amd64 ~hppa x86"
 
 RDEPEND="
 	>=dev-perl/Alien-SDL-1.446
