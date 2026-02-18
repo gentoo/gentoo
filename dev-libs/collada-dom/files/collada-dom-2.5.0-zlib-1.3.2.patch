@@ -1,0 +1,17 @@
+(part of a downstream quickfix batch, may still need to be looked at upstream)
+
+https://bugs.gentoo.org/970227
+--- a/dom/include/dae/daeZAEUncompressHandler.h
++++ b/dom/include/dae/daeZAEUncompressHandler.h
+@@ -11,3 +11,3 @@
+ 
+-#include <unzip.h>
++#include <minizip/unzip.h>
+ #include <libxml/xmlreader.h>
+--- a/dom/src/modules/LIBXMLPlugin/daeLIBXMLPlugin.cpp
++++ b/dom/src/modules/LIBXMLPlugin/daeLIBXMLPlugin.cpp
+@@ -34,3 +34,3 @@
+ 
+-#include <zip.h> // for saving compressed files
++#include <minizip/zip.h> // for saving compressed files
+ #ifdef _WIN32

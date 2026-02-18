@@ -33,6 +33,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fix-int-return-type.patch
 	"${FILESDIR}"/${P}-unique_ptr.patch
 	"${FILESDIR}"/${P}-cmake4.patch
+	"${FILESDIR}"/${PN}-2.5.0-zlib-1.3.2.patch
 )
 
 src_configure() {

@@ -29,6 +29,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-boost-1.{85,89}.patch # bugs 932316, 968458
+	"${FILESDIR}"/${PN}-2.5.0-zlib-1.3.2.patch
 )
 
 src_configure() {
