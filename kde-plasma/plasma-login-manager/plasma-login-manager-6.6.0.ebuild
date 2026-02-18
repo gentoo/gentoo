@@ -7,7 +7,7 @@ KFMIN=6.22.0
 QTMIN=6.10.0
 inherit ecm plasma.kde.org linux-info pam tmpfiles
 
-DESCRIPTION="Simple Desktop Display Manager"
+DESCRIPTION="Plasma Login Manager"
 HOMEPAGE="https://invent.kde.org/plasma/plasma-login-manager"
 
 LICENSE="GPL-2+ MIT CC-BY-3.0 CC-BY-SA-3.0 public-domain"
