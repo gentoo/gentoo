@@ -12,6 +12,7 @@ HOMEPAGE="https://invent.kde.org/plasma/plasma-login-manager"
 
 LICENSE="GPL-2+ MIT CC-BY-3.0 CC-BY-SA-3.0 public-domain"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

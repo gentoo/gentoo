@@ -1,5 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2026-02-18)
+# Needs systemd so unmasked in targets/systemd
+kde-plasma/plasma-login-manager
 
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-11-28)
 # Requires media-libs/openjph #966735
