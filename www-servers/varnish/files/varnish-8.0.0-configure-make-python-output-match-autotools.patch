@@ -1,0 +1,45 @@
+# https://bugs.gentoo.org/882725
+# https://code.vinyl-cache.org/vinyl-cache/vinyl-cache/pulls/4451
+
+From 3565765b8b2fbc854432fa0ce7b5ca2facc0a7b8 Mon Sep 17 00:00:00 2001
+From: Brett A C Sheffield <bacs@librecast.net>
+Date: Mon, 16 Feb 2026 19:50:32 +0100
+Subject: [PATCH] configure: make python output match autotools
+
+When calling out from configure to python to check compiler flags, make
+output from wflags.py consistent with the rest of autotools output
+rather than printing scary compiler errors.
+---
+ wflags.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/wflags.py b/wflags.py
+index 1c1da40d0..da799f9cd 100644
+--- a/wflags.py
++++ b/wflags.py
+@@ -108,19 +108,19 @@ def main():
+ 
+     use_flags = []
+     for i in DESIRABLE_OPTIONS + DESIRABLE_WFLAGS + UNDESIRABLE_WFLAGS:
++        sys.stderr.write("checking whether C compiler accepts " + i + "... ")
+         j = cc(compiler, i, obj_file.name, src_file.name)
+         if not j:
+             use_flags.append(i)
++            sys.stderr.write("yes\n")
+         else:
+-            sys.stderr.write(compiler + " cannot " + i + '\n')
++            sys.stderr.write(" no\n")
+             if b'error: unrecognized command line option' in j:
+                 # LLVM
+                 pass
+             elif b'warning: unknown warning option' in j:
+                 # GCC
+                 pass
+-            else:
+-                sys.stderr.write("\n\t" + j.decode('utf8') + '\n')
+     print(" ".join(use_flags))
+ 
+ if __name__ == "__main__":
+-- 
+2.52.0
+

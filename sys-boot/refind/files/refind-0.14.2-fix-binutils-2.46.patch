@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/970041
+
+In binutils 2.46, objcopy became more strict with what it accepts as target.
+
+--- a/Make.common
++++ b/Make.common
+@@ -121,8 +121,8 @@
+ # objcopy flags for GNU-EFI
+ #
+ 
+-FORMAT          = --target=efi-app-$(ARCH)
+-FORMAT_DRIVER   = --target=efi-bsdrv-$(ARCH)
++FORMAT          = --output-target=efi-app-$(ARCH)
++FORMAT_DRIVER   = --output-target=efi-bsdrv-$(ARCH)
+ 
+ #
+ # Modifications on a per-architecture basis....

@@ -1,0 +1,80 @@
+>From 07efee1de2dac1b2a6ce29698b2abec9dd1f6820 Mon Sep 17 00:00:00 2001
+Message-ID: <07efee1de2dac1b2a6ce29698b2abec9dd1f6820.1771055590.git.gniibe@fsij.org>
+In-Reply-To: <43b648f0465fb449471944a84bb40f45996f6de3.1771055590.git.gniibe@fsij.org>
+References: <43b648f0465fb449471944a84bb40f45996f6de3.1771055590.git.gniibe@fsij.org>
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Sat, 14 Feb 2026 16:49:05 +0900
+Subject: [PATCH 3/3] cipher:ecc: Fix Weierstrass curve with PUBKEY_FLAG_PARAM.
+To: gcrypt-devel@gnupg.org
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="------------2.47.3"
+
+This is a multi-part message in MIME format.
+--------------2.47.3
+Content-Type: text/plain; charset=UTF-8; format=fixed
+Content-Transfer-Encoding: 8bit
+
+
+* cipher/ecc-curves.c (point_from_keyparam): Handle the case where
+EC==NULL.
+* cipher/ecc-misc.c (_gcry_ecc_sec_decodepoint): Care about
+EC==NULL.
+
+--
+
+GnuPG-bug-id: 8094
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+---
+ cipher/ecc-curves.c | 6 +++++-
+ cipher/ecc-misc.c   | 4 ++--
+ 2 files changed, 7 insertions(+), 3 deletions(-)
+
+
+--------------2.47.3
+Content-Type: text/x-patch; name="0003-cipher-ecc-Fix-Weierstrass-curve-with-PUBKEY_FLAG_PA.patch"
+Content-Transfer-Encoding: 8bit
+Content-Disposition: attachment; filename="0003-cipher-ecc-Fix-Weierstrass-curve-with-PUBKEY_FLAG_PA.patch"
+
+diff --git a/cipher/ecc-curves.c b/cipher/ecc-curves.c
+index 5478e69d..08b374d5 100644
+--- a/cipher/ecc-curves.c
++++ b/cipher/ecc-curves.c
+@@ -991,7 +991,11 @@ point_from_keyparam (gcry_mpi_point_t *r_a,
+       if (!a)
+         return GPG_ERR_INV_OBJ;
+ 
+-      point = mpi_point_new (ec->nbits);
++      /* NOTE: EC may be NULL, when it's for Weierstrass curve for
++       * parameter "g".  And it's OK for _gcry_mpi_ec_decode_point
++       * (and _gcry_ecc_sec_decodepoint) to be called with EC=NULL.
++       */
++      point = mpi_point_new (ec? ec->nbits: 0);
+       rc = _gcry_mpi_ec_decode_point (point, a, ec);
+       mpi_free (a);
+       if (rc)
+diff --git a/cipher/ecc-misc.c b/cipher/ecc-misc.c
+index 40303ac4..615b0df2 100644
+--- a/cipher/ecc-misc.c
++++ b/cipher/ecc-misc.c
+@@ -176,7 +176,7 @@ _gcry_mpi_ec_ec2os (gcry_mpi_point_t point, mpi_ec_t ec)
+    RESULT must have been initialized and is set on success to the
+    point given by VALUE.  */
+ gpg_err_code_t
+-_gcry_ecc_sec_decodepoint  (gcry_mpi_t value, mpi_ec_t ec, mpi_point_t result)
++_gcry_ecc_sec_decodepoint (gcry_mpi_t value, mpi_ec_t ec, mpi_point_t result)
+ {
+   gpg_err_code_t rc;
+   size_t n;
+@@ -220,7 +220,7 @@ _gcry_ecc_sec_decodepoint  (gcry_mpi_t value, mpi_ec_t ec, mpi_point_t result)
+       gcry_mpi_t p1_4;
+       int y_bit = (*buf == 3);
+ 
+-      if (!mpi_test_bit (ec->p, 1))
++      if (ec == NULL || !mpi_test_bit (ec->p, 1))
+         {
+           xfree (buf_memory);
+           return GPG_ERR_NOT_IMPLEMENTED; /* No support for point compression.  */
+
+--------------2.47.3--
+
+

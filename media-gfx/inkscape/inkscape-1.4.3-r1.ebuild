@@ -20,7 +20,7 @@ if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://gitlab.com/inkscape/inkscape.git"
 else
 	SRC_URI="https://media.inkscape.org/dl/resources/file/${MY_P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 S="${WORKDIR}/${MY_P}"
@@ -113,7 +113,7 @@ DEPEND="${COMMON_DEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}"/${P}-poppler-26.01.patch # in git master
+	"${FILESDIR}"/${P}-poppler-26.0{1,1-warnings,2}.patch # in git master, pending MR
 	"${FILESDIR}"/${P}-libcroco-cmake-minreqver-3.12.patch # bug 965915
 )
 

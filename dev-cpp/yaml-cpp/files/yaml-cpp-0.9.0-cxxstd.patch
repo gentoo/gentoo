@@ -1,4 +1,4 @@
-dev-cpp/gtest requires c++ 14+
+dev-cpp/gtest requires c++ 17+
 https://github.com/jbeder/yaml-cpp/pull/1374
 
 --- a/CMakeLists.txt
@@ -8,7 +8,7 @@ https://github.com/jbeder/yaml-cpp/pull/1374
    set_target_properties(yaml-cpp
      PROPERTIES
 -      CXX_STANDARD 11)
-+      CXX_STANDARD 14)
++      CXX_STANDARD 17)
  endif()
  
  if(YAML_CPP_MAIN_PROJECT)
@@ -19,7 +19,7 @@ https://github.com/jbeder/yaml-cpp/pull/1374
  set_property(TARGET yaml-cpp-tests PROPERTY CXX_STANDARD_REQUIRED ON)
  if (NOT DEFINED CMAKE_CXX_STANDARD)
 -  set_target_properties(yaml-cpp-tests PROPERTIES CXX_STANDARD 11)
-+  set_target_properties(yaml-cpp-tests PROPERTIES CXX_STANDARD 14)
++  set_target_properties(yaml-cpp-tests PROPERTIES CXX_STANDARD 17)
  endif()
  
  

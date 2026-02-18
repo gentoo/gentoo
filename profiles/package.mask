@@ -36,6 +36,40 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-15)
+# Masked for testing and possible libvlc revdeps breakage.
+~media-video/vlc-4.0.0_pre20260215
+
+# Conrad Kostecki <conikost@gentoo.org> (2026-02-15)
+# Supports only Qt5 and upstream not making any progress towards Qt6.
+# Removal on 2026-03-01. Bug #953260.
+x11-misc/projecteur
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2026-02-10)
+# Unused Java library. Upstream is gone. SRC_URI points to
+# 'https://dev.gentoo.org/~monsieurp' which does not exist.
+# Last consumer was net-p2p/freenet-0.7.5_p1503-r2.
+# Removal on 2026-03-10. Bug #969322.
+dev-java/fec
+
+# Thomas Beierlein <tomjbe@gentoo.org> (2026-02-14)
+# Move ebuild versioning to classical x.y.z number scheme
+# Should be kept until net-wireless/sdrplay-3.15.2 (dep for coming
+# new version) gets stable.
+>=net-wireless/soapysdrplay-20000000
+
+# David Seifert <soap@gentoo.org> (2026-02-14)
+# Behemoth package, with a massive and brittle testsuite. No other major distro
+# packages this anymore. Lots of QA issues, broken tests and blocking cleanup
+# efforts. This package will only be allowed back in ::gentoo after a sustained
+# demonstration of maintenance dedication. Removal on 2026-03-16. Bug #966712.
+dev-cpp/muParserX
+dev-python/pylatexenc
+dev-python/python-constraint
+dev-python/qiskit
+dev-python/qiskit-aer
+dev-python/rustworkx
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-02-12)
 # Misc Qt5-based libraries without any revdeps left.
 # Removal on 2026-03-14.
@@ -113,6 +147,7 @@ dev-cpp/glaze
 #  $ emerge -an app-eselect/eselect-repository
 #  $ eselect repository enable hyproverlay
 #  $ emerge --sync
+# See also https://wiki.gentoo.org/wiki/Hyprland#Emerge
 #
 # Quite out-of-date, many open bugs, and needs several new dependencies.
 # Removal on 2026-03-11.

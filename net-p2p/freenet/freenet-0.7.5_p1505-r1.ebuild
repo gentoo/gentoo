@@ -24,6 +24,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 IUSE="+nss"
 
+# Since 0.7.5_p1505-r1 we drop dev-java/mersennetwister which was
+# built from a tarball hosted in "mirror://gentoo/${P}.tar.bz2".
+# More information is provided on HOMEPAGE of that package:
+# http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt.html
+# It is now built by using more sources of dev-java/freenet-ext.
 CP_DEPEND="
 	dev-java/bcprov:0
 	dev-java/commons-compress:0

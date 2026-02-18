@@ -12,7 +12,7 @@ HOMEPAGE="https://qpageview.org/"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
 	dev-python/pyqt6[gui,pdfium,printsupport,svg,widgets,${PYTHON_USEDEP}]

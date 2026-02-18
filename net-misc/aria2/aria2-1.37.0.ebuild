@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,16 +10,15 @@ HOMEPAGE="https://aria2.github.io/"
 SRC_URI="https://github.com/aria2/${PN}/releases/download/release-${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2+-with-openssl-exception"
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 SLOT="0"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="
-	adns bittorrent +gnutls jemalloc libuv +libxml2 metalink +nettle
+	adns bittorrent +gnutls libuv +libxml2 metalink +nettle
 	nls sqlite scripts ssh ssl tcmalloc test xmlrpc
 "
 # xmlrpc has no explicit switch, it's turned out by any XML library
 # so metalink implicitly forces it on
 REQUIRED_USE="
-	?? ( jemalloc tcmalloc )
 	metalink? ( xmlrpc )
 "
 RESTRICT="!test? ( test )"
@@ -42,7 +41,6 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	virtual/zlib:=
 	adns? ( >=net-dns/c-ares-1.5.0:0= )
-	jemalloc? ( dev-libs/jemalloc )
 	libuv? ( >=dev-libs/libuv-1.13:0= )
 	metalink? (
 		libxml2? ( >=dev-libs/libxml2-2.6.26:2= )
@@ -133,7 +131,6 @@ src_configure() {
 		$(use_enable metalink)
 		$(use_enable nls)
 		$(use_with adns libcares)
-		$(use_with jemalloc)
 		$(use_with libuv)
 		$(use_with sqlite sqlite3)
 		$(use_with ssh libssh2)

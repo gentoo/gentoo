@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/stachenov/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="LGPL-2.1-with-linking-exception"
 # SONAME of libquazip1-qt6.so, check QUAZIP_LIB_SOVERSION in CMakeLists.txt
 SLOT="0/1.5"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~hppa ppc ppc64 ~riscv x86"
 IUSE="bzip2 test"
 
 RESTRICT="!test? ( test )"

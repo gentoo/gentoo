@@ -34,8 +34,7 @@ RDEPEND="
 	mbedtls? ( net-libs/mbedtls:3=[${MULTILIB_USEDEP},threads] )
 	zlib? ( >=virtual/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}] )
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}
 	test? (
 		>=dev-util/cmocka-0.3.1[${MULTILIB_USEDEP}]
 		elibc_musl? ( sys-libs/argp-standalone )
@@ -46,12 +45,9 @@ BDEPEND+=" doc? ( app-text/doxygen[dot] )"
 DOCS=( AUTHORS CHANGELOG README )
 
 src_unpack() {
-	if [[ ${PV} == 9999 ]] ; then
+	if [[ ${PV} == *9999* ]] ; then
 		git-r3_src_unpack
-		return
-	fi
-
-	if use verify-sig; then
+	elif use verify-sig; then
 		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.xz{,.asc}
 	fi
 
@@ -94,8 +90,7 @@ src_prepare() {
 		fi
 
 		if use elibc_musl; then
-			sed -e "/SOLARIS/d" \
-				-i tests/CMakeLists.txt || die
+			sed -e "/SOLARIS/d" -i tests/CMakeLists.txt || die
 		fi
 	fi
 }
@@ -107,6 +102,7 @@ src_configure() {
 
 multilib_src_configure() {
 	local mycmakeargs=(
+		-DCMAKE_DISABLE_FIND_PACKAGE_ABIMap=ON # not packaged
 		-DWITH_NACL=OFF
 		-DWITH_STACK_PROTECTOR=OFF
 		-DWITH_STACK_PROTECTOR_STRONG=OFF

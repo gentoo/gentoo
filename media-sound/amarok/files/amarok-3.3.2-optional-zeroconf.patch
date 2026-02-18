@@ -1,0 +1,54 @@
+From 63ef6769bdde90da0020d8fa2e8b138e59c8e26e Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 13 Feb 2026 13:04:31 +0100
+Subject: [PATCH] Add WITH_DAAP CMake option to be able to build without
+ KF6DNSSD (zeroconf)
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt                           | 6 +++++-
+ src/core-impl/collections/CMakeLists.txt | 4 +++-
+ 2 files changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 858244633e..2abf33d83d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -51,7 +51,6 @@ find_package(KF${KF_MAJOR_VERSION} ${KF_MIN_VERSION} REQUIRED COMPONENTS
+     CoreAddons
+     Crash
+     DBusAddons
+-    DNSSD
+     DocTools
+     GlobalAccel
+     GuiAddons
+@@ -108,6 +107,11 @@ option(WITH_GPODDER "Enable gpodder.net support" ON)
+ option(WITH_IPOD "Enable iPod support in Amarok" ON)
+ option(WITH_LASTFM "Enable last.fm support" ON)
+ option(WITH_EMBEDDED_DB "Build the embedded database library" ON)
++option(WITH_DAAP "Enable support for Digital Audio Access Protocol collections" ON)
++
++if(WITH_DAAP)
++    find_package(KF${KF_MAJOR_VERSION}DNSSD ${KF_MIN_VERSION} REQUIRED)
++endif()
+ 
+ ############### Taglib
+ set(TAGLIB_MIN_VERSION "1.12")
+diff --git a/src/core-impl/collections/CMakeLists.txt b/src/core-impl/collections/CMakeLists.txt
+index 5c2674afa0..afe9b3aedb 100644
+--- a/src/core-impl/collections/CMakeLists.txt
++++ b/src/core-impl/collections/CMakeLists.txt
+@@ -4,7 +4,9 @@ include_directories(
+ 
+ set(AMAROK_COLLECTION_SUPPORT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/support)
+ 
+-add_subdirectory( daap )
++if(WITH_DAAP)
++    add_subdirectory( daap )
++endif()
+ 
+ if(NOT WIN32)
+     add_subdirectory( audiocd )
+-- 
+GitLab
+

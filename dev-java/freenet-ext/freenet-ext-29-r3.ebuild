@@ -37,6 +37,10 @@ PATCHES=(
 
 JAVA_CLASSPATH_EXTRA="log4j-12-api"
 JAVA_RESOURCE_DIRS="res"
+
+# Since 29-r3 we include java/org/spaceroots which is described
+# in http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt.html and
+# was previously built from SRC_URI="mirror://gentoo/${P}.tar.bz2".
 JAVA_SRC_DIR=(
 	fec/{src,common/{src,tools}}
 	freenet_ext

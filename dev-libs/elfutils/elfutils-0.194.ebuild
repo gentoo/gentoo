@@ -1,4 +1,4 @@
-# Copyright 2003-2025 Gentoo Authors
+# Copyright 2003-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,14 +21,14 @@ else
 	SRC_URI="https://sourceware.org/elfutils/ftp/${PV}/${P}.tar.bz2"
 	SRC_URI+=" verify-sig? ( https://sourceware.org/elfutils/ftp/${PV}/${P}.tar.bz2.sig )"
 
-	KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 	BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-elfutils-20240301 )"
 fi
 
 LICENSE="|| ( GPL-2+ LGPL-3+ ) utils? ( GPL-3+ )"
 SLOT="0"
-IUSE="bzip2 debuginfod libarchive +lzma nls static-libs stacktrace test +utils valgrind zstd"
+IUSE="bzip2 +debuginfod +libarchive +lzma nls static-libs stacktrace test +utils valgrind zstd"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="debuginfod? ( libarchive )"
 
@@ -109,7 +109,8 @@ multilib_src_configure() {
 	local myeconfargs=(
 		$(use_enable nls)
 		$(multilib_native_use_enable debuginfod)
-		# Could do dummy if needed?
+		# Could do dummy if needed? We could also split libdebuginfod
+		# (client support) into its own USE if required.
 		$(use_enable debuginfod libdebuginfod)
 		$(multilib_native_use_enable stacktrace)
 		$(use_enable valgrind valgrind-annotations)

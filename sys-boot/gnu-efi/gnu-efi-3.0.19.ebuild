@@ -1,4 +1,4 @@
-# Copyright 2004-2025 Gentoo Authors
+# Copyright 2004-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,6 +34,7 @@ RESTRICT="strip"
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.18-clang.patch
 	"${FILESDIR}"/${PN}-3.0.18-remove-linux-headers.patch
+	"${FILESDIR}"/${PN}-3.0.19-fix-binutils-2.46.patch
 )
 
 check_and_set_objcopy() {

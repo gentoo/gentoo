@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -97,7 +97,7 @@ src_configure() {
 		-DARROW_WITH_SNAPPY=$(usex snappy ON OFF)
 		-DARROW_WITH_ZLIB=$(usex zlib ON OFF)
 		-DARROW_WITH_ZSTD=$(usex zstd ON OFF)
-		-DCMAKE_CXX_STANDARD=17
+		-DCMAKE_CXX_STANDARD=20
 	)
 	cmake_src_configure
 }

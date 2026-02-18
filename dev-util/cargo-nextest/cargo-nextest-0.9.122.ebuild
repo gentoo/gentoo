@@ -24,7 +24,7 @@ LICENSE+="
 	WTFPL-2 ZLIB
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~x86"
 
 BDEPEND="virtual/pkgconfig"
 DEPEND=">=app-arch/zstd-1.5.7:="

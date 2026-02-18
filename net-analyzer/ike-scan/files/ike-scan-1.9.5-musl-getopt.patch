@@ -1,0 +1,14 @@
+Minor variations in getopt() output causing musl test failures.
+https://bugs.gentoo.org/836575
+
+--- a/check-error
++++ b/check-error
+@@ -119,7 +119,7 @@
+    echo "FAILED"
+    exit 1
+ fi
+-grep 'ike-scan: unrecognized option ' $TMPFILE >/dev/null
++grep 'ike-scan: unrecognized option' $TMPFILE >/dev/null
+ if test $? -ne 0; then
+    rm -f $TMPFILE
+    echo "FAILED"

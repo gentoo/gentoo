@@ -1417,17 +1417,15 @@ toolchain_src_configure() {
 		confgcc+=( --disable-libstdcxx-pch )
 	fi
 
-	# build-id was disabled for file collisions: bug #526144
-	#
-	# # Turn on the -Wl,--build-id flag by default for ELF targets. bug #525942
-	# # This helps with locating debug files.
-	# case ${CTARGET} in
-	# *-linux-*|*-elf|*-eabi)
-	# 	tc_version_is_at_least 4.5 && confgcc+=(
-	# 		--enable-linker-build-id
-	# 	)
-	# 	;;
-	# esac
+	# Turn on the -Wl,--build-id flag by default for ELF targets. bug #953869
+	# This helps with locating debug files.
+	case ${CTARGET} in
+		*-linux-*|*-elf|*-eabi)
+			tc_version_is_at_least 4.5 && confgcc+=(
+				--enable-linker-build-id
+			)
+		;;
+	esac
 
 	### Cross-compiler option
 	#
@@ -1450,11 +1448,15 @@ toolchain_src_configure() {
 				;;
 			*-elf|*-eabi)
 				needed_libc=newlib
-				# Bare-metal targets don't have access to clock_gettime()
-				# arm-none-eabi example: bug #589672
-				# But we explicitly do --enable-libstdcxx-time above.
-				# Undoing it here.
-				confgcc+=( --disable-libstdcxx-time )
+				confgcc+=(
+					# Bare-metal targets don't have access to clock_gettime()
+					# arm-none-eabi example: bug #589672
+					# But we explicitly do --enable-libstdcxx-time above.
+					# Undoing it here.
+					--disable-libstdcxx-time
+					# bug #970098
+					--disable-libada
+				)
 				;;
 			*-gnu*)
 				needed_libc=glibc

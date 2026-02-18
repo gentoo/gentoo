@@ -6,6 +6,13 @@
 
 # New entries go on top.
 
+# Sam James <sam@gentoo.org> (2026-02-14)
+# binutils-2.46 changes SFrame format to v3. We don't want binaries
+# distributed with v2 and binutils doesn't support mixing v2+v3. From
+# v3 on, compatibility will be guaranteed. Please rebuild without SFrames
+# first with <binutils-2.46.
+sys-libs/glibc sframe
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-01-15)
 # KF5/Qt5 integration is no longer worth it.
 kde-plasma/plasma-meta qt5
@@ -97,10 +104,6 @@ dev-python/numpy index64
 # Alfred Wingate <parona@protonmail.com> (2025-08-12)
 # Marked Beta tier upstream. Tests don't work with it.
 dev-games/ogre vulkan
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2025-08-06)
-# General mask, to be unmasked on arches where glibc supports this
->=sys-libs/glibc-2.42 sframe
 
 # Alfred Wingate (2025-07-31)
 # Missing dependency

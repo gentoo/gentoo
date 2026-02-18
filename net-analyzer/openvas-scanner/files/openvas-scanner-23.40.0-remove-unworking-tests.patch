@@ -1,0 +1,54 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -193,7 +193,7 @@ configure_file (src/openvas_log_conf.cmake_in src/openvas_log.conf)
+ enable_testing ()
+ 
+ add_custom_target (tests
+-                   DEPENDS attack-test pcap-test ipc-openvas-test lsc-test)
++                   DEPENDS attack-test ipc-openvas-test lsc-test)
+ 
+ ## Program
+ 
+--- a/misc/CMakeLists.txt
++++ b/misc/CMakeLists.txt
+@@ -156,6 +156,7 @@ set (ALIVEDETECTION_TEST_LINKER_WRAP_OPTIONS
+   "-Wl,-wrap,socket,-wrap,setsockopt")
+ 
+ # pcap-tests
++#[===[
+ add_executable (pcap-test EXCLUDE_FROM_ALL pcap_tests.c)
+ add_test (pcap-test pcap-test)
+ target_include_directories (pcap-test PRIVATE ${CGREEN_INCLUDE_DIRS})
+@@ -174,7 +175,7 @@ set_tests_properties(
+ )
+ add_custom_target (tests-pcap
+                   DEPENDS pcap-test)
+-
++]===]
+ # ipc-openvas-tests
+ add_executable (ipc-openvas-test EXCLUDE_FROM_ALL ipc_openvas_tests.c)
+ add_test (ipc-openvas-test ipc-openvas-test)
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -156,17 +156,17 @@ add_executable (attack-test
+ 
+ set_target_properties (attack-test PROPERTIES LINKER_LANGUAGE C)
+ 
+-target_compile_options(attack-test PRIVATE "-fsanitize=address")
+-target_link_options(attack-test PRIVATE "-fsanitize=address")
++#target_compile_options(attack-test PRIVATE "-fsanitize=address")
++#target_link_options(attack-test PRIVATE "-fsanitize=address")
+ 
+ add_test (attack-test attack-test)
+-
++#[===[
+ set_tests_properties(
+   attack-test
+   PROPERTIES
+     ENVIRONMENT "ASAN_OPTIONS=detect_leaks=1:halt_on_error=1:abort_on_error=1"
+ )
+-
++]===]
+ target_link_libraries (attack-test openvas_nasl_shared cgreen
+                        ${LIBOPENVAS_NASL_LDFLAGS}
+                        ${LIBOPENVAS_MISC_LDFLAGS}

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}-core-${MY_PV}"
 
 LICENSE="BSD"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ppc ~ppc64 x86"
 
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 RDEPEND="

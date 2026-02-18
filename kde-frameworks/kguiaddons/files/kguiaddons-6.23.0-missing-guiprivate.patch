@@ -1,0 +1,50 @@
+From 41674ffb8343499704f8278b39ccabe03328e050 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 16 Feb 2026 22:21:55 +0100
+Subject: [PATCH] CMake: Find Qt6::GuiPrivate when USE_DBUS is enabled
+
+Otherwise, build depends on WITH_WAYLAND also being enabled or else
+fails without Qt6::GuiPrivate.
+
+Amends 344679d5aa2e1f0aa27f63be59dade3be2b7f651
+
+See also: https://bugs.gentoo.org/970127
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt     | 5 +++++
+ src/CMakeLists.txt | 2 +-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c2cc52f..7d85072 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -75,6 +75,11 @@ endif()
+ option(USE_DBUS "Build components using DBus (get color scheme information via XDG portals)" ${USE_DBUS_DEFAULT})
+ if(USE_DBUS)
+     find_package(Qt6DBus ${REQUIRED_QT_VERSION} REQUIRED NO_MODULE)
++    if (Qt6Gui_VERSION VERSION_GREATER_EQUAL "6.10.0")
++        find_package(Qt6GuiPrivate ${REQUIRED_QT_VERSION} REQUIRED NO_MODULE)
++    else()
++        find_package(Qt6Gui ${REQUIRED_QT_VERSION} REQUIRED NO_MODULE COMPONENTS Private)
++    endif()
+     set(WITH_DBUS ON)
+ endif()
+ 
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 1deba45..cf8cf13 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -79,7 +79,7 @@ if(WITH_DBUS)
+         colors/kcolorschemewatcher_xdg.cpp
+         util/ksysteminhibitor_dbus.cpp
+     )
+-    target_link_libraries(KF6GuiAddons PRIVATE Qt6::DBus)
++    target_link_libraries(KF6GuiAddons PRIVATE Qt6::DBus Qt6::GuiPrivate)
+     target_compile_definitions(KF6GuiAddons PRIVATE WITH_DBUS)
+ endif()
+ 
+-- 
+2.53.0
+

@@ -1,0 +1,18 @@
+https://bugs.gentoo.org/969617
+https://gitlab.exherbo.org/exherbo/arbor/-/raw/45d1f0e764ad1fcb8d776534d0925fe074d04d61/packages/net-www/links/files/links-2.30-glibc-2.43.patch
+
+Source: https://www.linuxfromscratch.org/blfs/view/svn/basicnet/links.html
+Upstream: Unknown
+Reason: Fix build with glibc 2.43
+--- a/ftp.c
++++ b/ftp.c
+@@ -768,7 +768,7 @@
+ } while (0)
+ 		A(ftp_head);
+ 		ud = stracpy(get_url_data(c->url));
+-		if (strchr(cast_const_char ud, POST_CHAR)) *strchr(cast_const_char ud, POST_CHAR) = 0;
++		if (strchr(ud, POST_CHAR)) *strchr(ud, POST_CHAR) = 0;
+ 		s0 = init_str();
+ 		s0l = 0;
+ 		add_conv_str(&s0, &s0l, ud, (int)strlen(cast_const_char ud), -1);
+

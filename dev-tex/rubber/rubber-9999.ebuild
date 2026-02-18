@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{12..13} )
 DISTUTILS_USE_PEP517=hatchling
-
 inherit distutils-r1
 
-if [[ ${PV} == "9999" ]] || [[ -n "${EGIT_COMMIT_ID}" ]]; then
+if [[ ${PV} == *9999* ]] || [[ -n "${EGIT_COMMIT_ID}" ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/latex-rubber/${PN}.git"
 else
@@ -17,7 +16,7 @@ else
 	KEYWORDS="~amd64 ~ppc ~riscv ~x86"
 fi
 
-DESCRIPTION="A LaTeX wrapper for automatically building documents"
+DESCRIPTION="LaTeX wrapper for automatically building documents"
 HOMEPAGE="https://gitlab.com/latex-rubber/rubber"
 
 LICENSE="GPL-3+"
@@ -26,7 +25,6 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="virtual/latex-base"
-
 # Test dependencies:
 # - app-text/texlive-core for rubber's 'cweave' test
 # - dev-lang/R for rubber's 'knitr' test (requires knitr R library, currently disabled)
@@ -39,12 +37,13 @@ BDEPEND="
 		app-text/texlive-core
 		dev-tex/biber
 		dev-tex/biblatex
+		dev-tex/bibtexu
 		dev-tex/glossaries
 		dev-tex/latex-beamer
 		$(python_gen_cond_dep 'dev-tex/pythontex[${PYTHON_USEDEP}]')
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-pstricks
-		media-gfx/asymptote
+		media-gfx/asymptote[latex]
 	)
 "
 

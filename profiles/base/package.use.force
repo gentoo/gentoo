@@ -89,6 +89,8 @@ llvm-runtimes/libcxxabi clang
 # done
 dev-lang/rust:1.94.0 llvm_slot_21
 dev-lang/rust-bin:1.94.0 llvm_slot_21
+dev-lang/rust:1.93.1 llvm_slot_21
+dev-lang/rust-bin:1.93.1 llvm_slot_21
 dev-lang/rust:1.93.0 llvm_slot_21
 dev-lang/rust-bin:1.93.0 llvm_slot_21
 dev-lang/rust:1.92.0 llvm_slot_21

@@ -66,10 +66,6 @@ sci-libs/flexiblas -blis -mkl -openblas
 # net-emulation/libvirt is only keyworded on amd64 at this time
 sys-block/nbdkit -libguestfs
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2025-08-06)
-# x86-64 supports sframe
->=sys-libs/glibc-2.42 -sframe
-
 # Alfred Wingate <parona@protonmail.com> (2025-05-22)
 # Upstream supports amd64
 media-libs/svt-av1 -test

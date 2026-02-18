@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -143,6 +143,9 @@ src_prepare() {
 	sed -i -e "s/strip /# strip /" src/console/Makefile.in || die
 	sed -i -e "s/+= qt$/+= qt nostrip/" \
 			src/qt-console/tray-monitor/tray-monitor.pro.in || die
+
+	# add missing include (bug 969453)
+	eapply "${FILESDIR}"/${PN}-15.0.3-termios.patch
 
 	eapply_user
 

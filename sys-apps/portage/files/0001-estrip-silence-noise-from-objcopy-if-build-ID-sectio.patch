@@ -1,0 +1,66 @@
+From 71dd5e89eaa5868418e13da6605fe3873939c60b Mon Sep 17 00:00:00 2001
+Message-ID: <71dd5e89eaa5868418e13da6605fe3873939c60b.1771041192.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Sat, 14 Feb 2026 03:44:08 +0000
+Subject: [PATCH] estrip: silence noise from objcopy if build ID section
+ doesn't exist
+
+This is a tiny fix suitable for backporting into the ebuild until
+the refactoring for estrip lands.
+
+It avoids noise when there's no build ID section to update w/ a salted
+replacement.
+
+Bug: https://bugs.gentoo.org/968220
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ bin/estrip | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/bin/estrip b/bin/estrip
+index 6e2a5b623..54c5a6e33 100755
+--- a/bin/estrip
++++ b/bin/estrip
+@@ -171,7 +171,7 @@ save_elf_debug() {
+ 
+ 					# We need to process the splitdebug file too
+ 					# if we're doing it at this late juncture (bug #968220)
+-					"${name_of[objcopy]}" --dump-section .note.gnu.build-id="${inode_link}_buildid" "${src}" \
++					"${name_of[objcopy]}" --dump-section .note.gnu.build-id="${inode_link}_buildid" "${src}" 2>/dev/null \
+ 						&& "${name_of[objcopy]}" --update-section .note.gnu.build-id="${inode_link}_buildid" "${dst}"
+ 					rm -f "${inode_link}_buildid"
+ 				elif ! contains_word buildid "${warned_for[debugedit]}"; then
+-- 
+2.53.0
+
+From e87494699b30eb9458cb0fb9e05479389904dcb3 Mon Sep 17 00:00:00 2001
+Message-ID: <e87494699b30eb9458cb0fb9e05479389904dcb3.1771352319.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Sun, 15 Feb 2026 14:46:34 +0000
+Subject: [PATCH] estrip: silence (further) noise from objcopy if build ID
+ section doesn't exist
+
+Followup to 71dd5e89eaa5868418e13da6605fe3873939c60b.
+
+Bug: https://bugs.gentoo.org/968220
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ bin/estrip | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/bin/estrip b/bin/estrip
+index 54c5a6e33..526a1f203 100755
+--- a/bin/estrip
++++ b/bin/estrip
+@@ -172,7 +172,7 @@ save_elf_debug() {
+ 					# We need to process the splitdebug file too
+ 					# if we're doing it at this late juncture (bug #968220)
+ 					"${name_of[objcopy]}" --dump-section .note.gnu.build-id="${inode_link}_buildid" "${src}" 2>/dev/null \
+-						&& "${name_of[objcopy]}" --update-section .note.gnu.build-id="${inode_link}_buildid" "${dst}"
++						&& "${name_of[objcopy]}" --update-section .note.gnu.build-id="${inode_link}_buildid" "${dst}" 2>/dev/null
+ 					rm -f "${inode_link}_buildid"
+ 				elif ! contains_word buildid "${warned_for[debugedit]}"; then
+ 					warned_for[debugedit]+=" buildid"
+-- 
+2.53.0
+

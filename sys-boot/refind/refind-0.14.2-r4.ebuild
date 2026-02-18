@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PV}/${PN}-src-${PV}.t
 
 LICENSE="BSD CC-BY-SA-3.0 CC-BY-SA-4.0 FDL-1.3 GPL-2+ GPL-3+ LGPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 FS_USE="btrfs +ext2 +ext4 hfs +iso9660 ntfs reiserfs"
 IUSE="${FS_USE} doc"
 
@@ -28,6 +28,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fix-freestanding-on-musl.patch
 	"${FILESDIR}"/${P}-fix-btrfs-on-musl.patch
 	"${FILESDIR}"/${P}-fix-shim-name.patch
+	"${FILESDIR}"/${P}-fix-binutils-2.46.patch
 )
 
 checktools() {

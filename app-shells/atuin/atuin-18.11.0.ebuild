@@ -20,7 +20,7 @@ LICENSE+="
 	Unicode-3.0 ZLIB
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="amd64 ~arm64 ~riscv"
 IUSE="+client +daemon server system-sqlite test +sync"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
@@ -117,7 +117,7 @@ src_install() {
 	dobin "${ATUIN_BIN}"
 
 	if use server; then
-		systemd_dounit "${FILESDIR}/atuin.service"
+		systemd_newunit "${FILESDIR}/atuin_old.service" "atuin.service"
 	fi
 
 	dodoc -r "${DOCS[@]}"

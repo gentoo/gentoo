@@ -1,10 +1,10 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1 pypi
 
@@ -17,14 +17,11 @@ HOMEPAGE="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
 
 RDEPEND="
 	>=dev-python/atpublic-4.0[${PYTHON_USEDEP}]
 	>=dev-python/attrs-23.2.0[${PYTHON_USEDEP}]
-"
-BDEPEND="
-	test? ( >=dev-python/pytest-mock-3.12.0[${PYTHON_USEDEP}] )
 "
 
 EPYTEST_DESELECT=(
@@ -32,6 +29,7 @@ EPYTEST_DESELECT=(
 	aiosmtpd/qa/test_0packaging.py::TestVersion
 )
 
+EPYTEST_PLUGINS=( pytest-mock )
 distutils_enable_tests pytest
 
 python_prepare_all() {
@@ -43,7 +41,7 @@ python_prepare_all() {
 python_test() {
 	local EPYTEST_DESELECT=()
 	case ${EPYTHON} in
-		python3.13)
+		python3.1[34])
 			EPYTEST_DESELECT+=(
 				# https://github.com/aio-libs/aiosmtpd/issues/403
 				aiosmtpd/tests/test_server.py::TestUnthreaded::test_unixsocket
@@ -51,6 +49,5 @@ python_test() {
 			;;
 	esac
 
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -p pytest_mock
+	epytest
 }

@@ -260,7 +260,7 @@ src_prepare() {
 	xdg_environment_reset
 
 	# Bootstrap when we are on a git checkout.
-	if [[ ${PV} == *9999* || ${PV} == *_p[0-9]* ]] ; then
+	if [[ ${PV} == *9999* || ${PV} == *_p[0-9]* || ${PV} == *_pre[0-9]* ]] ; then
 		./bootstrap
 	fi
 

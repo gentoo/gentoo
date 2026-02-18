@@ -3,7 +3,7 @@ Description=Atuin (shell history manager) server
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/atuin server start
+ExecStart=/usr/bin/atuin-server start
 User=atuin
 
 [Install]

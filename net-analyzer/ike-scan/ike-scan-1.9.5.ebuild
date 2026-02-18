@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,6 +20,7 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.9.5-clang-16.patch
 	"${FILESDIR}"/${PN}-1.9.5-openssl-libdir.patch
+	"${FILESDIR}"/${PN}-1.9.5-musl-getopt.patch
 )
 
 src_prepare() {
@@ -36,6 +37,9 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_with ssl openssl "${ESYSROOT}"/usr)
+
+	# bug 945318, remove bundled "getopt.h"
+	rm getopt.h || die
 }
 
 src_install() {

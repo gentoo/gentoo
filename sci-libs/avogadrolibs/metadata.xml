@@ -7,11 +7,10 @@
 	</maintainer>
 	<use>
 		<flag name="archive">Enable archive support using <pkg>app-arch/libarchive</pkg></flag>
+		<flag name="jkqtplotter">Enable charts and spectra using <pkg>sci-libs/jkqtplotter</pkg></flag>
 		<flag name="spglib">Find and set the Hall number for a crystal using <pkg>sci-libs/spglib</pkg></flag>
-		<flag name="vtk">Enable <pkg>sci-libs/vtk</pkg> support</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">OpenChemistry/avogadrolibs</remote-id>
-		<remote-id type="sourceforge">avogadro</remote-id>
 	</upstream>
 </pkgmetadata>

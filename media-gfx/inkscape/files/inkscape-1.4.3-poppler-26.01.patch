@@ -1,18 +1,19 @@
-From 3a528728ebe33e10bb44d152f47cfedfddbfe18a Mon Sep 17 00:00:00 2001
+From b7254b3501a898c892211e6b363a292ba01dec08 Mon Sep 17 00:00:00 2001
 From: Thomas Holder <thomas@thomas-holder.de>
 Date: Sat, 10 Jan 2026 23:44:10 +0100
-Subject: [PATCH] Fix build with poppler 26.01.0
+Subject: [PATCH 1/3] Fix build with poppler 26.01.0
 
+(cherry picked from commit 3a528728ebe33e10bb44d152f47cfedfddbfe18a)
 ---
  src/extension/internal/pdfinput/pdf-input.cpp   | 1 +
  src/extension/internal/pdfinput/svg-builder.cpp | 9 +++++++++
  2 files changed, 10 insertions(+)
 
 diff --git a/src/extension/internal/pdfinput/pdf-input.cpp b/src/extension/internal/pdfinput/pdf-input.cpp
-index 89d90ff0fe..bba8633e18 100644
+index 7b5e0ecb1d..45df931f00 100644
 --- a/src/extension/internal/pdfinput/pdf-input.cpp
 +++ b/src/extension/internal/pdfinput/pdf-input.cpp
-@@ -32,6 +32,7 @@
+@@ -33,6 +33,7 @@
  #include <poppler/glib/poppler.h>
  #include <poppler/glib/poppler-document.h>
  #include <poppler/glib/poppler-page.h>
@@ -21,18 +22,18 @@ index 89d90ff0fe..bba8633e18 100644
  
  #include <gdkmm/general.h>
 diff --git a/src/extension/internal/pdfinput/svg-builder.cpp b/src/extension/internal/pdfinput/svg-builder.cpp
-index 1b15b425b1..e1de266111 100644
+index 6c78247dfb..8b2e6f3d54 100644
 --- a/src/extension/internal/pdfinput/svg-builder.cpp
 +++ b/src/extension/internal/pdfinput/svg-builder.cpp
-@@ -29,6 +29,7 @@
+@@ -32,6 +32,7 @@
  #include <poppler/GfxState.h>
  #include <poppler/Page.h>
  #include <poppler/Stream.h>
 +#include <poppler/goo/gmem.h>
  
- #ifdef _WIN32
- #undef near
-@@ -2145,7 +2146,11 @@ Inkscape::XML::Node *SvgBuilder::_createImage(Stream *str, int width, int height
+ #include "color.h"
+ #include "color/cms-util.h"
+@@ -2093,7 +2094,11 @@ Inkscape::XML::Node *SvgBuilder::_createImage(Stream *str, int width, int height
          } else {
              image_stream = new ImageStream(str, width, 1, 1);
          }
@@ -44,7 +45,7 @@ index 1b15b425b1..e1de266111 100644
  
          // Convert grayscale values
          unsigned char *buffer = new unsigned char[width];
-@@ -2171,7 +2176,11 @@ Inkscape::XML::Node *SvgBuilder::_createImage(Stream *str, int width, int height
+@@ -2119,7 +2124,11 @@ Inkscape::XML::Node *SvgBuilder::_createImage(Stream *str, int width, int height
          image_stream = new ImageStream(str, width,
                                         color_map->getNumPixelComps(),
                                         color_map->getBits());
@@ -57,5 +58,5 @@ index 1b15b425b1..e1de266111 100644
          // Convert RGB values
          unsigned int *buffer = new unsigned int[width];
 -- 
-GitLab
+2.53.0
 

@@ -1,0 +1,90 @@
+From dc66bab2e7a13ebfc18b83b70e77a5165ad36521 Mon Sep 17 00:00:00 2001
+From: Matt Jolly <kangie@gentoo.org>
+Date: Fri, 13 Feb 2026 19:25:21 +1000
+Subject: [PATCH] cr145: revert to rollup wasm
+
+This commit reverts most of 0cea597366df8740da5cc046cde6de2468ba1e56,
+where the wasm version of rollup was replaced by a native node module
+which is a _collossal pain_ for those of us that can't just download
+random binaries from the internet.
+
+Signed-off-by: Matt Jolly <kangie@gentoo.org>
+--- a/third_party/devtools-frontend/src/front_end/Images/BUILD.gn
++++ b/third_party/devtools-frontend/src/front_end/Images/BUILD.gn
+@@ -28,7 +28,7 @@ node_action("generate_css_vars") {
+ }
+ 
+ node_action("optimize_images") {
+-  script = "node_modules/rollup/dist/bin/rollup"
++  script = "node_modules/@rollup/wasm-node/dist/bin/rollup"
+ 
+   _bundled_entrypoint = target_gen_dir + "/Images.prebundle.js"
+   _output_file_location = target_gen_dir + "/Images.js"
+--- a/third_party/devtools-frontend/src/front_end/models/live-metrics/web-vitals-injected/BUILD.gn
++++ b/third_party/devtools-frontend/src/front_end/models/live-metrics/web-vitals-injected/BUILD.gn
+@@ -26,7 +26,7 @@ devtools_module("web-vitals-injected") {
+ }
+ 
+ node_action("bundled_library") {
+-  script = "node_modules/rollup/dist/bin/rollup"
++  script = "node_modules/@rollup/wasm-node/dist/bin/rollup"
+ 
+   _bundled_entrypoint = target_gen_dir + "/web-vitals-injected.js"
+   _output_file_location = target_gen_dir + "/web-vitals-injected.generated.js"
+--- a/third_party/devtools-frontend/src/front_end/panels/recorder/injected/BUILD.gn
++++ b/third_party/devtools-frontend/src/front_end/panels/recorder/injected/BUILD.gn
+@@ -55,7 +55,7 @@ devtools_entrypoint("bundle") {
+ }
+ 
+ node_action("bundled_library") {
+-  script = "node_modules/rollup/dist/bin/rollup"
++  script = "node_modules/@rollup/wasm-node/dist/bin/rollup"
+ 
+   _bundled_entrypoint = target_gen_dir + "/injected.js"
+   _output_file_location = target_gen_dir + "/injected.generated.js"
+--- a/third_party/devtools-frontend/src/front_end/third_party/codemirror.next/rebuild.sh
++++ b/third_party/devtools-frontend/src/front_end/third_party/codemirror.next/rebuild.sh
+@@ -1,6 +1,6 @@
+ npm install
+ ../../../node_modules/.bin/tsc -d -t esnext -m esnext --moduleResolution node bundle.ts
+-../../../node_modules/rollup/dist/bin/rollup -c
++../../../node_modules/@rollup/wasm-node/dist/bin/rollup -c
+ rm -rf node_modules bundle.js bundle.d.ts
+ # Because there's a bug in clang causing it to reformat import lists even where formatting is disabled, run it right away
+ git cl format --js
+--- a/third_party/devtools-frontend/src/front_end/third_party/lit/rebuild.sh
++++ b/third_party/devtools-frontend/src/front_end/third_party/lit/rebuild.sh
+@@ -1,6 +1,6 @@
+ npm install
+ ../../../node_modules/.bin/tsc -d -t esnext -m esnext --moduleResolution node src/*
+-../../../node_modules/rollup/dist/bin/rollup -c
++../../../node_modules/@rollup/wasm-node/dist/bin/rollup -c
+ rm -rf node_modules src/*.js src/*.d.ts
+ # Because there's a bug in clang causing it to reformat import lists even where formatting is disabled, run it right away
+ git cl format --js
+--- a/third_party/devtools-frontend/src/inspector_overlay/BUILD.gn
++++ b/third_party/devtools-frontend/src/inspector_overlay/BUILD.gn
+@@ -36,7 +36,7 @@ action("build_inspector_overlay") {
+     "$target_gen_dir/tool_window_controls.css",
+     "$target_gen_dir/main.js",
+     devtools_location_prepend + "inspector_overlay/loadCSS.rollup.js",
+-    devtools_location_prepend + "node_modules/rollup/dist/bin/rollup",
++    devtools_location_prepend + "node_modules/@rollup/wasm-node/dist/bin/rollup",
+   ]
+ 
+   outputs = [ "$resources_out_dir/main.js" ]
+--- a/third_party/devtools-frontend/src/scripts/devtools_paths.py
++++ b/third_party/devtools-frontend/src/scripts/devtools_paths.py
+@@ -65,7 +65,8 @@ def license_checker_path():
+ def rollup_path():
+     return path.join(
+         node_modules_path(),
+-        'rollup',
++        '@rollup',
++        'wasm-node',
+         'dist',
+         'bin',
+         'rollup',
+-- 
+2.52.0
+

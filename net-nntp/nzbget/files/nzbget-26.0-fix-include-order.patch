@@ -1,0 +1,29 @@
+From 063e1cd82ee719b18a1dae40f65c0971de44edef Mon Sep 17 00:00:00 2001
+From: Louis Sautier <sautier.louis@gmail.com>
+Date: Sun, 15 Feb 2026 19:29:04 +0100
+Subject: [PATCH] Fix missing nzbget.h includes causing compilation errors
+ (#736)
+
+--- a/daemon/queue/UrlCoordinator.cpp
++++ b/daemon/queue/UrlCoordinator.cpp
+@@ -18,9 +18,8 @@
+  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  */
+ 
+-
+-#include "Unpack.h"
+ #include "nzbget.h"
++#include "Unpack.h"
+ 
+ #include "UrlCoordinator.h"
+ #include "Options.h"
+--- a/daemon/systemhealth/PathsValidator.cpp
++++ b/daemon/systemhealth/PathsValidator.cpp
+@@ -17,6 +17,7 @@
+  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  */
+ 
++#include "nzbget.h"
+ #include "Options.h"
+ #include "Status.h"
+ #include "Validators.h"

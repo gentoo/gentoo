@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,15 +6,16 @@ EAPI=8
 PLOCALES="ca de es fr ja ko pt_BR ru sv tr uk"
 PLOCALES_BIN="${PLOCALES} bg cs eu fi hu id it ka nb nl pl pt tg zh_TW zh_CN"
 PLOCALE_BACKUP="sv"
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit autotools linux-info multilib-minimal optfeature plocale \
-	python-single-r1 pam systemd toolchain-funcs
+	python-single-r1 pam systemd toolchain-funcs verify-sig
 
 DESCRIPTION="System Security Services Daemon provides access to identity and authentication"
 HOMEPAGE="https://github.com/SSSD/sssd"
 if [[ ${PV} != 9999 ]]; then
-	SRC_URI="https://github.com/SSSD/sssd/releases/download/${PV}/${P}.tar.gz"
+	SRC_URI="https://github.com/SSSD/sssd/releases/download/${PV}/${P}.tar.gz
+		https://github.com/SSSD/sssd/releases/download/${PV}/${P}.tar.gz.asc"
 	KEYWORDS="amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc x86"
 else
 	inherit git-r3
@@ -95,7 +96,10 @@ BDEPEND="
 		sys-libs/pam_wrapper
 		sys-libs/uid_wrapper
 	)
+	verify-sig? ( sec-keys/openpgp-keys-sssd )
 "
+
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/sssd.asc
 
 CONFIG_CHECK="~KEYS"
 

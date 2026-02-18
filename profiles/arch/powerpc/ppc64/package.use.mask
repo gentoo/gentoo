@@ -1,5 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-14)
+# <dev-cpp/opentelemetry-cpp-1.10 not keyworded here, bug #961188
+>=sys-cluster/ceph-20 jaeger
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-10-08)
 # dev-libs/weston is not stable.
