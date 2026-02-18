@@ -478,6 +478,10 @@ src_test() {
 src_install() {
 	default
 	find "${ED}" -name '*.la' -delete || die
+
+	if ! use gui; then
+		rm "${ED}"/usr/share/applications/*desktop || die
+	fi
 }
 
 pkg_postinst() {
@@ -490,7 +494,7 @@ pkg_postinst() {
 		ewarn "If you do not do it, vlc will take a long time to load."
 	fi
 
-	xdg_pkg_postinst
+	use gui && xdg_pkg_postinst
 }
 
 pkg_postrm() {
@@ -498,5 +502,5 @@ pkg_postrm() {
 		rm "${EROOT}"/usr/$(get_libdir)/vlc/plugins/plugins.dat || die "Failed to rm plugins.dat"
 	fi
 
-	xdg_pkg_postrm
+	use gui && xdg_pkg_postrm
 }
