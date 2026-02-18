@@ -1,0 +1,49 @@
+From df9203657ec140ee193a6356437f3660cfc28b5e Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 18 Feb 2026 21:22:23 +0100
+Subject: [PATCH] Fix CMake warnings caused by Qt6Core before ECM, align ECM w/
+ KF6_MIN_VERSION
+
+Fixes:
+
+> CMake Warning at /usr/share/ECM/kde-modules/KDEInstallDirsCommon.cmake:169 (message):
+>   KDE_INSTALL_BINDIR got its value from CMAKE_INSTALL_BINDIR.  In most cases
+>   this is unintended, check if you included GNUInstallDirs before
+>   KDEInstallDirs.  Some third party modules include GNUInstallDirs too so eg.
+>   find_package(Qt6 ...) is equivalent to include(GNUInstallDirs).  If you set
+>   CMAKE_INSTALL_BINDIR deliberately before including KDEInstallDirs its
+>   recommended to use KDE_INSTALL_BINDIR instead to suppress this message.
+> Call Stack (most recent call first):
+>   /usr/share/ECM/kde-modules/KDEInstallDirsCommon.cmake:255 (_define_relative)
+>   /usr/share/ECM/kde-modules/KDEInstallDirs6.cmake:201 (include)
+>   /usr/share/ECM/kde-modules/KDEInstallDirs.cmake:17 (include)
+>   CMakeLists.txt:24 (include)
+
+(7 times)
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 054c250..8c26437 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -17,10 +17,11 @@ option(BUILD_TOOLS "Build the helper tools" OFF)
+ set(QT_MIN_VERSION "6.6.0")
+ set(KF6_MIN_VERSION "6.0.0")
+ 
+-find_package(Qt6Core)
+-find_package(ECM 1.0 REQUIRED NO_MODULE)
++find_package(ECM ${KF6_MIN_VERSION} REQUIRED NO_MODULE)
+ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules")
+ 
++set(KDE_COMPILERSETTINGS_LEVEL 5.84.0)
++
+ include(KDEInstallDirs)
+ include(KDECMakeSettings)
+ include(KDECompilerSettings)
+-- 
+2.53.0
+

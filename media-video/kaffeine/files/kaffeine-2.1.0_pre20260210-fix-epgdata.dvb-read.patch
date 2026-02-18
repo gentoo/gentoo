@@ -1,0 +1,13 @@
+diff --git a/src/dvb/dvbepg.cpp b/src/dvb/dvbepg.cpp
+index 575bc3f..456655b 100644
+--- a/src/dvb/dvbepg.cpp
++++ b/src/dvb/dvbepg.cpp
+@@ -110,7 +110,7 @@ DvbEpgModel::DvbEpgModel(DvbManager *manager_, QObject *parent) : QObject(parent
+ 		stream >> entry.duration;
+ 
+ 		if (hasMultilang) {
+-			int i, count;
++			qsizetype i, count;
+ 
+ 			stream >> count;
+ 
