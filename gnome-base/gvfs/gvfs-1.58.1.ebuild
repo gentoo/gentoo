@@ -13,7 +13,7 @@ LICENSE="LGPL-2+"
 SLOT="0"
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="afp archive bluray cdda cdr elogind fuse google keyring gnome-online-accounts gphoto2 +http ios mtp nfs onedrive policykit samba systemd test +udev udisks zeroconf"
+IUSE="afp archive bluray cdda cdr elogind fuse +gcr google keyring gnome-online-accounts gphoto2 +http ios +man mtp nfs onedrive policykit samba +sftp systemd test +udev udisks zeroconf"
 RESTRICT="!test? ( test )"
 # elogind/systemd only relevant to udisks (in v1.38.1)
 REQUIRED_USE="
@@ -27,11 +27,9 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	app-crypt/gcr:4=
 	>=dev-libs/glib-2.83.0:2
 	>=gnome-base/gsettings-desktop-schemas-3.33.0
 	sys-apps/dbus
-	virtual/openssh
 	afp? ( >=dev-libs/libgcrypt-1.2.2:0= )
 	archive? ( app-arch/libarchive:= )
 	bluray? ( media-libs/libbluray:= )
@@ -44,6 +42,7 @@ RDEPEND="
 		>=sys-fs/fuse-3.0.0:3=
 		virtual/tmpfiles
 	)
+	gcr? ( app-crypt/gcr:4= )
 	gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.53.1:= )
 	google? ( >=dev-libs/libgdata-0.18.0:=[crypt,gnome-online-accounts] )
 	gphoto2? ( >=media-libs/libgphoto2-2.5.0:= )
@@ -67,6 +66,7 @@ RDEPEND="
 		sys-libs/libcap
 	)
 	samba? ( >=net-fs/samba-4[client] )
+	sftp? ( virtual/openssh )
 	systemd? ( >=sys-apps/systemd-206:0= )
 	udev? ( >=dev-libs/libgudev-147:= )
 	udisks? ( >=sys-fs/udisks-1.97:2 )
@@ -74,13 +74,15 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	app-text/docbook-xsl-stylesheets
-	app-text/docbook-xml-dtd:4.2
-	dev-libs/libxslt
 	>=dev-util/gdbus-codegen-2.80.5-r1
 	dev-util/glib-utils
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
+	man? (
+		app-text/docbook-xsl-stylesheets
+		app-text/docbook-xml-dtd:4.2
+		dev-libs/libxslt
+	)
 	test? ( dev-libs/libgdata )
 "
 
@@ -117,19 +119,20 @@ src_configure() {
 		-Ddeprecated_apis=false
 		$(meson_use zeroconf dnssd)
 		$(meson_use fuse)
+		$(meson_use gcr)
 		$(meson_use gnome-online-accounts goa)
 		$(meson_use google)
 		$(meson_use gphoto2)
 		$(meson_use udev gudev)
 		$(meson_use http)
 		$(meson_use keyring keyring)
+		$(meson_use man)
 		$(meson_use mtp)
 		$(meson_use nfs)
 		$(meson_use onedrive)
-		-Dsftp=true
 		$(meson_use samba smb)
+		$(meson_use sftp)
 		$(meson_use udisks udisks2)
-		-Dgcr=true
 		-Dgcrypt=${enable_gcrypt}
 		-Dlogind=${enable_logind}
 		-Dlibusb=${enable_libusb}
@@ -138,7 +141,6 @@ src_configure() {
 		-Ddevel_utils=false
 		-Dinstalled_tests=false
 		-Dunit_tests=false
-		-Dman=true
 		-Dprivileged_group=wheel
 		# wsdd is currently masked
 		-Dwsdd=false
