@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ if [[ ${PV} == *9999 ]]; then
 else
 	SRC_URI="https://github.com/cli/cli/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv"
+	KEYWORDS="~amd64 arm64 ~loong ~ppc64 ~riscv"
 	S="${WORKDIR}/cli-${PV}"
 fi
 
