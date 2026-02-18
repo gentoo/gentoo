@@ -48,6 +48,10 @@ BDEPEND="
 	dynarec? ( dev-lang/nasm )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.8.9-zlib-1.3.2.patch
+)
+
 src_prepare() {
 	# Remove unused 3rdParty code - https://bugs.gentoo.org/959468
 	rm -r "${S}"/Source/3rdParty/imgui/examples || die

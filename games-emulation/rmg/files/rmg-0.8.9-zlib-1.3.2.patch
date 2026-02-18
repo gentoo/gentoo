@@ -1,0 +1,19 @@
+(part of a downstream quickfix batch, may still need to be looked at upstream)
+
+https://bugs.gentoo.org/970227
+--- a/Source/3rdParty/mupen64plus-core/src/main/savestates.c
++++ b/Source/3rdParty/mupen64plus-core/src/main/savestates.c
+@@ -38,4 +38,4 @@
+ #include <zlib.h>
+-#include <unzip.h>
+-#include <zip.h>
++#include <minizip/unzip.h>
++#include <minizip/zip.h>
+ 
+--- a/Source/RMG-Core/Archive.cpp
++++ b/Source/RMG-Core/Archive.cpp
+@@ -30,3 +30,3 @@
+ // minizip includes
+-#include <unzip.h>
++#include <minizip/unzip.h>
+ #ifndef ZNGLIB_H_
