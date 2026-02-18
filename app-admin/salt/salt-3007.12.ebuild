@@ -116,7 +116,7 @@ BDEPEND="
 		dev-python/pytest-skip-markers[${PYTHON_USEDEP}]
 		dev-python/pytest-system-statistics[${PYTHON_USEDEP}]
 		dev-python/pytest-custom-exit-code[${PYTHON_USEDEP}]
-		dev-python/flaky[${PYTHON_USEDEP}]
+		dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
 		net-dns/bind
 		>=dev-python/virtualenv-20.3.0[${PYTHON_USEDEP}]
 		dev-util/yamllint[${PYTHON_USEDEP}]
