@@ -49,7 +49,7 @@ DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:6
 	>=kde-frameworks/syntax-highlighting-${KFMIN}:6
 	analitza? ( >=kde-apps/analitza-${PVCUT}:6 )
-	julia? ( dev-lang/julia )
+	julia? ( dev-lang/julia-bin:* )
 	lua? ( ${LUA_DEPS} )
 	qalculate? (
 		sci-libs/cln
