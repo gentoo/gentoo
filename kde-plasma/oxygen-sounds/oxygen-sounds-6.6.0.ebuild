@@ -12,4 +12,4 @@ HOMEPAGE="https://invent.kde.org/plasma/oxygen-sounds"
 
 LICENSE="GPL-2+"
 SLOT="6"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"

@@ -14,7 +14,7 @@ HOMEPAGE+=" https://quantumproductions.info/articles/2023-08/remote-desktop-usin
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="systemd"
 
 COMMON_DEPEND="

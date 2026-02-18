@@ -13,7 +13,7 @@ HOMEPAGE="https://userbase.kde.org/Wacomtablet"
 
 LICENSE="GPL-2"
 SLOT="6"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 
 # slot op: Uses Qt6::GuiPrivate for qtx11extras_p.h
