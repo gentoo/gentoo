@@ -1,0 +1,48 @@
+--- a/debian/freeradius.service	2026-02-11 12:28:18.226315628 +0200
++++ b/debian/freeradius.service	2026-02-11 12:31:14.801509653 +0200
+@@ -7,7 +7,6 @@
+ Type=notify
+ WatchdogSec=60
+ NotifyAccess=all
+-EnvironmentFile=-/etc/default/freeradius
+ 
+ # FreeRADIUS can do static evaluation of policy language rules based
+ # on environmental variables which is very useful for doing per-host
+@@ -26,18 +25,17 @@
+ # privileges. Combination of options that work on a variety of
+ # systems. Test very carefully if you alter these lines.
+ RuntimeDirectory=freeradius freeradius/tmp
++RuntimeDirectory=radiusd radiusd/tmp
+ RuntimeDirectoryMode=0775
+ # This does not work on Debian Jessie:
+-User=freerad
+-Group=freerad
+-# This does not work on Ubuntu Bionic:
+-ExecStartPre=/bin/chown freerad:freerad /var/run/freeradius
++User=radius
++Group=radius
+ 
+-ExecStartPre=/usr/sbin/freeradius $FREERADIUS_OPTIONS -Cx -lstdout
+-ExecStart=/usr/sbin/freeradius -f $FREERADIUS_OPTIONS
++ExecStartPre=/usr/sbin/radiusd $FREERADIUS_OPTIONS -Cx -lstdout
++ExecStart=/usr/sbin/radiusd -f $FREERADIUS_OPTIONS
+ Restart=on-failure
+ RestartSec=5
+-ExecReload=/usr/sbin/freeradius $FREERADIUS_OPTIONS -Cxm -lstdout
++ExecReload=/usr/sbin/radiusd $FREERADIUS_OPTIONS -Cxm -lstdout
+ ExecReload=/bin/kill -HUP $MAINPID
+ 
+ #  Don't elevate privileges after starting
+@@ -67,10 +65,10 @@
+ SystemCallArchitectures=native
+ 
+ # We shouldn't be writing to the configuration directory
+-ReadOnlyDirectories=/etc/freeradius/
++ReadOnlyDirectories=/etc/raddb/
+ 
+ # We can read and write to the log directory.
+-ReadWriteDirectories=/var/log/freeradius/
++ReadWriteDirectories=/var/log/radius/
+ 
+ [Install]
+ WantedBy=multi-user.target
