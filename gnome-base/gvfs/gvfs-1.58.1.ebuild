@@ -21,66 +21,66 @@ REQUIRED_USE="
 	cdda? ( udev )
 	google? ( gnome-online-accounts )
 	gphoto2? ( udev )
-	onedrive? ( gnome-online-accounts )
 	mtp? ( udev )
+	onedrive? ( gnome-online-accounts )
 	udisks? ( udev )
 "
 
 RDEPEND="
+	app-crypt/gcr:4=
 	>=dev-libs/glib-2.83.0:2
 	>=gnome-base/gsettings-desktop-schemas-3.33.0
-	afp? ( >=dev-libs/libgcrypt-1.2.2:0= )
 	sys-apps/dbus
-	app-crypt/gcr:4=
-	policykit? (
-		>=sys-auth/polkit-0.114
-		sys-libs/libcap
-	)
-	http? (
-		dev-libs/libxml2:2=
-		>=net-libs/libsoup-3.0.0:3.0
-	)
-	zeroconf? ( >=net-dns/avahi-0.6[dbus] )
-	udev? ( >=dev-libs/libgudev-147:= )
-	fuse? (
-		>=sys-fs/fuse-3.0.0:3=
-		virtual/tmpfiles
-	)
-	udisks? ( >=sys-fs/udisks-1.97:2 )
-	systemd? ( >=sys-apps/systemd-206:0= )
-	elogind? ( >=sys-auth/elogind-229:0= )
-	ios? (
-		>=app-pda/libimobiledevice-1.2:=
-		>=app-pda/libplist-1:=
-	)
-	gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.53.1:= )
-	keyring? ( app-crypt/libsecret )
-	bluray? ( media-libs/libbluray:= )
-	mtp? (
-		virtual/libusb:1
-		>=media-libs/libmtp-1.1.15:=
-	)
-	samba? ( >=net-fs/samba-4[client] )
+	virtual/openssh
+	afp? ( >=dev-libs/libgcrypt-1.2.2:0= )
 	archive? ( app-arch/libarchive:= )
+	bluray? ( media-libs/libbluray:= )
 	cdda? (
 		dev-libs/libcdio:0=
 		>=dev-libs/libcdio-paranoia-0.78.2:=
 	)
+	elogind? ( >=sys-auth/elogind-229:0= )
+	fuse? (
+		>=sys-fs/fuse-3.0.0:3=
+		virtual/tmpfiles
+	)
+	gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.53.1:= )
 	google? ( >=dev-libs/libgdata-0.18.0:=[crypt,gnome-online-accounts] )
 	gphoto2? ( >=media-libs/libgphoto2-2.5.0:= )
+	http? (
+		dev-libs/libxml2:2=
+		>=net-libs/libsoup-3.0.0:3.0
+	)
+	ios? (
+		>=app-pda/libimobiledevice-1.2:=
+		>=app-pda/libplist-1:=
+	)
+	keyring? ( app-crypt/libsecret )
+	mtp? (
+		virtual/libusb:1
+		>=media-libs/libmtp-1.1.15:=
+	)
 	nfs? ( >=net-fs/libnfs-1.9.8:= )
 	onedrive? ( >=net-libs/msgraph-0.3.0:= )
-	virtual/openssh
+	policykit? (
+		>=sys-auth/polkit-0.114
+		sys-libs/libcap
+	)
+	samba? ( >=net-fs/samba-4[client] )
+	systemd? ( >=sys-apps/systemd-206:0= )
+	udev? ( >=dev-libs/libgudev-147:= )
+	udisks? ( >=sys-fs/udisks-1.97:2 )
+	zeroconf? ( >=net-dns/avahi-0.6[dbus] )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	dev-util/glib-utils
 	app-text/docbook-xsl-stylesheets
 	app-text/docbook-xml-dtd:4.2
 	dev-libs/libxslt
+	>=dev-util/gdbus-codegen-2.80.5-r1
+	dev-util/glib-utils
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
-	>=dev-util/gdbus-codegen-2.80.5-r1
 	test? ( dev-libs/libgdata )
 "
 
@@ -111,26 +111,26 @@ src_configure() {
 		$(meson_use ios afc)
 		$(meson_use afp)
 		$(meson_use archive)
+		$(meson_use bluray)
 		$(meson_use cdr burn)
 		$(meson_use cdda)
 		-Ddeprecated_apis=false
 		$(meson_use zeroconf dnssd)
+		$(meson_use fuse)
 		$(meson_use gnome-online-accounts goa)
 		$(meson_use google)
 		$(meson_use gphoto2)
+		$(meson_use udev gudev)
 		$(meson_use http)
+		$(meson_use keyring keyring)
 		$(meson_use mtp)
 		$(meson_use nfs)
 		$(meson_use onedrive)
 		-Dsftp=true
 		$(meson_use samba smb)
 		$(meson_use udisks udisks2)
-		$(meson_use bluray)
-		$(meson_use fuse)
 		-Dgcr=true
 		-Dgcrypt=${enable_gcrypt}
-		$(meson_use udev gudev)
-		$(meson_use keyring keyring)
 		-Dlogind=${enable_logind}
 		-Dlibusb=${enable_libusb}
 		# wouldn't install any of it as of 1.38.1; some tests need it,
@@ -140,7 +140,7 @@ src_configure() {
 		-Dunit_tests=false
 		-Dman=true
 		-Dprivileged_group=wheel
-		# wsdd not in gentoo repository
+		# wsdd is currently masked
 		-Dwsdd=false
 	)
 	meson_src_configure
