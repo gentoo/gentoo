@@ -69,10 +69,7 @@ RDEPEND="
 	google? ( >=dev-libs/libgdata-0.18.0:=[crypt,gnome-online-accounts] )
 	gphoto2? ( >=media-libs/libgphoto2-2.5.0:= )
 	nfs? ( >=net-fs/libnfs-1.9.8:= )
-	onedrive? (
-		>=dev-libs/libgdata-0.18.0:=[crypt,gnome-online-accounts]
-		>=net-libs/msgraph-0.3.0:=
-	)
+	onedrive? ( >=net-libs/msgraph-0.3.0:= )
 	virtual/openssh
 "
 DEPEND="${RDEPEND}"
