@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,6 +33,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}/${PN}-5.2.5-gtest.patch"
 	"${FILESDIR}/${PN}-5.2.5-float-comparison.patch"
+	"${FILESDIR}/${PN}-6.0.2-zlib-1.3.2.patch"
 )
 
 DOCS=( CodeConventions.md Readme.md )

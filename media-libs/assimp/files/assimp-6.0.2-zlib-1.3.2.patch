@@ -1,0 +1,18 @@
+Just a minimal fix, needs to be properly looked at given there
+are a lot of instances of usage.
+
+https://bugs.gentoo.org/970227
+--- a/code/AssetLib/IFC/IFCLoader.cpp
++++ b/code/AssetLib/IFC/IFCLoader.cpp
+@@ -52,3 +52,3 @@
+ #ifndef ASSIMP_BUILD_NO_COMPRESSED_IFC
+-#ifdef ASSIMP_USE_HUNTER
++#if 1
+ #include <minizip/unzip.h>
+--- a/code/Common/ZipArchiveIOSystem.cpp
++++ b/code/Common/ZipArchiveIOSystem.cpp
+@@ -53,3 +53,3 @@
+ 
+-#ifdef ASSIMP_USE_HUNTER
++#if 1
+ #    include <minizip/unzip.h>
