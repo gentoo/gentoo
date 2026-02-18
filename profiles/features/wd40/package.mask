@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Michał Górny <mgorny@gentoo.org> (2025-01-27)
@@ -37,9 +37,12 @@ app-portage/emlop
 # requiring Rust to install, and their reverse dependencies.
 dev-python/aiosmtpd
 dev-python/atpublic
+dev-python/behave
 dev-python/crispy-bootstrap3
 dev-python/crispy-bootstrap4
 dev-python/crispy-bootstrap5
+dev-python/cucumber-expressions
+dev-python/cucumber-tag-expressions
 dev-python/dj-database-url
 dev-python/django-configurations
 dev-python/django-crispy-forms
