@@ -24,8 +24,8 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="
 	cheetah ldap libcloud libvirt genshi keyring mako
-	mongodb nova portage profile redis selinux test raet
-	+zeromq vim-syntax
+	mongodb nova portage profile redis selinux test test-full
+	raet +zeromq vim-syntax
 "
 
 RDEPEND="
@@ -633,13 +633,21 @@ python_test() {
 		)
 		export "${test_exports[@]}"
 
+		if use test-full; then
+			einfo "Running slow tests."
+			SLOW_TESTS="--run-slow"
+		else
+			SLOW_TESTS=""
+		fi
+
 		cleanup() { rm -rf "${TMPDIR}" || die; }
 
 		trap cleanup EXIT
 
 		addwrite "${TMPDIR}"
 
-		epytest tests/integration/ \
+		epytest ${SLOW_TESTS} \
+				tests/integration/ \
 				tests/pytests/functional/ \
 				tests/pytests/pkg/ \
 				tests/pytests/unit/renderers/ \
