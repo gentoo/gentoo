@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: postgres-multi.eclass
@@ -38,6 +38,9 @@ inherit multibuild postgres
 if ! declare -p POSTGRES_COMPAT &>/dev/null; then
 	die 'Required variable POSTGRES_COMPAT not declared.'
 fi
+
+# Allow multiple slots.
+POSTGRES_REQ_USE="${POSTGRES_REQ_USE/^^/||}"
 
 # @ECLASS_VARIABLE: _POSTGRES_INTERSECT_SLOTS
 # @INTERNAL
