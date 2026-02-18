@@ -47,10 +47,8 @@ REQUIRED_USE="
 	nvmeof? ( spdk )
 "
 
-RESTRICT="!test? ( test )"
-
 # tests need root access, and network access
-RESTRICT+=" test"
+RESTRICT="test !test? ( test )"
 
 DEPEND="
 	${LUA_DEPS}
@@ -229,6 +227,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-19.2.2-silent-unused-variable-warning.patch"
 	"${FILESDIR}/ceph-19.2.2-src-mgr-make-enum-statically-castable.patch"
 	"${FILESDIR}/ceph-20.1.0-nvmeof.patch"
+	"${FILESDIR}/ceph-20.1.1-boost-url-linking.patch"
 	# https://bugs.gentoo.org/969039
 	"${FILESDIR}"/ceph-20.1.1-boost-1.89-{1,2,3}.patch
 )
@@ -262,6 +261,15 @@ src_prepare() {
 		rm -r src/boost || die # ensure use system boost, reduce QA spam
 	fi
 
+	# ensure system-libs, reduce QA spam (FIXME: fails w/o zstd subdir)
+	rm -r src/{c-ares,jaegertracing/opentelemetry-cpp,rocksdb,s3select/rapidjson,utf8proc} || die
+
+	if use parquet; then
+		# hammer in newer version of parquet/arrow
+		rm -r src/arrow/ || die
+		mv "${WORKDIR}/apache-arrow-17.0.0" src/arrow || die
+	fi
+
 	cmake_src_prepare
 
 	if ! use systemd; then
@@ -291,23 +299,13 @@ src_prepare() {
 
 	# remove tests that need root access
 	rm src/test/cli/ceph-authtool/cap*.t || die
-
-	if use parquet; then
-		# hammer in newer version of parquet/arrow
-		rm -r src/arrow/ || die
-		mv "${WORKDIR}/apache-arrow-17.0.0" src/arrow || die
-	fi
-
-	# everyone forgot to link to boost_url
-	sed -i -e 's~target_link_libraries(ceph-mds mds ${CMAKE_DL_LIBS} global-static ceph-common~target_link_libraries(ceph-mds mds ${CMAKE_DL_LIBS} global-static ceph-common boost_url~' src/CMakeLists.txt || die
-	sed -i -e 's/target_link_libraries(journal cls_journal_client)/target_link_libraries(journal cls_journal_client boost_url)/' src/journal/CMakeLists.txt || die
-	sed -i -e 's/${BLKID_LIBRARIES} ${CMAKE_DL_LIBS})/${BLKID_LIBRARIES} ${CMAKE_DL_LIBS} boost_url)/g' src/tools/cephfs/CMakeLists.txt || die
 }
 
 ceph_src_configure() {
 	local mycmakeargs=(
 		# Don't break installed bundled libraries (bug #942680)
 		-DBUILD_SHARED_LIBS=OFF
+		-DCMAKE_DISABLE_FIND_PACKAGE_Git=ON
 		-DWITH_BABELTRACE:BOOL=$(usex babeltrace)
 		-DWITH_BLUESTORE_PMEM:BOOL=$(usex pmdk)
 		-DWITH_CEPHFS:BOOL=$(usex cephfs)

@@ -1,0 +1,80 @@
+From b7f2f97043b2f1104eb6a2e81400dc7806ba68b6 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 19 Feb 2026 00:27:08 +0100
+Subject: [PATCH] Link to Boost::url
+
+Just replacing use of sed here. ("# everyone forgot to link to Boost::url")
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ src/CMakeLists.txt              | 2 +-
+ src/journal/CMakeLists.txt      | 2 +-
+ src/tools/cephfs/CMakeLists.txt | 8 ++++----
+ 3 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index fe0b5ef7..c58666ee 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -750,7 +750,7 @@ if (WITH_CEPHFS)
+     ceph_mds.cc)
+   add_executable(ceph-mds ${ceph_mds_srcs})
+   target_link_libraries(ceph-mds mds ${CMAKE_DL_LIBS} global-static ceph-common
+-    Boost::thread
++    Boost::thread Boost::url
+     ${ALLOC_LIBS})
+   install(TARGETS ceph-mds DESTINATION bin)
+ endif()
+diff --git a/src/journal/CMakeLists.txt b/src/journal/CMakeLists.txt
+index 3632c105..0dc8520d 100644
+--- a/src/journal/CMakeLists.txt
++++ b/src/journal/CMakeLists.txt
+@@ -11,4 +11,4 @@ set(journal_srcs
+   ObjectRecorder.cc
+   Utils.cc)
+ add_library(journal STATIC ${journal_srcs})
+-target_link_libraries(journal cls_journal_client)
++target_link_libraries(journal cls_journal_client Boost::url)
+diff --git a/src/tools/cephfs/CMakeLists.txt b/src/tools/cephfs/CMakeLists.txt
+index 6bac749a..5395e3a9 100644
+--- a/src/tools/cephfs/CMakeLists.txt
++++ b/src/tools/cephfs/CMakeLists.txt
+@@ -12,7 +12,7 @@ add_executable(cephfs-journal-tool ${cephfs_journal_tool_srcs})
+ target_link_libraries(cephfs-journal-tool
+   legacy-option-headers
+   librados mds osdc global
+-  ${BLKID_LIBRARIES} ${CMAKE_DL_LIBS})
++  ${BLKID_LIBRARIES} ${CMAKE_DL_LIBS} Boost::url)
+ 
+ set(cephfs-meta-injection_srcs
+   cephfs-meta-injection.cc
+@@ -23,7 +23,7 @@ add_executable(cephfs-meta-injection ${cephfs-meta-injection_srcs})
+ target_link_libraries(cephfs-meta-injection
+   legacy-option-headers
+   librados mds osdc global
+-  ${BLKID_LIBRARIES} ${CMAKE_DL_LIBS})
++  ${BLKID_LIBRARIES} ${CMAKE_DL_LIBS} Boost::url)
+ 
+ set(cephfs_table_tool_srcs
+   cephfs-table-tool.cc
+@@ -32,7 +32,7 @@ set(cephfs_table_tool_srcs
+   MDSUtility.cc)
+ add_executable(cephfs-table-tool ${cephfs_table_tool_srcs})
+ target_link_libraries(cephfs-table-tool librados mds osdc global
+-  ${BLKID_LIBRARIES} ${CMAKE_DL_LIBS})
++  ${BLKID_LIBRARIES} ${CMAKE_DL_LIBS} Boost::url)
+ 
+ set(cephfs_data_scan_srcs
+   cephfs-data-scan.cc
+@@ -43,7 +43,7 @@ set(cephfs_data_scan_srcs
+ add_executable(cephfs-data-scan ${cephfs_data_scan_srcs})
+ target_link_libraries(cephfs-data-scan librados cephfs mds osdc global
+   cls_cephfs_client
+-  ${BLKID_LIBRARIES} ${CMAKE_DL_LIBS})
++  ${BLKID_LIBRARIES} ${CMAKE_DL_LIBS} Boost::url)
+ 
+ install(TARGETS
+   cephfs-journal-tool
+-- 
+2.53.0
+
