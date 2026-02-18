@@ -89,6 +89,7 @@ FFMPEG_IUSE_MAP=(
 	lzma
 	modplug:libmodplug
 	nvenc:cuvid,ffnvcodec,nvdec,nvenc
+	opencolorio:^libopencolorio # no multilib
 	ocr:libtesseract
 	openal
 	opencl
@@ -241,6 +242,7 @@ COMMON_DEPEND="
 	)
 	lzma? ( app-arch/xz-utils[${MULTILIB_USEDEP}] )
 	modplug? ( media-libs/libmodplug[${MULTILIB_USEDEP}] )
+	opencolorio? ( media-libs/opencolorio:= )
 	ocr? ( app-text/tesseract:=[${MULTILIB_USEDEP}] )
 	openal? ( media-libs/openal[${MULTILIB_USEDEP}] )
 	opencl? ( virtual/opencl[${MULTILIB_USEDEP}] )
