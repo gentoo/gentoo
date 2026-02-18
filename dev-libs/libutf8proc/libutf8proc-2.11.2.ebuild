@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -21,7 +21,7 @@ RESTRICT="!test? ( test )"
 BDEPEND="test? ( =app-i18n/unicode-data-17.0* )"
 S="${WORKDIR}/${P#lib}"
 
-QA_PKGCONFIG_VERSION="3.2.0"
+QA_PKGCONFIG_VERSION="3.2.2"
 
 src_prepare() {
 	if use cjk; then
