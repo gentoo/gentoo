@@ -12,7 +12,7 @@
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-06-22)
 # This is currently more footgun than real option. Bugs #958638, #968227
-<kde-plasma/kwin-6.6.0 X
+<kde-plasma/kwin-6.7.0 X
 
 # Ionen Wolkens <ionen@gentoo.org> (2025-06-17)
 # Build system currently does not allow static libs to be optional, and
