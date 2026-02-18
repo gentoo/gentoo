@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -71,6 +71,8 @@ ERROR_VETH="CONFIG_VETH: needed for internal (host-to-container) networking"
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/linuxcontainers.asc
 
 DOCS=( AUTHORS CONTRIBUTING MAINTAINERS README.md doc/FAQ.txt )
+
+PATCHES=( "${FILESDIR}"/lxc-6.0.5-fix-openat2-include-typo.patch )
 
 pkg_setup() {
 	linux-info_pkg_setup
