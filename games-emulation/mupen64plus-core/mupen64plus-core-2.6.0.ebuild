@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -45,6 +45,10 @@ BDEPEND="
 	cpu_flags_x86_sse? ( dev-lang/nasm )
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.6.0-zlib-1.3.2.patch
+)
 
 src_prepare() {
 	default
