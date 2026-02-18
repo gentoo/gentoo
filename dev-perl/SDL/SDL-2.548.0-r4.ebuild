@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -55,4 +55,5 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.548-perl537_sv_nv.patch
 	"${FILESDIR}"/${PN}-2.548-refcount.patch
 	"${FILESDIR}"/${PN}-2.548-uaf-surface.patch
+	"${FILESDIR}"/${PN}-2.548-c23.patch
 )

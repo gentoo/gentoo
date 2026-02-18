@@ -1,0 +1,67 @@
+https://bugs.gentoo.org/945242
+https://github.com/PerlGameDev/SDL/issues/294
+https://github.com/PerlGameDev/SDL/commit/2a1eb99101a89e46c13b75b08a4c685e0f7425fe
+
+From 2a1eb99101a89e46c13b75b08a4c685e0f7425fe Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Tue, 11 Feb 2025 12:14:27 +0100
+Subject: [PATCH] Fix building in ISO C23
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Building with GCC 15, which defaults to ISO C23, failed like this:
+
+    In file included from lib/SDL_perl.xs:32:
+    lib/SDL_perl.c:654:13: error: conflicting types for ‘boot_SDL’; have ‘void(PerlInterpreter *, CV *)’ {aka ‘void(struct interpreter *, struct cv *)’}
+      654 | XS_EXTERNAL(boot_SDL); /* prototype to pass -Wmissing-prototypes */
+	  |             ^~~~~~~~
+    /usr/lib64/perl5/CORE/XSUB.h:149:34: note: in definition of macro ‘XS_EXTERNAL’
+      149 | #  define XS_EXTERNAL(name) void name(pTHX_ CV* cv __attribute__unused__)
+	  |                                  ^~~~
+    lib/SDL_perl.xs:147:6: note: previous declaration of ‘boot_SDL’ with type ‘void(void)’
+      147 | void boot_SDL();
+	  |      ^~~~~~~~
+    lib/SDL_perl.c:655:13: error: conflicting types for ‘boot_SDL’; have ‘void(PerlInterpreter *, CV *)’ {aka ‘void(struct interpreter *, struct cv *)’}
+      655 | XS_EXTERNAL(boot_SDL)
+	  |             ^~~~~~~~
+    /usr/lib64/perl5/CORE/XSUB.h:149:34: note: in definition of macro ‘XS_EXTERNAL’
+      149 | #  define XS_EXTERNAL(name) void name(pTHX_ CV* cv __attribute__unused__)
+	  |                                  ^~~~
+    lib/SDL_perl.xs:147:6: note: previous declaration of ‘boot_SDL’ with type ‘void(void)’
+      147 | void boot_SDL();
+	  |      ^~~~~~~~
+
+The cause is a mismatch between how boot_SDL() was declared and used
+in src/SDL.xs and how Perl generates a boot function for XS packages.
+This patch fixes it by passing current Perl interpreter and, probably
+ignored, cv argument.
+
+Resolves: https://github.com/PerlGameDev/SDL/issues/294
+Resolves: https://bugzilla.redhat.com/show_bug.cgi?id=2341036
+---
+ src/SDL.xs | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/SDL.xs b/src/SDL.xs
+index a13882c8..5856e3af 100644
+--- a/src/SDL.xs
++++ b/src/SDL.xs
+@@ -144,7 +144,7 @@ sdl_perl_atexit (void)
+ 	SDL_Quit();
+ }
+ 
+-void boot_SDL();
++XS(boot_SDL);
+ void boot_SDL__OpenGL();
+ 
+ XS(boot_SDL_perl)
+@@ -155,7 +155,7 @@ XS(boot_SDL_perl)
+ #endif
+ 	PL_perl_destruct_level = 2;
+ 	GET_TLS_CONTEXT
+-	boot_SDL();
++	boot_SDL(aTHX_ cv);
+ 
+ #if defined WINDOWS || defined WIN32
+   SDL_RegisterApp ("SDLPerl App", 0, GetModuleHandle (NULL));
