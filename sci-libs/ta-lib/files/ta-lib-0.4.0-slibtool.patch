@@ -6,9 +6,7 @@ Subject: [PATCH] Fix parallel Make issue with slibtool
 
 ---
  configure.in => configure.ac       |  4 ++++
- src/tools/gen_code/Makefile.am     | 13 ++++++++-----
  src/tools/gen_code/gen_code_bin.sh | 16 ++++++++++++++++
- src/tools/ta_regtest/Makefile.am   |  4 ++--
  4 files changed, 30 insertions(+), 7 deletions(-)
  rename configure.in => configure.ac (96%)
  create mode 100755 src/tools/gen_code/gen_code_bin.sh
@@ -31,28 +29,6 @@ index d2e5784..359d400 100644
  # Versioning:
  # Only change this if library is no longer
  # ABI compatible with previous version
-diff --git a/src/tools/gen_code/Makefile.am b/src/tools/gen_code/Makefile.am
-index cb839c2..2ec2360 100644
---- a/src/tools/gen_code/Makefile.am
-+++ b/src/tools/gen_code/Makefile.am
-@@ -6,9 +6,12 @@ noinst_PROGRAMS = gen_code
- gen_code_SOURCES = gen_code.c
- 
- gen_code_CPPFLAGS = -I../../ta_common
--gen_code_LDFLAGS = -L../../ta_common -L../../ta_abstract -L../../ta_func
--gen_code_LDADD = -lta_common -lta_abstract_gc -lta_func -lm
-+gen_code_LDFLAGS = -no-undefined
-+gen_code_LDADD = \
-+	../../ta_common/libta_common.la \
-+	../../ta_abstract/libta_abstract_gc.la \
-+	../../ta_func/libta_func.la \
-+	$(LIBM)
- 
--all-local:
--	$(MAKE) $(AM_MAKEFLAGS) gen_code
--	cp gen_code ../../../bin
-+all-local: gen_code
-+	$(LIBTOOL) --mode=execute ./gen_code_bin.sh gen_code
 diff --git a/src/tools/gen_code/gen_code_bin.sh b/src/tools/gen_code/gen_code_bin.sh
 new file mode 100755
 index 0000000..b19fd09
@@ -75,18 +51,4 @@ index 0000000..b19fd09
 +set -eu
 +
 +cp "${1}" ../../../bin
-diff --git a/src/tools/ta_regtest/Makefile.am b/src/tools/ta_regtest/Makefile.am
-index 64229e2..255a87e 100644
---- a/src/tools/ta_regtest/Makefile.am
-+++ b/src/tools/ta_regtest/Makefile.am
-@@ -34,5 +34,5 @@ ta_regtest_CPPFLAGS = -I../../ta_func \
- 		      -I../../ta_common/mt \
- 		      -I../../ta_common \
- 		      -I../../ta_abstract
--ta_regtest_LDFLAGS = -L../.. -lta_lib \
--		     -lm
-+ta_regtest_LDFLAGS = -no-undefined
-+ta_regtest_LDADD = ../../libta_lib.la $(LIBM)
--- 
-2.35.1
 
