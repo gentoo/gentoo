@@ -50,11 +50,11 @@ pkg_preinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]] ; then
 		local msg=""
 
-		if [[ -e "${ED}"/boot/cmdline.txt ]] && [[ -e /boot/cmdline.txt ]] ; then
+		if [[ -e "${ED}"/boot/cmdline.txt ]] && [[ -e "${ROOT}"/boot/cmdline.txt ]] ; then
 			msg+="/boot/cmdline.txt "
 		fi
 
-		if [[ -e "${ED}"/boot/config.txt ]] && [[ -e /boot/config.txt ]] ; then
+		if [[ -e "${ED}"/boot/config.txt ]] && [[ -e "${ROOT}"/boot/config.txt ]] ; then
 			msg+="/boot/config.txt "
 		fi
 

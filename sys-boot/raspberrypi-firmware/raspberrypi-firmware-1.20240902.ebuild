@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -50,11 +50,11 @@ pkg_preinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]] ; then
 		local msg=""
 
-		if [[ -e "${ED}"/boot/cmdline.txt ]] && [[ -e /boot/cmdline.txt ]] ; then
+		if [[ -e "${ED}"/boot/cmdline.txt ]] && [[ -e "${ROOT}"/boot/cmdline.txt ]] ; then
 			msg+="/boot/cmdline.txt "
 		fi
 
-		if [[ -e "${ED}"/boot/config.txt ]] && [[ -e /boot/config.txt ]] ; then
+		if [[ -e "${ED}"/boot/config.txt ]] && [[ -e "${ROOT}"/boot/config.txt ]] ; then
 			msg+="/boot/config.txt "
 		fi
 

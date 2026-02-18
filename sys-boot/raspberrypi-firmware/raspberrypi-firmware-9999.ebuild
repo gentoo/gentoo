@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,9 +18,10 @@ fi
 DESCRIPTION="Raspberry Pi (all versions) bootloader and GPU firmware"
 HOMEPAGE="https://github.com/raspberrypi/firmware"
 
-LICENSE="GPL-2 raspberrypi-videocore-bin"
+LICENSE="raspberrypi-videocore-bin"
 SLOT="0"
-RESTRICT="binchecks strip"
+RESTRICT="strip"
+QA_PREBUILT="*"
 
 DOC_CONTENTS="Please configure your ram setup by editing /boot/config.txt"
 
@@ -49,11 +50,11 @@ pkg_preinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]] ; then
 		local msg=""
 
-		if [[ -e "${ED}"/boot/cmdline.txt ]] && [[ -e /boot/cmdline.txt ]] ; then
+		if [[ -e "${ED}"/boot/cmdline.txt ]] && [[ -e "${ROOT}"/boot/cmdline.txt ]] ; then
 			msg+="/boot/cmdline.txt "
 		fi
 
-		if [[ -e "${ED}"/boot/config.txt ]] && [[ -e /boot/config.txt ]] ; then
+		if [[ -e "${ED}"/boot/config.txt ]] && [[ -e "${ROOT}"/boot/config.txt ]] ; then
 			msg+="/boot/config.txt "
 		fi
 
