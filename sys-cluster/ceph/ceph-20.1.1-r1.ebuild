@@ -26,9 +26,9 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 IUSE="
-	babeltrace +cephfs custom-cflags diskprediction dpdk fuse grafana
-	jemalloc jaeger kafka kerberos ldap lttng +mgr nvmeof +parquet pmdk rabbitmq
-	+radosgw rbd-rwl rbd-ssd rdma rgw-lua selinux +ssl spdk +sqlite +system-boost
+	babeltrace +cephfs custom-cflags diskprediction dpdk fuse grafana jaeger
+	kafka kerberos ldap lttng +mgr nvmeof +parquet pmdk rabbitmq +radosgw
+	rbd-rwl rbd-ssd rdma rgw-lua selinux +ssl spdk +sqlite +system-boost
 	systemd +tcmalloc test +uring xfs zbd
 "
 
@@ -38,7 +38,6 @@ IUSE+="$(printf "cpu_flags_x86_%s\n" ${CPU_FLAGS_X86[@]})"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	${LUA_REQUIRED_USE}
-	?? ( jemalloc tcmalloc )
 	diskprediction? ( mgr )
 	kafka? ( radosgw )
 	mgr? ( cephfs )
@@ -95,8 +94,6 @@ DEPEND="
 	x11-libs/libpciaccess:=
 	babeltrace? ( dev-util/babeltrace:0/1 )
 	fuse? ( sys-fs/fuse:3= )
-	jemalloc? ( dev-libs/jemalloc:= )
-	!jemalloc? ( >=dev-util/google-perftools-2.6.1:= )
 	jaeger? (
 		dev-cpp/nlohmann_json:=
 		<dev-cpp/opentelemetry-cpp-1.10:=[jaeger,prometheus]
@@ -126,6 +123,7 @@ DEPEND="
 	spdk? ( dev-util/cunit )
 	sqlite? ( dev-db/sqlite:= )
 	system-boost? ( dev-libs/boost:=[context,python,${PYTHON_USEDEP},zlib] )
+	tcmalloc? ( >=dev-util/google-perftools-2.6.1:= )
 	uring? ( sys-libs/liburing:= )
 	xfs? ( sys-fs/xfsprogs:= )
 	zbd? ( sys-block/libzbd:= )
@@ -335,7 +333,7 @@ ceph_src_configure() {
 		-DWITH_XFS:BOOL=$(usex xfs)
 		-DWITH_ZBD:BOOL=$(usex zbd)
 		-DENABLE_SHARED:BOOL=ON
-		-DALLOCATOR:STRING=$(usex tcmalloc 'tcmalloc' "$(usex jemalloc 'jemalloc' 'libc')")
+		-DALLOCATOR:STRING=$(usex tcmalloc tcmalloc libc)
 		-DWITH_SYSTEM_PMDK:BOOL=$(usex pmdk 'YES' "$(usex rbd-rwl '')")
 		-DWITH_SYSTEM_BOOST:BOOL=$(usex system-boost)
 		-DWITH_SYSTEM_ROCKSDB:BOOL=ON
