@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -110,6 +110,9 @@ src_prepare() {
 
 	mkdir "${BUILD_DIR}" || die
 	cp "${FILESDIR}/${PV}"/git_version.h "${BUILD_DIR}"/git_version.h || die
+
+	# Bug 970232
+	filter-lto
 }
 
 src_configure() {
