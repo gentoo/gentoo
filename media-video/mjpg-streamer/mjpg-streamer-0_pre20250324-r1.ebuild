@@ -47,14 +47,9 @@ src_prepare() {
 			CMakeLists.txt || die
 	fi
 
-	local flag switch
+	local flag
 	for flag in ${IUSE_PLUGINS}; do
-		use ${flag} && switch='' || switch='#'
-		flag=${flag/input-/input_}
-		flag=${flag/output-/output_}
-		sed -i -e \
-			"s|^add_subdirectory(plugins\/${flag})|${switch}add_subdirectory(plugins/${flag})|" \
-			CMakeLists.txt || die
+		use ${flag} || cmake_comment_add_subdirectory plugins/${flag/put-/put_}
 	done
 	if use http-management; then
 		sed -i -e \
