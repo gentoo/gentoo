@@ -7,7 +7,9 @@
   </maintainer>
   <use>
     <flag name="amr">Enables Adaptive Multi-Rate Audio support</flag>
+    <flag name="dolbyb">Support Dolby B like noise reduction with <pkg>media-libs/libdolbyb</pkg></flag>
     <flag name="id3tag">Enables ID3 tagging with id3tag library</flag>
+    <flag name="loudness">Support loudness normalisation according to the EBU R128 standard using <pkg>media-libs/libebur128</pkg></flag>
     <flag name="sndio">Enable support for sndio</flag>
     <flag name="speexdsp">Support for automatic gain control, denoise and dereverb with <pkg>media-libs/speexdsp</pkg></flag>
     <flag name="twolame">Enables twolame support (MPEG Audio Layer 2 encoder)</flag>
