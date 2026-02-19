@@ -263,7 +263,7 @@ src_prepare() {
 	fi
 
 	# ensure system-libs, reduce QA spam (FIXME: fails w/o zstd subdir)
-	rm -r src/{c-ares,jaegertracing/opentelemetry-cpp,rocksdb,s3select/rapidjson,utf8proc} || die
+	rm -r src/{c-ares,jaegertracing/opentelemetry-cpp,rocksdb,utf8proc} || die
 
 	if use parquet; then
 		# hammer in newer version of parquet/arrow
