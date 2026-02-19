@@ -12,7 +12,7 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">google-api-core</remote-id>
-		<remote-id type="github">googleapis/python-api-core</remote-id>
+		<remote-id type="github">googleapis/google-cloud-python</remote-id>
 	</upstream>
 	<use>
 		<flag name="grpc">
