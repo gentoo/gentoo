@@ -50,6 +50,11 @@ PATCHES=(
 src_prepare() {
 	default
 
+	# Fix python shebangs for python-exec[-native-symlinks], #909330
+	local shebangs=($(grep -rl "#!/usr/bin/env python3" || die))
+	python_setup
+	python_fix_shebang -q ${shebangs[*]}
+
 	# Remove -Werror bug #528354
 	sed -i -e 's/-Werror\([^=]\)/\1/g' configure.ac || die
 
