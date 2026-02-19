@@ -1,0 +1,32 @@
+https://bugs.gentoo.org/970315
+
+From 237313a2439bf73d8eb8830bddc95d1fc3420e17 Mon Sep 17 00:00:00 2001
+From: Silvio Vilerino <sivileri@microsoft.com>
+Date: Thu, 22 Jan 2026 09:40:33 -0500
+Subject: [PATCH] d3d12: Add missing using Microsoft::WRL:ComPtr in
+ d3d12_context_common
+
+Fixes: b06b2fbaba0 ("d3d12: Remove Agility v717 guards for features now available in v618")
+Part-of: <https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/39457>
+---
+ src/gallium/drivers/d3d12/d3d12_context_common.cpp | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/gallium/drivers/d3d12/d3d12_context_common.cpp b/src/gallium/drivers/d3d12/d3d12_context_common.cpp
+index d41cf1cd0307..287ffaea7bb4 100644
+--- a/src/gallium/drivers/d3d12/d3d12_context_common.cpp
++++ b/src/gallium/drivers/d3d12/d3d12_context_common.cpp
+@@ -62,6 +62,11 @@
+ #include <string.h>
+ #include "d3d12_interop_public.h"
+ 
++#ifndef _GAMING_XBOX
++#include <wrl/client.h>
++using Microsoft::WRL::ComPtr;
++#endif
++
+ static void
+ d3d12_context_destroy(struct pipe_context *pctx)
+ {
+-- 
+GitLab
