@@ -1,0 +1,23 @@
+in marshmallow-4+ @validates accepts multiple field names, and
+ decorated@validates methods receive data_key as a keyword argument.
+
+--- a/platformio/package/manifest/schema.py
++++ b/platformio/package/manifest/schema.py
+@@ -232,7 +232,7 @@ class ManifestSchema(BaseSchema):
+     )
+ 
+     @validates("version")
+-    def validate_version(self, value):
++    def validate_version(self, value, **kwargs):
+         try:
+             value = str(value)
+             assert "." in value
+@@ -249,7 +249,7 @@ class ManifestSchema(BaseSchema):
+             ) from exc
+ 
+     @validates("license")
+-    def validate_license(self, value):
++    def validate_license(self, value, **kwargs):
+         try:
+             spdx = self.load_spdx_licenses()
+         except requests.exceptions.RequestException as exc:
