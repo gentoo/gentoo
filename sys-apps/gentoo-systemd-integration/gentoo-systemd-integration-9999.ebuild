@@ -1,4 +1,4 @@
-# Copyright 2013-2025 Gentoo Authors
+# Copyright 2013-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,4 +38,12 @@ src_configure() {
 		udevdir="${EPREFIX}$(get_udevdir)"
 	)
 	econf "${myconf[@]}"
+}
+
+pkg_postinst() {
+	udev_reload
+}
+
+pkg_postrm() {
+	udev_reload
 }
