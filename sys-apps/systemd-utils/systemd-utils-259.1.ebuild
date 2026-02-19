@@ -139,7 +139,6 @@ multilib_src_configure() {
 		$(meson_native_use_feature selinux)
 		$(meson_use split-usr split-bin)
 		$(meson_native_use_bool sysusers)
-		$(meson_use test tests)
 		$(meson_native_use_bool tmpfiles)
 		$(meson_native_use_feature udev blkid)
 		$(meson_native_use_feature udev libmount)
@@ -199,6 +198,13 @@ multilib_src_configure() {
 		-Dsshdprivsepdir=no
 		-Dzshcompletiondir=no
 	)
+
+	# workaround for bug 969103
+	if [[ ${CHOST} == riscv32* ]] ; then
+		emesonargs+=( -Dtests=true )
+	else
+		emesonargs+=( $(meson_use test tests) )
+	fi
 
 	if use tmpfiles || use udev; then
 		emesonargs+=( $(meson_native_use_feature acl) )
