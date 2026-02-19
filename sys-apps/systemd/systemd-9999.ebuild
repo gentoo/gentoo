@@ -344,7 +344,6 @@ multilib_src_configure() {
 		$(meson_native_use_feature kmod)
 		$(meson_feature lz4)
 		$(meson_feature lzma xz)
-		$(meson_use test tests)
 		$(meson_feature zstd)
 		$(meson_native_use_feature iptables libiptc)
 		$(meson_native_use_feature openssl)
@@ -387,6 +386,13 @@ multilib_src_configure() {
 		$(meson_native_true tmpfiles)
 		$(meson_native_true vconsole)
 	)
+
+	# workaround for bug 969103
+	if [[ ${CHOST} == riscv32* ]] ; then
+		myconf+=( -Dtests=true )
+	else
+		myconf+=( $(meson_use test tests) )
+	fi
 
 	case $(tc-arch) in
 		amd64|arm|arm64|loong|ppc|ppc64|riscv|s390|x86)
