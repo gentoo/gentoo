@@ -43,8 +43,18 @@ DEPEND="
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-7.1.2-disable-tests.patch"
 	"${FILESDIR}/${PN}-8.0.0-configure-make-python-output-match-autotools.patch" # Bug: 882725
+)
+
+# Upstream acknowledge that a small number of tests fail sporadically, including on their
+# test boxes. We SKIP problematic tests here.  Check https://vinyl-cache.org/vtest/
+SKIP_TESTS=(
+	"u00021.vtc" # Commit: 83d9fbb2961c
+	"r02686.vtc" # Bug: 880627
+	"r02990.vtc" # Bug: 880627
+	"u00008.vtc" # Bug: 880627
+	"u00009.vtc" # Bug: 880627
+	"t02014.vtc" # Bug: 964041
 )
 
 src_prepare() {
@@ -54,6 +64,12 @@ src_prepare() {
 	local shebangs=($(grep -rl "#!/usr/bin/env python3" || die))
 	python_setup
 	python_fix_shebang -q ${shebangs[*]}
+
+	# SKIP unreliable tests
+	local t
+	for t in ${SKIP_TESTS[*]}; do
+		sed -i -e '/^varnishtest.*$/a feature cmd false' bin/varnishtest/tests/${t} || die
+	done
 
 	# Remove -Werror bug #528354
 	sed -i -e 's/-Werror\([^=]\)/\1/g' configure.ac || die
@@ -75,13 +91,6 @@ src_configure() {
 		--without-jemalloc
 	)
 	econf "${myeconfargs[@]}"
-}
-
-src_test() {
-	# Times out
-	rm bin/varnishtest/tests/u00021.vtc || die
-
-	default
 }
 
 src_install() {
