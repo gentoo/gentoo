@@ -18,7 +18,7 @@ IUSE="gtk static-libs static-pic"
 REQUIRED_USE="${ADA_REQUIRED_USE}"
 
 RDEPEND="${ADA_DEPS}
-	gtk? ( dev-ada/gtkada )"
+	gtk? ( dev-ada/gtkada:=[${ADA_USEDEP},shared,static-libs?,static-pic?] )"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-ada/gprbuild[${ADA_USEDEP}]"
 
