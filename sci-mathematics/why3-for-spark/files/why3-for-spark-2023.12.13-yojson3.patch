@@ -1,0 +1,11 @@
+--- a/plugins/gnat_json/gnat_ast_to_ptree.ml	2026-02-19 17:43:53.213295946 +0100
++++ b/plugins/gnat_json/gnat_ast_to_ptree.ml	2026-02-19 17:44:30.607845873 +0100
+@@ -1389,7 +1389,7 @@
+   close_out out_channel
+ 
+ let read_channel env path filename c =
+-  let json = Yojson.Safe.from_channel c in
++  let json = (Yojson.Safe.from_channel c :> Gnat_ast.From_json.t) in
+   let gnat_file =
+     let open Gnat_ast in
+     try From_json.file_from_json json
