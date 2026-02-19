@@ -1,0 +1,39 @@
+Make the code C23-compatible
+
+Replace the enum-defined true/false constants with the default one. Also
+fix-up a function definition.
+
+Authour: Alexander Golubev (Fat-Zer) <fatzer2@gmail.com>
+Bug: https://bugs.gentoo.org/944881
+Source: A dedicated patch for Gentoo
+
+--- a/libgputils/gpcoffgen.h
++++ b/libgputils/gpcoffgen.h
+@@ -88,7 +88,7 @@ extern gp_reloc_t *gp_coffgen_add_reloc(gp_section_t *Section);
+ #define RELOC_DISABLE_WARN              (1 << 0)
+ #define RELOC_ENABLE_CINIT_WARN         (1 << 1)
+ 
+-extern void gp_coffgen_check_relocations(const gp_object_t *Object, unsigned int Behavior);
++extern void gp_coffgen_check_relocations(const gp_object_t *Object, gp_boolean Behavior);
+ 
+ extern gp_boolean gp_coffgen_del_reloc(gp_section_t *Section, gp_reloc_t *Relocation);
+ extern const char *gp_coffgen_reloc_type_to_str(uint16_t Type);
+--- a/libgputils/gptypes.h
++++ b/libgputils/gptypes.h
+@@ -26,10 +26,16 @@ Boston, MA 02111-1307, USA.  */
+ 
+ #include "stdhdr.h"
+ 
++/* C99 systems have <stdbool.h>. Non-C99 systems may or may not. */
++#if defined (__STDC_VERSION__) && __STDC_VERSION__ >= 199901L
++#include <stdbool.h>
++typedef int gp_boolean; /* use int rather than bool to keep ABI compatible with enum; replace with bool if you are bold */
++#else
+ typedef enum {
+   false = (0 == 1),
+   true  = (0 == 0)
+ } gp_boolean;
++#endif
+ 
+ typedef long    gp_symvalue_t;
+ 
