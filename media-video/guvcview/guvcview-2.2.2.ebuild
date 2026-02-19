@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}-src-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="gsl pulseaudio qt6 sfml"
 
 BDEPEND="
