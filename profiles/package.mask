@@ -320,12 +320,6 @@ app-emacs/use-package
 # Bug #966194, #907208, #906665, #796242, #794028, #656354.
 app-portage/java-ebuilder
 
-# Ulrich Müller <ulm@gentoo.org> (2026-01-18)
-# Obsolete since Emacs 29, per upstream README.md. Use the "docker"
-# method from the integrated tramp-container package as replacement.
-# Removal on 2026-02-17. Bug #968938.
-app-emacs/docker-tramp
-
 # Eray Aslan <eras@gentoo.org> (2025-12-24)
 # Mask experimental software
 =mail-mta/postfix-3.12*
