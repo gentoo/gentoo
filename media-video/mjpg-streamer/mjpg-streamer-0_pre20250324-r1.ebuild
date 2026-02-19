@@ -3,13 +3,13 @@
 
 EAPI=8
 
-inherit systemd
+inherit cmake systemd
 
 DESCRIPTION="MJPG-streamer takes JPGs from Linux-UVC compatible webcams"
 HOMEPAGE="https://github.com/jacksonliam/mjpg-streamer"
-EGIT_COMMIT="310b29f4a94c46652b20c4b7b6e5cf24e532af39"
-SRC_URI="https://github.com/jacksonliam/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
+COMMIT="310b29f4a94c46652b20c4b7b6e5cf24e532af39"
+SRC_URI="https://github.com/jacksonliam/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${COMMIT}"
 CMAKE_USE_DIR="${S}/${PN}-experimental"
 
 LICENSE="GPL-2"
@@ -35,57 +35,50 @@ RDEPEND="media-libs/libjpeg-turbo:=
 DEPEND="${RDEPEND}
 	input-testpicture? ( media-gfx/imagemagick )"
 
+DOCS=( README.md TODO )
+
 PATCHES=(
-	"${FILESDIR}/${PN}-0_pre20200524-cmake4.patch" # downstream patch
+	"${FILESDIR}/${PN}-0_pre20250324-cmake4.patch" # downstream patch
+	"${FILESDIR}/${PN}-0_pre20250324-norpath.patch" # downstream patch
 )
 
 src_prepare() {
-	sed -i -e "s|.*RPATH.*||g" CMakeLists.txt || die
-	if use wxp-compat; then
-		sed -i -e \
-			's|^add_feature_option(WXP_COMPAT "Enable compatibility with WebcamXP" OFF)|' \
-			'add_feature_option(WXP_COMPAT "Enable compatibility with WebcamXP" ON)|g' \
-			CMakeLists.txt || die
-	fi
-
+	pushd "${CMAKE_USE_DIR}" || die
 	local flag
 	for flag in ${IUSE_PLUGINS}; do
 		use ${flag} || cmake_comment_add_subdirectory plugins/${flag/put-/put_}
 	done
-	if use http-management; then
-		sed -i -e \
-		's|^add_feature_option(ENABLE_HTTP_MANAGEMENT "Enable experimental HTTP management option" OFF)|' \
-		'add_feature_option(ENABLE_HTTP_MANAGEMENT "Enable experimental HTTP management option" ON)|g' \
-		plugins/output_http/CMakeLists.txt || die
-	fi
-	sed -e "s|@LIBDIR@|$(get_libdir)/${PN}/$(get_libdir)|g" "${FILESDIR}/${PN}.initd" > ${PN}.initd || die
+	popd || die
 
-	default
+	sed -e "s|@LIBDIR@|$(get_libdir)/${PN}/$(get_libdir)|g" \
+		"${FILESDIR}/${PN}.initd" > "${S}/${PN}.initd" || die
+
+	cmake_src_prepare
+}
+
+src_configure() {
+	local mycmakeargs=(
+		-DWXP_COMPAT=$(usex wxp-compat ON OFF)
+		-DENABLE_HTTP_MANAGEMENT=$(usex http-management ON OFF)
+	)
+	cmake_src_configure
 }
 
 src_install() {
-	into /usr
-	dobin ${PN//-/_}
-	into "/usr/$(get_libdir)/${PN}"
-	dolib.so *.so
+	cmake_src_install
 
-	if use www ; then
-		insinto /usr/share/${PN}
-		doins -r www
-	fi
+	use www || rm -rf "${ED}/usr/share/${PN}" || die
 
-	dodoc README.md TODO
-
-	newinitd ${PN}.initd ${PN}
+	newinitd "${S}/${PN}.initd" ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
-	systemd_dounit mjpg_streamer@.service
+	systemd_dounit "${CMAKE_USE_DIR}/mjpg_streamer@.service"
 }
 
 pkg_postinst() {
 	einfo "Remember to set an input and output plugin for mjpg-streamer."
 
 	if use input-uvc ; then
-		einfo  "To use the UVC plugin as a regular user, you must be a part of the video group"
+		einfo "To use the UVC plugin as a regular user, you must be a part of the video group"
 	fi
 
 	if use www ; then
