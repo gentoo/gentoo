@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,7 +32,7 @@ else
 	SRC_URI="https://github.com/Nuand/${MY_PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz \
 			https://github.com/analogdevicesinc/no-OS/archive/${noOS_commit}.tar.gz -> analogdevices-no-OS-0bba46.tar.gz
 			https://github.com/Nuand/bladeRF-fsk/archive/${bladeRFfsk_commit}.tar.gz -> bladerf-fsk-fb90368.tar.gz"
-	KEYWORDS="~amd64 ~arm ~riscv ~x86"
+	KEYWORDS="amd64 ~arm ~riscv ~x86"
 fi
 
 BDEPEND="doc? ( app-text/doxygen )"
