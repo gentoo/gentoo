@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,6 +19,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="nls? ( sys-devel/gettext )"
+
+PATCHES=(
+	"${FILESDIR}/acl-2.3.2-memory.patch"
+)
 
 src_prepare() {
 	default
