@@ -20,6 +20,7 @@ RESTRICT="test"
 RDEPEND="
 	>=dev-ml/dune-3.21
 	dev-ml/csexp:=[ocamlopt?]
+	dev-ml/pp:=[ocamlopt?]
 	!dev-ml/dune-private-libs
 	!dev-ml/stdune
 	!dev-ml/dyn
