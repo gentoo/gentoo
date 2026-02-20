@@ -1,0 +1,40 @@
+https://github.com/VirtualBox/virtualbox/commit/33992f0e56b8a9bb565e0beecad91e87362ab390
+
+From 33992f0e56b8a9bb565e0beecad91e87362ab390 Mon Sep 17 00:00:00 2001
+From: Vadim Galitsyn <vadim.galitsyn@oracle.com>
+Date: Tue, 17 Feb 2026 15:37:37 +0000
+Subject: [PATCH] Linux host: Introduce initial support for kernel 6.19 (build
+ fix for old kernels),bugref:11038.
+
+svn:sync-xref-src-repo-rev: r172811
+--- a/vboxdrv/r0drv/linux/memobj-r0drv-linux.c
++++ b/vboxdrv/r0drv/linux/memobj-r0drv-linux.c
+@@ -181,7 +181,6 @@ static const struct
+ *   Internal Functions                                                                                                           *
+ *********************************************************************************************************************************/
+ static void rtR0MemObjLinuxFreePages(PRTR0MEMOBJLNX pMemLnx);
+-static void rtR0MemObjLinuxFlushTlbAll(void);
+ 
+ 
+ /**
+@@ -2245,15 +2244,17 @@ DECLHIDDEN(int) rtR0MemObjNativeMapUser(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJ p
+     return rc;
+ }
+ 
++#if defined(IPRT_USE_ALLOC_VM_AREA_FOR_EXEC) || defined(IPRT_USE_APPLY_TO_PAGE_RANGE_FOR_EXEC)
+ static void rtR0MemObjLinuxFlushTlbAll(void)
+ {
+-#if RTLNX_VER_MIN(6,19,0)
++# if RTLNX_VER_MIN(6,19,0)
+     if (RT_LIKELY(RT_VALID_PTR(g_pfnLinuxFlushTlbAll)))
+         g_pfnLinuxFlushTlbAll();
+-#else
++# else
+     __flush_tlb_all();
+-#endif
++# endif
+ }
++#endif
+ 
+ DECLHIDDEN(int) rtR0MemObjNativeProtect(PRTR0MEMOBJINTERNAL pMem, size_t offSub, size_t cbSub, uint32_t fProt)
+ {

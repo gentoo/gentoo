@@ -1,0 +1,53 @@
+https://github.com/VirtualBox/virtualbox/commit/8902311a0d88a2d14a1b8ee224008a4c7061854b
+
+From 8902311a0d88a2d14a1b8ee224008a4c7061854b Mon Sep 17 00:00:00 2001
+From: Vadim Galitsyn <vadim.galitsyn@oracle.com>
+Date: Tue, 17 Feb 2026 15:20:09 +0000
+Subject: [PATCH] Linux host: Introduce initial support for kernel 6.19 (build
+ fix), bugref:11038.
+
+svn:sync-xref-src-repo-rev: r172810
+--- a/vboxdrv/linux/SUPDrv-linux.c
++++ b/vboxdrv/linux/SUPDrv-linux.c
+@@ -1199,18 +1199,19 @@ SUPR0DECL(int) SUPDrvLinuxLdrDeregisterWrappedModule(PCSUPLDRWRAPPEDMODULE pWrap
+ }
+ EXPORT_SYMBOL(SUPDrvLinuxLdrDeregisterWrappedModule);
+ 
++#if RTLNX_VER_MIN(5,8,0)
+ /**
+  * Wrapper function for cr4_update_irqsoff() which was
+  * exported only for KVM starting from kernel 6.19.
+  */
+ static void supdrvLinux_cr4_update_irqsoff(unsigned long set, unsigned long clear)
+ {
+-#if RTLNX_VER_MIN(6,19,0) && defined(SUPDRV_LINUX_HAS_KVM_HWVIRT_API)
++# if RTLNX_VER_MIN(6,19,0) && defined(SUPDRV_LINUX_HAS_KVM_HWVIRT_API)
+     if (g_pfnCr4UpdateIrqsoff)
+         g_pfnCr4UpdateIrqsoff(set, clear);
+-#else
++# else
+     cr4_update_irqsoff(set, clear);
+-#endif
++# endif
+ }
+ 
+ /**
+@@ -1220,14 +1221,15 @@ static void supdrvLinux_cr4_update_irqsoff(unsigned long set, unsigned long clea
+ static unsigned long supdrvLinux_cr4_read_shadow(void)
+ {
+     unsigned long cr4 = 0;
+-#if RTLNX_VER_MIN(6,19,0) && defined(SUPDRV_LINUX_HAS_KVM_HWVIRT_API)
++# if RTLNX_VER_MIN(6,19,0) && defined(SUPDRV_LINUX_HAS_KVM_HWVIRT_API)
+     if (g_pfnCr4ReadShadow)
+         cr4 = g_pfnCr4ReadShadow();
+-#else
++# else
+     cr4 = cr4_read_shadow();
+-#endif
++# endif
+     return cr4;
+ }
++#endif /* 5.8.0 */
+ 
+ #if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
+ RTCCUINTREG VBOXCALL supdrvOSChangeCR4(RTCCUINTREG fOrMask, RTCCUINTREG fAndMask)
