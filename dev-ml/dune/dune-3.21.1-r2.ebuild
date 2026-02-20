@@ -17,7 +17,6 @@ RESTRICT="strip test"
 
 RDEPEND="
 	dev-lang/ocaml:=
-	dev-ml/pp:=
 	emacs? ( >=app-editors/emacs-23.1:* )
 "
 DEPEND="${RDEPEND}"
