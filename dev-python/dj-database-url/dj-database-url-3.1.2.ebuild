@@ -1,0 +1,29 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+DISTUTILS_USE_PEP517=uv-build
+PYTHON_COMPAT=( python3_{12..14} )
+
+inherit distutils-r1 pypi
+
+DESCRIPTION="Use Database URLs in your Django Application"
+HOMEPAGE="
+	https://github.com/jazzband/dj-database-url/
+	https://pypi.org/project/dj-database-url/
+"
+
+LICENSE="BSD"
+SLOT="0"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+
+RDEPEND="
+	>=dev-python/django-4.2[${PYTHON_USEDEP}]
+"
+
+distutils_enable_tests unittest
+
+python_test() {
+	eunittest -s tests
+}
