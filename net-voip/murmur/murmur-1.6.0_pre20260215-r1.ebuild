@@ -159,7 +159,6 @@ src_install() {
 	mv "${D}/$(systemd_get_systemunitdir)/mumble-server.service" \
 		"${D}/$(systemd_get_systemunitdir)/murmur.service" || die
 	sed -i 's|mumble-server\.ini|murmur.ini|' "${D}/$(systemd_get_systemunitdir)/murmur.service" || die
-	sed -i '/^ExecStart/{s|-ini|--ini|;s| -fg||}' "${D}/$(systemd_get_systemunitdir)/murmur.service" || die
 
 	readme.gentoo_create_doc
 }
