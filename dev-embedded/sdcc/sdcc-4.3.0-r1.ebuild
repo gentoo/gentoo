@@ -9,8 +9,11 @@ if [[ ${PV} == "9999" ]] ; then
 	ESVN_REPO_URI="https://svn.code.sf.net/p/sdcc/code/trunk/sdcc"
 	inherit subversion
 else
+	BINUTILS_PV=2.41
 	SRC_URI="
 		https://downloads.sourceforge.net/project/${PN}/sdcc/${PV}/${PN}-src-${PV}.tar.bz2
+		mirror://gnu/binutils/binutils-${BINUTILS_PV}.tar.xz
+		https://sourceware.org/pub/binutils/releases/binutils-${BINUTILS_PV}.tar.xz
 		doc? ( https://downloads.sourceforge.net/project/${PN}/sdcc-doc/${PV}/${PN}-doc-${PV}.tar.bz2 )
 	"
 
@@ -90,8 +93,8 @@ src_prepare() {
 
 	mkdir -p support/sdbinutils/bfd/doc || die
 
-	# add acinclude.m4 from binutils to run autoreconf for libiberty
-	cp "${FILESDIR}"/binutils-2.41-acinclude.m4 support/sdbinutils/libiberty/acinclude.m4 || die
+	# add m4 files from binutils to run autoreconf for libiberty
+	cp "${WORKDIR}"/binutils-${BINUTILS_PV}/libiberty/acinclude.m4 support/sdbinutils/libiberty/acinclude.m4 || die
 	# libiberty configure will check this file and fail if not found
 	cp install-sh support/sdbinutils/libiberty/ || die
 	# libiberty configure will fail if this was not set
