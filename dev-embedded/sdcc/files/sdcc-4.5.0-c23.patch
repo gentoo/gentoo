@@ -1,0 +1,74 @@
+https://sourceforge.net/p/sdcc/code/15567/
+https://sourceforge.net/p/sdcc/bugs/3823/
+
+--- sdcc/debugger/mcs51/sdcdb.c
++++ sdcc/debugger/mcs51/sdcdb.c
+@@ -62,7 +62,7 @@
+ int nLinkrecs = 0;
+ linkrec **linkrecs = NULL; /* all linkage editor records */
+ context *currCtxt = NULL;
+-short fullname = 0;
++bool fullname = 0;
+ short showfull = 0;
+ char userinterrupt = 0;
+ char nointerrupt = 0;
+@@ -573,7 +573,7 @@
+         {
+           /* for module records do */
+           case MOD_REC:
+-            currMod = parseModule(loop->line, TRUE);
++            currMod = parseModule(loop->line, true);
+             currModName = currMod->name ;
+ 
+             /* search the c source file and load it into buffer */
+@@ -1906,7 +1906,7 @@
+ 
+           if (strcmp(argv[i], "-fullname") == 0)
+             {
+-              fullname = TRUE;
++              fullname = true;
+               continue;
+             }
+ 
+--- sdcc/debugger/mcs51/sdcdb.h
++++ sdcc/debugger/mcs51/sdcdb.h
+@@ -42,6 +42,7 @@
+ #define Dprintf(f, fs) { }
+ #endif
+ 
++#include <stdbool.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+@@ -57,11 +58,6 @@
+ #include "src/SDCCset.h"
+ #include "src/SDCChasht.h"
+ 
+-#define TRUE 1
+-#define FALSE !TRUE
+-
+-typedef short bool;
+-
+ #ifndef max
+ #define max(a,b) (a > b ? a : b)
+ #endif
+@@ -279,7 +275,7 @@
+ char *gc_strdup(const char *s);
+ srcLine **loadFile (char *name, int *nlines);
+ 
+-extern short fullname;
++extern bool fullname;
+ extern int srcMode;
+ extern char contsim;
+ char *searchDirsFname (char *);
+--- sdcc/debugger/mcs51/symtab.c
++++ sdcc/debugger/mcs51/symtab.c
+@@ -836,7 +836,7 @@
+   mod = NULL;
+   if (!applyToSet(modules,moduleWithCName,mname,&mod))
+     {
+-      mod = parseModule(mname, FALSE);
++      mod = parseModule(mname, false);
+       mod->c_name = alloccpy(mname,strlen(mname));
+       mod->cfullname=searchDirsFname(mod->c_name);
+       mod->cLines = loadFile(mod->c_name,&mod->ncLines);

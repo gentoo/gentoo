@@ -31,6 +31,7 @@ be retargeted for other microprocessors.
 		<flag name="mcs51">Add support for Intel mcs51</flag>
 		<flag name="z80">Add support for Zilog Z80</flag>
 		<flag name="z180">Add support for Zilog Z180</flag>
+		<flag name="r800">Add support for ASCII Corporation R800</flag>
 		<flag name="r2k">Add support for Rabbit 2000</flag>
 		<flag name="r2ka">Add support for Rabbit 2000A</flag>
 		<flag name="r3ka">Add support for Rabbit 3000A</flag>
@@ -51,5 +52,6 @@ be retargeted for other microprocessors.
 		<flag name="pdk16">Add support for PDK16</flag>
 		<flag name="mos6502">Add support for MOS 6502</flag>
 		<flag name="mos65c02">Add support for MOS 65C02</flag>
+		<flag name="f8">Add support for the new F8 arch</flag>
 	</use>
 </pkgmetadata>

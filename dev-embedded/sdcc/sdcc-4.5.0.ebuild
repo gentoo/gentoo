@@ -72,6 +72,8 @@ PATCHES=(
 	"${FILESDIR}"/sdcc-4.5.0-link-tinfo.patch
 	"${FILESDIR}"/sdcc-4.3.0-fix-mkdir-autoconf-test.patch
 	"${FILESDIR}"/sdcc-4.3.0-autoreconf-libiberty.patch
+	"${FILESDIR}"/sdcc-4.3.0-fix-elf-type.patch
+	"${FILESDIR}"/${P}-c23.patch
 )
 
 src_unpack() {
