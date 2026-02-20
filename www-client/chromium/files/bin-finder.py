@@ -26,6 +26,79 @@ ELF_MACHINE_MAP = {
     0xF3: "RISC-V",
 }
 
+# Extensions that are guaranteed non-ELF/non-WASM.
+# Derived from `tar tvf chromium-*.tar.xz` (all exts with ≥80 occurrences,
+# minus .bin/.out/.node/.a which can legitimately be ELF).
+# fmt: off
+_SKIP_EXTENSIONS = frozenset({
+    # C / C++ / Objective-C
+    '.c', '.cc', '.cpp', '.cxx', '.h', '.hh', '.hpp', '.hxx',
+    '.inc', '.inl', '.m', '.mm', '.tq',
+    # Assembly
+    '.S', '.asm', '.s',
+    # Compiled languages
+    '.cs', '.dart', '.go', '.java', '.kt', '.rs', '.swift',
+    # Scripting & interpreted languages
+    '.bat', '.cjs', '.coffee', '.cts', '.js', '.mjs', '.mts',
+    '.php', '.pl', '.py', '.pyi', '.rb', '.sh', '.ts',
+    # Web & markup
+    '.css', '.htm', '.html', '.scss', '.template', '.tmpl',
+    '.tpl', '.ui', '.xml', '.xsd', '.xsl',
+    # Shader & GPU languages
+    '.comp', '.frag', '.glsl', '.hlsl', '.metal', '.rts',
+    '.sksl', '.tesc', '.tese', '.vert', '.vk', '.wgsl',
+    # Protocol / schema / interface definitions
+    '.fbs', '.idl', '.mojom', '.pbtxt', '.pdl', '.proto',
+    '.test-mojom', '.textpb', '.textproto',
+    # Compiler IR & intermediate formats
+    '.bc', '.dxbc', '.ll', '.mlir', '.spv', '.spvasm', '.td',
+    # Build systems & project files
+    '.BUILD', '.am', '.bazel', '.build', '.bzl', '.cmake',
+    '.gn', '.gni', '.grd', '.grdp', '.gyp', '.gypi', '.in',
+    '.lock', '.mak', '.mk', '.star',
+    # Configuration & data serialisation
+    '.cfg', '.conf', '.hjson', '.json', '.json5', '.toml',
+    '.yaml', '.yml',
+    # Documentation & text
+    '.dox', '.man', '.md', '.mdoc', '.po', '.rst', '.txt',
+    # Hashes & signatures
+    '.sha1', '.sha256',
+    # Cryptographic material
+    '.crl', '.crt', '.der', '.key', '.pem',
+    # Test & comparison data
+    '.chromium', '.errors', '.expected', '.golden',
+    '.mock-http-headers', '.output', '.ref', '.snap',
+    '.stderr', '.test',
+    # VCS & tooling config
+    '.clang-format', '.eslintrc', '.gitattributes', '.gitignore',
+    '.nycrc', '.pydeps', '.yapf',
+    # Translation & locale
+    '.ucm', '.xtb',
+    # Images
+    '.avif', '.bmp', '.gif', '.ico', '.icon', '.jpeg', '.jpg',
+    '.pdf', '.png', '.svg', '.tiff', '.webp',
+    # Audio & video
+    '.flac', '.mkv', '.mp3', '.mp4', '.ogg', '.opus', '.wav',
+    '.webm',
+    # Fonts
+    '.otf', '.ttf', '.woff', '.woff2',
+    # Archives
+    '.7z', '.bz2', '.gz', '.tar', '.xz', '.zip', '.zst',
+    # Source maps
+    '.map',
+    # Chromium-specific data
+    '.ctb', '.filter', '.hlo', '.onc', '.orth', '.plist',
+    '.skrp', '.utb',
+    # Miscellaneous non-executable data
+    '.csv', '.dat', '.data', '.def', '.dict', '.diff', '.info',
+    '.log', '.m4', '.orig', '.pac', '.patch', '.pb', '.rc',
+    '.sql', '.t', '.tflite',
+})
+# fmt: on
+
+# Minimum file size for a valid ELF header (20 bytes needed for parsing)
+_MIN_FILE_SIZE = 20
+
 
 def get_elf_info(fd):
     """Parses ELF header using the file's own endianness."""
@@ -62,11 +135,21 @@ def scan_path(root_path, show_elf, show_wasm):
                 if entry.is_dir(follow_symlinks=False):
                     scan_path(entry.path, show_elf, show_wasm)
                 elif entry.is_file(follow_symlinks=False):
+                    # Skip files with known non-ELF/WASM extensions
+                    ext = os.path.splitext(entry.name)[1].lower()
+                    if ext in _SKIP_EXTENSIONS:
+                        continue
+
+                    # Skip files too small for a valid ELF header
+                    try:
+                        if entry.stat(follow_symlinks=False).st_size < _MIN_FILE_SIZE:
+                            continue
+                    except OSError:
+                        continue
+
                     fd = None
                     try:
                         fd = os.open(entry.path, os.O_RDONLY | os.O_NOFOLLOW)
-                        # Hit the header (64 bytes covers most ELF header variants)
-                        os.posix_fadvise(fd, 0, 64, os.POSIX_FADV_WILLNEED)
 
                         magic = os.read(fd, 4)
 
