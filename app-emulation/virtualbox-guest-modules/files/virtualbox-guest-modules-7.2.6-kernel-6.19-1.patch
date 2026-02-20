@@ -1,0 +1,117 @@
+https://github.com/VirtualBox/virtualbox/commit/280303b3f03d7087b9c955088a3cf499414f6ec1
+
+From 280303b3f03d7087b9c955088a3cf499414f6ec1 Mon Sep 17 00:00:00 2001
+From: Vadim Galitsyn <vadim.galitsyn@oracle.com>
+Date: Tue, 17 Feb 2026 15:00:09 +0000
+Subject: [PATCH] Linux host: Introduce initial support for kernel 6.19
+ bugref:11038.
+
+svn:sync-xref-src-repo-rev: r172809
+--- a/vboxguest/r0drv/linux/initterm-r0drv-linux.c
++++ b/vboxguest/r0drv/linux/initterm-r0drv-linux.c
+@@ -60,6 +60,11 @@ static DECLARE_TASK_QUEUE(g_rtR0LnxWorkQueue);
+  * This is a special mm structure used to manage the kernel address space. */
+ struct mm_struct *g_pLnxInitMm = NULL;
+ 
++#if RTLNX_VER_MIN(6,19,0)
++/** Pointer to __flush_tlb_all kernel symbol. */
++void (*g_pfnLinuxFlushTlbAll)(void);
++#endif
++
+ 
+ /**
+  * Pushes an item onto the IPRT work queue.
+@@ -136,6 +141,11 @@ DECLHIDDEN(int) rtR0InitNative(void)
+             printk("rtR0InitNative: g_pLnxInitMm=%p\n", g_pLnxInitMm);
+ 
+             RTR0DbgKrnlInfoRelease(hKrnlInfo);
++# if RTLNX_VER_MIN(6,19,0)
++            g_pfnLinuxFlushTlbAll = __symbol_get("__flush_tlb_all");
++            if (!RT_VALID_PTR(g_pfnLinuxFlushTlbAll))
++                printk("rtR0InitNative: can't load __flush_tlb_all\n");
++# endif
+         }
+         else
+             printk("rtR0InitNative: RTR0DbgKrnlInfoOpen failed: %d\n", rc);
+@@ -151,6 +161,12 @@ DECLHIDDEN(void) rtR0TermNative(void)
+ {
+     IPRT_LINUX_SAVE_EFL_AC();
+ 
++# if RTLNX_VER_MIN(6,19,0)
++    if (RT_VALID_PTR(g_pfnLinuxFlushTlbAll))
++        symbol_put_addr(g_pfnLinuxFlushTlbAll);
++    g_pfnLinuxFlushTlbAll = NULL;
++#endif
++
+     rtR0LnxWorkqueueFlush();
+ #if RTLNX_VER_MIN(2,5,41)
+     destroy_workqueue(g_prtR0LnxWorkQueue);
+--- a/vboxguest/r0drv/linux/memobj-r0drv-linux.c
++++ b/vboxguest/r0drv/linux/memobj-r0drv-linux.c
+@@ -181,7 +181,7 @@ static const struct
+ *   Internal Functions                                                                                                           *
+ *********************************************************************************************************************************/
+ static void rtR0MemObjLinuxFreePages(PRTR0MEMOBJLNX pMemLnx);
+-
++static void rtR0MemObjLinuxFlushTlbAll(void);
+ 
+ 
+ /**
+@@ -2245,6 +2245,15 @@ DECLHIDDEN(int) rtR0MemObjNativeMapUser(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJ p
+     return rc;
+ }
+ 
++static void rtR0MemObjLinuxFlushTlbAll(void)
++{
++#if RTLNX_VER_MIN(6,19,0)
++    if (RT_LIKELY(RT_VALID_PTR(g_pfnLinuxFlushTlbAll)))
++        g_pfnLinuxFlushTlbAll();
++#else
++    __flush_tlb_all();
++#endif
++}
+ 
+ DECLHIDDEN(int) rtR0MemObjNativeProtect(PRTR0MEMOBJINTERNAL pMem, size_t offSub, size_t cbSub, uint32_t fProt)
+ {
+@@ -2265,7 +2274,7 @@ DECLHIDDEN(int) rtR0MemObjNativeProtect(PRTR0MEMOBJINTERNAL pMem, size_t offSub,
+             set_pte(papPtes[i], mk_pte(pMemLnx->apPages[i], fPg));
+         }
+         preempt_disable();
+-        __flush_tlb_all();
++        rtR0MemObjLinuxFlushTlbAll();
+         preempt_enable();
+         return VINF_SUCCESS;
+     }
+@@ -2311,7 +2320,7 @@ DECLHIDDEN(int) rtR0MemObjNativeProtect(PRTR0MEMOBJINTERNAL pMem, size_t offSub,
+             flush_icache_range((uintptr_t)pMemLnx->Core.pv + offSub, cbSub);
+ #  if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86) /* flush_tlb_kernel_range is not exported, but __flush_tlb_all is. */
+         preempt_disable();
+-        __flush_tlb_all();
++        rtR0MemObjLinuxFlushTlbAll();
+         preempt_enable();
+ #  else
+         flush_tlb_kernel_range((uintptr_t)pMemLnx->Core.pv + offSub, cbSub);
+--- a/vboxsf/r0drv/linux/the-linux-kernel.h
++++ b/vboxsf/r0drv/linux/the-linux-kernel.h
+@@ -512,6 +512,9 @@ RTDECL(struct page *) rtR0MemObjLinuxVirtToPage(void *pv);
+ 
+ 
+ extern struct mm_struct *g_pLnxInitMm;
++#if RTLNX_VER_MIN(6,19,0)
++extern void (*g_pfnLinuxFlushTlbAll)(void);
++#endif
+ 
+ 
+ #endif /* !IPRT_INCLUDED_SRC_r0drv_linux_the_linux_kernel_h */
+--- a/vboxguest/r0drv/linux/the-linux-kernel.h
++++ b/vboxguest/r0drv/linux/the-linux-kernel.h
+@@ -512,6 +512,9 @@ RTDECL(struct page *) rtR0MemObjLinuxVirtToPage(void *pv);
+ 
+ 
+ extern struct mm_struct *g_pLnxInitMm;
++#if RTLNX_VER_MIN(6,19,0)
++extern void (*g_pfnLinuxFlushTlbAll)(void);
++#endif
+ 
+ 
+ #endif /* !IPRT_INCLUDED_SRC_r0drv_linux_the_linux_kernel_h */
