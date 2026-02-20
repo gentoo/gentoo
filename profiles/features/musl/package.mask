@@ -116,6 +116,7 @@ net-wireless/unifi
 # among not being buildable itself
 # bug #906782, #716296, et al.
 dev-db/mongodb
+virtual/mongodb
 
 # Akinori Hattori <hattya@gentoo.org> (2024-04-14)
 # musl iconv does not implement required encodings.
