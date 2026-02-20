@@ -12,4 +12,7 @@
 	<upstream>
 		<remote-id type="github">linuxmint/cinnamon-screensaver</remote-id>
 	</upstream>
+	<use>
+		<flag name="accessibility">Adds support for on-screen keyboard using caribou</flag>
+	</use>
 </pkgmetadata>
