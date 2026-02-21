@@ -17,7 +17,7 @@ S="${WORKDIR}/${MY_P}"
 # https://codeberg.org/sox_ng/sox_ng/wiki/Copyright
 LICENSE="GPL-2"
 SLOT="0/3" # SHLIB_VERSION in configure.ac
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~arm64"
 IUSE="alsa amr ao dolbyb encode +ffmpeg fftw flac id3tag ladspa loudness mad ogg openmp oss opus png pulseaudio sndfile sndio speexdsp twolame wavpack"
 
 RDEPEND="
