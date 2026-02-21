@@ -8,7 +8,7 @@ ECM_HANDBOOK="optional"
 ECM_HANDBOOK_DIR="docs"
 ECM_TEST="forceoptional"
 QTMIN=6.10.1
-inherit ecm frameworks.kde.org xdg
+inherit ecm flag-o-matic frameworks.kde.org xdg
 
 DESCRIPTION="Framework providing transparent file and data management"
 
@@ -72,6 +72,8 @@ PDEPEND="
 "
 
 src_configure() {
+	use elibc_musl && append-ldflags -Wl,-z,stack-size=0x100000 # upstream bug 470763
+
 	local mycmakeargs=(
 		$(cmake_use_find_package acl ACL)
 		$(cmake_use_find_package kwallet KF6Wallet)
