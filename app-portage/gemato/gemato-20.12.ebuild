@@ -29,6 +29,8 @@ RDEPEND="
 		dev-python/rich[${PYTHON_USEDEP}]
 	)
 "
+# gpg for tests: trust-moel direct
+# https://gitlab.com/sequoia-pgp/sequoia-chameleon-gnupg/-/work_items/152
 BDEPEND="
 	test? (
 		app-alternatives/gpg[ssl]
