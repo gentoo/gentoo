@@ -23,7 +23,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-kernel-6.19-{1..3}.patch
 )
 
-CONFIG_CHECK="~!SPINLOCK JUMP_LABEL ~PREEMPT_NOTIFIERS"
+CONFIG_CHECK="~!SPINLOCK JUMP_LABEL ~PREEMPT_NOTIFIERS ~KPROBES"
+KPROBES_ERROR="CONFIG_KPROBES is required for kernel 6.16+; modules fail to build with kernel 6.19+"
 
 src_compile() {
 	local modlist=( {vboxdrv,vboxnetflt,vboxnetadp}=misc )
