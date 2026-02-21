@@ -1,0 +1,41 @@
+https://github.com/skeeto/elfeed/commit/66cfe43dfc61d0b56d9e4e72aba3dfab0ed4bdf7
+
+From 66cfe43dfc61d0b56d9e4e72aba3dfab0ed4bdf7 Mon Sep 17 00:00:00 2001
+From: Michael Herstine <sp1ff@pobox.com>
+Date: Sun, 25 Jan 2026 10:50:50 -0800
+Subject: [PATCH] Issue 553: Remove dependency on `byte-compile-root-dir` from
+ elfeed.el.
+
+When loaded or eval'd (but not compiled), elfeed.el would reference
+the variable `byte-compile-root-dir` without requiring `bytecomp`
+(where it is defined). This patch simply replaces that logic
+with the old Emacs idiom of `(if t (require 'thing))` to avoid
+loading during byte compilation (since the require is no longer
+a top-level form).
+
+See also Emacs bug 80219.
+---
+ elfeed.el | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/elfeed.el b/elfeed.el
+index 029e729..d0a5302 100644
+--- a/elfeed.el
++++ b/elfeed.el
+@@ -655,11 +655,10 @@ saved to your customization file."
+ 
+ (provide 'elfeed)
+ 
+-(cl-eval-when (load eval)
++(unless nil
+   ;; run-time only, so don't load when compiling other files
+-  (unless byte-compile-root-dir
+-    (require 'elfeed-csv)
+-    (require 'elfeed-show)
+-    (require 'elfeed-search)))
++  (require 'elfeed-csv)
++  (require 'elfeed-show)
++  (require 'elfeed-search))
+ 
+ ;;; elfeed.el ends here
+
