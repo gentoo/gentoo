@@ -1852,7 +1852,7 @@ toolchain_src_configure() {
 		confgcc+=( $(use_enable pie default-pie) )
 
 		if tc_version_is_at_least 14.1 ${PV} || tc_version_is_at_least 13.4.1_p20250814 ${PV} ; then
-			confgcc+=( --enable-host-pie )
+			confgcc+=( $(use_enable pie host-pie) )
 		fi
 	fi
 
