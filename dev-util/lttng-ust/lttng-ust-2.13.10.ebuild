@@ -35,6 +35,7 @@ RDEPEND="${DEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	test? ( dev-lang/perl )
+	verify-sig? ( sec-keys/openpgp-keys-mathieudesnoyers )
 "
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/mathieudesnoyers.asc
