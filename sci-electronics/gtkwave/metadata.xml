@@ -12,9 +12,7 @@
   </longdescription>
   <use>
     <flag name="fasttree">Enables experimental Fast SST Tree widget code.</flag>
-    <flag name="fatlines">Renders lines as double width in gtkwave.</flag>
     <flag name="judy">Enables Judy array support.</flag>
-    <flag name="packed">Enables '#pragma pack' for data arrays (saves memory, costs time).</flag>
   </use>
   <upstream>
     <bugs-to>https://github.com/gtkwave/gtkwave/issues</bugs-to>
