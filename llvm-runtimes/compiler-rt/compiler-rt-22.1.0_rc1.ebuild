@@ -18,12 +18,10 @@ RESTRICT="!test? ( test ) !clang? ( test )"
 
 DEPEND="
 	llvm-core/llvm:${LLVM_MAJOR}
+	clang? ( llvm-core/clang-linker-config:${LLVM_MAJOR} )
 "
 BDEPEND="
-	clang? (
-		llvm-core/clang:${LLVM_MAJOR}
-		llvm-core/clang-linker-config:${LLVM_MAJOR}
-	)
+	clang? ( llvm-core/clang:${LLVM_MAJOR} )
 	test? (
 		$(python_gen_any_dep ">=dev-python/lit-15[\${PYTHON_USEDEP}]")
 		=llvm-core/clang-${LLVM_VERSION}*:${LLVM_MAJOR}
@@ -76,7 +74,7 @@ src_configure() {
 	# pre-set since we need to pass it to cmake
 	BUILD_DIR=${WORKDIR}/${P}_build
 
-	if use clang && ! is_crosspkg; then
+	if use clang; then
 		# Only do this conditionally to allow overriding with
 		# e.g. CC=clang-13 in case of breakage
 		if ! tc-is-clang ; then

@@ -22,13 +22,13 @@ RDEPEND="
 "
 DEPEND="
 	llvm-core/llvm:${LLVM_MAJOR}
-"
-BDEPEND="
 	clang? (
-		llvm-core/clang:${LLVM_MAJOR}
 		llvm-core/clang-linker-config:${LLVM_MAJOR}
 		llvm-runtimes/clang-rtlib-config:${LLVM_MAJOR}
 	)
+"
+BDEPEND="
+	clang? ( llvm-core/clang:${LLVM_MAJOR} )
 	!test? (
 		${PYTHON_DEPS}
 	)
