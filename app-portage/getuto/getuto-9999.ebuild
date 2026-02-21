@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,6 +26,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 # gpg[sequoia] fails w/ 0.13.1 because of missing --lsign-key
+# https://gitlab.com/sequoia-pgp/sequoia-chameleon-gnupg/-/work_items/152
 RDEPEND="
 	|| (
 		app-alternatives/gpg[reference]
