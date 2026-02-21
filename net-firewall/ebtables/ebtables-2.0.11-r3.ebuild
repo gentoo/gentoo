@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -10,7 +10,7 @@ MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="Controls Ethernet frame filtering on a Linux bridge, MAC NAT and brouting"
 HOMEPAGE="https://ebtables.netfilter.org/"
-SRC_URI="http://ftp.netfilter.org/pub/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://ftp.netfilter.org/pub/${PN}/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
