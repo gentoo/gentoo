@@ -12,7 +12,7 @@ S="${WORKDIR}/${P}/${PN}/trunk"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~hppa ~ppc ~sparc ~x86"
 ENCODERS="aac fdk flac mp3 opus twolame +vorbis"
 OUTPUTS="+alsa jack pulseaudio"
 IUSE="libsamplerate ${ENCODERS} ${OUTPUTS}"
