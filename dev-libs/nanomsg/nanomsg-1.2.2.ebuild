@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,6 +16,10 @@ IUSE="doc test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="doc? ( dev-ruby/asciidoctor )"
+
+PATCHES=(
+		"${FILESDIR}/nanomsg-1.2.2-cmake4.patch" # 964728
+)
 
 src_prepare() {
 	# Old CPUs like HPPA fail tests because of timeout
