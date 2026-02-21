@@ -56,6 +56,12 @@ BDEPEND="
 	riscv? ( sys-apps/dtc )
 "
 
+if ver_test -ge 6.19; then
+	BDEPEND+="
+		sys-libs/binutils-libs
+	"
+fi
+
 IUSE="+strip modules-sign"
 REQUIRED_USE="secureboot? ( modules-sign )"
 
