@@ -1,0 +1,91 @@
+https://bugs.gentoo.org/970206
+https://gitlab.freedesktop.org/pipewire/pipewire/-/commit/e46bfe67b60458e444ee2495209144b49e97d2f1
+
+From e46bfe67b60458e444ee2495209144b49e97d2f1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Barnab=C3=A1s=20P=C5=91cze?= <pobrn@protonmail.com>
+Date: Thu, 19 Feb 2026 20:56:36 +0100
+Subject: [PATCH] treewide: fix some `-Wdiscarded-qualifiers`
+
+Newer glibc versions have made certain `str*()` functions into macros
+that ensure that the const-ness of the argument is propagated to the
+return type.
+---
+ pipewire-jack/src/pipewire-jack.c | 2 +-
+ spa/plugins/bluez5/bluez5-dbus.c  | 7 ++-----
+ spa/plugins/support/logger.c      | 4 ++--
+ 3 files changed, 5 insertions(+), 8 deletions(-)
+
+diff --git a/pipewire-jack/src/pipewire-jack.c b/pipewire-jack/src/pipewire-jack.c
+index 1bef74283..73627a67e 100644
+--- a/pipewire-jack/src/pipewire-jack.c
++++ b/pipewire-jack/src/pipewire-jack.c
+@@ -5318,7 +5318,7 @@ int jack_set_freewheel(jack_client_t* client, int onoff)
+ 	pw_thread_loop_lock(c->context.loop);
+ 	str = pw_properties_get(c->props, PW_KEY_NODE_GROUP);
+ 	if (str != NULL) {
+-		char *p = strstr(str, ",pipewire.freewheel");
++		const char *p = strstr(str, ",pipewire.freewheel");
+ 		if (p == NULL)
+ 			p = strstr(str, "pipewire.freewheel");
+ 		if (p == NULL && onoff)
+diff --git a/spa/plugins/bluez5/bluez5-dbus.c b/spa/plugins/bluez5/bluez5-dbus.c
+index 21a5e53de..7dfe45911 100644
+--- a/spa/plugins/bluez5/bluez5-dbus.c
++++ b/spa/plugins/bluez5/bluez5-dbus.c
+@@ -720,14 +720,12 @@ static const char *bap_features_get_uuid(struct bap_features *feat, size_t i)
+ /** Get feature name at \a i, or NULL if uuid doesn't match */
+ static const char *bap_features_get_name(struct bap_features *feat, size_t i, const char *uuid)
+ {
+-	char *pos;
+-
+ 	if (i >= feat->dict.n_items)
+ 		return NULL;
+ 	if (!spa_streq(feat->dict.items[i].value, uuid))
+ 		return NULL;
+ 
+-	pos = strchr(feat->dict.items[i].key, ':');
++	const char *pos = strchr(feat->dict.items[i].key, ':');
+ 	if (!pos)
+ 		return NULL;
+ 	return pos + 1;
+@@ -1336,7 +1334,6 @@ static struct spa_bt_adapter *adapter_find(struct spa_bt_monitor *monitor, const
+ static int parse_modalias(const char *modalias, uint16_t *source, uint16_t *vendor,
+ 		uint16_t *product, uint16_t *version)
+ {
+-	char *pos;
+ 	unsigned int src, i, j, k;
+ 
+ 	if (spa_strstartswith(modalias, "bluetooth:"))
+@@ -1346,7 +1343,7 @@ static int parse_modalias(const char *modalias, uint16_t *source, uint16_t *vend
+ 	else
+ 		return -EINVAL;
+ 
+-	pos = strchr(modalias, ':');
++	const char *pos = strchr(modalias, ':');
+ 	if (pos == NULL)
+ 		return -EINVAL;
+ 
+diff --git a/spa/plugins/support/logger.c b/spa/plugins/support/logger.c
+index c6e6ca4b8..6ea5f31b5 100644
+--- a/spa/plugins/support/logger.c
++++ b/spa/plugins/support/logger.c
+@@ -73,7 +73,7 @@ impl_log_logtv(void *object,
+ 	char timestamp[18] = {0};
+ 	char topicstr[32] = {0};
+ 	char filename[64] = {0};
+-	char location[1000 + RESERVED_LENGTH], *p, *s;
++	char location[1000 + RESERVED_LENGTH], *p;
+ 	static const char * const levels[] = { "-", "E", "W", "I", "D", "T", "*T*" };
+ 	const char *prefix = "", *suffix = "";
+ 	int size, len;
+@@ -118,7 +118,7 @@ impl_log_logtv(void *object,
+ 
+ 
+ 	if (impl->line && line != 0) {
+-		s = strrchr(file, '/');
++		const char *s = strrchr(file, '/');
+ 		spa_scnprintf(filename, sizeof(filename), "[%16.16s:%5i %s()]",
+ 			s ? s + 1 : file, line, func);
+ 	}
+-- 
+GitLab
