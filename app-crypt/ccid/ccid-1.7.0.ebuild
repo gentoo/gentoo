@@ -3,11 +3,15 @@
 
 EAPI=8
 
-inherit meson udev
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/ludovicrousseau.asc
+inherit meson udev verify-sig
 
 DESCRIPTION="CCID free software driver"
-HOMEPAGE="https://ccid.apdu.fr https://github.com/LudovicRousseau/CCID"
-SRC_URI="https://ccid.apdu.fr/files/${P}.tar.xz"
+HOMEPAGE="https://ccid.apdu.fr/ https://github.com/LudovicRousseau/CCID"
+SRC_URI="
+	https://ccid.apdu.fr/files/${P}.tar.xz
+	verify-sig? ( https://ccid.apdu.fr/files/${P}.tar.xz.asc )
+"
 
 LICENSE="LGPL-2.1+ LGPL-2+ GPL-2+"
 SLOT="0"
@@ -22,7 +26,9 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	app-alternatives/lex
 	dev-lang/perl
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	verify-sig? ( sec-keys/openpgp-keys-ludovicrousseau )
+"
 
 src_configure() {
 	local emesonargs=(
