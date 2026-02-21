@@ -115,7 +115,8 @@ multilib_src_configure() {
 		$(multilib_native_use_enable doc)
 	)
 
-	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+	# CONFIG_SHELL: ./configure script uses [[ … ~= … ]] among other bashisms
+	CONFIG_SHELL="${BROOT}"/bin/bash ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
 multilib_src_compile() {
