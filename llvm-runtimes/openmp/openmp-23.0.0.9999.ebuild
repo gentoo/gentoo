@@ -39,7 +39,10 @@ BDEPEND="
 	)
 "
 
-LLVM_COMPONENTS=( runtimes openmp cmake llvm/{cmake,include,utils/llvm-lit} )
+LLVM_COMPONENTS=(
+	runtimes openmp cmake llvm/{cmake,include,utils/llvm-lit}
+	third-party/unittest
+)
 llvm.org_set_globals
 
 pkg_setup() {
@@ -58,8 +61,8 @@ multilib_src_configure() {
 	local libdir="$(get_libdir)"
 	local mycmakeargs=(
 		-DLLVM_ENABLE_RUNTIMES=openmp
-		-DOPENMP_STANDALONE_BUILD=ON
-		-DOPENMP_LIBDIR_SUFFIX="${libdir#lib}"
+		-DLLVM_LIBDIR_SUFFIX="${libdir#lib}"
+		-DLLVM_BINARY_DIR="${BROOT}/usr/lib/llvm/${LLVM_MAJOR}"
 
 		-DLIBOMP_USE_HWLOC=$(usex hwloc)
 		-DLIBOMP_OMPD_GDB_SUPPORT=$(multilib_native_usex gdb-plugin)
@@ -72,10 +75,7 @@ multilib_src_configure() {
 	)
 
 	use test && mycmakeargs+=(
-		# this project does not use standard LLVM cmake macros
-		-DOPENMP_LLVM_LIT_EXECUTABLE="${EPREFIX}/usr/bin/lit"
-		-DOPENMP_LIT_ARGS="$(get_lit_flags)"
-
+		-DLLVM_LIT_ARGS="$(get_lit_flags)"
 		-DOPENMP_TEST_C_COMPILER="$(type -P "${CHOST}-clang")"
 		-DOPENMP_TEST_CXX_COMPILER="$(type -P "${CHOST}-clang++")"
 		# disable Fortran tests for now
