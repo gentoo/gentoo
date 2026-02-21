@@ -22,6 +22,7 @@ RDEPEND="
 	net-misc/wget[ssl]
 	virtual/editor
 "
+# gpg: https://gitlab.com/sequoia-pgp/sequoia-chameleon-gnupg/-/issues/155
 BDEPEND="
 	test? (
 		${RDEPEND}
