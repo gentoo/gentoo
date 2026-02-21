@@ -10,7 +10,7 @@ CHROMIUM_LANGS="af am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu
 inherit chromium-2 desktop pax-utils unpacker xdg optfeature shell-completion
 
 # curl -sL "https://www.cursor.com/api/download?platform=linux-x64&releaseTrack=latest" | jq -r '.commitSha'
-BUILD_ID="f3f5cec40024283013878b50c4f9be4002e0b587"
+BUILD_ID="511523af765daeb1fa69500ab0df5b6524424612"
 DESCRIPTION="Cursor App - AI-first coding environment"
 HOMEPAGE="https://www.cursor.com/"
 SRC_URI="
@@ -85,6 +85,13 @@ src_install() {
 
 	if ! use kerberos; then
 		rm -r "${CURSOR_HOME}/resources/app/node_modules/kerberos" || die
+	fi
+
+	# Remove foreign-arch ripgrep binaries to avoid QA soname warnings
+	if use amd64; then
+		rm -r "${CURSOR_HOME}/resources/app/extensions/cursor-agent/dist/claude-agent-sdk/vendor/ripgrep/arm64-linux" || die
+	elif use arm64; then
+		rm -r "${CURSOR_HOME}/resources/app/extensions/cursor-agent/dist/claude-agent-sdk/vendor/ripgrep/x64-linux" || die
 	fi
 
 	dodir /opt/cursor
