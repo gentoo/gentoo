@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: bash-completion-r1.eclass
 # @MAINTAINER:
 # mgorny@gentoo.org
-# @SUPPORTED_EAPIS: 7 8 9
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: A few quick functions to install bash-completion files
 # @EXAMPLE:
 #
@@ -26,12 +26,12 @@
 if [[ -z ${_BASH_COMPLETION_R1_ECLASS} ]]; then
 _BASH_COMPLETION_R1_ECLASS=1
 
+inherit toolchain-funcs
+
 case ${EAPI} in
-	7|8|9) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
-
-inherit toolchain-funcs
 
 # @FUNCTION: _bash-completion-r1_get_bashdir
 # @INTERNAL
