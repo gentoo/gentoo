@@ -1,6 +1,12 @@
 #!/sbin/openrc-run
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2026 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+name="mrouted"
+description="IP multicast routing daemon"
+command=/usr/sbin/mrouted
+mrouted_config="/etc/mrouted.conf"
+pidfile="/run/${RC_SVCNAME}.pid"
 
 depend() {
 	use logger
@@ -8,22 +14,29 @@ depend() {
 }
 
 checkconfig() {
-	if [ ! -e /etc/mrouted.conf ] ; then
-		eerror "You need an /etc/mrouted.conf file to run mrouted"
+	if [ ! -e ${mrouted_config} ] ; then
+		eerror "You need an ${mrouted_config} file to run mrouted"
 		return 1
 	fi
 }
 
-start() {
-	checkconfig || return 1
-	ebegin "Starting mrouted"
-	start-stop-daemon --start --quiet --pidfile /var/run/mrouted.pid \
-		--startas /usr/bin/mrouted -- -c /etc/mrouted.conf
-	eend $?
+start_pre() {
+        # If this isn't a restart, make sure that the user's config isn't
+        # busted before we try to start the daemon (this will produce
+        # better error messages than if we just try to start it blindly).
+        #
+        # If, on the other hand, this *is* a restart, then the stop_pre
+        # action will have ensured that the config is usable and we don't
+        # need to do that again.
+        if [ "${RC_CMD}" != "restart" ] ; then
+                checkconfig || return $?
+        fi
 }
 
-stop() {
-	ebegin "Stopping mrouted"
-	start-stop-daemon --stop --quiet --pidfile /var/run/mrouted.pid
-	eend $?
+stop_pre() {
+	# If this is a restart, check to make sure the user's config
+	# isn't busted before we stop the running daemon.
+	if [ "${RC_CMD}" = "restart" ] ; then
+		checkconfig || return $?
+	fi
 }
