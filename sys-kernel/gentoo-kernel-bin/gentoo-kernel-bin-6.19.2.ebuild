@@ -57,9 +57,10 @@ PDEPEND="
 BDEPEND="
 	app-alternatives/bc
 	app-alternatives/lex
-	dev-util/pahole
-	virtual/libelf
 	app-alternatives/yacc
+	dev-util/pahole
+	sys-libs/binutils-libs
+	virtual/libelf
 	amd64? ( app-crypt/sbsigntools )
 	arm64? ( app-crypt/sbsigntools )
 	verify-sig? ( >=sec-keys/openpgp-keys-kernel-20250702 )
