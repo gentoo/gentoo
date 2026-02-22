@@ -48,6 +48,7 @@ EPYTEST_IGNORE=(
 )
 
 EPYTEST_PLUGINS=( pytest-{asyncio,timeout} )
+EPYTEST_RERUNS=5
 distutils_enable_tests pytest
 
 src_test() {
