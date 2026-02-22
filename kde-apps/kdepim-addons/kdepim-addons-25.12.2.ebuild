@@ -107,6 +107,8 @@ src_test() {
 		"messageviewer-dkimauthenticationverifiedserverdialogtest"
 		# Test pass but get stuck indefinetly afterwards.
 		"kdepim-addons-todoedittest"
+		# test for a disabled feature that's gone in git master / 26.04
+		"enterpriseheaderstyleplugintest"
 	)
 
 	# tests can get stuck with spawned processes, 4 minutes is a reasonable timeout
