@@ -26,7 +26,7 @@ RDEPEND="
 	>=dev-libs/libei-0.99.1
 	dev-libs/libportal:=
 	dev-libs/openssl:0=
-	dev-qt/qtbase:6[dbus,gui,network,widgets,xml]
+	dev-qt/qtbase:6[dbus,gui,network,ssl,widgets,xml]
 	x11-libs/libxkbcommon
 	X? (
 		x11-libs/libxkbfile
