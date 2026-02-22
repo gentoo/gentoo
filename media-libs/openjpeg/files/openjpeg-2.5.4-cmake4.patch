@@ -1,0 +1,21 @@
+See https://github.com/uclouvain/openjpeg/commit/8ac526236416b9c28f73d4684cf9e8a66f1d134e
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -7,7 +7,7 @@
+ # For this purpose you can define a CMake var: OPENJPEG_NAMESPACE to whatever you like
+ # e.g.:
+ # set(OPENJPEG_NAMESPACE "GDCMOPENJPEG")
+-cmake_minimum_required(VERSION 3.5...3.31.5)
++cmake_minimum_required(VERSION 3.10...3.31.5)
+
+ if(NOT OPENJPEG_NAMESPACE)
+   set(OPENJPEG_NAMESPACE "OPENJPEG")
+--- a/tests/nonregression/CMakeLists.txt
++++ b/tests/nonregression/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ # NON-REGRESSION TESTS ON THIS DATASET LOCATED ${OPJ_DATA_ROOT}/input/nonregression
+
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.10)
+
+ file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Temporary)
