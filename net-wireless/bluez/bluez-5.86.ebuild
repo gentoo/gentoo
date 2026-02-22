@@ -206,8 +206,6 @@ multilib_src_install() {
 			rm "${ED}"/usr/$(get_libdir)/bluez/test/simple-player || die
 			# https://bugzilla.kernel.org/show_bug.cgi?id=206821
 			rm "${ED}"/usr/$(get_libdir)/bluez/test/test-hfp || die
-			# https://bugzilla.kernel.org/show_bug.cgi?id=206823
-			rm "${ED}"/usr/$(get_libdir)/bluez/test/test-sap-server	|| die
 
 			python_fix_shebang "${ED}"/usr/$(get_libdir)/bluez/test
 
