@@ -21,7 +21,7 @@ S="${WORKDIR}/freenet-build0${PV#*p}"
 
 LICENSE="GPL-2+ GPL-2 MIT BSD-2 Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE="+nss"
 
 # Since 0.7.5_p1505-r1 we drop dev-java/mersennetwister which was
