@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -91,24 +91,17 @@ src_unpack() {
 	fi
 }
 
-src_prepare() {
-	if ! use debuginfod ; then
-		sed -i \
-			'/target_link_libraries(libhotspot-perfparser PRIVATE ${LIBDEBUGINFOD_LIBRARIES})/d' \
-			3rdparty/perfparser.cmake || die "sed failed for perfparser"
-
-		sed -i \
-			'/target_compile_definitions(libhotspot-perfparser PRIVATE HAVE_DWFL_GET_DEBUGINFOD_CLIENT=1)/d' \
-			3rdparty/perfparser.cmake || die "sed failed for perfparser"
-	fi
-
-	ecm_src_prepare
-}
-
 src_configure() {
 	local mycmakeargs=(
 		-DQT6_BUILD=true
 	)
+
+	if ! use debuginfod; then
+		mycmakeargs+=(
+			-DHAVE_DWFL_GET_DEBUGINFOD_CLIENT_SYMBOL="no"
+			-DHAVE_DEBUGINFOD_SET_USER_DATA="no"
+		)
+	fi
 
 	ecm_src_configure
 }
