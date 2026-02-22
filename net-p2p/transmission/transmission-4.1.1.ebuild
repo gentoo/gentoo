@@ -3,7 +3,6 @@
 
 EAPI=8
 
-CMAKE_REMOVE_MODULES_LIST=( FindMbedTLS )
 inherit cmake flag-o-matic tmpfiles systemd xdg-utils
 
 if [[ ${PV} == 9999 ]]; then
@@ -23,7 +22,7 @@ HOMEPAGE="https://transmissionbt.com/"
 # MIT is in several libtransmission/ headers
 LICENSE="|| ( GPL-2 GPL-3 Transmission-OpenSSL-exception ) GPL-2 MIT"
 SLOT="0"
-IUSE="appindicator cli debug gtk nls mbedtls qt6 systemd test"
+IUSE="appindicator cli debug gtk nls qt6 systemd test"
 RESTRICT="!test? ( test )"
 
 ACCT_DEPEND="
@@ -40,8 +39,7 @@ BDEPEND="
 COMMON_DEPEND="
 	app-arch/libdeflate:=[gzip(+)]
 	>=dev-libs/libevent-2.1.0:=[threads(+)]
-	!mbedtls? ( dev-libs/openssl:0= )
-	mbedtls? ( net-libs/mbedtls:3= )
+	dev-libs/openssl:0=
 	net-libs/libnatpmp
 	>=net-libs/libpsl-0.21.1
 	>=net-libs/miniupnpc-1.7:=
@@ -95,7 +93,7 @@ src_configure() {
 		-DUSE_SYSTEM_B64=OFF
 		-DUSE_SYSTEM_PSL=ON
 
-		-DWITH_CRYPTO=$(usex mbedtls mbedtls openssl)
+		-DWITH_CRYPTO=openssl
 		-DWITH_INOTIFY=ON
 		-DWITH_APPINDICATOR=$(usex appindicator ON OFF)
 		-DWITH_SYSTEMD=$(usex systemd ON OFF)

@@ -15,6 +15,5 @@
 	<use>
 		<flag name="cli">Build command-line client</flag>
 		<flag name="debug">Enable assertions</flag>
-		<flag name="mbedtls">Use mbed TLS instead of OpenSSL</flag>
 	</use>
 </pkgmetadata>
