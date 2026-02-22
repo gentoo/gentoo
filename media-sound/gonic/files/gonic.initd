@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+
+GONIC_CONFIGFILE=${GONIC_CONFIGFILE:-/etc/gonic/gonic.conf}
+
+description="gonic server"
+pidfile=${pidfile:-"/run/${RC_SVCNAME}.pid"}
+user=${GONIC_USER:-gonic}
+group=${GONIC_GROUP:-gonic}
+
+command="/usr/bin/gonic"
+command_args="-config-path \"${GONIC_CONFIGFILE}\""
+command_background="true"
+command_user="${user}:${group}"
+output_log="/var/log/gonic/gonic_out.log"
+error_log="/var/log/gonic/gonic_err.log"
+
+depend() {
+    after net
+    use logger
+}
