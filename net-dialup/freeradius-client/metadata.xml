@@ -21,9 +21,6 @@
 		<remote-id type="github">FreeRADIUS/freeradius-client</remote-id>
 	</upstream>
 	<use>
-		<flag name="scp">
-			Add service type hints derived from username prefix
-		</flag>
 		<flag name="shadow">Enable shadow password support</flag>
 	</use>
 </pkgmetadata>
