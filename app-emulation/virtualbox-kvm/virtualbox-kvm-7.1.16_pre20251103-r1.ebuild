@@ -15,17 +15,17 @@ EAPI=8
 #  trunk branch but not release branch.
 #
 #  See bug #785835, bug #856121.
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit desktop edo flag-o-matic java-pkg-opt-2 linux-info multilib optfeature pax-utils \
 	python-single-r1 tmpfiles toolchain-funcs udev xdg
 
-PATCHES_PV="7.2.6"
 ORIGIN_PN="VirtualBox"
 ORIGIN_PV=${PV%_pre*}
+PATCHES_PV="7.1.16"
 
 MY_PN=virtualbox
-MY_PV=${PV#*_pre}
+MY_PV=${PV#*_pre}-7.1
 MY_P=${ORIGIN_PN}-${ORIGIN_PV}
 
 PATCHES_DIR="${WORKDIR}"/${PN}-dev-${MY_PV}
@@ -51,7 +51,6 @@ unset WATCOM #856769
 COMMON_DEPEND="
 	acct-group/vboxusers
 	app-arch/xz-utils
-	app-emulation/dxvk
 	dev-libs/libtpms
 	dev-libs/libxml2:=
 	dev-libs/openssl:0=
@@ -63,7 +62,7 @@ COMMON_DEPEND="
 	virtual/zlib:=
 	dbus? ( sys-apps/dbus )
 	gui? (
-		dev-qt/qtbase:6[X,wayland,widgets]
+		dev-qt/qtbase:6[X,widgets]
 		dev-qt/qtscxml:6
 		dev-qt/qttools:6[assistant]
 		x11-libs/libX11
@@ -100,7 +99,6 @@ COMMON_DEPEND="
 DEPEND="
 	${COMMON_DEPEND}
 	>=dev-libs/libxslt-1.1.19
-	dev-util/glslang
 	virtual/libcrypt:=
 	x11-libs/libXt
 	alsa? ( >=media-libs/alsa-lib-1.0.13 )
@@ -139,7 +137,7 @@ BDEPEND="
 	>=app-arch/tar-1.34-r2
 	>=dev-lang/yasm-0.6.2
 	dev-util/glslang
-	>=dev-build/kbuild-0.1.9998.3660
+	>=dev-build/kbuild-0.1.9998.3592
 	sys-apps/which
 	sys-devel/bin86
 	sys-libs/libcap
@@ -342,7 +340,7 @@ src_prepare() {
 		's/&apos;[^&]*\(vboxdrv setup\|vboxconfig\)&apos;/\&apos;emerge -1 virtualbox-modules\&apos;/' {} \+ || die
 	sed -i "s:'/sbin/vboxconfig':'emerge -1 virtualbox-modules':" \
 		src/VBox/Frontends/VirtualBox/src/main.cpp \
-		src/VBox/VMM/VMMR3/VMR3.cpp || die
+		src/VBox/VMM/VMMR3/VM.cpp || die
 
 	# 890561
 	echo -e "\nVBOX_GTAR=gtar" >> LocalConfig.kmk || die
@@ -381,6 +379,7 @@ src_configure() {
 		$(usev !python --disable-python)
 		$(usev !vboxwebsrv --with-gsoap-dir=/dev/null)
 		$(usev vde --enable-vde)
+		$(usev !vmmraw --disable-vmmraw)
 		$(usev vnc --enable-vnc)
 	)
 
@@ -396,6 +395,10 @@ src_configure() {
 		)
 		# disable shared clipboard when headless, it crashes when connecting with RDP: bug #955867
 		echo -e "\nVBOX_WITH_SHARED_CLIPBOARD :=" >> LocalConfig.kmk || die
+	fi
+
+	if use amd64 && ! has_multilib_profile; then
+		myconf+=( --disable-vmmraw )
 	fi
 
 	# not an autoconf script
@@ -581,7 +584,7 @@ src_install() {
 	done
 
 	# Install EFI Firmware files (bug #320757)
-	for each in VBoxEFI{-x86,-amd64}.fd ; do
+	for each in VBoxEFI{32,64}.fd ; do
 		vbox_inst ${each} 0644
 	done
 
