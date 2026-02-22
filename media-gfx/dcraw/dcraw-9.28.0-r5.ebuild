@@ -8,6 +8,7 @@ DESCRIPTION="Command-line decoder for raw digital photos"
 HOMEPAGE="https://www.dechifro.org/dcraw/"
 SRC_URI="https://www.cybercom.net/~dcoffin/dcraw/archive/${P}.tar.gz
 	mirror://gentoo/parse-1.73.tar.bz2"
+S="${WORKDIR}/dcraw"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -25,8 +26,6 @@ BDEPEND="
 RDEPEND="${DEPEND}
 	media-libs/netpbm
 "
-
-S="${WORKDIR}/dcraw"
 
 DOC_CONTENTS="
 	See conversion-examples.txt.gz on how to convert
