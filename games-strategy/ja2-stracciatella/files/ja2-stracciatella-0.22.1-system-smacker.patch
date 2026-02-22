@@ -1,0 +1,139 @@
+https://github.com/ja2-stracciatella/ja2-stracciatella/pull/2354
+From: Matt Jolly <kangie@gentoo.org>
+Date: Sun, 22 Feb 2026 09:20:43 +1000
+Subject: [PATCH] feat: Support system smacker lib
+
+- Add `LOCAL_SMACKER_LIB` to CMakeLists (default `ON`)
+- Add `FindSmacker.cmake` to enable finding system smacker (no
+  pkg-config)
+- Fix const correctness to match system libsmacker API
+- Move `extern "C"` guards to vendored smacker (matches system lib)
+
+Signed-off-by: Matt Jolly <kangie@gentoo.org>
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -88,6 +88,7 @@ set(LOCAL_SDL_LIB "" CACHE STRING "Use local SDL library from this directory")
+ # @see CARGO_BUILD_TARGET in dependencies/lib-stracciatella/CMakeLists.txt
+ option(BUILD_SDL_LIB "Build SDL from source" OFF)
+ option(LOCAL_GTEST_LIB "Build with local gtest lib" ON)
++option(LOCAL_SMACKER_LIB "Build with local smacker lib" ON)
+ # @see LOCAL_STRING_THEORY_LIB in dependencies/lib-string_theory/CMakeLists.txt
+ option(WITH_UNITTESTS "Build with unittests" ON)
+ option(WITH_EDITOR_SLF "Include the latest free editor.slf" OFF)
+@@ -163,7 +164,11 @@ message(STATUS "SDL2 Libraries: ${SDL2_LIBRARY}; SDL2 Include Dir: ${SDL2_INCLUD
+ add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/dependencies/lib-magic_enum")
+ add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/dependencies/lib-lua")
+ add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/dependencies/lib-sol2")
+-add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/dependencies/lib-smacker")
++if(LOCAL_SMACKER_LIB)
++    add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/dependencies/lib-smacker")
++else()
++    find_package(Smacker REQUIRED)
++endif()
+ add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/dependencies/lib-stracciatella")
+ add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/dependencies/lib-string_theory")
+ add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/dependencies/lib-miniaudio")
+--- /dev/null
++++ b/cmake/FindSmacker.cmake
+@@ -0,0 +1,36 @@
++# FindSmacker.cmake
++# Find the libsmacker library
++#
++# This module defines:
++#   SMACKER_FOUND        - True if libsmacker was found
++#   SMACKER_INCLUDE_DIRS - The libsmacker include directories
++#   SMACKER_LIBRARIES    - The libraries needed to use libsmacker
++
++find_path(SMACKER_INCLUDE_DIR
++    NAMES smacker.h
++    PATH_SUFFIXES smacker
++)
++
++find_library(SMACKER_LIBRARY
++    NAMES smacker
++)
++
++include(FindPackageHandleStandardArgs)
++find_package_handle_standard_args(Smacker
++    REQUIRED_VARS SMACKER_LIBRARY SMACKER_INCLUDE_DIR
++)
++
++if(SMACKER_FOUND)
++    set(SMACKER_LIBRARIES ${SMACKER_LIBRARY})
++    set(SMACKER_INCLUDE_DIRS ${SMACKER_INCLUDE_DIR})
++
++    if(NOT TARGET smacker)
++        add_library(smacker UNKNOWN IMPORTED)
++        set_target_properties(smacker PROPERTIES
++            IMPORTED_LOCATION "${SMACKER_LIBRARY}"
++            INTERFACE_INCLUDE_DIRECTORIES "${SMACKER_INCLUDE_DIR}"
++        )
++    endif()
++endif()
++
++mark_as_advanced(SMACKER_INCLUDE_DIR SMACKER_LIBRARY)
+--- a/dependencies/lib-smacker/libsmacker/smacker.h
++++ b/dependencies/lib-smacker/libsmacker/smacker.h
+@@ -31,6 +31,10 @@
+ 
+ #include <stdio.h>
+ 
++#ifdef __cplusplus
++extern "C" {
++#endif
++
+ /* forward-declaration for an struct */
+ typedef struct smk_t *smk;
+ 
+@@ -106,4 +110,8 @@ char smk_next(smk object);
+ /* seek to first keyframe before/at N in an smk */
+ char smk_seek_keyframe(smk object, unsigned long );
+ 
++#ifdef __cplusplus
++}
++#endif
++
+ #endif
+--- a/src/game/Utils/Cinematics.cc
++++ b/src/game/Utils/Cinematics.cc
+@@ -11,9 +11,7 @@
+ #include <vector>
+ 
+ #include <SDL.h>
+-extern "C" {
+ #include "smacker.h"
+-}
+ 
+ #include "ContentManager.h"
+ #include "GameInstance.h"
+@@ -144,7 +142,7 @@ SMKFLIC* SmkPlayFlic(const char* const filename, const UINT32 left, const UINT32
+ 				unsigned long audio_size = smk_get_audio_size(sf->smacker, i);
+ 				if (audio_size > 0)
+ 				{
+-					unsigned char* audio_data = smk_get_audio(sf->smacker, i);
++					const unsigned char* audio_data = smk_get_audio(sf->smacker, i);
+ 					audio[i].insert(audio[i].end(), audio_data, audio_data + audio_size);
+ 				}
+ 			}
+@@ -277,8 +275,8 @@ static void SmkBlitVideoFrame(SMKFLIC* const sf, SGPVSurface* surface)
+ {
+ 	// get frame (source)
+ 	// TODO handle flags SMK_FLAG_Y_* (I need a sample of each case)
+-	unsigned char* src;
+-	unsigned char* src_palette;
++	const unsigned char* src;
++	const unsigned char* src_palette;
+ 	unsigned long src_width;
+ 	unsigned long src_height;
+ 	src = smk_get_video(sf->smacker);
+@@ -291,7 +289,7 @@ static void SmkBlitVideoFrame(SMKFLIC* const sf, SGPVSurface* surface)
+ 	UINT16 palette[256];
+ 	for (int i = 0; i < 256; i++)
+ 	{
+-		unsigned char* rgb = src_palette + i * 3;
++		const unsigned char* rgb = src_palette + i * 3;
+ 		palette[i] = Get16BPPColor(FROMRGB(rgb[0], rgb[1], rgb[2]));
+ 	}
+ 
+-- 
+2.52.0
