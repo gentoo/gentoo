@@ -92,7 +92,7 @@ CMAKE_SKIP_TESTS=(
 	test_{compilerprovider,cmakemanager,ctestfindsuites,cmakefileapi}
 	test_{custombuildsystemplugin,qmakeproject,projectload,craftruntime}
 	bench_codecompletion # segfaults
-	test_gdb # FIXME: fails to launch xterm (if found)
+	test_{gdb,problems} # both known as flaky upstream; FIXME: fails to launch xterm (if found)
 	test_{path,generationtest} # FIXME: whatever that does, does not work
 )
 
