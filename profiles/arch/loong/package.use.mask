@@ -310,6 +310,7 @@ app-cdr/brasero tracker
 # Respective dependency fails to build, pending investigation, mask for the
 # time being
 dev-cpp/libcmis man
+kde-plasma/plasma-meta ocr
 media-libs/opencv tesseract
 media-video/ffmpeg ocr
 media-video/ffmpeg-compat ocr
