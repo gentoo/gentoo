@@ -6,6 +6,7 @@
 	</upstream>
 	<use>
 		<flag name="adb-generic-tools">Enable compiling the following tools: mstreg and mstlink</flag>
+		<flag name="fw-mgr">Enable compiling the firmware manager tool: mstfwmanager</flag>
 		<flag name="inband">Enable firmware updates for Mellanox SwitchX and ConnectIB devices</flag>
 	</use>
 	<maintainer type="person">
