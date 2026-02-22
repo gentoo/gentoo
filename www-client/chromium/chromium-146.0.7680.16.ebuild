@@ -87,7 +87,7 @@ KEYWORDS="~amd64 ~arm64"
 IUSE_SYSTEM_LIBS="+system-harfbuzz +system-icu +system-zstd"
 IUSE="+X ${IUSE_SYSTEM_LIBS} bindist bundled-toolchain cups debug ffmpeg-chromium gtk4 +hangouts headless kerberos +official pax-kernel pgo"
 IUSE+=" +proprietary-codecs pulseaudio qt6 +rar +screencast selinux test +vaapi +wayland +widevine cpu_flags_ppc_vsx3"
-RESTRICT="!bindist? ( bindist )"
+RESTRICT="!bindist? ( bindist ) !test? ( test )"
 
 REQUIRED_USE="
 	!headless? ( || ( X wayland ) )
