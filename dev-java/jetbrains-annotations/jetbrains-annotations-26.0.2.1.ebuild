@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN/jetbrains/java}-$(ver_rs 3 -)"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DEPEND=">=virtual/jdk-11:*"	# module-info
 RDEPEND=">=virtual/jre-1.8:*"
