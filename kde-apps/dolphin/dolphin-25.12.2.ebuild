@@ -59,6 +59,15 @@ RDEPEND="${DEPEND}
 	>=kde-apps/thumbnailers-${PVCUT}:6
 "
 
+CMAKE_SKIP_TESTS=(
+	servicemenuinstaller # requires ruby, no thanks
+	dolphinmainwindowtest # hangs forever
+	kfileitem{listview,model}test # hang forever
+	kitemlistcontrollertest # hangs forever
+	kitemlistcontrollerexpandtest # flaky even according to upstream # bug 947223
+	placesitemmodeltest # requires DBus
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_PackageKitQt6=ON
@@ -70,16 +79,6 @@ src_configure() {
 		-DCMAKE_DISABLE_FIND_PACKAGE_SeleniumWebDriverATSPI=ON # not packaged
 	)
 	ecm_src_configure
-}
-
-src_test() {
-	local myctestargs=(
-		# servicemenuinstaller requires ruby, no thanks
-		# dolphinmainwindowtest, kitemlistcontrollertest, kfileitemlistviewtest, kfileitemmodeltest hang forever
-		# placesitemmodeltest requires DBus
-		-E "(servicemenuinstaller|dolphinmainwindowtest|kfileitemlistviewtest|kfileitemmodeltest|kitemlistcontrollertest|placesitemmodeltest)"
-	)
-	ecm_src_test
 }
 
 pkg_postinst() {
