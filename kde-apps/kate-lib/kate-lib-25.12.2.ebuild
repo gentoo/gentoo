@@ -42,6 +42,14 @@ RDEPEND="${DEPEND}
 	>=kde-apps/kate-common-${PV}
 "
 
+CMAKE_SKIP_TESTS=(
+	{session_manager,sessions_action}_test # tests hang
+)
+# bug #967516: weird interaction w/ git: only works from git repo
+[[ ${KDE_BUILD_TYPE} != live ]] && CMAKE_SKIP_TESTS=(
+	kateapp-file_history_tests
+)
+
 src_prepare() {
 	ecm_src_prepare
 	ecm_punt_po_install
@@ -57,13 +65,4 @@ src_configure() {
 	)
 
 	ecm_src_configure
-}
-
-src_test() {
-	# tests hang
-	local myctestargs=(
-		-E "(session_manager_test|sessions_action_test)"
-	)
-
-	ecm_src_test
 }
