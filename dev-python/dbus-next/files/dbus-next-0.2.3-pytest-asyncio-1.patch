@@ -1,0 +1,115 @@
+From 37830c9972209746396f4c3f8344ce50a435b767 Mon Sep 17 00:00:00 2001
+From: LN Liberda <lauren@selfisekai.rocks>
+Date: Fri, 28 Nov 2025 06:38:51 +0100
+Subject: [PATCH] Remove event_loop fixture from tests
+
+It was removed in pytest-asyncio 1.0
+https://github.com/pytest-dev/pytest-asyncio/pull/1106
+---
+ test/test_aio_low_level.py | 4 +++-
+ test/test_disconnect.py    | 7 +++++--
+ test/test_fd_passing.py    | 7 +++++--
+ test/test_tcp_address.py   | 3 ++-
+ 4 files changed, 15 insertions(+), 6 deletions(-)
+
+diff --git a/test/test_aio_low_level.py b/test/test_aio_low_level.py
+index 1042a1a..677cbf1 100644
+--- a/test/test_aio_low_level.py
++++ b/test/test_aio_low_level.py
+@@ -1,6 +1,7 @@
+ from dbus_next.aio import MessageBus
+ from dbus_next import Message, MessageType, MessageFlag
+ 
++import asyncio
+ import pytest
+ 
+ 
+@@ -101,7 +102,8 @@ def message_handler_error(sent):
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_sending_signals_between_buses(event_loop):
++async def test_sending_signals_between_buses():
++    event_loop = asyncio.get_running_loop()
+     bus1 = await MessageBus().connect()
+     bus2 = await MessageBus().connect()
+ 
+diff --git a/test/test_disconnect.py b/test/test_disconnect.py
+index d04d996..987eefe 100644
+--- a/test/test_disconnect.py
++++ b/test/test_disconnect.py
+@@ -1,15 +1,17 @@
+ from dbus_next.aio import MessageBus
+ from dbus_next import Message
+ 
++import asyncio
+ import os
+ import pytest
+ import functools
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_bus_disconnect_before_reply(event_loop):
++async def test_bus_disconnect_before_reply():
+     '''In this test, the bus disconnects before the reply comes in. Make sure
+     the caller receives a reply with the error instead of hanging.'''
++    event_loop = asyncio.get_running_loop()
+     bus = MessageBus()
+     assert not bus.connected
+     await bus.connect()
+@@ -32,7 +34,8 @@ async def test_bus_disconnect_before_reply(event_loop):
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_unexpected_disconnect(event_loop):
++async def test_unexpected_disconnect():
++    event_loop = asyncio.get_running_loop()
+     bus = MessageBus()
+     assert not bus.connected
+     await bus.connect()
+diff --git a/test/test_fd_passing.py b/test/test_fd_passing.py
+index 28331d3..be25e4d 100644
+--- a/test/test_fd_passing.py
++++ b/test/test_fd_passing.py
+@@ -5,6 +5,7 @@
+ from dbus_next import Message, MessageType
+ import os
+ 
++import asyncio
+ import pytest
+ 
+ 
+@@ -112,7 +113,8 @@ def message_handler(sent):
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_high_level_service_fd_passing(event_loop):
++async def test_high_level_service_fd_passing():
++    event_loop = asyncio.get_running_loop()
+     bus1 = await MessageBus(negotiate_unix_fd=True).connect()
+     bus2 = await MessageBus(negotiate_unix_fd=True).connect()
+ 
+@@ -212,7 +214,8 @@ def fd_listener(msg):
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_sending_file_descriptor_with_proxy(event_loop):
++async def test_sending_file_descriptor_with_proxy():
++    event_loop = asyncio.get_running_loop()
+     name = 'dbus.next.test.service'
+     path = '/test/path'
+     interface_name = 'test.interface'
+diff --git a/test/test_tcp_address.py b/test/test_tcp_address.py
+index a6b6ebb..fe2fc3e 100644
+--- a/test/test_tcp_address.py
++++ b/test/test_tcp_address.py
+@@ -8,7 +8,8 @@
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_tcp_connection_with_forwarding(event_loop):
++async def test_tcp_connection_with_forwarding():
++    event_loop = asyncio.get_running_loop()
+     closables = []
+     host = '127.0.0.1'
+     port = '55556'

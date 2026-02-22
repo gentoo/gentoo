@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit distutils-r1 virtualx
 
@@ -27,13 +27,13 @@ KEYWORDS="amd64 ~arm64 ~riscv x86"
 BDEPEND="
 	test? (
 		dev-python/pygobject[${PYTHON_USEDEP}]
-		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
-		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 	)
 "
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.2.3-glib-crash.patch
+	# https://github.com/altdesktop/python-dbus-next/pull/171
+	"${FILESDIR}"/${PN}-0.2.3-pytest-asyncio-1.patch
 )
 
 EPYTEST_DESELECT=(
@@ -47,6 +47,7 @@ EPYTEST_IGNORE=(
 	test/client/test_signals.py
 )
 
+EPYTEST_PLUGINS=( pytest-{asyncio,timeout} )
 distutils_enable_tests pytest
 
 src_test() {
