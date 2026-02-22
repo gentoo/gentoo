@@ -8,8 +8,8 @@ DESCRIPTION="Ghostscript and cups printer drivers"
 HOMEPAGE="https://gimp-print.sourceforge.io/"
 
 MY_P="${P/_/-}"
-S="${WORKDIR}/${MY_P}"
 SRC_URI="https://downloads.sourceforge.net/gimp-print/${MY_P}.tar.xz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
