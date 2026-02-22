@@ -21,6 +21,8 @@ SLOT="0"
 IUSE="opencv +password raw"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+# currently broken w/ KF6, https://invent.kde.org/education/kstars/-/issues/294
+RESTRICT="test"
 
 # https://wiki.gentoo.org/wiki/Project:Qt/Qt6_migration_notes#Still_unpackaged
 # >=dev-qt/qtdatavis3d-${QTMIN}:6
