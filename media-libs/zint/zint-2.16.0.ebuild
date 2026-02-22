@@ -1,4 +1,4 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ S="${WORKDIR}/${P}-src"
 # see LICENSE
 LICENSE="BSD GPL-3+"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 ~riscv"
 IUSE="gui png test"
 RESTRICT="!test? ( test )"
 
