@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -39,6 +39,7 @@ RDEPEND="
 	zstd? ( app-arch/zstd:=[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}
+	elibc_musl? ( sys-libs/queue-standalone )
 	kernel_linux? (
 		virtual/os-headers
 		e2fsprogs? ( sys-fs/e2fsprogs[${MULTILIB_USEDEP}] )
@@ -56,7 +57,6 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	virtual/pkgconfig
 	verify-sig? ( >=sec-keys/openpgp-keys-libarchive-20251118 )
-	elibc_musl? ( sys-libs/queue-standalone )
 "
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libarchive.org.asc
