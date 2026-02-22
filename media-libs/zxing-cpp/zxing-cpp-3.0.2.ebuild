@@ -19,7 +19,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0"
 SLOT="0/4"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS=""
 IUSE="test"
 RESTRICT="!test? ( test )"
 
