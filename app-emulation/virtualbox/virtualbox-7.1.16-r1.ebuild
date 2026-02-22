@@ -45,7 +45,6 @@ unset WATCOM #856769
 COMMON_DEPEND="
 	acct-group/vboxusers
 	app-arch/xz-utils
-	app-emulation/dxvk
 	~app-emulation/virtualbox-modules-${PV%*a}
 	dev-libs/libtpms
 	dev-libs/libxml2:=
@@ -95,7 +94,6 @@ COMMON_DEPEND="
 DEPEND="
 	${COMMON_DEPEND}
 	>=dev-libs/libxslt-1.1.19
-	dev-util/glslang
 	virtual/libcrypt:=
 	x11-libs/libXt
 	alsa? ( >=media-libs/alsa-lib-1.0.13 )
