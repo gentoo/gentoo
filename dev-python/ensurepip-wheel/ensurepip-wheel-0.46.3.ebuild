@@ -24,6 +24,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv 
 BDEPEND="
 	test? (
 		dev-python/setuptools[${PYTHON_USEDEP}]
+		>=dev-python/packaging-26.0[${PYTHON_USEDEP}]
 	)
 "
 
