@@ -22,6 +22,7 @@ BDEPEND="test? ( ${PYTHON_DEPS} )"
 PATCHES=(
 	"${FILESDIR}/${PN}-1.5.3-backport-pr405.patch"
 	"${FILESDIR}/${PN}-1.8.2-x32.patch"
+	"${FILESDIR}/${PN}-1.8.3-fix-non-x86-test.patch" # 970424
 )
 
 pkg_setup() {

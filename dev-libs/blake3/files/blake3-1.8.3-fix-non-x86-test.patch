@@ -1,0 +1,20 @@
+Adapted from upstream patch by Christoph Erhardt <github@sicherha.de>
+https://github.com/BLAKE3-team/BLAKE3/pull/539
+---
+ c/blake3_dispatch.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/blake3_dispatch.c b/blake3_dispatch.c
+index 14dfbbe..de993ed 100644
+--- a/blake3_dispatch.c
++++ b/blake3_dispatch.c
+@@ -89,6 +89,9 @@ static void cpuidex(uint32_t out[4], uint32_t id, uint32_t sid) {
+ #endif
+ }
+ 
++#endif
++
++#if defined(IS_X86) || defined(BLAKE3_TESTING)
+ 
+ enum cpu_feature {
+   SSE2 = 1 << 0,
