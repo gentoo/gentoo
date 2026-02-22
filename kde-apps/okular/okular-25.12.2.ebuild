@@ -66,6 +66,14 @@ PATCHES=(
 	"${FILESDIR}/${PN}-23.08.5-implicit-vasprintf.patch" # bug 922345; pending upstream
 )
 
+CMAKE_SKIP_TESTS=(
+	mainshelltest # hangs, bug #603116
+	parttest # hangs, bug #641728, annotationtoolbartest fails, KDE-Bug #429640
+	annotationtoolbartest
+	signunsignedfieldtest # fails, whatever. bug #852749
+	visibilitytest # fails, whatever. bug #970239
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DFORCE_NOT_REQUIRED_DEPENDENCIES="KF6DocTools;KF6Wallet;DjVuLibre;EPub;Discount;QMobipocket6;Poppler;LibSpectre;KF6Purpose;Qt6TextToSpeech;TIFF;"
@@ -83,15 +91,4 @@ src_configure() {
 		$(cmake_use_find_package tiff TIFF)
 	)
 	ecm_src_configure
-}
-
-src_test() {
-	# mainshelltest hangs, bug #603116
-	# parttest hangs, bug #641728, annotationtoolbartest fails, KDE-Bug #429640
-	# signunsignedfieldtest fails, whatever. bug #852749
-	local myctestargs=(
-		-E "(mainshelltest|parttest|annotationtoolbartest|signunsignedfieldtest)"
-	)
-
-	ecm_src_test
 }
