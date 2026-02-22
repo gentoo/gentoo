@@ -272,6 +272,8 @@ src_install() {
 	ANSI_COLOR='1;32'
 	EOF
 
+	dosym -r /usr/lib/os-release /etc/os-release
+
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		# add SDK path which contains development manpages
 		echo "MANPATH=${EPREFIX}/MacOSX.sdk/usr/share/man" \
