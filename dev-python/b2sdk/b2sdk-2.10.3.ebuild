@@ -29,6 +29,7 @@ RDEPEND="
 	>=dev-python/tenacity-9.1.2[${PYTHON_USEDEP}]
 "
 BDEPEND="
+	dev-python/hatch-vcs[${PYTHON_USEDEP}]
 	test? (
 		dev-python/responses[${PYTHON_USEDEP}]
 		>=dev-python/tqdm-4.5.0[${PYTHON_USEDEP}]
@@ -47,3 +48,5 @@ EPYTEST_IGNORE=(
 
 EPYTEST_PLUGINS=( pytest-{lazy-fixtures,mock,timeout} )
 distutils_enable_tests pytest
+
+export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
