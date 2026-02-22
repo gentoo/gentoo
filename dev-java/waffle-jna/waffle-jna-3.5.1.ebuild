@@ -15,7 +15,7 @@ S="${WORKDIR}/waffle-waffle-${PV}/Source/JNA/waffle-jna"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DEPEND="
 	>=dev-java/caffeine-2.9.3:0
