@@ -37,6 +37,12 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-02-22)
+# Obsolete package blocking vdr-2.2 cleanup.
+# Removal on 2026-03-24.
+media-plugins/vdr-peer
+=media-video/vdr-2.2.0*
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-22)
 # Obsolete package. Use media-plugins/vdr-skinelchihd instead.
 # Bug #945071. Removal on 2026-03-24.
 media-plugins/vdr-skincurses
