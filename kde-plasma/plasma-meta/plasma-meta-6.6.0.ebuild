@@ -10,11 +10,11 @@ HOMEPAGE="https://kde.org/plasma-desktop/"
 
 LICENSE="metapackage"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="accessibility bluetooth +browser-integration +crash-handler crypt cups
+KEYWORDS="~loong ~ppc64 ~riscv"
+IUSE="accessibility bluetooth +browser-integration +crash-handler cups
 discover +display-manager +elogind +firewall flatpak grub gtk +kwallet
-+networkmanager ocr oxygen-theme plymouth pulseaudio qt5 rdp +sddm sdk +smart
-systemd thunderbolt unsupported virtualkeyboard wacom +wallpapers webengine X"
++networkmanager oxygen-theme plymouth pulseaudio qt5 rdp +sddm sdk +smart
+systemd thunderbolt unsupported wacom +wallpapers webengine X"
 
 REQUIRED_USE="^^ ( elogind systemd ) firewall? ( systemd ) rdp? ( systemd )"
 
@@ -70,7 +70,6 @@ RDEPEND="
 		!systemd? ( >=kde-plasma/drkonqi-legacy-6.3.80_p20250417:${SLOT} )
 		systemd? ( >=kde-plasma/drkonqi-${PV}:${SLOT} )
 	)
-	crypt? ( >=kde-plasma/plasma-vault-${PV}:${SLOT} )
 	cups? (
 		>=kde-plasma/print-manager-${PV}:${SLOT}
 		net-print/cups-meta
@@ -122,7 +121,6 @@ RDEPEND="
 	)
 	thunderbolt? ( >=kde-plasma/plasma-thunderbolt-${PV}:${SLOT} )
 	!unsupported? ( !gui-apps/qt6ct )
-	virtualkeyboard? ( >=kde-plasma/plasma-keyboard-${PV}:${SLOT} )
 	wacom? ( >=kde-plasma/plasma-desktop-${PV}:${SLOT}[input_devices_wacom] )
 	wallpapers? ( >=kde-plasma/plasma-workspace-wallpapers-${PV}:${SLOT} )
 	webengine? ( kde-apps/khelpcenter:6 )
@@ -146,7 +144,6 @@ esac
 # Optional runtime deps: kde-plasma/plasma-desktop, kde-plasma/spectacle
 RDEPEND="${RDEPEND}
 	accessibility? ( app-accessibility/orca )
-	ocr? ( app-text/tesseract )
 "
 
 pkg_postinst() {

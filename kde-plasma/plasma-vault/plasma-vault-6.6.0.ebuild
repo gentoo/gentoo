@@ -12,7 +12,7 @@ HOMEPAGE+=" https://cukic.co/2017/02/03/vaults-encryption-in-plasma/"
 
 LICENSE="LGPL-3"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="networkmanager"
 
 DEPEND="
@@ -32,11 +32,7 @@ DEPEND="
 	networkmanager? ( >=kde-frameworks/networkmanager-qt-${KFMIN}:6 )
 "
 RDEPEND="${DEPEND}
-	!loong? ( >=app-crypt/gocryptfs-1.8 )
-	loong? ( || (
-		>=sys-fs/cryfs-0.9.9
-		>=sys-fs/encfs-1.9.2
-	) )
+	>=app-crypt/gocryptfs-1.8
 "
 
 pkg_pretend() {
