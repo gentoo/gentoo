@@ -543,6 +543,7 @@ src_prepare() {
 		"${FILESDIR}/cr144-glibc-2.43.patch"
 		"${FILESDIR}/cr145-oauth2-client-switches.patch"
 		"${FILESDIR}/cr145-revert-to-rollup-wasm.patch"
+		"${FILESDIR}/cr145-fix-no-unrar.patch"
 	)
 	# No copium patches here: they should only need to apply to unbundled toolchain builds
 	# and don't get fetched or unpacked.
