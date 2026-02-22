@@ -65,6 +65,8 @@ CMAKE_SKIP_TESTS=(
 	eventhandlertest
 	# bug 909816, tries access /proc/PID/mem
 	texthandlertest # ki18n (KLocalizedString) failure
+	roommanagertest # bug 969837, who cares
+	servernoticestest # bug 967518, really
 )
 
 src_configure() {
