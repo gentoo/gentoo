@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -27,7 +27,7 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="bind8-stats debug dnstap +ipv6 libevent memclean minimal-responses mmap munin +nsec3 packed +radix-tree ratelimit recvmmsg +simdzone ssl systemd +tfo"
+IUSE="bind8-stats debug dnstap +ipv6 libevent memclean minimal-responses mmap munin +nsec3 +radix-tree ratelimit recvmmsg +simdzone ssl systemd +tfo"
 
 RDEPEND="
 	acct-group/nsd
@@ -74,7 +74,7 @@ src_configure() {
 		$(use_enable minimal-responses)
 		$(use_enable mmap)
 		$(use_enable nsec3)
-		$(use_enable packed)
+		--disable-packed
 		$(use_enable radix-tree)
 		$(use_enable ratelimit)
 		$(use_enable recvmmsg)

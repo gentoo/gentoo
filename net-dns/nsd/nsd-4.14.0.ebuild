@@ -28,7 +28,7 @@ fi
 LICENSE="BSD"
 SLOT="0"
 IUSE="+bind8-stats debug +dnstap +ipv6 libevent memclean minimal-responses mmap munin"
-IUSE+=" +nsec3 packed +radix-tree +ratelimit recvmmsg +simdzone ssl systemd +tfo xdp"
+IUSE+=" +nsec3 +radix-tree +ratelimit recvmmsg +simdzone ssl systemd +tfo xdp"
 
 RDEPEND="
 	acct-group/nsd
@@ -87,7 +87,7 @@ src_configure() {
 		$(use_enable minimal-responses)
 		$(use_enable mmap)
 		$(use_enable nsec3)
-		$(use_enable packed)
+		--disable-packed
 		$(use_enable radix-tree)
 		$(use_enable ratelimit)
 		$(use_enable recvmmsg)

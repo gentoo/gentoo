@@ -15,7 +15,6 @@
 		<flag name="minimal-responses">If minimal responses are disabled, responses are more likely to get truncated, resulting in TCP fallback</flag>
 		<flag name="munin">Install a plugin for <pkg>net-analyzer/munin</pkg> to graph statistical data from nsd</flag>
 		<flag name="nsec3">Enable NSEC3 support</flag>
-		<flag name="packed">Enable packed structure alignment; uses less memory but has unaligned reads</flag>
 		<flag name="radix-tree">Use a radix tree for main lookups instead of a red-black tree</flag>
 		<flag name="ratelimit">Enables ratelimiting, based on query name, type and source</flag>
 		<flag name="recvmmsg">Enable recvmmsg and sendmmsg compilation, faster but some kernel versions may have implementation problems for IPv6</flag>
