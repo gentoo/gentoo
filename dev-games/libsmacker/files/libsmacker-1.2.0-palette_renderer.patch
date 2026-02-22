@@ -1,0 +1,63 @@
+https://github.com/greg-kennedy/libsmacker/pull/2
+From: Matt Jolly <kangie@gentoo.org>
+Date: Sun, 22 Feb 2026 10:30:19 +1000
+Subject: [PATCH] fix: Remove spurious overlap check in palette_render 0x40
+ handler
+
+The colour-shift (0x40) handler in smk_render_palette copies entries
+from oldPalette into s->palette:
+
+  memmove(&s->palette[i][0], &oldPalette[src][0], count * 3);
+
+These are two separate memory regions: oldPalette is a static local
+snapshot taken via memcpy at function entry, while s->palette is part
+of the smk_video_t struct on the heap.  They can never alias.
+
+Despite this, the bounds check rejects palette deltas where the source
+and destination *index* ranges overlap:
+
+  if (src < i && src + count > i)
+
+This conflates array indices with memory addresses.  Since the source
+and destination are different buffers, overlapping index ranges are
+perfectly valid.
+
+The result is that any palette delta where a lower-numbered source
+entry is copied to a higher-numbered destination entry (encountered in
+the wild in e.g. JA2 intro videos) gets incorrectly rejected, causing
+smk_render_palette to bail out with an overflow error.  Consumers then
+see a half-constructed palette, producing corrupted or flickering
+colours.
+
+Commit bea19c1 (2017-01-27, SVN r31) changed palette storage from a flat
+malloc'd pointer to an embedded [256][3] array and eliminated the temp
+buffer, making the 0x40 handler copy within the same s->palette array.
+Commit 2042bd7 (2017-01-27, SVN r32) then correctly added this overlap
+guard and switched memcpy to memmove to protect against in-place
+forward-copy corruption.  Two years later, commit 0464fbb (2019-01-31,
+SVN r34) fixed the aliasing problem properly by introducing a static
+oldPalette snapshot and reading from that instead, but did not remove
+the now-redundant overlap check which has been silently rejecting valid
+palette deltas ever since.
+
+Signed-off-by: Matt Jolly <kangie@gentoo.org>
+---
+ smacker.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/smacker.c b/smacker.c
+index eef6e7b..724b0fe 100644
+--- a/smacker.c
++++ b/smacker.c
+@@ -1224,9 +1224,8 @@ static char smk_render_palette(struct smk_video_t * s, unsigned char * p, unsign
+ 			p ++;
+ 			size --;
+ 
+-			/* overflow: see if we write/read beyond 256colors, or overwrite own palette */
+-			if (i + count > 256 || src + count > 256 ||
+-				(src < i && src + count > i)) {
++			/* overflow: see if we write/read beyond 256 colors */
++			if (i + count > 256 || src + count > 256) {
+ 				fprintf(stderr, "libsmacker::palette_render(s,p,size) - ERROR: overflow, 0x40 attempt to copy %d entries from %d to %d\n", count, src, i);
+ 				goto error;
+ 			}
