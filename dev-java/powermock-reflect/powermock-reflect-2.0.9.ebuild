@@ -15,7 +15,7 @@ S="${WORKDIR}/powermock-powermock-${PV}/${PN}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 CP_DEPEND=">=dev-java/objenesis-3.4:0"
 
