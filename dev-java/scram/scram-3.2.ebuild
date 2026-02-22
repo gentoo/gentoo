@@ -15,7 +15,7 @@ S="${WORKDIR}/${P}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 CP_DEPEND="
 	>=dev-java/jetbrains-annotations-26.0.2.1:0
