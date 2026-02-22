@@ -36,6 +36,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-22)
+# Obsolete package. Use media-plugins/vdr-skinelchihd instead.
+# Bug #945071. Removal on 2026-03-24.
+media-plugins/vdr-skincurses
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-22)
+# Obsolete package. Use media-video/vdr[demoplugins] instead.
+# Removal on 2026-03-24.
+media-plugins/vdr-skinelchi
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-02-15)
 # Masked for testing and possible libvlc revdeps breakage.
 ~media-video/vlc-4.0.0_pre20260215
