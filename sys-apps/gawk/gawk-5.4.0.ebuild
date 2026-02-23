@@ -99,6 +99,13 @@ src_configure() {
 	econf "${myeconfargs[@]}"
 }
 
+src_test() {
+	# bug #970495
+	local -x PAGER=cat
+
+	emake check
+}
+
 src_install() {
 	# Automatic dodocs barfs
 	rm -rf README_d || die
