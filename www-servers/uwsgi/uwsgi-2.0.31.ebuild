@@ -289,6 +289,7 @@ src_compile() {
 	fi
 
 	if use php ; then
+		local s
 		for s in $(php_get_slots); do
 			UWSGICONFIG_PHPDIR="/usr/$(get_libdir)/${s}" ${EPYTHON} uwsgiconfig.py --plugin plugins/php gentoo ${s/.} || die "building plugin for ${s} failed"
 		done
@@ -350,6 +351,7 @@ pkg_postinst() {
 	use perl   && elog "  '--plugins psgi' for perl"
 
 	if use php ; then
+		local s
 		for s in $(php_get_slots); do
 			elog "  '--plugins ${s/.}' for ${s}"
 		done
@@ -369,6 +371,7 @@ pkg_postinst() {
 	use python && python_foreach_impl python_pkg_postinst
 
 	if use ruby ; then
+		local ruby
 		for ruby in $(ruby_get_use_implementations) ; do
 			elog "  '--plugins rack_${ruby/.}' for ${ruby}"
 			elog "  '--plugins fiber_${ruby/.}' for ${ruby} fibers"
