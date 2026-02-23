@@ -1,0 +1,45 @@
+https://bugs.gentoo.org/969389
+https://github.com/openssl/openssl/issues/29815
+--- a/crypto/modes/asm/aes-gcm-ppc.pl
++++ b/crypto/modes/asm/aes-gcm-ppc.pl
+@@ -409,7 +409,6 @@
+ ################################################################################
+ .align 4
+ aes_gcm_crypt_1x:
+-.localentry	aes_gcm_crypt_1x,0
+ 
+ 	cmpdi	5, 16
+ 	bge	__More_1x
+@@ -492,7 +491,6 @@
+ ################################################################################
+ .align 4
+ __Process_partial:
+-.localentry	__Process_partial,0
+ 
+ 	# create partial mask
+ 	vspltisb 16, -1
+@@ -564,7 +562,6 @@
+ .global ppc_aes_gcm_encrypt
+ .align 5
+ ppc_aes_gcm_encrypt:
+-.localentry     ppc_aes_gcm_encrypt,0
+ 
+ 	SAVE_REGS
+ 	LOAD_HASH_TABLE
+@@ -752,7 +749,6 @@
+ .global ppc_aes_gcm_decrypt
+ .align 5
+ ppc_aes_gcm_decrypt:
+-.localentry	ppc_aes_gcm_decrypt, 0
+ 
+ 	SAVE_REGS
+ 	LOAD_HASH_TABLE
+@@ -1032,7 +1028,6 @@
+ .size   ppc_aes_gcm_decrypt,.-ppc_aes_gcm_decrypt
+ 
+ aes_gcm_out:
+-.localentry	aes_gcm_out,0
+ 
+ 	mr	3, 11			# return count
+ 
+
