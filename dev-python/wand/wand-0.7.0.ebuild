@@ -1,0 +1,39 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+DISTUTILS_USE_PEP517=setuptools
+PYPI_PN=${PN^}
+PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+
+inherit distutils-r1 pypi
+
+DESCRIPTION="Ctypes-based simple ImageMagick binding for Python"
+HOMEPAGE="
+	https://docs.wand-py.org/
+	https://github.com/emcconville/wand/
+	https://pypi.org/project/Wand/
+"
+
+LICENSE="MIT"
+SLOT="0"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+
+RDEPEND="
+	media-gfx/imagemagick
+"
+BDEPEND="
+	test? (
+		media-gfx/imagemagick[fftw,jpeg,png,truetype,xml]
+	)
+"
+
+distutils_enable_sphinx docs
+EPYTEST_PLUGINS=()
+distutils_enable_tests pytest
+
+python_test() {
+	# PDF support is blocked by the default ImageMagick security policy
+	epytest --skip-pdf
+}
