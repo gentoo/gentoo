@@ -29,7 +29,7 @@ fi
 
 LICENSE="|| ( GPL-2 BSD-2 )"
 SLOT="0/1"
-IUSE="asm test tools"
+IUSE="+asm test tools"
 RESTRICT="!test? ( test )"
 
 PATCHES=(
@@ -42,11 +42,18 @@ src_configure() {
 }
 
 multilib_src_configure() {
+	local native_file="${T}"/meson.${CHOST}.${ABI}.ini.local
+	cat >> ${native_file} <<-EOF || die
+	[binaries]
+	doxygen='doxygen-falseified'
+	EOF
+
 	local emesonargs=(
 		-Dstrip=false
 		$(meson_use !asm disable-asm)
 		$(meson_feature test tests)
 		$(meson_native_use_feature tools apps)
+		--native-file "${native_file}"
 	)
 
 	meson_src_configure
