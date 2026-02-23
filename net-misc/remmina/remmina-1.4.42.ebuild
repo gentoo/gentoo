@@ -64,6 +64,7 @@ DOCS=( AUTHORS CHANGELOG.md README.md THANKS.md )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.4.40-kf6wallet.patch" # bug 950750; TODO: upstream
+	"${FILESDIR}/${PN}-1.4.42-fix-build-without-wayland.patch"
 )
 
 pkg_setup() {
