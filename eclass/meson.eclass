@@ -420,6 +420,9 @@ setup_meson_src_configure() {
 				# https://mesonbuild.com/Builtin-options.html
 				--localstatedir "${EPREFIX}/var"
 				--sharedstatedir "${EPREFIX}/var/lib"
+
+				# https://bugs.gentoo.org/870019
+				--auto-features disabled
 			)
 			;;
 	esac
