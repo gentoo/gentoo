@@ -63,6 +63,8 @@ src_configure() {
 }
 
 src_test() {
+	local -x VERBOSE=1
+	local -x AUTOMATED_TESTING=1
 	emake -Onone check
 }
 
