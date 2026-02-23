@@ -27,7 +27,7 @@ HOMEPAGE="https://nghttp2.org/ngtcp2/ https://github.com/ngtcp2/ngtcp2"
 
 LICENSE="MIT"
 SLOT="0/0"
-IUSE="+gnutls +openssl +ssl"
+IUSE="gnutls +openssl +ssl"
 REQUIRED_USE="ssl? ( || ( gnutls openssl ) )"
 
 # Uses SSL_set_quic_tls_cbs to detect OpenSSL. The function was introduced in
