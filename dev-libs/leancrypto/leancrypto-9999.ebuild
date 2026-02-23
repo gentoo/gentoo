@@ -33,8 +33,6 @@ IUSE="asm test tools"
 RESTRICT="!test? ( test )"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-use-init.patch
-	"${FILESDIR}"/${P}-avoid-accel-crash.patch
 	"${FILESDIR}"/${PN}-1.6.0-no-force-lto.patch
 )
 
