@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2026-03-10)
+# Unused Java library.
+# Last consumer was net-p2p/freenet-0.7.5_p1505-r0.
+# Removal on 2026-04-10. Bug #971058.
+dev-java/mersennetwister
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-03-09)
 # Dead CORBA implementation, no one else packages this, impossible to build.
 # Many bugs: #298101, #515938, #725192, #871237, #874090, #882479, #882633,
