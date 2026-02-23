@@ -55,6 +55,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	optfeature "directory support" app-xemacs/dired
 	optfeature "ebuild commands support" sys-apps/portage
 	optfeature "additional development tools" dev-util/pkgdev
 	optfeature "ebuild QA utilities" dev-util/pkgcheck
