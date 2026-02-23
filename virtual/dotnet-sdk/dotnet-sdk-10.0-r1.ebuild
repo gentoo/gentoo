@@ -8,9 +8,7 @@ DESCRIPTION="Virtual for .NET SDK"
 SLOT="${PV}"
 KEYWORDS="amd64 arm arm64"
 
+# Add dev-dotnet/dotnet-sdk:${SLOT} when we have it.
 RDEPEND="
-	|| (
-		dev-dotnet/dotnet-sdk-bin:${SLOT}
-		dev-dotnet/dotnet-sdk:${SLOT}
-	)
+	dev-dotnet/dotnet-sdk-bin:${SLOT}
 "
