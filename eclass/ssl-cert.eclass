@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ssl-cert.eclass
@@ -21,8 +21,6 @@ esac
 
 if [[ -z ${_SSL_CERT_ECLASS} ]]; then
 _SSL_CERT_ECLASS=1
-
-inherit edo
 
 # @ECLASS_VARIABLE: SSL_CERT_MANDATORY
 # @PRE_INHERIT
@@ -130,9 +128,9 @@ get_base() {
 #
 gen_key() {
 	local base=$(get_base "$1")
-	nonfatal edob -m "Generating ${SSL_BITS} bit RSA key${1:+ for CA}" \
-		openssl genrsa -out "${base}.key" "${SSL_BITS}"
-	return $?
+	ebegin "Generating ${SSL_BITS} bit RSA key${1:+ for CA}"
+	openssl genrsa -out "${base}.key" "${SSL_BITS}" &>/dev/null
+	eend $?
 }
 
 # @FUNCTION: gen_csr
@@ -144,10 +142,10 @@ gen_key() {
 #
 gen_csr() {
 	local base=$(get_base "$1")
-	nonfatal edob -m "Generating Certificate Signing Request${1:+ for CA}" \
-		openssl req -config "${SSL_CONF}" -new \
-			-key "${base}.key" -out "${base}.csr"
-	return $?
+	ebegin "Generating Certificate Signing Request${1:+ for CA}"
+	openssl req -config "${SSL_CONF}" -new \
+		-key "${base}.key" -out "${base}.csr" &>/dev/null
+	eend $?
 }
 
 # @FUNCTION: gen_crt
@@ -162,20 +160,20 @@ gen_csr() {
 gen_crt() {
 	local base=$(get_base "$1")
 	if [ "${1}" ] ; then
-		nonfatal edob -m "Generating self-signed X.509 Certificate for CA" \
-			openssl x509 -extfile "${SSL_CONF}" \
-				-${SSL_MD} \
-				-days ${SSL_DAYS} -req -signkey "${base}.key" \
-				-in "${base}.csr" -out "${base}.crt"
+		ebegin "Generating self-signed X.509 Certificate for CA"
+		openssl x509 -extfile "${SSL_CONF}" \
+			-${SSL_MD} \
+			-days ${SSL_DAYS} -req -signkey "${base}.key" \
+			-in "${base}.csr" -out "${base}.crt" &>/dev/null
 	else
 		local ca=$(get_base 1)
-		nonfatal edob -m "Generating authority-signed X.509 Certificate" \
-			openssl x509 -extfile "${SSL_CONF}" \
-				-days ${SSL_DAYS} -req -CAserial "${SSL_SERIAL}" \
-				-CAkey "${ca}.key" -CA "${ca}.crt" -${SSL_MD} \
-				-in "${base}.csr" -out "${base}.crt"
+		ebegin "Generating authority-signed X.509 Certificate"
+		openssl x509 -extfile "${SSL_CONF}" \
+			-days ${SSL_DAYS} -req -CAserial "${SSL_SERIAL}" \
+			-CAkey "${ca}.key" -CA "${ca}.crt" -${SSL_MD} \
+			-in "${base}.csr" -out "${base}.crt" &>/dev/null
 	fi
-	return $?
+	eend $?
 }
 
 # @FUNCTION: gen_pem
