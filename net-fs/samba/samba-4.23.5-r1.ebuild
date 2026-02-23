@@ -70,7 +70,7 @@ COMMON_DEPEND="
 	dev-libs/popt[${MULTILIB_USEDEP}]
 	dev-perl/Parse-Yapp
 	>=net-libs/gnutls-3.4.7:=[${MULTILIB_USEDEP}]
-	>=net-libs/ngtcp2-1.12.0[${MULTILIB_USEDEP}]
+	>=net-libs/ngtcp2-1.12.0[gnutls,${MULTILIB_USEDEP}]
 	>=sys-fs/e2fsprogs-1.46.4-r51[${MULTILIB_USEDEP}]
 	!sys-libs/ldb
 	sys-libs/libcap[${MULTILIB_USEDEP}]
