@@ -4,6 +4,11 @@
 	<maintainer type="project">
 		<email>base-system@gentoo.org</email>
 	</maintainer>
+	<use>
+		<flag name="tools">
+		Install sha*sum tools to /usr/libexec/leancrypto/.
+		</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">smuellerDD/leancrypto</remote-id>
 	</upstream>
