@@ -6,6 +6,7 @@
 		<name>Gentoo TeX Project</name>
 	</maintainer>
 	<use>
+		<flag name="qtermwidget">Enable terminal pane using <pkg>x11-libs/qtermwidget</pkg></flag>
 		<flag name="video">Enable video player in pdf files</flag>
 	</use>
 	<upstream>

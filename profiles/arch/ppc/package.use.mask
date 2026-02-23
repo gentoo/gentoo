@@ -1,6 +1,10 @@
 # Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Nicolas PARLANT <nicolas.parlant@parhuet.fr> (2026-02-23)
+# x11-libs/qtermwidget is not keyworded here
+app-office/texstudio qtermwidget
+
 # Jaco Kroon <jaco@uls.co.za> (2026-02-06)
 # Requires sys-auth/libyubikey
 net-dialup/freeradius yubikey
