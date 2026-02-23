@@ -1,0 +1,160 @@
+https://bugs.gentoo.org/970478
+https://github.com/rockowitz/ddcutil/commit/a4bc6aef24a2f91f5e5daeb6e1207637ecd55424
+From: Sanford Rockowitz <rockowitz@minsoft.com>
+Date: Sat, 31 Jan 2026 07:13:26 -0500
+Subject: [PATCH] fopen_mkdir(): fix for glibc 2.43
+
+--- a/src/util/file_util.c
++++ b/src/util/file_util.c
+@@ -921,13 +921,13 @@ fopen_mkdir(
+ 
+    int rc = 0;
+    *fp_loc = NULL;
+-   char *sep = strrchr(path, '/');
++   char *path0 = g_strdup(path);
++   char *sep = strrchr(path0, '/');
+    if (sep) {
+-      char *path0 = g_strdup(path);
+-      path0[ sep - path ] = 0;
++      path0[ sep - path0 ] = 0;
+       rc = rek_mkdir(path0, ferr);
+-      free(path0);
+    }
++   g_free(path0);
+    if (!rc) {
+       *fp_loc = fopen(path,mode);
+       if (!*fp_loc) {
+
+https://github.com/rockowitz/ddcutil/commit/a587492200666c6da1bd63dcb35c466a914175bf
+From: Sanford Rockowitz <rockowitz@minsoft.com>
+Date: Thu, 29 Jan 2026 01:35:09 -0500
+Subject: [PATCH] rek_mkdir(): build with glib 2.43
+
+Alternative to change made in pull request #578 that
+preserves const-ness of function arg
+--- a/src/util/file_util.c
++++ b/src/util/file_util.c
+@@ -2,7 +2,7 @@
+  *  File utility functions
+  */
+ 
+-// Copyright (C) 2014-2024 Sanford Rockowitz <rockowitz@minsoft.com>
++// Copyright (C) 2014-2026 Sanford Rockowitz <rockowitz@minsoft.com>
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+ /** \cond */
+@@ -890,24 +890,26 @@ int rek_mkdir(
+    if (debug)
+       printf("(%s) Starting, path=%s\n", __func__, path);
+ 
++   char * path0 = strdup(path);  // for building on glib 2.43
+    int result = 0;
+-   if (!directory_exists(path)) {
+-      char *sep = strrchr(path, '/');
++   if (!directory_exists(path0)) {
++      char *sep = strrchr(path0, '/');
+       if (sep) {
+          *sep = 0;
+-         result = rek_mkdir(path, ferr);  // create parent dir
++         result = rek_mkdir(path0, ferr);  // create parent dir
+          *sep = '/';
+       }
+       if (result == 0) {
+          if (debug)
+-            printf("(%s) Creating path %s\n", __func__, path);
+-         if ( mkdir(path, 0777) < 0) {
++            printf("(%s) Creating path %s\n", __func__, path0);
++         if ( mkdir(path0, 0777) < 0) {
+             result = -errno;
+             if (ferr)
+-               f0printf(ferr, "Unable to create '%s', %s\n", path, strerror(errno));
++               f0printf(ferr, "Unable to create '%s', %s\n", path0, strerror(errno));
+          }
+       }
+    }
++   free(path0);
+ 
+    if (debug)
+       printf("(%s) Done. returning %d\n", __func__, result);
+
+https://github.com/rockowitz/ddcutil/commit/1b1ee00391330db41088db07d1010bd1c20435bb
+From: Sanford Rockowitz <rockowitz@minsoft.com>
+Date: Wed, 28 Jan 2026 19:40:45 -0500
+Subject: [PATCH] extract_number_after_hyphen(): fix build with glibc 2.43
+
+per pull request #578 ReillyBrogan
+--- a/src/util/i2c_util.c
++++ b/src/util/i2c_util.c
+@@ -3,7 +3,7 @@
+  * I2C utility functions
+  */
+ 
+-// Copyright (C) 2014-2023 Sanford Rockowitz <rockowitz@minsoft.com>
++// Copyright (C) 2014-2026 Sanford Rockowitz <rockowitz@minsoft.com>
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+ #include "config.h"
+@@ -60,7 +60,7 @@ int extract_number_after_hyphen(const char * name) {
+    int result = -1;
+ 
+    if (name) {
+-      char * hyphen = strchr(name, '-');
++      const char * hyphen = strchr(name, '-');
+       if (hyphen && *(hyphen+1) != '\0') {
+          int ival;
+          if ( str_to_int(hyphen+1, &ival, 10) )
+
+https://github.com/rockowitz/ddcutil/commit/b7514d6da709d0c950f8b377aef6e6789dfb1d82
+From: Sanford Rockowitz <rockowitz@minsoft.com>
+Date: Wed, 28 Jan 2026 19:44:29 -0500
+Subject: [PATCH] predicate_exact_D-00hh(): fix build with glibc 2.43
+
+per pull request #578 ReillyBrogan
+--- a/src/util/sysfs_filter_functions.c
++++ b/src/util/sysfs_filter_functions.c
+@@ -1,6 +1,6 @@
+ /** @file sysfs_filter_functions.c */
+ 
+-// Copyright (C) 2021-2025 Sanford Rockowitz <rockowitz@minsoft.com>
++// Copyright (C) 2021-2026 Sanford Rockowitz <rockowitz@minsoft.com>
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+ #include <assert.h>
+@@ -183,7 +183,7 @@ bool predicate_exact_D_00hh(const char * value, const char * sbusno) {
+    bool b1 = compile_and_eval_regex(D_00hh_pattern, value);
+    if (b1) {
+       // our utilities don't support extracting match groups
+-      char * hypos = strchr(value, '-'); // must succeed because of regex match
++      const char * hypos = strchr(value, '-'); // must succeed because of regex match
+       char * s = substr(value, 0, (hypos-value));
+       b1 = streq(s, sbusno);
+       free(s);
+
+https://github.com/rockowitz/ddcutil/commit/23d993829e8107ff9bcf0501a981910f972ba2ab
+From: Sanford Rockowitz <rockowitz@minsoft.com>
+Date: Thu, 29 Jan 2026 01:26:44 -0500
+Subject: [PATCH] hiddev_name_to_number(): build on glib 2.43
+
+Alternative coding of pull request #578,
+retains const-ness of function argument
+--- a/src/base/displays.c
++++ b/src/base/displays.c
+@@ -1625,8 +1625,8 @@ void free_display_handle(Display_Handle * dh) {
+  */
+ int hiddev_name_to_number(const char * hiddev_name) {
+    assert(hiddev_name);
+-   char * p = strstr(hiddev_name, "hiddev");
+-
++   char * hiddev_name_copy = strdup(hiddev_name);  // for glib 2.43
++   char * p = strstr(hiddev_name_copy, "hiddev");
+    int hiddev_number = -1;
+    if (p) {
+       p = p + strlen("hiddev");
+@@ -1638,6 +1638,7 @@ int hiddev_name_to_number(const char * hiddev_name) {
+             hiddev_number = -1;   // not necessary, but makes coverity happy
+       }
+    }
++   free(hiddev_name_copy);
+    // DBGMSG("hiddev_name = |%s|, returning: %d", hiddev_name, hiddev_number);
+    return hiddev_number;
+ }
