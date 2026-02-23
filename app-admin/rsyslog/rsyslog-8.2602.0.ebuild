@@ -129,6 +129,10 @@ src_prepare() {
 		tests/mmkubernetes-cache-expir*.sh \
 		|| die "Failed to disable known test failure mmkubernetes-cache-expir*.sh"
 
+	# The "#version" is a template variable.
+	# Bug: https://bugs.gentoo.org/970337
+	sed -i doc/source/conf.py -e "s|^#version.*|version = \"${PV}\"|g" || die
+
 	local -a bad_tests=(
 		omfwd-lb-1target-retry-1_byte_buf-TargetFail
 		omprog-close-unresponsive
