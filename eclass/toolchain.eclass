@@ -1427,6 +1427,10 @@ toolchain_src_configure() {
 		;;
 	esac
 
+	if in_iuse ada ; then
+		confgcc+=( $(use_enable ada libada) )
+	fi
+
 	### Cross-compiler option
 	#
 	# Note that 'newlib' here doesn't have to mean genuine newlib.
@@ -1779,10 +1783,6 @@ toolchain_src_configure() {
 		else
 			confgcc+=( --disable-libssp )
 		fi
-	fi
-
-	if in_iuse ada ; then
-		confgcc+=( $(use_enable ada libada) )
 	fi
 
 	if in_iuse cet ; then
