@@ -5,10 +5,10 @@
 # Fails to build without. Bug #968803
 =sci-libs/opencascade-7.8* opengl
 
-# Michael Orlitzky <mjo@gentoo.org> (2025-12-22)
-# 2.50.4 fails to non-jumbo build.
-=net-libs/webkit-gtk-2.50.4-r410 jumbo-build
-=net-libs/webkit-gtk-2.50.4-r600 jumbo-build
+# Michael Orlitzky <mjo@gentoo.org> (2025-02-22)
+# 2.50.5 fails to non-jumbo build (bug 970412).
+=net-libs/webkit-gtk-2.50.5-r410 jumbo-build
+=net-libs/webkit-gtk-2.50.5-r600 jumbo-build
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-06-22)
 # This is currently more footgun than real option. Bugs #958638, #968227
