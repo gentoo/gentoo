@@ -15,6 +15,10 @@
 		<flag name="pkcs11">
 			Add support for PKCS#11 through <pkg>app-crypt/p11-kit</pkg>
 		</flag>
+		<flag name="post-quantum">
+			Support post-quantum cryptography (PQC) using
+			<pkg>dev-libs/leancrypto</pkg>.
+		</flag>
 		<flag name="tools">
 			Build cli tools such as gnutls-cli, certtool and oscptool
 		</flag>
