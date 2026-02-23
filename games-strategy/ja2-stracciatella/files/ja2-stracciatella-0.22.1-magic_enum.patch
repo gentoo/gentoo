@@ -1,0 +1,154 @@
+https://github.com/ja2-stracciatella/ja2-stracciatella/pull/2357
+From: Matt Jolly <kangie@gentoo.org>
+Date: Mon, 23 Feb 2026 10:24:01 +1000
+Subject: [PATCH] magic_enum: 0.9.7 changes
+
+Upstream, in 2024, magic_enum changed the include path.
+
+<= 0.9.6: /usr/include/magic_enum.hpp
+>= 0.9.7: /usr/include/magic_enum/magic_enum.hpp
+
+This means that any downstreams that want to use a recent magic_enum
+without using a vendored copy will be unable to build the software.
+
+It would be trivial to work around that downstream using
+`MAGICENUM_INCLUDE_DIR`, however looking at the package we can do
+better; this commit:
+
+- bumps the vendored magic_enum to 0.9.7
+- uses sha256 instead of md5 to validate the download
+- replaces hand-rolled header detection logic with `find_package`
+- adds a fallback for meson builds which only include pkg-config
+- drops `MAGICENUM_INCLUDE_DIR`
+- updates `#include` directives for consistency.
+
+Bug: https://bugs.gentoo.org/970483
+Signed-off-by: Matt Jolly <kangie@gentoo.org>
+
+wip: ci-fix?
+Signed-off-by: Matt Jolly <kangie@gentoo.org>
+--- a/dependencies/lib-magic_enum/CMakeLists.txt
++++ b/dependencies/lib-magic_enum/CMakeLists.txt
+@@ -8,42 +8,50 @@ if(NOT WITH_MAGICENUM)
+     return()
+ endif()
+ 
+-function(verify_header test_dir)
+-    include(CheckIncludeFileCXX)
+-    set(CMAKE_REQUIRED_INCLUDES "${test_dir}")
+-    unset(MAGICENUM_FOUND CACHE)
+-    CHECK_INCLUDE_FILE_CXX("magic_enum.hpp" MAGICENUM_FOUND)
+-    if (NOT MAGICENUM_FOUND)
+-        message(FATAL_ERROR "magic_enum.hpp not found")
+-    endif()
+-    target_include_directories(${JA2_BINARY} SYSTEM PRIVATE "${test_dir}")
+-endfunction()
+-
+ if (NOT LOCAL_MAGICENUM_LIB)
+     message(STATUS "Using system magic_enum")
+ 
+-    if (NOT DEFINED MAGICENUM_INCLUDE_DIR)
+-        message(FATAL_ERROR "MAGICENUM_INCLUDE_DIR var not set")
++    # Try CMake config first (standard install via CMake)
++    find_package(magic_enum 0.9.7 CONFIG QUIET)
++
++    if(NOT magic_enum_FOUND)
++        # Fallback to pkg-config (e.g., Meson installs)
++        find_package(PkgConfig REQUIRED)
++        pkg_check_modules(magic_enum REQUIRED IMPORTED_TARGET magic_enum>=0.9.7)
++        target_link_libraries(${JA2_BINARY} PRIVATE PkgConfig::magic_enum)
++        return()
+     endif()
+ 
+-    verify_header("${MAGICENUM_INCLUDE_DIR}")
++    target_link_libraries(${JA2_BINARY} PRIVATE magic_enum::magic_enum)
+     return()
+ endif()
+ 
+ message(STATUS "<magic_enum>")
+ 
+ # create getter
+-set(SRC_DIR "${CMAKE_BINARY_DIR}/lib-magic_enum/src")
++set(GETTER_DIR "${CMAKE_BINARY_DIR}/dependencies/lib-magic_enum/getter")
++set(SRC_DIR "${GETTER_DIR}/get-magic_enum-prefix/src/get-magic_enum")
+ configure_file(
+     "${CMAKE_CURRENT_SOURCE_DIR}/getter/CMakeLists.txt.in"
+-    "${CMAKE_CURRENT_BINARY_DIR}/getter/CMakeLists.txt"
++    "${GETTER_DIR}/CMakeLists.txt"
+     @ONLY
+ )
+ 
+ # execute getter
+-execute_process(COMMAND ${CMAKE_COMMAND} . "-G${CMAKE_GENERATOR}" "-DCMAKE_SYSTEM_VERSION=${CMAKE_SYSTEM_VERSION}" WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/getter")
+-execute_process(COMMAND ${CMAKE_COMMAND} --build "${CMAKE_CURRENT_BINARY_DIR}/getter")
++execute_process(COMMAND ${CMAKE_COMMAND} . "-G${CMAKE_GENERATOR}" "-DCMAKE_SYSTEM_VERSION=${CMAKE_SYSTEM_VERSION}" WORKING_DIRECTORY "${GETTER_DIR}" RESULT_VARIABLE result)
++if(NOT result EQUAL 0)
++    message(FATAL_ERROR "Failed to configure magic_enum getter: ${result}")
++endif()
++
++execute_process(COMMAND ${CMAKE_COMMAND} --build "${GETTER_DIR}" RESULT_VARIABLE result)
++if(NOT result EQUAL 0)
++    message(FATAL_ERROR "Failed to build magic_enum getter: ${result}")
++endif()
++
++if(NOT EXISTS "${SRC_DIR}/include/magic_enum/magic_enum.hpp")
++    message(FATAL_ERROR "magic_enum headers not found at ${SRC_DIR}/include/magic_enum/magic_enum.hpp after extraction")
++endif()
+ 
+-verify_header("${SRC_DIR}/include")
++target_include_directories(${JA2_BINARY} SYSTEM PRIVATE "${SRC_DIR}/include")
+ 
+ message(STATUS "</magic_enum>")
+--- a/dependencies/lib-magic_enum/getter/CMakeLists.txt.in
++++ b/dependencies/lib-magic_enum/getter/CMakeLists.txt.in
+@@ -6,20 +6,16 @@
+ #  * SRC_DIR - where to extract the archive
+ #  * BUILD_DIR - where the integrated sources are built
+ 
+-cmake_minimum_required(VERSION 3.18...3.25)
++cmake_minimum_required(VERSION 3.18...3.31)
+ 
+ project(getter NONE)
+ 
+ include(ExternalProject)
+ externalproject_add(get-magic_enum
+-    URL "https://github.com/Neargye/magic_enum/archive/v0.8.2.zip"
+-    URL_MD5 "3e684af4d7073c2d86f6ecf2f78b4120"
+-    CMAKE_ARGS
+-        "-G@CMAKE_GENERATOR@"
+-        SOURCE_DIR          "@SRC_DIR@"
+-        BINARY_DIR          "@BUILD_DIR@"
+-        CONFIGURE_COMMAND   ""
+-        BUILD_COMMAND       ""
+-        INSTALL_COMMAND     ""
+-        TEST_COMMAND        ""
++    URL "https://github.com/Neargye/magic_enum/archive/v0.9.7.zip"
++    URL_HASH SHA256=e293afdaf4d5918bc145903bccff06d28b3ed437f1ac8414ace9e8a769a9e470
++    CONFIGURE_COMMAND   ""
++    BUILD_COMMAND       ""
++    INSTALL_COMMAND     ""
++    TEST_COMMAND        ""
+ )
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -25,7 +25,6 @@ target_include_directories(${JA2_BINARY} SYSTEM PRIVATE
+     ${SOL_INCLUDE_DIR}
+     ${LUA_INCLUDE_DIRS}
+     ${MINIAUDIO_INCLUDE_DIRS}
+-    ${MAGICENUM_INCLUDE_DIR}
+ )
+ 
+ add_subdirectory(launcher)
+--- a/src/externalized/scripting/EnumCodeGen.h
++++ b/src/externalized/scripting/EnumCodeGen.h
+@@ -1,7 +1,7 @@
+ #pragma once
+ 
+ #ifndef NO_MAGICENUM_LIB
+-#include <magic_enum.hpp>
++#include <magic_enum/magic_enum.hpp>
+ #ifdef MAGIC_ENUM_SUPPORTED
+ #ifdef MAGIC_ENUM_SUPPORTED_ALIASES
+ #define HAS_ENUMGEN_SUPPORT (1)
+-- 
+2.52.0
