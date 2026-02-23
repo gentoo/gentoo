@@ -6,7 +6,7 @@ EAPI=8
 inherit flag-o-matic toolchain-funcs prefix
 
 DESCRIPTION="Mail delivery agent/filter"
-HOMEPAGE="https://www.procmail.org/"
+HOMEPAGE="https://github.com/BuGlessRB/procmail/"
 SRC_URI="https://github.com/BuGlessRB/procmail/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="|| ( Artistic GPL-2 )"
