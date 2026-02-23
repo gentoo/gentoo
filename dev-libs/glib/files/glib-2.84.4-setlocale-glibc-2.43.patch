@@ -1,0 +1,78 @@
+https://bugs.gentoo.org/969959
+https://gitlab.gnome.org/GNOME/glib/-/merge_requests/5035
+
+From 7c837a520f51db74e482bc8196ed5ff40e432307 Mon Sep 17 00:00:00 2001
+From: Philip Withnall <pwithnall@gnome.org>
+Date: Mon, 23 Feb 2026 12:30:08 +0000
+Subject: [PATCH] gdatetime: Fix comparison against cached LC_TIME value
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The string pointer returned by `setlocale (LC_TIME, NULL)` may change if
+other code calls `setlocale()` again. But because internally glibc
+implements it using `strdup()`, the pointer value itself may actually
+stay the same even if the string contents change.
+
+This started happening more commonly in glibc 2.43, due to an internal
+`malloc()` change which happened to trigger this latent bug.
+
+In the situations where this happened, it resulted in an outdated cached
+era value being used.
+
+Fix it by taking a copy of the `LC_TIME` string. Unfortunately this
+means a reachable (‘leaked’) static string allocation at the end of the
+process’ life, but tooling should ignore that if we mark it with
+`g_ignore_leak()`.
+
+Debugged by Sam James, Wilco and Douglas R. Reno. See also
+https://sourceware.org/bugzilla/show_bug.cgi?id=33899#c6.
+
+Signed-off-by: Philip Withnall <pwithnall@gnome.org>
+Fixes: #3895
+---
+ glib/gdatetime.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/glib/gdatetime.c b/glib/gdatetime.c
+index c4d7445432..8d67354cf2 100644
+--- a/glib/gdatetime.c
++++ b/glib/gdatetime.c
+@@ -65,6 +65,7 @@
+ #include <langinfo.h>
+ #endif
+ 
++#include "glib-private.h"
+ #include "gatomic.h"
+ #include "gcharset.h"
+ #include "gcharsetprivate.h"
+@@ -2981,14 +2982,14 @@ date_time_lookup_era (GDateTime *datetime,
+ {
+   static GMutex era_mutex;
+   static GPtrArray *static_era_description = NULL;  /* (mutex era_mutex) (element-type GEraDescriptionSegment) */
+-  static const char *static_era_description_locale = NULL;  /* (mutex era_mutex) */
++  static char *static_era_description_locale = NULL;  /* (mutex era_mutex) (owned) */
+   const char *current_lc_time = setlocale (LC_TIME, NULL);
+   GPtrArray *local_era_description;  /* (element-type GEraDescriptionSegment) */
+   GEraDate datetime_date;
+ 
+   g_mutex_lock (&era_mutex);
+ 
+-  if (static_era_description_locale != current_lc_time)
++  if (g_strcmp0 (static_era_description_locale, current_lc_time) != 0)
+     {
+       const char *era_description_str;
+       size_t era_description_str_len;
+@@ -3061,7 +3062,9 @@ date_time_lookup_era (GDateTime *datetime,
+ 
+       g_free (tmp);
+ 
+-      static_era_description_locale = current_lc_time;
++      g_free (static_era_description_locale);
++      static_era_description_locale = g_strdup (current_lc_time);
++      g_ignore_leak (static_era_description_locale);
+     }
+ 
+   if (static_era_description == NULL)
+-- 
+GitLab
