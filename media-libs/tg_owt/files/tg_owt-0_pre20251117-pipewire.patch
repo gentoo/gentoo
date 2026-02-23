@@ -1,0 +1,36 @@
+
+https://bugs.gentoo.org/970416
+https://github.com/desktop-app/tg_owt/commit/d888bc3f79b4aa80333d8903410fa439db5f6696
+
+Subject: [PATCH] Fix building with Pipewire 1.5.81 and later. Resolves #167
+
+---
+ .../desktop_capture/linux/wayland/shared_screencast_stream.cc   | 2 ++
+ src/modules/video_capture/linux/pipewire_session.cc             | 1 +
+ 2 files changed, 3 insertions(+)
+
+diff --git a/src/modules/desktop_capture/linux/wayland/shared_screencast_stream.cc b/src/modules/desktop_capture/linux/wayland/shared_screencast_stream.cc
+index 71ea4d9f5..7ef1a030e 100644
+--- a/src/modules/desktop_capture/linux/wayland/shared_screencast_stream.cc
++++ b/src/modules/desktop_capture/linux/wayland/shared_screencast_stream.cc
+@@ -13,6 +13,8 @@
+ #include <fcntl.h>
+ #include <libdrm/drm_fourcc.h>
+ #include <pipewire/pipewire.h>
++#include <spa/pod/parser.h>
++#include <spa/pod/iter.h>
+ #include <spa/param/video/format-utils.h>
+ #include <sys/mman.h>
+ 
+diff --git a/src/modules/video_capture/linux/pipewire_session.cc b/src/modules/video_capture/linux/pipewire_session.cc
+index d2d8eeaf8..c16d511ba 100644
+--- a/src/modules/video_capture/linux/pipewire_session.cc
++++ b/src/modules/video_capture/linux/pipewire_session.cc
+@@ -15,6 +15,7 @@
+ #include <spa/param/format.h>
+ #include <spa/param/video/raw.h>
+ #include <spa/pod/parser.h>
++#include <spa/pod/iter.h>
+ 
+ #include "common_video/libyuv/include/webrtc_libyuv.h"
+ #include "modules/video_capture/device_info_impl.h"

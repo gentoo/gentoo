@@ -1,4 +1,4 @@
-# Copyright 2020-2025 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -71,6 +71,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/tg_owt-0_pre20250515-fix-gcc16.patch"
 	"${FILESDIR}/tg_owt-0_pre20250515-fix-clang20.patch"
+	"${FILESDIR}/tg_owt-0_pre20251117-pipewire.patch"
 )
 
 src_unpack() {
