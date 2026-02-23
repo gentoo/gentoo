@@ -20,7 +20,7 @@ BDEPEND="
 		llvm-core/clang:${LLVM_SLOT}
 	')
 	spirv? (
-		>=dev-util/spirv-llvm-translator-22:*
+		>=dev-util/spirv-llvm-translator-23:*
 	)
 "
 
