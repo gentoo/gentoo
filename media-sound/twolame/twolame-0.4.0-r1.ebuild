@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit multilib-minimal
+inherit dot-a multilib-minimal
 
 DESCRIPTION="An optimised MPEG Audio Layer 2 (MP2) encoder"
 HOMEPAGE="https://www.twolame.org"
@@ -13,6 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~x64-macos"
 IUSE="+sndfile static-libs test"
+REQUIRED_USE="test? ( sndfile )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="sndfile? ( >=media-libs/libsndfile-1.0.25[${MULTILIB_USEDEP}] )"
@@ -22,11 +23,12 @@ BDEPEND="
 	test? ( dev-lang/perl )
 "
 
-src_prepare() {
-	sed -i -e '/CFLAGS/s:-O3::' configure || die
-	# remove -Werror, bug 493940
-	sed -i -e '/WARNING_CFLAGS/s:-Werror::' configure || die
+PATCHES=(
+	# PR merged
+	"${FILESDIR}"/${P}-fix_C23.patch
+)
 
+src_prepare() {
 	if [[ ${CHOST} == *solaris* ]]; then
 		# libsndfile doesn't like -std=c99 on Solaris
 		sed -i -e '/CFLAGS/s:-std=c99::' configure || die
@@ -39,6 +41,8 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	use static-libs && lto-guarantee-fat
+
 	local myeconfargs=(
 		$(use_enable sndfile)
 		$(use_enable static-libs static)
@@ -48,5 +52,6 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	default
+	use static-libs && strip-lto-bytecode
 	find "${ED}" -type f -name "*.la" -delete || die
 }
