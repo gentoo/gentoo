@@ -5,6 +5,7 @@
 		<email>java@gentoo.org</email>
 	</maintainer>
 	<upstream>
+		<doc>https://jakarta.ee/specifications/xml-binding/</doc>
 		<bugs-to>https://github.com/jakartaee/jaxb-api/issues</bugs-to>
 		<remote-id type="github">jakartaee/jaxb-api</remote-id>
 	</upstream>
