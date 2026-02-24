@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,11 +13,10 @@ if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/dani-garcia/vaultwarden.git"
 else
 	SRC_URI="
-	https://github.com/dani-garcia/vaultwarden/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/rahilarious/gentoo-distfiles/releases/download/${P}/deps.tar.xz -> ${P}-deps.tar.xz
-	https://github.com/rahilarious/gentoo-distfiles/releases/download/${P}/wiki.tar.xz -> ${P}-docs.tar.xz
+	https://github.com/dani-garcia/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/gentoo-crate-dist/${PN}/releases/download/${PV}/${P}-crates.tar.xz -> ${P}-deps.tar.xz
 "
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm64"
 fi
 
 LICENSE="AGPL-3"
@@ -42,9 +41,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+RUST_MIN_VER="1.91.0"
 QA_FLAGS_IGNORED="usr/bin/${PN}"
 QA_PRESTRIPPED="usr/bin/${PN}"
-ECARGO_VENDOR="${WORKDIR}/vendor"
+ECARGO_VENDOR="${WORKDIR}/cargo_home/gentoo"
 
 PATCHES=(
 	"${FILESDIR}"/vaultwarden-envfile-1.34.1.patch
@@ -61,6 +61,8 @@ DOC_CONTENTS="\n
 	Admin endpoint: http://127.0.0.1:8000/admin\n
 	\n
 	MySQL & PostgreSQL users must set DATABASE_URL in config\n
+	\n
+	Please find the documentation at https://github.com/dani-garcia/vaultwarden/wiki\n
 "
 
 pkg_setup() {
@@ -122,13 +124,12 @@ src_configure() {
 src_compile() {
 	# https://github.com/dani-garcia/vaultwarden/blob/main/build.rs
 	[[ ${PV} != 9999* ]] && export VW_VERSION="${PV}"
-	cargo_src_compile
+	cargo_src_compile --offline
 }
 
 src_install() {
 	dobin "$(cargo_target_dir)/${PN}"
-	systemd_newunit "${FILESDIR}"/vaultwarden-1.33.2.service \
-					"${PN}".service
+	systemd_newunit "${FILESDIR}"/vaultwarden-1.33.2.service "${PN}".service
 	if [[ -f "${T}/${PN}-db.conf" ]]; then
 		local UNIT_DIR="$(systemd_get_systemunitdir)"
 		insinto "${UNIT_DIR#${EPREFIX}}/${PN}".service.d
@@ -147,7 +148,6 @@ src_install() {
 
 	readme.gentoo_create_doc
 	einstalldocs
-	dodoc -r ../"${PN}".wiki/*
 }
 
 pkg_postinst() {
