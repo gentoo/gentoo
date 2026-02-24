@@ -29,7 +29,7 @@ fi
 
 LICENSE="|| ( GPL-2 BSD-2 )"
 SLOT="0/1"
-IUSE="+asm test tools"
+IUSE="asm test tools"
 RESTRICT="!test? ( test )"
 
 PATCHES=(
