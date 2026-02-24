@@ -1,0 +1,38 @@
+From 6d79bb7309352c4f77980ed1c68c984c074745f1 Mon Sep 17 00:00:00 2001
+From: Akseli Lahtinen <akselmo@akselmo.dev>
+Date: Wed, 18 Feb 2026 15:46:14 +0200
+Subject: [PATCH] Menu: make sure implicitWidth/height is never 0
+
+Make sure to always have at least 1 in implicitWidth and implicitHeight,
+so that they get updated properly.
+
+BUG: 516151
+---
+ org.kde.desktop/Menu.qml | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/org.kde.desktop/Menu.qml b/org.kde.desktop/Menu.qml
+index 3b3caeef..5070fde4 100644
+--- a/org.kde.desktop/Menu.qml
++++ b/org.kde.desktop/Menu.qml
+@@ -40,14 +40,14 @@ T.Menu {
+         property bool hasCheckables: false
+         property bool hasIcons: false
+ 
+-        implicitWidth: contentItem.children
+-            .reduce((maxWidth, child) => Math.max(maxWidth, child.implicitWidth), 0)
++        // Make sure the value is never 0.
++        implicitWidth: Math.max(1, contentWidth, contentItem.children.reduce((maxWidth, child) => Math.max(maxWidth, child.implicitWidth), 0))
+         // Some non-zero value, so the whole menu does not get stuck zero
+         // sized. Otherwise ListView just refuses to update implicitHeight -- just zero.
+         // `contentHeight` reports a wrong estimated height when all items are invisible.
+         // Use visibleChildren instead, and set the startup value to 1, so the space available
+         // is just slightly more than needed, avoiding random scrollbars.
+-        implicitHeight: Math.min(contentHeight, contentItem.visibleChildren.reduce((acc, item) => (acc += item.implicitHeight), 1))
++        implicitHeight: Math.max(1, contentHeight, contentItem.visibleChildren.reduce((acc, item) => (acc += item.implicitHeight), 1))
+ 
+         model: control.contentModel
+ 
+-- 
+GitLab
+
