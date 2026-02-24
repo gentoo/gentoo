@@ -1,0 +1,11 @@
+--- a/IGC/CMakeLists.txt
++++ b/IGC/CMakeLists.txt
+@@ -800,7 +800,7 @@
+         ExceptionsEnabled
+         MultiProcessorCompilation
+         DeadCodeEliminate
+-        TreatWarnAsErrorEnabled
++        TreatWarnAsErrorDisabled
+   )
+ 
+   if(IGC_OPTION__UNIVERSAL_DRIVER)
