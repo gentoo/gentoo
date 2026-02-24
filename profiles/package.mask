@@ -39,6 +39,7 @@
 # Michael Orlitzky <mjo@gentoo.org> (2026-02-24)
 # Haskell package (hard to maintain) that never evolved. Easy to
 # replace with a SQL query. Removal on or after 2026-03-24.
+net-mail/list-remote-forwards
 net-mail/mailbox-count
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-02-22)
