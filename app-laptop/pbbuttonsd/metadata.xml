@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="ibam">Enable support for Intelligent Battery Monitoring</flag>
-		<flag name="macbook">Enable support for the Macbook and Macbook Pro</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">pbbuttons</remote-id>
