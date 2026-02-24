@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/ckb-next/ckb-next.git"
 else
 	SRC_URI="https://github.com/ckb-next/ckb-next/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64"
+	KEYWORDS="~amd64"
 	S="${WORKDIR}/${PN}-next-${PV}"
 fi
 
@@ -22,7 +22,7 @@ SLOT="0"
 IUSE="systemd"
 
 RDEPEND="
-	dev-libs/quazip:0=[qt6(-)]
+	>=dev-libs/quazip-1.3-r2:=[qt6(+)]
 	dev-qt/qtbase:6[dbus,gui,network,opengl,widgets]
 	|| (
 		media-libs/libpulse

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,7 @@ SLOT="0"
 IUSE="systemd"
 
 RDEPEND="
-	dev-libs/quazip:0=[qt6(-)]
+	>=dev-libs/quazip-1.3-r2:=[qt6(+)]
 	dev-qt/qtbase:6[dbus,gui,network,opengl,widgets]
 	|| (
 		media-libs/libpulse
