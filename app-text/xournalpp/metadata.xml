@@ -5,6 +5,9 @@
 		<email>dilfridge@gentoo.org</email>
 	</maintainer>
 	<upstream>
+		<bugs-to>https://github.com/xournalpp/xournalpp/issues</bugs-to>
+		<changelog>https://github.com/xournalpp/xournalpp/releases</changelog>
+		<doc>https://github.com/xournalpp/xournalpp/wiki</doc>
 		<remote-id type="github">xournalpp/xournalpp</remote-id>
 	</upstream>
 </pkgmetadata>
