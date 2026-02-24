@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>t@laumann.xyz</email>
+    <name>Thomas Bracht Laumann Jespersen</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    AGitjo extends Magit with a new menu for AGit-Flow operations, to make them
+    more convenient for users.  The AGit workflow enables users to create and
+    edit pull requests using just the "git push" command.  This package is
+    intended specifically for use with Forgejo-based (e.g. Codeberg)
+    repositories.
+  </longdescription>
+  <stabilize-allarches/>
+  <upstream>
+    <remote-id type="codeberg">halvin/agitjo</remote-id>
+  </upstream>
+</pkgmetadata>
