@@ -1,0 +1,12 @@
+--- a/scripts/spatch.bash_completion	2026-02-23 08:51:22.464766457 +0100
++++ b/scripts/spatch.bash_completion	2026-02-23 08:52:12.068091925 +0100
+@@ -88,9 +88,6 @@
+ complete -F _spatch -o bashdefault -o default -o nospace spatch \
+  || complete -F _spatch -o default -o nospace spatch
+ 
+-complete -F _spatch -o bashdefault -o default -o nospace spatch.opt \
+- || complete -F _spatch -o default -o nospace spatch.opt
+-
+ # Local variables:
+ # mode: shell-script
+ # sh-basic-offset: 4

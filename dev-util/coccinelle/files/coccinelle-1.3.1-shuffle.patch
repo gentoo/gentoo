@@ -1,0 +1,12 @@
+--- a/Makefile	2026-02-23 08:55:19.138708352 +0100
++++ b/Makefile	2026-02-23 08:56:24.646959570 +0100
+@@ -300,7 +300,8 @@
+ byt-only byte-only byte : $(foreach tool,$(TOOLS),$(PREFIX_$(tool))$(tool))
+ 
+ .PHONY: install
+-install: install-spatch install-spgen install-python install-bash install-man \
++install: install-spatch
++	$(MAKE) install-spgen install-python install-bash install-man \
+ 	install-metainfo
+ 
+ .PHONY: install-bash
