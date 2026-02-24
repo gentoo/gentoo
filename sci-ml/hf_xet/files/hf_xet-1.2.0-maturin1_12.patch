@@ -1,0 +1,8 @@
+--- a/pyproject.toml	2026-02-24 20:00:53.866213504 +0100
++++ b/pyproject.toml	2026-02-24 20:02:09.156309740 +0100
+@@ -51,5 +51,4 @@
+ Repository = "https://github.com/huggingface/xet-core.git"
+ 
+ [tool.maturin]
+-python-source = "python"
+ features = ["pyo3/extension-module"]
