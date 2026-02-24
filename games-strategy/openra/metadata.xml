@@ -9,6 +9,11 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
+	<longdescription>
+		Open Source real-time strategy game engine for early Westwood games
+		such as Command and Conquer: Tiberian Dawn, Command and Conquer:
+		Red Alert, and Dune 2000 written in C# using SDL and OpenGL.
+	</longdescription>
 	<upstream>
 		<changelog>https://www.openra.net/news/</changelog>
 		<doc lang="en">https://github.com/OpenRA/OpenRA/wiki</doc>
