@@ -24,7 +24,7 @@
 		<flag name="lens-distortion">Enable lens distortion estimator plugin</flag>
 		<flag name="libcxx">Use external libraries for STL features not available in libc++</flag>
 		<flag name="media">Enable sound and video support</flag>
-		<flag name="scripting">Enable JS scripting via <pkg>dev-qt/qtscript</pkg> in Qt5 or using Qml via <pkg>dev-qt/qtdeclarative</pkg> in Qt6</flag>
+		<flag name="scripting">Enable JS scripting using Qml via <pkg>dev-qt/qtdeclarative</pkg></flag>
 		<flag name="show-my-sky">Enable a better atmosphere model via <pkg>sci-astronomy/calcmysky</pkg></flag>
 		<flag name="stars">Install extra star catalogs</flag>
 		<flag name="telescope">Enable telescope control via <pkg>sci-libs/indilib</pkg></flag>
