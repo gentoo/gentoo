@@ -50,7 +50,7 @@ distutils_enable_tests pytest
 
 src_prepare() {
 	# upstream lower bounds are meaningless
-	sed -i -e 's:>=[0-9.]*::' pyproject.toml || die
+	sed -i -e 's:>=[0-9.post]*::' pyproject.toml || die
 	distutils-r1_src_prepare
 }
 
