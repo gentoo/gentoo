@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic linux-info meson systemd xdg
+inherit eapi9-ver flag-o-matic linux-info meson systemd xdg
 
 DESCRIPTION="The Music Player Daemon (mpd)"
 HOMEPAGE="https://www.musicpd.org https://github.com/MusicPlayerDaemon/MPD"
@@ -296,7 +296,6 @@ src_install() {
 	# When running MPD as system service, better switch to the user we provide
 	sed -i \
 		-e 's:^#user.*$:user "mpd":' \
-		-e 's:^#group.*$:group "audio":' \
 		"${ED}/etc/mpd.conf" || die
 
 	if ! use systemd; then
@@ -311,7 +310,7 @@ src_install() {
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/${PN}-0.23.15.logrotate" "${PN}"
 
-	newinitd "${FILESDIR}/${PN}-0.24.2.init" "${PN}"
+	newinitd "${FILESDIR}/${PN}-0.24.8.init" "${PN}"
 
 	keepdir /var/lib/mpd
 	keepdir /var/lib/mpd/music
@@ -322,4 +321,15 @@ src_install() {
 
 	fowners mpd:audio -R /var/lib/mpd
 	fowners mpd:audio -R /var/log/mpd
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+
+	if ver_replacing -lt 0.24.8-r1; then
+		ewarn "The 'group' parameter is no longer used by default, because it"
+		ewarn "overrides the group(s) defined in the user database."
+		ewarn "Since the user 'mpd' is already part of the 'audio' group, please"
+		ewarn "consider removing 'group' parameter in ${EROOT}/etc/mpd.conf ."
+	fi
 }
