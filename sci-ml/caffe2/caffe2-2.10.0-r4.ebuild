@@ -135,7 +135,7 @@ DEPEND="
 	dev-libs/psimd
 	sci-ml/FP16
 	$(python_gen_cond_dep '
-		dev-python/pybind11[${PYTHON_USEDEP}]
+		<dev-python/pybind11-3.0.2[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/typing-extensions[${PYTHON_USEDEP}]
 	')
