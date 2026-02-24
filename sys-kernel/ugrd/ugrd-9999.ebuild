@@ -18,6 +18,9 @@ PROPERTIES="test_privileged"
 
 RDEPEND="
 	app-misc/pax-utils
+	sys-apps/coreutils
+	sys-apps/kmod
+	sys-apps/util-linux
 	sys-devel/bc
 	>=dev-python/zenlib-9999[${PYTHON_USEDEP}]
 	>=dev-python/pycpio-9999[${PYTHON_USEDEP}]
