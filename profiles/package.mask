@@ -36,6 +36,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2026-02-25)
+# This is an eviscerated version. Several core commands no longer
+# work, notably C-x 2 (split-current-window), M-x describe-bindings
+# and M-? (help). Furthermore, it adds an unconditional dependency
+# on hunspell, hardcoding the American English dictionary.
+# Masking this version for now because it seems inferior to the
+# previous 20180719 snapshot. Bug #970594.
+~app-editors/uemacs-pk-4.0.15_p20260224
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-02-24)
 # Phonon is effectively dead upstream, its only remaining backend depends
 # on VLC-3. Bug #935797  Removal on 2026-03-26.
