@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,7 +34,7 @@ REQUIRED_USE="
 
 DEPEND="
 	media-libs/libsamplerate
-	examples? ( media-libs/libsdl2[sound,video] )
+	examples? ( media-libs/libsdl3 )
 	jgmodule? ( media-libs/jg:1= )
 "
 RDEPEND="
