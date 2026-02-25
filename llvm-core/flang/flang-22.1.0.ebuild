@@ -11,7 +11,8 @@ HOMEPAGE="https://flang.llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions"
 SLOT="${LLVM_MAJOR}/${LLVM_SOABI}"
-IUSE="+clang +debug test"
+KEYWORDS="~amd64 ~arm64"
+IUSE="+clang debug test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
