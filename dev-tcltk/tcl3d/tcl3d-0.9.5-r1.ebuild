@@ -1,4 +1,4 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,6 +17,7 @@ IUSE="sdl truetype"
 RDEPEND="dev-lang/tcl:0=
 	dev-lang/tk:0=
 	x11-libs/libX11
+	x11-libs/libXrandr
 	virtual/opengl
 	virtual/glu
 	truetype? ( media-libs/ftgl )
