@@ -21,7 +21,10 @@ IUSE="flite qml +speechd"
 RDEPEND="
 	~dev-qt/qtbase-${PV}:6
 	~dev-qt/qtmultimedia-${PV}:6
-	flite? ( app-accessibility/flite )
+	flite? (
+		app-accessibility/flite
+		~dev-qt/qtbase-${PV}:6[concurrent]
+	)
 	qml? ( ~dev-qt/qtdeclarative-${PV}:6 )
 	speechd? ( app-accessibility/speech-dispatcher )
 "
