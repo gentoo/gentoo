@@ -310,17 +310,11 @@ llvm.org_set_globals() {
 				17*)
 					LLVM_MANPAGE_DIST="llvm-17.0.1-manpages.tar.bz2"
 					;;
-				18*)
-					LLVM_MANPAGE_DIST="llvm-18.1.0-manpages.tar.bz2"
+				1[89]*)
+					LLVM_MANPAGE_DIST="llvm-${LLVM_MAJOR}.1.0-manpages.tar.bz2"
 					;;
-				19*)
-					LLVM_MANPAGE_DIST="llvm-19.1.0-manpages.tar.bz2"
-					;;
-				20*)
-					LLVM_MANPAGE_DIST="llvm-20.1.0-manpages.tar.xz"
-					;;
-				21*)
-					LLVM_MANPAGE_DIST="llvm-21.1.0-manpages.tar.xz"
+				2[0-2]*)
+					LLVM_MANPAGE_DIST="llvm-${LLVM_MAJOR}.1.0-manpages.tar.xz"
 					;;
 			esac
 		fi
