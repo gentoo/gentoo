@@ -22,10 +22,6 @@ ada_target_gcc_16
 # receive security updates.
 ruby_targets_ruby31
 
-# Michał Górny <mgorny@gentoo.org> (2024-12-31)
-# LLVM slots with no keyworded releases yet.
-llvm_slot_22
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-12-11)
 # dev-db/firebird last-rites preparation
 firebird
