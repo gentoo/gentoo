@@ -52,6 +52,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_X11=$(usex !X)
 		-DLUA_VERSION="$(lua_get_version)"
+		-DENABLE_CPPTRACE=OFF # could be USE=debug but cpptrace is unstable
 		-DENABLE_GTEST=$(usex test)
 		-DWITH_MAN=$(usex man)
 		-DMAN_COMPRESS=OFF
