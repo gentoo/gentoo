@@ -1,4 +1,4 @@
-# Copyright 2020-2025 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ DIST_AUTHOR=DROLSKY
 DIST_VERSION=0.04
 inherit perl-module
 
-DESCRIPTION="Set the distribution version from your main module's $VERSION"
+DESCRIPTION="Set the distribution version from your main module's \$VERSION"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
