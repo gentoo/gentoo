@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/xournalpp/xournalpp"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="+X test"
+IUSE="+X +man test"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
@@ -40,6 +40,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	sys-apps/lsb-release
+	man? ( sys-apps/help2man )
 	test? ( dev-cpp/gtest )
 "
 
@@ -52,6 +53,7 @@ src_configure() {
 		-DCMAKE_DISABLE_FIND_PACKAGE_X11=$(usex !X)
 		-DLUA_VERSION="$(lua_get_version)"
 		-DENABLE_GTEST=$(usex test)
+		-DWITH_MAN=$(usex man)
 		-DMAN_COMPRESS=OFF
 	)
 
