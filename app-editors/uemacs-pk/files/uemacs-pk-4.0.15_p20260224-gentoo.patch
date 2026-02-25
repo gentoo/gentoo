@@ -1,0 +1,23 @@
+--- uemacs/Makefile
++++ uemacs/Makefile
+@@ -35,7 +35,7 @@
+ WARNINGS=-Wall -Wstrict-prototypes
+ DEFINES=-DPOSIX -D_GNU_SOURCE
+ 
+-CFLAGS=-O2 $(WARNINGS) $(DEFINES)
++CFLAGS=$(MY_CFLAGS) $(DEFINES)
+ 
+ LIBS=ncurses hunspell
+ BINDIR=$(HOME)/bin
+--- uemacs/epath.h
++++ uemacs/epath.h
+@@ -11,8 +11,7 @@
+ /*	possible names and paths of help files under different OSs	*/
+ static char *pathname[] = {
+ 	".emacsrc", "emacs.hlp",
+-	"/usr/global/lib/", "/usr/local/bin/", "/usr/local/lib/",
+-	"/usr/local/", "/usr/lib/", ""
++	"/etc/uemacs-pk/", "/usr/share/uemacs-pk/", ""
+ };
+ 
+ #endif				/* EPATH_H_ */
