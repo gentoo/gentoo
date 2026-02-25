@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -45,6 +45,7 @@ PATCHES=(
 	"${FILESDIR}/018-broadcom-wl-fix-linux-6.13.patch"
 	"${FILESDIR}/019-broadcom-wl-fix-linux-6.14.patch"
 	"${FILESDIR}/020-broadcom-wl-fix-linux-6.15.patch"
+	"${FILESDIR}/021-broadcom-wl-fix-linux-6.17.patch"
 )
 
 pkg_pretend() {
