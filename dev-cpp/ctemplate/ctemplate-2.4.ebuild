@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit autotools elisp-common flag-o-matic python-any-r1
 
@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="amd64 arm ppc x86"
 IUSE="doc emacs vim-syntax static-libs test"
 
-DEPEND="test? ( ${PYTHON_DEPS} )"
+BDEPEND="${PYTHON_DEPS}"
 RDEPEND="
 	emacs? ( >=app-editors/emacs-23.1:* )
 	vim-syntax? ( >=app-editors/vim-core-7 )"
@@ -26,6 +26,10 @@ SITEFILE="70ctemplate-gentoo.el"
 
 # Some tests are broken in 2.3
 RESTRICT="test"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-fix_cxx20.patch
+)
 
 src_prepare() {
 	default
