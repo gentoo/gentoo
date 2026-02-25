@@ -1,0 +1,74 @@
+From c38c89ed1b9d600fe1d9ffe688d7029572f84b8e Mon Sep 17 00:00:00 2001
+From: Matt Jolly <kangie@gentoo.org>
+Date: Tue, 24 Feb 2026 17:13:23 +1000
+Subject: [PATCH] safe_browsing_use_unrar: add include guards
+
+While the previous fix to conditionalise unrar logic in
+6dc59a3b7dc8de4903f3826e718f3231ab1a28ec allows the code to build, some
+downstreams (like Gentoo) use the `unbundle/remove_bundled_libraries.py`
+script to completely remove unrar from the source tree in configurations
+where it is not desired. As this removes the headers, include guards are
+required to enable a successful build when unrar is removed.
+
+Signed-off-by: Matt Jolly <kangie@gentoo.org>
+--- a/chrome/services/file_util/obfuscated_archive_analysis_delegate.h
++++ b/chrome/services/file_util/obfuscated_archive_analysis_delegate.h
+@@ -7,7 +7,10 @@
+ 
+ #include "chrome/utility/safe_browsing/archive_analysis_delegate.h"
+ #include "components/enterprise/obfuscation/core/utils.h"
++
++#if USE_UNRAR
+ #include "third_party/unrar/google/unrar_wrapper.h"
++#endif
+ 
+ namespace safe_browsing {
+ 
+--- a/chrome/services/file_util/regular_archive_analysis_delegate.cc
++++ b/chrome/services/file_util/regular_archive_analysis_delegate.cc
+@@ -9,9 +9,12 @@
+ #include "base/containers/span.h"
+ #include "base/files/file.h"
+ #include "chrome/utility/safe_browsing/zip_writer_delegate.h"
++#include "third_party/zlib/google/zip_reader.h"
++
++#if USE_UNRAR
+ #include "third_party/unrar/google/unrar_delegates.h"
+ #include "third_party/unrar/google/unrar_wrapper.h"
+-#include "third_party/zlib/google/zip_reader.h"
++#endif
+ 
+ namespace safe_browsing {
+ 
+--- a/chrome/services/file_util/regular_archive_analysis_delegate.h
++++ b/chrome/services/file_util/regular_archive_analysis_delegate.h
+@@ -6,7 +6,10 @@
+ #define CHROME_SERVICES_FILE_UTIL_REGULAR_ARCHIVE_ANALYSIS_DELEGATE_H_
+ 
+ #include "chrome/utility/safe_browsing/archive_analysis_delegate.h"
++
++#if USE_UNRAR
+ #include "third_party/unrar/google/unrar_delegates.h"
++#endif
+ 
+ namespace safe_browsing {
+ 
+--- a/chrome/utility/safe_browsing/archive_analysis_delegate.h
++++ b/chrome/utility/safe_browsing/archive_analysis_delegate.h
+@@ -9,9 +9,12 @@
+ 
+ #include "base/files/file.h"
+ #include "chrome/utility/safe_browsing/zip_writer_delegate.h"
+-#include "third_party/unrar/google/unrar_delegates.h"
+ #include "third_party/zlib/google/zip_reader.h"
+ 
++#if USE_UNRAR
++#include "third_party/unrar/google/unrar_delegates.h"
++#endif
++
+ namespace safe_browsing {
+ 
+ // Delegate interface for abstracting archive analysis operations, specifically
+-- 
+2.52.0
+
