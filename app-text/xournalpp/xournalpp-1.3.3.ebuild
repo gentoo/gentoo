@@ -23,7 +23,7 @@ IUSE="test"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
-COMMON_DEPEND="
+RDEPEND="
 	${LUA_DEPS}
 	app-text/poppler[cairo]
 	>=dev-libs/glib-2.32.0
@@ -36,8 +36,7 @@ COMMON_DEPEND="
 	>=x11-libs/gtk+-3.18.9:3
 	>=x11-libs/gtksourceview-4.0
 "
-RDEPEND="${COMMON_DEPEND}"
-DEPEND="${COMMON_DEPEND}"
+DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	sys-apps/lsb-release
