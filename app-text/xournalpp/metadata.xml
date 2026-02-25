@@ -5,6 +5,7 @@
 		<email>dilfridge@gentoo.org</email>
 	</maintainer>
 	<use>
+		<flag name="lua">Enable plugin support</flag>
 		<flag name="sourceview">Enable syntax highlighting in TeX editor</flag>
 	</use>
 	<upstream>
