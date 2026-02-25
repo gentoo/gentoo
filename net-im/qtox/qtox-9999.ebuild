@@ -35,7 +35,7 @@ RDEPEND="
 	media-libs/libexif
 	media-libs/openal
 	media-video/ffmpeg:=[webp]
-	>=net-libs/tox-0.2.19:=[av]
+	>=net-libs/tox-0.2.20:=[av]
 	spellcheck? (
 		|| (
 			kde-frameworks/sonnet:6[aspell]
@@ -54,6 +54,12 @@ DEPEND="${RDEPEND}
 
 DOCS=( CHANGELOG.md README.md doc/user_manual_en.md )
 
+# Skip tests which require network access.
+CMAKE_SKIP_TESTS=(
+	test_bsu
+	test_core
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DASAN=OFF
@@ -69,9 +75,4 @@ src_configure() {
 	[[ ${PV} != 9999 ]] && mycmakeargs+=( -DGIT_DESCRIBE=${PV} )
 
 	cmake_src_configure
-}
-
-src_test() {
-	# The excluded tests require network access.
-	cmake_src_test -E "test_(bsu|core)"
 }
