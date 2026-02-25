@@ -6,7 +6,6 @@
 		<name>Yixun Lan</name>
 	</maintainer>
 	<use>
-		<flag name="ldap">Install LDAP module</flag>
 		<flag name="libtirpc">Use TiRPC library instead of SunRPC</flag>
 		<flag name="mount-locking">
 			Enable locking to prevent corruption of /etc/mtab in the presence of
