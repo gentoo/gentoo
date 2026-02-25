@@ -1,4 +1,4 @@
-# Copyright 2020-2025 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -42,6 +42,11 @@ src_configure() {
 		myConf+=(--without-tk)
 	fi
 	econf "${myConf[@]}"
+
+	# Needed for slibtool. Bug #934496
+	sed -i \
+		-e '/build_old_libs=/s:false:no:' \
+		libtool || die
 }
 
 src_install() {
