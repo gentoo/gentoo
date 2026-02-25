@@ -18,6 +18,7 @@
 	<flag name="nettlehash">Use hashing functions from <pkg>dev-libs/nettle</pkg></flag>
 	<flag name="script">Enable support for calling scripts when leases change.</flag>
 	<flag name="tftp">Enables built in TFTP server for netbooting.</flag>
+	<flag name="nftset">Enable nftset option for add ip set in nftables.</flag>
 </use>
 <upstream>
 	<remote-id type="cpe">cpe:/a:thekelleys:dnsmasq</remote-id>
