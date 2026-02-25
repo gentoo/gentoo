@@ -317,7 +317,7 @@ llvm.org_set_globals() {
 					LLVM_MANPAGE_DIST="llvm-${LLVM_MAJOR}.1.0-manpages.tar.xz"
 					;;
 				22*)
-					LLVM_MANPAGE_DIST="llvm-${LLVM_MAJOR}.1.0-r1-manpages.tar.xz"
+					LLVM_MANPAGE_DIST="llvm-${LLVM_MAJOR}.1.0-r2-manpages.tar.xz"
 					;;
 			esac
 		fi
