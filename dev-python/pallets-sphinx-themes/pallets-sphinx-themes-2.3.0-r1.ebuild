@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,6 +22,9 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc
 RDEPEND="
 	dev-python/jinja2[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
-	>=dev-python/sphinx-3[${PYTHON_USEDEP}]
+	|| (
+		>=dev-python/sphinx-9.1[${PYTHON_USEDEP}]
+		<dev-python/sphinx-9[${PYTHON_USEDEP}]
+	)
 	dev-python/sphinx-notfound-page[${PYTHON_USEDEP}]
 "
