@@ -34,5 +34,5 @@ src_install() {
 	insinto /usr/share/${PN}
 	doins emacs.hlp
 	newins emacs.rc .emacsrc
-	dodoc README README.md readme.39e emacs.ps UTF-8-demo.txt
+	dodoc README readme.39e emacs.ps UTF-8-demo.txt
 }
