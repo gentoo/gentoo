@@ -36,6 +36,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-use-init.patch
 	"${FILESDIR}"/${P}-avoid-accel-crash.patch
 	"${FILESDIR}"/${P}-chacha20-no-asm.patch
+	"${FILESDIR}"/${P}-gcm-no-asm.patch
 	"${FILESDIR}"/${PN}-1.6.0-no-force-lto.patch
 )
 

@@ -1,0 +1,51 @@
+https://bugs.gentoo.org/970600
+https://github.com/smuellerDD/leancrypto/issues/47
+https://github.com/smuellerDD/leancrypto/commit/560a609f30ccb472ae6903d9afa957d7ad3c568a
+
+From 560a609f30ccb472ae6903d9afa957d7ad3c568a Mon Sep 17 00:00:00 2001
+From: Stephan Mueller <smueller@chronox.de>
+Date: Wed, 25 Feb 2026 19:01:20 +0100
+Subject: [PATCH] GCM: fix invocation when disabled-asm=true
+
+Signed-off-by: Stephan Mueller <smueller@chronox.de>
+---
+ aead/src/gcm.c | 15 ++++++++++++---
+ 1 file changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/aead/src/gcm.c b/aead/src/gcm.c
+index a0f24fdf..ec7bf58a 100644
+--- a/aead/src/gcm.c
++++ b/aead/src/gcm.c
+@@ -347,19 +347,28 @@ static int gcm_setkey(struct lc_aes_gcm_cryptor *ctx, const uint8_t *key,
+ 	H[1] = ptr_to_be64(h + 8);
+ 
+ 	/* Accelerated GCM init */
++#ifdef LC_HOST_AARCH64
+ 	if (feat & LC_CPU_FEATURE_ARM_PMULL) {
+ 		gfmul_init_armv8((uint64_t *)ctx->gcm_ctx.HL, H);
+ 		ctx->gcm_ctx.gcm_gmult_accel = gfmul_armv8;
+ 		goto out;
+-	} else if (feat & LC_CPU_FEATURE_INTEL_PCLMUL) {
++	} else
++#endif
++#ifdef LC_HOST_X86_64
++	if (feat & LC_CPU_FEATURE_INTEL_PCLMUL) {
+ 		gfmu_x8664_init((uint64_t *)ctx->gcm_ctx.HL, H);
+ 		ctx->gcm_ctx.gcm_gmult_accel = gfmu_x8664;
+ 		goto out;
+-	} else if (feat & LC_CPU_FEATURE_RISCV_ASM_ZBB) {
++	} else
++#endif
++#ifdef LC_HOST_RISCV64
++	if (feat & LC_CPU_FEATURE_RISCV_ASM_ZBB) {
+ 		gfmul_init_riscv64_zbb((uint64_t *)ctx->gcm_ctx.HL, H);
+ 		ctx->gcm_ctx.gcm_gmult_accel = gfmul_riscv64;
+ 		goto out;
+-	} else if (feat & LC_CPU_FEATURE_RISCV) {
++	} else
++#endif
++	if (feat & LC_CPU_FEATURE_RISCV) {
+ 		gfmul_init_riscv64((uint64_t *)ctx->gcm_ctx.HL, H);
+ 		ctx->gcm_ctx.gcm_gmult_accel = gfmul_riscv64;
+ 		goto out;
+
