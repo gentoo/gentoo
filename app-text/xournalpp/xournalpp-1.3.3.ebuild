@@ -30,10 +30,12 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	app-text/poppler[cairo]
+	app-text/qpdf:=
 	>=dev-libs/glib-2.32.0
 	dev-libs/libxml2:=
 	>=dev-libs/libzip-1.0.1:=
 	>=gnome-base/librsvg-2.40
+	media-libs/harfbuzz:=
 	>=media-libs/portaudio-12[cxx]
 	>=media-libs/libsndfile-1.0.25
 	virtual/zlib:=
