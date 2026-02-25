@@ -17,7 +17,7 @@ fi
 DESCRIPTION="Handwriting notetaking software with PDF annotation support"
 HOMEPAGE="https://github.com/xournalpp/xournalpp"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 IUSE="test"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
