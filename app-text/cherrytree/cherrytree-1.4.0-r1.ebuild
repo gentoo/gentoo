@@ -40,9 +40,9 @@ RDEPEND="app-i18n/uchardet
 	>=dev-libs/spdlog-1.5:=
 	>=x11-libs/vte-0.70.2:2.91
 	net-misc/curl
-	x11-libs/cairo[X]
-	x11-libs/gtk+:3[X]
-	x11-libs/pango[X]"
+	x11-libs/cairo
+	x11-libs/gtk+:3
+	x11-libs/pango"
 
 DEPEND="${PYTHON_DEPS}
 	${RDEPEND}"
