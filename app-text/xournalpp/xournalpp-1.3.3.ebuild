@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/xournalpp/xournalpp"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="test"
+IUSE="+X test"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
@@ -33,7 +33,7 @@ RDEPEND="
 	>=media-libs/portaudio-12[cxx]
 	>=media-libs/libsndfile-1.0.25
 	virtual/zlib:=
-	>=x11-libs/gtk+-3.18.9:3
+	>=x11-libs/gtk+-3.18.9:3[X?]
 	>=x11-libs/gtksourceview-4.0
 "
 DEPEND="${RDEPEND}"
@@ -49,6 +49,7 @@ PATCHES=(
 
 src_configure() {
 	local mycmakeargs=(
+		-DCMAKE_DISABLE_FIND_PACKAGE_X11=$(usex !X)
 		-DLUA_VERSION="$(lua_get_version)"
 		-DENABLE_GTEST=$(usex test)
 		-DMAN_COMPRESS=OFF
