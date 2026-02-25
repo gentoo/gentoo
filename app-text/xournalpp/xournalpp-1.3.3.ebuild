@@ -39,7 +39,7 @@ RDEPEND="
 	virtual/zlib:=
 	>=x11-libs/gtk+-3.18.9:3[X?]
 	lua? ( ${LUA_DEPS} )
-	sourceview? ( >=x11-libs/gtksourceview-4.0 )
+	sourceview? ( x11-libs/gtksourceview:4 )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
