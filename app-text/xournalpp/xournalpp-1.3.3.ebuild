@@ -45,7 +45,6 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.1.1-nostrip.patch"
 	"${FILESDIR}/${PN}-1.2.8-lua.patch"
 )
 
