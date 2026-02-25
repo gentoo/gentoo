@@ -46,7 +46,6 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.1.1-nostrip.patch"
-	"${FILESDIR}/${PN}-1.2.3-nocompress.patch"
 	"${FILESDIR}/${PN}-1.2.8-lua.patch"
 )
 
@@ -54,6 +53,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DLUA_VERSION="$(lua_get_version)"
 		-DENABLE_GTEST=$(usex test)
+		-DMAN_COMPRESS=OFF
 	)
 
 	cmake_src_configure
