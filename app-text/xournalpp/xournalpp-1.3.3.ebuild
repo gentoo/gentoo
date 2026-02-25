@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/xournalpp/xournalpp"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="+X +man test"
+IUSE="+X +man +sourceview test"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
@@ -34,7 +34,7 @@ RDEPEND="
 	>=media-libs/libsndfile-1.0.25
 	virtual/zlib:=
 	>=x11-libs/gtk+-3.18.9:3[X?]
-	>=x11-libs/gtksourceview-4.0
+	sourceview? ( >=x11-libs/gtksourceview-4.0 )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -54,6 +54,7 @@ src_configure() {
 		-DLUA_VERSION="$(lua_get_version)"
 		-DENABLE_CPPTRACE=OFF # could be USE=debug but cpptrace is unstable
 		-DENABLE_GTEST=$(usex test)
+		-DENABLE_GTK_SOURCEVIEW=$(usex sourceview)
 		-DWITH_MAN=$(usex man)
 		-DMAN_COMPRESS=OFF
 	)
