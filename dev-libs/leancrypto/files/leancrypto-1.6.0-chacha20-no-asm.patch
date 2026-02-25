@@ -1,0 +1,32 @@
+https://bugs.gentoo.org/970534
+https://github.com/smuellerDD/leancrypto/issues/45
+https://github.com/smuellerDD/leancrypto/commit/049223b497ef9fdb22c12f6e6b90a5e8bdc58689
+
+From 049223b497ef9fdb22c12f6e6b90a5e8bdc58689 Mon Sep 17 00:00:00 2001
+From: Stephan Mueller <smueller@chronox.de>
+Date: Wed, 25 Feb 2026 08:16:20 +0100
+Subject: [PATCH] ChaCha20 selector: fix no asm support
+
+When no assembler code is compiled, the assembler references need to be
+initialized to point to C. This fixes a crasher.
+
+Reported-by: Sam James
+Signed-off-by: Stephan Mueller <smueller@chronox.de>
+---
+ sym/src/chacha20_selector.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/sym/src/chacha20_selector.c b/sym/src/chacha20_selector.c
+index affb257e..5c50ace5 100644
+--- a/sym/src/chacha20_selector.c
++++ b/sym/src/chacha20_selector.c
+@@ -43,6 +43,9 @@ LC_CONSTRUCTOR(chacha20_fastest_impl, LC_INIT_PRIO_ALGO)
+ 
+ 	/* Check if NULL pointers are present */
+ 	LC_FILL_ACCEL_NULL(neon)
++	LC_FILL_ACCEL_NULL(avx512)
++	LC_FILL_ACCEL_NULL(avx2)
++	LC_FILL_ACCEL_NULL(riscv64_v_zbb)
+ 
+ #define LC_FILL_DFLT_IMPL(accel) lc_chacha20 = lc_chacha20_##accel;
+ 

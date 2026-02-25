@@ -1,4 +1,5 @@
 https://github.com/smuellerDD/leancrypto/commit/eb0ba53f220bc4fcc435c16da60e0892933af656
+https://github.com/smuellerDD/leancrypto/commit/ec82fd19ba6e995bedb4987c2334c6f760eec3aa
 
 From eb0ba53f220bc4fcc435c16da60e0892933af656 Mon Sep 17 00:00:00 2001
 From: Stephan Mueller <smueller@chronox.de>
@@ -170,3 +171,410 @@ index cc49b878..88c792b0 100644
  	else
  		src += files([
  			'x448_scalarmult.c',
+
+From ec82fd19ba6e995bedb4987c2334c6f760eec3aa Mon Sep 17 00:00:00 2001
+From: Stephan Mueller <smueller@chronox.de>
+Date: Thu, 27 Nov 2025 22:49:58 +0100
+Subject: [PATCH] ML-KEM/DSA/HQC: Compile API code as pure C
+
+Considering that the API functions are invoked without checking for
+accelerations, they MUST be compiled without any accelerated options.
+
+This prevents a SIGILL when the respective option is not available
+on the target platform
+
+Reported-by: Alexander Sosedkin
+Signed-off-by: Stephan Mueller <smueller@chronox.de>
+---
+ hqc/api/hqc_type.h              |  3 ++
+ hqc/src/avx2/hqc_kem_api_avx2.c |  1 -
+ hqc/src/avx2/meson.build        |  5 ++-
+ hqc/src/hqc_internal.h          |  3 --
+ hqc/src/meson.build             |  3 ++
+ ml-dsa/src/armv7/meson.build    |  1 -
+ ml-dsa/src/armv8/meson.build    |  1 -
+ ml-dsa/src/avx2/meson.build     |  1 -
+ ml-dsa/src/meson.build          | 60 ++++++++++++++++++++++++++++-----
+ ml-dsa/src/riscv64/meson.build  |  1 -
+ ml-kem/src/armv8/meson.build    |  1 -
+ ml-kem/src/avx2/meson.build     |  1 -
+ ml-kem/src/meson.build          | 26 ++++++++++----
+ ml-kem/src/riscv64/meson.build  | 52 ----------------------------
+ 14 files changed, 82 insertions(+), 77 deletions(-)
+
+diff --git a/hqc/api/hqc_type.h b/hqc/api/hqc_type.h
+index 8a0daf1f..dad81927 100644
+--- a/hqc/api/hqc_type.h
++++ b/hqc/api/hqc_type.h
+@@ -152,6 +152,9 @@ extern "C" {
+ #define gf_mul_vect_avx2 HQC_F(gf_mul_vect_avx2)
+ #define gf_mod_avx2 HQC_F(gf_mod_avx2)
+ 
++int lc_hqc_enc_internal(struct lc_hqc_ct *ct, struct lc_hqc_ss *ss,
++			const struct lc_hqc_pk *pk, struct lc_rng_ctx *rng_ctx);
++
+ #ifdef __cplusplus
+ }
+ #endif
+diff --git a/hqc/src/avx2/hqc_kem_api_avx2.c b/hqc/src/avx2/hqc_kem_api_avx2.c
+index b2edfe58..4e6e5959 100644
+--- a/hqc/src/avx2/hqc_kem_api_avx2.c
++++ b/hqc/src/avx2/hqc_kem_api_avx2.c
+@@ -19,7 +19,6 @@
+ 
+ #include "compare.h"
+ #include "cpufeatures.h"
+-#include "hqc_internal_avx2.h"
+ #include "hqc_kem_avx2.h"
+ #include "../hqc_selftest.h"
+ #include "../hqc_kem_c.h"
+diff --git a/hqc/src/avx2/meson.build b/hqc/src/avx2/meson.build
+index d8835fbf..24bd2703 100644
+--- a/hqc/src/avx2/meson.build
++++ b/hqc/src/avx2/meson.build
+@@ -1,12 +1,15 @@
+ # for i in $(ls *.c | sort); do echo "'$i',"; done
+ 
++hqc_src_c = files([
++	'hqc_kem_api_avx2.c',
++])
++
+ hqc_src_avx2 = files([
+ 	'code_avx2.c',
+ 	'fft_avx2.c',
+ 	'gf_avx2.c',
+ 	'gf2x_avx2.c',
+ 	'hqc_avx2.c',
+-	'hqc_kem_api_avx2.c',
+ 	'hqc_kem_avx2.c',
+ 	'parsing_avx2.c',
+ 	'reed_muller_avx2.c',
+diff --git a/hqc/src/hqc_internal.h b/hqc/src/hqc_internal.h
+index 25ded1ff..3a884d93 100644
+--- a/hqc/src/hqc_internal.h
++++ b/hqc/src/hqc_internal.h
+@@ -85,9 +85,6 @@ struct hqc_pke_decrypt_ws {
+ 	} wsu;
+ };
+ 
+-int lc_hqc_enc_internal(struct lc_hqc_ct *ct, struct lc_hqc_ss *ss,
+-			const struct lc_hqc_pk *pk, struct lc_rng_ctx *rng_ctx);
+-
+ #ifdef __cplusplus
+ }
+ #endif
+diff --git a/hqc/src/meson.build b/hqc/src/meson.build
+index 2b14869f..44ac9dd1 100644
+--- a/hqc/src/meson.build
++++ b/hqc/src/meson.build
+@@ -25,6 +25,9 @@ hqc_src = files([
+ if (hqc_enabled)
+ 	if (x86_64_asm)
+ 		subdir('avx2')
++		hqc_src += files([
++			'avx2/hqc_kem_api_avx2.c',
++		])
+ 	else
+ 		hqc_src += files([
+ 			'hqc_kem_api_c.c'
+diff --git a/ml-dsa/src/armv7/meson.build b/ml-dsa/src/armv7/meson.build
+index 9c92eb21..078dabab 100644
+--- a/ml-dsa/src/armv7/meson.build
++++ b/ml-dsa/src/armv7/meson.build
+@@ -13,7 +13,6 @@ dilithium_armv7 = files([
+ 	'dilithium_pointwise_smull_armv7.S',
+ 	'dilithium_poly.c',
+ 	'dilithium_poly_armv7.S',
+-	'dilithium_signature_api_armv7.c',
+ 	'dilithium_signature_armv7.c'
+ ])
+ 
+diff --git a/ml-dsa/src/armv8/meson.build b/ml-dsa/src/armv8/meson.build
+index 71eb2ae4..803a4fee 100644
+--- a/ml-dsa/src/armv8/meson.build
++++ b/ml-dsa/src/armv8/meson.build
+@@ -14,7 +14,6 @@ dilithium_armv8 = files([
+ 	'dilithium_ntt_armv8.S',
+ 	'dilithium_poly.c',
+ 	'dilithium_poly_armv8.S',
+-	'dilithium_signature_api_armv8.c',
+ 	'dilithium_signature_armv8.c'
+ ])
+ 
+diff --git a/ml-dsa/src/avx2/meson.build b/ml-dsa/src/avx2/meson.build
+index 8e16644f..5d19ee3e 100644
+--- a/ml-dsa/src/avx2/meson.build
++++ b/ml-dsa/src/avx2/meson.build
+@@ -16,7 +16,6 @@ dilithium_avx2 = files([
+ 	'dilithium_polyvec_avx2.c',
+ 	'dilithium_rejsample_avx2.c',
+ 	'dilithium_rounding_avx2.c',
+-	'dilithium_signature_api_avx2.c',
+ 	'dilithium_signature_avx2.c',
+ 	'dilithium_shuffle_avx2.S',
+ ])
+diff --git a/ml-dsa/src/meson.build b/ml-dsa/src/meson.build
+index 361657a3..2c7a3130 100644
+--- a/ml-dsa/src/meson.build
++++ b/ml-dsa/src/meson.build
+@@ -28,7 +28,6 @@ if get_option('dilithium_ed448').enabled()
+ 	dilithium_c += files ([ 'dilithium_ed448_signature.c' ])
+ endif
+ 
+-dilithium_api_c = 0
+ if (dilithium_enabled)
+ 	if (x86_64_asm)
+ 		subdir('avx2')
+@@ -39,17 +38,34 @@ if (dilithium_enabled)
+ 		subdir('armv7')
+ 	elif (riscv64_asm)
+ 		subdir('riscv64')
+-	else
+-		dilithium_api_c = 1
+-		dilithium_c += files([
+-			'dilithium_signature_api_c.c'
+-		])
+ 	endif
+ endif
+ 
+ if get_option('dilithium_87').enabled()
+ 	dilithium_87_files = dilithium_c
+ 
++	if (x86_64_asm)
++		dilithium_87_files += files([
++			'avx2/dilithium_signature_api_avx2.c'
++		])
++	elif (arm64_asm)
++		dilithium_87_files += files([
++			'armv8/dilithium_signature_api_armv8.c'
++		])
++	elif (arm32_neon_asm)
++		dilithium_87_files += files([
++			'armv7/dilithium_signature_api_armv7.c'
++		])
++	elif (riscv64_asm)
++		dilithium_87_files += files([
++			'riscv64/dilithium_signature_api_riscv64.c'
++		])
++	else
++		dilithium_87_files += files([
++			'dilithium_signature_api_c.c'
++		])
++	endif
++
+ 	leancrypto_dilithium_87_c_lib = static_library(
+ 		'leancrypto_dilithium_87_c_lib',
+ 		[ dilithium_87_files ],
+@@ -64,6 +80,28 @@ endif
+ if get_option('dilithium_65').enabled()
+ 	dilithium_65_files = dilithium_c
+ 
++	if (x86_64_asm)
++		dilithium_65_files += files([
++			'avx2/dilithium_signature_api_avx2.c'
++		])
++	elif (arm64_asm)
++		dilithium_65_files += files([
++			'armv8/dilithium_signature_api_armv8.c'
++		])
++	elif (arm32_neon_asm)
++		dilithium_65_files += files([
++			'armv7/dilithium_signature_api_armv7.c'
++		])
++	elif (riscv64_asm)
++		dilithium_65_files += files([
++			'riscv64/dilithium_signature_api_riscv64.c'
++		])
++	else
++		dilithium_65_files += files([
++			'dilithium_signature_api_c.c'
++		])
++	endif
++
+ 	leancrypto_dilithium_65_c_lib = static_library(
+ 		'leancrypto_dilithium_65_c_lib',
+ 		[ dilithium_65_files ],
+@@ -79,8 +117,14 @@ endif
+ if get_option('dilithium_44').enabled()
+ 	dilithium_44_files = dilithium_c
+ 
+-	if (not riscv64_asm and (dilithium_api_c == 0))
+-		dilithium_44_files += files([ 'dilithium_signature_api_c.c' ])
++	if (riscv64_asm)
++		dilithium_44_files += files([
++			'riscv64/dilithium_signature_api_riscv64.c'
++		])
++	else
++		dilithium_44_files += files([
++			'dilithium_signature_api_c.c'
++		])
+ 	endif
+ 
+ 	leancrypto_dilithium_44_c_lib = static_library(
+diff --git a/ml-dsa/src/riscv64/meson.build b/ml-dsa/src/riscv64/meson.build
+index 1a5ac214..e168e4bf 100644
+--- a/ml-dsa/src/riscv64/meson.build
++++ b/ml-dsa/src/riscv64/meson.build
+@@ -6,7 +6,6 @@ src += files([
+ 
+ # Files which are compiled for each Dilithium implementation separately
+ dilithium_riscv64_asm = files([
+-	'dilithium_signature_api_riscv64.c',
+ 	'dilithium_signature_riscv64.c',
+ 	'ntt_8l_dualissue_plant_rv64im.S'
+ ])
+diff --git a/ml-kem/src/armv8/meson.build b/ml-kem/src/armv8/meson.build
+index cb88feb4..b8caab3c 100644
+--- a/ml-kem/src/armv8/meson.build
++++ b/ml-kem/src/armv8/meson.build
+@@ -14,7 +14,6 @@ kyber_armv8 = files([
+ 	'kyber_cbd_armv8.S',
+ 	'kyber_indcpa_armv8.c',
+ 	'kyber_inv_ntt_armv8.S',
+-	'kyber_kem_api_armv8.c',
+ 	'kyber_kem_armv8.c',
+ 	'kyber_ntt_armv8_asm.S',
+ 	'kyber_poly_armv8_asm.S',
+diff --git a/ml-kem/src/avx2/meson.build b/ml-kem/src/avx2/meson.build
+index 4aa6f5a6..7bb82cf1 100644
+--- a/ml-kem/src/avx2/meson.build
++++ b/ml-kem/src/avx2/meson.build
+@@ -12,7 +12,6 @@ kyber_avx2 = files([
+ 	'kyber_fq_avx2.S',
+ 	'kyber_indcpa_avx2.c',
+ 	'kyber_invntt_avx2.S',
+-	'kyber_kem_api_avx2.c',
+ 	'kyber_kem_avx2.c',
+ 	'kyber_ntt_avx2.S',
+ 	'kyber_poly_avx2.c',
+diff --git a/ml-kem/src/meson.build b/ml-kem/src/meson.build
+index 43ed1c90..f8c2f96f 100644
+--- a/ml-kem/src/meson.build
++++ b/ml-kem/src/meson.build
+@@ -63,18 +63,32 @@ if (x86_64_asm)
+ 	subdir('avx2')
+ elif (arm64_asm)
+ 	subdir('armv8')
++	kyber_c += files ([
++		'armv8/kyber_kem_api_armv8.c',
++	])
+ elif (arm32_neon_asm)
+ 	subdir('armv7')
++	kyber_c += files([
++		'kyber_kem_api_c.c',
++	])
+ elif (riscv64_asm)
+ 	subdir('riscv64')
++	kyber_c += files([
++		'riscv64/kyber_kem_api_riscv.c',
++	])
++else
++	kyber_c += files([
++		'kyber_kem_api_c.c',
++	])
+ endif
+ 
+ if get_option('kyber_1024').enabled()
+ 	kyber_1024_files = kyber_c
+ 
+-	if (not x86_64_asm and not arm64_asm and not riscv64_asm)
+-		kyber_1024_files += files([ 'kyber_kem_api_c.c' ])
++	if (x86_64_asm)
++		kyber_1024_files += files ([ 'avx2/kyber_kem_api_avx2.c' ])
+ 	endif
++
+ 	leancrypto_kyber_1024_c_lib = static_library(
+ 		'leancrypto_kyber_1024_c_lib',
+ 		[ kyber_1024_files ],
+@@ -89,8 +103,8 @@ endif
+ if get_option('kyber_768').enabled()
+ 	kyber_768_files = kyber_c
+ 
+-	if (not x86_64_asm and not arm64_asm and not riscv64_asm)
+-		kyber_768_files += files([ 'kyber_kem_api_c.c' ])
++	if (x86_64_asm)
++		kyber_768_files += files ([ 'avx2/kyber_kem_api_avx2.c' ])
+ 	endif
+ 
+ 	leancrypto_kyber_768_c_lib = static_library(
+@@ -108,8 +122,8 @@ endif
+ if get_option('kyber_512').enabled()
+ 	kyber_512_files = kyber_c
+ 
+-	if (not riscv64_asm)
+-		kyber_512_files += files([ 'kyber_kem_api_c.c' ])
++	if (x86_64_asm)
++		kyber_512_files += files ([ 'kyber_kem_api_c.c' ])
+ 	endif
+ 
+ 	leancrypto_kyber_512_c_lib = static_library(
+diff --git a/ml-kem/src/riscv64/meson.build b/ml-kem/src/riscv64/meson.build
+index 9ce75439..c498989a 100644
+--- a/ml-kem/src/riscv64/meson.build
++++ b/ml-kem/src/riscv64/meson.build
+@@ -7,10 +7,6 @@ kyber_riscv_rvv_common = files([
+ 	'riscv_rvv_selector_test.S'
+ ])
+ 
+-kyber_riscv_riscv_api = files([
+-	'kyber_kem_api_riscv.c',
+-])
+-
+ kyber_riscv_rvv_vlen128 = files([
+ 	'kyber_indcpa_rvv_vlen128.c',
+ 	'kyber_kem_rvv_vlen128.c',
+@@ -70,54 +66,6 @@ if (get_option('kyber_1024').enabled() or
+ 	leancrypto_support_libs += leancrypto_kyber_riscv_rvv_lib
+ endif
+ 
+-# Kyber RISCV API
+-if get_option('kyber_1024').enabled()
+-	kyber_1024_files = kyber_riscv_riscv_api
+-
+-	leancrypto_kyber_1024_riscv_lib = static_library(
+-		'leancrypto_kyber_1024_riscv_lib',
+-		[ kyber_1024_files ],
+-		include_directories: [
+-			'../',
+-			include_dirs,
+-			include_internal_dirs
+-		],
+-	)
+-	leancrypto_support_libs += leancrypto_kyber_1024_riscv_lib
+-endif
+-
+-if get_option('kyber_768').enabled()
+-	kyber_768_files = kyber_riscv_riscv_api
+-
+-	leancrypto_kyber_768_riscv_lib = static_library(
+-		'leancrypto_kyber_768_riscv_lib',
+-		[ kyber_768_files ],
+-		include_directories: [
+-			'../',
+-			include_dirs,
+-			include_internal_dirs
+-		],
+-		c_args : [ '-DLC_KYBER_TYPE_768']
+-	)
+-	leancrypto_support_libs += leancrypto_kyber_768_riscv_lib
+-endif
+-
+-if get_option('kyber_512').enabled()
+-	kyber_512_files = kyber_riscv_riscv_api
+-
+-	leancrypto_kyber_512_riscv_lib = static_library(
+-		'leancrypto_kyber_512_riscv_lib',
+-		[ kyber_512_files ],
+-		include_directories: [
+-			'../',
+-			include_dirs,
+-			include_internal_dirs
+-		],
+-		c_args : [ '-DLC_KYBER_TYPE_512' ]
+-	)
+-	leancrypto_support_libs += leancrypto_kyber_512_riscv_lib
+-endif
+-
+ # Kyber RVV vector length 128
+ if get_option('riscv_rvv_vlen128').enabled()
+ 	if get_option('kyber_1024').enabled()

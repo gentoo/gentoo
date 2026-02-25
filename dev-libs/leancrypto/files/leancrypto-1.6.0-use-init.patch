@@ -1,4 +1,5 @@
 https://github.com/smuellerDD/leancrypto/commit/64cb452a19cda415e2f00b31b681a9cc03989588
+https://github.com/smuellerDD/leancrypto/commit/fa7e59e3a8462a06422b8bdd2dedba5299766e82
 
 From 64cb452a19cda415e2f00b31b681a9cc03989588 Mon Sep 17 00:00:00 2001
 From: Stephan Mueller <smueller@chronox.de>
@@ -87,3 +88,64 @@ index 34b9e0e4..1cf12106 100644
 +}
 +#endif
 
+From fa7e59e3a8462a06422b8bdd2dedba5299766e82 Mon Sep 17 00:00:00 2001
+From: Stephan Mueller <smueller@chronox.de>
+Date: Thu, 27 Nov 2025 22:48:35 +0100
+Subject: [PATCH] HQC: initialize library when linking with static library
+
+Signed-off-by: Stephan Mueller <smueller@chronox.de>
+---
+ hqc/tests/hqc_tester.c          | 8 ++++++++
+ ml-dsa/tests/dilithium_tester.c | 2 +-
+ slh-dsa/tests/sphincs_tester.c  | 2 +-
+ 3 files changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/hqc/tests/hqc_tester.c b/hqc/tests/hqc_tester.c
+index eb9e249a..c0d1be2f 100644
+--- a/hqc/tests/hqc_tester.c
++++ b/hqc/tests/hqc_tester.c
+@@ -32,6 +32,7 @@
+ 
+ #include "compare.h"
+ #include "cpufeatures.h"
++#include "lc_init.h"
+ #include "lc_sha3.h"
+ #include "ret_checkers.h"
+ #include "selftest_shake256_rng.h"
+@@ -208,3 +209,10 @@ LC_TEST_FUNC(int, main, int argc, char *argv[])
+ 	return ret;
+ }
+ #pragma GCC diagnostic pop
++
++#ifndef LINUX_KERNEL
++LC_CONSTRUCTOR(hqc_init, 101)
++{
++	lc_init(0);
++}
++#endif
+diff --git a/ml-dsa/tests/dilithium_tester.c b/ml-dsa/tests/dilithium_tester.c
+index 4a1470e4..ec3f2e03 100644
+--- a/ml-dsa/tests/dilithium_tester.c
++++ b/ml-dsa/tests/dilithium_tester.c
+@@ -475,7 +475,7 @@ int _dilithium_init_update_final_tester(
+ }
+ 
+ #ifndef LINUX_KERNEL
+-LC_CONSTRUCTOR(kyber_kem_init, 101)
++LC_CONSTRUCTOR(dilithium_init, 101)
+ {
+ 	lc_init(0);
+ }
+diff --git a/slh-dsa/tests/sphincs_tester.c b/slh-dsa/tests/sphincs_tester.c
+index 1cf12106..e0e625cb 100644
+--- a/slh-dsa/tests/sphincs_tester.c
++++ b/slh-dsa/tests/sphincs_tester.c
+@@ -184,7 +184,7 @@ LC_TEST_FUNC(int, main, int argc, char *argv[])
+ }
+ 
+ #ifndef LINUX_KERNEL
+-LC_CONSTRUCTOR(kyber_kem_init, 101)
++LC_CONSTRUCTOR(sphincs_init, 101)
+ {
+ 	lc_init(0);
+ }
