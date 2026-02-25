@@ -17,4 +17,7 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<use>
+		<flag name="system-init">Installed as a provider of virtual/service-manager.</flag>
+	</use>
 </pkgmetadata>
