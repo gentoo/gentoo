@@ -13,6 +13,7 @@ HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="debug test"
 
 DEPEND="
