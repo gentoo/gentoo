@@ -3,8 +3,13 @@
 
 EAPI=8
 
+DOCS_BUILDER="doxygen"
+DOCS_DEPEND="
+	app-text/doxygen
+	media-gfx/graphviz
+"
 LUA_COMPAT=( lua5-3 lua5-4 )
-inherit cmake lua-single xdg
+inherit cmake docs lua-single xdg
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -60,6 +65,11 @@ src_configure() {
 	)
 
 	cmake_src_configure
+}
+
+src_compile() {
+	docs_compile
+	cmake_src_compile
 }
 
 src_test() {
