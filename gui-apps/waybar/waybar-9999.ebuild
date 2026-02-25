@@ -53,8 +53,8 @@ RDEPEND="
 	jack? ( virtual/jack )
 	libinput? ( dev-libs/libinput:= )
 	logind? (
-		|| ( sys-apps/systemd
-			 sys-auth/elogind )
+		systemd? ( sys-apps/systemd )
+		!systemd? ( sys-auth/elogind )
 	)
 	mpd? ( media-libs/libmpdclient )
 	mpris? ( >=media-sound/playerctl-2 )
