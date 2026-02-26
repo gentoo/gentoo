@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ inherit linux-mod-r1 multiprocessing pam systemd udev usr-ldscript
 DESCRIPTION="Linux kernel module and userland utilities for ZFS"
 HOMEPAGE="https://github.com/openzfs/zfs"
 
-MODULES_KERNEL_MAX=6.18
+MODULES_KERNEL_MAX=6.19
 MODULES_KERNEL_MIN=4.18
 
 if [[ ${PV} == "9999" ]]; then
