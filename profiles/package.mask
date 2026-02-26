@@ -37,6 +37,14 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-02-26)
+# Depends on Qt5 and does not appear to be ported to Qt6 any time soon.
+# Possible alternatives are app-text/xournalpp or media-gfx/pdf4qt (only in
+# guru overlay right now). Many bugs: #965497, #935693, #935692, #935694,
+# #900162, #850064, #935695.
+# Removal on 2026-03-28.
+app-text/master-pdf-editor
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-26)
 # Depends on Qt5 and does not appear to be ported to Qt6. Upstream's main
 # problem is reliance on QtXMLPatterns which is not available in Qt6.
 # Bug #955183
