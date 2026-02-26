@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="clog is a colorized log tail utility"
 HOMEPAGE="https://gothenburgbitfactory.org/clog/"
-SRC_URI="https://gothenburgbitfactory.org/download/${P}.tar.gz"
+SRC_URI="https://github.com/GothenburgBitFactory/clog/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
