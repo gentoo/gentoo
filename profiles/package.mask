@@ -36,6 +36,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-26)
+# Qt binaries-to-path symlinking tool obsolete with Qt6. Removal on 2026-03-28.
+dev-qt/qtchooser
+
 # Ulrich Müller <ulm@gentoo.org> (2026-02-25)
 # This is an eviscerated version. Several core commands no longer
 # work, notably C-x 2 (split-current-window), M-x describe-bindings
