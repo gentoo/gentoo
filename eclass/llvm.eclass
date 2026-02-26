@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: llvm.eclass
@@ -9,7 +9,7 @@
 # @SUPPORTED_EAPIS: 7 8
 # @PROVIDES: llvm-utils
 # @BLURB: Utility functions to build against slotted LLVM
-# @DEPRECATED: llvm-r1.eclass
+# @DEPRECATED: llvm-r2.eclass
 # @DESCRIPTION:
 # The llvm.eclass provides utility functions that can be used to build
 # against specific version of slotted LLVM (with fallback to :0 for old
