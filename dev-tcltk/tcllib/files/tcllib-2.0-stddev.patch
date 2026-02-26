@@ -1,0 +1,11 @@
+--- a/modules/simulation/random.test	2026-02-26 23:07:06.436861304 +0100
++++ b/modules/simulation/random.test	2026-02-26 23:12:52.124392444 +0100
+@@ -167,7 +167,7 @@
+         set stdev [expr {$stdev + $rnd * $rnd}]
+     }
+     set mean  [expr {$mean  / 1000.0}]
+-    set stdev [expr {sqrt($stdev / 1000.0)}]
++    set stdev [expr {sqrt($stdev / 1000.0 - $mean * $mean)}]
+ 
+     #
+     # We use a rough estimate for the deviation in the mean and stdev
