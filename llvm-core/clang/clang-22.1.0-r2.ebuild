@@ -31,6 +31,7 @@ RDEPEND="
 	${PYTHON_DEPS}
 	${DEPEND}
 	>=llvm-core/clang-common-${PV}
+	!<llvm-core/llvm-22.1.0-r2:22
 "
 BDEPEND="
 	${PYTHON_DEPS}
