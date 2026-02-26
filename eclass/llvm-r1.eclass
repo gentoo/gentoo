@@ -1,4 +1,4 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: llvm-r1.eclass
@@ -9,6 +9,7 @@
 # @SUPPORTED_EAPIS: 8
 # @PROVIDES: llvm-utils
 # @BLURB: Provide LLVM_SLOT to build against slotted LLVM
+# @DEPRECATED: llvm-r2.eclass
 # @DESCRIPTION:
 # An eclass to reliably depend on a set of LLVM-related packages
 # in a matching slot.  To use the eclass:
