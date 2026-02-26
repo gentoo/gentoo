@@ -1,9 +1,9 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-LLVM_COMPAT=( {15..21} )
+LLVM_COMPAT=( {16..22} )
 LLVM_OPTIONAL=1
 PYTHON_COMPAT=( python3_{11..14} )
 inherit cmake flag-o-matic llvm-r2 python-any-r1 readme.gentoo-r1 xdg
