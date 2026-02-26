@@ -1,0 +1,139 @@
+--- a/aic8800_fdrv/rwnx_main.c
++++ b/aic8800_fdrv/rwnx_main.c
+@@ -22,6 +22,7 @@
+ #include <linux/if_arp.h>
+ #include <linux/ctype.h>
+ #include <linux/random.h>
++#include <linux/timer.h>
+ #include "rwnx_defs.h"
+ #include "rwnx_dini.h"
+ #include "rwnx_msg_tx.h"
+@@ -3244,7 +3245,11 @@ void aicwf_p2p_alive_timeout(struct timer_list *t)
+     rwnx_vif = (struct rwnx_vif *)data;
+     rwnx_hw = rwnx_vif->rwnx_hw;
+     #else
++#if (LINUX_VERSION_CODE <= KERNEL_VERSION(6, 1, 0))
+     rwnx_hw = from_timer(rwnx_hw, t, p2p_alive_timer);
++#else
++    rwnx_hw = timer_container_of(rwnx_hw, t, p2p_alive_timer);
++#endif
+     rwnx_vif = rwnx_hw->p2p_dev_vif;
+     #endif
+ 
+@@ -3740,7 +3745,11 @@ static void rwnx_cfgp2p_stop_p2p_device(struct wiphy *wiphy, struct wireless_dev
+ 	if (rwnx_vif == rwnx_hw->p2p_dev_vif) {
+ 		rwnx_hw->is_p2p_alive = 0;
+ 		if (timer_pending(&rwnx_hw->p2p_alive_timer)) {
++#if (LINUX_VERSION_CODE <= KERNEL_VERSION(6, 1, 0))
+ 			del_timer_sync(&rwnx_hw->p2p_alive_timer);
++#else
++			timer_delete_sync(&rwnx_hw->p2p_alive_timer);
++#endif
+ 		}
+ 		if (rwnx_vif->up) {
+ 			rwnx_send_remove_if(rwnx_hw, rwnx_vif->vif_index, true);
+@@ -5134,7 +5143,7 @@ cfg80211_chandef_identical(const struct cfg80211_chan_def *chandef1,
+ }
+ #endif
+ 
+-static int rwnx_cfg80211_set_monitor_channel(struct wiphy *wiphy,
++static int rwnx_cfg80211_set_monitor_channel(struct wiphy *wiphy, struct net_device *dev,
+                                              struct cfg80211_chan_def *chandef)
+ {
+     struct rwnx_hw *rwnx_hw = wiphy_priv(wiphy);
+@@ -5629,7 +5638,7 @@ static int rwnx_cfg80211_get_channel(struct wiphy *wiphy,
+     if (rwnx_vif->vif_index == rwnx_hw->monitor_vif)
+     {
+         //retrieve channel from firmware
+-        rwnx_cfg80211_set_monitor_channel(wiphy, NULL);
++        rwnx_cfg80211_set_monitor_channel(wiphy, NULL, NULL);
+     }
+ 
+     //Check if channel context is valid
+@@ -9779,8 +9788,12 @@ static void __exit rwnx_mod_exit(void)
+ module_init(rwnx_mod_init);
+ module_exit(rwnx_mod_exit);
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 4, 0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 13, 0)
++MODULE_IMPORT_NS("VFS_internal_I_am_really_a_filesystem_and_am_NOT_a_driver");
++#else
+ MODULE_IMPORT_NS(VFS_internal_I_am_really_a_filesystem_and_am_NOT_a_driver);
+ #endif
++#endif
+ MODULE_FIRMWARE(RWNX_CONFIG_FW_NAME);
+ 
+ MODULE_DESCRIPTION(RW_DRV_DESCRIPTION);
+--- a/aic8800_fdrv/rwnx_rx.c
++++ b/aic8800_fdrv/rwnx_rx.c
+@@ -10,6 +10,7 @@
+ #include <linux/dma-mapping.h>
+ #include <linux/ieee80211.h>
+ #include <linux/etherdevice.h>
++#include <linux/timer.h>
+ #include <net/ieee80211_radiotap.h>
+ 
+ #include "rwnx_defs.h"
+@@ -1436,7 +1437,11 @@ int reord_flush_tid(struct aicwf_rx_priv *rx_priv, struct sk_buff *skb, u8 tid)
+     preorder_ctrl->enable = false;
+     spin_unlock_irqrestore(&preorder_ctrl->reord_list_lock, flags);
+     if (timer_pending(&preorder_ctrl->reord_timer))
++#if (LINUX_VERSION_CODE <= KERNEL_VERSION(6, 1, 0))
+         ret = del_timer_sync(&preorder_ctrl->reord_timer);
++#else
++        ret = timer_delete_sync(&preorder_ctrl->reord_timer);
++#endif
+     cancel_work_sync(&preorder_ctrl->reord_timer_work);
+ 
+     return 0;
+@@ -1462,7 +1467,11 @@ void reord_deinit_sta(struct aicwf_rx_priv* rx_priv, struct reord_ctrl_info *reo
+ 		if(preorder_ctrl->enable){
+ 			preorder_ctrl->enable = false;
+ 	        if (timer_pending(&preorder_ctrl->reord_timer)) {
+-	            ret = del_timer_sync(&preorder_ctrl->reord_timer);
++#if (LINUX_VERSION_CODE <= KERNEL_VERSION(6, 1, 0))
++	            ret = delete_timer(&preorder_ctrl->reord_timer);
++#else
++	            ret = timer_delete_sync(&preorder_ctrl->reord_timer);
++#endif
+ 	        }
+ 	        cancel_work_sync(&preorder_ctrl->reord_timer_work);
+ 		}
+@@ -1678,7 +1687,11 @@ void reord_timeout_handler (struct timer_list *t)
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(4,14,0)
+ 	struct reord_ctrl *preorder_ctrl = (struct reord_ctrl *)data;
+ #else
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,16,0)
+ 	struct reord_ctrl *preorder_ctrl = from_timer(preorder_ctrl, t, reord_timer);
++#else
++	struct reord_ctrl *preorder_ctrl = timer_container_of(preorder_ctrl, t, reord_timer);
++#endif
+ #endif
+ 
+ 	AICWFDBG(LOGTRACE, "%s Enter \r\n", __func__);
+@@ -1845,7 +1858,11 @@ int reord_process_unit(struct aicwf_rx_priv *rx_priv, struct sk_buff *skb, u16 s
+         }
+     } else {
+ 		if(timer_pending(&preorder_ctrl->reord_timer)) {
++#if (LINUX_VERSION_CODE <= KERNEL_VERSION(6, 1, 0))
+ 	        	ret = del_timer(&preorder_ctrl->reord_timer);
++#else
++	        	ret = timer_delete(&preorder_ctrl->reord_timer);
++#endif
+ 		}
+     }
+ 
+--- a/aic_load_fw/aic_bluetooth_main.c
++++ b/aic_load_fw/aic_bluetooth_main.c
+@@ -70,8 +70,12 @@ module_init(aic_bluetooth_mod_init);
+ module_exit(aic_bluetooth_mod_exit);
+ 
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 4, 0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 13, 0)
++MODULE_IMPORT_NS("VFS_internal_I_am_really_a_filesystem_and_am_NOT_a_driver");
++#else
+ MODULE_IMPORT_NS(VFS_internal_I_am_really_a_filesystem_and_am_NOT_a_driver);
+ #endif
++#endif
+ 
+ MODULE_FIRMWARE(DRV_CONFIG_FW_NAME);
+ MODULE_DESCRIPTION(DRV_DESCRIPTION);
