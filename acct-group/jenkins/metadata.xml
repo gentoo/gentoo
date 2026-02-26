@@ -5,9 +5,4 @@
 		<email>patrick@gentoo.org</email>
 		<name>Patrick Lauer</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>graaff@gentoo.org</email>
-		<name>Hans de Graaff</name>
-		<description>lts versions</description>
-	</maintainer>
 </pkgmetadata>

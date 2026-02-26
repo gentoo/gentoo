@@ -5,10 +5,6 @@
     <email>sysadmin@gentoo.org</email>
     <name>Gentoo Sysadmin Project</name>
   </maintainer>
-  <maintainer type="person">
-    <email>graaff@gentoo.org</email>
-    <name>Hans de Graaff</name>
-  </maintainer>
   <longdescription lang="en">
     Munin the tool surveys all your computers and remembers what it saw. It
     presents all the information in in graphs through a web interface. Its
