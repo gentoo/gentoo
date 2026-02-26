@@ -1,0 +1,15 @@
+See PR pending https://github.com/libofx/libofx/pull/104.patch
+fix typo(?) CFLAGS -> CXXFLAGS
+This prevents the addition of C flags not compatible with CXX
+Fix bug 967003 where -std=c++14 is overrided by CFLAGS
+--- a/configure.ac
++++ b/configure.ac
+@@ -45,7 +45,7 @@ then
+ 			  [Define if GCC visibility extensions are supported])
+ 	VISIBILITY_FLAGS="-fvisibility=hidden"
+ 	CFLAGS="$VISIBILITY_FLAGS $CFLAGS"
+-	CXXFLAGS="$VISIBILITY_FLAGS -fvisibility-inlines-hidden $CFLAGS"
++	CXXFLAGS="$VISIBILITY_FLAGS -fvisibility-inlines-hidden $CXXFLAGS"
+ fi
+ 
+ ## Pass -DIN_LIBOFX to the compiler so we can detect it and include config.h
