@@ -1,0 +1,52 @@
+Bug: https://bugs.gentoo.org/894776
+--- a/src/Extra.h
++++ b/src/Extra.h
+@@ -94,7 +94,7 @@ void ExtraGC(void) ;
+ void GCollectionUpdateFlag(int newValue) ;
+ 
+ /* PT OPERATIONS */
+-VoidPt XTestExtraGen(ExtraTypePt e, register Pt t, Bool useAlias, Bool err) ;
++VoidPt XTestExtraGen(ExtraTypePt e, Pt t, Bool useAlias, Bool err) ;
+ Bool XExtraCheck(ExtraTypePt e, Pt t) ;
+ VoidPt XTestExtra(ExtraTypePt e, Pt t) ;
+ VoidPt XTestExtraNoAlias(ExtraTypePt e, Pt t) ;
+--- a/src/Term.h
++++ b/src/Term.h
+@@ -121,7 +121,7 @@ Pt Drf(Pt t) ;
+ Pt GetCodeFreeVar(void) ;
+ void PrepareDrfChecked(Pt term) ;
+ Pt DrfChecked(Pt t) ;
+-Pt DrfChecked2(register Pt t, Hdl limA, Hdl limB) ;
++Pt DrfChecked2(Pt t, Hdl limA, Hdl limB) ;
+ Pt MakeVar(void) ;
+ Str VarName(Pt t) ;
+ Bool IsVarName(Str s) ;
+--- a/src/WxWidgets.cpp
++++ b/src/WxWidgets.cpp
+@@ -54,7 +54,7 @@ static Bool LookupWxObjAux(CVoidPt x, CVoidPt ref)
+ }
+ WxObjPt LookupWxObj(VoidPt obj)	/* pre: obj must be an alive wx object or nil */
+ {
+-	register WxObjPt w ;
++	WxObjPt w ;
+ 	UChar slot = cWord(obj) >> 3 ;
+ 	if( (w = cWxObjPt(ExtraFindFirst(wxobjType, slot, LookupWxObjAux, obj))) == nil ) {
+ 		w = cWxObjPt(ExtraNew(wxobjType, slot)) ;
+@@ -77,7 +77,7 @@ static void CreateNullStuff(void)
+ 
+ void WxDeleted(VoidPt obj) /* Available to the Gui thread */
+ {				/* pre: obj must has really been deleted (will not reappear) */
+-    register WxObjPt w ;
++    WxObjPt w ;
+     UChar slot = cWord(obj) >> 3 ;
+ 	if( (w = cWxObjPt(ExtraFindFirst(wxobjType, slot, LookupWxObjAux, obj))) != nil )
+ 		ExtraDisable(w) ;
+@@ -134,7 +134,7 @@ static void EventQueueNew(void)
+ static void EventQueuePark(void) /* Available to the Gui thread */
+ {
+ 	if( qFirst != qBegin ) {
+-		register CharPt f, b ;
++		CharPt f, b ;
+ 		for( b = qBegin, f = qFirst ; f < qLast ; *b++ = *f++ ) ;
+ 		qFirst = qBegin ;
+ 		qLast = b ;
