@@ -1,0 +1,38 @@
+Add user-configurable TEST_READELF variable to allow testing with
+${CHOST}-prefixed readelf executable.
+
+Sent to the upstream mailing list.
+
+From: Lucio Sauer <watermanpaint@posteo.net>
+--- a/test/T000-basic.sh
++++ b/test/T000-basic.sh
+@@ -72,7 +72,7 @@ test_expect_equal \
+     "$(echo $PATH|cut -f1 -d: | sed -e 's,/test/valgrind/bin$,,')"
+ 
+ test_begin_subtest 'notmuch is compiled with debugging symbols'
+-readelf --sections $(command -v notmuch) | grep \.debug
++${TEST_READELF} --sections $(command -v notmuch) | grep \.debug
+ test_expect_equal 0 $?
+ 
+ test_done
+--- a/test/T360-symbol-hiding.sh
++++ b/test/T360-symbol-hiding.sh
+@@ -30,7 +30,7 @@ test_begin_subtest 'checking output'
+ test_expect_equal "$result" "$output"
+ 
+ test_begin_subtest 'comparing existing to exported symbols'
+-readelf -Ws $NOTMUCH_BUILDDIR/lib/libnotmuch.so | sed -e 's/\[[^]]*\]//' |\
++${TEST_READELF} -Ws $NOTMUCH_BUILDDIR/lib/libnotmuch.so | sed -e 's/\[[^]]*\]//' |\
+     awk '$4 == "FUNC" && $5 == "GLOBAL" && $7 != "UND" {print $8}' | sort -u > ACTUAL
+ sed -n 's/^\(notmuch_[a-zA-Z0-9_]*\)[[:blank:]]*(.*/\1/p' $NOTMUCH_SRCDIR/lib/notmuch.h | sort -u > EXPORTED
+ test_expect_equal_file EXPORTED ACTUAL
+--- a/test/test-vars.sh
++++ b/test/test-vars.sh
+@@ -32,6 +32,7 @@ TEST_EMACSCLIENT=${TEST_EMACSCLIENT:-emacsclient}
+ TEST_GDB=${TEST_GDB:-gdb}
+ TEST_CC=${TEST_CC:-cc}
+ TEST_CFLAGS=${TEST_CFLAGS:-"-g -O0"}
++TEST_READELF=${TEST_READELF:-readelf}
+ TEST_SHIM_CFLAGS=${TEST_SHIM_CFLAGS:-"-fpic -shared"}
+ TEST_SHIM_LDFLAGS=${TEST_SHIM_LDFLAGS:-"-ldl"}
+ 

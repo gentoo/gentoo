@@ -96,6 +96,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.40-fix_pointers.patch
 	# applied in master
 	"${FILESDIR}"/${P}-pkg_config.patch
+	"${FILESDIR}"/${P}-readelf.patch
 )
 
 python_check_deps() {
@@ -131,7 +132,7 @@ src_prepare() {
 }
 
 src_configure() {
-	tc-export CC CXX PKG_CONFIG
+	tc-export AR CC CXX PKG_CONFIG
 
 	local myconf=(
 		--bashcompletiondir="$(get_bashcompdir)"
@@ -193,6 +194,7 @@ src_test() {
 	local mytestargs=(
 		TEST_CC="${CC}"
 		TEST_CFLAGS="${CFLAGS}"
+		TEST_READELF="$(tc-getREADELF)"
 		V=1
 		OPTIONS="--verbose --tee"
 		NOTMUCH_SKIP_TESTS="${skip_tests[*]}"
