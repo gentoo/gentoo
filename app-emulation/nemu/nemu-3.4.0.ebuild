@@ -1,28 +1,31 @@
-# Copyright 2019-2025 Gentoo Authors
+# Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake linux-info
+inherit cmake linux-info flag-o-matic
 
 MY_PV="${PV/_rc/-RC}"
 
-DESCRIPTION="ncurses interface for QEMU"
+DESCRIPTION="Ncurses interface for QEMU"
 HOMEPAGE="https://github.com/nemuTUI/nemu"
 SRC_URI="https://github.com/nemuTUI/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${MY_PV}/"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64"
-IUSE="dbus network-map +ovf remote-api"
+KEYWORDS="~amd64"
+IUSE="dbus network-map +ovf remote-api +usb"
 
 RDEPEND="
 	>=app-emulation/qemu-6.0.0-r3[vnc,virtfs,spice]
 	dev-db/sqlite:3=
 	dev-libs/json-c
 	sys-libs/ncurses:=[unicode(+)]
-	virtual/libusb:1
-	virtual/libudev:=
+	usb? (
+		virtual/libusb:1
+		virtual/libudev:=
+	)
 	dbus? ( sys-apps/dbus )
 	network-map? ( media-gfx/graphviz[svg] )
 	ovf? (
@@ -33,7 +36,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="sys-devel/gettext"
-S="${WORKDIR}/${PN}-${MY_PV}/"
+
+PATCHES=( "${FILESDIR}/${P}-remove-workaround.patch" )
 
 pkg_pretend() {
 	if use kernel_linux; then
@@ -51,6 +55,7 @@ pkg_pretend() {
 }
 
 src_configure() {
+	append-cflags -std=gnu17
 	# -DNM_WITH_QEMU: Do not embbed qemu.
 	local mycmakeargs=(
 		-DNM_WITH_DBUS=$(usex dbus)
@@ -58,6 +63,7 @@ src_configure() {
 		-DNM_WITH_REMOTE=$(usex remote-api)
 		-DNM_WITH_OVF_SUPPORT=$(usex ovf)
 		-DNM_WITH_QEMU=off
+		-DNM_WITH_USB=$(usex usb)
 	)
 	cmake_src_configure
 }
