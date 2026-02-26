@@ -1,4 +1,4 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: llvm-r2.eclass
@@ -275,6 +275,7 @@ generate_llvm_config() {
 	# major + suffix
 	local shlib_name=LLVM-${version%%.*}
 	[[ ${version} == *git* ]] && shlib_name+="git${version##*git}"
+	[[ ${version} == *+* && ${shlib_name} != *+* ]] && shlib_name+="+${version##*+}"
 
 	local components=(
 		"${libs[@]#LLVM}" "${targets[@]}"
