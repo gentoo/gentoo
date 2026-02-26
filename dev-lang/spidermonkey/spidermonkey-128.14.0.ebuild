@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -6,7 +6,7 @@ EAPI="8"
 FIREFOX_PATCHSET="firefox-128esr-patches-11.tar.xz"
 SPIDERMONKEY_PATCHSET="spidermonkey-128-patches-04.tar.xz"
 
-LLVM_COMPAT=( 17 18 19 )
+LLVM_COMPAT=( 17 18 19 20 21 )
 RUST_NEEDS_LLVM=1
 
 PYTHON_COMPAT=( python3_{11..13} )
