@@ -6,6 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517="setuptools"
 PYTHON_COMPAT=( python3_{12..13} )
 PYPI_PN="molecule"
+PYPI_VERIFY_REPO=https://github.com/ansible/molecule
 
 inherit distutils-r1 optfeature pypi
 
