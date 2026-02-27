@@ -313,6 +313,59 @@ ngx_mod_link_lib() {
 	ngx_mod_append_libs "$("${pkgconf}" --libs "$1")"
 }
 
+# @FUNCTION: ngx_gen_dep
+# @USAGE: <module name> [<module name>...]
+# @DESCRIPTION:
+# Generates dependency string on the specified first-party NGINX module(s) in
+# the proper format and prints it to stdout.  Each specified module may
+# optionally terminate with a 4-style use dependency default state.  If the
+# 4-style default state is not specified, '(-)' is inserted by default.
+#
+# The dependencies on the respective subsystems are added automatically.  For
+# example, the following invocation:
+# @CODE
+# ngx_gen_dep http_rewrite
+# @CODE
+# generates something like
+# @CODE
+# www-servers/nginx:*[http(-),nginx_modules_http_rewrite(-)]
+# @CODE
+#
+# Example:
+# @CODE
+# # If the SSL functionality is enabled, we require either the stream_ssl or
+# # http_ssl module to be enabled in NGINX. If http_ssl is not available, we
+# # assume the respective functionality is on.
+# RDEPEND="
+#     ssl? (
+#         || (
+#             $(ngx_gen_dep 'http_ssl(+)' stream_ssl)
+#         )
+#     )
+# "
+# @CODE
+ngx_gen_dep() {
+	debug-print-function "${FUNCNAME[0]}" "$@"
+	[[ $# -lt 1 ]] && die "${FUNCNAME[0]} must receive at least one argument"
+
+	local mod subsys state out=
+	for mod; do
+		# Check if the 4-style dependency specification is used.
+		if [[ ${mod} = *\([+-]\) ]]; then
+			# Trim the modname before the 4-style spec to get the spec itself.
+			state="(${mod##*\(}"
+			# Get the modname without the trailing '(+)' or '(-)'.
+			mod="${mod%%\(*}"
+		else
+			state='(-)'
+		fi
+		subsys="${mod%%_*}"
+		out+=" www-servers/nginx:*[${subsys}${state},nginx_modules_${mod}${state}]"
+	done
+
+	printf '%s\n' "${out}"
+}
+
 #-----> ebuild-defined variables <-----
 
 # @ECLASS_VARIABLE: NGINX_MOD_S
