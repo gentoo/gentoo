@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ DEPEND="
 	dev-libs/openssl:0=
 	media-libs/jg:1=
 	media-libs/libepoxy[egl(+)]
-	media-libs/libsdl2[opengl,sound,video]
+	media-libs/libsdl3[opengl]
 	media-libs/speexdsp
 "
 RDEPEND="${DEPEND}"
