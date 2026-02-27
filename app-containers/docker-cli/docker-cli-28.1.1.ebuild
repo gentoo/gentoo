@@ -31,6 +31,7 @@ RDEPEND="selinux? ( sec-policy/selinux-docker )"
 RESTRICT="installsources strip test"
 
 src_unpack() {
+	go-module_setup_env
 	default
 	cd "${S}"
 	ln -s vendor.mod go.mod
