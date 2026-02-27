@@ -90,6 +90,10 @@ src_configure() {
 	econf "${econfopts[@]}"
 }
 
+src_compile() {
+	use doc && MAKEOPTS+=" -j1" # docs fail with parallel build. Bug: 904135
+}
+
 src_install() {
 	default
 
