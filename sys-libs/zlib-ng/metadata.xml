@@ -7,6 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="compat">Enable compatibility to <pkg>sys-libs/zlib</pkg></flag>
+		<flag name="minizip">include the minizip-ng library for quick and dirty zip extraction</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">zlib-ng/zlib-ng</remote-id>
