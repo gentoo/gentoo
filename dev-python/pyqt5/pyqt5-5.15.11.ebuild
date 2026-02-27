@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,9 +18,8 @@ SLOT="0"
 KEYWORDS="amd64 arm arm64 ~loong ~ppc ppc64 ~riscv x86"
 
 IUSE="
-	dbus debug declarative designer examples gles2-only gui help multimedia
-	network opengl printsupport speech sql +ssl svg testlib websockets
-	widgets x11extras xmlpatterns
+	dbus debug declarative designer examples gles2-only gui multimedia
+	network opengl printsupport sql +ssl svg testlib widgets x11extras
 "
 
 # The requirements below were extracted from the qmake_QT declarations
@@ -28,54 +27,43 @@ IUSE="
 REQUIRED_USE="
 	declarative? ( gui network )
 	designer? ( widgets )
-	help? ( gui widgets )
 	multimedia? ( gui network )
 	opengl? ( gui widgets )
 	printsupport? ( gui widgets )
 	sql? ( widgets )
 	svg? ( gui widgets )
 	testlib? ( widgets )
-	websockets? ( network )
 	widgets? ( gui )
-	xmlpatterns? ( network )
 "
-
-# Minimal supported version of Qt.
-QT_PV="5.15:5"
 
 DEPEND="
-	>=dev-qt/qtcore-${QT_PV}
-	>=dev-qt/qtxml-${QT_PV}
+	>=dev-qt/qtcore-5.15:5
+	>=dev-qt/qtxml-5.15:5
 	dbus? (
 		dev-python/dbus-python[${PYTHON_USEDEP}]
-		>=dev-qt/qtdbus-${QT_PV}
+		>=dev-qt/qtdbus-5.15:5
 		sys-apps/dbus
 	)
-	declarative? ( >=dev-qt/qtdeclarative-${QT_PV}[widgets?] )
-	designer? ( >=dev-qt/designer-${QT_PV} )
-	gui? ( >=dev-qt/qtgui-${QT_PV}[gles2-only=] )
-	help? ( >=dev-qt/qthelp-${QT_PV} )
-	multimedia? ( >=dev-qt/qtmultimedia-${QT_PV}[widgets?] )
-	network? ( >=dev-qt/qtnetwork-${QT_PV}[ssl=] )
-	opengl? ( >=dev-qt/qtopengl-${QT_PV} )
-	printsupport? ( >=dev-qt/qtprintsupport-${QT_PV} )
-	speech? ( >=dev-qt/qtspeech-${QT_PV} )
-	sql? ( >=dev-qt/qtsql-${QT_PV} )
-	svg? ( >=dev-qt/qtsvg-${QT_PV} )
-	testlib? ( >=dev-qt/qttest-${QT_PV} )
-	websockets? ( >=dev-qt/qtwebsockets-${QT_PV} )
-	widgets? ( >=dev-qt/qtwidgets-${QT_PV} )
-	x11extras? ( >=dev-qt/qtx11extras-${QT_PV} )
-	xmlpatterns? ( >=dev-qt/qtxmlpatterns-${QT_PV} )
+	declarative? ( >=dev-qt/qtdeclarative-5.15:5[widgets?] )
+	designer? ( >=dev-qt/designer-5.15:5 )
+	gui? ( >=dev-qt/qtgui-5.15:5[gles2-only=] )
+	multimedia? ( >=dev-qt/qtmultimedia-5.15:5[widgets?] )
+	network? ( >=dev-qt/qtnetwork-5.15:5[ssl=] )
+	opengl? ( >=dev-qt/qtopengl-5.15:5 )
+	printsupport? ( >=dev-qt/qtprintsupport-5.15:5 )
+	sql? ( >=dev-qt/qtsql-5.15:5 )
+	svg? ( >=dev-qt/qtsvg-5.15:5 )
+	testlib? ( >=dev-qt/qttest-5.15:5 )
+	widgets? ( >=dev-qt/qtwidgets-5.15:5 )
+	x11extras? ( >=dev-qt/qtx11extras-5.15:5 )
 "
-RDEPEND="
-	${DEPEND}
+RDEPEND="${DEPEND}
 	>=dev-python/pyqt5-sip-12.15:=[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	>=dev-python/pyqt-builder-1.14.1[${PYTHON_USEDEP}]
 	>=dev-python/sip-6.8.6[${PYTHON_USEDEP}]
-	>=dev-qt/qtcore-${QT_PV}
+	>=dev-qt/qtcore-5.15:5
 	dbus? ( virtual/pkgconfig )
 "
 
@@ -118,29 +106,29 @@ python_configure_all() {
 		$(pyqt_use_enable designer QtDesigner)
 		$(pyqt_use_enable gui QtGui \
 			$(use gles2-only && echo _QOpenGLFunctions_ES2 || echo _QOpenGLFunctions_{2_0,2_1,4_1_Core}))
-		$(pyqt_use_enable help QtHelp)
 		$(pyqt_use_enable multimedia QtMultimedia \
 			$(usev widgets QtMultimediaWidgets))
 		$(pyqt_use_enable network QtNetwork)
 		$(pyqt_use_enable opengl QtOpenGL)
 		$(pyqt_use_enable printsupport QtPrintSupport)
-		$(pyqt_use_enable speech QtTextToSpeech)
 		$(pyqt_use_enable sql QtSql)
 		$(pyqt_use_enable svg QtSvg)
 		$(pyqt_use_enable testlib QtTest)
-		$(pyqt_use_enable websockets QtWebSockets)
 		$(pyqt_use_enable widgets QtWidgets)
 		$(pyqt_use_enable x11extras QtX11Extras)
 		--enable=QtXml
-		$(pyqt_use_enable xmlpatterns QtXmlPatterns)
 
 		# no longer supported in Gentoo for PyQt5, use PyQt6
 		--disable=QtBluetooth
+		--disable=QtHelp
 		--disable=QtLocation
 		--disable=QtPositioning
 		--disable=QtSensors
 		--disable=QtSerialPort
+		--disable=QtTextToSpeech
 		--disable=QtWebChannel
+		--disable=QtWebSockets
+		--disable=QtXmlPatterns
 
 		$(usev debug '--debug --qml-debug --tracing')
 
