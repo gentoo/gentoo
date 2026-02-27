@@ -22,7 +22,7 @@ HOMEPAGE="https://github.com/dracut-ng/dracut-ng/wiki"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="dracut-cpio man selinux systemd test"
+IUSE="dracut-cpio selinux systemd test"
 RESTRICT="test"
 PROPERTIES="test? ( test_privileged test_network )"
 
@@ -57,15 +57,15 @@ DEPEND="${COMMON_DEPEND}
 "
 
 BDEPEND="
+	|| (
+		app-text/asciidoc
+		dev-ruby/asciidoctor
+	)
 	app-text/docbook-xml-dtd:4.5
 	>=app-text/docbook-xsl-stylesheets-1.75.2
 	>=dev-libs/libxslt-1.1.26
 	virtual/pkgconfig
 	dracut-cpio? ( ${RUST_DEPEND} )
-	man? ( || (
-		app-text/asciidoc
-		dev-ruby/asciidoctor
-	) )
 	test? (
 		net-nds/rpcbind
 		net-fs/nfs-utils
@@ -122,12 +122,8 @@ src_configure() {
 		--systemdsystemunitdir="$(systemd_get_systemunitdir)"
 	)
 
-	if use man; then
-		if ! has_version -b dev-ruby/asciidoctor; then
-			myconf+=( --disable-asciidoctor )
-		fi
-	else
-		myconf+=( --disable-documentation )
+	if ! has_version -b dev-ruby/asciidoctor; then
+		myconf+=( --disable-asciidoctor )
 	fi
 
 	# this emulates what the build system would be doing without us
