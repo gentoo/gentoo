@@ -31,7 +31,7 @@ COMMONDEPEND="
 	>=x11-libs/gtk+-3.22:3
 	geoclue? ( >=app-misc/geoclue-2.4.4:2.0 )
 	gps? ( >=sci-geosciences/gpsd-3.20:= )
-	exif? ( libexif? ( media-libs/libexif ) !libexif? ( media-libs/gexiv2 ) )
+	exif? ( libexif? ( media-libs/libexif ) !libexif? ( media-libs/gexiv2:= ) )
 	magic? ( sys-apps/file )
 	nova? ( sci-libs/libnova )
 	oauth? ( net-libs/liboauth )
