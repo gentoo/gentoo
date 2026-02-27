@@ -1,0 +1,25 @@
+https://cgit.git.savannah.gnu.org/cgit/gawk.git/commit/?id=32e6f04bf47ea95773ea0d6d876c5fad8bb90834
+
+From 32e6f04bf47ea95773ea0d6d876c5fad8bb90834 Mon Sep 17 00:00:00 2001
+From: "Arnold D. Robbins" <arnold@skeeve.com>
+Date: Mon, 23 Feb 2026 10:59:41 +0200
+Subject: Disable assertions in support/pma.c.
+
+---
+ support/pma.c     | 1 +
+ 2 files changed, 7 insertions(+)
+
+--- a/support/pma.c
++++ b/support/pma.c
+@@ -27,6 +27,7 @@
+ */
+ 
+ #define _DEFAULT_SOURCE  // for MAP_ANONYMOUS
++#define NDEBUG 1	// disable assertions, it kills performance
+ #include <assert.h>
+ #include <errno.h>
+ #include <fcntl.h>
+-- 
+cgit v1.2.3
+
+

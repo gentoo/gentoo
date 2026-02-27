@@ -58,6 +58,10 @@ if [[ ${GAWK_IS_BETA} != yes ]] ; then
 	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-gawk )"
 fi
 
+PATCHES=(
+	"${FILESDIR}"/${P}-no-assertions-for-pma.patch
+)
+
 src_prepare() {
 	default
 
