@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,10 +20,9 @@ RDEPEND="sys-libs/pam
 DEPEND="${RDEPEND}
 	prevent-removal? ( sys-kernel/linux-headers )"
 
-src_prepare() {
-	default
-	eapply "${FILESDIR}"/${P}-e2fsprogs-libs.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-e2fsprogs-libs.patch
+)
 
 src_compile() {
 	emake \
