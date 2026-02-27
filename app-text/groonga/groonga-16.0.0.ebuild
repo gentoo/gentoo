@@ -1,9 +1,12 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=9
+EAPI=8
 
-inherit libtool
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{11..14} )
+
+inherit distutils-r1 libtool
 
 DESCRIPTION="An Embeddable Fulltext Search Engine"
 HOMEPAGE="https://groonga.org/"
@@ -13,9 +16,6 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="benchmark debug doc +exact-alloc-count examples futex libedit libevent lzo +mecab msgpack +nfkc sphinx static-libs uyield zeromq zlib zstd"
-REQUIRED_USE="
-	sphinx? ( doc )
-"
 
 DEPEND="
 	acct-group/groonga
@@ -37,8 +37,11 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="
 	virtual/pkgconfig
-	sphinx? ( dev-python/sphinx )
 "
+
+distutils_enable_sphinx doc/source \
+	dev-python/myst-parser \
+	dev-python/pydata-sphinx-theme
 
 src_prepare() {
 	default
