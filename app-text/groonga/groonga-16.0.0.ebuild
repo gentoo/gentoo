@@ -12,7 +12,7 @@ SRC_URI="https://packages.groonga.org/source/${PN}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="benchmark debug doc +exact-alloc-count examples futex jemalloc libedit libevent lzo +mecab msgpack +nfkc sphinx static-libs uyield zeromq zlib zstd"
+IUSE="benchmark debug doc +exact-alloc-count examples futex libedit libevent lzo +mecab msgpack +nfkc sphinx static-libs uyield zeromq zlib zstd"
 REQUIRED_USE="
 	sphinx? ( doc )
 "
@@ -24,7 +24,6 @@ DEPEND="
 	dev-libs/rapidjson
 	dev-libs/xxhash
 	benchmark? ( >=dev-libs/glib-2.8 )
-	jemalloc? ( dev-libs/jemalloc:0= )
 	libedit? ( >=dev-libs/libedit-3 )
 	libevent? ( dev-libs/libevent:0= )
 	lzo? ( dev-libs/lzo )
@@ -64,12 +63,12 @@ src_configure() {
 		--with-shared-onigmo
 		--with-onigmo=system
 		--with-xxhash
+		--without-jemalloc
 		$(use_enable benchmark)
 		$(use_enable debug memory-debug)
 		$(use_enable doc document)
 		$(use_enable exact-alloc-count)
 		$(use_enable futex)
-		$(use_with jemalloc)
 		$(use_enable libedit)
 		$(use_with libevent)
 		$(use_with lzo)
