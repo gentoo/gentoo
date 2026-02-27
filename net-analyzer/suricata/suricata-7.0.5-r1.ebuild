@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 LUA_COMPAT=( lua5-1 luajit )
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit autotools flag-o-matic linux-info lua-single python-single-r1 rust systemd tmpfiles verify-sig
 
@@ -64,6 +64,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-6.0.0_default-config.patch"
 	"${FILESDIR}/${PN}-7.0.2_configure-no-sphinx-pdflatex-automagic.patch"
 	"${FILESDIR}/${PN}-7.0.5_configure-fortify_source.patch"
+	"${FILESDIR}/${PN}-7.0.5-cbindgen-0.27.patch"
 )
 
 pkg_pretend() {
@@ -139,6 +140,10 @@ src_configure() {
 	else
 		econf ${myeconfargs[@]}
 	fi
+}
+
+src_compile() {
+	emake -Onone
 }
 
 src_install() {

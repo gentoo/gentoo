@@ -1,0 +1,143 @@
+https://github.com/OISF/suricata/commit/304271e63a9e388412f25f0f94a1a0da4bf619d9
+
+From 304271e63a9e388412f25f0f94a1a0da4bf619d9 Mon Sep 17 00:00:00 2001
+From: Philippe Antoine <pantoine@oisf.net>
+Date: Mon, 12 Aug 2024 14:55:22 +0200
+Subject: [PATCH] rust: compatibility with cbindgen 0.27
+
+Ticket: 7206
+
+Cbindgen 0.27 now handles extern blocks as extern "C" blocks.
+The way to differentiate them is to use a special comment
+before the block.
+---
+ rust/src/applayer.rs      | 3 +++
+ rust/src/conf.rs          | 1 +
+ rust/src/core.rs          | 3 +++
+ rust/src/detect/mod.rs    | 1 +
+ rust/src/filecontainer.rs | 1 +
+ rust/src/frames.rs        | 1 +
+ rust/src/lib.rs           | 4 ++++
+ rust/src/lua.rs           | 1 +
+ 8 files changed, 15 insertions(+)
+
+diff --git a/rust/src/applayer.rs b/rust/src/applayer.rs
+index 5a29be257b94..92bab1d82fb0 100644
+--- a/rust/src/applayer.rs
++++ b/rust/src/applayer.rs
+@@ -459,6 +459,7 @@ pub type GetFrameNameById = unsafe extern "C" fn(u8) -> *const c_char;
+ 
+ 
+ // Defined in app-layer-register.h
++/// cbindgen:ignore
+ extern {
+     pub fn AppLayerRegisterProtocolDetection(parser: *const RustParser, enable_default: c_int) -> AppProto;
+     pub fn AppLayerRegisterParserAlias(parser_name: *const c_char, alias_name: *const c_char);
+@@ -470,6 +471,7 @@ pub unsafe fn AppLayerRegisterParser(parser: *const RustParser, alproto: AppProt
+ }
+ 
+ // Defined in app-layer-detect-proto.h
++/// cbindgen:ignore
+ extern {
+     pub fn AppLayerForceProtocolChange(f: *const Flow, new_proto: AppProto);
+     pub fn AppLayerProtoDetectPPRegister(ipproto: u8, portstr: *const c_char, alproto: AppProto,
+@@ -506,6 +508,7 @@ pub const APP_LAYER_PARSER_OPT_ACCEPT_GAPS: u32 = BIT_U32!(0);
+ 
+ pub const APP_LAYER_TX_SKIP_INSPECT_FLAG: u64 = BIT_U64!(62);
+ 
++/// cbindgen:ignore
+ extern {
+     pub fn AppLayerParserStateSetFlag(state: *mut c_void, flag: u16);
+     pub fn AppLayerParserStateIssetFlag(state: *mut c_void, flag: u16) -> u16;
+diff --git a/rust/src/conf.rs b/rust/src/conf.rs
+index 0d28f4d8b494..50cc07257009 100644
+--- a/rust/src/conf.rs
++++ b/rust/src/conf.rs
+@@ -31,6 +31,7 @@ use nom7::{
+     IResult,
+ };
+ 
++/// cbindgen:ignore
+ extern {
+     fn ConfGet(key: *const c_char, res: *mut *const c_char) -> i8;
+     fn ConfGetChildValue(conf: *const c_void, key: *const c_char,
+diff --git a/rust/src/core.rs b/rust/src/core.rs
+index bca228131124..a628b300384a 100644
+--- a/rust/src/core.rs
++++ b/rust/src/core.rs
+@@ -135,6 +135,7 @@ macro_rules!BIT_U64 {
+ pub const FLOW_DIR_REVERSED: u32 = BIT_U32!(26);
+ 
+ // Defined in app-layer-protos.h
++/// cbindgen:ignore
+ extern {
+     pub fn StringToAppProto(proto_name: *const u8) -> AppProto;
+ }
+@@ -239,6 +240,7 @@ pub struct SuricataFileContext {
+     pub files_sbcfg: &'static StreamingBufferConfig,
+ }
+ 
++/// cbindgen:ignore
+ extern {
+     pub fn SCGetContext() -> &'static mut SuricataContext;
+     pub fn SCLogGetLogLevel() -> i32;
+@@ -305,6 +307,7 @@ pub fn sc_app_layer_decoder_events_free_events(
+ pub enum Flow {}
+ 
+ // Extern functions operating on Flow.
++/// cbindgen:ignore
+ extern {
+     pub fn FlowGetLastTimeAsParts(flow: &Flow, secs: *mut u64, usecs: *mut u64);
+     pub fn FlowGetFlags(flow: &Flow) -> u32;
+diff --git a/rust/src/filecontainer.rs b/rust/src/filecontainer.rs
+index 3a8bde5f7d5b..28d10cf05cf2 100644
+--- a/rust/src/filecontainer.rs
++++ b/rust/src/filecontainer.rs
+@@ -23,6 +23,7 @@ use std::os::raw::{c_void};
+ use crate::core::*;
+ 
+ // Defined in util-file.h
++/// cbindgen:ignore
+ extern {
+     pub fn FileFlowFlagsToFlags(flow_file_flags: u16, flags: u8) -> u16;
+ }
+diff --git a/rust/src/frames.rs b/rust/src/frames.rs
+index 1d8ce40ef16d..2380a51594da 100644
+--- a/rust/src/frames.rs
++++ b/rust/src/frames.rs
+@@ -30,6 +30,7 @@ struct CFrame {
+ }
+ 
+ // Defined in app-layer-register.h
++/// cbindgen:ignore
+ extern {
+     #[cfg(not(test))]
+     fn AppLayerFrameNewByRelativeOffset(
+diff --git a/rust/src/lib.rs b/rust/src/lib.rs
+index 0f8f34aa7dc5..389b79062aaf 100644
+--- a/rust/src/lib.rs
++++ b/rust/src/lib.rs
+@@ -49,6 +49,10 @@
+ // just due to FFI.
+ #![allow(clippy::missing_safety_doc)]
+ 
++// Allow /// cbindgen:ignore comments on extern blocks
++// cf https://github.com/mozilla/cbindgen/issues/709
++#![allow(unused_doc_comments)]
++
+ #[macro_use]
+ extern crate bitflags;
+ extern crate byteorder;
+diff --git a/rust/src/lua.rs b/rust/src/lua.rs
+index 33dfe375f4bd..e68ba18be564 100644
+--- a/rust/src/lua.rs
++++ b/rust/src/lua.rs
+@@ -24,6 +24,7 @@ use std::os::raw::c_long;
+ /// The Rust place holder for lua_State.
+ pub enum CLuaState {}
+ 
++/// cbindgen:ignore
+ extern {
+     fn lua_createtable(lua: *mut CLuaState, narr: c_int, nrec: c_int);
+     fn lua_settable(lua: *mut CLuaState, idx: c_long);
+
