@@ -39,7 +39,6 @@
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-02-27)
 # Obsolete Qt5 non-qtbase modules without revdeps.
 # Removal on 2026-03-29.
-dev-qt/qtgraphicaleffects:5
 dev-qt/qthelp:5
 dev-qt/qtwaylandscanner:5
 dev-qt/qtxmlpatterns:5
