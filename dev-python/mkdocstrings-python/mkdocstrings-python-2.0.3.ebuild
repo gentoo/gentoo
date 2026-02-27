@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 
 # TODO: replace with griffelib once we split it
 RDEPEND="
