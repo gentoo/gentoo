@@ -1,8 +1,9 @@
-# Copyright 2019-2025 Gentoo Authors
+# Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+# https://codeberg.org/ziglang/zig/src/tag/${PV}#building-from-source
 LLVM_COMPAT=( 20 )
 LLVM_OPTIONAL=1
 
