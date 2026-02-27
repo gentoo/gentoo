@@ -405,6 +405,7 @@ dev-python/python-snappy
 dev-python/quart-trio
 dev-python/readme-renderer
 dev-python/referencing
+dev-python/regress
 dev-python/requests-kerberos
 dev-python/requests-oauthlib
 dev-python/rpds-py
