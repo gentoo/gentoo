@@ -44,6 +44,10 @@ src_configure() {
 		$(use_enable bzip2 bzip-mbox)
 }
 
+src_compile() {
+	emake -j1 # 923146
+}
+
 src_install() {
 	dobin mairix
 	doman mairix.1 mairixrc.5
