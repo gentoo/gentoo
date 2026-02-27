@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
-		<remote-id type="sourceforge">mairix</remote-id>
+		<remote-id type="github">vandry/mairix</remote-id>
 	</upstream>
 </pkgmetadata>
