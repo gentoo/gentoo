@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,8 +6,8 @@ EAPI=8
 inherit toolchain-funcs
 
 DESCRIPTION="Indexes and searches Maildir/MH folders"
-HOMEPAGE="http://www.rpcurnow.force9.co.uk/mairix/"
-SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
+HOMEPAGE="https://github.com/vandry/mairix"
+SRC_URI="https://github.com/vandry/mairix/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
