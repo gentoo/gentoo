@@ -9,7 +9,7 @@ SRC_URI="https://codeberg.org/sox_ng/libdolbyb/releases/download/${P}/${P}.tar.g
 
 LICENSE="GPL-2"
 SLOT="0/3" # SHLIB in configure.ac
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 
 DEPEND="media-libs/libsndfile"
 RDEPEND="${DEPEND}"
