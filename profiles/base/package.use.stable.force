@@ -1,8 +1,16 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # New entries go on top.
 # Please use the same syntax as in package.use.force.
+
+# James Le Cuirot <chewi@gentoo.org> (2026-02-27)
+# These currently require an unstable media-video/ffmpeg if not using
+# ffmpeg-chromium. This is unlikely to change because Chromium upstream tends
+# to use bleeding edge ffmpeg.
+dev-libs/nwjs ffmpeg-chromium
+www-client/vivaldi ffmpeg-chromium
+www-client/vivaldi-snapshot ffmpeg-chromium
 
 ## Kent Fredric <kentnl@gentoo.org> (2019-07-11)
 # The absense of these features require dev-perl/GD, which currently
