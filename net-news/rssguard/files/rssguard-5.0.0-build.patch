@@ -1,0 +1,41 @@
+From fe5db211f1f0e39d65e64f05b285228be42e0fb4 Mon Sep 17 00:00:00 2001
+From: guihkx <626206+guihkx@users.noreply.github.com>
+Date: Thu, 26 Feb 2026 10:52:36 -0300
+Subject: [PATCH] Fix building with
+ `ENABLE_MEDIAPLAYER_(LIBMPV|QTMULTIMEDIA)=OFF`
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This fixes a build error when both `ENABLE_MEDIAPLAYER_QTMULTIMEDIA` and
+`ENABLE_MEDIAPLAYER_LIBMPV` are set to `OFF`:
+
+===
+[203/435] Building CXX object src/librssguard/CMakeFiles/rssguard.dir/gui/webbrowser.cpp.o
+FAILED: [code=1] src/librssguard/CMakeFiles/rssguard.dir/gui/webbrowser.cpp.o
+/usr/bin/c++ -DAPPDATA_NAME="\"RSS Guard\"" -DAPPDATA_SUMMARY="\"Simple, yet powerful news feed reader\"" -DAPP_AUTHOR="\"Martin Rotter\"" -DAPP_DONATE_URL=\"https://github.com/sponsors/martinrotter\" -DAPP_EMAIL=\"rotter.martinos@gmail.com\" -DAPP_LONG_NAME="\"RSS Guard 5.0.0\"" -DAPP_LOW_H_NAME=\".rssguard\" -DAPP_LOW_NAME=\"rssguard\" -DAPP_NAME="\"RSS Guard\"" -DAPP_REVERSE_NAME=\"io.github.martinrotter.rssguard\" -DAPP_REVISION=\"stable\" -DAPP_SYSTEM_NAME=\"Linux\" -DAPP_SYSTEM_VERSION=\"x86_64\" -DAPP_URL=\"https://github.com/martinrotter/rssguard\" -DAPP_URL_DOCUMENTATION=\"https://rssguard.readthedocs.io/en/latest\" -DAPP_URL_ISSUES_NEW=\"https://github.com/martinrotter/rssguard/issues/new/choose\" -DAPP_USERAGENT="\"RSS Guard/5.0.0\"" -DAPP_VERSION=\"5.0.0\" -DAPP_VERSION_MAJOR=\"5\" -DBUILD_DATE=\"2026-02-26\" -DIS_FLATPAK_BUILD -DNO_UPDATE_CHECK -DQLITEHTML_LIBRARY -DQT_CONCURRENT_LIB -DQT_CORE_LIB -DQT_DBUS_LIB -DQT_GUI_LIB -DQT_MULTIMEDIA_LIB -DQT_NETWORK_LIB -DQT_NO_DEBUG -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_SQL_LIB -DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS -DQT_USE_QSTRINGBUILDER -DQT_WIDGETS_LIB -DQT_XML_LIB -DRSSGUARD_DLLSPEC=Q_DECL_EXPORT -DRSSGUARD_LIBDIR=\"lib\" -DUNICODE -D_UNICODE -Drssguard_EXPORTS -I/run/build/rssguard/src/librssguard -I/run/build/rssguard/src/librssguard/rssguard_autogen/include -I/run/build/rssguard/src/librssguard/gui -I/run/build/rssguard/src/librssguard/gui/dialogs -I/run/build/rssguard/src/librssguard/gui/reusable -I/run/build/rssguard/src/librssguard/services/abstract/gui -I/run/build/rssguard/src/librssguard/dynamic-shortcuts -I/run/build/rssguard/src/librssguard/gui/notifications -I/run/build/rssguard/src/librssguard/gui/toolbars -I/run/build/rssguard/src/librssguard/gui/richtexteditor -I/run/build/rssguard/src/librssguard/3rd-party/qtlinq/include -I/run/build/rssguard/src/librssguard/3rd-party/litehtml/src/gumbo/include -I/run/build/rssguard/src/librssguard/3rd-party/litehtml/src/gumbo/include/gumbo -I/run/build/rssguard/src/librssguard/3rd-party/litehtml/include -I/run/build/rssguard/src/librssguard/3rd-party/litehtml/include/litehtml -I/run/build/rssguard/src/librssguard/3rd-party/qlitehtml/src -isystem /usr/include/QtCore -isystem /usr/mkspecs/linux-g++ -isystem /usr/include/QtGui -isystem /usr/include/QtNetwork -isystem /usr/include/QtQml -isystem /usr/include/QtQmlIntegration -isystem /usr/include/QtSql -isystem /usr/include/QtWidgets -isystem /usr/include/QtXml -isystem /usr/include/QtConcurrent -isystem /usr/include/QtMultimedia -isystem /usr/include/QtDBus -O2 -pipe -g -Wp,-D_FORTIFY_SOURCE=3 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -O3 -DNDEBUG -std=gnu++17 -fPIC -fPIC -MD -MT src/librssguard/CMakeFiles/rssguard.dir/gui/webbrowser.cpp.o -MF src/librssguard/CMakeFiles/rssguard.dir/gui/webbrowser.cpp.o.d -o src/librssguard/CMakeFiles/rssguard.dir/gui/webbrowser.cpp.o -c /run/build/rssguard/src/librssguard/gui/webbrowser.cpp
+/run/build/rssguard/src/librssguard/gui/webbrowser.cpp: In constructor ‘WebBrowser::WebBrowser(WebViewer*, QWidget*)’:
+/run/build/rssguard/src/librssguard/gui/webbrowser.cpp:37:1: error: expected identifier before ‘{’ token
+   37 | {
+      | ^
+===
+---
+ src/librssguard/gui/webbrowser.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/librssguard/gui/webbrowser.cpp b/src/librssguard/gui/webbrowser.cpp
+index 41ff9ca33..981042b32 100644
+--- a/src/librssguard/gui/webbrowser.cpp
++++ b/src/librssguard/gui/webbrowser.cpp
+@@ -28,9 +28,9 @@ WebBrowser::WebBrowser(WebViewer* viewer, QWidget* parent)
+     m_webView(viewer), m_searchWidget(new SearchTextWidget(this)),
+     m_actionOpenInSystemBrowser(new QAction(qApp->icons()->fromTheme(QSL("document-open")),
+                                             tr("Open in system web browser"),
+-                                            this)),
++                                            this))
+ #if defined(ENABLE_MEDIAPLAYER)
+-    m_actionPlayPageInMediaPlayer(new QAction(qApp->icons()->fromTheme(QSL("player_play"), QSL("media-playback-start")),
++    , m_actionPlayPageInMediaPlayer(new QAction(qApp->icons()->fromTheme(QSL("player_play"), QSL("media-playback-start")),
+                                               tr("Play in media player"),
+                                               this))
+ #endif
