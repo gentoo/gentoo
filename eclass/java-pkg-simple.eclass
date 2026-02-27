@@ -1,4 +1,4 @@
-# Copyright 2004-2025 Gentoo Authors
+# Copyright 2004-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-pkg-simple.eclass
@@ -48,6 +48,10 @@ if has test ${JAVA_PKG_IUSE}; then
 				test_deps+=" dev-java/junit:0";;
 			junit-4)
 				test_deps+=" dev-java/junit:4";;
+			junit-jupiter)
+				test_deps+=" dev-java/junit:5";;
+			junit-vintage)
+				test_deps+=" dev-java/junit:5[vintage]";;
 			pkgdiff)
 				test_deps+=" amd64? ( dev-util/pkgdiff
 					dev-util/japi-compliance-checker )";;
