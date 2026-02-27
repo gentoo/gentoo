@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -65,6 +65,10 @@ BDEPEND="
 "
 
 CONFIG_CHECK="~INOTIFY_USER"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-libfmt-12.patch
+)
 
 src_configure() {
 	# bug #941944
