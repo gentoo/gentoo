@@ -17,6 +17,7 @@
 		by Anders Kaseorg The tests can be performed using @cabal test@.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">lifted-base</remote-id>
 		<remote-id type="github">basvandijk/lifted-base</remote-id>
 	</upstream>
 </pkgmetadata>

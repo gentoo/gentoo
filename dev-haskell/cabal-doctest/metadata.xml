@@ -7,6 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="hackage">cabal-doctest</remote-id>
-		<remote-id type="github">haskellari/cabal-doctest</remote-id>
+		<remote-id type="github">ulidtko/cabal-doctest</remote-id>
 	</upstream>
 </pkgmetadata>

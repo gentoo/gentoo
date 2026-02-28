@@ -23,4 +23,8 @@
 
 		\[1\] &lt;http://www.haskell.org/ghc/docs/latest/html/users_guide/syntax-extns.html#unicode-syntax&gt;
 	</longdescription>
+	<upstream>
+		<remote-id type="hackage">base-unicode-symbols</remote-id>
+		<remote-id type="github">roelvandijk/base-unicode-symbols</remote-id>
+	</upstream>
 </pkgmetadata>

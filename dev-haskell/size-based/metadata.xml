@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="hackage">size-based</remote-id>
+		<remote-id type="github">size-based/size-based</remote-id>
+	</upstream>
+</pkgmetadata>

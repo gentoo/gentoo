@@ -10,6 +10,7 @@
 		<flag name="unary-laws">Include infrastructure for testing class laws of unary type constructors.</flag>
 	</use>
 	<upstream>
+		<remote-id type="hackage">quickcheck-classes-base</remote-id>
 		<remote-id type="github">andrewthad/quickcheck-classes</remote-id>
 	</upstream>
 </pkgmetadata>

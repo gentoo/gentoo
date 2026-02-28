@@ -6,6 +6,7 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="hackage">distributive</remote-id>
 		<remote-id type="github">ekmett/distributive</remote-id>
 	</upstream>
 </pkgmetadata>

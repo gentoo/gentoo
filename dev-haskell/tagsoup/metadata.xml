@@ -14,6 +14,7 @@
 		Users should start from the "Text.HTML.TagSoup" module.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">tagsoup</remote-id>
 		<remote-id type="github">ndmitchell/tagsoup</remote-id>
 	</upstream>
 </pkgmetadata>

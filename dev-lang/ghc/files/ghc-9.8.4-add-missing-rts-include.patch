@@ -1,0 +1,36 @@
+From 2f5be78205bbf3a20a50b814cd5cc51817d4e153 Mon Sep 17 00:00:00 2001
+From: hololeap <hololeap@protonmail.com>
+Date: Fri, 31 Jan 2025 15:11:34 -0700
+Subject: [PATCH 1/1] compiler/cbits/genSym.c: Add missing include
+
+Include stg/SMP.h from rts. This only appears to be added in ghc-9.8.4,
+so update CPP checks to reflect this.
+
+Bug: https://github.com/gentoo-haskell/gentoo-haskell/issues/1579
+Bug: https://gitlab.haskell.org/ghc/ghc/-/issues/25699
+Signed-off-by: hololeap <hololeap@protonmail.com>
+--- a/compiler/cbits/genSym.c
++++ b/compiler/cbits/genSym.c
+@@ -3,6 +3,10 @@
+ #include "Unique.h"
+ #include <ghcversion.h>
+ 
++#if MIN_VERSION_GLASGOW_HASKELL(9,8,4,0)
++#include <stg/SMP.h>
++#endif
++
+ // These global variables have been moved into the RTS.  It allows them to be
+ // shared with plugins even if two different instances of the GHC library are
+ // loaded at the same time (#19940)
+@@ -18,7 +22,7 @@ HsInt ghc_unique_inc     = 1;
+ 
+ // This function has been added to the RTS. Here we pessimistically assume
+ // that a threaded RTS is used. This function is only used for bootstrapping.
+-#if !MIN_VERSION_GLASGOW_HASKELL(9,7,0,0)
++#if !MIN_VERSION_GLASGOW_HASKELL(9,8,4,0)
+ EXTERN_INLINE StgWord64
+ atomic_inc64(StgWord64 volatile* p, StgWord64 incr)
+ {
+-- 
+2.45.3
+
