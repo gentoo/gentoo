@@ -51,7 +51,6 @@ sys-apps/systemd xkb
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
 # Untested useflag on other arches, needs keywording
 media-video/ffmpeg vmaf
-media-video/ffmpeg-compat vmaf
 
 # James Le Cuirot <chewi@gentoo.org> (2022-01-09)
 # Most usage of KMS requires GBM, which is provided by Mesa, which currently
