@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,14 +12,13 @@ SRC_URI="https://github.com/cloudflare/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 LICENSE="Apache-2.0 BSD BSD-1 MIT MPL-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm64"
-IUSE="hardened"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.4.1-build-fix.patch"
 )
 
 src_compile() {
-	CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')" emake VERSION="${PV}"
+	emake VERSION="${PV}"
 }
 
 src_install() {
