@@ -6,7 +6,7 @@ EAPI=8
 inherit desktop eapi9-pipestatus linux-info readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="Video conferencing and web conferencing service"
-HOMEPAGE="https://zoom.us/"
+HOMEPAGE="https://www.zoom.com/"
 SRC_URI="https://zoom.us/client/${PV}/${PN}_x86_64.tar.xz -> ${P}_x86_64.tar.xz"
 S="${WORKDIR}/${PN}"
 
@@ -33,11 +33,14 @@ RDEPEND="zoom-symlink? ( !games-engines/zoom )
 	sys-apps/dbus
 	sys-apps/util-linux
 	sys-libs/glibc
-	virtual/zlib:=
+	virtual/glu
 	virtual/libudev
 	virtual/opengl
+	virtual/zlib:=
 	x11-libs/cairo
 	x11-libs/libdrm
+	x11-libs/libICE
+	x11-libs/libSM
 	x11-libs/libX11
 	x11-libs/libxcb
 	x11-libs/libXcomposite
