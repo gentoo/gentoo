@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=( {19..21} )
+LLVM_COMPAT=( {19..22} )
 RUST_MIN_VER="1.90.0"
 
 inherit cargo edo multiprocessing llvm-r2 shell-completion
