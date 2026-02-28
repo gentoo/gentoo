@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ SRC_URI="https://gitlab.com/-/project/12934202/uploads/487082fc3449dea93e9b85904
 LICENSE="GPL-2+"
 # The subslot is the libLfunction soname major version
 SLOT="0/2"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 ~riscv"
 
 # Omit USE=mpfr for now because it's broken upstream:
 #
