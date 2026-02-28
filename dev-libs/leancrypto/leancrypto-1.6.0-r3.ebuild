@@ -20,7 +20,7 @@ else
 		verify-sig? ( https://leancrypto.org/leancrypto/releases/${P}/${P}.tar.xz.asc )
 	"
 
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~riscv ~s390 ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~m68k ~riscv ~s390 ~x86"
 
 	BDEPEND="
 		verify-sig? ( sec-keys/openpgp-keys-leancrypto )
