@@ -1,4 +1,4 @@
-# Copyright 2001-2024 Gentoo Authors
+# Copyright 2001-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,7 +27,7 @@ RDEPEND="
 		dev-python/pycairo[${PYTHON_USEDEP}]
 		>=dev-python/pygobject-3.12:3[cairo,${PYTHON_USEDEP}]
 		dev-python/pyicu[${PYTHON_USEDEP}]
-		exif? ( >=media-libs/gexiv2-0.5[${PYTHON_USEDEP},introspection] )
+		exif? ( >=media-libs/gexiv2-0.5:=[${PYTHON_USEDEP},introspection] )
 	')
 	gnome-base/librsvg:2
 	>x11-libs/gtk+-3.14.8:3[introspection]
