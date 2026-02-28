@@ -27,10 +27,10 @@ GN_MIN_VER=0.2318
 # chromium-tools/get-chromium-toolchain-strings.py (or just use Chromicler)
 # Node for M145+ should be 24.12.0 but that's not packaged in Gentoo yet. See #969145
 TEST_FONT="a28b222b79851716f8358d2800157d9ffe117b3545031ae51f69b7e1e1b9a969"
-BUNDLED_CLANG_VER="llvmorg-23-init-3706-gfc648683-1"
-BUNDLED_RUST_VER="7dc2e92b83be02dc07f87be7e94266d6e48e5ca5-1"
+BUNDLED_CLANG_VER="llvmorg-23-init-4965-g686acf63-1"
+BUNDLED_RUST_VER="c78a29473a68f07012904af11c92ecffa68fcc75-1"
 RUST_SHORT_HASH=${BUNDLED_RUST_VER:0:10}-${BUNDLED_RUST_VER##*-}
-NODE_VER="24.11.1"
+NODE_VER="24.12.0"
 ESBUILD_VER="0.25.1"
 ROLLUP_VER="4.57.1" # currently manual.
 VIRTUALX_REQUIRED="pgo"
@@ -53,7 +53,7 @@ inherit python-any-r1 readme.gentoo-r1 rust systemd toolchain-funcs virtualx xdg
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://www.chromium.org/"
 PPC64_HASH="a85b64f07b489b8c6fdb13ecf79c16c56c560fc6"
-PATCH_V="${PV%%\.*}"
+PATCH_V="${PV%%\.*}-2"
 COPIUM_COMMIT="fe1caafa06f27542c18a881348f78e984e2d9fe2"
 SRC_URI="https://github.com/chromium-linux-tarballs/chromium-tarballs/releases/download/${PV}/chromium-${PV}-linux.tar.xz
 	https://deps.gentoo.zip/www-client/chromium/rollup-wasm-node-${ROLLUP_VER}.tgz
@@ -71,18 +71,21 @@ SRC_URI="https://github.com/chromium-linux-tarballs/chromium-tarballs/releases/d
 	test? (
 		https://chromium-fonts.storage.googleapis.com/${TEST_FONT} -> chromium-testfonts-${TEST_FONT:0:10}.tar.gz
 	)
+	ppc64? (
+		https://gitlab.raptorengineering.com/raptor-engineering-public/chromium/openpower-patches/-/archive/${PPC64_HASH}/openpower-patches-${PPC64_HASH}.tar.bz2 -> chromium-openpower-${PPC64_HASH:0:10}.tar.bz2
+	)
 	pgo? ( https://github.com/elkablo/chromium-profiler/releases/download/v0.2/chromium-profiler-0.2.tar )"
 
-# https://gitweb.gentoo.org/proj/chromium-tools.git/tree/get-chromium-licences.py
-LICENSE="BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2 Base64 Boost-1.0 CC-BY-3.0 CC-BY-4.0 Clear-BSD"
-LICENSE+=" FFT2D FTL IJG ISC LGPL-2 LGPL-2.1 libpng libpng2 MIT MPL-1.1 MPL-2.0 Ms-PL openssl PSF-2"
-LICENSE+=" SGI-B-2.0 SSLeay SunSoft Unicode-3.0 Unicode-DFS-2015 Unlicense UoI-NCSA X11-Lucent"
+# https://gitweb.gentoo.org/proj/chromium-tools.git/tree/get-chromium-licences.py @ 145.0.7632.76
+LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 Base64 Boost-1.0 CC-BY-3.0 CC-BY-4.0 Clear-BSD FFT2D FTL"
+LICENSE+=" IJG ISC LGPL-2 LGPL-2.1 MIT MPL-1.1 MPL-2.0 Ms-PL PSF-2 SGI-B-2.0 SSLeay SunSoft Unicode-3.0"
+LICENSE+=" Unicode-DFS-2015 Unlicense UoI-NCSA ZLIB libtiff openssl"
 LICENSE+=" rar? ( unRAR )"
 
-SLOT="0/dev"
-# Dev exists mostly to give devs some breathing room for beta/stable releases;
-# it shouldn't be keyworded but adventurous users can select it; there's official
-# dev channel Google Chrome after all.
+SLOT="unstable"
+# Unstable in gentoo exists mostly to give devs some breathing room for beta/stable releases.
+# It shouldn't be keyworded but adventurous users are encouraged to select it;
+# there's official dev channel Google Chrome after all.
 # KEYWORDS="~amd64 ~arm64"
 
 IUSE_SYSTEM_LIBS="+system-harfbuzz +system-icu +system-zstd"
@@ -169,6 +172,8 @@ COMMON_DEPEND="
 	)
 "
 RDEPEND="${COMMON_DEPEND}
+	!www-client/chromium:0
+	www-client/chromium-common
 	!headless? (
 		|| (
 			x11-libs/gtk+:3[X?,wayland?]
@@ -384,9 +389,9 @@ pkg_setup() {
 
 src_unpack() {
 	unpack ${P}-linux.tar.xz
+	unpack chromium-patches-${PATCH_V}.tar.bz2
 	# These should only be required when we're not using the official toolchain
 	if use !bundled-toolchain; then
-		unpack chromium-patches-${PATCH_V}.tar.bz2
 		unpack chromium-patches-copium-${COPIUM_COMMIT:0:10}.tar.gz
 	fi
 
@@ -479,23 +484,10 @@ src_prepare() {
 	# Calling this here supports resumption via FEATURES=keepwork
 	python_setup
 
-	# To know which patches are safe to drop from files/ after tidying up old ebuilds:
-	# comm -13 \
-	# 	<(grep 'FILESDIR' *.ebuild | grep patch | grep -o '\${FILESDIR}/[^") ]*' \
-	#		| sed 's|\${FILESDIR}/|files/|; s|\${PN}|chromium|' | sort -u) \
-	# 	<(find files/ -name "*.patch" | sort)
+	# We'll fill this in as we go. Patches go in chromium-patches.
+	local PATCHES=()
 
-	local PATCHES=(
-		"${FILESDIR}/${PN}-cross-compile.patch"
-		"${FILESDIR}/${PN}-109-system-zlib.patch"
-		"${FILESDIR}/${PN}-131-unbundle-icu-target.patch"
-		"${FILESDIR}/${PN}-138-nodejs-version-check.patch"
-		"${FILESDIR}/cr144-glibc-2.43.patch"
-		"${FILESDIR}/cr145-oauth2-client-switches.patch"
-		"${FILESDIR}/cr145-revert-to-rollup-wasm.patch"
-	)
-	# No copium patches here: they should only need to apply to unbundled toolchain builds
-	# and don't get fetched or unpacked.
+	PATCHES+=( "${WORKDIR}/chromium-patches-${PATCH_V}/common/" )
 
 	# https://issues.chromium.org/issues/442698344
 	# Unreleased fontconfig changed magic numbers and google have rolled to this version
@@ -533,7 +525,7 @@ src_prepare() {
 		# Automate conditional application of chromium-patches
 		# The directory structure is expected to be something like:
 		# chromium-patches-145/
-		# ├── common/
+		# ├── toolchain/
 		# │   ├── cr123-foo.patch
 		# │   └── cr135-bar.patch
 		# ├── llvm/
@@ -553,6 +545,9 @@ src_prepare() {
 			if [[ "${category_name}" == "ppc64le" ]]; then
 				use ppc64 || continue
 			fi
+
+			# We applied common patches above, no need to apply them again here
+			[[ "${category_name}" == "common" ]] && continue
 
 			# Unconditional patches for this category
 			PATCHES+=( "${category}"*.patch )
@@ -942,7 +937,6 @@ src_prepare() {
 	fi
 
 	if use test; then
-		# tar tvf /var/cache/distfiles/${P}-testdata.tar.xz | grep '^d' | grep 'third_party' | awk '{print $NF}'
 		keeplibs+=(
 			third_party/breakpad/breakpad/src/processor
 			third_party/fuzztest
@@ -1187,6 +1181,9 @@ chromium_configure() {
 		"dcheck_is_configurable=$(usex debug true false)"
 		# Chromium builds provided by Linux distros should disable the testing config
 		"disable_fieldtrial_testing_config=true"
+		# Custom patch: Enable building Chromium as individual channels (e.g. stable, beta, dev) that
+		# use different profile directories, desktop entries, etc. This enables slotting the ebuild.
+		"enable_channel_branding=true"
 		# 131 began laying the groundwork for replacing freetype with
 		# "Rust-based Fontations set of libraries plus Skia path rendering"
 		# We now need to opt-in
@@ -1346,6 +1343,9 @@ chromium_configure() {
 		myconf_gn+=( "v8_enable_external_code_space=false" )
 	fi
 
+	# Since we build from tarballs, we need to set the channel here so that it can be used in the build.
+	export CHROME_VERSION_EXTRA="${SLOT}"
+
 	einfo "Configuring Chromium ..."
 	set -- gn gen --args="${myconf_gn[*]}${EXTRA_GN:+ ${EXTRA_GN}}" out/Release
 	echo "$@"
@@ -1464,16 +1464,22 @@ src_compile() {
 	rm -f out/Release/locales/*.pak.info || die
 
 	# Generate support files (desktop file, manpage, etc.) See: #684550 #706786 #968958
-	python3 "${FILESDIR}/generate-support-files.py" --installdir "/usr/$(get_libdir)/chromium-browser" ||
-		die "Failed to generate support files"
+	${EPYTHON} "${FILESDIR}/generate-support-files.py" \
+		--installdir "/usr/$(get_libdir)/chromium-browser" \
+		--channel "${SLOT}" ||
+			die "Failed to generate support files"
 }
 
 src_test() {
+	# Tests may be flaky with usersandbox, and the test runner executes significantly faster without.
+	# If you seem to be excluding too many tests for a particular milestone: comment them out, reboot, and
+	# run the tests again. If that doesn't help, try FEATURES="-usersandbox" and send it because obviously the
+	# chromium gods are not smiling upon you today. Do some runtime testing, obvs.
 	local skip_tests=(
 		# Wildcard exclusions (if all tests in a test suite are broken)
 		'AlternateTestParams/PartitionAllocDeathTest.RepeatedAllocReturnNullDirect/*'
 		'AlternateTestParams/PartitionAllocDeathTest.RepeatedReallocReturnNullDirect/*'
-		'AlternateTestParams/PartitionAllocTest.*' # 200+ tests, <= 1 crashes entire test runner with usersandbox.
+		'AlternateTestParams/PartitionAllocTest.*' # 200+ tests, >= 1 crashes entire test runner with usersandbox.
 		'CheckExitCodeAfterSignalHandlerDeathTest.*'
 		'CriticalProcessAndThreadSpotChecks/HangWatcherAnyCriticalThreadTests.*'
 		'LazyThreadPoolTaskRunnerEnvironmentTest.*' # M142
@@ -1504,7 +1510,13 @@ src_test() {
 }
 
 src_install() {
-	local CHROMIUM_HOME="/usr/$(get_libdir)/chromium-browser"
+	local browser_suffix
+	if [[ "${SLOT}" != "stable" ]]; then
+		browser_suffix="-${SLOT}"
+	else
+		browser_suffix=""
+	fi
+	local CHROMIUM_HOME="/usr/$(get_libdir)/chromium-browser${browser_suffix}"
 	exeinto "${CHROMIUM_HOME}"
 	doexe out/Release/chrome
 
@@ -1517,24 +1529,28 @@ src_install() {
 	ozone_auto_session () {
 		use X && use wayland && ! use headless && echo true || echo false
 	}
-	local sedargs=( -e
-			"s:/usr/lib/:/usr/$(get_libdir)/:g;
-			s:@@OZONE_AUTO_SESSION@@:$(ozone_auto_session):g"
-	)
-	sed "${sedargs[@]}" "${FILESDIR}/chromium-launcher-r7.sh" > chromium-launcher.sh || die
-	doexe chromium-launcher.sh
+
+	cat <<- EOF > "${D}${CHROMIUM_HOME}/chromium-launcher.sh" || die
+		#!/bin/bash
+		# Wrapper to launch slotted Chromium via the chromium-common launcher script.
+		export CHROME_DESKTOP="chromium-browser${browser_suffix}.desktop"
+		export CHROME_EXEC_NAME="chromium-browser${browser_suffix}"
+		export CHROME_VERSION_EXTRA="${SLOT}"
+		export PROGDIR="/usr/$(get_libdir)/chromium-browser${browser_suffix}"
+		export OZONE_AUTO_SESSION=$(ozone_auto_session)
+
+		exec /usr/libexec/chromium/chromium-launcher.sh "\$@"
+	EOF
+
+	chmod 755 "${D}${CHROMIUM_HOME}/chromium-launcher.sh" || die
 
 	# It is important that we name the target "chromium-browser",
 	# xdg-utils expect it; bug #355517.
-	dosym "${CHROMIUM_HOME}/chromium-launcher.sh" /usr/bin/chromium-browser
+	dosym "${CHROMIUM_HOME}/chromium-launcher.sh" /usr/bin/chromium-browser${browser_suffix}
 	# keep the old symlink around for consistency
-	dosym "${CHROMIUM_HOME}/chromium-launcher.sh" /usr/bin/chromium
+	dosym "${CHROMIUM_HOME}/chromium-launcher.sh" /usr/bin/chromium${browser_suffix}
 
-	dosym "${CHROMIUM_HOME}/chromedriver" /usr/bin/chromedriver
-
-	# Allow users to override command-line options, bug #357629.
-	insinto /etc/chromium
-	newins "${FILESDIR}/chromium.default" "default"
+	dosym "${CHROMIUM_HOME}/chromedriver" /usr/bin/chromedriver${browser_suffix}
 
 	pushd out/Release/locales > /dev/null || die
 	chromium_remove_language_paks
@@ -1588,23 +1604,23 @@ src_install() {
 				*) branding="chrome/app/theme/chromium" ;;
 		esac
 		newicon -s ${size} "${branding}/product_logo_${size}.png" \
-			chromium-browser.png
+			chromium-browser${browser_suffix}.png
 	done
 
 	# Install desktop entry
-	domenu out/Release/chromium-browser-chromium.desktop
+	domenu out/Release/chromium-browser${browser_suffix}.desktop
 
 	# Install GNOME default application entry (bug #303100).
 	insinto /usr/share/gnome-control-center/default-apps
-	doins out/Release/chromium-browser.xml
+	doins out/Release/chromium-browser${browser_suffix}.xml
 
 	# Install AppStream metadata
 	insinto /usr/share/appdata
-	doins out/Release/chromium-browser.appdata.xml
+	doins out/Release/chromium-browser${browser_suffix}.appdata.xml
 
 	# Install manpage; bug #684550
-	doman out/Release/chromium-browser.1
-	dosym chromium-browser.1 /usr/share/man/man1/chromium.1
+	doman out/Release/chromium-browser${browser_suffix}.1
+	dosym chromium-browser${browser_suffix}.1 /usr/share/man/man1/chromium${browser_suffix}.1
 
 	readme.gentoo_create_doc
 }
