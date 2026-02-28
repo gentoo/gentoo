@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -m68k
 
+# James Le Cuirot <chewi@gentoo.org> (2026-02-28)
+# Unkeyworded and untested on m68k.
+systemtap
+
 # James Le Cuirot <chewi@gentoo.org> (2025-11-22)
 # Vala looks like it would work well enough, but m68k doesn't need it.
 vala
