@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,6 @@ SRC_URI="https://github.com/flannel-io/flannel/archive/refs/tags/v${PV}.tar.gz -
 LICENSE="Apache-2.0"
 LICENSE+=" BSD ISC LGPL-3 MIT"
 SLOT="0"
-IUSE="hardened"
 
 RESTRICT+=" test"
 
@@ -24,7 +23,6 @@ src_prepare() {
 }
 
 src_compile() {
-	CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')"\
 	ego build -o dist/flanneld -ldflags "
 		-X github.com/flannel-io/flannel/version.Version=v${PV}
 		-extldflags \"-static\"" . || die
