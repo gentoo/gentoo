@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,6 @@ LICENSE="Apache-2.0"
 LICENSE+=" Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 KEYWORDS="amd64 arm64 ~ppc64 ~riscv"
-IUSE="hardened"
 
 RDEPEND="net-firewall/iptables"
 
@@ -23,7 +22,6 @@ CONFIG_CHECK="~BRIDGE_VLAN_FILTERING ~NETFILTER_XT_MATCH_COMMENT
 	~NETFILTER_XT_MATCH_MULTIPORT"
 
 src_compile() {
-	local -x CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')"
 	local f
 	for f in plugins/{meta,main,ipam}/*; do
 		[[ ${f} == *windows* ]] && continue
