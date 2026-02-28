@@ -1,0 +1,11 @@
+--- a/PDP11/pdp11_ch.c  2026-02-28 11:07:01.660942133 +0100
++++ b/PDP11/pdp11_ch.c  2026-02-28 11:09:16.175650464 +0100
+@@ -271,7 +271,7 @@
+   CONST uint8 *p;
+ 
+   tmxr_poll_rx (&ch_tmxr);
+-  if (tmxr_get_packet_ln (&ch_lines[0], &p, &count) != SCPE_OK) {
++  if (tmxr_get_packet_ln (&ch_lines[0], (const uint8 **)&p, &count) != SCPE_OK) {
+     sim_debug (DBG_ERR, &ch_dev, "TMXR error receiving packet\n");
+     return 0;
+   }

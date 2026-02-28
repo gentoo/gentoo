@@ -1,0 +1,20 @@
+--- a/makefile	2024-07-18 20:13:38.000000000 +0200
++++ b/makefile	2026-02-28 10:34:57.744086328 +0100
+@@ -1215,7 +1215,7 @@
+   BUILD_FEATURES = - debugging support
+ else
+   ifneq (,$(findstring clang,$(COMPILER_NAME))$(findstring LLVM,$(COMPILER_NAME)))
+-    CFLAGS_O = -O2 -fno-strict-overflow
++    CFLAGS_O ?= -O2 -fno-strict-overflow
+     GCC_OPTIMIZERS_CMD = ${GCC} --help
+     NO_LTO = 1
+   else
+@@ -1223,7 +1223,7 @@
+     ifeq (Darwin,$(OSTYPE))
+       CFLAGS_O += -O4 -flto -fwhole-program
+     else
+-      CFLAGS_O := -O2
++      CFLAGS_O ?= -O2
+     endif
+   endif
+   LDFLAGS_O = 
