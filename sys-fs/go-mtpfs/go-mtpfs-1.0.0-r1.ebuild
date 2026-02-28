@@ -26,11 +26,11 @@ DEPEND="${RDEPEND}
 RESTRICT+=" test"
 
 src_compile() {
-	ego build 6.23.0.
+	ego build .
 }
 
 src_test() {
-	ego test 6.23.0fs usb mtp
+	ego test fs usb mtp
 }
 
 src_install() {

@@ -35,5 +35,5 @@ src_test() {
 
 src_install() {
 	dobin go-mtpfs
-dodoc README.md
+	dodoc README.md
 }
