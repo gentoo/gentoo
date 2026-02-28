@@ -1,4 +1,4 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit vdr-plugin-2
 
 DESCRIPTION="VDR Skin Plugin: skinelchihd"
-HOMEPAGE="http://firefly.vdr-developer.org/skinelchihd/index.html"
+HOMEPAGE="https://github.com/FireFlyVDR/vdr-plugin-skinelchihd"
 SRC_URI="https://github.com/FireFlyVDR/vdr-plugin-skinelchihd/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/vdr-plugin-skinelchihd-${PV}"
 
