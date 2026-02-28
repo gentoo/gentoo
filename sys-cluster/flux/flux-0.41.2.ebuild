@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,6 @@ S="${WORKDIR}/flux2-${PV}"
 LICENSE="Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="hardened"
 
 BDEPEND=">=dev-lang/go-1.19"
 
@@ -23,8 +22,7 @@ RESTRICT+=" test"
 
 src_compile() {
 	mv "${WORKDIR}"/manifests cmd/"${PN}" || die
-	CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')" \
-		ego build -ldflags="-s -w -X main.VERSION=${PV}" -o ./bin/${PN} ./cmd/${PN}
+	ego build -ldflags="-s -w -X main.VERSION=${PV}" -o ./bin/${PN} ./cmd/${PN}
 }
 
 src_install() {
