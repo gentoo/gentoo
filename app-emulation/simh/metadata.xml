@@ -2,7 +2,18 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
+	<longdescription>
+		This ebuild contains the "classic" version of SimH, the 3.X
+		stream, as maintained by the original author.
+
+		There is separate fork v4 fork on GitHub under the name Open-SimH,
+		with additional simulators which is in developement.
+	</longdescription>
 	<upstream>
-		<remote-id type="github">simh/simh</remote-id>
+		<maintainer>
+			<name>Robert M Supnik</name>
+			<email>simh@groups.io</email>
+		</maintainer>
+		<doc>https://simh.trailing-edge.com/</doc>
 	</upstream>
 </pkgmetadata>
