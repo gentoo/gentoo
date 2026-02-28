@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/containerd/containerd/archive/v${PV}.tar.gz -> ${P}.
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ppc64 ~riscv ~x86"
-IUSE="apparmor btrfs device-mapper +cri hardened +seccomp selinux test"
+IUSE="apparmor btrfs device-mapper +cri +seccomp selinux test"
 
 COMMON_DEPEND="
 	btrfs? ( sys-fs/btrfs-progs )
@@ -59,7 +59,6 @@ src_compile() {
 
 	myemakeargs=(
 		BUILDTAGS="${options[*]}"
-		LDFLAGS="$(usex hardened '-extldflags -fno-PIC' '')"
 		REVISION="${GIT_REVISION}"
 		VERSION=v${PV}
 	)
