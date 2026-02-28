@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit autotools systemd tmpfiles toolchain-funcs
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/nlnetlabs.asc
+inherit autotools systemd tmpfiles toolchain-funcs verify-sig
 
 DESCRIPTION="An authoritative only, high performance, open source name server"
 HOMEPAGE="https://www.nlnetlabs.nl/projects/nsd/about/"
@@ -18,7 +19,10 @@ else
 	MY_P="${PN}-${MY_PV}"
 
 	if [[ ${PV} != *_beta* && ${PV} != *_rc* ]] ; then
-		SRC_URI="https://www.nlnetlabs.nl/downloads/${PN}/${MY_P}.tar.gz"
+		SRC_URI="
+				https://www.nlnetlabs.nl/downloads/${PN}/${MY_P}.tar.gz
+				verify-sig? ( https://www.nlnetlabs.nl/downloads/nsd/${MY_P}.tar.gz.asc )
+		"
 		S="${WORKDIR}"/${MY_P}
 
 		KEYWORDS="~amd64 ~arm64 ~x86"
@@ -53,6 +57,7 @@ BDEPEND="
 	app-alternatives/yacc
 	systemd? ( virtual/pkgconfig )
 	xdp? ( llvm-core/clang:*[llvm_targets_BPF] )
+	verify-sig? ( >=sec-keys/openpgp-keys-nlnetlabs-20260101 )
 "
 
 PATCHES=(
