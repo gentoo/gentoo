@@ -2846,9 +2846,11 @@ gcc_movelibs() {
 	# Without this, we end up either unable to find the libgomp spec/archive, or
 	# we underlink and can't find gomp_nvptx_main (presumably because we can't find the plugin)
 	# https://src.fedoraproject.org/rpms/gcc/blob/02c34dfa3627ef05d676d30e152a66e77b58529b/f/gcc.spec#_1445
-	if [[ ${CATEGORY} == cross-accel-nvptx* ]] && is_fortran ; then
+	if [[ ${CATEGORY} == cross-accel-nvptx* ]] ; then
 		rm -rf "${ED}"/usr/libexec/gcc/nvptx-none/${GCCMAJOR}/install-tools
-		rm -rf "${ED}"/usr/libexec/gcc/${CHOST}/${GCCMAJOR}/accel/nvptx-none/{install-tools,plugin,cc1,cc1plus,f951}
+		rm -rf "${ED}"/usr/libexec/gcc/${CHOST}/${GCCMAJOR}/accel/nvptx-none/{install-tools,plugin,cc1,cc1plus}
+		is_fortran && rm -rf "${ED}"/usr/libexec/gcc/${CHOST}/${GCCMAJOR}/accel/nvptx-none/f951
+
 		rm -rf "${ED}"/usr/lib/gcc/nvptx-none/${GCCMAJOR}/{install-tools,plugin}
 		rm -rf "${ED}"/usr/lib/gcc/${CHOST}/${GCCMAJOR}/accel/nvptx-none/{install-tools,plugin,include-fixed}
 		mv "${ED}"/usr/nvptx-none/lib/*.{a,spec} "${ED}"/usr/lib/gcc/${CHOST}/${GCCMAJOR}/accel/nvptx-none/
