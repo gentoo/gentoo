@@ -34,7 +34,7 @@ RESTRICT="!test? ( test )"
 # libepoxy bindings do not support GLX, so we fall back to GLEW otherwise.
 RDEPEND="
 	>=dev-games/physfs-3.0
-	dev-libs/libfmt
+	dev-libs/libfmt:=
 	media-libs/freetype
 	media-libs/libpng:0=
 	>=media-libs/libsdl2-2.0.1[joystick,video]
