@@ -8,7 +8,6 @@
 	<use>
 		<flag name="dbus">Build bindings for the QtDBus module</flag>
 		<flag name="declarative">Build bindings for the QtQml and QtQuick modules and enable the qmlscene plugin</flag>
-		<flag name="designer">Build bindings for the QtDesigner module and enable the designer plugin</flag>
 		<flag name="gui">Build bindings for the QtGui module</flag>
 		<flag name="multimedia">Build bindings for the QtMultimedia module</flag>
 		<flag name="network">Build bindings for the QtNetwork module</flag>
