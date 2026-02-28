@@ -16,7 +16,7 @@ LICENSE="CC-BY-SA-4.0"
 
 SLOT="$(ver_cut 1)"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 # Migrate to virtual/imagemagick-tools when it supports jpegxl:
 # https://bugs.gentoo.org/953960
