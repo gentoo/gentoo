@@ -2,4 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
+	<upstream>
+		<bugs-to>https://gitlab.torproject.org/tpo/core/torsocks/-/issues</bugs-to>
+		<changelog>https://gitlab.torproject.org/tpo/core/torsocks/-/blob/main/ChangeLog</changelog>
+	</upstream>
 </pkgmetadata>
