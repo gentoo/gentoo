@@ -1,4 +1,4 @@
-# Copyright 2021-2025 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ LICENSE+="
 	LGPL-3+ MIT MPL-2.0 UoI-NCSA Unicode-3.0 ZLIB
 "
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="X"
 
 DEPEND="
