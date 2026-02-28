@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,15 +18,13 @@ LICENSE="Apache-2.0 BSD ISC MIT"
 SLOT="0"
 
 KEYWORDS="~amd64"
-IUSE="hardened"
 
 BDEPEND=">=dev-lang/go-1.19"
 
 RESTRICT+=" test"
 
 src_compile() {
-	CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')" \
-		emake -j1 GOFLAGS="" GOLDFLAGS="" LDFLAGS="" VERSION="v${PV}" ${PN}
+	emake -j1 GOFLAGS="" GOLDFLAGS="" LDFLAGS="" VERSION="v${PV}" ${PN}
 }
 
 src_install() {
