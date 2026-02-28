@@ -1,39 +1,22 @@
-# Copyright 2003-2025 Gentoo Authors
+# Copyright 2003-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 WANT_LIBTOOL="none"
 
 inherit autotools
 
-if [[ "${PV}" == "9999" ]]; then
-	inherit git-r3
-
-	EGIT_REPO_URI="https://github.com/s-yata/darts-clone"
-else
-	DARTS_CLONE_GIT_REVISION="e40ce4627526985a7767444b6ed6893ab6ff8983"
-fi
-
 DESCRIPTION="Darts-clone (Double-ARray Trie System) C++ library"
 # Original upstream: http://chasen.org/~taku/software/darts/
 HOMEPAGE="https://github.com/s-yata/darts-clone https://code.google.com/archive/p/darts-clone/"
-if [[ "${PV}" == "9999" ]]; then
-	SRC_URI=""
-else
-	SRC_URI="https://github.com/s-yata/darts-clone/archive/${DARTS_CLONE_GIT_REVISION}.tar.gz -> ${P}.tar.gz"
-fi
+SRC_URI="https://github.com/s-yata/darts-clone/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="amd64 arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86"
-IUSE=""
-
-BDEPEND=""
-DEPEND=""
-RDEPEND=""
 
 if [[ "${PV}" != "9999" ]]; then
-	S="${WORKDIR}/darts-clone-${DARTS_CLONE_GIT_REVISION}"
+	S="${WORKDIR}/darts-clone-${PV}"
 fi
 
 src_prepare() {
