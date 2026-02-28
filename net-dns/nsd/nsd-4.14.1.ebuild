@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools systemd tmpfiles toolchain-funcs
 
 DESCRIPTION="An authoritative only, high performance, open source name server"
-HOMEPAGE="https://www.nlnetlabs.nl/projects/nsd"
+HOMEPAGE="https://www.nlnetlabs.nl/projects/nsd/about/"
 
 if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
