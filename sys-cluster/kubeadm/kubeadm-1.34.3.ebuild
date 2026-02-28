@@ -15,7 +15,7 @@ LICENSE="Apache-2.0"
 LICENSE+=" Apache-2.0 BSD BSD-2 ISC MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
-IUSE="hardened selinux"
+IUSE="selinux"
 RESTRICT="test"
 
 RDEPEND="app-containers/cri-tools
@@ -25,8 +25,7 @@ BDEPEND=">=dev-lang/go-1.24.6"
 QA_PRESTRIPPED=usr/bin/kubeadm
 
 src_compile() {
-	CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')" FORCE_HOST_GO=yes \
-		emake -j1 GOFLAGS="${GOFLAGS}" GOLDFLAGS="" LDFLAGS="" WHAT=cmd/${PN}
+	FORCE_HOST_GO=yes emake -j1 GOFLAGS="${GOFLAGS}" GOLDFLAGS="" LDFLAGS="" WHAT=cmd/${PN}
 
 	if ! tc-is-cross-compiler; then
 		einfo "generating shell completion files"

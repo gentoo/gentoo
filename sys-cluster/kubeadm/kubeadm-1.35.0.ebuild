@@ -15,7 +15,7 @@ LICENSE="Apache-2.0"
 LICENSE+=" Apache-2.0 BSD BSD-2 ISC MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
-IUSE="hardened selinux"
+IUSE="selinux"
 RESTRICT="test"
 
 RDEPEND="app-containers/cri-tools
@@ -27,8 +27,7 @@ QA_PRESTRIPPED=usr/bin/kubeadm
 src_compile() {
 	local GOOS=$(go-env_goos)
 
-	CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')" \
-		emake -j1 GOFLAGS="${GOFLAGS}" GOLDFLAGS="" LDFLAGS="" FORCE_HOST_GO=yes \
+	emake -j1 GOFLAGS="${GOFLAGS}" GOLDFLAGS="" LDFLAGS="" FORCE_HOST_GO=yes \
 		KUBE_BUILD_PLATFORMS="${GOOS}/${GOARCH}" KUBE_${GOOS@U}_${GOARCH@U}_CC="${CC}" \
 		WHAT=cmd/${PN}
 
