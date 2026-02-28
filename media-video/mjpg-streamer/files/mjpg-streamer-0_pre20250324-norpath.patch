@@ -1,0 +1,13 @@
+diff --git a/mjpg-streamer-experimental/CMakeLists.txt b/mjpg-streamer-experimental/CMakeLists.txt
+--- a/mjpg-streamer-experimental/CMakeLists.txt
++++ b/mjpg-streamer-experimental/CMakeLists.txt
+@@ -84,9 +84,6 @@
+ #     need to do it
+ 
+ set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,--enable-new-dtags")
+-set (CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
+-set (CMAKE_INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/${MJPG_STREAMER_PLUGIN_INSTALL_PATH})
+-set (CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+ 
+ 
+ add_executable(mjpg_streamer mjpg_streamer.c
