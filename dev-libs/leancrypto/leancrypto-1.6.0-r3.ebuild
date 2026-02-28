@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit dot-a meson-multilib
+inherit dot-a meson-multilib toolchain-funcs
 
 DESCRIPTION="Lean cryptographic library usable for bare-metal environments "
 HOMEPAGE="https://leancrypto.org/"
@@ -46,6 +46,8 @@ src_configure() {
 }
 
 multilib_src_configure() {
+	tc-ld-is-mold && tc-ld-force-bfd
+
 	local native_file="${T}"/meson.${CHOST}.${ABI}.ini.local
 	cat >> ${native_file} <<-EOF || die
 	[binaries]
