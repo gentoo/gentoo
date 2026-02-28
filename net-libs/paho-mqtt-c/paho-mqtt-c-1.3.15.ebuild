@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ S="${WORKDIR}/paho.mqtt.c-${PV}"
 
 LICENSE="EPL-2.0"
 SLOT="1.3"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="doc examples +high-performance +ssl test"
 
 # Building samples needs ssl: #912262
