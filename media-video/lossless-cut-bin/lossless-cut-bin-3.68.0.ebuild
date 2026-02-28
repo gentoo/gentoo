@@ -1,4 +1,4 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,14 +13,13 @@ HOMEPAGE="
 SRC_URI="
 	amd64? ( https://github.com/mifi/lossless-cut/releases/download/v${PV}/LosslessCut-linux-x64.tar.bz2 -> lossless-cut-amd64-${PV}.tar.bz2 )
 	arm64? ( https://github.com/mifi/lossless-cut/releases/download/v${PV}/LosslessCut-linux-arm64.tar.bz2 -> lossless-cut-arm64-${PV}.tar.bz2 )
-	arm? ( https://github.com/mifi/lossless-cut/releases/download/v${PV}/LosslessCut-linux-armv7l.tar.bz2 -> lossless-cut-arm-${PV}.tar.bz2 )
 "
 
 S="${WORKDIR}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="+system-ffmpeg"
 RESTRICT="splitdebug"
 
