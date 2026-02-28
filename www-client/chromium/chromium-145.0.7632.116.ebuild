@@ -1602,7 +1602,7 @@ src_install() {
 	done
 
 	# Install desktop entry
-	domenu out/Release/chromium-browser-chromium.desktop
+	domenu out/Release/chromium-browser.desktop
 
 	# Install GNOME default application entry (bug #303100).
 	insinto /usr/share/gnome-control-center/default-apps

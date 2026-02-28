@@ -59,6 +59,6 @@ if @@OZONE_AUTO_SESSION@@; then
 fi
 
 # Set the .desktop file name
-export CHROME_DESKTOP="chromium-browser-chromium.desktop"
+export CHROME_DESKTOP="chromium-browser.desktop"
 
 exec -a "chromium-browser" "$PROGDIR/chrome" --extra-plugin-dir=/usr/lib/nsbrowser/plugins ${CHROMIUM_FLAGS} "$@"
