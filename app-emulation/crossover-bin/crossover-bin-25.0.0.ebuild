@@ -65,7 +65,10 @@ RDEPEND="${DEPEND}
 	dev-util/desktop-file-utils
 	media-libs/alsa-lib[abi_x86_32(-)]
 	media-libs/freetype:2[abi_x86_32(-)]
-	media-libs/mesa[abi_x86_32(-),osmesa?]
+	|| (
+		<media-libs/mesa-25.1.0[abi_x86_32(-),osmesa?]
+		>=media-libs/mesa-25.1.0[abi_x86_32(-)]
+	)
 	media-libs/tiff-compat:4[abi_x86_32(-)]
 	sys-auth/nss-mdns[abi_x86_32(-)]
 	sys-apps/util-linux[abi_x86_32(-)]
