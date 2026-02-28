@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,11 +26,11 @@ DEPEND="${RDEPEND}
 RESTRICT+=" test"
 
 src_compile() {
-	ego build -ldflags '-extldflags=-fno-PIC' .
+	ego build 6.23.0.
 }
 
 src_test() {
-	ego test -ldflags '-extldflags=-fno-PIC' fs usb mtp
+	ego test 6.23.0fs usb mtp
 }
 
 src_install() {
