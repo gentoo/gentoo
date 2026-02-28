@@ -17,7 +17,7 @@ LICENSE="GPL-3 LGPL-2.1+"
 # Subslot format:
 # <libgnutls.so number>.<libgnutlsxx.so number>
 SLOT="0/30.30"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~riscv ~s390 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~m68k ~riscv ~s390 ~x86"
 IUSE="brotli +cxx dane doc examples +idn nls +openssl pkcs11 +post-quantum sslv2 sslv3"
 IUSE+=" systemtap static-libs test test-full +tls-heartbeat tools zlib zstd"
 REQUIRED_USE="test-full? ( cxx dane doc examples idn nls openssl pkcs11 tls-heartbeat tools )"
