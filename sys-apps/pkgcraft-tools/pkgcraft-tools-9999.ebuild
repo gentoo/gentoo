@@ -6,7 +6,7 @@ EAPI=8
 LLVM_COMPAT=( {19..22} )
 RUST_MIN_VER="1.90.0"
 
-inherit cargo edo multiprocessing llvm-r2 shell-completion
+inherit cargo edo llvm-r2 multiprocessing shell-completion
 
 DESCRIPTION="pkgcraft-based tools for Gentoo"
 HOMEPAGE="https://pkgcraft.github.io/"
