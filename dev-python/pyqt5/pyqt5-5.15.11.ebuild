@@ -127,6 +127,7 @@ python_configure_all() {
 		--disable=QtWebChannel
 		--disable=QtWebSockets
 		--disable=QtXmlPatterns
+		--no-designer-plugin
 
 		$(usev debug '--debug --qml-debug --tracing')
 
@@ -135,7 +136,6 @@ python_configure_all() {
 		# plugins when using wheels w/ pep517 so, *if* something does need
 		# them, it will need to be handled manually
 		$(usev !declarative --no-qml-plugin)
-		$(usev !designer --no-designer-plugin)
 
 		$(usev gles2-only --disabled-feature=PyQt_Desktop_OpenGL)
 		$(usev !ssl --disabled-feature=PyQt_SSL)
