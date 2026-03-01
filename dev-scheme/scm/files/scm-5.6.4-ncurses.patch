@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/557322
+This is only way to make this compile with C99 and up:
+Force cast one opaque pointer type to another.
+--- a/crs.c
++++ b/crs.c
+@@ -69,8 +69,8 @@
+   bwaddch,
+   bwaddstr,
+   bwwrite,
+-  wrefresh,
+-  wgetch,
++  (int (*)(FILE *))wrefresh,
++  (int (*)(FILE *))wgetch,
+   freewindow};
+ 
+ SCM mkwindow(win)
