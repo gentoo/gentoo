@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Marek Szuba <marecki@gentoo.org> (2023-11-12)
@@ -21,9 +21,6 @@ dev-python/pyside webchannel
 
 # Required by sys-apps/flatpak, a dependency of kde-plasma/discover
 dev-util/ostree curl
-
-# Required by app-editors/okteta:5
-dev-qt/qtscript:5 scripttools
 
 # Required by kde-apps/akonadi:6
 dev-qt/qtbase:6 mysql
