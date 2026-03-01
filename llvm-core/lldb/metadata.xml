@@ -13,5 +13,8 @@
 			and <pkg>dev-cpp/cpp-httplib</pkg>) to match
 			<pkg>llvm-core/llvm</pkg>.
 		</flag>
+		<flag name="tree-sitter">
+			Enable source highlighting through <pkg>dev-libs/tree-sitter</pkg>.
+		</flag>
 	</use>
 </pkgmetadata>

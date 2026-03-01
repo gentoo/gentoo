@@ -11,7 +11,7 @@ HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0/${LLVM_SOABI}"
-IUSE="+debug debuginfod +libedit lzma ncurses +python test +xml"
+IUSE="+debug debuginfod +libedit lzma ncurses +python test +tree-sitter +xml"
 RESTRICT="test"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
@@ -23,6 +23,7 @@ DEPEND="
 	libedit? ( dev-libs/libedit:0= )
 	lzma? ( app-arch/xz-utils:= )
 	ncurses? ( >=sys-libs/ncurses-5.9-r3:0= )
+	tree-sitter? ( dev-libs/tree-sitter:= )
 	xml? ( dev-libs/libxml2:= )
 	~llvm-core/clang-${PV}
 	~llvm-core/llvm-${PV}[debuginfod=]
@@ -70,6 +71,7 @@ src_configure() {
 		-DLLDB_ENABLE_LZMA=$(usex lzma)
 		-DLLDB_ENABLE_LIBXML2=$(usex xml)
 		-DLLVM_ENABLE_TERMINFO=$(usex ncurses)
+		-DLLVM_ENABLE_TREESITTER=$(usex tree-sitter)
 
 		-DLLDB_INCLUDE_TESTS=$(usex test)
 
