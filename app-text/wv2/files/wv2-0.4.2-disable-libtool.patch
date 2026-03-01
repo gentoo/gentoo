@@ -1,0 +1,20 @@
+Creation of the libtool file were causing build failure with newer cmake.
+Since Gentoo has no use for the la file no reason to generate it.
+
+Bug: https://bugs.gentoo.org/948605
+Bug: https://bugs.gentoo.org/970307
+Origin: an original patch for Gentoo
+Author: Alexander Golubev (Fat-Zer) <fatzer2@gmail.com>
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index f001384..5d924a3 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -103,5 +103,5 @@ INSTALL( FILES ${wv2_HEADERS}
+ # libtool files are useless for Visual C++ and Borland C++
+ IF( NOT MSVC AND NOT BORLAND )
+-  INCLUDE( ${wvWare_SOURCE_DIR}/cmake/MacroCreateLibtoolFile.cmake )
+-  CREATE_LIBTOOL_FILE( wv2 /lib${LIB_SUFFIX} )
++  # INCLUDE( ${wvWare_SOURCE_DIR}/cmake/MacroCreateLibtoolFile.cmake )
++  # CREATE_LIBTOOL_FILE( wv2 /lib${LIB_SUFFIX} )
+ ENDIF( NOT MSVC AND NOT BORLAND )
+
