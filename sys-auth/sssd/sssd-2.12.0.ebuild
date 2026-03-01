@@ -128,41 +128,9 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/sss_certmap.h
 )
 
-sssd_migrate_files() {
-	if has_version "<=sys-auth/sssd-2.9.9999"
-	then
-		einfo "Checking if sssd is running"
-		if [ -f /run/sssd.pid ]
-		then
-			elog "Please stop sssd after installing before"
-			elog "performing the migration process"
-		fi
-		einfo "Checking if /var/lib/sss ownership"
-		if [ -d /var/lib/sss ] && [ $(stat -c "%U:%G" /var/lib/sss) != "sssd:sssd" ]
-		then
-			elog "After installing, please execute"
-			elog "chown -R sssd:sssd /var/lib/sss"
-		fi
-		einfo "Checking if /var/log/sssd ownership"
-		if [ -d /var/log/sssd ] && [ $(stat -c "%U:%G" /var/log/sssd) != "sssd:sssd" ]
-		then
-			elog "After installing, please execute"
-			elog "chown -R sssd:sssd /var/log/sssd"
-		fi
-		einfo "Checking if /etc/sssd ownership"
-		if ! use systemd && [ -d /etc/sssd ] && [ $(stat -c "%U:%G" /etc/sssd) != "root:sssd" ]
-		then
-			elog "After installing, please execute"
-			elog "chown -R root:sssd /etc/sssd"
-		fi
-	fi
-}
-
 pkg_setup() {
 	linux-info_pkg_setup
 	python-single-r1_pkg_setup
-
-	sssd_migrate_files
 }
 
 src_prepare() {
@@ -377,6 +345,7 @@ multilib_src_install_all() {
 }
 
 pkg_postinst() {
+	udev_reload
 	tmpfiles_process sssd-tmpfiles.conf
 	echo
 	elog "You must set up sssd.conf (default installed into /etc/sssd)"
@@ -389,4 +358,8 @@ pkg_postinst() {
 		echo
 		ewarn "sssctl analyze will not work because the python USE flag is disabled."
 	fi
+}
+
+pkg_postrm() {
+	udev_reload
 }
