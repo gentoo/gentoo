@@ -36,6 +36,7 @@ src_install() {
 	default
 	mv "${ED}"/usr/$(get_libdir)/tcltls2.0/html \
 		"${ED}"/usr/share/doc/${PF} || die
+	mv "${ED}"/usr/include/{,tcl}tls.h || die
 	rm "${ED}"/usr/$(get_libdir)/tcltls2.0/{README.txt,license.terms} \
 		|| die
 
