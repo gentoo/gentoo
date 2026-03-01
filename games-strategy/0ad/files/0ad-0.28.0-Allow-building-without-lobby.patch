@@ -1,0 +1,74 @@
+From 7d19d213139c630725d232fc06b0dcc868d87c45 Mon Sep 17 00:00:00 2001
+From: Ralph Sennhauser <ralph.sennhauser@gmail.com>
+Date: Sun, 1 Mar 2026 16:38:33 +0100
+Subject: [PATCH] Allow building without lobby
+
+Commit 6a8366b99a0ad14bdefd4509ce33a2510cb0082c added additional
+libraries to the report but didn't consider gloox be optional. Address
+this false assumption allowing to build pyrogenesis without lobby
+support.
+
+Signed-off-by: Ralph Sennhauser <ralph.sennhauser@gmail.com>
+---
+ build/premake/premake5.lua       | 4 +++-
+ source/ps/GameSetup/HWDetect.cpp | 7 ++++++-
+ 2 files changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/build/premake/premake5.lua b/build/premake/premake5.lua
+index f0695e9afd..d316fcf130 100644
+--- a/build/premake/premake5.lua
++++ b/build/premake/premake5.lua
+@@ -865,7 +865,6 @@ function setup_all_libs ()
+ 		"zlib",
+ 		"boost",
+ 		"enet",
+-		"gloox",
+ 		"libcurl",
+ 		"tinygettext",
+ 		"icu",
+@@ -877,6 +876,9 @@ function setup_all_libs ()
+ 		"cpp_httplib",
+ 	}
+ 
++	if not _OPTIONS["without-lobby"] then
++		table.insert(extern_libs, "gloox")
++	end
+ 
+ 	if not _OPTIONS["without-miniupnpc"] then
+ 		table.insert(extern_libs, "miniupnpc")
+diff --git a/source/ps/GameSetup/HWDetect.cpp b/source/ps/GameSetup/HWDetect.cpp
+index 6c3197856f..d7d294fd4e 100644
+--- a/source/ps/GameSetup/HWDetect.cpp
++++ b/source/ps/GameSetup/HWDetect.cpp
+@@ -23,7 +23,6 @@
+ #include "lib/debug.h"
+ #include "lib/external_libraries/curl.h"
+ #include "lib/external_libraries/enet.h"
+-#include "lib/external_libraries/gloox.h"
+ #include "lib/external_libraries/png.h"
+ #include "lib/external_libraries/libsdl.h"
+ #include "lib/path.h"
+@@ -94,6 +93,10 @@
+ #include <fstream>
+ #endif
+ 
++#if CONFIG2_LOBBY
++#include "lib/external_libraries/gloox.h"
++#endif
++
+ #if CONFIG2_NVTT
+ #include "nvtt/nvtt.h"
+ #endif
+@@ -208,7 +211,9 @@ void ReportLibraries(const ScriptRequest& rq, JS::HandleValue settings)
+ 	appendLibrary(LibraryReporter{rq, "boost"}.Add("version", BOOST_VERSION).MakeReport());
+ 	appendLibrary(LibraryReporter{rq, "enet"}.Add("version", std::to_string(ENET_VERSION)).MakeReport());
+ 	appendLibrary(LibraryReporter{rq, "fmt"}.Add("version", FMT_VERSION).MakeReport());
++#if CONFIG2_LOBBY
+ 	appendLibrary(LibraryReporter{rq, "gloox"}.Add("version", gloox_version()).MakeReport());
++#endif
+ 	appendLibrary(LibraryReporter{rq, "libicu"}.Add("version", U_ICU_VERSION).MakeReport());
+ 	appendLibrary(LibraryReporter{rq, "libcurl"}.Add("version", std::string(curl_version())).MakeReport());
+ #if CONFIG2_AUDIO
+-- 
+2.52.0
+
