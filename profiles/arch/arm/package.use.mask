@@ -132,10 +132,6 @@ sys-kernel/dracut test
 sys-auth/polkit kde
 virtual/notification-daemon kde
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-07-31)
-# KF6 and media-libs/phonon will drop arm keyword
-app-office/texstudio video
-
 # Michał Górny <mgorny@gentoo.org> (2024-07-24)
 # Full testing requires www-client/firefox.
 dev-python/selenium test-rust
