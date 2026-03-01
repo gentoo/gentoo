@@ -1,0 +1,18 @@
+Skip definition of bool on -std=c23 or newer
+https://bugs.gentoo.org/970613
+https://src.fedoraproject.org/rpms/ldns/blob/ee1ebc36cd4e1fdc81b9c43f1107c02e0cceb74e/f/ldns-1.9-std23-bool.patch
+From: Petr Menšík <pemensik@redhat.com>
+
+--- a/ldns/common.h.in
++++ b/ldns/common.h.in
+@@ -40,6 +40,10 @@
+  */
+ /*@ignore@*/
+ /* splint barfs on this construct */
++#if (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 202311L)
++/* c23 defines bool already and deprecates stdbool.h */
++#define __bool_true_false_are_defined
++#endif
+ #ifndef __bool_true_false_are_defined
+ # ifdef HAVE_STDBOOL_H
+ #  include <stdbool.h>

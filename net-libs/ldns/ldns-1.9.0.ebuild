@@ -45,6 +45,7 @@ MULTILIB_CHOST_TOOLS=(
 
 PATCHES=(
 	"${FILESDIR}/ldns-1.8.1-pkgconfig.patch"
+	"${FILESDIR}/ldns-1.9.0-std23-bool.patch" # 970613
 )
 
 pkg_setup() {
