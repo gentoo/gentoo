@@ -9,8 +9,6 @@ media-video/pipewire sound-server
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-12-16)
 # Enable IUSE qt5 for current stable pkgs with USE-revdeps before dropping
 # it from make.defaults. # Bug #948836
-<dev-libs/quazip-1.5 qt5
-<sys-auth/polkit-qt-0.200.0-r1 qt5
 <x11-libs/qwt-6.3.0 qt5
 
 # Sam James <sam@gentoo.org> (2025-10-18)
