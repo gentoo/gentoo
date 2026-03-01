@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>cjk@gentoo.org</email>
+    <name>Cjk</name>
+  </maintainer>
+  <longdescription>
+    Anthy Unicode is another Anthy project and provides the library to input 
+    Japanese on the applications.
+    This ebuild includes cannadic as a server-side dictionary, so you don't need
+    any extra package to run it.  You can use anthy-unicode with 
+    <pkg>app-i18n/fcitx-anthy</pkg>, <pkg>app-i18n/uim</pkg> (XIM, GTK+ immodule) 
+    and <pkg>app-editors/emacs</pkg> (to enable Anthy support for emacs, build 
+    this package with emacs USE flag).
+  </longdescription>
+  <upstream>
+    <remote-id type="github">fujiwarat/anthy-unicode</remote-id>
+  </upstream>
+</pkgmetadata>

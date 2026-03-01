@@ -1,0 +1,11 @@
+--- a/gir/Makefile.am
++++ b/gir/Makefile.am
+@@ -47,7 +47,7 @@ libanthygobject_1_0_la_LDFLAGS = \
+ 	-version-info @LT_VERSION_INFO@         \
+ 	$(NULL)
+ 
+-ANTHY_INCLUDEDIR = $(shell pkg-config --variable=includedir $(ANTHY_PC))
++ANTHY_INCLUDEDIR = $(shell $(PKG_CONFIG) --variable=includedir $(ANTHY_PC))
+ 
+ anthyincludedir = $(includedir)/ibus-anthy-1.0
+ anthyinclude_HEADERS = \
