@@ -9,7 +9,7 @@ HOMEPAGE="https://www.asterisk.org/products/add-ons/g729-codec/"
 AST_PV="$(ver_cut 1-2)"
 MY_PV="$(ver_rs 2 _)"
 
-MY_TOOLS_VERSION=20250903
+MY_TOOLS_VERSION=20260301
 
 SRC_URI="x86? (
 	https://downloads.digium.com/pub/telephony/codec_g729/asterisk-${AST_PV}/x86-32/codec_g729a-${MY_PV}-x86_32.tar.gz
@@ -56,8 +56,11 @@ src_install() {
 		binsuffix=x86_64
 	fi
 
-	newsbin astregister-${binsuffix}-${MY_TOOLS_VERSION} astregister
-	newsbin asthostid-${binsuffix}-${MY_TOOLS_VERSION} asthostid
+	newsbin astregister-${binsuffix}-${MY_TOOLS_VERSION} astregister-${MY_TOOLS_VERSION}
+	dosym astregister-${MY_TOOLS_VERSION} /usr/sbin/astregister
+
+	newsbin asthostid-${binsuffix}-${MY_TOOLS_VERSION} asthostid-${MY_TOOLS_VERSION}
+	dosym asthostid-${MY_TOOLS_VERSION} /usr/sbin/asthostid
 
 	dodoc codec_g729a-${MY_PV}-${binsuffix}/README
 	insinto usr/$(get_libdir)/asterisk/modules/
