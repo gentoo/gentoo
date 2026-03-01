@@ -11,6 +11,5 @@
 	</upstream>
 	<use>
 		<flag name="mpris">Enable MPRIS support</flag>
-		<flag name="vlc">Use <pkg>media-video/vlc</pkg> for output rather than <pkg>dev-qt/qtmultimedia</pkg></flag>
 	</use>
 </pkgmetadata>
