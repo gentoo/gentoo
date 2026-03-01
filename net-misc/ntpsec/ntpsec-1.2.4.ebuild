@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -69,13 +69,6 @@ BDEPEND+="
 	app-alternatives/yacc
 "
 
-PATCHES=(
-	"${FILESDIR}/${PN}-1.1.9-remove-asciidoctor-from-config.patch"
-	"${FILESDIR}/${PN}-1.2.2-logrotate.patch"
-	"${FILESDIR}/${PN}-1.2.4-pep517-no-egg.patch"
-	"${FILESDIR}/${PN}-1.2.4-s390x-tests.patch"
-)
-
 WAF_BINARY="${S}/waf"
 
 src_unpack() {
@@ -90,13 +83,20 @@ src_unpack() {
 }
 
 src_prepare() {
-	default
+	local PATCHES=(
+		"${FILESDIR}/${PN}-1.1.9-remove-asciidoctor-from-config.patch"
+		"${FILESDIR}/${PN}-1.2.2-logrotate.patch"
+		"${FILESDIR}/${PN}-1.2.4-pep517-no-egg.patch"
+		"${FILESDIR}/${PN}-1.2.4-s390x-tests.patch"
+	)
+	if ! use libbsd ; then
+		PATCHES+=( "${FILESDIR}/${PN}-no-bsd.patch" )
+	fi
+
+	distutils-r1_src_prepare
 
 	# Remove autostripping of binaries
 	sed -i -e '/Strip binaries/d' wscript || die
-	if ! use libbsd ; then
-		eapply "${FILESDIR}/${PN}-no-bsd.patch"
-	fi
 	# remove extra default pool servers
 	sed -i '/use-pool/s/^/#/' "${S}"/etc/ntp.d/default.conf || die
 }
