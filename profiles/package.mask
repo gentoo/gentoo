@@ -36,6 +36,83 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-28)
+# Qt5 qtbase module.
+# Removal some time after 2026-03-31.
+dev-qt/qtconcurrent:5
+dev-qt/qtcore:5
+dev-qt/qtdbus:5
+dev-qt/qtgui:5
+dev-qt/qtnetwork:5
+dev-qt/qtopengl:5
+dev-qt/qtprintsupport:5
+dev-qt/qtsql:5
+dev-qt/qttest:5
+dev-qt/qtwidgets:5
+dev-qt/qtxml:5
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-28)
+# Qt5 non-qtbase modules.
+# Removal some time after 2026-03-31.
+dev-qt/linguist-tools:5
+dev-qt/qtdeclarative:5
+dev-qt/qtgraphicaleffects:5
+dev-qt/qtmultimedia:5
+dev-qt/qtquickcontrols:5
+dev-qt/qtquickcontrols2:5
+dev-qt/qtsvg:5
+dev-qt/qttranslations:5
+dev-qt/qtwayland:5
+dev-qt/qtx11extras:5
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-28)
+# PyQt5 and revdeps. Preparing Qt5 last-rites.
+# Removal some time after 2026-03-31.
+<media-sound/picard-3.0.0_alpha1
+dev-python/pyqt5
+dev-python/pyqt5-sip
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-28)
+# Obsolete Packages depending on Qt5. Preparing Qt5 last-rites.
+# Removal some time after 2026-03-31.
+<=net-voip/mumble-1.5.9999
+<=net-voip/murmur-1.5.9999
+x11-misc/qt5ct
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-28)
+# Packages depending on Qt5. Preparing Qt5 last-rites.
+# Removal some time after 2026-03-31.
+games-engines/solarus
+games-misc/solarus-quest-editor
+games-rpg/zsdx
+games-rpg/zsxd
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-28)
+# Depends on Qt5 and does not appear to be ported to Qt6 any time soon.
+# Removal some time after 2026-03-31.
+net-irc/quassel
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-28)
+# Perpetually stuck on Qt5. Recent releases made under the influence of AI.
+# Alternatives are app-admin/keepass, app-admin/pass which can import kbdx
+# files, app-admin/vaultwarden, app-admin/bitwarden-desktop-bin and probably
+# many more.  AppImage or Flatpak versions also available as last resort.
+# Bugs #949231, #967905.
+# Removal on 2026-03-30.
+<=app-admin/keepassxc-2.7.9999
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-28)
+# Depends on Qt5 and does not appear to be ported to Qt6 any time soon.
+# AppImage or Flatpak versions available for existing users. Bug #961968
+# Removal on 2026-03-30.
+app-office/onlyoffice-bin
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-28)
+# Depends on Qt5 and does not appear to be ported to Qt6. A possible alternative
+# is net-misc/remmina's x2go plugin. Bugs #538458, #917570, #955192
+# Removal on 2026-03-30.
+net-misc/x2goclient
+
 # Michał Górny <mgorny@gentoo.org> (2026-02-28)
 # The test suite is broken since 1.16.0 (Nov 2025), and upstream did not
 # address the problem so far: https://github.com/pypa/hatch/issues/2123
