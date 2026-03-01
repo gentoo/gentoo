@@ -1,0 +1,26 @@
+From 965c6f9027affcdc9d729f9f9255599594924af2 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 20 Jan 2026 23:20:38 +0100
+Subject: [PATCH] examples: Use bin runtime destination for !APPLE
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeModules/OsgMacroUtils.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeModules/OsgMacroUtils.cmake b/CMakeModules/OsgMacroUtils.cmake
+index e9f1d0c3d..26c67bfd9 100644
+--- a/CMakeModules/OsgMacroUtils.cmake
++++ b/CMakeModules/OsgMacroUtils.cmake
+@@ -417,7 +417,7 @@ MACRO(SETUP_EXAMPLE EXAMPLE_NAME)
+         IF(APPLE)
+             INSTALL(TARGETS ${TARGET_TARGETNAME} RUNTIME DESTINATION share/OpenSceneGraph/bin BUNDLE DESTINATION share/OpenSceneGraph/bin )
+         ELSE(APPLE)
+-            INSTALL(TARGETS ${TARGET_TARGETNAME} RUNTIME DESTINATION share/OpenSceneGraph/bin COMPONENT openscenegraph-examples )
++            INSTALL(TARGETS ${TARGET_TARGETNAME} RUNTIME DESTINATION bin COMPONENT openscenegraph-examples )
+             IF(MSVC)
+                 INSTALL(FILES $<TARGET_PDB_FILE:${TARGET_TARGETNAME}> DESTINATION share/OpenSceneGraph/bin COMPONENT openscenegraph-examples)
+             ENDIF(MSVC)
+-- 
+2.52.0
+
