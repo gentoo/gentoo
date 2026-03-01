@@ -143,10 +143,10 @@ src_install() {
 	# Replace upstream systemd files.
 	if use systemd ; then
 		rm -r "${D}$(systemd_get_systemunitdir)" || die "Failed to remove systemd lib dir"
+	else
+		# The openrc files aren't installed with correct permissions.
+		fperms 0755 /etc/init.d/lxc-{containers,net}
 	fi
-
-	# The openrc files aren't installed with correct permissions.
-	fperms 0755 /etc/init.d/lxc-{containers,net}
 
 	newinitd "${FILESDIR}/${PN}.initd.9" ${PN}
 	systemd_newunit "${FILESDIR}"/lxc-monitord.service.5.0.0 lxc-monitord.service
