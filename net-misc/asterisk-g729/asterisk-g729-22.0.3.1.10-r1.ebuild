@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -9,7 +9,7 @@ HOMEPAGE="https://www.asterisk.org/products/add-ons/g729-codec/"
 AST_PV="$(ver_cut 1-2)"
 MY_PV="$(ver_rs 2 _)"
 
-MY_TOOLS_VERSION=20250903
+MY_TOOLS_VERSION=20260301
 
 # Keep the binary suffix to re-use already downloaded files.
 SRC_URI="amd64? (
@@ -46,8 +46,11 @@ src_unpack() {
 src_install() {
 	local binsuffix=x86_64
 
-	newsbin astregister-${binsuffix}-${MY_TOOLS_VERSION} astregister
-	newsbin asthostid-${binsuffix}-${MY_TOOLS_VERSION} asthostid
+	newsbin astregister-${binsuffix}-${MY_TOOLS_VERSION} astregister-${MY_TOOLS_VERSION}
+	dosym astregister-${MY_TOOLS_VERSION} /usr/sbin/astregister
+
+	newsbin asthostid-${binsuffix}-${MY_TOOLS_VERSION} asthostid-${MY_TOOLS_VERSION}
+	dosym asthostid-${MY_TOOLS_VERSION} /usr/sbin/asthostid
 
 	dodoc codec_g729a-${MY_PV}-${binsuffix}/README
 	insinto usr/$(get_libdir)/asterisk/modules/
