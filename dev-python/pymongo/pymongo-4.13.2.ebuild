@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,7 +36,7 @@ BDEPEND="
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
 		test-full? (
-			>=dev-db/mongodb-2.6.0
+			>=virtual/mongodb-2.6
 		)
 	)
 "

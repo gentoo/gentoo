@@ -34,7 +34,7 @@ BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		test-full? (
-			>=dev-db/mongodb-2.6.0
+			>=virtual/mongodb-2.6
 		)
 	)
 "

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,14 +15,14 @@ S="${WORKDIR}/UniFi"
 
 LICENSE="Apache-1.0 Apache-2.0 BSD-1 BSD-2 BSD CDDL EPL-1.0 GPL-2 LGPL-2.1 LGPL-3 MIT ubiquiti"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="-* amd64 ~arm64"
+KEYWORDS="-* ~amd64 ~arm64"
 IUSE="systemd system-mongodb"
 RESTRICT="bindist mirror"
 
 RDEPEND="
 	acct-group/unifi
 	acct-user/unifi
-	dev-db/mongodb
+	virtual/mongodb
 	|| (
 		virtual/jre:21
 		virtual/jre:17
