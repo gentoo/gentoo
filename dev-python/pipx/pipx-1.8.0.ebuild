@@ -35,9 +35,6 @@ RDEPEND="
 	>=dev-python/argcomplete-1.9.4[${PYTHON_USEDEP}]
 	>=dev-python/packaging-20.0[${PYTHON_USEDEP}]
 	>=dev-python/platformdirs-2.1[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/tomli[${PYTHON_USEDEP}]
-	' 3.10)
 	>=dev-python/userpath-1.9.1[${PYTHON_USEDEP}]
 "
 BDEPEND="
@@ -50,6 +47,7 @@ BDEPEND="
 	)
 "
 
+EPYTEST_PLUGINS=()
 EPYTEST_RERUNS=5
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
@@ -104,6 +102,5 @@ python_test() {
 		tests/test_standalone_interpreter.py
 	)
 
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest -o tmp_path_retention_policy=all
 }
