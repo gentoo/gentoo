@@ -1,0 +1,13 @@
+--- a/CMakeLists.txt	2026-03-01 15:29:58.943044308 -0500
++++ b/CMakeLists.txt	2026-03-01 15:30:26.440870553 -0500
+@@ -66,10 +66,6 @@ add_custom_target(zeal_version
+     VERBATIM
+ )
+ 
+-if(${CMAKE_VERSION} VERSION_GREATER_EQUAL "3.24.0")
+-    set(CMAKE_COMPILE_WARNING_AS_ERROR ON)
+-endif()
+-
+ option(BUILD_TESTING "Build the testing suite" ON)
+ if(BUILD_TESTING)
+     enable_testing()
