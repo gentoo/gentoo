@@ -276,6 +276,7 @@ BDEPEND="
 		${RDEPEND}
 		dev-python/hiredis[${PYTHON_USEDEP}]
 		dev-python/idna[${PYTHON_USEDEP}]
+		dev-python/lxml[${PYTHON_USEDEP}]
 		dev-python/parameterized[${PYTHON_USEDEP}]
 		dev-python/txredisapi[${PYTHON_USEDEP}]
 		postgres? ( dev-db/postgresql[server] )
@@ -340,6 +341,7 @@ src_install() {
 
 pkg_postinst() {
 	optfeature "Redis support" dev-python/txredisapi
+	optfeature "URL previews" dev-python/lxml
 	optfeature "VoIP relaying on your homeserver with turn" net-im/coturn
 
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
