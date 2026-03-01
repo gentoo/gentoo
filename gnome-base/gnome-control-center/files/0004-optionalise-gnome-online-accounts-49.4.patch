@@ -1,0 +1,79 @@
+diff '--color=auto' -urw a/meson.build b/meson.build
+--- a/meson.build	2026-02-16 21:32:13.966053964 +0300
++++ b/meson.build	2026-02-16 21:34:01.664348836 +0300
+@@ -204,7 +204,7 @@
+ gnome_desktop_dep = dependency('gnome-desktop-4')
+ gnome_bg_dep = dependency('gnome-bg-4')
+ gnome_settings_dep = dependency('gnome-settings-daemon', version: '>= 48.rc', fallback: 'gsd')
+-goa_dep = dependency('goa-1.0', version: goa_req_version, fallback: 'goa')
++goa_dep = dependency('goa-1.0', version: goa_req_version, required: get_option('goa'))
+ gsettings_desktop_dep = dependency('gsettings-desktop-schemas', version: '>= 48.alpha')  # actually requires commit 9d55553, just after alpha
+ libxml_dep = dependency('libxml-2.0')
+ pulse_dep = dependency('libpulse', version: pulse_req_version)
+@@ -217,6 +217,10 @@
+ 
+ m_dep = cc.find_library('m')
+ 
++enable_goa = goa_dep.found()
++config_h.set('BUILD_GOA', enable_goa,
++             description: 'Define to 1 to build the Online Accounts panel')
++
+ common_deps = [
+   gio_dep,
+   glib_dep,
+diff '--color=auto' -urw a/meson_options.txt b/meson_options.txt
+--- a/meson_options.txt	2026-02-16 21:32:13.966497761 +0300
++++ b/meson_options.txt	2026-02-16 21:34:01.664530645 +0300
+@@ -3,6 +3,7 @@
+ option('cups', type: 'boolean', value: true, description: 'build with cups support')
+ option('documentation', type: 'boolean', value: false, description: 'build documentation')
+ option('location-services', type: 'feature', value: 'enabled', description: 'build with location services')
++option('goa', type: 'feature', value: 'auto', description: 'build with gnome-online-accounts support')
+ option('ibus', type: 'boolean', value: true, description: 'build with IBus support')
+ option('network_manager', type: 'boolean', value: true, description: 'build with NetworkManager support')
+ option('kerberos', type: 'boolean', value: true, description: 'build with kerberos support')
+diff '--color=auto' -urw a/panels/meson.build b/panels/meson.build
+--- a/panels/meson.build	2026-02-16 21:32:13.967015797 +0300
++++ b/panels/meson.build	2026-02-16 21:34:01.664664004 +0300
+@@ -12,7 +12,6 @@
+   'mouse',
+   'multitasking',
+   'notifications',
+-  'online-accounts',
+   'power',
+   'privacy',
+   'search',
+@@ -27,6 +26,10 @@
+   panels += ['printers']
+ endif
+ 
++if enable_goa
++  panels += ['online-accounts']
++endif
++
+ if enable_network_manager
+   panels += [
+     'network',
+diff '--color=auto' -urw a/shell/cc-panel-loader.c b/shell/cc-panel-loader.c
+--- a/shell/cc-panel-loader.c	2026-02-16 21:32:13.962797917 +0300
++++ b/shell/cc-panel-loader.c	2026-02-16 21:34:01.664815073 +0300
+@@ -47,7 +47,9 @@
+ extern GType cc_wifi_panel_get_type (void);
+ #endif /* BUILD_NETWORK */
+ extern GType cc_notifications_panel_get_type (void);
++#ifdef BUILD_GOA
+ extern GType cc_online_accounts_panel_get_type (void);
++#endif /* BUILD_GOA */
+ extern GType cc_power_panel_get_type (void);
+ #ifdef HAVE_CUPS
+ extern GType cc_printers_panel_get_type (void);
+@@ -103,7 +105,9 @@
+   PANEL_TYPE("wifi",             cc_wifi_panel_get_type,                 cc_wifi_panel_static_init_func),
+ #endif
+   PANEL_TYPE("notifications",    cc_notifications_panel_get_type,        NULL),
++#ifdef BUILD_GOA
+   PANEL_TYPE("online-accounts",  cc_online_accounts_panel_get_type,      NULL),
++#endif
+   PANEL_TYPE("power",            cc_power_panel_get_type,                NULL),
+ #ifdef HAVE_CUPS
+   PANEL_TYPE("printers",         cc_printers_panel_get_type,             NULL),

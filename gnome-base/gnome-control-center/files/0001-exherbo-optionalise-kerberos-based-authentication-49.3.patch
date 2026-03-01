@@ -1,0 +1,160 @@
+From 982d1b9654989bee16f019aa125f5677725a34fe Mon Sep 17 00:00:00 2001
+From: Marc-Antoine Perennou <Marc-Antoine@Perennou.com>
+Date: Sun, 24 Mar 2024 16:05:21 +0000
+Subject: [PATCH 1/2] optionalise kerberos based authentication
+
+---
+ meson.build                            | 11 +++++++++++
+ meson_options.txt                      |  1 +
+ panels/system/meson.build              |  8 +++++---
+ panels/system/users/cc-realm-manager.c |  9 +++++++++
+ panels/system/users/cc-realm-manager.h |  1 +
+ panels/system/users/meson.build        |  3 +--
+ 6 files changed, 28 insertions(+), 5 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 64d372b45..3b6fda9d7 100644
+--- a/meson.build
++++ b/meson.build
+@@ -263,6 +263,16 @@ endif
+ config_h.set('HAVE_IBUS', enable_ibus,
+              description: 'Defined if IBus support is enabled')
+ 
++# Kerberos support
++enable_kerberos = get_option('kerberos')
++if enable_kerberos
++    kerberos_deps = [
++      dependency('krb5')
++    ]
++endif
++config_h.set('HAVE_KERBEROS', enable_kerberos,
++             description: 'Defined if kerberos support is enabled')
++
+ # thunderbolt
+ config_h.set10('HAVE_FN_EXPLICIT_BZERO',
+                cc.has_function('explicit_bzero', prefix: '''#include <string.h>'''),
+@@ -396,6 +406,7 @@ summary({
+ 
+ summary({
+     'IBus': enable_ibus,
++    'Kerberos': enable_kerberos,
+     'Snap': enable_snap,
+     'Malcontent': enable_malcontent,
+   },
+diff --git a/meson_options.txt b/meson_options.txt
+index b2302bf36..729ef2039 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -2,6 +2,7 @@ option('deprecated-declarations', type: 'feature', value: 'disabled', descriptio
+ option('documentation', type: 'boolean', value: false, description: 'build documentation')
+ option('location-services', type: 'feature', value: 'enabled', description: 'build with location services')
+ option('ibus', type: 'boolean', value: true, description: 'build with IBus support')
++option('kerberos', type: 'boolean', value: true, description: 'build with kerberos support')
+ option('privileged_group', type: 'string', value: 'wheel', description: 'name of group that has elevated permissions')
+ option('snap', type: 'boolean', value: true, description: 'build with Snap support')
+ option('tests', type: 'boolean', value: true, description: 'build tests')
+diff --git a/panels/system/meson.build b/panels/system/meson.build
+index a9ac171e2..b7cdc3e6a 100644
+--- a/panels/system/meson.build
++++ b/panels/system/meson.build
+@@ -83,8 +83,7 @@ libgtop2 = dependency('libgtop-2.0')
+ udisks2 = dependency('udisks2', version: '>= 2.8.2')
+ 
+ # Kerberos support
+-krb_dep = dependency('krb5', required: false)
+-assert(krb_dep.found(), 'kerberos libraries not found in your path')
++krb_dep = dependency('krb5', required: enable_kerberos)
+ 
+ deps = common_deps + [
+   accounts_dep,
+@@ -96,7 +95,6 @@ deps = common_deps + [
+   libgtop2,
+   liblanguage_dep,
+   libsecret_dep,
+-  krb_dep,
+   polkit_gobject_dep,
+   pwquality_dep,
+   udisks2,
+@@ -110,6 +108,10 @@ if enable_malcontent
+   deps += malcontent_dep
+ endif
+ 
++if enable_kerberos
++  deps += krb_dep
++endif
++
+ settings_daemon = 'org.gnome.SettingsDaemon'
+ gsd_gdbus = settings_daemon + '.Sharing'
+ 
+diff --git a/panels/system/users/cc-realm-manager.c b/panels/system/users/cc-realm-manager.c
+index ae0524401..0298de440 100644
+--- a/panels/system/users/cc-realm-manager.c
++++ b/panels/system/users/cc-realm-manager.c
+@@ -22,7 +22,9 @@
+ 
+ #include "cc-realm-manager.h"
+ 
++#if defined(HAVE_KERBEROS)
+ #include <krb5/krb5.h>
++#endif
+ 
+ #include <glib.h>
+ #include <glib/gi18n.h>
+@@ -605,6 +607,7 @@ login_closure_free (gpointer data)
+         g_slice_free (LoginClosure, login);
+ }
+ 
++#if defined(HAVE_KERBEROS)
+ static krb5_error_code
+ login_perform_kinit (krb5_context k5,
+                      const gchar *realm,
+@@ -750,6 +753,7 @@ kinit_thread_func (GTask *t,
+         if (k5)
+                 krb5_free_context (k5);
+ }
++#endif
+ 
+ void
+ cc_realm_login (CcRealmObject *realm,
+@@ -782,7 +786,12 @@ cc_realm_login (CcRealmObject *realm,
+         g_task_set_task_data (task, login, login_closure_free);
+ 
+         g_task_set_return_on_cancel (task, TRUE);
++#if defined(HAVE_KERBEROS)
+         g_task_run_in_thread (task, kinit_thread_func);
++#else
++        g_task_return_new_error (task, CC_REALM_ERROR, CC_REALM_ERROR_NOT_SUPPORTED,
++                                 _("kerberos based authentication support is disabled"));
++#endif
+ }
+ 
+ GBytes *
+diff --git a/panels/system/users/cc-realm-manager.h b/panels/system/users/cc-realm-manager.h
+index edb9b100b..b5d353f79 100644
+--- a/panels/system/users/cc-realm-manager.h
++++ b/panels/system/users/cc-realm-manager.h
+@@ -30,6 +30,7 @@ typedef enum {
+         CC_REALM_ERROR_CANNOT_AUTH,
+         CC_REALM_ERROR_BAD_HOSTNAME,
+         CC_REALM_ERROR_GENERIC,
++        CC_REALM_ERROR_NOT_SUPPORTED,
+ } CcRealmErrors;
+ 
+ #define CC_REALM_ERROR (cc_realm_error_get_quark ())
+diff --git a/panels/system/users/meson.build b/panels/system/users/meson.build
+index 5fda2edda..99cfdbc25 100644
+--- a/panels/system/users/meson.build
++++ b/panels/system/users/meson.build
+@@ -70,8 +70,7 @@ sources += gnome.gdbus_codegen(
+ )
+ 
+ # Kerberos support
+-krb_dep = dependency('krb5', required: false)
+-assert(krb_dep.found(), 'kerberos libraries not found in your path')
++krb_dep = dependency('krb5', required: enable_kerberos)
+ 
+ cflags += [
+   '-DGNOMELOCALEDIR="@0@"'.format(control_center_localedir),
+-- 
+2.48.1
+

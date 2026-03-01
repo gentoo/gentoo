@@ -1,0 +1,113 @@
+From a074bdfe7fe9a755a95f9661fbf19a1d53049c32 Mon Sep 17 00:00:00 2001
+From: Marc-Antoine Perennou <Marc-Antoine@Perennou.com>
+Date: Sun, 24 Mar 2024 16:11:01 +0000
+Subject: [PATCH 2/2] optionalise cups support
+
+---
+ meson.build                | 47 ++++++++++++++++++++++----------------
+ meson_options.txt          |  1 +
+ panels/meson.build         |  5 +++-
+ shell/cc-panel-loader.c    |  4 ++++
+ tests/printers/meson.build | 37 +++++++++++++++---------------
+ 5 files changed, 55 insertions(+), 39 deletions(-)
+
+diff '--color=auto' -urw a/meson.build b/meson.build
+--- a/meson.build	2026-02-16 21:22:20.494327263 +0300
++++ b/meson.build	2026-02-16 21:23:31.894907047 +0300
+@@ -242,6 +242,9 @@
+                description: 'Define if langinfo.h supports _NL_TIME_FIRST_WEEKDAY')
+ endif
+ 
++# Optional dependency for the printers panel
++enable_cups = get_option('cups')
++if enable_cups
+ # Check for CUPS 1.4 or newer
+ cups_dep = dependency('cups', version : '>= 1.4', required: false)
+ assert(cups_dep.found(), 'CUPS 1.4 or newer not found')
+@@ -265,6 +268,9 @@
+ config_h.set10('HAVE_CUPS_HTTPCONNECT2',
+                cc.has_function('httpConnect2', dependencies: cups_dep),
+                description: 'Define if httpConnect2() is available in CUPS')
++endif
++config_h.set('HAVE_CUPS', enable_cups,
++             description: 'Defined if cups support is enabled')
+ 
+ # X11
+ have_x11_support = get_option('x11')
+@@ -426,6 +432,7 @@
+ )
+ 
+ summary({
++    'Cups': enable_cups,
+     'IBus': enable_ibus,
+     'Kerberos': enable_kerberos,
+     'Snap': enable_snap,
+diff '--color=auto' -urw a/meson_options.txt b/meson_options.txt
+--- a/meson_options.txt	2026-02-16 21:22:20.494482082 +0300
++++ b/meson_options.txt	2026-02-16 21:23:31.894995636 +0300
+@@ -1,4 +1,5 @@
+ option('deprecated-declarations', type: 'feature', value: 'disabled', description: 'build with deprecated declaration warnings')
++option('cups', type: 'boolean', value: true, description: 'build with cups support')
+ option('documentation', type: 'boolean', value: false, description: 'build documentation')
+ option('location-services', type: 'feature', value: 'enabled', description: 'build with location services')
+ option('ibus', type: 'boolean', value: true, description: 'build with IBus support')
+diff '--color=auto' -urw a/panels/meson.build b/panels/meson.build
+--- a/panels/meson.build	2026-01-26 20:10:33.000000000 +0300
++++ b/panels/meson.build	2026-02-16 21:23:31.895062655 +0300
+@@ -14,7 +14,6 @@
+   'notifications',
+   'online-accounts',
+   'power',
+-  'printers',
+   'privacy',
+   'search',
+   'sharing',
+@@ -25,6 +24,10 @@
+   'wwan',
+ ]
+ 
++if enable_cups
++  panels += ['printers']
++endif
++
+ if host_is_linux
+   panels += ['network']
+ endif
+diff '--color=auto' -urw a/shell/cc-panel-loader.c b/shell/cc-panel-loader.c
+--- a/shell/cc-panel-loader.c	2026-01-26 20:10:33.000000000 +0300
++++ b/shell/cc-panel-loader.c	2026-02-16 21:23:31.895154325 +0300
+@@ -49,7 +49,9 @@
+ extern GType cc_notifications_panel_get_type (void);
+ extern GType cc_online_accounts_panel_get_type (void);
+ extern GType cc_power_panel_get_type (void);
++#ifdef HAVE_CUPS
+ extern GType cc_printers_panel_get_type (void);
++#endif /* HAVE_CUPS */
+ extern GType cc_privacy_panel_get_type (void);
+ extern GType cc_search_panel_get_type (void);
+ extern GType cc_sharing_panel_get_type (void);
+@@ -103,7 +105,9 @@
+   PANEL_TYPE("notifications",    cc_notifications_panel_get_type,        NULL),
+   PANEL_TYPE("online-accounts",  cc_online_accounts_panel_get_type,      NULL),
+   PANEL_TYPE("power",            cc_power_panel_get_type,                NULL),
++#ifdef HAVE_CUPS
+   PANEL_TYPE("printers",         cc_printers_panel_get_type,             NULL),
++#endif
+   PANEL_TYPE("privacy",          cc_privacy_panel_get_type,              NULL),
+   PANEL_TYPE("search",           cc_search_panel_get_type,               NULL),
+   PANEL_TYPE("sharing",          cc_sharing_panel_get_type,              cc_sharing_panel_static_init_func),
+diff '--color=auto' -urw a/tests/printers/meson.build b/tests/printers/meson.build
+--- a/tests/printers/meson.build	2026-01-26 20:10:33.000000000 +0300
++++ b/tests/printers/meson.build	2026-02-16 21:23:31.895263234 +0300
+@@ -1,4 +1,5 @@
+ 
++if enable_cups
+ test_units = [
+   #'test-canonicalization',
+   'test-shift'
+@@ -19,4 +20,4 @@
+ 
+   test(unit, exe)
+ endforeach
+-
++endif
