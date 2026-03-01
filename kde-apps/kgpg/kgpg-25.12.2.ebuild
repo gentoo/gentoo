@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/kgpg/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 IUSE=""
 
 COMMON_DEPEND="
