@@ -403,10 +403,31 @@ setup_meson_src_configure() {
 	fi
 
 	MESONARGS+=(
-		--libdir "$(get_libdir)"
-		--localstatedir "${EPREFIX}/var/lib"
 		--prefix "${EPREFIX}/usr"
+		--libdir "$(get_libdir)"
 		--sysconfdir "${EPREFIX}/etc"
+	)
+
+	case ${EAPI} in
+		7|8)
+			# legacy behavior: emulate econf
+			MESONARGS+=( --localstatedir "${EPREFIX}/var/lib" )
+			;;
+		*)
+			MESONARGS+=(
+				# https://bugs.gentoo.org/878913
+				# meson defaults for prefix=/usr, but with EPREFIX added
+				# https://mesonbuild.com/Builtin-options.html
+				--localstatedir "${EPREFIX}/var"
+				--sharedstatedir "${EPREFIX}/var/lib"
+
+				# https://bugs.gentoo.org/870019
+				--auto-features disabled
+			)
+			;;
+	esac
+
+	MESONARGS+=(
 		--wrap-mode nodownload
 		--build.pkg-config-path "${BUILD_PKG_CONFIG_PATH}${BUILD_PKG_CONFIG_PATH:+:}${EPREFIX}/usr/share/pkgconfig"
 		--pkg-config-path "${PKG_CONFIG_PATH}${PKG_CONFIG_PATH:+:}${EPREFIX}/usr/share/pkgconfig"
