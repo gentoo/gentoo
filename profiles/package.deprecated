@@ -55,7 +55,6 @@ dev-python/passlib
 # 2026-06-19, b) any bugs discovered since last May will not be fixed and
 # c) no bugs since 2020-12-08 that haven't also been affecting Qt6 were
 # fixed at all. Bug 948836
-dev-qt/designer:5
 dev-qt/linguist-tools:5
 dev-qt/qtconcurrent:5
 dev-qt/qtdbus:5
