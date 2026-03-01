@@ -1,0 +1,24 @@
+https://jira.mongodb.org/browse/CDRIVER-6133
+--- a/src/libmongoc/doc/conf.py
++++ b/src/libmongoc/doc/conf.py
+@@ -133,7 +133,7 @@
+ .. |qenc:is-experimental| replace::
+ 
+     is part of the experimental
+-    `Queryable Encryption <queryable-encryption_>`_ API and may be subject
++    `Queryable Encryption <queryable-encryption_>` API and may be subject
+     to breaking changes in future releases.
+ 
+ .. |qenc:opt-is-experimental| replace::
+@@ -190,10 +190,10 @@
+     :cmake:command:`find_package() <command:find_package>`
+ 
+ .. |bson_t-storage-ptr| replace::
+-    non-``NULL`` pointer to `overwritable storage <bson_lifetimes_>`_ for a :symbol:`bson_t`
++    non-``NULL`` pointer to `overwritable storage <bson_lifetimes_>` for a :symbol:`bson_t`
+ 
+ .. |bson_t-opt-storage-ptr| replace::
+-    maybe-``NULL`` pointer to `overwritable storage <bson_lifetimes_>`_ for a :symbol:`bson_t`
++    maybe-``NULL`` pointer to `overwritable storage <bson_lifetimes_>` for a :symbol:`bson_t`
+ 
+ .. _mongodb_docs_cdriver: https://www.mongodb.com/docs/languages/c/c-driver/current/
