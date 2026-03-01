@@ -16,7 +16,6 @@
 		<flag name="libproxy">Enable support for WPAD problem detection via <pkg>net-libs/libproxy</pkg></flag>
 		<flag name="man">Enable manpages KIO worker</flag>
 		<flag name="nfs">Enable NFS support using <pkg>net-libs/libtirpc</pkg></flag>
-		<flag name="phonon">Enable file audio preview plugin using <pkg>media-libs/phonon</pkg></flag>
 		<flag name="sftp">Enable SFTP protocol support using <pkg>net-libs/libssh</pkg></flag>
 		<flag name="taglib">Enable audio thumbnails via <pkg>media-libs/taglib</pkg></flag>
 		<flag name="X">Enable support for XCursor thumbnails via <pkg>x11-libs/libX11</pkg></flag>
