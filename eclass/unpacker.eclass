@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: unpacker.eclass
@@ -218,7 +218,8 @@ unpack_makeself() {
 				skip=$(head -n ${skip} "${src}" | wc -c)
 				exe="dd"
 				;;
-			2.4.5)
+			# 2.6.0's header also contains "2.5.0"; unpack_makeself works in both cases
+			2.4.5|2.5.0|2.7.0|2.7.1)
 				# e.g.: skip="713"
 				skip=$(
 					sed -n -e '/^skip=/{s:skip="\(.*\)":\1:p;q}' "${src}"
