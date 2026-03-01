@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=nload
+GenericName=Network monitor
+Comment=Show per-interface network usage
+Exec=nload -t 250
+Terminal=true
+Categories=System;Network;Monitor;ConsoleOnly
