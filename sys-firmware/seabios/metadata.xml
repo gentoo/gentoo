@@ -6,7 +6,6 @@
 		<name>Gentoo Virtualization Project</name>
 	</maintainer>
 	<use>
-		<flag name="binary">Use official upstream pre-built binaries</flag>
 		<flag name="seavgabios">Include SeaVGABIOS binaries (replacement for vgabios)</flag>
 	</use>
 </pkgmetadata>
