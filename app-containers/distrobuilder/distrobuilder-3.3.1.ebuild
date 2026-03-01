@@ -22,7 +22,8 @@ RDEPEND="app-cdr/cdrtools
 	dev-vcs/git
 	net-misc/rsync
 	sys-fs/squashfs-tools"
-BDEPEND="verify-sig? ( sec-keys/openpgp-keys-linuxcontainers )"
+BDEPEND=">=dev-lang/go-1.25.6
+	verify-sig? ( sec-keys/openpgp-keys-linuxcontainers )"
 
 # Test deps aren't vendored.
 RESTRICT="test"
