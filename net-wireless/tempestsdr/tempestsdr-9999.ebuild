@@ -8,10 +8,7 @@ inherit java-pkg-2
 DESCRIPTION="Remote video eavesdropping using a software-defined radio platform"
 HOMEPAGE="https://github.com/deltj/TempestSDR.git"
 
-LICENSE="GPL-3"
-SLOT="0"
-IUSE="airspy"
-if [ "${PV}" = "9999" ]; then
+if [[ "${PV}" = *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/deltj/TempestSDR.git"
 else
@@ -20,6 +17,10 @@ else
 	SRC_URI="https://github.com/deltj/TempestSDR/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/TempestSDR-${COMMIT}"
 fi
+
+LICENSE="GPL-3"
+SLOT="0"
+IUSE="airspy"
 
 RDEPEND=">=virtual/jre-1.8:*
 	dev-libs/boost:=
@@ -32,7 +33,7 @@ DEPEND=">=virtual/jdk-1.8:*
 	${RDEPEND}"
 
 src_prepare() {
-	rm -r TSDRPlugin_Airspy
+	rm -r TSDRPlugin_Airspy || die
 	default
 }
 

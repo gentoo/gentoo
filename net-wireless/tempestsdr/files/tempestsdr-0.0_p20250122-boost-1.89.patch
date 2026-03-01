@@ -1,0 +1,108 @@
+From d57dad1985a2b7d799829446460b9657d87ff57f Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 12 Feb 2026 20:56:39 +0100
+Subject: [PATCH] Drop boost_system dependency (obsolete since 1.69, stub
+ library dropped in 1.89)
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ TSDRPlugin_BladeRF/makefile   | 8 ++++----
+ TSDRPlugin_HackRF/makefile    | 8 ++++----
+ TSDRPlugin_UHD/makefile       | 6 +++---
+ TSDRPlugin_librtlsdr/makefile | 8 ++++----
+ 4 files changed, 15 insertions(+), 15 deletions(-)
+
+diff --git a/TSDRPlugin_BladeRF/makefile b/TSDRPlugin_BladeRF/makefile
+index b78bf75..e3260a6 100644
+--- a/TSDRPlugin_BladeRF/makefile
++++ b/TSDRPlugin_BladeRF/makefile
+@@ -107,14 +107,14 @@ OBJFOLDER=obj
+ # OS specific flags
+ ifeq ($(OSNAME),LINUX)
+ 	CXXFLAGS+=-fPIC
+-	# static version of the libraries if compiled LIBRARIES+=-Ldependencies/$(OSNAME)/$(ARCHNAME) -lpthread -lboost_system -lboost_thread -lboost_program_options -lboost_unit_test_framework -lbladeRF -lboost_serialization -lboost_filesystem  -lboost_date_time -lboost_regex -lrt
+-	LIBRARIES+=-lboost_thread -lboost_program_options -lboost_system -lbladeRF
++	# static version of the libraries if compiled LIBRARIES+=-Ldependencies/$(OSNAME)/$(ARCHNAME) -lpthread -lboost_thread -lboost_program_options -lboost_unit_test_framework -lbladeRF -lboost_serialization -lboost_filesystem  -lboost_date_time -lboost_regex -lrt
++	LIBRARIES+=-lboost_thread -lboost_program_options -lbladeRF
+ else ifeq ($(OSNAME),MAC)
+ 	CXXFLAGS+=-fPIC
+-	LIBRARIES+=-lboost_thread-mt -lboost_program_options-mt -lboost_system-mt -lbladeRF
++	LIBRARIES+=-lboost_thread-mt -lboost_program_options-mt -lbladeRF
+ else ifeq ($(OSNAME),WINDOWS)
+ 	LDFLAGS+=-Wl,--add-stdcall-alias
+-	LIBRARIES+= -lboost_thread-mt -lboost_program_options-mt -lboost_system-mt -lbladeRF
++	LIBRARIES+= -lboost_thread-mt -lboost_program_options-mt -lbladeRF
+ endif
+ 
+ # Calculate the path to dependencies
+diff --git a/TSDRPlugin_HackRF/makefile b/TSDRPlugin_HackRF/makefile
+index e435952..bb2481a 100644
+--- a/TSDRPlugin_HackRF/makefile
++++ b/TSDRPlugin_HackRF/makefile
+@@ -107,14 +107,14 @@ OBJFOLDER=obj
+ # OS specific flags
+ ifeq ($(OSNAME),LINUX)
+ 	CXXFLAGS+=-fPIC
+-	# static version of the libraries if compiled LIBRARIES+=-Ldependencies/$(OSNAME)/$(ARCHNAME) -lpthread -lboost_system -lboost_thread -lboost_program_options -lboost_unit_test_framework -lhackrf -lboost_serialization -lboost_filesystem  -lboost_date_time -lboost_regex -lrt
+-	LIBRARIES+=-lboost_thread -lboost_program_options -lboost_system -lhackrf
++	# static version of the libraries if compiled LIBRARIES+=-Ldependencies/$(OSNAME)/$(ARCHNAME) -lpthread -lboost_thread -lboost_program_options -lboost_unit_test_framework -lhackrf -lboost_serialization -lboost_filesystem  -lboost_date_time -lboost_regex -lrt
++	LIBRARIES+=-lboost_thread -lboost_program_options -lhackrf
+ else ifeq ($(OSNAME),MAC)
+ 	CXXFLAGS+=-fPIC
+-	LIBRARIES+=-lboost_thread-mt -lboost_program_options-mt -lboost_system-mt -lhackrf
++	LIBRARIES+=-lboost_thread-mt -lboost_program_options-mt -lhackrf
+ else ifeq ($(OSNAME),WINDOWS)
+ 	LDFLAGS+=-Wl,--add-stdcall-alias
+-	LIBRARIES+= -lboost_thread-mt -lboost_program_options-mt -lboost_system-mt -lhackrf 
++	LIBRARIES+= -lboost_thread-mt -lboost_program_options-mt -lhackrf 
+ endif
+ 
+ # Calculate the path to dependencies
+diff --git a/TSDRPlugin_UHD/makefile b/TSDRPlugin_UHD/makefile
+index fcdf0e9..6e6dbce 100644
+--- a/TSDRPlugin_UHD/makefile
++++ b/TSDRPlugin_UHD/makefile
+@@ -107,14 +107,14 @@ OBJFOLDER=obj
+ # OS specific flags
+ ifeq ($(OSNAME),LINUX)
+ 	CXXFLAGS+=-fPIC
+-	# static version of the libraries if compiled LIBRARIES+=-Ldependencies/$(OSNAME)/$(ARCHNAME) -lpthread -lboost_system -lboost_thread -lboost_program_options -lboost_unit_test_framework -luhd -lboost_serialization -lboost_filesystem  -lboost_date_time -lboost_regex -lrt
++	# static version of the libraries if compiled LIBRARIES+=-Ldependencies/$(OSNAME)/$(ARCHNAME) -lpthread -lboost_thread -lboost_program_options -lboost_unit_test_framework -luhd -lboost_serialization -lboost_filesystem  -lboost_date_time -lboost_regex -lrt
+ 	LIBRARIES+=-lboost_thread -lboost_program_options -luhd
+ else ifeq ($(OSNAME),MAC)
+ 	CXXFLAGS+=-fPIC
+-	LIBRARIES+=-lboost_thread-mt -lboost_program_options-mt -lboost_system-mt -luhd
++	LIBRARIES+=-lboost_thread-mt -lboost_program_options-mt -luhd
+ else ifeq ($(OSNAME),WINDOWS)
+ 	LDFLAGS+=-Wl,--add-stdcall-alias
+-	LIBRARIES+= -lboost_thread-mt -lboost_program_options-mt -lboost_system-mt -luhd 
++	LIBRARIES+= -lboost_thread-mt -lboost_program_options-mt -luhd 
+ endif
+ 
+ # Calculate the path to dependencies
+diff --git a/TSDRPlugin_librtlsdr/makefile b/TSDRPlugin_librtlsdr/makefile
+index 078a6e2..5a9b4da 100644
+--- a/TSDRPlugin_librtlsdr/makefile
++++ b/TSDRPlugin_librtlsdr/makefile
+@@ -107,14 +107,14 @@ OBJFOLDER=obj
+ # OS specific flags
+ ifeq ($(OSNAME),LINUX)
+ 	CXXFLAGS+=-fPIC
+-	# static version of the libraries if compiled LIBRARIES+=-Ldependencies/$(OSNAME)/$(ARCHNAME) -lpthread -lboost_system -lboost_thread -lboost_program_options -lboost_unit_test_framework -lrtlsdr -lboost_serialization -lboost_filesystem  -lboost_date_time -lboost_regex -lrt
+-	LIBRARIES+=-lboost_thread -lboost_program_options -lboost_system -lrtlsdr
++	# static version of the libraries if compiled LIBRARIES+=-Ldependencies/$(OSNAME)/$(ARCHNAME) -lpthread -lboost_thread -lboost_program_options -lboost_unit_test_framework -lrtlsdr -lboost_serialization -lboost_filesystem  -lboost_date_time -lboost_regex -lrt
++	LIBRARIES+=-lboost_thread -lboost_program_options -lrtlsdr
+ else ifeq ($(OSNAME),MAC)
+ 	CXXFLAGS+=-fPIC
+-	LIBRARIES+=-lboost_thread-mt -lboost_program_options-mt -lboost_system-mt -lrtlsdr
++	LIBRARIES+=-lboost_thread-mt -lboost_program_options-mt -lrtlsdr
+ else ifeq ($(OSNAME),WINDOWS)
+ 	LDFLAGS+=-Wl,--add-stdcall-alias
+-	LIBRARIES+= -lboost_thread-mt -lboost_program_options-mt -lboost_system-mt -lrtlsdr 
++	LIBRARIES+= -lboost_thread-mt -lboost_program_options-mt -lrtlsdr 
+ endif
+ 
+ # Calculate the path to dependencies
+-- 
+2.53.0
+
