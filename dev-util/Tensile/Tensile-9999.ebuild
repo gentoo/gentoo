@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,9 +6,9 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10..13} )
 DISTUTILS_USE_PEP517=setuptools
 ROCM_VERSION=${PV}
-LLVM_COMPAT=( 20 )
+LLVM_COMPAT=( 22 )
 
-inherit cmake distutils-r1 llvm-r1 prefix rocm
+inherit cmake distutils-r1 llvm-r2 prefix rocm
 
 DESCRIPTION="A tool for creating a benchmark-driven GEMMs and tensor contractions code"
 HOMEPAGE="https://rocm.docs.amd.com/projects/Tensile/en/latest/src/index.html"
@@ -19,10 +19,10 @@ if [[ "${PV}" == 9999 ]] ; then
 	EGIT_BRANCH="develop"
 	S="${WORKDIR}/${P}/shared/tensile"
 	SLOT="0/9999"
-	SLOT_NOLIVE="0/7.0"
+	SLOT_NOLIVE="0/7.2"
 else
-	SRC_URI="https://github.com/ROCm/Tensile/archive/rocm-${PV}.tar.gz -> rocm-Tensile-${PV}.tar.gz"
-	S="${WORKDIR}/${PN}-rocm-${PV}"
+	SRC_URI="https://github.com/ROCm/rocm-libraries/releases/download/rocm-${PV}/tensile.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/tensile"
 	SLOT="0/$(ver_cut 1-2)"
 	SLOT_NOLIVE=${SLOT}
 	KEYWORDS="~amd64"
@@ -36,7 +36,7 @@ REQUIRED_USE="client? ( ${ROCM_REQUIRED_USE} )"
 RESTRICT="test"
 
 RDEPEND="${PYTHON_DEPS}
-	client? ( dev-libs/boost )
+	client? ( dev-libs/boost:= )
 	>=dev-cpp/msgpack-cxx-6.0.0
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/msgpack[${PYTHON_USEDEP}]
@@ -50,13 +50,12 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}"
 BDEPEND="
 	test? (
-		dev-python/pytest-forked[${PYTHON_USEDEP}]
-		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		dev-python/filelock[${PYTHON_USEDEP}]
 		dev-python/joblib[${PYTHON_USEDEP}]
 	)
 "
 
+EPYTEST_PLUGINS=( pytest-{forked,xdist} )
 distutils_enable_tests pytest
 
 PATCHES=(
@@ -91,9 +90,6 @@ src_prepare() {
 
 	sed -e "s|os\.path\.dirname.*$|\"${EPREFIX}/usr/share/Tensile/Source\", end='')|" -i __init__.py || die
 
-	# bug 949817: fix v_dot4_i32_i8 syntax for clang-20
-	sed  's/ op_sel:\[0,0\] op_sel_hi:\[1,1\]//' -i Components/MAC_I8X4.py || die
-
 	# Fix compiler "validation"
 	rocm_use_clang
 	sed "s/amdclang/$(basename "$CC")/g" -i Utilities/Toolchain.py || die
@@ -108,12 +104,13 @@ src_configure() {
 
 	distutils-r1_src_configure
 	if use client; then
+		local targets="$(get_amdgpu_flags)"
 		local mycmakeargs=(
 			-DCMAKE_SKIP_RPATH=ON
 			-DTENSILE_USE_MSGPACK=ON
 			-DTENSILE_USE_LLVM=ON
 			-DTensile_LIBRARY_FORMAT=msgpack
-			-DAMDGPU_TARGETS="$(get_amdgpu_flags)"
+			-DGPU_TARGETS="${targets::-1}"
 		)
 		cmake_src_configure
 	fi

@@ -1,0 +1,21 @@
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -108,7 +108,6 @@ function(add_test_target test_src is_internal)
+           RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/test"
+   )
+   add_relative_test(${test_name} ${test_name})
+-  rocm_install(TARGETS ${test_name} COMPONENT tests)
+   if (WIN32 AND NOT DEFINED DLLS_COPIED_TESTS)
+     set(DLLS_COPIED_TESTS "YES")
+     set(DLLS_COPIED_TESTS ${DLLS_COPIED_TESTS} PARENT_SCOPE)
+@@ -139,10 +138,3 @@ add_subdirectory(linkage)
+ 
+ # Add tests for the internal APIs
+ add_subdirectory(internal)
+-
+-rocm_install(
+-    FILES "${INSTALL_TEST_FILE}"
+-    DESTINATION "${CMAKE_INSTALL_BINDIR}/${PROJECT_NAME}"
+-    COMPONENT tests
+-    RENAME "CTestTestfile.cmake"
+-)

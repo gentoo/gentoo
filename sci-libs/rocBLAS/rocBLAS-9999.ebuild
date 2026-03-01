@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,10 +6,10 @@ EAPI=8
 DOCS_BUILDER="doxygen"
 DOCS_DIR="docs/doxygen"
 DOCS_DEPEND="media-gfx/graphviz"
-LLVM_COMPAT=( 20 )
+LLVM_COMPAT=( 22 )
 ROCM_VERSION=${PV}
 
-inherit cmake docs edo flag-o-matic multiprocessing rocm llvm-r1
+inherit cmake docs edo flag-o-matic llvm-r2 multiprocessing rocm
 
 DESCRIPTION="AMD's library for BLAS on ROCm"
 HOMEPAGE="https://github.com/ROCm/rocm-libraries/tree/develop/projects/rocblas"
@@ -20,10 +20,10 @@ if [[ "${PV}" == 9999 ]] ; then
 	EGIT_BRANCH="develop"
 	S="${WORKDIR}/${P}/projects/rocblas"
 	SLOT="0/9999"
-	SLOT_NOLIVE="0/7.0"
+	SLOT_NOLIVE="0/7.2"
 else
-	SRC_URI="https://github.com/ROCm/rocBLAS/archive/rocm-${PV}.tar.gz -> rocm-${P}.tar.gz"
-	S="${WORKDIR}/${PN}-rocm-${PV}"
+	SRC_URI="https://github.com/ROCm/rocm-libraries/releases/download/rocm-${PV}/rocblas.tar.gz -> rocblas-${PV}.tar.gz"
+	S="${WORKDIR}/rocblas"
 	SLOT="0/$(ver_cut 1-2)"
 	SLOT_NOLIVE=${SLOT}
 	KEYWORDS="~amd64"
@@ -43,7 +43,8 @@ RDEPEND="
 	roctracer? ( dev-util/roctracer:${SLOT_NOLIVE} )
 	hipblaslt? ( sci-libs/hipBLASLt:${SLOT_NOLIVE} )
 	benchmark? (
-		dev-cpp/gtest
+		dev-cpp/gtest:=
+		dev-util/rocm-smi:${SLOT_NOLIVE}
 		llvm-runtimes/openmp
 		sci-libs/flexiblas
 	)
@@ -53,7 +54,8 @@ DEPEND="
 	${RDEPEND}
 	>=dev-cpp/msgpack-cxx-6.0.0
 	test? (
-		dev-cpp/gtest
+		dev-cpp/gtest:=
+		dev-util/rocm-smi:${SLOT_NOLIVE}
 		llvm-runtimes/openmp
 		sci-libs/flexiblas
 	)
@@ -64,7 +66,6 @@ QA_FLAGS_IGNORED="/usr/lib64/rocblas/library/.*"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.4.2-add-missing-header.patch
-	"${FILESDIR}"/${PN}-7.0.2-expand-isa-compatibility.patch
 )
 
 src_prepare() {
@@ -106,7 +107,8 @@ src_configure() {
 
 	if use benchmark || use test; then
 		mycmakeargs+=(
-			-DBLA_PKGCONFIG_BLAS=ON
+			-DBLA_PREFER_PKGCONFIG=ON
+			-DBLA_PKGCONFIG_BLAS=flexiblas
 			-DBLA_VENDOR=FlexiBLAS
 		)
 	fi

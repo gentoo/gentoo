@@ -1,0 +1,20 @@
+libhsakmt is a part of dev-libs/roct-thunk-interface
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -112,11 +112,16 @@ if (NOT DEFINED BUILD_THUNK_VIRTIO)
+   set(BUILD_THUNK_VIRTIO OFF)
+ endif()
+ 
++if (BUILD_HSAKMT)
+ add_rocm_subdir(libhsakmt "${THUNK_DEFINITIONS}")
+ set_target_properties(hsakmt PROPERTIES
+                                 ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/libhsakmt/archive"
+                                 LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/libhsakmt/lib"
+                                 RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/libhsakmt/runtime")
++else()
++  find_package(hsakmt REQUIRED)
++  add_library(hsakmt ALIAS hsakmt::hsakmt)
++endif()
+ if (WIN32)
+ set_target_properties(hsakmt PROPERTIES
+                       CXX_STANDARD 20
