@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,24 +13,32 @@ SRC_URI="https://github.com/linuxmint/cjs/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD CC0-1.0 MIT MPL-2.0 || ( MPL-1.1 GPL-2+ LGPL-2.1+ )"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv x86"
-IUSE="+cairo examples readline sysprof test"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+IUSE="examples readline sysprof test"
 
 RDEPEND="
-	dev-lang/spidermonkey:115
+	dev-lang/spidermonkey:$(ver_cut 1)
 	>=dev-libs/glib-2.66.0:2
 	>=dev-libs/gobject-introspection-1.82.0-r2:=
 	>=dev-libs/libffi-3.3:0=
+	x11-libs/cairo[glib,svg(+),X]
+	x11-libs/libX11
 
-	cairo? (
-		x11-libs/cairo[glib,svg(+),X]
-		x11-libs/libX11
+	examples? (
+		x11-themes/xapp-symbolic-icon-theme
 	)
-	readline? ( sys-libs/readline:0= )
+
+	readline? (
+		sys-libs/readline:0=
+	)
 "
 DEPEND="
 	${RDEPEND}
-	sysprof? ( >=dev-util/sysprof-capture-3.40.1:4 )
+
+	sysprof? (
+		>=dev-util/sysprof-capture-3.40.1:4
+	)
+
 	test? (
 		sys-apps/dbus
 		x11-libs/gtk+:3[introspection]
@@ -64,10 +72,10 @@ src_configure() {
 	use elibc_musl && append-ldflags -Wl,-z,stack-size=2097152
 
 	local emesonargs=(
-		$(meson_feature cairo)
 		$(meson_feature readline)
 		$(meson_feature sysprof profiler)
 		-Dinstalled_tests=false
+		-Dgobject-introspection-tests:install_dir=''
 		$(meson_use !test skip_dbus_tests)
 		$(meson_use !test skip_gtk_tests)
 	)

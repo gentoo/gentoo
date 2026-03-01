@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 VALA_USE_DEPEND="vapigen"
 
 inherit gnome2-utils vala meson python-r1
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/linuxmint/xapp/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-3 xfce? ( GPL-3 )"
 SLOT="0"
 
-KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="gtk-doc introspection mate vala xfce"
 REQUIRED_USE="${PYTHON_REQUIRED_USE} vala? ( introspection )"
 
@@ -33,6 +33,7 @@ DEPEND="
 RDEPEND="
 	${PYTHON_DEPS}
 	${DEPEND}
+	sys-power/switcheroo-control
 
 	introspection? (
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
@@ -61,6 +62,9 @@ BDEPEND="
 PATCHES=(
 	# Don't install pastebin upload wrapper
 	"${FILESDIR}"/0001-don-t-install-pastebin-upload-wrapper.patch
+
+	# https://github.com/linuxmint/xapp/pull/193
+	"${FILESDIR}"/xapp-3.2.2-fix-xapp-icon-chooser-dialog-crash.patch
 )
 
 src_prepare() {

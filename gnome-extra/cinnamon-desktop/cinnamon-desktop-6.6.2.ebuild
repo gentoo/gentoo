@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit meson flag-o-matic gnome2-utils python-any-r1
 
@@ -13,16 +13,15 @@ SRC_URI="https://github.com/linuxmint/cinnamon-desktop/archive/${PV}.tar.gz -> $
 
 LICENSE="GPL-1 GPL-2+ LGPL-2+ LGPL-2.1+ MIT"
 SLOT="0/4" # subslot = libcinnamon-desktop soname version
-KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="wayland"
 
-RDEPEND="
+DEPEND="
 	app-text/iso-codes
 	>=dev-libs/glib-2.37.3:2[dbus]
 	>=dev-libs/gobject-introspection-1.82.0-r2:=
 	>=gnome-base/gsettings-desktop-schemas-3.5.91
 	>=media-libs/libpulse-12.99.3[glib]
-	sys-apps/accountsservice
 	virtual/libudev:=
 	x11-libs/cairo[X]
 	>=x11-libs/gdk-pixbuf-2.22:2[introspection]
@@ -31,11 +30,13 @@ RDEPEND="
 	>=x11-libs/libXext-1.1
 	x11-libs/libxkbfile
 	>=x11-libs/libXrandr-1.3
+	x11-base/xorg-proto
 	x11-misc/xkeyboard-config
 "
-DEPEND="
-	${RDEPEND}
-	x11-base/xorg-proto
+RDEPEND="
+	${DEPEND}
+	sys-apps/accountsservice
+	x11-themes/xapp-symbolic-icon-theme
 "
 BDEPEND="
 	${PYTHON_DEPS}
@@ -44,16 +45,6 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 "
-
-PATCHES=(
-	# Remove dead config option to prevent junk files from being installed
-	# https://github.com/linuxmint/cinnamon-desktop/pull/249
-	"${FILESDIR}/${PN}-6.4.0-remove-pnp_ids-option.patch"
-
-	# Fix GVC Mixer Crash
-	# https://github.com/linuxmint/cinnamon-desktop/pull/254
-	"${FILESDIR}/${PN}-6.4.0-fix-gvc-mixer-crash.patch"
-)
 
 src_prepare() {
 	default

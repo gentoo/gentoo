@@ -11,7 +11,7 @@ SRC_URI="https://github.com/linuxmint/xdg-desktop-portal-xapp/archive/${PV}.tar.
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 
 DEPEND="
 	>=dev-libs/glib-2.44:2
@@ -21,19 +21,14 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 	sys-apps/xdg-desktop-portal-gtk
-	>=x11-libs/xapp-2.8.9
+	>=x11-libs/xapp-3.2.2
+	x11-themes/xapp-symbolic-icon-theme
 "
 BDEPEND="
 	>=dev-util/gdbus-codegen-2.80.5-r1
 	sys-devel/gettext
 	virtual/pkgconfig
 "
-
-PATCHES=(
-	# Fix accent color settings
-	# https://github.com/linuxmint/xdg-desktop-portal-xapp/commit/326aadd4972d62a3ebccb93ad5c028977ce4ac95
-	"${FILESDIR}/${PN}-${PV}-fix-accent-color-settings.patch"
-)
 
 src_configure() {
 	local emesonargs=(

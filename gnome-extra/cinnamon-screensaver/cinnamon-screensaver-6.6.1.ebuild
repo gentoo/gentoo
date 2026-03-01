@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..14} )
 
 inherit meson python-single-r1 xdg
 
@@ -13,14 +13,14 @@ SRC_URI="https://github.com/linuxmint/cinnamon-screensaver/archive/${PV}.tar.gz 
 
 LICENSE="GPL-2+ LGPL-2+ MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv x86"
-IUSE="systemd xinerama"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+IUSE="+accessibility systemd xinerama"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 COMMON_DEPEND="
 	${PYTHON_DEPS}
 	>=dev-libs/glib-2.37.3:2[dbus]
-	>=gnome-extra/cinnamon-desktop-6.4
+	>=gnome-extra/cinnamon-desktop-6.6
 	sys-libs/pam
 	>=x11-libs/gtk+-3.22:3[introspection,X]
 	x11-libs/cairo
@@ -29,25 +29,32 @@ COMMON_DEPEND="
 	x11-libs/libXrandr
 	x11-libs/pango
 	x11-misc/xdotool:=
-	x11-themes/adwaita-icon-theme
 
-	xinerama? ( x11-libs/libXinerama )
+	xinerama? (
+		x11-libs/libXinerama
+	)
 "
 RDEPEND="
 	${COMMON_DEPEND}
-	>=app-accessibility/caribou-0.3
 	sys-apps/accountsservice
 	sys-process/procps
 	x11-apps/xprop
+	x11-themes/xapp-symbolic-icon-theme
 	$(python_gen_cond_dep '
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
 		dev-python/setproctitle[${PYTHON_USEDEP}]
-		>=dev-python/python3-xapp-2.4.2[${PYTHON_USEDEP}]
 	')
 
-	systemd? ( >=sys-apps/systemd-31 )
-	!systemd? ( sys-auth/elogind )
+	accessibility? (
+		>=app-accessibility/caribou-0.3
+	)
+	systemd? (
+		>=sys-apps/systemd-31
+	)
+	!systemd? (
+		sys-auth/elogind
+	)
 "
 DEPEND="
 	${COMMON_DEPEND}

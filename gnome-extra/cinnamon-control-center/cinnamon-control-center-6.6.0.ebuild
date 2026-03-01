@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..14} )
 
-inherit meson flag-o-matic gnome2-utils python-any-r1 xdg virtualx
+inherit meson flag-o-matic gnome2-utils python-any-r1 xdg
 
 DESCRIPTION="Cinnamons's main interface to configure various aspects of the desktop"
 HOMEPAGE="https://projects.linuxmint.com/cinnamon/ https://github.com/linuxmint/cinnamon-control-center"
@@ -13,17 +13,15 @@ SRC_URI="https://github.com/linuxmint/cinnamon-control-center/archive/${PV}.tar.
 
 LICENSE="GPL-2+ LGPL-2+ LGPL-2.1+ MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv x86"
-IUSE="+colord input_devices_wacom +networkmanager +modemmanager systemd test wayland"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+IUSE="+colord input_devices_wacom +networkmanager +modemmanager systemd wayland"
 REQUIRED_USE="modemmanager? ( networkmanager )"
-RESTRICT="test"
 
 COMMON_DEPEND="
 	app-accessibility/at-spi2-core:2
 	>=dev-libs/glib-2.44.0:2
-	>=gnome-base/libgnomekbd-3.0.0:0=
-	>=gnome-extra/cinnamon-desktop-6.4:0=
-	>=gnome-extra/cinnamon-menus-6.4
+	>=gnome-extra/cinnamon-desktop-6.6:0=
+	>=gnome-extra/cinnamon-menus-6.6
 	media-libs/fontconfig
 	>=sys-auth/polkit-0.103
 	>=sys-power/upower-0.99.8:=
@@ -33,7 +31,6 @@ COMMON_DEPEND="
 	>=x11-libs/libnotify-0.7.3
 	x11-libs/cairo
 	x11-libs/libX11
-	>=x11-libs/libxklavier-5.1:=
 	x11-libs/pango
 
 	colord? (
@@ -55,7 +52,7 @@ COMMON_DEPEND="
 "
 RDEPEND="
 	${COMMON_DEPEND}
-	x11-themes/adwaita-icon-theme
+	x11-themes/xapp-symbolic-icon-theme
 
 	colord? (
 		>=gnome-extra/gnome-color-manager-3
@@ -72,7 +69,6 @@ RDEPEND="
 "
 DEPEND="
 	${COMMON_DEPEND}
-	app-text/iso-codes
 	x11-base/xorg-proto
 "
 BDEPEND="
@@ -98,10 +94,6 @@ src_configure() {
 		$(meson_use input_devices_wacom wacom)
 	)
 	meson_src_configure
-}
-
-src_test() {
-	virtx meson_src_test
 }
 
 pkg_postinst() {

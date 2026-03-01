@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..14} )
 
 inherit meson gnome2-utils python-single-r1
 
@@ -13,13 +13,13 @@ SRC_URI="https://github.com/linuxmint/cinnamon-session/archive/${PV}.tar.gz -> $
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="systemd"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.37.3:2
-	>=gnome-extra/cinnamon-desktop-6.4:0=
+	>=gnome-extra/cinnamon-desktop-6.6:0=
 	media-libs/libcanberra[pulseaudio]
 	virtual/opengl
 	x11-libs/cairo
@@ -34,7 +34,7 @@ COMMON_DEPEND="
 	x11-libs/libXrender
 	x11-libs/libXtst
 	x11-libs/pango[X]
-	>=x11-libs/xapp-2.8.8[introspection]
+	>=x11-libs/xapp-3.2.2[introspection]
 
 	systemd? (
 		>=sys-apps/systemd-183
@@ -55,6 +55,7 @@ RDEPEND="
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
 		dev-python/setproctitle[${PYTHON_USEDEP}]
 	')
+	x11-themes/xapp-symbolic-icon-theme
 "
 BDEPEND="
 	${PYTHON_DEPS}

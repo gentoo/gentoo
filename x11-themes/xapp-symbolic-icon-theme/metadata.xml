@@ -10,9 +10,6 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">linuxmint/cinnamon-screensaver</remote-id>
+		<remote-id type="github">xapp-project/xapp-symbolic-icons</remote-id>
 	</upstream>
-	<use>
-		<flag name="accessibility">Adds support for on-screen keyboard using caribou</flag>
-	</use>
 </pkgmetadata>

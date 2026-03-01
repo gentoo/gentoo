@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..14} )
 
 inherit meson flag-o-matic gnome2-utils python-any-r1 xdg
 
@@ -13,21 +13,19 @@ SRC_URI="https://github.com/linuxmint/cinnamon-settings-daemon/archive/${PV}.tar
 
 LICENSE="GPL-2+ LGPL-2+ LGPL-2.1 LGPL-2.1+ MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="+colord cups input_devices_wacom smartcard systemd wayland"
 
 RDEPEND="
 	>=dev-libs/glib-2.40.0:2[dbus]
 	dev-libs/libgudev
-	>=gnome-base/libgnomekbd-3.6:=
-	>=gnome-extra/cinnamon-desktop-6.4:0=
+	>=gnome-extra/cinnamon-desktop-6.6:0=
 	media-libs/fontconfig
 	>=media-libs/lcms-2.2:2
 	|| (
 		media-libs/libcanberra-gtk3
 		media-libs/libcanberra[gtk3(-),pulseaudio]
 	)
-	>=media-libs/libpulse-0.9.16[glib]
 	>=sys-auth/polkit-0.97
 	sys-libs/timezone-data:=
 	x11-libs/cairo
@@ -35,11 +33,9 @@ RDEPEND="
 	>=x11-libs/libnotify-0.7.3
 	x11-libs/libX11
 	x11-libs/libXext
-	x11-libs/libXfixes
 	x11-libs/libXi
-	>=x11-libs/libxklavier-5.0:=
-	>=x11-libs/pango-1.20.0
-	>=sys-power/upower-0.9.11:=
+	>=sys-power/upower-0.99.11:=
+	x11-themes/xapp-symbolic-icon-theme
 
 	colord? ( >=x11-misc/colord-0.1.27:= )
 	cups? (
@@ -50,6 +46,7 @@ RDEPEND="
 		>=x11-libs/gtk+-3.24.41-r1:3[wayland?,X]
 		>=dev-libs/libwacom-0.7:=
 		>=gnome-base/librsvg-2.36.2
+		>=x11-libs/pango-1.20.0
 	)
 	!input_devices_wacom? (
 		>=x11-libs/gtk+-3.14.0:3[X]
@@ -58,8 +55,12 @@ RDEPEND="
 		dev-libs/nspr
 		>=dev-libs/nss-3.11.2
 	)
-	systemd? ( sys-apps/systemd:0= )
-	!systemd? ( sys-auth/elogind )
+	systemd? (
+		sys-apps/systemd:0=
+	)
+	!systemd? (
+		sys-auth/elogind
+	)
 "
 DEPEND="
 	${RDEPEND}
@@ -72,12 +73,6 @@ BDEPEND="
 	>=dev-util/gdbus-codegen-2.80.5-r1
 	virtual/pkgconfig
 "
-
-PATCHES=(
-	# Generate tz data header on build
-	# https://github.com/linuxmint/cinnamon-settings-daemon/pull/405
-	"${FILESDIR}/${PN}-6.4.0-generate-tz-data.patch"
-)
 
 src_prepare() {
 	default
