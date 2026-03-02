@@ -3,6 +3,7 @@
 
 EAPI=8
 
+PATCHSET=${P}-patchset
 PYTHON_COMPAT=( python3_{11..14} )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/isc.asc
 inherit eapi9-ver flag-o-matic meson python-r1 systemd tmpfiles
@@ -17,9 +18,11 @@ if [[ ${PV} == 9999 ]]; then
 else
 	SRC_URI="
 		https://downloads.isc.org/isc/kea/${PV}/${P}.tar.xz
+		!doc? ( https://codeberg.org/peter1010/kea-manpages/archive/kea-manpages-${PV}.tar.gz )
 		verify-sig? ( https://downloads.isc.org/isc/kea/${PV}/${P}.tar.xz.asc )
+		https://dev.gentoo.org/~asturm/distfiles/${PATCHSET}.tar.xz
 	"
-	KEYWORDS="amd64 arm arm64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
 LICENSE="MPL-2.0"
@@ -30,7 +33,7 @@ REQUIRED_USE="shell? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
-	>=dev-libs/boost-1.66:=
+	>=dev-libs/boost-1.69:=
 	dev-libs/log4cplus:=
 	kerberos? ( virtual/krb5 )
 	mysql? (
@@ -63,6 +66,8 @@ BDEPEND="
 	)
 	verify-sig? ( sec-keys/openpgp-keys-isc )
 "
+
+PATCHES=( "${WORKDIR}"/${PATCHSET} )
 
 python_check_deps() {
 	use doc || return 0;
@@ -151,8 +156,6 @@ src_configure() {
 src_compile() {
 	meson_src_compile
 
-	# Note: If you want man pages doc use has to be set. This may change
-	# in the future and be like 2.6.3 where man pages were part of the release tarball
 	use doc && meson_src_compile doc
 }
 
@@ -281,6 +284,10 @@ src_install() {
 			-i "${ED}"/etc/conf.d/kea-${svc} || die
 		dosym kea "${EPREFIX}"/etc/init.d/kea-${svc}
 	done
+
+	if use !doc; then
+		doman "${WORKDIR}"/kea-manpages/man/*
+	fi
 
 	systemd_newunit "${FILESDIR}"/${PN}-ctrl-agent.service-r2 ${PN}-ctrl-agent.service
 	systemd_newunit "${FILESDIR}"/${PN}-dhcp-ddns.service-r2 ${PN}-dhcp-ddns.service
