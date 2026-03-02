@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: texlive-common.eclass
@@ -6,7 +6,7 @@
 # tex@gentoo.org
 # @AUTHOR:
 # Original Author: Alexis Ballier <aballier@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: Provide various functions used by both texlive-core and texlive modules
 # @DESCRIPTION:
 # Purpose: Provide various functions used by both texlive-core and texlive
@@ -14,18 +14,15 @@
 #
 # Note that this eclass *must* not assume the presence of any standard tex too
 
-case ${EAPI} in
-	7)
-		inherit eapi8-dosym
-		;;
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
-inherit edo
-
 if [[ -z ${_TEXLIVE_COMMON_ECLASS} ]]; then
 _TEXLIVE_COMMON_ECLASS=1
+
+case ${EAPI} in
+	7) inherit eapi8-dosym eapi9-pipestatus ;;
+	8) inherit eapi9-pipestatus ;;
+	9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # @ECLASS_VARIABLE: CTAN_MIRROR_URL
 # @USER_VARIABLE
@@ -217,9 +214,10 @@ etexmf-update() {
 efmtutil-sys() {
 	if has_version 'app-text/texlive-core' ; then
 		if [[ -z ${ROOT} && -x "${EPREFIX}"/usr/bin/fmtutil-sys ]] ; then
-			edob -m "Rebuilding TexLive formats" \
-				 -l fmtutils-sys-all \
-				 "${EPREFIX}"/usr/bin/fmtutil-sys --all
+			ebegin "Rebuilding TeX Live formats"
+			"${EPREFIX}"/usr/bin/fmtutil-sys --all &> /dev/null
+			eend $? || die -n "fmtutil-sys returned non-zero exit status $?"
+
 		else
 			ewarn "Cannot run fmtutil-sys for some reason."
 			ewarn "Your formats might be inconsistent with your installed ${PN} version"
@@ -293,7 +291,7 @@ texlive-common_update_tlpdb() {
 		find "${tlpobj}" -maxdepth 1 -type f -name "*.tlpobj" -print0 |
 			sort -z |
 			xargs -0 --no-run-if-empty sed -s '$G' >> "${new_tlpdb}"
-		assert "generating tlpdb failed"
+		pipestatus || die "generating tlpdb failed"
 	fi
 
 	if [[ -f ${tlpdb} ]]; then

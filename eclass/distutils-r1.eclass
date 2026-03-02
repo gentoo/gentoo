@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
 # Based on the work of: Krzysztof Pawlik <nelchael@gentoo.org>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @PROVIDES: python-r1 python-single-r1
 # @BLURB: A simple eclass to build Python packages using distutils.
 # @DESCRIPTION:
@@ -217,7 +217,8 @@ if [[ -z ${_DISTUTILS_R1_ECLASS} ]]; then
 _DISTUTILS_R1_ECLASS=1
 
 case ${EAPI} in
-	8) ;;
+	8) inherit eapi9-pipestatus ;;
+	9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -1454,13 +1455,13 @@ distutils-r1_python_install() {
 		(
 			cd "${reg_scriptdir}" && find . -mindepth 1
 		) | sort > "${T}"/.distutils-files-bin
-		assert "listing ${reg_scriptdir} failed"
+		pipestatus || die "listing ${reg_scriptdir} failed"
 		(
 			if [[ -d ${wrapped_scriptdir} ]]; then
 				cd "${wrapped_scriptdir}" && find . -mindepth 1
 			fi
 		) | sort > "${T}"/.distutils-files-wrapped
-		assert "listing ${wrapped_scriptdir} failed"
+		pipestatus || die "listing ${wrapped_scriptdir} failed"
 		if ! diff -U 0 "${T}"/.distutils-files-{bin,wrapped}; then
 			die "File lists for ${reg_scriptdir} and ${wrapped_scriptdir} differ (see diff above)"
 		fi

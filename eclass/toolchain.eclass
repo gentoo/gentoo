@@ -4,7 +4,7 @@
 # @ECLASS: toolchain.eclass
 # @MAINTAINER:
 # Toolchain Ninjas <toolchain@gentoo.org>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @BLURB: Common code for sys-devel/gcc ebuilds
 # @DESCRIPTION:
 # Common code for sys-devel/gcc ebuilds (and occasionally GCC forks, like
@@ -14,18 +14,22 @@
 if [[ -z ${_TOOLCHAIN_ECLASS} ]]; then
 _TOOLCHAIN_ECLASS=1
 
-RUST_OPTIONAL="1"
-
 # See tc_version_is_at_least below wrt old EAPIs vs old GCCs.
 case ${EAPI} in
-	8) ;;
+	8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
+
+RUST_OPTIONAL="1"
 
 DESCRIPTION="The GNU Compiler Collection"
 HOMEPAGE="https://gcc.gnu.org/"
 
-inherit edo flag-o-matic gnuconfig libtool multilib pax-utils rust toolchain-funcs prefix
+inherit flag-o-matic gnuconfig libtool multilib pax-utils rust toolchain-funcs prefix
+
+if [[ ${EAPI} = 8 ]]; then
+	inherit edo
+fi
 
 [[ -n ${TOOLCHAIN_HAS_TESTS} ]] && inherit python-any-r1
 

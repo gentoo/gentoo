@@ -6,7 +6,7 @@
 # cross@gentoo.org
 # @AUTHOR:
 # James Le Cuirot <chewi@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: Common functions for using a different (sys)root
 # @DESCRIPTION:
 # This eclass provides common functions to run executables within a different
@@ -14,7 +14,7 @@
 # functions can be used in src_* or pkg_* phase functions.
 
 case ${EAPI} in
-	7|8) ;;
+	7|8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 

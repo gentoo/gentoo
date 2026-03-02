@@ -4,7 +4,7 @@
 # @ECLASS: ecm-common.eclass
 # @MAINTAINER:
 # kde@gentoo.org
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @PROVIDES: cmake
 # @BLURB: Standalone CMake calling std. ECM macros to install common files only.
 # @DESCRIPTION:
@@ -15,13 +15,13 @@
 # files package.
 # Conventionally we will use ${PN}-common for these split packages.
 
-case ${EAPI} in
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_ECM_COMMON_ECLASS} ]]; then
 _ECM_COMMON_ECLASS=1
+
+case ${EAPI} in
+	8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 inherit cmake
 

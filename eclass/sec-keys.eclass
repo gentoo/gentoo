@@ -6,7 +6,7 @@
 # Eli Schwartz <eschwartz@gentoo.org>
 # @AUTHOR:
 # Eli Schwartz <eschwartz@gentoo.org>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @BLURB: Provides a uniform way of handling ebuilds which package PGP key material
 # @DESCRIPTION:
 # This eclass provides a streamlined approach to finding suitable source
@@ -35,15 +35,14 @@
 # SRC_URI+="https://awhite.com/awhite.gpg -> awhite-${PV}.gpg"
 # @CODE
 
-case ${EAPI} in
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ ! ${_SEC_KEYS_ECLASS} ]]; then
 _SEC_KEYS_ECLASS=1
 
-inherit eapi9-pipestatus edo
+case ${EAPI} in
+	8) inherit eapi9-pipestatus edo ;;
+	9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # @ECLASS_VARIABLE: SEC_KEYS_VALIDPGPKEYS
 # @PRE_INHERIT
