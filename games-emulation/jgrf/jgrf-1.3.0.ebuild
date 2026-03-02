@@ -23,7 +23,7 @@ DEPEND="
 	dev-libs/openssl:0=
 	media-libs/jg:1=
 	media-libs/libepoxy[egl(+)]
-	media-libs/libsdl3[opengl]
+	media-libs/libsdl2[opengl,sound,video]
 	media-libs/speexdsp
 "
 RDEPEND="${DEPEND}"
