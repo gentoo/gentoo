@@ -1,9 +1,9 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{12..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 DISTUTILS_USE_PEP517=flit
 PYPI_PN="gentle-mxml"
 inherit distutils-r1 optfeature pypi
@@ -34,6 +34,8 @@ BDEPEND="
 		dev-python/uv
 	)
 "
+
+EPYTEST_PLUGINS=()
 
 distutils_enable_tests pytest
 
