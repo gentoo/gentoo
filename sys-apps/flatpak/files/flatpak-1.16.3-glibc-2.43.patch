@@ -1,0 +1,80 @@
+From 9380e0c66c7f0f081647c84e72c86599853951b0 Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Tue, 27 Jan 2026 23:07:30 -0600
+Subject: [PATCH] fix: Build with glibc 2.43
+
+Several glibc functions now return a const pointer if the input is a const pointer and a non-const pointer if the input is non-const, causing a build failure.
+
+Fix this by declaring the output pointers as const if they are never modified and for the lone failure where the output is modified instead make the input non-const.
+---
+ app/flatpak-builtins-utils.c | 2 +-
+ app/flatpak-tty-utils.c      | 2 +-
+ common/flatpak-context.c     | 8 ++++----
+ 3 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/app/flatpak-builtins-utils.c b/app/flatpak-builtins-utils.c
+index be9053763d..3ba07a5baf 100644
+--- a/app/flatpak-builtins-utils.c
++++ b/app/flatpak-builtins-utils.c
+@@ -824,7 +824,7 @@ find_column (Column     *columns,
+ {
+   int i;
+   int candidate;
+-  char *p = strchr (name, ':');
++  const char *p = strchr (name, ':');
+ 
+   candidate = -1;
+   for (i = 0; columns[i].name; i++)
+diff --git a/app/flatpak-tty-utils.c b/app/flatpak-tty-utils.c
+index dbc0f9808b..c3142fdb14 100644
+--- a/app/flatpak-tty-utils.c
++++ b/app/flatpak-tty-utils.c
+@@ -253,7 +253,7 @@ flatpak_number_prompt (gboolean default_yes, int min, int max, const char *promp
+ }
+ 
+ static gboolean
+-parse_range (const char *s, int *a, int *b)
++parse_range (char *s, int *a, int *b)
+ {
+   char *p;
+ 
+diff --git a/common/flatpak-context.c b/common/flatpak-context.c
+index d130d58adb..6d0a6ab271 100644
+--- a/common/flatpak-context.c
++++ b/common/flatpak-context.c
+@@ -1544,7 +1544,7 @@ get_xdg_dir_from_string (const char  *filesystem,
+                          const char **suffix,
+                          const char **where)
+ {
+-  char *slash;
++  const char *slash;
+   const char *rest;
+   g_autofree char *prefix = NULL;
+   const char *dir = NULL;
+@@ -1578,7 +1578,7 @@ get_xdg_user_dir_from_string (const char  *filesystem,
+                               const char **suffix,
+                               char **dir)
+ {
+-  char *slash;
++  const char *slash;
+   const char *rest;
+   g_autofree char *prefix = NULL;
+   gsize len;
+@@ -2580,7 +2580,7 @@ option_add_generic_policy_cb (const gchar *option_name,
+                               GError     **error)
+ {
+   FlatpakContext *context = data;
+-  char *t;
++  const char *t;
+   g_autofree char *key = NULL;
+   const char *policy_value;
+ 
+@@ -2619,7 +2619,7 @@ option_remove_generic_policy_cb (const gchar *option_name,
+                                  GError     **error)
+ {
+   FlatpakContext *context = data;
+-  char *t;
++  const char *t;
+   g_autofree char *key = NULL;
+   const char *policy_value;
+   g_autofree char *extended_value = NULL;

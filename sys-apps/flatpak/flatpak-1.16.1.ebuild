@@ -71,6 +71,8 @@ BDEPEND="
 
 PDEPEND="sys-apps/xdg-desktop-portal"
 
+PATCHES=("${FILESDIR}/flatpak-1.16.3-glibc-2.43.patch")
+
 python_check_deps() {
 	python_has_version "dev-python/pyparsing[${PYTHON_USEDEP}]"
 }
