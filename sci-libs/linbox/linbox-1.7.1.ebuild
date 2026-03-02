@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/linbox-team/${PN}/releases/download/v${PV}/${P}.tar.
 # headers all say LGPL-2.1
 LICENSE="GPL-2+ LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86 ~x64-macos"
+KEYWORDS="amd64 ~riscv ~x86 ~x64-macos"
 IUSE="doc opencl openmp"
 
 BDEPEND="doc? ( app-text/doxygen )"
