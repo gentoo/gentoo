@@ -1,9 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="github">pdfminer/pdfminer.six</remote-id>
 		<remote-id type="pypi">pdfminer.six</remote-id>
+		<maintainer>
+			<name>Yusuke Shinyama</name>
+		</maintainer>
+		<maintainer>
+			<name>Philippe Guglielmetti</name>
+			<email>pdfminer@goulu.net</email>
+		</maintainer>
 	</upstream>
 </pkgmetadata>
