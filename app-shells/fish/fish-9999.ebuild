@@ -14,7 +14,9 @@ fi
 
 RUST_MIN_VER="1.85.0"
 
-inherit cargo cmake readme.gentoo-r1 xdg
+PYTHON_COMPAT=( python3_{11..14} )
+
+inherit cargo cmake python-any-r1 readme.gentoo-r1 xdg
 
 DESCRIPTION="Friendly Interactive SHell"
 HOMEPAGE="https://fishshell.com/"
@@ -46,17 +48,45 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="
 	virtual/pkgconfig
-	doc? ( dev-python/sphinx )
+	${PYTHON_USEDEP}
+	doc? ( $(python_gen_any_dep 'dev-python/sphinx[${PYTHON_USEDEP}]') )
 	nls? ( sys-devel/gettext )
+	test? (
+		app-misc/tmux
+		dev-vcs/git
+		sys-apps/less
+		$(python_gen_any_dep 'dev-python/pexpect[${PYTHON_USEDEP}]')
+	)
 "
 DEPEND="dev-libs/libpcre2[pcre32]"
 RDEPEND="${DEPEND}"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-4.4.0-use-cargo-eclass-for-build.patch"
-)
-
 QA_FLAGS_IGNORED="usr/bin/.*"
+
+python_check_deps() {
+	if use doc; then
+		python_has_version "dev-python/sphinx[${PYTHON_USEDEP}]" || return 1
+	fi
+	if use test; then
+		python_has_version "dev-python/pexpect[${PYTHON_USEDEP}]" || return 1
+	fi
+}
+
+pkg_setup() {
+	if use doc || use test; then
+		python-any-r1_pkg_setup
+	fi
+	rust_pkg_setup
+
+	export PKG_CONFIG_ALLOW_CROSS=1
+}
+
+src_prepare() {
+	# Bug: https://bugs.gentoo.org/952080
+	sed -e '/^lto = /d' -i Cargo.toml || die "Failed to remove LTO from cargo package"
+
+	cmake_src_prepare
+}
 
 src_unpack() {
 	if [[ ${PV} == 9999 ]]; then
@@ -70,41 +100,42 @@ src_unpack() {
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}/etc"
-		-DWITH_DOCS="$(usex doc)"
-		-DWITH_MESSAGE_LOCALIZATION="$(usex nls 1 0)"
+		-DCMAKE_INSTALL_DATADIR="${EPREFIX}/usr/share"
+		-DWITH_DOCS="$(usex doc ON OFF)"
+		-DWITH_MESSAGE_LOCALIZATION="$(usex nls ON OFF)"
+		-DRust_CARGO="${CARGO}"
+		-DRust_COMPILER="${RUSTC}"
 	)
-
-	cargo_src_configure --no-default-features
-	cmake_src_configure
+	local -x CMAKE_BUILD_TYPE="$(usex debug Debug Release)"
+	cargo_env cmake_src_configure
 }
 
 src_compile() {
-	local -x PREFIX="${EPREFIX}/usr"
-	local -x DATADIR="${EPREFIX}/usr/share"
-	local -x DOCDIR="${EPREFIX}/usr/share/doc/${PF}"
-
-	# Bug: https://bugs.gentoo.org/950699
-	local -x SYSCONFDIR="${EPREFIX}/etc"
-
-	local -x FISH_BUILD_DOCS
-	FISH_BUILD_DOCS="$(usex doc 1 0)"
-
-	# HACK: Let the rust build script know we are using CMake.
-	# Bug: https://bugs.gentoo.org/970077
-	local -x FISH_CMAKE_BINARY_DIR="${BUILD_DIR}"
-
-	cargo_src_compile
+	local -x CARGO_TERM_COLOR=always
+	cargo_env cmake_src_compile
 }
 
 src_test() {
-	local -x CARGO_TERM_COLOR=always
-	local -x TEST_VERBOSE=1
-	# cargo_env cmake_src_compile fish_run_tests
-	cargo_env cmake_src_test fish_run_tests
+	# Very fragile tests, don't seem to work in sandboxed environment.
+	# No die to allow repeating tests.
+	rm -v \
+		tests/checks/tmux-pager.fish \
+		tests/checks/tmux-wrapping.fish \
+		tests/checks/tmux-commandline.fish \
+		tests/checks/tmux-prompt.fish \
+		tests/pexpects/terminal.py \
+		|| :
+
+	if [[ ${PV} == 9999 ]]; then
+		# https://github.com/fish-shell/fish-shell/issues/12497
+		rm -v tests/checks/version.fish || :
+	fi
+
+	cargo_env cmake_build fish_run_tests
 }
 
 src_install() {
-	cmake_src_install
+	cargo_env cmake_src_install
 	keepdir /usr/share/fish/vendor_{completions,conf,functions}.d
 	readme.gentoo_create_doc
 }
