@@ -42,7 +42,7 @@ RDEPEND="
 		kde-frameworks/kpackage:6
 		kde-frameworks/ksvg:6
 		kde-frameworks/kcmutils:6
-		kde-plasma/libplasma:6
+		kde-plasma/libplasma:6=
 		x11-libs/libxkbcommon
 	)
 "
