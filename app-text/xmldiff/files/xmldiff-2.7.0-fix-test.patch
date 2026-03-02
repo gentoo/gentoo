@@ -1,0 +1,13 @@
+Backported from upstream commit 57e16ce3d92067c6246c3de04f2d4b9803f6f25b
+
+--- a/tests/test_main.py
++++ b/tests/test_main.py
+@@ -44,7 +44,7 @@ class MainAPITests(unittest.TestCase):
+         with open(LEFT_FILE, "rb") as infile:
+             with open(RIGHT_FILE, "rb") as infile:
+                 # Give something else, and it fails:
+-                with self.assertRaises(ValueError):
++                with self.assertRaises(TypeError):
+                     main.diff_texts(infile, infile)
+ 
+     def test_api_diff_trees(self):
