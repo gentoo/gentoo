@@ -14,7 +14,7 @@ SLOT="0/${LLVM_SOABI}"
 KEYWORDS="~amd64"
 
 RDEPEND="
-	!llvm-runtimes/offload[llvm_targets_NVPTX(-)]
+	!<llvm-runtimes/offload-22[llvm_targets_NVPTX(-)]
 "
 BDEPEND="
 	llvm-core/clang:${LLVM_MAJOR}[llvm_targets_NVPTX]
