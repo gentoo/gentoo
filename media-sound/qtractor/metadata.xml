@@ -5,14 +5,6 @@
 		<email>proaudio@gentoo.org</email>
 		<name>Gentoo ProAudio Project</name>
 	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>simon.vanderveldt+gentoo@gmail.com</email>
-		<name>Simon van der Veldt</name>
-	</maintainer>
-	<maintainer type="project" proxied="proxy">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
 	<use>
 		<flag name="aubio">Enable <pkg>media-libs/aubio</pkg> support</flag>
 		<flag name="dssi">Enable support for DSSI Soft Synth Interface</flag>
