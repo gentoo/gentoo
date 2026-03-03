@@ -12,7 +12,7 @@ SRC_URI="https://inai.de/files/${PN}/libHX-${PV}.tar.zst"
 S="${WORKDIR}/libHX-${PV}"
 LICENSE="GPL-3"
 SLOT="0/43" # soname version
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 IUSE="doc"
 
 BDEPEND="$(unpacker_src_uri_depends)"
