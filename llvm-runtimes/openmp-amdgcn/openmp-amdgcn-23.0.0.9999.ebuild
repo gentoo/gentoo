@@ -13,7 +13,7 @@ LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0/${LLVM_SOABI}"
 
 RDEPEND="
-	!llvm-runtimes/offload[llvm_targets_AMDGPU(-)]
+	!<llvm-runtimes/offload-22[llvm_targets_AMDGPU(-)]
 "
 BDEPEND="
 	llvm-core/clang:${LLVM_MAJOR}[llvm_targets_AMDGPU]

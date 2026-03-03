@@ -14,7 +14,7 @@ SLOT="0/${LLVM_SOABI}"
 KEYWORDS="~amd64"
 
 RDEPEND="
-	!llvm-runtimes/offload[llvm_targets_AMDGPU(-)]
+	!<llvm-runtimes/offload-22[llvm_targets_AMDGPU(-)]
 "
 BDEPEND="
 	llvm-core/clang:${LLVM_MAJOR}[llvm_targets_AMDGPU]
