@@ -53,7 +53,7 @@ DEPEND="${LUA_DEPS}
 	>=dev-libs/libuv-1.50.0:=
 	>=dev-libs/libvterm-0.3.3
 	>=dev-libs/msgpack-3.0.0:=
-	>=dev-libs/tree-sitter-0.25.3:=
+	=dev-libs/tree-sitter-0.26*
 	=dev-libs/tree-sitter-c-0.23*
 	=dev-libs/tree-sitter-lua-0.3*
 	=dev-libs/tree-sitter-markdown-0.4*
