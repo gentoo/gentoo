@@ -11,7 +11,7 @@ SRC_URI="https://inai.de/files/pam_mount/${P}.tar.zst"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="amd64 ~ppc x86"
 
 IUSE="crypt ssl selinux"
 
