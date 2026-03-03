@@ -24,6 +24,13 @@ RDEPEND="
 
 distutils_enable_tests unittest
 
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# https://github.com/trentm/python-markdown2/pull/682
+	sed -i -e '/data_files/d' setup.py || die
+}
+
 python_test() {
 	cd test || die
 	"${EPYTHON}" -m unittest test_markdown2.py -v ||
