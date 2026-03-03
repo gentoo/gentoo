@@ -23,6 +23,7 @@ llvm-runtimes/libcxxabi
 llvm-runtimes/libcxx
 llvm-runtimes/libgcc
 llvm-runtimes/openmp
+llvm-runtimes/openmp-amdgcn
 llvm-runtimes/offload
 llvm-core/clang-linker-config
 llvm-runtimes/clang-rtlib-config
