@@ -64,6 +64,7 @@ dev-python/sphinxcontrib-doxylink
 >=dev-python/sphinxcontrib-httpdomain-2.0
 dev-python/sybil
 dev-python/testfixtures
+dev-python/toml-fmt-common
 dev-python/uv-build
 dev-python/zmq-anyio
 net-analyzer/fail2ban
