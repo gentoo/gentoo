@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="sqlite"
 
 inherit distutils-r1 xdg-utils
@@ -28,7 +28,7 @@ RDEPEND="
 		dev-python/pycairo[${PYTHON_USEDEP}]
 		>=dev-python/pygobject-3.12:3[cairo,${PYTHON_USEDEP}]
 		dev-python/pyicu[${PYTHON_USEDEP}]
-		exif? ( >=media-libs/gexiv2-0.5[${PYTHON_USEDEP},introspection] )
+		exif? ( >=media-libs/gexiv2-0.5:0=[${PYTHON_USEDEP},introspection] )
 	')
 	gnome-base/librsvg:2
 	>x11-libs/gtk+-3.14.8:3[introspection]
