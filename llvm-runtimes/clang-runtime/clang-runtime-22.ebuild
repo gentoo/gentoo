@@ -15,6 +15,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~arm64-
 IUSE="
 	+compiler-rt libcxx offload openmp +sanitize
 	default-compiler-rt default-libcxx default-lld llvm-libunwind polly
+	llvm_targets_AMDGPU llvm_targets_NVPTX
 "
 REQUIRED_USE="
 	sanitize? ( compiler-rt )
@@ -32,6 +33,12 @@ RDEPEND="
 		>=llvm-runtimes/openmp-${PV}[${MULTILIB_USEDEP}]
 		offload? (
 			>=llvm-runtimes/offload-${PV}
+			llvm_targets_AMDGPU? (
+				>=llvm-runtimes/openmp-amdgcn-${PV}
+			)
+			llvm_targets_NVPTX? (
+				>=llvm-runtimes/openmp-nvptx64-${PV}
+			)
 		)
 	)
 
