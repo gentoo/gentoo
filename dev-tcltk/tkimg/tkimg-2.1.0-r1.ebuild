@@ -112,7 +112,7 @@ src_install() {
 
 	if use doc; then
 		docompress -x usr/share/doc/${PF}/demo.tcl
-		dodoc demo.tcl
+		dodoc tests/demo/demo.tcl
 		docinto html
 		dodoc -r doc/*
 	fi
