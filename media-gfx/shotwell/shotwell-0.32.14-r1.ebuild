@@ -10,7 +10,7 @@ HOMEPAGE="https://shotwell-project.org/"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~sparc ~x86"
 IUSE="opencv udev"
 
 DEPEND="
@@ -27,10 +27,10 @@ DEPEND="
 	>=media-libs/gst-plugins-base-1.20:1.0
 	>=media-libs/libgphoto2-2.5:=
 	udev? ( >=dev-libs/libgudev-145:= )
-	>=media-libs/gexiv2-0.12.3
+	>=media-libs/gexiv2-0.12.3:0=
 	>=media-libs/libraw-0.13.2:=
 	>=media-libs/libexif-0.6.16
-	app-crypt/libsecret
+	app-crypt/libsecret[vala]
 	>=dev-libs/libportal-0.5:=[gtk,vala]
 	media-libs/libwebp:=
 
