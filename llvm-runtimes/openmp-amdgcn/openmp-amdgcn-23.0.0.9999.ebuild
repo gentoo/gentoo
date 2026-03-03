@@ -36,7 +36,6 @@ src_configure() {
 	local mycmakeargs=(
 		-DLLVM_DEFAULT_TARGET_TRIPLE=${triple}
 		-DLLVM_ENABLE_RUNTIMES=openmp
-		-DOPENMP_STANDALONE_BUILD=ON
 		-DOPENMP_INSTALL_LIBDIR="$(get_libdir)/${triple}"
 	)
 	cmake_src_configure
