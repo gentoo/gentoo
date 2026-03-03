@@ -1,0 +1,9 @@
+Quick workaround for the new io-uring support failing to build with unity
+due to openModeToOpenFlags() also existing in qfsfileengine_unix.cpp
+--- a/src/corelib/CMakeLists.txt
++++ b/src/corelib/CMakeLists.txt
+@@ -758,2 +758,4 @@
+         io/qioring.cpp io/qioring_linux.cpp io/qioring_p.h
++    NO_UNITY_BUILD_SOURCES
++        io/qioring_linux.cpp
+     LIBRARIES
