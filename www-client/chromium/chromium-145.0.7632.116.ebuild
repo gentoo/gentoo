@@ -623,8 +623,6 @@ src_prepare() {
 
 		shopt -u nullglob
 
-		remove_compiler_builtins
-
 		# Strictly speaking this doesn't need to be gated (no bundled toolchain for ppc64); it keeps the logic together
 		if use ppc64; then
 			local patchset_dir="${WORKDIR}/openpower-patches-${PPC64_HASH}/patches"
@@ -645,6 +643,12 @@ src_prepare() {
 				PATCHES+=( "${patchset_dir}/${isa_3_patch}" )
 			fi
 		fi
+
+		remove_compiler_builtins
+
+		# We can't rely on the eselect'd Rust to actually include bindgen, so we'll point to the selected slot specifically.
+		sed -i "s|/bin/rustfmt|/bin/rustfmt-${RUST_SLOT}|g" build/rust/rust_bindgen_generator.gni ||
+			die "Failed to update rustfmt path"
 
 	fi
 
