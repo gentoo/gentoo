@@ -1,0 +1,11 @@
+diff --git a/dpll/Makefile b/dpll/Makefile
+index 3a37184b..40dfb87b 100644
+--- a/dpll/Makefile
++++ b/dpll/Makefile
+@@ -1,5 +1,6 @@
+ # SPDX-License-Identifier: GPL-2.0
+ include ../config.mk
++include ../config.include
+ 
+ # iproute2 libraries
+ LIBNETLINK=../lib/libutil.a ../lib/libnetlink.a
