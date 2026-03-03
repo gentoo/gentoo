@@ -11,8 +11,10 @@ inherit cmake multibuild verify-sig xdg
 
 DESCRIPTION="SVG-based theme engine for Qt, KDE Plasma and LXQt"
 HOMEPAGE="https://github.com/tsujan/Kvantum"
-SRC_URI="https://github.com/tsujan/${PN^}/releases/download/V${PV}/${P^}.tar.xz
-	https://github.com/tsujan/${PN^}/releases/download/V${PV}/${P^}.tar.xz.asc"
+SRC_URI="
+	https://github.com/tsujan/${PN^}/releases/download/V${PV}/${P^}.tar.xz
+	verify-sig? ( https://github.com/tsujan/${PN^}/releases/download/V${PV}/${P^}.tar.xz.asc )
+"
 S=${WORKDIR}/${PN^}-${PV}/${PN^}
 
 LICENSE="GPL-3"
