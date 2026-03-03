@@ -1635,7 +1635,7 @@ pkg_postinst() {
 	xdg_desktop_database_update
 	readme.gentoo_print_elog
 
-	if ! use headless; then
+	if use !headless && [[ -z "${REPLACING_VERSIONS}" ]]; then
 		if use vaapi; then
 			elog "Hardware-accelerated video decoding configuration:"
 			elog
@@ -1690,5 +1690,23 @@ pkg_postinst() {
 		ewarn ""
 		ewarn "Chromium is known to behave unpredictably with this system configuration;"
 		ewarn "please complete the configuration of this system before logging any bugs."
+	fi
+
+	# Stable slot doesn't change profile directory, and it's vanishingly unlikely that users will downgrade from dev.
+	if [[ ${SLOT} != "stable" && -n "${REPLACING_VERSIONS}" ]]; then
+		local replacing_non_slotted=false
+		# there could be more than one PVR
+		for version in ${REPLACING_VERSIONS}; do
+			if ver_test "${version}" -le "145.0.7632.116"; then
+				replacing_non_slotted=true
+				break
+			fi
+		done
+		if ${replacing_non_slotted}; then
+			ewarn "This version of Chromium has replaced a non-slotted ebuild."
+			ewarn "This channel has its own profile directory, so your existing profile will not be used."
+			ewarn "To use your existing profile, either copy or move it to the new location."
+			ewarn "See https://wiki.gentoo.org/wiki/Chromium#Profile_Directories for more information."
+		fi
 	fi
 }
