@@ -21,7 +21,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 
 RDEPEND="
-	>=dev-python/poetry-core-${PV}[${PYTHON_USEDEP}]
+	=dev-python/poetry-core-$(ver_cut 1-2)*[${PYTHON_USEDEP}]
 	>=dev-python/poetry-plugin-export-1.6.0[${PYTHON_USEDEP}]
 	>=dev-python/build-1.2.1[${PYTHON_USEDEP}]
 	>=dev-python/cachecontrol-0.14.0[${PYTHON_USEDEP}]
