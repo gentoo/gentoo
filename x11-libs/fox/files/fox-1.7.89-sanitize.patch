@@ -1,0 +1,33 @@
+diff '--color=auto' -ru fox-1.7.89-orig/configure.ac fox-1.7.89/configure.ac
+--- fox-1.7.89-orig/configure.ac	2026-03-03 15:59:25.946665867 +0100
++++ fox-1.7.89/configure.ac	2026-03-03 15:59:40.625259877 +0100
+@@ -65,9 +65,6 @@
+ AC_SUBST(LT_REVISION)
+ AC_SUBST(LT_AGE)
+ 
+-# Prevents setting flags.
+-CXXFLAGS=""
+-
+ # More secret source
+ AC_USE_SYSTEM_EXTENSIONS
+ 
+@@ -144,7 +141,6 @@
+   CXXFLAGS="${CXXFLAGS} -O2 -DNDEBUG"
+   if test "${GXX}" = "yes" ; then
+     CXXFLAGS="${CXXFLAGS} -ffast-math -fstrict-overflow -fstrict-aliasing -finline-functions -fomit-frame-pointer "
+-    LDFLAGS="-s ${LDFLAGS}"
+   fi
+ fi
+ 
+diff '--color=auto' -ru fox-1.7.89-orig/Makefile.am fox-1.7.89/Makefile.am
+--- fox-1.7.89-orig/Makefile.am	2026-03-03 15:59:25.954180200 +0100
++++ fox-1.7.89/Makefile.am	2026-03-03 15:59:53.105434761 +0100
+@@ -3,7 +3,7 @@
+ # For non-gcc compilers, change the options to "no-dependencies"
+ AUTOMAKE_OPTIONS = foreign dist-zip
+ 
+-SUBDIRS    = utils include lib chart doc tests shutterbug adie pathfinder calculator controlpanel glviewer windows
++SUBDIRS    = utils include lib chart doc tests shutterbug adie pathfinder calculator controlpanel glviewer
+ EXTRA_DIST = ADDITIONS AUTHORS INSTALL LICENSE LICENSE_ADDENDUM TRACING README fox.spec fox-config index.html aclocal.m4
+ 
+ bin_SCRIPTS = fox-config
