@@ -1,0 +1,7 @@
+# see kup-server.cfg & man kup-server
+d /run/kup 0755 root root -
+f /run/kup/lock 0644 root root -
+
+# Upload tempdir; needs to be on the same filesystem as /var/lib/kup for atomic
+# move.
+d /var/lib/kup/tmp 1777 root root -
