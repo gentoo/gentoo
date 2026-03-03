@@ -100,7 +100,7 @@ COMMON_DEPEND="
 	qdbm? ( dev-db/qdbm )
 	readline? ( sys-libs/readline:0= )
 	session-mm? ( dev-libs/mm )
-	snmp? ( net-analyzer/net-snmp )
+	snmp? ( net-analyzer/net-snmp:= )
 	sodium? ( dev-libs/libsodium:=[-minimal(-)] )
 	spell? ( app-text/aspell )
 	sqlite? ( dev-db/sqlite )

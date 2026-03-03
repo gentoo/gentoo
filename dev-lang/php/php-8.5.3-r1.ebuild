@@ -35,7 +35,7 @@ IUSE="${IUSE} acl apparmor argon2 avif bcmath berkdb bzip2 calendar
 	+flatfile ftp gd gdbm gmp +iconv inifile
 	intl iodbc ipv6 +jit jpeg ldap ldap-sasl libedit lmdb
 	mhash mssql mysql mysqli nls
-	odbc +opcache +opcache-jit pcntl pdo +phar +posix postgres png
+	odbc +opcache-jit pcntl pdo +phar +posix postgres png
 	qdbm readline selinux +session session-mm sharedmem
 	+simplexml snmp soap sockets sodium spell sqlite ssl
 	sysvipc systemd test tidy +tokenizer tokyocabinet truetype unicode
@@ -98,7 +98,7 @@ COMMON_DEPEND="
 	qdbm? ( dev-db/qdbm )
 	readline? ( sys-libs/readline:0= )
 	session-mm? ( dev-libs/mm )
-	snmp? ( net-analyzer/net-snmp )
+	snmp? ( net-analyzer/net-snmp:= )
 	sodium? ( dev-libs/libsodium:=[-minimal(-)] )
 	spell? ( app-text/aspell )
 	sqlite? ( dev-db/sqlite )
@@ -176,14 +176,6 @@ php_install_ini() {
 
 	dodir "${PHP_EXT_INI_DIR#${EPREFIX}}"
 	dodir "${PHP_EXT_INI_DIR_ACTIVE#${EPREFIX}}"
-
-	if use opcache; then
-		elog "Adding opcache to $PHP_EXT_INI_DIR"
-		echo "zend_extension = opcache.so" >> \
-			 "${D}/${PHP_EXT_INI_DIR}"/opcache.ini
-		dosym "../ext/opcache.ini" \
-			  "${PHP_EXT_INI_DIR_ACTIVE#${EPREFIX}}/opcache.ini"
-	fi
 
 	# SAPI-specific handling
 	if [[ "${sapi}" == "fpm" ]] ; then
@@ -268,9 +260,6 @@ src_prepare() {
 		rm ext/dba/tests/gh19706.phpt
 	fi
 
-	# One-off, somebody forgot to update a version constant
-	rm ext/reflection/tests/ReflectionZendExtension.phpt || die
-
 	eautoconf --force
 }
 
@@ -336,7 +325,6 @@ src_configure() {
 		$(use_enable pcntl)
 		$(use_enable phar)
 		$(use_enable pdo)
-		$(use_enable opcache)
 		$(use_enable opcache-jit)
 		$(use_with postgres pgsql "$("${PG_CONFIG:-true}" --bindir)/..")
 		$(use_enable posix)
@@ -598,7 +586,6 @@ src_install() {
 	cd "${WORKDIR}/sapis-build/$first_sapi" || die
 	emake INSTALL_ROOT="${D}" \
 		install-build install-headers install-programs
-	use opcache && emake INSTALL_ROOT="${D}" install-modules
 
 	# Create the directory where we'll put version-specific php scripts
 	keepdir "/usr/share/php${PHP_MV}"
