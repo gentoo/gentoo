@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/project/qtractor/qtractor/${PV}/${P}.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="cpu_flags_x86_sse debug dssi ladspa libsamplerate mad osc rubberband vorbis zlib"
 REQUIRED_USE="dssi? ( ladspa )"
 
