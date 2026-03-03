@@ -1,0 +1,22 @@
+From aa6055cb4602e4617725e6e6cf66fa909a0f4a9e Mon Sep 17 00:00:00 2001
+From: Marcus Meissner <meissner@suse.de>
+Date: Wed, 9 Jul 2025 21:19:03 +0200
+Subject: [PATCH] added fuse prototype to init function
+
+---
+ gphotofs.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gphotofs.c b/gphotofs.c
+index c55ffa9..75c6d64 100644
+--- a/gphotofs.c
++++ b/gphotofs.c
+@@ -904,7 +904,7 @@ gphotofs_connect()
+ }
+ 
+ static void *
+-gphotofs_init()
++gphotofs_init(struct fuse_conn_info *conn, struct fuse_config *config)
+ {
+    GPCtx *p;
+ 

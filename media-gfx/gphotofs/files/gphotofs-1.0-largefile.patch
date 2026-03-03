@@ -1,0 +1,27 @@
+From 60d964e734d622b0468b8b253775ee6b1b8ea716 Mon Sep 17 00:00:00 2001
+From: Marcus Meissner <meissner@suse.de>
+Date: Wed, 9 Jul 2025 21:18:50 +0200
+Subject: [PATCH] added AC_SYS_LARGEFILE for 64bit offset
+
+---
+ configure.ac | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index 5e648b6..535e7ba 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -8,11 +8,13 @@ AM_INIT_AUTOMAKE([gnu 1.9 dist-bzip2])
+ 
+ GP_CHECK_SHELL_ENVIRONMENT
+ 
++
+ AC_PROG_CC
+ AC_PROG_CPP
+ AM_PROG_LIBTOOL
+ AC_PROG_INSTALL
+ AM_PROG_CC_C_O
++AC_SYS_LARGEFILE
+ 
+ GP_PKG_CONFIG
+ 
