@@ -15,5 +15,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">git-cola/git-cola</remote-id>
+		<remote-id type="gitlab">git-cola/git-cola</remote-id>
 	</upstream>
 </pkgmetadata>
