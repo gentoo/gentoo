@@ -260,7 +260,6 @@ get_distribution_components() {
 			UnicodeNameMappingGenerator
 
 			# tools
-			bugpoint
 			clang-offload-packager
 			dsymutil
 			llc
@@ -294,6 +293,7 @@ get_distribution_components() {
 			llvm-dwp
 			llvm-exegesis
 			llvm-extract
+			llvm-gpu-loader
 			llvm-gsymutil
 			llvm-ifs
 			llvm-install-name-tool
