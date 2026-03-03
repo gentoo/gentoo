@@ -13,7 +13,7 @@ HOMEPAGE="https://ebuildtester.readthedocs.io/"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
 	app-containers/docker
