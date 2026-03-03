@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,9 +18,6 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~s390 ~sparc x86"
 IUSE="berkdb +gdbm"
 
 RDEPEND="!mail-mta/courier
-	!<=net-mail/courier-imap-5.2.3
-	!<=mail-filter/maildrop-3.1.4
-	!net-mail/courier-makedat
 	>=net-libs/courier-unicode-2.0:=
 	gdbm? ( >=sys-libs/gdbm-1.8.0:= )
 	!gdbm? ( berkdb? ( >=sys-libs/db-3:= ) )"
