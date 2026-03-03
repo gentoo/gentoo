@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,7 +27,7 @@ DEPEND="
 	>=xfce-base/libxfce4util-4.17.2:=
 	>=xfce-base/xfconf-4.12.0:=
 	>=x11-libs/vte-0.70:=
-	exif? ( >=media-libs/gexiv2-0.14.0 )
+	exif? ( >=media-libs/gexiv2-0.14.0:0= )
 	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	libnotify? ( >=x11-libs/libnotify-0.7.0 )
 	pcre? ( >=dev-libs/libpcre2-10.0:= )
