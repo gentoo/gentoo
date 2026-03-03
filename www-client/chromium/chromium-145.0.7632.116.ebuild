@@ -646,8 +646,14 @@ src_prepare() {
 
 		remove_compiler_builtins
 
-		# We can't rely on the eselect'd Rust to actually include bindgen, so we'll point to the selected slot specifically.
-		sed -i "s|/bin/rustfmt|/bin/rustfmt-${RUST_SLOT}|g" build/rust/rust_bindgen_generator.gni ||
+		# We can't rely on the eselect'd Rust to actually include rustfmt, so we'll point to the selected slot specifically.
+		local suffix=""
+		if [[ "${RUST_TYPE}" == "binary" ]]; then
+			suffix="-bin-${RUST_SLOT}"
+		else
+			suffix="-${RUST_SLOT}"
+		fi
+		sed -i "s|/bin/rustfmt|/bin/rustfmt${suffix}|g" build/rust/rust_bindgen_generator.gni ||
 			die "Failed to update rustfmt path"
 
 	fi
