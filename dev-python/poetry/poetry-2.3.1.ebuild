@@ -46,10 +46,9 @@ RDEPEND="
 BDEPEND="
 	test? (
 		>=dev-python/deepdiff-6.3.1[${PYTHON_USEDEP}]
-		>=dev-python/httpretty-1.1[${PYTHON_USEDEP}]
 		>=dev-python/jaraco-classes-3.3.1[${PYTHON_USEDEP}]
 		>=dev-python/pytest-mock-3.9[${PYTHON_USEDEP}]
-		dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
+		dev-python/responses[${PYTHON_USEDEP}]
 	)
 "
 
@@ -65,15 +64,6 @@ EPYTEST_DESELECT=(
 
 	# broken if poetry-plugin-export is installed
 	'tests/console/test_application_command_not_found.py::test_application_command_not_found_messages[x-None]'
-
-	# TODO
-	tests/console/commands/env/test_activate.py::test_no_additional_output_in_verbose_mode
-	tests/installation/test_executor.py::test_executor_known_hashes
-	tests/puzzle/test_provider.py::test_search_for_directory_setup_read_setup_with_no_dependencies
-	tests/utils/env/test_env_manager.py::test_create_venv_finds_no_python_executable
-	tests/utils/test_python_manager.py::test_python_get_preferred_default
-	'tests/inspection/test_info.py::test_info_setup_missing_mandatory_should_trigger_pep517[name]'
-	'tests/console/commands/python/test_python_list.py::test_list_poetry_managed[False]'
 )
 
 src_prepare() {
