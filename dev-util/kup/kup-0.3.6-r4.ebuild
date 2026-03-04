@@ -17,6 +17,7 @@ SRC_URI="https://www.kernel.org/pub/software/network/kup/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="gitolite"
 
 RDEPEND="
 	app-arch/pigz
@@ -26,13 +27,12 @@ RDEPEND="
 	virtual/perl-File-Spec
 	dev-perl/BSD-Resource
 	dev-perl/Config-Simple"
-IUSE='gitolite'
 
 DOCS=( README )
 
 src_prepare() {
 	if use gitolite; then
-		cp -f "${S}/${PN}-server" "${S}/${PN}-server-gitolite"
+		cp -f "${S}/${PN}-server" "${S}/${PN}-server-gitolite" || die
 		patch "${S}/${PN}-server-gitolite" <"${FILESDIR}"/${PN}-server-gitolite-subcmd.patch || die
 	fi
 	default
@@ -49,7 +49,7 @@ src_install() {
 		exeinto /usr/libexec/gitolite/commands/
 		newexe kup-server-gitolite kup-server
 		# Gentoo's gitolite fork has a slightly different path:
-		exeinfo /usr/libexec/gitolite-gentoo/commands/
+		exeinto /usr/libexec/gitolite-gentoo/commands/
 		dosym -r /usr/libexec/gitolite/commands/kup-server /usr/libexec/gitolite-gentoo/commands/kup-server
 	fi
 	# Important data kept here
@@ -58,6 +58,7 @@ src_install() {
 	# Will create other directories
 	newtmpfiles "${FILESDIR}"/kup.tmpfilesd kup.conf
 }
+
 pkg_postinst() {
 	tmpfiles_process ${PN}.conf
 }
