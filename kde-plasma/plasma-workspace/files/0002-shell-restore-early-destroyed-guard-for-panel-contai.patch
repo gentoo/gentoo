@@ -1,0 +1,57 @@
+From db08d2f00951ad7a0ad604fb03cf5d0b6e2c057b Mon Sep 17 00:00:00 2001
+Message-ID: <db08d2f00951ad7a0ad604fb03cf5d0b6e2c057b.1772599681.git.sam@gentoo.org>
+In-Reply-To: <6086254f84186a7a28b86ee9948e6008a0e3e502.1772599681.git.sam@gentoo.org>
+References: <6086254f84186a7a28b86ee9948e6008a0e3e502.1772599681.git.sam@gentoo.org>
+From: Dobry Nikolov <dobry989@gmail.com>
+Date: Tue, 3 Mar 2026 13:44:02 +0200
+Subject: [PATCH 2/4] shell: restore early destroyed guard for panel
+ containments
+
+Commit 086ff5d8139eed36c25b3a7417f0eed8ec223739 removed a
+containmentAdded lambda from the constructor that connected
+QObject::destroyed -> panelContainmentDestroyed for every panel
+containment as soon as it was created. It reasoned that
+createWaitingPanels() already connects this signal, making it
+redundant.
+
+However, createWaitingPanels() only connects destroyed *after*
+successfully creating a PanelView for the containment. If a containment
+is freed before that point (e.g. its plugin is missing and libplasma
+issues deleteLater()), panelContainmentDestroyed is never connected,
+m_waitingPanels retains a dangling pointer, and the next dereference
+(e.g. in isScreenUiReady()) crashes with SIGSEGV.
+
+Restore the constructor connect so the guard is in place from the
+moment any panel containment is added, with no window of exposure.
+The connect inside createWaitingPanels() is now truly redundant
+and is removed.
+
+BUG: 516937
+(cherry picked from commit 0cc554a33cd496569f0fb1c9ba3a3f9261e627b7)
+--- a/shell/shellcorona.cpp
++++ b/shell/shellcorona.cpp
+@@ -142,6 +142,12 @@ void ShellCorona::init()
+     m_waitingPanelsTimer.setInterval(250ms);
+     connect(&m_waitingPanelsTimer, &QTimer::timeout, this, &ShellCorona::createWaitingPanels);
+ 
++    connect(this, &Corona::containmentAdded, this, [this](Plasma::Containment *cont) {
++        if (cont->containmentType() == Plasma::Containment::Panel || cont->containmentType() == Plasma::Containment::CustomPanel) {
++            connect(cont, &QObject::destroyed, this, &ShellCorona::panelContainmentDestroyed);
++        }
++    });
++
+ #ifndef NDEBUG
+     m_invariantsTimer.setSingleShot(true);
+     m_invariantsTimer.setInterval(qEnvironmentVariableIsSet("KDECI_BUILD") > 0 ? 30000ms : 1s);
+@@ -1606,8 +1612,6 @@ void ShellCorona::createWaitingPanels()
+ 
+         rectNotify();
+ 
+-        connect(cont, &QObject::destroyed, this, &ShellCorona::panelContainmentDestroyed);
+-
+         connect(panel, &QWindow::visibleChanged, this, rectNotify);
+         connect(panel, &QWindow::screenChanged, this, rectNotify);
+         connect(panel, &PanelView::locationChanged, this, rectNotify);
+-- 
+2.53.0
+

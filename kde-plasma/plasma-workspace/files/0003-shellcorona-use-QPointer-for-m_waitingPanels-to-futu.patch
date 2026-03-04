@@ -1,0 +1,80 @@
+From 8b4500d7acc699ec72bbac4aeed30db3e168a76d Mon Sep 17 00:00:00 2001
+Message-ID: <8b4500d7acc699ec72bbac4aeed30db3e168a76d.1772599681.git.sam@gentoo.org>
+In-Reply-To: <6086254f84186a7a28b86ee9948e6008a0e3e502.1772599681.git.sam@gentoo.org>
+References: <6086254f84186a7a28b86ee9948e6008a0e3e502.1772599681.git.sam@gentoo.org>
+From: Dobry Nikolov <dobry989@gmail.com>
+Date: Tue, 3 Mar 2026 13:45:34 +0200
+Subject: [PATCH 3/4] shellcorona: use QPointer for m_waitingPanels to
+ futureproof against dangling pointers
+
+Change m_waitingPanels to QList<QPointer<Plasma::Containment>> so that
+any freed containment pointer auto-nulls in place rather than dangling.
+
+- createWaitingPanels(): call removeAll(nullptr) at entry to discard
+  any auto-nulled entries before iterating.
+- checkAllDesktopsUiReady(): same removeAll(nullptr) before isEmpty()
+  to avoid spuriously starting the timer for nulled entries.
+- panelContainmentDestroyed(): the m_waitingPanels branch is now
+  redundant since QPointer auto-nulls it; guard on m_panelViews
+  instead to keep the PanelView cleanup path intact.
+- isScreenUiReady(): null-check each QPointer before dereferencing.
+
+BUG: 516937
+(cherry picked from commit 7308d3153f5e9ee8607f89005aa05c2fd4f07dd6)
+--- a/shell/shellcorona.cpp
++++ b/shell/shellcorona.cpp
+@@ -1519,6 +1519,7 @@ void ShellCorona::checkAllDesktopsUiReady()
+     ksplashProgressMessage.setArguments(QList<QVariant>() << QStringLiteral("desktop"));
+     QDBusConnection::sessionBus().asyncCall(ksplashProgressMessage);
+ 
++    m_waitingPanels.removeAll(nullptr);
+     if (!m_waitingPanels.isEmpty()) {
+         m_waitingPanelsTimer.start();
+     }
+@@ -1576,7 +1577,9 @@ Plasma::Containment *ShellCorona::createContainmentForActivity(const QString &ac
+ 
+ void ShellCorona::createWaitingPanels()
+ {
+-    QList<Plasma::Containment *> stillWaitingPanels;
++    m_waitingPanels.removeAll(nullptr);
++
++    QList<QPointer<Plasma::Containment>> stillWaitingPanels;
+ 
+     for (Plasma::Containment *cont : std::as_const(m_waitingPanels)) {
+         // ignore non existing (yet?) screens
+@@ -1644,9 +1647,7 @@ void ShellCorona::panelContainmentDestroyed(QObject *obj)
+ {
+     auto *cont = static_cast<Plasma::Containment *>(obj);
+ 
+-    // The destroyed panel containment was still in the m_waitingPanels list
+-    if (m_waitingPanels.contains(cont)) {
+-        m_waitingPanels.removeAll(cont);
++    if (!m_panelViews.contains(cont)) {
+         return;
+     }
+ 
+@@ -2280,8 +2281,8 @@ bool ShellCorona::isScreenUiReady(int screen)
+         return false;
+     }
+ 
+-    for (Plasma::Containment *cont : std::as_const(m_waitingPanels)) {
+-        if (cont->lastScreen() == screen) {
++    for (const QPointer<Plasma::Containment> &cont : std::as_const(m_waitingPanels)) {
++        if (cont && cont->lastScreen() == screen) {
+             return false;
+         }
+     }
+--- a/shell/shellcorona.h
++++ b/shell/shellcorona.h
+@@ -302,7 +302,7 @@ private:
+     QHash<const Plasma::Containment *, int> m_pendingScreenChanges;
+     KConfigGroup m_desktopDefaultsConfig;
+     KConfigGroup m_lnfDefaultsConfig;
+-    QList<Plasma::Containment *> m_waitingPanels;
++    QList<QPointer<Plasma::Containment>> m_waitingPanels;
+     QHash<QString, QString> m_activityContainmentPlugins;
+     QAction *m_addPanelAction;
+     std::unique_ptr<QMenu> m_addPanelsMenu;
+-- 
+2.53.0
+

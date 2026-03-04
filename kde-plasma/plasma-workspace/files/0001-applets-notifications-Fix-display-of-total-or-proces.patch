@@ -1,0 +1,39 @@
+From 6086254f84186a7a28b86ee9948e6008a0e3e502 Mon Sep 17 00:00:00 2001
+Message-ID: <6086254f84186a7a28b86ee9948e6008a0e3e502.1772599681.git.sam@gentoo.org>
+From: Kai Uwe Broulik <kde@privat.broulik.de>
+Date: Tue, 3 Mar 2026 13:14:31 +0000
+Subject: [PATCH 1/4] applets/notifications: Fix display of total or processed
+ value
+
+A string "0" is not falsy, so it will always use the processed value
+and display "0 files", even if total is being counted up.
+
+
+(cherry picked from commit dfdec3179865acaf1126db9432adf0fed41ce95d)
+
+Co-authored-by: Kai Uwe Broulik <kde@privat.broulik.de>
+--- a/applets/notifications/components/JobDetails.qml
++++ b/applets/notifications/components/JobDetails.qml
+@@ -127,15 +127,16 @@ GridLayout {
+                                          totalAsString, processedAsString);
+                         }
+                     } else {
++                        const displayValue = processed ? processedAsString : totalAsString;
+                         switch(modelData) {
+                         case "Bytes":
+                             return KCoreAddons.Format.formatByteSize(processed || total)
+                         case "Files":
+-                            return i18ndp("plasma_applet_org.kde.plasma.notifications", "%1 file", "%1 files", (processedAsString || totalAsString));
++                            return i18ndp("plasma_applet_org.kde.plasma.notifications", "%1 file", "%1 files", displayValue);
+                         case "Directories":
+-                            return i18ndp("plasma_applet_org.kde.plasma.notifications", "%1 folder", "%1 folders", (processedAsString || totalAsString));
++                            return i18ndp("plasma_applet_org.kde.plasma.notifications", "%1 folder", "%1 folders", displayValue);
+                         case "Items":
+-                            return i18ndp("plasma_applet_org.kde.plasma.notifications", "%1 item", "%1 items", (processedAsString || totalAsString));
++                            return i18ndp("plasma_applet_org.kde.plasma.notifications", "%1 item", "%1 items", displayValue);
+                         }
+                     }
+                 }
+-- 
+2.53.0
+

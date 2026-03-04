@@ -1,0 +1,31 @@
+From 92f96f433476ee4e49cfd1dce051a076b91d9763 Mon Sep 17 00:00:00 2001
+Message-ID: <92f96f433476ee4e49cfd1dce051a076b91d9763.1772599681.git.sam@gentoo.org>
+In-Reply-To: <6086254f84186a7a28b86ee9948e6008a0e3e502.1772599681.git.sam@gentoo.org>
+References: <6086254f84186a7a28b86ee9948e6008a0e3e502.1772599681.git.sam@gentoo.org>
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Tue, 3 Mar 2026 22:45:20 +0100
+Subject: [PATCH 4/4] shell: Generate plasma-shell Wayland interface for the
+ right target
+
+It's used by the plasmashell_osd, through PlasmaShellWaylandIntegration, not plasmashell
+
+Fixes a build race condition for generating that interface
+
+(cherry picked from commit 9114115f5af2594de64477e38e8762ff8dddbbd7)
+--- a/shell/CMakeLists.txt
++++ b/shell/CMakeLists.txt
+@@ -99,6 +99,11 @@ qt6_generate_wayland_protocol_client_sources(plasmashell
+     ${private_code_option}
+     FILES
+         ${PLASMA_WAYLAND_PROTOCOLS_DIR}/kde-screen-edge-v1.xml
++)
++
++qt6_generate_wayland_protocol_client_sources(plasmashell_osd
++    ${private_code_option}
++    FILES
+         ${PLASMA_WAYLAND_PROTOCOLS_DIR}/plasma-shell.xml
+ )
+ 
+-- 
+2.53.0
+
