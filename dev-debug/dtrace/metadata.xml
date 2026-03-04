@@ -20,6 +20,6 @@
 		</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">oracle/dtrace-utils</remote-id>
+		<remote-id type="github">oracle/dtrace</remote-id>
 	</upstream>
 </pkgmetadata>
