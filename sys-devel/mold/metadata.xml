@@ -2,6 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
+	<use>
+		<flag name="mimalloc">Build using <pkg>dev-libs/mimalloc</pkg> as memory allocator.</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">rui314/mold</remote-id>
 	</upstream>
