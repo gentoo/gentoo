@@ -5,10 +5,6 @@ From: "Arnold D. Robbins" <arnold@skeeve.com>
 Date: Mon, 23 Feb 2026 10:59:41 +0200
 Subject: Disable assertions in support/pma.c.
 
----
- support/pma.c     | 1 +
- 2 files changed, 7 insertions(+)
-
 --- a/support/pma.c
 +++ b/support/pma.c
 @@ -27,6 +27,7 @@

@@ -1,0 +1,20 @@
+From 00be99d6ceae1439fd73a15f37d20710dd5798a5 Mon Sep 17 00:00:00 2001
+Message-ID: <00be99d6ceae1439fd73a15f37d20710dd5798a5.1772593597.git.sam@gentoo.org>
+In-Reply-To: <32e6f04bf47ea95773ea0d6d876c5fad8bb90834.1772593597.git.sam@gentoo.org>
+References: <32e6f04bf47ea95773ea0d6d876c5fad8bb90834.1772593597.git.sam@gentoo.org>
+From: "Arnold D. Robbins" <arnold@skeeve.com>
+Date: Fri, 27 Feb 2026 11:03:04 +0200
+Subject: [PATCH 4/9] Fix gensub() bug for use with MinRX. Add test case.
+
+--- a/builtin.c
++++ b/builtin.c
+@@ -2116,7 +2116,7 @@ do_sub(int nargs, unsigned int flags)
+ 		    || ((long) textlen <= 0 && matchstart == matchend)
+ 		    || research(rp, target->stptr, text - target->stptr,
+ 			    use_gnu_matchers ? textlen : target->stlen,
+-			    RE_NEED_START) == -1)
++			    searchflags) == -1)
+ 			break;
+ 
+ 	}
+

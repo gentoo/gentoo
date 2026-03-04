@@ -1,0 +1,34 @@
+From de8f760a6bea360dd90c9daafc035999c83a3056 Mon Sep 17 00:00:00 2001
+Message-ID: <de8f760a6bea360dd90c9daafc035999c83a3056.1772593597.git.sam@gentoo.org>
+In-Reply-To: <32e6f04bf47ea95773ea0d6d876c5fad8bb90834.1772593597.git.sam@gentoo.org>
+References: <32e6f04bf47ea95773ea0d6d876c5fad8bb90834.1772593597.git.sam@gentoo.org>
+From: "Arnold D. Robbins" <arnold@skeeve.com>
+Date: Sun, 1 Mar 2026 20:52:16 +0200
+Subject: [PATCH 6/9] Small efficiency fix in array.c.
+
+--- a/array.c
++++ b/array.c
+@@ -210,17 +210,17 @@ make_aname(const NODE *symbol)
+ 		slen = strlen(symbol->vname);	/* subscript in parent array */
+ 		if (alen + slen + 4 > max_alen) {		/* sizeof("[\"\"]") = 4 */
+ 			max_alen = alen + slen + 4 + SLEN;
+-			erealloc(aname, char *, (max_alen + 1) * sizeof(char *));
++			erealloc(aname, char *, (max_alen + 1) * sizeof(char));
+ 		}
+ 		alen += sprintf(aname + alen, "[\"%s\"]", symbol->vname);
+ 	} else {
+ 		alen = strlen(symbol->vname);
+ 		if (aname == NULL) {
+ 			max_alen = alen + SLEN;
+-			emalloc(aname, char *, (max_alen + 1) * sizeof(char *));
++			emalloc(aname, char *, (max_alen + 1) * sizeof(char));
+ 		} else if (alen > max_alen) {
+ 			max_alen = alen + SLEN;
+-			erealloc(aname, char *, (max_alen + 1) * sizeof(char *));
++			erealloc(aname, char *, (max_alen + 1) * sizeof(char));
+ 		}
+ 		memcpy(aname, symbol->vname, alen + 1);
+ 	}
+-- 
+2.53.0
+
