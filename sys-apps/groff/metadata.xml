@@ -6,7 +6,13 @@
     <name>Gentoo Base System</name>
   </maintainer>
   <use>
-    <flag name="uchardet">Enable automatic encoding detection via <pkg>app-i18n/uchardet</pkg></flag>
+    <flag name="postscript">
+    Fully support HTML backends via tools from <pkg>app-text/ghostscript-gpl</pkg>
+    and <pkg>media-libs/netpbm</pkg>.
+    </flag>
+    <flag name="uchardet">
+    Enable automatic encoding detection via <pkg>app-i18n/uchardet</pkg>
+    </flag>
   </use>
   <upstream>
     <remote-id type="cpe">cpe:/a:gnu:groff</remote-id>
