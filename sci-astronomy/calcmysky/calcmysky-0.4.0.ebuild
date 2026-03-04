@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ S="${WORKDIR}/CalcMySky-${PV}"
 LICENSE="GPL-2+"
 # subslot is soversion
 SLOT="0/15"
-KEYWORDS="~amd64 ~ppc ~riscv ~x86"
+KEYWORDS="amd64 ~ppc ~riscv ~x86"
 
 DEPEND="
 	dev-cpp/eigen:3
