@@ -44,7 +44,8 @@ fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="nls +standalone static"
+IUSE="nls +standalone static test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	|| ( app-doc/info-manual >=app-editors/emacs-26:* )
