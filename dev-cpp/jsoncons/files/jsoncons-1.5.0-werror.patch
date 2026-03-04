@@ -1,0 +1,27 @@
+Remove -Werror
+
+https://bugs.gentoo.org/970841
+
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -219,20 +219,6 @@ target_compile_options(unit_tests PRIVATE
+     $<$<CXX_COMPILER_ID:MSVC>: /EHsc /MP /bigobj /W4>
+ )
+ 
+-if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU" AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL "8.0")
+-    message(STATUS Version " ${CMAKE_CXX_COMPILER_VERSION}")
+-    # older GCC versions don't support 
+-   target_compile_options(unit_tests PRIVATE
+-       $<$<CXX_COMPILER_ID:GNU>:-Werror=maybe-uninitialized -Wnon-virtual-dtor -Werror=free-nonheap-object -Werror=stringop-overflow -Werror -Wall -Wextra -Wcast-align -Wcast-qual -Wimplicit-fallthrough -Wsign-compare -pedantic -Wnonnull -Wnull-dereference -Werror=nonnull>
+-   )
+-endif()
+-
+-if (NOT CMAKE_SYSTEM_NAME STREQUAL Windows)
+-target_compile_options(unit_tests PRIVATE
+-    $<$<CXX_COMPILER_ID:Clang>:-Werror=uninitialized -Werror -Wall -Wextra -Wimplicit-fallthrough -Wcast-align -Wcast-qual -Wsign-compare -pedantic>
+-)
+-endif()
+-
+ add_test(NAME unit_tests COMMAND unit_tests WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/test)
+ 
+ target_include_directories (unit_tests 
