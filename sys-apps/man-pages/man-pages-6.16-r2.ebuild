@@ -11,7 +11,7 @@ inherit eapi9-ver
 # - It's considered fine (and somewhat encouraged) for us to make snapshots
 #   if we want specific fixes, perhaps aligned with newer kernels, glibc, etc.
 #   Just generate it with 'make dist'. We can set DISTVERSION if we want a vanity
-#   name or if the comit hash is too long;
+#   name or if the commit hash is too long;
 #
 # - If we do use a snapshot, *don't* grab it directly from git and use it
 #   raw in the ebuild. Use 'make dist' as above;
