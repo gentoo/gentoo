@@ -64,7 +64,7 @@ LICENSE="man-pages GPL-2+ BSD"
 SLOT="0"
 # Keep the following in sync with app-i18n/man-pages-l10n
 MY_L10N=( cs da de el es fi fr hu id it ko mk nb nl pl pt-BR ro ru sr sv uk vi )
-IUSE="l10n_ja l10n_ru l10n_zh-CN ${MY_L10N[@]/#/l10n_}"
+IUSE="l10n_ja l10n_zh-CN ${MY_L10N[@]/#/l10n_}"
 RESTRICT="binchecks"
 
 RDEPEND="
@@ -72,10 +72,6 @@ RDEPEND="
 "
 PDEPEND="
 	l10n_ja? ( app-i18n/man-pages-ja )
-	l10n_ru? ( || (
-		app-i18n/man-pages-l10n[l10n_ru(-)]
-		app-i18n/man-pages-ru
-	) )
 	l10n_zh-CN? ( app-i18n/man-pages-zh_CN )
 "
 for lang in "${MY_L10N[@]}"; do
