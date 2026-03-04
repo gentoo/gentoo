@@ -173,7 +173,7 @@ COMMON_DEPEND="
 "
 RDEPEND="${COMMON_DEPEND}
 	!www-client/chromium:0
-	www-client/chromium-common
+	>=www-client/chromium-common-2
 	!headless? (
 		|| (
 			x11-libs/gtk+:3[X?,wayland?]
@@ -1549,7 +1549,7 @@ src_install() {
 		export CHROME_DESKTOP="chromium-browser${browser_suffix}.desktop"
 		export CHROME_EXEC_NAME="chromium-browser${browser_suffix}"
 		export CHROME_VERSION_EXTRA="${SLOT}"
-		export PROGDIR="/usr/$(get_libdir)/chromium-browser${browser_suffix}"
+		export CHROME_WRAPPER="\$(readlink -f "\$0")"
 		export OZONE_AUTO_SESSION=$(ozone_auto_session)
 
 		exec /usr/libexec/chromium/chromium-launcher.sh "\$@"
@@ -1705,8 +1705,7 @@ pkg_postinst() {
 		ewarn "please complete the configuration of this system before logging any bugs."
 	fi
 
-	# Stable slot doesn't change profile directory, and it's vanishingly unlikely that users will downgrade from dev.
-	if [[ ${SLOT} != "stable" && -n "${REPLACING_VERSIONS}" ]]; then
+	if [[ -n "${REPLACING_VERSIONS}" ]]; then
 		local replacing_non_slotted=false
 		# there could be more than one PVR
 		for version in ${REPLACING_VERSIONS}; do
@@ -1717,9 +1716,14 @@ pkg_postinst() {
 		done
 		if ${replacing_non_slotted}; then
 			ewarn "This version of Chromium has replaced a non-slotted ebuild."
-			ewarn "This channel has its own profile directory, so your existing profile will not be used."
-			ewarn "To use your existing profile, either copy or move it to the new location."
-			ewarn "See https://wiki.gentoo.org/wiki/Chromium#Profile_Directories for more information."
+			if [[ ${SLOT} != "stable" ]]; then
+				ewarn "This channel has its own profile directory, so your existing profile will not be used."
+				ewarn "To use your existing profile, either copy or move it to the new location."
+				ewarn "See https://wiki.gentoo.org/wiki/Chromium#Profile_Directories for more information."
+				ewarn ""
+			fi
+			ewarn "Any existing Progressive Web Apps (PWAs) will need to be reinstalled,"
+			ewarn "or have the path in the desktop files updated to point to the new wrapper script."
 		fi
 	fi
 }

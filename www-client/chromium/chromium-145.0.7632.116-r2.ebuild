@@ -27,10 +27,10 @@ GN_MIN_VER=0.2318
 # chromium-tools/get-chromium-toolchain-strings.py (or just use Chromicler)
 # Node for M145+ should be 24.12.0 but that's not packaged in Gentoo yet. See #969145
 TEST_FONT="a28b222b79851716f8358d2800157d9ffe117b3545031ae51f69b7e1e1b9a969"
-BUNDLED_CLANG_VER="llvmorg-23-init-4965-g686acf63-1"
-BUNDLED_RUST_VER="c78a29473a68f07012904af11c92ecffa68fcc75-1"
+BUNDLED_CLANG_VER="llvmorg-22-init-17020-gbd1bd178-2"
+BUNDLED_RUST_VER="a4cfac7093a1c1c7fbdb6bc75d6b6dc4d385fc69-2"
 RUST_SHORT_HASH=${BUNDLED_RUST_VER:0:10}-${BUNDLED_RUST_VER##*-}
-NODE_VER="24.12.0"
+NODE_VER="24.11.1"
 ESBUILD_VER="0.25.1"
 ROLLUP_VER="4.57.1" # currently manual.
 VIRTUALX_REQUIRED="pgo"
@@ -52,8 +52,8 @@ inherit python-any-r1 readme.gentoo-r1 rust systemd toolchain-funcs virtualx xdg
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://www.chromium.org/"
-PPC64_HASH="a85b64f07b489b8c6fdb13ecf79c16c56c560fc6"
-PATCH_V="${PV%%\.*}-2"
+PPC64_HASH="6e839bd94774ccf59b4c0db697fcf15c7bc1f22e"
+PATCH_V="${PV%%\.*}-3"
 COPIUM_COMMIT="fe1caafa06f27542c18a881348f78e984e2d9fe2"
 SRC_URI="https://github.com/chromium-linux-tarballs/chromium-tarballs/releases/download/${PV}/chromium-${PV}-linux.tar.xz
 	https://deps.gentoo.zip/www-client/chromium/rollup-wasm-node-${ROLLUP_VER}.tgz
@@ -82,11 +82,11 @@ LICENSE+=" IJG ISC LGPL-2 LGPL-2.1 MIT MPL-1.1 MPL-2.0 Ms-PL PSF-2 SGI-B-2.0 SSL
 LICENSE+=" Unicode-DFS-2015 Unlicense UoI-NCSA ZLIB libtiff openssl"
 LICENSE+=" rar? ( unRAR )"
 
-SLOT="unstable"
+SLOT="stable"
 # Unstable in gentoo exists mostly to give devs some breathing room for beta/stable releases.
 # It shouldn't be keyworded but adventurous users are encouraged to select it;
 # there's official dev channel Google Chrome after all.
-# KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 
 IUSE_SYSTEM_LIBS="+system-harfbuzz +system-icu +system-zstd"
 IUSE="+X ${IUSE_SYSTEM_LIBS} bindist bundled-toolchain cups debug ffmpeg-chromium gtk4 +hangouts headless kerberos +official pax-kernel pgo"
@@ -173,7 +173,7 @@ COMMON_DEPEND="
 "
 RDEPEND="${COMMON_DEPEND}
 	!www-client/chromium:0
-	www-client/chromium-common
+	>=www-client/chromium-common-2
 	!headless? (
 		|| (
 			x11-libs/gtk+:3[X?,wayland?]
@@ -487,7 +487,9 @@ src_prepare() {
 	# We'll fill this in as we go. Patches go in chromium-patches.
 	local PATCHES=()
 
-	PATCHES+=( "${WORKDIR}/chromium-patches-${PATCH_V}/common/" )
+	PATCHES+=(
+		"${WORKDIR}/chromium-patches-${PATCH_V}/common/"
+	)
 
 	# https://issues.chromium.org/issues/442698344
 	# Unreleased fontconfig changed magic numbers and google have rolled to this version
@@ -520,6 +522,7 @@ src_prepare() {
 		# Copium patches go here.
 		PATCHES+=(
 			"${WORKDIR}/copium/cr143-libsync-__BEGIN_DECLS.patch"
+			"${WORKDIR}/copium/cr145-rustc_nightly_capability.patch"
 		)
 
 		# Automate conditional application of chromium-patches
@@ -855,7 +858,6 @@ src_prepare() {
 		third_party/perfetto
 		third_party/perfetto/protos/third_party/chromium
 		third_party/perfetto/protos/third_party/pprof
-		third_party/perfetto/protos/third_party/primes
 		third_party/perfetto/protos/third_party/simpleperf
 		third_party/pffft
 		third_party/ply
@@ -1493,8 +1495,14 @@ src_test() {
 		'AlternateTestParams/PartitionAllocTest.*' # 200+ tests, >= 1 crashes entire test runner with usersandbox.
 		'CheckExitCodeAfterSignalHandlerDeathTest.*'
 		'CriticalProcessAndThreadSpotChecks/HangWatcherAnyCriticalThreadTests.*'
+		'PostJobTest.*' # M145, flaky?
+		'ThreadControllerWithMessagePump*'
 		'LazyThreadPoolTaskRunnerEnvironmentTest.*' # M142
+		'LazyThreadPoolTaskRunnerTest.*'
+		'SequenceManager*'
+		'SequencedTaskRunnerTest.*'
 		'ToolsSanityTest.BadVirtualCall*'
+		'WakeUpQueueTest.*'
 		# requires en-us locale
 		SysStrings.SysNativeMBAndWide
 		SysStrings.SysNativeMBToWide
@@ -1510,6 +1518,7 @@ src_test() {
 		StackCanary.ChangingStackCanaryCrashesOnReturn
 		StackTraceDeathTest.StackDumpSignalHandlerIsMallocFree
 		TestLauncherTools.TruncateSnippetFocusedMatchesFatalMessagesTest
+		ThreadControllerPowerMonitorTest.IsProcessInPowerSuspendState
 		ThreadPoolEnvironmentConfig.CanUseBackgroundPriorityForWorker
 	)
 	local test_filter="-$(IFS=:; printf '%s' "${skip_tests[*]}")"
@@ -1547,7 +1556,7 @@ src_install() {
 		export CHROME_DESKTOP="chromium-browser${browser_suffix}.desktop"
 		export CHROME_EXEC_NAME="chromium-browser${browser_suffix}"
 		export CHROME_VERSION_EXTRA="${SLOT}"
-		export PROGDIR="/usr/$(get_libdir)/chromium-browser${browser_suffix}"
+		export CHROME_WRAPPER="\$(readlink -f "\$0")"
 		export OZONE_AUTO_SESSION=$(ozone_auto_session)
 
 		exec /usr/libexec/chromium/chromium-launcher.sh "\$@"
@@ -1646,7 +1655,7 @@ pkg_postinst() {
 	xdg_desktop_database_update
 	readme.gentoo_print_elog
 
-	if use !headless && [[ -z "${REPLACING_VERSIONS}" ]]; then
+	if ! use headless; then
 		if use vaapi; then
 			elog "Hardware-accelerated video decoding configuration:"
 			elog
@@ -1703,8 +1712,7 @@ pkg_postinst() {
 		ewarn "please complete the configuration of this system before logging any bugs."
 	fi
 
-	# Stable slot doesn't change profile directory, and it's vanishingly unlikely that users will downgrade from dev.
-	if [[ ${SLOT} != "stable" && -n "${REPLACING_VERSIONS}" ]]; then
+	if [[ -n "${REPLACING_VERSIONS}" ]]; then
 		local replacing_non_slotted=false
 		# there could be more than one PVR
 		for version in ${REPLACING_VERSIONS}; do
@@ -1715,9 +1723,14 @@ pkg_postinst() {
 		done
 		if ${replacing_non_slotted}; then
 			ewarn "This version of Chromium has replaced a non-slotted ebuild."
-			ewarn "This channel has its own profile directory, so your existing profile will not be used."
-			ewarn "To use your existing profile, either copy or move it to the new location."
-			ewarn "See https://wiki.gentoo.org/wiki/Chromium#Profile_Directories for more information."
+			if [[ ${SLOT} != "stable" ]]; then
+				ewarn "This channel has its own profile directory, so your existing profile will not be used."
+				ewarn "To use your existing profile, either copy or move it to the new location."
+				ewarn "See https://wiki.gentoo.org/wiki/Chromium#Profile_Directories for more information."
+				ewarn ""
+			fi
+			ewarn "Any existing Progressive Web Apps (PWAs) will need to be reinstalled,"
+			ewarn "or have the path in the desktop files updated to point to the new wrapper script."
 		fi
 	fi
 }
