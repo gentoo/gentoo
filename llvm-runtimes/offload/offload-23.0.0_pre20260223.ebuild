@@ -115,6 +115,7 @@ src_configure() {
 		# prevent trying to access the GPU
 		-DLIBOMPTARGET_AMDGPU_ARCH=LIBOMPTARGET_AMDGPU_ARCH-NOTFOUND
 		-DLIBOMPTARGET_NVPTX_ARCH=LIBOMPTARGET_NVPTX_ARCH-NOTFOUND
+		-DLIBOMPTARGET_OFFLOAD_ARCH=LIBOMPTARGET_OFFLOAD_ARCH-NOTFOUND
 	)
 	use test && mycmakeargs+=(
 		# this project does not use standard LLVM cmake macros
