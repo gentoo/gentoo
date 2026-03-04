@@ -30,6 +30,7 @@ RDEPEND="
 	app-arch/zstd:=
 	>=dev-cpp/tbb-2021.7.0-r1:=
 	dev-libs/blake3:=
+	dev-libs/xxhash:=
 	virtual/zlib:=
 	mimalloc? ( >=dev-libs/mimalloc-2:= )
 "
@@ -52,6 +53,9 @@ pkg_pretend() {
 
 src_prepare() {
 	cmake_src_prepare
+
+	# use dev-libs/xxhash instead of vendored lib
+	sed -i 's#../third-party/xxhash/##' lib/lib.h || die
 
 	# Needs unpackaged dwarfdump
 	rm test/{{dead,compress}-debug-sections,compressed-debug-info}.sh || die
