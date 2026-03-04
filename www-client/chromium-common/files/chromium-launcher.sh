@@ -15,13 +15,11 @@ done
 # default CHROMIUM_FLAGS (from /etc/chromium/default).
 CHROMIUM_FLAGS=${CHROMIUM_USER_FLAGS:-"$CHROMIUM_FLAGS"}
 
-# We rely on the slotted stub to provide PROGDIR.
-if [[ -z "${PROGDIR}" ]]; then
-	echo "ERROR: PROGDIR is not set. The Chromium launcher stub is misconfigured." >&2
+# We rely on the slotted stub to provide CHROME_WRAPPER.
+if [[ -z "${CHROME_WRAPPER}" ]]; then
+	echo "ERROR: CHROME_WRAPPER is not set. The Chromium launcher stub is misconfigured." >&2
 	exit 1
 fi
-
-export CHROME_WRAPPER="${PROGDIR}/${CHROME_EXEC_NAME:-chromium-browser}"
 
 PROGDIR=${CHROME_WRAPPER%/*}
 
