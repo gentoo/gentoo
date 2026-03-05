@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,6 +15,7 @@ HOMEPAGE="https://www.openssh.com/"
 SRC_URI="
 	mirror://openbsd/OpenSSH/portable/${PARCH}.tar.gz
 	verify-sig? ( mirror://openbsd/OpenSSH/portable/${PARCH}.tar.gz.asc )
+	https://dev.gentoo.org/~floppym/dist/${P}-backports.tar.gz
 "
 S="${WORKDIR}/${PARCH}"
 
@@ -81,7 +82,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-9.7_p1-config-tweaks.patch"
 	"${FILESDIR}/${PN}-9.8_p1-inetd.patch"
 	# Backports from upstream release branch
-	"${FILESDIR}/${PV}"
+	"${WORKDIR}/${P}-backports"
 )
 
 pkg_pretend() {

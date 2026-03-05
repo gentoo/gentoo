@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,6 +18,7 @@ HOMEPAGE="https://www.openssh.com/"
 SRC_URI="
 	mirror://openbsd/OpenSSH/portable/${PARCH}.tar.gz
 	verify-sig? ( mirror://openbsd/OpenSSH/portable/${PARCH}.tar.gz.asc )
+	https://dev.gentoo.org/~floppym/dist/${P}-backports.tar.gz
 "
 S="${WORKDIR}/${PARCH}"
 
@@ -83,7 +84,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-9.6_p1-fix-xmss-c99.patch"
 	"${FILESDIR}/${PN}-9.7_p1-config-tweaks.patch"
 	# Backports from upstream release branch
-	"${FILESDIR}/${PV}"
+	"${WORKDIR}/${P}-backports"
 	# Our own backports
 	"${FILESDIR}/${PN}-9.9_p1-x-forwarding-slow.patch"
 )
