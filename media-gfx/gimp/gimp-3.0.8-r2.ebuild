@@ -7,93 +7,69 @@ LUA_COMPAT=( luajit )
 PYTHON_COMPAT=( python3_{11..14} )
 VALA_USE_DEPEND=vapigen
 
-inherit flag-o-matic lua-single meson python-single-r1 toolchain-funcs vala xdg
+inherit bash-completion-r1 branding flag-o-matic lua-single meson python-single-r1 toolchain-funcs vala xdg
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"
-
-if [[ ${PV} == 9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/gimp.git"
-
-	MAJOR_VERSION="3"
-else
-	MY_PV="${PV/_rc/-RC}"
-	MY_P="${PN}-${MY_PV}"
-	SRC_URI="mirror://gimp/v$(ver_cut 1-2)/${MY_P}.tar.xz"
-	S="${WORKDIR}/${MY_P}"
-
-	MAJOR_VERSION="$(ver_cut 1)"
-
-	# Dont keyword prereleases or unstable releases
-	# https://gitlab.gnome.org/Infrastructure/gimp-web-devel/-/blob/testing/content/core/maintainer/versioning.md#software-version
-	if ! [[ ${PV} =~ _rc ]] &&
-		[[ $(( $(ver_cut 2) % 2 )) -eq 0 ]] &&
-		[[ $(( $(ver_cut 3) % 2 )) -eq 0 ]]
-	then
-		KEYWORDS="~amd64 ~arm ~x86"
-	fi
-fi
+SRC_URI="mirror://gimp/v$(ver_cut 1-2)/${P}.tar.xz"
 
 LICENSE="GPL-3+ LGPL-3+"
-SLOT="0/${MAJOR_VERSION}"
+SLOT="0/3"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ppc64 x86"
 
-IUSE="X aalib alsa doc fits gnome heif javascript jpeg2k jpegxl lua mng openexr openmp postscript test udev unwind vala vector-icons wayland webp wmf xpm"
+IUSE="X aalib alsa bash-completion doc fits gnome heif javascript jpeg2k jpegxl lua mng openexr openmp postscript test udev unwind vala vector-icons wayland webp wmf xpm"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	lua? ( ${LUA_REQUIRED_USE} )
-	test? ( X )
 	xpm? ( X )
 "
 
 RESTRICT="!test? ( test )"
 
-# automagic dependency on bash to create bash-completions
+# TODO: next revbump add iso-codes as a build time dependency. It affects the end result whether its available
 
-# media-libs/{babl,gegl} are required to be built with USE="introspection"
-# to fix the compilation checking of /usr/share/gir-1.0/{Babl-0.1gir,Gegl-0.4.gir}
+# See libgimp_deps_table in libgimp/meson.build for introspection dependencies, bug #969449
 COMMON_DEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		>=dev-python/pygobject-3.0:3[${PYTHON_USEDEP}]
 	')
-	>=app-accessibility/at-spi2-core-2.4.0
+	>=app-accessibility/at-spi2-core-2.46.0
 	app-arch/bzip2
 	app-arch/libarchive:=
 	>=app-arch/xz-utils-5.0.0
-	app-text/iso-codes
-	>=app-text/poppler-0.69.0[cairo]
+	>=app-text/poppler-0.90.1[cairo]
 	>=app-text/poppler-data-0.4.9
 	>=dev-libs/appstream-0.16.1:=
-	>=dev-libs/glib-2.70.0:2
+	>=dev-libs/glib-2.70.0:2[introspection]
 	>=dev-libs/gobject-introspection-1.82.0-r2
-	>=dev-libs/json-glib-1.2.6
+	>=dev-libs/json-glib-1.4.4
 	>=gnome-base/librsvg-2.40.6:2
-	>=media-gfx/exiv2-0.27.4
-	media-gfx/mypaint-brushes:2.0=
-	>=media-libs/fontconfig-2.12.4
-	>=media-libs/freetype-2.1.7
-	<media-libs/gexiv2-0.15.0
-	>=media-libs/gexiv2-0.14.0
-	>=media-libs/harfbuzz-2.8.2:=
-	>=media-libs/lcms-2.8:2
+	>=media-gfx/mypaint-brushes-1.3.1:1.0=
+	>=media-libs/babl-0.1.114[introspection,lcms,vala?]
+	>=media-libs/fontconfig-2.12.6
+	>=media-libs/freetype-2.10.2
+	>=media-libs/gegl-0.4.62:0.4[cairo,introspection,lcms,vala?]
+	>=media-libs/gexiv2-0.14.0:0=[introspection]
+	>=media-libs/harfbuzz-2.6.5:=
+	>=media-libs/lcms-2.13.1:2
 	media-libs/libjpeg-turbo:=
-	>=media-libs/libmypaint-1.5.0:=
-	>=media-libs/libpng-1.6.25:0=
-	>=media-libs/tiff-4.0.0:=
+	>=media-libs/libmypaint-1.6.1:=
+	>=media-libs/libpng-1.6.37:0=
+	>=media-libs/tiff-4.1.0:=
 	net-libs/glib-networking[ssl]
 	virtual/zlib:=
-	>=x11-libs/cairo-1.14.0[X?]
-	>=x11-libs/gdk-pixbuf-2.30.8:2[introspection]
-	>=x11-libs/gtk+-3.24.0:3[introspection,wayland?,X?]
-	>=x11-libs/pango-1.50.0[X?]
+	>=x11-libs/cairo-1.16.0[introspection(+),X?]
+	>=x11-libs/gdk-pixbuf-2.40.0:2[introspection]
+	>=x11-libs/gtk+-3.24.48:3[introspection,wayland?,X?]
+	>=x11-libs/pango-1.50.0[introspection,X?]
 	aalib? ( media-libs/aalib )
 	alsa? ( >=media-libs/alsa-lib-1.0.0 )
 	fits? ( sci-libs/cfitsio:= )
-	heif? ( >=media-libs/libheif-1.15.1:= )
+	heif? ( >=media-libs/libheif-1.13.0:= )
 	javascript? ( dev-libs/gjs )
-	jpeg2k? ( >=media-libs/openjpeg-2.1.0:2= )
-	jpegxl? ( >=media-libs/libjxl-0.7.0:= )
+	jpeg2k? ( >=media-libs/openjpeg-2.3.1:2= )
+	jpegxl? ( >=media-libs/libjxl-0.6.1:= )
 	lua? (
 		${LUA_DEPS}
 		$(lua_gen_cond_dep '
@@ -101,7 +77,7 @@ COMMON_DEPEND="
 		')
 	)
 	mng? ( media-libs/libmng:= )
-	openexr? ( >=media-libs/openexr-1.6.1:= )
+	openexr? ( >=media-libs/openexr-2.3.0:= )
 	postscript? ( app-text/ghostscript-gpl:= )
 	udev? ( >=dev-libs/libgudev-167:= )
 	unwind? ( >=sys-libs/libunwind-1.1.0:= )
@@ -116,17 +92,6 @@ COMMON_DEPEND="
 	)
 	xpm? ( x11-libs/libXpm )
 "
-if [[ ${PV} == 9999 ]]; then
-	COMMON_DEPEND+="
-		>=media-libs/babl-9999[introspection,lcms,vala?]
-		>=media-libs/gegl-9999[cairo,introspection,lcms,vala?]
-	"
-else
-	COMMON_DEPEND+="
-		>=media-libs/babl-0.1.118[introspection,lcms,vala?]
-		>=media-libs/gegl-0.4.66:0.4[cairo,introspection,lcms,vala?]
-	"
-fi
 
 RDEPEND="
 	${COMMON_DEPEND}
@@ -141,24 +106,28 @@ BDEPEND="
 	dev-libs/libxslt
 	>=dev-util/gdbus-codegen-2.80.5-r1
 	>=sys-devel/gettext-0.21
-	virtual/pkgconfig
+	bash-completion? (
+		app-shells/bash-completion
+		app-shells/bash
+	)
 	doc? (
 		>=dev-libs/gobject-introspection-1.82.0-r2[doctool]
 		dev-util/gi-docgen
 	)
-	test? (
-		sys-apps/dbus
-		x11-misc/xvfb-run
-	)
 	vala? ( $(vala_depend) )
-	vector-icons? ( x11-misc/shared-mime-info )
+	virtual/pkgconfig
 "
+#	X? ( test? (
+#		sys-apps/dbus
+#		x11-misc/xvfb-run
+#	) )
 
 DOCS=( "AUTHORS" "NEWS" "README" "README.i18n" )
 
 PATCHES=(
-	"${FILESDIR}"/gimp-3.0.6-fix-tests.patch
 	"${FILESDIR}"/gimp-3.0.6-respect-NM.patch
+	"${FILESDIR}"/gimp-3.0.8-no-libunwind.patch
+	"${FILESDIR}"/gimp-3.0.8-allow-user-locale.patch
 )
 
 pkg_pretend() {
@@ -166,16 +135,26 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
-	python-single-r1_pkg_setup
-	use lua && lua-single_pkg_setup
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		use openmp && tc-check-openmp
 
-	if [[ ${PV} == 9999 ]]; then
-		if has_version ">=media-libs/babl-9999" || has_version ">=media-libs/gegl-9999"; then
-			ewarn "Please make sure to rebuild media-libs/babl-9999 and media-libs/gegl-9999 packages"
-			ewarn "before building media-gfx/gimp-9999 to have their latest master branch versions."
+		# bug #969468
+		local locales="$(locale -a)"
+		if ! has "en_US.utf8" ${locales} && ! has "en_US.UTF-8" ${locales}; then
+			# portage splits and unset LC_ALL. Cannot rely on that
+			if [[ "${LANG}" != "C" ]] && [[ "${LANG}" != "POSIX" ]] && [[ "${LANG}" == "${LANG#C\.}" ]]; then
+				# Set LC_ALL to avoid locales breaking due to the profile setting LC_MESSAGES=C and portage itself setting LC_COLLATE=C
+				einfo "Setting LC_ALL=${LANG} based on LANG because en_US.UTF-8 isn't available, bug #968468"
+				export LC_ALL="${LANG}"
+			else
+				eerror "Cannot use LANG=${LANG} as it cannot be C or POSIX"
+				die "en_US.UTF-8 isn't available and cannot fallback to user locale, bug #969468"
+			fi
 		fi
 	fi
+
+	python-single-r1_pkg_setup
+	use lua && lua-single_pkg_setup
 }
 
 src_prepare() {
@@ -191,7 +170,7 @@ src_prepare() {
 	sed -i -e 's/@PYTHON_EXE@/'${EPYTHON}'/' plug-ins/python/pygimp.interp.in || die
 
 	# Set proper intallation path of documentation logo
-	sed -i -e "s/'gimp-@0@'.format(gimp_app_version)/'gimp-${PVR}'/" gimp-data/images/logo/meson.build || die
+	sed -i -e "s/'gimp-' + gimp_api_version/'gimp-${PVR}'/" gimp-data/images/logo/meson.build || die
 
 	# Force disable x11_target if USE="-X" is setup. See bug 943164 for additional info
 	use !X && { sed -i -e 's/x11_target = /x11_target = false #/' meson.build || die; }
@@ -211,12 +190,13 @@ src_configure() {
 		-Ddebug-self-in-build=false
 		-Denable-multiproc=true
 		-Dappdata-test=disabled
-		-Dbug-report-url=https://bugs.gentoo.org/
+		-Dbug-report-url="${BRANDING_OS_BUG_REPORT_URL}"
 		-Dilbm=disabled
 		-Dlibbacktrace=false
 		-Dwebkit-unmaintained=false
 		$(meson_feature aalib aa)
 		$(meson_feature alsa)
+		$(meson_feature bash-completion)
 		$(meson_feature doc gi-docgen)
 		$(meson_feature fits)
 		$(meson_feature heif)
@@ -227,7 +207,9 @@ src_configure() {
 		$(meson_feature openexr)
 		$(meson_feature openmp)
 		$(meson_feature postscript ghostscript)
-		$(meson_feature test headless-tests)
+		# https://gitlab.gnome.org/GNOME/gimp/-/issues/15763
+		-Dheadless-tests=disabled
+		#$(usex X $(meson_feature test headless-tests) -Dheadless-tests=disabled )
 		$(meson_feature udev gudev)
 		$(meson_feature vala)
 		$(meson_feature webp)
@@ -267,11 +249,14 @@ _rename_plugins() {
 
 src_test() {
 	local -x LD_LIBRARY_PATH="${BUILD_DIR}/libgimp:${LD_LIBRARY_PATH}"
+
 	# Try hard to avoid system installed gimp causing issues
 	local -x GIMP3_DIRECTORY="${BUILD_DIR}/"
 	local -x GIMP3_PLUGINDIR="${BUILD_DIR}/plug-ins/"
 	local -x GIMP3_SYSCONFDIR="${BUILD_DIR}/etc/"
-	meson_src_test
+
+	# Flakyness is possible
+	meson_src_test -j1
 }
 
 src_install() {
@@ -281,12 +266,23 @@ src_install() {
 	python_fix_shebang "${ED}/usr/$(get_libdir)/gimp"
 
 	# Create symlinks for Gimp exec in /usr/bin
-	# gimp-$(ver_cut 1-2) -> gimp-$(ver_cut 1) -> gimp
-	dosym "${ESYSROOT}"/usr/bin/gimp-${MAJOR_VERSION} /usr/bin/gimp
-	dosym "${ESYSROOT}"/usr/bin/gimp-console-${MAJOR_VERSION} /usr/bin/gimp-console
-	dosym "${ESYSROOT}"/usr/bin/gimp-script-fu-interpreter-${MAJOR_VERSION} /usr/bin/gimp-script-fu-interpreter
-	dosym "${ESYSROOT}"/usr/bin/gimp-test-clipboard-${MAJOR_VERSION} /usr/bin/gimp-test-clipboard
-	dosym "${ESYSROOT}"/usr/bin/gimptool-${MAJOR_VERSION} /usr/bin/gimptool
+	dosym "${ESYSROOT}"/usr/bin/gimp-3.0 /usr/bin/gimp
+	dosym "${ESYSROOT}"/usr/bin/gimp-console-3.0 /usr/bin/gimp-console
+	dosym "${ESYSROOT}"/usr/bin/gimp-script-fu-interpreter-3.0 /usr/bin/gimp-script-fu-interpreter
+	dosym "${ESYSROOT}"/usr/bin/gimp-test-clipboard-3.0 /usr/bin/gimp-test-clipboard
+	dosym "${ESYSROOT}"/usr/bin/gimptool-3.0 /usr/bin/gimptool
+
+	if use bash-completion; then
+		bashcomp_alias gimp-3.0 gimp{,-3} gimp-console{,-3,-3.0}
+	fi
 
 	_rename_plugins || die
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+}
+
+pkg_postrm() {
+	xdg_pkg_postrm
 }
