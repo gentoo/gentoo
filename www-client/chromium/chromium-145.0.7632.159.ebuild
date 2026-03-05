@@ -1089,6 +1089,10 @@ chromium_configure() {
 		# Debug info section overflows without component build
 		# Prevent linker from running out of address space, bug #471810 .
 		filter-flags "-g*"
+		# 949123: Several multimedia components explicitly build with specific CFLAGS and
+		# use runtime detection to enable optimisations; unfortunately any of our CFLAGS are suffixed
+		# to the end of the command line, which causes build failures.
+		use arm64 && filter-flags "-march*" "-mtune*" "-mcpu*"
 	fi
 
 	# We don't use the same clang version as upstream, and with -Werror
