@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfredo Tupone <tupone@gentoo.org> (2026-03-05)
+# Need more testing
+>=dev-lang/tcl-9
+>=dev-lang/tk-9
+
 # Michał Górny <mgorny@gentoo.org> (2026-02-28)
 # The test suite is broken since 1.16.0 (Nov 2025), and upstream did not
 # address the problem so far: https://github.com/pypa/hatch/issues/2123
