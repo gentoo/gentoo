@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,19 +13,20 @@ HOMEPAGE="https://sourceforge.net/projects/wize/"
 SRC_URI="https://downloads.sourceforge.net/wize/${PN}-src-${PV}.zip
 	https://dev.gentoo.org/~tupone/distfiles/${P}-debian-patches.tar.gz"
 
-IUSE="jpeg static-libs"
-SLOT="0/${SHVER}"
+S="${WORKDIR}"/${MYP}
+
 LICENSE="BSD"
+SLOT="0/${SHVER}"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos ~x64-solaris"
+IUSE="jpeg static-libs"
 
 DEPEND="
-	dev-lang/tk:0=
+	<dev-lang/tcl-9:=
+	<dev-lang/tk-9:=
 	jpeg? ( media-libs/libjpeg-turbo:0= )
 	x11-libs/libX11"
 RDEPEND="${DEPEND}"
 BDEPEND="app-arch/unzip"
-
-S="${WORKDIR}"/${MYP}
 
 MAKEOPTS+=" -j1"
 
