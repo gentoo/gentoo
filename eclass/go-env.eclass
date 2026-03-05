@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: go-env.eclass
@@ -129,19 +129,24 @@ go-env_go386() {
 }
 
 # @FUNCTION: go-env_goarm
-# @USAGE: [CHOST-value]
+# @USAGE: [tuple]
 # @DESCRIPTION:
-# Returns the appropriate GOARM setting for the CHOST given, or the default
-# CHOST.
+# Returns the appropriate GOARM setting for given target or CHOST.
 go-env_goarm() {
-	case "${1:-${CHOST}}" in
-		armv5*)	echo 5;;
-		armv6*)	echo 6;;
-		armv7*)	echo 7;;
-		*)
-			die "unknown GOARM for ${1:-${CHOST}}"
-			;;
+	local CTARGET=${1:-${CHOST}}
+
+	case ${CTARGET} in
+		armv5*)	echo -n 5 ;;
+		armv6*)	echo -n 6 ;;
+		armv7*)	echo -n 7 ;;
+		*) die "unknown GOARM for ${CTARGET}" ;;
 	esac
+
+	if [[ $(tc-is-softfloat) == no ]]; then
+		echo ,hardfloat
+	else
+		echo ,softfloat
+	fi
 }
 
 fi
