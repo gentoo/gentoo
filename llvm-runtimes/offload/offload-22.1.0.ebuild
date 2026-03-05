@@ -43,7 +43,7 @@ BDEPEND="
 		$(python_gen_any_dep '
 			dev-python/lit[${PYTHON_USEDEP}]
 		')
-		llvm-core/clang
+		llvm-core/clang:${LLVM_MAJOR}
 	)
 "
 

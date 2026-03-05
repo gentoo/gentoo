@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit cmake flag-o-matic llvm.org python-any-r1 toolchain-funcs
 
 DESCRIPTION="OpenMP offloading support"
@@ -38,7 +38,7 @@ BDEPEND="
 		$(python_gen_any_dep '
 			dev-python/lit[${PYTHON_USEDEP}]
 		')
-		llvm-core/clang
+		llvm-core/clang:${LLVM_MAJOR}
 	)
 "
 # TODO: can it be fixed to compile with gcc?
