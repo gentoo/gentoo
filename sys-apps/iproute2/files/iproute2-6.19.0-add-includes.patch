@@ -1,0 +1,42 @@
+From https://lore.kernel.org/netdev/20260223223435.289652-1-slyich@gmail.com/
+Bug: https://bugs.gentoo.org/970910
+
+From: Sergei Trofimovich <slyich@gmail.com>
+To: netdev@vger.kernel.org
+Cc: Sergei Trofimovich <slyich@gmail.com>
+Subject: [PATCH iproute2] include/json_print.h: add includes for `__u32` and `timeval` declarations
+Date: Mon, 23 Feb 2026 22:34:35 +0000
+
+Without the change the build fails on `musl` as:
+
+```
+../include/json_print.h:100:44: error: unknown type name ‘__u32’
+  100 | unsigned int print_range(const char *name, __u32 start, __u32 end);
+      |                                            ^~~~~
+...
+../include/json_print.h:82:30: warning: ‘struct timeval’ declared inside parameter list will not be visible outside of this definition or declaration
+   82 | _PRINT_FUNC(tv, const struct timeval *)
+      |                              ^~~~~~~
+../include/json_print.h:57:45: note: in definition of macro ‘_PRINT_FUNC’
+   57 |                                             type value)                 \
+      |                                             ^~~~
+../include/json_print.h: In function ‘print_tv’:
+../include/json_print.h:60:48: error: passing argument 5 of ‘print_color_tv’ from incompatible pointer type [-Wincompatible-pointer-types]
+   60 |                                                value);                  \
+      |                                                ^~~~~
+      |                                                |
+      |                                                const struct timeval *
+```
+--- a/include/json_print.h
++++ b/include/json_print.h
+@@ -8,6 +8,10 @@
+ #ifndef _JSON_PRINT_H_
+ #define _JSON_PRINT_H_
+ 
++#include <sys/time.h> /* struct timeval typedef */
++
++#include <asm/types.h> /* __u32 typedef */
++
+ #include "json_writer.h"
+ #include "color.h"
+ 

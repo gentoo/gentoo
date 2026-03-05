@@ -53,6 +53,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.8.0-disable-libbsd-fallback.patch # bug #911727
 	"${FILESDIR}"/${PN}-6.18.0-netshaper.patch # bug #967691
 	"${FILESDIR}"/${PN}-6.19.0-dpll.patch # bug #967691
+	"${FILESDIR}"/${PN}-6.19.0-add-includes.patch # bug #970910
 )
 
 src_prepare() {
