@@ -57,7 +57,7 @@ _udev_get_udevdir() {
 	local -x PKG_CONFIG_FDO_SYSROOT_RULES=1
 	if $($(tc-getPKG_CONFIG) --exists udev); then
 		local udevdir="$($(tc-getPKG_CONFIG) --variable=udevdir udev)"
-		echo "${udevdir#${EPREFIX}}"
+		echo "${udevdir#"${EPREFIX}"}"
 	else
 		echo /usr/lib/udev
 	fi
