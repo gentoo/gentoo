@@ -1,0 +1,9 @@
+https://bugs.gentoo.org/966100
+https://github.com/jeremyevans/aqualung/commit/d830ac58984
+--- a/src/decoder/dec_lavc.c
++++ b/src/decoder/dec_lavc.c
+@@ -362,3 +362,3 @@
+ 
+-	avcodec_close(pd->avCodecCtx);
++	avcodec_free_context(&pd->avCodecCtx);
+ 

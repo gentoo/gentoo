@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -62,6 +62,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}/${PN}-1.1-configure-lua-version.patch"
 	"${FILESDIR}/${PN}-2.0-configure.patch"
+	"${FILESDIR}/${P}-ffmpeg8.patch"
 )
 
 pkg_setup() {
