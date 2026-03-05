@@ -7,11 +7,24 @@ depend() {
 	after modules
 }
 
+assemble() {
+	local rv
+	mdadm -As ${MDADM_ASSEMBLE_OPTS} 2>&1
+	rv=$?
+	if [ ${rv} -eq 2 ]; then
+		# mdadm exits with status 2 when there is nothing to assemble.
+		# This is undocumented.
+		# https://bugs.gentoo.org/295397
+		return 0
+	fi
+	return "${rv}"
+}
+
 start() {
 	local output
 
 	ebegin "Starting up RAID devices"
-	output=$(mdadm -As ${MDADM_ASSEMBLE_OPTS} 2>&1)
+	output=$(assemble)
 	eend $? "${output}"
 
 	local pat="/dev/md_d*"
