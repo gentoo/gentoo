@@ -40,11 +40,8 @@ if [ "${SSH_AGENT}" = true ]; then
 		eval "$(/usr/bin/ssh-agent -s)"
 	fi
 elif [ "${SSH_AGENT}" = gpg ] && [ "${GPG_AGENT}" = true ]; then
-	if [ -e /run/user/$(id -ru)/gnupg/S.gpg-agent.ssh ]; then
-		export SSH_AUTH_SOCK=/run/user/$(id -ru)/gnupg/S.gpg-agent.ssh
-	elif [ -e "${HOME}/.gnupg/S.gpg-agent.ssh" ]; then
-		export SSH_AUTH_SOCK=${HOME}/.gnupg/S.gpg-agent.ssh
-	fi
+	unset SSH_AGENT_PID
+	export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 fi
 
 # Uncomment the following lines to start rxvt-unicode which has the ability to
