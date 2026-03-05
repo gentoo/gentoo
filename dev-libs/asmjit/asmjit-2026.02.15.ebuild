@@ -1,0 +1,34 @@
+# Copyright 2022-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+inherit cmake
+
+DESCRIPTION="Machine code generation for C++"
+HOMEPAGE="https://asmjit.com/"
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/asmjit/asmjit"
+else
+	CommitId=64a88ed1d8abb2e2b17a938a5ce7c1b66dabb695
+	SRC_URI="https://github.com/asmjit/${PN}/archive/${CommitId}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm64 ~x86"
+	S="${WORKDIR}"/${PN}-${CommitId}
+fi
+
+LICENSE="ZLIB"
+# NOTE: subslot is last commit marked with [abi] in git
+SLOT="0/2025.06.12"
+IUSE="test"
+
+BDEPEND="test? ( dev-cpp/gtest )"
+RESTRICT="!test? ( test )"
+
+DOCS=( README.md CONTRIBUTING.md )
+
+src_configure() {
+	local mycmakeargs=(
+		-DASMJIT_TEST=$(usex test)
+	)
+	cmake_src_configure
+}
