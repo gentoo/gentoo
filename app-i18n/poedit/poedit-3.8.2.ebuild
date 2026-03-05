@@ -18,7 +18,6 @@ SRC_URI="https://github.com/vslavik/${PN}/releases/download/v${PV}-oss/${P}.tar.
 
 LICENSE="MIT"
 SLOT="0"
-
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
 RDEPEND="
@@ -28,7 +27,7 @@ RDEPEND="
 	>=dev-libs/pugixml-1.9
 	dev-libs/boost:=[nls]
 	dev-libs/icu:=
-	x11-libs/wxGTK:${WX_GTK_VER}=[webkit,X]
+	x11-libs/wxGTK:${WX_GTK_VER}=[spell,webkit,X]
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
