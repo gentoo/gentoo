@@ -1,0 +1,48 @@
+https://bugs.gentoo.org/970842
+
+From f70443485d6754b8e4ecb82dae1ec58102ab9dd5 Mon Sep 17 00:00:00 2001
+From: Christos Zoulas <christos@zoulas.com>
+Date: Tue, 3 Mar 2026 14:55:15 +0000
+Subject: [PATCH] Use self._close Vincent Mihalkovic
+
+---
+ python/magic.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/python/magic.py b/python/magic.py
+index 14938281c6..24c32d2ddf 100644
+--- a/python/magic.py
++++ b/python/magic.py
+@@ -133,8 +133,8 @@ def close(self):
+         """
+         Closes the magic database and deallocates any resources used.
+         """
+-        if _close:
+-            _close(self._magic_t)
++        if self._close:
++            self._close(self._magic_t)
+ 
+     @staticmethod
+     def __tostr(s):
+From f8f8745ccc0fac38561ba7a168c7b5638135bcec Mon Sep 17 00:00:00 2001
+From: Christos Zoulas <christos@zoulas.com>
+Date: Wed, 4 Mar 2026 10:26:12 +0000
+Subject: [PATCH] convert tab to spaces
+
+---
+ python/magic.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/python/magic.py b/python/magic.py
+index 24c32d2dd..1db4a5d01 100644
+--- a/python/magic.py
++++ b/python/magic.py
+@@ -127,7 +127,7 @@ class magic_set(Structure):
+ class Magic(object):
+     def __init__(self, ms):
+         self._magic_t = ms
+-	self._close = _close
++        self._close = _close
+ 
+     def close(self):
+         """
