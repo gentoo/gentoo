@@ -143,6 +143,6 @@ multilib_src_install() {
 
 	if multilib_is_native_abi; then
 		dosym wish${v1} /usr/bin/wish
-		dodoc "${SPARENT}"/{ChangeLog*,README.md,changes}
+		dodoc "${SPARENT}"/README.md
 	fi
 }
