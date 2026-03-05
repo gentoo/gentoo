@@ -1,0 +1,27 @@
+From 1596461129adadb53c0185f8f83bfc01c2efe384 Mon Sep 17 00:00:00 2001
+From: Florian Schmaus <flo@geekplace.eu>
+Date: Thu, 5 Mar 2026 09:21:35 +0100
+Subject: [PATCH] io_uring_engine: Fix stat.h include
+
+Prefer the version from libc, which is already used everywhere else in
+plocate, instead of the version from the linux headers to avoid
+redifinition errors [1].
+
+1: https://bugs.gentoo.org/928568
+
+Fixes: 0125004cd28c ("Add a missing #include.")
+--- a/io_uring_engine.h
++++ b/io_uring_engine.h
+@@ -6,8 +6,8 @@
+ #include <stddef.h>
+ #include <string_view>
+ #include <sys/socket.h>
++#include <sys/stat.h>
+ #include <sys/types.h>
+-#include <linux/stat.h>
+ 
+ struct io_uring_sqe;
+ #ifndef WITHOUT_URING
+-- 
+2.52.0
+
