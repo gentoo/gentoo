@@ -33,6 +33,9 @@ src_configure() {
 }
 
 src_compile() {
+	# 947412
+	tc-is-cross-compiler && tc-env_build emake snowball
+
 	tc-export CC AR
 	default
 }
