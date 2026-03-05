@@ -1,19 +1,17 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..14} )
 inherit python-any-r1 flag-o-matic cmake
-
-CommitId=157e88b750c452bef2ab4653fe9d1eeb151ce4c3
 
 DESCRIPTION="Facebook GEneral Matrix Multiplication"
 HOMEPAGE="https://github.com/pytorch/FBGEMM"
-SRC_URI="https://github.com/pytorch/${PN}/archive/${CommitId}.tar.gz
+SRC_URI="https://github.com/pytorch/${PN}/archive/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
-S="${WORKDIR}"/${PN}-${CommitId}
+S="${WORKDIR}"/${P}
 
 LICENSE="BSD"
 SLOT="0"
@@ -21,7 +19,7 @@ KEYWORDS="~amd64"
 IUSE="doc test"
 
 DEPEND="
-	<dev-libs/asmjit-2025
+	<dev-libs/asmjit-2025.09.06:=
 	dev-libs/cpuinfo
 "
 RDEPEND="${DEPEND}"
@@ -48,7 +46,7 @@ python_check_deps() {
 }
 
 PATCHES=(
-	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${PN}-1.3.0.2025.09.05-gentoo.patch
 )
 
 src_prepare() {
