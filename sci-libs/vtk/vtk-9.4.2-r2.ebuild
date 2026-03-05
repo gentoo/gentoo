@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -95,7 +95,7 @@ RDEPEND="
 		)
 	)
 	cuda? ( dev-util/nvidia-cuda-toolkit:= )
-	ffmpeg? ( media-video/ffmpeg:= )
+	ffmpeg? ( <media-video/ffmpeg-8:= )
 	gdal? ( sci-libs/gdal:= )
 	java? ( >=virtual/jdk-11:= )
 	!minimal? (
