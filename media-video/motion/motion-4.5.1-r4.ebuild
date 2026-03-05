@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,13 +15,14 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc x86"
 IUSE="ffmpeg mariadb mysql postgres sqlite v4l webp"
 
+# TODO: drop ffmpeg upper bound on bump, should work (bug #965093)
 RDEPEND="
 	acct-group/motion
 	acct-user/motion
 	net-libs/libmicrohttpd:=
 	media-libs/libjpeg-turbo:=
 	>=sys-devel/gettext-0.19
-	ffmpeg? ( media-video/ffmpeg:0= )
+	ffmpeg? ( <media-video/ffmpeg-8:= )
 	mariadb? ( dev-db/mariadb-connector-c )
 	mysql? ( dev-db/mysql-connector-c )
 	postgres? ( dev-db/postgresql:= )
