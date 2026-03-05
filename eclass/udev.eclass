@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 2012-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: udev.eclass
@@ -59,7 +59,7 @@ _udev_get_udevdir() {
 		local udevdir="$($(tc-getPKG_CONFIG) --variable=udevdir udev)"
 		echo "${udevdir#${EPREFIX}}"
 	else
-		echo /lib/udev
+		echo /usr/lib/udev
 	fi
 }
 
