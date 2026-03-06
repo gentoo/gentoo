@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,8 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390
 IUSE="debug doc test threads"
 RESTRICT="!test? ( test )"
 
-DEPEND=">=dev-lang/tcl-8.2:=[threads?]"
+DEPEND=">=dev-lang/tcl-8.2:=[threads(+)?]
+	<dev-lang/tcl-9"
 RDEPEND="${DEPEND}"
 BDEPEND="test? ( dev-util/dejagnu )"
 
