@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -398,7 +398,7 @@ if [[ -n ${DISTDIR} ]]; then
 
 	# makeself 1.5.4, gzip
 	test_online \
-		http://updates.lokigames.com/sof/sof-1.06a-cdrom-x86.run \
+		https://updates.lokigames.com/sof/sof-1.06a-cdrom-x86.run \
 		f76f605af08a19b77548455c0101e03aca7cae69462914e47911da2fadd6d4f3b766e1069556ead0d06c757b179ae2e8105e76ea37852f17796b47b4712aec87 \
 		update.sh \
 		ba7a3f8fa79bbed8ca3a34ead957aeaa308c6e6d6aedd603098aa9867ca745983ff98c83d65572e507f2c3c4e0778ae4984f8b69d2b8279741b06064253c5788
