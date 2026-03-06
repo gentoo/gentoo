@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,6 +21,7 @@ RESTRICT="test"
 DEPEND="
 	>=dev-lang/tcl-8.4:=
 	>=dev-lang/tk-8.4:=
+	<dev-lang/tcl-9
 	x11-libs/libXext"
 RDEPEND="${DEPEND}"
 
