@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,8 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	>=dev-tcltk/itcl-4.2.4-r1
-	>=dev-tcltk/itk-4.1.0-r1"
+	>=dev-tcltk/itk-4.1.0-r1
+	<dev-lang/tcl-9"
 RDEPEND="${DEPEND}"
 
 QA_CONFIG_IMPL_DECL_SKIP=(
