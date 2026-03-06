@@ -17,7 +17,7 @@ SPARENT="${WORKDIR}/${PN}$(ver_cut 1-3 ${PV})"
 S="${SPARENT}"/unix
 
 LICENSE="tcltk"
-SLOT="0/8.6"
+SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos ~x64-solaris"
 IUSE="debug truetype aqua xscreensaver"
 RESTRICT="!test? ( test )"
