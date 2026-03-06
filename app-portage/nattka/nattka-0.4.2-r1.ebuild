@@ -1,4 +1,4 @@
-# Copyright 2020-2025 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,6 +26,7 @@ IUSE="depgraph-order"
 RDEPEND="
 	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
+	dev-python/snakeoil[${PYTHON_USEDEP}]
 	dev-util/pkgcheck[${PYTHON_USEDEP}]
 	dev-vcs/git
 	sys-apps/pkgcore[${PYTHON_USEDEP}]
