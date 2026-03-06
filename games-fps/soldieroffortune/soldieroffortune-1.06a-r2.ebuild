@@ -9,7 +9,7 @@ inherit cdrom check-reqs desktop unpacker wrapper
 
 DESCRIPTION="First-person shooter based on the mercenary trade"
 HOMEPAGE="https://www.lokigames.com/products/sof/"
-SRC_URI="mirror://lokigames/sof/sof-${PV}-cdrom-x86.run"
+SRC_URI="https://updates.lokigames.com/sof/sof-${PV}-cdrom-x86.run"
 S="${WORKDIR}"
 
 LICENSE="LOKI-EULA"
