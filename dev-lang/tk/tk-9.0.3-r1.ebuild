@@ -139,7 +139,6 @@ multilib_src_install() {
 
 	# install symlink for libraries
 	dosym libtk${v1}$(get_libname) /usr/${mylibdir}/libtk$(get_libname)
-	dosym libtkstub${v1}.a /usr/${mylibdir}/libtkstub.a
 
 	if multilib_is_native_abi; then
 		dosym wish${v1} /usr/bin/wish
