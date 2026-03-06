@@ -91,7 +91,10 @@ KEYWORDS="~amd64 ~arm64"
 IUSE_SYSTEM_LIBS="+system-harfbuzz +system-icu +system-zstd"
 IUSE="+X ${IUSE_SYSTEM_LIBS} bindist bundled-toolchain cups debug ffmpeg-chromium gtk4 +hangouts headless kerberos +official pax-kernel pgo"
 IUSE+=" +proprietary-codecs pulseaudio qt6 +rar +screencast selinux test +vaapi +wayland +widevine cpu_flags_ppc_vsx3"
-RESTRICT="!bindist? ( bindist ) !test? ( test )"
+RESTRICT="
+	!bindist? ( bindist )
+	!test? ( test )
+	arm64? ( test )" # Tests require CFI, which requires LTO, which is broken on arm64 with LLVM 21.
 
 REQUIRED_USE="
 	!headless? ( || ( X wayland ) )
@@ -318,26 +321,47 @@ pkg_setup() {
 		# The pre_build_checks are all about compilation resources, no need to run it for a binpkg
 		pre_build_checks
 
+		# We haven't massaged any CFLAGS yet, so we want to do this before we force CC/CXX to prevent warnings.
+		local want_lto="false"
+		tc-is-lto && want_lto="true"
+
 		# The linux:unbundle toolchain in GN grabs CC, CXX, CPP (etc) from the environment
 		# We'll set these to clang here then use llvm-utils functions to very explicitly set these
 		# to a sane value.
 		# This is effectively the 'force-clang' path if GCC support is re-added.
-		# TODO: check if the user has already selected a specific impl via make.conf and respect that.
+		if use !bundled-toolchain; then
+			llvm-r1_pkg_setup
+			rust_pkg_setup
+
+			# Forcing clang; respect llvm_slot_x to enable selection of impl via LLVM_COMPAT
+			AR=llvm-ar
+			CPP="${CHOST}-clang++-${LLVM_SLOT} -E"
+			NM=llvm-nm
+			CC="${CHOST}-clang-${LLVM_SLOT}"
+			CXX="${CHOST}-clang++-${LLVM_SLOT}"
+		fi
+
 		use_lto="false"
-		if tc-is-lto; then
-			use_lto="true"
-			# We can rely on GN to do this for us; anecdotally without this builds
-			# take significantly longer with LTO enabled and it doesn't hurt anything.
+		local lto_usable="true"
+		if [[ "$want_lto" == "true" ]]; then
+			if use arm64 && [[ "${LLVM_SLOT}" -lt 22 ]]; then
+				einfo "LTO is broken with LLVM 21 on arm64, ignoring CFLAGS."
+				lto_usable="false"
+			else
+				use_lto="true"
+			fi
+			# We can rely on GN to do this for us; without this builds
+			# take significantly longer with LTO enabled.
 			filter-lto
 		fi
 
-		if [ "$use_lto" = "false" ] && use official; then
+		if [[ "$use_lto" == "false" ]] && use official && [[ "$lto_usable" == "true" ]]; then
 			einfo "USE=official selected and LTO not detected."
 			einfo "It is _highly_ recommended that LTO be enabled for performance reasons"
 			einfo "and to be consistent with the upstream \"official\" build optimisations."
 		fi
 
-		if [ "$use_lto" = "false" ] && use test; then
+		if [[ "$use_lto" == "false" ]] && use test; then
 			die "Tests require CFI which requires LTO"
 		fi
 
@@ -350,25 +374,6 @@ pkg_setup() {
 			die "Please switch to a different linker."
 		fi
 
-		if use !bundled-toolchain; then
-			llvm-r1_pkg_setup
-			rust_pkg_setup
-		fi
-
-		# Forcing clang; respect llvm_slot_x to enable selection of impl from LLVM_COMPAT
-		AR=llvm-ar
-		CPP="${CHOST}-clang++-${LLVM_SLOT} -E"
-		NM=llvm-nm
-		CC="${CHOST}-clang-${LLVM_SLOT}"
-		CXX="${CHOST}-clang++-${LLVM_SLOT}"
-
-		# Sanity check our linker here; sometimes when adding a new LLVM slot devs (me) forget
-		# to install an appropriate lld version. llvm-r1_pkg_setup prefixed PATH for us, so it should be there.
-		local lld_ver=$(ld.lld --version | awk '{split($2,a,"."); print a[1]}' || die "Failed to check lld version")
-		if [[ ${lld_ver} -lt ${LLVM_SLOT} ]]; then
-			die "Your lld version (${lld_ver}) is too old for the selected LLVM slot (${LLVM_SLOT}). Please install a newer lld or select an older LLVM slot."
-		fi
-
 		if tc-is-cross-compiler; then
 			use pgo && die "The pgo USE flag cannot be used when cross-compiling"
 			CPP="${CBUILD}-clang++-${LLVM_SLOT} -E"
@@ -378,9 +383,15 @@ pkg_setup() {
 		# us poor packagers. Required for Split LTO units, which are required for CFI.
 		export RUSTC_BOOTSTRAP=1
 
-		# Users should never hit this, it's purely a development convenience
+		# Sanity checks for development convenience
 		if ver_test $(gn --version || die) -lt ${GN_MIN_VER}; then
 			die "dev-build/gn >= ${GN_MIN_VER} is required to build this Chromium"
+		fi
+
+		# Sometimes, when adding a new LLVM slot, devs (me) forget to install an appropriate lld.
+		local lld_ver=$(ld.lld --version | awk '{split($2,a,"."); print a[1]}' || die "Failed to check lld version")
+		if [[ ${lld_ver} -lt ${LLVM_SLOT} ]]; then
+			die "Your lld version (${lld_ver}) is too old for the selected LLVM slot (${LLVM_SLOT}). Please install a newer lld or select an older LLVM slot."
 		fi
 	fi
 
