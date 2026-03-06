@@ -25,10 +25,10 @@ src_install() {
 	dosym ../../../etc/${PN} /usr/share/${PN}/Config
 
 	perl_set_version
-	insinto ${VENDOR_LIB#"${EPREFIX}"}
+	insinto "${VENDOR_LIB#"${EPREFIX}"}"
 	doins -r Modules/NaturalDocs
 	dodir /usr/share/${PN}/Modules
-	dosym ../../../..${VENDOR_LIB#"${EPREFIX}"}/NaturalDocs /usr/share/${PN}/Modules/NaturalDocs
+	dosym "../../../..${VENDOR_LIB#"${EPREFIX}"}/NaturalDocs" /usr/share/${PN}/Modules/NaturalDocs
 
 	exeinto /usr/share/${PN}
 	doexe ${PN}
