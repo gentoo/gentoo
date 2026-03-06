@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,8 +6,8 @@ EAPI=7
 inherit desktop unpacker wrapper
 
 DESCRIPTION="Third-person classic magical action-adventure game"
-HOMEPAGE="http://www.lokigames.com/products/heretic2/
-	http://www.hereticii.com/"
+HOMEPAGE="https://www.lokigames.com/products/heretic2/
+	https://www.hereticii.com/"
 SRC_URI="mirror://lokigames/loki_demos/${PN}.run"
 S="${WORKDIR}"
 
