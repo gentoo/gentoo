@@ -1,0 +1,25 @@
+Gentoo's sandbox does not whitelist this path by default yet.
+
+(4.1 update:
+https://github.com/ccache/ccache/issues/984
+https://github.com/ccache/ccache/issues/1044
+https://github.com/ccache/ccache/commit/a0edd4294f6a5a2d3f0c7b01273736f975f250e1
+https://github.com/ccache/ccache/commit/ef2e922f9642f943199138447b29ec53fa63ea68
+... gets us closer, but not there yet.)
+
+And see https://github.com/ccache/ccache/discussions/1086#discussioncomment-3327565.
+
+https://bugs.gentoo.org/837362 for 4.6 issue.
+https://bugs.gentoo.org/883799 and https://bugs.gentoo.org/887019 for 4.8 issue.
+--- a/src/ccache/config.cpp
++++ b/src/ccache/config.cpp
+@@ -1505,8 +1505,7 @@ Config::check_key_tables_consistency()
+ fs::path
+ Config::default_temporary_dir() const
+ {
+-  const auto dir = get_xdg_runtime_tmp_dir();
+-  return !dir.empty() ? dir : m_cache_dir / "tmp";
++  return m_cache_dir / "tmp";
+ }
+ 
+ std::filesystem::path
