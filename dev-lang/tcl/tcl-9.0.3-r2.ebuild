@@ -123,6 +123,8 @@ multilib_src_install() {
 
 	# install symlink for libraries
 	dosym libtcl${v1}$(get_libname) /usr/${mylibdir}/libtcl$(get_libname)
+	mv "${ED}"/usr/${mylibdir}/libtclstub{,${v1}}.a || die
+	dosym libtclstub${v1}.a /usr/${mylibdir}/libtclstub.a
 
 	if multilib_is_native_abi; then
 		dosym tclsh${v1} /usr/bin/tclsh
