@@ -72,7 +72,10 @@ DEPEND="
 "
 BDEPEND="
 	virtual/pkgconfig
-	dnstap? ( dev-libs/protobuf[protoc(+)] )
+	dnstap? (
+		dev-libs/protobuf[protoc(+)]
+		dev-libs/protobuf-c
+	)
 	manager? (
 		${DISTUTILS_DEPS}
 		${PYTHON_DEPS}
@@ -88,6 +91,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.9-config-example.patch
 	"${FILESDIR}"/${PN}-6.0.12-pytest_tomllib.patch
 	"${FILESDIR}"/${PN}-6.1.0-libsystemd.patch
+	"${FILESDIR}"/${PN}-6.2.0-fix_luajit_include.patch
 )
 
 pkg_setup() {

@@ -1,0 +1,15 @@
+See PR pending https://gitlab.nic.cz/knot/knot-resolver/-/merge_requests/1816.patch
+pkg-config --variable=includedir doesn't pass $EROOT.
+luajit already in mod_deps is sufficient.
+--- a/modules/meson.build
++++ b/modules/meson.build
+@@ -34,8 +34,7 @@ integr_tests += [
+   ['serve_stale', meson.current_source_dir() / 'serve_stale' / 'test.integr'],
+ ]
+ 
+-mod_inc_dir = include_directories('..', '../contrib',
+-  luajit.get_variable(pkgconfig: 'includedir'))
++mod_inc_dir = include_directories('..', '../contrib')
+ 
+ mod_deps = [
+   contrib_dep,
