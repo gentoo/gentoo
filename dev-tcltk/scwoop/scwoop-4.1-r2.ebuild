@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,10 +8,11 @@ HOMEPAGE="http://jfontain.free.fr/scwoop41.htm"
 SRC_URI="http://jfontain.free.fr/${P}.tar.gz"
 
 LICENSE="jfontain"
-KEYWORDS="amd64 ~ppc x86"
 SLOT="0"
+KEYWORDS="amd64 ~ppc x86"
 
-DEPEND="dev-tcltk/tcllib"
+DEPEND="dev-tcltk/tcllib
+	<dev-lang/tcl-9"
 RDEPEND="${DEPEND}"
 
 HTML_DOCS=( scwoop.htm )
