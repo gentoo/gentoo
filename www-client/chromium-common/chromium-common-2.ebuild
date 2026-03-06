@@ -9,7 +9,7 @@ S="${WORKDIR}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~ppc64"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv"
 RESTRICT="test" # There is no code, only Zuul.
 
 # Non-slotted Chromium will conflict
