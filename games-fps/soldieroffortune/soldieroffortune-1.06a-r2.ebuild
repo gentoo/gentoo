@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ CHECKREQS_DISK_USR="725M"
 inherit cdrom check-reqs desktop unpacker wrapper
 
 DESCRIPTION="First-person shooter based on the mercenary trade"
-HOMEPAGE="http://www.lokigames.com/products/sof/"
+HOMEPAGE="https://www.lokigames.com/products/sof/"
 SRC_URI="mirror://lokigames/sof/sof-${PV}-cdrom-x86.run"
 S="${WORKDIR}"
 
