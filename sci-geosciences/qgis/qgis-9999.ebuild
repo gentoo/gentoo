@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -46,7 +46,7 @@ COMMON_DEPEND="
 	dev-libs/libzip:=
 	dev-libs/protobuf:=
 	>=dev-libs/qtkeychain-0.14.1-r1:=[qt6(+)]
-	dev-qt/qtbase:6[concurrent,gui,network,sql,ssl,widgets,xml]
+	dev-qt/qtbase:6=[concurrent,gui,network,sql,ssl,widgets,xml]
 	dev-qt/qtmultimedia:6
 	dev-qt/qtpositioning:6
 	dev-qt/qtserialport:6
@@ -76,14 +76,6 @@ COMMON_DEPEND="
 	postgres? ( dev-db/postgresql:= )
 	python? (
 		${PYTHON_DEPS}
-		|| (
-			(
-				$(python_gen_cond_dep '
-					sci-libs/gdal[python,${PYTHON_USEDEP}]
-				')
-			)
-			>=sci-libs/gdal-2.2.3[python,${PYTHON_SINGLE_USEDEP}]
-		)
 		$(python_gen_cond_dep '
 			dev-python/httplib2[${PYTHON_USEDEP}]
 			dev-python/jinja2[${PYTHON_USEDEP}]
@@ -98,6 +90,7 @@ COMMON_DEPEND="
 			dev-python/qscintilla[${PYTHON_USEDEP}]
 			dev-python/requests[${PYTHON_USEDEP}]
 			dev-python/sip:=[${PYTHON_USEDEP}]
+			sci-libs/gdal[python,${PYTHON_USEDEP}]
 			postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
 		')
 	)
@@ -177,9 +170,7 @@ src_configure() {
 		-DUSE_CCACHE=OFF
 		-DUSE_PRECOMPILED_HEADERS=OFF
 		-DWITH_DRACO=OFF
-		-DWITH_QTWEBKIT=OFF
 		-DWITH_INTERNAL_NLOHMANN_JSON=OFF
-		-DBUILD_WITH_QT6=ON
 		-DWITH_ANALYSIS=ON
 		-DWITH_DESKTOP=ON
 		-DWITH_GUI=ON
