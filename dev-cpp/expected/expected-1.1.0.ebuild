@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/TartanLlama/expected/archive/refs/tags/v${PV}.tar.gz
 
 LICENSE="CC0-1.0"
 SLOT="0"
-KEYWORDS="amd64 ~loong ~x86"
+KEYWORDS="amd64 ~loong ~s390 ~x86"
 RESTRICT="test"
 
 src_configure() {
