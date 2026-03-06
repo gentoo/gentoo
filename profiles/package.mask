@@ -36,6 +36,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Alexey Sokolov <alexey+gentoo@asokolov.org> (2026-09-09)
+# Upstream abandoned the project, suggests www-servers/gatling
+# by the same upstream instead.
+# Removal on 2026-10-09. Bugs #783666, #944275.
+www-servers/fnord
+acct-user/fnord
+acct-user/fnordlog
+
 # Sam James <sam@gentoo.org> (2026-09-08)
 # Changes ctest(1) behaviour to exit non-zero if no tests, which
 # may break many ebuilds. Needs some assessment.
