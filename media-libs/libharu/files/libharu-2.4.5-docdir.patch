@@ -1,0 +1,59 @@
+https://github.com/libharu/libharu/pull/359
+
+From 430de0d7c9091ef4af42f2c833ff13d904a77b9d Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Fri, 6 Mar 2026 17:48:25 -0500
+Subject: [PATCH] CMakeLists.txt: install docs and bindings to DOCDIR
+
+We are already using the GNUInstallDirs module,
+
+  https://cmake.org/cmake/help/latest/module/GNUInstallDirs.html
+
+that provides access to the "familiar" GNU directories like BINDIR,
+LIBDIR, and DOCDIR. The documentation and bindings however are
+currently installed to DATAROOTDIR/libharu, which on a typical linux
+system will lead to paths like
+
+  /usr/share/libharu/README.md
+
+In this case, it would clearly be preferable to install to DOCDIR,
+since README.md is unambiguously documentation. We also get, for
+example,
+
+  /usr/share/libharu/bindings/vb.net/hpdfvb.vb
+
+The usage instructions for our bindings essentially tell you to copy &
+paste them into an appropriate location; they are not immediately
+usable when installed. For example, with the python bindings in mind,
+
+  /usr/share/libharu/bindings/python
+
+would not be on one's PYTHONPATH. In that sense, these bindings also
+act more like documentation than as package data, and should therefore
+be installed to DOCDIR.
+
+This commit makes both of those changes, and afterwards drops the
+INSTALL file from the install rule: if libharu is installed, you don't
+need the INSTALL file.
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index bb564fb..0139a13 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -134,8 +134,8 @@ set(
+ install(FILES ${haru_HDRS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+ 
+ # install various files
+-install(FILES README.md CHANGES INSTALL DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/libharu)
+-install(DIRECTORY bindings DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/libharu)
++install(FILES README.md CHANGES DESTINATION ${CMAKE_INSTALL_DOCDIR})
++install(DIRECTORY bindings DESTINATION ${CMAKE_INSTALL_DOCDIR})
+ 
+ # =======================================================================
+ # print out some information
+-- 
+2.53.0
+
