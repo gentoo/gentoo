@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,8 +6,8 @@ EAPI=7
 inherit cdrom desktop unpacker wrapper
 
 DESCRIPTION="Tribes 2 - Team Combat on an Epic Scale"
-HOMEPAGE="http://www.lokigames.com/products/tribes2/"
-SRC_URI="http://www.libsdl.org/projects/${PN}/release/${P}-cdrom-x86.run"
+HOMEPAGE="https://www.lokigames.com/products/tribes2/"
+SRC_URI="https://www.libsdl.org/projects/${PN}/release/${P}-cdrom-x86.run"
 S="${WORKDIR}"
 
 LICENSE="LOKI-EULA"
