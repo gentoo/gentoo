@@ -17,7 +17,7 @@ SPARENT="${WORKDIR}/${MY_P}"
 S="${SPARENT}"/unix
 
 LICENSE="tcltk Spencer-99"
-SLOT="0/8.6"
+SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
 IUSE="debug"
 
