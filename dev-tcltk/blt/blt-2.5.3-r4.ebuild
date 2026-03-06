@@ -106,7 +106,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake LDFLAGS="${LDFLAGS}"
+	emake -j1 LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {
@@ -123,7 +123,7 @@ src_install() {
 		/usr/share/man/mann \
 		/usr/include
 
-	emake INSTALL_ROOT="${D}" install
+	emake -j1 INSTALL_ROOT="${D}" install
 
 	dodoc NEWS PROBLEMS README
 	docinto html
