@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,13 +11,15 @@ DESCRIPTION="A Tk widget for OpenGL rendering"
 HOMEPAGE="http://togl.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${MY_P}-src.tar.gz"
 
+S=${WORKDIR}/${MY_P}
+
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 IUSE="debug +threads"
 
 RDEPEND="
-	dev-lang/tk:*
+	<dev-lang/tk-9:*
 	media-libs/libglvnd[X]
 	x11-libs/libX11
 	x11-libs/libXmu"
@@ -25,8 +27,6 @@ DEPEND="${RDEPEND}"
 
 # tests directory is missing
 RESTRICT="test"
-
-S=${WORKDIR}/${MY_P}
 
 PATCHES=( "${FILESDIR}"/${P}-clang6.patch )
 
