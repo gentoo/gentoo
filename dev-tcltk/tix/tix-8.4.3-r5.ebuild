@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,20 +10,20 @@ DESCRIPTION="A widget library for Tcl/Tk"
 HOMEPAGE="http://tix.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/tix/${MY_P}-src.tar.gz"
 
+S="${WORKDIR}/${MY_P}"
+
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos"
 RESTRICT="test"
 
 DEPEND="
-	dev-lang/tk:=
+	<dev-lang/tk-9:=
 	x11-libs/libX11
 	x11-libs/libXau
 	x11-libs/libXdmcp
 "
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-tcl8.5.patch
