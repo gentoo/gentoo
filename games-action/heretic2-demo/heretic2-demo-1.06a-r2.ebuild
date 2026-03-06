@@ -8,7 +8,7 @@ inherit desktop unpacker wrapper
 DESCRIPTION="Third-person classic magical action-adventure game"
 HOMEPAGE="https://www.lokigames.com/products/heretic2/
 	https://www.hereticii.com/"
-SRC_URI="mirror://lokigames/loki_demos/${PN}.run"
+SRC_URI="https://updates.lokigames.com/loki_demos/${PN}.run"
 S="${WORKDIR}"
 
 LICENSE="LOKI-EULA"
