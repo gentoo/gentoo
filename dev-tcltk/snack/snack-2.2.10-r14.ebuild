@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,8 +22,8 @@ IUSE="alsa examples python vorbis"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	dev-lang/tcl:0=
-	dev-lang/tk:0=
+	<dev-lang/tcl-9:0=
+	<dev-lang/tk-9:0=
 	alsa? ( media-libs/alsa-lib )
 	python? ( ${PYTHON_DEPS} )
 	vorbis? ( media-libs/libvorbis )
