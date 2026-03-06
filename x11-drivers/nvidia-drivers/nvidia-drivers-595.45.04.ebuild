@@ -28,6 +28,9 @@ LICENSE="
 "
 SLOT="0/${PV%%.*}"
 # unkeyworded due to being a beta, feel free to opt-in if want to test
+# TODO: cleanup the suspend "Note:" in postinst elog when restore keywords,
+# albeit may be good to add the next version still unkeyworded until some
+# testing with this and consider going back to sleep services if needed
 #KEYWORDS="-* ~amd64 ~arm64"
 IUSE="+X abi_x86_32 abi_x86_64 persistenced powerd +static-libs +tools wayland"
 
@@ -563,6 +566,9 @@ pkg_postinst() {
 		elog "   removed and replaced by setting NVreg_UseKernelSuspendNotifiers=1 in"
 		elog "   ${EROOT}/etc/modprobe.d/nvidia.conf. If using a non-default custom"
 		elog "   nvidia.conf, please ensure the option is set."
+		elog "   Note: considered experimental at the moment and may cause the"
+		elog "   kernel to crash on suspend, *could* be reverted by the time a"
+		elog "   non-beta 595.xx version is keyworded if has not improved yet."
 		elog "3. nvidia-drm.modeset=1 was removed from nvidia.conf because it is now"
 		elog "   default enabled regardless (new NVIDIA default)"
 	fi
