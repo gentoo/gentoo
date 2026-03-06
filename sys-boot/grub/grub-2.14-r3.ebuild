@@ -46,7 +46,7 @@ if [[ ${PV} != 9999 ]]; then
 		SRC_URI="
 			mirror://gnu/${PN}/${P}.tar.xz
 			verify-sig? ( mirror://gnu/${PN}/${P}.tar.xz.sig )
-			https://dev.gentoo.org/~floppym/dist/${P}-lld-support.tar.xz
+			https://dev.gentoo.org/~floppym/dist/${P}-patches.tar.xz
 		"
 		S=${WORKDIR}/${P%_*}
 	fi
@@ -176,7 +176,7 @@ src_unpack() {
 
 src_prepare() {
 	local PATCHES=(
-		"${WORKDIR}/${P}-lld-support"
+		"${WORKDIR}/${P}-patches"
 	)
 
 	default
