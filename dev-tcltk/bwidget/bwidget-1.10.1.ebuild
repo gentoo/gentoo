@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,10 +19,14 @@ DEPEND="dev-lang/tk:0"
 RDEPEND="${DEPEND}"
 BDEPEND="app-arch/unzip"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.9.8-test.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.9.8-test.patch
+	"${FILESDIR}"/${P}-tcl9.patch
+)
 
 src_test() {
-	TCLLIBPATH=${S} virtx tclsh tests/entry.test
+	TCLLIBPATH=${S} virtx tclsh tests/entry.test | tee test.out
+	grep -q "Failed\s\+0$" test.out || die
 }
 
 src_install() {
