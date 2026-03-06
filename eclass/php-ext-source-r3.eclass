@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: php-ext-source-r3.eclass
@@ -260,7 +260,7 @@ php-ext-source-r3_src_install() {
 		# Strip $EPREFIX from $EXT_DIR before calling doexe (which
 		# handles EPREFIX itself). Shared libs are +x by convention,
 		# although nothing seems to depend on that.
-		exeinto "${EXT_DIR#$EPREFIX}"
+		exeinto "${EXT_DIR#"${EPREFIX}"}"
 		doexe "modules/${PHP_EXT_NAME}.so"
 
 		INSTALL_ROOT="${D}" emake install-headers

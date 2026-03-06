@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -680,12 +680,12 @@ src_install() {
 
 	# Configuration stuff
 	einfo "Building default configuration ..."
-	insinto "${MY_SYSCONFDIR#${EPREFIX}}"
+	insinto "${MY_SYSCONFDIR#"${EPREFIX}"}"
 	[[ -f "${S}/scripts/mysqlaccess.conf" ]] && doins "${S}"/scripts/mysqlaccess.conf
 	cp "${FILESDIR}/my.cnf-10.2" "${TMPDIR}/my.cnf" || die
 	eprefixify "${TMPDIR}/my.cnf"
 	doins "${TMPDIR}/my.cnf"
-	insinto "${MY_SYSCONFDIR#${EPREFIX}}/mariadb.d"
+	insinto "${MY_SYSCONFDIR#"${EPREFIX}"}/mariadb.d"
 	cp "${FILESDIR}/my.cnf.distro-client" "${TMPDIR}/50-distro-client.cnf" || die
 	eprefixify "${TMPDIR}/50-distro-client.cnf"
 	doins "${TMPDIR}/50-distro-client.cnf"

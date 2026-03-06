@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: bash-completion-r1.eclass
@@ -48,7 +48,7 @@ _bash-completion-r1_get_bashdir() {
 		path=$($(tc-getPKG_CONFIG) --variable="${1}" bash-completion) || die
 		# we need to return unprefixed, so strip from what pkg-config returns
 		# to us, bug #477692
-		echo "${path#${EPREFIX}}"
+		echo "${path#"${EPREFIX}"}"
 	else
 		echo "${2}"
 	fi

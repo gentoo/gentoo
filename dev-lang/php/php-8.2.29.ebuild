@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -186,29 +186,29 @@ php_install_ini() {
 	# Set the include path to point to where we want to find PEAR packages
 	sed -e 's|^;include_path = ".:/php/includes".*|include_path = ".:'"${EPREFIX}"'/usr/share/php'${PHP_MV}':'"${EPREFIX}"'/usr/share/php"|' -i "${phpinisrc}" || die
 
-	insinto "${PHP_INI_DIR#${EPREFIX}}"
+	insinto "${PHP_INI_DIR#"${EPREFIX}"}"
 	newins "${phpinisrc}" php.ini
 
-	elog "Installing php.ini for ${phpsapi} into ${PHP_INI_DIR#${EPREFIX}}"
+	elog "Installing php.ini for ${phpsapi} into ${PHP_INI_DIR#"${EPREFIX}"}"
 	elog
 
-	dodir "${PHP_EXT_INI_DIR#${EPREFIX}}"
-	dodir "${PHP_EXT_INI_DIR_ACTIVE#${EPREFIX}}"
+	dodir "${PHP_EXT_INI_DIR#"${EPREFIX}"}"
+	dodir "${PHP_EXT_INI_DIR_ACTIVE#"${EPREFIX}"}"
 
 	if use opcache; then
 		elog "Adding opcache to $PHP_EXT_INI_DIR"
 		echo "zend_extension=${PHP_DESTDIR}/$(get_libdir)/opcache.so" >> \
 			 "${D}/${PHP_EXT_INI_DIR}"/opcache.ini
 		dosym "../ext/opcache.ini" \
-			  "${PHP_EXT_INI_DIR_ACTIVE#${EPREFIX}}/opcache.ini"
+			  "${PHP_EXT_INI_DIR_ACTIVE#"${EPREFIX}"}/opcache.ini"
 	fi
 
 	# SAPI-specific handling
 	if [[ "${sapi}" == "fpm" ]] ; then
 		einfo "Installing FPM config files php-fpm.conf and www.conf"
-		insinto "${PHP_INI_DIR#${EPREFIX}}"
+		insinto "${PHP_INI_DIR#"${EPREFIX}"}"
 		doins sapi/fpm/php-fpm.conf
-		insinto "${PHP_INI_DIR#${EPREFIX}}/fpm.d"
+		insinto "${PHP_INI_DIR#"${EPREFIX}"}/fpm.d"
 		doins sapi/fpm/www.conf
 	fi
 
@@ -681,14 +681,14 @@ src_install() {
 	done
 
 	# Makefile forgets to create this before trying to write to it...
-	dodir "${PHP_DESTDIR#${EPREFIX}}/bin"
+	dodir "${PHP_DESTDIR#"${EPREFIX}"}/bin"
 
 	# Install php environment (without any sapis)
 	cd "${WORKDIR}/sapis-build/$first_sapi" || die
 	emake INSTALL_ROOT="${D}" \
 		install-build install-headers install-programs
 
-	local extension_dir="$("${ED}/${PHP_DESTDIR#${EPREFIX}}/bin/php-config" --extension-dir)"
+	local extension_dir="$("${ED}/${PHP_DESTDIR#"${EPREFIX}"}/bin/php-config" --extension-dir)"
 
 	# Create the directory where we'll put version-specific php scripts
 	keepdir "/usr/share/php${PHP_MV}"
@@ -704,13 +704,13 @@ src_install() {
 			if [[ "${sapi}" == "apache2" ]] ; then
 				# We're specifically not using emake install-sapi as libtool
 				# may cause unnecessary relink failures (see bug #351266)
-				insinto "${PHP_DESTDIR#${EPREFIX}}/apache2/"
+				insinto "${PHP_DESTDIR#"${EPREFIX}"}/apache2/"
 				newins ".libs/libphp$(get_libname)" \
 					   "libphp${PHP_MV}$(get_libname)"
 				keepdir "/usr/$(get_libdir)/apache2/modules"
 			else
 				# needed each time, php_install_ini would reset it
-				local dest="${PHP_DESTDIR#${EPREFIX}}"
+				local dest="${PHP_DESTDIR#"${EPREFIX}"}"
 				into "${dest}"
 				case "$sapi" in
 					cli)
@@ -761,7 +761,7 @@ src_install() {
 
 	# Installing opcache module
 	if use opcache ; then
-		into "${PHP_DESTDIR#${EPREFIX}}"
+		into "${PHP_DESTDIR#"${EPREFIX}"}"
 		dolib.so "modules/opcache$(get_libname)"
 	fi
 

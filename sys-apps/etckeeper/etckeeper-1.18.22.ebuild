@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,7 +34,7 @@ src_prepare() {
 	default
 	hprefixify *.d/* etckeeper
 	local systemdunitdir="$(systemd_get_systemunitdir)"
-	systemdunitdir="${systemdunitdir#${EPREFIX}}"
+	systemdunitdir="${systemdunitdir#"${EPREFIX}"}"
 	sed -i \
 		-e s'@zsh/vendor-completions@zsh/site-functions@' \
 		-e s"@/lib/systemd/system@"${systemdunitdir}"@" \

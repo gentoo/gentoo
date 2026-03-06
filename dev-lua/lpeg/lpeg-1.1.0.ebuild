@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -77,10 +77,10 @@ lua_src_install() {
 	cd "${S}.${ELUA}/" || die
 	local instdir
 	instdir="$(lua_get_cmod_dir)"
-	exeinto "${instdir#${EPREFIX}}"
+	exeinto "${instdir#"${EPREFIX}"}"
 	doexe lpeg.so
 	instdir="$(lua_get_lmod_dir)"
-	insinto "${instdir#${EPREFIX}}"
+	insinto "${instdir#"${EPREFIX}"}"
 	doins re.lua
 
 	if [[ ${CHOST} == *-darwin* ]] ; then

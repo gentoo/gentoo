@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -131,7 +131,7 @@ src_install() {
 					"${PN}".service
 	if [[ -f "${T}/${PN}-db.conf" ]]; then
 		local UNIT_DIR="$(systemd_get_systemunitdir)"
-		insinto "${UNIT_DIR#${EPREFIX}}/${PN}".service.d
+		insinto "${UNIT_DIR#"${EPREFIX}"}/${PN}".service.d
 		doins "${T}/${PN}-db.conf"
 	fi
 	newinitd "${FILESDIR}"/vaultwarden-1.33.2.initd "${PN}"

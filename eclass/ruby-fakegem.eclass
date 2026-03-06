@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ruby-fakegem.eclass
@@ -224,7 +224,7 @@ ruby_fakegem_gemsdir() {
 
 	local _gemsitedir=$(ruby_rbconfig_value 'sitelibdir')
 	_gemsitedir=${_gemsitedir//site_ruby/gems}
-	_gemsitedir=${_gemsitedir#${EPREFIX}}
+	_gemsitedir=${_gemsitedir#"${EPREFIX}"}
 
 	[[ -z ${_gemsitedir} ]] && {
 		eerror "Unable to find the gems dir"

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gnustep-base.eclass
@@ -256,7 +256,7 @@ EOF
 	if [[ -d ${EPREFIX}/usr/share/GNUstep/Makefiles ]]; then
 		exeinto /usr/bin
 	else
-		exeinto "${GNUSTEP_SYSTEM_TOOLS#${EPREFIX}}"/Gentoo
+		exeinto "${GNUSTEP_SYSTEM_TOOLS#"${EPREFIX}"}"/Gentoo
 	fi
 	doexe "${T}"/${cfile}
 }

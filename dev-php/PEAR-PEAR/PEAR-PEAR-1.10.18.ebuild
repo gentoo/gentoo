@@ -132,10 +132,10 @@ src_install() {
 		-i "${D}/etc/pear.conf" \
 		|| die "failed to sed the bin path (prefix) in pear.conf"
 
-	[[ "${PEAR_TEMPDIR}" != "/tmp" ]] && keepdir "${PEAR_TEMPDIR#${EPREFIX}}"
-	keepdir "${PEAR_CACHEDIR#${EPREFIX}}"
+	[[ "${PEAR_TEMPDIR}" != "/tmp" ]] && keepdir "${PEAR_TEMPDIR#"${EPREFIX}"}"
+	keepdir "${PEAR_CACHEDIR#"${EPREFIX}"}"
 	diropts -m1777
-	keepdir "${PEAR_DOWNLOADDIR#${EPREFIX}}"
+	keepdir "${PEAR_DOWNLOADDIR#"${EPREFIX}"}"
 
 	insinto /usr/share/php/.packagexml
 	newins "${WORKDIR}/package.xml" "${MY_P}.xml"

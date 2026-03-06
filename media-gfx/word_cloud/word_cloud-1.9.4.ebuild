@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,6 +31,6 @@ export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 python_install() {
 	distutils-r1_python_install
 	local sitedir=$(python_get_sitedir)
-	insinto "${sitedir#${EPREFIX}}"/${PN/_}
+	insinto "${sitedir#"${EPREFIX}"}"/${PN/_}
 	doins ${PN/_}/stopwords
 }

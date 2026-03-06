@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -49,11 +49,11 @@ src_install() {
 		elog "It regularly is the target of various exploits."
 	fi
 
-	insinto "${MY_HTDOCSDIR#${EPREFIX}}"
+	insinto "${MY_HTDOCSDIR#"${EPREFIX}"}"
 	doins -r .
 
-	webapp_configfile "${MY_HTDOCSDIR#${EPREFIX}}"/libraries/config.default.php
-	webapp_serverowned "${MY_HTDOCSDIR#${EPREFIX}}"/libraries/config.default.php
+	webapp_configfile "${MY_HTDOCSDIR#"${EPREFIX}"}"/libraries/config.default.php
+	webapp_serverowned "${MY_HTDOCSDIR#"${EPREFIX}"}"/libraries/config.default.php
 
 	webapp_postinst_txt en "${FILESDIR}"/postinstall-en-3.1.txt
 	webapp_src_install

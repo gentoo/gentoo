@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -89,7 +89,7 @@ each_ruby_install() {
 	popd &>/dev/null
 
 	local sld=$(ruby_rbconfig_value 'sitelibdir')
-	insinto "${sld#${EPREFIX}}"  # bug #320813
+	insinto "${sld#"${EPREFIX}"}"  # bug #320813
 	newins "${FILESDIR}/auto_gem.rb.ruby19" auto_gem.rb
 
 	newbin exe/gem $(basename ${RUBY} | sed -e 's:ruby:gem:')

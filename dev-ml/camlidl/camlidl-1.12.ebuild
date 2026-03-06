@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -52,7 +52,7 @@ src_test() {
 
 src_install() {
 	libdir=$(ocamlc -where || die)
-	dodir "${libdir#${EPREFIX}}"/caml
+	dodir "${libdir#"${EPREFIX}"}"/caml
 
 	dodir /usr/bin
 	dodir /usr/$(get_libdir)/ocaml/stublibs

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: findlib.eclass
@@ -54,7 +54,7 @@ findlib_src_preinst() {
 	local destdir=$(ocamlfind printconf destdir)
 
 	# strip off prefix
-	destdir=${destdir#${EPREFIX}}
+	destdir=${destdir#"${EPREFIX}"}
 
 	dodir "${destdir}"
 	export OCAMLFIND_DESTDIR=${ED}${destdir}

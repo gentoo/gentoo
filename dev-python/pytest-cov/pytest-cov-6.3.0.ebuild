@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -44,7 +44,7 @@ distutils_enable_tests pytest
 python_test() {
 	# https://github.com/pytest-dev/pytest-cov/issues/517
 	local sitedir="$(python_get_sitedir)"
-	local -x PYTHONPATH="${BUILD_DIR}/install${sitedir}:${BROOT}${sitedir#${EPREFIX}}:${PYTHONPATH}"
+	local -x PYTHONPATH="${BUILD_DIR}/install${sitedir}:${BROOT}${sitedir#"${EPREFIX}"}:${PYTHONPATH}"
 	local -x PYTHONUSERBASE=/usr
 
 	local EPYTEST_DESELECT=(

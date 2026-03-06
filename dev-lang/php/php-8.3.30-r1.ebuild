@@ -171,29 +171,29 @@ php_install_ini() {
 	local sed_dst="include_path = \"${include_path}\""
 	sed -e "s|${sed_src}|${sed_dst}|" -i "${phpinisrc}" || die
 
-	insinto "${PHP_INI_DIR#${EPREFIX}}"
+	insinto "${PHP_INI_DIR#"${EPREFIX}"}"
 	newins "${phpinisrc}" php.ini
 
-	elog "Installing php.ini for ${phpsapi} into ${PHP_INI_DIR#${EPREFIX}}"
+	elog "Installing php.ini for ${phpsapi} into ${PHP_INI_DIR#"${EPREFIX}"}"
 	elog
 
-	dodir "${PHP_EXT_INI_DIR#${EPREFIX}}"
-	dodir "${PHP_EXT_INI_DIR_ACTIVE#${EPREFIX}}"
+	dodir "${PHP_EXT_INI_DIR#"${EPREFIX}"}"
+	dodir "${PHP_EXT_INI_DIR_ACTIVE#"${EPREFIX}"}"
 
 	if use opcache; then
 		elog "Adding opcache to $PHP_EXT_INI_DIR"
 		echo "zend_extension = opcache.so" >> \
 			 "${D}/${PHP_EXT_INI_DIR}"/opcache.ini
 		dosym "../ext/opcache.ini" \
-			  "${PHP_EXT_INI_DIR_ACTIVE#${EPREFIX}}/opcache.ini"
+			  "${PHP_EXT_INI_DIR_ACTIVE#"${EPREFIX}"}/opcache.ini"
 	fi
 
 	# SAPI-specific handling
 	if [[ "${sapi}" == "fpm" ]] ; then
 		einfo "Installing FPM config files php-fpm.conf and www.conf"
-		insinto "${PHP_INI_DIR#${EPREFIX}}"
+		insinto "${PHP_INI_DIR#"${EPREFIX}"}"
 		doins sapi/fpm/php-fpm.conf
-		insinto "${PHP_INI_DIR#${EPREFIX}}/fpm.d"
+		insinto "${PHP_INI_DIR#"${EPREFIX}"}/fpm.d"
 		doins sapi/fpm/www.conf
 	fi
 
@@ -623,13 +623,13 @@ src_install() {
 			if [[ "${sapi}" == "apache2" ]] ; then
 				# We're specifically not using emake install-sapi as libtool
 				# may cause unnecessary relink failures (see bug #351266)
-				insinto "${PHP_DESTDIR#${EPREFIX}}/apache2/"
+				insinto "${PHP_DESTDIR#"${EPREFIX}"}/apache2/"
 				newins ".libs/libphp$(get_libname)" \
 					   "libphp${PHP_MV}$(get_libname)"
 				keepdir "/usr/$(get_libdir)/apache2/modules"
 			else
 				# needed each time, php_install_ini would reset it
-				local dest="${PHP_DESTDIR#${EPREFIX}}"
+				local dest="${PHP_DESTDIR#"${EPREFIX}"}"
 				into "${dest}"
 				case "$sapi" in
 					cli)

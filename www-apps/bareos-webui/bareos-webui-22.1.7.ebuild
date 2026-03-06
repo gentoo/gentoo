@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -77,18 +77,18 @@ src_install() {
 	insinto /etc/"${PN}"
 	doins install/{configuration,directors}.ini
 
-	insinto "${MY_HTDOCSDIR#${EPREFIX}}"
+	insinto "${MY_HTDOCSDIR#"${EPREFIX}"}"
 	doins -r .
 
-	webapp_configfile "${MY_HTDOCSDIR#${EPREFIX}}"/config/application.config.php
-	webapp_configfile "${MY_HTDOCSDIR#${EPREFIX}}"/config/autoload/global.php
+	webapp_configfile "${MY_HTDOCSDIR#"${EPREFIX}"}"/config/application.config.php
+	webapp_configfile "${MY_HTDOCSDIR#"${EPREFIX}"}"/config/autoload/global.php
 
-	keepdir "${MY_HTDOCSDIR#${EPREFIX}}"/data
-	webapp_serverowned "${MY_HTDOCSDIR#${EPREFIX}}"/data
+	keepdir "${MY_HTDOCSDIR#"${EPREFIX}"}"/data
+	webapp_serverowned "${MY_HTDOCSDIR#"${EPREFIX}"}"/data
 
 	# cleanup
-	find  "${D}/${MY_HTDOCSDIR#${EPREFIX}}" -name "*.in" -delete
-	rm -rf "${D}/${MY_HTDOCSDIR#${EPREFIX}}"/{CMakeLists.txt,install,cmake,phpunit.xml,scripts,doc,tests}
+	find  "${D}/${MY_HTDOCSDIR#"${EPREFIX}"}" -name "*.in" -delete
+	rm -rf "${D}/${MY_HTDOCSDIR#"${EPREFIX}"}"/{CMakeLists.txt,install,cmake,phpunit.xml,scripts,doc,tests}
 
 	webapp_postinst_txt en "${FILESDIR}"/postinstall-en.txt
 

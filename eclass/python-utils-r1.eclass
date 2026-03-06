@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-utils-r1.eclass
@@ -679,7 +679,7 @@ python_newexe() {
 	local newfn=${2}
 
 	local scriptdir=$(python_get_scriptdir)
-	local d=${scriptdir#${EPREFIX}}
+	local d=${scriptdir#"${EPREFIX}"}
 
 	(
 		dodir "${wrapd}"
@@ -817,7 +817,7 @@ python_domodule() {
 	else
 		# relative to site-packages
 		local sitedir=$(python_get_sitedir)
-		d=${sitedir#${EPREFIX}}/${_PYTHON_MODULEROOT//.//}
+		d=${sitedir#"${EPREFIX}"}/${_PYTHON_MODULEROOT//.//}
 	fi
 
 	if [[ ${EBUILD_PHASE} == install ]]; then

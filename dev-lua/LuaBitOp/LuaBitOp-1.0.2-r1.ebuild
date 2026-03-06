@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -76,7 +76,7 @@ lua_src_install() {
 	pushd "${BUILD_DIR}" || die
 
 	mycmoddir="$(lua_get_cmod_dir)"
-	exeinto "${mycmoddir#$EPREFIX}"
+	exeinto "${mycmoddir#"${EPREFIX}"}"
 	doexe bit.so
 
 	popd

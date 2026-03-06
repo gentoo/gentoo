@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: alternatives.eclass
@@ -92,7 +92,7 @@ alternatives_makesym() {
 
 	# usage: alternatives_makesym <resulting symlink> [alternative targets..]
 	# make sure it is in the prefix, allow it already to be in the prefix
-	SYMLINK=${EPREFIX}/${1#${EPREFIX}}
+	SYMLINK=${EPREFIX}/${1#"${EPREFIX}"}
 	pref=${ROOT}
 	shift
 	ALTERNATIVES=$@
@@ -101,7 +101,7 @@ alternatives_makesym() {
 	# and if one exists, link it and finish.
 
 	for alt in ${ALTERNATIVES}; do
-		alt=${EPREFIX}/${alt#${EPREFIX}}
+		alt=${EPREFIX}/${alt#"${EPREFIX}"}
 		if [ -f "${pref}${alt}" ]; then
 			#are files in same directory?
 			if [ "${alt%/*}" = "${SYMLINK%/*}" ]

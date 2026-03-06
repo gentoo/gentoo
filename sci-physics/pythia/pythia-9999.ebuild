@@ -199,7 +199,7 @@ src_install() {
 	fi
 	if use python; then
 		local site_dir=$(python_get_sitedir)
-		insinto "${site_dir#${EPREFIX}}"
+		insinto "${site_dir#"${EPREFIX}"}"
 		doins lib/pythia8.so
 	fi
 

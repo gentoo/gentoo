@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-r1.eclass
@@ -780,7 +780,7 @@ python_replicate_script() {
 
 		(
 			exeopts -m 0755
-			exeinto "${PYTHON_SCRIPTDIR#${EPREFIX}}"
+			exeinto "${PYTHON_SCRIPTDIR#"${EPREFIX}"}"
 			doexe "${files[@]}"
 		)
 

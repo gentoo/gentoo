@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -40,7 +40,7 @@ src_test() {
 src_install() {
 	# bug 558818: install binaries in $GOROOT/bin to avoid file collisions
 	local goroot=$(go env GOROOT)
-	goroot=${goroot#${EPREFIX}}
+	goroot=${goroot#"${EPREFIX}"}
 	exeinto "${goroot}/bin"
 	doexe bin/*
 	dodir /usr/bin

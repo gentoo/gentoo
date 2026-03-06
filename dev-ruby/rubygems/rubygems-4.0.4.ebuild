@@ -96,7 +96,7 @@ each_ruby_install() {
 	popd &>/dev/null
 
 	local sld=$(ruby_rbconfig_value 'sitelibdir')
-	insinto "${sld#${EPREFIX}}"  # bug #320813
+	insinto "${sld#"${EPREFIX}"}"  # bug #320813
 	newins "${FILESDIR}/auto_gem.rb.ruby19" auto_gem.rb
 
 	newbin exe/gem $(basename ${RUBY} | sed -e 's:ruby:gem:')

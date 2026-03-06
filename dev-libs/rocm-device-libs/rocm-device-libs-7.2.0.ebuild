@@ -82,7 +82,7 @@ src_install() {
 	cmake_src_install
 	# install symlink, so that clang won't ask for "--rocm-device-lib-path" flag anymore
 	local bitcodedir="$(clang -print-resource-dir)/$(get_libdir)/amdgcn/bitcode"
-	dosym -r "/usr/lib/amdgcn/bitcode" "${bitcodedir#${EPREFIX}}"
+	dosym -r "/usr/lib/amdgcn/bitcode" "${bitcodedir#"${EPREFIX}"}"
 }
 
 src_test() {

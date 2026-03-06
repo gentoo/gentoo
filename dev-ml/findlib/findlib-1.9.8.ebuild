@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -56,7 +56,7 @@ src_compile() {
 src_install() {
 	emake prefix="${D}" install
 
-	dodir "${stublibs#${EPREFIX}}"
+	dodir "${stublibs#"${EPREFIX}"}"
 
 	if use doc; then
 		cd "${S}/doc" || die

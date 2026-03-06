@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ruby-ng-gnome2.eclass
@@ -112,7 +112,7 @@ each_ruby_install() {
 	if [[ -e Makefile ]]; then
 		# Create the directories, or the package will create them as files.
 		local archdir=$(ruby_rbconfig_value "sitearchdir")
-		dodir "${archdir#${EPREFIX}}" /usr/$(get_libdir)/pkgconfig
+		dodir "${archdir#"${EPREFIX}"}" /usr/$(get_libdir)/pkgconfig
 
 		emake DESTDIR="${D}" install
 	fi

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -213,7 +213,7 @@ src_install() {
 	if use ecl; then
 		# Use ECL to find the path where it expects to load packages from.
 		ECLLIB=$(ecl -eval "(princ (SI:GET-LIBRARY-PATHNAME))" -eval "(quit)")
-		insinto "${ECLLIB#${EPREFIX}}"
+		insinto "${ECLLIB#"${EPREFIX}"}"
 		doins src/binary-ecl/maxima.fas
 	fi
 }

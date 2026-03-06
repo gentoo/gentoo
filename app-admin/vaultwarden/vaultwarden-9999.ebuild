@@ -132,7 +132,7 @@ src_install() {
 	systemd_newunit "${FILESDIR}"/vaultwarden-1.33.2.service "${PN}".service
 	if [[ -f "${T}/${PN}-db.conf" ]]; then
 		local UNIT_DIR="$(systemd_get_systemunitdir)"
-		insinto "${UNIT_DIR#${EPREFIX}}/${PN}".service.d
+		insinto "${UNIT_DIR#"${EPREFIX}"}/${PN}".service.d
 		doins "${T}/${PN}-db.conf"
 	fi
 	newinitd "${FILESDIR}"/vaultwarden-1.33.2.initd "${PN}"

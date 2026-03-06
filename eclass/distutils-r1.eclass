@@ -1373,7 +1373,7 @@ _distutils-r1_wrap_scripts() {
 
 			debug-print "${FUNCNAME}: installing wrapper at ${bindir}/${basename}"
 			dosym -r /usr/lib/python-exec/python-exec2 \
-				"${bindir#${EPREFIX}}/${basename}"
+				"${bindir#"${EPREFIX}"}/${basename}"
 		done
 
 		for f in "${non_python_files[@]}"; do

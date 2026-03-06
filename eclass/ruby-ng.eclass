@@ -649,7 +649,7 @@ doruby() {
 	[[ -z ${RUBY} ]] && die "\$RUBY is not set"
 	( # don't want to pollute calling env
 		sitelibdir=$(ruby_rbconfig_value 'sitelibdir')
-		insinto "${sitelibdir#${EPREFIX}}"
+		insinto "${sitelibdir#"${EPREFIX}"}"
 		insopts -m 0644
 		doins "$@"
 	)

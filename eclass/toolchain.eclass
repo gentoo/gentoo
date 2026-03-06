@@ -2791,7 +2791,7 @@ gcc_movelibs() {
 	# that you want to link against when building tools rather than building
 	# code to run on the target.
 	if is_crosscompile ; then
-		dodir "${HOSTLIBPATH#${EPREFIX}}"
+		dodir "${HOSTLIBPATH#"${EPREFIX}"}"
 		# XXX: Ideally, we'd use $(get_libdir) here, but it's
 		# not right for cross. See bug #942573 and bug #794181.
 		if [[ ${GCC_BUILD_PLUGINS} == 1 ]] ; then
@@ -2801,7 +2801,7 @@ gcc_movelibs() {
 
 	# libgccjit gets installed to /usr/lib, not /usr/$(get_libdir). Probably
 	# due to a bug in gcc build system.
-	dodir "${LIBPATH#${EPREFIX}}"
+	dodir "${LIBPATH#"${EPREFIX}"}"
 
 	if is_jit ; then
 		mv "${ED}"/usr/lib/libgccjit* "${D}${LIBPATH}" || die

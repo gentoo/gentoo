@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: qt5-build.eclass
@@ -300,7 +300,7 @@ qt5-build_src_install() {
 		# so that it's placed under package manager control
 		> "${T}"/gentoo-qconfig.h
 		(
-			insinto "${QT5_HEADERDIR#${EPREFIX}}"/Gentoo
+			insinto "${QT5_HEADERDIR#"${EPREFIX}"}"/Gentoo
 			doins "${T}"/gentoo-qconfig.h
 		)
 
@@ -876,7 +876,7 @@ qt5_install_module_config() {
 
 	# install ${PN}-qconfig.h
 	[[ -s ${T}/${PN}-qconfig.h ]] && (
-		insinto "${QT5_HEADERDIR#${EPREFIX}}"/Gentoo
+		insinto "${QT5_HEADERDIR#"${EPREFIX}"}"/Gentoo
 		doins "${T}"/${PN}-qconfig.h
 	)
 
@@ -884,7 +884,7 @@ qt5_install_module_config() {
 	[[ -n ${qconfig_add} ]] && echo "QCONFIG_ADD=${qconfig_add}" >> "${T}"/${PN}-qconfig.pri
 	[[ -n ${qconfig_remove} ]] && echo "QCONFIG_REMOVE=${qconfig_remove}" >> "${T}"/${PN}-qconfig.pri
 	[[ -s ${T}/${PN}-qconfig.pri ]] && (
-		insinto "${QT5_ARCHDATADIR#${EPREFIX}}"/mkspecs/gentoo
+		insinto "${QT5_ARCHDATADIR#"${EPREFIX}"}"/mkspecs/gentoo
 		doins "${T}"/${PN}-qconfig.pri
 	)
 
@@ -906,13 +906,13 @@ qt5_install_module_config() {
 	[[ -n ${qprivateconfig_add} ]] && echo "QT.global_private.enabled_features = ${qprivateconfig_add}" >> "${T}"/${PN}-qmodule.pri
 	[[ -n ${qprivateconfig_remove} ]] && echo "QT.global_private.disabled_features = ${qprivateconfig_remove}" >> "${T}"/${PN}-qmodule.pri
 	[[ -s ${T}/${PN}-qmodule.pri ]] && (
-		insinto "${QT5_ARCHDATADIR#${EPREFIX}}"/mkspecs/gentoo
+		insinto "${QT5_ARCHDATADIR#"${EPREFIX}"}"/mkspecs/gentoo
 		doins "${T}"/${PN}-qmodule.pri
 	)
 
 	# install the original {qconfig,qmodule}.pri from qtcore
 	[[ ${PN} == qtcore ]] && (
-		insinto "${QT5_ARCHDATADIR#${EPREFIX}}"/mkspecs/gentoo
+		insinto "${QT5_ARCHDATADIR#"${EPREFIX}"}"/mkspecs/gentoo
 		newins "${D}${QT5_ARCHDATADIR}"/mkspecs/qconfig.pri qconfig-qtcore.pri
 		newins "${D}${QT5_ARCHDATADIR}"/mkspecs/qmodule.pri qmodule-qtcore.pri
 	)
