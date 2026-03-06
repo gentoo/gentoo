@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,14 +10,15 @@ MYP=${PN}-${PV/_alpha/a}
 DESCRIPTION="Visual Tcl is a high-quality application development environment"
 HOMEPAGE="http://vtcl.sf.net"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${MYP}.tar.gz"
+
+S="${WORKDIR}"/${MYP}
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE="doc"
-DEPEND="dev-lang/tk:*"
+DEPEND="<dev-lang/tk-9:*"
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}"/${MYP}
 
 MY_DESTDIR=/usr/share/${PN}
 
