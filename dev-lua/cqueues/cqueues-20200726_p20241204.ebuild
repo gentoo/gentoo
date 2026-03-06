@@ -1,4 +1,4 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -95,6 +95,7 @@ lua_src_compile() {
 	fi
 
 	emake CC=$(tc-getCC) \
+		CFLAGS="${CFLAGS} $(lua_get_CFLAGS)" \
 		all${LUA_VERSION}
 
 	popd || die
