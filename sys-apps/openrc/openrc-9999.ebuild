@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -52,15 +52,15 @@ PDEPEND="netifrc? ( net-misc/netifrc )"
 
 src_configure() {
 	local emesonargs=(
-	--bindir=/bin
-	--sbindir=/sbin
+		--bindir="${EPREFIX}/bin"
+		--sbindir="${EPREFIX}/sbin"
 		$(meson_feature audit)
 		"-Dbranding=\"Gentoo Linux\""
 		$(meson_use newnet)
 		$(meson_use pam)
-		-Dpam_libdir="$(getpam_mod_dir)"
+		-Dpam_libdir="${EPREFIX}$(getpam_mod_dir)"
 		$(meson_feature selinux)
-		-Dshell=$(usex bash /bin/bash /bin/sh)
+		-Dshell=$(usex bash "${EPREFIX}/bin/bash" "${EPREFIX}/bin/sh")
 		$(meson_use sysv-utils sysvinit)
 	)
 	# export DEBUG=$(usev debug)
