@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="sdl truetype"
 
-RDEPEND="dev-lang/tcl:0=
+RDEPEND="<dev-lang/tcl-9:=
 	dev-lang/tk:0=
 	x11-libs/libX11
 	x11-libs/libXrandr
