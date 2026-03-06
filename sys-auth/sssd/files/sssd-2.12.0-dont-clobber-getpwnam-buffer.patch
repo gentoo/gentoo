@@ -1,0 +1,87 @@
+From 0262207f76088f6801e055b64125b2a1006de1e2 Mon Sep 17 00:00:00 2001
+From: Christopher Byrne <salah.coronya@gmail.com>
+Date: Sun, 1 Mar 2026 20:05:21 -0600
+Subject: [PATCH] src/sss_client/common.c: Use getpwnam_r to avoid clobbering
+ struct passwd
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+If something else uses PAM (like openrc, see
+https://github.com/OpenRC/openrc/pull/984) and getpwnam, and calls
+something like pam_open_session, sssd's call to getpwnam in
+init_sssd_ids clobbers the cached value by the other program.
+
+Signed-off-by: Christopher Byrne <salah.coronya@gmail.com>
+Reviewed-by: Alexey Tikhonov <atikhono@redhat.com>
+Reviewed-by: Tomáš Halman <thalman@redhat.com>
+---
+ src/sss_client/common.c | 51 +++++++++++++++++++++++++++++++++++++----
+ 1 file changed, 47 insertions(+), 4 deletions(-)
+
+diff --git a/src/sss_client/common.c b/src/sss_client/common.c
+index 094936d8f..8a2e693da 100644
+--- a/src/sss_client/common.c
++++ b/src/sss_client/common.c
+@@ -148,11 +148,54 @@ static void init_sssd_ids(void)
+     /* 'libnss_sss' doesn't resolve SSSD_USER,
+      * so no need to set '_SSS_LOOPS'
+      */
+-    struct passwd *pwd = getpwnam(SSSD_USER);
+-    if (pwd != NULL) {
+-        sss_sssd_uid = pwd->pw_uid;
+-        sss_sssd_gid = pwd->pw_gid;
++    struct passwd pwd;
++    struct passwd *result = NULL;
++    long sc_bufsize;
++    size_t bufsize;
++    char *buf;
++    char *newbuf;
++    int error;
++
++    sc_bufsize = sysconf(_SC_GETPW_R_SIZE_MAX);
++
++    if (sc_bufsize > 0)
++        bufsize = (size_t)sc_bufsize;
++    else {
++        bufsize = 16384;
++    }
++
++    buf = malloc(bufsize);
++
++    if (buf == NULL) {
++        return;
+     }
++
++    do {
++        error = getpwnam_r(SSSD_USER, &pwd, buf, bufsize, &result);
++        if (result == NULL) {
++            if (error == ERANGE) {
++                bufsize += 4096;
++
++                if (bufsize >= 65536) {
++                    break;
++                }
++
++                newbuf = realloc(buf, bufsize);
++
++                if (newbuf == NULL) {
++                    break;
++                }
++
++                buf = newbuf;
++                continue;
++            }
++        } else {
++            sss_sssd_uid = result->pw_uid;
++            sss_sssd_gid = result->pw_gid;
++        }
++    } while (result == NULL && error == ERANGE);
++
++    free(buf);
+ }
+ #endif
+ #endif /* SSSD_NON_ROOT_USER */
+-- 
+2.52.0
+
