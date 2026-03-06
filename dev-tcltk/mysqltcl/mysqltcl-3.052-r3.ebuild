@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc ~sparc x86"
 
 DEPEND="
-	dev-lang/tcl:0=
+	<dev-lang/tcl-9:0=
 	dev-db/mysql-connector-c:0="
 RDEPEND="${DEPEND}"
 
