@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,6 +21,7 @@ IUSE="debug threads"
 
 DEPEND="
 	>=dev-lang/tcl-8.2:=
+	<dev-lang/tcl-9
 	>=dev-libs/libxml2-2.6.9:=
 	dev-libs/libxslt
 	>=dev-tcltk/tcllib-1.2
