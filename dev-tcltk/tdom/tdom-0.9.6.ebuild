@@ -16,7 +16,9 @@ S="${WORKDIR}"/${P}-src
 LICENSE="MPL-1.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="threads"
+IUSE="test threads"
+REQUIRED_USE="test? ( threads )"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-lang/tcl:0=
