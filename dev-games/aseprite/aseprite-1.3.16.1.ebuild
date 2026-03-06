@@ -23,7 +23,7 @@ SRC_URI="https://github.com/aseprite/aseprite/releases/download/v$(ver_cut 1-3 $
 # See https://github.com/aseprite/aseprite#license
 LICENSE="Aseprite-EULA BSD MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 IUSE="test webp"
 
