@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,9 +8,9 @@ inherit cdrom desktop multilib unpacker wrapper
 DESCRIPTION="Third-person classic magical action-adventure game"
 HOMEPAGE="https://lokigames.com/products/heretic2/
 	https://www.ravensoft.com"
-SRC_URI="mirror://lokigames/${PN}/${P/%?/b}-unified-x86.run
-	mirror://lokigames/${PN}/${P}-unified-x86.run
-	mirror://lokigames/${PN}/${PN}-maps-1.0.run"
+SRC_URI="https://updates.lokigames.com/${PN}/${P/%?/b}-unified-x86.run
+	https://updates.lokigames.com/${PN}/${P}-unified-x86.run
+	https://updates.lokigames.com/${PN}/${PN}-maps-1.0.run"
 S="${WORKDIR}"
 
 LICENSE="LOKI-EULA"
