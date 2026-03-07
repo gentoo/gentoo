@@ -9,5 +9,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">tktreectrl</remote-id>
+		<remote-id type="github">tcltk-depot/tktreectrl</remote-id>
 	</upstream>
 </pkgmetadata>
