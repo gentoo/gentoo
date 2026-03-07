@@ -7,6 +7,6 @@
   </maintainer>
   <upstream>
     <remote-id type="pypi">lazy-loader</remote-id>
-    <remote-id type="github">scientific-python/lazy_loader</remote-id>
+    <remote-id type="github">scientific-python/lazy-loader</remote-id>
   </upstream>
 </pkgmetadata>
