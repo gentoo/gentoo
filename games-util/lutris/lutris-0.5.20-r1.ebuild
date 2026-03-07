@@ -41,6 +41,7 @@ RDEPEND="
 		dev-python/evdev[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
 		dev-python/pillow[${PYTHON_USEDEP}]
+		dev-python/setproctitle[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
 		dev-python/pypresence[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
