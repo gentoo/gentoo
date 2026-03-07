@@ -17,26 +17,23 @@ EHG_REPO_URI="https://www.mercurial-scm.org/repo/hg"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="+chg emacs gpg test tk rust"
+IUSE="+chg emacs gpg tk rust"
 
 BDEPEND="
 	dev-python/docutils[${PYTHON_USEDEP}]
 	rust? ( ${RUST_DEPEND} )"
 
 RDEPEND="
+	dev-python/zstandard[${PYTHON_USEDEP}]
 	app-misc/ca-certificates
 	gpg? ( app-alternatives/gpg )
 	tk? ( dev-lang/tk )"
 
-DEPEND="emacs? ( >=app-editors/emacs-23.1:* )
-	test? (
-		app-arch/unzip
-		dev-python/pygments[${PYTHON_USEDEP}]
-		)"
+DEPEND="emacs? ( >=app-editors/emacs-23.1:* )"
 
 SITEFILE="70${PN}-gentoo.el"
 
-RESTRICT="!test? ( test )"
+RESTRICT="test"  # test suite needs mercurial to be installed
 
 pkg_setup() {
 	use rust && rust_pkg_setup
@@ -60,13 +57,17 @@ python_prepare_all() {
 	sed -i -e 's/__APPLE__/__NO_APPLE__/g' mercurial/cext/osutil.c || die
 
 	# Build assumes the Rust target directory, which is wrong for us.
-	sed -i -r "s:\brust[/,' ]+target[/,' ]+release\b:rust/$(cargo_target_dir):g" \
-		Makefile \
-		setup.py \
-		tests/run-tests.py \
-		|| die
+	sed -i -r "s:\brust[/,' ]+target[/,' ]+release\b:rust/$(cargo_target_dir):g" setup.py || die
 
 	distutils-r1_python_prepare_all
+}
+
+python_configure_all() {
+	cat >> setup.cfg <<-EOF || die
+		[build_ext]
+		rust = $(usex rust True False)
+		zstd = False
+	EOF
 }
 
 src_compile() {
@@ -80,9 +81,6 @@ src_compile() {
 
 python_compile() {
 	filter-flags -ftracer -ftree-vectorize
-	if use rust; then
-		local -x HGWITHRUSTEXT="cpython"
-	fi
 	distutils-r1_python_compile build_ext
 }
 
@@ -108,10 +106,6 @@ src_install() {
 }
 
 python_install() {
-	if use rust; then
-		local -x HGWITHRUSTEXT="cpython"
-	fi
-
 	distutils-r1_python_install build_ext
 	python_doscript contrib/hg-ssh
 }
@@ -154,41 +148,6 @@ python_install_all() {
 
 	insinto /etc/mercurial/hgrc.d
 	doins "${FILESDIR}/cacerts.rc"
-}
-
-src_test() {
-	pushd tests &>/dev/null || die
-	rm -rf *svn*			# Subversion tests fail with 1.5
-	rm -f test-archive*		# Fails due to verbose tar output changes
-	rm -f test-convert-baz*		# GNU Arch baz
-	rm -f test-convert-cvs*		# CVS
-	rm -f test-convert-darcs*	# Darcs
-	rm -f test-convert-git*		# git
-	rm -f test-convert-mtn*		# monotone
-	rm -f test-convert-tla*		# GNU Arch tla
-	rm -f test-largefiles*		# tends to time out
-	rm -f test-https*			# requires to support tls1.0
-	rm -rf test-removeemptydirs*	# requires access to access parent directories
-	if [[ ${EUID} -eq 0 ]]; then
-		einfo "Removing tests which require user privileges to succeed"
-		rm -f test-convert*
-		rm -f test-lock-badness*
-		rm -f test-permissions*
-		rm -f test-pull-permission*
-		rm -f test-journal-exists*
-		rm -f test-repair-strip*
-	fi
-
-	popd &>/dev/null || die
-	distutils-r1_src_test
-}
-
-python_test() {
-	cd tests || die
-	PYTHONWARNINGS=ignore "${PYTHON}" run-tests.py \
-		--jobs $(makeopts_jobs) \
-		--timeout 0 \
-		|| die "Tests fail with ${EPYTHON}"
 }
 
 pkg_postinst() {
