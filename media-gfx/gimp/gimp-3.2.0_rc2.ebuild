@@ -202,6 +202,8 @@ src_configure() {
 	use wayland || append-cppflags -DGENTOO_GTK_HIDE_WAYLAND
 	use X || append-cppflags -DGENTOO_GTK_HIDE_X11
 
+	tc-export NM READELF
+
 	use vala && vala_setup
 
 	local emesonargs=(

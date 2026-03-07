@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/968162
+
+--- a/tools/defcheck.py
++++ b/tools/defcheck.py
+@@ -31,7 +31,7 @@
+ 
+ import os, sys, subprocess
+ 
+-from os import path
++from os import getenv, path
+ 
+ def_files = (
+    "libgimpbase/gimpbase.def",
+@@ -55,7 +55,7 @@
+       sys.exit (-1)
+ 
+ libextension   = ".so"
+-command        = "nm --defined-only --extern-only "
++command        = getenv("NM", default="nm") + " --defined-only --extern-only "
+ platform_linux = True
+ 
+ if sys.platform in ['win32', 'cygwin']:

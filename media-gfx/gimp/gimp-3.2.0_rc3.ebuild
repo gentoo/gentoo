@@ -156,6 +156,10 @@ BDEPEND="
 
 DOCS=( "AUTHORS" "NEWS" "README" "README.i18n" )
 
+PATCHES=(
+	"${FILESDIR}"/gimp-3.2.0-respect-NM.patch
+)
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
@@ -214,6 +218,8 @@ src_configure() {
 	# defang automagic dependencies. Bug 943164
 	use wayland || append-cppflags -DGENTOO_GTK_HIDE_WAYLAND
 	use X || append-cppflags -DGENTOO_GTK_HIDE_X11
+
+	tc-export NM READELF
 
 	use vala && vala_setup
 
