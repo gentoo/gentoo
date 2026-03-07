@@ -1,0 +1,44 @@
+From 0a20709150ff4762497e8e54dac34c718620142c Mon Sep 17 00:00:00 2001
+From: Matthias Maier <tamiko@43-1.org>
+Date: Sat, 7 Mar 2026 17:56:42 -0600
+Subject: [PATCH] Drop boost_system
+
+---
+ cmake/TPLs/FindTPLBoostAlbLib.cmake | 2 +-
+ cmake/TPLs/FindTPLBoostLib.cmake    | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/cmake/TPLs/FindTPLBoostAlbLib.cmake b/cmake/TPLs/FindTPLBoostAlbLib.cmake
+index e4d5cead..46f3f939 100644
+--- a/cmake/TPLs/FindTPLBoostAlbLib.cmake
++++ b/cmake/TPLs/FindTPLBoostAlbLib.cmake
+@@ -1,6 +1,6 @@
+ 
+ TRIBITS_TPL_FIND_INCLUDE_DIRS_AND_LIBRARIES( BoostAlbLib
+   REQUIRED_HEADERS boost/version.hpp boost/mpl/at.hpp
+-  REQUIRED_LIBS_NAMES boost_regex boost_filesystem boost_thread boost_wserialization boost_serialization boost_mpi boost_program_options boost_system
++  REQUIRED_LIBS_NAMES boost_regex boost_filesystem boost_thread boost_wserialization boost_serialization boost_mpi boost_program_options
+   )
+ 
+diff --git a/cmake/TPLs/FindTPLBoostLib.cmake b/cmake/TPLs/FindTPLBoostLib.cmake
+index 4d753e6f..920d60fe 100644
+--- a/cmake/TPLs/FindTPLBoostLib.cmake
++++ b/cmake/TPLs/FindTPLBoostLib.cmake
+@@ -1,12 +1,12 @@
+ set(REQUIRED_HEADERS boost/version.hpp boost/mpl/at.hpp )
+-set(REQUIRED_LIBS_NAMES boost_program_options boost_system )
++set(REQUIRED_LIBS_NAMES boost_program_options )
+ set(IMPORTED_TARGETS_FOR_ALL_LIBS Boost )
+ 
+ tribits_tpl_allow_pre_find_package(Boost  Boost_ALLOW_PREFIND)
+ 
+ if (Boost_ALLOW_PREFIND)
+   message("-- Using find_package(BOOST ...) ...")
+-  find_package(BOOST COMPONENTS program_options system)
++  find_package(BOOST COMPONENTS program_options )
+   if (BOOST_FOUND)
+     message("-- Found Boost_DIR='${BOOST_DIR}'")
+     message("-- Generating Boost::all_libs and BoostConfig.cmake")
+-- 
+2.52.0
+
