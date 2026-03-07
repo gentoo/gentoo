@@ -5,7 +5,7 @@ EAPI=8
 
 VALA_USE_DEPEND=vapigen
 
-inherit meson gnome2-utils vala
+inherit meson gnome2-utils vala toolchain-funcs
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -44,6 +44,8 @@ src_prepare() {
 }
 
 src_configure() {
+	tc-export READELF NM
+
 	use vala && vala_setup
 
 	# Automagic rsvg support is just for website generation we do not call,
