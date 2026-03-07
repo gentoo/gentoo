@@ -743,3 +743,4 @@ dev-embedded/avr-libc
 sys-devel/nvptx-tools
 sys-devel/clang-crossdev-wrappers
 sys-kernel/gnumach
+sys-kernel/hurd
