@@ -114,6 +114,8 @@ src_configure() {
 	# Bug #859901
 	filter-lto
 
+	tc-export READELF NM
+
 	use vala && vala_setup
 
 	local emesonargs=(
