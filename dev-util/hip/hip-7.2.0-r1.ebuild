@@ -87,7 +87,6 @@ RDEPEND="${DEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-6.3.0-no-isystem-usr-include.patch"
 	"${FILESDIR}/${PN}-6.3.0-clr-fix-libcxx.patch"
-	"${FILESDIR}/${PN}-6.4.1-no-glibcxx-assert.patch"
 	"${FILESDIR}/${PN}-7.0.2-fix-libcxx-noinline.patch"
 	"${FILESDIR}/${PN}-7.0.2-fix-libcxx-ranges.patch"
 	"${FILESDIR}/${PN}-7.1.0-no-hipother-install.patch"
