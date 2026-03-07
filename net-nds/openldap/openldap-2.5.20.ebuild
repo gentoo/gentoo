@@ -11,15 +11,10 @@ inherit ssl-cert toolchain-funcs systemd tmpfiles verify-sig
 
 MY_PV="$(ver_rs 1-2 _)"
 
-BIS_PN=rfc2307bis.schema
-BIS_PV=20140524
-BIS_P="${BIS_PN}-${BIS_PV}"
-
 DESCRIPTION="LDAP suite of application and development tools"
 HOMEPAGE="https://www.openldap.org/"
 SRC_URI="
 	https://openldap.org/software/download/OpenLDAP/${PN}-release/${P}.tgz
-	mirror://gentoo/${BIS_P}
 	verify-sig? ( https://openldap.org/software/download/OpenLDAP/${PN}-release/${P}.tgz.asc )
 "
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/openldap.asc
@@ -814,9 +809,6 @@ multilib_src_install() {
 		doins */*.so
 		docinto contrib
 		newdoc addrdnvalues/README addrdnvalues-README
-
-		insinto /etc/openldap/schema
-		newins "${DISTDIR}"/${BIS_P} ${BIS_PN}
 
 		docinto back-sock ; dodoc "${S}"/servers/slapd/back-sock/searchexample*
 		docinto back-perl ; dodoc "${S}"/servers/slapd/back-perl/SampleLDAP.pm
