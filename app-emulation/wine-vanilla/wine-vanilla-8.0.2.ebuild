@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -117,6 +117,7 @@ DEPEND="
 	${WINE_COMMON_DEPEND}
 	sys-kernel/linux-headers
 	X? ( x11-base/xorg-proto )
+	opencl? ( dev-util/opencl-headers )
 "
 BDEPEND="
 	dev-lang/perl
