@@ -40,6 +40,7 @@ BDEPEND="app-editors/vim-core"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-7.2.0-use-system-hsakmt.patch"
+	"${FILESDIR}/${PN}-7.2.0-fix-libcxx.patch"
 )
 
 # skip false positive detection in samples, bug #958188
