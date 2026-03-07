@@ -25,6 +25,7 @@ RDEPEND="
 	>=acct-user/radicale-0-r2
 	acct-group/radicale
 	dev-python/defusedxml[${PYTHON_USEDEP}]
+	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/passlib[${PYTHON_USEDEP}]
 	dev-python/vobject[${PYTHON_USEDEP}]
 	sys-apps/util-linux
