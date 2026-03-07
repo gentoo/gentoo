@@ -35,7 +35,8 @@ BDEPEND="
 		$(python_gen_cond_dep '
 			dev-python/lit[${PYTHON_USEDEP}]
 		')
-		llvm-core/clang
+		llvm-core/clang:${LLVM_MAJOR}
+		llvm-core/llvm:${LLVM_MAJOR}
 	)
 "
 
@@ -76,8 +77,8 @@ multilib_src_configure() {
 
 	use test && mycmakeargs+=(
 		-DLLVM_LIT_ARGS="$(get_lit_flags)"
-		-DOPENMP_TEST_C_COMPILER="$(type -P "${CHOST}-clang")"
-		-DOPENMP_TEST_CXX_COMPILER="$(type -P "${CHOST}-clang++")"
+		-DOPENMP_TEST_C_COMPILER="$(type -P "${CHOST}-clang-${LLVM_MAJOR}")"
+		-DOPENMP_TEST_CXX_COMPILER="$(type -P "${CHOST}-clang++-${LLVM_MAJOR}")"
 		# disable Fortran tests for now
 		# (TODO: enable where we have flang keyworded)
 		-DOPENMP_TEST_Fortran_COMPILER=
