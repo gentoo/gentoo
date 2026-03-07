@@ -78,6 +78,10 @@ BDEPEND="
 	gtk? ( x11-misc/xdg-utils )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-mpg123-without-curl.patch
+)
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }

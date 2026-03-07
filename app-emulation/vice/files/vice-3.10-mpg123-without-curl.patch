@@ -1,0 +1,169 @@
+https://bugs.gentoo.org/970962
+https://sourceforge.net/p/vice-emu/code/45964/
+--- a/src/arch/gtk3/widgets/settings_userport.c
++++ b/src/arch/gtk3/widgets/settings_userport.c
+@@ -442,81 +441,0 @@
+-#if defined(USE_MPG123) && defined (HAVE_GLOB_H)
+-/* FunMP3 path selection widget */
+-#include "mainlock.h"
+-
+-/** \brief  Callback for the directory-select dialog
+- *
+- * \param[in]   dialog      directory-select dialog
+- * \param[in]   filename    filename (NULL if canceled)
+- * \param[in]   entry       entry box for the filename
+- */
+-static void funmp3dir_browse_callback(GtkDialog *dialog, gchar *filename, gpointer entry)
+-{
+-    if (filename != NULL) {
+-        vice_gtk3_resource_entry_set(GTK_WIDGET(entry), filename);
+-        g_free(filename);
+-    }
+-    gtk_widget_destroy(GTK_WIDGET(dialog));
+-}
+-
+-/** \brief  Handler for the 'clicked' event of the FunMP3 directory browse button
+- *
+- * \param[in]   button  FunMP3 directory browse button (unused)
+- * \param[in]   entry   FunMP3 directory text entry
+- */
+-static void on_funmp3dir_browse_clicked(GtkWidget *button, gpointer entry)
+-{
+-    GtkWidget *dialog;
+-
+-    mainlock_assert_is_not_vice_thread();
+-
+-    dialog = vice_gtk3_select_directory_dialog("Select FunMP3 directory",
+-                                               NULL,
+-                                               TRUE,
+-                                               NULL,
+-                                               funmp3dir_browse_callback,
+-                                               entry);
+-    gtk_widget_show_all(dialog);
+-}
+-
+-/** \brief  Create FunMP3 path selection entry widget
+- *
+- */
+-static GtkWidget *create_funmp3dir_entry_widget(void)
+-{
+-    GtkWidget *entry;
+-    entry = vice_gtk3_resource_entry_new("FunMP3Dir");
+-    gtk_widget_set_tooltip_text(entry,
+-                                "Select the host directory for MP3 files");
+-    gtk_widget_set_hexpand(entry, TRUE);
+-    return entry;
+-}
+-
+-/** \brief  Create FunMP3 path selection widget
+- *
+- */
+-static GtkWidget *create_funmp3dir_widget(void)
+-{
+-    GtkWidget *grid;
+-    GtkWidget *entry;
+-    GtkWidget *label;
+-    GtkWidget *browse;
+-
+-    grid = vice_gtk3_grid_new_spaced(8, 0);
+-
+-    label  = gtk_label_new("FunMP3 directory");
+-    gtk_widget_set_halign(label, GTK_ALIGN_START);
+-    entry  = create_funmp3dir_entry_widget();
+-    browse = gtk_button_new_with_label("Browse ...");
+-    g_signal_connect_unlocked(browse,
+-                              "clicked",
+-                              G_CALLBACK(on_funmp3dir_browse_clicked),
+-                              (gpointer)entry);
+-    gtk_grid_attach(GTK_GRID(grid), label,  0, 1, 1, 1);
+-    gtk_grid_attach(GTK_GRID(grid), entry,  1, 1, 1, 1);
+-    gtk_grid_attach(GTK_GRID(grid), browse, 2, 1, 1, 1);
+-
+-    gtk_widget_show_all(grid);
+-    return grid;
+-}
+-
+-#endif  /* MPG123 && HAVE_GLOB_H */
+@@ -684,0 +604,82 @@
++
++#if defined(USE_MPG123) && defined (HAVE_GLOB_H)
++/* FunMP3 path selection widget */
++#include "mainlock.h"
++
++/** \brief  Callback for the directory-select dialog
++ *
++ * \param[in]   dialog      directory-select dialog
++ * \param[in]   filename    filename (NULL if canceled)
++ * \param[in]   entry       entry box for the filename
++ */
++static void funmp3dir_browse_callback(GtkDialog *dialog, gchar *filename, gpointer entry)
++{
++    if (filename != NULL) {
++        vice_gtk3_resource_entry_set(GTK_WIDGET(entry), filename);
++        g_free(filename);
++    }
++    gtk_widget_destroy(GTK_WIDGET(dialog));
++}
++
++/** \brief  Handler for the 'clicked' event of the FunMP3 directory browse button
++ *
++ * \param[in]   button  FunMP3 directory browse button (unused)
++ * \param[in]   entry   FunMP3 directory text entry
++ */
++static void on_funmp3dir_browse_clicked(GtkWidget *button, gpointer entry)
++{
++    GtkWidget *dialog;
++
++    mainlock_assert_is_not_vice_thread();
++
++    dialog = vice_gtk3_select_directory_dialog("Select FunMP3 directory",
++                                               NULL,
++                                               TRUE,
++                                               NULL,
++                                               funmp3dir_browse_callback,
++                                               entry);
++    gtk_widget_show_all(dialog);
++}
++
++/** \brief  Create FunMP3 path selection entry widget
++ *
++ */
++static GtkWidget *create_funmp3dir_entry_widget(void)
++{
++    GtkWidget *entry;
++    entry = vice_gtk3_resource_entry_new("FunMP3Dir");
++    gtk_widget_set_tooltip_text(entry,
++                                "Select the host directory for MP3 files");
++    gtk_widget_set_hexpand(entry, TRUE);
++    return entry;
++}
++
++/** \brief  Create FunMP3 path selection widget
++ *
++ */
++static GtkWidget *create_funmp3dir_widget(void)
++{
++    GtkWidget *grid;
++    GtkWidget *entry;
++    GtkWidget *label;
++    GtkWidget *browse;
++
++    grid = vice_gtk3_grid_new_spaced(8, 0);
++
++    label  = gtk_label_new("FunMP3 directory");
++    gtk_widget_set_halign(label, GTK_ALIGN_START);
++    entry  = create_funmp3dir_entry_widget();
++    browse = gtk_button_new_with_label("Browse ...");
++    g_signal_connect_unlocked(browse,
++                              "clicked",
++                              G_CALLBACK(on_funmp3dir_browse_clicked),
++                              (gpointer)entry);
++    gtk_grid_attach(GTK_GRID(grid), label,  0, 1, 1, 1);
++    gtk_grid_attach(GTK_GRID(grid), entry,  1, 1, 1, 1);
++    gtk_grid_attach(GTK_GRID(grid), browse, 2, 1, 1, 1);
++
++    gtk_widget_show_all(grid);
++    return grid;
++}
++
++#endif  /* MPG123 && HAVE_GLOB_H */
