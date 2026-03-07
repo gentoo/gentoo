@@ -136,6 +136,7 @@ DEPEND="
 	>=sys-kernel/linux-headers-6.14
 	X? ( x11-base/xorg-proto )
 	bluetooth? ( net-wireless/bluez )
+	opencl? ( dev-util/opencl-headers )
 "
 BDEPEND="
 	${PYTHON_DEPS}

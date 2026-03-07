@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -136,6 +136,7 @@ DEPEND="
 	sys-kernel/linux-headers
 	X? ( x11-base/xorg-proto )
 	bluetooth? ( net-wireless/bluez )
+	opencl? ( dev-util/opencl-headers )
 "
 BDEPEND="
 	${PYTHON_DEPS}
