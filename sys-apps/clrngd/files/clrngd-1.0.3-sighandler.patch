@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/944035
+It is correct to replace no-argument non-variadic function
+with ignored argument, so it matches prototype.
+--- a/truerand.c
++++ b/truerand.c
+@@ -143,7 +143,7 @@
+ bufflen truly random bytes. It returns 0 on success and -1
+ on failure. */
+ static void
+-interrupt ()
++interrupt (int)
+ {
+   gQuit = 1;
+ }
