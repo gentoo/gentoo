@@ -12,6 +12,8 @@
   <use>
     <flag name="devref">Build and install developers reference</flag>
     <flag name="doxygen">Build and install API documentation</flag>
+    <flag name="flint">Use sci-mathematics/flint for fast polynomial arithmetics</flag>
+    <flag name="mpfr">Use dev-libs/mpfr for multiple-precision floats</flag>
   </use>
   <upstream>
     <remote-id type="github">vermaseren/form</remote-id>

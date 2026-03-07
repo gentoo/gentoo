@@ -1,0 +1,16 @@
+diff '--color=auto' -r -U3 form-5.0.0.orig/configure.ac form-5.0.0/configure.ac
+--- form-5.0.0.orig/configure.ac	2026-01-27 16:10:52.000000000 +0700
++++ form-5.0.0/configure.ac	2026-03-07 22:22:35.016167669 +0700
+@@ -24,9 +24,9 @@
+ 				echo "#define REPO_MAJOR_VERSION $major_version"  >sources/version.h.in
+ 				echo "#define REPO_MINOR_VERSION $minor_version" >>sources/version.h.in
+ 				echo "#define REPO_PATCH_VERSION $patch_version" >>sources/version.h.in
+-				echo '\\def\\repomajorversion'"{$major_version}"  >doc/manual/version.tex.in
+-				echo '\\def\\repominorversion'"{$minor_version}" >>doc/manual/version.tex.in
+-				echo '\\def\\repopatchversion'"{$patch_version}" >>doc/manual/version.tex.in
++				echo '\def\repomajorversion'"{$major_version}"  >doc/manual/version.tex.in
++				echo '\def\repominorversion'"{$minor_version}" >>doc/manual/version.tex.in
++				echo '\def\repopatchversion'"{$patch_version}" >>doc/manual/version.tex.in
+ 				cp doc/manual/version.tex.in doc/devref/version.tex.in
+ 				touch doc/doxygen/version.sh.in
+ 			fi
