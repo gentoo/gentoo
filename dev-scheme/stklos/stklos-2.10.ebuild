@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -20,7 +20,7 @@ RDEPEND="dev-libs/boehm-gc[threads?]
 	dev-libs/libpcre2:="
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+PATCHES=( "${FILESDIR}"/${PN}-gentoo.patch )
 DOCS=( AUTHORS ChangeLog NEWS.md PACKAGES-USED {PORTING-NOTES,README}.md SUPPORTED-SRFIS )
 
 src_prepare() {
