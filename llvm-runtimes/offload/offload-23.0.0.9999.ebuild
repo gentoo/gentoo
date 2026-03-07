@@ -123,8 +123,8 @@ src_configure() {
 		-DOPENMP_LLVM_LIT_EXECUTABLE="${EPREFIX}/usr/bin/lit"
 		-DOPENMP_LIT_ARGS="$(get_lit_flags)"
 
-		-DOPENMP_TEST_C_COMPILER="$(type -P "${CHOST}-clang")"
-		-DOPENMP_TEST_CXX_COMPILER="$(type -P "${CHOST}-clang++")"
+		-DOPENMP_TEST_C_COMPILER="$(type -P "${CHOST}-clang-${LLVM_MAJOR}")"
+		-DOPENMP_TEST_CXX_COMPILER="$(type -P "${CHOST}-clang++-${LLVM_MAJOR}")"
 		# requires flang
 		-DOPENMP_TEST_Fortran_COMPILER=
 	)
