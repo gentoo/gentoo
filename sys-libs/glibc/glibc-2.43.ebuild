@@ -151,7 +151,15 @@ if [[ ${CATEGORY} == cross-* ]] ; then
 		>=${CATEGORY}/binutils-2.27
 		>=${CATEGORY}/gcc-6.2
 	)"
-	[[ ${CATEGORY} == *-linux* ]] && DEPEND+=" ${CATEGORY}/linux-headers"
+
+	case ${CATEGORY} in
+		*-linux*)
+			DEPEND+=" ${CATEGORY}/linux-headers"
+			;;
+		*-gnu)
+			DEPEND+=" ${CATEGORY}/gnumach[-headers-only]"
+			;;
+	esac
 else
 	BDEPEND+="
 		>=sys-devel/binutils-2.27
