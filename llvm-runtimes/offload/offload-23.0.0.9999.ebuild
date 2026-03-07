@@ -43,6 +43,7 @@ BDEPEND="
 			dev-python/lit[${PYTHON_USEDEP}]
 		')
 		llvm-core/clang:${LLVM_MAJOR}
+		llvm-core/llvm:${LLVM_MAJOR}
 	)
 "
 
