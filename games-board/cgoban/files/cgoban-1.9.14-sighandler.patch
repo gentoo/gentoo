@@ -1,0 +1,23 @@
+https://bugs.gentoo.org/944043
+Handler ignores arguments, adding ignored argument to signature
+so it will conform to system one, is always correct.
+--- a/src/main.c	2026-03-07 21:55:30.810539815 +0300
++++ b/src/main.c	2026-03-07 21:56:18.365294853 +0300
+@@ -29,7 +29,7 @@
+  **********************************************************************/
+ static void  stealth(int exitVal);
+ #if  !DEBUG
+-static RETSIGTYPE  sigHandler();
++static RETSIGTYPE  sigHandler(int);
+ #endif  /* !DEBUG */
+ 
+ 
+@@ -132,7 +132,7 @@
+ 
+ 
+ #if  !DEBUG
+-static RETSIGTYPE  sigHandler()  {
++static RETSIGTYPE  sigHandler(int)  {
+   fprintf(stderr, "Signal caught.\n");
+   abort();
+ }
