@@ -53,6 +53,8 @@ src_compile() {
 src_install() {
 	dobin deno
 
+	newenvd - 50deno <<<"DENO_NO_UPDATE_CHECK=1"
+
 	if ! tc-is-cross-compiler; then
 		dobashcomp "${T}"/deno
 		dofishcomp "${T}"/deno.fish
