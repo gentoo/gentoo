@@ -65,6 +65,13 @@ dev-tcltk/tablelist
 dev-java/mersennetwister
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-03-09)
+# Latest release is >21 years old, no one else packages this, buffer overflow
+# at launch, packaged only in gentoo. Alternatives exist, including the dockapp
+# x11-plugins/wmamixer. Bug #969091
+# Removal on 2026-04-08.
+media-sound/alsamixer-app
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-03-09)
 # Dead CORBA implementation, no one else packages this, impossible to build.
 # Many bugs: #298101, #515938, #725192, #871237, #874090, #882479, #882633,
 # #898086, #919509, #952927, #967177
