@@ -1,0 +1,29 @@
+From 5faf172810f7641b895ce0fcc6ceee7b1a5cc3f1 Mon Sep 17 00:00:00 2001
+From: Valerie Snyder <mx.val@icloud.com>
+Date: Tue, 24 Feb 2026 14:06:16 -0500
+Subject: [PATCH] Fix pointer alignment issue in OLE2 XLM macro extraction
+
+Fix issue reading from a pointer which can cause a crash on systems that
+have strict pointer alignment requirements.
+
+Thank you to Hsuan-Ming Chen at Synology PSIRT for identify this issue
+and proposing this fix.
+---
+ libclamav/xlm_extract.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/libclamav/xlm_extract.c b/libclamav/xlm_extract.c
+index daaa26af0d..2257f19b75 100644
+--- a/libclamav/xlm_extract.c
++++ b/libclamav/xlm_extract.c
+@@ -4044,7 +4044,9 @@ static cl_error_t parse_formula(FILE *out_file, char data[], unsigned data_size)
+                     goto done;
+                 }
+ 
+-                double val = *(double *)&data[data_pos + 1];
++                double val;
++                /* Avoid unaligned double loads (may SIGBUS on 32-bit ARM). */
++                memcpy(&val, &data[data_pos + 1], sizeof(val));
+ 
+                 len = fprintf(out_file, " %f", val);
+                 if (len < 0) {

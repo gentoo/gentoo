@@ -1,0 +1,22 @@
+This is an internal function used once; we can just rename it.
+
+--- a/libclamav/mpool.c	2024-09-03 14:18:28.000000000 -0400
++++ b/libclamav/mpool.c	2026-03-08 12:04:26.313585301 -0400
+@@ -422,7 +422,7 @@
+     return fragsz[bits];
+ }
+ 
+-static inline unsigned int alignof(size_t size)
++static inline unsigned int _clamav_alignof(size_t size)
+ {
+     /* conservative estimate of alignment.
+      * A struct that needs alignment of 'align' is padded by the compiler
+@@ -618,7 +618,7 @@
+ 
+ void *mpool_malloc(struct MP *mp, size_t size)
+ {
+-    size_t align = alignof(size);
++    size_t align = _clamav_alignof(size);
+     size_t i, needed = align_increase(size + FRAG_OVERHEAD, align);
+     const unsigned int sbits = to_bits(needed);
+     struct FRAG *f           = NULL;

@@ -1,0 +1,10 @@
+--- a/m4/reorganization/code_checks/ipv6.m4	2026-03-08 19:07:09.837852090 -0400
++++ b/m4/reorganization/code_checks/ipv6.m4	2026-03-08 19:07:18.569859889 -0400
+@@ -7,6 +7,7 @@
+     AC_MSG_CHECKING([for IPv6 support])
+     AC_CACHE_VAL([have_cv_ipv6],[
+ 		AC_TRY_RUN([
++		    #include <string.h>
+ 		    #include <sys/types.h>
+ 		    #include <sys/socket.h>
+ 		    #include <netdb.h>

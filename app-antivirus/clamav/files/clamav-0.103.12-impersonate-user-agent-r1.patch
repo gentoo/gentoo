@@ -1,0 +1,17 @@
+Applies on TOP of the -r0 patch to save space!
+
+diff --git a/etc/freshclam.conf.sample b/etc/freshclam.conf.sample
+index 5d38500..b5612b4 100644
+--- a/etc/freshclam.conf.sample.in.in
++++ b/etc/freshclam.conf.sample.in.in
+@@ -138,7 +138,7 @@ DatabaseMirror database.clamav.net
+ # As of ClamAV 0.103.3, this setting may not be used when updating from the
+ # clamav.net CDN and can only be used when updating from a private mirror.
+ # Default: clamav/version_number (OS: ..., ARCH: ..., CPU: ..., UUID: ...)
+-HTTPUserAgent ClamAV/1.4.3
++HTTPUserAgent ClamAV/1.5.2
+ 
+ # Use aaa.bbb.ccc.ddd as client address for downloading databases. Useful for
+ # multi-homed systems.
+-- 
+2.45.2
