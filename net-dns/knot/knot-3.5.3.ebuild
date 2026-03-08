@@ -88,7 +88,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
-	dnstap? ( dev-libs/protobuf[protoc(+)] )
+	dnstap? (
+		dev-libs/protobuf[protoc(+)]
+		dev-libs/protobuf-c
+	)
 	doc? (
 		$(python_gen_any_dep '
 			dev-python/sphinx[${PYTHON_USEDEP}]
