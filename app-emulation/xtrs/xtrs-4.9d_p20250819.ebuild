@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit eapi9-ver flag-o-matic toolchain-funcs readme.gentoo-r1
+inherit eapi9-ver toolchain-funcs readme.gentoo-r1
 
 COMMIT="3a2180c063811a715faa28d39a94739c33e0abd0"
 DESCRIPTION="Radio Shack TRS-80 emulator"
@@ -39,17 +39,18 @@ src_prepare() {
 }
 
 src_compile() {
-	append-flags -std=gnu17
+	local endian=""
 	case $(tc-endian) in
 		little) ;;
-		big) append-flags -Dbig_endian ;;
+		big) endian="-Dbig_endian" ;;
 		*) die ;;
 	esac
 
 	emake \
 		CC="$(tc-getCC)" \
-		DEBUG="${CFLAGS}" \
+		DEBUG="${CFLAGS} -std=gnu17" \
 		LDFLAGS="${LDFLAGS}" \
+		ENDIAN="${endian}" \
 		ZMACFLAGS="-h -l" \
 		HTMLDOCS=
 }
