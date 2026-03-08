@@ -14,7 +14,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~loong ~m68k ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 arm64 ~loong ~m68k ~ppc ppc64 ~riscv x86"
 IUSE="static-libs valgrind"
 
 RDEPEND="dev-libs/glib:="
