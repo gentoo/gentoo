@@ -6,7 +6,7 @@ EAPI=8
 # ninja does not work due to fortran
 CMAKE_MAKEFILE_GENERATOR=emake
 FORTRAN_NEEDED="fortran"
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..13} )
 
 inherit cmake cuda flag-o-matic fortran-2 python-single-r1 toolchain-funcs
 
