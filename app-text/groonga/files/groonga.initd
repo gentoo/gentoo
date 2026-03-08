@@ -1,20 +1,28 @@
 #!/sbin/openrc-run
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2026 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-command=/usr/bin/groonga
-command_args="-d --pid-path ${GROONGA_PID:-/run/groonga/groonga.pid} --config-path=${CONFIG_FILE:-/etc/groonga/groonga.conf} ${DATABASE}"
-pidfile="${GROONGA_PID:-/run/groonga/groonga.pid}"
-start_stop_daemon_args="--quiet --user ${GROONGA_USER:-groonga}:${GROONGA_GROUP:-groonga}"
+command="/usr/bin/groonga"
+pidfile="/run/${RC_SVCNAME}.pid"
+
+# Groonga can't drop permissions on its own so there's no safe way to
+# use the PID file that it would create if we started it as an
+# unprivileged user and let it daemonize itself (and write its own PID
+# file). Run it in "server" (i.e. foreground) mode instead, and have
+# OpenRC background it and manage its PID file.
+command_args="-s
+	--config-path=${GROONGA_CONFIG:-/etc/groonga/groonga.conf}
+	${GROONGA_DATABASE}"
+command_user="${GROONGA_USER:-groonga}:${GROONGA_GROUP:-groonga}"
+command_background="true"
 
 depend() {
 	use net
 }
 
 start_pre() {
-	checkpath -d /run/groonga -o ${GROONGA_USER:-groonga}:${GROONGA_GROUP:-groonga}
-	if  [ ! -e "${DATABASE}" ] ; then
-		einfo "Creating database ${DATABASE}"
-		su -s /bin/sh -c "/usr/bin/groonga -n ${DATABASE} quit" ${GROONGA_USER:-groonga}
+	if  [ ! -e "${GROONGA_DATABASE}" ] ; then
+		einfo "Creating database ${GROONGA_DATABASE}"
+		su -s /bin/sh -c "${command} -n ${GROONGA_DATABASE} quit" ${GROONGA_USER:-groonga}
 	fi
 }
