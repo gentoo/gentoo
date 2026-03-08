@@ -61,6 +61,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	${REGEN_BDEPEND}
 	nls? ( >=sys-devel/gettext-0.19.6 )
+	test? ( dev-perl/Test-Deep )
 "
 
 src_prepare() {
