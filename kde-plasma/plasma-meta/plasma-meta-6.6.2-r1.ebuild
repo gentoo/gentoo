@@ -16,7 +16,7 @@ discover +display-manager +elogind +firewall flatpak grub gtk +kwallet
 +networkmanager ocr oxygen-theme plymouth pulseaudio rdp +sddm sdk +smart
 systemd thunderbolt unsupported virtualkeyboard wacom +wallpapers webengine X"
 
-REQUIRED_USE="^^ ( elogind systemd ) firewall? ( systemd ) rdp? ( systemd )"
+REQUIRED_USE="^^ ( elogind systemd ) firewall? ( systemd )"
 
 RDEPEND="
 	!${CATEGORY}/${PN}:5
@@ -107,12 +107,12 @@ RDEPEND="
 		>=kde-plasma/plymouth-kcm-${PV}:${SLOT}
 	)
 	pulseaudio? ( >=kde-plasma/plasma-pa-${PV}:${SLOT} )
+	rdp? ( >=kde-plasma/krdp-${PV}:${SLOT} )
 	sdk? ( >=kde-plasma/plasma-sdk-${PV}:${SLOT} )
 	smart? ( >=kde-plasma/plasma-disks-${PV}:${SLOT} )
 	systemd? (
 		>=sys-apps/systemd-257[pam]
 		firewall? ( >=kde-plasma/plasma-firewall-${PV}:${SLOT} )
-		rdp? ( >=kde-plasma/krdp-${PV}:${SLOT} )
 	)
 	thunderbolt? ( >=kde-plasma/plasma-thunderbolt-${PV}:${SLOT} )
 	!unsupported? ( !gui-apps/qt6ct )
