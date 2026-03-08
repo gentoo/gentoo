@@ -66,6 +66,10 @@ src_prepare() {
 		sed -i 's/Wl,-syslibroot,/Wl,--sysroot,/' "${S}/scripts/common.m4" || die
 	fi
 
+	# don't test interpreter (fix cross-compile)
+	# vars for AX_LUA_LIBS/AX_LUA_HEADERS are defined in src_configure
+	sed -e '/AX_PROG_LUA/d' -i scripts/checks.m4 || die
+
 	eautoreconf
 }
 
@@ -80,7 +84,9 @@ src_configure() {
 	)
 
 	use lua && myeconfargs+=(
-		LUA_INCLUDE="-I$(lua_get_include_dir)"
+		LUA_INCLUDE="$(lua_get_CFLAGS)"
+		LUA_LIB="$(lua_get_LIBS)"
+		LUA_VERSION="${ELUA/lua/}"
 	)
 
 	econf "${myeconfargs[@]}"
