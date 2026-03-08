@@ -1,0 +1,62 @@
+Rely on PATH to find (de)compressors rather than assuming a location
+which will break w/ unmerged-usr.
+--- a/kup-server
++++ b/kup-server
+@@ -160,16 +160,16 @@ if (defined($cfg->param('compressors.use'))) {
+ } else {
+ 	%zformats = (
+ 		'.gz'  => {
+-			'compress'   => '/bin/gzip -9',
+-			'decompress' => '/bin/gzip -cd',
++			'compress'   => 'gzip -9',
++			'decompress' => 'gzip -cd',
+ 		},
+ 		'.bz2' => {
+-			'compress'   => '/usr/bin/bzip2 -9',
+-			'decompress' => '/usr/bin/bzip2 -cd',
++			'compress'   => 'bzip2 -9',
++			'decompress' => 'bzip2 -cd',
+ 		},
+ 		'.xz'  => {
+-			'compress' => '/usr/bin/xz -9',
+-			'decompress' => '/usr/bin/xz -cd',
++			'compress' => 'xz -9',
++			'decompress' => 'xz -cd',
+ 		},
+ 	);
+ }
+--- a/kup-server.1
++++ b/kup-server.1
+@@ -107,12 +107,12 @@ sure to configure the decompress command to output to stdout. E.g.:
+ .RS
+ .nf
+ [gz]
+-compress_command = /bin/pigz -9
+-decompress_command = /bin/gzip -cd
++compress_command = pigz -9
++decompress_command = gzip -cd
+ 
+ [xz]
+-compress_command = /bin/xz -9 -T0
+-decompress_command = /bin/xz -cd
++compress_command = xz -9 -T0
++decompress_command = xz -cd
+ .fi
+ .RE
+ .SH AUTHOR
+--- a/kup-server.cfg
++++ b/kup-server.cfg
+@@ -60,9 +60,9 @@ use = gz, xz
+ ; Specify which commands should be used for compression and decompression of
+ ; each archival format. Make sure the decompression command outputs to stdout.
+ [gz]
+-compress_command = /bin/pigz -9
+-decompress_command = /bin/gzip -cd
++compress_command = pigz -9
++decompress_command = gzip -cd
+ 
+ [xz]
+-compress_command = /bin/xz -9 -T0
+-decompress_command = /bin/xz -cd
++compress_command = xz -9 -T0
++decompress_command = xz -cd
