@@ -1,0 +1,70 @@
+https://bugs.gentoo.org/970989
+https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/10883
+https://gstreamer.freedesktop.org/security/sa-2026-0005.html
+CVE-2026-2922
+ZDI-26-165
+ZDI-CAN-28845
+
+From 8a17c9d183ca3cfb5e97ae3b3f344ba79f8859df Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Sebastian=20Dr=C3=B6ge?= <sebastian@centricular.com>
+Date: Wed, 11 Feb 2026 19:58:31 +0200
+Subject: [PATCH 1/2] rmdemux: Check if new video fragment overflows the
+ fragment storage before storing it
+
+There already was a check but that happened afterwards, i.e. after an
+out-of-bounds write that overwrote some following struct data.
+
+Fixes GST-SA-2026-0005, CVE-2026-2922, ZDI-CAN-28845.
+
+Fixes https://gitlab.freedesktop.org/gstreamer/gstreamer/-/issues/4905
+
+Part-of: <https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/10883>
+--- a/gst/realmedia/rmdemux.c
++++ b/gst/realmedia/rmdemux.c
+@@ -2369,15 +2369,17 @@ gst_rmdemux_parse_video_packet (GstRMDemux * rmdemux, GstRMDemuxStream * stream,
+       stream->frag_length = fragment_size;
+     }
+ 
++    if (stream->frag_count >= MAX_FRAGS) {
++      gst_buffer_unref (fragment);
++      goto too_many_fragments;
++    }
++
+     /* put fragment in adapter */
+     gst_adapter_push (stream->adapter, fragment);
+     stream->frag_offset[stream->frag_count] = stream->frag_current;
+     stream->frag_current += fragment_size;
+     stream->frag_count++;
+ 
+-    if (stream->frag_count > MAX_FRAGS)
+-      goto too_many_fragments;
+-
+     GST_DEBUG_OBJECT (rmdemux, "stored fragment in adapter %d/%d",
+         stream->frag_current, stream->frag_length);
+ 
+-- 
+GitLab
+
+
+From cfc74588fca99328419eb16921fa559739a7b503 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Sebastian=20Dr=C3=B6ge?= <sebastian@centricular.com>
+Date: Wed, 11 Feb 2026 20:00:04 +0200
+Subject: [PATCH 2/2] rmdemux: Avoid integer overflow when checking if enough
+ data is available for video fragment
+
+Part-of: <https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/10883>
+--- a/gst/realmedia/rmdemux.c
++++ b/gst/realmedia/rmdemux.c
+@@ -2348,7 +2348,8 @@ gst_rmdemux_parse_video_packet (GstRMDemux * rmdemux, GstRMDemuxStream * stream,
+     }
+     GST_DEBUG_OBJECT (rmdemux, "fragment size %d", fragment_size);
+ 
+-    if (map.size < (data - map.data) + fragment_size)
++    if (fragment_size > map.size
++        || (data - map.data) > map.size - fragment_size)
+       goto not_enough_data;
+ 
+     /* get the fragment */
+-- 
+GitLab
+
