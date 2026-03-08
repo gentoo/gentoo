@@ -5,7 +5,7 @@ EAPI=8
 
 MY_PN="${PN}"-core
 MY_P="${MY_PN}"-"${PV}"
-inherit cmake toolchain-funcs
+inherit cmake dot-a toolchain-funcs
 
 DESCRIPTION="High-performance, full-featured text search engine based off of lucene in C++"
 HOMEPAGE="https://clucene.sourceforge.net"
@@ -57,6 +57,8 @@ src_prepare() {
 }
 
 src_configure() {
+	use static-libs && lto-guarantee-fat
+
 	# Disabled threads: see upstream bug
 	# https://sourceforge.net/p/clucene/bugs/197/
 	local mycmakeargs=(
@@ -71,4 +73,10 @@ src_configure() {
 	)
 
 	cmake_src_configure
+}
+
+src_install() {
+	cmake_src_install
+
+	use static-libs && strip-lto-bytecode
 }
