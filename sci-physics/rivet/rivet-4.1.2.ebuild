@@ -1,10 +1,10 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 MY_P=Rivet-${PV}
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..13} )
 inherit python-single-r1 flag-o-matic autotools optfeature bash-completion-r1
 
 DESCRIPTION="Robust Independent Validation of Experiment and Theory toolkit"
