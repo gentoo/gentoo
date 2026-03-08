@@ -6,7 +6,6 @@
     <name>Gentoo Cluster Project</name>
   </maintainer>
   <use>
-    <flag name="hwloc">Enable HWLoc lib support</flag>
     <flag name="gasnet">Enable GASNet lib support</flag>
   </use>
   <upstream>
