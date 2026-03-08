@@ -112,9 +112,8 @@ src_install() {
 	fi
 
 	if use doc ; then
-		dodoc docs/slepc.pdf
 		docinto html
-		dodoc -r docs/*.html docs/manualpages
+		dodoc -r docs/*
 	fi
 
 	# add PETSC_DIR to environmental variables
