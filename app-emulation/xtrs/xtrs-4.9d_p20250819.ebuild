@@ -15,7 +15,7 @@ SRC_URI="https://github.com/TimothyPMann/${PN}/archive/${COMMIT}.tar.gz -> ${P}.
 	)"
 S="${WORKDIR}/${PN}-${COMMIT}"
 
-LICENSE="xtrs ls-dos? ( freedist )"
+LICENSE="xtrs MIT ls-dos? ( freedist )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="ls-dos"
