@@ -17,7 +17,7 @@ fi
 DESCRIPTION="Advanced Linux Driver for Xbox One Wireless Controller"
 HOMEPAGE="https://atar-axis.github.io/xpadneo/"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 
 CONFIG_CHECK="INPUT_FF_MEMLESS"

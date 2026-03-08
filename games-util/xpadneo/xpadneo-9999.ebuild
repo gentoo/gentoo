@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ fi
 DESCRIPTION="Advanced Linux Driver for Xbox One Wireless Controller"
 HOMEPAGE="https://atar-axis.github.io/xpadneo/"
 
-LICENSE="GPL-3"
+LICENSE="GPL-2 GPL-3+"
 SLOT="0"
 
 CONFIG_CHECK="INPUT_FF_MEMLESS"
