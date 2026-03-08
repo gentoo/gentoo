@@ -1,0 +1,178 @@
+https://jira.mongodb.org/browse/CDRIVER-6059
+https://github.com/mongodb/mongo-c-driver/pull/2066
+https://github.com/mongodb/mongo-c-driver/commit/e8ea70127f7bbbb4bcdb450026f059d8459b98db
+
+Removed non cmake changes
+
+From e8ea70127f7bbbb4bcdb450026f059d8459b98db Mon Sep 17 00:00:00 2001
+From: Ezra Chung <88335979+eramongodb@users.noreply.github.com>
+Date: Tue, 22 Jul 2025 15:47:09 -0500
+Subject: [PATCH] CDRIVER-6059 Set CMake max policy version to 4.0 (#2066)
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required (VERSION 3.15)
++cmake_minimum_required (VERSION 3.15...4.0)
+ 
+ list (INSERT CMAKE_MODULE_PATH 0 "${CMAKE_CURRENT_LIST_DIR}/build/cmake")
+ # Defines BUILD_VERSION, which we use throughout:
+@@ -402,11 +402,6 @@ set (CMAKE_INSTALL_RPATH_USE_LINK_PATH ON)
+ # Install libs with names like @rpath/libmongoc-1.0.0.dylib, not bare names.
+ set (CMAKE_MACOSX_RPATH ON)
+ 
+-# https://cmake.org/cmake/help/v3.11/policy/CMP0042.html
+-# Enable a CMake 3.0+ policy that sets CMAKE_MACOSX_RPATH by default, and
+-# silence a CMake 3.11 warning that the old behavior is deprecated.
+-cmake_policy (SET CMP0042 NEW)
+-
+ # By default, ensure conformance with a minimum C standard.
+ # Required extensions to the language (i.e. POSIX) are (re)enabled further below.
+ if (NOT DEFINED CMAKE_C_STANDARD)
+--- a/build/cmake/GenerateUninstaller.cmake
++++ b/build/cmake/GenerateUninstaller.cmake
+@@ -1,5 +1,3 @@
+-cmake_policy(VERSION 3.15)
+-
+ if(NOT CMAKE_SCRIPT_MODE_FILE)
+     # We are being included from within a project, so we should generate the install rules
+     # The script name is "uninstall" by default:
+--- a/src/libbson/CMakeLists.txt
++++ b/src/libbson/CMakeLists.txt
+@@ -11,7 +11,7 @@
+ #                                     888
+ #                                     888
+ 
+-cmake_minimum_required (VERSION 3.15)
++cmake_minimum_required (VERSION 3.15...4.0)
+ 
+ project (libbson
+    LANGUAGES C
+--- a/src/libbson/examples/cmake-deprecated/find_package/CMakeLists.txt
++++ b/src/libbson/examples/cmake-deprecated/find_package/CMakeLists.txt
+@@ -15,7 +15,7 @@
+ # Demonstrates how to use the CMake 'find_package' mechanism to locate
+ # and build against libbson.
+ 
+-cmake_minimum_required (VERSION 2.8)
++cmake_minimum_required (VERSION 3.15)
+ 
+ project (hello_bson LANGUAGES C)
+ 
+--- a/src/libbson/examples/cmake-deprecated/find_package_static/CMakeLists.txt
++++ b/src/libbson/examples/cmake-deprecated/find_package_static/CMakeLists.txt
+@@ -15,7 +15,7 @@
+ # Demonstrates how to use the CMake 'find_package' mechanism to locate
+ # and build against libbson.
+ 
+-cmake_minimum_required (VERSION 2.8)
++cmake_minimum_required (VERSION 3.15)
+ 
+ project (hello_bson LANGUAGES C)
+ 
+--- a/src/libbson/examples/cmake/find_package/CMakeLists.txt
++++ b/src/libbson/examples/cmake/find_package/CMakeLists.txt
+@@ -15,7 +15,7 @@
+ # Demonstrates how to use the CMake 'find_package' mechanism to locate
+ # and build against libbson.
+ 
+-cmake_minimum_required (VERSION 3.0)
++cmake_minimum_required (VERSION 3.15...4.0)
+ 
+ project (hello_bson LANGUAGES C)
+ 
+--- a/src/libbson/examples/cmake/find_package_static/CMakeLists.txt
++++ b/src/libbson/examples/cmake/find_package_static/CMakeLists.txt
+@@ -15,7 +15,7 @@
+ # Demonstrates how to use the CMake 'find_package' mechanism to locate
+ # and build against libbson.
+ 
+-cmake_minimum_required (VERSION 2.8)
++cmake_minimum_required (VERSION 3.15...4.0)
+ 
+ project (hello_bson LANGUAGES C)
+ 
+--- a/src/libmongoc/CMakeLists.txt
++++ b/src/libmongoc/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required (VERSION 3.15)
++cmake_minimum_required (VERSION 3.15...4.0)
+ 
+ project (libmongoc
+    LANGUAGES C
+--- a/src/libmongoc/examples/cmake-deprecated/find_package/CMakeLists.txt
++++ b/src/libmongoc/examples/cmake-deprecated/find_package/CMakeLists.txt
+@@ -15,7 +15,7 @@
+ # Demonstrates how to use the CMake 'find_package' mechanism to locate
+ # and build against libmongoc.
+ 
+-cmake_minimum_required (VERSION 2.8)
++cmake_minimum_required (VERSION 3.15)
+ 
+ project (hello_mongoc LANGUAGES C)
+ 
+--- a/src/libmongoc/examples/cmake-deprecated/find_package_static/CMakeLists.txt
++++ b/src/libmongoc/examples/cmake-deprecated/find_package_static/CMakeLists.txt
+@@ -15,7 +15,7 @@
+ # Demonstrates how to use the CMake 'find_package' mechanism to locate
+ # and build against libmongoc.
+ 
+-cmake_minimum_required (VERSION 2.8)
++cmake_minimum_required (VERSION 3.15)
+ 
+ project (hello_mongoc LANGUAGES C)
+ 
+--- a/src/libmongoc/examples/cmake/find_package/CMakeLists.txt
++++ b/src/libmongoc/examples/cmake/find_package/CMakeLists.txt
+@@ -15,7 +15,7 @@
+ # Demonstrates how to use the CMake 'find_package' mechanism to locate
+ # and build against libmongoc.
+ 
+-cmake_minimum_required (VERSION 3.0)
++cmake_minimum_required (VERSION 3.15...4.0)
+ 
+ project (hello_mongoc LANGUAGES C)
+ 
+--- a/src/libmongoc/examples/cmake/find_package_static/CMakeLists.txt
++++ b/src/libmongoc/examples/cmake/find_package_static/CMakeLists.txt
+@@ -15,7 +15,7 @@
+ # Demonstrates how to use the CMake 'find_package' mechanism to locate
+ # and build against libmongoc.
+ 
+-cmake_minimum_required (VERSION 3.0)
++cmake_minimum_required (VERSION 3.15...4.0)
+ 
+ project (hello_mongoc LANGUAGES C)
+ 
+--- a/src/libmongoc/examples/cmake/vcpkg/CMakeLists.txt
++++ b/src/libmongoc/examples/cmake/vcpkg/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.15)
++cmake_minimum_required (VERSION 3.15...4.0)
+ project(vcpkg-example-project)
+ 
+ find_package(mongoc CONFIG REQUIRED)
+--- a/src/libmongoc/tests/cmake-import/CMakeLists.txt
++++ b/src/libmongoc/tests/cmake-import/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.15)
++cmake_minimum_required (VERSION 3.15...4.0)
+ project(ImportTestProject)
+ 
+ include(CTest)
+--- a/src/zlib-1.3.1/CMakeLists.txt
++++ b/src/zlib-1.3.1/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.4.4...3.15.0)
++cmake_minimum_required(VERSION 3.15.0)
+ set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS ON)
+ 
+ project(zlib C)
+--- a/src/kms-message/CMakeLists.txt
++++ b/src/kms-message/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required (VERSION 3.5)
++cmake_minimum_required (VERSION 3.15...4.0)
+ project (kms_message
+    VERSION 0.0.1
+    LANGUAGES C
