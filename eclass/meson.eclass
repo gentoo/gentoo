@@ -122,6 +122,7 @@ _meson_get_machine_info() {
 		*-linux*)        system=linux ;;
 		mingw*|*-mingw*) system=windows ;;
 		*-solaris*)      system=sunos ;;
+		*-gnu)           system=gnu ;;
 	esac
 
 	cpu_family=$(tc-arch "${tuple}")
