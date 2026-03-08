@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -40,6 +40,7 @@ COMMON_DEPEND="
 	dev-qt/qtbase:6=[X,concurrent,gui,widgets]
 	dev-qt/qtsvg:6
 	>=gui-libs/kddockwidgets-2.3:=
+	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/libglvnd[X]
 	media-libs/libjpeg-turbo:=
