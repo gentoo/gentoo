@@ -1,0 +1,111 @@
+https://bugs.gentoo.org/970987
+https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/10949
+https://gstreamer.freedesktop.org/security/sa-2026-0008.html
+CVE-2026-3083
+CVE-2026-3085
+ZDI-26-166
+ZDI-26-167
+ZDI-CAN-28850
+ZDI-CAN-28851
+
+From f39b6aeeb7da2ab85c9a2f37d76c5c725c947a28 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tim-Philipp=20M=C3=BCller?= <tim@centricular.com>
+Date: Sun, 8 Feb 2026 16:01:21 +0000
+Subject: [PATCH] rtpqdm2depay: error out if anyone tries to use this element
+
+Forbid use of this element and comment out all processing code.
+
+There is no plausible reason this code should ever be executed in 2026
+seeing that this was a streaming format produced by Darwin Streaming Server
+ca 2009 which hasn't been in active use for well over a decade.
+
+We simply error out for now as defensive measure and will remove the
+element entirely in the next release cycle.
+
+The processing functions are hairy and rather tedious to fix without
+at least some sample stream at hand.
+
+If anyone actually does have a legitimate need for this element and
+can provide a sample streams, we will happily implement a depayloader
+in Rust.
+
+Fixes ZDI-CAN-28850, ZDI-CAN-28851, ZDI-CAN-28851, ZDI-CAN-28850, GST-SA-2026-0008.
+
+Fixes https://gitlab.freedesktop.org/gstreamer/gstreamer/-/issues/4903
+Fixes https://gitlab.freedesktop.org/gstreamer/gstreamer/-/issues/4890
+
+Part-of: <https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/10949>
+--- a/gst/rtp/gstrtpqdmdepay.c
++++ b/gst/rtp/gstrtpqdmdepay.c
+@@ -57,11 +57,13 @@ G_DEFINE_TYPE (GstRtpQDM2Depay, gst_rtp_qdm2_depay,
+ GST_ELEMENT_REGISTER_DEFINE_WITH_CODE (rtpqdm2depay, "rtpqdm2depay",
+     GST_RANK_SECONDARY, GST_TYPE_RTP_QDM2_DEPAY, _do_init);
+ 
++#if 0
+ static const guint8 headheader[20] = {
+   0x0, 0x0, 0x0, 0xc, 0x66, 0x72, 0x6d, 0x61,
+   0x51, 0x44, 0x4d, 0x32, 0x0, 0x0, 0x0, 0x24,
+   0x51, 0x44, 0x43, 0x41
+ };
++#endif
+ 
+ static void gst_rtp_qdm2_depay_finalize (GObject * object);
+ 
+@@ -138,6 +140,7 @@ gst_rtp_qdm2_depay_setcaps (GstRTPBaseDepayload * filter, GstCaps * caps)
+   return TRUE;
+ }
+ 
++#if 0
+ static void
+ flush_data (GstRtpQDM2Depay * depay)
+ {
+@@ -230,10 +233,26 @@ add_packet (GstRtpQDM2Depay * depay, guint32 pid, guint32 len, guint8 * data)
+   memcpy (packet->data + packet->offs, data, len);
+   packet->offs += len;
+ }
++#endif
+ 
+ static GstBuffer *
+ gst_rtp_qdm2_depay_process (GstRTPBaseDepayload * depayload, GstRTPBuffer * rtp)
+ {
++  /* There is no plausible reason this code should ever be executed in 2026
++   * seeing that this was a streaming format produced by Darwin Streaming Server
++   * ca 2009 which hasn't been in active use for well over a decade.
++   *
++   * We simply return here as defensive measure.
++   *
++   * We post an error message in the state change function, so this processing
++   * function should never be reached, we just ifdef the code out for clarity.
++   *
++   * If anyone actually does have a legitimate need for this and can provide
++   * sample streams, we will happily implement a depayloader in Rust.
++   */
++  return NULL;
++
++#if 0
+   GstRtpQDM2Depay *rtpqdm2depay;
+   GstBuffer *outbuf = NULL;
+   guint16 seq;
+@@ -378,6 +397,7 @@ bad_packet:
+         (NULL), ("Packet was too short"));
+     return NULL;
+   }
++#endif
+ }
+ 
+ static GstStateChangeReturn
+@@ -391,7 +411,10 @@ gst_rtp_qdm2_depay_change_state (GstElement * element,
+ 
+   switch (transition) {
+     case GST_STATE_CHANGE_NULL_TO_READY:
+-      break;
++      GST_ELEMENT_ERROR (rtpqdm2depay, STREAM, DECODE,
++          ("This element should not be used."),
++          ("Please report an issue if you encounter this message."));
++      return GST_STATE_CHANGE_FAILURE;
+     case GST_STATE_CHANGE_READY_TO_PAUSED:
+       gst_adapter_clear (rtpqdm2depay->adapter);
+       break;
+-- 
+GitLab
+
