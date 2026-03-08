@@ -192,8 +192,11 @@ wine_src_configure() {
 		--mandir="${EPREFIX}"${WINE_DATADIR}/man
 	)
 
-	# strip-flags due to being generally fragile
-	use custom-cflags || strip-flags
+	if use !custom-cflags; then
+		# wine is generally fragile
+		strip-flags
+		append-cflags $(test-flags-CC -fno-stack-protector) #870136,#970983
+	fi
 
 	# longstanding failing to build with lto, filter unconditionally
 	filter-lto
@@ -511,11 +514,10 @@ _wine_flags() {
 				# not get-flag() given it returns only the first occurence
 				# TODO: can drop |-std=* when <wine-10 is gone
 				for flag in ${flags}; do
-					[[ ${flag} == @(-g*|-O[0-1g]|-std=*) ]] && CFLAGS+=" ${flag}"
+					[[ ${flag} == @(-g*|-O[0-1g]|-fno-stack*|-std=*) ]] &&
+						CFLAGS+=" ${flag}"
 				done
 			else
-				# many hardening options are unlikely to work right
-				filter-flags '-fstack-protector*' #870136
 				filter-flags '-mfunction-return=thunk*' #878849
 
 				# bashrc-mv users often do CFLAGS="${LDFLAGS}" and then
