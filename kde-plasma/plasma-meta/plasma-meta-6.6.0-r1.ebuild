@@ -13,7 +13,7 @@ SLOT="6"
 KEYWORDS="~loong ~ppc64 ~riscv"
 IUSE="accessibility bluetooth +browser-integration +crash-handler cups
 discover +display-manager +elogind +firewall flatpak grub gtk +kwallet
-+networkmanager oxygen-theme plymouth pulseaudio qt5 rdp +sddm sdk +smart
++networkmanager oxygen-theme plymouth pulseaudio rdp +sddm sdk +smart
 systemd thunderbolt unsupported wacom +wallpapers webengine X"
 
 REQUIRED_USE="^^ ( elogind systemd ) firewall? ( systemd )"
@@ -100,18 +100,12 @@ RDEPEND="
 		>=kde-frameworks/oxygen-icons-6.0.0:*
 		>=kde-plasma/oxygen-${PV}:${SLOT}[X?]
 		>=kde-plasma/oxygen-sounds-${PV}:${SLOT}
-		qt5? ( >=kde-plasma/oxygen-6.5.0:5[X?] )
 	)
 	plymouth? (
 		>=kde-plasma/breeze-plymouth-${PV}:${SLOT}
 		>=kde-plasma/plymouth-kcm-${PV}:${SLOT}
 	)
 	pulseaudio? ( >=kde-plasma/plasma-pa-${PV}:${SLOT} )
-	qt5? (
-		>=kde-plasma/breeze-6.5.0:5
-		>=kde-plasma/kwayland-integration-${PV}:5
-		>=kde-plasma/plasma-integration-6.5.0:5
-	)
 	rdp? ( >=kde-plasma/krdp-${PV}:${SLOT} )
 	sdk? ( >=kde-plasma/plasma-sdk-${PV}:${SLOT} )
 	smart? ( >=kde-plasma/plasma-disks-${PV}:${SLOT} )
@@ -159,10 +153,9 @@ pkg_postinst() {
 		ewarn "You may then need to rebuild dev-qt/* and kde-*/*."
 	fi
 
-	if ! use qt5 && has_version dev-qt/qtgui; then
-		ewarn "KF5- and Qt5-based applications will exhibit various integration bugs"
-		ewarn "and generally look out of place in Plasma 6 without the dependencies"
-		ewarn "enforced by kde-plasma/plasma-meta[qt5]."
+	if has_version dev-qt/qtgui; then
+		ewarn "KF5 and Qt5 support was removed in Gentoo. Such applications will exhibit"
+		ewarn "various integration bugs and generally look out of place in Plasma 6."
 		ewarn
 		ewarn "This warning message is being displayed because dev-qt/qtgui:5 is"
 		ewarn "currently installed which indicates the use of such applications."
