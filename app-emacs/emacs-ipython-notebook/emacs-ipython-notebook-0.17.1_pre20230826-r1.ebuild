@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NOTICE: Check package version in "lisp/ein-pkg.el".
@@ -7,7 +7,7 @@
 EAPI=8
 
 [[ "${PV}" == *20230826 ]] && COMMIT="998ba22660be2035cd23bed1555e47748c4da8a2"
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..13} )
 
 inherit elisp readme.gentoo-r1 python-single-r1
 
