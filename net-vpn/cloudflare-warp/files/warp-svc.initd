@@ -1,0 +1,11 @@
+#!/sbin/openrc-run
+
+name=$RC_SVCNAME
+description="Cloudflare Zero Trust Client Daemon"
+supervisor="supervise-daemon"
+command="/bin/warp-svc"
+command_args=""
+
+depend() {
+	need net
+}

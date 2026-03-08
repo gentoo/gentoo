@@ -20,7 +20,7 @@ IUSE="+gui"
 RESTRICT="bindist mirror"
 
 DEPEND="
-	dev-libs/glib
+	dev-libs/glib:2
 	dev-libs/nspr
 	dev-libs/nss
 	net-firewall/nftables
@@ -46,6 +46,7 @@ src_unpack() {
 src_install() {
 	dobin bin/warp-{cli,dex,diag,svc}
 	systemd_dounit opt/cloudflare-warp/warp-svc.service
+	newinitd "${FILESDIR}"/warp-svc.initd warp-svc
 
 	if use gui; then
 		dobin bin/{warp-desktop-svc,warp-taskbar}
