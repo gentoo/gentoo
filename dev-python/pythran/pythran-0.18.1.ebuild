@@ -74,6 +74,8 @@ python_test() {
 		# multiple extra deps (meson, openblas)
 		# also broken on pypy3*
 		pythran/tests/test_distutils.py::TestMeson::test_meson_build
+		# numpy.distutils is dead and broken
+		pythran/tests/test_distutils.py::TestDistutils
 	)
 	local EPYTEST_IGNORE=(
 		pythran/benchmarks
