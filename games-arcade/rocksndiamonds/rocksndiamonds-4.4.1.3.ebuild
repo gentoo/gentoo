@@ -52,11 +52,6 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="$(unpacker_src_uri_depends)"
 
-PATCHES=(
-	# From Fedora:
-	"${FILESDIR}"/${PN}-4.1.0.0-CVE-2011-4606.patch
-)
-
 src_unpack() {
 	unpack ${P}-linux.tar.gz
 	cd "${S}"
