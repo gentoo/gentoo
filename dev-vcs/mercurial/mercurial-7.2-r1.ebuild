@@ -324,9 +324,11 @@ python_prepare_all() {
 }
 
 python_configure_all() {
+	# not use setup.cfg because hgdist.rust is not updated
+	sed -i -r "s:rust = (False|True):rust = $(usex rust True False):" setup.py || die
+
 	cat >> setup.cfg <<-EOF || die
 		[build_ext]
-		rust = $(usex rust True False)
 		zstd = False
 	EOF
 }
