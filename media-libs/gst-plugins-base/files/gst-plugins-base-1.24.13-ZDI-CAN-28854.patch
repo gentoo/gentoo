@@ -1,0 +1,45 @@
+https://bugs.gentoo.org/970986
+https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/10882/
+https://gstreamer.freedesktop.org/security/sa-2026-0004.html
+CVE-2026-2921
+ZDI-26-168
+ZDI-CAN-28854
+
+From 66d1f79c78b573db714434cf08e7531bed4f4473 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Sebastian=20Dr=C3=B6ge?= <sebastian@centricular.com>
+Date: Wed, 11 Feb 2026 19:44:34 +0200
+Subject: [PATCH] riff: Correctly check that enough RGB palette data is
+ available
+
+This can otherwise overflow and result in out-of-bounds reads/writes.
+
+Fixes GST-SA-2026-0004, ZDI-CAN-28854, CVE-2026-2921.
+
+Fixes https://gitlab.freedesktop.org/gstreamer/gstreamer/-/issues/4901
+
+Part-of: <https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/10882>
+--- a/gst-libs/gst/riff/riff-media.c
++++ b/gst-libs/gst/riff/riff-media.c
+@@ -1021,7 +1021,7 @@ gst_riff_create_video_caps (guint32 codec_fcc,
+   if (palette) {
+     GstBuffer *copy;
+     guint num_colors;
+-    gsize size;
++    gsize expected_size, size;
+ 
+     if (strf != NULL)
+       num_colors = strf->num_colors;
+@@ -1030,7 +1030,9 @@ gst_riff_create_video_caps (guint32 codec_fcc,
+ 
+     size = gst_buffer_get_size (palette);
+ 
+-    if (size >= (num_colors * 4)) {
++    if (!g_size_checked_mul (&expected_size, num_colors, 4)) {
++      GST_WARNING ("Palette too large: broken file");
++    } else if (size >= expected_size) {
+       guint8 *pdata;
+ 
+       /* palette is always at least 256*4 bytes */
+-- 
+GitLab
+
