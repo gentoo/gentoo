@@ -1,0 +1,14 @@
+Use system getopt instead of local copy
+
+https://bugs.gentoo.org/895882
+https://bugs.gentoo.org/944257
+
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,5 +1,5 @@
+ bin_PROGRAMS = awale
+-awale_SOURCES = awale.c getopt.c getopt1.c getopt.h
++awale_SOURCES = awale.c
+ INCLUDES = -I. -I$(srcdir)
+ bin_SCRIPTS = xawale
+ xawale:
