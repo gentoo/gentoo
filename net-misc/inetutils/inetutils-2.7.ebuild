@@ -55,7 +55,7 @@ RDEPEND="${DEPEND}
 	traceroute? ( !net-analyzer/traceroute )
 "
 BDEPEND="
-	sec-keys/openpgp-keys-inetutils
+	verify-sig? ( sec-keys/openpgp-keys-inetutils )
 "
 
 VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/inetutils.asc"
