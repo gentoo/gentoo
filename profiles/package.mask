@@ -36,6 +36,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-03-09)
+# Dead CORBA implementation, no one else packages this, impossible to build.
+# Many bugs: #298101, #515938, #725192, #871237, #874090, #882479, #882633,
+# #898086, #919509, #952927, #967177
+# Removal on 2026-04-08.
+net-misc/mico
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2026-03-09)
 # Live only package, Upstream archived, integrated into
 # app-shells/bash-completion-2.17.0, which was already stabled.
