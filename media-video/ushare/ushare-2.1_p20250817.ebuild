@@ -13,7 +13,7 @@ S="${WORKDIR}/uShare-${COMMIT}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="nls"
 
 DEPEND=">=net-libs/libupnp-1.14"
