@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="Mac/PowerMac disk partitioning utility"
@@ -13,7 +13,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 -loong ppc ppc64 -riscv x86"
+KEYWORDS="~amd64 -loong ~ppc ~ppc64 -riscv ~x86"
 
 S=${WORKDIR}/${P/_p*}.orig
 PATCHES=(
@@ -30,6 +30,9 @@ PATCHES=(
 	"${FILESDIR}"/big_pt.patch
 	"${FILESDIR}"/${PN}-0.1_p16-ppc-inline.patch
 	"${FILESDIR}"/${PN}-0.1_p18-lseek64.patch
+	# add support for partitioning 2TB drives
+	"${FILESDIR}"/${PN}-0.1_p18-2tb.patch
+	"${FILESDIR}"/${PN}-0.1_p18-musl.patch
 )
 
 src_compile() {
