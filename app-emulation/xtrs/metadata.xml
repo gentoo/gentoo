@@ -20,4 +20,7 @@
 <use>
   <flag name="ls-dos">Install LS-DOS disk images for Model 4P</flag>
 </use>
+<upstream>
+  <remote-id type="github">TimothyPMann/xtrs</remote-id>
+</upstream>
 </pkgmetadata>
