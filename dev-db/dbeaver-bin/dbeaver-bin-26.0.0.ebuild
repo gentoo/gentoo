@@ -10,8 +10,8 @@ MY_PN=${PN%-*}
 DESCRIPTION="Free universal database tool (community edition)"
 HOMEPAGE="https://dbeaver.io/"
 SRC_URI="
-	amd64? ( https://dbeaver.io/files/${PV}/dbeaver-ce-${PV}-linux.gtk.x86_64.tar.gz )
-	arm64? ( https://dbeaver.io/files/${PV}/dbeaver-ce-${PV}-linux.gtk.aarch64.tar.gz )
+	amd64? ( https://dbeaver.io/files/${PV}/dbeaver-ce-${PV}-linux-x86_64.tar.gz )
+	arm64? ( https://dbeaver.io/files/${PV}/dbeaver-ce-${PV}-linux-aarch64.tar.gz )
 "
 S=${WORKDIR}/${MY_PN}
 
