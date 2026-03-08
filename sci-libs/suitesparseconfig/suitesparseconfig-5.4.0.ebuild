@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit multilib-minimal
 
 DESCRIPTION="Common configurations for all packages in suitesparse"
 HOMEPAGE="https://people.engr.tamu.edu/davis/suitesparse.html"
-SRC_URI="http://202.36.178.9/sage/${P}.tar.bz2"
+SRC_URI="https://github.com/kiwifb/suitesparse_splitbuild/releases/download/v5.4.0/${P}.tar.bz2"
 
 # Upstream says, "no licensing restrictions apply to this file or to the
 # SuiteSparse_config directory".
