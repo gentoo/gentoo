@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,7 +36,7 @@ DEPEND="${RDEPEND}
 		media-sound/alacenc
 		media-sound/alac_decoder
 		media-sound/lame
-		<=media-sound/mac-4.12
+		media-sound/mac
 		media-sound/opus-tools
 		media-sound/shntool
 		media-sound/ttaenc
