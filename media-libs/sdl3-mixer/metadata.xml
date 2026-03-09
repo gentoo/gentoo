@@ -19,6 +19,7 @@
 		<flag name="drlibs">Use vendored dr_{flac,mp3} instead of <pkg>media-libs/flac</pkg> and/or <pkg>media-sound/mpg123-base</pkg> for those formats</flag>
 		<flag name="fluidsynth">Use <pkg>media-sound/fluidsynth</pkg> for MIDI support</flag>
 		<flag name="gme">Support additional music formats with <pkg>media-libs/game-music-emu</pkg></flag>
+		<flag name="libvorbis">Use <pkg>media-libs/libvorbis</pkg> for OGG Vorbis support</flag>
 		<flag name="midi">Basic support for MIDI files</flag>
 		<flag name="mod">Basic support for MOD files</flag>
 		<flag name="modplug">Support MOD via <pkg>media-libs/libmodplug</pkg></flag>
