@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ IUSE="debug"
 
 DEPEND="
 	dev-libs/glib:2
-	>=media-sound/deadbeef-1.8.0[cover]
+	>=media-sound/deadbeef-1.8.0[cover(+)]
 "
 RDEPEND="${DEPEND}"
 
