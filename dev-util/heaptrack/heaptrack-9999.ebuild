@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -39,8 +39,6 @@ RDEPEND="${DEPEND}
 	gui? ( >=kde-frameworks/kf-env-4 )
 "
 BDEPEND="gui? ( kde-frameworks/extra-cmake-modules:0 )"
-
-PATCHES=( "${FILESDIR}/${PN}-1.5.80_pre20251017-unbundle-robin-map.patch" ) # bug #964521
 
 QA_CONFIG_IMPL_DECL_SKIP=(
 	# This doesn't exist in libunwind (bug #898768).
