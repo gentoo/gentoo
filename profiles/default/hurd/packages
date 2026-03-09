@@ -1,0 +1,14 @@
+# Copyright 2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+*net-mail/mailbase
+*net-misc/inetutils
+*sys-apps/man-pages
+*sys-apps/util-linux
+*sys-kernel/hurd
+*sys-kernel/gnumach
+
+-*net-misc/iputils
+-*sys-apps/kmod
+-*sys-apps/kbd
+-*sys-apps/which

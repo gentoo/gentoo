@@ -1,0 +1,15 @@
+# Copyright 2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Broken on Hurd or needs porting to do the right thing
+sys-apps/makedev
+sys-fs/static-dev
+
+# Linux-specific
+net-misc/iputils
+sys-libs/libcap
+sys-apps/kmod
+sys-apps/kbd
+sys-apps/systemd
+sys-apps/systemd-utils
+sys-kernel/linux-headers

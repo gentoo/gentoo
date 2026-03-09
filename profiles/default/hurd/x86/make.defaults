@@ -1,0 +1,8 @@
+USE="${USE} pic"
+
+# Sam James <sam@gentoo.org> (2026-03-18)
+# Prevent automagic use of 64-bit time_t (bug #828001), but it also isn't
+# supported (yet?) on 32-bit Hurd anyway. This allows suppressing the
+# 'recommended y2038 support' check from autoconf once
+# https://savannah.gnu.org/support/index.php?111394 is fixed.
+enable_year2038="no"

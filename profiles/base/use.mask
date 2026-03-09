@@ -73,6 +73,7 @@ elibc_musl
 elibc_SunOS
 
 kernel_Darwin
+kernel_Hurd
 kernel_SunOS
 kernel_Winnt
 

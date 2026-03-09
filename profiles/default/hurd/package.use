@@ -1,0 +1,34 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2026-03-18)
+# sys-kernel/hurd installs some static binaries
+app-arch/bzip2 static-libs
+sys-apps/util-linux static-libs
+sys-libs/libxcrypt static-libs
+sys-libs/zlib static-libs
+x11-libs/libpciaccess static-libs
+virtual/libcrypt static-libs
+virtual/zlib static-libs
+
+# Sam James <sam@gentoo.org> (2026-03-18)
+# PAM is untested here
+sys-apps/util-linux -su
+
+# Sam James <sam@gentoo.org> (2026-03-18)
+# Prefer inetutils wherever possible as they're the canonical set
+# of tools and less Linux-centric.
+net-misc/inetutils hostname ifconfig logger ping ping6 syslogd
+sys-apps/util-linux -logger
+
+#
+# Inherited from default/linux
+#
+
+# Mike Gilbert <floppym@gentoo.org> (2017-10-29)
+# Override default from make.defaults, bug 635822.
+net-libs/mbedtls -zlib
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (2011-02-13)
+# Disable deprecated bsddb module of Python 2 by default.
+=dev-lang/python-2* -berkdb

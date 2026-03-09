@@ -70,6 +70,9 @@ amd64		default/linux/amd64/23.0/x32					dev
 amd64		default/linux/amd64/23.0/x32/systemd				exp
 amd64		default/linux/amd64/23.0/split-usr/x32				exp
 
+# AMD64 Profiles for GNU Hurd
+# MAINTAINER: sam@gentoo.org
+amd64		default/hurd/amd64/23.0						exp
 
 # ARM Profiles
 # @MAINTAINER: arm@gentoo.org
@@ -450,6 +453,9 @@ x86		default/linux/x86/23.0/i486/time64/split-usr			dev
 x86		default/linux/x86/23.0/i486/time64/split-usr/hardened		dev
 x86		default/linux/x86/23.0/i486/time64/split-usr/hardened/selinux	dev
 
+# X86 Profiles for GNU Hurd
+# MAINTAINER: sam@gentoo.org
+x86		default/hurd/x86/23.0/i686					exp
 
 # musl profiles
 # @MAINTAINER: musl@gentoo.org

@@ -1,0 +1,21 @@
+# Copyright 2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Linux-specific
+acl
+kmod
+netlink
+iptables
+nftables
+udev
+seccomp
+systemd
+inotify
+
+# May work after testing
+pam
+xattr
+
+# Welcome to the Hurd!
+-elibc_glibc
+-kernel_Hurd

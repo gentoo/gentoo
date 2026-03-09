@@ -1,0 +1,10 @@
+# Copyright 2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+CHOST="x86_64-gnu"
+
+MULTILIB_ABIS="amd64"
+CHOST_amd64="${CHOST}"
+LIBDIR_amd64="lib"
+
+LDFLAGS="-Wl,-O1 -Wl,--as-needed -Wl,-z,pack-relative-relocs"
