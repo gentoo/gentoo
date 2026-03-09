@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ DEPEND="media-libs/libcddb
 # dlopen() deps
 RDEPEND="${DEPEND}
 	flac? ( media-libs/flac )
-	mac? ( <=media-sound/mac-4.12 )
+	mac? ( media-sound/mac )
 	mp3? ( media-sound/lame )
 	musepack? ( media-sound/musepack-tools )
 	opus? ( media-sound/opus-tools )
