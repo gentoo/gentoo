@@ -24,7 +24,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-libs/boost
-	test? ( =dev-cpp/catch-3.8*:0 )
+	test? ( >=dev-cpp/catch-3 )
 "
 
 src_configure() {
