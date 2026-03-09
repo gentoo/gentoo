@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2026-03-09)
+# kdenetwork-meta[zeroconf] -> kio-zeroconf -> kdnssd
+net-dns/avahi mdnsresponder-compat
+
 # Marek Szuba <marecki@gentoo.org> (2023-11-12)
 # FUSE cannot be built with multiple audio drivers, and desktop/gnome
 # profiles set both USE=pulseaudio (directly) and USE=alsa (inherited
