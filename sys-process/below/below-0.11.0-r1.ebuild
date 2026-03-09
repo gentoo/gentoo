@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -304,14 +304,14 @@ src_configure() {
 }
 
 src_test() {
-	local skip=(
-		--skip disable_disk_stat
-		--skip advance_forward_and_reverse
-		--skip disable_io_stat
-		--skip record_replay_integration
-		--skip test_belowrc_to_event
+	local CARGO_SKIP_TESTS=(
+		disable_disk_stat
+		advance_forward_and_reverse
+		disable_io_stat
+		record_replay_integration
+		test_belowrc_to_event
 	)
-	cargo_src_test --workspace below -- "${skip[@]}"
+	cargo_src_test --workspace below
 }
 
 src_install() {

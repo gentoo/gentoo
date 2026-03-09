@@ -299,13 +299,13 @@ RDEPEND="nmap? ( net-analyzer/nmap )"
 src_test() {
 	# those tests require the network
 	if has network-sandbox ${FEATURES} ; then
-		local skip=(
-			--skip address::tests::parse_correct_host_addresses
-			--skip address::tests::parse_hosts_file_and_incorrect_hosts
-			--skip address::tests::resolver_args_google_dns
-			--skip address::tests::resolver_default_cloudflare
+		local CARGO_SKIP_TESTS=(
+			address::tests::parse_correct_host_addresses
+			address::tests::parse_hosts_file_and_incorrect_hosts
+			address::tests::resolver_args_google_dns
+			address::tests::resolver_default_cloudflare
 		)
 	fi
 
-	cargo_src_test -- "${skip[@]}"
+	cargo_src_test
 }

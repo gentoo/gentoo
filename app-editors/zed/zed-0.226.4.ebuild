@@ -240,6 +240,7 @@ src_test () {
 	mkdir -p "${HOME}/.config/zed" || die
 	mkdir -p "${HOME}/.local/share/zed/logs/" || die
 
-	SHELL=/usr/bin/sh RUST_BACKTRACE=full cargo_src_test -vv \
-		-- --skip zed::tests::test_window_edit_state_restoring_enabled
+	local CARGO_SKIP_TESTS=( zed::tests::test_window_edit_state_restoring_enabled )
+
+	SHELL=/usr/bin/sh RUST_BACKTRACE=full cargo_src_test -vv
 }

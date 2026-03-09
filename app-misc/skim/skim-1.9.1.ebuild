@@ -335,13 +335,12 @@ src_configure() {
 	cargo_src_configure --no-default-features
 }
 
-src_test() {
-	cargo_src_test --bins --lib -- \
-		--skip test_ansi_flag_disabled \
-		--skip test_ansi_flag_enabled \
-		--skip test_ansi_flag_no_strip \
-		--skip test_ansi_matching_on_stripped_text
-}
+CARGO_SKIP_TESTS=(
+	test_ansi_flag_disabled
+	test_ansi_flag_enabled
+	test_ansi_flag_no_strip
+	test_ansi_matching_on_stripped_text
+)
 
 src_install() {
 	# prevent cargo_src_install() blowing up on man installation
