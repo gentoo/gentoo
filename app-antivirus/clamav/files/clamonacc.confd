@@ -1,0 +1,2 @@
+# Extra options to pass to clamonacc. See clamonacc(1) for details.
+CLAMONACC_OPTS=""
