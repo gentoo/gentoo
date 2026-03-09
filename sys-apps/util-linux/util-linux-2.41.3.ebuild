@@ -341,6 +341,21 @@ multilib_src_configure() {
 		)
 	fi
 
+	if [[ ${CTARGET} == *-gnu ]] ; then
+		# Disable Linux-specific features
+		myeconfargs+=(
+			--disable-partx
+			--disable-rfkill
+			--disable-schedutils
+			--disable-fsck
+		)
+
+		# This is explicitly needed for some reason? TODO
+		myeconfargs+=(
+			--enable-agetty
+		)
+	fi
+
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 
 	if multilib_is_native_abi && use python ; then
