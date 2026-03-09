@@ -39,6 +39,11 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	# https://gitlab.xfce.org/apps/xfce4-terminal/-/commit/b07d9546a08a3cd70b7e9aaad7a86256fbe32b8b
+	"${FILESDIR}/${P}-no-wayland.patch"
+)
+
 src_configure() {
 	local emesonargs=(
 		$(meson_feature X x11)
