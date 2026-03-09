@@ -1,0 +1,104 @@
+From f0553197d9ccc721c1e8cc7680a0fad7b66105ca Mon Sep 17 00:00:00 2001
+From: Violet Purcell <vimproved@inventati.org>
+Date: Mon, 9 Mar 2026 19:09:58 -0400
+Subject: [PATCH] scx_cake: fix build on musl
+
+This is fixed upstream but signifcant refactoring has taken place since,
+so this is a quick fix for 1.1.0.
+--- a/scheds/rust/scx_cake/src/calibrate.rs
++++ b/scheds/rust/scx_cake/src/calibrate.rs
+@@ -84,7 +84,22 @@ fn measure_pair(cpu_a: usize, cpu_b: usize, config: &EtdConfig) -> Option<Vec<f6
+ 
+             // Set real-time priority to minimize preemption jitter
+             unsafe {
++                #[cfg(target_env = "gnu")]
+                 let param = libc::sched_param { sched_priority: 99 };
++                #[cfg(target_env = "musl")]
++                let param = libc::sched_param {
++                    sched_priority: 99,
++                    sched_ss_low_priority: 0,
++                    sched_ss_repl_period: libc::timespec {
++                        tv_sec: 0,
++                        tv_nsec: 0,
++                    },
++                    sched_ss_init_budget: libc::timespec {
++                        tv_sec: 0,
++                        tv_nsec: 0,
++                    },
++                    sched_ss_max_repl: 0,
++                };
+                 libc::sched_setscheduler(0, libc::SCHED_FIFO, &param);
+             }
+ 
+@@ -116,7 +131,22 @@ fn measure_pair(cpu_a: usize, cpu_b: usize, config: &EtdConfig) -> Option<Vec<f6
+ 
+             // Reset to normal priority before thread exit
+             unsafe {
++                #[cfg(target_env = "gnu")]
+                 let param = libc::sched_param { sched_priority: 0 };
++                #[cfg(target_env = "musl")]
++                let param = libc::sched_param {
++                    sched_priority: 0,
++                    sched_ss_low_priority: 0,
++                    sched_ss_repl_period: libc::timespec {
++                        tv_sec: 0,
++                        tv_nsec: 0,
++                    },
++                    sched_ss_init_budget: libc::timespec {
++                        tv_sec: 0,
++                        tv_nsec: 0,
++                    },
++                    sched_ss_max_repl: 0,
++                };
+                 libc::sched_setscheduler(0, libc::SCHED_OTHER, &param);
+             }
+         });
+@@ -130,7 +160,22 @@ fn measure_pair(cpu_a: usize, cpu_b: usize, config: &EtdConfig) -> Option<Vec<f6
+ 
+             // Set real-time priority to minimize preemption jitter
+             unsafe {
++                #[cfg(target_env = "gnu")]
+                 let param = libc::sched_param { sched_priority: 99 };
++                #[cfg(target_env = "musl")]
++                let param = libc::sched_param {
++                    sched_priority: 99,
++                    sched_ss_low_priority: 0,
++                    sched_ss_repl_period: libc::timespec {
++                        tv_sec: 0,
++                        tv_nsec: 0,
++                    },
++                    sched_ss_init_budget: libc::timespec {
++                        tv_sec: 0,
++                        tv_nsec: 0,
++                    },
++                    sched_ss_max_repl: 0,
++                };
+                 libc::sched_setscheduler(0, libc::SCHED_FIFO, &param);
+             }
+ 
+@@ -173,7 +218,22 @@ fn measure_pair(cpu_a: usize, cpu_b: usize, config: &EtdConfig) -> Option<Vec<f6
+ 
+             // Reset to normal priority before thread exit
+             unsafe {
++                #[cfg(target_env = "gnu")]
+                 let param = libc::sched_param { sched_priority: 0 };
++                #[cfg(target_env = "musl")]
++                let param = libc::sched_param {
++                    sched_priority: 0,
++                    sched_ss_low_priority: 0,
++                    sched_ss_repl_period: libc::timespec {
++                        tv_sec: 0,
++                        tv_nsec: 0,
++                    },
++                    sched_ss_init_budget: libc::timespec {
++                        tv_sec: 0,
++                        tv_nsec: 0,
++                    },
++                    sched_ss_max_repl: 0,
++                };
+                 libc::sched_setscheduler(0, libc::SCHED_OTHER, &param);
+             }
+ 
+-- 
+2.53.0
+
