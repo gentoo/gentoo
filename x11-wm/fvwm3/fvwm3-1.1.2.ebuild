@@ -1,10 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-# Doc generation requires pulls in asciidoc/ruby, we'll prebuild docs
-# for release ebuilds.
+# Doc generation pulls in asciidoc/ruby; we'll prebuild docs for release ebuilds.
 # Scripting for this is in sam-gentoo-scripts.
 : ${FVWM3_DOCS_PREBUILT:=1}
 
