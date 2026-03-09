@@ -1,0 +1,11 @@
+--- a/configure.ac	2026-03-09 23:33:35.599359145 +0100
++++ b/configure.ac	2026-03-09 23:33:48.355218947 +0100
+@@ -143,7 +143,7 @@
+ #
+   AC_DEFINE([USE_TECLA], [], [use Tecla command line editing library])
+   if (test -z "$TECLA_LIBS") then
+-    TECLA_LIBS="-ltecla -lcurses"
++    TECLA_LIBS="-ltecla -lncurses"
+   fi
+ else
+   TECLA_LIBS=""
