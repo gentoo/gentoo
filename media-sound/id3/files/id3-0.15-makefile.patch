@@ -1,3 +1,5 @@
+respect user flags
+remove unnecessary build rules
 --- a/Makefile
 +++ b/Makefile
 @@ -3,9 +3,6 @@
@@ -22,11 +24,3 @@
  all: $(PRODUCT)
  
  $(PRODUCT): $(OBJS)
-@@ -35,6 +27,6 @@
- 
- install: $(PRODUCT)
- 	$(INSTALL) -d -m 755 $(bindir)
--	$(INSTALL) -s -m 755 -o 0 $(PRODUCT) $(bindir)
-+	$(INSTALL) -m 755 -o 0 $(PRODUCT) $(bindir)
- 	$(INSTALL) -d -m 755 $(mandir)
- 	$(INSTALL) -m 644 -o 0 $(PRODUCT).1 $(mandir)
