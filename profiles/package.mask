@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2026-03-09)
+# Live only package, Upstream archived, integrated into
+# app-shells/bash-completion-2.17.0, which was already stabled.
+# Removal on 2026-04-08.  Bugs #792303, #960480.
+app-shells/tmux-bash-completion
+
 # Alfredo Tupone <tupone@gentoo.org> (2026-03-05)
 # Need more testing
 >=dev-lang/tcl-9
@@ -191,6 +197,7 @@ net-misc/lanmap
 # Removal on 2026-03-12. Bug #963013.
 net-libs/libpcapnav
 
+# David Seifert <soap@gentoo.org> (2026-02-10)
 # Noone packages this anymore, dead upstream, lots of C23 and QA issues.
 # Removal on 2026-03-12. Bug #945187.
 net-analyzer/trafshow
@@ -200,6 +207,7 @@ net-analyzer/trafshow
 # issues. Removal on 2026-03-12. Bug #945190.
 net-analyzer/tcptrace
 
+# David Seifert <soap@gentoo.org> (2026-02-10)
 # Removed by most distros, last release over 20 years ago, C23 issues.
 # Removal on 2026-03-12. Bug #945193.
 net-analyzer/labrea
