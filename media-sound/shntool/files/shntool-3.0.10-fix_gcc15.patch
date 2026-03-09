@@ -1,0 +1,71 @@
+fix c23 https://bugs.gentoo.org/943815
+apply fix from Fedora https://src.fedoraproject.org/rpms/shntool/raw/fc11294/f/gcc-15-fixes.patch
+--- a/include/format.h
++++ b/include/format.h
+@@ -35,7 +35,7 @@ void tagcpy(unsigned char *,unsigned char *);
+ int tagcmp(unsigned char *,unsigned char *);
+ 
+ /* function to check if a file name is about to be clobbered, and if so, asks whether this is OK */
+-int clobber_check(char *);
++bool clobber_check(char *);
+ 
+ /* find an output format module with the given name */
+ format_module *find_format(char *);
+--- a/include/mode.h
++++ b/include/mode.h
+@@ -78,7 +78,7 @@ void create_output_filename(char *,char *,char *);
+ FILE *open_output_stream(char *,proc_info *);
+ 
+ /* function to determine if two filenames point to the same file */
+-int files_are_identical(char *,char *);
++bool files_are_identical(char *,char *);
+ 
+ /* function to remove a file if it exists */
+ void remove_file(char *);
+--- a/include/module-types.h
++++ b/include/module-types.h
+@@ -23,6 +23,8 @@
+ #ifndef __MODULE_TYPES_H__
+ #define __MODULE_TYPES_H__
+ 
++#include <stdbool.h>
++
+ #ifdef HAVE_CONFIG_H
+ #include "config.h"
+ #endif
+@@ -44,9 +46,6 @@
+ #define PATHSEPCHAR '/'
+ #endif
+ 
+-/* boolean type */
+-typedef int bool;
+-
+ /* wtypes */
+ typedef unsigned long wlong;
+ typedef unsigned short wshort;
+--- a/src/core_mode.c
++++ b/src/core_mode.c
+@@ -564,18 +564,12 @@ static int compare_ascii(const wave_info **w1,const wave_info **w2)
+ 
+ static void ascii_sort_files(wave_info **filenames, int numfiles)
+ {
+-  int (*cmpfunc) ();
+-
+-  cmpfunc = compare_ascii;
+-  qsort(filenames,numfiles,sizeof(wave_info *),cmpfunc);
++  qsort(filenames,numfiles,sizeof(wave_info *),(int (*)(const void*, const void*))compare_ascii);
+ }
+ 
+ static void version_sort_files(wave_info **filenames,int numfiles)
+ {
+-  int (*cmpfunc) ();
+-
+-  cmpfunc = compare_version;
+-  qsort(filenames,numfiles,sizeof(wave_info *),cmpfunc);
++  qsort(filenames,numfiles,sizeof(wave_info *),(int (*)(const void*, const void*))compare_version);
+ }
+ 
+ /* public functions */
+-- 
+2.48.1
+

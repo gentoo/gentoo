@@ -1,0 +1,30 @@
+patch from upstream
+https://github.com/bayun/shntool/commit/4ca41f4.patch
+Fix for mm:ss:ff on non-CD-quality files
+fix also https://bugs.gentoo.org/965875
+--- a/src/core_mode.c
++++ b/src/core_mode.c
+@@ -346,7 +346,7 @@ static wlong is_m_ss_ff(unsigned char *buf,wave_info *info)
+   *dot = 0;
+ 
+   if (PROB_NOT_CD(info))
+-    st_error("m:ss.ff format can only be used with CD-quality files");
++    st_warning("m:ss.ff format can only be used with CD-quality files");
+ 
+   min = atoi((const char *)buf);
+   sec = atoi((const char *)(colon+1));
+@@ -358,10 +358,10 @@ static wlong is_m_ss_ff(unsigned char *buf,wave_info *info)
+   if (frames >= 75)
+     st_error("invalid value for frames: [%d]",frames);
+ 
+-  bytes = (wlong)(min * CD_RATE * 60) +
+-          (wlong)(sec * CD_RATE) +
+-          (wlong)(frames * CD_BLOCK_SIZE);
+-
++  int rate = info->bits_per_sample / 8 * info->channels * info->samples_per_sec;
++  bytes = (wlong)(min * rate * 60) +
++          (wlong)(sec * rate) +
++          (wlong)(frames * rate / 75);
+   return bytes;
+ }
+ 
