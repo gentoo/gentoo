@@ -16,7 +16,6 @@ HOMEPAGE="https://github.com/thepowersgang/mrustc"
 if [[ ${PV} == *"9999"* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/thepowersgang/mrustc.git"
-	SRC_URI="https://static.rust-lang.org/dist/rustc-${RUST_VERSION}-src.tar.xz"
 else
 	SRC_URI="https://github.com/thepowersgang/mrustc/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 		https://static.rust-lang.org/dist/rustc-${RUST_VERSION}-src.tar.xz
@@ -39,30 +38,15 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.11.2-dont-strip-bins.patch"
 	"${FILESDIR}/${PN}-0.12.0-default-to-rust-1_90.patch"
 	"${FILESDIR}/${PN}-0.12.0-build-with-provided-rust.patch"
+	"${FILESDIR}/${PN}-0.12.0-git-be-gone.patch"
 	"${FILESDIR}/${PN}-0.12.0-no-glibcxx-assertions-workaround.patch"
 )
-
-if [[ ${PV} != *"9999"* ]]; then
-	PATCHES+=(
-		"${FILESDIR}/${PN}-0.12.0-git-be-gone.patch"
-	)
-fi
 
 QA_FLAGS_IGNORED="
 	usr/lib/rust/${P}/bin/mrustc
 	usr/lib/rust/${P}/bin/minicargo
 	usr/lib/rust/${P}/lib/rustlib/$(rust_abi)/lib/*.rlib
 "
-
-src_unpack() {
-	if [[ ${PV} == *"9999"* ]]; then
-		default
-		git-r3_src_unpack
-	else
-		default
-	fi
-
-}
 
 src_configure() {
 	:

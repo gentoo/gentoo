@@ -1,0 +1,97 @@
+From 0d2484695bb5df19465dba3afb430e6e343bd7f0 Mon Sep 17 00:00:00 2001
+From: Matt Jolly <kangie@gentoo.org>
+Date: Mon, 9 Mar 2026 19:26:56 +1000
+Subject: [PATCH] Pass -U_GLIBCXX_ASSERTIONS when building mrustc as a
+ workaround
+
+Signed-off-by: Matt Jolly <kangie@gentoo.org>
+--- a/Makefile
++++ b/Makefile
+@@ -47,7 +47,7 @@ CXXFLAGS := -g -Wall
+ CXXFLAGS += -std=c++14
+ #CXXFLAGS += -Wextra
+ CXXFLAGS += -O2
+-CXXFLAGS += $(CXXFLAGS_EXTRA)
++CXXFLAGS += $(CXXFLAGS_EXTRA) -U_GLIBCXX_ASSERTIONS
+ 
+ CPPFLAGS := -I src/include/ -I src/
+ CPPFLAGS += -I tools/common/
+--- a/src/trans/codegen_c.cpp
++++ b/src/trans/codegen_c.cpp
+@@ -1302,6 +1302,7 @@ namespace {
+                 {
+                     args.push_back( a.c_str() );
+                 }
++                args.push_back("-U_GLIBCXX_ASSERTIONS"); // TODO
+                 args.push_back("-Wno-psabi");   // Suppress "note: the ABI for passing parameters with 128-byte alignment has changed in GCC 4.6"
+                 switch(opt.opt_level)
+                 {
+--- a/tools/common/Makefile
++++ b/tools/common/Makefile
+@@ -12,7 +12,7 @@ OBJS += jobserver.o
+ 
+ CXXFLAGS := -Wall -std=c++14 -g -O2
+ 
+-CXXFLAGS += $(CXXFLAGS_EXTRA)
++CXXFLAGS += $(CXXFLAGS_EXTRA) -U_GLIBCXX_ASSERTIONS
+ 
+ OBJS := $(OBJS:%=$(OBJDIR)%)
+ 
+--- a/tools/dump_hirfile/Makefile
++++ b/tools/dump_hirfile/Makefile
+@@ -16,7 +16,7 @@ OBJS := main.o
+ 
+ LINKFLAGS := -g -lpthread -lz
+ CXXFLAGS := -Wall -std=c++14 -g -O2
+-CXXFLAGS += -I ../common -I ../../src -I ../../src/include
++CXXFLAGS += -I ../common -I ../../src -I ../../src/include -U_GLIBCXX_ASSERTIONS
+ 
+ CXXFLAGS += $(CXXFLAGS_EXTRA)
+ LINKFLAGS += $(LINKFLAGS_EXTRA)
+--- a/tools/minicargo/Makefile
++++ b/tools/minicargo/Makefile
+@@ -25,7 +25,7 @@ OBJS += resolve_cargo.o
+ 
+ LINKFLAGS := -g -lpthread
+ CXXFLAGS := -Wall -std=c++14 -g -O2
+-CXXFLAGS += -I ../common
++CXXFLAGS += -I ../common -U_GLIBCXX_ASSERTIONS
+ 
+ CXXFLAGS += $(CXXFLAGS_EXTRA)
+ LINKFLAGS += $(LINKFLAGS_EXTRA)
+--- a/tools/mir_opt_test/Makefile
++++ b/tools/mir_opt_test/Makefile
+@@ -16,7 +16,7 @@ LIBS := ../../bin/mrustc.a ../../bin/common_lib.a
+ 
+ LINKFLAGS := -g -lpthread -lz
+ CXXFLAGS := -Wall -std=c++14 -g -O2
+-CXXFLAGS += -I ../common -I ../../src/include -I ../../src -I .
++CXXFLAGS += -I ../common -I ../../src/include -I ../../src -I . -U_GLIBCXX_ASSERTIONS
+ CXXFLAGS += -Wno-misleading-indentation	# Gets REALLY confused by the TU_ARM macro
+ 
+ CXXFLAGS += $(CXXFLAGS_EXTRA)
+--- a/tools/standalone_miri/Makefile
++++ b/tools/standalone_miri/Makefile
+@@ -16,7 +16,7 @@ OBJS += miri.o miri_extern.o miri_intrinsic.o
+ 
+ LINKFLAGS := -g -lpthread
+ CXXFLAGS := -Wall -std=c++14 -g -O2
+-CXXFLAGS += -I ../common -I ../../src/include -I .
++CXXFLAGS += -I ../common -I ../../src/include -I . -U_GLIBCXX_ASSERTIONS
+ CXXFLAGS += -Wno-misleading-indentation	# Gets REALLY confused by the TU_ARM macro
+ 
+ CXXFLAGS += $(CXXFLAGS_EXTRA)
+--- a/tools/testrunner/Makefile
++++ b/tools/testrunner/Makefile
+@@ -8,7 +8,7 @@ OBJS := main.o path.o
+ LINKFLAGS := -g
+ CXXFLAGS := -Wall -std=c++14 -g -O2
+ 
+-CXXFLAGS += $(CXXFLAGS_EXTRA)
++CXXFLAGS += $(CXXFLAGS_EXTRA) -U_GLIBCXX_ASSERTIONS
+ LINKFLAGS += $(LINKFLAGS_EXTRA)
+ 
+ OBJS := $(OBJS:%=$(OBJDIR)%)
+-- 
+2.52.0
+
