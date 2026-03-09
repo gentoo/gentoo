@@ -1,0 +1,86 @@
+https://redmine.freeciv.org/issues/1961
+From: Matt Jolly <kangie@gentoo.org>
+Date: Mon, 9 Mar 2026 15:07:52 +1000
+Subject: [PATCH] sdl: Fix widget_id truncation in widget lookup functions
+
+get_widget_pointer_from_id() and get_widget_pointer_from_main_list()
+still used Uint16 id parameters after MAX_ID and widget_id were
+widened to 32 bits in 7a187ce264. This caused silent truncation of
+IDs like (MAX_ID - 1000 - style), making lookups fail and return
+NULL, leading to a segfault in nation_button_callback.
+
+See RM #1961
+
+Signed-off-by: Matt Jolly <kangie@gentoo.org>
+--- a/client/gui-sdl2/widget.c
++++ b/client/gui-sdl2/widget.c
+@@ -550,7 +550,7 @@ void redraw_widget_info_label(SDL_Rect *rect)
+   Widget.
+ **************************************************************************/
+ struct widget *get_widget_pointer_from_id(const struct widget *gui_list,
+-                                          Uint16 id, enum scan_direction direction)
++                                          widget_id id, enum scan_direction direction)
+ {
+   if (direction == SCAN_FORWARD) {
+     while (gui_list) {
+@@ -575,7 +575,7 @@ struct widget *get_widget_pointer_from_id(const struct widget *gui_list,
+   Find ID in MAIN widgets list ( begin_widget_list ) and return pointer to
+   this Widgets.
+ **************************************************************************/
+-struct widget *get_widget_pointer_from_main_list(Uint16 id)
++struct widget *get_widget_pointer_from_main_list(widget_id id)
+ {
+   return get_widget_pointer_from_id(begin_main_widget_list, id, SCAN_FORWARD);
+ }
+--- a/client/gui-sdl2/widget.h
++++ b/client/gui-sdl2/widget.h
+@@ -206,10 +206,10 @@ struct widget *find_next_widget_at_pos(struct widget *start_widget, int x, int y
+ struct widget *find_next_widget_for_key(struct widget *start_widget, SDL_Keysym key);
+ 
+ struct widget *get_widget_pointer_from_id(const struct widget *gui_list,
+-                                          Uint16 id,
++                                          widget_id id,
+                                           enum scan_direction direction);
+ 
+-struct widget *get_widget_pointer_from_main_list(Uint16 id);
++struct widget *get_widget_pointer_from_main_list(widget_id id);
+ 
+ #define set_action(id, action_callback)	\
+ 	get_widget_pointer_from_main_list(id)->action = action_callback
+--- a/client/gui-sdl3/widget.c
++++ b/client/gui-sdl3/widget.c
+@@ -545,7 +545,7 @@ void redraw_widget_info_label(SDL_Rect *rect)
+   Widget.
+ **************************************************************************/
+ struct widget *get_widget_pointer_from_id(const struct widget *gui_list,
+-                                          Uint16 id, enum scan_direction direction)
++                                          widget_id id, enum scan_direction direction)
+ {
+   if (direction == SCAN_FORWARD) {
+     while (gui_list) {
+@@ -570,7 +570,7 @@ struct widget *get_widget_pointer_from_id(const struct widget *gui_list,
+   Find ID in MAIN widgets list ( begin_widget_list ) and return pointer to
+   this Widgets.
+ **************************************************************************/
+-struct widget *get_widget_pointer_from_main_list(Uint16 id)
++struct widget *get_widget_pointer_from_main_list(widget_id id)
+ {
+   return get_widget_pointer_from_id(begin_main_widget_list, id, SCAN_FORWARD);
+ }
+--- a/client/gui-sdl3/widget.h
++++ b/client/gui-sdl3/widget.h
+@@ -206,10 +206,10 @@ struct widget *find_next_widget_at_pos(struct widget *start_widget, int x, int y
+ struct widget *find_next_widget_for_key(struct widget *start_widget, SDL_KeyboardEvent *key);
+ 
+ struct widget *get_widget_pointer_from_id(const struct widget *gui_list,
+-                                          Uint16 id,
++                                          widget_id id,
+                                           enum scan_direction direction);
+ 
+-struct widget *get_widget_pointer_from_main_list(Uint16 id);
++struct widget *get_widget_pointer_from_main_list(widget_id id);
+ 
+ #define set_action(id, action_callback)	\
+ 	get_widget_pointer_from_main_list(id)->action = action_callback
+-- 
+2.52.0
