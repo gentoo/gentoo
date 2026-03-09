@@ -1,0 +1,75 @@
+From 1a181d48ec4d15bee6d8dd65ecb6f393b3ecc4e2 Mon Sep 17 00:00:00 2001
+From: sin-ack <sin-ack@protonmail.com>
+Date: Tue, 16 Sep 2025 21:41:07 +0000
+Subject: [PATCH] build: Disable terminfo database installation
+
+Database installation is unconditional in Ghostty and causes conflicts
+with newer ncurses versions which have the database merged in.
+
+Bug: https://bugs.gentoo.org/948830
+Signed-off-by: sin-ack <sin-ack@protonmail.com>
+---
+ src/build/GhosttyResources.zig | 40 ----------------------------------
+ 1 file changed, 40 deletions(-)
+
+diff --git a/src/build/GhosttyResources.zig b/src/build/GhosttyResources.zig
+index 6f857655b..69a249648 100644
+--- a/src/build/GhosttyResources.zig
++++ b/src/build/GhosttyResources.zig
+@@ -30,10 +30,6 @@ pub fn init(b: *std.Build, cfg: *const Config, deps: *const SharedDeps) !Ghostty
+     // Terminfo
+     terminfo: {
+         const os_tag = cfg.target.result.os.tag;
+-        const terminfo_share_dir = if (os_tag == .freebsd)
+-            "site-terminfo"
+-        else
+-            "terminfo";
+ 
+         // Encode our terminfo
+         const run = b.addRunArtifact(build_data_exe);
+@@ -76,42 +72,6 @@ pub fn init(b: *std.Build, cfg: *const Config, deps: *const SharedDeps) !Ghostty
+ 
+             try steps.append(b.allocator, &cap_install.step);
+         }
+-
+-        // Compile the terminfo source into a terminfo database
+-        {
+-            const run_step = RunStep.create(b, "tic");
+-            run_step.addArgs(&.{ "tic", "-x", "-o" });
+-            const path = run_step.addOutputFileArg(terminfo_share_dir);
+-
+-            run_step.addFileArg(source);
+-            _ = run_step.captureStdErr(); // so we don't see stderr
+-
+-            // Ensure that `share/terminfo` is a directory, otherwise the `cp
+-            // -R` will create a file named `share/terminfo`
+-            const mkdir_step = RunStep.create(b, "make share/terminfo directory");
+-            switch (cfg.target.result.os.tag) {
+-                // windows mkdir shouldn't need "-p"
+-                .windows => mkdir_step.addArgs(&.{"mkdir"}),
+-                else => mkdir_step.addArgs(&.{ "mkdir", "-p" }),
+-            }
+-
+-            mkdir_step.addArg(b.fmt(
+-                "{s}/share/{s}",
+-                .{ b.install_path, terminfo_share_dir },
+-            ));
+-
+-            try steps.append(b.allocator, &mkdir_step.step);
+-
+-            // Use cp -R instead of Step.InstallDir because we need to preserve
+-            // symlinks in the terminfo database. Zig's InstallDir step doesn't
+-            // handle symlinks correctly yet.
+-            const copy_step = RunStep.create(b, "copy terminfo db");
+-            copy_step.addArgs(&.{ "cp", "-R" });
+-            copy_step.addFileArg(path);
+-            copy_step.addArg(b.fmt("{s}/share", .{b.install_path}));
+-            copy_step.step.dependOn(&mkdir_step.step);
+-            try steps.append(b.allocator, &copy_step.step);
+-        }
+     }
+ 
+     // Shell-integration
+-- 
+2.52.0
+
