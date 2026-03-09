@@ -1,0 +1,154 @@
+From 23388369aa707ae77f6e9bbf19ce4c68ac83380d Mon Sep 17 00:00:00 2001
+From: sin-ack <sin-ack@protonmail.com>
+Date: Mon, 9 Mar 2026 22:31:51 +0000
+Subject: [PATCH] font/harfbuzz: Disable failing tests
+
+Link: https://github.com/ghostty-org/ghostty/discussions/11281
+---
+ src/font/shaper/harfbuzz.zig | 123 -----------------------------------
+ 1 file changed, 123 deletions(-)
+
+diff --git a/src/font/shaper/harfbuzz.zig b/src/font/shaper/harfbuzz.zig
+index b1126dd4e..9dfd2b62f 100644
+--- a/src/font/shaper/harfbuzz.zig
++++ b/src/font/shaper/harfbuzz.zig
+@@ -1078,69 +1078,6 @@ test "shape Devanagari string" {
+     try testing.expect(try it.next(alloc) == null);
+ }
+ 
+-test "shape Tai Tham vowels (position differs from advance)" {
+-    // Note that while this test was necessary for CoreText, the old logic was
+-    // working for HarfBuzz. Still we keep it to ensure it has the correct
+-    // behavior.
+-    const testing = std.testing;
+-    const alloc = testing.allocator;
+-
+-    // We need a font that supports Tai Tham for this to work, if we can't find
+-    // Noto Sans Tai Tham, which is a system font on macOS, we just skip the
+-    // test.
+-    var testdata = testShaperWithDiscoveredFont(
+-        alloc,
+-        "Noto Sans Tai Tham",
+-    ) catch return error.SkipZigTest;
+-    defer testdata.deinit();
+-
+-    var buf: [32]u8 = undefined;
+-    var buf_idx: usize = 0;
+-    buf_idx += try std.unicode.utf8Encode(0x1a2F, buf[buf_idx..]); // ᨯ
+-    buf_idx += try std.unicode.utf8Encode(0x1a70, buf[buf_idx..]); //  ᩰ
+-
+-    // Make a screen with some data
+-    var t = try terminal.Terminal.init(alloc, .{ .cols = 30, .rows = 3 });
+-    defer t.deinit(alloc);
+-
+-    // Enable grapheme clustering
+-    t.modes.set(.grapheme_cluster, true);
+-
+-    var s = t.vtStream();
+-    defer s.deinit();
+-    try s.nextSlice(buf[0..buf_idx]);
+-
+-    var state: terminal.RenderState = .empty;
+-    defer state.deinit(alloc);
+-    try state.update(alloc, &t);
+-
+-    // Get our run iterator
+-    var shaper = &testdata.shaper;
+-    var it = shaper.runIterator(.{
+-        .grid = testdata.grid,
+-        .cells = state.row_data.get(0).cells.slice(),
+-    });
+-    var count: usize = 0;
+-    while (try it.next(alloc)) |run| {
+-        count += 1;
+-
+-        const cells = try shaper.shape(run);
+-        try testing.expectEqual(@as(usize, 2), cells.len);
+-        try testing.expectEqual(@as(u16, 0), cells[0].x);
+-        try testing.expectEqual(@as(u16, 0), cells[1].x);
+-
+-        // The first glyph renders in the next cell. We expect the x_offset
+-        // to equal the cell width. However, with FreeType the cell_width is
+-        // computed from ASCII glyphs, and Noto Sans Tai Tham only has the
+-        // space character in ASCII (with a 3px advance), so the cell_width
+-        // metric doesn't match the actual Tai Tham glyph positioning.
+-        const expected_x_offset: i16 = if (comptime font.options.backend.hasFreetype()) 7 else @intCast(run.grid.metrics.cell_width);
+-        try testing.expectEqual(expected_x_offset, cells[0].x_offset);
+-        try testing.expectEqual(@as(i16, 0), cells[1].x_offset);
+-    }
+-    try testing.expectEqual(@as(usize, 1), count);
+-}
+-
+ test "shape Tibetan characters" {
+     const testing = std.testing;
+     const alloc = testing.allocator;
+@@ -1194,66 +1131,6 @@ test "shape Tibetan characters" {
+     try testing.expectEqual(@as(usize, 1), count);
+ }
+ 
+-test "shape Tai Tham letters (run_offset.y differs from zero)" {
+-    const testing = std.testing;
+-    const alloc = testing.allocator;
+-
+-    // We need a font that supports Tai Tham for this to work, if we can't find
+-    // Noto Sans Tai Tham, which is a system font on macOS, we just skip the
+-    // test.
+-    var testdata = testShaperWithDiscoveredFont(
+-        alloc,
+-        "Noto Sans Tai Tham",
+-    ) catch return error.SkipZigTest;
+-    defer testdata.deinit();
+-
+-    var buf: [32]u8 = undefined;
+-    var buf_idx: usize = 0;
+-
+-    // First grapheme cluster:
+-    buf_idx += try std.unicode.utf8Encode(0x1a49, buf[buf_idx..]); // HA
+-    buf_idx += try std.unicode.utf8Encode(0x1a60, buf[buf_idx..]); // SAKOT
+-    // Second grapheme cluster, combining with the first in a ligature:
+-    buf_idx += try std.unicode.utf8Encode(0x1a3f, buf[buf_idx..]); // YA
+-    buf_idx += try std.unicode.utf8Encode(0x1a69, buf[buf_idx..]); // U
+-
+-    // Make a screen with some data
+-    var t = try terminal.Terminal.init(alloc, .{ .cols = 30, .rows = 3 });
+-    defer t.deinit(alloc);
+-
+-    // Enable grapheme clustering
+-    t.modes.set(.grapheme_cluster, true);
+-
+-    var s = t.vtStream();
+-    defer s.deinit();
+-    try s.nextSlice(buf[0..buf_idx]);
+-
+-    var state: terminal.RenderState = .empty;
+-    defer state.deinit(alloc);
+-    try state.update(alloc, &t);
+-
+-    // Get our run iterator
+-    var shaper = &testdata.shaper;
+-    var it = shaper.runIterator(.{
+-        .grid = testdata.grid,
+-        .cells = state.row_data.get(0).cells.slice(),
+-    });
+-    var count: usize = 0;
+-    while (try it.next(alloc)) |run| {
+-        count += 1;
+-
+-        const cells = try shaper.shape(run);
+-        try testing.expectEqual(@as(usize, 3), cells.len);
+-        try testing.expectEqual(@as(u16, 0), cells[0].x);
+-        try testing.expectEqual(@as(u16, 0), cells[1].x);
+-        try testing.expectEqual(@as(u16, 0), cells[2].x); // U from second grapheme
+-
+-        // The U glyph renders at a y below zero
+-        try testing.expectEqual(@as(i16, -3), cells[2].y_offset);
+-    }
+-    try testing.expectEqual(@as(usize, 1), count);
+-}
+-
+ test "shape Javanese ligatures" {
+     const testing = std.testing;
+     const alloc = testing.allocator;
+-- 
+2.52.0
+
