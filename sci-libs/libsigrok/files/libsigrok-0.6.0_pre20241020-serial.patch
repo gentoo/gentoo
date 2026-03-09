@@ -1,0 +1,18 @@
+https://bugs.gentoo.org/957126
+https://github.com/sigrokproject/libsigrok/commit/467c80149e1ce0cd9bc77517466cc6b8f4753d49
+
+From: Daniel Trnka <daniel.trnka@gmail.com>
+Date: Sun, 24 Nov 2024 14:11:46 +0100
+Subject: [PATCH] gwinstek-psp: Only build if serial_comm is enabled
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -336,7 +336,7 @@ SR_DRIVER([GMC MH 1x/2x], [gmc-mh-1x-2x], [serial_comm])
+ SR_DRIVER([Great Scott Gadgets GreatFET One], [greatfet], [libusb])
+ SR_DRIVER([GW Instek GDS-800], [gwinstek-gds-800], [serial_comm])
+ SR_DRIVER([GW Instek GPD], [gwinstek-gpd], [serial_comm])
+-SR_DRIVER([GW Instek PSP], [gwinstek-psp])
++SR_DRIVER([GW Instek PSP], [gwinstek-psp], [serial_comm])
+ SR_DRIVER([Hameg HMO], [hameg-hmo])
+ SR_DRIVER([Hantek 4032L], [hantek-4032l], [libusb])
+ SR_DRIVER([Hantek 6xxx], [hantek-6xxx], [libusb])
