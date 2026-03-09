@@ -59,7 +59,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	media-libs/qhull[static-libs]
-	test? ( =dev-cpp/catch-3.8* )
+	test? ( >=dev-cpp/catch-3.8 )
 "
 
 PATCHES=(
