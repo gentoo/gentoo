@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 AUTOTOOLS_AUTO_DEPEND=no
 inherit autotools multilib-minimal
 
