@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/961421
+Could be done safely, as this is leaf package, bools don't escape
+and aren't used in parsing actual tag frames from the media.
+--- a/src/aux_id3lib.c
++++ b/src/aux_id3lib.c
+@@ -11,6 +11,7 @@
+  */
+ 
+ #include "config.h"
++#include <stdbool.h>
+ 
+ #ifdef LIBID3_MISSING_ID3FRAMEINFO
+ 
