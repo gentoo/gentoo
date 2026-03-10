@@ -179,6 +179,11 @@ src_configure() {
 	# Try to use less memory, bug #469942 (see Fedora .spec for reference)
 	append-ldflags $(test-flags-CCLD "-Wl,--no-keep-memory")
 
+	if is-flagq '-g?(gdb)?([2-9])'; then #965483
+		replace-flags '-g?(gdb)?([2-9])' -g1
+		ewarn "-g2+/-ggdb* *FLAGS replaced with -g1"
+	fi
+
 	# Ruby situation is a bit complicated. See bug 513888
 	local rubyimpl
 	local ruby_interpreter=""
