@@ -30,7 +30,7 @@ else
 fi
 
 if [[ ${PV} != *_rc* ]] ; then
-	KEYWORDS="~alpha ~amd64 ~arm arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm arm64 ~ppc ppc64 ~riscv ~sparc ~x86"
 fi
 
 IUSE="doc clamonacc +clamapp experimental libclamav-only milter rar selinux +system-mspack systemd test"
