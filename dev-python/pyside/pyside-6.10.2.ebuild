@@ -213,7 +213,7 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	dev-build/cmake
 	dev-python/distro[${PYTHON_USEDEP}]
-	<dev-python/wheel-0.46.0[${PYTHON_USEDEP}]
+	dev-python/wheel[${PYTHON_USEDEP}]
 	dev-util/patchelf
 	doc? (
 		>=dev-libs/libxml2-2.6.32
@@ -226,8 +226,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	# Needs porting to newer wheel and setuptools
-	"${FILESDIR}/${PN}-6.8.2-quick-fix-build-wheel.patch"
+	"${FILESDIR}/${PN}-6.10.2-quick-fix-build-wheel.patch"
 	"${FILESDIR}/${PN}-6.10.0-dont-vendor-ffmpeg.patch"
 	"${FILESDIR}/${PN}-6.10.1-pass-ninja-opts.patch"
 )
