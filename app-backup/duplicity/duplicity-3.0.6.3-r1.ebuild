@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ DISTUTILS_EXT=1
 
 inherit distutils-r1
 
-DESCRIPTION="Secure backup system using gnupg to encrypt data"
+DESCRIPTION="Secure backup system using GnuPG to encrypt data"
 HOMEPAGE="https://duplicity.gitlab.io/"
 
 if [[ ${PV} == 9999 ]] ; then

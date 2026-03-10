@@ -9,7 +9,7 @@ DISTUTILS_EXT=1
 
 inherit distutils-r1
 
-DESCRIPTION="Secure backup system using gnupg to encrypt data"
+DESCRIPTION="Secure backup system using GnuPG to encrypt data"
 HOMEPAGE="https://duplicity.gitlab.io/"
 
 if [[ ${PV} == 9999 ]] ; then
