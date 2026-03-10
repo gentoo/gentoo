@@ -38,7 +38,7 @@ RDEPEND="${COMMON_DEPEND}
 	|| (
 		>=sys-apps/sysvinit-2.87-r3
 		sys-apps/openrc[sysv-utils(-),selinux?]
-		sys-apps/systemd[sysv-utils]
+		sys-apps/systemd[sysv-utils(+)]
 		sys-apps/s6-linux-init[sysv-utils(-)]
 	)
 	>=sys-apps/util-linux-2.21
