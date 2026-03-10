@@ -30,6 +30,8 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=( "${FILESDIR}/fix-init-destroy-arguments.patch" )
+
 src_prepare() {
 	default
 	eautoreconf

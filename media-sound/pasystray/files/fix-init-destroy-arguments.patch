@@ -1,0 +1,16 @@
+diff '--color=auto' -ur a/src/pasystray.h b/src/pasystray.h
+--- a/src/pasystray.h	2023-02-10 22:11:00.000000000 +0100
++++ b/src/pasystray.h	2026-01-02 13:43:52.730670950 +0100
+@@ -22,8 +22,10 @@
+ #ifndef PASYSTRAY_PASYSTRAY_H
+ #define PASYSTRAY_PASYSTRAY_H
+ 
+-void init();
++#include "menu_info.h"
++
++void init(settings_t*);
+ void quit();
+-void destroy();
++void destroy(settings_t*);
+ 
+ #endif /* PASYSTRAY_PASYSTRAY_H */
