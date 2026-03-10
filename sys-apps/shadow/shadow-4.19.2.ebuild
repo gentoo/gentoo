@@ -41,7 +41,7 @@ COMMON_DEPEND="
 "
 DEPEND="
 	${COMMON_DEPEND}
-	>=sys-kernel/linux-headers-4.14
+	kernel_linux? ( >=sys-kernel/linux-headers-4.14 )
 "
 RDEPEND="
 	${COMMON_DEPEND}

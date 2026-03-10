@@ -41,7 +41,7 @@ COMMON_DEPEND="
 "
 DEPEND="
 	${COMMON_DEPEND}
-	>=sys-kernel/linux-headers-4.14
+	kernel_linux? ( >=sys-kernel/linux-headers-4.14 )
 "
 RDEPEND="
 	${COMMON_DEPEND}
@@ -86,7 +86,7 @@ src_configure() {
 		--enable-lastlog
 		--disable-account-tools-setuid
 		--disable-static
-		--with-btrfs
+		$(use_enable kernel_linux btrfs)
 		# Use bundled replacements for readpassphrase and freezero
 		--without-libbsd
 		--without-group-name-max-length
@@ -220,6 +220,11 @@ src_install() {
 
 	if use elibc_musl; then
 		QA_CONFIG_IMPL_DECL_SKIP+=( sgetsgent )
+	fi
+
+	if use kernel_Hurd ; then
+		# sys-kernel/hurd provides this instead
+		rm "${ED}"/bin/login || die
 	fi
 }
 
