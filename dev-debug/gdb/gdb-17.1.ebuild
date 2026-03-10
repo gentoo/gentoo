@@ -335,6 +335,10 @@ src_install() {
 	if use python ; then
 		python_optimize "${ED}"/usr/share/gdb/python/gdb
 	fi
+
+	if use kernel_Hurd ; then
+		mv "${ED}"/usr/bin/gcore "${ED}"/usr/bin/gcore.gdb || die
+	fi
 }
 
 pkg_postinst() {
