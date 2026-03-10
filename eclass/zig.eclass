@@ -1,4 +1,4 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: zig.eclass
@@ -144,8 +144,12 @@ _zig_set_zbs_uris() {
 	local dependency
 	for dependency in "${!ZBS_DEPENDENCIES[@]}"; do
 		local uri="${ZBS_DEPENDENCIES[${dependency}]}"
+		local basename="${uri##*/}"
 		if [[ -n "${uri}" ]]; then
-			ZBS_DEPENDENCIES_SRC_URI+=" ${uri} -> ${dependency}"
+			ZBS_DEPENDENCIES_SRC_URI+=" ${uri}"
+			if [[ "${basename}" != "${dependency}" ]]; then
+				ZBS_DEPENDENCIES_SRC_URI+=" -> ${dependency}"
+			fi
 		fi
 	done
 }
