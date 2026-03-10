@@ -1,7 +1,7 @@
 From f422e43cc314e4cfda059ddb63d31973c9e8b5b7 Mon Sep 17 00:00:00 2001
 From: Matt Jolly <kangie@gentoo.org>
 Date: Tue, 17 Dec 2024 17:55:59 +1000
-Subject: [PATCH] default to Rust 1_74
+Subject: [PATCH] default to Rust 1_90
 
 --- a/src/main.cpp
 +++ b/src/main.cpp
