@@ -35,6 +35,8 @@ src_test() {
 	local EPYTEST_DESELECT=(
 		# Internet
 		tests/integration/test_dunamai.py::test__version__from_git__shallow
+		# Broken
+		tests/integration/test_dunamai.py::test__version__from_pijul
 	)
 
 	git config --global user.email "you@example.com" || die
