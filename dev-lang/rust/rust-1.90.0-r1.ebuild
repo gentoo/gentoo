@@ -6,6 +6,10 @@ EAPI=8
 LLVM_COMPAT=( 20 )
 PYTHON_COMPAT=( python3_{11..14} )
 
+MRUSTC_VERSION="0.12.0"
+MRUSTC_RUST_VERSION="1.90.0"
+RUST_OPTIONAL=1
+
 # We bumped the rust-patches tag without bumping the revision for
 # https://bugs.gentoo.org/963657, given that ithe patch affects only a
 # specific use case (bootstrap with Rust 1.90.0).
@@ -21,7 +25,7 @@ else
 	RUST_MIN_VER="$(ver_cut 1).$(($(ver_cut 2) - 1)).0"
 fi
 
-inherit check-reqs estack flag-o-matic llvm-r1 multiprocessing optfeature \
+inherit check-reqs estack edo flag-o-matic llvm-r1 multiprocessing optfeature \
 	multilib multilib-build python-any-r1 rust rust-toolchain toolchain-funcs verify-sig
 
 if [[ ${PV} = *9999* ]]; then
@@ -73,7 +77,8 @@ ALL_RUST_SYSROOTS=( "${ALL_RUST_SYSROOTS[@]/#/rust_sysroots_}" )
 LICENSE="|| ( MIT Apache-2.0 ) BSD BSD-1 BSD-2 BSD-4"
 SLOT="${PV%%_*}" # Beta releases get to share the same SLOT as the eventual stable
 
-IUSE="big-endian clippy cpu_flags_x86_sse2 debug dist doc llvm-libunwind lto rustfmt rust-analyzer rust-src +system-llvm test ${ALL_LLVM_TARGETS[*]} ${ALL_RUST_SYSROOTS[*]}"
+IUSE="big-endian clippy cpu_flags_x86_sse2 debug dist doc llvm-libunwind lto mrustc-bootstrap"
+IUSE+=" rustfmt rust-analyzer rust-src +system-llvm test ${ALL_LLVM_TARGETS[*]} ${ALL_RUST_SYSROOTS[*]}"
 
 if [[ ${PV} = *9999* ]]; then
 	# These USE flags require nightly rust
@@ -111,6 +116,12 @@ BDEPEND="${PYTHON_DEPS}
 	)
 	test? ( dev-debug/gdb )
 	verify-sig? ( sec-keys/openpgp-keys-rust )
+	mrustc-bootstrap? (
+		~dev-lang/mrustc-${MRUSTC_VERSION}
+		dev-build/cmake
+		sys-devel/gcc:*
+	)
+	!mrustc-bootstrap? ( ${RUST_DEPEND} )
 "
 
 DEPEND="
@@ -246,7 +257,16 @@ pkg_setup() {
 			die "Must enable LLVM_TARGETS=${cross_llvm_target} matching CBUILD=${CBUILD} when cross-compiling"
 	fi
 
-	rust_pkg_setup
+	if use mrustc-bootstrap; then
+		if ! tc-is-gcc; then
+			# USE="mrustc-bootstrap" reqires that the build environment use GCC
+			export CC=${CHOST}-gcc
+			export CXX=${CHOST}-g++
+			tc-is-gcc || die "tc-is-gcc failed in spite of CC=${CC}"
+		fi
+	else
+		rust_pkg_setup
+	fi
 
 	if use system-llvm; then
 		llvm-r1_pkg_setup
@@ -336,11 +356,13 @@ src_prepare() {
 		"${WORKDIR}/rust-patches-${RUST_PATCH_VER}/"
 	)
 	# Apply patches for bootstrapping with a particular Rust version (RUST_SLOT).
-	local bootstrap_patchdir="${WORKDIR}/rust-patches-${RUST_PATCH_VER}/${RUST_SLOT}"
-	if [[ -d "${bootstrap_patchdir}" ]]; then
-		PATCHES+=(
-			"${bootstrap_patchdir}"
-		)
+	if [[ -n ${RUST_SLOT} ]]; then # Not set set if using mrustc-bootstrap
+		local bootstrap_patchdir="${WORKDIR}/rust-patches-${RUST_PATCH_VER}/${RUST_SLOT}"
+		if [[ -d "${bootstrap_patchdir}" ]]; then
+			PATCHES+=(
+				"${bootstrap_patchdir}"
+			)
+		fi
 	fi
 
 	if use lto && tc-is-clang && ! tc-ld-is-lld && ! tc-ld-is-mold; then
@@ -348,6 +370,14 @@ src_prepare() {
 	fi
 
 	default
+
+	if use mrustc-bootstrap; then
+		pushd "${S}" 2>/dev/null || die
+		einfo "Applying patches to enable bootstrap with mrustc ${MRUSTC_VERSION}"
+		patch -p0 < "${BROOT}"/usr/share/mrustc-${MRUSTC_VERSION}/patches/rustc-${MRUSTC_RUST_VERSION}-src.patch ||
+			die "Failed to patch sources to enable bootstrap with mrustc"
+		popd 2>/dev/null || die
+	fi
 }
 
 src_configure() {
@@ -396,9 +426,13 @@ src_configure() {
 		use miri && tools+=',"miri"'
 	fi
 
-	local rust_stage0_root="$(${RUSTC} --print sysroot || die "Can't determine rust's sysroot")"
-	# in case of prefix it will be already prefixed, as --print sysroot returns full path
-	[[ -d ${rust_stage0_root} ]] || die "${rust_stage0_root} is not a directory"
+	if use mrustc-bootstrap; then
+		local rust_stage0_root="${WORKDIR}/bootstrap/rust-${PV}"
+	else
+		local rust_stage0_root="$(${RUSTC} --print sysroot || die "Can't determine rust's sysroot")"
+		# in case of prefix it will be already prefixed, as --print sysroot returns full path
+		[[ -d ${rust_stage0_root} ]] || die "${rust_stage0_root} is not a directory"
+	fi
 
 	rust_target="$(rust_abi)"
 	rust_build="$(rust_abi "${CBUILD}")"
@@ -686,7 +720,308 @@ src_configure() {
 	echo
 }
 
+llvm_bootstrap() {
+	# Reference ${P}/src/bootstrap/native.rs for these values
+	local llvm_cmake_opts=(
+		"-G Ninja"
+		"-DLLVM_TARGET_ARCH=${CFG_COMPILER_HOST_TRIPLE%%-*}"
+		"-DLLVM_DEFAULT_TARGET_TRIPLE=${CFG_COMPILER_HOST_TRIPLE}"
+		#;Mips;PowerPC;SystemZ;JSBackend;MSP430;Sparc;NVPTX
+		"-DLLVM_TARGETS_TO_BUILD=${BOOTSTRAP_LLVM_TARGETS:=X86;ARM;AArch64}"
+		"-DLLVM_ENABLE_ASSERTIONS=OFF"
+		"-DLLVM_INCLUDE_EXAMPLES=OFF"
+		"-DLLVM_INCLUDE_TESTS=OFF"
+		"-DLLVM_INCLUDE_DOCS=OFF"
+		"-DLLVM_INCLUDE_BENCHMARKS=OFF"
+		"-DLLVM_ENABLE_ZLIB=OFF"
+		"-DLLVM_ENABLE_TERMINFO=OFF"
+		"-DLLVM_ENABLE_LIBEDIT=OFF"
+		"-DCMAKE_CXX_COMPILER=$(tc-getCXX)"
+		"-DCMAKE_C_COMPILER=$(tc-getCC)"
+		"-DCMAKE_BUILD_TYPE=Release"
+	)
+
+	if [[ -z "${LLVM_CMAKE_OPTS_EXTRA}" ]]; then
+		llvm_cmake_opts+=( "${LLVM_CMAKE_OPTS_EXTRA}")
+	fi
+
+	elog "Building bootstrap llvm ..."
+
+	mkdir -p "${WORKDIR}/bootstrap/llvm" || die
+	pushd "${WORKDIR}/bootstrap/llvm" 2>/dev/null || die
+		edo cmake ${llvm_cmake_opts[*]} "${S}/src/llvm-project/llvm"
+		eninja || die "Failed to build bootstrap llvm"
+	popd 2>/dev/null || die
+}
+
+# High level steps:
+# Our system mrustc package has built stdlib for our current platform.
+# - Step 1: Use system-installed mrustc, (m)rust(c) stdlib, and minicargo to
+#	bootstrap a `cargo` and `rustc` (mrustc-stage0)
+# - Step 2: Use minicargo and the built `rustc` to build a working `sysroot`
+#			(includes `std`, `panic_unwind``, `test`, etc.) (mrustc-stage0)
+# - Step 3: Build build libs again (this time using `cargo` and `rustc`) (mrustc-stage1)
+# - Step 4: Build a `rustc` using those libs (mrustc-stage1)
+#  - Done so there's an optimised rustc around (mrustc is bad at codegen)
+# - Step 5: Build `libstd` with this `rustc` (mrustc-stage2)
+#  - Needed to match ABIs
+# Stages:
+# - mrustc-stage0: mrustc-built cargo and rustc
+# - mrustc-stage1: rustc and sysroot built with mrustc-stage0
+# - mrustc-stage2: rustc from stage1 with sysroot built with stage0
+# See:
+# - https://github.com/thepowersgang/mrustc/blob/master/run_rustc/Makefile
+# - https://github.com/thepowersgang/mrustc/blob/master/TestRustcBootstrap.sh
+# - Upstream Windows .cmd files are also a good reference for early bootstrap
+mrustc_bootstrap() {
+	export RUSTC_BOOTSTRAP=1 # Possibly the only intended use of this variable in ::gentoo
+	# export these variables now and unset them at the end of the function so they don't leak
+	# into the rest of the build.
+	export CFG_COMPILER_HOST_TRIPLE="$(rust_abi)"
+	export CFG_RELEASE="${MRUSTC_RUST_VERSION}"	# Let's pretend we're 1.90.0
+	export CFG_RELEASE_CHANNEL="stable"
+	export CFG_VERSION="${MRUSTC_RUST_VERSION}-stable-mrustc"
+	export CFG_PREFIX="mrustc"
+	export CFG_LIBDIR_RELATIVE="lib"
+	# We actually patch our executable, but this suppresses a warning on every invocation of the bootstrap compiler.
+	export MRUSTC_TARGET_VER="${MRUSTC_RUST_VERSION%.*}"
+	export RUSTC_INSTALL_BINDIR="bin"
+	export REAL_LIBRARY_PATH_VAR="LD_LIBRARY_PATH"
+	export STD_ENV_ARCH="${CFG_COMPILER_HOST_TRIPLE%%-*}"
+
+	# These flags are used in every invocation of our bootstrap `cargo`.
+	local cargo_flags="--target ${CFG_COMPILER_HOST_TRIPLE} -j $(makeopts_jobs) --release --verbose"
+
+	# for bootstrap, let's using the built-in stdlib of compiler (could be the bundled one)
+	filter-flags '-stdlib=*'
+
+	# mrustc requires gcc, so disable libcxx to avoid linker failure on w/o '-lstdc++'
+	[[ "${LLVM_USE_LIBCXX}" == "1" ]] && unset LLVM_USE_LIBCXX
+
+	local llvm_config_wrapper_cxxflags=0
+
+	if use system-llvm; then
+		export LLVM_CONFIG="$(get_llvm_prefix)/bin/llvm-config"
+
+		local llvm_config_cxxflags=$(${LLVM_CONFIG} --cxxflags)
+		elog "Checking llvm-config --cxxflags: '${llvm_config_cxxflags}'"
+		[[ "${llvm_config_cxxflags}" =~ (^|[[:space:]])-stdlib=libc\+\+([[:space:]]|$) ]] && {
+			elog "Found LLVM CXXFLAGS has \"--stdlib=libc++\""
+			llvm_config_wrapper_cxxflags=1
+		}
+	else
+		llvm_bootstrap
+		export LLVM_CONFIG="${WORKDIR}/bootstrap/llvm/bin/llvm-config"
+	fi
+
+	elog "LLVM_CONFIG before wrappers: ${LLVM_CONFIG}"
+
+	# workaround for gcc bug 122409 on musl by wrapping llvm-config
+	# to append libc++ header if has "-stdlib=libc++"
+	elog "Preparing wrapper of llvm-config (${WORKDIR}/llvm-config)"
+	cat > ${WORKDIR}/llvm-config <<-EOF || die
+	#!/bin/bash
+
+	RULES=()
+	for flag in "\$@"; do
+	    case "\${flag}" in
+	$([[ "${llvm_config_wrapper_cxxflags}" == 1 ]] && {
+		echo "        --cxxflags) RULES+=( \"-E\" \"s@(^|[[:space:]]+)(-stdlib=libc\\+\\+)(\\$|[[:space:]])@\\1-I${EPREFIX}/usr/include/c++/v1 \\2\\3@g\" ) ;;"
+	})
+	        *)
+	            ;;
+	    esac
+	done
+
+	[[ -z "\${RULES}" ]] && {
+	    ${LLVM_CONFIG} "\$@"
+	} || {
+	    ${LLVM_CONFIG} "\$@" | \\
+	        tee -a ${T}/llvm-config.0.log | \\
+	        sed "\${RULES[@]}" | \\
+	        tee -a ${T}/llvm-config.1.log
+	    exit \${PIPESTATUS[0]}
+	}
+	EOF
+	export LLVM_CONFIG="${WORKDIR}/llvm-config"
+	chmod +x ${WORKDIR}/llvm-config || die
+
+	einfo "llvm-config wrapper contents:"
+	cat "${LLVM_CONFIG}" || die
+	echo
+
+	# define the mrustc sysroot and common minicargo arguments.
+	local mrustc_sysroot="${BROOT}/usr/lib/rust/mrustc-${MRUSTC_VERSION}/lib/rustlib/${CFG_COMPILER_HOST_TRIPLE}/lib"
+	local minicargo_common_args=(
+		"-L" "${mrustc_sysroot}"
+		"-j" "$(makeopts_jobs)"
+		"--vendor-dir" "${S}/vendor"
+		"--manifest-overrides"
+		"${BROOT}/usr/share/mrustc-${MRUSTC_VERSION}/patches/rustc-${MRUSTC_RUST_VERSION}-overrides.toml"
+	)
+	# There's a very good chance that minicargo and mrustc are not in the PATH.
+	if ! command -v minicargo &> /dev/null; then
+		export PATH="${BROOT}/usr/lib/rust/mrustc-${MRUSTC_VERSION}/bin:${PATH}"
+	fi
+	# Sanity check our bootstrap compiler & stdlib.
+	elog "Sanity checking mrustc and stdlib ..."
+	edo mrustc "${S}/tests/ui/parallel-rustc/hello_world.rs" -L "${mrustc_sysroot}" -o "${T}"/hello -g
+	"${T}"/hello || die "Failed to run hello_world"
+	# Seems fine, let's build some tools!
+
+	# Step 1: Build a `cargo` and `rustc` using system-installed mrustc
+	# Anything we produce is going to be terribly unoptimised; mrustc does not do fantastic codegen.
+	# It's good enough to bootstrap the "real" rustc though.
+	elog "Building bootstrap cargo and rustc using mrustc and minicargo (mrustc-stage0) ..."
+	local stage0="${WORKDIR}/bootstrap/mrustc-stage0"
+	mkdir -p "${stage0}" || die
+	edo minicargo "${S}"/src/tools/cargo --output-dir "${stage0}"/cargo-build ${minicargo_common_args[*]}
+	"${stage0}"/cargo-build/cargo --version || die "Bootstrap cargo failed basic sanity check"
+	edo minicargo "${S}"/compiler/rustc --output-dir "${stage0}"/rustc-build ${minicargo_common_args[*]} \
+		--features llvm
+	"${stage0}"/rustc-build/rustc_main --version || die "Bootstrap rustc failed basic sanity check"
+	# minicargo has special-casing for `rustc` so we need to rename it.
+	mv "${stage0}"/rustc-build/rustc_main "${stage0}"/rustc-build/rustc || die "Failed to rename rustc_main to rustc"
+	# rustc wants these here
+	mkdir -p "${stage0}"/codegen-backends || die
+	mv "${stage0}"/rustc-build/librustc_codegen_llvm.* "${stage0}"/codegen-backends || die
+
+	# Step 2: use the bootstrapped rustc to build sysroot; we need to use `minicargo` for this -
+	# mrustc does not accept all of the arguments that rustc does, even with the rustc_proxy wrapper.
+	# `--script-overrides`:  If the overrides are available, build scripts (and build-deps) are not built
+	# which is good since we don't have a working compiler yet, and can't build them.
+
+	local stage0_sysroot_lib="${stage0}/lib/rustlib/${CFG_COMPILER_HOST_TRIPLE}/lib"
+	# minicargo <= 0.12.0 doesn't create this directory and silently fails, besides it's better to be explicit, right?
+	mkdir -p "${stage0_sysroot_lib}" || die "Failed to create stage0 directory"
+
+	elog "Building 'sysroot' using bootstrap rustc (mrustc-stage0) ..."
+	local o_dir="${BROOT}/usr/share/mrustc-${MRUSTC_VERSION}/script-overrides/stable-${MRUSTC_RUST_VERSION}-linux/"
+	edo env MRUSTC_PATH="${stage0}/rustc-build/rustc" minicargo -j $(makeopts_jobs) --vendor-dir "${S}"/vendor \
+		--script-overrides  "${o_dir}" \
+		--output-dir "${stage0_sysroot_lib}" "${S}"/library/sysroot ||
+			die "Failed to build sysroot with bootstrap rust (mrustc-stage0)"
+
+	elog "Sanity checking sysroot and rustc ..."
+	mkdir -p "${T}"/stage0-hello || die
+	edo "${stage0}"/rustc-build/rustc -L "${stage0_sysroot_lib}" -g "${S}/tests/ui/parallel-rustc/hello_world.rs" \
+		-o "${T}"/stage0-hello/hello
+	"${T}"/stage0-hello/hello || die "Failed to run hello_world built with bootstrap rust stage0"
+
+	elog "mrustc bootstrap stage0 complete!"
+
+	# Step 3: Build a "proper" libstd, including dynamic libs using our bootstrap cargo and rustc.
+	elog "Building 'sysroot' with the stage0 rustc (mrustc-stage1) ..."
+	local stage1="${WORKDIR}/bootstrap/mrustc-stage1"
+	local stage1_sysroot_lib="${stage1}/lib/rustlib/${CFG_COMPILER_HOST_TRIPLE}/lib"
+	mkdir -p "${stage1_sysroot_lib}" || die "Failed to create stage1 directory"
+	mkdir -p "${stage1}/bin" || die
+
+	# Simplified to avoid calling rustc_proxy; We don't need stage1 rustc until after this is built...
+	edo env RUSTFLAGS="-Z force-unstable-if-unmarked" CARGO_TARGET_DIR="${stage1}/sysroot-build" \
+		RUSTC="${stage0}/rustc-build/rustc" "${stage0}"/cargo-build/cargo build ${cargo_flags} \
+		--manifest-path "${S}/library/sysroot/Cargo.toml" --features panic-unwind
+
+	# Move the built libs into the sysroot libdir.
+	mv "${stage1}/sysroot-build/${CFG_COMPILER_HOST_TRIPLE}/release/deps"/*.{rlib,rmeta,so} \
+		"${stage1_sysroot_lib}" || die "Failed to move stage1 libs to stage1 sysroot"
+
+	# We need to copy the stage0 rustc to the stage1 sysroot; this "updates" the sysroot location and enables
+	# resolution of stage1 libs. (run `rustc --print sysroot` on stage0 and stage1 rustc to verify)
+	cp "${stage0}/rustc-build/rustc" "${stage1}/bin/rustc" || die "Failed to copy rustc to stage1 sysroot"
+
+	# Step 4: Build `rustc` with itself, so we have a rustc with the right ABI.
+	# This will be our final `rustc` for the bootstrap process.
+	elog "Building rustc with stage1 libs (mrustc-stage1) ..."
+	mkdir -p "${stage1}/rustc-build" || die
+	edo env RUSTFLAGS="-Z force-unstable-if-unmarked -C link_args=-Wl,-rpath,\$ORIGIN/../lib" \
+		LD_LIBRARY_PATH="${stage2_sysroot_lib}" CARGO_TARGET_DIR="${stage1}/rustc-build" \
+		RUSTC="${stage1}/bin/rustc" TMPDIR="${T}" "${stage0}"/cargo-build/cargo build ${cargo_flags} \
+		--manifest-path "${S}/compiler/rustc/Cargo.toml"  --features llvm
+
+	# Step 5: Build `sysroot` with this `rustc` - Needed to match ABI
+	# We need to use the previous sysroot; we could reuse that dir but it's easier to just copy it.
+	elog "Building final 'sysroot' with the final rustc (mrustc-stage2) ..."
+	local stage2="${WORKDIR}/bootstrap/mrustc-stage2"
+	local stage2_sysroot_lib="${stage2}/lib/rustlib/${CFG_COMPILER_HOST_TRIPLE}/lib"
+	mkdir -p "${stage2_sysroot_lib}" || die "Failed to create stage2 directory"
+	mkdir -p "${stage2}/bin" || die
+
+	# Copy required files from stage1 to stage2 sysroot
+	cp "${stage1}/rustc-build/${CFG_COMPILER_HOST_TRIPLE}"/release/rustc-main "${stage2}/bin/rustc_binary" ||
+		die "Failed to copy final rustc to stage2 sysroot"
+	cp "${stage1}/rustc-build/${CFG_COMPILER_HOST_TRIPLE}"/release/librustc_driver.so "${stage2}/lib" ||
+		die "Failed to copy librustc_driver to sysroot"
+	cp "${stage1}/rustc-build/${CFG_COMPILER_HOST_TRIPLE}"/release/deps/*.{rlib,so} "${stage2_sysroot_lib}" ||
+		die "Failed to copy final rustc libs to stage2 sysroot"
+	cp "${stage1_sysroot_lib}"/* "${stage2_sysroot_lib}" || die "Failed to copy stage1 so files to stage2 sysroot"
+
+	# There's a magic script used in place of rustc so that libs can be found
+	cat <<- EOF > "${stage2}/bin/rustc" || die "Failed to create rustc wrapper"
+		#!/bin/sh
+		LD_LIBRARY_PATH="${stage2}/lib:${stage2_sysroot_lib}" ${stage2}/bin/rustc_binary "\$@"
+	EOF
+	chmod +x "${stage2}/bin/rustc" || die "Failed to make rustc wrapper executable"
+
+	# Use rustc to build 'sysroot'; this is the final step in the bootstrap process.
+	# rpath probably isn't needed here, but it doesn't hurt.
+	edo env RUSTFLAGS="-Z force-unstable-if-unmarked -C link_args=-Wl,-rpath,\$ORIGIN/../lib" \
+		CARGO_TARGET_DIR="${stage2}/stdlib-build" RUSTC="${stage2}/bin/rustc" \
+		"${stage0}"/cargo-build/cargo build ${cargo_flags} --manifest-path "${S}/library/sysroot/Cargo.toml" \
+		--features panic-unwind
+
+	# Build our final output sysroot
+	local output="${WORKDIR}/bootstrap/rust-${PV}"
+	local output_sysroot_lib="${output}/lib/rustlib/${CFG_COMPILER_HOST_TRIPLE}/lib"
+	mkdir -p "${output_sysroot_lib}" || die "Failed to create output directory"
+	mkdir -p "${output}/bin" || die "Failed to create output directory"
+
+	# Copy our various output files into the output sysroot
+	# rustc
+	cp "${stage1}/rustc-build/${CFG_COMPILER_HOST_TRIPLE}"/release/rustc-main "${output}/bin/rustc_binary" ||
+		die "Failed to copy final rustc to output"
+	cp "${stage1}/rustc-build/${CFG_COMPILER_HOST_TRIPLE}"/release/librustc_driver.so "${output}/lib" ||
+		die "Failed to copy librustc_driver to output"
+	cp "${stage1}/rustc-build/${CFG_COMPILER_HOST_TRIPLE}"/release/deps/*.{rlib,so} "${output_sysroot_lib}" ||
+		die "Failed to copy final rustc libs to output"
+	# cargo; no need to build an optimised cargo if we're using this to build a complelety new Rust.
+	cp "${stage0}/cargo-build/cargo" "${output}/bin/cargo" || die "Failed to copy cargo to output"
+	# libs
+	mv "${stage2}/stdlib-build/${CFG_COMPILER_HOST_TRIPLE}/release/deps"/*.{rlib,rmeta,so} "${output_sysroot_lib}" ||
+		die "Failed to copy stage2 libs to output"
+	# Our trusty rustc wrapper
+	cat <<- EOF > "${output}/bin/rustc" || die "Failed to create rustc wrapper"
+		#!/bin/sh
+		LD_LIBRARY_PATH="${output}/lib:${output_sysroot_lib}" ${output}/bin/rustc_binary "\$@"
+	EOF
+	chmod +x "${output}/bin/rustc" || die "Failed to make rustc wrapper executable"
+
+	# Perform a sanity check on the final Rust.
+	mkdir -p "${T}"/output-hello || die
+	edo "${output}/bin/rustc" -L "${output_sysroot_lib}" -g "${S}/tests/ui/parallel-rustc/hello_world.rs" \
+		-o "${T}"/output-hello/hello
+	"${T}"/output-hello/hello || die "Failed to run hello_world built with bootstrapped Rust"
+
+	elog "Successfully bootstrapped Rust using mrustc!"
+
+	# Note: The Rust sysroot that we've produced is pretty close to what we'd expect from a normal Rust build.
+	# If someone was so inclined they could build an optimised cargo using the stage2 rustc and sysroot,
+	# and install the output directly. This is untested, as I'm sure there's more to it than that.
+	# I'm satisfied with being able to build Rust normally at this point.
+
+	# Tidy up the Rust sources; revert mrustc changes so Rust can be built normally.
+	pushd "${S}" 2>/dev/null || die
+		patch -R -p0 < "${BROOT}"/usr/share/mrustc-${MRUSTC_VERSION}/patches/rustc-${MRUSTC_RUST_VERSION}-src.patch ||
+			die "Failed to revert mrustc patches"
+	popd 2>/dev/null || die
+
+	# Tidy up any environment variables we've set in the bootstrap process.
+	unset CFG_COMPILER_HOST_TRIPLE CFG_RELEASE CFG_RELEASE_CHANNEL CFG_PREFIX CFG_VERSION CFG_LIBDIR_RELATIVE
+	unset LLVM_CONFIG MRUSTC_TARGET_VER REAL_LIBRARY_PATH_VAR RUSTFLAGS RUSTC_BOOTSTRAP RUSTC_INSTALL_BINDIR
+}
+
 src_compile() {
+	use mrustc-bootstrap && mrustc_bootstrap
 	# -v will show invocations, -vv "very verbose" is overkill, -vvv "very very verbose" is insane
 	RUST_BACKTRACE=1 "${EPYTHON}" ./x.py build -v --config="${S}"/bootstrap.toml -j$(makeopts_jobs) || die
 }
