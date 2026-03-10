@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,7 +34,7 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	bash? ( app-shells/bash )
 	sysv-utils? (
-		!sys-apps/systemd[sysv-utils(-)]
+		!sys-apps/systemd[sysv-utils(+)]
 		!sys-apps/sysvinit
 	)
 	!sysv-utils? (
@@ -59,6 +59,7 @@ src_configure() {
 		$(meson_use newnet)
 		-Dos=Linux
 		$(meson_use pam)
+		-Dpam_libdir="$(getpam_mod_dir)"
 		$(meson_feature selinux)
 		-Dshell=$(usex bash /bin/bash /bin/sh)
 		$(meson_use sysv-utils sysvinit)
@@ -104,6 +105,7 @@ src_install() {
 		# install gentoo pam.d files
 		newpamd "${FILESDIR}"/start-stop-daemon.pam start-stop-daemon
 		newpamd "${FILESDIR}"/start-stop-daemon.pam supervise-daemon
+		pamd_mimic system-local-login openrc-user session
 	fi
 
 	# install documentation

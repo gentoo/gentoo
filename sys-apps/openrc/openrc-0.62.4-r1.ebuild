@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,7 +34,7 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	bash? ( app-shells/bash )
 	sysv-utils? (
-		!sys-apps/systemd[sysv-utils(-)]
+		!sys-apps/systemd[sysv-utils(+)]
 		!sys-apps/sysvinit
 	)
 	!sysv-utils? (

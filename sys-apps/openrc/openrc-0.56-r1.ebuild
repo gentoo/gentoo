@@ -13,7 +13,7 @@ if [[ ${PV} =~ ^9{4,}$ ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/OpenRC/openrc/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 fi
 
 LICENSE="BSD-2"
@@ -34,7 +34,7 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	bash? ( app-shells/bash )
 	sysv-utils? (
-		!sys-apps/systemd[sysv-utils(-)]
+		!sys-apps/systemd[sysv-utils(+)]
 		!sys-apps/sysvinit
 	)
 	!sysv-utils? (
@@ -52,15 +52,15 @@ PDEPEND="netifrc? ( net-misc/netifrc )"
 
 src_configure() {
 	local emesonargs=(
-		--bindir="${EPREFIX}/bin"
-		--sbindir="${EPREFIX}/sbin"
+	--bindir=/bin
+	--sbindir=/sbin
 		$(meson_feature audit)
 		"-Dbranding=\"Gentoo Linux\""
 		$(meson_use newnet)
+		-Dos=Linux
 		$(meson_use pam)
-		-Dpam_libdir="${EPREFIX}$(getpam_mod_dir)"
 		$(meson_feature selinux)
-		-Dshell=$(usex bash "${EPREFIX}/bin/bash" "${EPREFIX}/bin/sh")
+		-Dshell=$(usex bash /bin/bash /bin/sh)
 		$(meson_use sysv-utils sysvinit)
 	)
 	# export DEBUG=$(usev debug)
@@ -104,7 +104,6 @@ src_install() {
 		# install gentoo pam.d files
 		newpamd "${FILESDIR}"/start-stop-daemon.pam start-stop-daemon
 		newpamd "${FILESDIR}"/start-stop-daemon.pam supervise-daemon
-		pamd_mimic system-local-login openrc-user session
 	fi
 
 	# install documentation

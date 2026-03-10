@@ -34,7 +34,7 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	bash? ( app-shells/bash )
 	sysv-utils? (
-		!sys-apps/systemd[sysv-utils(-)]
+		!sys-apps/systemd[sysv-utils(+)]
 		!sys-apps/sysvinit
 	)
 	!sysv-utils? (
