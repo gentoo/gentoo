@@ -69,6 +69,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.229.1-llvm-libunwind.patch
+	"${FILESDIR}"/${P}-nvidia595-vulkan.patch
 )
 
 python_check_deps() {
