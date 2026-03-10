@@ -1,0 +1,140 @@
+https://gitlab.com/procps-ng/procps/-/merge_requests/286
+
+From c116ebd4b759ff79b391d18802a227738be9d94c Mon Sep 17 00:00:00 2001
+From: Svante Signell <svante.signell@gmail.com>
+Date: Wed, 11 Feb 2026 16:10:37 +0100
+Subject: [PATCH] Add support for GNU/Hurd
+
+---
+ library/pids.c                   | 12 ++++++++++++
+ library/readproc.c               |  4 ++++
+ library/uptime.c                 |  4 ++++
+ src/top/top.c                    |  6 ++++++
+ testsuite/ps.test/test-hugetlb.c |  2 +-
+ 5 files changed, 27 insertions(+), 1 deletion(-)
+
+diff --git a/library/pids.c b/library/pids.c
+index 8855920a..b7b6e3c6 100644
+--- a/library/pids.c
++++ b/library/pids.c
+@@ -1039,9 +1039,15 @@ static inline int pids_items_check_failed (
+      * if (procps_pids_new(&info, PIDS_noop, 3) < 0)
+      *                            ^~~~~~~~~~~~~~~~
+      */
++/* (void*)items=0x3010<(void*)0x8000 causing FAIL:procps_pids new then unref */
++#ifdef __GNU__
++    if (numitems < 1)
++        return 1;
++#else
+     if (numitems < 1
+     || (void *)items < (void *)0x8000)      // twice as big as our largest enum
+         return 1;
++#endif
+ 
+     for (i = 0; i < numitems; i++) {
+         // a pids_item is currently unsigned, but we'll protect our future
+@@ -1523,8 +1529,10 @@ fresh_start:
+         pids_containers_check();
+ 
+     info->boot_tics = 0;
++#ifdef CLOCK_BOOTTIME
+     if (0 >= clock_gettime(CLOCK_BOOTTIME, &ts))
+         info->boot_tics = (ts.tv_sec + ts.tv_nsec * 1.0e-9) * info->hertz;
++#endif
+ 
+     if (NULL == info->read_something(info->get_PT, &info->get_proc))
+         return NULL;
+@@ -1567,8 +1575,10 @@ PROCPS_EXPORT struct pids_fetch *procps_pids_reap (
+     info->read_something = which ? readeither : readproc;
+ 
+     info->boot_tics = 0;
++#ifdef CLOCK_BOOTTIME
+     if (0 >= clock_gettime(CLOCK_BOOTTIME, &ts))
+         info->boot_tics = (ts.tv_sec + ts.tv_nsec * 1.0e-9) * info->hertz;
++#endif
+ 
+     rc = pids_stacks_fetch(info);
+ 
+@@ -1676,8 +1686,10 @@ PROCPS_EXPORT struct pids_fetch *procps_pids_select (
+     info->read_something = (which & PIDS_FETCH_THREADS_TOO) ? readeither : readproc;
+ 
+     info->boot_tics = 0;
++#ifdef CLOCK_BOOTTIME
+     if (0 >= clock_gettime(CLOCK_BOOTTIME, &ts))
+         info->boot_tics = (ts.tv_sec + ts.tv_nsec * 1.0e-9) * info->hertz;
++#endif
+ 
+     rc = pids_stacks_fetch(info);
+ 
+diff --git a/library/readproc.c b/library/readproc.c
+index a7f79051..7bb81625 100644
+--- a/library/readproc.c
++++ b/library/readproc.c
+@@ -1745,7 +1745,11 @@ int look_up_our_self(void) {
+     int fd;
+ 
+     memset(&p, 0, sizeof(proc_t));
++#ifdef O_PATH
+     fd = open("/proc/self", O_PATH|O_DIRECTORY);
++#else
++    fd = open("/proc/self", O_DIRECTORY);
++#endif
+     if(fd < 0 || file2str(fd, "stat", &ub) == -1) {
+         fprintf(stderr, "Error, do this: mount -t proc proc /proc\n");
+         _exit(47);
+diff --git a/library/uptime.c b/library/uptime.c
+index dfff8e6e..6c09fc90 100644
+--- a/library/uptime.c
++++ b/library/uptime.c
+@@ -177,8 +177,12 @@ PROCPS_EXPORT int procps_container_uptime(
+     if (!uptime_secs)
+         return 0; //valid, but odd call
+ 
++#ifdef CLOCK_BOOTTIME
+     if ( (rv = clock_gettime(CLOCK_BOOTTIME, &tp) < 0))
+         return rv;
++#else
++        return -1;
++#endif
+ 
+     if ( (rv = procps_pids_new(&info, items, 1) < 0))
+         return rv;
+diff --git a/src/top/top.c b/src/top/top.c
+index a62b7e1b..d5cad3ad 100644
+--- a/src/top/top.c
++++ b/src/top/top.c
+@@ -2847,6 +2847,8 @@ static void *tasks_refresh (void *unused) {
+ #ifdef THREADED_TSK
+       sem_wait(&Semaphore_tasks_beg);
+ #endif
++
++#ifdef CLOCK_BOOTTIME
+       if (0 != clock_gettime(CLOCK_BOOTTIME, &ts))
+          Frame_etscale = 0;
+       else {
+@@ -2857,6 +2859,10 @@ static void *tasks_refresh (void *unused) {
+          // if in Solaris mode, adjust our scaling for all cpus
+          Frame_etscale = 100.0f / ((float)Hertz * (float)et * (Rc.mode_irixps ? 1 : Cpu_cnt));
+       }
++#else
++         Frame_etscale = 0;
++
++#endif
+       what = Thread_mode ? PIDS_FETCH_THREADS_TOO : PIDS_FETCH_TASKS_ONLY;
+       if (Monpidsidx) {
+          what |= PIDS_SELECT_PID;
+diff --git a/testsuite/ps.test/test-hugetlb.c b/testsuite/ps.test/test-hugetlb.c
+index cfd5c30f..38b8488c 100644
+--- a/testsuite/ps.test/test-hugetlb.c
++++ b/testsuite/ps.test/test-hugetlb.c
+@@ -59,7 +59,7 @@ int main(int argc, const char *argv[])
+         usage(argv[0], "Invalid size");
+ 
+     if (MAP_FAILED == (addr = mmap(NULL, (kbytes*1024), (PROT_READ | PROT_WRITE),
+-                    (MAP_PRIVATE | MAP_ANONYMOUS | MAP_HUGETLB), 0, 0))) {
++                    (MAP_PRIVATE | MAP_ANONYMOUS), 0, 0))) {
+         perror("mmap");
+         exit(EXIT_FAILURE);
+     }
+-- 
+GitLab
