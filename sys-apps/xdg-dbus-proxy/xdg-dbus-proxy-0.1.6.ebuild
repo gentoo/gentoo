@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,6 +26,10 @@ BDEPEND="
 	dev-libs/libxslt
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}/${P}-glibc-2.43.patch"
+)
 
 src_configure() {
 	local emesonargs=(
