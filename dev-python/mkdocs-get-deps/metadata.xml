@@ -7,7 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">mkdocs/get-deps</remote-id>
+		<remote-id type="github">mkdocs-community/get-deps</remote-id>
 		<remote-id type="pypi">mkdocs-get-deps</remote-id>
 	</upstream>
 </pkgmetadata>
