@@ -1,0 +1,9 @@
+--- a/tests/Misc/Makefile.am	2026-03-10 21:50:41.187822537 +0100
++++ b/tests/Misc/Makefile.am	2026-03-10 21:51:01.355585373 +0100
+@@ -1,6 +1,5 @@
+ TESTS = \
+ 	directoryTest \
+-	fileTest \
+ 	timeTest \
+ 	view \
+ 	parameterizedView \

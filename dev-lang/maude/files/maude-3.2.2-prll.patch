@@ -1,0 +1,26 @@
+--- a/src/Mixfix/Makefile.am
++++ b/src/Mixfix/Makefile.am
+@@ -82,7 +82,7 @@
+ EXTRA_libmixfix_a_SOURCES = \
+ 	compiler.cc
+ 
+-BUILT_SOURCES = surface.yy surface.cc surface.h lexer.cc tokenizer.cc deserializer.cc
++BUILT_SOURCES = surface.yy surface.cc lexer.cc tokenizer.cc deserializer.cc
+ CLEANFILES = surface.yy surface.cc surface.h lexer.cc tokenizer.cc deserializer.cc
+ 
+ surface.yy: \
+@@ -97,12 +97,12 @@
+ 	$(srcdir)/bottom.yy \
+ 	> surface.yy
+ 
+-surface.cc: surface.yy
++surface.cc: surface.h
+ 	$(BISON) -dv surface.yy -o surface.c
+ 	mv surface.c surface.cc
+ 	touch surface.h
+ 
+-surface.h: surface.cc
++surface.h: surface.yy
+ 
+ #	According to the manual, automake is supposed to grok
+ #	.ll files and do the right thing... but it doesn't

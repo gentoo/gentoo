@@ -13,4 +13,7 @@
 		sublanguage. Besides supporting equational specification and
 		programming, Maude also supports rewriting logic computation.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">maude-lang/Maude</remote-id>
+	</upstream>
 </pkgmetadata>
