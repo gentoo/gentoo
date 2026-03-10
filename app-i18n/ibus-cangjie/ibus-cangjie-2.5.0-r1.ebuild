@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,21 +13,24 @@ SRC_URI="https://gitlab.freedesktop.org/cangjie/ibus-cangjie/-/jobs/67033920/art
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="nls"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	app-i18n/ibus[python(+),${PYTHON_USEDEP}]
+	app-i18n/ibus[introspection,python(+),${PYTHON_USEDEP}]
 	>=app-i18n/libcangjie-1.4.0
+	dev-libs/glib[introspection]
 	>=dev-python/cangjie-1.5.0[${PYTHON_USEDEP}]
+	dev-python/pygobject[${PYTHON_USEDEP}]
+	gui-libs/gtk:4[introspection]
+	>=gui-libs/libadwaita-1.5[introspection]
 	media-libs/gsound[introspection]
-	nls? ( virtual/libintl )
+	virtual/libintl
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
 	>=dev-build/meson-1.3.2
-	nls? ( sys-devel/gettext )
+	sys-devel/gettext
 "
 
 PATCHES=(
@@ -49,6 +52,7 @@ src_test() {
 src_install() {
 	python_install() {
 		meson_src_install
+		python_fix_shebang "${ED}"
 		python_optimize
 	}
 	python_foreach_impl python_install
