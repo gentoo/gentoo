@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Mike Gilbert <floppym@gentoo.org> (2025-06-03)
@@ -20,4 +20,5 @@ sys-power/sandmann-bin
 # Does not support split-usr filesystem geometry. Please migrate to
 # a merged-usr profile.
 sys-apps/systemd
+sys-apps/systemd-initctl
 sys-process/systemd-cron
