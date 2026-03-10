@@ -35,9 +35,14 @@ inherit flag-o-matic toolchain-funcs
 go-env_set_compile_environment() {
 	tc-export CC CXX PKG_CONFIG
 
-	export GOARCH="$(go-env_goarch)"
-	use arm && export GOARM=$(go-env_goarm)
-	use x86 && export GO386=$(go-env_go386)
+	export GOARCH=$(go-env_goarch)
+
+	case ${GOARCH} in
+		386) export GO386=$(go-env_go386) ;;
+		arm|armbe) export GOARM=$(go-env_goarm) ;;
+		mips64*) export GOMIPS64=$(go-env_gomips) ;;
+		mips*) export GOMIPS=$(go-env_gomips) ;;
+	esac
 
 	# XXX: Hack for checking ICE (bug #912152, gcc PR113204)
 	if tc-is-gcc ; then
@@ -146,6 +151,20 @@ go-env_goarm() {
 		echo ,hardfloat
 	else
 		echo ,softfloat
+	fi
+}
+
+# @FUNCTION: go-env_gomips
+# @USAGE: [tuple]
+# @DESCRIPTION:
+# Returns the appropriate GOMIPS or GOMIPS64 setting for given target or CHOST.
+go-env_gomips() {
+	local CTARGET=${1:-${CHOST}}
+
+	if [[ $(tc-is-softfloat) == no ]]; then
+		echo hardfloat
+	else
+		echo softfloat
 	fi
 }
 
