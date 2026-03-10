@@ -144,10 +144,7 @@ RDEPEND="${COMMON_DEPEND}
 		!sys-apps/openrc[sysv-utils(-)]
 		!sys-apps/sysvinit
 	)
-	!sysv-utils? (
-		sys-apps/systemd-initctl
-		sys-apps/sysvinit
-	)
+	!sysv-utils? ( sys-apps/sysvinit )
 	resolvconf? ( !net-dns/openresolv )
 	!sys-auth/nss-myhostname
 	!sys-fs/eudev
@@ -155,10 +152,13 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 # sys-apps/dbus: the daemon only (+ build-time lib dep for tests)
-PDEPEND=">=sys-apps/dbus-1.9.8[systemd]
+PDEPEND="
+	>=sys-apps/dbus-1.9.8[systemd]
 	>=sys-fs/udev-init-scripts-34
 	policykit? ( sys-auth/polkit )
-	!vanilla? ( sys-apps/gentoo-systemd-integration )"
+	!sysv-utils? ( sys-apps/systemd-initctl )
+	!vanilla? ( sys-apps/gentoo-systemd-integration )
+"
 
 BDEPEND="
 	app-arch/xz-utils:0
