@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,4 +18,6 @@ BDEPEND="virtual/perl-ExtUtils-MakeMaker"
 PERL_RM_FILES=(
 	"t/pod.t"
 	"t/pod-coverage.t"
+	# Sensitive to PORTAGE_NICENESS and friends
+	"t/setpriority.t"
 )
