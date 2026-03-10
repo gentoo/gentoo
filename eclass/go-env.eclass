@@ -53,10 +53,11 @@ go-env_set_compile_environment() {
 		fi
 	fi
 
-	export CGO_CFLAGS="${CGO_CFLAGS:-$CFLAGS}"
-	export CGO_CPPFLAGS="${CGO_CPPFLAGS:-$CPPFLAGS}"
-	export CGO_CXXFLAGS="${CGO_CXXFLAGS:-$CXXFLAGS}"
-	export CGO_LDFLAGS="${CGO_LDFLAGS:-$LDFLAGS}"
+	export \
+		CGO_CFLAGS=${CFLAGS} \
+		CGO_CPPFLAGS=${CPPFLAGS} \
+		CGO_CXXFLAGS=${CXXFLAGS} \
+		CGO_LDFLAGS=${LDFLAGS}
 
 	# bug #929219
 	if tc-is-gcc ; then
