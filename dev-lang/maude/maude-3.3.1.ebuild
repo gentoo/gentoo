@@ -1,0 +1,68 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=9
+
+inherit autotools
+
+MY_PN=${PN^}
+MY_P=${MY_PN}${PV}
+GIO_DL="https://github.com/maude-lang/maude-lang.github.io/releases/download/maude"
+
+DESCRIPTION="High-level specification language for equational and logic programming"
+HOMEPAGE="https://maude.cs.uiuc.edu/"
+SRC_URI="https://github.com/maude-lang/Maude/archive/refs/tags/${MY_P}.tar.gz
+	doc? ( ${GIO_DL}/${P^}-manual.pdf )
+	examples? ( ${GIO_DL}/Maude-3.1-manual-book-examples.zip )"
+
+S="${WORKDIR}"/${MY_PN}-${MY_P}
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~amd64 ~ppc ~x86"
+IUSE="doc examples"
+
+RDEPEND="
+	dev-libs/gmp:=[cxx(+)]
+	dev-libs/libtecla
+	sci-libs/buddy"
+DEPEND="${RDEPEND}"
+BDEPEND="app-arch/unzip
+	app-alternatives/yacc
+	app-alternatives/lex"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-2.6-search-datadir.patch"
+	"${FILESDIR}/${PN}-2.7-AR.patch"
+	"${FILESDIR}/${PN}-3.2.2-prll.patch"
+	"${FILESDIR}/${PN}-3.2.2-fileTest.patch" # Drop a test
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
+
+src_configure() {
+	local myconf=(
+		--datadir="${EPREFIX}/usr/share/${PN}"
+		--without-yices2
+		# Breaks glibc-2.34 support
+		--without-libsigsegv
+	)
+	econf "${myconf[@]}"
+}
+
+src_install() {
+	default
+
+	# install full maude
+	insinto /usr/share/${PN}
+
+	# install docs and examples
+	use doc && dodoc "${DISTDIR}"/${P^}-manual.pdf
+	if use examples; then
+		dodoc -r "${WORKDIR}"/examples
+		docompress -x /usr/share/doc/${PF}/examples
+	fi
+}
