@@ -1,7 +1,8 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 USE_RUBY="ruby31 ruby32"
 
 inherit ruby-fakegem
@@ -34,7 +35,7 @@ ruby_add_rdepend "
 	>=dev-ruby/sigdump-0.2.2
 	>=dev-ruby/strptime-0.2.4
 	>=dev-ruby/tzinfo-1.0
-	=dev-ruby/webrick-1.7*
+	>=dev-ruby/webrick-1.7.0
 	>=dev-ruby/yajl-ruby-1.0"
 
 ruby_add_depend "test? ( dev-ruby/flexmock )"
