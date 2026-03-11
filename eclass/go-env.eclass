@@ -33,7 +33,7 @@ inherit flag-o-matic toolchain-funcs
 # (e.g. "emerge-aarch64-cross-linux-gnu foo" run on x86_64 will emerge "foo" for x86_64
 #  instead of aarch64)
 go-env_set_compile_environment() {
-	tc-export CC CXX PKG_CONFIG
+	tc-export AR CC CXX FC PKG_CONFIG
 
 	export GOARCH=$(go-env_goarch)
 
