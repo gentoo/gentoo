@@ -48,9 +48,7 @@ src_configure() {
 		"nvptx64-nvidia-cuda"
 	)
 	use video_cards_radeonsi && libclc_targets+=(
-		"amdgcn--"
 		"amdgcn-amd-amdhsa-llvm"
-		"amdgcn-mesa-mesa3d"
 	)
 
 	libclc_targets=${libclc_targets[*]}
