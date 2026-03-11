@@ -19,7 +19,7 @@
 
 # Matt Jolly <kangie@gentoo.org> (2026-03-10)
 # mrustc is not yet stable on amd64, but we want bootstrap for Rust
-dev-lang/rust mrustc-bootstrap
+~dev-lang/rust-1.90.0 mrustc-bootstrap
 
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-12-01)
 # no stable llvm-runtimes/offload
