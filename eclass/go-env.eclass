@@ -94,6 +94,20 @@ go-env_set_compile_environment() {
 		CGO_LDFLAGS=${LDFLAGS}
 }
 
+# @FUNCTION: go-env_run
+# @DESCRIPTION:
+# Runs the given command under a localised environment configured by
+# go-env_set_compile_environment. It is not usually necessary to call this, but
+# it is useful when combined with tc-env_build.
+go-env_run() {
+	local -I AR CC CXX FC PKG_CONFIG \
+		GO{FLAGS,MAXPROCS,ARCH,OS,386,ARM,MIPS,MIPS64} \
+		CGO_{CFLAGS,CPPFLAGS,CXXFLAGS,LDFLAGS}
+
+	go-env_set_compile_environment
+	"${@}"
+}
+
 # @FUNCTION: go-env_goos
 # @USAGE: [toolchain prefix]
 # @DESCRIPTION:
