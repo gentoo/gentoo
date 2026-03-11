@@ -1,6 +1,13 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mike Gilbert <floppym@gentoo.org> (2026-03-11)
+# Pending completion of bug 971072.
+dev-qt/qtbase journald
+net-analyzer/wireshark sdjournal
+sys-kernel/installkernel -systemd
+sys-apps/ipmitool openbmc
+
 # Mike Gilbert <floppym@gentoo.org> (2026-02-07)
 # Requires dev-python/python-systemd.
 net-analyzer/fail2ban systemd

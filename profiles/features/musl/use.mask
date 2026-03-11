@@ -1,9 +1,15 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Select the correct ELIBC
 -elibc_musl
 elibc_glibc
+
+# Mike Gilbert <floppym@gentoo.org> (2026-03-11)
+# Pending completion of bug 971072.
+systemd
+generic-uki
+uwsgi_plugins_systemd_logger
 
 # Sam James <sam@gentoo.org> (2025-07-12)
 # dev-debug/dtrace and dev-debug/systemtap don't work on musl

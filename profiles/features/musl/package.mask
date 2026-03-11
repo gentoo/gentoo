@@ -1,6 +1,14 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mike Gilbert <floppym@gentoo.org> (2026-03-11)
+# Pending completion of bug 971072.
+app-admin/mkosi
+app-admin/systemdgenie
+sys-apps/gentoo-systemd-integration
+sys-apps/systemd
+sys-apps/systemd-initctl
+
 # Sam James <sam@gentoo.org> (2026-02-11)
 # Fails to build on musl (bug #968134, https://sourceware.org/PR33747)
 ~dev-debug/gdb-17.1
