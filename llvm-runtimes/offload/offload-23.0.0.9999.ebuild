@@ -12,7 +12,10 @@ HOMEPAGE="https://openmp.llvm.org"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0/${LLVM_SOABI}"
-IUSE="+clang +debug ompt test llvm_targets_AMDGPU llvm_targets_NVPTX"
+IUSE="
+	+clang +debug ompt test
+	llvm_targets_AMDGPU llvm_targets_NVPTX llvm_targets_SPIRV
+"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -20,6 +23,7 @@ RDEPEND="
 	~llvm-core/llvm-${PV}
 	~llvm-runtimes/openmp-${PV}[ompt?]
 	llvm_targets_AMDGPU? ( dev-libs/rocr-runtime:= )
+	llvm_targets_SPIRV? ( dev-libs/level-zero:= )
 "
 DEPEND="
 	${RDEPEND}
@@ -89,6 +93,9 @@ src_configure() {
 		fi
 		if use llvm_targets_NVPTX; then
 			plugins+=";cuda"
+		fi
+		if use llvm_targets_SPIRV; then
+			plugins+=";level_zero"
 		fi
 	fi
 
