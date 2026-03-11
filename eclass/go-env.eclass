@@ -48,7 +48,7 @@ go-env_set_compile_environment() {
 	if tc-is-gcc ; then
 		# For either USE=debug or an unreleased compiler, non-default
 		# checking will trigger.
-		if has_version -b "sys-devel/gcc[debug]" || [[ $(gcc-minor-version) -eq 0 ]] ; then
+		if $(tc-getCC) -v 2>&1 | grep -Eqe "--enable-checking=\S*\byes\b" ; then
 			filter-lto
 		fi
 	fi
