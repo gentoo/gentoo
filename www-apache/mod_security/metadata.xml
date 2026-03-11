@@ -13,7 +13,7 @@
     </flag>
     <flag name="jit">
       Add support for the PCRE Just-in-Time optimisation, as enabled
-      by <pkg>dev-libs/libpcre</pkg> with jit USE flag enabled. Might
+      by <pkg>dev-libs/libpcre2</pkg> with jit USE flag enabled. Might
       not be available on hardened systems.
     </flag>
     <flag name="json">
