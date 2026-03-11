@@ -13,10 +13,6 @@ HOMEPAGE="https://openmp.llvm.org"
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0/${LLVM_SOABI}"
 IUSE="+clang +debug ompt test llvm_targets_AMDGPU llvm_targets_NVPTX"
-REQUIRED_USE="
-	llvm_targets_AMDGPU? ( clang )
-	llvm_targets_NVPTX? ( clang )
-"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -36,8 +32,6 @@ BDEPEND="
 	dev-lang/perl
 	virtual/pkgconfig
 	clang? ( llvm-core/clang )
-	llvm_targets_AMDGPU? ( llvm-core/clang[llvm_targets_AMDGPU] )
-	llvm_targets_NVPTX? ( llvm-core/clang[llvm_targets_NVPTX] )
 	test? (
 		$(python_gen_any_dep '
 			dev-python/lit[${PYTHON_USEDEP}]
