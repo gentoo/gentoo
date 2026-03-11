@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 34fe44a2ef..01c874dcfd 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -485,7 +485,7 @@ include_directories(BEFORE SYSTEM ${EIGEN3_INCLUDE_DIR})
+ # no matter what.
+ find_package(EXPAT REQUIRED)
+ 
+-add_library(libexpat INTERFACE)
++#add_library(libexpat INTERFACE)
+ 
+ if (TARGET EXPAT::EXPAT )
+     target_link_libraries(libexpat INTERFACE EXPAT::EXPAT)

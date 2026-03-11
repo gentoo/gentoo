@@ -1,0 +1,9 @@
+diff --git a/src/libslic3r/GCode/SeamPlacer.hpp b/src/libslic3r/GCode/SeamPlacer.hpp
+--- a/src/libslic3r/GCode/SeamPlacer.hpp
++++ b/src/libslic3r/GCode/SeamPlacer.hpp
+@@ -17,6 +17,7 @@
+ #include "libslic3r/BoundingBox.hpp"
+ #include "libslic3r/AABBTreeIndirect.hpp"
+ #include "libslic3r/KDTreeIndirect.hpp"
++#include "libslic3r/TriangleMesh.hpp"
+

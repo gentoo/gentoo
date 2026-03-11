@@ -1,0 +1,118 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -384,7 +384,7 @@
+ # boost::process was introduced first in version 1.64.0,
+ # boost::beast::detail::base64 was introduced first in version 1.66.0
+ set(MINIMUM_BOOST_VERSION "1.66.0")
+-set(_boost_components "system;filesystem;thread;log;locale;regex;chrono;atomic;date_time;iostreams")
++set(_boost_components "filesystem;thread;log;locale;regex;chrono;atomic;date_time;iostreams;process")
+ find_package(Boost ${MINIMUM_BOOST_VERSION} REQUIRED COMPONENTS ${_boost_components})
+ # boost compile only in release & debug. We have to force the release version for RELWITHDEBINFO compilation
+ if (MSVC)
+diff --git a/src/libslic3r/GCode/PostProcessor.cpp b/src/libslic3r/GCode/PostProcessor.cpp
+--- a/src/libslic3r/GCode/PostProcessor.cpp
++++ b/src/libslic3r/GCode/PostProcessor.cpp
+@@ -29,6 +29,8 @@
+ // POSIX
+ #include <sstream>
+ #include <boost/process.hpp>
++#include <boost/process/v1/child.hpp>
++#include <boost/process/v1/io.hpp>
+ #include <unistd.h>     //readlink
+ #endif
+
+@@ -228,8 +230,8 @@
+     command_line.push_back('\'');
+
+     BOOST_LOG_TRIVIAL(trace) << boost::format("Executing script, shell: %1%, command: %2%") % shell % command_line;
+-    process::ipstream istd_err;
+-    process::child child(shell, "-c", command_line, process::std_err > istd_err);
++    boost::process::v1::ipstream istd_err;
++    boost::process::v1::child child(shell, "-c", command_line, boost::process::v1::std_err > istd_err);
+
+     std_err.clear();
+     std::string line;
+diff --git a/src/slic3r/GUI/FreeCADDialog.cpp b/src/slic3r/GUI/FreeCADDialog.cpp
+--- a/src/slic3r/GUI/FreeCADDialog.cpp
++++ b/src/slic3r/GUI/FreeCADDialog.cpp
+@@ -45,6 +45,11 @@
+ // note: don't put it in a header, as it can create problems. Here it's safe enough to be used, as it's just applied for the process.hpp file and this source code.
+ #define pid_t pid_t
+ #include <boost/process.hpp>
++#include <boost/process/v1/child.hpp>
++#include <boost/process/v1/io.hpp>
++#include <boost/process/v1/pipe.hpp>
++#include <boost/process/v1/async.hpp>
++
+
+ #include <cstdlib>   // getenv()
+
+@@ -63,11 +68,12 @@
+     //now that we have process.hpp, we can define the ExecVar
+     class ExecVar {
+     public:
+-        boost::process::opstream pyin;
++        boost::process::v1::opstream pyin;
++#include <boost/process/v1/io.hpp>
+         boost::asio::io_context ios;
+         std::future<std::string> data_out;
+         std::future<std::string> data_err;
+-        std::unique_ptr<boost::process::child> process;
++        std::unique_ptr<boost::process::v1::child> process;
+ };
+
+     //TODO: auto tab
+@@ -843,8 +849,8 @@
+         get_string_from_web_async("https://api.github.com/repos/supermerill/FreePySCAD/commits/master", this, &FreeCADDialog::test_update_script_file);
+     }
+
+-    exec_var->process.reset(new boost::process::child(pythonpath.string() + " -u -i", boost::process::std_in < exec_var->pyin,
+-        boost::process::std_out > exec_var->data_out, boost::process::std_err > exec_var->data_err, exec_var->ios));
++    exec_var->process.reset(new boost::process::v1::child(pythonpath.string() + " -u -i", boost::process::v1::std_in < exec_var->pyin,
++        boost::process::v1::std_out > exec_var->data_out, boost::process::v1::std_err > exec_var->data_err, exec_var->ios));
+     exec_var->pyin << "import sys" << std::endl;
+     // add freecad lib path if not already done
+     exec_var->pyin << "sys.path.append('" << (freecadpath / "lib").string() << "')" << std::endl;
+diff --git a/src/slic3r/GUI/RemovableDriveManager.cpp b/src/slic3r/GUI/RemovableDriveManager.cpp
+--- a/src/slic3r/GUI/RemovableDriveManager.cpp
++++ b/src/slic3r/GUI/RemovableDriveManager.cpp
+@@ -36,6 +36,9 @@
+ #include <boost/filesystem.hpp>
+ #include <boost/system/error_code.hpp>
+ #include <boost/process.hpp>
++#include <boost/process/v1/child.hpp>
++#include <boost/process/v1/io.hpp>
++#include <boost/process/v1/search_path.hpp>
+ #endif
+
+ namespace Slic3r {
+@@ -859,15 +862,15 @@
+ 		// but neither triggers "succesful safe removal messege"
+ 		
+ 		BOOST_LOG_TRIVIAL(info) << "Ejecting started";
+-		boost::process::ipstream istd_err;
+-    	boost::process::child child(
++		boost::process::v1::ipstream istd_err;
++    	boost::process::v1::child child(
+ #if __APPLE__		
+-			boost::process::search_path("diskutil"), "eject", correct_path.c_str(), (boost::process::std_out & boost::process::std_err) > istd_err);
++			boost::process::v1::search_path("diskutil"), "eject", correct_path.c_str(), (boost::process::v1::std_out & boost::process::v1::std_err) > istd_err);
+ 		//Another option how to eject at mac. Currently not working.
+ 		//used insted of system() command;
+ 		//this->eject_device(correct_path);
+ #else
+-    		boost::process::search_path("umount"), correct_path.c_str(), (boost::process::std_out & boost::process::std_err) > istd_err);
++    		boost::process::v1::search_path("umount"), correct_path.c_str(), (boost::process::v1::std_out & boost::process::v1::std_err) > istd_err);
+ #endif
+ 		std::string line;
+ 		while (child.running() && std::getline(istd_err, line)) {
+@@ -881,7 +884,7 @@
+             // The wait call can fail, as it did in https://github.com/prusa3d/PrusaSlicer/issues/5507
+             // It can happen even in cases where the eject is sucessful, but better report it as failed.
+             // We did not find a way to reliably retrieve the exit code of the process.
+-			BOOST_LOG_TRIVIAL(error) << "boost::process::child::wait() failed during Ejection. State of Ejection is unknown. Error code: " << ec.value();
++			BOOST_LOG_TRIVIAL(error) << "boost::process::v1::child::wait() failed during Ejection. State of Ejection is unknown. Error code: " << ec.value();
+ 		} else {
+ 			int err = child.exit_code();
+ 	    	if (err) {
