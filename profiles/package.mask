@@ -385,10 +385,6 @@ net-analyzer/arp-sk
 # Bug #969685
 =gui-apps/slurp-1.6.0
 
-# Sam James <sam@gentoo.org> (2026-01-22)
-# eclean-dist -d needs fixing
-=app-portage/gentoolkit-0.7
-
 # Eray Aslan <eras@gentoo.org> (2025-12-24)
 # Mask experimental software
 =mail-mta/postfix-3.12*
