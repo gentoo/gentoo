@@ -17,7 +17,7 @@ RDEPEND="
 	!<llvm-runtimes/offload-22[llvm_targets_NVPTX(-)]
 "
 BDEPEND="
-	llvm-core/clang:${LLVM_MAJOR}[llvm_targets_NVPTX]
+	~llvm-core/clang-${PV}:${LLVM_MAJOR}[llvm_targets_NVPTX]
 	llvm-core/lld:${LLVM_MAJOR}[llvm_targets_NVPTX]
 "
 
