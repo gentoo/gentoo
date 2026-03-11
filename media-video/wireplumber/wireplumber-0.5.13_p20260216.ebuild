@@ -50,7 +50,7 @@ else
 		WIREPLUMBER_DOCS_USEFLAG="doc"
 	fi
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 LICENSE="MIT"
