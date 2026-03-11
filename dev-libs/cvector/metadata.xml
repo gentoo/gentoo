@@ -6,5 +6,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">cvector</remote-id>
+		<remote-id type="github">yayahjb/cvector</remote-id>
 	</upstream>
 </pkgmetadata>
