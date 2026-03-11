@@ -175,10 +175,11 @@ wine_src_prepare() {
 # --with-mingw, and --with-wine64
 #
 # Can adjust cross toolchain using CROSSCC, CROSSCC_amd64/x86/arm64,
-# CROSS{C,LD}FLAGS, and CROSS{C,LD}FLAGS_amd64/x86/arm64 (variable
-# naming is mostly historical because wine itself used to recognize
-# CROSSCC). By default it attempts to use same {C,LD}FLAGS as the
-# main toolchain but will strip known unsupported flags.
+# CROSS{C,LD}FLAGS, CROSS{C,LD}FLAGS_amd64/x86/arm64, and likewise
+# for CROSSCXX (variable naming is mostly historical because wine
+# itself used to recognize CROSSCC).  Be warned that changing FLAGS
+# is fragile and unsupported.  If USE=custom-cflags, the native
+# toolchain's FLAGS will be used, otherwise the default is just -O2.
 wine_src_configure() {
 	WINE_PREFIX=/usr/lib/${P}
 	WINE_DATADIR=/usr/share/${P}
@@ -195,7 +196,7 @@ wine_src_configure() {
 	if use !custom-cflags; then
 		# wine is generally fragile
 		strip-flags
-		append-cflags $(test-flags-CC -fno-stack-protector) #870136,#970983
+		append-flags $(test-flags-CC -fno-stack-protector) #870136,#970983
 	fi
 
 	# longstanding failing to build with lto, filter unconditionally
@@ -218,7 +219,7 @@ wine_src_configure() {
 
 	# wcc_* variables are used by _wine_flags(), see that
 	# function if need to adjust *FLAGS only for cross
-	local wcc_{amd64,x86,arm64}{,_testflags}
+	local w{cc,cxx}_{amd64,x86,arm64,arm64ec}{,_testflags}
 	# TODO?: llvm-mingw support if useful
 	if use mingw; then
 		conf+=( --with-mingw )
@@ -228,26 +229,49 @@ wine_src_configure() {
 			PATH=${BROOT}/usr/lib/mingw64-toolchain/bin:${PATH}
 
 		wcc_amd64=${CROSSCC:-${CROSSCC_amd64:-x86_64-w64-mingw32-gcc}}
+		wcxx_amd64=${CROSSCXX:-${CROSSCXX_amd64:-x86_64-w64-mingw32-g++}}
+
 		wcc_x86=${CROSSCC:-${CROSSCC_x86:-i686-w64-mingw32-gcc}}
+		wcxx_x86=${CROSSCXX:-${CROSSCXX_x86:-i686-w64-mingw32-g++}}
+
 		# no mingw64-toolchain ~arm64, but "may" be usable with crossdev
 		# (aarch64- rather than arm64- given it is what Wine searches for)
 		wcc_arm64=${CROSSCC:-${CROSSCC_arm64:-aarch64-w64-mingw32-gcc}}
+		wcxx_arm64=${CROSSCXX:-${CROSSCXX_arm64:-aarch64-w64-mingw32-g++}}
+
 		wcc_arm64ec=${CROSSCC:-${CROSSCC_arm64ec:-arm64ec-w64-mingw32-gcc}}
+		wcxx_arm64ec=${CROSSCXX:-${CROSSCXX_arm64ec:-arm64ec-w64-mingw32-g++}}
 	else
 		conf+=( --with-mingw=clang )
 
 		# not building for ${CHOST} so $(tc-getCC) is not quite right, but
 		# *should* support -target *-windows regardless (testflags is only
 		# used by _wine_flags(), wine handles -target by itself)
-		tc-is-clang && local clang=$(tc-getCC) || local clang=clang
+		local clang=clang clangxx=clang++
+		if tc-is-clang; then
+			clang=$(tc-getCC)
+			clangxx=$(tc-getCXX)
+		fi
+
 		wcc_amd64=${CROSSCC:-${CROSSCC_amd64:-${clang}}}
 		wcc_amd64_testflags="-target x86_64-windows"
+		wcxx_amd64=${CROSSCXX:-${CROSSCXX_amd64:-${clangxx}}}
+		wcxx_amd64_testflags=${wcc_amd64_testflags}
+
 		wcc_x86=${CROSSCC:-${CROSSCC_x86:-${clang}}}
 		wcc_x86_testflags="-target i386-windows"
+		wcxx_x86=${CROSSCXX:-${CROSSCXX_x86:-${clangxx}}}
+		wcxx_x86_testflags=${wcc_x86_testflags}
+
 		wcc_arm64=${CROSSCC:-${CROSSCC_arm64:-${clang}}}
 		wcc_arm64_testflags="-target aarch64-windows"
+		wcxx_arm64=${CROSSCXX:-${CROSSCXX_arm64:-${clangxx}}}
+		wcxx_arm64_testflags=${wcc_arm64_testflags}
+
 		wcc_arm64ec=${CROSSCC:-${CROSSCC_arm64ec:-${clang}}}
 		wcc_arm64ec_testflags="-target arm64ec-windows"
+		wcxx_arm64ec=${CROSSCXX:-${CROSSCXX_arm64ec:-${clangxx}}}
+		wcxx_arm64ec_testflags=${wcc_arm64ec_testflags}
 
 		# do not copy from regular LDFLAGS given odds are they all are
 		# incompatible, and difficult to test linking without llvm-mingw
@@ -256,9 +280,14 @@ wine_src_configure() {
 
 	conf+=(
 		ac_cv_prog_x86_64_CC="${wcc_amd64}"
+		ac_cv_prog_x86_64_CXX="${wcxx_amd64}"
 		ac_cv_prog_i386_CC="${wcc_x86}"
+		ac_cv_prog_i386_CXX="${wcxx_x86}"
 		ac_cv_prog_aarch64_CC="${wcc_arm64}"
+		ac_cv_prog_aarch64_CXX="${wcxx_arm64}"
 		ac_cv_prog_arm64ec_CC="${wcc_arm64ec}"
+		ac_cv_prog_arm64ec_CXX="${wcxx_arm64ec}"
+
 	)
 
 	if ver_test -ge 10; then
@@ -266,12 +295,16 @@ wine_src_configure() {
 		conf+=(
 			# if set, use CROSS*FLAGS as-is without filtering
 			x86_64_CFLAGS="${CROSSCFLAGS_amd64:-${CROSSCFLAGS:-$(_wine_flags c amd64)}}"
+			x86_64_CXXFLAGS="${CROSSCXXFLAGS_amd64:-${CROSSCXXFLAGS:-$(_wine_flags cxx amd64)}}"
 			x86_64_LDFLAGS="${CROSSLDFLAGS_amd64:-${CROSSLDFLAGS:-$(_wine_flags ld amd64)}}"
 			i386_CFLAGS="${CROSSCFLAGS_x86:-${CROSSCFLAGS:-$(_wine_flags c x86)}}"
+			i386_CXXFLAGS="${CROSSCXXFLAGS_x86:-${CROSSCXXFLAGS:-$(_wine_flags cxx x86)}}"
 			i386_LDFLAGS="${CROSSLDFLAGS_x86:-${CROSSLDFLAGS:-$(_wine_flags ld x86)}}"
 			aarch64_CFLAGS="${CROSSCFLAGS_arm64:-${CROSSCFLAGS:-$(_wine_flags c arm64)}}"
+			aarch64_CXXFLAGS="${CROSSCXXFLAGS_arm64:-${CROSSCXXFLAGS:-$(_wine_flags cxx arm64)}}"
 			aarch64_LDFLAGS="${CROSSLDFLAGS_arm64:-${CROSSLDFLAGS:-$(_wine_flags ld arm64)}}"
 			arm64ec_CFLAGS="${CROSSCFLAGS_arm64ec:-${CROSSCFLAGS:-$(_wine_flags c arm64ec)}}"
+			arm64ec_CXXFLAGS="${CROSSCXXFLAGS_arm64ec:-${CROSSCXXFLAGS:-$(_wine_flags cxx arm64ec)}}"
 			arm64ec_LDFLAGS="${CROSSLDFLAGS_arm64ec:-${CROSSLDFLAGS:-$(_wine_flags ld arm64ec)}}"
 		)
 	elif use abi_x86_64; then
@@ -487,36 +520,41 @@ wine_pkg_postrm() {
 }
 
 # @FUNCTION: _wine_flags
-# @USAGE: <c|ld> <arch>
+# @USAGE: <c|cxx|ld> <arch>
 # @INTERNAL
 # @DESCRIPTION:
-# Filter and test current {C,LD}FLAGS for usage with the cross
-# toolchain (using ``wcc_*`` variables, see wine_src_configure),
-# and echo back working flags.
+# Filter and test current {C,CXX,LD}FLAGS for usage with the cross
+# toolchain (using ``wcc_*`` and ``wcxx_*`` variables, see
+# wine_src_configure), and echo back working flags.
 #
 # Note that this ignores checking USE for simplicity, if compiler
 # is unusable (e.g. not found) then it will return empty flags
 # which is fine.
 _wine_flags() {
 	local -n wcc=wcc_${2} wccflags=wcc_${2}_testflags
+	local -x CC="${wcc} ${wccflags}"
+
+	local -n wcxx=wcxx_${2} wcxxflags=wcxx_${2}_testflags
+	local -x CXX="${wcxx} ${wcxxflags}"
 
 	case ${1} in
-		c)
+		c|cxx)
 			if use mingw && use !custom-cflags; then
-				# Changing CROSSCFLAGS is not very tested and often cause
+				# Changing CROSS*FLAGS is not very tested and often cause
 				# problems even with simple things like -march=native/-O3 when
 				# using mingw-gcc (thus -mno-avx below, also bug #960825), only
 				# inherit basic flags from CFLAGS unless USE=custom-cflags.
 				#
-				# Note that users setting CROSSCFLAGS directly (unfiltered)
+				# Note that users setting CROSS*FLAGS directly (unfiltered)
 				# are on their own just like with USE=custom-cflags.
-				local flag flags=${CFLAGS} CFLAGS=-O2
-				# not get-flag() given it returns only the first occurence
+				local -n flags=${1^^}FLAGS
+				local flag kept=
 				# TODO: can drop |-std=* when <wine-10 is gone
 				for flag in ${flags}; do
-					[[ ${flag} == @(-g*|-O[0-1g]|-fno-stack*|-std=*) ]] &&
-						CFLAGS+=" ${flag}"
+					[[ ${flag} == @(-g*|-O[0-2g]|-fno-stack*|-std=*) ]] &&
+						kept+=" ${flag}"
 				done
+				flags=${kept:--O2}
 			else
 				filter-flags '-mfunction-return=thunk*' #878849
 
@@ -527,17 +565,21 @@ _wine_flags() {
 				# -mavx with mingw-gcc has a history of problems and still see
 				# users have issues despite Wine's -mpreferred-stack-boundary=2
 				# (kept even with USE=custom-cflags wrt bug #912268)
-				use mingw && append-cflags -mno-avx
+				use mingw && append-flags -mno-avx
 			fi
 
-			# same as strip-unsupported-flags but echos only for CC
-			CC="${wcc} ${wccflags}" test-flags-CC ${CFLAGS}
+			# same as strip-unsupported-flags but echos only for CC/CXX
+			if [[ ${1} == c ]]; then
+				test-flags-CC ${CFLAGS}
+			else
+				test-flags-CXX ${CXXFLAGS}
+			fi
 		;;
 		ld)
 			# let compiler figure out the right linker for cross
 			filter-flags '-fuse-ld=*'
 
-			CC="${wcc} ${wccflags}" test-flags-CCLD ${LDFLAGS}
+			test-flags-CCLD ${LDFLAGS}
 		;;
 	esac
 }
