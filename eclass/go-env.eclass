@@ -44,13 +44,18 @@ go-env_set_compile_environment() {
 		mips*) export GOMIPS=$(go-env_gomips) ;;
 	esac
 
-	# XXX: Hack for checking ICE (bug #912152, gcc PR113204)
+	# Don't modify the non-Go variables outside this function.
+	local -I $(all-flag-vars)
+
 	if tc-is-gcc ; then
+		# XXX: Hack for checking ICE (bug #912152, gcc PR113204)
 		# For either USE=debug or an unreleased compiler, non-default
 		# checking will trigger.
-		if $(tc-getCC) -v 2>&1 | grep -Eqe "--enable-checking=\S*\byes\b" ; then
-			filter-lto
-		fi
+		$(tc-getCC) -v 2>&1 | grep -Eqe "--enable-checking=\S*\byes\b" && filter-lto
+
+		# bug #929219
+		replace-flags -g3 -g
+		replace-flags -ggdb3 -ggdb
 	fi
 
 	export \
@@ -58,16 +63,6 @@ go-env_set_compile_environment() {
 		CGO_CPPFLAGS=${CPPFLAGS} \
 		CGO_CXXFLAGS=${CXXFLAGS} \
 		CGO_LDFLAGS=${LDFLAGS}
-
-	# bug #929219
-	if tc-is-gcc ; then
-		CGO_CFLAGS=$(
-			CFLAGS=${CGO_CFLAGS}
-			replace-flags -g3 -g
-			replace-flags -ggdb3 -ggdb
-			printf %s "${CFLAGS}"
-		)
-	fi
 }
 
 # @FUNCTION: go-env_goos
