@@ -102,6 +102,11 @@ src_compile() {
 	emake -j1 #nowarn
 }
 
+src_test() {
+	# we want to override cargo.eclass' src_test
+	:
+}
+
 src_install() {
 	default
 	rename -v '.bash' '' "${ED}/usr/share/bash-completion/completions/"*.bash || die
@@ -111,11 +116,6 @@ src_install() {
 		"${ED}/usr/share/bash-completion/completions/itweb-javaws" || die
 
 	readme.gentoo_create_doc
-}
-
-src_test() {
-	# we want to override cargo.eclass' src_test
-	:
 }
 
 pkg_postinst() {
