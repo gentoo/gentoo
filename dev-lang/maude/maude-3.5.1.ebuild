@@ -23,6 +23,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="doc examples"
 
+QA_CONFIG_IMPL_DECL_SKIP=(
+	ppoll # Uses alternative poll
+)
+
 RDEPEND="
 	dev-libs/gmp:=[cxx(+)]
 	dev-libs/libtecla
