@@ -7,4 +7,8 @@
 	<upstream>
 		<remote-id type="gitlab">AOMediaCodec/SVT-AV1</remote-id>
 	</upstream>
+	<use>
+		<flag name="pgo">Optimize the build using Profile Guided Optimization (PGO)</flag>
+		<flag name="tools">Build SvtAv1EncApp</flag>
+	</use>
 </pkgmetadata>
