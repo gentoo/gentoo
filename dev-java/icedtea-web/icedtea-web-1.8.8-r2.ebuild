@@ -98,6 +98,7 @@ src_configure() {
 }
 
 src_compile() {
+	export XDG_CONFIG_HOME="${T}/.config" # xdg_environment_reset uses ${HOME}
 	# races in makefile
 	emake -j1 #nowarn
 }
@@ -108,6 +109,7 @@ src_test() {
 }
 
 src_install() {
+	export XDG_CONFIG_HOME="${T}/.config" # xdg_environment_reset uses ${HOME}
 	default
 	rename -v '.bash' '' "${ED}/usr/share/bash-completion/completions/"*.bash || die
 	rename -v 'javaws' 'itweb-javaws' "${ED}/usr/share/man/man1/"javaws.1* || die
