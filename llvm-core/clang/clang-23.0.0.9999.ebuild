@@ -207,6 +207,8 @@ get_distribution_components() {
 			diagtool
 			hmaptool
 			offload-arch
+			ssaf-format
+			ssaf-linker
 
 			# needed for cross-compiling Clang
 			clang-tblgen
