@@ -117,6 +117,13 @@ src_prepare() {
 	use pax-kernel &&
 		PATCHES+=( "${FILESDIR}"/${PN}-24.1.0-paxmarking.patch )
 
+	if use ppc64; then
+		PATCHES+=(
+			"${FILESDIR}/${PN}-24.11.1-gcc15-ppc.patch"
+			"${FILESDIR}/${PN}-24.11.1-restore-ppc64be.patch"
+		)
+	fi
+
 	default
 }
 
