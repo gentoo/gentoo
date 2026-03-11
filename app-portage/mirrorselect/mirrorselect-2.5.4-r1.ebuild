@@ -35,6 +35,10 @@ RDEPEND="
 	dev-python/requests[${PYTHON_USEDEP}]
 "
 
+PATCHES=(
+	"${FILESDIR}"/0001-Revert-main-default-servers-to-3-not-1.patch
+)
+
 distutils_enable_tests unittest
 
 python_prepare_all() {

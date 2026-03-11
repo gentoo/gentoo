@@ -1,0 +1,55 @@
+From 242b8cc772422bb6970cfe6fed613a94696dd40b Mon Sep 17 00:00:00 2001
+Message-ID: <242b8cc772422bb6970cfe6fed613a94696dd40b.1773201665.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Wed, 11 Mar 2026 03:52:42 +0000
+Subject: [PATCH] Revert "main: default --servers to 3, not 1"
+
+This reverts commit b6625dd5b417bd7a04693e5592f87cbb81d6ddf4.
+
+I didn't adjust an if statement which checks to see if the value
+of servers is 1 (as a proxy for default). Just revert it now to
+unbreak things.
+
+I've filed bug #971076 for implementing this again properly.
+
+Bug: https://bugs.gentoo.org/971076
+Closes: https://bugs.gentoo.org/970947
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ mirrorselect.8       | 2 +-
+ mirrorselect/main.py | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/mirrorselect.8 b/mirrorselect.8
+index 3c5af33..49caadd 100644
+--- a/mirrorselect.8
++++ b/mirrorselect.8
+@@ -95,7 +95,7 @@ Quiet mode.
+ .TP
+ .BI \-s " SERVERS " "\fR,\fP \-servers" " SERVERS "
+ Specify Number of servers for Automatic Mode to select. this is only valid for
+-download mirrors. If this is not specified, a default of 3 is used.
++download mirrors. If this is not specified, a default of 1 is used.
+ .TP
+ .BI \-t " TIMEOUT " "\fR,\fP \-timeout" " TIMEOUT "
+ Timeout for deep mode. Defaults to 10 seconds.
+diff --git a/mirrorselect/main.py b/mirrorselect/main.py
+index 3a418a7..b6186a0 100755
+--- a/mirrorselect/main.py
++++ b/mirrorselect/main.py
+@@ -310,10 +310,10 @@ class MirrorSelect:
+             action="callback",
+             callback=set_servers,
+             type="int",
+-            default=3,
++            default=1,
+             help="Specify Number of servers for Automatic Mode "
+             "to select. this is only valid for download mirrors. "
+-            "If this is not specified, a default of 3 is used.",
++            "If this is not specified, a default of 1 is used.",
+         )
+         group.add_option(
+             "-t",
+-- 
+2.53.0
+
