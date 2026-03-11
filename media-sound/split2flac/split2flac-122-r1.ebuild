@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit bash-completion-r1
 
@@ -22,11 +22,12 @@ IUSE="enca flake imagemagick mac mp3 mp4 ogg replaygain wavpack"
 
 RDEPEND="
 	app-cdr/cuetools
-	media-sound/shntool[mac?]
+	media-sound/shntool
 	virtual/libiconv
 	media-libs/flac
 	enca? ( app-i18n/enca )
 	flake? ( media-sound/flake )
+	mac? ( media-sound/mac )
 	mp3? ( media-sound/lame || ( media-libs/mutagen media-libs/id3lib ) )
 	mp4? ( media-libs/faac media-libs/libmp4v2:0[utils] )
 	ogg? ( media-sound/vorbis-tools )
