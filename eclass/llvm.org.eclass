@@ -169,43 +169,25 @@ fi
 # version.  The value depends on ${PV}.
 
 case ${LLVM_MAJOR} in
-	14)
-		ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC CSKY M68k )
-		ALL_LLVM_PRODUCTION_TARGETS=(
-			AArch64 AMDGPU ARM AVR BPF Hexagon Lanai Mips MSP430 NVPTX
-			PowerPC RISCV Sparc SystemZ VE WebAssembly X86 XCore
-		)
-		;;
-	15)
+	1*)
 		ALL_LLVM_EXPERIMENTAL_TARGETS=(
-			ARC CSKY DirectX LoongArch M68k SPIRV
+			ARC CSKY DirectX M68k SPIRV Xtensa
 		)
 		ALL_LLVM_PRODUCTION_TARGETS=(
-			AArch64 AMDGPU ARM AVR BPF Hexagon Lanai Mips MSP430 NVPTX
-			PowerPC RISCV Sparc SystemZ VE WebAssembly X86 XCore
+			AArch64 AMDGPU ARM AVR BPF Hexagon Lanai LoongArch Mips
+			MSP430 NVPTX PowerPC RISCV Sparc SystemZ VE WebAssembly X86
+			XCore
 		)
 		;;
 	*)
-		# TODO: limit to < 20 when we remove old snapshots
-		if ver_test ${PV} -lt 20.0.0_pre20250122; then
-			ALL_LLVM_EXPERIMENTAL_TARGETS=(
-				ARC CSKY DirectX M68k SPIRV Xtensa
-			)
-			ALL_LLVM_PRODUCTION_TARGETS=(
-				AArch64 AMDGPU ARM AVR BPF Hexagon Lanai LoongArch Mips
-				MSP430 NVPTX PowerPC RISCV Sparc SystemZ VE WebAssembly X86
-				XCore
-			)
-		else
-			ALL_LLVM_EXPERIMENTAL_TARGETS=(
-				ARC CSKY DirectX M68k Xtensa
-			)
-			ALL_LLVM_PRODUCTION_TARGETS=(
-				AArch64 AMDGPU ARM AVR BPF Hexagon Lanai LoongArch Mips
-				MSP430 NVPTX PowerPC RISCV Sparc SPIRV SystemZ VE
-				WebAssembly X86 XCore
-			)
-		fi
+		ALL_LLVM_EXPERIMENTAL_TARGETS=(
+			ARC CSKY DirectX M68k Xtensa
+		)
+		ALL_LLVM_PRODUCTION_TARGETS=(
+			AArch64 AMDGPU ARM AVR BPF Hexagon Lanai LoongArch Mips
+			MSP430 NVPTX PowerPC RISCV Sparc SPIRV SystemZ VE
+			WebAssembly X86 XCore
+		)
 		;;
 esac
 
@@ -298,9 +280,6 @@ llvm.org_set_globals() {
 		LLVM_MANPAGE_DIST=
 		if [[ ${_LLVM_SOURCE_TYPE} == tar && ${PV} != *_rc* ]]; then
 			case ${PV} in
-				14*|15*|16.0.[0-3])
-					LLVM_MANPAGE_DIST="llvm-${PV}-manpages.tar.bz2"
-					;;
 				16*)
 					LLVM_MANPAGE_DIST="llvm-16.0.4-manpages.tar.bz2"
 					;;
