@@ -11,7 +11,7 @@ SRC_URI="https://github.com/systemd/systemd-initctl/archive/refs/tags/v${PV}.tar
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~s390"
 
 DEPEND="
 	sys-apps/systemd:0=
