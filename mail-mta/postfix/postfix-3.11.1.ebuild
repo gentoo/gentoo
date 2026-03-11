@@ -90,6 +90,22 @@ src_configure() {
 	# Make sure LDFLAGS get passed down to the executables.
 	local mycc="" mylibs="${LDFLAGS} -ldl"
 
+	# Determine local database type defaults
+	local default_database_type="lmdb"
+	local default_cache_db_type="lmdb"
+	if ! use lmdb; then
+		if use berkdb; then
+			default_database_type="hash"
+			default_cache_db_type="btree"
+		elif use cdb; then
+			default_database_type="cdb"
+			ewarn
+			ewarn "cdb USE flag is on but lmdb USE flag is not. Local database files"
+			ewarn "for caches will not work. Consider turning lmdb USE flag on."
+			ewarn
+		fi
+	fi
+
 	# libpcre is EOL. prefer libpcre2
 	mycc=" -DHAS_PCRE=2"
 	AUXLIBS_PCRE="$(pcre2-config --libs8)"
@@ -111,8 +127,6 @@ src_configure() {
 	fi
 
 	if use lmdb; then
-		# default is lmdb
-		mycc="${mycc} -DHAS_LMDB -DDEF_DB_TYPE=\\\"lmdb\\\" -DDEF_CACHE_DB_TYPE=\\\"lmdb\\\""
 		AUXLIBS_LMDB="-llmdb -lpthread"
 	fi
 
@@ -161,13 +175,6 @@ src_configure() {
 
 	if ! use berkdb; then
 		mycc="${mycc} -DNO_DB"
-		if use cdb && ! use lmdb; then
-			mycc="${mycc} -DDEF_DB_TYPE=\\\"cdb\\\""
-			ewarn
-			ewarn "cdb USE flag is on but lmdb USE flag is not. Local database files"
-			ewarn "for caches will not work. Consider turning lmdb USE flag on."
-			ewarn
-		fi
 	fi
 
 	if use cdb; then
@@ -190,6 +197,8 @@ src_configure() {
 		shared=yes \
 		dynamicmaps=no \
 		pie=yes \
+		default_database_type="${default_database_type}" \
+		default_cache_db_type="${default_cache_db_type}" \
 		shlib_directory="/usr/$(get_libdir)/postfix/MAIL_VERSION" \
 		DEBUG="" \
 		CC="$(tc-getCC)" \
