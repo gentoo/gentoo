@@ -7,10 +7,10 @@
 	</maintainer>
 	<use>
 		<flag name="allegro">Add support for Allegro</flag>
-		<flag name="fluidsynth">Compile with support for FluidSynth</flag>
-		<flag name="openmedia">Enables the free open media sets: OpenGFX, OpenSFX, OpenMSX, removing the requirement for proprietary TTD assets to play OpenTTD.</flag>
-		<flag name="lzo">Enables LZO compression for savegames. This is only needed to load extremely old savegames. (versions before 0.2)</flag>
 		<flag name="dedicated">Build only the openttd server, and not the client.</flag>
+		<flag name="fluidsynth">Compile with support for FluidSynth</flag>
+		<flag name="lzo">Enables LZO compression for savegames. This is only needed to load extremely old savegames. (versions before 0.2)</flag>
+		<flag name="openmedia">Enables the free open media sets: OpenGFX, OpenSFX, OpenMSX, removing the requirement for proprietary TTD assets to play OpenTTD.</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">OpenTTD/OpenTTD</remote-id>
