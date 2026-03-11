@@ -33,7 +33,7 @@ fi
 LICENSE="BSD curl ISC test? ( BSD-4 )"
 SLOT="0"
 IUSE="+adns +alt-svc brotli debug ech +ftp gnutls gopher +hsts +http2 +http3 +httpsrr idn +imap kerberos ldap"
-IUSE+=" mbedtls +openssl +pop3 +psl +quic rtmp rustls samba sasl-scram +smtp ssh ssl static-libs test"
+IUSE+=" mbedtls +openssl +pop3 +psl +quic rustls samba sasl-scram +smtp ssh ssl static-libs test"
 IUSE+=" telnet +tftp +websockets zstd"
 # These select the default tls implementation / which quic impl to use
 IUSE+=" curl_ssl_gnutls curl_ssl_mbedtls +curl_ssl_openssl curl_ssl_rustls"
@@ -103,7 +103,6 @@ RDEPEND="
 		gnutls? ( >=net-libs/ngtcp2-1.20.0-r1[gnutls,ssl,${MULTILIB_USEDEP}] )
 		openssl? ( >=net-libs/ngtcp2-1.20.0-r1[openssl,ssl,${MULTILIB_USEDEP}] )
 	)
-	rtmp? ( media-video/rtmpdump[${MULTILIB_USEDEP}] )
 	ssh? ( >=net-libs/libssh2-1.2.8[${MULTILIB_USEDEP}] )
 	sasl-scram? ( >=net-misc/gsasl-2.2.0[static-libs?,${MULTILIB_USEDEP}] )
 	ssl? (
@@ -261,7 +260,6 @@ multilib_src_configure() {
 		$(use_enable pop3)
 		$(use_enable samba smb)
 		$(use_with ssh libssh2) # enables scp/sftp
-		$(use_with rtmp librtmp)
 		--enable-rtsp
 		$(use_enable smtp)
 		$(use_enable telnet)
