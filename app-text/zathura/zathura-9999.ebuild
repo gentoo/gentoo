@@ -1,4 +1,4 @@
-# Copyright 1999-2026 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,7 +28,7 @@ REQUIRED_USE="
 RDEPEND="
 	dev-libs/json-glib
 	dev-db/sqlite:3
-	>=dev-libs/girara-2026.02.03:=[X?]
+	>=dev-libs/girara-0.4.5-r1:=[X?]
 	>=dev-libs/glib-2.76:2
 	sys-apps/file
 	x11-libs/cairo
