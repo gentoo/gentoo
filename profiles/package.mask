@@ -35,8 +35,8 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
-#
-## Mike Pagano <mpagano@gentoo.org> (2026-03-13)
+
+# Mike Pagano <mpagano@gentoo.org> (2026-03-13)
 # Upstream has announced the archiving of this application
 # at repo location: https://github.com/nginx/unit/
 # This announcement includes the statement that security
