@@ -178,6 +178,7 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 PATCHES=(
 	"${FILESDIR}/${PN}-prefix-6.patch"
 	"${FILESDIR}/${PN}-respect-cflags-3.patch"
+	"${FILESDIR}/${P}-restore-heimdal.patch"
 )
 
 src_prepare() {

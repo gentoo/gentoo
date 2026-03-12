@@ -1,0 +1,191 @@
+diff -Naurp curl-8.16.0/CMake/FindGSS.cmake curl-8.16.0_orig/CMake/FindGSS.cmake
+--- curl-8.16.0/CMake/FindGSS.cmake	2025-11-11 10:04:08.786293188 +0000
++++ curl-8.16.0/CMake/FindGSS.cmake	2025-11-11 09:54:12.223957480 +0000
+@@ -37,6 +37,7 @@
+ 
+ set(_gnu_modname "gss")
+ set(_mit_modname "mit-krb5-gssapi")
++set(_heimdal_modname "heimdal-gssapi")
+ 
+ include(CheckIncludeFile)
+ include(CheckIncludeFiles)
+@@ -51,7 +52,7 @@ set(_gss_LIBRARY_DIRS "")
+ if(NOT GSS_ROOT_DIR AND NOT "$ENV{GSS_ROOT_DIR}")
+   if(CURL_USE_PKGCONFIG)
+     find_package(PkgConfig QUIET)
+-    pkg_search_module(_gss ${_gnu_modname} ${_mit_modname})
++    pkg_search_module(_gss ${_gnu_modname} ${_mit_modname} ${_heimdal_modname})
+     list(APPEND _gss_root_hints "${_gss_PREFIX}")
+     set(_gss_version "${_gss_VERSION}")
+   endif()
+@@ -139,8 +140,14 @@ if(NOT _gss_FOUND)  # Not found by pkg-c
+       OUTPUT_STRIP_TRAILING_WHITESPACE)
+ 
+     # Older versions may not have the "--vendor" parameter. In this case we just do not care.
+-    if(NOT _gss_configure_failed AND NOT _gss_vendor MATCHES "Heimdal|heimdal")
+-      set(_gss_flavour "MIT")  # assume a default, should not really matter
++    if(_gss_configure_failed)
++      set(_gss_flavour "Heimdal")  # most probably, should not really matter
++    else()
++      if(_gss_vendor MATCHES "Heimdal|heimdal")
++        set(_gss_flavour "Heimdal")
++      else()
++        set(_gss_flavour "MIT")
++      endif()
+     endif()
+ 
+   else()  # Either there is no config script or we are on a platform that does not provide one (Windows?)
+@@ -149,30 +156,46 @@ if(NOT _gss_FOUND)  # Not found by pkg-c
+       cmake_push_check_state()
+       list(APPEND CMAKE_REQUIRED_INCLUDES "${_gss_INCLUDE_DIRS}")
+       check_include_files("gssapi/gssapi_generic.h;gssapi/gssapi_krb5.h" _gss_have_mit_headers)
+-      cmake_pop_check_state()
+ 
+       if(_gss_have_mit_headers)
+         set(_gss_flavour "MIT")
+         if(WIN32)
+           if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+             list(APPEND _gss_libdir_suffixes "lib/AMD64")
+             set(_gss_libname "gssapi64")
+           else()
+             list(APPEND _gss_libdir_suffixes "lib/i386")
+             set(_gss_libname "gssapi32")
+           endif()
+         else()
+           list(APPEND _gss_libdir_suffixes "lib" "lib64")  # those suffixes are not checked for HINTS
+           set(_gss_libname "gssapi_krb5")
+         endif()
++      else()
++        # Prevent compiling the header - just check if we can include it
++        list(APPEND CMAKE_REQUIRED_DEFINITIONS "-D__ROKEN_H__")
++        check_include_file("roken.h" _gss_have_roken_h)
++
++        check_include_file("heimdal/roken.h" _gss_have_heimdal_roken_h)
++        if(_gss_have_roken_h OR _gss_have_heimdal_roken_h)
++          set(_gss_flavour "Heimdal")
++        endif()
+       endif()
++      cmake_pop_check_state()
+     else()
+-      find_path(_gss_INCLUDE_DIRS NAMES "gss.h" HINTS ${_gss_root_hints} PATH_SUFFIXES "include")
+ 
+       if(_gss_INCLUDE_DIRS)
+-        set(_gss_flavour "GNU")
+-        set(_gss_pc_requires ${_gnu_modname})
+-        set(_gss_libname "gss")
++        set(_gss_flavour "Heimdal")
++        set(_gss_pc_requires ${_heimdal_modname})
++        set(_gss_libname "libgssapi")
++      else()
++        find_path(_gss_INCLUDE_DIRS NAMES "gss.h" HINTS ${_gss_root_hints} PATH_SUFFIXES "include")
++
++        if(_gss_INCLUDE_DIRS)
++          set(_gss_flavour "GNU")
++          set(_gss_pc_requires ${_gnu_modname})
++          set(_gss_libname "gss")
++        endif()
+       endif()
+     endif()
+ 
+@@ -189,9 +210,6 @@ if(NOT _gss_FOUND)  # Not found by pkg-c
+       find_library(_gss_LIBRARIES NAMES ${_gss_libname} HINTS ${_gss_libdir_hints} PATH_SUFFIXES ${_gss_libdir_suffixes})
+     endif()
+   endif()
+-  if(NOT _gss_flavour)
+-    message(FATAL_ERROR "GNU or MIT GSS is required")
+-  endif()
+ else()
+   # _gss_MODULE_NAME set since CMake 3.16.
+   # _pkg_check_modules_pkg_name is undocumented and used as a fallback for CMake <3.16 versions.
+@@ -202,15 +226,33 @@ else()
+     set(_gss_flavour "MIT")
+     set(_gss_pc_requires ${_mit_modname})
+   else()
+-    message(FATAL_ERROR "GNU or MIT GSS is required")
++    set(_gss_flavour "Heimdal")
++    set(_gss_pc_requires ${_heimdal_modname})
+   endif()
+   message(STATUS "Found GSS/${_gss_flavour} (via pkg-config): ${_gss_INCLUDE_DIRS} (found version \"${_gss_version}\")")
+ endif()
+ 
+ set(GSS_VERSION ${_gss_version})
+ 
+-if(NOT GSS_VERSION)
+-  if(_gss_flavour STREQUAL "MIT")
++if(_gss_flavour)
++  if(NOT GSS_VERSION AND _gss_flavour STREQUAL "Heimdal")
++    if(CMAKE_SIZEOF_VOID_P EQUAL 8)
++      set(_heimdal_manifest_file "Heimdal.Application.amd64.manifest")
++    else()
++      set(_heimdal_manifest_file "Heimdal.Application.x86.manifest")
++    endif()
++
++    if(EXISTS "${_gss_INCLUDE_DIRS}/${_heimdal_manifest_file}")
++      file(STRINGS "${_gss_INCLUDE_DIRS}/${_heimdal_manifest_file}" _heimdal_version_str
++        REGEX "^.*version=\"[0-9]\\.[^\"]+\".*$")
++
++      string(REGEX MATCH "[0-9]\\.[^\"]+" GSS_VERSION "${_heimdal_version_str}")
++    endif()
++
++    if(NOT GSS_VERSION)
++      set(GSS_VERSION "Heimdal Unknown")
++    endif()
++  elseif(NOT GSS_VERSION AND _gss_flavour STREQUAL "MIT")
+     if(CMAKE_VERSION VERSION_GREATER_EQUAL 3.24)
+       cmake_host_system_information(RESULT _mit_version QUERY WINDOWS_REGISTRY
+         "HKLM/SOFTWARE/MIT/Kerberos/SDK/CurrentVersion" VALUE "VersionString")
+@@ -223,7 +339,7 @@ if(NOT GSS_VERSION)
+     else()
+       set(GSS_VERSION "MIT Unknown")
+     endif()
+-  else()  # GNU
++  elseif(NOT GSS_VERSION AND _gss_flavour STREQUAL "GNU")
+     if(_gss_INCLUDE_DIRS AND EXISTS "${_gss_INCLUDE_DIRS}/gss.h")
+       set(_version_regex "#[\t ]*define[\t ]+GSS_VERSION[\t ]+\"([^\"]*)\"")
+       file(STRINGS "${_gss_INCLUDE_DIRS}/gss.h" _version_str REGEX "${_version_regex}")
+diff -Naurp curl-8.16.0/configure.ac curl-8.16.0_orig/configure.ac
+--- curl-8.16.0/configure.ac	2025-11-11 08:59:46.795915379 +0000
++++ curl-8.16.0/configure.ac	2025-11-11 08:57:58.852575571 +0000
+@@ -1860,14 +1860,21 @@ if test x"$want_gss" = xyes; then
+       gnu_gss=yes
+     ],
+     [
+-      dnl not found, check for MIT
++      dnl not found, check Heimdal or MIT
+       AC_CHECK_HEADERS(
+         [gssapi/gssapi.h gssapi/gssapi_generic.h gssapi/gssapi_krb5.h],
+         [],
+         [not_mit=1])
+       if test "$not_mit" = "1"; then
+-        dnl MIT not found
+-        AC_MSG_ERROR([MIT or GNU GSS library required, but not found])
++        dnl MIT not found, check for Heimdal
++        AC_CHECK_HEADER(gssapi.h,
++          [],
++          [
++            dnl no header found, disabling GSS
++            want_gss=no
++            AC_MSG_WARN(disabling GSS-API support since no header files were found)
++          ]
++        )
+       fi
+     ]
+   )
+@@ -1877,7 +1884,7 @@ fi
+ if test "$want_gss" = "yes"; then
+   AC_DEFINE(HAVE_GSSAPI, 1, [if you have GSS-API libraries])
+   HAVE_GSSAPI=1
+-  curl_gss_msg="enabled (MIT Kerberos)"
++  curl_gss_msg="enabled (MIT Kerberos/Heimdal)"
+   link_pkgconfig=''
+ 
+   if test -n "$gnu_gss"; then
+@@ -1956,6 +1963,8 @@ if test x"$want_gss" = xyes; then
+   if test -n "$link_pkgconfig"; then
+     if test -n "$gnu_gss"; then
+       LIBCURL_PC_REQUIRES_PRIVATE="$LIBCURL_PC_REQUIRES_PRIVATE gss"
++    elif test "x$not_mit" = "x1"; then
++      LIBCURL_PC_REQUIRES_PRIVATE="$LIBCURL_PC_REQUIRES_PRIVATE heimdal-gssapi"
+     else
+       LIBCURL_PC_REQUIRES_PRIVATE="$LIBCURL_PC_REQUIRES_PRIVATE mit-krb5-gssapi"
+     fi
