@@ -36,6 +36,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2026-03-12)
+# Package was added for games-strategy/naev-0.12.x but 0.13.x no longer
+# needs it and it never gained other consumers. Have no intentions to
+# keep maintaining this so may as well remove rather than leave it m-n.
+# Removal on 2026-04-11.
+dev-libs/nativefiledialog-extended
+
 # Mike Pagano <mpagano@gentoo.org> (2026-03-13)
 # Upstream has announced the archiving of this application
 # at repo location: https://github.com/nginx/unit/
