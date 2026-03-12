@@ -5,7 +5,7 @@ EAPI=8
 
 LUA_COMPAT=( lua5-1 luajit )
 
-inherit cmake lua-single virtualx
+inherit cmake lua-single optfeature virtualx
 
 DESCRIPTION="An open-source Zelda-like 2D game engine"
 HOMEPAGE="https://www.solarus-games.org/"
@@ -21,7 +21,7 @@ fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="doc +editor"
+IUSE="doc"
 
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
@@ -35,7 +35,6 @@ RDEPEND="
 	media-libs/openal
 	media-libs/sdl2-image[png]
 	>=media-libs/sdl2-ttf-2.0.12
-	editor? ( >=dev-qt/qlementine-1.4.0 )
 "
 
 DEPEND="
@@ -50,10 +49,6 @@ if ! [[ ${PV} == 9999 ]]; then
 	S="${WORKDIR}/solarus-v${PV}"
 fi
 
-PATCHES=(
-	"${FILESDIR}/solarus-2.0.3-system-qlementine.patch"
-)
-
 src_configure() {
 	local mycmakeargs=( -DSOLARUS_USE_LUAJIT="$(usex lua_single_target_luajit)" )
 	cmake_src_configure
@@ -63,13 +58,6 @@ src_compile() {
 	cmake_src_compile
 	if use doc ; then
 		cd doc && doxygen || die
-	fi
-	if use editor ; then
-		mycmakeargs+=(
-			-DSOLARUS_USE_SYSTEM_QLEMENTINE=ON
-			-DSOLARUS_USE_LOCAL_QLEMENTINE=OFF
-		)
-		cd editor && cmake_src_compile
 	fi
 }
 
@@ -82,5 +70,8 @@ src_test() {
 src_install() {
 	cmake_src_install
 	use doc && dodoc -r doc/${PV%.*}/html/*
-	use editor && cmake_src_install
+}
+
+pkg_postinst() {
+	 optfeature "the Solarus Quest Editor" games-misc/solarus-quest-editor
 }
