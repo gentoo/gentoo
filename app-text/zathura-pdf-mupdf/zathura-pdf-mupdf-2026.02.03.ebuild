@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/pwmt/zathura-pdf-mupdf.git"
 	EGIT_BRANCH="develop"
 else
-	KEYWORDS="amd64 arm x86"
+	KEYWORDS="~amd64 ~arm ~x86"
 	SRC_URI="https://github.com/pwmt/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
@@ -21,10 +21,13 @@ LICENSE="ZLIB"
 SLOT="0"
 IUSE="+javascript"
 
+# Tests currently only validating data files
+RESTRICT="test"
+
 DEPEND="
 	>=app-text/mupdf-1.24.0:=[javascript?]
 	>=app-text/zathura-0.2.0:=
-	dev-libs/girara
+	dev-libs/girara:=
 	dev-libs/glib:2
 	x11-libs/cairo
 "
@@ -32,10 +35,6 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 BDEPEND="virtual/pkgconfig"
-
-PATCHES=(
-	"${FILESDIR}/${P}-meson-mupdfthird.patch"
-)
 
 src_prepare() (
 	default
