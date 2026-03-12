@@ -21,7 +21,7 @@ SLOT="0"
 IUSE="audit bash debug pam newnet +netifrc selinux s6 +sysvinit sysv-utils unicode"
 
 COMMON_DEPEND="
-	sys-libs/libcap
+	kernel_linux? ( sys-libs/libcap )
 	sys-process/psmisc
 	pam? ( sys-libs/pam )
 	audit? ( sys-process/audit )
@@ -63,6 +63,15 @@ src_configure() {
 		-Dshell=$(usex bash "${EPREFIX}/bin/bash" "${EPREFIX}/bin/sh")
 		$(meson_use sysv-utils sysvinit)
 	)
+
+	# XXX: hurd hack
+	if use kernel_Hurd ; then
+		# Avoid collision with sys-kernel/hurd's own /usr/libexec/rc
+		emesonargs+=(
+			-Dlibexecdir="${EPREFIX}/usr/libexec/openrc"
+		)
+	fi
+
 	# export DEBUG=$(usev debug)
 	meson_src_configure
 }
