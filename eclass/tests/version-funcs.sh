@@ -1,23 +1,19 @@
 #!/bin/bash
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# @ECLASS: eapi7-ver.eclass
-# @MAINTAINER:
-# PMS team <pms@gentoo.org>
-# @AUTHOR:
+# Authors:
 # Ulrich Müller <ulm@gentoo.org>
 # Michał Górny <mgorny@gentoo.org>
-# @BLURB: Testing implementation of EAPI 7 version manipulators
-# @DESCRIPTION:
-# A stand-alone implementation of the version manipulation functions
-# aimed for EAPI 7.  Intended to be used for wider testing of
-# the proposed functions and to allow ebuilds to switch to the new
-# model early, with minimal change needed for actual EAPI 7.
+
+# A stand-alone implementation of the EAPI 7 version manipulation
+# functions.  This is aimed at eclass test scripts, where the package
+# manager functions are not available.
 #
 # https://bugs.gentoo.org/482170
-#
-# @SUBSECTION Version strings
+
+# Version strings
+# ---------------
 #
 # The functions support arbitrary version strings consisting of version
 # components interspersed with (possibly empty) version separators.
@@ -39,7 +35,6 @@
 #
 # Examples:
 #
-# @CODE
 #   1.2b-alpha4 -> 1 . 2 '' b - alpha '' 4
 #                  c s c s  c s c     s  c
 #                  1 1 2 2  3 3 4     4  5
@@ -47,19 +42,17 @@
 #   .11.        -> . 11 .
 #                  s c  s
 #                  0 1  1
-# @CODE
-#
-# @SUBSECTION Ranges
+
+# Ranges
+# ------
 #
 # A range can be specified as 'm' for m-th version component, 'm-'
 # for all components starting with m-th or 'm-n' for components starting
 # at m-th and ending at n-th (inclusive).  If the range spans outside
 # the version string, it is truncated silently.
 
-# @FUNCTION: _ver_parse_range
-# @USAGE: <range> <max>
-# @INTERNAL
-# @DESCRIPTION:
+# _ver_parse_range <range> <max>
+#
 # Parse the range string <range>, setting 'start' and 'end' variables
 # to the appropriate bounds.  <max> specifies the appropriate upper
 # bound for the range; the user-specified value is truncated to this.
@@ -80,10 +73,8 @@ _ver_parse_range() {
 	fi
 }
 
-# @FUNCTION: _ver_split
-# @USAGE: <version>
-# @INTERNAL
-# @DESCRIPTION:
+# _ver_split <version>
+#
 # Split the version string <version> into separator-component array.
 # Sets 'comp' to an array of the form: ( s_0 c_1 s_1 c_2 s_2 c_3... )
 # where s_i are separators and c_i are components.
@@ -106,9 +97,8 @@ _ver_split() {
 	done
 }
 
-# @FUNCTION: ver_cut
-# @USAGE: <range> [<version>]
-# @DESCRIPTION:
+# ver_cut <range> [<version>]
+#
 # Print the substring of the version string containing components
 # defined by the <range> and the version separators between them.
 # Processes <version> if specified, ${PV} otherwise.
@@ -133,9 +123,8 @@ ver_cut() {
 	printf "%s" "${comp[@]:start:end*2-start}" $'\n'
 }
 
-# @FUNCTION: ver_rs
-# @USAGE: <range> <repl> [<range> <repl>...] [<version>]
-# @DESCRIPTION:
+# ver_rs <range> <repl> [<range> <repl>...] [<version>]
+#
 # Print the version string after substituting the specified version
 # separators at <range> with <repl> (string).  Multiple '<range> <repl>'
 # pairs can be specified.  Processes <version> if specified,
@@ -165,11 +154,8 @@ ver_rs() {
 	echo "${comp[*]}"
 }
 
-# @FUNCTION: _ver_compare_int
-# @USAGE: <a> <b>
-# @RETURN: 0 if <a> -eq <b>, 1 if <a> -lt <b>, 3 if <a> -gt <b>
-# @INTERNAL
-# @DESCRIPTION:
+# _ver_compare_int <a> <b>
+#
 # Compare two non-negative integers <a> and <b>, of arbitrary length.
 # If <a> is equal to, less than, or greater than <b>, return 0, 1, or 3
 # as exit status, respectively.
@@ -187,11 +173,8 @@ _ver_compare_int() {
 	[[ ${a} == "${b}" ]]
 }
 
-# @FUNCTION: _ver_compare
-# @USAGE: <va> <vb>
-# @RETURN: 1 if <va> < <vb>, 2 if <va> = <vb>, 3 if <va> > <vb>
-# @INTERNAL
-# @DESCRIPTION:
+# _ver_compare <va> <vb>
+#
 # Compare two versions <va> and <vb>.  If <va> is less than, equal to,
 # or greater than <vb>, return 1, 2, or 3 as exit status, respectively.
 _ver_compare() {
@@ -269,9 +252,8 @@ _ver_compare() {
 	return 2
 }
 
-# @FUNCTION: ver_test
-# @USAGE: [<v1>] <op> <v2>
-# @DESCRIPTION:
+# ver_test [<v1>] <op> <v2>
+#
 # Check if the relation <v1> <op> <v2> is true.  If <v1> is not specified,
 # default to ${PVR}.  <op> can be -gt, -ge, -eq, -ne, -le, -lt.
 # Both versions must conform to the PMS version syntax (with optional
