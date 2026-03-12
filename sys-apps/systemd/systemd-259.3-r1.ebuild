@@ -20,7 +20,7 @@ else
 	SRC_URI="https://github.com/systemd/${PN}/archive/refs/tags/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
 
 	if [[ ${PV} != *rc* ]] ; then
-		KEYWORDS="amd64 ~s390"
+		KEYWORDS="amd64 ~s390 ~x86"
 	fi
 fi
 
