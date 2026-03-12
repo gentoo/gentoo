@@ -45,6 +45,10 @@ if ! [[ ${PV} == 9999 ]]; then
 	S="${WORKDIR}/solarus-v${PV}"
 fi
 
+PATCHES=(
+	"${FILESDIR}/solarus-2.0.3-system-qlementine.patch"
+)
+
 CMAKE_USE_DIR=${S}/editor
 
 src_configure() {
