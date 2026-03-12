@@ -68,7 +68,10 @@ RDEPEND="
 "
 BDEPEND="
 	sys-libs/ncurses
-	>=dev-lang/zig-0.15.2
+	|| (
+		>=dev-lang/zig-bin-0.15.2
+		>=dev-lang/zig-0.15.2
+	)
 "
 
 PATCHES=(
