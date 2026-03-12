@@ -562,7 +562,9 @@ pkg_postinst() {
 		elog "2. systemd/elogind sleep services (nvidia-sleep.sh) were tentatively"
 		elog "   removed and replaced by setting NVreg_UseKernelSuspendNotifiers=1 in"
 		elog "   ${EROOT}/etc/modprobe.d/nvidia.conf. If using a non-default custom"
-		elog "   nvidia.conf, please ensure the option is set."
+		elog "   nvidia.conf, please ensure the option is set. Also, systemd users"
+		elog "   may want to ensure that they do not have old sleep/suspend/resume"
+		elog "   *nvidia* files in ${EROOT}/etc/systemd to avoid potential issues."
 		elog "3. nvidia-drm.modeset=1 was removed from nvidia.conf because it is now"
 		elog "   default enabled regardless (new NVIDIA default)"
 	fi
