@@ -50,6 +50,10 @@ if ! [[ ${PV} == 9999 ]]; then
 	S="${WORKDIR}/solarus-v${PV}"
 fi
 
+PATCHES=(
+	"${FILESDIR}/solarus-2.0.3-system-qlementine.patch"
+)
+
 src_configure() {
 	local mycmakeargs=( -DSOLARUS_USE_LUAJIT="$(usex lua_single_target_luajit)" )
 	cmake_src_configure

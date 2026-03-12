@@ -1,0 +1,105 @@
+https://gitlab.com/solarus-games/solarus/-/merge_requests/1679
+From: Matt Jolly <kangie@gentoo.org>
+Date: Wed, 27 Aug 2025 15:44:38 +1000
+Subject: [PATCH] editor: build: use system qlementine; missing svg dep
+
+This commit enables finding and using a system copy of `Qlementine`.
+Distributions that wish to package the software often frown upon
+vendored software and build in sandboxed environments, particularly
+restricting build-time network access.
+
+This enables downstreams to choose how they want to use Qlementine,
+while still providing build-time control over how Qlementine is found.
+
+Qlementine will be found as follows:
+
+1. If SOLARUS_USE_LOCAL_QLEMENTINE is set use the provided path via
+   existing logic
+2. If SOLARUS_USE_SYSTEM_QLEMENTINE is set (now default), attempt to use
+   pkgconfig then CMake to find the system package
+3. Fetch from Git via FetchContent.
+
+We also add a missing dependency on Ot6Svg as a result of linking issues
+encountered when running the editor against a system copy of Qlementine.
+
+Signed-off-by: Matt Jolly <kangie@gentoo.org>
+--- a/editor/cmake/AddDependencies.cmake
++++ b/editor/cmake/AddDependencies.cmake
+@@ -8,6 +8,7 @@ find_package(Qt6Core "6.8" REQUIRED)
+ find_package(Qt6Widgets REQUIRED)
+ find_package(Qt6OpenGL REQUIRED)
+ find_package(Qt6OpenGLWidgets REQUIRED)
++find_package(Qt6Svg REQUIRED)
+ 
+ # Find Qt6LinguistTools within the host path when set.
+ # This is required for cross compilation with Qt6 as the module is
+@@ -44,29 +45,46 @@ if("${DL_LIBRARY}" MATCHES DL_LIBRARY-NOTFOUND)
+   set(DL_LIBRARY "")
+ endif()
+ 
+-# Control whether to use a local Qlementine build.
++# Control Qlementine acquisition method.
+ include(FetchContent)
+-option(SOLARUS_USE_LOCAL_QLEMENTINE "Use a local build of Qlementine instead of FetchContent download" OFF)
++option(SOLARUS_USE_LOCAL_QLEMENTINE "Use a local build of Qlementine (highest priority)" OFF)
++option(SOLARUS_USE_SYSTEM_QLEMENTINE "Use system-installed Qlementine via pkgconfig" ON)
++
++set(qlementine_FOUND FALSE)
++
++# Priority 1: Local Qlementine build
+ if(SOLARUS_USE_LOCAL_QLEMENTINE)
+   set(SOLARUS_QLEMENTINE_LOCAL_PATH "" CACHE PATH "Path to the local Qlementine source directory")
+   # Check if the provided path is valid.
+   if(NOT IS_DIRECTORY "${SOLARUS_QLEMENTINE_LOCAL_PATH}")
+-    message(FATAL_ERROR "SOLARUS_QLEMENTINE_LOCAL_PATH is set to '${SOLARUS_QLEMENTINE_LOCAL_PATH}' but it's not a valid directory. Please provide the correct path to your local qlementine clone.")
++    message(FATAL_ERROR "SOLARUS_QLEMENTINE_LOCAL_PATH is set to '${SOLARUS_QLEMENTINE_LOCAL_PATH}' but it's not a valid directory. Please provide the correct path to your local Qlementine clone.")
+   else()
+-    set(Qlementine_SOURCE_DIR ${QSOLARUS_LEMENTINE_LOCAL_PATH})
++    set(Qlementine_SOURCE_DIR ${SOLARUS_QLEMENTINE_LOCAL_PATH})
+     message(STATUS "Using local Qlementine source from: ${SOLARUS_QLEMENTINE_LOCAL_PATH}")
++    FetchContent_Declare(
++      qlementine
++      SOURCE_DIR "${SOLARUS_QLEMENTINE_LOCAL_PATH}"
++      EXCLUDE_FROM_ALL
++    )
++    FetchContent_MakeAvailable(qlementine)
++    set(qlementine_FOUND TRUE)
+   endif()
+-  FetchContent_Declare(
+-    qlementine
+-    SOURCE_DIR "${SOLARUS_QLEMENTINE_LOCAL_PATH}"
+-    EXCLUDE_FROM_ALL
+-  )
+-else()
++endif()
++
++# Priority 2: System-installed Qlementine
++if(NOT qlementine_FOUND AND SOLARUS_USE_SYSTEM_QLEMENTINE)
++  find_package(qlementine REQUIRED)
++endif()
++
++# Priority 3: Fetch from Git (fallback)
++if(NOT qlementine_FOUND)
++  message(STATUS "Using Qlementine from Git repository (FetchContent)")
+   FetchContent_Declare(
+     qlementine
+     GIT_REPOSITORY https://github.com/oclero/qlementine.git
+     GIT_TAG        v1.4.0
+     EXCLUDE_FROM_ALL
+   )
++  FetchContent_MakeAvailable(qlementine)
++  set(qlementine_FOUND TRUE)
+ endif()
+-FetchContent_MakeAvailable(qlementine)
+--- a/editor/cmake/AddEditorExecutable.cmake
++++ b/editor/cmake/AddEditorExecutable.cmake
+@@ -10,6 +10,7 @@ target_link_libraries(solarus-editor
+   Qt6::Widgets
+   Qt6::OpenGL
+   Qt6::OpenGLWidgets
++  Qt6::Svg
+   "${SOLARUS_LIBRARIES}"
+   "${SDL2_LIBRARY}"
+   "${SDL2_IMAGE_LIBRARY}"
+-- 
+2.52.0
