@@ -94,7 +94,10 @@ RDEPEND="
 	~x11-terms/ghostty-terminfo-${PV}
 "
 BDEPEND="
-	>=dev-lang/zig-0.15.2
+	|| (
+		>=dev-lang/zig-bin-0.15.2
+		>=dev-lang/zig-0.15.2
+	)
 	man? ( virtual/pandoc )
 	nls? ( sys-devel/gettext )
 "
