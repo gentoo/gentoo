@@ -18,19 +18,13 @@ else
 fi
 
 LICENSE="ZLIB"
-SLOT="0/9999"
+SLOT="0/5.0" # SONAME (see meson.build)
 IUSE="doc test X"
 RESTRICT="!test? ( test )"
 
-# REVIEW: are all those really needed?
 RDEPEND="
-	app-accessibility/at-spi2-core
 	>=dev-libs/glib-2.72:2
-	media-libs/harfbuzz:=
-	x11-libs/cairo[glib]
-	x11-libs/gdk-pixbuf
-	>=x11-libs/gtk+-3.24:3[X?]
-	x11-libs/pango
+	dev-libs/gobject-introspection
 "
 DEPEND="
 	${RDEPEND}
