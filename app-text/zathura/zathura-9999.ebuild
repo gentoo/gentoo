@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,14 +21,14 @@ SLOT="0/6.7" # plugin versions api.abi (see meson.build)
 IUSE="+man landlock seccomp synctex test wayland X"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
-	test? ( X )
+	test? ( wayland X )
 	|| ( wayland X )
 "
 
 RDEPEND="
 	dev-libs/json-glib
 	dev-db/sqlite:3
-	>=dev-libs/girara-0.4.5-r1:=[X?]
+	>=dev-libs/girara-2026.02.03:=[X?]
 	>=dev-libs/glib-2.76:2
 	sys-apps/file
 	x11-libs/cairo
@@ -47,6 +47,7 @@ BDEPEND="
 	virtual/pkgconfig
 	test? (
 		dev-libs/appstream
+		dev-libs/weston[headless]
 		x11-misc/xvfb-run
 	)
 "
