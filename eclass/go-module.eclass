@@ -68,7 +68,7 @@ esac
 if [[ -z ${_GO_MODULE_ECLASS} ]]; then
 _GO_MODULE_ECLASS=1
 
-inherit multiprocessing toolchain-funcs go-env
+inherit toolchain-funcs go-env
 
 if [[ ! ${GO_OPTIONAL} ]]; then
 	BDEPEND=">=dev-lang/go-1.20:="
@@ -92,14 +92,6 @@ export GOCACHE="${T}/go-build"
 # Set the default for the go module cache
 # See "go help environment" for information on this setting
 export GOMODCACHE="${WORKDIR}/go-mod"
-
-# The following go flags should be used for all builds.
-# -buildmode=pie builds position independent executables
-# -buildvcs=false omits version control information
-# -modcacherw makes the build cache read/write
-# -v prints the names of packages as they are compiled
-# -x prints commands as they are executed
-export GOFLAGS="-buildvcs=false -modcacherw -v -x"
 
 # Do not complain about CFLAGS etc since go projects do not use them.
 QA_FLAGS_IGNORED='.*'
@@ -362,11 +354,6 @@ go-module_setup_proxy() {
 # 3. Otherwise, call 'ego mod verify' and then do a normal unpack.
 # Set compile env via go-env.
 go-module_src_unpack() {
-	if use amd64 || use arm || use arm64 ||
-		( use ppc64 && [[ $(tc-endian) == "little" ]] ) || use s390 || use x86; then
-			GOFLAGS="-buildmode=pie ${GOFLAGS}"
-	fi
-	GOFLAGS="${GOFLAGS} -p=$(makeopts_jobs)"
 	if [[ "${#EGO_SUM[@]}" -gt 0 ]]; then
 		eqawarn "QA Notice: This ebuild uses EGO_SUM which is deprecated"
 		eqawarn "Please migrate to a dependency tarball"

@@ -12,6 +12,17 @@
 # This eclass includes helper functions for setting the compile environment for Go ebuilds.
 # Intended to be called by other Go eclasses in an early build stage, e.g. src_unpack.
 
+# @ECLASS_VARIABLE: GOMAXPROCS
+# @USER_VARIABLE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# The maximum number of processes for the Go runtime to run in parallel. See
+# https://pkg.go.dev/runtime#GOMAXPROCS. If unset, this defaults to the
+# configured number of Make jobs. Unfortunately, Go does not currently support
+# the GNU Make jobserver, so this may not play nicely alongside other build
+# processes. However, Go code is often built without a supporting build system
+# or without other non-Go code, so this should be sufficient in most cases.
+
 case ${EAPI} in
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
@@ -20,7 +31,7 @@ esac
 if [[ -z ${_GO_ENV_ECLASS} ]]; then
 _GO_ENV_ECLASS=1
 
-inherit flag-o-matic toolchain-funcs
+inherit flag-o-matic multiprocessing toolchain-funcs
 
 # @FUNCTION: go-env_set_compile_environment
 # @DESCRIPTION:
@@ -35,7 +46,24 @@ inherit flag-o-matic toolchain-funcs
 go-env_set_compile_environment() {
 	tc-export AR CC CXX FC PKG_CONFIG
 
-	export GOARCH=$(go-env_goarch)
+	# Go uses all cores by default. Use the configured number of Make jobs, but
+	# respect the user value, as described above.
+	: "${GOMAXPROCS=$(get_makeopts_jobs)}"
+	export GOMAXPROCS
+
+	# The following GOFLAGS should be used for all builds.
+	# -x prints commands as they are executed
+	# -v prints the names of packages as they are compiled
+	# -modcacherw makes the build cache read/write
+	# -buildvcs=false omits version control information
+	# -buildmode=pie builds position independent executables
+	export \
+		GOFLAGS="-x -v -modcacherw -buildvcs=false" \
+		GOARCH=$(go-env_goarch)
+
+	case ${GOARCH} in
+		386|amd64|arm*|ppc64le|s390*) GOFLAGS+=" -buildmode=pie" ;;
+	esac
 
 	case ${GOARCH} in
 		386) export GO386=$(go-env_go386) ;;
