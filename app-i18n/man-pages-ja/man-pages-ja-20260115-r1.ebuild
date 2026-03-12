@@ -20,6 +20,7 @@ src_prepare() {
 	pkgs["man"]=
 	# - sys-apps/shadow +nls
 	pkgs["shadow"]=
+	pkgs["LDP_man-pages"]="passwd"
 	pkgs["util-linux"]="chfn chsh newgrp vigr vipw"
 	# - app-arch/rpm +nls
 	pkgs["rpm"]=
