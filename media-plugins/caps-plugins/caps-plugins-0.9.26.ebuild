@@ -20,6 +20,10 @@ RDEPEND=""
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-c++17.patch"
+)
+
 src_prepare() {
 	default
 	multilib_copy_sources
