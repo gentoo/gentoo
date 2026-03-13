@@ -127,6 +127,7 @@ src_configure() {
 	fi
 
 	if use lmdb; then
+		mycc="${mycc} -DHAS_LMDB"
 		AUXLIBS_LMDB="-llmdb -lpthread"
 	fi
 
