@@ -51,7 +51,7 @@ dev-libs/nativefiledialog-extended
 # are www-servers/nginx or www-servers/apache
 # depending on your application needs.
 # Removal on 2026-04-13.
-sys-apps/nginx-unit
+www-servers/nginx-unit
 
 # Alfredo Tupone <tupone@gentoo.org> (2026-03-12)
 # No reverse dependency. Included in dev-tcltk/tklib
