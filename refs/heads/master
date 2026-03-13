@@ -1,23 +1,14 @@
 certificate version 0.1
-pusher Nick Sarnie <sarnex@gentoo.org> 1773403212 +0900
-pushee git+ssh://git.gentoo.org/repo/gentoo.git
-nonce 1773403212-40af05a49994e2f34b054df549ea94df13afe46e
+pusher DF84256885283521 1773407397 +0100
+pushee git.gentoo.org:repo/gentoo.git
+nonce 1773407396-ae2015a1dcf0f9ea23721e0491e41f5feef5231b
 
-f7c6ba09d654605ace18e54523f5b60bf48cfca8 c1d5955f1f7676936ad8b617f0c085b5446ae613 refs/heads/master
+c1d5955f1f7676936ad8b617f0c085b5446ae613 78ee924826cac66bf12bcea5a40ef4d33cc614a8 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iQJiBAABCABMFiEEKjqy6xHsR6dcCCUVuQgxXmzatuMFAmmz/EwbFIAAAAAABAAO
-bWFudTIsMi41KzEuMTEsMiwyEhxzYXJuZXhAZ2VudG9vLm9yZwAKCRC5CDFebNq2
-43JBEADKODuOv8SCCCEyzmAJYAdurN4FnGyV/7dlWsfSJm4fEka62xinVHGyLhAf
-xMk0HGIbaly3RUJ1FzYj+I+u5f9Cp62tV5RK+hrp78l0avpz4loF44YGy8/7paxt
-OJCKU/ef/G6WRNcUkX/B/QSfUvG/9S1XypO2MAtgtubRDDgBxQ6VlJarsaUztIt0
-MBuuzGrmcNSy51qI8n3ry4fNoIPDrD7jfM8rsx5WJVxP+EAh5tQJ3y4Zj6Xw+A2b
-kk+fYSjtSOl7FF6RRFPSiO5eVjFRYPAHZDjIsxaV3FhdnwYbtRNJV/lamObsEg2r
-s4GsorQ1xTt9/XdhqTb/xVZJC6et5l++sq/abHfQczFro4eaJFROiZ4rEqJgPDEc
-UcZ9Tn+Isu2EXuLuk/YxX4juFRv5Afi4LL6n1eDkL8ea1IAmitswJAVPvhmxQ4/n
-9Vk/yyzqdP15YibPXHkmCEiHxtFH7Q1mqkHgrPLlQ/GyeYFDIqoSqQMNfZWajrMI
-/LBtFuKSR1RZgc2Yfd7Acd+vnizJHGzRtd6gRVNngvXuK0b6Nb4ltRjN0Q7UdHOd
-/EkmBOnoFt+ArVMQMPivqnKVyUSOUM7YIVYJtVSyO5qMQfK0wRcSf4ffvatxmZx6
-SbcRDOvMr8Vx9hCkBkqCLRWySyHiNdoRYDi8rfZkOsqMeiawqQ==
-=wKpe
+iJEEABYKADkWIQQcFD0bEK7NPNmWHtiOMjR69AVa6AUCabQMpRsUgAAAAAAEAA5t
+YW51MiwyLjUrMS4xMiwyLDIACgkQjjI0evQFWuh6RAD/cz6AWa0nvreHGSlJej5b
+y6v0Gd3lYsrj8xs5VT84vdIA/jUaVNjolFoOVOgvEzZH6IlUbbvEv4slzyHb76ka
+icAP
+=cZOc
 -----END PGP SIGNATURE-----
