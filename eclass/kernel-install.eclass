@@ -53,7 +53,7 @@ if [[ -z ${_KERNEL_INSTALL_ECLASS} ]]; then
 _KERNEL_INSTALL_ECLASS=1
 
 case ${EAPI} in
-	8) ;;
+	8) inherit eapi9-pipestatus ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -841,7 +841,7 @@ kernel-install_compress_modules() {
 		find "${ED}/lib/modules/${KV_FULL}" -name '*.ko' -print0 |
 			xargs -0 -P "$(makeopts_jobs)" -n 128 \
 				$(dist-kernel_get_compressor "${ED}/usr/src/linux-${KV_FULL}/.config")
-		assert "Compressing kernel modules failed"
+		pipestatus || die "Compressing kernel modules failed"
 
 		# Module paths have changed, run depmod
 		depmod --all --basedir "${ED}" ${KV_FULL} || die
