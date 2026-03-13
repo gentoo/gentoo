@@ -10,11 +10,13 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<use>
+		<flag name="discord">Enables Discord Rich Presence, show the current game on Discord</flag>
 		<flag name="discord-presence">Enables Discord Rich Presence, show the current game on Discord</flag>
 		<flag name="evdev">Enable evdev input support</flag>
 		<flag name="llvm">Enables LLVM support, for disassembly</flag>
 		<flag name="log">Increase logging output</flag>
-		<flag name="mgba">Enables GBA controllers emulation using libmgba.</flag>
+		<flag name="mgba">Enables GBA controllers emulation with <pkg>games-emulation/mgba</pkg></flag>
+		<flag name="retro-achievements">Enables integration with retroachievements.org</flag>
 	</use>
 	<longdescription lang="en">
 		Dolphin is a Gamecube and Wii emulator. Most games run perfectly or with

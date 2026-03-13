@@ -168,6 +168,10 @@ add_bundled_licenses() {
 }
 add_bundled_licenses
 
+PATCHES=(
+	"${FILESDIR}"/dolphin-2603-mbgba-definitions.patch
+)
+
 pkg_setup() {
 	use llvm && llvm-r2_pkg_setup
 }

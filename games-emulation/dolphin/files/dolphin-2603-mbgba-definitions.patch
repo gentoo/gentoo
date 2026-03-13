@@ -1,0 +1,20 @@
+https://github.com/dolphin-emu/dolphin/pull/14459
+
+From 93cec810e8c5e2a82fb205a3f5286cbdf378efb8 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Fri, 13 Mar 2026 18:46:24 +0200
+Subject: [PATCH] FindLIBMGBA: pass the same preprocessor arguments as the
+ bundled libmgba
+
+These are required if you build against a system libmgba as well.
+
+See-Also: 6d5e8b9ed8ced1ca180b4634fd2d36f35a34d240
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/CMake/FindLIBMGBA.cmake
++++ b/CMake/FindLIBMGBA.cmake
+@@ -12,4 +12,5 @@ if(LIBMGBA_FOUND AND NOT mGBA::mgba)
+     IMPORTED_LOCATION "${LIBMGBA_LIBRARY}"
+     INTERFACE_INCLUDE_DIRECTORIES "${LIBMGBA_INCLUDE_DIR}"
+   )
++  target_compile_definitions(mGBA::mgba INTERFACE HAVE_CRC32 ENABLE_VFS ENABLE_DIRECTORIES)
+ endif()
