@@ -31,7 +31,7 @@ esac
 if [[ -z ${_GO_ENV_ECLASS} ]]; then
 _GO_ENV_ECLASS=1
 
-inherit flag-o-matic multiprocessing toolchain-funcs
+inherit flag-o-matic multiprocessing sysroot toolchain-funcs
 
 # @FUNCTION: go-env_set_compile_environment
 # @DESCRIPTION:
@@ -92,6 +92,13 @@ go-env_set_compile_environment() {
 		CGO_CPPFLAGS=${CPPFLAGS} \
 		CGO_CXXFLAGS=${CXXFLAGS} \
 		CGO_LDFLAGS=${LDFLAGS}
+
+	# go run will build binaries for the target system and try to execute them.
+	# This will fail when cross-compiling unless you provide a wrapper.
+	local script
+	if script=$(sysroot_make_run_prefixed); then
+		GOFLAGS+=" -exec=${script}" "${@}"
+	fi
 }
 
 # @FUNCTION: go-env_run
