@@ -63,16 +63,10 @@ src_compile() {
 		VERSION=v${PV}
 	)
 
-	# The Go env is already set, but reset it for CBUILD in a subshell to allow
-	# building the man pages when cross-compiling.
-	(
-		CHOST="${CBUILD}" go-env_set_compile_environment
-		# race condition in man target https://bugs.gentoo.org/765100
-		tc-env_build emake "${myemakeargs[@]}" man -j1 #nowarn
-	)
-
 	emake "${myemakeargs[@]}" all
 
+	# race condition in man target https://bugs.gentoo.org/765100
+	tc-env_build go-env_run emake "${myemakeargs[@]}" man -j1 #nowarn
 }
 
 src_install() {
