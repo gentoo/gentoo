@@ -5,6 +5,9 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
+	<use>
+		<flag name="pipewire">Enable using <pkg>media-video/pipewire</pkg> for audio</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">xyproto/zsnes</remote-id>
 		<remote-id type="sourceforge">zsnes</remote-id>
