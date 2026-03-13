@@ -369,6 +369,13 @@ tc-export_build_env() {
 		: "${BUILD_CXXFLAGS:=${CXXFLAGS}}"
 		: "${BUILD_CPPFLAGS:=${CPPFLAGS}}"
 		: "${BUILD_LDFLAGS:=${LDFLAGS}}"
+
+		if has go-env ${INHERITED}; then
+			: "${BUILD_GOAMD64:=${GOAMD64}}"
+			: "${BUILD_GOARM64:=${GOARM64}}"
+			: "${BUILD_GOPPC64:=${GOPPC64}}"
+			: "${BUILD_GORISCV64:=${GORISCV64}}"
+		fi
 	fi
 	export BUILD_{C,CXX,CPP,LD}FLAGS
 
@@ -388,6 +395,13 @@ tc-export_build_env() {
 # the target build system does not check.
 tc-env_build() {
 	tc-export_build_env
+
+	has go-env ${INHERITED} && local -x \
+		GOAMD64=${BUILD_GOAMD64} \
+		GOARM64=${BUILD_GOARM64} \
+		GOPPC64=${BUILD_GOPPC64} \
+		GORISCV64=${BUILD_GORISCV64}
+
 	CFLAGS=${BUILD_CFLAGS} \
 	CXXFLAGS=${BUILD_CXXFLAGS} \
 	CPPFLAGS=${BUILD_CPPFLAGS} \
