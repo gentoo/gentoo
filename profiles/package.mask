@@ -36,6 +36,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Jakov Smolić <jsmolic@gentoo.org> (2026-03-13)
+# sqlite-3.52.0 has been withdrawn shortly after its release due to
+# backwards-compatibility issues
+# https://sqlite.org/releaselog/3_52_0.html
+=dev-db/sqlite-3.52.0-r1
+=dev-python/apsw-3.52.0.0
+
 # Ionen Wolkens <ionen@gentoo.org> (2026-03-12)
 # Package was added for games-strategy/naev-0.12.x but 0.13.x no longer
 # needs it and it never gained other consumers. Have no intentions to
