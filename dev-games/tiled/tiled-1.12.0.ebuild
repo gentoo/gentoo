@@ -3,14 +3,12 @@
 
 EAPI=8
 
-COMMIT=400e62395319ab1b0bd9dc260854e95eeb7710a5
 PYTHON_COMPAT=(python3_{11..14})
 inherit edo flag-o-matic multiprocessing python-single-r1 toolchain-funcs xdg
 
 DESCRIPTION="A general purpose tile map editor"
 HOMEPAGE="https://www.mapeditor.org/ https://github.com/mapeditor/tiled"
-SRC_URI="https://codeload.github.com/mapeditor/tiled/tar.gz/${COMMIT} -> ${P}.tar.gz"
-S="${WORKDIR}/tiled-${COMMIT}"
+SRC_URI="https://github.com/mapeditor/tiled/archive/v${PV}/${P}.tar.gz"
 
 LICENSE="BSD BSD-2 GPL-2+"
 SLOT="0"
