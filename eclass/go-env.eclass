@@ -7,10 +7,11 @@
 # @AUTHOR:
 # Flatcar Linux Maintainers <infra@flatcar-linux.org>
 # @SUPPORTED_EAPIS: 7 8
-# @BLURB: Helper eclass for setting the Go compile environment. Required for cross-compiling.
+# @BLURB: Helper eclass for setting up the Go build environment.
 # @DESCRIPTION:
-# This eclass includes helper functions for setting the compile environment for Go ebuilds.
-# Intended to be called by other Go eclasses in an early build stage, e.g. src_unpack.
+# This eclass includes helper functions for setting up the build environment for
+# Go ebuilds. Intended to be called by other Go eclasses in an early build
+# stage, e.g. src_unpack.
 
 # @ECLASS_VARIABLE: GOMAXPROCS
 # @USER_VARIABLE
@@ -22,6 +23,58 @@
 # the GNU Make jobserver, so this may not play nicely alongside other build
 # processes. However, Go code is often built without a supporting build system
 # or without other non-Go code, so this should be sufficient in most cases.
+
+# @ECLASS_VARIABLE: GOAMD64
+# @USER_VARIABLE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Optimisation setting for amd64 when building for CHOST. See
+# https://golang.org/wiki/MinimumRequirements#amd64.
+
+# @ECLASS_VARIABLE: GOARM64
+# @USER_VARIABLE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Optimisation setting for arm64 when building for CHOST. See
+# https://pkg.go.dev/cmd/go/internal/help#pkg-variables.
+
+# @ECLASS_VARIABLE: GOPPC64
+# @USER_VARIABLE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Optimisation setting for ppc64 when building for CHOST. See
+# https://pkg.go.dev/cmd/go/internal/help#pkg-variables.
+
+# @ECLASS_VARIABLE: GORISCV64
+# @USER_VARIABLE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Optimisation setting for riscv when building for CHOST. See
+# https://pkg.go.dev/cmd/go/internal/help#pkg-variables.
+
+# @ECLASS_VARIABLE: BUILD_GOAMD64
+# @USER_VARIABLE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Optimisation setting for amd64 when building for CBUILD.
+
+# @ECLASS_VARIABLE: BUILD_GOARM64
+# @USER_VARIABLE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Optimisation setting for arm64 when building for CBUILD.
+
+# @ECLASS_VARIABLE: BUILD_GOPPC64
+# @USER_VARIABLE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Optimisation setting for ppc64 when building for CBUILD.
+
+# @ECLASS_VARIABLE: BUILD_GORISCV64
+# @USER_VARIABLE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Optimisation setting for riscv when building for CBUILD.
 
 case ${EAPI} in
 	7|8) ;;
@@ -35,14 +88,13 @@ inherit flag-o-matic multiprocessing sysroot toolchain-funcs
 
 # @FUNCTION: go-env_set_compile_environment
 # @DESCRIPTION:
-# Set up basic compile environment: CC, CXX, and GOARCH.
-# Necessary platform-specific settings such as GOARM or GO386 are also set
-# according to the Portage configuration when building for those architectures.
-# Also carry over CFLAGS, LDFLAGS and friends.
-# Required for cross-compiling with crossdev.
-# If not set, host defaults will be used and the resulting binaries are host arch.
-# (e.g. "emerge-aarch64-cross-linux-gnu foo" run on x86_64 will emerge "foo" for x86_64
-#  instead of aarch64)
+# Sets up the environment to build Go code for CHOST. This includes variables
+# required for cross-compiling, cgo-related variables, and architecture-specific
+# variables. GO386, GOARM, GOMIPS, and GOMIPS64 are set based on the tuple.
+# Variables for other architectures need to be set manually by users. This
+# function must be called (implicitly or otherwise) before building any Go code
+# whether cross-compiling or not. Make any build flag changes (e.g. CFLAGS)
+# before calling this function.
 go-env_set_compile_environment() {
 	tc-export AR CC CXX FC PKG_CONFIG
 
