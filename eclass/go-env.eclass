@@ -59,7 +59,8 @@ go-env_set_compile_environment() {
 	# -buildmode=pie builds position independent executables
 	export \
 		GOFLAGS="-x -v -modcacherw -buildvcs=false" \
-		GOARCH=$(go-env_goarch)
+		GOARCH=$(go-env_goarch) \
+		GOOS=$(go-env_goos)
 
 	case ${GOARCH} in
 		386|amd64|arm*|ppc64le|s390*) GOFLAGS+=" -buildmode=pie" ;;
