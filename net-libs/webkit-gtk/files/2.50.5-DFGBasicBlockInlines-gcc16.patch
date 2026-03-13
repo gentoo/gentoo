@@ -1,0 +1,23 @@
+From eaa5bcac5973ea7d0f7462b5d0ed24b80d95fa7b Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Fri, 20 Feb 2026 19:01:28 +0100
+Subject: DFGBasicBlockInlines gcc16
+
+See-also: https://bugs.gentoo.org/968838
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/Source/JavaScriptCore/dfg/DFGLoopUnrollingPhase.cpp b/Source/JavaScriptCore/dfg/DFGLoopUnrollingPhase.cpp
+index 6318e85..88780af 100644
+--- a/Source/JavaScriptCore/dfg/DFGLoopUnrollingPhase.cpp
++++ b/Source/JavaScriptCore/dfg/DFGLoopUnrollingPhase.cpp
+@@ -29,6 +29,7 @@
+ #if ENABLE(DFG_JIT)
+ 
+ #include "CodeOrigin.h"
++#include "DFGBasicBlockInlines.h"
+ #include "DFGBlockInsertionSet.h"
+ #include "DFGCFAPhase.h"
+ #include "DFGCloneHelper.h"
+-- 
+2.53.0
+
