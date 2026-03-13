@@ -1,0 +1,49 @@
+From 0795902a1eea6a6f54249fe542eb6efbdea22f6e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Andreas=20K=2E=20H=C3=BCttel?= <dilfridge@gentoo.org>
+Date: Wed, 11 Mar 2026 18:37:59 +0100
+Subject: [PATCH] Workaround to sanitize m68k until upstream has fixed things
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* Disable fold_mem_offsets by default
+* Do not enable late_combine_instructions with -O2 or higher
+
+Bug: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=123853
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=33850
+Bug: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=113357
+Bug: https://bugs.gentoo.org/932733
+Signed-off-by: Andreas K. Hüttel <dilfridge@gentoo.org>
+---
+ gcc/common.opt | 2 +-
+ gcc/opts.cc    | 1 -
+ 2 files changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/gcc/common.opt b/gcc/common.opt
+index e3fa0dacec4c..a562b598153f 100644
+--- a/gcc/common.opt
++++ b/gcc/common.opt
+@@ -1297,7 +1297,7 @@ Common Var(flag_cprop_registers) Optimization
+ Perform a register copy-propagation optimization pass.
+ 
+ ffold-mem-offsets
+-Common Var(flag_fold_mem_offsets) Init(1) Optimization
++Common Var(flag_fold_mem_offsets) Init(0) Optimization
+ Fold instructions calculating memory offsets to the memory access instruction if possible.
+ 
+ fcrossjumping
+diff --git a/gcc/opts.cc b/gcc/opts.cc
+index ffcbdfef0bd9..beac74705929 100644
+--- a/gcc/opts.cc
++++ b/gcc/opts.cc
+@@ -666,7 +666,6 @@ static const struct default_options default_options_table[] =
+     { OPT_LEVELS_2_PLUS, OPT_finline_functions, NULL, 1 },
+     { OPT_LEVELS_2_PLUS, OPT_ftree_loop_distribute_patterns, NULL, 1 },
+     { OPT_LEVELS_2_PLUS, OPT_foptimize_crc, NULL, 1 },
+-    { OPT_LEVELS_2_PLUS, OPT_flate_combine_instructions, NULL, 1 },
+ 
+     /* -O2 and above optimizations, but not -Os or -Og.  */
+     { OPT_LEVELS_2_PLUS_SPEED_ONLY, OPT_falign_functions, NULL, 1 },
+-- 
+2.52.0
+

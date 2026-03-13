@@ -52,5 +52,6 @@ src_prepare() {
 
 	toolchain_src_prepare
 	eapply "${FILESDIR}"/${PN}-13-fix-cross-fixincludes.patch
+	[[ ${CHOST} == m68k-* ]] && eapply "${FILESDIR}"/${PN}-15-m68k-workaround.patch
 	eapply_user
 }
