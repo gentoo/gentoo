@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,36 +11,31 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/folks"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/26" # subslot = libfolks soname version
-KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
-IUSE="bluetooth eds telepathy test utils"
+IUSE="bluetooth eds test utils"
 REQUIRED_USE="bluetooth? ( eds )"
 RESTRICT="!test? ( test )"
 
 DEPEND="
 	>=dev-libs/glib-2.58:2
-	>=dev-libs/libgee-0.10:0.8[introspection]
 	>=dev-libs/gobject-introspection-1.82.0-r2:=
-	telepathy? (
-		>=net-libs/telepathy-glib-0.19.9
-		dev-libs/dbus-glib
-	)
-	eds? ( >=gnome-extra/evolution-data-server-3.38:= )
+	>=dev-libs/libgee-0.10:0.8[introspection]
 	dev-libs/libxml2:2=
+	eds? (
+		>=gnome-extra/evolution-data-server-3.38:=
+		<gnome-extra/evolution-data-server-3.60.0:=
+	)
 	utils? ( sys-libs/readline:0= )
 "
-# telepathy-mission-control needed at runtime; it is used by the telepathy
-# backend via telepathy-glib's AccountManager binding.
 RDEPEND="${DEPEND}
 	bluetooth? ( >=net-wireless/bluez-5[obex] )
-	telepathy? ( net-im/telepathy-mission-control )
 "
 BDEPEND="
 	${PYTHON_DEPS}
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	$(vala_depend)
-	telepathy? ( net-libs/telepathy-glib[vala] )
 	eds? ( gnome-extra/evolution-data-server[vala] )
 	test? (
 		sys-apps/dbus
@@ -69,7 +64,7 @@ src_configure() {
 		$(meson_use bluetooth bluez_backend)
 		$(meson_use eds eds_backend)
 		$(meson_use eds ofono_backend)
-		$(meson_use telepathy telepathy_backend)
+		-Dtelepathy_backend=false # obsolete dependency
 		-Dzeitgeist=false # last rited package
 		-Dimport_tool=true
 		$(meson_use utils inspect_tool)
