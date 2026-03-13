@@ -1,0 +1,30 @@
+Was sed in ebuild. Extracted for clarity.
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -57,7 +57,6 @@
+ ###########################################################################
+ 
+ # For compile
+-CC=@CC@
+ # For copy
+ CP=cp
+ @CP@
+@@ -83,7 +82,7 @@
+ 
+ # For linking (configure script will modify this line)
+ # xmkmf et imake informations are take into account.
+-LIBS = @LIBS@ -lm
++LIBS = @LIBS@ -lm -lX11
+ 
+ all:demo
+ 
+@@ -93,8 +92,7 @@
+ CFLAGS = -DSCOREDIR=\"$(SCOREDIR)\" \
+ 	 -DRESOURCEDIR=\"$(RESOURCEDIR)\" \
+ 	 -DXBLVERSION=\"$(XBLVERSION)\" \
+-	 -DGROUP_GID=$(GROUP_GID) \
+-	  $(USE_SETGID) @DEFS@ @CFLA@ -g
++	  $(USE_SETGID) @DEFS@ @CFLA@ $(GENTOO_CFLAGS)
+ # For link edit options
+ LDOPTIONS=$(CFLAGS)
+ LDOPTIONS=@LDOPTIONS@
