@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,12 +23,11 @@ SLOT="0"
 # imlib2[png] not technically requried, but it's the default format used by
 # scrot, so unconditionally depend on it to avoid breaking basic commands.
 RDEPEND="
-	media-libs/imlib2[X,png,filters(+),text(+)]
-	x11-libs/libXext
+	media-libs/imlib2[X,png]
 	x11-libs/libX11
 	x11-libs/libXcomposite
 	x11-libs/libXfixes
-	x11-libs/libXinerama
+	x11-libs/libXrandr
 "
 DEPEND="
 	${RDEPEND}
@@ -49,9 +48,8 @@ src_prepare() {
 	[[ ${PV} == *9999* ]] && eautoreconf
 }
 
-src_install() {
-	default
-
-	dozshcomp  etc/zsh-completion/_scrot
-	dobashcomp etc/bash-completion/scrot
+src_configure() {
+	econf \
+		--with-bash-completion-path="$(get_bashcompdir)" \
+		--with-zsh-completion-path="$(get_zshcompdir)"
 }
