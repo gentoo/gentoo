@@ -47,8 +47,9 @@
 # Package was added for games-strategy/naev-0.12.x but 0.13.x no longer
 # needs it and it never gained other consumers. Have no intentions to
 # keep maintaining this so may as well remove rather than leave it m-n.
+# (note: may be moved to ::guru, upper bound is to facililate this)
 # Removal on 2026-04-11.
-dev-libs/nativefiledialog-extended
+<dev-libs/nativefiledialog-extended-1.2.1-r1
 
 # Mike Pagano <mpagano@gentoo.org> (2026-03-13)
 # Upstream has announced the archiving of this application
