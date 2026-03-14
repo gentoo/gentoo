@@ -292,8 +292,10 @@ multilib_src_configure() {
 		-Dcompat-mutable-uid-boundaries=true
 
 		# options affecting multilib
+		$(meson_use !elibc_musl nss-myhostname)
 		$(meson_feature !elibc_musl nss-mymachines)
 		$(meson_feature !elibc_musl nss-resolve)
+		$(meson_use !elibc_musl nss-systemd)
 		$(meson_feature pam)
 	)
 
