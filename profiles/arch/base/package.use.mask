@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2026-03-14)
+# SPIRV target requires dev-libs/level-zero.
+llvm-runtimes/offload llvm_targets_SPIRV
+
 # Michał Górny <mgorny@gentoo.org> (2026-03-03)
 # OpenMP offloading GPU runtimes are not keyworded everywhre.
 llvm-runtimes/clang-runtime llvm_targets_AMDGPU llvm_targets_NVPTX
