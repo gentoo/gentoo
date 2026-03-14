@@ -1,0 +1,102 @@
+https://bugs.gentoo.org/969390
+https://github.com/OpenMathLib/OpenBLAS/issues/5607
+https://github.com/OpenMathLib/OpenBLAS/pull/5615
+
+From 874243421298866d116e1e8bdbd7e0ed4e31e4f6 Mon Sep 17 00:00:00 2001
+From: Martin Kroeker <martin@ruby.chemie.uni-freiburg.de>
+Date: Sun, 18 Jan 2026 19:55:40 +0100
+Subject: [PATCH 1/2] Include thread callback replacement hook in
+ singlethreaded builds as well
+
+---
+ driver/others/CMakeLists.txt | 2 +-
+ driver/others/Makefile       | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/driver/others/CMakeLists.txt b/driver/others/CMakeLists.txt
+index a07a0baf99..72abdc4ee4 100644
+--- a/driver/others/CMakeLists.txt
++++ b/driver/others/CMakeLists.txt
+@@ -27,7 +27,6 @@ if (USE_THREAD)
+     ${BLAS_SERVER}
+     divtable.c # TODO: Makefile has -UDOUBLE
+     blas_l1_thread.c
+-    blas_server_callback.c
+   )
+ 
+   if (NOT NO_AFFINITY)
+@@ -42,6 +41,7 @@ set(COMMON_SOURCES
+   openblas_env.c
+   openblas_get_num_procs.c
+   openblas_get_num_threads.c
++  blas_server_callback.c
+ )
+ 
+ # these need to have NAME/CNAME set, so use GenerateNamedObjects, but don't use standard name mangling
+diff --git a/driver/others/Makefile b/driver/others/Makefile
+index 719d617c45..fbd016e6b0 100644
+--- a/driver/others/Makefile
++++ b/driver/others/Makefile
+@@ -1,12 +1,12 @@
+ TOPDIR	= ../..
+ include ../../Makefile.system
+ 
+-COMMONOBJS	 = memory.$(SUFFIX) xerbla.$(SUFFIX) c_abs.$(SUFFIX) z_abs.$(SUFFIX) openblas_set_num_threads.$(SUFFIX) openblas_get_num_threads.$(SUFFIX) openblas_get_num_procs.$(SUFFIX) openblas_get_config.$(SUFFIX) openblas_get_parallel.$(SUFFIX) openblas_error_handle.$(SUFFIX) openblas_env.$(SUFFIX)
++COMMONOBJS	 = memory.$(SUFFIX) xerbla.$(SUFFIX) c_abs.$(SUFFIX) z_abs.$(SUFFIX) openblas_set_num_threads.$(SUFFIX) openblas_get_num_threads.$(SUFFIX) openblas_get_num_procs.$(SUFFIX) openblas_get_config.$(SUFFIX) openblas_get_parallel.$(SUFFIX) openblas_error_handle.$(SUFFIX) openblas_env.$(SUFFIX) blas_server_callback.$(SUFFIX)
+ 
+ #COMMONOBJS	+= slamch.$(SUFFIX) slamc3.$(SUFFIX) dlamch.$(SUFFIX)  dlamc3.$(SUFFIX)
+ 
+ ifdef SMP
+-COMMONOBJS	+= blas_server.$(SUFFIX) divtable.$(SUFFIX) blasL1thread.$(SUFFIX) blas_server_callback.$(SUFFIX)
++COMMONOBJS	+= blas_server.$(SUFFIX) divtable.$(SUFFIX) blasL1thread.$(SUFFIX)
+ ifneq ($(NO_AFFINITY), 1)
+ COMMONOBJS	+= init.$(SUFFIX)
+ endif
+
+From 566e315f4f064e5c270e4401adfa3942368ba03a Mon Sep 17 00:00:00 2001
+From: Martin Kroeker <martin@ruby.chemie.uni-freiburg.de>
+Date: Sun, 18 Jan 2026 19:59:49 +0100
+Subject: [PATCH 2/2] Make test_post_fork_async depend on LAPACK as it uses
+ getrf
+
+---
+ utest/CMakeLists.txt | 5 +++++
+ utest/Makefile       | 5 ++++-
+ 2 files changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/utest/CMakeLists.txt b/utest/CMakeLists.txt
+index c73152d79a..69c8d0a413 100644
+--- a/utest/CMakeLists.txt
++++ b/utest/CMakeLists.txt
+@@ -101,9 +101,14 @@ if (NOT USE_OPENMP)
+ set(OpenBLAS_utest_src
+   ${OpenBLAS_utest_src}
+   test_fork.c
++  )
++if (NOT NO_LAPACK)
++set(OpenBLAS_utest_src
++  ${OpenBLAS_utest_src}
+   test_post_fork_async.c
+   )
+ endif()
++endif()
+ set(OpenBLAS_utest_src
+   ${OpenBLAS_utest_src}
+   test_post_fork.c
+diff --git a/utest/Makefile b/utest/Makefile
+index e92fb67dc1..c3bf7e706b 100644
+--- a/utest/Makefile
++++ b/utest/Makefile
+@@ -45,7 +45,10 @@ endif
+ # FIXME TBD if this works on OSX, SunOS, POWER and zarch
+ ifeq ($(OSNAME), $(filter $(OSNAME),Linux CYGWIN_NT))
+ ifneq ($(USE_OPENMP), 1)
+-OBJS += test_fork.o test_post_fork_async.o
++OBJS += test_fork.o
++ifneq ($(NO_LAPACK), 1)
++OBJS += test_post_fork_async.o
++endif
+ endif
+ OBJS += test_post_fork.o
+ endif
+

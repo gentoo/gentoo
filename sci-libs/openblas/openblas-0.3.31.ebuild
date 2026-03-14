@@ -20,6 +20,11 @@ RESTRICT="!cpudetection? ( bindist ) !test? ( test )"
 
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-no-threads.patch
+	"${FILESDIR}"/${P}-arrow-lake.patch
+)
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 

@@ -1,0 +1,50 @@
+https://bugs.gentoo.org/964049
+https://github.com/OpenMathLib/OpenBLAS/issues/5635
+https://github.com/OpenMathLib/OpenBLAS/pull/5636
+
+From 0ae18524cd536c82f456e0505734a68920f5612d Mon Sep 17 00:00:00 2001
+From: Martin Kroeker <martin@ruby.chemie.uni-freiburg.de>
+Date: Thu, 5 Feb 2026 20:18:46 +0100
+Subject: [PATCH] Add Arrow Lake H/U
+
+---
+ cpuid_x86.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/cpuid_x86.c b/cpuid_x86.c
+index 13fc3605d0..2e2bb23b08 100644
+--- a/cpuid_x86.c
++++ b/cpuid_x86.c
+@@ -1563,6 +1563,7 @@ int get_cpuname(void){
+         break;
+       case 11: //family 6 exmodel 11
+         switch (model) {
++		  case 5: // Arrow Lake H/U
+           case 7: // Raptor Lake
+           case 10:
+           case 15:
+@@ -1588,6 +1589,7 @@ int get_cpuname(void){
+             break;
+ 	  case 15:
+ 	  case 6: // Arrow Lake
++	  case 5:
+ 	    if(support_avx512())
+               return CPUTYPE_SAPPHIRERAPIDS;
+             if(support_avx2())
+@@ -2418,6 +2420,7 @@ int get_coretype(void){
+ 
+       case 11:
+ 	switch (model) {
++	  case 5: // Arrow Lake H/U
+ 	  case 7: // Raptor Lake
+           case 10:
+           case 15:
+@@ -2434,6 +2437,7 @@ int get_coretype(void){
+ 	}
+       case 12:
+ 	switch (model) {
++	  case 5:
+ 	  case 6: // Arrow Lake
+ 	  if(support_amx_bf16())
+ 	    return CORE_SAPPHIRERAPIDS;
+
