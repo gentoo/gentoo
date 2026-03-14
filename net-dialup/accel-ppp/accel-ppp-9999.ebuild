@@ -1,20 +1,25 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 LUA_COMPAT=( lua5-1 )
-EGIT_REPO_URI="https://github.com/accel-ppp/accel-ppp.git"
 MODULES_OPTIONAL_IUSE="ipoe"
-inherit cmake flag-o-matic git-r3 linux-mod-r1 lua-single
+inherit cmake flag-o-matic linux-mod-r1 lua-single
 
-DESCRIPTION="High performance PPTP, PPPoE and L2TP server"
-HOMEPAGE="https://sourceforge.net/projects/accel-ppp/"
-SRC_URI=""
+DESCRIPTION="High performance PPTP/L2TP/SSTP/PPPoE/IPoE server"
+HOMEPAGE="https://accel-ppp.org/"
+
+if [[ ${PV} == *9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/accel-ppp/accel-ppp.git"
+else
+	SRC_URI="https://github.com/accel-ppp/accel-ppp/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
 IUSE="debug doc libtomcrypt lua postgres radius shaper snmp valgrind"
 
 RDEPEND="!libtomcrypt? ( dev-libs/openssl:0= )
@@ -49,8 +54,7 @@ src_prepare() {
 		drivers/ipoe/CMakeLists.txt \
 		drivers/vlan_mon/CMakeLists.txt || die
 
-	# Bug #549918
-	append-ldflags -Wl,-z,lazy
+	append-ldflags -Wl,-z,lazy # Bug #549918
 
 	cmake_src_prepare
 }
