@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -76,7 +76,7 @@ DEPEND="
 # bug #919751 wrt go subslot
 BDEPEND="
 	${PYTHON_DEPS}
-	>=dev-lang/go-1.24:=
+	>=dev-lang/go-1.26:=
 	sys-libs/ncurses
 	virtual/pkgconfig
 	test? ( $(python_gen_cond_dep 'dev-python/pillow[zlib,${PYTHON_USEDEP}]') )
