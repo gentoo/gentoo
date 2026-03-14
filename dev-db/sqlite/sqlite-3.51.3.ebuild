@@ -371,6 +371,7 @@ multilib_src_test() {
 	addpredict "/test.db"
 	addpredict "/ÿ.db"
 
+	emake tclextension
 	emake -Onone $(usex test-full 'xdevtest' 'test')
 }
 
