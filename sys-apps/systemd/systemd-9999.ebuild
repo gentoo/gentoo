@@ -286,7 +286,7 @@ multilib_src_configure() {
 		-Dbpf-compiler=gcc
 		-Dntp-servers="0.gentoo.pool.ntp.org 1.gentoo.pool.ntp.org 2.gentoo.pool.ntp.org 3.gentoo.pool.ntp.org"
 		# Breaks screen, tmux, etc.
-		#-Ddefault-kill-user-processes=false
+		-Ddefault-kill-user-processes=false
 		-Dcreate-log-dirs=false
 		-Dlibcrypt=enabled
 		-Dcompat-mutable-uid-boundaries=true
