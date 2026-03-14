@@ -1,0 +1,50 @@
+Based on upstream commit:
+https://github.com/rizinorg/rizin/pull/5414/commits/191a24dcbef9a8336a930926a102d0f544b8a503
+From: Zephyr Lykos <self@mochaa.ws>
+Date: Sun, 28 Sep 2025 13:11:33 +0800
+Subject: [PATCH] Add option to use system BLAKE3 (#5414)
+
+--- a/doc/PACKAGERS.md
++++ b/doc/PACKAGERS.md
+@@ -82,6 +82,7 @@
+ * `use_sys_pcre2`
+ * `use_sys_tree_sitter`
+ * `use_sys_softfloat`
++* `use_sys_blake3`
+ 
+ See [meson_options.txt][] for a complete list of compile-time options.
+ 
+--- a/meson.build
++++ b/meson.build
+@@ -310,8 +310,11 @@ libdemangle_proj = subproject('libdemangle', default_options: libdemangle_option
+ libdemangle_dep = libdemangle_proj.get_variable('libdemangle_dep')
+ 
+ # handle blake3 algo
+-blake3_proj = subproject('blake3', default_options: ['default_library=static', 'werror=false'])
+-blake3_dep = blake3_proj.get_variable('blake3_dep')
++blake3_dep = dependency('libblake3', required: get_option('use_sys_blake3'), static: is_static_build)
++if not blake3_dep.found()
++  blake3_proj = subproject('blake3', default_options: ['default_library=static', 'werror=false'])
++  blake3_dep = blake3_proj.get_variable('blake3_dep')
++endif
+ 
+ # handle openssl library
+ sys_openssl = dependency('openssl', required: get_option('use_sys_openssl'), static: is_static_build)
+@@ -842,6 +845,7 @@ summary({
+   'System zlib library': zlib_dep.found() and zlib_dep.type_name() != 'internal',
+   'System zstd library': libzstd_dep.found() and libzstd_dep.type_name() != 'internal',
+   'System zip library': libzip_dep.found() and libzip_dep.type_name() != 'internal',
++  'System blake3 library': blake3_dep.found() and blake3_dep.type_name() != 'internal',
+   'Use ptrace-wrap': use_ptrace_wrap,
+   'Use RPATH': rpath_summary,
+ }, section: 'Configuration', bool_yn: true)
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -37,6 +37,7 @@
+ option('use_sys_tree_sitter', type: 'feature', value: 'disabled')
+ option('use_sys_pcre2', type: 'feature', value: 'disabled')
+ option('use_sys_softfloat', type: 'feature', value: 'disabled')
++option('use_sys_blake3', type: 'feature', value: 'disabled')
+ option('use_swift_demangler', type: 'boolean', value: true, description: 'If false, disables the swift demangler')
+ option('use_gpl', type: 'boolean', value: true, description: 'Set to false when you want to disable gpl code')
+ option('install_sigdb', type: 'boolean', value: false, description: 'Downloads and installs rizin sigdb')
