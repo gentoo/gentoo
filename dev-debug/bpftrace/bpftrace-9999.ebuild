@@ -1,10 +1,10 @@
-# Copyright 2019-2025 Gentoo Authors
+# Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-LLVM_COMPAT=( {17..21} )
-RUST_MIN_VER="1.85.1"
+LLVM_COMPAT=( {18..22} )
+RUST_MIN_VER="1.85.0"
 RUST_OPTIONAL=1
 
 inherit cmake flag-o-matic linux-info llvm-r1 rust
@@ -18,15 +18,15 @@ if [[ ${PV} == *9999* ]] ; then
 	EGIT_BRANCH="master"
 	inherit git-r3
 	# use a released man page for git
-	MAN_V="0.24.2"
+	MAN_V="0.25.0"
 else
-	SRC_URI="https://github.com/bpftrace/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/bpftrace/bpftrace/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64"
 	# the man page version may trail the release
-	#MAN_V="0.24.2"
+	#MAN_V="0.25.0"
 fi
 
-SRC_URI+=" https://github.com/bpftrace/${PN}/releases/download/v${MAN_V:-${PV}}/man.tar.xz -> ${PN}-${MAN_V:-${PV}}-man.tar.xz"
+SRC_URI+=" https://github.com/bpftrace/bpftrace/releases/download/v${MAN_V:-${PV}}/man.tar.xz -> bpftrace-${MAN_V:-${PV}}-man.tar.xz"
 
 S="${WORKDIR}/${PN}-${MY_PV:-${PV}}"
 
@@ -72,8 +72,8 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/bpftrace-0.11.4-old-kernels.patch"
-	"${FILESDIR}/bpftrace-0.21.0-dont-compress-man.patch"
+	"${FILESDIR}/0.11.4-old-kernels.patch"
+	"${FILESDIR}/0.21.0-dont-compress-man.patch"
 )
 
 pkg_pretend() {
