@@ -14,7 +14,7 @@ else
 	MY_PV="${PV/_/-}"
 	SRC_URI="https://github.com/hmatuschek/qdmr/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${MY_PV}"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 x86"
 fi
 LICENSE="GPL-3+"
 SLOT="0"
