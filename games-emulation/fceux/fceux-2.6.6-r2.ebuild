@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,6 +36,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.4.0-no-git.patch
 	"${FILESDIR}"/${PN}-2.6.6-luajit.patch
 	"${FILESDIR}"/${PN}-2.6.6-no-glx.patch
+	"${FILESDIR}"/${PN}-2.6.6-zlib132.patch
 )
 
 src_prepare() {

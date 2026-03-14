@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/971158
+--- a/src/drivers/Qt/AboutWindow.cpp
++++ b/src/drivers/Qt/AboutWindow.cpp
+@@ -26 +26 @@
+-#include <unzip.h>
++#include <minizip/unzip.h>
+--- a/src/drivers/Qt/fceuWrapper.cpp
++++ b/src/drivers/Qt/fceuWrapper.cpp
+@@ -26 +26 @@
+-#include <unzip.h>
++#include <minizip/unzip.h>
