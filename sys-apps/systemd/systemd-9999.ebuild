@@ -289,6 +289,9 @@ multilib_src_configure() {
 		#-Ddefault-kill-user-processes=false
 		-Dcreate-log-dirs=false
 		-Dlibcrypt=enabled
+		-Dcompat-mutable-uid-boundaries=true
+
+		# options affecting multilib
 		$(meson_feature !elibc_musl nss-mymachines)
 		$(meson_feature !elibc_musl nss-resolve)
 		$(meson_feature pam)
