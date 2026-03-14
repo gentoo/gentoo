@@ -9,7 +9,7 @@ HOMEPAGE="https://github.com/oh7bf/adifmerg"
 COMMIT="4b5dec2c9437e2b7a9a31a97f80c11216f8790d2"
 SRC_URI="https://github.com/oh7bf/adifmerg/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${COMMIT}"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 LICENSE="GPL-2"
 SLOT="0"
