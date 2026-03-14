@@ -1,4 +1,4 @@
-# Copyright 2008-2025 Gentoo Authors
+# Copyright 2008-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 ### THIS FILE IS ONLY FOR PACKAGES MASKED ON BOTH 64-BIT AND 32-BIT USERLAND!!!
@@ -10,11 +10,6 @@ openvdb
 embree
 openimageio
 osl
-
-# Michał Górny <mgorny@gentoo.org> (2021-12-31)
-# PyPy3 is keyworded here.
--python_targets_pypy3_11
--python_single_target_pypy3_11
 
 # Sam James <sam@gentoo.org> (2021-10-16)
 # media-libs/openexr doesn't work on BE (bug #818424)

@@ -1,4 +1,4 @@
-# Copyright 2019-2025 Gentoo Authors
+# Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Marek Szuba <marecki@gentoo.org> (2023-12-05)
@@ -8,11 +8,6 @@
 # Joonas Niilola <juippis@gentoo.org> (2022-11-10)
 # Doesn't work on ppc64, #871921
 sci-mathematics/gmp-ecm custom-tune
-
-# Michał Górny <mgorny@gentoo.org> (2021-12-31)
-# Don't apply stable masks to python-exec since we're forcing every
-# impl there anyway. Please keep this in sync with use.stable.mask.
-dev-lang/python-exec -python_targets_pypy3_11
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-06-02)
 # altivec code is big-endian only, #773100
