@@ -202,7 +202,8 @@ src_prepare() {
 
 	# Change libaotriton path
 	sed -i \
-		-e "s|}/lib|}/$(get_libdir)|g" \
+		-e "/set(__AOTRITON_LIB/s|lib/|\${CMAKE_INSTALL_LIBDIR}/|g" \
+		-e "s|}/lib|}/\${CMAKE_INSTALL_LIBDIR}|g" \
 		cmake/External/aotriton.cmake \
 		|| die
 
