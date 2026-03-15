@@ -1,22 +1,73 @@
 https://bugs.gentoo.org/968162
+https://gitlab.gnome.org/GNOME/gimp/-/commit/4828b2d3f7950efe1d3b72be60ad33dd896f433d
+https://gitlab.gnome.org/GNOME/gimp/-/commit/21851685364e0dde80df1d42d3c97495ef8ee1d8
 
+From 4828b2d3f7950efe1d3b72be60ad33dd896f433d Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Sun, 15 Mar 2026 20:13:06 +0200
+Subject: [PATCH 1/2] tools: allow use of NM env variable
+
+Bug: https://bugs.gentoo.org/968162
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/libgimp/meson.build
++++ b/libgimp/meson.build
+@@ -628,6 +628,8 @@ else
+ endif
+ 
+ if not platform_osx and host_cpu_family != 'x86'
++  nm = find_program('nm', required: false)
++
+   # Verify .def files for Windows linking.
+   # We check this on non-Windows platform (Debian) on CI, and on Windows itself.
+   custom_target('check-def-files',
+@@ -653,6 +655,7 @@ if not platform_osx and host_cpu_family != 'x86'
+       libgimpthumb,
+       libgimpwidgets
+     ],
++    env: nm.found() ? { 'NM': nm.full_path() } : {},
+     output: [ 'check-def-files', ],
+     command: [
+       python, meson.project_source_root() / 'tools' / 'defcheck.py', meson.project_source_root(),
 --- a/tools/defcheck.py
 +++ b/tools/defcheck.py
-@@ -31,7 +31,7 @@
+@@ -31,7 +31,7 @@ Needs the tool "nm", "objdump" or "dumpbin" to work
  
- import os, sys, subprocess
+ import os, sys, subprocess, shutil
  
 -from os import path
 +from os import getenv, path
  
  def_files = (
     "libgimpbase/gimpbase.def",
-@@ -55,7 +55,7 @@
+@@ -55,7 +55,7 @@ if len(sys.argv) > 1:
        sys.exit (-1)
  
  libextension   = ".so"
 -command        = "nm --defined-only --extern-only "
 +command        = getenv("NM", default="nm") + " --defined-only --extern-only "
+ libprefix      = "lib"
  platform_linux = True
  
- if sys.platform in ['win32', 'cygwin']:
+-- 
+GitLab
+
+
+From 21851685364e0dde80df1d42d3c97495ef8ee1d8 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Sun, 15 Mar 2026 20:13:49 +0200
+Subject: [PATCH 2/2] tools: include error message to ease debugging
+
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/tools/defcheck.py
++++ b/tools/defcheck.py
+@@ -102,6 +102,7 @@ for df in def_files:
+    status, nm = subprocess.getstatusoutput (command + libname)
+    if status != 0:
+       print("trouble reading {} - has it been compiled?".format(libname))
++      print(nm)
+       have_errors = -1
+       continue
+ 
+-- 
+GitLab
+

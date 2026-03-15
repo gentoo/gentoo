@@ -156,6 +156,10 @@ BDEPEND="
 
 DOCS=( "AUTHORS" "NEWS" "README" "README.i18n" )
 
+PATCHES=(
+	"${FILESDIR}"/gimp-3.2.0-respect-NM.patch
+)
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
