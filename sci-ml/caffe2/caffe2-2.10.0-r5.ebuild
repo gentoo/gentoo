@@ -55,6 +55,7 @@ REQUIRED_USE="
 	rocm? (
 		|| ( ${ROCM_REQUIRED_USE} )
 	)
+	cusparselt? ( || ( cuda rocm ) )
 	flash? ( || ( cuda rocm ) )
 	memefficient? ( || ( cuda rocm ) )
 	nccl? ( rocm )
@@ -98,21 +99,22 @@ RDEPEND="
 		dev-libs/pthreadpool
 	)
 	rocm? (
-		nccl? ( >=dev-libs/rccl-6.3:= <dev-libs/rccl-7.2:= )
-		>=dev-util/hip-6.3:=       <dev-util/hip-7.2:=
-		>=dev-util/roctracer-6.3:= <dev-util/roctracer-7.2:=
-		>=sci-libs/hipBLAS-6.3:=   <sci-libs/hipBLAS-7.2:=[rocsolver(+)]
-		>=sci-libs/hipBLASLt-6.3:= <sci-libs/hipBLASLt-7.2:=
-		>=sci-libs/hipFFT-6.3:=    <sci-libs/hipFFT-7.2:=
-		>=sci-libs/hipRAND-6.3:=   <sci-libs/hipRAND-7.2:=
-		>=sci-libs/hipSOLVER-6.3:= <sci-libs/hipSOLVER-7.2:=
-		>=sci-libs/hipSPARSE-6.3:= <sci-libs/hipSPARSE-7.2:=
-		>=sci-libs/miopen-6.3:=    <sci-libs/miopen-7.2:=
-		>=sci-libs/rocBLAS-6.3:=   <sci-libs/rocBLAS-7.2:=
-		>=sci-libs/rocRAND-6.3:=   <sci-libs/rocRAND-7.2:=
-		>=sci-libs/rocSOLVER-6.3:= <sci-libs/rocSOLVER-7.2:=
+		nccl? ( >=dev-libs/rccl-6.3:= <dev-libs/rccl-7.3:= )
+		>=dev-util/hip-6.3:=       <dev-util/hip-7.3:=
+		>=dev-util/roctracer-6.3:= <dev-util/roctracer-7.3:=
+		>=sci-libs/hipBLAS-6.3:=   <sci-libs/hipBLAS-7.3:=[rocsolver(+)]
+		>=sci-libs/hipBLASLt-6.3:= <sci-libs/hipBLASLt-7.3:=
+		>=sci-libs/hipFFT-6.3:=    <sci-libs/hipFFT-7.3:=
+		>=sci-libs/hipRAND-6.3:=   <sci-libs/hipRAND-7.3:=
+		>=sci-libs/hipSOLVER-6.3:= <sci-libs/hipSOLVER-7.3:=
+		>=sci-libs/hipSPARSE-6.3:= <sci-libs/hipSPARSE-7.3:=
+		>=sci-libs/miopen-6.3:=    <sci-libs/miopen-7.3:=
+		>=sci-libs/rocBLAS-6.3:=   <sci-libs/rocBLAS-7.3:=
+		>=sci-libs/rocRAND-6.3:=   <sci-libs/rocRAND-7.3:=
+		>=sci-libs/rocSOLVER-6.3:= <sci-libs/rocSOLVER-7.3:=
 		memefficient? ( =sci-libs/aotriton-bin-0.11*:= )
-		distributed? ( >=dev-util/rocm-smi-6.3:= <dev-util/rocm-smi-7.2:= )
+		distributed? ( >=dev-util/rocm-smi-6.3:= <dev-util/rocm-smi-7.3:= )
+		cusparselt? ( >=sci-libs/hipsparselt-6.3:= <sci-libs/hipsparselt-7.3:= )
 	)
 	distributed? (
 		!rocm? ( sci-ml/tensorpipe[cuda?] )
@@ -142,9 +144,9 @@ DEPEND="
 	cuda? ( >=dev-libs/cutlass-3.9.2[tools(+)] )
 	onednn? ( sci-ml/ideep )
 	rocm? (
-		>=sci-libs/hipCUB-6.3:=    <sci-libs/hipCUB-7.2:=
-		>=sci-libs/rocPRIM-6.3:=   <sci-libs/rocPRIM-7.2:=
-		>=sci-libs/rocThrust-6.3:= <sci-libs/rocThrust-7.2:=
+		>=sci-libs/hipCUB-6.3:=    <sci-libs/hipCUB-7.3:=
+		>=sci-libs/rocPRIM-6.3:=   <sci-libs/rocPRIM-7.3:=
+		>=sci-libs/rocThrust-6.3:= <sci-libs/rocThrust-7.3:=
 	)
 	qnnpack? ( dev-libs/clog )
 "
@@ -364,6 +366,7 @@ src_configure() {
 			-DUSE_NCCL=$(usex nccl)
 			-DUSE_SYSTEM_NCCL=ON
 			-DCMAKE_REQUIRE_FIND_PACKAGE_HIP=ON
+			-DCMAKE_DISABLE_FIND_PACKAGE_hipsparselt=$(usex !cusparselt) # disable automagic
 			-DUSE_ROCM_CK_SDPA=OFF # requires flash + aiter, works only on gfx90a/gfx942/gfx950
 		)
 
