@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,9 +22,8 @@ RDEPEND="
 "
 
 src_install() {
-	udev_newrules util/udev.rules 99-fuse.rules
 	udev_newrules - 99-cuse.rules <<-EOF
-		KERNEL=="cuse", GROUP="cuse"
+		KERNEL=="cuse", GROUP="cuse", OPTIONS+="static_node=cuse"
 	EOF
 	newtmpfiles - static-nodes-permissions-cuse.conf <<-EOF
 		z /dev/cuse 0660 root cuse - -
