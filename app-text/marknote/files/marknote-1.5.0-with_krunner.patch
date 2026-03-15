@@ -1,0 +1,211 @@
+From 2ca2ade800032d6ea8ac34be1bcbd484b8ebb73e Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 15 Mar 2026 23:57:25 +0100
+Subject: [PATCH 1/2] Add explicit WITH_KRUNNER CMake option
+
+Automagic is bad, especially when it leads to unexpected installed files,
+but also because it makes testing without features impossible on systems
+that have the dependencies available.
+
+Testing this switch already uncovered that build would fail because new
+includes were not behind HAVE_KRUNNER.
+
+Also fixes plasma-runner-marknote.desktop unexpectedly being installed if
+Qt6::DBus happens to be available (which it generally is).
+
+Amends fc2cb8beaddbe1f9d8e54126436d1f20e5973eb6
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt     | 14 ++++++++++----
+ src/CMakeLists.txt | 23 +++++++++++------------
+ src/main.cpp       |  9 ++++-----
+ 3 files changed, 25 insertions(+), 21 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index bb1a554..6b8757e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -46,12 +46,18 @@ ecm_setup_version(${PROJECT_VERSION}
+     VERSION_HEADER ${CMAKE_CURRENT_BINARY_DIR}/marknote-version.h
+ )
+ 
++if (NOT ANDROID AND NOT WIN32 AND NOT APPLE)
++    option(WITH_KRUNNER "Build with Plasma Runner support." ON)
++endif()
++
+ find_package(Qt6 ${QT_MIN_VERSION} REQUIRED COMPONENTS Core Gui Qml QuickControls2 Svg)
+-find_package(Qt6 ${QT_MIN_VERSION} OPTIONAL_COMPONENTS DBus)
+ find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS Kirigami I18n Config CoreAddons IconThemes ColorScheme Notifications)
+ 
+-find_package(KF6WindowSystem ${KF_MIN_VERSION} QUIET)
+-find_package(KF6Runner ${KF_MIN_VERSION} QUIET)
++if (WITH_KRUNNER)
++    find_package(Qt6DBus ${QT_MIN_VERSION} REQUIRED)
++    find_package(KF6Runner ${KF_MIN_VERSION} REQUIRED)
++    find_package(KF6WindowSystem ${KF_MIN_VERSION} QUIET)
++endif()
+ 
+ ecm_find_qmlmodule(org.kde.syntaxhighlighting ${KF_MIN_VERSION})
+ 
+@@ -93,7 +99,7 @@ install(FILES marknote.notifyrc DESTINATION ${KDE_INSTALL_KNOTIFYRCDIR})
+ install(FILES org.kde.marknote.metainfo.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
+ install(FILES org.kde.marknote.svg DESTINATION ${KDE_INSTALL_FULL_ICONDIR}/hicolor/scalable/apps)
+ 
+-if (NOT ANDROID AND NOT WIN32 AND NOT APPLE)
++if (WITH_KRUNNER)
+     install(FILES plasma-runner-marknote.desktop DESTINATION ${KDE_INSTALL_DATAROOTDIR}/krunner/dbusplugins)
+ endif()
+ 
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index c85897e..00dcb3f 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -127,19 +127,18 @@ if (TARGET KF6::I18nQml)
+     target_link_libraries(marknote_static PUBLIC KF6::I18nQml)
+ endif()
+ 
+-if (TARGET KF6::WindowSystem)
+-    target_link_libraries(marknote_static PUBLIC KF6::WindowSystem)
+-    target_compile_definitions(marknote_static PRIVATE HAVE_KWINDOWSYSTEM)
+-endif()
+-
+-if(TARGET KF6::Runner)
++if (WITH_KRUNNER)
+     target_sources(marknote_static PRIVATE runner.cpp runner.h)
+-    target_link_libraries(marknote_static PUBLIC KF6::Runner)
+-    target_compile_definitions(marknote_static PUBLIC HAVE_KRUNNER)
+-endif()
+-
+-if (TARGET Qt6::DBus)
+-    target_link_libraries(marknote_static PUBLIC Qt6::DBus)
++    target_link_libraries(marknote_static
++        PUBLIC
++            Qt6::DBus
++            KF6::Runner
++    )
++    target_compile_definitions(marknote_static PUBLIC WITH_KRUNNER)
++    if (TARGET KF6::WindowSystem)
++        target_link_libraries(marknote_static PUBLIC KF6::WindowSystem)
++        target_compile_definitions(marknote_static PRIVATE HAVE_KWINDOWSYSTEM)
++    endif()
+ endif()
+ 
+ if (TARGET md4c::md4c-html)
+diff --git a/src/main.cpp b/src/main.cpp
+index d916860..7137152 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -24,18 +24,17 @@
+ #include <QQuickStyle>
+ #include <QQuickWindow>
+ #include <QtSystemDetection>
+-#if !defined(Q_OS_ANDROID)
+-#include <QDBusConnection>
+-#include <QDBusError>
+-#endif
++#include <QUrl>
+ 
+ #include "../marknote-version.h"
+ #include "colorschemer.h"
+ #include "sketchhistory.h"
+-#include <QUrl>
+ #include <marknotesettings.h>
++
+ #ifdef HAVE_KRUNNER
+ #include "runner.h"
++#include <QDBusConnection>
++#include <QDBusError>
+ #endif
+ 
+ #if KI18N_VERSION >= QT_VERSION_CHECK(6, 8, 0)
+-- 
+2.53.0
+
+
+From 60ef198d8465ce43ca823a9adab8c09ad5a60463 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 16 Mar 2026 00:03:51 +0100
+Subject: [PATCH 2/2] Drop HAVE_KWINDOWSYSTEM in favor of single WITH_KRUNNER
+ toggling HAVE_RUNNER
+
+KF6Runner itself hard depends on KF6WindowSystem so it was unclear to me what
+this would save.
+
+Amends fc2cb8beaddbe1f9d8e54126436d1f20e5973eb6
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt     | 3 +--
+ src/CMakeLists.txt | 5 +----
+ src/runner.cpp     | 2 --
+ src/runner.h       | 2 --
+ 4 files changed, 2 insertions(+), 10 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6b8757e..ef084c5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -55,8 +55,7 @@ find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS Kirigami I18n Config Core
+ 
+ if (WITH_KRUNNER)
+     find_package(Qt6DBus ${QT_MIN_VERSION} REQUIRED)
+-    find_package(KF6Runner ${KF_MIN_VERSION} REQUIRED)
+-    find_package(KF6WindowSystem ${KF_MIN_VERSION} QUIET)
++    find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS Runner WindowSystem)
+ endif()
+ 
+ ecm_find_qmlmodule(org.kde.syntaxhighlighting ${KF_MIN_VERSION})
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 00dcb3f..58250e2 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -133,12 +133,9 @@ if (WITH_KRUNNER)
+         PUBLIC
+             Qt6::DBus
+             KF6::Runner
++            KF6::WindowSystem
+     )
+     target_compile_definitions(marknote_static PUBLIC WITH_KRUNNER)
+-    if (TARGET KF6::WindowSystem)
+-        target_link_libraries(marknote_static PUBLIC KF6::WindowSystem)
+-        target_compile_definitions(marknote_static PRIVATE HAVE_KWINDOWSYSTEM)
+-    endif()
+ endif()
+ 
+ if (TARGET md4c::md4c-html)
+diff --git a/src/runner.cpp b/src/runner.cpp
+index 9b574d4..484bf6b 100644
+--- a/src/runner.cpp
++++ b/src/runner.cpp
+@@ -60,13 +60,11 @@ void Runner::Run(const QString &id, const QString &actionId)
+ {
+     Q_UNUSED(actionId);
+ 
+-#ifdef HAVE_KWINDOWSYSTEM
+     if (KWindowSystem::isPlatformWayland()) {
+         if (!m_activationToken.isEmpty()) {
+             KWindowSystem::setCurrentXdgActivationToken(m_activationToken);
+         }
+     }
+-#endif
+ 
+     Q_EMIT notebookSelected(id); // Triggers QML notebook opening
+ }
+diff --git a/src/runner.h b/src/runner.h
+index ad63290..d0c2574 100644
+--- a/src/runner.h
++++ b/src/runner.h
+@@ -10,9 +10,7 @@
+ #include <QString>
+ #include <QVariantMap>
+ 
+-#ifdef HAVE_KWINDOWSYSTEM
+ #include <KWindowSystem>
+-#endif
+ 
+ enum MatchType {
+     NoMatch = 0,
+-- 
+2.53.0
+
