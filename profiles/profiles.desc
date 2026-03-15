@@ -454,8 +454,11 @@ x86		default/linux/x86/23.0/i486/time64/split-usr/hardened/selinux	dev
 # musl profiles
 # @MAINTAINER: musl@gentoo.org
 amd64		default/linux/amd64/23.0/musl					dev
+amd64		default/linux/amd64/23.0/musl/systemd				dev
 amd64		default/linux/amd64/23.0/musl/llvm				exp
+amd64		default/linux/amd64/23.0/musl/llvm/systemd			exp
 amd64		default/linux/amd64/23.0/musl/hardened				exp
+amd64		default/linux/amd64/23.0/musl/hardened/systemd			exp
 amd64		default/linux/amd64/23.0/musl/hardened/selinux			exp
 amd64		default/linux/amd64/23.0/split-usr/musl				dev
 amd64		default/linux/amd64/23.0/split-usr/musl/llvm			exp
