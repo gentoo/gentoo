@@ -1,5 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Mike Gilbert <floppym@gentoo.org> (2026-03-15)
+# net-misc/freerdp is missing ppc keyword.
+net-analyzer/hydra rdp
 
 # Sam James <sam@gentoo.org> (2025-08-29)
 # net-misc/passt not yet keyworded here
