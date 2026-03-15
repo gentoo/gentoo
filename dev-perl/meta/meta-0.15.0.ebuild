@@ -9,6 +9,6 @@ inherit perl-module
 
 DESCRIPTION="meta-programming API"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 BDEPEND=">=dev-perl/Module-Build-0.400.400"
