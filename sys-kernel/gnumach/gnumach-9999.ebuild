@@ -5,7 +5,7 @@ EAPI=8
 
 inherit crossdev flag-o-matic toolchain-funcs
 
-DESCRIPTION="GNU Mach Kernel"
+DESCRIPTION="GNU Mach microkernel, for the Hurd"
 HOMEPAGE="https://www.gnu.org/software/hurd/microkernel/mach/gnumach.html"
 
 if [[ ${PV} == 9999 ]] ; then
