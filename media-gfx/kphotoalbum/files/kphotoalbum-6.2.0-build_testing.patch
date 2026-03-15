@@ -1,0 +1,98 @@
+From 818ab01d5d4960574e4e73e841934fb5b070087e Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 15 Mar 2026 22:17:31 +0100
+Subject: [PATCH] Conditionalise tests behind BUILD_TESTING
+
+Condensed downstream version of upstream MR:
+https://invent.kde.org/graphics/kphotoalbum/-/merge_requests/76
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt                   |  7 +++++--
+ kpa-thumbnailtool/CMakeLists.txt |  3 ++-
+ lib/CMakeLists.txt               | 12 +++++++++---
+ 3 files changed, 16 insertions(+), 6 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6710239a6..bca10b493 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -685,14 +685,17 @@ if(Marble_FOUND)
+         )
+ endif()
+ 
+-add_subdirectory(DB)
+ add_subdirectory(lib)
+ add_subdirectory(images)
+ add_subdirectory(icons)
+ add_subdirectory(demo)
+ add_subdirectory(themes)
+ add_subdirectory(scripts)
+-add_subdirectory(Utilities)
++
++if(BUILD_TESTING)
++    add_subdirectory(DB)
++    add_subdirectory(Utilities)
++endif()
+ 
+ add_subdirectory(doc)
+ 
+diff --git a/kpa-thumbnailtool/CMakeLists.txt b/kpa-thumbnailtool/CMakeLists.txt
+index 385fe487d..9bb1d217a 100644
+--- a/kpa-thumbnailtool/CMakeLists.txt
++++ b/kpa-thumbnailtool/CMakeLists.txt
+@@ -17,6 +17,7 @@ target_link_libraries(kpa-thumbnailtool PRIVATE
+ 
+ install(TARGETS kpa-thumbnailtool ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
+ 
++if(BUILD_TESTING)
+ include(ECMAddTests)
+ ecm_add_test(
+     TestThumbnailCacheConverter.h
+@@ -26,6 +27,6 @@ ecm_add_test(
+     TEST_NAME ThumbnailCacheConverter
+     LINK_LIBRARIES Qt6::Core Qt6::Test KF6::I18n
+     )
+-
++endif()
+ 
+ # vi:expandtab:tabstop=4 shiftwidth=4:
+diff --git a/lib/CMakeLists.txt b/lib/CMakeLists.txt
+index 3c9c1e0bc..281b334ab 100644
+--- a/lib/CMakeLists.txt
++++ b/lib/CMakeLists.txt
+@@ -83,7 +83,9 @@ endif()
+ install(TARGETS kpabase ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
+ 
+ # unit tests:
+-add_subdirectory(kpabase)
++if(BUILD_TESTING)
++    add_subdirectory(kpabase)
++endif()
+ 
+ ################################################################################
+ ### KPA::Thumbnails
+@@ -108,7 +110,9 @@ target_link_libraries(kpathumbnails
+ install(TARGETS kpathumbnails ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
+ 
+ # unit tests:
+-add_subdirectory(kpathumbnails)
++if(BUILD_TESTING)
++    add_subdirectory(kpathumbnails)
++endif()
+ 
+ ################################################################################
+ ### KPA::Exif
+@@ -146,6 +150,8 @@ target_link_libraries(kpaexif
+ install(TARGETS kpaexif ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
+ 
+ # unit tests:
+-add_subdirectory(kpaexif)
++if(BUILD_TESTING)
++    add_subdirectory(kpaexif)
++endif()
+ 
+ # vi:expandtab:tabstop=4 shiftwidth=4:
+-- 
+2.53.0
+
