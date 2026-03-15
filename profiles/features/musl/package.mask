@@ -1,28 +1,9 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Mike Gilbert <floppym@gentoo.org> (2026-03-11)
-# Pending completion of bug 971072.
-app-admin/mkosi
-app-admin/systemdgenie
-sys-apps/gentoo-systemd-integration
-sys-apps/systemd
-sys-apps/systemd-initctl
-
 # Sam James <sam@gentoo.org> (2026-02-11)
 # Fails to build on musl (bug #968134, https://sourceware.org/PR33747)
 ~dev-debug/gdb-17.1
-
-# Mike Gilbert <floppym@gentoo.org> (2026-02-07)
-# Waiting for >=sys-apps/systemd-259 to be stable.
-dev-python/python-systemd
-gnome-extra/office-runner
-gnome-extra/gnome-logs
-sys-apps/dbus-broker
-sys-apps/systemd-readahead
-sys-block/wait-for-dri-devices-rules
-sys-process/systemd-cron
->=www-misc/profile-sync-daemon-6
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2026-02-04)
 # New systemd now has experimental support for musl
@@ -194,10 +175,6 @@ app-arch/lrzip-next
 # Uses glibc function getsourcefilter(),
 # which are not available on musl.
 net-misc/mcproxy
-
-# Florian Schmaus <flow@gentoo.org> (2023-11-22)
-# Requires systemd which is not supported on musl.
-sys-power/sandmann-bin
 
 # Brahmajit Das <brahmajit.xyz@gmail.com> (2023-06-15)
 # The package uses innetgr which is not available in musl, bug 898556

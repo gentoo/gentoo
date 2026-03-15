@@ -1,18 +1,6 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Mike Gilbert <floppym@gentoo.org> (2026-03-11)
-# Pending completion of bug 971072.
-dev-qt/qtbase journald
-net-analyzer/wireshark sdjournal
-sys-kernel/installkernel -systemd
-sys-apps/ipmitool openbmc
-
-# Mike Gilbert <floppym@gentoo.org> (2026-02-07)
-# Requires dev-python/python-systemd.
-net-analyzer/fail2ban systemd
-net-im/synapse systemd
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2026-02-04)
 # Some systemd features will never work on musl.
 sys-apps/systemd homed
@@ -57,10 +45,6 @@ media-video/obs-studio browser
 app-emulation/libvirt dtrace
 gui-libs/neatvnc tracing
 gui-apps/wayvnc tracing
-
-# Nowa Ammerlaan <nowa@gentoo.org> (2024-07-25)
-# Requires systemd-detect-virt
-app-emulation/virt-firmware test
 
 # Sam James <sam@gentoo.org> (2024-06-03)
 # Poor rendering performance otherwise (bug #931215) but it doesn't
