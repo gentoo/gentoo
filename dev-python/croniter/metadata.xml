@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<upstream>
 		<remote-id type="pypi">croniter</remote-id>
-		<remote-id type="github">corpusops/croniter</remote-id>
+		<remote-id type="github">pallets-eco/croniter</remote-id>
 	</upstream>
 	<stabilize-allarches/>
 	<maintainer type="project">
