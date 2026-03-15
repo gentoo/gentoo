@@ -33,10 +33,7 @@ fi
 S="${WORKDIR}/${PN}-${MY_PV}"
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="avif libei pipewire +sdl systemd +wsi-layer"
-
-# systemd is automagic, but that's unlikely to be an issue in practise. It would
-# be rare for a user to switch from systemd to OpenRC.
+IUSE="avif libei pipewire +sdl +wsi-layer"
 
 RDEPEND="
 	dev-lang/luajit:2=
@@ -67,7 +64,6 @@ RDEPEND="
 	libei? ( dev-libs/libei )
 	pipewire? ( >=media-video/pipewire-0.3:= )
 	sdl? ( media-libs/libsdl2[video,vulkan] )
-	systemd? ( sys-apps/systemd:= )
 	wsi-layer? ( x11-libs/libxcb )
 "
 # For bundled wlroots.
