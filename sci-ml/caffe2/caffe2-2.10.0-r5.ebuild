@@ -54,6 +54,7 @@ REQUIRED_USE="
 	?? ( cuda rocm )
 	rocm? (
 		|| ( ${ROCM_REQUIRED_USE} )
+		memefficient? ( flash )
 	)
 	cusparselt? ( || ( cuda rocm ) )
 	flash? ( || ( cuda rocm ) )
