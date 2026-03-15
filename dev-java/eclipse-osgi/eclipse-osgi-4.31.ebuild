@@ -14,7 +14,7 @@ S="${WORKDIR}/equinox-R${PV//./_}/bundles/org.eclipse.osgi"
 
 LICENSE="EPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 CP_DEPEND=">=dev-java/osgi-annotation-8.1.0:0"
 
