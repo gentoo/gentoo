@@ -1,0 +1,73 @@
+https://bugs.gentoo.org/968162
+https://gitlab.gnome.org/GNOME/babl/-/commit/9263d419231a2c0f36fc89dfb95d723f0ef85d80
+https://gitlab.gnome.org/GNOME/babl/-/commit/e4522a33915a06d6703baa522487716f049e9942
+
+From 9263d419231a2c0f36fc89dfb95d723f0ef85d80 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Sun, 15 Mar 2026 21:27:56 +0200
+Subject: [PATCH] tools: allow use of NM env variable
+
+Fixes: 841ad402d14b8239ae470691edf3012f707325bc
+Reverts: e26e11e9bbe600b96d5e21adb4bf5df49d971deb
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/meson.build
++++ b/meson.build
+@@ -575,6 +575,8 @@ endif
+ subdir('bin')
+ 
+ if not platform_osx and host_cpu_family != 'x86'
++  nm = find_program('nm', required: false)
++
+   # Verify .def files for Windows linking.
+   # We check this on non-Windows platform  on CI, and on Windows itself.
+   custom_target('check-def-files',
+@@ -584,6 +586,7 @@ if not platform_osx and host_cpu_family != 'x86'
+     depends: [
+       babl
+     ],
++    env: nm.found() ? { 'NM': nm.full_path() } : {},
+     output: [ 'check-def-files', ],
+     command: [
+       python, meson.project_source_root() / 'tools' / 'defcheck.py', '@INPUT@',
+--- a/tools/defcheck.py
++++ b/tools/defcheck.py
+@@ -30,7 +30,7 @@ Needs the tool "nm", "objdump" or "dumpbin" to work
+ 
+ import os, sys, subprocess, shutil
+ 
+-from os import path
++from os import getenv, path
+ 
+ def_files = sys.argv[1:]
+ 
+@@ -42,7 +42,7 @@ exclude_symbols = [
+ have_errors = 0
+ 
+ libextension   = ".so"
+-command        = "nm --defined-only --extern-only "
++command        = getenv("NM", default="nm") + " --defined-only --extern-only "
+ libprefix      = "lib"
+ platform_linux = True
+ 
+-- 
+GitLab
+
+From e4522a33915a06d6703baa522487716f049e9942 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Sun, 15 Mar 2026 18:36:35 +0200
+Subject: [PATCH] tools: include error message to ease debugging
+
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/tools/defcheck.py
++++ b/tools/defcheck.py
+@@ -85,6 +85,7 @@ for df in def_files:
+    status, nm = subprocess.getstatusoutput (command + libname)
+    if status != 0:
+       print("trouble reading {} - has it been compiled?".format(libname))
++      print(nm)
+       have_errors = -1
+       continue
+ 
+-- 
+GitLab
+
