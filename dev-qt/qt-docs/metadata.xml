@@ -11,12 +11,12 @@
 		<flag name="activeqt">Install documentation for ActiveQt (unpackaged, Windows-only)</flag>
 		<flag name="charts">Install documentation for <pkg>dev-qt/qtcharts</pkg></flag>
 		<flag name="connectivity">Install documentation for <pkg>dev-qt/qtconnectivity</pkg></flag>
-		<flag name="datavis">Install documentation for QtDataVisualization (unpackaged for Qt6)</flag>
+		<flag name="datavis">Install documentation for QtDataVisualization (unpackaged)</flag>
 		<flag name="declarative">Install documentation for <pkg>dev-qt/qtdeclarative</pkg></flag>
-		<flag name="graphs">Install documentation for QtGraphs (unpackaged)</flag>
+		<flag name="graphs">Install documentation for <pkg>dev-qt/qtgraphs</pkg></flag>
 		<flag name="grpc">Install documentation for QtGRPC (unpackaged)</flag>
 		<flag name="html">Install documentation in HTML format</flag>
-		<flag name="httpserver">Install documentation for QtHTTPServer (unpackaged)</flag>
+		<flag name="httpserver">Install documentation for <pkg>dev-qt/qthttpserver</pkg></flag>
 		<flag name="imageformats">Install documentation for <pkg>dev-qt/qtimageformats</pkg></flag>
 		<flag name="location">Install documentation for <pkg>dev-qt/qtlocation</pkg></flag>
 		<flag name="lottie">Install documentation for QtLottie (unpackaged)</flag>
@@ -28,10 +28,10 @@
 		<flag name="quick3d">Install documentation for <pkg>dev-qt/qtquick3d</pkg></flag>
 		<flag name="quick3dphysics">Install documentation for QtQuick3DPhysics (unpackaged)</flag>
 		<flag name="quickeffectmaker">Install documentation for QtQuickEffectMaker (unpackaged)</flag>
-		<flag name="remoteobjects">Install documentation for QtRemoteObjects (unpackaged)</flag>
+		<flag name="remoteobjects">Install documentation for <pkg>dev-qt/qtremoteobjects</pkg></flag>
 		<flag name="scxml">Install documentation for <pkg>dev-qt/qtscxml</pkg></flag>
 		<flag name="sensors">Install documentation for <pkg>dev-qt/qtsensors</pkg></flag>
-		<flag name="serialbus">Install documentation for <pkg>dev-qt/qtserialbus</pkg> (unpackaged for Qt6)</flag>
+		<flag name="serialbus">Install documentation for <pkg>dev-qt/qtserialbus</pkg></flag>
 		<flag name="serialport">Install documentation for <pkg>dev-qt/qtserialport</pkg></flag>
 		<flag name="shadertools">Install documentation for <pkg>dev-qt/qtshadertools</pkg></flag>
 		<flag name="speech">Install documentation for <pkg>dev-qt/qtspeech</pkg></flag>
@@ -42,7 +42,7 @@
 		<flag name="wayland">Install documentation for <pkg>dev-qt/qtwayland</pkg></flag>
 		<flag name="webchannel">Install documentation for <pkg>dev-qt/qtwebchannel</pkg></flag>
 		<flag name="websockets">Install documentation for <pkg>dev-qt/qtwebsockets</pkg></flag>
-		<flag name="webview">Install documentation for <pkg>dev-qt/qtwebview</pkg> (unpackaged for Qt6)</flag>
+		<flag name="webview">Install documentation for <pkg>dev-qt/qtwebview</pkg></flag>
 	</use>
 	<upstream>
 		<bugs-to>https://bugreports.qt.io/</bugs-to>
