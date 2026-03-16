@@ -145,7 +145,7 @@ multilib_src_install() {
 		# Provided by sys-kernel/hurd
 		rm "${ED}"/usr/bin/{uptime,vmstat} || die
 		rm "${ED}"/bin/ps || die
-        fi
+	fi
 }
 
 multilib_src_install_all() {
