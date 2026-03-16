@@ -1803,7 +1803,11 @@ toolchain_src_configure() {
 	fi
 
 	if in_iuse systemtap ; then
-		confgcc+=( $(use_enable systemtap) )
+		if is_crosscompile ; then
+			confgcc+=( --disable-systemtap )
+		else
+			confgcc+=( $(use_enable systemtap) )
+		fi
 	fi
 
 	if in_iuse valgrind ; then
