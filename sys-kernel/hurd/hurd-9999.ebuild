@@ -31,7 +31,7 @@ SLOT="0"
 if is_crosspkg ; then
 	IUSE="headers-only"
 else
-	IUSE="ncurses"
+	IUSE="headers-only ncurses"
 fi
 [[ ${PV} != 9999 ]] && KEYWORDS="~amd64 ~x86"
 
