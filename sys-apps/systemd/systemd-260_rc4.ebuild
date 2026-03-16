@@ -34,7 +34,7 @@ LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
 IUSE="
 	acl apparmor audit boot bpf cryptsetup curl +dns-over-tls elfutils
-	fido2 +gcrypt gnutls homed http idn importd iptables +kernel-install +kmod
+	fido2 +gcrypt gnutls homed http idn importd +kernel-install +kmod
 	+lz4 lzma +openssl pam passwdqc pcre pkcs11 policykit pwquality qrcode
 	+resolvconf +seccomp selinux +sysv-utils test tpm ukify vanilla xkb +zstd
 "
@@ -52,25 +52,32 @@ REQUIRED_USE="
 "
 RESTRICT="!test? ( test )"
 
-MINKV="4.15"
+MINKV="5.10"
 
 COMMON_DEPEND="
-	>=sys-apps/util-linux-2.32:0=
-	virtual/libcrypt:=[${MULTILIB_USEDEP}]
-	acl? ( sys-apps/acl:0= )
-	apparmor? ( >=sys-libs/libapparmor-2.13:0= )
-	audit? ( >=sys-process/audit-2:0= )
-	bpf? ( >=dev-libs/libbpf-1.4.0:0= )
-	cryptsetup? ( >=sys-fs/cryptsetup-2.0.1:0= )
+	>=sys-apps/util-linux-2.37
+	acl? ( sys-apps/acl )
+	apparmor? ( >=sys-libs/libapparmor-2.13 )
+	audit? ( >=sys-process/audit-2 )
+	bpf? ( >=dev-libs/libbpf-1.4.0 )
+	cryptsetup? ( >=sys-fs/cryptsetup-2.4.0:= )
 	curl? ( >=net-misc/curl-7.32.0:0= )
-	elfutils? ( >=dev-libs/elfutils-0.158:0= )
-	fido2? (
-		dev-libs/libfido2:0=
+	elfutils? ( >=dev-libs/elfutils-0.177 )
+	elibc_glibc? (
+		>=sys-libs/glibc-2.34
+		>=sys-libs/libxcrypt-4.4.0
 	)
-	gcrypt? ( >=dev-libs/libgcrypt-1.4.5:0= )
+	elibc_musl? (
+		>=sys-libs/musl-1.2.5-r8
+		virtual/libcrypt
+	)
+	fido2? (
+		dev-libs/libfido2
+	)
+	gcrypt? ( >=dev-libs/libgcrypt-1.4.5 )
 	gnutls? ( >=net-libs/gnutls-3.6.0:0= )
 	http? ( >=net-libs/libmicrohttpd-0.9.33:0=[epoll(+)] )
-	idn? ( net-dns/libidn2:= )
+	idn? ( net-dns/libidn2 )
 	importd? (
 		app-arch/bzip2:0=
 		virtual/zlib:=
@@ -78,18 +85,17 @@ COMMON_DEPEND="
 	kmod? ( >=sys-apps/kmod-15:0= )
 	lz4? ( >=app-arch/lz4-0_p131:0= )
 	lzma? ( >=app-arch/xz-utils-5.0.5-r1:0= )
-	iptables? ( net-firewall/iptables:0= )
-	openssl? ( >=dev-libs/openssl-1.1.0:0= )
+	openssl? ( >=dev-libs/openssl-3.0.0:0= )
 	pam? ( sys-libs/pam:=[${MULTILIB_USEDEP}] )
-	passwdqc? ( sys-auth/passwdqc:0= )
-	pkcs11? ( >=app-crypt/p11-kit-0.23.3:0= )
+	passwdqc? ( sys-auth/passwdqc )
+	pkcs11? ( >=app-crypt/p11-kit-0.23.3 )
 	pcre? ( dev-libs/libpcre2 )
-	pwquality? ( >=dev-libs/libpwquality-1.4.1:0= )
+	pwquality? ( >=dev-libs/libpwquality-1.4.1 )
 	qrcode? ( >=media-gfx/qrencode-3:0= )
-	seccomp? ( >=sys-libs/libseccomp-2.3.3:0= )
-	selinux? ( >=sys-libs/libselinux-2.1.9:0= )
-	tpm? ( app-crypt/tpm2-tss:0= )
-	xkb? ( >=x11-libs/libxkbcommon-0.4.1:0= )
+	seccomp? ( >=sys-libs/libseccomp-2.4.0 )
+	selinux? ( >=sys-libs/libselinux-2.1.9 )
+	tpm? ( app-crypt/tpm2-tss )
+	xkb? ( >=x11-libs/libxkbcommon-0.4.1 )
 	zstd? ( >=app-arch/zstd-1.4.0:0= )
 "
 
@@ -130,7 +136,6 @@ RDEPEND="${COMMON_DEPEND}
 	>=acct-user/systemd-resolve-0-r1
 	>=acct-user/systemd-timesync-0-r1
 	>=sys-apps/baselayout-2.2
-	elibc_musl? ( >=sys-libs/musl-1.2.5-r8 )
 	ukify? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep "${PEFILE_DEPEND}")
@@ -336,7 +341,6 @@ multilib_src_configure() {
 			$(meson_feature lz4)
 			$(meson_feature lzma xz)
 			$(meson_feature zstd)
-			$(meson_feature iptables libiptc)
 			$(meson_feature openssl)
 			$(meson_feature passwdqc)
 			$(meson_feature pkcs11 p11kit)
