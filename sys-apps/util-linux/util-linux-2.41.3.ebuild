@@ -341,7 +341,7 @@ multilib_src_configure() {
 		)
 	fi
 
-	if [[ ${CTARGET} == *-gnu ]] ; then
+	if [[ ${CHOST} == *-gnu ]] ; then
 		# Disable Linux-specific features
 		myeconfargs+=(
 			--disable-partx
