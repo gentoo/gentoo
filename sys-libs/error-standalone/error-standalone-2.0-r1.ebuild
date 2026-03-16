@@ -28,6 +28,7 @@ src_install() {
 
 	emake \
 		PREFIX="${EPREFIX}/usr" \
+		LIBDIR='${PREFIX}'/"$(get_libdir)" \
 		DESTDIR="${D}" \
 		install-shared \
 		$(usex static-libs install-static '')
