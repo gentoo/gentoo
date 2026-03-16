@@ -10,5 +10,9 @@
 		Build console-curses client for non-basic capabilities,
 		unlike the builtin one.
 		</flag>
+		<flag name="xkb">
+		Depend on <pkg>x11-libs/libxkbcommon</pkg> for keymap support in
+		the console.
+		</flag>
 	</use>
 </pkgmetadata>
