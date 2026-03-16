@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,6 +38,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.9.1-fix_CVE-2025-46802.patch
 	"${FILESDIR}"/${PN}-4.9.1-fix_CVE-2025-46804.patch
 	"${FILESDIR}"/${PN}-4.9.1-fix_CVE-2025-46805.patch
+	"${FILESDIR}"/${PN}-4.9.1-hurd-path-max.patch
 )
 
 src_prepare() {

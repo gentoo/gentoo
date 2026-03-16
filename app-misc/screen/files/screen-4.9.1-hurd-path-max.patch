@@ -1,0 +1,41 @@
+https://salsa.debian.org/debian/screen/-/raw/master/debian/patches/61-default-PATH_MAX-if-undefined-for-hurd.patch?ref_type=heads
+
+Description: Set PATH_MAX to 4096 if undefined
+ Fixes FTBFS since 4.4.0 on GNU/Hurd. Updated to add one more occurrence for 4.5.0.
+Author: Axel Beckert <abe@debian.org>
+Bug: https://savannah.gnu.org/bugs/?50089
+Last-Updated: 2017-01-18
+
+--- a/tty.sh
++++ b/tty.sh
+@@ -1526,6 +1526,13 @@
+   return 0;
+ }
+ 
++/*
++ * Define PATH_MAX to 4096 if it's not defined, like on GNU/Hurd
++ */
++
++#ifndef PATH_MAX
++#define PATH_MAX 4096
++#endif
+ 
+ int CheckTtyname (char *tty)
+ {
+--- a/screen.h
++++ b/screen.h
+@@ -109,6 +109,13 @@
+ # define DEFAULT_BUFFERFILE	"/tmp/screen-exchange"
+ #endif
+ 
++/*
++ * Define PATH_MAX to 4096 if it's not defined, like on GNU/Hurd
++ */
++
++#ifndef PATH_MAX
++#define PATH_MAX 4096
++#endif
+ 
+ #if defined(hpux) && !(defined(VSUSP) && defined(VDSUSP) && defined(VWERASE) && defined(VLNEXT))
+ # define HPUX_LTCHARS_HACK
+
