@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of KERNEL USE_EXPAND flags.
@@ -6,5 +6,6 @@
 # Keep it sorted.
 Darwin - KERNEL setting for system using the Darwin kernel (i.e.: Mac OS X).
 linux - KERNEL setting for system using the Linux kernel
+Hurd - KERNEL setting for system using the GNU Hurd
 SunOS - KERNEL setting for system using an SunOS (i.e.: Solaris) kernel
 Winnt - KERNEL setting for systems on Windows (Cygwin, MinGW, Winnt, ...)
