@@ -417,6 +417,8 @@ tc-env_build() {
 	RANLIB=$(tc-getBUILD_RANLIB) \
 	READELF=$(tc-getBUILD_READELF) \
 	CHOST=${CBUILD:-${CHOST}} \
+	ESYSROOT=${BROOT} \
+	SYSROOT= \
 	"$@"
 }
 
