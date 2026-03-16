@@ -3,7 +3,7 @@
 
 # @ECLASS: cvs.eclass
 # @MAINTAINER:
-# vapier@gentoo.org (and anyone who wants to help)
+# No maintainer <maintainer-needed@gentoo.org>
 # @SUPPORTED_EAPIS: 7 8
 # @BLURB: This eclass provides generic cvs fetching functions
 # @DESCRIPTION:
