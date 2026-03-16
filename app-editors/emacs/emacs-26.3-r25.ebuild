@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ SRC_URI="mirror://gnu/emacs/${P}.tar.xz
 FULL_VERSION="${PV%%_*}"
 S="${WORKDIR}/emacs-${FULL_VERSION}"
 
-LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
+LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT MPL-2.0 PSF-2 unicode W3C"
 SLOT="26"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~sparc x86 ~x64-macos"
 IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif gpm gsettings gtk gui gzip-el imagemagick +inotify jpeg kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars valgrind wide-int Xaw3d xft +xpm zlib"

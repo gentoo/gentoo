@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -42,7 +42,7 @@ fi
 DESCRIPTION="The advanced, extensible, customizable, self-documenting editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 
-LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
+LICENSE="GPL-3+ FDL-1.3+ Boost-1.0 BSD HPND MIT MPL-2.0 PCRE PSF-2 unicode W3C"
 IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars valgrind wide-int Xaw3d xft +xpm zlib"
 RESTRICT="test"
 
