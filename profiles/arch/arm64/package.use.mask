@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alfredo Tupone <tupone@gentoo.org> (2026-03-16)
+# dependencies not arm64 ready
+sci-ml/torchvision rocm
+
 # Fabian Groffen <grobian@gentoo.org> (2026-02-11)
 # bitwarden-cli is not available for linux-arm64
 app-admin/vaultwarden cli
