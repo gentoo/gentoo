@@ -32,10 +32,13 @@ inherit bash-completion-r1 eapi9-ver flag-o-matic multibuild optfeature
 inherit python-any-r1 secureboot toolchain-funcs verify-sig
 
 DESCRIPTION="GNU GRUB boot loader"
-HOMEPAGE="https://www.gnu.org/software/grub/"
+HOMEPAGE="https://gnu-grub.freedesktop.org/"
 
 MY_P=${P}
-if [[ ${PV} != 9999 ]]; then
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://gitlab.freedesktop.org/gnu-grub/grub.git"
+else
 	if [[ ${PV} == *_alpha* || ${PV} == *_beta* || ${PV} == *_rc* ]]; then
 		# The quote style is to work with <=bash-4.2 and >=bash-4.3 #503860
 		MY_P=${P/_/'~'}
@@ -58,9 +61,6 @@ if [[ ${PV} != 9999 ]]; then
 		)
 	"
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
-else
-	inherit git-r3
-	EGIT_REPO_URI="https://git.savannah.gnu.org/git/grub.git"
 fi
 
 DEJAVU_VER=2.37
