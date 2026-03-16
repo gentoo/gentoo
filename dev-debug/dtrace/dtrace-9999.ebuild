@@ -14,7 +14,6 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/oracle/dtrace/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}"/dtrace-${PV}
 
 	KEYWORDS="-* ~amd64 ~arm64"
 fi

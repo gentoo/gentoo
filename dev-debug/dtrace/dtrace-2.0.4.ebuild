@@ -1,4 +1,4 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,14 +6,14 @@ EAPI=8
 inherit edo flag-o-matic linux-info multilib systemd toolchain-funcs udev
 
 DESCRIPTION="Dynamic BPF-based system-wide tracing tool"
-HOMEPAGE="https://github.com/oracle/dtrace-utils https://wiki.gentoo.org/wiki/DTrace"
+HOMEPAGE="https://github.com/oracle/dtrace https://wiki.gentoo.org/wiki/DTrace"
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_BRANCH="devel"
-	EGIT_REPO_URI="https://github.com/oracle/dtrace-utils"
+	EGIT_REPO_URI="https://github.com/oracle/dtrace"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/oracle/dtrace-utils/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/oracle/dtrace/archive/refs/tags/${PV}.tar.gz -> ${P}.renamed.tar.gz"
 	S="${WORKDIR}"/dtrace-utils-${PV}
 
 	KEYWORDS="-* amd64 arm64"
