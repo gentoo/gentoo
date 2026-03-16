@@ -18,7 +18,7 @@ else
 		verify-sig? ( https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.xz.asc )
 	"
 
-	KEYWORDS="~amd64 ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm64 ~loong ~ppc ~ppc64 ~riscv x86"
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-hclee )"
 fi
 
