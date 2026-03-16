@@ -24,4 +24,4 @@ HOMEPAGE="https://savannah.gnu.org/projects/texinfo/"
 SRC_URI+=" https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=texinfo&download=1 -> ${P}.asc"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
