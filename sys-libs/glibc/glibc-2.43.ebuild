@@ -1105,7 +1105,6 @@ glibc_do_configure() {
 		--with-bugurl=https://bugs.gentoo.org/
 		--with-pkgversion="$(glibc_banner)"
 		$(use_multiarch || echo --disable-multi-arch)
-		$(use_enable systemtap)
 		$(use_enable nscd)
 
 		# /usr/bin/mtrace has a Perl shebang. Gentoo Prefix QA checks fail if
@@ -1130,6 +1129,12 @@ glibc_do_configure() {
 
 	# We rely on sys-libs/timezone-data for timezone tools normally.
 	myconf+=( $(use_enable vanilla timezone-tools) )
+
+	if is_crosscompile ; then
+		myconf+=( --disable-systemtap )
+	else
+		myconf+=( $(use_enable systemtap) )
+	fi
 
 	# These libs don't have configure flags.
 	ac_cv_lib_audit_audit_log_user_avc_message=$(usex audit || echo no)
