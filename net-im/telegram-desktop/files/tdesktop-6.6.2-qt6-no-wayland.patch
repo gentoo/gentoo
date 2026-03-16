@@ -1,0 +1,119 @@
+Allow disabling wayland integration for Qt6 builds
+
+Upstream has removed the required toggle for wayland integration, and instead
+is forcing it when qt has been built with USE=wayland.
+
+I'm not certain keeping patching it like this is feasible in the long term. A
+method of disabling QT_FEATURE_wayland should be more appropriate.
+
+https://bugs.gentoo.org/928451
+https://github.com/desktop-app/cmake_helpers/commit/a428df5440e76a726abc30924766ac7da0cb381c
+
+--- tdesktop-6.6.2-full.orig/Telegram/lib_base/base/platform/linux/base_info_linux.cpp
++++ tdesktop-6.6.2-full/Telegram/lib_base/base/platform/linux/base_info_linux.cpp
+@@ -340,7 +340,7 @@
+ 	}
+ 	static const bool result =
+ #if QT_VERSION >= QT_VERSION_CHECK(6, 7, 0)
+-#if defined QT_FEATURE_wayland && QT_CONFIG(wayland)
++#if !defined DESKTOP_APP_DISABLE_WAYLAND_INTEGRATION && defined QT_FEATURE_wayland && QT_CONFIG(wayland)
+ 		qApp->nativeInterface<QNativeInterface::QWaylandApplication>()
+ #else // wayland
+ 		false
+--- tdesktop-6.6.2-full.orig/Telegram/lib_base/base/platform/linux/base_linux_xdg_activation_token.cpp
++++ tdesktop-6.6.2-full/Telegram/lib_base/base/platform/linux/base_linux_xdg_activation_token.cpp
+@@ -15,7 +15,7 @@
+ namespace base::Platform {
+ 
+ void RunWithXdgActivationToken(Fn<void(QString)> callback) {
+-#if defined QT_FEATURE_wayland && QT_CONFIG(wayland)
++#if !defined DESKTOP_APP_DISABLE_WAYLAND_INTEGRATION && defined QT_FEATURE_wayland && QT_CONFIG(wayland)
+ 	const auto window = QGuiApplication::focusWindow();
+ 	if (!window) {
+ 		callback({});
+--- tdesktop-6.6.2-full.orig/Telegram/lib_ui/ui/platform/linux/ui_utility_linux.cpp
++++ tdesktop-6.6.2-full/Telegram/lib_ui/ui/platform/linux/ui_utility_linux.cpp
+@@ -414,7 +414,7 @@
+ }
+ #endif // !DESKTOP_APP_DISABLE_X11_INTEGRATION
+ 
+-#if defined QT_FEATURE_wayland && QT_CONFIG(wayland)
++#if !defined DESKTOP_APP_DISABLE_WAYLAND_INTEGRATION && defined QT_FEATURE_wayland && QT_CONFIG(wayland)
+ void ShowWaylandWindowMenu(not_null<QWidget*> widget, const QPoint &point) {
+ 	static const auto wl_proxy_marshal_array = [] {
+ 		void (*result)(
+@@ -548,7 +548,7 @@
+ }
+ 
+ bool WindowMarginsSupported() {
+-#if defined QT_FEATURE_wayland && QT_CONFIG(wayland)
++#if !defined DESKTOP_APP_DISABLE_WAYLAND_INTEGRATION && defined QT_FEATURE_wayland && QT_CONFIG(wayland)
+ 	static const auto WaylandResult = [] {
+ 		using namespace QNativeInterface::Private;
+ 		QWindow window;
+@@ -575,7 +575,7 @@
+ }
+ 
+ void SetWindowMargins(not_null<QWidget*> widget, const QMargins &margins) {
+-#if defined QT_FEATURE_wayland && QT_CONFIG(wayland)
++#if !defined DESKTOP_APP_DISABLE_WAYLAND_INTEGRATION && defined QT_FEATURE_wayland && QT_CONFIG(wayland)
+ 	using namespace QNativeInterface::Private;
+ 	const auto window = not_null(widget->windowHandle());
+ 	const auto platformWindow = not_null(window->handle());
+@@ -597,7 +597,7 @@
+ }
+ 
+ void ShowWindowMenu(not_null<QWidget*> widget, const QPoint &point) {
+-#if defined QT_FEATURE_wayland && QT_CONFIG(wayland)
++#if !defined DESKTOP_APP_DISABLE_WAYLAND_INTEGRATION && defined QT_FEATURE_wayland && QT_CONFIG(wayland)
+ 	if (::Platform::IsWayland()) {
+ 		ShowWaylandWindowMenu(widget, point);
+ 		return;
+--- tdesktop-6.6.2-full.orig/Telegram/lib_ui/ui/widgets/popup_menu.cpp
++++ tdesktop-6.6.2-full/Telegram/lib_ui/ui/widgets/popup_menu.cpp
+@@ -1053,7 +1053,7 @@
+ 			0),
+ 		_padding.top() - _topShift);
+ 	auto r = screen ? screen->availableGeometry() : QRect();
+-#if QT_VERSION >= QT_VERSION_CHECK(6, 11, 0) && defined QT_FEATURE_wayland && QT_CONFIG(wayland)
++#if QT_VERSION >= QT_VERSION_CHECK(6, 11, 0) && !defined DESKTOP_APP_DISABLE_WAYLAND_INTEGRATION && defined QT_FEATURE_wayland && QT_CONFIG(wayland)
+ 	using namespace QNativeInterface::Private;
+ 	if (const auto native
+ 			= windowHandle()->nativeInterface<QWaylandWindow>()) {
+--- tdesktop-6.6.2-full.orig/Telegram/lib_ui/ui/widgets/tooltip.cpp
++++ tdesktop-6.6.2-full/Telegram/lib_ui/ui/widgets/tooltip.cpp
+@@ -112,7 +112,7 @@
+ 		p.setX(m.x() - (s.width() / 2));
+ 	}
+ 
+-#if QT_VERSION >= QT_VERSION_CHECK(6, 11, 0) && defined QT_FEATURE_wayland && QT_CONFIG(wayland)
++#if QT_VERSION >= QT_VERSION_CHECK(6, 11, 0) && !defined DESKTOP_APP_DISABLE_WAYLAND_INTEGRATION && defined QT_FEATURE_wayland && QT_CONFIG(wayland)
+ 	using namespace QNativeInterface::Private;
+ 	create();
+ 	if (const auto native
+--- tdesktop-6.6.2-full.orig/cmake/options.cmake
++++ tdesktop-6.6.2-full/cmake/options.cmake
+@@ -22,6 +22,13 @@
+     )
+ endif()
+ 
++if (DESKTOP_APP_DISABLE_WAYLAND_INTEGRATION)
++    target_compile_definitions(common_options
++    INTERFACE
++    	DESKTOP_APP_DISABLE_WAYLAND_INTEGRATION
++    )
++endif()
++
+ if (WIN32)
+     include(cmake/options_win.cmake)
+ elseif (APPLE)
+--- tdesktop-6.6.2-full.orig/cmake/variables.cmake
++++ tdesktop-6.6.2-full/cmake/variables.cmake
+@@ -27,6 +27,7 @@
+ option(DESKTOP_APP_LOTTIE_DISABLE_RECOLORING "Disable recoloring of lottie animations." OFF)
+ option(DESKTOP_APP_LOTTIE_USE_CACHE "Use caching in lottie animations." ON)
+ cmake_dependent_option(DESKTOP_APP_DISABLE_X11_INTEGRATION "Disable all code for X11 integration." OFF LINUX ON)
++cmake_dependent_option(DESKTOP_APP_DISABLE_WAYLAND_INTEGRATION "Disable all code for Wayland integration." OFF LINUX ON)
+ cmake_dependent_option(DESKTOP_APP_USE_ALLOCATION_TRACER "Use simple allocation tracer." OFF LINUX OFF)
+ option(DESKTOP_APP_USE_PACKAGED_FONTS "Use preinstalled fonts instead of bundled patched ones." OFF)
+ option(DESKTOP_APP_USE_PACKAGED_RLOTTIE "Find rlottie using CMake instead of bundled patched one." OFF)
