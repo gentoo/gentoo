@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2026-03-16)
+# media-libs/opencolorio is not keyworded here
+media-video/ffmpeg opencolorio
+
 # Mike Gilbert <floppym@gentoo.org> (2026-03-15)
 # net-misc/freerdp is missing ppc keyword.
 net-analyzer/hydra rdp
