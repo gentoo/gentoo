@@ -1,7 +1,7 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 if [[ ${PV} == 99999999 ]]; then
 	inherit git-r3
@@ -31,8 +31,6 @@ src_install() {
 pkg_postinst() {
 	ebegin "Installing catalog entry"
 	xmlcatalog --noout \
-		--add rewriteSystem "http://www.gentoo.org/dtd/" \
-			"file://${EPREFIX}/usr/share/xml/gentoo/dtd/" \
 		--add rewriteSystem "https://www.gentoo.org/dtd/" \
 			"file://${EPREFIX}/usr/share/xml/gentoo/dtd/" \
 		"${EROOT}"/etc/xml/catalog
@@ -42,7 +40,6 @@ pkg_postinst() {
 pkg_postrm() {
 	ebegin "Cleaning catalog"
 	xmlcatalog --noout \
-		--del "http://www.gentoo.org/dtd/" \
 		--del "https://www.gentoo.org/dtd/" \
 		"${EROOT}"/etc/xml/catalog
 	eend $?
