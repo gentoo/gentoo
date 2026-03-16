@@ -20,7 +20,7 @@ else
 	SRC_URI="https://github.com/systemd/${PN}/archive/refs/tags/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
 
 	if [[ ${PV} != *rc* ]] ; then
-		KEYWORDS="amd64 arm arm64 ppc ppc64 ~s390 x86"
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 	fi
 fi
 
@@ -34,7 +34,7 @@ LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
 IUSE="
 	acl apparmor audit boot bpf cgroup-hybrid cryptsetup curl +dns-over-tls elfutils
-	fido2 +gcrypt gnutls homed http idn importd iptables +kernel-install +kmod
+	fido2 +gcrypt gnutls homed http idn importd +kernel-install +kmod
 	+lz4 lzma +openssl pam passwdqc pcre pkcs11 policykit pwquality qrcode
 	+resolvconf +seccomp selinux split-usr +sysv-utils test tpm ukify vanilla xkb +zstd
 "
@@ -79,7 +79,6 @@ COMMON_DEPEND="
 	kmod? ( >=sys-apps/kmod-15:0= )
 	lz4? ( >=app-arch/lz4-0_p131:0=[${MULTILIB_USEDEP}] )
 	lzma? ( >=app-arch/xz-utils-5.0.5-r1:0=[${MULTILIB_USEDEP}] )
-	iptables? ( net-firewall/iptables:0= )
 	openssl? ( >=dev-libs/openssl-1.1.0:0= )
 	pam? ( sys-libs/pam:=[${MULTILIB_USEDEP}] )
 	passwdqc? ( sys-auth/passwdqc:0= )
@@ -347,7 +346,6 @@ multilib_src_configure() {
 		$(meson_feature lz4)
 		$(meson_feature lzma xz)
 		$(meson_feature zstd)
-		$(meson_native_use_feature iptables libiptc)
 		$(meson_native_use_feature openssl)
 		$(meson_feature pam)
 		$(meson_native_use_feature passwdqc)
