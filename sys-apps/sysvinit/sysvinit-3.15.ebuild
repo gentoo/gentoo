@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -149,6 +149,12 @@ src_install() {
 	find "${ED}" -xtype l -delete || die
 
 	find "${ED}" -type d -empty -delete || die
+
+	if use kernel_Hurd ; then
+		# Avoid clash with sys-kernel/hurd
+		mv "${ED}"/sbin/halt "${ED}"/sbin/sysvinit-halt || die
+		mv "${ED}"/sbin/reboot "${ED}"/sbin/sysvinit-reboot || die
+	fi
 }
 
 pkg_postinst() {
