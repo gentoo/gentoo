@@ -86,7 +86,7 @@ src_configure() {
 		--enable-lastlog
 		--disable-account-tools-setuid
 		--disable-static
-		$(use_enable kernel_linux btrfs)
+		$(use_with kernel_linux btrfs)
 		# Use bundled replacements for readpassphrase and freezero
 		--without-libbsd
 		--without-group-name-max-length
