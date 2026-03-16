@@ -60,7 +60,8 @@ src_configure() {
 	# LTO confuses one of the assemble steps
 	filter-lto
 	# -g3 confuses MIG which relies on preprocessed input
-	replace-flags '-g*' '-g1'
+	replace-flags -ggdb[3-9] -ggdb2
+	replace-flags -g3 -g
 	# LD gets invoked directly. raw-ldflags would work here except
 	# that it breaks configure which uses the compiler driver
 	unset LDFLAGS
