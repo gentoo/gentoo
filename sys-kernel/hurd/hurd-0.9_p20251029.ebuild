@@ -57,6 +57,10 @@ else
 	BDEPEND="virtual/pkgconfig"
 fi
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.9_p20251029-glibc-2.43.patch
+)
+
 src_prepare() {
 	default
 	[[ ${PV} == 9999 || ${PV} == *_p* ]] && eautoreconf

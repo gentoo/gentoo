@@ -1,0 +1,82 @@
+https://cgit.git.savannah.gnu.org/cgit/hurd/hurd.git/commit/?id=b36f4ea2d7b52594b4a5a19439f45de8f213539d
+https://cgit.git.savannah.gnu.org/cgit/hurd/hurd.git/commit/?id=d3daa6faf08ab4141e5562cd6a69f636b869a67b
+
+From b36f4ea2d7b52594b4a5a19439f45de8f213539d Mon Sep 17 00:00:00 2001
+From: Samuel Thibault <samuel.thibault@ens-lyon.org>
+Date: Sun, 15 Feb 2026 01:31:41 +0100
+Subject: Fix build against glibc 2.43
+
+---
+ pfinet/glue-include/linux/in.h     | 2 ++
+ pfinet/glue-include/linux/socket.h | 2 ++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/pfinet/glue-include/linux/in.h b/pfinet/glue-include/linux/in.h
+index cb1804c6..594304ee 100644
+--- a/pfinet/glue-include/linux/in.h
++++ b/pfinet/glue-include/linux/in.h
+@@ -12,12 +12,14 @@
+ #define IP_DEFAULT_MULTICAST_TTL        1
+ #define IP_DEFAULT_MULTICAST_LOOP       1
+ 
++#ifndef IP_PKTINFO
+ struct in_pktinfo
+ {
+ 	int		ipi_ifindex;
+ 	struct in_addr	ipi_spec_dst;
+ 	struct in_addr	ipi_addr;
+ };
++#endif
+ 
+ 
+ /* <asm/byteorder.h> contains the htonl type stuff.. */
+diff --git a/pfinet/glue-include/linux/socket.h b/pfinet/glue-include/linux/socket.h
+index 90861fde..049e7684 100644
+--- a/pfinet/glue-include/linux/socket.h
++++ b/pfinet/glue-include/linux/socket.h
+@@ -34,7 +34,9 @@
+ #define SOL_RAW IPPROTO_RAW
+ 
+ /* IP options */
++#ifndef IP_PKTINFO
+ #define IP_PKTINFO	190
++#endif
+ #define IP_PKTOPTIONS	191
+ #define IP_MTU_DISCOVER	192
+ #define IP_RECVERR	193
+-- 
+cgit v1.2.3
+
+From d3daa6faf08ab4141e5562cd6a69f636b869a67b Mon Sep 17 00:00:00 2001
+From: Samuel Thibault <samuel.thibault@ens-lyon.org>
+Date: Sun, 15 Feb 2026 08:34:39 +0100
+Subject: Fix build against glibc 2.42
+
+---
+ pfinet/glue-include/linux/in.h | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/pfinet/glue-include/linux/in.h b/pfinet/glue-include/linux/in.h
+index 594304ee..43ae630f 100644
+--- a/pfinet/glue-include/linux/in.h
++++ b/pfinet/glue-include/linux/in.h
+@@ -2,6 +2,7 @@
+ #define _HACK_IN_H_
+ 
+ #include <netinet/in.h>
++#include <linux/socket.h>
+ 
+ /* IP_MTU_DISCOVER values */
+ #define IP_PMTUDISC_DONT		0	/* Never send DF frames */
+@@ -12,7 +13,8 @@
+ #define IP_DEFAULT_MULTICAST_TTL        1
+ #define IP_DEFAULT_MULTICAST_LOOP       1
+ 
+-#ifndef IP_PKTINFO
++#if IP_PKTINFO == 190
++/* Linux-like value, define Linux struct */
+ struct in_pktinfo
+ {
+ 	int		ipi_ifindex;
+-- 
+cgit v1.2.3
