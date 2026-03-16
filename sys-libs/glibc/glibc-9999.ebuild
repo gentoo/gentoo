@@ -1010,6 +1010,9 @@ src_prepare() {
 		einfo "Applying Gentoo Glibc patchset ${patchsetname}"
 		eapply "${WORKDIR}"/patches
 		einfo "Done."
+
+		# TODO: Put into our patchset
+		eapply "${FILESDIR}"/glibc-2.43-hurd-link-helpers.patch
 	fi
 
 	case ${CTARGET} in
