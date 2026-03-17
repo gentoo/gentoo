@@ -72,9 +72,11 @@ RDEPEND="
 			>=app-portage/gemato-14.5[${PYTHON_USEDEP}]
 		)
 	)
-	elibc_glibc? ( >=sys-apps/sandbox-2.2 )
-	elibc_musl? ( >=sys-apps/sandbox-2.2 )
-	kernel_linux? ( sys-apps/util-linux )
+	kernel_linux? (
+		sys-apps/util-linux
+		elibc_glibc? ( >=sys-apps/sandbox-2.2 )
+		elibc_musl? ( >=sys-apps/sandbox-2.2 )
+	)
 	selinux? ( >=sys-libs/libselinux-2.0.94[python,${PYTHON_USEDEP}] )
 	xattr? ( kernel_linux? (
 		>=sys-apps/install-xattr-0.3
