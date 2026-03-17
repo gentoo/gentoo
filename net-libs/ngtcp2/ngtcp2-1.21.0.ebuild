@@ -18,7 +18,7 @@ else
 		verify-sig? ( https://github.com/ngtcp2/ngtcp2/releases/download/v${PV}/${P}.tar.xz.asc )
 	"
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~arm64-macos ~x64-macos"
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-ngtcp2 )"
 fi
 
