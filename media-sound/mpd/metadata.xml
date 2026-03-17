@@ -41,6 +41,7 @@
     <flag name="systemd">Enable support for systemd socket activation</flag>
     <flag name="tremor">Enable support for <pkg>media-libs/tremor</pkg>, a fixed-point version of the Ogg Vorbis decoder</flag>
     <flag name="twolame">Enable MP2 encoding via <pkg>media-sound/twolame</pkg></flag>
+    <flag name="wav">Support WAV encoding</flag>
     <flag name="webdav">Enable using music from a WebDAV share</flag>
     <flag name="wildmidi">Enable MIDI support via <pkg>media-sound/wildmidi</pkg></flag>
     <flag name="yajl">Enable JSON parsing via <pkg>dev-libs/yajl</pkg></flag>

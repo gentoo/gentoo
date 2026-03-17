@@ -1,0 +1,474 @@
+.\" Man page generated from reStructuredText
+.\" by the Docutils 0.22.4 manpage writer.
+.
+.
+.nr rst2man-indent-level 0
+.
+.de1 rstReportMargin
+\\$1 \\n[an-margin]
+level \\n[rst2man-indent-level]
+level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
+-
+\\n[rst2man-indent0]
+\\n[rst2man-indent1]
+\\n[rst2man-indent2]
+..
+.de1 INDENT
+.\" .rstReportMargin pre:
+. RS \\$1
+. nr rst2man-indent\\n[rst2man-indent-level] \\n[an-margin]
+. nr rst2man-indent-level +1
+.\" .rstReportMargin post:
+..
+.de UNINDENT
+. RE
+.\" indent \\n[an-margin]
+.\" old: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.nr rst2man-indent-level -1
+.\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.in \\n[rst2man-indent\\n[rst2man-indent-level]]u
+..
+.TH "MPD.CONF" "5" "Mar 17, 2026" "0.24.9" "Music Player Daemon"
+.SH NAME
+mpd.conf \- mpd.conf documentation
+.SH DESCRIPTION
+.sp
+\fBmpd.conf\fP is the configuration file for \fBmpd(1)\fP\&.
+.sp
+Usually, that is \fB/etc/mpd.conf\fP, unless a different path is
+specified on the command line.
+.sp
+If you run \fBMPD\fP as a user daemon (and not as a system
+daemon), the configuration is read from
+\fB$XDG_CONFIG_HOME/mpd/mpd.conf\fP (usually
+\fB~/.config/mpd/mpd.conf\fP). On Android, \fBmpd.conf\fP will be
+loaded from the top\-level directory of the data partition.
+.sp
+Each line in the configuration file contains a setting name and its value, e.g.:
+.sp
+\fBconnection_timeout \(dq5\(dq\fP
+.sp
+Lines starting with \fB#\fP are treated as comments and ignored.
+.sp
+For settings that specify a file system path, the tilde (\fB~\fP) is
+expanded to \fB$HOME\fP\&. In addition, the following path expansions are
+supported:
+.INDENT 0.0
+.IP \(bu 2
+\fB$HOME\fP
+.IP \(bu 2
+\fB$XDG_CONFIG_HOME\fP
+.IP \(bu 2
+\fB$XDG_MUSIC_DIR\fP
+.IP \(bu 2
+\fB$XDG_CACHE_HOME\fP
+.IP \(bu 2
+\fB$XDG_RUNTIME_DIR\fP
+.UNINDENT
+.sp
+Example:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.EX
+music_directory \(dq~/Music\(dq
+db_file \(dq$XDG_CONFIG_HOME/mpd/database\(dq
+.EE
+.UNINDENT
+.UNINDENT
+.sp
+Some of the settings are grouped in blocks with curly braces, e.g. per\-plugin settings:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.EX
+audio_output {
+    type \(dqalsa\(dq
+    name \(dqMy ALSA output\(dq
+    device \(dqiec958:CARD=Intel,DEV=0\(dq
+    mixer_control \(dqPCM\(dq
+}
+.EE
+.UNINDENT
+.UNINDENT
+.sp
+The \fBinclude\fP directive can be used to include settings from
+another file; the given file name is relative to the current file:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.EX
+include \(dqother.conf\(dq
+.EE
+.UNINDENT
+.UNINDENT
+.sp
+You can use \fBinclude_optional\fP instead if you want the included file
+to be optional; the directive will be ignored if the file does not exist:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.EX
+include_optional \(dqmay_not_exist.conf\(dq
+.EE
+.UNINDENT
+.UNINDENT
+.sp
+See \fBdocs/mpdconf.example\fP in the source tarball for an example
+configuration file.
+.sp
+This manual is not complete, it lists only the most important options.
+Please read the MPD user manual for a complete configuration guide:
+\%<http://\:www\:.musicpd\:.org/\:doc/\:user/>
+.SH GLOBAL SETTINGS
+.SS System Settings
+.INDENT 0.0
+.TP
+.B user
+.INDENT 7.0
+.TP
+.B Type
+NAME.UNINDENT
+.sp
+This specifies the user that MPD will run as, if set. MPD should never run
+as root, and you may use this option to make MPD change its user id after
+initialization. Do not use this option if you start MPD as an unprivileged
+user.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B group
+.INDENT 7.0
+.TP
+.B Type
+NAME.UNINDENT
+.sp
+Change to this group.  This discards all default groups and uses
+only this group.  Do not use this setting.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B pid_file
+.INDENT 7.0
+.TP
+.B Type
+PATH.UNINDENT
+.sp
+This specifies the file to save mpd\(aqs process ID in.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B log_file
+.INDENT 7.0
+.TP
+.B Type
+PATH.UNINDENT
+.sp
+This specifies where the log file should be located. The special value \(dqsyslog\(dq makes MPD use the local syslog daemon.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B log_level
+.INDENT 7.0
+.TP
+.B Type
+LEVEL.TP
+.B Default
+\fBnotice\fP.UNINDENT
+.sp
+Suppress all messages below the given threshold.  The following
+log levels are available:
+.INDENT 7.0
+.IP \(bu 2
+\fBerror\fP: errors
+.IP \(bu 2
+\fBwarning\fP: warnings
+.IP \(bu 2
+\fBnotice\fP: interesting informational messages
+.IP \(bu 2
+\fBinfo\fP: unimportant informational messages
+.IP \(bu 2
+\fBverbose\fP: debug messages (for developers and for
+troubleshooting)
+.UNINDENT
+.UNINDENT
+.SS Client Settings
+.INDENT 0.0
+.TP
+.B port
+.INDENT 7.0
+.TP
+.B Type
+number.TP
+.B Default
+\fB6600\fP.UNINDENT
+.sp
+This specifies the port that mpd listens on.
+.UNINDENT
+.SS File Settings
+.INDENT 0.0
+.TP
+.B db_file
+.INDENT 7.0
+.TP
+.B Type
+PATH.UNINDENT
+.sp
+This specifies where the db file will be stored.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B sticker_file
+.INDENT 7.0
+.TP
+.B Type
+PATH.UNINDENT
+.sp
+The location of the sticker database. This is a database which manages
+dynamic information attached to songs.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B music_directory
+.INDENT 7.0
+.TP
+.B Type
+PATH.UNINDENT
+.sp
+This specifies the directory where music is located. If you do not configure
+this, you can only play streams.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B playlist_directory
+.INDENT 7.0
+.TP
+.B Type
+PATH.UNINDENT
+.sp
+This specifies the directory where saved playlists are stored
+(flat, no subdirectories).  If you do not configure this, you
+cannot save playlists.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B state_file
+.INDENT 7.0
+.TP
+.B Type
+PATH.UNINDENT
+.sp
+This specifies if a state file is used and where it is located. The state of
+mpd will be saved to this file when mpd is terminated by a TERM signal or by
+the \fBkill\fP command. When mpd is restarted, it will read the state file and
+restore the state of mpd (including the playlist).
+.UNINDENT
+.INDENT 0.0
+.TP
+.B follow_outside_symlinks
+.INDENT 7.0
+.TP
+.B Type
+\fByes\fP or \fBno\fP.TP
+.B Default
+\fByes\fP.UNINDENT
+.sp
+Control if MPD will follow symbolic links pointing outside the music dir. You
+must recreate the database after changing this option.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B follow_inside_symlinks
+.INDENT 7.0
+.TP
+.B Type
+\fByes\fP or \fBno\fP.TP
+.B Default
+\fByes\fP.UNINDENT
+.sp
+Control if MPD will follow symbolic links pointing inside the music dir,
+potentially adding duplicates to the database. You must recreate the
+database after changing this option.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B auto_update
+.INDENT 7.0
+.TP
+.B Type
+\fByes\fP or \fBno\fP.TP
+.B Default
+\fBno\fP.UNINDENT
+.sp
+This specifies the whether to support automatic update of music database
+when files are changed in music_directory.
+(Only implemented on Linux.)
+.UNINDENT
+.INDENT 0.0
+.TP
+.B auto_update_depth
+.INDENT 7.0
+.TP
+.B Type
+number.TP
+.B Default
+unlimited.UNINDENT
+.sp
+Limit the depth of the directories being watched, 0 means only watch the
+music directory itself.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B save_absolute_paths_in_playlists
+.INDENT 7.0
+.TP
+.B Type
+\fByes\fP or \fBno\fP.TP
+.B Default
+\fBno\fP.UNINDENT
+.sp
+This specifies whether relative or absolute paths for song filenames are used
+when saving playlists.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B filesystem_charset
+.INDENT 7.0
+.TP
+.B Type
+CHARSET.UNINDENT
+.sp
+This specifies the character set used for the filesystem. A list of supported
+character sets can be obtained by running \(dqiconv \-l\(dq. The default is
+determined from the locale when the db was originally created.
+.UNINDENT
+.SS Player Settings
+.INDENT 0.0
+.TP
+.B restore_paused
+.INDENT 7.0
+.TP
+.B Type
+\fByes\fP or \fBno\fP.TP
+.B Default
+\fBno\fP.UNINDENT
+.sp
+Put MPD into pause mode instead of starting playback after startup.
+.UNINDENT
+.SS Other Settings
+.INDENT 0.0
+.TP
+.B zeroconf_enabled
+.INDENT 7.0
+.TP
+.B Type
+\fByes\fP or \fBno\fP.TP
+.B Default
+\fByes\fP.UNINDENT
+.sp
+If yes, and MPD has been compiled with support for Avahi or Bonjour, service
+information will be published with Zeroconf.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B zeroconf_name
+.INDENT 7.0
+.TP
+.B Type
+NAME.TP
+.B Default
+\fBMusic Player @ %h\fP.UNINDENT
+.sp
+If Zeroconf is enabled, this is the service name to publish. This
+name should be unique to your local network, but name collisions
+will be properly dealt with.  \fB%h\fP will be replaced with the
+hostname of the machine running MPD.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B audio_output
+See DESCRIPTION and the various \fBAUDIO OUTPUT OPTIONS\fP sections for the
+format of this block. Multiple audio_output sections may be specified. If
+no audio_output section is specified, then MPD will scan for a usable audio
+output.
+.UNINDENT
+.SH REQUIRED AUDIO OUTPUT SETTINGS
+.INDENT 0.0
+.TP
+.B type
+.INDENT 7.0
+.TP
+.B Type
+NAME.UNINDENT
+.sp
+This specifies the audio output type. See the list of supported outputs in
+\fBmpd \-\-version\fP for possible values.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B name
+.INDENT 7.0
+.TP
+.B Type
+NAME.UNINDENT
+.sp
+This specifies a unique name for the audio output.
+.UNINDENT
+.SH OPTIONAL AUDIO OUTPUT SETTINGS
+.INDENT 0.0
+.TP
+.B format
+.TP
+.B :type: \(ga\(gasample_rate:bits:channels\(ga\(ga
+This specifies the sample rate, bits per sample, and number of channels of
+audio that is sent to the audio output device. See documentation for the
+\fBaudio_output_format\fP option for more details. The default is to use
+whatever audio format is passed to the audio output. Any of the three
+attributes may be an asterisk to specify that this attribute should not be
+enforced
+.UNINDENT
+.INDENT 0.0
+.TP
+.B replay_gain_handler
+.INDENT 7.0
+.TP
+.B Type
+\fBsoftware\fP, \fBmixer\fP or \fBnone\fP.TP
+.B Default
+\fBsoftware\fP.UNINDENT
+.sp
+Specifies how replay gain is applied. \fBsoftware\fP uses an internal
+software volume control. \fBmixer\fP uses the configured (hardware)
+mixer control. \fBnone\fP disables replay gain on this audio output.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B mixer_type
+.INDENT 7.0
+.TP
+.B Type
+\fBhardware\fP, \fBsoftware\fP or \fBnone\fP.TP
+.B Default
+\fBhardware\fP (if supported) or \fBnone\fP.UNINDENT
+.sp
+Specifies which mixer should be used for this audio output: the hardware
+mixer (available for ALSA, OSS and PulseAudio), the software mixer or no
+mixer (\fBnone\fP).
+.UNINDENT
+.SH FILES
+.INDENT 0.0
+.TP
+.B \fB$XDG_CONFIG_HOME/mpd/mpd.conf\fP
+User configuration file (usually \fB~/.config/mpd/mpd.conf\fP).
+.TP
+.B \fB/etc/mpd.conf\fP
+Global configuration file.
+.UNINDENT
+.SH SEE ALSO
+.sp
+\fBmpd(1)\fP, \fBmpc(1)\fP
+.SH Author
+Max Kellermann
+.SH Copyright
+2003-2025 The Music Player Daemon Project
+.\" End of generated man page.
