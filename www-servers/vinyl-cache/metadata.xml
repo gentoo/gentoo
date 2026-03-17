@@ -10,21 +10,14 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Varnish is an HTTP accelerator. An HTTP accelerator (often called Reverse Proxy)
-	is an application that stores (caches) documents that have been requested over
-	the HTTP protocol.
-	Based on certain criteria the next client requesting the document is either
-	given the cached document, or a "fresh" document requested from a backend
-	server. The purpose of this is to minimize the requests going to the backend
-	server(s) by serving the same document to potentially many users.
-
-	The goal of Varnish is to be a very fast, stable and effective light-weight HTTP
-	accelerator daemon, by using modern and effective technologies. Ease of
-	managment and good documentation is also a main goal of the project since the
-	lack of either one will render Varnish useless.
+		Vinyl Cache (formerly known as “Varnish Cache”) is a web application
+		accelerator also known as a caching HTTP reverse proxy. You install it
+		in front of any server that speaks HTTP and configure it to cache the
+		contents. Vinyl Cache is really, really fast. It typically speeds up
+		delivery with a factor of 300-1000×, depending on your architecture.
 	</longdescription>
 	<slots>
-		<subslots>Reflect ABI compatibility for libvarnishapi.so.</subslots>
+		<subslots>Reflect ABI compatibility for libvinylapi.so.</subslots>
 	</slots>
 	<upstream>
 		<bugs-to>https://code.vinyl-cache.org/vinyl-cache/vinyl-cache/issues</bugs-to>
