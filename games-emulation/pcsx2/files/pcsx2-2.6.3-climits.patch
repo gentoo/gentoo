@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/971287
+--- a/pcsx2/GS/Renderers/Common/GSDirtyRect.cpp
++++ b/pcsx2/GS/Renderers/Common/GSDirtyRect.cpp
+@@ -3,4 +3,5 @@
+ 
+ #include "GSDirtyRect.h"
++#include <climits>
+ #include <vector>
+ 
+--- a/pcsx2/GS/Renderers/Common/GSFastList.h
++++ b/pcsx2/GS/Renderers/Common/GSFastList.h
+@@ -5,4 +5,5 @@
+ 
+ #include "common/AlignedMalloc.h"
++#include <climits>
+ 
+ template <class T>
