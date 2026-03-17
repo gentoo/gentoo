@@ -58,6 +58,10 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libheif/heif_version.h
 )
 
+PATCHES=(
+	"${FILESDIR}"/libheif-1.21.2-svt-av1-4.patch
+)
+
 pkg_pretend() {
 	if use gui && use !tools ; then
 		ewarn "Building heif-view requires USE=\"gui tools\"."
