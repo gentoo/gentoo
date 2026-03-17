@@ -155,7 +155,7 @@ app-editors/neovim lua_single_target_luajit
 
 # Yixun Lan <dlan@gentoo.org> (2022-11-24)
 # depend on dev-libs/libpcre2[jit] which not supported yet, bug #879511
-www-servers/varnish jit
+www-servers/vinyl-cache jit
 
 # Yixun Lan <dlan@gentoo.org> (2022-01-27)
 # This target supports ASAN/etc...
