@@ -10,6 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">BLAKE3-team/BLAKE3</remote-id>
+		<bugs-to>https://code.vinyl-cache.org/vinyl-cache/vinyl-cache/issues</bugs-to>
+		<changelog>https://code.vinyl-cache.org/vinyl-cache/vinyl-cache/src/branch/main/doc/changes.rst</changelog>
+		<doc>https://vinyl-cache.org/docs/index.html</doc>
 	</upstream>
 </pkgmetadata>
