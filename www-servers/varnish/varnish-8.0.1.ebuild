@@ -9,7 +9,8 @@ inherit autotools systemd python-r1
 
 DESCRIPTION="Varnish is a state-of-the-art, high-performance HTTP accelerator"
 HOMEPAGE="https://vinyl-cache.org/"
-SRC_URI="https://vinyl-cache.org/downloads/${P}.tgz"
+SRC_URI="https://vinyl-cache.org/downloads/varnish-${PV}.tgz"
+S="${WORKDIR}/varnish-${PV}"
 
 LICENSE="BSD-2 GPL-2"
 SLOT="0/2"
@@ -43,7 +44,7 @@ DEPEND="
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-8.0.0-configure-make-python-output-match-autotools.patch" # Bug: 882725
+	"${FILESDIR}/varnish-8.0.0-configure-make-python-output-match-autotools.patch" # Bug: 882725
 )
 
 # Upstream acknowledge that a small number of tests fail sporadically, including on their
@@ -116,7 +117,7 @@ src_install() {
 	keepdir /var/lib/varnish
 	keepdir /var/log/varnish
 
-	systemd_dounit "${FILESDIR}/${PN}d.service"
+	systemd_dounit "${FILESDIR}/varnishd.service"
 
 	insinto /etc/varnish/
 	doins vmod/vmod_*.vcc
