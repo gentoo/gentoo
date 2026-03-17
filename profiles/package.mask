@@ -728,11 +728,8 @@ www-plugins/chrome-binary-plugins:unstable
 # Diego E. Pettenò <flameeyes@gentoo.org> (2009-01-03)
 # These packages are not supposed to be merged directly, instead
 # please use sys-devel/crossdev to install them.
-dev-util/mig
 dev-util/mingw64-runtime
 sys-libs/newlib
 dev-embedded/avr-libc
 sys-devel/nvptx-tools
 sys-devel/clang-crossdev-wrappers
-sys-kernel/gnumach
-sys-kernel/hurd
