@@ -5,7 +5,7 @@ EAPI=8
 
 LUA_COMPAT=( lua5-1 luajit )
 
-inherit cmake lua-single
+inherit cmake lua-single xdg-utils
 
 DESCRIPTION="Quest editor for Solarus game engine"
 HOMEPAGE="https://www.solarus-games.org/"
@@ -61,4 +61,12 @@ src_compile() {
 
 src_install() {
 	cmake_src_install
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
