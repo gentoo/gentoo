@@ -100,6 +100,8 @@ src_configure() {
 	# bug 660738
 	filter-flags -fno-asynchronous-unwind-tables
 
+	use debuginfod && MULTILIB_WRAPPED_HEADERS+=( /usr/include/elfutils/debuginfod.h )
+
 	multilib-minimal_src_configure
 }
 
