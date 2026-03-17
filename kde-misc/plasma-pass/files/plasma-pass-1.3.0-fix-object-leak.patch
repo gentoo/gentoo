@@ -1,0 +1,44 @@
+https://invent.kde.org/plasma/plasma-pass/-/commit/004a8c6ce9c14a275b710352c4361e0c79dc8749
+
+From 004a8c6ce9c14a275b710352c4361e0c79dc8749 Mon Sep 17 00:00:00 2001
+From: Harald Sitter <sitter@kde.org>
+Date: Mon, 26 Jan 2026 10:48:10 +0100
+Subject: [PATCH] ui: do not leak pages into the stackview
+
+previously we created objects using the stackview as parent. but that
+means the pages won't get garbage collected when popped.
+
+instead defer the object construction to the stackview itself by using
+the pushItem function. it will create the object correctly so it gets
+GC'd when popped
+
+BUG: 515036
+---
+ package/contents/ui/main.qml | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/package/contents/ui/main.qml b/package/contents/ui/main.qml
+index b890ec4..67bca7b 100644
+--- a/package/contents/ui/main.qml
++++ b/package/contents/ui/main.qml
+@@ -166,7 +166,7 @@ PlasmoidItem {
+             onFilterModeChanged: {
+                 pop(null);
+                 if (filterMode) {
+-                    push(filterPage.createObject(viewStack, { rootIndex: null, stack: viewStack }));
++                    pushItem(filterPage, { rootIndex: null, stack: viewStack });
+                 }
+                 // Keep focus on the filter field
+                 filterField.focus = true;
+@@ -174,8 +174,7 @@ PlasmoidItem {
+             }
+ 
+             function pushPage(index, name) {
+-                const newPage = passwordsPage.createObject(viewStack, { rootIndex: index, stack: viewStack });
+-                push(newPage);
++                pushItem(passwordsPage, { rootIndex: index, stack: viewStack });
+                 currentPath.pushName(name);
+             }
+ 
+-- 
+GitLab
