@@ -77,6 +77,7 @@ src_test() {
 		lua::script_with_files
 		node::additional_dependencies
 		node::additional_dependencies_without_system_node
+		node::npm_version
 		python::additional_dependencies
 		python::additional_dependencies_in_remote_repo
 		python::git_env_vars_not_leaked_to_pip_install
