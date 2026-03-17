@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,8 +13,8 @@ inherit cmake flag-o-matic lua-single optfeature python-single-r1 xdg
 
 CEF_AMD64="cef_binary_6533_linux_x86_64_v6"
 CEF_ARM64="cef_binary_6533_linux_aarch64_v6"
-OBS_BROWSER_COMMIT="a776dd6a1a0ded4a8a723f2f572f3f8a9707f5a8"
-OBS_WEBSOCKET_COMMIT="1c9306b1e200704ebe192e06c893dfc06b097c43"
+OBS_BROWSER_COMMIT="ea04212e4bbadd077f9e6038758c4e4779c24fa3"
+OBS_WEBSOCKET_COMMIT="68bebc28be57a8ca371404182113e16eeac74cbf"
 
 DESCRIPTION="Software for Recording and Streaming Live Video Content"
 HOMEPAGE="https://obsproject.com"
