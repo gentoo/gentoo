@@ -341,7 +341,7 @@ multilib_src_configure() {
 		)
 	fi
 
-	if [[ ${CHOST} == *-gnu ]] ; then
+	if use kernel_Hurd ; then
 		# Disable Linux-specific features
 		myeconfargs+=(
 			--disable-partx
