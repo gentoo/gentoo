@@ -36,7 +36,7 @@ IUSE="
 	acl apparmor audit boot bpf cryptsetup curl +dns-over-tls elfutils
 	fido2 +gcrypt gnutls homed http idn importd +kernel-install +kmod
 	+lz4 lzma +openssl pam passwdqc pcre pkcs11 policykit pwquality qrcode
-	+resolvconf +seccomp selinux +sysv-utils test tpm ukify vanilla xkb +zstd
+	+resolvconf +seccomp selinux sysv-utils test tpm ukify vanilla xkb +zstd
 "
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
