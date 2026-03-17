@@ -1,0 +1,16 @@
+[Unit]
+Description=A high-performance caching HTTP reverse proxy
+After=network.target
+
+[Service]
+Type=forking
+LimitNOFILE=32786
+LimitMEMLOCK=82000
+PIDFile=/var/run/vinyld.pid
+ExecStart=/usr/sbin/vinyld -a 0.0.0.0:80 -P /var/run/vinyld.pid
+
+#If you wish to use a config file, then use the following ExecStart line
+#ExecStart=/usr/sbin/vinyld -a 0.0.0.0:80 -f /etc/vinyl-cache/default.vcl -P /var/run/vinyld.pid
+
+[Install]
+WantedBy=multi-user.target

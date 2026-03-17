@@ -1,0 +1,20 @@
+# /etc/conf.d/vinyld
+
+VINYLD="/usr/sbin/vinyld"
+VINYLADM="/usr/bin/vinyladm"
+
+CONFIGFILE="/etc/vinyl-cache/default.vcl"
+
+# Listen on localhost:8080 and connect to backend localhost:80
+#VINYLD_OPTS="-a localhost:8080 -a localhost:8080"
+
+# Alternatively, don't listen to a backend
+VINYLD_OPTS="-a localhost:8080"
+
+# Listen on all interfaces
+#VINYLD_OPTS="-a [::]:8080"
+
+# You may need to increase the number of open files (-n)
+# and the maximum amount off locked memory (-l)
+# See bug #459142
+#rc_ulimit="-n 32786 -l 82000"
