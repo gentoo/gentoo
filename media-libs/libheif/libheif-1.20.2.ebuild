@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -43,7 +43,10 @@ DEPEND="
 	kvazaar? ( media-libs/kvazaar:=[${MULTILIB_USEDEP}] )
 	openh264? ( media-libs/openh264:=[${MULTILIB_USEDEP}] )
 	rav1e? ( media-video/rav1e:= )
-	svt-av1? ( media-libs/svt-av1:=[${MULTILIB_USEDEP}] )
+	svt-av1? (
+		<media-libs/svt-av1-4
+		media-libs/svt-av1:=[${MULTILIB_USEDEP}]
+	)
 	tools? (
 		gui? (
 			media-libs/libsdl2:=[${MULTILIB_USEDEP}]
