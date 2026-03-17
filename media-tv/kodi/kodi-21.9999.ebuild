@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -283,7 +283,7 @@ Please consider enabling IP_MULTICAST under Networking options.
 
 pkg_setup() {
 	check_extra_config
-	java-pkg-2_pkg_setup
+	ROOT= java-pkg-2_pkg_setup
 	python-single-r1_pkg_setup
 }
 
