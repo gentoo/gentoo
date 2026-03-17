@@ -63,8 +63,6 @@ BDEPEND="
 	python? ( dev-lang/swig )
 "
 # media-video/ffmpeg[opus] required due to bug 909566
-# The websocket plug-in fails to build with 'dev-cpp/asio-1.34.0':
-#   https://github.com/obsproject/obs-websocket/issues/1291
 DEPEND="
 	dev-cpp/nlohmann_json
 	dev-libs/glib:2
@@ -142,7 +140,7 @@ DEPEND="
 		x11-libs/libxkbcommon
 	)
 	websocket? (
-		<dev-cpp/asio-1.34.0
+		dev-cpp/asio
 		dev-cpp/websocketpp
 		dev-libs/qr-code-generator
 	)
