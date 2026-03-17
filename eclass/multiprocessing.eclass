@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: multiprocessing.eclass
@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Brian Harring <ferringb@gentoo.org>
 # Mike Frysinger <vapier@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: multiprocessing helper functions
 # @DESCRIPTION:
 # The multiprocessing eclass contains a suite of utility functions
@@ -20,15 +20,18 @@
 # @CODE
 # src_compile() {
 #   # custom build system that does not support most of MAKEOPTS
-#   ./mybs -j$(makeopts_jobs)
+#   ./mybs -j$(get_makeopts_jobs)
 # }
 # @CODE
+#
+# Starting with EAPI 9, it is required to use get_makeopts_jobs /
+# get_makeopts_laodavg instead of makeopts_jobs / makeopts_loadavg.
 
 if [[ -z ${_MULTIPROCESSING_ECLASS} ]]; then
 _MULTIPROCESSING_ECLASS=1
 
 case ${EAPI} in
-	7|8) ;;
+	7|8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -79,12 +82,14 @@ _get_all_makeopts() {
 # GNUMAKEFLAGS, MAKEFLAGS). If the make options do not specify a number,
 # then either the provided default is returned, or 1.
 get_makeopts_jobs() {
-	makeopts_jobs "$(_get_all_makeopts)" "${1:-1}"
+	_makeopts_jobs "$(_get_all_makeopts)" "${1:-1}"
 }
 
 # @FUNCTION: makeopts_jobs
+# @DEPRECATED: get_makeopts_jobs
 # @USAGE: [${MAKEOPTS}] [${inf:-$(( $(get_nproc) + 1 ))}]
 # @DESCRIPTION:
+# This function is deprecated and banned in EAPI 9, use get_makeopts_jobs instead.
 # Searches the arguments (or sensible defaults) and extracts the jobs number
 # specified therein.  Useful for running non-make tools in parallel too.
 # i.e. if the user has MAKEOPTS=-j9, this will echo "9" -- we can't return the
@@ -92,6 +97,18 @@ get_makeopts_jobs() {
 # -j flag, then "1" is shown as that is the default `make` uses.  If the flags
 # specify -j without a number, ${inf} is returned (defaults to nproc).
 makeopts_jobs() {
+	if ! has "${EAPI}" 7 8; then
+		die "Calling makeopts_jobs is banned in EAPI ${EAPI}, use get_makeopts_jobs instead"
+	fi
+	_makeopts_jobs "$@"
+}
+
+# @FUNCTION: _makeopts_jobs
+# @USAGE: [${MAKEOPTS}] [${inf:-$(( $(get_nproc) + 1 ))}]
+# @INTERNAL
+# @DESCRIPTION:
+# Internal helper returning the "jobs" value.
+_makeopts_jobs() {
 	[[ $# -eq 0 ]] && set -- "$(_get_all_makeopts)"
 	# This assumes the first .* will be more greedy than the second .*
 	# since POSIX doesn't specify a non-greedy match (i.e. ".*?").
@@ -108,12 +125,14 @@ makeopts_jobs() {
 # GNUMAKEFLAGS, MAKEFLAGS).  If the make options do not specify a value, then
 # either the optional provided default is returned, or 999.
 get_makeopts_loadavg() {
-	makeopts_loadavg "$(_get_all_makeopts)" "${1:-999}"
+	_makeopts_loadavg "$(_get_all_makeopts)" "${1:-999}"
 }
 
 # @FUNCTION: makeopts_loadavg
+# @DEPRECATED: get_makeopts_loadavg
 # @USAGE: [${MAKEOPTS}] [${inf:-999}]
 # @DESCRIPTION:
+# This function is deprecated and banned in EAPI 9, use get_makeopts_loadavg instead.
 # Searches the arguments (or sensible defaults) and extracts the value set
 # for load-average. For make and ninja based builds this will mean new jobs are
 # not only limited by the jobs-value, but also by the current load - which might
@@ -123,6 +142,18 @@ get_makeopts_loadavg() {
 # If no limit is specified or --load-average is used without a number, ${inf}
 # (defaults to 999) is returned.
 makeopts_loadavg() {
+	if ! has "${EAPI}" 7 8; then
+		die "Calling makeopts_loadavg is banned in EAPI ${EAPI}, use get_makeopts_loadavg instead"
+	fi
+	_makeopts_loadavg "$@"
+}
+
+# @FUNCTION: _makeopts_loadavg
+# @USAGE: [${MAKEOPTS}] [${inf:-999}]
+# @INTERNAL
+# @DESCRIPTION:
+# Internal helper returning the "loadavg" value.
+_makeopts_loadavg() {
 	[[ $# -eq 0 ]] && set -- "$(_get_all_makeopts)"
 	# This assumes the first .* will be more greedy than the second .*
 	# since POSIX doesn't specify a non-greedy match (i.e. ".*?").
