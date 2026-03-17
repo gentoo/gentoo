@@ -119,6 +119,10 @@ src_prepare() {
 
 	sed -i setup.py "${sedargs[@]}" || die
 
+	# skip flaky font search, file is replaced in src_install (bug #971276)
+	mkdir fonts || die
+	:> fonts/SymbolsNerdFontMono-Regular.ttf || die
+
 	local skiptests=(
 		# broken with nspawn defaults, skip for convenience (bug #954176)
 		kitty_tests/crypto.py
