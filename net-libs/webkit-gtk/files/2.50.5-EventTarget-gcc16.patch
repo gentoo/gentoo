@@ -1,0 +1,35 @@
+From 7f45a3969279c3d3ad59819507f831759e343b44 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Fri, 24 Oct 2025 15:09:38 +0200
+Subject: EventTarget gcc16
+
+See-also: https://bugs.gentoo.org/970412
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/Source/WebCore/dom/EventTarget.h b/Source/WebCore/dom/EventTarget.h
+index 27a7431..6f9e7d9 100644
+--- a/Source/WebCore/dom/EventTarget.h
++++ b/Source/WebCore/dom/EventTarget.h
+@@ -49,7 +49,6 @@ namespace WebCore {
+ 
+ enum class EventTargetInterfaceType : uint8_t;
+ class DOMWrapperWorld;
+-class EventTarget;
+ class JSEventListener;
+ struct AddEventListenerOptions;
+ template<typename> class ExceptionOr;
+diff --git a/Source/WebKit/WebProcess/InjectedBundle/API/gtk/DOM/WebKitDOMEvent.cpp b/Source/WebKit/WebProcess/InjectedBundle/API/gtk/DOM/WebKitDOMEvent.cpp
+index 1204cf7..4b04d4f 100644
+--- a/Source/WebKit/WebProcess/InjectedBundle/API/gtk/DOM/WebKitDOMEvent.cpp
++++ b/Source/WebKit/WebProcess/InjectedBundle/API/gtk/DOM/WebKitDOMEvent.cpp
+@@ -23,6 +23,7 @@
+ #include <WebCore/CSSImportRule.h>
+ #include "DOMObjectCache.h"
+ #include <WebCore/Document.h>
++#include <WebCore/EventTargetInlines.h>
+ #include <WebCore/ExceptionCode.h>
+ #include <WebCore/JSExecState.h>
+ #include "WebKitDOMEventPrivate.h"
+--
+2.51.1
+

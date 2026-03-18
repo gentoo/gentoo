@@ -131,6 +131,7 @@ PATCHES=(
 	"${FILESDIR}"/2.50.4-prefer-pthread.patch
 	"${FILESDIR}"/2.50.4-fix-angle-include.patch
 	"${FILESDIR}"/2.50.5-DFGBasicBlockInlines-gcc16.patch
+	"${FILESDIR}"/2.50.5-EventTarget-gcc16.patch
 )
 
 pkg_pretend() {
