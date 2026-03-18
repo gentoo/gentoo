@@ -1,0 +1,45 @@
+From 754a866b878623554ade26d53496eeb8687c4685 Mon Sep 17 00:00:00 2001
+From: Matthias Kilian <kili@outback.escape.de>
+Date: Wed, 11 Mar 2026 23:17:00 +0100
+Subject: [PATCH] Fix build with poppler-26.03.0.
+
+---
+ src/extension/internal/pdfinput/pdf-parser.cpp    | 4 ++++
+ src/extension/internal/pdfinput/poppler-utils.cpp | 4 ++++
+ 2 files changed, 8 insertions(+)
+
+diff --git a/src/extension/internal/pdfinput/pdf-parser.cpp b/src/extension/internal/pdfinput/pdf-parser.cpp
+index 5d45e73e06..4aef441f7f 100644
+--- a/src/extension/internal/pdfinput/pdf-parser.cpp
++++ b/src/extension/internal/pdfinput/pdf-parser.cpp
+@@ -2962,7 +2962,11 @@ Stream *PdfParser::buildImageStream() {
+ 
+   // build dictionary
+ #if defined(POPPLER_NEW_OBJECT_API)
++#if POPPLER_CHECK_VERSION(26, 3, 0)
++  dict = Object(std::make_unique<Dict>(xref));
++#else
+   dict = Object(new Dict(xref));
++#endif
+ #else
+   dict.initDict(xref);
+ #endif
+diff --git a/src/extension/internal/pdfinput/poppler-utils.cpp b/src/extension/internal/pdfinput/poppler-utils.cpp
+index 21c287298c..ae3f6ea5cc 100644
+--- a/src/extension/internal/pdfinput/poppler-utils.cpp
++++ b/src/extension/internal/pdfinput/poppler-utils.cpp
+@@ -89,7 +89,11 @@ InkFontDict::InkFontDict(XRef *xref, Ref *fontDictRef, Dict *fontDict)
+                 r.num = hashFontObject(&obj2);
+             }
+             // Newer poppler will require some reworking as it gives a shared ptr.
++#if POPPLER_CHECK_VERSION(26,3,0)
++            fonts[i] = GfxFont::makeFont(xref, fontDict->getKey(i), r, *obj2.getDict());
++#else
+             fonts[i] = GfxFont::makeFont(xref, fontDict->getKey(i), r, obj2.getDict());
++#endif
+             if (fonts[i] && !fonts[i]->isOk()) {
+                 fonts[i] = nullptr;
+             }
+-- 
+GitLab
+
