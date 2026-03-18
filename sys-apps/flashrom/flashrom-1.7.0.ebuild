@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,19 +7,25 @@ inherit meson bash-completion-r1
 
 DESCRIPTION="Utility for reading, writing, erasing and verifying flash ROM chips"
 HOMEPAGE="https://www.flashrom.org/"
-SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://download.flashrom.org/releases/${PN}-v${PV}.tar.xz -> ${P}.tar.xz"
 
+S="${WORKDIR}/${PN}-v${PV}"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~loong ppc ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+
+# These programmers cannot be compiled, so excluded in the list below
+# ni845x_spi   windows/x86 only (we are linux/...)
 
 # The defaults should match the upstream "default" flags in meson.build
 IUSE_PROGRAMMERS="
+	+asm106x
 	atahpt
 	atapromise
 	+atavia
 	+buspirate-spi
 	+ch341a-spi
+	+ch347-spi
 	+dediprog
 	+developerbox-spi
 	+digilent-spi
@@ -30,9 +36,10 @@ IUSE_PROGRAMMERS="
 	+gfxnvidia
 	+internal
 	+it8212
-	jlink-spi
+	+jlink-spi
 	+linux-mtd
 	+linux-spi
+	parade-lspcon
 	mediatek-i2c-spi
 	mstarddc-spi
 	+nic3com
@@ -41,8 +48,8 @@ IUSE_PROGRAMMERS="
 	+nicintel-spi
 	nicnatsemi
 	+nicrealtek
+	+nv-sma-spi
 	+ogp-spi
-	parade-lspcon
 	+pickit2-spi
 	+pony-spi
 	+raiden-debug-spi
@@ -51,6 +58,7 @@ IUSE_PROGRAMMERS="
 	+satamv
 	+satasii
 	+serprog
+	+spidriver
 	+stlinkv3-spi
 	+usbblaster-spi"
 IUSE="${IUSE_PROGRAMMERS} +internal-dmi test tools"
@@ -77,6 +85,7 @@ COMMON="atahpt? ( sys-apps/pciutils )
 	nicintel-spi? ( sys-apps/pciutils )
 	nicnatsemi? ( sys-apps/pciutils )
 	nicrealtek? ( sys-apps/pciutils )
+	nv-sma-spi? ( virtual/libusb:1 )
 	ogp-spi? ( sys-apps/pciutils )
 	pickit2-spi? ( virtual/libusb:1 )
 	raiden-debug-spi? ( virtual/libusb:1 )

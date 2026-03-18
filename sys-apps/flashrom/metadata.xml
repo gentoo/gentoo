@@ -35,6 +35,7 @@
 		<flag name="nicintel-spi">Support for SPI on Intel NICs</flag>
 		<flag name="nicnatsemi">Support for National Semiconductor NICs</flag>
 		<flag name="nicrealtek">Support for Realtek NICs</flag>
+		<flag name="nv-sma-spi">Support for NVIDIA System Management Agent</flag>
 		<flag name="ogp-spi">Enable support for OGP (Open Graphics Project) SPI flashing</flag>
 		<flag name="parade-lspcon">Enable support for Parade lspcon USB-C to HDMI protocol translator</flag>
 		<flag name="pickit2-spi">Support for SPI flash ROMs accessible via Microchip PICkit2</flag>
