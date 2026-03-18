@@ -178,6 +178,7 @@ BDEPEND="
 	test? (
 		app-text/tree
 		dev-lang/perl
+		>=dev-libs/glib-2.22.0:2
 		sys-apps/dbus
 	)
 	app-text/docbook-xml-dtd:4.2
@@ -354,6 +355,7 @@ multilib_src_configure() {
 			$(meson_feature selinux)
 			$(meson_feature tpm tpm2)
 			$(meson_feature test dbus)
+			$(meson_feature test glib)
 			$(meson_feature ukify)
 			$(meson_feature xkb xkbcommon)
 		)
