@@ -10,7 +10,7 @@ PLOCALES_BIN="${PLOCALES} bg cs eu fi hu id it ka nb nl pl pt tg zh_TW zh_CN"
 PLOCALE_BACKUP="sv"
 PYTHON_COMPAT=( python3_{11..14} )
 
-inherit autotools linux-info multilib-minimal optfeature plocale \
+inherit autotools fcaps linux-info multilib-minimal optfeature plocale \
 	python-single-r1 pam systemd tmpfiles udev toolchain-funcs verify-sig
 
 DESCRIPTION="System Security Services Daemon provides access to identity and authentication"
@@ -126,6 +126,16 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/sss_sifp_dbus.h
 	# from 1.15.3
 	/usr/include/sss_certmap.h
+)
+
+# mimic upstream's setcap here, they're liable to get lost
+# https://github.com/SSSD/sssd/blob/a6d0f0cf484aeeead535b7138d1334b309c61a4e/Makefile.am#L5567
+FILECAPS=(
+	cap_dac_read_search=p "usr/libexec/sssd/ldap_child"
+	--
+	cap_dac_read_search,cap_setuid,cap_setgid=p "usr/libexec/sssd/krb5_child"
+	--
+	cap_dac_read_search=p "usr/libexec/sssd/sssd_pam"
 )
 
 pkg_setup() {
@@ -345,6 +355,7 @@ multilib_src_install_all() {
 }
 
 pkg_postinst() {
+	fcaps_pkg_postinst
 	udev_reload
 	tmpfiles_process sssd-tmpfiles.conf
 	echo
