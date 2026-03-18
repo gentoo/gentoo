@@ -42,6 +42,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="dev-qt/qttools:6[linguist]"
 
+PATCHES=(
+	"${FILESDIR}/solarus-2.0.3-system-qlementine.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DSOLARUS_USE_SYSTEM_QLEMENTINE=ON
