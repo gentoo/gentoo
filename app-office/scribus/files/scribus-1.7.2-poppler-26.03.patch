@@ -1,0 +1,16 @@
+Index: Scribus/scribus/plugins/import/pdf/slaoutput.cpp
+===================================================================
+--- Scribus/scribus/plugins/import/pdf/slaoutput.cpp	(revision 27452)
++++ Scribus/scribus/plugins/import/pdf/slaoutput.cpp	(revision 27454)
+@@ -884,7 +884,11 @@
+ 					const Ref ref = childRef.getRef();
+ 					radList.append(ref.num);
+ 				}
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(26, 3, 0)
++				QString tmTxt = UnicodeParsedString(annota->getUniqueName());
++#else
+ 				QString tmTxt = UnicodeParsedString(annota->getName());
++#endif
+ 				m_radioMap.insert(tmTxt, radList);
+ 			}
+ 		}
