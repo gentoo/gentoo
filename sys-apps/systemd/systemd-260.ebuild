@@ -324,6 +324,7 @@ multilib_src_configure() {
 			$(meson_feature boot bootloader)
 			$(meson_feature bpf bpf-framework)
 			$(meson_feature cryptsetup libcryptsetup)
+			$(meson_feature cryptsetup libcryptsetup-plugins)
 			$(meson_feature curl libcurl)
 			$(meson_use dns-over-tls dns-over-tls)
 			$(meson_feature elfutils)
