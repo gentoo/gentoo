@@ -29,9 +29,9 @@ fi
 LICENSE="GPL-2 BSD-2"
 SLOT="0"
 if is_crosspkg ; then
-	IUSE="headers-only"
+	IUSE="custom-cflags headers-only"
 else
-	IUSE="headers-only ncurses xkb"
+	IUSE="custom-cflags headers-only ncurses xkb"
 fi
 [[ ${PV} != 9999 ]] && KEYWORDS="~amd64 ~x86"
 
@@ -79,6 +79,11 @@ src_configure() {
 		--datadir="${EPREFIX}${sysroot}/usr/share"
 		--host=${CTARGET}
 	)
+
+	if ! use custom-cflags ; then
+		strip-flags
+		filter-lto
+	fi
 
 	append-flags -Wl,--no-error-rwx-segments -Wl,--no-error-execstack -Wl,-z,notext
 
