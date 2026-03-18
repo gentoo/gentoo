@@ -336,6 +336,7 @@ multilib_src_configure() {
 			$(meson_use idn)
 			$(meson_feature importd)
 			$(meson_feature importd bzip2)
+			$(meson_feature importd sysupdate)
 			$(meson_feature importd zlib)
 			$(meson_use kernel-install)
 			$(meson_feature kmod)
