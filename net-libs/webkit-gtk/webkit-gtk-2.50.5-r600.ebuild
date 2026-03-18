@@ -124,9 +124,13 @@ BDEPEND="
 
 CHECKREQS_DISK_BUILD="18G" # and even this might not be enough, bug #417307
 
-# We cannot use PATCHES because src_prepare() calls cmake_src_prepare and
-# gnome2_src_prepare, and both apply ${PATCHES[@]}
-PATCHES=()
+PATCHES=(
+	# https://bugs.gentoo.org/938162, see also mycmakeargs
+	"${FILESDIR}"/2.48.3-fix-ftbfs-riscv64.patch
+	"${FILESDIR}"/2.50.4-disable-native-simd-on-riscv.patch
+	"${FILESDIR}"/2.50.4-prefer-pthread.patch
+	"${FILESDIR}"/2.50.4-fix-angle-include.patch
+)
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != "binary" ]] ; then
@@ -150,14 +154,9 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cmake_src_prepare
+	# use cmake_prepare as it doesn't eapply ${PATCHES[@]}
+	cmake_prepare
 	gnome2_src_prepare
-
-	# https://bugs.gentoo.org/938162, see also mycmakeargs
-	eapply "${FILESDIR}"/2.48.3-fix-ftbfs-riscv64.patch
-	eapply "${FILESDIR}"/2.50.4-disable-native-simd-on-riscv.patch
-	eapply "${FILESDIR}"/2.50.4-prefer-pthread.patch
-	eapply "${FILESDIR}"/2.50.4-fix-angle-include.patch
 
 	# We don't want -Werror for gobject-introspection (bug #947761)
 	sed -i -e "s:--warn-error::" Source/cmake/FindGI.cmake || die
