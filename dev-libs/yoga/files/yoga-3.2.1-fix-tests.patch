@@ -1,0 +1,59 @@
+fixes:
+
+1. make building tests optional
+2. use system wide GTest
+3. fix -Werror=array-bounds= compile error
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 55f1a6df..fcfa593a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -10,7 +10,10 @@ set(CMAKE_VERBOSE_MAKEFILE on)
+ include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/project-defaults.cmake)
+ 
+ add_subdirectory(yoga)
+-add_subdirectory(tests)
++option(BUILD_TESTS "Build tests" ON)
++if(BUILD_TESTS)
++    add_subdirectory(tests)
++endif()
+ 
+ option(BUILD_FUZZ_TESTS "Build fuzz tests" OFF)
+ 
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index c48bfb9f..fbf837f6 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -8,18 +8,13 @@ cmake_minimum_required(VERSION 3.13...3.26)
+ project(tests)
+ set(CMAKE_VERBOSE_MAKEFILE on)
+ 
+-include(FetchContent)
+ include(GoogleTest)
++find_package(GTest REQUIRED)
+ 
+ set(YOGA_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/..)
+ include(${YOGA_ROOT}/cmake/project-defaults.cmake)
+ 
+ # Fetch GTest
+-FetchContent_Declare(
+-  googletest
+-  URL https://github.com/google/googletest/archive/refs/tags/release-1.12.1.zip
+-)
+-FetchContent_MakeAvailable(googletest)
+ 
+ add_subdirectory(${YOGA_ROOT}/yoga ${CMAKE_CURRENT_BINARY_DIR}/yoga)
+ 
+diff --git a/tests/YGPersistenceTest.cpp b/tests/YGPersistenceTest.cpp
+index 929aee07..f171e5f7 100644
+--- a/tests/YGPersistenceTest.cpp
++++ b/tests/YGPersistenceTest.cpp
+@@ -275,7 +275,7 @@ TEST(YogaTest, mixed_shared_and_owned_children) {
+   YGNodeInsertChild(root1, root1_child2, 1);
+ 
+   auto children = static_cast<yoga::Node*>(root1)->getChildren();
+-  children.insert(children.begin() + 1, static_cast<yoga::Node*>(root0_child0));
++  children.emplace(children.begin() + 1, static_cast<yoga::Node*>(root0_child0));
+   static_cast<yoga::Node*>(root1)->setChildren(children);
+ 
+   auto secondChild = YGNodeGetChild(root1, 1);
