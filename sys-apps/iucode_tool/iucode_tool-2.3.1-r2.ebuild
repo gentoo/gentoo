@@ -10,7 +10,7 @@ S="${WORKDIR}/${PN/_/-}-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 RDEPEND="elibc_musl? ( sys-libs/argp-standalone )"
 DEPEND="${RDEPEND}"
