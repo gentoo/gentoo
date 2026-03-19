@@ -1,0 +1,31 @@
+https://bugs.gentoo.org/971193
+https://gitlab.gnome.org/GNOME/libxml2/-/issues/1069
+https://gitlab.gnome.org/GNOME/libxml2/-/commit/fac4411aa65a2ebf936be50856ab14c148966e9d
+
+From fac4411aa65a2ebf936be50856ab14c148966e9d Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
+Date: Wed, 4 Mar 2026 19:08:16 +0100
+Subject: [PATCH] catalog: Free xmlCatalogResolveCache on cleanup
+
+Otherwise the `tstLastError.py` test will complain about a memory leak.
+
+Fixes: b706c5c5b7ce11d002a5b77ff938aa3693931c12 (Add xmlCatalogResolveCache)
+Fixes: https://gitlab.gnome.org/GNOME/libxml2/-/issues/1069
+---
+ catalog.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/catalog.c b/catalog.c
+index 263268c08..ff97adedf 100644
+--- a/catalog.c
++++ b/catalog.c
+@@ -3338,6 +3338,7 @@ xmlCatalogCleanup(void) {
+     if (xmlDebugCatalogs)
+ 	xmlCatalogPrintDebug(
+ 		"Catalogs cleanup\n");
++    xmlResetCatalogResolveCache();
+     if (xmlCatalogXMLFiles != NULL)
+ 	xmlHashFree(xmlCatalogXMLFiles, xmlFreeCatalogHashEntryList);
+     xmlCatalogXMLFiles = NULL;
+-- 
+GitLab
