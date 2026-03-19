@@ -1,0 +1,87 @@
+Add support for gfx1152 and gfx1153 (allows to build for newer GPUs without waiting for 3.x integration).
+
+Allow building for specific AMDGPU targets via __AMDGPU_TARGETS__ variable.
+This allows to exclude gfx940 target from build, as it is not officially supported in ROCm 7.
+
+Bug: https://bugs.gentoo.org/970995
+--- a/contrib/Orochi/Test/WMMA/wmma_test_kernel.h
++++ b/contrib/Orochi/Test/WMMA/wmma_test_kernel.h
+@@ -30,7 +30,7 @@
+ #define __gfx10__
+ #endif
+ 
+-#if __gfx1100__ || __gfx1101__ || __gfx1102__ || __gfx1103__ || __gfx1150__ || __gfx1151__
++#if __gfx1100__ || __gfx1101__ || __gfx1102__ || __gfx1103__ || __gfx1150__ || __gfx1151__ || __gfx1152__ || __gfx1153__
+ #define __gfx11__
+ #endif
+ 
+--- a/hiprt/impl/hiprt_device_impl.h
++++ b/hiprt/impl/hiprt_device_impl.h
+@@ -37,7 +37,7 @@
+ #include <hiprt/hiprt_device.h>
+ 
+ #if __gfx1030__ || __gfx1031__ || __gfx1032__ || __gfx1033__ || __gfx1034__ || __gfx1035__ || __gfx1036__ || __gfx1100__ || \
+-	__gfx1101__ || __gfx1102__ || __gfx1103__ || __gfx1150__ || __gfx1151__ || __gfx1200__ || __gfx1201__
++	__gfx1101__ || __gfx1102__ || __gfx1103__ || __gfx1150__ || __gfx1151__ || __gfx1152__ || __gfx1153__ || __gfx1200__ || __gfx1201__
+ #ifndef __USE_HWI__
+ #define __USE_HWI__
+ #endif
+--- a/scripts/bitcodes/compile.py
++++ b/scripts/bitcodes/compile.py
+@@ -96,22 +96,7 @@ def compileAmd():
+     hip_version = hip_sdk_version_major +"."+ hip_sdk_version_minor
+         
+     # llvm.org/docs/AMDGPUUsage.html#processors
+-    gpus = ['gfx1100', 'gfx1101', 'gfx1102', 'gfx1103',  # Navi3
+-            'gfx1030', 'gfx1031', 'gfx1032', 'gfx1033', 'gfx1034', 'gfx1035', 'gfx1036',  # Navi2
+-            'gfx1010', 'gfx1011', 'gfx1012', 'gfx1013',  # Navi1
+-            'gfx900', 'gfx902', 'gfx904', 'gfx906', 'gfx908', 'gfx909', 'gfx90a', 'gfx90c', 'gfx940', 'gfx941', 'gfx942']  # Vega
+-    
+-
+-    if hip_sdk_version_num >= 63:
+-        gpus.append('gfx1152')
+-
+-    if hip_sdk_version_num >= 62: # Navi4 supported from 6.2
+-        gpus.append('gfx1200')
+-        gpus.append('gfx1201')
+-
+-    if hip_sdk_version_num >= 61: # Strix supported from 6.1
+-        gpus.append('gfx1150')
+-        gpus.append('gfx1151')
++    gpus = "__AMDGPU_TARGETS__".rstrip(';').split(';')
+ 
+     targets = ''
+     for i in gpus:
+--- a/scripts/bitcodes/precompile_bitcode.py
++++ b/scripts/bitcodes/precompile_bitcode.py
+@@ -95,10 +95,7 @@ def compileAmd():
+         hipccpath = '\"' + hipccpath + '\"'
+ 
+     # llvm.org/docs/AMDGPUUsage.html#processors
+-    gpus = ['gfx1100', 'gfx1101', 'gfx1102', 'gfx1103',  # Navi3
+-            'gfx1030', 'gfx1031', 'gfx1032', 'gfx1033', 'gfx1034', 'gfx1035', 'gfx1036',  # Navi2
+-            'gfx1010', 'gfx1011', 'gfx1012', 'gfx1013',  # Navi1
+-            'gfx900', 'gfx902', 'gfx904', 'gfx906', 'gfx908', 'gfx909', 'gfx90a', 'gfx90c', 'gfx940', 'gfx941', 'gfx942']  # Vega
++    gpus = "__AMDGPU_TARGETS__".rstrip(';').split(';')
+     
+     result = subprocess.check_output(hipccpath + ' --version', shell=True)
+     hip_sdk_version = result.decode('utf-8')
+@@ -106,18 +103,6 @@ def compileAmd():
+     hip_sdk_version_minor = re.match(r'HIP version: (\d+).(\d+)', hip_sdk_version).group(2)
+     hip_sdk_version_num = 10 * int(hip_sdk_version_major) + int(hip_sdk_version_minor)
+     hip_version = hip_sdk_version_major +"."+ hip_sdk_version_minor
+-    
+-
+-    if hip_sdk_version_num >= 63:
+-        gpus.append('gfx1152')
+-
+-    if hip_sdk_version_num >= 62: # Navi4 supported from 6.2
+-        gpus.append('gfx1200')
+-        gpus.append('gfx1201')
+-
+-    if hip_sdk_version_num >= 61: # Strix supported from 6.1
+-        gpus.append('gfx1150')
+-        gpus.append('gfx1151')
+         
+     targets = ''
+     for i in gpus:
