@@ -488,8 +488,10 @@ m68k		default/linux/m68k/23.0/musl					exp
 m68k		default/linux/m68k/23.0/musl/systemd				exp
 m68k		default/linux/m68k/23.0/split-usr/musl				exp
 mips		default/linux/mips/23.0/mipsel/o32/musl				dev
+mips		default/linux/mips/23.0/mipsel/o32/musl/systemd			exp
 mips		default/linux/mips/23.0/mipsel/n64/musl				exp
 mips		default/linux/mips/23.0/o32/musl				dev
+mips		default/linux/mips/23.0/o32/musl/systemd			exp
 mips		default/linux/mips/23.0/n64/musl				exp
 mips		default/linux/mips/23.0/split-usr/mipsel/o32/musl		exp
 mips		default/linux/mips/23.0/split-usr/mipsel/n64/musl		exp
