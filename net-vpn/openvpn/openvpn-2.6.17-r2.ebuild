@@ -19,7 +19,7 @@ else
 		https://build.openvpn.net/downloads/releases/${P}.tar.gz
 		verify-sig? ( https://build.openvpn.net/downloads/releases/${P}.tar.gz.asc )
 	"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ppc64 ~riscv ~sparc ~x86"
 fi
 
 LICENSE="GPL-2"
