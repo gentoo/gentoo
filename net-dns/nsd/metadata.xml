@@ -17,9 +17,9 @@
 		<flag name="dnstap">Enable the structured binary log format</flag>
 		<flag name="ipv6">Enable IPv6 support</flag>
 		<flag name="libevent">Use libevent or libev, useful when zone count is high</flag>
-		<flag name="mmap">Use mmap(2) instead of malloc(3); currently experimental</flag>
 		<flag name="memclean">Cleanup memory (at exit) for eg. valgrind, memcheck</flag>
 		<flag name="minimal-responses">If minimal responses are disabled, responses are more likely to get truncated, resulting in TCP fallback</flag>
+		<flag name="mmap">Use mmap(2) instead of malloc(3); currently experimental</flag>
 		<flag name="munin">Install a plugin for <pkg>net-analyzer/munin</pkg> to graph statistical data from nsd</flag>
 		<flag name="nsec3">Enable NSEC3 support</flag>
 		<flag name="radix-tree">Use a radix tree for main lookups instead of a red-black tree</flag>
