@@ -3,7 +3,7 @@
 
 EAPI=8
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/postfix.asc
-inherit pam systemd toolchain-funcs verify-sig
+inherit eapi9-ver pam systemd toolchain-funcs verify-sig
 
 if [[ ${PV} == *_rc* ]]; then
 	MY_PV="${PV/_rc/-RC}"
@@ -303,6 +303,13 @@ src_install() {
 }
 
 pkg_postinst() {
+	if ver_replacing -lt 3.11 ; then
+		# This is an upgrade which requires user review
+		ewarn "Default database and cache type changed to lmdb"
+		ewarn "with postfix-3.11. Please read the migration guide:"
+		ewarn "  https://www.postfix.org/NON_BERKELEYDB_README.html"
+	fi
+
 	if ! use berkdb && ! use cdb && ! use lmdb; then
 		ewarn
 		ewarn "No backend for local database files is configured."
