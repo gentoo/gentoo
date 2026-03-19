@@ -6,6 +6,15 @@
 
 # New entries go on top.
 
+# Michał Górny <mgorny@gentoo.org> (2026-03-19)
+# dev-python/mkdocs have been last rited.
+dev-debug/gef doc
+dev-python/bracex doc
+dev-python/pyspelling doc
+dev-python/wcmatch doc
+media-gfx/hydrus doc
+net-vpn/eduvpn-client doc
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2026-01-30)
 # No suitable versions of dev-libs/protobuf available.
 ~dev-java/protobuf-java-4.33.5 system-protoc
