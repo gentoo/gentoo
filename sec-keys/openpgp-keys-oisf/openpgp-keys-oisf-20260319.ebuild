@@ -1,12 +1,12 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 DESCRIPTION="OpenPGP key used by Open InfoSec Foundation (OISF) software releases"
 HOMEPAGE="https://www.openinfosecfoundation.org/"
 SRC_URI="https://www.openinfosecfoundation.org/download/OISF.pub
-	-> oisf-B36FDAF2607E10E8FFA89E5E2BA9C98CCDF1E93A.asc"
+	-> oisf-B36FDAF2607E10E8FFA89E5E2BA9C98CCDF1E93A-exp20300911.asc"
 
 LICENSE="public-domain"
 SLOT="0"
