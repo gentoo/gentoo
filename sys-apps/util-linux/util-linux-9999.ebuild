@@ -316,6 +316,21 @@ multilib_src_configure() {
 		)
 	fi
 
+	if use kernel_Hurd ; then
+		# Disable Linux-specific features
+		emesonargs+=(
+			-Dbuild-partx=disabled
+			-Dbuild-rfkill=disabled
+			-Dbuild-schedutils=disabled
+			-Dbuild-fsck=disabled
+		)
+
+		# This is explicitly needed for some reason? TODO
+		emesonargs+=(
+			-Dbuild-agetty=enabled
+		)
+	fi
+
 	local native_file="${T}"/meson.${CHOST}.${ABI}.ini.local
 	cat >> ${native_file} <<-EOF || die
 	[binaries]
