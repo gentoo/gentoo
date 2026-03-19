@@ -1,0 +1,101 @@
+https://inbox.sourceware.org/elfutils-devel/20260316144817.1722419-1-serhei@serhei.io/
+
+From: Serhei Makarov <serhei@serhei.io>
+To: elfutils-devel@sourceware.org
+Cc: Serhei Makarov <serhei@serhei.io>
+Subject: [PATCH v3] libdwfl/linux-pid-attach.c PR33974: __libdwfl_set_initial_registers_thread on non-Linux
+Date: Mon, 16 Mar 2026 10:48:17 -0400
+Message-ID: <20260316144817.1722419-1-serhei@serhei.io>
+X-Mailer: git-send-email 2.52.0
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-Spam-Status: No, score=-10.2 required=5.0 tests=BAYES_00,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,GIT_PATCH_0,JMQ_SPF_NEUTRAL,RCVD_IN_DNSWL_BLOCKED,RCVD_IN_VALIDITY_RPBL_BLOCKED,RCVD_IN_VALIDITY_SAFE_BLOCKED,SPF_HELO_PASS,SPF_PASS,TXREP,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on sourceware.org
+List-Id: <elfutils-devel.sourceware.org>
+
+libdwfl_stacktrace uses __libdwfl_set_initial_registers_thread but it
+is wrapped by #ifdef __linux__, causing build errors on non-Linux
+platforms.
+
+* linux-pid-attach.c (__libdwfl_set_initial_registers_thread):
+  Remove from inside the '#ifdef __linux__'.
+* dwfl_frame_regs.c (__libdwfl_set_initial_registers_thread):
+  Move here.
+---
+ libdwfl/dwfl_frame_regs.c  | 27 +++++++++++++++++++++++++++
+ libdwfl/linux-pid-attach.c | 25 -------------------------
+ 2 files changed, 27 insertions(+), 25 deletions(-)
+
+diff --git a/libdwfl/dwfl_frame_regs.c b/libdwfl/dwfl_frame_regs.c
+index 572ac676..99de3c22 100644
+--- a/libdwfl/dwfl_frame_regs.c
++++ b/libdwfl/dwfl_frame_regs.c
+@@ -77,3 +77,30 @@ dwfl_frame_reg (Dwfl_Frame *state, unsigned regno, Dwarf_Word *val)
+   return res;
+ }
+ INTDEF(dwfl_frame_reg)
++
++/* Implement the ebl_set_initial_registers_tid setfunc callback.  */
++
++bool
++/* Not internal_function, since that allows calling-convention changes
++   e.g. on i386, and stable ABI is needed to use this as an
++   ebl_tid_registers_t * callback in linux-pid-attach.c and
++   libdwfl_stacktrace.  */
++__libdwfl_set_initial_registers_thread (int firstreg, unsigned nregs,
++				   const Dwarf_Word *regs, void *arg)
++{
++  Dwfl_Thread *thread = (Dwfl_Thread *) arg;
++  if (firstreg == -1)
++    {
++      assert (nregs == 1);
++      INTUSE(dwfl_thread_state_register_pc) (thread, *regs);
++      return true;
++    }
++  else if (firstreg == -2)
++    {
++      assert (nregs == 1);
++      INTUSE(dwfl_thread_state_registers) (thread, firstreg, nregs, regs);
++      return true;
++     }
++  assert (nregs > 0);
++  return INTUSE(dwfl_thread_state_registers) (thread, firstreg, nregs, regs);
++}
+diff --git a/libdwfl/linux-pid-attach.c b/libdwfl/linux-pid-attach.c
+index a6e4e41a..9472b041 100644
+--- a/libdwfl/linux-pid-attach.c
++++ b/libdwfl/linux-pid-attach.c
+@@ -302,31 +302,6 @@ pid_getthread (Dwfl *dwfl __attribute__ ((unused)), pid_t tid,
+   return true;
+ }
+ 
+-/* Implement the ebl_set_initial_registers_tid setfunc callback.  */
+-
+-bool
+-/* XXX No internal_function annotation,
+-   as this function gets passed as ebl_tid_registers_t *.  */
+-__libdwfl_set_initial_registers_thread (int firstreg, unsigned nregs,
+-				   const Dwarf_Word *regs, void *arg)
+-{
+-  Dwfl_Thread *thread = (Dwfl_Thread *) arg;
+-  if (firstreg == -1)
+-    {
+-      assert (nregs == 1);
+-      INTUSE(dwfl_thread_state_register_pc) (thread, *regs);
+-      return true;
+-    }
+-  else if (firstreg == -2)
+-    {
+-      assert (nregs == 1);
+-      INTUSE(dwfl_thread_state_registers) (thread, firstreg, nregs, regs);
+-      return true;
+-     }
+-  assert (nregs > 0);
+-  return INTUSE(dwfl_thread_state_registers) (thread, firstreg, nregs, regs);
+-}
+-
+ static bool
+ pid_set_initial_registers (Dwfl_Thread *thread, void *thread_arg)
+ {
+-- 
+2.52.0
