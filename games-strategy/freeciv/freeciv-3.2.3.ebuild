@@ -160,7 +160,7 @@ src_configure() {
 	# default-enabled upstream
 	use rule-editor && tools+=( ruledit ruleup )
 	emesonargs+=(
-		-Dtools=$(meson-format-array ${tools[*]})
+		-Dtools="$(meson-format-array "${tools[*]}")"
 	)
 
 	# Anything that can be trivially set by meson_use goes here
