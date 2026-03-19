@@ -185,7 +185,6 @@ multilib_src_configure() {
 		-Dvconsole=false
 		-Dwheel-group=false
 		-Dxdg-autostart=false
-		-Dxenctrl=false
 
 		-Dbashcompletiondir=no
 		-Drpmmacrosdir=no
