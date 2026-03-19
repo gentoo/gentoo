@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -101,15 +101,15 @@ src_install() {
 	# When updating, grep the code for new DiskCache::instance occurrences as
 	# these directories cannot be created later due to permissions. Some
 	# of these directories are already present in the source tree.
-	keepdir "${MY_HTDOCSDIR}"/cache/{feed-icons,starred-images}
+	keepdir "${MY_HTDOCSDIR}"/cache/starred-images
 
 	local dir
-	for dir in "${ED}${MY_HTDOCSDIR}"/{cache/*,feed-icons,lock}/; do
+	for dir in "${ED}${MY_HTDOCSDIR}"/{cache/*,lock}/; do
 		webapp_serverowned "${dir#${ED}}"
 	done
 
 	if use daemon; then
-		webapp_hook_script "${FILESDIR}"/permissions-r1
+		webapp_hook_script "${FILESDIR}"/permissions-r2
 		webapp_postinst_txt en "${FILESDIR}"/postinstall-en-with-daemon-r1.txt
 
 		newinitd "${FILESDIR}"/ttrssd.initd-r4 ttrssd
