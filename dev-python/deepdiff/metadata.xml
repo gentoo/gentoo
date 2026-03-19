@@ -11,6 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">deepdiff</remote-id>
-		<remote-id type="github">seperman/deepdiff</remote-id>
+		<remote-id type="github">qlustered/deepdiff</remote-id>
 	</upstream>
 </pkgmetadata>
