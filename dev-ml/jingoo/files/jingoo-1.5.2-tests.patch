@@ -1,0 +1,10 @@
+--- a/tests/dune.in
++++ b/tests/dune.in
+@@ -1,6 +1,6 @@
+ (executable
+   (name test)
+-  (libraries jingoo unix dynlink re uutf uucp oUnit)
++  (libraries jingoo unix dynlink re uutf uucp ounit2)
+ )
+ 
+ (alias
