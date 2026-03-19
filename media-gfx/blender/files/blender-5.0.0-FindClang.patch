@@ -1,0 +1,43 @@
+look for the merged clang library so we can find clang
+--- a/build_files/cmake/Modules/FindClang.cmake
++++ b/build_files/cmake/Modules/FindClang.cmake
+@@ -54,37 +54,8 @@ find_path(CLANG_INCLUDE_DIR
+ 
+ 
+ set(_clang_FIND_COMPONENTS
+-  clangDependencyScanning
+-  clangDynamicASTMatchers
+-  clangFrontendTool
+-  clangStaticAnalyzerFrontend
+-  clangHandleCXX
+-  clangStaticAnalyzerCheckers
+-  clangStaticAnalyzerCore
+-  clangToolingASTDiff
+-  clangToolingRefactoring
+-  clangToolingSyntax
+-  clangARCMigrate
+-  clangCodeGen
+-  clangCrossTU
+-  clangIndex
+-  clangTooling
+-  clangFormat
+-  clangToolingInclusions
+-  clangRewriteFrontend
+-  clangFrontend
+-  clangSerialization
+-  clangDriver
+-  clangToolingCore
+-  clangParse
+-  clangRewrite
+-  clangSema
+-  clangEdit
+-  clangAnalysis
+-  clangASTMatchers
+-  clangAST
+-  clangLex
+-  clangBasic
++  clang
++  clang-cpp
+ )
+ 
+ set(_clang_LIBRARIES)

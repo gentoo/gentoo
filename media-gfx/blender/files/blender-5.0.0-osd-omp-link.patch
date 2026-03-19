@@ -1,0 +1,17 @@
+OpenSubdiv's CPU backend may be built with OpenMP (and built by default).
+Unfortunately, OSD does not fill OpenMP in INTERFACE_LINK_LIBRARIES,
+causing __kmpc_fork_call link failures when built with Clang.
+--- a/build_files/cmake/Modules/FindOpenSubdiv.cmake
++++ b/build_files/cmake/Modules/FindOpenSubdiv.cmake
+@@ -56,6 +56,11 @@ foreach(COMPONENT ${_opensubdiv_FIND_COMPONENTS})
+   list(APPEND _opensubdiv_LIBRARIES "${OPENSUBDIV_${UPPERCOMPONENT}_LIBRARY}")
+ endforeach()
+ 
++find_package(OpenMP QUIET)
++if(OpenMP_CXX_FOUND)
++  list(APPEND _opensubdiv_LIBRARIES OpenMP::OpenMP_CXX)
++endif()
++
+ macro(OPENSUBDIV_CHECK_CONTROLLER
+       controller_include_file
+       variable_name)
