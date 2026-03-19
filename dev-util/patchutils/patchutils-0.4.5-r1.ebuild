@@ -28,6 +28,11 @@ DEPEND="
 "
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}/0.4.5-const.patch"
+	"${FILESDIR}/0.4.5-completion-symlinks.patch"
+)
+
 pkg_setup() {
 	python-single-r1_pkg_setup
 }

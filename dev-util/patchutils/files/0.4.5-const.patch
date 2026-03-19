@@ -1,0 +1,69 @@
+https://github.com/twaugh/patchutils/commit/0cfe6230b6669526ef8de3a1b26b55ae9e9c96fa
+
+From: =?UTF-8?q?Holger=20Hoffst=C3=A4tte?= <holger@applied-asynchrony.com>
+Date: Thu, 26 Feb 2026 18:07:35 +0100
+Subject: [PATCH] More const fixes for C23 [0.4.x]
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This is a followup to #159 and fixes more glibc-2.43/C23 related const
+warnings. Where we can, we make things more const; where necessary we
+explicitly treat mutable things as mutable instead of pretending that
+they are not.
+
+Signed-off-by: Holger Hoffstätte <holger@applied-asynchrony.com>
+---
+ src/diff.c   | 4 ++--
+ src/rediff.c | 2 +-
+ src/util.c   | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/diff.c b/src/diff.c
+index 9c17e112..40c51cd2 100644
+--- a/src/diff.c
++++ b/src/diff.c
+@@ -159,7 +159,7 @@ const char *stripped (const char *name, int num_components)
+ 
+ unsigned long calculate_num_lines (const char *atatline, char which)
+ {
+-        char *p = strchr (atatline, which);
++        const char *p = strchr (atatline, which);
+         if (!p)
+                 return 1;
+         while (*p && *p != ',' && *p != ' ') p++;
+@@ -187,7 +187,7 @@ int read_atatline (const char *atatline,
+ {
+ 	char *endptr;
+ 	unsigned long res;
+-	char *p;
++	const char *p;
+ 
+ 	if (orig_offset) {
+ 		p = strchr (atatline, '-');
+diff --git a/src/rediff.c b/src/rediff.c
+index 10e6765c..7a4546f9 100644
+--- a/src/rediff.c
++++ b/src/rediff.c
+@@ -265,7 +265,7 @@ static void copy_to (struct hunk *from, struct hunk *upto,
+ }
+ 
+ /* Deal with an added hunk. */
+-static long added_hunk (const char *meta, long offset, FILE *modify, FILE *t,
++static long added_hunk (char *meta, long offset, FILE *modify, FILE *t,
+ 			unsigned long morig_count, unsigned long mnew_count)
+ {
+ 	long this_offset = 0;
+diff --git a/src/util.c b/src/util.c
+index 4f46f3c4..0ff86ee3 100644
+--- a/src/util.c
++++ b/src/util.c
+@@ -250,7 +250,7 @@ FILE *xopen_seekable (const char *name, const char *mode)
+ /* unzip if needed */
+ FILE *xopen_unzip (const char *name, const char *mode)
+ {
+-	char *p, *zprog = NULL;
++	const char *p, *zprog = NULL;
+ 	FILE *fi, *fo;
+ 	const size_t buflen = 64 * 1024;
+ 	char *buffer;

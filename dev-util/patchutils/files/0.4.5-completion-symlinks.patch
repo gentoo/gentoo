@@ -1,0 +1,26 @@
+https://github.com/twaugh/patchutils/pull/175
+
+diff --git a/Makefile.am b/Makefile.am
+index 433f4aa..7d8960c 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -179,7 +179,8 @@ install-data-hook:
+ 		mv bash-completion-patchutils interdiff && \
+ 		for cmd in filterdiff lsdiff grepdiff combinediff flipdiff rediff \
+ 		           splitdiff recountdiff unwrapdiff dehtmldiff editdiff espdiff \
+-		           fixcvsdiff patchview gitdiff svndiff gitdiffview svndiffview; do \
++		           fixcvsdiff patchview gitdiff svndiff gitdiffview svndiffview \
++		           gitshow gitshowview; do \
+ 			ln -sf interdiff "$$cmd" || true; \
+ 		done; \
+ 	fi
+@@ -202,7 +203,8 @@ endif
+ 		cd "$(DESTDIR)$(bashcompletiondir)" && \
+ 		for cmd in filterdiff lsdiff grepdiff interdiff combinediff flipdiff rediff \
+ 		           splitdiff recountdiff unwrapdiff dehtmldiff editdiff espdiff \
+-		           fixcvsdiff patchview gitdiff svndiff gitdiffview svndiffview; do \
++		           fixcvsdiff patchview gitdiff svndiff gitdiffview svndiffview \
++		           gitshow gitshowview; do \
+ 			rm -f "$$cmd"; \
+ 		done; \
+ 		rm -f patchutils; \
