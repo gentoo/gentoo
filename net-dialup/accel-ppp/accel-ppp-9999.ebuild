@@ -20,14 +20,15 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug doc libtomcrypt lua postgres radius shaper snmp valgrind"
+IUSE="debug doc lua postgres radius shaper snmp valgrind"
 
-RDEPEND="!libtomcrypt? ( dev-libs/openssl:0= )
-	libtomcrypt? ( dev-libs/libtomcrypt:0= )
+RDEPEND="
+	dev-libs/libpcre
+	dev-libs/openssl:0=
 	lua? ( ${LUA_DEPS} )
 	postgres? ( dev-db/postgresql:* )
 	snmp? ( net-analyzer/net-snmp )
-	dev-libs/libpcre"
+"
 DEPEND="${RDEPEND}
 	valgrind? ( dev-debug/valgrind )"
 PDEPEND="net-dialup/ppp-scripts"
@@ -68,7 +69,7 @@ src_configure() {
 		-DBUILD_IPOE_DRIVER="$(usex ipoe)"
 		-DBUILD_PPTP_DRIVER=no
 		-DBUILD_VLAN_MON_DRIVER="$(usex ipoe)"
-		-DCRYPTO="$(usex libtomcrypt TOMCRYPT OPENSSL)"
+		-DCRYPTO_LIBRARY=OPENSSL
 		-DLOG_PGSQL="$(usex postgres)"
 		-DLUA="$(usex lua TRUE FALSE)"
 		-DMEMDEBUG="$(usex debug)"
