@@ -1,5 +1,7 @@
---- a/makefile	2024-07-18 20:13:38.000000000 +0200
-+++ b/makefile	2026-02-28 10:34:57.744086328 +0100
+Respect CFLAGS and LDFLAGS
+https://bugs.gentoo.org/971364
+--- a/makefile	2026-03-20 08:13:14.623645775 -0000
++++ b/makefile	2026-03-20 08:13:21.424581019 -0000
 @@ -1215,7 +1215,7 @@
    BUILD_FEATURES = - debugging support
  else
@@ -9,7 +11,7 @@
      GCC_OPTIMIZERS_CMD = ${GCC} --help
      NO_LTO = 1
    else
-@@ -1223,7 +1223,7 @@
+@@ -1223,10 +1223,10 @@
      ifeq (Darwin,$(OSTYPE))
        CFLAGS_O += -O4 -flto -fwhole-program
      else
@@ -17,4 +19,8 @@
 +      CFLAGS_O ?= -O2
      endif
    endif
-   LDFLAGS_O = 
+-  LDFLAGS_O = 
++  LDFLAGS_O ?= 
+   GCC_MAJOR_VERSION = $(firstword $(subst  ., ,$(GCC_VERSION)))
+   ifneq (3,$(GCC_MAJOR_VERSION))
+     ifeq (,$(GCC_OPTIMIZERS_CMD))
