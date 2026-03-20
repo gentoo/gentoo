@@ -23,7 +23,7 @@ SLOT="0"
 IUSE="debug doc lua postgres radius shaper snmp valgrind"
 
 RDEPEND="
-	dev-libs/libpcre
+	dev-libs/libpcre2
 	dev-libs/openssl:0=
 	lua? ( ${LUA_DEPS} )
 	postgres? ( dev-db/postgresql:* )
