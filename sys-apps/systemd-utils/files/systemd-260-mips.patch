@@ -1,0 +1,114 @@
+https://bugs.gentoo.org/971376
+https://github.com/systemd/systemd/pull/41240
+
+From 26fe43d2189cc7eab3b5c710673f04a23627caf0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Andreas=20K=2E=20H=C3=BCttel?= <dilfridge@gentoo.org>
+Date: Fri, 20 Mar 2026 13:52:17 +0100
+Subject: [PATCH] mips: Fix conditional inclusion of <asm/sgidefs.h>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+systemd now has a system call wrapper that does a long series of #ifdef's to
+differentiate between architectures and ABIs. This wrapper has two problems.
+
+1. On mips, it needs to differentiate between O32, N32, N64 ABI. It does that
+via a code block in src/include/override/sys/generate-syscall.py (and derived
+files):
+
+     76 #  elif defined(_MIPS_SIM)
+     77 #    if _MIPS_SIM == _MIPS_SIM_ABI32
+     78 #      define systemd_NR_{syscall} {nr_mipso32}
+     79 #    elif _MIPS_SIM == _MIPS_SIM_NABI32
+     80 #      define systemd_NR_{syscall} {nr_mips64n32}
+     81 #    elif _MIPS_SIM == _MIPS_SIM_ABI64
+     82 #      define systemd_NR_{syscall} {nr_mips64}
+     83 #    else
+     84 #      error "Unknown MIPS ABI"
+     85 #    endif
+     86 #  elif defined(__hppa__)
+
+Now the _MIPS_SIM* constants stem from a vendor-specific header file sgidefs.h,
+which is included with glibc, but not with musl. It is however always present
+in the Linux kernel headers as asm/sgidefs.h ...
+
+2. To work around this, the syscall wrapper already has a block
+
+     47 #ifdef ARCH_MIPS
+     48 #include <asm/sgidefs.h>
+     49 #endif
+
+Turns out, ARCH_MIPS is defined nowhere in Gentoo, neither on glibc nor on musl.
+As a result the code (by accident, probably sgidefs.h is included transitively
+somehow) works on glibc, but not on musl.
+
+The simplest fix is to replace line 47 in the generator and the derived file
+with
+
+     47 #ifdef __mips__
+
+Two other source code files require a similar fix since they rely on the
+constants.
+
+Bug: https://github.com/systemd/systemd/issues/41239
+Bug: https://bugs.gentoo.org/971376
+Signed-off-by: Andreas K. Hüttel <dilfridge@gentoo.org>
+---
+ src/include/override/sys/generate-syscall.py | 2 +-
+ src/include/override/sys/syscall.h           | 2 +-
+ src/shared/base-filesystem.c                 | 2 +-
+ src/shared/seccomp-util.c                    | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/include/override/sys/generate-syscall.py b/src/include/override/sys/generate-syscall.py
+index 6f449f9dc1330..1c90ad0e38402 100755
+--- a/src/include/override/sys/generate-syscall.py
++++ b/src/include/override/sys/generate-syscall.py
+@@ -44,7 +44,7 @@ def parse_syscall_tables(filenames):
+ 
+ #include_next <sys/syscall.h>   /* IWYU pragma: export */
+ 
+-#ifdef ARCH_MIPS
++#ifdef __mips__
+ #include <asm/sgidefs.h>
+ #endif
+ 
+diff --git a/src/include/override/sys/syscall.h b/src/include/override/sys/syscall.h
+index da2f780bed39c..0233f254b421c 100644
+--- a/src/include/override/sys/syscall.h
++++ b/src/include/override/sys/syscall.h
+@@ -11,7 +11,7 @@
+ 
+ #include_next <sys/syscall.h>   /* IWYU pragma: export */
+ 
+-#ifdef ARCH_MIPS
++#ifdef __mips__
+ #include <asm/sgidefs.h>
+ #endif
+ 
+diff --git a/src/shared/base-filesystem.c b/src/shared/base-filesystem.c
+index bad3b46f3ad3a..9e8856ba48ce6 100644
+--- a/src/shared/base-filesystem.c
++++ b/src/shared/base-filesystem.c
+@@ -5,7 +5,7 @@
+ #include <syslog.h>
+ #include <unistd.h>
+ 
+-#ifdef ARCH_MIPS
++#ifdef __mips__
+ #include <asm/sgidefs.h>
+ #endif
+ 
+diff --git a/src/shared/seccomp-util.c b/src/shared/seccomp-util.c
+index d2f7612a53de5..9785fc45d78f3 100644
+--- a/src/shared/seccomp-util.c
++++ b/src/shared/seccomp-util.c
+@@ -12,7 +12,7 @@
+ #include <sys/shm.h>
+ #include <sys/stat.h>
+ 
+-#ifdef ARCH_MIPS
++#ifdef __mips__
+ #include <asm/sgidefs.h>
+ #endif
+ 
