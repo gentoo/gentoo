@@ -36,6 +36,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2026-03-20)
+# Low-value package with a test suite that requires tons of effort to
+# work offline. Upstream made that harder again in the most recent
+# release.  If you need pipx functionality, dev-python/uv provides uvx
+# executable.
+# Removal on 2026-04-19.  Bug #971387.
+dev-python/pipx
+
 # Michał Górny <mgorny@gentoo.org> (2026-03-19)
 #
 # MkDocs 1.x are no longer maintained upstream.  MkDocs 2.x, while not
