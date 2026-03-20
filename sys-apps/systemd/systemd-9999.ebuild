@@ -541,6 +541,9 @@ pkg_postinst() {
 	# between OpenRC & systemd
 	migrate_locale
 
+	# Bug 971385
+	systemd_reenable getty@.service
+
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		if type systemctl &>/dev/null; then
 			systemctl --root="${ROOT:-/}" enable getty@.service remote-fs.target || FAIL=1
