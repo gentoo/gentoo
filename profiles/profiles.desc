@@ -471,10 +471,14 @@ amd64		default/linux/amd64/23.0/split-usr/musl/llvm			exp
 amd64		default/linux/amd64/23.0/split-usr/musl/hardened		exp
 amd64		default/linux/amd64/23.0/split-usr/musl/hardened/selinux	exp
 arm		default/linux/arm/23.0/armv6j_hf/musl				dev
+arm		default/linux/arm/23.0/armv6j_hf/musl/systemd			exp
 arm		default/linux/arm/23.0/armv6j_hf/musl/hardened			exp
+arm		default/linux/arm/23.0/armv6j_hf/musl/hardened/systemd		exp
 arm		default/linux/arm/23.0/armv6j_hf/musl/hardened/selinux		exp
 arm		default/linux/arm/23.0/armv7a_hf/musl				dev
+arm		default/linux/arm/23.0/armv7a_hf/musl/systemd			dev
 arm		default/linux/arm/23.0/armv7a_hf/musl/hardened			exp
+arm		default/linux/arm/23.0/armv7a_hf/musl/hardened/systemd		exp
 arm		default/linux/arm/23.0/armv7a_hf/musl/hardened/selinux		exp
 arm		default/linux/arm/23.0/split-usr/armv6j_hf/musl			dev
 arm		default/linux/arm/23.0/split-usr/armv6j_hf/musl/hardened	exp
