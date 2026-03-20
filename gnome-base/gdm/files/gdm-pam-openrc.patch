@@ -1,0 +1,27 @@
+Needed to start the user daemon for newer GDM version.
+
+The latter change may be an OpenRC issue, but I haven't ruled it out. This works for now.
+
+diff --git a/data/pam-exherbo/gdm-launch-environment.pam b/data/pam-exherbo/gdm-launch-environment.pam
+index 3f5d788b1..3bf3bd551 100644
+--- a/data/pam-exherbo/gdm-launch-environment.pam
++++ b/data/pam-exherbo/gdm-launch-environment.pam
+@@ -13,5 +13,6 @@ session     optional    pam_loginuid.so
+ session     optional    pam_keyinit.so force revoke
+ session     required    pam_succeed_if.so audit quiet_success user ingroup gdm
+ -session    optional    pam_systemd.so
++-session    optional    pam_openrc.so
+ -session    optional    pam_elogind.so
+ session     optional    pam_permit.so
+diff --git a/data/pam-exherbo/gdm-password.pam b/data/pam-exherbo/gdm-password.pam
+index d462030a2..860324c53 100644
+--- a/data/pam-exherbo/gdm-password.pam
++++ b/data/pam-exherbo/gdm-password.pam
+@@ -8,5 +8,7 @@ account  include  system-local-login
+ password include  system-local-login
+ password optional pam_gnome_keyring.so use_authtok
+ 
++# XXX: Technically system-local-login should take care of this. Might be an openrc bug?
++-session optional pam_openrc.so
+ session  include  system-local-login
+ session  optional pam_gnome_keyring.so auto_start
