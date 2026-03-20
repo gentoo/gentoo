@@ -61,7 +61,8 @@ src_prepare() {
 	default
 
 	# Fix python shebangs for python-exec[-native-symlinks], #909330
-	local shebangs=($(grep -rl "#!/usr/bin/env python3" || die))
+	# skip vmodtool, as that gets installed by python_replicate_script later
+	local shebangs=($(grep -rl "#!/usr/bin/env python3"|grep -v vmodtool || die))
 	python_setup
 	python_fix_shebang -q ${shebangs[*]}
 
