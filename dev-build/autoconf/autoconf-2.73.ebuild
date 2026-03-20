@@ -55,7 +55,7 @@ BDEPEND+="
 "
 RDEPEND="
 	${BDEPEND}
-	>=dev-build/autoconf-wrapper-20231224
+	>=dev-build/autoconf-wrapper-20260320
 	sys-devel/gnuconfig
 	!~${CATEGORY}/${P}:2.5
 "
