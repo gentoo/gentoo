@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="bmp">Add bitmap (.bmp) image support using <pkg>media-libs/libnsbmp</pkg></flag>
-		<flag name="freeimage">Use <pkg>media-libs/freeimage</pkg> for additional image support</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourcehut">~exec64/imv</remote-id>
