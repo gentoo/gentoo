@@ -6,6 +6,10 @@
 
 # New entries go on top.
 
+# Mike Gilbert <floppym@gentoo.org> (2026-03-20)
+# Only meant for bootstrapping a cross-compiler.
+sys-libs/libxcrypt headers-only
+
 # Michał Górny <mgorny@gentoo.org> (2026-03-19)
 # dev-python/mkdocs have been last rited.
 dev-debug/gef doc
