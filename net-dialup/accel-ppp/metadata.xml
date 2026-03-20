@@ -10,6 +10,5 @@
 	<upstream>
 		<changelog>https://github.com/accel-ppp/accel-ppp/blob/master/CHANGELOG.md</changelog>
 		<remote-id type="github">xebd/accel-ppp</remote-id>
-		<remote-id type="sourceforge">accel-ppp</remote-id>
 	</upstream>
 </pkgmetadata>
