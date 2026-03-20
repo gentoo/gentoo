@@ -29,8 +29,6 @@ REQUIRED_USE="
 
 RESTRICT="!test? ( test )"
 
-# TODO: next revbump add iso-codes as a build time dependency. It affects the end result whether its available
-
 # See libgimp_deps_table in libgimp/meson.build for introspection dependencies, bug #969449
 COMMON_DEPEND="
 	${PYTHON_DEPS}
@@ -41,6 +39,7 @@ COMMON_DEPEND="
 	app-arch/bzip2
 	app-arch/libarchive:=
 	>=app-arch/xz-utils-5.0.0
+	app-text/iso-codes
 	>=app-text/poppler-0.90.1[cairo]
 	>=app-text/poppler-data-0.4.9
 	>=dev-libs/appstream-0.16.1:=
