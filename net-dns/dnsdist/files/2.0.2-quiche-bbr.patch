@@ -1,0 +1,111 @@
+https://github.com/PowerDNS/pdns/pull/16867
+Fixed up patch paths to match distribution.
+
+From: Remi Gacogne <remi.gacogne@powerdns.com>
+Date: Mon, 2 Feb 2026 15:16:20 +0100
+Subject: [PATCH] dnsdist: Work around Quiche not dealing well with removed congestion algorithms
+
+See https://github.com/cloudflare/quiche/issues/2342
+
+Signed-off-by: Remi Gacogne <remi.gacogne@powerdns.com>
+(cherry picked from commit d677611e5855b7db1d940c85df8259ce98e481a7)
+Signed-off-by: Remi Gacogne <remi.gacogne@powerdns.com>
+---
+ pdns/dnsdistdist/dnsdist-configuration-yaml.cc |  8 ++------
+ pdns/dnsdistdist/dnsdist-lua.cc                | 14 ++------------
+ pdns/dnsdistdist/doq-common.cc                 |  5 +----
+ pdns/dnsdistdist/doq-common.hh                 |  7 -------
+ 4 files changed, 5 insertions(+), 29 deletions(-)
+
+diff --git a/pdns/dnsdistdist/dnsdist-configuration-yaml.cc b/pdns/dnsdistdist/dnsdist-configuration-yaml.cc
+index ada7edc1e9d1..6e8b280fe0a1 100644
+--- a/dnsdist-configuration-yaml.cc
++++ b/dnsdist-configuration-yaml.cc
+@@ -306,9 +306,7 @@ static bool handleTLSConfiguration(const dnsdist::rust::settings::BindConfigurat
+     frontend->d_quicheParams.d_maxInFlight = bind.doq.max_concurrent_queries_per_connection;
+     frontend->d_quicheParams.d_idleTimeout = bind.quic.idle_timeout;
+     frontend->d_quicheParams.d_keyLogFile = std::string(bind.tls.key_log_file);
+-    if (dnsdist::doq::s_available_cc_algorithms.count(std::string(bind.quic.congestion_control_algorithm)) > 0) {
+-      frontend->d_quicheParams.d_ccAlgo = std::string(bind.quic.congestion_control_algorithm);
+-    }
++    frontend->d_quicheParams.d_ccAlgo = std::string(bind.quic.congestion_control_algorithm);
+     frontend->d_internalPipeBufferSize = bind.quic.internal_pipe_buffer_size;
+     state.doqFrontend = std::move(frontend);
+   }
+@@ -320,9 +318,7 @@ static bool handleTLSConfiguration(const dnsdist::rust::settings::BindConfigurat
+     frontend->d_quicheParams.d_tlsConfig = std::move(tlsConfig);
+     frontend->d_quicheParams.d_idleTimeout = bind.quic.idle_timeout;
+     frontend->d_quicheParams.d_keyLogFile = std::string(bind.tls.key_log_file);
+-    if (dnsdist::doq::s_available_cc_algorithms.count(std::string(bind.quic.congestion_control_algorithm)) > 0) {
+-      frontend->d_quicheParams.d_ccAlgo = std::string(bind.quic.congestion_control_algorithm);
+-    }
++    frontend->d_quicheParams.d_ccAlgo = std::string(bind.quic.congestion_control_algorithm);
+     frontend->d_internalPipeBufferSize = bind.quic.internal_pipe_buffer_size;
+     state.doh3Frontend = std::move(frontend);
+   }
+diff --git a/pdns/dnsdistdist/dnsdist-lua.cc b/pdns/dnsdistdist/dnsdist-lua.cc
+index b87e12692050..5a345aabec6a 100644
+--- a/dnsdist-lua.cc
++++ b/dnsdist-lua.cc
+@@ -2348,12 +2348,7 @@ static void setupLuaConfig(LuaContext& luaCtx, bool client, bool configCheck)
+       {
+         std::string valueStr;
+         if (getOptionalValue<std::string>(vars, "congestionControlAlgo", valueStr) > 0) {
+-          if (dnsdist::doq::s_available_cc_algorithms.count(valueStr) > 0) {
+-            frontend->d_quicheParams.d_ccAlgo = valueStr;
+-          }
+-          else {
+-            warnlog("Ignoring unknown value '%s' for 'congestionControlAlgo' on 'addDOH3Local'", valueStr);
+-          }
++          frontend->d_quicheParams.d_ccAlgo = std::move(valueStr);
+         }
+       }
+       parseTLSConfig(frontend->d_quicheParams.d_tlsConfig, "addDOH3Local", vars);
+@@ -2426,12 +2421,7 @@ static void setupLuaConfig(LuaContext& luaCtx, bool client, bool configCheck)
+       {
+         std::string valueStr;
+         if (getOptionalValue<std::string>(vars, "congestionControlAlgo", valueStr) > 0) {
+-          if (dnsdist::doq::s_available_cc_algorithms.count(valueStr) > 0) {
+-            frontend->d_quicheParams.d_ccAlgo = std::move(valueStr);
+-          }
+-          else {
+-            warnlog("Ignoring unknown value '%s' for 'congestionControlAlgo' on 'addDOQLocal'", valueStr);
+-          }
++          frontend->d_quicheParams.d_ccAlgo = std::move(valueStr);
+         }
+       }
+       parseTLSConfig(frontend->d_quicheParams.d_tlsConfig, "addDOQLocal", vars);
+diff --git a/pdns/dnsdistdist/doq-common.cc b/pdns/dnsdistdist/doq-common.cc
+index 54a1d3effcd6..07c7ad8c91d1 100644
+--- a/doq-common.cc
++++ b/doq-common.cc
+@@ -280,10 +280,7 @@ void configureQuiche(QuicheConfig& config, const QuicheParams& params, bool isHT
+     quiche_config_log_keys(config.get());
+   }
+ 
+-  auto algo = dnsdist::doq::s_available_cc_algorithms.find(params.d_ccAlgo);
+-  if (algo != dnsdist::doq::s_available_cc_algorithms.end()) {
+-    quiche_config_set_cc_algorithm(config.get(), static_cast<enum quiche_cc_algorithm>(algo->second));
+-  }
++  quiche_config_set_cc_algorithm_name(config.get(), params.d_ccAlgo.c_str());
+ 
+   {
+     PacketBuffer resetToken;
+diff --git a/pdns/dnsdistdist/doq-common.hh b/pdns/dnsdistdist/doq-common.hh
+index 96f99dbfc9a0..0ba4c28e3231 100644
+--- a/doq-common.hh
++++ b/doq-common.hh
+@@ -39,13 +39,6 @@
+ 
+ namespace dnsdist::doq
+ {
+-
+-static const std::map<const std::string, int> s_available_cc_algorithms = {
+-  {"reno", QUICHE_CC_RENO},
+-  {"cubic", QUICHE_CC_CUBIC},
+-  {"bbr", QUICHE_CC_BBR},
+-};
+-
+ using QuicheConnection = std::unique_ptr<quiche_conn, decltype(&quiche_conn_free)>;
+ using QuicheHTTP3Connection = std::unique_ptr<quiche_h3_conn, decltype(&quiche_h3_conn_free)>;
+ using QuicheConfig = std::shared_ptr<quiche_config>;
