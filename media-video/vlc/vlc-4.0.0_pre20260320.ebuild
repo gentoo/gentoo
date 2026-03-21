@@ -15,7 +15,7 @@ if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://code.videolan.org/videolan/vlc.git"
 	inherit git-r3
 else
-	COMMIT=
+	COMMIT=d854b1239b697859d6b21206feb7c66d64f3737a
 	if [[ -n ${COMMIT} ]] ; then
 		SRC_URI="https://code.videolan.org/videolan/vlc/-/archive/${COMMIT}.tar.gz -> ${P}-${COMMIT:0:8}.tar.gz"
 		S="${WORKDIR}/${PN}-${COMMIT}"
@@ -241,10 +241,10 @@ RDEPEND="${COMMON_DEPEND}
 DOCS=( AUTHORS THANKS NEWS README.md doc/fortunes.txt )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-4.0.0_pre20260320-gettext-version.patch # bug 766549
-	"${FILESDIR}"/${PN}-4.0.0_pre20260320-no-vlc-cache-gen.patch # bugs 564842, 608256
-	"${FILESDIR}"/${PN}-4.0.0_pre20260320-fix-libtremor-libs.patch # build system
-	"${FILESDIR}"/${PN}-4.0.0_pre20260320-configure-lua-version.patch
+	"${FILESDIR}"/${P}-gettext-version.patch # bug 766549
+	"${FILESDIR}"/${P}-no-vlc-cache-gen.patch # bugs 564842, 608256
+	"${FILESDIR}"/${P}-fix-libtremor-libs.patch # build system
+	"${FILESDIR}"/${P}-configure-lua-version.patch
 	"${FILESDIR}"/${PN}-4.0.0_pre20260215-force-x11.patch # crashes w/ wayland platform plugin
 )
 

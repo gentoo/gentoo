@@ -241,10 +241,10 @@ RDEPEND="${COMMON_DEPEND}
 DOCS=( AUTHORS THANKS NEWS README.md doc/fortunes.txt )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-9999-gettext-version.patch # bug 766549
-	"${FILESDIR}"/${PN}-9999-no-vlc-cache-gen.patch # bugs 564842, 608256
-	"${FILESDIR}"/${PN}-9999-fix-libtremor-libs.patch # build system
-	"${FILESDIR}"/${PN}-9999-configure-lua-version.patch
+	"${FILESDIR}"/${PN}-4.0.0_pre20260320-gettext-version.patch # bug 766549
+	"${FILESDIR}"/${PN}-4.0.0_pre20260320-no-vlc-cache-gen.patch # bugs 564842, 608256
+	"${FILESDIR}"/${PN}-4.0.0_pre20260320-fix-libtremor-libs.patch # build system
+	"${FILESDIR}"/${PN}-4.0.0_pre20260320-configure-lua-version.patch
 	"${FILESDIR}"/${P}-force-x11.patch # crashes w/ wayland platform plugin
 )
 
