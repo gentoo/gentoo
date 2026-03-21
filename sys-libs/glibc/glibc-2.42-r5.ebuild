@@ -246,6 +246,15 @@ is_crosscompile() {
 	[[ ${CHOST} != ${CTARGET} ]]
 }
 
+is_linux() {
+	[[ ${CTARGET} == *-linux-* ]]
+}
+
+is_hurd() {
+	# Let's hope this holds for a long time
+	[[ ${CTARGET} != *-linux-* ]]
+}
+
 just_headers() {
 	is_crosscompile && use headers-only
 }
@@ -1454,47 +1463,56 @@ glibc_do_src_install() {
 	# if the main library set isn't installed into the right place.  Maybe
 	# we should query the active gcc for info instead of hardcoding it ?
 	local i ldso_abi ldso_name
-	local ldso_abi_list=(
-		# x86
-		amd64   /lib64/ld-linux-x86-64.so.2
-		x32     /libx32/ld-linux-x32.so.2
-		x86     /lib/ld-linux.so.2
-		# mips
-		o32     /lib/ld.so.1
-		n32     /lib32/ld.so.1
-		n64     /lib64/ld.so.1
-		# powerpc
-		ppc     /lib/ld.so.1
-		# riscv
-		ilp32d  /lib/ld-linux-riscv32-ilp32d.so.1
-		ilp32   /lib/ld-linux-riscv32-ilp32.so.1
-		lp64d   /lib/ld-linux-riscv64-lp64d.so.1
-		lp64    /lib/ld-linux-riscv64-lp64.so.1
-		# s390
-		s390    /lib/ld.so.1
-		s390x   /lib/ld64.so.1
-		# sparc
-		sparc32 /lib/ld-linux.so.2
-		sparc64 /lib64/ld-linux.so.2
-	)
-	case $(tc-endian) in
-	little)
-		ldso_abi_list+=(
-			# arm
-			arm64   /lib/ld-linux-aarch64.so.1
-			# ELFv2 (glibc does not support ELFv1 on LE)
-			ppc64   /lib64/ld64.so.2
+	if is_linux ; then
+		local ldso_abi_list=(
+			# x86
+			amd64   /lib64/ld-linux-x86-64.so.2
+			x32     /libx32/ld-linux-x32.so.2
+			x86     /lib/ld-linux.so.2
+			# mips
+			o32     /lib/ld.so.1
+			n32     /lib32/ld.so.1
+			n64     /lib64/ld.so.1
+			# powerpc
+			ppc     /lib/ld.so.1
+			# riscv
+			ilp32d  /lib/ld-linux-riscv32-ilp32d.so.1
+			ilp32   /lib/ld-linux-riscv32-ilp32.so.1
+			lp64d   /lib/ld-linux-riscv64-lp64d.so.1
+			lp64    /lib/ld-linux-riscv64-lp64.so.1
+			# s390
+			s390    /lib/ld.so.1
+			s390x   /lib/ld64.so.1
+			# sparc
+			sparc32 /lib/ld-linux.so.2
+			sparc64 /lib64/ld-linux.so.2
 		)
-		;;
-	big)
-		ldso_abi_list+=(
-			# arm
-			arm64   /lib/ld-linux-aarch64_be.so.1
-			# ELFv1 (glibc does not support ELFv2 on BE)
-			ppc64   /lib64/ld64.so.1
+		case $(tc-endian) in
+		little)
+			ldso_abi_list+=(
+				# arm
+				arm64   /lib/ld-linux-aarch64.so.1
+				# ELFv2 (glibc does not support ELFv1 on LE)
+				ppc64   /lib64/ld64.so.2
+			)
+			;;
+		big)
+			ldso_abi_list+=(
+				# arm
+				arm64   /lib/ld-linux-aarch64_be.so.1
+				# ELFv1 (glibc does not support ELFv2 on BE)
+				ppc64   /lib64/ld64.so.1
+			)
+			;;
+		esac
+	else
+	# we must be using hurd then
+		local ldso_abi_list=(
+			# x86
+			amd64   /lib64/ld-x86-64.so.1
+			x86     /lib/ld.so
 		)
-		;;
-	esac
+	fi
 	if [[ ${SYMLINK_LIB} == "yes" ]] && [[ ! -e ${ED}/$(alt_prefix)/lib ]] ; then
 		dosym $(get_abi_LIBDIR ${DEFAULT_ABI}) $(alt_prefix)/lib
 	fi
@@ -1508,26 +1526,28 @@ glibc_do_src_install() {
 		fi
 	done
 
-	# In the LSB 5.0 definition, someone had the excellent idea to "standardize"
-	# the runtime loader name, see also https://xkcd.com/927/
-	# Normally, in Gentoo one should never come across executables that require this.
-	# However, binary commercial packages are known to adhere to weird practices.
-	# https://refspecs.linuxfoundation.org/LSB_5.0.0/LSB-Core-AMD64/LSB-Core-AMD64.html#BASELIB
-	local lsb_ldso_name native_ldso_name lsb_ldso_abi
-	local lsb_ldso_abi_list=(
-		# x86
-		amd64	ld-linux-x86-64.so.2	ld-lsb-x86-64.so.3
-	)
-	for (( i = 0; i < ${#lsb_ldso_abi_list[@]}; i += 3 )) ; do
-		lsb_ldso_abi=${lsb_ldso_abi_list[i]}
-		native_ldso_name=${lsb_ldso_abi_list[i+1]}
-		lsb_ldso_name=${lsb_ldso_abi_list[i+2]}
-		has ${lsb_ldso_abi} $(get_install_abis) || continue
+	if is_linux ; then
+		# In the LSB 5.0 definition, someone had the excellent idea to "standardize"
+		# the runtime loader name, see also https://xkcd.com/927/
+		# Normally, in Gentoo one should never come across executables that require this.
+		# However, binary commercial packages are known to adhere to weird practices.
+		# https://refspecs.linuxfoundation.org/LSB_5.0.0/LSB-Core-AMD64/LSB-Core-AMD64.html#BASELIB
+		local lsb_ldso_name native_ldso_name lsb_ldso_abi
+		local lsb_ldso_abi_list=(
+			# x86
+			amd64	ld-linux-x86-64.so.2	ld-lsb-x86-64.so.3
+		)
+		for (( i = 0; i < ${#lsb_ldso_abi_list[@]}; i += 3 )) ; do
+			lsb_ldso_abi=${lsb_ldso_abi_list[i]}
+			native_ldso_name=${lsb_ldso_abi_list[i+1]}
+			lsb_ldso_name=${lsb_ldso_abi_list[i+2]}
+			has ${lsb_ldso_abi} $(get_install_abis) || continue
 
-		if [[ ! -L ${ED}/$(get_abi_LIBDIR ${lsb_ldso_abi})/${lsb_ldso_name} && ! -e ${ED}/$(get_abi_LIBDIR ${lsb_ldso_abi})/${lsb_ldso_name} ]] ; then
-			dosym ${native_ldso_name} "$(alt_prefix)/$(get_abi_LIBDIR ${lsb_ldso_abi})/${lsb_ldso_name}"
-		fi
-	done
+			if [[ ! -L ${ED}/$(get_abi_LIBDIR ${lsb_ldso_abi})/${lsb_ldso_name} && ! -e ${ED}/$(get_abi_LIBDIR ${lsb_ldso_abi})/${lsb_ldso_name} ]] ; then
+				dosym ${native_ldso_name} "$(alt_prefix)/$(get_abi_LIBDIR ${lsb_ldso_abi})/${lsb_ldso_name}"
+			fi
+		done
+	fi
 
 	# With devpts under Linux mounted properly, we do not need the pt_chown
 	# binary to be setuid.  This is because the default owners/perms will be
