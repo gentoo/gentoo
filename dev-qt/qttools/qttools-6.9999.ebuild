@@ -4,7 +4,7 @@
 EAPI=8
 
 # match QDOC_SUPPORTED_CLANG_VERSIONS in src/qdoc/cmake/QDocConfiguration.cmake
-LLVM_COMPAT=( {17..21} )
+LLVM_COMPAT=( {17..22} )
 LLVM_OPTIONAL=1
 
 # behaves very badly when qttools is not already installed, also
