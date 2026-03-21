@@ -20,7 +20,9 @@ fi
 LICENSE="GPL-3+"
 SLOT="0"
 
-RDEPEND="virtual/acl"
+RDEPEND="virtual/acl
+	!sys-apps/systemd
+	!sys-apps/systemd-utils[tmpfiles]"
 DEPEND="${RDEPEND}"
 
 src_install() {
