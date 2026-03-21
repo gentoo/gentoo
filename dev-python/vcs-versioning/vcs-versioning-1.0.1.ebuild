@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~s390"
 
 RDEPEND="
 	>=dev-python/packaging-20[${PYTHON_USEDEP}]
