@@ -4,14 +4,18 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
-inherit flag-o-matic cmake-multilib linux-info llvm.org python-single-r1
+inherit cmake-multilib crossdev flag-o-matic llvm.org python-single-r1
+inherit toolchain-funcs
 
-DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"
+DESCRIPTION="OpenMP runtime libraries for LLVM/clang compiler"
 HOMEPAGE="https://openmp.llvm.org"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0/${LLVM_SOABI}"
-IUSE="+debug gdb-plugin hwloc ompt test"
+IUSE="
+	+clang +debug gdb-plugin hwloc offload ompt test
+	llvm_targets_AMDGPU llvm_targets_NVPTX llvm_targets_SPIRV
+"
 REQUIRED_USE="
 	gdb-plugin? ( ${PYTHON_REQUIRED_USE} )
 "
@@ -20,6 +24,13 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	gdb-plugin? ( ${PYTHON_DEPS} )
 	hwloc? ( >=sys-apps/hwloc-2.5:0=[${MULTILIB_USEDEP}] )
+	offload? (
+		dev-libs/libffi:=
+		~llvm-core/llvm-${PV}
+		!llvm-runtimes/offload
+		llvm_targets_AMDGPU? ( dev-libs/rocr-runtime:= )
+		llvm_targets_SPIRV? ( dev-libs/level-zero:= )
+	)
 "
 # tests:
 # - dev-python/lit provides the test runner
@@ -30,6 +41,10 @@ DEPEND="
 "
 BDEPEND="
 	dev-lang/perl
+	clang? ( llvm-core/clang )
+	offload? (
+		virtual/pkgconfig
+	)
 	test? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
@@ -41,10 +56,23 @@ BDEPEND="
 "
 
 LLVM_COMPONENTS=(
-	runtimes openmp cmake llvm/{cmake,include,utils/llvm-lit}
+	runtimes openmp offload cmake libc llvm/{cmake,include,utils/llvm-lit}
 	third-party/unittest
 )
 llvm.org_set_globals
+
+MULTILIB_WRAPPED_HEADERS=(
+	/usr/include/offload/OffloadPrint.hpp
+	/usr/include/offload/OffloadAPI.h
+)
+
+pkg_pretend() {
+	if [[ ${LLVM_ALLOW_GPU_TESTING} ]]; then
+		ewarn "LLVM_ALLOW_GPU_TESTING set.  This package will run tests against your"
+		ewarn "GPU if it is supported.  Note that these tests may be flaky, fail or"
+		ewarn "hang, or even cause your GPU to crash (requiring a reboot)."
+	fi
+}
 
 pkg_setup() {
 	if use gdb-plugin || use test; then
@@ -53,6 +81,17 @@ pkg_setup() {
 }
 
 multilib_src_configure() {
+	if use clang && ! is_crosspkg; then
+		# Only do this conditionally to allow overriding with
+		# e.g. CC=clang-13 in case of breakage
+		if ! tc-is-clang ; then
+			local -x CC=${CHOST}-clang
+			local -x CXX=${CHOST}-clang++
+		fi
+
+		strip-unsupported-flags
+	fi
+
 	# LTO causes issues in other packages building, #870127
 	filter-lto
 
@@ -73,7 +112,41 @@ multilib_src_configure() {
 		-DLIBOMP_INSTALL_ALIASES=OFF
 		# disable unnecessary hack copying stuff back to srcdir
 		-DLIBOMP_COPY_EXPORTS=OFF
+		# this breaks building static target libs
+		-DBUILD_SHARED_LIBS=OFF
 	)
+
+	if multilib_is_native_abi && use offload; then
+		local ffi_cflags=$($(tc-getPKG_CONFIG) --cflags-only-I libffi)
+		local ffi_ldflags=$($(tc-getPKG_CONFIG) --libs-only-L libffi)
+		local plugins="host"
+
+		if has "${CHOST%%-*}" aarch64 powerpc64le x86_64; then
+			if use llvm_targets_AMDGPU; then
+				plugins+=";amdgpu"
+			fi
+			if use llvm_targets_NVPTX; then
+				plugins+=";cuda"
+			fi
+			if use llvm_targets_SPIRV; then
+				plugins+=";level_zero"
+			fi
+		fi
+
+		mycmakeargs+=(
+			-DLLVM_ENABLE_RUNTIMES="openmp;offload"
+			-DOFFLOAD_INCLUDE_TESTS=$(usex test)
+			-DLIBOMPTARGET_PLUGINS_TO_BUILD="${plugins}"
+			-DLIBOMPTARGET_OMPT_SUPPORT="$(usex ompt)"
+		)
+
+		[[ ! ${LLVM_ALLOW_GPU_TESTING} ]] && mycmakeargs+=(
+			# prevent trying to access the GPU
+			-DLIBOMPTARGET_AMDGPU_ARCH=LIBOMPTARGET_AMDGPU_ARCH-NOTFOUND
+			-DLIBOMPTARGET_NVPTX_ARCH=LIBOMPTARGET_NVPTX_ARCH-NOTFOUND
+			-DLIBOMPTARGET_OFFLOAD_ARCH=LIBOMPTARGET_OFFLOAD_ARCH-NOTFOUND
+		)
+	fi
 
 	use test && mycmakeargs+=(
 		-DLLVM_LIT_ARGS="$(get_lit_flags)"
@@ -89,6 +162,10 @@ multilib_src_configure() {
 multilib_src_test() {
 	# respect TMPDIR!
 	local -x LIT_PRESERVES_TMP=1
+	local targets=( check-openmp )
+	if multilib_is_native_abi && use offload; then
+		targets+=( check-offload check-offload-unit )
+	fi
 
-	cmake_build check-openmp
+	cmake_build "${targets[@]}"
 }

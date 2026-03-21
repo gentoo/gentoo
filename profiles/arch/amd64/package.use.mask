@@ -20,6 +20,7 @@
 # Michał Górny <mgorny@gentoo.org> (2026-03-14)
 # SPIRV target requires dev-libs/level-zero.
 llvm-runtimes/offload -llvm_targets_SPIRV
+llvm-runtimes/openmp -llvm_targets_SPIRV
 
 # Michał Górny <mgorny@gentoo.org> (2026-03-03)
 # OpenMP offloading GPU runtimes are not keyworded everywhre.
@@ -123,6 +124,7 @@ dev-lang/rust -mrustc-bootstrap
 # Michał Górny <mgorny@gentoo.org> (2024-12-24)
 # OpenMP offloading is supported on 64-bit architectures only.
 llvm-runtimes/clang-runtime -offload
+llvm-runtimes/openmp -offload
 
 # Alfred Wingate <parona@protonmail.com> (2024-12-16)
 # Only available on amd64.
