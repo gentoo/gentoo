@@ -3,6 +3,8 @@
 
 EAPI=8
 
+RUST_MIN_VER="1.88.0"
+
 CRATES="
 ${PN}@${PV}
 anyhow@1.0.26
@@ -296,6 +298,7 @@ DOCS=( COPYING README.md )
 
 BDEPEND="
 	dev-build/cmake
+	dev-util/patchelf
 "
 DEPEND=""
 RDEPEND=""
@@ -355,8 +358,12 @@ multilib_src_install() {
 	sed -i -e "s:libdir=.\+:libdir=${EPREFIX}/usr/$(get_libdir):" -e "s:includedir=.\+:includedir=${EPREFIX}/usr/include:" "$(cargo_target_dir)"/quiche.pc || die
 	insinto "/usr/$(get_libdir)/pkgconfig"
 	doins "$(cargo_target_dir)"/quiche.pc
-	doheader -r include/*
-	dolib.so "$(cargo_target_dir)"/libquiche.so
-	QA_FLAGS_IGNORED+=" usr/$(get_libdir)/libquiche.so" # rust libraries don't use LDFLAGS
-	QA_SONAME+=" usr/$(get_libdir)/libquiche.so" # https://github.com/cloudflare/quiche/issues/165
+	doheader -r quiche/include/*
+	# remove dodgy RPATH to boringssl build directory: https://bugs.gentoo.org/954868
+	patchelf --remove-rpath "$(cargo_target_dir)"/libquiche.so || die
+	# install libquiche.so as as .0.0.0
+	newlib.so "$(cargo_target_dir)"/libquiche.so libquiche.so.0.0.0 || die
+	# manually create .so symlinks: https://github.com/cloudflare/quiche/issues/165
+	ln -s libquiche.so.0.0.0 "${ED}"/usr/$(get_libdir)/libquiche.so.0 || die
+	ln -s  libquiche.so.0 "${ED}"/usr/$(get_libdir)/libquiche.so || die
 }
