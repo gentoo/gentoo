@@ -105,8 +105,11 @@ src_install() {
 	fi
 
 	local size
+	# channel suffix: "" stable, "_channel" for beta/dev.
+	local channel=${PN#microsoft-edge}
+	channel=${channel/-/_}
 	for size in 16 24 32 48 64 128 256 ; do
-		newicon -s ${size} "${EDGE_HOME}/product_logo_${size}.png" ${PN}.png
+		newicon -s ${size} "${EDGE_HOME}/product_logo_${size}${channel}.png" ${PN}.png
 	done
 
 	if ! use mip; then
