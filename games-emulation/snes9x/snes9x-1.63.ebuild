@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -74,6 +74,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.62.1-flags.patch
 	"${FILESDIR}"/${PN}-1.63-optional-wayland.patch
 	"${FILESDIR}"/${P}-vulkan-fix.patch
+	"${FILESDIR}"/${P}-zlib132.patch
 )
 
 pkg_setup() {

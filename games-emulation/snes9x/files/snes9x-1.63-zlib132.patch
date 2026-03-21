@@ -1,0 +1,7 @@
+https://github.com/snes9xgit/snes9x/pull/1033
+--- a/gtk/CMakeLists.txt
++++ b/gtk/CMakeLists.txt
+@@ -368,2 +368,3 @@
+ target_compile_options(jma PUBLIC ${ARGS})
++target_compile_definitions(jma PRIVATE ${DEFINES})
+ list(APPEND LIBS jma)
