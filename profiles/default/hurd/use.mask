@@ -1,6 +1,10 @@
 # Copyright 2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Linux-specific (for now)
+# https://sourceware.org/PR34016
+debuginfod
+
 # Linux-specific
 acl
 epoll
