@@ -1,0 +1,1 @@
+move llvm-runtimes/openmp-amdgcn llvm-runtimes/openmp-amdgcn-amd-amdhsa

@@ -23,7 +23,7 @@ llvm-runtimes/libcxxabi
 llvm-runtimes/libcxx
 llvm-runtimes/libgcc
 llvm-runtimes/openmp
-llvm-runtimes/openmp-amdgcn
+llvm-runtimes/openmp-amdgcn-amd-amdhsa
 llvm-runtimes/openmp-nvptx64
 llvm-runtimes/openmp-spirv64-intel
 llvm-runtimes/offload

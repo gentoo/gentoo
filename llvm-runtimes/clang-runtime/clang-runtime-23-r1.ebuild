@@ -32,7 +32,7 @@ RDEPEND="
 		>=llvm-runtimes/openmp-${PV}[${MULTILIB_USEDEP},offload(-)?]
 		offload? (
 			llvm_targets_AMDGPU? (
-				>=llvm-runtimes/openmp-amdgcn-${PV}
+				>=llvm-runtimes/openmp-amdgcn-amd-amdhsa-${PV}
 			)
 			llvm_targets_NVPTX? (
 				>=llvm-runtimes/openmp-nvptx64-${PV}

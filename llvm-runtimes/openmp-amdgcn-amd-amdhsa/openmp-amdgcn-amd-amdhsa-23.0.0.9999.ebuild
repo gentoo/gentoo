@@ -29,7 +29,7 @@ llvm.org_set_globals
 src_configure() {
 	local -x CC=${CHOST}-clang-${LLVM_MAJOR}
 	local -x CXX=${CHOST}-clang++-${LLVM_MAJOR}
-	local triple=amdgcn-amd-amdhsa
+	local triple=${PN#openmp-}
 	filter-flags '-m*'
 	strip-unsupported-flags
 
