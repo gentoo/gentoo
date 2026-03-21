@@ -29,7 +29,7 @@ else
 	fi
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv -sparc ~x86"
 fi
-inherit autotools flag-o-matic lua-single toolchain-funcs virtualx xdg
+inherit autotools flag-o-matic lua-single toolchain-funcs virtualx xdg-utils
 
 DESCRIPTION="Media player and framework with support for most multimedia files and streaming"
 HOMEPAGE="https://www.videolan.org/vlc/"
@@ -39,12 +39,12 @@ SLOT="0/5-9" # vlc - vlccore
 
 IUSE="alsa aom archive aribsub bidi bluray chromaprint chromecast dav1d dbus
 	dc1394 debug directx +dvbpsi dvd +encode faad fdk +ffmpeg flac fluidsynth
-	fontconfig +gcrypt gme keyring gstreamer +gui ieee1394 jack jpeg kate
-	libass libcaca libnotify +libsamplerate libtiger linsys lirc live lua
-	mad matroska modplug mp3 mtp musepack ncurses nfs ogg
-	omxil optimisememory opus png projectm pulseaudio run-as-root samba
-	sftp shout sid skins soxr speex srt ssl svg taglib theora tremor truetype twolame
-	udev upnp vaapi v4l vdpau vnc vpx wayland +X x264 x265 xml zeroconf zvbi
+	fontconfig +gcrypt gme keyring gstreamer ieee1394 jack jpeg kate libass
+	libcaca libnotify +libsamplerate libtiger linsys lirc live lua mad matroska
+	modplug mp3 mtp musepack ncurses nfs ogg omxil optimisememory opus png
+	projectm pulseaudio run-as-root samba sftp shout sid soxr speex srt ssl svg
+	taglib theora tremor truetype twolame udev upnp vaapi v4l vdpau vnc vpx
+	wayland +X x264 x265 xml zeroconf zvbi
 	cpu_flags_arm_neon cpu_flags_ppc_altivec cpu_flags_x86_mmx cpu_flags_x86_sse
 "
 REQUIRED_USE="
@@ -54,7 +54,6 @@ REQUIRED_USE="
 	libcaca? ( X )
 	libtiger? ( kate )
 	lua? ( ${LUA_REQUIRED_USE} )
-	skins? ( archive gui truetype X xml )
 	ssl? ( gcrypt )
 	vaapi? ( ffmpeg X )
 	vdpau? ( ffmpeg X )
@@ -121,16 +120,6 @@ RDEPEND="
 	gme? ( media-libs/game-music-emu )
 	keyring? ( app-crypt/libsecret )
 	gstreamer? ( >=media-libs/gst-plugins-base-1.4.5:1.0 )
-	gui? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtsvg:5
-		dev-qt/qtwidgets:5
-		X? (
-			dev-qt/qtx11extras:5
-			x11-libs/libX11
-		)
-	)
 	ieee1394? (
 		sys-libs/libavc1394
 		sys-libs/libraw1394
@@ -178,11 +167,6 @@ RDEPEND="
 	sftp? ( net-libs/libssh2 )
 	shout? ( media-libs/libshout )
 	sid? ( media-libs/libsidplay:2 )
-	skins? (
-		x11-libs/libXext
-		x11-libs/libXinerama
-		x11-libs/libXpm
-	)
 	soxr? ( >=media-libs/soxr-0.1.2 )
 	speex? (
 		>=media-libs/speex-1.2.0
@@ -244,6 +228,11 @@ PATCHES=(
 pkg_setup() {
 	if use lua; then
 		lua-single_pkg_setup
+	fi
+
+	if has_version "<=media-video/vlc-3.0.9999[gui]"; then
+		ewarn "Warning: User interface no longer available in VLC 3.x (Qt5 is dead)."
+		ewarn "media-video/vlc-4 is available in ~arch with Qt6-based GUI instead."
 	fi
 }
 
@@ -330,7 +319,6 @@ src_configure() {
 		$(use_enable gme)
 		$(use_enable keyring secret)
 		$(use_enable gstreamer gst-decode)
-		$(use_enable gui qt)
 		$(use_enable ieee1394 dv1394)
 		$(use_enable jack)
 		$(use_enable jpeg)
@@ -365,7 +353,6 @@ src_configure() {
 		$(use_enable sftp)
 		$(use_enable shout)
 		$(use_enable sid)
-		$(use_enable skins skins2)
 		$(use_enable soxr)
 		$(use_enable speex)
 		$(use_enable srt)
@@ -417,17 +404,19 @@ src_configure() {
 		--disable-opensles
 		--disable-oss
 		--disable-osx-notifications # MacOS only
+		--disable-qt # Qt5-based; bug #954006
 		--disable-rpi-omxil
 		--disable-schroedinger
 		--disable-sdl-image # not officially supported anymore
 		--disable-shine
+		--disable-skins2 # requires Qt5-based IUSE gui
 		--disable-sndio
 		--disable-spatialaudio
 		--disable-vsxu
 		--disable-wasapi
 		--disable-wma-fixed
 	)
-	# ^ We don't have these disabled libraries in the Portage tree yet.
+	# ^ We don't have these disabled libraries in the Portage tree yet/anymore.
 
 	# https://code.videolan.org/videolan/vlc/-/issues/17626 (bug #861143)
 	append-flags -fno-strict-aliasing
@@ -482,10 +471,7 @@ src_test() {
 src_install() {
 	default
 	find "${ED}" -name '*.la' -delete || die
-
-	if ! use gui; then
-		rm "${ED}"/usr/share/applications/*desktop || die
-	fi
+	rm "${ED}"/usr/share/applications/*desktop || die
 }
 
 pkg_postinst() {
@@ -497,14 +483,10 @@ pkg_postinst() {
 		ewarn "Please run ${EPREFIX}/usr/$(get_libdir)/vlc/vlc-cache-gen manually"
 		ewarn "If you do not do it, vlc will take a long time to load."
 	fi
-
-	use gui && xdg_pkg_postinst
 }
 
 pkg_postrm() {
 	if [[ -e "${EROOT}"/usr/$(get_libdir)/vlc/plugins/plugins.dat ]]; then
 		rm "${EROOT}"/usr/$(get_libdir)/vlc/plugins/plugins.dat || die "Failed to rm plugins.dat"
 	fi
-
-	use gui && xdg_pkg_postrm
 }
