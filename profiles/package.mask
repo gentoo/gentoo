@@ -238,7 +238,6 @@ media-plugins/vdr-skinelchi
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-02-15)
 # Masked for testing and possible libvlc revdeps breakage.
-~media-video/vlc-4.0.0_pre20260215
 ~media-video/vlc-4.0.0_pre20260320
 
 # Conrad Kostecki <conikost@gentoo.org> (2026-02-15)
