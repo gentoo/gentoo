@@ -35,6 +35,7 @@ DEPEND_COMMON="
 		sanlock? ( >=sys-cluster/sanlock-4.0.0 )
 		systemd? ( >=sys-apps/systemd-234:= )
 	)
+	nvme? ( >=sys-libs/libnvme-1.1 )
 "
 # /run is now required for locking during early boot. /var cannot be assumed to
 # be available -- thus, pull in recent enough baselayout for /run.
@@ -43,7 +44,6 @@ RDEPEND="
 	${DEPEND_COMMON}
 	>=sys-apps/baselayout-2.2
 	lvm? ( virtual/tmpfiles )
-	nvme? ( >=sys-libs/libnvme-1.1 )
 "
 
 PDEPEND="
