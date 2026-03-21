@@ -1,4 +1,4 @@
-# Copyright 2016-2024 Gentoo Authors
+# Copyright 2016-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: tmpfiles.eclass
@@ -139,6 +139,8 @@ tmpfiles_process() {
 		systemd-tmpfiles --create "$@"
 	elif type tmpfiles &> /dev/null; then
 		tmpfiles --create "$@"
+	elif type seedfiles &> /dev/null; then
+		seedfiles --create "$@"
 	fi
 	if [[ $? -ne 0 ]]; then
 		ewarn "The tmpfiles processor exited with a non-zero exit code"
