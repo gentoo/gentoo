@@ -5,7 +5,7 @@ EAPI=8
 
 inherit meson
 
-DESCRIPTION="A portable drop-in reimplementation of systemd-tmpfiles."
+DESCRIPTION="Portable drop-in reimplementation of systemd-tmpfiles"
 HOMEPAGE="https://git.pinkro.se/Rose/gardenhouse/seedfiles.git/about/"
 
 if [[ ${PV} = 9999 ]]; then
