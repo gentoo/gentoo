@@ -36,6 +36,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-04-12)
+# Depending on Qt5 with solarus-1.6.5 being broken by missing deps and at
+# least GCC-15. Bugs #953383 (+ linked see-also bugs), #961916, #962015
+# Both games-rpg/zsdx and games-rpg/zsxd are potentially fixed for Solarus 2.0
+# in git master, but that requires someone motivated enough to try it out.
+# Removal on 2026-05-11.
+<games-engines/solarus-2.0.3
+<games-misc/solarus-quest-editor-2.0.3
+<games-rpg/zsdx-1.12.9999
+<games-rpg/zsxd-1.12.9999
+
 # Michał Górny <mgorny@gentoo.org> (2026-04-11)
 # NIH general purpose library.  Tests are failing.  No revdeps.
 # Removal on 2026-05-11.  Bug #942586.
