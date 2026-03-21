@@ -3,6 +3,9 @@
 
 EAPI=8
 
+# We want to avoid tmpfiles.eclass because we provide it
+TMPFILES_OPTIONAL=1
+
 inherit meson
 
 DESCRIPTION="Portable drop-in reimplementation of systemd-tmpfiles"
