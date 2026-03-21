@@ -12,3 +12,4 @@
 -*sys-apps/kmod
 -*sys-apps/kbd
 -*sys-apps/which
+-*virtual/dev-manager
