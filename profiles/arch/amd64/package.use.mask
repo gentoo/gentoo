@@ -20,7 +20,7 @@
 # Michał Górny <mgorny@gentoo.org> (2026-03-14)
 # SPIRV target requires dev-libs/level-zero.
 llvm-runtimes/offload -llvm_targets_SPIRV
-llvm-runtimes/openmp -llvm_targets_SPIRV
+llvm-runtimes/openmp -level-zero
 
 # Michał Górny <mgorny@gentoo.org> (2026-03-03)
 # OpenMP offloading GPU runtimes are not keyworded everywhre.

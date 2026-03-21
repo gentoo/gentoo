@@ -14,7 +14,7 @@ LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0/${LLVM_SOABI}"
 IUSE="
 	+clang +debug gdb-plugin hwloc offload ompt test
-	llvm_targets_AMDGPU llvm_targets_NVPTX llvm_targets_SPIRV
+	cuda level-zero rocm
 "
 REQUIRED_USE="
 	gdb-plugin? ( ${PYTHON_REQUIRED_USE} )
@@ -28,8 +28,8 @@ RDEPEND="
 		dev-libs/libffi:=
 		~llvm-core/llvm-${PV}
 		!llvm-runtimes/offload
-		llvm_targets_AMDGPU? ( dev-libs/rocr-runtime:= )
-		llvm_targets_SPIRV? ( dev-libs/level-zero:= )
+		level-zero? ( dev-libs/level-zero:= )
+		rocm? ( dev-libs/rocr-runtime:= )
 	)
 "
 # tests:
@@ -122,13 +122,13 @@ multilib_src_configure() {
 		local plugins="host"
 
 		if has "${CHOST%%-*}" aarch64 powerpc64le x86_64; then
-			if use llvm_targets_AMDGPU; then
+			if use rocm; then
 				plugins+=";amdgpu"
 			fi
-			if use llvm_targets_NVPTX; then
+			if use cuda; then
 				plugins+=";cuda"
 			fi
-			if use llvm_targets_SPIRV; then
+			if use level-zero; then
 				plugins+=";level_zero"
 			fi
 		fi

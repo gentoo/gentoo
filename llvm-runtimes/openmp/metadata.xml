@@ -15,8 +15,10 @@
 		</flag>
 		<flag name="gdb-plugin">Build OMPD GDB plugin</flag>
 		<flag name="hwloc">Enable CPU affinity support via hwloc</flag>
+		<flag name="level-zero">Build <pkg>dev-libs/level-zero</pkg> offloading support for Intel GPUs.</flag>
 		<flag name="offload">Support offloading OpenMP using libomptarget</flag>
 		<flag name="ompt">Enable OpenMP Tools Interface support</flag>
+		<flag name="rocm">Build <pkg>dev-libs/rocr-runtime</pkg> offloading support for AMD GPUs.</flag>
 	</use>
 	<longdescription>The OpenMP subproject of LLVM is intended to contain all of the components required to build an executing OpenMP program that are outside the compiler itself.</longdescription>
 	<upstream>
