@@ -1,0 +1,33 @@
+From 407b875b82f4f15e4b789189ce58831159858763 Mon Sep 17 00:00:00 2001
+From: Sparky Bluefang <sparky@bluefang-logic.com>
+Date: Sat, 21 Mar 2026 00:14:59 -0400
+Subject: [PATCH] main.js: Don't import NetworkAgent unless nm_agent support is
+ enabled.
+
+When networkmanager is not present, imports.gi.NM will raise an exception
+and cause cinnamon to die.
+---
+ js/ui/main.js | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/js/ui/main.js b/js/ui/main.js
+index 912bdcbcb8..23d910ec75 100644
+--- a/js/ui/main.js
++++ b/js/ui/main.js
+@@ -112,7 +112,6 @@ const KeyringPrompt = imports.ui.keyringPrompt;
+ const RunDialog = imports.ui.runDialog;
+ const Layout = imports.ui.layout;
+ const LookingGlass = imports.ui.lookingGlass;
+-const NetworkAgent = imports.ui.networkAgent;
+ const NotificationDaemon = imports.ui.notificationDaemon;
+ const WindowAttentionHandler = imports.ui.windowAttentionHandler;
+ const CinnamonDBus = imports.ui.cinnamonDBus;
+@@ -450,7 +449,7 @@ function start() {
+     // NM Agent
+     if (Config.BUILT_NM_AGENT) {
+         if (global.settings.get_boolean("enable-nm-agent")) {
+-            networkAgent = new NetworkAgent.NetworkAgent();
++            networkAgent = new imports.ui.networkAgent.NetworkAgent();
+             global.log('NetworkManager agent: enabled')
+         } else {
+             global.log('NetworkManager agent: disabled by settings')

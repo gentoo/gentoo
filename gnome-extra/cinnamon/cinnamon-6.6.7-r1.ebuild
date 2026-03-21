@@ -103,6 +103,10 @@ RDEPEND="
 	nls? (
 		>=gnome-extra/cinnamon-translations-6.6
 	)
+
+	networkmanager? (
+		net-libs/libnma[introspection]
+	)
 "
 BDEPEND="
 	dev-lang/sassc
@@ -120,6 +124,10 @@ PATCHES=(
 	# Use wheel group instead of sudo (from Fedora/Arch)
 	# https://github.com/linuxmint/Cinnamon/issues/3576
 	"${FILESDIR}/${PN}-3.6.6-wheel-sudo.patch"
+
+	# Fix crash when networkmanager is not present.
+	# https://github.com/linuxmint/cinnamon/pull/13651
+	"${FILESDIR}/${PN}-6.6.7-fix-disable-networkmanager.patch"
 )
 
 src_prepare() {
