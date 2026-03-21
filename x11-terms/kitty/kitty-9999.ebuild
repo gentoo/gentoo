@@ -139,15 +139,12 @@ src_prepare() {
 src_compile() {
 	tc-export CC
 	local -x PKGCONFIG_EXE=$(tc-getPKG_CONFIG)
-
 	go-env_set_compile_environment
-	local -x GOFLAGS="-p=$(makeopts_jobs) -v -x -buildvcs=false"
-	use ppc64 && [[ $(tc-endian) == big ]] || GOFLAGS+=" -buildmode=pie"
 
 	local conf=(
 		--disable-link-time-optimization
 		--ignore-compiler-warnings
-		--libdir-name=$(get_libdir)
+		--libdir-name="$(get_libdir)"
 		--shell-integration="enabled no-sudo"
 		--update-check-interval=0
 		--verbose
