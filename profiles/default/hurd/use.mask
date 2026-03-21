@@ -4,6 +4,7 @@
 # Linux-specific
 acl
 epoll
+eventfd
 kmod
 netlink
 iptables
