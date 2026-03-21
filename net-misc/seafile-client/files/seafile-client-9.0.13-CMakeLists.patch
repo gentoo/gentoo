@@ -11,3 +11,23 @@ index 3bb58761..58af8e15 100644
  
  PROJECT(seafile-client)
  SET(SEAFILE_CLIENT_VERSION_MAJOR 9)
+diff --git a/extensions/CMakeLists.txt b/extensions/CMakeLists.txt
+index 25fc432b..e92f2301 100644
+--- a/extensions/CMakeLists.txt
++++ b/extensions/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.20)
+ PROJECT(seafile_shell_ext)
+ 
+ OPTION(X32 "Build 32 bit instead of 64bit dll" OFF)
+diff --git a/fsplugin/CMakeLists.txt b/fsplugin/CMakeLists.txt
+index 1e546c40..0faba566 100644
+--- a/fsplugin/CMakeLists.txt
++++ b/fsplugin/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.11)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.20)
+ 
+ PROJECT(seafile-fsplugin)
+ SET(PROJECT_VERSION "1.0.0")
