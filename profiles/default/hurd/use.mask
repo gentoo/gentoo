@@ -3,6 +3,7 @@
 
 # Linux-specific
 acl
+epoll
 kmod
 netlink
 iptables
