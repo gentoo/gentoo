@@ -21,13 +21,11 @@ REQUIRED_USE="
 "
 RESTRICT="!test? ( test )"
 
-RDEPEND="
-	gdb-plugin? ( ${PYTHON_DEPS} )
+DEPEND="
 	hwloc? ( >=sys-apps/hwloc-2.5:0=[${MULTILIB_USEDEP}] )
 	offload? (
 		dev-libs/libffi:=
 		~llvm-core/llvm-${PV}
-		!llvm-runtimes/offload
 		level-zero? ( dev-libs/level-zero:= )
 		rocm? ( dev-libs/rocr-runtime:= )
 	)
@@ -36,12 +34,20 @@ RDEPEND="
 # - dev-python/lit provides the test runner
 # - llvm-core/llvm provide test utils (e.g. FileCheck)
 # - llvm-core/clang provides the compiler to run tests
-DEPEND="
-	${RDEPEND}
+RDEPEND="
+	${DEPEND}
+	gdb-plugin? ( ${PYTHON_DEPS} )
+	offload? (
+		!llvm-core/offload
+		cuda? ( ~llvm-runtimes/openmp-nvptx64-nvidia-cuda-${PV} )
+		level-zero? ( ~llvm-runtimes/openmp-spirv64-intel-${PV} )
+		rocm? ( ~llvm-runtimes/openmp-amdgcn-amd-amdhsa-${PV} )
+	)
 "
 BDEPEND="
 	dev-lang/perl
 	clang? ( llvm-core/clang )
+	gdb-plugin? ( ${PYTHON_DEPS} )
 	offload? (
 		virtual/pkgconfig
 	)
