@@ -1,9 +1,10 @@
-# Copyright 2021-2025 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-LLVM_COMPAT=( {17..21} ) # see .cmake.conf for minimum
+# match QDOC_SUPPORTED_CLANG_VERSIONS in src/qdoc/cmake/QDocConfiguration.cmake
+LLVM_COMPAT=( {17..21} )
 LLVM_OPTIONAL=1
 
 # behaves very badly when qttools is not already installed, also
