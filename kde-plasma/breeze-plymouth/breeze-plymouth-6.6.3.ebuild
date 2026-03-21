@@ -4,7 +4,7 @@
 EAPI=8
 
 KFMIN=6.22.0
-inherit cmake plasma.kde.org
+inherit branding cmake plasma.kde.org
 
 DESCRIPTION="Breeze theme for Plymouth"
 
@@ -19,8 +19,8 @@ RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
-		-DDISTRO_NAME="Gentoo Linux"
-		-DDISTRO_VERSION=
+		-DDISTRO_NAME="${BRANDING_OS_NAME}"
+		-DDISTRO_VERSION="${BRANDING_OS_VERSION}"
 	)
 
 	cmake_src_configure
