@@ -4,7 +4,6 @@
 EAPI=8
 
 DESCRIPTION="Full-fledged command-line interface to Compiler Explorer instances"
-# https://jemarch.net/godcc 404s for now
 HOMEPAGE="https://git.sr.ht/~jemarch/godcc"
 SRC_URI="https://jemarch.net/${P}.tar.gz"
 
