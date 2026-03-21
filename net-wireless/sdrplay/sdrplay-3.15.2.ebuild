@@ -16,7 +16,7 @@ S="${WORKDIR}"
 
 LICENSE="SDRplay"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="systemd"
 
 DEPEND="virtual/libusb:1
