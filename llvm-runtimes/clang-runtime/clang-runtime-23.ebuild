@@ -36,7 +36,7 @@ RDEPEND="
 				>=llvm-runtimes/openmp-amdgcn-amd-amdhsa-${PV}
 			)
 			llvm_targets_NVPTX? (
-				>=llvm-runtimes/openmp-nvptx64-${PV}
+				>=llvm-runtimes/openmp-nvptx64-nvidia-cuda-${PV}
 			)
 		)
 	)

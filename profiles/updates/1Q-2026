@@ -1,1 +1,2 @@
 move llvm-runtimes/openmp-amdgcn llvm-runtimes/openmp-amdgcn-amd-amdhsa
+move llvm-runtimes/openmp-nvptx64 llvm-runtimes/openmp-nvptx64-nvidia-cuda
