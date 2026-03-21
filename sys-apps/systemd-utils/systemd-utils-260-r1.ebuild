@@ -107,6 +107,7 @@ CONFIG_CHECK="~BLK_DEV_BSG ~DEVTMPFS ~!IDE ~INOTIFY_USER ~!SYSFS_DEPRECATED
 
 PATCHES=(
 	"${FILESDIR}/systemd-260-mips.patch"
+	"${FILESDIR}/systemd-260-kernel-install.patch"
 )
 
 pkg_setup() {
