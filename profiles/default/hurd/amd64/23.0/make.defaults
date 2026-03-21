@@ -5,6 +5,6 @@ CHOST="x86_64-gnu"
 
 MULTILIB_ABIS="amd64"
 CHOST_amd64="${CHOST}"
-LIBDIR_amd64="lib"
+LIBDIR_amd64="lib64"
 
 LDFLAGS="-Wl,-O1 -Wl,--as-needed -Wl,-z,pack-relative-relocs"
