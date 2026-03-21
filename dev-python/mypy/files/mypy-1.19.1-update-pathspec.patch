@@ -1,0 +1,92 @@
+From f28ac2046639c8661b44e41a66beee13c1c0b040 Mon Sep 17 00:00:00 2001
+From: Marc Mueller <30130371+cdce8p@users.noreply.github.com>
+Date: Tue, 6 Jan 2026 11:35:09 +0100
+Subject: [PATCH] Update pathspec to 1.0.0
+
+---
+ mypy-requirements.txt | 2 +-
+ mypy/modulefinder.py  | 6 +++---
+ pyproject.toml        | 4 ++--
+ test-requirements.txt | 4 ++--
+ 4 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/mypy-requirements.txt b/mypy-requirements.txt
+index 6984d9a5d070c..954bb5a6e46ef 100644
+--- a/mypy-requirements.txt
++++ b/mypy-requirements.txt
+@@ -2,6 +2,6 @@
+ # and the pins in setup.py
+ typing_extensions>=4.6.0
+ mypy_extensions>=1.0.0
+-pathspec>=0.9.0
++pathspec>=1.0.0
+ tomli>=1.1.0; python_version<'3.11'
+ librt>=0.6.2; platform_python_implementation != 'PyPy'
+diff --git a/mypy/modulefinder.py b/mypy/modulefinder.py
+index 469df963b9f54..4ec6665e6f165 100644
+--- a/mypy/modulefinder.py
++++ b/mypy/modulefinder.py
+@@ -16,7 +16,7 @@
+ from typing import Final, TypeAlias as _TypeAlias
+ 
+ from pathspec import PathSpec
+-from pathspec.patterns.gitwildmatch import GitWildMatchPatternError
++from pathspec.patterns.gitignore import GitIgnorePatternError
+ 
+ from mypy import pyinfo
+ from mypy.errors import CompileError
+@@ -736,8 +736,8 @@ def find_gitignores(dir: str) -> list[tuple[str, PathSpec]]:
+         with open(gitignore) as f:
+             lines = f.readlines()
+         try:
+-            return parent_gitignores + [(dir, PathSpec.from_lines("gitwildmatch", lines))]
+-        except GitWildMatchPatternError:
++            return parent_gitignores + [(dir, PathSpec.from_lines("gitignore", lines))]
++        except GitIgnorePatternError:
+             print(f"error: could not parse {gitignore}", file=sys.stderr)
+             return parent_gitignores
+     return parent_gitignores
+diff --git a/pyproject.toml b/pyproject.toml
+index 54d2263a03f63..c58d798be55a9 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -7,7 +7,7 @@ requires = [
+     # the following is from mypy-requirements.txt/setup.py
+     "typing_extensions>=4.6.0",
+     "mypy_extensions>=1.0.0",
+-    "pathspec>=0.9.0",
++    "pathspec>=1.0.0",
+     "tomli>=1.1.0; python_version<'3.11'",
+     "librt>=0.6.2; platform_python_implementation != 'PyPy'",
+     # the following is from build-requirements.txt
+@@ -51,7 +51,7 @@ dependencies = [
+   # When changing this, also update build-system.requires and mypy-requirements.txt
+   "typing_extensions>=4.6.0",
+   "mypy_extensions>=1.0.0",
+-  "pathspec>=0.9.0",
++  "pathspec>=1.0.0",
+   "tomli>=1.1.0; python_version<'3.11'",
+   "librt>=0.6.2; platform_python_implementation != 'PyPy'",
+ ]
+diff --git a/test-requirements.txt b/test-requirements.txt
+index 883930c681a41..05f9163121c14 100644
+--- a/test-requirements.txt
++++ b/test-requirements.txt
+@@ -22,7 +22,7 @@ identify==2.6.15
+     # via pre-commit
+ iniconfig==2.1.0
+     # via pytest
+-librt==0.7.3 ; platform_python_implementation != 'PyPy'
++librt==0.7.3 ; platform_python_implementation != "PyPy"
+     # via -r mypy-requirements.txt
+ lxml==6.0.2 ; python_version < "3.15"
+     # via -r test-requirements.in
+@@ -32,7 +32,7 @@ nodeenv==1.9.1
+     # via pre-commit
+ packaging==25.0
+     # via pytest
+-pathspec==0.12.1
++pathspec==1.0.0
+     # via -r mypy-requirements.txt
+ platformdirs==4.5.0
+     # via virtualenv
