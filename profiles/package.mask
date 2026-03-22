@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2026-03-22)
+# Commits since the last release (0.370) are heavily driven by LLM
+# automation. Avoid exposing users to this (bug #971488).
+>dev-perl/Crypt-OpenSSL-RSA-0.370
+
 # Michał Górny <mgorny@gentoo.org> (2026-03-22)
 # Cyclic dependency through dev-python/vcs-versioning →
 # dev-python/hatchling → dev-python/pluggy.
