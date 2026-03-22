@@ -1510,7 +1510,7 @@ glibc_do_src_install() {
 		local ldso_abi_list=(
 			# x86
 			amd64   /lib64/ld-x86-64.so.1
-			x86     /lib/ld.so
+			x86     /lib/ld.so.1
 		)
 	fi
 	if [[ ${SYMLINK_LIB} == "yes" ]] && [[ ! -e ${ED}/$(alt_prefix)/lib ]] ; then
@@ -1547,6 +1547,20 @@ glibc_do_src_install() {
 				dosym ${native_ldso_name} "$(alt_prefix)/$(get_abi_LIBDIR ${lsb_ldso_abi})/${lsb_ldso_name}"
 			fi
 		done
+	fi
+
+	if is_hurd && has x86 $(get_install_abis) ; then
+		# On ix86, glibc and (unpatched) gcc disagree about the proper location for the dynamic loader.
+		# Which is maximally stupid since this one information is hardcoded into every single
+		# binary...
+
+		# First, let's check for sanity
+		if [[ -f "$(alt_prefix)/$(get_abi_LIBDIR x86)/ld.so" ]] ; then
+			die "Somehow your hurd glibc installed a literal ld.so ... this should not happen."
+		fi
+
+		# Then make a compatibility symlink.
+		dosym ld.so.1 "$(alt_prefix)/$(get_abi_LIBDIR x86)/ld.so"
 	fi
 
 	# With devpts under Linux mounted properly, we do not need the pt_chown
