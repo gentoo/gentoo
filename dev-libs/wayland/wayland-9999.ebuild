@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ inherit meson-multilib
 DESCRIPTION="Wayland protocol libraries"
 HOMEPAGE="https://wayland.freedesktop.org/ https://gitlab.freedesktop.org/wayland/wayland"
 
-LICENSE="MIT"
+LICENSE="MIT doc? ( Apache-2.0 OFL-1.1 )"
 SLOT="0"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
@@ -24,9 +24,10 @@ BDEPEND="
 	~dev-util/wayland-scanner-${PV}
 	virtual/pkgconfig
 	doc? (
-		>=app-text/doxygen-1.6[dot]
+		app-text/doxygen
+		app-text/mdbook
 		app-text/xmlto
-		>=media-gfx/graphviz-2.26.0
+		media-gfx/graphviz
 	)
 "
 DEPEND="
@@ -60,7 +61,7 @@ src_install() {
 	meson-multilib_src_install
 
 	if use doc; then
-		mv "${ED}"/usr/share/doc/"${PN}"/* "${ED}"/usr/share/doc/"${PF}"/ || die
-		rmdir "${ED}"/usr/share/doc/"${PN}" || die
+		mv "${ED}"/usr/share/doc/{${PN}/Wayland,${PF}/html} || die
+		rmdir "${ED}"/usr/share/doc/${PN} || die
 	fi
 }
