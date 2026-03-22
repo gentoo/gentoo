@@ -23,7 +23,7 @@ SLOT="0"
 IUSE="debug doc lua postgres radius shaper snmp valgrind"
 
 RDEPEND="
-	dev-libs/libpcre
+	dev-libs/libpcre2
 	dev-libs/openssl:0=
 	lua? ( ${LUA_DEPS} )
 	postgres? ( dev-db/postgresql:* )
@@ -46,29 +46,17 @@ pkg_setup() {
 	use lua && lua-single_pkg_setup
 }
 
-src_prepare() {
-	sed -i  -e "/mkdir/d" \
-		-e "s: RENAME accel-ppp.conf.dist::" accel-pppd/CMakeLists.txt || die 'sed on accel-pppd/CMakeLists.txt failed'
-
-	# Do not install kernel modules like that - breaks sandbox!
-	sed -i -e '/modules_install/d' \
-		drivers/ipoe/CMakeLists.txt \
-		drivers/vlan_mon/CMakeLists.txt || die
-
-	append-ldflags -Wl,-z,lazy # Bug #549918
-
-	cmake_src_prepare
-}
-
 src_configure() {
+	append-ldflags -Wl,-z,lazy # Bug #549918
 	local libdir="$(get_libdir)"
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}/etc"
 		-DCMAKE_INSTALL_LOCALSTATEDIR="${EPREFIX}/var"
 		-DLIB_SUFFIX="${libdir#lib}"
-		-DBUILD_IPOE_DRIVER="$(usex ipoe)"
+		# modules handled by linux-mod
+		-DBUILD_IPOE_DRIVER=no
 		-DBUILD_PPTP_DRIVER=no
-		-DBUILD_VLAN_MON_DRIVER="$(usex ipoe)"
+		-DBUILD_VLAN_MON_DRIVER=no
 		-DCRYPTO_LIBRARY=OPENSSL
 		-DLOG_PGSQL="$(usex postgres)"
 		-DLUA="$(usex lua TRUE FALSE)"
@@ -81,13 +69,23 @@ src_configure() {
 	cmake_src_configure
 }
 
-src_compile() {
-	local modlist=( ipoe=accel-ppp:drivers/ipoe vlan_mon=accel-ppp:drivers/vlan_mon )
+build_modules() {
+	local mod modlist
+	for mod in ipoe vlan_mon; do
+		# see bug #971394
+		ln -s "${BUILD_DIR}"/version.h drivers/${mod} || die
+		local modlist+=( ${mod}=accel-ppp:drivers/${mod} )
+	done
 	MODULES_MAKEARGS+=(
 		KDIR="${KV_OUT_DIR}"
 	)
 	linux-mod-r1_src_compile
+}
+
+src_compile() {
+	use ipoe && build_modules
 	cmake_src_compile
+
 }
 
 src_install() {
@@ -100,6 +98,8 @@ src_install() {
 		insinto /usr/share/snmp/mibs
 		doins accel-pppd/extra/net-snmp/ACCEL-PPP-MIB.txt
 	fi
+
+	mv "${ED}"/etc/accel-ppp.conf{.dist,} || die
 
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}d
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}d
