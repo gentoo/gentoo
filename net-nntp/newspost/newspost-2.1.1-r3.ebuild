@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs
 
-DESCRIPTION="A usenet binary autoposter for unix"
+DESCRIPTION="usenet binary autoposter for unix"
 HOMEPAGE="http://newspost.unixcab.org/"
 SRC_URI="http://newspost.unixcab.org/download/${P}.tar.gz"
 
@@ -18,6 +18,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-nntp.patch
 	"${FILESDIR}"/CAN-2005-0101.patch
 	"${FILESDIR}"/${P}-glibc-2.10.patch
+	"${FILESDIR}"/${P}-c23.patch
 )
 
 src_prepare() {

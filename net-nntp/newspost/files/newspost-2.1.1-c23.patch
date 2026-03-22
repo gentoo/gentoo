@@ -1,0 +1,309 @@
+file_entry_alloc takes no argument and most callers pass none. Also, add
+modern definitions.
+
+https://bugs.gentoo.org/944984
+--- a/base/newspost.c
++++ b/base/newspost.c
+@@ -108,7 +108,7 @@ static int encode_and_post(newspost_data *data, SList *file_list,
+ 	else {
+ 		/* post any sfv files... */
+ 		if (data->sfv != NULL) {
+-			file_data = file_entry_alloc(file_data);
++			file_data = file_entry_alloc();
+ 			file_data->filename = 
+ 				buff_create(file_data->filename, "%s", data->sfv->data);
+ 			if (stat(data->sfv->data, &file_data->fileinfo) == -1)
+--- a/base/nntp.c
++++ b/base/nntp.c
+@@ -73,7 +73,8 @@ boolean nntp_logon(newspost_data *data) {
+ 	return TRUE;
+ }
+ 
+-void nntp_logoff() {
++void 
++nntp_logoff (void) {
+ 	char tmpbuffer[STRING_BUFSIZE];
+ 	nntp_issue_command("QUIT");
+ 	nntp_get_response(tmpbuffer);
+--- a/base/socket.c
++++ b/base/socket.c
+@@ -98,7 +98,8 @@ defined(__SVR4) || defined(__svr4__))
+         return 0;
+ }
+ 
+-void socket_close() {
++void 
++socket_close (void) {
+ 	if (sockfd >= 0)
+ 		close(sockfd);
+ }
+--- a/parchive/md5.c
++++ b/parchive/md5.c
+@@ -102,9 +102,7 @@ static void md5_process_bytes (const void *buffer, size_t len,
+    resulting message digest number will be written into the 16 bytes
+    beginning at RESBLOCK.  */
+ i64
+-md5_stream (stream, resblock)
+-     FILE *stream;
+-     void *resblock;
++md5_stream (FILE *stream, void *resblock)
+ {
+ 	/* Important: BLOCKSIZE must be a multiple of 64.  */
+ #define BLOCKSIZE 4096
+@@ -165,10 +163,7 @@ md5_stream (stream, resblock)
+    output yields to the wanted ASCII representation of the message
+    digest.  */
+ void *
+-md5_buffer (buffer, len, resblock)
+-     const char *buffer;
+-     size_t len;
+-     void *resblock;
++md5_buffer (const char *buffer, size_t len, void *resblock)
+ {
+ 	struct md5_ctx ctx;
+ 	
+@@ -189,9 +184,8 @@ md5_buffer (buffer, len, resblock)
+ 
+ /* Initialize structure containing state of computation.
+    (RFC 1321, 3.3: Step 3)  */
+-static void
+-md5_init_ctx (ctx)
+-     struct md5_ctx *ctx;
++static void 
++md5_init_ctx (struct md5_ctx *ctx)
+ {
+ 	ctx->A = 0x67452301;
+ 	ctx->B = 0xefcdab89;
+@@ -208,9 +202,7 @@ md5_init_ctx (ctx)
+    IMPORTANT: On some systems it is required that RESBUF is correctly
+    aligned for a 32 bits value.  */
+ static void *
+-md5_read_ctx (ctx, resbuf)
+-     const struct md5_ctx *ctx;
+-     void *resbuf;
++md5_read_ctx (const struct md5_ctx *ctx, void *resbuf)
+ {
+ 	u8 *rb = resbuf;
+ 	u32 v;
+@@ -241,9 +233,7 @@ md5_read_ctx (ctx, resbuf)
+    IMPORTANT: On some systems it is required that RESBUF is correctly
+    aligned for a 32 bits value.  */
+ static void *
+-md5_finish_ctx (ctx, resbuf)
+-     struct md5_ctx *ctx;
+-     void *resbuf;
++md5_finish_ctx (struct md5_ctx *ctx, void *resbuf)
+ {
+   /* Take yet unprocessed bytes into account.  */
+ 	u32 bytes = ctx->buflen;
+@@ -277,11 +267,8 @@ md5_finish_ctx (ctx, resbuf)
+ 	return md5_read_ctx (ctx, resbuf);
+ }
+ 
+-static void
+-md5_process_bytes (buffer, len, ctx)
+-     const void *buffer;
+-     size_t len;
+-     struct md5_ctx *ctx;
++static void 
++md5_process_bytes (const void *buffer, size_t len, struct md5_ctx *ctx)
+ {
+ 	/* When we already have some bits in our internal buffer concatenate
+ 	   both inputs first.  */
+@@ -334,11 +321,8 @@ md5_process_bytes (buffer, len, ctx)
+ /* Process LEN bytes of BUFFER, accumulating context into CTX.
+    It is assumed that LEN % 64 == 0.  */
+ 
+-static void
+-md5_process_block (buffer, len, ctx)
+-     const void *buffer;
+-     size_t len;
+-     struct md5_ctx *ctx;
++static void 
++md5_process_block (const void *buffer, size_t len, struct md5_ctx *ctx)
+ {
+ 	u32 correct_words[16];
+ 	const u8 *words = buffer;
+--- a/ui/main.c
++++ b/ui/main.c
+@@ -31,7 +31,7 @@ boolean temporary_prefix = FALSE;
+ 
+ const char *EDITOR = NULL;
+ 
+-static void signal_handler();
++static void signal_handler(int signum);
+ 
+ int main(int argc, char **argv) {
+ 	newspost_data main_data;
+@@ -159,7 +159,7 @@ int main(int argc, char **argv) {
+ 			tmpdir_ptr = main_data.tmpdir;
+ 
+ 			if ((main_data.text == TRUE) && (file_list == NULL)) {
+-				file_data = file_entry_alloc(file_data);
++				file_data = file_entry_alloc();
+ 				file_data->filename = buff_create(file_data->filename,
+ 					 "%s/message", main_data.tmpdir->data);
+ 				command = buff_create(command, "%s %s",
+@@ -324,7 +324,7 @@ int main(int argc, char **argv) {
+ 	}
+ }
+ 
+-static void signal_handler() {
++static void signal_handler(int signum) {
+ 	Buff *command = NULL;
+ 
+ 	fprintf(stderr, "\nSignal received");
+--- a/ui/options.c
++++ b/ui/options.c
+@@ -890,7 +890,8 @@ void check_options(newspost_data *data) {
+ 		exit(EXIT_BAD_HEADER_LINE);
+ }
+ 
+-void print_help() {
++void 
++print_help (void) {
+ 	version_info();
+ 	printf("\n\nUsage: newspost [OPTIONS [ARGUMENTS]]"
+ 		" file1 file2 file3...");
+@@ -1123,7 +1124,8 @@ static void parse_delay_option(const char *option) {
+ 		post_delay = 3;
+ }
+ 
+-static void version_info() {
++static void 
++version_info (void) {
+ 	printf("\n" NEWSPOSTNAME " version " VERSION
+ 		"\nCopyright (C) 2001 - 2003 Jim Faulkner"
+ 		"\nThis is free software; see the source for"
+--- a/ui/ui.c
++++ b/ui/ui.c
+@@ -52,7 +52,8 @@ void ui_tmpdir_create_failed(const char *dirname, int error) {
+ 		dirname, strerror(error));
+ }
+ 
+-void ui_sfv_gen_start() {
++void 
++ui_sfv_gen_start (void) {
+ 	printf("\nGenerating SFV file...");
+ 	fflush(stdout);
+ }
+@@ -68,12 +69,14 @@ void ui_sfv_gen_error(const char *filename, int error) {
+ 			(error == 0) ? strerror(error) : "", filename);
+ }
+ 
+-void ui_crc_start() {
++void 
++ui_crc_start (void) {
+ 	printf("\nCalculating CRCs...");
+ 	fflush(stdout);
+ }
+ 
+-void ui_crc_done() {
++void 
++ui_crc_done (void) {
+ 	printf(" done");
+ 	fflush(stdout);
+ }
+@@ -84,12 +87,14 @@ void ui_crc_error(const char *filename, int error) {
+ 			(error == 0) ? strerror(error) : "", filename);
+ }
+ 
+-void ui_par_gen_start() {
++void 
++ui_par_gen_start (void) {
+ 	printf("\nAdding files to PAR archive...");
+ 	fflush(stdout);	
+ }
+ 
+-void ui_par_gen_error() {
++void 
++ui_par_gen_error (void) {
+ 	fprintf(stderr,
+ 		"\nWARNING: Error while creating PAR files");
+ }
+@@ -99,7 +104,8 @@ void ui_par_file_add_done(const char *filename) {
+ 	fflush(stdout);
+ }
+ 
+-void ui_par_volume_create_start() {
++void 
++ui_par_volume_create_start (void) {
+ 	printf("\nCreating PAR volumes...");
+ 	fflush(stdout);
+ }
+@@ -244,7 +250,8 @@ void ui_socket_connect_start(const char *servername) {
+ 	}
+ }
+ 
+-void ui_socket_connect_done() {
++void 
++ui_socket_connect_done (void) {
+ 	if (verbosity == TRUE) {
+ 		printf(" done.");
+ 		fflush(stdout);
+@@ -258,7 +265,8 @@ void ui_nntp_logon_start(const char *servername) {
+ 	}
+ }
+ 
+-void ui_nntp_logon_done() {
++void 
++ui_nntp_logon_done (void) {
+ 	if (verbosity == TRUE) {
+ 		printf(" done.\n");
+ 		fflush(stdout);
+@@ -300,7 +308,8 @@ void ui_posting_prefix_start(const char *filename) {
+ 	fflush(stdout);
+ }
+ 
+-void ui_posting_prefix_done() {
++void 
++ui_posting_prefix_done (void) {
+ 	files_posted++;
+ 	printf(" done.\n");
+ 	fflush(stdout);
+@@ -308,7 +317,8 @@ void ui_posting_prefix_done() {
+ 
+ /* when the prefix does not get posted
+    i.e. is the prefix a text file? */
+-void ui_posting_prefix_failed() {
++void 
++ui_posting_prefix_failed (void) {
+ 	fprintf(stderr,
+ 		"\nWARNING: Posting failed. Is it really a text file?");
+ }
+@@ -404,7 +414,8 @@ void ui_nntp_posting_failed(const char *response) {
+ 		"\nWARNING: Posting failed: %s", response);
+ }
+ 
+-void ui_nntp_posting_retry() {
++void 
++ui_nntp_posting_retry (void) {
+ 	fprintf(stderr,
+ 		"Retrying");
+ }
+@@ -490,11 +501,13 @@ void ui_posting_file_start(newspost_data *data, file_entry *filedata,
+ 	fflush(stdout);
+ }
+ 
+-void ui_posting_file_done() {
++void 
++ui_posting_file_done (void) {
+ 	files_posted++;
+ }
+ 
+-void ui_post_done() {
++void 
++ui_post_done (void) {
+ 	time_t totaltime = (time(NULL) - start_time);
+ 	long totalbps;
+ 
+@@ -525,7 +538,8 @@ void ui_generic_error(int error) {
+ 			"\nWARNING: %s", strerror(error));
+ }
+ 
+-void ui_too_many_failures() {
++void 
++ui_too_many_failures (void) {
+ 	fprintf(stderr, "\nToo many failures."
+ 			"\nGiving up.\n");
+ 	exit(EXIT_POSTING_FAILED);
