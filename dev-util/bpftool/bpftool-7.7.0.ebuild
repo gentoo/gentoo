@@ -7,7 +7,7 @@ LLVM_COMPAT=( {15..22} )
 LLVM_OPTIONAL=1
 PYTHON_COMPAT=( python3_{11..14} )
 
-inherit bash-completion-r1 linux-info llvm-r1 python-any-r1 toolchain-funcs
+inherit bash-completion-r1 flag-o-matic linux-info llvm-r1 python-any-r1 toolchain-funcs
 
 DESCRIPTION="Tool for inspection and simple manipulation of eBPF programs and maps"
 HOMEPAGE="https://github.com/libbpf/bpftool"
@@ -116,6 +116,14 @@ src_prepare() {
 	type -P rst2man >/dev/null || sed -i -e 's/rst2man/rst2man.py/g' docs/Makefile || die
 }
 
+src_configure() {
+	# filter LTO after discussion about UB in libbpf:
+	# https://lore.kernel.org/bpf/20260321024446.692008-1-irogers@google.com/
+	filter-lto
+
+	default
+}
+
 bpftool_make() {
 	# which BPF compiler should we use?
 	if use clang; then
@@ -129,8 +137,12 @@ bpftool_make() {
 
 	tc-export AR CC LD
 
+	# add EXTRA_CFLAGS to be consistent with our libbpf ebuild
+	local extra_cflags="-fno-strict-aliasing"
+
 	emake \
 		ARCH="$(tc-arch-kernel)" \
+		EXTRA_CFLAGS="${extra_cflags}" \
 		HOSTAR="$(tc-getBUILD_AR)" \
 		HOSTCC="$(tc-getBUILD_CC)" \
 		HOSTLD="$(tc-getBUILD_LD)" \
