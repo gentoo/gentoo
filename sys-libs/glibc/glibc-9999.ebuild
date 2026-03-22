@@ -1539,7 +1539,7 @@ glibc_do_src_install() {
 		local ldso_abi_list=(
 			# x86
 			amd64   /lib64/ld-x86-64.so.1
-			x86     /lib/ld.so
+			x86     /lib/ld.so.1
 		)
 	fi
 	if [[ ${SYMLINK_LIB} == "yes" ]] && [[ ! -e ${ED}/$(alt_prefix)/lib ]] ; then
