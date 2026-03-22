@@ -37,6 +37,13 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-04-21)
+# USE=gui in this version depends on Qt5 and can no longer be supported.
+# Alternatives for stable users are media-video/mpv, media-video/haruna,
+# media-video/smplayer, media-video/qmplay2 and probably many more.
+# Bug #954006. Removal some time after 2026-05-15.
+=media-video/vlc-3.0.23
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-04-21)
 # PyQt5 has no more revdeps (that aren't also masked).
 # Removal on 2026-05-21.  Bug #950282
 dev-python/pyqt5
