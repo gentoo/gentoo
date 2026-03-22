@@ -11,12 +11,13 @@ SRC_URI="https://github.com/jeremy-rifkin/${PN}/archive/refs/tags/v${PV}.tar.gz 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="test"
+IUSE="unwind test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	app-arch/zstd:=
 	dev-libs/libdwarf:=
+	unwind? ( sys-libs/libunwind:= )
 "
 DEPEND="
 	${RDEPEND}
@@ -38,6 +39,7 @@ src_configure() {
 		-DCPPTRACE_USE_EXTERNAL_GTEST=yes
 		-DCPPTRACE_USE_EXTERNAL_LIBDWARF=yes
 		-DCPPTRACE_USE_EXTERNAL_ZSTD=yes
+		-DCPPTRACE_UNWIND_WITH_LIBUNWIND=$(usex unwind)
 	)
 	cmake_src_configure
 }
