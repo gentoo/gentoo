@@ -75,6 +75,13 @@ x11-misc/emacs-desktop-mail
 =dev-python/requests-2.32.5
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-04-06)
+# USE=gui in this version depends on Qt5 and can no longer be supported.
+# Alternatives for stable users are media-video/mpv, media-video/haruna,
+# media-video/smplayer, media-video/qmplay2 and probably many more.
+# Bug #954006. Removal some time after 2026-04-30.
+=media-video/vlc-3.0.23
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-04-06)
 # Obsolete KF5/KF6-transitional -common packages w/o any consumers left.
 # Removal on 2026-05-06.
 kde-apps/libksane-common
