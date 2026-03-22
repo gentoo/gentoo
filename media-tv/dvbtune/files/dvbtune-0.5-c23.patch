@@ -1,0 +1,30 @@
+https://bugs.gentoo.org/945283
+
+From nicoslocalcvsclonerepo Mon Sep 17 00:00:00 2001
+From: Nico Roeser
+Date: Sat, 13 Sep 2025 14:07:38 +0200
+Subject: [PATCH] Fix build by correcting arguments in a call
+
+Note: a future version (in the CVS repo) splits the function into a
+separate compile unit and has it use an argument. This is not necessary
+with the current code, as the transponders are available as global
+object.
+---
+ dvbtune.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/dvbtune.c b/dvbtune.c
+--- a/dvbtune.c
++++ b/dvbtune.c
+@@ -1337,7 +1337,7 @@ int main(int argc, char **argv)
+     printf("<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n<satellite>\n");
+     scan_nit(0x40); /* Get initial list of transponders */
+     scan_nit(0x41); /* Get initial list of transponders */
+-    while ((t=get_unscanned(transponders))!=NULL) {
++    while ((t=get_unscanned())!=NULL) {
+       free_pat_list();
+       fprintf(stderr,"Scanning %d%c %d\n",t->freq,t->pol,t->srate);
+       tune_it(fd_frontend,fd_sec,t->freq,t->srate,t->pol,tone,specInv,0,modulation,HP_CodeRate,TransmissionMode,guardInterval,bandWidth);
+-- 
+2.51.0
+
