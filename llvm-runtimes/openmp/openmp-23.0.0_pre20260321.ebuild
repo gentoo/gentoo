@@ -38,7 +38,7 @@ RDEPEND="
 	${DEPEND}
 	gdb-plugin? ( ${PYTHON_DEPS} )
 	offload? (
-		!llvm-core/offload
+		!llvm-runtimes/offload
 		cuda? ( ~llvm-runtimes/openmp-nvptx64-nvidia-cuda-${PV} )
 		level-zero? ( ~llvm-runtimes/openmp-spirv64-intel-${PV} )
 		rocm? ( ~llvm-runtimes/openmp-amdgcn-amd-amdhsa-${PV} )
