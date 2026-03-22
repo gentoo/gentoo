@@ -8,28 +8,50 @@ inherit cmake xdg
 DESCRIPTION="KeePassXC - KeePass Cross-platform Community Edition"
 HOMEPAGE="https://keepassxc.org"
 
-if [[ "${PV}" = *9999* ]] ; then
-	inherit git-r3
+#
+# Experimental KeepassXC version with Qt6 support
+#
+# This version is based on the current upstream development branch and a
+# patchset extracted from https://github.com/keepassxreboot/keepassxc/pull/11651
+#
+# Unkeyworded for the time being.
+#
+# Last commit on development repository:
+#     commit 379be00127db60b1ddee9c67f4bfc49c15db8236
+#     Author: Jonathan White <support@dmapps.us>
+#     Date:   Sat Mar 14 19:21:44 2026 -0400
+#
+# Patch based on https://github.com/keepassxreboot/keepassxc/pull/11651 :
+#     commit f93bfe5e036f9c0aafe78b08f189943ba31a9158 (HEAD -> qt6_ver2)
+#     Author: Jonathan White <support@dmapps.us>
+#     Date:   Sun Mar 15 22:23:06 2026 -0400
+#
 
-	EGIT_BRANCH="develop"
-	EGIT_REPO_URI="https://github.com/keepassxreboot/${PN}"
-else
-	if [[ "${PV}" == *_beta* ]] ; then
-		SRC_URI="https://github.com/keepassxreboot/${PN}/archive/${PV/_/-}.tar.gz
-			-> ${P}.gh.tar.gz"
-		S="${WORKDIR}/${P/_/-}"
-	else
-		# switch to QT6 porting branch
-		# https://github.com/varjolintu/keepassxc/tree/qt6_ver2
-		GIT_HASH="f93bfe5e036f9c0aafe78b08f189943ba31a9158"
-		SRC_URI="https://github.com/varjolintu/keepassxc/archive/${GIT_HASH}.tar.gz
-			-> ${P}.${GIT_HASH}.qt6.tar.gz"
-		S="${WORKDIR}/${PN}-${GIT_HASH}"
-	fi
+GIT_HASH="379be00127db60b1ddee9c67f4bfc49c15db8236"
+PATCH_GIT_HASH="f93bfe5e036f9c0aafe78b08f189943ba31a9158"
+SRC_URI="
+	https://github.com/keepassxreboot/keepassxc/archive/${GIT_HASH}.tar.gz -> ${P}.tar.gz
+	https://dev.gentoo.org/~tamiko/distfiles/${P}-qt6_patches-${PATCH_GIT_HASH}.patch.gz"
 
-	# remove keywords for this development branch
-	# KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
-fi
+S="${WORKDIR}/${PN}-${GIT_HASH}"
+
+#  if [[ "${PV}" = *9999* ]] ; then
+#      inherit git-r3
+#
+#      EGIT_BRANCH="develop"
+#      EGIT_REPO_URI="https://github.com/keepassxreboot/${PN}"
+#  else
+#      if [[ "${PV}" == *_beta* ]] ; then
+#          SRC_URI="https://github.com/keepassxreboot/${PN}/archive/${PV/_/-}.tar.gz
+#              -> ${P}.gh.tar.gz"
+#          S="${WORKDIR}/${P/_/-}"
+#      else
+#          SRC_URI="https://github.com/keepassxreboot/${PN}/archive/${PV}.tar.gz
+#              -> ${P}.gh.tar.gz"
+#      fi
+#
+#      KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+#  fi
 
 # COPYING order
 LICENSE="|| ( GPL-2 GPL-3 ) BSD LGPL-2.1 MIT LGPL-2 CC0-1.0 Apache-2.0 GPL-2+ BSD-2"
@@ -70,6 +92,8 @@ BDEPEND="
 "
 
 PATCHES=(
+
+	"${WORKDIR}/${P}-qt6_patches-${PATCH_GIT_HASH}.patch"
 	"${FILESDIR}/${PN}-2.8.0-cmake_minimum.patch"
 	"${FILESDIR}/${PN}-2.7.10-tests.patch"
 	"${FILESDIR}/${PN}-2.7.10-zxcvbn.patch"
