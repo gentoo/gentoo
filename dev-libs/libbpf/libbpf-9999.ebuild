@@ -38,9 +38,11 @@ DOCS=(
 )
 
 src_configure() {
-	append-cflags -fPIC
+	# add -fno-strict-aliasing & filter-lto after discussion about:
+	# https://lore.kernel.org/bpf/20260321024446.692008-1-irogers@google.com/
+	append-cflags -fPIC -fno-strict-aliasing
+	filter-lto
 	tc-export CC AR PKG_CONFIG
-	use static-libs && lto-guarantee-fat
 	export PREFIX="${EPREFIX}/usr"
 	export LIBDIR="\$(PREFIX)/$(get_libdir)"
 	export V=1
@@ -52,8 +54,6 @@ src_install() {
 	if ! use static-libs; then
 		find "${ED}" -name '*.a' -delete || die
 	fi
-
-	strip-lto-bytecode
 
 	dodoc "${DOCS[@]}"
 
