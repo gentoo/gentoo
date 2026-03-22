@@ -1,0 +1,11 @@
+--- a/src/erfc.cpp	2026-03-22 21:02:34.747852855 +0100
++++ b/src/erfc.cpp	2026-03-22 21:05:35.941714006 +0100
+@@ -40,7 +40,7 @@
+ 
+     //current size     Previous Prec
+     static int size=0, pPrec = -1;
+-    static double eps[8] = {8,1,4-mp::n_words,1,0,0,0,0};
++    static double eps[8] = {8,1,4.0-mp::n_words,1,0,0,0,0};
+     static mp_real eps_m = mp_real(eps);
+     //Table containing exp(-k^2 * alpha^2)
+     //but k=1 one starts at index 0

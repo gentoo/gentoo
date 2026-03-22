@@ -1,0 +1,11 @@
+--- a/src/fft3.cpp	2026-03-22 21:11:33.955487174 +0100
++++ b/src/fft3.cpp	2026-03-22 21:11:43.638372396 +0100
+@@ -66,7 +66,7 @@
+   int x_start_1, y_start_1, x_start, y_start;
+   int next_quarter, next_quarter_y;
+   double u1[2], u2[2], u3[2];
+-  register double z1[2], z2[2], z3[2], z4[2], z5[2];
++  double z1[2], z2[2], z3[2], z4[2], z5[2];
+   
+   // set initial parameters.
+   int L = 1 << l;

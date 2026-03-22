@@ -1,0 +1,11 @@
+--- a/configure.ac	2026-03-22 21:14:01.471738440 +0100
++++ b/configure.ac	2026-03-22 21:07:15.282541358 +0100
+@@ -148,7 +148,7 @@
+     esac
+   ;;
+   no) 
+-    ax_cxx_fma =
++    ax_cxx_fma=
+   ;;
+   *) 
+     AX_CXX_FMA([$enable_fma])
