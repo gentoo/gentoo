@@ -323,6 +323,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# used below and by vendored libdvdread
+	tc-export PKG_CONFIG
+
 	local core_platform=(
 		$(usev gbm)
 		$(usev wayland)
@@ -352,6 +355,10 @@ src_configure() {
 		-DENABLE_GOLD=OFF
 		-DENABLE_LLD=OFF
 		-DENABLE_MOLD=OFF
+
+		# This isn't normally necessary with CMake, but Kodi includes its own
+		# FindPkgConfig module that doesn't respect PKG_CONFIG. :(
+		-DPKG_CONFIG_EXECUTABLE=$(type -P "${PKG_CONFIG}")
 
 		# Features
 		-DENABLE_AIRTUNES=$(usex airplay)
@@ -441,9 +448,6 @@ src_configure() {
 
 	# bug #926076
 	append-flags -fPIC
-
-	# used by vendored libdvdread
-	tc-export PKG_CONFIG
 
 	if tc-is-cross-compiler; then
 		for t in "${NATIVE_TOOLS[@]}" ; do
