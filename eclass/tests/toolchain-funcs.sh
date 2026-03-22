@@ -38,7 +38,7 @@ tend $?
 tbegin "tc-arch"
 ret=0
 for CHOST in \
-	alpha arm{,eb}:arm avr32:avr bfin cris hppa i{3..6}86:x86 ia64 m68k \
+	alpha arm{,eb}:arm avr32:avr bfin cris e2k hppa i{3..6}86:x86 ia64 m68k \
 	mips{,eb}:mips nios2 powerpc:ppc powerpc64:ppc64 s390{,x}:s390 \
 	sh{1..4}{,eb}:sh sparc{,64}:sparc vax x86_64:amd64
 do

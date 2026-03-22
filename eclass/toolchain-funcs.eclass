@@ -799,6 +799,7 @@ tc-ninja_magic_to_arch() {
 		bfin*)		_tc_echo_kernel_alias blackfin bfin;;
 		c6x*)		echo c6x;;
 		cris*)		echo cris;;
+		e2k*)		echo e2k;;
 		frv*)		echo frv;;
 		hexagon*)	echo hexagon;;
 		hppa*)		_tc_echo_kernel_alias parisc hppa;;
@@ -887,6 +888,7 @@ tc-endian() {
 		arm*b*)		echo big;;
 		arm*)		echo little;;
 		cris*)		echo little;;
+		e2k*)		echo little;;
 		hppa*)		echo big;;
 		i?86*)		echo little;;
 		ia64*)		echo little;;
