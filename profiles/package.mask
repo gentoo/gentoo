@@ -321,10 +321,6 @@ dev-qt/qtwebsockets:5
 media-libs/phonon
 media-libs/phonon-vlc
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-15)
-# Masked for testing and possible libvlc revdeps breakage.
-~media-video/vlc-4.0.0_pre20260320
-
 # Thomas Beierlein <tomjbe@gentoo.org> (2026-02-14)
 # Move ebuild versioning to classical x.y.z number scheme
 # Should be kept until net-wireless/sdrplay-3.15.2 (dep for coming
