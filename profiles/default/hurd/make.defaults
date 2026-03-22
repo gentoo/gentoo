@@ -17,7 +17,7 @@ USE="${USE} -seccomp -caps -filecaps"
 USE="${USE} -udev -netifrc -iptables -kmod"
 # Hurd does support DHCP but DHCP clients need to be ported. net-misc/dhcpcd
 # is a work-in-progress. Avoid pulling in a possibly-broken client by default.
-USE="${USE} -openmp -dhcp"
+USE="${USE} -dhcp"
 
 # Sam James <sam@gentoo.org> (2026-03-18)
 # sys-apps/sandbox is not available on Hurd (ptrace for static binaries)
