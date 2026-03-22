@@ -95,7 +95,7 @@ RDEPEND="
 		)
 	)
 	cuda? ( dev-util/nvidia-cuda-toolkit:= )
-	ffmpeg? ( <media-video/ffmpeg-8:= )
+	ffmpeg? ( || ( <media-video/ffmpeg-compat-8 <media-video/ffmpeg-8 ) )
 	gdal? ( sci-libs/gdal:= )
 	java? ( >=virtual/jdk-11:= )
 	!minimal? (
