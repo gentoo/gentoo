@@ -1,0 +1,74 @@
+https://salsa.debian.org/glibc-team/glibc/-/blob/c2bff774aba6fc93eb9c3baef4746db56a2be24c/debian/patches/hurd-i386/local-clock_gettime_MONOTONIC.diff
+
+Use the normal clocks for the raw & coarse clock for now.
+
+vlc doesn't build when _POSIX_CLOCK_SELECTION is enabled but _POSIX_TIMERS is
+not, and they refuse to fix that (see #765578), so disable the former.
+
+--- a/sysdeps/mach/clock_gettime.c
++++ b/sysdeps/mach/clock_gettime.c
+@@ -33,6 +33,8 @@ __clock_gettime (clockid_t clock_id, str
+   switch (clock_id) {
+ 
+     case CLOCK_MONOTONIC:
++    case CLOCK_MONOTONIC_RAW:
++    case CLOCK_MONOTONIC_COARSE:
+       /* If HAVE_HOST_GET_UPTIME64 is not defined or not available,
+          CLOCK_MONOTONIC will be equivalent to CLOCK_REALTIME.  */
+ #ifdef HAVE_HOST_GET_UPTIME64
+@@ -56,6 +58,7 @@ __clock_gettime (clockid_t clock_id, str
+       /* FALLTHROUGH */
+ 
+     case CLOCK_REALTIME:
++    case CLOCK_REALTIME_COARSE:
+       {
+ 	/* __host_get_time can only fail if passed an invalid host_t.
+ 	   __mach_host_self could theoretically fail (producing an
+--- a/rt/timer_create.c
++++ b/rt/timer_create.c
+@@ -47,7 +47,7 @@ timer_create (clockid_t clock_id, struct
+       return -1;
+     }
+ 
+-  if (clock_id != CLOCK_REALTIME)
++  if (clock_id != CLOCK_REALTIME && clock_id != CLOCK_MONOTONIC && clock_id != CLOCK_MONOTONIC_RAW && clock_id != CLOCK_REALTIME_COARSE && clock_id != CLOCK_MONOTONIC_COARSE)
+     {
+       __set_errno (EINVAL);
+       return -1;
+--- a/sysdeps/mach/hurd/bits/posix_opt.h
++++ b/sysdeps/mach/hurd/bits/posix_opt.h
+@@ -165,8 +165,8 @@
+ /* The monotonic clock might be available.  */
+ #define _POSIX_MONOTONIC_CLOCK	200809L
+ 
+-/* The clock selection interfaces are available.  */
+-#define _POSIX_CLOCK_SELECTION	200809L
++/* The clock selection interfaces are not really available yet.  */
++#define _POSIX_CLOCK_SELECTION	-1
+ 
+ /* Advisory information interfaces could be available in future.  */
+ #define _POSIX_ADVISORY_INFO	0
+--- a/sysdeps/posix/clock_getres.c
++++ b/sysdeps/posix/clock_getres.c
+@@ -55,6 +55,10 @@ __clock_getres (clockid_t clock_id, stru
+   switch (clock_id)
+     {
+     case CLOCK_REALTIME:
++    case CLOCK_MONOTONIC:
++    case CLOCK_MONOTONIC_RAW:
++    case CLOCK_REALTIME_COARSE:
++    case CLOCK_MONOTONIC_COARSE:
+       retval = realtime_getres (res);
+       break;
+ 
+--- a/sysdeps/mach/clock_nanosleep.c
++++ b/sysdeps/mach/clock_nanosleep.c
+@@ -67,7 +67,7 @@ int
+ __clock_nanosleep (clockid_t clock_id, int flags, const struct timespec *req,
+ 		   struct timespec *rem)
+ {
+-  if ((clock_id != CLOCK_REALTIME && clock_id != CLOCK_MONOTONIC)
++  if ((clock_id != CLOCK_REALTIME && clock_id != CLOCK_MONOTONIC && clock_id != CLOCK_MONOTONIC_RAW && clock_id != CLOCK_REALTIME_COARSE && clock_id != CLOCK_MONOTONIC_COARSE)
+       || req->tv_sec < 0
+       || !valid_nanoseconds (req->tv_nsec)
+       || (flags != 0 && flags != TIMER_ABSTIME))

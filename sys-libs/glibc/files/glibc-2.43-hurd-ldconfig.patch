@@ -1,0 +1,26 @@
+https://salsa.debian.org/glibc-team/glibc/-/blob/93d5069240943c4dcc950f6255028f7d1fcc2df0/debian/patches/hurd-i386/local-enable-ldconfig.diff
+
+# DP: Description: Enable ldconfig and such on hurd-i386
+# DP: Author: Jeff Bailey <jbailey@nisa.net>
+# DP: Related Bugs: #309489
+# DP: Upstream status: Not submitted
+# DP: Status Details: Upstream disagrees with this patch, but I'm
+# DP: putting it in so that we have expected Debian behaviour on the
+# DP: Hurd.  We should review this when the ELF standard supports runpath.
+# DP: Date: 08 Apr 2003
+  
+--- a/sysdeps/mach/hurd/configure
++++ b/sysdeps/mach/hurd/configure
+@@ -52,3 +52,4 @@
+ # Hurd has libpthread as a separate library.
+ pthread_in_libc=no
+ 
++use_ldconfig=yes
+--- a/sysdeps/mach/hurd/configure.ac
++++ b/sysdeps/mach/hurd/configure.ac
+@@ -29,3 +29,5 @@
+ 
+ # Hurd has libpthread as a separate library.
+ pthread_in_libc=no
++
++use_ldconfig=yes
