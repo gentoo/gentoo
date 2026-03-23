@@ -37,9 +37,29 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2026-03-22)
-# Commits since the last release (0.370) are heavily driven by LLM
-# automation. Avoid exposing users to this (bug #971488).
+# Commits since the last release of Crypt-OpenSSL-RSA (0.370) are heavily
+# driven by LLM automation. Avoid exposing users to this (bug #971488).
+# Sadly, other dists by the same maintainers upstream are also affected,
+# and so these are includeed here too.
 >dev-perl/Crypt-OpenSSL-RSA-0.370
+>dev-perl/B-COW-0.7.0
+>dev-perl/Business-UPS-2.20.0
+>dev-perl/CDB_File-1.50.0-r1
+>dev-perl/Clone-0.480.0
+>dev-perl/Crypt-RIPEMD160-0.80.0
+>dev-perl/IO-Stty-0.40.0
+>dev-perl/IO-Tty-1.200.0
+>dev-perl/IPC-Run-20250809.0.0
+>dev-perl/Net-Daemon-0.490.0
+>dev-perl/Net-Ident-1.250.0
+>dev-perl/Safe-Hole-0.140.0
+>dev-perl/Schedule-Cron-Events-1.960.0
+>dev-perl/Sys-Mmap-0.200.0
+>dev-perl/Template-Toolkit-3.102.0
+>dev-perl/TimeDate-2.330.0-r1
+>dev-perl/XML-Parser-2.510.0
+>dev-perl/XString-0.5.0
+>dev-perl/YAML-Syck-1.360.0
 
 # Michał Górny <mgorny@gentoo.org> (2026-03-22)
 # Cyclic dependency through dev-python/vcs-versioning →
