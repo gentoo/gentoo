@@ -128,7 +128,6 @@ src_configure() {
 	filter-lto
 
 	local confargs=(
-		--disable-dependency-tracking
 		# TODO: Maybe we should set the UNPRIV_UID to something? -3 is a bit... kludgy
 		--prefix="${EPREFIX}"/usr
 		--mandir="${EPREFIX}"/usr/share/man
