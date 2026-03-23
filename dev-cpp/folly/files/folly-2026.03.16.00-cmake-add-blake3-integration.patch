@@ -1,0 +1,73 @@
+From 099e264228bf0c5f08fd65522a75a67591fcdb30 Mon Sep 17 00:00:00 2001
+From: sin-ack <sin-ack@protonmail.com>
+Date: Sun, 22 Mar 2026 23:33:18 +0100
+Subject: [PATCH] CMake: Add Blake3 integration
+
+This was added on the Buck side, but not on the CMake side, so building
+against libfolly.so was failing with:
+
+    ld: libfolly.so: undefined reference to `blake3_hasher_init_keyed'
+    ld: libfolly.so: undefined reference to `blake3_hasher_init_derive_key'
+    ld: libfolly.so: undefined reference to `blake3_hasher_update'
+    ld: libfolly.so: undefined reference to `blake3_hasher_finalize'
+
+Link: TODO
+---
+ CMake/folly-deps.cmake |  4 ++++
+ FindBlake3.cmake       | 30 ++++++++++++++++++++++++++++++
+ 2 files changed, 34 insertions(+)
+ create mode 100644 FindBlake3.cmake
+
+diff --git a/CMake/folly-deps.cmake b/CMake/folly-deps.cmake
+index 03b3526..8e007a6 100644
+--- a/CMake/folly-deps.cmake
++++ b/CMake/folly-deps.cmake
+@@ -157,6 +157,10 @@ find_package(Libsodium)
+ list(APPEND FOLLY_LINK_LIBRARIES ${LIBSODIUM_LIBRARIES})
+ list(APPEND FOLLY_INCLUDE_DIRECTORIES ${LIBSODIUM_INCLUDE_DIRS})
+
++find_package(Blake3)
++list(APPEND FOLLY_LINK_LIBRARIES ${BLAKE3_LIBRARIES})
++list(APPEND FOLLY_INCLUDE_DIRECTORIES ${BLAKE3_INCLUDE_DIRS})
++
+ list(APPEND FOLLY_LINK_LIBRARIES ${CMAKE_DL_LIBS})
+ list(APPEND CMAKE_REQUIRED_LIBRARIES ${CMAKE_DL_LIBS})
+
+diff --git a/CMake/FindBlake3.cmake b/CMake/FindBlake3.cmake
+new file mode 100644
+index 0000000..f216865
+--- /dev/null
++++ b/CMake/FindBlake3.cmake
+@@ -0,0 +1,30 @@
++# Copyright (c) Meta Platforms, Inc. and affiliates.
++#
++# Licensed under the Apache License, Version 2.0 (the "License");
++# you may not use this file except in compliance with the License.
++# You may obtain a copy of the License at
++#
++#     http://www.apache.org/licenses/LICENSE-2.0
++#
++# Unless required by applicable law or agreed to in writing, software
++# distributed under the License is distributed on an "AS IS" BASIS,
++# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++# See the License for the specific language governing permissions and
++# limitations under the License.
++
++find_path(BLAKE3_INCLUDE_DIR NAMES blake3.h)
++mark_as_advanced(BLAKE3_INCLUDE_DIR)
++
++find_library(BLAKE3_LIBRARY NAMES blake3)
++mark_as_advanced(BLAKE3_LIBRARY)
++
++include(FindPackageHandleStandardArgs)
++FIND_PACKAGE_HANDLE_STANDARD_ARGS(
++  BLAKE3
++  REQUIRED_VARS BLAKE3_LIBRARY BLAKE3_INCLUDE_DIR)
++
++if(BLAKE3_FOUND)
++  set(BLAKE3_LIBRARIES ${BLAKE3_LIBRARY})
++  set(BLAKE3_INCLUDE_DIRS ${BLAKE3_INCLUDE_DIR})
++  message(STATUS "Found Blake3: ${BLAKE3_LIBRARY}")
++endif()
+--
+2.52.0
