@@ -1,0 +1,30 @@
+From 1f8173747cd315b32667433bb23bf8674a8a386e Mon Sep 17 00:00:00 2001
+From: sin-ack <sin-ack@protonmail.com>
+Date: Mon, 23 Mar 2026 01:31:12 +0100
+Subject: [PATCH] CMake: Fix follybenchmark target reference
+
+Folly changed the target name to follybenchmark due to "backwards
+compatibility reasons" but downstream projects were not updated on the
+CMake side.
+
+Link: https://github.com/facebook/folly/commit/677483f845f3c421ffc83c734a8793dc8ed81ecc
+Link: TODO
+---
+ fizz/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/fizz/CMakeLists.txt b/fizz/CMakeLists.txt
+index 8ad0f7d..423ff01 100644
+--- a/fizz/CMakeLists.txt
++++ b/fizz/CMakeLists.txt
+@@ -495,7 +495,7 @@ if(BUILD_EXAMPLES)
+     DESTINATION ${BIN_INSTALL_DIR}
+   )
+   add_executable(EncryptedRecordBench record/test/EncryptedRecordBench.cpp)
+-  target_link_libraries(EncryptedRecordBench fizz Folly::folly_benchmark)
++  target_link_libraries(EncryptedRecordBench fizz Folly::follybenchmark)
+   set_target_properties(
+     EncryptedRecordBench PROPERTIES OUTPUT_NAME fizz-encryptedrecordbench
+   )
+--
+2.52.0
