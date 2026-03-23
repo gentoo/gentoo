@@ -245,10 +245,6 @@ dev-qt/qtscxml:5
 dev-qt/qtspeech:5
 dev-qt/qtwebsockets:5
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-26)
-# Qt binaries-to-path symlinking tool obsolete with Qt6. Removal on 2026-03-28.
-dev-qt/qtchooser
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-02-24)
 # Phonon is effectively dead upstream, its only remaining backend depends
 # on VLC-3. Bug #935797  Removal on 2026-03-26.
