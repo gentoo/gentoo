@@ -307,11 +307,6 @@ media-plugins/vdr-skinelchi
 # Masked for testing and possible libvlc revdeps breakage.
 ~media-video/vlc-4.0.0_pre20260320
 
-# Conrad Kostecki <conikost@gentoo.org> (2026-02-15)
-# Supports only Qt5 and upstream not making any progress towards Qt6.
-# Removal on 2026-03-01. Bug #953260.
-x11-misc/projecteur
-
 # Thomas Beierlein <tomjbe@gentoo.org> (2026-02-14)
 # Move ebuild versioning to classical x.y.z number scheme
 # Should be kept until net-wireless/sdrplay-3.15.2 (dep for coming
