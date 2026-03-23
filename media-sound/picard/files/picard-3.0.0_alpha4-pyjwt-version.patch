@@ -1,0 +1,33 @@
+From a4ac727291d2bdd1bbfd96b85375760cbb7a9fde Mon Sep 17 00:00:00 2001
+From: Philipp Wolfer <ph.wolfer@gmail.com>
+Date: Sun, 22 Mar 2026 17:01:38 +0100
+Subject: [PATCH] PICARD-3236: Revert PyJWT min. required version to 2.0
+
+This was changed to address CVE-2026-32597, but:
+
+1. The minimum supported version should be defined on
+   technical requirements.
+2. This upgraded requirement badly affects Linux distro versioning.
+3. To address security issues we must ensure to use
+   non-vulnerable versions. This is done by uv.lock and
+   taking care of proper builds.
+4. Given our use of JWT tokens CVE-2026-32597 does not seem to affect
+   Picard.
+---
+ pyproject.toml | 2 +-
+ uv.lock        | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 48785cb523..0d913b384b 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -34,7 +34,7 @@ dependencies = [
+     "discid~=1.0",
+     "Markdown~=3.2",
+     "mutagen~=1.45",
+-    "PyJWT~=2.12",
++    "PyJWT~=2.0",
+     "pyobjc-core>=6.2, <13; sys_platform == 'darwin'",
+     "pyobjc-framework-Cocoa>=6.2, <13; sys_platform == 'darwin'",
+     "pyobjc-framework-MediaPlayer>=6.2, <13; sys_platform == 'darwin'",
