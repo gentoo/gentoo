@@ -495,7 +495,12 @@ pkg_postinst() {
 		ewarn "If you do not do it, vlc will take a long time to load."
 	fi
 
-	use gui && xdg_pkg_postinst
+	if use gui; then
+		ewarn "Starting VLC GUI is only supported by using its desktop file."
+		ewarn "Manually calling vlc from command line is known to break in Wayland sessions."
+
+		xdg_pkg_postinst
+	fi
 }
 
 pkg_postrm() {
