@@ -55,7 +55,7 @@ COMMON_DEPEND="
 		xinerama? ( x11-libs/libXinerama )
 		xv? ( x11-libs/libXv )
 	)
-	ffmpeg? ( media-video/ffmpeg:0= )
+	ffmpeg? ( media-video/ffmpeg:0=[x264(-)] )
 	!ffmpeg? (
 		x11-libs/cairo:0=
 	)
