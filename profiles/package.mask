@@ -41,7 +41,7 @@
 # driven by LLM automation. Avoid exposing users to this (bug #971488).
 # Sadly, other dists by the same maintainers upstream are also affected,
 # and so these are includeed here too.
->dev-perl/Crypt-OpenSSL-RSA-0.370
+>dev-perl/Crypt-OpenSSL-RSA-0.370.0
 >dev-perl/B-COW-0.7.0
 >dev-perl/Business-UPS-2.20.0
 >dev-perl/CDB_File-1.50.0-r1
