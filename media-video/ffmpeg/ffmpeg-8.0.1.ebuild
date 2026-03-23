@@ -304,6 +304,7 @@ COMMON_DEPEND="
 RDEPEND="
 	${COMMON_DEPEND}
 	amf? ( media-video/amdgpu-pro-amf )
+	nvenc? ( x11-drivers/nvidia-drivers )
 "
 DEPEND="
 	${COMMON_DEPEND}
