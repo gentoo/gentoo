@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Mario Haustein <mario.haustein@hrz.tu-chemnitz.de> (2025-10-06)
@@ -176,9 +176,10 @@ net-analyzer/gvm
 dev-libs/amdgpu-pro-opencl
 
 # Thomas Deutschmann <whissi@gentoo.org> (2018-10-23)
-# requires net-libs/nodejs
+# requires net-libs/nodejs. Extend to firefox/thunderbird-l10n
 >=www-client/firefox-63.0
 >=mail-client/thunderbird-68.0
+www-client/firefox-l10n
 
 # Patrick McLean <chutzpah@gentoo.org> (2018-07-12)
 # requires nodejs
