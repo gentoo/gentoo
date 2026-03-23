@@ -3,7 +3,7 @@
 exec bwrap \
     --bind / / \
     --dev-bind /dev /dev \
-    --ro-bind /etc/microsoft-identity-broker/lsb-release /etc/lsb-release \
-    --ro-bind /etc/microsoft-identity-broker/os-release /etc/os-release \
+    --ro-bind /etc/microsoft/identity-broker/etc/lsb-release /etc/lsb-release \
+    --ro-bind /etc/microsoft/identity-broker/etc/os-release /etc/os-release \
     -- \
-    /usr/share/microsoft-identity-broker/bin/"${0##*/}" "${@}"
+    /opt/microsoft/identity-broker/libexec/"${0##*/}" "${@}"
