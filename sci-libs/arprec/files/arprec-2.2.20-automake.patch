@@ -1,0 +1,68 @@
+--- a/fortran/Makefile.am	2026-03-23 17:16:01.063425472 +0100
++++ b/fortran/Makefile.am	2026-03-23 17:16:51.134832997 +0100
+@@ -37,7 +37,8 @@
+ mp_modx.o: mp_mod.o
+ $(MPMODULEX): mp_modx.o
+ 
+-pkglib_DATA = $(MODULES)
++arpreclibdir = $(pkglibdir)
++arpreclib_DATA = $(MODULES)
+ 
+ DEMO = pslq1$(EXEEXT) pslq2$(EXEEXT) pslq3$(EXEEXT) pslqm1$(EXEEXT) \
+        pslqm2$(EXEEXT) pslqm3$(EXEEXT) quadgs$(EXEEXT) quaderf$(EXEEXT) \
+--- a/configure.ac	2026-03-23 18:21:46.284475297 +0100
++++ b/configure.ac	2026-03-23 18:22:31.006947491 +0100
+@@ -35,7 +35,7 @@
+ 
+ # Checks for command-line options
+ # --enable-inline option.
+-AC_ARG_ENABLE(enable_inline, AC_HELP_STRING(--enable-inline, [inline commonly used functions.  [[default=yes]]]))
++AC_ARG_ENABLE(inline, AC_HELP_STRING(--enable-inline, [inline commonly used functions.  [[default=yes]]]))
+ AC_MSG_CHECKING([if commonly used function is to be inlined])
+ if test "x$enable_inline" != "xno"; then
+   enable_inline="yes"
+@@ -44,7 +44,7 @@
+ AC_MSG_RESULT($enable_inline)
+ 
+ # --enable-debug
+-AC_ARG_ENABLE(enable_debug, AC_HELP_STRING(--enable-debug, [enable debugging code. [[default=no]]]))
++AC_ARG_ENABLE(debug, AC_HELP_STRING(--enable-debug, [enable debugging code. [[default=no]]]))
+ AC_MSG_CHECKING([if debugging code is to be enabled])
+ if test "x$enable_debug" = "xyes"; then
+   AC_DEFINE([ARPREC_DEBUG], [1], [Define to 1 to enable debugging code.])
+@@ -54,7 +54,7 @@
+ AC_MSG_RESULT($enable_debug)
+ 
+ # --enable-always-fix-fpu
+-AC_ARG_ENABLE(enable_always_fix_fpu, AC_HELP_STRING(--enable-always-fix-fpu, [Use FPU fix whenever C interface is called.  [[default=no]]]))
++AC_ARG_ENABLE(always_fix_fpu, AC_HELP_STRING(--enable-always-fix-fpu, [Use FPU fix whenever C interface is called.  [[default=no]]]))
+ if test "x$enable_always_fix_fpu" = "xyes"; then
+   AC_DEFINE([ALWAYS_FIX_FPU], [1], [Define to 1 to use FPU fix whenever C interface is called.])
+ else
+@@ -118,7 +118,7 @@
+ fi
+ 
+ # --enable-qd
+-AC_ARG_ENABLE(enable-qd, AC_HELP_STRING(--enable-qd, [Use quad-double (QD)
++AC_ARG_ENABLE(qd, AC_HELP_STRING(--enable-qd, [Use quad-double (QD)
+ library. [[default=no]]]))
+ if test "x$enable_qd" = "xyes"; then
+   AC_CHECK_QD([2.3], [CXXFLAGS="$CXXFLAGS $QD_CXXFLAGS"])
+@@ -128,7 +128,7 @@
+ fi
+ 
+ # --enable-fma
+-AC_ARG_ENABLE(enable_fma, AC_HELP_STRING(--enable-fma, [use fused multiply-add/subtract (auto,gnu,c99,ibm,compiler).  Use this option with care.  [[default=auto]]]))
++AC_ARG_ENABLE(fma, AC_HELP_STRING(--enable-fma, [use fused multiply-add/subtract (auto,gnu,c99,ibm,compiler).  Use this option with care.  [[default=auto]]]))
+ if test "x$enable_fma" = "x"; then
+   enable_fma="auto"
+ fi
+@@ -174,7 +174,7 @@
+     FCFLAGS="-O2"
+   fi
+ fi
+-AC_ARG_ENABLE(enable_fortran, AC_HELP_STRING(--enable-fortran, [build Fortran interfaces [[default=auto]]]))
++AC_ARG_ENABLE(fortran, AC_HELP_STRING(--enable-fortran, [build Fortran interfaces [[default=auto]]]))
+ if test "x$enable_fortran" != "xno"; then
+   AC_LANG_PUSH(Fortran)
+   AC_PROG_FC([xlf95 ifort pathf95 f95 gfortran g95 pgf95 lf95 fort ifc efc pathf90 xlf90 pgf90 epcf90 xlf f90])

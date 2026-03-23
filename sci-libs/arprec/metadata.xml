@@ -8,4 +8,7 @@
   <use>
     <flag name="qd">Use <pkg>sci-libs/qd</pkg> for quad-double datatype</flag>
   </use>
+  <upstream>
+    <remote-id type="github">BL-highprecision/ARPREC</remote-id>
+  </upstream>
 </pkgmetadata>
