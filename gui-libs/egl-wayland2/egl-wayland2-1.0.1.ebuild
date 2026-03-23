@@ -37,7 +37,7 @@ DEPEND="
 	${RDEPEND}
 	>=dev-libs/wayland-protocols-1.38
 	>=gui-libs/eglexternalplatform-1.2
-	media-libs/libglvnd
+	media-libs/libglvnd[${MULTILIB_USEDEP}]
 "
 BDEPEND="
 	dev-util/wayland-scanner
