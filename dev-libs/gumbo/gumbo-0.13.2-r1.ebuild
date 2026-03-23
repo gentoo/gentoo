@@ -42,6 +42,10 @@ BDEPEND="
 
 distutils_enable_tests unittest
 
+pkg_setup() {
+	use test && python-single-r1_pkg_setup
+}
+
 src_prepare() {
 	default
 
