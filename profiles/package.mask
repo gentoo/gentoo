@@ -254,13 +254,6 @@ dev-qt/qtwebsockets:5
 app-text/master-pdf-editor
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-02-26)
-# Depends on Qt5 and does not appear to be ported to Qt6. Upstream's main
-# problem is reliance on QtXMLPatterns which is not available in Qt6.
-# Bug #955183
-# Removal on 2026-03-28.
-app-editors/qxmledit
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-26)
 # Qt binaries-to-path symlinking tool obsolete with Qt6. Removal on 2026-03-28.
 dev-qt/qtchooser
 
