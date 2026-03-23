@@ -29,7 +29,7 @@ RDEPEND="
 	sys-apps/lsb-release
 	sys-apps/systemd
 	sys-apps/util-linux
-	sys-auth/microsoft-identity-broker
+	>=sys-auth/microsoft-identity-broker-2.5.2
 	sys-auth/pambase[pwquality]
 	sys-auth/polkit
 	sys-libs/pam
@@ -58,8 +58,8 @@ src_unpack() {
 src_install() {
 	exeinto "${DIR}"/bin
 	newexe $(prefixify_ro "${FILESDIR}"/wrapper) intune-portal
-	dosym intune-portal /opt/microsoft/intune/bin/intune-agent
-	dosym intune-portal /opt/microsoft/intune/bin/intune-daemon
+	dosym intune-portal "${DIR}"/bin/intune-agent
+	dosym intune-portal "${DIR}"/bin/intune-daemon
 
 	exeinto "${DIR}"/libexec
 	doexe "${DIR#/}"/bin/*
