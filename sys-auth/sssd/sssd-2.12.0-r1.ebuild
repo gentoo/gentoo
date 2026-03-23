@@ -251,6 +251,7 @@ multilib_src_configure() {
 
 	use systemd && myconf+=(
 		--with-systemdunitdir=$(systemd_get_systemunitdir)
+		--with-syslog=$(usex systemd journald syslog)
 	)
 
 	if ! multilib_is_native_abi; then
