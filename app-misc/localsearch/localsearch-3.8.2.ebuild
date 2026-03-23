@@ -12,7 +12,7 @@ HOMEPAGE="https://gnome.pages.gitlab.gnome.org/localsearch"
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="3"
 KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
-IUSE="cue exif ffmpeg gif gsf +gstreamer iptc +iso +jpeg networkmanager +pdf +playlist raw +rss seccomp test +tiff upower +xml xmp xps"
+IUSE="cue exif ffmpeg gif gsf +gstreamer iptc +iso +jpeg networkmanager +pdf +playlist raw seccomp test +tiff upower +xml xmp xps"
 
 REQUIRED_USE="cue? ( gstreamer )" # cue is currently only supported via gstreamer, not ffmpeg
 RESTRICT="!test? ( test )"
@@ -45,7 +45,6 @@ RDEPEND="
 
 	networkmanager? ( net-misc/networkmanager )
 
-	rss? ( >=net-libs/libgrss-0.7:0 )
 	app-arch/gzip
 
 	upower? ( >=sys-power/upower-0.9.0:= )
@@ -129,7 +128,7 @@ src_configure() {
 		$(meson_use test functional_tests)
 		$(meson_use test tests_tap_protocol)
 		-Dminer_fs=true
-		$(meson_use rss miner_rss)
+		-Dminer_rss=false
 		-Dwriteback=true
 		-Dabiword=true
 		-Dicon=true
