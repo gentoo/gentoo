@@ -131,6 +131,9 @@ sysroot_make_run_prefixed() {
 			#!/bin/sh
 			SANDBOX_ON=0 LD_PRELOAD= WINEPATH="\${WINEPATH}\${WINEPATH+;};${winepath//\//\\}" exec wine "\${@}"
 		EOF
+	elif [[ ${CHOST} != *-linux-* ]]; then
+		einfo "Target is not Linux. Continuing without ${SCRIPT##*/} wrapper."
+		return 2
 	elif ! QEMU_ARCH=$(qemu_arch_if_needed); then
 		# glibc: ld.so is a symlink, ldd is a binary.
 		# musl: ld.so doesn't exist, ldd is a symlink.
