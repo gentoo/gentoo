@@ -1,0 +1,35 @@
+From ea92c7a50d7058475559790717fceef975325a4c Mon Sep 17 00:00:00 2001
+From: Simon Marlow <marlowsd@gmail.com>
+Date: Tue, 17 Mar 2026 15:17:01 -0700
+Subject: [PATCH] Fix BUILD_SHARED_LIBS=ON: remove circular dependency (#692)
+
+Summary:
+Followup to https://github.com/facebook/fbthrift/issues/690, that PR inadvertently added a circular dependency between the thrifttype and thriftanyrep libraries, which means the `BUILD_SHARED_LIBS=ON` build still fails. This should fix it.
+
+Tested with a PR on the hsthrift repo: https://github.com/facebookincubator/hsthrift/pull/174
+
+Pull Request resolved: https://github.com/facebook/fbthrift/pull/692
+
+Reviewed By: Mizuchi
+
+Differential Revision: D96944523
+
+Pulled By: iahs
+
+fbshipit-source-id: ecb75e972d7d074eff1f44c29ba0960ca8416970
+---
+ thrift/lib/cpp2/CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/thrift/lib/cpp2/CMakeLists.txt b/thrift/lib/cpp2/CMakeLists.txt
+index 78b2066a5e9..5b7e4eafbd0 100644
+--- a/thrift/lib/cpp2/CMakeLists.txt
++++ b/thrift/lib/cpp2/CMakeLists.txt
+@@ -231,7 +231,6 @@ target_link_libraries(
+     common
+     Folly::folly
+     thriftannotation
+-    thriftanyrep
+     thrifttyperep
+     thriftprotocol
+ )
