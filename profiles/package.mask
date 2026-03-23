@@ -45,7 +45,7 @@
 >dev-perl/B-COW-0.7.0
 >dev-perl/Business-UPS-2.20.0
 >dev-perl/CDB_File-1.50.0-r1
->dev-perl/Clone-0.480.0
+>dev-perl/Clone-0.470.0
 >dev-perl/Crypt-RIPEMD160-0.80.0
 >dev-perl/IO-Stty-0.40.0
 >dev-perl/IO-Tty-1.200.0
