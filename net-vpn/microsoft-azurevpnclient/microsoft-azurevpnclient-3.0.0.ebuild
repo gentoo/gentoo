@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ DESCRIPTION="Microsoft Azure VPN client for connecting securely to the Azure clo
 HOMEPAGE="https://learn.microsoft.com/en-us/azure/vpn-gateway/point-to-site-certificate-client-linux-azure-vpn-client"
 SRC_URI="https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/${PN:0:1}/${PN}/${PN}_${PV}_amd64.deb"
 S="${WORKDIR}"
-LICENSE="microsoft-azurevpnclient Apache-2.0 BSD-2 BSD ISC MIT openssl SSLeay"
+LICENSE="microsoft-proprietary Apache-2.0 BSD-2 BSD ISC MIT openssl SSLeay"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 RESTRICT="bindist mirror"
