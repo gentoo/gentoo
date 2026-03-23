@@ -1,0 +1,28 @@
+Fixes infinite recursion when build with GCC-16
+https://bugs.gentoo.org/967873
+https://github.com/open-mpi/ompi/issues/13721
+https://github.com/open-mpi/ompi/commit/aa024ac73d624611cfe3af6f541b5d28dedf07bb
+From aa024ac73d624611cfe3af6f541b5d28dedf07bb Mon Sep 17 00:00:00 2001
+From: Orion Poplawski <orion@nwra.com>
+Date: Thu, 5 Mar 2026 08:32:13 -0700
+Subject: [PATCH] Drop __opal_attribute_always_inline__ for
+ mca_part_persist_start (fixes #13721)
+
+Signed-off-by: Orion Poplawski <orion@nwra.com>
+---
+ ompi/mca/part/persist/part_persist.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ompi/mca/part/persist/part_persist.h b/ompi/mca/part/persist/part_persist.h
+index ccc8f8f1971..86fb9bac42d 100644
+--- a/ompi/mca/part/persist/part_persist.h
++++ b/ompi/mca/part/persist/part_persist.h
+@@ -490,7 +490,7 @@ mca_part_persist_psend_init(const void* buf,
+     return err;
+ }
+ 
+-__opal_attribute_always_inline__ static inline int
++static inline int
+ mca_part_persist_start(size_t count, ompi_request_t** requests)
+ {
+     int err = OMPI_SUCCESS;
