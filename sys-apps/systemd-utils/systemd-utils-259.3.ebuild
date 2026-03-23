@@ -188,6 +188,7 @@ multilib_src_configure() {
 		-Dxenctrl=false
 
 		-Dbashcompletiondir=no
+		-Ddbus-interfaces-dir=no
 		-Drpmmacrosdir=no
 		-Dshellprofiledir=no
 		-Dsshconfdir=no
