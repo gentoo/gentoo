@@ -13,7 +13,7 @@
 		DKMS supports both the rpm and deb package formats out-of-the-box.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">dell/dkms</remote-id>
+		<remote-id type="github">dkms-project/dkms</remote-id>
 	</upstream>
 	<stabilize-allarches/>
 </pkgmetadata>
