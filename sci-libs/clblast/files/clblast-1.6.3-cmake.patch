@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt	2026-03-24 17:47:31.397917260 +0100
++++ b/CMakeLists.txt	2026-03-24 17:48:34.501175422 +0100
+@@ -9,7 +9,7 @@
+ #
+ # ==================================================================================================
+ 
+-cmake_minimum_required(VERSION 2.8.11)
++cmake_minimum_required(VERSION 3.10)
+ 
+ # Overrides for MSVC static runtime
+ option(OVERRIDE_MSVC_FLAGS_TO_MT "Override compiler flags for MSVC to build with a static runtime (/MT instead of /MD)" ON)
