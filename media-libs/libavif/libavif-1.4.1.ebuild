@@ -25,7 +25,7 @@ LICENSE="
 # See LIBRARY_VERSION_MAJOR, LIBRARY_VERSION_MINOR in CMakeLists.txt
 SLOT="0/16.4"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="+aom dav1d examples extras gdk-pixbuf rav1e svt-av1 libyuv test"
+IUSE="+aom dav1d examples +extras gdk-pixbuf rav1e svt-av1 libyuv test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="|| ( aom dav1d )"
 
