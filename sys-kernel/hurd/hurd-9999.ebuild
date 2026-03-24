@@ -79,6 +79,8 @@ src_configure() {
 	if ! use custom-cflags ; then
 		strip-flags
 		filter-lto
+		# Hangs on boot without this
+		append-flags -U_FORTIFY_SOURCE
 	fi
 
 	append-flags -Wl,--no-error-rwx-segments -Wl,--no-error-execstack -Wl,-z,notext
