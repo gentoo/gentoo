@@ -139,6 +139,7 @@ dev-python/textile
 # Additional entries exposed by correcting musl, #936643
 x11-terms/alacritty
 www-client/firefox
+www-client/firefox-l10n
 www-misc/buku
 www-client/seamonkey
 www-misc/urlwatch
