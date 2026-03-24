@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Keep them sorted
@@ -381,7 +381,7 @@ webp - Add support for the WebP image format
 wifi - Enable wireless network functions
 wmf - Add support for the Windows Metafile vector image format
 wxwidgets - Add support for wxWidgets/wxGTK GUI toolkit
-x264 - Enable h264 encoding using x264
+x264 - Enable H.264 encoding using x264
 xattr - Add support for extended attributes (filesystem-stored metadata)
 xcb - Support the X C-language Binding, a replacement for Xlib
 xcomposite - Enable support for the Xorg composite extension
