@@ -13,7 +13,7 @@ LICENSE="LGPL-2+"
 SLOT="0"
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="afp archive bluray cdda cdr elogind fuse google keyring gnome-online-accounts gphoto2 +http ios mtp nfs onedrive policykit samba systemd test +udev udisks zeroconf"
+IUSE="afp archive bluray cdda cdr elogind fuse +gcr google keyring gnome-online-accounts gphoto2 +http ios mtp nfs onedrive policykit samba +sftp systemd test +udev udisks zeroconf"
 RESTRICT="!test? ( test )"
 # elogind/systemd only relevant to udisks (in v1.38.1)
 REQUIRED_USE="
@@ -31,7 +31,7 @@ RDEPEND="
 	>=gnome-base/gsettings-desktop-schemas-3.33.0
 	afp? ( >=dev-libs/libgcrypt-1.2.2:0= )
 	sys-apps/dbus
-	app-crypt/gcr:4=
+	gcr? ( app-crypt/gcr:4= )
 	policykit? (
 		>=sys-auth/polkit-0.114
 		sys-libs/libcap
@@ -70,7 +70,7 @@ RDEPEND="
 	onedrive? ( >=net-libs/msgraph-0.3.0:= )
 	gphoto2? ( >=media-libs/libgphoto2-2.5.0:= )
 	nfs? ( >=net-fs/libnfs-1.9.8:= )
-	virtual/openssh
+	sftp? ( virtual/openssh )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -121,12 +121,12 @@ src_configure() {
 		$(meson_use mtp)
 		$(meson_use nfs)
 		$(meson_use onedrive)
-		-Dsftp=true
+		$(meson_use sftp)
 		$(meson_use samba smb)
 		$(meson_use udisks udisks2)
 		$(meson_use bluray)
 		$(meson_use fuse)
-		-Dgcr=true
+		$(meson_use gcr)
 		-Dgcrypt=${enable_gcrypt}
 		$(meson_use udev gudev)
 		$(meson_use keyring)
