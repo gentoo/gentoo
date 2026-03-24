@@ -37,6 +37,7 @@ LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 
+RDEPEND="~www-client/firefox-${PV}"
 BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}"
