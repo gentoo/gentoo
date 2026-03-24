@@ -52,8 +52,8 @@ inherit python-any-r1 readme.gentoo-r1 rust systemd toolchain-funcs virtualx xdg
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://www.chromium.org/"
-PPC64_HASH="6e839bd94774ccf59b4c0db697fcf15c7bc1f22e"
-PATCH_V="${PV%%\.*}-1"
+PPC64_HASH="eeff222874ccb0a1e67d0de18bcc9215eecd2105"
+PATCH_V="${PV%%\.*}-2"
 COPIUM_COMMIT="fe1caafa06f27542c18a881348f78e984e2d9fe2"
 SRC_URI="https://github.com/chromium-linux-tarballs/chromium-tarballs/releases/download/${PV}/chromium-${PV}-linux.tar.xz
 	https://deps.gentoo.zip/www-client/chromium/rollup-wasm-node-${ROLLUP_VER}.tgz
@@ -86,7 +86,7 @@ SLOT="stable"
 # Unstable in gentoo exists mostly to give devs some breathing room for beta/stable releases.
 # It shouldn't be keyworded but adventurous users are encouraged to select it;
 # there's official dev channel Google Chrome after all.
-KEYWORDS="amd64 arm64"
+KEYWORDS="amd64 arm64 ~ppc64"
 
 IUSE_SYSTEM_LIBS="+system-harfbuzz +system-icu +system-zstd"
 IUSE="+X ${IUSE_SYSTEM_LIBS} bindist bundled-toolchain cups debug ffmpeg-chromium gtk4 +hangouts headless kerberos +official pax-kernel pgo"
@@ -580,17 +580,14 @@ src_prepare() {
 		if use ppc64; then
 			local patchset_dir="${WORKDIR}/openpower-patches-${PPC64_HASH}/patches"
 			# patch causes build errors on 4K page systems (https://bugs.gentoo.org/show_bug.cgi?id=940304)
-			local page_size_patch="ppc64le/third_party/use-sysconf-page-size-on-ppc64.patch"
 			local isa_3_patch="ppc64le/core/baseline-isa-3-0.patch"
-			# Apply the OpenPOWER patches (check for page size and isa 3.0)
-			openpower_patches=( $(grep -E "^ppc64le|^upstream" "${patchset_dir}/series" | grep -v "${page_size_patch}" |
-				grep -v "${isa_3_patch}" || die) )
+			openpower_patches=(
+				$(grep -E "^ppc64le|^upstream" "${patchset_dir}/series" | grep -v "${isa_3_patch}" |
+					grep -v "upstream" || die) # M146 `upstream` dir dropped but still referenced in series file.
+			)
 			for patch in "${openpower_patches[@]}"; do
 				PATCHES+=( "${patchset_dir}/${patch}" )
 			done
-			if [[ $(getconf PAGESIZE) == 65536 ]]; then
-				PATCHES+=( "${patchset_dir}/${page_size_patch}" )
-			fi
 			# We use vsx3 as a proxy for 'want isa3.0' (POWER9)
 			if use cpu_flags_ppc_vsx3 ; then
 				PATCHES+=( "${patchset_dir}/${isa_3_patch}" )
@@ -610,6 +607,13 @@ src_prepare() {
 			die "Failed to update rustfmt path"
 
 	fi
+
+	# Do this before we apply patches so that ppc64 can be applied without faffing around.
+	einfo "Moving rollup wasm-node package into place ..."
+	mkdir -p third_party/devtools-frontend/src/node_modules/@rollup/wasm-node ||
+		die "Failed to create node_modules/@rollup/wasm-node"
+	mv "${WORKDIR}"/package/* third_party/devtools-frontend/src/node_modules/@rollup/wasm-node ||
+		die "Failed to move rollup package"
 
 	default
 
@@ -649,14 +653,6 @@ src_prepare() {
 			die "Expected to find ${src} to restore ${dst}, but it does not exist."
 		fi
 	done
-
-	# Until we can just symlink in a system rollup, we'll `mv` the wasm version and modify some files.
-	# Do this after removing bundled bins in case we decide to strip wasm binaries in the future.
-	einfo "Moving rollup wasm-node package into place ..."
-	mkdir -p third_party/devtools-frontend/src/node_modules/@rollup/wasm-node ||
-		die "Failed to create node_modules/@rollup/wasm-node"
-	mv "${WORKDIR}"/package/* third_party/devtools-frontend/src/node_modules/@rollup/wasm-node ||
-		die "Failed to move rollup package"
 
 	# adjust python interpreter version
 	sed -i -e "s|\(^script_executable = \).*|\1\"${EPYTHON}\"|g" .gn || die
