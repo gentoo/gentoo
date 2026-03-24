@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,6 +30,7 @@ DEPEND="
 		>=dev-python/jsonpickle-4.0.0[${PYTHON_USEDEP}]
 		>=dev-python/numpy-2.2.0[${PYTHON_USEDEP}]
 		>=dev-python/orjson-3.10.0[${PYTHON_USEDEP}]
+		dev-python/pandas[${PYTHON_USEDEP}]
 		dev-python/pydantic[${PYTHON_USEDEP}]
 		dev-python/python-dateutil[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
