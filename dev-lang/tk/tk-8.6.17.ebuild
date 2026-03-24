@@ -102,7 +102,8 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
-	CI=1 virtx emake test || die "Tests failed"
+	CI=1 virtx emake test |& tee test.log || die "Tests failed"
+	grep "Files with failing tests:" test.log && die "Test failed"
 }
 
 multilib_src_install() {
