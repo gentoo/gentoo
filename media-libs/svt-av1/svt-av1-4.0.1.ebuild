@@ -70,8 +70,6 @@ multilib_src_configure() {
 		-DSVT_AV1_LTO=OFF
 	)
 
-	use pgo && mycmakeargs+=( -DSVT_AV1_PGO_DIR="${T}/${ARCH}-pgo" )
-
 	cmake_src_configure
 }
 
@@ -79,18 +77,9 @@ multilib_src_compile() {
 	if use pgo; then
 		mkdir -p "${BUILD_DIR}/objective-1-fast/" || die
 		cp "${DISTDIR}/svt-av1-${PROFILING_VIDEO}" "${BUILD_DIR}/objective-1-fast/${PROFILING_VIDEO}" || die
-
-		## Run the targets separately for more verbose output
-
-		# equivalent to the target PGOCompileGen
-		edo cmake "${BUILD_DIR}" -DSVT_INTERNAL_PGO_GENERATE=ON -DSVT_INTERNAL_PGO_USE=OFF
-		cmake_build SvtAv1EncApp
-
+		cmake_build PGOCompileGen
 		cmake_build PGOGenerateProfile
-
-		# equivalent to the target PGOCompileUse
-		edo cmake "${BUILD_DIR}" -DSVT_INTERNAL_PGO_GENERATE=OFF -DSVT_INTERNAL_PGO_USE=ON
-		cmake_build SvtAv1EncApp
+		cmake_build PGOCompileUse
 	fi
 
 	cmake_src_compile
