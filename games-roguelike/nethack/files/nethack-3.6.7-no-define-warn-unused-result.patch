@@ -1,0 +1,17 @@
+GCC (as of 15.2.1_p20260214) seems to fail, specifically for GNU Hurd (as seen
+by the !defined (__linux__) bit), as gcc's __attribute__ expects an argument
+there. It seems rather old (and quite undesirable), so for now, we will just
+disable the snippet of code.
+
+diff '--color=auto' -ru NetHack-3.6.7/include/tradstdc.h NetHack-3.6.7-fix/include/tradstdc.h
+--- NetHack-3.6.7/include/tradstdc.h	2023-02-15 16:52:57.000000000 -0500
++++ NetHack-3.6.7-fix/include/tradstdc.h	2026-03-24 00:48:35.740547092 -0400
+@@ -429,7 +429,7 @@
+ #if __GNUC__ >= 3
+ #define UNUSED __attribute__((unused))
+ #define NORETURN __attribute__((noreturn))
+-#if !defined(__linux__) || defined(GCC_URWARN)
++#if 0
+ /* disable gcc's __attribute__((__warn_unused_result__)) since explicitly
+    discarding the result by casting to (void) is not accepted as a 'use' */
+ #define __warn_unused_result__ /*empty*/

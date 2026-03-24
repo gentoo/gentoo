@@ -1,0 +1,15 @@
+diff '--color=auto' -ru NetHack-3.6.7/src/files.c NetHack-3.6.7-fix/src/files.c
+--- NetHack-3.6.7/src/files.c	2023-02-15 16:52:57.000000000 -0500
++++ NetHack-3.6.7-fix/src/files.c	2026-03-29 17:25:31.135961712 -0400
+@@ -4020,6 +4020,11 @@
+ #ifndef PATH_MAX
+ #include <limits.h>
+ #endif
++
++/* the Hurd still doesn't define PATH_MAX */
++#ifndef PATH_MAX
++#define PATH_MAX 2048
++#endif
+ #endif
+ 
+ void
