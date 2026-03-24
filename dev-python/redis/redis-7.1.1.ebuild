@@ -27,6 +27,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 BDEPEND="
 	test? (
 		dev-db/redis
+		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 	)
 "
