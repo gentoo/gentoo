@@ -532,17 +532,6 @@ pkg_postinst() {
 		ewarn "[2] https://wiki.gentoo.org/wiki/Nouveau"
 	fi
 
-	if ver_replacing -lt 590; then
-		elog "\n>=${PN}-590 has changes that may or may not need attention:"
-		elog "1. support for Pascal, Maxwell, and Volta cards has been dropped"
-		elog "  (if affected, there should be a another message about this above)"
-		elog "2. nvidia-drm.modeset=1 is now default regardless of USE=wayland"
-		elog "3. nvidia-drm.fbdev=1 is now also tentatively default to match upstream"
-		elog "(2+3 were also later changed in >=580.126.09-r1, may already be in-use)"
-		elog "See ${EROOT}/etc/modprobe.d/nvidia.conf to modify settings if needed,"
-		elog "fbdev=1 *could* cause issues for the console display with some setups."
-	fi
-
 	if ver_replacing -lt 595; then
 		elog "\n>=${PN}-595 has changes that may or may not need attention:"
 		elog "1. USE=kernel-open was removed and is now always enabled. If for some"
