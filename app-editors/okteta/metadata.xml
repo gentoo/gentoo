@@ -10,6 +10,6 @@
 		<remote-id type="kde-invent">utilities/okteta</remote-id>
 	</upstream>
 	<use>
-		<flag name="designer">Build plugins for <pkg>dev-qt/designer</pkg></flag>
+		<flag name="designer">Build plugins for <pkg>dev-qt/qttools</pkg>[designer]</flag>
 	</use>
 </pkgmetadata>

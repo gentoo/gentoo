@@ -6,7 +6,7 @@
 <name>Alexis Ballier</name>
 </maintainer>
   <use>
-    <flag name="designer">Installs <pkg>dev-qt/designer</pkg> plugin.</flag>
+    <flag name="designer">Installs <pkg>dev-qt/qttools</pkg>[designer] plugin.</flag>
   </use>
   <upstream>
     <remote-id type="github">GillesDebunne/libQGLViewer</remote-id>

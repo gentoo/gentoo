@@ -9,7 +9,7 @@
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
 	<use>
-		<flag name="designer">Install plugin for <pkg>dev-qt/designer</pkg></flag>
+		<flag name="designer">Install plugin for <pkg>dev-qt/qttools</pkg>[designer]</flag>
 		<flag name="tools">Install tools for developers and testing</flag>
 		<flag name="webengine">Enable support for system-wide defined KAccounts</flag>
 	</use>

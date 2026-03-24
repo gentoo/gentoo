@@ -10,7 +10,7 @@
 	</upstream>
 	<use>
 		<flag name="aspell">Enable the <pkg>app-text/aspell</pkg> spell-checking backend</flag>
-		<flag name="designer">Build plugins for <pkg>dev-qt/designer</pkg></flag>
+		<flag name="designer">Build plugins for <pkg>dev-qt/qttools</pkg>[designer]</flag>
 		<flag name="hunspell">Enable the <pkg>app-text/hunspell</pkg> spell-checking backend</flag>
 		<flag name="qml">Enable QML/QtQuick support via <pkg>dev-qt/qtdeclarative</pkg></flag>
 	</use>

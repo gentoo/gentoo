@@ -10,7 +10,7 @@
 		<remote-id type="kde-invent">pim/mailcommon</remote-id>
 	</upstream>
 	<use>
-		<flag name="designer">Build plugins for <pkg>dev-qt/designer</pkg></flag>
+		<flag name="designer">Build plugins for <pkg>dev-qt/qttools</pkg>[designer]</flag>
 		<flag name="activities">Enable Plasma Activities support via <pkg>kde-plasma/plasma-activities</pkg></flag>
 	</use>
 </pkgmetadata>

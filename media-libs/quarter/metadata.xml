@@ -16,7 +16,7 @@
 	It supersedes previous Qt binding - SoQt - by subclassing QGLWidget.
 	</longdescription>
 	<use>
-		<flag name="designer">Install plugin for <pkg>dev-qt/designer</pkg></flag>
+		<flag name="designer">Install plugin for <pkg>dev-qt/qttools</pkg>[designer]</flag>
 		<flag name="qch">Install API documentation in QCH format</flag>
 	</use>
 	<upstream>
