@@ -1,0 +1,21 @@
+diff --git a/Makefile b/Makefile
+index 15aaac0..a3f4fab 100644
+--- a/Makefile
++++ b/Makefile
+@@ -26,6 +26,7 @@ HELP2MAN ?= help2man
+ 
+ # Directories to place installed files.
+ PREFIX ?= /usr/local
++LIBDIR ?= lib
+ MAN1_DIR ?= man/man1
+ 
+ # Default optimisation level (override by passing OPT=... in the make invocation)
+@@ -204,7 +205,7 @@ clean:
+ install: bins libs man
+ 	{ \
+ 		$(INSTALL) -Dm 644 -t $(DESTDIR)$(PREFIX)/bin/ $(BINS) ;\
+-		$(INSTALL) -Dm 644 -t $(DESTDIR)$(PREFIX)/lib/ $(LIBS) ;\
++		$(INSTALL) -Dm 644 -t $(DESTDIR)$(PREFIX)/$(LIBDIR}/ $(LIBS) ;\
+ 		$(INSTALL) -Dm 644 -t $(DESTDIR)$(PREFIX)/include/ $(PUBLIC_HEADERS) ;\
+ 		$(INSTALL) -Dm 644 -t $(DESTDIR)$(PREFIX)/share/$(MAN1_DIR)/ $(MAN_PAGES) ;\
+ 	}
