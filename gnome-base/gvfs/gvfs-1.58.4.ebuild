@@ -52,6 +52,7 @@ RDEPEND="
 	ios? (
 		>=app-pda/libimobiledevice-1.2:=
 		>=app-pda/libplist-1:=
+		app-pda/usbmuxd
 	)
 	gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.53.1:= )
 	keyring? ( app-crypt/libsecret )

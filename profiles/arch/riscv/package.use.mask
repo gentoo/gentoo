@@ -1,5 +1,9 @@
-# Copyright 2019-2025 Gentoo Authors
+# Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Cristian Othón Martínez Vera <cfuga@cfuga.mx> (2026-03-22)
+# app-pda/usbmuxd is not keyworded here
+gnome-base/gvfs ios
 
 # Robin H. Johnson <robbat2@gentoo.org> (2026-03-22)
 # sys-block/vdo not keyworded here
