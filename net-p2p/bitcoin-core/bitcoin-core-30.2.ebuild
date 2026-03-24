@@ -9,7 +9,10 @@ inherit bash-completion-r1 check-reqs cmake desktop edo multiprocessing python-a
 
 DESCRIPTION="Reference implementation of the Bitcoin cryptocurrency"
 HOMEPAGE="https://bitcoincore.org/"
-SRC_URI="https://github.com/bitcoin/bitcoin/archive/v${PV/_rc/rc}.tar.gz -> ${P}.tar.gz"
+SRC_URI="
+	https://github.com/bitcoin/bitcoin/archive/v${PV/_rc/rc}.tar.gz -> ${P}.tar.gz
+	https://github.com/bitcoin/bitcoin/commit/fac5a1b10a6979a7898c5c3555d62b593560772f.patch?full_index=1 -> ${PN}-fix-mempool_updatefromblock.patch
+"
 S="${WORKDIR}/${PN/-core}-${PV/_rc/rc}"
 
 LICENSE="MIT"
@@ -90,10 +93,18 @@ DOCS=(
 PATCHES=(
 	"${FILESDIR}/30.0-cmake-syslibs.patch"
 	"${FILESDIR}/26.0-init.patch"
+	"${T}/${PN}-fix-mempool_updatefromblock.patch"
 )
 
 efmt() {
 	: ${1:?} ; local l ; while read -r l ; do "${!#}" "${l}" ; done < <(fmt "${@:1:$#-1}")
+}
+
+# lifted from https://gitlab.com/bitcoin/gentoo/-/blob/master/eclass/backports.eclass
+backports_mod_strip() {
+	(( ${#} == 2 )) || die 'strip mod requires argument'
+	sed -ne ':0;/^diff --git a\/'"${2////\\/}"'/{:1;n;/^diff --git /!b1;b0};p' \
+		-i "${1}" || die
 }
 
 pkg_pretend() {
@@ -160,6 +171,10 @@ src_prepare() {
 	# https://bugs.gentoo.org/965371
 	# https://github.com/google/leveldb/issues/1289
 	sed -e '/^cmake_minimum_required(VERSION 3\.9)$/s/9)$/10)/' -i src/leveldb/CMakeLists.txt || die
+
+	# https://github.com/bitcoin/bitcoin/pull/34136
+	cp -- "${DISTDIR}/${PN}-fix-mempool_updatefromblock.patch" "${T}/" || die
+	backports_mod_strip "${T}/${PN}-fix-mempool_updatefromblock.patch" 'ci/'
 
 	eapply_user
 	! use system-libsecp256k1 || rm -r src/secp256k1 || die
