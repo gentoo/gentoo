@@ -99,6 +99,9 @@ COMMON_DEPEND="
 	)
 "
 DEPEND="${COMMON_DEPEND}
+	test? (
+		ffmpeg? ( media-video/ffmpeg:0[x264(-)] )
+	)
 	valgrind? ( dev-debug/valgrind )
 "
 RDEPEND="${COMMON_DEPEND}
