@@ -17,7 +17,7 @@ S="${WORKDIR}"/${P^^}
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cpu_flags_x86_fma3 cpu_flags_x86_fma4 doc fortran qd"
+IUSE="cpu_flags_x86_fma3 cpu_flags_x86_fma4 fortran qd"
 
 DEPEND="qd? ( sci-libs/qd[fortran=] )"
 RDEPEND="${DEPEND}"
@@ -64,9 +64,6 @@ src_install() {
 		exeinto /usr/libexec/${PN}
 		doexe mathtool
 
-		exeinto /usr/libexec/${PN}/.libs
-		doexe .libs/mathtool
-
 		insinto /usr/libexec/${PN}
 		doins *.dat
 
@@ -78,12 +75,5 @@ src_install() {
 		newbin mathtool.exe mathtool
 		newdoc README README.mathtool
 	fi
-
-	if ! use doc; then
-		rm "${ED}"/usr/share/doc/${PF}/*.pdf || die
-	fi
-
-	if ! use static-libs; then
-		find "${D}" -type f -name '*.la' -delete || die
-	fi
+	rm -r "${D}"/usr/share/doc/${PN} || die
 }
