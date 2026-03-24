@@ -396,6 +396,7 @@ net-analyzer/echoping
 # setuptools-82 removes pkg_sources, inevitably leading to breakage.
 >=dev-python/ensurepip-setuptools-82
 >=dev-python/setuptools-82
+>=dev-python/types-python-dateutil-2.9.0.20260323
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-02-08)
 # All remaining KF5 revdeps have been masked.
