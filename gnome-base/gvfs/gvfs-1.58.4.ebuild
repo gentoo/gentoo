@@ -21,8 +21,8 @@ REQUIRED_USE="
 	cdda? ( udev )
 	google? ( gnome-online-accounts )
 	gphoto2? ( udev )
-	onedrive? ( gnome-online-accounts )
 	mtp? ( udev )
+	onedrive? ( gnome-online-accounts )
 	udisks? ( udev )
 "
 
@@ -41,7 +41,7 @@ RDEPEND="
 		>=net-libs/libsoup-3.0.0:3.0
 	)
 	zeroconf? ( >=net-dns/avahi-0.6[dbus] )
-	udev? ( >=dev-libs/libgudev-147:= )
+	udev? ( >=dev-libs/libgudev-147 )
 	fuse? (
 		>=sys-fs/fuse-3.0.0:3=
 		virtual/tmpfiles
@@ -67,23 +67,19 @@ RDEPEND="
 		>=dev-libs/libcdio-paranoia-0.78.2:=
 	)
 	google? ( >=dev-libs/libgdata-0.18.0:=[crypt,gnome-online-accounts] )
+	onedrive? ( >=net-libs/msgraph-0.3.0:= )
 	gphoto2? ( >=media-libs/libgphoto2-2.5.0:= )
 	nfs? ( >=net-fs/libnfs-1.9.8:= )
-	onedrive? (
-		>=dev-libs/libgdata-0.18.0:=[crypt,gnome-online-accounts]
-		>=net-libs/msgraph-0.3.0:=
-	)
 	virtual/openssh
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	dev-util/glib-utils
-	app-text/docbook-xsl-stylesheets
 	app-text/docbook-xml-dtd:4.2
+	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
-	>=sys-devel/gettext-0.19.8
-	virtual/pkgconfig
 	>=dev-util/gdbus-codegen-2.80.5-r1
+	dev-util/glib-utils
+	virtual/pkgconfig
 	test? ( dev-libs/libgdata )
 "
 
@@ -133,7 +129,7 @@ src_configure() {
 		-Dgcr=true
 		-Dgcrypt=${enable_gcrypt}
 		$(meson_use udev gudev)
-		$(meson_use keyring keyring)
+		$(meson_use keyring)
 		-Dlogind=${enable_logind}
 		-Dlibusb=${enable_libusb}
 		# wouldn't install any of it as of 1.38.1; some tests need it,
@@ -143,7 +139,7 @@ src_configure() {
 		-Dunit_tests=false
 		-Dman=true
 		-Dprivileged_group=wheel
-		# wsdd not in gentoo repository
+		# wsdd is currently masked
 		-Dwsdd=false
 	)
 	meson_src_configure
