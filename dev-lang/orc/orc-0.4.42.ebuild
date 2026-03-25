@@ -15,6 +15,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~x86 ~x64-ma
 IUSE="static-libs test"
 RESTRICT="!test? ( test )"
 
+BDEPEND=">=dev-build/meson-1.3.0"
+
 # in orc-0.4.42 upstream dropped gtk-doc in favour of hotdoc, which isn't widely
 # packaged yet. This means we have no docs, presently.
 
