@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ SRC_URI="
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
-IUSE="+debug device-mapper nls readline"
+IUSE="+debug device-mapper nls readline static-libs"
 
 # util-linux for libuuid
 RDEPEND="
@@ -75,9 +75,9 @@ src_configure() {
 		$(use_enable debug)
 		$(use_enable device-mapper)
 		$(use_enable nls)
+		$(use_enable static-libs static)
 		$(use_with readline)
 		--disable-rpath
-		--disable-static
 	)
 	econf "${myconf[@]}"
 }
