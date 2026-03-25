@@ -5,6 +5,7 @@
 # sys-kernel/hurd installs some static binaries
 app-arch/bzip2 static-libs
 sys-apps/util-linux static-libs
+sys-block/parted static-libs
 sys-libs/libxcrypt static-libs
 sys-libs/zlib static-libs
 x11-libs/libpciaccess static-libs
