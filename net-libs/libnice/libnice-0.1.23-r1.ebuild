@@ -1,6 +1,8 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Should be bumped with media-plugins/gst-plugins-libnice
+
 EAPI=8
 
 inherit meson-multilib xdg
