@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -52,10 +52,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.3.2-disable-version-check.patch"
-	"${FILESDIR}/${PN}-2.3.3-fix-exception.patch"
-	"${FILESDIR}/${PN}-2.3.3-backport-pr368.patch"
 	"${FILESDIR}/${PN}-2.3.3-use-xdg-open-as-preview-default.patch"
-	"${FILESDIR}/${PN}-9999-gettext-0.23.patch"
 )
 
 src_prepare() {
