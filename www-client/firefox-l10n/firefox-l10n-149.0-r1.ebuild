@@ -37,7 +37,8 @@ LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 
-RDEPEND="~www-client/firefox-${PV}"
+# 149.0 is when the firefox-l10n was introduced.
+RDEPEND="!<www-client/firefox-149.0"
 BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}"
