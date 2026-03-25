@@ -106,6 +106,7 @@
 # Michał Górny <mgorny@gentoo.org> (2026-03-22)
 # Cyclic dependency through dev-python/vcs-versioning →
 # dev-python/hatchling → dev-python/pluggy.
+# https://github.com/pypa/setuptools-scm/issues/1302
 >=dev-python/setuptools-scm-10
 dev-python/vcs-versioning
 
