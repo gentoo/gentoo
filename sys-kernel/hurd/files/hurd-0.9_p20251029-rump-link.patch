@@ -1,0 +1,20 @@
+Without this patch, the configure test for rump fails:
+```
+configure:5487: i686-gnu-gcc -o conftest -g -O2 -U_FORTIFY_SOURCE -Wl,--no-error-rwx-segments -Wl,--no-error-execstack -Wl,-z,notext  -g -O2 conftest.c  -lrump >&5
+/usr/x86_64-pc-linux-gnu/i686-gnu/binutils-bin/2.46.0/ld: /usr/lib/gcc/i686-gnu/16/../../../../i686-gnu/lib/librump.so: undefined reference to `rumpuser_rw_exit'
+/usr/x86_64-pc-linux-gnu/i686-gnu/binutils-bin/2.46.0/ld: /usr/lib/gcc/i686-gnu/16/../../../../i686-gnu/lib/librump.so: undefined reference to `rumpuser_cv_has_waite
+```
+and rumpuser does exist but it didn't link with it. This patch is from cross-hurd
+but it's not clear why Debian and Guix don't seem to need this:
+https://raw.githubusercontent.com/flavioc/cross-hurd/c20747b41c0f2a97c5d5602ff80e550a104a6410/patches/hurd/link-rump.patch
+--- a/configure.ac
++++ b/configure.ac
+@@ -239,7 +239,7 @@ AS_IF([test "x$with_rump" != xno], [
+   # Save
+   oldLIBS="$LIBS"
+ 
+-  LIBS="$oldLIBS -lrump"
++  LIBS="$oldLIBS -lrump -lrumpuser -lrumpvfs -lrumpvfs_fifofs  -lrumpnet -lrumpnet_net -lrumpnet_local"
+   AC_LINK_IFELSE(
+     [AC_LANG_PROGRAM(
+       [[#include <hurd.h>

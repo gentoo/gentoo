@@ -31,7 +31,7 @@ SLOT="0"
 if is_crosspkg ; then
 	IUSE="custom-cflags headers-only"
 else
-	IUSE="custom-cflags headers-only ncurses xkb"
+	IUSE="custom-cflags headers-only ncurses rumpkernel xkb"
 fi
 [[ ${PV} != 9999 ]] && KEYWORDS="~amd64 ~x86"
 
@@ -51,11 +51,16 @@ else
 		virtual/libcrypt:=[static-libs]
 		virtual/zlib:=[static-libs]
 		ncurses? ( sys-libs/ncurses:= )
+		rumpkernel? ( sys-kernel/rumpkernel )
 		xkb? ( x11-libs/libxkbcommon )
 	"
 	RDEPEND="${DEPEND}"
 	BDEPEND="virtual/pkgconfig"
 fi
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.9_p20251029-rump-link.patch
+)
 
 src_prepare() {
 	default
@@ -110,7 +115,6 @@ src_configure() {
 
 			# Unpackaged
 			--without-acpica
-			--without-rump
 
 			# TODO (configure really wants parted)
 			--without-parted
@@ -122,6 +126,7 @@ src_configure() {
 			--with-libz
 
 			$(use_enable ncurses ncursesw)
+			$(use_with rumpkernel rump)
 		)
 	fi
 

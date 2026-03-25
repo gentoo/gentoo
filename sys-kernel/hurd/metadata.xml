@@ -10,6 +10,12 @@
 		Build console-curses client for non-basic capabilities,
 		unlike the builtin one.
 		</flag>
+		<flag name="rumpkernel">
+		Build <pkg>sys-kernel/rumpkernel</pkg> support which provides
+		drivers from NetBSD run in userland. This is needed for 64-bit
+		systems and is considered the future of driver and hardware
+		support on Hurd.
+		</flag>
 		<flag name="xkb">
 		Depend on <pkg>x11-libs/libxkbcommon</pkg> for keymap support in
 		the console.
