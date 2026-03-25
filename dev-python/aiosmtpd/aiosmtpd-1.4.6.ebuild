@@ -23,6 +23,11 @@ RDEPEND="
 	>=dev-python/atpublic-4.0[${PYTHON_USEDEP}]
 	>=dev-python/attrs-23.2.0[${PYTHON_USEDEP}]
 "
+BDEPEND="
+	test? (
+		dev-python/pkg-resources[${PYTHON_USEDEP}]
+	)
+"
 
 EPYTEST_DESELECT=(
 	# Needs dev-vcs/git
