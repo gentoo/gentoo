@@ -44,4 +44,3 @@ python_install() {
 	# for it.
 	python_domodule pkg_resources
 }
-
