@@ -1,0 +1,35 @@
+We end up getting linker errors about us not finding /lib/... and some
+various other bits due to the value of --sysroot, which is set to
+somewhere in ${S}.
+
+This might not be the ideal patch (or solution), but for us, we want
+it to remain untouched for LDFLAGS in any case.
+
+--- a/buildrump.sh/src/share/mk/bsd.own.mk
++++ b/buildrump.sh/src/share/mk/bsd.own.mk
+@@ -434,23 +434,8 @@
+ #
+ DESTDIR?=
+ 
+-# Don't append another copy of sysroot (coming from COMPATCPPFLAGS etc.)
+-# because it confuses Coverity. Still we need to cov-configure specially
+-# for each specific sysroot argument.
+-# Also don't add a sysroot at all if a rumpkernel build.
+-.if !defined(HOSTPROG) && !defined(HOSTLIB) && !defined(RUMPRUN)
+-.  if ${DESTDIR} != ""
+-.	if empty(CPPFLAGS:M*--sysroot=*)
+-CPPFLAGS+=	--sysroot=${DESTDIR}
+-.	endif
+-LDFLAGS+=	--sysroot=${DESTDIR}
+-.  else
+-.	if empty(CPPFLAGS:M*--sysroot=*)
+-CPPFLAGS+=	--sysroot=/
+-.	endif
+-LDFLAGS+=	--sysroot=/
+-.  endif
+-.endif
++CPPFLAGS?=
++LDFLAGS?=
+ 
+ DBSYM=		${TOOLDIR}/bin/${MACHINE_GNU_PLATFORM}-dbsym
+ ARM_ELF2AOUT=	${TOOLDIR}/bin/${_TOOL_PREFIX}arm-elf2aout

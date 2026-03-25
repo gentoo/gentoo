@@ -6,3 +6,4 @@
 -dev-util/mig
 -sys-kernel/hurd
 -sys-kernel/gnumach
+-sys-kernel/rumpkernel
