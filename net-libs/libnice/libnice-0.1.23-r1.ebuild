@@ -16,11 +16,11 @@ IUSE="+gnutls gtk-doc +introspection test +upnp"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-libs/glib-2.54:2[${MULTILIB_USEDEP}]
+	>=dev-libs/glib-2.56:2[${MULTILIB_USEDEP}]
 	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
-	gnutls? ( >=net-libs/gnutls-2.12.0:0=[${MULTILIB_USEDEP}] )
-	!gnutls? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
-	upnp? ( net-libs/gupnp-igd:1.6=[${MULTILIB_USEDEP}] )
+	gnutls? ( >=net-libs/gnutls-3.6.0:=[${MULTILIB_USEDEP}] )
+	!gnutls? ( dev-libs/openssl:=[${MULTILIB_USEDEP}] )
+	upnp? ( >=net-libs/gupnp-igd-0.2.5:1.6=[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
