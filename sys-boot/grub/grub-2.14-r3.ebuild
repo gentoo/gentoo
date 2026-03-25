@@ -175,6 +175,9 @@ src_unpack() {
 }
 
 src_prepare() {
+	# Bug 971544
+	rm grub-core/lib/gnulib/getopt-cdefs.h || die
+
 	local PATCHES=(
 		"${WORKDIR}/${P}-patches"
 	)
@@ -300,11 +303,17 @@ src_configure() {
 	grub_do grub_configure
 }
 
+grub_compile() {
+	# Bug 971544
+	emake -C grub-core/lib/gnulib
+	emake
+}
+
 src_compile() {
 	# Sandbox bug 404013.
 	use libzfs && { addpredict /etc/dfs; addpredict /dev/zfs; }
 
-	grub_do emake
+	grub_do grub_compile
 	use doc && grub_do_once emake -C docs html
 }
 
