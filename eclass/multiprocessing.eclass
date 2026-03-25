@@ -86,8 +86,8 @@ get_makeopts_jobs() {
 }
 
 # @FUNCTION: makeopts_jobs
-# @DEPRECATED: get_makeopts_jobs
 # @USAGE: [${MAKEOPTS}] [${inf:-$(( $(get_nproc) + 1 ))}]
+# @DEPRECATED: get_makeopts_jobs
 # @DESCRIPTION:
 # This function is deprecated and banned in EAPI 9, use get_makeopts_jobs instead.
 # Searches the arguments (or sensible defaults) and extracts the jobs number
@@ -129,8 +129,8 @@ get_makeopts_loadavg() {
 }
 
 # @FUNCTION: makeopts_loadavg
-# @DEPRECATED: get_makeopts_loadavg
 # @USAGE: [${MAKEOPTS}] [${inf:-999}]
+# @DEPRECATED: get_makeopts_loadavg
 # @DESCRIPTION:
 # This function is deprecated and banned in EAPI 9, use get_makeopts_loadavg instead.
 # Searches the arguments (or sensible defaults) and extracts the value set
