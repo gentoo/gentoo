@@ -536,10 +536,6 @@ net-analyzer/arp-sk
 # See bug #966299.
 =dev-util/librnp-0.18.0
 
-# Sam James <sam@gentoo.org> (2025-10-13)
-# Crashes in memtodest when handling PATH. Not yet reported upstream.
-=app-shells/dash-0.5.13.1
-
 # Michał Górny <mgorny@gentoo.org> (2025-10-12)
 # Requires Rust with RUST_SYSROOTS=bpf, which isn't currently supported
 # by dev-lang/rust-bin.  Also needs net-proxy/mitmproxy-linux updates.
