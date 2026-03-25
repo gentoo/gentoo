@@ -39,6 +39,7 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 	acct-user/plasmalogin
+	kde-plasma/kwin[lock]
 "
 BDEPEND="
 	dev-python/docutils
