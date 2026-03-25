@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -191,6 +191,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-2025.122.141614-nvcodec.patch
 	"${FILESDIR}"/${PN}-new-cuda.patch
+	"${FILESDIR}"/ffmpeg-8.0.1-svt-av1-4.patch
 )
 
 # Make this mess a bit simpler.
