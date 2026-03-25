@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,6 +27,7 @@ RDEPEND="
 "
 BDEPEND="
 	${RDEPEND}
+	dev-python/pkg-resources[${PYTHON_USEDEP}]
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	doc? ( sys-apps/texinfo )
 	test? ( dev-python/mock[${PYTHON_USEDEP}] )
