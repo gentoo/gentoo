@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,6 +21,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390
 
 RDEPEND="
 	>=dev-python/appdirs-1.4.3[${PYTHON_USEDEP}]
+	dev-python/pkg-resources[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/six-1.10[${PYTHON_USEDEP}]
