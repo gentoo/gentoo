@@ -20,8 +20,6 @@ HOMEPAGE="https://atar-axis.github.io/xpadneo/"
 LICENSE="GPL-2 GPL-3+"
 SLOT="0"
 
-CONFIG_CHECK="INPUT_FF_MEMLESS"
-
 src_compile() {
 	local modlist=( hid-${PN}=kernel/drivers/hid:hid-${PN}:hid-${PN}/src )
 	local modargs=( KERNEL_SOURCE_DIR="${KV_OUT_DIR}" )
