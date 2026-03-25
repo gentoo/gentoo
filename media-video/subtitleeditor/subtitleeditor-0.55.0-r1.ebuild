@@ -13,7 +13,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.t
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="debug nls wayland"
 # opengl would mix gtk+:2 and :3 which is not possible
 
