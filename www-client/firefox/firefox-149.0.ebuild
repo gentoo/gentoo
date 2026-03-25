@@ -208,7 +208,6 @@ DEPEND="${COMMON_DEPEND}
 		x11-libs/libICE
 		x11-libs/libSM
 	)"
-PDEPEND="~www-client/firefox-l10n-${PV}"
 
 # ESR and rapid dependencies.
 if [[ -n ${MOZ_ESR} ]] ; then
@@ -216,6 +215,9 @@ if [[ -n ${MOZ_ESR} ]] ; then
 else
 	RDEPEND+=" !www-client/firefox:esr"
 fi
+
+# Firefox-only RDEPEND
+RDEPEND+=" ~www-client/firefox-l10n-${PV}"
 
 # Allow MOZ_GMP_PLUGIN_LIST to be set in an eclass or
 # overridden in the enviromnent (advanced hackers only)
