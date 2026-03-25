@@ -393,6 +393,11 @@ setup_target_flags() {
 				# For compatibility with older binaries at slight performance cost.
 				use stack-realign && export CFLAGS_x86+=" -mstackrealign"
 			fi
+
+			if is_hurd ; then
+				# doesnt build with -march=native and probably other values, debugging required
+				filter-flags '-march=*'
+			fi
 		;;
 		mips)
 			# The mips abi cannot support the GNU style hashes. #233233
