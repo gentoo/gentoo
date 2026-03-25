@@ -7,7 +7,7 @@ EAPI=8
 
 inherit meson-multilib xdg
 
-DESCRIPTION="Implementation of the Interactice Connectivity Establishment standard (ICE)"
+DESCRIPTION="Implementation of the Interactive Connectivity Establishment standard (ICE)"
 HOMEPAGE="https://libnice.freedesktop.org/"
 SRC_URI="https://libnice.freedesktop.org/releases/${P}.tar.gz"
 
