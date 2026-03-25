@@ -23,6 +23,10 @@ KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv ~sparc x86 ~x64-macos"
 IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 
+RDEPEND="
+	dev-python/pkg-resources[${PYTHON_USEDEP}]
+"
+
 python_test() {
 	"${EPYTHON}" -m unittest -v genshi.tests.suite || die
 }
