@@ -11,4 +11,4 @@ inherit sec-keys
 
 DESCRIPTION="OpenPGP keys used by Unifont"
 HOMEPAGE="https://unifoundry.com/unifont/index.html"
-KEYWORDS="amd64 arm arm64 ~loong ppc ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
