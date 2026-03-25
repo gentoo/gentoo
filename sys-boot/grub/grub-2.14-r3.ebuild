@@ -56,7 +56,7 @@ if [[ ${PV} != 9999 ]]; then
 			sec-keys/openpgp-keys-unifont
 		)
 	"
-	KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/grub.git"
