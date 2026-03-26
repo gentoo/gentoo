@@ -4,7 +4,6 @@
 EAPI=8
 
 # TODO: check for any automagic dependencies, possible USE flags
-# TODO: make building for x86_64 work (don't hardcode i386)
 # TODO: make building natively work
 
 inherit flag-o-matic multiprocessing toolchain-funcs
@@ -75,7 +74,18 @@ src_configure() {
 	cd buildrump.sh/src/lib/librumpuser || die "Couldn't change to the build directory"
 	econf
 
-	NBMAKE="${S}"/buildrump.sh/src/obj/tooldir/bin/nbmake-i386
+	case ${CHOST} in
+		i[3-7]86*)
+			NBARCH=i386
+			;;
+		x86_64*)
+			NBARCH=amd64
+			;;
+		*)
+			die "Unknown NetBSD arch for this CHOST"
+			;;
+	esac
+	NBMAKE="${S}"/buildrump.sh/src/obj/tooldir/bin/nbmake-${NBARCH}
 }
 
 src_compile() {
@@ -83,7 +93,7 @@ src_compile() {
 	mkdir -p obj || die "Couldn't make obj dir"
 
 	local buildrump_cppflags=(
-		-I"${S}"/buildrump.sh/src/obj/destdir.i386/usr/include
+		-I"${S}"/buildrump.sh/src/obj/destdir.${NBARCH}/usr/include
 
 		-D_FILE_OFFSET_BITS=64
 		-DRUMP_REGISTER_T=int
@@ -138,7 +148,7 @@ src_compile() {
 		-V MIG=${CHOST}-mig
 
 		# XXX
-		-m i386
+		-m ${NBARCH}
 		-U -u
 		-j $(get_makeopts_jobs)
 		-T ./obj/tooldir
