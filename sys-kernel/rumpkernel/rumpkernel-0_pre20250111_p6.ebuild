@@ -14,7 +14,7 @@ HOMEPAGE="https://salsa.debian.org/hurd-team/rumpkernel https://darnassus.sceen.
 if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://salsa.debian.org/hurd-team/rumpkernel.git"
 	inherit git-r3
-elif [[ ${PV} == *_p*_p* ]] ; then
+elif [[ ${PV} == *_pre*_p* ]] ; then
 	# These are proper Debian relaeses. rumpkernel isn't currently
 	# part of the Debian archive, so this is the best we can do (no
 	# 'orig' tarballs).
