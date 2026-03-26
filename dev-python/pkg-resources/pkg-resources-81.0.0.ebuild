@@ -10,7 +10,7 @@ PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1 pypi
 
-DESCRIPTION="pkg_resources package split form old setuptools"
+DESCRIPTION="pkg_resources package split from old setuptools"
 HOMEPAGE="
 	https://github.com/pypa/setuptools/
 	https://pypi.org/project/setuptools/
