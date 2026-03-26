@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -47,9 +47,9 @@ src_configure() {
 }
 
 src_compile() {
-	ocaml boot/bootstrap.ml -j $(makeopts_jobs) --verbose || die
+	ocaml boot/bootstrap.ml -j $(get_makeopts_jobs) --verbose || die
 	./_boot/dune.exe build @install -p "${PN}" --profile dune-bootstrap \
-		-j $(makeopts_jobs) --display short || die
+		-j $(get_makeopts_jobs) --display short || die
 
 	use emacs && elisp-compile editor-integration/emacs/*.el
 }
