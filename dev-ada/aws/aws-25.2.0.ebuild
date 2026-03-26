@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -69,7 +69,7 @@ src_configure() {
 		ENABLE_SHARED=$(usex shared true false) \
 		SOCKET=$(usex ssl openssl std) \
 		LAL=$(usex wsdl true false) \
-		PROCESSORS=$(makeopts_jobs) \
+		PROCESSORS=$(get_makeopts_jobs) \
 		SERVER_HTTP2=true \
 		CLIENT_HTTP2=true
 	sed -i \
