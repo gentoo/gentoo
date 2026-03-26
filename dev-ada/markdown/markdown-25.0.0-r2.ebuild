@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -49,10 +49,10 @@ src_prepare() {
 }
 
 src_compile() {
-	gprbuild -v -p -j$(makeopts_jobs) -XBUILD_MODE=dev gnat/markdown.gpr \
+	gprbuild -v -p -j$(get_makeopts_jobs) -XBUILD_MODE=dev gnat/markdown.gpr \
 		-cargs ${ADAFLAGS} || die
 	if use test; then
-		gprbuild -v -p -j$(makeopts_jobs) -XBUILD_MODE=dev -aP gnat \
+		gprbuild -v -p -j$(get_makeopts_jobs) -XBUILD_MODE=dev -aP gnat \
 			-P gnat/tests/commonmark_tests.gpr -cargs ${ADAFLAGS} || die
 	fi
 }
