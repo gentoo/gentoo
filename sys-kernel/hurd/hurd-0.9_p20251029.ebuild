@@ -131,7 +131,9 @@ src_configure() {
 			--with-libcrypt
 			--with-libbz2
 			--with-libz
-			# configure really wants parted (may be needed for rump too)
+			# configure really wants parted
+			# it's also essential for rumpdisk:
+			# https://lists.gnu.org/r/bug-hurd/2023-05/msg00405.html
 			--with-parted
 
 			$(use_enable ncurses ncursesw)
