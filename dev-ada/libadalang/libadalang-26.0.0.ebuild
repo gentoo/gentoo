@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -63,7 +63,7 @@ src_compile() {
 	use static-libs && libType+=",static"
 	use static-pic  && libType+=",static-pic"
 	${EPYTHON} -m langkit.scripts.lkm build -v debug \
-		--library-types ${libType} --jobs $(makeopts_jobs) \
+		--library-types ${libType} --jobs $(get_makeopts_jobs) \
 		--disable-java \
 		|| die
 	if use doc; then
