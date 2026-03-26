@@ -1,0 +1,36 @@
+Inspired by https://github.com/gentoo/gentoo/commit/cd306dc1d9273c423759a74166f9805ac8e8b5dd
+Fix fpurge on musl
+https://bugs.gentoo.org/936285
+--- a/configure.ac
++++ b/configure.ac
+@@ -316,7 +316,7 @@
+ #    tiocflush   use TIOCFLUSH ioctl from <sys/ioctl.h>
+ #    tcflsh      use TCFLSH ioctl from <termio.h>
+ # Leave the variable(s) empty if flushing is not supported.
+-AC_CHECK_FUNCS(fpurge)
++AC_CHECK_DECLS(fpurge)
+ 
+ AC_CACHE_CHECK([for BSD-style flushing],
+   [ac_cv_have_bsd_flush],
+--- a/src/print.c
++++ b/src/print.c
+@@ -205,7 +205,7 @@
+     if (PORT(port)->flags & P_STRING)
+         return;
+     f = PORT(port)->file;
+-#if defined(HAVE_FPURGE)
++#if HAVE_DELC_FPURGE
+     (void)fpurge (f);
+ #elif defined(HAVE_BSD_FLUSH)
+     f->_cnt = 0;
+--- a/src/read.c
++++ b/src/read.c
+@@ -144,7 +144,7 @@
+     if (PORT(port)->flags & P_STRING)
+         return;
+     f = PORT(port)->file;
+-#if defined(HAVE_FPURGE)
++#if HAVE_DECL_FPURGE
+     (void)fpurge (f);
+ #elif defined(HAVE_BSD_FLUSH)
+     f->_cnt = 0;
