@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -77,11 +77,11 @@ src_compile() {
 
 	gcc -c ${CFLAGS} gpr/src/gpr_imports.c -o gpr_imports.o || die
 	for bin in ${bin_progs}; do
-		gnatmake -j$(makeopts_jobs) ${inc_flags} $ADAFLAGS ${bin}-main \
+		gnatmake -j$(get_makeopts_jobs) ${inc_flags} $ADAFLAGS ${bin}-main \
 			-o ${bin} -largs ${LDFLAGS} gpr_imports.o || die
 	done
 	for lib in $lib_progs; do
-		gnatmake -j$(makeopts_jobs) ${inc_flags} ${lib} $ADAFLAGS \
+		gnatmake -j$(get_makeopts_jobs) ${inc_flags} ${lib} $ADAFLAGS \
 			-largs ${LDFLAGS} gpr_imports.o || die
 	done
 	use doc && emake -C doc html
