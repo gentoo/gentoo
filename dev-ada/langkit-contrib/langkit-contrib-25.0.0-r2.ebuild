@@ -1,4 +1,4 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -57,7 +57,7 @@ src_compile() {
 	cd contrib/python
 	build () {
 		rm -f build/obj/dev/*.lexch
-		gprbuild -v -p -j$(makeopts_jobs) -Pbuild/libpythonlang.gpr \
+		gprbuild -v -p -j$(get_makeopts_jobs) -Pbuild/libpythonlang.gpr \
 			-XLIBRARY_TYPE=$1 -XGPR_BUILD=$1 -XXMLADA_BUILD=$1 \
 			-XLIBPYTHONLANG_WARNINGS=true -gnatef \
 			-cargs:Ada ${ADAFLAGS} -cargs:C ${CFLAGS} || die
@@ -65,7 +65,7 @@ src_compile() {
 	build relocatable
 	use static-libs && build static
 	use static-pic  && build static-pic
-	gprbuild -v -p -j$(makeopts_jobs) -Pbuild/mains.gpr \
+	gprbuild -v -p -j$(get_makeopts_jobs) -Pbuild/mains.gpr \
 		-XLIBRARY_TYPE=relocatable -XGPR_BUILD=relocatable \
 		-XXMLADA_BUILD=relocatable -XLIBPYTHONLANG_WARNINGS=true \
 		parse.adb -gnatef -cargs:Ada ${ADAFLAGS} -cargs:C ${CFLAGS} \
@@ -73,7 +73,7 @@ src_compile() {
 	cd ../lkt
 	build () {
 		rm -f build/obj/dev/*.lexch
-		gprbuild -v -p -j$(makeopts_jobs) -Pbuild/liblktlang.gpr \
+		gprbuild -v -p -j$(get_makeopts_jobs) -Pbuild/liblktlang.gpr \
 			-XLIBRARY_TYPE=$1 -XGPR_BUILD=$1 -XXMLADA_BUILD=$1 \
 			-XLIBLKTLANG_WARNINGS=true -gnatef \
 			-cargs:Ada ${ADAFLAGS} -cargs:C ${CFLAGS} || die
@@ -81,7 +81,7 @@ src_compile() {
 	build relocatable
 	use static-libs && build static
 	use static-pic  && build static-pic
-	gprbuild -v -p -j$(makeopts_jobs) -Pbuild/mains.gpr \
+	gprbuild -v -p -j$(get_makeopts_jobs) -Pbuild/mains.gpr \
 		-XLIBRARY_TYPE=relocatable -XGPR_BUILD=relocatable \
 		-XXMLADA_BUILD=relocatable -XLIBLKTLANG_WARNINGS=true \
 		parse.adb lkt_toolbox.adb unparse.adb -gnatef \

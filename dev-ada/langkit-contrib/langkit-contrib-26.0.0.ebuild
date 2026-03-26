@@ -1,4 +1,4 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -54,7 +54,7 @@ src_compile() {
 		--library-types=${libtype} \
 		--no-langkit-support \
 		--build-mode prod \
-		--jobs $(makeopts_jobs) --gargs \\-v || die
+		--jobs $(get_makeopts_jobs) --gargs \\-v || die
 }
 
 src_install() {
