@@ -151,7 +151,7 @@ src_compile() {
 		return
 	elif is_crosspkg ; then
 		emake \
-			lib-subdirs="libshouldbeinlibc libihash libstore" \
+			lib-subdirs="libshouldbeinlibc libihash libstore libirqhelp" \
 			prog-subdirs= \
 			other-subdirs=
 	else
@@ -170,7 +170,7 @@ src_install() {
 	elif is_crosspkg ; then
 		emake DESTDIR="${D}" install-headers no_deps=t
 		emake DESTDIR="${D}" install \
-			lib-subdirs="libshouldbeinlibc libihash libstore" \
+			lib-subdirs="libshouldbeinlibc libihash libstore libirqhelp" \
 			prog-subdirs= \
 			other-subdirs= \
 			no_deps=t
