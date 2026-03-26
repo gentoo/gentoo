@@ -46,7 +46,7 @@ src_compile() {
 	build () {
 		gprbuild -v -k -XLAL_REFACTOR_LIBRARY_TYPE=$1 -XLIBRARY_TYPE=$1 \
 			-XLAL_REFACTOR_BUILD_MODE=dev \
-			-P gnat/lal_refactor.gpr -p -j$(makeopts_jobs) \
+			-P gnat/lal_refactor.gpr -p -j$(get_makeopts_jobs) \
 			-largs ${LDFLAGS} -cargs ${ADAFLAGS} || die
 		}
 	build relocatable
@@ -60,7 +60,7 @@ src_compile() {
 		-XLAL_REFACTOR_BUILD_MODE=dev \
 		-Pgnat/lal_refactor_driver.gpr \
 		-p \
-		-j$(makeopts_jobs) -largs ${LDFLAGS} -cargs ${ADAFLAGS} || die
+		-j$(get_makeopts_jobs) -largs ${LDFLAGS} -cargs ${ADAFLAGS} || die
 
 	if use test; then
 		GPR_PROJECT_PATH=gnat \
@@ -68,7 +68,7 @@ src_compile() {
 			-XLIBRARY_TYPE=relocatable \
 			-XLAL_REFACTOR_BUILD_MODE=dev \
 			-P testsuite/ada_drivers/gnat/lal_refactor_test_drivers.gpr \
-			-p -j$(makeopts_jobs) || die
+			-p -j$(get_makeopts_jobs) || die
 	fi
 }
 
