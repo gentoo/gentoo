@@ -151,7 +151,6 @@ src_compile() {
 		-V _GCC_CRTI="" -V _GCC_CRTN=""
 		-V MIG=${CHOST}-mig
 
-		# XXX
 		-m ${NBARCH}
 		-U -u
 		-j $(get_makeopts_jobs)
@@ -184,6 +183,7 @@ src_compile() {
 src_install() {
 	dodir /usr/include /usr/lib
 
+	# Install logic copied from Debian
 	cp -a "${S}"/buildrump.sh/src/sys/rump/include/rump "${ED}"/usr/include/ || die
 	# Kept "${S}"/buildrump.sh/src/obj separate here as may change to
 	# another builddir.
@@ -194,6 +194,6 @@ src_install() {
 
 	# rempve non lib files
 	rm -f "${ED}"/usr/lib/*.map || die
-	# Remove it to make lintian happy
+	#
 	rm -f "${ED}"/usr/lib/librumpkern_z.* || die
 }
