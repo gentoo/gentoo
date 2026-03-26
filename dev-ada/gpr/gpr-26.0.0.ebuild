@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -80,7 +80,7 @@ src_compile() {
 	.build/kb/collect_kb -o .build/kb /usr/share/gprconfig || die
 
 	build () {
-		gprbuild -j$(makeopts_jobs) -m -p -v -XLIBRARY_TYPE=$1 \
+		gprbuild -j$(get_makeopts_jobs) -m -p -v -XLIBRARY_TYPE=$1 \
 			-XGPR2_BUILD=release -XXMLADA_BUILD=$1 gpr2.gpr \
 			-largs ${LDFLAGS} \
 			-cargs ${ADAFLAGS} || die "gprbuild failed"
@@ -93,7 +93,7 @@ src_compile() {
 		build static-pic
 	fi
 
-	gprbuild -p -m -v -j$(makeopts_jobs) -aP . -XGPR2_BUILD=release \
+	gprbuild -p -m -v -j$(get_makeopts_jobs) -aP . -XGPR2_BUILD=release \
 		-XLIBRARY_TYPE=relocatable -XXMLADA_BUILD=relocatable tools/gpr2_tools.gpr \
 		-largs ${LDFLAGS} -cargs ${ADAFLAGS} || die
 }
