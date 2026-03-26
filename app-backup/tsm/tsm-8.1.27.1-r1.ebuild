@@ -41,7 +41,7 @@ LICENSE="
 "
 
 SLOT="0"
-KEYWORDS="~amd64" # ppc64 s390 -*
+KEYWORDS="amd64" # ppc64 s390 -*
 
 IUSE="gpfs gui"
 # GPFS is not supported for journal-based backups on Linux
