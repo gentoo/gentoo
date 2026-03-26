@@ -47,7 +47,7 @@ else
 		dev-util/mig
 		sys-apps/util-linux[static-libs]
 		sys-block/parted[static-libs]
-		sys-libs/libacpica
+		sys-power/libacpica
 		x11-libs/libpciaccess[static-libs]
 		virtual/libcrypt:=[static-libs]
 		virtual/zlib:=[static-libs]
