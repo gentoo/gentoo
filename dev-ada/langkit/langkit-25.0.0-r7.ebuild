@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -44,14 +44,14 @@ distutils_enable_sphinx doc
 python_compile_all() {
 	build () {
 		rm -f langkit/support/obj/dev/*lexch
-		gprbuild -v -p -j$(makeopts_jobs) \
+		gprbuild -v -p -j$(get_makeopts_jobs) \
 			-P langkit/support/langkit_support.gpr -XLIBRARY_TYPE=$1 \
 			-cargs:Ada ${ADAFLAGS} -cargs:C ${CFLAGS} || die
 	}
 	build relocatable
 	use static-libs && build static
 	use static-pic  && build static-pic
-	gprbuild -v -p -j$(makeopts_jobs) \
+	gprbuild -v -p -j$(get_makeopts_jobs) \
 		-P sigsegv_handler/langkit_sigsegv_handler.gpr \
 		-cargs:Ada ${ADAFLAGS} -cargs:C ${CFLAGS} || die
 	sphinx_compile_all
