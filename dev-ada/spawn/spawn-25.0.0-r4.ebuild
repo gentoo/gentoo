@@ -1,4 +1,4 @@
-# Copyright 2021-2025 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ BDEPEND="dev-ada/gprbuild[${ADA_USEDEP}]"
 
 src_compile() {
 	build () {
-		gprbuild -p -j$(makeopts_jobs) -XBUILD=production -v \
+		gprbuild -p -j$(get_makeopts_jobs) -XBUILD=production -v \
 			-XLIBRARY_TYPE=$1 \
 			gnat/$2.gpr -cargs:C ${CFLAGS} -cargs:Ada ${ADAFLAGS} || die
 	}
@@ -41,7 +41,7 @@ src_compile() {
 src_test() {
 	build () {
 		GPR_PROJECT_PATH=gnat \
-		gprbuild -p -j$(makeopts_jobs) -XBUILD=production -v \
+		gprbuild -p -j$(get_makeopts_jobs) -XBUILD=production -v \
 			-XLIBRARY_TYPE=$1 gnat/tests/spawn_tests.gpr \
 			-cargs:C ${CFLAGS} -cargs:Ada ${ADAFLAGS} \
 			|| die
