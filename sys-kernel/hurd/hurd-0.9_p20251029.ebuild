@@ -81,6 +81,9 @@ src_configure() {
 		--prefix="${EPREFIX}${sysroot}/usr"
 		--datadir="${EPREFIX}${sysroot}/usr/share"
 		--host=${CTARGET}
+
+		# Builds everything twice and needs profiling libs
+		--disable-profile
 	)
 
 	if ! use custom-cflags ; then
@@ -92,7 +95,9 @@ src_configure() {
 
 	append-flags -Wl,--no-error-rwx-segments -Wl,--no-error-execstack -Wl,-z,notext
 
-	if use headers-only ; then
+	# For cross-*, we always want a minimal build even with USE=-headers-only,
+	# as we will need libshouldbeinlibc.
+	if use headers-only || is_crosspkg ; then
 		myeconfargs+=(
 			ac_cv_func_file_exec_paths=no
 			ac_cv_func_exec_exec_paths=no
@@ -104,17 +109,21 @@ src_configure() {
 			--without-acpica
 			--without-libcrypt
 			--without-libbz2
+			--without-libdaemon
 			--without-libz
 			--without-libtirpc
 			--without-parted
 			--without-rump
 			--disable-ncursesw
 		)
+
+		cat <<-EOF >> config.make.in || die "Failed to amend config.make.in"
+		HAVE_LIBGCRYPT = no
+		HAVE_LIBPCIACCESS = no
+		HAVE_XKBCOMMON = no
+		EOF
 	else
 		myeconfargs+=(
-			# Builds everything twice and needs profiling libs
-			--disable-profile
-
 			# Unpackaged
 			--without-acpica
 
@@ -136,8 +145,16 @@ src_configure() {
 }
 
 src_compile() {
-	use headers-only && return
-	default
+	if use headers-only ; then
+		return
+	elif is_crosspkg ; then
+		emake \
+			lib-subdirs="libshouldbeinlibc libihash libstore" \
+			prog-subdirs= \
+			other-subdirs=
+	else
+		default
+	fi
 }
 
 src_test() {
@@ -146,7 +163,18 @@ src_test() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" $(usex headers-only install-headers install) no_deps=t
+	if use headers-only ; then
+		emake DESTDIR="${D}" install-headers no_deps=t
+	elif is_crosspkg ; then
+		emake DESTDIR="${D}" install-headers no_deps=t
+		emake DESTDIR="${D}" install \
+			lib-subdirs="libshouldbeinlibc libihash libstore" \
+			prog-subdirs= \
+			other-subdirs= \
+			no_deps=t
+	else
+		emake DESTDIR="${D}" install
+	fi
 
 	if target_is_not_host ; then
 		# TODO: Is this needed?
