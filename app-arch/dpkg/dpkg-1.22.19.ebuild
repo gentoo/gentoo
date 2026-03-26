@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -95,7 +95,7 @@ src_compile() {
 }
 
 src_test() {
-	emake -Onone check TEST_PARALLEL="$(makeopts_jobs)" TEST_VERBOSE=1
+	emake -Onone check TEST_PARALLEL="$(get_makeopts_jobs)" TEST_VERBOSE=1
 }
 
 src_install() {
