@@ -172,7 +172,7 @@ my_src_compile() {
 }
 
 my_src_test() {
-	export TESTFLAGS="--parallel=$(makeopts_jobs)"
+	export TESTFLAGS="--parallel=$(get_makeopts_jobs)"
 
 	default
 }

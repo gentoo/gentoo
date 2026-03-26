@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -166,7 +166,7 @@ my_src_compile() {
 }
 
 my_src_test() {
-	export TESTFLAGS="--parallel=$(makeopts_jobs)"
+	export TESTFLAGS="--parallel=$(get_makeopts_jobs)"
 
 	default
 }
