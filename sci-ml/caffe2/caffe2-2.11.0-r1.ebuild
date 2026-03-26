@@ -69,7 +69,6 @@ RDEPEND="
 	>=dev-cpp/glog-0.5.0:=
 	>=dev-libs/cpuinfo-2025.11.14
 	dev-libs/libfmt:=
-	dev-cpp/opentelemetry-cpp
 	dev-libs/protobuf:=
 	dev-libs/sleef
 	>=sci-ml/kineto-0.4.0_p20260323
