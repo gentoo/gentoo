@@ -40,7 +40,6 @@ if is_crosspkg ; then
 		!headers-only? ( cross-${CTARGET}/mig )
 	"
 else
-	# TODO: fix xkb automagic
 	DEPEND="
 		app-arch/bzip2:=[static-libs]
 		dev-libs/libdaemon:=
@@ -138,6 +137,10 @@ src_configure() {
 			$(use_enable ncurses ncursesw)
 			$(use_with rumpkernel rump)
 		)
+
+		cat <<-EOF >> config.make.in || die "Failed to amend config.make.in"
+		HAVE_XKBCOMMON = $(usex xkb)
+		EOF
 	fi
 
 	econf "${myeconfargs[@]}"
