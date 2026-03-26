@@ -181,19 +181,19 @@ src_compile() {
 }
 
 src_install() {
-	dodir /usr/include /usr/lib
+	dodir /usr/include /usr/$(get_libdir)
 
 	# Install logic copied from Debian
 	cp -a "${S}"/buildrump.sh/src/sys/rump/include/rump "${ED}"/usr/include/ || die
 	# Kept "${S}"/buildrump.sh/src/obj separate here as may change to
 	# another builddir.
 	find "${S}"/buildrump.sh/src "${S}"/buildrump.sh/src/obj -type f,l \
-		-name "librump*.so*" -exec cp -a {} "${ED}"/usr/lib/ \; || die
+		-name "librump*.so*" -exec cp -a {} "${ED}"/usr/$(get_libdir)/ \; || die
 	find "${S}"/buildrump.sh/src "${S}"/buildrump.sh/src/obj -type f \
-		-name "librump*.a" -exec cp -a {} "${ED}"/usr/lib/ \; || die
+		-name "librump*.a" -exec cp -a {} "${ED}"/usr/$(get_libdir)/ \; || die
 
 	# rempve non lib files
-	rm -f "${ED}"/usr/lib/*.map || die
+	rm -f "${ED}"/usr/$(get_libdir)/*.map || die
 	#
-	rm -f "${ED}"/usr/lib/librumpkern_z.* || die
+	rm -f "${ED}"/usr/$(get_libdir)/librumpkern_z.* || die
 }
