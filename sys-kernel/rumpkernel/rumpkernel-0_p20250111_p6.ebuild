@@ -38,11 +38,15 @@ if [[ ${PV} != *9999* ]] ; then
 	KEYWORDS="~amd64 ~x86"
 fi
 
-DEPEND="
-	dev-util/mig
+RDEPEND="
+	x11-libs/libpciaccess
+	virtual/zlib:=
 "
-# XXX
-BDEPEND="virtual/pkgconfig"
+DEPEND="
+	${RDEPEND}
+	dev-util/mig
+	sys-kernel/gnumach
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0_p20250111_p6-bsd-own-mk-no-sysroot.patch
