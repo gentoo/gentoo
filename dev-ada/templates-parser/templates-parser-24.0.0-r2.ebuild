@@ -27,7 +27,7 @@ REQUIRED_USE="|| ( shared static-libs )
 	${ADA_REQUIRED_USE}"
 
 src_configure() {
-	emake PROCESSORS=$(makeopts_jobs) \
+	emake PROCESSORS=$(get_makeopts_jobs) \
 		DEFAULT_LIBRARY_TYPE=$(usex shared relocatable static) \
 		ENABLE_STATIC=$(usex static-libs true false) \
 		ENABLE_SHARED=$(usex shared true false) \
