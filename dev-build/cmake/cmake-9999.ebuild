@@ -121,7 +121,7 @@ cmake_src_bootstrap() {
 	# bootstrap script isn't exactly /bin/sh compatible
 	tc-env_build ${CONFIG_SHELL:-sh} ./bootstrap \
 		--prefix="${T}/cmakestrap/" \
-		--parallel=$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)") \
+		--parallel=$(get_makeopts_jobs "$(get_nproc)") \
 		|| die "Bootstrap failed"
 }
 
