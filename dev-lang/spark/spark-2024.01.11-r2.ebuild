@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -59,10 +59,10 @@ src_prepare() {
 
 src_compile() {
 	emake -C gnat2why setup
-	gprbuild -j$(makeopts_jobs) -p -XLIBRARY_TYPE=relocatable -v \
+	gprbuild -j$(get_makeopts_jobs) -p -XLIBRARY_TYPE=relocatable -v \
 		-Pgnat2why/gnat2why.gpr \
 		-largs ${LDFLAGS} -cargs ${ADAFLAGS} || die
-	gprbuild -j$(makeopts_jobs) -p -XLIBRARY_TYPE=relocatable -v \
+	gprbuild -j$(get_makeopts_jobs) -p -XLIBRARY_TYPE=relocatable -v \
 		-P gnatprove.gpr \
 		-largs ${LDFLAGS} -cargs ${ADAFLAGS} || die
 	if use doc; then
