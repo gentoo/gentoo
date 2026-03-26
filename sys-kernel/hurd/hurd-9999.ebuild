@@ -47,6 +47,7 @@ else
 		dev-util/mig
 		sys-apps/util-linux[static-libs]
 		sys-block/parted[static-libs]
+		sys-libs/libacpica
 		x11-libs/libpciaccess[static-libs]
 		virtual/libcrypt:=[static-libs]
 		virtual/zlib:=[static-libs]
@@ -122,12 +123,10 @@ src_configure() {
 		EOF
 	else
 		myeconfargs+=(
-			# Unpackaged
-			--without-acpica
-
 			# TODO (nfs)
 			--without-libtirpc
 
+			--with-acpica
 			--with-libcrypt
 			--with-libbz2
 			--with-libz
