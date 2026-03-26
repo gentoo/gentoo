@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -64,7 +64,7 @@ multilib_src_configure() {
 
 multilib_src_test() {
 	# Default sandbox build will run with --jobs set to # cpus.
-	emake check TESTSUITEFLAGS="--jobs=$(makeopts_jobs)"
+	emake check TESTSUITEFLAGS="--jobs=$(get_makeopts_jobs)"
 }
 
 multilib_src_install_all() {
