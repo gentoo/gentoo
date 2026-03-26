@@ -7,3 +7,4 @@
 -sys-kernel/hurd
 -sys-kernel/gnumach
 -sys-kernel/rumpkernel
+-sys-power/libacpica
