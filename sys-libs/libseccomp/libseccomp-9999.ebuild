@@ -114,7 +114,7 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
-	local -x LIBSECCOMP_TSTCFG_JOBS="$(makeopts_jobs)"
+	local -x LIBSECCOMP_TSTCFG_JOBS="$(get_makeopts_jobs)"
 	emake -Onone check
 
 	if multilib_is_native_abi && use python ; then
