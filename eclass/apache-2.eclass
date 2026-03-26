@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: apache-2.eclass
@@ -500,6 +500,7 @@ apache-2_src_prepare() {
 	chmod g-w "${T}" || die
 
 	# This package really should upgrade to using pcre's .pc file.
+	tc-export PKG_CONFIG
 	cat <<-\EOF > "${T}"/pcre2-config
 	#!/usr/bin/env bash
 	flags=()
@@ -520,7 +521,6 @@ apache-2_src_prepare() {
 # This function adds compiler flags and runs econf and emake based on MY_MPM and
 # MY_CONF
 apache-2_src_configure() {
-	tc-export PKG_CONFIG
 	export ac_cv_path_PKGCONFIG="${PKG_CONFIG}"
 
 	# Sanity check in case people have bad mounts/TPE settings. #500928
