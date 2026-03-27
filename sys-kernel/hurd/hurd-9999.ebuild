@@ -152,6 +152,9 @@ src_compile() {
 	if use headers-only ; then
 		return
 	elif is_crosspkg ; then
+		# For the crossdev-built Hurd, we need to build enough s.t.
+		# for the sysroot cross-built Hurd, its deps can be compiled
+		# first (e.g. sys-block/parted, sys-kernel/rumpkernel).
 		emake \
 			lib-subdirs="libshouldbeinlibc libihash libstore libirqhelp" \
 			prog-subdirs= \
