@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,6 +24,7 @@ DOCS=( CHANGES README README.md doc/Release_Notes.txt )
 PATCHES=(
 	"${FILESDIR}"/${PN}-2020.1-makefile-debug.patch
 	"${FILESDIR}"/${PN}-2020.3-gcc13.patch
+	"${FILESDIR}"/${PN}-2020.3-musl.patch
 )
 
 src_prepare() {
