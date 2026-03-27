@@ -1,0 +1,32 @@
+https://bugs.gentoo.org/971601
+https://github.com/dracut-ng/dracut-ng/pull/2303
+
+From eca6d9f1d35879d411f5f860cf5e0a57cd155ad4 Mon Sep 17 00:00:00 2001
+From: Benjamin Drung <benjamin.drung@canonical.com>
+Date: Mon, 16 Mar 2026 11:22:33 +0100
+Subject: [PATCH] fix(dracut.sh): use printf instead of echo in mark_hostonly
+
+POSIX requires to interpreted escape sequences. The filenames passed to
+`mark_hostonly` might contain backslashes and therefore might be
+interpreted (dash 0.5.13.1 will do that).
+
+So use `printf` instead to avoid escaping the filenames.
+
+Fixes: https://github.com/dracut-ng/dracut-ng/issues/2280
+---
+ dracut.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/dracut.sh b/dracut.sh
+index 28c8ecc92..cc5ad0b8c 100755
+--- a/dracut.sh
++++ b/dracut.sh
+@@ -1559,7 +1559,7 @@ inst_fsck_help() {
+ # shellcheck disable=SC2317,SC2329
+ mark_hostonly() {
+     for i in "$@"; do
+-        echo "$i" >> "$initdir/lib/dracut/hostonly-files"
++        printf "%s\n" "$i" >> "$initdir/lib/dracut/hostonly-files"
+     done
+ }
+ 
