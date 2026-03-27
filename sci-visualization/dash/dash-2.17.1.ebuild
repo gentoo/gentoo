@@ -27,10 +27,7 @@ RDEPEND="
 	dev-python/importlib-metadata[${PYTHON_USEDEP}]
 	dev-python/nest-asyncio[${PYTHON_USEDEP}]
 	dev-python/plotly[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
-	test? ( dev-python/beautifulsoup4 )"
-
-distutils_enable_tests pytest
+DEPEND="${RDEPEND}"
 
 src_prepare() {
 	mkdir dash/labextension/dist || die
