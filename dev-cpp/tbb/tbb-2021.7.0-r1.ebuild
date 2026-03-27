@@ -25,6 +25,7 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}"/${PN}-2021.7.0-pthread-eagain.patch
 	"${FILESDIR}"/${PN}-2021.7.0-abort.patch
+	"${FILESDIR}"/${P}-dynamicLink.patch
 )
 
 src_configure() {

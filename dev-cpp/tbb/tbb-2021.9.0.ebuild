@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,6 +25,7 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}"/${PN}-2021.8.0-gcc-13.patch
 	"${FILESDIR}"/${PN}-2021.13.0-test-atomics.patch
+	"${FILESDIR}"/${P}-dynamicLink.patch
 )
 
 src_prepare() {

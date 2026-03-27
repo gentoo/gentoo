@@ -1,0 +1,10 @@
+--- a/test/CMakeLists.txt	2026-03-27 14:52:17.592128499 +0100
++++ b/test/CMakeLists.txt	2026-03-27 14:53:30.563265543 +0100
+@@ -375,6 +375,7 @@
+     tbb_add_test(SUBDIR tbb NAME test_allocators DEPENDENCIES TBB::tbb)
+     tbb_add_test(SUBDIR tbb NAME test_arena_priorities DEPENDENCIES TBB::tbb)
+     tbb_add_test(SUBDIR tbb NAME test_dynamic_link DEPENDENCIES TBB::tbb)
++    set_target_properties(test_dynamic_link PROPERTIES ENABLE_EXPORTS TRUE)
+     if (LINKER_HAS_NO_AS_NEEDED)
+         # The linker may not detect a dependency on pthread in static variable constructors.
+         target_link_libraries(test_dynamic_link PRIVATE "-Wl,--no-as-needed")

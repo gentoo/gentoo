@@ -1,0 +1,10 @@
+--- a/test/CMakeLists.txt	2026-03-27 13:13:21.627057086 +0100
++++ b/test/CMakeLists.txt	2026-03-27 13:17:16.113296894 +0100
+@@ -367,6 +367,7 @@
+     tbb_add_test(SUBDIR tbb NAME test_allocators DEPENDENCIES TBB::tbb)
+     tbb_add_test(SUBDIR tbb NAME test_arena_priorities DEPENDENCIES TBB::tbb)
+     tbb_add_test(SUBDIR tbb NAME test_dynamic_link DEPENDENCIES TBB::tbb)
++    set_target_properties(test_dynamic_link PROPERTIES ENABLE_EXPORTS TRUE)
+     if (WIN32)
+         tbb_add_test(SUBDIR tbb NAME test_numa_dist DEPENDENCIES TBB::tbb)
+     endif()
