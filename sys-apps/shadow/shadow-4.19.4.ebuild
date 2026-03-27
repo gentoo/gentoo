@@ -224,7 +224,7 @@ src_install() {
 
 	if use kernel_Hurd ; then
 		# sys-kernel/hurd provides this instead
-		rm "${ED}"/bin/login || die
+		mv "${ED}"/bin/login "${ED}"/bin/login.shadow || die
 	fi
 }
 
