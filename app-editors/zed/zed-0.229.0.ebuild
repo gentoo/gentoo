@@ -98,7 +98,7 @@ inherit cargo check-reqs desktop flag-o-matic llvm-r1 toolchain-funcs xdg
 DESCRIPTION="The fast, collaborative code editor"
 HOMEPAGE="https://zed.dev https://github.com/zed-industries/zed"
 SRC_URI="
-	https://github.com/zed-industries/zed/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/zed-industries/zed/archive/refs/tags/v${PV/_/-}.tar.gz -> ${P}.tar.gz
 	https://github.com/gentoo-crate-dist/zed/releases/download/v${PV/_/-}/${P/_/-}-crates.tar.xz
 	amd64? (
 		https://github.com/livekit/rust-sdks/releases/download/webrtc-${WEBRTC_COMMIT}/webrtc-linux-x64-release.zip ->
@@ -121,9 +121,7 @@ LICENSE+="
 "
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
-# The build folder for v0.229.0 occupy ca. 17Gb
-# Future versions would probably ask even more
-CHECKREQS_DISK_BUILD="20G"
+CHECKREQS_DISK_BUILD="18G"
 CHECKREQS_MEMORY="8G"
 
 DEPEND="
@@ -203,7 +201,7 @@ src_prepare() {
 	local CALLOOP_GIT="calloop = { git = \"https://github.com/zed-industries/calloop\""
 	local CALLOOP_PATH="calloop = \\{ path = \"${WORKDIR}/calloop-${CALLOOP_COMMIT}\""
 
-	local LIVEKIT_COMMIT="c1209aa155cbf4543383774f884a46ae7e53ee2e"
+	local LIVEKIT_COMMIT="147fbca3d4b592d96d33f5e6a84b59fc0b5d9bf1"
 	local LIVEKIT_GIT="livekit = { git = \"https://github.com/zed-industries/livekit-rust-sdks\", rev = \"${LIVEKIT_COMMIT}\""
 	local LIVEKIT_PATH="livekit = \\{ path = \"${WORKDIR}/livekit-rust-sdks-${LIVEKIT_COMMIT}/livekit\""
 
