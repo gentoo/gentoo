@@ -61,6 +61,7 @@ fi
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9_p20251029-rump-link.patch
+	"${FILESDIR}"/${PN}-0.9_p20251029-libports-iterate-refcount.patch
 )
 
 src_prepare() {

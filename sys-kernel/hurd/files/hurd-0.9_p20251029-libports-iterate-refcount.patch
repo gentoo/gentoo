@@ -1,0 +1,21 @@
+https://salsa.debian.org/hurd-team/hurd/-/blob/f2c31b4596fc22c2de9dd1758abd32bd4c781c97/debian/patches/libports-iterate-refcount.patch
+https://logs.guix.gnu.org/hurd/2024-11-20.log#082237
+https://lists.gnu.org/archive/html/bug-hurd/2016-03/msg00034.html
+--- a/libports/bucket-iterate.c
++++ b/libports/bucket-iterate.c
+@@ -58,7 +58,14 @@ _ports_bucket_class_iterate (struct hurd_ihash *ht,
+ 
+       if (class == 0 || pi->class == class)
+ 	{
+-	  refcounts_ref (&pi->refcounts, NULL);
++	  struct references result;
++	  refcounts_unsafe_ref (&pi->refcounts, &result);
++	  if (result.hard == 1 && result.weak == 0)
++	  {
++	    /* This one is on its way out, skip it.  */
++	    refcounts_deref (&pi->refcounts, NULL);
++	    continue;
++	  }
+ 	  p[n] = pi;
+ 	  n++;
+ 	}
