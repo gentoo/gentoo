@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake dot-a
 
 DESCRIPTION="Cross-platform layout engine"
 HOMEPAGE="https://github.com/facebook/yoga"
@@ -24,6 +24,7 @@ PATCHES=(
 )
 
 src_configure() {
+	lto-guarantee-fat
 	local mycmakeargs=(
 		-DBUILD_TESTS=$(usex test)
 		-DBUILD_FUZZ_TESTS=OFF #Requires the compiler to be Clang
@@ -33,4 +34,9 @@ src_configure() {
 
 src_test() {
 	"${BUILD_DIR}"/tests/yogatests || die
+}
+
+src_install() {
+	cmake_src_install
+	strip-lto-bytecode
 }
