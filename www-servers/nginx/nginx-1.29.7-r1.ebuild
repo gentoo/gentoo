@@ -9,7 +9,7 @@ NGINX_MODULES=(
 	+http_{split_clients,referer,rewrite,proxy,fastcgi,uwsgi,scgi,grpc}
 	+http_{memcached,limit_conn,limit_req,empty_gif,browser,upstream_hash}
 	+http_{upstream_ip_hash,upstream_least_conn,upstream_random}
-	+http_{upstream_keepalive,upstream_zone,upstream_sticky}
+	+http_{upstream_keepalive,upstream_zone}
 	http_{ssl,v2,v3,realip,addition,xslt,image_filter,geoip,sub,dav,flv,mp4}
 	http_{gunzip,gzip_static,auth_request,random_index,secure_link,degradation}
 	http_{slice,stub_status,perl}
