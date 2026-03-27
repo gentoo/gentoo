@@ -12,6 +12,9 @@ DESCRIPTION="NetBSD's rumpkernel for the Hurd"
 HOMEPAGE="https://salsa.debian.org/hurd-team/rumpkernel https://darnassus.sceen.net/~hurd-web/hurd/rump/ https://rumpkernel.github.io/"
 
 if [[ ${PV} == *9999* ]] ; then
+	# Actual upstream is NetBSD's monorepo, but Debian is the de facto
+	# upstream and there's a lot of Hurd-related patches. But it may
+	# still be useful on occasion to cherry-pick something from NetBSD.
 	EGIT_REPO_URI="https://salsa.debian.org/hurd-team/rumpkernel.git"
 	inherit git-r3
 elif [[ ${PV} == *_pre*_p* ]] ; then
