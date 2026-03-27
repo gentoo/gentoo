@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ else
 	KEYWORDS="amd64 ~mips ppc x86"
 fi
 
-DESCRIPTION="A GTK-2 based launcher box with bash style auto completion!"
+DESCRIPTION="A run utility featuring a slim design and bash style auto-completion."
 HOMEPAGE="https://github.com/wdlkmpx/gmrun"
 
 LICENSE="ISC"
