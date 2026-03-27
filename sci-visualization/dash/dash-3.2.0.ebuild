@@ -6,12 +6,13 @@ EAPI=8
 PYTHON_COMPAT=( python3_{12..13} )
 DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1
+JUPV=2.18.2
 
 DESCRIPTION="Python framework for building ML & data science web apps"
 HOMEPAGE="https://github.com/plotly/dash"
 SRC_URI="https://github.com/plotly/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz
-	https://dev.gentoo.org/~tupone/distfiles/${PN}-jupyterlab-${PV}.tgz"
+	https://dev.gentoo.org/~tupone/distfiles/${PN}-jupyterlab-${JUPV}.tgz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -35,7 +36,7 @@ src_prepare() {
 	# cd @plotly/dash-jupyterlab
 	# jlpm install
 	# jlpm build:pack
-	cp "${DISTDIR}"/${PN}-jupyterlab-${PV}.tgz \
+	cp "${DISTDIR}"/${PN}-jupyterlab-${JUPV}.tgz \
 		dash/labextension/dist/${PN}-jupyterlab.tgz \
 		|| die
 	distutils-r1_src_prepare
