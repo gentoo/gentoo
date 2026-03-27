@@ -3,9 +3,6 @@
 
 EAPI=8
 
-# TODO: check for any automagic dependencies, possible USE flags
-# TODO: make building natively work
-
 inherit flag-o-matic multiprocessing toolchain-funcs
 
 DESCRIPTION="NetBSD's rumpkernel for the Hurd"
