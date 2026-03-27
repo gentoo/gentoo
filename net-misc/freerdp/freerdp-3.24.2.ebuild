@@ -111,6 +111,10 @@ RDEPEND="${COMMON_DEPEND}
 	smartcard? ( app-crypt/p11-kit )
 "
 
+PATCHES=(
+	"${FILESDIR}"/freerdp-3.24.2-heimdal.patch
+)
+
 option() {
 	usex "$1" ON OFF
 }
