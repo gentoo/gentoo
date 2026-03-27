@@ -1,0 +1,43 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -252,7 +252,7 @@
+ version.exe: $(srcdir)/version.c $(srcdir)/version_base.h version_tag.h
+ 	$(BUILDCC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o version.exe -I. -I$(srcdir) $(srcdir)/version.c
+ 
+-%.o: %.cc config.h
++%.o: %.cc config.h | dep
+ 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) @DEPENDENCY_FLAG@ -c $< -o $*.o
+ 	mv $*.d dep/$*.d
+ 
+--- a/vhdlpp/Makefile.in
++++ b/vhdlpp/Makefile.in
+@@ -104,11 +104,11 @@
+ vhdlpp@EXEEXT@: $O
+ 	$(CXX) -o vhdlpp@EXEEXT@ $(LDFLAGS) $O $(LIBS)
+ 
+-%.o: $(srcdir)/../libmisc/%.cc
++%.o: $(srcdir)/../libmisc/%.cc | dep
+ 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) @DEPENDENCY_FLAG@ -c $< -o $*.o
+ 	mv $*.d dep/$*.d
+ 
+-%.o: %.cc vhdlpp_config.h
++%.o: %.cc vhdlpp_config.h | dep
+ 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) @DEPENDENCY_FLAG@ -c $< -o $*.o
+ 	mv $*.d dep/$*.d
+ 
+--- a/vvp/Makefile.in
++++ b/vvp/Makefile.in
+@@ -159,11 +159,11 @@
+ endif
+ endif
+ 
+-%.o: %.cc config.h
++%.o: %.cc config.h | dep
+ 	$(CXX) $(CPPFLAGS) -DIVL_SUFFIX='"$(suffix)"' $(MDIR1) $(MDIR2) $(CXXFLAGS) @DEPENDENCY_FLAG@ -c $< -o $*.o
+ 	mv $*.d dep/$*.d
+ 
+-%.o: %.c config.h
++%.o: %.c config.h | dep
+ 	$(CC) $(CPPFLAGS) $(MDIR1) $(MDIR2) $(CFLAGS) @DEPENDENCY_FLAG@ -c $< -o $*.o
+ 	mv $*.d dep/$*.d
+ 

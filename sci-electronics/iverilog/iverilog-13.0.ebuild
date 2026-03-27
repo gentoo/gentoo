@@ -36,6 +36,10 @@ BDEPEND="
 	sys-devel/flex
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-dep-mkdir-race.patch"
+)
+
 src_prepare() {
 	default
 
@@ -56,8 +60,6 @@ src_prepare() {
 }
 
 src_install() {
-	local DOCS=( *.txt )
-
 	default
 
 	dodoc -r examples
