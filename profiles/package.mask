@@ -36,6 +36,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2026-03-28)
+# pipenv relies very heavily on vendoring.  Every version bump requires
+# a significant effort to unbundle and patch.  On top of that,
+# the resulting packages pin to narrow dependency versions.  Includes
+# dependencies with no other consumers.
+# Removal on 2026-04-27.  Bug #971660.
+dev-python/click-didyoumean
+dev-python/dparse
+dev-python/pipdeptree
+dev-python/pipenv
+dev-python/plette
+dev-python/pythonfinder
+
 # Michał Górny <mgorny@gentoo.org> (2026-03-25)
 # Broken with >=dev-python/numpy-2.  Unmaintained.  No revdeps.
 # Removal on 2026-04-24.  Bug #962941.
