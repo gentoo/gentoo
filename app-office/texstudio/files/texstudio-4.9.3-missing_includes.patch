@@ -1,0 +1,15 @@
+PR merged https://github.com/texstudio-org/texstudio/pull/4393.patch
+add missing includes
+--- a/src/chatdelegate.cpp
++++ b/src/chatdelegate.cpp
+@@ -1,7 +1,10 @@
+ #include "chatdelegate.h"
++#include <QApplication>
++#include <QClipboard>
+ #include <QPainter>
+ #include <QTextDocument>
+ #include <QTextCursor>
++#include <QToolTip>
+ #include <QAbstractTextDocumentLayout>
+ 
+ void ChatDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
