@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit crossdev flag-o-matic
+inherit crossdev multilib flag-o-matic
 
 DESCRIPTION="GNU Hurd is the GNU project's replacement for UNIX"
 HOMEPAGE="https://www.gnu.org/software/hurd/hurd.html"
@@ -74,6 +74,11 @@ src_configure() {
 	if target_is_not_host ; then
 		local sysroot=/usr/${CTARGET}
 		export MIG="${CTARGET}-mig"
+
+		# Ensure we get compatible libdir
+		unset DEFAULT_ABI MULTILIB_ABIS
+		multilib_env
+		ABI=${DEFAULT_ABI}
 	fi
 
 	local myeconfargs=(
