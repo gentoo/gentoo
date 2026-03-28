@@ -162,6 +162,7 @@ KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+RDEPEND="app-shells/bash"  # for the wrapper in /usr/bin
 BDEPEND="llvm-core/lld"
 
 QA_FLAGS_IGNORED="
