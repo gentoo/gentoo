@@ -314,11 +314,6 @@ net-analyzer/trafshow
 # issues. Removal on 2026-03-12. Bug #945190.
 net-analyzer/tcptrace
 
-# David Seifert <soap@gentoo.org> (2026-02-10)
-# Removed by most distros, last release over 20 years ago, C23 issues.
-# Removal on 2026-03-12. Bug #945193.
-net-analyzer/labrea
-
 # Sam James <sam@gentoo.org> (2026-02-09)
 # This suite of packages is currently best placed in an overlay/external
 # repository where users can more easily contribute. The ecosystem moves
