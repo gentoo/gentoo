@@ -304,11 +304,6 @@ net-misc/lanmap
 # Removal on 2026-03-12. Bug #963013.
 net-libs/libpcapnav
 
-# David Seifert <soap@gentoo.org> (2026-02-10)
-# Noone packages this anymore, dead upstream, lots of C23 and QA issues.
-# Removal on 2026-03-12. Bug #945187.
-net-analyzer/trafshow
-
 # Sam James <sam@gentoo.org> (2026-02-09)
 # This suite of packages is currently best placed in an overlay/external
 # repository where users can more easily contribute. The ecosystem moves
