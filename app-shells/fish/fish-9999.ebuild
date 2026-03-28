@@ -126,11 +126,6 @@ src_test() {
 		tests/pexpects/terminal.py \
 		|| :
 
-	if [[ ${PV} == 9999 ]]; then
-		# https://github.com/fish-shell/fish-shell/issues/12497
-		rm -v tests/checks/version.fish || :
-	fi
-
 	cargo_env cmake_build fish_run_tests
 }
 
