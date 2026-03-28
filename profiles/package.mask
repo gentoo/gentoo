@@ -440,11 +440,6 @@ kde-frameworks/kimageformats:5
 # Removal on 2026-03-09.
 net-analyzer/traceproto
 
-# David Seifert <soap@gentoo.org> (2026-02-07)
-# -Wformat and C23 issues, no other distro packages this anymore.
-# Removal on 2026-03-09.
-net-analyzer/mping
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2026-02-06)
 # Marked as pre-release post release itself. Released without
 # maintainer ACK.
