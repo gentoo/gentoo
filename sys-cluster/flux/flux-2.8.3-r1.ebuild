@@ -18,7 +18,7 @@ LICENSE="Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
-BDEPEND=">=dev-lang/go-1.19"
+BDEPEND=">=dev-lang/go-1.26:="
 
 RESTRICT+=" test"
 
