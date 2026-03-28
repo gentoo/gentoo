@@ -28,6 +28,9 @@ EPYTEST_PLUGINS=()
 # tests are flaky with xdist
 distutils_enable_tests pytest
 
+# README.rst is a symlink to docs/
+DOCS=()
+
 python_prepare_all() {
 	# Skip those extensions as they don't have a Gentoo package
 	# Remove calls to scripts that generate rst files because they
