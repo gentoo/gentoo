@@ -450,11 +450,6 @@ net-analyzer/mping
 # build issues. Removal on 2026-03-09. Bug #945191.
 net-analyzer/nttcp
 
-# David Seifert <soap@gentoo.org> (2026-02-06)
-# Abandoned upstream, no other distro packages this anymore, lots of QA and
-# build issues. Removal on 2026-03-08. Bug #899932.
-net-analyzer/ipcad
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2026-02-06)
 # Marked as pre-release post release itself. Released without
 # maintainer ACK.
