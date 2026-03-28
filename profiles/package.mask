@@ -445,11 +445,6 @@ net-analyzer/traceproto
 # Removal on 2026-03-09.
 net-analyzer/mping
 
-# David Seifert <soap@gentoo.org> (2026-02-07)
-# Abandoned upstream, no other distro packages this anymore, lots of QA and
-# build issues. Removal on 2026-03-09. Bug #945191.
-net-analyzer/nttcp
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2026-02-06)
 # Marked as pre-release post release itself. Released without
 # maintainer ACK.
