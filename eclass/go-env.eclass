@@ -181,6 +181,7 @@ go-env_goos() {
 		*-openbsd*) echo openbsd ;;
 		*-solaris*) echo solaris ;;
 		*-cygwin*|*-interix*|*-winnt*) echo windows ;;
+		*-gnu) echo hurd ;;
 		*) die "unknown GOOS for ${target}" ;;
 	esac
 }
