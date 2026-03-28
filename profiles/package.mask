@@ -289,11 +289,6 @@ sci-biology/qrna
 # Removal on 2026-03-13. Bug #944918.
 sci-biology/mcl
 
-# David Seifert <soap@gentoo.org> (2026-02-10)
-# Abandoned, sguil-sensor already removed, blocks bug #868468.
-# Removal on 2026-03-12.
-net-analyzer/sguil-client
-
 # Sam James <sam@gentoo.org> (2026-02-09)
 # This suite of packages is currently best placed in an overlay/external
 # repository where users can more easily contribute. The ecosystem moves
