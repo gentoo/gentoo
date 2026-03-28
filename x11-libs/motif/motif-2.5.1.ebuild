@@ -46,8 +46,6 @@ DEPEND="${RDEPEND}
 BDEPEND="sys-devel/flex
 	dev-util/byacc"
 
-PATCHES=( "${FILESDIR}/${P}-XmStrDefs25.patch" )
-
 src_prepare() {
 	default
 
