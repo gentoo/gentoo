@@ -36,6 +36,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Conrad Kostecki <conikost@gentoo.org> (2026-03-28)
+# Version 1.18.x breaks API and needs more testing
+>=net-libs/libupnp-1.18.4
+
 # Fabian Groffen <grobian@gentoo.org> (2026-03-28)
 # Depends on net-libs/ldns, which is in maintenance mode since 2020.
 # Please switch to net-dns/cares-tools which uses net-dns/c-ares
