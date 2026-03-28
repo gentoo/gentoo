@@ -17,6 +17,8 @@ SRC_URI="https://github.com/plotly/${PN}/archive/refs/tags/v${PV}.tar.gz
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="compress diskcache"
+
 # Test need some packages not yet in the tree
 # flask_talisman
 # percy
@@ -24,10 +26,21 @@ KEYWORDS="~amd64"
 RESTRICT="test"
 
 RDEPEND="
-	dev-python/flask-compress[${PYTHON_USEDEP}]
+	dev-python/flask[${PYTHON_USEDEP}]
 	dev-python/importlib-metadata[${PYTHON_USEDEP}]
 	dev-python/nest-asyncio[${PYTHON_USEDEP}]
-	dev-python/plotly[${PYTHON_USEDEP}]"
+	dev-python/plotly[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]
+	dev-python/retrying[${PYTHON_USEDEP}]
+	dev-python/typing-extensions[${PYTHON_USEDEP}]
+	dev-python/werkzeug[${PYTHON_USEDEP}]
+	compress? ( dev-python/flask-compress[${PYTHON_USEDEP}] )
+	diskcache? (
+		dev-python/diskcache[${PYTHON_USEDEP}]
+		dev-python/multiprocess[${PYTHON_USEDEP}]
+		dev-python/psutil[${PYTHON_USEDEP}]
+	)
+	"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
