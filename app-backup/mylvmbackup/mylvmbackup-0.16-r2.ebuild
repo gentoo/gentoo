@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="https://lenzg.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 
 RDEPEND="
 	dev-perl/Config-IniFiles
@@ -19,7 +19,6 @@ RDEPEND="
 	dev-perl/File-Copy-Recursive
 	dev-perl/TimeDate
 	sys-fs/lvm2
-	virtual/mysql
 "
 
 PATCHES=(
