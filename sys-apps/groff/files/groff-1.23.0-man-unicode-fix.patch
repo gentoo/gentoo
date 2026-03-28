@@ -1,0 +1,41 @@
+format dashes as dashes so as to not confuse people
+
+groff 1.23.0 also changed the "utf8" device to render
+"^" and "~" as U+02C6 and U+02DC respectively.
+this causes similar searchability/copy-paste issue
+especially for ~ which is often used to denote $HOME path.
+
+http://bugs.gentoo.org/16108
+http://bugs.gentoo.org/17580
+http://bugs.gentoo.org/121502
+
+--- a/tmac/man.local
++++ b/tmac/man.local
+@@ -1,6 +1,12 @@
+ .\" This file is loaded by an.tmac.
+ .\"
+ .\" Put local modifications to groff_man(7)'s behavior here.
++.if '\*[.T]'utf8' \{\
++.  char \- \N'45'
++.  char  - \N'45'
++.  char ^ \[ha]
++.  char ~ \[ti]
++.\}
+ .\"
+ .\" Change "0" to "1" to enable OSC 8 links on SGR-capable grotty(1)
+ .\" output devices.
+--- a/tmac/mdoc.local
++++ b/tmac/mdoc.local
+@@ -1,6 +1,12 @@
+ .\" This file is loaded by mdoc.tmac.
+ .\"
+ .\" Put local modifications to groff_mdoc(7)'s behavior here.
++.if '\*[.T]'utf8' \{\
++.  char \- \N'45'
++.  char  - \N'45'
++.  char ^ \[ha]
++.  char ~ \[ti]
++.\}
+ .\"
+ .\" "CW" is not a portable font name, but some man pages use it anyway.
+ .\" Uncomment this to suppress warnings produced by such pages.  This
