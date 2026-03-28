@@ -261,7 +261,6 @@ media-libs/phonon-vlc
 # Haskell package (hard to maintain) that never evolved. Easy to
 # replace with a SQL query. Removal on or after 2026-03-24.
 net-mail/list-remote-forwards
-net-mail/mailbox-count
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-02-15)
 # Masked for testing and possible libvlc revdeps breakage.
