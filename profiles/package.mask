@@ -36,6 +36,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Fabian Groffen <grobian@gentoo.org> (2026-03-28)
+# Depends on net-libs/ldns, which is in maintenance mode since 2020.
+# Please switch to net-dns/cares-tools which uses net-dns/c-ares
+# instead.
+# Removal on 2026-04-27.
+net-dns/ldns-tools
+
 # Michał Górny <mgorny@gentoo.org> (2026-03-28)
 # pipenv relies very heavily on vendoring.  Every version bump requires
 # a significant effort to unbundle and patch.  On top of that,
