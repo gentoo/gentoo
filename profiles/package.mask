@@ -108,13 +108,6 @@ dev-python/amodem
 >dev-perl/XString-0.5.0
 >dev-perl/YAML-Syck-1.360.0
 
-# Michał Górny <mgorny@gentoo.org> (2026-03-22)
-# Cyclic dependency through dev-python/vcs-versioning →
-# dev-python/hatchling → dev-python/pluggy.
-# https://github.com/pypa/setuptools-scm/issues/1302
->=dev-python/setuptools-scm-10
-dev-python/vcs-versioning
-
 # Michał Górny <mgorny@gentoo.org> (2026-03-20)
 # Low-value package with a test suite that requires tons of effort to
 # work offline. Upstream made that harder again in the most recent
