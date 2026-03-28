@@ -37,8 +37,6 @@ DOCS=(
 	"ExternalData/VENID.txt"
 )
 
-PATCHES=( "${FILESDIR}/${PN}-2.15.0.20251104-ioremap.patch" )
-
 QA_PREBUILT="usr/bin/smc-sum"
 
 src_prepare() {
