@@ -4,6 +4,59 @@ From: Michael R. Crusoe <crusoe@debian.org>
 Subject: Add GCC-16 compatibility
 Forwarded: katoh@ifrec.osaka-u.ac.jp
 
+--- a/core/constants.c
++++ b/core/constants.c
+@@ -1537,7 +1537,7 @@
+ 	}
+ }
+ 
+-void freeconstants()
++void freeconstants(void)
+ {
+ 	if( n_disLN ) FreeDoubleMtx( n_disLN ); n_disLN = NULL;
+ 	if( n_dis ) FreeIntMtx( n_dis ); n_dis = NULL;
+--- a/core/defs.c
++++ b/core/defs.c
+@@ -139,7 +139,7 @@
+ int terminalmargin = 100;
+ 
+ 
+-void initglobalvariables()
++void initglobalvariables(void)
+ {
+ 	commonAlloc1 = 0;
+ 	commonAlloc2 = 0;
+--- a/core/io.c
++++ b/core/io.c
+@@ -1063,8 +1063,7 @@
+      return( !noteofflag );
+ }
+ 
+-int getaline_fp_eof_new(s, l, fp)  /* end of file -> return 1 */
+-char    s[] ; int l ; FILE *fp ;
++int getaline_fp_eof_new( char s[], int l, FILE *fp )  /* end of file -> return 1 */
+ {
+         int c = 0, i = 0 ;
+ 		int noteofflag = 0;
+@@ -1079,8 +1078,7 @@
+ 		return( !noteofflag );
+ }
+ 
+-int myfgets(s, l, fp)  /* l以上は、行末まで読み飛ばす */
+-char    s[] ; int l ; FILE *fp ;
++int myfgets( char s[], int l, FILE *fp )  /* l以上は、行末まで読み飛ばす */
+ {
+         int     c = 0, i = 0 ;
+ 
+@@ -5505,7 +5503,7 @@
+ 		}
+ 	}
+ }
+-static void showaamtxexample()
++static void showaamtxexample(void)
+ {
+ 	fprintf( stderr, "Format error in aa matrix\n" );
+ 	fprintf( stderr, "# Example:\n" );
 --- a/core/mltaln.h
 +++ b/core/mltaln.h
 @@ -166,7 +166,7 @@
@@ -50,3 +103,24 @@ Forwarded: katoh@ifrec.osaka-u.ac.jp
  extern char seqcheck( char ** );
  
  typedef struct _LocalHom
+--- a/core/mltaln9.c
++++ b/core/mltaln9.c
+@@ -15232,7 +15232,7 @@
+ 		}
+ 	}
+ }
+-void FreeCommonIP()
++void FreeCommonIP(void)
+ {
+ 	if( commonIP ) FreeIntMtx( commonIP ); 
+ 	commonIP = NULL;
+--- a/core/version.c
++++ b/core/version.c
+@@ -1,6 +1,6 @@
+ #include "mltaln.h"
+ 
+-int main()
++int main(void)
+ {
+ 	fprintf( stdout, VERSION );
+ 	return( 0 );
