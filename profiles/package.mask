@@ -279,11 +279,6 @@ net-mail/mailbox-count
 dev-qt/qtlockedfile
 dev-qt/qtsingleapplication
 
-# David Seifert <soap@gentoo.org> (2026-02-11)
-# No other distro packages this, last release over 12 years ago, C23 issues.
-# Removal on 2026-03-13. Bug #944878.
-sci-biology/qrna
-
 # Sam James <sam@gentoo.org> (2026-02-09)
 # This suite of packages is currently best placed in an overlay/external
 # repository where users can more easily contribute. The ecosystem moves
