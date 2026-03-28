@@ -435,11 +435,6 @@ kde-apps/libkdcraw:5
 kde-apps/libkexiv2:5
 kde-frameworks/kimageformats:5
 
-# David Seifert <soap@gentoo.org> (2026-02-07)
-# Never packaged by other distros, QA and C23 issues.
-# Removal on 2026-03-09.
-net-analyzer/traceproto
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2026-02-06)
 # Marked as pre-release post release itself. Released without
 # maintainer ACK.
