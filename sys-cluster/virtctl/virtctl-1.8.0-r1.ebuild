@@ -21,6 +21,8 @@ LICENSE="Apache-2.0 BSD-2 BSD ISC MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
+BDEPEND=">=dev-lang/go-1.24:="
+
 RESTRICT="test"
 
 src_compile() {
