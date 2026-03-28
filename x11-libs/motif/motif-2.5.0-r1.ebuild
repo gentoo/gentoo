@@ -53,6 +53,9 @@ src_prepare() {
 
 	AT_M4DIR=. eautoreconf
 
+	# get around some LANG problems in make #15119
+	LANG=C
+
 	if use !elibc_glibc && use !elibc_musl; then
 		# libiconv detection in configure script doesn't always work
 		# http://bugs.motifzone.net/show_bug.cgi?id=1423
