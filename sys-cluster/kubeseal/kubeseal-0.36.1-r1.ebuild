@@ -19,7 +19,7 @@ SLOT="0"
 
 KEYWORDS="~amd64"
 
-BDEPEND=">=dev-lang/go-1.19"
+BDEPEND=">=dev-lang/go-1.26.1:="
 
 RESTRICT+=" test"
 
