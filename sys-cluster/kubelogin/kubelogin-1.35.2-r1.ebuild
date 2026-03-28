@@ -11,7 +11,9 @@ SRC_URI+=" https://dev.gentoo.org/~concord/distfiles/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD BSD-2 ISC MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
+
+BDEPEND=">=dev-lang/go-1.25.5:="
 
 QA_PRESTRIPPED="usr/bin/kubectl-oidc_login"
 
