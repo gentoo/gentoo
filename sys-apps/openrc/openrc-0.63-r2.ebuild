@@ -144,7 +144,7 @@ pkg_postinst() {
 	fi
 
 	if ! use newnet && ! use netifrc; then
-		ewarn "You have emerged OpenRc without network support. This"
+		ewarn "You have emerged OpenRC without network support. This"
 		ewarn "means you need to SET UP a network manager such as"
 		ewarn "	net-misc/netifrc, net-misc/dhcpcd, net-misc/connman,"
 		ewarn " net-misc/NetworkManager, or net-vpn/badvpn."
