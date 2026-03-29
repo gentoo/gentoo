@@ -1,0 +1,30 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -394,7 +394,6 @@
+         -fpack-struct=8          # struct member alignment - 8 bytes
+         -Wformat                 # enables format string checking warnings during compilation
+         -Wformat-security        # warns about potentially insecure format string usages
+-        -Werror=format-security  # treats format string security warnings as errors
+         -Wno-comment             # allows multi-line comments
+         -fstack-protector-strong # enables stack protection for vulnerable functions that contain: An array of any size and type
+         -fdiagnostics-color=auto # color=auto only to colorize compiler output
+@@ -434,19 +433,6 @@
+             )
+     endif ()
+ 
+-    # configuration specific defines
+-    if ("${BUILD_TYPE}" STREQUAL "release" OR
+-        "${BUILD_TYPE}" STREQUAL "release-internal" OR
+-        "${BUILD_TYPE}" STREQUAL "releaseinternal")
+-        set (COMMON_COMPILE_OPTIONS ${COMMON_COMPILE_OPTIONS}
+-            -O3                 # optimize for speed with conforming optimizations
+-            -Werror             # treats warning as errors
+-            -fvisibility=hidden # hides non-exported symbols
+-            -flto               # enables Link-Time Optimization (LTO)
+-            -fPIC               # generates position-independent code during the compilation phase
+-            )
+-    endif ()
+-
+     if (NOT CMAKE_SYSTEM_PROCESSOR STREQUAL "aarch64")
+         set (COMMON_COMPILE_OPTIONS ${COMMON_COMPILE_OPTIONS}
+             -msse

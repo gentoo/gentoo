@@ -21,9 +21,8 @@ KEYWORDS="~amd64"
 DEPEND="x11-libs/libdrm"
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${PN}-1.12.183-revert-definitions.patch" )
+PATCHES=( "${FILESDIR}/${PN}-1.12.185-revert-definitions.patch" )
 
 src_configure() {
-	local mycmakeargs=( -DLINUX_DISTRO="Gentoo" )
 	cmake_src_configure
 }
