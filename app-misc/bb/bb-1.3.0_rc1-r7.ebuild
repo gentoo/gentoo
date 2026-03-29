@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -66,8 +66,7 @@ src_prepare() {
 		-i Makefile.am || die
 
 	mv -v configure.{in,ac} || die
-	# m4/ dir is added with 'm4-stuff.patch' patch
-	AT_M4DIR="m4" eautoreconf
+	eautoreconf
 }
 
 pkg_postinst() {
