@@ -11,11 +11,6 @@ HOMEPAGE="https://www.gnu.org/software/hurd/microkernel/mach/mig/gnu_mig.html"
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/hurd/mig.git"
 	inherit autotools git-r3
-
-	BDEPEND="
-		sys-devel/bison
-		sys-devel/flex
-	"
 elif [[ ${PV} == *_p* ]] ; then
 	MY_PV=${PV%_p*}+git${PV#*_p}
 	MY_P=${PN}_${MY_PV}
@@ -33,9 +28,16 @@ LICENSE="GPL-2 BSD-2"
 SLOT="0"
 [[ ${PV} != 9999 ]] && KEYWORDS="~amd64 ~x86"
 
+BDEPEND="
+	sys-devel/bison
+	sys-devel/flex
+"
+
 if is_crosspkg ; then
 	DEPEND+=" cross-${CTARGET}/gnumach"
 fi
+
+RDEPEND="dev-lang/perl"
 
 src_prepare() {
 	default
