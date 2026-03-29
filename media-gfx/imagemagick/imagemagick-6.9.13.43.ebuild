@@ -12,10 +12,18 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 	MY_P="imagemagick-9999"
 else
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/imagemagick.asc
+	inherit verify-sig
+
 	MY_PV="$(ver_rs 3 '-')"
 	MY_P="ImageMagick-${MY_PV}"
-	SRC_URI="mirror://imagemagick/${MY_P}.tar.xz"
+	SRC_URI="
+		mirror://imagemagick/${MY_P}.tar.xz
+		verify-sig? ( mirror://imagemagick/${MY_P}.tar.xz.asc )
+	"
+
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x64-macos ~x64-solaris"
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-imagemagick )"
 fi
 
 S="${WORKDIR}/${MY_P}"
@@ -91,7 +99,7 @@ DEPEND="
 	${RDEPEND}
 	X? ( x11-base/xorg-proto )
 "
-BDEPEND="virtual/pkgconfig"
+BDEPEND+=" virtual/pkgconfig"
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
