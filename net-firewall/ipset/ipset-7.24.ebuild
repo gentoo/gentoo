@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,7 +27,6 @@ DOCS=( ChangeLog INSTALL README UPGRADE )
 IP_NF_SET_MAX=${IP_NF_SET_MAX:-256}
 
 PATCHES=(
-	"${FILESDIR}/${PN}-bash-completion.patch"
 	"${FILESDIR}/${PN}-net_namespace.patch"
 )
 
