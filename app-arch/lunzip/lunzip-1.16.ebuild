@@ -13,7 +13,7 @@ SRC_URI+=" verify-sig? ( https://download.savannah.gnu.org/releases/lzip/${PN}/$
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-antoniodiazdiaz )"
 
