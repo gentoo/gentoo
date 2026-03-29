@@ -1,0 +1,51 @@
+diff '--color=auto' -urw a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2026-03-15 16:48:50.000000000 +0300
++++ b/CMakeLists.txt	2026-03-22 13:08:03.683782246 +0300
+@@ -535,7 +535,9 @@
+ endif() # ENABLE_LIBCLANG
+ 
+ # check for bash
++if (BUILD_TESTING)
+ find_program(BASH_EXECUTABLE bash)
++endif()
+ if(BASH_EXECUTABLE)
+     set(HAVE_BASH 1)
+ else()
+@@ -543,21 +545,27 @@
+ endif()
+ 
+ # Check for tools
++if (BUILD_TESTING)
+ find_program(GIT_EXECUTABLE git)
++endif()
+ if(GIT_EXECUTABLE)
+     set(HAVE_GIT 1)
+ else()
+     set(HAVE_GIT 0)
+ endif()
+ 
++if (BUILD_TESTING)
+ find_program(JQ_EXECUTABLE jq)
++endif()
+ if(JQ_EXECUTABLE)
+     set(HAVE_JQ 1)
+ else()
+     set(HAVE_JQ 0)
+ endif()
+ 
++if (BUILD_TESTING)
+ find_program(DOCKER_EXECUTABLE docker)
++endif()
+ if(DOCKER_EXECUTABLE)
+     set(HAVE_DOCKER 1)
+ else()
+@@ -1590,7 +1598,9 @@
+ endif()
+ 
+ # Documentation
++if(BUILD_DOC)
+ find_program(SPHINX_EXECUTABLE NAMES sphinx-build)
++endif()
+ 
+ if(SPHINX_EXECUTABLE)
+     set(HAVE_SPHINX TRUE)
