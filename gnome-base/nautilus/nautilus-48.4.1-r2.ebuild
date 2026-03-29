@@ -11,27 +11,25 @@ HOMEPAGE="https://apps.gnome.org/Nautilus/"
 LICENSE="GPL-3+ LGPL-2.1+"
 SLOT="0"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv x86"
 
 IUSE="+cloudproviders doc gnome +gstreamer +introspection +previewer selinux"
 REQUIRED_USE="doc? ( introspection )"
 
 DEPEND="
-	>=dev-libs/glib-2.84.0:2
-	>=media-libs/gexiv2-0.14.2
+	>=dev-libs/glib-2.79.0:2
+	>=media-libs/gexiv2-0.14.2:0=
 	gstreamer? ( media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0 )
 	>=app-arch/gnome-autoar-0.4.4
 	>=gnome-base/gnome-desktop-43:4=
 	>=gnome-base/gsettings-desktop-schemas-42
 	>=gui-libs/gtk-4.17.5:4[X,introspection?,wayland]
-	dev-libs/wayland
 	>=gui-libs/libadwaita-1.6_beta:1
 	>=dev-libs/libportal-0.7:=[gtk]
-	>=dev-libs/icu-56:=
 	>=x11-libs/pango-1.28.3
 	selinux? ( >=sys-libs/libselinux-2.0 )
-	>=app-misc/tinysparql-3.2:3
+	>=app-misc/tinysparql-3.0:3
 	cloudproviders? ( >=net-libs/libcloudproviders-0.3.1 )
 	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
@@ -42,7 +40,6 @@ RDEPEND="${DEPEND}
 BDEPEND="
 	>=dev-util/gdbus-codegen-2.80.5-r1
 	dev-util/glib-utils
-	dev-util/wayland-scanner
 	doc? (
 		app-text/docbook-xml-dtd:4.1.2
 		dev-util/gi-docgen

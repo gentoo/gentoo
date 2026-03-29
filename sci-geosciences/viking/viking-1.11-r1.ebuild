@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}-${P}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="doc +exif libexif geoclue gps +magic nls oauth"
+IUSE="doc +exif libexif geoclue gps +magic nls nova oauth"
 
 COMMONDEPEND="
 	app-arch/bzip2
@@ -30,9 +30,10 @@ COMMONDEPEND="
 	>=x11-libs/gdk-pixbuf-2.26:2
 	>=x11-libs/gtk+-3.22:3
 	geoclue? ( >=app-misc/geoclue-2.4.4:2.0 )
-	gps? ( >=sci-geosciences/gpsd-3.20 )
-	exif? ( libexif? ( media-libs/libexif ) !libexif? ( media-libs/gexiv2 ) )
+	gps? ( >=sci-geosciences/gpsd-3.20:= )
+	exif? ( libexif? ( media-libs/libexif ) !libexif? ( media-libs/gexiv2:0= ) )
 	magic? ( sys-apps/file )
+	nova? ( sci-libs/libnova )
 	oauth? ( net-libs/liboauth )
 "
 RDEPEND="${COMMONDEPEND}
@@ -48,7 +49,7 @@ DEPEND="${COMMONDEPEND}
 	sys-devel/gettext
 "
 
-PATCHES=( "${FILESDIR}/${P}-terraserver.patch" )
+#PATCHES=( "${FILESDIR}/${P}-terraserver.patch" "${FILESDIR}/${P}-c23.patch" )
 
 src_prepare() {
 	default
@@ -79,6 +80,7 @@ src_configure() {
 		$(use_enable gps realtime-gps-tracking) \
 		$(use_enable magic) \
 		$(use_enable nls) \
+		$(use_enable nova) \
 		$(use_enable oauth)
 }
 

@@ -31,7 +31,7 @@ else
 		[[ $(( $(ver_cut 2) % 2 )) -eq 0 ]] &&
 		[[ $(( $(ver_cut 3) % 2 )) -eq 0 ]]
 	then
-		KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~x86"
+		KEYWORDS="~amd64 ~arm ~x86"
 	fi
 fi
 
@@ -213,8 +213,6 @@ src_configure() {
 	# defang automagic dependencies. Bug 943164
 	use wayland || append-cppflags -DGENTOO_GTK_HIDE_WAYLAND
 	use X || append-cppflags -DGENTOO_GTK_HIDE_X11
-
-	tc-export NM READELF
 
 	use vala && vala_setup
 

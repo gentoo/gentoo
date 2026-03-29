@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..14} )
 
 inherit gnome.org gnome2-utils meson python-any-r1 virtualx xdg
 
@@ -24,7 +24,7 @@ DEPEND="
 	>=x11-libs/gdk-pixbuf-2.36.8:2
 	>=media-libs/gegl-0.4.0:0.4[cairo,raw]
 	sci-geosciences/geocode-glib:2
-	>=media-libs/gexiv2-0.14.0
+	>=media-libs/gexiv2-0.14.0:0=
 	>=dev-libs/glib-2.62.0:2
 	dev-libs/libportal:=[gtk]
 	>=net-libs/gnome-online-accounts-3.8.0:=
