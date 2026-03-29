@@ -1,0 +1,46 @@
+https://savannah.gnu.org/bugs/?67987
+- rebased Changelog entry
+- duplicated hunk to match duplicated gnulib in tarball
+
+From: Bruno Haible <bruno@clisp.org>
+Date: Thu, 29 Jan 2026 19:04:32 +0100
+Subject: [PATCH] relocatable-prog-wrapper: Fix syntax error on Linux (regr. 2025-12-09).
+
+Reported by Erik Schnetter <schnetter@gmail.com>
+at <https://savannah.gnu.org/bugs/?67987>.
+
+* lib/progreloc.c (find_executable): Remove extraneous brace.
+
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -1,3 +1,10 @@
++2026-01-29  Bruno Haible  <bruno@clisp.org>
++
++	relocatable-prog-wrapper: Fix syntax error on Linux (regr. 2025-12-09).
++	Reported by Erik Schnetter <schnetter@gmail.com>
++	at <https://savannah.gnu.org/bugs/?67987>.
++	* lib/progreloc.c (find_executable): Remove extraneous brace.
++
+ 2026-01-29  Bruno Haible  <bruno@clisp.org>
+ 
+ 	examples: Use infrastructure from gettext version 1.0.
+--- a/gettext-tools/gnulib-lib/progreloc.c
++++ b/gettext-tools/gnulib-lib/progreloc.c
+@@ -259,7 +259,6 @@ find_executable (const char *argv0)
+     char *link = xreadlink (buf);
+     if (link != NULL && link[0] != '[')
+       return link;
+-    }
+     if (executable_fd < 0)
+       executable_fd = open (buf, O_EXEC | O_CLOEXEC, 0);
+   }
+--- a/gettext-runtime/gnulib-lib/progreloc.c
++++ b/gettext-runtime/gnulib-lib/progreloc.c
+@@ -259,7 +259,6 @@ find_executable (const char *argv0)
+     char *link = xreadlink (buf);
+     if (link != NULL && link[0] != '[')
+       return link;
+-    }
+     if (executable_fd < 0)
+       executable_fd = open (buf, O_EXEC | O_CLOEXEC, 0);
+   }
