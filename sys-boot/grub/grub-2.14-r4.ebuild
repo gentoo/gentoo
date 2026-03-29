@@ -181,6 +181,7 @@ src_prepare() {
 
 	local PATCHES=(
 		"${WORKDIR}/${P}-patches"
+		"${FILESDIR}/${P}-efi_uga.patch"
 	)
 
 	default
