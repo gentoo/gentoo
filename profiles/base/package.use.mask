@@ -6,6 +6,12 @@
 
 # New entries go on top.
 
+# Brett A C Sheffield <bacs@librecast.net> (2026-03-29)
+# mask IUSE=selinux for www-servers/vinyl-cache-9.0.0 until
+# upstream policy available.
+# https://bugs.gentoo.org/971753
+>=www-servers/vinyl-cache-9.0.0 selinux
+
 # Mike Gilbert <floppym@gentoo.org> (2026-03-20)
 # Only meant for bootstrapping a cross-compiler.
 sys-libs/libxcrypt headers-only
