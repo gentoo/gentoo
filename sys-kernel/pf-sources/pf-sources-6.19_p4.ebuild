@@ -76,6 +76,7 @@ src_prepare() {
 
 	# kernel-2_src_prepare doesn't apply PATCHES(). Chosen genpatches are also applied here.
 	eapply "${WORKDIR}"/*.patch
+	 eapply "${FILESDIR}/ima_validate_range.patch"
 	default
 }
 

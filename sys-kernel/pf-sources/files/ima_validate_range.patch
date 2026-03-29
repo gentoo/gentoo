@@ -1,0 +1,89 @@
+From 10d1c75ed4382a8e79874379caa2ead8952734f9 Mon Sep 17 00:00:00 2001
+From: Harshit Mogalapalli <harshit.mogalapalli@oracle.com>
+Date: Tue, 30 Dec 2025 22:16:07 -0800
+Subject: [PATCH] ima: verify the previous kernel's IMA buffer lies in
+ addressable RAM
+
+When the second-stage kernel is booted with a limiting command line (e.g.
+"mem=<size>"), the IMA measurement buffer handed over from the previous
+kernel may fall outside the addressable RAM of the new kernel. Accessing
+such a buffer can fault during early restore.
+
+Introduce a small generic helper, ima_validate_range(), which verifies
+that a physical [start, end] range for the previous-kernel IMA buffer lies
+within addressable memory:
+        - On x86, use pfn_range_is_mapped().
+        - On OF based architectures, use page_is_ram().
+
+Signed-off-by: Harshit Mogalapalli <harshit.mogalapalli@oracle.com>
+Reviewed-by: Mimi Zohar <zohar@linux.ibm.com>
+Signed-off-by: Andrew Morton <akpm@linux-foundation.org>
+---
+ include/linux/ima.h                |  1 +
+ security/integrity/ima/ima_kexec.c | 35 ++++++++++++++++++++++++++++++
+ 2 files changed, 36 insertions(+)
+
+diff --git a/include/linux/ima.h b/include/linux/ima.h
+index 8e29cb4e6a01d..abf8923f8fc51 100644
+--- a/include/linux/ima.h
++++ b/include/linux/ima.h
+@@ -69,6 +69,7 @@ static inline int ima_measure_critical_data(const char *event_label,
+ #ifdef CONFIG_HAVE_IMA_KEXEC
+ int __init ima_free_kexec_buffer(void);
+ int __init ima_get_kexec_buffer(void **addr, size_t *size);
++int ima_validate_range(phys_addr_t phys, size_t size);
+ #endif
+ 
+ #ifdef CONFIG_IMA_SECURE_AND_OR_TRUSTED_BOOT
+diff --git a/security/integrity/ima/ima_kexec.c b/security/integrity/ima/ima_kexec.c
+index 5beb69edd12fd..36a34c54de58b 100644
+--- a/security/integrity/ima/ima_kexec.c
++++ b/security/integrity/ima/ima_kexec.c
+@@ -12,6 +12,8 @@
+ #include <linux/kexec.h>
+ #include <linux/of.h>
+ #include <linux/ima.h>
++#include <linux/mm.h>
++#include <linux/overflow.h>
+ #include <linux/reboot.h>
+ #include <asm/page.h>
+ #include "ima.h"
+@@ -294,3 +296,36 @@ void __init ima_load_kexec_buffer(void)
+                pr_debug("Error restoring the measurement list: %d\n", rc);
+        }
+ }
++
++/*
++ * ima_validate_range - verify a physical buffer lies in addressable RAM
++ * @phys: physical start address of the buffer from previous kernel
++ * @size: size of the buffer
++ *
++ * On success return 0. On failure returns -EINVAL so callers can skip
++ * restoring.
++ */
++int ima_validate_range(phys_addr_t phys, size_t size)
++{
++       unsigned long start_pfn, end_pfn;
++       phys_addr_t end_phys;
++
++       if (check_add_overflow(phys, (phys_addr_t)size - 1, &end_phys))
++               return -EINVAL;
++
++       start_pfn = PHYS_PFN(phys);
++       end_pfn = PHYS_PFN(end_phys);
++
++#ifdef CONFIG_X86
++       if (!pfn_range_is_mapped(start_pfn, end_pfn))
++#else
++       if (!page_is_ram(start_pfn) || !page_is_ram(end_pfn))
++#endif
++       {
++               pr_warn("IMA: previous kernel measurement buffer %pa (size 0x%zx) lies outside available memory\n",
++                       &phys, size);
++               return -EINVAL;
++       }
++
++       return 0;
++}
+-- 
+2.51.0
