@@ -217,7 +217,7 @@ src_install() {
 	if use tiles ; then
 		doicon -s 48 "${DISTDIR}"/${PN}-${SLOT}.png
 		doicon -s scalable "${DISTDIR}"/${PN}-${SLOT}.svg
-		make_desktop_entry "crawl-${SLOT}" "crawl-${SLOT}" "crawl-${SLOT}"
+		make_desktop_entry "crawl-${SLOT}" "crawl-${SLOT}" "${PN}-${SLOT}"
 	fi
 }
 
