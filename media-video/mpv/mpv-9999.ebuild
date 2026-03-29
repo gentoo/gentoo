@@ -245,6 +245,12 @@ src_install() {
 		mv "${ED}"/usr/share/doc/{mpv,${PF}/examples} || die
 	fi
 
+	# prevent build-only ffnvcodec from leaking into the .pc (bug #971646)
+	if use nvenc; then
+		sed -Ee '/^Requires/s/ffnvcodec[^,]*,? ?//;s/, $//;/^Requires[^:]*: $/d' \
+			-i "${ED}"/usr/$(get_libdir)/pkgconfig/mpv.pc || die
+	fi
+
 	local GLOBIGNORE=*/*build*:*/*policy*
 	dodoc RELEASE_NOTES DOCS/*.{md,rst}
 }
