@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # There are many slots for this package because people in the community
@@ -24,7 +24,7 @@ MY_P="stone_soup-${PV}"
 DESCRIPTION="Role-playing roguelike game of exploration and treasure-hunting in dungeons"
 HOMEPAGE="https://crawl.develz.org"
 # MY_SLOT to satisfy pkgcheck variable order checking
-MY_SLOT="0.27"
+MY_SLOT="0.26"
 SRC_URI="
 	https://github.com/crawl/crawl/releases/download/${PV}/${PN/-/_}-${PV}.zip
 	https://dev.gentoo.org/~stasibear/distfiles/${PN}.png -> ${PN}-${MY_SLOT}.png
@@ -203,9 +203,13 @@ src_install() {
 pkg_postinst() {
 	xdg_icon_cache_update
 
-	elog "crawl is a slotted install that supports having"
-	elog "multiple versions installed.  The binary has the"
-	elog "slot appended, e.g. 'crawl-"${SLOT}"'."
+	elog "Since version 0.25.1-r101, crawl is a slotted install"
+	elog "that supports having multiple versions installed.  The"
+	elog "binary has the slot appended, e.g. 'crawl-"${SLOT}"'."
+	elog
+	elog "The local save directory also has the slot appended."
+	elog "If you have saved games from 0.25 but before 0.25.1-r101"
+	elog "you can 'mv ~/.crawl ~/.crawl-0.25' to fix it"
 
 	if use tiles && use ncurses ; then
 		elog

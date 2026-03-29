@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # There are many slots for this package because people in the community
@@ -40,7 +40,7 @@ else
 	MY_P="crawl-${COMMITSHA}/crawl-ref"
 fi
 # MY_SLOT to satisfy pkgcheck variable order checking
-MY_SLOT="0.30"
+MY_SLOT="0.31"
 SRC_URI="
 	${SRC_URI}
 	https://dev.gentoo.org/~stasibear/distfiles/${PN}.png -> ${PN}-${MY_SLOT}.png
