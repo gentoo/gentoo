@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools
 
 DESCRIPTION="Utils for the Free Unix Spectrum Emulator by Philip Kendall"
-HOMEPAGE="http://fuse-emulator.sourceforge.net"
+HOMEPAGE="https://fuse-emulator.sourceforge.net"
 SRC_URI="https://downloads.sourceforge.net/fuse-emulator/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86"
 IUSE="audiofile gcrypt jpeg png zlib"
 
-RDEPEND=">=app-emulation/libspectrum-1.4.4[audiofile?,gcrypt?,zlib?]
+RDEPEND=">=app-emulation/libspectrum-1.4.4:=[audiofile?,gcrypt?,zlib?]
 	audiofile? ( >=media-libs/audiofile-0.3.6 )
 	gcrypt? ( dev-libs/libgcrypt )
 	jpeg? ( media-libs/libjpeg-turbo:= )
