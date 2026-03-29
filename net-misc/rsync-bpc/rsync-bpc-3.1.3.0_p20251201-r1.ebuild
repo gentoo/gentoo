@@ -26,20 +26,27 @@ RDEPEND="
 	xxhash? ( >=dev-libs/xxhash-0.8 )"
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-autoconf.patch"
+	"${FILESDIR}/${P}-acls.patch"
+)
+
 src_prepare() {
 	default
-	sed -i -e 's/AC_HEADER_MAJOR_FIXED/AC_HEADER_MAJOR/' configure.ac
-	eaclocal -I m4
-	eautoconf -o configure.sh
+
+	eautoreconf
 }
 
 src_configure(){
-	econf \
-		--disable-md2man \
-		--without-included-popt \
-		--enable-ipv6 \
-		--without-included-zlib \
-		$(use_enable acl acl-support) \
-		$(use_enable lz4) \
+	local myconf=(
+		--disable-md2man
+		--without-included-popt
+		--enable-ipv6
+		--without-included-zlib
+		$(use_enable acl acl-support)
+		$(use_enable lz4)
 		$(use_enable xxhash)
+	)
+
+	econf "${myconf[@]}"
 }
