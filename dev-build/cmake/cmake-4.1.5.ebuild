@@ -275,11 +275,12 @@ src_test() {
 	#        debugedit binary is not in the expected location
 	#    RunCMake.CPack_DEB: breaks if app-arch/dpkg is installed because
 	#        it can't find a deb package that owns libc
+	#    RunCMake.CPack_TGZ: requires 64-bit time_t (bug #967480)
 	#    TestUpload, which requires network access
 	#    RunCMake.CMP0125, known failure reported upstream (bug #829414)
 	local myctestargs=(
 		--output-on-failure
-		-E "(BootstrapTest|BundleUtilities|CMakeOnly.AllFindModules|CompileOptions|CTest.UpdateCVS|Fortran|RunCMake.CompilerLauncher|RunCMake.CPack_(DEB|RPM)|TestUpload|RunCMake.CMP0125)" \
+		-E "(BootstrapTest|BundleUtilities|CMakeOnly.AllFindModules|CompileOptions|CTest.UpdateCVS|Fortran|RunCMake.CompilerLauncher|RunCMake.CPack_(DEB|RPM|TGZ)|TestUpload|RunCMake.CMP0125)" \
 	)
 
 	local -x QT_QPA_PLATFORM=offscreen
