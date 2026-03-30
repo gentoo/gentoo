@@ -18,14 +18,16 @@ RESTRICT="!test? ( test )"
 DEPEND="valgrind? ( dev-debug/valgrind )"
 
 src_configure() {
+	# hardened + valgrind could be restored w/ multibuild.eclass. They
+	# install renamed libraries which break reverse dependencies.
 	local mycmakeargs=(
 		-DMI_DEBUG_FULL=$(usex debug)
-		-DMI_SECURE=$(usex hardened)
+		-DMI_SECURE=OFF
 		-DMI_INSTALL_TOPLEVEL=ON
 		-DMI_BUILD_TESTS=$(usex test)
 		-DMI_BUILD_OBJECT=OFF
 		-DMI_BUILD_STATIC=OFF
-		-DMI_TRACK_VALGRIND=$(usex valgrind)
+		-DMI_TRACK_VALGRIND=OFF
 		-DMI_LIBC_MUSL=$(usex elibc_musl)
 		# Don't inject -march=XXX
 		-DMI_OPT_ARCH=OFF
