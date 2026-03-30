@@ -1,0 +1,13 @@
+diff --git a/tests/subdir.am b/tests/subdir.am
+index ab322f70d2..be5051edb3 100644
+--- a/tests/subdir.am
++++ b/tests/subdir.am
+@@ -37,7 +37,7 @@ PYTEST_IGNORE =
+ 
+ .PHONY: tests/tests.xml
+ tests/tests.xml: $(check_PROGRAMS)
+-	( cd tests; $(PYTHON) ../$(srcdir)/tests/runtests.py --junitxml=tests.xml -v ../$(srcdir)/tests $(PYTEST_IGNORE); )
++	( cd tests; $(PYTHON) $(abs_srcdir)/tests/runtests.py --junitxml=tests.xml -v $(abs_srcdir)/tests $(PYTEST_IGNORE); )
+ check: tests/tests.xml
+ 
+ clean-local: clean-tests
