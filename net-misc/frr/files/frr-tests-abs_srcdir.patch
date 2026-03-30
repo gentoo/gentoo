@@ -1,0 +1,31 @@
+https://github.com/FRRouting/frr/pull/21390
+From 75ef683781cdb3c853f94acfccd25b7499be761c Mon Sep 17 00:00:00 2001
+From: Jaco Kroon <jaco@uls.co.za>
+Date: Mon, 30 Mar 2026 21:48:39 +0200
+Subject: [PATCH] tests: Use abs_srcdir for tests.
+
+Currently the assumption is that srcdir is a relative path, which is a
+false assumption if configure was invoked with an absolute path as per
+some (Gentoo) automated build systems.
+
+Signed-off-by: Jaco Kroon <jaco@uls.co.za>
+---
+ tests/subdir.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/subdir.am b/tests/subdir.am
+index ab322f70d2..be5051edb3 100644
+--- a/tests/subdir.am
++++ b/tests/subdir.am
+@@ -37,7 +37,7 @@ PYTEST_IGNORE =
+ 
+ .PHONY: tests/tests.xml
+ tests/tests.xml: $(check_PROGRAMS)
+-	( cd tests; $(PYTHON) ../$(srcdir)/tests/runtests.py --junitxml=tests.xml -v ../$(srcdir)/tests $(PYTEST_IGNORE); )
++	( cd tests; $(PYTHON) $(abs_srcdir)/tests/runtests.py --junitxml=tests.xml -v $(abs_srcdir)/tests $(PYTEST_IGNORE); )
+ check: tests/tests.xml
+ 
+ clean-local: clean-tests
+-- 
+2.52.0
+
