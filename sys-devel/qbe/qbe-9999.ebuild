@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,6 +27,9 @@ src_prepare() {
 	default
 
 	sed -i 's;^CC *=.*;CC ?= cc;' Makefile || die
+
+	# Needs to exec test binaries and /tmp can be mounted noexec
+	sed -i "s;^tmp=/tmp/;tmp=${T}/;" tools/test.sh || die
 }
 
 src_compile() {
