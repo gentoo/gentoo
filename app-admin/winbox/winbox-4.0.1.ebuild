@@ -12,7 +12,7 @@ S="${WORKDIR}"
 
 LICENSE="MikroTik"
 SLOT="0"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 
 RDEPEND="
 	media-libs/fontconfig
