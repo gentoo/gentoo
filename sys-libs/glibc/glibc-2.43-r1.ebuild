@@ -1592,7 +1592,7 @@ glibc_do_src_install() {
 
 	if is_hurd && has amd64 $(get_install_abis) ; then
 		# First, let's check for sanity
-		if [[ -f "$(alt_prefix)/lib/ld-x86-64.so.1" ]] ; then
+		if [[ -f "${D}$(alt_prefix)/lib/ld-x86-64.so.1" ]] ; then
 			die "Somehow your amd64 hurd glibc installed /lib/ld-x86-64.so.1 ... this should not happen."
 		fi
 
@@ -1602,7 +1602,7 @@ glibc_do_src_install() {
 
 	if is_hurd && has x86 $(get_install_abis) ; then
 		# First, let's check for sanity
-		if [[ -f "$(alt_prefix)/$(get_abi_LIBDIR x86)/ld.so" ]] ; then
+		if [[ -f "${D}$(alt_prefix)/$(get_abi_LIBDIR x86)/ld.so" ]] ; then
 			die "Somehow your x86 hurd glibc installed ld.so ... this should not happen."
 		fi
 
