@@ -1,0 +1,28 @@
+https://github.com/FRRouting/frr/pull/21390
+From 554a8b719eeaf6ee056dea0e5c95f4ef010cdd1c Mon Sep 17 00:00:00 2001
+From: Jaco Kroon <jaco@uls.co.za>
+Date: Mon, 30 Mar 2026 23:47:04 +0200
+Subject: [PATCH] tests: Include GRPC_CXXFLAGS for compiling grpc tests.
+
+Without this there are test failures for me due to required -std=gnu++23
+absl headers.
+---
+ tests/lib/subdir.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/lib/subdir.am b/tests/lib/subdir.am
+index ca74306543..64b4afc43a 100644
+--- a/tests/lib/subdir.am
++++ b/tests/lib/subdir.am
+@@ -30,7 +30,7 @@ GRPC_TESTS_LDADD = mgmtd/libmgmt_be_nb.la staticd/libstatic.a grpc/libfrrgrpc_pb
+ if GRPC
+ check_PROGRAMS += tests/lib/test_grpc
+ endif
+-tests_lib_test_grpc_CXXFLAGS = $(WERROR) $(TESTS_CXXFLAGS)
++tests_lib_test_grpc_CXXFLAGS = $(WERROR) $(TESTS_CXXFLAGS) $(GRPC_CXXFLAGS)
+ tests_lib_test_grpc_CPPFLAGS = $(TESTS_CPPFLAGS)
+ tests_lib_test_grpc_LDADD = $(GRPC_TESTS_LDADD)
+ tests_lib_test_grpc_SOURCES = tests/lib/test_grpc.cpp
+-- 
+2.52.0
+

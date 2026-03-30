@@ -56,6 +56,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-8.4.1-logrotate.patch
 	"${FILESDIR}"/${PN}-9.1-mimic-gnu-basename-api-for-non-glibc.patch
 	"${FILESDIR}"/${PN}-tests-abs_srcdir.patch
+	"${FILESDIR}"/${PN}-tests-grpc.patch
 )
 
 QA_CONFIG_IMPL_DECL_SKIP=(
@@ -101,14 +102,14 @@ src_configure() {
 }
 
 src_compile() {
-	default
+	emake GRPC_CFLAGS=-std=gnu++23 GRPC_CXXFLAGS=-std=gnu++23
 
 	use doc && emake html
 }
 
 src_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	default
+	emake GRPC_CFLAGS=-std=gnu++23 GRPC_CXXFLAGS=-std=gnu++23 check
 }
 
 src_install() {
