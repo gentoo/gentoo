@@ -32,6 +32,25 @@ src_prepare() {
 	sed -i "s;^tmp=/tmp/;tmp=${T}/;" tools/test.sh || die
 }
 
+src_configure() {
+	# qbe's Makefile uses uname(1), leading to wrong default
+	# target when cross-compiling
+	if use elibc_Darwin; then
+		case ${CTARGET:-$CHOST} in
+		*aarch64*) echo '#define Deftgt T_arm64_apple' ;;
+		*x86_64*) echo '#define Deftgt T_amd64_apple' ;;
+		*) die "Unsupported target ${CTARGET:-$CHOST}" ;;
+		esac
+	else
+		case ${CTARGET:-$CHOST} in
+		*aarch64*) echo '#define Deftgt T_arm64' ;;
+		*riscv64*) echo '#define Deftgt T_rv64' ;;
+		*x86_64*) echo '#define Deftgt T_amd64_sysv' ;;
+		*) die "Unsupported target ${CTARGET:-$CHOST}" ;;
+		esac
+	fi > config.h || die
+}
+
 src_compile() {
 	tc-export CC
 
