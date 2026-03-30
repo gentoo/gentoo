@@ -45,6 +45,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.1-configure-fix-AR-libtool-on-darwin.patch
 
 	"${FILESDIR}"/${PN}-1.3.2-minizip-install.patch
+
+	# https://github.com/madler/zlib/issues/1200
+	"${FILESDIR}"/${PN}-1.3.2-s390.patch
 )
 
 src_prepare() {
