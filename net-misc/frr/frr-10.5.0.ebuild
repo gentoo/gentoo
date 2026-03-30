@@ -105,7 +105,7 @@ my_src_configure() {
 my_src_compile() {
 	default
 
-	use doc && emake -C doc html
+	use doc && emake html
 }
 
 my_src_test() {

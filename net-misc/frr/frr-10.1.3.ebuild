@@ -103,7 +103,7 @@ src_configure() {
 src_compile() {
 	default
 
-	use doc && emake -C doc html
+	use doc && emake html
 }
 
 src_test() {
