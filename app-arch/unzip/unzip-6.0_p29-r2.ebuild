@@ -33,6 +33,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.0-no-exec-stack.patch
 	"${FILESDIR}"/${PN}-6.0-format-security.patch
 	"${FILESDIR}"/${PN}-6.0-fix-false-overlap-detection-on-32bit-systems.patch
+	"${FILESDIR}"/${PN}-6.0-c99-configure.patch
 )
 
 src_prepare() {
@@ -43,6 +44,9 @@ src_prepare() {
 
 	default
 
+	sed -i \
+		-e 's:LFLAGS2="-s":LFLAGS2=:' \
+		unix/configure || die
 	sed -i -r \
 		-e '/^CFLAGS/d' \
 		-e '/CFLAGS/s:-O[0-9]?:$(CFLAGS) $(CPPFLAGS):' \
