@@ -279,7 +279,7 @@ src_compile() {
 		mv -T Build/OvmfX64{,.qemuvars} || die
 
 		# Fedora only converts newer images to QCOW2. 2MB images are raw.
-		raw_to_qcow2 0 Build/OvmfX64{_4M*,.qemuvars}/"${BUILD_DIR}"/FV/OVMF_{CODE,VARS}.fd
+		raw_to_qcow2 0 Build/OvmfX64_4M*/"${BUILD_DIR}"/FV/OVMF_{CODE,VARS}.fd
 		mk_fw_vars_json
 		;;
 	arm64)
@@ -297,7 +297,7 @@ src_compile() {
 			--pcd PcdUninstallMemAttrProtocol=TRUE
 
 		mk_fw_vars_raw Build/ArmVirtQemu-AArch64.secboot_INSECURE/"${BUILD_DIR}"/FV/QEMU_VARS.fd
-		raw_to_qcow2 64m Build/ArmVirtQemu-AArch64*/"${BUILD_DIR}"/FV/QEMU_{EFI,VARS}.fd
+		raw_to_qcow2 64m Build/ArmVirtQemu-AArch64{,.secboot_INSECURE}/"${BUILD_DIR}"/FV/QEMU_{EFI,VARS}.fd
 		mk_fw_vars_json
 		;;
 	loong)
@@ -329,7 +329,7 @@ src_install() {
 			done
 		done
 
-		newins Build/OvmfX64.qemuvars/"${BUILD_DIR}"/FV/OVMF_CODE.qcow2 OVMF_CODE.qemuvars.qcow2
+		newins Build/OvmfX64.qemuvars/"${BUILD_DIR}"/FV/OVMF_CODE.fd OVMF_CODE.qemuvars.fd
 		newins amd64.qemuvars.json OVMF_VARS.qemuvars.json
 
 		# Compatibility with older package versions.
@@ -343,7 +343,7 @@ src_install() {
 			newins Build/ArmVirtQemu-AArch64${TYPE}/"${BUILD_DIR}"/FV/QEMU_VARS.qcow2 QEMU_VARS${TYPE}.qcow2
 		done
 
-		newins Build/ArmVirtQemu-AArch64.qemuvars/"${BUILD_DIR}"/FV/QEMU_EFI.qcow2 QEMU_EFI.qemuvars.qcow2
+		newins Build/ArmVirtQemu-AArch64.qemuvars/"${BUILD_DIR}"/FV/QEMU_EFI.fd QEMU_EFI.qemuvars.fd
 		newins arm64.qemuvars.json QEMU_VARS.qemuvars.json
 		;;
 	loong)
