@@ -36,6 +36,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2026-03-30)
+# >=1.7.0 is an LLM-driven revamp of the project.
+>=sys-fs/quotatool-1.7.0
+
 # Conrad Kostecki <conikost@gentoo.org> (2026-03-28)
 # Version 1.18.x breaks API and needs more testing
 >=net-libs/libupnp-1.18.4
