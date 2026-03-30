@@ -12,10 +12,8 @@ SRC_URI="https://github.com/microsoft/mimalloc/archive/refs/tags/v${PV}.tar.gz -
 LICENSE="MIT"
 SLOT="0/3"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~m68k ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="debug hardened test valgrind"
+IUSE="debug test"
 RESTRICT="!test? ( test )"
-
-DEPEND="valgrind? ( dev-debug/valgrind )"
 
 src_configure() {
 	# hardened + valgrind could be restored w/ multibuild.eclass. They
