@@ -15,13 +15,13 @@ MY_PV=${MY_PV/_/-}
 MY_P=${PN}-${MY_PV}
 MY_PATCHES=()
 
-# Determine the patchlevel.
+# Determine the patchlevel. See https://ftp.gnu.org/gnu/bash/bash-5.3-patches/.
 case ${PV} in
 	9999|*_alpha*|*_beta*|*_rc*)
 		# Set a negative patchlevel to indicate that it's a pre-release.
 		PLEVEL=-1
 		if [[ ${PV} =~ _pre[0-9]{8}$ ]]; then
-			BASH_COMMIT="5a104e96d869e2bbf0f7f364f45d21e6fc151721"
+			BASH_COMMIT=
 		fi
 		;;
 	*_p*)
@@ -78,9 +78,6 @@ if (( PLEVEL >= 0 )); then
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
 fi
 IUSE="afs bashlogger examples mem-scramble +net nls plugins pgo +readline"
-# As of 5.4_alpha_pre20251016, bash tests finally exit non-0 on failure.
-# The differences look harmless but need investigation and fixing.
-RESTRICT="test"
 
 DEPEND="
 	>=sys-libs/ncurses-5.2-r2:=
@@ -104,8 +101,11 @@ QA_CONFIGURE_OPTIONS="--disable-static"
 PATCHES=(
 	#"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}/
 
+	# bug #971782
+	"${FILESDIR}"/${PN}-5.3_p9-general-workaround-aliasing-violation-in-REVERSE_LIS.patch
+
 	# Patches to or from Chet, posted to the bug-bash mailing list.
-	"${FILESDIR}/${PN}-5.0-syslog-history-extern.patch"
+	"${FILESDIR}"/${PN}-5.0-syslog-history-extern.patch
 )
 
 pkg_setup() {
@@ -291,9 +291,7 @@ src_compile() {
 		# Used in test suite.
 		unset -v A
 
-		# Testsuite isn't expected to pass for bash right now, but it
-		# also doesn't matter for PGO.
-		nonfatal emake CFLAGS="${CFLAGS} ${pgo_generate_flags[*]}" -k check
+		emake CFLAGS="${CFLAGS} ${pgo_generate_flags[*]}" -k check
 
 		if tc-is-clang; then
 			llvm-profdata merge "${T}"/pgo --output="${T}"/pgo/default.profdata || die
