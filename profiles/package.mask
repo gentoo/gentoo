@@ -76,6 +76,7 @@ dev-python/amodem
 #
 # If wanted, feel welcome to add `dev-qt/*:6/6.11.0` to package.unmask
 # and report issues.
+=dev-python/pyqt6-6.11*
 =dev-python/pyside-6.11.0*
 =dev-qt/qt-docs-6.11.0*
 =dev-qt/qt3d-6.11.0*
