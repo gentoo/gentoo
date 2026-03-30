@@ -289,6 +289,26 @@ multilib_env() {
 			export MULTILIB_ABIS DEFAULT_ABI
 			return
 			;;
+		*-linux*)
+			# Nothing here.
+			;;
+		*-gnu)
+			case ${CTARGET} in
+				x86_64*)
+					# On Hurd, we don't do multilib.
+					MULTILIB_ABIS="amd64"
+					CHOST_amd64="${CTARGET}"
+					LIBDIR_amd64="lib64"
+					;;
+				*)
+					;;
+			esac
+
+			: "${MULTILIB_ABIS=default}"
+			: "${DEFAULT_ABI=default}"
+			export MULTILIB_ABIS DEFAULT_ABI
+			return
+			;;
 		*)
 			;;
 	esac
