@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,6 +29,13 @@ BDEPEND="
 
 src_prepare() {
 	cp -ra "${WORKDIR}"/tirpc "${S}"/ || die
+
+	if [[ ${CHOST} != *-linux-* ]]; then
+		# it hurds
+		eapply "${FILESDIR}/${P}-nonlinux.patch"
+		eapply "${FILESDIR}/${P}-hurd.patch"
+		eapply "${FILESDIR}/${P}-hurd-client.patch"
+	fi
 
 	default
 	elibtoolize
