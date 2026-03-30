@@ -246,7 +246,7 @@ src_install() {
 	fi
 
 	# prevent build-only ffnvcodec from leaking into the .pc (bug #971646)
-	if use nvenc; then
+	if use libmpv && use nvenc; then
 		sed -Ee '/^Requires/s/ffnvcodec[^,]*,? ?//;s/, $//;/^Requires[^:]*: $/d' \
 			-i "${ED}"/usr/$(get_libdir)/pkgconfig/mpv.pc || die
 	fi
