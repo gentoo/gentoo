@@ -454,8 +454,8 @@ setup_meson_src_configure() {
 	tc-getPROG READELF readelf >/dev/null
 
 	# https://bugs.gentoo.org/721786
-	export BOOST_INCLUDEDIR="${BOOST_INCLUDEDIR-${EPREFIX}/usr/include}"
-	export BOOST_LIBRARYDIR="${BOOST_LIBRARYDIR-${EPREFIX}/usr/$(get_libdir)}"
+	export BOOST_INCLUDEDIR="${BOOST_INCLUDEDIR-${ESYSROOT}/usr/include}"
+	export BOOST_LIBRARYDIR="${BOOST_LIBRARYDIR-${ESYSROOT}/usr/$(get_libdir)}"
 }
 
 # @FUNCTION: meson_src_configure
