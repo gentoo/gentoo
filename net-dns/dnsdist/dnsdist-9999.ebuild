@@ -17,13 +17,17 @@ if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/PowerDNS/pdns"
 	EGIT_BRANCH="master"
 	inherit git-r3
+	# the first 8 digits of the sha256sum of the 9999 crates tarball
+	CRATES_HASH=630a017b
+	CRATES_PV="${PV}"-"${CRATES_HASH}"
 else
 	SRC_URI="https://downloads.powerdns.com/releases/${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
+	CRATES_PV="${PV}"
 fi
 
 SRC_URI+="
-	yaml? ( https://www.applied-asynchrony.com/distfiles/${PN}-rust-${PV}-crates.tar.xz )
+	yaml? ( https://www.applied-asynchrony.com/distfiles/${PN}-rust-${CRATES_PV}-crates.tar.xz )
 "
 
 LICENSE="GPL-2"
