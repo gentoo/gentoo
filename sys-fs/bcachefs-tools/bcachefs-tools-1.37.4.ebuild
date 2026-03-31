@@ -174,6 +174,14 @@ LICENSE="GPL-2"
 LICENSE+=" Apache-2.0 BSD ISC MIT Unicode-DFS-2016"
 SLOT="0"
 IUSE="debug verify-sig +modules"
+
+# manual testing for now:
+# fallocate -l 10G /tmp/bcfs.img
+# loopdev=$(losetup --find --show /tmp/bcfs.img)
+# bcachefs format $loopdev
+# mkdir -p /tmp/bcfs-mount
+# mount -t bcachefs $loopdev /tmp/bcfs-mount
+# touch /tmp/bcfs-mount/foo
 RESTRICT="test"
 
 DEPEND="
@@ -188,7 +196,11 @@ DEPEND="
 	virtual/udev
 "
 
-RDEPEND="${DEPEND}"
+# bcachefs-kmod in ::guru provided USE=modules for previous tools versions.
+RDEPEND="
+	${DEPEND}
+	modules? ( !sys-fs/bcachefs-kmod )
+"
 
 # Clang is required for bindgen
 BDEPEND="
@@ -237,7 +249,6 @@ pkg_setup() {
 			CRYPTO_LIB_POLY1305
 			KEYS
 			RAID6_PQ
-			RUST
 			XOR_BLOCKS
 			XXHASH
 			SYMBOLIC_ERRNAME
