@@ -1,0 +1,37 @@
+From 130cca5772c2e8ae4ec7a54c85ca5b5558fde7ae Mon Sep 17 00:00:00 2001
+From: Alessandro Astone <alessandro.astone@canonical.com>
+Date: Tue, 3 Feb 2026 14:56:17 +0100
+Subject: [PATCH] tests: Do not accidentally query loaders from the host
+
+gdk-pixbuf-query-loaders scans loaders in /usr unless it is passed a list
+of module paths on the command-line. For running tests, meson was configured
+to generate a loaders.cache file with the newly built loaders, by passing
+their paths to gdk-pixbuf-query-loaders command-line.
+
+When only compiling the built-in modules we would be passing no arguments
+to gdk-pixbuf-query-loaders and thus trigger the fallback logic to scan for
+modules in /usr.
+
+We address this without modifying the gdk-pixbuf-query-loaders API by ensuring
+that meson will always passing at least one argument, such as the empty string;
+gdk-pixbuf-query-loaders can already handle invalid paths gracefully.
+---
+ gdk-pixbuf/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdk-pixbuf/meson.build b/gdk-pixbuf/meson.build
+index 8e3f1711b..16d97e745 100644
+--- a/gdk-pixbuf/meson.build
++++ b/gdk-pixbuf/meson.build
+@@ -423,7 +423,7 @@ if not meson.is_cross_build()
+                                 capture: true,
+                                 command: [
+                                   gdk_pixbuf_query_loaders,
+-                                  dynamic_loaders,
++                                  dynamic_loaders.length() > 0 ? dynamic_loaders : '',
+                                 ],
+                                 depends: dynamic_loaders_dep,
+                                 build_by_default: true)
+-- 
+GitLab
+
