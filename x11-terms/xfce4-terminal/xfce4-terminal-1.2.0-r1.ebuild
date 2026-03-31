@@ -23,7 +23,7 @@ RDEPEND="
 	>=dev-libs/libpcre2-10.00:=
 	>=x11-libs/gtk+-3.22.0:3[wayland?,X?]
 	>=x11-libs/vte-0.51.3:2.91
-	>=xfce-base/libxfce4ui-4.17.5:=
+	>=xfce-base/libxfce4ui-4.17.5:=[X?]
 	>=xfce-base/libxfce4util-4.16.0:=
 	>=xfce-base/xfconf-4.16.0:=
 	utempter? ( sys-libs/libutempter:= )
