@@ -9,7 +9,7 @@ HOMEPAGE="https://www.asterisk.org/products/add-ons/g729-codec/"
 AST_PV="$(ver_cut 1-2)"
 MY_PV="$(ver_rs 2 _)"
 
-MY_TOOLS_VERSION=20260301
+MY_TOOLS_VERSION=20260331
 
 # Keep the binary suffix to re-use already downloaded files.
 SRC_URI="amd64? (
@@ -23,12 +23,13 @@ S="${WORKDIR}"
 LICENSE="Digium"
 SLOT="0/${AST_PV}"
 KEYWORDS="-* ~amd64"
-RESTRICT="mirror strip"
+RESTRICT="bindist mirror strip"
 
 RDEPEND="=net-misc/asterisk-$(ver_cut 1)*"
 
 pkg_setup() {
 	QA_FLAGS_IGNORED="/usr/$(get_libdir)/asterisk/modules/codec_g729a.so"
+	QA_TEXTRELS="/usr/$(get_libdir)/asterisk/modules/codec_g729a.so"
 	QA_PREBUILT="${QA_FLAGS_IGNORED}
 		/usr/sbin/asthostid
 		/usr/sbin/astregister"
