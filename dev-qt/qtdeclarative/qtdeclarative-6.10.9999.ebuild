@@ -32,6 +32,10 @@ BDEPEND="
 	~dev-qt/qtshadertools-${PV}:6
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.10.3-unity-build.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package qmlls Qt6LanguageServerPrivate)
@@ -40,11 +44,6 @@ src_configure() {
 		$(qt_feature jit qml_jit)
 		$(qt_feature network qml_network)
 		$(qt_feature ssl qml_ssl)
-
-		# qqmljstypepropagator.cpp:391:76: error: reference to 'Default' is ambiguous
-		# Not really looked into but does not seem to happen in >=6.11,
-		# so just disable it for 6.10.3 as it'll be temporary.
-		-DQT_UNITY_BUILD=no
 	)
 
 	qt6-build_src_configure
