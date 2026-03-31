@@ -57,8 +57,8 @@ PATCH_V="${PV%%\.*}-4"
 COPIUM_COMMIT="fe1caafa06f27542c18a881348f78e984e2d9fe2"
 SRC_URI="https://github.com/chromium-linux-tarballs/chromium-tarballs/releases/download/${PV}/chromium-${PV}-linux.tar.xz
 	https://deps.gentoo.zip/www-client/chromium/rollup-wasm-node-${ROLLUP_VER}.tgz
+	https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${PATCH_V}/chromium-patches-${PATCH_V}.tar.bz2
 	!bundled-toolchain? (
-		https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${PATCH_V}/chromium-patches-${PATCH_V}.tar.bz2
 		https://codeberg.org/selfisekai/copium/archive/${COPIUM_COMMIT}.tar.gz
 			-> chromium-patches-copium-${COPIUM_COMMIT:0:10}.tar.gz
 	)
