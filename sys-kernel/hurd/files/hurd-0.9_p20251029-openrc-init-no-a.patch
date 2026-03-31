@@ -1,0 +1,10 @@
+Don't pass -a to init. openrc-init doesn't support it and even with sysvinit,
+there's not much point.
+--- a/daemons/runsystem.sh
++++ b/daemons/runsystem.sh
+@@ -119,4 +119,4 @@ fsysopts / --update --readonly
+ 
+ # Finally, start the actual SysV init.
+ echo Starting ${init}
+-exec ${init} ${single} -a
++exec ${init} ${single}

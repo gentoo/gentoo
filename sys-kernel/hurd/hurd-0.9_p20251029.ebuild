@@ -62,6 +62,7 @@ fi
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9_p20251029-glibc-2.43.patch
 	"${FILESDIR}"/${PN}-0.9_p20251029-rump-link.patch
+	"${FILESDIR}"/${PN}-0.9_p20251029-openrc-init-no-a.patch
 	"${FILESDIR}"/${PN}-0.9_p20251029-libports-iterate-refcount.patch
 )
 
