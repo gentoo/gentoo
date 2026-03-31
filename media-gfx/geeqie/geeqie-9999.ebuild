@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ EGIT_REPO_URI="https://github.com/BestImageViewer/geeqie.git"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug djvu exif ffmpegthumbnailer heif jpeg jpeg2k jpegxl lcms lua map pdf raw spell tiff webp X xmp zip"
+IUSE="debug djvu exif ffmpegthumbnailer heif jpeg jpeg2k jpegxl lcms lua map openexr pdf raw spell tiff webp X xmp zip"
 
 RDEPEND="gnome-extra/zenity
 	virtual/libintl
@@ -29,6 +29,7 @@ RDEPEND="gnome-extra/zenity
 	lua? ( ${LUA_DEPS} )
 	map? ( media-libs/clutter-gtk
 		media-libs/libchamplain:0.12[gtk] )
+	openexr? ( media-libs/openexr:= )
 	pdf? ( >=app-text/poppler-0.62[cairo] )
 	raw? ( >=media-libs/libraw-0.20:= )
 	spell? ( app-text/gspell:= )
@@ -37,7 +38,6 @@ RDEPEND="gnome-extra/zenity
 	zip? ( >=app-arch/libarchive-3.4.0 )"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	|| ( dev-util/xxd dev-util/xxdi app-editors/vim-core )
 	dev-util/glib-utils
 	sys-devel/gettext
 	virtual/pkgconfig"
@@ -75,6 +75,7 @@ src_configure() {
 		$(meson_feature lcms cms)
 		$(meson_feature lua)
 		$(meson_feature map gps-map)
+		$(meson_feature openexr exr)
 		$(meson_feature pdf)
 		$(meson_feature raw libraw)
 		$(meson_feature spell)
