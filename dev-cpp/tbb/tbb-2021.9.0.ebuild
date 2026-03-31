@@ -48,3 +48,11 @@ src_configure() {
 
 	cmake-multilib_src_configure
 }
+
+src_test() {
+	local CMAKE_SKIP_TESTS=()
+	if use elibc_musl; then
+		CMAKE_SKIP_TESTS=( conformance_resumable_tasks ) # Bug #864175
+	fi
+	cmake-multilib_src_test
+}
