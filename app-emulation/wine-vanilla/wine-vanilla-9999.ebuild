@@ -31,11 +31,10 @@ LICENSE="
 "
 SLOT="${PV}"
 IUSE="
-	+X +alsa bluetooth capi cups +dbus dos llvm-libunwind ffmpeg
-	+fontconfig +gecko gphoto2 +gstreamer kerberos +mono netapi
-	nls odbc opencl +opengl pcap perl pulseaudio samba scanner
-	+sdl selinux smartcard +ssl +truetype udev +unwind usb v4l
-	+vulkan wayland xinerama
+	+X +alsa bluetooth capi cups +dbus dos ffmpeg +fontconfig +gecko
+	gphoto2 +gstreamer kerberos +mono netapi nls odbc opencl +opengl
+	pcap perl pulseaudio samba scanner +sdl selinux smartcard +ssl
+	+truetype udev usb v4l +vulkan wayland xinerama
 "
 REQUIRED_USE="
 	X? ( truetype )
@@ -93,10 +92,6 @@ WINE_COMMON_DEPEND="
 	scanner? ( media-gfx/sane-backends[${WINE_USEDEP}] )
 	smartcard? ( sys-apps/pcsc-lite[${WINE_USEDEP}] )
 	udev? ( virtual/libudev:=[${WINE_USEDEP}] )
-	unwind? (
-		llvm-libunwind? ( llvm-runtimes/libunwind[${WINE_USEDEP}] )
-		!llvm-libunwind? ( sys-libs/libunwind:=[${WINE_USEDEP}] )
-	)
 	usb? ( dev-libs/libusb:1[${WINE_USEDEP}] )
 	wayland? (
 		dev-libs/wayland[${WINE_USEDEP}]
@@ -150,7 +145,6 @@ QA_FLAGS_IGNORED="usr/lib/.*/wine/.*-unix/wine-preloader"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-7.0-noexecstack.patch
-	"${FILESDIR}"/${PN}-7.20-unwind.patch
 	"${FILESDIR}"/${PN}-8.13-rpath.patch
 )
 
@@ -185,7 +179,6 @@ src_configure() {
 		$(use_with ssl gnutls)
 		$(use_with truetype freetype)
 		$(use_with udev)
-		$(use_with unwind)
 		$(use_with usb)
 		$(use_with v4l v4l2)
 		$(use_with vulkan)
