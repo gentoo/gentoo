@@ -2,17 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit optfeature toolchain-funcs
+
+inherit cmake optfeature
 
 DESCRIPTION="Tree-sitter is a parser generator tool and an incremental parsing library"
-HOMEPAGE="https://github.com/tree-sitter/tree-sitter"
+HOMEPAGE="https://tree-sitter.github.io/"
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}"
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
 fi
 
 LICENSE="MIT"
@@ -21,29 +22,6 @@ LICENSE="MIT"
 # https://github.com/tree-sitter/tree-sitter/pull/3302
 SLOT="0/${PV}"
 RESTRICT="test" # tests are for CLI and not the lib
-
-PATCHES=(
-	"${FILESDIR}/${PN}-0.26.3-no-static.patch"
-)
-
-src_prepare() {
-	default
-	tc-export CC
-}
-
-src_compile() {
-	emake \
-		PREFIX="${EPREFIX}/usr" \
-		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
-		STRIP="" # bug 930020
-}
-
-src_install() {
-	emake DESTDIR="${D}" \
-		  PREFIX="${EPREFIX}/usr" \
-		  LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
-		  install
-}
 
 pkg_postinst() {
 	optfeature "building and testing grammars" dev-util/tree-sitter-cli
