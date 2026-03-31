@@ -36,12 +36,13 @@ PATCHES=(
 )
 
 src_prepare() {
+	default
+
 	if use gitolite; then
 		cp -f "${S}/${PN}-server" "${S}/${PN}-server-gitolite" || die
 		patch "${S}/${PN}-server-gitolite" <"${FILESDIR}"/${PN}-server-gitolite-subcmd-r2.patch || die
 
 	fi
-	default
 }
 
 src_install() {
