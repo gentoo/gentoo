@@ -555,7 +555,6 @@ cargo_src_unpack() {
 			eqawarn "a crate tarball instead and fetch it via SRC_URI.  You can use"
 			eqawarn "'pycargoebuild --crate-tarball' to create one."
 		fi
-		einfo "this package uses ${#crates[@]} number of crates: you are all good"
 	fi
 
 	cargo_gen_config
