@@ -51,6 +51,7 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
+		dev-python/pycairo[${PYTHON_USEDEP}]
 		>=dev-python/pygobject-3.0:3[${PYTHON_USEDEP}]
 	')
 	>=app-accessibility/at-spi2-core-2.4.0
