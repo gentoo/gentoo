@@ -47,11 +47,6 @@ else
 	[[ "${PV}" != *_rc* ]] && KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 fi
 
-# this is still required to support glibc-2.42 in qemu-user, bug 961307
-# source: https://gitlab.com/qemu-project/qemu/-/issues/3065#note_2969046870
-#
-SRC_URI+=" https://dev.gentoo.org/~dilfridge/distfiles/qemu-10-termios2-patches.tar.xz"
-
 DESCRIPTION="QEMU + Kernel-based Virtual Machine userland tools"
 HOMEPAGE="https://www.qemu.org https://www.linux-kvm.org"
 
@@ -496,9 +491,6 @@ src_prepare() {
 	check_targets IUSE_USER_TARGETS linux-user
 
 	default
-
-	# this is still required to support glibc-2.42 in qemu-user
-	eapply "${WORKDIR}/termios2-patches"/*.patch
 
 	# Use correct toolchain to fix cross-compiling
 	tc-export AR AS LD NM OBJCOPY PKG_CONFIG RANLIB STRINGS
