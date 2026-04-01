@@ -64,15 +64,13 @@ RDEPEND="
 	x11-misc/xkeyboard-config
 "
 BDEPEND="
-	>=dev-libs/wayland-protocols-1.24
+	>=dev-libs/wayland-protocols-1.41
 	>=dev-build/meson-1.3
 	virtual/pkgconfig
+	man? ( >=app-text/scdoc-1.9.2 )
 "
-if [[ ${PV} == 9999 ]]; then
-	BDEPEND+="man? ( ~app-text/scdoc-9999 )"
-else
-	BDEPEND+="man? ( >=app-text/scdoc-1.11.3 )
-		verify-sig? ( sec-keys/openpgp-keys-emersion )"
+if [[ ${PV} != 9999 ]]; then
+	BDEPEND+="verify-sig? ( sec-keys/openpgp-keys-emersion )"
 	VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/emersion.asc"
 fi
 
