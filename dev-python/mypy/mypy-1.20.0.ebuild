@@ -124,7 +124,7 @@ python_test() {
 	local failed=
 	nonfatal epytest || failed=1
 
-	rm conftest.py pyproject.toml || die
+	rm -r conftest.py pyproject.toml .mypy_cache || die
 
 	[[ ${failed} ]] && die "epytest failed with ${EPYTHON}"
 }
