@@ -33,6 +33,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.52.1-test-thread-priority-portage.patch
 	"${FILESDIR}"/${PN}-1.51.0-ppc32-uring.patch
+	"${FILESDIR}"/${PN}-1.52.1-hurd.patch
 )
 
 src_prepare() {
