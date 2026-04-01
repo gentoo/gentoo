@@ -99,6 +99,15 @@ python_test() {
 		mypy/test/meta/test_update_data.py
 	)
 
+	case ${EPYTHON} in
+		python3.14*)
+			EPYTEST_DESELECT+=(
+				mypyc/test/test_run.py::TestRun::run-async.test::testRunAsyncRefCounting
+				mypyc/test/test_run.py::TestRun::run-tuples.test::testNamedTupleClassSyntax
+			)
+			;;
+	esac
+
 	# Some mypy/test/testcmdline.py::PythonCmdlineSuite tests
 	# fail with high COLUMNS values
 	local -x COLUMNS=80
