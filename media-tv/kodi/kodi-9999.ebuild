@@ -52,6 +52,9 @@ SRC_URI="
 	!system-ffmpeg? (
 		https://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.xz
 	)
+	system-ffmpeg? ( postproc? (
+		https://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.xz
+	) )
 "
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/xbmc/xbmc.git"
@@ -87,14 +90,13 @@ SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="airplay alsa bluetooth bluray caps cec +css dbus doc eventclients gbm gles lcms libusb lirc mariadb mysql nfs +optical pipewire postproc pulseaudio samba soc +system-ffmpeg test udf udev upnp vaapi vdpau wayland webserver X +xslt zeroconf ${CPU_FLAGS}"
+IUSE="airplay alsa bluetooth bluray caps cec +css dbus doc eventclients gbm gles lcms libusb lirc mariadb mysql nfs +optical pipewire +postproc pulseaudio samba soc +system-ffmpeg test udf udev upnp vaapi vdpau wayland webserver X +xslt zeroconf ${CPU_FLAGS}"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	|| ( gbm wayland X )
 	?? ( mariadb mysql )
 	bluray? ( udf )
 	gbm? ( udev )
-	postproc? ( !system-ffmpeg )
 	soc? ( system-ffmpeg )
 	udev? ( !libusb )
 	vdpau? ( X !gles !gbm )
@@ -202,7 +204,8 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 		>=net-fs/samba-3.4.6[smbclient(+)]
 	)
 	system-ffmpeg? (
-		>=media-video/ffmpeg-7:=[encode(+),soc(-)?,vaapi?,vdpau?,X?]
+		postproc? ( =media-video/ffmpeg-$(ver_cut 1-2 ${FFMPEG_VERSION})*:=[encode(+),soc(-)?,vaapi?,vdpau?,X?] )
+		!postproc? ( >=media-video/ffmpeg-7:=[encode(+),soc(-)?,vaapi?,vdpau?,X?] )
 	)
 	!system-ffmpeg? (
 		app-arch/bzip2
@@ -303,6 +306,10 @@ src_unpack() {
 	unpack apache-groovy-binary-${GROOVY_VERSION}.zip
 	unpack commons-lang3-${APACHE_COMMON_LANG_VERSION}-bin.tar.gz
 	unpack commons-text-${APACHE_COMMON_TEXT_VERSION}-bin.tar.gz
+
+	if use system-ffmpeg && use postproc; then
+		unpack ffmpeg-${FFMPEG_VERSION}.tar.xz
+	fi
 }
 
 src_prepare() {
@@ -328,6 +335,13 @@ src_prepare() {
 			popd >/dev/null || die
 		done
 		elibtoolize
+	fi
+
+	if use system-ffmpeg && use postproc; then
+		pushd "${WORKDIR}/ffmpeg-${FFMPEG_VERSION}" >/dev/null || die
+		eapply "${S}"/tools/depends/target/ffmpeg/001-ffmpeg-all-libpostproc-plugin.patch
+		eapply "${FILESDIR}"/ffmpeg-no-static-rpath.patch
+		popd >/dev/null || die
 	fi
 }
 
@@ -460,6 +474,34 @@ src_configure() {
 	# bug #926076
 	append-flags -fPIC
 
+	if use system-ffmpeg && use postproc; then
+		pushd "${WORKDIR}/ffmpeg-${FFMPEG_VERSION}" >/dev/null || die
+		local ffconf=(
+			--disable-all
+			--enable-postproc
+			--enable-gpl
+		)
+		if tc-is-cross-compiler; then
+			ffconf+=(
+				--enable-cross-compile
+				--arch="$(tc-arch-kernel)"
+				--cross-prefix="${CHOST}-"
+				--host-cc="$(tc-getBUILD_CC)"
+				--target-os=linux
+			)
+		elif use arm; then
+			ffconf+=( --arch=arm )
+		fi
+		./configure "${ffconf[@]}" || die
+		touch libpostproc/libpostproc.a || die # Actually build later.
+		emake libpostproc/libpostproc.pc V=1
+		export PKG_CONFIG_PATH="${PWD}/doc/examples/pc-uninstalled"
+		# Work around CMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY in eclass. It's a
+		# weird thing to do, but probably safer than setting that to BOTH.
+		[[ ${SYSROOT:-/} != / ]] && mycmakeargs+=( -DCMAKE_FIND_ROOT_PATH="${PWD}" )
+		popd >/dev/null || die
+	fi
+
 	if tc-is-cross-compiler; then
 		for t in "${NATIVE_TOOLS[@]}" ; do
 			pushd "${S}/tools/depends/native/$t/src" >/dev/null || die
@@ -474,6 +516,13 @@ src_configure() {
 }
 
 src_compile() {
+	if use system-ffmpeg && use postproc; then
+		pushd "${WORKDIR}/ffmpeg-${FFMPEG_VERSION}" >/dev/null || die
+		emake libpostproc/libpostproc.a V=1
+		rm -r libav* libsw* || die
+		popd >/dev/null || die
+	fi
+
 	if tc-is-cross-compiler; then
 		for t in "${NATIVE_TOOLS[@]}" ; do
 			emake -C "${S}/tools/depends/native/$t/src"
