@@ -1,0 +1,46 @@
+From 7df4ede3acd0281667f001d2b120bf3c0011c308 Mon Sep 17 00:00:00 2001
+From: Juha Korpela <43556489+jkorpela@users.noreply.github.com>
+Date: Tue, 28 Mar 2023 17:16:22 -0400
+Subject: [PATCH] Remove taintedness as it was removes in Ruby 3.2
+
+---
+ lib/inifile.rb | 14 +-------------
+ 1 file changed, 1 insertion(+), 13 deletions(-)
+
+diff --git a/lib/inifile.rb b/lib/inifile.rb
+index fbcfb0e..395b5ba 100644
+--- a/lib/inifile.rb
++++ b/lib/inifile.rb
+@@ -323,17 +323,6 @@ def freeze
+     self
+   end
+ 
+-  # Public: Mark this IniFile as tainted -- this will traverse each section
+-  # marking each as tainted.
+-  #
+-  # Returns this IniFile.
+-  def taint
+-    super
+-    @ini.each_value {|h| h.taint}
+-    @ini.taint
+-    self
+-  end
+-
+   # Public: Produces a duplicate of this IniFile. The duplicate is independent
+   # of the original -- i.e. the duplicate can be modified without changing the
+   # original. The tainted state of the original is copied to the duplicate.
+@@ -343,13 +332,12 @@ def dup
+     other = super
+     other.instance_variable_set(:@ini, Hash.new {|h,k| h[k] = Hash.new})
+     @ini.each_pair {|s,h| other[s].merge! h}
+-    other.taint if self.tainted?
+     other
+   end
+ 
+   # Public: Produces a duplicate of this IniFile. The duplicate is independent
+   # of the original -- i.e. the duplicate can be modified without changing the
+-  # original. The tainted state and the frozen state of the original is copied
++  # original. The frozen state of the original is copied
+   # to the duplicate.
+   #
+   # Returns a new IniFile.
