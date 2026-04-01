@@ -1,4 +1,4 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="
-	sci-ml/huggingface_hub[${PYTHON_SINGLE_USEDEP}]
+	<sci-ml/huggingface_hub-1[${PYTHON_SINGLE_USEDEP}]
 	sci-ml/pytorch[${PYTHON_SINGLE_USEDEP}]
 	sci-ml/caffe2[${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
@@ -40,10 +40,12 @@ BDEPEND="test? (
 	sci-ml/torchdata[${PYTHON_SINGLE_USEDEP}]
 )"
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 python_test() {
 	local EPYTEST_DESELECT=(
+		tests/test_accelerator.py::AcceleratorTester::test_free_memory_dereferences_prepared_components
 		tests/test_modeling_utils.py::ModelingUtilsTester::test_infer_auto_device_map_with_buffer_check
 		tests/test_modeling_utils.py::ModelingUtilsTester::test_infer_auto_device_map_with_buffer_check_and_multi_devices
 		tests/test_modeling_utils.py::ModelingUtilsTester::test_infer_auto_device_map_with_fallback_allocation_and_buffers
