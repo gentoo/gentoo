@@ -1,0 +1,13 @@
+see https://bugs.gentoo.org/962932
+let automake handle build ordering w/ SUBDIRS
+dieharder_LDADD is already well defined in dieharder/Makefile.am
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -74,7 +74,6 @@ SPEC = $(PROJECT).spec
+ # presume the simplest of dependencies and remake if includes change
+ # for example.
+ #========================================================================
+-all: $(LIBTIME) $(PROGTIME) $(INCTIME)
+ 
+ # This is not, actually, a particularly useful toplevel target.  To
+ # work correctly it also would require a full parsing of all
