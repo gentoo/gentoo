@@ -72,6 +72,9 @@ if [[ -z ${_LLVM_SOURCE_TYPE+1} ]]; then
 			_LLVM_SOURCE_TYPE=snapshot
 
 			case ${PV} in
+				23.0.0_pre20260331)
+					EGIT_COMMIT=af6521fb3a36149cd69d83bfdf87ed26e59a14a2
+					;;
 				23.0.0_pre20260321)
 					EGIT_COMMIT=df9eb79970c012990e829d174d181d575d414efe
 					;;
