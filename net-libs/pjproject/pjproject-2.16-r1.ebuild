@@ -46,6 +46,12 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2.15.1-r2-soname.patch"
+)
+
+export PJ_SONAME_VERSION="${PV}"
+
 src_prepare() {
 	default
 	rm configure || die "Unable to remove unwanted wrapper"
