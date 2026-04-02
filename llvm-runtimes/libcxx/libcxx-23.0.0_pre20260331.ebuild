@@ -43,7 +43,7 @@ BDEPEND="
 "
 
 LLVM_COMPONENTS=(
-	runtimes libcxx{,abi} libc llvm/{cmake,utils/llvm-lit} cmake
+	runtimes libcxx{,abi} libc llvm/{cmake,utils} cmake
 )
 llvm.org_set_globals
 
