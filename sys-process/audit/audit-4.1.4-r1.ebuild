@@ -28,7 +28,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	sys-libs/libcap-ng
 	gssapi? ( virtual/krb5 )
-	ldap? ( net-nds/openldap:= )
+	ldap? ( net-nds/openldap:=[${MULTILIB_USEDEP}] )
 	python? ( ${PYTHON_DEPS} )
 "
 DEPEND="
@@ -116,9 +116,9 @@ src_configure() {
 }
 
 multilib_src_compile() {
-	if multilib_is_native_abi; then
-		default
+	default
 
+	if multilib_is_native_abi; then
 		local native_build="${BUILD_DIR}"
 
 		python_compile() {
@@ -127,17 +127,13 @@ multilib_src_compile() {
 		}
 
 		use python && python_foreach_impl python_compile
-	else
-		emake -C common
-		emake -C lib
-		emake -C auparse
 	fi
 }
 
 multilib_src_install() {
-	if multilib_is_native_abi; then
-		emake DESTDIR="${D}" initdir="$(systemd_get_systemunitdir)" install
+	emake DESTDIR="${D}" initdir="$(systemd_get_systemunitdir)" install
 
+	if multilib_is_native_abi; then
 		local native_build="${BUILD_DIR}"
 
 		python_install() {
@@ -150,9 +146,6 @@ multilib_src_install() {
 
 		# Things like shadow use this so we need to be in /
 		gen_usr_ldscript -a audit auparse
-	else
-		emake -C lib DESTDIR="${D}" install
-		emake -C auparse DESTDIR="${D}" install
 	fi
 }
 
