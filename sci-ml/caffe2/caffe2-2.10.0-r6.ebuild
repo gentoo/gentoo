@@ -81,7 +81,7 @@ RDEPEND="
 		>=dev-util/nvidia-cuda-toolkit-12.9:=[profiler]
 		cusparselt? ( dev-libs/cusparselt )
 	)
-	fbgemm? ( sci-ml/FBGEMM )
+	fbgemm? ( >=sci-ml/FBGEMM-1.4 )
 	gloo? ( >=sci-ml/gloo-2025.06.04[cuda?,rocm?] )
 	mimalloc? ( dev-libs/mimalloc )
 	mpi? ( virtual/mpi )
