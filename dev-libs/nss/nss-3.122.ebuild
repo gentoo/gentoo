@@ -51,6 +51,7 @@ MULTILIB_CHOST_TOOLS=(
 )
 
 PATCHES=(
+	"${FILESDIR}"/v2-0001-Bug-2027768-Fix-build-failure-due-to-missing-gcm-.patch
 	"${FILESDIR}"/nss-3.103-gentoo-fixes-add-pkgconfig-files.patch
 	"${FILESDIR}"/nss-3.21-gentoo-fixup-warnings.patch
 )
