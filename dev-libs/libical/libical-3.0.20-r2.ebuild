@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
 VALA_USE_DEPEND="vapigen"
-inherit cmake python-any-r1 toolchain-funcs vala
+inherit cmake dot-a python-any-r1 toolchain-funcs vala
 
 DESCRIPTION="Implementation of basic iCAL protocols"
 HOMEPAGE="https://github.com/libical/libical"
@@ -102,6 +102,8 @@ src_configure() {
 		touch "${GENERATOR_BIN_DIR}"/ical-glib-src-generator || die
 	fi
 
+	use static-libs && lto-guarantee-fat
+
 	# fix gtk-doc, see https://bugs.gentoo.org/777090
 	# to check w/ 4.0 and migration to gi-docgen
 	export LD="$(tc-getCC)"
@@ -163,4 +165,6 @@ src_install() {
 		rm examples/CMakeLists.txt || die
 		dodoc -r examples
 	fi
+
+	use static-libs && strip-lto-bytecode
 }
