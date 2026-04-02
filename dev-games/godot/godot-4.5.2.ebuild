@@ -10,7 +10,6 @@ inherit shell-completion toolchain-funcs xdg
 DESCRIPTION="Multi-platform 2D and 3D game engine with a feature-rich editor"
 HOMEPAGE="https://godotengine.org/"
 SRC_URI="
-	https://downloads.tuxfamily.org/godotengine/${PV}/${P}-stable.tar.xz
 	https://github.com/godotengine/godot/releases/download/${PV}-stable/${P}-stable.tar.xz
 "
 S=${WORKDIR}/${P}-stable
