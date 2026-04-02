@@ -11,7 +11,7 @@ SRC_URI="https://github.com/stephane/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="static-libs test"
 # Tests fail at least when run via the ebuild w/ a timeout assertion being hit
 # See https://github.com/stephane/libmodbus/issues/791 and https://github.com/stephane/libmodbus/pull/794
