@@ -55,7 +55,7 @@ CHECKREQS_DISK_BUILD=2G
 DOC_CONTENTS="\n
 	Configuration file: /etc/${PN}/${PN}.conf\n
 	Data directory: /var/lib/${PN}\n
-	Log file: /var/log/${PN}.log\n
+	Log file: /var/log/${PN}/${PN}.log\n
 	Default endpoint: http://127.0.0.1:8000\n
 	Admin endpoint: http://127.0.0.1:8000/admin\n
 	\n
@@ -145,6 +145,9 @@ src_install() {
 	keepdir /var/lib/"${PN}"
 	fowners "${PN}":"${PN}" /var/lib/"${PN}"
 	fperms 750 /var/lib/"${PN}"
+	keepdir /var/log/"${PN}"
+	fowners "${PN}":"${PN}" /var/log/"${PN}"
+	fperms 750 /var/log/"${PN}"
 
 	readme.gentoo_create_doc
 	einstalldocs

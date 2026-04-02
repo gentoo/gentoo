@@ -47,7 +47,7 @@ As upstream defaults create directories where binary is executed (/usr/bin/), th
  
  ## Logging to file
 -# LOG_FILE=/path/to/log
-+LOG_FILE=/var/log/vaultwarden.log
++LOG_FILE=/var/log/vaultwarden/vaultwarden.log
  
  ## Log level
  ## Change the verbosity of the log output
