@@ -23,6 +23,10 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}/ksmbd-tools-3.5.6-systemd-network-online.patch"
+)
+
 pkg_setup() {
 	# we don't want to die() here to be able to build binpkgs
 	kernel_is -lt 5 15 && eerror "kernel >= 5.15 required for ${PN}"
