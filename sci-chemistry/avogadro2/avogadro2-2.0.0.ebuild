@@ -1,0 +1,91 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+MY_PN=avogadroapp
+inherit cmake optfeature xdg
+
+DESCRIPTION="Advanced molecule editor and visualizer 2"
+HOMEPAGE="https://www.openchemistry.org/ https://two.avogadro.cc/"
+SRC_URI="
+	https://github.com/OpenChemistry/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/OpenChemistry/avogadro-i18n/archive/${PV}.tar.gz -> ${P}-i18n.tar.gz
+"
+S="${WORKDIR}/${MY_PN}-${PV}"
+
+LICENSE="BSD GPL-2+"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
+IUSE="doc rpc"
+
+RDEPEND="
+	dev-qt/qtbase:6[concurrent,gui,network,opengl,ssl,widgets]
+	~sci-libs/avogadrolibs-${PV}[archive,qt6]
+"
+DEPEND="
+	${RDEPEND}
+	dev-cpp/eigen:3
+"
+BDEPEND="doc? ( app-text/doxygen )"
+
+src_unpack() {
+	default
+	mv "${WORKDIR}"/avogadro-i18n-${PV} "${WORKDIR}"/avogadro-i18n || die
+}
+
+src_prepare() {
+	if use doc; then
+		doxygen -u docs/doxyfile.in 2>/dev/null || die
+	fi
+
+	# disable automatic update dialog
+	sed -e '\@  checkUpdate()@s:^:  //:' \
+		-i avogadro/mainwindow.cpp || die
+
+	cmake_src_prepare
+}
+
+src_configure() {
+	local mycmakeargs=(
+		-DCMAKE_SKIP_RPATH=ON
+		-DBUILD_DOCUMENTATION=$(usex doc)
+		-DAvogadro_ENABLE_RPC=$(usex rpc)
+		# test requires qttesting/paraview
+		-DENABLE_TESTING=OFF
+		-DQT_VERSION=6
+		# skip detection of jkqtplotter
+		# avogadrolibs handles it without the need for rebuilding avogadro2
+		-DUSE_PLOTTER=OFF
+	)
+
+	# Need this to prevent overwriting the documentation OUTDIR
+	use doc && mycmakeargs+=(
+			-DChemData_SOURCE_DIR="${S}"
+			-DChemData_BINARY_DIR="${BUILD_DIR}"
+	)
+
+	cmake_src_configure
+}
+
+src_compile() {
+	cmake_src_compile
+
+	use doc && cmake_build documentation
+}
+
+src_install() {
+	use doc && local HTML_DOCS=( "${BUILD_DIR}"/docs/html/. )
+
+	cmake_src_install
+
+	# remove CONTRIBUTING, LICENSE and duplicate README
+	rm -r "${ED}"/usr/share/doc/${PF}/avogadro2 || die
+}
+
+pkg_postinst() {
+	optfeature "environments of downloaded plugins" dev-util/pixi
+	optfeature "charts and spectra" sci-libs/avogadrolibs[jkqtplotter]
+
+	xdg_pkg_postinst
+}
