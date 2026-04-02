@@ -268,13 +268,6 @@ dev-tcltk/tablelist
 # Removal on 2026-04-10. Bug #971058.
 dev-java/mersennetwister
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2026-03-09)
-# Latest release is >21 years old, no one else packages this, buffer overflow
-# at launch, packaged only in gentoo. Alternatives exist, including the dockapp
-# x11-plugins/wmamixer. Bug #969091
-# Removal on 2026-04-08.
-media-sound/alsamixer-app
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2026-03-09)
 # Live only package, Upstream archived, integrated into
 # app-shells/bash-completion-2.17.0, which was already stabled.
