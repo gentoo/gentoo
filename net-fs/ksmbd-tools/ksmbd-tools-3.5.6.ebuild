@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit eapi9-ver linux-info meson systemd
+inherit linux-info meson systemd
 
 DESCRIPTION="cifsd/ksmbd kernel server userspace utilities"
 HOMEPAGE="https://github.com/cifsd-team/ksmbd-tools"
@@ -50,12 +50,4 @@ src_install() {
 
 	newinitd "${FILESDIR}/ksmbd.initd-r1" ksmbd
 	newconfd "${FILESDIR}/ksmbd.confd" ksmbd
-}
-
-pkg_postinst() {
-	if ver_replacing -lt 3.4.6; then
-		ewarn "Upgrade from version <${CATEGORY}/${PN}-3.4.6 detected"
-		ewarn "${PN} config file moved to ${EPREFIX}/etc/ksmbd/ksmbd.conf"
-		ewarn "Please migrate from old ${EPREFIX}/etc/ksmbd/smb.conf"
-	fi
 }
