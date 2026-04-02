@@ -28,7 +28,7 @@ pkg_setup() {
 	kernel_is -lt 5 15 && eerror "kernel >= 5.15 required for ${PN}"
 	CONFIG_CHECK="~SMB_SERVER"
 	ERROR_SMB_SERVER="CONFIG_SMB_SERVER is not set: ksmbd is not enabled in kernel, ${PN} will not work"
-	# use krb5 && CONFIG_CHECK+=" ~SMB_SERVER_KERBEROS5"
+	use kerberos && CONFIG_CHECK+=" ~SMB_SERVER_KERBEROS5"
 	linux-info_pkg_setup
 }
 
