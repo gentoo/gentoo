@@ -44,8 +44,9 @@ S="${WORKDIR}"/${MYP}
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
-IUSE="cuda cusparselt distributed fbgemm flash gloo memefficient mimalloc mkl
-	mpi nccl nnpack +numpy onednn openblas opencl openmp qnnpack rocm xnnpack"
+IUSE="cuda cusparselt distributed fbgemm flash gloo kineto memefficient
+	mimalloc mkl mpi nccl nnpack +numpy onednn openblas opencl openmp qnnpack
+	rocm xnnpack"
 RESTRICT="test"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -71,7 +72,6 @@ RDEPEND="
 	dev-libs/libfmt:=
 	dev-libs/protobuf:=
 	dev-libs/sleef
-	>=sci-ml/kineto-0.4.0_p20260323
 	sci-ml/onnx
 	virtual/lapack
 	cuda? (
@@ -82,6 +82,7 @@ RDEPEND="
 	)
 	fbgemm? ( >=sci-ml/FBGEMM-1.4 )
 	gloo? ( >=sci-ml/gloo-2025.06.04[cuda?,rocm?] )
+	kineto? ( ~sci-ml/kineto-0.4.0_p20260323 )
 	mimalloc? ( dev-libs/mimalloc )
 	mpi? ( virtual/mpi )
 	nnpack? (
@@ -167,6 +168,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.9.1-torch_cpu.patch
 	"${FILESDIR}"/${PN}-2.10.0-gentoo.patch
 	"${FILESDIR}"/${P}-mimalloc.patch
+	"${FILESDIR}"/${P}-removekineto-pr178960.patch
 )
 
 src_prepare() {
@@ -291,7 +293,7 @@ src_configure() {
 		-DUSE_GLOG=ON
 		-DUSE_GLOO=$(usex gloo)
 		-DUSE_ITT=OFF
-		-DUSE_KINETO=ON
+		-DUSE_KINETO=$(usex kineto)
 		-DUSE_KLEIDIAI=OFF # TODO
 		-DUSE_MAGMA=OFF # TODO: In GURU as sci-libs/magma
 		-DUSE_MEM_EFF_ATTENTION=$(usex memefficient)

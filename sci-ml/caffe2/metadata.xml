@@ -11,9 +11,11 @@
 		<flag name="fbgemm">Use <pkg>sci-ml/FBGEMM</pkg></flag>
 		<flag name="flash">Enable flash attention</flag>
 		<flag name="gloo">Use <pkg>sci-ml/gloo</pkg></flag>
+		<flag name="kineto">Use<pkg>sci-ml/kineto</pkg>profiling library</flag>
 		<flag name="memefficient">Enable mem efficient attention</flag>
 		<flag name="mimalloc">Use <pkg>dev-libs/mimalloc</pkg> as replacement for system malloc</flag>
 		<flag name="mkl">Use <pkg>sci-libs/mkl</pkg> for blas, lapack and sparse blas routines</flag>
+		<flag name="nccl">Use <pkg>dev-libs/rccl</pkg> (NCCL compatible) backend for distributed operations</flag>
 		<flag name="nnpack">Use <pkg>sci-ml/NNPACK</pkg></flag>
 		<flag name="numpy">Add support for math operations through numpy</flag>
 		<flag name="onednn">Use <pkg>sci-ml/oneDNN</pkg></flag>
@@ -22,7 +24,6 @@
 		<flag name="qnnpack">Use QNNPACK</flag>
 		<flag name="rocm">Enable ROCm gpu computing support</flag>
 		<flag name="xnnpack">Use <pkg>sci-ml/XNNPACK</pkg></flag>
-		<flag name="nccl">Use <pkg>dev-libs/rccl</pkg> (NCCL compatible) backend for distributed operations</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">pytorch/pytorch</remote-id>

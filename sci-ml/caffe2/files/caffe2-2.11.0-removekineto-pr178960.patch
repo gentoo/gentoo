@@ -1,0 +1,170 @@
+diff --git a/torch/csrc/autograd/init.cpp b/torch/csrc/autograd/init.cpp
+index 28c1a43..70d8f7b 100644
+--- a/torch/csrc/autograd/init.cpp
++++ b/torch/csrc/autograd/init.cpp
+@@ -301,12 +301,7 @@ PyObject* THPAutograd_initExtension(PyObject* _unused, PyObject* unused) {
+       .def("privateuse1_elapsed_us", &KinetoEvent::privateuse1ElapsedUs)
+       .def(
+           "is_user_annotation",
+-          [](const KinetoEvent& e) {
+-            return e.activityType() ==
+-                (uint8_t)libkineto::ActivityType::USER_ANNOTATION ||
+-                e.activityType() ==
+-                (uint8_t)libkineto::ActivityType::GPU_USER_ANNOTATION;
+-          })
++          [](const KinetoEvent& e) { return e.isUserAnnotation(); })
+       .def("nbytes", [](const KinetoEvent& e) { return e.nBytes(); })
+       // whether the event is hidden
+       .def(
+diff --git a/torch/csrc/autograd/profiler_kineto.cpp b/torch/csrc/autograd/profiler_kineto.cpp
+index dd4598669827e..85de1c3af923f 100644
+--- a/torch/csrc/autograd/profiler_kineto.cpp
++++ b/torch/csrc/autograd/profiler_kineto.cpp
+@@ -1081,6 +1081,13 @@ int64_t KinetoEvent::privateuse1ElapsedUs() const {
+   return -1;
+ }
+ 
++bool KinetoEvent::isUserAnnotation() const {
++  constexpr uint8_t kUserAnnotation = 1;
++  constexpr uint8_t kGpuUserAnnotation = 2;
++  const auto type = activityType();
++  return type == kUserAnnotation || type == kGpuUserAnnotation;
++}
++
+ void KinetoEvent::getPerfEventCounters(std::vector<uint64_t>& in) const {
+   return result_->visit(c10::overloaded(
+       [&in](const ExtraFields<EventType::TorchOp>& e) -> void {
+diff --git a/torch/csrc/autograd/profiler_kineto.h b/torch/csrc/autograd/profiler_kineto.h
+index 777b8a5851ed5..c3135c61245d4 100644
+--- a/torch/csrc/autograd/profiler_kineto.h
++++ b/torch/csrc/autograd/profiler_kineto.h
+@@ -67,6 +67,7 @@ struct TORCH_API KinetoEvent {
+   bool isPythonFunction() const;
+   int64_t cudaElapsedUs() const;
+   int64_t privateuse1ElapsedUs() const;
++  bool isUserAnnotation() const;
+   void getPerfEventCounters(torch::profiler::perf_counters_t& /*in*/) const;
+   extra_meta_t extraMeta() const;
+   std::string metadataJson() const;
+diff --git a/torch/csrc/profiler/collection.cpp b/torch/csrc/profiler/collection.cpp
+index eb29cb7382127..8ee3a9e7707a8 100644
+--- a/torch/csrc/profiler/collection.cpp
++++ b/torch/csrc/profiler/collection.cpp
+@@ -572,11 +572,13 @@ std::string toString(const ExtraFields<EventType::PyCall>& e) {
+       e.callsite_.funcname_.str());
+ }
+ 
++#ifdef USE_KINETO
+ auto scopeToType(at::RecordScope scope) {
+   return scope == at::RecordScope::USER_SCOPE
+       ? libkineto::ActivityType::USER_ANNOTATION
+       : libkineto::ActivityType::CPU_OP;
+ }
++#endif
+ 
+ int64_t torchOpEndNS(
+     const ExtraFields<EventType::TorchOp>& e,
+@@ -625,6 +627,7 @@ std::string Result::overload_name() const {
+       [](const auto& e) -> std::string { return ""; }));
+ }
+ 
++#ifdef USE_KINETO
+ libkineto::ActivityType Result::kinetoType() const {
+   return visit(c10::overloaded(
+       ATTRIBUTE(TorchOp, scopeToType(e.scope_)),
+@@ -637,6 +640,11 @@ libkineto::ActivityType Result::kinetoType() const {
+       ATTRIBUTE(PythonGC, libkineto::ActivityType::PYTHON_FUNCTION),
+       ATTRIBUTE(Kineto, e.activity_type_)));
+ }
++#else
++libkineto::ActivityType Result::kinetoType() const {
++  return libkineto::ActivityType::NONE;
++}
++#endif
+ 
+ uint64_t Result::correlationID() const {
+   return visit(c10::overloaded(
+diff --git a/torch/csrc/profiler/kineto_shim.cpp b/torch/csrc/profiler/kineto_shim.cpp
+index fa232e1a01016..0ddf62997a07e 100644
+--- a/torch/csrc/profiler/kineto_shim.cpp
++++ b/torch/csrc/profiler/kineto_shim.cpp
+@@ -138,6 +138,7 @@ TraceWrapper::TraceWrapper(const int64_t start_time, const std::string& name)
+ }
+ #endif // USE_KINETO
+ 
++#ifdef USE_KINETO
+ activity_t* TraceWrapper::addCPUActivity(
+     const std::string& name,
+     const libkineto::ActivityType type,
+@@ -145,7 +146,6 @@ activity_t* TraceWrapper::addCPUActivity(
+     const uint64_t correlation_id,
+     const int64_t start_time,
+     const int64_t end_time) {
+-#ifdef USE_KINETO
+   TORCH_CHECK((bool)(*this), "Cannot add event to non-existent trace.");
+   cpu_trace_->emplace_activity(cpu_trace_->span, type, name);
+   auto& act = libkineto::CpuTraceBuffer::toRef(cpu_trace_->activities.back());
+@@ -157,10 +157,18 @@ activity_t* TraceWrapper::addCPUActivity(
+     act.endTime = end_time;
+   }
+   return cpu_trace_->activities.back().get();
++}
+ #else
++activity_t* TraceWrapper::addCPUActivity(
++    const std::string& name,
++    const libkineto::ActivityType type,
++    const DeviceAndResource device_and_resource,
++    const uint64_t correlation_id,
++    const int64_t start_time,
++    const int64_t end_time) {
+   return nullptr;
+-#endif // USE_KINETO
+ }
++#endif // USE_KINETO
+ 
+ void TraceWrapper::transferCpuTrace(int64_t end_time) {
+ #ifdef USE_KINETO
+@@ -473,6 +481,7 @@ void logInvariantViolation(
+ 
+ namespace autograd::profiler {
+ c10::DeviceType deviceTypeFromActivity(libkineto::ActivityType activity_type) {
++#ifdef USE_KINETO
+   // PrivateUse1 kineto backend reuse some ActivityTypes,
+   // If PrivateUse1 backend is enabled, this should return
+   // c10::DeviceType::PrivateUse1.
+@@ -524,6 +533,9 @@ c10::DeviceType deviceTypeFromActivity(libkineto::ActivityType activity_type) {
+       return c10::DeviceType::CPU;
+     }
+   }
++#else
++  return c10::DeviceType::CPU;
++#endif // USE_KINETO
+ }
+ 
+ void addMetadataJson(const std::string& key, const std::string& value) {
+diff --git a/torch/csrc/profiler/kineto_shim.h b/torch/csrc/profiler/kineto_shim.h
+index 4f9bdc6770507..ddc00c03fa9cc 100644
+--- a/torch/csrc/profiler/kineto_shim.h
++++ b/torch/csrc/profiler/kineto_shim.h
+@@ -12,7 +12,21 @@
+ #undef USE_KINETO
+ #endif
+ 
++#ifdef USE_KINETO
+ #include <ActivityType.h>
++#else
++namespace libkineto {
++enum class ActivityType : uint8_t {
++  CPU_OP = 0,
++  USER_ANNOTATION,
++  GPU_USER_ANNOTATION,
++  NONE = CPU_OP,
++};
++inline const char* toString(ActivityType) {
++  return "CPU_OP";
++}
++} // namespace libkineto
++#endif
+ 
+ #include <torch/csrc/Export.h>
+ #include <torch/csrc/profiler/api.h>
