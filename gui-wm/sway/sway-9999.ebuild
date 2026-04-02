@@ -22,7 +22,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+man +swaybar +swaynag tray wallpapers X"
+IUSE="+swaybar +swaynag tray wallpapers X"
 REQUIRED_USE="tray? ( swaybar )"
 
 DEPEND="
@@ -67,7 +67,7 @@ BDEPEND="
 	>=dev-libs/wayland-protocols-1.41
 	>=dev-build/meson-1.3
 	virtual/pkgconfig
-	man? ( >=app-text/scdoc-1.9.2 )
+	>=app-text/scdoc-1.9.2
 "
 if [[ ${PV} != 9999 ]]; then
 	BDEPEND+="verify-sig? ( sec-keys/openpgp-keys-emersion )"
@@ -80,7 +80,7 @@ FILECAPS=(
 
 src_configure() {
 	local emesonargs=(
-		$(meson_feature man man-pages)
+		-Dman-pages=enabled
 		$(meson_feature tray)
 		$(meson_feature swaybar gdk-pixbuf)
 		$(meson_use swaynag)
