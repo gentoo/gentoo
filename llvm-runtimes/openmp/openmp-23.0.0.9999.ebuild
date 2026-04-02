@@ -62,7 +62,7 @@ BDEPEND="
 "
 
 LLVM_COMPONENTS=(
-	runtimes openmp offload cmake libc llvm/{cmake,include,utils/llvm-lit}
+	runtimes openmp offload cmake libc llvm/{cmake,include,utils}
 	third-party/unittest
 )
 llvm.org_set_globals
