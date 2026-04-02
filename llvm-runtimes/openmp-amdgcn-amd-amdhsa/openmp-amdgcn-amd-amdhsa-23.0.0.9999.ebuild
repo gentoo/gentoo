@@ -21,7 +21,7 @@ BDEPEND="
 "
 
 LLVM_COMPONENTS=(
-	runtimes openmp cmake llvm/{cmake,utils/llvm-lit} libc/shared
+	runtimes openmp cmake llvm/{cmake,utils} libc/shared
 	offload/include
 )
 llvm.org_set_globals
