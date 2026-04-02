@@ -1,0 +1,384 @@
+From c419b86e4163b54665b4311f0279170761ac31ed Mon Sep 17 00:00:00 2001
+From: Jaco Kroon <jaco@uls.co.za>
+Date: Thu, 2 Apr 2026 16:19:29 +0200
+Subject: [PATCH] Make it easier to set alternative SONAME for pjproject
+ libraries.
+
+Signed-off-by: Jaco Kroon <jaco@uls.co.za>
+---
+diff --git a/build.mak.in b/build.mak.in
+index b74868d97..15359459a 100644
+--- a/build.mak.in
++++ b/build.mak.in
+@@ -52,7 +52,7 @@ ifeq ($(PJ_SHARED_LIBRARIES),)
+ APP_THIRD_PARTY_LIBS += -lsrtp-$(TARGET_NAME)
+ else
+ APP_THIRD_PARTY_LIBS += -lsrtp
+-APP_THIRD_PARTY_LIB_FILES += $(PJ_DIR)/third_party/lib/libsrtp.$(SHLIB_SUFFIX).$(PJ_VERSION_MAJOR) $(PJ_DIR)/third_party/lib/libsrtp.$(SHLIB_SUFFIX)
++APP_THIRD_PARTY_LIB_FILES += $(PJ_DIR)/third_party/lib/libsrtp.$(SHLIB_SUFFIX).$(PJ_SONAME_VERSION) $(PJ_DIR)/third_party/lib/libsrtp.$(SHLIB_SUFFIX)
+ endif
+ endif
+ endif
+@@ -63,13 +63,13 @@ ifeq ($(PJ_SHARED_LIBRARIES),)
+ ifeq (@ac_resample_dll@,1)
+ export PJ_RESAMPLE_DLL := 1
+ APP_THIRD_PARTY_LIBS += -lresample
+-APP_THIRD_PARTY_LIB_FILES += $(PJ_DIR)/third_party/lib/libresample.$(SHLIB_SUFFIX).$(PJ_VERSION_MAJOR) $(PJ_DIR)/third_party/lib/libresample.$(SHLIB_SUFFIX)
++APP_THIRD_PARTY_LIB_FILES += $(PJ_DIR)/third_party/lib/libresample.$(SHLIB_SUFFIX).$(PJ_SONAME_VERSION) $(PJ_DIR)/third_party/lib/libresample.$(SHLIB_SUFFIX)
+ else
+ APP_THIRD_PARTY_LIBS += -lresample-$(TARGET_NAME)
+ endif
+ else
+ APP_THIRD_PARTY_LIBS += -lresample
+-APP_THIRD_PARTY_LIB_FILES += $(PJ_DIR)/third_party/lib/libresample.$(SHLIB_SUFFIX).$(PJ_VERSION_MAJOR) $(PJ_DIR)/third_party/lib/libresample.$(SHLIB_SUFFIX)
++APP_THIRD_PARTY_LIB_FILES += $(PJ_DIR)/third_party/lib/libresample.$(SHLIB_SUFFIX).$(PJ_SONAME_VERSION) $(PJ_DIR)/third_party/lib/libresample.$(SHLIB_SUFFIX)
+ endif
+ endif
+ 
+@@ -83,7 +83,7 @@ ifeq ($(PJ_SHARED_LIBRARIES),)
+ APP_THIRD_PARTY_LIBS += -lgsmcodec-$(TARGET_NAME)
+ else
+ APP_THIRD_PARTY_LIBS += -lgsmcodec
+-APP_THIRD_PARTY_LIB_FILES += $(PJ_DIR)/third_party/lib/libgsmcodec.$(SHLIB_SUFFIX).$(PJ_VERSION_MAJOR) $(PJ_DIR)/third_party/lib/libgsmcodec.$(SHLIB_SUFFIX)
++APP_THIRD_PARTY_LIB_FILES += $(PJ_DIR)/third_party/lib/libgsmcodec.$(SHLIB_SUFFIX).$(PJ_SONAME_VERSION) $(PJ_DIR)/third_party/lib/libgsmcodec.$(SHLIB_SUFFIX)
+ endif
+ endif
+ endif
+@@ -97,7 +97,7 @@ ifeq ($(PJ_SHARED_LIBRARIES),)
+ APP_THIRD_PARTY_LIBS += -lspeex-$(TARGET_NAME)
+ else
+ APP_THIRD_PARTY_LIBS += -lspeex
+-APP_THIRD_PARTY_LIB_FILES += $(PJ_DIR)/third_party/lib/libspeex.$(SHLIB_SUFFIX).$(PJ_VERSION_MAJOR) $(PJ_DIR)/third_party/lib/libspeex.$(SHLIB_SUFFIX)
++APP_THIRD_PARTY_LIB_FILES += $(PJ_DIR)/third_party/lib/libspeex.$(SHLIB_SUFFIX).$(PJ_SONAME_VERSION) $(PJ_DIR)/third_party/lib/libspeex.$(SHLIB_SUFFIX)
+ endif
+ endif
+ endif
+@@ -108,7 +108,7 @@ ifeq ($(PJ_SHARED_LIBRARIES),)
+ APP_THIRD_PARTY_LIBS += -lilbccodec-$(TARGET_NAME)
+ else
+ APP_THIRD_PARTY_LIBS += -lilbccodec
+-APP_THIRD_PARTY_LIB_FILES += $(PJ_DIR)/third_party/lib/libilbccodec.$(SHLIB_SUFFIX).$(PJ_VERSION_MAJOR) $(PJ_DIR)/third_party/lib/libilbccodec.$(SHLIB_SUFFIX)
++APP_THIRD_PARTY_LIB_FILES += $(PJ_DIR)/third_party/lib/libilbccodec.$(SHLIB_SUFFIX).$(PJ_SONAME_VERSION) $(PJ_DIR)/third_party/lib/libilbccodec.$(SHLIB_SUFFIX)
+ endif
+ endif
+ 
+@@ -118,7 +118,7 @@ ifeq ($(PJ_SHARED_LIBRARIES),)
+ APP_THIRD_PARTY_LIBS += -lg7221codec-$(TARGET_NAME)
+ else
+ APP_THIRD_PARTY_LIBS += -lg7221codec
+-APP_THIRD_PARTY_LIB_FILES += $(PJ_DIR)/third_party/lib/libg7221codec.$(SHLIB_SUFFIX).$(PJ_VERSION_MAJOR) $(PJ_DIR)/third_party/lib/libg7221codec.$(SHLIB_SUFFIX)
++APP_THIRD_PARTY_LIB_FILES += $(PJ_DIR)/third_party/lib/libg7221codec.$(SHLIB_SUFFIX).$(PJ_SONAME_VERSION) $(PJ_DIR)/third_party/lib/libg7221codec.$(SHLIB_SUFFIX)
+ endif
+ endif
+ 
+@@ -136,7 +136,7 @@ ifeq ($(PJ_SHARED_LIBRARIES),)
+ APP_THIRD_PARTY_LIBS += -lyuv-$(TARGET_NAME)
+ else
+ APP_THIRD_PARTY_LIBS += -lyuv
+-APP_THIRD_PARTY_LIB_FILES += $(PJ_DIR)/third_party/lib/libyuv.$(SHLIB_SUFFIX).$(PJ_VERSION_MAJOR) $(PJ_DIR)/third_party/lib/libyuv.$(SHLIB_SUFFIX)
++APP_THIRD_PARTY_LIB_FILES += $(PJ_DIR)/third_party/lib/libyuv.$(SHLIB_SUFFIX).$(PJ_SONAME_VERSION) $(PJ_DIR)/third_party/lib/libyuv.$(SHLIB_SUFFIX)
+ endif
+ endif
+ endif
+@@ -150,7 +150,7 @@ ifeq ($(PJ_SHARED_LIBRARIES),)
+ APP_THIRD_PARTY_LIBS += -lwebrtc-$(TARGET_NAME)
+ else
+ APP_THIRD_PARTY_LIBS += -lwebrtc
+-APP_THIRD_PARTY_LIB_FILES += $(PJ_DIR)/third_party/lib/libwebrtc.$(SHLIB_SUFFIX).$(PJ_VERSION_MAJOR) $(PJ_DIR)/third_party/lib/libwebrtc.$(SHLIB_SUFFIX)
++APP_THIRD_PARTY_LIB_FILES += $(PJ_DIR)/third_party/lib/libwebrtc.$(SHLIB_SUFFIX).$(PJ_SONAME_VERSION) $(PJ_DIR)/third_party/lib/libwebrtc.$(SHLIB_SUFFIX)
+ endif
+ endif
+ endif
+@@ -164,7 +164,7 @@ ifeq ($(PJ_SHARED_LIBRARIES),)
+ APP_THIRD_PARTY_LIBS += -lwebrtc-aec3-$(TARGET_NAME)
+ else
+ APP_THIRD_PARTY_LIBS += -lwebrtc-aec3
+-APP_THIRD_PARTY_LIB_FILES += $(PJ_DIR)/third_party/lib/libwebrtc-aec3.$(SHLIB_SUFFIX).$(PJ_VERSION_MAJOR) $(PJ_DIR)/third_party/lib/libwebrtc.$(SHLIB_SUFFIX)
++APP_THIRD_PARTY_LIB_FILES += $(PJ_DIR)/third_party/lib/libwebrtc-aec3.$(SHLIB_SUFFIX).$(PJ_SONAME_VERSION) $(PJ_DIR)/third_party/lib/libwebrtc.$(SHLIB_SUFFIX)
+ endif
+ endif
+ endif
+@@ -294,21 +294,21 @@ export PJSIP_UA_LDLIB := -lpjsip-ua
+ export PJSUA_LIB_LDLIB := -lpjsua
+ export PJSUA2_LIB_LDLIB := -lpjsua2
+ 
+-export ADD_LIB_FILES := $(PJ_DIR)/pjsip/lib/libpjsua.$(SHLIB_SUFFIX).$(PJ_VERSION_MAJOR) $(PJ_DIR)/pjsip/lib/libpjsua.$(SHLIB_SUFFIX) \
+-        $(PJ_DIR)/pjsip/lib/libpjsip-ua.$(SHLIB_SUFFIX).$(PJ_VERSION_MAJOR) $(PJ_DIR)/pjsip/lib/libpjsip-ua.$(SHLIB_SUFFIX) \
+-        $(PJ_DIR)/pjsip/lib/libpjsip-simple.$(SHLIB_SUFFIX).$(PJ_VERSION_MAJOR) $(PJ_DIR)/pjsip/lib/libpjsip-simple.$(SHLIB_SUFFIX) \
+-        $(PJ_DIR)/pjsip/lib/libpjsip.$(SHLIB_SUFFIX).$(PJ_VERSION_MAJOR) $(PJ_DIR)/pjsip/lib/libpjsip.$(SHLIB_SUFFIX) \
+-        $(PJ_DIR)/pjmedia/lib/libpjmedia-codec.$(SHLIB_SUFFIX).$(PJ_VERSION_MAJOR) $(PJ_DIR)/pjmedia/lib/libpjmedia-codec.$(SHLIB_SUFFIX) \
+-        $(PJ_DIR)/pjmedia/lib/libpjmedia-videodev.$(SHLIB_SUFFIX).$(PJ_VERSION_MAJOR) $(PJ_DIR)/pjmedia/lib/libpjmedia-videodev.$(SHLIB_SUFFIX) \
+-        $(PJ_DIR)/pjmedia/lib/libpjmedia.$(SHLIB_SUFFIX).$(PJ_VERSION_MAJOR) $(PJ_DIR)/pjmedia/lib/libpjmedia.$(SHLIB_SUFFIX) \
+-        $(PJ_DIR)/pjmedia/lib/libpjmedia-audiodev.$(SHLIB_SUFFIX).$(PJ_VERSION_MAJOR) $(PJ_DIR)/pjmedia/lib/libpjmedia-audiodev.$(SHLIB_SUFFIX) \
+-        $(PJ_DIR)/pjnath/lib/libpjnath.$(SHLIB_SUFFIX).$(PJ_VERSION_MAJOR) $(PJ_DIR)/pjnath/lib/libpjnath.$(SHLIB_SUFFIX) \
+-        $(PJ_DIR)/pjlib-util/lib/libpjlib-util.$(SHLIB_SUFFIX).$(PJ_VERSION_MAJOR) $(PJ_DIR)/pjlib-util/lib/libpjlib-util.$(SHLIB_SUFFIX) \
+-        $(PJ_DIR)/pjlib/lib/libpj.$(SHLIB_SUFFIX).$(PJ_VERSION_MAJOR) $(PJ_DIR)/pjlib/lib/libpj.$(SHLIB_SUFFIX)
++export ADD_LIB_FILES := $(PJ_DIR)/pjsip/lib/libpjsua.$(SHLIB_SUFFIX).$(PJ_SONAME_VERSION) $(PJ_DIR)/pjsip/lib/libpjsua.$(SHLIB_SUFFIX) \
++        $(PJ_DIR)/pjsip/lib/libpjsip-ua.$(SHLIB_SUFFIX).$(PJ_SONAME_VERSION) $(PJ_DIR)/pjsip/lib/libpjsip-ua.$(SHLIB_SUFFIX) \
++        $(PJ_DIR)/pjsip/lib/libpjsip-simple.$(SHLIB_SUFFIX).$(PJ_SONAME_VERSION) $(PJ_DIR)/pjsip/lib/libpjsip-simple.$(SHLIB_SUFFIX) \
++        $(PJ_DIR)/pjsip/lib/libpjsip.$(SHLIB_SUFFIX).$(PJ_SONAME_VERSION) $(PJ_DIR)/pjsip/lib/libpjsip.$(SHLIB_SUFFIX) \
++        $(PJ_DIR)/pjmedia/lib/libpjmedia-codec.$(SHLIB_SUFFIX).$(PJ_SONAME_VERSION) $(PJ_DIR)/pjmedia/lib/libpjmedia-codec.$(SHLIB_SUFFIX) \
++        $(PJ_DIR)/pjmedia/lib/libpjmedia-videodev.$(SHLIB_SUFFIX).$(PJ_SONAME_VERSION) $(PJ_DIR)/pjmedia/lib/libpjmedia-videodev.$(SHLIB_SUFFIX) \
++        $(PJ_DIR)/pjmedia/lib/libpjmedia.$(SHLIB_SUFFIX).$(PJ_SONAME_VERSION) $(PJ_DIR)/pjmedia/lib/libpjmedia.$(SHLIB_SUFFIX) \
++        $(PJ_DIR)/pjmedia/lib/libpjmedia-audiodev.$(SHLIB_SUFFIX).$(PJ_SONAME_VERSION) $(PJ_DIR)/pjmedia/lib/libpjmedia-audiodev.$(SHLIB_SUFFIX) \
++        $(PJ_DIR)/pjnath/lib/libpjnath.$(SHLIB_SUFFIX).$(PJ_SONAME_VERSION) $(PJ_DIR)/pjnath/lib/libpjnath.$(SHLIB_SUFFIX) \
++        $(PJ_DIR)/pjlib-util/lib/libpjlib-util.$(SHLIB_SUFFIX).$(PJ_SONAME_VERSION) $(PJ_DIR)/pjlib-util/lib/libpjlib-util.$(SHLIB_SUFFIX) \
++        $(PJ_DIR)/pjlib/lib/libpj.$(SHLIB_SUFFIX).$(PJ_SONAME_VERSION) $(PJ_DIR)/pjlib/lib/libpj.$(SHLIB_SUFFIX)
+ 
+ APP_LIB_FILES += $(ADD_LIB_FILES)
+ 
+-APP_LIBXX_FILES += $(PJ_DIR)/pjsip/lib/libpjsua2.$(SHLIB_SUFFIX).$(PJ_VERSION_MAJOR) $(PJ_DIR)/pjsip/lib/libpjsua2.$(SHLIB_SUFFIX) \
++APP_LIBXX_FILES += $(PJ_DIR)/pjsip/lib/libpjsua2.$(SHLIB_SUFFIX).$(PJ_SONAME_VERSION) $(PJ_DIR)/pjsip/lib/libpjsua2.$(SHLIB_SUFFIX) \
+         $(ADD_LIB_FILES)
+ endif
+ 
+diff --git a/pjlib-util/build/Makefile b/pjlib-util/build/Makefile
+index 3c2b32f26..3d52353ea 100644
+--- a/pjlib-util/build/Makefile
++++ b/pjlib-util/build/Makefile
+@@ -18,7 +18,7 @@ export PJLIB_UTIL_LIB := libpjlib-util-$(TARGET_NAME)$(LIBEXT)
+ ifeq ($(PJ_SHARED_LIBRARIES),)
+ else
+ export PJLIB_UTIL_SONAME := libpjlib-util.$(SHLIB_SUFFIX)
+-export PJLIB_UTIL_SHLIB := $(PJLIB_UTIL_SONAME).$(PJ_VERSION_MAJOR)
++export PJLIB_UTIL_SHLIB := $(PJLIB_UTIL_SONAME).$(PJ_SONAME_VERSION)
+ endif
+ 
+ ###############################################################################
+diff --git a/pjlib/build/Makefile b/pjlib/build/Makefile
+index aa5ce5f4a..edc762a2e 100644
+--- a/pjlib/build/Makefile
++++ b/pjlib/build/Makefile
+@@ -12,7 +12,7 @@ export PJLIB_LIB := libpj-$(TARGET_NAME)$(LIBEXT)
+ ifeq ($(PJ_SHARED_LIBRARIES),)
+ else
+ export PJLIB_SONAME := libpj.$(SHLIB_SUFFIX)
+-export PJLIB_SHLIB := $(PJLIB_SONAME).$(PJ_VERSION_MAJOR)
++export PJLIB_SHLIB := $(PJLIB_SONAME).$(PJ_SONAME_VERSION)
+ endif
+ 
+ ###############################################################################
+diff --git a/pjmedia/build/Makefile b/pjmedia/build/Makefile
+index 758003be7..f740afd30 100644
+--- a/pjmedia/build/Makefile
++++ b/pjmedia/build/Makefile
+@@ -23,15 +23,15 @@ export PJMEDIA_VIDEODEV_LIB:=libpjmedia-videodev-$(TARGET_NAME)$(LIBEXT)
+ ifeq ($(PJ_SHARED_LIBRARIES),)
+ else
+ export PJMEDIA_SONAME:=libpjmedia.$(SHLIB_SUFFIX)
+-export PJMEDIA_SHLIB:=$(PJMEDIA_SONAME).$(PJ_VERSION_MAJOR)
++export PJMEDIA_SHLIB:=$(PJMEDIA_SONAME).$(PJ_SONAME_VERSION)
+ export PJMEDIA_CODEC_SONAME:=libpjmedia-codec.$(SHLIB_SUFFIX)
+-export PJMEDIA_CODEC_SHLIB:=$(PJMEDIA_CODEC_SONAME).$(PJ_VERSION_MAJOR)
++export PJMEDIA_CODEC_SHLIB:=$(PJMEDIA_CODEC_SONAME).$(PJ_SONAME_VERSION)
+ export PJSDP_SONAME:=libpjsdp.$(SHLIB_SUFFIX)
+-export PJSDP_SHLIB:=$(PJSDP_SONAME).$(PJ_VERSION_MAJOR)
++export PJSDP_SHLIB:=$(PJSDP_SONAME).$(PJ_SONAME_VERSION)
+ export PJMEDIA_AUDIODEV_SONAME:=libpjmedia-audiodev.$(SHLIB_SUFFIX)
+-export PJMEDIA_AUDIODEV_SHLIB:=$(PJMEDIA_AUDIODEV_SONAME).$(PJ_VERSION_MAJOR)
++export PJMEDIA_AUDIODEV_SHLIB:=$(PJMEDIA_AUDIODEV_SONAME).$(PJ_SONAME_VERSION)
+ export PJMEDIA_VIDEODEV_SONAME:=libpjmedia-videodev.$(SHLIB_SUFFIX)
+-export PJMEDIA_VIDEODEV_SHLIB:=$(PJMEDIA_VIDEODEV_SONAME).$(PJ_VERSION_MAJOR)
++export PJMEDIA_VIDEODEV_SHLIB:=$(PJMEDIA_VIDEODEV_SONAME).$(PJ_SONAME_VERSION)
+ endif
+ 
+ 
+diff --git a/pjnath/build/Makefile b/pjnath/build/Makefile
+index bf3236e0a..39fb181ef 100644
+--- a/pjnath/build/Makefile
++++ b/pjnath/build/Makefile
+@@ -19,7 +19,7 @@ export PJNATH_LIB:=libpjnath-$(TARGET_NAME)$(LIBEXT)
+ ifeq ($(PJ_SHARED_LIBRARIES),)
+ else
+ export PJNATH_SONAME := libpjnath.$(SHLIB_SUFFIX)
+-export PJNATH_SHLIB := $(PJNATH_SONAME).$(PJ_VERSION_MAJOR)
++export PJNATH_SHLIB := $(PJNATH_SONAME).$(PJ_SONAME_VERSION)
+ endif
+ 
+ ###############################################################################
+diff --git a/pjsip/build/Makefile b/pjsip/build/Makefile
+index 8bc4ca68b..c903f8fa6 100644
+--- a/pjsip/build/Makefile
++++ b/pjsip/build/Makefile
+@@ -26,15 +26,15 @@ export PJSUA2_LIB_LIB=libpjsua2-$(TARGET_NAME)$(LIBEXT)
+ ifeq ($(PJ_SHARED_LIBRARIES),)
+ else
+ export PJSIP_SONAME := libpjsip.$(SHLIB_SUFFIX)
+-export PJSIP_SHLIB := $(PJSIP_SONAME).$(PJ_VERSION_MAJOR)
++export PJSIP_SHLIB := $(PJSIP_SONAME).$(PJ_SONAME_VERSION)
+ export PJSIP_UA_SONAME := libpjsip-ua.$(SHLIB_SUFFIX)
+-export PJSIP_UA_SHLIB := $(PJSIP_UA_SONAME).$(PJ_VERSION_MAJOR)
++export PJSIP_UA_SHLIB := $(PJSIP_UA_SONAME).$(PJ_SONAME_VERSION)
+ export PJSIP_SIMPLE_SONAME := libpjsip-simple.$(SHLIB_SUFFIX)
+-export PJSIP_SIMPLE_SHLIB := $(PJSIP_SIMPLE_SONAME).$(PJ_VERSION_MAJOR)
++export PJSIP_SIMPLE_SHLIB := $(PJSIP_SIMPLE_SONAME).$(PJ_SONAME_VERSION)
+ export PJSUA_LIB_SONAME := libpjsua.$(SHLIB_SUFFIX)
+-export PJSUA_LIB_SHLIB := $(PJSUA_LIB_SONAME).$(PJ_VERSION_MAJOR)
++export PJSUA_LIB_SHLIB := $(PJSUA_LIB_SONAME).$(PJ_SONAME_VERSION)
+ export PJSUA2_LIB_SONAME := libpjsua2.$(SHLIB_SUFFIX)
+-export PJSUA2_LIB_SHLIB := $(PJSUA2_LIB_SONAME).$(PJ_VERSION_MAJOR)
++export PJSUA2_LIB_SHLIB := $(PJSUA2_LIB_SONAME).$(PJ_SONAME_VERSION)
+ endif
+ 
+ ###############################################################################
+diff --git a/third_party/build/baseclasses/Makefile b/third_party/build/baseclasses/Makefile
+index f0b817cc9..a1dd00b5c 100644
+--- a/third_party/build/baseclasses/Makefile
++++ b/third_party/build/baseclasses/Makefile
+@@ -10,7 +10,7 @@ export BASECLASSES_LIB := libbaseclasses-$(TARGET_NAME)$(LIBEXT)
+ ifeq ($(PJ_SHARED_LIBRARIES),)
+ else
+ export BASECLASSES_SONAME := libbaseclasses.$(SHLIB_SUFFIX)
+-export BASECLASSES_SHLIB := $(BASECLASSES_SONAME).$(PJ_VERSION_MAJOR)
++export BASECLASSES_SHLIB := $(BASECLASSES_SONAME).$(PJ_SONAME_VERSION)
+ endif
+ 
+ ###############################################################################
+diff --git a/third_party/build/g7221/Makefile b/third_party/build/g7221/Makefile
+index f4e5ca324..15e455c07 100644
+--- a/third_party/build/g7221/Makefile
++++ b/third_party/build/g7221/Makefile
+@@ -10,7 +10,7 @@ export G7221_CODEC_LIB := libg7221codec-$(TARGET_NAME)$(LIBEXT)
+ ifeq ($(PJ_SHARED_LIBRARIES),)
+ else
+ export G7221_CODEC_SONAME := libg7221codec.$(SHLIB_SUFFIX)
+-export G7221_CODEC_SHLIB := $(G7221_CODEC_SONAME).$(PJ_VERSION_MAJOR)
++export G7221_CODEC_SHLIB := $(G7221_CODEC_SONAME).$(PJ_SONAME_VERSION)
+ endif
+ 
+ ###############################################################################
+diff --git a/third_party/build/gsm/Makefile b/third_party/build/gsm/Makefile
+index cf027f723..a19754f5e 100644
+--- a/third_party/build/gsm/Makefile
++++ b/third_party/build/gsm/Makefile
+@@ -10,7 +10,7 @@ export GSM_CODEC_LIB := libgsmcodec-$(TARGET_NAME)$(LIBEXT)
+ ifeq ($(PJ_SHARED_LIBRARIES),)
+ else
+ export GSM_CODEC_SONAME := libgsmcodec.$(SHLIB_SUFFIX)
+-export GSM_CODEC_SHLIB := $(GSM_CODEC_SONAME).$(PJ_VERSION_MAJOR)
++export GSM_CODEC_SHLIB := $(GSM_CODEC_SONAME).$(PJ_SONAME_VERSION)
+ endif
+ 
+ ###############################################################################
+diff --git a/third_party/build/ilbc/Makefile b/third_party/build/ilbc/Makefile
+index 28023a56a..b36215438 100644
+--- a/third_party/build/ilbc/Makefile
++++ b/third_party/build/ilbc/Makefile
+@@ -10,7 +10,7 @@ export ILBC_LIB := libilbccodec-$(TARGET_NAME)$(LIBEXT)
+ ifeq ($(PJ_SHARED_LIBRARIES),)
+ else
+ export ILBC_SONAME := libilbccodec.$(SHLIB_SUFFIX)
+-export ILBC_SHLIB := $(ILBC_SONAME).$(PJ_VERSION_MAJOR)
++export ILBC_SHLIB := $(ILBC_SONAME).$(PJ_SONAME_VERSION)
+ endif
+ 
+ ###############################################################################
+diff --git a/third_party/build/milenage/Makefile b/third_party/build/milenage/Makefile
+index 7c3202eb1..29a0d26f4 100644
+--- a/third_party/build/milenage/Makefile
++++ b/third_party/build/milenage/Makefile
+@@ -10,7 +10,7 @@ export MILENAGE_LIB := libmilenage-$(TARGET_NAME)$(LIBEXT)
+ ifeq ($(PJ_SHARED_LIBRARIES),)
+ else
+ export MILENAGE_SONAME := libmilenage.$(SHLIB_SUFFIX)
+-export MILENAGE_SHLIB := $(MILENAGE_SONAME).$(PJ_VERSION_MAJOR)
++export MILENAGE_SHLIB := $(MILENAGE_SONAME).$(PJ_SONAME_VERSION)
+ endif
+ 
+ ###############################################################################
+diff --git a/third_party/build/resample/Makefile b/third_party/build/resample/Makefile
+index 3ac44c739..bd123448c 100644
+--- a/third_party/build/resample/Makefile
++++ b/third_party/build/resample/Makefile
+@@ -26,12 +26,12 @@ export RESAMPLE_LIB := libresample-$(TARGET_NAME)$(LIBEXT)
+ 
+ ifneq ($(PJ_SHARED_LIBRARIES),)
+ export RESAMPLE_SONAME := libresample.$(SHLIB_SUFFIX)
+-export RESAMPLE_SHLIB := $(RESAMPLE_SONAME).$(PJ_VERSION_MAJOR)
++export RESAMPLE_SHLIB := $(RESAMPLE_SONAME).$(PJ_SONAME_VERSION)
+ endif
+ 
+ ifneq ($(PJ_RESAMPLE_DLL),)
+ export RESAMPLE_SONAME := libresample.$(SHLIB_SUFFIX)
+-export RESAMPLE_SHLIB := $(RESAMPLE_SONAME).$(PJ_VERSION_MAJOR)
++export RESAMPLE_SHLIB := $(RESAMPLE_SONAME).$(PJ_SONAME_VERSION)
+ endif
+ 
+ export CC_OUT CC AR RANLIB HOST_MV HOST_RM HOST_RMDIR HOST_MKDIR OBJEXT LD LDOUT 
+diff --git a/third_party/build/speex/Makefile b/third_party/build/speex/Makefile
+index db0b3f918..30887be39 100644
+--- a/third_party/build/speex/Makefile
++++ b/third_party/build/speex/Makefile
+@@ -10,7 +10,7 @@ export SPEEX_LIB := libspeex-$(TARGET_NAME)$(LIBEXT)
+ ifeq ($(PJ_SHARED_LIBRARIES),)
+ else
+ export SPEEX_SONAME := libspeex.$(SHLIB_SUFFIX)
+-export SPEEX_SHLIB := $(SPEEX_SONAME).$(PJ_VERSION_MAJOR)
++export SPEEX_SHLIB := $(SPEEX_SONAME).$(PJ_SONAME_VERSION)
+ endif
+ 
+ ###############################################################################
+diff --git a/third_party/build/srtp/Makefile b/third_party/build/srtp/Makefile
+index f49e14a4c..4bb8174f5 100644
+--- a/third_party/build/srtp/Makefile
++++ b/third_party/build/srtp/Makefile
+@@ -11,7 +11,7 @@ export SRTP_LIB := libsrtp-$(TARGET_NAME)$(LIBEXT)
+ ifeq ($(PJ_SHARED_LIBRARIES),)
+ else
+ export SRTP_SONAME := libsrtp.$(SHLIB_SUFFIX)
+-export SRTP_SHLIB := $(SRTP_SONAME).$(PJ_VERSION_MAJOR)
++export SRTP_SHLIB := $(SRTP_SONAME).$(PJ_SONAME_VERSION)
+ endif
+ 
+ ###############################################################################
+diff --git a/third_party/build/webrtc/Makefile b/third_party/build/webrtc/Makefile
+index 3db223ee2..c53ada3a4 100644
+--- a/third_party/build/webrtc/Makefile
++++ b/third_party/build/webrtc/Makefile
+@@ -11,7 +11,7 @@ export WEBRTC_LIB := libwebrtc-$(TARGET_NAME)$(LIBEXT)
+ ifeq ($(PJ_SHARED_LIBRARIES),)
+ else
+ export WEBRTC_SONAME := libwebrtc.$(SHLIB_SUFFIX)
+-export WEBRTC_SHLIB := $(WEBRTC_SONAME).$(PJ_VERSION_MAJOR)
++export WEBRTC_SHLIB := $(WEBRTC_SONAME).$(PJ_SONAME_VERSION)
+ endif
+ 
+ ###############################################################################
+diff --git a/third_party/build/webrtc_aec3/Makefile b/third_party/build/webrtc_aec3/Makefile
+index c7312f04d..d0dd5eb2e 100644
+--- a/third_party/build/webrtc_aec3/Makefile
++++ b/third_party/build/webrtc_aec3/Makefile
+@@ -11,7 +11,7 @@ export WEBRTC_AEC3_LIB := libwebrtc-aec3-$(TARGET_NAME)$(LIBEXT)
+ ifeq ($(PJ_SHARED_LIBRARIES),)
+ else
+ export WEBRTC_AEC3_SONAME := libwebrtc-aec3.$(SHLIB_SUFFIX)
+-export WEBRTC_AEC3_SHLIB := $(WEBRTC_AEC3_SONAME).$(PJ_VERSION_MAJOR)
++export WEBRTC_AEC3_SHLIB := $(WEBRTC_AEC3_SONAME).$(PJ_SONAME_VERSION)
+ endif
+ 
+ ###############################################################################
+diff --git a/third_party/build/yuv/Makefile b/third_party/build/yuv/Makefile
+index 7b11094fd..21cda2850 100644
+--- a/third_party/build/yuv/Makefile
++++ b/third_party/build/yuv/Makefile
+@@ -10,7 +10,7 @@ export YUV_LIB := libyuv-$(TARGET_NAME)$(LIBEXT)
+ ifeq ($(PJ_SHARED_LIBRARIES),)
+ else
+ export YUV_SONAME := libyuv.$(SHLIB_SUFFIX)
+-export YUV_SHLIB := $(YUV_SONAME).$(PJ_VERSION_MAJOR)
++export YUV_SHLIB := $(YUV_SONAME).$(PJ_SONAME_VERSION)
+ endif
+ 
+ ###############################################################################
+diff --git a/version.mak b/version.mak
+index 629242009..09398a0c2 100644
+--- a/version.mak
++++ b/version.mak
+@@ -14,3 +14,4 @@ ifneq ($(PJ_VERSION_SUFFIX),)
+ export PJ_VERSION := $(PJ_VERSION)$(PJ_VERSION_SUFFIX)
+ endif
+ 
++export PJ_SONAME_VERSION ?= $(PJ_VERSION_MAJOR)
+-- 
+2.52.0
+
