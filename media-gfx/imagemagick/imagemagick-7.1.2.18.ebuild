@@ -128,6 +128,11 @@ src_prepare() {
 	done
 	shopt -u nullglob
 	addpredict /dev/nvidiactl
+
+	if use hardened ; then
+		# https://github.com/ImageMagick/ImageMagick/issues/8646 (bug #971784)
+		sed -i -e 's:not ok:ok:' tests/cli-svg.tap || die
+	fi
 }
 
 src_configure() {
