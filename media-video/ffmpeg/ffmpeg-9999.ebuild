@@ -320,7 +320,10 @@ DEPEND="
 	ladspa? ( media-libs/ladspa-sdk )
 	nvenc? ( >=media-libs/nv-codec-headers-12.1.14.0 )
 	opencl? ( dev-util/opencl-headers )
-	vulkan? ( >=dev-util/vulkan-headers-1.4.317 )
+	vulkan? (
+		dev-util/spirv-headers
+		>=dev-util/vulkan-headers-1.4.317
+	)
 "
 BDEPEND="
 	app-alternatives/awk
