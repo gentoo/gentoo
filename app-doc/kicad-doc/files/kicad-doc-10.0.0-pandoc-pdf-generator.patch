@@ -1,0 +1,47 @@
+Add PANDOC as an alternative PDF generator using the
+asciidoctor -> docbook5 -> pandoc/xelatex pipeline.
+This avoids the need for asciidoctor-web-pdf (npm package).
+Skip PDF generation when translated source files are missing.
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -19,7 +19,7 @@ set( ADOC_TOOLCHAIN "ASCIIDOCTOR" CACHE STRING "Specify which AsciiDoc toolchain
+
+ # Provide an option for deciding which PDF generation scheme to use
+ # Only ASCIIDOCTOR-PDF is supported.
+-set( PDF_GENERATOR "ASCIIDOCTORPDF" CACHE STRING "Specify which PDF generator to use: ASCIIDOCTORPDF" )
++set( PDF_GENERATOR "ASCIIDOCTORPDF" CACHE STRING "Specify which PDF generator to use: ASCIIDOCTORPDF|PANDOC" )
+
+ # Provide an option to limit the set of languages built. This helps developers to speed up a
+ # build they're working on, or limit the number of dependencies for packagers
+@@ -46,6 +46,8 @@ if( "${BUILD_FORMATS}" MATCHES "(p|P)(d|D)(f|F)" )
+
+     if( ${PDF_GENERATOR} MATCHES ASCIIDOCTORPDF )
+         find_package( ASCIIDOCTORPDF REQUIRED )
++    elseif( ${PDF_GENERATOR} MATCHES PANDOC )
++        find_program( PANDOC_PROGRAM pandoc REQUIRED )
+     endif()
+
+ endif()
+--- a/CMakeModules/AsciidocHelpers.cmake
++++ b/CMakeModules/AsciidocHelpers.cmake
+@@ -20,7 +20,18 @@ macro( add_adoc_pdf_target TARGET INFILE OUTFILE LANGUAGE )
+                             DEPENDS ${INFILE} )
+         add_custom_command( TARGET ${TARGET} POST_BUILD
+                             COMMAND cmake -E remove ${ASCIIDOCTORPDF_TEMP_FILE} )
+-    else()
++    elseif( "${PDF_GENERATOR}" MATCHES "PANDOC" )
++        # Use asciidoctor -> docbook5 -> pandoc/xelatex pipeline
++        string( REGEX REPLACE "[.]adoc$" ".xml" PANDOC_TEMP_FILE ${INFILE} )
++        get_filename_component( _PANDOC_RSRC_PATH ${INFILE} DIRECTORY )
++        add_custom_target( ${TARGET} DEPENDS ${OUTFILE} )
++        add_custom_command( OUTPUT ${OUTFILE}
++                            COMMAND test -f ${INFILE} || cmake -E touch ${OUTFILE}
++                            COMMAND test ! -f ${INFILE} || ${ASCIIDOC_COMMAND} -b docbook5 -o ${PANDOC_TEMP_FILE} ${INFILE}
++                            COMMAND test ! -f ${INFILE} || ${PANDOC_PROGRAM} -f docbook -t pdf --pdf-engine=xelatex "-Vmainfont=DejaVu Serif" "-Vsansfont=DejaVu Sans" "-Vmonofont=DejaVu Sans Mono" "-VCJKmainfont=Noto Serif CJK SC" "--resource-path=${_PANDOC_RSRC_PATH}" ${PANDOC_TEMP_FILE} -o ${OUTFILE}
++                            COMMAND test ! -f ${PANDOC_TEMP_FILE} || cmake -E remove ${PANDOC_TEMP_FILE}
++                            DEPENDS ${INFILE} )
++    else()
+         message( FATAL_ERROR "ASCIIDOCTORPDF is the only supported PDF_GENERATOR. Exiting." )
+     endif()
+ endmacro()
