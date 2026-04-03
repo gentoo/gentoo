@@ -130,8 +130,9 @@ multilib_src_install_all() {
 	doman "${WORKDIR}"/debian/extra/*.[0-9]*
 
 	if use java; then
+		newdoc java/README.md README-java.md
+
 		docinto html/java
-		dodoc -r "${S}"/java/doc/.
-		newdoc "${S}"/java/README README.java
+		dodoc -r java/doc/.
 	fi
 }
