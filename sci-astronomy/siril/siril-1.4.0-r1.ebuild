@@ -70,6 +70,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.4.0-libgit2.patch"
 	"${FILESDIR}/${PN}-1.4.0-libjpeg.patch"
 	"${FILESDIR}/${PN}-1.4.0-libcurl.patch"
+	"${FILESDIR}/${PN}-1.4.0-cdefs.patch"
 )
 
 DOCS=( README.md ChangeLog AUTHORS )
