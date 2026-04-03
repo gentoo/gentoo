@@ -71,6 +71,9 @@ src_unpack() {
 	else
 		cargo_src_unpack
 	fi
+
+	# This is should be a set of env vars in upstream CI
+	rm -f "${S}/.cargo/config.toml"
 }
 
 src_compile() {
