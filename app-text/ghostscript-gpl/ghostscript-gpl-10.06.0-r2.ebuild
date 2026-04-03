@@ -132,6 +132,9 @@ src_configure() {
 	# Unsupported upstream, bug #884841
 	filter-lto
 
+	# bug #971940
+	append-flags -fno-strict-aliasing
+
 	# bug #899952
 	append-lfs-flags
 
