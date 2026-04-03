@@ -60,11 +60,12 @@ IUSE="X browser doc +keyring +network +ssh-agent test"
 
 RESTRICT="!test? ( test )"
 
+# Include path changed in zxcvbn-c-2.6
 RDEPEND="
 	app-crypt/argon2:=
 	dev-libs/botan:3=
 	dev-libs/libusb:1
-	dev-libs/zxcvbn-c
+	>=dev-libs/zxcvbn-c-2.6
 	dev-qt/qtbase:6
 	dev-qt/qtsvg:6
 	media-gfx/qrencode:=
@@ -96,7 +97,6 @@ PATCHES=(
 	"${WORKDIR}/${P}-qt6_patches-${PATCH_GIT_HASH}.patch"
 	"${FILESDIR}/${PN}-2.8.0-cmake_minimum.patch"
 	"${FILESDIR}/${PN}-2.7.10-tests.patch"
-	"${FILESDIR}/${PN}-2.7.10-zxcvbn.patch"
 )
 
 src_prepare() {
