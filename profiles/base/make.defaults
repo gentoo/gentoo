@@ -95,8 +95,9 @@ LCD_DEVICES="bayrad cfontz glk hd44780 lb216 lcdm001 mtxorb text"
 
 # Manuel Rüger <mrueg@gentoo.org> (2015-09-09)
 # Hans de Graaff <graaff@gentoo.org> (2025-05-31)
+# Christopher Fore <csfore@gentoo.org> (2026-04-03)
 # Default Ruby build target(s)
-RUBY_TARGETS="ruby32 ruby33"
+RUBY_TARGETS="ruby33"
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2022-10-22)
 # These USE flags are what is common between the various sub-profiles. Stages 2
