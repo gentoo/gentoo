@@ -34,10 +34,11 @@ IUSE="X autotype browser doc keeshare +keyring +network +ssh-agent test yubikey"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="autotype? ( X )"
 
+# Include path changed in zxcvbn-c-2.6
 RDEPEND="
 	app-crypt/argon2:=
 	dev-libs/botan:3=
-	dev-libs/zxcvbn-c
+	<dev-libs/zxcvbn-c-2.6
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
