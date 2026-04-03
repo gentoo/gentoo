@@ -3,7 +3,7 @@
 
 EAPI=8
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/postfix.asc
-inherit pam systemd toolchain-funcs verify-sig
+inherit eapi9-ver pam systemd toolchain-funcs verify-sig
 
 if [[ ${PV} == *_rc* ]]; then
 	MY_PV="${PV/_rc/-RC}"
@@ -303,6 +303,12 @@ src_install() {
 }
 
 pkg_postinst() {
+	if ver_replacing -lt 3.12; then
+		ewarn "berkdb USE flag is off by default in postfix-3.12."
+		ewarn "Remember to turn it on if you are still using hash"
+		ewarn "or btree local database files."
+	fi
+
 	if ! use berkdb && ! use cdb && ! use lmdb; then
 		ewarn
 		ewarn "No backend for local database files is configured."
