@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ DESCRIPTION="2D/3D shooting game"
 HOMEPAGE="http://triring.net/ps2linux/games/kxl/kxlgames.html"
 SRC_URI="
 	https://gitlab.com/oss-abandonware/games-action/space-aryarya/-/archive/${PV}/space-aryarya-${PV}.tar.bz2
-	https://dev.gentoo.org/~ionen/distfiles/${PN}.png"
+	https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${PN}.png"
 S="${WORKDIR}/space-aryarya-${PV}"
 
 LICENSE="GPL-2"

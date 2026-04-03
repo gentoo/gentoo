@@ -14,7 +14,7 @@ HOMEPAGE="https://naev.org/"
 # it fails downloading crates in sandbox to generate several cargo files
 SRC_URI="
 	https://codeberg.org/naev/naev/releases/download/v${PV}/${P}-source.tar.xz
-	https://dev.gentoo.org/~ionen/distfiles/${P}-vendor.tar.xz
+	https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${P}-vendor.tar.xz
 "
 
 LICENSE="GPL-3+ BSD BSD-2 MIT"

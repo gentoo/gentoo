@@ -1,4 +1,4 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ DESCRIPTION="Dolby Vision metadata parsing and writing"
 HOMEPAGE="https://github.com/quietvoid/dovi_tool/"
 SRC_URI="
 	https://github.com/quietvoid/dovi_tool/archive/refs/tags/${P}.tar.gz
-	https://dev.gentoo.org/~ionen/distfiles/${P}-vendor.tar.xz
+	https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${P}-vendor.tar.xz
 "
 S=${WORKDIR}/dovi_tool-${P}/dolby_vision
 

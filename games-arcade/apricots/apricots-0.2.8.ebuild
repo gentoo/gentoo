@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ DESCRIPTION="Fly a plane around and bomb/shoot the enemy (port of Planegame from
 HOMEPAGE="https://github.com/moggers87/apricots"
 SRC_URI="
 	https://github.com/moggers87/apricots/releases/download/v${PV}/${P}.tar.gz
-	https://dev.gentoo.org/~ionen/distfiles/${PN}.png"
+	https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${PN}.png"
 
 LICENSE="GPL-2"
 SLOT="0"

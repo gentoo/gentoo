@@ -1,4 +1,4 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/coreos/cargo-vendor-filterer/"
 SRC_URI="
 	https://github.com/coreos/cargo-vendor-filterer/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz
-	https://dev.gentoo.org/~ionen/distfiles/${P}-vendor.tar.xz
+	https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${P}-vendor.tar.xz
 "
 
 LICENSE="Apache-2.0"

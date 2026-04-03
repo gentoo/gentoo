@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ DESCRIPTION="Unofficial online version of the Classic BattleTech board game"
 HOMEPAGE="https://megamek.org/"
 SRC_URI="
 	https://downloads.sourceforge.net/project/megamek/Archived%20Stable/MegaMek%20v${PV}/MegaMek-v${PV}.zip
-	https://dev.gentoo.org/~ionen/distfiles/${PN}.png"
+	https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${PN}.png"
 S="${WORKDIR}"
 
 LICENSE="GPL-2+"

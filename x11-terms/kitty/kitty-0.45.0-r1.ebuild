@@ -14,12 +14,12 @@ else
 	inherit verify-sig
 	SRC_URI="
 		https://github.com/kovidgoyal/kitty/releases/download/v${PV}/${P}.tar.xz
-		https://dev.gentoo.org/~ionen/distfiles/${P}-vendor.tar.xz
+		https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${P}-vendor.tar.xz
 		verify-sig? ( https://github.com/kovidgoyal/kitty/releases/download/v${PV}/${P}.tar.xz.sig )
 	"
 	# backport for less-691 search issue wrt bug #969467
 	# (not a patch due to binary files, albeit could've re-generated with tic)
-	SRC_URI+=" https://dev.gentoo.org/~ionen/distfiles/${P}-less691-fix-backport.tar.xz"
+	SRC_URI+=" https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${P}-less691-fix-backport.tar.xz"
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/kovidgoyal.gpg
 	KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv x86"
 fi

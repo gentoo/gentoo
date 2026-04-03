@@ -14,7 +14,7 @@ HOMEPAGE="https://www.maturin.rs/"
 SRC_URI="
 	https://github.com/PyO3/maturin/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
-	https://dev.gentoo.org/~ionen/distfiles/${P}-vendor.tar.xz
+	https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${P}-vendor.tar.xz
 "
 # ^ tarball also includes test-crates' Cargo.lock(s) crates for tests
 

@@ -11,7 +11,7 @@ HOMEPAGE="https://rust-lang.github.io/mdBook/"
 SRC_URI="
 	https://github.com/rust-lang/mdBook/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz
-	https://dev.gentoo.org/~ionen/distfiles/${P}-vendor.tar.xz
+	https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${P}-vendor.tar.xz
 "
 S=${WORKDIR}/${P/b/B}
 

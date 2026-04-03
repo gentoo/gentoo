@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="
 	https://downloads.sourceforge.net/${PN}/${PN}-data-1.5.tar.bz2
 	https://downloads.sourceforge.net/${PN}/${PN}-sound-tracks-1.0.tar.bz2
 	https://downloads.sourceforge.net/${PN}/${PN}-sound-effects-1.0.tar.bz2
-	https://dev.gentoo.org/~ionen/distfiles/${PN}.png"
+	https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${PN}.png"
 
 LICENSE="GPL-2+"
 SLOT="0"

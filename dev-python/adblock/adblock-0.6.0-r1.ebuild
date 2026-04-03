@@ -1,4 +1,4 @@
-# Copyright 2021-2025 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/ArniDagur/python-adblock"
 SRC_URI="
 	https://github.com/ArniDagur/python-adblock/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
-	https://dev.gentoo.org/~ionen/distfiles/${P}-vendor.tar.xz
+	https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${P}-vendor.tar.xz
 "
 S=${WORKDIR}/python-${P}
 

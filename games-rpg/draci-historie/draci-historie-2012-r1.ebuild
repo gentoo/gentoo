@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ SRC_URI="
 	l10n_en? ( ${BASE_URL}-en-${PV}.zip )
 	l10n_pl? ( ${BASE_URL}-pl-${PV}.zip )
 	!l10n_cs? ( !l10n_de? ( !l10n_en? ( !l10n_pl? ( ${BASE_URL}-en-${PV}.zip ) ) ) )
-	https://dev.gentoo.org/~ionen/distfiles/${PN}.png
+	https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${PN}.png
 "
 S="${WORKDIR}"
 
