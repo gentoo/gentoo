@@ -120,6 +120,10 @@ src_unpack() {
 	fi
 }
 
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-cmake4-compat.patch # Bug 970924
+)
+
 src_prepare() {
 	filter-lto # Bug 927482
 	cmake_src_prepare
