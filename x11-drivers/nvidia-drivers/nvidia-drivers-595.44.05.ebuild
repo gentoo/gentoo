@@ -8,7 +8,7 @@ inherit desktop dot-a eapi9-pipestatus eapi9-ver flag-o-matic linux-mod-r1
 inherit readme.gentoo-r1 systemd toolchain-funcs unpacker user-info
 
 MODULES_KERNEL_MAX=6.19
-NV_PIN=595.45.04
+NV_PIN=595.58.03
 
 DESCRIPTION="NVIDIA Accelerated Graphics Driver"
 HOMEPAGE="https://developer.nvidia.com/vulkan-driver/"
@@ -540,17 +540,6 @@ pkg_postinst() {
 		ewarn "are available or fully functional, may need to consider nouveau[2])."
 		ewarn "[1] https://www.nvidia.com/object/IO_32667.html"
 		ewarn "[2] https://wiki.gentoo.org/wiki/Nouveau"
-	fi
-
-	if ver_replacing -lt 590; then
-		elog "\n>=${PN}-590 has changes that may or may not need attention:"
-		elog "1. support for Pascal, Maxwell, and Volta cards has been dropped"
-		elog "  (if affected, there should be a another message about this above)"
-		elog "2. nvidia-drm.modeset=1 is now default regardless of USE=wayland"
-		elog "3. nvidia-drm.fbdev=1 is now also tentatively default to match upstream"
-		elog "(2+3 were also later changed in >=580.126.09-r1, may already be in-use)"
-		elog "See ${EROOT}/etc/modprobe.d/nvidia.conf to modify settings if needed,"
-		elog "fbdev=1 *could* cause issues for the console display with some setups."
 	fi
 
 	if ver_replacing -lt 595; then
