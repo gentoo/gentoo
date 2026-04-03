@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~s390"
+KEYWORDS="~alpha ~amd64 ~riscv ~s390"
 
 RDEPEND="
 	dev-python/cachetools[${PYTHON_USEDEP}]
