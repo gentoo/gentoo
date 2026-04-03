@@ -48,7 +48,7 @@
 		<flag name="webview">Install documentation for <pkg>dev-qt/qtwebview</pkg></flag>
 	</use>
 	<upstream>
-		<bugs-to>https://bugreports.qt.io/</bugs-to>
+		<bugs-to>https://qt-project.atlassian.net/</bugs-to>
 		<doc>https://doc.qt.io/</doc>
 	</upstream>
 </pkgmetadata>

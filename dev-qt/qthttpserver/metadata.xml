@@ -9,7 +9,7 @@
 		<flag name="websockets">Enable websockets support using <pkg>dev-qt/qtwebsockets</pkg></flag>
 	</use>
 	<upstream>
-		<bugs-to>https://bugreports.qt.io/</bugs-to>
+		<bugs-to>https://qt-project.atlassian.net/</bugs-to>
 		<doc>https://doc.qt.io/</doc>
 		<remote-id type="github">qt/qthttpserver</remote-id>
 	</upstream>

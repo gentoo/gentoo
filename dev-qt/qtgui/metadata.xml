@@ -17,7 +17,7 @@
 		<flag name="X">Build the XCB platform plugin and enable X11 integration</flag>
 	</use>
 	<upstream>
-		<bugs-to>https://bugreports.qt.io/</bugs-to>
+		<bugs-to>https://qt-project.atlassian.net/</bugs-to>
 		<doc>https://doc.qt.io/</doc>
 	</upstream>
 	<slots>

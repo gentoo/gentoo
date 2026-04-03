@@ -9,7 +9,7 @@
 		<flag name="gtk">Build the GTK platform theme plugin</flag>
 	</use>
 	<upstream>
-		<bugs-to>https://bugreports.qt.io/</bugs-to>
+		<bugs-to>https://qt-project.atlassian.net/</bugs-to>
 		<doc>https://doc.qt.io/</doc>
 	</upstream>
 	<slots>
