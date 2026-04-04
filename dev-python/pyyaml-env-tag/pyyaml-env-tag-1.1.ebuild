@@ -12,7 +12,7 @@ inherit distutils-r1 pypi
 DESCRIPTION="A custom YAML tag for referencing environment variables in YAML files"
 HOMEPAGE="
 	https://github.com/waylan/pyyaml-env-tag/
-	https://pypi.org/project/pyyaml_env_tag/
+	https://pypi.org/project/pyyaml-env-tag/
 "
 
 LICENSE="MIT"

@@ -12,6 +12,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">waylan/pyyaml-env-tag</remote-id>
-		<remote-id type="pypi">pyyaml_env_tag</remote-id>
+		<remote-id type="pypi">pyyaml-env-tag</remote-id>
 	</upstream>
 </pkgmetadata>
