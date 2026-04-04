@@ -1,0 +1,22 @@
+From 92fd7a9b4fde6f7f84bb4350d6622ec87ad87ed0 Mon Sep 17 00:00:00 2001
+From: "Rick Farina (Zero_Chaos)" <zerochaos@gentoo.org>
+Date: Sat, 4 Apr 2026 14:47:01 -0400
+Subject: [PATCH] support new boost with no system lib
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index bde2b8d..a706322 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -71,7 +71,7 @@ endif()
+ ########################################################################
+ # Find boost
+ ########################################################################
+-find_package(Boost "1.65" REQUIRED system)
++find_package(Boost "1.65" REQUIRED)
+ 
+ if(NOT Boost_FOUND)
+     message(FATAL_ERROR "Boost required to compile iqbalance")

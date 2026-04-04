@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,9 +24,11 @@ IUSE="doc"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND=">=net-wireless/gnuradio-3.9.0.0:0=[${PYTHON_SINGLE_USEDEP}]
 	net-libs/libosmo-dsp:=
-	dev-libs/boost:=
 	${PYTHON_DEPS}"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-libs/boost"
+
+PATCHES=( "${FILESDIR}/${PN}-boost-no-system.patch" )
 
 src_configure() {
 	local mycmakeargs=(
