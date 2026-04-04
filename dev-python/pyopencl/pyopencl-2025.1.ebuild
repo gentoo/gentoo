@@ -50,6 +50,7 @@ PATCHES=(
 	"${FILESDIR}"/pyopencl-2025.1-nanobind-flags.patch
 )
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 python_configure_all() {
