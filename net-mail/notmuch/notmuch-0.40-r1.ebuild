@@ -122,7 +122,12 @@ src_unpack() {
 src_prepare() {
 	default
 
-	use python && distutils-r1_src_prepare
+	if use python; then
+		distutils-r1_src_prepare
+	else
+		# prevent automagic python binding, see https://bugs.gentoo.org/971988
+		sed -e '/have_python3_cffi=1/d' -i configure || die
+	fi
 
 	rm bindings/python-cffi/tox.ini || die
 	mv contrib/notmuch-mutt/README contrib/notmuch-mutt/README-mutt || die
