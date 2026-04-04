@@ -5,6 +5,7 @@ EAPI=8
 
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=poetry
+PYPI_VERIFY_REPO=https://github.com/beetbox/beets
 PYTHON_COMPAT=( python3_{12..13} )
 PYTHON_REQ_USE="sqlite"
 
