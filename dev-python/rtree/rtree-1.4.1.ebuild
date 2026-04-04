@@ -3,9 +3,10 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
 DISTUTILS_USE_PEP517=setuptools
 PYPI_PN=${PN^}
+PYPI_VERIFY_REPO=https://github.com/Toblerity/rtree
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 pypi
 
