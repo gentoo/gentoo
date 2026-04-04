@@ -19,10 +19,11 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 arm64 ~ppc64 x86"
 
+EPYTEST_PLUGINS=()
+distutils_enable_tests pytest
+
 EPYTEST_DESELECT=(
 	# the test measures performance of the patch parser together with test data
 	# preparation, which can take long time in some interpreters, bug #907243
 	tests/test_patch.py::PatchTestSuite::test_huge_patch
 )
-
-distutils_enable_tests pytest
