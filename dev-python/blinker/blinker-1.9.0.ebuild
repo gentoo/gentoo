@@ -19,15 +19,5 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos"
 
-BDEPEND="
-	test? (
-		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
-	)
-"
-
+EPYTEST_PLUGINS=( pytest-asyncio )
 distutils_enable_tests pytest
-
-python_test() {
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -p asyncio
-}
