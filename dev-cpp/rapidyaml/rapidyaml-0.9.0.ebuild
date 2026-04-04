@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,10 +16,7 @@ LICENSE="MIT Boost-1.0 BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
-# tests here are a maintenance headache, and current maintainer does
-# not need this package anymore -- please take the package over if you
-# want to handle this properly (keeping this in low maintenance mode
-# incl. ignoring some features like python bindings)
+# tests are too much of a maintenance headache
 RESTRICT="test"
 
 DOCS=( README.md ROADMAP.md changelog )
