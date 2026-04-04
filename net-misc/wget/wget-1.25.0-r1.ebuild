@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,29 +16,33 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 IUSE="cookie-check debug gnutls idn libproxy metalink nls ntlm pcre +ssl static test uuid zlib"
-REQUIRED_USE="ntlm? ( !gnutls ssl ) gnutls? ( ssl )"
+REQUIRED_USE="
+	ntlm? ( !gnutls ssl )
+	gnutls? ( ssl )
+	static? ( !libproxy )
+"
 RESTRICT="!test? ( test )"
 
 # * Force a newer libidn2 to avoid libunistring deps. #bug #612498
 # * Metalink can use gpgme automagically (so let's always depend on it)
 # for signed metalink resources.
 LIB_DEPEND="
-	cookie-check? ( net-libs/libpsl )
-	idn? ( >=net-dns/libidn2-0.14:=[static-libs(+)] )
+	cookie-check? ( net-libs/libpsl[static-libs(-)] )
+	idn? ( >=net-dns/libidn2-0.14:=[static-libs(-)] )
 	libproxy? ( net-libs/libproxy )
 	metalink? (
-		app-crypt/gpgme:=
-		media-libs/libmetalink
+		app-crypt/gpgme:=[static-libs(-)]
+		media-libs/libmetalink[static-libs(-)]
 	)
-	pcre? ( dev-libs/libpcre2[static-libs(+)] )
+	pcre? ( dev-libs/libpcre2[static-libs(-)] )
 	ssl? (
-		gnutls? ( net-libs/gnutls:=[static-libs(+)] )
-		!gnutls? ( dev-libs/openssl:=[static-libs(+)] )
+		gnutls? ( net-libs/gnutls:=[static-libs(-)] )
+		!gnutls? ( dev-libs/openssl:=[static-libs(-)] )
 	)
-	uuid? ( sys-apps/util-linux[static-libs(+)] )
-	zlib? ( virtual/zlib:=[static-libs(+)] )
+	uuid? ( sys-apps/util-linux[static-libs(-)] )
+	zlib? ( virtual/zlib:=[static-libs(-)] )
 "
-RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
+RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(-)]} )"
 DEPEND="
 	${RDEPEND}
 	static? ( ${LIB_DEPEND} )
