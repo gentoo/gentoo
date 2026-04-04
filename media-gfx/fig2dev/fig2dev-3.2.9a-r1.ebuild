@@ -51,6 +51,7 @@ HTML_DOCS=( "${WORKDIR}/fig2mpdf/doc/." )
 
 PATCHES=(
 	"${FILESDIR}/${P}-prototypes.patch"
+	"${FILESDIR}/${P}-imagemagick.patch"
 )
 
 src_unpack() {
