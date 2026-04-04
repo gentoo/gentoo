@@ -23,6 +23,7 @@ RDEPEND="
 	>=dev-python/smartypants-1.8.3[${PYTHON_USEDEP}]
 "
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 python_test() {
