@@ -37,6 +37,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2026-04-04)
+# Complex high churn package.  It got (incompatibly) renamed
+# to "NumKong" upstream.  No reverse dependencies.
+# Removal on 2026-05-04.  Bug #972000.
+dev-python/simsimd
+
+# Michał Górny <mgorny@gentoo.org> (2026-04-04)
 # NIH dependency for the removed spdx-tools package.  No revdeps.
 # Removal on 2026-05-04.  Bug #971998.
 dev-python/uritools
