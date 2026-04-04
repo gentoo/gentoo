@@ -16,7 +16,7 @@ if [ "${PV}" = "9999" ]; then
 	EGIT_REPO_URI="https://github.com/deltj/TempestSDR.git"
 else
 	KEYWORDS="~amd64 ~x86"
-	COMMIT="59201a2cb21ab193125719eb318dcfbbf979c32e"
+	COMMIT="99afe0536a92db20f48afeff32e8027d9c11cfec"
 	SRC_URI="https://github.com/deltj/TempestSDR/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/TempestSDR-${COMMIT}"
 fi
