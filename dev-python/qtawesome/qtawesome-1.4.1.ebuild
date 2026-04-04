@@ -29,12 +29,8 @@ RDEPEND="
 	media-fonts/fontawesome
 	dev-python/qtpy[gui,${PYTHON_USEDEP}]
 "
-BDEPEND="
-	test? (
-		dev-python/pytest-qt[${PYTHON_USEDEP}]
-	)
-"
 
+EPYTEST_PLUGINS=( pytest-qt )
 distutils_enable_tests pytest
 distutils_enable_sphinx docs/source \
 	dev-python/sphinx-rtd-theme
