@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,6 +26,9 @@ RDEPEND="app-arch/bzip2
 DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )"
 BDEPEND="man? ( dev-ruby/asciidoctor )"
+
+PATCHES=( "${FILESDIR}"/librnp-0.18.1-fix-build-with-botan-3.11.patch
+	"${FILESDIR}"/librnp-0.18.1-switch-defines-for-botan-3.11.patch )
 
 src_configure() {
 	local mycmakeargs=(
