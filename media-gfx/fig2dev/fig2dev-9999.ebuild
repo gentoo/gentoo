@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,22 +24,24 @@ IUSE="+ghostscript test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( ghostscript )"
 
-RDEPEND="
+DEPEND="
 	media-libs/libpng
 	media-libs/libjpeg-turbo:=
 	x11-apps/rgb
 	x11-libs/libXpm
-	!media-gfx/transfig
+"
+RDEPEND="
+	${DEPEND}
+	app-text/poppler
+	media-libs/netpbm
 	ghostscript?
 	(
 		app-text/ghostscript-gpl
 		virtual/imagemagick-tools[jpeg,png,postscript,tiff]
 	)
 "
-DEPEND="${RDEPEND}"
 BDEPEND="
 	app-text/rman
-	sys-devel/gcc
 "
 
 DOCS=( README CHANGES NOTES )
