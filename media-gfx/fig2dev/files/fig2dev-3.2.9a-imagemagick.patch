@@ -1,0 +1,233 @@
+commit 099cc3e91345bbb321a49039a9a4c44cadbd96dd
+Author: Mario Haustein <mario.haustein@hrz.tu-chemnitz.de>
+Date:   Sat Apr 4 12:37:16 2026 +0200
+Upstream: https://sourceforge.net/p/mcj/fig2dev/merge-requests/2/
+Bug: https://bugs.gentoo.org/953744
+
+    Supress error messages during {Image,Graphics}magick detection
+    
+    Otherwise the test suite will fail when one of both dependencies is not
+    installed.
+
+--- a/fig2dev/dev/genbitmaps.c
++++ b/fig2dev/dev/genbitmaps.c
+@@ -199,7 +199,7 @@ has_netpbm(const char *cmd)
+ static bool
+ has_ImageMagick(void)
+ {
+-	if (system("convert -version >/dev/null") == 0)
++	if (system("convert -version &>/dev/null") == 0)
+ 		return true;
+ 	else
+ 		return false;
+@@ -208,7 +208,7 @@ has_ImageMagick(void)
+ static bool
+ has_GraphicsMagick(void)
+ {
+-	if (system("gm version >/dev/null") == 0)
++	if (system("gm version &>/dev/null") == 0)
+ 		return true;
+ 	else
+ 		return false;
+
+commit 8f2655a34450d84a9119a84ca511051cee75cdb3
+Author: Mario Haustein <mario.haustein@hrz.tu-chemnitz.de>
+Date:   Sat Apr 4 12:38:45 2026 +0200
+
+    Use `magick` instead of `convert`
+    
+    Use of `convert` is deprecated since Imagemagick 7.
+
+--- a/fig2dev/dev/genbitmaps.c
++++ b/fig2dev/dev/genbitmaps.c
+@@ -199,7 +200,7 @@ has_netpbm(const char *cmd)
+ static bool
+ has_ImageMagick(void)
+ {
+-	if (system("convert -version &>/dev/null") == 0)
++	if (system("magick -version &>/dev/null") == 0)
+ 		return true;
+ 	else
+ 		return false;
+@@ -309,7 +310,7 @@ genbitmaps_start(F_compound *objects)
+ 	} else if (!strcmp(lang, "gif")) {
+ 		/*
+ 		 * netpbm programs are rather verbose, hence they receive the
+-		 * -quiet option. convert or gm convert are less verbose.
++		 * -quiet option. magick or gm convert are less verbose.
+ 		 * With -quiet they would suppress informational warning
+ 		 * messages. We keep those, they might be interesting.
+ 		 */
+@@ -329,12 +330,12 @@ genbitmaps_start(F_compound *objects)
+ 					gscmd, antialias, gspipe, netend, err);
+ 		} else if (has_ImageMagick()) {
+ 			if (*gif_transparent)
+-				sprintf(fmt, "{ %s%s%s | convert - -transparent"
++				sprintf(fmt, "{ %s%s%s | magick - -transparent"
+ 						" \\%s gif:%s; }%s", gscmd,
+ 						antialias, gspipe,
+ 						gif_transparent, gimend, err);
+ 			else
+-				sprintf(fmt, "{ %s%s%s | convert - gif:%s; }%s",
++				sprintf(fmt, "{ %s%s%s | magick - gif:%s; }%s",
+ 					gscmd, antialias, gspipe, gimend, err);
+ 		} else if (has_GraphicsMagick()) {
+ 			if (*gif_transparent)
+@@ -363,7 +364,7 @@ genbitmaps_start(F_compound *objects)
+ 			sprintf(fmt, "{ %s%s%s | gm convert - xbm:%s; }%s",
+ 					gscmd, antialias, gspipe, gimend, err);
+ 		else if (has_ImageMagick())
+-			sprintf(fmt, "{ %s%s%s | convert - xbm:%s; }%s",
++			sprintf(fmt, "{ %s%s%s | magick - xbm:%s; }%s",
+ 					gscmd, antialias, gspipe, gimend, err);
+ 		else {
+ 			fputs("fig2dev: Cannot write xbm image.\n    Please "
+@@ -382,7 +383,7 @@ genbitmaps_start(F_compound *objects)
+ 			sprintf(fmt, "{ %s%s%s | gm convert - xpm:%s; }%s",
+ 					gscmd, antialias, gspipe, gimend, err);
+ 		else if (has_ImageMagick())
+-			sprintf(fmt, "{ %s%s%s | convert - xpm:%s; }%s",
++			sprintf(fmt, "{ %s%s%s | magick - xpm:%s; }%s",
+ 					gscmd, antialias, gspipe, gimend, err);
+ 		else {
+ 			fputs("fig2dev: Cannot write xpm image.\n    Please "
+@@ -410,7 +411,7 @@ genbitmaps_start(F_compound *objects)
+ 					gscmd, antialias, gspipe, netend, err);
+ 		} else if (has_ImageMagick()) {
+ 			gsdev = "ppmraw";
+-			sprintf(fmt, "{ %s%s%s | convert - pcx:%s; }%s",
++			sprintf(fmt, "{ %s%s%s | magick - pcx:%s; }%s",
+ 					gscmd, antialias, gspipe, gimend, err);
+ 		} else if (has_GraphicsMagick()) {
+ 			gsdev = "ppmraw";
+@@ -427,7 +428,7 @@ genbitmaps_start(F_compound *objects)
+ 					gscmd, antialias, gspipe, netend, err);
+ 		} else if (has_ImageMagick()) {
+ 			gsdev = "ppmraw";
+-			sprintf(fmt, "{ %s%s%s | convert - png:%s; }%s",
++			sprintf(fmt, "{ %s%s%s | magick - png:%s; }%s",
+ 					gscmd, antialias, gspipe, gimend, err);
+ 		} else if (has_GraphicsMagick()) {
+ 			gsdev = "ppmraw";
+@@ -464,7 +465,7 @@ genbitmaps_start(F_compound *objects)
+ 		} else if (has_ImageMagick()) {
+ 			gsdev = "ppmraw";
+ 			sprintf(fmt, "{ %s%s%s | "
+-					"convert - -compress Zip tiff:%s; }%s",
++					"magick - -compress Zip tiff:%s; }%s",
+ 					gscmd, antialias, gspipe, gimend, err);
+ 		} else if (has_GraphicsMagick()) {
+ 			gsdev = "ppmraw";
+--- a/fig2dev/dev/readgif.c
++++ b/fig2dev/dev/readgif.c
+@@ -116,8 +117,8 @@ read_gif(F_pic *pic, struct xfig_stream *restrict pic_stream, int *llx,int *lly)
+ 		if (!system("{ giftopnm -version && ppmtopcx -version; } "
+ 								"2>/dev/null"))
+ 			cmd_fmt = "giftopnm -quiet | ppmtopcx -quiet >'%s'";
+-		else if (!system("convert -version >/dev/null"))
+-			cmd_fmt = "convert - pcx:'%s'";
++		else if (!system("magick -version >/dev/null"))
++			cmd_fmt = "magick - pcx:'%s'";
+ 		else if (!system("gm -version >/dev/null"))
+ 			cmd_fmt = "gm convert - pcx:'%s'";
+ 		else {
+--- a/fig2dev/dev/readtif.c
++++ b/fig2dev/dev/readtif.c
+@@ -64,8 +65,8 @@ read_tif(F_pic *pic, struct xfig_stream *restrict pic_stream, int *llx,int *lly)
+ 		if (!system("{ tifftopnm -version && ppmtopcx -version; } "
+ 								"2>/dev/null"))
+ 			cmd_fmt = "tifftopnm -quiet '%s' | ppmtopcx -quiet";
+-		else if (!system("convert -version >/dev/null"))
+-			cmd_fmt = "convert tiff:'%s' pcx:-";
++		else if (!system("magick -version >/dev/null"))
++			cmd_fmt = "magick tiff:'%s' pcx:-";
+ 		else if (!system("gm -version >/dev/null"))
+ 			cmd_fmt = "gm convert tiff:'%s' pcx:-";
+ 		else {
+--- a/fig2dev/dev/readxpm.c
++++ b/fig2dev/dev/readxpm.c
+@@ -60,8 +61,8 @@ read_xpm(F_pic *pic, struct xfig_stream *restrict pic_stream, int *llx,int *lly)
+ 		if (!system("{ xpmtoppm -version && ppmtopcx -version; } "
+ 								"2>/dev/null"))
+ 			cmd_fmt = "xpmtoppm | ppmtopcx -quiet >'%s'";
+-		else if (!system("convert -version >/dev/null"))
+-			cmd_fmt = "convert - pcx:'%s'";
++		else if (!system("magick -version >/dev/null"))
++			cmd_fmt = "magick - pcx:'%s'";
+ 		else if (!system("gm convert -version >/dev/null"))
+ 			cmd_fmt = "gm convert - pcx:'%s'";
+ 		else {
+--- a/fig2dev/tests/bitmaps.at
++++ b/fig2dev/tests/bitmaps.at
+@@ -25,7 +25,7 @@ AT_BANNER([Create and embed bitmaps in fig-file.])
+ AT_SETUP([gif])
+ AT_KEYWORDS(bitmaps gif)
+ AT_SKIP_IF([NO_GS || ! giftopnm -version || ! ppmtopcx -version || \
+-	( ! ppmtogif -version && ! convert -version &&  ! gm version)])
++	( ! ppmtogif -version && ! magick -version && ! gm version)])
+ AT_CHECK([fig2dev -L gif $srcdir/data/line.fig line.gif && \
+ 	$SED '11 s/eps/gif/' $srcdir/data/boxwimg.fig | fig2dev -L eps
+ ], 0, ignore)
+@@ -74,7 +74,7 @@ AT_CLEANUP
+ AT_SETUP([tiff])
+ AT_KEYWORDS(bitmaps tiff tif)
+ AT_SKIP_IF([NO_GS || ((! tifftopnm -version || ! ppmtopcx -version) &&
+-				! convert -version &&  ! gm version)])
++				! magick -version && ! gm version)])
+ AT_CHECK([fig2dev -L tiff $srcdir/data/line.fig line.tif && \
+ 	$SED '11 s/eps/tif/' $srcdir/data/boxwimg.fig | fig2dev -L eps
+ ], 0, ignore)
+@@ -83,7 +83,7 @@ AT_CLEANUP
+ AT_SETUP([xbm])
+ AT_KEYWORDS(bitmaps xbm)
+ AT_SKIP_IF([NO_GS || \
+-	( ! pbmtoxbm -version && ! convert -version && ! gm version)])
++	( ! pbmtoxbm -version && ! magick -version && ! gm version)])
+ AT_CHECK([fig2dev -L xbm $srcdir/data/line.fig line.xbm && \
+ 	$SED '11 s/eps/xbm/' $srcdir/data/boxwimg.fig | fig2dev -L eps
+ ], 0, ignore)
+@@ -92,7 +92,7 @@ AT_CLEANUP
+ AT_SETUP([xbm with smoothing])
+ AT_KEYWORDS(bitmaps xbm smoothing)
+ AT_SKIP_IF([NO_GS || \
+-	( ! pbmtoxbm -version && ! convert -version && ! gm version)])
++	( ! pbmtoxbm -version && ! magick -version && ! gm version)])
+ AT_CHECK([fig2dev -L xbm -S 4 $srcdir/data/line.fig line.xbm && \
+ 	$SED '11 s/eps/xbm/' $srcdir/data/boxwimg.fig | fig2dev -L eps
+ ], 0, ignore)
+@@ -101,7 +101,7 @@ AT_CLEANUP
+ AT_SETUP([xpm])
+ AT_KEYWORDS(bitmaps xpm)
+ AT_SKIP_IF([NO_GS || \
+-	( ! pbmtoxbm -version && ! convert -version && ! gm version)])
++	( ! pbmtoxbm -version && ! magick -version && ! gm version)])
+ AT_CHECK([fig2dev -L xpm $srcdir/data/line.fig line.xpm && \
+ 	$SED '11 s/eps/xpm/' $srcdir/data/boxwimg.fig | fig2dev -L eps
+ ], 0, ignore, ignore)
+--- a/fig2dev/tests/input.at
++++ b/fig2dev/tests/input.at
+@@ -58,7 +58,7 @@ AT_CLEANUP
+ AT_SETUP([guess tiff output format from output filename])
+ AT_KEYWORDS(read.c)
+ AT_SKIP_IF([NO_GS || \
+-	( ! pnmtotiff -version && ! convert -version &&  ! gm version)])
++	( ! pnmtotiff -version && ! magick -version && ! gm version)])
+ AT_CHECK([fig2dev $srcdir/data/line.fig line.tif
+ ],0)
+ AT_CLEANUP
+--- a/fig2dev/tests/output.at
++++ b/fig2dev/tests/output.at
+@@ -294,10 +294,10 @@ dnl [
+ dnl # Skip this test, if the necessary programs are not found
+ dnl AT_SKIP_IF([NO_GS || ! pnmarith -version || ! ppmhist -version])
+ dnl
+-dnl convert -density 1200 $srcdir/data/patterns.svg a.pbm
++dnl magick -density 1200 $srcdir/data/patterns.svg a.pbm
+ dnl
+ dnl # It makes a difference, whether convert... svg:-  or convert... -  is used.
+-dnl fig2dev -L svg $srcdir/data/patterns.fig | convert -density 1200 - b.pbm
++dnl fig2dev -L svg $srcdir/data/patterns.fig | magick -density 1200 - b.pbm
+ dnl
+ dnl # Was pamsumm -sum -brief, to expect 0\n on stdout - but pamsumm does not
+ dnl # exist on Debian stretch, so use ppmhist -noheader
+

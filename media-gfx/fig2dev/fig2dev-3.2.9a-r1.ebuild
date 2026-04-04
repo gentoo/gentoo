@@ -49,6 +49,7 @@ HTML_DOCS=( "${WORKDIR}/fig2mpdf/doc/." )
 
 PATCHES=(
 	"${FILESDIR}/${P}-prototypes.patch"
+	"${FILESDIR}/${P}-imagemagick.patch"
 )
 
 sed_Imakefile() {
