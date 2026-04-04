@@ -23,6 +23,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-2021.9.0-ppc.patch
 	"${FILESDIR}"/${PN}-2021.13.0-test-atomics.patch
 	"${FILESDIR}"/${PN}-2022.0.0_do-not-fortify-source.patch
 )
