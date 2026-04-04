@@ -46,10 +46,10 @@ BDEPEND="
 		dev-python/appdirs[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pillow[${PYTHON_USEDEP}]
-		dev-python/pytest-forked[${PYTHON_USEDEP}]
 	)
 "
 
+EPYTEST_PLUGINS=( pytest-forked )
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
