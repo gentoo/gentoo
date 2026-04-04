@@ -37,6 +37,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2026-04-04)
+# NIH dependency for the removed spdx-tools package.  No revdeps.
+# Removal on 2026-05-04.  Bug #971998.
+dev-python/uritools
+
+# Michał Górny <mgorny@gentoo.org> (2026-04-04)
 # Setuptools extension that's not really useful.  The only revdep used
 # to be dev-python/trove-classifiers but we had to workaround it due to
 # cyclic dependencies.
