@@ -16,7 +16,8 @@ LICENSE="MIT Boost-1.0 BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
-# tests are too much of a maintenance headache
+# in general would rather keep this package low maintenance due to
+# its build system, and tests + python bindings give headaches
 RESTRICT="test"
 
 DOCS=( README.md ROADMAP.md changelog )
