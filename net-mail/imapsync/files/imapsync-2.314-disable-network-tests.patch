@@ -1,0 +1,66 @@
+disable network tests
+--- a/imapsync	2026-04-04 18:12:25.639148577 -0000
++++ b/imapsync	2026-04-04 18:16:50.214345983 -0000
+@@ -23748,10 +23748,10 @@
+ 		tests_load_and_delay(  ) ;
+ 		#tests_imapsping(  ) ;
+ 		#tests_tcpping(  ) ;
+-		tests_sslcheck(  ) ;
+-		tests_not_long_imapsync_version_public(  ) ;
+-		tests_reconnect_if_needed(  ) ;
+-		tests_reconnect_12_if_needed(  ) ;
++		#tests_sslcheck(  ) ;
++		#tests_not_long_imapsync_version_public(  ) ;
++		#tests_reconnect_if_needed(  ) ;
++		#tests_reconnect_12_if_needed(  ) ;
+ 		tests_sleep_if_needed(  ) ;
+ 		tests_string_to_file(  ) ;
+ 		tests_file_to_string(  ) ;
+@@ -23818,8 +23818,8 @@
+                 tests_timenext(  ) ;
+                 tests_imapsync_context(  ) ;
+                 tests_abort(  ) ;
+-                tests_probe_imapssl(  ) ;
+-                tests_mailimapclient_connect(  ) ;
++		#tests_probe_imapssl(  ) ;
++		#tests_mailimapclient_connect(  ) ;
+                 tests_checknoabletosearch(  ) ;
+                 tests_errorsdump(  ) ;
+                 tests_errorsanalyse(  ) ;
+@@ -23831,10 +23831,10 @@
+                 tests_total_bytes_max_reached(  ) ;
+                 tests_header_construct(  ) ;
+                 tests_remove_doublequotes_if_any(  ) ;
+-                tests_login_imap_ssl_993(  ) ;
+-                tests_login_imap_starttls(  ) ;
+-                tests_login_imap_notls_nossl(  ) ;
+-                tests_login_imap_oauth(  ) ;
++		#tests_login_imap_ssl_993(  ) ;
++		#tests_login_imap_starttls(  ) ;
++		#tests_login_imap_notls_nossl(  ) ;
++		#tests_login_imap_oauth(  ) ;
+                 tests_skipmess_neg(  ) ;
+                 tests_localtimez(  ) ;
+                 tests_file_to_array(  ) ;
+@@ -23846,9 +23846,9 @@
+                 tests_exit_value(  ) ;
+                 tests_comment_of_error_type(  ) ;
+                 tests_debugcontent(  ) ;
+-                tests_compress_ssl(  ) ;
+-                tests_compress_starttls(  ) ;
+-                tests_compress(  ) ;
++		#tests_compress_ssl(  ) ;
++		#tests_compress_starttls(  ) ;
++		#tests_compress(  ) ;
+                 tests_get_options_extra_from_file(  ) ;
+                 tests_get_options_from_string(  ) ;
+                 tests_email_report_message_id(  ) ;
+@@ -23904,7 +23904,7 @@
+ 
+                 #tests_always_fail(  ) ;
+                 
+-                done_testing( 2189 ) ;
++                done_testing( 2039 ) ;
+                 note( 'Leaving  tests()' ) ;
+         }
+         return ;
