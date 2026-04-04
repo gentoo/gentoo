@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=flit
 PYPI_VERIFY_REPO=https://github.com/pypa/flit
-PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
+PYTHON_COMPAT=( python3_{11..13} pypy3_11 )
 
 inherit distutils-r1 pypi
 
@@ -46,6 +46,7 @@ EPYTEST_DESELECT=(
 	tests/test_install.py::InstallTests::test_symlink_module_pep621
 )
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 distutils_enable_sphinx doc \
 	dev-python/sphinxcontrib-github-alt \
