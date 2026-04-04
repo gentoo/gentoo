@@ -3,8 +3,6 @@
 
 EAPI=8
 
-TS_BINDINGS=( python )
-
 inherit tree-sitter-grammar
 
 DESCRIPTION="Vimscript grammar for Tree-sitter"
