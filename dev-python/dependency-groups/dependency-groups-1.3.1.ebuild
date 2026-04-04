@@ -23,4 +23,5 @@ RDEPEND="
 	dev-python/packaging[${PYTHON_USEDEP}]
 "
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
