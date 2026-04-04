@@ -1,0 +1,33 @@
+--- a/examples/sycl/tbb-resumable-tasks-sycl/CMakeLists.txt	2026-04-04 22:48:28.264634270 +0200
++++ b/examples/sycl/tbb-resumable-tasks-sycl/CMakeLists.txt	2026-04-04 22:49:13.703104323 +0200
+@@ -12,7 +12,7 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-cmake_minimum_required (VERSION 3.4)
++cmake_minimum_required (VERSION 3.10)
+ 
+ if (${CMAKE_HOST_SYSTEM_NAME} STREQUAL "Windows")
+     set(CMAKE_CXX_COMPILER "icx-cl")
+--- a/examples/sycl/tbb-async-sycl/CMakeLists.txt	2026-04-04 22:49:28.902927039 +0200
++++ b/examples/sycl/tbb-async-sycl/CMakeLists.txt	2026-04-04 22:49:47.044715444 +0200
+@@ -12,7 +12,7 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-cmake_minimum_required (VERSION 3.4)
++cmake_minimum_required (VERSION 3.10)
+ 
+ if (${CMAKE_HOST_SYSTEM_NAME} STREQUAL "Windows")
+     set(CMAKE_CXX_COMPILER "icx-cl")
+--- a/examples/sycl/tbb-task-sycl/CMakeLists.txt	2026-04-04 22:50:02.325537219 +0200
++++ b/examples/sycl/tbb-task-sycl/CMakeLists.txt	2026-04-04 22:50:13.249409806 +0200
+@@ -12,7 +12,7 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-cmake_minimum_required (VERSION 3.4)
++cmake_minimum_required (VERSION 3.10)
+ 
+ if (${CMAKE_HOST_SYSTEM_NAME} STREQUAL "Windows")
+     set(CMAKE_CXX_COMPILER "icx-cl")
