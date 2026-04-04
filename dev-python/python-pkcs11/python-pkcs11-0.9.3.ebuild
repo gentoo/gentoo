@@ -5,30 +5,34 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
+PYPI_VERIFY_REPO=https://github.com/pyauth/python-pkcs11
 PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 edo pypi
 
 DESCRIPTION="PKCS#11/Cryptoki support for Python"
 HOMEPAGE="
-		https://github.com/pyauth/python-pkcs11
-		https://pypi.org/project/python-pkcs11
+	https://github.com/pyauth/python-pkcs11/
+	https://pypi.org/project/python-pkcs11/
 "
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
-RDEPEND="dev-python/asn1crypto[${PYTHON_USEDEP}]"
+RDEPEND="
+	dev-python/asn1crypto[${PYTHON_USEDEP}]
+"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-python/cython[${PYTHON_USEDEP}]
-		dev-python/setuptools-scm[${PYTHON_USEDEP}]
-		test? (
-				dev-libs/openssl
-				dev-libs/softhsm
-				dev-python/cryptography[${PYTHON_USEDEP}]
-				dev-python/parameterized[${PYTHON_USEDEP}]
-		)
+BDEPEND="
+	dev-python/cython[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
+	test? (
+		dev-libs/openssl
+		dev-libs/softhsm
+		dev-python/cryptography[${PYTHON_USEDEP}]
+		dev-python/parameterized[${PYTHON_USEDEP}]
+	)
 "
 
 EPYTEST_PLUGINS=()
