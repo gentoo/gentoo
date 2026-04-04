@@ -25,9 +25,7 @@ RDEPEND="
 BDEPEND="
 	dev-python/hatch-fancy-pypi-readme[${PYTHON_USEDEP}]
 	dev-python/hatch-vcs[${PYTHON_USEDEP}]
-	test? (
-		dev-python/hypothesis[${PYTHON_USEDEP}]
-	)
 "
 
+EPYTEST_PLUGINS=( hypothesis )
 distutils_enable_tests pytest
