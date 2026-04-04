@@ -1,7 +1,12 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+DISTUTILS_EXT=1
+DISTUTILS_USE_PEP517=maturin
+PYPI_VERIFY_REPO=https://github.com/milesgranger/cramjam
+PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 
 # Note: you need to use top-level Cargo.lock to generate the crate list.
 CRATES="
@@ -122,10 +127,6 @@ CRATES="
 	zstd@0.13.3
 "
 
-DISTUTILS_EXT=1
-DISTUTILS_USE_PEP517=maturin
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
-
 inherit cargo distutils-r1 pypi
 
 DESCRIPTION="Thin Python bindings to de/compression algorithms in Rust"
@@ -170,6 +171,11 @@ EPYTEST_RERUNS=5
 distutils_enable_tests pytest
 
 QA_FLAGS_IGNORED="usr/lib/py.*/site-packages/cramjam/cramjam.*.so"
+
+src_unpack() {
+	pypi_src_unpack
+	cargo_src_unpack
+}
 
 src_prepare() {
 	sed -i -e '/strip/d' pyproject.toml || die
