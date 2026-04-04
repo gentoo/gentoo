@@ -11,7 +11,7 @@ inherit distutils-r1 pypi
 
 DESCRIPTION="Python models for Rekor's API types"
 HOMEPAGE="
-	https://github.com/trailofbits/sigstore-rekor-types/
+	https://github.com/sigstore/sigstore-rekor-types/
 	https://pypi.org/project/sigstore-rekor-types/
 "
 
