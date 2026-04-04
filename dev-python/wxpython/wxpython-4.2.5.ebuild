@@ -2,10 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{11..14} )
 PYPI_PN="wxPython"
+PYPI_VERIFY_REPO=https://github.com/wxWidgets/Phoenix
 WX_GTK_VER="3.2-gtk3"
 
 inherit distutils-r1 multilib multiprocessing virtualx wxwidgets pypi
