@@ -29,9 +29,7 @@ RDEPEND="
 
 BDEPEND="
 	test? (
-		$(python_gen_cond_dep '
-			dev-python/tomli[${PYTHON_USEDEP}]
-		' 3.10)
+		dev-python/pkg-resources[${PYTHON_USEDEP}]
 		!!<dev-python/python-lsp-black-2[${PYTHON_USEDEP}]
 	)
 "
