@@ -27,11 +27,10 @@ BDEPEND="
 	test? (
 		dev-python/build[${PYTHON_USEDEP}]
 		dev-python/pip[${PYTHON_USEDEP}]
-		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 	)
 "
 
-EPYTEST_PLUGINS=()
+EPYTEST_PLUGINS=( pytest-timeout )
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
