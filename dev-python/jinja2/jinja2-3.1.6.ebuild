@@ -29,6 +29,8 @@ RDEPEND="
 distutils_enable_sphinx docs \
 	dev-python/sphinx-issues \
 	dev-python/pallets-sphinx-themes
+
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 # XXX: handle Babel better?
@@ -49,7 +51,6 @@ python_test() {
 		)
 	fi
 
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest
 }
 
