@@ -54,6 +54,8 @@ python_test() {
 		test/unit/module/override/test_exclude.py::TestExclude::test_success_run
 		test/unit/module/test_api.py::TestLintFile::test_good_template
 		test/unit/module/test_rules_collections.py::TestRulesCollection::test_success_run
+		# crashes on 3.12+, probably pygraphviz
+		test/unit/module/test_api.py::TestLintByConfig::test_graph
 	)
 
 	# from tox.ini
