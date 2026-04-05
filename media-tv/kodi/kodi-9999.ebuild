@@ -87,13 +87,14 @@ SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="airplay alsa bluetooth bluray caps cec +css dbus doc eventclients gbm gles lcms libusb lirc mariadb mysql nfs +optical pipewire pulseaudio samba soc +system-ffmpeg test udf udev upnp vaapi vdpau wayland webserver X +xslt zeroconf ${CPU_FLAGS}"
+IUSE="airplay alsa bluetooth bluray caps cec +css dbus doc eventclients gbm gles lcms libusb lirc mariadb mysql nfs +optical pipewire postproc pulseaudio samba soc +system-ffmpeg test udf udev upnp vaapi vdpau wayland webserver X +xslt zeroconf ${CPU_FLAGS}"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	|| ( gbm wayland X )
 	?? ( mariadb mysql )
 	bluray? ( udf )
 	gbm? ( udev )
+	postproc? ( !system-ffmpeg )
 	soc? ( system-ffmpeg )
 	udev? ( !libusb )
 	vdpau? ( X !gles !gbm )
@@ -402,9 +403,8 @@ src_configure() {
 		-DENABLE_VDPAU=$(usex vdpau)
 		-DENABLE_XSLT=$(usex xslt)
 
-		#-DWITH_FFMPEG=$(usex system-ffmpeg)
 		-DWITH_FFMPEG=OFF
-		-DDISABLE_FFMPEG_SOURCE_PLUGINS=ON
+		-DDISABLE_FFMPEG_SOURCE_PLUGINS=$(usex !postproc)
 
 		#To bundle or not
 		-DENABLE_INTERNAL_ASS=OFF
