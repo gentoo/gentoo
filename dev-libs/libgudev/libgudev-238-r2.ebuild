@@ -1,4 +1,4 @@
-# Copyright 2015-2025 Gentoo Authors
+# Copyright 2015-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,6 +30,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-clang18-export-dynamic.patch #926350
+	"${FILESDIR}"/238-systemd-259-tests.patch #971296
 )
 
 multilib_src_configure() {
