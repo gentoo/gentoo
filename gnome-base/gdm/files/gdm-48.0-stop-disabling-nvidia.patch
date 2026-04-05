@@ -1,0 +1,25 @@
+--- a/data/61-gdm.rules.in
++++ b/61-gdm.rules.in
+@@ -35,22 +35,6 @@ RUN+="/usr/bin/touch /run/udev/gdm-machi
+ # Import nvidia kernel parameters
+ IMPORT{program}="/bin/sh -c \"sed -e 's/: /=/g' -e 's/\([^[:upper:]]\)\([[:upper:]]\)/\1_\2/g' -e 's/[[:lower:]]/\U&/g' -e 's/^/NVIDIA_/' /proc/driver/nvidia/params\""
+ 
+-# Check if S0ix-based power management is available
+-# If it is, there's no need to check for the suspend/resume services
+-ENV{NVIDIA_ENABLE_S0IX_POWER_MANAGEMENT}=="1", GOTO="gdm_nvidia_suspend_end"
+-
+-# Check if suspend/resume services necessary for working wayland support is available
+-TEST{0711}!="/usr/bin/nvidia-sleep.sh", GOTO="gdm_disable_wayland"
+-TEST{0711}!="/usr/lib/systemd/system-sleep/nvidia", GOTO="gdm_disable_wayland"
+-
+-ENV{NVIDIA_PRESERVE_VIDEO_MEMORY_ALLOCATIONS}!="1", GOTO="gdm_disable_wayland"
+-IMPORT{program}="/bin/sh -c 'echo NVIDIA_HIBERNATE=`systemctl is-enabled nvidia-hibernate`'"
+-ENV{NVIDIA_HIBERNATE}!="enabled", GOTO="gdm_disable_wayland"
+-IMPORT{program}="/bin/sh -c 'echo NVIDIA_RESUME=`systemctl is-enabled nvidia-resume`'"
+-ENV{NVIDIA_RESUME}!="enabled", GOTO="gdm_disable_wayland"
+-IMPORT{program}="/bin/sh -c 'echo NVIDIA_SUSPEND=`systemctl is-enabled nvidia-suspend`'"
+-ENV{NVIDIA_SUSPEND}!="enabled", GOTO="gdm_disable_wayland"
+-LABEL="gdm_nvidia_suspend_end"
+ LABEL="gdm_nvidia_end"
+ 
+ # If this is a hybrid graphics setup, take note
