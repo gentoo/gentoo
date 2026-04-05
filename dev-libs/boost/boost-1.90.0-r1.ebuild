@@ -57,6 +57,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.89.0-python-exclude-broken-tests.patch
 	"${FILESDIR}"/${PN}-1.89.0-unordered-no-tbb.patch
 	"${FILESDIR}"/${PN}-1.90.0-msm-std.patch
+	"${FILESDIR}"/${PN}-1.90.0-unsigned-char-EOF.patch
 )
 
 create_user-config.jam() {
