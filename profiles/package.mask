@@ -36,6 +36,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2026-04-05)
+# Needed only by old versions of dev-python/sigstore, along with a bunch
+# of NIH dependencies.
+# Removal on 2026-05-05.  Bug #972007.
+dev-python/betterproto
+dev-python/grpclib
+dev-python/sigstore-protobuf-specs
+
 # Michał Górny <mgorny@gentoo.org> (2026-04-04)
 # Complex high churn package.  It got (incompatibly) renamed
 # to "NumKong" upstream.  No reverse dependencies.
