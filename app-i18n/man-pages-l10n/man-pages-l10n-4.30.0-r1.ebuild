@@ -32,6 +32,22 @@ src_prepare() {
 
 	# some packages have their own translations
 	local f noinst_manpages=(
+		# net-wireless/wireless-tools
+		wireless.7
+		iwconfig.8
+		# sys-apps/net-tools
+		dnsdomainname.1
+		hostname.1
+		ethers.5
+		arp.8
+		ifconfig.8
+		ipmaddr.8
+		iptunnel.8
+		mii-tool.8
+		nameif.8
+		netstat.8
+		rarp.8
+		route.8
 		# sys-apps/shadow
 		groups.1
 		# sys-apps/sysvinit
