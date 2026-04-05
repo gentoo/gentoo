@@ -9,7 +9,7 @@ DISTUTILS_USE_PEP517=standalone
 PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 PYTHON_REQ_USE='tk?,threads(+)'
 
-inherit distutils-r1 toolchain-funcs virtualx
+inherit distutils-r1 multiprocessing toolchain-funcs virtualx
 
 MY_PN=Pillow
 MY_P=${MY_PN}-${PV}
@@ -101,6 +101,7 @@ python_configure_all() {
 		[build_ext]
 		debug = True
 		disable_platform_guessing = True
+		parallel = $(get_makeopts_jobs)
 		$(usepil avif)_avif = True
 		$(usepil truetype)_freetype = True
 		$(usepil jpeg)_jpeg = True
