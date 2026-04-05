@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
-		<email>jared@rgst.io</email>
-		<name>Jared Allard</name>
+		<email>lg3dx6fd@gmail.com</email>
+		<name>Arniiiii</name>
 	</maintainer>
 	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
@@ -12,6 +12,8 @@
 	<longdescription>
 		Yet another stripped down fork of boost-ext ut2 (! not ut !).
 		ut2 is a library for testing using `constexpr` extensively in comparison to boost-ext/ut.
+		Original ut2 is at https://github.com/boost-ext/ut2 .
+		On why the glaze developers chose to use their fork: https://github.com/stephenberry/glaze/discussions/1653
 	</longdescription>
 	<upstream>
 		<bugs-to>https://github.com/openalgz/ut/issues</bugs-to>
