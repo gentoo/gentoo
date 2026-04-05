@@ -1,0 +1,259 @@
+From e1322d74de41e989f709e0129ac41e5469b9cc4c Mon Sep 17 00:00:00 2001
+Message-ID: <e1322d74de41e989f709e0129ac41e5469b9cc4c.1775418696.git.sam@gentoo.org>
+From: Zac Medico <zmedico@gentoo.org>
+Date: Fri, 20 Feb 2026 19:05:12 -0800
+Subject: [PATCH] Revert "depgraph: earlier slot operator backtracking"
+
+This reverts commit 8ddd35e04bb4c50a85d7cc61edb85d91dd10ce4b.
+
+Bug: https://bugs.gentoo.org/969654
+Bug: https://bugs.gentoo.org/964705
+Bug: https://bugs.gentoo.org/968228
+Signed-off-by: Zac Medico <zmedico@gentoo.org>
+---
+ lib/_emerge/depgraph.py                       | 152 +++++++++---------
+ .../test_binpackage_downgrades_slot_dep.py    |   3 +
+ .../tests/resolver/test_missed_update.py      |   3 +
+ 3 files changed, 86 insertions(+), 72 deletions(-)
+
+diff --git a/lib/_emerge/depgraph.py b/lib/_emerge/depgraph.py
+index 7ac07ad5e..5d9888229 100644
+--- a/lib/_emerge/depgraph.py
++++ b/lib/_emerge/depgraph.py
+@@ -1937,9 +1937,16 @@ class depgraph:
+             # conflicts (or by blind luck).
+             raise self._unknown_internal_error()
+ 
++        # Both _process_slot_conflict and _slot_operator_trigger_reinstalls
++        # can call _slot_operator_update_probe, which requires that
++        # self._dynamic_config._blocked_pkgs has been initialized by a
++        # call to the _validate_blockers method.
+         for conflict in self._dynamic_config._package_tracker.slot_conflicts():
+             self._process_slot_conflict(conflict)
+ 
++        if self._dynamic_config._allow_backtracking:
++            self._slot_operator_trigger_reinstalls()
++
+     def _process_slot_conflict(self, conflict):
+         """
+         Process slot conflict data to identify specific atoms which
+@@ -2895,50 +2902,50 @@ class depgraph:
+ 
+         return None
+ 
+-    def _slot_operator_trigger_backtracking(self, dep: Dependency) -> bool:
++    def _slot_operator_trigger_reinstalls(self):
+         """
+-        Trigger backtracking for slot operator issues if needed.
+-        Return True if this triggers backtracking, and False otherwise.
++        Search for packages with slot-operator deps on older slots, and schedule
++        rebuilds if they can link to a newer slot that's in the graph.
+         """
+-        if not self._dynamic_config._allow_backtracking:
+-            return False
+-
+-        atom = dep.atom
+-
+-        if not (atom.soname or atom.slot_operator_built):
+-            new_child_slot = self._slot_change_probe(dep)
+-            if new_child_slot is not None:
+-                self._slot_change_backtrack(dep, new_child_slot)
+-                return True
+-
+-        if not (dep.parent and isinstance(dep.parent, Package) and dep.parent.built):
+-            return False
+ 
+         rebuild_if_new_slot = (
+             self._dynamic_config.myparams.get("rebuild_if_new_slot", "y") == "y"
+         )
+ 
+-        # If the parent is not installed, check if it needs to be
+-        # rebuilt against an installed instance, since otherwise
+-        # it could trigger downgrade of an installed instance as
+-        # in bug #652938.
+-        want_update_probe = dep.want_update or not dep.parent.installed
+-
+-        # Check for slot update first, since we don't want to
+-        # trigger reinstall of the child package when a newer
+-        # slot will be used instead.
+-        if rebuild_if_new_slot and want_update_probe:
+-            new_dep = self._slot_operator_update_probe(dep, new_child_slot=True)
+-            if new_dep is not None:
+-                self._slot_operator_update_backtrack(dep, new_child_slot=new_dep.child)
+-                return True
++        for slot_key, slot_info in self._dynamic_config._slot_operator_deps.items():
++            for dep in slot_info:
++                atom = dep.atom
+ 
+-        if want_update_probe:
+-            if self._slot_operator_update_probe(dep):
+-                self._slot_operator_update_backtrack(dep)
+-                return True
++                if not (atom.soname or atom.slot_operator_built):
++                    new_child_slot = self._slot_change_probe(dep)
++                    if new_child_slot is not None:
++                        self._slot_change_backtrack(dep, new_child_slot)
++                    continue
+ 
+-        return False
++                if not (
++                    dep.parent and isinstance(dep.parent, Package) and dep.parent.built
++                ):
++                    continue
++
++                # If the parent is not installed, check if it needs to be
++                # rebuilt against an installed instance, since otherwise
++                # it could trigger downgrade of an installed instance as
++                # in bug #652938.
++                want_update_probe = dep.want_update or not dep.parent.installed
++
++                # Check for slot update first, since we don't want to
++                # trigger reinstall of the child package when a newer
++                # slot will be used instead.
++                if rebuild_if_new_slot and want_update_probe:
++                    new_dep = self._slot_operator_update_probe(dep, new_child_slot=True)
++                    if new_dep is not None:
++                        self._slot_operator_update_backtrack(
++                            dep, new_child_slot=new_dep.child
++                        )
++
++                if want_update_probe:
++                    if self._slot_operator_update_probe(dep):
++                        self._slot_operator_update_backtrack(dep)
+ 
+     def _reinstall_for_flags(
+         self, pkg, forced_flags, orig_use, orig_iuse, cur_use, cur_iuse
+@@ -3429,6 +3436,44 @@ class depgraph:
+                     raise
+                 del e
+ 
++        # NOTE: REQUIRED_USE checks are delayed until after
++        # package selection, since we want to prompt the user
++        # for USE adjustment rather than have REQUIRED_USE
++        # affect package selection and || dep choices.
++        if (
++            not pkg.built
++            and pkg._metadata.get("REQUIRED_USE")
++            and eapi_has_required_use(pkg.eapi)
++        ):
++            required_use_is_sat = check_required_use(
++                pkg._metadata["REQUIRED_USE"],
++                self._pkg_use_enabled(pkg),
++                pkg.iuse.is_valid_flag,
++                eapi=pkg.eapi,
++            )
++            if not required_use_is_sat:
++                if dep.atom is not None and dep.parent is not None:
++                    self._add_parent_atom(pkg, (dep.parent, dep.atom))
++
++                if arg_atoms:
++                    for parent_atom in arg_atoms:
++                        parent, atom = parent_atom
++                        self._add_parent_atom(pkg, parent_atom)
++
++                atom = dep.atom
++                if atom is None:
++                    atom = Atom("=" + pkg.cpv)
++                self._dynamic_config._unsatisfied_deps_for_display.append(
++                    ((pkg.root, atom), {"myparent": dep.parent, "show_req_use": pkg})
++                )
++                self._dynamic_config._required_use_unsatisfied = True
++                self._dynamic_config._skip_restart = True
++                # Add pkg to digraph in order to enable autounmask messages
++                # for this package, which is useful when autounmask USE
++                # changes have violated REQUIRED_USE.
++                self._dynamic_config.digraph.add(pkg, dep.parent, priority=priority)
++                return 0
++
+         if not pkg.onlydeps:
+             existing_node, existing_node_matches = self._check_slot_conflict(
+                 pkg, dep.atom
+@@ -3587,43 +3632,6 @@ class depgraph:
+             and (dep.atom.soname or dep.atom.slot_operator == "=")
+         ):
+             self._add_slot_operator_dep(dep)
+-            if self._slot_operator_trigger_backtracking(dep):
+-                # Drop slot operator deps that trigger backtracking, since
+-                # they may be irrelevant and therefore we don't want to
+-                # enforce the REQUIRED_USE check that comes below (bug 964705).
+-                # Since backtracking has been triggered, the _need_restart flag
+-                # is set and this depgraph is only useful for collecting
+-                # backtracking parameters at this point, so it is acceptable to
+-                # drop dependencies as needed. It would not be acceptable to
+-                # abort depgraph creation here, since that would not scale well
+-                # for large numbers of slot operator rebuilds.
+-                return 1
+-
+-        # NOTE: REQUIRED_USE checks are delayed until after
+-        # package selection, since we want to prompt the user
+-        # for USE adjustment rather than have REQUIRED_USE
+-        # affect package selection and || dep choices.
+-        if (
+-            not pkg.built
+-            and pkg._metadata.get("REQUIRED_USE")
+-            and eapi_has_required_use(pkg.eapi)
+-        ):
+-            required_use_is_sat = check_required_use(
+-                pkg._metadata["REQUIRED_USE"],
+-                self._pkg_use_enabled(pkg),
+-                pkg.iuse.is_valid_flag,
+-                eapi=pkg.eapi,
+-            )
+-            if not required_use_is_sat:
+-                atom = dep.atom
+-                if atom is None:
+-                    atom = Atom("=" + pkg.cpv)
+-                self._dynamic_config._unsatisfied_deps_for_display.append(
+-                    ((pkg.root, atom), {"myparent": dep.parent, "show_req_use": pkg})
+-                )
+-                self._dynamic_config._required_use_unsatisfied = True
+-                self._dynamic_config._skip_restart = True
+-                return 0
+ 
+         recurse = deep is True or not self._too_deep(self._depth_increment(depth, n=1))
+         dep_stack = self._dynamic_config._dep_stack
+diff --git a/lib/portage/tests/resolver/test_binpackage_downgrades_slot_dep.py b/lib/portage/tests/resolver/test_binpackage_downgrades_slot_dep.py
+index b47f73dcb..699cd1c46 100644
+--- a/lib/portage/tests/resolver/test_binpackage_downgrades_slot_dep.py
++++ b/lib/portage/tests/resolver/test_binpackage_downgrades_slot_dep.py
+@@ -1,6 +1,8 @@
+ # Copyright 2025 Gentoo Authors
+ # Distributed under the terms of the GNU General Public License v2
+ 
++import pytest
++
+ from portage.tests import TestCase
+ from portage.tests.resolver.ResolverPlayground import (
+     ResolverPlayground,
+@@ -9,6 +11,7 @@ from portage.tests.resolver.ResolverPlayground import (
+ 
+ 
+ class BinpackageDowngradesSlotDepTestCase(TestCase):
++    @pytest.mark.xfail()
+     def testBinpackageDowngradesSlotDep(self):
+         python_use = "python_targets_python3_12 +python_targets_python3_13"
+         python_usedep = "python_targets_python3_12(-)?,python_targets_python3_13(-)?"
+diff --git a/lib/portage/tests/resolver/test_missed_update.py b/lib/portage/tests/resolver/test_missed_update.py
+index 6813a9172..2c15a16c8 100644
+--- a/lib/portage/tests/resolver/test_missed_update.py
++++ b/lib/portage/tests/resolver/test_missed_update.py
+@@ -1,6 +1,8 @@
+ # Copyright 2026 Gentoo Authors
+ # Distributed under the terms of the GNU General Public License v2
+ 
++import pytest
++
+ from portage.tests import TestCase
+ from portage.tests.resolver.ResolverPlayground import (
+     ResolverPlayground,
+@@ -9,6 +11,7 @@ from portage.tests.resolver.ResolverPlayground import (
+ 
+ 
+ class MissedQtUpdateTestCase(TestCase):
++    @pytest.mark.xfail()
+     def testMissedQtUpdate(self):
+         """
+         Testcase where Portage was unable to upgrade from
+-- 
+2.53.0
+
