@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~riscv ~s390"
+KEYWORDS="~alpha ~amd64 ~riscv ~s390 ~x86"
 
 RDEPEND="
 	>=dev-python/filelock-3.15.4[${PYTHON_USEDEP}]
