@@ -14,7 +14,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ppc ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="bzip2 debug ermt lzo readline selinux sqlite ssl test +uuid zlib"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
