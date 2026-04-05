@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -83,7 +83,11 @@ src_configure() {
 	fi
 
 	# dial down warnings about unused results
-	append-flags -Wno-unused-result
+	append-cflags -Wno-unused-result
+
+	# workaround for autoconf-2.73 defaulting to C23:
+	# https://bugs.gentoo.org/972313
+	append-cflags -std=gnu17
 
 	econf "${myconf[@]}"
 }
