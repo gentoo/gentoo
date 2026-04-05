@@ -38,3 +38,17 @@ BDEPEND="
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
+
+src_unpack() {
+	if use verify-provenance &&
+		has_version "<dev-python/pypi-attestations-0.0.28" &&
+		has_version ">=dev-python/sigstore-4"
+	then
+		# https://bugs.gentoo.org/969332
+		einfo "Skipping provenance check due to sigstore/pypi-attestations upgrade cycle"
+		default
+		return
+	fi
+
+	pypi_src_unpack
+}
