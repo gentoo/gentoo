@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
-		<email>jared@rgst.io</email>
-		<name>Jared Allard</name>
+		<email>lg3dx6fd@gmail.com</email>
+		<name>Arniiiii</name>
 	</maintainer>
 	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
@@ -13,6 +13,7 @@
 			Yet another library for C++ for parsing JSON. Uses SIMD as well. In some benchmarks is better than simdjson.
 	</longdescription>
 	<use>
+		<flag name="eetf-format">Link Erlang for erlang ettf format</flag>
 		<flag name="fuzzing">Build fuzzers (not install)</flag>
 		<flag name="examples">Build examples (not install)</flag>
 	</use>
