@@ -10,7 +10,7 @@ inherit distutils-r1 pypi
 
 DESCRIPTION="Remove outdated built kernels"
 HOMEPAGE="
-	https://github.com/projg2/eclean-kernel/
+	https://github.com/gentoo/eclean-kernel/
 	https://pypi.org/project/eclean-kernel/
 "
 
