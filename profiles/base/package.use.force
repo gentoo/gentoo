@@ -1,6 +1,11 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michael Orlitzky <mjo@gentoo.org> (2026-04-05)
+# The non-jumbo build failures are back in 2.52.x.
+=net-libs/webkit-gtk-2.52.1-r410 jumbo-build
+=net-libs/webkit-gtk-2.52.1-r600 jumbo-build
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-02-12)
 # Fails to build without. Bug #968803
 =sci-libs/opencascade-7.8* opengl
