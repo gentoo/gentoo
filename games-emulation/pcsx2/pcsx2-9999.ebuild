@@ -37,7 +37,7 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="
 	app-arch/lz4:=
 	app-arch/zstd:=
-	>=dev-cpp/rapidyaml-0.11:=
+	>=dev-cpp/rapidyaml-0.10:=
 	dev-qt/qtbase:6=[X,concurrent,gui,widgets]
 	dev-qt/qtsvg:6
 	>=gui-libs/kddockwidgets-2.3:=
