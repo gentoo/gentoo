@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/r1chardj0n3s/parse/"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ppc64 ~riscv x86"
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
