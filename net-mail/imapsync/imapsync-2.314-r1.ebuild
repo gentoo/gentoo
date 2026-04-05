@@ -55,20 +55,12 @@ RDEPEND="
 	dev-perl/Try-Tiny
 	dev-perl/Unicode-String
 	dev-perl/URI
-	virtual/perl-Compress-Raw-Zlib
-	virtual/perl-Data-Dumper
-	virtual/perl-Digest
-	virtual/perl-Digest-MD5
-	virtual/perl-Digest-SHA
-	virtual/perl-Encode
-	virtual/perl-MIME-Base64
 	"
 
 DEPEND="${RDEPEND}"
 BDEPEND="
 		sys-apps/lsb-release
 		test? (
-			virtual/perl-Test
 			dev-perl/Test-Deep
 			dev-perl/Test-Fatal
 			dev-perl/Test-MockObject
