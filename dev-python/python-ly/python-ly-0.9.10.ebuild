@@ -37,12 +37,3 @@ BDEPEND="
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
-
-src_test() {
-	# https://github.com/frescobaldi/python-ly/issues/176
-	sed -e 's:\(schemaLocation="\).*/\([a-z]*\.xsd"\):\1\2:' \
-		-i tests/musicxml.xsd || die
-	cp "${DISTDIR}"/{xml,xlink}.xsd tests/ || die
-
-	distutils-r1_src_test
-}
