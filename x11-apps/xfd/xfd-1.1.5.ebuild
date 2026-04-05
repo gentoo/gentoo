@@ -6,7 +6,7 @@ EAPI=8
 inherit xorg-meson
 
 DESCRIPTION="X.Org xfd application"
-KEYWORDS="amd64 arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~s390 ~sparc x86"
+KEYWORDS="amd64 arm ~arm64 ~hppa ~mips ppc ~ppc64 ~s390 ~sparc x86"
 
 RDEPEND="
 	media-libs/fontconfig
