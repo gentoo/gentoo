@@ -6,7 +6,7 @@ EAPI=8
 inherit xorg-meson
 
 DESCRIPTION="scientific calculator for X"
-KEYWORDS="amd64 arm ~arm64 ~hppa ~mips ~ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="amd64 arm ~arm64 ~hppa ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 RDEPEND="x11-libs/libXaw
 	x11-libs/libXt
