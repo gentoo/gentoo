@@ -117,6 +117,23 @@ python_test() {
 			xarray/tests/test_coding_times.py::test_decode_cf_time_bounds
 			xarray/tests/test_coding_times.py::test_use_cftime_false_standard_calendar_in_range
 			xarray/tests/test_coding_times.py::test_decode_cf_datetime_non_standard_units
+
+			# https://github.com/pydata/xarray/issues/10956
+			'xarray/tests/test_coding_times.py::test_decode_timedelta_via_units[decode_timedelta=False]'
+			xarray/tests/test_dataset.py::TestDataset::test_to_and_from_dataframe
+			xarray/tests/test_formatting.py::TestFormatting::test_diff_datatree_repr_equals
+			xarray/tests/test_formatting.py::test_repr_pandas_multi_index
+			'xarray/tests/test_groupby.py::TestDataArrayGroupBy::test_groupby_reduce_keep_attrs[False-False]'
+			'xarray/tests/test_groupby.py::TestDataArrayGroupBy::test_groupby_reduce_keep_attrs[False-True]'
+			'xarray/tests/test_groupby.py::TestDataArrayGroupBy::test_groupby_reduce_keep_attrs[None-False]'
+			'xarray/tests/test_groupby.py::TestDataArrayGroupBy::test_groupby_reduce_keep_attrs[None-True]'
+			'xarray/tests/test_groupby.py::TestDataArrayGroupBy::test_groupby_reduce_keep_attrs[True-False]'
+			'xarray/tests/test_groupby.py::TestDataArrayGroupBy::test_groupby_reduce_keep_attrs[True-True]'
+			xarray/tests/test_groupby.py::test_groupby_reduce_dimension_error
+			xarray/tests/test_namedarray.py::test_fake_target_chunksize_cftime
+			'xarray/tests/test_namedarray.py::test_fake_target_chunksize[input_array0-1024-int64]'
+			xarray/tests/test_strategies.py::TestReduction::test_mean
+			xarray/tests/test_variable.py::TestVariable::test_reduce_keepdims
 		)
 	fi
 
