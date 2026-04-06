@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ CRATES="
 RUST_MIN_VER="1.77.2"
 RUST_MULTILIB=1
 
-inherit cargo gnome2 meson-multilib python-any-r1 rust-toolchain vala
+inherit cargo gnome2 meson-multilib python-any-r1 rust-toolchain toolchain-funcs vala
 
 DESCRIPTION="Scalable Vector Graphics (SVG) rendering library"
 HOMEPAGE="https://wiki.gnome.org/Projects/LibRsvg https://gitlab.gnome.org/GNOME/librsvg"
@@ -91,7 +91,7 @@ multilib_src_configure() {
 		$(meson_use test tests)
 	)
 
-	if ! multilib_is_native_abi; then
+	if ! multilib_is_native_abi || tc-is-cross-compiler; then
 		emesonargs+=(
 			# Set the rust target, which can differ from CHOST
 			-Dtriplet="$(rust_abi)"
