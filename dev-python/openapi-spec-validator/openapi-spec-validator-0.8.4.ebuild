@@ -18,7 +18,7 @@ HOMEPAGE="
 LICENSE="BSD"
 SLOT="0"
 if [[ ${PV} != *_beta* ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 fi
 
 RDEPEND="
