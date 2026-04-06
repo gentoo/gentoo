@@ -48,6 +48,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.10.2-numexpr-2.13.0.patch
+)
+
 python_prepare_all() {
 	rm -r c-blosc/{blosc,internal-complibs} || die
 
