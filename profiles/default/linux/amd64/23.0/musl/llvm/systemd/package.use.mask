@@ -1,7 +1,0 @@
-# Copyright 2026 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
-
-# Michał Górny <mgorny@gentoo.org> (2026-04-05)
-# Requires sys-libs/glibc.
-sys-kernel/gentoo-kernel generic-uki
-sys-kernel/vanilla-kernel generic-uki
