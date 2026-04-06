@@ -16,9 +16,6 @@ RDEPEND="
 		>=dev-lang/perl-5.08.1
 		dev-perl/JSON
 		dev-perl/Module-Runtime
-		virtual/perl-Carp
-		virtual/perl-Digest-SHA
-		virtual/perl-Exporter
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
