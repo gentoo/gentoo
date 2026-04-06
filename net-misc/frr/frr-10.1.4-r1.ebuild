@@ -140,7 +140,7 @@ src_install() {
 
 	# Install init scripts
 	systemd_dounit tools/frr.service
-	newinitd "${FILESDIR}"/frr-openrc-v3 frr
+	newinitd "${FILESDIR}"/frr-openrc-v4 frr
 
 	# Conflict files, installed by net-libs/libsmi, bug #758383
 	# Files from frr seems to be newer.
