@@ -1,0 +1,36 @@
+From fd95c3d741963e52dc3ad5871cf24eaebc0cac5e Mon Sep 17 00:00:00 2001
+From: Mario Haustein <mario.haustein@hrz.tu-chemnitz.de>
+Date: Fri, 3 Apr 2026 16:44:30 +0200
+Subject: [PATCH] Link Alpaca focuser and filter wheel against httplib (#2354)
+
+---
+ drivers/filter_wheel/CMakeLists.txt | 4 ++--
+ drivers/focuser/CMakeLists.txt      | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/filter_wheel/CMakeLists.txt b/drivers/filter_wheel/CMakeLists.txt
+index e8ee05fd2b..1d073d977a 100644
+--- a/drivers/filter_wheel/CMakeLists.txt
++++ b/drivers/filter_wheel/CMakeLists.txt
+@@ -91,5 +91,5 @@ SET(alpaca_filterwheel_SRC
+     indi_alpaca_filterwheel.cpp)
+ 
+ add_executable(indi_alpaca_filterwheel ${alpaca_filterwheel_SRC})
+-target_link_libraries(indi_alpaca_filterwheel indidriver)
+-install(TARGETS indi_alpaca_filterwheel RUNTIME DESTINATION bin)
+\ No newline at end of file
++target_link_libraries(indi_alpaca_filterwheel indidriver ${HTTPLIB_LIBRARY})
++install(TARGETS indi_alpaca_filterwheel RUNTIME DESTINATION bin)
+diff --git a/drivers/focuser/CMakeLists.txt b/drivers/focuser/CMakeLists.txt
+index aa6f5e733d..95c96ea0d6 100644
+--- a/drivers/focuser/CMakeLists.txt
++++ b/drivers/focuser/CMakeLists.txt
+@@ -405,5 +405,5 @@ SET(alpaca_focuser_SRC
+     indi_alpaca_focuser.cpp)
+ 
+ add_executable(indi_alpaca_focuser ${alpaca_focuser_SRC})
+-target_link_libraries(indi_alpaca_focuser indidriver)
+-install(TARGETS indi_alpaca_focuser RUNTIME DESTINATION bin)
+\ No newline at end of file
++target_link_libraries(indi_alpaca_focuser indidriver ${HTTPLIB_LIBRARY})
++install(TARGETS indi_alpaca_focuser RUNTIME DESTINATION bin)
