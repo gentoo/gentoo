@@ -30,7 +30,7 @@ else
 	S="${WORKDIR}/${MY_PN}-${MY_PV}"
 
 	if [[ "${PV}" != *rc* ]]; then
-		KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+		KEYWORDS="amd64 ~arm ~arm64 ~riscv ~x86"
 	fi
 fi
 
