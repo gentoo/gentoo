@@ -1,0 +1,32 @@
+https://git.samba.org/?p=uid_wrapper.git;a=commit;h=ea8abbaaeb793438824c44bb2a5ea490054232ad
+
+From ea8abbaaeb793438824c44bb2a5ea490054232ad Mon Sep 17 00:00:00 2001
+From: Helge Deller <deller@gmx.de>
+Date: Fri, 8 Nov 2024 08:36:17 +0100
+Subject: [PATCH] Fix x32 syscall
+
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1086769
+
+Signed-off-by: Simon Josefsson <simon@josefsson.org>
+Reviewed-by: Andreas Schneider <asn@samba.org>
+---
+ tests/uwrap_fake_socket_wrapper.h | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/tests/uwrap_fake_socket_wrapper.h b/tests/uwrap_fake_socket_wrapper.h
+index 63e423a..f86e543 100644
+--- a/tests/uwrap_fake_socket_wrapper.h
++++ b/tests/uwrap_fake_socket_wrapper.h
+@@ -1,7 +1,9 @@
+ #include <stdbool.h>
+ 
+ /* simulate socket_wrapper hooks */
+-#define __FAKE_SOCKET_WRAPPER_SYSCALL_NO 123456789
++/* Use fake number higher than x32 architecture syscalls which
++ * start at __X32_SYSCALL_BIT (0x40000000) */
++#define __FAKE_SOCKET_WRAPPER_SYSCALL_NO 0x4f000000
+ #define __FAKE_SOCKET_WRAPPER_SYSCALL_RC 987654321
+ bool socket_wrapper_syscall_valid(long int sysno);
+ long int socket_wrapper_syscall_va(long int sysno, va_list va);
+-- 
+2.34.1
