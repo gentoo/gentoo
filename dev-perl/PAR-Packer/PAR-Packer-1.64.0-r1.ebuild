@@ -17,7 +17,6 @@ RDEPEND="
 		dev-perl/IPC-Run3
 		dev-perl/Module-ScanDeps
 		dev-perl/PAR
-		virtual/perl-Digest-SHA
 "
 DEPEND="${RDEPEND}"
 
