@@ -8,7 +8,7 @@ HOMEPAGE="https://apps.kde.org/kdegraphics_thumbnailers/"
 
 LICENSE="metapackage"
 SLOT="6"
-KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="blender gettext mobi pdf raw video"
 
 RDEPEND="
