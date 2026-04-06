@@ -1,12 +1,12 @@
-# Copyright 2019-2025 Gentoo Authors
+# Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit linux-info systemd
+inherit linux-info meson systemd
 
 if [[ ${PV} == 9999 ]]; then
-	inherit autotools git-r3
+	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/openconnect/ocserv.git"
 else
 	inherit verify-sig
@@ -22,7 +22,7 @@ HOMEPAGE="https://ocserv.gitlab.io/www/index.html"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="geoip kerberos +lz4 otp pam radius +seccomp systemd tcpd test"
+IUSE="geoip kerberos +lz4 +nftables otp pam radius +seccomp systemd tcpd test"
 RESTRICT="!test? ( test )"
 
 BDEPEND+="
@@ -57,47 +57,44 @@ DEPEND="
 	systemd? ( sys-apps/systemd:0= )
 	tcpd? ( sys-apps/tcp-wrappers:0= )
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	nftables? ( net-firewall/nftables )
+	!nftables? ( net-firewall/iptables )
+"
 
 CONFIG_CHECK="~TUN ~UNIX_DIAG"
 
-src_prepare() {
-	default
-	if [[ ${PV} == 9999 ]]; then
-		eautoreconf
-	fi
-}
-
 src_configure() {
-	local myconf=(
-		--without-root-tests
-
-		$(use_enable seccomp)
-		$(use_enable systemd)
-
-		$(use_with geoip)
-		$(use_with kerberos gssapi)
-		--without-llhttp
-		$(use_with lz4)
-		$(use_with otp liboath)
-		$(use_with radius)
-		$(use_with tcpd libwrap)
+	local emesonargs=(
+		--auto-features=disabled
+		$(meson_feature pam)
+		$(meson_feature radius)
+		$(meson_feature kerberos gssapi)
+		$(meson_feature otp liboath)
+		-Dlibnl=enabled
+		$(meson_feature geoip)
+		$(meson_feature lz4)
+		$(meson_feature seccomp)
+		$(meson_feature systemd)
+		$(meson_feature tcpd libwrap)
+		-Dlocal-pcl=false
+		-Droot-tests=false
+		-Dfirewall-script=$(usex nftables nftables iptables)
 	)
-	econf "${myconf[@]}"
+	meson_src_configure
 }
 
 src_test() {
-	addwrite /proc
 	if [[ ${LD_PRELOAD} == *libsandbox* ]]; then
 		# https://bugs.gentoo.org/961961
 		ewarn "Skipping tests: libsandbox in LD_PRELOAD"
 		return
 	fi
-	default
+	meson_src_test
 }
 
 src_install() {
-	default
+	meson_src_install
 
 	dodoc doc/sample.{config,passwd}
 	use otp && dodoc doc/sample.otp

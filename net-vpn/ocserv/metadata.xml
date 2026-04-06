@@ -6,6 +6,7 @@
 		<name>Mike Gilbert</name>
 	</maintainer>
 	<use>
+		<flag name="nftables">Use nftables instead of iptables in ocserv-fw</flag>
 		<flag name="otp">Enable support for one-time passwords</flag>
 	</use>
 	<upstream>
