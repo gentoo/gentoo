@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~s390"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~riscv ~s390"
 
 # there's an optional dep on rich for cute logs
 RDEPEND="
