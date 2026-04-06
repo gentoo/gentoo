@@ -107,6 +107,9 @@ src_configure() {
 multilib_src_configure() {
 	unset LEX YACC
 
+	# Only for IMA verification of RPMs
+	export ac_cv_lib_rpm_headerGet=no
+
 	local myeconfargs=(
 		$(use_enable nls)
 		$(multilib_native_use_enable debuginfod)
