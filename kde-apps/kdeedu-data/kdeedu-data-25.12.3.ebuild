@@ -9,7 +9,7 @@ DESCRIPTION="Shared icons, artwork and data files for educational applications"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~riscv ~x86"
 IUSE=""
 
 BDEPEND="
