@@ -1,3 +1,7 @@
+https://github.com/pjsip/pjproject/issues/3420 (motivation)
+https://github.com/pjsip/pjproject/pull/4905 (this)
+https://github.com/alpinelinux/aports/commit/efdf20262b619671f8e5a227a2a81bf58275eef9 (Alpine variant)
+
 From c419b86e4163b54665b4311f0279170761ac31ed Mon Sep 17 00:00:00 2001
 From: Jaco Kroon <jaco@uls.co.za>
 Date: Thu, 2 Apr 2026 16:19:29 +0200
