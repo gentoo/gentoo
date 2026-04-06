@@ -20,5 +20,4 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 		dev-perl/Module-Build
-		virtual/perl-ExtUtils-MakeMaker
 "
