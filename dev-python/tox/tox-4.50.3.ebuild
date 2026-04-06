@@ -35,6 +35,7 @@ BDEPEND="
 	dev-python/docutils[${PYTHON_USEDEP}]
 	dev-python/hatch-vcs[${PYTHON_USEDEP}]
 	test? (
+		dev-python/argcomplete[${PYTHON_USEDEP}]
 		dev-python/build[${PYTHON_USEDEP}]
 		dev-python/distlib[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
