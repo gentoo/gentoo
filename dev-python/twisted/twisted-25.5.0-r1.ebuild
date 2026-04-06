@@ -72,7 +72,6 @@ BDEPEND="
 			>=dev-python/appdirs-1.4.0[${PYTHON_USEDEP}]
 			>=dev-python/bcrypt-3.0.0[${PYTHON_USEDEP}]
 			>=dev-python/constantly-15.1.0[${PYTHON_USEDEP}]
-			<dev-python/cython-test-exception-raiser-2[${PYTHON_USEDEP}]
 			>=dev-python/cython-test-exception-raiser-1.0.2[${PYTHON_USEDEP}]
 			>=dev-python/idna-2.4[${PYTHON_USEDEP}]
 			>=dev-python/httpx-0.27[${PYTHON_USEDEP}]
