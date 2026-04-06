@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,7 +28,7 @@ RDEPEND="
 	media-libs/libpng:=
 	net-libs/libtirpc:=
 	sci-libs/gsl:=
-	sci-libs/plplot:=[X,cxx,-dynamic,wxwidgets?]
+	sci-libs/plplot:=[X,cxx,dynamic,latex,wxwidgets?]
 	sys-libs/ncurses:=
 	sys-libs/readline:=
 	virtual/zlib:=
@@ -145,7 +145,7 @@ src_configure() {
 }
 
 src_test() {
-	virtx cmake_src_test
+	PLPLOT_DRV_DIR=src/plplotdriver virtx cmake_src_test
 }
 
 src_install() {
