@@ -36,6 +36,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2026-04-06)
+# These versions dropped testtools.tests.* which are used by reverse
+# dependencies like dev-python/python-subunit.
+=dev-python/testtools-2.8.0
+=dev-python/testtools-2.8.2
+=dev-python/testtools-2.8.3
+
 # Michał Górny <mgorny@gentoo.org> (2026-04-05)
 # Needed only by old versions of dev-python/sigstore, along with a bunch
 # of NIH dependencies.
