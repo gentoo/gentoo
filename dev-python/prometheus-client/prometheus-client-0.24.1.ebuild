@@ -36,3 +36,8 @@ distutils_enable_tests pytest
 EPYTEST_DESELECT=(
 	tests/test_parser.py::test_benchmark_text_string_to_metric_families
 )
+
+EPYTEST_IGNORE=(
+	# Optional testdep on dev-python/asgiref
+	tests/test_asgi.py
+)
