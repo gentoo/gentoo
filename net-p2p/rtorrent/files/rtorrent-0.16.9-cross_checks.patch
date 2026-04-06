@@ -1,0 +1,24 @@
+# fix checks with cross-compile
+# XMLRPC-C: adapt args for pkg-config
+# LUA: don't test interpreter, AX_LUA_LIBS/AX_LUA_HEADERS are defined in src_configure
+--- a/scripts/checks.m4
++++ b/scripts/checks.m4
+@@ -236,8 +236,8 @@ AC_DEFUN([TORRENT_WITH_XMLRPC_C], [
+       fi
+ 
+       if eval $xmlrpc_cc_prg --version 2>/dev/null >/dev/null; then
+-        CXXFLAGS="$CXXFLAGS `$xmlrpc_cc_prg --cflags server-util`"
+-        LIBS="$LIBS `$xmlrpc_cc_prg server-util --libs`"
++        CXXFLAGS="$CXXFLAGS `$xmlrpc_cc_prg --cflags xmlrpc_server`"
++        LIBS="$LIBS `$xmlrpc_cc_prg xmlrpc_server --libs`"
+ 
+         AC_LINK_IFELSE([AC_LANG_PROGRAM([[ #include <xmlrpc-c/server.h>
+         ]], [[ xmlrpc_registry_new(NULL); ]])],[
+@@ -280,7 +280,6 @@ AC_DEFUN([TORRENT_WITH_LUA], [
+     if test "$withval" = "no"; then
+       AC_MSG_RESULT(no)
+     else
+-      AX_PROG_LUA
+       AX_LUA_LIBS
+       AX_LUA_HEADERS
+       AC_DEFINE(HAVE_LUA, 1, Use LUA.)

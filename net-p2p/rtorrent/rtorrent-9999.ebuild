@@ -20,7 +20,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug lua selinux test tinyxml2 xmlrpc"
+IUSE="debug lua selinux systemd test tinyxml2 xmlrpc"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	lua? ( ${LUA_REQUIRED_USE} )
@@ -31,6 +31,7 @@ COMMON_DEPEND="
 	~net-libs/libtorrent-${PV}
 	sys-libs/ncurses:0=
 	lua? ( ${LUA_DEPS} )
+	systemd? ( sys-apps/systemd:= )
 	xmlrpc? ( dev-libs/xmlrpc-c:=[libxml2] )
 "
 DEPEND="${COMMON_DEPEND}
@@ -43,6 +44,10 @@ BDEPEND="
 	virtual/pkgconfig
 	test? ( dev-util/cppunit )
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.16.9-cross_checks.patch
+)
 
 DOCS=( doc/rtorrent.rc )
 
@@ -66,20 +71,15 @@ src_prepare() {
 		sed -i 's/Wl,-syslibroot,/Wl,--sysroot,/' "${S}/scripts/common.m4" || die
 	fi
 
-	# don't test interpreter (fix cross-compile)
-	# vars for AX_LUA_LIBS/AX_LUA_HEADERS are defined in src_configure
-	sed -e '/AX_PROG_LUA/d' -i scripts/checks.m4 || die
-
 	eautoreconf
 }
 
 src_configure() {
-	# used by xmlrpc-c-config
-	tc-export PKG_CONFIG
 	local myeconfargs=(
 		$(use_enable debug)
 		$(use_with lua)
-		$(usev xmlrpc --with-xmlrpc-c)
+		$(use_with systemd)
+		$(usev xmlrpc --with-xmlrpc-c=$(tc-getPKG_CONFIG))
 		$(usev tinyxml2 --with-xmlrpc-tinyxml2)
 	)
 
