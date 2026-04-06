@@ -33,7 +33,8 @@ esac
 # provide for a better first installation experience.
 
 # All stable RUBY_TARGETS
-# Order is reversed to give preference to the newer Ruby version
+# Latest Ruby version goes first in the stable list to give dependency
+# preference to the newer Ruby version.
 RUBY_TARGETS_PREFERENCE="ruby33 ruby32 "
 
 # All other active ruby targets
