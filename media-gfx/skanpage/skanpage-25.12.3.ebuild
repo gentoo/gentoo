@@ -14,7 +14,7 @@ HOMEPAGE="https://apps.kde.org/skanpage/"
 
 LICENSE="|| ( GPL-2 GPL-3 ) CC0-1.0"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE=""
 
 DEPEND="
