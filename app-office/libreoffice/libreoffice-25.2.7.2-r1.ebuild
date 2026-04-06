@@ -305,6 +305,9 @@ PATCHES=(
 	# add qt6 backend as possible fallback for gtk-based desktop environments:
 	# https://bugs.gentoo.org/950170
 	"${FILESDIR}/${PN}-25.2-vcl-backend-fallback.patch"
+
+	# bug #971474
+	"${FILESDIR}/${PN}-25.2.7.2-skia-clang22.patch"
 )
 
 _check_reqs() {
