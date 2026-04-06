@@ -47,7 +47,8 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/pyopencl-2025.1-nanobind-flags.patch
+	"${FILESDIR}"/${PN}-2025.1-nanobind-flags.patch
+	"${FILESDIR}"/${P}-numpy-build.patch
 )
 
 EPYTEST_PLUGINS=()
