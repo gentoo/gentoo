@@ -38,6 +38,10 @@ BDEPEND="
 	>=dev-python/scikit-build-core-0.11[${PYTHON_USEDEP}]
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-cython.patch
+)
+
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 

@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/966947
+https://github.com/rapidfuzz/Levenshtein/commit/759c0b42036813bc82504c5ca287d1d6bdaac852
+
+From 759c0b42036813bc82504c5ca287d1d6bdaac852 Mon Sep 17 00:00:00 2001
+From: Martin Weinelt <hexa@darmstadt.ccc.de>
+Date: Thu, 22 Jan 2026 22:32:31 +0100
+Subject: [PATCH] Compile extension as C++
+
+This fixes the build with Cython 3.2. Tested against 3.2.4.
+---
+ src/Levenshtein/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Levenshtein/CMakeLists.txt b/src/Levenshtein/CMakeLists.txt
+index 721f7a7..f6159ed 100644
+--- a/src/Levenshtein/CMakeLists.txt
++++ b/src/Levenshtein/CMakeLists.txt
+@@ -9,7 +9,7 @@ function(create_cython_target _name)
+       MAIN_DEPENDENCY "${CMAKE_CURRENT_LIST_DIR}/${_name}.pyx"
+       VERBATIM
+       COMMAND
+-        Python::Interpreter -m cython "${CMAKE_CURRENT_LIST_DIR}/${_name}.pyx"
++        Python::Interpreter -m cython --cplus "${CMAKE_CURRENT_LIST_DIR}/${_name}.pyx"
+         --output-file "${CMAKE_CURRENT_BINARY_DIR}/${_name}.cxx")
+ 
+     set(${_name}
