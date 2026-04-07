@@ -19,11 +19,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 
 RDEPEND="
-	<dev-python/icalendar-7[${PYTHON_USEDEP}]
 	>=dev-python/icalendar-6.1.0[${PYTHON_USEDEP}]
-	<dev-python/python-dateutil-3[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-2.8.1[${PYTHON_USEDEP}]
-	<dev-python/x-wr-timezone-3[${PYTHON_USEDEP}]
 	>=dev-python/x-wr-timezone-1.0.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
@@ -40,3 +37,10 @@ distutils_enable_tests pytest
 EPYTEST_IGNORE=(
 	{recurring_ical_events/,}test/test_readme.py
 )
+
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# strip unnecessary pins
+	sed -i -e 's:, < [0-9.]*::' pyproject.toml || die
+}
