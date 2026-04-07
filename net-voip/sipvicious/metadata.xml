@@ -5,10 +5,6 @@
 		<email>jkroon@gentoo.org</email>
 		<name>Jaco Kroon</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>sam@gentoo.org</email>
-		<name>Sam James</name>
-	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">EnableSecurity/sipvicious</remote-id>
