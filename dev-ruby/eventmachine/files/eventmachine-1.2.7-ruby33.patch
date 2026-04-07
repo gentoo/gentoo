@@ -1,0 +1,35 @@
+https://github.com/eventmachine/eventmachine/pull/988
+https://github.com/eventmachine/eventmachine/commit/3980847f4463bcaf80c06f53e95b7eb1dddd2404
+
+From 3980847f4463bcaf80c06f53e95b7eb1dddd2404 Mon Sep 17 00:00:00 2001
+From: Antonio Terceiro <asa@terceiro.xyz>
+Date: Thu, 5 Sep 2024 12:10:49 -0300
+Subject: [PATCH] Fix usage of Process::Status on ruby3.3 (#988)
+
+--- a/ext/extconf.rb
++++ b/ext/extconf.rb
+@@ -140,6 +140,7 @@ def find_openssl_library
+ 
+ # Add for changes to Process::Status in Ruby 3
+ add_define("IS_RUBY_3_OR_LATER") if RUBY_VERSION > "3.0"
++add_define("IS_RUBY_3_3_OR_LATER") if RUBY_VERSION > "3.3"
+ 
+ # Adjust number of file descriptors (FD) on Windows
+ 
+--- a/ext/rubymain.cpp
++++ b/ext/rubymain.cpp
+@@ -563,7 +563,13 @@ static VALUE t_get_subprocess_status (VALUE self UNUSED, VALUE signature)
+ 	if (evma_get_subprocess_status (NUM2BSIG (signature), &status)) {
+ 		if (evma_get_subprocess_pid (NUM2BSIG (signature), &pid)) {
+ 
+-#ifdef IS_RUBY_3_OR_LATER
++#if defined(IS_RUBY_3_3_OR_LATER)
++			proc_status = rb_obj_alloc(rb_cProcessStatus);
++			struct rb_process_status *data = NULL;
++			data = (rb_process_status*)RTYPEDDATA_GET_DATA(proc_status);
++			data->pid = pid;
++			data->status = status;
++#elif defined(IS_RUBY_3_OR_LATER)
+ 			struct rb_process_status *data = NULL;
+ 
+ 			/* Defined to match static definition from MRI Ruby 3.0 process.c
