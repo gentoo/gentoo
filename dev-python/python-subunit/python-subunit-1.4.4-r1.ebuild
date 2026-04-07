@@ -22,7 +22,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="Apache-2.0 BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="static-libs test"
 RESTRICT="!test? ( test )"
 
@@ -39,6 +39,7 @@ DEPEND="
 		dev-python/fixtures[${PYTHON_USEDEP}]
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 		dev-python/testscenarios[${PYTHON_USEDEP}]
+		<dev-python/testtools-2.8[${PYTHON_USEDEP}]
 	)
 "
 
