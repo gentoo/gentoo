@@ -26,6 +26,15 @@ RDEPEND="
 
 distutils_enable_tests import-check
 
+python_compile() {
+	distutils-r1_python_compile
+
+	# workaround broken upstream hack
+	# https://github.com/open-iscsi/rtslib-fb/issues/229
+	cd "${BUILD_DIR}/install$(python_get_sitedir)" || die
+	ln -s rtslib rtslib_fb || die
+}
+
 src_install() {
 	distutils-r1_src_install
 	systemd_dounit "${FILESDIR}/target.service"
