@@ -44,6 +44,11 @@ RDEPEND="
 		media-libs/libpulse
 	)
 "
+DEPEND+="
+	wayland? (
+		dev-libs/wayland-protocols
+	)
+"
 BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
@@ -55,8 +60,7 @@ BDEPEND="
 		x11-terms/xterm
 	)
 	wayland? (
-		>=dev-python/pywayland-0.4.17[${PYTHON_USEDEP}]
-		>=dev-python/pywlroots-0.17[${PYTHON_USEDEP}]
+		dev-util/wayland-scanner
 	)
 "
 
