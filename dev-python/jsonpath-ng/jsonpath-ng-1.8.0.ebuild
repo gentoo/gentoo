@@ -23,7 +23,7 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		dev-python/oslotest[${PYTHON_USEDEP}]
+		dev-python/hypothesis[${PYTHON_USEDEP}]
 	)
 "
 
