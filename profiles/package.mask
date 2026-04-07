@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2026-04-07)
+# This version had a mindless runtime dependency check that caused
+# importing requests to print warnings that broke random stuff.
+=dev-python/requests-2.32.5
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-04-06)
 # Obsolete KF5/KF6-transitional -common packages w/o any consumers left.
 # Removal on 2026-05-06.
