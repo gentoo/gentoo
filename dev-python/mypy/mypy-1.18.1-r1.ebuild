@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit distutils-r1
 
@@ -22,13 +22,13 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ppc ppc64 ~riscv ~s390 ~sparc x86"
-IUSE="native-extensions"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~s390 ~sparc x86"
+IUSE="+native-extensions"
 
 # stubgen collides with this package: https://bugs.gentoo.org/585594
 RDEPEND="
 	!dev-util/stubgen
-	>=dev-python/pathspec-0.9.0[${PYTHON_USEDEP}]
+	>=dev-python/pathspec-1.0.0[${PYTHON_USEDEP}]
 	>=dev-python/psutil-4[${PYTHON_USEDEP}]
 	>=dev-python/typing-extensions-4.6.0[${PYTHON_USEDEP}]
 	>=dev-python/mypy-extensions-1.0.0[${PYTHON_USEDEP}]
@@ -57,6 +57,7 @@ export CCACHE_DISABLE=1
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.14.0-no-werror.patch
+	"${FILESDIR}"/${PN}-1.19.1-update-pathspec.patch
 )
 
 src_prepare() {
@@ -64,12 +65,6 @@ src_prepare() {
 
 	# don't force pytest-xdist, in case user asked for EPYTEST_JOBS=1
 	sed -i -e '/addopts/s:-nauto::' pyproject.toml || die
-
-	# https://github.com/python/mypy/issues/20070
-	if has_version ">=dev-libs/libxml2-2.15"; then
-		sed -e 's:<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">:<meta charset="UTF-8">:' \
-			-i test-data/unit/reports.test || die
-	fi
 }
 
 python_compile() {
@@ -96,9 +91,9 @@ python_test() {
 		mypy/test/meta/test_update_data.py
 	)
 	case ${EPYTHON} in
-		python3.14)
+		python3.13)
 			;&
-		python3.1[23])
+		python3.12)
 			EPYTEST_DESELECT+=(
 				# more assertions, sigh
 				mypyc/test/test_run.py::TestRun::run-async.test::testRunAsyncMiscTypesInEnvironment
