@@ -51,6 +51,9 @@ multilib_src_test() {
 		# known flaky test bug #930448
 		# https://gitlab.freedesktop.org/gstreamer/gstreamer/-/issues/2803
 		elements_flvmux
+
+		# flaky with timeouts
+		elements_mpegaudioparse
 	)
 
 	# Add suites which in this case are the project name
