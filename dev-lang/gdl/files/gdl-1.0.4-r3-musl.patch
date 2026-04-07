@@ -1,0 +1,11 @@
+--- a/src/file.cpp	2026-04-07 16:10:14.791599645 +0200
++++ b/src/file.cpp	2026-04-07 16:30:54.537265034 +0200
+@@ -253,7 +253,7 @@
+ */
+ #endif
+ #define NTEST_SEARCH 7
+-#if defined(__CYGWIN__) || defined(__FreeBSD__) || defined(__APPLE__)
++#if defined(__CYGWIN__) || defined(__FreeBSD__) || defined(__APPLE__) || (defined(__linux__) && !defined(__GLIBC__))
+ #define stat64 stat
+ #define lstat64 lstat
+ // for religious reasons, CYGWIN doesn't do lstat64

@@ -69,7 +69,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-1.0.4-cmake.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.0.4-cmake.patch
+	"${FILESDIR}"/${PN}-1.0.4-r3-musl.patch
+)
 DOCS=( AUTHORS HACKING NEWS PYTHON.txt README README.md )
 
 pkg_pretend() {
