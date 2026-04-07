@@ -336,7 +336,7 @@ multilib_src_configure() {
 	use debug && EMESON_BUILD_TYPE=debug
 
 	local emesonargs=(
-		--localstatedir="${EPREFIX}"/lib
+		--localstatedir="${EPREFIX}"/var
 		-Ddefault_library=$(usex static-libs both shared)
 		-Druntime_dir="${EPREFIX}"/run
 		$(meson_feature debug glib_debug)
