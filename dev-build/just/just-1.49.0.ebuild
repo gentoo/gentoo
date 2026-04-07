@@ -19,14 +19,14 @@ CRATES="
 	arrayvec@0.7.6
 	autocfg@1.5.0
 	bitflags@2.11.0
-	blake3@1.8.3
+	blake3@1.8.4
 	block-buffer@0.10.4
 	block2@0.6.2
 	bstr@1.12.1
 	bumpalo@3.20.2
 	bytecount@0.6.9
 	camino@1.2.2
-	cc@1.2.57
+	cc@1.2.59
 	cfg-if@1.0.4
 	cfg_aliases@0.2.1
 	chacha20@0.10.0
@@ -36,7 +36,7 @@ CRATES="
 	clap_complete@4.6.0
 	clap_derive@4.6.0
 	clap_lex@1.1.0
-	clap_mangen@0.2.33
+	clap_mangen@0.3.0
 	colorchoice@1.0.5
 	constant_time_eq@0.4.2
 	core-foundation-sys@0.8.7
@@ -47,7 +47,6 @@ CRATES="
 	crossbeam-utils@0.8.21
 	crypto-common@0.1.7
 	ctrlc@3.5.2
-	derive-where@1.6.1
 	diff@0.1.13
 	digest@0.10.7
 	dirs-sys@0.5.0
@@ -57,7 +56,7 @@ CRATES="
 	edit-distance@2.2.2
 	equivalent@1.0.2
 	errno@0.3.14
-	fastrand@2.3.0
+	fastrand@2.4.0
 	find-msvc-tools@0.1.9
 	fnv@1.0.7
 	foldhash@0.1.5
@@ -72,15 +71,15 @@ CRATES="
 	iana-time-zone-haiku@0.1.2
 	iana-time-zone@0.1.65
 	id-arena@2.3.0
-	indexmap@2.13.0
+	indexmap@2.13.1
 	is_executable@1.0.5
 	is_terminal_polyfill@1.70.2
 	itoa@1.0.18
-	js-sys@0.3.91
+	js-sys@0.3.94
 	leb128fmt@0.1.0
 	lexiclean@0.0.1
-	libc@0.2.183
-	libredox@0.1.14
+	libc@0.2.184
+	libredox@0.1.15
 	linux-raw-sys@0.12.1
 	log@0.4.29
 	memchr@2.8.0
@@ -111,11 +110,11 @@ CRATES="
 	regex-automata@0.4.14
 	regex-syntax@0.8.10
 	regex@1.12.3
-	roff@1.1.0
+	roff@1.1.1
 	rustix@1.1.4
 	rustversion@1.0.22
 	ryu@1.0.23
-	semver@1.0.27
+	semver@1.0.28
 	serde@1.0.228
 	serde_core@1.0.228
 	serde_derive@1.0.228
@@ -124,7 +123,7 @@ CRATES="
 	sha2@0.10.9
 	shellexpand@3.1.2
 	shlex@1.3.0
-	similar@2.7.0
+	similar@3.0.0
 	snafu-derive@0.9.0
 	snafu@0.9.0
 	strsim@0.11.1
@@ -143,20 +142,20 @@ CRATES="
 	typenum@1.19.0
 	unicase@2.9.0
 	unicode-ident@1.0.24
-	unicode-segmentation@1.12.0
+	unicode-segmentation@1.13.2
 	unicode-width@0.2.2
 	unicode-xid@0.2.6
 	unsafe-libyaml@0.2.11
 	utf8parse@0.2.2
-	uuid@1.22.0
+	uuid@1.23.0
 	version_check@0.9.5
 	wasi@0.11.1+wasi-snapshot-preview1
 	wasip2@1.0.1+wasi-0.2.4
 	wasip3@0.4.0+wasi-0.3.0-rc-2026-01-06
-	wasm-bindgen-macro-support@0.2.114
-	wasm-bindgen-macro@0.2.114
-	wasm-bindgen-shared@0.2.114
-	wasm-bindgen@0.2.114
+	wasm-bindgen-macro-support@0.2.117
+	wasm-bindgen-macro@0.2.117
+	wasm-bindgen-shared@0.2.117
+	wasm-bindgen@0.2.117
 	wasm-encoder@0.244.0
 	wasm-metadata@0.244.0
 	wasmparser@0.244.0
