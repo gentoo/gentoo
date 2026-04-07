@@ -28,6 +28,7 @@ DOCS=( AUTHORS ChangeLog NEWS README.md RELEASE )
 PATCHES=(
 	"${FILESDIR}"/gst-plugins-good-1.24.13-fix-out-of-bounds-when-parsing-PlayReady-DRM-UUIDs.patch
 	"${FILESDIR}"/gst-plugins-good-1.24.13-dont-allow-use-of-vulnerable-rtpqdm2depay-element.patch
+	"${FILESDIR}"/gst-plugins-good-1.24.13-CVE-2026-1940.patch
 )
 
 multilib_src_configure() {
