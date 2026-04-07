@@ -17,6 +17,11 @@ fi
 LICENSE="GPL-3+"
 SLOT="0"
 
+PATCHES=(
+	# bug #971782
+	"${FILESDIR}"/bash-5.3_p9-general-workaround-aliasing-violation-in-REVERSE_LIS.patch
+)
+
 src_unpack() {
 	if [[ ${PV} == 9999 ]]; then
 		git-r3_src_unpack
