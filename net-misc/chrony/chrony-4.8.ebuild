@@ -220,8 +220,8 @@ src_install() {
 		# Prepare a directory for the chrony.drift file (a la ntpsec)
 		# Ensures the environment is sane on new installs
 		# bug #711058
-		fowners -R ntp:ntp /var/{lib,log}/chrony
-		fperms -R 770 /var/lib/chrony
+		fowners ntp:ntp /var/{lib,log}/chrony
+		fperms 770 /var/lib/chrony
 	fi
 
 	insinto /etc/logrotate.d
