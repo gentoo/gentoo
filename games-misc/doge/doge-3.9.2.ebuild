@@ -10,6 +10,8 @@ inherit distutils-r1
 
 DESCRIPTION="wow very terminal doge"
 HOMEPAGE="https://github.com/Olivia5k/doge/"
+# formerly used pypi.eclass but, last time checked, 3.9.2 has not made
+# it there and the github repo been archived right after the release
 SRC_URI="
 	https://github.com/Olivia5k/doge/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
