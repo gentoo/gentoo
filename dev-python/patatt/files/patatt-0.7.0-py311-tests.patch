@@ -1,0 +1,37 @@
+https://git.kernel.org/pub/scm/utils/patatt/patatt.git/commit/?id=3b9f6ecec8e17225b66483ffd0aecb8ba1c328f5
+
+From 3b9f6ecec8e17225b66483ffd0aecb8ba1c328f5 Mon Sep 17 00:00:00 2001
+From: Artur Weber <aweber.kernel@gmail.com>
+Date: Thu, 8 Jan 2026 17:52:00 +0100
+Subject: Use pre-Python 3.13 Generator type syntax in conftest.py
+
+Python 3.13 defaults to None for the other fields of the Generator type,
+but the version of Generator in older versions does not support such syntax.
+Explicitly add the missing fields to allow the tests to run on older Python
+versions.
+
+(An alternative solution would be to use typing-extensions for older
+versions, though that would require adding another dependency.)
+
+Signed-off-by: Artur Weber <aweber.kernel@gmail.com>
+Link: https://patch.msgid.link/20260108165200.11313-1-aweber.kernel@gmail.com
+Signed-off-by: Konstantin Ryabitsev <konstantin@linuxfoundation.org>
+---
+ tests/conftest.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/conftest.py b/tests/conftest.py
+index c5ced78..a9c9157 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -20,7 +20,7 @@ This is a test email body.
+ """
+ 
+ @pytest.fixture
+-def temp_data_dir() -> Generator[str]:
++def temp_data_dir() -> Generator[str, None, None]:
+     """Create a temporary data directory structure for patatt."""
+     with tempfile.TemporaryDirectory() as tmpdirname:
+         # Create directory structure similar to patatt's data dir
+-- 
+cgit 1.3-korg
