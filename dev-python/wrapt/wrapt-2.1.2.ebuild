@@ -26,6 +26,13 @@ IUSE="+native-extensions"
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# skip mypy tests, they are fragile
+	rm -r tests/mypy || die
+}
+
 python_compile() {
 	local -x WRAPT_INSTALL_EXTENSIONS=$(usex native-extensions true false)
 	distutils-r1_python_compile
