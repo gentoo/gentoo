@@ -12,7 +12,7 @@ inherit distutils-r1
 MY_P=python-blosc-${PV}
 DESCRIPTION="High performance compressor optimized for binary data"
 HOMEPAGE="
-	https://www.blosc.org/
+	https://blosc.org/
 	https://github.com/Blosc/python-blosc/
 	https://pypi.org/project/blosc/
 "
