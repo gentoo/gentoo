@@ -36,7 +36,7 @@ RESTRICT="!test? ( test )"
 # them or just put the (build) deps in that rare consumer instead of recursive
 # RDEPEND here (due to lack of recursive DEPEND).
 RDEPEND="
-	!<dev-libs/gobject-introspection-1.83.2
+	!<dev-libs/gobject-introspection-${INTROSPECTION_PV}
 	!<dev-util/gdbus-codegen-${PV}
 	>=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]
 	>=dev-libs/libpcre2-10.32:0=[${MULTILIB_USEDEP},unicode(+),static-libs?]
