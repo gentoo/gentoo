@@ -12,6 +12,7 @@ MY_P=subunit-${PV}
 DESCRIPTION="A streaming protocol for test results"
 HOMEPAGE="
 	https://launchpad.net/subunit/
+	https://github.com/testing-cabal/subunit/
 	https://pypi.org/project/python-subunit/
 "
 SRC_URI="
