@@ -84,6 +84,12 @@ fi
 # The default value is the 'master' branch.
 : "${SELINUX_GIT_BRANCH:="master"}"
 
+# @ECLASS_VARIABLE: SELINUX_POLICY_USEDEP
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# This variable contains the USE dependency constraints for policy packages.
+SELINUX_POLICY_USEDEP="selinux_policy_types_targeted(-)?,selinux_policy_types_strict(-)?,selinux_policy_types_mcs(-)?,selinux_policy_types_mls(-)?"
+
 case ${BASEPOL} in
 	9999)
 		inherit git-r3
@@ -127,15 +133,10 @@ if [[ ${EAPI} = 7 ]]; then
 		>=sec-policy/selinux-base-policy-${_BASE_POLICY_VERSION}
 	"
 else
-	RDEPEND=">=sys-apps/policycoreutils-2.5"
-	for _poltype in selinux_policy_types_{targeted,strict,mcs,mls}; do
-		RDEPEND+="
-			${_poltype}? (
-				>=sec-policy/selinux-base-policy-${_BASE_POLICY_VERSION}[${_poltype}]
-			)
-		"
-	done
-	unset _poltype
+	RDEPEND="
+		>=sys-apps/policycoreutils-2.5
+		>=sec-policy/selinux-base-policy-${_BASE_POLICY_VERSION}[${SELINUX_POLICY_USEDEP}]
+	"
 fi
 
 unset _BASE_POLICY_VERSION
