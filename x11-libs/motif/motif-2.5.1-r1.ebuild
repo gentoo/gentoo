@@ -29,7 +29,6 @@ RDEPEND="x11-libs/libX11[${MULTILIB_USEDEP}]
 	x11-libs/libXt[${MULTILIB_USEDEP}]
 	jpeg? ( media-libs/libjpeg-turbo:0=[${MULTILIB_USEDEP}] )
 	png? ( media-libs/libpng:0=[${MULTILIB_USEDEP}] )
-	test? ( dev-libs/check )
 	unicode? ( virtual/libiconv[${MULTILIB_USEDEP}] )
 	xcursor? ( x11-libs/libXcursor[${MULTILIB_USEDEP}] )
 	xft? (
@@ -41,7 +40,8 @@ RDEPEND="x11-libs/libX11[${MULTILIB_USEDEP}]
 
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto
-	x11-misc/xbitmaps"
+	x11-misc/xbitmaps
+	test? ( dev-libs/check[${MULTILIB_USEDEP}] )"
 
 BDEPEND="sys-devel/flex
 	dev-util/byacc"
