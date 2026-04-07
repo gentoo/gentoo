@@ -1,0 +1,46 @@
+From a72e9c343bd369cf840b29e074417fed5d05d59c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jelmer=20Vernoo=C4=B3?= <jelmer@jelmer.uk>
+Date: Mon, 22 Dec 2025 11:05:54 +0000
+Subject: [PATCH] Fix compatibility with testtools 2.8.2
+
+LP: #2136951
+---
+ python/subunit/tests/test_test_protocol2.py | 17 ++++++++++++-----
+ 1 file changed, 12 insertions(+), 5 deletions(-)
+
+diff --git a/python/subunit/tests/test_test_protocol2.py b/python/subunit/tests/test_test_protocol2.py
+index 6d1e03b..2874e43 100644
+--- a/python/subunit/tests/test_test_protocol2.py
++++ b/python/subunit/tests/test_test_protocol2.py
+@@ -30,7 +30,12 @@ except ImportError:
+ from testtools import TestCase
+ from testtools.matchers import Contains, HasLength
+ from testtools.testresult.doubles import StreamResult
+-from testtools.tests.test_testresult import TestStreamResultContract
++
++try:
++    from testtools.tests.test_testresult import TestStreamResultContract
++except ImportError:
++    # testtools >= 2.8 no longer includes the tests submodule
++    TestStreamResultContract = None
+ 
+ import subunit
+ import iso8601
+@@ -54,11 +59,13 @@ CONSTANT_TAGS = [
+ ]
+ 
+ 
+-class TestStreamResultToBytesContract(TestCase, TestStreamResultContract):
+-    """Check that StreamResult behaves as testtools expects."""
++if TestStreamResultContract is not None:
+ 
+-    def _make_result(self):
+-        return subunit.StreamResultToBytes(BytesIO())
++    class TestStreamResultToBytesContract(TestCase, TestStreamResultContract):
++        """Check that StreamResult behaves as testtools expects."""
++
++        def _make_result(self):
++            return subunit.StreamResultToBytes(BytesIO())
+ 
+ 
+ class TestStreamResultToBytes(TestCase):

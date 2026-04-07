@@ -40,12 +40,14 @@ DEPEND="
 		dev-python/fixtures[${PYTHON_USEDEP}]
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 		dev-python/testscenarios[${PYTHON_USEDEP}]
-		<dev-python/testtools-2.8[${PYTHON_USEDEP}]
+		<dev-python/testtools-2.9[${PYTHON_USEDEP}]
 	)
 "
 
 PATCHES=(
 	"${FILESDIR}/subunit-1.4.0-werror.patch"
+	# https://github.com/testing-cabal/subunit/commit/a72e9c343bd369cf840b29e074417fed5d05d59c
+	"${FILESDIR}/subunit-1.4.5-testtools-2.8.patch"
 )
 
 src_prepare() {
