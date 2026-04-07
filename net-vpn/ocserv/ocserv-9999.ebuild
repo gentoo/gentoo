@@ -26,7 +26,7 @@ IUSE="geoip kerberos +lz4 +nftables otp pam radius +seccomp systemd tcpd test"
 RESTRICT="!test? ( test )"
 
 BDEPEND+="
-	net-misc/ipcalc
+	net-misc/ipcalc-ng
 	virtual/pkgconfig
 	test? (
 		net-libs/gnutls[tools(+)]
