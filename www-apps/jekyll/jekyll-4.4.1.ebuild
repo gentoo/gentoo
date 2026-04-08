@@ -53,6 +53,10 @@ ruby_add_bdepend "
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/jekyll-4.1.1-minitest6.patch
+)
+
 all_ruby_prepare() {
 	eapply "${FILESDIR}"/jekyll-3.6.0-test-helper.patch
 	eapply -R "${FILESDIR}/jekyll-4.3.2-sass.patch"

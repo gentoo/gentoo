@@ -1,0 +1,18 @@
+https://github.com/jekyll/jekyll/pull/9954
+
+From d074e4a4b644dbdf4c11d88f01a68d44033185ea Mon Sep 17 00:00:00 2001
+From: Matt Rogers <codemattr@gmail.com>
+Date: Sun, 29 Mar 2026 22:23:20 -0500
+Subject: [PATCH] fix: adapt to new minitest versions
+
+--- a/test/test_page_without_a_file.rb
++++ b/test/test_page_without_a_file.rb
+@@ -64,7 +64,7 @@ def render_and_write
+         assert_equal "All the properties.\n", regular_page["content"]
+         assert_equal "properties.html", regular_page["name"]
+ 
+-        basic_attrs = %w(dir name path url excerpt)
++        basic_attrs = %w(dir name path url)
+         attrs = {
+           "content"   => nil,
+           "dir"       => "/",
