@@ -1,0 +1,13 @@
+diff --git a/tests/conftest.py b/tests/conftest.py
+index e44503d..6962043 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -310,6 +310,9 @@ def fixture_test_ephemeral_dir_env(test_cache_path: Path) -> dict[str, str]:
+     return {
+         "PATH": path,
+         "MOLECULE_EPHEMERAL_DIRECTORY": str(test_cache_path),
++        "HOME": os.environ.get("HOME", ""),
++        "ANSIBLE_LOCAL_TEMP": os.environ.get("ANSIBLE_LOCAL_TEMP", ""),
++        "ANSIBLE_REMOTE_TEMP": os.environ.get("ANSIBLE_REMOTE_TEMP", ""),
+     }
+
