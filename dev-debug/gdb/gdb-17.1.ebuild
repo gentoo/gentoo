@@ -37,7 +37,7 @@ case ${PV} in
 		SRC_URI="
 			https://sourceware.org/pub/gdb/snapshots/branch/gdb-weekly-${MY_PV}.tar.xz
 			https://sourceware.org/pub/gdb/snapshots/current/gdb-weekly-${MY_PV}.tar.xz
-			https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/gdb-weekly-${MY_PV}.tar.xz
+			https://distfiles.gentoo.org/pub/proj/toolchain/gdb/snapshots/gdb-weekly-${MY_PV}.tar.xz
 		"
 		S="${WORKDIR}/${PN}-${MY_PV}"
 
@@ -51,7 +51,7 @@ case ${PV} in
 		MY_PV="${PV/_p/.}"
 		SRC_URI="
 			https://sourceware.org/pub/gdb/snapshots/branch/gdb-${MY_PV}.tar.xz
-			https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/gdb-${MY_PV}.tar.xz
+			https://distfiles.gentoo.org/pub/proj/toolchain/gdb/snapshots/gdb-${MY_PV}.tar.xz
 		"
 		S="${WORKDIR}/${PN}-${MY_PV}"
 		;;
@@ -71,8 +71,7 @@ DESCRIPTION="GNU debugger"
 HOMEPAGE="https://sourceware.org/gdb/"
 SRC_URI="
 	${SRC_URI}
-	${PATCH_DEV:+https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${CATEGORY}/${PN}/${P}-patches-${PATCH_VER}.tar.xz}
-	${PATCH_VER:+mirror://gentoo/${P}-patches-${PATCH_VER}.tar.xz}
+	${PATCH_DEV:+https://distfiles.gentoo.org/pub/proj/toolchain/gdb/patches/${P}-patches-${PATCH_VER}.tar.xz}
 "
 
 LICENSE="GPL-3+ LGPL-2.1+"
