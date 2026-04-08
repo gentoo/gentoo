@@ -46,6 +46,8 @@ else
 	"
 fi
 
+BDEPEND="sys-apps/texinfo"
+
 src_prepare() {
 	default
 	eautoreconf
