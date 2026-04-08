@@ -323,7 +323,7 @@ src_test() {
 		_has_increased_ulimit="true"
 	fi
 
-	if ! emake --jobs 1 check; then
+	if ! emake check ; then
 		eerror "Test suite failed! :("
 
 		if [[ -z "${_has_increased_ulimit}" ]]; then
@@ -334,7 +334,6 @@ src_test() {
 			eerror "Please try to reproduce the test suite failure with FEATURES=-userpriv " \
 				"before you submit a bug report."
 		fi
-
 	fi
 }
 
