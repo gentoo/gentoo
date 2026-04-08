@@ -47,6 +47,7 @@ BDEPEND="
 		$(python_gen_cond_dep "
 			dev-python/filetype[\${PYTHON_USEDEP}]
 			dev-python/pytest-mock[\${PYTHON_USEDEP}]
+			dev-python/rich[\${PYTHON_USEDEP}]
 			test-rust? (
 				dev-python/pytest[\${PYTHON_USEDEP}]
 				dev-python/pytest-rerunfailures[\${PYTHON_USEDEP}]
