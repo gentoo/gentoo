@@ -4,7 +4,7 @@
 EAPI=8
 
 WX_GTK_VER="3.2-gtk3"
-PYTHON_COMPAT=( python3_{11..12} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit cmake flag-o-matic python-single-r1 toolchain-funcs virtualx wxwidgets
 
