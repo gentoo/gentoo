@@ -1,0 +1,33 @@
+diff --git a/src/exabgp/application/healthcheck.py b/src/exabgp/application/healthcheck.py
+index b14266688..61adc5beb 100644
+--- a/src/exabgp/application/healthcheck.py
++++ b/src/exabgp/application/healthcheck.py
+@@ -204,6 +204,15 @@ def setup_logging(debug, silent, name, syslog_facility, syslog):
+     enable_syslog = syslog and not debug
+     # To syslog
+     if enable_syslog:
++        if isinstance(syslog_facility, int) or syslog_facility.isdigit():
++            for log_facility, value in sorted(logging.handlers.SysLogHandler.facility_names.items(), key=lambda x: x[1]):
++                if value >= int(syslog_facility):
++                    facility = log_facility
++                    break
++                elif hasattr(logging.handlers.SysLogHandler, "LOG_{0}".format(syslog_facility.upper())):
++                    facility = getattr(logging.handlers.SysLogHandler, "LOG_{0}".format(syslog_facility.upper()))
++                else:
++                    facility = logging.handlers.SysLogHandler.LOG_DAEMON
+         facility = getattr(logging.handlers.SysLogHandler, f'LOG_{syslog_facility.upper()}')
+         sh = logging.handlers.SysLogHandler(address=str(syslog_address()), facility=facility)
+         if name:
+diff --git a/src/exabgp/reactor/api/command/announce.py b/src/exabgp/reactor/api/command/announce.py
+index 3f18a155f..c5e4942ab 100644
+--- a/src/exabgp/reactor/api/command/announce.py
++++ b/src/exabgp/reactor/api/command/announce.py
+@@ -55,7 +55,7 @@ def announce_route(self, reactor, service, line, use_json):
+                 change.nlri.action = Action.ANNOUNCE
+                 reactor.configuration.inject_change(peers, change)
+                 peer_list = ', '.join(peers) if peers else 'all peers'
+-                self.log_message(f'route added to {peer_list} : {change.extensive()}')
++                self.log_message(f'route added to {peer_list} : {change.extensive()}', level=logging.WARNING)
+                 yield False
+ 
+             reactor.processes.answer_done(service)
