@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~riscv ~s390"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~riscv ~s390"
 
 RDEPEND="
 	>=dev-python/packaging-20[${PYTHON_USEDEP}]
