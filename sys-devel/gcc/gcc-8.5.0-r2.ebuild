@@ -7,7 +7,6 @@ EAPI="8"
 # https://wiki.gentoo.org/wiki/Project:Toolchain/sys-devel/gcc
 
 TOOLCHAIN_PATCH_SUFFIX="xz"
-TOOLCHAIN_PATCH_DEV="sam"
 TOOLCHAIN_HAS_TESTS=1
 PATCH_VER="5"
 PYTHON_COMPAT=( python3_{11..14} )

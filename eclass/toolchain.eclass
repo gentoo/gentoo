@@ -148,11 +148,6 @@ tc_version_is_between() {
 # Extra options to pass to DejaGnu as RUNTESTFLAGS.
 : "${GCC_TESTS_RUNTESTFLAGS:=}"
 
-# @ECLASS_VARIABLE: TOOLCHAIN_PATCH_DEV
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# Indicate the developer who hosts the patchset for an ebuild.
-
 # @ECLASS_VARIABLE: TOOLCHAIN_HAS_TESTS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -499,48 +494,6 @@ if [[ ${TOOLCHAIN_SET_S} == yes ]] ; then
 	fi
 fi
 
-gentoo_urls() {
-	# the list is sorted by likelihood of getting the patches tarball from
-	# respective devspace
-	# slyfox's distfiles are mirrored to sam's devspace
-	declare -A devspace_urls=(
-		[soap]=HTTP~soap/distfiles/URI
-		[sam]=HTTP~sam/distfiles/sys-devel/gcc/URI
-		[slyfox]=HTTP~sam/distfiles/URI
-		[xen0n]=HTTP~xen0n/distfiles/sys-devel/gcc/URI
-		[tamiko]=HTTP~tamiko/distfiles/URI
-		[zorry]=HTTP~zorry/patches/gcc/URI
-		[vapier]=HTTP~vapier/dist/URI
-		[blueness]=HTTP~blueness/dist/URI
-	)
-
-	# Newer ebuilds should set TOOLCHAIN_PATCH_DEV and we'll just
-	# return the full URL from the array.
-	if [[ -n ${TOOLCHAIN_PATCH_DEV} ]] ; then
-		local devspace_url=${devspace_urls[${TOOLCHAIN_PATCH_DEV}]}
-		if [[ -n ${devspace_url} ]] ; then
-			local devspace_url_exp=${devspace_url//HTTP/https:\/\/dev.gentoo.org\/}
-			devspace_url_exp=${devspace_url_exp//URI/$1}
-			echo ${devspace_url_exp}
-			return
-		fi
-	fi
-
-	# But we keep the old fallback list for compatibility with
-	# older ebuilds (overlays etc).
-	local devspace="
-		HTTP~soap/distfiles/URI
-		HTTP~sam/distfiles/URI
-		HTTP~sam/distfiles/sys-devel/gcc/URI
-		HTTP~tamiko/distfiles/URI
-		HTTP~zorry/patches/gcc/URI
-		HTTP~vapier/dist/URI
-		HTTP~blueness/dist/URI
-	"
-	devspace=${devspace//HTTP/https:\/\/dev.gentoo.org\/}
-	echo ${devspace//URI/$1} mirror://gentoo/$1
-}
-
 # This function handles the basics of setting the SRC_URI for a gcc ebuild.
 # To use, set SRC_URI with:
 #
@@ -586,9 +539,9 @@ get_gcc_src_uri() {
 	fi
 
 	[[ -n ${PATCH_VER} ]] && \
-		GCC_SRC_URI+=" $(gentoo_urls gcc-${PATCH_GCC_VER}-patches-${PATCH_VER}.tar.${TOOLCHAIN_PATCH_SUFFIX})"
+		GCC_SRC_URI+=" https://distfiles.gentoo.org/pub/proj/toolchain/gcc/patches/gcc-${PATCH_GCC_VER}-patches-${PATCH_VER}.tar.${TOOLCHAIN_PATCH_SUFFIX}"
 	[[ -n ${MUSL_VER} ]] && \
-		GCC_SRC_URI+=" $(gentoo_urls gcc-${MUSL_GCC_VER}-musl-patches-${MUSL_VER}.tar.${TOOLCHAIN_PATCH_SUFFIX})"
+		GCC_SRC_URI+=" https://distfiles.gentoo.org/pub/proj/toolchain/gcc/patches/gcc-${MUSL_GCC_VER}-musl-patches-${MUSL_VER}.tar.${TOOLCHAIN_PATCH_SUFFIX}"
 
 	[[ -n ${TOOLCHAIN_HAS_TESTS} ]] && \
 		GCC_SRC_URI+=" test? ( https://gitweb.gentoo.org/proj/gcc-patches.git/plain/scripts/testsuite-management/validate_failures.py?id=${GCC_VALIDATE_FAILURES_VERSION} -> gcc-validate-failures-${GCC_VALIDATE_FAILURES_VERSION}.py )"
