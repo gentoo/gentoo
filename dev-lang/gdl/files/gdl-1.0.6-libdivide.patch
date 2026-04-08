@@ -1,0 +1,11 @@
+--- a/src/libdivide.h	2026-04-08 13:50:17.561322672 +0200
++++ b/src/libdivide.h	2026-04-08 13:53:07.129354956 +0200
+@@ -3158,7 +3158,7 @@
+     T recover() const { return div.recover(); }
+ 
+     bool operator==(const divider<T, ALGO> &other) const {
+-        return div.denom.magic == other.denom.magic && div.denom.more == other.denom.more;
++        return div.denom.magic == other.div.denom.magic && div.denom.more == other.div.denom.more;
+     }
+ 
+     bool operator!=(const divider<T, ALGO> &other) const { return !(*this == other); }
