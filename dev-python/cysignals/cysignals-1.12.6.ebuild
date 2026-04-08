@@ -8,7 +8,7 @@ DISTUTILS_USE_PEP517=meson-python
 PYPI_VERIFY_REPO=https://github.com/sagemath/cysignals
 PYTHON_COMPAT=( python3_{12..14} )
 
-inherit distutils-r1 pypi
+inherit distutils-r1 flag-o-matic pypi
 
 DESCRIPTION="Interrupt and signal handling for Cython"
 HOMEPAGE="
@@ -27,3 +27,9 @@ BDEPEND="
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
+
+src_configure() {
+	# bug 918934
+	append-cppflags -D_GENTOO_NO_FORTIFY_SOURCE
+	distutils-r1_src_configure
+}
