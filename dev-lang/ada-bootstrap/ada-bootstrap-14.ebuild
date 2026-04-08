@@ -1,4 +1,4 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,43 +24,43 @@ DESCRIPTION="Binary bootstrap compiler for GNAT (Ada compiler)"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Ada"
 SRC_URI="
 	alpha? (
-		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-alpha-unknown-linux-gnu.gpkg.tar
+		https://distfiles.gentoo.org/proj/toolchain/ada-bootstrap/${P}-alpha-unknown-linux-gnu.gpkg.tar
 	)
 	amd64? (
-		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-x86_64-pc-linux-gnu.gpkg.tar
+		https://distfiles.gentoo.org/proj/toolchain/ada-bootstrap/${P}-x86_64-pc-linux-gnu.gpkg.tar
 	)
 	arm64? (
-		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-aarch64-unknown-linux-gnu.gpkg.tar
+		https://distfiles.gentoo.org/proj/toolchain/ada-bootstrap/${P}-aarch64-unknown-linux-gnu.gpkg.tar
 	)
 	arm? (
-		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-armv6j-softfp-linux-gnueabi.gpkg.tar
-		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-armv6j-unknown-linux-gnueabihf.gpkg.tar
-		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-armv7a-softfp-linux-gnueabi.gpkg.tar
-		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-armv7a-unknown-linux-gnueabihf.gpkg.tar
+		https://distfiles.gentoo.org/proj/toolchain/ada-bootstrap/${P}-armv6j-softfp-linux-gnueabi.gpkg.tar
+		https://distfiles.gentoo.org/proj/toolchain/ada-bootstrap/${P}-armv6j-unknown-linux-gnueabihf.gpkg.tar
+		https://distfiles.gentoo.org/proj/toolchain/ada-bootstrap/${P}-armv7a-softfp-linux-gnueabi.gpkg.tar
+		https://distfiles.gentoo.org/proj/toolchain/ada-bootstrap/${P}-armv7a-unknown-linux-gnueabihf.gpkg.tar
 	)
 	hppa? (
-		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-hppa1.1-unknown-linux-gnu.gpkg.tar
-		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-hppa2.0-unknown-linux-gnu.gpkg.tar
+		https://distfiles.gentoo.org/proj/toolchain/ada-bootstrap/${P}-hppa1.1-unknown-linux-gnu.gpkg.tar
+		https://distfiles.gentoo.org/proj/toolchain/ada-bootstrap/${P}-hppa2.0-unknown-linux-gnu.gpkg.tar
 	)
 	loong? (
-		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-loongarch64-unknown-linux-gnu.gpkg.tar
+		https://distfiles.gentoo.org/proj/toolchain/ada-bootstrap/${P}-loongarch64-unknown-linux-gnu.gpkg.tar
 	)
 	ppc? (
-		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-powerpc-unknown-linux-gnu.gpkg.tar
+		https://distfiles.gentoo.org/proj/toolchain/ada-bootstrap/${P}-powerpc-unknown-linux-gnu.gpkg.tar
 	)
 	ppc64? (
-		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-powerpc64le-unknown-linux-gnu.gpkg.tar
-		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-powerpc64-unknown-linux-gnu.gpkg.tar
+		https://distfiles.gentoo.org/proj/toolchain/ada-bootstrap/${P}-powerpc64le-unknown-linux-gnu.gpkg.tar
+		https://distfiles.gentoo.org/proj/toolchain/ada-bootstrap/${P}-powerpc64-unknown-linux-gnu.gpkg.tar
 	)
 	riscv? (
-		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-riscv64-unknown-linux-gnu.gpkg.tar
+		https://distfiles.gentoo.org/proj/toolchain/ada-bootstrap/${P}-riscv64-unknown-linux-gnu.gpkg.tar
 	)
 	sparc? (
-		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-sparc64-unknown-linux-gnu.gpkg.tar
+		https://distfiles.gentoo.org/proj/toolchain/ada-bootstrap/${P}-sparc64-unknown-linux-gnu.gpkg.tar
 	)
 	s390? (
-		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-s390-ibm-linux-gnu.gpkg.tar
-		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-s390x-ibm-linux-gnu.gpkg.tar
+		https://distfiles.gentoo.org/proj/toolchain/ada-bootstrap/${P}-s390-ibm-linux-gnu.gpkg.tar
+		https://distfiles.gentoo.org/proj/toolchain/ada-bootstrap/${P}-s390x-ibm-linux-gnu.gpkg.tar
 	)
 "
 S=${WORKDIR}
