@@ -424,6 +424,7 @@ media-gfx/krita:5
 >=dev-libs/gobject-introspection-common-1.86.0
 >=dev-util/gdbus-codegen-2.86.0
 >=dev-util/glib-utils-2.86.0
+>=dev-libs/gjs-1.88.0
 
 # Sam James <sam@gentoo.org> (2025-09-21)
 # Breaks (common) mt7921e WiFi driver with a hang in many cases, affecting
