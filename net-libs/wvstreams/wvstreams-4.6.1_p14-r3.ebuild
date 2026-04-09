@@ -36,7 +36,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
-	doc? ( app-text/doxygen )
+	doc? ( app-text/doxygen[dot] )
 	boost? ( dev-libs/boost:= )
 "
 DOCS="ChangeLog README*"
