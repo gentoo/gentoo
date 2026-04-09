@@ -1,0 +1,13 @@
+Fix missing nzbget.h include before other headers in Cleanup.cpp,
+--- a/daemon/postprocess/Cleanup.cpp
++++ b/daemon/postprocess/Cleanup.cpp
+@@ -19,8 +19,8 @@
+  */
+
+
+-#include "DownloadInfo.h"
+ #include "nzbget.h"
++#include "DownloadInfo.h"
+ #include "Cleanup.h"
+ #include "Log.h"
+ #include "Util.h"
