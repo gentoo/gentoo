@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ inherit flag-o-matic multilib toolchain-funcs
 
 DESCRIPTION="A set of utilities for converting to/from the netpbm (and related) formats"
 HOMEPAGE="https://netpbm.sourceforge.net/"
-SRC_URI="https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/${P}.tar.xz"
+SRC_URI="https://distfiles.gentoo.org/pub/dev/ceamac@gentoo.org/${CATEGORY}/${PN}/${P}.tar.xz"
 
 LICENSE="Artistic BSD GPL-2 IJG LGPL-2.1 MIT public-domain"
 SLOT="0/stable"

@@ -11,7 +11,7 @@ DESCRIPTION="minimal dumb-terminal emulation program"
 HOMEPAGE="https://gitlab.com/wsakernel/picocom"
 SRC_URI="
 	https://gitlab.com/wsakernel/${PN}/-/archive/${MY_PV}/${PN}-${MY_PV}.tar.bz2
-	!man? ( https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/${P}.1.bz2 )
+	!man? ( https://distfiles.gentoo.org/pub/dev/ceamac@gentoo.org/${CATEGORY}/${PN}/${P}.1.bz2 )
 "
 S="${WORKDIR}/${PN}-${MY_PV}"
 

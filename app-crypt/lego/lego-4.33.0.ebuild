@@ -17,7 +17,7 @@ else
 	SRC_URI="
 	https://github.com/go-acme/lego/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/go-acme/lego/archive/${DOCUMENTATION_COMMIT}.tar.gz -> ${P}-docs.tar.gz
-	https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/${PN}-4.32.0-deps.tar.xz
+	https://distfiles.gentoo.org/pub/dev/ceamac@gentoo.org/${CATEGORY}/${PN}/${PN}-4.32.0-deps.tar.xz
 "
 	KEYWORDS="~amd64 ~arm64"
 fi

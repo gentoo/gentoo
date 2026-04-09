@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,7 +30,7 @@ HOMEPAGE="https://www.virtualbox.org/ https://github.com/VirtualBox/virtualbox"
 SRC_URI="
 	https://download.virtualbox.org/virtualbox/${PV%*a}/${MY_P}.tar.bz2
 	https://gitweb.gentoo.org/proj/virtualbox-patches.git/snapshot/virtualbox-patches-${PATCHES_PV}.tar.bz2
-	gui? ( !doc? ( https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/${PN}-help-${HELP_PV}.tar.xz ) )
+	gui? ( !doc? ( https://distfiles.gentoo.org/pub/dev/ceamac@gentoo.org/${CATEGORY}/${PN}/${PN}-help-${HELP_PV}.tar.xz ) )
 "
 S="${WORKDIR}/${MY_PN}-${PV%*a}"
 
