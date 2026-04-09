@@ -9,7 +9,7 @@ DESCRIPTION="A C-library for parsing and writing XML 1.0/1.1 files or streams"
 HOMEPAGE="https://www.autistici.org/bakunin/libnxml/doc/"
 SRC_URI="https://github.com/bakulf/libnxml/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="LGPL-2.1"
+LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc examples"
