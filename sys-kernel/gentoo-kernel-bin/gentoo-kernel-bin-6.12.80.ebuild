@@ -27,20 +27,16 @@ SRC_URI+="
 			-> linux-$(ver_cut 1).x-sha256sums-${SHA256SUM_DATE}.asc
 	)
 	amd64? (
-		https://dev.gentoo.org/~mgorny/binpkg/amd64/kernel/sys-kernel/gentoo-kernel/${BINPKG}.gpkg.tar
-			-> ${BINPKG}.amd64.gpkg.tar
+		https://distfiles.gentoo.org/pub/proj/gentoo-kernel-bin/amd64/$(ver_cut 1-2)/${BINPKG}.amd64.gpkg.tar
 	)
 	arm64? (
-		https://dev.gentoo.org/~mgorny/binpkg/arm64/kernel/sys-kernel/gentoo-kernel/${BINPKG}.gpkg.tar
-			-> ${BINPKG}.arm64.gpkg.tar
+		https://distfiles.gentoo.org/pub/proj/gentoo-kernel-bin/arm64/$(ver_cut 1-2)/${BINPKG}.arm64.gpkg.tar
 	)
 	ppc64? (
-		https://dev.gentoo.org/~mgorny/binpkg/ppc64le/kernel/sys-kernel/gentoo-kernel/${BINPKG}.gpkg.tar
-			-> ${BINPKG}.ppc64le.gpkg.tar
+		https://distfiles.gentoo.org/pub/proj/gentoo-kernel-bin/ppc64le/$(ver_cut 1-2)/${BINPKG}.ppc64le.gpkg.tar
 	)
 	x86? (
-		https://dev.gentoo.org/~mgorny/binpkg/x86/kernel/sys-kernel/gentoo-kernel/${BINPKG}.gpkg.tar
-			-> ${BINPKG}.x86.gpkg.tar
+		https://distfiles.gentoo.org/pub/proj/gentoo-kernel-bin/x86/$(ver_cut 1-2)/${BINPKG}.x86.gpkg.tar
 	)
 "
 S=${WORKDIR}
