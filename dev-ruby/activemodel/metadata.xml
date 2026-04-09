@@ -6,6 +6,8 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
+    <doc>https://api.rubyonrails.org/</doc>
     <remote-id type="github">rails/rails</remote-id>
+    <remote-id type="rubygems">activemodel</remote-id>
   </upstream>
 </pkgmetadata>
