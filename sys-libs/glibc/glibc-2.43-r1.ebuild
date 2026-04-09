@@ -845,7 +845,7 @@ sanity_prechecks() {
 			[[ ${I_ALLOW_TO_BREAK_MY_SYSTEM} = yes ]] || die "Aborting to save your system."
 		fi
 
-		if ! do_run_test '#include <unistd.h>\n#include <sys/syscall.h>\nint main(){return syscall(1000)!=-1;}\n' ; then
+		if is_linux && ! do_run_test '#include <unistd.h>\n#include <sys/syscall.h>\nint main(){return syscall(1000)!=-1;}\n' ; then
 			eerror "Your old kernel is broken. You need to update it to a newer"
 			eerror "version as syscall(<bignum>) will break. See bug 279260."
 			[[ ${I_ALLOW_TO_BREAK_MY_SYSTEM} = yes ]] || die "Old and broken kernel."
