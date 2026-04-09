@@ -1,7 +1,7 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="OpenPGP keys used by Plex Inc"
 HOMEPAGE="https://www.plex.tv/"
