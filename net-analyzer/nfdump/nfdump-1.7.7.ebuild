@@ -33,7 +33,7 @@ BDEPEND="
 	app-alternatives/yacc
 	sys-devel/flex
 	doc? (
-		app-text/doxygen
+		app-text/doxygen[dot]
 		media-gfx/graphviz
 	)
 "
