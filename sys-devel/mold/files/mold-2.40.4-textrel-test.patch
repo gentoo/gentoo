@@ -1,0 +1,34 @@
+https://github.com/rui314/mold/pull/1547
+
+From 6e40a87aad0a6016127c51b895e273d746908fe4 Mon Sep 17 00:00:00 2001
+From: Christoph Erhardt <github@sicherha.de>
+Date: Fri, 30 Jan 2026 21:18:32 +0100
+Subject: [PATCH] Fix `textrel2` test on Fedora 44
+
+Tell the GNU linker to not report dynamic relocations in read-only
+sections as an error.
+---
+ test/textrel2.sh | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/test/textrel2.sh b/test/textrel2.sh
+index 7faedb73a0..722f020781 100755
+--- a/test/textrel2.sh
++++ b/test/textrel2.sh
+@@ -16,13 +16,13 @@ int main() {
+ }
+ EOF
+ 
+-$CC -o $t/exe1 $t/a.o -pie
++$CC -o $t/exe1 $t/a.o -pie -Wl,-z,notext
+ $QEMU $t/exe1 || skip
+ 
+ $CC -B. -o $t/exe2 $t/a.o -pie
+ $QEMU $t/exe2 | grep 'Hello world'
+ 
+-$CC -o $t/exe3 $t/a.o -pie -Wl,-z,pack-relative-relocs 2> /dev/null || skip
++$CC -o $t/exe3 $t/a.o -pie -Wl,-z,notext -Wl,-z,pack-relative-relocs 2> /dev/null || skip
+ readelf -WS $t/exe3 | grep -F .relr.dyn || skip
+ $QEMU $t/exe3 2> /dev/null | grep 'Hello world' || skip
+ 
+

@@ -38,6 +38,7 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.40.4-as-needed-group.patch
+	"${FILESDIR}"/${PN}-2.40.4-textrel-test.patch
 )
 
 pkg_pretend() {
