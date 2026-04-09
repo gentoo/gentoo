@@ -20,7 +20,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
-	doc? ( app-text/doxygen )"
+	doc? ( app-text/doxygen[dot] )"
 
 # TODO: php-bindings
 
