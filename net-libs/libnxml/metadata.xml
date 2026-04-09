@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
+	<!-- maintainer-needed -->
+	<upstream>
+		<maintainer>
+			<name>Andrea Marchesini</name>
+			<email>bakunin@autistici.org</email>
+		</maintainer>
+		<remote-id type="github">bakulf/libnxml</remote-id>
+	</upstream>
 </pkgmetadata>
