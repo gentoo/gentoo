@@ -902,7 +902,7 @@ sanity_prechecks() {
 			die "Found directory (${ESYSROOT}/usr/lib/include) which will break build (bug #833620)!"
 		fi
 
-		if [[ ${CTARGET} == *-linux* ]] ; then
+		if is_linux ; then
 			local run_kv build_kv want_kv
 
 			run_kv=$(g_get_running_KV)
