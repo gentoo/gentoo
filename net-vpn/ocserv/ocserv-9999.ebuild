@@ -22,21 +22,10 @@ HOMEPAGE="https://ocserv.gitlab.io/www/index.html"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="geoip kerberos +lz4 +nftables otp pam radius +seccomp systemd tcpd test"
-RESTRICT="!test? ( test )"
+IUSE="geoip kerberos +lz4 +nftables otp pam radius +seccomp systemd tcpd root-tests test"
+RESTRICT="!test? ( test ) root-tests? ( test )"
+PROPERTIES="root-tests? ( test_privileged )"
 
-BDEPEND+="
-	net-misc/ipcalc-ng
-	virtual/pkgconfig
-	test? (
-		net-libs/gnutls[tools(+)]
-		net-libs/socket_wrapper
-		net-vpn/openconnect
-		sys-libs/nss_wrapper
-		sys-libs/uid_wrapper
-		pam? ( sys-libs/pam_wrapper )
-	)
-"
 DEPEND="
 	dev-libs/libnl:3=
 	dev-libs/libev:0=
@@ -58,8 +47,26 @@ DEPEND="
 	tcpd? ( sys-apps/tcp-wrappers:0= )
 "
 RDEPEND="${DEPEND}
+	sys-apps/which
 	nftables? ( net-firewall/nftables )
 	!nftables? ( net-firewall/iptables )
+"
+BDEPEND+="
+	net-misc/ipcalc-ng
+	virtual/pkgconfig
+	test? (
+		${RDEPEND}
+		net-libs/gnutls[tools(+)]
+		net-libs/socket_wrapper
+		net-vpn/openconnect
+		sys-libs/nss_wrapper
+		sys-libs/uid_wrapper
+		pam? ( sys-libs/pam_wrapper )
+		root-tests? (
+			net-analyzer/nmap[ncat(+)]
+			net-misc/iperf
+		)
+	)
 "
 
 CONFIG_CHECK="~TUN ~UNIX_DIAG"
@@ -78,7 +85,7 @@ src_configure() {
 		$(meson_feature systemd)
 		$(meson_feature tcpd libwrap)
 		-Dlocal-pcl=false
-		-Droot-tests=false
+		$(meson_use root-tests)
 		-Dfirewall-script=$(usex nftables nftables iptables)
 	)
 	meson_src_configure

@@ -8,6 +8,7 @@
 	<use>
 		<flag name="nftables">Use nftables instead of iptables in ocserv-fw</flag>
 		<flag name="otp">Enable support for one-time passwords</flag>
+		<flag name="root-tests">Enable tests requiring root/namespaces</flag>
 	</use>
 	<upstream>
 		<remote-id type="gitlab">openconnect/ocserv</remote-id>
