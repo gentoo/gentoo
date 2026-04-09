@@ -26,7 +26,7 @@ PPC64_XPAK="8.402_p06"
 # Example: $(bootstrap_uri x86 8.402_p06)
 # Output: ppc64? ( big-endian? ( https://...8.402_p06-x86.tar.xz ) )
 bootstrap_uri() {
-	local baseuri="https://dev.gentoo.org/~arthurzam/distfiles/dev-java/${PN}/${PN}-bootstrap"
+	local baseuri="https://distfiles.gentoo.org/pub/dev/arthurzam@gentoo.org/dev-java/${PN}/${PN}-bootstrap"
 	local suff="tar.xz"
 	local kw="${1:?${FUNCNAME[0]}: keyword not specified}"
 	local ver="${2:?${FUNCNAME[0]}: version not specified}"
