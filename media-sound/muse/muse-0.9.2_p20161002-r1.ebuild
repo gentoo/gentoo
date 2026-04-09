@@ -28,7 +28,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
-	doc? ( app-text/doxygen )"
+	doc? ( app-text/doxygen[dot] )"
 
 PATCHES=( "${FILESDIR}"/${PN}-0.9.2_p20161002-fix-build-system.patch )
 
