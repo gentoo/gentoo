@@ -20,7 +20,7 @@ RDEPEND="media-libs/libsndfile:0=[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
-	doc? ( app-text/doxygen )
+	doc? ( app-text/doxygen[dot] )
 "
 
 src_prepare() {
