@@ -9,7 +9,7 @@ DESCRIPTION="A C-library for parsing and writing RSS 0.91/0.92/1.0/2.0 files or 
 HOMEPAGE="https://www.autistici.org/bakunin/libmrss/doc/"
 SRC_URI="https://github.com/bakulf/libmrss/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="LGPL-2.1"
+LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86"
 IUSE="doc examples"
