@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2026-04-09)
+# No longer serves any purpose. The mail desktop files are installed
+# by >=app-emacs/emacs-common-1.14 for all GNU Emacs (USE=gui) users.
+# Removal on 2026-05-09. Bug #972459.
+x11-misc/emacs-desktop-mail
+
 # Michał Górny <mgorny@gentoo.org> (2026-04-07)
 # This version had a mindless runtime dependency check that caused
 # importing requests to print warnings that broke random stuff.
