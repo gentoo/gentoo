@@ -3,9 +3,11 @@
 
 EAPI=8
 
-inherit readme.gentoo-r1 systemd unpacker pax-utils
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/plexmediaserver.asc
 
-MY_PV="${PV}-121068a07"
+inherit eapi9-pipestatus readme.gentoo-r1 systemd unpacker pax-utils verify-sig
+
+MY_PV="${PV}-06378bdcd"
 MY_URI="https://downloads.plex.tv/plex-media-server-new"
 
 DESCRIPTION="Free media library that is intended for use with a plex client"
@@ -15,18 +17,29 @@ SRC_URI="
 	arm? ( ${MY_URI}/${MY_PV}/debian/plexmediaserver_${MY_PV}_armhf.deb )
 	arm64? ( ${MY_URI}/${MY_PV}/debian/plexmediaserver_${MY_PV}_arm64.deb )
 	x86? ( ${MY_URI}/${MY_PV}/debian/plexmediaserver_${MY_PV}_i386.deb )
+	verify-sig? (
+		https://repo.plex.tv/deb/dists/public/InRelease -> ${P}-InRelease
+		amd64? ( https://repo.plex.tv/deb/dists/public/main/binary-amd64/Packages -> ${P}-Packages.amd64 )
+		arm? ( https://repo.plex.tv/deb/dists/public/main/binary-armhf/Packages -> ${P}-Packages.arm )
+		arm64? ( https://repo.plex.tv/deb/dists/public/main/binary-arm64/Packages -> ${P}-Packages.arm64 )
+		x86? ( https://repo.plex.tv/deb/dists/public/main/binary-i386/Packages -> ${P}-Packages.x86 )
+	)
 "
 S="${WORKDIR}"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* amd64 ~arm arm64 ~x86"
+IUSE="verify-sig"
 RESTRICT="bindist"
 
 DEPEND="
 	acct-group/plex
 	acct-user/plex"
 RDEPEND="${DEPEND}"
+BDEPEND="
+	verify-sig? ( >=sec-keys/openpgp-keys-plexmediaserver-20240120 )
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}.service.patch"
@@ -39,6 +52,33 @@ QA_MULTILIB_PATHS=(
 	"usr/lib/plexmediaserver/Resources/Python/lib/python2.7/.*"
 	"usr/lib/plexmediaserver/Resources/Python/lib/python2.7/lib-dynload/_hashlib.so"
 )
+
+src_unpack() {
+	if use verify-sig; then
+		local deb_arch=${ARCH}
+		[[ ${ARCH} == arm ]] && deb_arch=armhf
+		[[ ${ARCH} == x86 ]] && deb_arch=i386
+
+		cd "${DISTDIR}" > /dev/null || die
+
+		# Verify APT chain of trust:
+		# InRelease (signed) -> Packages (checksum) -> .deb (checksum)
+		verify-sig_verify_message ${P}-InRelease - \
+			| sed "s,[0-9]\+ main/binary-${deb_arch}/Packages$,${P}-Packages.${ARCH}," \
+			| verify-sig_verify_unsigned_checksums - sha256 ${P}-Packages.${ARCH}
+		pipestatus || die
+
+		sed -n "/^Version: ${MY_PV}/,/^SHA256:/p" \
+			${P}-Packages.${ARCH} \
+			| sed "s,^SHA256: \(.*\),\1 plexmediaserver_${MY_PV}_${deb_arch}.deb," \
+			| verify-sig_verify_unsigned_checksums - sha256 plexmediaserver_${MY_PV}_${deb_arch}.deb
+		pipestatus || die
+
+		cd "${WORKDIR}" > /dev/null || die
+	fi
+
+	unpacker_src_unpack
+}
 
 src_install() {
 	# Remove Debian specific files
