@@ -47,6 +47,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.6.1-_DEFAULT_SOURCE.patch
 	"${FILESDIR}"/${PN}-4.6.1_p14-xplc-module.patch
 	"${FILESDIR}"/${PN}-4.6.1_p14-llvm.patch
+	"${FILESDIR}"/${PN}-4.6.1_p14-getstatus.patch
 )
 
 src_prepare() {
