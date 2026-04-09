@@ -26,7 +26,7 @@ IUSE="games gsettings gui"
 DEPEND="games? ( acct-group/gamestat )"
 RDEPEND="${DEPEND}
 	!<app-emacs/emacs-daemon-0.25
-	!<x11-misc/emacs-desktop-mail-1.3"
+	!x11-misc/emacs-desktop-mail"
 PDEPEND=">=app-editors/emacs-26.1:*"
 IDEPEND="gui? ( gsettings? ( dev-libs/glib ) )"
 
