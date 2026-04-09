@@ -24,7 +24,7 @@ DEPEND="
 	${RDEPEND}
 "
 BDEPEND="
-	doc? ( app-text/doxygen )
+	doc? ( app-text/doxygen[dot] )
 	virtual/pkgconfig
 	verify-sig? ( sec-keys/openpgp-keys-netfilter )
 "
