@@ -16,7 +16,7 @@ IUSE="doc examples"
 
 RDEPEND="net-misc/curl"
 DEPEND="${RDEPEND}"
-BDEPEND="doc? ( app-text/doxygen )"
+BDEPEND="doc? ( app-text/doxygen[dot] )"
 
 src_prepare() {
 	default
