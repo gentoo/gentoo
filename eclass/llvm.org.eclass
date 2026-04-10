@@ -305,7 +305,7 @@ llvm.org_set_globals() {
 		if [[ -n ${LLVM_MANPAGE_DIST} ]]; then
 			SRC_URI+="
 				!doc? (
-					https://dev.gentoo.org/~mgorny/dist/llvm/${LLVM_MANPAGE_DIST}
+					https://distfiles.gentoo.org/pub/proj/llvm/manpages/${LLVM_MANPAGE_DIST}
 				)
 			"
 		fi
@@ -313,7 +313,8 @@ llvm.org_set_globals() {
 
 	if [[ -n ${LLVM_PATCHSET} ]]; then
 		SRC_URI+="
-			https://dev.gentoo.org/~mgorny/dist/llvm/llvm-gentoo-patchset-${LLVM_PATCHSET}.tar.xz"
+			https://distfiles.gentoo.org/pub/proj/llvm/patchsets/${LLVM_MAJOR}/llvm-gentoo-patchset-${LLVM_PATCHSET}.tar.xz
+		"
 	fi
 
 	local x
