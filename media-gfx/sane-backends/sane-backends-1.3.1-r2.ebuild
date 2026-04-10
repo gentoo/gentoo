@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -179,6 +179,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.24-saned_pidfile_location.patch
 	"${FILESDIR}"/${PN}-1.0.27-disable-usb-tests.patch
 	"${FILESDIR}"/${PN}-1.0.30-add_hpaio_epkowa_dll.conf.patch
+	"${FILESDIR}"/${PN}-1.3.1-gphoto2_strchr_c23.patch
 )
 
 # ./configure checks to see if these are defined in sys/io.h,
