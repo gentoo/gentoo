@@ -30,7 +30,10 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-text/doxygen[dot] )"
 
-PATCHES=( "${FILESDIR}"/${PN}-0.9.2_p20161002-fix-build-system.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.9.2_p20161002-fix-build-system.patch
+	"${FILESDIR}"/${PN}-0.9.2_p20161002-fix-ncurses.patch
+)
 
 src_prepare() {
 	default
