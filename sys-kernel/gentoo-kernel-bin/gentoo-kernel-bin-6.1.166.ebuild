@@ -19,7 +19,7 @@ HOMEPAGE="
 SRC_URI+="
 	https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/${BASE_P}.tar.xz
 	https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/patch-${PATCH_PV}.xz
-	https://dev.gentoo.org/~mgorny/dist/linux/${PATCHSET}.tar.xz
+	https://distfiles.gentoo.org/pub/proj/dist-kernel/patchsets/$(ver_cut 1-2)/${PATCHSET}.tar.xz
 	verify-sig? (
 		https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/sha256sums.asc
 			-> linux-$(ver_cut 1).x-sha256sums-${SHA256SUM_DATE}.asc
