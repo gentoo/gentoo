@@ -1,0 +1,42 @@
+Fix tests
+diff '--color=auto' -urw a/tests/test-yamldata.c b/tests/test-yamldata.c
+--- a/tests/test-yamldata.c	2026-03-29 04:02:01.697415548 +0300
++++ b/tests/test-yamldata.c	2026-03-29 04:07:31.146443899 +0300
+@@ -1056,7 +1056,7 @@
+ 					       "- id: org.example.old_test\n"
+ 					       "Requires:\n"
+ 					       "- kernel: Linux\n"
+-					       "  version: \">= 4.15\"\n"
++					       "  version: \'>= 4.15\'\n"
+ 					       "- id: org.example.TestDependency\n"
+ 					       "  version: == 1.2\n"
+ 					       "- display_length: 4200\n"
+@@ -1880,10 +1880,10 @@
+ 				       "  colors:\n"
+ 				       "  - type: primary\n"
+ 				       "    scheme-preference: light\n"
+-				       "    value: \"#ff00ff\"\n"
++				       "    value: \'#ff00ff\'\n"
+ 				       "  - type: primary\n"
+ 				       "    scheme-preference: dark\n"
+-				       "    value: \"#993d3d\"\n";
++				       "    value: \'#993d3d\'\n";
+ 	g_autoptr(AsComponent) cpt = NULL;
+ 	g_autofree gchar *res = NULL;
+ 	AsBranding *branding;
+@@ -2065,12 +2065,12 @@
+ 				     "  de: \"2048\"\n"
+ 				     "Summary:\n"
+ 				     "  fr: \"-42\"\n"
+-				     "  eo: \"!! Weird!\"\n"
++				     "  eo: \'!! Weird!\'\n"
+ 				     "  C: Just a normal text.\n"
+-				     "  de: \"# why?\"\n"
++				     "  de: \'# why?\'\n"
+ 				     "Keywords:\n"
+ 				     "  la:\n"
+-				     "  - \"Auxilium: Help Contents=Adiuvantes Res\"\n"
++				     "  - \'Auxilium: Help Contents=Adiuvantes Res\'\n"
+ 				     "  eo:\n"
+ 				     "  - \"2048\"\n"
+ 				     "  C:\n"
