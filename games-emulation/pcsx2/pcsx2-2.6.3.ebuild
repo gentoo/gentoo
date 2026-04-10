@@ -109,7 +109,7 @@ src_prepare() {
 		-i cmake/SearchForStuff.cmake || die
 
 	# pluto(s)vg likewise often restrict versions and Gentoo also does not
-	# have .pc files for it, use sed to avoid rebasing on version changes
+	# have .cmake files for it, use sed to avoid rebasing on version changes
 	sed -e '/^find_package(plutovg/d' \
 		-e '/^find_package(plutosvg/c\
 			find_package(PkgConfig REQUIRED)\
