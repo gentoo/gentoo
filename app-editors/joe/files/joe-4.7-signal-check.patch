@@ -1,0 +1,19 @@
+This configure check fails for several  wrong reasons,
+with misleading errors. Make it compile properly.
+
+--- joe-4.7/acinclude.m4
++++ joe-4.7/acinclude.m4
+@@ -59,9 +59,10 @@ AC_DEFUN([joe_REINSTALL_SIGHANDLERS],
+ #include <signal.h>
+ #endif
+ 
+-#ifndef HAVE_SIGHANDLER_T
+-typedef RETSIGTYPE (*sighandler_t)(int);
+-#endif
++typedef void RETSIGTYPE;
++ 
++void set_signal(int signum, sighandler_t handler);
++RETSIGTYPE sigint(int s);
+ 
+ int nsigint;
+ 
