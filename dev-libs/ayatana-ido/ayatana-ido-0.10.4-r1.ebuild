@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,11 +19,13 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/glib-2.58:2
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	>=x11-libs/gtk+-3.24:3[introspection]
 "
 DEPEND="
 	${RDEPEND}
-	x11-base/xorg-proto"
+	x11-base/xorg-proto
+"
 BDEPEND="
 	$(vala_depend)
 	dev-util/glib-utils
