@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>anthonyryan1@gmail.com</email>
+		<name>Anthony Ryan</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		OpenFact is a community implementation of Facter, a command-line tool
+		that gathers basic facts about nodes (systems) such as hardware details,
+		network settings, OS type and version, and more. These facts are made
+		available as variables in your Puppet manifests and can be used to inform
+		conditional expressions in Puppet.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">OpenVoxProject/openfact</remote-id>
+	</upstream>
+</pkgmetadata>
