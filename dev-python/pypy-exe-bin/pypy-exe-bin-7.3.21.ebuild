@@ -14,30 +14,24 @@ HOMEPAGE="
 SRC_URI="
 	elibc_glibc? (
 		amd64? (
-			https://dev.gentoo.org/~mgorny/binpkg/amd64/pypy/dev-python/pypy-exe/${MY_P}.gpkg.tar
-				-> ${MY_P}.amd64.gpkg.tar
+			https://distfiles.gentoo.org/pub/proj/python/binpkg/amd64/pypy-exe/${MY_P}.amd64.gpkg.tar
 		)
 		arm64? (
-			https://dev.gentoo.org/~mgorny/binpkg/arm64/pypy/dev-python/pypy-exe/${MY_P}.gpkg.tar
-				-> ${MY_P}.arm64.gpkg.tar
+			https://distfiles.gentoo.org/pub/proj/python/binpkg/arm64/pypy-exe/${MY_P}.arm64.gpkg.tar
 		)
 		x86? (
-			https://dev.gentoo.org/~mgorny/binpkg/x86/pypy/dev-python/pypy-exe/${MY_P}.gpkg.tar
-				-> ${MY_P}.x86.gpkg.tar
+			https://distfiles.gentoo.org/pub/proj/python/binpkg/x86/pypy-exe/${MY_P}.x86.gpkg.tar
 		)
 	)
 	elibc_musl? (
 		amd64? (
-			https://dev.gentoo.org/~mgorny/binpkg/amd64-musl/pypy/dev-python/pypy-exe/${MY_P}.gpkg.tar
-				-> ${MY_P}.amd64-musl.gpkg.tar
+			https://distfiles.gentoo.org/pub/proj/python/binpkg/amd64-musl/pypy-exe/${MY_P}.amd64-musl.gpkg.tar
 		)
 		arm64? (
-			https://dev.gentoo.org/~mgorny/binpkg/arm64-musl/pypy/dev-python/pypy-exe/${MY_P}.gpkg.tar
-				-> ${MY_P}.arm64-musl.gpkg.tar
+			https://distfiles.gentoo.org/pub/proj/python/binpkg/arm64-musl/pypy-exe/${MY_P}.arm64-musl.gpkg.tar
 		)
 		x86? (
-			https://dev.gentoo.org/~mgorny/binpkg/x86-musl/pypy/dev-python/pypy-exe/${MY_P}.gpkg.tar
-				-> ${MY_P}.x86-musl.gpkg.tar
+			https://distfiles.gentoo.org/pub/proj/python/binpkg/x86-musl/pypy-exe/${MY_P}.x86-musl.gpkg.tar
 		)
 	)
 "
