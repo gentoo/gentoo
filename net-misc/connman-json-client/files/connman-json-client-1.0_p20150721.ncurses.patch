@@ -1,0 +1,41 @@
+https://bugs.gentoo.org/928981
+--- a/popup.c	2026-04-10 18:35:15.076276936 -0000
++++ b/popup.c	2026-04-10 18:38:02.446223540 -0000
+@@ -156,7 +156,7 @@
+ 	assert(popup_form != NULL && win_form != NULL);
+ 	assert(set_form_win(popup_form, win_form) == E_OK);
+ 
+-	int diff_rows = popup_form->cols - win_form->_maxx-2;
++	int diff_rows = popup_form->cols - getmaxx(win_form)-2;
+ 
+ 	/*
+ 	 * There isn't enough rows for the form so we resize win_body and
+@@ -165,11 +165,11 @@
+ 	 * of them).
+ 	 */
+ 	if (diff_rows > 0) {
+-		wresize(win_body, win_body->_maxy, win_body->_maxx + diff_rows);
+-		wresize(win_form, win_form->_maxy, win_form->_maxx - 2 + diff_rows);
++		wresize(win_body, getmaxy(win_body), getmaxx(win_body) + diff_rows);
++		wresize(win_form, getmaxy(win_form), getmaxx(win_form) - 2 + diff_rows);
+ 	}
+ 
+-	inner = derwin(win_form, win_form->_maxy-2, win_form->_maxx, 2, 0);
++	inner = derwin(win_form, getmaxy(win_form)-2, getmaxx(win_form), 2, 0);
+ 	assert(inner != NULL);
+ 	set_form_sub(popup_form, inner);
+ 
+diff '--color=auto' -ru a/renderers.c b/renderers.c
+--- a/renderers.c	2026-04-10 18:40:03.683720195 -0000
++++ b/renderers.c	2026-04-10 18:46:07.194854905 -0000
+@@ -288,8 +288,8 @@
+ 	unpost_menu(main_menu);
+ 
+ 	for (i = 0; i < nb_items; i++) {
+-		free((void *) main_items[i]->description.str);
+-		free((void *) main_items[i]->name.str);
++		free((void *) item_description(main_items[i]));
++		free((void *) item_name(main_items[i]));
+ 
+ 		data = item_userptr(main_items[i]);
+ 		free((void *) data->dbus_name);
