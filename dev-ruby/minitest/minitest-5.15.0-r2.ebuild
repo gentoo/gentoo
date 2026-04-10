@@ -1,8 +1,8 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby27 ruby30 ruby31 ruby32"
+USE_RUBY="ruby27 ruby30 ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_DOCDIR="doc"
 RUBY_FAKEGEM_EXTRADOC="History.rdoc README.rdoc"
@@ -10,7 +10,7 @@ RUBY_FAKEGEM_EXTRADOC="History.rdoc README.rdoc"
 inherit ruby-fakegem
 
 DESCRIPTION="minitest/unit is a small and fast replacement for ruby's huge and slow test/unit"
-HOMEPAGE="https://github.com/seattlerb/minitest"
+HOMEPAGE="https://github.com/minitest/minitest"
 
 LICENSE="MIT"
 SLOT="5.15"
@@ -18,6 +18,14 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~spar
 IUSE="doc test"
 
 RDEPEND="!~dev-ruby/minitest-5.15.0:5"
+
+each_ruby_prepare() {
+	case ${RUBY} in
+		*ruby33)
+			sed --in-place --expression='s/nil:NilClass/nil/g' test/minitest/test_minitest_mock.rb || die
+			;;
+	esac
+}
 
 each_ruby_test() {
 	MT_NO_PLUGINS=true ${RUBY} -Ilib:test:. -e "Dir['**/test_*.rb'].each{|f| require f}" || die "Tests failed"
