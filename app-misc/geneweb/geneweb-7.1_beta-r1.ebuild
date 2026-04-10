@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ RESTRICT="strip
 DEPEND="
 	acct-group/geneweb
 	acct-user/geneweb
-	dev-ml/calendars:=[ocamlopt?]
+	=dev-ml/calendars-1*:=[ocamlopt?]
 	>=dev-ml/camlp5-8.03.00:=[ocamlopt?]
 	dev-ml/camlp-streams:=[ocamlopt?]
 	dev-ml/jingoo:=[ocamlopt?]
