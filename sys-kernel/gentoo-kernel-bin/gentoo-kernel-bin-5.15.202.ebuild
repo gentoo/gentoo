@@ -25,16 +25,16 @@ SRC_URI+="
 			-> linux-$(ver_cut 1).x-sha256sums-${SHA256SUM_DATE}.asc
 	)
 	amd64? (
-		https://distfiles.gentoo.org/pub/proj/gentoo-kernel-bin/amd64/$(ver_cut 1-2)/${BINPKG}.amd64.gpkg.tar
+		https://distfiles.gentoo.org/pub/proj/dist-kernel/binpkg/amd64/$(ver_cut 1-2)/${BINPKG}.amd64.gpkg.tar
 	)
 	arm64? (
-		https://distfiles.gentoo.org/pub/proj/gentoo-kernel-bin/arm64/$(ver_cut 1-2)/${BINPKG}.arm64.gpkg.tar
+		https://distfiles.gentoo.org/pub/proj/dist-kernel/binpkg/arm64/$(ver_cut 1-2)/${BINPKG}.arm64.gpkg.tar
 	)
 	ppc64? (
-		https://distfiles.gentoo.org/pub/proj/gentoo-kernel-bin/ppc64le/$(ver_cut 1-2)/${BINPKG}.ppc64le.gpkg.tar
+		https://distfiles.gentoo.org/pub/proj/dist-kernel/binpkg/ppc64le/$(ver_cut 1-2)/${BINPKG}.ppc64le.gpkg.tar
 	)
 	x86? (
-		https://distfiles.gentoo.org/pub/proj/gentoo-kernel-bin/x86/$(ver_cut 1-2)/${BINPKG}.x86.gpkg.tar
+		https://distfiles.gentoo.org/pub/proj/dist-kernel/binpkg/x86/$(ver_cut 1-2)/${BINPKG}.x86.gpkg.tar
 	)
 "
 S=${WORKDIR}
