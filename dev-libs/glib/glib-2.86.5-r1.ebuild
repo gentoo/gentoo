@@ -36,7 +36,7 @@ RESTRICT="!test? ( test )"
 # them or just put the (build) deps in that rare consumer instead of recursive
 # RDEPEND here (due to lack of recursive DEPEND).
 RDEPEND="
-	!<dev-libs/gobject-introspection-${INTROSPECTION_PV}
+	!<dev-libs/gobject-introspection-1.80.1
 	!<dev-util/gdbus-codegen-${PV}
 	>=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]
 	>=dev-libs/libpcre2-10.32:0=[${MULTILIB_USEDEP},unicode(+),static-libs?]
@@ -59,7 +59,7 @@ BDEPEND="
 	>=dev-build/meson-1.4.0
 	dev-libs/libxslt
 	>=sys-devel/gettext-0.19.8
-	doc? ( >=dev-util/gi-docgen-2026.1 )
+	doc? ( >=dev-util/gi-docgen-2023.1 )
 	dev-python/docutils
 	systemtap? ( >=dev-debug/systemtap-1.3 )
 	${PYTHON_DEPS}
@@ -91,6 +91,8 @@ MULTILIB_CHOST_TOOLS=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.64.1-mark-gdbus-server-auth-test-flaky.patch
+	"${FILESDIR}"/${PN}-2.84.4-setlocale-glibc-2.43.patch
+	"${FILESDIR}"/${PN}-2.84.4-fix-const-attribute.patch
 )
 
 python_check_deps() {
@@ -260,7 +262,6 @@ multilib_src_configure() {
 
 			# We want as minimal a build as possible here to speed things up
 			# and reduce the risk of failures.
-			-Db_lto=false
 			-Dglib:selinux=disabled
 			-Dglib:xattr=false
 			-Dglib:libmount=disabled

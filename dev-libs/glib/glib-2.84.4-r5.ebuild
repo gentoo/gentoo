@@ -97,6 +97,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.86-MR-4934-CVE-2025-14087.patch
 	"${FILESDIR}"/${PN}-2.86-MR-4936.patch
 	"${FILESDIR}"/${PN}-2.84.4-setlocale-glibc-2.43.patch
+	"${FILESDIR}"/${PN}-2.84.4-fix-const-attribute.patch
 )
 
 python_check_deps() {
