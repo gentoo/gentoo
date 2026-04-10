@@ -91,15 +91,6 @@ src_configure() {
 	meson_src_configure
 }
 
-src_test() {
-	if [[ ${LD_PRELOAD} == *libsandbox* ]]; then
-		# https://bugs.gentoo.org/961961
-		ewarn "Skipping tests: libsandbox in LD_PRELOAD"
-		return
-	fi
-	meson_src_test
-}
-
 src_install() {
 	meson_src_install
 
