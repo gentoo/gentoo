@@ -38,7 +38,6 @@ PATCHES=(
 
 src_configure() {
 	local mycmakeargs=(
-		-DZEAL_RELEASE_BUILD=ON
 		-DCMAKE_DISABLE_FIND_PACKAGE_X11=$(usex X no yes)
 	)
 	cmake_src_configure
