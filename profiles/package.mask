@@ -36,6 +36,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2026-04-11)
+# dev-python/flask-sqlalchemy is unmaintained upstream, and has tons
+# of test failures with modern dev-python/sqlalchemy versions.
+# net-mail/automx2 has no Gentoo maintainer, and is its only revdep.
+# Removal on 2026-05-11.  Bug #972541.
+acct-group/automx2
+acct-user/automx2
+dev-python/flask-migrate
+dev-python/flask-sqlalchemy
+net-mail/automx2
+
 # Ulrich Müller <ulm@gentoo.org> (2026-04-09)
 # No longer serves any purpose. The mail desktop files are installed
 # by >=app-emacs/emacs-common-1.14 for all GNU Emacs (USE=gui) users.
