@@ -34,6 +34,7 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.0-no-force-lto.patch
+	"${FILESDIR}"/${PN}-1.7.2-toolchain-hardening.patch
 )
 
 src_configure() {

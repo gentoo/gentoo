@@ -1,0 +1,52 @@
+We already set some of these in the toolchain, and the rest may conflict
+with flags the user can set (like -fcf-protection vs -mindirect-brnanch=thunk).
+--- a/meson.build
++++ b/meson.build
+@@ -30,9 +30,7 @@ project('leancrypto', 'c',
+ cc = meson.get_compiler('c')
+ 
+ # Hardening Compiler flags
+-add_global_arguments([ '-fstack-protector-strong',
+-		       '-fwrapv',
+-		       '--param', 'ssp-buffer-size=4',
++add_global_argument([ -fwrapv',
+ 		       '-fvisibility=hidden',
+ 		       '-Wconversion',
+ 		       '-Wcast-align',
+@@ -57,36 +55,14 @@ if cc.has_argument('-Wdocumentation')
+ 			     language: 'c')
+ endif
+ 
+-# More hardening
+-if cc.has_argument('-fzero-call-used-regs=used-gpr')
+-	add_global_arguments([ '-fzero-call-used-regs=used-gpr' ],
+-			     language: 'c')
+-endif
+-if cc.has_argument('-ftrivial-auto-var-init=zero')
+-	add_global_arguments([ '-ftrivial-auto-var-init=zero' ],
+-			     language: 'c')
+-endif
+ if cc.has_argument('-Wshorten-64-to-32')
+ 	add_global_arguments([ '-Wshorten-64-to-32' ],
+ 			     language: 'c')
+ endif
+ 
+-# x86_64 hardening
+-if cc.has_argument('-fcf-protection=full')
+-	add_global_arguments([ '-fcf-protection=full' ],
+-			     language: 'c')
+-endif
+-
+-# ARM64 hardening
+-if cc.has_argument('-mbranch-protection=standard')
+-	add_global_arguments([ '-mbranch-protection=standard' ], language: 'c')
+-endif
+-
+ if get_option('optimization') == '0'
+ 	add_global_arguments([ '-DDEBUG' ], language: 'c')
+ elif get_option('efi').disabled()
+-	add_global_arguments([ '-U_FORTIFY_SOURCE' ], language: 'c')
+-	add_global_arguments([ '-D_FORTIFY_SOURCE=3' ], language: 'c')
+ endif
+ 
+ if get_option('enable_selftests').enabled()
