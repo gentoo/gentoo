@@ -110,6 +110,9 @@ src_prepare() {
 	rm -f test/rinda/test_rinda.rb test/socket/test_tcp.rb \
 	   test/fiber/test_address_resolve.rb spec/ruby/library/socket/tcpsocket/{initialize,open}_spec.rb|| die
 
+	# Doesn't play well with PORTAGE_NICENESS/PORTAGE_SCHEDULING_POLICY
+	rm -f spec/ruby/core/process/setpriority_spec.rb || die
+
 	# Remove webrick tests because setting LD_LIBRARY_PATH does not work for them.
 	rm -rf tool/test/webrick || die
 

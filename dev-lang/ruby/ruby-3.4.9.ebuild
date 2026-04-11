@@ -122,6 +122,9 @@ src_prepare() {
 	   spec/ruby/library/socket/tcpsocket/{initialize,open}_spec.rb \
 		spec/ruby/library/socket/socket/connect_spec.rb || die
 
+	# Doesn't play well with PORTAGE_NICENESS/PORTAGE_SCHEDULING_POLICY
+	rm -f spec/ruby/core/process/setpriority_spec.rb || die
+
 	# Remove webrick tests because setting LD_LIBRARY_PATH does not work for them.
 	rm -rf tool/test/webrick || die
 

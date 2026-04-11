@@ -119,6 +119,9 @@ src_prepare() {
 	rm -fr gems/* || die
 	touch gems/bundled_gems || die
 
+	# Doesn't play well with PORTAGE_NICENESS/PORTAGE_SCHEDULING_POLICY
+	rm -f spec/ruby/core/process/setpriority_spec.rb || die
+
 	# Remove tests that are known to fail or require a network connection
 	rm -f test/ruby/test_process.rb test/rubygems/test_gem{,_path_support}.rb || die
 	rm -f test/rubygems/test_bundled_ca.rb || die
