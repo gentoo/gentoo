@@ -73,7 +73,10 @@ RDEPEND="
 	dev-libs/openssl:=
 	dev-libs/rapidjson
 	dev-util/lttng-ust:=
-	sys-libs/libunwind
+	|| (
+		sys-libs/libunwind
+		llvm-runtimes/libunwind
+	)
 	virtual/zlib:0/1
 "
 DEPEND="
@@ -88,6 +91,7 @@ BDEPEND="
 		llvm-core/lld:${LLVM_SLOT}
 		llvm-core/llvm:${LLVM_SLOT}
 	')
+	sys-devel/gcc
 "
 IDEPEND="
 	app-eselect/eselect-dotnet
