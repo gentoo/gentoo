@@ -23,17 +23,13 @@ SRC_URI="
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="django flask jose test"
+IUSE="django jose test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/cryptography[${PYTHON_USEDEP}]
 	django? (
 		dev-python/django[${PYTHON_USEDEP}]
-	)
-	flask? (
-		dev-python/flask[${PYTHON_USEDEP}]
-		dev-python/flask-sqlalchemy[${PYTHON_USEDEP}]
 	)
 	jose? (
 		>=dev-python/pycryptodome-3.10[${PYTHON_USEDEP}]
@@ -44,8 +40,6 @@ BDEPEND="
 		dev-python/anyio[${PYTHON_USEDEP}]
 		dev-python/cachelib[${PYTHON_USEDEP}]
 		dev-python/django[${PYTHON_USEDEP}]
-		dev-python/flask[${PYTHON_USEDEP}]
-		dev-python/flask-sqlalchemy[${PYTHON_USEDEP}]
 		dev-python/httpx[${PYTHON_USEDEP}]
 		>=dev-python/pycryptodome-3.10[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
@@ -67,7 +61,7 @@ src_prepare() {
 
 python_test() {
 	local -x DJANGO_SETTINGS_MODULE=tests.django_settings
-	epytest tests/{core,jose,clients,flask}
+	epytest tests/{core,jose,clients}
 
 	# TODO: django.core.exceptions.AppRegistryNotReady: Apps aren't loaded yet.
 	#epytest tests/django
