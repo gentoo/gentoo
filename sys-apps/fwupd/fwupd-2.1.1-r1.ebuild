@@ -17,21 +17,20 @@ SRC_URI="
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
-IUSE="amdgpu +archive bash-completion bluetooth cbor elogind flashrom gnutls gtk-doc introspection lzma minimal modemmanager nvme policykit seccomp spi synaptics systemd test tpm uefi"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	^^ ( elogind minimal systemd )
+IUSE="amdgpu bash-completion bluetooth cbor elogind flashrom gnutls gtk-doc introspection minimal modemmanager policykit seccomp systemd test tpm readline uefi"
+REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
+	?? ( elogind systemd )
 	minimal? ( !introspection )
-	spi? ( lzma )
 	seccomp? ( systemd )
-	synaptics? ( gnutls )
-	test? ( archive )
 	uefi? ( gnutls )
 "
 # DBus permission failures in 2.0.20 and then other new issues in 2.1.1
 # Likely needs wrangling for ebuild environment
 RESTRICT="!test? ( test ) test"
 
-BDEPEND="$(vala_depend)
+BDEPEND="
+	$(vala_depend)
 	$(python_gen_cond_dep '
 		dev-python/jinja2[${PYTHON_USEDEP}]
 	')
@@ -46,6 +45,7 @@ BDEPEND="$(vala_depend)
 	)
 	bash-completion? ( >=app-shells/bash-completion-2.0 )
 	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
+	readline? ( sys-libs/readline:= )
 	test? (
 		net-libs/gnutls[tools]
 	)
@@ -56,9 +56,12 @@ BDEPEND="$(vala_depend)
 	)
 	verify-sig? ( sec-keys/openpgp-keys-hughsie )
 "
-COMMON_DEPEND="${PYTHON_DEPS}
+COMMON_DEPEND="
+	${PYTHON_DEPS}
 	>=app-arch/gcab-1.0
 	app-arch/xz-utils
+	dev-db/sqlite:3
+	virtual/libusb:1
 	>=dev-libs/glib-2.72:2
 	>=dev-libs/libjcat-0.2.0[pkcs7]
 	>=dev-libs/libxmlb-0.3.19:=[introspection?]
@@ -66,17 +69,18 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
 	>=net-misc/curl-7.62.0
+	sys-apps/util-linux
+	virtual/zlib:=
+
 	cbor? ( >=dev-libs/libcbor-0.7.0:= )
 	elogind? ( >=sys-auth/elogind-211 )
 	flashrom? ( >=sys-apps/flashrom-1.2-r3 )
-	gnutls? ( >=net-libs/gnutls-3.6.0 )
-	virtual/libusb:1
-	lzma? ( app-arch/xz-utils )
+	gnutls? ( >=net-libs/gnutls-3.6.0:= )
 	modemmanager? ( >=net-misc/modemmanager-1.22.0[mbim,qmi] )
 	policykit? ( >=sys-auth/polkit-0.114 )
 	seccomp? ( sys-apps/systemd[seccomp] )
-	dev-db/sqlite
 	systemd? ( >=sys-apps/systemd-249 )
+	tpm? ( app-crypt/tpm2-tss:= )
 	uefi? (
 		sys-apps/fwupd-efi
 		sys-boot/efibootmgr
@@ -94,7 +98,7 @@ DEPEND="
 	x11-libs/pango[introspection]
 	sys-kernel/linux-headers
 	amdgpu? (
-		x11-libs/libdrm[video_cards_amdgpu]
+		>=x11-libs/libdrm-2.4.113[video_cards_amdgpu]
 	)
 "
 
@@ -114,20 +118,35 @@ src_prepare() {
 }
 
 src_configure() {
+	# Automagic dependency on sys-apps/uswid for SBOMs
+	local native_file="${T}"/meson.${CHOST}.${ABI}.ini.local
+	cat >> ${native_file} <<-EOF || die
+	[binaries]
+	uswid='uswid-falseified'
+	EOF
+
 	local plugins=(
 		$(meson_feature flashrom plugin_flashrom)
+		$(meson_feature amdgpu libdrm)
 		$(meson_feature modemmanager plugin_modem_manager)
+		$(meson_feature tpm hsi)
 		$(meson_use uefi plugin_uefi_capsule_splash)
 	)
 
 	local emesonargs=(
+		--native-file "${native_file}"
 		--localstatedir "${EPREFIX}"/var
+
 		-Dbuild="$(usex minimal standalone all)"
+		-Dblkid=enabled
 		-Defi_binary="false"
 		-Defi_os_dir="gentoo"
 		-Dman="true"
 		-Dsupported_build="enabled"
 		-Dsystemd_unit_user=""
+		# Unpackaged dependency
+		-Dpassim=disabled
+
 		$(meson_use bash-completion bash_completion)
 		$(meson_feature bluetooth bluez)
 		$(meson_feature cbor)
@@ -135,6 +154,8 @@ src_configure() {
 		$(meson_feature gtk-doc docs)
 		$(meson_feature introspection)
 		$(meson_feature policykit polkit)
+		$(meson_feature readline)
+		$(meson_feature systemd)
 		$(meson_use test tests)
 
 		${plugins[@]}
