@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -88,6 +88,11 @@ python_test() {
 		# tests for downloading all data files, including these not needed
 		# by any actual tests
 		tests/skimage/data/test_data.py::test_download_all_with_pooch
+
+		# random deprecation warnings
+		tests/skimage/io/test_pil.py::test_all_color
+		tests/skimage/io/test_pil.py::test_all_mono
+		'tests/skimage/io/test_plugin.py::test_deprecation_warnings_on_plugin_funcs[call_plugin-args1]'
 	)
 
 	epytest
