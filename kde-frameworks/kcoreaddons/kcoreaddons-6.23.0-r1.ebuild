@@ -10,7 +10,7 @@ inherit ecm frameworks.kde.org xdg
 DESCRIPTION="Framework for solving common problems such as caching, randomisation, and more"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="dbus"
 
 COMMON_DEPEND="
