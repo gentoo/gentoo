@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1
 
@@ -45,6 +45,9 @@ EPYTEST_DESELECT=(
 	tests/test_readme.py::test_readme_shell_cmds
 	# TODO
 	tests/test_cli.py::TestSuggestGood::test_cli_suggest_paginated
+	# minor CLI test, confused by being called via 'python -m pytest'
+	tests/test_cli.py::TestMisc::test_cli_noargs_shows_help
+	tests/test_cli_textconv.py::TestMisc::test_cli_noargs_shows_help
 )
 
 src_prepare() {
