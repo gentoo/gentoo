@@ -1,10 +1,10 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1
 
@@ -34,6 +34,11 @@ BDEPEND="
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/pythological/unification/commit/4f2c7605a30efb1cf0b3b35e367ac56492918684
+	"${FILESDIR}/${P}-py314.patch"
+)
 
 EPYTEST_DESELECT=(
 	tests/test_benchmarks.py
