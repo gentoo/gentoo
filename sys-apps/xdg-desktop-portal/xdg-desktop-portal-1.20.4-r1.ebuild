@@ -15,9 +15,11 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 IUSE="geolocation flatpak gstreamer seccomp systemd test udev"
-RESTRICT="!test? ( test )"
 # Upstream expect flatpak to be used w/ seccomp and flatpak needs bwrap anyway
 REQUIRED_USE="flatpak? ( seccomp )"
+
+RESTRICT="!test? ( test ) gstreamer? ( test )"
+PROPERTIES="gstreamer? ( test_privileged )"
 
 DEPEND="
 	>=dev-libs/glib-2.72:2
@@ -75,6 +77,11 @@ python_check_deps() {
 }
 
 src_configure() {
+	if use gstreamer; then
+		# bug #951609
+		addpredict /dev/dri/
+	fi
+
 	local emesonargs=(
 		-Ddbus-service-dir="${EPREFIX}/usr/share/dbus-1/services"
 		-Dsystemd-user-unit-dir="$(systemd_get_userunitdir)"
@@ -94,6 +101,17 @@ src_configure() {
 	)
 
 	meson_src_configure
+}
+
+src_test() {
+	# The default portage tmpdir is too long for dbus 99 byte limit for sockets
+	local -x TMPDIR="$(mktemp -d --tmpdir=/tmp ${PF}-XXX || die)"
+	nonfatal meson_src_test
+	local ret="${?}"
+	rm -r "${TMPDIR}" || die
+	if [[ "${ret}" != 0 ]]; then
+		die "tests failed"
+	fi
 }
 
 src_install() {

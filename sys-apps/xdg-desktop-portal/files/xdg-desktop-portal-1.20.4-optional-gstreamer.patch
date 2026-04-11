@@ -41,7 +41,7 @@ that you just don't have customised sounds, which isn't so bad.
             error_message: 'Python version >=3.9 is required') \
    .require(umockdev_dep.found()) \
 -  .require(have_wav_parse,
-+  .require(not have_wav_parse and not get_option('sandboxed-sound-validation').allowed(),
++  .require(have_wav_parse or not get_option('sandboxed-sound-validation').allowed(),
             error_message: 'gst-inspect and the wavparse plugins are required') \
    .allowed()
  
