@@ -1,0 +1,31 @@
+https://github.com/stevegrubb/libcap-ng/pull/73
+
+From 704a4d311ccc8e34446e25bcb6afbd1541879d2c Mon Sep 17 00:00:00 2001
+Message-ID: <704a4d311ccc8e34446e25bcb6afbd1541879d2c.1775906446.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Sat, 11 Apr 2026 12:18:39 +0100
+Subject: [PATCH] cap-audit: fix out-of-source builds
+
+With an out-of-source build, bpftool puts the generated vmlinux.h in
+the build directory, not the source directory, so we need to tell
+Clang where to find it.
+---
+ utils/cap-audit/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/utils/cap-audit/Makefile.am b/utils/cap-audit/Makefile.am
+index dd2e403..3c04493 100644
+--- a/utils/cap-audit/Makefile.am
++++ b/utils/cap-audit/Makefile.am
+@@ -20,7 +20,7 @@
+ SUBDIRS = test
+ DIST_SUBDIRS = test
+ 
+-AM_CPPFLAGS = -I${top_srcdir} -I${top_srcdir}/src ${LIBBPF_CFLAGS} ${LIBAUDIT_CFLAGS}
++AM_CPPFLAGS = -I${top_srcdir} -I${top_srcdir}/src -I$(top_builddir)/utils/cap-audit ${LIBBPF_CFLAGS} ${LIBAUDIT_CFLAGS}
+ AM_CFLAGS = -W -Wall -Wshadow ${WFLAGS} -Wundef -D_GNU_SOURCE
+ 
+ if BUILD_CAP_AUDIT
+-- 
+2.53.0
+
