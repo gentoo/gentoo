@@ -26,7 +26,10 @@ DEPEND="
 	>=sys-fs/fuse-3.10.0:3=[suid]
 	x11-libs/gdk-pixbuf
 	geolocation? ( >=app-misc/geoclue-2.5.3:2.0 )
-	gstreamer? ( media-libs/gst-plugins-base:1.0 )
+	gstreamer? (
+		media-libs/gst-plugins-base:1.0
+		sys-apps/bubblewrap
+	)
 	flatpak? ( sys-apps/flatpak )
 	seccomp? ( sys-apps/bubblewrap )
 	systemd? ( sys-apps/systemd )
