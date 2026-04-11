@@ -259,6 +259,9 @@ src_prepare() {
 	if ! use cdb; then
 		rm ext/dba/tests/gh19706.phpt
 	fi
+
+	# Fixed upstream, but not in 8.5.5.
+	rm ext/openssl/tests/bug{74796,80770}.phpt || die
 }
 
 src_configure() {

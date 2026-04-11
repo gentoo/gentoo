@@ -271,6 +271,9 @@ src_prepare() {
 	# One-off, somebody forgot to update a version constant
 	rm ext/reflection/tests/ReflectionZendExtension.phpt || die
 
+	# Fixed upstream, but not in 8.3.30.
+	rm ext/openssl/tests/bug{74796,80770}.phpt || die
+
 	eautoconf --force
 }
 
