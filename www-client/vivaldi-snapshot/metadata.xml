@@ -5,6 +5,10 @@
 		<email>chewi@gentoo.org</email>
 		<name>James Le Cuirot</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>chromium@gentoo.org</email>
+		<name>Chromium in Gentoo Project</name>
+	</maintainer>
 	<use>
 		<flag name="ffmpeg-chromium">Use Chromium FFmpeg fork (<pkg>media-video/ffmpeg-chromium</pkg>) rather than mainline FFmpeg (<pkg>media-video/ffmpeg</pkg>)</flag>
 		<flag name="proprietary-codecs">Use system FFmpeg library to support patent-encumbered media codecs</flag>
