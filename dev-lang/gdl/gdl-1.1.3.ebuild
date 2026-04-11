@@ -71,6 +71,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.4-r3-musl.patch
 	"${FILESDIR}"/${PN}-1.1.3-cmake.patch
+	"${FILESDIR}"/${PN}-1.1.3-implicit.patch
 	"${FILESDIR}"/${PN}-1.1.3-test_rounding.patch
 )
 DOCS=( AUTHORS HACKING NEWS PYTHON.txt README README.md )
