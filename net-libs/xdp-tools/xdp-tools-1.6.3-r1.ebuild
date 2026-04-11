@@ -36,6 +36,10 @@ MAKEOPTS+=" V=1"
 
 CONFIG_CHECK="~BPF ~BPF_JIT ~BPF_SYSCALL ~HAVE_EBPF_JIT ~XDP_SOCKETS ~XDP_SOCKETS_DIAG"
 
+PATCHES=(
+	"${FILESDIR}"/1.6.3-ethhdr.patch
+)
+
 src_prepare() {
 	# remove -Werror: #899744
 	sed -i 's/-Werror//g' lib/Makefile lib/defines.mk || die
