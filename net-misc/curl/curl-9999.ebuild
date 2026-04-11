@@ -45,15 +45,19 @@ RESTRICT="!test? ( test )"
 
 # To simplify dependency management in the ebuild we'll require c-ares for HTTPS RR (for now?).
 # HTTPS RR in cURL is a dependency for:
-# - ECH (requires patched openssl or gnutls currently, enabled with rustls)
+# - ECH (enabled with rustls, ossl 4.0+)
 # - Fetching the ALPN list which should provide a better HTTP/3 experience.
-
 # Only one default ssl / quic provider can be enabled
 # The default provider needs its USE satisfied
 # HTTP/3 and MultiSSL are mutually exclusive; it's not clear if MultiSSL offers any benefit at all in the modern day.
 # https://github.com/curl/curl/commit/65ece771f4602107d9cdd339dff4b420280a2c2e
 REQUIRED_USE="
-	ech? ( rustls )
+	ech? (
+		|| (
+			openssl
+			rustls
+		)
+	)
 	httpsrr? ( adns )
 	quic? (
 		^^ (
@@ -86,6 +90,7 @@ REQUIRED_USE="
 # - https://github.com/curl/curl/blob/master/docs/INTERNALS.md (core dependencies + minimum versions)
 # - https://github.com/curl/curl/blob/master/docs/HTTP3.md (example of a feature that moves quickly)
 # - https://github.com/curl/curl/blob/master/.github/workflows/http3-linux.yml (CI/CD for TCP/2)
+# - https://curl.se/dev/deprecate.html - good source of deprecation timelines, e.g. for OpenSSL 1.1.1
 # However 'supported' vs 'works' are two entirely different things; be sane but
 # don't be afraid to require a later version.
 # ngtcp2 = https://bugs.gentoo.org/912029 - can only build with one tls backend at a time.
@@ -116,7 +121,8 @@ RDEPEND="
 			net-libs/mbedtls:3=[${MULTILIB_USEDEP}]
 		)
 		openssl? (
-			>=dev-libs/openssl-1.0.2:=[static-libs?,${MULTILIB_USEDEP}]
+			ech? ( >=dev-libs/openssl-4.0.0_beta1:=[static-libs?,${MULTILIB_USEDEP}] )
+			>=dev-libs/openssl-3.0.0:=[static-libs?,${MULTILIB_USEDEP}]
 		)
 		rustls? (
 			>=net-libs/rustls-ffi-0.15.0:=[${MULTILIB_USEDEP}]
