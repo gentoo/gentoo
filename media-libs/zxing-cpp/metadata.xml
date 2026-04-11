@@ -7,6 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="experimental">Enable experimental features via <pkg>media-libs/zint</pkg></flag>
+		<flag name="tools">Install ZXingReader and ZXingWriter binaries</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">zxing-cpp/zxing-cpp</remote-id>

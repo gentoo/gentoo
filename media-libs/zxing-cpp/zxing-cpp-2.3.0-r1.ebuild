@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ SRC_URI="
 LICENSE="Apache-2.0"
 SLOT="0/3"
 KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv x86"
-IUSE="experimental test"
+IUSE="experimental test tools"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -31,6 +31,9 @@ DEPEND="
 	test? (
 		dev-cpp/gtest
 		dev-libs/libfmt
+		dev-libs/stb
+	)
+	tools? (
 		dev-libs/stb
 	)
 "
@@ -50,7 +53,8 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DZXING_USE_BUNDLED_ZINT=OFF
-		-DZXING_EXAMPLES=OFF # nothing is installed
+		# Build and install ZXingReader and ZXingWriter
+		-DZXING_EXAMPLES=$(usex tools)
 		-DZXING_BLACKBOX_TESTS=$(usex test)
 		-DZXING_UNIT_TESTS=$(usex test)
 		-DZXING_DEPENDENCIES=LOCAL # force find_package as REQUIRED
