@@ -31,7 +31,10 @@ DEPEND="
 	bpf? ( dev-util/bpftool )
 "
 BDEPEND="
-	bpf? ( llvm-core/clang[llvm_targets_BPF(-)] )
+	bpf? (
+		llvm-core/clang[llvm_targets_BPF(-)]
+		virtual/pkgconfig
+	)
 	python? ( >=dev-lang/swig-2 )
 "
 
