@@ -25,10 +25,10 @@ RESTRICT="!test? ( test )"
 
 RDEPEND=">=media-libs/zint-2.16.0:="
 DEPEND="${RDEPEND}
+	dev-libs/stb
 	test? (
 		dev-cpp/gtest
 		dev-libs/libfmt
-		dev-libs/stb
 	)
 "
 
