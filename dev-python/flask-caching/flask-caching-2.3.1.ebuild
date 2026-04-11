@@ -1,11 +1,11 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_PN=Flask-Caching
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit distutils-r1 pypi
 
@@ -28,12 +28,16 @@ BDEPEND="
 		dev-python/asgiref[${PYTHON_USEDEP}]
 		dev-python/pylibmc[sasl(-),${PYTHON_USEDEP}]
 		dev-python/redis[${PYTHON_USEDEP}]
-		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
-		dev-python/pytest-xprocess[${PYTHON_USEDEP}]
 	)
 "
 
+EPYTEST_PLUGINS=( pytest-{asyncio,xprocess} )
 distutils_enable_tests pytest
+
+EPYTEST_DESELECT=(
+	# broken with new redis
+	tests/test_backend_cache.py::TestRedisCache::test_generic_inc_dec
+)
 
 src_prepare() {
 	distutils-r1_src_prepare
