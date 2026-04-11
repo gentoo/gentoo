@@ -35,6 +35,10 @@ BDEPEND="
 	vala? ( $(vala_depend) )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-optional-static-libs.patch
+)
+
 src_prepare() {
 	use vala && vala_setup
 	default
