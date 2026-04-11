@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,6 +9,7 @@ DESCRIPTION="ruTorrent is a front-end for the popular Bittorrent client rTorrent
 HOMEPAGE="https://github.com/Novik/ruTorrent"
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
+	EGIT_BRANCH="develop"
 	EGIT_REPO_URI="https://github.com/Novik/ruTorrent.git"
 else
 	SRC_URI="https://github.com/Novik/ruTorrent/archive/v${PV}.tar.gz -> ${P}.tar.gz"
