@@ -31,7 +31,6 @@ DEPEND="
 	acct-group/postdrop
 	acct-user/postfix
 	dev-libs/libpcre2:0
-	dev-lang/perl
 	berkdb? ( >=sys-libs/db-3.2:* )
 	cdb? ( || ( >=dev-db/tinycdb-0.76 >=dev-db/cdb-0.75-r4 ) )
 	eai? ( dev-libs/icu:= )
@@ -50,6 +49,7 @@ DEPEND="
 	"
 
 RDEPEND="${DEPEND}
+	dev-lang/perl
 	memcached? ( net-misc/memcached )
 	net-mail/mailbase
 	!mail-mta/courier
@@ -72,7 +72,7 @@ REQUIRED_USE="
 
 src_prepare() {
 	default
-	sed -i -e "/^#define ALIAS_DB_MAP/s|:/etc/aliases|:/etc/mail/aliases|" \
+	sed -i -e "/^#define ALIAS_DB_MAP/s|:/etc/aliases|:${EPREFIX}/etc/mail/aliases|" \
 		src/util/sys_defs.h || die "sed failed"
 	# change default paths to better comply with portage standard paths
 	sed -i -e "s:/usr/local/:/usr/:g" conf/master.cf || die "sed failed"
@@ -108,7 +108,7 @@ src_configure() {
 
 	# libpcre is EOL. prefer libpcre2
 	mycc=" -DHAS_PCRE=2"
-	AUXLIBS_PCRE="$(pcre2-config --libs8)"
+	AUXLIBS_PCRE="$($(tc-getPKG_CONFIG) --libs libpcre2-8)"
 
 	use pam && mylibs="${mylibs} -lpam"
 
@@ -132,7 +132,7 @@ src_configure() {
 	fi
 
 	if use mongodb; then
-		mycc="${mycc} -DHAS_MONGODB $(pkg-config --cflags libmongoc-1.0)"
+		mycc="${mycc} -DHAS_MONGODB $($(tc-getPKG_CONFIG) --cflags libmongoc-1.0)"
 		AUXLIBS_MONGODB="-lmongoc-1.0 -lbson-1.0"
 	fi
 
@@ -142,8 +142,8 @@ src_configure() {
 	fi
 
 	if use postgres; then
-		mycc="${mycc} -DHAS_PGSQL -I$(pg_config --includedir)"
-		AUXLIBS_PGSQL="-L$(pg_config --libdir) -lpq"
+		mycc="${mycc} -DHAS_PGSQL $($(tc-getPKG_CONFIG) --cflags libpq)"
+		AUXLIBS_PGSQL="$($(tc-getPKG_CONFIG) --libs libpq)"
 	fi
 
 	if use sqlite; then
@@ -164,7 +164,7 @@ src_configure() {
 		if use ldap-bind; then
 			mycc="${mycc} -DUSE_LDAP_SASL"
 		fi
-		mycc="${mycc} -DUSE_SASL_AUTH -DUSE_CYRUS_SASL -I/usr/include/sasl"
+		mycc="${mycc} -DUSE_SASL_AUTH -DUSE_CYRUS_SASL -I${ESYSROOT}/usr/include/sasl"
 		mylibs="${mylibs} -lsasl2"
 	elif use dovecot-sasl; then
 		mycc="${mycc} -DUSE_SASL_AUTH -DDEF_SERVER_SASL_TYPE=\\\"dovecot\\\""
@@ -179,15 +179,13 @@ src_configure() {
 	fi
 
 	if use cdb; then
-		mycc="${mycc} -DHAS_CDB -I/usr/include/cdb"
+		mycc="${mycc} -DHAS_CDB -I${ESYSROOT}/usr/include/cdb"
 		# Tinycdb is preferred.
 		if has_version dev-db/tinycdb ; then
 			AUXLIBS_CDB="-lcdb"
 		else
-			CDB_PATH="/usr/$(get_libdir)"
-			for i in cdb.a alloc.a buffer.a unix.a byte.a ; do
-				AUXLIBS_CDB="${AUXLIBS_CDB} ${CDB_PATH}/${i}"
-			done
+			printf -v AUXLIBS_CDB "${ESYSROOT}/usr/$(get_libdir)/%s " \
+				cdb.a alloc.a buffer.a unix.a byte.a || die
 		fi
 	fi
 
@@ -231,7 +229,7 @@ src_install() {
 		|| die "postfix-install failed"
 
 	# Fix spool removal on upgrade
-	rm -Rf "${D}"/var
+	rm -Rf "${ED}"/var
 	keepdir /var/spool/postfix
 
 	# Install rmail for UUCP, closes bug #19127
@@ -269,7 +267,7 @@ src_install() {
 		mypostconf="home_mailbox=.maildir/"
 	fi
 	LD_LIBRARY_PATH="${S}/lib" \
-	"${D}"/usr/sbin/postconf -c "${D}"/etc/postfix \
+	"${ED}"/usr/sbin/postconf -c "${ED}"/etc/postfix \
 		-e ${mypostconf} || die "postconf failed"
 
 	insinto /etc/postfix
@@ -278,8 +276,8 @@ src_install() {
 
 	newinitd "${FILESDIR}"/postfix.rc6.${RC_VER} postfix
 	# do not start mysql/postgres unnecessarily - bug #359913
-	use mysql || sed -i -e "s/mysql //" "${D}/etc/init.d/postfix"
-	use postgres || sed -i -e "s/postgresql //" "${D}/etc/init.d/postfix"
+	use mysql || sed -i -e "s/mysql //" "${ED}/etc/init.d/postfix"
+	use postgres || sed -i -e "s/postgresql //" "${ED}/etc/init.d/postfix"
 
 	dodoc *README COMPATIBILITY HISTORY PORTING RELEASE_NOTES*
 	dodoc -r README_FILES/ examples/
