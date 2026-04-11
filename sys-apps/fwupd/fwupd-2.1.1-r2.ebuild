@@ -29,57 +29,35 @@ REQUIRED_USE="
 # Likely needs wrangling for ebuild environment
 RESTRICT="!test? ( test ) test"
 
-BDEPEND="
-	$(vala_depend)
-	$(python_gen_cond_dep '
-		dev-python/jinja2[${PYTHON_USEDEP}]
-	')
-	>=dev-build/meson-1.3.2
-	virtual/pkgconfig
-	sys-apps/hwdata
-	gtk-doc? (
-		$(python_gen_cond_dep '
-			>=dev-python/markdown-3.2[${PYTHON_USEDEP}]
-		')
-		>=dev-util/gi-docgen-2021.1
-	)
-	bash-completion? ( >=app-shells/bash-completion-2.0 )
-	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
-	readline? ( sys-libs/readline:= )
-	test? (
-		net-libs/gnutls[tools]
-	)
-	uefi? (
-		$(python_gen_cond_dep '
-			dev-python/pygobject:3[cairo]
-		')
-	)
-	verify-sig? ( sec-keys/openpgp-keys-hughsie )
-"
 COMMON_DEPEND="
 	${PYTHON_DEPS}
 	>=app-arch/gcab-1.0
 	app-arch/xz-utils
 	dev-db/sqlite:3
-	virtual/libusb:1
 	>=dev-libs/glib-2.72:2
 	>=dev-libs/libjcat-0.2.0[pkcs7]
 	>=dev-libs/libxmlb-0.3.19:=[introspection?]
 	$(python_gen_cond_dep '
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
+	net-libs/libmnl:=
 	>=net-misc/curl-7.62.0
 	sys-apps/util-linux
+	virtual/libusb:1
 	virtual/zlib:=
 
+	amdgpu? (
+		>=x11-libs/libdrm-2.4.113[video_cards_amdgpu]
+	)
 	cbor? ( >=dev-libs/libcbor-0.7.0:= )
 	elogind? ( >=sys-auth/elogind-211 )
 	flashrom? ( >=sys-apps/flashrom-1.2-r3 )
 	gnutls? ( >=net-libs/gnutls-3.6.0:= )
 	modemmanager? ( >=net-misc/modemmanager-1.22.0[mbim,qmi] )
 	policykit? ( >=sys-auth/polkit-0.114 )
+	readline? ( sys-libs/readline:= )
 	seccomp? ( sys-apps/systemd[seccomp] )
-	systemd? ( >=sys-apps/systemd-249 )
+	systemd? ( >=sys-apps/systemd-249:= )
 	tpm? ( app-crypt/tpm2-tss:= )
 	uefi? (
 		sys-apps/fwupd-efi
@@ -96,10 +74,33 @@ RDEPEND="
 DEPEND="
 	${COMMON_DEPEND}
 	x11-libs/pango[introspection]
-	sys-kernel/linux-headers
-	amdgpu? (
-		>=x11-libs/libdrm-2.4.113[video_cards_amdgpu]
+	virtual/os-headers
+"
+BDEPEND="
+	$(vala_depend)
+	$(python_gen_cond_dep '
+		dev-python/jinja2[${PYTHON_USEDEP}]
+	')
+	>=dev-build/meson-1.3.2
+	sys-apps/hwdata
+	virtual/pkgconfig
+	gtk-doc? (
+		$(python_gen_cond_dep '
+			>=dev-python/markdown-3.2[${PYTHON_USEDEP}]
+		')
+		>=dev-util/gi-docgen-2021.1
 	)
+	bash-completion? ( >=app-shells/bash-completion-2.0 )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
+	test? (
+		net-libs/gnutls[tools]
+	)
+	uefi? (
+		$(python_gen_cond_dep '
+			dev-python/pygobject:3[cairo]
+		')
+	)
+	verify-sig? ( sec-keys/openpgp-keys-hughsie )
 "
 
 src_prepare() {
@@ -109,10 +110,6 @@ src_prepare() {
 
 	sed -i -e "/install_dir.*'doc'/s/doc/gtk-doc/" \
 		docs/meson.build || die
-
-	# Fails with DBus permission error
-	#sed -i -e "/g_test_add_data_func.*plugin-gtypes/d" \
-	#	src/fu-self-test.c || die
 
 	python_fix_shebang "${S}"/contrib/*.py
 }
@@ -146,6 +143,7 @@ src_configure() {
 		-Dsystemd_unit_user=""
 		# Unpackaged dependency
 		-Dpassim=disabled
+		-Dlibmnl=enabled
 
 		$(meson_use bash-completion bash_completion)
 		$(meson_feature bluetooth bluez)
