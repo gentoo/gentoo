@@ -33,7 +33,7 @@ BDEPEND="
 	app-alternatives/yacc
 	sys-devel/flex
 	doc? (
-		app-text/doxygen[dot]
+		app-text/doxygen
 		media-gfx/graphviz
 	)
 "
@@ -51,6 +51,11 @@ DOCS=( AUTHORS ChangeLog README.md )
 
 src_prepare() {
 	default
+
+	if ! use doc; then
+		# don't install docs if we didn't ask
+		sed -i -e 's/SUBDIRS += man doc/SUBDIRS += man/' Makefile.am || die
+	fi
 
 	eautoreconf
 
