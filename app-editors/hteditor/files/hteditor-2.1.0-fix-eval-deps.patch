@@ -1,0 +1,29 @@
+From 338a0dbae50af0de06fddd9166c0003aa457d50f Mon Sep 17 00:00:00 2001
+From: "Francisco Blas (klondike) Izquierdo Riera" <klondike@klondike.es>
+Date: Wed, 14 Jan 2026 19:49:20 +0100
+Subject: [PATCH] Fix eval internal dependencies
+
+flex and bison may regenerate the files evalparse.h evalparse.c
+and lex.c this may cause compilation errors if these are used
+before they are regenerated.
+
+Mark these using BUILT_SOURCES so that automake correctly
+generates the dependency to ensure parallel compilation
+works as intended.
+---
+ eval/Makefile.am | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/eval/Makefile.am b/eval/Makefile.am
+index 3324f3e..7874069 100644
+--- a/eval/Makefile.am
++++ b/eval/Makefile.am
+@@ -10,6 +10,8 @@ AUTOMAKE_OPTIONS=foreign
+ noinst_LIBRARIES = libhteval.a
+ libhteval_a_SOURCES = evalparse.y evalparse.h eval.cc eval.h lex.l lex.h evalx.c evalx.h evaltype.h
+ 
++BUILT_SOURCES = evalparse.h evalparse.c lex.c
++
+ #bin_PROGRAMS = testeval
+ #testeval_SOURCES = testeval.c
+ #testeval_LDADD = libhteval.a
