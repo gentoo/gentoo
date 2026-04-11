@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/887189
+https://github.com/vmt/udis86/pull/68
+https://github.com/vmt/udis86/commit/22b95512cce9f70a576bd0c867793eeaddbccd11
+
+From 22b95512cce9f70a576bd0c867793eeaddbccd11 Mon Sep 17 00:00:00 2001
+From: Vegard Nossum <vegard.nossum@oracle.com>
+Date: Thu, 14 Nov 2013 16:34:41 +0100
+Subject: [PATCH] tests: use bash instead of sh to run difftest.sh
+
+On Ubuntu, /bin/sh is a symlink to /bin/dash, however difftest.sh uses
+bash-specific constructs and fails when run using dash. Therefore, run
+this script explicitly using bash.
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -65,12 +65,12 @@ oprtest: oprgen.py
+ 
+ .PHONY: difftest
+ difftest: oprtest $(builddir)/difftest.sh
+-	@sh $(builddir)/difftest.sh
++	@bash $(builddir)/difftest.sh
+ 
+ 
+ .PHONY: difftest-refup
+ difftest-refup: $(builddir)/difftest.sh
+-	@sh $(builddir)/difftest.sh refup
++	@bash $(builddir)/difftest.sh refup
+ 
+ 
+ .PHONY: warn_no_yasm

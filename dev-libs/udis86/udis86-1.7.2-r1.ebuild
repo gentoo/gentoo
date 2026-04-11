@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,6 +21,7 @@ RESTRICT="!test? ( test )"
 BDEPEND="
 	${PYTHON_DEPS}
 	test? (
+		app-shells/bash
 		amd64? ( dev-lang/yasm )
 		arm64? ( dev-lang/yasm )
 		x86? ( dev-lang/yasm )
@@ -30,6 +31,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-docdir.patch
 	"${FILESDIR}"/${P}-python3.patch
 	"${FILESDIR}"/${P}-uninitialized-variable.patch
+	"${FILESDIR}"/${P}-bash-test.patch
 )
 
 src_prepare() {
