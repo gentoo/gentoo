@@ -279,12 +279,6 @@ www-servers/nginx-unit
 # Removeal on 2026-04-12. Bug #971127
 dev-tcltk/tablelist
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2026-03-09)
-# Live only package, Upstream archived, integrated into
-# app-shells/bash-completion-2.17.0, which was already stabled.
-# Removal on 2026-04-08.  Bugs #792303, #960480.
-app-shells/tmux-bash-completion
-
 # Alfredo Tupone <tupone@gentoo.org> (2026-03-05)
 # Need more testing
 >=dev-lang/tcl-9
