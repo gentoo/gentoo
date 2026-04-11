@@ -9,7 +9,7 @@ with flags the user can set (like -fcf-protection vs -mindirect-brnanch=thunk).
 -add_global_arguments([ '-fstack-protector-strong',
 -		       '-fwrapv',
 -		       '--param', 'ssp-buffer-size=4',
-+add_global_argument([ '-fwrapv',
++add_global_arguments([ '-fwrapv',
  		       '-fvisibility=hidden',
  		       '-Wconversion',
  		       '-Wcast-align',
