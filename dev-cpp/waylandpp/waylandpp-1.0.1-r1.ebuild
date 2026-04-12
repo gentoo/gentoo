@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake toolchain-funcs
 
 DESCRIPTION="Wayland C++ bindings"
 HOMEPAGE="https://github.com/NilsBrause/waylandpp"
@@ -20,8 +20,10 @@ else
 	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 fi
 
-RDEPEND="
+BDEPEND="
 	>=dev-libs/pugixml-1.9-r1
+"
+RDEPEND="${BDEPEND}
 	>=dev-libs/wayland-1.11.0
 "
 DEPEND="${RDEPEND}
@@ -30,12 +32,32 @@ DEPEND="${RDEPEND}
 		app-text/doxygen
 		media-gfx/graphviz
 	)
-	"
+"
 
 src_configure() {
-	local mycmakeargs=(
-		-DBUILD_DOCUMENTATION=$(usex doc)
-	)
+	unset BUILD_NATIVE
+	local mycmakeargs
 
+	if tc-is-cross-compiler; then
+		mycmakeargs=(
+			-DBUILD_DOCUMENTATION=off
+			-DBUILD_LIBRARIES=off
+		)
+		BUILD_NATIVE="${WORKDIR}/${P}_native"
+		BUILD_DIR="${BUILD_NATIVE}" tc-env_build cmake_src_configure
+	fi
+
+	mycmakeargs=(
+		-DBUILD_DOCUMENTATION=$(usex doc)
+		${BUILD_NATIVE+-DWAYLAND_SCANNERPP="${BUILD_NATIVE}"/wayland-scanner++}
+	)
 	cmake_src_configure
+}
+
+src_compile() {
+	if tc-is-cross-compiler; then
+		BUILD_DIR="${BUILD_NATIVE}" cmake_src_compile
+	fi
+
+	cmake_src_compile
 }
