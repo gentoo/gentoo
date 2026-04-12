@@ -56,7 +56,7 @@ RDEPEND="
 		>=sys-apps/flatpak-1.10.2
 	)
 	git? (
-		dev-libs/libgit2:=[ssh,threads]
+		dev-libs/libgit2:=[ssh,threads(+)]
 		>=dev-libs/libgit2-glib-1.1.0[ssh]
 	)
 
