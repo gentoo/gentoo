@@ -41,7 +41,8 @@ multilib_src_compile() {
 		SO_MAJOR=$(ver_cut 1)
 		SO_VER=${PV}
 	)
-	emake CCFLAGS="${CFLAGS} -c -DNeedFunctionPrototypes=1 -fPIC" "${myemakeargs[@]}"
+	# bug #972569
+	emake -j1 CCFLAGS="${CFLAGS} -c -DNeedFunctionPrototypes=1 -fPIC" "${myemakeargs[@]}"
 }
 
 multilib_src_install() {
@@ -60,7 +61,8 @@ multilib_src_install() {
 		SO_MAJOR=$(ver_cut 1)
 		SO_VER=${PV}
 	)
-	emake "${myemakeargs[@]}" install
+	# bug #972569
+	emake -j1 "${myemakeargs[@]}" install
 
 	dosym ../gsm/gsm.h /usr/include/libgsm/gsm.h
 }
