@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -280,7 +280,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc64 ~riscv ~x86"
 
 BDEPEND="virtual/pkgconfig"
 DEPEND="
-	>=dev-libs/libgit2-1.9.1:=[threads]
+	>=dev-libs/libgit2-1.9.1:=[threads(+)]
 	dev-libs/oniguruma:=
 	virtual/zlib:=
 "
