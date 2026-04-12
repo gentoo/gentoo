@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=meson-python
 DISTUTILS_EXT=1
 PYPI_VERIFY_REPO=https://github.com/scikit-image/scikit-image
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1 optfeature pypi
 
