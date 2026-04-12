@@ -39,7 +39,7 @@ DEPEND="
 	networkmanager? ( >=kde-frameworks/networkmanager-qt-${KFMIN}:6 )
 "
 RDEPEND="${DEPEND}
-	>=dev-qt/qtmultimedia-${QTMIN}:6[qml]
+	>=dev-qt/qtmultimedia-${QTMIN}:6[qml,v4l]
 	>=kde-frameworks/kconfig-${KFMIN}:6[qml]
 	>=kde-frameworks/prison-${KFMIN}:6[qml]
 "
