@@ -9,6 +9,8 @@ DESCRIPTION="A PAM module that can mount volumes for a user session"
 HOMEPAGE="https://inai.de/projects/pam_mount/"
 SRC_URI="https://inai.de/files/pam_mount/${P}.tar.zst"
 
+PATCHES=( "${FILESDIR}/pam_mount-2.22-oldgcc.diff" )
+
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
