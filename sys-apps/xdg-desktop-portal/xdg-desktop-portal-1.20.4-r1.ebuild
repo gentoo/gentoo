@@ -78,8 +78,8 @@ python_check_deps() {
 
 src_configure() {
 	if use gstreamer; then
-		# bug #951609
-		addpredict /dev/dri/
+		# bug #951609, #972571
+		addpredict /dev
 	fi
 
 	local emesonargs=(
