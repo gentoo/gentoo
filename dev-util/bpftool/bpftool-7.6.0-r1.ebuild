@@ -67,7 +67,7 @@ CONFIG_CHECK="~DEBUG_INFO_BTF"
 
 pkg_setup() {
 	linux-info_pkg_setup
-	linux-info_pkg_setup
+	python-any-r1_pkg_setup
 	use llvm && llvm-r1_pkg_setup
 }
 
