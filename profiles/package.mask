@@ -37,6 +37,18 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-04-12)
+# Perpetually stuck on Qt5. Recent releases made under the influence of AI.
+# A Qt6-based snapshot is provided for testing without keywords, currently as
+# app-admin/keepassxc-2.8.0_pre260316-r1, but it is unclear when keywords will
+# be restored let alone stabilised.
+# Alternatives are app-admin/keepass, app-admin/pass which can import kbdx
+# files, app-admin/vaultwarden, app-admin/bitwarden-desktop-bin and probably
+# many more.  AppImage or Flatpak versions also available as last resort.
+# Bugs #949231, #967905.
+# Removal on 2026-05-11.
+<=app-admin/keepassxc-2.7.9999
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-04-12)
 # Depends on Qt5 and does not appear to be ported to Qt6. A possible alternative
 # is net-misc/remmina's x2go plugin, but it requires interested parties to look
 # into it. Bugs #538458, #917570, #955192
