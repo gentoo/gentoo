@@ -117,6 +117,7 @@ CONFIG_CHECK="~INOTIFY_USER"
 WARNING_INOTIFY_USER="CONFIG_INOTIFY_USER isn't set. Imfile module on this system will only support polling mode!"
 
 pkg_setup() {
+	linux-info_pkg_setup
 	python-any-r1_pkg_setup
 }
 
