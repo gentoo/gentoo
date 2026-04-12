@@ -37,6 +37,13 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-04-12)
+# Depends on Qt5 and does not appear to be ported to Qt6. A possible alternative
+# is net-misc/remmina's x2go plugin, but it requires interested parties to look
+# into it. Bugs #538458, #917570, #955192
+# Removal on 2026-05-11.
+net-misc/x2goclient
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-04-12)
 # Depending on Qt5 with solarus-1.6.5 being broken by missing deps and at
 # least GCC-15. Bugs #953383 (+ linked see-also bugs), #961916, #962015
 # Both games-rpg/zsdx and games-rpg/zsxd are potentially fixed for Solarus 2.0
