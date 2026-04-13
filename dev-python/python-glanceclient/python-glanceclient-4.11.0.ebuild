@@ -37,7 +37,6 @@ BDEPEND="
 		dev-python/fixtures[${PYTHON_USEDEP}]
 		>=dev-python/openstacksdk-0.10.0[${PYTHON_USEDEP}]
 		dev-python/requests-mock[${PYTHON_USEDEP}]
-		dev-python/tempest[${PYTHON_USEDEP}]
 		dev-python/testscenarios[${PYTHON_USEDEP}]
 		dev-python/testtools[${PYTHON_USEDEP}]
 	)
