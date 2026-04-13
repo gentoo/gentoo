@@ -14,6 +14,10 @@ SLOT="0"
 KEYWORDS="amd64 ~arm64"
 RESTRICT="test"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-goflags.patch
+)
+
 DOCS=( docs {README,RELEASE,CHANGELOG,CONTRIBUTING}.md )
 
 src_compile() {
