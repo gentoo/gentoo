@@ -202,7 +202,7 @@ src_configure() {
 		getpwnam
 
 		$(usev samba 'SMB')
-		$(usev ldap 'SMB_LM LDAP')
+		$(usev ldap 'LDAP')
 		$(usev pam 'PAM')
 		$(usev sasl 'SASL')
 		$(usev nis 'NIS')
