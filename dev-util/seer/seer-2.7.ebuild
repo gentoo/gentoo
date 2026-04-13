@@ -11,7 +11,9 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/epasveer/seer"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/epasveer/seer/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+	# https://github.com/epasveer/seer/pull/457
+	#SRC_URI="https://github.com/epasveer/seer/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://gitlab.com/api/v4/projects/32909921/packages/generic/${PN}/${PV}/${P}-gentoo.tar.gz"
 
 	KEYWORDS="~amd64 ~arm64 ~ppc64"
 fi
