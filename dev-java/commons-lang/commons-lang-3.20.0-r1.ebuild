@@ -1,7 +1,7 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 JAVA_PKG_IUSE="doc source test"
 JAVA_TESTING_FRAMEWORKS="junit-jupiter"
@@ -38,7 +38,10 @@ DEPEND="
 
 RDEPEND=">=virtual/jre-1.8:*"
 
-PATCHES=( "${FILESDIR}/commons-lang-3.19.0-skip-testGetJavaAwtHeadless.patch" )
+PATCHES=(
+	"${FILESDIR}/commons-lang-3.19.0-skip-testGetJavaAwtHeadless.patch"
+	"${FILESDIR}/commons-lang-3.20.0-ppc64le.patch"
+)
 
 JAVA_AUTOMATIC_MODULE_NAME="org.apache.commons.lang3"
 JAVA_GENTOO_CLASSPATH_EXTRA="org.apache.commons.lang3.jar"
@@ -49,11 +52,6 @@ JAVA_TEST_GENTOO_CLASSPATH="asm commons-text easymock jmh-core junit-pioneer jun
 JAVA_TEST_RESOURCE_DIRS="src/test/resources"
 JAVA_TEST_SRC_DIR="src/test/java"
 VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/commons.apache.org.asc"
-
-src_prepare() {
-	default #780585
-	java-pkg-2_src_prepare
-}
 
 src_test() {
 	local vm_version="$(java-config -g PROVIDES_VERSION)"
