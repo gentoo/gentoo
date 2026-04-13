@@ -37,7 +37,6 @@ BDEPEND="
 		dev-python/openstacksdk[${PYTHON_USEDEP}]
 		dev-python/testscenarios[${PYTHON_USEDEP}]
 		dev-python/testtools[${PYTHON_USEDEP}]
-		dev-python/tempest[${PYTHON_USEDEP}]
 	)
 "
 
