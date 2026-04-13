@@ -1,0 +1,107 @@
+From f3c07ca0ea5908462a26370f7d7a18bbbc8ae416 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Mon, 13 Apr 2026 05:28:04 +0200
+Subject: [PATCH] Skip tests failing on PyPy
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The test failures occur in older lxml versions too, so it's either
+a regression in PyPy itself or in Cython.
+
+Signed-off-by: Michał Górny <mgorny@gentoo.org>
+---
+ src/lxml/tests/test_etree.py | 6 +++++-
+ src/lxml/tests/test_xslt.py  | 6 +++++-
+ 2 files changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/src/lxml/tests/test_etree.py b/src/lxml/tests/test_etree.py
+index 5658ad73..5cf4f136 100644
+--- a/src/lxml/tests/test_etree.py
++++ b/src/lxml/tests/test_etree.py
+@@ -26,7 +26,7 @@ from .common_imports import etree, HelperTestCase, needs_feature
+ from .common_imports import fileInTestDir, fileUrlInTestDir, read_file, path2url, tmpfile
+ from .common_imports import SillyFileLike, LargeFileLikeUnicode, doctest, make_doctest
+ from .common_imports import canonicalize, _str, _bytes
+-from .common_imports import SimpleFSPath
++from .common_imports import SimpleFSPath, IS_PYPY
+ 
+ print(f"""
+ TESTED VERSION: {etree.__version__}
+@@ -5308,6 +5308,7 @@ class ETreeC14NTestCase(HelperTestCase):
+         self.assertEqual(b'<a><b></b></a>',
+                         data)
+ 
++    @unittest.skipIf(IS_PYPY, "broken on pypy")
+     def test_c14n_file_gzip(self):
+         tree = self.parse(b'<a>'+b'<b/>'*200+b'</a>')
+         with tmpfile() as filename:
+@@ -5317,6 +5318,7 @@ class ETreeC14NTestCase(HelperTestCase):
+         self.assertEqual(b'<a>'+b'<b></b>'*200+b'</a>',
+                           data)
+ 
++    @unittest.skipIf(IS_PYPY, "broken on pypy")
+     def test_c14n_file_gzip_pathlike(self):
+         tree = self.parse(b'<a>'+b'<b/>'*200+b'</a>')
+         with tmpfile() as filename:
+@@ -5624,6 +5626,7 @@ class ETreeWriteTestCase(HelperTestCase):
+         self.assertEqual(b'<a><b/></a>',
+                         data)
+ 
++    @unittest.skipIf(IS_PYPY, "broken on pypy")
+     def test_write_file_gzip(self):
+         tree = self.parse(b'<a>'+b'<b/>'*200+b'</a>')
+         with tmpfile() as filename:
+@@ -5633,6 +5636,7 @@ class ETreeWriteTestCase(HelperTestCase):
+         self.assertEqual(b'<a>'+b'<b/>'*200+b'</a>',
+                           data)
+ 
++    @unittest.skipIf(IS_PYPY, "broken on pypy")
+     def test_write_file_gzip_pathlike(self):
+         tree = self.parse(b'<a>'+b'<b/>'*200+b'</a>')
+         with tmpfile() as filename:
+diff --git a/src/lxml/tests/test_xslt.py b/src/lxml/tests/test_xslt.py
+index 244a46f7..87c084cf 100644
+--- a/src/lxml/tests/test_xslt.py
++++ b/src/lxml/tests/test_xslt.py
+@@ -14,7 +14,7 @@ from textwrap import dedent
+ from tempfile import NamedTemporaryFile, mkdtemp
+ 
+ from .common_imports import (
+-    etree, HelperTestCase, fileInTestDir, make_doctest, SimpleFSPath
++    etree, HelperTestCase, fileInTestDir, make_doctest, SimpleFSPath, IS_PYPY
+ )
+ 
+ 
+@@ -164,6 +164,7 @@ class ETreeXSLTTestCase(HelperTestCase):
+             finally:
+                 os.unlink(f.name)
+ 
++    @unittest.skipIf(IS_PYPY, "broken on pypy")
+     def test_xslt_write_output_file_path(self):
+         with self._xslt_setup() as res:
+             f = NamedTemporaryFile(delete=False)
+@@ -177,6 +178,7 @@ class ETreeXSLTTestCase(HelperTestCase):
+             finally:
+                 os.unlink(f.name)
+ 
++    @unittest.skipIf(IS_PYPY, "broken on pypy")
+     def test_xslt_write_output_file_pathlike(self):
+         with self._xslt_setup() as res:
+             f = NamedTemporaryFile(delete=False)
+@@ -190,6 +192,7 @@ class ETreeXSLTTestCase(HelperTestCase):
+             finally:
+                 os.unlink(f.name)
+ 
++    @unittest.skipIf(IS_PYPY, "broken on pypy")
+     def test_xslt_write_output_file_path_urlescaped(self):
+         # libxml2 should not unescape file paths.
+         with self._xslt_setup() as res:
+@@ -204,6 +207,7 @@ class ETreeXSLTTestCase(HelperTestCase):
+             finally:
+                 os.unlink(f.name)
+ 
++    @unittest.skipIf(IS_PYPY, "broken on pypy")
+     def test_xslt_write_output_file_path_urlescaped_plus(self):
+         with self._xslt_setup() as res:
+             f = NamedTemporaryFile(prefix='p+%2e', suffix='.xml.gz', delete=False)
