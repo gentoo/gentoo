@@ -299,16 +299,6 @@ dev-python/uv-dynamic-versioning
 =dev-db/sqlite-3.52.0-r1
 =dev-python/apsw-3.52.0.0
 
-# Mike Pagano <mpagano@gentoo.org> (2026-03-13)
-# Upstream has announced the archiving of this application
-# at repo location: https://github.com/nginx/unit/
-# This announcement includes the statement that security
-# issues may not be addressed. Possible alternatives
-# are www-servers/nginx or www-servers/apache
-# depending on your application needs.
-# Removal on 2026-04-13.
-www-servers/nginx-unit
-
 # Alfredo Tupone <tupone@gentoo.org> (2026-03-12)
 # No reverse dependency. Included in dev-tcltk/tklib
 # Removeal on 2026-04-12. Bug #971127
