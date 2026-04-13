@@ -19,7 +19,6 @@ S="${WORKDIR}"
 
 LICENSE="Apache-2.0 GPL-2+ LGPL-2.1+ MIT"
 SLOT="0"
-# Starting with 5.2.0 upstream dropped x86 for their binary release #879519
 if [[ ${PV} != *rc* ]]; then
 	KEYWORDS="~amd64 ~arm64"
 fi
@@ -58,6 +57,7 @@ BDEPEND="
 
 QA_PREBUILT="
 	opt/mattermost-desktop/mattermost-desktop
+	opt/mattermost-desktop/chrome_crashpad_handler
 	opt/mattermost-desktop/libnode.so
 	opt/mattermost-desktop/libffmpeg.so
 	opt/mattermost-desktop/libGLESv2.so
@@ -101,7 +101,7 @@ src_install() {
 	insinto "/opt/${MY_PN}"
 	doins *.pak *.bin *.dat
 	exeinto "/opt/${MY_PN}"
-	doexe *.so *.so.* "${MY_PN}"
+	doexe *.so *.so.* "${MY_PN}" chrome_crashpad_handler
 
 	dosym -r "/opt/${MY_PN}/${MY_PN}" "/usr/bin/${MY_PN}"
 
