@@ -26,11 +26,12 @@ RUNTIME_SLOT="${SDK_SLOT}.10"
 LLVM_COMPAT=( {19..20} )
 PYTHON_COMPAT=( python3_{13..14} )
 
-inherit check-reqs flag-o-matic llvm-r1 multiprocessing python-any-r1
+inherit check-reqs flag-o-matic llvm-r2 multiprocessing python-any-r1
 
 DESCRIPTION=".NET is a free, cross-platform, open-source developer platform"
 HOMEPAGE="https://dotnet.microsoft.com/
 	https://github.com/dotnet/dotnet/"
+
 SRC_URI="
 	amd64? (
 		elibc_glibc? (
@@ -73,11 +74,12 @@ RDEPEND="
 	dev-libs/openssl:=
 	dev-libs/rapidjson
 	dev-util/lttng-ust:=
+	sys-devel/gcc:*
+	virtual/zlib:0/1
 	|| (
 		sys-libs/libunwind
 		llvm-runtimes/libunwind
 	)
-	virtual/zlib:0/1
 "
 DEPEND="
 	${RDEPEND}
@@ -91,7 +93,6 @@ BDEPEND="
 		llvm-core/lld:${LLVM_SLOT}
 		llvm-core/llvm:${LLVM_SLOT}
 	')
-	sys-devel/gcc
 "
 IDEPEND="
 	app-eselect/eselect-dotnet
@@ -173,7 +174,7 @@ pkg_pretend() {
 
 pkg_setup() {
 	check-reqs_pkg_setup
-	llvm-r1_pkg_setup
+	llvm-r2_pkg_setup
 	python-any-r1_pkg_setup
 
 	check_requirements_locale
