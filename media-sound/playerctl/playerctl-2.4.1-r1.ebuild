@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit meson python-any-r1 shell-completion virtualx xdg-utils
 
 DESCRIPTION="A CLI utility to control media players over MPRIS"
