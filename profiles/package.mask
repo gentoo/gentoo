@@ -37,7 +37,7 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-04-12)
-# Perpetually stuck on Qt5. Recent releases made under the influence of AI.
+# Perpetually stuck on Qt5 despite recent releases made under the influence of AI.
 # A Qt6-based snapshot is provided for testing without keywords, currently as
 # app-admin/keepassxc-2.8.0_pre260316-r1, but it is unclear when keywords will
 # be restored let alone stabilised.
