@@ -37,7 +37,6 @@ BDEPEND="
 		>=dev-python/oslotest-3.2.0[${PYTHON_USEDEP}]
 		>=dev-python/requests-mock-1.2.0[${PYTHON_USEDEP}]
 		>=dev-python/testtools-2.2.0[${PYTHON_USEDEP}]
-		>=dev-python/tempest-17.1.0[${PYTHON_USEDEP}]
 		>=dev-python/wrapt-1.7.0[${PYTHON_USEDEP}]
 		>=dev-python/ddt-1.0.1[${PYTHON_USEDEP}]
 	)
