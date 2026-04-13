@@ -3,15 +3,15 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic git-r3 multilib-minimal toolchain-funcs
+inherit autotools flag-o-matic multilib-minimal toolchain-funcs
 
 DESCRIPTION="An OCR Engine, originally developed at HP, now open source"
 HOMEPAGE="https://github.com/tesseract-ocr"
-EGIT_REPO_URI="https://github.com/tesseract-ocr/${PN}.git"
+SRC_URI="https://github.com/tesseract-ocr/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
-SLOT="0"
-KEYWORDS=""
+SLOT="0/5"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="doc float32 jpeg openmp png static-libs tiff training webp"
 
 COMMON_DEPEND=">=media-libs/leptonica-1.74:=[${MULTILIB_USEDEP},zlib,tiff?,jpeg?,png?,webp?]
