@@ -1,0 +1,23 @@
+From: Oliver Freyermuth <freyermuth@physik.uni-bonn.de>
+Subject: [PATCH] configure: mark nvidia-container-cli check as impolite
+
+Running nvidia-container-cli tries to access GPU devices
+and may also cause sandbox violations in sandboxed builds.
+
+Bug: https://gitlab.com/charliecloud/charliecloud/-/work_items/2101
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -857,7 +857,7 @@ AC_CHECK_PROG([NVIDIA_CLI], [nvidia-container-cli], [nvidia-container-cli])
+ CH_CHECK_VERSION([NVIDIA_CLI], [$vmin_nvidia_CLI],
+                  [-V | head -1 | cut -d' ' -f2])
+ AC_MSG_CHECKING([for nVidia libraries & executables])
+-AS_IF([test -n "$NVIDIA_CLI"],
++AS_IF([test $enable_impolite_checks = yes && test -n "$NVIDIA_CLI"],
+   [AS_IF([nvidia-container-cli list | grep -Fq libnvidia],
+         [have_nvidia_libs=yes],
+         [have_nvidia_libs=no])],
+-- 
