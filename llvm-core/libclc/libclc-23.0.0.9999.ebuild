@@ -5,14 +5,15 @@ EAPI=8
 
 LLVM_COMPAT=( 23 )
 PYTHON_COMPAT=( python3_{11..14} )
-inherit cmake llvm.org llvm-r1 python-any-r1
+inherit cmake llvm.org llvm-r1 multibuild python-any-r1
 
 DESCRIPTION="OpenCL C library"
 HOMEPAGE="https://libclc.llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( MIT BSD )"
 SLOT="0"
-IUSE="+spirv video_cards_nvidia video_cards_radeonsi"
+IUSE="+spirv test video_cards_nvidia video_cards_radeonsi"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	${PYTHON_DEPS}
@@ -21,6 +22,11 @@ BDEPEND="
 	')
 	spirv? (
 		>=dev-util/spirv-llvm-translator-23:*
+	)
+	test? (
+		$(python_gen_any_dep '
+			dev-python/lit[${PYTHON_USEDEP}]
+		')
 	)
 "
 
@@ -33,28 +39,51 @@ pkg_setup() {
 }
 
 src_configure() {
-	local libclc_targets=(
+	MULTIBUILD_VARIANTS=(
 		"clspv--"
 		"clspv64--"
 	)
 
-	use spirv && libclc_targets+=(
+	use spirv && MULTIBUILD_VARIANTS+=(
 		"spirv-mesa3d-"
 		"spirv64-mesa3d-"
 	)
-	use video_cards_nvidia && libclc_targets+=(
+	use video_cards_nvidia && MULTIBUILD_VARIANTS+=(
 		"nvptx64--"
 		"nvptx64--nvidiacl"
 		"nvptx64-nvidia-cuda"
 	)
-	use video_cards_radeonsi && libclc_targets+=(
+	use video_cards_radeonsi && MULTIBUILD_VARIANTS+=(
 		"amdgcn-amd-amdhsa-llvm"
 	)
 
-	libclc_targets=${libclc_targets[*]}
+	multibuild_foreach_variant my_configure
+}
+
+my_configure() {
 	local mycmakeargs=(
 		-DCMAKE_CLC_COMPILER="$(type -P clang-${LLVM_MAJOR})"
-		-DLIBCLC_TARGETS_TO_BUILD="${libclc_targets// /;}"
+		-DLLVM_RUNTIMES_TARGET="${MULTIBUILD_VARIANT}"
 	)
+
+	use test && mycmakeargs+=(
+		-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
+		-DLLVM_LIT_ARGS="$(get_lit_flags)"
+	)
+
 	cmake_src_configure
+}
+
+src_compile() {
+	multibuild_foreach_variant cmake_src_compile
+}
+
+src_test() {
+	# respect TMPDIR!
+	local -x LIT_PRESERVES_TMP=1
+	multibuild_foreach_variant cmake_build check-libclc
+}
+
+src_install() {
+	multibuild_foreach_variant cmake_src_install
 }
