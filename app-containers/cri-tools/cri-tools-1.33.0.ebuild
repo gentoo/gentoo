@@ -14,6 +14,8 @@ SLOT="0"
 KEYWORDS="amd64 ~arm64"
 RESTRICT="test"
 
+BDEPEND=">=dev-lang/go-1.24.1"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-goflags.patch
 )
