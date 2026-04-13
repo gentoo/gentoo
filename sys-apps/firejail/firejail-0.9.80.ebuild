@@ -21,7 +21,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="apparmor +chroot contrib +dbusproxy +file-transfer +globalcfg +network +private-home selinux test +userns X"
+IUSE="apparmor +chroot contrib +dbusproxy +file-transfer +network +private-home selinux test +userns X"
 REQUIRED_USE="contrib? ( ${PYTHON_REQUIRED_USE} )"
 # Needs a lot of work to function within sandbox/portage. Can look at the alternative
 # test targets in Makefile too, bug #769731
@@ -90,7 +90,6 @@ src_configure() {
 		$(use_enable chroot)
 		$(use_enable dbusproxy)
 		$(use_enable file-transfer)
-		$(use_enable globalcfg)
 		$(use_enable network)
 		$(use_enable private-home)
 		$(use_enable selinux)
