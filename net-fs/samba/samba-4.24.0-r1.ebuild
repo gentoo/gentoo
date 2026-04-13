@@ -8,7 +8,7 @@ PYTHON_REQ_USE="threads(+),xml(+)"
 inherit python-single-r1 flag-o-matic waf-utils multilib-minimal linux-info optfeature systemd pam tmpfiles
 
 DESCRIPTION="Samba Suite Version 4"
-HOMEPAGE="https://samba.org/"
+HOMEPAGE="https://www.samba.org/"
 
 MY_PV="${PV/_rc/rc}"
 MY_P="${PN}-${MY_PV}"
@@ -153,6 +153,7 @@ BDEPEND="${PYTHON_DEPS}
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.18.4-pam.patch
 	"${FILESDIR}"/ldb-2.5.2-skip-wav-tevent-check.patch
+	"${FILESDIR}"/${P}-libbsd-pkgconfig.patch
 )
 
 CONFDIR="${FILESDIR}/4.4"
