@@ -3,6 +3,8 @@
 
 EAPI=8
 
+# LLVM-21 broken for nvtpx
+# https://github.com/llvm/llvm-project/issues/154772
 LLVM_COMPAT=( {18..20} )
 inherit cmake cuda llvm-r1
 
