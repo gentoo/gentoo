@@ -95,7 +95,7 @@ fi
 # various failures (bugs #630042 and #682320)
 RESTRICT="test"
 
-# platform-specific checks (bug #898450 #898452):
+# platform-specific checks (bug #898450):
 # - acl()     -- Solaris
 # - statacl() -- AIX
 QA_CONFIG_IMPL_DECL_SKIP=(
@@ -104,7 +104,7 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 )
 
 pkg_setup() {
-	# people with broken alphabets run into trouble. bug #82186.
+	# people with broken alphabets run into trouble. bug 82186.
 	unset LANG LC_ALL
 	export LC_COLLATE="C"
 
@@ -184,7 +184,7 @@ src_configure() {
 	local file
 	for file in /dev/pty/s* /dev/console /dev/hvc/* /dev/hvc*; do
 		if [[ -e ${file} ]]; then
-			addwrite ${file}
+			addwrite $file
 		fi
 	done
 
@@ -288,7 +288,7 @@ src_test() {
 }
 
 # Call eselect vi update with --if-unset
-# to respect user's choice (bug #187449)
+# to respect user's choice (bug 187449)
 eselect_vi_update() {
 	ebegin "Calling eselect vi update"
 	eselect vi update --if-unset
