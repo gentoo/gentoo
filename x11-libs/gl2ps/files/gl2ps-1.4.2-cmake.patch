@@ -1,5 +1,14 @@
 --- a/CMakeLists.txt	2020-07-08 17:53:51.133105546 +0200
 +++ b/CMakeLists.txt	2020-07-08 17:58:02.652237439 +0200
+@@ -31,7 +31,7 @@
+ #
+ #  Please report all bugs and problems to <gl2ps@geuz.org>.
+ 
+-cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
+ 
+ # do not warn about non-definition of WIN32 on Cygwin
+ set(CMAKE_LEGACY_CYGWIN_WIN32 0)
 @@ -50,4 +50,6 @@
  option(ENABLE_ZLIB "Enable compression using ZLIB" ON)
  option(ENABLE_PNG "Enable PNG support" ON)
