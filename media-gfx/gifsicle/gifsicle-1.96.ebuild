@@ -9,7 +9,7 @@ SRC_URI="https://www.lcdf.org/~eddietwo/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2 MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc x86"
 IUSE="gui"
 
 RDEPEND="
