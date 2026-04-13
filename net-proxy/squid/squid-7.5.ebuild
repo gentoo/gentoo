@@ -47,7 +47,7 @@ DEPEND="
 		dev-libs/libxml2:=
 	)
 	ldap? ( net-nds/openldap:= )
-	gnutls? ( >=net-libs/gnutls-3.1.5:= )
+	gnutls? ( >=net-libs/gnutls-3.4.0:= )
 	logrotate? ( app-admin/logrotate )
 	nis? (
 		net-libs/libtirpc:=
@@ -57,7 +57,7 @@ DEPEND="
 	pam? ( sys-libs/pam )
 	qos? ( net-libs/libnetfilter_conntrack )
 	ssl? (
-		dev-libs/nettle:=
+		>=dev-libs/nettle-3.4:=
 		!gnutls? (
 			dev-libs/openssl:=
 		)
