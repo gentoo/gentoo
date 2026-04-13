@@ -77,7 +77,7 @@ RDEPEND="
 DEPEND+=" valgrind? ( dev-debug/valgrind )"
 BDEPEND="
 	dev-lang/perl
-	ecap? ( virtual/pkgconfig )
+	virtual/pkgconfig
 	test? ( dev-util/cppunit )
 	verify-sig? ( sec-keys/openpgp-keys-squid )
 "
