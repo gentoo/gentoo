@@ -51,8 +51,8 @@ dev-python/tempest
 # app-admin/keepassxc-2.8.0_pre260316-r1, but it is unclear when keywords will
 # be restored let alone stabilised.
 # Alternatives are app-admin/keepass, app-admin/pass which can import kbdx
-# files, app-admin/vaultwarden, app-admin/bitwarden-desktop-bin and probably
-# many more.  AppImage or Flatpak versions also available as last resort.
+# files via app-admin/pass-import, app-admin/vaultwarden, app-admin/bitwarden-desktop-bin,
+# and probably many more.  AppImage or Flatpak versions also available as last resort.
 # Bugs #949231, #967905.
 # Removal on 2026-05-11.
 <=app-admin/keepassxc-2.7.9999
