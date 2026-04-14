@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=pbr
-PYTHON_COMPAT=( python3_{12..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1 pypi
 
@@ -43,6 +43,11 @@ BDEPEND="
 "
 
 distutils_enable_tests unittest
+
+PATCHES=(
+	# https://review.opendev.org/c/openstack/python-openstackclient/+/984455
+	"${FILESDIR}/0001-tests-Fix-test_module-for-Python-3.14.patch"
+)
 
 src_prepare() {
 	# Depends on a specific runner
