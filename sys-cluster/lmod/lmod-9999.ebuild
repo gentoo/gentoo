@@ -47,7 +47,7 @@ BDEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.4.19-no-libsandbox.patch
-	"${FILESDIR}"/${PN}-8.6.14-r1-make.patch
+	"${FILESDIR}"/${PN}-8.7.55-make.patch
 )
 
 pkg_pretend() {

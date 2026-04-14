@@ -1,6 +1,6 @@
 --- a/Makefile.in	2026-04-14 14:24:02.212885947 +0200
 +++ b/Makefile.in	2026-04-14 14:28:17.943984410 +0200
-@@ -203,13 +203,15 @@
+@@ -227,14 +227,16 @@
  	$(RM) -rf $(DESTDIR)$(MY_PKG_PACKAGE)
  	@echo "If you added lmod files to /etc/profile.d please remove them."
  
@@ -8,9 +8,10 @@
 +pre-install: $(DIRLIST)
 +	$(MAKE) lmod_install_targets
  
- lmod_install_targets: $(PKGS) lmodrc_init shell_init startup libexec               \
+ lmod_install_targets: $(PKGS) lmodrc_init shell_init startup libexec VersionSrc    \
                        Inst_Tools Inst_Shells Inst_Settarg Inst_Lmod_MF other_tools \
-                       man_pages messageFns i18n spiderCacheSupport ksh_funcs
+                       man_pages messageFns i18n spiderCacheSupport ksh_funcs       \
+                       STVersionSrc
  
 -install: pre-install  zsh_tab_funcs fish_tab_funcs 
 +install: pre-install
