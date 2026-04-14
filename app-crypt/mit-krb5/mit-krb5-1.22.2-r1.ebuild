@@ -71,6 +71,12 @@ src_configure() {
 	# lto-type-mismatch (bug #854225)
 	filter-lto
 
+	if tc-is-cross-compiler; then
+		# assume modern system
+		export krb5_cv_attr_constructor_destructor=y
+		export ac_cv_printf_positional=y
+	fi
+
 	multilib-minimal_src_configure
 }
 
