@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit gnome2 python-single-r1 optfeature meson verify-sig
 
 DESCRIPTION="Desktop tool for managing libvirt virtual machines"
