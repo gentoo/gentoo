@@ -35,10 +35,10 @@ BDEPEND="
 	dev-perl/Unicode-LineBreak
 	dev-util/source-highlight
 	pdf? (
-		app-text/pandoc
 		dev-texlive/texlive-xetex
 		media-fonts/noto-cjk
 		media-fonts/dejavu
+		virtual/pandoc
 	)"
 
 PATCHES=(
