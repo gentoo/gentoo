@@ -38,7 +38,7 @@ BDEPEND="
 distutils_enable_tests unittest
 
 PATCHES=(
-	# review...
+	# https://review.opendev.org/c/openstack/oslo.concurrency/+/984403
 	"${FILESDIR}/0001-Fix-multiprocessing-tests-under-Python-3.14.patch"
 )
 
