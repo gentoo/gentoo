@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,9 +23,9 @@ SLOT="0"
 
 RDEPEND="
 	>=dev-python/pydantic-2.12.5[${PYTHON_USEDEP}]
-	>=dev-python/python-dotenv-1.1.0[${PYTHON_USEDEP}]
-	>=dev-python/requests-2.32.3[${PYTHON_USEDEP}]
-	>=dev-python/rich-14.0.0[${PYTHON_USEDEP}]
+	>=dev-python/python-dotenv-1.2.2[${PYTHON_USEDEP}]
+	>=dev-python/requests-2.32.5[${PYTHON_USEDEP}]
+	>=dev-python/rich-14.3.3[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
