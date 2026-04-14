@@ -30,7 +30,7 @@ DEPEND="${PYTHON_DEPS}
 	braille? (
 		$(python_gen_cond_dep '
 			>=app-accessibility/brltty-5.0-r3[python,${PYTHON_USEDEP}]
-			dev-libs/liblouis[${PYTHON_SINGLE_USEDEP}]
+			dev-libs/liblouis[tools(+),${PYTHON_SINGLE_USEDEP}]
 		')
 	)
 "
