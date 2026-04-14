@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit qt6-build
+inherit flag-o-matic qt6-build
 
 DESCRIPTION="Qt APIs and Tools for Graphics Pipelines"
 
@@ -15,3 +15,10 @@ RDEPEND="
 	~dev-qt/qtbase-${PV}:6[gui]
 "
 DEPEND="${RDEPEND}"
+
+src_configure() {
+	# -Werror=odr violations between mismatching spirv.hpp (bug #972694)
+	filter-lto
+
+	qt6-build_src_configure
+}
