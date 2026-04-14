@@ -71,8 +71,6 @@ multilib_src_configure() {
 		$(meson_use !asm disable-asm)
 		$(meson_feature test tests)
 		$(meson_native_use_feature tools apps)
-		--native-file "${native_file}"
-		--cross-file "${native_file}"
 	)
 
 	if multilib_is_native_abi ; then
