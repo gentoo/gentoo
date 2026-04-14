@@ -7,7 +7,7 @@ MODULES_OPTIONAL_IUSE=+modules
 inherit desktop dot-a eapi9-pipestatus eapi9-ver flag-o-matic linux-mod-r1
 inherit readme.gentoo-r1 systemd toolchain-funcs unpacker user-info
 
-MODULES_KERNEL_MAX=6.19
+MODULES_KERNEL_MAX=7.0
 NV_PIN=595.58.03
 
 DESCRIPTION="NVIDIA Accelerated Graphics Driver"
