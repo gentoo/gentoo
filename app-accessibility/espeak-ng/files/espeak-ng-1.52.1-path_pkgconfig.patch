@@ -1,0 +1,13 @@
+PR pending https://github.com/espeak-ng/espeak-ng/pull/2394.patch
+cmake: use libdir to install .pc
+--- a/cmake/package.cmake
++++ b/cmake/package.cmake
+@@ -31,5 +31,5 @@ configure_file(
+ )
+ 
+ install(
+-  FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.pc DESTINATION lib/pkgconfig
+-)
+\ No newline at end of file
++  FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig
++)
