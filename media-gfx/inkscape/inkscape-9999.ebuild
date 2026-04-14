@@ -6,7 +6,7 @@ EAPI=8
 # Remember to check the release notes for a 'Important Changes for Packagers'
 # section, e.g. https://inkscape.org/doc/release_notes/1.4/Inkscape_1.4.html#Important_Changes_for_Packagers.
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit cmake flag-o-matic xdg toolchain-funcs python-single-r1
