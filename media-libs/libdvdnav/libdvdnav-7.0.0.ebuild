@@ -30,7 +30,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	local emesonargs=(
-			-Ddefault_library=$(usex static-libs both shared)
+		-Ddefault_library=$(usex static-libs both shared)
 	)
 
 	meson_src_configure
