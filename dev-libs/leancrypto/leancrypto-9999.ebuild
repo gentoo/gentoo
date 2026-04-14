@@ -29,11 +29,12 @@ fi
 
 LICENSE="|| ( GPL-2 BSD-2 )"
 SLOT="0/1"
-IUSE="asm test tools"
+IUSE="+asm test tools"
 RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.0-no-force-lto.patch
+	"${FILESDIR}"/${PN}-1.7.2-toolchain-hardening.patch
 )
 
 src_configure() {
@@ -71,7 +72,14 @@ multilib_src_configure() {
 		$(meson_feature test tests)
 		$(meson_native_use_feature tools apps)
 		--native-file "${native_file}"
+		--cross-file "${native_file}"
 	)
+
+	if multilib_is_native_abi ; then
+		emesonargs+=( --native-file "${native_file}" )
+	else
+		emesonargs+=( --cross-file "${native_file}" )
+	fi
 
 	meson_src_configure
 }
