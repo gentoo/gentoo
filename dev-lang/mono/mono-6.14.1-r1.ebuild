@@ -39,6 +39,8 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.14.1-disable-automagic-ccache.patch
 	"${FILESDIR}"/${PN}-6.12.0.199-configure-c99.patch
+	"${FILESDIR}"/${PN}-6.14.1-c99-arm64.patch
+	"${FILESDIR}"/${PN}-6.14.1-strcpy-overlap.patch
 )
 
 pkg_pretend() {
