@@ -75,9 +75,8 @@ DOCS=( "README.md" "doc/build.zig.zon.md" )
 # zig.eclass does not set this for us since we use ZIG_OPTIONAL=1
 QA_FLAGS_IGNORED="usr/.*/zig/${PV}/bin/zig"
 
-# Since commit https://codeberg.org/ziglang/zig/commit/e7d28344fa3ee81d6ad7ca5ce1f83d50d8502118
-# Zig uses self-hosted compiler only
-CHECKREQS_MEMORY="4G"
+# https://codeberg.org/ziglang/zig/src/tag/0.16.0/build.zig#L775-L778
+CHECKREQS_MEMORY="8G"
 
 pkg_setup() {
 	# Skip detecting zig executable.
@@ -346,7 +345,7 @@ pkg_postinst() {
 
 	if ! use llvm; then
 		elog "Currently, Zig built without LLVM support lacks some"
-		elog "important features such as most optimizations, @cImport, etc."
+		elog "features such as optimizations, linker features, etc."
 		elog "They are listed under \"Building from Source without LLVM\""
 		elog "section of the README file from \"/usr/share/doc/${PF}\" ."
 	fi
