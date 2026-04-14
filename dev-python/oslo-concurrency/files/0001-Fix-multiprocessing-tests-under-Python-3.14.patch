@@ -1,0 +1,71 @@
+From 2b475f6333b13d3496eef93863847d29d0b04794 Mon Sep 17 00:00:00 2001
+From: Jay Faulkner <jay@jvf.cc>
+Date: Mon, 13 Apr 2026 07:47:02 -0700
+Subject: [PATCH] Fix multiprocessing tests under Python 3.14
+
+Python 3.14 changed the default multiprocessing start method from
+'fork' to 'forkserver' (see https://github.com/python/cpython/issues/84559).
+With forkserver, child processes do not inherit parent memory state,
+which broke three tests: child processes could not access oslo_config
+settings or pickle local function targets.
+
+Use multiprocessing.get_context('fork') explicitly for the affected
+tests, which already assume fork semantics (the same file uses
+os.fork() directly elsewhere).
+
+Assisted-By: claude
+Change-Id: Ie89e9a12b8d69e180115018d2953ec1e689d9d98
+Signed-off-by: Jay Faulkner <jay@jvf.cc>
+---
+ oslo_concurrency/tests/unit/test_lockutils.py | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/oslo_concurrency/tests/unit/test_lockutils.py b/oslo_concurrency/tests/unit/test_lockutils.py
+index 94f45dc..3e80161 100644
+--- a/oslo_concurrency/tests/unit/test_lockutils.py
++++ b/oslo_concurrency/tests/unit/test_lockutils.py
+@@ -200,10 +200,11 @@ class LockTestCase(test_base.BaseTestCase):
+ 
+     def _do_test_lock_externally(self):
+         """We can lock across multiple processes."""
++        ctx = multiprocessing.get_context('fork')
+         children = []
+         for n in range(50):
+-            queue: multiprocessing.Queue[int] = multiprocessing.Queue()
+-            proc = multiprocessing.Process(
++            queue: multiprocessing.Queue[int] = ctx.Queue()
++            proc = ctx.Process(
+                 target=lock_files, args=(tempfile.mkdtemp(), queue)
+             )
+             proc.start()
+@@ -433,7 +434,8 @@ class FileBasedLockingTestCase(test_base.BaseTestCase):
+     def test_interprocess_nonblocking_external_lock(self):
+         """Check that we're not actually blocking between processes."""
+ 
+-        nb_calls = multiprocessing.Value('i', 0)
++        ctx = multiprocessing.get_context('fork')
++        nb_calls = ctx.Value('i', 0)
+ 
+         @lockutils.synchronized(
+             'foo', blocking=False, external=True, lock_path=self.lock_dir
+@@ -446,7 +448,7 @@ class FileBasedLockingTestCase(test_base.BaseTestCase):
+         def other(param):
+             foo(param)
+ 
+-        process = multiprocessing.Process(target=other, args=(nb_calls,))
++        process = ctx.Process(target=other, args=(nb_calls,))
+         process.start()
+         # Make sure the other process grabs the lock
+         start = time.time()
+@@ -454,7 +456,7 @@ class FileBasedLockingTestCase(test_base.BaseTestCase):
+             if time.time() - start > 5:
+                 self.fail('Timed out waiting for process to grab lock')
+             time.sleep(0)
+-        process1 = multiprocessing.Process(target=other, args=(nb_calls,))
++        process1 = ctx.Process(target=other, args=(nb_calls,))
+         process1.start()
+         process1.join()
+         process.join()
+-- 
+2.52.0
+

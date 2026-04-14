@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=pbr
 PYPI_PN=${PN/-/.}
-PYTHON_COMPAT=( python3_{12..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1 pypi
 
@@ -36,6 +36,11 @@ BDEPEND="
 "
 
 distutils_enable_tests unittest
+
+PATCHES=(
+	# review...
+	"${FILESDIR}/0001-Fix-multiprocessing-tests-under-Python-3.14.patch"
+)
 
 src_prepare() {
 	# fails, then hangs
