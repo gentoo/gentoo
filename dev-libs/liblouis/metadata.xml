@@ -5,6 +5,9 @@
 		<email>accessibility@gentoo.org</email>
 		<name>Gentoo Accessibility Project</name>
 	</maintainer>
+	<use>
+		<flag name="tools">Enable python bindings and tools for testing and debugging tables</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">liblouis/liblouis</remote-id>
 	</upstream>
