@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -47,6 +47,7 @@ BDEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.4.19-no-libsandbox.patch
+	"${FILESDIR}"/${PN}-8.6.14-r1-make.patch
 	"${FILESDIR}"/${P}-fix-bashism-in-configure-script.patch
 )
 
