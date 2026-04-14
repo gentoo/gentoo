@@ -41,7 +41,10 @@ RDEPEND="x11-libs/libX11[${MULTILIB_USEDEP}]
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 	x11-misc/xbitmaps
-	test? ( dev-libs/check[${MULTILIB_USEDEP}] )"
+	test? (
+		dev-libs/check[${MULTILIB_USEDEP}]
+		media-fonts/font-misc-misc
+	)"
 
 BDEPEND="sys-devel/flex
 	dev-util/byacc"
