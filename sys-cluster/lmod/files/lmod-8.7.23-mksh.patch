@@ -1,0 +1,29 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -799,7 +799,7 @@ AC_PATH_PROGS(PATH_TO_LS, [gls] [ls], "")
+ 
+ ##### LUA configuration -- start
+ 
+-if ! command -v $PATH_TO_LUA &>/dev/null ; then
++if ! command -v $PATH_TO_LUA > /dev/null 2>&1 ; then
+   echo 'The program "'$PATH_TO_LUA'" must be in your path'
+   rm -f makefile
+   exit 1
+@@ -829,7 +829,7 @@ else
+    fi   
+ fi
+ 
+-if ! command -v $PATH_TO_LUA &>/dev/null ; then
++if ! command -v $PATH_TO_LUA > /dev/null 2>&1 ; then
+   echo 'The program "'$PATH_TO_LUA'" must be in your path'
+   rm -f makefile
+   exit 1
+@@ -840,7 +840,7 @@
+   PATH_TO_LUA=$(FOLLOW_READLINK $FIND_PATH_TO_LUA)
+ fi
+ 
+-if ! command -v $PATH_TO_LUAC &>/dev/null ; then
++if ! command -v $PATH_TO_LUAC > /dev/null 2>&1 ; then
+   echo 'The program "'$PATH_TO_LUAC'" must be in your path'
+   rm -f makefile
+   exit 1
