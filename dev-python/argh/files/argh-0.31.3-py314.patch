@@ -1,0 +1,54 @@
+From 699568ad674c5ea26d361202c386a8a8a82ec8ad Mon Sep 17 00:00:00 2001
+From: Andy Mikhaylenko <neithere@gmail.com>
+Date: Sun, 1 Jun 2025 21:28:53 +0200
+Subject: [PATCH] fix(test): tests were broken under Python 3.14.0b2 (fixes
+ #239)
+
+(stripped down to bare essentials)
+
+--- a/tests/test_integration.py
++++ b/tests/test_integration.py
+@@ -796,11 +796,17 @@ def func():
+     parser = DebugArghParser()
+     parser.set_default_command(func)
+ 
+-    assert unindent(func.__doc__) in parser.format_help()
++    docstring = func.__doc__
++    assert docstring
++    assert unindent(docstring) in parser.format_help()
+ 
+ 
+ def test_prog(capsys: pytest.CaptureFixture[str]):
+-    "Program name propagates from sys.argv[0]"
++    """
++    Program name propagates to the usage string.
++    It's not just sys.argv[0], the logic is a bit more complicated in argparse,
++    so we just reuse whatever it has produced.
++    """
+ 
+     def cmd(*, foo=1):
+         return foo
+@@ -808,10 +814,12 @@ def cmd(*, foo=1):
+     parser = DebugArghParser()
+     parser.add_commands([cmd])
+ 
+-    usage = get_usage_string()
++    usage = f"usage: {parser.prog} [-h]"
+ 
+-    assert run(parser, "-h", exit=True) == 0
++    exit_code = run(parser, "-h", exit=True)
+     captured = capsys.readouterr()
++
++    assert exit_code == 0
+     assert captured.out.startswith(usage)
+ 
+ 
+@@ -822,8 +830,6 @@ def cmd(*, foo=1):
+     parser = DebugArghParser()
+     parser.set_default_command(cmd)
+ 
+-    get_usage_string("[-f FOO]")
+-
+     assert run(parser, "--foo 1") == R(out="1\n", err="")
+     assert run(parser, "--bar 1", exit=True) == "unrecognized arguments: --bar 1"
+     assert run(parser, "--bar 1", exit=False, kwargs={"skip_unknown_args": True}) == R(
