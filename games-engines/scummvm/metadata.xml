@@ -20,6 +20,6 @@
     <flag name="unsupported">enable unsupported and/or broken game engines (you're on your own)</flag>
   </use>
   <upstream>
-    <remote-id type="sourceforge">scummvm</remote-id>
+    <remote-id type="github">scummvm/scummvm</remote-id>
   </upstream>
 </pkgmetadata>
