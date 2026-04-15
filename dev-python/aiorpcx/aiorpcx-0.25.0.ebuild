@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1
 
@@ -42,4 +42,6 @@ EPYTEST_DESELECT=(
 PATCHES=(
 	# https://github.com/kyuupichan/aiorpcX/commit/b8ce32889c45c98b44c4e247ec0b0ae206e9ee91
 	"${FILESDIR}/${P}-pytest-asyncio-1.patch"
+	# https://github.com/kyuupichan/aiorpcX/commit/25043621700672ee375d20b78804118acac43b1b
+	"${FILESDIR}/${P}-py314.patch"
 )
