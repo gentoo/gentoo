@@ -120,28 +120,28 @@ python_test() {
 	# need this for (new) python versions not yet recognized by pyo3
 	local -x PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
 
-	local skip=(
+	local CARGO_SKIP_TESTS=(
 		# picky cli output test that easily benignly fail (bug #937992)
-		--skip cli_tests
+		cli_tests
 		# fragile depending on rust version, also wants libpypy*-c.so for pypy
-		--skip errors::pyo3_no_extension_module
+		errors::pyo3_no_extension_module
 		# unimportant tests that require uv, and not obvious to get it
 		# to work with network-sandbox (not worth the trouble)
-		--skip develop::develop_uv_cases::case_1_hello_world
-		--skip develop::develop_uv_cases::case_2_pyo3_ffi_pure
+		develop::develop_uv_cases::case_1_hello_world
+		develop::develop_uv_cases::case_2_pyo3_ffi_pure
 		# compliance tests using zig (if present) need old libc (bug #946967)
-		--skip integration::integration_cases::case_07_cffi_mixed_py_subdir
-		--skip integration::integration_cases::case_16_pyo3_stub_generation_zig
+		integration::integration_cases::case_07_cffi_mixed_py_subdir
+		integration::integration_cases::case_16_pyo3_stub_generation_zig
 		# avoid need for wasm over a single hello world test
-		--skip integration::integration_wasm_hello_world
+		integration::integration_wasm_hello_world
 		# these currently attempt to install tomli regardless of python version
-		--skip pep517::pep517_default_profile
-		--skip pep517::pep517_editable_profile
+		pep517::pep517_default_profile
+		pep517::pep517_editable_profile
 		# unimportant and simpler to skip, does not work with just `git init`
-		--skip sdist::lib_with_parent_workspace_git_dep_sdist
+		sdist::lib_with_parent_workspace_git_dep_sdist
 	)
 
-	cargo_src_test -- "${skip[@]}"
+	cargo_src_test
 }
 
 python_install_all() {
