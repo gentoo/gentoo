@@ -1,4 +1,4 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,6 +25,10 @@ DEPEND="${RDEPEND}"
 CMAKE_SKIP_TESTS=(
 	# hangs+timeout with offscreen rendering
 	tst_qgqmltest
+)
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.11.0-no-quick3d.patch
 )
 
 src_configure() {
