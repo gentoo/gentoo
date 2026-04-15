@@ -48,6 +48,7 @@ src_configure() {
 		# Another root (LC_HASH_COMMON_ALIGNMENT)
 		/usr/include/leancrypto/lc_hash.h
 		/usr/include/leancrypto/lc_memset_secure.h
+		/usr/include/leancrypto/lc_status.h
 
 		# Another root (LC_DEF_ASCON_AVX512)
 		/usr/include/leancrypto/lc_ascon_hash.h
