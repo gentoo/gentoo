@@ -17,7 +17,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="LGPL-2.1 CDDL"
 # SONAME isn't exactly the same as PV but it does correspond and
 # libraw has unstable ABI across releases.
-SLOT="0/$(ver_cut 1-2)"
+SLOT="0/${PV}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="examples hardened jpeg +lcms openmp zlib"
 
