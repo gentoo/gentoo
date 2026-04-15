@@ -33,9 +33,6 @@ BDEPEND="
 	)
 	test? (
 		dev-python/brotlicffi[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep '
-			>=dev-python/fs-2.4.9[${PYTHON_USEDEP}]
-		' 3.{11..13})
 		dev-python/munkres[${PYTHON_USEDEP}]
 		app-arch/zopfli
 	)
