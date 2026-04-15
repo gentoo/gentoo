@@ -1,13 +1,17 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/marcusmeissner.asc
+inherit autotools verify-sig
 
 DESCRIPTION="Free, redistributable digital camera software application"
 HOMEPAGE="http://www.gphoto.org/"
-SRC_URI="https://downloads.sourceforge.net/gphoto/${P}.tar.xz"
+SRC_URI="
+	https://downloads.sourceforge.net/gphoto/${P}.tar.xz
+	verify-sig? ( https://downloads.sourceforge.net/gphoto/${P}.tar.xz.asc )
+"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -30,6 +34,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	nls? ( >=sys-devel/gettext-0.19.1 )
+	verify-sig? ( sec-keys/openpgp-keys-marcusmeissner )
 "
 
 src_prepare() {
