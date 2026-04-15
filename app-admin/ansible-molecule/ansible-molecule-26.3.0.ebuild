@@ -55,8 +55,8 @@ BDEPEND="
 "
 
 PATCHES=(
-        "${FILESDIR}"/${PN}-fix-pyproject-verbosity_assertions.patch
-		"${FILESDIR}"/${PN}-fix-test-env.patch
+	"${FILESDIR}"/${PN}-fix-pyproject-verbosity_assertions.patch
+	"${FILESDIR}"/${PN}-fix-test-env.patch
 )
 
 # deselecting tests which
