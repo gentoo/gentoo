@@ -5,7 +5,7 @@ EAPI=8
 
 inherit desktop flag-o-matic toolchain-funcs xdg
 
-DESCRIPTION="Reimplementation of the SCUMM game engine used in Lucasarts adventures"
+DESCRIPTION="Reimplementation of various game engines for adventures and role-playing games"
 HOMEPAGE="https://www.scummvm.org/"
 
 if [[ ${PV} == *9999* ]]; then
