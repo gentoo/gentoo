@@ -3,12 +3,16 @@
 
 EAPI=8
 
-inherit desktop optfeature wrapper xdg
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/keepass.asc
+inherit desktop optfeature wrapper verify-sig xdg
 
 MY_PN="KeePass"
 DESCRIPTION="A free, open source, light-weight and easy-to-use password manager"
 HOMEPAGE="https://keepass.info/"
-SRC_URI="https://downloads.sourceforge.net/${PN}/${MY_PN}-${PV}-Source.zip"
+SRC_URI="
+	https://downloads.sourceforge.net/${PN}/${MY_PN}-${PV}-Source.zip
+	verify-sig? ( https://keepass.info/integrity/v2/${MY_PN}-${PV}-Source.zip.asc )
+"
 S="${WORKDIR}"
 
 # first is keepass, second is bundled argon2
@@ -17,7 +21,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="aot"
 
-BDEPEND="app-arch/unzip"
+BDEPEND="
+	app-arch/unzip
+	verify-sig? ( sec-keys/openpgp-keys-keepass )
+"
 DEPEND="dev-lang/mono"
 RDEPEND="
 	${DEPEND}
