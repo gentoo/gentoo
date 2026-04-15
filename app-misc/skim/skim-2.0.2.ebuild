@@ -347,7 +347,7 @@ src_configure() {
 	cargo_src_configure --no-default-features
 }
 
-local CARGO_SKIP_TESTS=(
+CARGO_SKIP_TESTS=(
 	test_ansi_flag_disabled
 	test_ansi_flag_enabled
 	test_ansi_flag_no_strip
