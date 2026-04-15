@@ -67,6 +67,18 @@ src_prepare() {
 	rm -r rt/{ck_mtree_syntax,colorize,end2end,help,ifur,settarg} || die
 	hprefixify -w '/#\!\/bin\/tcsh/' rt/csh_swap/csh_swap.tdesc || die
 	eautoreconf
+	sed -i \
+		-e "1s|#!/usr/bin/env lua|#!${LUA}|" \
+		proj_mgmt/joinBase64Results \
+		|| die
+	sed -i \
+		-e "s|@path_to_lua@|${LUA}|" \
+		src/lmod.in.lua \
+		|| die
+	sed -i \
+		-e "s|    lua|    ${LUA}|" \
+		rt/csh_swap/csh_swap.tdesc \
+		|| die
 }
 
 src_configure() {
