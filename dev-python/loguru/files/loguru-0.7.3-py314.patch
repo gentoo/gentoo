@@ -1,0 +1,58 @@
+From 84023e2bd8339de95250470f422f096edcb8f7b7 Mon Sep 17 00:00:00 2001
+From: Delgan <delgan.py@gmail.com>
+Date: Sat, 5 Jul 2025 22:43:12 +0200
+Subject: [PATCH] Fix failing "exception_modern" unit test with Python 3.14
+ (#1331)
+
+The test relies on the "repr()" output of a few classes which are
+not meant to be considered as a stabilized API. In this
+specific case, "Union" representation was changed upstream from
+"typing.Union" to "<class 'typing.Union'>" (kind of leak
+implementation details).
+
+I simply  replaced the dummy "Union" with "Tuple" in the unit test,
+since its representation appears stable acrcoss versions.
+---
+ tests/exceptions/output/modern/type_hints.txt | 4 ++--
+ tests/exceptions/source/modern/type_hints.py  | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/tests/exceptions/output/modern/type_hints.txt b/tests/exceptions/output/modern/type_hints.txt
+index 64484d3f..917180a3 100644
+--- a/tests/exceptions/output/modern/type_hints.txt
++++ b/tests/exceptions/output/modern/type_hints.txt
+@@ -10,11 +10,11 @@
+     [36m            └ [0m[36m[1m<function foo at 0xDEADBEEF>[0m
+ 
+   File "[32mtests/exceptions/source/modern/[0m[32m[1mtype_hints.py[0m", line [33m15[0m, in [35mfoo[0m
+-    [35m[1mdef[0m [1mfoo[0m[1m([0m[1ma[0m[1m:[0m [1mint[0m[1m,[0m [1mb[0m[1m:[0m [1mUnion[0m[1m[[0m[1mName[0m[1m,[0m [1mfloat[0m[1m][0m[1m,[0m [1mc[0m[1m:[0m [36m"Name"[0m[1m)[0m [35m[1m->[0m [1mT[0m[1m:[0m [34m[1m1[0m [35m[1m/[0m [34m[1m0[0m
++    [35m[1mdef[0m [1mfoo[0m[1m([0m[1ma[0m[1m:[0m [1mint[0m[1m,[0m [1mb[0m[1m:[0m [1mTuple[0m[1m[[0m[1mName[0m[1m,[0m [1mfloat[0m[1m][0m[1m,[0m [1mc[0m[1m:[0m [36m"Name"[0m[1m)[0m [35m[1m->[0m [1mT[0m[1m:[0m [34m[1m1[0m [35m[1m/[0m [34m[1m0[0m
+     [36m    │   │       │  │     │             │             └ [0m[36m[1m~T[0m
+     [36m    │   │       │  │     │             └ [0m[36m[1m3[0m
+     [36m    │   │       │  │     └ [0m[36m[1m<class 'str'>[0m
+-    [36m    │   │       │  └ [0m[36m[1mtyping.Union[0m
++    [36m    │   │       │  └ [0m[36m[1mtyping.Tuple[0m
+     [36m    │   │       └ [0m[36m[1m2[0m
+     [36m    │   └ [0m[36m[1m1[0m
+     [36m    └ [0m[36m[1m<function foo at 0xDEADBEEF>[0m
+diff --git a/tests/exceptions/source/modern/type_hints.py b/tests/exceptions/source/modern/type_hints.py
+index 84b36e51..cda95a68 100644
+--- a/tests/exceptions/source/modern/type_hints.py
++++ b/tests/exceptions/source/modern/type_hints.py
+@@ -1,6 +1,6 @@
+ # fmt: off
+ import sys
+-from typing import TypeVar, Union
++from typing import TypeVar, Tuple
+ 
+ from loguru import logger
+ 
+@@ -12,7 +12,7 @@
+ Name = str
+ 
+ 
+-def foo(a: int, b: Union[Name, float], c: "Name") -> T: 1 / 0
++def foo(a: int, b: Tuple[Name, float], c: "Name") -> T: 1 / 0
+ 
+ 
+ def main():

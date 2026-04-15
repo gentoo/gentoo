@@ -1,10 +1,10 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1
 
@@ -31,6 +31,7 @@ BDEPEND="
 
 # filesystem buffering tests may fail
 # on tmpfs with 64k PAGESZ, but pass fine on ext4
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 EPYTEST_IGNORE=(
@@ -39,6 +40,11 @@ EPYTEST_IGNORE=(
 )
 
 src_prepare() {
+	local PATCHES=(
+		# https://github.com/Delgan/loguru/commit/84023e2bd8339de95250470f422f096edcb8f7b7
+		"${FILESDIR}/${P}-py314.patch"
+	)
+
 	distutils-r1_src_prepare
 
 	# neuter mypy integration
