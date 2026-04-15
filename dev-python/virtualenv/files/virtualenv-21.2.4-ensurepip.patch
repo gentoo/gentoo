@@ -1,0 +1,29 @@
+From 4c59dc5ea8a90d93cd0fb68cebd742dd40d16710 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 22 Jun 2024 14:28:23 +0200
+Subject: [PATCH] [Gentoo] Use ensurepip wheels instead of local bundle
+
+---
+ src/virtualenv/seed/wheels/embed/__init__.py | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/src/virtualenv/seed/wheels/embed/__init__.py b/src/virtualenv/seed/wheels/embed/__init__.py
+index df58d6d0..e1b40d1e 100644
+--- a/src/virtualenv/seed/wheels/embed/__init__.py
++++ b/src/virtualenv/seed/wheels/embed/__init__.py
+@@ -70,6 +70,15 @@ def get_embed_wheel(distribution: str, for_py_version: str) -> Wheel | None:
+     :raises RuntimeError: if the bundled wheel on disk fails SHA-256 verification.
+ 
+     """
++
++    # Gentoo hack: get wheel from ensurepip directory
++    import sysconfig
++    bundle_dir = Path(sysconfig.get_config_var("WHEEL_PKG_DIR"))
++    try:
++        return Wheel.from_path(next(bundle_dir.glob(f"{distribution}-*.whl")))
++    except StopIteration:
++        return None
++
+     mapping = BUNDLE_SUPPORT.get(for_py_version, {}) or BUNDLE_SUPPORT[MAX]
+     wheel_file = mapping.get(distribution)
+     if wheel_file is None:
