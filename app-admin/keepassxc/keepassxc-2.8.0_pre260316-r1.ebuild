@@ -14,8 +14,6 @@ HOMEPAGE="https://keepassxc.org"
 # This version is based on the current upstream development branch and a
 # patchset extracted from https://github.com/keepassxreboot/keepassxc/pull/11651
 #
-# Unkeyworded for the time being.
-#
 # Last commit on development repository:
 #     commit 379be00127db60b1ddee9c67f4bfc49c15db8236
 #     Author: Jonathan White <support@dmapps.us>
@@ -56,6 +54,7 @@ S="${WORKDIR}/${PN}-${GIT_HASH}"
 # COPYING order
 LICENSE="|| ( GPL-2 GPL-3 ) BSD LGPL-2.1 MIT LGPL-2 CC0-1.0 Apache-2.0 GPL-2+ BSD-2"
 SLOT="0"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="X browser doc +keyring +network +ssh-agent test"
 
 RESTRICT="!test? ( test )"
