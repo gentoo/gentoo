@@ -6,7 +6,7 @@ EAPI=8
 # Keep an eye on Fedora's packaging (https://src.fedoraproject.org/rpms/libcap-ng/tree/rawhide) for patches
 # Same maintainer in Fedora as upstream
 PYTHON_COMPAT=( python3_{11..14} )
-inherit autotools flag-o-matic out-of-source-utils python-r1
+inherit autotools dot-a flag-o-matic out-of-source-utils python-r1
 
 DESCRIPTION="POSIX 1003.1e capabilities"
 HOMEPAGE="https://people.redhat.com/sgrubb/libcap-ng/"
@@ -50,6 +50,9 @@ src_prepare() {
 
 src_configure() {
 	use sparc && replace-flags -O? -O0
+
+	# bug #960469
+	use static-libs && lto-guarantee-fat
 
 	local ECONF_SOURCE="${S}"
 
@@ -111,6 +114,9 @@ src_install() {
 		local BUILD_DIR="${WORKDIR}"/build
 		emake -C "${BUILD_DIR}" DESTDIR="${D}" install
 	fi
+
+	# bug #960469
+	use static-libs && strip-lto-bytecode
 
 	find "${ED}" -name '*.la' -delete || die
 }
