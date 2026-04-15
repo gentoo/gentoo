@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=setuptools
 PYPI_PN=PyOpenGL
 PYPI_VERIFY_REPO=https://github.com/mcfletch/pyopengl
 PYTHON_REQ_USE="tk?"
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 pypi virtualx
 
