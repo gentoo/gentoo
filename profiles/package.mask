@@ -53,7 +53,7 @@ dev-python/tempest
 # Alternatives are app-admin/keepass, app-admin/pass which can import kbdx
 # files via app-admin/pass-import, app-admin/vaultwarden, app-admin/bitwarden-desktop-bin,
 # and probably many more.  AppImage or Flatpak versions also available as last resort.
-# Bugs #949231, #967905.
+# See bug #949231.
 # Removal on 2026-05-11.
 <=app-admin/keepassxc-2.7.9999
 
