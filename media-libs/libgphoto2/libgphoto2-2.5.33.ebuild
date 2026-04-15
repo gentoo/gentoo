@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # TODO
@@ -7,11 +7,15 @@
 
 EAPI=8
 
-inherit autotools multilib-minimal udev
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/marcusmeissner.asc
+inherit autotools multilib-minimal udev verify-sig
 
 DESCRIPTION="Library that implements support for numerous digital cameras"
 HOMEPAGE="http://www.gphoto.org/"
-SRC_URI="https://downloads.sourceforge.net/gphoto/${P}.tar.xz"
+SRC_URI="
+	https://downloads.sourceforge.net/gphoto/${P}.tar.xz
+	verify-sig? ( https://downloads.sourceforge.net/gphoto/${P}.tar.xz.asc )
+"
 
 LICENSE="GPL-2"
 # FIXME: should we also bump for libgphoto2_port.so soname version?
@@ -68,6 +72,7 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.1
 	virtual/pkgconfig
 	doc? ( app-text/doxygen )
+	verify-sig? ( sec-keys/openpgp-keys-marcusmeissner )
 "
 
 MULTILIB_CHOST_TOOLS=(
