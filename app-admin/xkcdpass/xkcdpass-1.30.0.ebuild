@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..13} )
+PYTHON_COMPAT=( python3_{9..14} )
 inherit distutils-r1 pypi
 
 DESCRIPTION="Password generator inspired by XKCD 936"
@@ -20,6 +20,10 @@ IUSE="l10n_de +l10n_en l10n_es l10n_fi l10n_fr l10n_it l10n_no l10n_pt"
 
 distutils_enable_tests pytest
 REQUIRED_USE="test? ( l10n_en )"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-failing-test.patch
+)
 
 src_prepare() {
 	default

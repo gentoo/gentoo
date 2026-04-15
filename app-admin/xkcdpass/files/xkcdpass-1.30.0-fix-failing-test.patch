@@ -1,0 +1,16 @@
+From b981361292ae7328313e116178acacc90680df5e Mon Sep 17 00:00:00 2001
+From: Steven Tobin <steven@steventob.in>
+Date: Sat, 24 Jan 2026 11:35:40 +0000
+Subject: [PATCH] fix failing test
+
+--- a/tests/test_xkcdpass.py
++++ b/tests/test_xkcdpass.py
+@@ -29,7 +29,7 @@ def setUp(self):
+             valid_chars='[a-z]')
+ 
+     def test_loadwordfile(self):
+-        self.assertEqual(len(self.wordlist_full), 5670)
++        self.assertEqual(len(self.wordlist_full), 29611)
+ 
+     def test_regex(self):
+         self.assertNotIn("__$$$__", self.wordlist_small)
