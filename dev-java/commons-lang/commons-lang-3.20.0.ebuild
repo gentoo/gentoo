@@ -1,7 +1,7 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=9
+EAPI=8
 
 JAVA_PKG_IUSE="doc source test"
 JAVA_TESTING_FRAMEWORKS="junit-jupiter"
@@ -38,10 +38,7 @@ DEPEND="
 
 RDEPEND=">=virtual/jre-1.8:*"
 
-PATCHES=(
-	"${FILESDIR}/commons-lang-3.19.0-skip-testGetJavaAwtHeadless.patch"
-	"${FILESDIR}/commons-lang-3.20.0-ppc64le.patch"
-)
+PATCHES=( "${FILESDIR}/commons-lang-3.19.0-skip-testGetJavaAwtHeadless.patch" )
 
 JAVA_AUTOMATIC_MODULE_NAME="org.apache.commons.lang3"
 JAVA_GENTOO_CLASSPATH_EXTRA="org.apache.commons.lang3.jar"
