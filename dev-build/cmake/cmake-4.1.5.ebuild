@@ -292,11 +292,6 @@ src_test() {
 		"RunCMake.CMP0125"
 	)
 
-	local myctestargs=(
-		# higher number breaks tests
-		-j1
-	)
-
 	local -x QT_QPA_PLATFORM=offscreen
 
 	cmake_src_test
