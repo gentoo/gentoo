@@ -59,12 +59,11 @@ IUSE="X browser doc +keyring +network +ssh-agent test"
 
 RESTRICT="!test? ( test )"
 
-# Include path changed in zxcvbn-c-2.6
 RDEPEND="
 	app-crypt/argon2:=
 	dev-libs/botan:3=
 	dev-libs/libusb:1
-	>=dev-libs/zxcvbn-c-2.6
+	dev-libs/zxcvbn-c
 	dev-qt/qtbase:6
 	dev-qt/qtsvg:6
 	media-gfx/qrencode:=
@@ -105,6 +104,10 @@ src_prepare() {
 
 	# Unbundle zxcvbn, bug 958062
 	rm -r ./src/thirdparty/zxcvbn || die
+
+	if has_version "<dev-libs/zxcvbn-c-2.6" ; then
+		eapply "${FILESDIR}"/${PN}-2.7.10-zxcvbn.patch
+	fi
 
 	cmake_src_prepare
 }

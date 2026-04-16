@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -73,7 +73,6 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.7.10-tests.patch"
-	"${FILESDIR}/${PN}-2.7.10-zxcvbn.patch"
 )
 
 src_prepare() {
@@ -83,6 +82,10 @@ src_prepare() {
 
 	# Unbundle zxcvbn, bug 958062
 	rm -r ./src/thirdparty/zxcvbn || die
+
+	if has_version "<dev-libs/zxcvbn-c-2.6" ; then
+		eapply "${FILESDIR}"/${PN}-2.7.10-zxcvbn.patch
+	fi
 
 	cmake_src_prepare
 }

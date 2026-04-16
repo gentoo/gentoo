@@ -34,11 +34,10 @@ IUSE="X autotype browser doc keeshare +keyring +network +ssh-agent test yubikey"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="autotype? ( X )"
 
-# Include path changed in zxcvbn-c-2.6
 RDEPEND="
 	app-crypt/argon2:=
 	dev-libs/botan:3=
-	<dev-libs/zxcvbn-c-2.6
+	dev-libs/zxcvbn-c
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
@@ -75,7 +74,6 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-2.7.10-cmake_minimum.patch"
 	"${FILESDIR}/${PN}-2.7.10-tests.patch"
-	"${FILESDIR}/${PN}-2.7.10-zxcvbn.patch"
 	"${FILESDIR}/${PN}-2.7.11-AutoType.patch"
 )
 
@@ -86,6 +84,10 @@ src_prepare() {
 
 	# Unbundle zxcvbn, bug 958062
 	rm -r ./src/thirdparty/zxcvbn || die
+
+	if has_version "<dev-libs/zxcvbn-c-2.6" ; then
+		eapply "${FILESDIR}"/${PN}-2.7.10-zxcvbn.patch
+	fi
 
 	cmake_src_prepare
 }
