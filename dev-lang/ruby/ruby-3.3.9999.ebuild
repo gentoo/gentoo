@@ -150,11 +150,11 @@ src_prepare() {
 
 	# Have ruby --version print out ${PV}
 	if [[ ${PV} == *9999* ]]; then
-		sed -i "s/#define RUBY_VERSION_TEENY.*/#define RUBY_VERSION_TEENY 9999/" version.h
-	fi
+		sed -i "s/#define RUBY_VERSION_TEENY.*/#define RUBY_VERSION_TEENY 9999/" version.h || die
 
-	cp "${BROOT}"/usr/share/gnuconfig/config.guess "${S}"/tool/config.guess || die
-	cp "${BROOT}"/usr/share/gnuconfig/config.sub "${S}"/tool/config.sub || die
+		cp "${BROOT}"/usr/share/gnuconfig/config.guess "${S}"/tool/config.guess || die
+		cp "${BROOT}"/usr/share/gnuconfig/config.sub "${S}"/tool/config.sub || die
+	fi
 
 	eapply_user
 

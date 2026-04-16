@@ -165,7 +165,10 @@ src_prepare() {
 
 	# Have ruby --version print out ${PV}
 	if [[ ${PV} == *9999* ]]; then
-		sed -i "s/#define RUBY_VERSION_TEENY.*/#define RUBY_VERSION_TEENY 9999/" version.h
+		sed -i "s/#define RUBY_VERSION_TEENY.*/#define RUBY_VERSION_TEENY 9999/" version.h || die
+
+		cp "${BROOT}"/usr/share/gnuconfig/config.guess "${S}"/tool/config.guess || die
+		cp "${BROOT}"/usr/share/gnuconfig/config.sub "${S}"/tool/config.sub || die
 	fi
 
 	# Avoid specs that require gems to be installed already due to our unbundling.
@@ -175,9 +178,6 @@ src_prepare() {
 		# Fix hardcoded SHELL var in mkmf library
 		sed -i -e "s#\(SHELL = \).*#\1${EPREFIX}/bin/sh#" lib/mkmf.rb || die
 	fi
-
-	cp "${BROOT}"/usr/share/gnuconfig/config.guess "${S}"/tool/config.guess || die
-	cp "${BROOT}"/usr/share/gnuconfig/config.sub "${S}"/tool/config.sub || die
 
 	eapply_user
 
