@@ -30,12 +30,14 @@ S="${WORKDIR}"
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="amd64 arm64"
-RESTRICT="bindist mirror strip"
 QA_PREBUILT="opt/bin/claude"
-RDEPEND="
-	>=net-libs/nodejs-18
-	sys-apps/ripgrep
-"
+
+RDEPEND="sys-apps/ripgrep"
+
+IUSE="cpu_flags_x86_avx cpu_flags_x86_avx2"
+REQUIRED_USE="cpu_flags_x86_avx cpu_flags_x86_avx2"
+
+RESTRICT="bindist mirror strip"
 
 src_compile() {
 	# Skip, nothing to compile here.
