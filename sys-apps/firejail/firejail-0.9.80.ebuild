@@ -39,6 +39,7 @@ DEPEND="
 	sys-libs/libseccomp
 	test? ( dev-tcltk/expect )
 "
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.9.80-firecfg.config.patch"
