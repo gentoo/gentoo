@@ -1,0 +1,14 @@
+see PR pending https://github.com/lanoxx/tilda/pull/545.patch
+see also https://bugs.gentoo.org/927874
+remove bashism
+--- a/configure.ac
++++ b/configure.ac
+@@ -186,7 +186,7 @@ cflagcount=0
+ for flag in ${CFLAGS}; do
+     cflaglines=$cflaglines$flag" "
+     cflagcount=$(($cflagcount+1))
+-    if (( $cflagcount % 4 == 0)); then
++    if test $((cflagcount % 4)) -eq 0; then
+        dnl Here we concatenate the current cflaglines variable with a newline and enough spaces
+        dnl such that the lines are correctly indented. Do not try to indent or reformat the
+        dnl position of the double quotes (\").
