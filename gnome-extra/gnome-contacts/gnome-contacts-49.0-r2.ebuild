@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,6 +14,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="+gnome-online-accounts"
 
+PATCHES=(
+	"${FILESDIR}"/gnome-contacts-49.0-eds-3.60-vcard-export-api.patch
+)
+
 VALA_DEPEND="
 	$(vala_depend)
 	>=dev-libs/gobject-introspection-1.82.0-r2
@@ -28,7 +32,7 @@ RDEPEND="
 	>=dev-libs/glib-2.64:2
 	>=gui-libs/gtk-4.15.3:4
 	>=gui-libs/libadwaita-1.8_alpha:1
-	>=gnome-extra/evolution-data-server-3.42:=[gnome-online-accounts?]
+	>=gnome-extra/evolution-data-server-3.60:=[gnome-online-accounts?]
 	>=dev-libs/libportal-0.7:=
 	>=media-libs/gstreamer-1
 	>=media-gfx/qrencode-4.1.1:=
