@@ -75,6 +75,6 @@ pkg_postinst() {
 		elog "For systemd, steps are needed for integration with systemd-coredumpd."
 		elog "As root, run the following:"
 		elog "1. systemctl enable drkonqi-coredump-processor@.service"
-		elog "2. systemctl --user enable --now --global drkonqi-coredump-launcher.socket"
+		elog "2. systemctl --global enable drkonqi-coredump-launcher.socket"
 	fi
 }
