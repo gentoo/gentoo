@@ -1,6 +1,12 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2026-04-16)
+# media-libs/opencolorio is not stable here and has many dependencies.
+# Not overly worth extra stabilizations over new still scarcely used
+# colour filters. Can revisit if someone wants this.
+media-video/ffmpeg opencolorio
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-05-07)
 # openjfx:8 will never be stabilized
 # openjfx:11 probably will neither

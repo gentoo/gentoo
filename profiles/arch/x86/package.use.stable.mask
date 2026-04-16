@@ -17,6 +17,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2026-04-16)
+# media-libs/opencolorio is not stable here and has many dependencies.
+# Not overly worth extra stabilizations over new still scarcely used
+# colour filters. Can revisit if someone wants this.
+media-video/ffmpeg opencolorio
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-12-13)
 # media-gfx/asymptote is not stable here, bug #961740
 dev-tex/rubber test
