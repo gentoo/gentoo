@@ -1,0 +1,46 @@
+From d4b9cd330cb362c4c82fe956968e159a5bb039c8 Mon Sep 17 00:00:00 2001
+From: Ian Jordan <immoloism@gmail.com>
+Date: Sun, 12 Apr 2026 02:42:29 +0100
+Subject: [PATCH] Add wiki link
+
+Users get confused on what do next.
+
+This simple addition links to a wiki article section
+so we can easily keep this up to date with all the
+all options a user can use.
+
+Signed-off-by: Ian Jordan <immoloism@gmail.com>
+--- a/hooks/05-check-chroot.install
++++ b/hooks/05-check-chroot.install
+@@ -76,6 +76,9 @@ if [ "$(stat -c %d:%i /)" != "$(stat -c %d:%i /proc/1/root/.)" ]; then
+ 			echo "/etc/cmdline.d/. Or set the kernel_cmdline in a dracut"
+ 			echo "configuration file."
+ 			echo ""
++			echo "For more infomation see:"
++			echo "https://wiki.gentoo.org/wiki/Installkernel#Install_chroot_check"
++			echo ""
+ 			echo "Override this check with:"
+ 			echo "    touch /etc/kernel/preinst.d/05-check-chroot.install"
+ 			echo ""
+@@ -92,6 +95,9 @@ if [ "$(stat -c %d:%i /)" != "$(stat -c %d:%i /proc/1/root/.)" ]; then
+ 			echo ""
+ 			echo "Please specify a command line to use in /etc/kernel/cmdline."
+ 			echo ""
++			echo "For more infomation see:"
++ 			echo "https://wiki.gentoo.org/wiki/Installkernel#Install_chroot_check"
++ 			echo ""
+ 			echo "Override this check with:"
+ 			echo "    touch /etc/kernel/preinst.d/05-check-chroot.install"
+ 			echo ""
+@@ -108,6 +114,9 @@ if [ "$(stat -c %d:%i /)" != "$(stat -c %d:%i /proc/1/root/.)" ]; then
+ 			echo "Please specify a command line to use in /etc/kernel/cmdline"
+ 			echo "or set the Cmdline= option in /etc/kernel/uki.conf."
+ 			echo ""
++			echo "For more infomation see:"
++ 			echo "https://wiki.gentoo.org/wiki/Installkernel#Install_chroot_check"
++			echo ""
+ 			echo "Override this check with:"
+ 			echo "    touch /etc/kernel/preinst.d/05-check-chroot.install"
+ 			echo ""
+-- 
+2.53.0

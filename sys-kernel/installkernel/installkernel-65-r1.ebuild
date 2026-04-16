@@ -17,7 +17,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	SRC_URI="https://github.com/projg2/installkernel-gentoo/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-gentoo-${PV}"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 fi
 
 LICENSE="GPL-2+"
@@ -42,7 +42,7 @@ REQUIRED_USE="
 RDEPEND="
 	!<=sys-kernel/installkernel-systemd-3
 	dracut? (
-		>=sys-kernel/dracut-110
+		>=sys-kernel/dracut-108-r3
 		uki? (
 			|| (
 				sys-apps/systemd[boot(-)]
@@ -84,6 +84,8 @@ RDEPEND="
 	!~sys-apps/systemd-254.6
 	!<=sys-apps/systemd-254.5-r1
 " # Block against systemd that still installs dummy install.conf
+
+PATCHES=( "${FILESDIR}"/${PN}-65-add-wiki-url.patch )
 
 pkg_setup() {
 	use efistub && CONFIG_CHECK="~EFI_STUB" linux-info_pkg_setup
