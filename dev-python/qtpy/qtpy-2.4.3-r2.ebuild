@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,7 +30,6 @@ unset _IUSE_QT_MODULES
 
 REQUIRED_USE="
 	|| ( pyqt6 pyside6 )
-	pyside6? ( || ( $(python_gen_useflags python3_{11..13}) ) )
 "
 
 # These flags are currently *not* common to the PySide2/6 and PyQt5/6 ebuilds
@@ -63,15 +62,13 @@ RDEPEND="
 
 	)
 	pyside6? (
-		$(python_gen_cond_dep '
-			dev-python/pyside:6[${PYTHON_USEDEP},core(+)]
-			dev-python/pyside:6[bluetooth?,dbus?,designer?,gui?,help?,multimedia?]
-			dev-python/pyside:6[network?,nfc?,opengl?,pdfium?,positioning?]
-			dev-python/pyside:6[printsupport?,qml?,quick?,quick3d?,remoteobjects(-)?]
-			dev-python/pyside:6[scxml?,sensors?,serialport?,spatialaudio?,speech?]
-			dev-python/pyside:6[sql?,svg?,testlib?,vulkan(+)?,webchannel?,webengine?]
-			dev-python/pyside:6[websockets?,widgets?,xml?]
-		' python3_{11..13})
+		dev-python/pyside:6[${PYTHON_USEDEP},core(+)]
+		dev-python/pyside:6[bluetooth?,dbus?,designer?,gui?,help?,multimedia?]
+		dev-python/pyside:6[network?,nfc?,opengl?,pdfium?,positioning?]
+		dev-python/pyside:6[printsupport?,qml?,quick?,quick3d?,remoteobjects(-)?]
+		dev-python/pyside:6[scxml?,sensors?,serialport?,spatialaudio?,speech?]
+		dev-python/pyside:6[sql?,svg?,testlib?,vulkan(+)?,webchannel?,webengine?]
+		dev-python/pyside:6[websockets?,widgets?,xml?]
 	)
 "
 
@@ -91,16 +88,14 @@ BDEPEND="
 			dev-qt/qtbase:6[sqlite]
 		)
 		pyside6? (
-			$(python_gen_cond_dep '
-				dev-python/pyside:6[${PYTHON_USEDEP},core(+)]
-				dev-python/pyside:6[3d,bluetooth,charts,concurrent,dbus,designer,gui]
-				dev-python/pyside:6[help,location,multimedia,network,network-auth]
-				dev-python/pyside:6[nfc,opengl,pdfium,positioning,printsupport,qml]
-				dev-python/pyside:6[quick,quick3d,scxml,sensors,serialport]
-				dev-python/pyside:6[spatialaudio,speech,sql,svg,testlib,vulkan(+)]
-				dev-python/pyside:6[webchannel,webengine,websockets,widgets,xml]
-				dev-qt/qtbase:6[sqlite]
-			' python3_{11..13})
+			dev-python/pyside:6[${PYTHON_USEDEP},core(+)]
+			dev-python/pyside:6[3d,bluetooth,charts,concurrent,dbus,designer,gui]
+			dev-python/pyside:6[help,location,multimedia,network,network-auth]
+			dev-python/pyside:6[nfc,opengl,pdfium,positioning,printsupport,qml]
+			dev-python/pyside:6[quick,quick3d,scxml,sensors,serialport]
+			dev-python/pyside:6[spatialaudio,speech,sql,svg,testlib,vulkan(+)]
+			dev-python/pyside:6[webchannel,webengine,websockets,widgets,xml]
+			dev-qt/qtbase:6[sqlite]
 		)
 	)
 "
