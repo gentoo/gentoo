@@ -58,14 +58,6 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	# Our toolchain already sets SSP by default but forcing it causes problems
-	# on arches which don't support it. As for F_S, we again set it by defualt
-	# in our toolchain, but forcing F_S=2 is actually a downgrade if 3 is set.
-	sed -i \
-		-e 's:-fstack-protector-all::' \
-		-e 's:-D_FORTIFY_SOURCE=2::' \
-		src/so.mk src/prog.mk || die
-
 	find -type f -name Makefile -exec sed -i -r -e '/CFLAGS/s: (-O2|-ggdb) : :g' {} + || die
 
 	# Fix up hardcoded paths to templates and docs
