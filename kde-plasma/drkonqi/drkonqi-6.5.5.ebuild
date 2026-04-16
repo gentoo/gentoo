@@ -17,7 +17,6 @@ KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE=""
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-RESTRICT="test" # bug 935362
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui,network,widgets]
