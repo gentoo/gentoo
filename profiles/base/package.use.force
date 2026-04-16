@@ -3,8 +3,6 @@
 
 # Michael Orlitzky <mjo@gentoo.org> (2026-04-15)
 # The non-jumbo build failures are back in 2.52.x.
-=net-libs/webkit-gtk-2.52.1-r410 jumbo-build
-=net-libs/webkit-gtk-2.52.1-r600 jumbo-build
 =net-libs/webkit-gtk-2.52.2-r410 jumbo-build
 =net-libs/webkit-gtk-2.52.2-r600 jumbo-build
 
