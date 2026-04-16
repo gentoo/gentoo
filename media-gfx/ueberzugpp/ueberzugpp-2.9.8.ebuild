@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ IUSE="X dbus opencv opengl wayland xcb-errors"
 REQUIRED_USE="xcb-errors? ( X )"
 
 RDEPEND="
-	dev-cpp/tbb:=
+	>=dev-cpp/tbb-2021:=
 	dev-libs/glib:2
 	dev-libs/libfmt:=
 	dev-libs/openssl:=
