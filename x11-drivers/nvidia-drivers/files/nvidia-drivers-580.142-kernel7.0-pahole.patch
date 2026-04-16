@@ -1,0 +1,13 @@
+Needed with kernel >=7.0 if CONFIG_DEBUG_INFO_BTF_MODULES=y is enabled.
+
+https://github.com/NVIDIA/open-gpu-kernel-modules/issues/1041
+--- a/kernel/Makefile
++++ b/kernel/Makefile
+@@ -98 +98 @@
+-  PAHOLE_VARIABLES=$(if $(wildcard $(KERNEL_SOURCES)/scripts/pahole-flags.sh),,"PAHOLE=$(AWK) '$(PAHOLE_AWK_PROGRAM)'")
++  PAHOLE_VARIABLES=$(if $(or $(wildcard $(KERNEL_SOURCES)/scripts/pahole-flags.sh),$(wildcard $(KERNEL_SOURCES)/scripts/gen-btf.sh)),,"PAHOLE=$(AWK) '$(PAHOLE_AWK_PROGRAM)'")
+--- a/kernel-module-source/kernel-open/Makefile
++++ b/kernel-module-source/kernel-open/Makefile
+@@ -98 +98 @@
+-  PAHOLE_VARIABLES=$(if $(wildcard $(KERNEL_SOURCES)/scripts/pahole-flags.sh),,"PAHOLE=$(AWK) '$(PAHOLE_AWK_PROGRAM)'")
++  PAHOLE_VARIABLES=$(if $(or $(wildcard $(KERNEL_SOURCES)/scripts/pahole-flags.sh),$(wildcard $(KERNEL_SOURCES)/scripts/gen-btf.sh)),,"PAHOLE=$(AWK) '$(PAHOLE_AWK_PROGRAM)'")

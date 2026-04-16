@@ -104,6 +104,7 @@ PATCHES=(
 	"${FILESDIR}"/nvidia-modprobe-390.141-uvm-perms.patch
 	"${FILESDIR}"/nvidia-settings-530.30.02-desktop.patch
 	"${FILESDIR}"/nvidia-kernel-module-source-${PV}-kernel6.19.patch
+	"${FILESDIR}"/nvidia-drivers-580.142-kernel7.0-pahole.patch
 )
 
 pkg_setup() {
