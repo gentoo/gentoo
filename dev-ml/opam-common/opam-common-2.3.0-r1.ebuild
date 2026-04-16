@@ -31,6 +31,8 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="dev-ml/findlib"
 
+PATCHES=( "${FILESDIR}"/fix-dotinstall-escape.patch )
+
 src_configure() {
 	:
 }
