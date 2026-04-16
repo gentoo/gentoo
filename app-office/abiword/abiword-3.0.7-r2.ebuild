@@ -16,7 +16,7 @@ S="${WORKDIR}/AbiWord-release-${PV}"
 
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ppc ppc64 ~riscv ~x86"
 IUSE="calendar collab cups debug eds +goffice grammar +introspection latex map math +plugins readline redland spell wordperfect wmf thesaurus"
 # You need 'plugins' enabled if want to enable the extra plugins
 REQUIRED_USE="
@@ -44,7 +44,10 @@ RDEPEND="
 	>=x11-libs/cairo-1.10
 	>=x11-libs/gtk+-3.0.8:3[cups?]
 	calendar? ( >=dev-libs/libical-0.46:= )
-	eds? ( >=gnome-extra/evolution-data-server-3.6.0:= )
+	eds? ( 
+		>=gnome-extra/evolution-data-server-3.6.0:=
+		<gnome-extra/evolution-data-server-3.60.0:=
+	)
 	goffice? ( >=x11-libs/goffice-0.10.2:0.10 )
 	introspection? (
 		${PYTHON_DEPS}
@@ -81,8 +84,6 @@ BDEPEND="
 
 PATCHES=(
 	"${WORKDIR}"/patches
-	"${FILESDIR}/${PN}-3.0.6-goffice-pointers.patch"
-	"${FILESDIR}/${PN}-3.0.6-metarecord.patch"
 )
 
 pkg_setup() {
