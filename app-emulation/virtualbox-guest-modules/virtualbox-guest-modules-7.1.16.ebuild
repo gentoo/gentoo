@@ -21,6 +21,7 @@ KEYWORDS="amd64 ~arm64 x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.1.36-log-use-c99.patch
+	"${FILESDIR}"/${PN}-7.2.6-no-vboxvideo.patch
 )
 
 CONFIG_CHECK="~DRM_TTM ~DRM_VMWGFX"

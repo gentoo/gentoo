@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/972754
+
+We do not use vboxvideo but the default Makefile builds it anyway.
+
+--- a/Makefile
++++ b/Makefile
+@@ -42,7 +42,7 @@
+ VBOX_QUIET_SH := set -x;
+  endif
+ 
+-all: vboxguest vboxsf vboxvideo
++all: vboxguest vboxsf
+ 
+ vboxguest:
+ 	@echo "=== Building 'vboxguest' module ==="

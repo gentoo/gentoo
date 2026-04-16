@@ -22,6 +22,7 @@ KEYWORDS="amd64 ~arm64 x86"
 PATCHES=(
 	"${FILESDIR}"/${PN}-7.2.6-log-use-c99.patch
 	"${FILESDIR}"/${P}-kernel-6.19-{1,3}.patch
+	"${FILESDIR}"/${P}-no-vboxvideo.patch
 )
 
 CONFIG_CHECK="~DRM_TTM ~DRM_VMWGFX"
