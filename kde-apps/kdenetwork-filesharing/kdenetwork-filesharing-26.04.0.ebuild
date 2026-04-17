@@ -31,6 +31,10 @@ RDEPEND="${DEPEND}
 	net-fs/samba
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-26.04.0-systemd-optional.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_PackageKitQt6=ON

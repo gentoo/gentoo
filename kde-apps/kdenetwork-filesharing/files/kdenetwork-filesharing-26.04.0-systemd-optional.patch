@@ -1,0 +1,49 @@
+https://bugs.gentoo.org/972795
+https://invent.kde.org/network/kdenetwork-filesharing/-/merge_requests/73
+
+From 418dc3c993b2d9f5de61fdf681fb44a120a881f3 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 17 Apr 2026 17:17:06 +0100
+Subject: [PATCH] filepropertiesplugin: fix build without systemd
+
+As reported at https://invent.kde.org/network/kdenetwork-filesharing/-/merge_requests/69#note_1470656
+---
+ samba/filepropertiesplugin/sambausershareplugin.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/samba/filepropertiesplugin/sambausershareplugin.h b/samba/filepropertiesplugin/sambausershareplugin.h
+index d8a42261..33565cdf 100644
+--- a/samba/filepropertiesplugin/sambausershareplugin.h
++++ b/samba/filepropertiesplugin/sambausershareplugin.h
+@@ -20,7 +20,9 @@
+ #include "groupmanager.h"
+ #include "model.h"
+ #include "permissionshelper.h"
++#ifdef USE_SYSTEMD
+ #include "servicehelper.h"
++#endif
+ #include "usermanager.h"
+ #include <memory>
+ #include <qcorotask.h>
+@@ -159,7 +161,9 @@ class SambaUserSharePlugin : public KPropertiesDialogPlugin
+     Q_PROPERTY(UserPermissionModel *userPermissionModel MEMBER m_model CONSTANT)
+     Q_PROPERTY(ShareContext *shareContext MEMBER m_context CONSTANT)
+     Q_PROPERTY(PermissionsHelper *permissionsHelper MEMBER m_permissionsHelper CONSTANT)
++#ifdef USE_SYSTEMD
+     Q_PROPERTY(ServiceHelper *serviceHelper MEMBER m_serviceHelper CONSTANT)
++#endif
+     Q_PROPERTY(GroupManager *groupManager MEMBER m_groupManager CONSTANT)
+     Q_PROPERTY(QString bugReportUrl READ bugReportUrl CONSTANT)
+ 
+@@ -209,7 +213,9 @@ private:
+     UserPermissionModel *m_model = nullptr;
+     UserManager *m_userManager = nullptr;
+     PermissionsHelper *m_permissionsHelper = nullptr;
++#ifdef USE_SYSTEMD
+     ServiceHelper *m_serviceHelper = nullptr;
++#endif
+     GroupManager *m_groupManager = nullptr;
+     QStringList m_addressList;
+     bool m_checkingService = true;
+-- 
+GitLab
