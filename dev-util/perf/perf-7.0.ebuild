@@ -4,6 +4,7 @@
 EAPI=8
 
 LLVM_COMPAT=( {18..22} )
+LLVM_OPTIONAL=1
 PYTHON_COMPAT=( python3_{11..14} python3_{13,14}t)
 inherit bash-completion-r1 estack flag-o-matic linux-info llvm-r2 toolchain-funcs python-single-r1
 
@@ -39,6 +40,7 @@ IUSE="abi_mips_o32 abi_mips_n32 abi_mips_n64 babeltrace capstone big-endian bpf 
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
+	bpf? ( ${LLVM_REQUIRED_USE} )
 "
 
 # setuptools (and Python) are always needed even if not building Python bindings
