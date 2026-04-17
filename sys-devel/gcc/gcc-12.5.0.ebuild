@@ -7,10 +7,10 @@ EAPI=8
 # https://wiki.gentoo.org/wiki/Project:Toolchain/sys-devel/gcc
 
 TOOLCHAIN_HAS_TESTS=1
-PATCH_GCC_VER="12.4.0"
-PATCH_VER="4"
-MUSL_VER="4"
-MUSL_GCC_VER="12.4.0"
+PATCH_GCC_VER="12.5.0"
+PATCH_VER="1"
+MUSL_VER="1"
+MUSL_GCC_VER="12.5.0"
 PYTHON_COMPAT=( python3_{11..14} )
 
 if [[ ${PV} == *.9999 ]] ; then
