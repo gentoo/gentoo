@@ -1,9 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 LLVM_COMPAT=( {18..20} )
+LLVM_OPTIONAL=1
 PYTHON_COMPAT=( python3_{11..13} python3_13t)
 inherit bash-completion-r1 estack flag-o-matic linux-info llvm-r1 toolchain-funcs python-r1
 
@@ -39,6 +40,7 @@ IUSE="abi_mips_o32 abi_mips_n32 abi_mips_n64 babeltrace capstone big-endian bpf 
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
+	bpf? ( ${LLVM_REQUIRED_USE} )
 "
 
 # setuptools (and Python) are always needed even if not building Python bindings
