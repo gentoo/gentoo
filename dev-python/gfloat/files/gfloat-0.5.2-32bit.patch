@@ -1,0 +1,97 @@
+From 0d48e9df6870bfa9ffeceef86d26fdae70535e5a Mon Sep 17 00:00:00 2001
+From: Andrew Fitzgibbon <awf@fitzgibbon.ie>
+Date: Fri, 17 Apr 2026 11:40:37 +0100
+Subject: [PATCH 3/3] 32-bit fixes
+
+---
+ src/gfloat/decode_ndarray.py |  6 ++++--
+ src/gfloat/encode_ndarray.py | 11 ++++++-----
+ test/test_array_api.py       |  2 +-
+ test/test_round.py           |  4 ++--
+ 4 files changed, 13 insertions(+), 10 deletions(-)
+
+diff --git a/src/gfloat/decode_ndarray.py b/src/gfloat/decode_ndarray.py
+index 7d93c13..0e79b77 100644
+--- a/src/gfloat/decode_ndarray.py
++++ b/src/gfloat/decode_ndarray.py
+@@ -78,10 +78,12 @@ def decode_ndarray(
+ 
+     issubnormal = (exp == 0) & (significand != 0) & fi.has_subnormals
+     expval = np.where(issubnormal, 1 - bias, exp - bias)
+-    fsignificand = np.where(issubnormal, 0.0, 1.0) + np.ldexp(significand, -t)
++    fsignificand = np.where(issubnormal, 0.0, 1.0) + np.ldexp(
++        significand.astype(np.float64), np.int32(-t)
++    )
+ 
+     # Normal/Subnormal/Zero case, other values will be overwritten
+-    expval_safe = np.where(isspecial | iszero, 0, expval)
++    expval_safe = np.where(isspecial | iszero, 0, expval).astype(np.int32)
+     fval_finite_safe = sign * np.ldexp(fsignificand, expval_safe)
+     fval = np.where(~(iszero | isspecial), fval_finite_safe, fval)
+ 
+diff --git a/src/gfloat/encode_ndarray.py b/src/gfloat/encode_ndarray.py
+index 183865d..af883e4 100644
+--- a/src/gfloat/encode_ndarray.py
++++ b/src/gfloat/encode_ndarray.py
+@@ -66,11 +66,11 @@ def encode_ndarray(fi: FormatInfo, v: npt.NDArray) -> npt.NDArray:
+         biased_exp = exp.astype(np.int64) + (fi.bias - 1)
+         subnormal_mask = (biased_exp < 1) & fi.has_subnormals
+ 
+-        biased_exp_safe = np.where(subnormal_mask, biased_exp, 0)
++        biased_exp_safe = np.where(subnormal_mask, biased_exp, 0).astype(np.int32)
+         tsig = np.where(subnormal_mask, np.ldexp(sig, biased_exp_safe), sig * 2 - 1.0)
+         biased_exp[subnormal_mask] = 0
+ 
+-        isig = np.floor(np.ldexp(tsig, t)).astype(np.int64)
++        isig = np.floor(np.ldexp(tsig, np.int32(t))).astype(np.int64)
+ 
+         zero_mask = fi.has_zero & (isig == 0) & (biased_exp == 0)
+         if not fi.has_nz:
+@@ -80,8 +80,9 @@ def encode_ndarray(fi: FormatInfo, v: npt.NDArray) -> npt.NDArray:
+         if fi.is_twos_complement:
+             isig[finite_sign] = (1 << t) - isig[finite_sign]
+ 
+-        code[finite_mask] = (
+-            (finite_sign.astype(int) << (k - 1)) | (biased_exp << t) | (isig << 0)
+-        )
++        sign_field = np.left_shift(finite_sign.astype(np.uint64), np.uint64(k - 1))
++        exp_field = np.left_shift(biased_exp.astype(np.uint64), np.uint64(t))
++        sig_field = isig.astype(np.uint64)
++        code[finite_mask] = sign_field | exp_field | sig_field
+ 
+     return code
+diff --git a/test/test_array_api.py b/test/test_array_api.py
+index 832c2d7..7de8f70 100644
+--- a/test/test_array_api.py
++++ b/test/test_array_api.py
+@@ -25,7 +25,7 @@ def test_array_api(fi: FormatInfo, rnd: RoundMode, sat: bool) -> None:
+     a = xp.asarray(a0)
+ 
+     srnumbits = 32
+-    srbits0 = np.random.randint(0, 2**srnumbits, a.shape)
++    srbits0 = np.random.randint(0, 2**srnumbits, a.shape, dtype=np.int64)
+     srbits = xp.asarray(srbits0)
+ 
+     round_ndarray(fi, a, rnd, sat, srbits=srbits, srnumbits=srnumbits)  # type: ignore
+diff --git a/test/test_round.py b/test/test_round.py
+index 27c798e..dbde64e 100644
+--- a/test/test_round.py
++++ b/test/test_round.py
+@@ -537,7 +537,7 @@ def test_stochastic_rounding(
+     n = 10_000
+     expected_up_count = expected_up * n
+ 
+-    srbits = np.random.randint(0, 2**srnumbits, size=(n,))
++    srbits = np.random.randint(0, 2**srnumbits, size=(n,), dtype=np.int64)
+     if impl == "scalar":
+         count_v1 = 0
+         for k in range(n):
+@@ -591,7 +591,7 @@ def test_stochastic_rounding_scalar_eq_array(
+     for alpha in (0, 0.3, 0.5, 0.6, 0.7, 0.9, 1.25):
+         v = _linterp(v0, v1, alpha)
+         assert np.isfinite(v).all()
+-        srbits = np.random.randint(0, 2**srnumbits, v.shape)
++        srbits = np.random.randint(0, 2**srnumbits, v.shape, dtype=np.int64)
+ 
+         val_array = round_ndarray(
+             fi,
