@@ -1,0 +1,25 @@
+From 040eb749ca80c9c09a8efb7ecd652f99cd32cad3 Mon Sep 17 00:00:00 2001
+From: sin-ack <sin-ack@protonmail.com>
+Date: Mon, 23 Mar 2026 01:30:18 +0100
+Subject: [PATCH] CMake: Update cmake_minimum_required to 3.10
+
+Bug: https://bugs.gentoo.org/958963
+---
+ fizz/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/fizz/CMakeLists.txt b/fizz/CMakeLists.txt
+index 71aed32..8ad0f7d 100644
+--- a/fizz/CMakeLists.txt
++++ b/fizz/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ #  Copyright (c) 2018, Facebook, Inc.
+ #  All rights reserved.
+
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.10)
+
+ if (NOT DEFINED PACKAGE_VERSION)
+   set(PACKAGE_VERSION "1.0.0")
+--
+2.52.0

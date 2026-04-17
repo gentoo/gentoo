@@ -1,0 +1,41 @@
+From 97988bff6964d0d7f5257dcd848f1405c0aadd52 Mon Sep 17 00:00:00 2001
+From: sin-ack <sin-ack@protonmail.com>
+Date: Mon, 23 Mar 2026 00:05:39 +0100
+Subject: [PATCH] CMake: Add missing memset assembly implementation
+
+Upstream does not seem to believe in consistency in CMakeFiles. Without
+this change, builds targeting -mavx2 would fail because the default memset
+implementation would be disabled and the assembly implementation would
+not be added to the folly shared object.
+
+Link: TODO
+---
+ folly/CMakeLists.txt | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/folly/CMakeLists.txt b/folly/CMakeLists.txt
+index cad072b..9bc88be 100644
+--- a/folly/CMakeLists.txt
++++ b/folly/CMakeLists.txt
+@@ -776,6 +776,19 @@ folly_add_library(
+     FollyMemset.cpp
+ )
+
++# x86 assembly memset implementation (not supported on MSVC)
++if (IS_X86_64_ARCH AND NOT MSVC)
++  folly_add_library(
++    NAME memset_x86
++    SRCS
++      memset.S
++  )
++  set_property(
++    TARGET folly_memset_x86_obj
++    APPEND PROPERTY COMPILE_OPTIONS "-x" "assembler-with-cpp"
++  )
++endif()
++
+ folly_add_library(
+   NAME micro_lock
+   SRCS
+--
+2.52.0

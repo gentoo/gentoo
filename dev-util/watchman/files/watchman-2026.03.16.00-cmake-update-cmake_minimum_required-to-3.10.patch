@@ -1,0 +1,25 @@
+From ce0cd11a33b130739c6edb4c12afd596d13e9fb0 Mon Sep 17 00:00:00 2001
+From: sin-ack <sin-ack@protonmail.com>
+Date: Mon, 23 Mar 2026 02:33:08 +0100
+Subject: [PATCH] CMake: Update cmake_minimum_required to 3.10
+
+Bug: https://bugs.gentoo.org/965547
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c854644..44250b0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -3,7 +3,7 @@
+ # This source code is licensed under the MIT license found in the
+ # LICENSE file in the root directory of this source tree.
+
+-cmake_minimum_required(VERSION 3.8 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
+
+ set(CMAKE_MODULE_PATH
+   # For in-fbsource builds on mac
+--
+2.52.0

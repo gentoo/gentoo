@@ -1,0 +1,43 @@
+From ed08b7e353c3f3c876f927e20f8ccbe51378b293 Mon Sep 17 00:00:00 2001
+From: sin-ack <sin-ack@protonmail.com>
+Date: Mon, 23 Mar 2026 00:39:28 +0100
+Subject: [PATCH] memory: Add custom main to MallctlHelperTest
+
+We don't want to run these tests unless jemalloc is enabled, because
+otherwise in tests we get:
+
+    Expected: mallctlRead(kInvalidCmd, &decayTime) throws an exception
+        of type std::runtime_error.
+      Actual: it throws std::logic_error with description "mallctl:
+        not using jemalloc".
+
+Link: https://github.com/facebook/folly/commit/b80689b99afe4f14ec497826b10c8170b678f52a
+Link: TODO
+---
+ folly/memory/test/MallctlHelperTest.cpp | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/folly/memory/test/MallctlHelperTest.cpp b/folly/memory/test/MallctlHelperTest.cpp
+index f53bc40..1d1999c 100644
+--- a/folly/memory/test/MallctlHelperTest.cpp
++++ b/folly/memory/test/MallctlHelperTest.cpp
+@@ -16,6 +16,7 @@
+
+ #include <folly/memory/MallctlHelper.h>
+
++#include <folly/init/Init.h>
+ #include <folly/portability/GTest.h>
+
+ #if defined(FOLLY_USE_JEMALLOC) && (!defined(FOLLY_SANITIZE) || !FOLLY_SANITIZE)
+@@ -157,3 +158,9 @@ TEST_F(MallctlHelperTest, valid_call_via_cache) {
+ }
+
+ #endif
++
++int main(int argc, char** argv) {
++  ::testing::InitGoogleTest(&argc, argv);
++  folly::Init init(&argc, &argv);
++  return usingJEMalloc() ? RUN_ALL_TESTS() : 0;
++}
+--
+2.52.0
