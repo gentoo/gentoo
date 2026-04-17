@@ -17,6 +17,7 @@ else
 	S="${WORKDIR}"/Lmod-${PV}
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
+SRC_URI+=" https://dev.gentoo.org/~tupone/distfiles/${PN}-8.7.60-load-err.txt"
 
 LICENSE="MIT"
 SLOT="0"
@@ -78,6 +79,8 @@ src_prepare() {
 		-e "s|    lua|    ${LUA}|" \
 		rt/csh_swap/csh_swap.tdesc \
 		|| die
+	cp "${DISTDIR}"/${PN}-8.7.60-load-err.txt \
+		rt/load/err.txt || die
 }
 
 src_configure() {
