@@ -11,6 +11,7 @@
 	<use>
 		<flag name="activities">Enable Plasma Activities support via kde-plasma/plasma-activities</flag>
 		<flag name="importwizard">Enable additional import plugins for <pkg>kde-apps/akonadi-import-wizard</pkg></flag>
+		<flag name="itinerary">Enable plugins for <pkg>kde-apps/kitinerary</pkg></flag>
 		<flag name="markdown">Enable Markdown support via <pkg>app-text/discount</pkg></flag>
 	</use>
 </pkgmetadata>
