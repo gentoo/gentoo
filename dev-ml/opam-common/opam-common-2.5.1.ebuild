@@ -12,7 +12,7 @@ S="${WORKDIR}/opam-${PV}"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="+ocamlopt"
 RESTRICT="test" #sandbox not working
 
