@@ -1,5 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2026-04-17)
+# Support for 31bit s390 is dropped in glibc
+>=sys-libs/glibc-2.44
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-03-20)
 # sys-libs/libunwind doesn't work on s390
