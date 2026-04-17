@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 MY_PN=${PN%-*}
 MY_P=${MY_PN}-${PV}
-DESCRIPTION="Jolly Good Neo Geo AES/MVS Emulator"
+DESCRIPTION="Jolly Good Neo Geo AES/MVS/CD/CDZ Emulator"
 HOMEPAGE="https://gitlab.com/jgemu/geolith"
 if [[ "${PV}" == *9999 ]] ; then
 	inherit git-r3
@@ -18,7 +18,7 @@ else
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
-LICENSE="BSD MIT"
+LICENSE="BSD MIT MIT-0"
 SLOT="1"
 
 DEPEND="
