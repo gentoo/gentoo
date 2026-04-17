@@ -102,7 +102,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv 
 IUSE="ada +cxx debug doc gpm minimal profile split-usr +stack-realign static-libs test tinfo trace"
 # In 6.5_p20250118, the C++ examples fail to link, but there's no automated
 # testsuite anyway. Controlling building examples isn't really what USE=test
-# is for. Just restrict them.
+# is for. Just restrict them. Still seems to fail after
+# https://lists.gnu.org/archive/html/bug-ncurses/2026-03/msg00013.html too.
 RESTRICT="!test? ( test ) test"
 
 # TODO: ncurses allows (and we take advantage of this, even) passing
