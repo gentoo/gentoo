@@ -15,7 +15,7 @@ PYTHON_COMPAT=( python3_{11..14} )
 # in the ebuild for changes that don't require a revbump.
 #
 # Uncomment this line when the ebuild needs a patchset update but no revbump.
-#RUST_PATCH_VER=${PV}-1
+# RUST_PATCH_VER=${PV}-1
 
 RUST_MAX_VER=${PV%%_*}
 RUST_PV=${PV%%_p*}
@@ -726,8 +726,8 @@ src_test() {
 	# those are basic and codegen tests.
 	local tests=(
 		codegen-units
-		codegen-llvm
 		crashes
+		codegen-llvm
 		incremental
 		mir-opt
 		pretty
@@ -737,8 +737,8 @@ src_test() {
 
 	# tests for standard and core library
 	local std_tests=(
-		library/std
-		library/core
+		std
+		core
 	)
 
 	# fails if llvm is not built with ALL targets.
@@ -761,7 +761,7 @@ src_test() {
 
 	local i failed=()
 	einfo "rust_src_test: enabled tests ${tests[@]} ${std_tests[@]}"
-	for i in "tests/${tests[@]}" "${std_tests[@]}"; do
+	for i in "tests/${tests[@]}" "library/${std_tests[@]}"; do
 		local t="${i}"
 		einfo "rust_src_test: running ${t}"
 		if ! RUST_BACKTRACE=1 "${EPYTHON}" ./x.py test -vv --config="${S}"/bootstrap.toml \
