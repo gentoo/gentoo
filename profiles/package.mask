@@ -36,6 +36,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2026-04-19)
+# Major new release with lots of broken packages expected. Notably, even
+# dev-lang/python isn't yet. Please use with caution and file bugs for
+# any issues, blocking bug #972902.
+=dev-libs/openssl-4*
+=dev-libs/openssl-compat-3*
+
 # Michał Górny <mgorny@gentoo.org> (2026-04-18)
 # Packages with no maintainer that have not been ported to Python 3.13,
 # and that have no reverse dependencies.
