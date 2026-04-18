@@ -4,14 +4,17 @@
 EAPI=9
 
 PLOCALES="ca da de eo es fr fur hu ja ka ko nb nl pl pt_BR ro ru sr sv uk vi zh_CN zh_TW"
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/erwinwaterlander.asc
 
-inherit plocale toolchain-funcs
+inherit plocale toolchain-funcs verify-sig
 
 DESCRIPTION="Convert DOS or MAC text files to UNIX format or vice versa"
 HOMEPAGE="https://www.xs4all.nl/~waterlan/dos2unix.html https://sourceforge.net/projects/dos2unix/"
 SRC_URI="
 	https://www.xs4all.nl/~waterlan/${PN}/${P/_/-}.tar.gz
 	https://downloads.sourceforge.net/${PN}/${P/_/-}.tar.gz
+	verify-sig? ( https://www.xs4all.nl/~waterlan/${PN}/${P/_/-}.tar.gz.asc )
+
 "
 S=${WORKDIR}/${P/_/-}
 
@@ -34,6 +37,7 @@ BDEPEND="
 	dev-lang/perl
 	nls? ( sys-devel/gettext )
 	test? ( elibc_musl? ( sys-apps/musl-locales ) )
+	verify-sig? ( sec-keys/openpgp-keys-erwinwaterlander )
 "
 
 handle_locales() {
