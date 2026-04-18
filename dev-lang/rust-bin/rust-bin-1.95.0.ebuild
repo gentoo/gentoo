@@ -24,7 +24,7 @@ else
 	SRC_URI="$(rust_all_arch_uris "rust-${PV}")
 		rust-src? ( ${RUST_TOOLCHAIN_BASEURL%/}/2026-04-16/rust-src-${PV}.tar.xz )
 	"
-	KEYWORDS=""~mips # ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86""
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~x86" # "~mips ~sparc"
 fi
 
 GENTOO_BIN_BASEURI="https://github.com/projg2/rust-bootstrap/releases/download/${PVR}" # omit trailing slash
