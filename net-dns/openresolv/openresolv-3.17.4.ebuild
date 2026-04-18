@@ -1,19 +1,28 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/roymarples.asc
+inherit verify-sig
+
 DESCRIPTION="A framework for managing DNS information"
 HOMEPAGE="https://roy.marples.name/projects/openresolv"
-SRC_URI="https://github.com/NetworkConfiguration/openresolv/releases/download/v${PV}/${P}.tar.xz"
+SRC_URI="
+	https://github.com/NetworkConfiguration/openresolv/releases/download/v${PV}/${P}.tar.xz
+	verify-sig? ( https://github.com/NetworkConfiguration/openresolv/releases/download/v${PV}/${P}.tar.xz.asc )
+"
 
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="selinux"
 
-RDEPEND="!sys-apps/systemd[resolvconf]
-	selinux? ( sec-policy/selinux-resolvconf )"
+RDEPEND="
+	!sys-apps/systemd[resolvconf]
+	selinux? ( sec-policy/selinux-resolvconf )
+"
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-roymarples )"
 
 src_configure() {
 	local myeconfargs=(
