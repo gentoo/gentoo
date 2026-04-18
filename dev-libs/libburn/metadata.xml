@@ -10,4 +10,7 @@
 <name>Thomas Schmitt</name>
 <description>Upstream - please CC on bugs that concern upstream</description>
 </maintainer>
+<use>
+<flag name="cdio">Use <pkg>dev-libs/libcdio</pkg> for the transport of SCSI commands</flag>
+</use>
 </pkgmetadata>
