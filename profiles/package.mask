@@ -37,9 +37,21 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2026-04-18)
-# No maintainer.  Still not ported to Python 3.13.  No revdeps.
-# Removal on 2026-05-18.  Bug #952457.
+# Packages with no maintainer that have not been ported to Python 3.13,
+# and that have no reverse dependencies.
+# Removal on 2026-05-18.  See tracker bug #941893.
+dev-python/matterhook
+dev-python/pytest-markdown
+dev-python/stomp-py
+dev-util/repolite
 dev-util/rpmdevtools
+net-misc/chrome-remote-desktop
+net-misc/you-get
+sys-apps/kcheck
+sys-auth/solo1
+sys-kernel/bliss-initramfs
+sys-kernel/kergen
+www-apache/mod_gnutls
 
 # Sam James <sam@gentoo.org> (2026-04-17)
 # app-misc/tmux fails to open with newer ncurses (bug #972804)
