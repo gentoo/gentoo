@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_VERIFY_REPO=https://github.com/networkx/networkx
-PYTHON_FULLY_TESTED=( python3_{11..14} )
+PYTHON_FULLY_TESTED=( python3_{12..14} )
 PYTHON_COMPAT=( "${PYTHON_FULLY_TESTED[@]}" )
 
 inherit distutils-r1 optfeature pypi virtualx
