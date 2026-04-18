@@ -1,0 +1,36 @@
+From 9f8299bcf1141e627503c3f208eda413bc1e28e6 Mon Sep 17 00:00:00 2001
+From: Stephen Huan <stephen.huan@cgdct.moe>
+Date: Tue, 24 Mar 2026 21:47:30 -0400
+Subject: [PATCH] fix(util/utils): duplicate zeros in filter_operator
+
+The explicit zeros added to A to match C's nonzeros can be redundant
+with the existing entries in A. These duplicate entries are acted on
+independently by amg_core.satisfy_constraints_helper, causing the
+update to effectively happen multiple times when duplicate entries in
+sparse arrays are added together according to scipy's semantics.
+---
+ pyamg/util/utils.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/pyamg/util/utils.py b/pyamg/util/utils.py
+index 69ed1507..4a955253 100644
+--- a/pyamg/util/utils.py
++++ b/pyamg/util/utils.py
+@@ -1242,7 +1242,7 @@ def filter_operator(A, C, B, Bf, BtBinv=None):
+     C = C.copy()
+     C.data[:] = 1
+     A = A.multiply(C)
+-    # add explicit zeros to A wherever C is nonzero, but A is zero
++    # add explicit zeros to A wherever C is nonzero
+     A = A.tocoo()
+     C = C.tocoo()
+     A.data = np.hstack((np.zeros(C.data.shape, dtype=A.dtype), A.data))
+@@ -1252,6 +1252,8 @@ def filter_operator(A, C, B, Bf, BtBinv=None):
+         A = A.tobsr((rows_per_block, cols_per_block))
+     else:
+         A = A.tocsr()
++    # eliminate redundant zeros created by the above
++    A.sum_duplicates()
+ 
+     # Calculate difference between A @ B and Bf
+     diff = A @ B - Bf
