@@ -10,7 +10,7 @@ EAPI=8
 
 CMAKE_REMOVE_MODULES_LIST=( FindBoost )
 CMAKE_WARN_UNUSED_CLI=no # false positives unless all USE flags are on
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{12..13} )
 LUA_COMPAT=( lua5-{3..4} )
 
 inherit check-reqs bash-completion-r1 cmake flag-o-matic lua-single multiprocessing \
