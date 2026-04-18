@@ -348,14 +348,16 @@ src_configure() {
 		if use gtk; then
 			einfo "Configuring to build with GIMP Toolkit (GTK+)"
 			while read line; do ewarn "${line}"; done <<-EOF
-				Your version of GTK+ will have problems with closing open
-				displays. This is no problem if you just use one display, but
-				if you use more than one and close one of them Emacs may crash.
-				See <https://gitlab.gnome.org/GNOME/gtk/-/issues/221> and
+				There is a long-standing bug in GTK+ that prevents Emacs
+				from recovering from X disconnects:
+				<https://gitlab.gnome.org/GNOME/gtk/-/issues/221> and
 				<https://gitlab.gnome.org/GNOME/gtk/-/issues/2315>.
-				If you intend to use more than one display, then it is strongly
-				recommended that you compile Emacs with the Athena/Lucid or the
-				Motif toolkit instead.
+				This is not a problem if you use only one display, but if
+				you use more than one and close one of them, Emacs may crash.
+				If you intend to use more than one display or to run Emacs
+				as a daemon, then it is strongly recommended that you compile
+				it with the Athena/Lucid or the Motif toolkit instead,
+				i.e. with USE="athena Xaw3d -gtk -motif" or USE="motif -gtk".
 			EOF
 			myconf+=( --with-x-toolkit=gtk3 --without-xwidgets )
 			for f in motif Xaw3d athena; do
