@@ -23,7 +23,7 @@ RESTRICT="test" # bug 926482, needs gpg-agent
 DEPEND="
 	>=dev-cpp/gpgmepp-2:=
 	>=dev-libs/qgpgme-2:=
-	>=dev-qt/qtbase-${QTMIN}:6[gui,widgets]
+	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui,widgets]
 	>=dev-qt/qtdeclarative-${QTMIN}:6
 	>=kde-apps/kmbox-${PVCUT}:6=
 	>=kde-apps/kmime-${PVCUT}:6=
@@ -31,6 +31,11 @@ DEPEND="
 	>=kde-frameworks/kcalendarcore-${KFMIN}:6
 	>=kde-frameworks/kcolorscheme-${KFMIN}:6
 	>=kde-frameworks/ki18n-${KFMIN}:6
+	>=kde-frameworks/kio-${KFMIN}:6
+	>=kde-frameworks/kservice-${KFMIN}:6
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:6
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	dev-libs/kirigami-addons:6
+	>=kde-frameworks/kirigami-${KFMIN}:6
+"
