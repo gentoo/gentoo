@@ -18,6 +18,7 @@ else
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 SRC_URI+=" https://dev.gentoo.org/~tupone/distfiles/${PN}-9.1.2-load-err.txt"
+SRC_URI+=" https://dev.gentoo.org/~tupone/distfiles/${PN}-9.2-help-err.txt"
 
 LICENSE="MIT"
 SLOT="0"
@@ -63,8 +64,7 @@ pkg_pretend() {
 
 src_prepare() {
 	default
-	rm -r pkgs/{luafilesystem,term} || die
-	rm -r rt/{ck_mtree_syntax,colorize,end2end,help,ifur,settarg} || die
+	rm -r rt/end2end || die # should run in a git repository
 	hprefixify -w '/#\!\/bin\/tcsh/' rt/csh_swap/csh_swap.tdesc || die
 	eautoreconf
 	sed -i \
@@ -81,13 +81,10 @@ src_prepare() {
 		rt/changeMPATH/mf/Core/admin/admin-1.0.lua \
 		rt/changeMPATH/mf/Core2/admin/admin-1.0.lua \
 		|| die
-	sed -i \
-		-e "s|/usr/sbin:/sbin:||" \
-		-e 's|/usr/sbin:1\\;/sbin:1\\;||' \
-		rt/changeMPATH/out.txt \
-		|| die
 	cp "${DISTDIR}"/${PN}-9.1.2-load-err.txt \
 		rt/load/err.txt || die
+	cp "${DISTDIR}"/${PN}-9.2-help-err.txt \
+		rt/help/err.txt || die
 }
 
 src_configure() {
