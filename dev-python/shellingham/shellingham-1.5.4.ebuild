@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~riscv x86"
 
 DEPEND="
 	test? (
