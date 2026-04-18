@@ -1,4 +1,4 @@
-# Copyright 2020-2025 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,10 +9,13 @@ DESCRIPTION="Library for encoding and decoding .avif files"
 HOMEPAGE="https://github.com/AOMediaCodec/libavif"
 EGIT_REPO_URI="https://github.com/AOMediaCodec/libavif.git"
 
-LICENSE="BSD-2"
+# libargparse is needed for avifenc/avifdec (extras USE flag)
+EGIT_SUBMODULES=( ext/libargparse )
+
+LICENSE="BSD-2 MIT"
 # See bug #822336 re subslot
 SLOT="0/${PV}"
-IUSE="+aom dav1d examples extras gdk-pixbuf rav1e svt-av1 libyuv test"
+IUSE="+aom dav1d examples +extras gdk-pixbuf rav1e svt-av1 libyuv test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="|| ( aom dav1d )"
 
