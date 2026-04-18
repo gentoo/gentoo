@@ -26,7 +26,7 @@ S="${WORKDIR}/${MY_P}-src"
 
 LICENSE="MIT"
 SLOT="${PV%_p*}"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="+jit low-memory ncurses cpu_flags_x86_sse2"
 
 RDEPEND="
