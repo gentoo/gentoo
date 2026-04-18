@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 PYPI_VERIFY_REPO=https://github.com/joblib/joblib
 DISTUTILS_USE_PEP517=setuptools
 
