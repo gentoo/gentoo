@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit cmake distutils-r1 flag-o-matic java-pkg-opt-2 unpacker
 
 DESCRIPTION="Translator library for raster geospatial data formats (includes OGR support)"
