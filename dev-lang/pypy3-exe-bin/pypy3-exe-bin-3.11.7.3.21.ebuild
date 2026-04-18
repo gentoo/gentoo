@@ -43,7 +43,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="${PV%_p*}"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 # sys-devel/gcc for libgcc_s.so
 RDEPEND="
