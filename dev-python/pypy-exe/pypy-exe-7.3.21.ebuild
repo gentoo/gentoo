@@ -25,7 +25,7 @@ S="${WORKDIR}/${MY_P}-src"
 
 LICENSE="MIT"
 SLOT="${PYPY_PV}"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="bzip2 +jit low-memory ncurses cpu_flags_x86_sse2"
 
 DEPEND="
