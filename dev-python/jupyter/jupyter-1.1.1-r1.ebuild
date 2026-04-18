@@ -13,7 +13,7 @@ HOMEPAGE="https://jupyter.org"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~riscv ~x86"
 
 RDEPEND="
 	dev-python/notebook[${PYTHON_USEDEP}]
