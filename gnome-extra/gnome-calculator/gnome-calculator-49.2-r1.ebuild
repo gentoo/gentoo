@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit gnome.org gnome2-utils meson vala virtualx xdg
+inherit flag-o-matic gnome.org gnome2-utils meson vala virtualx xdg
 
 DESCRIPTION="A calculator application for GNOME"
 HOMEPAGE="https://apps.gnome.org/Calculator/"
@@ -46,7 +46,16 @@ src_prepare() {
 	xdg_environment_reset
 }
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-49.2-mpc-1.4.patch
+)
+
 src_configure() {
+	# TODO: drop when cc1a060dfff7ce792aab99364638a85efdbeb2a0 is in a release
+	# https://gitlab.gnome.org/GNOME/gnome-calculator/-/issues/520
+	# bug #967919
+	append-flags -fno-strict-aliasing
+
 	local emesonargs=(
 		-Ddisable-ui=false
 		#-Dvala-version # doesn't do anything in 3.34
