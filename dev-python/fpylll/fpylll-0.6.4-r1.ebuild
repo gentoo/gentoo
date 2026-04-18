@@ -19,7 +19,7 @@ HOMEPAGE="
 # setup.py says "or later"
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 ~riscv"
 
 DEPEND="
 	dev-python/cysignals[${PYTHON_USEDEP}]
