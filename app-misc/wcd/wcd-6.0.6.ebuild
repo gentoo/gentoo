@@ -1,13 +1,17 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit toolchain-funcs
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/erwinwaterlander.asc
+inherit toolchain-funcs verify-sig
 
 DESCRIPTION="Wherever Change Directory"
 HOMEPAGE="https://waterlan.home.xs4all.nl/wcd.html"
-SRC_URI="https://waterlan.home.xs4all.nl/${PN}/${P}.tar.gz"
+SRC_URI="
+	https://waterlan.home.xs4all.nl/${PN}/${P}.tar.gz
+	verify-sig? ( https://waterlan.home.xs4all.nl/${PN}/${P}.tar.gz.asc )
+"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -16,11 +20,13 @@ IUSE="nls unicode"
 
 RDEPEND="
 	sys-libs/ncurses:=[unicode(+)?]
-	unicode? ( dev-libs/libunistring:= )"
+	unicode? ( dev-libs/libunistring:= )
+"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	app-text/ghostscript-gpl
 	virtual/pkgconfig
+	verify-sig? ( sec-keys/openpgp-keys-erwinwaterlander )
 "
 
 PATCHES=(
