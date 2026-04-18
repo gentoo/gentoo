@@ -18,7 +18,7 @@ S="${WORKDIR}/${PN/-core}-${PV/_rc/rc}"
 LICENSE="MIT"
 SLOT="0"
 if [[ "${PV}" != *_rc* ]] ; then
-	KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 ~x86"
 fi
 IUSE="asm +cli +daemon dbus examples +external-signer gui qrcode +system-libsecp256k1 systemtap test test-full +wallet zeromq"
 RESTRICT="!test? ( test )"
