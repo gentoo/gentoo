@@ -11,6 +11,7 @@
 <description>Upstream - please CC on bugs that concern upstream</description>
 </maintainer>
 <use>
+<flag name="cdio">Use <pkg>dev-libs/libcdio</pkg> for the transport of SCSI commands</flag>
 <flag name="external-filters">Allow the use of external processes as file content 
 filters (Note: this is a potential security risk)</flag>
 <flag name="external-filters-setuid">Also allow the use of external setuid 
