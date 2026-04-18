@@ -37,7 +37,8 @@ PATCHES=(
 src_prepare() {
 	cmake_src_prepare
 
-	sed -e "s:^\([[:space:]]*\)libraries=:\1include_dirs=[\"../../include\"],\n\1library_dirs=[\"../../lib/marisa\"],\n&:" \
+	local cmake_build_dir="${WORKDIR}/${P}_build"
+	sed -e "s:^\([[:space:]]*\)libraries=:\1include_dirs=[\"${S}/include\"],\n\1library_dirs=[\"${cmake_build_dir}/lib/marisa\"],\n&:" \
 		-e "s:setup(name = \"marisa\":setup(name = \"marisa\", version = \"${PV}\":" \
 		-i bindings/python/setup.py || die
 
