@@ -6,7 +6,7 @@ EAPI=8
 ECM_DESIGNERPLUGIN="true"
 ECM_QTHELP="false" # TODO: Port to ECMGenerateQDoc
 ECM_TEST="true"
-KFMIN=6.19.0
+KFMIN=6.20.0
 QTMIN=6.9.0
 inherit ecm kde.org
 
