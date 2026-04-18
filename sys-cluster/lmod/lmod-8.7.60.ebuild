@@ -79,6 +79,16 @@ src_prepare() {
 		-e "s|    lua|    ${LUA}|" \
 		rt/csh_swap/csh_swap.tdesc \
 		|| die
+	sed -i \
+		-e "/prepend_path/d" \
+		rt/changeMPATH/mf/Core/admin/admin-1.0.lua \
+		rt/changeMPATH/mf/Core2/admin/admin-1.0.lua \
+		|| die
+	sed -i \
+		-e "s|/usr/sbin:/sbin:||" \
+		-e 's|/usr/sbin:1\\;/sbin:1\\;||' \
+		rt/changeMPATH/out.txt \
+		|| die
 	cp "${DISTDIR}"/${PN}-8.7.60-load-err.txt \
 		rt/load/err.txt || die
 }
