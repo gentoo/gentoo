@@ -1,29 +1,21 @@
-# Copyright 2014-2024 Gentoo Authors
+# Copyright 2014-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{12..14} )
 DISTUTILS_USE_PEP517="setuptools"
 DISTUTILS_OPTIONAL="1"
 DISTUTILS_EXT=1
 
-inherit autotools distutils-r1 toolchain-funcs
-
-if [[ "${PV}" == "9999" ]]; then
-	inherit git-r3
-
-	EGIT_REPO_URI="https://github.com/s-yata/marisa-trie"
-fi
+inherit cmake distutils-r1 git-r3
 
 DESCRIPTION="Matching Algorithm with Recursively Implemented StorAge"
-HOMEPAGE="https://github.com/s-yata/marisa-trie https://code.google.com/archive/p/marisa-trie/"
-if [[ "${PV}" != "9999" ]]; then
-	SRC_URI="https://github.com/s-yata/marisa-trie/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-fi
+HOMEPAGE="https://github.com/s-yata/marisa-trie"
+EGIT_REPO_URI="https://github.com/s-yata/marisa-trie"
 
 LICENSE="|| ( BSD-2 LGPL-2.1+ )"
 SLOT="0"
-IUSE="python static-libs"
+IUSE="python tools"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 BDEPEND="python? (
@@ -34,15 +26,17 @@ BDEPEND="python? (
 DEPEND="python? ( ${PYTHON_DEPS} )"
 RDEPEND="${DEPEND}"
 
-if [[ "${PV}" != "9999" ]]; then
-	S="${WORKDIR}/marisa-trie-${PV}"
-fi
+PATCHES=(
+	"${FILESDIR}/marisa-0.3.1-install-all-configs.patch"
+)
 
 src_prepare() {
-	default
-	eautoreconf
+	cmake_src_prepare
 
-	sed -e "s:^\([[:space:]]*\)libraries=:\1include_dirs=[\"../../include\"],\n\1library_dirs=[\"../../lib/marisa/.libs\"],\n&:" -i bindings/python/setup.py || die
+	local cmake_build_dir="${WORKDIR}/${P}_build"
+	sed -e "s:^\([[:space:]]*\)libraries=:\1include_dirs=[\"${S}/include\"],\n\1library_dirs=[\"${cmake_build_dir}/lib/marisa\"],\n&:" \
+		-e "s:setup(name = \"marisa\":setup(name = \"marisa\", version = \"${PV}\":" \
+		-i bindings/python/setup.py || die
 
 	if use python; then
 		pushd bindings/python > /dev/null || die
@@ -52,36 +46,12 @@ src_prepare() {
 }
 
 src_configure() {
-	local -x CPPFLAGS="${CPPFLAGS} ${CXXFLAGS}"
-
-	cpu_instructions_option() {
-		local option="${1}"
-		local macros="${2}"
-		local result="--enable-${option}"
-		local macro
-		for macro in ${macros}; do
-			if ! $(tc-getCC) ${CPPFLAGS} ${CFLAGS} -E -P -dM - < /dev/null 2> /dev/null | grep -Eq "^#define ${macro}([[:space:]]|$)"; then
-				result="--disable-${option}"
-			fi
-		done
-		echo "${result}"
-	}
-
-	local options=(
-		$(cpu_instructions_option sse2 __SSE2__)
-		$(cpu_instructions_option sse3 __SSE3__)
-		$(cpu_instructions_option ssse3 __SSSE3__)
-		$(cpu_instructions_option sse4.1 __SSE4_1__)
-		$(cpu_instructions_option sse4.2 __SSE4_2__)
-		$(cpu_instructions_option sse4 __POPCNT__ __SSE4_2__)
-		$(cpu_instructions_option sse4a __SSE4A__)
-		$(cpu_instructions_option popcnt __POPCNT__)
-		$(cpu_instructions_option bmi __BMI__)
-		$(cpu_instructions_option bmi2 __BMI2__)
-		$(use_enable static-libs static)
+	local mycmakeargs=(
+		-DLIB_INSTALL_DIR="$(get_libdir)"
+		-DENABLE_TOOLS=$(usex tools)
+		-DBUILD_TESTING=OFF
 	)
-
-	econf "${options[@]}"
+	cmake_src_configure
 
 	if use python; then
 		pushd bindings/python > /dev/null || die
@@ -91,7 +61,7 @@ src_configure() {
 }
 
 src_compile() {
-	default
+	cmake_src_compile
 
 	if use python; then
 		emake -C bindings swig-python
@@ -102,8 +72,7 @@ src_compile() {
 }
 
 src_install() {
-	default
-	find "${ED}" -name "*.la" -delete || die
+	cmake_src_install
 
 	(
 		docinto html
