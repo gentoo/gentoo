@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc x86 ~x64-macos"
 IUSE="test-full"
 
 BDEPEND="
