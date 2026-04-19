@@ -41,7 +41,7 @@ IUSE="alsa aom archive aribsub bidi bluray chromaprint chromecast dav1d dbus
 	dc1394 debug directx +dvbpsi dvd +encode faad fdk +ffmpeg flac fluidsynth
 	fontconfig +gcrypt gme keyring gstreamer +gui ieee1394 jack jpeg kate
 	libass libcaca libnotify +libsamplerate libtiger linsys lirc live lua
-	macosx-notifications mad matroska modplug mp3 mtp musepack ncurses nfs ogg
+	mad matroska modplug mp3 mtp musepack ncurses nfs ogg
 	omxil optimisememory opus png projectm pulseaudio run-as-root samba
 	sftp shout sid skins soxr speex srt ssl svg taglib theora tremor truetype twolame
 	udev upnp vaapi v4l vdpau vnc vpx wayland +X x264 x265 xml zeroconf zvbi
@@ -344,7 +344,6 @@ src_configure() {
 		$(use_enable lirc)
 		$(use_enable live live555)
 		$(use_enable lua)
-		$(use_enable macosx-notifications osx-notifications)
 		$(use_enable mad)
 		$(use_enable matroska)
 		$(use_enable modplug mod)
@@ -417,6 +416,7 @@ src_configure() {
 		--disable-opencv
 		--disable-opensles
 		--disable-oss
+		--disable-osx-notifications # MacOS only
 		--disable-rpi-omxil
 		--disable-schroedinger
 		--disable-sdl-image # not officially supported anymore
