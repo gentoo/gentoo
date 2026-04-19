@@ -167,10 +167,6 @@ dev-python/django test
 # The JIT compiler in ruby requires rust
 dev-lang/ruby jit
 
-# Sam James <sam@gentoo.org> (2022-12-26)
-# Needs dev-python/mkdocs-redirects->dev-python/twine which is masked on wd40
-dev-debug/gef doc
-
 # Sam James <sam@gentoo.org> (2022-12-11)
 # net-libs/rustls-ffi needs Rust.
 net-misc/curl rustls curl_ssl_rustls
