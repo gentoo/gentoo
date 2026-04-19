@@ -59,6 +59,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.3.3-use-xdg-open-as-preview-default.patch"
 	"${FILESDIR}/${P}-boost-1.87.patch"
 	"${FILESDIR}/${P}-boost-1.89.patch" # bug 963550
+	"${FILESDIR}/${P}-libupnp-1.18.patch" # bug 969816
 )
 
 src_prepare() {
