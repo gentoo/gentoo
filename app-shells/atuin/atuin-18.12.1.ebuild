@@ -20,7 +20,7 @@ LICENSE+="
 	Unicode-3.0 ZLIB
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="amd64 ~arm64 ~riscv"
 IUSE="+client +daemon server system-sqlite test +sync"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
