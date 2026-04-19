@@ -27,7 +27,7 @@ HOMEPAGE="https://quassel-irc.org/"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="crypt +dbus gui kde ldap monolithic oxygen postgres +server spell syslog +system-icons test"
+IUSE="crypt +dbus gui kde ldap monolithic oxygen postgres +server spell syslog +system-icons test urlpreview"
 
 REQUIRED_USE="
 	|| ( gui server monolithic )
@@ -71,6 +71,7 @@ GUI_DEPEND="
 		kde-frameworks/breeze-icons:*
 		oxygen? ( kde-frameworks/oxygen-icons:* )
 	)
+	urlpreview? ( dev-qt/qtwebengine:6[widgets] )
 "
 RDEPEND="
 	dev-libs/boost:=
@@ -108,7 +109,7 @@ src_configure() {
 		-DWANT_CORE=$(usex server)
 		-DWITH_BUNDLED_ICONS=$(usex !system-icons)
 		-DBUILD_TESTING=$(usex test)
-		-DWITH_WEBENGINE=OFF # bug 925723
+		-DWITH_WEBENGINE=$(usex urlpreview)
 	)
 
 	# bug #830708
