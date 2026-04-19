@@ -6,7 +6,7 @@ EAPI=8
 ECM_HANDBOOK="forceoptional"
 KFMIN=6.9.0
 QTMIN=6.7.2
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit ecm kde.org optfeature python-any-r1 xdg
 
 if [[ ${KDE_BUILD_TYPE} == release ]]; then
