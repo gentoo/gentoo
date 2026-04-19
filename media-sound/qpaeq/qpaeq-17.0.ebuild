@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 MY_PV="${PV/_pre*}"
 MY_P="pulseaudio-${MY_PV}"
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit python-single-r1
 
 DESCRIPTION="Equalizer interface for equalizer sinks of PulseAudio (networked sound server)"
