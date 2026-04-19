@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d8cb519..7295e65 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -5,7 +5,7 @@ set(CMAKE_EXPERIMENTAL_CXX_IMPORT_STD "d0edc3af-4c50-42ea-a356-e2862fe7a444") #
+ include(cmake/prelude.cmake)
+ 
+ project(
+-  ut
++  ut2-glaze
+   VERSION 1.2.0
+   LANGUAGES CXX
+ )
