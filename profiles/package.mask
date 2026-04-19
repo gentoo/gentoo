@@ -320,7 +320,6 @@ dev-python/mkdocs-get-deps
 dev-python/mkdocs-git-authors-plugin
 dev-python/mkdocs-git-revision-date-localized-plugin
 dev-python/mkdocs-htmlproofer-plugin
-dev-python/mkdocs-i18n
 dev-python/mkdocstrings
 dev-python/mkdocstrings-python
 dev-python/paginate
