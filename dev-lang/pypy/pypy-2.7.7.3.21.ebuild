@@ -27,7 +27,7 @@ S="${WORKDIR}/${MY_P}-src"
 LICENSE="MIT"
 # pypy -c 'import sysconfig; print sysconfig.get_config_var("SOABI")'
 SLOT="${PYVER}/73"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="bzip2 full-stdlib gdbm +jit ncurses sqlite tk"
 RESTRICT="test"
 
