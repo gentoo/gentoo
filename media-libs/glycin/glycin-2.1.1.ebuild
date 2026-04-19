@@ -59,8 +59,8 @@ BDEPEND="
 
 QA_FLAGS_IGNORED="
 	usr/bin/${PN}-thumbnailer
-	usr/lib64/libglycin-2.so.0
-	usr/lib64/libglycin-gtk4-2.so.0
+	usr/lib.*/libglycin-2.so.0
+	usr/lib.*/libglycin-gtk4-2.so.0
 "
 
 src_prepare() {
