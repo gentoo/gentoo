@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,8 @@ RDEPEND="
 	media-libs/fontconfig
 	media-libs/freetype:2
 	virtual/glu
-	virtual/opengl"
+	virtual/opengl
+"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
@@ -25,7 +26,12 @@ BDEPEND="
 		app-text/doxygen
 		dev-texlive/texlive-latexextra
 		virtual/latex-base
-	)"
+	)
+"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-types.patch
+)
 
 src_prepare() {
 	default
