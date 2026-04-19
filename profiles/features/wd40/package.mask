@@ -62,7 +62,6 @@ dev-python/easy-thumbnails
 dev-python/flufl-lock
 dev-python/gherkin-official
 dev-python/logfury
-dev-python/mkdocs-gen-files
 dev-python/pykwalify
 dev-python/pytest-bdd
 dev-python/pytest-describe
