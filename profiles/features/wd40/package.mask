@@ -374,7 +374,6 @@ dev-python/mkdocs-i18n
 dev-python/mkdocs-git-authors-plugin
 dev-python/mkdocs-git-revision-date-localized-plugin
 dev-python/mkdocs-material
-dev-python/mkdocs-material-extensions
 dev-python/nbclassic
 dev-python/nbdime
 dev-python/nbval
