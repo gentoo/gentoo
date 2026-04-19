@@ -1,0 +1,29 @@
+https://github.com/mate-desktop/mate-calc/issues/239
+https://github.com/mate-desktop/mate-calc/pull/240
+
+From 220027f5ab946a1ca38f9888fdbe64630106aecc Mon Sep 17 00:00:00 2001
+From: mbkma <johannes.unruh@fau.de>
+Date: Sun, 19 Apr 2026 11:32:51 +0200
+Subject: [PATCH] Set imaginary component to +0*i when inverting a real number
+
+see https://gitlab.gnome.org/GNOME/gnome-calculator/-/merge_requests/457
+---
+ src/mp.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/mp.c b/src/mp.c
+index 31a84d4d..08e7afce 100644
+--- a/src/mp.c
++++ b/src/mp.c
+@@ -398,6 +398,10 @@ void
+ mp_invert_sign(const MPNumber *x, MPNumber *z)
+ {
+     mpc_neg(z->num, x->num, MPC_RNDNN);
++    if (!mp_is_complex(x))
++    {
++        mpfr_set_zero(mpc_imagref(z->num), MPFR_RNDN);
++    }
+ }
+ 
+ void
+
