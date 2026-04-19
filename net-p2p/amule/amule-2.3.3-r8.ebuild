@@ -39,7 +39,7 @@ RDEPEND="
 		media-libs/libpng:0=
 	)
 	stats? ( media-libs/gd:=[jpeg,png] )
-	upnp? ( net-libs/libupnp:0 )
+	upnp? ( net-libs/libupnp:0= )
 "
 DEPEND="${RDEPEND}
 	gui? ( dev-util/desktop-file-utils )
