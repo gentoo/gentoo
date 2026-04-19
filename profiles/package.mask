@@ -304,7 +304,6 @@ dev-python/pipx
 #
 # Removal on 2026-04-18.  Bug #971358.
 dev-python/csscompressor
-dev-python/dunamai
 
 # Jakov Smolić <jsmolic@gentoo.org> (2026-03-13)
 # sqlite-3.52.0 has been withdrawn shortly after its release due to
