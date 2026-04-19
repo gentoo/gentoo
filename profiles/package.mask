@@ -313,7 +313,6 @@ dev-python/markdown-exec
 dev-python/mergedeep
 dev-python/paginate
 dev-python/pygments-ansi-color
-dev-python/pyyaml-env-tag
 
 # Jakov Smolić <jsmolic@gentoo.org> (2026-03-13)
 # sqlite-3.52.0 has been withdrawn shortly after its release due to
