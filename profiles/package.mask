@@ -311,7 +311,6 @@ dev-python/griffe-inherited-docstrings
 dev-python/jsmin
 dev-python/markdown-exec
 dev-python/mergedeep
-dev-python/mkdocs
 dev-python/mkdocstrings
 dev-python/mkdocstrings-python
 dev-python/paginate
