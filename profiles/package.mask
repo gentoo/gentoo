@@ -308,7 +308,6 @@ dev-python/dunamai
 dev-python/ghp-import
 dev-python/griffe
 dev-python/griffe-inherited-docstrings
-dev-python/jsmin
 
 # Jakov Smolić <jsmolic@gentoo.org> (2026-03-13)
 # sqlite-3.52.0 has been withdrawn shortly after its release due to
