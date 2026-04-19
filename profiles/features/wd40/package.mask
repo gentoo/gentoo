@@ -331,6 +331,7 @@ app-eselect/eselect-rust
 app-misc/gramps
 app-misc/khal
 app-text/mdbook
+app-text/papers
 dev-embedded/esptool
 dev-lang/rust
 dev-lang/rust-bin
