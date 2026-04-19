@@ -1,30 +1,32 @@
-From ec8cab726abe60ba5c7ffcce07905b29c5376163 Mon Sep 17 00:00:00 2001
+From c05c95ac6d79544ef51b8049f6baa067060706d6 Mon Sep 17 00:00:00 2001
 From: Alfred Wingate <parona@protonmail.com>
 Date: Mon, 13 Nov 2023 16:21:44 +0200
 Subject: [PATCH] Add non-systemd method to get distro name and version
 
 --- a/tests/utils.py
 +++ b/tests/utils.py
-@@ -514,10 +514,16 @@ def get_version():
+@@ -597,11 +597,16 @@ def get_version():
      """ Try to get distro and version
      """
  
 -    bus = dbus.SystemBus()
+-
+-    # get information about the distribution from systemd (hostname1)
+-    sys_info = bus.get_object("org.freedesktop.hostname1", "/org/freedesktop/hostname1")
+-    cpe = str(sys_info.Get("org.freedesktop.hostname1", "OperatingSystemCPEName", dbus_interface=dbus.PROPERTIES_IFACE))
 +    try:
 +        bus = dbus.SystemBus()
 +
 +        # get information about the distribution from systemd (hostname1)
 +        sys_info = bus.get_object("org.freedesktop.hostname1", "/org/freedesktop/hostname1")
++        cpe = str(sys_info.Get("org.freedesktop.hostname1", "OperatingSystemCPEName", dbus_interface=dbus.PROPERTIES_IFACE))
 +    except dbus.exceptions.DBusException:
 +        import platform
 +        info = platform.freedesktop_os_release()
 +        return (info["NAME"], info["VERSION_ID"])
  
--    # get information about the distribution from systemd (hostname1)
--    sys_info = bus.get_object("org.freedesktop.hostname1", "/org/freedesktop/hostname1")
-     cpe = str(sys_info.Get("org.freedesktop.hostname1", "OperatingSystemCPEName", dbus_interface=dbus.PROPERTIES_IFACE))
- 
      if cpe:
+         # 2nd to 4th fields from e.g. "cpe:/o:fedoraproject:fedora:25" or "cpe:/o:redhat:enterprise_linux:7.3:GA:server"
 -- 
-2.42.1
+2.53.0
 
