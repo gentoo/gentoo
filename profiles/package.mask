@@ -343,11 +343,6 @@ dev-python/uv-dynamic-versioning
 =dev-db/sqlite-3.52.0-r1
 =dev-python/apsw-3.52.0.0
 
-# Alfredo Tupone <tupone@gentoo.org> (2026-03-12)
-# No reverse dependency. Included in dev-tcltk/tklib
-# Removeal on 2026-04-12. Bug #971127
-dev-tcltk/tablelist
-
 # Alfredo Tupone <tupone@gentoo.org> (2026-03-05)
 # Need more testing
 >=dev-lang/tcl-9
