@@ -323,7 +323,6 @@ dev-python/mkdocs-htmlproofer-plugin
 dev-python/mkdocs-i18n
 dev-python/mkdocs-material
 dev-python/mkdocs-material-extensions
-dev-python/mkdocs-minify-plugin
 dev-python/mkdocstrings
 dev-python/mkdocstrings-python
 dev-python/paginate
