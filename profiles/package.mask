@@ -280,14 +280,6 @@ dev-python/amodem
 >dev-perl/XString-0.5.0
 >dev-perl/YAML-Syck-1.360.0
 
-# Michał Górny <mgorny@gentoo.org> (2026-03-20)
-# Low-value package with a test suite that requires tons of effort to
-# work offline. Upstream made that harder again in the most recent
-# release.  If you need pipx functionality, dev-python/uv provides uvx
-# executable.
-# Removal on 2026-04-19.  Bug #971387.
-dev-python/pipx
-
 # Jakov Smolić <jsmolic@gentoo.org> (2026-03-13)
 # sqlite-3.52.0 has been withdrawn shortly after its release due to
 # backwards-compatibility issues
