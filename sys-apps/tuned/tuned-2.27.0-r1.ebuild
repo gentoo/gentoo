@@ -13,7 +13,7 @@ SRC_URI="https://github.com/redhat-performance/tuned/archive/v${PV}.tar.gz -> ${
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="+ppd"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
