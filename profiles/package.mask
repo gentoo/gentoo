@@ -288,23 +288,6 @@ dev-python/amodem
 # Removal on 2026-04-19.  Bug #971387.
 dev-python/pipx
 
-# Michał Górny <mgorny@gentoo.org> (2026-03-19)
-#
-# MkDocs 1.x are no longer maintained upstream.  MkDocs 2.x, while not
-# yet released, are not backwards compatible and have made some
-# questionable design choices, such as removing plugin support.  MkDocs
-# 1.x have been then forked into ProperDocs, which are not a drop-in
-# replacment.  Also, Zensical started being independently developed.
-#
-# Over all this time, MkDocs have been barely used in ::gentoo,
-# and the work invested in keeping the whole stack working, along with
-# all the plugins and NIH dependencies, greatly exceeded the benefit.
-# It does not help that most of this is developed with the assumption
-# that docs will be built straight from the git repository.
-#
-# Removal on 2026-04-18.  Bug #971358.
-dev-python/csscompressor
-
 # Jakov Smolić <jsmolic@gentoo.org> (2026-03-13)
 # sqlite-3.52.0 has been withdrawn shortly after its release due to
 # backwards-compatibility issues
