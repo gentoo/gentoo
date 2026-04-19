@@ -22,18 +22,20 @@ else
 	inherit git-r3
 fi
 
-DESCRIPTION="Qt IRC client supporting a remote daemon for 24/7 connectivity"
+DESCRIPTION="Qt/KDE IRC client supporting a remote daemon for 24/7 connectivity"
 HOMEPAGE="https://quassel-irc.org/"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="crypt +dbus gui ldap monolithic oxygen postgres +server syslog +system-icons test"
+IUSE="crypt +dbus gui kde ldap monolithic oxygen postgres +server spell syslog +system-icons test"
 
 REQUIRED_USE="
 	|| ( gui server monolithic )
 	crypt? ( || ( server monolithic ) )
+	kde? ( dbus spell )
 	ldap? ( || ( server monolithic ) )
 	postgres? ( || ( server monolithic ) )
+	spell? ( || ( gui monolithic ) )
 	syslog? ( || ( server monolithic ) )
 "
 
@@ -55,6 +57,16 @@ GUI_DEPEND="
 	dev-qt/qt5compat:6
 	dev-qt/qtbase:6[dbus?,gui,widgets]
 	dev-qt/qtmultimedia:6
+	kde? (
+		kde-frameworks/kconfigwidgets:6
+		kde-frameworks/kcoreaddons:6
+		kde-frameworks/knotifications:6
+		kde-frameworks/knotifyconfig:6
+		kde-frameworks/ktextwidgets:6
+		kde-frameworks/kwidgetsaddons:6
+		kde-frameworks/kxmlgui:6
+	)
+	spell? ( kde-frameworks/sonnet:6 )
 	system-icons? (
 		kde-frameworks/breeze-icons:*
 		oxygen? ( kde-frameworks/oxygen-icons:* )
@@ -89,7 +101,7 @@ src_configure() {
 		-DCMAKE_SKIP_RPATH=ON
 		-DEMBED_DATA=OFF
 		-DWANT_QTCLIENT=$(usex gui)
-		-DWITH_KDE=OFF # bug 953029
+		-DWITH_KDE=$(usex kde)
 		-DWITH_LDAP=$(usex ldap)
 		-DWANT_MONO=$(usex monolithic)
 		-DWITH_OXYGEN_ICONS=$(usex oxygen)
@@ -102,10 +114,10 @@ src_configure() {
 	# bug #830708
 	if use gui || use monolithic ; then
 		mycmakeargs+=(
-			-DCMAKE_DISABLE_FIND_PACKAGE_KF6Sonnet=ON
 			-DCMAKE_DISABLE_FIND_PACKAGE_LibsnoreQt6=ON # not a thing?
 			-DCMAKE_DISABLE_FIND_PACKAGE_dbusmenu-qt6=ON # not a thing?
 			$(cmake_use_find_package dbus Qt6DBus)
+			$(cmake_use_find_package spell KF6Sonnet)
 		)
 	fi
 
