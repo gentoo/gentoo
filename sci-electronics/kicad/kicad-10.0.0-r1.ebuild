@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 WX_GTK_VER="3.2-gtk3"
 
 inherit check-reqs cmake flag-o-matic optfeature python-single-r1 toolchain-funcs wxwidgets xdg-utils
@@ -44,7 +44,7 @@ fi
 # Licensed under CC0: uopamp.lib.spice in some directories in qa/data/eeschema/spice_netlists/
 LICENSE="GPL-2+ GPL-3+ Boost-1.0 BSD BSD-2 Apache-2.0 ISC MIT ZLIB CC-BY-SA-4.0 CC0-1.0"
 SLOT="0"
-IUSE="doc examples nls openmp test"
+IUSE="doc examples nls openmp test wayland"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -57,6 +57,7 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="
 	app-arch/zstd:=
 	app-crypt/libsecret
+	app-text/poppler[cairo]
 	dev-cpp/abseil-cpp:=
 	dev-db/unixODBC
 	dev-libs/boost:=[context,nls]
@@ -74,9 +75,10 @@ COMMON_DEPEND="
 	>=sci-libs/opencascade-7.5.0:0=
 	>=x11-libs/cairo-1.8.8:=
 	>=x11-libs/pixman-0.30
-	>sci-electronics/ngspice-27[shared]
+	>=sci-electronics/ngspice-28[shared]
 	virtual/zlib:=
 	x11-libs/wxGTK:${WX_GTK_VER}=[X,opengl,webkit]
+	wayland? ( >=dev-libs/wayland-1.20 )
 	$(python_gen_cond_dep '
 		dev-libs/boost:=[context,nls,python,${PYTHON_USEDEP}]
 		>=dev-python/wxpython-4.2.0:*[${PYTHON_USEDEP}]
@@ -154,6 +156,8 @@ src_configure() {
 
 		-DKICAD_SPICE_QA="$(usex test)"
 		-DKICAD_BUILD_QA_TESTS="$(usex test)"
+
+		-DKICAD_WAYLAND="$(usex wayland)"
 	)
 
 	if ! [[ ${PV} == *9999* ]]; then
