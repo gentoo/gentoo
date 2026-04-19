@@ -15,7 +15,7 @@ CRATES+="
 	libglycin-rebind@0.1.0
 	libglycin-rebind-sys@0.1.0
 "
-RUST_MIN_VER="1.85.0"
+RUST_MIN_VER="1.92"
 
 inherit cargo gnome.org meson vala
 
