@@ -9,7 +9,7 @@ SRC_URI="https://downloads.sourceforge.net/etherape/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 ~sparc x86"
 
 RDEPEND="
 	dev-libs/glib:2
