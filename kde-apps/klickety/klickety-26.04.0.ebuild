@@ -3,14 +3,14 @@
 
 EAPI=8
 
-ECM_HANDBOOK="forceoptional"
+ECM_HANDBOOK="optional"
 KDE_SELINUX_MODULE="games"
 PVCUT=$(ver_cut 1-3)
 KFMIN=6.22.0
 QTMIN=6.10.1
 inherit ecm gear.kde.org xdg
 
-DESCRIPTION="An adaptation of the Clickomania game"
+DESCRIPTION="Adaptation of the Clickomania game"
 HOMEPAGE="https://apps.kde.org/klickety/"
 
 LICENSE="GPL-2" # TODO: CHECK
