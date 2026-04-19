@@ -325,7 +325,6 @@ dev-python/mkdocs-material
 dev-python/mkdocs-material-extensions
 dev-python/mkdocs-minify-plugin
 dev-python/mkdocs-monorepo-plugin
-dev-python/mkdocs-pymdownx-material-extras
 dev-python/mkdocstrings
 dev-python/mkdocstrings-python
 dev-python/paginate
