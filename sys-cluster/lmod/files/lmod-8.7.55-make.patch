@@ -9,9 +9,10 @@
 +	$(MAKE) lmod_install_targets
  
 -lmod_install_targets: $(PKGS) lmodrc_init shell_init startup libexec VersionSrc    \
-+lmod_install_targets: VersionSrc
+-                      Inst_Tools Inst_Shells Inst_Settarg Inst_Lmod_MF other_tools \
++lmod_install_targets: VersionSrc other_tools
 +	$(MAKE) $(PKGS) lmodrc_init shell_init startup libexec \
-                       Inst_Tools Inst_Shells Inst_Settarg Inst_Lmod_MF other_tools \
++                      Inst_Tools Inst_Shells Inst_Settarg Inst_Lmod_MF \
                        man_pages messageFns i18n spiderCacheSupport ksh_funcs       \
                        STVersionSrc
  
