@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 ECM_TEST="true"
 KDE_ORG_COMMIT="8fd0ba78c76fbabae22ec81f4d9c4f8204d0df94"
 KDE_ORG_NAME="drkonqi"
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 KFMIN=6.14.0
 QTMIN=6.8.1
 inherit ecm plasma.kde.org python-single-r1 xdg
