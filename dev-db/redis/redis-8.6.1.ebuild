@@ -44,7 +44,7 @@ BDEPEND="
 	virtual/pkgconfig
 	test? (
 		dev-lang/tcl:0=
-		ssl? ( dev-tcltk/tls )
+		ssl? ( <dev-tcltk/tls-2 )
 	)
 "
 
