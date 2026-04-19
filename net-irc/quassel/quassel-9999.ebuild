@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -89,7 +89,6 @@ src_configure() {
 		-DUSE_CCACHE=OFF
 		-DCMAKE_SKIP_RPATH=ON
 		-DEMBED_DATA=OFF
-		-DWITH_WEBKIT=OFF
 		-DWITH_BUNDLED_ICONS=$(usex !system-icons)
 		-DWANT_QTCLIENT=$(usex gui)
 		-DWITH_KDE=OFF # bug 953029
