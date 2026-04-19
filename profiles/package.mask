@@ -312,7 +312,6 @@ dev-python/jsmin
 dev-python/markdown-exec
 dev-python/mergedeep
 dev-python/mkdocstrings
-dev-python/mkdocstrings-python
 dev-python/paginate
 dev-python/pygments-ansi-color
 dev-python/pyyaml-env-tag
