@@ -370,7 +370,6 @@ dev-python/jupyterlab
 dev-python/keyring
 dev-python/apache-libcloud
 dev-python/moto
-dev-python/mkdocs-git-authors-plugin
 dev-python/nbclassic
 dev-python/nbdime
 dev-python/nbval

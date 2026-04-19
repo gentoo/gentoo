@@ -317,7 +317,6 @@ dev-python/mkdocs-bootstrap
 dev-python/mkdocs-bootswatch
 dev-python/mkdocs-gen-files
 dev-python/mkdocs-get-deps
-dev-python/mkdocs-git-authors-plugin
 dev-python/mkdocstrings
 dev-python/mkdocstrings-python
 dev-python/paginate
