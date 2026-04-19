@@ -12,6 +12,7 @@ dev-python/tables
 # Michał Górny <mgorny@gentoo.org> (2024-06-05)
 # media-libs/exempi is seriously broken on big endian platforms.
 # https://gitlab.freedesktop.org/libopenraw/exempi/-/merge_requests/8#note_2277243
+app-text/papers
 dev-python/python-xmp-toolkit
 media-libs/exempi
 
