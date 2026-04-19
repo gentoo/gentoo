@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{12..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit meson gnome2-utils python-r1 xdg
 
 DESCRIPTION="Chinese Cangjie and Quick engines for IBus"
