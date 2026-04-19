@@ -68,6 +68,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myeconfargs=(
+		--localstatedir="${EPREFIX}"/var
 		--enable-cli
 		--enable-faststream
 		--enable-midi
