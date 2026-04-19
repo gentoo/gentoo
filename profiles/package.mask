@@ -313,7 +313,6 @@ dev-python/markdown-exec
 dev-python/mergedeep
 dev-python/mkdocs
 dev-python/mkdocs-autorefs
-dev-python/mkdocs-bootstrap
 dev-python/mkdocstrings
 dev-python/mkdocstrings-python
 dev-python/paginate
