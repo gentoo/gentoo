@@ -327,7 +327,6 @@ dev-python/mkdocs-minify-plugin
 dev-python/mkdocs-monorepo-plugin
 dev-python/mkdocs-pymdownx-material-extras
 dev-python/mkdocs-redirects
-dev-python/mkdocs-static-i18n
 dev-python/mkdocstrings
 dev-python/mkdocstrings-python
 dev-python/paginate

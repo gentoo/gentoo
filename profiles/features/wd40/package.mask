@@ -377,7 +377,6 @@ dev-python/mkdocs-material
 dev-python/mkdocs-material-extensions
 dev-python/mkdocs-pymdownx-material-extras
 dev-python/mkdocs-redirects
-dev-python/mkdocs-static-i18n
 dev-python/nbclassic
 dev-python/nbdime
 dev-python/nbval
