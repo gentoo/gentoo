@@ -459,6 +459,7 @@ gnome-extra/gnome-tweaks
 gnome-extra/sushi
 >=gnome-extra/yelp-49
 >=media-gfx/libimagequant-4
+media-gfx/loupe
 <media-gfx/gimp-3.0.6
 >=media-libs/libopenraw-0.3.2
 media-libs/subrandr
