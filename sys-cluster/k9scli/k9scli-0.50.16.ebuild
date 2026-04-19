@@ -1,4 +1,4 @@
-# Copyright 2021-2025 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ LICENSE="Apache-2.0"
 # Dependent licenses
 LICENSE+=" Apache-2.0 BSD BSD-2 CC0-1.0 GPL-2 ISC MIT MPL-2.0 Unicode-DFS-2016 Unlicense"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 
 BDEPEND=">=dev-lang/go-1.24.4"
 
