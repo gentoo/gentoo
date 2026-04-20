@@ -36,6 +36,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2026-04-20)
+# m2crypto is deprecated upstream and in maintenance mode. They recommend
+# using dev-python/cryptography instead. No reverse dependencies left.
+# Often broke with new OpenSSL as well.
+# Removal on 2026-05-20.  Bug #973014.
+dev-python/m2crypto
+
 # Michał Górny <mgorny@gentoo.org> (2026-04-20)
 # Upstream added new 'encutils' dep that uses the nightmarish
 # coherent.build and depends on chardet.  While both are solvable,
