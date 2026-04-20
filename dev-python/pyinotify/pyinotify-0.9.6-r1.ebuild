@@ -27,6 +27,8 @@ PATCHES=(
 	"${FILESDIR}/${P}-py312.patch"
 )
 
+distutils_enable_tests import-check
+
 python_install_all() {
 	if use examples; then
 		dodoc -r python3/examples
