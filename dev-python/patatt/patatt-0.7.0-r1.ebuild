@@ -22,4 +22,5 @@ PATCHES=(
 	"${FILESDIR}"/${P}-py311-tests.patch
 )
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
