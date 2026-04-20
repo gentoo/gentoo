@@ -1,7 +1,7 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit multilib-minimal
 
@@ -15,6 +15,7 @@ IUSE="static-libs"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-c++17.patch
+	"${FILESDIR}"/${P}-c++20.patch
 )
 
 ECONF_SOURCE="${S}"
