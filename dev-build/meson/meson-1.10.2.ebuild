@@ -50,6 +50,15 @@ IUSE="test test-full"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="test-full? ( test )"
 
+# test-full contains various test dependencies, for optional test cases of
+# frameworks Meson has support for. These will *usually* get skipped
+# automatically if uninstalled. The dep allows:
+# - guaranteeing the whole test suite runs transparently without skips
+# - reducing brittleness of frameworks that straddle multiple packages
+#   - Qt is a particular example of this. qt5 is deprecated, but we need qtbase
+#     consistently installed as long as it isn't masked for removal. TODO: drop
+#     dev-qt/*:5 from DEPEND once they are masked.
+
 DEPEND="
 	test? (
 		dev-libs/glib:2
