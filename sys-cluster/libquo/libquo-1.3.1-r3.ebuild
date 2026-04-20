@@ -30,6 +30,7 @@ DEPEND="
 	sys-apps/hwloc:=[numa(+),xml]
 	"
 RDEPEND="${DEPEND}"
+BDEPEND="sys-apps/which"
 
 PATCHES=( "${FILESDIR}"/${P}-musl.patch )
 
