@@ -28,15 +28,14 @@ BDEPEND="
 	${PYTHON_DEPS}
 "
 
-DOCS=( NEWS README hacking.adoc security.adoc )
+DOCS=( NEWS {README,hacking,security}.adoc )
 HTML_DOCS=( irkerd.html irkerhook.html )
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.24-password-file-typo.patch
-)
 
 src_prepare() {
 	default
+
+	# 'install' should not depend on 'uninstall'
+	sed -i -e '/^install:/s:uninstall::' Makefile || die
 
 	# Rely on systemd eclass for systemd service install
 	sed -i -e "/^SYSTEMDSYSTEMUNITDIR/d" Makefile || die "sed failed"
@@ -46,7 +45,8 @@ src_prepare() {
 }
 
 src_install() {
-	default
+	emake DESTDIR="${D}" PREFIX="${EPREFIX}"/usr install
+	einstalldocs
 
 	python_doscript "${ED}"/usr/bin/irkerd
 	# Not installed with the default Makefile
