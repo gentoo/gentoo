@@ -36,6 +36,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2026-04-20)
+# Upstream added new 'encutils' dep that uses the nightmarish
+# coherent.build and depends on chardet.  While both are solvable,
+# the last revdep of cssutils was removed in 2020, and has been inactive
+# since 2017.
+# Removal on 2026-05-20.  Bug #972983.
+dev-python/cssutils
+
 # Sam James <sam@gentoo.org> (2026-04-19)
 # Major new release with lots of broken packages expected. Notably, even
 # dev-lang/python isn't yet. Please use with caution and file bugs for
