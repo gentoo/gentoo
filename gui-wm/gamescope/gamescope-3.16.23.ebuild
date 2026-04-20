@@ -100,8 +100,6 @@ FILECAPS=(
 )
 
 src_prepare() {
-	default
-
 	# ReShade is bundled as a git submodule, but it references an unofficial
 	# fork, so we cannot unbundle it. Upstream have requested that we do not
 	# unbundle libliftoff, vkroots, or wlroots. Symlink to the extracted sources
@@ -112,7 +110,7 @@ src_prepare() {
 			rmdir "${dir}" || die
 			name=${dir##*/}
 			commit=${name^^}_COMMIT
-			ln -snfT "../../${name}-${!commit}" "${dir}" || die
+			mv "../${name}-${!commit}" "${dir}" || die
 		done
 	fi
 
@@ -121,6 +119,8 @@ src_prepare() {
 	# For 9999, this submodule is not included.
 	mkdir -p thirdparty/SPIRV-Headers/include || die
 	ln -snf "${ESYSROOT}"/usr/include/spirv thirdparty/SPIRV-Headers/include/ || die
+
+	default
 }
 
 src_configure() {
