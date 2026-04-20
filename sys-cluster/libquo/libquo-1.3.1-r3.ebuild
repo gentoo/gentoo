@@ -22,7 +22,7 @@ HOMEPAGE="https://lanl.github.io/libquo/"
 LICENSE="BSD"
 SLOT="0"
 IUSE="fortran static-libs test"
-RESTRICT="!test? ( test )"
+RESTRICT="test" # Bug #867823: Need a real network interface or hostname set to localhost
 
 DEPEND="
 	virtual/mpi[fortran?]
