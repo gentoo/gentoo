@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 latex-package
 
@@ -26,9 +26,9 @@ KEYWORDS="~alpha amd64 arm arm64 ppc ppc64 ~riscv x86"
 IUSE="doc"
 
 RDEPEND="
-	>=dev-python/latexrestricted-0.6.0
-	>=dev-python/pygments-2.17.0
-	>=dev-tex/latex2pydata-0.4.0
+	>=dev-python/latexrestricted-0.6.0[${PYTHON_USEDEP}]
+	>=dev-python/pygments-2.17.0[${PYTHON_USEDEP}]
+	>=dev-tex/latex2pydata-0.4.0[${PYTHON_USEDEP}]
 	dev-texlive/texlive-latexextra
 "
 BDEPEND="
