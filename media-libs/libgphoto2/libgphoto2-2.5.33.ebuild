@@ -80,6 +80,10 @@ MULTILIB_CHOST_TOOLS=(
 	/usr/bin/gphoto2-config
 )
 
+PATCHES=(
+	"${FILESDIR}"/libgphoto2-2.5.33-c23.patch
+)
+
 src_prepare() {
 	default
 
