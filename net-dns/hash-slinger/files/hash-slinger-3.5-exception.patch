@@ -1,0 +1,46 @@
+https://github.com/letoams/hash-slinger/commit/afc7b2ff4ee170417d451d23862a0baf9e882386
+
+From afc7b2ff4ee170417d451d23862a0baf9e882386 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dirk=20St=C3=B6cker?= <github@dstoecker.de>
+Date: Mon, 16 Mar 2026 09:41:01 +0100
+Subject: [PATCH] prevent Missing Authority Key Identifier exception and catch
+ error caused by that exception
+
+---
+ tlsa | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/tlsa b/tlsa
+index f305b14..55ece42 100755
+--- a/tlsa
++++ b/tlsa
+@@ -779,6 +779,8 @@ if __name__ == '__main__':
+ 					print('Got the following IP: %s' % str(address))
+ 				# Create SSL context
+ 				ctx = ssl.create_default_context()
++				# prevent "Missing Authority Key Identifier" error
++				ctx.verify_flags &= ~(ssl.VERIFY_X509_STRICT)
+ 				if os.path.isfile(args.ca_cert):
+ 					ctx.load_verify_locations(cafile=args.ca_cert)
+ 				elif os.path.exists(args.ca_cert):
+@@ -795,6 +797,7 @@ if __name__ == '__main__':
+ 				else:
+ 					sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+ 					sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
++				connection = None
+ 				try:
+ 					sock.connect((str(address), int(args.port)))
+ 					if args.starttls:
+@@ -802,7 +805,10 @@ if __name__ == '__main__':
+ 					connection = ctx.wrap_socket(sock, server_hostname=snihost)
+ 					if args.debug:
+ 						print('Did set servername %s' % snihost)
+-				except ssl.SSLCertVerificationError:
++				except ssl.SSLCertVerificationError as e:
++					if not connection:
++						print('Cannot connect to %s: %s' % (address, str(e)))
++						continue
+ 					# Certificate verification failed but we still want to check TLSA
+ 					pass
+ 				except socket.error as e:
+

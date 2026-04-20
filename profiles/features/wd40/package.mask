@@ -468,6 +468,7 @@ media-plugins/gimp-lqr
 media-video/rav1e
 net-analyzer/wtfis
 net-dns/dnsviz
+net-dns/hash-slinger
 net-dns/pdns-recursor
 net-im/gajim
 >=net-irc/polari-3.37
