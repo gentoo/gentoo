@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{11..14} )
 DISTUTILS_OPTIONAL=1
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
-inherit autotools distutils-r1
+inherit autotools distutils-r1 optfeature
 
 DESCRIPTION="An open-source braille translator and back-translator"
 HOMEPAGE="https://github.com/liblouis/liblouis"
@@ -16,21 +16,18 @@ SRC_URI="https://github.com/liblouis/liblouis/releases/download/v${PV}/${P}.tar.
 LICENSE="LGPL-2.1+ tools? ( GPL-3+ )"
 SLOT="0/21" # follows LIBLOUIS_CURRENT in configure.ac
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="test tools"
+IUSE="test +tools"
 REQUIRED_USE="
 	test? ( tools )
 	tools? ( ${PYTHON_REQUIRED_USE} )
 "
 RESTRICT="!test? ( test )"
 
-# texlive-core for patgen which is required by lou_maketable; and makeinfo for .info
-# make tools optional to avoid texlive-core
 RDEPEND="
 	test? (
 		${PYTHON_DEPS}
 		dev-libs/libyaml
 	)
-	tools? ( app-text/texlive-core )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -128,4 +125,8 @@ src_install() {
 	fi
 
 	find "${ED}" -name '*.la' -delete || die
+}
+
+pkg_postinst() {
+	use tools && optfeature "the creation of tables with the tool lou_maketable" app-text/texlive-core
 }
