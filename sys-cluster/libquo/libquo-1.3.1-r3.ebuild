@@ -6,7 +6,7 @@ EAPI=8
 FORTRAN_NEEDED=fortran
 FORTRAN_STANDARD=90
 
-inherit fortran-2
+inherit fortran-2 flag-o-matic
 
 if [ "${PV}" = "9999" ]; then
 	EGIT_REPO_URI="https://github.com/lanl/${PN}.git"
@@ -32,7 +32,10 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="sys-apps/which"
 
-PATCHES=( "${FILESDIR}"/${P}-musl.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-musl.patch
+	"${FILESDIR}"/${P}-openmpi.patch
+)
 
 src_prepare() {
 	default
@@ -40,6 +43,7 @@ src_prepare() {
 }
 
 src_configure() {
+	append-fflags "-I${ESYSROOT}/usr/include"
 	econf CC=mpicc FC=$(usex fortran mpif90 false)
 }
 
