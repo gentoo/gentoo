@@ -42,6 +42,18 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.3-audit-out-of-source-build.patch
 )
 
+pkg_pretend() {
+	# bug 972898
+	if use bpf && [[ ${MERGE_TYPE} != binary ]] ; then
+		if [[ ! -f /sys/kernel/btf/vmlinux ]] ; then
+			local err="Cannot read /sys/kernel/btf/vmlinux, which is required by bpftool.\n"
+			err+="  Typically this means that your kernel is missing the DEBUG_INFO_BTF option,\n"
+			err+="  without which BPF cannot work. Please build with USE=-bpf or reconfigure your kernel."
+			die "${err}"
+		fi
+	fi
+}
+
 src_prepare() {
 	default
 
