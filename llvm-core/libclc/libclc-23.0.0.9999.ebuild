@@ -64,6 +64,7 @@ my_configure() {
 	local mycmakeargs=(
 		-DCMAKE_CLC_COMPILER="$(type -P clang-${LLVM_MAJOR})"
 		-DLLVM_RUNTIMES_TARGET="${MULTIBUILD_VARIANT}"
+		-DLLVM_INCLUDE_TESTS="$(usex test)"
 	)
 
 	use test && mycmakeargs+=(
