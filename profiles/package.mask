@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-04-21)
+# PyQt5 has no more revdeps (that aren't also masked).
+# Removal on 2026-05-21.  Bug #950282
+dev-python/pyqt5
+dev-python/pyqt5-sip
+
 # Daniel Pielmeier <billie@gentoo.org> (2026-04-21)
 # Mask last version with USE qt5 which is about to be last rited.
 # Bugs #950282, #961920. Remove with other Qt5 masks.
