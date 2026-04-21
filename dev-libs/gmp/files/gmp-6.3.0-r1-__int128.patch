@@ -1,0 +1,22 @@
+# Replace __int128__ with __int128 for portability (clang)
+# Gentoo Bug: https://bugs.gentoo.org/972987
+
+From 21cbec701d8f54d7157f8455a24b2ff4a5269496 Mon Sep 17 00:00:00 2001
+From: Marc Glisse <marc.glisse@inria.fr>
+Date: Sat, 1 Feb 2025 19:36:16 +0100
+Subject: [PATCH] Replace __int128__ with __int128 for portability (clang).
+
+---
+diff --git a/longlong.h b/longlong.h
+index be1c3cbc6..41ad4f980 100644
+--- a/longlong.h
++++ b/longlong.h
+@@ -1162,7 +1162,7 @@ extern UWtype __MPN(udiv_qrnnd) (UWtype *, UWtype, UWtype, UWtype);
+   do {									\
+     UDItype __u = (u), __v = (v);					\
+     (w0) = __u * __v;							\
+-    (w1) = (unsigned __int128__) __u * __v >> 64;			\
++    (w1) = __extension__ (unsigned __int128) __u * __v >> 64;		\
+   } while (0)
+ #endif
+ 

@@ -43,6 +43,7 @@ MULTILIB_WRAPPED_HEADERS=( /usr/include/gmp.h )
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.1.0-noexecstack-detect.patch
 	"${FILESDIR}"/${PN}-6.2.1-no-zarch.patch
+	"${FILESDIR}"/${PN}-6.3.0-r1-__int128.patch
 )
 
 pkg_pretend() {
