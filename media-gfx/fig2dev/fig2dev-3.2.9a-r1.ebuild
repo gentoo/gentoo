@@ -47,6 +47,11 @@ BDEPEND="
 DOCS=( README CHANGES NOTES )
 HTML_DOCS=( "${WORKDIR}/fig2mpdf/doc/." )
 
+PATCHES=(
+	"${FILESDIR}/${P}-prototypes.patch"
+	"${FILESDIR}/${P}-imagemagick.patch"
+)
+
 sed_Imakefile() {
 	# see fig2dev/Imakefile for details
 	vars2subs="BINDIR=${EPREFIX}/usr/bin
