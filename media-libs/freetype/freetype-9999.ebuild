@@ -187,7 +187,9 @@ src_prepare() {
 	fi
 
 	# bug #869803
-	rm docs/reference/sitemap.xml.gz || die
+	if [[ ${PV} != 9999 ]] ; then
+		rm docs/reference/sitemap.xml.gz || die
+	fi
 
 	# We need non-/bin/sh to run configure
 	if [[ -n ${CONFIG_SHELL} ]] ; then
