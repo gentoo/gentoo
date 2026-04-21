@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -67,6 +67,13 @@ python_check_deps() {
 	if use man; then
 		python_has_version "dev-python/argparse-manpage[${PYTHON_USEDEP}]" || return 1
 	fi
+}
+
+src_prepare() {
+	default
+
+	# Don't run coverage tests, they're not useful for downstreams
+	sed -i -e '/PPD_PYTHON_COVERAGE/d' tests/meson.build || die
 }
 
 src_configure() {
