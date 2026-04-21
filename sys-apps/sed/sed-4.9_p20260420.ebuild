@@ -12,7 +12,7 @@ HOMEPAGE="https://www.gnu.org/software/sed/"
 if [[ ${PV} == *_p* ]] ; then
 	# Note: could put this in devspace, but if it's gone, we don't want
 	# it in tree anyway. It's just for testing.
-	MY_SNAPSHOT="$(ver_cut 1-2).72-47838"
+	MY_SNAPSHOT="$(ver_cut 1-2).87-682d"
 	SRC_URI="
 		https://meyering.net/sed/sed-${MY_SNAPSHOT}.tar.xz -> ${P}.tar.xz
 		verify-sig? (
