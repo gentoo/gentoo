@@ -244,7 +244,7 @@ src_install() {
 
 	readme.gentoo_create_doc
 
-	rm -rf "${ED}"/{nano,vim} || die
+	rm -r "${ED}"/{nano,vim} || die
 }
 
 pkg_postinst() {
