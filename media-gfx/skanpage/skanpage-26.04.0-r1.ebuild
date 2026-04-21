@@ -14,7 +14,7 @@ HOMEPAGE="https://apps.kde.org/skanpage/"
 
 LICENSE="|| ( GPL-2 GPL-3 ) CC0-1.0"
 SLOT="6"
-KEYWORDS="amd64 arm64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 DEPEND="
@@ -26,7 +26,7 @@ DEPEND="
 	>=kde-frameworks/kcoreaddons-${KFMIN}:6
 	>=kde-frameworks/kcrash-${KFMIN}:6
 	>=kde-frameworks/ki18n-${KFMIN}:6
-	>=kde-frameworks/kio-6.22.1:6
+	>=kde-frameworks/kio-${KFMIN}:6
 	>=kde-frameworks/kirigami-${KFMIN}:6
 	>=kde-frameworks/kjobwidgets-${KFMIN}:6
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:6
@@ -36,4 +36,6 @@ DEPEND="
 	>=media-libs/ksanecore-${PVCUT}:6
 	media-libs/leptonica:=
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	 >=kde-frameworks/kconfig-${KFMIN}:6[qml]
+"
