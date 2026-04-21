@@ -36,6 +36,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2026-04-21)
+# PyPy 7.3.21 contains a few major bugs, notably it segfaults when
+# trying to translate itself, making it impossible to build any new PyPy
+# version.  Please note that the downgrade may require using binary
+# packages or dev-python/pypy-exe-bin.
+=dev-lang/pypy-2.7.7.3.21
+=dev-lang/pypy-3.11.7.3.21
+=dev-lang/pypy3-exe-3.11.7.3.21
+=dev-lang/pypy3-exe-bin-3.11.7.3.21
+=dev-python/pypy-exe-7.3.21
+=dev-python/pypy-exe-bin-7.3.21
+
 # Sam James <sam@gentoo.org> (2026-04-20)
 # m2crypto is deprecated upstream and in maintenance mode. They recommend
 # using dev-python/cryptography instead. No reverse dependencies left.
