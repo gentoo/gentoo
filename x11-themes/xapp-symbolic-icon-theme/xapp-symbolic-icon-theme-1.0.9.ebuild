@@ -13,4 +13,4 @@ S="${WORKDIR}/xapp-symbolic-icons-${PV}"
 LICENSE="CC0-1.0 CC-BY-SA-4.0 LGPL-3 MIT"
 SLOT="0"
 
-KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv x86"
