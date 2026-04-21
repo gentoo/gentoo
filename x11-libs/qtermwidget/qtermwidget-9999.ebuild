@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,10 @@ EAPI=8
 inherit cmake
 
 DESCRIPTION="Qt terminal emulator widget"
-HOMEPAGE="https://lxqt-project.org/"
+HOMEPAGE="
+	https://lxqt-project.org/
+	https://github.com/lxqt/qtermwidget/
+"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -21,7 +24,7 @@ SLOT="0/${PV}"
 
 BDEPEND="
 	>=dev-qt/qttools-6.6:6[linguist]
-	>=dev-util/lxqt-build-tools-2.1.0
+	>=dev-util/lxqt-build-tools-2.4.0
 "
 DEPEND="
 	>=dev-qt/qtbase-6.6:6[gui,widgets]
