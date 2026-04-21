@@ -1,0 +1,35 @@
+Fix build with Clang.
+Bug: https://bugs.gentoo.org/972921
+Bug: https://github.com/rpm-software-management/rpm/issues/4070
+
+https://github.com/rpm-software-management/rpm/commit/9610233289717f82b5f633858b858ca7054c18be
+From: Michal Domonkos <mdomonko@redhat.com>
+Date: Thu, 5 Feb 2026 16:56:03 +0100
+Subject: [PATCH] Fix delete_key_compat() friend definition
+
+Commit e360ca338e5215a2015fef6ed843cfefd8463f2e mistakenly defined the
+function as static while also declaring it as a friend function in the
+keystore header file. While GCC didn't seem to mind, Clang failed with:
+
+    error: static declaration of 'delete_key_compat' follows non-static
+    declaration
+
+And rightfully so. We just didn't notice since most of us build with GCC
+(including the CI), oops.
+
+Fix by dropping the static keyword. This is fine because access control
+and visibility is handled by C++ here (since it's a friend function, not
+a standalone one), and the keystore API isn't public anyway.
+
+Fixes: #4070
+--- a/lib/keystore.cc
++++ b/lib/keystore.cc
+@@ -126,7 +126,7 @@ static rpmRC delete_file_store(std::string path)
+ }
+ 
+ /* Wrapper for private delete_key() methods that falls back to short keyid */
+-static rpmRC rpm::delete_key_compat(auto keystore, rpmtxn txn, rpmPubkey key, auto skip)
++rpmRC rpm::delete_key_compat(auto keystore, rpmtxn txn, rpmPubkey key, auto skip)
+ {
+     rpmRC rc = RPMRC_NOTFOUND;
+     string fp = rpmPubkeyFingerprintAsHex(key);
