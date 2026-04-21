@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Daniel Pielmeier <billie@gentoo.org> (2026-04-21)
+# Mask last version with USE qt5 which is about to be last rited.
+# Bugs #950282, #961920. Remove with other Qt5 masks.
+<net-print/hplip-3.25.8-r1
+
 # Michał Górny <mgorny@gentoo.org> (2026-04-21)
 # PyPy 7.3.21 contains a few major bugs, notably it segfaults when
 # trying to translate itself, making it impossible to build any new PyPy

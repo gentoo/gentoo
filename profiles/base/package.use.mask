@@ -6,11 +6,6 @@
 
 # New entries go on top.
 
-# Daniel Pielmeier <billie@gentoo.org> (2026-04-21)
-# mask qt5 which is about to be last rited.
-# Bugs #950282, #961920. Remove with other qt5 masks.
-<net-print/hplip-3.25.8-r1 qt5
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-04-12)
 # net-wireless/gnuradio and dependencies. Preparing Qt5 last-rites.
 # Bugs #948049, #948051, #954887.  Removal some time after 2026-04-30.
