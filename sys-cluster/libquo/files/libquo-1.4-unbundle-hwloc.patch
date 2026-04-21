@@ -1,0 +1,98 @@
+--- a/configure.ac	2026-04-21 12:56:36.883902231 +0200
++++ b/configure.ac	2026-04-21 12:57:04.993588987 +0200
+@@ -180,17 +180,10 @@
+ enable_rocm=no
+ enable_rsmi=no
+ 
+-HWLOC_SET_SYMBOL_PREFIX(quo_internal_)
+ 
+-HWLOC_SETUP_CORE([src/hwloc],
+-                 [],
+-                 [AC_MSG_ERROR([*** hwloc configure failure. ***])],
+-                 [1])
+ 
+-HWLOC_DO_AM_CONDITIONALS
+ 
+-CPPFLAGS="$HWLOC_EMBEDDED_CPPFLAGS $CPPFLAGS"
+-LIBS="$HWLOC_EMBEDDED_LIBS $LIBS"
++PKG_CHECK_MODULES([HWLOC], [hwloc])
+ 
+ enable_static=$save_enable_static
+ enable_shared=$save_enable_shared
+--- a/Makefile.am	2026-04-21 13:00:39.604197591 +0200
++++ b/Makefile.am	2026-04-21 13:01:02.954937398 +0200
+@@ -6,7 +6,7 @@
+ # top-level directory of this distribution.
+ #
+ 
+-ACLOCAL_AMFLAGS = -Iconfig -Isrc/hwloc/config
++ACLOCAL_AMFLAGS = -Iconfig
+ 
+ EXTRA_DIST = \
+ AUTHORS \
+--- a/src/Makefile.am	2026-04-21 13:05:22.975053481 +0200
++++ b/src/Makefile.am	2026-04-21 13:08:34.399930524 +0200
+@@ -17,8 +17,6 @@
+ # $HEADER$
+ ################################################################################
+ 
+-SUBDIRS = \
+-hwloc
+ 
+ lib_LTLIBRARIES = \
+ libquo.la
+@@ -39,4 +37,4 @@
+ 
+ libquo_la_CFLAGS =
+ libquo_la_LDFLAGS = -version-info @QUO_LIBVINFO@
+-libquo_la_LIBADD = $(HWLOC_EMBEDDED_LDADD) $(HWLOC_EMBEDDED_LIBS)
++libquo_la_LIBADD = $(HWLOC_LIBS)
+--- a/tests/Makefile.am	2026-04-21 13:09:30.583307439 +0200
++++ b/tests/Makefile.am	2026-04-21 13:09:56.794016756 +0200
+@@ -25,7 +25,7 @@
+ rebind_SOURCES = rebind.c
+ rebind_CPPFLAGS  =
+ rebind_LDFLAGS =
+-rebind_LDADD   = $(HWLOC_EMBEDDED_LDADD) $(HWLOC_EMBEDDED_LIBS)
++rebind_LDADD   = $(HWLOC_LIBS)
+ 
+ ### test 1
+ trivial_SOURCES = trivial.c
+@@ -46,7 +46,7 @@
+ ### test 4 (times quo operations)
+ quo_time_SOURCES = quo-time.c
+ quo_time_CFLAGS  = -I$(top_srcdir)/src
+-quo_time_LDADD   = $(top_builddir)/src/libquo.la
++quo_time_LDADD   = $(top_builddir)/src/libquo.la -lm
+ 
+ ### test 5 (outputs MPI process binding)
+ view_mpi_proc_bind_SOURCES = view-mpi-proc-bind.c
+--- a/demos/mpi-openmp/Makefile.am	2026-04-21 13:10:57.104347906 +0200
++++ b/demos/mpi-openmp/Makefile.am	2026-04-21 13:11:16.871128682 +0200
+@@ -42,4 +42,4 @@
+ libeta_la_SOURCES = eta.h eta.c
+ libeta_la_CFLAGS =
+ libeta_la_CPPFLAGS =
+-libeta_la_LIBADD =
++libeta_la_LIBADD = -lm
+--- a/src/quo-hwloc.h	2026-04-21 13:12:31.516300860 +0200
++++ b/src/quo-hwloc.h	2026-04-21 13:12:52.038073264 +0200
+@@ -27,7 +27,7 @@
+ #include <stdbool.h>
+ #endif
+ 
+-#include "hwloc/include/hwloc.h"
++#include <hwloc.h>
+ 
+ int
+ quo_hwloc_construct(quo_hwloc_t **nhwloc);
+--- a/src/tools/quo-info.c	2026-04-21 13:13:55.388370700 +0200
++++ b/src/tools/quo-info.c	2026-04-21 13:14:18.778111299 +0200
+@@ -10,6 +10,7 @@
+ #include "config.h"
+ #endif
+ 
++#include <hwloc.h>
+ #include "quo-private.h"
+ #include "quo.h"
+ 
