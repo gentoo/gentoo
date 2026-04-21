@@ -17,8 +17,9 @@ inherit dist-kernel-utils linux-info mount-boot
 #   b. Rename the Intel directory to intel-microcode-collection-<YYYYMMDD>
 #   c. From the CPUMicrocodes directory tar and xz compress the contents of intel-microcode-collection-<YYYYMMDD>:
 #      tar -cJf intel-microcode-collection-<YYYYMMDD>.tar.xz intel-microcode-collection-<YYYYMMDD>/
-#   d. This file can go in your devspace, add the URL to SRC_URI if it's not there
-#      https://dev.gentoo.org/~<dev nick>/dist/intel-microcode/intel-microcode-collection-${COLLECTION_SNAPSHOT}.tar.xz
+#   d. This file should be signed and uploaded to masterkup.  For detailed instructions, please go to: https://wiki.gentoo.org/wiki/Project:Infrastructure/Project_Distfiles
+#   e. The SRC_URI will then be of the form:
+#      https://distfiles-cdn-origin.gentoo.org/pub/proj/intel-microcode/intel-microcode-collection-${COLLECTION_SNAPSHOT}.tar.xz
 #
 # PV:
 # * the first date is upstream
