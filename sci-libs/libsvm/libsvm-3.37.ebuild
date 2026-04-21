@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}-${PV/0}"
 LICENSE="BSD"
 SLOT="0/2"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="java openmp python tools"
+IUSE="openmp python tools"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="
@@ -30,6 +30,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.37-makefile.patch
+	"${FILESDIR}"/${PN}-3.37-javaMakefile.patch
 )
 
 pkg_pretend() {
@@ -42,7 +43,8 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	java-pkg_clean
+	java-pkg-opt-2_src_prepare
+	java-pkg_clean java
 
 	sed -i -e "s@\.\./@${EPREFIX}/usr/bin/@g" tools/*.py \
 		|| die "Failed to fix paths in python files"
@@ -53,7 +55,7 @@ src_prepare() {
 }
 
 src_configure() {
-	use java && export JAVAC_FLAGS="$(java-pkg_javac-args)"
+	use java && export JAVAC_FLAGS="-source $(java-pkg_get-source) -target $(java-pkg_get-target)"
 	if use openmp; then
 		export OPENMP_CFLAGS="-fopenmp -DOPENMP"
 		export OPENMP_LIBS="-fopenmp"
@@ -104,7 +106,6 @@ src_install() {
 	HTML_DOCS=( FAQ.html )
 	if use java; then
 		java-pkg_dojar java/libsvm.jar
-		HTML_DOCS+=( java/test_applet.html )
 	fi
 
 	einstalldocs

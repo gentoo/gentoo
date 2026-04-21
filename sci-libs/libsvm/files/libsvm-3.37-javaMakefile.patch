@@ -1,0 +1,15 @@
+diff --git a/java/Makefile b/java/Makefile
+index 558c3ea..840bd08 100644
+--- a/java/Makefile
++++ b/java/Makefile
+@@ -4,10 +4,7 @@ FILES = libsvm/svm.class libsvm/svm_model.class libsvm/svm_node.class \
+ 		libsvm/svm_print_interface.class \
+ 		svm_train.class svm_predict.class svm_toy.class svm_scale.class
+ 
+-#JAVAC = jikes
+-JAVAC_FLAGS = --release 11
+ JAVAC = javac
+-# JAVAC_FLAGS =
+ export CLASSPATH := .:$(CLASSPATH)
+ 
+ all: $(FILES)
