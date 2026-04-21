@@ -8,6 +8,8 @@ RUST_OPTIONAL="yes"
 inherit autotools flag-o-matic multiprocessing rust
 
 MY_P="${PN}-$(ver_cut 1-3)"
+MY_PV="${PV%.*}"
+MY_SLOT=$(ver_cut 1-2)
 
 DESCRIPTION="An object-oriented scripting language"
 HOMEPAGE="https://www.ruby-lang.org/"
@@ -15,6 +17,11 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_BRANCH="ruby_${MY_PV/./_}"
 	EGIT_REPO_URI="https://github.com/ruby/ruby.git"
+
+	# Self-depend is necessary because ruby from git depends on building some pre-requisite gems.
+	BDEPEND="
+		dev-lang/ruby:${MY_SLOT}
+	"
 else
 	SRC_URI="https://cache.ruby-lang.org/pub/ruby/$(ver_cut 1-2)/${MY_P}.tar.xz"
 	S=${WORKDIR}/${MY_P}
@@ -22,16 +29,11 @@ else
 fi
 
 LICENSE="|| ( Ruby-BSD BSD-2 )"
-SLOT=$(ver_cut 1-2)
+SLOT=${MY_SLOT}
 MY_SUFFIX=$(ver_rs 1 '' ${SLOT})
 RUBYVERSION=${SLOT}.0
 
 IUSE="berkdb debug doc examples gdbm jemalloc jit socks5 +ssl static-libs systemtap tk valgrind xemacs"
-
-# Self-depend is necessary because ruby from git depends on building some pre-requisite gems.
-BDEPEND="
-	dev-lang/ruby:${SLOT}
-"
 
 RDEPEND="
 	berkdb? ( sys-libs/db:= )
@@ -311,6 +313,7 @@ src_install() {
 		dodoc -r sample
 	fi
 
+	[[ ${PV} != *9999* ]] && dodoc ChangeLog
 	dodoc NEWS.md README*
 	dodoc -r doc
 }
