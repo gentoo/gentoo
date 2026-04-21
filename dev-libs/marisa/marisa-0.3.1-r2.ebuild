@@ -50,7 +50,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DLIB_INSTALL_DIR="$(get_libdir)"
+		-DLIB_INSTALL_DIR="${EPREFIX}/usr/$(get_libdir)"
 		-DENABLE_TOOLS=$(usex tools)
 		-DBUILD_TESTING=OFF
 	)
