@@ -8,10 +8,9 @@
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-04-12)
 # net-wireless/gnuradio and dependencies. Preparing Qt5 last-rites.
-# Bugs #948049, #948051, #954887.  Removal some time after 2026-04-30.
+# Bugs #948049, #954887.  Removal some time after 2026-04-30.
 dev-python/pyqtgraph qt5
 net-wireless/gnuradio qt5
-x11-libs/qwt qt5
 
 # Brett A C Sheffield <bacs@librecast.net> (2026-03-29)
 # mask IUSE=selinux for www-servers/vinyl-cache-9.0.0 until
