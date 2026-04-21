@@ -24,7 +24,7 @@ RDEPEND="
 	>=dev-python/jaraco-text-4.0.0[${PYTHON_USEDEP}]
 	>=dev-python/packaging-25.0[${PYTHON_USEDEP}]
 	>=dev-python/platformdirs-4.4.0[${PYTHON_USEDEP}]
-	!<dev-python/setuptools-82[${PYTHON_USEDEP}]
+	!<dev-python/setuptools-82
 "
 
 EPYTEST_PLUGINS=()
