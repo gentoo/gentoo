@@ -54,17 +54,19 @@ BDEPEND="
 
 python_check_deps() {
 	if use test; then
-		python_has_version "dev-python/python-dbusmock[${PYTHON_USEDEP}]" &&
-		python_has_version "dev-python/pygobject:3[${PYTHON_USEDEP}]"
+		python_has_version "dev-python/python-dbusmock[${PYTHON_USEDEP}]" \
+			"dev-python/pygobject:3[${PYTHON_USEDEP}]" || return 1
 	else
-		python_has_version "dev-python/pygobject:3[${PYTHON_USEDEP}]"
+		python_has_version "dev-python/pygobject:3[${PYTHON_USEDEP}]" || return 1
 	fi
 
 	if use bash-completion || use zsh-completion; then
-		python_has_version ">=dev-python/shtab-1.7.0[${PYTHON_USEDEP}]"
+		python_has_version ">=dev-python/shtab-1.7.0[${PYTHON_USEDEP}]" || return 1
 	fi
 
-	use man && python_has_version "dev-python/argparse-manpage[${PYTHON_USEDEP}]"
+	if use man; then
+		python_has_version "dev-python/argparse-manpage[${PYTHON_USEDEP}]" || return 1
+	fi
 }
 
 src_configure() {
