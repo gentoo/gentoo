@@ -273,6 +273,7 @@ src_prepare() {
 
 	# Fixed upstream, but not in 8.4.20.
 	rm ext/openssl/tests/bug{74796,80770}.phpt || die
+	rm ext/openssl/tests/{sni_server.phpt,sni_server_key_cert.phpt} || die
 }
 
 src_configure() {
