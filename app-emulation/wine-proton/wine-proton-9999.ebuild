@@ -4,11 +4,11 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
-inherit optfeature python-any-r1 readme.gentoo-r1 toolchain-funcs wine
+inherit eapi9-ver optfeature python-any-r1 readme.gentoo-r1 toolchain-funcs wine
 
 WINE_GECKO=2.47.4
 WINE_MONO=10.4.1
-WINE_PV=$(ver_rs 2 -)
+WINE_PV=$(ver_rs 2-3 -)
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -24,7 +24,8 @@ DESCRIPTION="Valve Software's fork of Wine"
 HOMEPAGE="https://github.com/ValveSoftware/wine/"
 
 LICENSE="
-	LGPL-2.1+ BSD BSD-2 IJG MIT OPENLDAP ZLIB gsm libpng2 libtiff
+	LGPL-2.1+
+	BSD BSD-2 IJG MIT OPENLDAP ZLIB gsm libpng2 libtiff
 	|| ( WTFPL-2 public-domain )
 "
 SLOT="${PV}"
@@ -120,7 +121,7 @@ DEPEND="
 		sys-devel/gcc:*
 		llvm-runtimes/compiler-rt:*[atomic-builtins(-)]
 	)
-	sys-kernel/linux-headers
+	>=sys-kernel/linux-headers-6.14
 	X? ( x11-base/xorg-proto )
 "
 BDEPEND="
@@ -138,14 +139,15 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 	res_getservers # false positive
 )
 QA_TEXTRELS="usr/lib/*/wine/i386-unix/*.so" # uses -fno-PIC -Wl,-z,notext
+# intentionally ignored: https://gitlab.winehq.org/wine/wine/-/commit/433c2f8c06
+QA_FLAGS_IGNORED="usr/lib/.*/wine/.*-unix/wine.*-preloader"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-7.0.4-musl.patch
 	"${FILESDIR}"/${PN}-7.0.4-noexecstack.patch
 	"${FILESDIR}"/${PN}-8.0.1c-unwind.patch
-	"${FILESDIR}"/${PN}-8.0.4-restore-menubuilder.patch
 	"${FILESDIR}"/${PN}-9.0-rpath.patch
-	"${FILESDIR}"/${PN}-9.0.4-binutils2.44.patch
+	"${FILESDIR}"/${PN}-11.0.1-restore-menubuilder.patch
 )
 
 src_prepare() {
@@ -184,12 +186,15 @@ src_configure() {
 		--without-cups
 		--without-gphoto
 		--without-gssapi
+		--without-hwloc
 		--without-krb5
 		--without-netapi
 		--without-opencl
 		--without-pcap
 		--without-pcsclite
 		--without-sane
+		ac_cv_header_bluetooth_bluetooth_h=no
+		ac_cv_header_bluetooth_rfcomm_h=no
 		ac_cv_lib_soname_odbc=
 
 		$(use_enable gecko mshtml)
@@ -204,7 +209,6 @@ src_configure() {
 		$(use_with fontconfig)
 		$(use_with gstreamer)
 		$(use_with nls gettext)
-		--without-osmesa # media-libs/mesa no longer supports this
 		--without-oss # media-sound/oss is not packaged (OSSv4)
 		$(use_with pulseaudio pulse)
 		$(use_with sdl)
@@ -253,4 +257,13 @@ pkg_postinst() {
 	ewarn "with real Steam+Proton, and Gentoo is largely unable to help"
 	ewarn "unless it is a build/packaging issue. So, if need support, try"
 	ewarn "normal Wine or Proton instead."
+
+	if ver_replacing -lt 11; then
+		elog
+		elog "Note that >=${PN}-11 now has ntsync support that can be used"
+		elog "rather than setting WINEFSYNC=1. It is used by default if /dev/ntsync"
+		elog "exists unless PROTON_NO_NTSYNC=1 is set. Requires CONFIG_NTSYNC in"
+		elog "the kernel and, if built as a module, will need a file containing"
+		elog "ntsync in ${EROOT}/etc/modules-load.d/ to be auto-loaded."
+	fi
 }
