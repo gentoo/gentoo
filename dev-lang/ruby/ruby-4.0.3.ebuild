@@ -337,7 +337,6 @@ src_install() {
 		dodoc -r sample
 	fi
 
-	[[ ${PV} != *9999* ]] && dodoc ChangeLog
 	dodoc NEWS.md README*
 	dodoc -r doc
 }
