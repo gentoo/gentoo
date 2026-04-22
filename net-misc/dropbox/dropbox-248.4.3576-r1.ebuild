@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="BSD-2 CC-BY-ND-3.0 FTL MIT LGPL-2 openssl dropbox"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="-* ~amd64"
 IUSE="selinux X"
 
 RESTRICT="mirror strip"
@@ -67,13 +67,6 @@ src_prepare() {
 	else
 		rm -vrf images || die
 	fi
-	pushd python-pyext
-	patchelf --set-rpath '$ORIGIN' \
-		apex._apex.*.so \
-		nucleus_python.*.so \
-		tprt.*.so \
-		|| die
-	popd
 	pax-mark cm dropbox
 	mv README ACKNOWLEDGEMENTS "${T}" || die
 }
@@ -85,6 +78,9 @@ src_install() {
 	doins -r *
 	fperms a+x "${targetdir}"/{dropbox,dropboxd}
 	dosym "${targetdir}/dropboxd" "/opt/bin/dropbox"
+
+	# Bug 972885
+	dosym ../libdropbox_tprt.so "${targetdir}/python-pyext/libdropbox_tprt.so"
 
 	if use X; then
 		# symlinks for bug 955139
