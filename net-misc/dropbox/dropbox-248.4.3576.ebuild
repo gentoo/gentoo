@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="BSD-2 CC-BY-ND-3.0 FTL MIT LGPL-2 openssl dropbox"
 SLOT="0"
-KEYWORDS="-*"
+KEYWORDS=""
 IUSE="selinux X"
 
 RESTRICT="mirror strip"
