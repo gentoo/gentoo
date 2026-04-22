@@ -72,7 +72,7 @@ python_check_deps() {
 src_prepare() {
 	default
 
-	# Don't run coverage tests, they're not useful for downstreams
+	# Don't run coverage tests, they're not useful for downstreams, #970016
 	sed -i -e '/PPD_PYTHON_COVERAGE/d' tests/meson.build || die
 }
 
