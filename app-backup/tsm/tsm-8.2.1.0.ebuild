@@ -3,6 +3,7 @@
 
 EAPI=8
 
+RPM_COMPRESS_TYPE=lzma
 MODULES_OPTIONAL_IUSE=journal
 MODULES_KERNEL_MAX=6.1
 inherit desktop linux-mod-r1 rpm toolchain-funcs pax-utils xdg
