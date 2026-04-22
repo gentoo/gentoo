@@ -3,8 +3,6 @@
 
 EAPI=8
 
-inherit toolchain-funcs
-
 MY_P="ntfs-3g_ntfsprogs-${PV}"
 
 DESCRIPTION="Open source read-write NTFS driver that runs under FUSE"
@@ -33,8 +31,6 @@ BDEPEND="
 "
 
 src_configure() {
-	tc-ld-force-bfd
-
 	local myconf=(
 		# passing --exec-prefix is needed as the build system is trying to be clever
 		# and install itself into / instead of /usr in order to be compatible with
