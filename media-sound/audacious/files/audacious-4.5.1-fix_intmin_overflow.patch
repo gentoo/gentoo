@@ -1,0 +1,17 @@
+backport https://github.com/audacious-media-player/audacious/commit/6ffe0b6.patch
+https://bugs.gentoo.org/972499
+audcore: Prevent undefined behavior for integer conversions.
+--- a/src/libaudcore/audstrings.cc
++++ b/src/libaudcore/audstrings.cc
+@@ -1121,8 +1121,10 @@ EXPORT double str_to_double(const char * string)
+ 
+ EXPORT void str_insert_int(StringBuf & string, int pos, int val)
+ {
++    unsigned absval = val;
+     bool neg = (val < 0);
+-    unsigned absval = neg ? -val : val;
++    if (neg)
++        absval = -absval;
+ 
+     int digits = digits_for(absval);
+     int len = (neg ? 1 : 0) + digits;
