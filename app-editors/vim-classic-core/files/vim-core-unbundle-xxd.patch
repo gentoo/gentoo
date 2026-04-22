@@ -1,0 +1,37 @@
+The xxd utility is packaged in dev-util/xxd. With USE=nls, the prerequisite
+$(INSTALL_TOOL_LANGS) target variable contains install-tool-languages, which
+only installs xxd manpages. Remove it to prevent file collisions with
+dev-util/xxd.
+
+Original patch From: Lucio Sauer <watermanpaint@posteo.net>
+diff --git a/src/Makefile b/src/Makefile
+index 30b315b6e..6fb8e0baa 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -1000,7 +1000,7 @@ EVIEWTARGET	= $(EVIEWNAME)$(LNKEXT)
+ 
+ ### Names of the tools that are also made  {{{1
+ XXDTARGET = xxd/$(XXDNAME)$(EXEEXT)
+-TOOLS = $(XXDTARGET)
++TOOLS =
+ 
+ ### Installation directories.  The defaults come from configure. {{{1
+ #
+@@ -2489,16 +2489,11 @@ installspell: $(DEST_VIM) $(DEST_RT) $(DEST_SPELL)
+ 
+ # install helper program xxd
+ installtools: $(TOOLS) $(DESTDIR)$(exec_prefix) $(DEST_BIN) \
+-		$(TOOLSSOURCE) $(DEST_VIM) $(DEST_RT) $(DEST_TOOLS) \
+-		$(INSTALL_TOOL_LANGS)
++		$(TOOLSSOURCE) $(DEST_VIM) $(DEST_RT) $(DEST_TOOLS)
+ 	if test -f $(DEST_BIN)/$(XXDNAME)$(EXEEXT); then \
+ 	  mv -f $(DEST_BIN)/$(XXDNAME)$(EXEEXT) $(DEST_BIN)/$(XXDNAME).rm; \
+ 	  rm -f $(DEST_BIN)/$(XXDNAME).rm; \
+ 	fi
+-	$(INSTALL_PROG) xxd/$(XXDNAME)$(EXEEXT) $(DEST_BIN)
+-	$(STRIP) $(DEST_BIN)/$(XXDNAME)$(EXEEXT)
+-	chmod $(BINMOD) $(DEST_BIN)/$(XXDNAME)$(EXEEXT)
+-	-$(SHELL) ./installman.sh xxd $(DEST_MAN) "" $(INSTALLMANARGS)
+ 
+ # install the runtime tools
+ 	$(INSTALL_DATA_R) $(TOOLSSOURCE)/* $(DEST_TOOLS)
