@@ -78,6 +78,9 @@ python_test() {
 		tests/test_core/test_request_passthrough.py::test_passthrough_calls_for_wildcard_urls
 		tests/test_firehose/test_firehose_put.py::test_put_record_http_destination
 		tests/test_firehose/test_firehose_put.py::test_put_record_batch_http_destination
+		# Appears to be internet issues with timing out
+		tests/test_s3/test_multiple_accounts_server.py::TestAccountIdResolution::test_with_custom_request_header
+		tests/test_s3/test_server.py::test_s3_server_post_cors_multiple_origins
 	)
 	local EPYTEST_IGNORE=(
 		# require joserfc
@@ -99,5 +102,6 @@ python_test() {
 	local -x TZ=UTC
 	local -x AWS_DEFAULT_REGION=us-east-1
 
-	epytest -m 'not network and not requires_docker'
+	# -o timeout_func_only=true: bad interaction with pytest-rerunfailures and pytest-timeout leads to a permanent hang otherwise
+	epytest -m 'not network and not requires_docker' -o timeout_func_only=true
 }
