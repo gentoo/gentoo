@@ -1,0 +1,450 @@
+https://bugs.gentoo.org/972928
+https://github.com/radiator-software/p5-net-ssleay/pull/553
+
+From 361b3adc1dd09f70be7bd8972992626a3240b58d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michal=20Josef=20=C5=A0pa=C4=8Dek?= <mspacek@redhat.com>
+Date: Tue, 14 Apr 2026 12:37:39 +0200
+Subject: [PATCH 1/5] Fix SSLv3 in OpenSSL 4.0.0
+
+Support for SSLv3 was removed.
+---
+ SSLeay.xs | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/SSLeay.xs b/SSLeay.xs
+index 0ed7d96..5407fa1 100644
+--- a/SSLeay.xs
++++ b/SSLeay.xs
+@@ -2454,7 +2454,7 @@ SSL_CTX_v2_new()
+ 
+ #endif
+ #endif
+-#ifndef OPENSSL_NO_SSL3
++#if !defined(OPENSSL_NO_SSL3) && OPENSSL_VERSION_NUMBER < 0x40000000L
+ 
+ SSL_CTX *
+ SSL_CTX_v3_new()
+@@ -5600,7 +5600,7 @@ SSLv2_method()
+ #endif
+ #endif
+ 
+-#ifndef OPENSSL_NO_SSL3
++#if !defined(OPENSSL_NO_SSL3) && OPENSSL_VERSION_NUMBER < 0x40000000L
+ 
+ const SSL_METHOD *
+ SSLv3_method()
+
+From 65048de66f6f8221d014d7593d8efd37ec9f0d55 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michal=20Josef=20=C5=A0pa=C4=8Dek?= <mspacek@redhat.com>
+Date: Tue, 14 Apr 2026 14:08:00 +0200
+Subject: [PATCH 2/5] OpenSSL 4.0.0 remove support for some TLS functions
+
+Removes fixed version TLS methods
+(https://github.com/openssl/openssl/pull/30128)
+---
+ SSLeay.xs          | 12 ++++++------
+ lib/Net/SSLeay.pod | 17 ++++++++++-------
+ 2 files changed, 16 insertions(+), 13 deletions(-)
+
+diff --git a/SSLeay.xs b/SSLeay.xs
+index 5407fa1..11601e6 100644
+--- a/SSLeay.xs
++++ b/SSLeay.xs
+@@ -2472,7 +2472,7 @@ SSL_CTX_v23_new()
+      OUTPUT:
+      RETVAL
+ 
+-#if !defined(OPENSSL_NO_TLS1_METHOD)
++#if !defined(OPENSSL_NO_TLS1_METHOD) && OPENSSL_VERSION_NUMBER < 0x40000000L
+ 
+ SSL_CTX *
+ SSL_CTX_tlsv1_new()
+@@ -2483,7 +2483,7 @@ SSL_CTX_tlsv1_new()
+ 
+ #endif
+ 
+-#if (OPENSSL_VERSION_NUMBER >= 0x10001001L && !defined(OPENSSL_NO_TLS1_1_METHOD)) /* OpenSSL 1.0.1-beta1 */
++#if (OPENSSL_VERSION_NUMBER >= 0x10001001L && OPENSSL_VERSION_NUMBER < 0x40000000L && !defined(OPENSSL_NO_TLS1_1_METHOD)) /* OpenSSL 1.0.1-beta1 */
+ 
+ SSL_CTX *
+ SSL_CTX_tlsv1_1_new()
+@@ -2494,7 +2494,7 @@ SSL_CTX_tlsv1_1_new()
+ 
+ #endif
+ 
+-#if (OPENSSL_VERSION_NUMBER >= 0x10001001L && !defined(OPENSSL_NO_TLS1_2_METHOD)) /* OpenSSL 1.0.1-beta1 */
++#if (OPENSSL_VERSION_NUMBER >= 0x10001001L && OPENSSL_VERSION_NUMBER < 0x40000000L && !defined(OPENSSL_NO_TLS1_2_METHOD)) /* OpenSSL 1.0.1-beta1 */
+ 
+ SSL_CTX *
+ SSL_CTX_tlsv1_2_new()
+@@ -5616,7 +5616,7 @@ SSLv23_server_method()
+ const SSL_METHOD *
+ SSLv23_client_method()
+ 
+-#if !defined(OPENSSL_NO_TLS1_METHOD)
++#if !defined(OPENSSL_NO_TLS1_METHOD) && OPENSSL_VERSION_NUMBER < 0x40000000L
+ 
+ const SSL_METHOD *
+ TLSv1_method()
+@@ -5629,7 +5629,7 @@ TLSv1_client_method()
+ 
+ #endif
+ 
+-#if (OPENSSL_VERSION_NUMBER >= 0x10001001L && !defined(OPENSSL_NO_TLS1_1_METHOD)) /* OpenSSL 1.0.1-beta1 */
++#if (OPENSSL_VERSION_NUMBER >= 0x10001001L && OPENSSL_VERSION_NUMBER < 0x40000000L && !defined(OPENSSL_NO_TLS1_1_METHOD)) /* OpenSSL 1.0.1-beta1 */
+ 
+ const SSL_METHOD *
+ TLSv1_1_method()
+@@ -5642,7 +5642,7 @@ TLSv1_1_client_method()
+ 
+ #endif
+ 
+-#if (OPENSSL_VERSION_NUMBER >= 0x10001001L && !defined(OPENSSL_NO_TLS1_2_METHOD)) /* OpenSSL 1.0.1-beta1 */
++#if (OPENSSL_VERSION_NUMBER >= 0x10001001L && OPENSSL_VERSION_NUMBER < 0x40000000L && !defined(OPENSSL_NO_TLS1_2_METHOD)) /* OpenSSL 1.0.1-beta1 */
+ 
+ const SSL_METHOD *
+ TLSv1_2_method()
+diff --git a/lib/Net/SSLeay.pod b/lib/Net/SSLeay.pod
+index 554fd11..63afa1c 100644
+--- a/lib/Net/SSLeay.pod
++++ b/lib/Net/SSLeay.pod
+@@ -1575,7 +1575,7 @@ Check openssl doc L<https://www.openssl.org/docs/manmaster/man3/SSL_CTX_new.html
+ 
+ =item * TLSv1_method, TLSv1_server_method and TLSv1_client_method
+ 
+-B<COMPATIBILITY:> Requires OpenSSL or LibreSSL built with support for TLSv1. Server and client methods not available in Net-SSLeay-1.82 and before.
++B<COMPATIBILITY:> Requires OpenSSL or LibreSSL built with support for TLSv1. Server and client methods not available in Net-SSLeay-1.82 and before. Not available in OpenSSL 4.0.0 and later. Use L</TLS_method> with L</CTX_set_min_proto_version> and L</CTX_set_max_proto_version> instead.
+ 
+ Returns SSL_METHOD structure corresponding to TLSv1 method, the return value can be later used as a param of L</CTX_new_with_method>.
+ 
+@@ -1587,7 +1587,7 @@ Check openssl doc L<https://www.openssl.org/docs/manmaster/man3/SSL_CTX_new.html
+ 
+ =item * TLSv1_1_method, TLSv1_1_server_method and TLSv1_1_client_method
+ 
+-B<COMPATIBILITY:> Requires OpenSSL >= 1.0.1 or LibreSSL built with support for TLSv1.1. Server and client methods not available in Net-SSLeay-1.82 and before.
++B<COMPATIBILITY:> Requires OpenSSL >= 1.0.1 or LibreSSL built with support for TLSv1.1. Server and client methods not available in Net-SSLeay-1.82 and before. Not available in OpenSSL 4.0.0 and later. Use L</TLS_method> with L</CTX_set_min_proto_version> and L</CTX_set_max_proto_version> instead.
+ 
+ Returns SSL_METHOD structure corresponding to TLSv1_1 method, the return value can be later used as a param of L</CTX_new_with_method>.
+ 
+@@ -1599,7 +1599,7 @@ Check openssl doc L<https://www.openssl.org/docs/manmaster/man3/SSL_CTX_new.html
+ 
+ =item * TLSv1_2_method, TLSv1_2_server_method and TLSv1_2_client_method
+ 
+-B<COMPATIBILITY:> Requires OpenSSL >= 1.0.1 or LibreSSL built with support for TLSv1.2. Server and client methods not available in Net-SSLeay-1.82 and before.
++B<COMPATIBILITY:> Requires OpenSSL >= 1.0.1 or LibreSSL built with support for TLSv1.2. Server and client methods not available in Net-SSLeay-1.82 and before. Not available in OpenSSL 4.0.0 and later. Use L</TLS_method> with L</CTX_set_min_proto_version> and L</CTX_set_max_proto_version> instead.
+ 
+ Returns SSL_METHOD structure corresponding to TLSv1_2 method, the return value can be later used as a param of L</CTX_new_with_method>.
+ 
+@@ -2998,7 +2998,7 @@ Creates a new SSL_CTX object - based on SSLv3_method() - as framework to establi
+ 
+ =item * CTX_tlsv1_new
+ 
+-B<COMPATIBILITY:> Requires OpenSSL or LibreSSL built with support for TLSv1.
++B<COMPATIBILITY:> Requires OpenSSL or LibreSSL built with support for TLSv1. Not available in OpenSSL 4.0.0 and later. Use L</CTX_new> with L</CTX_set_min_proto_version> and L</CTX_set_max_proto_version> instead.
+ 
+ Creates a new SSL_CTX object - based on C<TLSv1_method()> - as a framework for establishing connections using TLSv1.
+ 
+@@ -3008,7 +3008,7 @@ Creates a new SSL_CTX object - based on C<TLSv1_method()> - as a framework for e
+ 
+ =item * CTX_tlsv1_1_new
+ 
+-B<COMPATIBILITY:> Requires OpenSSL >= 1.0.1 or LibreSSL built with support for TLSv1.1.
++B<COMPATIBILITY:> Requires OpenSSL >= 1.0.1 or LibreSSL built with support for TLSv1.1. Not available in OpenSSL 4.0.0 and later. Use L</CTX_new> with L</CTX_set_min_proto_version> and L</CTX_set_max_proto_version> instead.
+ 
+ Creates a new SSL_CTX object - based on C<TLSv1_1_method()> - as a framework for establishing connections using TLSv1.1.
+ 
+@@ -3018,7 +3018,7 @@ Creates a new SSL_CTX object - based on C<TLSv1_1_method()> - as a framework for
+ 
+ =item * CTX_tlsv1_2_new
+ 
+-B<COMPATIBILITY:> Requires OpenSSL >= 1.0.1 or LibreSSL built with support for TLSv1.2.
++B<COMPATIBILITY:> Requires OpenSSL >= 1.0.1 or LibreSSL built with support for TLSv1.2. Not available in OpenSSL 4.0.0 and later. Use L</CTX_new> with L</CTX_set_min_proto_version> and L</CTX_set_max_proto_version> instead.
+ 
+ Creates a new SSL_CTX object - based on C<TLSv1_2_method()> - as a framework for establishing connections using TLSv1.2.
+ 
+@@ -3035,7 +3035,10 @@ Creates a new SSL_CTX object based on $meth method
+     #
+     # returns: value corresponding to openssl's SSL_CTX structure (0 on failure)
+ 
+-    # example
++    # example (recommended, available since OpenSSL 1.1.0)
++    my $ctx = Net::SSLeay::CTX_new_with_method(&Net::SSLeay::TLS_method);
++
++    # example (TLSv1_method not available in OpenSSL 4.0.0+)
+     my $ctx = Net::SSLeay::CTX_new_with_method(&Net::SSLeay::TLSv1_method);
+ 
+ Check openssl doc L<https://www.openssl.org/docs/manmaster/man3/SSL_CTX_new.html>
+
+From 8f06c634084f3e7117dec055632bbdb5c225347a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michal=20Josef=20=C5=A0pa=C4=8Dek?= <mspacek@redhat.com>
+Date: Tue, 14 Apr 2026 14:32:27 +0200
+Subject: [PATCH 3/5] Fix Net::SSLeay to support opaque ASN1_STRING
+
+---
+ SSLeay.xs | 95 +++++++++++++++++++++++++++++++++----------------------
+ 1 file changed, 57 insertions(+), 38 deletions(-)
+
+diff --git a/SSLeay.xs b/SSLeay.xs
+index 11601e6..21d5c1e 100644
+--- a/SSLeay.xs
++++ b/SSLeay.xs
+@@ -2194,35 +2194,41 @@ int ssl_ctx_set_cert_cb_invoke(SSL *ssl, void *arg)
+ 
+ time_t ASN1_TIME_timet(ASN1_TIME *asn1t, time_t *gmtoff) {
+     struct tm t;
+-    const char *p = (const char*) asn1t->data;
++#if (OPENSSL_VERSION_NUMBER >= 0x1010000f && !defined(LIBRESSL_VERSION_NUMBER)) || (LIBRESSL_VERSION_NUMBER >= 0x2070000fL)
++    const char *p = (const char*) ASN1_STRING_get0_data(asn1t);
++#else
++    const char *p = (const char*) ASN1_STRING_data(asn1t);
++#endif
++    int asn1t_length = ASN1_STRING_length(asn1t);
++    int asn1t_type = ASN1_STRING_type(asn1t);
+     size_t msec = 0, tz = 0, i, l;
+     time_t result;
+     int adj = 0;
+ 
+-    if (asn1t->type == V_ASN1_UTCTIME) {
+-	if (asn1t->length<12 || asn1t->length>17) return 0;
+-	if (asn1t->length>12) tz = 12;
++    if (asn1t_type == V_ASN1_UTCTIME) {
++	if (asn1t_length<12 || asn1t_length>17) return 0;
++	if (asn1t_length>12) tz = 12;
+     } else {
+-	if (asn1t->length<14) return 0;
+-	if (asn1t->length>14) {
++	if (asn1t_length<14) return 0;
++	if (asn1t_length>14) {
+ 	    if (p[14] == '.') {
+ 		msec = 14;
+-		for(i=msec+1;i<asn1t->length && p[i]>='0' && p[i]<='9';i++) ;
+-		if (i<asn1t->length) tz = i;
++		for(i=msec+1;i<(size_t)asn1t_length && p[i]>='0' && p[i]<='9';i++) ;
++		if (i<(size_t)asn1t_length) tz = i;
+ 	    } else {
+ 		tz = 14;
+ 	    }
+ 	}
+     }
+ 
+-    l = msec ? msec : tz ? tz : asn1t->length;
++    l = msec ? msec : tz ? tz : (size_t)asn1t_length;
+     for(i=0;i<l;i++) {
+ 	if (p[i]<'0' || p[i]>'9') return 0;
+     }
+ 
+     /* extract data and time */
+     OPENSSL_cleanse(&t, sizeof(t));
+-    if (asn1t->type == V_ASN1_UTCTIME) { /* YY - two digit year */
++    if (asn1t_type == V_ASN1_UTCTIME) { /* YY - two digit year */
+ 	t.tm_year = (p[0]-'0')*10 + (p[1]-'0');
+ 	if (t.tm_year < 70) t.tm_year += 100;
+ 	i=2;
+@@ -2242,11 +2248,11 @@ time_t ASN1_TIME_timet(ASN1_TIME *asn1t, time_t *gmtoff) {
+     if (tz) {
+ 	/* TZ is 'Z' or [+-]DDDD and after TZ the string must stop*/
+ 	if (p[tz] == 'Z') {
+-	    if (asn1t->length>tz+1 ) return 0;
+-	} else if (asn1t->length<tz+5 || (p[tz]!='-' && p[tz]!='+')) {
++	    if ((size_t)asn1t_length>tz+1 ) return 0;
++	} else if ((size_t)asn1t_length<tz+5 || (p[tz]!='-' && p[tz]!='+')) {
+ 	    return 0;
+ 	} else {
+-	    if (asn1t->length>tz+5 ) return 0;
++	    if ((size_t)asn1t_length>tz+5 ) return 0;
+ 	    for(i=tz+1;i<tz+5;i++) {
+ 		if (p[i]<'0' || p[i]>'9') return 0;
+ 	    }
+@@ -4651,7 +4657,11 @@ X509_get_subjectAltNames(cert)
+                          EXTEND(SP, 2);
+                          count++;
+                          PUSHs(sv_2mortal(newSViv(subjAltNameDN->type)));
+-                         PUSHs(sv_2mortal(newSVpv((const char*)subjAltNameDN->d.ip->data, subjAltNameDN->d.ip->length)));
++#if (OPENSSL_VERSION_NUMBER >= 0x1010000f && !defined(LIBRESSL_VERSION_NUMBER)) || (LIBRESSL_VERSION_NUMBER >= 0x2070000fL)
++                         PUSHs(sv_2mortal(newSVpv((const char*)ASN1_STRING_get0_data(subjAltNameDN->d.ip), ASN1_STRING_length(subjAltNameDN->d.ip))));
++#else
++                         PUSHs(sv_2mortal(newSVpv((const char*)ASN1_STRING_data(subjAltNameDN->d.ip), ASN1_STRING_length(subjAltNameDN->d.ip))));
++#endif
+                          break;
+ 
+                      }
+@@ -5190,15 +5200,20 @@ P_ASN1_TIME_get_isotime(tm)
+      ASN1_TIME_to_generalizedtime(tm,&tmp);
+      if (tmp) {
+        if (ASN1_GENERALIZEDTIME_check(tmp)) {
+-         if (strlen((char*)tmp->data)>=14 && strlen((char*)tmp->data)<200) {
++#if (OPENSSL_VERSION_NUMBER >= 0x1010000f && !defined(LIBRESSL_VERSION_NUMBER)) || (LIBRESSL_VERSION_NUMBER >= 0x2070000fL)
++         const char *tmp_data = (const char*)ASN1_STRING_get0_data(tmp);
++#else
++         const char *tmp_data = (const char*)ASN1_STRING_data(tmp);
++#endif
++         if (strlen(tmp_data)>=14 && strlen(tmp_data)<200) {
+            strcpy (buf,"yyyy-mm-ddThh:mm:ss");
+-           strncpy(buf,   (char*)tmp->data,   4);
+-           strncpy(buf+5, (char*)tmp->data+4, 2);
+-           strncpy(buf+8, (char*)tmp->data+6, 2);
+-           strncpy(buf+11,(char*)tmp->data+8, 2);
+-           strncpy(buf+14,(char*)tmp->data+10,2);
+-           strncpy(buf+17,(char*)tmp->data+12,2);
+-           if (strlen((char*)tmp->data)>14) strcat(buf+19,(char*)tmp->data+14);
++           strncpy(buf,   tmp_data,   4);
++           strncpy(buf+5, tmp_data+4, 2);
++           strncpy(buf+8, tmp_data+6, 2);
++           strncpy(buf+11,tmp_data+8, 2);
++           strncpy(buf+14,tmp_data+10,2);
++           strncpy(buf+17,tmp_data+12,2);
++           if (strlen(tmp_data)>14) strcat(buf+19,tmp_data+14);
+          }
+        }
+        ASN1_GENERALIZEDTIME_free(tmp);
+@@ -5211,7 +5226,6 @@ P_ASN1_TIME_set_isotime(tm,str)
+      ASN1_TIME *tm
+      const char *str
+      PREINIT:
+-     ASN1_TIME t;
+      char buf[256];
+      int i,rv;
+      CODE:
+@@ -5233,22 +5247,27 @@ P_ASN1_TIME_set_isotime(tm,str)
+      buf[14] = '\0';
+      if (strlen(str)>19 && strlen(str)<200) strcat(buf,str+19);
+ 
+-     /* WORKAROUND: ASN1_TIME_set_string() not available in 0.9.8 !!!*/
+-     /* in 1.0.0 we would simply: rv = ASN1_TIME_set_string(tm,buf); */
+-     t.length = strlen(buf);
+-     t.data = (unsigned char *)buf;
+-     t.flags = 0;
+-     t.type = V_ASN1_UTCTIME;
+-     if (!ASN1_TIME_check(&t)) {
+-        t.type = V_ASN1_GENERALIZEDTIME;
+-        if (!ASN1_TIME_check(&t)) XSRETURN_UNDEF;
++     /* ASN1_TIME_set_string() not available in 0.9.8 */
++#if OPENSSL_VERSION_NUMBER >= 0x10000000L
++     rv = ASN1_TIME_set_string(tm, buf);
++     if (!rv) XSRETURN_UNDEF;
++#else
++     {
++        ASN1_TIME t;
++        t.length = strlen(buf);
++        t.data = (unsigned char *)buf;
++        t.flags = 0;
++        t.type = V_ASN1_UTCTIME;
++        if (!ASN1_TIME_check(&t)) {
++           t.type = V_ASN1_GENERALIZEDTIME;
++           if (!ASN1_TIME_check(&t)) XSRETURN_UNDEF;
++        }
++        tm->type = t.type;
++        tm->flags = t.flags;
++        if (!ASN1_STRING_set(tm,t.data,t.length)) XSRETURN_UNDEF;
++        rv = 1;
+      }
+-     tm->type = t.type;
+-     tm->flags = t.flags;
+-     if (!ASN1_STRING_set(tm,t.data,t.length)) XSRETURN_UNDEF;
+-     rv = 1;
+-
+-     /* end of ASN1_TIME_set_string() reimplementation */
++#endif
+ 
+      ST(0) = sv_newmortal();
+      sv_setiv(ST(0), rv); /* 1 = success, undef = failure */
+
+From 46c154477c11a66ec69b9ea6a420a281066a9af1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michal=20Josef=20=C5=A0pa=C4=8Dek?= <mspacek@redhat.com>
+Date: Tue, 14 Apr 2026 14:48:51 +0200
+Subject: [PATCH 4/5] Update tests for removal of SSLv2 Client Hello support in
+ OpenSSL 4.0.0
+
+---
+ t/local/48_client_hello_callback.t | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/t/local/48_client_hello_callback.t b/t/local/48_client_hello_callback.t
+index d99122c..110d769 100644
+--- a/t/local/48_client_hello_callback.t
++++ b/t/local/48_client_hello_callback.t
+@@ -5,13 +5,15 @@ use Test::Net::SSLeay qw(
+     can_fork data_file_path initialise_libssl new_ctx tcp_socket
+ );
+ 
++my $has_sslv2_hello;
+ BEGIN {
+     if (not defined &Net::SSLeay::CTX_set_client_hello_cb) {
+         plan skip_all => "No SSL_CTX_set_client_hello_cb()";
+     } elsif (not can_fork()) {
+         plan skip_all => "fork() not supported on this system";
+     } else {
+-        plan tests => 41;
++        $has_sslv2_hello = Net::SSLeay::SSLeay() < 0x40000000;
++        plan tests => $has_sslv2_hello ? 41 : 30;
+     }
+ }
+ 
+@@ -172,7 +174,7 @@ my @cb_tests = (
+     # argument passed to the callback
+     # true if the callback function triggers croak()
+     # true if the client needs to test that ALPN alert (120) is received
+-    [ \&client_hello_cb_v2hello_detection, undef, 0 ],
++    ($has_sslv2_hello ? [ \&client_hello_cb_v2hello_detection, undef, 0 ] : ()),
+     [ \&client_hello_cb_getters, undef, 0 ],
+     [ \&client_hello_cb_value_passing, \$cb_test_arg, 0 ],
+     [ \&client_hello_cb_alert_alpn, undef, 0, 'alerts'],
+@@ -248,8 +250,8 @@ my @results;
+     };
+ 
+     # Start with SSLv2 ClientHello detection test. Send a canned SSLv2
+-    # ClientHello.
+-    {
++    # ClientHello. Removed in OpenSSL 4.0.0.
++    if ($has_sslv2_hello) {
+ 	my $s_clientv2 = $server->connect();
+ 	my $clientv2_hello = get_sslv2_hello();
+ 	syswrite($s_clientv2, $clientv2_hello, length $clientv2_hello);
+@@ -306,7 +308,7 @@ my @results;
+ waitpid $pid, 0;
+ push @results, [$? == 0, 'Client: server exited with 0'];
+ END {
+-  Test::More->builder->current_test(37);
++  Test::More->builder->current_test($has_sslv2_hello ? 37 : 27);
+   ok( $_->[0], $_->[1] ) for (@results);
+ }
+ 
+
+From 406f41ab39fe2acdea51589bf190628f1001338e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michal=20Josef=20=C5=A0pa=C4=8Dek?= <mspacek@redhat.com>
+Date: Tue, 14 Apr 2026 14:55:42 +0200
+Subject: [PATCH 5/5] Add default '' for Net::SSLeay::OPENSSL_info() return
+ value in tests
+
+The root cause was the removal of engines in OpenSSL 4.0.0, which
+triggered a warning.
+---
+ t/local/03_use.t | 17 +++++++++--------
+ 1 file changed, 9 insertions(+), 8 deletions(-)
+
+diff --git a/t/local/03_use.t b/t/local/03_use.t
+index 36364b4..f8fd1ae 100644
+--- a/t/local/03_use.t
++++ b/t/local/03_use.t
+@@ -63,12 +63,13 @@ if (defined &Net::SSLeay::OPENSSL_version_major) {
+     diag("  OPENSSL_version_build_metadata(): '" . Net::SSLeay::OPENSSL_version_build_metadata() . "'");
+     diag("");
+     diag("Library information with OPENSSL_info():");
+-    diag("  OPENSSL_INFO_CONFIG_DIR:             '" . Net::SSLeay::OPENSSL_info(Net::SSLeay::OPENSSL_INFO_CONFIG_DIR())             . "'");
+-    diag("  OPENSSL_INFO_ENGINES_DIR:            '" . Net::SSLeay::OPENSSL_info(Net::SSLeay::OPENSSL_INFO_ENGINES_DIR())            . "'");
+-    diag("  OPENSSL_INFO_MODULES_DIR:            '" . Net::SSLeay::OPENSSL_info(Net::SSLeay::OPENSSL_INFO_MODULES_DIR())            . "'");
+-    diag("  OPENSSL_INFO_DSO_EXTENSION:          '" . Net::SSLeay::OPENSSL_info(Net::SSLeay::OPENSSL_INFO_DSO_EXTENSION())          . "'");
+-    diag("  OPENSSL_INFO_DIR_FILENAME_SEPARATOR: '" . Net::SSLeay::OPENSSL_info(Net::SSLeay::OPENSSL_INFO_DIR_FILENAME_SEPARATOR()) . "'");
+-    diag("  OPENSSL_INFO_LIST_SEPARATOR:         '" . Net::SSLeay::OPENSSL_info(Net::SSLeay::OPENSSL_INFO_LIST_SEPARATOR())         . "'");
+-    diag("  OPENSSL_INFO_SEED_SOURCE:            '" . Net::SSLeay::OPENSSL_info(Net::SSLeay::OPENSSL_INFO_SEED_SOURCE())            . "'");
+-    diag("  OPENSSL_INFO_CPU_SETTINGS:           '" . Net::SSLeay::OPENSSL_info(Net::SSLeay::OPENSSL_INFO_CPU_SETTINGS())           . "'");
++    my $ossl_info = sub { my $v = Net::SSLeay::OPENSSL_info($_[0]); defined $v ? $v : '' };
++    diag("  OPENSSL_INFO_CONFIG_DIR:             '" . $ossl_info->(Net::SSLeay::OPENSSL_INFO_CONFIG_DIR())             . "'");
++    diag("  OPENSSL_INFO_ENGINES_DIR:            '" . $ossl_info->(Net::SSLeay::OPENSSL_INFO_ENGINES_DIR())            . "'");
++    diag("  OPENSSL_INFO_MODULES_DIR:            '" . $ossl_info->(Net::SSLeay::OPENSSL_INFO_MODULES_DIR())            . "'");
++    diag("  OPENSSL_INFO_DSO_EXTENSION:          '" . $ossl_info->(Net::SSLeay::OPENSSL_INFO_DSO_EXTENSION())          . "'");
++    diag("  OPENSSL_INFO_DIR_FILENAME_SEPARATOR: '" . $ossl_info->(Net::SSLeay::OPENSSL_INFO_DIR_FILENAME_SEPARATOR()) . "'");
++    diag("  OPENSSL_INFO_LIST_SEPARATOR:         '" . $ossl_info->(Net::SSLeay::OPENSSL_INFO_LIST_SEPARATOR())         . "'");
++    diag("  OPENSSL_INFO_SEED_SOURCE:            '" . $ossl_info->(Net::SSLeay::OPENSSL_INFO_SEED_SOURCE())            . "'");
++    diag("  OPENSSL_INFO_CPU_SETTINGS:           '" . $ossl_info->(Net::SSLeay::OPENSSL_INFO_CPU_SETTINGS())           . "'");
+ }
