@@ -22,8 +22,8 @@ inherit estack toolchain-funcs
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Comma-separated list of app-arch/rpm compression formats. If set,
-# app-arch/rpm will be allowed as a BDEPEND to unpack distfiles. Supported
-# types:
+# app-arch/rpm will be allowed as a BDEPEND to unpack distfiles. Must be set
+# for EAPI 9. Supported types:
 #
 # - none (rpm is supported but distfile is uncompressed or builtin zlib)
 #
@@ -37,6 +37,9 @@ inherit estack toolchain-funcs
 # - zstd (.zst)
 #
 # - "" (empty -- the ebuild hasn't been updated to resolve deprecations)
+if [[ ${EAPI} != [78] && -z ${RPM_COMPRESS_TYPE} ]]; then
+	die "RPM_COMPRESS_TYPE= must be defined starting with EAPI 9"
+fi
 
 _rpm_set_globals() {
 	local rpmdep= rpmuse= rpm2tar="true" t= types=()
