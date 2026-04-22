@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>bacs@librecast.net</email>
+		<name>Brett A C Sheffield</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>vim@gentoo.org</email>
+		<name>Gentoo Vim Project</name>
+	</maintainer>
+	<use>
+		<flag name="cscope">Enable cscope interface</flag>
+		<flag name="netbeans">Include netbeans external editor integration support</flag>
+		<flag name="racket">Enable support for Scheme using <pkg>dev-scheme/racket</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="sourcehut">~sircmpwn/vim-classic</remote-id>
+	</upstream>
+</pkgmetadata>
