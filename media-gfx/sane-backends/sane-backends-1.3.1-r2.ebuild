@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..14} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 # python-any-r1 required for a script in backends/pixma/scripts/
 inherit autotools flag-o-matic multilib-minimal optfeature python-any-r1 systemd toolchain-funcs udev
