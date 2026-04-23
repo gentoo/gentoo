@@ -37,6 +37,10 @@ BDEPEND="
 	test? ( dev-cpp/gtest )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-cmake4.patch
+)
+
 src_configure() {
 	append-flags -fno-strict-aliasing #858524
 
