@@ -28,3 +28,7 @@ DEPEND="${RDEPEND}
 		kde-plasma/kactivitymanagerd:6
 	)
 "
+
+CMAKE_SKIP_TESTS=(
+	PlasmaActivitiesStatsTest # permission denied; bug 970321
+)
