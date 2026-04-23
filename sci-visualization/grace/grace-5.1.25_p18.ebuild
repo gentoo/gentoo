@@ -58,6 +58,7 @@ src_prepare() {
 
 		eapply -p1 "${WORKDIR}/debian/patches/${p}"
 	done
+	eapply "${FILESDIR}"/${P}-ldflags.patch
 
 	# don't strip if not asked for
 	sed -i \
