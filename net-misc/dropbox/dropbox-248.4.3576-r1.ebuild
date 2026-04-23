@@ -22,9 +22,6 @@ RESTRICT="mirror strip"
 QA_PREBUILT="opt/.*"
 QA_EXECSTACK="opt/dropbox/dropbox"
 
-BDEPEND="dev-util/patchelf"
-
-# Be sure to have GLIBCXX_3.4.9, #393125
 RDEPEND="
 	X? (
 		x11-themes/hicolor-icon-theme
