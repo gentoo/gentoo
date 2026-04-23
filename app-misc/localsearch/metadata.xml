@@ -14,6 +14,7 @@
     <flag name="gstreamer">Enable support for metadata writeback functionality</flag>
     <flag name="playlist">Add support for playlists</flag>
     <flag name="xps">Add support for XPS file format through <pkg>app-text/libgxps</pkg>.</flag>
+    <flag name="zip">Support extracting zipped EPUB, OOXML and ODF files using <pkg>dev-libs/libzip</pkg></flag>
   </use>
   <upstream>
     <remote-id type="gnome-gitlab">GNOME/localsearch</remote-id>
