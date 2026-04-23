@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit desktop python-single-r1
 
 DESCRIPTION="Traditional and challenging 2D platformer game with a slight rotational twist"
