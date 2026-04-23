@@ -4,19 +4,19 @@
 # @ECLASS: qt6-build.eclass
 # @MAINTAINER:
 # qt@gentoo.org
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @PROVIDES: cmake
 # @BLURB: Eclass for Qt6 split ebuilds.
 # @DESCRIPTION:
 # This eclass contains various functions that are used when building Qt6.
 
-case ${EAPI} in
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_QT6_BUILD_ECLASS} ]]; then
 _QT6_BUILD_ECLASS=1
+
+case ${EAPI} in
+	8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 [[ ${CATEGORY} != dev-qt ]] &&
 	die "${ECLASS} is only to be used for building Qt6"

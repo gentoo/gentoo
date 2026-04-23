@@ -8,19 +8,22 @@
 # ML <ml@gentoo.org>
 # @AUTHOR:
 # Rafael Kitover <rkitover@gmail.com>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: Provides functions for installing Dune packages.
 # @DESCRIPTION:
 # Provides dependencies on Dune and OCaml and default src_compile, src_test and
 # src_install for Dune-based packages.
 
+if [[ -z ${_DUNE_ECLASS} ]]; then
+_DUNE_ECLASS=1
+
 case ${EAPI} in
-	7|8) ;;
+	7|8) inherit edo ;;
+	9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ -z ${_DUNE_ECLASS} ]]; then
-_DUNE_ECLASS=1
+inherit multiprocessing
 
 # @ECLASS_VARIABLE: DUNE_PKG_NAME
 # @PRE_INHERIT
@@ -28,8 +31,6 @@ _DUNE_ECLASS=1
 # Sets the actual Dune package name, if different from Gentoo package name.
 # Set before inheriting the eclass.
 : "${DUNE_PKG_NAME:=${PN}}"
-
-inherit edo multiprocessing
 
 # Do not complain about CFLAGS etc since ml projects do not use them.
 QA_FLAGS_IGNORED='.*'

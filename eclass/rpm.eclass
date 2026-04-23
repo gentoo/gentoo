@@ -4,16 +4,17 @@
 # @ECLASS: rpm.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: convenience class for extracting RPMs
-
-case ${EAPI} in
-	7|8) inherit eapi9-pipestatus ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
 
 if [[ -z ${_RPM_ECLASS} ]] ; then
 _RPM_ECLASS=1
+
+case ${EAPI} in
+	7|8) inherit eapi9-pipestatus ;;
+	9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 inherit estack
 

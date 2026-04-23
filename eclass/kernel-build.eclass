@@ -6,7 +6,7 @@
 # Distribution Kernel Project <dist-kernel@gentoo.org>
 # @AUTHOR:
 # Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @PROVIDES: kernel-install
 # @BLURB: Build mechanics for Distribution Kernels
 # @DESCRIPTION:
@@ -28,13 +28,13 @@
 # kernel's release version and Gentoo's tooling. This is set by
 # kernel-build_src_configure() once we have a kernel.release file.
 
-case ${EAPI} in
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_KERNEL_BUILD_ECLASS} ]]; then
 _KERNEL_BUILD_ECLASS=1
+
+case ${EAPI} in
+	8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 PYTHON_COMPAT=( python3_{11..14} )
 
