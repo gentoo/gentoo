@@ -9,6 +9,7 @@ PYPI_VERIFY_REPO=https://github.com/ijl/orjson
 PYTHON_COMPAT=( python3_{11..14} )
 
 # upstream is vendoring crates, so we don't need CRATES.
+RUST_MAX_VER="1.94.1" # bug #972911
 RUST_MIN_VER="1.89.0"
 
 inherit cargo distutils-r1 pypi
