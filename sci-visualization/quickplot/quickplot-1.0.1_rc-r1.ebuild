@@ -21,7 +21,7 @@ KEYWORDS="amd64 ~ppc ~x86"
 RDEPEND="
 	media-libs/libsndfile:=
 	>=sys-libs/readline-0.6.2:0=
-	x11-libs/gtk+:3"
+	x11-libs/gtk+:3[X]"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/imagemagick-tools[png]
