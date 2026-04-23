@@ -92,6 +92,7 @@ src_configure() {
 
 src_compile() {
 	use doc && MAKEOPTS+=" -j1" # docs fail with parallel build. Bug: 904135
+	default
 }
 
 src_install() {
