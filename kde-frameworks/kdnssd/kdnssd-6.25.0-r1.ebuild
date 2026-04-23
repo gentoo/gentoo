@@ -9,24 +9,28 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Framework for network service discovery using Zeroconf"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~loong"
-IUSE="zeroconf"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+IUSE="minimal"
 
 DEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[network]
-	zeroconf? (
+	!minimal? (
 		>=dev-qt/qtbase-${QTMIN}:6[dbus]
 		net-dns/avahi[mdnsresponder-compat]
 	)
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!minimal? ( elibc_glibc? ( sys-auth/nss-mdns ) )
+"
 BDEPEND=">=dev-qt/qttools-${QTMIN}:6[linguist]"
 
 src_configure() {
-	local mycmakeargs=(
-		$(cmake_use_find_package zeroconf Avahi)
-	)
-	use zeroconf || mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_DNSSD=ON )
+	if use minimal; then
+		local mycmakeargs=(
+			-DCMAKE_DISABLE_FIND_PACKAGE_Avahi=ON
+			-DCMAKE_DISABLE_FIND_PACKAGE_DNSSD=ON
+		)
+	fi
 
 	ecm_src_configure
 }
