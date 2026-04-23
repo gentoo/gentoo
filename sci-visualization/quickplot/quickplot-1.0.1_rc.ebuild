@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -46,7 +46,6 @@ src_install() {
 	default
 
 	make_desktop_entry 'quickplot --no-pipe' Quickplot quickplot Graphics
-	mv "${ED}"/usr/share/applications/quickplot{*,}.desktop || die
 
 	# no static archives
 	find "${ED}" -name '*.la' -delete || die
