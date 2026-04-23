@@ -125,6 +125,8 @@ python_test() {
 		cli_tests
 		# fragile depending on rust version, also wants libpypy*-c.so for pypy
 		errors::pyo3_no_extension_module
+		# fails for unsupported rust targets, non-issue here (bug #973104)
+		errors::pypi_compatibility_linux_tag
 		# unimportant tests that require uv, and not obvious to get it
 		# to work with network-sandbox (not worth the trouble)
 		develop::develop_uv_cases::case_1_hello_world
