@@ -1,28 +1,25 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+COMMIT="8aa8d91747ff414ab0de19aae1e0dbd739acea2c"
 LUA_COMPAT=( lua5-1 )
-
 WX_GTK_VER="3.2-gtk3"
-inherit cmake flag-o-matic lua-single wxwidgets
+inherit cmake flag-o-matic lua-single toolchain-funcs wxwidgets
 
-MY_PN="OpenSceneGraph"
-MY_P=${MY_PN}-${PV}
-
-DESCRIPTION="Open source high performance 3D graphics toolkit"
-HOMEPAGE="https://www.openscenegraph.com/"
-SRC_URI="https://github.com/${PN}/${MY_PN}/archive/${MY_P}.tar.gz"
-S="${WORKDIR}/${MY_PN}-${MY_P}"
+DESCRIPTION="OpenMW-specific fork of OpenSceneGraph"
+HOMEPAGE="https://github.com/OpenMW/osg"
+SRC_URI="https://github.com/OpenMW/osg/archive/${COMMIT}.tar.gz -> ${P}-${COMMIT:0:8}.tar.gz"
+S="${WORKDIR}/osg-${COMMIT}"
 
 LICENSE="wxWinLL-3 LGPL-2.1"
-SLOT="0/161" # NOTE: CHECK WHEN BUMPING! Subslot is SOVERSION
-KEYWORDS="amd64 ~arm64 ~hppa ppc64 x86"
+SLOT="0/162" # NOTE: CHECK WHEN BUMPING! Subslot is SOVERSION
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="
-	collada curl dicom debug doc egl examples ffmpeg fltk fox gdal
-	gif glut gstreamer jpeg lua openexr openinventor osgapps pdf png
-	sdl sdl2 svg tiff truetype vnc wxwidgets xrandr +zlib
+	+collada curl dicom debug doc egl examples fltk fox gdal
+	gif gstreamer +jpeg lua openexr openinventor osgapps pdf +png
+	+sdl sdl2 +svg tiff +truetype vnc wxwidgets xrandr zlib
 "
 
 REQUIRED_USE="
@@ -38,9 +35,10 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-text/doxygen[dot] )
 "
-# <ffmpeg-5 for bug #831486 / bug #834425 and
-# https://github.com/openscenegraph/OpenSceneGraph/issues/1111
 RDEPEND="
+	!dev-games/openscenegraph
+	dev-libs/glib:2
+	media-libs/fontconfig
 	media-libs/mesa[egl(+)?]
 	virtual/glu
 	virtual/opengl
@@ -49,13 +47,11 @@ RDEPEND="
 	collada? ( dev-libs/collada-dom:= )
 	curl? ( net-misc/curl )
 	examples? (
-		fltk? ( x11-libs/fltk:1[opengl] )
+		fltk? ( x11-libs/fltk:1=[opengl] )
 		fox? ( x11-libs/fox:1.6[opengl] )
-		glut? ( media-libs/freeglut )
 		sdl2? ( media-libs/libsdl2 )
 		wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}=[opengl,X] )
 	)
-	ffmpeg? ( <media-video/ffmpeg-5:= )
 	gdal? ( sci-libs/gdal:= )
 	gif? ( media-libs/giflib:= )
 	gstreamer? (
@@ -69,11 +65,11 @@ RDEPEND="
 		>=media-libs/openexr-3:=
 	)
 	openinventor? ( media-libs/coin )
-	pdf? ( app-text/poppler[cairo] )
+	pdf? ( app-text/poppler:=[cairo] )
 	png? ( media-libs/libpng:0= )
 	sdl? ( media-libs/libsdl )
 	svg? (
-		gnome-base/librsvg
+		gnome-base/librsvg:2
 		x11-libs/cairo
 	)
 	tiff? ( media-libs/tiff:= )
@@ -83,18 +79,13 @@ RDEPEND="
 	zlib? ( virtual/zlib:= )
 "
 DEPEND="${RDEPEND}
-	dev-libs/boost
 	x11-base/xorg-proto
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.6.3-cmake.patch
-	"${FILESDIR}"/${PN}-3.6.3-docdir.patch
-	"${FILESDIR}"/${PN}-3.6.5-use_boost_asio.patch
-	"${FILESDIR}"/${PN}-3.6.5-cmake_lua_version.patch
-	"${FILESDIR}"/${PN}-3.6.5-openexr3.patch
-	"${FILESDIR}"/${PN}-3.6.5-remove-register-keyword.patch
-	"${FILESDIR}"/${PN}-3.6.5-boost-1.87.0.patch
+	"${FILESDIR}"/${PN}-3.6_p20260122-cmake.patch # examples path
+	"${FILESDIR}"/${PN}-3.6_p20221115-cmake-lua_version.patch # downstream patch
+	"${FILESDIR}"/openscenegraph-3.6-openexr3.patch
 )
 
 pkg_setup() {
@@ -108,12 +99,14 @@ src_configure() {
 
 	# Needed by FFmpeg
 	append-cppflags -D__STDC_CONSTANT_MACROS
+	# bug #955848
+	tc-is-lto && filter-flags -fno-semantic-interposition
 
-	local libdir=$(get_libdir)
 	local mycmakeargs=(
-		-DCMAKE_RELWITHDEBINFO_POSTFIX=
 		-DDYNAMIC_OPENSCENEGRAPH=ON
-		-DLIB_POSTFIX=${libdir/lib}
+		-DBUILD_OSG_PLUGINS_BY_DEFAULT=0
+		-DBUILD_OSG_PLUGIN_OSG=1
+		-DBUILD_OSG_DEPRECATED_SERIALIZERS=0
 		-DOPENGL_PROFILE=GL2 #GL1 GL2 GL3 GLES1 GLES3 GLES3
 		$(cmake_use_find_package collada COLLADA)
 		$(cmake_use_find_package curl CURL)
@@ -121,7 +114,7 @@ src_configure() {
 		$(cmake_use_find_package dicom DCMTK)
 		$(cmake_use_find_package egl EGL)
 		-DBUILD_OSG_EXAMPLES=$(usex examples)
-		$(cmake_use_find_package ffmpeg FFmpeg)
+		-DCMAKE_DISABLE_FIND_PACKAGE_FFmpeg=ON
 		$(cmake_use_find_package gdal GDAL)
 		$(cmake_use_find_package gif GIFLIB)
 		$(cmake_use_find_package gstreamer GLIB)
@@ -133,7 +126,7 @@ src_configure() {
 		# https://github.com/openscenegraph/OpenSceneGraph/pull/1093
 		# https://github.com/OpenMW/osg/pull/33
 		-DCMAKE_DISABLE_FIND_PACKAGE_LIBLAS=ON
-		$(cmake_use_find_package lua Lua)
+		-DBUILD_OSG_LUA_PLUGIN=$(usex lua)
 		-DCMAKE_DISABLE_FIND_PACKAGE_OpenCascade=ON
 		$(cmake_use_find_package openexr OpenEXR)
 		$(cmake_use_find_package openinventor Inventor)
@@ -149,13 +142,13 @@ src_configure() {
 		-DOSGVIEWER_USE_XRANDR=$(usex xrandr)
 		$(cmake_use_find_package zlib ZLIB)
 		-DOSG_USE_LOCAL_LUA_SOURCE=OFF
+		-DCMAKE_RELWITHDEBINFO_POSTFIX=
 	)
 
 	if use examples; then
 		mycmakeargs+=(
 			$(cmake_use_find_package fltk FLTK)
 			$(cmake_use_find_package fox FOX)
-			$(cmake_use_find_package glut GLUT)
 			$(cmake_use_find_package wxwidgets wxWidgets)
 		)
 	fi
