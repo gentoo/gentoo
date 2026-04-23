@@ -240,11 +240,11 @@ src_install() {
 
 		insinto /usr/share/gtksourceview-4/language-specs
 		doins "${S}"/extras/gedit/conky.lang
+
+		rm -r "${ED}"/{nano,vim} || die
 	fi
 
 	readme.gentoo_create_doc
-
-	rm -r "${ED}"/{nano,vim} || die
 }
 
 pkg_postinst() {
