@@ -1,0 +1,81 @@
+https://github.com/bleachbit/bleachbit/commit/3d6099e59d9aef25d31e725de2c5e58f7beb9b4e
+
+Modified to apply as a backport
+
+From 3d6099e59d9aef25d31e725de2c5e58f7beb9b4e Mon Sep 17 00:00:00 2001
+From: Andrew Ziem <ahz001@gmail.com>
+Date: Thu, 5 Feb 2026 21:24:47 -0700
+Subject: [PATCH] Fix and test Python 3.14+pyttest
+
+--- a/tests/TestGUI.py
++++ b/tests/TestGUI.py
+@@ -24,8 +24,10 @@
+ """
+ 
+ import os
++import sys
+ import unittest
+ import time
+ import types
++import warnings
+ from unittest import mock
+ 
+@@ -86,7 +80,22 @@ def tearDownClass(cls):
+     @classmethod
+     def refresh_gui(cls, delay=0):
+         while Gtk.events_pending():
+-            Gtk.main_iteration_do(blocking=False)
++            if sys.version_info >= (3, 14):
++                with warnings.catch_warnings():
++                    warnings.simplefilter("error")
++                    warnings.filterwarnings(
++                        "ignore",
++                        message=".*asyncio.AbstractEventLoopPolicy.*",
++                        category=DeprecationWarning
++                    )
++                    warnings.filterwarnings(
++                        "ignore",
++                        message=".*asyncio.get_event_loop_policy.*",
++                        category=DeprecationWarning
++                    )
++                    Gtk.main_iteration_do(blocking=False)
++            else:
++                Gtk.main_iteration_do(blocking=False)
+         time.sleep(delay)
+ 
+     @classmethod
+--- a/tests/TestGuiChaff.py
++++ b/tests/TestGuiChaff.py
+@@ -27,6 +27,8 @@
+ import tempfile
+ import time
+ import unittest
++import warnings
++import sys
+ from unittest.mock import patch, MagicMock
+ 
+ from tests import common
+@@ -64,7 +66,22 @@ def setUpClass(cls):
+     @classmethod
+     def refresh_gui(cls, delay=0):
+         while Gtk.events_pending():
+-            Gtk.main_iteration_do(blocking=False)
++            if sys.version_info >= (3, 14):
++                with warnings.catch_warnings():
++                    warnings.simplefilter("error")
++                    warnings.filterwarnings(
++                        "ignore",
++                        message=".*asyncio.AbstractEventLoopPolicy.*",
++                        category=DeprecationWarning
++                    )
++                    warnings.filterwarnings(
++                        "ignore",
++                        message=".*asyncio.get_event_loop_policy.*",
++                        category=DeprecationWarning
++                    )
++                    Gtk.main_iteration_do(blocking=False)
++            else:
++                Gtk.main_iteration_do(blocking=False)
+         time.sleep(delay)
+ 
+     def setUp(self):
