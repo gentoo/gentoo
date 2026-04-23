@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/972754
+
+We do not use vboxvideo but the default Makefile builds it anyway.
+
+Note:
+Since 7.2.8, upstream disables it for kernels 7+.
+This patch disables it always.
+
+
+--- a/Makefile
++++ b/Makefile
+@@ -42,9 +42,7 @@
+ VBOX_QUIET_SH := set -x;
+  endif
+ 
+-KERN_MAJ = $(shell uname -r | cut -d . -f1)
+-
+-all: vboxguest vboxsf $(if $(shell [ "$(KERN_MAJ)" -lt 7 ] && echo y),vboxvideo,)
++all: vboxguest vboxsf
+ 
+ vboxguest:
+ 	@echo "=== Building 'vboxguest' module ==="
