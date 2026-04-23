@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,20 +11,16 @@ SRC_URI="https://github.com/jarun/nnn/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="8contexts colemak emoji gitstatus icons namefirst nerdfonts pcre qsort +readline restorepreview"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+IUSE="colemak emoji gitstatus icons namefirst nerdfonts pcre qsort +readline restorepreview"
 
 DEPEND="sys-libs/ncurses:=
-	pcre? ( dev-libs/libpcre )
+	pcre? ( dev-libs/libpcre2 )
 	readline? ( sys-libs/readline:= )
 	elibc_musl? ( sys-libs/fts-standalone )"
 BDEPEND="virtual/pkgconfig"
 RDEPEND="${DEPEND}"
 REQUIRED_USE="?? ( icons nerdfonts emoji )"
-
-PATCHES=(
-	"${FILESDIR}/nnn-5.0_fix_strcasecmp.patch"
-)
 
 src_prepare() {
 	default
@@ -38,8 +34,7 @@ src_prepare() {
 src_compile() {
 	nnn_opts=(
 		O_NORL=$(usex readline 0 1)
-		O_PCRE=$(usex pcre 1 0)
-		O_CTX8=$(usex 8contexts 1 0)
+		O_PCRE2=$(usex pcre 1 0)
 		O_ICONS=$(usex icons 1 0)
 		O_NERD=$(usex nerdfonts 1 0)
 		O_EMOJI=$(usex emoji 1 0)
