@@ -6,7 +6,7 @@ EAPI=8
 inherit flag-o-matic libtool
 
 DESCRIPTION="PMIx Reference RunTime Environment"
-HOMEPAGE="https://openpmix.github.io/"
+HOMEPAGE="https://openpmix.org/"
 SRC_URI="https://github.com/openpmix/prrte/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="BSD"
