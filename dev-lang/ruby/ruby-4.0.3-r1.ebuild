@@ -209,6 +209,8 @@ src_configure() {
 	append-flags -fno-strict-aliasing
 	# Fails to link (gcc PR124865, gcc PR50676)
 	filter-flags -flto-partition=cache
+	# bug #972696
+	append-cppflags -DRB_THREAD_CURRENT_EC_NOINLINE
 
 	# Workaround for bug #938302
 	if use systemtap && has_version "dev-debug/systemtap[-dtrace-symlink(+)]" ; then
