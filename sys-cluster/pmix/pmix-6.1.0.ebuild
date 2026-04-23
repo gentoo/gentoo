@@ -42,6 +42,7 @@ src_configure() {
 		# tries to build both zlib and zlib-ng
 		--without-zlibng
 
+		--enable-ipv6
 		$(use_enable debug)
 		$(use_with munge)
 	)
