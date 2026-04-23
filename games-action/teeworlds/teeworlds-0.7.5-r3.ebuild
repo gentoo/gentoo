@@ -49,7 +49,7 @@ src_configure() {
 }
 
 src_test() {
-	eninja run_tests
+	cmake_build run_tests
 }
 
 src_install() {
