@@ -1,0 +1,24 @@
+pppd converts mplscp_nakci to an `int (*)(fsm *, u_char *, int, int)`. Having an
+incorrect signature causes clang to warn and -Werror out.
+
+--- a/pppd/mplscp.c
++++ b/pppd/mplscp.c
+@@ -25,7 +25,7 @@ static void mplscp_resetci (fsm *);	/* Reset our CI */
+ static int  mplscp_cilen (fsm *);	/* Return length of our CI */
+ static void mplscp_addci (fsm *, u_char *, int *); 	/* Add our CI */
+ static int  mplscp_ackci (fsm *, u_char *, int);	/* Peer ack'd our CI */
+-static int  mplscp_nakci (fsm *, u_char *, int);	/* Peer nak'd our CI */
++static int  mplscp_nakci (fsm *, u_char *, int, int);	/* Peer nak'd our CI */
+ static int  mplscp_rejci (fsm *, u_char *, int);	/* Peer rej'd our CI */
+ static int  mplscp_reqci (fsm *, u_char *, int *, int); /* Rcv CI */
+ static void mplscp_up (fsm *);		/* We're UP */
+@@ -218,7 +218,7 @@ mplscp_ackci(fsm *f, u_char *p, int  len) {
+  *	1 - Nak was good.
+  */
+ static int
+-mplscp_nakci(fsm *f, u_char *p, int len) {
++mplscp_nakci(fsm *f, u_char *p, int len, int unused) {
+ 
+   return 1;
+ }
+
