@@ -58,6 +58,7 @@ CMAKE_SKIP_TESTS=(
 	# last checked 2025-07-17, also fails upstream
 	# FAIL!  : TestConfig::testDisabledScreenConfig() Compared values are not the same
 	kscreen-kded-configtest
+	kscreen-kded-testgenerator # bugs 580440, 970323
 )
 
 src_prepare() {
