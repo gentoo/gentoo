@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alfredo Tupone <tupone@gentoo.org> (2026-04-23)
+# Requires qtwebengine
+sci-visualization/xyscan
+
 # Mario Haustein <mario.haustein@hrz.tu-chemnitz.de> (2025-10-06)
 # Requires qtwebengine
 media-radio/qlog
