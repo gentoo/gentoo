@@ -1,0 +1,73 @@
+From 03be204a38744b2045c9e4face7534459ce93d9e Mon Sep 17 00:00:00 2001
+From: efferre79 <rossi.f@inwind.it>
+Date: Mon, 10 Jun 2024 09:43:15 +0200
+Subject: [PATCH] added support to boost::timer 1.83+ (#463)
+
+* added support to boost::timer 1.83+
+
+* update also the cmake file
+---
+ orocos_kdl/examples/CMakeLists.txt                |  7 ++++++-
+ orocos_kdl/examples/chainiksolverpos_lma_demo.cpp | 14 ++++++++++++++
+ 2 files changed, 20 insertions(+), 1 deletion(-)
+
+diff --git orocos_kdl/examples/CMakeLists.txt orocos_kdl/examples/CMakeLists.txt
+index bc5cbc02e..1e257496c 100644
+--- orocos_kdl/examples/CMakeLists.txt
++++ orocos_kdl/examples/CMakeLists.txt
+@@ -8,7 +8,12 @@ IF(ENABLE_EXAMPLES)
+   TARGET_LINK_LIBRARIES(trajectory_example orocos-kdl)
+   
+   add_executable(chainiksolverpos_lma_demo chainiksolverpos_lma_demo.cpp )
+-  TARGET_LINK_LIBRARIES(chainiksolverpos_lma_demo orocos-kdl orocos-kdl-models)
++  find_package(Boost REQUIRED)
++  IF(${Boost_VERSION_MACRO} LESS 108300)
++    TARGET_LINK_LIBRARIES(chainiksolverpos_lma_demo orocos-kdl orocos-kdl-models)
++  ELSE()
++    TARGET_LINK_LIBRARIES(chainiksolverpos_lma_demo boost_timer orocos-kdl orocos-kdl-models)
++  ENDIF()
+ 
+ ENDIF(ENABLE_EXAMPLES)  
+ 
+diff --git orocos_kdl/examples/chainiksolverpos_lma_demo.cpp orocos_kdl/examples/chainiksolverpos_lma_demo.cpp
+index 55ffe7e72..34f0bdcdb 100644
+--- orocos_kdl/examples/chainiksolverpos_lma_demo.cpp
++++ orocos_kdl/examples/chainiksolverpos_lma_demo.cpp
+@@ -56,7 +56,12 @@ estimate of shortest time per invposkin (ms) 0.155544
+ #include <chainfksolverpos_recursive.hpp>
+ #include <utilities/utility.h>
+ 
++#include <boost/version.hpp>
++#if BOOST_VERSION < 108300
+ #include <boost/timer.hpp>
++#else
++#include <boost/timer/timer.hpp>
++#endif
+ 
+ /**
+  * tests the inverse kinematics on the given kinematic chain for a
+@@ -64,7 +69,11 @@ estimate of shortest time per invposkin (ms) 0.155544
+  * \TODO provide other examples.
+  */
+ void test_inverseposkin(KDL::Chain& chain) {
++#if BOOST_VERSION < 108300
+     boost::timer timer;
++#else
++    boost::timer::cpu_timer timer;
++#endif
+     int num_of_trials = 1000000;
+     int total_number_of_iter = 0;
+     int n = chain.getNrOfJoints();
+@@ -159,7 +168,12 @@ void test_inverseposkin(KDL::Chain& chain) {
+     std::cout << "max. trans. difference after solving " << max_trans_diff << std::endl;
+     std::cout << "min. rot. difference after solving " << min_rot_diff << std::endl;
+     std::cout << "max. rot. difference after solving " << max_rot_diff << std::endl;
++#if BOOST_VERSION < 108300
+     double el = timer.elapsed();
++#else
++    boost::timer::cpu_times const ct(timer.elapsed());
++    double el = ct.user / 1e9;
++#endif
+     std::cout << "elapsed time " << el << std::endl;
+     std::cout << "estimate of average time per invposkin (ms)" << el/num_of_trials*1000 << std::endl;
+     std::cout << "estimate of longest time per invposkin (ms) " << el/total_number_of_iter*max_num_of_iter *1000 << std::endl;
