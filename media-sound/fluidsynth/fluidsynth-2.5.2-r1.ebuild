@@ -49,6 +49,10 @@ RDEPEND="${DEPEND}"
 
 DOCS=( AUTHORS CONTRIBUTING.md README.md THANKS TODO doc/fluidsynth-v20-devdoc.txt )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.5.2-big-endian.patch
+)
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
