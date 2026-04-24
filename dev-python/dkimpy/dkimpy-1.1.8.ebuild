@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~ppc x86"
+KEYWORDS="amd64 arm64 ~ppc ~ppc64 x86"
 
 RDEPEND="
 	>=dev-python/dnspython-2.0.0[${PYTHON_USEDEP}]
