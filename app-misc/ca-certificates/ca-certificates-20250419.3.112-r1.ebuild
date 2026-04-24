@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # The Debian ca-certificates package merely takes the CA database as it exists
@@ -120,6 +120,7 @@ src_prepare() {
 	fi
 
 	default
+	eapply -p2 "${FILESDIR}"/${PN}-20250419-root.patch
 	eapply -p2 "${FILESDIR}"/${PN}-20240203.3.98-update-ca-certificates-drop-pointless-dependency.patch
 
 	pushd "${S}/${PN}" >/dev/null || die
