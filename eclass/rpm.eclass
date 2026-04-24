@@ -98,11 +98,11 @@ rpm_unpack() {
 		fi
 
 		local payload= usedep=""
-		if [[ ${a} = *.src.rpm ]]; then
-			payload=none
-		else
-			payload=$($(tc-getSTRINGS) "${a}" | grep -o 'PayloadIs[a-zA-Z]*'; pipestatus || die "failed to grep rpm payload")
-		fi
+		# grep may fail because no payload or because "unknown error", and distinguishing between
+		# the two is problematic. We do a token check that strings works, but rely on rpm failing
+		# with its own well-formed die if we erroneously decide no payload USE flag is needed due
+		# to external commands failing.
+		payload=$($(tc-getSTRINGS) "${a}" | grep -o 'PayloadIs[a-zA-Z]*'; if [[ ${PIPESTATUS[0]} != 0 ]]; then die "strings failed"; fi)
 
 		case ${payload} in
 			"") payload=none;; # gzip/uncompressed
