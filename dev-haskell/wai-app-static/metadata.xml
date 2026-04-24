@@ -6,6 +6,11 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<use>
-		<flag name="print">print debug info.</flag>
+		<flag name="crypton">Use the crypton library for MD5 computation</flag>
+		<flag name="print">print debug info</flag>
 	</use>
+	<upstream>
+		<remote-id type="hackage">wai-app-static</remote-id>
+		<remote-id type="github">yesodweb/wai</remote-id>
+	</upstream>
 </pkgmetadata>

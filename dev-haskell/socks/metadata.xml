@@ -6,6 +6,7 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="hackage">socks</remote-id>
 		<remote-id type="github">vincenthz/hs-socks</remote-id>
 	</upstream>
 </pkgmetadata>

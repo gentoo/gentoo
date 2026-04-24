@@ -1,0 +1,26 @@
+From f2bf25634654f120aa4d6d38e63d2c87dcfc02c6 Mon Sep 17 00:00:00 2001
+From: hololeap <hololeap@protonmail.com>
+Date: Fri, 1 Aug 2025 16:52:48 -0600
+Subject: [PATCH 1/1] Add examples flag (disabled by default)
+
+Signed-off-by: hololeap <hololeap@protonmail.com>
+--- a/fsnotify.cabal
++++ b/fsnotify.cabal
+@@ -81,7 +81,14 @@ library
+     build-depends:
+         hfsevents >=0.1.8
+ 
++flag examples
++  description: Build example executable
++  manual: True
++  default: False
++
+ executable example
++  if !flag(examples)
++      buildable: False
+   main-is: Main.hs
+   other-modules:
+       Paths_fsnotify
+-- 
+2.49.1
+

@@ -1,0 +1,38 @@
+From: hololeap <hololeap@protonmail.com>
+Date: Sat, 9 Mar 2024 15:37:16 -0700
+Subject: [PATCH 1/1] Disable network tests
+
+Signed-off-by: hololeap <hololeap@protonmail.com>
+--- a/http-client.cabal
++++ b/http-client.cabal
+@@ -83,6 +83,7 @@ library
+   default-language:    Haskell2010
+ 
+ test-suite spec
++  buildable: False
+   main-is:             Spec.hs
+   type:                exitcode-stdio-1.0
+   hs-source-dirs:      test
+--- a/test-nonet/Network/HTTP/ClientSpec.hs
++++ b/test-nonet/Network/HTTP/ClientSpec.hs
+@@ -198,7 +198,7 @@ spec = describe "Client" $ do
+           print $ map (requestHeaders . fst) $ hrRedirects hr
+           mapM_ (\r -> requestHeaders r `shouldBe` []) $
+             map fst $ tail $ hrRedirects hr
+-    it "does strips header on redirect, if hosts are different and set to strip them if host differ" $ redirectServerToDifferentHost (Just 1) $ \port -> do
++    when False $ it "does strips header on redirect, if hosts are different and set to strip them if host differ" $ redirectServerToDifferentHost (Just 1) $ \port -> do
+         req' <- parseUrlThrow $ "http://127.0.0.1:" ++ show port
+         let req = req' { requestHeaders = [(hAuthorization, "abguvatgbfrrurer")]
+                        , redirectCount = 10
+@@ -210,7 +210,7 @@ spec = describe "Client" $ do
+           print $ map (requestHeaders . fst) $ hrRedirects hr
+           mapM_ (\r -> requestHeaders r `shouldBe` []) $
+             map fst $ tail $ hrRedirects hr
+-    it "does NOT strips header on redirect, if hosts are same and set to strip them if host differ" $ redirectServerToDifferentHost (Just 1) $ \port -> do
++    when False $ it "does NOT strips header on redirect, if hosts are same and set to strip them if host differ" $ redirectServerToDifferentHost (Just 1) $ \port -> do
+         req' <- parseUrlThrow $ "http://127.0.0.1:" ++ show port
+         let req = req' { requestHeaders = [(hAuthorization, "abguvatgbfrrurer")]
+                        , redirectCount = 10
+-- 
+2.43.0
+
