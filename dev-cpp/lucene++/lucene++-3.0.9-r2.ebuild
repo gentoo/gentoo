@@ -33,6 +33,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.0.9-gcc15.patch"
 	"${FILESDIR}/${PN}-3.0.9-boost-1.89.patch"
 	"${FILESDIR}/${PN}-3.0.9-boost-1.90.patch"
+	"${FILESDIR}/${PN}-3.0.9-no-inline.patch"
 )
 
 src_configure() {
