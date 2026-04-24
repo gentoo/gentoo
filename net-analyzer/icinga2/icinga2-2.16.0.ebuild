@@ -67,7 +67,7 @@ src_configure() {
 		-DICINGA2_WITH_OPENTELEMETRY=$(usex opentelemetry)
 		-DINSTALL_SYSTEMD_SERVICE_AND_INITSCRIPT=ON
 		-DUSE_SYSTEMD=$(usex systemd)
-		-DICINGA2_WITH_TESTS=$(usex test)
+		-DBUILD_TESTING=$(usex test)
 		-DLOGROTATE_HAS_SU=ON
 		# only appends -flto
 		-DICINGA2_LTO_BUILD=OFF
