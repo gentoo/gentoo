@@ -1,4 +1,4 @@
-# Copyright 2010-2025 Gentoo Authors
+# Copyright 2010-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -49,6 +49,7 @@ DOCS=( AUTHORS NEWS.md README.md )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.1.7-fix-missing-cstdint-for-gcc-15.patch"
+	"${FILESDIR}/${PN}-marisa-0.3.0-cxx17.patch"
 )
 
 pkg_setup() {
