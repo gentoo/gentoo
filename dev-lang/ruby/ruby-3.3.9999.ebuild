@@ -284,13 +284,12 @@ src_install() {
 	# Ruby is involved in the install process, we don't want interference here.
 	unset RUBYOPT
 
-	local MINIRUBY=$(echo -e 'include Makefile\ngetminiruby:\n\t@echo $(MINIRUBY)'|make -f - getminiruby)
-
+	local MINIRUBY=$(echo -e 'include Makefile\ngetminiruby:\n\t@echo $(MINIRUBY)' | make -f - getminiruby)
 	local -x LD_LIBRARY_PATH="${S}:${ED}/usr/$(get_libdir)${LD_LIBRARY_PATH+:}${LD_LIBRARY_PATH}"
-
 	local -x RUBYLIB="${S}:${ED}/usr/$(get_libdir)/ruby/${RUBYVERSION}"
+	local d
 	for d in $(find "${S}/ext" -type d) ; do
-		RUBYLIB="${RUBYLIB}:$d"
+		RUBYLIB="${RUBYLIB}:${d}"
 	done
 
 	# Create directory for the default gems
