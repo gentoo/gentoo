@@ -1,0 +1,20 @@
+From 0f713a18c1db6dbd1bcd3234861bdb1a66f79809 Mon Sep 17 00:00:00 2001
+From: Adrian Knagg-Baugh <aje.baugh@gmail.com>
+Date: Fri, 13 Mar 2026 19:58:47 +0000
+Subject: [PATCH] Remove unused header that was problematic on Musl systems
+ (fixes #1930)
+
+--- a/src/io/siril_pythonmodule.h
++++ b/src/io/siril_pythonmodule.h
+@@ -1,8 +1,6 @@
+ #ifndef SRC_IO_SIRIL_PYTHONMODULE_H
+ #define SRC_IO_SIRIL_PYTHONMODULE_H
+ 
+-// Status codes for command responses
+-#include <sys/cdefs.h>
+ // siril_plot_data
+ #include "io/siril_plot.h"
+ 
+-- 
+GitLab
+
