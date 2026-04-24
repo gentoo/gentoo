@@ -6,7 +6,7 @@ EAPI=9
 inherit flag-o-matic libtool
 
 DESCRIPTION="The Process Management Interface (PMI) Exascale"
-HOMEPAGE="https://openpmix.github.io/"
+HOMEPAGE="https://openpmix.org/"
 SRC_URI="https://github.com/openpmix/openpmix/releases/download/v${PV}/${P}.tar.bz2"
 
 LICENSE="BSD"
