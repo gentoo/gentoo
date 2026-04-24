@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_EXTENSIONS=(ext/vagrant/vagrant_ssl/extconf.rb)
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
@@ -51,7 +51,7 @@ ruby_add_rdepend "
 	>=dev-ruby/rexml-3.2.0
 	>=dev-ruby/rgl-0.5.10
 	>=dev-ruby/rubyzip-2.3.2
-	>=dev-ruby/vagrant_cloud-3.1.0
+	>=dev-ruby/vagrant_cloud-3.1.1
 	>=dev-ruby/ipaddr-1.2.4
 "
 
@@ -85,7 +85,9 @@ all_ruby_prepare() {
 		-e '/ruby_dep/ s:^#*:#:' \
 		-i ${PN}.gemspec || die
 
-	sed -e "s/@VAGRANT_VERSION@/${PV}/g" "${FILESDIR}/${PN}.in" > "${PN}" || die
+	sed -e "s/@VAGRANT_VERSION@/${PV}/g" \
+		-e "s/@RUBY_VERSIONS@/$(ruby_get_use_implementations)/g" \
+		"${FILESDIR}/${PN}.in" > "${PN}" || die
 
 	sed -i -e 's/format documentation/format progress/' tasks/test.rake || die
 

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33 ruby34"
+USE_RUBY="ruby31 ruby32"
 
 RUBY_FAKEGEM_EXTENSIONS=(ext/vagrant/vagrant_ssl/extconf.rb)
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
@@ -33,26 +33,25 @@ RDEPEND="
 
 ruby_add_rdepend "
 	>=dev-ruby/bcrypt_pbkdf-1.1.0
-	>=dev-ruby/childprocess-5.1
-	>=dev-ruby/csv-3.3
+	>=dev-ruby/childprocess-4.1.0
 	>=dev-ruby/ed25519-1.3.0
 	dev-ruby/erubi
-	>=dev-ruby/googleapis-common-protos-types-1.3
+	>=dev-ruby/googleapis-common-protos-types-1.3.0
+	>=dev-ruby/grpc-1.59.2
 	>=dev-ruby/hashicorp-checkpoint-0.1.5
 	>=dev-ruby/i18n-1.12:1
 	>=dev-ruby/listen-3.7
 	>=dev-ruby/log4r-1.1.9
 	<dev-ruby/log4r-1.1.11
-	>=dev-ruby/logger-1.0
 	>=dev-ruby/mime-types-3.3:*
 	>=dev-ruby/net-ftp-0.2.0
 	>=dev-ruby/net-ssh-7.0.0
 	>=dev-ruby/net-sftp-4.0.0
 	>=dev-ruby/net-scp-4.0.0
-	>=dev-ruby/ostruct-0.6.0
 	>=dev-ruby/rexml-3.2.0
+	>=dev-ruby/rgl-0.5.10
 	>=dev-ruby/rubyzip-2.3.2
-	>=dev-ruby/vagrant_cloud-3.1.2
+	>=dev-ruby/vagrant_cloud-3.1.0
 	>=dev-ruby/ipaddr-1.2.4
 "
 
@@ -86,7 +85,9 @@ all_ruby_prepare() {
 		-e '/ruby_dep/ s:^#*:#:' \
 		-i ${PN}.gemspec || die
 
-	sed -e "s/@VAGRANT_VERSION@/${PV}/g" "${FILESDIR}/${PN}.in" > "${PN}" || die
+	sed -e "s/@VAGRANT_VERSION@/${PV}/g" \
+		-e "s/@RUBY_VERSIONS@/$(ruby_get_use_implementations)/g" \
+		"${FILESDIR}/${PN}.in" > "${PN}" || die
 
 	sed -i -e 's/format documentation/format progress/' tasks/test.rake || die
 
