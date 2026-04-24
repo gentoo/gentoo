@@ -1,0 +1,131 @@
+https://bugs.gentoo.org/969103
+https://github.com/systemd/systemd/pull/41753
+https://github.com/systemd/systemd/pull/41773
+
+From f6c2e14676f266132772bec078578e344c91440d Mon Sep 17 00:00:00 2001
+From: Chris Hofer <christian.hofer@codasip.com>
+Date: Mon, 20 Apr 2026 16:55:38 +0200
+Subject: [PATCH] build: Compile fuzz-journald-util.c only if want_fuzz_tests
+
+fuzz-journald-util.c is compiled unconditionally even though fuzzing
+tests aren't enabled. Only build it if fuzzing tests are configured.
+This also ensure that the functions it uses from src/shared/tests.c are
+available.
+
+Fixes 32bd43d768a4bdd54481c5e37ce9ea3d1009a824
+Closes #39984
+
+Signed-off-by: Chris Hofer <christian.hofer@codasip.com>
+---
+ src/journal/meson.build | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/src/journal/meson.build b/src/journal/meson.build
+index 5f64304219447..1bec605b0ccf0 100644
+--- a/src/journal/meson.build
++++ b/src/journal/meson.build
+@@ -19,11 +19,16 @@ systemd_journald_extract_sources = files(
+         'journald-syslog.c',
+         'journald-varlink.c',
+         'journald-wall.c',
+-        # Build fuzz-journald.c as part of systemd-journald so we only compile it once instead of once per
+-        # fuzz test.
+-        'fuzz-journald-util.c',
+ )
+ 
++if want_fuzz_tests
++        # Build fuzz-journald-util.c as part of systemd-journald so we only
++        # compile it once instead of once per fuzz test.
++        systemd_journald_extract_sources += files(
++                'fuzz-journald-util.c',
++        )
++endif
++
+ journald_gperf_c = custom_target(
+         input : 'journald-gperf.gperf',
+         output : 'journald-gperf.c',
+From 46776da0314528c1385fcde2bd59f34ba00866fa Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Zbigniew=20J=C4=99drzejewski-Szmek?= <zbyszek@amutable.com>
+Date: Wed, 22 Apr 2026 17:01:45 +0200
+Subject: [PATCH 1/2] meson: concatenate donors specified in 'objects'
+
+Previously, we'd only honour the last donor.
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 2b717e23966f6..ce25b59ce00c2 100644
+--- a/meson.build
++++ b/meson.build
+@@ -2541,7 +2541,7 @@ foreach dict : executables
+ 
+         foreach val : dict.get('objects', [])
+                 obj = objects_by_name[val]
+-                kwargs += { 'objects' : obj['objects'] }
++                kwargs += { 'objects' : kwargs.get('objects', []) + obj['objects'] }
+                 include_directories += obj['include_directories']
+         endforeach
+ 
+
+From f397ce001e525ae8f42518835d2ae98fba41fbe9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Zbigniew=20J=C4=99drzejewski-Szmek?= <zbyszek@amutable.com>
+Date: Wed, 22 Apr 2026 16:33:12 +0200
+Subject: [PATCH 2/2] meson: move fuzz-journald-util.c to fuzz-journal-audit
+
+The .c file is shared between various fuzz-journal-* binaries. It
+was added to 32bd43d768a4bdd54481c5e37ce9ea3d1009a824, but that is
+somewhat ugly.
+
+Let's add it to the alphabetially first fuzzer and share from there.
+
+Follow-up for 32bd43d768a4bdd54481c5e37ce9ea3d1009a824 and
+85b5acde869baa51f5618fa503eafac3dccbf379.
+---
+ src/journal/meson.build | 18 ++++++++----------
+ 1 file changed, 8 insertions(+), 10 deletions(-)
+
+diff --git a/src/journal/meson.build b/src/journal/meson.build
+index 1bec605b0ccf0..142d2246c1fe0 100644
+--- a/src/journal/meson.build
++++ b/src/journal/meson.build
+@@ -21,14 +21,6 @@ systemd_journald_extract_sources = files(
+         'journald-wall.c',
+ )
+ 
+-if want_fuzz_tests
+-        # Build fuzz-journald-util.c as part of systemd-journald so we only
+-        # compile it once instead of once per fuzz test.
+-        systemd_journald_extract_sources += files(
+-                'fuzz-journald-util.c',
+-        )
+-endif
+-
+ journald_gperf_c = custom_target(
+         input : 'journald-gperf.gperf',
+         output : 'journald-gperf.c',
+@@ -63,7 +55,10 @@ journal_test_template = test_template + {
+ }
+ 
+ journal_fuzz_template = fuzz_template + {
+-        'objects' : ['systemd-journald'],
++        'objects' : [
++                'fuzz-journald-audit',
++                'systemd-journald',
++        ],
+         'dependencies' : libselinux_cflags,
+ }
+ 
+@@ -138,8 +133,11 @@ executables += [
+                         libselinux_cflags,
+                 ],
+         },
+-        journal_fuzz_template + {
++        fuzz_template + {
+                 'sources' : files('fuzz-journald-audit.c'),
++                # fuzz-journald-util.c is shared with the other fuzzers below.
++                'extract' : files('fuzz-journald-util.c'),
++                'objects' : ['systemd-journald'],
+         },
+         journal_fuzz_template + {
+                 'sources' : files('fuzz-journald-kmsg.c'),

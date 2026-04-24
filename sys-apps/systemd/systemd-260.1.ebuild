@@ -256,6 +256,7 @@ src_unpack() {
 
 src_prepare() {
 	local PATCHES=(
+		"${FILESDIR}/systemd-260.1-fuzz-journald.patch"
 	)
 
 	if ! use vanilla; then
