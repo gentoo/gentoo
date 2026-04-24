@@ -13,7 +13,7 @@ SRC_URI="https://git.kernel.org/pub/scm/utils/b4/b4.git/snapshot/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 
 RESTRICT=test # gentoo:: is missing dependences (e.g. dev-python/textual)
 
