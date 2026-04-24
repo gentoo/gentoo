@@ -9,8 +9,6 @@ ETYPE="sources"
 inherit kernel-2
 detect_version
 
-CKV=$(ver_cut 1-2)
-
 DESCRIPTION="Full sources for the Linux kernel"
 HOMEPAGE="https://www.kernel.org"
 SRC_URI="${KERNEL_URI}"
