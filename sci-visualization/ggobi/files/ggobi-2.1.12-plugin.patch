@@ -1,0 +1,78 @@
+Index: ggobi-2.1.12/src/plugin.h
+===================================================================
+--- ggobi-2.1.12.orig/src/plugin.h
++++ ggobi-2.1.12/src/plugin.h
+@@ -25,8 +25,6 @@ typedef enum {GENERAL_PLUGIN, INPUT_PLUG
+ 
+ typedef enum {DL_UNLOADED = 0, DL_LOADED, DL_FAILED} PluginLoadStatus;
+ 
+-typedef void (*DLFUNC)();
+-
+ typedef struct {
+     gchar *name;
+     gchar *dllName;
+@@ -109,7 +107,7 @@ typedef struct {
+ } PluginInstance;
+ 
+ 
+-
++typedef void (*DLFUNC)(ggobid * gg, GGobiPluginInfo *info, PluginInstance *plugin);
+ typedef gboolean (*OnLoad)(gboolean initializing, GGobiPluginInfo *plugin);
+ typedef gboolean (*OnCreate)(ggobid *gg, GGobiPluginInfo *plugin, PluginInstance *inst);
+ typedef gboolean (*OnClose)(ggobid *gg, GGobiPluginInfo *plugin, PluginInstance *inst);
+Index: ggobi-2.1.12/src/GGobiAPI.h
+===================================================================
+--- ggobi-2.1.12.orig/src/GGobiAPI.h
++++ ggobi-2.1.12/src/GGobiAPI.h
+@@ -238,14 +238,14 @@ extern const gfloat** GGobi_getTFormData
+   argument of display_free, but this needs
+   a little more finessing.
+  */
+-extern void GGobi_destroyCurrentDisplay();
++extern void GGobi_destroyCurrentDisplay(ggobid * gg);
+ 
+ 
+ /**
+     Returns a reference to the names of the observations
+     used by GGobi to identify the rows in the data.
+   */
+-extern const gchar ** GGobi_getCaseNames();
++extern const gchar ** GGobi_getCaseNames(GGobiData * d, ggobid * gg);
+ 
+ /**
+  */
+Index: ggobi-2.1.12/src/tour_pp.c
+===================================================================
+--- ggobi-2.1.12.orig/src/tour_pp.c
++++ ggobi-2.1.12/src/tour_pp.c
+@@ -130,7 +130,7 @@ gint realloc_optimize0_p (optimize0_para
+   return 0;
+ }
+ 
+-gboolean iszero (array_f *data)
++gboolean my_iszero (array_f *data)
+ { 
+   gfloat sum = 0;
+   gint i, j;
+@@ -243,7 +243,7 @@ gint optimize0 (optimize0_param *op,
+     g_printerr ("index_work %f index_best %f \n",index_work, op->index_best);*/
+   /* This adds random noise to existing projection and orthonormalize, 
+      if the current projection is null */
+-  if (iszero(proj))
++  if (my_iszero(proj))
+   { /* sprintf (msg, "zero projection matrix"); print(); */
+     normal_fill (proj, 1.0, proj);
+     orthonormal (proj);
+Index: ggobi-2.1.12/src/tour_pp.h
+===================================================================
+--- ggobi-2.1.12.orig/src/tour_pp.h
++++ ggobi-2.1.12/src/tour_pp.h
+@@ -26,7 +26,7 @@ The authors can be contacted at the foll
+ 
+ gint alloc_optimize0_p (optimize0_param *op, gint nrows, gint ncols, gint ndim);
+ gint free_optimize0_p (optimize0_param *op);
+-gboolean iszero (array_f *data);
++gboolean my_iszero (array_f *data);
+ 
+ void initrandom(gfloat start);
+ gfloat uniformrandom(void);
