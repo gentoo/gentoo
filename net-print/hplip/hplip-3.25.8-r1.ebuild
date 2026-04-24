@@ -263,15 +263,19 @@ src_install() {
 
 	# Installed by sane-backends
 	# Gentoo Bug: https://bugs.gentoo.org/show_bug.cgi?id=201023
-	if use scanner ; then
-		rm "${ED}"/etc/sane.d/dll.conf || die
+	if ! use minimal ; then
+		if use scanner ; then
+			rm "${ED}"/etc/sane.d/dll.conf || die
+		fi
 	fi
 
 	rm "${ED}"/usr/share/doc/${PF}/{copyright,README_LIBJPG,COPYING} || die
 	rmdir --ignore-fail-on-non-empty "${ED}"/usr/share/doc/${PF}/ || die
 
 	# Remove hal fdi files
-	rm -r "${ED}"/usr/share/hal || die
+	if ! use minimal ; then
+		rm -r "${ED}"/usr/share/hal || die
+	fi
 
 	find "${D}" -name '*.la' -delete || die
 
