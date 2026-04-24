@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -44,10 +44,12 @@ RDEPEND="
 		dev-python/chardet[${PYTHON_USEDEP}]
 		dev-python/distro[${PYTHON_USEDEP}]
 		dev-python/pillow[${PYTHON_USEDEP}]
+		dev-python/pkg-resources[${PYTHON_USEDEP}]
 		dev-python/pyopenssl[${PYTHON_USEDEP}]
 		dev-python/pyxdg[${PYTHON_USEDEP}]
 		dev-python/rencode[${PYTHON_USEDEP}]
 		dev-python/setproctitle[${PYTHON_USEDEP}]
+		dev-python/setuptools[${PYTHON_USEDEP}]
 		>=dev-python/twisted-17.1.0[ssl(-),${PYTHON_USEDEP}]
 		>=dev-python/zope-interface-4.4.2[${PYTHON_USEDEP}]
 		dev-python/mako[${PYTHON_USEDEP}]
@@ -58,6 +60,15 @@ RDEPEND="
 		libnotify? ( x11-libs/libnotify )
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}/${P}-twisted-22.10.patch"
+	# https://dev.deluge-torrent.org/ticket/3598
+	"${FILESDIR}/${P}-ayatana.patch"
+	# https://dev.deluge-torrent.org/ticket/3582
+	"${FILESDIR}/${P}-consoleui-deferred.patch"
+	"${FILESDIR}/${P}-email-module-replace.patch"
+)
 
 EPYTEST_PLUGINS=( pytest-twisted )
 distutils_enable_tests pytest
@@ -120,7 +131,7 @@ python_install_all() {
 		mkdir -p "${ED}/usr/share/applications/" || die
 		cp "${WORKDIR}/${P}/deluge/ui/data/share/applications/deluge.desktop" "${ED}/usr/share/applications/" || die
 		mkdir -p "${ED}/usr/share/metainfo" || die
-		cp "${WORKDIR}/${P}/deluge/ui/data/share/metainfo/deluge.metainfo.xml" "${ED}/usr/share/metainfo/" || die
+		cp "${WORKDIR}/${P}/deluge/ui/data/share/appdata/deluge.appdata.xml" "${ED}/usr/share/metainfo/" || die
 	fi
 
 	if use webinterface; then

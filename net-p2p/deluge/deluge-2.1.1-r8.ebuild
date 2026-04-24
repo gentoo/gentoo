@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,14 +16,13 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://git.deluge-torrent.org/${PN}"
 else
 	SRC_URI="http://download.deluge-torrent.org/source/$(ver_cut 1-2)/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="appindicator console gui libnotify sound webinterface"
+IUSE="console gui libnotify sound webinterface"
 REQUIRED_USE="
-	appindicator? ( gui )
 	libnotify? ( gui )
 	sound? ( gui )
 "
@@ -40,23 +39,22 @@ RDEPEND="
 		gui? (
 			sound? ( dev-python/pygame[${PYTHON_USEDEP}] )
 			dev-python/pygobject:3[${PYTHON_USEDEP}]
+			gnome-base/librsvg
+			libnotify? ( x11-libs/libnotify )
 		)
 		dev-python/chardet[${PYTHON_USEDEP}]
 		dev-python/distro[${PYTHON_USEDEP}]
 		dev-python/pillow[${PYTHON_USEDEP}]
+		dev-python/pkg-resources[${PYTHON_USEDEP}]
 		dev-python/pyopenssl[${PYTHON_USEDEP}]
 		dev-python/pyxdg[${PYTHON_USEDEP}]
 		dev-python/rencode[${PYTHON_USEDEP}]
 		dev-python/setproctitle[${PYTHON_USEDEP}]
+		dev-python/setuptools[${PYTHON_USEDEP}]
 		>=dev-python/twisted-17.1.0[ssl(-),${PYTHON_USEDEP}]
 		>=dev-python/zope-interface-4.4.2[${PYTHON_USEDEP}]
 		dev-python/mako[${PYTHON_USEDEP}]
 	')
-	appindicator? ( dev-libs/libayatana-appindicator )
-	gui? (
-		gnome-base/librsvg
-		libnotify? ( x11-libs/libnotify )
-	)
 "
 
 PATCHES=(
