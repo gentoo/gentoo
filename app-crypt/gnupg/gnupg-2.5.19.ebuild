@@ -28,8 +28,7 @@ IUSE="+alternatives bzip2 doc ldap nls readline selinux +smartcard ssl test +tof
 RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( tofu )"
 
-# Existence of executables is checked during configuration.
-# Note: On each bump, update dep bounds on each version from configure.ac!
+# Existence of executables is checked during configuration
 DEPEND="
 	>=dev-libs/libassuan-3.0.0-r1:=
 	>=dev-libs/libgcrypt-1.11.0:=
