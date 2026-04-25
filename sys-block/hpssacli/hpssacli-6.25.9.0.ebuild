@@ -1,8 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+RPM_COMPRESS_TYPE=none
 inherit rpm
 
 MY_PV=$(ver_rs 2 '-')
@@ -10,13 +11,12 @@ MY_PV=$(ver_rs 2 '-')
 DESCRIPTION="HPE Smart Storage Administrator (HPE SSA) CLI (HPSSACLI, formerly HPACUCLI)"
 HOMEPAGE="https://support.hpe.com/connect/s/softwaredetails?language=es&softwareId=MTX_95c2c88d976c467ab58c30279f"
 SRC_URI="https://downloads.hpe.com/pub/softlib2/software1/pubsw-linux/p1736097809/v224097/ssacli-${MY_PV}.x86_64.rpm"
+S="${WORKDIR}"
 
 LICENSE="hp-proliant-essentials"
 SLOT="0"
 KEYWORDS="-* amd64"
 RESTRICT="mirror bindist"
-
-S="${WORKDIR}"
 
 RDEPEND="sys-libs/glibc"
 
