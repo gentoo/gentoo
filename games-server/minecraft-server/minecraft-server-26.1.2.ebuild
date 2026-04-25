@@ -3,7 +3,7 @@
 
 EAPI=8
 
-EGIT_COMMIT="49c8195703ad0ba4f0a4efbccfd85a4a8ca57431"
+EGIT_COMMIT="97ccd4c0ed3f81bbb7bfacddd1090b0c56f9bc51"
 README_GENTOO_SUFFIX="-r1"
 
 inherit readme.gentoo-r1 java-pkg-2 systemd
@@ -37,7 +37,7 @@ src_compile() {
 }
 
 src_install() {
-	newbin "${FILESDIR}"/minecraft-server-bin minecraft-server
+	newbin "${FILESDIR}"/minecraft-server-bin-r1 minecraft-server
 
 	java-pkg_newjar minecraft-server-${PV}.jar minecraft-server.jar
 
