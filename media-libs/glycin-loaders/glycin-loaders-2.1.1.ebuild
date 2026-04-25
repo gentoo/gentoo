@@ -36,7 +36,7 @@ LICENSE+="
 "
 SLOT="2"
 if [[ ${PV} != *_[ab]* ]]; then
-	KEYWORDS="amd64 ~arm64"
+	KEYWORDS="amd64 ~arm ~arm64"
 fi
 IUSE="heif jpegxl svg test"
 REQUIRED_USE="test? ( heif jpegxl )"
