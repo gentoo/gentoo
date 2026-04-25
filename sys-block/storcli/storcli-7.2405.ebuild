@@ -1,8 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+RPM_COMPRESS_TYPE=xz
 inherit rpm
 
 # Upstream is still using strange version numbers
@@ -12,13 +13,12 @@ MY_PN="STORCLI_SAS3.5_P25"
 DESCRIPTION="MegaRAID StorCLI (successor of the MegaCLI)"
 HOMEPAGE="https://www.broadcom.com/support/download-search?dk=storcli"
 SRC_URI="https://docs.broadcom.com/docs-and-downloads/host-bus-adapters/host-bus-adapters-common-files/sas_sata_nvme_12g_p25/${MY_PN}.zip -> ${P}.zip"
+S="${WORKDIR}"
 
 LICENSE="Avago LSI BSD"
 SLOT="0"
 KEYWORDS="-* amd64"
 BDEPEND="app-arch/unzip"
-
-S="${WORKDIR}"
 
 QA_PREBUILT="/opt/MegaRAID/storcli/storcli64"
 
