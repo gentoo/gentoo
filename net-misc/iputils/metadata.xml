@@ -8,6 +8,7 @@
 	<use>
 		<flag name="arping">Build and install arping -- tool for sending ARP requests to peers (see also <pkg>net-analyzer/arping</pkg>)</flag>
 		<flag name="clockdiff">Build and install clockdiff -- tool for comparing clocks via ICMP packets</flag>
+		<flag name="suid">If filecaps are disabled, install binaries with suid bit enabled</flag>
 		<flag name="tracepath">Build and install tracepath -- tool for tracing network paths for discovering MTU values</flag>
 	</use>
 	<upstream>
