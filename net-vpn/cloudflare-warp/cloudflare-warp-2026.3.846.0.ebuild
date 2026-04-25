@@ -3,6 +3,7 @@
 
 EAPI=8
 
+RPM_COMPRESS_TYPE=none
 inherit rpm systemd xdg desktop
 
 DESCRIPTION="Cloudflare Warp Client"
