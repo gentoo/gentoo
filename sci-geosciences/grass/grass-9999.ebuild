@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="sqlite"  # bug 572440
 
-inherit desktop flag-o-matic python-single-r1 toolchain-funcs xdg
+inherit cmake desktop flag-o-matic python-single-r1 toolchain-funcs xdg
 
 DESCRIPTION="Free GIS with raster and vector functionality, as well as 3D vizualization"
 HOMEPAGE="https://grass.osgeo.org/"
@@ -14,7 +14,7 @@ HOMEPAGE="https://grass.osgeo.org/"
 LICENSE="GPL-2"
 
 if [[ ${PV} == *9999* ]]; then
-	SLOT="0/8.4"
+	SLOT="0/8.5"
 else
 	SLOT="0/$(ver_cut 1-2 ${PV})"
 fi
@@ -36,9 +36,10 @@ else
 	S="${WORKDIR}/${MY_P}"
 fi
 
-IUSE="blas bzip2 cxx fftw geos lapack mysql netcdf nls odbc opencl opengl openmp pdal png postgres readline sqlite svm threads tiff truetype X zstd"
+IUSE="blas bzip2 cxx doc fftw geos lfs lapack mysql netcdf nls odbc opencl opengl openmp pdal png postgres readline sqlite svm threads tiff truetype X zstd"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
+	lapack? ( blas )
 	opengl? ( X )
 	pdal? ( cxx )"
 
@@ -112,6 +113,8 @@ BDEPEND="
 	virtual/pkgconfig
 	X? ( dev-lang/swig )"
 
+RESTRICT="test"
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
@@ -149,39 +152,11 @@ src_prepare() {
 	sed -e "s:=python3:=${EPYTHON}:" -i "${S}/lib/init/grass.sh" || die
 	sed -e "s:= python3:= ${EPYTHON}:" -i "${S}/include/Make/Platform.make.in" || die
 
-	default
-
-	# When patching the build system, avoid running autoheader here. The file
-	# config.in.h is maintained manually upstream. Changes to it may lead to
-	# undefined behavior. See bug #866554.
-	# AT_NOEAUTOHEADER=1 eautoreconf
+	cmake_src_prepare
 
 	ebegin "Fixing python shebangs"
 	python_fix_shebang -q "${S}"
-	eend $?
-
-	# For testsuite, see https://bugs.gentoo.org/show_bug.cgi?id=500580#c3
-	local ati_cards mesa_cards nvidia_cards render_cards
-	local prev_shopt=$(shopt -p nullglob)
-	shopt -s nullglob
-	ati_cards=$(echo -n /dev/ati/card*)
-	for card in ${ati_cards[@]}; do
-		addpredict "${card}"
-	done
-	mesa_cards=$(echo -n /dev/dri/card*)
-	for card in ${mesa_cards[@]}; do
-		addpredict "${card}"
-	done
-	nvidia_cards=$(echo -n /dev/nvidia*)
-	for card in ${nvidia_cards[@]}; do
-		addpredict "${card}"
-	done
-	render_cards=$(echo -n /dev/dri/renderD128*)
-	for card in ${render_cards[@]}; do
-		addpredict "${card}"
-	done
-	addpredict /dev/nvidiactl
-	${prev_shopt}
+	eend $? || die
 }
 
 src_configure() {
@@ -193,70 +168,46 @@ src_configure() {
 	append-flags -fno-strict-aliasing
 	filter-lto
 
-	addwrite /dev/dri/renderD128
-
-	local myeconfargs=(
-		--enable-shared
-		--disable-w11
-		--without-liblas
-		--without-opendwg
-		--with-regex
-		--with-gdal="${EPREFIX}"/usr/bin/gdal-config
-		--with-proj-includes="${EPREFIX}"/usr/include/proj
-		--with-proj-libs="${EPREFIX}"/usr/$(get_libdir)
-		--with-proj-share="${EPREFIX}"/usr/share/proj/
-		$(use_with cxx)
-		$(use_with tiff)
-		$(use_with png libpng "${EPREFIX}"/usr/bin/libpng-config)
-		$(use_with postgres)
-		$(use_with mysql)
-		$(use_with mysql mysql-includes "${EPREFIX}"/usr/include/mysql)
-		$(use_with sqlite)
-		$(use_with opengl)
-		$(use_with odbc)
-		$(use_with fftw)
-		$(use_with blas)
-		$(use_with lapack)
-		$(use_with X cairo)
-		$(use_with truetype freetype)
-		$(use_with truetype freetype-includes "${EPREFIX}"/usr/include/freetype2)
-		$(use_with nls)
-		$(use_with readline)
-		$(use_with threads pthread)
-		$(use_with openmp)
-		$(use_with opencl)
-		$(use_with bzip2 bzlib)
-		$(use_with pdal pdal "${EPREFIX}"/usr/bin/pdal-config)
-		$(use_with netcdf netcdf "${EPREFIX}"/usr/bin/nc-config)
-		$(use_with geos geos "${EPREFIX}"/usr/bin/geos-config)
-		$(use_with svm libsvm)
-		$(use_with X x)
-		$(use_with zstd)
+	local mycmakeargs=(
+		-DWITH_X11=$(usex X)
+		-DWITH_OPENGL=$(usex opengl)
+		-DWITH_CAIRO=$(usex X)
+		-DWITH_LIBPNG=$(usex png)
+		-DWITH_SQLITE=$(usex sqlite)
+		-DWITH_POSTGRES=$(usex postgres)
+		-DWITH_MYSQL=$(usex mysql)
+		-DWITH_ODBC=$(usex odbc)
+		-DWITH_ZSTD=$(usex zstd)
+		-DWITH_BZLIB=$(usex bzip2)
+		-DWITH_READLINE=$(usex readline)
+		-DWITH_FREETYPE=$(usex truetype)
+		-DWITH_NLS=$(usex nls)
+		-DWITH_FFTW=$(usex fftw)
+		-DWITH_CBLAS=$(usex blas)
+		-DWITH_LAPACKE=$(usex lapack)
+		-DWITH_OPENMP=$(usex openmp)
+		-DWITH_LIBSVM=$(usex svm)
+		-DWITH_TIFF=$(usex tiff)
+		-DWITH_NETCDF=$(usex netcdf)
+		-DWITH_GEOS=$(usex geos)
+		-DWITH_PDAL=$(usex pdal)
+		-DWITH_LIBLAS=OFF
+		-DWITH_LARGEFILES=$(usex lfs)
+		-DWITH_DOCS=$(usex doc)
+		-DWITH_GUI=$(usex X)
+		-DWITH_FHS=OFF
 	)
-	econf "${myeconfargs[@]}"
-}
 
-src_compile() {
-	# we don't want to link against embedded mysql lib
-	emake CC="$(tc-getCC)" MYSQLDLIB=""
+	cmake_src_configure
 }
 
 src_install() {
-	emake DESTDIR="${ED}" \
-		INST_DIR=/usr/$(get_libdir)/${MY_PM} \
-		prefix=/usr/ BINDIR=/usr/bin \
-		install
+	cmake_src_install
 
 	pushd "${ED}"/usr/$(get_libdir)/${MY_PM} >/dev/null || die
 
 	local HTML_DOCS=( docs/html/. )
 	einstalldocs
-
-	# translations
-	if use nls; then
-		insinto /usr/share/locale
-		doins -r locale/.
-	fi
 
 	popd >/dev/null || die
 
@@ -271,22 +222,10 @@ src_install() {
 	dodir /usr/include/
 	dosym ../$(get_libdir)/${MY_PM}/include/grass /usr/include/grass
 
-	# set proper python interpreter
-	sed -e "s:os.environ\[\"GRASS_PYTHON\"\] = \"python3\":\
-os.environ\[\"GRASS_PYTHON\"\] = \"${EPYTHON}\":" \
-		-i "${ED}"/usr/bin/grass || die
-
 	if use X; then
 		make_desktop_entry --eapi9 grass -a "--gui" -n "${PN}" -i "${PN}-48x48" -c "Science;Education"
 		doicon -s 48 gui/icons/${PN}-48x48.png
 	fi
-
-	# install .pc file so other apps know where to look for grass
-	insinto /usr/$(get_libdir)/pkgconfig/
-	doins grass.pc
-
-	# fix weird +x on tcl scripts
-	find "${ED}" -name "*.tcl" -exec chmod +r-x '{}' \; || die
 }
 
 pkg_postinst() {
