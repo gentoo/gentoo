@@ -1,11 +1,11 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit dot-a autotools
 
-DESCRIPTION="implement a crash-reporting system."
+DESCRIPTION="A set of client and server components which implement a crash-reporting system."
 HOMEPAGE="https://chromium.googlesource.com/breakpad/breakpad/"
 SRC_URI="https://github.com/google/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
