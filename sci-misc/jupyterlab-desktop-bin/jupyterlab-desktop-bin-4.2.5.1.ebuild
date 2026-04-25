@@ -1,4 +1,4 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,6 +9,7 @@ CHROMIUM_LANGS="
 	sw ta te th tr uk ur vi zh-CN zh-TW
 "
 
+RPM_COMPRESS_TYPE=xz
 inherit chromium-2 desktop rpm xdg
 
 DESCRIPTION="JupyterLab desktop application, based on Electron"
