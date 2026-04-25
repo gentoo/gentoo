@@ -34,12 +34,13 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.0.9-boost-1.89.patch"
 	"${FILESDIR}/${PN}-3.0.9-boost-1.90.patch"
 	"${FILESDIR}/${PN}-3.0.9-no-inline.patch"
+	"${FILESDIR}/${PN}-3.0.9-no-pch.patch"
+	"${FILESDIR}/${PN}-3.0.9-boost-bind.patch"
+	"${FILESDIR}/${PN}-3.0.9-odr-fixes.patch"
+	"${FILESDIR}/${PN}-3.0.9-threadpool-shutdown.patch"
 )
 
 src_configure() {
-	# Can't be tested with LTO because of ODR issues in test mocks
-	filter-lto
-
 	local mycmakeargs=(
 		-DENABLE_DEMO=OFF
 		-DENABLE_TEST=$(usex test)
@@ -50,6 +51,5 @@ src_configure() {
 
 src_test() {
 	edo "${BUILD_DIR}"/src/test/lucene++-tester \
-		--test_dir="${S}"/src/test/testfiles \
-		--gtest_filter="-ParallelMultiSearcherTest*:SortTest.*:"
+		--test_dir="${S}"/src/test/testfiles
 }

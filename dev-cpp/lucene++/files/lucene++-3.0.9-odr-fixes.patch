@@ -1,0 +1,343 @@
+https://github.com/luceneplusplus/LucenePlusPlus/pull/226
+
+diff --git a/src/test/index/AtomicUpdateTest.cpp b/src/test/index/AtomicUpdateTest.cpp
+index 0535ee0..4dbbef8 100644
+--- a/src/test/index/AtomicUpdateTest.cpp
++++ b/src/test/index/AtomicUpdateTest.cpp
+@@ -24,13 +24,13 @@ using namespace Lucene;
+ 
+ typedef LuceneTestFixture AtomicUpdateTest;
+ 
+-class MockIndexWriter : public IndexWriter {
++class AUTMockIndexWriter : public IndexWriter {
+ public:
+-    MockIndexWriter(const DirectoryPtr& dir, const AnalyzerPtr& a, bool create, int32_t mfl) : IndexWriter(dir, a, create, mfl) {
++    AUTMockIndexWriter(const DirectoryPtr& dir, const AnalyzerPtr& a, bool create, int32_t mfl) : IndexWriter(dir, a, create, mfl) {
+         random = newLucene<Random>();
+     }
+ 
+-    virtual ~MockIndexWriter() {
++    virtual ~AUTMockIndexWriter() {
+     }
+ 
+ protected:
+@@ -140,7 +140,7 @@ static void runTest(const DirectoryPtr& directory) {
+     Collection<AtomicTimedThreadPtr> threads(Collection<AtomicTimedThreadPtr>::newInstance(4));
+     AnalyzerPtr analyzer = newLucene<SimpleAnalyzer>();
+ 
+-    IndexWriterPtr writer = newLucene<MockIndexWriter>(directory, analyzer, true, IndexWriter::MaxFieldLengthUNLIMITED);
++    IndexWriterPtr writer = newLucene<AUTMockIndexWriter>(directory, analyzer, true, IndexWriter::MaxFieldLengthUNLIMITED);
+ 
+     writer->setMaxBufferedDocs(7);
+     writer->setMergeFactor(3);
+diff --git a/src/test/index/IndexReaderCloneNormsTest.cpp b/src/test/index/IndexReaderCloneNormsTest.cpp
+index cdd213f..2deab71 100644
+--- a/src/test/index/IndexReaderCloneNormsTest.cpp
++++ b/src/test/index/IndexReaderCloneNormsTest.cpp
+@@ -22,9 +22,9 @@
+ 
+ using namespace Lucene;
+ 
+-class SimilarityOne : public DefaultSimilarity {
++class IRCNTSimilarityOne : public DefaultSimilarity {
+ public:
+-    virtual ~SimilarityOne() {
++    virtual ~IRCNTSimilarityOne() {
+     }
+ 
+ public:
+@@ -36,7 +36,7 @@ public:
+ class IndexReaderCloneNormsTest : public LuceneTestFixture {
+ public:
+     IndexReaderCloneNormsTest() {
+-        similarityOne = newLucene<SimilarityOne>();
++        similarityOne = newLucene<IRCNTSimilarityOne>();
+         anlzr = newLucene<StandardAnalyzer>(LuceneVersion::LUCENE_CURRENT);
+         numDocNorms = 0;
+         lastNorm = 0.0;
+diff --git a/src/test/index/IndexWriterExceptionsTest.cpp b/src/test/index/IndexWriterExceptionsTest.cpp
+index ba05c4a..4e5ded3 100644
+--- a/src/test/index/IndexWriterExceptionsTest.cpp
++++ b/src/test/index/IndexWriterExceptionsTest.cpp
+@@ -119,13 +119,13 @@ public:
+     }
+ };
+ 
+-class MockIndexWriter : public IndexWriter {
++class IWETMockIndexWriter : public IndexWriter {
+ public:
+-    MockIndexWriter(const DirectoryPtr& dir, const AnalyzerPtr& a, bool create, int32_t mfl) : IndexWriter(dir, a, create, mfl) {
++    IWETMockIndexWriter(const DirectoryPtr& dir, const AnalyzerPtr& a, bool create, int32_t mfl) : IndexWriter(dir, a, create, mfl) {
+         this->r = newLucene<Random>(17);
+     }
+ 
+-    virtual ~MockIndexWriter() {
++    virtual ~IWETMockIndexWriter() {
+     }
+ 
+ protected:
+@@ -142,7 +142,7 @@ public:
+ 
+ TEST_F(IndexWriterExceptionsTest, testRandomExceptions) {
+     MockRAMDirectoryPtr dir = newLucene<MockRAMDirectory>();
+-    IndexWriterPtr writer  = newLucene<MockIndexWriter>(dir, newLucene<WhitespaceAnalyzer>(), true, IndexWriter::MaxFieldLengthLIMITED);
++    IndexWriterPtr writer  = newLucene<IWETMockIndexWriter>(dir, newLucene<WhitespaceAnalyzer>(), true, IndexWriter::MaxFieldLengthLIMITED);
+     boost::dynamic_pointer_cast<ConcurrentMergeScheduler>(writer->getMergeScheduler())->setSuppressExceptions();
+ 
+     writer->setRAMBufferSizeMB(0.1);
+@@ -174,7 +174,7 @@ TEST_F(IndexWriterExceptionsTest, testRandomExceptions) {
+ 
+ TEST_F(IndexWriterExceptionsTest, testRandomExceptionsThreads) {
+     MockRAMDirectoryPtr dir = newLucene<MockRAMDirectory>();
+-    IndexWriterPtr writer  = newLucene<MockIndexWriter>(dir, newLucene<WhitespaceAnalyzer>(), true, IndexWriter::MaxFieldLengthLIMITED);
++    IndexWriterPtr writer  = newLucene<IWETMockIndexWriter>(dir, newLucene<WhitespaceAnalyzer>(), true, IndexWriter::MaxFieldLengthLIMITED);
+     boost::dynamic_pointer_cast<ConcurrentMergeScheduler>(writer->getMergeScheduler())->setSuppressExceptions();
+ 
+     writer->setRAMBufferSizeMB(0.2);
+diff --git a/src/test/index/NormsTest.cpp b/src/test/index/NormsTest.cpp
+index 8212e3b..0321436 100644
+--- a/src/test/index/NormsTest.cpp
++++ b/src/test/index/NormsTest.cpp
+@@ -18,12 +18,12 @@
+ 
+ using namespace Lucene;
+ 
+-class SimilarityOne : public DefaultSimilarity {
++class NTSimilarityOne : public DefaultSimilarity {
+ public:
+-    virtual ~SimilarityOne() {
++    virtual ~NTSimilarityOne() {
+     }
+ 
+-    LUCENE_CLASS(SimilarityOne);
++    LUCENE_CLASS(NTSimilarityOne);
+ 
+ public:
+     virtual double lengthNorm(const String& fieldName, int32_t numTokens) {
+@@ -35,7 +35,7 @@ public:
+ class NormsTest : public LuceneTestFixture {
+ public:
+     NormsTest() {
+-        similarityOne = newLucene<SimilarityOne>();
++        similarityOne = newLucene<NTSimilarityOne>();
+         lastNorm = 0.0;
+         normDelta = 0.001;
+         numDocNorms = 0;
+diff --git a/src/test/index/OmitTfTest.cpp b/src/test/index/OmitTfTest.cpp
+index 618c1dd..0439215 100644
+--- a/src/test/index/OmitTfTest.cpp
++++ b/src/test/index/OmitTfTest.cpp
+@@ -29,7 +29,7 @@ using namespace Lucene;
+ 
+ typedef LuceneTestFixture OmitTfTest;
+ 
+-DECLARE_SHARED_PTR(CountingHitCollector)
++DECLARE_SHARED_PTR(OITCountingHitCollector)
+ 
+ class SimpleIDFExplanation : public IDFExplanation {
+ public:
+@@ -85,18 +85,18 @@ public:
+     }
+ };
+ 
+-class CountingHitCollector : public Collector {
++class OITCountingHitCollector : public Collector {
+ public:
+-    CountingHitCollector() {
++    OITCountingHitCollector() {
+         count = 0;
+         sum = 0;
+         docBase = -1;
+     }
+ 
+-    virtual ~CountingHitCollector() {
++    virtual ~OITCountingHitCollector() {
+     }
+ 
+-    LUCENE_CLASS(CountingHitCollector);
++    LUCENE_CLASS(OITCountingHitCollector);
+ 
+ public:
+     int32_t count;
+@@ -306,7 +306,7 @@ TEST_F(OmitTfTest, testNoPrxFile) {
+ 
+ namespace TestBasic {
+ 
+-class CountingHitCollectorQ1 : public CountingHitCollector {
++class CountingHitCollectorQ1 : public OITCountingHitCollector {
+ protected:
+     ScorerPtr scorer;
+ 
+@@ -317,11 +317,11 @@ public:
+ 
+     virtual void collect(int32_t doc) {
+         EXPECT_EQ(scorer->score(), 1.0);
+-        CountingHitCollector::collect(doc);
++        OITCountingHitCollector::collect(doc);
+     }
+ };
+ 
+-class CountingHitCollectorQ2 : public CountingHitCollector {
++class CountingHitCollectorQ2 : public OITCountingHitCollector {
+ protected:
+     ScorerPtr scorer;
+ 
+@@ -332,11 +332,11 @@ public:
+ 
+     virtual void collect(int32_t doc) {
+         EXPECT_EQ(scorer->score(), 1.0 + (double)doc);
+-        CountingHitCollector::collect(doc);
++        OITCountingHitCollector::collect(doc);
+     }
+ };
+ 
+-class CountingHitCollectorQ3 : public CountingHitCollector {
++class CountingHitCollectorQ3 : public OITCountingHitCollector {
+ protected:
+     ScorerPtr scorer;
+ 
+@@ -348,11 +348,11 @@ public:
+     virtual void collect(int32_t doc) {
+         EXPECT_EQ(scorer->score(), 1.0);
+         EXPECT_NE(doc % 2, 0);
+-        CountingHitCollector::collect(doc);
++        OITCountingHitCollector::collect(doc);
+     }
+ };
+ 
+-class CountingHitCollectorQ4 : public CountingHitCollector {
++class CountingHitCollectorQ4 : public OITCountingHitCollector {
+ protected:
+     ScorerPtr scorer;
+ 
+@@ -364,7 +364,7 @@ public:
+     virtual void collect(int32_t doc) {
+         EXPECT_EQ(scorer->score(), 1.0);
+         EXPECT_EQ(doc % 2, 0);
+-        CountingHitCollector::collect(doc);
++        OITCountingHitCollector::collect(doc);
+     }
+ };
+ 
+@@ -424,7 +424,7 @@ TEST_F(OmitTfTest, testBasic) {
+     bq->add(q1, BooleanClause::MUST);
+     bq->add(q4, BooleanClause::MUST);
+ 
+-    CountingHitCollectorPtr collector = newLucene<CountingHitCollector>();
++    OITCountingHitCollectorPtr collector = newLucene<OITCountingHitCollector>();
+ 
+     searcher->search(bq, collector);
+     EXPECT_EQ(15, collector->count);
+diff --git a/src/test/search/ScorerPerfTest.cpp b/src/test/search/ScorerPerfTest.cpp
+index 9612c31..0ec1253 100644
+--- a/src/test/search/ScorerPerfTest.cpp
++++ b/src/test/search/ScorerPerfTest.cpp
+@@ -21,18 +21,18 @@
+ 
+ using namespace Lucene;
+ 
+-DECLARE_SHARED_PTR(CountingHitCollector)
++DECLARE_SHARED_PTR(SPTCountingHitCollector)
+ DECLARE_SHARED_PTR(MatchingHitCollector)
+ 
+-class CountingHitCollector : public Collector {
++class SPTCountingHitCollector : public Collector {
+ public:
+-    CountingHitCollector() {
++    SPTCountingHitCollector() {
+         count = 0;
+         sum = 0;
+         docBase = 0;
+     }
+ 
+-    virtual ~CountingHitCollector() {
++    virtual ~SPTCountingHitCollector() {
+     }
+ 
+ public:
+@@ -66,7 +66,7 @@ public:
+     }
+ };
+ 
+-class MatchingHitCollector : public CountingHitCollector {
++class MatchingHitCollector : public SPTCountingHitCollector {
+ public:
+     MatchingHitCollector(const BitSetPtr& answer) {
+         this->answer = answer;
+@@ -86,7 +86,7 @@ public:
+         if (pos != doc + docBase) {
+             boost::throw_exception(RuntimeException(L"Expected doc " + StringUtils::toString(pos) + L" but got " + StringUtils::toString(doc + docBase)));
+         }
+-        CountingHitCollector::collect(doc);
++        SPTCountingHitCollector::collect(doc);
+     }
+ };
+ 
+@@ -160,7 +160,7 @@ public:
+                 result = addClause(bq, result);
+             }
+ 
+-            CountingHitCollectorPtr hc = newLucene<MatchingHitCollector>(result);
++            SPTCountingHitCollectorPtr hc = newLucene<MatchingHitCollector>(result);
+             s->search(bq, hc);
+ 
+             EXPECT_EQ(result->cardinality(), hc->getCount());
+@@ -182,7 +182,7 @@ public:
+                 oq->add(bq, BooleanClause::MUST);
+             }
+ 
+-            CountingHitCollectorPtr hc = newLucene<MatchingHitCollector>(result);
++            SPTCountingHitCollectorPtr hc = newLucene<MatchingHitCollector>(result);
+             s->search(oq, hc);
+ 
+             EXPECT_EQ(result->cardinality(), hc->getCount());
+diff --git a/src/test/store/BufferedIndexOutputTest.cpp b/src/test/store/BufferedIndexOutputTest.cpp
+index 564a875..fd8490d 100644
+--- a/src/test/store/BufferedIndexOutputTest.cpp
++++ b/src/test/store/BufferedIndexOutputTest.cpp
+@@ -97,9 +97,9 @@ TEST_F(BufferedIndexOutputTest, testWriteChars) {
+ 
+ namespace TestCopyBytes {
+ 
+-class SourceIndexInput : public BufferedIndexInput {
++class BIOTSourceIndexInput : public BufferedIndexInput {
+ public:
+-    SourceIndexInput(const uint8_t* b, int32_t length) : inputBytes(b), inputLength(length), nextByte(0) {
++    BIOTSourceIndexInput(const uint8_t* b, int32_t length) : inputBytes(b), inputLength(length), nextByte(0) {
+     }
+ 
+     virtual void readInternal(uint8_t* b, int32_t offset, int32_t length) {
+@@ -129,7 +129,7 @@ protected:
+ TEST_F(BufferedIndexOutputTest, testCopyBytes) {
+     ByteArray sourceBytes(ByteArray::newInstance(32768));
+     std::generate(sourceBytes.get(), sourceBytes.get() + 32768, rand);
+-    BufferedIndexInputPtr indexSource(newLucene<TestCopyBytes::SourceIndexInput>(sourceBytes.get(), 32768));
++    BufferedIndexInputPtr indexSource(newLucene<TestCopyBytes::BIOTSourceIndexInput>(sourceBytes.get(), 32768));
+ 
+     ByteArray outputBytes(ByteArray::newInstance(32768));
+     TestableBufferedIndexOutput indexOutput(outputBytes.get(), 32768);
+diff --git a/src/test/store/IndexOutputTest.cpp b/src/test/store/IndexOutputTest.cpp
+index 15ff86b..374da5e 100644
+--- a/src/test/store/IndexOutputTest.cpp
++++ b/src/test/store/IndexOutputTest.cpp
+@@ -115,9 +115,9 @@ TEST_F(IndexOutputTest, testWriteChars) {
+ 
+ namespace TestCopyBytes {
+ 
+-class SourceIndexInput : public IndexInput {
++class IOTSourceIndexInput : public IndexInput {
+ public:
+-    SourceIndexInput(const uint8_t* b, int32_t length) : inputBytes(b), inputLength(length), nextByte(0) {
++    IOTSourceIndexInput(const uint8_t* b, int32_t length) : inputBytes(b), inputLength(length), nextByte(0) {
+     }
+ 
+     virtual uint8_t readByte() {
+@@ -158,7 +158,7 @@ protected:
+ TEST_F(IndexOutputTest, testCopyBytes) {
+     ByteArray sourceBytes(ByteArray::newInstance(32768));
+     std::generate(sourceBytes.get(), sourceBytes.get() + 32768, rand);
+-    IndexInputPtr indexSource(newLucene<TestCopyBytes::SourceIndexInput>(sourceBytes.get(), 32768));
++    IndexInputPtr indexSource(newLucene<TestCopyBytes::IOTSourceIndexInput>(sourceBytes.get(), 32768));
+ 
+     ByteArray outputBytes(ByteArray::newInstance(32768));
+     TestableIndexOutput indexOutput(outputBytes.get(), 32768);
