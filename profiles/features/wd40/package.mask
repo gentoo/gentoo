@@ -463,6 +463,7 @@ gnome-extra/sushi
 media-gfx/loupe
 <media-gfx/gimp-3.0.6
 media-libs/glycin
+media-libs/glycin-loaders
 >=media-libs/libopenraw-0.3.2
 media-libs/subrandr
 media-plugins/gimp-lqr
