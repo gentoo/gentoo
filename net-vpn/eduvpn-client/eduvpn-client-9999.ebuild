@@ -3,14 +3,10 @@
 
 EAPI=8
 
-DOCS_BUILDER="mkdocs"
-DOCS_DEPEND="dev-python/mkdocs-material"
-DOCS_DIR="doc"
-
 PYTHON_COMPAT=( python3_{11..13} )
 
 DISTUTILS_USE_PEP517=setuptools
-inherit distutils-r1 docs xdg
+inherit distutils-r1 xdg
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
