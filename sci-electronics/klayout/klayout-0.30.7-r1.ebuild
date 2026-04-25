@@ -9,7 +9,7 @@ USE_RUBY="ruby33"
 
 PYTHON_COMPAT=( python3_{11,12,13,14} )
 
-inherit toolchain-funcs python-single-r1 ruby-ng
+inherit flag-o-matic toolchain-funcs python-single-r1 ruby-ng
 
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/klayoutmatthias/${PN}.git"
@@ -43,6 +43,9 @@ DEPEND="${RDEPEND}
 pkg_setup() {
 	python-single-r1_pkg_setup
 	ruby-ng_pkg_setup
+
+	# https://github.com/KLayout/klayout/issues/2340 (bug #973164)
+	append-flags -fno-strict-aliasing
 }
 
 each_ruby_configure() {

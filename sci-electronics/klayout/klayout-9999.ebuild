@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ USE_RUBY="ruby33"
 
 PYTHON_COMPAT=( python3_{11,12,13,14} )
 
-inherit toolchain-funcs python-single-r1 ruby-ng
+inherit flag-o-matic toolchain-funcs python-single-r1 ruby-ng
 
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/klayoutmatthias/${PN}.git"
@@ -17,7 +17,7 @@ if [[ ${PV} = 9999* ]]; then
 	EGIT_CHECKOUT_DIR=${WORKDIR}/all/${P}
 else
 	SRC_URI="https://www.klayout.org/downloads/source/${P}.tar.gz"
-	#KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="Viewer and editor for GDS and OASIS integrated circuit layouts"
@@ -43,6 +43,9 @@ DEPEND="${RDEPEND}
 pkg_setup() {
 	python-single-r1_pkg_setup
 	ruby-ng_pkg_setup
+
+	# https://github.com/KLayout/klayout/issues/2340 (bug #973164)
+	append-flags -fno-strict-aliasing
 }
 
 each_ruby_configure() {
