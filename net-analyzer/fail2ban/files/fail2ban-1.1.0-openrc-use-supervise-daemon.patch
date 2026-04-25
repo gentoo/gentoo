@@ -1,0 +1,23 @@
+I kept hitting a startup failure and couldn't get anywhere with figuring
+out what wa shappening, but OpenRC is moving towards preferring supervise-daemon,
+and this is a bit nicer anyway as it takes any possibility of a race with
+pidfiles out of the equation.
+--- a/files/fail2ban-openrc.init.in
++++ b/files/fail2ban-openrc.init.in
+@@ -33,13 +33,13 @@ FAIL2BAN_SOCKET="${FAIL2BAN_RUNDIR}/${RC_SVCNAME}.sock"
+ # The fail2ban-client program is also capable of starting and stopping
+ # the server, but things are simpler if we let start-stop-daemon do it.
+ command="@BINDIR@/fail2ban-server"
+-pidfile="${FAIL2BAN_RUNDIR}/${RC_SVCNAME}.pid"
+ 
+-# We force the pidfile/socket location in this service script because
++# We force the socket location in this service script because
+ # we're taking responsibility for ensuring that their parent directory
+ # exists and has the correct permissions (which we can't do if the
+ # user is allowed to change them).
+-command_args="${FAIL2BAN_OPTIONS} -p ${pidfile} -s ${FAIL2BAN_SOCKET}"
++supervisor=supervise-daemon
++command_args="${FAIL2BAN_OPTIONS} -f -s ${FAIL2BAN_SOCKET}"
+ retry="30"
+ 
+ depend() {

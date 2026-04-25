@@ -55,7 +55,13 @@ DOCS=( ChangeLog DEVELOP README.md THANKS TODO doc/run-rootless.txt )
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.11.2-adjust-apache-logs-paths.patch
 	"${FILESDIR}"/${PN}-1.0.2-umask-tests.patch
+	"${FILESDIR}"/${PN}-1.1.0-openssh-9.8.patch
+	"${FILESDIR}"/${PN}-1.1.0-openssh-9.8-fixups.patch
+	"${FILESDIR}"/${PN}-1.1.0-openrc-nftables.patch
 	"${FILESDIR}"/${PN}-1.1.0-systemd-order.patch
+	"${FILESDIR}"/${PN}-1.1.0-postfix-pref.patch
+	"${FILESDIR}"/${PN}-1.1.0-postfix-ddos.patch
+	"${FILESDIR}"/${PN}-1.1.0-sshd-ddos.patch
 	"${FILESDIR}"/${PN}-1.1.0-openrc-use-supervise-daemon.patch
 )
 
@@ -98,7 +104,7 @@ src_install() {
 	newinitd "${S}"/build/fail2ban-openrc.init ${PN}
 	systemd_dounit "${S}"/build/${PN}.service
 
-	dotmpfiles "${FILESDIR}"/${PN}-tmpfiles.conf
+	dotmpfiles files/${PN}-tmpfiles.conf
 
 	doman man/*.{1,5}
 
