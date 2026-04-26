@@ -1,0 +1,18 @@
+https://gn-review.googlesource.com/c/gn/+/22200
+From: Matt Jolly <kangie@gentoo.org>
+Date: Sun, 26 Apr 2026 18:18:05 +1000
+Subject: [PATCH] IWYU: gn/target.h
+
+Signed-off-by: Matt Jolly <kangie@gentoo.org>
+--- a/src/gn/target_public_pair_unittest.cc
++++ b/src/gn/target_public_pair_unittest.cc
+@@ -3,6 +3,7 @@
+ // found in the LICENSE file.
+ 
+ #include "gn/target_public_pair.h"
++#include "gn/target.h"
+ #include "util/test/test.h"
+ 
+ TEST(TargetPublicPairTest, ConstructionAndMutation) {
+-- 
+2.53.0
