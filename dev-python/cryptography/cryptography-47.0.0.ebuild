@@ -3,13 +3,14 @@
 
 EAPI=8
 
-CARGO_OPTIONAL=yes
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
 PYPI_VERIFY_REPO=https://github.com/pyca/cryptography
 PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 PYTHON_REQ_USE="threads(+)"
 
+CARGO_OPTIONAL=yes
+RUST_MIN_VER="1.83.0"
 CRATES="
 	asn1@0.24.1
 	asn1_derive@0.24.1
