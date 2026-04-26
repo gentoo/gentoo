@@ -12,7 +12,7 @@ S=${WORKDIR}
 LICENSE="public-domain"
 SLOT="${PV}"
 IUSE="
-	+compiler-rt libcxx openmp +sanitize
+	+compiler-rt libcxx offload openmp +sanitize
 	default-compiler-rt default-libcxx default-lld llvm-libunwind polly
 "
 REQUIRED_USE="
@@ -27,7 +27,9 @@ RDEPEND="
 		)
 	)
 	libcxx? ( >=llvm-runtimes/libcxx-${PV}[${MULTILIB_USEDEP}] )
-	openmp? ( >=llvm-runtimes/openmp-${PV}[${MULTILIB_USEDEP}] )
+	openmp? (
+		>=llvm-runtimes/openmp-${PV}[offload?,${MULTILIB_USEDEP}]
+	)
 
 	llvm-core/clang-common
 
