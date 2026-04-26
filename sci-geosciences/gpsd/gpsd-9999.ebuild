@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 SCONS_MIN_VERSION="2.3.0"
 
 inherit distutils-r1 scons-utils systemd toolchain-funcs udev
@@ -14,8 +14,14 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://gitlab.com/gpsd/gpsd.git"
 	inherit git-r3
 else
-	SRC_URI="mirror://nongnu/${PN}/${P}.tar.xz"
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/garyemiller.asc
+	inherit verify-sig
+	SRC_URI="
+		mirror://nongnu/${PN}/${P}.tar.xz
+		verify-sig? ( mirror://nongnu/${PN}/${P}.tar.xz.sig )
+	"
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+
 fi
 
 DESCRIPTION="GPS daemon and library for USB/serial GPS devices and GPS/mapping clients"
