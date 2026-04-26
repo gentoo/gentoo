@@ -7,7 +7,7 @@ DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
 PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 
-RUST_MIN_VER="1.85.0"
+RUST_MIN_VER="1.86.0"
 CRATES="
 	aliasable@0.1.3
 	ammonia@4.1.2
