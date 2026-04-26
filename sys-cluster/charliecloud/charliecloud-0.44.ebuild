@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{12..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit autotools optfeature python-single-r1
 
@@ -21,7 +21,7 @@ HOMEPAGE="https://charliecloud.io/"
 LICENSE="Apache-2.0"
 
 SLOT="0"
-IUSE="ch-image doc +fuse +json"
+IUSE="ch-image doc +fuse +gc +json"
 
 # Extensive test suite exists, but downloads container images
 # directly and via Docker and installs packages inside using apt/yum.
@@ -31,6 +31,10 @@ RESTRICT="test"
 DOCS=( NOTICE README.rst )
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+# Configure check, only recent (not yet released) dev-libs/boehm-gc carry this function
+# in non-threaded mode, see #968001.
+QA_CONFIG_IMPL_DECL_SKIP=( GC_set_markers_count )
 
 DEPEND="elibc_musl? ( sys-libs/argp-standalone )"
 COMMON_DEPEND="
@@ -45,6 +49,9 @@ COMMON_DEPEND="
 	fuse? (
 		sys-fs/fuse:3=
 		sys-fs/squashfuse
+	)
+	gc? (
+		dev-libs/boehm-gc:=
 	)
 	json? (
 		dev-libs/cJSON
@@ -67,6 +74,9 @@ BDEPEND="
 		net-misc/rsync
 	)
 "
+PATCHES=(
+	"${FILESDIR}"/"${PN}"-0.44-impolite-nvidia.patch
+)
 
 src_prepare() {
 	default
@@ -82,8 +92,7 @@ src_configure() {
 		$(use_with json)
 		# activates linking against both fuse and squashfuse
 		$(use_with fuse squashfuse)
-		# https://github.com/ivmai/bdwgc not packaged
-		--without-gc
+		$(use_with gc)
 		# Libdir is used as a libexec-style destination.
 		--libdir="${EPREFIX}"/usr/lib
 		# Attempts to call python-exec directly otherwise.
