@@ -14,7 +14,7 @@ if [[ ${PV} = "9999" ]]; then
 else
 	SRC_URI="https://github.com/foldynl/QLog/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/QLog-${PV}"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 LICENSE="GPL-3+"
