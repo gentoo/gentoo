@@ -1,0 +1,173 @@
+From 08e95f7e3f58510f289859301251c9d7d99486ea Mon Sep 17 00:00:00 2001
+From: Stijn Tintel <stijn@linux-ipv6.be>
+Date: Wed, 8 Apr 2026 17:13:37 +0300
+Subject: [PATCH] Use libc::Ioctl for ioctl request types
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+ioctl request numbers are 32-bit values. glibc's ioctl() accepts
+c_ulong (u64 on 64-bit) but this is wrong — musl correctly uses c_int.
+Using libc::c_ulong breaks compilation on musl targets.
+
+Change all ioctl request constants and helper return types from
+libc::c_ulong to libc::Ioctl, which is the portable type matching the
+actual libc::ioctl() signature on each platform.
+
+Compile-tested on both glibc and musl x86_64.
+
+Fixes: #546
+Fixes: 000c22e3f692 ("Factor out ioctl helpers, expose dev_idx from BcachefsHandle")
+Fixes: 755c970020b4 ("Convert set-file-option command to Rust")
+Fixes: fecffc3e6b2e ("Add reflink-option-propagate command")
+Fixes: 08a60cb4ecee ("Clap integration for bcachefs options and command cleanup")
+Fixes: 359e0884187e ("Convert fsck command from C to Rust")
+Fixes: bec2cb50c9b4 ("commands: add data-read and unpoison subcommands")
+Fixes: 61d9b093c389 ("Move get_size, get_blocksize, fd_to_dev_model from C to Rust")
+Fixes: db35e2b4aa7c ("handle: rewrite BcachefsHandle::open in pure Rust")
+
+Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>
+Signed-off-by: Stijn Tintel <stijn@linux-ipv6.be>
+---
+ src/commands/attr.rs      | 8 ++++----
+ src/commands/data_read.rs | 4 ++--
+ src/commands/fsck.rs      | 4 ++--
+ src/commands/unpoison.rs  | 4 ++--
+ src/wrappers/bdev.rs      | 2 +-
+ src/wrappers/handle.rs    | 8 ++++----
+ src/wrappers/ioctl.rs     | 8 ++++----
+ 7 files changed, 19 insertions(+), 19 deletions(-)
+
+diff --git a/src/commands/attr.rs b/src/commands/attr.rs
+index ae33b5bd..3a307e26 100644
+--- a/src/commands/attr.rs
++++ b/src/commands/attr.rs
+@@ -10,12 +10,12 @@ use rustix::fs::{XattrFlags, setxattr, removexattr};
+ 
+ use super::opts;
+ 
+-const BCHFS_IOC_REINHERIT_ATTRS: libc::c_ulong = 0x8008bc40;
+-const BCHFS_IOC_SET_REFLINK_P_MAY_UPDATE_OPTS: libc::c_ulong = 0xbc41;
+-const BCHFS_IOC_PROPAGATE_REFLINK_P_OPTS: libc::c_ulong = 0xbc42;
++const BCHFS_IOC_REINHERIT_ATTRS: libc::Ioctl = 0x8008bc40u32 as libc::Ioctl;
++const BCHFS_IOC_SET_REFLINK_P_MAY_UPDATE_OPTS: libc::Ioctl = 0xbc41u32 as libc::Ioctl;
++const BCHFS_IOC_PROPAGATE_REFLINK_P_OPTS: libc::Ioctl = 0xbc42u32 as libc::Ioctl;
+ 
+ /// Call a no-argument ioctl, returning io::Result.
+-fn ioctl_none(fd: i32, request: libc::c_ulong) -> std::io::Result<()> {
++fn ioctl_none(fd: i32, request: libc::Ioctl) -> std::io::Result<()> {
+     if unsafe { libc::ioctl(fd, request) } < 0 {
+         Err(std::io::Error::last_os_error())
+     } else {
+diff --git a/src/commands/data_read.rs b/src/commands/data_read.rs
+index 774b562f..0745ec75 100644
+--- a/src/commands/data_read.rs
++++ b/src/commands/data_read.rs
+@@ -13,9 +13,9 @@ use clap::Parser;
+ const SECTOR_SIZE: u64 = 512;
+ 
+ /// ioctl number: _IOWR(0xbc, 67, struct bch_ioctl_pread_raw)
+-const fn bchfs_ioc_pread_raw() -> libc::c_ulong {
++const fn bchfs_ioc_pread_raw() -> libc::Ioctl {
+     let size = std::mem::size_of::<BchIoctlPreadRaw>() as u32;
+-    ((3u32 << 30) | (size << 16) | (0xbcu32 << 8) | 67) as libc::c_ulong
++    ((3u32 << 30) | (size << 16) | (0xbcu32 << 8) | 67) as libc::Ioctl
+ }
+ 
+ #[repr(C)]
+diff --git a/src/commands/fsck.rs b/src/commands/fsck.rs
+index ed227dee..5add7a44 100644
+--- a/src/commands/fsck.rs
++++ b/src/commands/fsck.rs
+@@ -20,9 +20,9 @@ use crate::wrappers::sysfs;
+ use crate::device_scan;
+ 
+ // _IOW(0xbc, 19, struct bch_ioctl_fsck_offline) — sizeof = 24
+-const BCH_IOCTL_FSCK_OFFLINE: libc::c_ulong = 0x4018bc13;
++const BCH_IOCTL_FSCK_OFFLINE: libc::Ioctl = 0x4018bc13u32 as libc::Ioctl;
+ // _IOW(0xbc, 20, struct bch_ioctl_fsck_online) — sizeof = 16
+-const BCH_IOCTL_FSCK_ONLINE: libc::c_ulong = 0x4010bc14;
++const BCH_IOCTL_FSCK_ONLINE: libc::Ioctl = 0x4010bc14u32 as libc::Ioctl;
+ 
+ /// Filesystem check and repair
+ #[derive(Parser, Debug)]
+diff --git a/src/commands/unpoison.rs b/src/commands/unpoison.rs
+index 1e76a377..dfcafabf 100644
+--- a/src/commands/unpoison.rs
++++ b/src/commands/unpoison.rs
+@@ -17,9 +17,9 @@ use clap::Parser;
+ const SECTOR_SIZE: u64 = 512;
+ 
+ /// ioctl number: _IOW(0xbc, 68, struct bch_ioctl_unpoison)
+-const fn bchfs_ioc_unpoison() -> libc::c_ulong {
++const fn bchfs_ioc_unpoison() -> libc::Ioctl {
+     let size = std::mem::size_of::<BchIoctlUnpoison>() as u32;
+-    ((1u32 << 30) | (size << 16) | (0xbcu32 << 8) | 68) as libc::c_ulong
++    ((1u32 << 30) | (size << 16) | (0xbcu32 << 8) | 68) as libc::Ioctl
+ }
+ 
+ #[repr(C)]
+diff --git a/src/wrappers/bdev.rs b/src/wrappers/bdev.rs
+index 2fe6b971..9bf13bc0 100644
+--- a/src/wrappers/bdev.rs
++++ b/src/wrappers/bdev.rs
+@@ -13,7 +13,7 @@ use libc::{
+ };
+ 
+ // linux/fs.h ioctl constants not exposed by libc crate
+-const BLKGETSIZE64: libc::c_ulong = 0x80081272;
++const BLKGETSIZE64: libc::Ioctl = 0x80081272u32 as libc::Ioctl;
+ 
+ /// Returns the size of a file or block device in bytes.
+ ///
+diff --git a/src/wrappers/handle.rs b/src/wrappers/handle.rs
+index 6127f591..2468d74f 100644
+--- a/src/wrappers/handle.rs
++++ b/src/wrappers/handle.rs
+@@ -78,11 +78,11 @@ struct BchIoctlQueryUuid {
+ }
+ 
+ /// Compute _IOR(type, nr, size)
+-const fn ioc_r(type_: u32, nr: u32, size: u32) -> libc::c_ulong {
+-    ((2u32 << 30) | (size << 16) | (type_ << 8) | nr) as libc::c_ulong
++const fn ioc_r(type_: u32, nr: u32, size: u32) -> libc::Ioctl {
++    ((2u32 << 30) | (size << 16) | (type_ << 8) | nr) as libc::Ioctl
+ }
+ 
+-const BCH_IOCTL_QUERY_UUID: libc::c_ulong =
++const BCH_IOCTL_QUERY_UUID: libc::Ioctl =
+     ioc_r(0xbc, 1, mem::size_of::<BchIoctlQueryUuid>() as u32);
+ 
+ /// FS_IOC_GETFSSYSFSPATH: _IOR(0x15, 1, struct fs_sysfs_path)
+@@ -92,7 +92,7 @@ struct FsSysfsPath {
+     name: [u8; 128],
+ }
+ 
+-const FS_IOC_GETFSSYSFSPATH: libc::c_ulong =
++const FS_IOC_GETFSSYSFSPATH: libc::Ioctl =
+     ioc_r(0x15, 1, mem::size_of::<FsSysfsPath>() as u32);
+ 
+ /// A handle to a bcachefs filesystem, with RAII close.
+diff --git a/src/wrappers/ioctl.rs b/src/wrappers/ioctl.rs
+index c6eca5f9..078a9d6f 100644
+--- a/src/wrappers/ioctl.rs
++++ b/src/wrappers/ioctl.rs
+@@ -4,11 +4,11 @@ use std::mem;
+ ///
+ /// Equivalent to `_IOW(0xbc, nr, T)` — write direction, bcachefs magic,
+ /// size encoded from the type parameter.
+-pub const fn bch_ioc_w<T>(nr: u32) -> libc::c_ulong {
+-    ((1u32 << 30) | ((mem::size_of::<T>() as u32) << 16) | (0xbcu32 << 8) | nr) as libc::c_ulong
++pub const fn bch_ioc_w<T>(nr: u32) -> libc::Ioctl {
++    ((1u32 << 30) | ((mem::size_of::<T>() as u32) << 16) | (0xbcu32 << 8) | nr) as libc::Ioctl
+ }
+ 
+ /// Compute a bcachefs _IOWR ioctl number.
+-pub const fn bch_ioc_wr<T>(nr: u32) -> libc::c_ulong {
+-    ((3u32 << 30) | ((mem::size_of::<T>() as u32) << 16) | (0xbcu32 << 8) | nr) as libc::c_ulong
++pub const fn bch_ioc_wr<T>(nr: u32) -> libc::Ioctl {
++    ((3u32 << 30) | ((mem::size_of::<T>() as u32) << 16) | (0xbcu32 << 8) | nr) as libc::Ioctl
+ }
+-- 
+2.53.0
+
