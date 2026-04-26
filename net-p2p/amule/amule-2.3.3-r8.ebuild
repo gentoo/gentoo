@@ -78,6 +78,9 @@ src_configure() {
 
 	use debug || append-cppflags -DwxDEBUG_LEVEL=0
 	append-cxxflags -std=gnu++14
+	# Workaround for gettext-0.11.5
+	# https://bugs.gentoo.org/945720
+	append-cflags -std=gnu17
 
 	local myconf=(
 		--with-denoise-level=0
