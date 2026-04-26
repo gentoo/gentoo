@@ -493,6 +493,8 @@ src_test() {
 		"rpl.rpl_innodb_info_tbl_slave_tmp_tbl_mismatch;0;Unstable test"
 		"rpl_gtid.rpl_multi_source_mtr_includes;97844;Unstable test"
 		"main.partition_datatype;0;Unstable test"
+		"innodb_undo.truncate_xa;0;Unstable test"
+		"rpl.rpl_json;0;Unstable test"
 
 		"sys_vars.myisam_data_pointer_size_func;87935;Test will fail on slow hardware"
 

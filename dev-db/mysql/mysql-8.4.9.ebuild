@@ -486,6 +486,8 @@ src_test() {
 		"main.ps;0;Unstable test"
 		"innodb.dblwr_encrypt_rowcomp;0;Unstable test"
 		"main.slow_log;0;Unstable test"
+		"innodb_undo.truncate_xa;0;Unstable test"
+		"rpl.rpl_json;0;Unstable test"
 
 		"perfschema.statement_digest_query_sample;0;Test will fail on slow hardware"
 		"sys_vars.myisam_data_pointer_size_func;87935;Test will fail on slow hardware"
