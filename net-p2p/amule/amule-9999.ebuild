@@ -4,7 +4,7 @@
 EAPI=8
 WX_GTK_VER="3.2-gtk3"
 
-inherit autotools eapi9-ver flag-o-matic wxwidgets xdg-utils
+inherit cmake flag-o-matic wxwidgets xdg-utils
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/amule-project/amule"
@@ -21,18 +21,26 @@ HOMEPAGE="https://www.amule.org/"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="daemon debug geoip +gui nls remote stats upnp"
+IUSE="daemon debug geoip +gui nls remote stats test upnp"
+REQUIRED_USE="|| ( daemon gui remote )"
+
+RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-libs/boost:=
 	dev-libs/crypto++:=
 	sys-libs/binutils-libs:0=
 	sys-libs/readline:0=
 	virtual/zlib:=
-	x11-libs/wxGTK:${WX_GTK_VER}=
-	daemon? ( acct-user/amule )
-	geoip? ( dev-libs/geoip )
-	gui? ( x11-libs/wxGTK:${WX_GTK_VER}=[X] )
+	x11-libs/wxGTK:${WX_GTK_VER}=[curl]
+	daemon? (
+		acct-user/amule
+		dev-libs/boost:=
+	)
+	gui? (
+		dev-libs/boost:=
+		x11-libs/wxGTK:${WX_GTK_VER}=[X]
+		geoip? ( dev-libs/geoip )
+	)
 	nls? ( virtual/libintl )
 	remote? (
 		acct-user/amule
@@ -41,76 +49,55 @@ RDEPEND="
 	stats? ( media-libs/gd:=[jpeg,png] )
 	upnp? ( net-libs/libupnp:0= )
 "
-DEPEND="${RDEPEND}
-	gui? ( dev-util/desktop-file-utils )
-"
 BDEPEND="
 	virtual/pkgconfig
-	>=dev-build/boost-m4-0.4_p20221019
 	nls? ( sys-devel/gettext )
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2.3.2-disable-version-check.patch"
-	"${FILESDIR}/${PN}-2.3.3-use-xdg-open-as-preview-default.patch"
+	"${FILESDIR}/${PN}-2.4.0-disable-version-check.patch"
+	"${FILESDIR}/${PN}-2.4.0-use-xdg-open-as-preview-default.patch"
 )
-
-src_prepare() {
-	default
-	rm m4/boost.m4 || die
-
-	if [[ ${PV} == 9999 ]]; then
-		./autogen.sh || die
-	else
-		eautoreconf
-	fi
-}
 
 src_configure() {
 	setup-wxwidgets
 
 	use debug || append-cppflags -DwxDEBUG_LEVEL=0
-	append-cxxflags -std=gnu++14
+	CMAKE_BUILD_TYPE=$(usex debug Debug ${CMAKE_BUILD_TYPE})
 
-	local myconf=(
-		--with-denoise-level=0
-		--with-wx-config="${WX_CONFIG}"
-		--enable-amulecmd
-		--with-boost
-		$(use_enable debug)
-		$(use_enable daemon amule-daemon)
-		$(use_enable geoip)
-		$(use_enable nls)
-		$(use_enable remote webserver)
-		$(use_enable stats cas)
-		$(use_enable stats alcc)
-		$(use_enable upnp)
+	local mycmakeargs=(
+		-DBUILD_ALCC=YES
+		-DBUILD_ED2K=YES
+		-DBUILD_ALC="$(usex gui)"
+		-DBUILD_AMULECMD="$(usex remote)"
+		-DBUILD_DAEMON="$(usex daemon)"
+		-DBUILD_CAS="$(usex stats)"
+		-DBUILD_MONOLITHIC="$(usex gui)"
+		-DBUILD_TESTING="$(usex test)"
+		-DBUILD_WEBSERVER="$(usex remote)"
+		-DENABLE_NLS="$(usex nls)"
+		-DENABLE_UPNP="$(usex upnp)"
 	)
 
 	if use gui; then
-		myconf+=(
-			$(use_enable remote amule-gui)
-			$(use_enable stats alc)
-			$(use_enable stats wxcas)
+		mycmakeargs+=(
+			-DBUILD_REMOTEGUI="$(usex remote)"
+			-DBUILD_WXCAS="$(usex stats)"
+			-DENABLE_IP2COUNTRY="$(usex geoip)"
 		)
 	else
-		myconf+=(
-			--disable-monolithic
-			--disable-amule-gui
-			--disable-alc
-			--disable-wxcas
+		mycmakeargs+=(
+			-DBUILD_REMOTEGUI=NO
+			-DBUILD_WXCAS=NO
+			-DENABLE_IP2COUNTRY=NO
 		)
 	fi
 
-	econf "${myconf[@]}"
-}
-
-src_test() {
-	emake check
+	cmake_src_configure
 }
 
 src_install() {
-	default
+	cmake_src_install
 
 	if use daemon; then
 		newconfd "${FILESDIR}"/amuled.confd-r1 amuled
@@ -129,20 +116,15 @@ src_install() {
 }
 
 pkg_postinst() {
-	if use daemon || use remote && ver_replacing -lt "2.3.2-r4"; then
-		elog "Default user under which amuled and amuleweb daemons are started"
-		elog "have been changed from p2p to amule. Default home directory have been"
-		elog "changed as well."
-		echo
-		elog "If you want to preserve old download/share location, you can create"
-		elog "symlink /var/lib/amule/.aMule pointing to the old location and adjust"
-		elog "files ownership *or* restore AMULEUSER and AMULEHOME variables in"
-		elog "/etc/conf.d/{amuled,amuleweb} to the old values."
+	if use gui; then
+		xdg_desktop_database_update
+		xdg_icon_cache_update
 	fi
-
-	use gui && xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	use gui && xdg_desktop_database_update
+	if use gui; then
+		xdg_desktop_database_update
+		xdg_icon_cache_update
+	fi
 }
