@@ -117,6 +117,6 @@ python_test() {
 	local EPYTEST_XDIST=1
 	local -x PRE_BUILT_SETUPTOOLS_WHEEL=${DISTUTILS_WHEEL_PATH}
 	local EPYTEST_PLUGINS=( pytest-{home,subprocess,timeout} )
-	epytest -o tmp_path_retention_policy=all \
+	epytest -o filterwarnings= -o tmp_path_retention_policy=all \
 		-m "not uses_network" setuptools
 }
