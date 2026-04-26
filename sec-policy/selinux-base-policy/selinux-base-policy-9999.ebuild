@@ -120,9 +120,9 @@ src_install() {
 				einfo "Installing ${type} ${mod} policy package"
 				insinto "${BASEDIR}/${type}"
 				if [[ -f "${S}/${type}/${mod}.pp" ]]; then
-					doins "${S}/${type}/${mod}.pp" || die "Failed to add ${mod}.pp to ${type}"
+					doins "${S}/${type}/${mod}.pp"
 				elif [[ -f "${S}/${type}/${mod}.cil" ]]; then
-					doins "${S}/${type}/${mod}.cil" || die "Failed to add ${mod}.cil to ${type}"
+					doins "${S}/${type}/${mod}.cil"
 				fi
 			done
 		fi
