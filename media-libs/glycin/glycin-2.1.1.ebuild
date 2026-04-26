@@ -30,7 +30,7 @@ LICENSE+="
 	|| ( LGPL-2.1+ MPL-2.0 )
 "
 SLOT="2"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="gtk +introspection vala test"
 REQUIRED_USE="
 	gtk? ( introspection )
