@@ -9,7 +9,7 @@ SRC_URI="https://github.com/dm-vdo/vdo/archive/refs/tags/${PV}.tar.gz -> ${P}.ta
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 # libdevmapper.h & more
 DEPEND="
