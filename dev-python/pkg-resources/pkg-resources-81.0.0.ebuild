@@ -26,6 +26,11 @@ RDEPEND="
 	>=dev-python/platformdirs-4.4.0[${PYTHON_USEDEP}]
 	!<dev-python/setuptools-82
 "
+BDEPEND="
+	test? (
+		dev-python/setuptools[${PYTHON_USEDEP}]
+	)
+"
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
