@@ -77,6 +77,7 @@ app-emacs/emacs-ipython-notebook
 dev-python/jupyter
 dev-python/vpython
 dev-python/widgetsnbextension
+dev-python/ipympl
 dev-python/ipywidgets
 dev-python/metakernel
 dev-python/octave-kernel
