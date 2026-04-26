@@ -10,7 +10,11 @@ DESCRIPTION="Command line tool for signing, verifying, encrypting and decrypting
 HOMEPAGE="https://www.aleksey.com/xmlsec/"
 SRC_URI="
 	https://www.aleksey.com/xmlsec/download/${PN}1-${PV}.tar.gz
-	verify-sig? ( https://www.aleksey.com/xmlsec/download/${PN}1-${PV}.sig )
+	https://www.aleksey.com/xmlsec/download/older-releases/${PN}1-${PV}.tar.gz
+	verify-sig? (
+		https://www.aleksey.com/xmlsec/download/${PN}1-${PV}.sig
+		https://www.aleksey.com/xmlsec/download/older-releases/${PN}1-${PV}.sig
+	)
 "
 S="${WORKDIR}/${PN}1-${PV}"
 
