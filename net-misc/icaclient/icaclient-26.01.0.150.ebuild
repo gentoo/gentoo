@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,6 +19,10 @@ ICAROOT="/opt/Citrix/ICAClient"
 
 QA_PREBUILT="${ICAROOT#/}/*"
 
+QA_FLAGS_IGNORED="${ICAROOT#/}/lib/HdxRtcEngine_ext/libwebrpc.so"
+QA_TEXTRELS="${ICAROOT#/}/lib/HdxRtcEngine_ext/libwebrpc.so"
+QA_RUNPATH="${ICAROOT#/}/lib/HdxRtcEngine_ext/libwebrpc.so"
+
 # we have binaries for two conflicting kerberos implementations
 # https://bugs.gentoo.org/792090
 # https://bugs.gentoo.org/775995
@@ -38,12 +42,28 @@ REQUIRES_EXCLUDE="${REQUIRES_EXCLUDE}
 	libgstpbutils-0.10.so.0
 	libgstreamer-0.10.so.0
 "
-
-# video background blurring, optional
+# video background blurring + webkit dependencies, optional
+# upstream recommends both webkit 4.0 and 4.1 variants
 REQUIRES_EXCLUDE="${REQUIRES_EXCLUDE}
-	libopencv_core.so.407
-	libopencv_imgcodecs.so.407
-	libopencv_imgproc.so.407
+	libopencv_core.so.410
+	libopencv_imgcodecs.so.410
+	libopencv_imgproc.so.410
+	libwebkit2gtk-4.0.so.37
+	libjavascriptcoregtk-4.0.so.18
+	libwebkit2gtk-4.1.so.0
+	libjavascriptcoregtk-4.1.so.0
+"
+# touch input support, optional
+REQUIRES_EXCLUDE="${REQUIRES_EXCLUDE}
+	libinput.so.10
+"
+# scanner support, optional
+REQUIRES_EXCLUDE="${REQUIRES_EXCLUDE}
+	libsane.so.1
+"
+# smartcard support, optional
+REQUIRES_EXCLUDE="${REQUIRES_EXCLUDE}
+	libpcsclite.so.1
 "
 
 BDEPEND="
@@ -53,11 +73,13 @@ BDEPEND="
 RDEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2
 	app-crypt/libsecret
+	dev-db/sqlite
 	dev-libs/glib:2
 	|| (
 		dev-libs/libxml2:2/2
 		dev-libs/libxml2-compat
 	)
+	net-misc/curl
 	media-fonts/font-adobe-100dpi
 	media-fonts/font-cursor-misc
 	media-fonts/font-misc-ethiopic
@@ -66,6 +88,8 @@ RDEPEND="
 	media-libs/alsa-lib
 	media-libs/fontconfig
 	media-libs/freetype
+	>=media-video/ffmpeg-6.0
+	<media-video/ffmpeg-7
 	media-libs/gst-plugins-base:1.0
 	media-libs/gstreamer:1.0
 	media-libs/libogg
@@ -76,16 +100,14 @@ RDEPEND="
 	media-libs/mesa
 	media-libs/speex
 	media-libs/speexdsp
-	net-libs/libsoup:2.4
 	sys-apps/util-linux
 	llvm-runtimes/libcxx
 	llvm-runtimes/libcxxabi
-	virtual/zlib:=
+	virtual/zlib
 	virtual/krb5
 	virtual/libudev
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
-	x11-libs/gtk+:2
 	x11-libs/gtk+:3
 	x11-libs/libX11
 	x11-libs/libXaw
@@ -102,6 +124,7 @@ RDEPEND="
 	!hdx? ( !media-plugins/hdx-realtime-media-engine )
 	usb? ( virtual/libudev )
 	selfservice? (
+		net-libs/libsoup:2.4
 		net-libs/webkit-gtk:4.1
 		dev-libs/xerces-c
 	)
@@ -118,9 +141,6 @@ pkg_setup() {
 		amd64)
 			ICAARCH=linuxx64
 		;;
-		x86)
-			ICAARCH=linuxx86
-		;;
 		*)
 			eerror "Given architecture is not supported by Citrix."
 		;;
@@ -134,7 +154,6 @@ src_unpack() {
 
 src_prepare() {
 	default
-	rm lib/UIDialogLibWebKit.so || die
 
 	cp nls/en/module.ini . || die
 	if use usb; then
@@ -173,6 +192,12 @@ src_install() {
 
 	exeinto "${ICAROOT}"/lib
 	doexe lib/*.so
+
+	for ext_dir in lib/*_ext; do
+		if [ -d "$ext_dir" ]; then
+			cp -a "$ext_dir" "${ED}/${ICAROOT}/lib/" || die
+		fi
+	done
 
 	for dest in "${ICAROOT}"{,/nls/en{,.UTF-8}} ; do
 		insinto "${dest}"
@@ -233,7 +258,7 @@ src_install() {
 	dosym en /opt/Citrix/ICAClient/nls/C
 
 	insinto "${ICAROOT}"/icons
-	doins icons/*
+	doins -r icons/*
 
 	insinto "${ICAROOT}"/keyboard
 	doins keyboard/*
@@ -267,9 +292,7 @@ src_install() {
 		make_wrapper ${bin} "${ICAROOT}"/util/${bin} . "${ICAROOT}"/util
 	done
 
-	for bin in selfservice wfica ; do
-		make_wrapper ${bin} "${ICAROOT}"/${bin} . "${ICAROOT}"
-	done
+	make_wrapper wfica "${ICAROOT}"/wfica . "${ICAROOT}"
 
 	dodir /etc/revdep-rebuild/
 	echo "SEARCH_DIRS_MASK=\"${ICAROOT}\"" \
@@ -283,6 +306,39 @@ src_install() {
 
 	insinto /usr/share/mime/packages
 	doins desktop/Citrix-mime_types.xml
+
+	if use selfservice; then
+		make_wrapper selfservice "${ICAROOT}"/selfservice . "${ICAROOT}"
+	fi
+
+	# https://bugs.gentoo.org/893706
+	if ! use selfservice; then
+		local selfservice_files=(
+		    "${ICAROOT}/util/webcontainer"
+		    "${ICAROOT}/lib/WebView_ext/libextension.so"
+		    "${ICAROOT}/lib/CLSync_ext/libCLSyncExtension.so"
+		    "${ICAROOT}/lib/AccountConfig_ext/libAccountConfigExtension.so"
+		    "${ICAROOT}/lib/Auth_ext/libAuthExtension.so"
+		    "${ICAROOT}/lib/AML_ext/libAMLExtension.so"
+		    "${ICAROOT}/lib/CustomPortal_ext/libCustomPortalExtension.so"
+		    "${ICAROOT}/selfservice"
+		    "${ICAROOT}/nls/de/LC_MESSAGES/selfservice.mo"
+		    "${ICAROOT}/nls/it/LC_MESSAGES/selfservice.mo"
+		    "${ICAROOT}/nls/ko/LC_MESSAGES/selfservice.mo"
+		    "${ICAROOT}/nls/fr/LC_MESSAGES/selfservice.mo"
+		    "${ICAROOT}/nls/ja/LC_MESSAGES/selfservice.mo"
+		    "${ICAROOT}/nls/zh_HANS/LC_MESSAGES/selfservice.mo"
+		    "${ICAROOT}/nls/ru/LC_MESSAGES/selfservice.mo"
+		    "${ICAROOT}/nls/pt_BR/LC_MESSAGES/selfservice.mo"
+		    "${ICAROOT}/nls/en/LC_MESSAGES/selfservice.mo"
+		    "${ICAROOT}/nls/es/LC_MESSAGES/selfservice.mo"
+		    "${ICAROOT}/nls/nl/LC_MESSAGES/selfservice.mo"
+		    "${ICAROOT}/site/selfservice.html"
+		)
+		for f in "${selfservice_files[@]}"; do
+			rm -f "${ED}${f}" || die
+		done
+	fi
 }
 
 pkg_preinst() {
