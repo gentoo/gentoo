@@ -11,9 +11,8 @@
   </maintainer>
   <upstream>
     <remote-id type="github">limine-bootloader/limine</remote-id>
-    <remote-id type="codeberg">Limine/Limine</remote-id>
-    <bugs-to>https://codeberg.org/Limine/Limine/issues</bugs-to>
-    <changelog>https://codeberg.org/Limine/Limine/src/branch/trunk/ChangeLog</changelog>
+    <bugs-to>https://github.com/Limine-Bootloader/Limine/issues</bugs-to>
+    <changelog>https://github.com/Limine-Bootloader/Limine/blob/trunk/ChangeLog</changelog>
   </upstream>
   <use>
     <flag name="uefi-ia32">
