@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
-inherit autotools dot-a python-single-r1 systemd
+PYTHON_COMPAT=( python3_{11..14} )
+inherit autotools dot-a flag-o-matic python-single-r1 systemd
 
 DESCRIPTION="syslog replacement with advanced filtering features"
 HOMEPAGE="https://www.syslog-ng.com/products/open-source-log-management/"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/syslog-ng/syslog-ng/releases/download/${P}/${P}.tar.
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="amqp caps dbi geoip2 grpc http json kafka mongodb mqtt pacct python redis smtp snmp test spoof-source systemd tcpd"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
 	test? ( python )"
@@ -62,7 +62,6 @@ DOCS=( AUTHORS NEWS.md CONTRIBUTING.md contrib/syslog-ng.conf.{HP-UX,RedHat,SunO
 	"${T}/syslog-ng.logrotate.hardened" "${FILESDIR}/README.hardened" )
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.28.1-net-snmp.patch
-	"${FILESDIR}"/${PN}-4.8.1-kmsg-invalid-argument.patch
 )
 
 pkg_setup() {
@@ -105,8 +104,8 @@ src_prepare() {
 	done
 
 	for f in syslog-ng.conf.gentoo.hardened.in-r1 \
-			syslog-ng.conf.gentoo.in-r1; do
-		sed -e "s/@SYSLOGNG_VERSION@/$(ver_cut 1-2)/g" "${FILESDIR}/${f}" > "${T}/${f/.in-r1/}" || die
+			syslog-ng.conf.gentoo.in-r2; do
+		sed -e "s/@SYSLOGNG_VERSION@/$(ver_cut 1-2)/g" "${FILESDIR}/${f}" > "${T}/${f/.in*/}" || die
 	done
 
 	default
@@ -114,6 +113,8 @@ src_prepare() {
 }
 
 src_configure() {
+	# Type mismatches in tests
+	filter-lto
 	lto-guarantee-fat
 
 	# Needs bison/flex.
@@ -124,6 +125,7 @@ src_configure() {
 		--disable-java
 		--disable-java-modules
 		--disable-riemann
+		--disable-stackdump  # 963387
 		--enable-ipv6
 		--enable-manpages
 		--localstatedir=/var/lib/syslog-ng
