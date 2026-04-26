@@ -1176,6 +1176,12 @@ toolchain_src_configure() {
 		export ac_cv_std_swap_in_utility=no
 	fi
 
+	if is_go && [[ -f "${ESYSROOT}/usr/$(get_libdir)/libruntime.so" ]] ; then
+		# https://gcc.gnu.org/PR121877 (bug #972774)
+		export lt_cv_prog_compiler_c_o_GO=yes
+		export lt_cv_prog_compiler_pic_works_GO=yes
+	fi
+
 	local flag
 	for flag in $(all-flag-vars) ; do
 		[[ -n ${!flag} ]] && einfo "${flag}=\"${!flag}\""
