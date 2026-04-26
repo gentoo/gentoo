@@ -1,0 +1,93 @@
+Backport test fixes to deal with smaller terminal sizes.
+Preemptively backport a py3.15 test fix as its backwards compatible.
+
+https://github.com/jvoisin/mat2/issues/26
+https://github.com/jvoisin/mat2/commit/690e01d475117a4e0c85f26154b26ef332f036be
+
+From 690e01d475117a4e0c85f26154b26ef332f036be Mon Sep 17 00:00:00 2001
+From: jvoisin <julien.voisin@dustri.org>
+Date: Fri, 21 Nov 2025 16:59:32 +0100
+Subject: [PATCH] Improve the testsuite's portability
+
+Small terminal sizes might split the cli's help message on odd places.
+
+This should close #26
+--- a/tests/test_climat2.py
++++ b/tests/test_climat2.py
+@@ -24,9 +24,11 @@ def test_help(self):
+         self.assertIn(b'mat2 [-h] [-V]', stdout)
+         self.assertIn(b'[--unknown-members policy]', stdout)
+         self.assertIn(b'[--inplace]', stdout)
+-        self.assertIn(b' [-v] [-l]', stdout)
++        self.assertIn(b'[-v]', stdout)
++        self.assertIn(b'[-l]', stdout)
+         self.assertIn(b'[--check-dependencies]', stdout)
+-        self.assertIn(b'[-L | -s]', stdout)
++        self.assertIn(b'[-L', stdout)
++        self.assertIn(b'-s]', stdout)
+         self.assertIn(b'[files ...]', stdout)
+ 
+     def test_no_arg(self):
+@@ -35,10 +37,11 @@ def test_no_arg(self):
+         self.assertIn(b'mat2 [-h] [-V]', stdout)
+         self.assertIn(b'[--unknown-members policy]', stdout)
+         self.assertIn(b'[--inplace]', stdout)
+-        self.assertIn(b' [-v]', stdout)
++        self.assertIn(b'[-v]', stdout)
+         self.assertIn(b'[-l]', stdout)
+         self.assertIn(b'[--check-dependencies]', stdout)
+-        self.assertIn(b'[-L | -s]', stdout)
++        self.assertIn(b'[-L', stdout)
++        self.assertIn(b'-s]', stdout)
+         self.assertIn(b'[files ...]', stdout)
+ 
+
+https://github.com/jvoisin/mat2/pull/30
+https://github.com/jvoisin/mat2/commit/05f34a17695be65b1ad9782911f87e000de8fc8b
+
+From 05f34a17695be65b1ad9782911f87e000de8fc8b Mon Sep 17 00:00:00 2001
+From: Emir Akdag <infraw.linux@proton.me>
+Date: Sun, 21 Dec 2025 20:54:26 +0300
+Subject: [PATCH] Fix test_climat2 failure on Python 3.15
+
+Python 3.15 changed argparse output formatting by removing brackets
+around options.
+
+Relax the assertions to ensure compatibility with both old and new
+Python versions.
+--- a/tests/test_climat2.py
++++ b/tests/test_climat2.py
+@@ -24,12 +24,12 @@ def test_help(self):
+         self.assertIn(b'mat2 [-h] [-V]', stdout)
+         self.assertIn(b'[--unknown-members policy]', stdout)
+         self.assertIn(b'[--inplace]', stdout)
+-        self.assertIn(b'[-v]', stdout)
+-        self.assertIn(b'[-l]', stdout)
+-        self.assertIn(b'[--check-dependencies]', stdout)
++        self.assertIn(b'-v', stdout)
++        self.assertIn(b'-l', stdout)
++        self.assertIn(b'--check-dependencies', stdout)
+         self.assertIn(b'[-L', stdout)
+         self.assertIn(b'-s]', stdout)
+-        self.assertIn(b'[files ...]', stdout)
++        self.assertIn(b'files', stdout)
+ 
+     def test_no_arg(self):
+         proc = subprocess.Popen(mat2_binary, stdout=subprocess.PIPE)
+@@ -37,12 +37,12 @@ def test_no_arg(self):
+         self.assertIn(b'mat2 [-h] [-V]', stdout)
+         self.assertIn(b'[--unknown-members policy]', stdout)
+         self.assertIn(b'[--inplace]', stdout)
+-        self.assertIn(b'[-v]', stdout)
+-        self.assertIn(b'[-l]', stdout)
+-        self.assertIn(b'[--check-dependencies]', stdout)
++        self.assertIn(b'-v', stdout)
++        self.assertIn(b'-l', stdout)
++        self.assertIn(b'--check-dependencies', stdout)
+         self.assertIn(b'[-L', stdout)
+         self.assertIn(b'-s]', stdout)
+-        self.assertIn(b'[files ...]', stdout)
++        self.assertIn(b'files', stdout)
+ 
+ 
+ class TestVersion(unittest.TestCase):
