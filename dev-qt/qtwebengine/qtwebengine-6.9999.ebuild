@@ -45,6 +45,7 @@ RDEPEND="
 	media-libs/libpng:=
 	media-libs/libwebp:=
 	media-libs/mesa[gbm(+)]
+	>=media-libs/openh264-2.4:=
 	media-libs/openjpeg:2=
 	media-libs/opus
 	media-libs/tiff:=
@@ -212,10 +213,6 @@ src_configure() {
 		# this by default in 6.7.3+ (bug #913923)
 		-DQT_FEATURE_webengine_system_re2=OFF
 
-		# currently seems unused with our configuration, doesn't link and grep
-		# seems(?) to imply no dlopen nor using bundled (TODO: check again)
-		-DQT_FEATURE_webengine_system_openh264=OFF
-
 		# system_libvpx=ON is intentionally ignored with USE=vaapi which leads
 		# to using system's being less tested, prefer disabling for now until
 		# vaapi can use it as well
@@ -226,7 +223,7 @@ src_configure() {
 		$(printf -- '-DQT_FEATURE_webengine_system_%s=ON ' \
 			freetype gbm glib harfbuzz lcms2 libjpeg libopenjpeg2 \
 			libpci libpng libtiff libudev libwebp libxml minizip \
-			opus snappy zlib)
+			openh264 opus snappy zlib)
 
 		# TODO: fixup gn cross, or package dev-qt/qtwebengine-gn with =ON
 		# (see also BUILD_ONLY_GN option added in 6.8+ for the latter)
