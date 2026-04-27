@@ -1,8 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
+RPM_COMPRESS_TYPE=none
 inherit mount-boot rpm secureboot
 
 DISTFILE_DOC="dell-sas-hba-12gbps_reference-guide_en-us.pdf"
