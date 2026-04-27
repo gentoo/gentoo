@@ -255,6 +255,10 @@ src_configure() {
 			ewarn "-g2+/-ggdb* *FLAGS replaced with -g1 (enable USE=custom-cflags to keep)"
 		fi
 
+		# gcc-16 with -O3 is known to cause runtime issues (bug #968755)
+		tc-is-gcc && [[ $(gcc-major-version) -ge 16 ]] &&
+			replace-flags '-O[3-9]' -O2
+
 		# Qt normally ignores users *FLAGS specifically for qtwebengine, and
 		# does not really support passing -march -- qt6-build.eclass has some
 		# checks to ensure working flags with amd64, but that does not exist
