@@ -1,7 +1,7 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 RPM_COMPRESS_TYPE=none
 inherit rpm
@@ -24,7 +24,8 @@ KEYWORDS="-* ~amd64 ~x86"
 DEPEND="
 	<media-gfx/iscan-3
 	>=media-gfx/iscan-2.21.0
-	!!<media-gfx/iscan-plugin-gt-x770-2.1.2.1-r2"
+	!!<media-gfx/iscan-plugin-gt-x770-2.1.2.1-r2
+"
 RDEPEND="${DEPEND}"
 
 QA_PREBUILT="/opt/iscan/esci/libesint7C.so*"
