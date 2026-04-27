@@ -33,13 +33,13 @@ RESTRICT="test"
 
 RDEPEND="
 	dev-libs/gjs
-	gui-libs/gtk:4
-	gui-libs/libadwaita:1
-	net-libs/webkit-gtk:6
+	gui-libs/gtk:4[introspection]
+	gui-libs/libadwaita:1[introspection]
+	net-libs/webkit-gtk:6[introspection]
 "
 BDEPEND="
 	${RDEPEND}
-	dev-libs/appstream-glib
+	dev-libs/appstream-glib[introspection]
 	dev-util/blueprint-compiler
 	dev-util/desktop-file-utils
 "
