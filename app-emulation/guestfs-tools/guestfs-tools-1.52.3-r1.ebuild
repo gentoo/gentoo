@@ -83,15 +83,12 @@ BDEPEND="
 	test? ( ocaml? ( dev-ml/ounit2[ocamlopt] ) )
 "
 
-src_prepare() {
-	cat <<EOF > "${S}/m4/guestfs-bash-completion.m4" || die
-dnl Unconditionally install Bash completion files
-AC_MSG_CHECKING([for bash-completions directory])
-AC_SUBST([BASH_COMPLETIONS_DIR],[$(get_bashcompdir)])
-AC_MSG_RESULT([\$BASH_COMPLETIONS_DIR])
-AM_CONDITIONAL([HAVE_BASH_COMPLETION],[/bin/true])
-EOF
+PATCHES=(
+	"${FILESDIR}/${PN}-1.54.0-bash-Remove-vestigial-bash-completions.patch"
+        "${FILESDIR}/${PN}-1.52.3-guestfs-bash-completion.m4-more-control.patch"
+)
 
+src_prepare() {
 	default
 	eautoreconf
 }
@@ -109,6 +106,8 @@ src_configure() {
 		$(use_enable ocaml)
 		$(use_enable perl)
 		$(use_with libvirt)
+                --with-bash-completion
+                --with-bash-completion-dir="$(get_bashcompdir)"
 	)
 
 	econf "${myconf[@]}"
