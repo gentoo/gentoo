@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -44,6 +44,7 @@ RDEPEND="
 	app-text/ghostscript-gpl
 	dev-lang/perl
 	dev-texlive/texlive-binextra
+	dev-texlive/texlive-luatex
 	virtual/imagemagick-tools
 	java? ( >=virtual/jre-1.8:* )
 "
