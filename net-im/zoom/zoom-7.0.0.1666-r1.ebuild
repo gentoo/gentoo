@@ -24,6 +24,7 @@ RDEPEND="zoom-symlink? ( !games-engines/zoom )
 	dev-libs/icu
 	dev-libs/nspr
 	dev-libs/nss
+	dev-libs/quazip
 	dev-qt/qt5compat:6
 	dev-qt/qtbase:6
 	dev-qt/qtdeclarative:6
@@ -70,8 +71,7 @@ RDEPEND="zoom-symlink? ( !games-engines/zoom )
 	pulseaudio? ( media-libs/libpulse )
 	wayland? ( dev-libs/wayland )"
 
-BDEPEND="dev-util/bbe
-	dev-util/patchelf"
+BDEPEND="dev-util/bbe"
 
 CONFIG_CHECK="~USER_NS ~PID_NS ~NET_NS ~SECCOMP_FILTER"
 QA_PREBUILT="opt/zoom/*"
@@ -91,9 +91,6 @@ src_prepare() {
 		bbe -e 's/libpulse.so/IgNoRePuLsE/' zoom >zoom.tmp || die
 		mv zoom.tmp zoom || die
 	fi
-
-	# Remove insecure DT_RUNPATH from lib. Will upstream ever learn? :(
-	patchelf --remove-rpath libquazip.so || die
 }
 
 src_install() {
@@ -104,11 +101,11 @@ src_install() {
 	doins *.pcm Embedded.properties version.txt unifywebview_config.zip
 	doexe zoom zopen ZoomClips ZoomLauncher ZoomWebviewHost *.sh \
 		aomhost cpthost libaomagent.so libcml.so libdvf.so libmkldnn.so \
-		libquazip.so libavcodec.so* libavformat.so* libavutil.so* \
-		libswresample.so*
+		libavcodec.so* libavformat.so* libavutil.so* libswresample.so*
 	fperms a+x /opt/zoom/cef/chrome_sandbox
 	dosym -r {"/usr/$(get_libdir)",/opt/zoom}/libmpg123.so
 	dosym -r "/usr/$(get_libdir)/libfdk-aac.so.2" /opt/zoom/libfdkaac2.so
+	dosym -r "/usr/$(get_libdir)/libquazip1-qt6.so" /opt/zoom/libquazip.so
 
 	if use opencl; then
 		doexe libclDNN64.so
