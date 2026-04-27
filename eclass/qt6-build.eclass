@@ -81,7 +81,6 @@ else
 
 	unset _QT6_P _QT6_SRC
 fi
-readonly QT6_BUILD_TYPE
 
 HOMEPAGE="https://www.qt.io/"
 LICENSE="|| ( GPL-2 GPL-3 LGPL-3 ) FDL-1.3"
@@ -274,23 +273,23 @@ _qt6-build_create_user_facing_links() {
 _qt6-build_prepare_env() {
 	# setup installation directories
 	# note: keep paths in sync with qmake-utils.eclass
-	readonly QT6_PREFIX=${EPREFIX}/usr
-	readonly QT6_DATADIR=${QT6_PREFIX}/share/qt6
-	readonly QT6_LIBDIR=${QT6_PREFIX}/$(get_libdir)
+	QT6_PREFIX=${EPREFIX}/usr
+	QT6_DATADIR=${QT6_PREFIX}/share/qt6
+	QT6_LIBDIR=${QT6_PREFIX}/$(get_libdir)
 
-	readonly QT6_ARCHDATADIR=${QT6_LIBDIR}/qt6
+	QT6_ARCHDATADIR=${QT6_LIBDIR}/qt6
 
-	readonly QT6_BINDIR=${QT6_ARCHDATADIR}/bin
-	readonly QT6_DOCDIR=${QT6_PREFIX}/share/qt6-doc
-	readonly QT6_EXAMPLESDIR=${QT6_DATADIR}/examples
-	readonly QT6_HEADERDIR=${QT6_PREFIX}/include/qt6
-	readonly QT6_IMPORTDIR=${QT6_ARCHDATADIR}/imports
-	readonly QT6_LIBEXECDIR=${QT6_ARCHDATADIR}/libexec
-	readonly QT6_MKSPECSDIR=${QT6_ARCHDATADIR}/mkspecs
-	readonly QT6_PLUGINDIR=${QT6_ARCHDATADIR}/plugins
-	readonly QT6_QMLDIR=${QT6_ARCHDATADIR}/qml
-	readonly QT6_SYSCONFDIR=${EPREFIX}/etc/xdg
-	readonly QT6_TRANSLATIONDIR=${QT6_DATADIR}/translations
+	QT6_BINDIR=${QT6_ARCHDATADIR}/bin
+	QT6_DOCDIR=${QT6_PREFIX}/share/qt6-doc
+	QT6_EXAMPLESDIR=${QT6_DATADIR}/examples
+	QT6_HEADERDIR=${QT6_PREFIX}/include/qt6
+	QT6_IMPORTDIR=${QT6_ARCHDATADIR}/imports
+	QT6_LIBEXECDIR=${QT6_ARCHDATADIR}/libexec
+	QT6_MKSPECSDIR=${QT6_ARCHDATADIR}/mkspecs
+	QT6_PLUGINDIR=${QT6_ARCHDATADIR}/plugins
+	QT6_QMLDIR=${QT6_ARCHDATADIR}/qml
+	QT6_SYSCONFDIR=${EPREFIX}/etc/xdg
+	QT6_TRANSLATIONDIR=${QT6_DATADIR}/translations
 }
 
 # @FUNCTION: _qt6-build_sanitize_cpu_flags
