@@ -23,13 +23,13 @@ SLOT="0"
 KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv x86"
 
 DEPEND="
-	dev-libs/glib:2
+	dev-libs/glib:2[introspection]
 	dev-libs/gobject-introspection:0=
-	dev-libs/json-glib
+	dev-libs/json-glib[introspection]
 	net-libs/libsoup:3.0
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
-	x11-libs/gtk+:3
+	x11-libs/gtk+:3[introspection]
 "
 RDEPEND="${DEPEND}"
 
