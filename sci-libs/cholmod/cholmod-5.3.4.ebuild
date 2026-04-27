@@ -74,17 +74,35 @@ src_test() {
 	# we have to manually go to BUILD_DIR
 	cd "${BUILD_DIR}" || die
 	# Run demo files
-	local type="di dl si sl"
-	local prog="demo simple"
-	local matrix_file="bcsstk01.tri lp_afiro.tri can___24.mtx c.tri bcsstk02.tri"
-	for i in ${type}; do
-		for k in ${prog}; do
-			for j in ${matrix_file}; do
+	local type=(
+		di
+		dl
+		si
+		sl
+	)
+	local prog=(
+		demo
+		simple
+	)
+	local matrix_file=(
+		bcsstk01.tri
+		lp_afiro.tri
+		can___24.mtx
+		c.tri
+		bcsstk02.tri
+	)
+	local i
+	local j
+	local k
+	for i in ${type[@]}; do
+		for k in ${prog[@]}; do
+			for j in ${matrix_file[@]}; do
 				./cholmod_${i}_${k}   < "${S}/Demo/Matrix/${j}" \
 					|| die "failed testing cholmod_${i}_${k} with ${j}"
 			done
 		done
 	done
+	einfo "All tests passed"
 }
 
 src_install() {

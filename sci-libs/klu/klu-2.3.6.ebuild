@@ -44,14 +44,27 @@ src_test() {
 	# we have to manually go to BUILD_DIR
 	cd "${BUILD_DIR}" || die
 	# Run demo files
-	local dtype="demo ldemo"
-	local samples="1c.mtx arrowc.mtx arrow.mtx impcol_a.mtx w156.mtx ctina.mtx"
-	./klu_simple
-	for i in ${dtype}; do
-		for j in ${samples}; do
+	local dtype=(
+		demo
+		ldemo
+	)
+	local samples=(
+		1c.mtx
+		arrowc.mtx
+		arrow.mtx
+		impcol_a.mtx
+		w156.mtx
+		ctina.mtx
+	)
+	./klu_simple || die "klu_simple failed to run"
+	local i
+	local j
+	for i in ${dtype[@]}; do
+		for j in ${samples[@]}; do
 			./klu${i} < "${S}/Matrix/${j}" || die "failed testing klu${i} with ${j}"
 		done
 	done
+	einfo "All tests passed"
 }
 
 src_install() {

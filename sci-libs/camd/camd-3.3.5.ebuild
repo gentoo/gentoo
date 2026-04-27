@@ -46,8 +46,9 @@ src_test() {
 		camd_demo2
 		camd_simple
 	)
-	for i in ${demofiles}; do
-		./"${i}" > "${i}.out"
+	local i
+	for i in ${demofiles[@]}; do
+		./"${i}" > "${i}.out" || die "${i} failed to run"
 		diff "${S}/Demo/${i}.out" "${i}.out" || die "failed testing ${i}"
 	done
 	einfo "All tests passed"

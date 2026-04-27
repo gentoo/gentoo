@@ -54,8 +54,9 @@ src_test() {
 			amd_f77demo
 		)
 	fi
-	for i in ${demofiles}; do
-		./"${i}" > "${i}.out"
+	local i
+	for i in ${demofiles[@]}; do
+		./"${i}" > "${i}.out" || die "${i} failed to run"
 		diff "${S}/Demo/${i}.out" "${i}.out" || die "failed testing ${i}"
 	done
 	einfo "All tests passed"

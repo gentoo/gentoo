@@ -56,6 +56,7 @@ src_test() {
 	# Run demo files
 	# Other demo files have issues making them unsuitable for testing
 	./umfpack_simple || die "failed testing umfpack_simple"
+	einfo "All tests passed"
 }
 
 src_install() {

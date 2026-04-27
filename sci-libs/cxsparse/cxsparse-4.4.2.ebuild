@@ -39,67 +39,49 @@ src_test() {
 	# we have to manually go to BUILD_DIR
 	cd "${BUILD_DIR}" || die
 	# Programs assume that they can access the Matrix folder in ${S}
-	ln -s "${S}/Matrix"
+	ln -s "${S}/Matrix" || die
+	# cs_demo2, cs_di_demo2, cs_dl_demo2
+	local demo_set_1="ash219 bcsstk01 bcsstk16 fs_183_1 lp_afiro mbeacxc t1 west0067"
+	# cs_demo3, cs_di_demo3, cs_dl_demo3
+	local demo_set_2="bcsstk01 bcsstk16"
+	# cs_ci_demo2, cs_cl_demo2
+	local demo_set_3="c4 c_mbeacxc c_west0067 mhd1280b neumann qc324 t2 t3 t4 young1c"
+	# cs_ci_demo3, cs_cl_demo3
+	local demo_set_4="c4 mhd1280b"
+
+	declare -A testsuite
+	testsuite+=(
+		["cs_idemo"]=t2
+		["cs_ldemo"]=t2
+
+		["cs_demo1"]=t1
+		["cs_demo2"]=${demo_set_1}
+		["cs_demo3"]=${demo_set_2}
+
+        ["cs_ci_demo1"]=t2
+        ["cs_ci_demo2"]=${demo_set_3}
+        ["cs_ci_demo3"]=${demo_set_4}
+
+        ["cs_cl_demo1"]=t2
+        ["cs_cl_demo2"]=${demo_set_3}
+        ["cs_cl_demo3"]=${demo_set_4}
+
+        ["cs_di_demo1"]=t1
+        ["cs_di_demo2"]=${demo_set_1}
+        ["cs_di_demo3"]=${demo_set_2}
+
+        ["cs_dl_demo1"]=t1
+        ["cs_dl_demo2"]=${demo_set_1}
+        ["cs_dl_demo3"]=${demo_set_2}
+	)
+
 	# Run demo files
-	./cs_idemo < Matrix/t2 || die "failed testing"
-	./cs_ldemo < Matrix/t2 || die "failed testing"
-	./cs_demo1 < Matrix/t1 || die "failed testing"
-	./cs_demo2 < Matrix/t1 || die "failed testing"
-	./cs_demo2 < Matrix/fs_183_1 || die "failed testing"
-	./cs_demo2 < Matrix/west0067 || die "failed testing"
-	./cs_demo2 < Matrix/lp_afiro || die "failed testing"
-	./cs_demo2 < Matrix/ash219 || die "failed testing"
-	./cs_demo2 < Matrix/mbeacxc || die "failed testing"
-	./cs_demo2 < Matrix/bcsstk01 || die "failed testing"
-	./cs_demo3 < Matrix/bcsstk01 || die "failed testing"
-	./cs_demo2 < Matrix/bcsstk16 || die "failed testing"
-	./cs_demo3 < Matrix/bcsstk16 || die "failed testing"
-	./cs_di_demo1 < Matrix/t1 || die "failed testing"
-	./cs_di_demo2 < Matrix/t1 || die "failed testing"
-	./cs_di_demo2 < Matrix/fs_183_1 || die "failed testing"
-	./cs_di_demo2 < Matrix/west0067 || die "failed testing"
-	./cs_di_demo2 < Matrix/lp_afiro || die "failed testing"
-	./cs_di_demo2 < Matrix/ash219 || die "failed testing"
-	./cs_di_demo2 < Matrix/mbeacxc || die "failed testing"
-	./cs_di_demo2 < Matrix/bcsstk01 || die "failed testing"
-	./cs_di_demo3 < Matrix/bcsstk01 || die "failed testing"
-	./cs_di_demo2 < Matrix/bcsstk16 || die "failed testing"
-	./cs_di_demo3 < Matrix/bcsstk16 || die "failed testing"
-	./cs_dl_demo1 < Matrix/t1 || die "failed testing"
-	./cs_dl_demo2 < Matrix/t1 || die "failed testing"
-	./cs_dl_demo2 < Matrix/fs_183_1 || die "failed testing"
-	./cs_dl_demo2 < Matrix/west0067 || die "failed testing"
-	./cs_dl_demo2 < Matrix/lp_afiro || die "failed testing"
-	./cs_dl_demo2 < Matrix/ash219 || die "failed testing"
-	./cs_dl_demo2 < Matrix/mbeacxc || die "failed testing"
-	./cs_dl_demo2 < Matrix/bcsstk01 || die "failed testing"
-	./cs_dl_demo3 < Matrix/bcsstk01 || die "failed testing"
-	./cs_dl_demo2 < Matrix/bcsstk16 || die "failed testing"
-	./cs_dl_demo3 < Matrix/bcsstk16 || die "failed testing"
-	./cs_ci_demo1 < Matrix/t2 || die "failed testing"
-	./cs_ci_demo2 < Matrix/t2 || die "failed testing"
-	./cs_ci_demo2 < Matrix/t3 || die "failed testing"
-	./cs_ci_demo2 < Matrix/t4 || die "failed testing"
-	./cs_ci_demo2 < Matrix/c_west0067 || die "failed testing"
-	./cs_ci_demo2 < Matrix/c_mbeacxc || die "failed testing"
-	./cs_ci_demo2 < Matrix/young1c || die "failed testing"
-	./cs_ci_demo2 < Matrix/qc324 || die "failed testing"
-	./cs_ci_demo2 < Matrix/neumann || die "failed testing"
-	./cs_ci_demo2 < Matrix/c4 || die "failed testing"
-	./cs_ci_demo3 < Matrix/c4 || die "failed testing"
-	./cs_ci_demo2 < Matrix/mhd1280b || die "failed testing"
-	./cs_ci_demo3 < Matrix/mhd1280b || die "failed testing"
-	./cs_cl_demo1 < Matrix/t2 || die "failed testing"
-	./cs_cl_demo2 < Matrix/t2 || die "failed testing"
-	./cs_cl_demo2 < Matrix/t3 || die "failed testing"
-	./cs_cl_demo2 < Matrix/t4 || die "failed testing"
-	./cs_cl_demo2 < Matrix/c_west0067 || die "failed testing"
-	./cs_cl_demo2 < Matrix/c_mbeacxc || die "failed testing"
-	./cs_cl_demo2 < Matrix/young1c || die "failed testing"
-	./cs_cl_demo2 < Matrix/qc324 || die "failed testing"
-	./cs_cl_demo2 < Matrix/neumann || die "failed testing"
-	./cs_cl_demo2 < Matrix/c4 || die "failed testing"
-	./cs_cl_demo3 < Matrix/c4 || die "failed testing"
-	./cs_cl_demo2 < Matrix/mhd1280b || die "failed testing"
-	./cs_cl_demo3 < Matrix/mhd1280b || die "failed testing"
+	local i
+	local j
+	for i in ${!testsuite[@]}; do
+		for j in ${testsuite[${i}]}; do
+			./${i} < Matrix/${j} || die "failed testing ${i} with ${j}"
+		done
+	done
+	einfo "All tests passed"
 }

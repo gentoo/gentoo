@@ -41,7 +41,7 @@ src_test() {
 	# we have to manually go to BUILD_DIR
 	cd "${BUILD_DIR}" || die
 	# Some programs assume that they can access the Matrix folder in ${S}
-	ln -s "${S}/Matrix"
+	ln -s "${S}/Matrix" || die
 	# Run demo files
 	local demofiles=(
 		ldllsimple
@@ -51,11 +51,13 @@ src_test() {
 		ldllamd
 	)
 	# not running ldlsimple until it does not "test" suitesparse version as well.
-	for i in ${demofiles}; do
+	local i
+	for i in ${demofiles[@]}; do
 		einfo "testing ${i}"
-		./"${i}" > "${i}.out"
-		diff "${S}/Demo/${i}.out" "${i}.out" || die
+		./"${i}" > "${i}.out" || die "${i} failed to run"
+		diff "${S}/Demo/${i}.out" "${i}.out" || die "failed testing ${i}"
 	done
+	einfo "All tests passed"
 }
 
 src_install() {

@@ -43,4 +43,6 @@ src_test() {
 	diff "${S}"/Demo/colamd_example.out colamd_example.out || die "failed testing colamd_example"
 	./colamd_l_example > colamd_l_example.out
 	diff "${S}"/Demo/colamd_l_example.out colamd_l_example.out || die "failed testing colamd_l_example"
+
+	einfo "All tests passed"
 }

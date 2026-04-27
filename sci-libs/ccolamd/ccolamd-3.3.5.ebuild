@@ -39,8 +39,10 @@ src_test() {
 	# we have to manually go to BUILD_DIR
 	cd "${BUILD_DIR}" || die
 	# Run demo files
-	./ccolamd_example > ccolamd_example.out
+	./ccolamd_example > ccolamd_example.out || die "ccolamd_example failed to run"
 	diff "${S}"/Demo/ccolamd_example.out ccolamd_example.out || die "failed testing ccolamd_example"
-	./ccolamd_l_example > ccolamd_l_example.out
+	./ccolamd_l_example > ccolamd_l_example.out || die die "ccolamd_l_example failed to run"
 	diff "${S}"/Demo/ccolamd_l_example.out ccolamd_l_example.out || die "failed testing ccolamd_l_example"
+
+	einfo "All tests passed"
 }

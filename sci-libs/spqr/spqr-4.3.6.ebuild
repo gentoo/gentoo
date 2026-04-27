@@ -49,67 +49,52 @@ src_test() {
 	# Because we are not using cmake_src_test,
 	# we have to manually go to BUILD_DIR
 	cd "${BUILD_DIR}" || die
+
+	local simple="ash219 west0067"
+	local demo="a04 \
+		a0 \
+		a1 \
+		a2 \
+		a4 \
+		ash219 \
+		b1_ss \
+		bcspwr01 \
+		bfwa62 \
+		c2 \
+		c32 \
+		GD01_b \
+		GD06_theory \
+		GD98_a \
+		lfat5b \
+		LFAT5 \
+		lp_e226_transposed \
+		lpi_galenet \
+		lpi_itest6 \
+		lp_share1b \
+		r2 \
+		Ragusa16 \
+		s32 \
+		Tina_AskCal \
+		Tina_AskCal_perm \
+		west0067 \
+		young1c"
+
+	declare -A testsuite
+	local i
+	local j
+	for i in qrsimple qrsimplec; do
+		testsuite["${i}"]=${simple}
+	done
+	for i in qrdemo qrdemoc; do
+		testsuite["${i}"]=${demo}
+	done
 	# Run demo files
-	./qrsimple  < "${S}"/Matrix/ash219.mtx || die "failed testing"
-	./qrsimplec < "${S}"/Matrix/ash219.mtx || die "failed testing"
-	./qrsimple  < "${S}"/Matrix/west0067.mtx || die "failed testing"
-	./qrsimplec < "${S}"/Matrix/west0067.mtx || die "failed testing"
-	./qrdemo < "${S}"/Matrix/a2.mtx || die "failed testing"
-	./qrdemo < "${S}"/Matrix/r2.mtx || die "failed testing"
-	./qrdemo < "${S}"/Matrix/a04.mtx || die "failed testing"
-	./qrdemo < "${S}"/Matrix/a2.mtx || die "failed testing"
-	./qrdemo < "${S}"/Matrix/west0067.mtx || die "failed testing"
-	./qrdemo < "${S}"/Matrix/c2.mtx || die "failed testing"
-	./qrdemo < "${S}"/Matrix/a0.mtx || die "failed testing"
-	./qrdemo < "${S}"/Matrix/lfat5b.mtx || die "failed testing"
-	./qrdemo < "${S}"/Matrix/bfwa62.mtx || die "failed testing"
-	./qrdemo < "${S}"/Matrix/LFAT5.mtx || die "failed testing"
-	./qrdemo < "${S}"/Matrix/b1_ss.mtx || die "failed testing"
-	./qrdemo < "${S}"/Matrix/bcspwr01.mtx || die "failed testing"
-	./qrdemo < "${S}"/Matrix/lpi_galenet.mtx || die "failed testing"
-	./qrdemo < "${S}"/Matrix/lpi_itest6.mtx || die "failed testing"
-	./qrdemo < "${S}"/Matrix/ash219.mtx || die "failed testing"
-	./qrdemo < "${S}"/Matrix/a4.mtx || die "failed testing"
-	./qrdemo < "${S}"/Matrix/s32.mtx || die "failed testing"
-	./qrdemo < "${S}"/Matrix/c32.mtx || die "failed testing"
-	./qrdemo < "${S}"/Matrix/lp_share1b.mtx || die "failed testing"
-	./qrdemo < "${S}"/Matrix/a1.mtx || die "failed testing"
-	./qrdemo < "${S}"/Matrix/GD06_theory.mtx || die "failed testing"
-	./qrdemo < "${S}"/Matrix/GD01_b.mtx || die "failed testing"
-	./qrdemo < "${S}"/Matrix/Tina_AskCal_perm.mtx || die "failed testing"
-	./qrdemo < "${S}"/Matrix/Tina_AskCal.mtx || die "failed testing"
-	./qrdemo < "${S}"/Matrix/GD98_a.mtx || die "failed testing"
-	./qrdemo < "${S}"/Matrix/Ragusa16.mtx || die "failed testing"
-	./qrdemo < "${S}"/Matrix/young1c.mtx || die "failed testing"
-	./qrdemo < "${S}"/Matrix/lp_e226_transposed.mtx || die "failed testing"
-	./qrdemoc < "${S}"/Matrix/a2.mtx || die "failed testing"
-	./qrdemoc < "${S}"/Matrix/r2.mtx || die "failed testing"
-	./qrdemoc < "${S}"/Matrix/a04.mtx || die "failed testing"
-	./qrdemoc < "${S}"/Matrix/a2.mtx || die "failed testing"
-	./qrdemoc < "${S}"/Matrix/west0067.mtx || die "failed testing"
-	./qrdemoc < "${S}"/Matrix/c2.mtx || die "failed testing"
-	./qrdemoc < "${S}"/Matrix/a0.mtx || die "failed testing"
-	./qrdemoc < "${S}"/Matrix/lfat5b.mtx || die "failed testing"
-	./qrdemoc < "${S}"/Matrix/bfwa62.mtx || die "failed testing"
-	./qrdemoc < "${S}"/Matrix/LFAT5.mtx || die "failed testing"
-	./qrdemoc < "${S}"/Matrix/b1_ss.mtx || die "failed testing"
-	./qrdemoc < "${S}"/Matrix/bcspwr01.mtx || die "failed testing"
-	./qrdemoc < "${S}"/Matrix/lpi_galenet.mtx || die "failed testing"
-	./qrdemoc < "${S}"/Matrix/lpi_itest6.mtx || die "failed testing"
-	./qrdemoc < "${S}"/Matrix/ash219.mtx || die "failed testing"
-	./qrdemoc < "${S}"/Matrix/a4.mtx || die "failed testing"
-	./qrdemoc < "${S}"/Matrix/s32.mtx || die "failed testing"
-	./qrdemoc < "${S}"/Matrix/c32.mtx || die "failed testing"
-	./qrdemoc < "${S}"/Matrix/lp_share1b.mtx || die "failed testing"
-	./qrdemoc < "${S}"/Matrix/a1.mtx || die "failed testing"
-	./qrdemoc < "${S}"/Matrix/GD06_theory.mtx || die "failed testing"
-	./qrdemoc < "${S}"/Matrix/GD01_b.mtx || die "failed testing"
-	./qrdemoc < "${S}"/Matrix/Tina_AskCal_perm.mtx || die "failed testing"
-	./qrdemoc < "${S}"/Matrix/Tina_AskCal.mtx || die "failed testing"
-	./qrdemoc < "${S}"/Matrix/GD98_a.mtx || die "failed testing"
-	./qrdemoc < "${S}"/Matrix/Ragusa16.mtx || die "failed testing"
-	./qrdemoc < "${S}"/Matrix/young1c.mtx || die "failed testing"
-	./qrdemoc < "${S}"/Matrix/lp_e226_transposed.mtx || die "failed testing"
+	for i in ${!testsuite[@]}; do
+		for j in ${testsuite[${i}]}; do
+			./${i} < "${S}"/Matrix/${j}.mtx || die "failed testing ${i} with ${j}"
+		done
+	done
+	einfo "All tests passed"
 }
 
 src_install() {
