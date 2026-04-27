@@ -19,6 +19,9 @@
 		These footprints are best used in combination with the official symbol
 		libs and 3d model libs.
 	</longdescription>
+	<use>
+		<flag name="stpz">Rewrite .kicad_mod model refs from .step to .stpz to match <pkg>sci-electronics/kicad-packages3d</pkg>[stpz]</flag>
+	</use>
 	<upstream>
 		<remote-id type="gitlab">kicad/libraries/kicad-footprints</remote-id>
 	</upstream>
