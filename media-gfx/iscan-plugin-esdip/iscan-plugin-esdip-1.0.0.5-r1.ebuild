@@ -1,8 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
+RPM_COMPRESS_TYPE=none
 inherit rpm
 
 MY_PV="$(ver_cut 1-3)"
