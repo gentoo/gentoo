@@ -6,6 +6,21 @@
 
 # New entries go on top.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-04-20)
+# Preparing Qt5 last-rites. Bug #957176
+# Removal some time after 2026-05-15.
+<app-admin/testdisk-7.2-r1 gui
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-04-20)
+# Various integration packages. Preparing Qt5 last-rites.
+# Removal some time after 2026-05-15.
+app-i18n/fcitx-qt qt5
+app-i18n/uim qt5
+x11-themes/QGnomePlatform qt5
+x11-themes/adwaita-qt qt5
+x11-themes/kvantum qt5
+x11-themes/qtcurve qt5
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-04-12)
 # net-wireless/gnuradio and dependencies. Preparing Qt5 last-rites.
 # Bugs #948049, #954887.  Removal some time after 2026-04-30.
