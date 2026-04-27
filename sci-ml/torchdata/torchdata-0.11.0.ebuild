@@ -1,4 +1,4 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_SINGLE_IMPL=1
 inherit distutils-r1
 
-DESCRIPTION="A repo for data loading and utilities on PyTorch domain libraries."
+DESCRIPTION="A repo for data loading and utilities on PyTorch domain libraries"
 HOMEPAGE="https://github.com/pytorch/data"
 SRC_URI="https://github.com/pytorch/data/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.gh.tar.gz"
