@@ -9,7 +9,7 @@ inherit prefix python-any-r1 qt6-build toolchain-funcs
 
 DESCRIPTION="Library for rendering dynamic web content in Qt6 C++ and QML applications"
 SRC_URI+="
-	https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${PN}-6.11-patchset-2.tar.xz
+	https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${PN}-6.11-patchset-3.tar.xz
 "
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
@@ -199,6 +199,7 @@ src_configure() {
 		-DQT_FEATURE_webengine_extensions=ON
 		# TODO: it may be possible to make x11 optional since 6.8+
 		-DQT_FEATURE_webengine_ozone_x11=ON
+		-DQT_FEATURE_webengine_pass_extra_flags=ON
 		-DQT_FEATURE_webengine_pepper_plugins=ON
 		-DQT_FEATURE_webengine_printing_and_pdf=ON
 		-DQT_FEATURE_webengine_spellchecker=ON
