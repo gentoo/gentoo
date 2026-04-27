@@ -1,13 +1,13 @@
-# Copyright 2019-2025 Gentoo Authors
+# Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-LLVM_COMPAT=( 18 )
+LLVM_COMPAT=( 21 )
 
 inherit cmake llvm-r2
 
-MY_COMMIT="0de81efb64acc82c08c5eee4a7108ddcb1b00d86"
+MY_COMMIT="f52a6c90651cd5f2f5239b67b41fb9a7e4de1f2e"
 
 DESCRIPTION="Clang-based FFI wrapper generator for Common Lisp"
 HOMEPAGE="https://github.com/rpav/c2ffi"
