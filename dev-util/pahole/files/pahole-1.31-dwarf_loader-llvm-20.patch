@@ -1,0 +1,57 @@
+https://git.kernel.org/pub/scm/devel/pahole/pahole.git/commit/?id=4783a4ddd4740d948fb987ed8a7cf2932d5ad5c4
+
+From 4783a4ddd4740d948fb987ed8a7cf2932d5ad5c4 Mon Sep 17 00:00:00 2001
+From: Yao Zi <me@ziyao.cc>
+Date: Sat, 13 Dec 2025 08:27:22 +0000
+Subject: dwarf_loader: Handle DW_AT_location attrs containing
+ DW_OP_plus_uconst
+
+LLVM has a GlobalMerge pass, which tries to group multiple global
+variables together and address them with through a single register with
+offsets coded in instructions, to reduce register pressure. Address of
+symbols transformed by the pass may be represented by an DWARF
+expression consisting of DW_OP_addrx and DW_OP_plus_uconst, which
+naturally matches the way a merged variable is addressed.
+
+However, our dwarf_loader currently ignores anything but the first in
+the location expression, including the DW_OP_plus_uconst atom, which
+appears the second operation in this case. This could result in broken
+BTF information produced by pahole, where several merged symbols are
+given the same offset, even though in fact they don't overlap.
+
+LLVM has enabled MergeGlobal pass for PowerPC[1] and RISC-V[2] by
+default since version 20, let's handle DW_OP_plus_uconst operations in
+DW_AT_location attributes correctly to ensure correct BTF could be
+produced for LLVM-built kernels.
+
+Fixes: a6ea527aab91 ("variable: Add ->addr member")
+Reported-by: q66 <me@q66.moe>
+Closes: https://github.com/ClangBuiltLinux/linux/issues/2089
+Link: https://github.com/llvm/llvm-project/commit/aaa37d6755e6 # [1]
+Link: https://github.com/llvm/llvm-project/commit/9d02264b03ea # [2]
+Link: https://lore.kernel.org/dwarves/20251213082721.51017-2-me@ziyao.cc/
+Signed-off-by: Yao Zi <me@ziyao.cc>
+Acked-by: Yonghong Song <yonghong.song@linux.dev>
+Signed-off-by: Alan Maguire <alan.maguire@oracle.com>
+---
+ dwarf_loader.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/dwarf_loader.c b/dwarf_loader.c
+index 79be3f5..77aab8a 100644
+--- a/dwarf_loader.c
++++ b/dwarf_loader.c
+@@ -708,6 +708,11 @@ static enum vscope dwarf__location(Dwarf_Die *die, uint64_t *addr, struct locati
+ 		case DW_OP_addrx:
+ 			scope = VSCOPE_GLOBAL;
+ 			*addr = expr[0].number;
++
++			if (location->exprlen == 2 &&
++			    expr[1].atom == DW_OP_plus_uconst)
++				*addr += expr[1].number;
++
+ 			break;
+ 		case DW_OP_reg1 ... DW_OP_reg31:
+ 		case DW_OP_breg0 ... DW_OP_breg31:
+-- 
+cgit 1.3-korg
