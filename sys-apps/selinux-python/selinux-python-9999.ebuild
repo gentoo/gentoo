@@ -4,7 +4,7 @@
 EAPI="8"
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1 toolchain-funcs
@@ -44,7 +44,7 @@ BDEPEND="
 	)"
 
 PATCHES=(
-	"${FILESDIR}"/selinux-python-3.8.1-no-pip.patch
+	"${FILESDIR}"/selinux-python-3.11-no-pip.patch
 )
 
 src_prepare() {
