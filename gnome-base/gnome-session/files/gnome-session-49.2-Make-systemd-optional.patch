@@ -1,0 +1,296 @@
+From 419191d3897957bd8cd325f2167f3c8663969a13 Mon Sep 17 00:00:00 2001
+From: Swagtoy <me@ow.swag.toys>
+Date: Fri, 20 Mar 2026 19:43:57 -0400
+Subject: [PATCH] Make systemd optional
+
+Starting from gnome session 49 onwards, systemd was integrated via a
+leader, ctl, and a service file. This is fine; however, this was also
+intentionally designed to allow for other leaders/ctl/tools to be
+injected (such as the efforts with gnome-session-openrc).
+
+Despite this, systemd still remains a required dependency and you
+cannot install gnome-session without it. Now, systemd is specified as
+an meson option. It intentionally isn't a fallback if systemd isn't
+found (like `required: false`) to ensure that non-systemd systems will
+still error out, or in interesting cases where multiple binaries will
+get built and could have both elogind and systemd stashed
+somewhere. In either case, I don't think it's inappropriate to make it
+an option, since it completely changes the way gnome-session builds
+and functions too.
+
+If on, things will function as they would before this commit,
+otherwise, it will toggle on elogind as a fallback so things still
+function, disable the systemd leader, stop installing the unit files,
+and tools. This ultimately opens the doors for things like
+gnome-session-openrc 'to work,' by allowing for a custom leader,
+tools, etc.
+
+Signed-off-by: Swagtoy <me@ow.swag.toys>
+---
+ data/meson.build          | 113 +++++++++++++++++++-------------------
+ gnome-session/meson.build |  29 +++++-----
+ meson.build               |  36 +++++++-----
+ meson_options.txt         |   1 +
+ tools/meson.build         |   5 +-
+ 5 files changed, 101 insertions(+), 83 deletions(-)
+
+diff --git a/data/meson.build b/data/meson.build
+index 76b15e92..37d50273 100644
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -61,70 +61,71 @@ if have_x11
+ endif
+ 
+ # Next, let's install the necessary systemd scaffolding
++if get_option('systemd')
++  install_data(
++      'gnome.session.conf',
++      install_dir: systemd_userunitdir / 'gnome-session@gnome.target.d',
++  )
+ 
+-install_data(
+-    'gnome.session.conf',
+-    install_dir: systemd_userunitdir / 'gnome-session@gnome.target.d',
+-)
+-
+-systemd_service = [
+-  'gnome-session-manager@.service',
+-  'gnome-session-signal-init.service',
+-  'gnome-session-restart-dbus.service',
+-  'gnome-session-monitor.service',
+-]
++  systemd_service = [
++    'gnome-session-manager@.service',
++    'gnome-session-signal-init.service',
++    'gnome-session-restart-dbus.service',
++    'gnome-session-monitor.service',
++  ]
+ 
+-foreach service: systemd_service
+-  configure_file(
+-    input: service + '.in',
+-    output: service,
+-    install: true,
+-    install_dir: systemd_userunitdir,
+-    configuration: {
+-      'libexecdir': session_libexecdir,
+-    },
+-  )
+-endforeach
++  foreach service: systemd_service
++    configure_file(
++      input: service + '.in',
++      output: service,
++      install: true,
++      install_dir: systemd_userunitdir,
++      configuration: {
++        'libexecdir': session_libexecdir,
++      },
++    )
++  endforeach
+ 
+-systemd_target = [
+-  'gnome-session-wayland@.target',
+-  'gnome-session-wayland.target',
+-  'gnome-session@.target',
+-  'gnome-session.target',
+-  'gnome-session-basic-services.target',
+-  'gnome-session-pre.target',
+-  'gnome-session-manager.target',
+-  'gnome-session-initialized.target',
+-  'gnome-session-shutdown.target',
+-  'gnome-session-x11-services.target',
+-  'gnome-session-x11-services-ready.target',
+-]
+-if have_x11
+-  systemd_target += [
+-    'gnome-session-x11@.target',
+-    'gnome-session-x11.target',
++  systemd_target = [
++    'gnome-session-wayland@.target',
++    'gnome-session-wayland.target',
++    'gnome-session@.target',
++    'gnome-session.target',
++    'gnome-session-basic-services.target',
++    'gnome-session-pre.target',
++    'gnome-session-manager.target',
++    'gnome-session-initialized.target',
++    'gnome-session-shutdown.target',
++    'gnome-session-x11-services.target',
++    'gnome-session-x11-services-ready.target',
+   ]
+-endif
++  if have_x11
++    systemd_target += [
++      'gnome-session-x11@.target',
++      'gnome-session-x11.target',
++    ]
++  endif
+ 
+-install_data(
+-  systemd_target,
+-  install_dir: systemd_userunitdir
+-)
++  install_data(
++    systemd_target,
++    install_dir: systemd_userunitdir
++  )
+ 
+-# Install resource limits that are applied to GNOME-launched apps
++  # Install resource limits that are applied to GNOME-launched apps
+ 
+-install_data(
+-  'app-override.scope.conf',
+-  rename: 'override.conf',
+-  install_dir : join_paths(systemd_userunitdir, 'app-gnome-.scope.d')
+-)
++  install_data(
++    'app-override.scope.conf',
++    rename: 'override.conf',
++    install_dir : join_paths(systemd_userunitdir, 'app-gnome-.scope.d')
++  )
+ 
+-# FIXME: https://github.com/systemd/systemd/issues/37104
+-install_data(
+-  'app-override.scope.conf',
+-  rename: 'override.conf',
+-  install_dir : join_paths(systemd_userunitdir, 'app-flatpak-.scope.d')
+-)
++  # FIXME: https://github.com/systemd/systemd/issues/37104
++  install_data(
++    'app-override.scope.conf',
++    rename: 'override.conf',
++    install_dir : join_paths(systemd_userunitdir, 'app-flatpak-.scope.d')
++  )
++endif
+ 
+ # Install some other misc. configuration files
+ 
+diff --git a/gnome-session/meson.build b/gnome-session/meson.build
+index 403d0572..0e5bfe09 100644
+--- a/gnome-session/meson.build
++++ b/gnome-session/meson.build
+@@ -19,20 +19,23 @@ executable(
+   install_dir: session_bindir
+ )
+ 
+-sources = files(
+-    'gsm-util.c',
+-    'leader-systemd.c',
+-)
++# If you are not using systemd, you must supply your own leader
++if get_option('systemd')
++  sources = files(
++      'gsm-util.c',
++      'leader-systemd.c',
++  )
+ 
+-executable(
+-  meson.project_name() + '-init-worker',
+-  sources,
+-  include_directories: top_inc,
+-  dependencies: session_bin_deps,
+-  c_args: cflags,
+-  install: true,
+-  install_dir: session_libexecdir
+-)
++  executable(
++    meson.project_name() + '-init-worker',
++    sources,
++    include_directories: top_inc,
++    dependencies: session_bin_deps,
++    c_args: cflags,
++    install: true,
++    install_dir: session_libexecdir
++  )
++endif
+ 
+ sources = files(
+   'gsm-app.c',
+diff --git a/meson.build b/meson.build
+index c49d46b1..679ab6e1 100644
+--- a/meson.build
++++ b/meson.build
+@@ -88,20 +88,29 @@ session_deps = [
+   dependency('gnome-desktop-4'),
+ ]
+ 
+-libsystemd_dep = dependency('libsystemd', version: '>= 209', required: true)
+-config_h.set('SYSTEMD_STRICT_ENV',
+-              libsystemd_dep.version().version_compare('< 248'))
+-
+-session_bin_deps = session_deps + [
+-  libsystemd_dep,
+-  dependency('gio-unix-2.0', version: glib_req_version),
+-]
++if get_option('systemd')
++  libsystemd_dep = dependency('libsystemd', version: '>= 209', required: true)
++  config_h.set('SYSTEMD_STRICT_ENV',
++                libsystemd_dep.version().version_compare('< 248'))
++
++  session_bin_deps = session_deps + [
++    libsystemd_dep,
++    dependency('gio-unix-2.0', version: glib_req_version),
++  ]
+ 
+-systemd_userunitdir = get_option('systemduserunitdir')
+-if systemd_userunitdir == ''
+-  systemd_dep = dependency('systemd', version: '>= 242', required: true)
+-  systemd_userunitdir = systemd_dep.get_variable(pkgconfig: 'systemduserunitdir',
+-                                                 pkgconfig_define: ['prefix', session_prefix])
++  systemd_userunitdir = get_option('systemduserunitdir')
++  if systemd_userunitdir == ''
++    systemd_dep = dependency('systemd', version: '>= 242', required: true)
++    systemd_userunitdir = systemd_dep.get_variable(pkgconfig: 'systemduserunitdir',
++                                                   pkgconfig_define: ['prefix', session_prefix])
++  endif
++else
++  elogind_dep = dependency('libelogind', version: '>=209', required: true)
++  systemd_userunitdir = ''
++  session_bin_deps = session_deps + [
++    elogind_dep,
++    dependency('gio-unix-2.0', version: glib_req_version),
++  ]
+ endif
+ 
+ configure_file(
+@@ -139,6 +148,7 @@ summary_options = {
+  'Use *_DISABLE_DEPRECATED': get_option('deprecation_flags'),
+  'Build Docbook': get_option('docbook'),
+  'Build manpages': get_option('man'),
++ 'Systemd Integration': get_option('systemd'),
+  'Systemd Units Directory': systemd_userunitdir,
+ }
+ 
+diff --git a/meson_options.txt b/meson_options.txt
+index 781d8eea..5cc047cf 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -1,4 +1,5 @@
+ option('deprecation_flags', type: 'boolean', value: false, description: 'use *_DISABLE_DEPRECATED flags')
++option('systemd', type: 'boolean', value: true, description: 'Systemd integration, leader, etc.')
+ option('systemduserunitdir', type: 'string', description: 'Directory for systemd user service files')
+ option('docbook', type: 'boolean', value: true, description: 'build documentation')
+ option('man', type: 'boolean', value: true, description: 'build documentation (requires xmlto)')
+diff --git a/tools/meson.build b/tools/meson.build
+index c453093e..f1060b77 100644
+--- a/tools/meson.build
++++ b/tools/meson.build
+@@ -1,10 +1,13 @@
+ programs = [
+   # name, deps, install_dir
+-  ['gnome-session-ctl', session_bin_deps, session_libexecdir],
+   ['gnome-session-inhibit', session_deps, session_bindir],
+   ['gnome-session-quit', session_deps, session_bindir],
+ ]
+ 
++if get_option('systemd')
++  programs += ['gnome-session-ctl', session_bin_deps, session_libexecdir]
++endif
++
+ foreach program: programs
+   executable(
+     program[0],
+-- 
+2.52.0
+
