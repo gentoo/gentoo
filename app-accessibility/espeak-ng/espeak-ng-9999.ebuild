@@ -43,13 +43,6 @@ fi
 
 DOCS=( ChangeLog.md README.md docs )
 
-PATCHES=(
-	# PR pending https://github.com/espeak-ng/espeak-ng/pull/2394
-	"${FILESDIR}"/${PN}-1.52.1-path_pkgconfig.patch
-	# PR pending https://github.com/espeak-ng/espeak-ng/pull/2399
-	"${FILESDIR}"/${PN}-1.52.1-rm_which.patch
-)
-
 src_prepare() {
 	cmake_src_prepare
 
