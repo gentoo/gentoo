@@ -116,6 +116,10 @@ DEPEND="
 CONFIG_CHECK="~INOTIFY_USER"
 WARNING_INOTIFY_USER="CONFIG_INOTIFY_USER isn't set. Imfile module on this system will only support polling mode!"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-8.2602.0-omfwd-support-musl-resolver-APIs.patch"
+)
+
 pkg_setup() {
 	linux-info_pkg_setup
 	python-any-r1_pkg_setup

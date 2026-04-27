@@ -1,0 +1,179 @@
+https://github.com/rsyslog/rsyslog/commit/ceb50c669cc39e6052a73dadcad732b549f74f56
+From ceb50c669cc39e6052a73dadcad732b549f74f56 Mon Sep 17 00:00:00 2001
+From: Rainer Gerhards <rgerhards@adiscon.com>
+Date: Tue, 14 Apr 2026 11:35:51 +0200
+Subject: [PATCH] omfwd: support musl resolver APIs
+
+Why: Alpine and other musl builds need a resolver path that does not
+rely on glibc-only `res_n*` entry points.
+
+Impact: SRV discovery now builds on musl while keeping the existing
+resolver-state path on libcs that provide it.
+
+Before/After: Before, `omfwd` failed during the Alpine compile check;
+after, it falls back to the traditional resolver APIs on musl.
+
+Technical Overview:
+Add small resolver helpers in `tools/omfwd.c` to initialize, query,
+and close resolver state behind one call site.
+Keep the existing `res_ninit`/`res_nquery`/`res_nclose` path when the
+libc provides it.
+Fallback to `res_init` and `res_query` on musl while still applying the
+same resolver overrides and SRV response parsing.
+Leave the SRV ordering and target-building logic unchanged.
+
+With the help of AI-Agents: Codex
+
+diff --git a/tools/omfwd.c b/tools/omfwd.c
+index 54f6889aa..73abe1a07 100644
+--- a/tools/omfwd.c
++++ b/tools/omfwd.c
+@@ -428,6 +428,56 @@ static const char *resolverErrorString(const int err) {
+     }
+ }
+ 
++#if defined(__RES) && (__RES >= 19991006)
++    #define HAVE_RESOLV_RES_N_API 1
++#endif
++
++static rsRetVal initResolverState(res_state *const pres) {
++    DEFiRet;
++
++#ifdef HAVE_RESOLV_RES_N_API
++    CHKmalloc(*pres = (res_state)calloc(1, sizeof(struct __res_state)));
++    if (res_ninit(*pres) != 0) {
++        LogError(0, RS_RET_INTERNAL_ERROR, "omfwd: failed to init resolver state: %s", strerror(errno));
++        ABORT_FINALIZE(RS_RET_INTERNAL_ERROR);
++    }
++#else
++    if (res_init() != 0) {
++        LogError(0, RS_RET_INTERNAL_ERROR, "omfwd: failed to init resolver state: %s", strerror(errno));
++        ABORT_FINALIZE(RS_RET_INTERNAL_ERROR);
++    }
++    *pres = &_res;
++#endif
++
++finalize_it:
++    RETiRet;
++}
++
++static int queryResolverState(res_state const res,
++                              const char *const srvName,
++                              unsigned char *const answer,
++                              const size_t answerSize) {
++#ifdef HAVE_RESOLV_RES_N_API
++    return res_nquery(res, srvName, ns_c_in, ns_t_srv, answer, answerSize);
++#else
++    (void)res;
++    return res_query(srvName, ns_c_in, ns_t_srv, answer, answerSize);
++#endif
++}
++
++static void closeResolverState(res_state const res) {
++    if (res == NULL) {
++        return;
++    }
++#ifdef HAVE_RESOLV_RES_N_API
++    res_nclose(res);
++    free(res);
++#else
++    /* Old resolver APIs use global state; musl's implementation is stateless. */
++    (void)res;
++#endif
++}
++
+ static rsRetVal applyResolverOverrides(res_state res) {
+     const char *const dnsServerEnv = getenv("RSYSLOG_DNS_SERVER");
+     const char *const dnsPortEnv = getenv("RSYSLOG_DNS_PORT");
+@@ -508,15 +558,11 @@ static rsRetVal resolveSrvTargets(instanceData *const pData) {
+         ABORT_FINALIZE(RS_RET_PARAM_ERROR);
+     }
+ 
+-    CHKmalloc(res = (res_state)calloc(1, sizeof(struct __res_state)));
+-    if (res_ninit(res) != 0) {
+-        LogError(0, RS_RET_INTERNAL_ERROR, "omfwd: failed to init resolver state: %s", strerror(errno));
+-        ABORT_FINALIZE(RS_RET_INTERNAL_ERROR);
+-    }
++    CHKiRet(initResolverState(&res));
+ 
+     CHKiRet(applyResolverOverrides(res));
+ 
+-    const int ansLen = res_nquery(res, srvName, ns_c_in, ns_t_srv, answer, sizeof(answer));
++    const int ansLen = queryResolverState(res, srvName, answer, sizeof(answer));
+     if (ansLen < 0) {
+         LogError(0, RS_RET_PARAM_ERROR, "omfwd: failed to resolve SRV records for '%s': %s", srvName,
+                  resolverErrorString(res->res_h_errno));
+@@ -644,10 +690,7 @@ static rsRetVal resolveSrvTargets(instanceData *const pData) {
+ finalize_it:
+     free(records);
+     free(ordered);
+-    if (res != NULL) {
+-        res_nclose(res);
+-        free(res);
+-    }
++    closeResolverState(res);
+     RETiRet;
+ #endif
+ }
+-- 
+2.49.1
+
+https://github.com/rsyslog/rsyslog/commit/eaa926f565846f56b8d7964aa5acf352ad01e03e
+From eaa926f565846f56b8d7964aa5acf352ad01e03e Mon Sep 17 00:00:00 2001
+From: Rainer Gerhards <rgerhards@adiscon.com>
+Date: Tue, 14 Apr 2026 12:12:24 +0200
+Subject: [PATCH] configure: gate omfwd resolver APIs
+
+Why: Solaris links fail when `omfwd` unconditionally uses the
+`res_n*` resolver entry points.
+
+Impact: Build configuration now detects whether the resolver API is
+available and falls back to the portable path when it is not.
+
+Before/After: Before, the Solaris build linked against missing
+`res_ninit`/`res_nquery`/`res_nclose` symbols; after, it uses the
+fallback resolver path when those calls are unavailable.
+
+Technical Overview:
+Add a configure-time probe for the `res_n*` resolver API family.
+Define `HAVE_RESOLV_RES_N_API` only when all three functions are present.
+Keep the existing `res_n*` implementation in `tools/omfwd.c` for systems
+that support it.
+Use the portable `res_init`/`res_query` fallback otherwise so Solaris can
+link the `omfwd` object successfully.
+
+With the help of AI-Agents: Codex
+
+diff --git a/configure.ac b/configure.ac
+index eac5a76be..7dc0cc66d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -265,6 +265,10 @@ AC_SUBST([LIBRESOLV_LIBS])
+ AS_IF([test "x$ac_cv_search_ns_initparse" != "xno"],
+       [AC_DEFINE([HAVE_RESOLV_NS_INITPARSE], [1],
+                  [Define if resolver provides ns_initparse])])
++AC_CHECK_FUNCS([res_ninit res_nquery res_nclose])
++AS_IF([test "x$ac_cv_func_res_ninit" = "xyes" -a "x$ac_cv_func_res_nquery" = "xyes" -a "x$ac_cv_func_res_nclose" = "xyes"],
++      [AC_DEFINE([HAVE_RESOLV_RES_N_API], [1],
++                 [Define if resolver provides res_n* APIs])])
+ AM_CONDITIONAL([HAVE_SRV_DISCOVERY], [test "x$ac_cv_search_ns_initparse" != "xno"])
+ 
+ # the check below is probably ugly. If someone knows how to do it in a better way, please
+diff --git a/tools/omfwd.c b/tools/omfwd.c
+index 73abe1a07..84df71729 100644
+--- a/tools/omfwd.c
++++ b/tools/omfwd.c
+@@ -428,10 +428,6 @@ static const char *resolverErrorString(const int err) {
+     }
+ }
+ 
+-#if defined(__RES) && (__RES >= 19991006)
+-    #define HAVE_RESOLV_RES_N_API 1
+-#endif
+-
+ static rsRetVal initResolverState(res_state *const pres) {
+     DEFiRet;
+ 
+-- 
+2.49.1
+
