@@ -38,7 +38,7 @@ inherit autotools flag-o-matic multilib prefix toolchain-funcs wrapper
 # be about always preferred over abi_x86_32, this should be removed and
 # support for 32bit-only-on-64bit be dropped matching how /no-multilib/
 # handles it
-readonly WINE_USEDEP="abi_x86_32(-)?,abi_x86_64(-)?"
+WINE_USEDEP="abi_x86_32(-)?,abi_x86_64(-)?"
 
 IUSE="+abi_x86_64 arm64ec crossdev-mingw custom-cflags +mingw +strip"
 
