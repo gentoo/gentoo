@@ -5,7 +5,7 @@ EAPI=8
 
 inherit dot-a autotools
 
-DESCRIPTION="A set of client and server components which implement a crash-reporting system."
+DESCRIPTION="A set of client and server components which implement a crash-reporting system"
 HOMEPAGE="https://chromium.googlesource.com/breakpad/breakpad/"
 SRC_URI="https://github.com/google/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
