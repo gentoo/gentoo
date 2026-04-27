@@ -50,6 +50,9 @@ REQUIRED_USE="
 # tests need root access, and network access
 RESTRICT="test !test? ( test )"
 
+# Note: Patch fromn Fedora, ceph-20.2.0-libarrow-20.0.0.patch.xz, is not compatible with recent changes
+# in dev-libs/apache-arrow-24.0.0, in particular, https://github.com/apache/arrow/pull/49492 . Limit
+# to below that version until Fedora respins the patch.
 DEPEND="
 	${LUA_DEPS}
 	${PYTHON_DEPS}
@@ -104,7 +107,7 @@ DEPEND="
 	ldap? ( net-nds/openldap:= )
 	lttng? ( dev-util/lttng-ust:= )
 	nvmeof? ( net-libs/grpc:= )
-	parquet? ( dev-libs/apache-arrow[parquet] )
+	parquet? ( <dev-libs/apache-arrow-24.0.0:=[parquet] )
 	pmdk? (
 		>=dev-libs/pmdk-1.10.0:=
 		sys-block/ndctl:=
