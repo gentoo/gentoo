@@ -107,7 +107,6 @@ PATCHES=(
 	"${FILESDIR}"/nvidia-modprobe-390.141-uvm-perms.patch
 	"${FILESDIR}"/nvidia-settings-530.30.02-desktop.patch
 	"${FILESDIR}"/nvidia-kernel-module-source-${PV}-kernel6.19.patch
-	"${FILESDIR}"/nvidia-drivers-580.142-kernel7.0-pahole.patch
 )
 
 pkg_setup() {
@@ -247,6 +246,14 @@ src_compile() {
 			# TODO?: it should be ok/better for tc-arch-kernel to do x86_64
 			$(usev amd64 ARCH=x86_64)
 		)
+
+		# pahole wrapper is broken with >=7.0, and without the wrapper it will
+		# fail if the "blob" has debug symbols (temporary, check again on bump)
+		# https://github.com/NVIDIA/open-gpu-kernel-modules/issues/1041
+		if kernel_is -ge 7 && linux_chkconfig_present DEBUG_INFO_BTF_MODULES; then
+			append-flags -g0
+			modargs+=( PAHOLE_VARIABLES= )
+		fi
 
 		# temporary workaround for bug #914468
 		addpredict "${KV_OUT_DIR}"
