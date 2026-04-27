@@ -373,7 +373,7 @@ handle_genpatches() {
 			UNIPATCH_LIST_GENPATCHES+=" ${DISTDIR}/${tarball}"
 			debug-print "genpatches tarball: ${tarball}"
 		fi
-		GENPATCHES_URI+=" ${use_cond_start}$(echo https://dev.gentoo.org/~{alicef,mpagano}/dist/genpatches/${tarball})${use_cond_end}"
+		GENPATCHES_URI+=" ${use_cond_start}$(echo https://distfiles.gentoo.org/pub/proj/kernel/genpatches/${tarball} https://dev.gentoo.org/~{alicef,mpagano}/dist/genpatches/${tarball})${use_cond_end}"
 	done
 }
 
