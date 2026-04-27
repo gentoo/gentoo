@@ -24,7 +24,7 @@ else
 	fi
 fi
 
-inherit branding linux-info meson-multilib optfeature pam python-single-r1
+inherit branding flag-o-matic linux-info meson-multilib optfeature pam python-single-r1
 inherit secureboot shell-completion systemd toolchain-funcs udev
 
 DESCRIPTION="System and service manager for Linux"
@@ -270,6 +270,20 @@ src_prepare() {
 src_configure() {
 	# Prevent conflicts with i686 cross toolchain, bug 559726
 	tc-export AR CC NM OBJCOPY RANLIB
+
+	# Our toolchain sets F_S=2 by default w/ >= -O2, so we need
+	# to unset F_S first, then explicitly set 2, to negate any default
+	# and anything set by the user if they're choosing 3 (or if they've
+	# modified GCC to set 3).
+	#
+	# malloc_usable_size doesn't play well with _F_S=3:
+	#  https://github.com/systemd/systemd/issues/41459 (bug #971773)
+	if tc-is-clang && tc-enables-fortify-source ; then
+		# We can't unconditionally do this b/c we fortify needs
+		# some level of optimisation.
+		filter-flags -D_FORTIFY_SOURCE=3
+		append-cppflags -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2
+	fi
 
 	python_setup
 
