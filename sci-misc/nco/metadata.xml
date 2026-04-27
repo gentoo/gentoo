@@ -22,5 +22,6 @@
   </use>
   <upstream>
     <remote-id type="sourceforge">nco</remote-id>
+    <remote-id type="github">nco/nco</remote-id>
   </upstream>
 </pkgmetadata>
