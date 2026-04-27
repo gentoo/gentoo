@@ -106,17 +106,11 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-1.52.1-disable-obsolete-lvmetad-in-tests.patch"
 	"${FILESDIR}/${PN}-1.56.2-respect-LDFLAGS-in-perl-module.patch"
+	"${FILESDIR}/${PN}-1.56.2-bash-Remove-vestigial-bash-completions.patch"
+	"${FILESDIR}/${PN}-1.56.2-guestfs-bash-completion.m4-more-control.patch"
 )
 
 src_prepare() {
-	cat <<EOF > "${S}/m4/guestfs-bash-completion.m4" || die
-dnl Unconditionally install Bash completion files
-AC_MSG_CHECKING([for bash-completions directory])
-AC_SUBST([BASH_COMPLETIONS_DIR],[$(get_bashcompdir)])
-AC_MSG_RESULT([\$BASH_COMPLETIONS_DIR])
-AM_CONDITIONAL([HAVE_BASH_COMPLETION],[/bin/true])
-EOF
-
 	default
 	eautoreconf
 }
@@ -158,6 +152,8 @@ src_configure() {
 		--disable-introspection
 		$(use_with libvirt)
 		--with-default-backend=$(usex libvirt libvirt direct)
+		--with-bash-completion
+		--with-bash-completion-dir=$(get_bashcompdir)
 		$(use_enable perl)
 		$(use_enable python)
 		$(use_enable static-libs static)
