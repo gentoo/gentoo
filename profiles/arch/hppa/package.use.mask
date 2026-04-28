@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Sam James <sam@gentoo.org> (2026-04-28)
+# dev-cpp/cpp-httplib doesn't support 32-bit arches
+dev-util/ccache http
+
 # Sam James <sam@gentoo.org> (2026-04-11)
 # Unkeyworded dependencies
 sys-libs/libcap-ng bpf
