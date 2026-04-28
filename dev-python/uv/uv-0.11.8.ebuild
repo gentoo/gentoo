@@ -3,19 +3,43 @@
 
 EAPI=8
 
+CRATES="
+"
 RUST_MIN_VER="1.93.0"
 
-inherit cargo check-reqs git-r3
+inherit cargo check-reqs
 
+CRATE_PV=${PV}
 DESCRIPTION="A Python package installer and resolver, written in Rust"
 HOMEPAGE="
 	https://github.com/astral-sh/uv/
 	https://pypi.org/project/uv/
 "
-EGIT_REPO_URI="https://github.com/astral-sh/uv.git"
+# pypi sdist misses scripts/, needed for tests
+SRC_URI="
+	https://github.com/astral-sh/uv/archive/${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+	${CARGO_CRATE_URIS}
+"
+if [[ ${PKGBUMPING} != ${PVR} ]]; then
+	SRC_URI+="
+		https://github.com/gentoo-crate-dist/uv/releases/download/${CRATE_PV}/uv-${CRATE_PV}-crates.tar.xz
+	"
+fi
 
+# most of the code
 LICENSE="|| ( Apache-2.0 MIT )"
+# crates/pep508-rs is || ( Apache-2.0 BSD-2 ) which is covered below
+# Dependent crate licenses
+LICENSE+="
+	0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2 BSD CC0-1.0
+	CDLA-Permissive-2.0 ISC MIT MPL-2.0 Unicode-3.0 Unicode-DFS-2016
+	ZLIB BZIP2
+"
+# ring crate
+LICENSE+=" openssl"
 SLOT="0"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~x86"
 IUSE="test"
 RESTRICT="test"
 PROPERTIES="test_network"
@@ -55,11 +79,6 @@ pkg_pretend() {
 pkg_setup() {
 	check_space
 	rust_pkg_setup
-}
-
-src_unpack() {
-	git-r3_src_unpack
-	cargo_live_src_unpack
 }
 
 src_prepare() {
