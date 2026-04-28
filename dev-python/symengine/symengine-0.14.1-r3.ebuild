@@ -24,6 +24,8 @@ S=${WORKDIR}/${MY_P}
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86"
+# Bindings implicitly use symengine's dependencies.
+IUSE="boost ecm +flint llvm +mpc +mpfr primesieve tcmalloc"
 
 BDEPEND="
 	dev-build/cmake
@@ -36,7 +38,7 @@ BDEPEND="
 # See also https://github.com/symengine/symengine.py/blob/master/symengine_version.txt
 DEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
-	=sci-libs/symengine-$(ver_cut 1-2)*
+	=sci-libs/symengine-$(ver_cut 1-2)*[boost=,ecm=,flint=,llvm=,mpc=,mpfr=,primesieve=,tcmalloc=]
 "
 RDEPEND="
 	${DEPEND}

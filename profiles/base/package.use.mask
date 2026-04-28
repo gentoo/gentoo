@@ -224,6 +224,7 @@ dev-build/meson test-full
 # Michał Górny <mgorny@gentoo.org> (2024-12-31)
 # None of the sci-libs/symengine versions work with the modern versions
 # of dev-libs/boost in Gentoo.
+dev-python/symengine boost
 sci-libs/symengine boost
 
 # Conrad Kostecki <conikost@gentoo.org> (2024-12-30)

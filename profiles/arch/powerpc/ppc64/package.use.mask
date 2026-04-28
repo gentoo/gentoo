@@ -114,6 +114,7 @@ media-video/pipewire -echo-cancel
 
 # Sam James <sam@gentoo.org> (2022-10-13)
 # Causes segfaults, bug #871921
+dev-python/symengine tcmalloc
 sci-libs/symengine tcmalloc
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-09-29)
