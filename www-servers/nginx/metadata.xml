@@ -25,17 +25,6 @@
 		<flag name="stream">
 			Enable generic TCP/UDP proxying and load balancing
 		</flag>
-		<!-- NOTE: These are the USE flags for the legacy versions -->
-		<flag name="http2">Enable HTTP2 module support</flag>
-		<flag name="http3">Enable HTTP3 module support</flag>
-		<flag name="http-cache">Enable HTTP cache support</flag>
-		<flag name="ktls">Enable Kernel TLS offload (kTLS)</flag>
-		<flag name="pcre-jit">Enable JIT for pcre</flag>
-		<flag name="pcre2">Enable support for pcre2</flag>
-		<flag name="ssl">
-			Enable HTTPS module for http. Enable SSL/TLS support for POP3/IMAP/SMTP for mail.
-		</flag>
-		<flag name="rtmp">NGINX-based Media Streaming Server</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">nginx/nginx</remote-id>
