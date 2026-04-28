@@ -1,0 +1,25 @@
+From: https://github.com/wget/realtek-r8152-linux/commit/9ff8b9d961f3927a211a25b187c749daf0769318
+From 9ff8b9d961f3927a211a25b187c749daf0769318 Mon Sep 17 00:00:00 2001
+From: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
+Date: Mon, 27 Apr 2026 23:16:27 +0200
+Subject: [PATCH] Includes linux/hex.h if kernel version > 7.0.0 (solves #57)
+
+---
+ r8152.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/r8152.c b/r8152.c
+index aa0ca81..8f7eb49 100644
+--- a/r8152.c
++++ b/r8152.c
+@@ -36,6 +36,10 @@
+ #include <net/gso.h>
+ #endif /* LINUX_VERSION_CODE >= KERNEL_VERSION(6,4,10) */
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(7,0,0)
++#include <linux/hex.h>
++#endif /* LINUX_VERSION_CODE >= KERNEL_VERSION(7,0,0) */
++
+ /* Version Information */
+ #define DRIVER_SUFFIX
+ #define DRIVER_VERSION "v2.21.4"DRIVER_SUFFIX" (2025/10/28)"
