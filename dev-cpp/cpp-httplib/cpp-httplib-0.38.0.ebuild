@@ -77,9 +77,9 @@ src_configure() {
 }
 
 multilib_src_test() {
-	if [[ ${ABI} == x86 ]]; then
+	if [[ $(tc-get-ptr-size) == 4 ]] ; then
 		ewarn "Upstream no longer supports 32 bits:"
-		ewarn https://github.com/yhirose/cpp-httplib/issues/2148
+		ewarn "https://github.com/yhirose/cpp-httplib/issues/2148"
 		return
 	fi
 
