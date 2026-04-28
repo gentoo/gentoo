@@ -12,7 +12,7 @@ S="${WORKDIR}"
 LICENSE="MIT"
 SLOT="lts"
 
-KEYWORDS="amd64 arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 DEPEND="acct-group/jenkins
 	acct-user/jenkins"
@@ -22,7 +22,7 @@ RDEPEND="acct-group/jenkins
 	media-fonts/dejavu
 	media-libs/freetype
 	!dev-util/jenkins-bin:0
-	|| ( virtual/jre:21 virtual/jre:17 )"
+	|| ( virtual/jre:25 virtual/jre:21 virtual/jre:17 )"
 
 src_install() {
 	local JENKINS_DIR=/var/lib/jenkins
