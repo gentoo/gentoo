@@ -76,6 +76,10 @@ if [[ ${PV} == *9999* ]] ; then
 	BDEPEND+=" dev-ruby/asciidoctor"
 fi
 
+PATCHES=(
+	"${FILESDIR}/${PN}-drop-dia.patch" # bugs 836730, 967742
+)
+
 python_check_deps() {
 	python_has_version -b "dev-build/scons[${PYTHON_USEDEP}]" || return 1
 }
