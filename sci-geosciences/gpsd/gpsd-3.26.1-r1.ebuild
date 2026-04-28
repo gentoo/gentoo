@@ -73,6 +73,7 @@ fi
 PATCHES=(
 	"${FILESDIR}/${P}-qt6.patch"	   # bug 962118, in git master
 	"${FILESDIR}/${PN}-drop-dia.patch" # bugs 836730, 967742
+	"${FILESDIR}/${PN}-no-class.patch" # from Portage
 )
 
 python_check_deps() {
