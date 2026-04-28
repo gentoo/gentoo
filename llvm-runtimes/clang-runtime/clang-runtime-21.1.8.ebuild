@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,6 +15,7 @@ KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~arm64-macos 
 IUSE="
 	+compiler-rt libcxx offload openmp +sanitize
 	default-compiler-rt default-libcxx default-lld llvm-libunwind polly
+	llvm_targets_AMDGPU llvm_targets_NVPTX
 "
 REQUIRED_USE="
 	sanitize? ( compiler-rt )
@@ -32,6 +33,12 @@ RDEPEND="
 		>=llvm-runtimes/openmp-${PV}[${MULTILIB_USEDEP}]
 		offload? (
 			>=llvm-runtimes/offload-${PV}
+			llvm_targets_AMDGPU? (
+				>=llvm-runtimes/offload-${PV}[clang,llvm_targets_AMDGPU(-)]
+			)
+			llvm_targets_NVPTX? (
+				>=llvm-runtimes/offload-${PV}[clang,llvm_targets_NVPTX(-)]
+			)
 		)
 	)
 
