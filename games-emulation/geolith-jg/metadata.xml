@@ -9,6 +9,9 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<use>
+		<flag name="chdr">Build with libchdr (.chd) support</flag>
+	</use>
 	<longdescription>
 		Geolith is a highly accurate emulator for the Neo Geo AES, MVS, CD and
 		CDZ. This project began life as a fork of GnGEO 0.8.1. All original
