@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -41,7 +41,9 @@ RDEPEND="|| (
 	app-editors/uemacs-pk
 	app-editors/vile
 	app-editors/vim
+	app-editors/vim-classic
 	app-editors/gvim
+	app-editors/gvim-classic
 	app-editors/vis
 	app-editors/xemacs
 	app-editors/zile
