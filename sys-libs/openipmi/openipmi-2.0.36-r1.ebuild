@@ -26,7 +26,7 @@ RDEPEND="
 	sys-libs/ncurses:=
 	sys-libs/readline:=
 	crypt? ( dev-libs/openssl:= )
-	snmp? ( net-analyzer/net-snmp )
+	snmp? ( net-analyzer/net-snmp:= )
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
 	tcl? ( dev-lang/tcl:= )
