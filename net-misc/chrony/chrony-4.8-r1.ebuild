@@ -83,7 +83,7 @@ else
 fi
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-4.7-pool-vendor-gentoo.patch
+	"${FILESDIR}"/${PN}-4.8-pool-vendor-gentoo.patch
 	"${FILESDIR}"/${PN}-4.7-systemd-gentoo.patch
 )
 
