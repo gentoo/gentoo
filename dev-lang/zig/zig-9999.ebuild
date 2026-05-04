@@ -4,7 +4,7 @@
 EAPI=8
 
 # https://codeberg.org/ziglang/zig/src/tag/${PV}#building-from-source
-LLVM_COMPAT=( 21 )
+LLVM_COMPAT=( 22 )
 LLVM_OPTIONAL=1
 
 ZIG_SLOT="$(ver_cut 1-2)"
