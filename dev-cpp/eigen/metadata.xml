@@ -17,14 +17,14 @@
 		providing optimal speed with GCC.
 	</longdescription>
 	<use>
-		<flag name="clang">Use clang for cuda units compilation</flag>
-		<flag name="clang-cuda">Use clang for cuda units compilation</flag>
-		<flag name="hip">Enable HIP GPU computing support</flag>
 		<flag name="adolc">Add test support for Adolc (<pkg>sci-libs/adolc</pkg>)</flag>
 		<flag name="blas">Build the Eigen Blas library</flag>
 		<flag name="boost">Add test support for Boost.Multiprecision (<pkg>dev-libs/boost</pkg>)</flag>
 		<flag name="cholmod">Add test support for CHOLMOD (<pkg>sci-libs/cholmod</pkg>)</flag>
+		<flag name="clang">Use clang for cuda units compilation</flag>
+		<flag name="cuda-clang">Use clang for cuda units compilation</flag>
 		<flag name="fftw">Add test support for fftw (<pkg>sci-libs/fftw</pkg>)</flag>
+		<flag name="hip">Enable HIP GPU computing support</flag>
 		<flag name="klu">Add test support for KLU (<pkg>sci-libs/klu</pkg>)</flag>
 		<flag name="lapack">Build the included Eigen LAPACK library</flag>
 		<flag name="mathjax">Use MathJax for rendering math in HTML docs (dev-libs/mathjax)</flag>
