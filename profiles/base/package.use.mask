@@ -7,6 +7,10 @@
 # New entries go on top.
 
 # Paul Zander <negril.nx+gentoo@gmail.com> (2026-05-04)
+# tests are finicky for 3/3.4
+dev-cpp/eigen:3/3.4 test
+
+# Paul Zander <negril.nx+gentoo@gmail.com> (2026-05-04)
 # uses MeDiPack
 ~sci-libs/adolc-9999 -mpi
 
