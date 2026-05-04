@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,6 +10,7 @@ Sparse_P="SuiteSparse-${Sparse_PV}"
 DESCRIPTION="Multithreaded multifrontal sparse QR factorization library"
 HOMEPAGE="https://people.engr.tamu.edu/davis/suitesparse.html"
 SRC_URI="https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/refs/tags/v${Sparse_PV}.tar.gz -> ${Sparse_P}.gh.tar.gz"
+S="${WORKDIR}/${Sparse_P}/${PN^^}"
 
 LICENSE="GPL-2+"
 SLOT="0/3"
@@ -17,15 +18,17 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="doc openmp test"
 RESTRICT="!test? ( test )"
 
-DEPEND=">=sci-libs/suitesparseconfig-${Sparse_PV}
+DEPEND="
+	>=sci-libs/suitesparseconfig-${Sparse_PV}
 	>=sci-libs/amd-3.0.3
 	>=sci-libs/colamd-3.0.3
-	>=sci-libs/cholmod-4.0.3
-	virtual/blas"
+	>=sci-libs/cholmod-4.0.3:=
+	virtual/blas
+"
 RDEPEND="${DEPEND}"
-BDEPEND="doc? ( virtual/latex-base )"
-
-S="${WORKDIR}/${Sparse_P}/${PN^^}"
+BDEPEND="
+	doc? ( virtual/latex-base )
+"
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp

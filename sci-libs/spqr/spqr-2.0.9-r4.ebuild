@@ -14,17 +14,22 @@ SLOT="0"
 KEYWORDS="amd64 arm arm64 ~hppa ~loong ~ppc ppc64 ~riscv ~sparc ~x86"
 IUSE="doc partition tbb"
 
-BDEPEND="virtual/pkgconfig
-	doc? ( virtual/latex-base )"
+BDEPEND="
+	virtual/pkgconfig
+	doc? ( virtual/latex-base )
+"
 # We require the cholmod supernodal module that is enabled with
 # USE=lapack, and cholmod has to have partition support if spqr is going
 # to have it (the ./configure script for spqr checks this). Note that
 # spqr links to metis directly, too.
 DEPEND="
 	virtual/lapack
-	=sci-libs/cholmod-3*[lapack,partition?]
+	=sci-libs/cholmod-3*:=[lapack,partition?]
+	sci-libs/suitesparseconfig
+
 	partition? ( >=sci-libs/metis-5.1.0 )
-	tbb? ( <dev-cpp/tbb-2021:= )"
+	tbb? ( <dev-cpp/tbb-2021:= )
+"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
