@@ -91,7 +91,16 @@ IUSE_TEST_BACKENDS=(
 	"umfpack"
 )
 
-IUSE="${CPU_FEATURES_MAP[*]%:*} cuda cuda-clang hip debug doc lapack mathjax openmp test ${IUSE_TEST_BACKENDS[*]}" #zvector
+IUSE="
+	debug
+	blas lapack
+	${CPU_FEATURES_MAP[*]%:*}
+	cuda cuda-clang hip
+	doc mathjax
+	openmp
+	test ${IUSE_TEST_BACKENDS[*]}
+"
+# zvector
 
 REQUIRED_USE="
 	|| ( ${IUSE_TEST_BACKENDS[*]} )
