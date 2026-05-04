@@ -1,0 +1,25 @@
+From 470c47b3b8309cb71cf48146e56744bd2630827a Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Sat, 28 Feb 2026 23:16:55 +0100
+Subject: [PATCH] bug1213: link with Eigen3::Eigen
+
+Doesn't find Eigen/Core otherwise.
+---
+ test/CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+index f503efc..360f989 100644
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -299,6 +299,7 @@ if(EIGEN_TEST_CXX11)
+ endif()
+ 
+ add_executable(bug1213 bug1213.cpp bug1213_main.cpp)
++target_link_libraries(bug1213 Eigen3::Eigen)
+ 
+ check_cxx_compiler_flag("-ffast-math" COMPILER_SUPPORT_FASTMATH)
+ if(COMPILER_SUPPORT_FASTMATH)
+-- 
+2.53.0
+

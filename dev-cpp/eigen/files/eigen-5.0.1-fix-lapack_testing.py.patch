@@ -1,0 +1,248 @@
+From 8d05fb579428b57a784f72e054295ebfeac5864d Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Fri, 13 Mar 2026 18:43:46 +0100
+Subject: fix lapack_testing.py
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/lapack/testing/lapack_testing.py b/lapack/testing/lapack_testing.py
+index 3bd9462..b35e15d 100755
+--- a/lapack/testing/lapack_testing.py
++++ b/lapack/testing/lapack_testing.py
+@@ -15,9 +15,9 @@ try:
+    opts, args = getopt.getopt(sys.argv[1:], "hd:srep:t:n", 
+                               ["help", "dir", "short", "run", "error","prec=","test=","number"])
+    
+-except getopt.error, msg:
+-   print msg
+-   print "for help use --help"
++except (getopt.error, msg):
++   print(msg)
++   print("for help use --help")
+    sys.exit(2)
+ 
+ short_summary=0
+@@ -29,38 +29,38 @@ only_numbers=0
+ dir="TESTING"
+ for o, a in opts:
+    if o in ("-h", "--help"):
+-      print sys.argv[0]+" [-h|--help] [-d dir |--dir dir] [-s |--short] [-r |--run] [-e |--error] [-p p |--prec p] [-t test |--test test] [-n | --number]"
+-      print "     - h is to print this message"
+-      print "     - r is to use to run the LAPACK tests then analyse the output (.out files). By default, the script will not run all the LAPACK tests"
+-      print "     - d [dir] is to indicate where is the LAPACK testing directory (.out files). By default, the script will use ."
+-      print " LEVEL OF OUTPUT"
+-      print "     - x is to print a detailed summary"
+-      print "     - e is to print only the error summary"
+-      print "     - s is to print a short summary"
+-      print "     - n is to print the numbers of failing tests (turn on summary mode)"
+-      print " SECLECTION OF TESTS:"
+-      print "     - p [s/c/d/z/x] is to indicate the PRECISION to run:"
+-      print "            s=single"
+-      print "            d=double"
+-      print "            sd=single/double"
+-      print "            c=complex"
+-      print "            z=double complex"
+-      print "            cz=complex/double complex"
+-      print "            x=all [DEFAULT]"
+-      print "     - t [lin/eig/mixed/rfp/all] is to indicate which TEST FAMILY to run:"
+-      print "            lin=Linear Equation"
+-      print "            eig=Eigen Problems"
+-      print "            mixed=mixed-precision"
+-      print "            rfp=rfp format"
+-      print "            all=all tests [DEFAULT]"
+-      print " EXAMPLES:"
+-      print "     ./lapack_testing.py -n"
+-      print "            Will return the numbers of failed tests by analyzing the LAPACK output"
+-      print "     ./lapack_testing.py -n -r -p s"
+-      print "            Will return the numbers of failed tests in REAL precision by running the LAPACK Tests then analyzing the output"
+-      print "     ./lapack_testing.py -n -p s -t eig "
+-      print "            Will return the numbers of failed tests in REAL precision by analyzing only the LAPACK output of EIGEN testings"
+-      print "Written by Julie Langou (June 2011) "
++      print(sys.argv[0]+" [-h|--help] [-d dir |--dir dir] [-s |--short] [-r |--run] [-e |--error] [-p p |--prec p] [-t test |--test test] [-n | --number]")
++      print("     - h is to print this message")
++      print("     - r is to use to run the LAPACK tests then analyse the output (.out files). By default, the script will not run all the LAPACK tests")
++      print("     - d [dir] is to indicate where is the LAPACK testing directory (.out files). By default, the script will use .")
++      print(" LEVEL OF OUTPUT")
++      print("     - x is to print a detailed summary")
++      print("     - e is to print only the error summary")
++      print("     - s is to print a short summary")
++      print("     - n is to print the numbers of failing tests (turn on summary mode)")
++      print(" SECLECTION OF TESTS:")
++      print("     - p [s/c/d/z/x] is to indicate the PRECISION to run:")
++      print("            s=single")
++      print("            d=double")
++      print("            sd=single/double")
++      print("            c=complex")
++      print("            z=double complex")
++      print("            cz=complex/double complex")
++      print("            x=all [DEFAULT]")
++      print("     - t [lin/eig/mixed/rfp/all] is to indicate which TEST FAMILY to run:")
++      print("            lin=Linear Equation")
++      print("            eig=Eigen Problems")
++      print("            mixed=mixed-precision")
++      print("            rfp=rfp format")
++      print("            all=all tests [DEFAULT]")
++      print(" EXAMPLES:")
++      print("     ./lapack_testing.py -n")
++      print("            Will return the numbers of failed tests by analyzing the LAPACK output")
++      print("     ./lapack_testing.py -n -r -p s")
++      print("            Will return the numbers of failed tests in REAL precision by running the LAPACK Tests then analyzing the output")
++      print("     ./lapack_testing.py -n -p s -t eig ")
++      print("            Will return the numbers of failed tests in REAL precision by analyzing only the LAPACK output of EIGEN testings")
++      print("Written by Julie Langou (June 2011) ")
+       sys.exit(0)
+    else:
+       if o in ("-s", "--short"):
+@@ -120,34 +120,34 @@ def run_summary_test( f, cmdline, short_summary):
+       error_message=cmdline+" did not work"
+ 
+    if r != 0 and not with_file:
+-       print "---- TESTING " + cmdline.split()[0] + "... FAILED(" + error_message +") !"
++       print("---- TESTING " + cmdline.split()[0] + "... FAILED(" + error_message +") !")
+        for line in pipe.readlines():
+           f.write(str(line))
+    elif r != 0 and with_file and not short_summary:
+-       print "---- WARNING: please check that you have the LAPACK output : "+cmdline+"!"
+-       print "---- WARNING: with the option -r, we can run the LAPACK testing for you"
++       print("---- WARNING: please check that you have the LAPACK output : "+cmdline+"!")
++       print("---- WARNING: with the option -r, we can run the LAPACK testing for you")
+       # print "---- "+error_message
+    else:
+          for line in pipe.readlines():
+-        	f.write(str(line))
+-        	words_in_line=line.split()
+-        	if (line.find("run")!=-1):
+-#        	   print line
+-        	   whereisrun=words_in_line.index("run)")
+-        	   nb_test_run+=int(words_in_line[whereisrun-2])
+-        	if (line.find("out of")!=-1):
+-        	   if (short_summary==0): print line,
+-        	   whereisout= words_in_line.index("out")
+-        	   nb_test_fail+=int(words_in_line[whereisout-1])
+-        	if (line.find("illegal")!=-1):
+-        	   if (short_summary==0):print line,
+-        	   nb_test_illegal+=1
+-        	if (line.find(" INFO")!=-1):
+-        	   if (short_summary==0):print line,
+-        	   nb_test_info+=1
+-        	if (with_file==1):
+-        	   pipe.close()
+-           
++                f.write(str(line))
++                words_in_line=line.split()
++                if (line.find("run")!=-1):
++#                   print line
++                   whereisrun=words_in_line.index("run)")
++                   nb_test_run+=int(words_in_line[whereisrun-2])
++                if (line.find("out of")!=-1):
++                   if (short_summary==0): print(line),
++                   whereisout= words_in_line.index("out")
++                   nb_test_fail+=int(words_in_line[whereisout-1])
++                if (line.find("illegal")!=-1):
++                   if (short_summary==0):print(line),
++                   nb_test_illegal+=1
++                if (line.find(" INFO")!=-1):
++                   if (short_summary==0):print(line),
++                   nb_test_info+=1
++                if (with_file==1):
++                   pipe.close()
++
+    f.flush();
+ 
+    return [nb_test_run,nb_test_fail,nb_test_illegal,nb_test_info]
+@@ -161,10 +161,10 @@ except IOError:
+      f = sys.stdout
+ 
+ if (short_summary==0):
+-   print " "
+-   print "---------------- Testing LAPACK Routines ----------------"
+-   print " "
+-   print "-- Detailed results are stored in", filename
++   print(" ")
++   print("---------------- Testing LAPACK Routines ----------------")
++   print(" ")
++   print("-- Detailed results are stored in", filename)
+ 
+ dtypes = (
+ ("s", "d", "c", "z"),
+@@ -211,9 +211,9 @@ for dtype in range_prec:
+   name = dtypes[1][dtype]
+ 
+   if (short_summary==0):
+-     print " "
+-     print "------------------------- %s ------------------------" % name
+-     print " "
++     print(" ")
++     print("------------------------- %s ------------------------" % name)
++     print(" ")
+      sys.stdout.flush()
+ 
+ 
+@@ -260,8 +260,8 @@ for dtype in range_prec:
+            # EIG TESTS
+            cmdbase="xeigtst"+letter+" < "+dtests[0][dtest]+".in > "+dtests[2][dtest]+".out"
+      if (not just_errors and not short_summary):
+-        print "-->  Testing "+name+" "+dtests[1][dtest]+" [ "+cmdbase+" ]"
+-     # Run the process: either to read the file or run the LAPACK testing   
++        print("-->  Testing "+name+" "+dtests[1][dtest]+" [ "+cmdbase+" ]")
++     # Run the process: either to read the file or run the LAPACK testing
+      nb_test = run_summary_test(f, cmdbase, short_summary)
+      list_results[0][dtype]+=nb_test[0]
+      list_results[1][dtype]+=nb_test[1]
+@@ -271,21 +271,21 @@ for dtype in range_prec:
+      
+      if (not short_summary):
+         if (nb_test[0]>0 and just_errors==0):
+-           print "-->  Tests passed: "+str(nb_test[0])
++           print("-->  Tests passed: "+str(nb_test[0]))
+         if (nb_test[1]>0):
+-           print "-->  Tests failing to pass the threshold: "+str(nb_test[1])
++           print("-->  Tests failing to pass the threshold: "+str(nb_test[1]))
+         if (nb_test[2]>0):
+-           print "-->  Illegal Error: "+str(nb_test[2])
++           print("-->  Illegal Error: "+str(nb_test[2]))
+         if (nb_test[3]>0):
+-           print "-->  Info Error: "+str(nb_test[3])
++           print("-->  Info Error: "+str(nb_test[3]))
+         if (got_error>0 and just_errors==1):
+-           print "ERROR IS LOCATED IN "+name+" "+dtests[1][dtest]+" [ "+cmdbase+" ]"
+-           print ""
++           print("ERROR IS LOCATED IN "+name+" "+dtests[1][dtest]+" [ "+cmdbase+" ]")
++           print("")
+         if (just_errors==0):
+-           print ""
++           print("")
+ #     elif (got_error>0):
+-#        print dtests[2][dtest]+".out \t"+str(nb_test[1])+"\t"+str(nb_test[2])+"\t"+str(nb_test[3])
+         
++#        print(dtests[2][dtest]+".out \t"+str(nb_test[1])+"\t"+str(nb_test[2])+"\t"+str(nb_test[3]))
+      sys.stdout.flush()
+   if (list_results[0][dtype] > 0 ):
+      percent_num_error=float(list_results[1][dtype])/float(list_results[0][dtype])*100
+@@ -300,9 +300,9 @@ for dtype in range_prec:
+   list_results[3][4]+=list_results[3][dtype]
+   
+ if only_numbers==1:
+-   print str(list_results[1][4])+"\n"+str(list_results[2][4]+list_results[3][4])
++   print(str(list_results[1][4])+"\n"+str(list_results[2][4]+list_results[3][4]))
+ else:
+-   print summary
++   print(summary)
+    if (list_results[0][4] > 0 ):
+       percent_num_error=float(list_results[1][4])/float(list_results[0][4])*100
+       percent_error=float(list_results[2][4]+list_results[3][4])/float(list_results[0][4])*100
+@@ -310,9 +310,9 @@ else:
+       percent_num_error=0
+       percent_error=0
+    if (prec=='x'):
+-        print "--> ALL PRECISIONS\t"+str(list_results[0][4])+"\t\t"+str(list_results[1][4])+"\t("+"%.3f" % percent_num_error+"%)\t"+str(list_results[2][4]+list_results[3][4])+"\t("+"%.3f" % percent_error+"%)\t""\n"
++        print("--> ALL PRECISIONS\t"+str(list_results[0][4])+"\t\t"+str(list_results[1][4])+"\t("+"%.3f" % percent_num_error+"%)\t"+str(list_results[2][4]+list_results[3][4])+"\t("+"%.3f" % percent_error+"%)\t""\n")
+    if list_results[0][4] == 0:
+-     print "NO TESTS WERE ANALYZED, please use the -r option to run the LAPACK TESTING"
++     print("NO TESTS WERE ANALYZED, please use the -r option to run the LAPACK TESTING")
+ 
+ # This may close the sys.stdout stream, so make it the last statement
+ f.close()
+-- 
+2.53.0
+

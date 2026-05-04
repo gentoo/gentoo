@@ -1,0 +1,29 @@
+From d0e70fb11f54ccc8117030482fb7b3b359261cbf Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Mon, 22 Dec 2025 17:19:51 +0100
+Subject: Do not show deprecated CUDA device properties for CUDA-13
+
+Fixes: 9e5714b93b3a0d7848e72db5fa2b58decaa60297
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/test/gpu_common.h b/test/gpu_common.h
+index f34f1b078..f47742079 100644
+--- a/test/gpu_common.h
++++ b/test/gpu_common.h
+@@ -153,9 +153,13 @@ void ei_test_init_gpu() {
+   std::cout << "  warpSize:                    " << deviceProp.warpSize << "\n";
+   std::cout << "  regsPerBlock:                " << deviceProp.regsPerBlock << "\n";
+   std::cout << "  concurrentKernels:           " << deviceProp.concurrentKernels << "\n";
++#if defined(EIGEN_CUDA_SDK_VER) && EIGEN_CUDA_SDK_VER < 130000
+   std::cout << "  clockRate:                   " << deviceProp.clockRate << "\n";
++#endif
+   std::cout << "  canMapHostMemory:            " << deviceProp.canMapHostMemory << "\n";
++#if defined(EIGEN_CUDA_SDK_VER) && EIGEN_CUDA_SDK_VER < 130000
+   std::cout << "  computeMode:                 " << deviceProp.computeMode << "\n";
++#endif
+ }
+ 
+ #endif  // EIGEN_TEST_GPU_COMMON_H
+-- 
+2.52.0
+

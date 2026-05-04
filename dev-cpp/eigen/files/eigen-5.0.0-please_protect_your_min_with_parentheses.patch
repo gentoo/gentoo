@@ -1,0 +1,35 @@
+From 056b77036b4c97fee25bbd7a747e55c75c79cd48 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Tue, 23 Sep 2025 00:40:14 +0200
+Subject: [PATCH] please protect your min with parentheses
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/Eigen/src/Core/products/Parallelizer.h b/Eigen/src/Core/products/Parallelizer.h
+index 4f36689..899d78f 100644
+--- a/Eigen/src/Core/products/Parallelizer.h
++++ b/Eigen/src/Core/products/Parallelizer.h
+@@ -141,7 +141,7 @@ inline void manage_multi_threading(Action action, int* v) {
+     // for OpenMP.
+     eigen_internal_assert(*v >= 0);
+     int omp_threads = omp_get_max_threads();
+-    m_maxThreads = (*v == 0 ? omp_threads : std::min(*v, omp_threads));
++    m_maxThreads = (*v == 0 ? omp_threads : (std::min)(*v, omp_threads));
+ #elif defined(EIGEN_GEMM_THREADPOOL)
+     // Calling action == SetAction and *v = 0 means
+     // restoring m_maxThreads to the number of threads in the ThreadPool,
+diff --git a/test/product_threaded.cpp b/test/product_threaded.cpp
+index 1782c28..85c2615 100644
+--- a/test/product_threaded.cpp
++++ b/test/product_threaded.cpp
+@@ -7,6 +7,7 @@
+ // Public License v. 2.0. If a copy of the MPL was not distributed
+ // with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
++#define EIGEN_DONT_PARALLELIZE
+ #define EIGEN_GEMM_THREADPOOL
+ #include "main.h"
+ 
+-- 
+2.51.0
+

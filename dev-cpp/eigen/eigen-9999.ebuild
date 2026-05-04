@@ -5,10 +5,14 @@ EAPI=8
 
 LLVM_COMPAT=( {21..23} )
 LLVM_OPTIONAL="cuda-clang"
-FORTRAN_NEEDED="test"
+
+PYTHON_COMPAT=( python3_{12..13} )
+
+FORTRAN_NEEDED="no"
+
 LAPACK_ADDONS_PV="3.4.1"
 
-inherit cmake cuda fortran-2 llvm-r2 toolchain-funcs
+inherit cmake cuda flag-o-matic fortran-2 llvm-r2 python-any-r1 toolchain-funcs virtualx
 
 DESCRIPTION="C++ template library for linear algebra"
 HOMEPAGE="https://eigen.tuxfamily.org/index.php?title=Main_Page"
@@ -83,8 +87,10 @@ IUSE_TEST_BACKENDS=(
 	"cholmod"
 	"fftw"
 	"klu"
+	"metis"
 	"opengl"
 	"pastix"
+	"pocketfft"
 	"sparsehash"
 	"spqr"
 	"superlu"
@@ -103,6 +109,9 @@ IUSE="
 # zvector
 
 REQUIRED_USE="
+	lapack? (
+		blas
+	)
 	test? (
 		|| ( ${IUSE_TEST_BACKENDS[*]} )
 	)
@@ -110,6 +119,7 @@ REQUIRED_USE="
 
 # Tests failing again because of compiler issues; bugs #932646, #943401
 RESTRICT="!test? ( test )"
+FORTRAN_DEPEND="virtual/fortran"
 
 BDEPEND="
 	doc? (
@@ -121,36 +131,60 @@ BDEPEND="
 		dev-texlive/texlive-latexextra
 		mathjax? ( dev-libs/mathjax )
 	)
-	test? ( virtual/pkgconfig )
+	test? (
+		virtual/pkgconfig
+		lapack? (
+			${PYTHON_DEPS}
+		)
+		spqr? (
+			cholmod? (
+				blas? (
+					lapack? (
+						${FORTRAN_DEPEND}
+					)
+				)
+			)
+		)
+		pastix? ( ${FORTRAN_DEPEND} )
+	)
+	blas? ( ${FORTRAN_DEPEND} )
+	lapack? ( ${FORTRAN_DEPEND} )
 "
 
-# METIS
-# MPREAL
-# dev-libs/mpfr:0
-# dev-libs/gmp:0
-
 TEST_BACKENDS="
-		boost? ( dev-libs/boost )
 		adolc? ( sci-libs/adolc[sparse] )
-		cholmod? ( sci-libs/cholmod:= )
-		fftw? ( sci-libs/fftw )
-		spqr? ( sci-libs/spqr )
+		boost? ( dev-libs/boost )
+		cholmod? ( sci-libs/cholmod:=[cuda?] )
+		fftw? ( sci-libs/fftw[openmp?] )
 		klu? ( sci-libs/klu )
+		metis? (
+			sci-libs/metis[openmp?]
+			sci-libs/pastix[metis]
+		)
 		opengl? (
 			media-libs/freeglut
 			media-libs/glew
 			media-libs/libglvnd
 		)
-		pastix? ( sci-libs/pastix[-mpi] )
+		pastix? (
+			sci-libs/pastix[-mpi]
+			|| (
+				sci-libs/pastix[scotch]
+				sci-libs/pastix[metis]
+			)
+		)
+		pocketfft? ( dev-libs/pocketfft )
 		sparsehash? (
 			amd64? ( dev-cpp/sparsehash )
 			arm64? ( dev-cpp/sparsehash )
 			ppc64? ( dev-cpp/sparsehash )
 			x86?   ( dev-cpp/sparsehash )
 		)
+		spqr? ( sci-libs/spqr )
 		superlu? ( sci-libs/superlu )
-		umfpack? ( sci-libs/umfpack )
+		umfpack? ( sci-libs/umfpack:= )
 "
+
 DEPEND="
 	test? (
 		cuda? (
@@ -164,7 +198,12 @@ DEPEND="
 			)
 		)
 		hip? ( dev-util/hip )
-		lapack? ( virtual/lapacke )
+		!blas? (
+			virtual/blas
+			!lapack? (
+				virtual/lapacke
+			)
+		)
 		${TEST_BACKENDS}
 	)
 "
@@ -172,7 +211,9 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-3.4.0-doc-nocompress.patch" # bug 830064
 	"${FILESDIR}/${PN}-3.4.0-buildstring.patch"
-	"${FILESDIR}/${PN}-9999-please_protect_your_min_with_parentheses.patch"
+	"${FILESDIR}/${PN}-5.0.0-please_protect_your_min_with_parentheses.patch"
+
+	"${FILESDIR}/${PN}-9999-Do-not-show-deprecated-CUDA-device-properties-for-CU.patch"
 )
 
 # TODO should be in cuda.eclass
@@ -218,6 +259,17 @@ pkg_setup() {
 		tc-check-openmp
 	fi
 
+	if use lapack; then
+		python-any-r1_pkg_setup
+	fi
+
+	if { use test && { use spqr && use cholmod && use blas && use lapack; } || use pastix; } \
+		|| use blas \
+		|| use lapack \
+		; then
+		fortran-2_pkg_setup
+	fi
+
 	if use test && use cuda && use cuda-clang; then
 		llvm-r2_pkg_setup
 	fi
@@ -238,32 +290,54 @@ src_unpack() {
 }
 
 src_prepare() {
+	# run patches here as we patch in test/
 	cmake_src_prepare
 
-	sed \
-		-e "/add_subdirectory(bench\/spbench/s/^/#DONOTCOMPILE /g" \
-		-e "/add_subdirectory(demos/s/^/#DONOTCOMPILE /g" \
-		-i CMakeLists.txt || die
-
-	if ! use test; then
-		sed \
-			-e "/add_subdirectory(test/s/^/#DONOTCOMPILE /g" \
-			-e "/add_subdirectory(scripts/s/^/#DONOTCOMPILE /g" \
-			-e "/add_subdirectory(failtest/s/^/#DONOTCOMPILE /g" \
-			-e "/add_subdirectory(blas/s/^/#DONOTCOMPILE /g" \
-			-e "/add_subdirectory(lapack/s/^/#DONOTCOMPILE /g" \
-			-i CMakeLists.txt || die
+	if use test && use lapack; then
+		pushd "${S}" > /dev/null || die
+		eapply "${FILESDIR}/${PN}-5.0.1-fix-lapack_testing.py.patch"
+		popd > /dev/null || die
 	fi
 }
 
 src_configure() {
+	if use lapack; then
+		# bug 878987
+		# multiple definition of `cgesdd_'
+		filter-lto
+	fi
+
 	local mycmakeargs=(
-		-DBUILD_SHARED_LIBS="yes"
-		-DBUILD_TESTING="$(usex test)"
+		-DCMAKE_CXX_STANDARD="20"
+		-DCMAKE_POSITION_INDEPENDENT_CODE="yes"
+
+		-DEIGEN_BUILD_TESTING="$(usex test)" # Enable creation of Eigen tests.
+
+		-DEIGEN_BUILD_BLAS="$(usex blas)" # Toggles the building of the Eigen Blas library
+		-DEIGEN_BUILD_LAPACK="$(usex blas "$(usex lapack)")" # Toggles the building of the included Eigen LAPACK library
 
 		-DEIGEN_BUILD_DOC="$(usex doc)" # Enable creation of Eigen documentation
 		-DEIGEN_BUILD_PKGCONFIG="yes" # Build pkg-config .pc file for Eigen
 	)
+
+	append-cxxflags "-DEIGEN_USE_OPENBLAS_BFLOAT16=0"
+
+	if use blas; then
+		mycmakeargs+=(
+			-DBUILD_SHARED_LIBS="yes"
+			-DEIGEN_BUILD_SHARED_LIBS="yes"
+			-DEIGEN_BUILD_STATIC_LIBS="yes"
+			-DEIGEN_INSTALL_STATIC_LIBS="yes"
+		)
+
+		if use lapack; then
+			mycmakeargs+=(
+				-DCMAKE_POLICY_DEFAULT_CMP0148="OLD" # FindPythonInterp
+				-DEIGEN_ENABLE_LAPACK_TESTS="$(usex test)"
+			)
+		fi
+	fi
+
 	if use doc || use test; then
 		mycmakeargs+=(
 			# needs Qt4
@@ -280,60 +354,40 @@ src_configure() {
 
 	if use test; then
 		mycmakeargs+=(
+			-DEIGEN_LEAVE_TEST_IN_ALL_TARGET=yes # Leaves tests in the all target, needed by ctest for automatic building
+
 			# the OpenGL testsuite is extremely brittle, bug #712808
-			-DOpenGL_GL_PREFERENCE="GLVND"
 			-DEIGEN_TEST_OPENGL="$(usex opengl)" # Enable OpenGL support in unit tests
 			-DEIGEN_TEST_OPENMP="$(usex openmp)" # Enable/Disable OpenMP in tests/examples
 
-			-DCMAKE_DISABLE_FIND_PACKAGE_MPREAL=ON
+			-DEIGEN_TEST_EXTERNAL_BLAS="$(usex !blas)" # Use external BLAS library for testsuite
 
-			-DEIGEN_TEST_CXX11=yes
+			-DEIGEN_TEST_BUILD_DOCUMENTATION="no" # $(usex doc)" # Test building the doxygen documentation
 
-			# -DEIGEN_TEST_CUSTOM_CXX_FLAGS= # Additional compiler flags when compiling unit tests.
-			# -DEIGEN_TEST_CUSTOM_LINKER_FLAGS= # Additional linker flags when linking unit tests.
-			# -DEIGEN_TEST_BUILD_FLAGS= # Options passed to the build command of unit tests
+			-DEIGEN_DEBUG_ASSERTS="$(usex debug)" # Enable advanced debugging of assertions
+			-DEIGEN_SPLIT_LARGE_TESTS="yes" # Split large tests into smaller executables
 
-			# -DEIGEN_BUILD_BTL=yes # Build benchmark suite
+			$(cmake_use_find_package adolc Adolc)
+			$(cmake_use_find_package boost Boost)
+			$(cmake_use_find_package cholmod CHOLMOD)
+			# -DDUCCFFT="$(usex ducc)"
+			-DDUCC_ROOT="DUCCFFT"
+			-DDUCCFFT="NOTFOUND"
+			$(cmake_use_find_package fftw FFTW )
+			$(cmake_use_find_package klu KLU)
+			-DCMAKE_DISABLE_FIND_PACKAGE_MPREAL=yes
+			# $(cmake_use_find_package opengl OpenGL) # EIGEN_TEST_OPENGL
+			# $(cmake_use_find_package openmp OpenMP) # EIGEN_TEST_OPENMP
+			$(cmake_use_find_package pastix PASTIX)
+			# prevent pastix_nompi.h lookup it no longer exists, we enforce this via deps
+			-DPASTIX_pastix_nompi.h_INCLUDE_DIRS="FOUND"
 
-			-DEIGEN_TEST_BUILD_DOCUMENTATION="$(usex doc)" # Test building the doxygen documentation
-
-			# -DEIGEN_COVERAGE_TESTING=no # Enable/disable gcov
-			# -DEIGEN_CTEST_ERROR_EXCEPTION= # Regular expression for build error messages to be filtered out
-			# -DEIGEN_DEBUG_ASSERTS=no # Enable advanced debugging of assertions
-			# -DEIGEN_NO_ASSERTION_CHECKING=no # Disable checking of assertions using exceptions
-			# -DEIGEN_TEST_NO_EXCEPTIONS=no # Disables C++ exceptions
-			# -DEIGEN_TEST_NO_EXPLICIT_ALIGNMENT=no # Disable explicit alignment (hence vectorization) in tests/examples
-			# -DEIGEN_TEST_NO_EXPLICIT_VECTORIZATION=no # Disable explicit vectorization in tests/examples
-
-			# -DEIGEN_DASHBOARD_BUILD_TARGET=buildtests # Target to be built in dashboard mode, default is buildtests
-
-			# -DEIGEN_DEFAULT_TO_ROW_MAJOR=no # Use row-major as default matrix storage order
-
-			# -DEIGEN_TEST_MATRIX_DIR=yes # Enable testing of realword sparse matrices contained in the specified path
-			# -DEIGEN_TEST_MAX_SIZE=320 # Maximal matrix/vector size, default is 320
-			# -DEIGEN_SPLIT_LARGE_TESTS=no # Split large tests into smaller executables
+			-DPOCKETFFT="$(usex pocketfft)"
+			$(cmake_use_find_package sparsehash GoogleHash)
+			$(cmake_use_find_package spqr SPQR)
+			$(cmake_use_find_package superlu SuperLU)
+			$(cmake_use_find_package umfpack UMFPACK)
 		)
-
-		use !adolc      && mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_Adolc="TRUE" )
-		use !boost      && mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_Boost="TRUE" )
-		use !cholmod    && mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_CHOLMOD="TRUE" )
-		use !fftw       && mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_FFTW="TRUE" )
-		use !sparsehash && mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_GoogleHash="TRUE" )
-		use !klu        && mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_KLU="TRUE" )
-		use !opengl     && mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_OpenGL="TRUE" )
-		use !openmp     && mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_OpenMP="TRUE" )
-		use !pastix     && mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_PASTIX="TRUE" )
-		use !spqr       && mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_SPQR="TRUE" )
-		use !superlu    && mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_SuperLU="TRUE" )
-		use !umfpack    && mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_UMFPACK="TRUE" )
-
-		if use lapack; then
-			mycmakeargs+=(
-				-DEIGEN_ENABLE_LAPACK_TESTS=yes
-				-DEIGEN_TEST_EXTERNAL_BLAS=yes # Use external BLAS library for testsuite
-				-DCMAKE_DISABLE_FIND_PACKAGE_SuperLU=ON
-			)
-		fi
 
 		if use arm; then
 			mycmakeargs+=(
@@ -344,13 +398,6 @@ src_configure() {
 		if use arm64; then
 			mycmakeargs+=(
 				-DEIGEN_TEST_NEON64="$(usex cpu_flags_arm_neon)"
-			)
-		fi
-
-		if use ppc || use ppc64; then
-			mycmakeargs+=(
-				-DEIGEN_TEST_ALTIVEC="$(usex cpu_flags_ppc_altivec)"
-				-DEIGEN_TEST_VSX="$(usex cpu_flags_ppc_vsx)"
 			)
 		fi
 
@@ -375,6 +422,13 @@ src_configure() {
 		if use mips; then
 			mycmakeargs+=(
 				# -DEIGEN_TEST_MSA=no # Enable/Disable MSA in tests/examples
+			)
+		fi
+
+		if use ppc || use ppc64; then
+			mycmakeargs+=(
+				-DEIGEN_TEST_ALTIVEC="$(usex cpu_flags_ppc_altivec)"
+				-DEIGEN_TEST_VSX="$(usex cpu_flags_ppc_vsx)"
 			)
 		fi
 
@@ -429,6 +483,18 @@ src_configure() {
 				-DEIGEN_CUDA_COMPUTE_ARCH="${CUDAARCHS}"
 			)
 		fi
+
+		if use opengl; then
+			mycmakeargs+=(
+				-DOpenGL_GL_PREFERENCE="GLVND"
+			)
+		fi
+
+		if use pocketfft; then
+			mycmakeargs+=(
+				-DEIGEN_TEST_CXX11=yes
+			)
+		fi
 	fi
 
 	cmake_src_configure
@@ -436,33 +502,90 @@ src_configure() {
 
 src_compile() {
 	local targets=()
-	if use doc; then
-		targets+=( doc )
-		HTML_DOCS=( "${BUILD_DIR}"/doc/html/. )
+
+	if use blas; then
+		targets+=( blas )
+		if use lapack; then
+			targets+=( lapack )
+		fi
 	fi
+
 	if use test; then
 		targets+=( buildtests )
-		if ! use lapack; then
-			targets+=( blas )
+
+		if use cuda || use hip; then
+			targets+=( buildtests_gpu )
 		fi
 		# tests generate random data, which
 		# obviously fails for some seeds
 		export EIGEN_SEED=712808
 	fi
 
-	if use doc || use test; then
+	# we add doc last to capture results for buildtests
+	if use doc; then
+		targets+=( doc )
+	fi
+
+	if [[ -n "${targets[*]}" ]]; then
 		cmake_src_compile "${targets[@]}"
 	fi
 }
 
 src_test() {
-	if use cuda ; then
+	local CMAKE_SKIP_TESTS=(
+		"^ref_8$"
+	)
+
+	if use cholmod && use blas && use lapack; then
+		CMAKE_SKIP_TESTS+=(
+		"^cholmod_support_21$"
+		"^cholmod_support_22$"
+		)
+	fi
+
+	if use cuda; then
 		cuda_add_sandbox -w
+	fi
+
+	if use klu && use blas; then
+		CMAKE_SKIP_TESTS+=(
+			"^klu_support_1$"
+			"^klu_support_2$"
+		)
+	fi
+
+	if use lapack; then
+		CMAKE_SKIP_TESTS+=(
+			"^LAPACK-xlintsts_stest_in$"
+			"^LAPACK-xeigtsts_sep_in$"
+			"^LAPACK-xeigtsts_svd_in$"
+			"^LAPACK-xlintstd_dtest_in$"
+			"^LAPACK-xeigtstd_sep_in$"
+			"^LAPACK-xeigtstd_svd_in$"
+			"^LAPACK-xlintstc_ctest_in$"
+			"^LAPACK-xeigtstc_svd_in$"
+		)
 	fi
 
 	local myctestargs=(
 		-j1 # otherwise breaks due to cmake reruns
 	)
 
-	cmake_src_test
+	if use opengl; then
+		virtx \
+			cmake_src_test
+	else
+		cmake_src_test
+	fi
+}
+
+src_install() {
+	local DOCS=()
+	cmake_src_install
+
+	if use doc; then
+		pushd "${BUILD_DIR}/doc" > /dev/null || die
+		dodoc -r html
+		popd > /dev/null || die
+	fi
 }
