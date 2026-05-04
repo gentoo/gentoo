@@ -7,7 +7,13 @@
 # New entries go on top.
 
 # Paul Zander <negril.nx+gentoo@gmail.com> (2026-05-04)
+# opengl is broken
+# pastix is broken, metis requires pastix
+# blas and lapack are poorly maintained
 # tests are finicky for 3/3.4
+dev-cpp/eigen blas lapack
+dev-cpp/eigen opengl
+dev-cpp/eigen metis pastix
 dev-cpp/eigen:3/3.4 test
 
 # Paul Zander <negril.nx+gentoo@gmail.com> (2026-05-04)
