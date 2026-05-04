@@ -1,0 +1,136 @@
+From cf458c66ee01802d5023fcab78412583b5c73574 Mon Sep 17 00:00:00 2001
+From: Guilhem Saurel <guilhem.saurel@laas.fr>
+Date: Tue, 16 Dec 2025 09:40:05 +0100
+Subject: [PATCH 1/4] doc: add and use \anchor Eigen_placeholders_lastN
+
+fix for Doxygen >= 1.14:
+```
+doc/Manual.dox:177: error: unable to resolve link to 'Eigen::placeholders::lastN(SizeType)' for \link command
+doc/Manual.dox:178: error: unable to resolve link to 'Eigen::placeholders::lastN(SizeType,IncrType)' for \link command
+```
+---
+ Eigen/src/Core/ArithmeticSequence.h | 2 +-
+ doc/TutorialSlicingIndexing.dox     | 3 +--
+ 2 files changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/Eigen/src/Core/ArithmeticSequence.h b/Eigen/src/Core/ArithmeticSequence.h
+index ae6373dda..41617713f 100644
+--- a/Eigen/src/Core/ArithmeticSequence.h
++++ b/Eigen/src/Core/ArithmeticSequence.h
+@@ -182,7 +182,7 @@ namespace placeholders {
+  * \returns a symbolic ArithmeticSequence representing the last \a size elements with increment \a incr.
+  *
+  * It is a shortcut for: \code seqN(last-(size-fix<1>)*incr, size, incr) \endcode
+- *
++ * \anchor Eigen_placeholders_lastN
+  * \sa lastN(SizeType), seqN(FirstType,SizeType), seq(FirstType,LastType,IncrType) */
+ template <typename SizeType, typename IncrType>
+ auto lastN(SizeType size, IncrType incr)
+diff --git a/doc/TutorialSlicingIndexing.dox b/doc/TutorialSlicingIndexing.dox
+index 6ebaa2d6d..a1b00dfc4 100644
+--- a/doc/TutorialSlicingIndexing.dox
++++ b/doc/TutorialSlicingIndexing.dox
+@@ -114,8 +114,7 @@ Here are some examples for a 2D array/matrix \c A and a 1D array/vector \c v.
+ 
+ As seen in the last example, referencing the <i> last n </i> elements (or rows/columns) is a bit cumbersome to write.
+ This becomes even more tricky and error prone with a non-default increment.
+-Here comes \link Eigen::placeholders::lastN(SizeType) Eigen::placeholders::lastN(size) \endlink, and
+-\link Eigen::placeholders::lastN(SizeType,IncrType) Eigen::placeholders::lastN(size,incr) \endlink:
++Here comes \ref Eigen_placeholders_lastN :
+ 
+ <table class="manual">
+ <tr>
+-- 
+GitLab
+
+
+From 6be98c166c86a2360177bad9cdccc55ac1ceed7b Mon Sep 17 00:00:00 2001
+From: Guilhem Saurel <guilhem.saurel@laas.fr>
+Date: Tue, 16 Dec 2025 10:13:56 +0100
+Subject: [PATCH 2/4] doc: fix html
+
+fix for Doxygen >= 1.14:
+```
+doc/Manual.dox:656: error: expected <tr> or </table> tag but found token TK_HTMLTAG instead!
+```
+---
+ doc/QuickReference.dox | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/doc/QuickReference.dox b/doc/QuickReference.dox
+index 1fb000fdc..4aece902c 100644
+--- a/doc/QuickReference.dox
++++ b/doc/QuickReference.dox
+@@ -551,7 +551,6 @@ Read-write access to sub-vectors:
+ <tr>
+ <th>Default versions</th>
+ <th>Optimized versions when the size \n is known at compile time</th></tr>
+-<th></th>
+ 
+ <tr><td>\code vec1.head(n)\endcode</td><td>\code vec1.head<n>()\endcode</td><td>the first \c n coeffs </td></tr>
+ <tr><td>\code vec1.tail(n)\endcode</td><td>\code vec1.tail<n>()\endcode</td><td>the last \c n coeffs </td></tr>
+-- 
+GitLab
+
+
+From ac5d00609f14b7402f1fe8274e4d5db3c61f091e Mon Sep 17 00:00:00 2001
+From: Guilhem Saurel <guilhem.saurel@laas.fr>
+Date: Tue, 16 Dec 2025 10:37:35 +0100
+Subject: [PATCH 3/4] doc: typo
+
+fix for doxygen 1.15:
+```
+doc/UnalignedArrayAssert.dox:134: error: Reached end of file while still searching closing '`' of a verbatim block starting at line 117
+doc/UnalignedArrayAssert.dox:134: error: Reached end of file while still inside a (nested) comment. Nesting level 1 (possible line reference(s): 3)
+```
+---
+ doc/UnalignedArrayAssert.dox | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/doc/UnalignedArrayAssert.dox b/doc/UnalignedArrayAssert.dox
+index ca674a267..0ed6f8835 100644
+--- a/doc/UnalignedArrayAssert.dox
++++ b/doc/UnalignedArrayAssert.dox
+@@ -7,7 +7,7 @@ Hello! You are seeing this webpage because your program terminated on an asserti
+ my_program: path/to/eigen/Eigen/src/Core/DenseStorage.h:44:
+ Eigen::internal::matrix_array<T, Size, MatrixOptions, Align>::internal::matrix_array()
+ [with T = double, int Size = 2, int MatrixOptions = 2, bool Align = true]:
+-Assertion `(reinterpret_cast<size_t>(array) & (sizemask)) == 0 && "this assertion
++Assertion (reinterpret_cast<size_t>(array) & (sizemask)) == 0 && "this assertion
+ is explained here: http://eigen.tuxfamily.org/dox-devel/group__TopicUnalignedArrayAssert.html
+ **** READ THIS WEB PAGE !!! ****"' failed.
+ </pre>
+-- 
+GitLab
+
+
+From ae263fb905b2dd9ff3ad9b47dc44f90466f7b1c8 Mon Sep 17 00:00:00 2001
+From: Guilhem Saurel <guilhem.saurel@laas.fr>
+Date: Tue, 16 Dec 2025 10:40:27 +0100
+Subject: [PATCH 4/4] doc: define eigenAutoToc alias
+
+Fix for doxygen 1.15:
+```
+doc/Manual.dox:95: error: Found unexpanded alias '\cpp17'. Check if number of arguments passed is correct.
+doc/Manual.dox:98: error: Found unexpanded alias '\eigenAutoToc'. Check if number of arguments passed is correct.
+```
+---
+ doc/Doxyfile.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/doc/Doxyfile.in b/doc/Doxyfile.in
+index 25a7e2e9a..445fc0a6f 100644
+--- a/doc/Doxyfile.in
++++ b/doc/Doxyfile.in
+@@ -32,7 +32,7 @@ ALIASES                = "only_for_vectors=This is only for vectors (either row-
+                          "cpp14=<span class='cpp14'>[c++14]</span>" \
+                          "cpp17=<span class='cpp17'>[c++17]</span>" \
+                          "newin{1}=<span class='newin3x'>New in %Eigen \1.</span>" \
+-                         eigenAutoToc= \
++                         "eigenAutoToc=<!-- TOC placeholder -->" \
+                          eigenManualPage=\defgroup
+ EXTENSION_MAPPING      = .h=C++ \
+                          no_extension=C++
+-- 
+GitLab
+
