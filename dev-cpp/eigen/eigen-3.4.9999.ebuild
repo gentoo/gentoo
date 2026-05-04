@@ -103,7 +103,9 @@ IUSE="
 # zvector
 
 REQUIRED_USE="
-	|| ( ${IUSE_TEST_BACKENDS[*]} )
+	test? (
+		|| ( ${IUSE_TEST_BACKENDS[*]} )
+	)
 "
 
 # Tests failing again because of compiler issues; bugs #932646, #943401
