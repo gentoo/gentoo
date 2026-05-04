@@ -1,0 +1,61 @@
+From 9ddec05248d0084c4bfe737fa9ab3cf61f3ecd4a Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Thu, 12 Mar 2026 16:38:02 +0100
+Subject: make static libs optional
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/blas/CMakeLists.txt b/blas/CMakeLists.txt
+index 2bd498a11..0b605cc9e 100644
+--- a/blas/CMakeLists.txt
++++ b/blas/CMakeLists.txt
+@@ -15,8 +15,10 @@ set(EigenBlas_SRCS  single.cpp double.cpp complex_single.cpp complex_double.cpp
+ 
+ set(EIGEN_BLAS_TARGETS "")
+ 
++if (EIGEN_BUILD_STATIC_LIBS)
+ add_library(eigen_blas_static STATIC ${EigenBlas_SRCS})
+ list(APPEND EIGEN_BLAS_TARGETS eigen_blas_static)
++endif()
+ 
+ if (EIGEN_BUILD_SHARED_LIBS)
+   add_library(eigen_blas SHARED ${EigenBlas_SRCS} "eigen_blas.def")
+@@ -34,7 +36,9 @@ foreach(target IN LISTS EIGEN_BLAS_TARGETS)
+ 
+   add_dependencies(blas ${target})
+   include(GNUInstallDirs)
++  if (NOT EIGEN_INSTALL_STATIC_LIBS AND NOT ${target} EQUAL eigen_blas_static)
+   install(TARGETS ${target})
++  endif()
+ endforeach()
+ 
+ if(EIGEN_BUILD_TESTING)
+diff --git a/lapack/CMakeLists.txt b/lapack/CMakeLists.txt
+index f98f77afc..4ea553b56 100644
+--- a/lapack/CMakeLists.txt
++++ b/lapack/CMakeLists.txt
+@@ -101,9 +101,11 @@ endif()
+ 
+ set(EIGEN_LAPACK_TARGETS "")
+ 
++if (EIGEN_BUILD_STATIC_LIBS)
+ add_library(eigen_lapack_static STATIC ${EigenLapack_SRCS} ${ReferenceLapack_SRCS})
+ target_link_libraries(eigen_lapack_static  eigen_blas_static)
+ list(APPEND EIGEN_LAPACK_TARGETS eigen_lapack_static)
++endif()
+ 
+ if (EIGEN_BUILD_SHARED_LIBS)
+   add_library(eigen_lapack SHARED ${EigenLapack_SRCS} ${EIGEN_LAPACK_DEF})
+@@ -123,7 +125,9 @@ foreach(target IN LISTS EIGEN_LAPACK_TARGETS)
+   target_link_libraries(${target} Eigen3::Eigen)
+   add_dependencies(lapack ${target})
+   include(GNUInstallDirs)
++  if (NOT EIGEN_INSTALL_STATIC_LIBS AND NOT ${target} EQUAL eigen_lapack_static)
+   install(TARGETS ${target})
++  endif()
+ endforeach()
+ 
+ 
+-- 
+2.53.0
+
