@@ -6,6 +6,8 @@ EAPI=8
 LLVM_COMPAT=( {21..23} )
 LLVM_OPTIONAL="cuda-clang"
 FORTRAN_NEEDED="test"
+LAPACK_ADDONS_PV="3.4.1"
+
 inherit cmake cuda fortran-2 llvm-r2 toolchain-funcs
 
 DESCRIPTION="C++ template library for linear algebra"
@@ -20,10 +22,18 @@ if [[ ${PV} = *9999* ]] ; then
 else
 	SRC_URI="
 		https://gitlab.com/lib${PN}/${PN}/-/archive/${PV}/${P}.tar.bz2
-		test? ( lapack? ( https://downloads.tuxfamily.org/${PN}/lapack_addons_3.4.1.tgz -> ${PN}-lapack_addons-3.4.1.tgz ) )
 	"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos"
 fi
+
+SRC_URI+="
+	test? (
+		lapack? (
+			https://downloads.tuxfamily.org/${PN}/lapack_addons_${LAPACK_ADDONS_PV}.tgz
+				-> ${PN}-lapack_addons-${LAPACK_ADDONS_PV}.tgz
+		)
+	)
+"
 
 LICENSE="MPL-2.0"
 SLOT="3/$(ver_cut 1-2)"
@@ -201,11 +211,12 @@ src_unpack() {
 		git-r3_src_unpack
 	else
 		unpack "${P}.tar.bz2"
+	fi
 
-		if use test && use lapack; then
-			cd "${S}/lapack" || die
-			unpack "${PN}-lapack_addons-3.4.1.tgz"
-		fi
+	if use test && use lapack; then
+		pushd "${S}/lapack" > /dev/null || die
+		unpack "${PN}-lapack_addons-${LAPACK_ADDONS_PV}.tgz"
+		popd > /dev/null || die
 	fi
 }
 
