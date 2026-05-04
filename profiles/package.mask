@@ -36,6 +36,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Paul Zander <negril.nx+gentoo@gmail.com> (2025-10-17)
+# to many breakages
+dev-cpp/eigen:3/5.0
+
 # Matt Turner <mattst88@gentoo.org> (2026-05-22)
 # Deprecated upstream. Relies on removed XA support in Mesa. Use the built-in
 # modesetting driver instead. Bug #957955.
