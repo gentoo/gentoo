@@ -1,6 +1,7 @@
-1. make building tests optional
-2. use system wide GTest
-3. remove -Werror
+remove -Werror and use system wide GTest
+
+Bug: https://bugs.gentoo.org/973597
+Issue: https://github.com/facebook/yoga/issues/1934
 
 diff --git a/cmake/project-defaults.cmake b/cmake/project-defaults.cmake
 index 987529c5..6051621a 100644
@@ -17,22 +18,6 @@ index 987529c5..6051621a 100644
      # Disable RTTI
      $<$<COMPILE_LANGUAGE:CXX>:-fno-rtti>
      # Use -O2 (prioritize speed)
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 55f1a6df..fcfa593a 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -10,7 +10,10 @@ set(CMAKE_VERBOSE_MAKEFILE on)
- include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/project-defaults.cmake)
- 
- add_subdirectory(yoga)
--add_subdirectory(tests)
-+option(BUILD_TESTS "Build tests" ON)
-+if(BUILD_TESTS)
-+    add_subdirectory(tests)
-+endif()
- 
- option(BUILD_FUZZ_TESTS "Build fuzz tests" OFF)
- 
 diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
 index c48bfb9f..fbf837f6 100644
 --- a/tests/CMakeLists.txt

@@ -20,6 +20,7 @@ BDEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}"/"${P}-add-tests-option.patch"
 	"${FILESDIR}"/"${P}-fix-tests.patch"
 )
 
