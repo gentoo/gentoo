@@ -13,8 +13,8 @@ HOMEPAGE="https://eigen.tuxfamily.org/index.php?title=Main_Page"
 if [[ ${PV} = *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/lib${PN}/${PN}.git"
-	if [[ ${PV} = 3.4.9999* ]] ; then
-		EGIT_BRANCH="3.4"
+	if [[ ${PV} = *.9999* ]] ; then
+		EGIT_BRANCH="$(ver_cut 1-2)"
 	fi
 else
 	SRC_URI="
@@ -25,7 +25,7 @@ else
 fi
 
 LICENSE="MPL-2.0"
-SLOT="3"
+SLOT="3/$(ver_cut 1-2)"
 
 # The following lines are shamelessly stolen from ffmpeg-9999.ebuild with modifications
 ARM_CPU_FEATURES=(
