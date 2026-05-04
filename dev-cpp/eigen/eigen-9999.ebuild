@@ -84,7 +84,6 @@ IUSE_TEST_BACKENDS=(
 	"fftw"
 	"klu"
 	"opengl"
-	"openmp"
 	"pastix"
 	"sparsehash"
 	"spqr"
@@ -92,7 +91,7 @@ IUSE_TEST_BACKENDS=(
 	"umfpack"
 )
 
-IUSE="benchmark ${CPU_FEATURES_MAP[*]%:*} cuda cuda-clang hip debug doc lapack mathjax test ${IUSE_TEST_BACKENDS[*]}" #zvector
+IUSE="benchmark ${CPU_FEATURES_MAP[*]%:*} cuda cuda-clang hip debug doc lapack mathjax openmp test ${IUSE_TEST_BACKENDS[*]}" #zvector
 
 REQUIRED_USE="
 	|| ( ${IUSE_TEST_BACKENDS[*]} )
@@ -197,7 +196,17 @@ cuda_set_CUDAHOSTCXX() {
 	export CUDAHOSTCXX
 }
 
+pkg_pretend() {
+	if [[ ${MERGE_TYPE} != binary ]] && use openmp; then
+		tc-check-openmp
+	fi
+}
+
 pkg_setup() {
+	if [[ ${MERGE_TYPE} != binary ]] && use openmp; then
+		tc-check-openmp
+	fi
+
 	if use test && use cuda && use cuda-clang; then
 		llvm-r2_pkg_setup
 	fi
