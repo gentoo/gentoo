@@ -4,6 +4,11 @@
 # New entries go on top.
 # Please use the same syntax as in package.use.mask.
 
+# Paul Zander <negril.nx+gentoo@gmail.com> (2026-05-04)
+# Not intended for general use.
+# The tests are wired up so we can test compilers.
+dev-cpp/eigen test
+
 # Sam James <sam@gentoo.org> (2026-05-03)
 # Needs not-yet-stable GCC 16.
 dev-lang/python tail-call-interp
