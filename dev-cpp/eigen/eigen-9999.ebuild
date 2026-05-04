@@ -91,7 +91,7 @@ IUSE_TEST_BACKENDS=(
 	"umfpack"
 )
 
-IUSE="benchmark ${CPU_FEATURES_MAP[*]%:*} cuda cuda-clang hip debug doc lapack mathjax openmp test ${IUSE_TEST_BACKENDS[*]}" #zvector
+IUSE="${CPU_FEATURES_MAP[*]%:*} cuda cuda-clang hip debug doc lapack mathjax openmp test ${IUSE_TEST_BACKENDS[*]}" #zvector
 
 REQUIRED_USE="
 	|| ( ${IUSE_TEST_BACKENDS[*]} )
@@ -250,7 +250,6 @@ src_configure() {
 		-DBUILD_SHARED_LIBS="yes"
 		-DBUILD_TESTING="$(usex test)"
 
-		-DEIGEN_BUILD_BTL="$(usex benchmark)" # Build benchmark suite
 		-DEIGEN_BUILD_DOC="$(usex doc)" # Enable creation of Eigen documentation
 		-DEIGEN_BUILD_PKGCONFIG="yes" # Build pkg-config .pc file for Eigen
 	)
