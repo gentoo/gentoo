@@ -6,6 +6,10 @@
 
 # New entries go on top.
 
+# Paul Zander <negril.nx+gentoo@gmail.com> (2026-05-04)
+# uses MeDiPack
+~sci-libs/adolc-9999 -mpi
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-05-15)
 # Various integration packages. Preparing Qt5 last-rites.
 # Removal some time after 2026-05-30.
