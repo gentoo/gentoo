@@ -3,7 +3,8 @@
 
 EAPI=8
 
-LLVM_COMPAT=( {19..21} )
+LLVM_COMPAT=( {21..23} )
+LLVM_OPTIONAL="cuda-clang"
 FORTRAN_NEEDED="test"
 inherit cmake cuda fortran-2 llvm-r2 toolchain-funcs
 
@@ -81,7 +82,7 @@ IUSE_TEST_BACKENDS=(
 	"umfpack"
 )
 
-IUSE="${CPU_FEATURES_MAP[*]%:*} clang-cuda cuda hip debug doc lapack mathjax test ${IUSE_TEST_BACKENDS[*]}" #zvector
+IUSE="${CPU_FEATURES_MAP[*]%:*} cuda cuda-clang hip debug doc lapack mathjax test ${IUSE_TEST_BACKENDS[*]}" #zvector
 
 REQUIRED_USE="
 	|| ( ${IUSE_TEST_BACKENDS[*]} )
@@ -133,10 +134,10 @@ TEST_BACKENDS="
 DEPEND="
 	test? (
 		cuda? (
-			!clang-cuda? (
+			!cuda-clang? (
 				dev-util/nvidia-cuda-toolkit
 			)
-			clang-cuda? (
+			cuda-clang? (
 				$(llvm_gen_dep '
 					llvm-core/clang:${LLVM_SLOT}[llvm_targets_NVPTX]
 				')
@@ -190,7 +191,9 @@ cuda_set_CUDAHOSTCXX() {
 }
 
 pkg_setup() {
-	use test && use cuda && use clang-cuda && llvm-r2_pkg_setup
+	if use test && use cuda && use cuda-clang; then
+		llvm-r2_pkg_setup
+	fi
 }
 
 src_unpack() {
@@ -356,7 +359,7 @@ src_configure() {
 
 		mycmakeargs+=(
 			-DEIGEN_TEST_CUDA="$(usex cuda)" # Enable CUDA support in unit tests
-			-DEIGEN_TEST_CUDA_CLANG="$(usex cuda "$(usex clang-cuda)")" # Use clang instead of nvcc to compile the CUDA tests
+			-DEIGEN_TEST_CUDA_CLANG="$(usex cuda "$(usex cuda-clang)")" # Use clang instead of nvcc to compile the CUDA tests
 
 			-DEIGEN_TEST_HIP="$(usex hip)" # Add HIP support.
 
@@ -366,7 +369,7 @@ src_configure() {
 
 		if use cuda; then
 			cuda_add_sandbox -w
-			if use clang-cuda; then
+			if use cuda-clang; then
 				local llvm_prefix
 				llvm_prefix="$(get_llvm_prefix -b)"
 				export CC="${llvm_prefix}/bin/clang"
