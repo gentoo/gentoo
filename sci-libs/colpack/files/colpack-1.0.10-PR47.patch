@@ -1,0 +1,39 @@
+From 8d8a6c1e4c901c9a78126b1f4c231746062f005e Mon Sep 17 00:00:00 2001
+From: alexeyroytman <33158117+alexeyroytman@users.noreply.github.com>
+Date: Sun, 20 Nov 2022 21:48:04 +0200
+Subject: [PATCH] Update Main.cpp
+
+Fixing multiple typos in help message.
+---
+ Examples/ColPackAll/Main.cpp | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/Examples/ColPackAll/Main.cpp b/Examples/ColPackAll/Main.cpp
+index b6e3c49..237e892 100644
+--- a/Examples/ColPackAll/Main.cpp
++++ b/Examples/ColPackAll/Main.cpp
+@@ -240,17 +240,17 @@ void usage(){
+             "       the following options shall be supported:\n"
+             "\n"
+             "       -f files    Indicates the graph file path name.\n"
+-            "       -v          Indicates verbose flag will be truned on and there will display more rich infomration.\n" 
++            "       -v          Indicates verbose flag will be turned on and there will display more rich information.\n" 
+             "       -o orders   Indicates the orderings. Could be 'RANDOM','NATURAL','LARGEST_FIRST','SMALLEST_LAST','DYNAMIC_LARGEST_FIRST','INCIDENCE_DEGREE'... . There could be some specific ordering for specific methods\n"
+-            "       -m methods  Indicates the methods. Could be 'DISTANCE_ONE','ACYCLIC','STAR','DISTNACE_TWO','ROW_PARTIAL_DISTANCE_TWO','D1_OMP_GMMP','PD2_OMP_GMMP',...\n"
++            "       -m methods  Indicates the methods. Could be 'DISTANCE_ONE','ACYCLIC','STAR','DISTANCE_TWO','ROW_PARTIAL_DISTANCE_TWO','D1_OMP_GMMP','PD2_OMP_GMMP',...\n"
+             "       -nT         Indicates number of threads used of parallel graph coloring\n"
+-            "       -side       Indiecate Row (L) or Column (R) side of coloring for parallel partial colroing.\n"
++            "       -side       Indicate Row (L) or Column (R) side of coloring for parallel partial coloring.\n"
+             "\n"
+             "DESCRIPTION\n"
+-            "       if the method is one of 'DISTANCE_ONE','ACYCLIC','STAR','DISTANCE_TWO','ROW_PARTIAL_DISTANCE_TWO' The method belongs to gereral coloring on general graphs.\n" 
+-            "       if the method is one of 'ROW_PARTIAL_DISTANCE_TWO','COLUMN_PARTIAL_DISTANCE_TWO' The method belongs to partial coloring on bipartite graphs.\n" 
+-            "       if the method is one of 'IMPLICIT_COVERING__STAR_BICOLORING','EXPLICIT_COVERING__STAR_BICOLORING',EXPLICIT_COVERING__MODIFIED_STAR_BICOLORING','IMPLICIT_COVERING__GREEDY_STAR_BICOLORING'. The method belongs to bicoloring on bipartite graphs.\n" 
+-            "       if the method is one of 'D1_OMP_GM3P, D1_OMP_GM3P_LF, D1_OMP_GMMP, D1_OMP_GMMP_LF,D1_OMP_SERIAL, D1_OMP_SERIAL_LF, D1_OMP_JP, D1_OMP_JP_LF ,D1_OMP_MTJP, D1_OMP_MTJP_LF, D1_OMP_HBJP_GM3P, D1_OMP_HBJP_GM3P_.., D1_OMP_HBJP_GMMP.., D1_OMP_HBJP_.... ,D1_OMP_HBMTP_GM3P, D1_OMP_HBMTJP_GM3P_.., D1_OMP_HBMTJP_GMMP.., D1_OMP_HBMTJP_.... ,D2_OMP_GM3P, D2_OMP_GM3P_LF ,D2_OMP_GMMP, D2_OMP_GMMP_LF ,D2_OMP_SERIAL, D2_OMP_SERIAL_LF' the method belongs to parallel general graph coloring\n"
++            "       If the method is one of 'DISTANCE_ONE','ACYCLIC','STAR','DISTANCE_TWO','ROW_PARTIAL_DISTANCE_TWO' the method belongs to general coloring on general graphs.\n" 
++            "       If the method is one of 'ROW_PARTIAL_DISTANCE_TWO','COLUMN_PARTIAL_DISTANCE_TWO' the method belongs to partial coloring on bipartite graphs.\n" 
++            "       If the method is one of 'IMPLICIT_COVERING__STAR_BICOLORING','EXPLICIT_COVERING__STAR_BICOLORING',EXPLICIT_COVERING__MODIFIED_STAR_BICOLORING','IMPLICIT_COVERING__GREEDY_STAR_BICOLORING' the method belongs to bicoloring on bipartite graphs.\n" 
++            "       If the method is one of 'D1_OMP_GM3P, D1_OMP_GM3P_LF, D1_OMP_GMMP, D1_OMP_GMMP_LF,D1_OMP_SERIAL, D1_OMP_SERIAL_LF, D1_OMP_JP, D1_OMP_JP_LF ,D1_OMP_MTJP, D1_OMP_MTJP_LF, D1_OMP_HBJP_GM3P, D1_OMP_HBJP_GM3P_.., D1_OMP_HBJP_GMMP.., D1_OMP_HBJP_.... ,D1_OMP_HBMTP_GM3P, D1_OMP_HBMTJP_GM3P_.., D1_OMP_HBMTJP_GMMP.., D1_OMP_HBMTJP_.... ,D2_OMP_GM3P, D2_OMP_GM3P_LF ,D2_OMP_GMMP, D2_OMP_GMMP_LF ,D2_OMP_SERIAL, D2_OMP_SERIAL_LF' the method belongs to parallel general graph coloring\n"
+             "\n"
+             "EXAMPLE\n"
+             "./ColPack -f ../Graphs/bcsstk01.mtx -o LARGEST_FIRST RANDOM -m DISTANCE_ONE -v\n"

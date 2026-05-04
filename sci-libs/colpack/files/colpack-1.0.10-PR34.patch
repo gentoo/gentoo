@@ -1,0 +1,22 @@
+From 4eca44e762cc32b8079575ab5e70572fa4b5d953 Mon Sep 17 00:00:00 2001
+From: Christopher Dembia <cld72@cornell.edu>
+Date: Mon, 28 Oct 2019 08:46:31 -0700
+Subject: [PATCH] [cmake] Recovery .h -> .cpp
+
+---
+ build/cmake/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/build/cmake/CMakeLists.txt b/build/cmake/CMakeLists.txt
+index 6c171c9..f50ee51 100644
+--- a/build/cmake/CMakeLists.txt
++++ b/build/cmake/CMakeLists.txt
+@@ -98,7 +98,7 @@ file(GLOB SOURCES
+     ${COLPACK_ROOT_DIR}/src/BipartiteGraphBicoloring/*.cpp
+     ${COLPACK_ROOT_DIR}/src/BipartiteGraphPartialColoring/*.cpp
+     ${COLPACK_ROOT_DIR}/src/GeneralGraphColoring/*.cpp
+-    ${COLPACK_ROOT_DIR}/src/Recovery/*.h
++    ${COLPACK_ROOT_DIR}/src/Recovery/*.cpp
+     ${COLPACK_ROOT_DIR}/src/SMPGC/*.cpp)
+     #${COLPACK_ROOT_DIR}/src/PartialD2SMPGC/*.cpp)
+ 
