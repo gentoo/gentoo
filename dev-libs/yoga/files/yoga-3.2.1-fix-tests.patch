@@ -1,9 +1,22 @@
-fixes:
-
 1. make building tests optional
 2. use system wide GTest
-3. fix -Werror=array-bounds= compile error
+3. remove -Werror
 
+diff --git a/cmake/project-defaults.cmake b/cmake/project-defaults.cmake
+index 987529c5..6051621a 100644
+--- a/cmake/project-defaults.cmake
++++ b/cmake/project-defaults.cmake
+@@ -31,9 +31,8 @@ add_compile_options(
+     -fno-omit-frame-pointer
+     # Enable exception handling
+     -fexceptions
+-    # Enable warnings and warnings as errors
++    # Enable warnings
+     -Wall
+-    -Werror
+     # Disable RTTI
+     $<$<COMPILE_LANGUAGE:CXX>:-fno-rtti>
+     # Use -O2 (prioritize speed)
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 index 55f1a6df..fcfa593a 100644
 --- a/CMakeLists.txt
@@ -44,16 +57,3 @@ index c48bfb9f..fbf837f6 100644
  
  add_subdirectory(${YOGA_ROOT}/yoga ${CMAKE_CURRENT_BINARY_DIR}/yoga)
  
-diff --git a/tests/YGPersistenceTest.cpp b/tests/YGPersistenceTest.cpp
-index 929aee07..f171e5f7 100644
---- a/tests/YGPersistenceTest.cpp
-+++ b/tests/YGPersistenceTest.cpp
-@@ -275,7 +275,7 @@ TEST(YogaTest, mixed_shared_and_owned_children) {
-   YGNodeInsertChild(root1, root1_child2, 1);
- 
-   auto children = static_cast<yoga::Node*>(root1)->getChildren();
--  children.insert(children.begin() + 1, static_cast<yoga::Node*>(root0_child0));
-+  children.emplace(children.begin() + 1, static_cast<yoga::Node*>(root0_child0));
-   static_cast<yoga::Node*>(root1)->setChildren(children);
- 
-   auto secondChild = YGNodeGetChild(root1, 1);
