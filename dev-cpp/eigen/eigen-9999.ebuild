@@ -218,6 +218,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.4.0-buildstring.patch"
 	"${FILESDIR}/${PN}-5.0.0-please_protect_your_min_with_parentheses.patch"
 
+	"${FILESDIR}/${PN}-5.0.1-cmake-GNUInstallDirs.patch"
 	"${FILESDIR}/${PN}-9999-Do-not-show-deprecated-CUDA-device-properties-for-CU.patch"
 )
 

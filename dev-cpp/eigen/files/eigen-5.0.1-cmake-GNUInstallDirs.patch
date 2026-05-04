@@ -1,0 +1,57 @@
+From efcf4891a83e2757aa70de61eb17d81963085c20 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Sat, 27 Dec 2025 15:39:40 +0100
+Subject: cmake GNUInstallDirs
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/blas/CMakeLists.txt b/blas/CMakeLists.txt
+index 45488d7..f0f88c0 100644
+--- a/blas/CMakeLists.txt
++++ b/blas/CMakeLists.txt
+@@ -31,10 +31,8 @@ foreach(target IN LISTS EIGEN_BLAS_TARGETS)
+   endif()
+ 
+   add_dependencies(blas ${target})
+-  install(TARGETS ${target}
+-          RUNTIME DESTINATION bin
+-          LIBRARY DESTINATION lib
+-          ARCHIVE DESTINATION lib)
++  include(GNUInstallDirs)
++  install(TARGETS ${target})
+ endforeach()
+ 
+ if(EIGEN_BUILD_TESTING)
+diff --git a/doc/CMakeLists.txt b/doc/CMakeLists.txt
+index da07b19d6..dec130bd5 100644
+--- a/doc/CMakeLists.txt
++++ b/doc/CMakeLists.txt
+@@ -4,6 +4,8 @@ set_directory_properties(PROPERTIES EXCLUDE_FROM_ALL TRUE)
+ 
+ project(EigenDoc)
+ 
++include(GNUInstallDirs)
++
+ if(CMAKE_COMPILER_IS_GNUCXX)
+   if(CMAKE_SYSTEM_NAME MATCHES Linux)
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O1 -g1")
+diff --git a/lapack/CMakeLists.txt b/lapack/CMakeLists.txt
+index d837fff..9e127a6 100644
+--- a/lapack/CMakeLists.txt
++++ b/lapack/CMakeLists.txt
+@@ -120,10 +120,8 @@ foreach(target IN LISTS EIGEN_LAPACK_TARGETS)
+   endif()
+   target_link_libraries(${target} Eigen3::Eigen)
+   add_dependencies(lapack ${target})
+-  install(TARGETS ${target}
+-          RUNTIME DESTINATION bin
+-          LIBRARY DESTINATION lib
+-          ARCHIVE DESTINATION lib)
++  include(GNUInstallDirs)
++  install(TARGETS ${target})
+ endforeach()
+ 
+ 
+-- 
+2.52.0
+
