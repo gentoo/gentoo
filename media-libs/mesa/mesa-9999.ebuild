@@ -76,7 +76,7 @@ REQUIRED_USE="
 	video_cards_nvk? ( vulkan video_cards_nouveau )
 "
 
-LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.121"
+LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.133"
 RDEPEND="
 	${LIBDRM_DEPSTRING}[${MULTILIB_USEDEP}]
 	>=dev-libs/expat-2.1.0-r3[${MULTILIB_USEDEP}]
