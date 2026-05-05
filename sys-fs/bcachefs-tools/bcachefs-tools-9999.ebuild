@@ -184,6 +184,7 @@ DEPEND="
 	dev-libs/userspace-rcu:=
 	sys-apps/keyutils:=
 	sys-apps/util-linux
+	sys-libs/libunwind
 	virtual/zlib:=
 	virtual/udev
 "
