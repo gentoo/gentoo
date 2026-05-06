@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit mate python-r1
@@ -21,6 +21,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-python/pygobject-3:3[${PYTHON_USEDEP}]
+	>=mate-base/mate-panel-1.28.0
 	>=mate-base/mate-menus-1.28.0[introspection]
 	x11-libs/gdk-pixbuf:2[introspection]
 	>=x11-libs/gtk+-3.12:3[introspection]
