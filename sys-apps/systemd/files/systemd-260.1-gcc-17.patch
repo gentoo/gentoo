@@ -1,0 +1,45 @@
+From 64b1e6be83f49b9fdebc9e07cc3b7485169970c2 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyich@gmail.com>
+Date: Tue, 5 May 2026 21:55:30 +0100
+Subject: [PATCH] sd-boot: efi-log: fix `__stack_chk_guard` type
+
+In https://gcc.gnu.org/PR121911 `gcc` started enforcing the type of
+`__stack_chk_guard` to `uintptr_t` and broke `systemd` build as:
+
+```
+../src/boot/efi-log.c:136:17: error: conflicting types for '__stack_chk_guard'; have 'intptr_t' {aka 'long int'}
+  136 | _used_ intptr_t __stack_chk_guard = (intptr_t) 0x70f6967de78acae3;
+      |                 ^~~~~~~~~~~~~~~~~
+cc1: note: previous declaration of '__stack_chk_guard' with type 'long unsigned int'
+../src/boot/efi-log.c:136:17: error: declaration of '__stack_chk_guard' shadows a global declaration [-Werror=shadow]
+  136 | _used_ intptr_t __stack_chk_guard = (intptr_t) 0x70f6967de78acae3;
+      |                 ^~~~~~~~~~~~~~~~~
+```
+
+Let's match the declaration to unsigned type as suggested by upstream in
+https://gcc.gnu.org/PR121911#c6.
+---
+ src/boot/efi-log.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/boot/efi-log.c b/src/boot/efi-log.c
+index ed0a2746933e0..520f985389c55 100644
+--- a/src/boot/efi-log.c
++++ b/src/boot/efi-log.c
+@@ -133,7 +133,7 @@ void log_wait(void) {
+ }
+ 
+ // NOLINTNEXTLINE(misc-use-internal-linkage)
+-_used_ intptr_t __stack_chk_guard = (intptr_t) 0x70f6967de78acae3;
++_used_ uintptr_t __stack_chk_guard = (uintptr_t) 0x70f6967de78acae3;
+ 
+ /* We can only set a random stack canary if this function attribute is available,
+  * otherwise this may create a stack check fail. */
+@@ -144,7 +144,7 @@ void __stack_chk_guard_init(void) {
+                 (void) rng->GetRNG(rng, NULL, sizeof(__stack_chk_guard), (void *) &__stack_chk_guard);
+         else
+                 /* Better than no extra entropy. */
+-                __stack_chk_guard ^= (intptr_t) __executable_start;
++                __stack_chk_guard ^= (uintptr_t) __executable_start;
+ }
+ #endif

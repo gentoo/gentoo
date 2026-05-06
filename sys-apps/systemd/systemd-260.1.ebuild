@@ -258,6 +258,7 @@ src_prepare() {
 	local PATCHES=(
 		"${FILESDIR}/systemd-260.1-fuzz-journald.patch"
 		"${FILESDIR}/systemd-260.1-openssl-4.patch"
+		"${FILESDIR}/systemd-260.1-gcc-17.patch"
 	)
 
 	if ! use vanilla; then
