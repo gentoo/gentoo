@@ -49,6 +49,7 @@ python_prepare_all() {
 	rm "${S}"/hgext3rd/__init__.py || die "can't remove /hgext3rd/__init__.py"
 
 	sed -i -e 's:share/doc/tortoisehg:share/doc/'"${PF}"':' setup.py || die
+	sed -i -e '/^testedwith/s/6.9/6.9 7.0 7.1/' tortoisehg/util/hgversion.py || die
 	export THG_QT_API=PyQt6
 	distutils-r1_python_prepare_all
 }
