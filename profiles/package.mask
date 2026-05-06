@@ -113,7 +113,6 @@ dev-python/pytest-markdown
 dev-python/stomp-py
 dev-util/repolite
 dev-util/rpmdevtools
-net-misc/chrome-remote-desktop
 net-misc/you-get
 sys-apps/kcheck
 sys-auth/solo1
