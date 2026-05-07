@@ -85,7 +85,8 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.54.0-guestfs-bash-completion.m4-more-control.patch"
-	"${FILESDIR}/${PN}-1.54.0-guestfs-bash-completion.m4-more-control.patch"
+	"${FILESDIR}/${PN}-1.54.0-bash-Remove-vestigial-bash-completions.patch"
+	"${FILESDIR}/${PN}-1.52.3-common-libguestfs-1.58-compat.patch"
 )
 
 src_prepare() {
