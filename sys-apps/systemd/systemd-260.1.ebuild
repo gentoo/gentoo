@@ -20,11 +20,11 @@ else
 	SRC_URI="https://github.com/systemd/${PN}/archive/refs/tags/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
 
 	if [[ ${PV} != *rc* ]] ; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+		KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 	fi
 fi
 
-inherit branding linux-info meson-multilib optfeature pam python-single-r1
+inherit branding flag-o-matic linux-info meson-multilib optfeature pam python-single-r1
 inherit secureboot shell-completion systemd toolchain-funcs udev
 
 DESCRIPTION="System and service manager for Linux"
@@ -256,6 +256,9 @@ src_unpack() {
 
 src_prepare() {
 	local PATCHES=(
+		"${FILESDIR}/systemd-260.1-fuzz-journald.patch"
+		"${FILESDIR}/systemd-260.1-openssl-4.patch"
+		"${FILESDIR}/systemd-260.1-gcc-17.patch"
 	)
 
 	if ! use vanilla; then
@@ -270,6 +273,20 @@ src_prepare() {
 src_configure() {
 	# Prevent conflicts with i686 cross toolchain, bug 559726
 	tc-export AR CC NM OBJCOPY RANLIB
+
+	# Our toolchain sets F_S=2 by default w/ >= -O2, so we need
+	# to unset F_S first, then explicitly set 2, to negate any default
+	# and anything set by the user if they're choosing 3 (or if they've
+	# modified GCC to set 3).
+	#
+	# malloc_usable_size doesn't play well with _F_S=3:
+	#  https://github.com/systemd/systemd/issues/41459 (bug #971773)
+	if tc-is-clang && tc-enables-fortify-source ; then
+		# We can't unconditionally do this b/c we fortify needs
+		# some level of optimisation.
+		filter-flags -D_FORTIFY_SOURCE=3
+		append-cppflags -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2
+	fi
 
 	python_setup
 
@@ -533,8 +550,7 @@ pkg_postinst() {
 
 	# Keep this here in case the database format changes so it gets updated
 	# when required.
-	systemd-hwdb --root="${ROOT}" update
-
+	udev_hwdb_update || FAIL=1
 	udev_reload || FAIL=1
 
 	# Bug 465468, make sure locales are respected, and ensure consistency

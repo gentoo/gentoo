@@ -47,13 +47,13 @@ def main():
     # Configure contexts strictly for file generation
     # Common variables used across templates
     context = {
-        "BUGTRACKERURL": "https://bugs.gentoo.org/enter_bug.cgi?product=Gentoo Linux&component=Current packages",
+        "BUGTRACKERURL": "https://bugs.gentoo.org/enter_bug.cgi?product=Gentoo Linux&amp;component=Current packages",
         "DEVELOPER_NAME": "The Chromium Authors",
         "EXTRA_DESKTOP_ENTRIES": "",
         "FULLDESC": "An open-source browser project that aims to build a safer, faster, and more stable way to experience the web.",
         "HELPURL": "https://wiki.gentoo.org/wiki/Chromium",
         "INSTALLDIR": args.installdir,  # Note: We've patched the installer scripts to automatically append the channel suffix, but we'll use the arg since we bypass all that.
-        "MAINTMAIL": "Gentoo Chromium Project <chromium@gentoo.org>",
+        "MAINTMAIL": "chromium@gentoo.org", # Must be a bare email address for appstream metadata
         "MENUNAME": f"Chromium{menu_suffix}",
         "PACKAGE": f"chromium-browser{channel_suffix}",
         "PRODUCTURL": "https://www.chromium.org/",

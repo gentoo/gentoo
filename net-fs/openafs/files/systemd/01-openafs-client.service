@@ -1,0 +1,19 @@
+[Unit]
+Description=OpenAFS Client Service
+Wants=network-online.target
+After=syslog.target network-online.target
+Before=remote-fs.target
+
+[Service]
+Type=forking
+RemainAfterExit=true
+ExecStart=   /usr/libexec/openafs/openafs-client-systemd-helper.sh ExecStart
+ExecStop=    /usr/libexec/openafs/openafs-client-systemd-helper.sh ExecStop
+ExecStopPost=/usr/libexec/openafs/openafs-client-systemd-helper.sh ExecStopPost
+KillMode=process
+GuessMainPID=no
+SendSIGKILL=no
+KillSignal=SIGCONT
+
+[Install]
+WantedBy=multi-user.target remote-fs.target

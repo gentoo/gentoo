@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
-		<email>gentoo@k8n.de</email>
+		<email>gentoo.org@k8n.de</email>
 		<name>Daniel Kenzelmann</name>
 	</maintainer>
 	<maintainer type="project" proxied="proxy">

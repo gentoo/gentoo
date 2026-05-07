@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit meson pam pax-utils python-any-r1 systemd tmpfiles xdg-utils
 
 DESCRIPTION="Policy framework for controlling privileges for system-wide services"
@@ -28,8 +28,9 @@ SLOT="0"
 if [[ ${PV} != 9999 ]] ; then
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
-IUSE="examples gtk +introspection kde pam nls selinux systemd test"
+IUSE="elogind examples gtk +introspection kde pam nls selinux systemd test"
 RESTRICT="!test? ( test )"
+REQUIRED_USE="?? ( elogind systemd )"
 
 BDEPEND="
 	acct-user/polkitd
@@ -52,13 +53,13 @@ DEPEND="
 	>=dev-libs/glib-2.32:2
 	dev-libs/expat
 	dev-lang/duktape:=
+	elogind? ( sys-auth/elogind )
 	pam? (
 		sys-auth/pambase
 		sys-libs/pam
 	)
 	!pam? ( virtual/libcrypt:= )
 	systemd? ( sys-apps/systemd:0=[policykit] )
-	!systemd? ( sys-auth/elogind )
 "
 RDEPEND="
 	${DEPEND}
@@ -99,6 +100,11 @@ src_prepare() {
 src_configure() {
 	xdg_environment_reset
 
+	# Use ConsoleKit as a fallback with no build-time dependencies, bug 973339
+	local session_tracking=ConsoleKit
+	use elogind && session_tracking=elogind
+	use systemd && session_tracking=logind
+
 	local emesonargs=(
 		--localstatedir="${EPREFIX}"/var
 		-Dauthfw="$(usex pam pam shadow)"
@@ -108,7 +114,7 @@ src_configure() {
 		-Dos_type=gentoo
 		-Dpam_module_dir=$(getpam_mod_dir)
 		-Dprivileged_group=0
-		-Dsession_tracking="$(usex systemd logind elogind)"
+		-Dsession_tracking="${session_tracking}"
 		-Dsystemdsystemunitdir="$(systemd_get_systemunitdir)"
 		-Dlibs-only=false
 		$(meson_use introspection)

@@ -10,8 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
-		Geolith is a highly accurate emulator for the Neo Geo AES and MVS.
-		This project began life as a fork of GnGEO 0.8.1. All original
+		Geolith is a highly accurate emulator for the Neo Geo AES, MVS, CD and
+		CDZ. This project began life as a fork of GnGEO 0.8.1. All original
 		components were removed or replaced as the project progressed, with
 		the resulting codebase being entirely new, with all new code written
 		under the BSD 3-Clause license.

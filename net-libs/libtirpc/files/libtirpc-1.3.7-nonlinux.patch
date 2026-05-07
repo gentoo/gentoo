@@ -1,0 +1,107 @@
+Description: Fix build on non Linux architectures
+Author: Andreas Beckmann <anbe@debian.org>
+Last-Update: 2025-03-17
+Forwarded: not-needed
+
+--- a/src/svc_dg.c
++++ b/src/svc_dg.c
+@@ -650,6 +650,7 @@
+ void
+ svc_dg_enable_pktinfo(int fd, const struct __rpc_sockinfo *si)
+ {
++#ifdef __linux__
+ 	int val = 1;
+ 
+ 	switch (si->si_af) {
+@@ -662,6 +663,7 @@
+ 		break;
+ #endif
+ 	}
++#endif
+ }
+ 
+ /*
+@@ -672,6 +674,7 @@
+ int
+ svc_dg_valid_pktinfo(struct msghdr *msg)
+ {
++#ifdef __linux__
+ 	struct cmsghdr *cmsg;
+ 
+ 	if (!msg->msg_name)
+@@ -718,4 +721,7 @@
+ 	}
+ 
+ 	return 1;
++#else
++        return 0;
++#endif
+ }
+--- a/src/clnt_vc.c
++++ b/src/clnt_vc.c
+@@ -76,10 +76,12 @@
+ #define MCALL_MSG_SIZE 24
+ 
+ #define CMGROUP_MAX    16
+-#define SCM_CREDS      0x03            /* process creds (struct cmsgcred) */
+ 
+ #undef rpc_createerr                   /* make it clear it is a thread safe variable */
+ 
++#ifndef SCM_CREDS
++#define SCM_CREDS      0x03            /* process creds (struct cmsgcred) */
++
+ /*
+  * Credentials structure, used to verify the identity of a peer
+  * process that has sent us a message. This is allocated by the
+@@ -95,6 +97,7 @@
+         short   cmcred_ngroups;         /* number or groups */
+         gid_t   cmcred_groups[CMGROUP_MAX];     /* groups */
+ };
++#endif
+ 
+ struct cmessage {
+         struct cmsghdr cmsg;
+--- a/src/getpeereid.c
++++ b/src/getpeereid.c
+@@ -31,6 +31,7 @@
+ #include <sys/param.h>
+ #include <sys/socket.h>
+ #include <sys/un.h>
++#include <sys/user.h>
+ 
+ #include <errno.h>
+ #include <unistd.h>
+@@ -40,12 +41,22 @@
+ int
+ getpeereid(int s, uid_t *euid, gid_t *egid)
+ {
++#ifdef XUCRED_VERSION
++	struct xucred uc;
++#define uid  cr_uid
++#define gid  cr_gid
++#else
+ 	struct ucred uc;
++#endif
+ 	socklen_t uclen;
+ 	int error;
+ 
+ 	uclen = sizeof(uc); 
++#ifdef XUCRED_VERSION
++	error = getsockopt(s, 0, LOCAL_PEERCRED, &uc, &uclen);
++#else
+ 	error = getsockopt(s, SOL_SOCKET, SO_PEERCRED, &uc, &uclen); /*  SCM_CREDENTIALS */
++#endif
+ 	if (error != 0)
+ 		return (error);
+ 	//	if (uc.cr_version != XUCRED_VERSION)
+--- a/tirpc/reentrant.h
++++ b/tirpc/reentrant.h
+@@ -36,7 +36,7 @@
+  * These definitions are only guaranteed to be valid on Linux. 
+  */
+ 
+-#if defined(__linux__) || defined(__APPLE__)
++#if defined(__linux__) || defined(__GLIBC__)
+ 
+ #include <pthread.h>
+ 

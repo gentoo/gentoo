@@ -12,14 +12,14 @@ CODENAME="Piers"
 LIBDVDCSS_VERSION="1.4.3-Next-Nexus-Alpha2-2"
 LIBDVDREAD_VERSION="6.1.3-Next-Nexus-Alpha2-2"
 LIBDVDNAV_VERSION="6.1.1-Next-Nexus-Alpha2-2"
-FFMPEG_VERSION="8.0.1"
+FFMPEG_VERSION="8.1"
 
 # Java bundles from xbmc/interfaces/swig/CMakeLists.txt
-GROOVY_VERSION="4.0.26"
-APACHE_COMMON_LANG_VERSION="3.17.0"
-APACHE_COMMON_TEXT_VERSION="1.13.0"
+GROOVY_VERSION="4.0.30"
+APACHE_COMMON_LANG_VERSION="3.20.0"
+APACHE_COMMON_TEXT_VERSION="1.15.0"
 
-_JAVA_PKG_WANT_BUILD_VM=( {openjdk{,-jre},icedtea}{,-bin}-{8,11,17,21} )
+_JAVA_PKG_WANT_BUILD_VM=( {openjdk{,-jre},icedtea}{,-bin}-{8,11,17,21,25} )
 JAVA_PKG_WANT_BUILD_VM=${_JAVA_PKG_WANT_BUILD_VM[@]}
 # Required to be set, but not used.
 JAVA_PKG_WANT_SOURCE="21"
@@ -45,11 +45,16 @@ SRC_URI="
 	https://mirrors.kodi.tv/build-deps/sources/apache-groovy-binary-${GROOVY_VERSION}.zip
 	https://mirrors.kodi.tv/build-deps/sources/commons-lang3-${APACHE_COMMON_LANG_VERSION}-bin.tar.gz
 	https://mirrors.kodi.tv/build-deps/sources/commons-text-${APACHE_COMMON_TEXT_VERSION}-bin.tar.gz
-	https://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.xz
 	css? (
 		https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_VERSION}.tar.gz
 			-> libdvdcss-${LIBDVDCSS_VERSION}.tar.gz
 	)
+	!system-ffmpeg? (
+		https://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.xz
+	)
+	system-ffmpeg? ( postproc? (
+		https://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.xz
+	) )
 "
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/xbmc/xbmc.git"
@@ -79,19 +84,20 @@ LICENSE+=" Apache-2.0"
 # libdvdnav, libdvdread and libdvdcss.
 LICENSE+=" GPL-2+"
 # ffmpeg built as USE="gpl"
-LICENSE+=" GPL-2"
+LICENSE+=" !system-ffmpeg? ( GPL-2 )"
 
 SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="airplay alsa bluetooth bluray caps cec +css dbus doc eventclients gbm gles lcms libusb lirc mariadb mysql nfs +optical pipewire pulseaudio samba +system-ffmpeg test udf udev upnp vaapi vdpau wayland webserver X +xslt zeroconf ${CPU_FLAGS}"
+IUSE="airplay alsa bluetooth bluray caps cec +css dbus doc eventclients gbm gles lcms libusb lirc mariadb mysql nfs +optical pipewire postproc pulseaudio samba soc +system-ffmpeg test udf udev upnp vaapi vdpau wayland webserver X +xslt zeroconf ${CPU_FLAGS}"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	|| ( gbm wayland X )
 	?? ( mariadb mysql )
 	bluray? ( udf )
 	gbm? ( udev )
+	soc? ( system-ffmpeg )
 	udev? ( !libusb )
 	vdpau? ( X !gles !gbm )
 	zeroconf? ( dbus )
@@ -110,8 +116,6 @@ COMMON_DEPEND="
 	)
 "
 COMMON_TARGET_DEPEND="${PYTHON_DEPS}
-	app-arch/bzip2
-	app-arch/xz-utils
 	>=net-misc/curl-7.68.0[http2]
 	>=virtual/zlib-1.2.11:=
 	dev-db/sqlite:3
@@ -126,14 +130,12 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	dev-libs/tinyxml2:=
 	media-fonts/roboto
 	media-gfx/exiv2:=
-	media-libs/dav1d:=
 	media-libs/libglvnd[X?]
 	>=media-libs/freetype-2.10.1
 	media-libs/harfbuzz:=
 	>=media-libs/libass-0.15.0:=
 	media-libs/mesa[opengl,wayland?,X?]
 	media-libs/taglib:=
-	net-libs/gnutls:=
 	virtual/libiconv
 	virtual/ttf-fonts
 	x11-libs/libdrm
@@ -201,8 +203,18 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	samba? (
 		>=net-fs/samba-3.4.6[smbclient(+)]
 	)
+	system-ffmpeg? (
+		postproc? ( =media-video/ffmpeg-$(ver_cut 1-2 ${FFMPEG_VERSION})*:=[encode(+),soc(-)?,vaapi?,vdpau?,X?] )
+		!postproc? ( >=media-video/ffmpeg-7:=[encode(+),soc(-)?,vaapi?,vdpau?,X?] )
+	)
+	!system-ffmpeg? (
+		app-arch/bzip2
+		app-arch/xz-utils
+		media-libs/dav1d:=
+		net-libs/gnutls:=
+	)
 	udf? (
-		>=dev-libs/libudfread-1.0.0
+		>=dev-libs/libudfread-1.0.0:=
 	)
 	udev? (
 		virtual/libudev:=
@@ -260,7 +272,7 @@ BDEPEND="
 	dev-build/cmake
 	dev-lang/swig
 	virtual/pkgconfig
-	<=virtual/jre-21-r9999:*
+	<=virtual/jre-25-r9999:*
 	doc? (
 		app-text/doxygen
 	)
@@ -294,6 +306,10 @@ src_unpack() {
 	unpack apache-groovy-binary-${GROOVY_VERSION}.zip
 	unpack commons-lang3-${APACHE_COMMON_LANG_VERSION}-bin.tar.gz
 	unpack commons-text-${APACHE_COMMON_TEXT_VERSION}-bin.tar.gz
+
+	if use system-ffmpeg && use postproc; then
+		unpack ffmpeg-${FFMPEG_VERSION}.tar.xz
+	fi
 }
 
 src_prepare() {
@@ -319,6 +335,13 @@ src_prepare() {
 			popd >/dev/null || die
 		done
 		elibtoolize
+	fi
+
+	if use system-ffmpeg && use postproc; then
+		pushd "${WORKDIR}/ffmpeg-${FFMPEG_VERSION}" >/dev/null || die
+		eapply "${S}"/tools/depends/target/ffmpeg/001-ffmpeg-all-libpostproc-plugin.patch
+		eapply "${FILESDIR}"/ffmpeg-no-static-rpath.patch
+		popd >/dev/null || die
 	fi
 }
 
@@ -394,22 +417,22 @@ src_configure() {
 		-DENABLE_VDPAU=$(usex vdpau)
 		-DENABLE_XSLT=$(usex xslt)
 
-		# ffmpeg hasn't decided on if postproc is removed or not and kodi has chosen to patch it back
 		-DWITH_FFMPEG=OFF
+		-DDISABLE_FFMPEG_SOURCE_PLUGINS=$(usex !postproc)
 
 		#To bundle or not
 		-DENABLE_INTERNAL_ASS=OFF
-		-DENABLE_INTERNAL_CURL=OFF
 		-DENABLE_INTERNAL_CROSSGUID=OFF
-		-DENABLE_INTERNAL_DAV1D=OFF
+		-DENABLE_INTERNAL_CURL=OFF
 		-DENABLE_INTERNAL_EXIV2=OFF
-		-DENABLE_INTERNAL_FFMPEG=ON
+		-DENABLE_INTERNAL_FFMPEG="$(usex !system-ffmpeg)"
 		-DENABLE_INTERNAL_FLATBUFFERS=OFF
 		-DENABLE_INTERNAL_FMT=OFF
 		-DENABLE_INTERNAL_FSTRCMP=OFF
 		-DENABLE_INTERNAL_GTEST=OFF
-		-DENABLE_INTERNAL_PCRE2=OFF
+		-DENABLE_INTERNAL_LZO2=OFF
 		-DENABLE_INTERNAL_NLOHMANNJSON=OFF
+		-DENABLE_INTERNAL_PCRE2=OFF
 		-DENABLE_INTERNAL_SPDLOG=OFF
 		-DENABLE_INTERNAL_TAGLIB=OFF
 
@@ -419,15 +442,26 @@ src_configure() {
 		-Dgroovy_SOURCE_DIR="${WORKDIR}/groovy-${GROOVY_VERSION}"
 		-Dapache-commons-lang_SOURCE_DIR="${WORKDIR}/commons-lang3-${APACHE_COMMON_LANG_VERSION}"
 		-Dapache-commons-text_SOURCE_DIR="${WORKDIR}/commons-text-${APACHE_COMMON_TEXT_VERSION}"
-		-DFFMPEG_URL="${DISTDIR}/ffmpeg-${FFMPEG_VERSION}.tar.xz"
 	)
 
 	# Separated to avoid "Manually-specified variables were not used by the project:"
+	use bluray && mycmakeargs+=( -DENABLE_INTERNAL_BLURAY=OFF )
 	use cec && mycmakeargs+=( -DENABLE_INTERNAL_CEC=OFF )
 	use css && mycmakeargs+=( -Dlibdvdcss_URL="${DISTDIR}/libdvdcss-${LIBDVDCSS_VERSION}.tar.gz" )
+	use mariadb && mycmakeargs+=( -DENABLE_INTERNAL_MARIADBCLIENT=OFF )
+	use !system-ffmpeg && mycmakeargs+=(
+		# Additional find_package on top of core_optional_deps for whatever reason
+		$(cmake_use_find_package vaapi VAAPI)
+		$(cmake_use_find_package vdpau VDPAU)
+		-DENABLE_INTERNAL_DAV1D=OFF
+		-DFFMPEG_URL="${DISTDIR}/ffmpeg-${FFMPEG_VERSION}.tar.xz"
+	)
 	use nfs && mycmakeargs+=( -DENABLE_INTERNAL_NFS=OFF )
 	use !udev && mycmakeargs+=( -DENABLE_LIBUSB=$(usex libusb) )
+	use udf && mycmakeargs+=( -DENABLE_INTERNAL_UDFREAD=OFF )
+	use webserver && mycmakeargs+=( -DENABLE_INTERNAL_LIBMICROHTTPD=OFF )
 	use X && use !gles && mycmakeargs+=( -DENABLE_GLX=ON )
+	use xslt && mycmakeargs+=( -DENABLE_INTERNAL_XSLT=OFF )
 
 	for flag in ${CPU_FLAGS[@]} ; do
 		local name=${flag#cpu_flags_*_}
@@ -449,6 +483,34 @@ src_configure() {
 	# bug #926076
 	append-flags -fPIC
 
+	if use system-ffmpeg && use postproc; then
+		pushd "${WORKDIR}/ffmpeg-${FFMPEG_VERSION}" >/dev/null || die
+		local ffconf=(
+			--disable-all
+			--enable-postproc
+			--enable-gpl
+		)
+		if tc-is-cross-compiler; then
+			ffconf+=(
+				--enable-cross-compile
+				--arch="$(tc-arch-kernel)"
+				--cross-prefix="${CHOST}-"
+				--host-cc="$(tc-getBUILD_CC)"
+				--target-os=linux
+			)
+		elif use arm; then
+			ffconf+=( --arch=arm )
+		fi
+		./configure "${ffconf[@]}" || die
+		touch libpostproc/libpostproc.a || die # Actually build later.
+		emake libpostproc/libpostproc.pc V=1
+		export PKG_CONFIG_PATH="${PWD}/doc/examples/pc-uninstalled"
+		# Work around CMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY in eclass. It's a
+		# weird thing to do, but probably safer than setting that to BOTH.
+		[[ ${SYSROOT:-/} != / ]] && mycmakeargs+=( -DCMAKE_FIND_ROOT_PATH="${PWD}" )
+		popd >/dev/null || die
+	fi
+
 	if tc-is-cross-compiler; then
 		for t in "${NATIVE_TOOLS[@]}" ; do
 			pushd "${S}/tools/depends/native/$t/src" >/dev/null || die
@@ -463,6 +525,13 @@ src_configure() {
 }
 
 src_compile() {
+	if use system-ffmpeg && use postproc; then
+		pushd "${WORKDIR}/ffmpeg-${FFMPEG_VERSION}" >/dev/null || die
+		emake libpostproc/libpostproc.a V=1
+		rm -r libav* libsw* || die
+		popd >/dev/null || die
+	fi
+
 	if tc-is-cross-compiler; then
 		for t in "${NATIVE_TOOLS[@]}" ; do
 			emake -C "${S}/tools/depends/native/$t/src"
@@ -484,7 +553,12 @@ src_test() {
 	)
 
 	# Tests assumes bluray support is enabled
-	use !bluray && CMAKE_SKIP_TESTS+=( TestURIUtils.GetBasePath )
+	if use !bluray; then
+		CMAKE_SKIP_TESTS+=(
+			TestStacks.TestMovieFilesStackFolderFilesDiscPart
+			TestURIUtils.GetBasePath
+		)
+	fi
 
 	if use arm || use x86; then
 		# bug #779184

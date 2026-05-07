@@ -156,10 +156,10 @@ PATCHES=(
 
 python_check_deps() {
 	if use test; then
-		python_has_version ">=dev-python/python-dbusmock-0.28[${PYTHON_USEDEP}]"
+		python_has_version ">=dev-python/python-dbusmock-0.28[${PYTHON_USEDEP}]" || return 1
 	fi
 	if use bash-completion; then
-		python_has_version dev-python/argcomplete[${PYTHON_USEDEP}]
+		python_has_version "dev-python/argcomplete[${PYTHON_USEDEP}]" || return 1
 	fi
 }
 

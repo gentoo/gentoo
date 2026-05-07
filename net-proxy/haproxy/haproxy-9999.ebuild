@@ -1,30 +1,29 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
 
 LUA_COMPAT=( lua5-4 lua5-3 )
 
-[[ ${PV} == *9999 ]] && SCM="git-r3"
-inherit toolchain-funcs lua-single systemd linux-info ${SCM} multiprocessing
+inherit toolchain-funcs lua-single systemd linux-info git-r3 multiprocessing
 
 MY_P="${PN}-${PV/_beta/-dev}"
 
 DESCRIPTION="A TCP/HTTP reverse proxy for high availability environments"
 HOMEPAGE="http://www.haproxy.org"
 if [[ ${PV} != *9999 ]]; then
-	# This is arbitrary; upstream uses master.  Try to update when possible
-	VTEST_COMMIT="af198470d7ce482d3d26eb9ca3f246a438739366"
-	VTEST_DIR="${WORKDIR}/VTest-${VTEST_COMMIT}"
-	SRC_URI="http://haproxy.1wt.eu/download/$(ver_cut 1-2)/src/${MY_P}.tar.gz
-			test? ( https://github.com/vtest/VTest/archive/${VTEST_COMMIT}.tar.gz -> VTest-${VTEST_COMMIT}.tar.gz )"
+	# This is arbitrary; upstream uses master. Try to update when possible. Only git clones are allowed by VTest upstream.
+	# https://code.vinyl-cache.org/vtest/VTest2
+	VTEST2_COMMIT="3bba149e0c322585c09db2827a2a6cf0d3b15d54"
+	VTEST2_DIR="${WORKDIR}/vtest2"
+	SRC_URI="http://haproxy.1wt.eu/download/$(ver_cut 1-2)/src/${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~ppc ~x86"
 elif [[ ${PV} == 9999 ]]; then
-	VTEST_DIR="${WORKDIR}/VTest"
+	VTEST2_DIR="${WORKDIR}/vtest2"
 	EGIT_REPO_URI="https://git.haproxy.org/git/haproxy.git/"
 	EGIT_BRANCH=master
 else
-	VTEST_DIR="${WORKDIR}/VTest"
+	VTEST2_DIR="${WORKDIR}/vtest2"
 	EGIT_REPO_URI="https://git.haproxy.org/git/haproxy-$(ver_cut 1-2).git/"
 	EGIT_BRANCH=master
 fi
@@ -84,9 +83,12 @@ pkg_setup() {
 src_unpack() {
 	if [[ ${PV} != *9999 ]]; then
 		default
+		EGIT_REPO_URI="https://code.vinyl-cache.org/vtest/VTest2" EGIT_BRANCH="main" EGIT_COMMIT="${VTEST2_COMMIT}" \
+			EGIT_CHECKOUT_DIR="${VTEST2_DIR}" git-r3_src_unpack
 	else
 		git-r3_src_unpack
-		EGIT_REPO_URI="https://github.com/vtest/VTest" EGIT_CHECKOUT_DIR="${VTEST_DIR}" git-r3_src_unpack
+		EGIT_REPO_URI="https://code.vinyl-cache.org/vtest/VTest2" EGIT_BRANCH="main" EGIT_CHECKOUT_DIR="${VTEST2_DIR}" \
+			git-r3_src_unpack
 	fi
 }
 
@@ -152,10 +154,10 @@ src_compile() {
 
 src_test() {
 	# https://github.com/vtest/VTest/issues/12
-	emake -C "${VTEST_DIR}" CC="$(tc-getCC)" FLAGS="${CFLAGS} -Wno-error=unused-result"
+	emake -C "${VTEST2_DIR}" CC="$(tc-getCC)" FLAGS="${CFLAGS} -Wno-error=unused-result"
 	ulimit -n 65536 || die "${PN} requires ulimit -n set to at least 65536 for tests"
 	env -u A -u D TMPDIR="/tmp" emake reg-tests -- --v --j "$(makeopts_jobs)" \
-		HAPROXY_PROGRAM="${S}/haproxy" VTEST_PROGRAM="${VTEST_DIR}/vtest" REGTESTS_TYPE="default,bug,devel"
+		HAPROXY_PROGRAM="${S}/haproxy" VTEST_PROGRAM="${VTEST2_DIR}/vtest" REGTESTS_TYPE="default,bug,devel"
 }
 
 src_install() {

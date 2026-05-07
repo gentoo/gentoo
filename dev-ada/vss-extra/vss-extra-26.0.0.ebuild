@@ -1,4 +1,4 @@
-# Copyright 2021-2025 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,13 +27,13 @@ BDEPEND="dev-ada/gprbuild[${ADA_USEDEP}]"
 src_compile() {
 	build () {
 		for i in os json regexp xml xml_templates; do
-			gprbuild -p -j$(makeopts_jobs) -v \
+			gprbuild -p -j$(get_makeopts_jobs) -v \
 				-XVSS_BUILD_PROFILE=release \
 				-XVSS_LIBRARY_TYPE=$1 \
 				gnat/vss_${i}.gpr \
 				-cargs:Ada ${ADAFLAGS} || die
 		done
-		gprbuild -p -j$(makeopts_jobs) -v \
+		gprbuild -p -j$(get_makeopts_jobs) -v \
 			-XXMLADA_BUILD=$1 \
 			-XVSS_BUILD_PROFILE=release \
 			-XVSS_LIBRARY_TYPE=$1 \
@@ -50,7 +50,7 @@ src_compile() {
 }
 
 src_test() {
-	emake -j1 GPRFLAGS="-j$(makeopts_jobs) -v" build-tests
+	emake -j1 GPRFLAGS="-j$(get_makeopts_jobs) -v" build-tests
 	# To run all the test need to follow data/README.md
 	emake check_text
 	emake check_json

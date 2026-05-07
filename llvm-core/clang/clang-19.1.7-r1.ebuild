@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{12..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit cmake llvm.org multilib multilib-minimal
 inherit prefix python-single-r1 toolchain-funcs
@@ -340,9 +340,6 @@ multilib_src_configure() {
 			-DCLANG_TABLEGEN="${tools_bin}"/clang-tblgen
 		)
 	fi
-
-	# Workaround for bug #968756 (gcc PR123588)
-	tc-is-gcc && [[ $(gcc-major-version) -eq 16 ]] && local -x CXXFLAGS="${CXXFLAGS} -fno-tree-vectorize"
 
 	# LLVM can have very high memory consumption while linking,
 	# exhausting the limit on 32-bit linker executable

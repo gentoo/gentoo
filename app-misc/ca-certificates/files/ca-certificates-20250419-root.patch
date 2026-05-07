@@ -1,0 +1,50 @@
+create relative symlink with --sysroot
+
+--- a/image/usr/sbin/update-ca-certificates
++++ b/image/usr/sbin/update-ca-certificates
+@@ -30,6 +30,8 @@ LOCALCERTSDIR=/usr/local/share/ca-certificates
+ CERTBUNDLE=ca-certificates.crt
+ ETCCERTSDIR=/etc/ssl/certs
+ HOOKSDIR=/etc/ca-certificates/update.d
++SYSROOT=""
++RELPATH=""
+ 
+ while [ $# -gt 0 ];
+ do
+@@ -62,11 +64,11 @@ do
+     --sysroot)
+       shift
+       SYSROOT="$1"
+-      CERTSCONF="$1/${CERTSCONF}"
+-      CERTSDIR="$1/${CERTSDIR}"
+-      LOCALCERTSDIR="$1/${LOCALCERTSDIR}"
+-      ETCCERTSDIR="$1/${ETCCERTSDIR}"
+-      HOOKSDIR="$1/${HOOKSDIR}";;
++      CERTSCONF="${SYSROOT}${CERTSCONF}"
++      CERTSDIR="${SYSROOT}${CERTSDIR}"
++      LOCALCERTSDIR="${SYSROOT}${LOCALCERTSDIR}"
++      ETCCERTSDIR="${SYSROOT}${ETCCERTSDIR}"
++      HOOKSDIR="${SYSROOT}${HOOKSDIR}";;
+     --help|-h|*)
+       echo "$0: [--verbose] [--fresh]"
+       exit;;
+@@ -74,6 +76,10 @@ do
+   shift
+ done
+ 
++if [ -n "${SYSROOT}" ] ; then
++  RELPATH="$(realpath -s --relative-to="${ETCCERTSDIR}" "${SYSROOT}")"
++fi
++
+ if [ ! -s "$CERTSCONF" ]
+ then
+   fresh=1
+@@ -102,7 +108,7 @@ add() {
+                                                   -e 's/,/_/g').pem"
+   if ! test -e "$PEM" || [ "$(readlink "$PEM")" != "$CERT" ]
+   then
+-    ln -sf "$CERT" "$PEM"
++    ln -sf "${RELPATH}${CERT#$SYSROOT}" "$PEM"
+     echo "+$PEM" >> "$ADDED"
+   fi
+   # Add trailing newline to certificate, if it is missing (#635570)

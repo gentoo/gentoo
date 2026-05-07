@@ -68,7 +68,7 @@ src_configure() {
 src_compile() {
 	build() {
 		gprbuild -p -v -XPRJ_BUILD=Release -XPRJ_TARGET=Linux \
-			-XPROCESSORS=$(makeopts_jobs) \
+			-XPROCESSORS=$(get_makeopts_jobs) \
 			-XVERSION=$(ver_cut 1-2) -XLIBRARY_TYPE=$1 -XXMLADA_BUILD=$1 \
 			--subdirs=${CHOST}/release/$1 \
 			-Ptemplates_parser -largs ${LDFLAGS} -cargs ${ADAFLAGS} \
@@ -78,7 +78,7 @@ src_compile() {
 	use static-libs && build static
 	use static-pic  && build static-pic
 	gprbuild -p -v -XPRJ_BUILD=Release -XPRJ_TARGET=Linux \
-		-XPROCESSORS=$(makeopts_jobs) \
+		-XPROCESSORS=$(get_makeopts_jobs) \
 		-XVERSION=$(ver_cut 1-2) -XLIBRARY_TYPE=relocatable \
 		-XXMLADA_BUILD=relocatable \
 		--subdirs=${CHOST}/release/relocatable -Ptools/tools \
@@ -89,7 +89,7 @@ src_compile() {
 	if use test; then
 		cd regtests
 		gprbuild -p -v -XPRJ_BUILD=Release -XPRJ_TARGET=Linux \
-			-XPROCESSORS=$(makeopts_jobs) \
+			-XPROCESSORS=$(get_makeopts_jobs) \
 			-XVERSION=$(ver_cut 1-2) -XLIBRARY_TYPE=relocatable \
 			--subdirs=${CHOST}/release/relocatable \
 			-Pregtests -largs ${LDFLAGS} -cargs ${ADAFLAGS} \
@@ -101,7 +101,7 @@ src_compile() {
 src_install() {
 	build() {
 		gprinstall -XPRJ_BUILD=Release -XPRJ_TARGET=Linux \
-			-XTP_XMLADA=Disabled -XPROCESSORS=$(makeopts_jobs) \
+			-XTP_XMLADA=Disabled -XPROCESSORS=$(get_makeopts_jobs) \
 			-XVERSION=$(ver_cut 1-2) -XLIBRARY_TYPE=$1 -XXMLADA_BUILD=$1 \
 			-p -f --prefix="${D}"/usr --build-var=LIBRARY_TYPE \
 			--build-var=TEMPLATES_PARSER_BUILD --subdirs=${CHOST}/release/$1 \
@@ -112,7 +112,7 @@ src_install() {
 	use static-libs && build static
 	use static-pic  && build static-pic
 	gprinstall -XPRJ_BUILD=Release -XPRJ_TARGET=Linux -XTP_XMLADA=Disabled \
-		-XPROCESSORS=$(makeopts_jobs) -XVERSION=$(ver_cut 1-2) \
+		-XPROCESSORS=$(get_makeopts_jobs) -XVERSION=$(ver_cut 1-2) \
 		-XLIBRARY_TYPE=relocatable -XXMLADA_BUILD=relocatable -p -f \
 		--prefix="${D}"/usr \
 		--build-var=LIBRARY_TYPE --build-var=TEMPLATES_PARSER_BUILD \

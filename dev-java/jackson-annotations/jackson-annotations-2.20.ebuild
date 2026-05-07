@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ JAVA_TESTING_FRAMEWORKS="junit-jupiter"
 
 inherit java-pkg-2 java-pkg-simple junit5
 
-DESCRIPTION="Core annotations used for value types, used by Jackson data binding package."
+DESCRIPTION="Core annotations used for value types, used by Jackson data binding package"
 HOMEPAGE="https://github.com/FasterXML/jackson-annotations"
 SRC_URI="https://github.com/FasterXML/${PN}/archive/${P}.tar.gz"
 S="${WORKDIR}/${PN}-${P}"

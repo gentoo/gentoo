@@ -40,7 +40,7 @@ src_prepare() {
 
 src_compile() {
 	single_build () {
-		gprbuild -v -k -p -j$(makeopts_jobs) -XLIBRARY_TYPE=$1 \
+		gprbuild -v -k -p -j$(get_makeopts_jobs) -XLIBRARY_TYPE=$1 \
 			-XXMLADA_BUILD=$1 -XLALTOOLS_BUILD_MODE=dev \
 			-XLALTOOLS_SET=all \
 			-P $2 \

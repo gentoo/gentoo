@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -55,8 +55,8 @@ src_prepare() {
 
 src_compile() {
 	build () {
-		gprbuild -j$(makeopts_jobs) -m -p -v -XLIBRARY_TYPE=$1 \
-			-XBUILD=Production -XPROCESSORS=$(makeopts_jobs) xmlada.gpr \
+		gprbuild -j$(get_makeopts_jobs) -m -p -v -XLIBRARY_TYPE=$1 \
+			-XBUILD=Production -XPROCESSORS=$(get_makeopts_jobs) xmlada.gpr \
 			-largs ${LDFLAGS} \
 			-cargs ${ADAFLAGS} || die "gprbuild failed"
 	}
@@ -74,8 +74,8 @@ src_compile() {
 
 src_test() {
 	GPR_PROJECT_PATH=schema:input_sources:dom:sax:unicode \
-	gprbuild -j$(makeopts_jobs) -m -p -v -XLIBRARY_TYPE=static \
-		-XBUILD=Production -XPROCESSORS=$(makeopts_jobs) xmlada.gpr \
+	gprbuild -j$(get_makeopts_jobs) -m -p -v -XLIBRARY_TYPE=static \
+		-XBUILD=Production -XPROCESSORS=$(get_makeopts_jobs) xmlada.gpr \
 		-XTESTS_ACTIVATED=Only \
 		-largs ${LDFLAGS} \
 		-cargs ${ADAFLAGS} || die "gprbuild failed"
@@ -94,7 +94,7 @@ src_test() {
 src_install() {
 	build () {
 		gprinstall -XLIBRARY_TYPE=$1 -f -p -XBUILD=Production \
-			-XPROCESSORS=$(makeopts_jobs) --prefix="${D}"/usr \
+			-XPROCESSORS=$(get_makeopts_jobs) --prefix="${D}"/usr \
 			--install-name=xmlada --build-var=LIBRARY_TYPE \
 			--build-var=XMLADA_BUILD \
 			--build-name=$1 xmlada.gpr || die "gprinstall failed"

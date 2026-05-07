@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ SRC_URI+=" https://gitlab.gnome.org/GNOME/libgd/-/archive/${LIBGD_COMMIT}/libgd-
 
 LICENSE="GPL-2+ CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 
 IUSE="+python gtk-doc"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"

@@ -1,5 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Ionen Wolkens <ionen@gentoo.org> (2026-04-16)
+# media-libs/opencolorio is not stable here and has many dependencies.
+# Not overly worth extra stabilizations over new still scarcely used
+# colour filters. Can revisit if someone wants this.
+media-video/ffmpeg opencolorio
 
 # Sam James <sam@gentoo.org> (2025-11-30)
 # sci-libs/blis does not have stable keywords

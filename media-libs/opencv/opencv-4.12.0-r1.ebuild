@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit flag-o-matic multilib multiprocessing toolchain-funcs
 inherit cuda java-pkg-opt-2 cmake-multilib python-r1 virtualx xdg-utils

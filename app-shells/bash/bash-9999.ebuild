@@ -104,6 +104,9 @@ QA_CONFIGURE_OPTIONS="--disable-static"
 PATCHES=(
 	#"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}/
 
+	# bug #971782
+	"${FILESDIR}"/${PN}-5.3_p9-general-workaround-aliasing-violation-in-REVERSE_LIS.patch
+
 	# Patches to or from Chet, posted to the bug-bash mailing list.
 	"${FILESDIR}/${PN}-5.0-syslog-history-extern.patch"
 )

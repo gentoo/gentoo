@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alfred Wingate <parona@protonmail.com> (2026-05-03)
+# dev-libs/libthai not keyworded here
+x11-libs/pango libthai
+
 # Robin H. Johnson <robbat2@gentoo.org> (2026-03-22)
 # sys-block/vdo not keyworded here
 sys-fs/lvm2 vdo

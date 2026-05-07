@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 DISTUTILS_USE_PEP517=setuptools
 
-inherit shell-completion edo distutils-r1 flag-o-matic toolchain-funcs
+inherit shell-completion edo distutils-r1 flag-o-matic toolchain-funcs vala
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/mesonbuild/meson"
@@ -50,6 +50,15 @@ IUSE="test test-full"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="test-full? ( test )"
 
+# test-full contains various test dependencies, for optional test cases of
+# frameworks Meson has support for. These will *usually* get skipped
+# automatically if uninstalled. The dep allows:
+# - guaranteeing the whole test suite runs transparently without skips
+# - reducing brittleness of frameworks that straddle multiple packages
+#   - Qt is a particular example of this. qt5 is deprecated, but we need qtbase
+#     consistently installed as long as it isn't masked for removal. TODO: drop
+#     dev-qt/*:5 from DEPEND once they are masked.
+
 DEPEND="
 	test? (
 		dev-libs/glib:2
@@ -64,7 +73,7 @@ DEPEND="
 		|| ( dev-lang/rust dev-lang/rust-bin )
 		dev-lang/nasm
 		>=dev-lang/pypy-3
-		dev-lang/vala
+		$(vala_depend)
 		dev-python/cython
 		virtual/fortran
 		virtual/jdk
@@ -186,6 +195,9 @@ python_test() {
 		# all tests work when they happen to use it. And in particular, this
 		# breaks rust.
 		filter-lto
+
+		# bug 513658
+		has_version -b dev-lang/vala && vala_setup
 
 		# remove unwanted python_wrapper_setup contents
 		# We actually do want to non-error if python2 is installed and tested.

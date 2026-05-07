@@ -1,0 +1,32 @@
+From: Matthias Geiger <werdahias@debian.org>
+Date: Sat, 7 Sep 2024 12:44:01 +0200
+Subject: Patch src/meson.build to disable clippy test
+
+Forwarded: not-needed
+---
+ src/meson.build | 15 ---------------
+ 1 file changed, 15 deletions(-)
+
+diff --git a/src/meson.build b/src/meson.build
+index 72f46e1..06c367c 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -64,18 +64,3 @@ test(
+   timeout: 300, # give cargo more time
+ )
+ 
+-test(
+-  'cargo-clippy',
+-  cargo,
+-  args: [
+-    'clippy',
+-    cargo_options,
+-    '--',
+-    '-D',
+-    'warnings'
+-  ],
+-  env: [
+-    cargo_env
+-  ],
+-  timeout: 300, # give cargo more time
+-)

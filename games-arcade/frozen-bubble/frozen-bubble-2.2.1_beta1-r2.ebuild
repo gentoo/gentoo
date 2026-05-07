@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,8 +8,8 @@ inherit desktop perl-module toolchain-funcs xdg
 MY_P="${P/_/-}"
 
 DESCRIPTION="A Puzzle Bubble clone written in perl (now with network support)"
-HOMEPAGE="http://www.frozen-bubble.org/"
-SRC_URI="http://www.frozen-bubble.org/data/${MY_P}.tar.bz2"
+HOMEPAGE="https://github.com/kthakore/frozen-bubble"
+SRC_URI="mirror://gentoo/${MY_P}.tar.bz2"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"

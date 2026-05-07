@@ -1,0 +1,82 @@
+Description: Get source building on Hurd
+ - Look for <sys/user.h> before using it.
+ - Define MAXHOSTNAMELEN to 64 if missing.
+ - Bind sockets on Hurd like on Linux.
+Author: Petter Reinholdtsen <pere@hungry.com>
+Forwarded: not-needed
+Last-Update: 2025-03-17
+
+Source: https://sources.debian.org/patches/libtirpc/1.3.7-0.1/
+ 
+--- a/src/auth_unix.c
++++ b/src/auth_unix.c
+@@ -56,6 +56,11 @@
+ #include <rpc/auth.h>
+ #include <rpc/auth_unix.h>
+ 
++/* Workaround for Hurd */
++#ifndef MAXHOSTNAMELEN
++#  define MAXHOSTNAMELEN   64
++#endif
++
+ /* auth_unix.c */
+ static void authunix_nextverf (AUTH *);
+ static bool_t authunix_marshal (AUTH *, XDR *);
+--- a/src/bindresvport.c
++++ b/src/bindresvport.c
+@@ -64,7 +64,7 @@
+         return bindresvport_sa(sd, (struct sockaddr *)sin);
+ }
+ 
+-#ifdef __linux__
++#if defined(__linux__) || defined(__GNU__)
+ 
+ #define STARTPORT 600
+ #define LOWPORT 512
+--- a/src/getpeereid.c
++++ b/src/getpeereid.c
+@@ -28,10 +28,14 @@
+ #include "config.h"
+ #endif
+ 
++#include "config.h"
++
+ #include <sys/param.h>
+ #include <sys/socket.h>
+ #include <sys/un.h>
+-#include <sys/user.h>
++#ifdef HAVE_SYS_USER_H
++#  include <sys/user.h>
++#endif /* HAVE_SYS_USER_H */
+ 
+ #include <errno.h>
+ #include <unistd.h>
+@@ -41,6 +45,9 @@
+ int
+ getpeereid(int s, uid_t *euid, gid_t *egid)
+ {
++#ifndef HAVE_SYS_USER_H
++        return(-1);
++#else
+ #ifdef XUCRED_VERSION
+ 	struct xucred uc;
+ #define uid  cr_uid
+@@ -64,6 +71,7 @@
+ 	*euid = uc.uid;
+ 	*egid = uc.gid;
+ 	return (0);
++#endif /* HAVE_SYS_USER_H */
+  }
+ 
+ #endif
+--- a/configure.ac
++++ b/configure.ac
+@@ -200,7 +200,7 @@
+ AC_CHECK_HEADERS([arpa/inet.h fcntl.h libintl.h limits.h locale.h
+ netdb.h netinet/in.h stddef.h stdint.h stdlib.h string.h sys/ioctl.h
+ sys/param.h sys/socket.h sys/time.h syslog.h unistd.h features.h
+-gssapi/gssapi_ext.h endian.h machine/endian.h])
++gssapi/gssapi_ext.h endian.h machine/endian.h sys/user.h])
+ AX_PTHREAD
+ AC_CHECK_FUNCS([getpeereid getrpcbyname getrpcbynumber setrpcent endrpcent getrpcent])
+ 

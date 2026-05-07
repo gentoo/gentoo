@@ -1,0 +1,20 @@
+From 2572e25248a26c9770d4e61fd74ac21cf953f51d Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Fri, 27 Mar 2026 21:33:21 +0000
+Subject: [PATCH] Don't require an exact Boost version
+
+Newer versions will usually work.
+--- a/cmake/dependencies/Boost_Sunshine.cmake
++++ b/cmake/dependencies/Boost_Sunshine.cmake
+@@ -30,7 +30,7 @@ endif()
+ if (CMAKE_VERSION VERSION_GREATER_EQUAL "3.30")
+     cmake_policy(SET CMP0167 NEW)  # Get BoostConfig.cmake from upstream
+ endif()
+-find_package(Boost CONFIG ${BOOST_VERSION} EXACT COMPONENTS ${BOOST_COMPONENTS})
++find_package(Boost CONFIG ${BOOST_VERSION} COMPONENTS ${BOOST_COMPONENTS})
+ if(NOT Boost_FOUND)
+     message(STATUS "Boost v${BOOST_VERSION} package not found in the system. Falling back to FetchContent.")
+     include(FetchContent)
+-- 
+2.53.0
+

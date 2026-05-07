@@ -18,7 +18,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0/4"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
 IUSE="examples"
 
 # tests have various troublesome requirements

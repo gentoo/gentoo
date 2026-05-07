@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -81,7 +81,7 @@ src_configure() {
 
 src_compile() {
 	build () {
-		gprbuild -v -p -j$(makeopts_jobs) -Pbuild/libadalang.gpr \
+		gprbuild -v -p -j$(get_makeopts_jobs) -Pbuild/libadalang.gpr \
 			-XLIBRARY_TYPE=$1 -XGPR_BUILD=$1 -XXMLADA_BUILD=$1 \
 			-XLIBADALANG_WARNINGS=true \
 			-cargs:C ${CFLAGS} -cargs:Ada ${ADAFLAGS} -largs ${LDFLAGS} \
@@ -90,7 +90,7 @@ src_compile() {
 	build relocatable
 	use static-libs && build static
 	use static-pic  && build static-pic
-	gprbuild -v -p -j$(makeopts_jobs) -Pbuild/mains.gpr \
+	gprbuild -v -p -j$(get_makeopts_jobs) -Pbuild/mains.gpr \
 		-XLIBRARY_TYPE=relocatable -XGPR_BUILD=relocatable \
 		-XXMLADA_BUILD=relocatable -XLIBADALANG_WARNINGS=true nameres.adb \
 		gnat_compare.adb lal_dda.adb parse.adb lal_prep.adb unparse.adb \

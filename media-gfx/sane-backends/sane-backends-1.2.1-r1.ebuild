@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..12} )
 
 # python-any-r1 required for a script in backends/pixma/scripts/
 inherit autotools flag-o-matic multilib-minimal optfeature python-any-r1 systemd toolchain-funcs udev

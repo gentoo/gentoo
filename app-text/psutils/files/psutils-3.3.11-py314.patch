@@ -1,0 +1,29 @@
+https://github.com/rrthomas/psutils/pull/90
+
+From bd1f8cbe00ad7b303ed861976caf2885835029b4 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Wed, 29 Apr 2026 10:08:51 +0300
+Subject: [PATCH] testutils: Accomodate to argparse changes in python 3.14
+
+See-Also: https://github.com/python/cpython/issues/66436
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/tests/testutils.py
++++ b/tests/testutils.py
+@@ -144,7 +144,7 @@ def file_test(
+     with chdir(datafiles):
+         correct_output = True
+         if case.error is None:
+-            with patch("sys.argv", patched_argv):
++            with patch("sys.argv", patched_argv), patch.object(sys.modules['__main__'], '__spec__', None):
+                 function(full_args)
+             if regenerate_expected:
+                 shutil.copyfile(output_file, expected_file.with_suffix(file_type))
+@@ -160,7 +160,7 @@ def file_test(
+                 )
+         else:
+             with pytest.raises(SystemExit) as e:
+-                with patch("sys.argv", patched_argv):
++                with patch("sys.argv", patched_argv), patch.object(sys.modules['__main__'], '__spec__', None):
+                     function(full_args)
+             assert e.value.code == case.error
+         if regenerate_expected:

@@ -17,6 +17,20 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2026-04-01)
+# Upstream is no longer accepting nor publishing any bug reports.
+# As such, the package is not suitable for public consumption anymore.
+# On top of that, the package is heavily relying on unsafe Rust, which
+# completely defeats the purpose of Rust in the first place.
+# https://github.com/ijl/orjson?tab=readme-ov-file#orjson
+dev-python/orjson
+
+# Michał Górny <mgorny@gentoo.org> (2026-04-01)
+# Upstream is no longer accepting nor publishing any bug reports.
+# As such, the package is not suitable for public consumption anymore.
+# https://github.com/encode/httpx/discussions/3784
+dev-python/httpx
+
 # Michał Górny <mgorny@gentoo.org> (2026-03-25)
 # Backwards compatibility package for pkg_resources that have been
 # removed from >=dev-python/setuptools-82.  Please migrate to

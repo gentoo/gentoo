@@ -10,6 +10,7 @@
     <name>Gentoo Virtualization Project</name>
   </maintainer>
   <use>
+    <flag name="landlock">Use Landlock to restrict what the monitor API handlers can do on the system</flag>
     <flag name="tools">Build and install additional command line tools</flag>
   </use>
   <upstream>

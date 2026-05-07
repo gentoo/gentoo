@@ -7,13 +7,14 @@ EAPI=8
 BUILD_DEPS_COMMIT="e87b7cec9c3a01cb671cdd8ba19fe443105412d4"
 DISPLAYDEV_COMMIT="v2025.612.225826"
 ENET_COMMIT="115a10baa1d7f291ff5b870765610fd3b4a6e43c"
+GLAD_COMMIT="v2.0.8"
 INPUTTINO_COMMIT="504f0abc7da8ebc351f8300fb2ed98db5438ee48"
 MOONLIGHT_COMMIT="5f2280183cb62cba1052894d76e64e5f4153377d"
 NANORS_COMMIT="19f07b513e924e471cadd141943c1ec4adc8d0e0"
 TRAY_COMMIT="0309a7cb84aad25079b60c40d1eae0bacd05b26d"
 SWS_COMMIT="187f798d54a9c6cee742f2eb2c54e9ba26f5a385"
 WLRP_COMMIT="a741f0ac5d655338a5100fc34bc8cec87d237346"
-FFMPEG_VERSION="8.0"
+FFMPEG_VERSION="8.1"
 
 # To make the assets tarball:
 # PV=
@@ -32,6 +33,8 @@ else
 			-> libdisplaydevice-${DISPLAYDEV_COMMIT#v}.tar.gz
 		https://github.com/cgutman/enet/archive/${ENET_COMMIT}.tar.gz
 			-> moonlight-enet-${ENET_COMMIT}.tar.gz
+		https://github.com/Dav1dde/glad/archive/${GLAD_COMMIT}.tar.gz
+			-> glad-${GLAD_COMMIT}.tar.gz
 		https://github.com/games-on-whales/inputtino/archive/${INPUTTINO_COMMIT}.tar.gz
 			-> inputtino-${INPUTTINO_COMMIT}.tar.gz
 		https://github.com/moonlight-stream/moonlight-common-c/archive/${MOONLIGHT_COMMIT}.tar.gz
@@ -55,7 +58,7 @@ DESCRIPTION="Self-hosted game stream host for Moonlight"
 HOMEPAGE="https://github.com/LizardByte/Sunshine"
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="cuda debug libdrm svt-av1 systemd trayicon vaapi wayland X x264 x265"
+IUSE="cuda debug libdrm svt-av1 systemd trayicon vaapi vulkan wayland X x264 x265"
 
 # Strings for CPU features in the useflag[:configure_option] form
 # if :configure_option isn't set, it will use 'useflag' as configure option
@@ -129,7 +132,7 @@ REQUIRED_USE="
 "
 
 CDEPEND="
-	=dev-libs/boost-1.89*:=[nls]
+	>=dev-libs/boost-1.89:=[nls]
 	dev-libs/libevdev
 	dev-libs/openssl:=
 	media-libs/opus
@@ -162,6 +165,7 @@ RDEPEND="
 	${CDEPEND}
 	media-libs/mesa[vaapi?]
 	cuda? ( x11-drivers/nvidia-drivers )
+	vulkan? ( media-libs/vulkan-loader )
 	X? (
 		x11-libs/libxcb
 		x11-libs/libXfixes
@@ -176,6 +180,7 @@ DEPEND="
 	>=media-libs/amf-headers-1.4.36-r1
 	<media-libs/nv-codec-headers-14
 	cuda? ( dev-util/nvidia-cuda-toolkit )
+	vulkan? ( >=dev-util/vulkan-headers-1.4.317 )
 	wayland? ( dev-libs/wayland-protocols )
 "
 
@@ -189,6 +194,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2025.122.141614-nvcodec.patch
+	"${FILESDIR}"/${PN}-new-boost.patch
 	"${FILESDIR}"/${PN}-new-cuda.patch
 )
 
@@ -220,7 +226,7 @@ src_unpack() {
 		git-r3_src_unpack
 
 		local EGIT_REPO_URI="https://github.com/LizardByte/Sunshine.git"
-		local EGIT_SUBMODULES=( third-party/{inputtino,libdisplaydevice,moonlight-common-c{,/enet},nanors,tray,Simple-Web-Server,wlr-protocols} )
+		local EGIT_SUBMODULES=( third-party/{glad,inputtino,libdisplaydevice,moonlight-common-c{,/enet},nanors,tray,Simple-Web-Server,wlr-protocols} )
 		unset EGIT_CHECKOUT_DIR EGIT_COMMIT EGIT_BRANCH
 		git-r3_src_unpack
 
@@ -231,6 +237,7 @@ src_unpack() {
 		find moonlight-common-c-${MOONLIGHT_COMMIT} "${S}"/third-party \
 			build-deps-${BUILD_DEPS_COMMIT}/third-party/FFmpeg -mindepth 1 -type d -empty -delete || die
 		mv enet-${ENET_COMMIT} moonlight-common-c-${MOONLIGHT_COMMIT}/enet || die
+		mv glad-${GLAD_COMMIT#v} "${S}"/third-party/glad || die
 		mv libdisplaydevice-${DISPLAYDEV_COMMIT#v} "${S}"/third-party/libdisplaydevice || die
 		mv inputtino-${INPUTTINO_COMMIT} "${S}"/third-party/inputtino || die
 		mv moonlight-common-c-${MOONLIGHT_COMMIT} "${S}"/third-party/moonlight-common-c || die
@@ -246,6 +253,7 @@ src_unpack() {
 src_prepare() {
 	# Avoid CMake compatibility warning.
 	rm third-party/moonlight-common-c/CMakeLists.txt || die
+	find third-party/glad/{example,test} -name CMakeLists.txt -delete || die
 
 	CMAKE_USE_DIR="${S}"/third-party/build-deps cmake_src_prepare
 	default_src_prepare() { :; } # Hack to avoid double patching! :(
@@ -265,6 +273,7 @@ src_configure() {
 		-DBUILD_FFMPEG_MF=no
 		-DBUILD_FFMPEG_NV_CODEC_HEADERS=no
 		-DBUILD_FFMPEG_SVT_AV1=no
+		-DBUILD_FFMPEG_VULKAN=no
 		-DBUILD_FFMPEG_X264=no
 		-DBUILD_FFMPEG_X265=no
 		-DBUILD_SHARED_LIBS=no
@@ -300,16 +309,19 @@ src_configure() {
 		--enable-static
 		--enable-swscale
 		--enable-v4l2_m2m
+		--enable-vulkan-static
 		$(use_enable cuda)
 		$(use_enable cuda cuda_llvm)
 		$(use_enable svt-av1 libsvtav1)
 		$(use_enable vaapi)
+		$(use_enable vulkan)
 		$(use_enable x264 libx264)
 		$(use_enable x265 libx265)
-		$(usex svt-av1 --enable-encoder=libsvtav1 "")
-		$(usex vaapi --enable-encoder=h264_vaapi,hevc_vaapi,av1_vaapi "")
-		$(usex x264 --enable-encoder=libx264 "")
-		$(usex x265 --enable-encoder=libx265 "")
+		$(usev svt-av1 --enable-encoder=libsvtav1)
+		$(usev vaapi --enable-encoder=h264_vaapi,hevc_vaapi,av1_vaapi)
+		$(usev vulkan --enable-encoder=h264_vulkan,hevc_vulkan,av1_vulkan)
+		$(usev x264 --enable-encoder=libx264)
+		$(usev x265 --enable-encoder=libx265)
 		--enable-encoder=h264_amf,hevc_amf,av1_amf
 		--enable-encoder=h264_nvenc,hevc_nvenc,av1_nvenc
 		--enable-encoder=h264_v4l2m2m,hevc_v4l2m2m
@@ -354,8 +366,8 @@ src_configure() {
 		-DBUILD_DOCS=no
 		-DBUILD_TESTS=no
 		-DCCACHE_FOUND=no
-		-DFFMPEG_PLATFORM_LIBRARIES="$(usex svt-av1 SvtAv1Enc '');$(usex vaapi 'va;va-drm' '');$(usev x264);$(usev x265)"
-		-DFFMPEG_PREPARED_BINARIES="${S}"/third-party/build-deps/dist
+		-DFFMPEG_PLATFORM_LIBRARIES="$(usev svt-av1 SvtAv1Enc);$(usev vaapi 'va;va-drm');$(usev vulkan);$(usev x264);$(usev x265)"
+		-DFFMPEG_PREPARED_BINARIES="${S}"/third-party/build-deps/dist/ffmpeg
 		-DSUNSHINE_ASSETS_DIR=share/${PN}
 		-DSUNSHINE_ENABLE_CUDA=$(usex cuda)
 		-DSUNSHINE_ENABLE_DRM=$(usex libdrm)

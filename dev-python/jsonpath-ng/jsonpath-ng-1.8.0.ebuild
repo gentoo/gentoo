@@ -16,14 +16,14 @@ HOMEPAGE="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 x86"
 
 RDEPEND="
 	dev-python/ply[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
-		dev-python/oslotest[${PYTHON_USEDEP}]
+		dev-python/hypothesis[${PYTHON_USEDEP}]
 	)
 "
 

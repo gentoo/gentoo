@@ -7,7 +7,7 @@ MODULES_OPTIONAL_IUSE=+modules
 inherit desktop dot-a eapi9-pipestatus eapi9-ver flag-o-matic linux-mod-r1
 inherit readme.gentoo-r1 systemd toolchain-funcs unpacker user-info
 
-MODULES_KERNEL_MAX=6.19
+MODULES_KERNEL_MAX=7.0
 NV_URI="https://download.nvidia.com/XFree86/"
 
 DESCRIPTION="NVIDIA Accelerated Graphics Driver"
@@ -59,7 +59,10 @@ COMMON_DEPEND="
 # (may use one or the other depending on setup)
 RDEPEND="
 	${COMMON_DEPEND}
-	dev-libs/openssl:0/3
+	|| (
+		dev-libs/openssl-compat:3
+		dev-libs/openssl:0/3
+	)
 	sys-libs/glibc
 	X? (
 		media-libs/libglvnd[X,abi_x86_32(-)?]
@@ -243,6 +246,14 @@ src_compile() {
 			# TODO?: it should be ok/better for tc-arch-kernel to do x86_64
 			$(usev amd64 ARCH=x86_64)
 		)
+
+		# pahole wrapper is broken with >=7.0, and without the wrapper it will
+		# fail if the "blob" has debug symbols (temporary, check again on bump)
+		# https://github.com/NVIDIA/open-gpu-kernel-modules/issues/1041
+		if kernel_is -ge 7 && linux_chkconfig_present DEBUG_INFO_BTF_MODULES; then
+			append-flags -g0
+			modargs+=( PAHOLE_VARIABLES= )
+		fi
 
 		# temporary workaround for bug #914468
 		addpredict "${KV_OUT_DIR}"

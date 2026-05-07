@@ -15,5 +15,6 @@
 	<upstream>
 		<remote-id type="cpe">cpe:/a:gnu:wget</remote-id>
 		<remote-id type="gitlab">gnuwget/wget</remote-id>
+		<remote-id type="savannah">wget</remote-id>
 	</upstream>
 </pkgmetadata>

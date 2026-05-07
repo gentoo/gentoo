@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -339,7 +339,6 @@ my_src_configure() {
 				einfo "Building with CUDAARCHS=${CUDAARCHS}"
 			fi
 
-
 			if [[ ! -v CUDAHOSTCXX ]]; then
 				local -x CUDAHOSTCXX
 				CUDAHOSTCXX="$(cuda_get_host_compiler)"
@@ -348,7 +347,6 @@ my_src_configure() {
 				local -x CUDAHOSTLD
 				CUDAHOSTLD="$(tc-getCXX)"
 			fi
-
 
 			if tc-is-gcc; then
 				# Filter out IMPLICIT_LINK_DIRECTORIES picked up by CMAKE_DETERMINE_COMPILER_ABI(CUDA)

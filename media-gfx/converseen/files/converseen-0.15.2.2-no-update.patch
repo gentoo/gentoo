@@ -1,0 +1,14 @@
+# Don't check upstream versions due to privacy concerns
+# Bug-Debian: https://bugs.debian.org/761944
+
+--- a/src/mainwindowimpl.cpp
++++ b/src/mainwindowimpl.cpp
+@@ -1314,7 +1314,7 @@ void MainWindowImpl::openPaypalLink()
+ void MainWindowImpl::checkForUpdates()
+ {
+     // Checks for updates at program startup
+-    updateChecker->checkForUpdates();
++    // updateChecker->checkForUpdates();
+ }
+ 
+ void MainWindowImpl::manualCheckForUpdate()

@@ -1,0 +1,30 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+BOOST_COMMIT="c88f9d1d27707d85ba39fbaeedddddd505e76e6c"
+
+DESCRIPTION="Another set of autoconf macros for compiling against boost"
+HOMEPAGE="https://github.com/tsuna/boost.m4"
+SRC_URI="https://github.com/tsuna/boost.m4/archive/${BOOST_COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}"/${PN/-/.}-${BOOST_COMMIT}
+
+LICENSE="GPL-3"
+SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
+
+# boost.m4 has a buildsystem, but the distributer didn't use make dist
+# so we'd have to eautoreconf to use it. Also, its ./configure script
+# DEPENDs on boost. For installing one file, bootstrapping the
+# buildsystem isn't worth it.
+src_configure() { :; }
+
+src_compile() { :; }
+
+src_install() {
+	insinto /usr/share/aclocal
+	doins build-aux/boost.m4
+
+	dodoc AUTHORS NEWS README THANKS
+}

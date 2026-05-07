@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: dune.eclass
@@ -99,7 +99,7 @@ dune-release() {
 	local -a myduneopts=(
 		--display=short
 		--profile release
-		-j $(makeopts_jobs)
+		-j $(get_makeopts_jobs)
 	)
 
 	# Resolve the package flag.

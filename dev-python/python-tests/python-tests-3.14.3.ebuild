@@ -20,7 +20,7 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://www.python.org/ftp/python/${PV%%_*}/${MY_P}.tar.xz
-	https://dev.gentoo.org/~mgorny/dist/python/${PATCHSET}.tar.xz
+	https://distfiles.gentoo.org/pub/proj/python/patchsets/${PYVER%t}/${PATCHSET}.tar.xz
 	verify-sig? (
 		https://www.python.org/ftp/python/${PV%%_*}/${MY_P}.tar.xz.sigstore
 	)
@@ -29,7 +29,7 @@ S="${WORKDIR}/${MY_P}/Lib"
 
 LICENSE="PSF-2"
 SLOT="${PYVER}"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 # enable by default to help CI handle it (we have no additional deps)
 IUSE="+python_targets_${PYTHON_COMPAT[0]}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

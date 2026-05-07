@@ -1,0 +1,7 @@
+https://bugs.gentoo.org/972717
+https://qt-project.atlassian.net/browse/QTBUG-145607
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -20 +20 @@
+-find_package(Qt6 ${PROJECT_VERSION} CONFIG OPTIONAL_COMPONENTS Core Quick Gui Widgets QuickTest QuickWidgets Test Quick3D QuickShapesPrivate PrintSupport)
++find_package(Qt6 ${PROJECT_VERSION} CONFIG OPTIONAL_COMPONENTS Core Quick Gui Widgets QuickTest QuickWidgets Test ShaderTools Quick3D QuickShapesPrivate PrintSupport)

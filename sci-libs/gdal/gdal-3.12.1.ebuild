@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit cmake distutils-r1 flag-o-matic java-pkg-opt-2 unpacker
 
 DESCRIPTION="Translator library for raster geospatial data formats (includes OGR support)"
@@ -18,7 +18,7 @@ SRC_URI="
 
 LICENSE="BSD Info-ZIP MIT"
 SLOT="0/38" # subslot is libgdal.so.<SONAME> (and GDAL_SOVERSION in gdal.cmake)
-KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 ~riscv x86"
 IUSE="
 	archive armadillo avif blosc cryptopp +curl cpu_flags_arm_neon cpu_flags_x86_avx
 	cpu_flags_x86_avx2 cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse4_1
@@ -126,6 +126,7 @@ BDEPEND="
 				  >=dev-python/pytest-6.0.0[${PYTHON_USEDEP}]
 				  dev-python/pytest-env[${PYTHON_USEDEP}]
 				  dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
+				  dev-python/pytest-xdist[${PYTHON_USEDEP}]
 				  parquet? ( dev-python/pyarrow[parquet,${PYTHON_USEDEP}] )
 			)
 		')
@@ -378,6 +379,8 @@ python_test() {
 	EPYTEST_IGNORE=(
 		# network-sandbox and deselecting tests turns into whac-a-mole with their interdependencies
 		"gcore/vsis3.py"
+		# All tests require network-sandbox
+		"ogr/ogr_ngw.py"
 	)
 
 	use !muparser && EPYTEST_IGNORE+=( "gdrivers/vrtpansharpen.py" )

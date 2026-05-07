@@ -428,6 +428,7 @@ www-client/microsoft-edge-dev
 www-client/opera
 www-client/opera-beta
 www-client/opera-developer
+www-client/opera-gx
 www-client/vivaldi
 www-client/vivaldi-snapshot
 www-plugins/chrome-binary-plugins

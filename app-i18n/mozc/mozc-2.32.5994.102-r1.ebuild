@@ -25,7 +25,7 @@ PROTO_VER="32.0"
 CPYTHON_VER="3.11.13+20250610"
 RPYTHON_VER="1.5.4"
 
-DESCRIPTION="Mozc - Japanese input method editor."
+DESCRIPTION="Japanese input method editor"
 HOMEPAGE="https://github.com/google/mozc"
 # for new release, update versions according to MODULE.bazel or failures of the fetch's phase of bazel
 SRC_URI="

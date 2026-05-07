@@ -9,7 +9,7 @@ inherit prefix python-any-r1 qt6-build toolchain-funcs
 
 DESCRIPTION="Library for rendering dynamic web content in Qt6 C++ and QML applications"
 SRC_URI+="
-	https://dev.gentoo.org/~ionen/distfiles/${PN}-6.11-patchset-1.tar.xz
+	https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${PN}-6.11-patchset-3.tar.xz
 "
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
@@ -45,6 +45,7 @@ RDEPEND="
 	media-libs/libpng:=
 	media-libs/libwebp:=
 	media-libs/mesa[gbm(+)]
+	>=media-libs/openh264-2.4:=
 	media-libs/openjpeg:2=
 	media-libs/opus
 	media-libs/tiff:=
@@ -108,8 +109,8 @@ PATCHES=( "${WORKDIR}"/patches/${PN} )
 
 PATCHES+=(
 	# add extras as needed here, may merge in set if carries across versions
-	"${FILESDIR}"/${PN}-6.10.2-clang-22.patch
-	"${FILESDIR}"/${PN}-6.10.2-glibc-2.43.patch
+	"${FILESDIR}"/${PN}-6.10.3-climits.patch
+	"${FILESDIR}"/${PN}-6.11.0-gcc17.patch
 )
 
 python_check_deps() {
@@ -132,10 +133,12 @@ qtwebengine_check-reqs() {
 	local CHECKREQS_DISK_USR=400M
 
 	if ! has distcc ${FEATURES}; then #830661
-		# assume ~2GB per job or 1.5GB if clang, possible with less
-		# depending on free memory and *FLAGS, but prefer being safe as
-		# users having OOM issues with qtwebengine been rather common
-		tc-is-clang && : 15 || : 20
+		# on average this does not use *that* much ram but then poor
+		# luck may lead to several 3.9+GB jobs happening at same time
+		# (less of an issue for users with 32+GB ram given they have
+		# room to handle a few spikes), try to find a balance but it
+		# won't be right for everyone (CHECKREQS_DONOTHING=1 to ignore)
+		tc-is-clang && : 17 || : 25 # clang:1.7GB/job, gcc:2.5GB/job
 		local CHECKREQS_MEMORY=$(($(makeopts_jobs)*_/10))G
 	fi
 
@@ -198,6 +201,7 @@ src_configure() {
 		-DQT_FEATURE_webengine_extensions=ON
 		# TODO: it may be possible to make x11 optional since 6.8+
 		-DQT_FEATURE_webengine_ozone_x11=ON
+		-DQT_FEATURE_webengine_pass_extra_flags=ON
 		-DQT_FEATURE_webengine_pepper_plugins=ON
 		-DQT_FEATURE_webengine_printing_and_pdf=ON
 		-DQT_FEATURE_webengine_spellchecker=ON
@@ -213,10 +217,6 @@ src_configure() {
 		# this by default in 6.7.3+ (bug #913923)
 		-DQT_FEATURE_webengine_system_re2=OFF
 
-		# currently seems unused with our configuration, doesn't link and grep
-		# seems(?) to imply no dlopen nor using bundled (TODO: check again)
-		-DQT_FEATURE_webengine_system_openh264=OFF
-
 		# system_libvpx=ON is intentionally ignored with USE=vaapi which leads
 		# to using system's being less tested, prefer disabling for now until
 		# vaapi can use it as well
@@ -227,14 +227,11 @@ src_configure() {
 		$(printf -- '-DQT_FEATURE_webengine_system_%s=ON ' \
 			freetype gbm glib harfbuzz lcms2 libjpeg libopenjpeg2 \
 			libpci libpng libtiff libudev libwebp libxml minizip \
-			opus snappy zlib)
+			openh264 opus snappy zlib)
 
 		# TODO: fixup gn cross, or package dev-qt/qtwebengine-gn with =ON
 		# (see also BUILD_ONLY_GN option added in 6.8+ for the latter)
 		-DINSTALL_GN=OFF
-
-		# TODO: drop this if no longer errors out early during cmake generation
-		-DQT_GENERATE_SBOM=OFF
 	)
 
 	local mygnargs=(
@@ -255,6 +252,10 @@ src_configure() {
 			ewarn "-g2+/-ggdb* *FLAGS replaced with -g1 (enable USE=custom-cflags to keep)"
 		fi
 
+		# gcc-16 with -O3 is known to cause runtime issues (bug #968755)
+		tc-is-gcc && [[ $(gcc-major-version) -ge 16 ]] &&
+			replace-flags '-O[3-9]' -O2
+
 		# Qt normally ignores users *FLAGS specifically for qtwebengine, and
 		# does not really support passing -march -- qt6-build.eclass has some
 		# checks to ensure working flags with amd64, but that does not exist
@@ -273,15 +274,6 @@ src_configure() {
 	einfo "Extra Gn args: ${EXTRA_GN}"
 
 	qt6-build_src_configure
-}
-
-src_compile() {
-	cmake_src_compile
-
-	# exact cause unknown, but >=qtwebengine-6.9.2 started to act as if
-	# QtWebEngineProcess is marked USER_FACING despite not set anywhere
-	# and this creates a user_facing_tool_links.txt with a broken symlink
-	:> "${BUILD_DIR}"/user_facing_tool_links.txt || die
 }
 
 src_test() {
@@ -329,6 +321,18 @@ src_install() {
 
 	[[ -e ${D}${QT6_LIBDIR}/libQt6WebEngineCore.so ]] || #601472
 		die "${CATEGORY}/${PF} failed to build anything. Please report to https://bugs.gentoo.org/"
+
+	# exact cause unknown, but >=qtwebengine-6.9.2 started to act as if
+	# QtWebEngineProcess is marked USER_FACING despite not set anywhere
+	# and this creates a user_facing_tool_links.txt with a broken symlink
+	if [[ -L ${ED}/usr/bin/QtWebEngineProcess6 ]] &&
+		[[ ! -e ${ED}/usr/bin/QtWebEngineProcess6 ]]
+	then
+		rm -- "${ED}"/usr/bin/QtWebEngineProcess6 || die
+	else
+		# eqawarn rather than die to avoid failing a long build over this
+		eqawarn "QA Notice: symlink workaround may be obsolete"
+	fi
 
 	if use test; then
 		local delete=( # sigh

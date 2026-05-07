@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit meson python-any-r1 systemd vala
 
 DESCRIPTION="D-Bus interfaces for querying and manipulating user account information"
-HOMEPAGE="https://www.freedesktop.org/wiki/Software/AccountsService/"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/AccountsService/ https://gitlab.freedesktop.org/accountsservice/accountsservice"
 SRC_URI="https://www.freedesktop.org/software/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-3+"
@@ -56,6 +56,7 @@ RDEPEND="${CDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-22.04.62-gentoo-system-users.patch
 	"${FILESDIR}"/${PN}-23.13.9-generate-version.patch #905770
+	"${FILESDIR}"/${PN}-23.13.9-test-languages.patch #903347
 	# From Alpine Linux
 	# https://gitlab.freedesktop.org/accountsservice/accountsservice/-/merge_requests/97
 	"${FILESDIR}"/${PN}-23.13.9-musl-fixes.patch

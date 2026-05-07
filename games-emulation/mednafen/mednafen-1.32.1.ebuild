@@ -12,8 +12,9 @@ S=${WORKDIR}/${PN}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 ~ppc64 ~x86"
 IUSE="alsa cpu_flags_ppc_altivec flac jack"
+REQUIRED_USE="ppc64? ( cpu_flags_ppc_altivec )" #969598
 
 RDEPEND="
 	app-arch/zstd:=

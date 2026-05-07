@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ VIM_PATCHES_VERSION="9.1.1432"
 LUA_COMPAT=( lua5-{1..4} luajit )
 PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="threads(+)"
-USE_RUBY="ruby31 ruby32"
+USE_RUBY="ruby32 ruby33"
 GENTOO_DEPEND_ON_PERL=no
 
 inherit bash-completion-r1 flag-o-matic lua-single perl-module prefix python-single-r1 ruby-single toolchain-funcs vim-doc xdg-utils
@@ -95,7 +95,7 @@ fi
 # various failures (bugs #630042 and #682320)
 RESTRICT="test"
 
-# platform-specific checks (bug #898450 #898452):
+# platform-specific checks (bug #898450):
 # - acl()     -- Solaris
 # - statacl() -- AIX
 QA_CONFIG_IMPL_DECL_SKIP=(
@@ -104,7 +104,7 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 )
 
 pkg_setup() {
-	# people with broken alphabets run into trouble. bug #82186.
+	# people with broken alphabets run into trouble. bug 82186.
 	unset LANG LC_ALL
 	export LC_COLLATE="C"
 
@@ -184,7 +184,7 @@ src_configure() {
 	local file
 	for file in /dev/pty/s* /dev/console /dev/hvc/* /dev/hvc*; do
 		if [[ -e ${file} ]]; then
-			addwrite ${file}
+			addwrite $file
 		fi
 	done
 
@@ -288,7 +288,7 @@ src_test() {
 }
 
 # Call eselect vi update with --if-unset
-# to respect user's choice (bug #187449)
+# to respect user's choice (bug 187449)
 eselect_vi_update() {
 	ebegin "Calling eselect vi update"
 	eselect vi update --if-unset

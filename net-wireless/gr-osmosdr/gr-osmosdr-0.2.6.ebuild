@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..13} )
 inherit cmake python-single-r1
 
 DESCRIPTION="GNU Radio source block for OsmoSDR and rtlsdr and hackrf"

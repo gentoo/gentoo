@@ -23,18 +23,14 @@ LICENSE="MIT"
 # Codicons: CC-BY-4.0
 LICENSE+=" Apache-2.0 CC-BY-4.0 MIT OFL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 arm64 x86"
 
 RDEPEND="
 	media-fonts/fontawesome
 	dev-python/qtpy[gui,${PYTHON_USEDEP}]
 "
-BDEPEND="
-	test? (
-		dev-python/pytest-qt[${PYTHON_USEDEP}]
-	)
-"
 
+EPYTEST_PLUGINS=( pytest-qt )
 distutils_enable_tests pytest
 distutils_enable_sphinx docs/source \
 	dev-python/sphinx-rtd-theme

@@ -1,0 +1,50 @@
+https://bugs.gentoo.org/957615
+https://github.com/inducer/pyopencl/commit/a56381055c6b4a75d69f62be82a4b72ee6d1d7ab
+
+From a56381055c6b4a75d69f62be82a4b72ee6d1d7ab Mon Sep 17 00:00:00 2001
+From: Thomas A Caswell <tcaswell@bnl.gov>
+Date: Wed, 12 Feb 2025 16:52:52 -0500
+Subject: [PATCH] MNT: stop using deprecated numpy macros
+
+These were deprecated in np1.7 and will be removed in np2.3 (currently removed
+on numpy main branch).
+
+xref https://github.com/numpy/numpy/pull/28254/
+---
+ src/wrap_cl.hpp      | 4 ++--
+ src/wrap_helpers.hpp | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/wrap_cl.hpp b/src/wrap_cl.hpp
+index 5b225d3cd..d61f3d546 100644
+--- a/src/wrap_cl.hpp
++++ b/src/wrap_cl.hpp
+@@ -5893,9 +5893,9 @@ namespace pyopencl
+ 
+     int ary_flags = 0;
+     if (order == NPY_FORTRANORDER)
+-      ary_flags |= NPY_FARRAY;
++      ary_flags |= NPY_ARRAY_FARRAY;
+     else if (order == NPY_CORDER)
+-      ary_flags |= NPY_CARRAY;
++      ary_flags |= NPY_ARRAY_CARRAY;
+     else
+       throw std::runtime_error("unrecognized order specifier");
+ 
+diff --git a/src/wrap_helpers.hpp b/src/wrap_helpers.hpp
+index 367749535..041065930 100644
+--- a/src/wrap_helpers.hpp
++++ b/src/wrap_helpers.hpp
+@@ -142,9 +142,9 @@ namespace py = nanobind;
+     \
+     int ary_flags = 0; \
+     if (order == NPY_FORTRANORDER) \
+-      ary_flags |= NPY_FARRAY; \
++      ary_flags |= NPY_ARRAY_FARRAY; \
+     else if (order == NPY_CORDER) \
+-      ary_flags |= NPY_CARRAY; \
++      ary_flags |= NPY_ARRAY_CARRAY; \
+     else \
+       throw std::runtime_error("unrecognized order specifier"); \
+     \
+

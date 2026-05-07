@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/973056
+https://savannah.gnu.org/bugs/index.php?68265
+--- a/src/openssl.c
++++ b/src/openssl.c
+@@ -226,7 +226,7 @@
+       break;
+ 
+     case secure_protocol_sslv3:
+-#ifndef OPENSSL_NO_SSL3_METHOD
++#if !defined OPENSSL_NO_SSL3_METHOD && OPENSSL_VERSION_NUMBER < 0x40000000L
+       meth = SSLv3_client_method ();
+ #endif
+       break;
+

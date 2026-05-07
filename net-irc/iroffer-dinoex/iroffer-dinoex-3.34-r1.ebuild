@@ -11,7 +11,7 @@ SRC_URI="https://iroffer.net/${P}.tar.gz"
 
 LICENSE="GPL-2+-with-openssl-exception MIT blowfish? ( LGPL-2.1+ ) upnp? ( BSD )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 MY_L10N=( de en fr it tr )
 IUSE="+admin +blowfish curl debug geoip gnutls +http +memsave ruby ssl +telnet upnp"
 IUSE+=" ${MY_L10N[@]/#/l10n_}"

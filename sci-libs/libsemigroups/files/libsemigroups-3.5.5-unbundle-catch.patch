@@ -1,0 +1,40 @@
+This doesn't fully unbundle it, you also need to use sed to change all
+of the
+
+  test_foo_SOURCES += third_party/Catch2-3.14.0/catch_amalgamated_patch.cpp
+
+lines to
+
+  test_foo_LDADD = $(LDADD) -lCatch2 -lCatch2Main
+
+diff --git a/Makefile.am b/Makefile.am
+index 8141e769..550a25b4 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -4,7 +4,6 @@
+ 
+ AM_CXXFLAGS =  -I$(abs_top_srcdir)/include
+ AM_CXXFLAGS += -I$(abs_top_srcdir)/third_party # for backward-cpp
+-AM_CXXFLAGS += -I$(abs_top_srcdir)/third_party/Catch2-3.14.0
+ AM_CXXFLAGS += -I$(abs_top_srcdir)/third_party/HPCombi-1.1.2/include
+ AM_CXXFLAGS += -I$(abs_top_srcdir)/third_party/HPCombi-1.1.2/third_party
+ AM_CXXFLAGS += -I$(abs_top_srcdir)/third_party/rx-ranges/include
+@@ -216,9 +215,6 @@ detailinclude_HEADERS += include/libsemigroups/detail/word-graph-with-sources.hp
+ detailinclude_HEADERS += include/libsemigroups/detail/word-graph-with-sources.tpp
+ detailinclude_HEADERS += include/libsemigroups/detail/word-iterators.hpp
+ 
+-catch2includedir = $(includedir)/libsemigroups/Catch2-3.14.0/
+-catch2include_HEADERS = third_party/Catch2-3.14.0/catch_amalgamated.hpp
+-
+ if USE_BUNDLED_MAGIC_ENUM
+ magicenumincludedir = $(includedir)/libsemigroups/magic_enum
+ magicenuminclude_HEADERS = third_party/magic_enum-0.9.7/include/magic_enum/magic_enum.hpp
+@@ -1128,8 +1124,6 @@ EXTRA_DIST += hpcombi.mk.in
+ EXTRA_DIST += tests/bmat-data.hpp
+ EXTRA_DIST += tests/test-main.hpp
+ EXTRA_DIST += tests/word-graph-test-common.hpp
+-EXTRA_DIST += third_party/Catch2-3.14.0/catch_amalgamated.cpp
+-EXTRA_DIST += third_party/Catch2-3.14.0/catch_amalgamated.hpp
+ EXTRA_DIST += third_party/HPCombi-1.1.2/HPCOMBI_VERSION
+ EXTRA_DIST += third_party/HPCombi-1.1.2/LICENSE
+ EXTRA_DIST += third_party/HPCombi-1.1.2/README.md

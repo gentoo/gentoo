@@ -45,7 +45,7 @@ src_compile() {
 	build () {
 		gprbuild -P gnat/gnatformat.gpr -XGNATFORMAT_LIBRARY_TYPE=$1 \
 			-XLIBRARY_TYPE=$1 -XGNATFORMAT_BUILD_MODE=dev -v -k -p \
-			-j$(makeopts_jobs) -largs ${LDFLAGS} -cargs ${ADAFLAGS} \
+			-j$(get_makeopts_jobs) -largs ${LDFLAGS} -cargs ${ADAFLAGS} \
 			|| die "gprbuild failed"
 	}
 	build relocatable
@@ -53,13 +53,13 @@ src_compile() {
 	use static-pic  && build static-pic
 	gprbuild -P gnat/gnatformat_driver.gpr \
 		-XGNATFORMAT_LIBRARY_TYPE=relocatable -XLIBRARY_TYPE=relocatable \
-		-XGNATFORMAT_BUILD_MODE=dev -v -k -p -j$(makeopts_jobs) \
+		-XGNATFORMAT_BUILD_MODE=dev -v -k -p -j$(get_makeopts_jobs) \
 		-largs ${LDFLAGS} -cargs ${ADAFLAGS} || die "gprbuild failed"
 	if use test; then
 		GPR_PROJECT_PATH=gnat \
 			gprbuild -P testsuite/test_programs/partial_gnatformat.gpr \
 			-XGNATFORMAT_LIBRARY_TYPE=relocatable -XLIBRARY_TYPE=relocatable \
-			-XGNATFORMAT_BUILD_MODE=dev -v -k -p -j$(makeopts_jobs) \
+			-XGNATFORMAT_BUILD_MODE=dev -v -k -p -j$(get_makeopts_jobs) \
 			-largs ${LDFLAGS} -cargs ${ADAFLAGS} || die "gprbuild failed"
 	fi
 	use doc && emake -C user_manual html

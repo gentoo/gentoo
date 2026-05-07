@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit autotools desktop python-single-r1 xdg
 
@@ -64,8 +64,8 @@ COMMONDEPEND="${NOTIFICATIONDEPEND}
 		>=dev-libs/dbus-glib-0.60
 		sys-apps/dbus
 	)
-	gnutls? ( >=net-libs/gnutls-3.4 )
-	imap? ( >=net-libs/libetpan-0.57 )
+	gnutls? ( >=net-libs/gnutls-3.4.0 )
+	imap? ( >=net-libs/libetpan-1.9.4 )
 	ldap? ( >=net-nds/openldap-2.0.7:= )
 	litehtml? (
 		>=dev-libs/gumbo-0.10:=

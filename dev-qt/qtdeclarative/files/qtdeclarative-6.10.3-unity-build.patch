@@ -1,0 +1,17 @@
+https://codereview.qt-project.org/c/qt/qtdeclarative/+/723105
+--- a/src/qmlcompiler/qqmlsa.cpp
++++ b/src/qmlcompiler/qqmlsa.cpp
+@@ -1379,5 +1379,5 @@
+     QQmlJSScopesById::MostLikelyCallback<QQmlJSScope::ConstPtr> result;
+     PassManagerPrivate::visitor(*d->m_manager)->addressableScopes().possibleScopes(
+-            id.toString(), QQmlJSScope::scope(context), Default, result);
++            id.toString(), QQmlJSScope::scope(context), QQmlJSScopesByIdOption::Default, result);
+     return QQmlJSScope::createQQmlSAElement(result.result);
+ }
+@@ -1391,5 +1391,5 @@
+     QQmlJSScopesById::MostLikelyCallback<QString> result;
+     PassManagerPrivate::visitor(*d->m_manager)->addressableScopes().possibleIds(
+-            QQmlJSScope::scope(element), QQmlJSScope::scope(context), Default, result);
++            QQmlJSScope::scope(element), QQmlJSScope::scope(context), QQmlJSScopesByIdOption::Default, result);
+     return result.result;
+ }

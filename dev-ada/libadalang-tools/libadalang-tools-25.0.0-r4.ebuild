@@ -41,12 +41,12 @@ src_prepare() {
 }
 
 src_compile() {
-	gprbuild -v -k -p -j$(makeopts_jobs) -XLIBRARY_TYPE=relocatable \
+	gprbuild -v -k -p -j$(get_makeopts_jobs) -XLIBRARY_TYPE=relocatable \
 		-XXMLADA_BUILD=relocatable -XLALTOOLS_BUILD_MODE=prod \
 		-XLALTOOLS_SET=all -P src/build.gpr \
 		-cargs:Ada ${ADAFLAGS} -largs ${LDFLAGS} || die
 	build () {
-		gprbuild -v -k -p -j$(makeopts_jobs) -XLIBRARY_TYPE=$1 \
+		gprbuild -v -k -p -j$(get_makeopts_jobs) -XLIBRARY_TYPE=$1 \
 			-XXMLADA_BUILD=$1 -XLALTOOLS_SET=all -P src/lal_tools.gpr \
 			-cargs:Ada ${ADAFLAGS} -largs ${LDFLAGS} || die
 	}
@@ -55,19 +55,19 @@ src_compile() {
 	use static-pic  && build static-pic
 	if use test; then
 		cd testsuite/ada_drivers
-		gprbuild -v -k -p -j$(makeopts_jobs) -XLIBRARY_TYPE=relocatable \
+		gprbuild -v -k -p -j$(get_makeopts_jobs) -XLIBRARY_TYPE=relocatable \
 			-XXMLADA_BUILD=relocatable -XLALTOOLS_SET=all \
 			-P gen_marshalling_lib/tgen_marshalling.gpr \
 			-cargs:Ada ${ADAFLAGS} -largs ${LDFLAGS} || die
-		gprbuild -v -k -p -j$(makeopts_jobs) -XLIBRARY_TYPE=relocatable \
+		gprbuild -v -k -p -j$(get_makeopts_jobs) -XLIBRARY_TYPE=relocatable \
 			-XXMLADA_BUILD=relocatable -XLALTOOLS_SET=all \
 			-P indent/indent.gpr \
 			-cargs:Ada ${ADAFLAGS} -largs ${LDFLAGS} || die
-		gprbuild -v -k -p -j$(makeopts_jobs) -XLIBRARY_TYPE=relocatable \
+		gprbuild -v -k -p -j$(get_makeopts_jobs) -XLIBRARY_TYPE=relocatable \
 			-XXMLADA_BUILD=relocatable -XLALTOOLS_SET=all \
 			-P outgoing_calls/outgoing_calls.gpr \
 			-cargs:Ada ${ADAFLAGS} -largs ${LDFLAGS} || die
-		gprbuild -v -k -p -j$(makeopts_jobs) -XLIBRARY_TYPE=relocatable \
+		gprbuild -v -k -p -j$(get_makeopts_jobs) -XLIBRARY_TYPE=relocatable \
 			-XXMLADA_BUILD=relocatable -XLALTOOLS_SET=all \
 			-P partial_gnatpp/partial_gnatpp.gpr \
 			-cargs:Ada ${ADAFLAGS} -largs ${LDFLAGS} || die

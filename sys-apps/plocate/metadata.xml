@@ -13,10 +13,6 @@
 		<email>flow@gentoo.org</email>
 		<name>Florian Schmaus</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>sam@gentoo.org</email>
-		<name>Sam James</name>
-	</maintainer>
 	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>

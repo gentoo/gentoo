@@ -1,0 +1,12 @@
+Thanks-to: James Browning
+
+--- a/packaging/gpsd-setup.py.in
++++ b/packaging/gpsd-setup.py.in
+@@ -41,7 +41,6 @@ This module is for additional Pythons.''',
+     },
+     classifiers=[
+         'Development Status :: 5 - Production/Stable',
+-        'License :: OSI Approved :: BSD License',
+         'Operating System :: POSIX',
+         'Programming Language :: Python',
+     ],

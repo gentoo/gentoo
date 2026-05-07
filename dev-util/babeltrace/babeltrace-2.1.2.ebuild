@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}$(ver_cut 1)-${PV}"
 
 LICENSE="GPL-2"
 SLOT="2/$(ver_cut 1)"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ppc ppc64 ~riscv x86"
 IUSE="doc +elfutils +man plugins python"
 REQUIRED_USE="plugins? ( python ) python? ( ${PYTHON_REQUIRED_USE} )"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ S="${WORKDIR}/"
 ## Apache-2.0 license is for MathJax (for offline equations rendering)
 LICENSE="BSD MIT Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv ~x86"
 
 src_install() {
 	insinto /usr/share/

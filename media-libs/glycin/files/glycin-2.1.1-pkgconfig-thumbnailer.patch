@@ -1,0 +1,32 @@
+From ecc909f997d4b917d501cffcb358639decd684de Mon Sep 17 00:00:00 2001
+From: Xi Ruoyao <xry111@xry111.site>
+Date: Thu, 9 Apr 2026 17:19:34 +0800
+Subject: [PATCH] meson: Export PKG_CONFIG_PATH for glycin-thumbnailer as well
+
+Since !350 glycin-thumbnailer needs to link against libglycin as well as
+libglycin-gtk4.
+
+Part-of: <https://gitlab.gnome.org/GNOME/glycin/-/merge_requests/396>
+---
+ meson.build | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 9412dfd3..70d7d453 100644
+--- a/meson.build
++++ b/meson.build
+@@ -31,8 +31,9 @@ crate_version_bin = find_program(meson.project_source_root() / 'build-aux/crates
+ cargo_env = environment()
+ cargo_env.set('CARGO_HOME', cargo_home)
+ 
+-if get_option('libglycin') and get_option('libglycin-gtk4')
+-  # Let the libglycin-gtk4 build find the previously built libglycin
++if get_option('libglycin') and (get_option('libglycin-gtk4') or get_option('glycin-thumbnailer'))
++  # Let the libglycin-gtk4 or glycin-thumbnailer build find the previously
++  # built libglycin
+   cargo_env.prepend(
+     'PKG_CONFIG_PATH',
+     meson.project_build_root() / 'meson-uninstalled',
+-- 
+GitLab
+

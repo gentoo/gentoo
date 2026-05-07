@@ -24,7 +24,6 @@
     <flag name="curl">Support fetching and pushing (requires webdav too) over http:// and https:// protocols</flag>
     <flag name="gpg">Pull in gnupg for signing -- without gnupg, attempts at signing will fail at runtime!</flag>
     <flag name="highlight">GitWeb support for <pkg>app-text/highlight</pkg></flag>
-    <flag name="mediawiki">Support pulling and pushing from MediaWiki</flag>
     <flag name="perforce">Add support for Perforce version control system (requires manual installation of Perforce client)</flag>
     <flag name="rust">Build components using Rust, starting with 2.52 with varint. This will become mandatory upstream with Git 3.0.</flag>
     <flag name="safe-directory">Respect the safe.directory setting</flag>

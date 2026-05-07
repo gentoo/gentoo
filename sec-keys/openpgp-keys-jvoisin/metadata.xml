@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>lschmelting@posteo.com</email>
+		<name>Lukas Schmelting</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">jvoisin/mat2</remote-id>
+	</upstream>
+</pkgmetadata>

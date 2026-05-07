@@ -35,6 +35,7 @@ PATCHES=(
 
 pkg_setup() {
 	fortran-2_pkg_setup
+	linux-info_pkg_setup
 }
 
 src_prepare() {

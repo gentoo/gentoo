@@ -4,7 +4,7 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-4 )
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit cmake linux-info lua-single python-any-r1 readme.gentoo-r1 xdg
 
@@ -240,11 +240,11 @@ src_install() {
 
 		insinto /usr/share/gtksourceview-4/language-specs
 		doins "${S}"/extras/gedit/conky.lang
+
+		rm -r "${ED}"/{nano,vim} || die
 	fi
 
 	readme.gentoo_create_doc
-
-	rm -rf "${ED}"/{nano,vim} || die
 }
 
 pkg_postinst() {

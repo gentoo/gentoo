@@ -12,7 +12,7 @@ LLVM_OPTIONAL=1
 # and 3rdparty/ tries to FetchContent gtest)
 QT6_RESTRICT_TESTS=1
 
-inherit llvm-r2 optfeature qt6-build xdg
+inherit flag-o-matic llvm-r2 optfeature qt6-build xdg
 
 DESCRIPTION="Qt Tools Collection"
 
@@ -82,6 +82,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# validator.h:25:8: error: type 'struct Validator' ... [-Werror=odr]
+	use linguist && filter-lto
+
 	use qdoc && llvm_chost_setup
 
 	local mycmakeargs=(

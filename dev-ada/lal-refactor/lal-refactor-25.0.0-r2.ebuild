@@ -1,4 +1,4 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -46,7 +46,7 @@ src_compile() {
 	build () {
 		gprbuild -v -k -XLAL_REFACTOR_LIBRARY_TYPE=$1 -XLIBRARY_TYPE=$1 \
 			-XBUILD_MODE=prod \
-			-P gnat/lal_refactor.gpr -p -j$(makeopts_jobs) \
+			-P gnat/lal_refactor.gpr -p -j$(get_makeopts_jobs) \
 			-largs ${LDFLAGS} -cargs ${ADAFLAGS} || die
 	}
 	build relocatable
@@ -55,14 +55,14 @@ src_compile() {
 
 	gprbuild -v -k -XLAL_REFACTOR_LIBRARY_TYPE=relocatable \
 		-XLIBRARY_TYPE=relocatable -Pgnat/lal_refactor_driver.gpr -p \
-		-j$(makeopts_jobs) -largs ${LDFLAGS} -cargs ${ADAFLAGS} || die
+		-j$(get_makeopts_jobs) -largs ${LDFLAGS} -cargs ${ADAFLAGS} || die
 
 	if use test; then
 		GPR_PROJECT_PATH=gnat \
 			gprbuild -v -k -XLAL_REFACTOR_LIBRARY_TYPE=relocatable  \
 			-XLIBRARY_TYPE=relocatable \
 			-P testsuite/ada_drivers/gnat/lal_refactor_test_drivers.gpr \
-			-p -j$(makeopts_jobs) || die
+			-p -j$(get_makeopts_jobs) || die
 	fi
 }
 

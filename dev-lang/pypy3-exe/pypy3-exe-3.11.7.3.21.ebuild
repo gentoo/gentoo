@@ -20,13 +20,13 @@ HOMEPAGE="
 SRC_URI="
 	https://downloads.python.org/pypy/${MY_P}-src.tar.bz2
 	https://buildbot.pypy.org/pypy/${MY_P}-src.tar.bz2
-	https://dev.gentoo.org/~mgorny/dist/python/${PATCHSET}.tar.xz
+	https://distfiles.gentoo.org/pub/proj/python/patchsets/pypy${PYVER}/${PATCHSET}.tar.xz
 "
 S="${WORKDIR}/${MY_P}-src"
 
 LICENSE="MIT"
 SLOT="${PV%_p*}"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="+jit low-memory ncurses cpu_flags_x86_sse2"
 
 RDEPEND="

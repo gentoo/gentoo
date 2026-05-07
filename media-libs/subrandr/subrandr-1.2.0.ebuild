@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/afishhh/subrandr/"
 SRC_URI="
 	https://github.com/afishhh/subrandr/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz
-	https://dev.gentoo.org/~ionen/distfiles/${P}-vendor.tar.xz
+	https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${P}-vendor.tar.xz
 "
 
 LICENSE="MPL-2.0"

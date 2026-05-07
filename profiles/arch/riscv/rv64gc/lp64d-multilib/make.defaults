@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # RISC-V profile for rv64gc multilib
@@ -15,3 +15,7 @@ ABI="lp64d"
 
 # One-level dir for the default abi
 LIBDIR_lp64d="lib64"
+
+# James Le Cuirot <chewi@gentoo.org> (2026-02-13)
+# Enable the native QEMU target for this architecture by default.
+QEMU_SOFTMMU_TARGETS="riscv64"

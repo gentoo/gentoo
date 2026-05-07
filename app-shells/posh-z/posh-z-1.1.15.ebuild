@@ -17,7 +17,7 @@ else
 		-> ${P}.snapshot.gh.tar.gz"
 	S="${WORKDIR}/z-${COMMIT}"
 
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 LICENSE="public-domain"

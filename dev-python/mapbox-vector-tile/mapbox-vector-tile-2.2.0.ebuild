@@ -1,14 +1,14 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1
 
-DESCRIPTION="Mapbox Vector Tile encoding and decoding."
+DESCRIPTION="Mapbox Vector Tile encoding and decoding"
 HOMEPAGE="
 	https://github.com/tilezen/mapbox-vector-tile/
 	https://pypi.org/project/mapbox-vector-tile/

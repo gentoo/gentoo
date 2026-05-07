@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,5 +32,5 @@ DEPEND="${RDEPEND}"
 src_install() {
 	cmake_src_install
 	python_optimize
-	mv "${ED}/usr/share/doc/${PN}" "${ED}/usr/share/doc/${P}"
+	mv "${ED}/usr/share/doc/${PN}" "${ED}/usr/share/doc/${PF}"
 }

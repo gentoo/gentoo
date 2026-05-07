@@ -1,0 +1,42 @@
+--- a/src/firecfg/firecfg.config
++++ b/src/firecfg/firecfg.config
+@@ -301,7 +301,8 @@
+ fluffychat
+ #foliate # webkit2gtk-4.x requires bwrap (see #3647)
+ font-manager
+-fontforge
++# breaks libreoffice build: https://github.com/netblue30/firejail/issues/7133
++#fontforge
+ fossamail
+ four-in-a-row
+ fractal
+@@ -650,7 +651,8 @@
+ musictube
+ musixmatch
+ mutool
+-mutt
++# Breaks when configs are under ~/.mutt/
++#mutt
+ mypaint
+ mypaint-ora-thumbnailer
+ #nano # text editor (see Note2)
+@@ -705,7 +709,8 @@
+ palemoon
+ #pandoc
+ parole
+-patch
++# Breaks emerge/portage on Gentoo: path issues
++#patch
+ pavucontrol
+ pavucontrol-qt
+ pcsxr
+@@ -1006,7 +1009,8 @@
+ weechat
+ weechat-curses
+ wesnoth
+-wget
++# Breaks emerge/portage on Gentoo: path issues
++#wget
+ wget2
+ whalebird
+ whois

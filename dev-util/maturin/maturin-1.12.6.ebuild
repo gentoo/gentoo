@@ -14,7 +14,7 @@ HOMEPAGE="https://www.maturin.rs/"
 SRC_URI="
 	https://github.com/PyO3/maturin/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
-	https://dev.gentoo.org/~ionen/distfiles/${P}-vendor.tar.xz
+	https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${P}-vendor.tar.xz
 "
 # ^ tarball also includes test-crates' Cargo.lock(s) crates for tests
 
@@ -24,7 +24,7 @@ LICENSE+="
 	CDLA-Permissive-2.0 MIT MPL-2.0 Unicode-3.0 ZLIB BZIP2
 " # crates
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 x86"
 IUSE="doc +ssl test"
 RESTRICT="!test? ( test )"
 
@@ -122,25 +122,27 @@ python_test() {
 	# need this for (new) python versions not yet recognized by pyo3
 	local -x PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
 
-	local skip=(
+	local CARGO_SKIP_TESTS=(
 		# picky cli output test that easily benignly fail (bug #937992)
-		--skip cli_tests
+		cli_tests
+		# fails for unsupported rust targets, non-issue here (bug #973104)
+		pypi_compatibility_linux_tag
 		# avoid need for wasm over a single hello world test
-		--skip integration_wasm_hello_world
+		integration_wasm_hello_world
 		# fragile depending on rust version, also wants libpypy*-c.so for pypy
-		--skip pyo3_no_extension_module
+		pyo3_no_extension_module
 		# unimportant tests that require uv, and not obvious to get it
 		# to work with network-sandbox (not worth the trouble)
-		--skip develop_hello_world::case_2
-		--skip develop_pyo3_ffi_pure::case_2
+		develop_hello_world::case_2
+		develop_pyo3_ffi_pure::case_2
 		# compliance test using zig requires an old libc to pass (bug #946967)
-		--skip integration_pyo3_mixed_py_subdir
+		integration_pyo3_mixed_py_subdir
 		# these currently attempt to install tomli regardless of python version
-		--skip pep517_default_profile
-		--skip pep517_editable_profile
+		pep517_default_profile
+		pep517_editable_profile
 	)
 
-	cargo_src_test -- "${skip[@]}"
+	cargo_src_test
 }
 
 python_install_all() {

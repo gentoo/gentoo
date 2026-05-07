@@ -11,7 +11,7 @@ RUBY_FAKEGEM_GEMSPEC="megatest.gemspec"
 
 inherit ruby-fakegem
 
-DESCRIPTION="A test-unit like framework with a focus on usability, designed with CI in mind."
+DESCRIPTION="A test-unit like framework with a focus on usability, designed with CI in mind"
 HOMEPAGE="https://github.com/byroot/megatest"
 SRC_URI="https://github.com/byroot/megatest/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 

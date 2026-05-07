@@ -8,8 +8,8 @@
 	<use>
 		<flag name="drm">Enable Linux DRM for backend</flag>
 		<flag name="fbdev">Enable Linux FBDev for backend</flag>
+		<flag name="freetype">Enable freetype2 renderer</flag>
 		<flag name="pango">Enable pango font rendering</flag>
-		<flag name="pixman">Enable pixman font rendering</flag>
 		<flag name="systemd">Enable multiseat support via systemd</flag>
 	</use>
 	<upstream>

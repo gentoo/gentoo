@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -129,8 +129,9 @@ src_compile() {
 
 	./mesa-quilt push -a || die
 
-	emake -C nx-X11 BuildDependsOnly
-	# Parallel make issue resurfaced, upstream working on autotools switch
+	# Upstream uses -j1 for both BuildDependsOnly and World due to
+	# broken parallel make in imake-generated Makefiles (bug #950287)
+	emake -j1 -C nx-X11 BuildDependsOnly
 	emake -j1 -C nx-X11 World \
 		USRLIBDIR="${EPREFIX}/usr/$(get_libdir)/${PN}/X11" \
 		SHLIBDIR="${EPREFIX}/usr/$(get_libdir)" \

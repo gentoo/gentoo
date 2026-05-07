@@ -8,6 +8,7 @@
 		<flag name="boot">Enable systemd-boot (UEFI boot manager)</flag>
 		<flag name="kernel-install">Enable kernel-install</flag>
 		<flag name="kmod">Enable kernel module loading via <pkg>sys-apps/kmod</pkg></flag>
+		<flag name="sysctl">Install systemd-sysctl and sysctl.d files</flag>
 		<flag name="sysusers">Enable systemd-sysusers</flag>
 		<flag name="tmpfiles">Enable systemd-tmpfiles</flag>
 		<flag name="udev">Enable systemd-udev (userspace device manager)</flag>

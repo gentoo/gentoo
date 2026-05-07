@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -151,8 +151,8 @@ PATCHES=(
 	# and the documentation mentions that it is a Gentoo addition.
 	"${FILESDIR}"/${PN}-2.50.0-diff-implement-config.diff.renames-copies-harder.patch
 
-	"${FILESDIR}"/${PN}-2.52.0-0001-rust-don-t-pass-quiet-to-cargo.patch
-	"${FILESDIR}"/${PN}-2.52.0-0002-rust-respect-CARGO-environment-variable.patch
+	"${FILESDIR}"/${PN}-2.54.0-0001-rust-don-t-pass-quiet-to-cargo.patch
+	"${FILESDIR}"/${PN}-2.54.0-0002-rust-respect-CARGO-environment-variable.patch
 )
 
 pkg_setup() {
@@ -232,6 +232,8 @@ src_configure() {
 		$(meson_feature curl)
 		$(meson_feature cgi gitweb)
 		$(meson_feature webdav expat)
+		$(meson_feature tk gitk)
+		$(meson_feature tk git_gui)
 		$(meson_feature iconv)
 		$(meson_feature nls gettext)
 		$(meson_feature pcre pcre2)
@@ -272,18 +274,6 @@ src_configure() {
 	fi
 
 	meson_src_configure
-
-	if use tk ; then
-		local tkdir
-		for tkdir in git-gui gitk-git ; do
-			(
-				EMESON_SOURCE="${S}"/${tkdir}
-				BUILD_DIR="${WORKDIR}"/${tkdir}_build
-				emesonargs=()
-				meson_src_configure
-			)
-		done
-	fi
 }
 
 git_emake() {
@@ -315,17 +305,6 @@ git_emake() {
 
 src_compile() {
 	meson_src_compile
-
-	if use tk ; then
-		local tkdir
-		for tkdir in git-gui gitk-git ; do
-			(
-				EMESON_SOURCE="${S}"/${tkdir}
-				BUILD_DIR="${WORKDIR}"/${tkdir}_build
-				meson_src_compile
-			)
-		done
-	fi
 
 	if use doc ; then
 		# Workaround fragments that still use the Makefile and can't
@@ -444,17 +423,6 @@ src_install() {
 		newconfd "${FILESDIR}"/git-daemon.confd git-daemon
 		systemd_newunit "${FILESDIR}/git-daemon_at-r1.service" "git-daemon@.service"
 		systemd_dounit "${FILESDIR}/git-daemon.socket"
-	fi
-
-	if use tk ; then
-		local tkdir
-		for tkdir in git-gui gitk-git ; do
-			(
-				EMESON_SOURCE="${S}"/${tkdir}
-				BUILD_DIR="${WORKDIR}"/${tkdir}_build
-				meson_src_install
-			)
-		done
 	fi
 
 	perl_delete_localpod

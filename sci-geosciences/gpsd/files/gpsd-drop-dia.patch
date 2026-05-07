@@ -1,0 +1,14 @@
+Thanks-to: James Browning
+Gentoo bug: 836730
+Gentoo bug: 967742
+
+--- a/SConscript
++++ b/SConscript
+@@ -1542,7 +1542,6 @@ if not cleaning and not helping:
+         have_canplayer = config.CheckProg('canplayer')
+         have_coverage = config.CheckProg('coverage')
+         have_cppcheck = config.CheckProg('cppcheck')
+-        have_dia = config.CheckProg('dia')
+         have_flake8 = config.CheckProg('flake8')
+         have_pycodestyle = config.CheckProg('pycodestyle')
+         have_pylint = config.CheckProg('pylint')

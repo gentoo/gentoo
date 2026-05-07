@@ -117,7 +117,7 @@ BDEPEND="
 	)
 "
 if [[ ${PV} != 9999 ]]; then
-	BDEPEND+=">=sec-keys/openpgp-keys-handbrake-20260311"
+	BDEPEND+=" verify-sig? ( >=sec-keys/openpgp-keys-handbrake-20260311 )"
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/handbrake.asc
 fi
 

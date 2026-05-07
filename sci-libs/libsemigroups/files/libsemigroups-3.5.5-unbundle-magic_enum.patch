@@ -1,0 +1,90 @@
+https://github.com/libsemigroups/libsemigroups/pull/969
+
+diff --git a/Makefile.am b/Makefile.am
+index 613b204e..f308f1c8 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -8,11 +8,14 @@ AM_CXXFLAGS += -I$(abs_top_srcdir)/third_party/Catch2-3.14.0
+ AM_CXXFLAGS += -I$(abs_top_srcdir)/third_party/HPCombi-1.1.2/include
+ AM_CXXFLAGS += -I$(abs_top_srcdir)/third_party/HPCombi-1.1.2/third_party
+ AM_CXXFLAGS += -I$(abs_top_srcdir)/third_party/rx-ranges/include
+-AM_CXXFLAGS += -I$(abs_top_srcdir)/third_party/magic_enum-0.9.7/include
+ AM_CXXFLAGS += -std=gnu++17 -O3 -Wall -Wextra
+ AM_CXXFLAGS += $(WARNING_CXXFLAGS)
+ AM_CXXFLAGS += $(FMT_CFLAGS)
+ AM_CXXFLAGS += $(EIGEN3_CFLAGS)
++AM_CXXFLAGS += $(MAGICENUM_CFLAGS)
++if USE_BUNDLED_MAGIC_ENUM
++AM_CXXFLAGS += -I$(abs_top_srcdir)/third_party/magic_enum-0.9.7/include
++endif
+ if LIBSEMIGROUPS_HPCOMBI_ENABLED
+ AM_CXXFLAGS += $(HPCOMBI_CXXFLAGS)
+ endif
+@@ -217,6 +220,7 @@ detailinclude_HEADERS += include/libsemigroups/detail/word-iterators.hpp
+ catch2includedir = $(includedir)/libsemigroups/Catch2-3.14.0/
+ catch2include_HEADERS = third_party/Catch2-3.14.0/catch_amalgamated.hpp
+ 
++if USE_BUNDLED_MAGIC_ENUM
+ magicenumincludedir = $(includedir)/libsemigroups/magic_enum
+ magicenuminclude_HEADERS = third_party/magic_enum-0.9.7/include/magic_enum/magic_enum.hpp
+ magicenuminclude_HEADERS += third_party/magic_enum-0.9.7/include/magic_enum/magic_enum_all.hpp
+@@ -227,6 +231,7 @@ magicenuminclude_HEADERS += third_party/magic_enum-0.9.7/include/magic_enum/magi
+ magicenuminclude_HEADERS += third_party/magic_enum-0.9.7/include/magic_enum/magic_enum_iostream.hpp
+ magicenuminclude_HEADERS += third_party/magic_enum-0.9.7/include/magic_enum/magic_enum_switch.hpp
+ magicenuminclude_HEADERS += third_party/magic_enum-0.9.7/include/magic_enum/magic_enum_utility.hpp
++endif
+ 
+ rxrangesincludedir = $(includedir)/libsemigroups/rx
+ rxrangesinclude_HEADERS = third_party/rx-ranges/include/rx/ranges.hpp
+diff --git a/configure.ac b/configure.ac
+index 737103b5..92d9eba7 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -135,6 +135,9 @@ AX_CHECK_FMT()
+ # disabled altogether
+ AX_CHECK_EIGEN()
+ 
++# Check for an external magic_enum
++AX_CHECK_MAGIC_ENUM()
++
+ dnl Output configured files
+ 
+ dnl compiler builtins
+diff --git a/m4/ax_check_magic_enum.m4 b/m4/ax_check_magic_enum.m4
+new file mode 100644
+index 00000000..b364bb60
+--- /dev/null
++++ b/m4/ax_check_magic_enum.m4
+@@ -0,0 +1,32 @@
++# handle magic_enum checks
++#
++AC_DEFUN([AX_CHECK_MAGIC_ENUM], [
++  AC_ARG_WITH(
++    [external-magic-enum],
++    [AS_HELP_STRING([--with-external-magic-enum], [use external magic_enum (default: no)])],
++    [],
++    [with_external_magic_enum=no]
++  )
++  AC_MSG_CHECKING([whether to use external magic_enum])
++  AC_MSG_RESULT([$with_external_magic_enum])
++
++  AS_IF([test "x$with_external_magic_enum" = xyes], [
++    # Check if we can use magic_enum from the system. If not, error.
++    # The version constraint is to ensure that the headers relative to
++    # $includedir are magic_enum/foo.hpp. In 0.9.6, the magic_enum/
++    # prefix was not used.
++    m4_ifdef([PKG_CHECK_MODULES], [
++      PKG_CHECK_MODULES(MAGICENUM, [magic_enum >= 0.9.7], [
++        AC_MSG_NOTICE([external magic_enum will be used])
++      ], [
++        AC_MSG_ERROR([external magic_enum not found])
++      ])
++    ], [
++      AC_MSG_ERROR(m4_normalize([
++        cannot use flag --with-external-magic-enum, the libsemigroups configure file
++        was created on a system without m4 macros for pkg-config available...
++      ]))
++    ])
++  ])
++  AM_CONDITIONAL([USE_BUNDLED_MAGIC_ENUM], [test "x$with_external_magic_enum" != xyes])
++])

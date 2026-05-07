@@ -81,7 +81,7 @@ else
 			-> AvaloniaEdit-${AVALONIA_EDIT_COMMIT}.snapshot.gh.tar.gz
 	"
 
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 SRC_URI+=" ${NUGET_URIS} "

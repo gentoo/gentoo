@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 ARCH="alpha"
@@ -27,3 +27,7 @@ VIDEO_CARDS="fbdev mga r128 radeon"
 # Enable USE=libtirpc by default, to ease dependency resolution during
 # the stabilization of glibc-2.26. Bug 657148
 USE="libtirpc"
+
+# James Le Cuirot <chewi@gentoo.org> (2026-02-13)
+# Enable the native QEMU target for this architecture by default.
+QEMU_SOFTMMU_TARGETS="alpha"

@@ -13,7 +13,7 @@ S="${WORKDIR}/uemacs"
 
 LICENSE="free-noncomm"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 
 RDEPEND="sys-libs/ncurses:0="
 DEPEND="${RDEPEND}"

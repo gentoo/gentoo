@@ -6,5 +6,5 @@
 dev-libs/libpcre2 jit
 dev-lang/php jit
 net-proxy/haproxy pcre-jit
-www-servers/varnish jit
+www-servers/vinyl-cache jit
 www-apache/mod_security jit

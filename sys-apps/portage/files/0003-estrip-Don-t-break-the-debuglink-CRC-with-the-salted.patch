@@ -1,0 +1,58 @@
+From c568ef909922c307dd99acfebc1214e6ea88e075 Mon Sep 17 00:00:00 2001
+Message-ID: <c568ef909922c307dd99acfebc1214e6ea88e075.1775418711.git.sam@gentoo.org>
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Fri, 27 Mar 2026 18:34:43 +0000
+Subject: [PATCH] estrip: Don't break the debuglink CRC with the salted build
+ ID
+
+Closes: https://bugs.gentoo.org/971641
+Signed-off-by: James Le Cuirot <chewi@gentoo.org>
+Part-of: https://github.com/gentoo/portage/pull/1568
+Closes: https://github.com/gentoo/portage/pull/1568
+---
+ NEWS       | 2 ++
+ bin/estrip | 8 ++++++--
+ 2 files changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/NEWS b/NEWS
+index 923c99a74..94b2f8b98 100644
+--- a/NEWS
++++ b/NEWS
+@@ -70,6 +70,8 @@ Bug fixes:
+ 
+ * estrip: Silence noise from objcopy when no build ID section exists (bug #968220).
+ 
++* estrip: Don't break the debuglink CRC with the salted build ID (bug #971641).
++
+ portage-3.0.77 (2026-01-23)
+ --------------
+ 
+diff --git a/bin/estrip b/bin/estrip
+index 526a1f203..166f68087 100755
+--- a/bin/estrip
++++ b/bin/estrip
+@@ -143,8 +143,7 @@ save_elf_debug() {
+ 			if (( has_feature[compressdebug] )); then
+ 				objcopy_flags+=( --compress-debug-sections )
+ 			fi
+-			"${name_of[objcopy]}" "${objcopy_flags[@]}" "${src}" "${dst}" \
+-			&& "${name_of[objcopy]}" --add-gnu-debuglink="${dst}" "${src}"
++			"${name_of[objcopy]}" "${objcopy_flags[@]}" "${src}" "${dst}"
+ 		fi
+ 
+ 		# Only do the following if the debug file was
+@@ -199,6 +198,11 @@ save_elf_debug() {
+ 				__try_symlink "${src_buildid_rel}" "${buildid_file}"
+ 			fi
+ 		fi
++
++		if [[ -z ${splitdebug} ]] ; then
++			# Add debuglink last to avoid the salted build ID breaking the CRC.
++			"${name_of[objcopy]}" --add-gnu-debuglink="${dst}" "${src}"
++		fi
+ 	fi
+ }
+ 
+-- 
+2.53.0
+

@@ -40,19 +40,12 @@ DOCS=(
 	demos/
 )
 
-src_test() {
-	local -a cargo_skip_tests=(
-		# skip tests that fail in sandbox environment
-		test_gpg::gpgsm_signing_roundtrip
-		test_gpg::gpgsm_signing_roundtrip_explicit_key
-	    test_gpg::gpgsm_unknown_key
-	)
-
-	local -a skip_params
-	readarray -t skip_params < <(printf -- '--skip\n%s\n' "${cargo_skip_tests[@]}")
-
-	cargo_src_test -- "${skip_params[@]}"
-}
+CARGO_SKIP_TESTS=(
+	# skip tests that fail in sandbox environment
+	test_gpg::gpgsm_signing_roundtrip
+	test_gpg::gpgsm_signing_roundtrip_explicit_key
+	test_gpg::gpgsm_unknown_key
+)
 
 src_install() {
 	pushd cli >/dev/null || die

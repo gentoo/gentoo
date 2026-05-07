@@ -56,7 +56,7 @@ else
 				-> rcheevos-${RCHEEVOS_COMMIT}.tar.gz
 		)
 	"
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="amd64 ~arm64"
 fi
 
 DESCRIPTION="Gamecube and Wii game emulator"

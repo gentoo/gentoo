@@ -1,4 +1,4 @@
-# Copyright 2021-2025 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,7 +36,7 @@ PATCHES=(
 DOCS=( README reference.txt )
 
 src_compile() {
-	MAKEFLAGS="" pmake -j$(makeopts_jobs) \
+	MAKEFLAGS="" pmake -j$(get_makeopts_jobs) \
 		CC=$(tc-getCC) LUA_INCLUDE="$(lua_get_include_dir)" \
 		MOONBR_LUA_PATH=/usr/lib/moonbridge/?.lua \
 		LUA_LIBRARY="$(lua_get_LIBS)" LUA_LIBDIR=/usr/$(get_libdir) \

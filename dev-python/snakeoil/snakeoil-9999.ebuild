@@ -4,8 +4,10 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
+PYPI_VERIFY_REPO=https://github.com/pkgcore/snakeoil
 PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 PYTHON_REQ_USE="threads(+)"
+
 inherit distutils-r1
 
 if [[ ${PV} == *9999 ]] ; then
@@ -18,7 +20,10 @@ else
 fi
 
 DESCRIPTION="misc common functionality and useful optimizations"
-HOMEPAGE="https://github.com/pkgcore/snakeoil"
+HOMEPAGE="
+	https://github.com/pkgcore/snakeoil/
+	https://pypi.org/project/snakeoil/
+"
 
 LICENSE="BSD BSD-2 MIT"
 SLOT="0"

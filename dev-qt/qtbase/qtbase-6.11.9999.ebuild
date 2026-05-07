@@ -12,7 +12,7 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~x86"
 fi
 
-declare -A QT6_IUSE=(
+declare -gA QT6_IUSE=(
 	[global]="+ssl +udev zstd"
 	[core]="icu io-uring journald syslog"
 	[modules]="+concurrent +dbus +gui +network +sql +xml"
@@ -188,7 +188,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.6.3-gcc14-avx512fp16.patch
 	"${FILESDIR}"/${PN}-6.8.2-cross.patch
 	"${FILESDIR}"/${PN}-6.9.0-no-direct-extern-access.patch
-	"${FILESDIR}"/${PN}-6.11.0-iouring-unity.patch
 )
 
 src_prepare() {

@@ -60,6 +60,7 @@ MULTILIB_WRAPPED_HEADERS=(
 
 PATCHES=(
 	"${FILESDIR}"/libheif-1.21.2-svt-av1-4.patch
+	"${FILESDIR}"/libheif-1.21.2-svt-av1-4.1.patch
 )
 
 pkg_pretend() {

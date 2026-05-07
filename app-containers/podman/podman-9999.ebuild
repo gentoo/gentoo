@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit go-module python-any-r1 tmpfiles toolchain-funcs linux-info
 
@@ -88,7 +88,7 @@ src_prepare() {
 }
 
 src_compile() {
-	export PREFIX="${EPREFIX}/usr" BUILD_ORIGIN="Gentoo Portage"
+	export ETCDIR="${EPREFIX}/etc" PREFIX="${EPREFIX}/usr" BUILD_ORIGIN="Gentoo Portage"
 
 	# For non-live versions, prevent git operations which causes sandbox violations
 	# https://github.com/gentoo/gentoo/pull/33531#issuecomment-1786107493

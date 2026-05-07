@@ -1,11 +1,11 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit cmake edo
 
-DESCRIPTION="Open source project that includes YUV scaling and conversion functionality."
+DESCRIPTION="Open source project that includes YUV scaling and conversion functionality"
 HOMEPAGE="https://chromium.googlesource.com/libyuv/libyuv"
 
 if [[ ${PV} == "9999" ]] ; then

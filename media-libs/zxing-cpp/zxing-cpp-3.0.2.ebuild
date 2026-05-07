@@ -20,15 +20,15 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="Apache-2.0"
 SLOT="0/4"
 KEYWORDS=""
-IUSE="test"
+IUSE="test tools"
 RESTRICT="!test? ( test )"
 
 RDEPEND=">=media-libs/zint-2.16.0:="
 DEPEND="${RDEPEND}
+	dev-libs/stb
 	test? (
 		dev-cpp/gtest
 		dev-libs/libfmt
-		dev-libs/stb
 	)
 "
 
@@ -43,7 +43,8 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DZXING_DEPENDENCIES=LOCAL # force find_package as REQUIRED
-		-DZXING_EXAMPLES=OFF # nothing is installed
+		# Build and install ZXingReader and ZXingWriter
+		-DZXING_EXAMPLES=$(usex tools)
 		-DZXING_USE_BUNDLED_ZINT=OFF
 		-DZXING_WRITERS=BOTH # should be kept on until revdeps are ported away from OLD
 		-DZXING_BLACKBOX_TESTS=$(usex test)

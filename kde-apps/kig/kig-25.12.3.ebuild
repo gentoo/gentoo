@@ -5,7 +5,7 @@ EAPI=8
 
 ECM_HANDBOOK="optional"
 ECM_TEST="true"
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 KFMIN=6.19.0
 QTMIN=6.10.1
 inherit python-single-r1 ecm gear.kde.org xdg
@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/kig/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~riscv ~x86"
 IUSE="scripting"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

@@ -4,8 +4,18 @@
   <maintainer type="person">
     <email>ulm@gentoo.org</email>
   </maintainer>
+  <use>
+    <flag name="xcursor">
+      Add support for cursors (<pkg>x11-libs/libXcursor</pkg>)
+    </flag>
+    <flag name="xrandr">
+      Add support for monitor information (<pkg>x11-libs/libXrandr</pkg>)
+    </flag>
+    <flag name="xrender">
+      Add support for transparency (<pkg>x11-libs/libXrender</pkg>)
+    </flag>
+  </use>
   <upstream>
-    <bugs-to>http://bugs.motifzone.net/</bugs-to>
-    <remote-id type="sourceforge">motif</remote-id>
+    <remote-id type="github">thentenaar/motif</remote-id>
   </upstream>
 </pkgmetadata>

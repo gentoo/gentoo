@@ -24,7 +24,10 @@ RDEPEND="
 	acct-user/oragono
 	acct-group/oragono
 "
-BDEPEND="test? ( ${PYTHON_DEPS} )"
+BDEPEND="
+	>=dev-lang/go-1.25.0
+	test? ( ${PYTHON_DEPS} )
+"
 
 DOCS=( README.md docs/MANUAL.md docs/USERGUIDE.md )
 

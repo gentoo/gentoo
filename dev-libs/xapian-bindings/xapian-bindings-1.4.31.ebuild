@@ -16,7 +16,7 @@ PHP_EXT_NAME="xapian"
 PHP_EXT_INI="yes"
 PHP_EXT_OPTIONAL_USE="php"
 
-USE_RUBY="ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 RUBY_OPTIONAL="yes"
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/ollybetts.asc

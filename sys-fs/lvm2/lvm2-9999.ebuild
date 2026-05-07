@@ -6,27 +6,30 @@ EAPI=8
 TMPFILES_OPTIONAL=1
 inherit autotools linux-info systemd toolchain-funcs tmpfiles udev flag-o-matic
 
+DESCRIPTION="User-land utilities for LVM2 (device-mapper) software"
+HOMEPAGE="https://sourceware.org/lvm2/"
+
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/lvmteam/lvm2.git"
 else
 	SRC_URI="https://sourceware.org/ftp/lvm2/${PN^^}.${PV}.tgz"
 	S="${WORKDIR}/${PN^^}.${PV}"
+
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
-DESCRIPTION="User-land utilities for LVM2 (device-mapper) software"
-HOMEPAGE="https://sourceware.org/lvm2/"
-
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-IUSE="lvm nvme readline sanlock selinux static static-libs systemd test thin +udev valgrind xfs"
+IUSE="lvm nvme readline sanlock selinux static static-libs systemd test thin +udev valgrind vdo xfs"
 REQUIRED_USE="
 	static? ( !systemd !udev !nvme )
 	static-libs? ( static !udev )
 	systemd? ( udev )
 	test? ( lvm )
 	thin? ( lvm )
+	sanlock? ( lvm )
+	vdo? ( lvm )
 "
 RESTRICT="!test? ( test )"
 
@@ -40,7 +43,9 @@ DEPEND_COMMON="
 		readline? ( sys-libs/readline:= )
 		sanlock? ( >=sys-cluster/sanlock-4.0.0 )
 		systemd? ( >=sys-apps/systemd-234:= )
+		vdo? ( >=sys-block/vdo-8.3.2.1 )
 	)
+	nvme? ( >=sys-libs/libnvme-1.1 )
 "
 # /run is now required for locking during early boot. /var cannot be assumed to
 # be available -- thus, pull in recent enough baselayout for /run.
@@ -49,7 +54,6 @@ RDEPEND="
 	${DEPEND_COMMON}
 	>=sys-apps/baselayout-2.2
 	lvm? ( virtual/tmpfiles )
-	nvme? ( >=sys-libs/libnvme-1.1 )
 "
 
 PDEPEND="
@@ -136,7 +140,6 @@ src_configure() {
 		$(use_enable lvm cmdlib)
 		$(use_enable lvm fsadm)
 		$(use_enable lvm lvmpolld)
-
 		# This only causes the .static versions to become available
 		$(usev static --enable-static_link)
 
@@ -144,6 +147,9 @@ src_configure() {
 		# so we cannot disable them
 		--with-mirrors="$(usex lvm internal none)"
 		--with-snapshots="$(usex lvm internal none)"
+		# vdo is internal or none only
+		--with-vdo="$(usex vdo internal none)"
+
 	)
 
 	if use lvm && use thin; then

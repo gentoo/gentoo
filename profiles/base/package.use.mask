@@ -6,6 +6,23 @@
 
 # New entries go on top.
 
+# Michael Orlitzky <mjo@gentoo.org> (2026-05-04)
+# This needs an upgrade to >=dev-cpp/eigen-5.0.1 and I don't
+# need the extra headache right now.
+>=sci-libs/libsemigroups-3.5.5 eigen
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-04-12)
+# net-wireless/gnuradio and dependencies. Preparing Qt5 last-rites.
+# Bugs #948049, #954887.  Removal some time after 2026-04-30.
+dev-python/pyqtgraph qt5
+net-wireless/gnuradio qt5
+
+# Brett A C Sheffield <bacs@librecast.net> (2026-03-29)
+# mask IUSE=selinux for www-servers/vinyl-cache-9.0.0 until
+# upstream policy available.
+# https://bugs.gentoo.org/971753
+>=www-servers/vinyl-cache-9.0.0 selinux
+
 # Mike Gilbert <floppym@gentoo.org> (2026-03-20)
 # Only meant for bootstrapping a cross-compiler.
 sys-libs/libxcrypt headers-only
@@ -70,10 +87,6 @@ gui-wm/hyprland qtutils
 # Michał Górny <mgorny@gentoo.org> (2025-12-20)
 # Needs last-rited dev-lang/julia.
 <kde-apps/cantor-25.12.2-r1 julia
-
-# Sam James <sam@gentoo.org> (2025-12-07)
-# Needs not-yet-released GCC 16.
-dev-lang/python tail-call-interp
 
 # Lukas Schmelting <lschmelting@posteo.com (2025-11-06)
 # https://bugs.gentoo.org/933164
@@ -212,6 +225,7 @@ dev-build/meson test-full
 # Michał Górny <mgorny@gentoo.org> (2024-12-31)
 # None of the sci-libs/symengine versions work with the modern versions
 # of dev-libs/boost in Gentoo.
+dev-python/symengine boost
 sci-libs/symengine boost
 
 # Conrad Kostecki <conikost@gentoo.org> (2024-12-30)

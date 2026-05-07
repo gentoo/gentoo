@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -62,7 +62,10 @@ RDEPEND="
 		dev-cpp/gtest:=
 		dev-util/google-perftools:=
 	)
-	experimental? ( dev-qt/qt5compat:6[qml] )
+	experimental? (
+		dev-qt/qt5compat:6[qml]
+		dev-qt/qtmultimedia:6[qml]
+	)
 	ffmpeg? ( media-video/ffmpeg:= )
 	keyfinder? ( media-libs/libkeyfinder )
 	lv2? ( media-libs/lilv )

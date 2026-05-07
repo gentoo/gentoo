@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -12,7 +12,7 @@ JAVA_TESTING_FRAMEWORKS="junit-4"
 
 inherit java-pkg-2 java-pkg-simple
 
-DESCRIPTION="Core library of the Xerial project."
+DESCRIPTION="Core library of the Xerial project"
 HOMEPAGE="https://xerial.org"
 SRC_URI="https://github.com/xerial/xerial-java/archive/${PV}.tar.gz -> ${P}.tar.gz"
 

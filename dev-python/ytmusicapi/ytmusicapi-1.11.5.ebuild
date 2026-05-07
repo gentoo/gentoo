@@ -4,17 +4,21 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517="setuptools"
+PYPI_VERIFY_REPO=https://github.com/sigma67/ytmusicapi
 PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1 pypi
 
 DESCRIPTION="Unofficial API for YouTube Music"
-HOMEPAGE="https://ytmusicapi.readthedocs.io/
-	https://github.com/sigma67/ytmusicapi/"
+HOMEPAGE="
+	https://ytmusicapi.readthedocs.io/
+	https://github.com/sigma67/ytmusicapi/
+	https://pypi.org/project/ytmusicapi/
+"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 RESTRICT="test"
 
 RDEPEND="

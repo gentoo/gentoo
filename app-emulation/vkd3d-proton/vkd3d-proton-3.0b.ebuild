@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/HansKristian-Work/vkd3d-proton.git"
 else
 	# tarball is same as upstream except for including git submodules
-	SRC_URI="https://dev.gentoo.org/~ionen/distfiles/${P}.tar.xz"
+	SRC_URI="https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${P}.tar.xz"
 	KEYWORDS="-* amd64 x86"
 fi
 

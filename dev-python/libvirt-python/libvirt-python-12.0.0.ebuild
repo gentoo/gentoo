@@ -23,7 +23,7 @@ else
 	MY_P="${P/-/_}"
 	SRC_URI="https://download.libvirt.org/python/${MY_P}.tar.gz
 		verify-sig? ( https://download.libvirt.org/python/${MY_P}.tar.gz.asc )"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 	RDEPEND="app-emulation/libvirt:0/${PV}"
 	S="${WORKDIR}/${MY_P}"
 fi

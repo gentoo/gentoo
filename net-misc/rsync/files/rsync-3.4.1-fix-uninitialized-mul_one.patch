@@ -1,0 +1,202 @@
+https://github.com/RsyncProject/rsync/commit/aa142f08ef31d3ffa8d6b3b8af16d00324a98c1b
+
+From: Andrew Tridgell <andrew@tridgell.net>
+Date: Sun, 1 Mar 2026 08:42:04 +1100
+Subject: [PATCH] fix uninitialized mul_one in AVX2 checksum and add SIMD checksum test
+
+The AVX2 get_checksum1_avx2_64() read mul_one before initializing it,
+which is undefined behavior. Replace the cmpeq/abs trick with
+_mm256_set1_epi8(1) to match the SSSE3 and SSE2 versions.
+
+Add a TEST_SIMD_CHECKSUM1 test mode that verifies all SIMD paths
+(SSE2, SSSE3, AVX2, and the full dispatch chain) produce identical
+results to the C reference, across multiple buffer sizes with both
+aligned and unaligned buffers.
+
+Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>
+---
+ Makefile.in                  |  11 +++-
+ simd-checksum-x86_64.cpp     | 115 ++++++++++++++++++++++++++++++++++-
+ testsuite/simd-checksum.test |  11 ++++
+ 3 files changed, 134 insertions(+), 3 deletions(-)
+ create mode 100755 testsuite/simd-checksum.test
+
+diff --git a/Makefile.in b/Makefile.in
+index 6340403be..6f188ee8a 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -57,7 +57,8 @@ TLS_OBJ = tls.o syscall.o util2.o t_stub.o lib/compat.o lib/snprintf.o lib/perms
+ 
+ # Programs we must have to run the test cases
+ CHECK_PROGS = rsync$(EXEEXT) tls$(EXEEXT) getgroups$(EXEEXT) getfsdev$(EXEEXT) \
+-	testrun$(EXEEXT) trimslash$(EXEEXT) t_unsafe$(EXEEXT) wildtest$(EXEEXT)
++	testrun$(EXEEXT) trimslash$(EXEEXT) t_unsafe$(EXEEXT) wildtest$(EXEEXT) \
++	simdtest$(EXEEXT)
+ 
+ CHECK_SYMLINKS = testsuite/chown-fake.test testsuite/devices-fake.test testsuite/xattrs-hlink.test
+ 
+@@ -326,6 +327,14 @@ wildtest.o: wildtest.c t_stub.o lib/wildmatch.c rsync.h config.h
+ wildtest$(EXEEXT): wildtest.o lib/compat.o lib/snprintf.o @BUILD_POPT@
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ wildtest.o lib/compat.o lib/snprintf.o @BUILD_POPT@ $(LIBS)
+ 
++simdtest$(EXEEXT): simd-checksum-x86_64.cpp $(HEADERS)
++	@if test x"@ROLL_SIMD@" != x; then \
++	    $(CXX) -I. $(CXXFLAGS) $(CPPFLAGS) $(LDFLAGS) -DTEST_SIMD_CHECKSUM1 \
++	        -o $@ $(srcdir)/simd-checksum-x86_64.cpp @ROLL_ASM@ $(LIBS); \
++	else \
++	    touch $@; \
++	fi
++
+ testsuite/chown-fake.test:
+ 	ln -s chown.test $(srcdir)/testsuite/chown-fake.test
+ 
+diff --git a/simd-checksum-x86_64.cpp b/simd-checksum-x86_64.cpp
+index d649091ea..99391cbe4 100644
+--- a/simd-checksum-x86_64.cpp
++++ b/simd-checksum-x86_64.cpp
+@@ -347,8 +347,7 @@ __attribute__ ((target("avx2"))) MVSTATIC int32 get_checksum1_avx2_64(schar* buf
+ 	__m128i tmp = _mm_load_si128((__m128i*) mul_t1_buf);
+         __m256i mul_t1 = _mm256_cvtepu8_epi16(tmp);
+ 	__m256i mul_const = _mm256_broadcastd_epi32(_mm_cvtsi32_si128(4 | (3 << 8) | (2 << 16) | (1 << 24)));
+-        __m256i mul_one;
+-       	    mul_one = _mm256_abs_epi8(_mm256_cmpeq_epi16(mul_one,mul_one)); // set all vector elements to 1
++        __m256i mul_one = _mm256_set1_epi8(1);
+ 
+         for (; i < (len-64); i+=64) {
+             // Load ... 4*[int8*16]
+@@ -548,6 +547,118 @@ int main() {
+ #pragma clang optimize on
+ #endif /* BENCHMARK_SIMD_CHECKSUM1 */
+ 
++#ifdef TEST_SIMD_CHECKSUM1
++
++static uint32 checksum_via_default(char *buf, int32 len)
++{
++    uint32 s1 = 0, s2 = 0;
++    get_checksum1_default_1((schar*)buf, len, 0, &s1, &s2);
++    return (s1 & 0xffff) + (s2 << 16);
++}
++
++static uint32 checksum_via_sse2(char *buf, int32 len)
++{
++    int32 i;
++    uint32 s1 = 0, s2 = 0;
++    i = get_checksum1_sse2_32((schar*)buf, len, 0, &s1, &s2);
++    get_checksum1_default_1((schar*)buf, len, i, &s1, &s2);
++    return (s1 & 0xffff) + (s2 << 16);
++}
++
++static uint32 checksum_via_ssse3(char *buf, int32 len)
++{
++    int32 i;
++    uint32 s1 = 0, s2 = 0;
++    i = get_checksum1_ssse3_32((schar*)buf, len, 0, &s1, &s2);
++    get_checksum1_default_1((schar*)buf, len, i, &s1, &s2);
++    return (s1 & 0xffff) + (s2 << 16);
++}
++
++static uint32 checksum_via_avx2(char *buf, int32 len)
++{
++    int32 i;
++    uint32 s1 = 0, s2 = 0;
++#ifdef USE_ROLL_ASM
++    i = get_checksum1_avx2_asm((schar*)buf, len, 0, &s1, &s2);
++#else
++    i = get_checksum1_avx2_64((schar*)buf, len, 0, &s1, &s2);
++#endif
++    get_checksum1_default_1((schar*)buf, len, i, &s1, &s2);
++    return (s1 & 0xffff) + (s2 << 16);
++}
++
++int main()
++{
++    static const int sizes[] = {1, 4, 31, 32, 33, 63, 64, 65, 128, 129, 256, 700, 1024, 4096, 65536};
++    int num_sizes = sizeof(sizes) / sizeof(sizes[0]);
++    int max_size = sizes[num_sizes - 1];
++    int failures = 0;
++
++    /* Allocate with extra bytes for unaligned test */
++    unsigned char *raw = (unsigned char *)malloc(max_size + 64 + 1);
++    if (!raw) {
++        fprintf(stderr, "malloc failed\n");
++        return 1;
++    }
++
++    /* Fill with deterministic data */
++    for (int i = 0; i < max_size + 64 + 1; i++)
++        raw[i] = (i + (i % 3) + (i % 11)) % 256;
++
++    /* Test with aligned buffer (64-byte aligned) */
++    unsigned char *aligned = raw + (64 - ((uintptr_t)raw % 64));
++
++    /* Test with unaligned buffer (+1 byte offset) */
++    unsigned char *unaligned = aligned + 1;
++
++    struct { const char *name; unsigned char *buf; } buffers[] = {
++        {"aligned", aligned},
++        {"unaligned", unaligned},
++    };
++
++    for (int b = 0; b < 2; b++) {
++        char *buf = (char *)buffers[b].buf;
++        const char *bname = buffers[b].name;
++
++        for (int s = 0; s < num_sizes; s++) {
++            int32 len = sizes[s];
++            uint32 ref = checksum_via_default(buf, len);
++            uint32 cs_sse2 = checksum_via_sse2(buf, len);
++            uint32 cs_ssse3 = checksum_via_ssse3(buf, len);
++            uint32 cs_avx2 = checksum_via_avx2(buf, len);
++            uint32 cs_auto = get_checksum1(buf, len);
++
++            if (cs_sse2 != ref) {
++                printf("FAIL %-9s size=%5d: SSE2=%08x ref=%08x\n", bname, len, cs_sse2, ref);
++                failures++;
++            }
++            if (cs_ssse3 != ref) {
++                printf("FAIL %-9s size=%5d: SSSE3=%08x ref=%08x\n", bname, len, cs_ssse3, ref);
++                failures++;
++            }
++            if (cs_avx2 != ref) {
++                printf("FAIL %-9s size=%5d: AVX2=%08x ref=%08x\n", bname, len, cs_avx2, ref);
++                failures++;
++            }
++            if (cs_auto != ref) {
++                printf("FAIL %-9s size=%5d: auto=%08x ref=%08x\n", bname, len, cs_auto, ref);
++                failures++;
++            }
++        }
++    }
++
++    free(raw);
++
++    if (failures) {
++        printf("%d checksum mismatches!\n", failures);
++        return 1;
++    }
++    printf("All SIMD checksum tests passed.\n");
++    return 0;
++}
++
++#endif /* TEST_SIMD_CHECKSUM1 */
++
+ #endif /* } USE_ROLL_SIMD */
+ #endif /* } __cplusplus */
+ #endif /* } __x86_64__ */
+diff --git a/testsuite/simd-checksum.test b/testsuite/simd-checksum.test
+new file mode 100755
+index 000000000..cf7dba2ec
+--- /dev/null
++++ b/testsuite/simd-checksum.test
+@@ -0,0 +1,11 @@
++#!/bin/sh
++
++# Test SIMD checksum implementations against the C reference
++
++. "$suitedir/rsync.fns"
++
++if ! test -x "$TOOLDIR/simdtest"; then
++    test_skipped "simdtest not built (SIMD not available)"
++fi
++
++"$TOOLDIR/simdtest"

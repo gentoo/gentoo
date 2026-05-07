@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -81,7 +81,7 @@ src_prepare() {
 src_compile() {
 	export GPR_PROJECT_PATH=minimal:core
 	build() {
-		gprbuild -v -p -m -P$2/gnatcoll_$2.gpr -j$(makeopts_jobs) \
+		gprbuild -v -p -m -P$2/gnatcoll_$2.gpr -j$(get_makeopts_jobs) \
 			-XGNATCOLL_VERSION=$(ver_cut 1-2) -XLIBRARY_TYPE=$1 \
 			-cargs:C ${CFLAGS} -cargs:Ada ${ADAFLAGS} || die
 	}

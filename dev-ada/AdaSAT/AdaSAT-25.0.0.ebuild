@@ -1,4 +1,4 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -41,7 +41,7 @@ pkg_setup() {
 
 src_compile() {
 	build () {
-		gprbuild -P adasat.gpr -p -v -j$(makeopts_jobs) \
+		gprbuild -P adasat.gpr -p -v -j$(get_makeopts_jobs) \
 			--relocate-build-tree="." -XLIBRARY_TYPE=$1 \
 			-XBUILD_MODE=dev -cargs:Ada ${ADAFLAGS} || die
 	}

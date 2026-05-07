@@ -1,0 +1,51 @@
+Remove precompiled header support as per Gentoo QA policy.
+Bug: https://bugs.gentoo.org/920845
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7ce313c..cb2e0c4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -32,9 +32,6 @@ set(LIB_DESTINATION
+ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+ include(options.cmake)
+ 
+-# pre-compiled headers support
+-include(cotire)
+-
+ # if setup using the Toolchain-llvm.cmake file, then use llvm...
+ if(ENABLE_LLVM)
+   include(Toolchain-llvm)
+diff --git a/src/contrib/CMakeLists.txt b/src/contrib/CMakeLists.txt
+index 7252b73..fa4bc1a 100644
+--- a/src/contrib/CMakeLists.txt
++++ b/src/contrib/CMakeLists.txt
+@@ -89,8 +89,6 @@ set_target_properties(lucene++-contrib
+     VERSION ${lucene++_VERSION}
+     SOVERSION ${lucene++_SOVERSION})
+     
+-cotire(lucene++-contrib)
+-
+ install(TARGETS lucene++-contrib
+   DESTINATION ${CMAKE_INSTALL_LIBDIR}
+   COMPONENT runtime)
+diff --git a/src/core/CMakeLists.txt b/src/core/CMakeLists.txt
+index 657de54..564286d 100644
+--- a/src/core/CMakeLists.txt
++++ b/src/core/CMakeLists.txt
+@@ -78,7 +78,6 @@ set_target_properties(lucene++
+     VERSION ${lucene++_VERSION}
+     SOVERSION ${lucene++_SOVERSION})
+ 
+-cotire(lucene++)
+ 
+ 
+ install(TARGETS lucene++
+diff --git a/src/test/CMakeLists.txt b/src/test/CMakeLists.txt
+index a5c1b28..2e9f574 100644
+--- a/src/test/CMakeLists.txt
++++ b/src/test/CMakeLists.txt
+@@ -75,4 +75,3 @@ target_link_libraries(lucene++-tester
+ ####################################
+ target_compile_options(lucene++-tester PRIVATE -DLPP_EXPOSE_INTERNAL)
+ 
+-cotire(lucene++-tester)

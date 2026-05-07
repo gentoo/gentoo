@@ -39,6 +39,7 @@ media-sound/liblc3 -test
 # Ionen Wolkens <ionen@gentoo.org> (2025-03-10)
 # dev-util/nvidia-cuda-toolkit may never be stabilized
 media-libs/osl clang-cuda
+media-gfx/blender optix
 
 # Sam James <sam@gentoo.org> (2025-02-13)
 # sys-cluster/corosync is marked stable here

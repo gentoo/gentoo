@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,9 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2021.8.0-gcc-13.patch
+	"${FILESDIR}"/${PN}-2021.9.0-ppc.patch
 	"${FILESDIR}"/${PN}-2021.13.0-test-atomics.patch
+	"${FILESDIR}"/${PN}-2022.0.0_do-not-fortify-source.patch
 )
 
 src_prepare() {
@@ -46,4 +48,12 @@ src_configure() {
 	)
 
 	cmake-multilib_src_configure
+}
+
+src_test() {
+	local CMAKE_SKIP_TESTS=()
+	if use elibc_musl; then
+		CMAKE_SKIP_TESTS=( conformance_resumable_tasks ) # Bug #864175
+	fi
+	cmake-multilib_src_test
 }

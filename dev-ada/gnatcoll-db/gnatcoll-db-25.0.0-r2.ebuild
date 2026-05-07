@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -52,7 +52,7 @@ pkg_setup() {
 src_compile() {
 	build () {
 		GPR_PROJECT_PATH="${S}"/sql:"${S}"/sqlite:"${S}"/xref \
-			gprbuild -p -m -v -j$(makeopts_jobs) -XGNATCOLL_SQLITE=external \
+			gprbuild -p -m -v -j$(get_makeopts_jobs) -XGNATCOLL_SQLITE=external \
 			-XGNATCOLL_VERSION=${PV} \
 			-XBUILD=PROD -XLIBRARY_TYPE=$2 -XXMLADA_BUILD=$2 -XGPR_BUILD=$2 \
 			-P $1/$3.gpr \

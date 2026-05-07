@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Application metrics and instrumentation."
+DESCRIPTION="Application metrics and instrumentation"
 HOMEPAGE="https://github.com/socketry/metrics"
 SRC_URI="https://github.com/socketry/metrics/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 

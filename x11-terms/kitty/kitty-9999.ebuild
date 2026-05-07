@@ -14,7 +14,7 @@ else
 	inherit verify-sig
 	SRC_URI="
 		https://github.com/kovidgoyal/kitty/releases/download/v${PV}/${P}.tar.xz
-		https://dev.gentoo.org/~ionen/distfiles/${P}-vendor.tar.xz
+		https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${P}-vendor.tar.xz
 		verify-sig? ( https://github.com/kovidgoyal/kitty/releases/download/v${PV}/${P}.tar.xz.sig )
 	"
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/kovidgoyal.gpg
@@ -119,7 +119,8 @@ src_prepare() {
 
 	sed -i setup.py "${sedargs[@]}" || die
 
-	# skip flaky font search, file is replaced in src_install (bug #971276)
+	# skip flaky font search, file is replaced in src_install (bug #971276),
+	# without this the font + fontconfig would also be needed in BDEPEND
 	mkdir fonts || die
 	:> fonts/SymbolsNerdFontMono-Regular.ttf || die
 

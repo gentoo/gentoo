@@ -19,7 +19,7 @@ RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Ruby binding for zstd (Zstandard - Fast real-time compression algorithm)."
+DESCRIPTION="Ruby binding for zstd (Zstandard - Fast real-time compression algorithm)"
 HOMEPAGE="https://github.com/SpringMT/zstd-ruby"
 SRC_URI="https://github.com/SpringMT/zstd-ruby/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 

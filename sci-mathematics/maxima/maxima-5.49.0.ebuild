@@ -107,6 +107,7 @@ PATCHES=(
 	"${FILESDIR}/clozurecl-3.patch"
 	"${FILESDIR}/cmucl-1.patch"
 	"${FILESDIR}/sbcl-2.patch"
+	"${FILESDIR}/info_de.patch"
 )
 
 src_prepare() {

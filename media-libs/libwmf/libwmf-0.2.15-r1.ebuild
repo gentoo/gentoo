@@ -1,0 +1,91 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+inherit autotools gnome2-utils
+
+DESCRIPTION="Library for reading vector images in Microsoft's Windows Metafile Format (WMF)"
+HOMEPAGE="
+	https://github.com/caolanm/libwmf
+	https://wvware.sourceforge.net/
+"
+SRC_URI="https://github.com/caolanm/libwmf/releases/download/v${PV}/${P}.tar.gz"
+
+LICENSE="LGPL-2"
+SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
+IUSE="debug doc expat X"
+
+RDEPEND="
+	app-text/ghostscript-gpl
+	media-fonts/urw-fonts
+	media-libs/freetype:2=
+	media-libs/libpng:=
+	media-libs/libjpeg-turbo
+	virtual/zlib:=
+	x11-libs/gdk-pixbuf:2
+	expat? ( dev-libs/expat )
+	!expat? ( dev-libs/libxml2:2= )
+	X? (
+		x11-libs/libX11
+		x11-libs/libXt
+		x11-libs/libXpm
+	)
+"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+
+DOCS=( AUTHORS BUILDING ChangeLog CREDITS INSTALL NEWS README TODO )
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.2.8.4-libpng-1.5.patch
+	"${FILESDIR}"/${PN}-0.2.8.4-pngfix.patch
+	"${FILESDIR}"/${PN}-0.2.15-export.patch
+	"${FILESDIR}"/${PN}-0.2.15-underlinked-plugin.patch
+)
+
+src_prepare() {
+	default
+	# For underlinked patch
+	eautoreconf
+}
+
+src_configure() {
+	# Support for GD is disabled, since it's never linked, even, when enabled
+	# See https://bugs.gentoo.org/268161
+	local myeconfargs=(
+		--disable-gd
+		$(use_enable debug)
+		$(use_with expat)
+		$(use_with !expat libxml2)
+		$(use_with X x)
+		--with-fontdir="${EPREFIX}"/usr/share/fonts/urw-fonts
+		--with-freetype
+		--with-gsfontdir="${EPREFIX}"/usr/share/fonts/urw-fonts
+		--with-gsfontmap="${EPREFIX}"/usr/share/ghostscript/9.21/Resource/Init/Fontmap
+		--with-jpeg
+		--with-layers
+		--with-png
+		--with-sys-gd
+		--with-zlib
+	)
+
+	econf "${myeconfargs[@]}"
+}
+
+src_install() {
+	default
+	find "${D}" -name '*.la' -delete || die
+
+	# We unbundle the fonts from media-fonts/urw-fonts
+	rm -r "${ED}"/usr/share/fonts/urw-fonts || die
+}
+
+pkg_postinst() {
+	gnome2_gdk_pixbuf_update
+}
+
+pkg_postrm() {
+	gnome2_gdk_pixbuf_update
+}

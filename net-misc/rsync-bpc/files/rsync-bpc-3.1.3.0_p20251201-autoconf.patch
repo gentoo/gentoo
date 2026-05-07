@@ -1,0 +1,12 @@
+was sed -i -e 's/AC_HEADER_MAJOR_FIXED/AC_HEADER_MAJOR/' configure.ac
+--- a/configure.ac
++++ b/configure.ac
+@@ -15,7 +15,7 @@
+     zlib.h xxhash.h openssl/md4.h openssl/md5.h zstd.h lz4.h sys/file.h \
+     bsd/string.h)
+ AC_CHECK_HEADERS([netinet/ip.h], [], [], [[#include <netinet/in.h>]])
+-AC_HEADER_MAJOR_FIXED
++AC_HEADER_MAJOR
+ 
+ AC_CONFIG_MACRO_DIR([m4])
+ AC_CONFIG_SRCDIR([byteorder.h])

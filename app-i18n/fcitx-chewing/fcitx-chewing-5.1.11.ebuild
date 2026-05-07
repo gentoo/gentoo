@@ -7,7 +7,7 @@ MY_PN="fcitx5-chewing"
 
 inherit cmake unpacker xdg
 
-DESCRIPTION="Chewing Wrapper for Fcitx."
+DESCRIPTION="Chewing Wrapper for Fcitx"
 HOMEPAGE="https://github.com/fcitx/fcitx5-chewing"
 SRC_URI="https://download.fcitx-im.org/fcitx5/${MY_PN}/${MY_PN}-${PV}.tar.zst -> ${P}.tar.zst"
 

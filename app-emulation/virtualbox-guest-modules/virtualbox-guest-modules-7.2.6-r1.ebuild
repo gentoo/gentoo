@@ -12,16 +12,17 @@ inherit linux-mod-r1
 MY_P="vbox-guest-kernel-module-src-${PV^^}"
 DESCRIPTION="Kernel Modules for Virtualbox Guest Additions"
 HOMEPAGE="https://www.virtualbox.org/"
-SRC_URI="https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/${MY_P}.tar.xz"
+SRC_URI="https://distfiles.gentoo.org/pub/dev/ceamac@gentoo.org/${CATEGORY}/${PN}/${MY_P}.tar.xz"
 S="${WORKDIR}"
 
 LICENSE="GPL-3"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-7.2.6-log-use-c99.patch
 	"${FILESDIR}"/${P}-kernel-6.19-{1,3}.patch
+	"${FILESDIR}"/${P}-no-vboxvideo.patch
 )
 
 CONFIG_CHECK="~DRM_TTM ~DRM_VMWGFX"

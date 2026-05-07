@@ -1,0 +1,150 @@
+From c87b1e31f62b827e2f421a57362923d78afc2279 Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Tue, 10 Mar 2026 14:24:54 -0600
+Subject: [PATCH] Linux: Use set_default_d_op() to set dentry ops
+
+The Linux 6.17 commit:
+    'new helper: set_default_d_op()' (05fb0e666495c)
+replaced the way that the default dentry_operations is set on a
+super_block. The s_d_op member was renamed to __s_d_op and a new helper
+function set_default_d_op() is now used to set the default
+dentry_operations.
+
+The OpenAFS commit 'linux: 2.6.38: New d_op handling' (08bb83d950) added
+an autoconf test for using the s_d_op member in the super_block struct.
+With the above Linux commit, the test for STRUCT_SUPER_BLOCK_HAS_S_D_OP
+fails, and the __s_d_op member in the super_block is not set during
+afs_fill_super(), but instead dp->d_op is set during various vfs
+operations. Doing so sets the dentry ops for the dentry, but does not
+set the flag DCACHE_OP_REVALIDATE on the dentry, and so Linux never
+calls our d_revalidate function, causing dentries to not get properly
+revalidated.
+
+To fix this, add a new autoconf test for set_default_d_op(), and use
+that function when available. Add a comment for the autoconf test for
+the super_block member s_d_op to note the change.  Add an additional
+build time check to ensure that we don't accidentally revert to the
+pre-2.6.38 behavior after Linux 2.6.38
+
+In afs_fill_super(), use set_default_d_op() to initialize the
+super_block with the afs_dentry_operations.
+
+The dentry->d_op member only needs to be updated when set_default_d_op()
+is not available and the super_block does not have the s_d_op member.
+
+Note: This commit fixes a reported problem with stale dentries that was
+discovered on a Linux 6.17 system.
+
+Reviewed-on: https://gerrit.openafs.org/16700
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Tested-by: Michael Meffie <mmeffie@sinenomine.net>
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+(cherry picked from commit a99b2ff4c04a9b1a4ba3ab5fac1b37bfd5d43568)
+
+Change-Id: Ic454c52ca88c82a9efa62a486ec05300a95c6cb0
+(cherry picked from commit 6d0a2107fcab28fc4ba64d365133d171b75bd3dc)
+---
+ src/afs/LINUX/osi_vfsops.c    |  8 ++++++--
+ src/afs/LINUX/osi_vnodeops.c  |  6 +++---
+ src/cf/linux-kernel-func.m4   | 10 ++++++++++
+ src/cf/linux-kernel-struct.m4 |  4 ++++
+ 4 files changed, 23 insertions(+), 5 deletions(-)
+
+diff --git a/src/afs/LINUX/osi_vfsops.c b/src/afs/LINUX/osi_vfsops.c
+index 18506474ee48..f1e59074760c 100644
+--- a/src/afs/LINUX/osi_vfsops.c
++++ b/src/afs/LINUX/osi_vfsops.c
+@@ -117,8 +117,12 @@ afs_fill_super(struct super_block *sb, void *data, int silent)
+     sb->s_magic = AFS_VFSMAGIC;
+     sb->s_op = &afs_sops;	/* Super block (vfs) ops */
+ 
+-#if defined(STRUCT_SUPER_BLOCK_HAS_S_D_OP)
++#if defined(HAVE_LINUX_SET_DEFAULT_D_OP)
++    set_default_d_op(sb, &afs_dentry_operations);
++#elif defined(STRUCT_SUPER_BLOCK_HAS_S_D_OP)
+     sb->s_d_op = &afs_dentry_operations;
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,38)
++# error "Missing method to set the super_block's dentry operations member"
+ #endif
+ #if defined(HAVE_LINUX_SUPER_SETUP_BDI)
+     code = super_setup_bdi(sb);
+@@ -221,7 +225,7 @@ afs_root(struct super_block *afsp)
+ #else
+ 		    afsp->s_root = d_alloc_root(ip);
+ #endif
+-#if !defined(STRUCT_SUPER_BLOCK_HAS_S_D_OP)
++#if !defined(HAVE_LINUX_SET_DEFAULT_D_OP) && !defined(STRUCT_SUPER_BLOCK_HAS_S_D_OP)
+ 		    afsp->s_root->d_op = &afs_dentry_operations;
+ #endif
+ 		    afs_DestroyAttr(vattr);
+diff --git a/src/afs/LINUX/osi_vnodeops.c b/src/afs/LINUX/osi_vnodeops.c
+index b525126c20a1..432643fe5583 100644
+--- a/src/afs/LINUX/osi_vnodeops.c
++++ b/src/afs/LINUX/osi_vnodeops.c
+@@ -1844,7 +1844,7 @@ afs_linux_create(struct inode *dip, struct dentry *dp, int mode)
+ 	afs_getattr(vcp, vattr, credp);
+ 	afs_fill_inode(ip, vattr);
+ 	insert_inode_hash(ip);
+-#if !defined(STRUCT_SUPER_BLOCK_HAS_S_D_OP)
++#if !defined(HAVE_LINUX_SET_DEFAULT_D_OP) && !defined(STRUCT_SUPER_BLOCK_HAS_S_D_OP)
+ 	dp->d_op = &afs_dentry_operations;
+ #endif
+ 	dp->d_time = parent_vcache_dv(dip, credp);
+@@ -1925,7 +1925,7 @@ afs_linux_lookup(struct inode *dip, struct dentry *dp)
+ 
+ 	afs_DestroyAttr(vattr);
+     }
+-#if !defined(STRUCT_SUPER_BLOCK_HAS_S_D_OP)
++#if !defined(HAVE_LINUX_SET_DEFAULT_D_OP) && !defined(STRUCT_SUPER_BLOCK_HAS_S_D_OP)
+     dp->d_op = &afs_dentry_operations;
+ #endif
+     dp->d_time = parent_vcache_dv(dip, credp);
+@@ -2171,7 +2171,7 @@ afs_linux_mkdir(struct inode *dip, struct dentry *dp, int mode)
+ 	afs_getattr(tvcp, vattr, credp);
+ 	afs_fill_inode(ip, vattr);
+ 
+-#if !defined(STRUCT_SUPER_BLOCK_HAS_S_D_OP)
++#if !defined(HAVE_LINUX_SET_DEFAULT_D_OP) && !defined(STRUCT_SUPER_BLOCK_HAS_S_D_OP)
+ 	dp->d_op = &afs_dentry_operations;
+ #endif
+ 	dp->d_time = parent_vcache_dv(dip, credp);
+diff --git a/src/cf/linux-kernel-func.m4 b/src/cf/linux-kernel-func.m4
+index 0784262d70b9..6845c9918ad1 100644
+--- a/src/cf/linux-kernel-func.m4
++++ b/src/cf/linux-kernel-func.m4
+@@ -379,6 +379,16 @@ AC_CHECK_LINUX_FUNC([write_begin_end_kiocb],
+ 		    [[aops->write_begin(kiocb, mapping, 0, 0, &foliop, fsdata);
+ 		      aops->write_end(kiocb, mapping, 0, 0, 0, foliop, fsdata);]])
+ 
++dnl Linux 6.17 added a helper function set_default_d_op() to set the default
++dnl dentry_operations for a super_block.  The super_block member s_d_op is now
++dnl a private member of the super_block.
++AC_CHECK_LINUX_FUNC([set_default_d_op],
++		    [#include <linux/kernel.h>
++		     #include <linux/dcache.h>],
++		    [[static struct super_block sb;
++		      static struct dentry_operations d_op;
++		      set_default_d_op(&sb, &d_op);]])
++
+ dnl Consequences - things which get set as a result of the
+ dnl                above tests
+ AS_IF([test "x$ac_cv_linux_func_d_alloc_anon" = "xno"],
+diff --git a/src/cf/linux-kernel-struct.m4 b/src/cf/linux-kernel-struct.m4
+index 24841e9f3245..46c23a25fbb8 100644
+--- a/src/cf/linux-kernel-struct.m4
++++ b/src/cf/linux-kernel-struct.m4
+@@ -44,6 +44,10 @@ AC_CHECK_LINUX_STRUCT([nameidata], [path], [namei.h])
+ AC_CHECK_LINUX_STRUCT([proc_dir_entry], [owner], [proc_fs.h])
+ AC_CHECK_LINUX_STRUCT([proc_ops], [proc_compat_ioctl], [proc_fs.h])
+ AC_CHECK_LINUX_STRUCT([super_block], [s_bdi], [fs.h])
++dnl Linux 2.6.38 added the s_d_op field to hold the default dentry ops.
++dnl Linux 6.17 renamed s_d_op to a private member, requiring users to instead
++dnl call set_default_d_op() to initialize the super_block with the default
++dnl dentry ops.
+ AC_CHECK_LINUX_STRUCT([super_block], [s_d_op], [fs.h])
+ AC_CHECK_LINUX_STRUCT([super_operations], [alloc_inode],
+                       [fs.h])
+-- 
+2.52.0
+

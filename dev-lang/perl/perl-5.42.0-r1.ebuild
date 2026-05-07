@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -276,6 +276,8 @@ src_prepare_perlcross() {
 
 	# bug 794463, needs further analysis what is exactly wrong here
 	eapply "${FILESDIR}/perl-5.34.0-crossfit.patch"
+	# fix cross-compilation configure tests w/ lto
+	eapply "${FILESDIR}/perl-5.42.0-cross-no-lto.patch"
 
 	# bug 604072
 	MAKEOPTS+=" -j1"

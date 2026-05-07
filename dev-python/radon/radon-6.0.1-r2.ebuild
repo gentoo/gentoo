@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 pypi
 
@@ -24,13 +24,9 @@ RDEPEND="
 	dev-python/flake8[${PYTHON_USEDEP}]
 	>=dev-python/mando-0.6[${PYTHON_USEDEP}]
 "
-BDEPEND="
-	test? (
-		dev-python/pytest-mock[${PYTHON_USEDEP}]
-	)
-"
 
 distutils_enable_sphinx docs
+EPYTEST_PLUGINS=( pytest-mock )
 distutils_enable_tests pytest
 
 src_prepare() {

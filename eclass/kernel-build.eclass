@@ -713,7 +713,7 @@ kernel-build_pkg_postinst() {
 #    (if applicable).
 # 3. Config saved via USE=savedconfig (if applicable).
 # 4. Module signing key specified via MODULES_SIGN_KEY* variables.
-# 5. User-supplied configs from ${BROOT}/etc/kernel/config.d/*.config.
+# 5. User-supplied configs from ${ESYSROOT}/etc/kernel/config.d/*.config.
 #
 # This function must be called by the ebuild in the src_prepare phase.
 kernel-build_merge_configs() {
@@ -726,7 +726,7 @@ kernel-build_merge_configs() {
 
 	local shopt_save=$(shopt -p nullglob)
 	shopt -s nullglob
-	local user_configs=( "${BROOT}"/etc/kernel/config.d/*.config )
+	local user_configs=( "${ESYSROOT}"/etc/kernel/config.d/*.config )
 	eval "${shopt_save}"
 
 	local merge_configs=( "${@}" )

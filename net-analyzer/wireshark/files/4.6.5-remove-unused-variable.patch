@@ -1,0 +1,36 @@
+https://gitlab.com/wireshark/wireshark/-/work_items/20727
+
+From: =?UTF-8?q?Holger=20Hoffst=C3=A4tte?= <holger@applied-asynchrony.com>
+Date: Tue, 30 Sep 2025 14:12:11 +0200
+Subject: [PATCH] Remove unused variable 'newly_displayed_packets'
+
+Its use was removed in f210edea but the variable itself was never removed.
+
+Ping #20727
+---
+ file.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/file.c b/file.c
+index 854b894cb88..b287e424ced 100644
+--- a/file.c
++++ b/file.c
+@@ -798,7 +798,6 @@ cf_continue_tail(capture_file *cf, volatile int to_read, wtap_rec *rec,
+         int *err, fifo_string_cache_t *frame_dup_cache, GChecksum *frame_cksum)
+ {
+     char             *err_info;
+-    volatile int      newly_displayed_packets = 0;
+     epan_dissect_t    edt;
+     bool              create_proto_tree;
+     unsigned          tap_flags;
+@@ -878,9 +877,7 @@ cf_continue_tail(capture_file *cf, volatile int to_read, wtap_rec *rec,
+                    aren't any packets left to read) exit. */
+                 break;
+             }
+-            if (read_record(cf, rec, cf->dfcode, &edt, cinfo, data_offset, frame_dup_cache, frame_cksum)) {
+-                newly_displayed_packets++;
+-            }
++            read_record(cf, rec, cf->dfcode, &edt, cinfo, data_offset, frame_dup_cache, frame_cksum);
+             to_read--;
+         }
+         wtap_rec_reset(rec);

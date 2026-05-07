@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Faraday plugin to set compression headers and decompress responses."
+DESCRIPTION="Faraday plugin to set compression headers and decompress responses"
 HOMEPAGE="https://github.com/bodrovis/faraday-gzip"
 SRC_URI="https://github.com/bodrovis/faraday-gzip/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 

@@ -16,7 +16,7 @@ else
 		-> ${P}.gh.tar.gz"
 	S="${WORKDIR}/BQN-${PV}"
 
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 LICENSE="MIT"

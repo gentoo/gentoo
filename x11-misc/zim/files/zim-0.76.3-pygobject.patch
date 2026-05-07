@@ -1,0 +1,120 @@
+From c264b8bf58c6780b69f6370ecc27a09b2ef538e6 Mon Sep 17 00:00:00 2001
+From: Jaap Karssenberg <jaap.karssenberg@gmail.com>
+Date: Thu, 26 Mar 2026 20:27:50 +0100
+Subject: [PATCH] Fix bug with _object_widgets weakset
+
+Fixes #2934
+---
+ tests/pageview.py            |  2 +-
+ tests/sourceview.py          |  2 +-
+ tests/tableeditor.py         |  2 +-
+ zim/gui/pageview/__init__.py |  4 ++--
+ zim/gui/pageview/textview.py | 13 ++++++-------
+ 5 files changed, 11 insertions(+), 12 deletions(-)
+
+diff --git a/tests/pageview.py b/tests/pageview.py
+index 9ccc402a4..41fbaa595 100644
+--- a/tests/pageview.py
++++ b/tests/pageview.py
+@@ -1919,7 +1919,7 @@ def testUnkownObjectType(self):
+ 			self.fail('No object in tree')
+ 
+ 		buffer.set_parsetree(tree)
+-		self.assertEqual(len(list(view._object_widgets)), 1) # assert there is an object in the view
++		self.assertEqual(len(list(view.get_inserted_object_widgets())), 1) # assert there is an object in the view
+ 		self.assertParseTreeEqual(buffer, tree) # assert stable over roundtrip
+ 
+ 	def testPopup(self):
+diff --git a/tests/sourceview.py b/tests/sourceview.py
+index fb94adada..4f72ec618 100644
+--- a/tests/sourceview.py
++++ b/tests/sourceview.py
+@@ -45,7 +45,7 @@ def dump():
+ 
+ '''	)
+ 		# test widget loaded
+-		objects = list(pageview.textview._object_widgets) # XXX
++		objects = list(pageview.textview.get_inserted_object_widgets())
+ 		self.assertIsInstance(objects[0], SourceViewWidget)
+ 
+ 		# test modify
+diff --git a/tests/tableeditor.py b/tests/tableeditor.py
+index af3c9ae39..98e404148 100644
+--- a/tests/tableeditor.py
++++ b/tests/tableeditor.py
+@@ -162,7 +162,7 @@ def testWidget(self):
+ 			text=TABLE_WIKI_TEXT,
+ 		)
+ 		# test widget loaded
+-		objects = list(pageview.textview._object_widgets) # XXX
++		objects = list(pageview.textview.get_inserted_object_widgets())
+ 		self.assertIsInstance(objects[0], TableViewWidget)
+ 
+ 		# test modify
+diff --git a/zim/gui/pageview/__init__.py b/zim/gui/pageview/__init__.py
+index f1396fc6c..705744be7 100644
+--- a/zim/gui/pageview/__init__.py
++++ b/zim/gui/pageview/__init__.py
+@@ -1027,9 +1027,9 @@ def save_changes(self, write_if_not_modified=False):
+ 		self._save_page_handler.wait_for_store_page_async()
+ 
+ 	def _hack_on_inserted_tree(self, *a):
+-		if self.textview._object_widgets:
++		if self.textview.get_inserted_object_widgets():
+ 			# Force resize of the scroll window, forcing a redraw to fix
+-			# glitch in allocation of embedded obejcts, see isse #642
++			# glitch in allocation of embedded obejcts, see issue #642
+ 			# Will add another timeout to rendering the page, increasing the
+ 			# priority breaks the hack though. Which shows the glitch is
+ 			# probably also happening in a drawing or resizing idle event
+diff --git a/zim/gui/pageview/textview.py b/zim/gui/pageview/textview.py
+index 3e0c0760a..e7c867c40 100644
+--- a/zim/gui/pageview/textview.py
++++ b/zim/gui/pageview/textview.py
+@@ -156,7 +156,6 @@ def __init__(self, preferences):
+ 		self.set_size_request(24, 24)
+ 		self._cursor = CURSOR_TEXT
+ 		self._cursor_link = None
+-		self._object_widgets = weakref.WeakSet()
+ 		self.set_left_margin(10)
+ 		self.set_right_margin(5)
+ 		self.set_wrap_mode(Gtk.WrapMode.WORD)
+@@ -172,10 +171,8 @@ def __init__(self, preferences):
+ 
+ 	def set_buffer(self, buffer):
+ 		# Clear old widgets
+-		for child in self.get_children():
+-			if isinstance(child, InsertedObjectWidget):
+-				self._object_widgets.remove(child)
+-				self.remove(child)
++		for widget in self.get_inserted_object_widgets():
++			self.remove(widget)
+ 
+ 		# Set new buffer
+ 		Gtk.TextView.set_buffer(self, buffer)
+@@ -186,6 +183,9 @@ def set_buffer(self, buffer):
+ 
+ 		buffer.connect('insert-objectanchor', self.on_insert_object)
+ 
++	def get_inserted_object_widgets(self):
++		return [child for child in self.get_children() if isinstance(child, InsertedObjectWidget)]
++
+ 	def on_insert_object(self, buffer, anchor):
+ 		# Connect widget for this view to object
+ 		widget = anchor.create_widget()
+@@ -210,14 +210,13 @@ def widget_connect(signal):
+ 			# TODO - compute indenting
+ 
+ 		self.add_child_at_anchor(widget, anchor)
+-		self._object_widgets.add(widget)
+ 		widget.show_all()
+ 
+ 	def on_size_allocate(self, *a):
+ 		# Update size request for widgets
+ 		wrap_width = self._get_object_wrap_width()
+ 		if wrap_width != self._object_wrap_width:
+-			for widget in self._object_widgets:
++			for widget in self.get_inserted_object_widgets():
+ 				widget.set_textview_wrap_width(wrap_width)
+ 					# TODO - compute indenting
+ 			self._object_wrap_width = wrap_width

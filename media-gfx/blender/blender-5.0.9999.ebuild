@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # shellcheck disable=SC2207
@@ -256,10 +256,11 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-4.0.2-FindClang.patch"
+	"${FILESDIR}/${PN}-5.0.0-FindClang.patch"
 	"${FILESDIR}/${PN}-4.1.1-FindLLVM.patch"
 	"${FILESDIR}/${PN}-4.1.1-numpy.patch"
 	"${FILESDIR}/${PN}-4.3.2-system-glog.patch"
+	"${FILESDIR}/${PN}-5.0.0-osd-omp-link.patch"
 )
 
 blender_check_requirements() {
@@ -605,11 +606,6 @@ src_configure() {
 	if use hip; then
 		mycmakeargs+=(
 			-DHIP_ROOT_DIR="$(hipconfig -p)"
-
-			-DHIP_HIPCC_FLAGS="-fcf-protection=none"
-
-			-DCMAKE_HIP_LINK_EXECUTABLE="$(get_llvm_prefix)/bin/clang++"
-
 			-DCYCLES_HIP_BINARIES_ARCH="$(get_amdgpu_flags)"
 		)
 
@@ -649,10 +645,12 @@ src_configure() {
 		)
 	fi
 
-	if tc-is-clang || use osl; then
+	if use osl; then
 		mycmakeargs+=(
 			-DWITH_CLANG="yes"
 			-DWITH_LLVM="yes"
+			-DLLVM_ROOT="$(get_llvm_prefix)"
+			-DClang_ROOT="$(get_llvm_prefix)"
 		)
 	fi
 

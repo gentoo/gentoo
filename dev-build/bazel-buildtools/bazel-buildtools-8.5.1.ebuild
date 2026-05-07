@@ -7,7 +7,7 @@ REAL_PN="buildtools"
 
 inherit go-module
 
-DESCRIPTION="Tools for working with Google's Bazel BUILD files."
+DESCRIPTION="Tools for working with Google's Bazel BUILD files"
 HOMEPAGE="https://github.com/bazelbuild/buildtools/"
 
 if [[ "${PV}" == *9999* ]] ; then
@@ -19,7 +19,7 @@ else
 		-> ${P}.gh.tar.gz"
 	S="${WORKDIR}/${REAL_PN}-${PV}"
 
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 arm64 ~x86"
 fi
 
 SRC_URI+="

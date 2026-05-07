@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -37,7 +37,7 @@ HOMEPAGE="https://www.virtualbox.org/ https://github.com/VirtualBox/virtualbox"
 EGIT_REPO_URI="https://github.com/VirtualBox/virtualbox.git"
 SRC_URI="
 	https://gitweb.gentoo.org/proj/virtualbox-patches.git/snapshot/virtualbox-patches-${PATCHES_TAG}.tar.bz2
-	gui? ( !doc? ( https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/${PN}-help-${BASE_PV}.tar.xz ) )
+	gui? ( !doc? ( https://distfiles.gentoo.org/pub/dev/ceamac@gentoo.org/${CATEGORY}/${PN}/${PN}-help-${BASE_PV}.tar.xz ) )
 "
 
 LICENSE="GPL-2+ GPL-3 LGPL-2.1 MIT dtrace? ( CDDL )"

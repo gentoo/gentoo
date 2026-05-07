@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/janestreet/${PN}/archive/v${PV}.tar.gz
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 ~riscv x86"
-IUSE="+ocamlopt"
+IUSE="+ocamlopt cpu_flags_x86_sse4_2"
 RESTRICT="test"
 
 DEPEND="
@@ -23,8 +23,19 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	if use riscv || use ppc; then
+	local supported_arch=false
+
+	if use amd64 || use x86; then
+		# On x86/amd64, we MUST have sse4_2 support for these stubs
+		use cpu_flags_x86_sse4_2 && supported_arch=true
+	elif use arm || use arm64; then
+		supported_arch=true
+	fi
+
+	# If not a supported configuration, strip the stubs from the build
+	if ! ${supported_arch}; then
 		sed -i -e 's: crc_stubs::' src/dune || die
 	fi
+
 	default
 }

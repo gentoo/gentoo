@@ -1,11 +1,11 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit dune
 
-DESCRIPTION="A PPX rewriter that genreates the implementation of [Ldiffable.S]."
+DESCRIPTION="A PPX rewriter that genreates the implementation of [Ldiffable.S]"
 HOMEPAGE="https://github.com/janestreet/ppx_diff"
 SRC_URI="https://github.com/janestreet/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 

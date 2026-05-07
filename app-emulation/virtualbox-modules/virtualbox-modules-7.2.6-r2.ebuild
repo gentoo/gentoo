@@ -12,12 +12,12 @@ inherit linux-mod-r1
 MY_P="vbox-host-kernel-module-src-${PV^^}"
 DESCRIPTION="Kernel Modules for Virtualbox"
 HOMEPAGE="https://www.virtualbox.org/"
-SRC_URI="https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/${MY_P}.tar.xz"
+SRC_URI="https://distfiles.gentoo.org/pub/dev/ceamac@gentoo.org/${CATEGORY}/${PN}/${MY_P}.tar.xz"
 S="${WORKDIR}"
 
 LICENSE="GPL-3"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-kernel-6.19-{1..3}.patch

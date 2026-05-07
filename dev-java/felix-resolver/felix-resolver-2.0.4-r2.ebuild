@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ JAVA_TESTING_FRAMEWORKS="junit-4"
 
 inherit java-pkg-2 java-pkg-simple verify-sig
 
-DESCRIPTION="Provide OSGi resolver service."
+DESCRIPTION="Provide OSGi resolver service"
 HOMEPAGE="https://felix.apache.org/documentation/index.html"
 SRC_URI="mirror://apache/felix/org.apache.${PN//-/.}-${PV}-source-release.tar.gz
 	verify-sig? ( https://downloads.apache.org/felix/org.apache.${PN//-/.}-${PV}-source-release.tar.gz.asc )"

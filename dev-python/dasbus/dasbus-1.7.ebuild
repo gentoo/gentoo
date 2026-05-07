@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/dasbus-project/${PN}/archive/refs/tags/v${PV}.tar.gz
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~sparc"
 
 RDEPEND="dev-python/pygobject:3[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"

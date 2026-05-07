@@ -58,7 +58,7 @@ src_prepare() {
 		eapply "${FILESDIR}/${PN}-0.91.0.10-bl2.patch"
 		JAVA_GENTOO_CLASSPATH+=" browserlauncher2-1.0"
 	fi
-	rm -rf src/edu || die
+	rm -r src/edu || die
 
 	# apply IDCTFast patch
 	eapply "${FILESDIR}/${PN}-0.91.0.10-idctfast.patch"
@@ -77,13 +77,13 @@ src_prepare() {
 	if use X; then
 		mv -f htmls resources/ || die
 	else
-		rm -rf src/net/sourceforge/dvb/projectx/gui || die
+		rm -r src/net/sourceforge/dvb/projectx/gui || die
 		rm resources/*.gif || die
 	fi
 
 	# update library packages
 	cd lib || die
-	rm -f {commons-net,jakarta-oro}*.jar || die
+	rm {commons-net,jakarta-oro}*.jar || die
 	java-pkg_jar-from commons-net
 	use X && java-pkg_jar-from browserlauncher2-1.0
 	java-pkg_ensure-no-bundled-jars

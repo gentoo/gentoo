@@ -1,0 +1,40 @@
+https://github.com/pyside/pyside-setup/commit/33641ce807353f56d083f3ed1059bf67ce800e92
+
+Affects python-3.14.4 as well for me (Alfred Wingate).
+
+From 33641ce807353f56d083f3ed1059bf67ce800e92 Mon Sep 17 00:00:00 2001
+From: Friedemann Kleint <Friedemann.Kleint@qt.io>
+Date: Mon, 27 Apr 2026 22:02:54 +0200
+Subject: [PATCH] libpyside: Fix tests bug_408/994 crashing in debug mode or
+ when using Python 3.15
+
+Python asserts about memory allocation for the metaObject attribute
+string when not holding the GIL when connections  done in Qt C++ are
+disconnected by the destructor, triggering
+disconnectNotify()/metaObject(). To fix this, ensure the string is
+created at initialization time.
+
+The scenario of appears in ~QTextStream when wrapping it around
+after another QIODevice after qtbase/e3c290e1947515992821e6bf97d74d65c9254271.
+
+Task-number: PYSIDE-3221
+Pick-to: 6.11 6.8
+Change-Id: I76d0cf7567bfe073ad419b2f4b1d6617918bdb85
+Reviewed-by: Shyamnath Premnadh <Shyamnath.Premnadh@qt.io>
+--- a/sources/pyside6/libpyside/signalmanager.cpp
++++ b/sources/pyside6/libpyside/signalmanager.cpp
+@@ -301,6 +301,14 @@ static PyObject *CopyCppToPythonPyObject(const void *cppIn)
+ 
+ void SignalManager::init()
+ {
++    // Force the metaObject attribute into existence. This fixes an
++    // exit crash (Python 3.15/allocation asserting since GIL is not held)
++    // when connections done in Qt C++ are disconnected by the destructor,
++    // triggering disconnectNotify()/metaObject().
++    // Note: SbkDeallocWrapperCommon() temporarily releases the GIL for
++    // legacy bug 500 (~QPrintDialog hanging).
++    [[maybe_unused]] auto *mo = metaObjectAttr();
++
+     // Register Qt primitive typedefs used on signals.
+     using namespace Shiboken;
+ 

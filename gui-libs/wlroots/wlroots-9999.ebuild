@@ -3,6 +3,8 @@
 
 EAPI=8
 
+# Note: please bump this together with gui-wm/tinywl
+
 inherit meson
 
 DESCRIPTION="Pluggable, composable, unopinionated modules for building a Wayland compositor"
@@ -11,7 +13,7 @@ HOMEPAGE="https://gitlab.freedesktop.org/wlroots/wlroots"
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/${PN}/${PN}.git"
 	inherit git-r3
-	SLOT="0.20"
+	SLOT="0.21"
 else
 	inherit verify-sig
 	SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/releases/${PV}/downloads/${P}.tar.gz
@@ -29,8 +31,8 @@ REQUIRED_USE="
 	xcb-errors? ( || ( x11-backend X ) )
 "
 
-DEPEND="
-	>=dev-libs/wayland-1.23.1
+RDEPEND="
+	>=dev-libs/wayland-1.24.0
 	media-libs/libglvnd
 	>=media-libs/mesa-24.1.0_rc1[opengl]
 	>=x11-libs/libdrm-2.4.129
@@ -63,11 +65,11 @@ DEPEND="
 		x11-base/xwayland
 	)
 "
-RDEPEND="
-	${DEPEND}
+DEPEND="
+	${REPEND}
+	>=dev-libs/wayland-protocols-1.47
 "
 BDEPEND="
-	>=dev-libs/wayland-protocols-1.41
 	dev-util/wayland-scanner
 	virtual/pkgconfig
 "

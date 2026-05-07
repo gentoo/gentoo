@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,6 +21,9 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	dev-python/ply[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
+"
+BDEPEND="
+	dev-python/pkg-resources[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests unittest

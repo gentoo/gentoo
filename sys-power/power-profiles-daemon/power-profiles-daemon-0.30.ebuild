@@ -1,8 +1,8 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..14} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit meson python-single-r1 shell-completion systemd
 
@@ -54,17 +54,26 @@ BDEPEND="
 
 python_check_deps() {
 	if use test; then
-		python_has_version "dev-python/python-dbusmock[${PYTHON_USEDEP}]" &&
-		python_has_version "dev-python/pygobject:3[${PYTHON_USEDEP}]"
+		python_has_version "dev-python/python-dbusmock[${PYTHON_USEDEP}]" \
+			"dev-python/pygobject:3[${PYTHON_USEDEP}]" || return 1
 	else
-		python_has_version "dev-python/pygobject:3[${PYTHON_USEDEP}]"
+		python_has_version "dev-python/pygobject:3[${PYTHON_USEDEP}]" || return 1
 	fi
 
 	if use bash-completion || use zsh-completion; then
-		python_has_version ">=dev-python/shtab-1.7.0[${PYTHON_USEDEP}]"
+		python_has_version ">=dev-python/shtab-1.7.0[${PYTHON_USEDEP}]" || return 1
 	fi
 
-	use man && python_has_version "dev-python/argparse-manpage[${PYTHON_USEDEP}]"
+	if use man; then
+		python_has_version "dev-python/argparse-manpage[${PYTHON_USEDEP}]" || return 1
+	fi
+}
+
+src_prepare() {
+	default
+
+	# Don't run coverage tests, they're not useful for downstreams, #970016
+	sed -i -e '/PPD_PYTHON_COVERAGE/d' tests/meson.build || die
 }
 
 src_configure() {

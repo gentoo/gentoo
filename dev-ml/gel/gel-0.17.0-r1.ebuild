@@ -1,11 +1,11 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit dune
 
-DESCRIPTION="A library to mark non-record fields global."
+DESCRIPTION="A library to mark non-record fields global"
 HOMEPAGE="https://github.com/janestreet/gel"
 SRC_URI="https://github.com/janestreet/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 

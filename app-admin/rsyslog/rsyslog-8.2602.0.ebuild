@@ -19,7 +19,7 @@ else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm arm64 ~hppa ~ppc64 ~riscv x86"
 fi
 
 LICENSE="GPL-3 LGPL-3 Apache-2.0"
@@ -116,7 +116,12 @@ DEPEND="
 CONFIG_CHECK="~INOTIFY_USER"
 WARNING_INOTIFY_USER="CONFIG_INOTIFY_USER isn't set. Imfile module on this system will only support polling mode!"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-8.2602.0-omfwd-support-musl-resolver-APIs.patch"
+)
+
 pkg_setup() {
+	linux-info_pkg_setup
 	python-any-r1_pkg_setup
 }
 
@@ -286,7 +291,7 @@ src_test() {
 		_has_increased_ulimit="true"
 	fi
 
-	if ! emake --jobs 1 check; then
+	if ! emake check ; then
 		eerror "Test suite failed! :("
 
 		if [[ -z "${_has_increased_ulimit}" ]]; then
@@ -297,7 +302,6 @@ src_test() {
 			eerror "Please try to reproduce the test suite failure with FEATURES=-userpriv " \
 				"before you submit a bug report."
 		fi
-
 	fi
 }
 

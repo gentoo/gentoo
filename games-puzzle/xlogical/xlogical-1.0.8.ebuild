@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ DESCRIPTION="Puzzle game based on the Logical! game released on the Commodore Am
 HOMEPAGE="https://changeling.ixionstudios.com/xlogical/"
 SRC_URI="
 	https://changeling.ixionstudios.com/xlogical/downloads/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~ionen/distfiles/${PN}.png"
+	https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${PN}.png"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2+"

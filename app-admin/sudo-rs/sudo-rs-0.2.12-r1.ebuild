@@ -14,7 +14,7 @@ RUST_MIN_VER="1.85.0"
 
 inherit pam cargo
 
-DESCRIPTION="A memory safe implementation of sudo and su."
+DESCRIPTION="A memory safe implementation of sudo and su"
 HOMEPAGE="https://github.com/trifectatechfoundation/sudo-rs"
 SRC_URI="
 	https://github.com/trifectatechfoundation/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz

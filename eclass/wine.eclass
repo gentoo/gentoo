@@ -38,15 +38,13 @@ inherit autotools flag-o-matic multilib prefix toolchain-funcs wrapper
 # be about always preferred over abi_x86_32, this should be removed and
 # support for 32bit-only-on-64bit be dropped matching how /no-multilib/
 # handles it
-readonly WINE_USEDEP="abi_x86_32(-)?,abi_x86_64(-)?"
+WINE_USEDEP="abi_x86_32(-)?,abi_x86_64(-)?"
 
 IUSE="+abi_x86_64 arm64ec crossdev-mingw custom-cflags +mingw +strip"
 
 # enable wow64 in wine-11+ where it is no longer considered experimental
 # and provides a better UX for Gentoo users without USE=abi_x86_32
-# TODO: drop wine-proton exception here and in wine_pkg_preinst when
-# 9999 is based on wine-11.0
-if ver_test -ge 11 && [[ ${PN} != wine-proton ]]; then
+if ver_test -ge 11; then
 	IUSE+=" abi_x86_32 +wow64"
 else
 	IUSE+=" +abi_x86_32 wow64"
@@ -460,8 +458,7 @@ wine_src_install() {
 wine_pkg_preinst() {
 	# if *any* slot has it set or it is a new install, then assume
 	# user does not need a warning
-	use wow64 && ver_test -ge 11 && [[ ${PN} != wine-proton ]] &&
-		has_version "${CATEGORY}/${PN}" &&
+	use wow64 && ver_test -ge 11 && has_version "${CATEGORY}/${PN}" &&
 		! has_version "${CATEGORY}/${PN}[wow64(-)]" && WINE_WARN_WOW64=
 }
 

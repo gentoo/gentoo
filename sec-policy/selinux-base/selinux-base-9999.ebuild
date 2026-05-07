@@ -1,44 +1,52 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="xml(+)"
+
 inherit python-any-r1
 
-if [[ ${PV} == 9999* ]]; then
+DESCRIPTION="Gentoo base policy for SELinux"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:SELinux"
+
+if [[ "${PV}" = 9999* ]]; then
 	EGIT_REPO_URI="${SELINUX_GIT_REPO:-https://anongit.gentoo.org/git/proj/hardened-refpolicy.git}"
 	EGIT_BRANCH="${SELINUX_GIT_BRANCH:-master}"
 	EGIT_CHECKOUT_DIR="${WORKDIR}/refpolicy"
 
 	inherit git-r3
 else
-	SRC_URI="https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_${PV/./_}/refpolicy-${PV}.tar.bz2
-			https://dev.gentoo.org/~perfinion/patches/selinux-base-policy/patchbundle-selinux-base-policy-${PVR}.tar.bz2"
-
+	MY_PV=$(ver_cut 1-2)
+	SRC_URI="https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_${MY_PV/./_}/refpolicy-${MY_PV}.tar.bz2
+		https://dev.gentoo.org/~perfinion/patches/selinux-base-policy/patchbundle-selinux-base-policy-${PV/_p/-r}.tar.bz2"
 	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 fi
 
-IUSE="doc +unknown-perms systemd +ubac +unconfined"
+S="${WORKDIR}"
 
-DESCRIPTION="Gentoo base policy for SELinux"
-HOMEPAGE="https://wiki.gentoo.org/wiki/Project:SELinux"
 LICENSE="GPL-2"
 SLOT="0"
+IUSE="
+	doc +unknown-perms systemd +ubac +unconfined
+	+selinux_policy_types_targeted +selinux_policy_types_strict +selinux_policy_types_mcs +selinux_policy_types_mls
+"
+REQUIRED_USE="
+	|| ( selinux_policy_types_targeted selinux_policy_types_strict selinux_policy_types_mcs selinux_policy_types_mls )
+"
 
 RDEPEND=">=sys-apps/policycoreutils-2.8"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
 	>=sys-apps/checkpolicy-2.8
-	sys-devel/m4"
-
-S=${WORKDIR}/
+	sys-devel/m4
+"
 
 src_prepare() {
-	if [[ ${PV} != 9999* ]]; then
-		einfo "Applying SELinux policy updates ... "
+	if [[ "${PV}" != 9999* ]]; then
+		einfo "Applying SELinux policy updates... "
 		eapply -p0 "${WORKDIR}/0001-full-patch-against-stable-release.patch"
 	fi
 
@@ -49,8 +57,6 @@ src_prepare() {
 }
 
 src_configure() {
-	[ -z "${POLICY_TYPES}" ] && local POLICY_TYPES="targeted strict mls mcs"
-
 	# Update the SELinux refpolicy capabilities based on the users' USE flags.
 	if use unknown-perms; then
 		sed -i -e '/^UNK_PERMS/s/deny/allow/' "${S}/refpolicy/build.conf" \
@@ -77,72 +83,70 @@ src_configure() {
 
 	# Setup the policies based on the types delivered by the end user.
 	# These types can be "targeted", "strict", "mcs" and "mls".
-	for i in ${POLICY_TYPES}; do
-		cp -a "${S}/refpolicy" "${S}/${i}" || die
-		cd "${S}/${i}" || die
+	for type in targeted strict mcs mls; do
+		if use "selinux_policy_types_${type}"; then
+			cp -a "${S}/refpolicy" "${S}/${type}" || die
+			cd "${S}/${type}" || die
 
-		sed -i -e "/= module/d" "${S}/${i}/policy/modules.conf" || die
+			sed -i -e "/= module/d" "${S}/${type}/policy/modules.conf" || die
 
-		sed -i -e '/^QUIET/s/n/y/' -e "/^NAME/s/refpolicy/$i/" \
-			"${S}/${i}/build.conf" || die "build.conf setup failed."
+			sed -i -e '/^QUIET/s/n/y/' -e "/^NAME/s/refpolicy/${type}/" \
+				"${S}/${type}/build.conf" || die "build.conf setup failed."
 
-		if [[ "${i}" == "mls" ]] || [[ "${i}" == "mcs" ]];
-		then
-			# MCS/MLS require additional settings
-			sed -i -e "/^TYPE/s/standard/${i}/" "${S}/${i}/build.conf" \
-				|| die "failed to set type to mls"
-		fi
+			if [[ "${type}" = "mls" || "${type}" = "mcs" ]]; then
+				# MCS/MLS require additional settings
+				sed -i -e "/^TYPE/s/standard/${type}/" "${S}/${type}/build.conf" \
+					|| die "failed to set type to mls"
+			fi
 
-		if [ "${i}" == "targeted" ]; then
-			sed -i -e '/root/d' -e 's/user_u/unconfined_u/' \
-			"${S}/${i}/config/appconfig-standard/seusers" \
-			|| die "targeted seusers setup failed."
-		fi
+			if [[ "${type}" = "targeted" ]]; then
+				sed -i -e '/root/d' -e 's/user_u/unconfined_u/' \
+					"${S}/${type}/config/appconfig-standard/seusers" \
+					|| die "targeted seusers setup failed."
+			fi
 
-		if [ "${i}" != "targeted" ] && [ "${i}" != "strict" ] && use unconfined; then
-			sed -i -e '/root/d' -e 's/user_u/unconfined_u/' \
-			"${S}/${i}/config/appconfig-${i}/seusers" \
-			|| die "policy seusers setup failed."
+			if [[ "${type}" != "targeted" && "${type}" != "strict" ]] && use unconfined; then
+				sed -i -e '/root/d' -e 's/user_u/unconfined_u/' \
+					"${S}/${type}/config/appconfig-${type}/seusers" \
+					|| die "policy seusers setup failed."
+			fi
 		fi
 	done
 }
 
 src_compile() {
-	[ -z "${POLICY_TYPES}" ] && local POLICY_TYPES="targeted strict mls mcs"
-
-	for i in ${POLICY_TYPES}; do
-		cd "${S}/${i}" || die
-		emake base
-		if use doc; then
-			emake html
+	for type in targeted strict mcs mls; do
+		if use "selinux_policy_types_${type}"; then
+			cd "${S}/${type}" || die
+			emake base
+			use doc && emake html
 		fi
 	done
 }
 
 src_install() {
-	[ -z "${POLICY_TYPES}" ] && local POLICY_TYPES="targeted strict mls mcs"
+	for type in targeted strict mcs mls; do
+		if use "selinux_policy_types_${type}"; then
+			cd "${S}/${type}" || die
 
-	for i in ${POLICY_TYPES}; do
-		cd "${S}/${i}" || die
+			emake DESTDIR="${D}" install
+			emake DESTDIR="${D}" install-headers
 
-		emake DESTDIR="${D}" install
-		emake DESTDIR="${D}" install-headers
+			echo "run_init_t" > "${D}/etc/selinux/${type}/contexts/run_init_type" || die
 
-		echo "run_init_t" > "${D}/etc/selinux/${i}/contexts/run_init_type" || die
+			echo "textrel_shlib_t" >> "${D}/etc/selinux/${type}/contexts/customizable_types" || die
 
-		echo "textrel_shlib_t" >> "${D}/etc/selinux/${i}/contexts/customizable_types" || die
+			# libsemanage won't make this on its own
+			keepdir "/etc/selinux/${type}/policy"
 
-		# libsemanage won't make this on its own
-		keepdir "/etc/selinux/${i}/policy"
+			if use doc; then
+				docinto "${type}/html"
+				dodoc -r doc/html/*;
+			fi
 
-		if use doc; then
-			docinto ${i}/html
-			dodoc -r doc/html/*;
+			insinto /usr/share/selinux/devel;
+			doins doc/policy.xml;
 		fi
-
-		insinto /usr/share/selinux/devel;
-		doins doc/policy.xml;
-
 	done
 
 	docinto /

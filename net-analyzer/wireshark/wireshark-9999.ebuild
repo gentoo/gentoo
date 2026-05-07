@@ -151,6 +151,17 @@ src_unpack() {
 	fi
 }
 
+src_prepare() {
+	# since 4.6.5 the Lua version is found "automatically" and can no longer
+	# be passed in via LUA_FIND_VERSIONS, so we override the search list.
+	if use lua; then
+		sed -i "s/set(LUA_VERSIONS5 5.5 5.4 5.3 5.2 5.1 5.0)/set(LUA_VERSIONS5 ${ELUA#lua})/g" \
+			cmake/modules/FindLua.cmake || die
+	fi
+
+	cmake_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs
 
@@ -206,7 +217,6 @@ src_configure() {
 		-DENABLE_ILBC=$(usex ilbc)
 		-DENABLE_KERBEROS=$(usex kerberos)
 		-DENABLE_LUA=$(usex lua)
-		-DLUA_FIND_VERSIONS="${ELUA#lua}"
 		-DENABLE_LZ4=$(usex lz4)
 		-DENABLE_MINIZIP=$(usex minizip)
 		-DENABLE_MINIZIPNG=OFF
@@ -293,14 +303,14 @@ src_install() {
 	if use gui ; then
 		local s
 
-		for s in 16 32 48 64 128 256 512 1024 ; do
+		for s in 16 32 48 64 256 ; do
 			insinto /usr/share/icons/hicolor/${s}x${s}/apps
 			newins resources/icons/wsicon${s}.png wireshark.png
 		done
 
 		for s in 16 24 32 48 64 128 256 ; do
 			insinto /usr/share/icons/hicolor/${s}x${s}/mimetypes
-			newins resources/icons//WiresharkDoc-${s}.png application-vnd.tcpdump.pcap.png
+			newins resources/icons/WiresharkDoc-${s}.png application-vnd.tcpdump.pcap.png
 		done
 	fi
 

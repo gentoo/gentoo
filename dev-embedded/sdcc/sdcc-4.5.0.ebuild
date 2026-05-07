@@ -17,7 +17,7 @@ else
 		doc? ( https://downloads.sourceforge.net/project/${PN}/sdcc-doc/${PV}/${PN}-doc-${PV}.tar.bz2 )
 	"
 
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 BINUTILS_PV=2.45.1
 SRC_URI+="

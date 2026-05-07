@@ -5,7 +5,7 @@ EAPI=8
 
 CMAKE_BUILD_TYPE=Release  # RelWithDebInfo enables debug logging
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..13} )
 PYTHON_REQ_USE="sqlite"
 
 # We only package the LTS releases right now

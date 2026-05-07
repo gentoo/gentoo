@@ -1,0 +1,40 @@
+# Copyright 2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# QA check: ensure go-module based ebuilds define correct GO_MIN_VER
+# Maintainer: Arthur Zamarin <arthurzam@gentoo.org>
+
+go_ver_check() {
+	has go-module ${INHERITED} || return
+
+	# Maximum value for "go" version across go.mod files
+	local go_mod_version=$(
+		find "${WORKDIR}" -name go.mod -exec sed -n -e 's/^go\s\+\([0-9.]*\)\s*$/\1/p' {} \+ |
+		sort -V |
+		tail -n 1
+	)
+
+	# Extract go version from BDEPEND or DEPEND (>=dev-lang/go-X.Y:= format)
+	local bdepend_go_ver=$(
+		grep -oE '>=?dev-lang/go-[0-9.]+' <<< "${BDEPEND} ${DEPEND}" |
+		sed -n -E 's|^>=?dev-lang/go-([0-9.]+)$|\1|p' |
+		sort -V |
+		tail -n 1
+	)
+
+	# Check if BDEPEND/DEPEND version matches what go.mod requires
+	if [[ -n ${go_mod_version} ]] && ( [[ -z ${bdepend_go_ver} ]] || ver_test "${bdepend_go_ver}" -lt "${go_mod_version}" ); then
+		eqawarn
+		eqawarn "QA Notice: found go.mod file which specifies go ${go_mod_version}"
+		eqawarn "Update BDEPEND to have \">=dev-lang/go-${go_mod_version}\""
+		eqawarn
+
+		# For EAPI>=9, enforce the ebuild being updated
+		[[ ${EAPI} != 8 ]] && die "Update BDEPEND with >=dev-lang/go-${go_mod_version}:="
+	fi
+}
+
+go_ver_check
+: # guarantee successful exit
+
+# vim:ft=sh

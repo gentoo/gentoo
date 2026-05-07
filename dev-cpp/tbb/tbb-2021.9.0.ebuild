@@ -24,6 +24,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2021.8.0-gcc-13.patch
+	"${FILESDIR}"/${PN}-2021.9.0-ppc.patch
 	"${FILESDIR}"/${PN}-2021.13.0-test-atomics.patch
 	"${FILESDIR}"/${P}-dynamicLink.patch
 )
@@ -47,4 +48,12 @@ src_configure() {
 	)
 
 	cmake-multilib_src_configure
+}
+
+src_test() {
+	local CMAKE_SKIP_TESTS=()
+	if use elibc_musl; then
+		CMAKE_SKIP_TESTS=( conformance_resumable_tasks ) # Bug #864175
+	fi
+	cmake-multilib_src_test
 }

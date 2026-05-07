@@ -4,10 +4,10 @@
 EAPI=8
 
 ECM_TEST="true"
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 KFMIN=6.18.0
 QTMIN=6.10.1
-inherit ecm plasma.kde.org python-single-r1 systemd xdg
+inherit ecm plasma.kde.org python-single-r1 xdg
 
 DESCRIPTION="Plasma crash handler, gives the user feedback if a program crashed"
 
@@ -17,7 +17,6 @@ KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE=""
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-RESTRICT="test" # bug 935362
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui,network,widgets]
@@ -69,13 +68,4 @@ src_test() {
 		-E "(connectiontest)"
 	)
 	ecm_src_test
-}
-
-pkg_postinst() {
-	if [[ -z ${REPLACING_VERSIONS} ]] && systemd_is_booted ; then
-		elog "For systemd, steps are needed for integration with systemd-coredumpd."
-		elog "As root, run the following:"
-		elog "1. systemctl enable drkonqi-coredump-processor@.service"
-		elog "2. systemctl --user enable --now --global drkonqi-coredump-launcher.socket"
-	fi
 }

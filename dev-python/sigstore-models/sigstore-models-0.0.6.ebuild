@@ -1,10 +1,10 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=uv-build
-PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 
 inherit distutils-r1
 
@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64"
+KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
 
 RDEPEND="
 	>=dev-python/pydantic-2.11.7[${PYTHON_USEDEP}]

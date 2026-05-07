@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -70,7 +70,11 @@ if [[ ${PV} == *9999* ]] ; then
 	BDEPEND+=" dev-ruby/asciidoctor"
 fi
 
-PATCHES=( "${FILESDIR}/${P}-qt6.patch" ) # bug 962118, in git master
+PATCHES=(
+	"${FILESDIR}/${P}-qt6.patch"	   # bug 962118, in git master
+	"${FILESDIR}/${PN}-drop-dia.patch" # bugs 836730, 967742
+	"${FILESDIR}/${PN}-no-class.patch" # from Portage
+)
 
 python_check_deps() {
 	python_has_version -b "dev-build/scons[${PYTHON_USEDEP}]" || return 1

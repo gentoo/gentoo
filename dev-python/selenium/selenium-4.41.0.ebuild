@@ -29,7 +29,7 @@ SRC_URI+="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~x86"
 IUSE="test test-rust"
 RESTRICT="!test? ( test )"
 
@@ -47,6 +47,7 @@ BDEPEND="
 		$(python_gen_cond_dep "
 			dev-python/filetype[\${PYTHON_USEDEP}]
 			dev-python/pytest-mock[\${PYTHON_USEDEP}]
+			dev-python/rich[\${PYTHON_USEDEP}]
 			test-rust? (
 				dev-python/pytest[\${PYTHON_USEDEP}]
 				dev-python/pytest-rerunfailures[\${PYTHON_USEDEP}]

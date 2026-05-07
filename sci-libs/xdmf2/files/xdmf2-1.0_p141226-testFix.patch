@@ -1,0 +1,10 @@
+--- a/core/CMakeLists.txt	2026-05-04 11:49:16.158835662 +0200
++++ b/core/CMakeLists.txt	2026-05-04 12:07:45.854166061 +0200
+@@ -45,7 +45,6 @@
+   include_directories(${HDF5_C_INCLUDE_DIR})
+   get_filename_component(HDF5_LIBRARY_DIR "${HDF5_hdf5_LIBRARY_RELEASE}" PATH)
+   set(XDMF_LIBRARY_DIRS ${XDMF_LIBRARY_DIRS} ${HDF5_LIBRARY_DIR})
+-  set(HDF5_LIBRARIES ${HDF5_hdf5_LIBRARY_RELEASE})
+   # FIXME: Would like to get this info from HDF5 so we don't have conflicting
+   # MPI versions
+   if(HDF5_IS_PARALLEL)

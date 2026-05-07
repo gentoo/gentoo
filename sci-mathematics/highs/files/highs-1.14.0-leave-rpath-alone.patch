@@ -1,0 +1,42 @@
+https://src.fedoraproject.org/rpms/coin-or-HiGHS/raw/rawhide/f/coin-or-HiGHS-rpath.patch
+
+--- HiGHS-1.13.0/app/CMakeLists.txt.orig	2026-02-03 23:49:20.000000000 -0700
++++ HiGHS-1.13.0/app/CMakeLists.txt	2026-02-04 11:24:12.764558247 -0700
+@@ -36,9 +36,6 @@ if(FAST_BUILD)
+       if(APPLE)
+           set_target_properties(highs-bin PROPERTIES INSTALL_RPATH
+           "@loader_path/../${CMAKE_INSTALL_LIBDIR};@loader_path")
+-      elseif (UNIX)
+-          set_target_properties(highs-bin PROPERTIES INSTALL_RPATH
+-          "$ORIGIN:$ORIGIN/../${CMAKE_INSTALL_LIBDIR}")
+ 
+         # cmake_path is 3.20, leave for later.
+         # cmake_path(RELATIVE_PATH CMAKE_INSTALL_FULL_LIBDIR
+--- HiGHS-1.13.0/CMakeLists.txt.orig	2026-02-03 23:49:20.000000000 -0700
++++ HiGHS-1.13.0/CMakeLists.txt	2026-02-04 11:25:27.379687065 -0700
+@@ -431,14 +431,6 @@ set(CMAKE_MACOSX_RPATH TRUE)
+ 
+ if (BUILD_DOTNET)
+     set(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
+-else()
+-    # use, i.e. don't skip the full RPATH for the build tree
+-    set(CMAKE_SKIP_BUILD_RPATH FALSE)
+-
+-    # when building, don't use the install RPATH already
+-    # (but later on when installing)
+-    set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
+-    set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+ endif()
+ 
+ # In your CMakeLists.txt
+--- HiGHS-1.13.0/highs/CMakeLists.txt.orig	2026-02-03 23:49:20.000000000 -0700
++++ HiGHS-1.13.0/highs/CMakeLists.txt	2026-02-04 11:24:56.860018695 -0700
+@@ -58,8 +58,6 @@ if(NOT FAST_BUILD)
+   # set the install rpath to the installed destination
+   if(APPLE)
+       set_target_properties(libhighs PROPERTIES INSTALL_RPATH "@loader_path")
+-  elseif (UNIX)
+-      set_target_properties(libhighs PROPERTIES INSTALL_RPATH "$ORIGIN")
+   endif()
+ 
+   # install the header files of highs

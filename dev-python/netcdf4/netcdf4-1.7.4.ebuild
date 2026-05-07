@@ -19,7 +19,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 arm64 ~x86"
 IUSE="blosc bzip2 mpi test szip zstd"
 RESTRICT="!test? ( test )"
 

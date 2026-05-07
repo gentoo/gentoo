@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,6 +29,9 @@ DEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-3.2_rc1_p20250101-parallel.patch
+
+	# both merged
 	"${FILESDIR}"/${P}-respect-ldflags.patch
 	"${FILESDIR}"/${P}-ar.patch
 )
@@ -44,6 +47,12 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://github.com/sarnold/urt/issues/15
+	# Do not trust with LTO either.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	append-cflags -fPIC
 
 	sed -i -e '/^CFLAGS/s: -O2 : :' makefile.hdr || die

@@ -1,4 +1,4 @@
-# Copyright 2021-2025 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,7 +34,7 @@ src_prepare() {
 src_compile() {
 	build () {
 		for i in gnat text; do
-			gprbuild -p -j$(makeopts_jobs) -v \
+			gprbuild -p -j$(get_makeopts_jobs) -v \
 				-XVSS_BUILD_PROFILE=release \
 				-XVSS_LIBRARY_TYPE=$1 \
 				gnat/vss_${i}.gpr \
@@ -51,7 +51,7 @@ src_compile() {
 }
 
 src_test() {
-	emake -j1 GPRFLAGS="-j$(makeopts_jobs) -v" build-tests
+	emake -j1 GPRFLAGS="-j$(get_makeopts_jobs) -v" build-tests
 	# To run all the test need to follow data/README.md
 	emake check_text
 }

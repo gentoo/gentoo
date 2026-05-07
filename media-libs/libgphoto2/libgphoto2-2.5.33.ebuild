@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # TODO
@@ -7,16 +7,20 @@
 
 EAPI=8
 
-inherit autotools multilib-minimal udev
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/marcusmeissner.asc
+inherit autotools multilib-minimal udev verify-sig
 
 DESCRIPTION="Library that implements support for numerous digital cameras"
 HOMEPAGE="http://www.gphoto.org/"
-SRC_URI="https://downloads.sourceforge.net/gphoto/${P}.tar.xz"
+SRC_URI="
+	https://downloads.sourceforge.net/gphoto/${P}.tar.xz
+	verify-sig? ( https://downloads.sourceforge.net/gphoto/${P}.tar.xz.asc )
+"
 
 LICENSE="GPL-2"
 # FIXME: should we also bump for libgphoto2_port.so soname version?
 SLOT="0/6" # libgphoto2.so soname version
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 # By default, drivers for all supported cameras will be compiled.
 # If you want to only compile for specific camera(s), set CAMERAS
@@ -68,11 +72,16 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.1
 	virtual/pkgconfig
 	doc? ( app-text/doxygen )
+	verify-sig? ( sec-keys/openpgp-keys-marcusmeissner )
 "
 
 MULTILIB_CHOST_TOOLS=(
 	/usr/bin/gphoto2-port-config
 	/usr/bin/gphoto2-config
+)
+
+PATCHES=(
+	"${FILESDIR}"/libgphoto2-2.5.33-c23.patch
 )
 
 src_prepare() {

@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit autotools linux-info systemd
 
-DESCRIPTION="Daemon that performs multipath TCP path management related operations."
+DESCRIPTION="Daemon that performs multipath TCP path management related operations"
 HOMEPAGE="https://github.com/intel/mptcpd/"
 
 LICENSE="GPL-2"

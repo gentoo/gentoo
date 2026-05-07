@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -12,7 +12,7 @@ JAVA_TESTING_FRAMEWORKS="junit-4"
 
 inherit java-pkg-2 java-pkg-simple
 
-DESCRIPTION="Efficient and customizable TreeLayout Algorithm in Java."
+DESCRIPTION="Efficient and customizable TreeLayout Algorithm in Java"
 HOMEPAGE="https://github.com/abego/treelayout"
 SRC_URI="https://github.com/abego/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 

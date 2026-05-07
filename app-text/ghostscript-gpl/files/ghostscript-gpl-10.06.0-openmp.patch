@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/973234
+https://bugs.ghostscript.com/show_bug.cgi?id=709373
+
+--- ghostscript-10.06.0/base/unixlink.mak
++++ ghostscript-10.06.0/base/unixlink.mak
+@@ -45,6 +45,9 @@ GS_DOT_O=$(PSOBJ)gs.$(OBJ)
+ # and search paths for them
+ CONFLIBSTR=-pl "&-l%s&s&&" -pL "&-L%s&s&&" -l
+ 
++# detect -fopenmp in CFLAGS
++HAVE_OPENMP := $(shell echo $(CFLAGS) | grep -o '\-fopenmp')
++ 
+ libgs_a_tr=$(GLOBJ)libgs_a.tr
+ GS_A=$(BINDIR)$(D)$(GS).a
+ $(GS_A): $(PSOBJ)gsromfs$(COMPILE_INITS).$(OBJ) \
+@@ -165,7 +168,7 @@ ldt_tr=$(PSOBJ)ldt.tr
+ 
+ $(GS_XE): $(ld_tr) $(gs_tr) $(ECHOGS_XE) $(XE_ALL) $(PSOBJ)gsromfs$(COMPILE_INITS).$(OBJ) \
+           $(UNIXLINK_MAK)
+-	$(ECHOGS_XE) -w $(ldt_tr) -n - $(CCLD) $(GS_LDFLAGS) -o $(GS_XE)
++	$(ECHOGS_XE) -w $(ldt_tr) -n - $(CCLD) $(HAVE_OPENMP) $(GS_LDFLAGS) -o $(GS_XE)
+ 	$(ECHOGS_XE) -a $(ldt_tr) -n -s $(PSOBJ)gsromfs$(COMPILE_INITS).$(OBJ) $(GS_DOT_O) -s
+ 	cat $(gsld_tr) >> $(ldt_tr)
+ 	$(ECHOGS_XE) -a $(ldt_tr) -s - $(EXTRALIBS) $(STDLIBS)

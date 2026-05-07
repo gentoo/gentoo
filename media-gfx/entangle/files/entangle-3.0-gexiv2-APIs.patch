@@ -1,0 +1,206 @@
+From 63059e0424d2acc80a4491b71a86a3dcafdc45c8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Date: Mon, 9 Feb 2026 10:54:48 +0000
+Subject: [PATCH] Adapt to changing gexiv2 APIs
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This is the minimal effort change to adapt to the APIs, error reporting
+is lacking / ignored, as the calling scenarios should gracefully degrade
+their behaviour.
+
+Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+---
+ meson.build                             |  6 +++-
+ src/backend/entangle-pixbuf.c           | 30 +++++++++++++---
+ src/frontend/entangle-media-statusbar.c | 48 +++++++++++++++++++------
+ 3 files changed, 68 insertions(+), 16 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 90873ef..dcdcce2 100644
+--- a/meson.build
++++ b/meson.build
+@@ -24,6 +24,7 @@ gobject_introspection_min_version = '>= 1.54.0'
+ lcms2_min_version = '>= 2.0'
+ libpeas_min_version = '>= 1.2.0'
+ gexiv2_min_version = '>= 0.10'
++gexiv2_016_min_version = '>= 0.16'
+ xext_min_version = '>= 1.3.0'
+ libraw_min_version = '>= 0.9.0'
+ gst_min_version = '>= 1.0.0'
+@@ -46,7 +47,10 @@ gobject_introspection_dep = dependency('gobject-introspection-1.0', version: gob
+ lcms2_dep = dependency('lcms2', version: lcms2_min_version)
+ libpeas_dep = dependency('libpeas-1.0', version: libpeas_min_version)
+ libpeas_gtk_dep = dependency('libpeas-gtk-1.0', version: libpeas_min_version)
+-gexiv2_dep = dependency('gexiv2', version: gexiv2_min_version)
++gexiv2_dep = dependency('gexiv2-0.16', version: gexiv2_016_min_version, required: false)
++if not gexiv2_dep.found()
++    gexiv2_dep = dependency('gexiv2', version: gexiv2_min_version)
++endif
+ xext_dep = dependency('xext', version: xext_min_version)
+ # Cannot use pkg-config file as it includes a bogus '-fopenmp' arg in Libs
+ # which in turn confuses g-ir-scanner
+diff --git a/src/backend/entangle-pixbuf.c b/src/backend/entangle-pixbuf.c
+index 9beba0e..cf461d1 100644
+--- a/src/backend/entangle-pixbuf.c
++++ b/src/backend/entangle-pixbuf.c
+@@ -24,6 +24,25 @@
+ 
+ #include "entangle-debug.h"
+ 
++#if GEXIV2_CHECK_VERSION(0, 16, 0)
++#define entangle_gexiv2_metadata_get_orientation(m)                            \
++    gexiv2_metadata_get_orientation(m, NULL)
++#define entangle_gexiv2_metadata_get_preview_image(m, b)                       \
++    gexiv2_metadata_get_preview_image(metadata, best, NULL)
++#else
++#if GEXIV2_CHECK_VERSION(0, 14, 0)
++#define entangle_gexiv2_metadata_get_orientation(m)                            \
++    gexiv2_metadata_try_get_orientation(m, NULL)
++#define entangle_gexiv2_metadata_get_preview_image(m, b)                       \
++    gexiv2_metadata_try_get_preview_image(metadata, best, NULL)
++#else
++#define entangle_gexiv2_metadata_get_orientation(m)                            \
++    gexiv2_metadata_get_orientation(m)
++#define entangle_gexiv2_metadata_get_preview_image(m, b)                       \
++    gexiv2_metadata_get_preview_image(metadata, best)
++#endif
++#endif
++
+ /**
+  * entangle_pixbuf_auto_rotate:
+  * @src: (transfer none): the pixbuf to be rotated
+@@ -51,7 +70,7 @@ entangle_pixbuf_auto_rotate(GdkPixbuf *src, GExiv2Metadata *metadata)
+         g_object_unref(dest);
+ 
+         if (metadata) {
+-            transform = gexiv2_metadata_get_orientation(metadata);
++            transform = entangle_gexiv2_metadata_get_orientation(metadata);
+         } else {
+             const char *orientationstr =
+                 gdk_pixbuf_get_option(src, "tEXt::Entangle::Orientation");
+@@ -230,7 +249,8 @@ entangle_pixbuf_open_image_master_gdk(EntangleImage *image,
+         result = entangle_pixbuf_auto_rotate(master, metadata);
+         g_object_unref(master);
+     } else {
+-        GExiv2Orientation orient = gexiv2_metadata_get_orientation(metadata);
++        GExiv2Orientation orient =
++            entangle_gexiv2_metadata_get_orientation(metadata);
+         /* gdk_pixbuf_save doesn't update internal options and there
+            is no set_option method, so abuse gobject data slots :-( */
+         g_object_set_data_full(G_OBJECT(master), "tEXt::Entangle::Orientation",
+@@ -360,7 +380,7 @@ entangle_pixbuf_open_image_preview_raw(EntangleImage *image,
+             result = tmp;
+         } else {
+             GExiv2Orientation orient =
+-                gexiv2_metadata_get_orientation(metadata);
++                entangle_gexiv2_metadata_get_orientation(metadata);
+             /* gdk_pixbuf_save doesn't update internal options and there
+                is no set_option method, so abuse gobject data slots :-( */
+             g_object_set_data_full(G_OBJECT(result),
+@@ -410,7 +430,7 @@ entangle_pixbuf_open_image_preview_exiv(EntangleImage *image,
+         goto cleanup;
+     }
+ 
+-    preview = gexiv2_metadata_get_preview_image(metadata, best);
++    preview = entangle_gexiv2_metadata_get_preview_image(metadata, best);
+ 
+     loader = gdk_pixbuf_loader_new_with_mime_type(
+         gexiv2_preview_image_get_mime_type(preview), NULL);
+@@ -430,7 +450,7 @@ entangle_pixbuf_open_image_preview_exiv(EntangleImage *image,
+         goto cleanup;
+     }
+ 
+-    orient = gexiv2_metadata_get_orientation(metadata);
++    orient = entangle_gexiv2_metadata_get_orientation(metadata);
+     /* gdk_pixbuf_save doesn't update internal options and there
+        is no set_option method, so abuse gobject data slots :-( */
+     g_object_set_data_full(G_OBJECT(master), "tEXt::Entangle::Orientation",
+diff --git a/src/frontend/entangle-media-statusbar.c b/src/frontend/entangle-media-statusbar.c
+index 817da47..317356d 100644
+--- a/src/frontend/entangle-media-statusbar.c
++++ b/src/frontend/entangle-media-statusbar.c
+@@ -25,6 +25,30 @@
+ #include "entangle-debug.h"
+ #include "entangle-media.h"
+ 
++#if GEXIV2_CHECK_VERSION(0, 16, 0)
++#define entangle_gexiv2_metadata_has_tag(m, t)                                 \
++    gexiv2_metadata_has_tag(m, t, NULL)
++#define entangle_gexiv2_metadata_get_exif_tag_rational(m, t, n, d)             \
++    gexiv2_metadata_get_exif_tag_rational(m, t, n, d, NULL)
++#define entangle_gexiv2_metadata_get_iso_speed(m)                              \
++    gexiv2_metadata_get_iso_speed(m, NULL)
++#else
++#if GEXIV2_CHECK_VERSION(0, 14, 0)
++#define entangle_gexiv2_metadata_has_tag(m, t)                                 \
++    gexiv2_metadata_try_has_tag(m, t, NULL)
++#define entangle_gexiv2_metadata_get_exif_tag_rational(m, t, n, d)             \
++    gexiv2_metadata_try_get_exif_tag_rational(m, t, n, d, NULL)
++#define entangle_gexiv2_metadata_get_iso_speed(m)                              \
++    gexiv2_metadata_try_get_iso_speed(m, NULL)
++#else
++#define entangle_gexiv2_metadata_has_tag(m, t) gexiv2_metadata_has_tag(m, t)
++#define entangle_gexiv2_metadata_get_exif_tag_rational(m, t, n, d)             \
++    gexiv2_metadata_get_exif_tag_rational(m, t, n, d)
++#define entangle_gexiv2_metadata_get_iso_speed(m)                              \
++    gexiv2_metadata_get_iso_speed(m)
++#endif
++#endif
++
+ struct _EntangleMediaStatusbar
+ {
+     GtkBox parent;
+@@ -200,8 +224,9 @@ entangle_media_statusbar_update_labels(EntangleMediaStatusbar *statusbar)
+         guint isonum;
+         gdouble focalnum;
+ 
+-        if (gexiv2_metadata_has_tag(metadata, "Exif.Photo.ExposureTime")) {
+-            gexiv2_metadata_get_exif_tag_rational(
++        if (entangle_gexiv2_metadata_has_tag(metadata,
++                                             "Exif.Photo.ExposureTime")) {
++            entangle_gexiv2_metadata_get_exif_tag_rational(
+                 metadata, "Exif.Photo.ExposureTime", &nom, &den);
+             if (den == 10)
+                 shutter = g_strdup_printf("%0.1lf secs", (double)nom / 10.0);
+@@ -211,11 +236,12 @@ entangle_media_statusbar_update_labels(EntangleMediaStatusbar *statusbar)
+                 shutter = g_strdup_printf("%d/%d secs", nom, den);
+         }
+ 
+-        if ((gexiv2_metadata_has_tag(metadata, "Exif.Photo.FNumber") &&
+-             gexiv2_metadata_get_exif_tag_rational(
++        if ((entangle_gexiv2_metadata_has_tag(metadata, "Exif.Photo.FNumber") &&
++             entangle_gexiv2_metadata_get_exif_tag_rational(
+                  metadata, "Exif.Photo.FNumber", &fnumn, &fnumd)) ||
+-            (gexiv2_metadata_has_tag(metadata, "Exif.Photo.Aperture") &&
+-             gexiv2_metadata_get_exif_tag_rational(
++            (entangle_gexiv2_metadata_has_tag(metadata,
++                                              "Exif.Photo.Aperture") &&
++             entangle_gexiv2_metadata_get_exif_tag_rational(
+                  metadata, "Exif.Photo.Aperture", &fnumn, &fnumd))) {
+             fnum = (double)fnumn / (double)fnumd;
+             if (fnum < 10.0)
+@@ -224,13 +250,15 @@ entangle_media_statusbar_update_labels(EntangleMediaStatusbar *statusbar)
+                 aperture = g_strdup_printf("f/%2.0f", fnum);
+         }
+ 
+-        if (gexiv2_metadata_has_tag(metadata, "Exif.Photo.ISOSpeedRatings")) {
+-            isonum = gexiv2_metadata_get_iso_speed(metadata);
++        if (entangle_gexiv2_metadata_has_tag(metadata,
++                                             "Exif.Photo.ISOSpeedRatings")) {
++            isonum = entangle_gexiv2_metadata_get_iso_speed(metadata);
+             iso = g_strdup_printf("ISO %d", isonum);
+         }
+ 
+-        if (gexiv2_metadata_has_tag(metadata, "Exif.Photo.FocalLength")) {
+-            gexiv2_metadata_get_exif_tag_rational(
++        if (entangle_gexiv2_metadata_has_tag(metadata,
++                                             "Exif.Photo.FocalLength")) {
++            entangle_gexiv2_metadata_get_exif_tag_rational(
+                 metadata, "Exif.Photo.FocalLength", &nom, &den);
+             if (den > 0.0001) {
+                 focalnum = (nom / den);
+-- 
+2.53.0
+

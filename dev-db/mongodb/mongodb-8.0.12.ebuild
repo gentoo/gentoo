@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0 SSPL-1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 -riscv"
+KEYWORDS="amd64 ~arm64 -riscv"
 CPU_FLAGS="cpu_flags_x86_avx"
 IUSE="debug kerberos mongosh ssl +tools ${CPU_FLAGS}"
 
@@ -58,6 +58,7 @@ BDEPEND="
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/distro[${PYTHON_USEDEP}]
 		dev-python/gitpython[${PYTHON_USEDEP}]
+		dev-python/pkg-resources[${PYTHON_USEDEP}]
 		dev-python/poetry[${PYTHON_USEDEP}]
 		dev-python/pymongo[${PYTHON_USEDEP}]
 		dev-python/tenacity[${PYTHON_USEDEP}]
@@ -90,6 +91,7 @@ python_check_deps() {
 	python_has_version -b "dev-python/pyyaml[${PYTHON_USEDEP}]" &&
 	python_has_version -b "dev-python/distro[${PYTHON_USEDEP}]" &&
 	python_has_version -b "dev-python/gitpython[${PYTHON_USEDEP}]" &&
+	python_has_version -b "dev-python/pkg-resources[${PYTHON_USEDEP}]" &&
 	python_has_version -b "dev-python/poetry[${PYTHON_USEDEP}]" &&
 	python_has_version -b "dev-python/pymongo[${PYTHON_USEDEP}]" &&
 	python_has_version -b "dev-python/tenacity[${PYTHON_USEDEP}]"

@@ -64,6 +64,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.0-musl-compat.patch
 	"${FILESDIR}"/${PN}-4.20.0-libdir.patch
 	"${FILESDIR}"/${PN}-6.0.0-no-hardened.patch
+	"${FILESDIR}"/${P}-fix-clang-build.patch
 )
 
 pkg_pretend() {

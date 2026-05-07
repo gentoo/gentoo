@@ -1,0 +1,72 @@
+--- a/tests/test-daemon.py.orig	2026-04-29 15:27:00.508402558 +0200
++++ b/tests/test-daemon.py	2026-04-29 15:27:57.699705850 +0200
+@@ -262,69 +262,6 @@
+     # Actual test cases
+     #
+ 
+-    def test_languages(self):
+-        '''test that languages are correctly migrated'''
+-
+-        self.polkitd_start()
+-        self._polkitd_obj.SetAllowed(['org.freedesktop.accounts.change-own-user-data',
+-            'org.freedesktop.accounts.user-administration'])
+-
+-        self.start_daemon()
+-
+-        res = self.proxy.call_sync('ListCachedUsers', GLib.Variant('()', ()), 0, -1, None)
+-        user = res[0][0]
+-
+-        user_proxy = Gio.DBusProxy.new_sync(
+-                self.dbus, Gio.DBusProxyFlags.DO_NOT_AUTO_START, None, AD,
+-                user, AD_USER, None)
+-        user_proxy.call_sync('SetLanguage', GLib.Variant('(s)', ('en_GB.UTF-8',)), 0, -1, None)
+-        self.assertEqual(self.get_user_dbus_property(user, 'Language'), 'en_GB.UTF-8')
+-        self.assertEqual(self.get_user_dbus_property(user, 'Languages'), ['en_GB.UTF-8'])
+-        self.assertEqual(self.proxy.GetUsersLanguages(), ['en_GB.UTF-8', SIMULATED_SYSTEM_LOCALE])
+-
+-        user_proxy.call_sync('SetLanguages', GLib.Variant('(as)', (['fr_FR.UTF-8', 'en_GB.UTF-8'],)), 0, -1, None)
+-        self.assertEqual(self.get_user_dbus_property(user, 'Language'), 'fr_FR.UTF-8')
+-        self.assertEqual(self.get_user_dbus_property(user, 'Languages'), ['fr_FR.UTF-8', 'en_GB.UTF-8'])
+-        self.assertEqual(self.proxy.GetUsersLanguages(), ['en_GB.UTF-8', SIMULATED_SYSTEM_LOCALE, 'fr_FR.UTF-8'])
+-
+-        user_proxy.call_sync('SetLanguage', GLib.Variant('(s)', ('en_US.UTF-8',)), 0, -1, None)
+-        self.assertEqual(self.get_user_dbus_property(user, 'Language'), 'en_US.UTF-8')
+-        self.assertEqual(self.get_user_dbus_property(user, 'Languages'), ['en_US.UTF-8'])
+-        self.assertEqual(self.proxy.GetUsersLanguages(), [SIMULATED_SYSTEM_LOCALE, 'en_US.UTF-8'])
+-
+-        user_proxy.call_sync('SetLanguages', GLib.Variant('(as)', (['fr_FR.UTF-8', 'en_GB.UTF-8'],)), 0, -1, None)
+-        self.assertEqual(self.get_user_dbus_property(user, 'Languages'), ['fr_FR.UTF-8', 'en_GB.UTF-8'])
+-        self.assertEqual(self.proxy.GetUsersLanguages(), ['en_GB.UTF-8', SIMULATED_SYSTEM_LOCALE, 'fr_FR.UTF-8'])
+-
+-        user_proxy.call_sync('SetLanguages', GLib.Variant('(as)', ([''],)), 0, -1, None)
+-        self.assertEqual(self.get_user_dbus_property(user, 'Language'), '')
+-        self.assertEqual(self.get_user_dbus_property(user, 'Languages'), [''])
+-        self.assertEqual(self.proxy.GetUsersLanguages(), [SIMULATED_SYSTEM_LOCALE])
+-
+-    def test_language(self):
+-        '''check that language setting are verified'''
+-
+-        self.polkitd_start()
+-        self._polkitd_obj.SetAllowed(['org.freedesktop.accounts.change-own-user-data',
+-            'org.freedesktop.accounts.user-administration'])
+-
+-        self.start_daemon()
+-
+-        res = self.proxy.call_sync('ListCachedUsers', GLib.Variant('()', ()), 0, -1, None)
+-        user = res[0][1]
+-
+-        user_proxy = Gio.DBusProxy.new_sync(
+-                self.dbus, Gio.DBusProxyFlags.DO_NOT_AUTO_START, None, AD,
+-                user, AD_USER, None)
+-        user_proxy.call_sync('SetLanguage', GLib.Variant('(s)', ('en_GB.UTF-8',)), 0, -1, None)
+-        self.assertEqual(self.get_user_dbus_property(user, 'Language'), 'en_GB.UTF-8')
+-
+-        with self.assertRaises(gi.repository.GLib.GError) as cm:
+-            user_proxy.call_sync('SetLanguage', GLib.Variant('(s)', ('blahblahblah',)), 0, -1, None)
+-
+-        self.assertIn('is not a valid XPG-formatted locale', str(cm.exception))
+-
+-
+     def test_user_properties(self):
+         '''check a user's properties'''
+ 

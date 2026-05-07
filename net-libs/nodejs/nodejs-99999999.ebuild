@@ -12,7 +12,7 @@ inherit ninja-utils pax-utils python-any-r1 toolchain-funcs xdg-utils
 
 DESCRIPTION="A JavaScript runtime built on Chrome's V8 JavaScript engine"
 HOMEPAGE="https://nodejs.org/"
-LICENSE="Apache-1.1 Apache-2.0 BSD BSD-2 MIT npm? ( Artistic-2 )"
+LICENSE="Apache-1.1 Apache-2.0 BlueOak-1.0.0 BSD BSD-2 MIT npm? ( Artistic-2 )"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -25,7 +25,7 @@ else
 	S="${WORKDIR}/node-v${PV}"
 fi
 
-IUSE="corepack cpu_flags_x86_sse2 debug doc +icu +inspector lto npm pax-kernel +snapshot +ssl +system-icu +system-ssl test"
+IUSE="corepack cpu_flags_x86_sse2 debug doc +icu +inspector npm pax-kernel +snapshot +ssl +system-icu +system-ssl test"
 REQUIRED_USE="inspector? ( icu ssl )
 	npm? ( ssl )
 	system-icu? ( icu )
@@ -143,7 +143,7 @@ src_configure() {
 		--shared-zlib
 	)
 	use debug && myconf+=( --debug )
-	use lto && myconf+=( --enable-lto )
+	tc-is-lto && myconf+=( --enable-lto )
 	if use system-icu; then
 		myconf+=( --with-intl=system-icu )
 	elif use icu; then

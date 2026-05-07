@@ -89,7 +89,7 @@ src_prepare() {
 }
 
 src_compile() {
-	export PREFIX="${EPREFIX}/usr" BUILD_ORIGIN="Gentoo Portage"
+	export ETCDIR="${EPREFIX}/etc" PREFIX="${EPREFIX}/usr" BUILD_ORIGIN="Gentoo Portage"
 
 	# For non-live versions, prevent git operations which causes sandbox violations
 	# https://github.com/gentoo/gentoo/pull/33531#issuecomment-1786107493

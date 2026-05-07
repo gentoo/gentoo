@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chutzpah@gentoo.org</email>
+		<name>Patrick McLean</name>
+	</maintainer>
+	<use>
+		<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> as TLS backend</flag>
+		<flag name="ualpn">Build uapln - lightweight proxying ACMEv2 tls-alpn-01 responder</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">ndilieto/uacme</remote-id>
+	</upstream>
+</pkgmetadata>

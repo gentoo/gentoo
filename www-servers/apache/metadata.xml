@@ -12,10 +12,10 @@
 		provides HTTP services in sync with the current HTTP standards.
 	</longdescription>
 	<use>
+		<flag name="static">Link in apache2 modules statically rather then plugins</flag>
 		<flag name="suexec">Install suexec with apache</flag>
 		<flag name="suexec-caps">Install suexec with capabilities instead of SUID</flag>
 		<flag name="suexec-syslog">Log suexec to syslog instead of to a separate file</flag>
-		<flag name="static">Link in apache2 modules statically rather then plugins</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">apache/httpd</remote-id>

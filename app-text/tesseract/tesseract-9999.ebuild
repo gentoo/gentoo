@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools git-r3 multilib-minimal toolchain-funcs
+inherit autotools flag-o-matic git-r3 multilib-minimal toolchain-funcs
 
 DESCRIPTION="An OCR Engine, originally developed at HP, now open source"
 HOMEPAGE="https://github.com/tesseract-ocr"
@@ -46,6 +46,9 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
+	tc-is-clang && use openmp && append-libs omp
+
 	eautoreconf
 }
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -37,6 +37,7 @@ TEXMF_PATH=/usr/share/texmf-dist
 
 PATCHES=(
 	"${FILESDIR}"/kpathsea-6.4.0_p20240311-c23.patch
+	"${FILESDIR}"/kpathsea-6.4.0_p20240311-r1-musl.patch
 )
 
 src_prepare() {

@@ -21,7 +21,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -117,6 +117,6 @@ python_test() {
 	local EPYTEST_XDIST=1
 	local -x PRE_BUILT_SETUPTOOLS_WHEEL=${DISTUTILS_WHEEL_PATH}
 	local EPYTEST_PLUGINS=( pytest-{home,subprocess,timeout} )
-	epytest -o tmp_path_retention_policy=all \
+	epytest -o filterwarnings= -o tmp_path_retention_policy=all \
 		-m "not uses_network" setuptools
 }

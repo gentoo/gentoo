@@ -87,9 +87,8 @@ get_makeopts_jobs() {
 
 # @FUNCTION: makeopts_jobs
 # @USAGE: [${MAKEOPTS}] [${inf:-$(( $(get_nproc) + 1 ))}]
-# @DEPRECATED: get_makeopts_jobs
 # @DESCRIPTION:
-# This function is deprecated and banned in EAPI 9, use get_makeopts_jobs instead.
+# This function is banned in EAPI 9, use get_makeopts_jobs instead.
 # Searches the arguments (or sensible defaults) and extracts the jobs number
 # specified therein.  Useful for running non-make tools in parallel too.
 # i.e. if the user has MAKEOPTS=-j9, this will echo "9" -- we can't return the
@@ -130,9 +129,8 @@ get_makeopts_loadavg() {
 
 # @FUNCTION: makeopts_loadavg
 # @USAGE: [${MAKEOPTS}] [${inf:-999}]
-# @DEPRECATED: get_makeopts_loadavg
 # @DESCRIPTION:
-# This function is deprecated and banned in EAPI 9, use get_makeopts_loadavg instead.
+# This function is banned in EAPI 9, use get_makeopts_loadavg instead.
 # Searches the arguments (or sensible defaults) and extracts the value set
 # for load-average. For make and ninja based builds this will mean new jobs are
 # not only limited by the jobs-value, but also by the current load - which might

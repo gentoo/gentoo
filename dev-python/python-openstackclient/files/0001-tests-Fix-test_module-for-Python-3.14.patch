@@ -1,0 +1,71 @@
+From 8f52780f9df90c3b744939486079c17da99daf59 Mon Sep 17 00:00:00 2001
+From: Jay Faulkner <jay@jvf.cc>
+Date: Mon, 13 Apr 2026 12:25:47 -0700
+Subject: [PATCH] tests: Fix test_module for Python 3.14
+
+Python 3.14 changed argparse to lazily import _colorize during
+ArgumentParser.__init__, triggering a chain of imports
+(_colorize -> dataclasses -> inspect -> tokenize) that ends with
+`from builtins import open`. The class-level mock.patch.dict on
+sys.modules with clear=True removed builtins from sys.modules,
+causing this import to fail with ImportError.
+
+Narrow the mock scope to wrap only the take_action call rather
+than the entire test class, so get_parser/argparse initialization
+runs with an unpatched sys.modules while take_action still
+iterates the controlled set of fake modules.
+
+Assisted-By: claude-code
+Change-Id: I0e1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a
+Signed-off-by: Jay Faulkner <jay@jvf.cc>
+---
+ .../tests/unit/common/test_module.py          | 19 ++++++++++++-------
+ 1 file changed, 12 insertions(+), 7 deletions(-)
+
+diff --git a/openstackclient/tests/unit/common/test_module.py b/openstackclient/tests/unit/common/test_module.py
+index 83962036..a992b31f 100644
+--- a/openstackclient/tests/unit/common/test_module.py
++++ b/openstackclient/tests/unit/common/test_module.py
+@@ -128,11 +128,6 @@ class TestCommandList(utils.TestCommand):
+         self.assertEqual(datalist, tuple(data))
+ 
+ 
+-@mock.patch.dict(
+-    'openstackclient.common.module.sys.modules',
+-    values=MODULES,
+-    clear=True,
+-)
+ class TestModuleList(utils.TestCommand):
+     def setUp(self):
+         super().setUp()
+@@ -150,7 +145,12 @@ class TestModuleList(utils.TestCommand):
+         # In base command class Lister in cliff, abstract method take_action()
+         # returns a tuple containing the column names and an iterable
+         # containing the data to be listed.
+-        columns, data = self.cmd.take_action(parsed_args)
++        with mock.patch.dict(
++            'openstackclient.common.module.sys.modules',
++            values=MODULES,
++            clear=True,
++        ):
++            columns, data = self.cmd.take_action(parsed_args)
+ 
+         # Output xxxclient and openstacksdk, but not regular module, like: zlib
+         self.assertIn(module_name_1, columns)
+@@ -177,7 +177,12 @@ class TestModuleList(utils.TestCommand):
+         # In base command class Lister in cliff, abstract method take_action()
+         # returns a tuple containing the column names and an iterable
+         # containing the data to be listed.
+-        columns, data = self.cmd.take_action(parsed_args)
++        with mock.patch.dict(
++            'openstackclient.common.module.sys.modules',
++            values=MODULES,
++            clear=True,
++        ):
++            columns, data = self.cmd.take_action(parsed_args)
+ 
+         # Output xxxclient, openstacksdk and regular module, like: zlib
+         self.assertIn(module_name_1, columns)
+-- 
+2.52.0
+

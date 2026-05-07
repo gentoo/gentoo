@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="sqlite"
 inherit autotools python-single-r1 toolchain-funcs
 
@@ -47,6 +47,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-itstool.patch"
 	"${FILESDIR}/${P}-topdocs-encodings.patch"
 	"${FILESDIR}/${P}-fix-webbrowser-module.patch"
+	"${FILESDIR}/${P}-python3.13.patch"
 )
 
 src_prepare() {

@@ -1,0 +1,24 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Philipp Unger <philipp.unger.1988@gmail.com>
+Date: Mon, 25 Nov 2024 22:27:45 +0100
+Subject: [PATCH] omni-area: check for n_messages greater zero to avoid divide
+ by zero
+
+fixes #496
+---
+ src/gui/gtd-omni-area.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/gui/gtd-omni-area.c b/src/gui/gtd-omni-area.c
+index 828f36c07f2d..007061bbfb17 100644
+--- a/src/gui/gtd-omni-area.c
++++ b/src/gui/gtd-omni-area.c
+@@ -78,7 +78,7 @@ switch_message_cb (gpointer user_data)
+   n_messages = g_queue_get_length (self->messages);
+   gtk_stack_set_visible_child_name (self->main_stack, n_messages > 0 ? "messages" : "placeholder");
+ 
+-  next_message_index = (self->current + 1) % n_messages;
++  next_message_index = n_messages > 0 ? (self->current + 1) % n_messages : 0;
+   show_message (self, next_message_index);
+ 
+   return G_SOURCE_CONTINUE;

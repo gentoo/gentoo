@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=pbr
-PYTHON_COMPAT=( python3_{12..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1 pypi
 
@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~riscv x86"
 
 RDEPEND="
 	>=dev-python/pbr-2.1.0[${PYTHON_USEDEP}]
@@ -37,13 +37,17 @@ BDEPEND="
 		>=dev-python/oslotest-3.2.0[${PYTHON_USEDEP}]
 		>=dev-python/requests-mock-1.2.0[${PYTHON_USEDEP}]
 		>=dev-python/testtools-2.2.0[${PYTHON_USEDEP}]
-		>=dev-python/tempest-17.1.0[${PYTHON_USEDEP}]
 		>=dev-python/wrapt-1.7.0[${PYTHON_USEDEP}]
 		>=dev-python/ddt-1.0.1[${PYTHON_USEDEP}]
 	)
 "
 
 distutils_enable_tests unittest
+
+PATCHES=(
+	# https://review.opendev.org/c/openstack/python-openstackclient/+/984455
+	"${FILESDIR}/0001-tests-Fix-test_module-for-Python-3.14.patch"
+)
 
 src_prepare() {
 	# Depends on a specific runner

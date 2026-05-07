@@ -1,0 +1,194 @@
+From efe1ce41d2f8e2f6eacc37450f517e142e2c6490 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Date: Wed, 22 Oct 2025 16:40:01 +0100
+Subject: [PATCH] build: Use either libgirepository-2.0 or libgirepository-1.0,
+ as appropriate
+
+From: Simon McVittie <smcv@debian.org>
+
+pygobject 3.52 and libpeas 1.38 have switched
+from libgirepository-1.0 to libgirepository-2.0, and the whole process
+(pygobject, libpeas and the application) must agree on a single version
+to use. Automatically detect the right one at compile-time.
+
+This checks both the pygobject version and the libpeas version.
+Conversely, pygobject is not necessarily guaranteed to be installed
+at the time that entangle is compiled, so we can't completely rely
+on being able to check its version.
+
+Signed-off-by: Simon McVittie <smcv@debian.org>
+---
+ meson.build                         | 18 +++++++++++++++++-
+ src/backend/meson.build             |  1 +
+ src/entangle-main.c                 | 11 +++++++++++
+ src/frontend/entangle-application.c | 16 +++++++++++++++-
+ src/frontend/meson.build            |  2 +-
+ src/meson.build                     |  2 +-
+ 6 files changed, 46 insertions(+), 4 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index a046541..4f24389 100644
+--- a/meson.build
++++ b/meson.build
+@@ -21,6 +21,7 @@ pango_min_version = '>= 1.40.11'
+ gphoto2_min_version = '>= 2.5.0'
+ gudev_min_version = '>= 145'
+ gobject_introspection_min_version = '>= 1.54.0'
++girepository2_min_version = '>= 2.86'
+ lcms2_min_version = '>= 2.0'
+ libpeas_min_version = '>= 1.2.0'
+ gexiv2_min_version = '>= 0.10'
+@@ -43,10 +44,10 @@ pango_dep = dependency('pango', version: pango_min_version)
+ pango_cairo_dep = dependency('pangocairo', version: pango_min_version)
+ gphoto2_dep = dependency('libgphoto2', version: gphoto2_min_version)
+ gudev_dep = dependency('gudev-1.0', version: gudev_min_version)
+-gobject_introspection_dep = dependency('gobject-introspection-1.0', version: gobject_introspection_min_version)
+ lcms2_dep = dependency('lcms2', version: lcms2_min_version)
+ libpeas_dep = dependency('libpeas-1.0', version: libpeas_min_version)
+ libpeas_gtk_dep = dependency('libpeas-gtk-1.0', version: libpeas_min_version)
++pygobject_dep = dependency('pygobject-3.0', required: false)
+ gexiv2_dep = dependency('gexiv2-0.16', version: gexiv2_016_min_version, required: false)
+ if not gexiv2_dep.found()
+     gexiv2_dep = dependency('gexiv2', version: gexiv2_min_version)
+@@ -59,6 +60,21 @@ libraw_dep = cc.find_library('raw_r')
+ gst_dep = dependency('gstreamer-1.0', version: gst_min_version)
+ gst_video_dep = dependency('gstreamer-video-1.0', version: gst_min_version)
+ 
++# pygobject 3.52.x switched from libgirepository-1.0 to libgirepository-2.0,
++# and libpeas 1.38 did the same.
++# pygobject -dev files might not always be installed, but libpeas
++# 1.36 might have that change backported by distros, so check both.
++if (
++  libpeas_dep.version().version_compare('>=1.38')
++  or (pygobject_dep.found() and pygobject_dep.version().version_compare('>=3.52'))
++)
++  girepository_dep = dependency('girepository-2.0', version: girepository2_min_version)
++  girepository_cflags = ['-DGIREPOSITORY_MAJOR_VERSION=2']
++else
++  girepository_dep = dependency('gobject-introspection-1.0', version: gobject_introspection_min_version)
++  girepository_cflags = ['-DGIREPOSITORY_MAJOR_VERSION=1']
++endif
++
+ gnome = import('gnome')
+ i18n = import('i18n')
+ 
+diff --git a/src/backend/meson.build b/src/backend/meson.build
+index c4c28e6..bcd3cf0 100644
+--- a/src/backend/meson.build
++++ b/src/backend/meson.build
+@@ -121,6 +121,7 @@ entangle_backend_sources += entangle_backend_enum_sources
+ entangle_backend_deps = [
+   glib_dep,
+   gio_dep,
++  girepository_dep,
+   gthread_dep,
+   gdk_pixbuf_dep,
+   gst_dep,
+diff --git a/src/entangle-main.c b/src/entangle-main.c
+index 970bfee..bfc0f4a 100644
+--- a/src/entangle-main.c
++++ b/src/entangle-main.c
+@@ -21,7 +21,11 @@
+ #include <locale.h>
+ #include <stdio.h>
+ 
++#if GIREPOSITORY_MAJOR_VERSION >= 2
++#include <girepository/girepository.h>
++#else
+ #include <girepository.h>
++#endif
+ #include <glib/gi18n.h>
+ #include <gst/gst.h>
+ #include <gtk/gtk.h>
+@@ -80,7 +84,14 @@ main(int argc, char **argv)
+     gst_init(NULL, NULL);
+ 
+     if (ins) {
++#if GIREPOSITORY_MAJOR_VERSION >= 2
++        GStrv args = g_strsplit(ins, ",", 2);
++
++        gi_repository_dump(args[0], args[1], NULL);
++        g_strfreev(args);
++#else
+         g_irepository_dump(ins, NULL);
++#endif
+         return 0;
+     }
+ 
+diff --git a/src/frontend/entangle-application.c b/src/frontend/entangle-application.c
+index 3e3e1af..c6a9f2c 100644
+--- a/src/frontend/entangle-application.c
++++ b/src/frontend/entangle-application.c
+@@ -33,6 +33,12 @@
+ #include "entangle-preferences-display.h"
+ #include "entangle-preferences.h"
+ 
++#if GIREPOSITORY_MAJOR_VERSION >= 2
++#include <girepository/girepository.h>
++#else
++#include <girepository.h>
++#endif
++
+ /**
+  * SECTION:entangle-application
+  * @Short_description: Global application state base class
+@@ -55,6 +61,7 @@ struct _EntangleApplication
+     EntangleHelpAbout *about;
+     EntangleCameraSupport *devices;
+ 
++    GIRepository *giRepository;
+     PeasEngine *pluginEngine;
+     PeasExtensionSet *pluginExt;
+ };
+@@ -149,6 +156,7 @@ entangle_application_finalize(GObject *object)
+         g_object_unref(app->pluginEngine);
+     if (app->pluginExt)
+         g_object_unref(app->pluginExt);
++    g_clear_object(&app->giRepository);
+ 
+     G_OBJECT_CLASS(entangle_application_parent_class)->finalize(object);
+ }
+@@ -470,7 +478,13 @@ entangle_application_init(EntangleApplication *app)
+     app->activeCameras = entangle_camera_list_new_active();
+     app->supportedCameras = entangle_camera_list_new_supported();
+ 
+-    g_irepository_require(g_irepository_get_default(), "Peas", "1.0", 0, NULL);
++#if GIREPOSITORY_MAJOR_VERSION >= 2
++    app->giRepository = gi_repository_dup_default();
++    gi_repository_require(app->giRepository, "Peas", "1.0", 0, NULL);
++#else
++    app->giRepository = g_object_ref(g_irepository_get_default());
++    g_irepository_require(app->giRepository, "Peas", "1.0", 0, NULL);
++#endif
+ 
+     userdir =
+         g_build_filename(g_get_user_config_dir(), "entangle/plugins", NULL);
+diff --git a/src/frontend/meson.build b/src/frontend/meson.build
+index 81310c8..46cc364 100644
+--- a/src/frontend/meson.build
++++ b/src/frontend/meson.build
+@@ -108,7 +108,7 @@ entangle_frontend_cflags = [
+     '-DPKGDATADIR="' + entangle_pkgdatadir + '"',
+     '-DLIBDIR="' + entangle_libdir + '"',
+     '-DVERSION="' + meson.project_version() + '"',
+-]
++] + girepository_cflags
+ 
+ entangle_frontend = shared_library(
+   'entangle_frontend',
+diff --git a/src/meson.build b/src/meson.build
+index d488402..e01e2e1 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -23,7 +23,7 @@ entangle_cflags = [
+     '-DDATADIR="' + entangle_datadir + '"',
+     '-DLOCALE_DIR="' + entangle_localedir + '"',
+     '-DGETTEXT_PACKAGE="entangle"',
+-]
++] + girepository_cflags
+ 
+ entangle = executable(
+   'entangle',
+-- 
+2.53.0
+

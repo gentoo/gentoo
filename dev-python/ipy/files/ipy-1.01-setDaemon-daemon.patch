@@ -1,0 +1,24 @@
+https://github.com/autocracy/python-ipy/pull/76/commits/109ac8c6c1b19243047c262beeabc7d72997e2d1
+From 109ac8c6c1b19243047c262beeabc7d72997e2d1 Mon Sep 17 00:00:00 2001
+From: Karthikeyan Singaravelan <tir.karthi@gmail.com>
+Date: Sat, 14 Aug 2021 05:01:15 +0000
+Subject: [PATCH] Set daemon attribute instead of using setDaemon method that
+ was deprecated in Python 3.10
+
+---
+ test/test_IPy.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/test_IPy.py b/test/test_IPy.py
+index 8dbbd97..769fd7e 100644
+--- a/test/test_IPy.py
++++ b/test/test_IPy.py
+@@ -785,7 +785,7 @@ def run(self):
+                 self.result = default
+ 
+     it = InterruptableThread()
+-    it.setDaemon(True)
++    it.daemon = True
+     it.start()
+     it.join(timeout_duration)
+     if hasattr(it, 'is_alive'):

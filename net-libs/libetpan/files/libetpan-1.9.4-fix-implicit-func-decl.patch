@@ -1,0 +1,72 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -482,7 +482,7 @@
+   checkpthread=yes
+ 
+   AC_MSG_CHECKING([for pthread_create with libc])
+-  AC_TRY_LINK([], [pthread_create();], 
++  AC_TRY_LINK([#include <pthread.h>], [pthread_create(0,0,0,0);], 
+                   [pthflag=yes; checkpthread=no], 
+                   [pthflag=no])
+   AC_MSG_RESULT($pthflag)
+@@ -492,7 +492,7 @@
+       AC_MSG_CHECKING([for pthread_create with -$flag])
+       OLDLIBS="$LIBS"
+       LIBS="$LIBS -$flag"
+-      AC_TRY_LINK([], [pthread_create();], 
++      AC_TRY_LINK([#include <pthread.h>], [pthread_create(0,0,0,0);], 
+                       [pthflag=yes; checkpthread=no], 
+                       [pthflag=no; LIBS="$OLDLIBS"])
+       AC_MSG_RESULT($pthflag)
+@@ -626,7 +626,7 @@
+   AC_CHECK_HEADER(curl/curl.h, [libcurl=yes])
+   if test "x$libcurl" = "xyes"; then
+       AC_MSG_CHECKING([whether with-curl compiles and links fine])
+-      AC_TRY_LINK([], [curl_easy_init();], [libcurl=yes], [libcurl=no])
++      AC_TRY_LINK([#include <curl/curl.h>], [curl_easy_init();], [libcurl=yes], [libcurl=no])
+       AC_MSG_RESULT([$libcurl])
+   fi
+    if test "x$libcurl" = "xno"; then
+@@ -640,12 +640,12 @@
+       AC_CHECK_HEADER(curl/curl.h, [libcurl=yes])
+       if test "x$libcurl" = "xyes"; then
+           AC_MSG_CHECKING([whether curl-config hints compiles and links fine])
+-          OLDFLAGS="$LDFLAGS"
+-          LDFLAGS="$LDFLAGS `$libcurlconfig --libs 2>/dev/null`"
+-          AC_TRY_LINK([], [curl_easy_init();], [libcurl=yes], [libcurl=no])
++          OLDLIBS="$LIBS"
++          LIBS="$LIBS `$libcurlconfig --libs 2>/dev/null`"
++          AC_TRY_LINK([#include <curl/curl.h>], [curl_easy_init();], [libcurl=yes], [libcurl=no])
+           AC_MSG_RESULT([$libcurl])
+           if test "x$libcurl" = "xno"; then
+-              LDFLAGS="$OLDFLAGS"
++              LIBS="$OLDLIBS"
+           fi
+       fi
+
+@@ -684,7 +684,7 @@
+   AC_CHECK_HEADER(expat.h, [libexpat=yes])
+   if test "x$libexpat" = "xyes"; then
+       AC_MSG_CHECKING([whether with-expat compiles and links fine])
+-      AC_TRY_LINK([], [XML_SetElementHandler();], [libexpat=yes], [libexpat=no])
++      AC_TRY_LINK([#include <expat.h>], [XML_SetElementHandler(0,0,0);], [libexpat=yes], [libexpat=no])
+       AC_MSG_RESULT([$libexpat])
+   fi
+    if test "x$libexpat" = "xno"; then
+@@ -695,12 +695,12 @@
+   AC_CHECK_HEADER(expat.h, [libexpat=yes])
+   if test "x$libexpat" = "xyes"; then
+     AC_MSG_CHECKING([whether libexpat compiles and links fine])
+-    OLDFLAGS="$LDFLAGS"
+-    LDFLAGS="$LDFLAGS -lexpat"
+-    AC_TRY_LINK([], [XML_SetElementHandler();], [libexpat=yes], [libexpat=no])
++    OLDLIBS="$LIBS"
++    LIBS="$LIBS -lexpat"
++    AC_TRY_LINK([#include <expat.h>], [XML_SetElementHandler(0,0,0);], [libexpat=yes], [libexpat=no])
+     AC_MSG_RESULT([$libexpat])
+     if test "x$libexpat" = "xno"; then
+-      LDFLAGS="$OLDFLAGS"
++      LIBS="$OLDLIBS"
+     fi
+   fi
+ fi

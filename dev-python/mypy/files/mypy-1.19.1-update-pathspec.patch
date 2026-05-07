@@ -68,25 +68,3 @@ index 54d2263a03f63..c58d798be55a9 100644
    "tomli>=1.1.0; python_version<'3.11'",
    "librt>=0.6.2; platform_python_implementation != 'PyPy'",
  ]
-diff --git a/test-requirements.txt b/test-requirements.txt
-index 883930c681a41..05f9163121c14 100644
---- a/test-requirements.txt
-+++ b/test-requirements.txt
-@@ -22,7 +22,7 @@ identify==2.6.15
-     # via pre-commit
- iniconfig==2.1.0
-     # via pytest
--librt==0.7.3 ; platform_python_implementation != 'PyPy'
-+librt==0.7.3 ; platform_python_implementation != "PyPy"
-     # via -r mypy-requirements.txt
- lxml==6.0.2 ; python_version < "3.15"
-     # via -r test-requirements.in
-@@ -32,7 +32,7 @@ nodeenv==1.9.1
-     # via pre-commit
- packaging==25.0
-     # via pytest
--pathspec==0.12.1
-+pathspec==1.0.0
-     # via -r mypy-requirements.txt
- platformdirs==4.5.0
-     # via virtualenv

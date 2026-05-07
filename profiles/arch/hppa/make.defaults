@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 ARCH="hppa"
@@ -22,3 +22,7 @@ CHOST_hppa="${CHOST}"
 # Donnie Berkholz <dberkholz@gentoo.org> (2006-08-18)
 # Defaults for video drivers
 VIDEO_CARDS="fbdev"
+
+# James Le Cuirot <chewi@gentoo.org> (2026-02-13)
+# Enable the native QEMU target for this architecture by default.
+QEMU_SOFTMMU_TARGETS="hppa"

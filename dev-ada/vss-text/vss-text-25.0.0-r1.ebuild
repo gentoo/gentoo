@@ -1,4 +1,4 @@
-# Copyright 2021-2025 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,26 +36,26 @@ src_prepare() {
 
 src_compile() {
 	build () {
-		gprbuild -XVSS_LIBRARY_TYPE=$1 -p -j$(makeopts_jobs) -v \
+		gprbuild -XVSS_LIBRARY_TYPE=$1 -p -j$(get_makeopts_jobs) -v \
 			gnat/vss_gnat.gpr \
 			-cargs:Ada ${ADAFLAGS} || die
-		gprbuild -XVSS_LIBRARY_TYPE=$1 -p -j$(makeopts_jobs) -v \
+		gprbuild -XVSS_LIBRARY_TYPE=$1 -p -j$(get_makeopts_jobs) -v \
 			gnat/vss_text.gpr \
 			-cargs:Ada ${ADAFLAGS} || die
-		gprbuild -XVSS_LIBRARY_TYPE=$1 -p -j$(makeopts_jobs) -v \
+		gprbuild -XVSS_LIBRARY_TYPE=$1 -p -j$(get_makeopts_jobs) -v \
 			gnat/vss_json.gpr \
 			-cargs:Ada ${ADAFLAGS} || die
-		gprbuild -XVSS_LIBRARY_TYPE=$1 -p -j$(makeopts_jobs) -v \
+		gprbuild -XVSS_LIBRARY_TYPE=$1 -p -j$(get_makeopts_jobs) -v \
 			gnat/vss_regexp.gpr \
 			-cargs:Ada ${ADAFLAGS} || die
-		gprbuild -XVSS_LIBRARY_TYPE=$1 -p -j$(makeopts_jobs) -v \
+		gprbuild -XVSS_LIBRARY_TYPE=$1 -p -j$(get_makeopts_jobs) -v \
 			gnat/vss_xml.gpr \
 			-cargs:Ada ${ADAFLAGS} || die
-		gprbuild -XVSS_LIBRARY_TYPE=$1 -p -j$(makeopts_jobs) -v \
+		gprbuild -XVSS_LIBRARY_TYPE=$1 -p -j$(get_makeopts_jobs) -v \
 			gnat/vss_xml_templates.gpr \
 			-cargs:Ada ${ADAFLAGS} || die
 		gprbuild -XVSS_LIBRARY_TYPE=$1 -XXMLADA_BUILD=$1 -p \
-			-j$(makeopts_jobs) -v gnat/vss_xml_xmlada.gpr \
+			-j$(get_makeopts_jobs) -v gnat/vss_xml_xmlada.gpr \
 			-cargs:Ada ${ADAFLAGS} || die
 	}
 	if use shared; then
@@ -70,7 +70,7 @@ src_compile() {
 }
 
 src_test() {
-	emake -j1 GPRBUILD_FLAGS="-p -j$(makeopts_jobs) -v" build_tests
+	emake -j1 GPRBUILD_FLAGS="-p -j$(get_makeopts_jobs) -v" build_tests
 	# To run all the test need to follow data/README.md
 	emake check_html
 }

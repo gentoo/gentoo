@@ -1,4 +1,4 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: zig-utils.eclass
@@ -494,6 +494,7 @@ zig-utils_find_installation() {
 	# Upstream skipped releasing 0.15.0
 	local zig_supported_versions=(
 		"9999"
+		"0.16.0"
 		"0.15.2"
 		"0.15.1"
 		"0.14.1"

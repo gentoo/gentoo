@@ -1,0 +1,29 @@
+{
+    "description": "UEFI for arm64 VMs, with QEMU uefi-vars, SB enabled, MS certs enrolled",
+    "interface-types": [
+        "uefi"
+    ],
+    "mapping": {
+        "device": "memory",
+        "filename": "/usr/share/edk2/ArmVirtQemu-AARCH64/QEMU_EFI.qemuvars.fd",
+        "uefi-vars": {
+            "template": "/usr/share/edk2/ArmVirtQemu-AARCH64/QEMU_VARS.qemuvars.json"
+        }
+    },
+    "targets": [
+        {
+            "architecture": "aarch64",
+            "machines": [
+                "virt-*"
+            ]
+        }
+    ],
+    "features": [
+        "enrolled-keys",
+        "host-uefi-vars",
+        "secure-boot"
+    ],
+    "tags": [
+
+    ]
+}

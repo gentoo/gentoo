@@ -15,14 +15,65 @@ esac
 if [[ -z ${_RPM_ECLASS} ]] ; then
 _RPM_ECLASS=1
 
-inherit estack
+inherit estack toolchain-funcs
 
-BDEPEND="
-	|| (
-		app-arch/rpm2targz
-		>=app-arch/rpm-4.19.0
-	)
-"
+# @ECLASS_VARIABLE: RPM_COMPRESS_TYPE
+# @PRE_INHERIT
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Comma-separated list of app-arch/rpm compression formats. If set,
+# app-arch/rpm will be allowed as a BDEPEND to unpack distfiles. Must be set
+# for EAPI 9. Supported types:
+#
+# - none (rpm is supported but distfile is uncompressed or builtin zlib)
+#
+# - bzip2 (.bz2)
+#
+# - lzma (deprecated pre-xz iteration of the lzma SDK. rpm2targz doesn't
+#   support it)
+#
+# - xz (.xz)
+#
+# - zstd (.zst)
+#
+# - "" (empty -- the ebuild hasn't been updated to resolve deprecations)
+if [[ ${EAPI} != [78] && -z ${RPM_COMPRESS_TYPE} ]]; then
+	die "RPM_COMPRESS_TYPE= must be defined starting with EAPI 9"
+fi
+
+_rpm_set_globals() {
+	local rpmdep= rpmuse= rpm2tar="true" t= types=()
+	IFS=, declare -a 'types=(${RPM_COMPRESS_TYPE})'
+
+	if [[ ${RPM_COMPRESS_TYPE} = none ]]; then
+		rpmdep=">=app-arch/rpm-4.19.0"
+	elif [[ "${#types[@]}" -gt 0 ]]; then
+		for t in "${types[@]}"; do
+			case ${t} in
+				bzip2|zstd) rpmuse+="${t}(+)," ;;
+				lzma) rpmuse+="${t}(+),"; rpm2tar="false" ;;
+				xz) rpmuse+="lzma(+)," ;;
+				none) die "RPM_COMPRESS_TYPE: 'none' cannot be combined with other values" ;;
+				*) die "invalid RPM_COMPRESS_TYPE: ${RPM_COMPRESS_TYPE} (found: ${t})" ;;
+			esac
+		done
+		rpmdep=">=app-arch/rpm-4.19.0"
+		[[ ${rpmuse} ]] && rpmdep+="[${rpmuse%,}]"
+	fi
+
+	if [[ ${rpm2tar} = true ]]; then
+		BDEPEND="
+			|| (
+				app-arch/rpm2targz
+				${rpmdep}
+			)
+		"
+	else
+		BDEPEND="${rpmdep}"
+	fi
+}
+_rpm_set_globals
+unset -f _rpm_set_globals
 
 # @FUNCTION: rpm_unpack
 # @USAGE: <rpms>
@@ -30,7 +81,10 @@ BDEPEND="
 # Unpack the contents of the specified rpms like the unpack() function.
 rpm_unpack() {
 	[[ $# -eq 0 ]] && set -- ${A}
-	local a
+	local a noticed=()
+
+	IFS=, declare -a 'types=(${RPM_COMPRESS_TYPE})'
+
 	for a in "$@" ; do
 		echo ">>> Unpacking ${a} to ${PWD}"
 		if [[ ${a} == ./* ]] ; then
@@ -43,11 +97,39 @@ rpm_unpack() {
 			a="${DISTDIR}/${a}"
 		fi
 
-		if command -v rpm2tar >/dev/null; then
-			local extracttool=(rpm2tar -O)
-		else
-			# app-arch/rpm fallback
+		local payload= usedep=""
+		# grep may fail because no payload or because "unknown error", and distinguishing between
+		# the two is problematic. We do a token check that strings works, but rely on rpm failing
+		# with its own well-formed die if we erroneously decide no payload USE flag is needed due
+		# to external commands failing.
+		payload=$($(tc-getSTRINGS) "${a}" | grep -o 'PayloadIs[a-zA-Z]*'; if [[ ${PIPESTATUS[0]} != 0 ]]; then die "strings failed"; fi)
+
+		case ${payload} in
+			"") payload=none;; # gzip/uncompressed
+			PayloadIsBzip) payload=bzip2 usedep="[bzip2(+)]";;
+			PayloadIsXz) payload=xz usedep="[lzma(+)]";;
+			PayloadIsLzma) payload=lzma usedep="[lzma(+)]";;
+			PayloadIsZstd) payload=zstd usedep="[zstd(+)]";;
+		esac
+
+		local use_rpm=
+		if [[ ${RPM_COMPRESS_TYPE} = *${payload}* ||
+			  ( ${payload} = none && ${RPM_COMPRESS_TYPE} ) ]]; then
+			use_rpm=true
+		elif ! has "${payload}" "${noticed[@]}"; then
+			eqawarn "QA Notice: rpm_unpack called without supporting app-arch/rpm."
+			eqawarn "\${RPM_COMPRESS_TYPE} should include '${payload}'."
+			noticed+=("${payload}")
+		fi
+
+		if [[ ${use_rpm} = true ]] && has_version -b "app-arch/rpm${usedep}"; then
+			# prefer it if correct USE is in BDEPEND and installed
 			local extracttool=(rpm2archive -n)
+		elif [[ ${payload} = lzma ]]; then
+			# bug 321439
+			die "rpm_unpack called with legacy lzma compression that rpm2targz doesn't support"
+		else
+			local extracttool=(rpm2tar -O)
 		fi
 
 		"${extracttool[@]}" "${a}" | tar xf -

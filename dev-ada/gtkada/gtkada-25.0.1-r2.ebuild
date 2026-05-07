@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -48,7 +48,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake -j1 PROCESSORS=$(makeopts_jobs)
+	emake -j1 PROCESSORS=$(get_makeopts_jobs)
 }
 
 src_install() {

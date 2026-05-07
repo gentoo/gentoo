@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ EAPI=8
 #
 # Also recommend subscribing to the coreutils and bug-coreutils MLs.
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/coreutils.asc
 inherit branding flag-o-matic python-any-r1 toolchain-funcs verify-sig
 
@@ -23,7 +23,7 @@ if [[ ${PV} == 9999 ]] ; then
 elif [[ ${PV} == *_p* ]] ; then
 	# Note: could put this in devspace, but if it's gone, we don't want
 	# it in tree anyway. It's just for testing.
-	MY_SNAPSHOT="$(ver_cut 1-2).327-71a8c"
+	MY_SNAPSHOT="$(ver_cut 1-2).289-a8598"
 	SRC_URI="https://www.pixelbeat.org/cu/coreutils-${MY_SNAPSHOT}.tar.xz -> ${P}.tar.xz"
 	SRC_URI+=" verify-sig? ( https://www.pixelbeat.org/cu/coreutils-${MY_SNAPSHOT}.tar.xz.sig -> ${P}.tar.xz.sig )"
 	S="${WORKDIR}"/${PN}-${MY_SNAPSHOT}
@@ -167,6 +167,7 @@ src_configure() {
 		$(use_enable xattr)
 		$(use_with gmp libgmp)
 		$(use_with openssl)
+		$(use_with selinux)
 	)
 
 	if use gmp ; then
@@ -187,11 +188,6 @@ src_configure() {
 		append-ldflags -static
 		# bug #321821
 		sed -i '/elf_sys=yes/s:yes:no:' configure || die
-	fi
-
-	if ! use selinux ; then
-		# bug #301782
-		export ac_cv_{header_selinux_{context,flash,selinux}_h,search_setfilecon}=no
 	fi
 
 	econf "${myconf[@]}"

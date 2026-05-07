@@ -87,7 +87,7 @@ python_compile() {
 	export TORCHVISION_USE_VIDEO_CODEC=$(usex cuda 1 0)
 
 	NVCC_FLAGS="${NVCCFLAGS}" \
-		MAX_JOBS="$(makeopts_jobs)" \
+		MAX_JOBS="$(get_makeopts_jobs)" \
 		distutils-r1_python_compile -j1
 }
 

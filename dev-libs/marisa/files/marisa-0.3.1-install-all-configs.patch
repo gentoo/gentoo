@@ -1,0 +1,21 @@
+Remove CONFIGURATIONS Release from install() so the library and tools
+are installed regardless of the cmake build type (e.g. RelWithDebInfo).
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -258,7 +258,6 @@
+ install(
+   TARGETS marisa
+   EXPORT MarisaTargets
+-  CONFIGURATIONS Release
+   DESTINATION ${LIB_INSTALL_DIR}
+   COMPONENT Library
+ )
+@@ -272,7 +271,6 @@
+ if(ENABLE_TOOLS)
+   install(
+     TARGETS ${MARISA_TOOLS}
+-    CONFIGURATIONS Release
+     COMPONENT Binaries
+   )
+ endif()

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 MY_P="${PN^}-v${PV}"
 inherit cmake python-single-r1 xdg

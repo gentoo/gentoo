@@ -4,6 +4,10 @@
 # New entries go on top.
 # Please use the same syntax as in package.use.mask.
 
+# Sam James <sam@gentoo.org> (2026-05-03)
+# Needs not-yet-stable GCC 16.
+dev-lang/python tail-call-interp
+
 # Alfred Wingate <parona@protonmail.com> (2026-01-31)
 # Experimental upstream.
 # lgi in a weird state where tests either fail for the last real release

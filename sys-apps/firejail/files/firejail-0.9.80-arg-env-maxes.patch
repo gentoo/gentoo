@@ -1,0 +1,19 @@
+--- a/etc/firejail.config
++++ b/etc/firejail.config
+@@ -14,6 +14,8 @@
+ # This limit is intended to make stack smashing harder (see
+ # https://github.com/netblue30/firejail/issues/4633).
+ # arg-max-count 128
++## boost fails with: Error: too many arguments: argc (1354) >= arg-max-count ...
++arg-max-count 4096
+ 
+ # Maximum length of each argument in the command line.
+ # Example: `--foo=bar` has a length of 9.
+@@ -52,6 +54,7 @@
+ # This limit is intended to make stack smashing harder (see
+ # https://github.com/netblue30/firejail/issues/4633).
+ # env-max-count 256
++env-max-count 1024
+ 
+ # Maximum length for each environment variable value.
+ # Example: `FOO=barr` has a length of 4.

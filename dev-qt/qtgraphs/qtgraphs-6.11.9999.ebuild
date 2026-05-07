@@ -1,4 +1,4 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,11 +27,15 @@ CMAKE_SKIP_TESTS=(
 	tst_qgqmltest
 )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.11.0-no-quick3d.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		# simpler than keeping track of and disabling every graphs-3d* features
 		$(cmake_use_find_package quick3d Qt6Quick3D)
 	)
 
-	cmake_src_configure
+	qt6-build_src_configure
 }

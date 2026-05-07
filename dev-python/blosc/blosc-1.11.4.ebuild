@@ -12,7 +12,7 @@ inherit distutils-r1
 MY_P=python-blosc-${PV}
 DESCRIPTION="High performance compressor optimized for binary data"
 HOMEPAGE="
-	https://www.blosc.org/
+	https://blosc.org/
 	https://github.com/Blosc/python-blosc/
 	https://pypi.org/project/blosc/
 "
@@ -24,7 +24,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

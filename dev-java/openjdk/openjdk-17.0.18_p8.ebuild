@@ -18,7 +18,7 @@ X86_XPAK="17.0.1_p12"
 # Example: $(bootstrap_uri ppc64 17.0.1_p12 big-endian)
 # Output: ppc64? ( big-endian? ( https://...17.0.1_p12-ppc64.tar.xz ) )
 bootstrap_uri() {
-	local baseuri="https://dev.gentoo.org/~arthurzam/distfiles/dev-java/${PN}/${PN}-bootstrap"
+	local baseuri="https://distfiles.gentoo.org/pub/dev/arthurzam@gentoo.org/dev-java/${PN}/${PN}-bootstrap"
 	local suff="tar.xz"
 	local kw="${1:?${FUNCNAME[0]}: keyword not specified}"
 	local ver="${2:?${FUNCNAME[0]}: version not specified}"

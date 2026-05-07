@@ -1,4 +1,4 @@
-# Copyright 2017-2025 Gentoo Authors
+# Copyright 2017-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -235,7 +235,7 @@ CRATES="
 
 inherit cargo shell-completion
 
-DESCRIPTION="An ls command with a lot of pretty colors and some other stuff."
+DESCRIPTION="An ls command with a lot of pretty colors and some other stuff"
 HOMEPAGE="https://github.com/lsd-rs/lsd/"
 SRC_URI="
 	https://github.com/lsd-rs/lsd/archive/v${PV}.tar.gz -> ${P}.tar.gz

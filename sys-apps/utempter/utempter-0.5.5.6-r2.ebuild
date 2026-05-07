@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,6 +6,7 @@ EAPI=8
 MY_PN="${P%.*}"
 MY_P="${MY_PN}-${PV##*.}"
 
+RPM_COMPRESS_TYPE=none
 inherit flag-o-matic rpm toolchain-funcs
 
 DESCRIPTION="App that allows non-privileged apps to write utmp (login) info"

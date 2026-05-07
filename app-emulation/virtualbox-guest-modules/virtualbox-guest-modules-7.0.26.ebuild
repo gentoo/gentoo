@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # XXX: the tarball here is just the kernel modules split out of the binary
@@ -12,7 +12,7 @@ inherit linux-mod-r1
 MY_P="vbox-guest-kernel-module-src-${PV}"
 DESCRIPTION="Kernel Modules for Virtualbox Guest Additions"
 HOMEPAGE="https://www.virtualbox.org/"
-SRC_URI="https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/${MY_P}.tar.xz"
+SRC_URI="https://distfiles.gentoo.org/pub/dev/ceamac@gentoo.org/${CATEGORY}/${PN}/${MY_P}.tar.xz"
 S="${WORKDIR}"
 
 LICENSE="GPL-3"

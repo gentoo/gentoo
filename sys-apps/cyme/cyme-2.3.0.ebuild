@@ -1,0 +1,236 @@
+# Copyright 2024-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+RUST_MIN_VER="1.88.0"
+CRATES="
+	aho-corasick@1.1.4
+	alloca@0.4.0
+	android_system_properties@0.1.5
+	anes@0.1.6
+	anstream@1.0.0
+	anstyle-parse@1.0.0
+	anstyle-query@1.1.5
+	anstyle-wincon@3.0.11
+	anstyle@1.0.14
+	assert-json-diff@2.0.2
+	autocfg@1.5.0
+	base64@0.22.1
+	bitflags@2.11.0
+	bumpalo@3.20.2
+	byteorder@1.5.0
+	cansi@2.2.1
+	cast@0.3.0
+	cc@1.2.58
+	cfg-if@1.0.4
+	cfg_aliases@0.2.1
+	chrono@0.4.44
+	ciborium-io@0.2.2
+	ciborium-ll@0.2.2
+	ciborium@0.2.2
+	clap@4.6.0
+	clap_builder@4.6.0
+	clap_complete@4.6.0
+	clap_derive@4.6.0
+	clap_lex@1.1.0
+	clap_mangen@0.2.33
+	colorchoice@1.0.5
+	colored@3.1.1
+	convert_case@0.10.0
+	core-foundation-sys@0.8.7
+	core-foundation@0.10.1
+	criterion-plot@0.8.2
+	criterion@0.8.2
+	crossbeam-deque@0.8.6
+	crossbeam-epoch@0.9.18
+	crossbeam-utils@0.8.21
+	crossterm@0.29.0
+	crossterm_winapi@0.9.1
+	crunchy@0.2.4
+	darling@0.23.0
+	darling_core@0.23.0
+	darling_macro@0.23.0
+	deranged@0.5.8
+	derive_more-impl@2.1.1
+	derive_more@2.1.1
+	diff@0.1.13
+	dirs-sys@0.5.0
+	dirs@6.0.0
+	document-features@0.2.12
+	dyn-clone@1.0.20
+	either@1.15.0
+	equivalent@1.0.2
+	errno@0.3.14
+	fastrand@2.3.0
+	find-msvc-tools@0.1.9
+	futures-core@0.3.32
+	futures-io@0.3.32
+	futures-lite@2.6.1
+	getrandom@0.2.17
+	glob@0.3.3
+	half@2.7.1
+	hash32@0.3.1
+	hashbrown@0.12.3
+	hashbrown@0.16.1
+	heapless@0.8.0
+	heck@0.5.0
+	hermit-abi@0.3.9
+	hex@0.4.3
+	iana-time-zone-haiku@0.1.2
+	iana-time-zone@0.1.65
+	ident_case@1.0.1
+	indexmap@1.9.3
+	indexmap@2.13.0
+	io-kit-sys@0.5.0
+	io-lifetimes@1.0.11
+	is_terminal_polyfill@1.70.2
+	itertools@0.13.0
+	itertools@0.14.0
+	itoa@1.0.18
+	js-sys@0.3.92
+	libc@0.2.183
+	libredox@0.1.15
+	libudev-sys@0.1.4
+	libusb1-sys@0.7.0
+	linux-raw-sys@0.12.1
+	litrs@1.0.0
+	lock_api@0.4.14
+	log@0.4.29
+	mach2@0.5.0
+	memchr@2.8.0
+	minimal-lexical@0.2.1
+	mio@1.2.0
+	nix@0.29.0
+	nom@7.1.3
+	num-conv@0.2.1
+	num-traits@0.2.19
+	num_threads@0.1.7
+	nusb@0.2.3
+	once_cell@1.21.4
+	once_cell_polyfill@1.70.2
+	oorandom@11.1.5
+	option-ext@0.2.0
+	page_size@0.6.0
+	parking@2.2.1
+	parking_lot@0.12.5
+	parking_lot_core@0.9.12
+	pci-ids@0.2.6
+	phf@0.11.3
+	phf_codegen@0.11.3
+	phf_generator@0.11.3
+	phf_shared@0.11.3
+	pin-project-lite@0.2.17
+	pkg-config@0.3.32
+	plotters-backend@0.3.7
+	plotters-svg@0.3.7
+	plotters@0.3.7
+	powerfmt@0.2.0
+	proc-macro2@1.0.106
+	quote@1.0.45
+	rand@0.8.5
+	rand_core@0.6.4
+	rayon-core@1.13.0
+	rayon@1.11.0
+	redox_syscall@0.5.18
+	redox_users@0.5.2
+	ref-cast-impl@1.0.25
+	ref-cast@1.0.25
+	regex-automata@0.4.14
+	regex-syntax@0.8.10
+	regex@1.12.3
+	roff@1.1.1
+	rusb@0.9.4
+	rustc_version@0.4.1
+	rustix@1.1.4
+	rustversion@1.0.22
+	same-file@1.0.6
+	schemars@0.9.0
+	schemars@1.2.1
+	scopeguard@1.2.0
+	semver@1.0.27
+	serde@1.0.228
+	serde_core@1.0.228
+	serde_derive@1.0.228
+	serde_json@1.0.149
+	serde_with@3.18.0
+	serde_with_macros@3.18.0
+	shlex@1.3.0
+	signal-hook-mio@0.2.5
+	signal-hook-registry@1.4.8
+	signal-hook@0.3.18
+	simple_logger@5.2.0
+	siphasher@1.0.2
+	slab@0.4.12
+	smallvec@1.15.1
+	stable_deref_trait@1.2.1
+	strsim@0.11.1
+	strum@0.28.0
+	strum_macros@0.28.0
+	syn@2.0.117
+	terminal_size@0.4.4
+	thiserror-impl@2.0.18
+	thiserror@2.0.18
+	time-core@0.1.8
+	time-macros@0.2.27
+	time@0.3.47
+	tinytemplate@1.2.1
+	udev@0.9.3
+	udevrs@0.5.0
+	unicode-ident@1.0.24
+	unicode-segmentation@1.13.2
+	unicode-width@0.2.2
+	usb-ids@1.2025.2
+	utf8parse@0.2.2
+	uuid@1.23.0
+	vcpkg@0.2.15
+	walkdir@2.5.0
+	wasi@0.11.1+wasi-snapshot-preview1
+	wasm-bindgen-macro-support@0.2.115
+	wasm-bindgen-macro@0.2.115
+	wasm-bindgen-shared@0.2.115
+	wasm-bindgen@0.2.115
+	web-sys@0.3.92
+	winapi-i686-pc-windows-gnu@0.4.0
+	winapi-util@0.1.11
+	winapi-x86_64-pc-windows-gnu@0.4.0
+	winapi@0.3.9
+	windows-core@0.62.2
+	windows-implement@0.60.2
+	windows-interface@0.59.3
+	windows-link@0.2.1
+	windows-result@0.4.1
+	windows-strings@0.5.1
+	windows-sys@0.48.0
+	windows-sys@0.61.2
+	windows-targets@0.48.5
+	windows_aarch64_gnullvm@0.48.5
+	windows_aarch64_msvc@0.48.5
+	windows_i686_gnu@0.48.5
+	windows_i686_msvc@0.48.5
+	windows_x86_64_gnu@0.48.5
+	windows_x86_64_gnullvm@0.48.5
+	windows_x86_64_msvc@0.48.5
+	zerocopy-derive@0.8.48
+	zerocopy@0.8.48
+	zmij@1.0.21
+"
+
+inherit cargo
+
+DESCRIPTION="List system USB buses and devices; a modern cross-platform \`lsusb\`"
+HOMEPAGE="https://github.com/tuna-f1sh/cyme/"
+SRC_URI="
+	https://github.com/tuna-f1sh/cyme/archive/v${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+	${CARGO_CRATE_URIS}
+	https://github.com/gentoo-crate-dist/cyme/releases/download/v${PV}/cyme-v${PV}-crates.tar.xz
+"
+
+LICENSE="GPL-3+"
+# Dependent crate licenses
+LICENSE+=" Apache-2.0 LGPL-2+ MIT MPL-2.0 Unicode-3.0"
+SLOT="0"
+KEYWORDS="~amd64"
+
+QA_FLAGS_IGNORED="/usr/bin/cyme"

@@ -1,0 +1,14 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 23e8a33..1a5f644 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -406,7 +406,7 @@ markers = [
+ ]
+ norecursedirs = [".ansible", "scenarios"]
+ testpaths = ["tests"]
+-verbosity_assertions = 2
++verbosity_assertions = "2"
+ 
+ [tool.ruff]
+ builtins = ["__"]
+

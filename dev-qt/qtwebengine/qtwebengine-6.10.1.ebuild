@@ -9,7 +9,7 @@ inherit prefix python-any-r1 qt6-build toolchain-funcs
 
 DESCRIPTION="Library for rendering dynamic web content in Qt6 C++ and QML applications"
 SRC_URI+="
-	https://dev.gentoo.org/~ionen/distfiles/${PN}-6.10-patchset-8.tar.xz
+	https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${PN}-6.10-patchset-8.tar.xz
 "
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
@@ -231,9 +231,6 @@ src_configure() {
 		# TODO: fixup gn cross, or package dev-qt/qtwebengine-gn with =ON
 		# (see also BUILD_ONLY_GN option added in 6.8+ for the latter)
 		-DINSTALL_GN=OFF
-
-		# TODO: drop this if no longer errors out early during cmake generation
-		-DQT_GENERATE_SBOM=OFF
 	)
 
 	local mygnargs=(

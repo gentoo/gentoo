@@ -1,4 +1,4 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -89,7 +89,7 @@ LICENSE="MIT"
 # Dependent crate licenses
 LICENSE+=" MIT Unicode-DFS-2016 ZLIB"
 SLOT="0"
-KEYWORDS="~arm64"
+KEYWORDS="arm64"
 
 pkg_setup() {
 	linux-info_pkg_setup

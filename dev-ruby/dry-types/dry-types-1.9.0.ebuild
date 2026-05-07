@@ -14,7 +14,7 @@ RUBY_FAKEGEM_GEMSPEC="dry-types.gemspec"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Type system for Ruby supporting coercions, constraints and complex types."
+DESCRIPTION="Type system for Ruby supporting coercions, constraints and complex types"
 
 HOMEPAGE="https://dry-rb.org/gems/dry-types/"
 SRC_URI="https://github.com/dry-rb/dry-types/archive/v${PV}.tar.gz -> ${P}.tar.gz"

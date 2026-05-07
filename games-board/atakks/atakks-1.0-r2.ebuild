@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ DESCRIPTION="Clone of Ataxx"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="
 	mirror://gentoo/${P}.tar.gz
-	https://dev.gentoo.org/~ionen/distfiles/${PN}.png"
+	https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${PN}.png"
 S="${WORKDIR}/${PN}_${PV}"
 
 LICENSE="GPL-2+"

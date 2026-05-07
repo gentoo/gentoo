@@ -6,6 +6,6 @@
 		<name>PostgreSQL</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">pgmodeler/pgmodeler</remote-id>
+		<remote-id type="github">nullptrlabs/pgmodeler</remote-id>
 	</upstream>
 </pkgmetadata>

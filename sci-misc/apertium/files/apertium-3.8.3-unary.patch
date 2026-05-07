@@ -1,0 +1,22 @@
+From 1f6632c7c79242a18a2a64e1b6f9e47d66ccca8d Mon Sep 17 00:00:00 2001
+From: Tino Didriksen <mail@tinodidriksen.com>
+Date: Sun, 29 Oct 2023 20:34:40 +0100
+Subject: [PATCH] std::unary_function no longer exists
+
+---
+ apertium/perceptron_spec.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/apertium/perceptron_spec.h b/apertium/perceptron_spec.h
+index 5b8e9866..069d3864 100644
+--- a/apertium/perceptron_spec.h
++++ b/apertium/perceptron_spec.h
+@@ -475,7 +475,7 @@ class PerceptronSpec
+       int token_idx,
+       int wordoid_idx);
+   };
+-  struct In : public std::unary_function<const std::string&, bool> {
++  struct In {
+     const VMSet& haystack;
+     In(const VMSet &haystack);
+     bool operator() (const std::string &needle) const;

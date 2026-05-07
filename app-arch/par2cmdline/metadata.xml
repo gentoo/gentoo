@@ -3,6 +3,15 @@
 <pkgmetadata>
   <maintainer type="person">
     <email>swegener@gentoo.org</email>
+    <name>Sven Wegener</name>
+  </maintainer>
+  <maintainer type="person" proxied="yes">
+    <email>joe@wt.gd</email>
+    <name>Joe Kappus</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
   </maintainer>
   <upstream>
     <remote-id type="github">Parchive/par2cmdline</remote-id>

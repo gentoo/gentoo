@@ -1,0 +1,386 @@
+The register keyword is unused since C++17.
+Reserved typedefs are renamed to fixed width integer types (C++11).
+For each math operation, v4f_map is replaced with a non-template function.
+Bug: https://bugs.gentoo.org/919719
+Bug: https://bugs.gentoo.org/830049
+Bug: https://bugs.gentoo.org/731040
+--- a/CabIII.cc
++++ b/CabIII.cc
+@@ -78,7 +78,7 @@ CabinetIII::cycle (uint frames)
+ 
+ 	for (uint i = 0; i < frames; ++i)
+ 	{
+-		register cabinet_float acc = s[i] + normal;
++		cabinet_float acc = s[i] + normal;
+ 		
+ 		x[h] = acc;
+ 		acc *= a[0];
+--- a/Reverb.cc
++++ b/Reverb.cc
+@@ -247,8 +247,8 @@ PlateStub::process(sample_t x, sample_t decay, sample_t * _xl, sample_t * _xr)
+ 	x = input.lattice[3].process(x, indiff2);
+ 
+ 	/* summation point */
+-	register double xl = x + decay*tank.delay[3].get();
+-	register double xr = x + decay*tank.delay[1].get();
++	double xl = x + decay*tank.delay[3].get();
++	double xr = x + decay*tank.delay[1].get();
+ 
+ 	/* lh */
+ 	xl = tank.mlattice[0].process(xl, dediff1);
+--- a/basics.h
++++ b/basics.h
+@@ -49,14 +49,14 @@
+ 
+ #include "ladspa.h"
+ 
+-typedef __int8_t			int8;
+-typedef __uint8_t			uint8;
+-typedef __int16_t			int16;
+-typedef __uint16_t		uint16;
+-typedef __int32_t			int32;
+-typedef __uint32_t		uint32;
+-typedef __int64_t			int64;
+-typedef __uint64_t		uint64;
++typedef int8_t			int8;
++typedef uint8_t			uint8;
++typedef int16_t			int16;
++typedef uint16_t		uint16;
++typedef int32_t			int32;
++typedef uint32_t		uint32;
++typedef int64_t			int64;
++typedef uint64_t		uint64;
+ 
+ #define MIN_GAIN 1e-6 /* -120 dB */
+ /* smallest non-denormal 32 bit IEEE float is 1.18e-38 */
+--- a/dsp/Delay.h
++++ b/dsp/Delay.h
+@@ -101,11 +101,11 @@ class Delay
+ 				sample_t x2 = (*this) [n + 2];
+ 
+ 				/* sample_t (32bit) quicker than double here */
+-				register sample_t a = 
++				sample_t a = 
+ 						(3 * (x0 - x1) - x_1 + x2) * .5;
+-				register sample_t b =
++				sample_t b =
+ 						2 * x1 + x_1 - (5 * x0 + x2) * .5;
+-				register sample_t c = 
++				sample_t c = 
+ 						(x1 - x_1) * .5;
+ 
+ 				return x0 + (((a * f) + b) * f + c) * f;
+--- a/dsp/IIR2.h
++++ b/dsp/IIR2.h
+@@ -107,9 +107,9 @@ class IIR2
+ 
+ 		inline T process (T s)
+ 			{
+-				register int z = h;
++				int z = h;
+ 
+-				register T r = s * a[0];
++				T r = s * a[0];
+ 				
+ 				r += a[1] * x[z];
+ 				r += b[1] * y[z];
+@@ -128,9 +128,9 @@ class IIR2
+ 
+ 		inline T process_bp (T s)
+ 			{
+-				register int z = h;
++				int z = h;
+ 
+-				register T r = s * a[0];
++				T r = s * a[0];
+ 				
+ 				r += b[1] * y[z];
+ 
+@@ -151,9 +151,9 @@ class IIR2
+ 		 * case */
+ 		inline T process_0_1()
+ 			{
+-				register int z = h;
++				int z = h;
+ 
+-				register T r = 0;
++				T r = 0;
+ 				
+ 				r += a[1] * x[z];
+ 				r += b[1] * y[z];
+@@ -172,9 +172,9 @@ class IIR2
+ 
+ 		inline T process_0_2()
+ 			{
+-				register int z = h;
++				int z = h;
+ 
+-				register T r = 0;
++				T r = 0;
+ 				
+ 				r += b[1] * y[z];
+ 
+@@ -192,9 +192,9 @@ class IIR2
+ 
+ 		inline T process_0_3()
+ 			{
+-				register int z = h;
++				int z = h;
+ 
+-				register T r = 0;
++				T r = 0;
+ 				
+ 				r += b[1] * y[z];
+ 
+--- a/dsp/Sine.h
++++ b/dsp/Sine.h
+@@ -72,7 +72,7 @@ class Sine
+ 		/* advance and return 1 sample */
+ 		inline double get()
+ 			{
+-				register double s = b*y[z]; 
++				double s = b*y[z]; 
+ 				z ^= 1;
+ 				s -= y[z];
+ 				return y[z] = s;
+@@ -101,7 +101,7 @@ class DampedSine
+ 
+ 		inline double get()
+ 			{
+-				register double s = b * y[z]; 
++				double s = b * y[z]; 
+ 				z ^= 1;
+ 				s -= d * y[z];
+ 				return y[z] = d * s;
+--- a/dsp/v4f.h
++++ b/dsp/v4f.h
+@@ -71,17 +71,53 @@ inline float v4f_sum (v4f_t v)
+ 	return f[0]+f[1]+f[2]+f[3];
+ }
+ 
+-/* mapping a float to float function [e.g. sinf() e.a.] to a vector */
+-typedef float (*f2f_fn) (float f);
++inline v4f_t v4f_map_builtin_sinf (v4f_t x)
++{
++	v4f_t y;
++	float * s = (float *) &x;
++	float * d = (float *) &y;
++	for (uint i = 0; i < 4; ++i)
++		d[i] = __builtin_sinf(s[i]);
++	return y;
++}
++
++inline v4f_t v4f_map_builtin_cosf (v4f_t x)
++{
++	v4f_t y;
++	float * s = (float *) &x;
++	float * d = (float *) &y;
++	for (uint i = 0; i < 4; ++i)
++		d[i] = __builtin_cosf(s[i]);
++	return y;
++}
++
++inline v4f_t v4f_map_exp10f (v4f_t x)
++{
++	v4f_t y;
++	float * s = (float *) &x;
++	float * d = (float *) &y;
++	for (uint i = 0; i < 4; ++i)
++		d[i] = exp10f(s[i]);
++	return y;
++}
++
++inline v4f_t v4f_map_sqrtf (v4f_t x)
++{
++	v4f_t y;
++	float * s = (float *) &x;
++	float * d = (float *) &y;
++	for (uint i = 0; i < 4; ++i)
++		d[i] = sqrtf(s[i]);
++	return y;
++}
+ 
+-template <f2f_fn fn>
+-v4f_t v4f_map (v4f_t x)
++inline v4f_t v4f_map_cosf (v4f_t x)
+ {
+ 	v4f_t y;
+ 	float * s = (float *) &x;
+ 	float * d = (float *) &y;
+ 	for (uint i = 0; i < 4; ++i)
+-		d[i] = fn(s[i]);
++		d[i] = cosf(s[i]);
+ 	return y;
+ }
+ 
+@@ -155,17 +191,17 @@ class Sin4f
+ 			{
+ 				v4f_t *y = data();
+ 				v4f_t w = -v4f_pi * f;
+-				y[0] = v4f_map<__builtin_sinf> (w);
+-				y[1] = v4f_map<__builtin_sinf> (v4f_2 * w);
++				y[0] = v4f_map_builtin_sinf (w);
++				y[1] = v4f_map_builtin_sinf (v4f_2 * w);
+ 				/* b in above scalar implementation is y[2] in the flat data */
+-				y[2] = v4f_2 * v4f_map<__builtin_cosf> (w); /* b */
++				y[2] = v4f_2 * v4f_map_builtin_cosf (w); /* b */
+ 				z = 0;
+ 			}
+ 
+ 		inline v4f_t get()
+ 			{
+ 				v4f_t *y = data();
+-				register v4f_t s = y[2] * y[z]; 
++				v4f_t s = y[2] * y[z]; 
+ 				z ^= 1;
+ 				s -= y[z];
+ 				return y[z] = s;
+--- a/dsp/v4f_IIR2.h
++++ b/dsp/v4f_IIR2.h
+@@ -45,8 +45,8 @@ class RBJv4
+ 			{
+ 				v4f_t w = v4f_2pi * f;
+ 
+-				sin = v4f_map<__builtin_sinf> (w);
+-				cos = v4f_map<__builtin_cosf> (w);
++				sin = v4f_map_builtin_sinf (w);
++				cos = v4f_map_builtin_cosf (w);
+ 
+ 				alpha = sin / (v4f_2 * Q);
+ 			}
+@@ -142,7 +142,7 @@ class IIR2v4
+ 				/* A = pow (10, gain / 40) */
+ 				v4f_t A = (v4f_t) {.025,.025,.025,.025};
+ 				A *= gain;
+-				A = v4f_map<exp10f> (A);
++				A = v4f_map_exp10f (A);
+ 
+ 				RBJv4 p (f, Q);
+ 
+@@ -182,7 +182,7 @@ class IIR2v4
+ 			{
+ 				v4f_t *a = data(), *b = a + 2, *x = a + 5, *y = a + 7;
+ 
+-				register v4f_t r = s * a[0];
++				v4f_t r = s * a[0];
+ 				
+ 				r += a[1] * x[h];
+ 				r += b[1] * y[h];
+@@ -198,11 +198,11 @@ class IIR2v4
+ 			}
+ 
+ 		/* the production version with less pointer arithmetic in the prologue */
+-		inline v4f_t process (register v4f_t s)
++		inline v4f_t process (v4f_t s)
+ 			{
+ 				v4f_t *a = data();
+ 
+-				register v4f_t r = s * a[0];
++				v4f_t r = s * a[0];
+ 				
+ 				r += a[1] * a[5+h]; /* a[1] * x[h] */
+ 				r += a[2+1] * a[7+h]; /* b[1] * y[h] */
+@@ -223,7 +223,7 @@ class IIR2v4
+ 			{
+ 				v4f_t *a = data();
+ 
+-				register v4f_t r = s * a[0];
++				v4f_t r = s * a[0];
+ 				
+ 				r += a[2+1] * a[7+h]; /* b[1] * y[h] */
+ 
+@@ -323,10 +323,10 @@ class IIR2v4Bank
+ 
+ 				v4f_t acc = v4f_0;
+ 
+-				register uint h2 = h1 ^ 1;
++				uint h2 = h1 ^ 1;
+ 				for (uint i = 0; i < n; ++i, a += 7)
+ 				{
+-					register v4f_t r = s * a[0];
++					v4f_t r = s * a[0];
+ 					
+ 					r +=   a[1] * x[h1];
+ 					r += a[2+1] * a[5+h1]; /* b[1] * y[h1] */
+@@ -350,10 +350,10 @@ class IIR2v4Bank
+ 
+ 				v4f_t acc = v4f_0;
+ 
+-				register uint h2 = h1 ^ 1;
++				uint h2 = h1 ^ 1;
+ 				for (uint i = 0; i < N; ++i, a += 7)
+ 				{
+-					register v4f_t r;
++					v4f_t r;
+ 					
+ 					r =    a[1] * x[h1];
+ 					r += a[2+1] * a[5+h1]; /* b[1] * y[h1] */
+@@ -377,10 +377,10 @@ class IIR2v4Bank
+ 
+ 				v4f_t acc = v4f_0;
+ 
+-				register uint h2 = h1 ^ 1;
++				uint h2 = h1 ^ 1;
+ 				for (uint i = 0; i < n; ++i, a += 7)
+ 				{
+-					register v4f_t r = s * a[0];
++					v4f_t r = s * a[0];
+ 					
+ 					r += a[2+1] * a[5+h1]; /* b[1] * y[h1] */
+ 
+@@ -429,7 +429,7 @@ class IIR2v4Bank
+ 					/* A = pow (10, gain / 40) */
+ 					v4f_t A = (v4f_t) {.025,.025,.025,.025};
+ 					A *= gain[i];
+-					A = v4f_map<exp10f> (A);
++					A = v4f_map_exp10f (A);
+ 
+ 					RBJv4 p (f[i], Q[i]);
+ 
+@@ -549,9 +549,9 @@ class Resonator4fBank
+ 			{
+ 				v4f_t * a = state + i*Item;
+ 				f *= v4f_2pi;
+-				a[0] = v4f_map<__builtin_sinf> (f);
++				a[0] = v4f_map_builtin_sinf (f);
+ 				a[0] *= gain;
+-				a[5] = v4f_map<__builtin_cosf> (f);
++				a[5] = v4f_map_builtin_cosf (f);
+ 				set_r (i, r);
+ 			}
+ 		void set_r (int i, v4f_t r)
+@@ -583,7 +583,7 @@ class Resonator4fBank
+ 			{
+ 				v4f_t *a = state + i*Item; 
+ 
+-				register uint h2 = h1 ^ 1;
++				uint h2 = h1 ^ 1;
+ 				x = x * a[0]; /* x * a[0] */
+ 				
+ 				x += a[1] * a[3+h1]; /* b[1] * y[h1] */
+@@ -605,8 +605,8 @@ class Resonator4fBank
+ 
+ 				v4f_t s = (v4f_t) {x,x,x,x};
+ 
+-				register uint h2 = h1 ^ 1;
+-				register v4f_t r = s * a[0]; /* x * a[0] */
++				uint h2 = h1 ^ 1;
++				v4f_t r = s * a[0]; /* x * a[0] */
+ 				
+ 				r += a[1] * a[3+h1]; /* b[1] * y[h1] */
+ 				r += a[2] * a[3+h2]; /* b[2] * y[h2] */
+@@ -676,9 +676,9 @@ class MREqv4
+ 			{
+ 				v4f_t *a = data(), *s = a + 1;
+ 
+-				s[0] = -v4f_map<cosf>(v4f_2pi*f);
++				s[0] = -v4f_map_cosf(v4f_2pi*f);
+         a[0] = v4f_half*(gain - v4f_1);
+-				bw *= v4f(7,7,7,7)*f / v4f_map<sqrtf>(gain);
++				bw *= v4f(7,7,7,7)*f / v4f_map_sqrtf(gain);
+ 				s[1] = (v4f_1 - bw) / (v4f_1 + bw);
+ 			}
+ 
+-- 
+2.53.0
+

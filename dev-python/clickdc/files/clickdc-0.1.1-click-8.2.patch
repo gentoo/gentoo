@@ -1,0 +1,15 @@
+More complicated patch
+https://github.com/Kamilcuk/clickdc/pull/3
+
+--- a/tests/test.py
++++ b/tests/test.py
+@@ -11,7 +11,7 @@ import clickdc
+ 
+ 
+ def invoke(*args, **kwargs):
+-    return CliRunner(mix_stderr=True).invoke(*args, **kwargs)
++    return CliRunner().invoke(*args, **kwargs)
+ 
+ 
+ def run(arg_class, input: str, output: Any = None, fail: int = 0, toargs: bool = False):
+

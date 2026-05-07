@@ -20,7 +20,7 @@
   </longdescription>
   <stabilize-allarches />
   <upstream>
-    <bugs-to>https://github.com/emacscollective/no-littering/</bugs-to>
+    <bugs-to>https://github.com/emacscollective/no-littering/issues/</bugs-to>
     <remote-id type="github">emacscollective/no-littering</remote-id>
   </upstream>
 </pkgmetadata>

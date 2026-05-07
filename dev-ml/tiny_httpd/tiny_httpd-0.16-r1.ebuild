@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -41,7 +41,7 @@ PATCHES=( "${FILESDIR}"/${P}-noseq.patch )
 src_compile() {
 	local pkgs="tiny_httpd"
 	use camlzip && pkgs="${pkgs},tiny_httpd_camlzip"
-	dune build -p "${pkgs}" -j $(makeopts_jobs) || die
+	dune build -p "${pkgs}" -j $(get_makeopts_jobs) || die
 }
 
 src_install() {

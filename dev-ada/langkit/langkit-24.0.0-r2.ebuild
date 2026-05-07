@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -53,7 +53,7 @@ python_prepare_all() {
 python_compile_all() {
 	build () {
 		rm -f langkit/support/obj/dev/*lexch
-		gprbuild -j$(makeopts_jobs) -p -v \
+		gprbuild -j$(get_makeopts_jobs) -p -v \
 			-XLIBRARY_TYPE=$1 -P langkit/support/langkit_support.gpr -XBUILD_MODE=dev \
 			-cargs:Ada ${ADAFLAGS} -cargs:C ${CFLAGS} || die "gprbuild failed"
 	}
@@ -66,7 +66,7 @@ python_compile_all() {
 	if use static-pic; then
 		build static-pic
 	fi
-	gprbuild -j$(makeopts_jobs) -p -v \
+	gprbuild -j$(get_makeopts_jobs) -p -v \
 		-P sigsegv_handler/langkit_sigsegv_handler.gpr -XBUILD_MODE=dev \
 		-cargs:Ada ${ADAFLAGS} -cargs:C ${CFLAGS} || die "gprbuild failed"
 }
@@ -80,7 +80,7 @@ python_test_all() {
 		--disable-gdb \
 		--disable-tear-up-builds \
 		--restricted-env \
-		--jobs $(makeopts_jobs) \
+		--jobs $(get_makeopts_jobs) \
 		|& tee langkit.testOut
 	grep -qw FAIL langkit.testOut && die
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,14 +19,21 @@ RDEPEND="x11-libs/vte:2.91
 	>=dev-libs/glib-2.8.4:2
 	dev-libs/confuse:=
 	gnome-base/libglade
-	x11-libs/gtk+:3
-	x11-libs/libX11"
+	x11-libs/gtk+:3[X]
+	x11-libs/libX11
+"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
 	sys-devel/gettext"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.0.0-fix_bashism.patch
+)
+
 src_prepare() {
 	default
-	append-cflags -std=c99
+	# 972749 expose popen()
+	# see also https://github.com/lanoxx/tilda/issues/522
+	append-cppflags -D_POSIX_C_SOURCE
 	eautoreconf
 }

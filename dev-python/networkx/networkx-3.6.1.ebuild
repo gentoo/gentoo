@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_VERIFY_REPO=https://github.com/networkx/networkx
-PYTHON_FULLY_TESTED=( python3_{11..14} )
+PYTHON_FULLY_TESTED=( python3_{12..14} )
 PYTHON_COMPAT=( "${PYTHON_FULLY_TESTED[@]}" )
 
 inherit distutils-r1 optfeature pypi virtualx
@@ -19,7 +19,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~sparc ~x86 ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~loong ~ppc64 ~riscv ~sparc x86 ~x64-macos"
 
 BDEPEND="
 	test? (

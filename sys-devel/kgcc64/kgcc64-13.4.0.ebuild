@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,6 @@ case ${CHOST} in
 esac
 export CTARGET
 TOOLCHAIN_ALLOWED_LANGS="c"
-TOOLCHAIN_PATCH_DEV="sam"
 PATCH_GCC_VER="13.3.0"
 MUSL_GCC_VER="13.2.0"
 PATCH_VER="5"

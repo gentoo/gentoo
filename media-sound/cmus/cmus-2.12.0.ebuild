@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -70,6 +70,8 @@ DOCS=( AUTHORS README.md )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.9.1-atomic.patch"
+	"${FILESDIR}"/${P}-fix_check_mp4v2.patch
+	"${FILESDIR}"/${P}-fix_ffmpeg8.patch
 )
 
 src_configure() {
@@ -120,17 +122,18 @@ src_configure() {
 		myconf+=( CONFIG_MPRIS=n )
 	fi
 
+	tc-export_build_env BUILD_CC
+	tc-export CC PKG_CONFIG
 	./configure prefix="${EPREFIX}"/usr "${myconf[@]}" \
 		exampledir="${EPREFIX}"/usr/share/doc/${PF}/examples \
-		libdir="${EPREFIX}"/usr/$(get_libdir) DEBUG=${debuglevel} || die
+		libdir="${EPREFIX}"/usr/$(get_libdir) DEBUG=${debuglevel} \
+		LD="${CC}" \
+		HOSTCC="${BUILD_CC}" HOSTLD="${BUILD_CC}" \
+		HOST_CFLAGS="${BUILD_CFLAGS}" HOST_LDFLAGS="${BUILD_LDFLAGS}" || die
 }
 
 src_compile() {
-	tc-export_build_env BUILD_CC
-	emake V=2 \
-		CC="$(tc-getCC)" LD="$(tc-getCC)" \
-		HOSTCC="${BUILD_CC}" HOSTLD="${BUILD_CC}" \
-		HOST_CFLAGS="${BUILD_CFLAGS}" HOST_LDFLAGS="${BUILD_LDFLAGS}"
+	emake V=2
 }
 
 src_install() {

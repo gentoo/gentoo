@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ JAVA_TESTING_FRAMEWORKS="junit-4"
 
 inherit java-pkg-2 java-pkg-simple
 
-DESCRIPTION="A reimplementation of a subset of the Apache Velocity templating system."
+DESCRIPTION="A reimplementation of a subset of the Apache Velocity templating system"
 HOMEPAGE="https://github.com/google/escapevelocity"
 SRC_URI="https://github.com/google/${PN}/archive/${P}.tar.gz"
 S="${WORKDIR}/${PN}-${P}"
