@@ -4,7 +4,7 @@
 EAPI=8
 
 MATE_LA_PUNT="yes"
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit mate python-any-r1 virtualx
 
 DESCRIPTION="Atril document viewer for MATE"
