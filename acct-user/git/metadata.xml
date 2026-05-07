@@ -11,5 +11,7 @@
 		<flag name="gitolite">Set home directory for git hosting
 			via <pkg>dev-vcs/gitolite</pkg>
 			or <pkg>dev-vcs/gitolite-gentoo</pkg>.</flag>
+		<flag name="forgejo">Set home directory for git hosting
+			via www-apps/forgejo.</flag>
 	</use>
 </pkgmetadata>
