@@ -160,7 +160,7 @@ TEST_BACKENDS="
 		boost? ( dev-libs/boost )
 		cholmod? ( sci-libs/cholmod:=[cuda?] )
 		fftw? ( sci-libs/fftw[openmp?] )
-		klu? ( sci-libs/klu )
+		klu? ( sci-libs/klu:= )
 		metis? (
 			sci-libs/metis[openmp?]
 			sci-libs/pastix[metis]
@@ -184,8 +184,8 @@ TEST_BACKENDS="
 			ppc64? ( dev-cpp/sparsehash )
 			x86?   ( dev-cpp/sparsehash )
 		)
-		spqr? ( sci-libs/spqr )
-		superlu? ( sci-libs/superlu )
+		spqr? ( sci-libs/spqr:= )
+		superlu? ( sci-libs/superlu:= )
 		umfpack? ( sci-libs/umfpack:= )
 "
 
