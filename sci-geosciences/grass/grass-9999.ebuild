@@ -28,7 +28,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/OSGeo/grass.git"
 else
 	MY_P="${P/_rc/RC}"
-	SRC_URI="https://grass.osgeo.org/${MY_PM}/source/${MY_P}.tar.gz"
+	SRC_URI="https://github.com/OSGeo/grass/releases/download/${PV}/${P}.tar.gz"
 	if [[ ${PV} != *_rc* ]] ; then
 		KEYWORDS="~amd64 ~ppc ~x86"
 	fi
