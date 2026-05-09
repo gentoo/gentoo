@@ -32,6 +32,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.1-libdir-macro.patch
 	"${FILESDIR}"/${PN}-1.4-arm64-neon.patch
+	"${FILESDIR}"/${PN}-1.6.1-test_unit_mathops-fix.patch # drop next version
 )
 
 multilib_src_configure() {
