@@ -1,0 +1,25 @@
+From f4a38855302415f86234394f335b6c38aaa67496 Mon Sep 17 00:00:00 2001
+From: sin-ack <sin-ack@protonmail.com>
+Date: Mon, 23 Mar 2026 02:15:40 +0100
+Subject: [PATCH] CMake: Update cmake_minimum_required to 3.10
+
+Bug: https://bugs.gentoo.org/965435
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 15a0e73..85fb5e3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -5,7 +5,7 @@
+
+
+ # Cmake Project setup
+-cmake_minimum_required(VERSION 3.8)
++cmake_minimum_required(VERSION 3.10)
+ set_property(GLOBAL PROPERTY GLOBAL_DEPENDS_NO_CYCLES ON)
+
+ project("edencommon" LANGUAGES CXX C)
+--
+2.52.0

@@ -1,0 +1,25 @@
+From 735d32d1b6196f7baeab952c3ef73166134664a2 Mon Sep 17 00:00:00 2001
+From: sin-ack <sin-ack@protonmail.com>
+Date: Mon, 23 Mar 2026 02:07:43 +0100
+Subject: [PATCH] CMake: Update cmake_minimum_required to 3.10
+
+Bug: https://bugs.gentoo.org/965436
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d68f7aa..1de5191 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -12,7 +12,7 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+
+-cmake_minimum_required(VERSION 3.8)
++cmake_minimum_required(VERSION 3.10)
+
+ project("fb303" LANGUAGES CXX C)
+ if (NOT DEFINED PACKAGE_VERSION)
+--
+2.52.0
