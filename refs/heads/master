@@ -1,18 +1,14 @@
 certificate version 0.1
-pusher Louis Sautier <sbraz@gentoo.org> 1778298622 +0200
-pushee git+ssh://git.gentoo.org/repo/gentoo.git
-nonce 1778298622-2bb3766563c01fe790f80ed5e17a13d934444edb
+pusher DF84256885283521 1778299526 +0200
+pushee git.gentoo.org:repo/gentoo.git
+nonce 1778299525-00e7b6bd9953fa2dc024ac6d80645e2922b738c3
 
-6a0a3f177a6278be5d650b909a3b25ccecc70109 2e7d30ca97c7b9aee2b982a9c1e3ae21a54069c5 refs/heads/master
+2e7d30ca97c7b9aee2b982a9c1e3ae21a54069c5 c02870a21fcf3698df5517a5a734abd022ca0c19 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iQFhBAABCABLFiEEg0AnWt6dnGUFDBD1p3dxazCuguMFAmn+rv4bFIAAAAAABAAO
-bWFudTIsMi41KzEuMTIsMiwyERxzYnJhekBnZW50b28ub3JnAAoJEKd3cWswroLj
-dZMH/16kvTYkL3rid9uiRRLltqa8r+tKk2T41V4SCCR4W9X170u2Mni+JvC6zQCX
-1mP+PoD5Sr3CCJI4ozIO9vCsBbOG52d1sUwVSb+Gz8zgWSRI3FjUq0KWHgQ81/sG
-r4shlbsEpfMg900ZPVuTablyFmrgK4G7SHA8YUlsEc4bXiCHRuF8yNl1JoL/9ucL
-vzaTibvSOu2eCCgn7nR8yO3QtYUCW77Qbp9awJ62rhXeFV1NfRDfeF9RilPnolqY
-QGllrrTD/+L3BuQvxC9PUT6iPqcgXjSkua+yV8TiBU1h8aQmHyinH5Cn7JRBi2jE
-hxvVP7f3eJuqYkcgnp/fbYqSf+U=
-=Lnh/
+iJEEABYKADkWIQQcFD0bEK7NPNmWHtiOMjR69AVa6AUCaf6yhhsUgAAAAAAEAA5t
+YW51MiwyLjUrMS4xMiwyLDIACgkQjjI0evQFWujU0QEAjvtXEjWo4p/8DduD0Wrz
+1sBTM1GjA3z9hgwrebZTDkEA/3VqDcxtTuh5pO74ZozCRWQCB+4tyiu4bV4Ctg3f
+DWkL
+=AWJp
 -----END PGP SIGNATURE-----
