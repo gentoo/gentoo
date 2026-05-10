@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LUA_COMPAT=( lua5-{1..5} luajit )
+LUA_COMPAT=( lua5-{1..4} luajit )
 PYTHON_COMPAT=( python3_{10..13} )
 
 inherit lua-single meson mono-env python-single-r1 xdg
