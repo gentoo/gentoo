@@ -35,6 +35,7 @@ _LUA_ALL_IMPLS=(
 	lua5-1
 	lua5-3
 	lua5-4
+	lua5-5
 )
 readonly _LUA_ALL_IMPLS
 
