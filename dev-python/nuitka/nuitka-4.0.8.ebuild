@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_PN=${PN^}
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 flag-o-matic optfeature pypi
 
@@ -36,6 +36,7 @@ distutils-r1_src_prepare() {
 	# remove vendored version of SCons that is Python2 only
 	# this should be removed when upstream removes support for Python2
 	rm -vR "nuitka/build/inline_copy/lib/scons-2.3.2/SCons" || die
+	eapply "${FILESDIR}/${P}-skip-py314-annotation-test.patch"
 	eapply_user
 }
 

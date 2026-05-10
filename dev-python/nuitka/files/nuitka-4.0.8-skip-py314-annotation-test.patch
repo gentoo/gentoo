@@ -1,0 +1,18 @@
+--- a/tests/basics/run_all.py
++++ b/tests/basics/run_all.py
+@@ -83,6 +83,15 @@ def main():
+                     )
+                     continue
+
++            if python_version >= (3, 14):
++                if filename == "FunctionsTest32.py":
++                    reportSkip(
++                        "PEP 649 lazy annotations (Python 3.14) not yet supported by Nuitka",
++                        ".",
++                        filename,
++                    )
++                    continue
++
+             if "Wip" in filename:
+                 reportSkip("Test not for automatic execution.", ".", filename)
+                 continue
