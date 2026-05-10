@@ -6,4 +6,5 @@
 lua5-1 - Build with Lua 5.1
 lua5-3 - Build with Lua 5.3
 lua5-4 - Build with Lua 5.4
+lua5-5 - Build with Lua 5.5
 luajit - Build with LuaJIT
