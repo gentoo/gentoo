@@ -508,7 +508,7 @@ zig_live_src_unpack() {
 		# Redirect hardcoded cache subfolder to same one
 		# as src_unpack and src_prepare use.
 		mkdir -p "${WORKDIR}/zig-pkg/" || die
-		ln -s "${WORKDIR}/zig-pkg" "zig-pkg" || die
+		ln -s "${WORKDIR}/zig-pkg" "${S}/zig-pkg" || die
 	fi
 
 	einfo "ZBS: live-fetching with:"
