@@ -12,14 +12,22 @@ SRC_URI="https://github.com/containers/${PN}/releases/download/v${PV}/${P}.tar.x
 LICENSE="LGPL-2+"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
-IUSE="selinux suid"
+IUSE="selinux suid static"
 
 RDEPEND="
-	sys-libs/libseccomp
-	sys-libs/libcap
-	selinux? ( >=sys-libs/libselinux-2.1.9 )
+	!static? (
+		sys-libs/libseccomp
+		sys-libs/libcap
+		selinux? ( >=sys-libs/libselinux-2.1.9 )
+	)
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	static? (
+		sys-libs/libseccomp[static-libs]
+		sys-libs/libcap[static-libs]
+		selinux? ( >=sys-libs/libselinux-2.1.9[static-libs] )
+	)
+"
 BDEPEND="
 	app-text/docbook-xml-dtd:4.3
 	app-text/docbook-xsl-stylesheets
@@ -51,6 +59,7 @@ src_configure() {
 		-Dsupport_setuid=$(usex suid true false)
 		-Dzsh_completion=enabled
 		$(meson_feature selinux)
+		$(meson_use static prefer_static)
 	)
 
 	meson_src_configure
