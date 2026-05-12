@@ -100,10 +100,6 @@ media-libs/imlib2 y4m
 app-editors/emacs jit
 sys-devel/gcc jit
 
-# Cristian Othón Martínez Vera <cfuga@cfuga.mx> (2025-04-09)
-# dev-db/tinycdb is not keyworded here
-mail-mta/sendmail tinycdb
-
 # NRK <nrk@disroot.org> (2025-03-17)
 # media-libs/libyuv is not keyworded
 media-libs/libavif libyuv
