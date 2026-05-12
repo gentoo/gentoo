@@ -1,0 +1,68 @@
+From 4c1b3deac5d80f12fc7ba3227b49ef5b1a7242c4 Mon Sep 17 00:00:00 2001
+Message-ID: <4c1b3deac5d80f12fc7ba3227b49ef5b1a7242c4.1778619463.git.ben.knoble+github@gmail.com>
+From: "D. Ben Knoble" <ben.knoble+github@gmail.com>
+Date: Tue, 12 May 2026 16:46:38 -0400
+Subject: [PATCH] meson.build: allow to disable fsmonitor backend for macOS
+
+Gentoo Prefix toolchain and setup does not enable CoreServices Framework
+by default, so simply allow to disable the fsmonitor backend
+
+Best-viewed-with: --ignore-all-space
+Signed-off-by: Fabian Groffen <grobian@gentoo.org>
+Signed-off-by: D. Ben Knoble <ben.knoble+github@gmail.com>
+---
+ meson.build       | 24 +++++++++++++-----------
+ meson_options.txt |  2 ++
+ 2 files changed, 15 insertions(+), 11 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 38dddd67ab..1c369c7157 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1353,17 +1353,19 @@ endif
+ 
+ fsmonitor_backend = ''
+ fsmonitor_os = ''
+-if host_machine.system() == 'windows'
+-  fsmonitor_backend = 'win32'
+-  fsmonitor_os = 'win32'
+-elif host_machine.system() == 'linux' and threads.found() and compiler.has_header('linux/magic.h')
+-  fsmonitor_backend = 'linux'
+-  fsmonitor_os = 'unix'
+-  libgit_c_args += '-DHAVE_LINUX_MAGIC_H'
+-elif host_machine.system() == 'darwin'
+-  fsmonitor_backend = 'darwin'
+-  fsmonitor_os = 'unix'
+-  libgit_dependencies += dependency('CoreServices')
++if get_option('fsmonitor')
++  if host_machine.system() == 'windows'
++    fsmonitor_backend = 'win32'
++    fsmonitor_os = 'win32'
++  elif host_machine.system() == 'linux' and threads.found() and compiler.has_header('linux/magic.h')
++    fsmonitor_backend = 'linux'
++    fsmonitor_os = 'unix'
++    libgit_c_args += '-DHAVE_LINUX_MAGIC_H'
++  elif host_machine.system() == 'darwin'
++    fsmonitor_backend = 'darwin'
++    fsmonitor_os = 'unix'
++    libgit_dependencies += dependency('CoreServices')
++  endif
+ endif
+ if fsmonitor_backend != ''
+   libgit_c_args += '-DHAVE_FSMONITOR_DAEMON_BACKEND'
+diff --git a/meson_options.txt b/meson_options.txt
+index 80a8025f20..9c0e391254 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -81,6 +81,8 @@ option('rust', type: 'feature', value: 'enabled',
+   description: 'Enable building with Rust.')
+ option('macos_use_homebrew_gettext', type: 'boolean', value: true,
+   description: 'Use gettext from Homebrew instead of the slightly-broken system-provided one.')
++option('fsmonitor', type: 'boolean', value: true,
++  description: 'Build fsmonitor backend on supported platforms.')
+ 
+ # gitweb configuration.
+ option('gitweb_config', type: 'string', value: 'gitweb_config.perl')
+-- 
+2.54.0.564.ge3ee0a11b5.dirty
+

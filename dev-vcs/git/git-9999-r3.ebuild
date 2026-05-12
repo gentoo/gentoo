@@ -144,7 +144,7 @@ REQUIRED_USE="
 RESTRICT="!test? ( test )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.48.1-macos-no-fsmonitor.patch
+	"${FILESDIR}"/${PN}-next-0001-macos-no-fsmonitor.patch
 
 	# This patch isn't merged upstream but is kept in the ebuild by
 	# demand from developers. It's opt-in (needs a config option)
