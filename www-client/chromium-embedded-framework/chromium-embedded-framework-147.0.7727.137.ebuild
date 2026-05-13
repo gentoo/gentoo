@@ -55,6 +55,9 @@ HOMEPAGE="https://www.chromium.org/"
 PPC64_HASH="a85b64f07b489b8c6fdb13ecf79c16c56c560fc6"
 PATCH_V="${PV%%\.*}-4"
 COPIUM_COMMIT="fe1caafa06f27542c18a881348f78e984e2d9fe2"
+DEPOT_TOOLS_COMMIT="c919a6c50df862da7ca4e17130f25a4add6132d4"
+CEF_COMMIT="76d244268947a52f43755983ef83766a353a1335"
+CEF_BRANCH=$(ver_cut 3)
 SRC_URI="https://github.com/chromium-linux-tarballs/chromium-tarballs/releases/download/${PV}/chromium-${PV}-linux.tar.xz
 	https://deps.gentoo.zip/www-client/chromium/rollup-wasm-node-${ROLLUP_VER}.tgz
 	https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${PATCH_V}/chromium-patches-${PATCH_V}.tar.bz2
@@ -73,7 +76,12 @@ SRC_URI="https://github.com/chromium-linux-tarballs/chromium-tarballs/releases/d
 		https://gitlab.raptorengineering.com/raptor-engineering-public/chromium/openpower-patches/-/archive/${PPC64_HASH}/openpower-patches-${PPC64_HASH}.tar.bz2 -> chromium-openpower-${PPC64_HASH:0:10}.tar.bz2
 	)
 	pgo? ( https://github.com/elkablo/chromium-profiler/releases/download/v0.2/chromium-profiler-0.2.tar )
+	https://chromium.googlesource.com/chromium/tools/depot_tools/+archive/${DEPOT_TOOLS_COMMIT}.tar.gz -> chromium-depot-tools-${DEPOT_TOOLS_COMMIT:0:10}.tar.gz
+	https://github.com/chromiumembedded/cef/archive/${CEF_COMMIT}.tar.gz
+		-> cef-${CEF_COMMIT:0:10}.tar.gz
 	https://raw.githubusercontent.com/chromiumembedded/cef/master/tools/automate/automate-git.py"
+
+S="${WORKDIR}"/chromium-${PV}
 
 # https://gitweb.gentoo.org/proj/chromium-tools.git/tree/get-chromium-licences.py @ 145.0.7632.76
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 Base64 Boost-1.0 CC-BY-3.0 CC-BY-4.0 Clear-BSD FFT2D FTL"
@@ -92,8 +100,7 @@ IUSE="+X ${IUSE_SYSTEM_LIBS} bindist bundled-toolchain custom-cflags cups debug 
 IUSE+=" +proprietary-codecs pulseaudio qt6 +rar +screencast selinux test +vaapi +wayland +widevine cpu_flags_ppc_vsx3"
 RESTRICT="
 	!bindist? ( bindist )
-	!test? ( test )
-	arm64? ( test )" # Tests require CFI, which requires LTO, which is broken on arm64 with LLVM 21.
+	test" # Test crashes
 
 REQUIRED_USE="
 	!headless? ( || ( X wayland ) )
@@ -267,9 +274,7 @@ them in Chromium, then add --password-store=basic to CHROMIUM_FLAGS
 in /etc/chromium/default.
 "
 
-CEF_BRANCH=$(ver_cut 3)
 OUT_CONFIG=Release_GN_x64
-S="${WORKDIR}"/chromium-${PV}
 
 python_check_deps() {
 	python_has_version "dev-python/setuptools[${PYTHON_USEDEP}]"
@@ -438,18 +443,18 @@ src_unpack() {
 	# CEF-specific recipe
 	#
 
-	mkdir -p cef_build/{automate,sources}
-	mkdir -p cef_build/sources/{chromium,cef}
+	mkdir -p cef_build/{automate,depot_tools,sources}
+	mkdir -p cef_build/sources/chromium
 
-	EGIT_REPO_URI="https://chromium.googlesource.com/chromium/tools/depot_tools"
-	EGIT_CHECKOUT_DIR="${WORKDIR}/cef_build/depot_tools"
-	git-r3_src_unpack
+	pushd cef_build/depot_tools
+	unpack chromium-depot-tools-${DEPOT_TOOLS_COMMIT:0:10}.tar.gz
+	popd
 	export "PATH=$PATH:${WORKDIR}/cef_build/depot_tools"
 
-	EGIT_REPO_URI="https://github.com/chromiumembedded/cef.git"
-	EGIT_BRANCH="${CEF_BRANCH}"
-	EGIT_CHECKOUT_DIR="${WORKDIR}/cef_build/sources/cef"
-	git-r3_src_unpack
+	pushd cef_build/sources
+	unpack cef-${CEF_COMMIT:0:10}.tar.gz
+	mv cef-${CEF_COMMIT} cef
+	popd
 
 	cp "${DISTDIR}"/automate-git.py cef_build/automate
 	cp "${FILESDIR}"/compare_gn_args.py cef_build/sources/cef/tools
@@ -1068,6 +1073,7 @@ src_prepare() {
 
 	ln -s "${S}" "${WORKDIR}"/cef_build/sources/chromium/src
 	mkdir "${WORKDIR}"/cef_build/sources/chromium/src/.git
+	mkdir "${WORKDIR}"/cef_build/sources/cef/.git
 
 	# custom patches for Gentoo
 	pushd "${WORKDIR}"/cef_build/sources/cef
@@ -1082,7 +1088,7 @@ src_prepare() {
 	popd
 
 	pushd "${WORKDIR}"/cef_build/sources
-	$EPYTHON ../automate/automate-git.py \
+	${EPYTHON} ../automate/automate-git.py \
 		--download-dir=$(pwd) \
 		--depot-tools-dir=$(realpath $(pwd)/../depot_tools) \
 		--no-distrib \
@@ -1094,7 +1100,7 @@ src_prepare() {
 
 	pushd "${S}"/cef
 	# apply CEF-upstream patches for chromium sources
-	$EPYTHON ./tools/gclient_hook.py prepare
+	${EPYTHON} ./tools/gclient_hook.py prepare
 	popd
 }
 
@@ -1441,7 +1447,7 @@ chromium_configure() {
 	einfo "Configuring CEF ..."
 
 	unset GN_DEFINES
-	local warn=$($EPYTHON ./tools/compare_gn_args.py "${myconf_gn[*]}${EXTRA_GN:+ ${EXTRA_GN}}")
+	local warn=$(${EPYTHON} ./tools/compare_gn_args.py "${myconf_gn[*]}${EXTRA_GN:+ ${EXTRA_GN}}")
 	if [[ -n "$warn" ]] ; then
 		ewarn "GN_DEFINES differences between ebuild definitions and CEF defaults:"
 		ewarn "$warn"
@@ -1451,7 +1457,7 @@ chromium_configure() {
 	# https://github.com/chromiumembedded/cef/issues/4170
 	export GN_DEFINES="${myconf_gn[*]}${EXTRA_GN:+ ${EXTRA_GN}}"
 	export GN_OUT_CONFIGS="${OUT_CONFIG}"
-	$EPYTHON ./tools/gclient_hook.py configure || die "Failed to configure CEF"
+	${EPYTHON} ./tools/gclient_hook.py configure || die "Failed to configure CEF"
 	popd
 }
 
@@ -1563,7 +1569,7 @@ src_compile() {
 	fi
 
 	rmdir "${S}"/.git # so that make_distrib.py finds chromium version
-	$EPYTHON "${S}"/cef/tools/make_distrib.py \
+	${EPYTHON} "${S}"/cef/tools/make_distrib.py \
 		$(use doc || echo "--no-docs") \
 		--output-dir "${T}" --distrib-subdir "distrib" \
 		--ninja-build --x64-build --allow-partial --no-archive
