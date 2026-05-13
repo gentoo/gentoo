@@ -187,6 +187,7 @@ src_configure() {
 		$(use_enable libdovi)
 		$(use_enable numa)
 		$(use_enable nvenc)
+		$(use_enable nvenc nvdec)
 		$(use_enable x265)
 		$(use_enable qsv)
 	)
