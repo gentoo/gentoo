@@ -1638,7 +1638,7 @@ src_install() {
 	doins -r "${DISTRIB_DIR}"/include
 	doins -r "${DISTRIB_DIR}"/libcef_dll
 	doins "${DISTRIB_DIR}"/CMakeLists.txt
-	dodoc "${DISTRIB_DIR}"/README.txt # required by jcef
+	doins "${DISTRIB_DIR}"/README.txt # required by jcef
 
 	dodoc "${DISTRIB_DIR}"/CREDITS.html
 	dodoc "${DISTRIB_DIR}"/LICENSE.txt
