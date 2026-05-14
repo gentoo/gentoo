@@ -3,6 +3,7 @@
 
 # Thibaud CANALE <thican@thican.net> (2026-05-17)
 # Tests require dev-python/respx
+app-crypt/certbot test
 dev-python/cloudflare test
 
 # Alfred Wingate <parona@protonmail.com> (2026-05-13)

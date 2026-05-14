@@ -37,7 +37,7 @@ CERTBOT_BASE=(acme certbot)
 # List of "subpackages" from tools/_release.sh (without acme which is already above)
 CERTBOT_MODULES_EXTRA=(
 	apache
-	#dns-cloudflare # Requires missing packages, already in GURU
+	dns-cloudflare
 	#dns-digitalocean # Requires missing packages, already in GURU
 	dns-dnsimple
 	dns-dnsmadeeasy
@@ -81,6 +81,9 @@ RDEPEND="
 	certbot-apache? (
 		dev-python/python-augeas[${PYTHON_USEDEP}]
 	)
+	certbot-dns-cloudflare? (
+		>=dev-python/cloudflare-4.0:0[${PYTHON_USEDEP}]
+	)
 	certbot-dns-dnsimple? (
 		>=dev-python/dns-lexicon-3.14.1[${PYTHON_USEDEP}]
 	)
@@ -122,14 +125,7 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-certbot )
 "
 # RDEPEND+="
-#	!<app-crypt/certbot-dns-cloudflare-3.2.0-r100
-#
 # 	>=dev-python/requests-toolbelt-0.3.0[${PYTHON_USEDEP}] # @TODO is still necessary?
-# 	certbot-dns-cloudflare? (
-# 		# Available in GURU
-# 		>=dev-python/cloudflare-2.19[${PYTHON_USEDEP}]
-# 		<dev-python/cloudflare-2.20[${PYTHON_USEDEP}]
-# 	)
 # 	certbot-dns-digitalocean? (
 # 		# Available in GURU
 # 		>=dev-python/digitalocean-1.15.0[${PYTHON_USEDEP}]
