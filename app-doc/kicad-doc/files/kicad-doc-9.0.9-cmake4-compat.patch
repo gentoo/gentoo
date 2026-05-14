@@ -1,0 +1,15 @@
+From: Huang Rui <vowstar@gmail.com>
+Date: Fri, 15 May 2026 00:00:00 +0800
+Subject: [PATCH] cmake: bump minimum required to 3.10 for cmake4 compat
+
+CMake 4 drops support for cmake_minimum_required < 3.10 and emits a
+QA warning today. Bump to 3.10 which is the next supported floor.
+
+Bug: https://bugs.gentoo.org/975078
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -9,3 +9,3 @@
+ # have available, but it's not guaranteed to work or be supported.
+-cmake_minimum_required( VERSION 3.5 )
++cmake_minimum_required( VERSION 3.10 )
+
