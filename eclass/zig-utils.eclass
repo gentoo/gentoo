@@ -76,20 +76,6 @@ inherit edo flag-o-matic linux-info
 #
 # For zig.eclass users: see documentation in zig.eclass
 # instead.
-if [[ ! ${ZIG_OPTIONAL} ]]; then
-	_ZIG_USEDEP=""
-	if [[ ${ZIG_NEEDS_LLVM} ]]; then
-		_ZIG_USEDEP="[llvm(+)]"
-	fi
-
-	# NOTE: zig-bin is always built with LLVM support, so no USE needed.
-	BDEPEND="
-		|| (
-			dev-lang/zig:${ZIG_SLOT}${_ZIG_USEDEP}
-			dev-lang/zig-bin:${ZIG_SLOT}
-		)
-	"
-fi
 
 # @ECLASS_VARIABLE: ZIG_TARGET
 # @DEFAULT_UNSET
@@ -201,6 +187,43 @@ fi
 # @CODE
 # 0.13.0
 # @CODE
+
+# @FUNCTION: _zig_utils_set_globals
+# @INTERNAL
+# @DESCRIPTION:
+# Check correctness of ZIG_SLOT variable value.
+# Update BDEPEND if ZIG_OPTIONAL is not set.
+_zig_utils_set_globals() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	[[ -n "${ZIG_SLOT}" ]] || die "ZIG_SLOT must be set"
+
+	if [[ ${ZIG_SLOT@a} =~ [aA] ]]; then
+		die "ZIG_SLOT must be a string, not an array"
+	fi
+
+	if ver_test "${ZIG_SLOT}" -lt "0.13"; then
+		die "ZIG_SLOT must be >= 0.13, found ${ZIG_SLOT}"
+	fi
+
+	if [[ ! ${ZIG_OPTIONAL} ]]; then
+		_ZIG_USEDEP=""
+		if [[ ${ZIG_NEEDS_LLVM} ]]; then
+			_ZIG_USEDEP="[llvm(+)]"
+		fi
+
+		# NOTE: zig-bin is always built with LLVM support, so no USE needed.
+		BDEPEND="
+			|| (
+				dev-lang/zig:${ZIG_SLOT}${_ZIG_USEDEP}
+				dev-lang/zig-bin:${ZIG_SLOT}
+			)
+		"
+	fi
+}
+
+_zig_utils_set_globals
+unset -f _zig_utils_set_globals
 
 # @FUNCTION: _get-c-option
 # @INTERNAL
@@ -483,11 +506,6 @@ zig-utils_c_env_to_zig_cpu() {
 zig-utils_find_installation() {
 	# Adapted from https://github.com/gentoo/gentoo/pull/28986
 	# Many thanks to Florian Schmaus (Flowdalic)!
-
-	[[ -n "${ZIG_SLOT}" ]] || die "${FUNCNAME[0]}: ZIG_SLOT must be set"
-	if ver_test "${ZIG_SLOT}" -lt "0.13"; then
-		die "${ECLASS}: ZIG_SLOT must be >= 0.13, found ${ZIG_SLOT}"
-	fi
 
 	einfo "Searching Zig ${ZIG_SLOT}..."
 
