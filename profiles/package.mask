@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mario Haustein <mario.haustein@hrz.tu-chemnitz.de> (2026-05-14)
+# >=sci-astronomy/siril-1.4 downloads it's own copy of siril into the users
+# home directory. You don't need this package anymore.
+# Removal on 2026-06-13.
+sci-astronomy/sirilic
+
 # David Seifert <soap@gentoo.org> (2026-05-12)
 # dev-util/claude-code and dev-util/codex (guru) provide vastly more tokens
 # than relying on cursor as a broker. I don't see a future for cursor-agent.
