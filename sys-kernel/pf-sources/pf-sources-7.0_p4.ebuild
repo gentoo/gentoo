@@ -74,19 +74,15 @@ src_prepare() {
 			die "Failed to delete vanilla linux patches in src_prepare."
 	fi
 
+	# v7.0-pf4 source includes natalenko cherry-pick f8e23c169fe5
+	# ("net: skbuff: propagate shared-frag marker through frag-transfer
+	# helpers"). genpatches-7.0-9 ships the same fix as 1500_net-skbuff-
+	# prop-shared-frag-marker-through-pskb-copy.patch — drop the
+	# duplicate to avoid a same-content collision in src_prepare.
+	rm -f "${WORKDIR}"/1500_net-skbuff*.patch || die
+
 	# kernel-2_src_prepare doesn't apply PATCHES(). Chosen genpatches are also applied here.
 	eapply "${WORKDIR}"/*.patch
-
-	# Mainline ptrace hardening not yet in linux-7.0.y stable, not in
-	# v7.0-pf3 (natalenko backported it into fixes-7.1 on 2026-05-15
-	# but fixes-7.0 hasn't picked it up yet). Torvalds commit
-	# 31e62c2ebbfd (Qualys advisory) caches the user-dumpable bit at
-	# exit_mm() so ptrace_may_access() can still enforce dumpable for
-	# tasks past mm teardown. Genpatches-route doesn't work here: pf-sources
-	# deletes 10*linux*patch above, so K_GENPATCHES_VER bumps cannot
-	# pull in the linux-stable backport once it lands.
-	eapply "${FILESDIR}/pf-sources-7.0_p3-ptrace-dumpable.patch"
-
 	default
 }
 
