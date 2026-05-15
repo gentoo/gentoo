@@ -23,7 +23,7 @@ SLOT="0"
 IUSE="+html pdf"
 
 LANG_USE=" l10n_ca l10n_de l10n_en l10n_es l10n_fr l10n_id l10n_it l10n_ja l10n_nl l10n_pl l10n_ru l10n_zh"
-IUSE+=${LANG_USE}
+IUSE+=${LANG_USE/l10n_en/+l10n_en}
 REQUIRED_USE="|| ( html pdf ) ^^ ( ${LANG_USE} )"
 unset LANG_USE
 
@@ -42,6 +42,7 @@ BDEPEND="
 	)"
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-9.0.9-cmake4-compat.patch
 	"${FILESDIR}"/${PN}-10.0.0-pandoc-pdf-generator.patch
 )
 
