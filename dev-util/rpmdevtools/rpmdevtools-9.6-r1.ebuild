@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..14} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit python-single-r1
 
 DESCRIPTION="Collection of rpm packaging related utilities"
@@ -12,7 +12,7 @@ SRC_URI="https://releases.pagure.org/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="emacs"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
