@@ -153,10 +153,6 @@ dev-libs/mongo-c-driver test
 # net-libs/grpc not keyworded here
 app-admin/syslog-ng grpc
 
-# Nowa Ammerlaan <nowa@gentoo.org> (2024-01-12)
-# dracut is not keyworded here
-sys-kernel/installkernel dracut
-
 # Sam James <sam@gentoo.org> (2024-01-02)
 # dev-libs/capstone not keyworded here
 dev-lang/php capstone
