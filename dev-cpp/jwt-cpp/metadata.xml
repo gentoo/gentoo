@@ -18,6 +18,7 @@
     <remote-id type="github">Thalhammer/jwt-cpp</remote-id>
   </upstream>
   <use>
+    <flag name="jsoncons">Enable use of <pkg>dev-cpp/jsoncons</pkg></flag>
     <flag name="picojson">Enable use of <pkg>dev-cpp/picojson</pkg></flag>
   </use>
 </pkgmetadata>
