@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Thibaud CANALE <thican@thican.net> (2026-05-17)
+# Tests require dev-python/trio
+dev-python/httpx-aiohttp test
+
 # Michał Górny <mgorny@gentoo.org> (2025-05-23)
 # dev-python/pytest-socket now requires dev-python/uv-build.
 dev-ada/e3-core test
