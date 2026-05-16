@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Thibaud CANALE <thican@thican.net> (2026-05-17)
+# Requires dev-python/pydantic
+dev-python/cloudflare
+
 # Michał Górny <mgorny@gentoo.org> (2025-06-02)
 # Require dev-python/pydantic.
 dev-python/syrupy

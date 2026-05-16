@@ -3,6 +3,7 @@
 
 # Thibaud CANALE <thican@thican.net> (2026-05-17)
 # Tests require dev-python/trio
+dev-python/cloudflare test
 dev-python/httpx-aiohttp test
 
 # Michał Górny <mgorny@gentoo.org> (2025-05-23)
