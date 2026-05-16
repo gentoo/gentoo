@@ -25,9 +25,6 @@
 	<flag name="lmdb">
 		Add LMDB backend support
 	</flag>
-	<flag name="pcre2">
-		Use <pkg>dev-libs/libpcre2</pkg> as regex implementation
-	</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">owasp-modsecurity/ModSecurity</remote-id>
