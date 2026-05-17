@@ -4,7 +4,7 @@
 EAPI=8
 
 QTMIN=6.0.0
-inherit cmake java-pkg-2 optfeature toolchain-funcs xdg
+inherit cmake flag-o-matic java-pkg-2 optfeature toolchain-funcs xdg
 
 DESCRIPTION="Custom, open source Minecraft launcher"
 HOMEPAGE="https://prismlauncher.org/ https://github.com/PrismLauncher/PrismLauncher"
@@ -82,6 +82,11 @@ src_prepare() {
 }
 
 src_configure() {
+	if tc-is-gcc && [[ $(gcc-major-version) -eq 16 ]]; then
+		append-cflags -Wno-error=sfinae-incomplete
+		append-cxxflags -Wno-error=sfinae-incomplete
+	fi
+
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_PREFIX="/usr"
 		# Resulting binary is named prismlauncher
