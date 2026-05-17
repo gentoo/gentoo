@@ -12,8 +12,10 @@ DESCRIPTION="JSON Web Token (JWT) implementation"
 SLOT="0"
 KEYWORDS="~amd64"
 
+# does not work with >dev-perl/Crypt-OpenSSL-RSA-0.350.0 (bug 974868)
 RDEPEND="
 		>=dev-lang/perl-5.08.1
+		~dev-perl/Crypt-OpenSSL-RSA-0.350.0
 		dev-perl/JSON
 		dev-perl/Module-Runtime
 "
