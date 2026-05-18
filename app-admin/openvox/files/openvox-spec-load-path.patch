@@ -1,0 +1,45 @@
+Prevent Puppet's autoloader from double-loading files from older installed
+openvox gem versions during testing.
+
+Puppet::Util::Autoload#search_directories returns:
+  gem_directories + $LOAD_PATH
+where gem_directories is built from Gem::Specification.stubs -- every
+installed gem's lib/, unconditionally. When a previous openvox version is
+installed, its lib/ ends up in search_directories alongside the source
+tree's lib/, so the autoloader (which uses Kernel.load, not require) loads
+the same file twice, causing constant redefinitions and:
+  ArgumentError: Indirection file_metadata is already defined
+
+Fix: filter openvox entries out of Gem::Specification.stubs before
+requiring puppet, so only the source tree's lib/ (already on $LOAD_PATH
+via rspec) is visible to the autoloader.
+
+Also pre-require 'scanf' so it is already in $LOADED_FEATURES before
+Puppet function definitions are eval'd.  The scanf function's definition
+block calls require 'scanf' inside a class_eval context; pre-loading it
+here ensures it resolves correctly regardless of the eval binding context.
+
+--- a/spec/spec_helper.rb
++++ b/spec/spec_helper.rb
+@@ -14,3 +14,20 @@ rescue LoadError
+ end
+ 
++# Puppet's autoloader searches lib/ dirs of ALL installed gems via
++# Gem::Specification.stubs. When upgrading, the previously-installed openvox
++# gem would otherwise be found alongside the source tree, causing Kernel.load
++# to define the same constants twice and produce "Indirection already defined".
++if defined?(Gem)
++  original_stubs = Gem::Specification.method(:stubs)
++  Gem::Specification.define_singleton_method(:stubs) do |*args|
++    original_stubs.call(*args).reject { |spec| spec.name == 'openvox' }
++  end
++end
++
++# Pre-load scanf so require 'scanf' inside Puppet function class_eval works.
++begin
++  require 'scanf'
++rescue LoadError
++end
++
+ require 'puppet'
+ 

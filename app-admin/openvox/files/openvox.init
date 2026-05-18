@@ -1,0 +1,26 @@
+#!/sbin/openrc-run
+
+PUPPET_PID_DIR="${PUPPET_PID_DIR:-/run/puppet}"
+PUPPET_LOG_DIR="${PUPPET_LOG_DIR:-/var/log/puppetlabs/puppet}"
+
+pidfile="${PUPPET_PID_DIR}/openvox-agent.pid"
+
+command="/usr/bin/puppet"
+command_args="agent --pidfile ${pidfile} --confdir /etc/puppetlabs/puppet ${PUPPET_EXTRA_OPTS}"
+extra_started_commands="reload"
+
+depend() {
+	need localmount
+	use dns logger netmount openvox-server
+}
+
+start_pre() {
+	checkpath --directory --owner puppet:puppet "${PUPPET_PID_DIR}"
+	checkpath --directory --owner puppet:puppet --mode 0750 "${PUPPET_LOG_DIR}"
+}
+
+reload() {
+	ebegin "Reloading ${RC_SVCNAME}"
+	start-stop-daemon --signal HUP --pidfile "${pidfile}"
+	eend $?
+}
