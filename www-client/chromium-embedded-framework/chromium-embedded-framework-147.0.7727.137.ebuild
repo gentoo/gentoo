@@ -47,7 +47,7 @@ RUST_NEEDS_LLVM="yes please"
 RUST_OPTIONAL="yes" # Not actually optional, but we don't need system Rust (or LLVM) with USE=bundled-toolchain
 RUST_REQ_USE="rustfmt" # Upstream run rustfmt on bindgen output, so we need it to be available.
 
-inherit check-reqs chromium-2 desktop flag-o-matic git-r3 llvm-r1 multiprocessing ninja-utils pax-utils
+inherit check-reqs chromium-2 desktop flag-o-matic llvm-r1 multiprocessing ninja-utils pax-utils
 inherit python-any-r1 readme.gentoo-r1 rust systemd toolchain-funcs virtualx xdg-utils
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
@@ -367,6 +367,10 @@ pkg_setup() {
 			einfo "USE=official selected and LTO not detected."
 			einfo "It is _highly_ recommended that LTO be enabled for performance reasons"
 			einfo "and to be consistent with the upstream \"official\" build optimisations."
+		fi
+
+		if [[ "$use_lto" == "false" ]] && use test; then
+			die "Tests require CFI which requires LTO"
 		fi
 
 		export use_lto
