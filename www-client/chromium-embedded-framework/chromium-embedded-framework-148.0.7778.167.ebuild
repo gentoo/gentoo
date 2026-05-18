@@ -25,7 +25,6 @@ EAPI=8
 
 GN_MIN_VER=0.2354
 # chromium-tools/get-chromium-toolchain-strings.py (or just use Chromicler)
-# Node for M145+ should be 24.12.0 but that's not packaged in Gentoo yet. See #969145
 TEST_FONT="a28b222b79851716f8358d2800157d9ffe117b3545031ae51f69b7e1e1b9a969"
 BUNDLED_CLANG_VER="llvmorg-23-init-5669-g8a0be0bc-4"
 BUNDLED_RUST_VER="6f54d591c3116ee7f8ce9321ddeca286810cc142-7"
@@ -47,7 +46,7 @@ RUST_NEEDS_LLVM="yes please"
 RUST_OPTIONAL="yes" # Not actually optional, but we don't need system Rust (or LLVM) with USE=bundled-toolchain
 RUST_REQ_USE="rustfmt" # Upstream run rustfmt on bindgen output, so we need it to be available.
 
-inherit check-reqs chromium-2 desktop flag-o-matic git-r3 llvm-r1 multiprocessing ninja-utils pax-utils
+inherit check-reqs chromium-2 desktop flag-o-matic llvm-r1 multiprocessing ninja-utils pax-utils
 inherit python-any-r1 readme.gentoo-r1 rust systemd toolchain-funcs virtualx xdg-utils
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
@@ -89,11 +88,11 @@ LICENSE+=" IJG ISC LGPL-2 LGPL-2.1 MIT MPL-1.1 MPL-2.0 Ms-PL PSF-2 SGI-B-2.0 SSL
 LICENSE+=" Unicode-DFS-2015 Unlicense UoI-NCSA ZLIB libtiff openssl"
 LICENSE+=" rar? ( unRAR )"
 
-SLOT="beta"
+SLOT="stable"
 # Unstable in gentoo exists mostly to give devs some breathing room for beta/stable releases.
 # It shouldn't be keyworded but adventurous users are encouraged to select it;
 # there's official dev channel Google Chrome after all.
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 IUSE_SYSTEM_LIBS="+system-harfbuzz +system-icu +system-zstd"
 IUSE="+X ${IUSE_SYSTEM_LIBS} bindist bundled-toolchain custom-cflags cups debug doc ffmpeg-chromium gtk4 +hangouts headless kerberos +official pax-kernel pgo"
@@ -368,6 +367,10 @@ pkg_setup() {
 			einfo "USE=official selected and LTO not detected."
 			einfo "It is _highly_ recommended that LTO be enabled for performance reasons"
 			einfo "and to be consistent with the upstream \"official\" build optimisations."
+		fi
+
+		if [[ "$use_lto" == "false" ]] && use test; then
+			die "Tests require CFI which requires LTO"
 		fi
 
 		export use_lto
@@ -1001,7 +1004,7 @@ src_prepare() {
 
 	# USE=system-*
 	if ! use system-harfbuzz; then
-		keeplibs+=( third_party/harfbuzz-ng )
+		keeplibs+=( third_party/harfbuzz )
 	fi
 
 	if ! use system-icu; then
@@ -1111,6 +1114,9 @@ src_prepare() {
 chromium_configure() {
 	# Calling this here supports resumption via FEATURES=keepwork
 	python_setup
+
+	# 974899: sometimes people try to build with a non-Unicode locale and python gets very upset
+	python_export_utf8_locale || die "Chromium builds require a UTF-8 locale."
 
 	# Bug 491582.
 	export TMPDIR="${WORKDIR}/temp"
