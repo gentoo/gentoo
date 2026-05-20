@@ -229,32 +229,62 @@ PATCHES=(
 )
 
 # TODO should be in cuda.eclass
-cuda_set_CUDAHOSTCXX() {
-	local compiler
-	tc-is-gcc && compiler="gcc"
-	tc-is-clang && compiler="clang"
-	[[ -z "$compiler" ]] && die "no compiler specified"
+cuda_get_host_compiler() {
+	if [[ -n "${NVCC_CCBIN}" ]]; then
+		echo "${NVCC_CCBIN}"
+		return
+	fi
 
-	local package="sys-devel/${compiler}"
-	local version="${package}"
-	local CUDAHOSTCXX_test
-	while
-		CUDAHOSTCXX="${CUDAHOSTCXX_test}"
-		version=$(best_version "${version}")
-		if [[ -z "${version}" ]]; then
-			if [[ -z "${CUDAHOSTCXX}" ]]; then
-				die "could not find supported version of ${package}"
+	if [[ -n "${CUDAHOSTCXX}" ]]; then
+		echo "${CUDAHOSTCXX}"
+		return
+	fi
+
+	einfo "Trying to find working CUDA host compiler"
+
+	if ! tc-is-gcc && ! tc-is-clang; then
+		die "$(tc-get-compiler-type) compiler is not supported"
+	fi
+
+	local compiler compiler_type compiler_version
+	local package package_version
+	local -x NVCC_CCBIN
+	local NVCC_CCBIN_default
+
+	compiler_type="$(tc-get-compiler-type)"
+	compiler_version="$("${compiler_type}-major-version")"
+
+	# try the default compiler first
+	NVCC_CCBIN="$(tc-getCXX)"
+	NVCC_CCBIN_default="${NVCC_CCBIN}-${compiler_version}"
+
+	compiler="${NVCC_CCBIN/%-${compiler_version}}"
+
+	# store the package so we can re-use it later
+	package="sys-devel/${compiler_type}"
+	package_version="${package}"
+
+	ebegin "testing ${NVCC_CCBIN_default} (default)"
+
+	while ! nvcc -v -ccbin "${NVCC_CCBIN}" - -x cu <<<"int main(){}" &>> "${T}/cuda_get_host_compiler.log" ; do
+		eend 1
+
+		while true; do
+			# prepare next version
+			if ! package_version="<$(best_version "${package_version}")"; then
+				die "could not find a supported version of ${compiler}"
 			fi
-			break
-		fi
-		CUDAHOSTCXX_test="$(
-			which "${compiler}-$(echo "${version}" | grep -oP "(?<=${package}-)[0-9]*")"
-		)"
-		version="<${version}"
-	do ! echo "int main(){}" | nvcc "-ccbin ${CUDAHOSTCXX_test}" - -x cu &>/dev/null; done
 
-	export CUDAHOSTCXX
-	echo "${CUDAHOSTCXX}"
+			NVCC_CCBIN="${compiler}-$(ver_cut 1 "${package_version/#<${package}-/}")"
+
+			[[ "${NVCC_CCBIN}" != "${NVCC_CCBIN_default}" ]] && break
+		done
+		ebegin "testing ${NVCC_CCBIN}"
+	done
+	eend $?
+
+	echo "${NVCC_CCBIN}"
+	export NVCC_CCBIN
 }
 
 pkg_pretend() {
@@ -476,7 +506,7 @@ src_configure() {
 					-DCUDA_HOST_COMPILER="${CHOST}-clang++-${LLVM_SLOT}"
 				)
 			else
-				cuda_set_CUDAHOSTCXX
+				cuda_get_host_compiler
 
 				mycmakeargs+=(
 					-DCUDA_HOST_COMPILER="${CUDAHOSTCXX}"
