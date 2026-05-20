@@ -772,7 +772,7 @@ eend_KV() {
 
 get_kheader_version() {
 	printf '#include <linux/version.h>\nLINUX_VERSION_CODE\n' | \
-	$(tc-getCPP ${CTARGET}) -I "${ESYSROOT}$(alt_headers)" - | \
+	$(tc-getCPP ${CTARGET}) -E -I "${ESYSROOT}$(alt_headers)" - | \
 	tail -n 1
 }
 
