@@ -216,12 +216,12 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-3.4.0-doc-nocompress.patch" # bug 830064
 	"${FILESDIR}/${PN}-3.4.0-buildstring.patch"
-	"${FILESDIR}/${PN}-5.0.0-please_protect_your_min_with_parentheses.patch"
 
 	"${FILESDIR}/${PN}-5.0.1-cmake-GNUInstallDirs.patch"
 	"${FILESDIR}/${PN}-5.0.1-make-static-libs-optional.patch"
 
 	"${FILESDIR}/${PN}-9999-Do-not-show-deprecated-CUDA-device-properties-for-CU.patch"
+	"${FILESDIR}/${PN}-9999-product_threaded_dont_parallelize.patch"
 )
 
 # TODO should be in cuda.eclass
@@ -511,12 +511,6 @@ src_configure() {
 		if use opengl; then
 			mycmakeargs+=(
 				-DOpenGL_GL_PREFERENCE="GLVND"
-			)
-		fi
-
-		if use pocketfft; then
-			mycmakeargs+=(
-				-DEIGEN_TEST_CXX11=yes
 			)
 		fi
 	fi

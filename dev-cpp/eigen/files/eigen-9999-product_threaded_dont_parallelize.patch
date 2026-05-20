@@ -1,0 +1,22 @@
+From 056b77036b4c97fee25bbd7a747e55c75c79cd48 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Tue, 23 Sep 2025 00:40:14 +0200
+Subject: [PATCH] product_threaded don't parallelize
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/test/product_threaded.cpp b/test/product_threaded.cpp
+index 1782c28..85c2615 100644
+--- a/test/product_threaded.cpp
++++ b/test/product_threaded.cpp
+@@ -8,6 +8,7 @@
+ // with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ // SPDX-License-Identifier: MPL-2.0
+ 
++#define EIGEN_DONT_PARALLELIZE
+ #define EIGEN_GEMM_THREADPOOL
+ #include "main.h"
+ 
+-- 
+2.51.0
+
