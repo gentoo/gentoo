@@ -6,7 +6,7 @@ EAPI=8
 LLVM_COMPAT=( {21..23} )
 LLVM_OPTIONAL="cuda-clang"
 
-PYTHON_COMPAT=( python3_{12..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 FORTRAN_NEEDED="no"
 
