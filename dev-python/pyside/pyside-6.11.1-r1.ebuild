@@ -565,7 +565,6 @@ python_compile() {
 		-e "s~libshiboken6\.cpython.*\.so\.$(ver_cut 1-2)~libshiboken6\${PYTHON_CONFIG_SUFFIX}\.so\.$(ver_cut 1-2)~g" \
 		-e "s~libpyside6\.cpython.*\.so\.$(ver_cut 1-2)~libpyside6\${PYTHON_CONFIG_SUFFIX}\.so\.$(ver_cut 1-2)~g" \
 		-e "s~libpyside6qml\.cpython.*\.so\.$(ver_cut 1-2)~libpyside6qml\${PYTHON_CONFIG_SUFFIX}\.so\.$(ver_cut 1-2)~g" \
-		-e "s~\${PACKAGE_PREFIX_DIR}/~\${PACKAGE_PREFIX_DIR}/share/PySide6/~g" \
 		-e "s~\${_IMPORT_PREFIX}/shiboken6/include~/usr/include/shiboken6~g" \
 		-e "s~\${_IMPORT_PREFIX}/PySide6/include~/usr/include/PySide6~g" \
 		-i "${BUILD_DIR}/install/usr/lib/cmake/"*/*.cmake || die
