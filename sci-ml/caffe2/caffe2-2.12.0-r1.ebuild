@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
 ROCM_VERSION=6.1
-inherit python-single-r1 cmake cuda flag-o-matic prefix rocm toolchain-funcs
+inherit python-single-r1 cmake cuda flag-o-matic prefix rocm
 
 MYPN=pytorch
 MYP=${MYPN}-${PV}
@@ -159,7 +159,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.1-cudnn_include_fix.patch
 	"${FILESDIR}"/${PN}-2.4.0-cpp-httplib.patch
 	"${FILESDIR}"/${PN}-2.5.1-glog-0.6.0.patch
-	"${FILESDIR}"/${P}-rocm-fix-std-cpp17.patch
 	"${FILESDIR}"/${PN}-2.7.0-glog-0.7.1.patch
 	"${FILESDIR}"/${P}-aotriton-fixes.patch
 	"${FILESDIR}"/${PN}-2.8.0-rocm-minus-flash.patch
@@ -246,13 +245,6 @@ src_prepare() {
 		pushd "${WORKDIR}/composable_kernel-${CK_COMMIT}" > /dev/null || die
 		eapply "${FILESDIR}"/composable-kernel-7fe50dc-expand-isa.patch
 		popd > /dev/null || die
-
-		if tc-is-clang; then
-			# Systemwide gcc (for absl and at::TensorBase) + hipcc (llvm>=18) need abi-compat=17.
-			# But systemwide clang>=18 + hipcc (>=llvm-18) need opposite!
-			# See also: https://github.com/llvm/llvm-project/issues/102443#issuecomment-2329726287
-			sed -e '/-fclang-abi-compat=17/d' -i cmake/Dependencies.cmake || die
-		fi
 
 		# Workaround for libc++ issue https://github.com/llvm/llvm-project/issues/100802
 		sed -e 's/std::memcpy/memcpy/g' -i torch/headeronly/util/Half.h || die
