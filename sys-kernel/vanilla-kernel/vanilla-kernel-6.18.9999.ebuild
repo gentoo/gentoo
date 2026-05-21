@@ -82,6 +82,9 @@ src_prepare() {
 		riscv)
 			cp "${WORKDIR}/kernel-${CONFIG_VER}/kernel-riscv64-fedora.config" .config || die
 			;;
+		s390)
+			cp "${WORKDIR}/kernel-${CONFIG_VER}/kernel-s390x-fedora.config" .config || die
+			;;
 		x86)
 			cp "${WORKDIR}/kernel-${CONFIG_VER}/kernel-i686-fedora.config" .config || die
 			;;
