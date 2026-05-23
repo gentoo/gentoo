@@ -72,7 +72,7 @@ COMMON_DEPEND="
 	>=sci-libs/opencascade-7.5.0:0=
 	>=x11-libs/cairo-1.8.8:=
 	>=x11-libs/pixman-0.30
-	>sci-electronics/ngspice-27[shared]
+	>=sci-electronics/ngspice-27.1[shared]
 	virtual/zlib:=
 	x11-libs/wxGTK:${WX_GTK_VER}=[X,opengl]
 	$(python_gen_cond_dep '
@@ -122,6 +122,7 @@ src_unpack() {
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-9.0.6-fix-cmake4-compat.patch # Bug 970924
+	"${FILESDIR}"/${P}-gcc16-bitmap2component-link.patch
 )
 
 src_prepare() {
