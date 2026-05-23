@@ -1,0 +1,28 @@
+diff -Naur OCCT-7_8_1-orig/CMakeLists.txt OCCT-7_8_1/CMakeLists.txt
+--- OCCT-7_8_1-orig/CMakeLists.txt	2024-03-31 15:05:22.000000000 -0700
++++ OCCT-7_8_1/CMakeLists.txt	2026-05-23 02:41:32.430456332 -0700
+@@ -623,6 +623,14 @@
+   add_definitions (-DHAVE_VTK)
+   set (OCCT_VTK_USED_TARGETS "" CACHE INTERNAL "" FORCE)
+   OCCT_INCLUDE_CMAKE_FILE ("adm/cmake/vtk")
++
++  if (NOT CAN_USE_TK OR NOT USE_TK)
++    list (FIND BUILD_TOOLKITS TKIVtkDraw _HAS_TKIVTKDRAW)
++    if (NOT _HAS_TKIVTKDRAW EQUAL -1)
++      message (STATUS "Info: TKIVtkDraw toolkit excluded due to TK not being available")
++      list (REMOVE_ITEM BUILD_TOOLKITS TKIVtkDraw)
++    endif()
++  endif()
+ else()
+   OCCT_CHECK_AND_UNSET_GROUP ("3RDPARTY_VTK")
+ 
+diff -Naur OCCT-7_8_1-orig/src/TKIVtkDraw/EXTERNLIB OCCT-7_8_1/src/TKIVtkDraw/EXTERNLIB
+--- OCCT-7_8_1-orig/src/TKIVtkDraw/EXTERNLIB	2024-03-31 15:05:22.000000000 -0700
++++ OCCT-7_8_1/src/TKIVtkDraw/EXTERNLIB	2026-05-23 02:41:54.414562419 -0700
+@@ -1,5 +1,6 @@
+ CSF_VTK
+ CSF_TclLibs
++CSF_TclTkLibs
+ CSF_XwLibs
+ CSF_user32
+ TKernel
