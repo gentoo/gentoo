@@ -6,10 +6,10 @@ EAPI=8
 inherit flag-o-matic fortran-2 java-pkg-opt-2 pax-utils qmake-utils toolchain-funcs xdg
 
 DESCRIPTION="High-level interactive language for numerical computations"
-HOMEPAGE="https://www.gnu.org/software/octave/"
+HOMEPAGE="https://octave.org"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+ CC0-1.0 public-domain || ( GPL-3 GPL-2 LGPL-3 )"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
 
