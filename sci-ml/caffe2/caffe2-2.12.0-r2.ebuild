@@ -114,7 +114,10 @@ RDEPEND="
 		>=sci-libs/rocRAND-6.3:=   <sci-libs/rocRAND-7.3:=
 		>=sci-libs/rocSOLVER-6.3:= <sci-libs/rocSOLVER-7.3:=
 		memefficient? ( =sci-libs/aotriton-bin-0.11*:= )
-		distributed? ( >=dev-util/rocm-smi-6.3:= <dev-util/rocm-smi-7.3:= )
+		distributed? (
+			>=dev-util/rocm-smi-6.3:= <dev-util/rocm-smi-7.3:=
+			>=dev-util/amdsmi-6.3:= <dev-util/amdsmi-7.3:=
+		)
 		cusparselt? ( >=sci-libs/hipsparselt-6.3:= <sci-libs/hipsparselt-7.3:= )
 	)
 	distributed? (
