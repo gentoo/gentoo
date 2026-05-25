@@ -22,13 +22,12 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0/${PV}"
-IUSE="test +eigen +highfive +python +zlib"
+IUSE="test +highfive +python +zlib"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	dev-cpp/yaml-cpp
-	eigen? ( dev-cpp/eigen:3= )
 	highfive? (
 		sci-libs/highfive
 		sci-libs/hdf5[cxx]
@@ -51,6 +50,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-stdvector.patch
+)
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
@@ -65,7 +68,6 @@ src_configure() {
 	# we need to use the prefix cython here
 	econf --disable-static \
 		--with-yaml-cpp="${EPREFIX}/usr" \
-		$(use_with eigen eigen "${EPREFIX}/usr/include/eigen3") \
 		$(use_enable highfive h5) \
 		$(use_with highfive highfive "${ESYSROOT}/usr") \
 		$(use_enable python pyext) \
