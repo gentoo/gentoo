@@ -516,8 +516,8 @@ python_compile() {
 			|| die
 
 	for dir in cmake pkgconfig; do
-		find "${BUILD_DIR}"/build*/"${pyside_build_dir}"/install -type d -name "${dir}" \
-			-exec cp -r "{}" "${BUILD_DIR}/install/usr/lib/" \; \
+		find "${BUILD_DIR}"/build*/"${pyside_build_dir}"/install/lib -type d -path "*/lib/${dir}" \
+			-exec cp -nr "{}" "${BUILD_DIR}/install/usr/lib/" \; \
 				|| die
 	done
 
