@@ -23,11 +23,12 @@ EAPI=8
 # using an external CI system that we have some control over, in case
 # issues pop up again with official tarball generation.
 
-GN_MIN_VER=0.2354
+GN_MIN_VER=0.2374
 # chromium-tools/get-chromium-toolchain-strings.py (or just use Chromicler)
-TEST_FONT="a28b222b79851716f8358d2800157d9ffe117b3545031ae51f69b7e1e1b9a969"
-BUNDLED_CLANG_VER="llvmorg-23-init-5669-g8a0be0bc-4"
-BUNDLED_RUST_VER="6f54d591c3116ee7f8ce9321ddeca286810cc142-7"
+# Node for M145+ should be 24.12.0 but that's not packaged in Gentoo yet. See #969145
+TEST_FONT="9c07d19d9c5ee1ff94f717e6fb17e0c8c354e6f9"
+BUNDLED_CLANG_VER="llvmorg-23-init-10931-g20b6ec66-8"
+BUNDLED_RUST_VER="4c4205163abcbd08948b3efab796c543ba1ea687-2"
 RUST_SHORT_HASH=${BUNDLED_RUST_VER:0:10}-${BUNDLED_RUST_VER##*-}
 NODE_VER="24.12.0"
 ESBUILD_VER="0.25.1"
@@ -39,7 +40,7 @@ CHROMIUM_LANGS="af am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu
 	sv sw ta te th tr uk ur vi zh-CN zh-TW"
 
 LLVM_COMPAT=( 21 )
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="xml(+)"
 RUST_MIN_VER=1.91.0
 RUST_NEEDS_LLVM="yes please"
@@ -52,10 +53,10 @@ inherit python-any-r1 readme.gentoo-r1 rust systemd toolchain-funcs virtualx xdg
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://www.chromium.org/"
 PPC64_HASH="a85b64f07b489b8c6fdb13ecf79c16c56c560fc6"
-PATCH_V="${PV%%\.*}-3"
-COPIUM_COMMIT="fe1caafa06f27542c18a881348f78e984e2d9fe2"
+PATCH_V="${PV%%\.*}-2"
+COPIUM_COMMIT="b00f26bb5e0781020da5f830981472a142c6baf1"
 DEPOT_TOOLS_COMMIT="c919a6c50df862da7ca4e17130f25a4add6132d4"
-CEF_COMMIT="5b12d32ad4bd6f684c1534de6adeca52c3dfd7f8"
+CEF_COMMIT="ab1e015f9a5e4cffcc6d63cd80d1ebafcb229438"
 CEF_BRANCH=$(ver_cut 3)
 SRC_URI="https://github.com/chromium-linux-tarballs/chromium-tarballs/releases/download/${PV}/chromium-${PV}-linux.tar.xz
 	https://deps.gentoo.zip/www-client/chromium/rollup-wasm-node-${ROLLUP_VER}.tgz
@@ -92,7 +93,7 @@ SLOT="0/$(ver_cut 1)"
 # Unstable in gentoo exists mostly to give devs some breathing room for beta/stable releases.
 # It shouldn't be keyworded but adventurous users are encouraged to select it;
 # there's official dev channel Google Chrome after all.
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 
 IUSE_SYSTEM_LIBS="+system-harfbuzz +system-icu +system-zstd"
 IUSE="+X ${IUSE_SYSTEM_LIBS} bindist bundled-toolchain custom-cflags cups debug doc ffmpeg-chromium gtk4 +hangouts headless kerberos +official pax-kernel pgo"
@@ -557,6 +558,7 @@ src_prepare() {
 		# Copium patches go here.
 		PATCHES+=(
 			"${WORKDIR}/copium/cr143-libsync-__BEGIN_DECLS.patch"
+			"${WORKDIR}/copium/cr149-unbundle-minizip-undo-unicode.patch"
 		)
 
 		# Automate conditional application of chromium-patches
@@ -587,7 +589,8 @@ src_prepare() {
 			[[ "${category_name}" == "common" ]] && continue
 
 			# Unconditional patches for this category
-			PATCHES+=( "${category}"*.patch )
+			local category_patches=( "${category}"*.patch )
+			[[ ${#category_patches[@]} -gt 0 ]] && PATCHES+=( "${category}" )
 
 			# Version-constrained subdirectories (e.g., llvm/lt-23/)
 			for constraint_dir in "${category}"*/; do
@@ -595,7 +598,7 @@ src_prepare() {
 				dir_name="${dir_name##*/}"
 				if [[ "${dir_name}" =~ ^lt-(.*)$ && -v slot_map[${category_name}] ]]; then
 					ver_test "${slot_map[${category_name}]}" -lt "${BASH_REMATCH[1]}" &&
-						PATCHES+=( "${constraint_dir}"*.patch )
+						PATCHES+=( "${constraint_dir}" )
 				fi
 			done
 		done
@@ -780,6 +783,7 @@ src_prepare() {
 		third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/mitt
 		third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/parsel-js
 		third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/rxjs
+		third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/urlpattern-polyfill
 		third_party/devtools-frontend/src/front_end/third_party/source-map-scopes-codec
 		third_party/devtools-frontend/src/front_end/third_party/third-party-web
 		third_party/devtools-frontend/src/front_end/third_party/vscode.web-custom-data
@@ -813,8 +817,6 @@ src_prepare() {
 		third_party/gperf # We symlink system gperf, but this will purge the symlink since we tidy up afterwards.
 		third_party/highway
 		third_party/hunspell
-		third_party/ink_stroke_modeler/src/ink_stroke_modeler
-		third_party/ink_stroke_modeler/src/ink_stroke_modeler/internal
 		third_party/ink/src/ink/brush
 		third_party/ink/src/ink/color
 		third_party/ink/src/ink/geometry
@@ -1087,7 +1089,7 @@ src_prepare() {
 	if ! use bundled-toolchain ; then
 		sed -i -e "s:third_party/llvm-build/Release+Asserts/bin:$(get_llvm_prefix)/bin:" tools/clang_util.py || die
 	fi
-	eapply "${FILESDIR}"/cef-7727-gentoo.patch
+	eapply "${FILESDIR}"/cef-7827-gentoo.patch
 	eapply "${FILESDIR}"/cef-7727-cmake.patch
 	eapply "${FILESDIR}"/cef-7727-output-docs-dir.patch
 	eapply "${FILESDIR}"/cef-7727-makedistrib.patch # coupled with next line
@@ -1210,18 +1212,20 @@ chromium_configure() {
 			"use_clang_modules=false" # M141 enables this for the linux platform by default.
 			"use_lld=true"
 			'custom_toolchain="//build/toolchain/linux/unbundle:default"'
-			# From M127 we need to provide a location for libclang.
-			# We patch this in for gentoo - see chromium-*-bindgen-custom-toolchain.patch
-			# rust_bindgen_root = directory with `bin/bindgen` beneath it.
-			# We don't need to set 'clang_base_path' for anything in our build
-			# and it defaults to the google toolchain location. Instead provide a location
-			# to where system clang lives so that bindgen can find system headers (e.g. stddef.h)
+			# From M127 we need to provide a location for libclang and the clang resource dir so that bindgen can find them
 			"bindgen_libclang_path=\"$(get_llvm_prefix)/$(get_libdir)\""
+			"bindgen_clang_resource_dir=\"${EPREFIX}/usr/lib/clang/${LLVM_SLOT}/include\""
+			"bindgen_extra_clang_args=[\"-I${EPREFIX}/usr/lib/clang/${LLVM_SLOT}/include\"]"
 			"clang_base_path=\"${EPREFIX}/usr/lib/clang/${LLVM_SLOT}/\""
 			"rust_bindgen_root=\"${EPREFIX}/usr/\""
 			"rust_sysroot_absolute=\"$(get_rust_prefix)\""
 			"rustc_version=\"${RUST_SLOT}\""
 		)
+
+		if [[ ${LLVM_SLOT} -lt 23 ]]; then
+			# Workaround for -fsanitize-ignore-for-ubsan-feature (added in LLVM 23)
+			myconf_gn+=( 'clang_has_ubsan_feature_ignore=false' )
+		fi
 
 		if ! tc-is-cross-compiler; then
 			myconf_gn+=( 'host_toolchain="//build/toolchain/linux/unbundle:default"' )
