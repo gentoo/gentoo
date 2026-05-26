@@ -4,7 +4,7 @@
 EAPI=8
 
 FORTRAN_NEEDED=plugins
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 DOCS_BUILDER="doxygen"
 DOCS_DEPEND="
 	media-gfx/graphviz
