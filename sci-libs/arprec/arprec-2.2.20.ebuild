@@ -27,6 +27,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.19-narrowing.patch #Bug 731916
 	"${FILESDIR}"/${PN}-2.2.19-noregister.patch #Bug 926266
 	"${FILESDIR}"/${P}-automake.patch
+	"${FILESDIR}"/${P}-fortranmod.patch
 )
 
 src_prepare() {
