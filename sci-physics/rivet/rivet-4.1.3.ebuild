@@ -35,7 +35,6 @@ DEPEND="
 	highfive? (
 		sci-libs/highfive
 		sci-libs/hdf5[cxx]
-		sci-physics/yoda[eigen(-),highfive(-)]
 	)
 	sci-libs/gsl
 	zlib? ( virtual/zlib:= )
@@ -46,7 +45,7 @@ DEPEND="
 		')
 		sci-physics/yoda[${PYTHON_SINGLE_USEDEP}]
 	)
-	>=sci-physics/yoda-2.1:=
+	>=sci-physics/yoda-2.1:=[highfive(-)?]
 "
 RDEPEND="${DEPEND}
 	!sci-physics/rivet:3
