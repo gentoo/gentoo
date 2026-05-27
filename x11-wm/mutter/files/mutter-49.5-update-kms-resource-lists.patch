@@ -1,0 +1,43 @@
+From de07dcb15332e0cbca1cf99d14809ad1f7b6b9ce Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michel=20D=C3=A4nzer?= <mdaenzer@redhat.com>
+Date: Thu, 7 May 2026 16:25:21 +0200
+Subject: [PATCH] kms/connector: Update KMS resource lists in
+ update_connector_in_impl
+
+meta_kms_impl_device_update_states may modify the MetaKmsImplDevice
+resource lists, which may result in the corresponding MetaKmsDevice
+lists pointing to already-destroyed objects.
+
+Use meta_kms_device_update_states_in_impl instead, which updates the
+latter lists to match the former after calling
+meta_kms_impl_device_update_states.
+
+Fixes use after free if meta_kms_impl_device_update_states removes
+a resource (most likely a connector).
+
+Closes: https://gitlab.gnome.org/GNOME/mutter/-/work_items/4796
+Part-of: <https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/5061>
+---
+ src/backends/native/meta-kms-connector.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/backends/native/meta-kms-connector.c b/src/backends/native/meta-kms-connector.c
+index 1a69a6319c..5bdd246f0e 100644
+--- a/src/backends/native/meta-kms-connector.c
++++ b/src/backends/native/meta-kms-connector.c
+@@ -1111,10 +1111,10 @@ update_connector_in_impl (MetaThreadImpl  *thread_impl,
+                           GError         **error)
+ {
+   MetaKmsConnector *connector = user_data;
++  MetaKmsDevice *device = meta_kms_connector_get_device (connector);
+   MetaKmsResourceChanges changes;
+ 
+-  changes = meta_kms_impl_device_update_states (connector->impl_device,
+-                                                0, connector->id);
++  changes = meta_kms_device_update_states_in_impl (device, 0, connector->id);
+ 
+   return GUINT_TO_POINTER (changes);
+ }
+-- 
+2.53.0
+
