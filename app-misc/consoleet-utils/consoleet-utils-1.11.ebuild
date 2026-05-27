@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	!<dev-util/hxtools-20251011
 	>=media-libs/babl-0.1
-	dev-cpp/eigen:3
+	dev-cpp/eigen:3=
 	dev-lang/perl
 	>=sys-libs/libhx-4.28:=
 "
