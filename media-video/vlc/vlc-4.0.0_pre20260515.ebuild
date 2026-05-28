@@ -61,6 +61,7 @@ REQUIRED_USE="
 "
 # live+snapshots need bison+flex
 BDEPEND="
+	dev-build/autoconf-archive
 	sys-devel/bison
 	sys-devel/flex
 	>=sys-devel/gettext-0.19.8
@@ -276,6 +277,19 @@ src_prepare() {
 	if ! use dbus ; then
 		sed -i 's/ --started-from-file//' share/vlc.desktop.in || die
 	fi
+
+	# old bundled version
+	# so we need to call AX_CXX_COMPILE_STDCXX directly
+	rm \
+		m4/ax_cxx_compile_stdcxx.m4 \
+		m4/ax_cxx_compile_stdcxx_17.m4 \
+		|| die
+	local CXXSTD="17"
+	if has_version ">=dev-cpp/abseil-cpp-20260107.0"; then
+		# needs >=c++20
+		CXXSTD="20"
+	fi
+	sed -i -e "/AX_CXX_COMPILE_STDCXX/{s/_17(/(${CXXSTD}, /}" configure.ac || die
 
 	eautoreconf
 }
