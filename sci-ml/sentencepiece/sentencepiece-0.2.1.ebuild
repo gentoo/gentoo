@@ -17,6 +17,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
+# depends on abseil-cpp via protobuf targets
 RDEPEND="
 	dev-cpp/abseil-cpp:=
 	dev-libs/protobuf:=
@@ -55,6 +56,8 @@ src_prepare() {
 		${PN}.pc.in \
 		> python/${PN}.pc \
 		|| die
+
+	sed -e '/CMAKE_CXX_STANDARD /{s/)/ CACHE STRING "")/g}' -i CMakeLists.txt || die
 }
 
 src_configure() {
@@ -63,6 +66,14 @@ src_configure() {
 		-DSPM_ABSL_PROVIDER=package
 		-DSPM_PROTOBUF_PROVIDER=package
 	)
+
+	if has_version ">=dev-cpp/abseil-cpp-20260107.0"; then
+		# needs >=c++20
+		mycmakeargs+=(
+			-DCMAKE_CXX_STANDARD=20
+		)
+	fi
+
 	cmake_src_configure
 }
 
