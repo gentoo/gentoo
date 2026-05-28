@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,11 +26,6 @@ src_prepare() {
 	# None of the added compiler flags make sense or are future-proof
 	sed -e '/add_definitions(/d' \
 		-i CMakeLists.txt || die
-
-	# Specify the c++ standard through cmake's heurestics instead
-	cat >> CMakeLists.txt <<- 'EOF' || die
-	set(CMAKE_CXX_STANDARD 17)
-	EOF
 
 	# Link with the right libraries for the tests
 	cat >> CMakeLists.txt <<- 'EOF' || die
@@ -87,4 +82,18 @@ src_prepare() {
 	EOF
 
 	cmake_src_prepare
+}
+
+src_configure() {
+	local CXXSTD="17"
+	if has_version ">=dev-cpp/abseil-cpp-20260107.0"; then
+		# needs >=c++20
+		CXXSTD="20"
+	fi
+
+	local mycmakeargs=(
+		-DCMAKE_CXX_STANDARD="${CXXSTD}"
+	)
+
+	cmake_src_configure
 }
