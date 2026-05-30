@@ -1,0 +1,25 @@
+commit e587a5bbf7344e3b948432a2397b816f4a958a30
+Author: m27trognondepomme <pebe92@gmail.com>
+Date:   Wed Oct 9 22:22:41 2024 +0200
+Upstream: https://gitlab.com/free-astro/pysiril/-/commit/e587a5bbf7344e3b948432a2397b816f4a958a30
+
+    fix "SyntaxWarning: invalid escape sequence"
+
+diff --git a/pysiril/addons.py b/pysiril/addons.py
+index 811f65b..5bcf695 100644
+--- a/pysiril/addons.py
++++ b/pysiril/addons.py
+@@ -659,11 +659,11 @@ class Addons:
+                 lines = list(line for line in (l.strip() for l in f) if line)
+ 
+             test=''.join(lines)
+-            sets = re.findall(';(.*?\{.*?})', test)
++            sets = re.findall(r';(.*?\{.*?})', test)
+             for s in sets:
+                 grp,rest=s.split(':',1)
+                 grp=grp.strip()
+-                vals=re.findall('(.*?);', rest.replace('{',''))
++                vals=re.findall(r'(.*?);', rest.replace('{',''))
+                 res={}
+                 for v in vals:
+                     k,z=v.replace(' ','').split('=',1)
