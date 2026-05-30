@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Mario Haustein <mario.haustein@hrz.tu-chemnitz.de> (2026-05-30)
+# EOL since February 2026. Use app-crypt/yubikey-manager instead.
+# Removal on 2026-07-01. Bug #975507.
+sys-auth/ykpers
+
 # Michał Górny <mgorny@gentoo.org> (2026-05-29)
 # Involves a subslot bump which implies rebuilding all packages with
 # pypy3_11 target, which makes little sense now that we're days away
