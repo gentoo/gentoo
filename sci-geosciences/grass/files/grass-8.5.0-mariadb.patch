@@ -1,0 +1,17 @@
+Bug: https://bugs.gentoo.org/975252
+diff --git a/cmake/find_scripts/FindMySQL.cmake b/cmake/find_scripts/FindMySQL.cmake
+index 59f36a0772..12f7d574d4 100644
+--- a/cmake/find_scripts/FindMySQL.cmake
++++ b/cmake/find_scripts/FindMySQL.cmake
+@@ -1,9 +1,9 @@
+ execute_process(
+-  COMMAND mysql_config --cflags
++  COMMAND mariadb_config --cflags
+   OUTPUT_VARIABLE MySQL_INCLUDE_DIRS
+   OUTPUT_STRIP_TRAILING_WHITESPACE)
+ execute_process(
+-  COMMAND mysql_config --libs
++  COMMAND mariadb_config --libs
+   OUTPUT_VARIABLE MySQL_LIBRARY
+   OUTPUT_STRIP_TRAILING_WHITESPACE)
+ 

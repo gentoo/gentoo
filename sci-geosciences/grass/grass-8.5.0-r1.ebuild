@@ -77,7 +77,7 @@ RDEPEND="
 			virtual/lapack[flexiblas(-)]
 		)
 	)
-	mysql? ( dev-db/mysql-connector-c:= )
+	mysql? ( dev-db/mariadb-connector-c:= )
 	netcdf? ( sci-libs/netcdf:= )
 	odbc? ( dev-db/unixODBC )
 	opencl? ( virtual/opencl )
@@ -114,6 +114,10 @@ BDEPEND="
 	X? ( dev-lang/swig )"
 
 RESTRICT="test"
+
+PATCHES=(
+	"${FILESDIR}/${P}-mariadb.patch"
+)
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
