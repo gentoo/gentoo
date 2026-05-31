@@ -137,7 +137,13 @@ src_prepare() {
 
 	eapply "${FILESDIR}/${P}-substdio-gcc16.patch" # bug 944901
 	eapply "${FILESDIR}/${P}-pop3d-gcc16.patch"
-	use ssl && eapply "${FILESDIR}/${P}-smtpd-gcc16.patch"
+	if use ssl; then
+		if use qmail-spp; then
+			eapply "${FILESDIR}/${P}-smtpd-spp-gcc16.patch"
+		else
+			eapply "${FILESDIR}/${P}-smtpd-gcc16.patch"
+		fi
+	fi
 
 	qmail_src_postunpack
 
