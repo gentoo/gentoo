@@ -1,0 +1,14 @@
+Add missing includes for TLS smtpd auth paths.
+
+Bug: https://bugs.gentoo.org/885061
+
+--- a/qmail-smtpd.c
++++ b/qmail-smtpd.c
+@@ -24,6 +24,8 @@
+ #include "timeoutwrite.h"
+ #include "commands.h"
+ #include "wait.h"
++#include "base64.h"
++#include "fd.h"
+ 
+ /*#define CRAM_MD5*/
