@@ -25,3 +25,7 @@ python_single_target_python3_14t
 # Michael Orlitzky <mjo@gentoo.org> (2023-12-05)
 # New unstable PHP slots.
 php_targets_php8-4
+# Emanuel Quintana <emanuel.quintana@uptc.edu.co> (2026-05-10)
+# Lua 5.5 without stable keywords yet.
+lua_targets_lua5-5
+lua_single_target_lua5-5

@@ -4,7 +4,7 @@
 EAPI=8
 
 GENTOO_DEPEND_ON_PERL=no
-LUA_COMPAT=( lua5-{1..5} luajit )
+LUA_COMPAT=( lua5-{1..4} luajit )
 PYTHON_COMPAT=( python3_{11..14} )
 
 inherit perl-module lua-single meson mono-env python-single-r1 xdg
