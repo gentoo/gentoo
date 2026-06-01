@@ -33,7 +33,7 @@ src_install() {
 	doins -r *
 
 	# Mark executables
-	fperms 0755 ${brscan}/{brsaneconfig5,brscan_cnetconfig,setupSaneScan5}
+	fperms 0755 ${brscan}/{brsaneconfig5,brscan_cnetconfig,brscan_gnetconfig,setupSaneScan5}
 
 	# Mark libraries executable
 	find "${ED}"${brscan} -name '*.so*' -exec chmod 0755 {} + || die
@@ -70,9 +70,6 @@ src_install() {
 pkg_postinst() {
 	udev_reload
 
-	# https://bugs.gentoo.org/961463
-	ldconfig -X
-
 	# HOSTNAME is "BRW" followed by MAC for wi-fi
 	# HOSTNAME is "BRN" followed by MAC for etherent
 	elog "Your scanner's HOSTNAME can be discovered via avahi:"
@@ -83,7 +80,4 @@ pkg_postinst() {
 
 pkg_postrm() {
 	udev_reload
-
-	# https://bugs.gentoo.org/961463
-	ldconfig -X
 }
