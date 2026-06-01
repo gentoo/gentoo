@@ -32,6 +32,8 @@
 		<flag name="dlfunc">Install local_scan.h header to compile separate
 			dlfunc libraries</flag>
 		<flag name="dmarc">Adds support for DMARC</flag>
+		<flag name="dmarc-native">Use *EXPERIMENTAL* Native DMARC implementation (Only effective with USE=dmarc).</flag>
+		<flag name="dmarc-opendmarc">Use established opendmarc based DMARC implementation (Only effective with USE=dmarc).</flag>
 		<flag name="dsn">Adds support for Delivery Status Notifications
 			(DSN)</flag>
 		<flag name="gsasl">Adds support for GNU SASL authentiction</flag>
