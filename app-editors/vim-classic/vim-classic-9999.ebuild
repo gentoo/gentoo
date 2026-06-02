@@ -13,15 +13,23 @@ PYTHON_REQ_USE="threads(+)"
 USE_RUBY="ruby32 ruby33"
 GENTOO_DEPEND_ON_PERL=no
 
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/ddevault.asc
 inherit bash-completion-r1 flag-o-matic lua-single desktop perl-module python-single-r1 \
-		ruby-single toolchain-funcs vim-doc xdg-utils
+		ruby-single toolchain-funcs verify-sig vim-doc xdg-utils
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.sr.ht/~sircmpwn/vim-classic"
 else
-	SRC_URI="https://git.sr.ht/~sircmpwn/vim-classic/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="
+		https://git.sr.ht/~sircmpwn/vim-classic/archive/v${PV}.tar.gz -> ${P}.tar.gz
+		verify-sig? (
+				https://git.sr.ht/~sircmpwn/vim-classic/refs/download/v${PV}/vim-classic-v${PV}.tar.gz.sig
+				-> ${P}.tar.gz.sig
+		)
+	"
 	KEYWORDS="~amd64"
+	BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-ddevault-20250219 ) "
 fi
 
 DESCRIPTION="Long term support Vim text editor"
@@ -66,7 +74,7 @@ DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )
 "
 # configure runs the Lua interpreter
-BDEPEND="
+BDEPEND+="
 	dev-build/autoconf
 	lua? ( ${LUA_DEPS} )
 	nls? ( sys-devel/gettext )
