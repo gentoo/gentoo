@@ -42,8 +42,6 @@ multilib_src_configure() {
 	local myeconfargs=(
 		--disable-werror
 		--enable-lib-only
-		$(use_with openssl)
-		$(use_with gnutls)
 		--without-boringssl
 		--without-picotls
 		--without-wolfssl
@@ -51,6 +49,12 @@ multilib_src_configure() {
 		--without-libnghttp3
 		--without-jemalloc
 	)
+	if use ssl; then
+		myeconfargs+=(
+			$(use_with openssl)
+			$(use_with gnutls)
+		)
+	fi
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
