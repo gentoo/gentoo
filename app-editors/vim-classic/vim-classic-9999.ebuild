@@ -8,7 +8,7 @@ EAPI=8
 VIM_VERSION="8.3"
 
 LUA_COMPAT=( lua5-{1..4} luajit )
-PYTHON_COMPAT=( python3_{11..15} )
+PYTHON_COMPAT=( python3_{12..15} )
 PYTHON_REQ_USE="threads(+)"
 USE_RUBY="ruby32 ruby33"
 GENTOO_DEPEND_ON_PERL=no
