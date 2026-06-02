@@ -6,7 +6,8 @@ EAPI=8
 # Please bump with app-editors/vim-classic and app-editors/gvim-classic
 
 VIM_VERSION="8.3"
-inherit desktop flag-o-matic prefix toolchain-funcs vim-doc xdg-utils
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/ddevault.asc
+inherit desktop flag-o-matic prefix toolchain-funcs verify-sig vim-doc xdg-utils
 
 MYWORKDIR="${WORKDIR}/vim-classic-v${PV}"
 if [[ ${PV} == 9999* ]] ; then
@@ -16,8 +17,13 @@ if [[ ${PV} == 9999* ]] ; then
 else
 	SRC_URI="
 		https://git.sr.ht/~sircmpwn/vim-classic/archive/v${PV}.tar.gz -> ${P}.tar.gz
+		verify-sig? (
+				https://git.sr.ht/~sircmpwn/vim-classic/refs/download/v${PV}/vim-classic-v${PV}.tar.gz.sig
+				-> ${P}.tar.gz.sig
+		)
 	"
 	KEYWORDS="~amd64"
+	BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-ddevault-20250219 ) "
 fi
 
 DESCRIPTION="vim-classic and gvim-classic shared files"
@@ -35,7 +41,7 @@ RDEPEND="
 "
 # ncurses is only needed by ./configure, so no subslot operator required
 DEPEND=">=sys-libs/ncurses-5.2-r2:0"
-BDEPEND="dev-build/autoconf"
+BDEPEND+="dev-build/autoconf"
 
 # unbundle xxd
 PATCHES+=( "${FILESDIR}/vim-core-unbundle-xxd.patch" )
