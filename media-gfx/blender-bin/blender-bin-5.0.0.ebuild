@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -39,7 +39,6 @@ RDEPEND="
 	sys-libs/glibc
 	sys-libs/ncurses
 	virtual/libcrypt
-	x11-base/xorg-server
 	x11-libs/libICE
 	x11-libs/libSM
 	x11-libs/libX11
