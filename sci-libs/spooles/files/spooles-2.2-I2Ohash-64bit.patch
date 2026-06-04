@@ -1,0 +1,28 @@
+--- spooles-2.2/I2Ohash/src/util.c~	1998-05-30 18:45:12.000000000 -0400
++++ spooles-2.2/I2Ohash/src/util.c	2008-06-28 20:56:49.000000000 -0400
+@@ -39,9 +39,10 @@
+ */
+ loc1 = (key1 + 1) % hashtable->nlist ;
+ loc2 = (key2 + 1) % hashtable->nlist ;
+-loc  = (loc1*loc2) % hashtable->nlist ;
++long int loc3  = (long int)loc1*(long int)loc2 % hashtable->nlist ;
++loc =(int) loc3;
+ #if MYDEBUG > 0
+-fprintf(stdout, "\n loc1 = %d, loc2 = %d, loc3 = %d", loc1, loc2, loc) ;
++fprintf(stdout, "\n loc1 = %d, loc2 = %d, loc3 = %ld, loc = %d", loc1, loc2, loc3, loc) ;
+ fflush(stdout) ;
+ #endif
+ /*
+@@ -158,9 +159,10 @@
+ #endif
+ loc1 = (key1 + 1) % hashtable->nlist ;
+ loc2 = (key2 + 1) % hashtable->nlist ;
+-loc  = (loc1*loc2) % hashtable->nlist ;
++long int loc3  = (long int)loc1*(long int)loc2 % hashtable->nlist ;
++loc =(int) loc3;
+ #if MYDEBUG > 0
+-fprintf(stdout, "\n loc1 = %d, loc2 = %d, loc3 = %d", loc1, loc2, loc) ;
++fprintf(stdout, "\n loc1 = %d, loc2 = %d, loc3 = %ld, loc = %d", loc1, loc2, loc3, loc) ;
+ fflush(stdout) ;
+ #endif
+ /*
