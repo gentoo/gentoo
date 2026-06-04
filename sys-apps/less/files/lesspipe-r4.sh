@@ -20,6 +20,7 @@ guesscompress() {
 		*.lzo)      echo "lzop -dc" ;;
 		*.xz)       echo "xzdec" ;;
 		*.zst)      echo "zstdcat" ;;
+		*.br)       echo "brcat" ;;
 		*)          echo "cat" ;;
 	esac
 }
@@ -127,6 +128,7 @@ lesspipe() {
 	*.[0-9n].lzma|*.man.lzma|\
 	*.[0-9n].xz|*.man.xz|\
 	*.[0-9n].zst|*.man.zst|\
+	*.[0-9n].br|*.man.br|\
 	*.[0-9][a-z].gz|*.[0-9][a-z].gz)
 		local out=$(${DECOMPRESSOR} -- "$1" | file -)
 		case ${out} in
@@ -168,10 +170,10 @@ lesspipe() {
 	### Tar files ###
 	*.tar|\
 	*.tar.bz2|*.tar.bz|*.tar.gz|*.tar.z|*.tar.zst|\
-	*.tar.lz|*.tar.tlz|\
+	*.tar.lz|*.tar.tlz|*.tar.br|\
 	*.tar.lzma|*.tar.xz)
 		${DECOMPRESSOR} -- "$1" | tar tvvf -;;
-	*.tbz2|*.tbz|*.tgz|*.tlz|*.txz)
+	*.tbz2|*.tbz|*.tgz|*.tlz|*.txz|*.tbr)
 		lesspipe "$1" "$1.tar.${1##*.t}" ;;
 
 	### Misc archives ###
@@ -179,6 +181,7 @@ lesspipe() {
 	*.gz|*.z|\
 	*.zst|\
 	*.lz|\
+	*.br|\
 	*.lzma|*.xz)  ${DECOMPRESSOR} -- "$1" ;;
 	*.rpm)        rpm -qpivl --changelog -- "$1" || rpm2tar -O "$1" | tar tvvf -;;
 	*.cpi|*.cpio) cpio -itv < "$1" ;;
