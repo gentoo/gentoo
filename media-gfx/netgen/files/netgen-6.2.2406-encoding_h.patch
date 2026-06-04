@@ -1,7 +1,7 @@
 From 8504832e746b1581d5b51be7f04f24826440255f Mon Sep 17 00:00:00 2001
 From: Paul Zander <negril.nx+gentoo@gmail.com>
 Date: Thu, 6 Jun 2024 15:59:51 +0200
-Subject: [PATCH 1/2] use std namespace prefix
+Subject: [PATCH] use std namespace prefix
 
 Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
 ---
@@ -48,7 +48,7 @@ index 9ea2ffb..498431c 100644
 From 2e52e913603745670cfc5c4a461845a6fb22e118 Mon Sep 17 00:00:00 2001
 From: Paul Zander <negril.nx+gentoo@gmail.com>
 Date: Thu, 6 Jun 2024 16:00:40 +0200
-Subject: [PATCH 2/2] av_init_packet is deprecated
+Subject: [PATCH] av_init_packet is deprecated
 
 Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
 ---

@@ -1,7 +1,7 @@
 From 49507f7708d72b25fd5e350f7f6b30aa80a50cb4 Mon Sep 17 00:00:00 2001
 From: Paul Zander <negril.nx+gentoo@gmail.com>
 Date: Thu, 6 Jun 2024 15:40:10 +0200
-Subject: [PATCH] [PATCH] find libjpeg-turbo library
+Subject: [PATCH] find libjpeg-turbo library
 
 Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
 ---
