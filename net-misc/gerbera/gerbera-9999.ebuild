@@ -37,6 +37,7 @@ RDEPEND="
 	dev-libs/libfmt:=
 	dev-libs/pugixml
 	dev-libs/spdlog:=
+	dev-libs/jsoncpp:=
 	net-libs/libupnp:=[ipv6(+),reuseaddr,-blocking-tcp]
 	sys-apps/util-linux
 	virtual/zlib:=
@@ -88,6 +89,7 @@ src_configure() {
 		-DWITH_SYSTEMD=$(usex systemd)
 		-DWITH_TAGLIB=$(usex taglib)
 		-DWITH_TESTS=$(usex test)
+		-DWITH_ZIP=0
 	)
 
 	cmake_src_configure
