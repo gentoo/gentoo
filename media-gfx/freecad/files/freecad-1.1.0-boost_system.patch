@@ -1,0 +1,25 @@
+From c17dc17bf3d33d8a084657098ccd51d99b2ee220 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Fri, 10 Apr 2026 20:55:21 +0200
+Subject: boost_system
+
+header-only since forever
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/cMake/UseLibPack3.cmake b/cMake/UseLibPack3.cmake
+index f8871df..0f7ae79 100644
+--- a/cMake/UseLibPack3.cmake
++++ b/cMake/UseLibPack3.cmake
+@@ -6,7 +6,7 @@ find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
+ 
+ # Make sure we are using the shared versions of Boost here: the LibPack includes both
+ set(Boost_USE_STATIC_LIBS OFF)
+-find_package(Boost COMPONENTS filesystem program_options regex system thread date_time REQUIRED PATHS ${FREECAD_LIBPACK_DIR}/lib/cmake NO_DEFAULT_PATH)
++find_package(Boost COMPONENTS filesystem program_options regex thread date_time REQUIRED PATHS ${FREECAD_LIBPACK_DIR}/lib/cmake NO_DEFAULT_PATH)
+ 
+ set(OCE_DIR ${FREECAD_LIBPACK_DIR}/lib/cmake CACHE PATH "" FORCE)
+ 
+-- 
+2.53.0
+

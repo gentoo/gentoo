@@ -1,8 +1,12 @@
-diff --git a/src/Gui/ToolBarManager.cpp b/src/Gui/ToolBarManager.cpp
-index 61232d64bf8e..3a73a0b398bc 100644
+From 4859a133b1a9179bf313fa60dd6e66dc422709b9 Mon Sep 17 00:00:00 2001
+From: ayyaz20003 <81612629+ayyaz20003@users.noreply.github.com>
+Date: Sat, 4 Apr 2026 07:28:49 +0500
+Subject: [PATCH] Gui: Fix Sketcher toolbar state not persisting across
+ workbench switches (#28674)
+
 --- a/src/Gui/ToolBarManager.cpp
 +++ b/src/Gui/ToolBarManager.cpp
-@@ -841,21 +841,8 @@ void ToolBarManager::onTimer()
+@@ -844,21 +844,8 @@ void ToolBarManager::onTimer()
  void ToolBarManager::saveState() const
  {
      auto ignoreSave = [](QAction* action) {
@@ -26,8 +30,11 @@ index 61232d64bf8e..3a73a0b398bc 100644
      };
  
      QList<ToolBar*> toolbars = toolBars();
-diff --git a/src/Mod/Sketcher/Gui/ViewProviderSketch.cpp b/src/Mod/Sketcher/Gui/ViewProviderSketch.cpp
-index a5c80f39f7..1fa3a9ba8a 100644
+From 7db3f901fdbe427868c5732d43957298f24e342b Mon Sep 17 00:00:00 2001
+From: theo-vt <theo.veilleux.trinh@proton.me>
+Date: Thu, 12 Feb 2026 16:43:44 -0500
+Subject: [PATCH] Fix diapearing sketcher tools
+
 --- a/src/Mod/Sketcher/Gui/ViewProviderSketch.cpp
 +++ b/src/Mod/Sketcher/Gui/ViewProviderSketch.cpp
 @@ -3915,8 +3915,6 @@ void ViewProviderSketch::unsetEdit(int ModNum)

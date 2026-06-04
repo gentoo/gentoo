@@ -144,9 +144,12 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-9999-Gentoo-specific-don-t-check-vcs.patch"
-	"${FILESDIR}/${PN}-9999-tests-src-Qt-only-build-test-for-BUILD_GUI-ON.patch"
+	"${FILESDIR}/${PN}-1.1.3-Gentoo-specific-don-t-check-vcs.patch"
+	"${FILESDIR}/${PN}-1.1.1-tests-src-Qt-only-build-test-for-BUILD_GUI-ON.patch"
+	"${FILESDIR}/${PN}-1.1.3-fastsignals-disconnect.patch"
+	"${FILESDIR}/${PN}-1.1.1-fix-sketcher-toolbars.patch"
 	"${FILESDIR}/${PN}-1.1.0-boost_system.patch"
+	"${FILESDIR}/${PN}-1.1.3-fix-COIN3D_MICRO_VERSION-regex-for-coin-4.0.10.patch"
 	"${FILESDIR}/${PN}-1.1.3-gcc-17-fstream.patch"
 	"${FILESDIR}/${PN}-1.1.3-skip-unicode-test.patch"
 )
@@ -512,10 +515,6 @@ src_test() {
 	)
 
 	local CMAKE_SKIP_TESTS=(
-		"^AttachExtensionTest.testEmptyLegacySupportDoesNotClearAttachmentSupport$"
-		"^AttachExtensionTest.testNonEmptyLegacySupportReplacesAttachmentSupport$"
-		"^LinkArrayPolarTest.expandedElementsFollowPatternPlacementChanges$"
-		"^LinkArrayPolarTest.suppressedExpandedElementIsOmittedFromSubObjects$"
 		"^TestLineFormat.setQColorKeepsOpaqueColorsOpaque$"
 		"^TestLineFormat.setQColorPreservesAlphaValue$"
 	)
