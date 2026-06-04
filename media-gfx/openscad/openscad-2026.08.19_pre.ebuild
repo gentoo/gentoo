@@ -45,7 +45,7 @@ else
 	else
 		SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.src.tar.gz -> ${P}.tar.gz"
 	fi
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
 # Code is GPL-3+, MCAD library is LGPL-2.1
@@ -363,10 +363,6 @@ src_test() {
 	ln -s "${CMAKE_USE_DIR}/color-schemes" . || die
 	ln -s "${CMAKE_USE_DIR}/locale" . || die
 	ln -s "${CMAKE_USE_DIR}/shaders" . || die
-
-	if [[ ! -d tests/data/image ]]; then
-		ln -sr "${CMAKE_USE_DIR}/tests/data/image" tests/data/image || die
-	fi
 
 	local CMAKE_SKIP_TESTS=(
 		# just skip all issue tests all together
