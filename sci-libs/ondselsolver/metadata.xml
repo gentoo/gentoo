@@ -11,5 +11,9 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">Ondsel-Development/OndselSolver</remote-id>
+		<remote-id type="github">FreeCAD/OndselSolver</remote-id>
 	</upstream>
+	<use>
+		<flag name="tools">build the standalone OndselSolver executable</flag>
+	</use>
 </pkgmetadata>
