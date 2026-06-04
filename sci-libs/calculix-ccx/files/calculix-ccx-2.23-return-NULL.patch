@@ -1,0 +1,23 @@
+From ca248322d94b927daf6192bd8c6ac9a9258a84ec Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Thu, 16 Apr 2026 16:08:39 +0200
+Subject: return NULL
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/readnewmesh.c b/readnewmesh.c
+index 7cc45f2..52b53cb 100644
+--- a/readnewmesh.c
++++ b/readnewmesh.c
+@@ -465,7 +465,7 @@ void readnewmesh(char *jobnamec,ITG *nboun,ITG *nodeboun,ITG *iamboun,
+   *ipkonp=ipkon;*lakonp=lakon;*iamt1p=iamt1;*ipobodyp=ipobody;
+   *iprfnp=iprfn;*konrfnp=konrfn;*ratiorfnp=ratiorfn;
+   
+-  return NULL;
++  return;
+ 
+ }
+ 
+-- 
+2.53.0
+
