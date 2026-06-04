@@ -1,0 +1,23 @@
+From d99ca72e2df57f96f94083460f5bb90e8a8a2ae3 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Tue, 15 Sep 2026 14:11:51 +0000
+Subject: use version.h for >=motif-2.3.9
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b8b6106..8caf2cf 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -175,7 +175,7 @@ foreach (_config ${CMAKE_CONFIGURATION_TYPES})
+ endforeach()
+ 
+ # gets the Motif toolkit version
+-file(STRINGS "${MOTIF_INCLUDE_DIR}/Xm/Xm.h" _motif REGEX "#define XmVERSION_STRING")
++file(STRINGS "${MOTIF_INCLUDE_DIR}/Xm/version.h" _motif REGEX "#define XmVERSION_STRING")
+ string(REGEX MATCH "Motif Version ([0-9]+)\\.([0-9]+)\\.([0-9]+)" dummy ${_motif})
+ set(MOTIF_VERSION_MAJOR ${CMAKE_MATCH_1})
+ set(MOTIF_VERSION_MINOR ${CMAKE_MATCH_2})
+-- 
+2.55.0
+
