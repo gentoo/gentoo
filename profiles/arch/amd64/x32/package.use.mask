@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Thibaud CANALE <thican@thican.net> (2026-05-16)
+# Tests require net-libs/nodejs which is unavailable on x32.
+dev-python/cloudflare test
+
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-09-11)
 # no llvm-runtimes/offload here
 dev-cpp/eigen clang-cuda
