@@ -23,8 +23,12 @@
     <flag name="opencascade">Enable OpenCASCADE support</flag>
     <flag name="openvdb">Build support to handle VDB data files</flag>
     <flag name="pdal">Build support to handle point cloud data files</flag>
+    <flag name="qt6">Use Qt6 packages instead of Qt5</flag>
     <flag name="rendering">Building Redering modules</flag>
     <flag name="tbb">Use <pkg>dev-cpp/tbb</pkg> to handle smp support</flag>
+    <flag name="truetype">Build support for font rendering</flag>
+    <flag name="video_cards_nvidia">Support running on NVIDIA GPUs using <pkg>x11-drivers/nvidia-drivers</pkg></flag>
+    <flag name="video_cards_zink">Run tests using the MESA Zink OpenGL-over-Vulkan driver</flag>
     <flag name="views">Building Views modules</flag>
     <flag name="vtkm" restrict="&lt;sci-libs/vtk-9.5">Build the vtkm accelerations modules</flag>
     <flag name="vtkm" restrict="&gt;=sci-libs/vtk-9.5">Build the viskores accelerations modules</flag>
