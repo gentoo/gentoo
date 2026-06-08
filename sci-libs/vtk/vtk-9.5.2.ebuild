@@ -353,6 +353,16 @@ pkg_setup() {
 		# so __nvcc_device_query does not fail later.
 
 		nvidia-smi -L || true
+
+		if has_version ">=dev-util/nvidia-cuda-toolkit-12.6.0"; then
+			# NOTE Without this ptxas will consume large amounts of memory.
+			# The user can override this using NVCC_APPREND_FLAGS.
+			# #973279
+			# TODO Should go into the eclass.
+			export NVCC_PREPREND_FLAGS="${NVCC_PREPREND_FLAGS:+"${NVCC_PREPREND_FLAGS} "} -Ofc min --threads $(makeopts_jobs)"
+			einfo "Using NVCC_PREPREND_FLAGS=\"${NVCC_PREPREND_FLAGS}\""
+			einfo "You can override this using NVCC_APPREND_FLAGS"
+		fi
 	fi
 
 	use java && java-pkg-opt-2_pkg_setup
@@ -377,12 +387,6 @@ src_prepare() {
 	fi
 
 	cmake_src_prepare
-
-	# 14 GiB is the highest single process ram usage seen
-	# 932464
-	sed \
-		-e "/EXPR viskores_pool_size/s/3072/$(( 14 * 1024 ))/g" \
-		-i ThirdParty/viskores/vtkviskores/viskores/CMake/ViskoresWrappers.cmake || die
 
 	if use test; then
 		ebegin "Copying data files to ${BUILD_DIR}"
