@@ -2,18 +2,16 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
-		<email>waebbl-gentoo@posteo.net</email>
-		<name>Bernd Waibel</name>
+		<email>negril.nx+gentoo@gmail.com</email>
+		<name>Paul Zander</name>
 	</maintainer>
 	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Gentoo Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Quarter is a light-weight glue library that provides seamless
-	integration between Systems in Motions's Coin high-level 3D
-	visualization library and Trolltech's Qt 2D user interface library.
-	It supersedes previous Qt binding - SoQt - by subclassing QGLWidget.
+		Quarter is a light-weight glue library that provides seamless integration between Systems in Motions's Coin high-level 3D visualization library and Trolltech's Qt 2D user interface library.
+		It supersedes previous Qt binding - SoQt - by subclassing QGLWidget.
 	</longdescription>
 	<use>
 		<flag name="designer">Install plugin for <pkg>dev-qt/qttools</pkg>[designer]</flag>
