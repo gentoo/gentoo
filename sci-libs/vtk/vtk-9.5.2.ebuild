@@ -164,6 +164,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-9.5.0-cuda-13-1.patch"
 	"${FILESDIR}/${PN}-9.5.0-cuda-13-2.patch"
 	"${FILESDIR}/${PN}-9.5.2-gdal-3.13.patch"
+	"${FILESDIR}/${PN}-9.5.2-gcc17-include-string.patch"
 )
 
 DOCS=( CONTRIBUTING.md README.md )
