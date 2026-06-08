@@ -44,7 +44,6 @@ BDEPEND="virtual/pkgconfig"
 RUST_MIN_VER="1.93.0"
 QA_FLAGS_IGNORED="usr/bin/${PN}"
 QA_PRESTRIPPED="usr/bin/${PN}"
-ECARGO_VENDOR="${WORKDIR}/cargo_home/gentoo"
 
 PATCHES=(
 	"${FILESDIR}"/vaultwarden-envfile-1.34.1.patch

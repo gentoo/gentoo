@@ -16,7 +16,7 @@ else
 	https://github.com/dani-garcia/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/gentoo-crate-dist/${PN}/releases/download/${PV}/${P}-crates.tar.xz -> ${P}-deps.tar.xz
 "
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm64"
 fi
 
 LICENSE="AGPL-3"
@@ -41,9 +41,9 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+RUST_MIN_VER="1.94.0"
 QA_FLAGS_IGNORED="usr/bin/${PN}"
 QA_PRESTRIPPED="usr/bin/${PN}"
-ECARGO_VENDOR="${WORKDIR}/vendor"
 
 PATCHES=(
 	"${FILESDIR}"/vaultwarden-envfile-1.34.1.patch
@@ -82,7 +82,6 @@ src_unpack() {
 		cargo_live_src_unpack
 	else
 		cargo_src_unpack
-		mv cargo_home ${P}/ || die
 	fi
 }
 
@@ -124,7 +123,7 @@ src_configure() {
 src_compile() {
 	# https://github.com/dani-garcia/vaultwarden/blob/main/build.rs
 	[[ ${PV} != 9999* ]] && export VW_VERSION="${PV}"
-	cargo_src_compile
+	cargo_src_compile --offline
 }
 
 src_install() {
