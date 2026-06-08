@@ -78,3 +78,9 @@ src_install() {
 	einstalldocs
 	dodoc -r ../"${PN}"-"${DOCUMENTATION_COMMIT}"/*
 }
+
+pkg_postinst() {
+	ewarn "If you're upgrading from v4 to v5 then you MUST migrate"
+	ewarn "Follow this migration guide"
+	ewarn "https://go-acme.github.io/lego/migration/cli/index.html"
+}
