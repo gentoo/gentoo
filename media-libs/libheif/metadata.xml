@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="project">
+		<email>codec@gentoo.org</email>
+		<name>Gentoo Codec Project</name>
+	</maintainer>
 	<use>
 	<flag name="aom">Use <pkg>media-libs/libaom</pkg> for AVIF encoding/decoding</flag>
 	<flag name="dav1d">Enable support for the dav1d codec decoding using <pkg>media-libs/dav1d</pkg></flag>
