@@ -9,7 +9,7 @@ if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="https://git.sr.ht/~mcf/cproc"
 	inherit git-r3
 else
-	CPROC_COMMIT="c19a0bd9b78be94b455af55ad8ceb9be49410974"
+	CPROC_COMMIT="6e8426cba04bb95952355e3967b749b47037c7c2"
 	CPROC_P="${PN}-${CPROC_COMMIT}"
 	SRC_URI="https://git.sr.ht/~mcf/cproc/archive/${CPROC_COMMIT}.tar.gz -> ${CPROC_P}.tar.gz"
 	S="${WORKDIR}/${CPROC_P}"
@@ -23,7 +23,7 @@ HOMEPAGE="https://sr.ht/~mcf/cproc/"
 LICENSE="ISC"
 SLOT="0"
 
-DEPEND=">=sys-devel/qbe-1.3"
+DEPEND="sys-devel/qbe"
 RDEPEND="${DEPEND}"
 
 src_configure() {
