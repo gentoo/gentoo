@@ -89,6 +89,10 @@
       Adds module which allows to manage Netlify hosted DNS zones using Caddy
       https://caddyserver.com/docs/modules/dns.providers.netlify
     </flag>
+    <flag name="dns-oraclecloud">
+      Adds module which allows to manage Oracle cloud hosted DNS zones using Caddy
+      https://github.com/caddy-dns/oraclecloud
+    </flag>
     <flag name="dns-ovh">
       Adds module which allows to manage OVHcloud hosted DNS zones using Caddy
       https://caddyserver.com/docs/modules/dns.providers.ovh
@@ -108,6 +112,10 @@
     <flag name="dns-route53">
       Adds module which allows to manage AWS route53 hosted DNS zones using Caddy
       https://caddyserver.com/docs/modules/dns.providers.route53
+    </flag>
+    <flag name="dns-unifi">
+      Adds module which allows to manage UniFi networks DNS zones using Caddy
+      https://github.com/caddy-dns/unifi
     </flag>
     <flag name="dns-vultr">
       Adds module which allows to manage Vultr hosted DNS zones using Caddy
