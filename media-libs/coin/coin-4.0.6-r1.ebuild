@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,7 @@ RDEPEND="
 	media-libs/freetype:2
 	media-libs/simage:=
 	virtual/zlib:=
-	virtual/opengl
+	virtual/opengl[X]
 	virtual/glu
 	x11-libs/libICE
 	x11-libs/libSM
@@ -35,9 +35,9 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-libs/boost:0
-	x11-base/xorg-proto
 "
 BDEPEND="
+	x11-base/xorg-proto
 	doc? (
 		app-text/doxygen
 		qch? ( dev-qt/qttools:6[assistant] )
