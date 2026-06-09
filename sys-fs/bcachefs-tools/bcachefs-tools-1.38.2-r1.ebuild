@@ -147,7 +147,8 @@ CRATES="
 
 LLVM_COMPAT=( {17..21} )
 MODULES_INITRAMFS_IUSE=+initramfs
-MODDULES_KERNEL_MIN=6.16
+MODULES_KERNEL_MIN=6.16
+MODULES_OPTIONAL_IUSE=+modules
 PYTHON_COMPAT=( python3_{11..14} )
 RUST_MIN_VER="1.85.0"
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/kentoverstreet.asc
@@ -173,7 +174,7 @@ LICENSE="GPL-2"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0 BSD ISC MIT Unicode-DFS-2016"
 SLOT="0"
-IUSE="debug verify-sig +modules"
+IUSE="debug verify-sig"
 RESTRICT="test"
 
 DEPEND="
