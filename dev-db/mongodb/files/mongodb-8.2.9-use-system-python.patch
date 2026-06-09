@@ -1,0 +1,546 @@
+diff '--color=auto' -ur a/bazel/mongo_src_rules.bzl b/bazel/mongo_src_rules.bzl
+--- a/bazel/mongo_src_rules.bzl	2026-05-13 19:49:37.000000000 -0400
++++ b/bazel/mongo_src_rules.bzl	2026-06-08 14:22:51.830217745 -0400
+@@ -14,7 +14,6 @@
+ )
+ load("@bazel_tools//tools/cpp:toolchain_utils.bzl", "find_cpp_toolchain")
+ load("@com_github_grpc_grpc//bazel:generate_cc.bzl", "generate_cc")
+-load("@poetry//:dependencies.bzl", "dependency")
+ load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library")
+ load("@rules_proto//proto:defs.bzl", "proto_library")
+ load(
+@@ -31,7 +30,6 @@
+     "extract_debuginfo_binary",
+     "extract_debuginfo_test",
+ )
+-load("@local_host_values//:local_host_values_set.bzl", "NUM_CPUS")
+ load("@evergreen_variables//:evergreen_variables.bzl", "UNSAFE_COMPILE_VARIANT", "UNSAFE_VERSION_ID")
+ load("//bazel/toolchains/cc/mongo_windows:mongo_windows_cc_toolchain_config.bzl", "MIN_VER_MAP")
+ load("@bazel_skylib//rules:common_settings.bzl", "BuildSettingInfo")
+@@ -759,9 +757,6 @@
+         }),
+         "tags": tags,
+         "linkopts": linkopts + rpath_flags + select({
+-            "//bazel/config:thin_lto_enabled": ["-Wl,--threads=" + str(NUM_CPUS)],
+-            "//conditions:default": [],
+-        }) + select({
+             "//bazel/config:simple_build_id_enabled": ["-Wl,--build-id=0x" +
+                                                        hex32(hash(name)) +
+                                                        hex32(hash(name)) +
+@@ -789,9 +784,6 @@
+             # Debug compression significantly reduces .o, .dwo, and .a sizes
+             "//bazel/config:compress_debug_compile_enabled": {"cpp_link.coefficient": "18.0"},
+             "//conditions:default": {"cpp_link.coefficient": "3.0"},
+-        }) | select({
+-            "//bazel/config:thin_lto_enabled": {"cpp_link.cpus": str(NUM_CPUS)},
+-            "//conditions:default": {},
+         }),
+         "env": env | SANITIZER_ENV,
+     } | kwargs
+@@ -1100,10 +1092,7 @@
+         "py_deps": attr.label_list(
+             doc = "Python modules that should be imported.",
+             providers = [PyInfo],
+-            default = [
+-                dependency("pyyaml", group = "core"),
+-                dependency("pymongo", group = "core"),
+-            ],
++            default = [],
+         ),
+         "src": attr.label(
+             doc = "The idl file to generate cpp/h files from.",
+diff '--color=auto' -ur a/BUILD.bazel b/BUILD.bazel
+--- a/BUILD.bazel	2026-05-13 19:49:37.000000000 -0400
++++ b/BUILD.bazel	2026-06-08 14:22:51.830550837 -0400
+@@ -79,16 +79,6 @@
+ )
+ 
+ alias(
+-    name = "codeowners",
+-    actual = "@bazel_rules_mongo//codeowners:codeowners",
+-)
+-
+-alias(
+-    name = "engflow_auth",
+-    actual = "@bazel_rules_mongo//engflow_auth:engflow_auth",
+-)
+-
+-alias(
+     name = "mongo-tidy-test",
+     actual = "//src/mongo/tools/mongo_tidy_checks/tests:MongoTidyCheck_unittest",
+ )
+diff '--color=auto' -ur a/buildscripts/BUILD.bazel b/buildscripts/BUILD.bazel
+--- a/buildscripts/BUILD.bazel	2026-05-13 19:49:37.000000000 -0400
++++ b/buildscripts/BUILD.bazel	2026-06-08 14:22:51.830691079 -0400
+@@ -1,4 +1,3 @@
+-load("@poetry//:dependencies.bzl", "dependency")
+ load("@npm//:eslint/package_json.bzl", "bin")
+ 
+ exports_files([
+@@ -17,16 +16,7 @@
+     srcs = ["simple_report.py"],
+     main = "simple_report.py",
+     visibility = ["//visibility:public"],
+-    deps = [
+-        dependency(
+-            "click",
+-            group = "evergreen",
+-        ),
+-        dependency(
+-            "typing-extensions",
+-            group = "core",
+-        ),
+-    ],
++    deps = [],
+ )
+ 
+ py_binary(
+@@ -39,14 +29,6 @@
+     visibility = ["//visibility:public"],
+     deps = [
+         "//buildscripts/util",
+-        dependency(
+-            "requests",
+-            group = "core",
+-        ),
+-        dependency(
+-            "tenacity",
+-            group = "core",
+-        ),
+     ],
+ )
+ 
+@@ -57,10 +39,6 @@
+     visibility = ["//visibility:public"],
+     deps = [
+         "//buildscripts/resmokelib",
+-        dependency(
+-            "typer",
+-            group = "core",
+-        ),
+     ],
+ )
+ 
+@@ -70,10 +48,6 @@
+         "install_bazel.py",
+     ],
+     deps = [
+-        dependency(
+-            "retry",
+-            group = "testing",
+-        ),
+         "//buildscripts/s3_binary:download",
+     ],
+ )
+@@ -86,14 +60,6 @@
+     visibility = ["//visibility:public"],
+     deps = [
+         "install_bazel",
+-        dependency(
+-            "typing-extensions",
+-            group = "core",
+-        ),
+-        dependency(
+-            "retry",
+-            group = "testing",
+-        ),
+         "simple_report",
+     ],
+ )
+@@ -117,12 +83,7 @@
+         "mongo_toolchain.py",
+     ],
+     visibility = ["//visibility:public"],
+-    deps = [
+-        dependency(
+-            "typer",
+-            group = "core",
+-        ),
+-    ],
++    deps = [],
+ )
+ 
+ py_library(
+@@ -145,16 +106,7 @@
+         "sbom_linter.py",
+     ],
+     visibility = ["//visibility:public"],
+-    deps = [
+-        dependency(
+-            "jsonschema",
+-            group = "build-metrics",
+-        ),
+-        dependency(
+-            "license-expression",
+-            group = "lint",
+-        ),
+-    ],
++    deps = [],
+ )
+ 
+ py_binary(
+@@ -172,12 +124,7 @@
+     name = "errorcodes",
+     srcs = ["errorcodes.py"],
+     visibility = ["//visibility:public"],
+-    deps = [
+-        dependency(
+-            "regex",
+-            group = "compile",
+-        ),
+-    ],
++    deps = [],
+ )
+ 
+ bin.eslint_binary(
+@@ -223,14 +170,6 @@
+     visibility = ["//visibility:public"],
+     deps = [
+         "//buildscripts/util",
+-        dependency(
+-            "typer",
+-            group = "core",
+-        ),
+-        dependency(
+-            "pyyaml",
+-            group = "core",
+-        ),
+     ],
+ )
+ 
+@@ -249,18 +188,6 @@
+         "//buildscripts/resmoke_proxy",
+         "//buildscripts/timeouts:timeout_service",
+         "//evergreen:all_python_files",
+-        dependency(
+-            "evergreen-py",
+-            group = "testing",
+-        ),
+-        dependency(
+-            "pydantic",
+-            group = "evergreen",
+-        ),
+-        dependency(
+-            "inject",
+-            group = "evergreen",
+-        ),
+     ],
+ )
+ 
+@@ -268,10 +195,7 @@
+     name = "bazel_local_resources",
+     srcs = ["bazel_local_resources.py"],
+     visibility = ["//visibility:public"],
+-    deps = [dependency(
+-        "filelock",
+-        group = "testing",
+-    )],
++    deps = [],
+ )
+ 
+ # TODO(SERVER-105817): The following library is autogenerated, please split these out into individual python targets
+diff '--color=auto' -ur a/buildscripts/idl/BUILD.bazel b/buildscripts/idl/BUILD.bazel
+--- a/buildscripts/idl/BUILD.bazel	2026-05-13 19:49:37.000000000 -0400
++++ b/buildscripts/idl/BUILD.bazel	2026-06-08 14:32:41.307059469 -0400
+@@ -1,5 +1,3 @@
+-load("@poetry//:dependencies.bzl", "dependency")
+-
+ filegroup(
+     name = "idlc",
+     srcs = [
+@@ -17,12 +15,7 @@
+         "lib.py",
+     ] + glob(["idl/**/*.py"]),
+     visibility = ["//visibility:public"],
+-    deps = [
+-        dependency(
+-            "typer",
+-            group = "core",
+-        ),
+-    ],
++    deps = [],
+ )
+ 
+ py_library(
+diff '--color=auto' -ur a/MODULE.bazel b/MODULE.bazel
+--- a/MODULE.bazel	2026-05-13 19:49:37.000000000 -0400
++++ b/MODULE.bazel	2026-06-08 16:52:02.127024696 -0400
+@@ -113,14 +113,6 @@
+     version = "6.3.0",
+ )
+ 
+-bazel_dep(name = "rules_poetry", version = "")
+-git_override(
+-    module_name = "rules_poetry",
+-    commit = "917630033c736c188605cf0f558c34afc1eca540",
+-    patches = ["//bazel/rules_poetry:rules_poetry.patch"],
+-    remote = "https://github.com/mongodb-forks/rules_poetry",
+-)
+-
+ #
+ ## We need skylib to be able to use config_setting_group in rule_poetry below
+ ## https://github.com/bazelbuild/bazel-skylib/blob/main/docs/selects_doc.md#selectsconfig_setting_group
+@@ -208,34 +200,6 @@
+     "@mongo_apple_toolchain//...",
+ )
+ 
+-setup_mongo_python_toolchains = use_extension("//bazel:bzlmod.bzl", "setup_mongo_python_toolchains")
+-use_repo(
+-    setup_mongo_python_toolchains,
+-    "py_host",
+-    "py_linux_arm64",
+-    "py_linux_ppc64le",
+-    "py_linux_s390x",
+-    "py_linux_x86_64",
+-    "py_macos_arm64",
+-    "py_macos_x86_64",
+-    "py_windows_x86_64",
+-)
+-
+-register_toolchains(
+-    "@py_linux_arm64//:python_toolchain",
+-    "@py_linux_ppc64le//:python_toolchain",
+-    "@py_linux_s390x//:python_toolchain",
+-    "@py_linux_x86_64//:python_toolchain",
+-    "@py_macos_arm64//:python_toolchain",
+-    "@py_macos_x86_64//:python_toolchain",
+-    "@py_windows_x86_64//:python_toolchain",
+-)
+-
+-# broken on windows currently
+-setup_local_host_values = use_repo_rule("//bazel/platforms:local_host_values.bzl", "setup_local_host_values")
+-
+-setup_local_host_values(name = "local_host_values")
+-
+ setup_evergreen_variables = use_repo_rule("//bazel/repository_rules:evergreen_variables.bzl", "setup_evergreen_variables")
+ 
+ setup_evergreen_variables(name = "evergreen_variables")
+@@ -252,3 +216,17 @@
+ use_repo(setup_mongo_windows_toolchains_extension, "mongo_windows_toolchain")
+ 
+ register_toolchains("@mongo_windows_toolchain//...")
++
++bazel_dep(name = "rules_python", version = "0.35.0")
++single_version_override(
++    module_name = "rules_python",
++    version = "0.35.0",
++)
++
++bazel_dep(name = "rules_proto", version = "6.0.0-rc1")
++single_version_override(
++    module_name = "rules_proto",
++    version = "6.0.0-rc1",
++)
++
++register_toolchains("@rules_python//python/runtime_env_toolchains:all")
+diff '--color=auto' -ur a/src/mongo/base/BUILD.bazel b/src/mongo/base/BUILD.bazel
+--- a/src/mongo/base/BUILD.bazel	2026-05-13 19:49:37.000000000 -0400
++++ b/src/mongo/base/BUILD.bazel	2026-06-08 14:22:51.830872603 -0400
+@@ -1,4 +1,3 @@
+-load("@poetry//:dependencies.bzl", "dependency")
+ load("//bazel:mongo_src_rules.bzl", "mongo_cc_benchmark", "mongo_cc_library", "mongo_cc_unit_test")
+ load("//bazel/config:render_template.bzl", "render_template")
+ 
+@@ -28,16 +27,7 @@
+         "$(location error_codes.cpp)",
+     ],
+     output = "error_codes.cpp",
+-    python_libs = [
+-        dependency(
+-            "cheetah3",
+-            group = "compile",
+-        ),
+-        dependency(
+-            "pyyaml",
+-            group = "core",
+-        ),
+-    ],
++    python_libs = [],
+ )
+ 
+ render_template(
+@@ -54,16 +44,7 @@
+         "$(location error_codes.h)",
+     ],
+     output = "error_codes.h",
+-    python_libs = [
+-        dependency(
+-            "cheetah3",
+-            group = "compile",
+-        ),
+-        dependency(
+-            "pyyaml",
+-            group = "core",
+-        ),
+-    ],
++    python_libs = [],
+ )
+ 
+ mongo_cc_library(
+diff '--color=auto' -ur a/src/mongo/db/auth/BUILD.bazel b/src/mongo/db/auth/BUILD.bazel
+--- a/src/mongo/db/auth/BUILD.bazel	2026-05-13 19:49:37.000000000 -0400
++++ b/src/mongo/db/auth/BUILD.bazel	2026-06-08 14:22:51.830978623 -0400
+@@ -1,4 +1,3 @@
+-load("@poetry//:dependencies.bzl", "dependency")
+ load("//bazel:mongo_src_rules.bzl", "idl_generator", "mongo_cc_library", "mongo_cc_unit_test")
+ load("//bazel/config:render_template.bzl", "render_template")
+ 
+@@ -421,16 +420,7 @@
+         "$(location builtin_roles.cpp)",
+     ],
+     output = "builtin_roles.cpp",
+-    python_libs = [
+-        dependency(
+-            "cheetah3",
+-            group = "compile",
+-        ),
+-        dependency(
+-            "pyyaml",
+-            group = "core",
+-        ),
+-    ],
++    python_libs = [],
+ )
+ 
+ mongo_cc_library(
+diff '--color=auto' -ur a/src/mongo/db/BUILD.bazel b/src/mongo/db/BUILD.bazel
+--- a/src/mongo/db/BUILD.bazel	2026-05-13 19:49:37.000000000 -0400
++++ b/src/mongo/db/BUILD.bazel	2026-06-08 14:22:51.831220167 -0400
+@@ -1,4 +1,3 @@
+-load("@poetry//:dependencies.bzl", "dependency")
+ load("//bazel:mongo_src_rules.bzl", "idl_generator", "mongo_cc_benchmark", "mongo_cc_binary", "mongo_cc_fuzzer_test", "mongo_cc_integration_test", "mongo_cc_library", "mongo_cc_unit_test", "mongo_idl_library", "windows_rc")
+ load("//bazel/config:render_template.bzl", "render_template")
+ 
+@@ -76,20 +75,7 @@
+         "$(MONGO_VERSION)",
+     ],
+     output = "feature_flag_test.idl",
+-    python_libs = [
+-        dependency(
+-            "cheetah3",
+-            group = "compile",
+-        ),
+-        dependency(
+-            "pyyaml",
+-            group = "core",
+-        ),
+-        dependency(
+-            "packaging",
+-            group = "compile",
+-        ),
+-    ],
++    python_libs = [],
+ )
+ 
+ idl_generator(
+diff '--color=auto' -ur a/src/mongo/shell/BUILD.bazel b/src/mongo/shell/BUILD.bazel
+--- a/src/mongo/shell/BUILD.bazel	2026-05-13 19:49:37.000000000 -0400
++++ b/src/mongo/shell/BUILD.bazel	2026-06-08 14:22:51.831576996 -0400
+@@ -1,5 +1,4 @@
+ load("@bazel_skylib//lib:selects.bzl", "selects")
+-load("@poetry//:dependencies.bzl", "dependency")
+ load("//bazel:mongo_src_rules.bzl", "idl_generator", "mongo_cc_binary", "mongo_cc_library", "mongo_cc_unit_test", "windows_rc")
+ load("//bazel/config:render_template.bzl", "render_template")
+ 
+@@ -258,16 +257,7 @@
+         "$(location error_codes.js)",
+     ],
+     output = "error_codes.js",
+-    python_libs = [
+-        dependency(
+-            "cheetah3",
+-            group = "compile",
+-        ),
+-        dependency(
+-            "pyyaml",
+-            group = "core",
+-        ),
+-    ],
++    python_libs = [],
+ )
+ 
+ MONGOJS_CPP_JSFILES = [
+diff '--color=auto' -ur a/src/mongo/util/version/BUILD.bazel b/src/mongo/util/version/BUILD.bazel
+--- a/src/mongo/util/version/BUILD.bazel	2026-05-13 19:49:37.000000000 -0400
++++ b/src/mongo/util/version/BUILD.bazel	2026-06-08 14:22:51.831680362 -0400
+@@ -1,5 +1,4 @@
+ load("//bazel/config:render_template.bzl", "render_template")
+-load("@poetry//:dependencies.bzl", "dependency")
+ 
+ package(default_visibility = ["//visibility:public"])
+ 
+@@ -19,20 +18,7 @@
+         "$(MONGO_VERSION)",
+     ],
+     output = "releases.h",
+-    python_libs = [
+-        dependency(
+-            "cheetah3",
+-            group = "compile",
+-        ),
+-        dependency(
+-            "pyyaml",
+-            group = "core",
+-        ),
+-        dependency(
+-            "packaging",
+-            group = "compile",
+-        ),
+-    ],
++    python_libs = [],
+ )
+ 
+ exports_files(["releases.yml"])
+diff '--color=auto' -ur a/WORKSPACE.bazel b/WORKSPACE.bazel
+--- a/WORKSPACE.bazel	2026-05-13 19:49:37.000000000 -0400
++++ b/WORKSPACE.bazel	2026-06-08 14:22:51.831753983 -0400
+@@ -110,20 +110,6 @@
+ 
+ rules_coverity_toolchains()
+ 
+-load("@rules_poetry//rules_poetry:poetry.bzl", "poetry")
+-
+-poetry(
+-    name = "poetry",
+-    excludes = [
+-        "mdit-py-plugins",  # plugins for markdown-it-py. Introduces an optional circular dependency that bazel does not like.
+-    ],
+-    lockfile = "//:poetry.lock",
+-    pyproject = "//:pyproject.toml",
+-    python_interpreter_target_default = "@py_host//:dist/bin/python3",
+-    python_interpreter_target_mac = "@py_host//:dist/bin/python3",
+-    python_interpreter_target_win = "@py_host//:dist/python.exe",
+-)
+-
+ load("@aspect_rules_js//js:toolchains.bzl", "DEFAULT_NODE_VERSION", "rules_js_register_toolchains")
+ 
+ rules_js_register_toolchains(node_version = DEFAULT_NODE_VERSION)
+@@ -189,26 +175,6 @@
+     path = "mongot-localdev",
+ )
+ 
+-local_repository(
+-    name = "bazel_rules_mongo",
+-    path = "buildscripts/bazel_rules_mongo",
+-    repo_mapping = {"@poetry": "@poetry_bazel_rules_mongo"},
+-)
+-
+-load("@bazel_rules_mongo//codeowners:codeowners_validator.bzl", "codeowners_validator")
+-
+-codeowners_validator()
+-
+-load("@bazel_rules_mongo//codeowners:codeowners_binary.bzl", "codeowners_binary")
+-
+-codeowners_binary()
+-
+-poetry(
+-    name = "poetry_bazel_rules_mongo",
+-    lockfile = "@bazel_rules_mongo//:poetry.lock",
+-    pyproject = "@bazel_rules_mongo//:pyproject.toml",
+-)
+-
+-load("//bazel/format:shfmt.bzl", "shfmt")
++load("@rules_python//python:repositories.bzl", "py_repositories")
++py_repositories()
+ 
+-shfmt()
