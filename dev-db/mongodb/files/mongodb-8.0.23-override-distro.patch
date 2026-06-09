@@ -1,0 +1,56 @@
+diff '--color=auto' -ur a/bazel/utils.bzl b/bazel/utils.bzl
+--- a/bazel/utils.bzl	2026-05-13 19:17:03.000000000 -0400
++++ b/bazel/utils.bzl	2026-05-29 12:28:08.690305834 -0400
+@@ -127,50 +127,5 @@
+     return distro, arch, substitutions
+ 
+ def get_host_distro_major_version(repository_ctx):
+-    _DISTRO_PATTERN_MAP = {
+-        "Ubuntu 18*": "ubuntu18",
+-        "Ubuntu 20*": "ubuntu20",
+-        "Ubuntu 22*": "ubuntu22",
+-        "Pop!_OS 22*": "ubuntu22",
+-        "Ubuntu 24*": "ubuntu24",
+-        "Amazon Linux 2": "amazon_linux_2",
+-        "Amazon Linux 2023": "amazon_linux_2023",
+-        "Debian GNU/Linux 10": "debian10",
+-        "Debian GNU/Linux 12": "debian12",
+-        "Red Hat Enterprise Linux 8*": "rhel8",
+-        "Red Hat Enterprise Linux 9*": "rhel9",
+-        "SLES 15*": "suse15",
+-    }
+-
+-    if repository_ctx.os.name != "linux":
+-        return None
+-
+-    result = repository_ctx.execute([
+-        "sed",
+-        "-n",
+-        "/^\\(NAME\\|VERSION_ID\\)=/{s/[^=]*=//;s/\"//g;p}",
+-        "/etc/os-release",
+-    ])
+-
+-    if result.return_code != 0:
+-        print("Failed to determine system distro, parsing os-release failed with the error: " + result.stderr)
+-        return None
+-
+-    distro_seq = result.stdout.splitlines()
+-    if len(distro_seq) != 2:
+-        print("Failed to determine system distro, parsing os-release returned: " + result.stdout)
+-        return None
+-
+-    distro_str = "{distro_name} {distro_version}".format(
+-        distro_name = distro_seq[0],
+-        distro_version = distro_seq[1],
+-    )
+-
+-    for distro_pattern, simplified_name in _DISTRO_PATTERN_MAP.items():
+-        if "*" in distro_pattern:
+-            prefix_suffix = distro_pattern.split("*")
+-            if distro_str.startswith(prefix_suffix[0]) and distro_str.endswith(prefix_suffix[1]):
+-                return simplified_name
+-        elif distro_str == distro_pattern:
+-            return simplified_name
+-    return None
++    # Override: Always return gentoo regardless
++    return "gentoo"
