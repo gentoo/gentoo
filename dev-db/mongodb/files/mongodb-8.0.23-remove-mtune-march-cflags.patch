@@ -1,0 +1,43 @@
+diff '--color=auto' -ur a/bazel/toolchains/cc/mongo_linux/mongo_compiler_flags.bzl b/bazel/toolchains/cc/mongo_linux/mongo_compiler_flags.bzl
+--- a/bazel/toolchains/cc/mongo_linux/mongo_compiler_flags.bzl	2026-05-13 19:17:03.000000000 -0400
++++ b/bazel/toolchains/cc/mongo_linux/mongo_compiler_flags.bzl	2026-05-29 12:30:08.550864554 -0400
+@@ -254,31 +254,6 @@
+     "//conditions:default": [],
+ })
+ 
+-MTUNE_MARCH_COPTS = select({
+-    "//bazel/config:linux_aarch64": [
+-        "-march=armv8.2-a",
+-        "-mtune=generic",
+-    ],
+-    "//bazel/config:linux_ppc64le": [
+-        "-mcpu=power8",
+-        "-mtune=power8",
+-        "-mcmodel=medium",
+-    ],
+-    "//bazel/config:linux_s390x": [
+-        "-march=z196",
+-        "-mtune=zEC12",
+-    ],
+-    # If we are enabling vectorization in sandybridge mode, we'd rather not hit
+-    # the 256 wide vector instructions because the heavy versions can cause
+-    # clock speed reductions.
+-    "//bazel/config:linux_x86_64": [
+-        "-march=sandybridge",
+-        "-mtune=generic",
+-        "-mprefer-vector-width=128",
+-    ],
+-    "//conditions:default": [],
+-})
+-
+ THIN_LTO_FLAGS = select({
+     "//bazel/config:thin_lto_enabled": ["-flto=thin"],
+     "//conditions:default": [],
+@@ -364,7 +339,6 @@
+     COMPRESS_DEBUG_COPTS +
+     DEBUG_TYPES_SECTION_FLAGS +
+     IMPLICIT_FALLTHROUGH_COPTS +
+-    MTUNE_MARCH_COPTS +
+     DISABLE_SOURCE_WARNING_AS_ERRORS_COPTS +
+     THIN_LTO_FLAGS +
+     SYMBOL_ORDER_COPTS +
