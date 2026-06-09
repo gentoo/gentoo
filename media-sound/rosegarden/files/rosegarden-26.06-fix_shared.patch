@@ -1,0 +1,23 @@
+https://sourceforge.net/p/rosegarden/bugs/1746/
+https://bugs.gentoo.org/957755
+fix compile with Qt built with QT_USE_PROTECTED_VISIBILITY
+ROSEGARDENPRIVATE_LIB_MAKEDLL should only be defined for the shared library
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -9,7 +9,6 @@ configure_file(rosegarden-version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/rosegarden
+ 
+ # Export macros
+ configure_file(rosegardenprivate_export.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/rosegardenprivate_export.h)
+-add_definitions(-DROSEGARDENPRIVATE_LIB_MAKEDLL)
+ 
+ # Define the include paths (-I...)
+ include_directories(
+@@ -851,6 +850,8 @@ add_library(rosegardenprivate ${RG_LIBRARY_TYPE}
+    ${CMAKE_CURRENT_BINARY_DIR}/svnversion.h
+ )
+ 
++target_compile_definitions(rosegardenprivate PRIVATE ROSEGARDENPRIVATE_LIB_MAKEDLL)
++
+ # If we've got cmake 3.16.0 or greater, use precompiled headers.
+ # Cuts build time almost in half.
+ if(NOT ${CMAKE_VERSION} VERSION_LESS "3.16.0")
