@@ -1,0 +1,61 @@
+From upstream commit:
+https://github.com/falcosecurity/libs/commit/a273f3d05c6e90ffc5d47a919a92b3e4d887b340
+
+From: =?UTF-8?q?Holger=20Hoffst=C3=A4tte?= <holger@applied-asynchrony.com>
+Date: Sun, 3 Aug 2025 16:57:14 +0200
+Subject: [PATCH] fix(libsinsp): use proper INET6_ADDRSTRLEN buffer size for inet_ntop
+
+glibc-2.42 added __inet_ntop_chk fortification, which started to fail:
+
+  *** buffer overflow detected ***: terminated
+  Program received signal SIGABRT, Aborted.
+  0x00007ffff629b0dc in __pthread_kill_implementation () from /lib64/libc.so.6
+  (gdb) bt
+  #0  0x00007ffff629b0dc in __pthread_kill_implementation () from /lib64/libc.so.6
+  #1  0x00007ffff6242572 in raise () from /lib64/libc.so.6
+  #2  0x00007ffff6229f3b in abort () from /lib64/libc.so.6
+  #3  0x00007ffff622b148 in __libc_message_impl.cold () from /lib64/libc.so.6
+  #4  0x00007ffff6327337 in __fortify_fail () from /lib64/libc.so.6
+  #5  0x00007ffff6326c92 in __chk_fail () from /lib64/libc.so.6
+  #6  0x00007ffff6327a62 in __inet_ntop_chk () from /lib64/libc.so.6
+  #7  0x000055555569da3d in inet_ntop (__af=10, __src=0x555555ee0800, __dst=0x7fffffff4f90 "\260P\377\377\377\177", __dst_size=100) at /usr/include/bits/inet-fortified.h:36
+  #8  ipv6tuple_to_string[abi:cxx11](ipv6tuple*, bool) (tuple=0x555555ee0800, resolve=false) at /tmp/portage/dev-debug/sysdig-0.40.1/work/libs-0.20.0/userspace/libsinsp/utils.c
+
+Use INET6_ADDRSTRLEN as destination buffer size.
+
+Fixes: https://github.com/falcosecurity/libs/issues/2573
+Signed-off-by: Holger Hoffstätte <holger@applied-asynchrony.com>
+---
+ userspace/libsinsp/utils.cpp | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/userspace/libsinsp/utils.cpp b/userspace/libsinsp/utils.cpp
+index 06b921cbbf..b676b8dd34 100644
+--- a/userspace/libsinsp/utils.cpp
++++ b/userspace/libsinsp/utils.cpp
+@@ -1042,8 +1042,8 @@ std::string ipv4tuple_to_string(const ipv4tuple& tuple, const bool resolve) {
+ }
+ 
+ std::string ipv6serveraddr_to_string(const ipv6serverinfo& addr, const bool resolve) {
+-	char address[100];
+-	if(!inet_ntop(AF_INET6, addr.m_ip.m_b, address, 100)) {
++	char address[INET6_ADDRSTRLEN];
++	if(!inet_ntop(AF_INET6, addr.m_ip.m_b, address, INET6_ADDRSTRLEN)) {
+ 		return std::string();
+ 	}
+ 
+@@ -1058,12 +1058,12 @@ std::string ipv6serveraddr_to_string(const ipv6serverinfo& addr, const bool reso
+ 
+ std::string ipv6tuple_to_string(const ipv6tuple& tuple, const bool resolve) {
+ 	char source_address[INET6_ADDRSTRLEN];
+-	if(!inet_ntop(AF_INET6, tuple.m_fields.m_sip.m_b, source_address, 100)) {
++	if(!inet_ntop(AF_INET6, tuple.m_fields.m_sip.m_b, source_address, INET6_ADDRSTRLEN)) {
+ 		return std::string();
+ 	}
+ 
+ 	char destination_address[INET6_ADDRSTRLEN];
+-	if(!inet_ntop(AF_INET6, tuple.m_fields.m_dip.m_b, destination_address, 100)) {
++	if(!inet_ntop(AF_INET6, tuple.m_fields.m_dip.m_b, destination_address, INET6_ADDRSTRLEN)) {
+ 		return std::string();
+ 	}
+ 
