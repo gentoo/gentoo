@@ -1,0 +1,28 @@
+diff '--color=auto' -ur a/bazel/toolchains/cc/mongo_linux/mongo_compiler_flags.bzl b/bazel/toolchains/cc/mongo_linux/mongo_compiler_flags.bzl
+--- a/bazel/toolchains/cc/mongo_linux/mongo_compiler_flags.bzl	2026-05-13 19:49:37.000000000 -0400
++++ b/bazel/toolchains/cc/mongo_linux/mongo_compiler_flags.bzl	2026-06-08 10:46:16.695622646 -0400
+@@ -329,14 +329,6 @@
+     "//conditions:default": [],
+ })
+ 
+-# Hack to throw an error if the user isn't running bazel through bazelisk,
+-# since we want to make sure the hook inside of tools/bazel gets run.
+-RUNNING_THROUGH_BAZELISK_CHECK = select({
+-    "//bazel/config:running_through_bazelisk_x86_64_or_arm64": [],
+-    "@platforms//cpu:s390x": [],
+-    "@platforms//cpu:ppc": [],
+-}, no_match_error = BAZELISK_CHECK_ERROR_MESSAGE)
+-
+ MONGO_GLOBAL_INCLUDE_DIRECTORIES = [
+     "-Isrc",
+     "-I$(GENDIR)/src",
+@@ -361,8 +353,7 @@
+     THIN_LTO_FLAGS +
+     SYMBOL_ORDER_COPTS +
+     COVERAGE_FLAGS +
+-    SHARED_ARCHIVE_COPTS +
+-    RUNNING_THROUGH_BAZELISK_CHECK
++    SHARED_ARCHIVE_COPTS
+ )
+ 
+ MONGO_LINUX_CC_LINKFLAGS = (
