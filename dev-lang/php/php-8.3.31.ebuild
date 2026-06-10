@@ -215,7 +215,7 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	# In php-7.x, the FPM pool configuration files have been split off
+	# In php-8.x, the FPM pool configuration files have been split off
 	# of the main config. By default the pool config files go in
 	# e.g. /etc/php-fpm.d, which isn't slotted. So here we move the
 	# include directory to a subdirectory "fpm.d" of $PHP_INI_DIR. Later
@@ -224,6 +224,12 @@ src_prepare() {
 	sed -i "s~^include=.*$~include=${PHP_INI_DIR}/fpm.d/*.conf~" \
 		sapi/fpm/php-fpm.conf.in \
 		|| die 'failed to move the include directory in php-fpm.conf'
+
+	# The PHP Makefile templates for the 'fpm' and 'phpdbg'
+	# sapi forcefully create the (empty) directories '/var/log' and '/var/run',
+	# see bug #977105
+	sed -i '/@$(mkinstalldirs) $(INSTALL_ROOT)$(localstatedir)\/run/d' sapi/{fpm,phpdbg}/Makefile.frag || die
+	sed -i '/@$(mkinstalldirs) $(INSTALL_ROOT)$(localstatedir)\/log/d' sapi/{fpm,phpdbg}/Makefile.frag || die
 
 	# fails in a network sandbox,
 	#
