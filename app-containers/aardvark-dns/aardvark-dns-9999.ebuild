@@ -1,9 +1,9 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-RUST_MIN_VER="1.87.0"
+RUST_MIN_VER="1.88.0"
 [[ ${PV} == 9999* ]] || CRATES="${PN}@${PV}"
 inherit cargo
 
