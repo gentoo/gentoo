@@ -1,9 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 [[ ${PV} == 9999* ]] || CRATES="${PN}@${PV}"
+RUST_MIN_VER="1.88.0"
 
 inherit cargo systemd
 
