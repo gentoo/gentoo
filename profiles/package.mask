@@ -222,7 +222,6 @@ dev-libs/ucl
 # Removal on 2026-06-08.  Bug #952430.
 acct-group/buildbot
 acct-user/buildbot
-dev-util/buildbot
 
 # Sam James <sam@gentoo.org> (2026-05-05)
 # dev-debug/pwndbg itself needs >=dev-util/unicorn-2.1.4, while
