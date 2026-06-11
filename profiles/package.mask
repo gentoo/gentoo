@@ -200,7 +200,6 @@ dev-python/ipdb
 dev-python/dockerpty
 dev-python/doublex-expects
 dev-python/expects
-dev-python/mamba
 
 # Sam James <sam@gentoo.org> (2026-05-05)
 # dev-debug/pwndbg itself needs >=dev-util/unicorn-2.1.4, while
