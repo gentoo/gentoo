@@ -159,11 +159,6 @@ dev-util/cursor-agent
 # Removal on 2026-06-11.
 app-editors/cursor
 
-# Louis Sautier <sbraz@gentoo.org> (2026-05-10)
-# Unmaintained since 2017, no revdeps.
-# Removal on 2026-06-10. Bug #974496.
-dev-python/flask-debug
-
 # Sam James <sam@gentoo.org> (2026-05-05)
 # dev-debug/pwndbg itself needs >=dev-util/unicorn-2.1.4, while
 # pwndbg also depends on dev-util/pwntools which needs <dev-util/unicorn-2.1.4.
