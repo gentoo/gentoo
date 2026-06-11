@@ -5,13 +5,14 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
 
-inherit bash-completion-r1 check-reqs cmake desktop edo multiprocessing python-any-r1 systemd toolchain-funcs xdg-utils
+inherit bash-completion-r1 check-reqs cmake db-use desktop edo multiprocessing python-any-r1 systemd toolchain-funcs xdg-utils
 
 DESCRIPTION="Reference implementation of the Bitcoin cryptocurrency"
 HOMEPAGE="https://bitcoincore.org/"
 SRC_URI="
 	https://github.com/bitcoin/bitcoin/archive/v${PV/_rc/rc}.tar.gz -> ${P}.tar.gz
-	https://github.com/bitcoin/bitcoin/commit/0bc9d354dfd8074d1c36a891a69b6585a8775c65.patch?full_index=1 -> ${PN}-31.0-multi_index-fix-compilation-failure-with-boost-1.91.patch
+	https://github.com/bitcoin/bitcoin/commit/6d4214925fadc36d26aa58903db5788c742e68c6.patch?full_index=1 -> ${PN}-29.0-qt6.patch
+	https://github.com/bitcoin/bitcoin/commit/546598b73675bd5663de6df8f4e3a23a0e7eceb7.patch?full_index=1 -> ${PN}-29.3-multi_index-fix-compilation-failure-with-boost-1.91.patch
 "
 S="${WORKDIR}/${PN/-core}-${PV/_rc/rc}"
 
@@ -20,7 +21,7 @@ SLOT="0"
 if [[ "${PV}" != *_rc* ]] ; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 fi
-IUSE="asm +cli +daemon dbus examples +external-signer gui qrcode +system-libsecp256k1 systemtap test test-full +wallet zeromq"
+IUSE="asm +berkdb +cli +daemon dbus examples +external-signer gui qrcode +sqlite +system-libsecp256k1 systemtap test test-full zeromq"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -34,6 +35,7 @@ REQUIRED_USE="
 COMMON_DEPEND="
 	>=dev-libs/boost-1.81.0:=
 	>=dev-libs/libevent-2.1.12:=
+	berkdb? ( >=sys-libs/db-4.8.30:$(db_ver_to_slot 4.8)=[cxx] )
 	daemon? (
 		acct-group/bitcoin
 		acct-user/bitcoin
@@ -42,8 +44,8 @@ COMMON_DEPEND="
 		>=dev-qt/qtbase-6.2:6[dbus?,gui,network,widgets]
 	)
 	qrcode? ( >=media-gfx/qrencode-4.1.1:= )
-	system-libsecp256k1? ( >=dev-libs/libsecp256k1-0.7.1:=[asm=,ellswift,extrakeys,musig,recovery,schnorr] )
-	wallet? ( >=dev-db/sqlite-3.38.5:= )
+	sqlite? ( >=dev-db/sqlite-3.38.5:= )
+	system-libsecp256k1? ( >=dev-libs/libsecp256k1-0.6.0:=[asm=,ellswift,extrakeys,recovery,schnorr] )
 	zeromq? ( >=net-libs/zeromq-4.3.4:= )
 "
 RDEPEND="
@@ -91,8 +93,9 @@ DOCS=(
 )
 
 PATCHES=(
-	"${DISTDIR}/${PN}-31.0-multi_index-fix-compilation-failure-with-boost-1.91.patch"
-	"${FILESDIR}/30.0-cmake-syslibs.patch"
+	"${DISTDIR}/${PN}-29.0-qt6.patch"
+	"${DISTDIR}/${PN}-29.3-multi_index-fix-compilation-failure-with-boost-1.91.patch"
+	"${FILESDIR}/29.0-cmake-syslibs.patch"
 	"${FILESDIR}/26.0-init.patch"
 )
 
@@ -115,6 +118,15 @@ pkg_pretend() {
 			via the command line using this installation.
 		EOF
 	fi
+	if ! use berkdb && ! use sqlite &&
+		{ { use daemon && ! has_version "${CATEGORY}/${PN}[daemon,-berkdb,-sqlite]" ; } ||
+		  { use gui && ! has_version "${CATEGORY}/${PN}[gui,-berkdb,-sqlite]" ; } ; }
+	then
+		efmt ewarn <<-EOF
+			You are enabling neither USE="berkdb" nor USE="sqlite". This is a valid
+			configuration, but your Bitcoin node will be unable to open any wallets.
+		EOF
+	fi
 
 	# test/functional/feature_pruning.py requires 4 GB disk space
 	# test/functional/wallet_pruning.py requires 1.3 GB disk space
@@ -127,8 +139,8 @@ pkg_setup() {
 		python-any-r1_pkg_setup
 	fi
 
-	# check for auto-loaded wallets in the obsolete (now unsupported) format
-	if use daemon && use wallet && [[ -r "${EROOT}/var/lib/bitcoind/settings.json" ]] ; then
+	# check for auto-loaded wallets in the obsolete (soon to be unsupported) format
+	if use daemon && use berkdb && [[ -r "${EROOT}/var/lib/bitcoind/settings.json" ]] ; then
 		local wallet bdb_wallets=()
 		while read -rd '' wallet ; do
 			# printf interprets any C-style escape sequences in ${wallet}
@@ -142,15 +154,13 @@ pkg_setup() {
 		if (( ${#bdb_wallets[@]} )) ; then
 			efmt -su ewarn <<-EOF
 				The following auto-loaded wallets are in the legacy (Berkeley DB) format, \
-				which is no longer supported by this version of Bitcoin Core:
+				which will no longer be supported by the next major version of Bitcoin Core:
 				$(printf ' - %s\n' "${bdb_wallets[@]}")
-				You may need to remove these wallets from your auto-load configuration \
-				at ${EROOT}/var/lib/bitcoind/settings.json$(use cli && cat <<-EOS
-					 and convert them to descriptor wallets by executing \
-					\`bitcoin-cli migratewallet "<wallet_name>" ["<passphrase>"]\` \
-					after starting bitcoind
-				EOS
-				).
+			EOF
+			use cli && efmt ewarn <<-EOF
+				You may want to convert them to descriptor wallets by executing
+				\`bitcoin-cli migratewallet "<wallet_name>" ["<passphrase>"]\`
+				after starting bitcoind.
 			EOF
 		fi
 	fi
@@ -169,16 +179,22 @@ src_prepare() {
 	! use system-libsecp256k1 || rm -r src/secp256k1 || die
 	cmake_src_prepare
 
+	# we set BUILD_UTIL=OFF, so we can't test bitcoin-util
+	sed -ne '/^  {/{h;:0;n;H;/^  }/!b0;g;\|"exec": *"\./bitcoin-util"|d};p' \
+		-i test/util/data/bitcoin-util-test.json || die
+
 	sed -e 's/^\(complete -F _bitcoind\b\).*$/\1'"$(usev daemon ' bitcoind')$(usev gui ' bitcoin-qt')/" \
 		-i contrib/completions/bash/bitcoind.bash || die
 }
 
 src_configure() {
+	local wallet ; if use berkdb || use sqlite ; then wallet=ON ; else wallet=OFF ; fi
 	local mycmakeargs=(
 #		-DCMAKE_DISABLE_FIND_PACKAGE_Git=ON	# https://github.com/bitcoin/bitcoin/pull/32220
 		-DBUILD_SHARED_LIBS=ON
-		-DENABLE_IPC=OFF
-		-DENABLE_WALLET=$(usex wallet)
+		-DENABLE_WALLET=${wallet}
+		-DWITH_SQLITE=$(usex sqlite)
+		-DWITH_BDB=$(usex berkdb)
 		-DWITH_USDT=$(usex systemtap)
 		-DBUILD_TESTS=$(usex test)
 		-DBUILD_BENCH=OFF
@@ -189,7 +205,7 @@ src_configure() {
 		-DENABLE_EXTERNAL_SIGNER=$(usex external-signer)
 		-DBUILD_CLI=$(usex cli)
 		-DBUILD_TX=ON
-		-DBUILD_WALLET_TOOL=$(usex wallet)
+		-DBUILD_WALLET_TOOL=${wallet}
 		-DBUILD_UTIL=OFF
 		-DBUILD_DAEMON=$(usex daemon)
 		-DBUILD_GUI=$(usex gui)
@@ -224,7 +240,7 @@ src_install() {
 	dodoc -r doc/release-notes
 
 	use external-signer && DOCS+=( doc/external-signer.md )
-	use wallet && DOCS+=( doc/managing-wallets.md )
+	use berkdb || use sqlite && DOCS+=( doc/managing-wallets.md )
 	use systemtap && DOCS+=( doc/tracing.md )
 	use zeromq && DOCS+=( doc/zmq.md )
 
@@ -238,7 +254,7 @@ src_install() {
 	cmake_src_install
 
 	find "${ED}" -type f -name '*.la' -delete || die
-	! use test || rm -f -- "${ED}"/usr/libexec/test_bitcoin{,-qt} || die
+	! use test || rm -f -- "${ED}"/usr/bin/test_bitcoin{,-qt} || die
 
 	newbashcomp contrib/completions/bash/bitcoin-tx.bash bitcoin-tx
 	use cli && newbashcomp contrib/completions/bash/bitcoin-cli.bash bitcoin-cli
@@ -307,13 +323,15 @@ pkg_postinst() {
 		EOF
 	fi
 
-	if use wallet && [[ -r "${EROOT}/etc/bitcoin/bitcoin.conf" ]] &&
-		grep -q '^\s*deprecatedrpc\s*=.*\bcreate_bdb\b' -- "${EROOT}/etc/bitcoin/bitcoin.conf"
-	then
-		# https://github.com/bitcoin/bitcoin/pull/31250
+	if use berkdb ; then
+		# https://github.com/bitcoin/bitcoin/pull/28597
+		# https://bitcoincore.org/en/releases/26.0/#wallet
 		efmt ewarn <<-EOF
-			Creation of legacy (Berkeley DB) wallets is no longer possible starting with
-			Bitcoin Core 30.0. You must remove the following line from your bitcoin.conf:
+			Creation of legacy (Berkeley DB) wallets is refused starting with Bitcoin
+			Core 26.0, pending the deprecation and eventual removal of support for
+			legacy wallets altogether in future releases. At present you can still
+			force support for the creation of legacy wallets by adding the following
+			line to your bitcoin.conf:
 
 			deprecatedrpc=create_bdb
 		EOF
