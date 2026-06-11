@@ -165,12 +165,6 @@ app-editors/cursor
 dev-python/flask-debug
 dev-python/flask-nav
 
-# Louis Sautier <sbraz@gentoo.org> (2026-05-10)
-# Unmaintained since 2018, no revdeps.
-# Only consumer is www-misc/urlwatch which suggests it.
-# Removal on 2026-06-10. Bug #953050.
-dev-python/chump
-
 # Sam James <sam@gentoo.org> (2026-05-05)
 # dev-debug/pwndbg itself needs >=dev-util/unicorn-2.1.4, while
 # pwndbg also depends on dev-util/pwntools which needs <dev-util/unicorn-2.1.4.
