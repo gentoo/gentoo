@@ -207,7 +207,6 @@ dev-python/mamba
 # No reverse dependencies.
 # Removal on 2026-06-08.  Bug #952373.
 dev-python/js2py
-dev-python/pyjsparser
 
 # Sam James <sam@gentoo.org> (2026-05-05)
 # dev-debug/pwndbg itself needs >=dev-util/unicorn-2.1.4, while
