@@ -229,7 +229,6 @@ dev-util/buildbot-grid-view
 dev-util/buildbot-pkg
 dev-util/buildbot-react-console-view
 dev-util/buildbot-react-grid-view
-dev-util/buildbot-react-wsgi-dashboards
 
 # Sam James <sam@gentoo.org> (2026-05-05)
 # dev-debug/pwndbg itself needs >=dev-util/unicorn-2.1.4, while
