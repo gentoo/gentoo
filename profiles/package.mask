@@ -234,7 +234,6 @@ dev-util/buildbot-waterfall-view
 dev-util/buildbot-worker
 dev-util/buildbot-wsgi-dashboards
 dev-util/buildbot-www
-dev-util/buildbot-www-react
 
 # Sam James <sam@gentoo.org> (2026-05-05)
 # dev-debug/pwndbg itself needs >=dev-util/unicorn-2.1.4, while
