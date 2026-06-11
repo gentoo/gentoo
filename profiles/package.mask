@@ -154,11 +154,6 @@ x11-misc/qt5ct
 # Removal on 2026-06-11.
 dev-util/cursor-agent
 
-# David Seifert <soap@gentoo.org> (2026-05-12)
-# I don't see a future in a slightly better tab-completion editor.
-# Removal on 2026-06-11.
-app-editors/cursor
-
 # Sam James <sam@gentoo.org> (2026-05-05)
 # dev-debug/pwndbg itself needs >=dev-util/unicorn-2.1.4, while
 # pwndbg also depends on dev-util/pwntools which needs <dev-util/unicorn-2.1.4.
