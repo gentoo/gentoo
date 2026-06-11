@@ -198,7 +198,6 @@ dev-python/ipdb
 # dependencies outside the cycle.
 # Removal on 2026-06-08.  Bug #973008.
 dev-python/dockerpty
-dev-python/doublex-expects
 
 # Sam James <sam@gentoo.org> (2026-05-05)
 # dev-debug/pwndbg itself needs >=dev-util/unicorn-2.1.4, while
