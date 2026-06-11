@@ -171,17 +171,6 @@ dev-python/flask-nav
 # Removal on 2026-06-10. Bug #953050.
 dev-python/chump
 
-# Pacho Ramos <pacho@gentoo.org> (2026-05-09)
-# Obsolete version not compatible with current gnome-shell versions.
-# Upstream changed completely the way to package it. If still interested,
-# feel free to take it and update it. Removal in one month. Bug #974452
-gnome-extra/gnome-shell-extension-bluetooth-quick-connect
-
-# Pacho Ramos <pacho@gentoo.org> (2026-05-09)
-# No longer developed by upstream, does not work with current gnome-shell
-# versions. Removal in one month. Bug #974453
-gnome-extra/gnome-shell-extension-bluetooth-quick-connect
-
 # Sam James <sam@gentoo.org> (2026-05-05)
 # dev-debug/pwndbg itself needs >=dev-util/unicorn-2.1.4, while
 # pwndbg also depends on dev-util/pwntools which needs <dev-util/unicorn-2.1.4.
