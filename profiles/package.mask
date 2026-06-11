@@ -209,12 +209,6 @@ dev-python/mamba
 dev-python/js2py
 dev-python/pyjsparser
 
-# Michał Górny <mgorny@gentoo.org> (2026-05-09)
-# Discontinued split compression library from app-arch/upx.  It was
-# replaced by a vendored version, and has no reverse dependencies.
-# Removal on 2026-06-08.  Bug #921202.
-dev-libs/ucl
-
 # Sam James <sam@gentoo.org> (2026-05-05)
 # dev-debug/pwndbg itself needs >=dev-util/unicorn-2.1.4, while
 # pwndbg also depends on dev-util/pwntools which needs <dev-util/unicorn-2.1.4.
