@@ -202,12 +202,6 @@ dev-python/doublex-expects
 dev-python/expects
 dev-python/mamba
 
-# Michał Górny <mgorny@gentoo.org> (2026-05-09)
-# Unmaintained, bad quality packages.  No support for Python 3.13.
-# No reverse dependencies.
-# Removal on 2026-06-08.  Bug #952373.
-dev-python/js2py
-
 # Sam James <sam@gentoo.org> (2026-05-05)
 # dev-debug/pwndbg itself needs >=dev-util/unicorn-2.1.4, while
 # pwndbg also depends on dev-util/pwntools which needs <dev-util/unicorn-2.1.4.
