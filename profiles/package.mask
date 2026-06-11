@@ -225,7 +225,6 @@ acct-user/buildbot
 dev-util/buildbot
 dev-util/buildbot-badges
 dev-util/buildbot-console-view
-dev-util/buildbot-grid-view
 
 # Sam James <sam@gentoo.org> (2026-05-05)
 # dev-debug/pwndbg itself needs >=dev-util/unicorn-2.1.4, while
