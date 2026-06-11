@@ -14,7 +14,7 @@ LICENSE="Apache-2.0"
 LICENSE+=" BSD BSD-2 CC-BY-SA-4.0 ISC MIT MPL-2.0"
 
 SLOT="0"
-IUSE="apparmor btrfs +seccomp systemd test"
+IUSE="apparmor btrfs +seccomp selinux systemd test"
 RESTRICT="test"
 
 if [[ ${PV} == 9999* ]]; then
@@ -26,7 +26,7 @@ else
 fi
 
 RDEPEND="
-	>=app-containers/container-libs-0.68.0
+	>=app-containers/container-libs-0.68.0[extra]
 	app-crypt/gpgme:=
 	dev-db/sqlite:3=
 	dev-libs/libgpg-error:=
@@ -35,6 +35,7 @@ RDEPEND="
 	apparmor? ( sys-libs/libapparmor:= )
 	btrfs? ( sys-fs/btrfs-progs )
 	seccomp? ( sys-libs/libseccomp:= )
+	selinux? ( sec-policy/selinux-podman sys-libs/libselinux:= )
 	systemd? ( sys-apps/systemd )
 "
 DEPEND="${RDEPEND}"
@@ -59,7 +60,7 @@ src_prepare() {
 	# ensure all  necessary files are there
 	local file
 	for file in docs/Makefile hack/libsubid_tag.sh hack/apparmor_tag.sh \
-		hack/systemd_tag.sh hack/sqlite_tag.sh btrfs_installed_tag.sh; do
+		hack/systemd_tag.sh btrfs_installed_tag.sh; do
 		[[ -f "${file}" ]] || die
 	done
 
@@ -83,13 +84,8 @@ src_prepare() {
 	$(usex btrfs echo 'echo exclude_graphdriver_btrfs')
 	EOF
 
-	# instead of statically compiling sqlite into binary dynamically link it
-	# for better security and smaller binary size.
-	# Refer https://github.com/containers/buildah/commit/e5b8765
-	cat <<-EOF > hack/sqlite_tag.sh || die
-	#!/usr/bin/env bash
-	echo libsqlite3
-	EOF
+	# hardcode using system sqlite instead of bundled one
+	[[ -f hack/sqlite_tag.sh ]] && echo -e '#!/usr/bin/env bash\necho libsqlite3' > hack/sqlite_tag.sh || die
 
 	use test || eapply "${FILESDIR}/${PN}-1.44.0-disable-tests.patch"
 }
