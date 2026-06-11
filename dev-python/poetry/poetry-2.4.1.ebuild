@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
 PYPI_VERIFY_REPO=https://github.com/python-poetry/poetry
-PYTHON_COMPAT=( python3_{12..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1 pypi
 
@@ -48,10 +48,11 @@ BDEPEND="
 		>=dev-python/jaraco-classes-3.3.1[${PYTHON_USEDEP}]
 		>=dev-python/pytest-mock-3.9[${PYTHON_USEDEP}]
 		dev-python/responses[${PYTHON_USEDEP}]
+		dev-python/keyring[${PYTHON_USEDEP}]
 	)
 "
 
-EPYTEST_PLUGINS=( pytest-mock )
+EPYTEST_PLUGINS=( pytest-{mock,xdist} )
 EPYTEST_RERUNS=5
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
@@ -63,10 +64,6 @@ EPYTEST_DESELECT=(
 
 	# broken if poetry-plugin-export is installed
 	'tests/console/test_application_command_not_found.py::test_application_command_not_found_messages[x-None]'
-
-	# whitespace differences
-	# https://github.com/python-poetry/poetry/issues/10796
-	'tests/console/commands/python/test_python_list.py::test_list_poetry_managed[False]'
 )
 
 src_prepare() {
