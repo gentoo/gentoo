@@ -163,7 +163,6 @@ app-editors/cursor
 # Unmaintained since 2017, no revdeps.
 # Removal on 2026-06-10. Bug #974496.
 dev-python/flask-debug
-dev-python/flask-nav
 
 # Sam James <sam@gentoo.org> (2026-05-05)
 # dev-debug/pwndbg itself needs >=dev-util/unicorn-2.1.4, while
