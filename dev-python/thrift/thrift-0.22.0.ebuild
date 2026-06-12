@@ -33,6 +33,5 @@ python_test() {
 src_install() {
 	distutils-r1_src_install
 	# avoid file collision with dev-libs/thrift (bug #933272)
-	mv "${D}"/usr/share/doc/${P}/README.md \
-		"${D}"/usr/share/doc/${P}/ReadMe.md || die
+	mv "${ED}"/usr/share/doc/${PF}/{README,ReadMe}.md || die
 }
