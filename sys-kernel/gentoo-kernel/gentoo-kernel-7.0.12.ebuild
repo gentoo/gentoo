@@ -38,10 +38,11 @@ SRC_URI+="
 "
 S=${WORKDIR}/${BASE_P}
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="debug hardened"
 REQUIRED_USE="
 	hppa? ( savedconfig )
+	mips? ( savedconfig )
 "
 
 BDEPEND="
@@ -87,7 +88,7 @@ src_prepare() {
 
 	# prepare the default config
 	case ${ARCH} in
-		hppa )
+		hppa | mips)
 			> .config || die
 		;;
 		alpha)
