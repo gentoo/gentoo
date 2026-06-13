@@ -88,7 +88,7 @@ src_prepare() {
 
 	# prepare the default config
 	case ${ARCH} in
-		arm | hppa | loong )
+		arm | hppa )
 			> .config || die
 		;;
 		amd64)
@@ -97,6 +97,12 @@ src_prepare() {
 		arm64)
 			cp "${WORKDIR}/kernel-${CONFIG_VER}/kernel-aarch64-fedora.config" .config || die
 			biendian=true
+			;;
+		loong)
+			cp "${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/config" .config || die
+			merge_configs+=(
+				"${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/Loong64/config"
+			)
 			;;
 		ppc)
 			cp "${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/config" .config || die
@@ -120,6 +126,7 @@ src_prepare() {
 				"${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/sparc64/config.sparc64" \
 				"${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/sparc64/config.sparc64-smp"
 			)
+			;;
 		x86)
 			cp "${WORKDIR}/kernel-${CONFIG_VER}/kernel-i686-fedora.config" .config || die
 			;;
