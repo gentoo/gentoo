@@ -127,9 +127,8 @@ src_test() {
 	einfo "Testing jna-platform"
 	JAVA_TEST_RUN_ONLY=( com.sun.jna.platform.linux.XAttrUtilTest )	# If not run first, it would fail.
 	JAVA_TEST_SRC_DIR="contrib/platform/test"
-	pushd "${JAVA_TEST_SRC_DIR}" > /dev/null || die
-		local JAVA_TEST_RUN_LATER=$(find * -name '*Test.java' ! -name 'XAttrUtilTest.java' )
-	popd
+	local JAVA_TEST_RUN_LATER=$(find ${JAVA_TEST_SRC_DIR} \
+		! -name 'XAttrUtilTest.java' -name '*Test.java' -printf '%P\n')
 	JAVA_TEST_RUN_LATER="${JAVA_TEST_RUN_LATER//.java}"
 	JAVA_TEST_RUN_ONLY+=( ${JAVA_TEST_RUN_LATER//\//.} )
 	java-pkg-simple_src_test
@@ -146,20 +145,17 @@ src_test() {
 	JAVA_TEST_RUN_ONLY+=( com.sun.jna.TypeMapperTest )
 	JAVA_TEST_RUN_ONLY+=( com.sun.jna.NativeTest )
 
-	pushd "${JAVA_TEST_SRC_DIR}" > /dev/null || die
-		# Here, those tests which were moved to top of the array are excluded.
-		# Also exclude 2 tests which must not run before the others.
-		local JAVA_TEST_RUN_LATER=$(find * \
-			-name "*Test.java" \
-			! -name 'CallbacksTest.java' \
-			! -name 'DirectTest.java' \
-			! -name 'UnionTest.java' \
-			! -name 'TypeMapperTest.java' \
-			! -name 'NativeTest.java' \
-			! -name 'DirectCallbacksTest.java' \
-			! -name 'VMCrashProtectionTest.java' \
-			)
-	popd
+	# Here, those tests which were moved to top of the array are excluded.
+	# Also exclude 2 tests which must not run before the others.
+	local JAVA_TEST_RUN_LATER=$(find test \
+		-name "*Test.java" \
+		! -name 'CallbacksTest.java' \
+		! -name 'DirectTest.java' \
+		! -name 'UnionTest.java' \
+		! -name 'TypeMapperTest.java' \
+		! -name 'NativeTest.java' \
+		! -name 'DirectCallbacksTest.java' \
+		! -name 'VMCrashProtectionTest.java' -printf '%P\n')
 	JAVA_TEST_RUN_LATER="${JAVA_TEST_RUN_LATER//.java}"
 	JAVA_TEST_RUN_ONLY+=( ${JAVA_TEST_RUN_LATER//\//.} )
 
