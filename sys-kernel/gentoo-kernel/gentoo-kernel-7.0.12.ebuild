@@ -41,7 +41,6 @@ S=${WORKDIR}/${BASE_P}
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="debug hardened"
 REQUIRED_USE="
-	arm? ( savedconfig )
 	hppa? ( savedconfig )
 "
 
@@ -94,6 +93,13 @@ src_prepare() {
 		amd64)
 			cp "${WORKDIR}/kernel-${CONFIG_VER}/kernel-x86_64-fedora.config" .config || die
 			;;
+		arm)
+			cp "${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/config" .config || die
+			merge_configs+=(
+				"${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/armhf/config" \
+				"${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/armhf/config.armmp-lpae"
+			)
+			;;
 		arm64)
 			cp "${WORKDIR}/kernel-${CONFIG_VER}/kernel-aarch64-fedora.config" .config || die
 			biendian=true
@@ -101,7 +107,7 @@ src_prepare() {
 		loong)
 			cp "${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/config" .config || die
 			merge_configs+=(
-				"${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/Loong64/config"
+				"${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/loong64/config"
 			)
 			;;
 		ppc)
