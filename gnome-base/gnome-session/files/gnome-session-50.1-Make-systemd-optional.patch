@@ -1,0 +1,198 @@
+From c17b5b56bcfcc0eba899295da7c79fb3ac98fd45 Mon Sep 17 00:00:00 2001
+From: Swagtoy <me@ow.swag.toys>
+Date: Fri, 20 Mar 2026 19:43:57 -0400
+Subject: [PATCH] Make systemd optional
+
+Starting from gnome session 49 onwards, systemd was integrated via a
+leader, ctl, and a service file. This is fine; however, this was also
+intentionally designed to allow for other leaders/ctl/tools to be
+injected (such as the efforts with gnome-session-openrc).
+
+Despite this, systemd still remains a required dependency and you
+cannot install gnome-session without it. Now, systemd is specified as
+an meson option. It intentionally isn't a fallback if systemd isn't
+found (like `required: false`) to ensure that non-systemd systems will
+still error out, or in interesting cases where multiple binaries will
+get built and could have both elogind and systemd stashed
+somewhere. In either case, I don't think it's inappropriate to make it
+an option, since it completely changes the way gnome-session builds
+and functions too.
+
+If on, things will function as they would before this commit,
+otherwise, it will toggle on elogind as a fallback so things still
+function, disable the systemd leader, stop installing the unit files,
+and tools. This ultimately opens the doors for things like
+gnome-session-openrc 'to work,' by allowing for a custom leader,
+tools, etc.
+
+Signed-off-by: Swagtoy <me@ow.swag.toys>
+---
+ data/meson.build          | 47 +++++++++++++++++++++------------------
+ gnome-session/meson.build |  3 +++
+ meson.build               |  9 ++++++--
+ meson_options.txt         |  1 +
+ tools/meson.build         |  5 ++++-
+ 5 files changed, 40 insertions(+), 25 deletions(-)
+
+diff --git a/data/meson.build b/data/meson.build
+index 3e5401a0..7db0497c 100644
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -16,11 +16,12 @@ i18n.merge_file(
+ )
+ 
+ # Next, let's install the necessary systemd scaffolding
+-
+-install_data(
+-    'gnome.session.conf',
+-    install_dir: systemd_userunitdir / 'gnome-session@gnome.target.d',
+-)
++if get_option('systemd')
++  install_data(
++      'gnome.session.conf',
++      install_dir: systemd_userunitdir / 'gnome-session@gnome.target.d',
++  )
++endif
+ 
+ systemd_service = [
+   'gnome-session-manager@.service',
+@@ -33,7 +34,7 @@ foreach service: systemd_service
+   configure_file(
+     input: service + '.in',
+     output: service,
+-    install: true,
++    install: get_option('systemd'),
+     install_dir: systemd_userunitdir,
+     configuration: {
+       'libexecdir': session_libexecdir,
+@@ -54,25 +55,27 @@ systemd_target = [
+   'gnome-session-x11-services-ready.target',
+ ]
+ 
+-install_data(
+-  systemd_target,
+-  install_dir: systemd_userunitdir
+-)
++if get_option('systemd')
++  install_data(
++    systemd_target,
++    install_dir: systemd_userunitdir
++  )
+ 
+-# Install resource limits that are applied to GNOME-launched apps
++  # Install resource limits that are applied to GNOME-launched apps
+ 
+-install_data(
+-  'app-override.scope.conf',
+-  rename: 'override.conf',
+-  install_dir : join_paths(systemd_userunitdir, 'app-gnome-.scope.d')
+-)
++  install_data(
++    'app-override.scope.conf',
++    rename: 'override.conf',
++    install_dir : join_paths(systemd_userunitdir, 'app-gnome-.scope.d')
++  )
+ 
+-# FIXME: https://github.com/systemd/systemd/issues/37104
+-install_data(
+-  'app-override.scope.conf',
+-  rename: 'override.conf',
+-  install_dir : join_paths(systemd_userunitdir, 'app-flatpak-.scope.d')
+-)
++  # FIXME: https://github.com/systemd/systemd/issues/37104
++  install_data(
++    'app-override.scope.conf',
++    rename: 'override.conf',
++    install_dir : join_paths(systemd_userunitdir, 'app-flatpak-.scope.d')
++  )
++endif
+ 
+ # Install some other misc. configuration files
+ 
+diff --git a/gnome-session/meson.build b/gnome-session/meson.build
+index 67774960..ae50409b 100644
+--- a/gnome-session/meson.build
++++ b/gnome-session/meson.build
+@@ -19,11 +19,14 @@ executable(
+   install_dir: session_bindir
+ )
+ 
++# If you are not using systemd, you must supply your own leader
+ sources = files(
+     'gsm-util.c',
+     'leader-systemd.c',
+ )
+ 
++sources = get_option('systemd') and sources or disabler()
++
+ executable(
+   meson.project_name() + '-init-worker',
+   sources,
+diff --git a/meson.build b/meson.build
+index 2b9d524c..dbab0821 100644
+--- a/meson.build
++++ b/meson.build
+@@ -86,17 +86,21 @@ session_deps = [
+   dependency('gnome-desktop-4'),
+ ]
+ 
+-libsystemd_dep = dependency('libsystemd', version: '>= 209', required: true)
++libsystemd_dep = dependency('libsystemd', version: '>= 209', required: get_option('systemd'), disabler: true)
+ config_h.set('SYSTEMD_STRICT_ENV',
+               libsystemd_dep.version().version_compare('< 248'))
+ 
++if not libsystemd_dep.found()
++  libsystemd_dep = dependency('libelogind', version: '>=209', required: true)
++endif
++
+ session_bin_deps = session_deps + [
+   libsystemd_dep,
+   dependency('gio-unix-2.0', version: glib_req_version),
+ ]
+ 
+ systemd_userunitdir = get_option('systemduserunitdir')
+-if systemd_userunitdir == ''
++if systemd_userunitdir == '' and libsystemd_dep.name() != 'libelogind'
+   systemd_dep = dependency('systemd', version: '>= 242', required: true)
+   systemd_userunitdir = systemd_dep.get_variable(pkgconfig: 'systemduserunitdir',
+                                                  pkgconfig_define: ['prefix', session_prefix])
+@@ -130,6 +134,7 @@ summary_options = {
+  'Use *_DISABLE_DEPRECATED': get_option('deprecation_flags'),
+  'Build Docbook': get_option('docbook'),
+  'Build manpages': get_option('man'),
++ 'Systemd Integration': get_option('systemd'),
+  'Systemd Units Directory': systemd_userunitdir,
+ }
+ 
+diff --git a/meson_options.txt b/meson_options.txt
+index e1d1afae..bca3e40d 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -1,4 +1,5 @@
+ option('deprecation_flags', type: 'boolean', value: false, description: 'use *_DISABLE_DEPRECATED flags')
++option('systemd', type: 'boolean', value: true, description: 'Systemd integration, leader, etc.')
+ option('systemduserunitdir', type: 'string', description: 'Directory for systemd user service files')
+ option('docbook', type: 'boolean', value: true, description: 'build documentation')
+ option('man', type: 'boolean', value: true, description: 'build documentation (requires xmlto)')
+diff --git a/tools/meson.build b/tools/meson.build
+index c453093e..f1060b77 100644
+--- a/tools/meson.build
++++ b/tools/meson.build
+@@ -1,10 +1,13 @@
+ programs = [
+   # name, deps, install_dir
+-  ['gnome-session-ctl', session_bin_deps, session_libexecdir],
+   ['gnome-session-inhibit', session_deps, session_bindir],
+   ['gnome-session-quit', session_deps, session_bindir],
+ ]
+ 
++if get_option('systemd')
++  programs += ['gnome-session-ctl', session_bin_deps, session_libexecdir]
++endif
++
+ foreach program: programs
+   executable(
+     program[0],
+-- 
+2.53.0
+
