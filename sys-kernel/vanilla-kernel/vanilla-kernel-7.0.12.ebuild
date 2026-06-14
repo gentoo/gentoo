@@ -38,7 +38,6 @@ S=${WORKDIR}/${BASE_P}
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="debug hardened"
 REQUIRED_USE="
-	arm? ( savedconfig )
 	hppa? ( savedconfig )
 	sparc? ( savedconfig )
 "
@@ -79,7 +78,7 @@ src_prepare() {
 
 	# prepare the default config
 	case ${ARCH} in
-		arm | hppa | loong | sparc)
+		hppa | loong | sparc)
 			> .config || die
 		;;
 		alpha)
@@ -87,6 +86,13 @@ src_prepare() {
 			merge_configs+=(
 				"${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/alpha/config" \
 				"${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/alpha/config.alpha-smp"
+			)
+			;;
+		arm)
+			cp "${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/config" .config || die
+			merge_configs+=(
+				"${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/armhf/config" \
+				"${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/armhf/config.armmp-lpae"
 			)
 			;;
 		amd64)
