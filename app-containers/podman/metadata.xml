@@ -26,6 +26,9 @@
 		<flag name="btrfs">
 			Enable btrfs support (graph driver) in Podman
 		</flag>
+		<flag name="cron">
+			Installs cron script to automatically update running containers image to newest
+		</flag>
 		<flag name="wrapper">
 			Install a wrapper to allow using `podman` as a drop-in replacement for `docker`
 		</flag>
