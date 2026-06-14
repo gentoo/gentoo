@@ -13,6 +13,9 @@ BASE_P=linux-${PV%.*}
 CONFIG_VER=7.0.8-gentoo
 GENTOO_CONFIG_P=gentoo-kernel-config-g19
 SHA256SUM_DATE=20260609
+# Debian kconfig commit from:
+# https://salsa.debian.org/kernel-team/linux/-/tree/debian/latest/debian/
+DEBIAN_COMMIT=bbe2e99bce4a7dffe34cf06303aec2fac49fbf56
 
 DESCRIPTION="Linux kernel built from vanilla upstream sources"
 HOMEPAGE="
@@ -24,6 +27,7 @@ SRC_URI+="
 	https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/patch-${PV}.xz
 	https://gitweb.gentoo.org/proj/dist-kernel/gentoo-kernel-config.git/snapshot/${GENTOO_CONFIG_P}.tar.bz2
 	https://gitweb.gentoo.org/fork/fedora/kernel.git/snapshot/kernel-${CONFIG_VER}.tar.bz2
+	https://salsa.debian.org/kernel-team/linux/-/archive/${DEBIAN_COMMIT}/linux-${DEBIAN_COMMIT}.tar.bz2
 	verify-sig? (
 		https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/sha256sums.asc
 			-> linux-$(ver_cut 1).x-sha256sums-${SHA256SUM_DATE}.asc
@@ -86,9 +90,10 @@ src_prepare() {
 			biendian=true
 			;;
 		ppc)
-			# assume powermac/powerbook defconfig
-			# we still package.use.force savedconfig
-			cp "arch/powerpc/configs/pmac32_defconfig" .config || die
+			cp "${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/config" .config || die
+			merge_configs+=(
+				"${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/powerpc/config.powerpc"
+			)
 			;;
 		ppc64)
 			cp "${WORKDIR}/kernel-${CONFIG_VER}/kernel-ppc64le-fedora.config" .config || die
