@@ -39,7 +39,6 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~ppc ~ppc64 ~riscv ~s390 
 IUSE="debug hardened"
 REQUIRED_USE="
 	hppa? ( savedconfig )
-	sparc? ( savedconfig )
 "
 
 BDEPEND="
@@ -78,7 +77,7 @@ src_prepare() {
 
 	# prepare the default config
 	case ${ARCH} in
-		hppa | sparc)
+		hppa )
 			> .config || die
 		;;
 		alpha)
@@ -129,6 +128,13 @@ src_prepare() {
 			;;
 		s390)
 			cp "${WORKDIR}/kernel-${CONFIG_VER}/kernel-s390x-fedora.config" .config || die
+			;;
+		sparc)
+			cp "${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/config" .config || die
+			merge_configs+=(
+				"${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/sparc64/config.sparc64" \
+				"${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/sparc64/config.sparc64-smp"
+			)
 			;;
 		x86)
 			cp "${WORKDIR}/kernel-${CONFIG_VER}/kernel-i686-fedora.config" .config || die
