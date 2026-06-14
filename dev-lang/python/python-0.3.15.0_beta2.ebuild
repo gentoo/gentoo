@@ -32,7 +32,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="PSF-2"
 SLOT="${PYVER}"
 IUSE="
-	bluetooth debug +ensurepip examples gdbm libedit +ncurses pgo
+	bluetooth build debug +ensurepip examples gdbm libedit +ncurses pgo
 	+readline +sqlite +ssl tail-call-interp test tk valgrind
 "
 RESTRICT="!test? ( test )"
@@ -45,7 +45,6 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	app-arch/bzip2:=
 	app-arch/xz-utils:=
-	app-arch/zstd:=
 	app-misc/mime-types
 	>=dev-libs/expat-2.1:=
 	dev-libs/libffi:=
@@ -54,6 +53,7 @@ RDEPEND="
 	sys-apps/util-linux
 	>=virtual/zlib-1.1.3:=
 	virtual/libintl
+	!build? ( app-arch/zstd:= )
 	gdbm? ( sys-libs/gdbm:=[berkdb] )
 	ncurses? ( >=sys-libs/ncurses-5.2:= )
 	readline? (
@@ -422,6 +422,7 @@ src_configure() {
 	cat > Modules/Setup.local <<-EOF || die
 		*disabled*
 		nis
+		$(usev build '_zstd')
 		$(usev !gdbm '_gdbm _dbm')
 		$(usev !sqlite '_sqlite3')
 		$(usev !ssl '_hashlib _ssl')
