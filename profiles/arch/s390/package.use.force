@@ -1,5 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Emi <reedy.sailors.8t@icloud.com> (2026-06-14)
+# Force aspell since that is the only valid option for now.
+app-text/enchant aspell
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2022-04-20)
 # s390-tools (in @system) needs this for building some bootloader code
