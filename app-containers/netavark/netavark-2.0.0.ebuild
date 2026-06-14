@@ -25,6 +25,10 @@ LICENSE="Apache-2.0"
 LICENSE+=" Apache-2.0-with-LLVM-exceptions BSD BSD-2 Boost-1.0 MIT Unicode-DFS-2016 Unlicense ZLIB"
 SLOT="0"
 
+RDEPEND=">=app-containers/aardvark-dns-2.0.0
+	net-firewall/nftables[json]
+	!<app-contaniers/buildah-1.44.0
+	!<app-containers/podman-6.0.0"
 BDEPEND="dev-go/go-md2man
 	dev-libs/protobuf[protoc(+)]"
 
