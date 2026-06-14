@@ -35,7 +35,7 @@ SRC_URI+="
 "
 S=${WORKDIR}/${BASE_P}
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="debug hardened"
 REQUIRED_USE="
 	hppa? ( savedconfig )
@@ -106,6 +106,12 @@ src_prepare() {
 			cp "${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/config" .config || die
 			merge_configs+=(
 				"${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/loong64/config"
+			)
+			;;
+		m68k)
+			cp "${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/config" .config || die
+			merge_configs+=(
+				"${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/m68k/config"
 			)
 			;;
 		ppc)
