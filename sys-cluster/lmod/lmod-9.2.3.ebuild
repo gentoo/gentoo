@@ -37,9 +37,7 @@ RDEPEND="${LUA_DEPS}
 BDEPEND="${RDEPEND}
 	app-alternatives/bc
 	test? (
-		$(lua_gen_cond_dep '
-			>=dev-util/hermes-3.1[${LUA_SINGLE_USEDEP}]
-		')
+		>=dev-util/hermes-3.1[${LUA_SINGLE_USEDEP}]
 		app-shells/tcsh
 	)
 	virtual/pkgconfig
