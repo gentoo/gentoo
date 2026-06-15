@@ -55,5 +55,7 @@ src_install() {
 	dodir /opt/hermes
 	cp -r "${S}"/. "${ED}"/opt/hermes/ || die
 
-	doenvd "${FILESDIR}"/99hermes
+	newenvd - 99hermes <<- _EOF_
+		PATH="${EPREFIX}/opt/hermes/bin"
+	_EOF_
 }
