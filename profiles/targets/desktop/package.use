@@ -1,6 +1,11 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ian Jordan <immoloism@gmail.com> (2026-06-15)
+# Circular depend on webp and tiff #972473
+# Helps users going from a basic to desktop profile.
+media-libs/libwebp -tiff
+
 # Ian Jordan <immoloism@gmail.com> (2026-01-14)
 # Use PipeWire sound server. It also acts as PulseAudio implementation for
 # packages using media-libs/libpulse (e.g. via USE="pulseaudio").
