@@ -28,14 +28,6 @@ that you just don't have customised sounds, which isn't so bad.
    have_wav_parse = run_command(
      gst_inspect, 'wavparse', '--exists',
      check: false,
-@@ -141,6 +142,7 @@ if gst_inspect.found()
- else
-   have_wav_parse = false
- endif
-+
- if have_wav_parse
-   config_h.set('HAVE_WAV_PARSE', 1)
- endif
 @@ -233,7 +235,7 @@ enable_tests = get_option('tests') \
    .require(python.found() and python.language_version().version_compare('>=3.9'),
             error_message: 'Python version >=3.9 is required') \
