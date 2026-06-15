@@ -34,8 +34,8 @@
 		</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">containers/podman</remote-id>
-		<bugs-to>https://github.com/containers/podman/issues</bugs-to>
+		<remote-id type="github">podman-container-tools/podman</remote-id>
+		<bugs-to>https://github.com/podman-container-tools/podman/issues</bugs-to>
 		<doc>https://podman.io/docs</doc>
 	</upstream>
 </pkgmetadata>

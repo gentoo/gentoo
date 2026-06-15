@@ -8,13 +8,13 @@ PYTHON_COMPAT=( python3_{12..14} )
 inherit go-module python-any-r1 tmpfiles toolchain-funcs linux-info
 
 DESCRIPTION="A tool for managing OCI containers and pods with Docker-compatible CLI"
-HOMEPAGE="https://github.com/containers/podman/ https://podman.io/"
+HOMEPAGE="https://github.com/podman-container-tools/podman/ https://podman.io/"
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/containers/podman.git"
+	EGIT_REPO_URI="https://github.com/podman-container-tools/podman.git"
 else
-	SRC_URI="https://github.com/containers/podman/archive/v${PV/_rc/-rc}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/podman-container-tools/podman/archive/v${PV/_rc/-rc}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${P/_rc/-rc}"
 	[[ ${PV} != *rc* ]] && \
 		KEYWORDS="~amd64 ~arm64 ~loong ~riscv"
