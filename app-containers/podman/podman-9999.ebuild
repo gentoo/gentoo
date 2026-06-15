@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit go-module python-any-r1 tmpfiles toolchain-funcs linux-info
 
@@ -31,8 +31,9 @@ RESTRICT="test"
 RDEPEND="
 	app-containers/catatonit
 	>=app-containers/conmon-2.1.10
-	>=app-containers/containers-common-0.58.0-r1
+	>=app-containers/container-libs-0.68.0[extra]
 	app-crypt/gpgme:=
+	dev-db/sqlite:3
 	dev-libs/libassuan:=
 	dev-libs/libgpg-error:=
 	sys-apps/shadow:=
@@ -47,7 +48,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
-	>=dev-lang/go-1.25.0
+	>=dev-lang/go-1.25.7
 	dev-go/go-md2man
 "
 
@@ -86,6 +87,9 @@ src_prepare() {
 	#!/usr/bin/env bash
 	$(usex btrfs echo 'echo exclude_graphdriver_btrfs')
 	EOF
+
+	# hardcode using system sqlite instead of bundled one
+	[[ -f hack/sqlite_tag.sh ]] && echo -e '#!/usr/bin/env bash\necho libsqlite3' > hack/sqlite_tag.sh || die
 }
 
 src_compile() {
