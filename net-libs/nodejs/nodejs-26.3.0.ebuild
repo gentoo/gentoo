@@ -19,10 +19,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/nodejs/node"
 	SLOT="0"
 else
-	SRC_URI="
-		https://nodejs.org/dist/v${PV}/node-v${PV}.tar.xz
-		https://deps.gentoo.zip/net-libs/nodejs/nodejs-24.16.0-nghttp2-1.69.0.patch
-	"
+	SRC_URI="https://nodejs.org/dist/v${PV}/node-v${PV}.tar.xz"
 	SLOT="0/$(ver_cut 1)"
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86 ~x64-macos"
 	S="${WORKDIR}/node-v${PV}"
