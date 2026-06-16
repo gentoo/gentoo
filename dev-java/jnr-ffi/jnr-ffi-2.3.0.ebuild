@@ -42,7 +42,6 @@ PATCHES=(
 
 JAVA_SRC_DIR="src/main/java"
 JAVA_TEST_EXTRA_ARGS=( -Djava.library.path=build )
-JAVA_TEST_GENTOO_CLASSPATH="junit-5 opentest4j"
 JAVA_TEST_SRC_DIR="src/test/java"
 
 src_test() {
