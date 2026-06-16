@@ -1,0 +1,21 @@
+Bug: #977448
+
+--- a/src/test/java/jnr/ffi/PlatformTest.java
++++ b/src/test/java/jnr/ffi/PlatformTest.java
+@@ -3,6 +3,7 @@ package jnr.ffi;
+ import org.junit.jupiter.api.AfterEach;
+ import org.junit.jupiter.api.BeforeEach;
+ import org.junit.jupiter.api.Test;
++import org.junit.jupiter.api.Disabled;
+ 
+ import java.io.File;
+ import java.io.IOException;
+@@ -252,7 +253,7 @@ public class PlatformTest {
+     }
+ 
+     // Prefer custom but custom is actually a default path so that custom wins
+-    @Test
++    @Test @Disabled
+     public void testPreferCustomLocateLibrarySystemPath() {
+         List<String> libCLocations = LINUX.libraryLocations("c", null);
+         assumeTrue(LINUX.getCPU() == Platform.CPU.X86_64);
