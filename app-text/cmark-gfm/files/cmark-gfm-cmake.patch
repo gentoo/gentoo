@@ -1,0 +1,315 @@
+https://github.com/github/cmark-gfm/pull/390
+
+From db763b8abafd7a3c4561f59a14af673d6e5f6953 Mon Sep 17 00:00:00 2001
+From: Daichi Yamamoto <dev@dyama.net>
+Date: Mon, 25 May 2026 11:01:54 +0900
+Subject: [PATCH 1/4] Set CMake minimum version to 4.0
+
+Source:
+  - https://gitweb.gentoo.org/repo/proj/guru.git/commit/app-text/cmark-gfm/files/cmake-minimum-required.patch?id=24b13f11
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a6a663c81..72b72e0df 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 4.0)
+ project(cmark-gfm)
+ 
+ set(PROJECT_VERSION_MAJOR 0)
+
+From 167c25e7e8b561747a74b3ebee2a4c2928d46406 Mon Sep 17 00:00:00 2001
+From: Aliaksei Urbanski <aliaksei.urbanski@gmail.com>
+Date: Sun, 14 Jun 2026 19:53:59 +0300
+Subject: [PATCH 2/4] Fix destinations for CMake files
+
+---
+ extensions/CMakeLists.txt | 5 ++++-
+ src/CMakeLists.txt        | 5 ++++-
+ 2 files changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/extensions/CMakeLists.txt b/extensions/CMakeLists.txt
+index e545b6d6f..6ff350277 100644
+--- a/extensions/CMakeLists.txt
++++ b/extensions/CMakeLists.txt
+@@ -79,7 +79,10 @@ if (CMARK_SHARED OR CMARK_STATIC)
+   DESTINATION include
+   )
+ 
+-  install(EXPORT cmark-gfm-extensions DESTINATION lib${LIB_SUFFIX}/cmake-gfm-extensions)
++  install(
++    EXPORT cmark-gfm-extensions
++    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/cmark-gfm-extensions"
++  )
+ endif()
+ 
+ # Feature tests
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 84dd2a037..c01e7f148 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -175,7 +175,10 @@ if(CMARK_SHARED OR CMARK_STATIC)
+     DESTINATION include
+     )
+ 
+-  install(EXPORT cmark-gfm DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake)
++  install(
++    EXPORT cmark-gfm
++    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/cmark-gfm"
++  )
+ endif()
+ 
+ # Feature tests
+
+From c0c637559eb92ea95d9996f7dba85c03f3558a25 Mon Sep 17 00:00:00 2001
+From: Saleem Abdulrasool <compnerd@compnerd.org>
+Date: Sun, 14 Jun 2026 19:55:57 +0300
+Subject: [PATCH 3/4] Add config.cmake and config-version.cmake files
+
+These files are required in order to build Telegram Desktop.
+
+Co-authored-by: Aliaksei Urbanski <aliaksei.urbanski@gmail.com>
+Source: https://github.com/commonmark/cmark/commit/853cf7c9
+---
+ CMakeLists.txt                                |  1 +
+ extensions/CMakeLists.txt                     | 19 +++++++++++++++++++
+ .../cmark-gfm-extensions-config.cmake.in      |  4 ++++
+ src/CMakeLists.txt                            | 19 +++++++++++++++++++
+ src/cmark-gfm-config.cmake.in                 |  4 ++++
+ 5 files changed, 47 insertions(+)
+ create mode 100644 extensions/cmark-gfm-extensions-config.cmake.in
+ create mode 100644 src/cmark-gfm-config.cmake.in
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 72b72e0df..6b6c24b7d 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -7,6 +7,7 @@ set(PROJECT_VERSION_PATCH 0)
+ set(PROJECT_VERSION_GFM 13)
+ set(PROJECT_VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}.gfm.${PROJECT_VERSION_GFM})
+ 
++include(CMakePackageConfigHelpers)
+ include("FindAsan.cmake")
+ include("CheckFileOffsetBits.cmake")
+ 
+diff --git a/extensions/CMakeLists.txt b/extensions/CMakeLists.txt
+index 6ff350277..2d519431d 100644
+--- a/extensions/CMakeLists.txt
++++ b/extensions/CMakeLists.txt
+@@ -85,6 +85,25 @@ if (CMARK_SHARED OR CMARK_STATIC)
+   )
+ endif()
+ 
++# generate config and config-version files
++configure_package_config_file(
++  "cmark-gfm-extensions-config.cmake.in"
++  "${CMAKE_CURRENT_BINARY_DIR}/generated/cmark-gfm-extensions-config.cmake"
++  INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/cmark-gfm-extensions"
++)
++write_basic_package_version_file(
++  "${CMAKE_CURRENT_BINARY_DIR}/generated/cmark-gfm-extensions-config-version.cmake"
++  VERSION ${PROJECT_VERSION}
++  COMPATIBILITY SameMajorVersion
++)
++
++# install config and config-version files
++install(
++  FILES "${CMAKE_CURRENT_BINARY_DIR}/generated/cmark-gfm-extensions-config.cmake"
++        "${CMAKE_CURRENT_BINARY_DIR}/generated/cmark-gfm-extensions-config-version.cmake"
++  DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/cmark-gfm-extensions"
++)
++
+ # Feature tests
+ include(CheckIncludeFile)
+ include(CheckCSourceCompiles)
+diff --git a/extensions/cmark-gfm-extensions-config.cmake.in b/extensions/cmark-gfm-extensions-config.cmake.in
+new file mode 100644
+index 000000000..6340b7e75
+--- /dev/null
++++ b/extensions/cmark-gfm-extensions-config.cmake.in
+@@ -0,0 +1,4 @@
++@PACKAGE_INIT@
++
++include("${CMAKE_CURRENT_LIST_DIR}/cmark-gfm-extensions.cmake")
++check_required_components("cmark-gfm-extensions")
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index c01e7f148..99378cedd 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -181,6 +181,25 @@ if(CMARK_SHARED OR CMARK_STATIC)
+   )
+ endif()
+ 
++# generate config and config-version files
++configure_package_config_file(
++  "cmark-gfm-config.cmake.in"
++  "${CMAKE_CURRENT_BINARY_DIR}/generated/cmark-gfm-config.cmake"
++  INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/cmark-gfm"
++)
++write_basic_package_version_file(
++  "${CMAKE_CURRENT_BINARY_DIR}/generated/cmark-gfm-config-version.cmake"
++  VERSION ${PROJECT_VERSION}
++  COMPATIBILITY SameMajorVersion
++)
++
++# install config and config-version files
++install(
++  FILES "${CMAKE_CURRENT_BINARY_DIR}/generated/cmark-gfm-config.cmake"
++        "${CMAKE_CURRENT_BINARY_DIR}/generated/cmark-gfm-config-version.cmake"
++  DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/cmark-gfm"
++)
++
+ # Feature tests
+ include(CheckIncludeFile)
+ include(CheckCSourceCompiles)
+diff --git a/src/cmark-gfm-config.cmake.in b/src/cmark-gfm-config.cmake.in
+new file mode 100644
+index 000000000..7d33c17f6
+--- /dev/null
++++ b/src/cmark-gfm-config.cmake.in
+@@ -0,0 +1,4 @@
++@PACKAGE_INIT@
++
++include("${CMAKE_CURRENT_LIST_DIR}/cmark-gfm.cmake")
++check_required_components("cmark-gfm")
+
+From 44b03600799e84c4fc6fb800b93f2c8aa453e207 Mon Sep 17 00:00:00 2001
+From: Aliaksei Urbanski <aliaksei.urbanski@gmail.com>
+Date: Wed, 17 Jun 2026 22:15:18 +0300
+Subject: [PATCH 4/4] Fix missing Python interpreter for tests
+
+FindPythonInterp module was removed in CMake 3.27.
+https://cmake.org/cmake/help/v4.3/module/FindPythonInterp.html
+
+Using FindPython instead.
+https://cmake.org/cmake/help/v4.3/module/FindPython.html
+---
+ test/CMakeLists.txt | 35 +++++++++++++++++------------------
+ 1 file changed, 17 insertions(+), 18 deletions(-)
+
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+index 2b5c99bc5..5995c510d 100755
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -4,9 +4,9 @@
+ # To require the spec tests, compile with -DSPEC_TESTS=1
+ 
+ if (SPEC_TESTS)
+-  find_package(PythonInterp 3 REQUIRED)
++  find_package(Python 3 COMPONENTS Interpreter REQUIRED)
+ else(SPEC_TESTS)
+-  find_package(PythonInterp 3)
++  find_package(Python 3 COMPONENTS Interpreter)
+ endif(SPEC_TESTS)
+ 
+ if (CMARK_SHARED OR CMARK_STATIC)
+@@ -24,48 +24,48 @@ else(WIN32)
+   set(ROUNDTRIP "${CMAKE_CURRENT_SOURCE_DIR}/roundtrip.sh")
+ endif(WIN32)
+ 
+-IF (PYTHONINTERP_FOUND)
++if(Python_Interpreter_FOUND)
+ 
+   add_test(html_normalization
+-    ${PYTHON_EXECUTABLE} "-m" "doctest"
++    ${Python_EXECUTABLE} "-m" "doctest"
+     "${CMAKE_CURRENT_SOURCE_DIR}/normalize.py"
+     )
+ 
+   if (CMARK_SHARED)
+     add_test(spectest_library
+-      ${PYTHON_EXECUTABLE} "${CMAKE_CURRENT_SOURCE_DIR}/spec_tests.py" "--no-normalize" "--spec"
++      ${Python_EXECUTABLE} "${CMAKE_CURRENT_SOURCE_DIR}/spec_tests.py" "--no-normalize" "--spec"
+       "${CMAKE_CURRENT_SOURCE_DIR}/spec.txt" "--library-dir" "${CMAKE_CURRENT_BINARY_DIR}/../src"
+       )
+ 
+     add_test(pathological_tests_library
+-      ${PYTHON_EXECUTABLE} "${CMAKE_CURRENT_SOURCE_DIR}/pathological_tests.py"
++      ${Python_EXECUTABLE} "${CMAKE_CURRENT_SOURCE_DIR}/pathological_tests.py"
+       "--library-dir" "${CMAKE_CURRENT_BINARY_DIR}/../src"
+       )
+ 
+     add_test(roundtriptest_library
+-      ${PYTHON_EXECUTABLE}
++      ${Python_EXECUTABLE}
+       "${CMAKE_CURRENT_SOURCE_DIR}/roundtrip_tests.py"
+       "--spec" "${CMAKE_CURRENT_SOURCE_DIR}/spec.txt"
+       "--library-dir" "${CMAKE_CURRENT_BINARY_DIR}/../src"
+       )
+ 
+     add_test(entity_library
+-      ${PYTHON_EXECUTABLE}
++      ${Python_EXECUTABLE}
+       "${CMAKE_CURRENT_SOURCE_DIR}/entity_tests.py"
+       "--library-dir" "${CMAKE_CURRENT_BINARY_DIR}/../src"
+       )
+   endif()
+ 
+   add_test(spectest_executable
+-    ${PYTHON_EXECUTABLE} "${CMAKE_CURRENT_SOURCE_DIR}/spec_tests.py" "--no-normalize" "--spec" "${CMAKE_CURRENT_SOURCE_DIR}/spec.txt" "--program" "${CMAKE_CURRENT_BINARY_DIR}/../src/cmark-gfm"
++    ${Python_EXECUTABLE} "${CMAKE_CURRENT_SOURCE_DIR}/spec_tests.py" "--no-normalize" "--spec" "${CMAKE_CURRENT_SOURCE_DIR}/spec.txt" "--program" "${CMAKE_CURRENT_BINARY_DIR}/../src/cmark-gfm"
+     )
+ 
+   add_test(smartpuncttest_executable
+-    ${PYTHON_EXECUTABLE} "${CMAKE_CURRENT_SOURCE_DIR}/spec_tests.py" "--no-normalize" "--spec" "${CMAKE_CURRENT_SOURCE_DIR}/smart_punct.txt" "--program" "${CMAKE_CURRENT_BINARY_DIR}/../src/cmark-gfm --smart"
++    ${Python_EXECUTABLE} "${CMAKE_CURRENT_SOURCE_DIR}/spec_tests.py" "--no-normalize" "--spec" "${CMAKE_CURRENT_SOURCE_DIR}/smart_punct.txt" "--program" "${CMAKE_CURRENT_BINARY_DIR}/../src/cmark-gfm --smart"
+     )
+ 
+   add_test(extensions_executable
+-    ${PYTHON_EXECUTABLE}
++    ${Python_EXECUTABLE}
+     "${CMAKE_CURRENT_SOURCE_DIR}/spec_tests.py"
+     "--no-normalize"
+     "--spec" "${CMAKE_CURRENT_SOURCE_DIR}/extensions.txt"
+@@ -74,7 +74,7 @@ IF (PYTHONINTERP_FOUND)
+     )
+ 
+   add_test(roundtrip_extensions_executable
+-    ${PYTHON_EXECUTABLE}
++    ${Python_EXECUTABLE}
+     "${CMAKE_CURRENT_SOURCE_DIR}/roundtrip_tests.py"
+     "--spec" "${CMAKE_CURRENT_SOURCE_DIR}/extensions.txt"
+     "--program" "${CMAKE_CURRENT_BINARY_DIR}/../src/cmark-gfm"
+@@ -82,7 +82,7 @@ IF (PYTHONINTERP_FOUND)
+     )
+ 
+   add_test(option_table_prefer_style_attributes
+-    ${PYTHON_EXECUTABLE}
++    ${Python_EXECUTABLE}
+     "${CMAKE_CURRENT_SOURCE_DIR}/roundtrip_tests.py"
+     "--spec" "${CMAKE_CURRENT_SOURCE_DIR}/extensions-table-prefer-style-attributes.txt"
+     "--program" "${CMAKE_CURRENT_BINARY_DIR}/../src/cmark-gfm --table-prefer-style-attributes"
+@@ -90,25 +90,24 @@ IF (PYTHONINTERP_FOUND)
+     )
+ 
+   add_test(option_full_info_string
+-    ${PYTHON_EXECUTABLE}
++    ${Python_EXECUTABLE}
+     "${CMAKE_CURRENT_SOURCE_DIR}/roundtrip_tests.py"
+     "--spec" "${CMAKE_CURRENT_SOURCE_DIR}/extensions-full-info-string.txt"
+     "--program" "${CMAKE_CURRENT_BINARY_DIR}/../src/cmark-gfm --full-info-string"
+     )
+ 
+   add_test(regressiontest_executable
+-    ${PYTHON_EXECUTABLE}
++    ${Python_EXECUTABLE}
+     "${CMAKE_CURRENT_SOURCE_DIR}/spec_tests.py" "--no-normalize" "--spec"
+     "${CMAKE_CURRENT_SOURCE_DIR}/regression.txt" "--program"
+     "${CMAKE_CURRENT_BINARY_DIR}/../src/cmark-gfm"
+     )
+ 
+ 
+-ELSE(PYTHONINTERP_FOUND)
++else(Python_Interpreter_FOUND)
+ 
+   message("\n*** A python 3 interpreter is required to run the spec tests.\n")
+   add_test(skipping_spectests
+     echo "Skipping spec tests, because no python 3 interpreter is available.")
+ 
+-ENDIF(PYTHONINTERP_FOUND)
+-
++endif(Python_Interpreter_FOUND)
