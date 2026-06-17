@@ -25,7 +25,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
-	sed -i -e "s/'COPYING', //" -e "s/doc\/${PN}/doc\/${P}/" meson.build || die
+	sed -i -e "s/'COPYING', //" -e "s/doc\/${PN}/doc\/${P}/" -e "s/HEAD/DISABLE/" meson.build || die
 
 	default
 }
