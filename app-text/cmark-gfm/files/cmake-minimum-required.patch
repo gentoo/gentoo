@@ -1,8 +1,0 @@
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -1,4 +1,4 @@
--cmake_minimum_required(VERSION 3.0)
-+cmake_minimum_required(VERSION 4.0)
- project(cmark-gfm)
- 
- set(PROJECT_VERSION_MAJOR 0)
