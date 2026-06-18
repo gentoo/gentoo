@@ -3,13 +3,14 @@
 
 EAPI=8
 
-MY_PV="$(ver_rs 3 '.gfm.')"
 PYTHON_COMPAT=( python3_{12..15} )
 
 inherit cmake python-any-r1
 
 DESCRIPTION="GitHub's fork of cmark"
 HOMEPAGE="https://github.com/github/cmark-gfm"
+
+MY_PV="$(ver_rs 3 '.gfm.')"
 SRC_URI="https://github.com/github/cmark-gfm/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${MY_PV}"
 
@@ -23,7 +24,7 @@ DEPEND="test? ( ${PYTHON_DEPS} )"
 RESTRICT="!test? ( test )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-cmake.patch
+	"${FILESDIR}"/cmark-gfm-0.29.0.gfm.13-cmake4.patch
 )
 
 pkg_setup() {
@@ -35,7 +36,11 @@ src_configure() {
 		-DCMARK_LIB_FUZZER=OFF
 		-DCMARK_SHARED=ON
 		-DCMARK_STATIC=OFF
-		-DCMARK_TESTS="$(usex test)"
+		-DCMARK_TESTS=$(usex test)
 	)
+	if use test; then
+		# Force running all tests, avoid warning when option is unused
+		mycmakeargs+=( -DSPEC_TESTS=ON )
+	fi
 	cmake_src_configure
 }
