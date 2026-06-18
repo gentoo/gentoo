@@ -54,7 +54,7 @@ RDEPEND="
 	dev-libs/botan:3=
 	dev-libs/libusb:1
 	dev-libs/zxcvbn-c
-	dev-qt/qtbase:6[network]
+	dev-qt/qtbase:6[concurrent,network]
 	dev-qt/qtsvg:6
 	media-gfx/qrencode:=
 	sys-apps/pcsc-lite
