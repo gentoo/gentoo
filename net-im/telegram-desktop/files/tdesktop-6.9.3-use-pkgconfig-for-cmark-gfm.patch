@@ -1,0 +1,30 @@
+Use pkg-config file for cmark-gfm
+
+The upstream-provided cmake installation isn't set up to allow the use of
+find_package(), and while vcpkg has a patch for this[1], none of the linux
+distributions I've checked carry this. Thankfully, cmark-gfm carries a
+pkg-config file, which should be perfect for this situation.
+
+[1]: https://github.com/microsoft/vcpkg/blob/9dd12f8d791f6fa4e396adbebc714d51cbee2143/ports/cmark-gfm/add-feature-tools.patch
+
+Submitted: https://github.com/desktop-app/cmake_helpers/pull/440
+
+--- tdesktop-6.9.3-full.orig/cmake/external/cmark_gfm/CMakeLists.txt
++++ tdesktop-6.9.3-full/cmake/external/cmark_gfm/CMakeLists.txt
+@@ -18,6 +18,16 @@
+         )
+         return()
+     endif()
++
++    find_package(PkgConfig)
++    if (PkgConfig_FOUND)
++        pkg_check_modules(DESKTOP_APP_CMARK_GFM IMPORTED_TARGET libcmark-gfm)
++    endif()
++
++    if (DESKTOP_APP_CMARK_GFM_FOUND)
++        target_link_libraries(external_cmark_gfm INTERFACE PkgConfig::DESKTOP_APP_CMARK_GFM)
++        return()
++    endif()
+ endif()
+ 
+ # Everything that follows is scoped to this block(). All variables, the

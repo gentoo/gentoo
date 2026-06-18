@@ -22,11 +22,12 @@ IUSE="dbus enchant +fonts screencast wayland webkit +X"
 CDEPEND="
 	!net-im/telegram-desktop-bin
 	app-arch/lz4:=
-	>=app-text/cmark-gfm-0.29.0.13-r2:=
+	app-text/cmark-gfm:=
 	dev-cpp/abseil-cpp:=
 	dev-cpp/ada:=
 	dev-cpp/cld3:=
 	>=dev-cpp/glibmm-2.77:2.68
+	dev-cpp/toomanycooks
 	dev-libs/glib:2
 	dev-libs/openssl:=
 	>=dev-libs/protobuf-21.12
@@ -35,6 +36,7 @@ CDEPEND="
 	>=dev-qt/qtbase-6.5:6=[dbus?,gui,network,opengl,ssl,wayland?,widgets,X?]
 	>=dev-qt/qtimageformats-6.5:6
 	>=dev-qt/qtsvg-6.5:6
+	kde-frameworks/kcoreaddons:6
 	media-libs/libjpeg-turbo:=
 	media-libs/openal
 	media-libs/opus
@@ -42,8 +44,8 @@ CDEPEND="
 	>=media-libs/tg_owt-0_pre20241202:=[screencast=,X=]
 	>=media-video/ffmpeg-6:=[opus,vpx]
 	net-libs/tdlib:=[tde2e]
+	sys-apps/hwloc:=
 	virtual/minizip:=
-	kde-frameworks/kcoreaddons:6
 	!enchant? ( >=app-text/hunspell-1.7:= )
 	enchant? ( app-text/enchant:= )
 	webkit? ( wayland? (
@@ -60,9 +62,9 @@ RDEPEND="${CDEPEND}
 "
 DEPEND="${CDEPEND}
 	>=dev-cpp/cppgir-2.0_p20240315
-	>=dev-cpp/ms-gsl-4.1.0
 	dev-cpp/expected
 	dev-cpp/expected-lite
+	>=dev-cpp/ms-gsl-4.1.0
 	dev-cpp/range-v3
 "
 BDEPEND="
@@ -70,11 +72,14 @@ BDEPEND="
 	>=dev-build/cmake-3.16
 	>=dev-cpp/cppgir-2.0_p20260226
 	>=dev-libs/gobject-introspection-1.82.0-r2
+	dev-qt/qtshadertools
 	>=dev-util/gdbus-codegen-2.80.5-r1
 	virtual/pkgconfig
 	wayland? ( dev-util/wayland-scanner )
 "
 # NOTE: dev-cpp/expected-lite used indirectly by a dev-cpp/cppgir header file
+# NOTE: sys-apps/hwloc is depended upon by dev-cpp/toomanycooks, but needs to
+#       cause SLOT rebuilds here, as dev-cpp/toomanycooks is header-only
 
 PATCHES=(
 	"${FILESDIR}"/tdesktop-6.9.3-no-dispatch.patch
@@ -82,6 +87,7 @@ PATCHES=(
 	"${FILESDIR}"/tdesktop-5.7.2-cstring.patch
 	"${FILESDIR}"/tdesktop-5.8.3-cstdint.patch
 	"${FILESDIR}"/tdesktop-5.14.3-system-cppgir.patch
+	"${FILESDIR}"/tdesktop-6.9.3-use-pkgconfig-for-cmark-gfm.patch
 )
 
 pkg_pretend() {
@@ -98,8 +104,6 @@ pkg_pretend() {
 src_prepare() {
 	# Happily fail if libraries aren't found...
 	find -type f \( -name 'CMakeLists.txt' -o -name '*.cmake' \) \
-		\! -path './cmake/external/minizip/CMakeLists.txt' \
-		\! -path './cmake/external/tmc/CMakeLists.txt' \
 		\! -path './cmake/external/qt/package.cmake' \
 		-print0 | xargs -0 sed -i \
 		-e '/pkg_check_modules(/s/[^ ]*)/REQUIRED &/' \
@@ -112,6 +116,12 @@ src_prepare() {
 	sed -e '/find_package(lz4 /d' -i cmake/external/lz4/CMakeLists.txt || die
 	sed -e '/find_package(Opus /d' -i cmake/external/opus/CMakeLists.txt || die
 	sed -e '/find_package(xxHash /d' -i cmake/external/xxhash/CMakeLists.txt || die
+	sed -e '/find_package(cmark-gfm\(-extensions\)\? /d' \
+		-i cmake/external/cmark_gfm/CMakeLists.txt || die
+
+	# Temporary workaround for https://bugs.gentoo.org/977603
+	sed -e '/find_package(minizip /d' \
+		-i cmake/external/minizip/CMakeLists.txt || die
 
 	# Greedily remove ThirdParty directories, keep only ones that interest us
 	local keep=(
@@ -120,7 +130,6 @@ src_prepare() {
 		tgcalls  # Telegram-specific library, no stable releases
 		xdg-desktop-portal  # Only a few xml files are used with gdbus-codegen
 		MicroTeX  # Telegram-specific fork, no stable releases
-		TooManyCooks  # TODO: consider packaging
 	)
 	for x in Telegram/ThirdParty/*; do
 		has "${x##*/}" "${keep[@]}" || rm -r "${x}" || die
