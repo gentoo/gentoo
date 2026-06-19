@@ -1,4 +1,4 @@
-# Copyright 2019-2025 Gentoo Authors
+# Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: acct-user.eclass
@@ -19,7 +19,7 @@
 # on the package providing it.
 #
 # The ebuild needs to call acct-user_add_deps after specifying
-# ACCT_USER_GROUPS.
+# ACCT_USER_GROUPS or ACCT_USER_HOME_OWNER.
 #
 # Example:
 # If your package needs user 'foo' belonging to same-named group, you
@@ -152,8 +152,8 @@ S=${WORKDIR}
 
 # @FUNCTION: acct-user_add_deps
 # @DESCRIPTION:
-# Generate appropriate RDEPEND from ACCT_USER_GROUPS.  This must be
-# called if ACCT_USER_GROUPS are set.
+# Generate appropriate RDEPEND from ACCT_USER_GROUPS and
+# ACCT_USER_HOME_OWNER.  This must be called if one of these are set.
 acct-user_add_deps() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -165,6 +165,23 @@ acct-user_add_deps() {
 	fi
 
 	RDEPEND+=${ACCT_USER_GROUPS[*]/#/ acct-group/}
+
+	local user group
+	case ${ACCT_USER_HOME_OWNER} in
+		*:*)
+			user=${ACCT_USER_HOME_OWNER%:*}
+			group=${ACCT_USER_HOME_OWNER#*:} ;;
+		*)
+			user=${ACCT_USER_HOME_OWNER}
+			group= ;;
+	esac
+
+	# Add ACCT_USER_HOME_OWNER dependencies if necessary.
+	[[ -n ${user} && ${user} != "${ACCT_USER_NAME}" ]] &&
+		RDEPEND+=" acct-user/${user}"
+	[[ -n ${group} ]] && ! has "${group}" "${ACCT_USER_GROUPS[@]}" &&
+		RDEPEND+=" acct-group/${group}"
+
 	_ACCT_USER_ADD_DEPS_CALLED=1
 }
 
