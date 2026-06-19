@@ -18,7 +18,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}"
 RDEPEND="${PYTHON_DEPS}
-	dev-python/pillow[${PYTHON_USEDEP}]
+	dev-python/pillow[${PYTHON_USEDEP},jpeg]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	media-libs/exiftool
 	media-gfx/imagemagick
