@@ -21,7 +21,8 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	media-libs/exiftool
-	media-gfx/imagemagick"
+	media-gfx/imagemagick
+	x11-libs/gtk+[introspection]"
 
 install_cropgui_wrapper() {
 	python_domodule cropgtk.py cropgui_common.py filechooser.py cropgui.glade
