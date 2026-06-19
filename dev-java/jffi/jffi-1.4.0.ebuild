@@ -65,6 +65,7 @@ src_compile() {
 
 	#build native library.
 	local args=(
+		STRIP=true
 		SRC_DIR=jni
 		JNI_DIR=jni
 		BUILD_DIR=build/jni
