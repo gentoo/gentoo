@@ -16,8 +16,6 @@ BAZEL_BASE_URL="https://mdb-build-public.s3.amazonaws.com/bazel_binary_waterfall
 BAZEL_BCR_HASH="1451bc41ab31a6908b7bd0056797b5ea273c9fd8"
 
 MY_PV=r${PV/_rc/-rc}
-MY_P=mongo-${MY_PV}
-S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="A high-performance, open source, schema-free document-oriented database"
 HOMEPAGE="https://www.mongodb.com"
@@ -50,16 +48,18 @@ SRC_URI="
 	https://github.com/bazelbuild/platforms/releases/download/0.0.9/platforms-0.0.9.tar.gz
 	https://github.com/bazelbuild/rules_cc/releases/download/0.0.16/rules_cc-0.0.16.tar.gz
 	https://github.com/bazelbuild/rules_java/releases/download/8.5.1/rules_java-8.5.1.tar.gz
-        https://github.com/bazelbuild/rules_kotlin/releases/download/v1.9.6/rules_kotlin-v1.9.6.tar.gz
+	https://github.com/bazelbuild/rules_kotlin/releases/download/v1.9.6/rules_kotlin-v1.9.6.tar.gz
 	https://github.com/bazelbuild/rules_license/releases/download/1.0.0/rules_license-1.0.0.tar.gz
 	https://github.com/bazelbuild/rules_pkg/releases/download/1.2.0/rules_pkg-1.2.0.tar.gz
 	https://github.com/bazelbuild/rules_python/releases/download/1.0.0/rules_python-1.0.0.tar.gz
-        https://github.com/bazelbuild/rules_shell/releases/download/v0.2.0/rules_shell-v0.2.0.tar.gz
-        https://github.com/protocolbuffers/protobuf/releases/download/v29.0-rc3/protobuf-29.0-rc3.zip
+	https://github.com/bazelbuild/rules_shell/releases/download/v0.2.0/rules_shell-v0.2.0.tar.gz
+	https://github.com/protocolbuffers/protobuf/releases/download/v29.0-rc3/protobuf-29.0-rc3.zip
 	https://github.com/theoremlp/rules_multitool/releases/download/v0.4.0/rules_multitool-0.4.0.tar.gz
 	https://registry.npmjs.org/eslint/-/eslint-9.19.0.tgz
 	https://registry.npmjs.org/prettier/-/prettier-3.4.2.tgz
 "
+
+S="${WORKDIR}/mongo-${MY_PV}"
 
 LICENSE="Apache-2.0 SSPL-1"
 SLOT="0"
@@ -134,7 +134,8 @@ src_unpack() {
 	ln -s "${DISTDIR}/bats-core-v1.10.0.tar.gz" "${WORKDIR}/bazel_dist/v1.10.0.tar.gz"
 	ln -s "${DISTDIR}/rules_proto-5.3.0-21.7.tar.gz" "${WORKDIR}/bazel_dist/5.3.0-21.7.tar.gz"
 	ln -s "${DISTDIR}/buildifier-prebuilt-6.4.0.tar.gz" "${WORKDIR}/bazel_dist/6.4.0.tar.gz"
-	ln -s "${DISTDIR}/bazel_clang_tidy-33c9013349.tar.gz" "${WORKDIR}/bazel_dist/33c9013349b6178897598e67929201356b0ad5ea.tar.gz"
+	ln -s "${DISTDIR}/bazel_clang_tidy-33c9013349.tar.gz" \
+		"${WORKDIR}/bazel_dist/33c9013349b6178897598e67929201356b0ad5ea.tar.gz"
 
 	unpack ${P}.gh.tar.gz
 }
@@ -142,9 +143,9 @@ src_unpack() {
 pkg_pretend() {
 	if [[ -n ${REPLACING_VERSIONS} ]]; then
 		if ver_replacing -lt 7.0; then
-			ewarn "To upgrade from a version earlier than the 7.0-series, you must"
+			ewarn "To upgrade from a version earlier than 7.0, you must"
 			ewarn "successively upgrade major releases until you have upgraded"
-			ewarn "to 7.0-series. Then upgrade to 8.0 series."
+			ewarn "to 7.0. Then upgrade to 8.0."
 		else
 			ewarn "Be sure to set featureCompatibilityVersion to 7.0 before upgrading."
 		fi

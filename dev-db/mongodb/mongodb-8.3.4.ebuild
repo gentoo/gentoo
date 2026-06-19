@@ -11,8 +11,8 @@ CHECKREQS_MEMORY="1024M"
 
 inherit edo check-reqs eapi9-ver flag-o-matic multiprocessing pax-utils python-any-r1 systemd toolchain-funcs
 
-BAZEL_VER="7.5.0-mongo_9ea3a8ad9f"
-BAZEL_BASE_URL="https://mdb-build-public.s3.amazonaws.com/bazel_binary_waterfall_builds/9ea3a8ad9ffc29090d93780658c3ec19e75d9f17"
+BAZEL_VER="7.5.0-mongo_06d753863d"
+BAZEL_BASE_URL="https://mdb-build-public.s3.amazonaws.com/bazel_binary_waterfall_builds/06d753863dde251110daef739d2c3e419782b881"
 BAZEL_BCR_HASH="1451bc41ab31a6908b7bd0056797b5ea273c9fd8"
 
 MY_PV=r${PV/_rc/-rc}
@@ -24,36 +24,55 @@ SRC_URI="
 	amd64? (
 		${BAZEL_BASE_URL}/${BAZEL_VER}/bazel-${BAZEL_VER}-linux-x86_64
 		https://github.com/mikefarah/yq/releases/download/v4.25.2/yq_linux_amd64
+		https://mdb-build-public.s3.us-east-1.amazonaws.com/gpg-binaries/SERVER-115285/gpg_bundle-x86_64.tar.gz
 	)
 	arm64? (
 		${BAZEL_BASE_URL}/${BAZEL_VER}/bazel-${BAZEL_VER}-linux-arm64
 		https://github.com/mikefarah/yq/releases/download/v4.25.2/yq_linux_arm64
+		https://mdb-build-public.s3.us-east-1.amazonaws.com/gpg-binaries/SERVER-115285/gpg_bundle-aarch64.tar.gz
 	)
+	https://pgp.mongodb.com/mongot-extension.pub
 	https://github.com/bazelbuild/bazel-central-registry/archive/${BAZEL_BCR_HASH}.tar.gz
 		-> ${PN}-bcr-${BAZEL_BCR_HASH}.tar.gz
 	https://github.com/bats-core/bats-core/archive/v1.10.0.tar.gz
 		-> bats-core-v1.10.0.tar.gz
+	https://github.com/bazel-contrib/rules_perl/archive/refs/tags/0.2.4.tar.gz
+		-> rules_perl-0.2.4.tar.gz
+	https://github.com/bazelbuild/rules_proto/archive/refs/tags/5.3.0-21.7.tar.gz
+		-> rules_proto-5.3.0-21.7.tar.gz
+	https://github.com/bufbuild/protoc-gen-validate/archive/refs/tags/v1.2.1.tar.gz
+		-> protoc-gen-validate-1.2.1.tar.gz
+	https://github.com/cncf/xds/archive/555b57ec207be86f811fb0c04752db6f85e3d7e2.tar.gz
+		-> xds-555b57ec20.tar.gz
+	https://github.com/envoyproxy/data-plane-api/archive/4de3c74cf21a9958c1cf26d8993c55c6e0d28b49.tar.gz
+		-> data-plane-api-4de3c74cf2.tar.gz
+	https://github.com/google/cel-spec/archive/refs/tags/v0.15.0.tar.gz
+		-> cel-spec-0.15.0.tar.gz
+	https://github.com/googleapis/googleapis/archive/fe8ba054ad4f7eca946c2d14a63c3f07c0b586a0.tar.gz
+		-> googleapis-fe8ba054ad.tar.gz
 	https://github.com/keith/buildifier-prebuilt/archive/refs/tags/6.4.0.tar.gz
 		-> buildifier-prebuilt-6.4.0.tar.gz
-	https://github.com/mongodb-forks/bazel_clang_tidy/archive/10c4bf70a8946789e3932f30e29dfba2dfb78e67.tar.gz
-		-> bazel_clang_tidy-10c4bf70a8.tar.gz
-	https://github.com/protocolbuffers/rules_ruby/archive/b7f3e9756f3c45527be27bc38840d5a1ba690436.zip
-		-> rules_ruby-b7f3e9756f.zip
-	https://github.com/protocolbuffers/utf8_range/archive/de0b4a8ff9b5d4c98108bdfe723291a33c52c54f.zip
-		-> utf8_range-de0b4a8ff9.zip
+	https://github.com/mongodb-forks/bazel_clang_tidy/archive/refs/tags/v1.7.tar.gz
+		-> bazel_clang_tidy-mongodb-1.7.tar.gz
 	https://github.com/aspect-build/rules_js/releases/download/v2.1.3/rules_js-v2.1.3.tar.gz
 	https://github.com/bazel-contrib/bazel-lib/releases/download/v2.13.0/bazel-lib-v2.13.0.tar.gz
-	https://github.com/bazel-contrib/bazel_features/releases/download/v1.10.0/bazel_features-v1.10.0.tar.gz
+	https://github.com/bazel-contrib/bazel_features/releases/download/v1.37.0/bazel_features-v1.37.0.tar.gz
+	https://github.com/bazel-contrib/rules_foreign_cc/releases/download/0.15.1/rules_foreign_cc-0.15.1.tar.gz
 	https://github.com/bazel-contrib/rules_nodejs/releases/download/v6.3.0/rules_nodejs-v6.3.0.tar.gz
-	https://github.com/bazelbuild/apple_support/releases/download/1.17.1/apple_support.1.17.1.tar.gz
-	https://github.com/bazelbuild/bazel-skylib/releases/download/1.7.1/bazel-skylib-1.7.1.tar.gz
-	https://github.com/bazelbuild/platforms/releases/download/0.0.9/platforms-0.0.9.tar.gz
-	https://github.com/bazelbuild/rules_cc/releases/download/0.0.9/rules_cc-0.0.9.tar.gz
-	https://github.com/bazelbuild/rules_java/releases/download/7.6.5/rules_java-7.6.5.tar.gz
-	https://github.com/bazelbuild/rules_license/releases/download/0.0.7/rules_license-0.0.7.tar.gz
-	https://github.com/bazelbuild/rules_pkg/releases/download/1.0.1/rules_pkg-1.0.1.tar.gz
-	https://github.com/bazelbuild/rules_proto/releases/download/6.0.0-rc1/rules_proto-6.0.0-rc1.tar.gz
-	https://github.com/bazelbuild/rules_python/releases/download/0.35.0/rules_python-0.35.0.tar.gz
+	https://github.com/bazelbuild/apple_support/releases/download/1.22.1/apple_support.1.22.1.tar.gz
+	https://github.com/bazelbuild/bazel-skylib/releases/download/1.9.0/bazel-skylib-1.9.0.tar.gz
+	https://github.com/bazelbuild/platforms/releases/download/0.0.11/platforms-0.0.11.tar.gz
+	https://github.com/bazelbuild/rules_apple/releases/download/3.16.0/rules_apple.3.16.0.tar.gz
+	https://github.com/bazelbuild/rules_cc/releases/download/0.2.10/rules_cc-0.2.10.tar.gz
+	https://github.com/bazelbuild/rules_go/releases/download/v0.50.1/rules_go-v0.50.1.zip
+	https://github.com/bazelbuild/rules_java/releases/download/8.6.1/rules_java-8.6.1.tar.gz
+	https://github.com/bazelbuild/rules_kotlin/releases/download/v1.9.6/rules_kotlin-v1.9.6.tar.gz
+	https://github.com/bazelbuild/rules_license/releases/download/1.0.0/rules_license-1.0.0.tar.gz
+	https://github.com/bazelbuild/rules_pkg/releases/download/1.2.0/rules_pkg-1.2.0.tar.gz
+	https://github.com/bazelbuild/rules_proto/releases/download/7.1.0/rules_proto-7.1.0.tar.gz
+	https://github.com/bazelbuild/rules_python/releases/download/1.8.5/rules_python-1.8.5.tar.gz
+	https://github.com/bazelbuild/rules_shell/releases/download/v0.3.0/rules_shell-v0.3.0.tar.gz
+	https://github.com/bazelbuild/rules_swift/releases/download/2.1.1/rules_swift.2.1.1.tar.gz
 	https://github.com/theoremlp/rules_multitool/releases/download/v0.4.0/rules_multitool-0.4.0.tar.gz
 	https://github.com/madler/zlib/releases/download/v1.3.1/zlib-1.3.1.tar.gz
 	https://registry.npmjs.org/eslint/-/eslint-9.19.0.tgz
@@ -71,21 +90,26 @@ IUSE="debug mongosh ssl +tools"
 # resmoke needs python packages not yet present in Gentoo
 RESTRICT="test"
 
-RDEPEND="acct-group/mongodb
+RDEPEND="
+	acct-group/mongodb
 	acct-user/mongodb
 	net-misc/curl
 	ssl? (
 		>=dev-libs/openssl-3.0.0:0=
-	)"
-DEPEND="${RDEPEND}
-	${PYTHON_DEPS}"
+	)
+"
+DEPEND="${RDEPEND}"
 BDEPEND="
 	$(python_gen_any_dep '
+		dev-python/asn1crypto[${PYTHON_USEDEP}]
 		dev-python/cheetah3[${PYTHON_USEDEP}]
+		dev-python/cryptography[${PYTHON_USEDEP}]
+		dev-python/ecdsa[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/pymongo[${PYTHON_USEDEP}]
 		dev-python/packaging[${PYTHON_USEDEP}]
 	')
+	sys-apps/ripgrep
 "
 PDEPEND="
 	mongosh? ( app-admin/mongosh-bin )
@@ -95,14 +119,18 @@ PDEPEND="
 PATCHES=(
 	"${FILESDIR}/${P}-disable-bazelisk-check.patch"
 	"${FILESDIR}/${PN}-8.0.23-fix-compiler-names.patch"
-	"${FILESDIR}/${PN}-8.0.23-override-distro.patch"
-	"${FILESDIR}/${PN}-8.0.23-remove-mtune-march-cflags.patch"
+	"${FILESDIR}/${P}-fix-grpc-build.patch"
+	"${FILESDIR}/${P}-override-distro.patch"
+	"${FILESDIR}/${P}-remove-mtune-march-cflags.patch"
 	"${FILESDIR}/${P}-restore-syscall_h-includes.patch"
 	"${FILESDIR}/${P}-use-system-python.patch"
 )
 
 python_check_deps() {
+	python_has_version -b "dev-python/asn1crypto[${PYTHON_USEDEP}]" &&
 	python_has_version -b "dev-python/cheetah3[${PYTHON_USEDEP}]" &&
+	python_has_version -b "dev-python/cryptography[${PYTHON_USEDEP}]" &&
+	python_has_version -b "dev-python/ecdsa[${PYTHON_USEDEP}]" &&
 	python_has_version -b "dev-python/pyyaml[${PYTHON_USEDEP}]" &&
 	python_has_version -b "dev-python/pymongo[${PYTHON_USEDEP}]" &&
 	python_has_version -b "dev-python/packaging[${PYTHON_USEDEP}]"
@@ -116,9 +144,9 @@ ebazel() {
 
 src_unpack() {
 	case $(tc-arch) in
-		amd64)	  export EARCH=x86_64 ;;
-		arm64)	  export EARCH=arm64 ;;
-		*)		      die "architecture not supported: $(tc-arch)" ;;
+		amd64)	export EARCH=x86_64 ;;
+		arm64)	export EARCH=arm64 ;;
+		*)	die "architecture not supported: $(tc-arch)" ;;
 	esac
 	cp "${DISTDIR}/bazel-${BAZEL_VER}-linux-${EARCH}" bazel || die
 	chmod +x bazel || die
@@ -132,11 +160,17 @@ src_unpack() {
 
 	ln -s "${DISTDIR}"/* "${WORKDIR}/bazel_dist" || die
 	ln -s "${DISTDIR}/bats-core-v1.10.0.tar.gz" "${WORKDIR}/bazel_dist/v1.10.0.tar.gz"
+	ln -s "${DISTDIR}/rules_perl-0.2.4.tar.gz" "${WORKDIR}/bazel_dist/0.2.4.tar.gz"
+	ln -s "${DISTDIR}/rules_proto-5.3.0-21.7.tar.gz" "${WORKDIR}/bazel_dist/5.3.0-21.7.tar.gz"
+	ln -s "${DISTDIR}/protoc-gen-validate-1.2.1.tar.gz" "${WORKDIR}/bazel_dist/v1.2.1.tar.gz"
+	ln -s "${DISTDIR}/xds-555b57ec20.tar.gz" "${WORKDIR}/bazel_dist/555b57ec207be86f811fb0c04752db6f85e3d7e2.tar.gz"
+	ln -s "${DISTDIR}/data-plane-api-4de3c74cf2.tar.gz" \
+		"${WORKDIR}/bazel_dist/4de3c74cf21a9958c1cf26d8993c55c6e0d28b49.tar.gz"
+	ln -s "${DISTDIR}/cel-spec-0.15.0.tar.gz" "${WORKDIR}/bazel_dist/v0.15.0.tar.gz"
+	ln -s "${DISTDIR}/googleapis-fe8ba054ad.tar.gz" \
+		"${WORKDIR}/bazel_dist/fe8ba054ad4f7eca946c2d14a63c3f07c0b586a0.tar.gz"
 	ln -s "${DISTDIR}/buildifier-prebuilt-6.4.0.tar.gz" "${WORKDIR}/bazel_dist/6.4.0.tar.gz"
-	ln -s "${DISTDIR}/bazel_clang_tidy-10c4bf70a8.tar.gz" \
-		"${WORKDIR}/bazel_dist/10c4bf70a8946789e3932f30e29dfba2dfb78e67.tar.gz"
-	ln -s "${DISTDIR}/rules_ruby-b7f3e9756f.zip" "${WORKDIR}/bazel_dist/b7f3e9756f3c45527be27bc38840d5a1ba690436.zip"
-	ln -s "${DISTDIR}/utf8_range-de0b4a8ff9.zip" "${WORKDIR}/bazel_dist/de0b4a8ff9b5d4c98108bdfe723291a33c52c54f.zip"
+	ln -s "${DISTDIR}/bazel_clang_tidy-mongodb-1.7.tar.gz" "${WORKDIR}/bazel_dist/v1.7.tar.gz"
 
 	unpack ${P}.gh.tar.gz
 }
@@ -146,9 +180,9 @@ pkg_pretend() {
 		if ver_replacing -lt 8.0; then
 			ewarn "To upgrade from a version earlier than 8.0, you must"
 			ewarn "successively upgrade major releases until you have upgraded"
-			ewarn "to 8.0. Then upgrade to 8.2."
+			ewarn "to 8.0. Then upgrade to 8.3."
 		else
-			ewarn "Be sure to set featureCompatibilityVersion to 8.0 before upgrading."
+			ewarn "Be sure to set featureCompatibilityVersion to $(ver_cut 1-2 ${REPLACING_VERSIONS}) before upgrading."
 		fi
 	fi
 }
@@ -156,11 +190,11 @@ pkg_pretend() {
 src_prepare() {
 	default
 
-	# remove enterprise files from build
-	sed -i '/enterprise/d' src/BUILD.bazel
-
 	# remove compass
 	rm -r src/mongo/installer/compass || die
+
+	# run auto_header.py
+	edob ${PYTHON} "${FILESDIR}"/auto_header.py "${S}"
 }
 
 src_configure() {
