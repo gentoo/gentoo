@@ -368,11 +368,6 @@ sys-devel/binutils-config native-symlinks
 sys-devel/gcc-config      native-symlinks
 sys-devel/gcc-config      cc-wrappers
 
-# Michał Górny <mgorny@gentoo.org> (2017-12-30)
-# Require user configs unless we supply our own .config.
-sys-kernel/gentoo-kernel savedconfig
-sys-kernel/vanilla-kernel savedconfig
-
 # Matt Turner <mattst88@gentoo.org> (2020-03-28)
 # wget is the default FETCHCOMMAND, and most distfiles are distributed via
 # HTTPS. Bug #611072

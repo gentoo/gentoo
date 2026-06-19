@@ -1,5 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Ian Jordan <immoloism@gmail.com (2026-06-17}
+# No premade kernel configs for PPC64.
+# Force the use of savedconfig
+sys-kernel/gentoo-kernel savedconfig 
+sys-kernel/vanilla-kernel savedconfig
 
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2023-08-14)
 # OpenMW is only playtested with LuaJIT, and in fact unit tests fail with Lua-5.

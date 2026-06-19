@@ -1,5 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Ian Jordan <immoloism@gmail.com (2026-06-17}
+# No premade kernel configs for HPPA.
+# Force the use of savedconfig
+sys-kernel/gentoo-kernel savedconfig
+sys-kernel/vanilla-kernel savedconfig
 
 # Sam James <sam@gentoo.org> (2023-04-30)
 # Stacks on HPPA grow upwards and GCC doesn't support SSP or SCP there.
