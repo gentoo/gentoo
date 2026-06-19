@@ -1,6 +1,12 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ian Jordan <immoloism@gmail.com>  (2026-06-19)
+# Debian kernel configs aren't tested below 6.18
+# users should unmask this package and use savedconfig
+<sys-kernel/gentoo-kernel-6.18
+<sys-kernel/vanilla-kernel-6.18
+
 # matoro <matoro_gentoo@matoro.tk> (2024-06-11)
 # Extensive use of unaligned access, no plans to fix, #636552
 # https://github.com/memcached/memcached/issues/902
