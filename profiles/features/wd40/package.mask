@@ -442,6 +442,7 @@ dev-python/pydantic-settings
 dev-python/pyfuse3
 >=dev-python/pyopenssl-22
 dev-python/pymdown-extensions
+dev-python/pysequoia
 dev-python/pyspelling
 dev-python/pyspnego
 dev-python/pyproject-fmt
