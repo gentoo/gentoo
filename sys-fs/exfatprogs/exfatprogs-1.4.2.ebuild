@@ -9,7 +9,6 @@ HOMEPAGE="https://github.com/exfatprogs/exfatprogs"
 if [[ ${PV} == *9999 ]] ; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/exfatprogs/exfatprogs.git"
-	EGIT_BRANCH="exfat-next"
 else
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/hclee.asc
 	inherit verify-sig
@@ -19,7 +18,7 @@ else
 		verify-sig? ( https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.xz.asc )
 	"
 
-	KEYWORDS="~amd64 ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm64 ~loong ppc ppc64 ~riscv x86"
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-hclee )"
 fi
 
