@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake flag-o-matic linux-info
+inherit cmake linux-info
 
 DESCRIPTION="UPnP Media Server"
 HOMEPAGE="https://gerbera.io"
@@ -47,17 +47,14 @@ RDEPEND="
 	mysql? ( dev-db/mysql-connector-c:= )
 	taglib? ( media-libs/taglib:= )
 "
-DEPEND="${RDEPEND}"
-BDEPEND="
+DEPEND="
+	${RDEPEND}
 	test? ( dev-cpp/gtest )
 "
 
 CONFIG_CHECK="~INOTIFY_USER"
 
 src_configure() {
-	# bug #941944
-	filter-lto
-
 	local mycmakeargs=(
 		-DBUILD_DOC=OFF
 		-DINSTALL_DOC=OFF
