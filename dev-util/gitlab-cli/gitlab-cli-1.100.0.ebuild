@@ -43,9 +43,9 @@ src_compile() {
 		build manpage
 
 	einfo "generating shell completion files"
-	sysroot_try_run_prefixed bin/glab completion bash > "${T}"/glab.bash || die
-	sysroot_try_run_prefixed bin/glab completion zsh > "${T}"/glab.zsh || die
-	sysroot_try_run_prefixed bin/glab completion fish > "${T}"/glab.fish || die
+	sysroot_try_run_prefixed bin/glab completion -s bash > "${T}"/glab.bash || die
+	sysroot_try_run_prefixed bin/glab completion -s zsh > "${T}"/glab.zsh || die
+	sysroot_try_run_prefixed bin/glab completion -s fish > "${T}"/glab.fish || die
 }
 
 src_install() {
