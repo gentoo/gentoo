@@ -1,0 +1,82 @@
+diff --git a/contrib/sb-grovel/def-to-lisp.lisp b/contrib/sb-grovel/def-to-lisp.lisp
+index afd55ac66..82f8481df 100644
+--- a/contrib/sb-grovel/def-to-lisp.lisp
++++ b/contrib/sb-grovel/def-to-lisp.lisp
+@@ -80,25 +80,39 @@ code:
+   (destructuring-bind (cname &rest elements) cstruct
+     (printf "(sb-grovel::define-c-struct ~A %ld" lispname
+             (word-cast (format nil "sizeof(~A)" cname)))
+-    (dolist (e elements)
+-      (destructuring-bind (lisp-type lisp-el-name c-type c-el-name &key distrust-length) e
+-        (printf " (~A ~A \"~A\"" lisp-el-name lisp-type c-type)
+-        ;; offset
+-        (as-c "{" cname "t;")
+-        (printf "  %lu"
+-                (format nil "((unsigned long~A)&(t.~A)) - ((unsigned long~A)&(t))"
+-                        #+(and win32 64-bit) " long" #-(and win32 64-bit) ""
+-                        c-el-name
+-                        #+(and win32 64-bit) " long" #-(and win32 64-bit) ""))
+-        (as-c "}")
+-        ;; length
+-        (if distrust-length
+-            (printf "  0)")
+-            (progn
+-              (as-c "{" cname "t;")
+-              (printf "  %ld)"
+-                      (word-cast (format nil "sizeof(t.~A)" c-el-name)))
+-              (as-c "}")))))
++    (when elements
++      (as-c "{" cname "t;")
++      (dolist (e elements)
++        (destructuring-bind (lisp-type lisp-el-name c-type c-el-name &key distrust-length) e
++          (printf " (~A ~A \"~A\"" lisp-el-name lisp-type c-type)
++          ;; offset
++          (flet ((ifdef (fun c-el-name)
++                   (cond ((typep c-el-name '(cons (eql :if)))
++                          (destructuring-bind (cond then else) (cdr c-el-name)
++                            (as-c "#if" cond)
++                            (funcall fun then)
++                            (as-c "#else")
++                            (funcall fun else)
++                            (as-c "#endif")))
++                         (t
++                          (funcall fun c-el-name)))))
++            (ifdef (lambda (c-el-name)
++                     (printf "  %lu"
++                             (format nil "((unsigned long~A)&(t.~A)) - ((unsigned long~A)&(t))"
++                                     #+(and win32 64-bit) " long" #-(and win32 64-bit) ""
++                                     c-el-name
++                                     #+(and win32 64-bit) " long" #-(and win32 64-bit) "")))
++                   c-el-name)
++
++            ;; length
++            (if distrust-length
++                (printf "  0)")
++                (ifdef (lambda (c-el-name)
++                         (printf "  %ld)"
++
++                                 (word-cast (format nil "sizeof(t.~A)" c-el-name))))
++                       c-el-name)))))
++      (as-c "}"))
+     (printf ")")))
+ 
+ (defun print-c-source (stream headers definitions package-name)
+diff --git a/contrib/sb-posix/constants.lisp b/contrib/sb-posix/constants.lisp
+index 26a16d36a..8632dcded 100644
+--- a/contrib/sb-posix/constants.lisp
++++ b/contrib/sb-posix/constants.lisp
+@@ -434,8 +434,12 @@
+               (tcflag-t cflag "tcflag_t" "c_cflag")
+               (tcflag-t lflag "tcflag_t" "c_lflag")
+               ((array cc-t) cc "cc_t" "c_cc")
+-              (speed-t ispeed "speed_t" "c_ispeed")
+-              (speed-t ospeed "speed_t" "c_ospeed")))
++              (speed-t ispeed "speed_t" (:if "defined(__linux__) && !defined(__GLIBC__)"
++                                             "__c_ispeed" ;; musl
++                                             "c_ispeed"))
++              (speed-t ospeed "speed_t" (:if "defined(__linux__) && !defined(__GLIBC__)"
++                                             "__c_ospeed" ;; musl
++                                             "c_ospeed"))))
+ 
+  ;; utime(), utimes()
+  #-win32

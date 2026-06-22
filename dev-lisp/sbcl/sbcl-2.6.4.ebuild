@@ -112,6 +112,9 @@ src_prepare() {
 
 	eapply "${FILESDIR}"/verbose-build-2.0.3.patch
 
+	# backport fix for https://bugs.launchpad.net/sbcl/+bug/2153432
+	eapply "${FILESDIR}"/sbcl-2.6.4-musl-termios.patch
+
 	eapply_user
 
 	# Make sure the *FLAGS variables are sane.
